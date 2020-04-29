@@ -1,115 +1,115 @@
 ---
-title: Podpora hodnocení VMware v Azure Migrate
-description: Přečtěte si o podpoře pro vyhodnocení virtuálních počítačích VMware pomocí Azure Migrate Server Assessment.
+title: Podpora pro vyhodnocení VMware v Azure Migrate
+description: Přečtěte si o podpoře vyhodnocení virtuálních počítačů VMware pomocí posouzení serveru Azure Migrate.
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.openlocfilehash: 8a09562f14b95256ee9c2b5ba7d9c308cde66397
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81532200"
 ---
-# <a name="support-matrix-for-vmware-assessment"></a>Matice podpory pro hodnocení vmware 
+# <a name="support-matrix-for-vmware-assessment"></a>Matice podpory pro vyhodnocení VMware 
 
-Tento článek shrnuje požadavky na požadavky na požadavky na požadavky na požadavky na podporu při posuzování virtuálních počítačích VMware pro migraci do Azure pomocí nástroje Azure Migrate:Server Assessment](migrate-services-overview.md#azure-migrate-server-assessment-tool). Pokud chcete migrovat virtuální počítače VMware do Azure, zkontrolujte [matici podpory migrace](migrate-support-matrix-vmware-migration.md).
+Tento článek shrnuje požadavky a požadavky na podporu při vyhodnocení virtuálních počítačů VMware pro migraci do Azure pomocí Azure Migrate: vyhodnocování serveru] (migrace-služby-přehled. MD # Azure-Migration-Server-Assessment-nástroj). Pokud chcete migrovat virtuální počítače VMware do Azure, přečtěte si [matici podpora migrace](migrate-support-matrix-vmware-migration.md).
 
-Chcete-li vyhodnotit virtuální počítače VMware, vytvořte projekt Migrace Azure a pak do projektu přidejte nástroj vyhodnocení serveru. Po přidání nástroje nasadíte [zařízení Azure Migrate](migrate-appliance.md). Zařízení průběžně zjišťuje místní počítače a odesílá metadata a údaje o výkonu počítače do Azure. Po dokončení zjišťování shromáždíte zjištěné počítače do skupin a spustíte hodnocení pro skupinu.
+K vyhodnocení virtuálních počítačů VMware vytvoříte Azure Migrate projekt a potom do projektu přidáte Nástroj pro vyhodnocení serveru. Po přidání nástroje nasadíte [zařízení Azure Migrate](migrate-appliance.md). Zařízení nepřetržitě zjišťuje místní počítače a odesílá do Azure metadata počítače a data o výkonu. Po dokončení zjišťování shromáždíte zjištěné počítače do skupin a spustíte posouzení pro skupinu.
 
 ## <a name="limitations"></a>Omezení
 
-**Podpora** | **Podrobnosti**
+**Podpora** | **Zobrazí**
 --- | ---
-**Limity projektu** | V předplaceně Azure můžete vytvořit více projektů.<br/><br/> Můžete objevit a vyhodnotit až 35 000 virtuálních virtuálních měn VMware v jednom [projektu](migrate-support-matrix.md#azure-migrate-projects). Projekt může také zahrnovat fyzické servery a virtuální chod hyper-V až do limitů hodnocení pro každý.
-**Objev** | Zařízení Migrace Azure může zjistit až 10 000 virtuálních počítačů VMware na serveru vCenter.
-**Posouzení** | V jedné skupině můžete přidat až 35 000 počítačů.<br/><br/> Můžete vyhodnotit až 35 000 virtuálních můe v rámci jednoho hodnocení.
+**Omezení projektu** | V předplatném Azure můžete vytvořit více projektů.<br/><br/> V jednom [projektu](migrate-support-matrix.md#azure-migrate-projects)můžete zjistit a posoudit až 35 000 virtuálních počítačů VMware. Projekt může také zahrnovat fyzické servery a virtuální počítače Hyper-V, a to až do limitů hodnocení pro každé z nich.
+**Rozpoznávání** | Zařízení Azure Migrate může na vCenter Server zjistit až 10 000 virtuálních počítačů VMware.
+**Posouzení** | Do jedné skupiny můžete přidat až 35 000 počítačů.<br/><br/> V jednom posouzení můžete vyhodnotit až 35 000 virtuálních počítačů.
 
-[Přečtěte si další informace](concepts-assessment-calculation.md) o hodnoceních.
+[Přečtěte si další informace](concepts-assessment-calculation.md) o posouzení.
 
 
 ## <a name="application-discovery"></a>Zjišťování aplikací
 
-Kromě zjišťování počítačů může server Assessment zjišťovat aplikace, role a funkce spuštěné na počítačích. Zjišťování inventáře aplikací vám umožní identifikovat a naplánovat cestu migrace přizpůsobenou místním úlohám. 
+Kromě zjišťování počítačů může posouzení serveru zjišťovat aplikace, role a funkce běžící na počítačích. Zjišťování inventáře aplikací vám umožní identifikovat a naplánovat cestu migrace přizpůsobenou pro vaše místní úlohy. 
 
-**Podpora** | **Podrobnosti**
+**Podpora** | **Zobrazí**
 --- | ---
-**Podporované stroje** | Zjišťování aplikací je aktuálně podporované pouze pro virtuální majech VMware.
-**Objev** | Zjišťování aplikací je bez agenta. Používá pověření pro hosta počítače a vzdáleně přistupuje k počítačům pomocí volání WMI a SSH.
-**Podpora virtuálních her** | Zjišťování aplikací je podporováno pro všechny verze Windows a Linux.
-**pověření aplikace vCenter** | Zjišťování aplikací vyžaduje účet vCenter Serveru s přístupem jen pro čtení a oprávněními povolenými pro virtuální počítače > operace hosta.
-**Pověření virtuálních ms** | Zjišťování aplikací v současné době podporuje použití jednoho pověření pro všechny servery Windows a jedno pověření pro všechny servery Linux.<br/><br/> Vytvoříte uživatelský účet hosta pro virtuální počítače se systémem Windows a běžný/běžný uživatelský účet (přístup bez sudo) pro všechny virtuální počítače s Linuxem.
-**Nástroje VMware** | Nástroje VMware musí být nainstalované a spuštěné na virtuálních počítačích, které chcete zjistit. <br/> Verze nástrojů VMware musí být pozdější než 10.2.0.
-**PowerShell** | Virtuální aplikace musí mít nainstalovanou powershellovou verzi 2.0 nebo novější.
-**Přístup k portu** | Na hostitelích ESXi se spuštěným virtuálním počítačem, které chcete zjistit, musí být zařízení Azure Migrate schopno se připojit k portu TCP 443.
-**Omezení** | Pro zjišťování aplikací můžete zjistit až 10000 virtuálních počítačů na každém zařízení Migrace Azure.
+**Podporované počítače** | Zjišťování aplikací se v současné době podporuje jenom pro virtuální počítače VMware.
+**Rozpoznávání** | Zjišťování aplikací je bez agenta. Používá přihlašovací údaje hosta počítače a vzdáleně přistupuje k počítačům pomocí volání WMI a SSH.
+**Podpora virtuálních počítačů** | Zjišťování aplikací je podporováno pro všechny verze systému Windows a Linux.
+**přihlašovací údaje pro vCenter** | Zjišťování aplikací vyžaduje účet vCenter Server s přístupem jen pro čtení a oprávnění povolená pro operace hosta Virtual Machines >.
+**Přihlašovací údaje virtuálního počítače** | Zjišťování aplikací aktuálně podporuje použití jednoho pověření pro všechny servery se systémem Windows a jedno přihlašovací údaje pro všechny servery se systémem Linux.<br/><br/> Vytvoříte uživatelský účet hosta pro virtuální počítače s Windows a běžný/normální uživatelský účet (bez přístupu sudo) pro všechny virtuální počítače se systémem Linux.
+**Nástroje VMware** | Na virtuálních počítačích, které chcete zjistit, musí být nainstalované a spuštěné nástroje VMware. <br/> Verze nástrojů VMware musí být pozdější než 10.2.0.
+**Prostředí** | Virtuální počítače musí mít nainstalované prostředí PowerShell verze 2,0 nebo novější.
+**Přístup k portu** | Na hostitelích ESXi, na kterých běží virtuální počítače, které chcete zjišťovat, musí být zařízení Azure Migrate schopné připojit se k portu TCP 443.
+**Omezení** | Pro zjišťování aplikací můžete na každém zařízení Azure Migrate zjistit až 10000 virtuálních počítačů.
 
 
 
-## <a name="vmware-requirements"></a>Požadavky na vmware
+## <a name="vmware-requirements"></a>Požadavky VMware
 
-**Vmware** | **Podrobnosti**
+**Hostiteli** | **Zobrazí**
 --- | ---
-**Virtuální počítače VMware** | Hodnocení je podporováno pro všechny operační systémy Windows a Linux.
-**vCenter Server** | Počítače, které chcete objevit a vyhodnotit, musí být spravovány serverem vCenter Server verze 5.5, 6.0, 6.5 nebo 6.7.
-**Oprávnění (hodnocení)** | účet jen pro čtení serveru vCenter.
-**Oprávnění (zjišťování aplikací)** | Účet serveru vCenter s přístupem jen pro čtení a oprávněními povolenými pro **virtuální počítače > operace hosta**.
-**Oprávnění (vizualizace závislostí)** | Účet serveru Center s přístupem jen pro čtení a oprávněními povolenými pro**operace hosta** **virtuálních počítačů** > .
+**Virtuální počítače VMware** | Posouzení je podporováno pro všechny operační systémy Windows a Linux.
+**vCenter Server** | Počítače, které chcete zjišťovat a hodnotit, se musí spravovat pomocí vCenter Server verze 5,5, 6,0, 6,5 nebo 6,7.
+**Oprávnění (posouzení)** | vCenter Server účet jen pro čtení.
+**Oprávnění (zjišťování aplikací)** | vCenter Server účet s přístupem jen pro čtení a oprávnění povolená pro **virtuální počítače > operace hostů**.
+**Oprávnění (Vizualizace závislostí)** | Účet serveru Center s přístupem jen pro čtení a oprávnění povolených pro**operace hosta** **virtuálních počítačů** > .
 
 
 ## <a name="azure-migrate-appliance-requirements"></a>Požadavky zařízení Azure Migrate
 
-Azure Migrate používá [zařízení Azure Migrate](migrate-appliance.md) pro zjišťování a hodnocení. Zařízení můžete nasadit jako virtuální hod VMWare pomocí šablony OVA, importované na server vCenter nebo pomocí [skriptu prostředí PowerShell](deploy-appliance-script.md).
+Azure Migrate používá [zařízení Azure Migrate](migrate-appliance.md) ke zjišťování a hodnocení. Zařízení můžete nasadit jako virtuální počítač VMWare pomocí šablony vajíček, naimportovat do vCenter Server nebo pomocí [skriptu PowerShellu](deploy-appliance-script.md).
 
-- Seznamte se s [požadavky na zařízení](migrate-appliance.md#appliance---vmware) pro společnost VMware.
-- Přečtěte si o adresách URL, ke kterým zařízení potřebuje přístup ve [veřejných](migrate-appliance.md#public-cloud-urls) a [vládních](migrate-appliance.md#government-cloud-urls) cloudech.
-- Ve službě Azure Government je nutné nasadit zařízení pomocí skriptu.
+- Přečtěte si informace o [požadavcích na zařízení](migrate-appliance.md#appliance---vmware) pro VMware.
+- Přečtěte si o adresách URL, které zařízení potřebuje k přístupu ve [veřejných](migrate-appliance.md#public-cloud-urls) a [státních](migrate-appliance.md#government-cloud-urls) cloudech.
+- V Azure Government musíte zařízení nasadit pomocí skriptu.
 
 
 ## <a name="port-access"></a>Přístup k portu
 
 **Zařízení** | **Připojení**
 --- | ---
-Přístroj | Příchozí připojení na portu TCP 3389, která umožňují připojení ke vzdálené ploše k zařízení.<br/><br/> Příchozí připojení na portu 44368 pro vzdálený přístup k aplikaci pro správu zařízení pomocí adresy URL:```https://<appliance-ip-or-name>:44368``` <br/><br/>Odchozí připojení na portu 443 (HTTPS) pro odesílání metadat zjišťování a výkonu do Migrace Azure.
-Server vCenter | Příchozí připojení na portu TCP 443, aby zařízení mohlo shromažďovat metadata konfigurace a výkonu pro hodnocení. <br/><br/> Zařízení se ve výchozím nastavení připojí k vCenter na portu 443. Pokud server vCenter naslouchá na jiném portu, můžete port upravit při nastavení zjišťování.
-Hostitelé ESXi (analýza zjišťování/závislostí bez agentů) | Pokud chcete provést [zjišťování aplikací](how-to-discover-applications.md) nebo [analýzu závislostí bez agenta](concepts-dependency-visualization.md#agentless-analysis), pak se zařízení připojí k hostitelům ESXi na portu TCP 443, aby zjišťovalo aplikace, až po vizualizaci závislostí bez agenta na virtuálních počítačích.
+Náplně | Příchozí připojení na portu TCP 3389 umožňující připojení ke vzdálené ploše zařízení.<br/><br/> Příchozí připojení na portu 44368 pro vzdálený přístup k aplikaci pro správu zařízení pomocí adresy URL:```https://<appliance-ip-or-name>:44368``` <br/><br/>Odchozí připojení na portu 443 (HTTPS) k odeslání metadat zjišťování a výkonu do Azure Migrate.
+Server vCenter | Příchozí připojení na portu TCP 443, aby zařízení mohla shromažďovat metadata o konfiguraci a výkonu pro posouzení. <br/><br/> Ve výchozím nastavení se zařízení připojuje ke vCenter na portu 443. Pokud Server vCenter naslouchá na jiném portu, můžete změnit port při nastavení zjišťování.
+Hostitelé ESXi (zjišťování aplikací/analýza závislostí bez agenta) | Pokud chcete provádět [zjišťování aplikací](how-to-discover-applications.md) nebo [analýzu závislostí bez agenta](concepts-dependency-visualization.md#agentless-analysis), zařízení se připojí k hostitelům ESXi na portu TCP 443, aby bylo možné zjišťovat aplikace a spouštět vizualizaci závislostí bez agentů na virtuálních počítačích.
 
-## <a name="agentless-dependency-analysis-requirements"></a>Požadavky na analýzu závislostí bez agenta
+## <a name="agentless-dependency-analysis-requirements"></a>Požadavky na analýzu závislostí bez agentů
 
-[Analýza závislostí](concepts-dependency-visualization.md) vám pomůže identifikovat závislosti mezi místními počítači, které chcete posoudit a migrovat do Azure. Tabulka shrnuje požadavky na nastavení analýzy závislostí bez agenta. 
+[Analýza závislostí](concepts-dependency-visualization.md) vám pomůže identifikovat závislosti mezi místními počítači, které chcete vyhodnotit a migrovat do Azure. Tabulka shrnuje požadavky na nastavení analýzy závislostí bez agentů. 
 
-**Požadavek** | **Podrobnosti**
+**Požadavek** | **Zobrazí**
 --- | --- 
-**Před nasazením** | Měli byste mít projekt Migrace Azure na místě, s nástrojem hodnocení serveru přidán do projektu.<br/><br/>  Vizualizaci závislostí nasadíte po nastavení zařízení Azure Migrate, abyste zjistili místní počítače VMWare.<br/><br/> [Přečtěte si, jak](create-manage-projects.md) vytvořit projekt poprvé.<br/> [Přečtěte si, jak](how-to-assess.md) přidat nástroj pro hodnocení do existujícího projektu.<br/> [Přečtěte si, jak](how-to-set-up-appliance-vmware.md) nastavit zařízení Azure Migrate pro vyhodnocení virtuálních počítačů VMware.
-**Podpora virtuálních her** | Momentálně podporované pouze pro virtuální měny VMware.
-**Virtuální počítače s Windows** | Windows Server 2016<br/> Windows Server 2012 R2<br/> Windows Server 2012<br/> Windows Server 2008 R2 (64bitový).
-**Účet systému Windows** |  Pro analýzu závislostí zařízení Azure Migrate potřebuje pro přístup k virtuálním účtům Windows účet místního správce nebo správce domény.
-**Virtuální počítače s Linuxem** | Red Hat Enterprise Linux 7, 6, 5<br/> Ubuntu Linux 14.04, 16.04<br/> Debian 7, 8<br/> Oracle Linux 6, 7<br/> Centos 5, 6, 7.
-**Linuxový účet** | Pro analýzu závislostí na linuxových počítačích potřebuje zařízení Azure Migrate uživatelský účet s oprávněním Root.<br/><br/> Uživatelský účet obvykle potřebuje tato oprávnění pro soubory /bin/netstat a /bin/ls: CAP_DAC_READ_SEARCH a CAP_SYS_PTRACE.
-**Požadované agenty** | Na počítačích, které chcete analyzovat, není vyžadován žádný agent.
-**Nástroje VMware** | Nástroje VMware (novější než 10.2) musí být nainstalovány a spuštěny na každém virtuálním počítači, který chcete analyzovat.
-**Pověření serveru vCenter** | Vizualizace závislostí vyžaduje účet serveru vCenter s přístupem jen pro čtení a oprávněními povolenými pro virtuální počítače > operace hosta. 
-**PowerShell** | Virtuální aplikace musí mít nainstalovanou powershellu verze 2.0 nebo vyšší.
-**Přístup k portu** | Na hostitelích ESXi se spuštěným virtuálním počítačem, které chcete analyzovat, musí být zařízení Azure Migrate schopno se připojit k portu TCP 443.
+**Před nasazením** | Měli byste mít Azure Migrate projekt, pomocí nástroje pro vyhodnocení serveru přidaný do projektu.<br/><br/>  Vizualizace závislostí nasadíte po nastavení zařízení Azure Migrate pro zjišťování místních počítačů VMWare.<br/><br/> [Naučte](create-manage-projects.md) se, jak poprvé vytvořit projekt.<br/> [Přečtěte si, jak](how-to-assess.md) přidat nástroj pro vyhodnocení do existujícího projektu.<br/> [Přečtěte si, jak](how-to-set-up-appliance-vmware.md) nastavit zařízení Azure Migrate pro posouzení virtuálních počítačů VMware.
+**Podpora virtuálních počítačů** | Aktuálně se podporuje jenom pro virtuální počítače VMware.
+**Virtuální počítače s Windows** | Windows Server 2016<br/> Windows Server 2012 R2<br/> Windows Server 2012<br/> Windows Server 2008 R2 (64 bitů).
+**Účet systému Windows** |  Pro analýzu závislostí potřebuje zařízení Azure Migrate pro přístup k virtuálním počítačům s Windows místní účet nebo účet správce domény.
+**Virtuální počítače s Linuxem** | Red Hat Enterprise Linux 7, 6, 5<br/> Ubuntu Linux 14,04, 16,04<br/> Debian 7, 8<br/> Oracle Linux 6, 7<br/> CentOS 5, 6, 7.
+**Účet Linux** | Pro analýzu závislostí se v počítačích se systémem Linux Azure Migrate zařízení vyžaduje uživatelský účet s oprávněním root.<br/><br/> V alternativním případě uživatelský účet potřebuje tato oprávnění pro soubory/bin/netstat a/bin/ls: CAP_DAC_READ_SEARCH a CAP_SYS_PTRACE.
+**Vyžadovaná agenti** | Na počítačích, které chcete analyzovat, není vyžadován žádný agent.
+**Nástroje VMware** | Na každém virtuálním počítači, který chcete analyzovat, se musí nainstalovat a spustit nástroje VMware (novější než 10,2).
+**vCenter Server přihlašovací údaje** | Vizualizace závislosti vyžaduje účet vCenter Server s přístupem jen pro čtení a oprávnění povolená pro operace hosta Virtual Machines >. 
+**Prostředí** | Virtuální počítače musí mít nainstalované prostředí PowerShell verze 2,0 nebo vyšší.
+**Přístup k portu** | Na hostitelích ESXi, na kterých běží virtuální počítače, které chcete analyzovat, musí být zařízení Azure Migrate schopné připojit se k portu TCP 443.
 
 
-## <a name="agent-based-dependency-analysis-requirements"></a>Požadavky na analýzu závislostí na základě agenta
+## <a name="agent-based-dependency-analysis-requirements"></a>Požadavky na analýzu závislostí na základě agentů
 
-[Analýza závislostí](concepts-dependency-visualization.md) vám pomůže identifikovat závislosti mezi místními počítači, které chcete posoudit a migrovat do Azure. Tabulka shrnuje požadavky na nastavení analýzy závislostí založené na agentovi. 
+[Analýza závislostí](concepts-dependency-visualization.md) vám pomůže identifikovat závislosti mezi místními počítači, které chcete vyhodnotit a migrovat do Azure. Tabulka shrnuje požadavky na nastavení analýzy závislostí založené na agentech. 
 
-**Požadavek** | **Podrobnosti** 
+**Požadavek** | **Zobrazí** 
 --- | --- 
-**Před nasazením** | Měli byste mít projekt Migrace Azure na místě, s nástrojem Azure Migrate: Server Assessment přidané do projektu.<br/><br/>  Vizualizace závislostí nasadíte po nastavení zařízení Azure Migrate ke zjištění místních počítačů.<br/><br/> [Přečtěte si, jak](create-manage-projects.md) vytvořit projekt poprvé.<br/> [Přečtěte si, jak](how-to-assess.md) přidat nástroj pro hodnocení do existujícího projektu.<br/> Zjistěte, jak nastavit zařízení Azure Migrate pro posouzení [serverů Hyper-V](how-to-set-up-appliance-hyper-v.md), [VMware](how-to-set-up-appliance-vmware.md)nebo fyzických serverů.
-**Azure Government** | Vizualizace závislostí není ve službě Azure Government dostupná.
-**Log Analytics** | Azure Migrate používá řešení [map služeb](../operations-management-suite/operations-management-suite-service-map.md) v [protokolech Azure Monitor](../log-analytics/log-analytics-overview.md) u vizualizace závislostí.<br/><br/> Přidružíte nový nebo existující pracovní prostor Log Analytics k projektu Migrace Azure. Pracovní prostor pro projekt Migrace Azure nelze změnit po jeho přidání. <br/><br/> Pracovní prostor musí být ve stejném předplatném jako projekt Migrace Azure.<br/><br/> Pracovní prostor musí být umístěn v oblastech východní CH VUSA, Jihovýchodní Asie nebo Západní Evropa. Pracovní prostory v jiných oblastech nelze přidružit k projektu.<br/><br/> Pracovní prostor musí být v oblasti, ve které [je podporována mapa služeb](../azure-monitor/insights/vminsights-enable-overview.md#prerequisites).<br/><br/> V Log Analytics je pracovní prostor přidružený k migraci Azure označen klíčem Projektu migrace a názvem projektu.
-**Požadované agenty** | Na každém počítači, který chcete analyzovat, nainstalujte následující agenty:<br/><br/> [Agent monitorování společnosti Microsoft (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows).<br/> [Agent závislostí](../azure-monitor/platform/agents-overview.md#dependency-agent).<br/><br/> Pokud místní počítače nejsou připojené k internetu, musíte si na ně stáhnout a nainstalovat bránu Log Analytics.<br/><br/> Další informace o instalaci [agenta závislostí](how-to-create-group-machine-dependencies.md#install-the-dependency-agent) a [MMA](how-to-create-group-machine-dependencies.md#install-the-mma).
-**Pracovní prostor služby Log Analytics** | Pracovní prostor musí být ve stejném předplatném jako projekt Migrace Azure.<br/><br/> Azure Migrate podporuje pracovní prostory s bydlištěm v oblastech východní USA, jihovýchodní Asie a západní Evropy.<br/><br/>  Pracovní prostor musí být v oblasti, ve které [je podporována mapa služeb](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-enable-overview#prerequisites).<br/><br/> Pracovní prostor pro projekt Migrace Azure nelze změnit po jeho přidání.
-**Náklady** | Řešení mapy služeb neúčtuje žádné poplatky za prvních 180 dní (ode dne, kdy přidružíte pracovní prostor Log Analytics k projektu Migrace Azure)/<br/><br/> Po uplynutí 180 dnů se začnou účtovat standardní poplatky za Log Analytics.<br/><br/> Použití jakéhokoli jiného řešení než mapy služeb v přidruženém pracovním prostoru Log Analytics bude účtovány [standardní poplatky za](https://azure.microsoft.com/pricing/details/log-analytics/) log analytics.<br/><br/> Když se odstraní projekt Migrace Azure, pracovní prostor se neodstraní spolu s ním. Po odstranění projektu není využití mapy služeb zdarma a každý uzel se bude účtovat podle placené úrovně pracovního prostoru Log Analytics.<br/><br/>Pokud máte projekty, které jste vytvořili před Azure Migrate obecné dostupnosti (GA- 28 Únor 2018), může vzniknout další poplatky mapy služeb. Chcete-li zajistit platbu pouze po 180 dnech, doporučujeme vytvořit nový projekt, protože stávající pracovní prostory před GA jsou stále zpoplatněny.
-**správy** | Když zaregistrujete agenty do pracovního prostoru, použijete ID a klíč poskytované projektem Migrace Azure.<br/><br/> Pracovní prostor Log Analytics můžete použít mimo Azure Migrate.<br/><br/> Pokud odstraníte přidružený projekt Migrace Azure, pracovní prostor se neodstraní automaticky. [Odstraňte jej ručně](../azure-monitor/platform/manage-access.md).<br/><br/> Neodstraňujte pracovní prostor vytvořený Azure Migrate, pokud neodstraníte projekt Migrace Azure. Pokud tak učiníte, funkce vizualizace závislostí nebude fungovat podle očekávání.
-**Připojení k Internetu** | Pokud počítače nejsou připojené k internetu, je třeba nainstalovat bránu Log Analytics na ně.
-**Azure Government** | Analýza závislostí založená na agentovi není podporována.
+**Před nasazením** | Měli byste mít Azure Migrate projekt, a to pomocí Azure Migrate: Nástroj pro vyhodnocení serveru přidaný do projektu.<br/><br/>  Vizualizace závislostí nasadíte po nastavení zařízení Azure Migrate pro zjištění vašich místních počítačů.<br/><br/> [Naučte](create-manage-projects.md) se, jak poprvé vytvořit projekt.<br/> [Přečtěte si, jak](how-to-assess.md) přidat nástroj pro vyhodnocení do existujícího projektu.<br/> Naučte se, jak nastavit zařízení Azure Migrate pro posouzení [technologie Hyper-V](how-to-set-up-appliance-hyper-v.md), [VMware](how-to-set-up-appliance-vmware.md)nebo fyzických serverů.
+**Azure Government** | Vizualizace závislostí není v Azure Government k dispozici.
+**Log Analytics** | Azure Migrate používá řešení [Service map](../operations-management-suite/operations-management-suite-service-map.md) v [protokolech Azure monitor](../log-analytics/log-analytics-overview.md) pro vizualizaci závislostí.<br/><br/> K projektu Azure Migrate přidružíte nový nebo existující Log Analytics pracovní prostor. Pracovní prostor pro Azure Migrate projekt nelze po přidání změnit. <br/><br/> Pracovní prostor musí být ve stejném předplatném jako projekt Azure Migrate.<br/><br/> Pracovní prostor se musí nacházet v oblastech Východní USA, jihovýchodní Asie nebo Západní Evropa. Pracovní prostory v jiných oblastech nelze přidružit k projektu.<br/><br/> Pracovní prostor musí být v oblasti, ve které [je podporovaná Service map](../azure-monitor/insights/vminsights-enable-overview.md#prerequisites).<br/><br/> V Log Analytics je pracovní prostor přidružený k Azure Migrate označený klíčem projektu migrace a názvem projektu.
+**Vyžadovaná agenti** | Na každém počítači, který chcete analyzovat, nainstalujte následující agenty:<br/><br/> [Microsoft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows).<br/> [Agent závislostí](../azure-monitor/platform/agents-overview.md#dependency-agent).<br/><br/> Pokud nejsou místní počítače připojené k Internetu, musíte na ně stáhnout a nainstalovat bránu Log Analytics.<br/><br/> Přečtěte si další informace o instalaci [agenta závislostí](how-to-create-group-machine-dependencies.md#install-the-dependency-agent) a [MMA](how-to-create-group-machine-dependencies.md#install-the-mma).
+**Pracovní prostor služby Log Analytics** | Pracovní prostor musí být ve stejném předplatném jako projekt Azure Migrate.<br/><br/> Azure Migrate podporuje pracovní prostory, které jsou umístěné v oblastech Východní USA, jihovýchodní Asie a Západní Evropa.<br/><br/>  Pracovní prostor musí být v oblasti, ve které [je podporovaná Service map](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-enable-overview#prerequisites).<br/><br/> Pracovní prostor pro Azure Migrate projekt nelze po přidání změnit.
+**Náklady** | V řešení Service Map se neúčtují žádné poplatky za prvních 180 dní (od dne, kdy přidružíte pracovní prostor Log Analytics k projektu Azure Migrate)/<br/><br/> Po uplynutí 180 dnů se začnou účtovat standardní poplatky za Log Analytics.<br/><br/> Použití jiného řešení než Service Map v přidruženém pracovním prostoru Log Analytics bude účtovat [standardní poplatky](https://azure.microsoft.com/pricing/details/log-analytics/) za Log Analytics.<br/><br/> Když se projekt Azure Migrate odstraní, pracovní prostor se spolu s ním neodstraní. Po odstranění projektu Service Map využití není volné a každý uzel se bude účtovat podle placené úrovně Log Analytics pracovního prostoru/<br/><br/>Pokud máte projekty, které jste vytvořili před Azure Migrate všeobecné dostupnosti (GA-28 února 2018), mohly by vám být účtovány další Service Map poplatky. Aby se zajistila platba jenom po 180 dnech, doporučujeme vytvořit nový projekt, protože stávající pracovní prostory před GAm jsou stále Fakturovatelné.
+**správy** | Při registraci agentů do pracovního prostoru použijete ID a klíč poskytnutý Azure Migrate projektem.<br/><br/> Pracovní prostor Log Analytics můžete použít mimo Azure Migrate.<br/><br/> Pokud odstraníte přidružený Azure Migrate projekt, pracovní prostor se automaticky neodstraní. [Odstraňte ji ručně](../azure-monitor/platform/manage-access.md).<br/><br/> Pokud neodstraníte projekt Azure Migrate, neodstraňujte pracovní prostor vytvořený pomocí Azure Migrate. Pokud to uděláte, funkce vizualizace závislosti nebude fungovat podle očekávání.
+**Připojení k Internetu** | Pokud nejsou počítače připojené k Internetu, musíte na ně nainstalovat bránu Log Analytics.
+**Azure Government** | Analýza závislostí založená na agentech není podporována.
 
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Projděte si](best-practices-assessment.md) osvědčené postupy pro vytváření hodnocení.
-- [Připravte se na hodnocení společnosti VMware.](tutorial-prepare-vmware.md)
+- [Příprava na vyhodnocení VMware](tutorial-prepare-vmware.md) .

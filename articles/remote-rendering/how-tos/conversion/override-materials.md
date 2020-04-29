@@ -1,28 +1,28 @@
 ---
-title: Přepsat materiály během převodu modelu
-description: Vysvětluje materiál přepsání pracovního postupu v době převodu
+title: Potlačení materiálů během převodu modelů
+description: Vysvětluje materiál přepisující pracovní postup v době převodu.
 author: florianborn71
 ms.author: flborn
 ms.date: 02/13/2020
 ms.topic: how-to
 ms.openlocfilehash: 90653db4c572877a728964851a99beebf2e823a4
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681477"
 ---
-# <a name="override-materials-during-model-conversion"></a>Přepsat materiály během převodu modelu
+# <a name="override-materials-during-model-conversion"></a>Potlačení materiálů během převodu modelů
 
-Při převodu se nastavení materiálu ve zdrojovém modelu používá k definování [materiálů PBR používaných](../../overview/features/pbr-materials.md) vykreslovacím.
-Někdy [výchozí převod](../../reference/material-mapping.md) neposkytuje požadované výsledky a je třeba provést změny.
-Když je model převeden pro použití ve vzdáleném vykreslování Azure, můžete poskytnout soubor přepsání materiálu přizpůsobit způsob převodu materiálu na základě pro daný materiál.
-Oddíl o [konfiguraci převodu modelu](configure-model-conversion.md) obsahuje pokyny pro deklarování názvu souboru přepsání materiálu.
+Během převodu se k definování materiálů [PBR](../../overview/features/pbr-materials.md) používaných nástrojem pro vykreslování použijí nastavení materiálu ve zdrojovém modelu.
+V některých případech [výchozí převod](../../reference/material-mapping.md) neposkytuje požadované výsledky a je třeba provést změny.
+Když je model převeden pro použití ve vzdáleném vykreslování Azure, můžete poskytnout soubor pro přepsání materiálu a přizpůsobit tak, jak se převod materiálu provádí na základě jednotlivých materiálů.
+Část týkající se [konfigurace převodu modelu](configure-model-conversion.md) obsahuje pokyny pro deklaraci názvu souboru přepisu materiálu.
 
-## <a name="the-override-file-used-during-conversion"></a>Přepsání souboru použitého při převodu
+## <a name="the-override-file-used-during-conversion"></a>Soubor přepsání použitý při převodu
 
-Jako jednoduchý příklad řekněme, že model krabice má jeden materiál, nazvaný "Výchozí". Albedo barva musí být upravena pro použití v ARR.
-V tomto případě `box_materials_override.json` lze vytvořit soubor následujícím způsobem:
+Jednoduchým příkladem je řekněme, že krabicový model má jeden materiál s názvem default. Barva albedo musí být upravena pro použití v ARR.
+V takovém případě lze `box_materials_override.json` soubor vytvořit takto:
 
 ```json
 [
@@ -38,7 +38,7 @@ V tomto případě `box_materials_override.json` lze vytvořit soubor následuj�
 ]
 ```
 
-Soubor `box_materials_override.json` je umístěn ve vstupním `ConversionSettings.json` kontejneru `box.fbx`a a je přidán vedle , který říká převod, kde najít přepsat soubor (viz [Konfigurace převodu modelu](configure-model-conversion.md)):
+`box_materials_override.json` Soubor je umístěn ve vstupním kontejneru a přidá `ConversionSettings.json` se vedle `box.fbx`, který oznamuje převod, kde najít soubor přepsání (viz [konfigurace převodu modelu](configure-model-conversion.md)):
 
 ```json
 {
@@ -46,13 +46,13 @@ Soubor `box_materials_override.json` je umístěn ve vstupním `ConversionSettin
 }
 ```
 
-Po převodu modelu se použije nové nastavení.
+Při převodu modelu se použijí nová nastavení.
 
 ### <a name="color-materials"></a>Barevné materiály
 
-Model [barevného materiálu](../../overview/features/color-materials.md) popisuje neustále stínovaný povrch, který je nezávislý na osvětlení.
-To je užitečné pro prostředky provedené algoritmy Photogrammetry, například.
-V souborech přepsání materiálu může být materiál deklarován jako barevný materiál nastavením `unlit` na `true`.
+[Barevný materiálový](../../overview/features/color-materials.md) model popisuje nepřetržitě stínovaný povrch, který je nezávislý na osvětlení.
+To je užitečné pro prostředky vytvořené pomocí Photogrammetry algoritmů, například.
+V souborech přepsání materiálu může být materiál deklarovaný jako barevný materiál nastavením `unlit` na. `true`
 
 ```json
 [
@@ -69,9 +69,9 @@ V souborech přepsání materiálu může být materiál deklarován jako barevn
 
 ### <a name="ignore-specific-texture-maps"></a>Ignorovat konkrétní mapy textur
 
-Někdy můžete chtít, aby proces převodu ignoroval konkrétní mapy textur. To může být případ, kdy byl váš model generován nástrojem, který generuje speciální mapy, které vykreslovací modul správně nerozumí. Například "OpacityMap", který se používá k definování něco jiného než krytí, nebo model, kde "NormalMap" je uložen jako "BumpMap". (V druhém případě chcete ignorovat "NormalMap", což způsobí, že převaděč použít "BumpMap" jako "NormalMap".)
+Někdy může být vhodné, aby proces převodu ignoroval konkrétní mapy textur. To může být případ, kdy byl model vygenerován pomocí nástroje, který generuje speciální mapy, které modul pro vykreslování nerozpoznal správně. Například "OpacityMap", který se používá k definování jiného než neprůhlednosti nebo modelu, kde "NormalMap" je uložen jako "BumpMap". (V druhém případě chcete ignorovat "NormalMap", což způsobí, že převaděč použije "BumpMap" jako "NormalMap".)
 
-Princip je jednoduchý. Stačí přidat vlastnost `ignoreTextureMaps` s názvem a přidat všechny textury mapy, které chcete ignorovat:
+Princip je jednoduchý. Stačí přidat vlastnost s názvem `ignoreTextureMaps` a přidat mapu textury, kterou chcete ignorovat:
 
 ```json
 [
@@ -82,11 +82,11 @@ Princip je jednoduchý. Stačí přidat vlastnost `ignoreTextureMaps` s názvem 
 ]
 ```
 
-Úplný seznam map textur, které můžete ignorovat, najdete v níže uvedeném schématu JSON.
+Úplný seznam map textur, které můžete ignorovat, najdete níže v níže uvedeném schématu JSON.
 
 ## <a name="json-schema"></a>Schéma JSON
 
-Úplné schéma JSON pro soubory materiálů je uvedeno zde. S výjimkou `unlit` vlastností a `ignoreTextureMaps`jsou dostupné vlastnosti podmnožinou vlastností popsaných v částech [o barevných materiálech](../../overview/features/color-materials.md) a modelech materiálů [PBR.](../../overview/features/pbr-materials.md)
+Úplné schéma JSON pro soubory materiálů je uvedeno zde. S výjimkou `unlit` a `ignoreTextureMaps`jsou dostupné vlastnosti podmnožinou vlastností popsaných v oddílech v [materiálech](../../overview/features/pbr-materials.md) s [barevným materiálem](../../overview/features/color-materials.md) a modelu PBR.
 
 ```json
 {
@@ -173,4 +173,4 @@ Princip je jednoduchý. Stačí přidat vlastnost `ignoreTextureMaps` s názvem 
 ## <a name="next-steps"></a>Další kroky
 
 * [Barevné materiály](../../overview/features/color-materials.md)
-* [PBR materiály](../../overview/features/pbr-materials.md)
+* [Materiály PBR](../../overview/features/pbr-materials.md)

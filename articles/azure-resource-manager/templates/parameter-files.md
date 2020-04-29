@@ -1,18 +1,18 @@
 ---
 title: Vytvoření souboru parametrů
-description: Vytvoření souboru parametrů pro předávání hodnot během nasazení šablony Správce prostředků Azure
+description: Vytvoří soubor parametrů pro předávání hodnot během nasazování šablony Azure Resource Manager.
 ms.topic: conceptual
 ms.date: 04/20/2020
 ms.openlocfilehash: a1a1f703594f8eaa572ea38ecef88b4cd6ba5a4b
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81682898"
 ---
-# <a name="create-resource-manager-parameter-file"></a>Vytvořit soubor parametrů Správce prostředků
+# <a name="create-resource-manager-parameter-file"></a>Vytvořit soubor Správce prostředků parametrů
 
-Spíše než předávání parametrů jako vložkové hodnoty ve skriptu, může být jednodušší použít soubor JSON, který obsahuje hodnoty parametrů. Tento článek ukazuje, jak vytvořit soubor parametrů.
+Místo předání parametrů jako vložených hodnot do skriptu může být snazší použít soubor JSON, který obsahuje hodnoty parametrů. Tento článek ukazuje, jak vytvořit soubor parametrů.
 
 ## <a name="parameter-file"></a>Soubor parametrů
 
@@ -33,7 +33,7 @@ Soubor parametrů má následující formát:
 }
 ```
 
-Všimněte si, že hodnoty parametrů jsou uloženy jako prostý text v souboru parametrů. Tento přístup funguje pro hodnoty, které nejsou citlivé, jako je například určení skladové položky pro prostředek. Nefunguje pro citlivé hodnoty, jako jsou hesla. Pokud potřebujete předat citlivou hodnotu jako parametr, uložte hodnotu do trezoru klíčů a odkazujte na trezor klíčů v souboru parametrů. Citlivá hodnota je bezpečně načtena během nasazení.
+Všimněte si, že hodnoty parametrů jsou uloženy jako prostý text v souboru parametrů. Tento přístup funguje pro hodnoty, které nejsou citlivé, jako je například určení SKU pro prostředek. Nefunguje u citlivých hodnot, jako jsou hesla. Pokud potřebujete předat citlivou hodnotu jako parametr, uložte hodnotu do trezoru klíčů a odkazujte na Trezor klíčů v souboru parametrů. Citlivá hodnota je bezpečně načtena během nasazení.
 
 Následující soubor parametrů obsahuje hodnotu prostého textu a hodnotu, která je uložena v trezoru klíčů.
 
@@ -57,11 +57,11 @@ Následující soubor parametrů obsahuje hodnotu prostého textu a hodnotu, kte
 }
 ```
 
-Další informace o použití hodnot z trezoru klíčů najdete v [tématu Použití trezoru klíčů Azure k předání hodnoty zabezpečeného parametru během nasazení](key-vault-parameter.md).
+Další informace o použití hodnot z trezoru klíčů najdete v tématu [použití Azure Key Vault k předání hodnoty zabezpečeného parametru během nasazování](key-vault-parameter.md).
 
-## <a name="define-parameter-values"></a>Definování hodnot parametrů
+## <a name="define-parameter-values"></a>Definovat hodnoty parametrů
 
-Chcete-li zjistit, jak definovat hodnoty parametrů, otevřete šablonu, kterou nasazujete. Podívejte se na část parametrů šablony. Následující příklad ukazuje parametry ze šablony.
+Chcete-li zjistit, jak definovat hodnoty parametrů, otevřete šablonu, kterou nasazujete. Podívejte se do části Parameters (parametry) v šabloně. Následující příklad ukazuje parametry ze šablony.
 
 ```json
 "parameters": {
@@ -82,7 +82,7 @@ Chcete-li zjistit, jak definovat hodnoty parametrů, otevřete šablonu, kterou 
 }
 ```
 
-První detail, který si všimnete, je název každého parametru. Hodnoty v souboru parametrů se musí shodovat s názvy.
+První podrobná oznámení je název každého parametru. Hodnoty v souboru parametrů se musí shodovat s názvy.
 
 ```json
 {
@@ -114,7 +114,7 @@ Všimněte si typu parametru. Hodnoty v souboru parametrů musí mít stejné ty
 }
 ```
 
-Dále vyhledejte výchozí hodnotu. Pokud má parametr výchozí hodnotu, můžete zadat hodnotu, ale není to možné.
+Potom vyhledejte výchozí hodnotu. Pokud má parametr výchozí hodnotu, můžete zadat hodnotu, ale nemusíte ji mít.
 
 ```json
 {
@@ -131,7 +131,7 @@ Dále vyhledejte výchozí hodnotu. Pokud má parametr výchozí hodnotu, může
 }
 ```
 
-Nakonec se podívejte na povolené hodnoty a všechna omezení, jako je maximální délka. Řeknou vám rozsah hodnot, které můžete zadat pro parametr.
+Nakonec se podívejte na povolené hodnoty a libovolná omezení, jako je maximální délka. Sděluje vám rozsah hodnot, které můžete zadat pro parametr.
 
 ```json
 {
@@ -184,23 +184,23 @@ Následující příklad ukazuje formáty různých typů parametrů.
 
 ## <a name="file-name"></a>Název souboru
 
-Obecnou konvencí pro pojmenování souboru parametrů je přidání **parametrů .parameters** k názvu šablony. Pokud je například vaše šablona pojmenována **azuredeploy.json**, bude soubor parametrů pojmenován **azuredeploy.parameters.json**. Tato konvence pojmenování vám pomůže zobrazit spojení mezi šablonou a parametry.
+Obecná konvence pro pojmenovávání souboru parametrů je přidat **. parametry** do názvu šablony. Například pokud má vaše šablona název **azuredeploy. JSON**, váš soubor parametrů má název **azuredeploy. Parameters. JSON**. Tato konvence pojmenování vám pomůže zobrazit propojení mezi šablonou a parametry.
 
-Chcete-li nasadit do různých prostředí, vytvořte více než jeden soubor parametrů. Při pojmenování souboru parametrů přidejte způsob, jak identifikovat jeho použití. Použijte například **azuredeploy.parameters-dev.json** a **azuredeploy.parameters-prod.json.**
+Chcete-li nasadit do různých prostředí, vytvořte více než jeden soubor parametrů. Při pojmenovávání souboru parametru přidejte způsob, jak identifikovat jeho použití. Použijte například **azuredeploy. Parameters-dev. JSON** a **azuredeploy. Parameters-prod. JSON.**
 
 
 ## <a name="parameter-precedence"></a>Priorita parametru
 
-Můžete použít vložky parametry a soubor místníparametr ve stejné operaci nasazení. Můžete například zadat některé hodnoty v místním souboru parametrů a přidat další hodnoty vsazené během nasazení. Pokud zadáte hodnoty parametru v souboru místního parametru i v řadě, má přednost váděná hodnota.
+Můžete použít vložené parametry a místní soubor parametrů ve stejné operaci nasazení. Můžete například zadat některé hodnoty v souboru s místním parametrem a přidat další hodnoty vložené během nasazování. Zadáte-li hodnoty pro parametr v místním souboru parametrů i v poli inline, má hodnota inline přednost.
 
-Pokud však použijete externí soubor parametrů, nemůžete předat jiné hodnoty ani vložku, ani z místního souboru. Všechny vsazené parametry jsou ignorovány. Zadejte všechny hodnoty parametrů v externím souboru.
+Pokud však použijete externí soubor parametrů, nelze předat jiné hodnoty buď vložené, nebo z místního souboru. Všechny vložené parametry jsou ignorovány. Zadejte všechny hodnoty parametrů v externím souboru.
 
 ## <a name="parameter-name-conflicts"></a>Konflikty názvů parametrů
 
-Pokud vaše šablona obsahuje parametr se stejným názvem jako jeden z parametrů v příkazu PowerShell, PowerShell zobrazí parametr z vaší šablony s příponou **FromTemplate**. Například parametr s názvem **ResourceGroupName** v šabloně je v konfliktu s parametrem **ResourceGroupName** v rutině [New-AzResourceGroupDeployment.](/powershell/module/az.resources/new-azresourcegroupdeployment) Zobrazí se výzva k zadání hodnoty pro **položku ResourceGroupNameFromTemplate**. Tomuto zmatku se můžete vyhnout pomocí názvů parametrů, které se nepoužívají pro příkazy nasazení.
+Pokud vaše šablona obsahuje parametr se stejným názvem jako jeden z parametrů v příkazu PowerShellu, PowerShell prezentuje parametr z vaší šablony s příponou **FromTemplate**. Například parametr s názvem **ResourceGroupName** v šabloně koliduje s parametrem **ResourceGroupName** v rutině [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) . Budete vyzváni k zadání hodnoty pro **ResourceGroupNameFromTemplate**. Této nejasnostem se můžete vyhnout použitím názvů parametrů, které se nepoužívají pro příkazy nasazení.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Informace o tom, jak definovat parametry v šabloně, najdete [v tématu Parametry v šablonách Azure Resource Manageru](template-parameters.md).
-- Další informace o použití hodnot z trezoru klíčů najdete v [tématu Použití trezoru klíčů Azure k předání hodnoty zabezpečeného parametru během nasazení](key-vault-parameter.md).
-- Další informace o parametrech najdete [v tématu Parametry v šablonách Azure Resource Manageru](template-parameters.md).
+- Chcete-li pochopit, jak definovat parametry v šabloně, přečtěte si téma [parametry v šablonách Azure Resource Manager](template-parameters.md).
+- Další informace o použití hodnot z trezoru klíčů najdete v tématu [použití Azure Key Vault k předání hodnoty zabezpečeného parametru během nasazování](key-vault-parameter.md).
+- Další informace o parametrech naleznete [v tématu Parameters in Azure Resource Manager Templates](template-parameters.md).

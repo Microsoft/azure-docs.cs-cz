@@ -1,108 +1,108 @@
 ---
-title: Čtení replik – databáze Azure pro PostgreSQL – jeden server
-description: Tento článek popisuje funkci repliky pro čtení v Azure Database for PostgreSQL – Single Server.
+title: Čtení replik – Azure Database for PostgreSQL – jeden server
+description: Tento článek popisuje funkci pro čtení repliky na serveru Azure Database for PostgreSQL-Single.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.openlocfilehash: 545d04bdede76a6ce25c9e4665f39c01ff6caa73
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81531979"
 ---
-# <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Čtení replik v databázi Azure pro PostgreSQL – jeden server
+# <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Čtení replik v Azure Database for PostgreSQL – jeden server
 
-Funkce repliky pro čtení umožňuje replikovat data z databáze Azure pro postgreSQL server na server jen pro čtení. Z hlavního serveru je můžete replikovat až na pět replik. Repliky jsou aktualizovány asynchronně pomocí technologie nativní replikace modulu PostgreSQL.
+Funkce replika čtení umožňuje replikovat data z Azure Database for PostgreSQL serveru do serveru jen pro čtení. Z hlavního serveru je můžete replikovat až na pět replik. Repliky se asynchronně aktualizují pomocí technologie nativní replikace PostgreSQL Engine.
 
-Repliky jsou nové servery, které spravujete podobně jako běžné azure databáze pro servery PostgreSQL. Pro každou repliku pro čtení se vám účtují zřízené výpočetní prostředky ve virtuálních jádrech a úložiště v GB/ měsíc.
+Repliky jsou nové servery, které spravujete podobně jako běžné Azure Database for PostgreSQL servery. Pro každou repliku čtení se vám bude účtovat zajištěné výpočetní prostředky v virtuální jádra a úložišti v GB/měsíc.
 
-Přečtěte si, jak [vytvářet a spravovat repliky](howto-read-replicas-portal.md).
+Naučte se [vytvářet a spravovat repliky](howto-read-replicas-portal.md).
 
-## <a name="when-to-use-a-read-replica"></a>Kdy použít repliku pro čtení
-Funkce repliky pro čtení pomáhá zlepšit výkon a škálování úloh náročných na čtení. Úlohy pro čtení lze izolovat do replik, zatímco úlohy zápisu lze přesměrovat na hlavní server.
+## <a name="when-to-use-a-read-replica"></a>Kdy použít repliku čtení
+Funkce replika čtení pomáhá zlepšit výkon a škálu úloh náročných na čtení. Úlohy čtení se dají pro repliky izolovat, zatímco úlohy zápisu můžou být směrované do hlavní větve.
 
-Běžným scénářem je, aby BI a analytické úlohy používaly repliku pro čtení jako zdroj dat pro vytváření sestav.
+Běžným scénářem je, aby úlohy BI a analýzy používaly jako zdroj dat pro vytváření sestav repliku pro čtení.
 
-Vzhledem k tomu, že repliky jsou jen pro čtení, nemají přímo snížit zatížení kapacity zápisu na předlohu. Tato funkce není zaměřena na úlohy náročné na zápis.
+Vzhledem k tomu, že repliky jsou jen pro čtení, nesnižují přímo na hlavní úrovni zátěže s kapacitou pro zápis. Tato funkce není zaměřená na úlohy náročné na zápis.
 
-Funkce repliky pro čtení používá asynchronní replikaci PostgreSQL. Tato funkce není určena pro scénáře synchronní replikace. Mezi předlohou a replikou bude měřitelné zpoždění. Data v replice nakonec stane konzistentní s daty na předlohu. Tuto funkci použijte pro úlohy, které mohou tuto zpozišit.
+Funkce replika čtení používá asynchronní replikaci PostgreSQL. Tato funkce není určena pro scénáře synchronní replikace. Mezi hlavním serverem a replikou bude měřitelné zpoždění. Data v replice nakonec budou konzistentní s daty v hlavní databázi. Tato funkce se používá pro úlohy, které můžou toto zpoždění obsloužit.
 
 ## <a name="cross-region-replication"></a>Replikace mezi oblastmi
-Můžete vytvořit repliku pro čtení v jiné oblasti než hlavní server. Replikace mezi oblastmi může být užitečná pro scénáře, jako je plánování zotavení po havárii nebo přiblížení dat uživatelům.
+Z hlavního serveru můžete vytvořit repliku pro čtení v jiné oblasti. Replikace mezi oblastmi může být užitečná pro scénáře, jako je plánování zotavení po havárii, nebo pro uživatele přiblížit data.
 
-Hlavní server můžete mít v libovolné [databázi Azure pro oblast PostgreSQL](https://azure.microsoft.com/global-infrastructure/services/?products=postgresql). Hlavní server může mít repliku ve spárované oblasti nebo v oblastech univerzální repliky. Následující obrázek ukazuje, které oblasti replik jsou k dispozici v závislosti na hlavní oblasti.
+Hlavní server můžete mít v libovolné [Azure Database for PostgreSQL oblasti](https://azure.microsoft.com/global-infrastructure/services/?products=postgresql). Hlavní server může mít repliku ve své spárované oblasti nebo oblastech univerzální repliky. Následující obrázek ukazuje, které oblasti repliky jsou k dispozici v závislosti na vaší hlavní oblasti.
 
-[![Čtení oblastí replik](media/concepts-read-replica/read-replica-regions.png)](media/concepts-read-replica/read-replica-regions.png#lightbox)
+[![Čtení oblastí repliky](media/concepts-read-replica/read-replica-regions.png)](media/concepts-read-replica/read-replica-regions.png#lightbox)
 
 ### <a name="universal-replica-regions"></a>Oblasti univerzální repliky
-Vždy můžete vytvořit repliku pro čtení v některé z následujících oblastí bez ohledu na to, kde je umístěn hlavní server. Jedná se o oblasti univerzální repliky:
+Repliku pro čtení můžete vždy vytvořit v některé z následujících oblastí bez ohledu na to, kde se nachází váš hlavní server. Jedná se o oblasti univerzální repliky:
 
-Austrálie – východ, Austrálie – jihovýchod, střední USA, východní Asie, východní USA, východní USA 2, Japonsko – východ, Japonsko – západ, Korea – střed, Korea Jih, Severní střed USA, Severní Evropa, Jižní Střed USA, Jihovýchodní Asie, Velká Británie – jih, Velká Británie – západ, Západní Evropa, Západní USA.
+Austrálie – východ, Austrálie – jihovýchod, Střed USA, Východní Asie, Východní USA, Východní USA 2, Japonsko – východ, Japonsko – západ, Korea – jih, střed, střed USA – sever, Severní Evropa, střed USA – jih, jihovýchodní Asie, Velká Británie – jih, Velká Británie – západ, Západní Evropa, západní USA.
 
-*Západní USA 2 je dočasně nedostupný jako umístění repliky mezi oblastmi.
+* Západní USA 2 není dočasně k dispozici jako umístění repliky mezi oblastmi.
 
 
 ### <a name="paired-regions"></a>Spárované oblasti
-Kromě oblastí univerzální repliky můžete vytvořit repliku pro čtení ve spárované oblasti Azure hlavního serveru. Pokud neznáte dvojici vaší oblasti, můžete se dozvědět více v [článku Spárované oblasti Azure](../best-practices-availability-paired-regions.md).
+Kromě oblastí univerzální repliky můžete vytvořit repliku pro čtení ve spárované oblasti Azure vašeho hlavního serveru. Pokud neznáte pár vaší oblasti, můžete získat další informace v [článku spárované oblasti Azure](../best-practices-availability-paired-regions.md).
 
-Pokud používáte repliky mezi oblastmi pro plánování zotavení po havárii, doporučujeme vytvořit repliku ve spárované oblasti namísto jedné z dalších oblastí. Spárované oblasti se vyhýbají souběžným aktualizacím a upřednostňují fyzickou izolaci a rezidenci dat.  
+Pokud používáte repliky mezi jednotlivými oblastmi pro plánování zotavení po havárii, doporučujeme vytvořit repliku v spárované oblasti namísto jedné z ostatních oblastí. Spárované oblasti zabraňují souběžným aktualizacím a přiřazují fyzickou izolaci a zasídlí dat.  
 
-Existují omezení, aby zvážila: 
+Je potřeba vzít v úvahu omezení: 
 
-* Místní dostupnost: Azure Database for PostgreSQL je dostupná v západníCH USA 2, France Central, SAE North a Germany Central. Jejich spárované oblasti však nejsou k dispozici.
+* Regionální dostupnost: Azure Database for PostgreSQL je k dispozici v Západní USA 2, Francii Central, Spojené arabské emiráty Severní a Německo – střed. Nicméně jejich spárované oblasti nejsou k dispozici.
     
-* Jednosměrné páry: Některé oblasti Azure jsou spárované jenom v jednom směru. Mezi tyto oblasti patří západní Indie, Brazílie – jih. 
-   To znamená, že hlavní server v západní Indii může vytvořit repliku v jižní Indii. Hlavní server v jižní Indii však nemůže vytvořit repliku v západní Indii. Je to proto, že sekundárním regionem západní Indie je jižní Indie, ale jihoindická sekundární oblast není západní Indie.
+* Jednosměrné páry: některé oblasti Azure jsou spárovány pouze v jednom směru. Mezi tyto oblasti patří Západní Indie, Brazílie – jih. 
+   To znamená, že hlavní server v Západní Indie může vytvořit repliku v Jižní Indie. Hlavní server v Jižní Indie ale nemůže vytvořit repliku v Západní Indie. Důvodem je to, že sekundární oblast Západní Indie je Jižní Indie, ale sekundární oblast Jižní Indie není Západní Indie.
 
 
 ## <a name="create-a-replica"></a>Vytvoření repliky
-Při spuštění pracovního postupu vytvoření repliky se vytvoří prázdná databáze Azure pro postgreSQL server. Nový server je vyplněn daty, která byla na hlavním serveru. Doba vytvoření závisí na množství dat na předloze a na době od poslednítýdenní úplné zálohy. Čas se může pohybovat od několika minut do několika hodin.
+Když spustíte pracovní postup vytvoření repliky, vytvoří se prázdný Azure Database for PostgreSQL Server. Nový server je vyplněn daty, která byla na hlavním serveru. Čas vytvoření závisí na množství dat v hlavní databázi a na čase od posledního týdenního úplného zálohování. Čas může být v rozsahu od několika minut až po několik hodin.
 
-Každá replika je povolena pro [automatické zvětšování](concepts-pricing-tiers.md#storage-auto-grow)úložiště . Funkce automatického růstu umožňuje replikě držet krok s daty, která jsou do ní replikována, a zabránit přerušení replikace způsobené chybami z úložiště.
+U každé repliky je povoleno [Automatické zvětšování](concepts-pricing-tiers.md#storage-auto-grow)úložiště. Funkce automatického zvětšení umožňuje replice udržovat data, která jsou do ní replikována, a zabránit přerušení replikace způsobené chybou úložiště.
 
-Funkce repliky pro čtení používá fyzickou replikaci PostgreSQL, nikoli logickou replikaci. Streamování replikace pomocí slotů replikace je výchozí provozní režim. V případě potřeby, přesouvání protokolu se používá k dohnat.
+Funkce replika čtení používá fyzickou replikaci PostgreSQL, ne logickou replikaci. Výchozím režimem operace je replikace streamování pomocí slotů replikace. V případě potřeby se k zachytávání použije přenos protokolu.
 
-Přečtěte si, jak [vytvořit repliku pro čtení na webu Azure Portal](howto-read-replicas-portal.md).
+Naučte se [vytvořit repliku pro čtení v Azure Portal](howto-read-replicas-portal.md).
 
 ## <a name="connect-to-a-replica"></a>Připojení k replice
-Když vytvoříte repliku, nezdědí pravidla brány firewall nebo koncový bod služby virtuální sítě hlavního serveru. Tato pravidla musí být nastavena nezávisle pro repliku.
+Když vytváříte repliku, nedědí pravidla firewallu ani koncový bod služby VNet hlavního serveru. Tato pravidla musí být pro repliku nastavena nezávisle.
 
-Replika zdědí účet správce z hlavního serveru. Všechny uživatelské účty na hlavním serveru jsou replikovány do replik pro čtení. Ke replice pro čtení se můžete připojit pouze pomocí uživatelských účtů, které jsou k dispozici na hlavním serveru.
+Replika dědí účet správce z hlavního serveru. Všechny uživatelské účty na hlavním serveru se replikují do replik pro čtení. K replice pro čtení se můžete připojit pouze pomocí uživatelských účtů, které jsou k dispozici na hlavním serveru.
 
-Ke replice se můžete připojit pomocí názvu hostitele a platného uživatelského účtu, stejně jako na běžné masce Azure Database for PostgreSQL server. Pro server s názvem **moje replika** s admin uživatelské jméno **myadmin**, můžete se připojit k replice pomocí psql:
+K replice se můžete připojit pomocí jejího názvu hostitele a platného uživatelského účtu, stejně jako při běžném Azure Database for PostgreSQLm serveru. Pro server s názvem **Moje replika** s uživatelským jménem správce **myadmin**se můžete připojit k replice pomocí psql:
 
 ```
 psql -h myreplica.postgres.database.azure.com -U myadmin@myreplica -d postgres
 ```
 
-Na výzvu zadejte heslo pro uživatelský účet.
+Na příkazovém řádku zadejte heslo pro uživatelský účet.
 
 ## <a name="monitor-replication"></a>Monitorování replikace
-Azure Database pro PostgreSQL poskytuje dvě metriky pro sledování replikace. Tyto dvě metriky jsou **Maximální zpoždění napříč replikami** a **replika Lag**. Informace o tom, jak zobrazit tyto metriky, naleznete v části **Sledování repliky** [článku s návody k čtení](howto-read-replicas-portal.md).
+Azure Database for PostgreSQL poskytuje dvě metriky pro monitorování replikace. Tyto dvě metriky jsou **maximální prodlevou mezi replikami** a **prodlevou repliky**. Informace o tom, jak zobrazit tyto metriky, najdete v článku **monitorování repliky** v [článku věnovaném postupu čtení repliky](howto-read-replicas-portal.md).
 
-Metrika **Max Lag Across Replicas** zobrazuje zpoždění v bajtech mezi hlavní a nejvíce zaostávající replikou. Tato metrika je k dispozici pouze na hlavním serveru.
+Metrika **maximální prodlevy napříč replikami** zobrazuje zpoždění v bajtech mezi hlavními a nejvyššími zpožděními repliky. Tato metrika je k dispozici pouze na hlavním serveru.
 
-Metrika **Zpoždění replik** zobrazuje čas od poslední přehrané transakce. Pokud na hlavním serveru nedochází k žádným transakcím, metrika odráží tuto časovou prodlevu. Tato metrika je k dispozici pouze pro repliky serverů. Zpoždění replik se `pg_stat_wal_receiver` vypočítá ze zobrazení:
+Metrika **prodlevy repliky** zobrazuje čas od poslední opakované transakce. Pokud na vašem hlavním serveru nedochází k žádným transakcím, metrika tuto časovou prodlevu odráží. Tato metrika je k dispozici pouze pro servery repliky. Prodleva repliky je vypočítána ze `pg_stat_wal_receiver` zobrazení:
 
 ```SQL
 EXTRACT (EPOCH FROM now() - pg_last_xact_replay_timestamp());
 ```
 
-Nastavte výstrahu, která vás bude informovat, když zpoždění repliky dosáhne hodnoty, která není přijatelná pro vaše úlohy. 
+Nastavte výstrahu, která vás informuje, když prodleva replik dosáhne hodnoty, která není pro vaše zatížení přijatelná. 
 
-Chcete-li získat další přehled, zadejte dotaz na hlavní server přímo, abyste získali zpoždění replikace v bajtů na všech replikách.
+Další informace najdete v části dotazování hlavního serveru přímo za účelem získání prodlevy replikace v bajtech na všech replikách.
 
-V PostgreSQL verzi 10:
+V PostgreSQL verze 10:
 
 ```SQL
 select pg_wal_lsn_diff(pg_current_wal_lsn(), replay_lsn) 
 AS total_log_delay_in_bytes from pg_stat_replication;
 ```
 
-V PostgreSQL verze 9.6 a starší:
+V PostgreSQL verze 9,6 a novější:
 
 ```SQL
 select pg_xlog_location_diff(pg_current_xlog_location(), replay_location) 
@@ -110,69 +110,69 @@ AS total_log_delay_in_bytes from pg_stat_replication;
 ```
 
 > [!NOTE]
-> Pokud se hlavní server nebo replika čtení restartuje, čas potřebný k restartování a dohonění se projeví v metrike Zpoždění replik.
+> Pokud dojde k restartování hlavního serveru nebo čtení repliky, čas potřebný k restartování a zachytávání se projeví ve metrikě prodlevy repliky.
 
 ## <a name="stop-replication"></a>Zastavení replikace
-Replikace mezi předlohou a replikou můžete zastavit. Akce stop způsobí restartování repliky a odebrání nastavení replikace. Po zastavení replikace mezi hlavním serverem a replikou pro čtení se replika stane samostatným serverem. Data na samostatném serveru jsou data, která byla k dispozici v replice v době spuštění příkazu stop replication. Samostatný server nedožene hlavní server.
+Replikaci mezi hlavní a replikou můžete zastavit. Akce zastavit způsobí, že se replika restartuje a odebere se její nastavení replikace. Po zastavení replikace mezi hlavním serverem a replikou pro čtení se replika samostatného serveru. Data na samostatném serveru jsou data, která byla v replice k dispozici v době spuštění příkazu pro zastavení replikace. Samostatný server není zachytávání s hlavním serverem.
 
 > [!IMPORTANT]
-> Samostatný server nelze znovu vytvořit v replice.
-> Před ukončením repliky na čtené replice se ujistěte, že replika obsahuje všechna data, která požadujete.
+> Samostatný server se nedá znovu vytvořit do repliky.
+> Před zastavením replikace v replice pro čtení zajistěte, aby měla replika všechna data, která požadujete.
 
-Když zastavíte repliku, replika ztratí všechna propojení s předchozím hlavním a jinými replikami.
+Při zastavení replikace ztratí replika všechny odkazy na předchozí hlavní a jiné repliky.
 
-Přečtěte si, jak [zastavit replikaci repliky repliky](howto-read-replicas-portal.md).
+Přečtěte si, jak [zastavit replikaci do repliky](howto-read-replicas-portal.md).
 
 ## <a name="failover"></a>Převzetí služeb při selhání
-Neexistuje žádné automatické převzetí služeb při selhání mezi hlavním serverem a replikami serverů. 
+Mezi hlavním serverem a serverem repliky neexistuje automatizované převzetí služeb při selhání. 
 
-Vzhledem k tomu, že replikace je asynchronní, je prodleva mezi hlavní a repliky. Množství zpoždění může být ovlivněno řadou faktorů, jako je jak těžké je zatížení spuštěné na hlavním serveru a latence mezi datovými centry. Ve většině případů se zpoždění repliky pohybuje mezi několika sekundami až několika minutami. Skutečné zpoždění replikace můžete sledovat pomocí metriky *Zpoždění replik*, která je k dispozici pro každou repliku. Tato metrika zobrazuje čas od poslední přehrané transakce. Doporučujeme zjistit, jaké je vaše průměrné zpoždění, sledováním zpoždění replik y po určitou dobu. Můžete nastavit výstrahu na zpoždění replik, takže pokud přejde mimo očekávaný rozsah, můžete provést akci.
+Vzhledem k tomu, že replikace je asynchronní, existuje prodleva mezi hlavním serverem a replikou. Velikost prodlevy může mít vliv na několik faktorů, jako je to, jak těžké zatížení na hlavním serveru jsou a latence mezi datovými centry. Ve většině případů se prodlevy replikují mezi několik sekund až na několik minut. Vlastní prodlevu replikace můžete sledovat pomocí *prodlevy repliky*metriky, která je k dispozici pro každou repliku. Tato metrika ukazuje čas od poslední opakované transakce. Doporučujeme, abyste zjistili, jaký je průměrný prodleva tím, že v časovém intervalu pozoruje prodlevu repliky. Můžete nastavit upozornění na prodlevu repliky, takže pokud bude mimo očekávaný rozsah, můžete provést akci.
 
 > [!Tip]
-> Pokud převezmete služeb při selhání repliky, zpoždění v době, kdy odpojíte repliku z hlavního serveru, bude znamenat, kolik dat je ztraceno.
+> Pokud dojde k převzetí služeb při selhání repliky, prodleva v době odpojování repliky z hlavní větve indikuje, kolik dat se ztratilo.
 
-Jakmile se rozhodnete, že chcete převzetí služeb při selhání na repliku, 
+Jakmile se rozhodnete, že chcete převzít služeb při selhání do repliky, 
 
-1. Zastavení replikace replikace do repliky<br/>
-   Tento krok je nezbytný k tomu, aby byl server repliky schopen přijímat zápisy. V rámci tohoto procesu bude server repliky restartován a bude odpojen od předlohy. Po zahájení zastavení replikace proces back-end obvykle trvá přibližně 2 minuty. Naleznete [stop replikace](#stop-replication) části tohoto článku pochopit důsledky této akce.
+1. Zastavení replikace do repliky<br/>
+   Tento krok je nezbytný k tomu, aby server repliky mohl přijímat zápisy. V rámci tohoto procesu se server repliky restartuje a odpojí se od hlavního serveru. Jakmile zahájíte zastavení replikace, proces back-endu obvykle trvá přibližně 2 minuty, než se dokončí. V části [zastavení replikace](#stop-replication) v tomto článku se seznámíte s důsledky této akce.
     
-2. Nasměrovat aplikaci na (bývalou) repliku<br/>
-   Každý server má jedinečný připojovací řetězec. Aktualizujte aplikaci tak, aby místo hlavního serveru ukazovala na (bývalou) repliku.
+2. Nasměrujte aplikaci na (bývalé) repliku.<br/>
+   Každý server má jedinečný připojovací řetězec. Aktualizujte svou aplikaci tak, aby odkazovala na (bývalé) repliku místo na hlavní.
     
-Jakmile aplikace úspěšně zpracovává čtení a zápisy, dokončili jste převzetí služeb při selhání. Množství prostojů, které vaše aplikace uvidí, bude záviset na tom, kdy zjistíte problém a provedete výše uvedené kroky 1 a 2.
+Po úspěšném zpracování čtení a zápisu vaší aplikace jste dokončili převzetí služeb při selhání. Množství prostojů, na kterých bude prostředí aplikace záviset při zjištění problému a dokončení kroků 1 a 2 výše.
 
 
 ## <a name="considerations"></a>Požadavky
 
-Tato část shrnuje aspekty týkající se funkce repliky pro čtení.
+V této části najdete přehled informací o funkci Replika čtení.
 
 ### <a name="prerequisites"></a>Požadavky
-Před vytvořením repliky `azure.replication_support` pro čtení musí být parametr nastaven na **repliku** na hlavním serveru. Při změně tohoto parametru je nutné restartovat server, aby se změna projevila. Parametr `azure.replication_support` se vztahuje pouze na úrovně optimalizované pro obecné účely a paměť.
+Před vytvořením repliky pro čtení musí `azure.replication_support` být parametr nastaven na **repliku** na hlavním serveru. Pokud se tento parametr změní, je nutné restartovat server, aby se změna projevila. `azure.replication_support` Parametr se vztahuje pouze na pro obecné účely a paměťově optimalizované úrovně.
 
 ### <a name="new-replicas"></a>Nové repliky
-Replika pro čtení se vytvoří jako nová databáze Azure pro postgreSQL server. Existující server nelze vytvořit v replice. Nelze vytvořit repliku jiné repliky pro čtení.
+Replika pro čtení je vytvořená jako nový server Azure Database for PostgreSQL. Existující server nelze vytvořit do repliky. Nelze vytvořit repliku jiné repliky pro čtení.
 
 ### <a name="replica-configuration"></a>Konfigurace repliky
-Replika je vytvořena pomocí stejného nastavení výpočetních prostředků a úložiště jako předloha. Po vytvoření repliky lze změnit několik nastavení nezávisle na hlavním serveru: generování výpočetních prostředků, virtuální jádra, úložiště a doba uchovávání záloh. Cenovou úroveň lze také změnit nezávisle, s výjimkou úrovně Basic nebo z ní.
+Replika se vytvoří pomocí stejného nastavení výpočtů a úložiště jako hlavní. Po vytvoření repliky se dá několik nastavení měnit nezávisle na hlavním serveru: generování výpočetních prostředků, virtuální jádra, úložiště a doba uchovávání záloh. Cenová úroveň se dá změnit také nezávisle, s výjimkou nebo z úrovně Basic.
 
 > [!IMPORTANT]
-> Před aktualizací hlavního nastavení na novou hodnotu aktualizujte konfiguraci repliky na stejnou nebo vyšší hodnotu. Tato akce zajistí, že replika bude moct udržovat krok se všemi změnami na hlavním serveru.
+> Před aktualizací hlavního nastavení na novou hodnotu aktualizujte konfiguraci repliky na hodnotu rovná se nebo větší. Tato akce zajistí, že replika bude moct udržovat krok se všemi změnami na hlavním serveru.
 
-PostgreSQL vyžaduje, aby `max_connections` hodnota parametru na čtené replice byla větší nebo rovna hlavní hodnotě; v opačném případě se replika nespustí. V Azure Database for PostgreSQL je hodnota parametru `max_connections` založená na skladové jednotce. Další informace najdete [v tématu Limity v Azure Database for PostgreSQL](concepts-limits.md). 
+PostgreSQL vyžaduje, aby hodnota `max_connections` parametru v replice pro čtení byla větší než nebo rovna hlavní hodnotě; v opačném případě se replika nespustí. V Azure Database for PostgreSQL je hodnota `max_connections` parametru založena na SKU. Další informace najdete v tématu [omezení v Azure Database for PostgreSQL](concepts-limits.md). 
 
-Pokud se pokusíte aktualizovat výše popsané hodnoty serveru, ale nedodržujete limity, zobrazí se chyba.
+Pokud se pokusíte aktualizovat výše popsané hodnoty serveru, ale nedodržují omezení, dojde k chybě.
 
-Pravidla brány firewall, pravidla virtuální sítě a nastavení parametrů nejsou zděděna z hlavního serveru do repliky při vytvoření repliky nebo po jejich vytvoření.
+Pravidla brány firewall, pravidla virtuální sítě a nastavení parametrů nejsou děděna z hlavního serveru do repliky, když je replika vytvořena nebo následně.
 
 ### <a name="max_prepared_transactions"></a>max_prepared_transactions
-[PostgreSQL vyžaduje,](https://www.postgresql.org/docs/current/runtime-config-resource.html#GUC-MAX-PREPARED-TRANSACTIONS) aby `max_prepared_transactions` hodnota parametru na čtené replice byla větší nebo rovna hlavní hodnotě; v opačném případě se replika nespustí. Pokud chcete změnit `max_prepared_transactions` na předloze, nejprve změnit na repliky.
+[PostgreSQL vyžaduje](https://www.postgresql.org/docs/current/runtime-config-resource.html#GUC-MAX-PREPARED-TRANSACTIONS) , aby hodnota `max_prepared_transactions` parametru v replice pro čtení byla větší než nebo rovna hlavní hodnotě; v opačném případě se replika nespustí. Pokud chcete změnit `max_prepared_transactions` hlavní server, nejdřív ho změňte na replikách.
 
 ### <a name="stopped-replicas"></a>Zastavené repliky
-Pokud zastavíte replikaci mezi hlavním serverem a replikou pro čtení, replika se restartuje a použije změnu. Zastavená replika se stane samostatným serverem, který přijímá čtení i zápisy. Samostatný server nelze znovu vytvořit v replice.
+Pokud zastavíte replikaci mezi hlavním serverem a replikou pro čtení, bude se replika znovu používat pro změnu. Zastavená replika se stal samostatným serverem, který přijímá čtení i zápis. Samostatný server se nedá znovu vytvořit do repliky.
 
 ### <a name="deleted-master-and-standalone-servers"></a>Odstraněné hlavní a samostatné servery
-Po odstranění hlavního serveru se všechny jeho repliky pro čtení stanou samostatnými servery. Repliky jsou restartovány tak, aby odrážely tuto změnu.
+Po odstranění hlavního serveru se všechny jeho repliky pro čtení stanou samostatnými servery. Repliky se restartují, aby se tato změna projevila.
 
 ## <a name="next-steps"></a>Další kroky
-* Přečtěte si, jak [vytvářet a spravovat repliky pro čtení na webu Azure Portal](howto-read-replicas-portal.md).
-* Zjistěte, jak [vytvářet a spravovat repliky čtení v rozhraní API Azure a rozhraní REST API](howto-read-replicas-cli.md).
+* Naučte se [vytvářet a spravovat repliky pro čtení v Azure Portal](howto-read-replicas-portal.md).
+* Naučte se [vytvářet a spravovat repliky pro čtení v Azure CLI a REST API](howto-read-replicas-cli.md).

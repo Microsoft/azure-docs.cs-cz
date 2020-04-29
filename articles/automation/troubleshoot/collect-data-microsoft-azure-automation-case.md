@@ -1,5 +1,5 @@
 ---
-title: Data, která se mají shromažďovat při otevření případu pro Microsoft Azure Automation| Dokumenty společnosti Microsoft
+title: Data, která se mají shromažďovat při otevření případu pro Microsoft Azure Automation | Microsoft Docs
 description: Tento článek popisuje některé informace, které byste měli shromáždit před otevřením případu pro Azure Automation s podporou Microsoft Azure.
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
@@ -14,33 +14,33 @@ ms.topic: troubleshooting
 ms.date: 09/23/2019
 ms.author: v-miegge
 ms.openlocfilehash: e1d5d791a58f301991819b41757b9021f6e30fc0
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81679406"
 ---
 # <a name="data-to-collect-when-you-open-a-case-for-microsoft-azure-automation"></a>Data, která se mají shromažďovat při otevření případu pro Microsoft Azure Automation
 
-Tento článek popisuje některé informace, které byste měli shromáždit před otevřením případu pro Azure Automation s podporou Microsoft Azure. Tyto informace nejsou nutné k otevření případu. Může však pomoci společnosti Microsoft vyřešit váš problém rychleji. Také můžete být požádáni o tato data pracovníka podpory po otevření případu.
+Tento článek popisuje některé informace, které byste měli shromáždit před otevřením případu pro Azure Automation s podporou Microsoft Azure. Tyto informace nejsou nutné k otevření případu. Může to ale přispět k rychlejšímu řešení problému Microsoftu. Po otevření případu může být také požádáni o tato data pracovníkem podpory.
 
-## <a name="basic-data"></a>Základní údaje
+## <a name="basic-data"></a>Základní data
 
-Shromážděte základní data popsaná v článku znalostní báze Knowledge Base [4034605 – Jak zachytit diagnostiku skriptovnou Azure Automation](https://support.microsoft.com/help/4034605/how-to-capture-azure-automation-scripted-diagnostics).
+Shromážděte základní údaje popsané v článku znalostní báze [4034605 – jak zachytit diagnostiku Azure Automation](https://support.microsoft.com/help/4034605/how-to-capture-azure-automation-scripted-diagnostics).
 
-## <a name="data-for-update-management-issues-on-linux"></a>Data pro problémy se správou aktualizací na Linuxu
+## <a name="data-for-update-management-issues-on-linux"></a>Data pro Update Management problémy v systému Linux
 
-1. Kromě položek, které jsou uvedeny v KB [4034605](https://support.microsoft.com/help/4034605/how-to-capture-azure-automation-scripted-diagnostics), spusťte následující nástroj pro shromažďování protokolů:
+1. Kromě položek uvedených v článku KB [4034605](https://support.microsoft.com/help/4034605/how-to-capture-azure-automation-scripted-diagnostics)spusťte následující nástroj pro shromažďování protokolů:
 
-   [Sběratel protokolů agentů OMS Linux](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/tools/LogCollector/OMS_Linux_Agent_Log_Collector.md)
+   [Kolektor protokolů agenta OMS Linux](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/tools/LogCollector/OMS_Linux_Agent_Log_Collector.md)
  
-2. Komprimujte obsah složky **/var/opt/microsoft/omsagent/run/automationworker/** a potom odešlete komprimovaný soubor do podpory Azure.
+2. Zkomprimujte obsah složky **/var/opt/Microsoft/omsagent/Run/automationworker/** a potom komprimovaný soubor odešlete podpoře Azure.
  
-3. Ověřte, zda je ID pracovního prostoru, na který sestaví agent analýzy protokolů pro Linux, stejné jako ID pracovního prostoru monitorovaného pro aktualizace.
+3. Ověřte, že ID pracovního prostoru, na který Log Analytics Agent pro Linux, je stejný jako ID pracovního prostoru monitorovaného pro aktualizace.
 
-## <a name="data-for-update-management-issues-on-windows"></a>Data pro problémy se správou aktualizací v systému Windows
+## <a name="data-for-update-management-issues-on-windows"></a>Data pro Update Management problémy ve Windows
 
-1. Shromažďovat údaje o položkách uvedených v [po. 4034605](https://support.microsoft.com/help/4034605/how-to-capture-azure-automation-scripted-diagnostics).
+1. Shromážděte data pro položky uvedené v [4034605](https://support.microsoft.com/help/4034605/how-to-capture-azure-automation-scripted-diagnostics).
 
 2. Exportujte následující protokoly událostí do formátu EVTX:
 
@@ -48,49 +48,49 @@ Shromážděte základní data popsaná v článku znalostní báze Knowledge Ba
    * Aplikace
    * Zabezpečení
    * Operations Manager
-   * Microsoft-SMA/Provozní
+   * Microsoft-SMA/provozní
 
-3. Ověřte, zda je ID pracovního prostoru, do kterého agent hlásí, stejné jako ID pracovního prostoru monitorovaného aktualizací systému Windows.
+3. Ověřte, že ID pracovního prostoru, ke kterému se agent hlásí, je stejné jako ID pracovního prostoru monitorovaného aktualizacemi Windows.
 
-## <a name="data-for-job-issues"></a>Data pro problémy s úlohami
+## <a name="data-for-job-issues"></a>Data pro problémy s úlohou
 
-1. Shromažďovat údaje o položkách uvedených v [po. 4034605](https://support.microsoft.com/help/4034605/how-to-capture-azure-automation-scripted-diagnostics).
+1. Shromážděte data pro položky uvedené v [4034605](https://support.microsoft.com/help/4034605/how-to-capture-azure-automation-scripted-diagnostics).
 
-2. Shromážděte ID úlohy pro úlohu, která má problém:
+2. Shromáždit ID úlohy, u které došlo k problému:
 
-   1. Na webu Azure Portal přejděte na **účty automatizace**.
-   2. Vyberte účet automatizace, který řešíte, a poznamenejte si název.
+   1. V Azure Portal přejdete na **účty Automation**.
+   2. Vyberte účet Automation, který chcete řešit, a poznamenejte si název.
    3. Vyberte **úlohy**.
-   4. Vyberte úlohu, kterou řešíte.
-   5. V podokně Souhrn úloh vyhledejte hodnotu GUID v **ID úlohy**.
+   4. Vyberte úlohu, kterou chcete řešit.
+   5. V podokně Souhrn úlohy vyhledejte hodnotu identifikátor GUID v **ID úlohy**.
 
-   ![ID úlohy v podokně Souhrn úlohy](media/collect-data-microsoft-azure-automation-case/job-summary-job-id.png)
+   ![ID úlohy v podokně souhrnu úlohy](media/collect-data-microsoft-azure-automation-case/job-summary-job-id.png)
 
 3. Shromážděte ukázku skriptu, který používáte.
 
-4. Shromážděte soubory protokolu:
+4. Shromáždit soubory protokolu:
 
-   1. Na webu Azure Portal přejděte na **účty automatizace**.
-   2. Vyberte účet automatizace, který řešíte.
+   1. V Azure Portal přejdete na **účty Automation**.
+   2. Vyberte účet Automation, který chcete řešit.
    3. Vyberte **úlohy**.
-   4. Vyberte úlohu, kterou řešíte.
+   4. Vyberte úlohu, kterou chcete řešit.
    5. Vyberte **všechny protokoly**.
-   6. Ve výsledném podokně shromážděte data.
+   6. Ve výsledném podokně Shromážděte data.
 
-   ![Data uvedená v části Všechny protokoly](media/collect-data-microsoft-azure-automation-case/all-logs-data.png)
+   ![Data uvedená v části všechny protokoly](media/collect-data-microsoft-azure-automation-case/all-logs-data.png)
 
-## <a name="data-for-module-issues"></a>Data pro problémy s moduly
+## <a name="data-for-module-issues"></a>Data pro problémy s modulem
 
-Kromě základních [datových položek](#basic-data)získáte následující informace:
+Kromě [základních datových položek](#basic-data)shromážděte následující informace:
 
-* Kroky, které jste postupovali, aby bylo možné problém reprodukovat.
-* Snímky obrazovky všech chybových zpráv.
-* Screenshoty z aktuálních modulů a jejich čísla verzí.
+* Kroky, které jste následovali, aby bylo možné problém reprodukovat.
+* Snímky obrazovky se všemi chybovými zprávami.
+* Snímky obrazovky aktuálních modulů a jejich čísla verzí.
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud potřebujete další pomoc:
+Pokud potřebujete další informace:
 
-* Získejte odpovědi od odborníků na Azure prostřednictvím [fór Azure .](https://azure.microsoft.com/support/forums/)
-* Spojte [@AzureSupport](https://twitter.com/azuresupport)se s oficiálním účtem Microsoft Azure a vylepšete tak zákaznickou zkušenost propojením komunity Azure se správnými prostředky: odpověďmi, podporou a odborníky.
-* Soubor incidentu podpory Azure. Přejděte na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte Získat **podporu**.
+* Získejte odpovědi od odborníků na Azure prostřednictvím [fór Azure](https://azure.microsoft.com/support/forums/).
+* Připojte se [@AzureSupport](https://twitter.com/azuresupport)k, oficiální Microsoft Azure účet pro zlepšení zkušeností zákazníků tím, že propojíte komunitu Azure se správnými zdroji: odpověďmi, podporou a odborníky.
+* Zasouborové incidenty podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte **získat podporu**.

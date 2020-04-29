@@ -1,40 +1,40 @@
 ---
 title: Zotavení po havárii pro FarmBeats
-description: Tento článek popisuje, jak obnovení dat chrání před ztrátou dat.
+description: Tento článek popisuje, jak obnovení dat chrání před ztrátou vašich dat.
 author: uhabiba04
 ms.topic: article
 ms.date: 04/13/2020
 ms.author: v-umha
 ms.openlocfilehash: 1665c535d4b1fb6190ee5736b688b402f8b4a541
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81683895"
 ---
 # <a name="disaster-recovery-for-farmbeats"></a>Zotavení po havárii pro FarmBeats
 
-Obnovení dat chrání před ztrátou dat v události, jako je kolaps oblasti Azure. V takovém případě můžete spustit převzetí služeb při selhání a obnovit data uložená v nasazení FarmBeats.
+Obnovení dat chrání před ztrátou vašich dat v události, jako je sbalení oblasti Azure. V takovém případě můžete spustit převzetí služeb při selhání a obnovit data uložená ve vašem nasazení FarmBeats.
 
-Obnova dat není výchozí funkce v Azure FarmBeats. Tuto funkci můžete nakonfigurovat ručně konfigurací požadovaných prostředků Azure, které farmbeaty používají k ukládání dat v oblasti spárované azure. Použití aktivní – pasivní přístup k povolení obnovení.
+Obnovení dat není výchozí funkcí v Azure FarmBeats. Tuto funkci můžete nakonfigurovat ručně tak, že nakonfigurujete požadované prostředky Azure, které používá FarmBeats k ukládání dat do spárované oblasti Azure. K povolení obnovení použijte aktivní – pasivní přístup.
 
-Následující části obsahují informace o tom, jak můžete nakonfigurovat obnovu dat v Azure FarmBeats:
+Následující části obsahují informace o tom, jak můžete v Azure FarmBeats nakonfigurovat obnovení dat:
 
 - [Povolit redundanci dat](#enable-data-redundancy)
-- [Obnovení služby ze zálohy online](#restore-service-from-online-backup)
+- [Obnovit službu z online zálohování](#restore-service-from-online-backup)
 
 
 ## <a name="enable-data-redundancy"></a>Povolit redundanci dat
 
-FarmBeats ukládá data ve třech službách Azure první strany, což jsou **Azure storage**, **Cosmos DB** a Time Series **Insights**. Pomocí následujících kroků povolte redundanci dat pro tyto služby do spárované oblasti Azure:
+FarmBeats ukládá data do tří služeb Azure First Services, což jsou služby **Azure Storage**, **Cosmos DB** a **Time Series Insights**. Pomocí následujících kroků povolte redundanci dat pro tyto služby do spárované oblasti Azure:
 
-1.  **Azure Storage** – postupujte podle těchto pokynů a povolte redundanci dat pro každý účet úložiště v nasazení FarmBeats.
-2.  **Azure Cosmos DB** – postupujte podle těchto pokynů a povolte redundanci dat pro účet Cosmos DB, které nasazuje vaše FarmBeats.
-3.  **Azure Time Series Insights (TSI)** – TSI momentálně nenabízí redundanci dat. Chcete-li obnovit data Time Series Insights, přejděte na svého partnera pro senzory a počasí a znovu je převeďte do nasazení FarmBeats.
+1.  **Azure Storage** – postupujte podle těchto pokynů a povolte redundanci dat pro každý účet úložiště ve vašem nasazení FarmBeats.
+2.  **Azure Cosmos DB** – podle těchto pokynů povolte redundanci dat pro Cosmos DB účet nasazení FarmBeats.
+3.  **Azure Time Series Insights (TSI)** – TSI aktuálně nenabízí redundanci dat. Pokud chcete obnovit data Time Series Insights, přehrajte na svůj senzor nebo počasí a znovu nahrajte data do nasazení FarmBeats.
 
-## <a name="restore-service-from-online-backup"></a>Obnovení služby ze zálohy online
+## <a name="restore-service-from-online-backup"></a>Obnovit službu z online zálohování
 
-Můžete zahájit převzetí služeb při selhání a obnovit uložená data, pro která, každý z výše uvedených datových úložišť pro nasazení FarmBeats. Po obnovení dat pro úložiště Azure a Cosmos DB vytvořte další nasazení FarmBeats ve spárované oblasti Azure a pak nakonfigurujte nové nasazení tak, aby používalo data z obnovených úložišť dat (tj. Azure Storage a Cosmos DB) pomocí následujících kroků:
+Můžete iniciovat převzetí služeb při selhání a obnovit uložená data, pro která jsou v každém z výše zmíněných úložišť dat pro nasazení FarmBeats. Po obnovení dat pro Azure Storage a Cosmos DB vytvořte v spárované oblasti Azure další nasazení FarmBeats a potom nakonfigurujte nové nasazení tak, aby používalo data z obnovených úložišť dat (tj. Azure Storage a Cosmos DB), a to pomocí následujících kroků:
 
 1. [Konfigurace Cosmos DB](#configure-cosmos-db)
 2. [Konfigurace účtu úložiště](#configure-storage-account)
@@ -42,25 +42,25 @@ Můžete zahájit převzetí služeb při selhání a obnovit uložená data, pr
 
 ### <a name="configure-cosmos-db"></a>Konfigurace Cosmos DB
 
-Zkopírujte přístupový klíč obnovené databáze Cosmos db a aktualizujte nový trezor klíčů FarmBeats Datahub.
+Zkopírujte přístupový klíč obnoveného Cosmos DB a aktualizujte nové Key Vault FarmBeats DataHub.
 
 
   ![Zotavení po havárii](./media/disaster-recovery-for-farmbeats/key-vault-secrets.png)
 
 > [!NOTE]
-> Zkopírujte adresu URL obnovené databáze Cosmos a aktualizujte ji v nové konfiguraci služby FarmBeats Datahub App Service. Nyní můžete odstranit účet Cosmos DB v novém nasazení FarmBeats.
+> Zkopírujte adresu URL obnoveného Cosmos DB a aktualizujte ji v nové konfiguraci App Service FarmBeats DataHub. Nyní můžete Cosmos DB účet odstranit v novém nasazení FarmBeats.
 
   ![Zotavení po havárii](./media/disaster-recovery-for-farmbeats/configuration.png)
 
 ### <a name="configure-storage-account"></a>Konfigurace účtu úložiště
 
-Zkopírujte přístupový klíč obnoveného účtu úložiště a aktualizujte jej v novém trezoru klíčů FarmBeats Datahub Key Vault.
+Zkopírujte přístupový klíč obnoveného účtu úložiště a aktualizujte ho v New FarmBeats DataHub Key Vault.
 
 ![Zotavení po havárii](./media/disaster-recovery-for-farmbeats/key-vault-7-secrets.png)
 
 >[!NOTE]
-> Ujistěte se, že chcete aktualizovat název účtu úložiště v novém konfiguračním souboru virtuálního virtuálního zařízení FarmBeats Batch.
+> Ujistěte se, že jste v novém konfiguračním souboru FarmBeats Batch VM aktualizovali název účtu úložiště.
 
 ![Zotavení po havárii](./media/disaster-recovery-for-farmbeats/batch-prep-files.png)
 
-Podobně pokud jste povolili obnovu dat pro váš účet úložiště akcelerátoru, postupujte podle kroku 2 aktualizovat klíč a název účtu úložiště akcelerátoru v nové instanci FarmBeats.
+Podobně pokud jste povolili obnovení dat pro účet úložiště akcelerátoru, postupujte podle pokynů v kroku 2 a aktualizujte přístupový klíč a název účtu úložiště akcelerátoru v nové instanci FarmBeats.

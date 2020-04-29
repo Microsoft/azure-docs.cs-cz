@@ -1,6 +1,6 @@
 ---
-title: Implementace oracle golden gate na virtuálním počítači Azure Linux | Dokumenty společnosti Microsoft
-description: Ve svém prostředí Azure rychle zprovozněte bránu Oracle Golden Gate.
+title: Implementace Oracle Zlaté brány na virtuálním počítači Azure Linux | Microsoft Docs
+description: Rychle Získejte v prostředí Azure zlatou bránu Oracle a spusťte ji.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: BorisB2015
@@ -15,42 +15,42 @@ ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: borisb
 ms.openlocfilehash: ae6bfb0ab0208d0f778476c9f0959b0c0f1d6471
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81683720"
 ---
-# <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>Implementace oracle golden gate na virtuálním počítači Azure Linux 
+# <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>Implementace Oracle Zlaté brány na virtuálním počítači Azure Linux 
 
-Azure CLI slouží k vytváření a správě prostředků Azure z příkazového řádku nebo ve skriptech. Tato příručka podrobně popisuje, jak pomocí příkazového příkazového příkazu Azure nasadit databázi Oracle 12c z image galerie Azure Marketplace. 
+Azure CLI slouží k vytváření a správě prostředků Azure z příkazového řádku nebo ve skriptech. Tato příručka podrobně popisuje, jak pomocí rozhraní příkazového řádku Azure nasadit databázi Oracle 12c z Image Galerie Azure Marketplace. 
 
-Tento dokument vám ukáže krok za krokem, jak vytvořit, nainstalovat a nakonfigurovat Oracle Golden Gate na virtuálním počítači Azure. V tomto kurzu jsou dva virtuální počítače nastaveny v sadě dostupnosti v jedné oblasti. Stejný kurz lze použít k nastavení OracleGolden Gate pro virtuální počítače v různých zónách dostupnosti v jedné oblasti Azure nebo pro nastavení virtuálních počítačích ve dvou různých oblastech.
+V tomto dokumentu se dozvíte, jak vytvořit, nainstalovat a nakonfigurovat Oracle zlatou bránu na virtuálním počítači Azure. V tomto kurzu jsou dva virtuální počítače nastavené ve skupině dostupnosti v jedné oblasti. Stejný kurz se dá použít k nastavení brány OracleGolden pro virtuální počítače v různých Zóny dostupnosti v jedné oblasti Azure nebo pro nastavení virtuálních počítačů ve dvou různých oblastech.
 
 Než začnete, ujistěte se, že je rozhraní Azure CLI nainstalované. Další informace najdete v tématu [Průvodce instalací Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 ## <a name="prepare-the-environment"></a>Příprava prostředí
 
-Chcete-li provést instalaci Oracle Golden Gate, musíte vytvořit dva virtuální počítače Azure ve stejné sadě dostupnosti. Image Marketplace, kterou používáte k vytvoření virtuálních aplikací, je **Oracle:Oracle-Database-Ee:12.1.0.2:latest**.
+K provedení instalace Oracle Zlaté brány potřebujete vytvořit dva virtuální počítače Azure ve stejné skupině dostupnosti. Image Marketplace, kterou použijete k vytvoření virtuálních počítačů, je **Oracle: Oracle-Database-EE: 12.1.0.2: nejnovější**.
 
-Musíte se také seznámit s Unix editorem vi a mít základní znalosti o x11 (X Windows).
+Musíte být také obeznámeni s editorem systému UNIX VI a máte základní znalosti o X11 (X Windows).
 
-Následuje souhrn konfigurace prostředí:
+Toto je Souhrn konfigurace prostředí:
 > 
-> |  | **Primární lokalita** | **Replikovat lokalitu** |
+> |  | **Primární lokalita** | **Replikace lokality** |
 > | --- | --- | --- |
-> | **Vydání oracle** |Oracle 12c Verze 2 – (12.1.0.2) |Oracle 12c Verze 2 – (12.1.0.2)|
-> | **Název stroje** |myVM1 |myVM2 |
-> | **Operační systém** |Oracle Linux 6.x |Oracle Linux 6.x |
-> | **Oracle SID** |CDB1 |CDB1 |
+> | **Verze Oracle** |Oracle 12c verze 2 – (12.1.0.2) |Oracle 12c verze 2 – (12.1.0.2)|
+> | **Název počítače** |myVM1 |myVM2 |
+> | **Operační systém** |Oracle Linux 6. x |Oracle Linux 6. x |
+> | **Identifikátor Oracle SID** |CDB1 |CDB1 |
 > | **Schéma replikace** |TEST|TEST |
-> | **Majitel/replika cenárské brány Golden Gate** |C##GGADMIN |REPUSER |
-> | **Proces Zlaté brány** |EXTORA |Repora|
+> | **Vlastník nebo replikace Zlaté brány** |#GGADMIN C# |REPUSER |
+> | **Zlatý proces brány** |EXTORA |REPORA|
 
 
 ### <a name="sign-in-to-azure"></a>Přihlášení k Azure 
 
-Přihlaste se ke svému předplatnému Azure pomocí příkazu [az login.](/cli/azure/reference-index) Poté postupujte podle pokynů na obrazovce.
+Přihlaste se ke svému předplatnému Azure pomocí příkazu [AZ Login](/cli/azure/reference-index) . Pak postupujte podle pokynů na obrazovce.
 
 ```azurecli
 az login
@@ -58,7 +58,7 @@ az login
 
 ### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group). Skupina prostředků Azure je logický kontejner, do kterého se nasazují prostředky Azure a ze kterého se dají spravovat. 
+Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují prostředky Azure a ze kterých se dají spravovat. 
 
 Následující příklad vytvoří skupinu prostředků s názvem `myResourceGroup` v umístění `westus`.
 
@@ -68,7 +68,7 @@ az group create --name myResourceGroup --location westus
 
 ### <a name="create-an-availability-set"></a>Vytvoření skupiny dostupnosti
 
-Následující krok je volitelný, ale doporučený. Další informace najdete v [tématu Azure dostupnost sady průvodce](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines).
+Následující krok je nepovinný, ale doporučuje se. Další informace najdete v tématu [Průvodce skupinami dostupnosti Azure](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines).
 
 ```azurecli
 az vm availability-set create \
@@ -82,7 +82,7 @@ az vm availability-set create \
 
 Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm). 
 
-Následující příklad vytvoří dva virtuální `myVM1` `myVM2`hod s názvem a . Vytvořte klíče SSH, pokud ještě neexistují ve výchozím umístění klíče. Chcete-li použít konkrétní sadu klíčů, použijte možnost `--ssh-key-value`.
+Následující příklad vytvoří dva virtuální počítače s `myVM1` názvem `myVM2`a. Pokud ve výchozím umístění klíče ještě neexistují, vytvořte klíče SSH. Chcete-li použít konkrétní sadu klíčů, použijte možnost `--ssh-key-value`.
 
 #### <a name="create-myvm1-primary"></a>Vytvořit myVM1 (primární):
 
@@ -96,7 +96,7 @@ az vm create \
      --generate-ssh-keys \
 ```
 
-Po vytvoření virtuálního počítače azure CLI zobrazí informace podobné v následujícím příkladu. (Vezměte na `publicIpAddress`vědomí . Tato adresa se používá pro přístup k virtuálnímu virtuálnímu serveru.)
+Po vytvoření virtuálního počítače se v Azure CLI zobrazí podobné informace jako v následujícím příkladu. (Poznamenejte si to `publicIpAddress`. Tato adresa se používá pro přístup k virtuálnímu počítači.)
 
 ```output
 {
@@ -123,11 +123,11 @@ az vm create \
      --generate-ssh-keys \
 ```
 
-Poznamenejte `publicIpAddress` si také poté, co byl vytvořen.
+Poznamenejte `publicIpAddress` si i poté, co byl vytvořen.
 
-### <a name="open-the-tcp-port-for-connectivity"></a>Otevření portu TCP pro připojení
+### <a name="open-the-tcp-port-for-connectivity"></a>Otevřete port TCP pro připojení.
 
-Dalším krokem je konfigurace externích koncových bodů, které umožňují vzdálený přístup k databázi Oracle. Chcete-li konfigurovat externí koncové body, spusťte následující příkazy.
+Dalším krokem je konfigurace externích koncových bodů, které umožňují vzdálený přístup k databázi Oracle. Pro konfiguraci externích koncových bodů spusťte následující příkazy.
 
 #### <a name="open-the-port-for-myvm1"></a>Otevřete port pro myVM1:
 
@@ -160,7 +160,7 @@ Výsledky by měly vypadat podobně jako následující odpověď:
 }
 ```
 
-#### <a name="open-the-port-for-myvm2"></a>Otevřete port myVM2:
+#### <a name="open-the-port-for-myvm2"></a>Otevřete port pro myVM2:
 
 ```azurecli
 az network nsg rule create --resource-group myResourceGroup\
@@ -180,9 +180,9 @@ ssh <publicIpAddress>
 
 ### <a name="create-the-database-on-myvm1-primary"></a>Vytvoření databáze na myVM1 (primární)
 
-Software Oracle je již nainstalován na bitové kopii Marketplace, takže dalším krokem je instalace databáze. 
+Na imagi Marketplace už je nainstalovaný software Oracle, takže dalším krokem je instalace databáze. 
 
-Spusťte software jako superuser "oracle":
+Spustit software jako uživatel Oracle:
 
 ```bash
 sudo su - oracle
@@ -210,7 +210,7 @@ $ dbca -silent \
    -ignorePreReqs
 ```
 
-Výstupy by měly vypadat podobně jako následující odpověď:
+Výstupy by měly vypadat podobně jako na následující reakci:
 
 ```output
 Copying database files
@@ -250,7 +250,7 @@ $ ORACLE_SID=cdb1; export ORACLE_SID
 $ LD_LIBRARY_PATH=ORACLE_HOME/lib; export LD_LIBRARY_PATH
 ```
 
-Volitelně můžete do souboru .bashrc přidat ORACLE_HOME a ORACLE_SID, aby byla tato nastavení uložena pro budoucí přihlášení:
+Volitelně můžete do souboru. bashrc přidat ORACLE_HOME a ORACLE_SID, aby se tato nastavení uložila pro budoucí přihlášení:
 
 ```bash
 # add oracle home
@@ -261,13 +261,13 @@ export ORACLE_SID=cdb1
 export LD_LIBRARY_PATH=$ORACLE_HOME/lib
 ```
 
-### <a name="start-oracle-listener"></a>Spuštění posluchače Oracle
+### <a name="start-oracle-listener"></a>Spustit naslouchací proces Oracle
 
 ```bash
 $ lsnrctl start
 ```
 
-### <a name="create-the-database-on-myvm2-replicate"></a>Vytvoření databáze na myVM2 (replikovat)
+### <a name="create-the-database-on-myvm2-replicate"></a>Vytvoření databáze na myVM2 (replikace)
 
 ```bash
 sudo su - oracle
@@ -303,7 +303,7 @@ $ ORACLE_SID=cdb1; export ORACLE_SID
 $ LD_LIBRARY_PATH=ORACLE_HOME/lib; export LD_LIBRARY_PATH
 ```
 
-Volitelně můžete přidat ORACLE_HOME a ORACLE_SID do souboru .bashrc, aby tato nastavení byla uložena pro budoucí přihlášení.
+Volitelně můžete do souboru. bashrc přidat ORACLE_HOME a ORACLE_SID, aby se tato nastavení uložila pro budoucí přihlášení.
 
 ```bash
 # add oracle home
@@ -314,17 +314,17 @@ export ORACLE_SID=cdb1
 export LD_LIBRARY_PATH=$ORACLE_HOME/lib
 ```
 
-### <a name="start-oracle-listener"></a>Spuštění posluchače Oracle
+### <a name="start-oracle-listener"></a>Spustit naslouchací proces Oracle
 
 ```bash
 $ sudo su - oracle
 $ lsnrctl start
 ```
 
-## <a name="configure-golden-gate"></a>Konfigurace Zlaté brány 
-Chcete-li nakonfigurovat Golden Gate, postupujte podle pokynů v této části.
+## <a name="configure-golden-gate"></a>Konfigurovat zlatou bránu 
+Chcete-li konfigurovat zlatý bránu, postupujte podle kroků v této části.
 
-### <a name="enable-archive-log-mode-on-myvm1-primary"></a>Povolit režim protokolu archivu na myVM1 (primární)
+### <a name="enable-archive-log-mode-on-myvm1-primary"></a>Povolit režim protokolu archivace na myVM1 (primární)
 
 ```bash
 $ sqlplus / as sysdba
@@ -339,7 +339,7 @@ SQL> STARTUP MOUNT;
 SQL> ALTER DATABASE ARCHIVELOG;
 SQL> ALTER DATABASE OPEN;
 ```
-Povolte protokolování vysilování a ujistěte se, že je k dispozici alespoň jeden soubor protokolu.
+Povolte protokolování vynucení a ujistěte se, že je k dispozici alespoň jeden soubor protokolu.
 
 ```bash
 SQL> ALTER DATABASE FORCE LOGGING;
@@ -351,25 +351,25 @@ SQL> ALTER DATABASE ADD SUPPLEMENTAL LOG DATA;
 SQL> EXIT;
 ```
 
-### <a name="download-golden-gate-software"></a>Stažení Softwaru Golden Gate
-Chcete-li stáhnout a připravit software Oracle Golden Gate, proveďte následující kroky:
+### <a name="download-golden-gate-software"></a>Stáhnout software Zlaté brány
+Pokud chcete stáhnout a připravit software pro Oracle zlatou bránu, proveďte následující kroky:
 
-1. Stáhněte si soubor **fbo_ggs_Linux_x64_shiphome.zip** ze [stránky pro stažení Oracle Golden Gate](https://www.oracle.com/technetwork/middleware/goldengate/downloads/index.html). Pod názvem ke stažení **Oracle GoldenGate 12.x.x.x pro Oracle Linux x86-64**by měla být sada souborů ZIP ke stažení.
+1. Stáhněte soubor **fbo_ggs_Linux_x64_shiphome. zip** ze stránky pro [Stažení aplikace Oracle Zlaté brány](https://www.oracle.com/technetwork/middleware/goldengate/downloads/index.html). V části stažení názvu **Oracle GoldenGate 12. x. x. x pro Oracle Linux X86-64**by měl být k dispozici sada souborů. zip ke stažení.
 
-2. Po stažení souborů ZIP do klientského počítače zkopírujte soubory do virtuálního počítače pomocí protokolu SCP (Secure Copy Protocol):
+2. Po stažení souborů zip do klientského počítače použijte protokol SCP (Secure Copy Protocol) ke zkopírování souborů na virtuální počítač:
 
    ```bash
    $ scp fbo_ggs_Linux_x64_shiphome.zip <publicIpAddress>:<folder>
    ```
 
-3. Přesuňte soubory ZIP do složky **/opt.** Potom změňte vlastníka souborů takto:
+3. Přesuňte soubory. zip do složky **/opt** . Pak změňte vlastníka souborů následujícím způsobem:
 
    ```bash
    $ sudo su -
    # mv <folder>/*.zip /opt
    ```
 
-4. Rozbalte soubory (nainstalujte nástroj Pro rozbalit Linux, pokud ještě není nainstalován):
+4. Rozbalení souborů (Pokud ještě není nainstalované, nainstalujte nástroj pro rozbalení Linux):
 
    ```bash
    # yum install unzip
@@ -383,26 +383,26 @@ Chcete-li stáhnout a připravit software Oracle Golden Gate, proveďte následu
    # chown -R oracle:oinstall /opt/fbo_ggs_Linux_x64_shiphome
    ```
 
-### <a name="prepare-the-client-and-vm-to-run-x11-for-windows-clients-only"></a>Příprava klienta a virtuálního počítače ke spuštění x11 (jenom pro klienty Windows)
-Jedná se o volitelný krok. Tento krok můžete přeskočit, pokud používáte klienta Linux nebo již máte nastavení x11.
+### <a name="prepare-the-client-and-vm-to-run-x11-for-windows-clients-only"></a>Příprava klienta a virtuálního počítače na spouštění X11 (jenom pro klienty se systémem Windows)
+Toto je volitelný krok. Tento krok můžete přeskočit, pokud používáte klienta se systémem Linux nebo pokud již máte instalační program X11.
 
-1. Stáhněte si PuTTY a Xming do počítače se systémem Windows:
+1. Stáhněte si a Xming do počítače s Windows:
 
-   * [Stažení PuTTY](https://www.putty.org/)
-   * [Stažení Xming](https://xming.en.softonic.com/)
+   * [Stažení výstupu](https://www.putty.org/)
+   * [Stáhnout Xming](https://xming.en.softonic.com/)
 
-2. Po instalaci PuTTY, ve složce PuTTY (například C:\Program Files\PuTTY), spusťte puttygen.exe (PuTTY Key Generator).
+2. Po instalaci výstupu do složky pro výstupy (například C:\Program Files\PuTTY) spusťte PuTTYgen. exe (generátor klíčů pro výstup do výstupu).
 
-3. V PutTY Key Generator:
+3. Generátor klíčů ve výstupu:
 
-   - Chcete-li generovat klíč, vyberte **tlačítko Generovat.**
-   - Zkopírujte obsah klávesy (**Ctrl+C).**
-   - Vyberte tlačítko **Uložit soukromý klíč.**
-   - Ignorujte upozornění, které se zobrazí, a pak vyberte **OK**.
+   - Pokud chcete vygenerovat klíč, vyberte tlačítko **Generovat** .
+   - Zkopírujte obsah klíče (**CTRL + C**).
+   - Vyberte tlačítko **Uložit privátní klíč** .
+   - Ignorujte zobrazené upozornění a pak vyberte **OK**.
 
-   ![Snímek obrazovky se stránkou generátoru kláves PuTTY](./media/oracle-golden-gate/puttykeygen.png)
+   ![Snímek stránky generátoru klíčů pro výstupu](./media/oracle-golden-gate/puttykeygen.png)
 
-4. Ve virtuálním počítači spusťte tyto příkazy:
+4. Na svém VIRTUÁLNÍm počítači spusťte tyto příkazy:
 
    ```bash
    # sudo su - oracle
@@ -410,62 +410,62 @@ Jedná se o volitelný krok. Tento krok můžete přeskočit, pokud používáte
    $ cd .ssh
    ```
 
-5. Vytvořte soubor s názvem **authorized_keys**. Vložte obsah klíče do tohoto souboru a uložte soubor.
+5. Vytvořte soubor s názvem **authorized_keys**. Vložte obsah klíče do tohoto souboru a pak soubor uložte.
 
    > [!NOTE]
-   > Klíč musí obsahovat `ssh-rsa`řetězec . Obsah klíče musí být také jeden řádek textu.
+   > Klíč musí obsahovat řetězec `ssh-rsa`. Obsah klíče musí být také jeden řádek textu.
    >  
 
-6. Spusťte PuTTY. V podokně **Kategorie** vyberte **možnost Připojení** > **SSH** > **Auth**. V **souboru soukromého klíče pro ověřování** přejděte na klíč, který jste vygenerovali dříve.
+6. Spusťte PuTTY. V podokně **kategorie** vyberte **připojení** > **SSH** > **ověřování**. V poli **soubor privátního klíče pro ověřování** přejděte na klíč, který jste dříve vygenerovali.
 
-   ![Snímek obrazovky se stránkou Nastavit soukromý klíč](./media/oracle-golden-gate/setprivatekey.png)
+   ![Snímek obrazovky se stránkou nastavit privátní klíč](./media/oracle-golden-gate/setprivatekey.png)
 
-7. V podokně **Kategorie** vyberte **možnost Připojení** > **SSH** > **X11**. Pak vyberte pole **Povolit přesměrování X11.**
+7. V podokně **kategorie** vyberte **připojení** > **SSH** > **X11**. Pak zaškrtněte políčko **Povolit předávání X11** .
 
-   ![Snímek obrazovky se stránkou Povolit X11](./media/oracle-golden-gate/enablex11.png)
+   ![Snímek obrazovky se stránkou povolit X11](./media/oracle-golden-gate/enablex11.png)
 
-8. V podokně **Kategorie** přejděte na **Session**. Zadejte informace o hostiteli a pak vyberte **Otevřít**.
+8. V podokně **kategorie** přejít na **relace**. Zadejte informace o hostiteli a pak vyberte **otevřít**.
 
    ![Snímek obrazovky se stránkou relace](./media/oracle-golden-gate/puttysession.png)
 
-### <a name="install-golden-gate-software"></a>Instalace softwaru Golden Gate
+### <a name="install-golden-gate-software"></a>Instalace softwaru Zlaté brány
 
-Chcete-li nainstalovat službu Oracle Golden Gate, proveďte následující kroky:
+Pokud chcete nainstalovat Oracle zlatou bránu, proveďte následující kroky:
 
-1. Přihlaste se jako věštec. (Měli byste být schopni se přihlásit, aniž byste byli vyzváni k zadání hesla.) Před zahájením instalace se ujistěte, že je spuštěn a spuštěn systém Xming.
+1. Přihlaste se jako Oracle. (Měli byste být schopni se přihlásit, aniž by se vám zobrazila výzva k zadání hesla.) Před zahájením instalace se ujistěte, že je spuštěný Xming.
 
    ```bash
    $ cd /opt/fbo_ggs_Linux_x64_shiphome/Disk1
    $ ./runInstaller
    ```
 
-2. Vyberte možnost Oracle GoldenGate for Oracle Database 12c. Pak pokračujte výběrem možnosti **Další.**
+2. Vyberte možnost Oracle GoldenGate pro Oracle Database 12c. Pak pokračujte výběrem **Další** .
 
-   ![Snímek obrazovky se stránkou Vybrat instalaci instalačního programu](./media/oracle-golden-gate/golden_gate_install_01.png)
+   ![Snímek obrazovky s výběrem instalační stránky instalační služby](./media/oracle-golden-gate/golden_gate_install_01.png)
 
-3. Změňte umístění softwaru. Pak vyberte pole **Správce startů** a zadejte umístění databáze. Pokračujte výběrem tlačítka **Next** (Další).
+3. Změňte umístění softwaru. Pak vyberte pole **Start Manager** a zadejte umístění databáze. Pokračujte výběrem tlačítka **Next** (Další).
 
-   ![Snímek obrazovky se stránkou Vybrat instalaci](./media/oracle-golden-gate/golden_gate_install_02.png)
+   ![Snímek obrazovky se stránkou vybrat instalaci](./media/oracle-golden-gate/golden_gate_install_02.png)
 
-4. Změňte adresář inventáře a pokračujte vyberte **Další.**
+4. Změňte adresář inventáře a pokračujte výběrem **Další** .
 
-   ![Snímek obrazovky se stránkou Vybrat instalaci](./media/oracle-golden-gate/golden_gate_install_03.png)
+   ![Snímek obrazovky se stránkou vybrat instalaci](./media/oracle-golden-gate/golden_gate_install_03.png)
 
-5. Na obrazovce **Souhrn** pokračujte výběrem **možnosti Instalovat.**
+5. Na obrazovce **souhrnu** pokračujte výběrem **nainstalovat** .
 
-   ![Snímek obrazovky se stránkou Vybrat instalaci instalačního programu](./media/oracle-golden-gate/golden_gate_install_04.png)
+   ![Snímek obrazovky s výběrem instalační stránky instalační služby](./media/oracle-golden-gate/golden_gate_install_04.png)
 
-6. Můžete být vyzváni ke spuštění skriptu jako 'root'. Pokud ano, otevřete samostatnou relaci, ssh na virtuální ms, sudo root a pak spusťte skript. Vyberte **OK** pokračovat.
+6. Může se zobrazit výzva ke spuštění skriptu jako "root". Pokud ano, otevřete samostatnou relaci, SSH k virtuálnímu počítači, sudo do kořenového adresáře a potom spusťte skript. Vyberte **OK** pokračovat.
 
-   ![Snímek obrazovky se stránkou Vybrat instalaci](./media/oracle-golden-gate/golden_gate_install_05.png)
+   ![Snímek obrazovky se stránkou vybrat instalaci](./media/oracle-golden-gate/golden_gate_install_05.png)
 
-7. Po dokončení instalace, vyberte **Zavřít** k dokončení procesu.
+7. Po dokončení instalace vyberte **Zavřít** a proces dokončete.
 
-   ![Snímek obrazovky se stránkou Vybrat instalaci](./media/oracle-golden-gate/golden_gate_install_06.png)
+   ![Snímek obrazovky se stránkou vybrat instalaci](./media/oracle-golden-gate/golden_gate_install_06.png)
 
-### <a name="set-up-service-on-myvm1-primary"></a>Nastavit službu na myVM1 (primární)
+### <a name="set-up-service-on-myvm1-primary"></a>Nastavení služby v myVM1 (primární)
 
-1. Vytvořte nebo aktualizujte soubor tnsnames.ora:
+1. Vytvořte nebo aktualizujte soubor souboru Tnsnames. ORA:
 
    ```bash
    $ cd $ORACLE_HOME/network/admin
@@ -498,10 +498,10 @@ Chcete-li nainstalovat službu Oracle Golden Gate, proveďte následující krok
     )
    ```
 
-2. Vytvořte vlastníka a uživatelské účty Golden Gate.
+2. Vytvoření zlatýho vlastníka a uživatelských účtů brány
 
    > [!NOTE]
-   > Účet vlastníka musí mít předponu C##.
+   > Účet vlastníka musí obsahovat předponu C# #.
    >
 
     ```bash
@@ -514,7 +514,7 @@ Chcete-li nainstalovat službu Oracle Golden Gate, proveďte následující krok
     SQL> EXIT;
     ```
 
-3. Vytvořte testovací uživatelský účet Golden Gate:
+3. Vytvořte uživatelský účet Zlaté brány pro testování:
 
    ```bash
    $ cd /u01/app/oracle/product/12.1.0/oggcore_1
@@ -528,7 +528,7 @@ Chcete-li nainstalovat službu Oracle Golden Gate, proveďte následující krok
    SQL> EXIT;
    ```
 
-4. Nakonfigurujte soubor parametrů extraktu.
+4. Nakonfigurujte soubor s parametrem pro extrakci.
 
    Spusťte rozhraní příkazového řádku Zlaté brány (ggsci):
 
@@ -545,7 +545,7 @@ Chcete-li nainstalovat službu Oracle Golden Gate, proveďte následující krok
    GGSCI> EDIT PARAMS EXTORA
    ```
 
-5. Přidejte následující do souboru parametrů EXTRACT (pomocí příkazů vi). Stiskněte klávesu Esc, ':wq!' pro uložení souboru. 
+5. Přidejte následující do souboru parametrů EXTRAKCe (pomocí příkazů VI). Stiskněte klávesu ESC, ': WQ! ' k uložení souboru. 
 
    ```bash
    EXTRACT EXTORA
@@ -560,7 +560,7 @@ Chcete-li nainstalovat službu Oracle Golden Gate, proveďte následující krok
    TABLE pdb1.test.TCUSTORD;
    ```
 
-6. Registrovat výpis -- integrovaný výpis:
+6. Registrovat extrakci – integrovaný extrakce:
 
    ```bash
    $ cd /u01/app/oracle/product/12.1.0/oggcore_1
@@ -576,7 +576,7 @@ Chcete-li nainstalovat službu Oracle Golden Gate, proveďte následující krok
    GGSCI> exit
    ```
 
-7. Nastavte kontrolní body a začněte extrahovat v reálném čase:
+7. Nastavte kontrolní body extrakce a spusťte extrakci v reálném čase:
 
    ```bash
    $ ./ggsci
@@ -599,7 +599,7 @@ Chcete-li nainstalovat službu Oracle Golden Gate, proveďte následující krok
    EXTRACT     RUNNING     EXTORA      00:00:11      00:00:04
    ```
 
-   V tomto kroku najdete počáteční scn, který bude použit později, v jiné části:
+   V tomto kroku najdete počáteční SCN, který se bude používat později, v jiné části:
 
    ```bash
    $ sqlplus / as sysdba
@@ -628,10 +628,10 @@ Chcete-li nainstalovat službu Oracle Golden Gate, proveďte následující krok
    GGSCI> ADD EXTRACT INITEXT, SOURCEISTABLE
    ```
 
-### <a name="set-up-service-on-myvm2-replicate"></a>Nastavit službu na myVM2 (replikovat)
+### <a name="set-up-service-on-myvm2-replicate"></a>Nastavení služby v myVM2 (replikace)
 
 
-1. Vytvořte nebo aktualizujte soubor tnsnames.ora:
+1. Vytvořte nebo aktualizujte soubor souboru Tnsnames. ORA:
 
    ```bash
    $ cd $ORACLE_HOME/network/admin
@@ -664,7 +664,7 @@ Chcete-li nainstalovat službu Oracle Golden Gate, proveďte následující krok
     )
    ```
 
-2. Vytvoření replikovaného účtu:
+2. Vytvořte účet replikace:
 
    ```bash
    $ sqlplus / as sysdba
@@ -676,7 +676,7 @@ Chcete-li nainstalovat službu Oracle Golden Gate, proveďte následující krok
    SQL> EXIT;
    ```
 
-3. Vytvořte si uživatelský účet pro testování Golden Gate:
+3. Vytvořte uživatelský účet Zlaté brány pro testování:
 
    ```bash
    $ cd /u01/app/oracle/product/12.1.0/oggcore_1
@@ -689,7 +689,7 @@ Chcete-li nainstalovat službu Oracle Golden Gate, proveďte následující krok
    SQL> EXIT;
    ```
 
-4. Soubor parametrů REPLICAT pro replikaci změn: 
+4. Replikované soubory REPLIKy pro replikaci změn: 
 
    ```bash
    $ cd /u01/app/oracle/product/12.1.0/oggcore_1
@@ -710,7 +710,7 @@ Chcete-li nainstalovat službu Oracle Golden Gate, proveďte následující krok
    MAP pdb1.test.*, TARGET pdb1.test.*;
    ```
 
-5. Nastavení replikovaného kontrolního bodu:
+5. Nastavení kontrolního bodu replikace:
 
    ```bash
    GGSCI> ADD REPLICAT REPORA, INTEGRATED, EXTTRAIL ./dirdat/rt
@@ -732,7 +732,7 @@ Chcete-li nainstalovat službu Oracle Golden Gate, proveďte následující krok
 
 ### <a name="set-up-the-replication-myvm1-and-myvm2"></a>Nastavení replikace (myVM1 a myVM2)
 
-#### <a name="1-set-up-the-replication-on-myvm2-replicate"></a>1. Nastavení replikace na myVM2 (replikace)
+#### <a name="1-set-up-the-replication-on-myvm2-replicate"></a>1. nastavení replikace v myVM2 (replikace)
 
   ```bash
   $ cd /u01/app/oracle/product/12.1.0/oggcore_1
@@ -740,14 +740,14 @@ Chcete-li nainstalovat službu Oracle Golden Gate, proveďte následující krok
   GGSCI> EDIT PARAMS MGR
   ```
 
-Aktualizujte soubor následujícím:
+Aktualizujte soubor následujícím způsobem:
 
   ```bash
   PORT 7809
   ACCESSRULE, PROG *, IPADDR *, ALLOW
   ```
 
-Potom restartujte službu Správce:
+Pak restartujte službu správce:
 
   ```bash
   GGSCI> STOP MGR
@@ -755,9 +755,9 @@ Potom restartujte službu Správce:
   GGSCI> EXIT
   ```
 
-#### <a name="2-set-up-the-replication-on-myvm1-primary"></a>2. Nastavení replikace na myVM1 (primární)
+#### <a name="2-set-up-the-replication-on-myvm1-primary"></a>2. nastavení replikace na myVM1 (primární)
 
-Spusťte počáteční zatížení a zkontrolujte chyby:
+Spustit počáteční načtení a vyhledat chyby:
 
 ```bash
 $ cd /u01/app/oracle/product/12.1.0/oggcore_1
@@ -766,9 +766,9 @@ GGSCI> START EXTRACT INITEXT
 GGSCI> VIEW REPORT INITEXT
 ```
 
-#### <a name="3-set-up-the-replication-on-myvm2-replicate"></a>3. Nastavení replikace na myVM2 (replikace)
+#### <a name="3-set-up-the-replication-on-myvm2-replicate"></a>3. nastavení replikace v myVM2 (replikace)
 
-Změňte číslo scn s číslem, které jste získali před:
+Číslo SCN změňte na číslo, které jste získali dříve:
 
   ```bash
   $ cd /u01/app/oracle/product/12.1.0/oggcore_1
@@ -776,10 +776,10 @@ Změňte číslo scn s číslem, které jste získali před:
   START REPLICAT REPORA, AFTERCSN 1857887
   ```
 
-Replikace byla zahájena a můžete ji otestovat vložením nových záznamů do testovacích tabulek.
+Replikace začala a můžete ji otestovat vložením nových záznamů do TESTOVACÍch tabulek.
 
 
-### <a name="view-job-status-and-troubleshooting"></a>Zobrazit stav úlohy a řešení potíží
+### <a name="view-job-status-and-troubleshooting"></a>Zobrazení stavu úlohy a odstraňování potíží
 
 #### <a name="view-reports"></a>Zobrazení sestav
 Chcete-li zobrazit sestavy na myVM1, spusťte následující příkazy:
@@ -788,32 +788,32 @@ Chcete-li zobrazit sestavy na myVM1, spusťte následující příkazy:
   GGSCI> VIEW REPORT EXTORA 
   ```
  
-Chcete-li zobrazit sestavy myVM2, spusťte následující příkazy:
+Chcete-li zobrazit sestavy na myVM2, spusťte následující příkazy:
 
   ```bash
   GGSCI> VIEW REPORT REPORA
   ```
 
 #### <a name="view-status-and-history"></a>Zobrazit stav a historii
-Chcete-li zobrazit stav a historii na myVM1, spusťte následující příkazy:
+Chcete-li zobrazit stav a historii v myVM1, spusťte následující příkazy:
 
   ```bash
   GGSCI> dblogin userid c##ggadmin, password ggadmin 
   GGSCI> INFO EXTRACT EXTORA, DETAIL
   ```
 
-Chcete-li zobrazit stav a historii na myVM2, spusťte následující příkazy:
+Chcete-li zobrazit stav a historii v myVM2, spusťte následující příkazy:
 
   ```bash
   GGSCI> dblogin userid repuser@pdb1 password rep_pass 
   GGSCI> INFO REP REPORA, DETAIL
   ```
-Tím je dokončena instalace a konfigurace golden gate na Oracle Linux.
+Tím se dokončí instalace a konfigurace Zlaté brány na Oracle Linux.
 
 
 ## <a name="delete-the-virtual-machine"></a>Odstraňte virtuální počítač
 
-Když už není potřeba, následující příkaz lze odebrat skupinu prostředků, virtuální hod a všechny související prostředky.
+Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků, virtuálního počítače a všech souvisejících prostředků použít následující příkaz.
 
 ```azurecli
 az group delete --name myResourceGroup

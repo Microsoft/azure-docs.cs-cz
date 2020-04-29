@@ -1,56 +1,56 @@
 ---
-title: Reprojekce pozdního jeviště
-description: Informace o reprojekci pozdní fáze a o tom, jak ji používat.
+title: Reprojekce pozdní fáze
+description: Informace o reprojekci a způsobu použití v pozdní fázi
 author: sebastianpick
 ms.author: sepick
 ms.date: 02/04/2020
 ms.topic: article
 ms.openlocfilehash: 4aa1148e544ff3451aa1cb956bc4a5fb932b9611
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80680983"
 ---
-# <a name="late-stage-reprojection"></a>Reprojekce pozdního jeviště
+# <a name="late-stage-reprojection"></a>Reprojekce pozdní fáze
 
-*Pozdní fáze Reprojekce* (LSR) je hardwarová funkce, která pomáhá stabilizovat hologramy, když se uživatel pohybuje.
+*Reprojekce za pozdní fázi* (LSR) je hardwarová funkce, která pomáhá stabilizovat hologramy, když se uživatel přesune.
 
-Očekává se, že statické modely si při pohybu po nich vizuálně zachovávají svou pozici. Pokud se zdají být nestabilní, toto chování může naznačovat problémy LSR. Mějte na paměti, že toto chování mohou maskovat další dynamické transformace, jako jsou animace nebo zobrazení rozpadu.
+Očekává se, že statické modely vizuálně udržují jejich polohu při přesunu kolem nich. Pokud se jeví jako nestabilní, může toto chování pomoci při LSR potížích. Pamatujte na to, že další dynamické transformace, jako jsou animace nebo zobrazení rozbalení, můžou toto chování maskovat.
 
-Můžete si vybrat mezi dvěma různými režimy LSR, a to **Planární LSR** nebo **Depth LSR**. Který z nich je aktivní, je určen tím, zda klientská aplikace odešle hloubkovou vyrovnávací paměť.
+Můžete si vybrat mezi dvěma různými LSR režimy, zejména **PLANÁRNÍ LSR** nebo **Depth LSR**. Který z nich je aktivní, určuje, jestli klientská aplikace odesílá vyrovnávací paměť hloubky.
 
-Oba režimy LSR zlepšují stabilitu hologramu, i když mají různá omezení. Začněte tím, že se pokusí hloubka LSR, jak to je pravděpodobně dává lepší výsledky ve většině případů.
+Oba režimy LSR zlepšují stabilitu hologramů, i když mají odlišná omezení. Začněte tím, že zkusíte LSRnou hloubku, protože pravděpodobně poskytuje lepší výsledky ve většině případů.
 
-## <a name="choose-lsr-mode-in-unity"></a>Volba režimu LSR v unity
+## <a name="choose-lsr-mode-in-unity"></a>Výběr režimu LSR v Unity
 
-V editoru Unity přejděte na *Soubor > nastavení sestavení*. V levém dolním rohu vyberte *Nastavení přehrávače* a zaškrtněte v části *> Nastavení XR přehrávače > sady Virtual Reality > windows smíšené realitě,* zda je zaškrtnuto **políčko Povolit sdílení hloubkové vyrovnávací paměti:**
+V editoru Unity přejít na *soubor > nastavení sestavení*. V levém dolním rohu vyberte *nastavení přehrávače* a potom zaškrtněte v části *Player > XR Settings > Virtual Reality SDK > Windows Mixed reality* , jestli je zaškrtnuté políčko **Povolit sdílení vyrovnávací paměti pro hloubku** .
 
-![Příznak Povoleno sdílení hloubkové vyrovnávací paměti](./media/unity-depth-buffer-sharing-enabled.png)
+![Příznak povoleného sdílení vyrovnávací paměti hloubky](./media/unity-depth-buffer-sharing-enabled.png)
 
-Pokud ano, vaše aplikace bude používat Hloubka LSR, jinak bude používat Planární LSR.
+Pokud je, vaše aplikace bude používat LSR hloubku, jinak bude používat planární LSR.
 
-## <a name="depth-lsr"></a>Hloubka LSR
+## <a name="depth-lsr"></a>LSR hloubky
 
-Aby hloubka LSR fungovala, musí klientská aplikace poskytnout platnou hloubkovou vyrovnávací paměť, která obsahuje všechny příslušné geometrie, které je třeba zvážit během LSR.
+Aby LSRa hloubka fungovala, musí klientská aplikace dodat platnou hloubkovou vyrovnávací paměť, která obsahuje všechny relevantní geometrie, které by měly být během LSR zváženy.
 
-Hloubka LSR se pokouší stabilizovat snímek videa na základě obsahu dodané hloubkové vyrovnávací paměti. V důsledku toho obsah, který nebyl vykreslen na něj, jako jsou průhledné objekty, nelze upravit LSR a může zobrazit nestabilitu a reprojection artefakty.
+LSR hloubky se pokusí stabilizovat snímek videa na základě obsahu poskytnuté vyrovnávací paměti s hloubkou. Vzhledem k tomu, že obsah, který se na něj nevykresluje, jako jsou průhledné objekty, nejde upravit pomocí LSR a může zobrazovat artefakty nestability a reprojekce.
 
-## <a name="planar-lsr"></a>Rovinná LSR
+## <a name="planar-lsr"></a>Planární LSR
 
-Planární LSR nemá informace o hloubce pro jeden pixel, jako hloubka LSR dělá. Místo toho znovu roztážní veškerý obsah na základě roviny, kterou je nutné zadat každý snímek.
+Planární LSR nemá informace o hloubkě pro pixel, jako má hloubka LSR. Místo toho bude znovu promítnout veškerý obsah na základě roviny, kterou je nutné poskytnout každému snímku.
 
-Rovinné LSR přetavit ty objekty nejlepší, které leží v blízkosti zadané roviny. Čím dál je objekt, tím je nestabilní, tím bude vypadat. Zatímco hloubka LSR je lepší při přemýšlení objektů v různých hloubkách, rovinná LSR může lépe fungovat pro obsah, který se dobře vyrovná s rovinou.
+Planární LSR reprojektuje tyto objekty nejlépe, které leží blízko dodané roviny. Dalším objektem je, tím větší nestabilita bude vypadat. I když je hloubka LSRa lepší při reprojektech objektů v různých hloubkách, může planární LSR fungovat lépe, aby se obsah dobře zarovnal s rovinou.
 
-### <a name="configure-planar-lsr-in-unity"></a>Konfigurace rovinné lsr v jednotě
+### <a name="configure-planar-lsr-in-unity"></a>Konfigurace planární LSR v Unity
 
-Parametry roviny jsou odvozeny z takzvaného *zaostřovacího* `UnityEngine.XR.WSA.HolographicSettings.SetFocusPointForFrame`bodu , který musíte poskytnout každému snímku . Podrobnosti najdete v [rozhraní API prioritního bodu unity.](https://docs.microsoft.com/windows/mixed-reality/focus-point-in-unity) Pokud nenastavíte zaostřovací bod, bude pro vás vybrán záložní bod. Tento automatický záložní často však vede k neoptimálním výsledkům.
+Parametry roviny jsou odvozeny od třídy, která se označuje jako vstupní *bod*, který je nutné zadat `UnityEngine.XR.WSA.HolographicSettings.SetFocusPointForFrame`každý rámec. Podrobnosti najdete v tématu [rozhraní API pro zaměření služby Unity](https://docs.microsoft.com/windows/mixed-reality/focus-point-in-unity) . Pokud nenastavíte fokus, bude pro vás zvolena možnost záložního bodu. Automatické nouzové řešení často vede k neoptimálním výsledkům.
 
-Zaostřovací bod můžete vypočítat sami, i když může mít smysl založit jej na tom, který vypočítá hostitel vzdáleného vykreslování. Zavolejte, `RemoteManagerUnity.CurrentSession.GraphicsBinding.GetRemoteFocusPoint` abyste to získali. Budete vyzváni k zadání souřadnicového rámce, ve kterém se vyjádří zaostřovací bod. Ve většině případů budete chtít poskytnout výsledek `UnityEngine.XR.WSA.WorldManager.GetNativeISpatialCoordinateSystemPtr` zde.
+Fokus můžete vypočítat sami, ale může to mít smysl na základu vypočítaného hostitelem vzdáleného vykreslování. Zavolejte `RemoteManagerUnity.CurrentSession.GraphicsBinding.GetRemoteFocusPoint` k získání. Zobrazí se výzva k zadání souřadnicového rámce, ve kterém se bude soustředit pozice kurzoru. Ve většině případů budete chtít jenom zadat výsledek z `UnityEngine.XR.WSA.WorldManager.GetNativeISpatialCoordinateSystemPtr` tohoto místa.
 
-Klient i hostitel obvykle vykreslují obsah, o kterém si druhá strana není vědoma, například prvky uživatelského rozhraní v klientovi. Proto může mít smysl kombinovat vzdálený zaostřovací bod s místně vypočteným bodem.
+Obvykle klient i hostitel vykreslí obsah, na který druhá strana neví, například prvky uživatelského rozhraní klienta. Proto může být vhodné zkombinovat bod vzdáleného zaměření s místně vypočítaným objektem.
 
-Zaostřovací body vypočítané ve dvou po sobě jdoucích snímcích mohou být zcela odlišné. Jednoduše jejich použití as-je může vést k hologramy se zdají být skákání kolem. Chcete-li tomuto chování zabránit, interpolace mezi předchozím a aktuálním zaostřovacím bodem je vhodné.
+Body výběru vypočítané ve dvou po sobě jdoucích snímcích můžou být poměrně odlišné. Stačí je jednoduše používat tak, jak je možné, že se k nim můžete pohybovat na hologramech. Aby se zabránilo tomuto chování, je vhodné provést interpolaci mezi předchozími a aktuálními body výběru.
 
 ## <a name="next-steps"></a>Další kroky
 

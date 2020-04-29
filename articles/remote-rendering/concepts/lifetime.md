@@ -1,44 +1,44 @@
 ---
-title: Životnost objektu a prostředků
+title: Životnost objektů a prostředků
 description: Vysvětluje správu životnosti pro různé typy
 author: jakrams
 ms.author: jakras
 ms.date: 02/06/2020
 ms.topic: conceptual
 ms.openlocfilehash: d031ff4a6ee86da2843f0f18ac428c50f7cfc121
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681867"
 ---
-# <a name="object-and-resource-lifetime"></a>Životnost objektu a prostředků
+# <a name="object-and-resource-lifetime"></a>Životnost objektů a prostředků
 
 Vzdálené vykreslování Azure rozlišuje mezi dvěma typy: **objekty** a **prostředky**.
 
-## <a name="object-lifetime"></a>Životnost objektu
+## <a name="object-lifetime"></a>Doba života objektu
 
-*Objekty* jsou považovány za věci, které uživatel může vytvořit, upravit a zničit podle vlastního uvážení. Objekty mohou být duplikovány volně a každá instance může v průběhu času mutovat. V důsledku toho [entity](entities.md) a [součásti](components.md) jsou objekty.
+*Objekty* se považují za to, že uživatel může vytvářet, upravovat a zničit vlastní rozhodnutí. Objekty mohou být volně duplikovány a každá instance může být v průběhu času. [Entity](entities.md) a [komponenty](components.md) jsou tedy objekty.
 
-Životnost objektů je plně pod kontrolou uživatele. To však nesouvisí s životností reprezentace na straně klienta. Třídy `Entity` `Component` jako `Destroy` a mají funkci, která musí být volána navrátit objekt na vzdáleném vykreslovacím hostitele. Navíc `Entity.Destroy()` zničí entitu, její podřízené součásti a všechny součásti v této hierarchii.
+Doba života objektů je plně v rámci uživatelského ovládacího prvku. Nesouvisí s životností reprezentace na straně klienta, i když. Třídy jako `Entity` a `Component` mají `Destroy` funkci, která musí být volána k navrácení objektu na vzdáleném hostiteli vykreslování. Navíc `Entity.Destroy()` odstraní entitu, její podřízené položky a všechny komponenty v této hierarchii.
 
-## <a name="resource-lifetime"></a>Životnost zdroje
+## <a name="resource-lifetime"></a>Doba života prostředku
 
-*Prostředky* jsou věci, jejichž životnost je zcela spravována hostitelem vzdáleného vykreslování. Prostředky jsou počítány interně. Rozmístí je, když na ně už nikdo nenazve.
+*Prostředky* jsou věci, jejichž životnost je zcela spravovaná hostitelem vzdáleného vykreslování. Odkazy na prostředky jsou vypočítány interně. Budou se navrátit, pokud už žádné z nich neodkazují.
 
-Většinu prostředků lze vytvořit pouze nepřímo, obvykle jejich načtením ze souboru. Při načtení stejného souboru vícekrát Azure Remote Rendering vrátí stejný odkaz a není znovu načíst data.
+Většinu prostředků lze vytvořit pouze nepřímo, obvykle jejich načtením ze souboru. Když se stejný soubor načte víckrát, vzdálené vykreslování Azure vrátí stejný odkaz a data znovu nenačte.
 
-Mnoho prostředků je neměnných, například [ok](meshes.md) a [textur .](textures.md) Některé zdroje jsou však proměnlivé, například [materiály](materials.md). Vzhledem k tomu, že prostředky jsou často sdíleny, může úprava prostředku ovlivnit více objektů. Například změna barvy materiálu změní barvu všech objektů, které používají ok, což zase odkazuje na tento materiál.
+Mnoho prostředků je neměnné, a to pro [sítě](meshes.md) a [textury](textures.md)pro instance. Některé prostředky jsou proměnlivé, ale například [materiály](materials.md). Vzhledem k tomu, že prostředky jsou často sdíleny, může změna prostředku ovlivnit více objektů. Například změna barvy materiálu změní barvu všech objektů, které používají sítě, které zase odkazují na tento materiál.
 
 ### <a name="built-in-resources"></a>Integrované prostředky
 
-Azure Remote Rendering obsahuje některé předdefinované prostředky, které lze načíst pomocí jejich příslušného identifikátoru během `builtin://` volání `AzureSession.Actions.LoadXYZAsync()`. Dostupné předdefinované prostředky jsou uvedeny v dokumentaci pro každou příslušnou funkci. V kapitole [obloha](../overview/features/sky.md) jsou například uvedeny vestavěné textury oblohy.
+Vzdálené vykreslování Azure obsahuje některé integrované prostředky, které je možné načíst pomocí předpřipravenosti jejich příslušného identifikátoru v `builtin://` průběhu volání `AzureSession.Actions.LoadXYZAsync()`. Dostupné integrované prostředky jsou uvedeny v dokumentaci pro každou příslušnou funkci. Například [Kapitola nebe](../overview/features/sky.md) uvádí vestavěné textury nebe.
 
-## <a name="general-lifetime"></a>Obecná životnost
+## <a name="general-lifetime"></a>Obecná doba platnosti
 
-Životnost všech objektů a prostředků je vázána na připojení. Při odpojení je vše zahozeno. Při opětovném připojení ke stejné relaci bude graf scény prázdný a všechny prostředky budou vymazány.
+Doba života všech objektů a prostředků je vázána na připojení. Při odpojení všeho se zruší. Při opětovném připojení ke stejné relaci bude graf scény prázdný a všechny prostředky budou smazány.
 
-V praxi načítání stejného prostředku do relace po odpojení je obvykle rychlejší než poprvé. To je případ, protože většina prostředků musí být staženy z Azure Storage poprvé, což není nutné podruhé, což šetří značné množství času.
+V praxi je po odpojení obvykle rychlejší, když se v relaci načítají stejný prostředek, většinou rychleji než první. Důvodem je to, že většina prostředků musí být stažena z Azure Storage poprvé, což není nutné podruhé, ušetříte tak velké množství času.
 
 ## <a name="next-steps"></a>Další kroky
 

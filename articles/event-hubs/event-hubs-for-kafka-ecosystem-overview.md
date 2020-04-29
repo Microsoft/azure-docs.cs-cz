@@ -1,6 +1,6 @@
 ---
-title: Použití centra událostí z aplikace Apache Kafka – Azure Event Hubs | Dokumenty společnosti Microsoft
-description: Tento článek obsahuje informace o podpoře Apache Kafka pomocí Azure Event Hubs.
+title: Použití centra událostí z aplikace Apache Kafka – Azure Event Hubs | Microsoft Docs
+description: Tento článek poskytuje informace o podpoře Apache Kafka službou Azure Event Hubs.
 services: event-hubs
 documentationcenter: .net
 author: ShubhaVijayasarathy
@@ -11,49 +11,49 @@ ms.custom: seodec18
 ms.date: 02/12/2020
 ms.author: shvija
 ms.openlocfilehash: 91e2d70bab8c1be4b3e5b400ce21122eccb1e9eb
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80811378"
 ---
-# <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>Používání Center událostí Azure z aplikací Apache Kafka
-Event Hubs poskytuje koncový bod Kafka, který může být použit pro vaše stávající aplikace založené na Kafka jako alternativu ke spuštění vlastního clusteru Kafka. Event Hubs podporuje [protokol Apache Kafka 1.0 a novější](https://kafka.apache.org/documentation/)a pracuje s vašimi stávajícími aplikacemi Kafka, včetně MirrorMakeru.  
+# <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>Použití Azure Event Hubs z Apache Kafkach aplikací
+Event Hubs poskytuje koncový bod Kafka, který můžou stávající aplikace založené na Kafka použít jako alternativu ke spuštění vlastního clusteru Kafka. Event Hubs podporuje [Apache Kafka protokol 1,0 a novější](https://kafka.apache.org/documentation/)a funguje s vašimi stávajícími aplikacemi Kafka, včetně nástroje MirrorMaker.  
 
 > [!VIDEO https://www.youtube.com/embed/UE1WgB96_fc]
 
-## <a name="what-does-event-hubs-for-kafka-provide"></a>Co centra událostí pro Kafku poskytují?
+## <a name="what-does-event-hubs-for-kafka-provide"></a>Co Event Hubs for Kafka poskytnout?
 
-Funkce Event Hubs for Kafka poskytuje vedoucí protokolu nad Azure Event Hubs, který je binární kompatibilní s Kafka verze 1.0 a novější pro čtení z a zápis do kafka témata. Můžete začít používat koncový bod Kafka z vašich aplikací bez změny kódu, ale minimální změny konfigurace. Připojovací řetězec v konfiguracích aktualizujete tak, aby ukazoval na koncový bod Kafka vystavený centrem událostí namísto odkazování na cluster Kafka. Potom můžete spustit streamování událostí z vašich aplikací, které používají protokol Kafka do centra událostí. Tato integrace také podporuje architektury, jako je [Kafka Connect](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/connect), který je v současné době ve verzi Preview. 
+Funkce Event Hubs for Kafka poskytuje hlavní hlavičku protokolu pro Azure Event Hubs, která je binární kompatibilní s Kafka verzemi 1,0 a novějšími pro čtení i zápis do Kafka témat. Můžete začít používat Kafka koncový bod z vašich aplikací bez změny kódu, ale minimální změna konfigurace. Připojovací řetězec v konfiguracích aktualizujete tak, aby odkazoval na koncový bod Kafka vystavený centrem událostí, a nemusíte ukazovat na svůj cluster Kafka. Pak můžete spustit streamování událostí z aplikací, které používají protokol Kafka, do Event Hubs. Tato integrace také podporuje architektury, jako je [Kafka Connect](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/connect), která je aktuálně ve verzi Preview. 
 
-Koncepčně Kafka a Event Hubs jsou téměř identické: jsou to oba rozdělené protokoly vytvořené pro streamování dat. V následující tabulce jsou mapuje koncepty mezi Kafka a Event Hubs.
+Koncepční Kafka a Event Hubs jsou téměř identické: Jedná se o segmentované protokoly sestavené pro streamovaná data. Následující tabulka mapuje koncepty mezi Kafka a Event Hubs.
 
-### <a name="kafka-and-event-hub-conceptual-mapping"></a>Koncepční mapování Kafka a Event Hub
+### <a name="kafka-and-event-hub-conceptual-mapping"></a>Kafka a konceptuální mapování centra událostí
 
-| Koncept Kafka | Koncept centra událostí|
+| Koncept Kafka | Event Hubs koncept|
 | --- | --- |
 | Cluster | Obor názvů |
 | Téma | Centrum událostí |
 | Oddíl | Oddíl|
-| Skupina spotřebitelů | Skupina spotřebitelů |
+| Skupina uživatelů | Skupina uživatelů |
 | Posun | Posun|
 
-### <a name="key-differences-between-kafka-and-event-hubs"></a>Klíčové rozdíly mezi Kafkou a Event Huby
+### <a name="key-differences-between-kafka-and-event-hubs"></a>Klíčové rozdíly mezi Kafka a Event Hubs
 
-Zatímco [Apache Kafka](https://kafka.apache.org/) je software, který můžete spouštět, ať si vyberete, Event Hubs je cloudová služba podobná Azure Blob Storage. Nejsou k dispozici žádné servery nebo sítě, které by bylo možné spravovat, a žádné zprostředkovatele, které by bylo možné konfigurovat. Vytvoříte obor názvů, což je hlavní název, ve kterém jsou vaše témata aktivní, a pak vytvoříte centra událostí nebo témata v rámci tohoto oboru názvů. Další informace o rozbočovačích událostí a oborech názvů najdete v [tématu Funkce centra událostí](event-hubs-features.md#namespace). Jako cloudová služba centra událostí používá jako koncový bod jednu stabilní virtuální IP adresu, takže klienti nemusí vědět o zprostředkovatelích nebo počítačích v rámci clusteru. 
+I když [Apache Kafka](https://kafka.apache.org/) je software, který můžete spustit všude, kde si zvolíte, Event Hubs je cloudová služba, která se podobá službě Azure Blob Storage. Neexistují žádné servery nebo sítě, které by bylo možné spravovat, a žádné zprostředkovatele pro konfiguraci. Vytvoříte obor názvů, který je plně kvalifikovaný název domény, ve kterém jsou témata živá, a pak vytvoříte Event Hubs nebo témata v rámci tohoto oboru názvů. Další informace o Event Hubs a oborech názvů najdete v tématu [Event Hubs funkce](event-hubs-features.md#namespace). Jako cloudová služba Event Hubs používá jedinou stabilní virtuální IP adresu jako koncový bod, takže klienti nepotřebují znát o vzdálení nebo počítačích v clusteru. 
 
-Škálování v rozbočovačích událostí je řízeno tím, kolik jednotek propustnosti zakoupíte, přičemž každá jednotka propustnosti vás opravňuje k 1 MB za sekundu nebo 1000 událostí za sekundu příchozího přenosu dat. Ve výchozím nastavení se centra událostí zvětšují jednotky propustností, když dosáhnete limitu pomocí funkce [Automatické nafouknutí;](event-hubs-auto-inflate.md) Tato funkce funguje také s funkcí Event Hubs for Kafka. 
+Škála v Event Hubs se řídí počtem jednotek propustnosti, které zakoupíte, s každou jednotkou propustnosti entitling na 1 MB za sekundu nebo za 1000 událostí za sekundu příchozího přenosu dat. Ve výchozím nastavení Event Hubs škáluje jednotky propustnosti, když dosáhnete svého limitu pomocí funkce [automatického rozplochení](event-hubs-auto-inflate.md) ; Tato funkce funguje taky s funkcí Event Hubs pro Kafka. 
 
 ### <a name="security-and-authentication"></a>Zabezpečení a ověřování
-Pokaždé, když publikujete nebo spotřebováváte události z centra událostí pro Kafka, váš klient se pokouší získat přístup k prostředkům Centra událostí. Chcete zajistit, aby prostředky byly přístupné pomocí autorizované entity. Při použití protokolu Apache Kafka se svými klienty můžete nastavit konfiguraci pro ověřování a šifrování pomocí mechanismů SASL. Při použití Event Hubs pro Kafka vyžaduje šifrování TLS (jako všechna data při přenosu s Event Hubs je TLS šifrované). To lze provést určení SASL_SSL možnost v konfiguračním souboru. 
+Při každém publikování nebo zpracování událostí z Event Hubs pro Kafka se klient pokouší získat přístup k prostředkům Event Hubs. Chcete zajistit, aby k prostředkům byl přistup pomocí autorizované entity. Při použití Apache Kafka protokolu u klientů můžete nastavit konfiguraci pro ověřování a šifrování pomocí mechanismů SASL. Při použití Event Hubs pro Kafka se vyžaduje šifrování TLS (protože všechna data v přenosu s Event Hubs jsou šifrovaná TLS). Můžete to udělat zadáním možnosti SASL_SSL v konfiguračním souboru. 
 
-Azure Event Hubs poskytuje několik možností autorizace přístupu k zabezpečeným prostředkům. 
+Azure Event Hubs poskytuje několik možností, jak autorizovat přístup k vašim zabezpečeným prostředkům. 
 
 - OAuth
 - Sdílený přístupový podpis (SAS)
 
 #### <a name="oauth"></a>OAuth
-Event Hubs se integruje s Azure Active Directory (Azure AD), který poskytuje centralizovaný autorizovaný autorizační server kompatibilní s **OAuth** 2.0. S Azure AD, můžete použít řízení přístupu na základě rolí (RBAC) udělit jemně odstupňovaná oprávnění k identitám klienta. Tuto funkci můžete použít s klienty Kafka zadáním **SASL_SSL** pro protokol a **OAUTHBEARER** pro mechanismus. Podrobnosti o rolích RBAC a úrovních pro přístup k oborům najdete [v tématu Autorizace přístupu pomocí služby Azure AD](authorize-access-azure-active-directory.md).
+Event Hubs se integruje s Azure Active Directory (Azure AD), která poskytuje centralizovaný autorizační server kompatibilní s **OAuth** 2,0. Pomocí Azure AD můžete použít řízení přístupu na základě role (RBAC) k udělení jemně odstupňovaných oprávnění pro identity klientů. Tuto funkci můžete použít u klientů Kafka zadáním **SASL_SSL** pro protokol a **OAUTHBEARER** pro mechanismus. Podrobnosti o rolích a úrovních RBAC pro přístup k oboru najdete v tématu [autorizace přístupu pomocí Azure AD](authorize-access-azure-active-directory.md).
 
 ```xml
 bootstrap.servers=NAMESPACENAME.servicebus.windows.net:9093
@@ -64,7 +64,7 @@ sasl.login.callback.handler.class=CustomAuthenticateCallbackHandler;
 ```
 
 #### <a name="shared-access-signature-sas"></a>Sdílený přístupový podpis (SAS)
-Centra událostí také poskytuje **sdílené přístupové podpisy (SAS)** pro delegovaný přístup k event hubům pro prostředky Kafka. Autorizace přístupu pomocí mechanismu založeného na tokenech OAuth 2.0 poskytuje vynikající zabezpečení a snadné použití oproti SAS. Předdefinované role mohou také eliminovat potřebu autorizace založené na přístupové mlze, která musí být udržována a spravována uživatelem. Tuto funkci můžete použít s klienty Kafka zadáním **SASL_SSL** pro protokol a **PLAIN** pro mechanismus. 
+Event Hubs taky poskytuje **sdílené přístupové podpisy (SAS)** pro delegovaný přístup k Event Hubs prostředkům Kafka. Autorizaci přístupu pomocí mechanismu OAuth 2,0 s tokenem založeným na tokenech zabezpečení poskytuje prvotřídní zabezpečení a snadné použití prostřednictvím SAS. Předdefinované role mohou také eliminovat nutnost ověřování na základě seznamu ACL, které musí uživatel spravovat a spravovat. Tuto funkci můžete použít spolu s klienty Kafka zadáním **SASL_SSL** pro protokol a pro mechanismus **jako prostý** . 
 
 ```xml
 bootstrap.servers=NAMESPACENAME.servicebus.windows.net:9093
@@ -74,28 +74,28 @@ sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule require
 ```
 
 #### <a name="samples"></a>ukázky 
-**Kurz** s podrobnými pokyny k vytvoření centra událostí a přístup u něj pomocí SAS nebo OAuth najdete v [tématu Rychlý start: Streamování dat pomocí centra událostí pomocí protokolu Kafka](event-hubs-quickstart-kafka-enabled-event-hubs.md).
+**Kurz** s podrobnými pokyny k vytvoření centra událostí a přístup k němu pomocí SAS nebo OAuth najdete v tématu [rychlý Start: streamování dat pomocí Event Hubs pomocí protokolu Kafka](event-hubs-quickstart-kafka-enabled-event-hubs.md).
 
-Další **ukázky,** které ukazují, jak používat OAuth s event huby pro Kafka, najdete [v ukázkách na GitHubu](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth).
+Další **ukázky** , které ukazují, jak používat OAuth s Event Hubs pro Kafka, najdete v tématu [ukázky na GitHubu](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth).
 
 ## <a name="other-event-hubs-features-available-for-kafka"></a>Další funkce Event Hubs dostupné pro Kafka
 
-Funkce Event Hubs for Kafka umožňuje psát pomocí jednoho protokolu a číst pomocí jiného, takže vaši stávající producenti Kafka můžou pokračovat v publikování přes Kafka a můžete přidávat čtečky pomocí event hubů, jako je Azure Stream Analytics nebo Azure Functions. Kromě toho funkce Event Hubs, jako je [zachycení](event-hubs-capture-overview.md) a [geografické zotavení po havárii,](event-hubs-geo-dr.md) také pracují s funkcí Event Hubs pro Kafka.
+Funkce Event Hubs for Kafka umožňuje psát pomocí jednoho protokolu a číst s jiným, takže stávající výrobci Kafka mohou pokračovat v publikování prostřednictvím Kafka a můžete přidat čtenáře s Event Hubs, jako je například Azure Stream Analytics nebo Azure Functions. Kromě toho Event Hubs funkce, jako je například [zachycení](event-hubs-capture-overview.md) a [geografická havárie – obnovení](event-hubs-geo-dr.md) , fungují také s funkcí Event Hubs pro Kafka.
 
-## <a name="features-that-are-not-yet-supported"></a>Funkce, které ještě nejsou podporovány 
+## <a name="features-that-are-not-yet-supported"></a>Funkce, které ještě nejsou podporované 
 
-Zde je seznam funkcí Kafka, které ještě nejsou podporovány:
+Tady je seznam funkcí Kafka, které ještě nejsou podporované:
 
-*   Idempotentní výrobce
+*   Idempotentní producent
 *   Transakce
 *   Komprese
-*   Uchovávání podle velikosti
-*   Zhutnění protokolu
-*   Přidání oddílů do existujícího tématu
+*   Uchovávání na základě velikosti
+*   Komprimace protokolů
+*   Přidávání oddílů do existujícího tématu
 *   Podpora rozhraní HTTP Kafka API
-*   Kafka potoky
+*   Datové proudy Kafka
 
 ## <a name="next-steps"></a>Další kroky
-Tento článek poskytl úvod do event hubů pro Kafka. Další informace najdete v [tématu Apache Kafka developer guide for Azure Event Hubs](apache-kafka-developer-guide.md).
+Tento článek poskytuje Úvod do Event Hubs pro Kafka. Další informace najdete v tématu [Apache Kafka příručka pro vývojáře pro Azure Event Hubs](apache-kafka-developer-guide.md).
 
 

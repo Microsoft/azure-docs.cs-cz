@@ -1,6 +1,6 @@
 ---
 title: Síťové služby pro škálovací sady virtuálních počítačů Azure
-description: Jak konfiguraci některé pokročilejší síťové vlastnosti pro škálovací sady virtuálních počítačů Azure.
+description: Jak nakonfigurovat některé pokročilejší síťové vlastnosti pro Azure Virtual Machine Scale Sets.
 author: mimckitt
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 07/17/2017
 ms.author: mimckitt
 ms.openlocfilehash: efe3a39008361fdf76d80a0c8e7e2e30b061117d
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81461343"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Síťové služby pro škálovací sady virtuálních počítačů Azure
@@ -41,27 +41,27 @@ Akcelerované síťové služby Azure zlepšují výkon sítě tím, že na virt
 }
 ```
 
-## <a name="azure-virtual-machine-scale-sets-with-azure-load-balancer"></a>Škálovací sady virtuálních strojů Azure s Azure Load Balancer
+## <a name="azure-virtual-machine-scale-sets-with-azure-load-balancer"></a>Azure Virtual Machine Scale Sets s Azure Load Balancer
 
-Při práci se sadami škálování virtuálních strojů a nástrojpro vyrovnávání zatížení je třeba vzít v úvahu následující:
+Při práci se službou Virtual Machine Scale Sets a nástrojem pro vyrovnávání zatížení je třeba zvážit následující:
 
-* **Škálovací sady virtuálních strojů nemohou používat stejný nástroj pro vyrovnávání zatížení**.
-* **Port Forwarding a příchozí pravidla NAT**:
-  * Každá škálovací sada virtuálního počítače musí mít pravidlo příchozího nat.
-  * Po vytvoření škálovací sady nelze port back-endu změnit pro pravidlo vyrovnávání zatížení používané sondou stavu systému vyrovnávání zatížení. Chcete-li změnit port, můžete odebrat sondu stavu aktualizací škálovací sady virtuálního počítače Azure, aktualizovat port a pak znovu nakonfigurovat sondu stavu.
-  * Při použití škálovací sady virtuálních strojů v back-endovém fondu nástroje pro vyrovnávání zatížení se automaticky vytvoří výchozí příchozí pravidla NAT.
+* **Více sad Virtual Machine Scale Sets nemůže používat stejný nástroj pro vyrovnávání zatížení**.
+* **Pravidla předávání portů a příchozí NAT**:
+  * Každá sada škálování virtuálního počítače musí mít pravidlo příchozího překladu adres (NAT).
+  * Po vytvoření sady škálování se port back-endu nedá změnit pro pravidlo vyrovnávání zatížení používané sondou stavu nástroje pro vyrovnávání zatížení. Pokud chcete změnit port, můžete odstranit sondu stavu tak, že aktualizujete sadu škálování virtuálního počítače Azure, aktualizujete port a pak znovu nakonfigurujete test stavu.
+  * Při použití sady škálování virtuálních počítačů ve fondu back-end nástroje pro vyrovnávání zatížení se automaticky vytvoří výchozí pravidla příchozího překladu adres (NAT).
 * **Pravidla vyrovnávání zatížení**:
-  * Při použití škálovací sady virtuálních strojů v back-endovém fondu nástroje pro vyrovnávání zatížení se automaticky vytvoří výchozí pravidlo vyrovnávání zatížení.
+  * Při použití sady škálování virtuálních počítačů ve fondu back-end nástroje pro vyrovnávání zatížení se automaticky vytvoří výchozí pravidlo vyrovnávání zatížení.
 * **Odchozí pravidla**:
-  *  Chcete-li vytvořit odchozí pravidlo pro fond back-endu, na který je již odkazováno pravidlem vyrovnávání zatížení, musíte nejprve označit **"Vytvořit implicitní odchozí pravidla"** jako **Ne** na portálu při vytvoření pravidla vyrovnávání příchozího zatížení.
+  *  Pokud chcete vytvořit odchozí pravidlo pro back-end fond, na který se už odkazuje pravidlo vyrovnávání zatížení, musíte **nejdřív na portálu** označit **možnost vytvořit implicitní odchozí pravidla** , když se vytvoří pravidlo vyrovnávání zatížení.
 
   :::image type="content" source="./media/vmsslb.png" alt-text="Vytvoření pravidla vyrovnávání zatížení" border="true":::
 
-Následující metody lze použít k nasazení škálovací sady virtuálních strojů s existujícím nástrojem pro vyrovnávání zatížení Azure.
+K nasazení sady škálování virtuálního počítače s existujícím nástrojem pro vyrovnávání zatížení Azure můžete použít následující metody.
 
-* [Nakonfigurujte škálovací sadu virtuálních strojů pomocí existujícího nástroje Provynaci zatížení Azure pomocí portálu Azure](https://docs.microsoft.com/azure/load-balancer/configure-vm-scale-set-portal).
-* [Nakonfigurujte škálovací sadu virtuálních strojů pomocí existujícího nástroje Provynaci zatížení Azure pomocí Azure PowerShellu](https://docs.microsoft.com/azure/load-balancer/configure-vm-scale-set-powershell).
-* [Nakonfigurujte škálovací sadu virtuálních strojů pomocí existujícího nástroje pro vyrovnávání zatížení Azure pomocí rozhraní příkazového příkazového příkazu Kontu Azure](https://docs.microsoft.com/azure/load-balancer/configure-vm-scale-set-cli).
+* [Nakonfigurujte sadu škálování virtuálního počítače s existujícím Azure Load Balancer pomocí Azure Portal](https://docs.microsoft.com/azure/load-balancer/configure-vm-scale-set-portal).
+* [Nakonfigurujte sadu škálování virtuálního počítače s existujícím Azure Load Balancer pomocí Azure PowerShell](https://docs.microsoft.com/azure/load-balancer/configure-vm-scale-set-powershell).
+* [Nakonfigurujte sadu škálování virtuálního počítače s existujícím Azure Load Balancer pomocí Azure CLI](https://docs.microsoft.com/azure/load-balancer/configure-vm-scale-set-cli).
 
 ## <a name="create-a-scale-set-that-references-an-application-gateway"></a>Vytvoření škálovací sady, která odkazuje na aplikační bránu
 Pokud chcete vytvořit škálovací sadu, která používá aplikační bránu, odkažte v sekci ipConfigurations této škálovací sady na fond adres back-endu aplikační brány jako v této konfiguraci šablony ARM:
@@ -104,7 +104,7 @@ Pokud chcete nakonfigurovat vlastní servery DNS v šabloně Azure, přidejte do
 ### <a name="creating-a-scale-set-with-configurable-virtual-machine-domain-names"></a>Vytvoření škálovací sady s konfigurovatelnými názvy domén virtuálních počítačů
 Pokud chcete vytvořit škálovací sadu s vlastním názvem DNS pro virtuální počítače pomocí rozhraní příkazového řádku, přidejte do příkazu **virtual machine scale set create** argument **--vm-domain-name** následovaný řetězcem představujícím název domény.
 
-Chcete-li nastavit název domény v šabloně Azure, přidejte vlastnost **dnsSettings** do oddílu škálovat **síťová konfigurace rozhraní.** Příklad:
+Pokud chcete nastavit název domény v šabloně Azure, přidejte do části **networkInterfaceConfigurations** sady škálování vlastnost **dnsSettings** . Příklad:
 
 ```json
 "networkProfile": {
@@ -150,7 +150,7 @@ Některé scénáře však vyžadují, aby virtuální počítače ve škálovac
 ### <a name="creating-a-scale-set-with-public-ip-per-virtual-machine"></a>Vytvoření škálovací sady s veřejnou IP adresou na virtuální počítač
 Pokud chcete pomocí rozhraní příkazového řádku vytvořit škálovací sadu, která každému virtuálnímu počítači přiřadí veřejnou IP adresu, přidejte do příkazu **vmss create** parametr **--public-ip-per-vm**. 
 
-Pokud chcete vytvořit škálovací sadu pomocí šablony Azure, ujistěte se, že verze rozhraní API prostředku Microsoft.Compute/virtualMachineScaleSets je alespoň **2017-03-30**a přidejte vlastnost **publicIpAddressConfiguration** JSON do oddílu škálovací sada ipConfigurations. Příklad:
+Pokud chcete vytvořit sadu škálování pomocí šablony Azure, ujistěte se, že je verze API prostředku Microsoft. COMPUTE/virtualMachineScaleSets aspoň **2017-03-30**, a přidejte do oddílu IPConfiguration sady škálování **publicIpAddressConfiguration** vlastnost JSON. Příklad:
 
 ```json
 "publicIpAddressConfiguration": {
@@ -166,7 +166,7 @@ Ukázková šablona: [201-vmss-public-ip-linux](https://github.com/Azure/azure-q
 ### <a name="querying-the-public-ip-addresses-of-the-virtual-machines-in-a-scale-set"></a>Dotazování veřejných IP adres virtuálních počítačů ve škálovací sadě
 Pokud chcete zobrazit seznam veřejných IP adres přiřazených k virtuálním počítačům ve škálovací sadě pomocí rozhraní příkazového řádku, použijte příkaz **az vmss list-instance-public-ips**.
 
-Chcete-li seznam škálovat nastavit veřejné IP adresy pomocí Prostředí PowerShell, použijte _příkaz Get-AzPublicIpAddress._ Příklad:
+Pokud chcete zobrazit seznam veřejných IP adres sady škálování pomocí PowerShellu, použijte příkaz _Get-AzPublicIpAddress_ . Příklad:
 
 ```powershell
 Get-AzPublicIpAddress -ResourceGroupName myrg -VirtualMachineScaleSetName myvmss

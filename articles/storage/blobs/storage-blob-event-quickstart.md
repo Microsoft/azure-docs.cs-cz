@@ -1,6 +1,6 @@
 ---
-title: Odeslání událostí úložiště objektů blob Azure do koncového bodu webu – Azure CLI | Dokumenty společnosti Microsoft
-description: Pomocí služby Azure Event Grid se můžete přihlásit k odběru událostí služby Blob Storage. Odeslat události webhooku. Zpracování událostí ve webové aplikaci.
+title: Odeslání událostí služby Azure Blob Storage do webového koncového bodu – Azure CLI | Microsoft Docs
+description: Pomocí služby Azure Event Grid se můžete přihlásit k odběru událostí služby Blob Storage. Odešle události do Webhooku. Zpracování událostí ve webové aplikaci.
 author: normesta
 ms.author: normesta
 ms.reviewer: cbrooks
@@ -9,13 +9,13 @@ ms.topic: how-to
 ms.service: storage
 ms.subservice: blobs
 ms.openlocfilehash: ad5662a722db764d09c1ead528a98c09c1d3df7f
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80745529"
 ---
-# <a name="quickstart-route-storage-events-to-web-endpoint-with-azure-cli"></a>Úvodní příručka: Směrování událostí úložiště do koncového bodu webu pomocí azure CLI
+# <a name="quickstart-route-storage-events-to-web-endpoint-with-azure-cli"></a>Rychlý Start: směrování událostí úložiště do webového koncového bodu pomocí Azure CLI
 
 Azure Event Grid je služba zpracování událostí pro cloud. V tomto článku se pomocí Azure CLI přihlásíte k odběru událostí služby Blob Storage a aktivujete událost, abyste viděli výsledek.
 
@@ -29,7 +29,7 @@ Po dokončení kroků popsaných v tomto článku uvidíte, že se data událost
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat příkazcli místně, tento článek vyžaduje, abyste spouštěli nejnovější verzi Azure CLI (2.0.70 nebo novější). Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou nejnovější verzi rozhraní příkazového řádku Azure CLI (2.0.70 nebo novější). Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
 
 Pokud nepoužíváte Cloud Shell, musíte se nejprve přihlásit pomocí příkazu `az login`.
 
@@ -47,7 +47,7 @@ az group create --name <resource_group_name> --location westcentralus
 
 ## <a name="create-a-storage-account"></a>vytvořit účet úložiště
 
-Události služby Blob Storage jsou dostupné v účtech úložiště pro obecné účely verze 2 a v účtech Blob Storage. Účty úložiště pro **obecné účely verze 2** podporují všechny funkce ve všech službách úložiště, včetně objektů blob, souborů, front a tabulek. **Účet úložiště objektů blob** je účet specializovaného úložiště pro ukládání nestrukturovaných dat jako objektů objektů (objektů) ve službě Azure Storage. Účty úložiště objektů blob jsou podobné účtům úložiště pro obecné účely a mají stejně vysokou odolnost, dostupnost, škálovatelnost a výkonnost, a navíc mají 100% konzistentnost rozhraní API pro objekty blob bloku a doplňovací objekty blob. Další informace najdete v tématu [Přehled účtu Azure Storage](../common/storage-account-overview.md).
+Události služby Blob Storage jsou dostupné v účtech úložiště pro obecné účely verze 2 a v účtech Blob Storage. Účty úložiště pro **obecné účely verze 2** podporují všechny funkce ve všech službách úložiště, včetně objektů blob, souborů, front a tabulek. **Účet Blob Storage** je specializovaný účet úložiště pro ukládání nestrukturovaných dat jako objektů BLOB (objekty) v Azure Storage. Účty úložiště objektů blob jsou podobné účtům úložiště pro obecné účely a mají stejně vysokou odolnost, dostupnost, škálovatelnost a výkonnost, a navíc mají 100% konzistentnost rozhraní API pro objekty blob bloku a doplňovací objekty blob. Další informace najdete v tématu [Přehled účtu Azure Storage](../common/storage-account-overview.md).
 
 Nahraďte `<storage_account_name>` jedinečným názvem vašeho účtu úložiště a `<resource_group_name>` skupinou prostředků, kterou jste vytvořili dříve.
 

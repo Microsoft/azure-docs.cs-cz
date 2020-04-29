@@ -1,5 +1,5 @@
 ---
-title: Grafická vazba
+title: Grafika – vazba
 description: Nastavení grafických vazeb a případů použití
 author: florianborn71
 manager: jlyons
@@ -10,31 +10,31 @@ ms.date: 12/11/2019
 ms.topic: conceptual
 ms.service: azure-remote-rendering
 ms.openlocfilehash: 8b5db0532f3dcc8b6dfb024238d0cacff2e6d2a1
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681880"
 ---
-# <a name="graphics-binding"></a>Grafická vazba
+# <a name="graphics-binding"></a>Grafika – vazba
 
-Aby bylo možné používat Azure Remote Rendering ve vlastní aplikaci, musí být integrovándo kanálu vykreslování aplikace. Tato integrace je odpovědností grafické vazby.
+Aby bylo možné používat vzdálené vykreslování Azure ve vlastní aplikaci, musí být integrovány do kanálu vykreslování aplikace. Tato integrace je odpovědností vazby grafiky.
 
-Po nastavení umožňuje grafická vazba přístup k různým funkcím, které ovlivňují vykreslený obraz. Tyto funkce lze rozdělit do dvou kategorií: obecné funkce, které jsou vždy `Microsoft.Azure.RemoteRendering.GraphicsApiType`k dispozici, a specifické funkce, které jsou relevantní pouze pro vybrané .
+Po nastavení vám vazba grafiky poskytne přístup k různým funkcím, které mají vliv na vykreslený obrázek. Tyto funkce mohou být rozděleny do dvou kategorií: Obecné funkce, které jsou vždy dostupné a specifické funkce, které jsou relevantní pouze `Microsoft.Azure.RemoteRendering.GraphicsApiType`pro vybrané.
 
-## <a name="graphics-binding-in-unity"></a>Grafická vazba v Unity
+## <a name="graphics-binding-in-unity"></a>Vazba grafiky v Unity
 
-V Unity je celá vazba `RemoteUnityClientInit` zpracována `RemoteManagerUnity.InitializeManager`strukturou předanou do . Chcete-li nastavit grafický `GraphicsApiType` režim, musí být pole nastaveno na zvolenou vazbu. Pole bude automaticky naplněno v závislosti na tom, zda je k dispozici zařízení XRDevice. Chování lze ručně přepsat následujícími chováními:
+V Unity je celá vazba zpracována pomocí předané `RemoteUnityClientInit` struktury `RemoteManagerUnity.InitializeManager`. Chcete-li nastavit režim grafiky, `GraphicsApiType` musí být pole nastaveno na zvolenou vazbu. Pole se vyplní automaticky v závislosti na tom, jestli je k dispozici XRDevice. Chování se dá ručně přepsat pomocí následujícího chování:
 
-* **HoloLens 2**: Vždy se používá grafická vazba [Windows Mixed Reality.](#windows-mixed-reality)
-* **Plochá desktopová aplikace UWP:** [Simulace](#simulation) se používá vždy. Chcete-li použít tento režim, postupujte podle pokynů v [kurzu: Nastavení projektu Unity od začátku](../tutorials/unity/project-setup.md).
-* **Unity editor**: [Simulace](#simulation) se používá vždy, pokud wmr VR headset je připojen v takovém případě ARR bude zakázáno, aby bylo možné ladit non-ARR související části aplikace. Viz též [holografická odsazení do vzdálené komunikace](../how-tos/unity/holographic-remoting.md).
+* **HoloLens 2**: je vždycky používána vazba grafiky [Windows Mixed reality](#windows-mixed-reality) .
+* **Plochá desktopová aplikace UWP**: [simulace](#simulation) se vždycky používá. Pokud chcete použít tento režim, nezapomeňte postupovat podle kroků v části [kurz: nastavení projektu Unity od začátku](../tutorials/unity/project-setup.md).
+* **Editor Unity**: [simulace](#simulation) se vždycky používá, pokud se nepřipojí náhlavní souprava WMR VR. v takovém případě se zakáže, aby bylo možné ladit části aplikace související s nezávislou na Arr. Viz také [holografická Vzdálená komunikace](../how-tos/unity/holographic-remoting.md).
 
-Jedinou další relevantní část pro Unity je přístup k [základní vazby](#access), všechny ostatní části níže lze přeskočit.
+Jediná jiná relevantní část pro Unity přistupuje k [základní vazbě](#access). všechny ostatní níže uvedené oddíly lze vynechat.
 
-## <a name="graphics-binding-setup-in-custom-applications"></a>Nastavení grafické vazby ve vlastních aplikacích
+## <a name="graphics-binding-setup-in-custom-applications"></a>Nastavení vazeb grafiky ve vlastních aplikacích
 
-Chcete-li vybrat grafickou vazbu, postupujte takto dvěma kroky: Nejprve musí být grafická vazba staticky inicializována při inicializace programu:
+Chcete-li vybrat vazbu grafiky, proveďte následující dva kroky: nejprve je nutné, aby byla vazba grafiky staticky inicializována při inicializaci programu:
 
 ``` cs
 RemoteRenderingInitialization managerInit = new RemoteRenderingInitialization;
@@ -44,11 +44,11 @@ managerInit.right = ///...
 RemoteManagerStatic.StartupRemoteRendering(managerInit);
 ```
 
-Výše uvedené volání je nezbytné k inicializaci vzdáleného vykreslování Azure do holografických api. Tato funkce musí být volána před voláním libovolného holografického rozhraní API a před přístupem k jiným rozhraním API vzdáleného vykreslování. Podobně odpovídající de-init funkce `RemoteManagerStatic.ShutdownRemoteRendering();` by měla být volána po žádné holografické api jsou volány již.
+Výše uvedené volání je nezbytné k inicializaci vzdáleného vykreslování Azure do holografických rozhraní API. Tato funkce musí být volána před voláním jakéhokoli holografického rozhraní API a před tím, než budou k dispozici další rozhraní API pro vzdálené vykreslení. Podobně by měla být volána odpovídající funkce `RemoteManagerStatic.ShutdownRemoteRendering();` de-init po tom, co již nejsou volána žádná holografická rozhraní API.
 
-## <a name="span-idaccessaccessing-graphics-binding"></a><span id="access">Přístup k grafické vazbě
+## <a name="span-idaccessaccessing-graphics-binding"></a><span id="access">Přístup k vazbě grafiky
 
-Po nastavení klienta základní grafické vazby lze přistupovat s `AzureSession.GraphicsBinding` getter. Jako příklad lze načíst statistiku posledního rámce takto:
+Po nastavení klienta je k základní datové vazbě možné přistupovat pomocí `AzureSession.GraphicsBinding` metody getter. Jako příklad můžete získat statistiku posledního snímku takto:
 
 ``` cs
 AzureSession currentSesson = ...;
@@ -62,18 +62,18 @@ if (currentSesson.GraphicsBinding)
 }
 ```
 
-## <a name="graphic-apis"></a>Grafické apis
+## <a name="graphic-apis"></a>Rozhraní API grafiky
 
-V současné době existují dvě grafická `WmrD3D11` rozhraní `SimD3D11`API, která lze vybrat, a . Třetí existuje, `Headless` ale ještě není podporována na straně klienta.
+V `WmrD3D11` současné době existují dvě grafická rozhraní API, která lze vybrat `SimD3D11`a. Třetí `Headless` existuje, ale na straně klienta se ještě nepodporuje.
 
-### <a name="windows-mixed-reality"></a>Windows smíšená realita
+### <a name="windows-mixed-reality"></a>Windows Mixed reality
 
-`GraphicsApiType.WmrD3D11`je výchozí vazba pro spuštění na HoloLens 2. Vytvoří vazbu. `GraphicsBindingWmrD3d11` V tomto režimu Azure Vzdálené vykreslování háky přímo do holografických api.
+`GraphicsApiType.WmrD3D11`je výchozí vazba spouštěná na HoloLens 2. Vytvoří `GraphicsBindingWmrD3d11` vazbu. V tomto režimu se vzdálené vykreslování Azure zavěsí přímo do holografických rozhraní API.
 
-Pro přístup k odvozené grafické `GraphicsBinding` vazby, musí být přetypování základny.
-Existují dvě věci, které je třeba udělat pro použití wmr vazby:
+Chcete-li získat přístup k odvozeným grafickým vazbám, musí být základem `GraphicsBinding` přetypování.
+K použití vazby WMR je potřeba udělat dvě věci:
 
-#### <a name="inform-remote-rendering-of-the-used-coordinate-system"></a>Informovat vzdálené vykreslování o použitém souřadném systému
+#### <a name="inform-remote-rendering-of-the-used-coordinate-system"></a>Informování o vzdáleném vykreslování použitého systému souřadnic
 
 ``` cs
 AzureSession currentSesson = ...;
@@ -85,11 +85,11 @@ if (binding.UpdateUserCoordinateSystem(ptr) == Result.Success)
 }
 ```
 
-Kde výše `ptr` uvedené musí být `ABI::Windows::Perception::Spatial::ISpatialCoordinateSystem` ukazatel na nativní objekt, který definuje souřadnicový systém světového prostoru, ve kterém jsou vyjádřeny souřadnice v rozhraní API.
+Tam, kde `ptr` výše musí být ukazatel na nativní `ABI::Windows::Perception::Spatial::ISpatialCoordinateSystem` objekt, který definuje systém souřadnic World Space, ve kterém jsou vyjádřeny souřadnice v rozhraní API.
 
-#### <a name="render-remote-image"></a>Vykreslení vzdáleného obrazu
+#### <a name="render-remote-image"></a>Vykreslit vzdálenou bitovou kopii
 
-Na začátku každého snímku musí být vzdálený rám vykreslen do zadní vyrovnávací paměti. To se provádí `BlitRemoteFrame`voláním , které vyplní informace o barvě i hloubce do aktuálně vázaného cíle vykreslení. Proto je důležité, aby se to provádí po vazby zpět vyrovnávací paměti jako cíl vykreslení.
+Na začátku každého snímku musí být vzdálený rámec vykreslen do vyrovnávací paměti pro zpětnou kopii. To se provádí voláním `BlitRemoteFrame`metody, která do aktuálně vázaného cíle vykreslování vyplní informace o barvě a hloubce. Proto je důležité, aby se to dokončilo po vytvoření vazby back-bufferu jako cíle vykreslování.
 
 ``` cs
 AzureSession currentSesson = ...;
@@ -99,12 +99,12 @@ binding.BlitRemoteFrame();
 
 ### <a name="simulation"></a>Simulace
 
-`GraphicsApiType.SimD3D11`je simulační vazba a `GraphicsBindingSimD3d11` pokud je vybrána, vytvoří grafickou vazbu. Toto rozhraní se používá k simulaci pohybu hlavy, například v desktopové aplikaci a vykresluje monoskopický obraz.
-Nastavení je trochu více zapojena a funguje takto:
+`GraphicsApiType.SimD3D11`je vazba simulace a pokud je vybrána, vytvoří se `GraphicsBindingSimD3d11` vazba grafiky. Toto rozhraní se používá k simulaci přesunu hlav, například v desktopové aplikaci, a vykreslí monoscopic obrázek.
+Instalace je trochu větší a funguje takto:
 
-#### <a name="create-proxy-render-target"></a>Vytvořit cíl vykreslení proxy serveru
+#### <a name="create-proxy-render-target"></a>Vytvořit cíl vykreslování proxy
 
-Vzdálený a místní obsah musí být vykreslen na offscreen barvu / hloubku render cíl s `GraphicsBindingSimD3d11.Update` názvem 'proxy' pomocí proxy kamery data poskytnutá funkcí. Proxy musí odpovídat rozlišení zadní vyrovnávací paměti. Jakmile je relace `GraphicsBindingSimD3d11.InitSimulation` připravena, je třeba před připojením k ní zavolat:
+Vzdálený a místní obsah je potřeba vykreslit pro vykreslování barvy mimo obrazovku s názvem "proxy" pomocí dat z kamery proxy, které poskytuje `GraphicsBindingSimD3d11.Update` funkce. Proxy se musí shodovat s rozlišením pro zpětnou vyrovnávací paměť. Jakmile je relace připravena, `GraphicsBindingSimD3d11.InitSimulation` je nutné ji volat před připojením k této relaci:
 
 ``` cs
 AzureSession currentSesson = ...;
@@ -118,16 +118,16 @@ GraphicsBindingSimD3d11 simBinding = (currentSession.GraphicsBinding as Graphics
 simBinding.InitSimulation(d3dDevice, depth, color, refreshRate, flipBlitRemoteFrameTextureVertically, flipReprojectTextureVertically);
 ```
 
-Funkce init musí být opatřena ukazateli na nativní zařízení d3d a také na barvu a hloubku textury cíle vykreslení proxy. Po inicializování `AzureSession.ConnectToRuntime` a `DisconnectFromRuntime` může být volána vícekrát, ale při přepnutí do jiné relace, `GraphicsBindingSimD3d11.DeinitSimulation` musí být volána nejprve na staré relace před `GraphicsBindingSimD3d11.InitSimulation` lze volat na jiné relace.
+Funkci init je nutné poskytnout ukazatelům na nativní zařízení D3D a také k barvě a hloubkové textuře cíle vykreslování proxy serveru. Po inicializaci `AzureSession.ConnectToRuntime` a `DisconnectFromRuntime` může být volána několikrát, ale při přepnutí na jinou relaci je nutné nejprve `GraphicsBindingSimD3d11.DeinitSimulation` volat původní relaci, aby bylo `GraphicsBindingSimD3d11.InitSimulation` možné je volat v jiné relaci.
 
-#### <a name="render-loop-update"></a>Aktualizace smyčky vykreslení
+#### <a name="render-loop-update"></a>Aktualizace smyčky vykreslování
 
-Aktualizace smyčky vykreslení se skládá z několika kroků:
+Aktualizace smyčky vykreslování se skládá z několika kroků:
 
-1. Každý snímek před provedením `GraphicsBindingSimD3d11.Update` vykreslování je volán s aktuální transformací kamery, která je odeslána na server, který má být vykreslen. Současně by měla být vrácená transformace proxy použita na proxy kameru, aby se vykreslovala do cíle vykreslení proxy.
-Pokud je vrácená aktualizace `SimulationUpdate.frameId` proxy serveru null, zatím nejsou k dispozici žádná vzdálená data. V tomto případě namísto vykreslování do cíle vykreslení proxy by měl být jakýkoli místní obsah vykreslen do zadní vyrovnávací paměti přímo pomocí aktuálních dat fotoaparátu a další dva kroky jsou přeskočeny.
-1. Aplikace by nyní měla vázat cíl `GraphicsBindingSimD3d11.BlitRemoteFrameToProxy`vykreslení proxy serveru a volat . Tím vyplníte vzdálené informace o barvě a hloubce do cíle vykreslení proxy serveru. Jakýkoli místní obsah lze nyní vykreslit na proxy server pomocí proxy kamery transformace.
-1. Dále musí být zpět vyrovnávací paměť vázána `GraphicsBindingSimD3d11.ReprojectProxy` jako cíl vykreslení a volána v tomto okamžiku může být zobrazena zadní vyrovnávací paměť.
+1. Každý rámec, před tím, než proběhne jakékoli `GraphicsBindingSimD3d11.Update` vykreslování, je volána s aktuální transformací kamery, která je odeslána na server, který má být vykreslen. V současné době by se měla vrátit vrácená transformace proxy serveru na kameru proxy serveru, aby se vykreslila do cíle vykreslování proxy serveru.
+Pokud je vrácená aktualizace `SimulationUpdate.frameId` proxy null, zatím neexistují žádná Vzdálená data. V tomto případě, místo vykreslování do cíle vykreslování proxy, by měl být veškerý místní obsah vykreslen do vyrovnávací paměti přímo pomocí aktuálních dat kamery a následující dva kroky byly vynechány.
+1. Aplikace by nyní měla vytvořit vazby k cíli vykreslování proxy a `GraphicsBindingSimD3d11.BlitRemoteFrameToProxy`volání. Tím se zaplní informace o vzdálené barvě a hloubce do cíle vykreslování proxy serveru. Libovolný místní obsah se teď dá na proxy server vykreslovat pomocí transformace kamery proxy.
+1. Dále musí být zpětná vyrovnávací paměť vázána jako cíl vykreslování a `GraphicsBindingSimD3d11.ReprojectProxy` volána, aby bylo možné zobrazit zpětnou vyrovnávací paměť.
 
 ``` cs
 AzureSession currentSesson = ...;
@@ -157,4 +157,4 @@ else
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Kurz: Nastavení projektu Unity od nuly](../tutorials/unity/project-setup.md)
+* [Kurz: vytvoření projektu Unity od začátku](../tutorials/unity/project-setup.md)

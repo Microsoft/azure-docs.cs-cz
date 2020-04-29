@@ -1,6 +1,6 @@
 ---
 title: Vytvoření technických prostředků virtuálního počítače Azure
-description: Zjistěte, jak vytvořit a nakonfigurovat technické prostředky pro nabídku virtuálního počítače (VM) pro Azure Marketplace.
+description: Naučte se vytvářet a konfigurovat technické prostředky pro nabídku virtuálního počítače pro Azure Marketplace.
 author: dannyevers
 ms.author: mingshen
 ms.service: marketplace
@@ -8,43 +8,43 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.openlocfilehash: 4d2d33f9d83132147b5b257ffcd6d659f272b8ec
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81730719"
 ---
 # <a name="create-your-azure-virtual-machine-technical-assets"></a>Vytvoření technických prostředků virtuálního počítače Azure
 
 > [!IMPORTANT]
-> Přesouváme správu nabídek virtuálních strojů Azure z portálu partnerů cloudu do Centra partnerů. Dokud se vaše nabídky nemigrují, postupujte podle pokynů v části [Vytvoření technických prostředků pro nabídku virtuálních strojů pro portál partnerů cloudu](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-create-technical-assets) pro správu nabídek.
+> Přesouváme správu nabídek virtuálních počítačů Azure z portál partnerů cloudu do partnerského centra. Dokud se vaše nabídky nemigrují, postupujte podle pokynů v tématu [Vytvoření technických prostředků pro nabídku virtuálního počítače pro portál partnerů cloudu](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-create-technical-assets) ke správě nabídek.
 
-Tento článek popisuje, jak vytvořit a nakonfigurovat technické prostředky pro nabídku virtuálního počítače (VM) pro Azure Marketplace. Virtuální počítač obsahuje dvě součásti: virtuální pevný disk operačního systému (VHD) a volitelné přidružené datové disky VHD:
+Tento článek popisuje, jak vytvořit a nakonfigurovat technické prostředky pro nabídku virtuálního počítače pro Azure Marketplace. Virtuální počítač obsahuje dvě součásti: virtuální pevné disky s operačním systémem (VHD) a volitelné přidružené datové disky VHD:
 
-* **Operační systém VHD** – Obsahuje operační systém a řešení, které se nasazuje s vaší nabídkou. Proces přípravy virtuálního pevného disku se liší v závislosti na tom, zda se jedná o virtuální počítač založený na Linuxu, Windows nebo na vlastním základě.
-* **Virtuální pevné disky datové disky** – vyhrazené trvalé úložiště pro virtuální počítače. Nepoužívejte operační systém VHD (například jednotka C:) k ukládání trvalých informací.
+* **Virtuální pevný disk operačního systému** – obsahuje operační systém a řešení, které se nasadí s vaší nabídkou. Proces přípravy VHD se liší v závislosti na tom, jestli se jedná o virtuální počítač založený na platformě Linux, Windows nebo vlastním.
+* **Datové disky VHD** – vyhrazené a trvalé úložiště pro virtuální počítač. Nepoužívejte virtuální pevný disk operačního systému (například jednotku C:) k ukládání trvalých informací.
 
-Bitová kopie virtuálního počítače obsahuje jeden disk operačního systému a až 16 datových disků. Použijte jeden virtuální disk Na datový disk, i když je disk prázdný.
+Image virtuálního počítače obsahuje jeden disk s operačním systémem a až 16 datových disků. Použijte jeden virtuální pevný disk na datový disk, a to i v případě, že je disk prázdný.
 
 > [!NOTE]
-> Bez ohledu na to, který operační systém používáte, přidejte pouze minimální počet datových disků potřebných pro řešení. Zákazníci nemohou odebrat disky, které jsou součástí bitové kopie v době nasazení, ale mohou vždy přidat disky během nebo po nasazení.
+> Bez ohledu na to, jaký operační systém používáte, přidejte jenom minimální počet datových disků, které řešení potřebuje. Zákazníci nemohou odebrat disky, které jsou součástí bitové kopie v době nasazení, ale mohou vždy přidávat disky během nebo po nasazení.
 
 > [!IMPORTANT]
 > Každá image virtuálního počítače v plánu musí mít stejný počet datových disků.
 
-## <a name="fundamental-technical-knowledge"></a>Základní technické znalosti
+## <a name="fundamental-technical-knowledge"></a>Základní technické poznatky
 
-Navrhování, vytváření a testování těchto prostředků vyžaduje čas a vyžaduje technické znalosti platformy Azure i technologií používaných k sestavení nabídky. Kromě domény řešení by váš technický tým měl mít znalosti o následujících technologiích společnosti Microsoft:
+Návrh, sestavování a testování těchto assetů trvá čas a vyžaduje technické znalosti platformy Azure a technologií, které slouží k sestavování této nabídky. Kromě vaší domény řešení by váš technický tým měl mít znalosti o těchto technologiích společnosti Microsoft:
 
-* Základní znalosti [služeb Azure](https://azure.microsoft.com/services/)
-* Jak [navrhovat a navrhovat aplikace Azure](https://azure.microsoft.com/solutions/architecture/)
-* Pracovní znalosti virtuálních [počítačů Azure](https://azure.microsoft.com/services/virtual-machines/), [Azure Storage](https://azure.microsoft.com/services/?filter=storage) a Azure [Networking](https://azure.microsoft.com/services/?filter=networking)
-* Pracovní znalosti [Správce prostředků Azure](https://azure.microsoft.com/features/resource-manager/)
-* Pracovní znalosti [JSON](https://www.json.org/)
+* Základní porozumění [službám Azure](https://azure.microsoft.com/services/)
+* [Návrh a architekt aplikací Azure](https://azure.microsoft.com/solutions/architecture/)
+* Praktické znalosti [Virtual Machines Azure](https://azure.microsoft.com/services/virtual-machines/), [Azure Storage](https://azure.microsoft.com/services/?filter=storage) a [sítí Azure](https://azure.microsoft.com/services/?filter=networking)
+* Praktické znalosti [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/)
+* Praktické znalosti formátu [JSON](https://www.json.org/)
 
 ## <a name="suggested-tools--optional"></a>Navrhované nástroje – volitelné
 
-Zvažte použití jednoho z následujících skriptovacích prostředí, které vám pomůže spravovat virtuální virtuální měna a virtuální disponály:
+Zvažte použití jednoho z následujících skriptovacích prostředí, které vám pomůžou spravovat virtuální počítače a virtuální pevné disky:
 
 * [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)
 * [Azure CLI](https://code.visualstudio.com/)
@@ -53,150 +53,150 @@ Kromě toho zvažte přidání následujících nástrojů do vývojového prost
 
 * [Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
 * [Visual Studio Code](https://code.visualstudio.com/)
-  * Rozšíření: [Nástroje Azure Správce prostředků](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
-  * Rozšíření: [Zkrášlení](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
-  * Rozšíření: [Prettify JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
+  * Rozšíření: [Azure Resource Manager Tools](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
+  * Přípona: [Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
+  * Přípona: [PRETTIFY JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
 
-Zkontrolujte dostupné nástroje na stránce [Nástroje pro vývojáře Azure](https://azure.microsoft.com/product-categories/developer-tools/) a pokud používáte Visual Studio, visual studio [Marketplace](https://marketplace.visualstudio.com/).
+Projděte si dostupné nástroje na stránce [Azure vývojářské nástroje](https://azure.microsoft.com/product-categories/developer-tools/) a pokud používáte Visual Studio, [Visual Studio Marketplace](https://marketplace.visualstudio.com/).
 
-## <a name="create-a-vm-image-using-an-approved-base"></a>Vytvoření image virtuálního virtuálního aplikace pomocí schválené základny
+## <a name="create-a-vm-image-using-an-approved-base"></a>Vytvoření image virtuálního počítače pomocí schválené základní třídy
 
 > [!NOTE]
-> Pokud chcete vytvořit technické prostředky virtuálního počítače pomocí image, kterou jste vytvořili ve vlastních prostorách, přejděte na [Vytvoření virtuálního počítače pomocí vlastní image](#create-a-vm-using-your-own-image).
+> Pokud chcete vytvořit technické prostředky virtuálních počítačů pomocí Image, kterou jste vytvořili v místním prostředí, přečtěte si o [Vytvoření virtuálního počítače pomocí vlastní image](#create-a-vm-using-your-own-image).
 
-Tato část popisuje různé aspekty používání schválené základny, jako je například použití protokolu RDP (Remote Desktop Protocol), výběr velikosti virtuálního počítače, instalace nejnovějších aktualizací systému Windows a zobecnění bitové kopie virtuálního pevného disku.
+Tato část popisuje různé aspekty používání schválené základny, jako je použití protokol RDP (Remote Desktop Protocol) (RDP), výběr velikosti virtuálního počítače, instalace nejnovějších aktualizací Windows a generalizace image VHD.
 
-Následující části se zaměřují především na virtuální počítačna základě systému Windows. Další informace o vytváření virtuálních disdrátů založených na Linuxu najdete v [tématu Linux o distribucích schválených Azure](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
+Následující části se zaměřují hlavně na virtuální pevné disky založené na Windows. Další informace o vytváření VHD na discích se systémem Linux najdete v tématu [Linux v distribucích, které jsou schváleny v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
 
 > [!WARNING]
-> Podle pokynů v tomto tématu pomocí Azure vytvořte virtuální počítač obsahující předem nakonfigurovaný, schválený operační systém. Pokud to není kompatibilní s vaším řešením, je možné vytvořit a nakonfigurovat místní virtuální počítač pomocí schváleného operačního systému. Potom můžete nakonfigurovat a připravit ji k nahrání, jak je popsáno v [článku Příprava virtuálního pevného disku s Windows nebo VHDX pro nahrání do Azure](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image).
+> Podle pokynů v tomto tématu použijte Azure k vytvoření virtuálního počítače, který obsahuje předem nakonfigurovaný, schválený operační systém. Pokud to není kompatibilní s vaším řešením, je možné vytvořit a nakonfigurovat místní virtuální počítač pomocí schváleného operačního systému. Pak ji můžete nakonfigurovat a připravit pro nahrání, jak je popsáno v tématu [Příprava virtuálního pevného disku (VHD) Windows nebo VHDX pro nahrání do Azure](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image).
 
-### <a name="select-an-approved-base"></a>Výběr schválené základny
+### <a name="select-an-approved-base"></a>Vybrat schválený základ
 
-Jako základnu vyberte operační systém Windows nebo Linux.
+Jako základ vyberte buď operační systém Windows, nebo Linux.
 
 #### <a name="windows"></a>Windows
 
-Virtuální pevný disk operačního systému pro bitovou kopii virtuálního počítače se systémem Windows musí být založený na základní bitové kopii schválené Azure, která obsahuje Windows Server nebo SQL Server. Chcete-li začít, vytvořte virtuální počítač z jedné z následujících ibi z webu Azure Portal:
+Virtuální pevný disk operačního systému pro vaši image virtuálního počítače se systémem Windows musí být založený na základní imagi schválené pro Azure, která obsahuje Windows Server nebo SQL Server. Začněte tím, že vytvoříte virtuální počítač z jedné z následujících imagí z Azure Portal:
 
 * Windows Server ([2016](https://www.microsoft.com/evalcenter/evaluate-windows-server-2016), [2012 R2 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview), [2012 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview), [2008 R2 SP1](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview))
-* [SQL Server 2014](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance) (enterprise, standard, web)
-* [SQL Server 2012 SP2](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance) (enterprise, standard, web)
+* [SQL Server 2014](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance) (Enterprise, Standard, Web)
+* [SQL Server 2012 SP2](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance) (Enterprise, Standard, Web)
 
 > [!NOTE]
-> Pokud používáte aktuální portál Azure nebo Azure PowerShell, pak se schvalují image Windows Serveru publikované 8.
+> Pokud používáte aktuální Azure Portal nebo Azure PowerShell, schvalují se image Windows serveru vydané 8. září 2014 a novějšími.
 
 #### <a name="linux"></a>Linux
 
-Azure nabízí celou řadu schválených distribucí Linuxu. Aktuální seznam najdete v [tématu Linux o distribucích schválených Azure](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
+Azure nabízí řadu schválených distribucí Linux. Aktuální seznam najdete v tématu [Linux v distribucích, které jsou schváleny v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
 
-### <a name="create-vm-in-the-azure-portal"></a>Vytvoření virtuálního počítače na webu Azure Portal
+### <a name="create-vm-in-the-azure-portal"></a>Vytvoření virtuálního počítače v Azure Portal
 
-Následujícím postupem vytvořte základní image virtuálního počítače na [webu Azure Portal](https://ms.portal.azure.com/):
+Pomocí těchto kroků vytvořte v [Azure Portal](https://ms.portal.azure.com/)základní image virtuálního počítače:
 
-1. Přihlaste se k [portálu Azure](https://ms.portal.azure.com/) pomocí účtu Microsoft přidruženého k předplatnému Azure, které chcete použít k publikování nabídky virtuálních počítačích.
-2. Vytvořte novou skupinu prostředků a zadejte **název skupiny prostředků**, **Odběr**a **umístění skupiny prostředků**. Podrobnosti naleznete v [tématu Správa prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal).
-3. Vyberte **Virtuální počítače** vlevo, chcete-li zobrazit stránku Podrobnosti o virtuálních počítačích.
-4. Výběrem **možnosti + přidat** otevřete **prostředí vytvoření virtuálního počítače**.
-5. Vyberte obrázek z rozevíracího seznamu nebo klikněte na **Procházet všechny veřejné a soukromé obrázky** a vyhledejte nebo procházejte všechny dostupné image virtuálních strojů.
-6. Vyberte velikost virtuálního počítače, který chcete nasadit, pomocí následujících doporučení:
-    * Pokud plánujete vyvíjet virtuální pevný disk místně, na velikosti nezáleží. Zvažte použití jednoho z menších virtuálních zařízení.
-    * Pokud máte v plánu rozvíjet image v Azure, zvažte použití jedné z doporučených velikostí virtuálních počítačů pro vybranou bitovou kopii.
+1. Přihlaste se k [Azure Portal](https://ms.portal.azure.com/) pomocí účet Microsoft přidruženého k předplatnému Azure, které chcete použít k publikování nabídky virtuálních počítačů.
+2. Vytvořte novou skupinu prostředků a zadejte **název skupiny prostředků**, **předplatné**a **umístění skupiny prostředků**. Podrobnosti najdete v tématu [Správa prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal).
+3. Na levé straně vyberte **virtuální počítače** , aby se zobrazila stránka s podrobnostmi o virtuálních počítačích.
+4. Výběrem **+ Přidat** otevřete **prostředí vytvořit virtuální počítač**.
+5. V rozevíracím seznamu vyberte obrázek nebo kliknutím na **Procházet všechny veřejné a soukromé image** vyhledejte nebo procházejte všechny dostupné image virtuálních počítačů.
+6. Vyberte velikost virtuálního počítače, který chcete nasadit, a to pomocí následujících doporučení:
+    * Pokud plánujete vývoj virtuálního pevného disku v místním prostředí, nezáleží na velikosti. Zvažte použití jednoho z menších virtuálních počítačů.
+    * Pokud plánujete vývoj image v Azure, zvažte použití jedné z doporučených velikostí virtuálních počítačů pro vybranou bitovou kopii.
 
-7. V části **Disky** rozbalte část **Upřesnit** a nastavte možnost **Použít spravované disky** na **ne**.
-8. Zadejte další požadované podrobnosti k vytvoření virtuálního účtu.
-9. Chcete-li zkontrolovat své volby, vyberte **Zkontrolovat + vytvořit.** Když se zobrazí zpráva **Ověření předáno,** vyberte **vytvořit**.
+7. V části **disky** rozbalte oddíl **Upřesnit** a nastavte možnost **použít spravované disky** na **ne**.
+8. Zadejte další požadované podrobnosti pro vytvoření virtuálního počítače.
+9. Vyberte **zkontrolovat + vytvořit** a zkontrolujte své volby. Když se zobrazí zpráva s **potvrzením ověření** , vyberte **vytvořit**.
 
-Azure začne zřizování virtuálního počítače, který jste zadali. Jeho průběh můžete sledovat výběrem karty **Virtuální počítače** vlevo. Po vytvoření se stav změní na **Spuštěno**.
+Azure zahájí zřizování virtuálního počítače, který jste zadali. Svůj průběh můžete sledovat tak, že na levé straně vyberete kartu **Virtual Machines** . Po vytvoření se stav změní na **spuštěno**.
 
-Pokud narazíte na potíže s vytvářením nového virtuálního pevného disku založeného na Azure, přečtěte si [téma Běžné problémy při vytváření virtuálního pevného disku (časté otázky).](https://docs.microsoft.com/azure/marketplace/partner-center-portal/common-issues-during-vhd-creation)
+Pokud narazíte na potíže při vytváření nového virtuálního pevného disku založeného na Azure, přečtěte si téma [běžné problémy při vytváření virtuálního pevného disku (FAQ)](https://docs.microsoft.com/azure/marketplace/partner-center-portal/common-issues-during-vhd-creation).
 
-### <a name="connect-to-your-azure-vm"></a>Připojení k virtuálnímu počítači Azure
+### <a name="connect-to-your-azure-vm"></a>Připojení k VIRTUÁLNÍmu počítači Azure
 
-Tato část vysvětluje, jak se připojit k virtuálnímu počítači, který jste vytvořili v Azure, a přihlásit se k němu. Po úspěšném připojení můžete s virtuálním serverem pracovat, jako byste byli místně přihlášeni k hostitelskému serveru.
+Tato část vysvětluje, jak se připojit k virtuálnímu počítači, který jste vytvořili v Azure, a přihlásit se k němu. Po úspěšném připojení můžete s virtuálním počítačem pracovat jako v případě, že jste byli místně přihlášení k hostitelskému serveru.
 
-#### <a name="connect-to-a-windows-based-vm"></a>Připojení k virtuálnímu virtuálnímu virtuálnímu mněmu založenému na Windows
+#### <a name="connect-to-a-windows-based-vm"></a>Připojení k virtuálnímu počítači se systémem Windows
 
-Pomocí klienta vzdálené plochy se můžete připojit k virtuálnímu počítači založenému na Windows hostovaném v Azure. Většina verzí systému Windows nativně obsahuje podporu protokolu vzdálené plochy (RDP). Pro ostatní operační systémy naleznete další informace o klientech v [klientech vzdálené plochy](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients).
+Použijte klienta vzdálené plochy pro připojení k virtuálnímu počítači se systémem Windows hostovanému v Azure. Většina verzí Windows nativně obsahuje podporu protokolu RDP (Remote Desktop Protocol). Pro jiné operační systémy můžete najít další informace o klientech v [klientech vzdálené plochy](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients).
 
-Tento článek podrobně popisuje, jak používat integrovanou podporu protokolu RDP systému Windows pro připojení k virtuálnímu počítači: [Jak se připojit a přihlásit k virtuálnímu počítači Azure se systémem Windows](https://docs.microsoft.com/azure/virtual-machines/windows/connect-logon).
+Tento článek podrobně popisuje, jak použít integrovanou podporu Windows RDP pro připojení k vašemu VIRTUÁLNÍmu počítači: [jak se připojit a přihlásit k virtuálnímu počítači Azure s Windows](https://docs.microsoft.com/azure/virtual-machines/windows/connect-logon).
 
 > [!TIP]
-> Během procesu se mohou dostat upozornění zabezpečení. Například upozornění jako "Soubor RDP pochází od neznámého vydavatele" nebo "Pověření uživatele nelze ověřit." Je bezpečné ignorovat tato upozornění.
+> Během procesu můžete obdržet upozornění zabezpečení. Například upozornění, například "soubor. RDP pochází z neznámého vydavatele" nebo "vaše uživatelská pověření nelze ověřit". Tato upozornění je bezpečné ignorovat.
 
-#### <a name="connect-to-a-linux-based-vm"></a>Připojení k virtuálnímu počítači založenému na Linuxu
+#### <a name="connect-to-a-linux-based-vm"></a>Připojení k virtuálnímu počítači se systémem Linux
 
-Chcete-li se připojit k virtuálnímu počítači založenému na Linuxu, potřebujete klienta zabezpečeného shellového protokolu (SSH). Následující kroky používají bezplatný terminál [PuTTY](https://www.ssh.com/ssh/putty/) SHH.
+K připojení k virtuálnímu počítači se systémem Linux budete potřebovat klienta SSH (Secure Shell Protocol). V následujících krocích se používá [bezplatná](https://www.ssh.com/ssh/putty/) koncová SSH.
 
-1. Přejděte na [portál Azure](https://ms.portal.azure.com/).
+1. Přejít na [Azure Portal](https://ms.portal.azure.com/).
 2. Vyhledejte a vyberte **virtuální počítače**.
-3. Vyberte virtuální ms, ke kterému se chcete připojit.
-4. Spusťte virtuální ho, pokud už není spuštěný.
-5. Vyberte název virtuálního virtuálního soudu a otevřete jeho stránku **Přehled.**
-6. Všimněte si veřejné IP adresy a názvu DNS virtuálního počítače (pokud tyto hodnoty nejsou nastaveny, musíte [vytvořit síťové rozhraní](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface#create-a-network-interface)).
-7. Otevřete aplikaci PuTTY.
-8. V dialogovém okně Konfigurace PuTTY zadejte IP adresu nebo název DNS virtuálního počítače.
+3. Vyberte virtuální počítač, ke kterému se chcete připojit.
+4. Spusťte virtuální počítač, pokud ještě není spuštěný.
+5. Vyberte název virtuálního počítače, pro který chcete otevřít stránku s **přehledem** .
+6. Poznamenejte si veřejnou IP adresu a název DNS vašeho virtuálního počítače (pokud tyto hodnoty nejsou nastavené, musíte [vytvořit síťové rozhraní](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface#create-a-network-interface)).
+7. Otevřete aplikaci pro výstup.
+8. V dialogovém okně Konfigurace výstupu zadejte IP adresu nebo název DNS vašeho virtuálního počítače.
 
-    :::image type="content" source="media/avm-putty.png" alt-text="Ilustruje nastavení terminálu PuTTY. jsou zvýrazněna pole Název hostitele nebo IP adresa a Port.":::
+    :::image type="content" source="media/avm-putty.png" alt-text="Ukazuje nastavení terminálu pro výstup. Název hostitele nebo IP adresa a pole portů jsou zvýrazněné.":::
 
-9. Výběrem **možnosti Otevřít** otevřete terminál PuTTY.
-10. Po zobrazení výzvy zadejte název účtu a heslo účtu virtuálního počítače s Linuxem.
+9. Vyberte **otevřít** a otevřete terminál k výstupu.
+10. Po zobrazení výzvy zadejte název účtu a heslo účtu virtuálního počítače se systémem Linux.
 
-Pokud máte problémy s připojením, podívejte se do dokumentace pro vašeho klienta SSH. Například [kapitola 10: Běžné chybové zprávy](https://www.ssh.com/ssh/putty/putty-manuals).
+Pokud máte problémy s připojením, přečtěte si dokumentaci k vašemu klientovi SSH. Například [Kapitola 10: běžné chybové zprávy](https://www.ssh.com/ssh/putty/putty-manuals).
 
-Podrobnosti, včetně toho, jak přidat plochu do zřízeného virtuálního počítače s Linuxem, najdete v [tématu Instalace a konfigurace vzdálené plochy pro připojení k virtuálnímu počítači SIP v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/use-remote-desktop).
+Podrobnosti, včetně postupu přidání plochy do zřízeného virtuálního počítače se systémem Linux, najdete v tématu [instalace a konfigurace vzdálené plochy pro připojení k virtuálnímu počítači se systémem Linux v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/use-remote-desktop).
 
 ## <a name="create-a-vm-using-your-own-image"></a>Vytvoření virtuálního počítače pomocí vlastní image
 
-Tato část popisuje, jak vytvořit a nasadit image virtuálního počítače (VM) poskytované uživatelem. Můžete to provést poskytnutím operačního systému a datového disku v hd image z virtuálního pevného disku (VHD) nasazeného v Azure.
+Tato část popisuje, jak vytvořit a nasadit image virtuálního počítače (VM) zadaného uživatelem. To můžete provést tak, že zadáte image virtuálního pevného disku operačního systému a datového disku z virtuálního pevného disku nasazeného v Azure.
 
 > [!NOTE]
-> Chcete-li volitelně použít schválenou základní bitovou kopii, postupujte podle pokynů v [části Vytvoření bitové kopie virtuálního aplikace pomocí schválené základny](#create-a-vm-image-using-an-approved-base).
+> Pokud chcete volitelně použít schválenou základní bitovou kopii, postupujte podle pokynů v části [Vytvoření image virtuálního počítače pomocí schválené základní](#create-a-vm-image-using-an-approved-base)třídy.
 
-1. Nahrajte své obrázky do účtu Azure Storage.
-2. Nasazení image virtuálního mísy.
-3. Zachyťte image virtuálního aplikace.
+1. Nahrajte obrázky do účtu Azure Storage.
+2. Nasaďte image virtuálního počítače.
+3. Zachyťte image virtuálního počítače.
 
-### <a name="upload-your-images-to-an-azure-storage-account"></a>Nahrání obrázků do účtu úložiště Azure
+### <a name="upload-your-images-to-an-azure-storage-account"></a>Nahrání imagí do účtu služby Azure Storage
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
-2. Nahrajte své virtuální pevné disky a virtuální disky datového disku z generalizovaného operačního systému do svého účtu úložiště Azure.
+2. Nahrajte zobecněný virtuální pevný disk s operačním systémem a virtuální pevné disky s daty do svého účtu služby Azure Storage.
 
-### <a name="deploy-your-image"></a>Nasazení bitové kopie
+### <a name="deploy-your-image"></a>Nasazení image
 
-Vytvořte si image pomocí portálu Azure nebo Azure PowerShell.
+Vytvořte bitovou kopii pomocí Azure Portal nebo Azure PowerShell.
 
 #### <a name="deploy-using-the-azure-portal"></a>Nasazení s využitím webu Azure Portal
 
-1. Na domovské stránce vyberte **Vytvořit prostředek**, vyhledejte "Nasazení šablony" a vyberte **Vytvořit**.
-2. V editoru zvolte **Vytvořit vlastní šablonu**.
+1. Na domovské stránce vyberte **vytvořit prostředek**, vyhledejte "nasazení šablony" a vyberte **vytvořit**.
+2. **V editoru vyberte vytvořit vlastní šablonu**.
 
-    :::image type="content" source="media/avm-custom-deployment.png" alt-text="Ilustruje stránku Vlastní nasazení.":::
+    :::image type="content" source="media/avm-custom-deployment.png" alt-text="Znázorňuje stránku vlastního nasazení.":::
 
 3. Vložte tuto [šablonu JSON](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-deploy-json-template) do editoru a vyberte **Uložit**.
-4. Zadejte hodnoty parametrů pro zobrazené vlastní stránky vlastností **nasazení.**
+4. Zadejte hodnoty parametrů pro zobrazené stránky vlastností **vlastního nasazení** .
 
     | Parametr | Popis |
     | ------------ | ------------- |
-    | Název účtu uživatelského úložiště | Obsah z buňky 2 |
-    | Název kontejneru úložiště uživatelů | Název účtu úložiště, kde se nachází generalizovaný virtuální pevný disk |
-    | Název DNS pro veřejnou IP adresu | Veřejný název DNS IP. Definujte název DNS pro veřejnou IP adresu na webu Azure Portal po nasazení nabídky. |
-    | Uživatelské jméno správce | Uživatelské jméno účtu správce pro nový virtuální virtuální účet |
-    | Heslo správce | Heslo účtu správce pro nový virtuální účet |
-    | OS Type | Operační systém VM: Windows nebo Linux |
+    | Název účtu úložiště uživatele | Obsah z buňky 2 |
+    | Název kontejneru úložiště uživatele | Název účtu úložiště, kde se nachází zobecněný virtuální pevný disk |
+    | Název DNS pro veřejnou IP adresu | Název DNS veřejné IP adresy. Po nasazení nabídky zadejte název DNS pro veřejnou IP adresu v Azure Portal. |
+    | Uživatelské jméno správce | Uživatelské jméno účtu správce pro nový virtuální počítač |
+    | Heslo správce | Heslo účtu správce pro nový virtuální počítač |
+    | OS Type | Operační systém virtuálního počítače: Windows nebo Linux |
     | ID předplatného | Identifikátor vybraného předplatného |
     | Umístění | Zeměpisná poloha nasazení |
     | Velikost virtuálního počítače | [Velikost virtuálního počítače Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes), například Standard_A2 |
     | Název veřejné IP adresy | Název vaší veřejné IP adresy |
-    | Název virtuálního počítače | Název nového virtuálního soudu |
-    | Název virtuální sítě | Název virtuální sítě používané virtuálním počítačem |
-    | Název nepřenosné_nekvi | Název karty síťového rozhraní s virtuální sítí |
-    | Adresa URL virtuálního disku | Úplná adresa URL virtuálního pevného disku operačního systému |
+    | Název virtuálního počítače | Název nového virtuálního počítače |
+    | Název Virtual Network | Název virtuální sítě používané virtuálním počítačem |
+    | Název síťové karty | Název síťové karty, na které běží virtuální síť |
+    | ADRESA URL VIRTUÁLNÍHO PEVNÉHO DISKU | Úplná adresa URL virtuálního pevného disku s operačním systémem |
     |  |  |
 
-5. Po zadání těchto hodnot vyberte **možnost Koupit**.
+5. Po poskytnutí těchto hodnot vyberte **koupit**.
 
-Azure začne nasazovat. Vytvoří nový virtuální virtuální účet se zadaným nespravovaným virtuálním pevným diskem v cestě k účtu zadaného úložiště. Průběh na webu Azure Portal můžete sledovat výběrem **virtuálních počítačů** na levé straně portálu. Když se vytvoří virtuální hod, stav se změní ze spuštění na spuštěno.
+Azure spustí nasazení. Vytvoří nový virtuální počítač se zadaným nespravovaným virtuálním pevným diskem v zadané cestě k účtu úložiště. Průběh můžete sledovat v Azure Portal výběrem **Virtual Machines** na levé straně portálu. Po vytvoření virtuálního počítače se stav změní z počáteční na spuštěno.
 
 #### <a name="deploy-using-azure-powershell"></a>Nasazení s využitím Azure PowerShellu
 
@@ -208,81 +208,81 @@ Azure začne nasazovat. Vytvoří nový virtuální virtuální účet se zadan�
     New-AzureVM -ServiceName "VMImageCloudService" -VMs $myVM -Location "West US" -WaitForBoot
 ```
 
-### <a name="capture-the-vm-image"></a>Zachycení image virtuálního mísa
+### <a name="capture-the-vm-image"></a>Zachycení image virtuálního počítače
 
 Použijte následující pokyny, které odpovídají vašemu přístupu:
 
-* Azure PowerShell: [Jak vytvořit nespravovanou image virtuálního počítače z virtuálního počítače Azure](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource)
-* Azure CLI: [Jak vytvořit image virtuálního počítače nebo virtuálního pevného disku](https://docs.microsoft.com/azure/virtual-machines/linux/capture-image)
-* API: [Virtuální počítače – digitalizace](https://docs.microsoft.com/rest/api/compute/virtualmachines/capture)
+* Azure PowerShell: [Vytvoření image nespravovaného virtuálního počítače z virtuálního počítače Azure](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource)
+* Azure CLI: [Vytvoření image virtuálního počítače nebo virtuálního pevného disku](https://docs.microsoft.com/azure/virtual-machines/linux/capture-image)
+* Rozhraní API: [Virtual Machines-Capture](https://docs.microsoft.com/rest/api/compute/virtualmachines/capture)
 
 ## <a name="configure-the-virtual-machine"></a>Konfigurace virtuálního počítače
 
-Tato část popisuje, jak velikost, aktualizaci a generalizaci virtuálního počítače Azure. Tyto kroky jsou nezbytné k přípravě virtuálního počítače k nasazení na Azure Marketplace.
+Tato část popisuje, jak změnit velikost, aktualizovat a zobecnit virtuální počítač Azure. Tyto kroky jsou nezbytné k přípravě nasazení virtuálního počítače na Azure Marketplace.
 
-### <a name="sizing-the-vhds"></a>Dimenzování virtuálních diod
+### <a name="sizing-the-vhds"></a>Změna velikosti virtuálních pevných disků
 
-Pokud jste vybrali jeden z virtuálních počítačů předem nakonfigurovaných s operačním systémem (a volitelně další služby), už jste vybrali standardní velikost virtuálních počítačových služeb Azure. Spuštění řešení s předkonfigurovaným osem je doporučený přístup. Pokud však instalujete operační systém ručně, musíte velikost primárního virtuálního pevného disku v bitové kopii virtuálního počítače:
+Pokud jste vybrali některý z virtuálních počítačů, které jsou předem nakonfigurované s operačním systémem (a volitelně i další služby), už jste si vybrali standardní velikost virtuálního počítače Azure. Doporučený postup je spuštění řešení s předem nakonfigurovaným operačním systémem. Pokud ale instalujete operační systém ručně, musíte ve své imagi virtuálního počítače nastavit velikost primárního virtuálního pevného disku:
 
-* Pro Windows by měl být virtuální pevný disk operačního systému vytvořen jako vhd v pevném formátu 127–128 GB.
-* Pro Linux by měl být tento virtuální pevný disk vytvořen jako virtuální pevný disk s kapacitou 30–50 GB.
+* V případě systému Windows by se měl virtuální pevný disk operačního systému vytvořit jako VHD s pevným formátem, který je 127 – 128 GB.
+* Pro Linux by měl být tento virtuální pevný disk vytvořen jako 30 – 50 GB pevného formátu VHD.
 
-Pokud je fyzická velikost menší než 127–128 GB, měl by být virtuální pevný disk rozšiřitelný (řídký/dynamický). Základní bitové kopie systému Windows a SERVERU SQL Server, které jsou k dispozici, již tyto požadavky splňují, takže neměňte formát ani velikost virtuálního pevného disku.
+Pokud je fyzická velikost menší než 127 – 128 GB, měl by být virtuální pevný disk rozšiřitelný (zhuštěný/dynamický). Základní bitové kopie systému Windows a SQL Server, které jsou již v souladu s těmito požadavky, neměňte formát nebo velikost virtuálního pevného disku.
 
-Datové disky mohou být až 1 TB. Při rozhodování o velikosti mějte na paměti, že zákazníci nemohou změnit velikost virtuálních dispon ů v rámci bitové kopie v době nasazení. Vdisky datových disků by měly být vytvořeny jako virtuální pevné visuty. Měly by být také rozšiřitelné (řídké /dynamické). Datové disky mohou být zpočátku prázdné nebo mohou obsahovat data.
+Datové disky můžou být velké až 1 TB. Při rozhodování o velikosti si pamatujte, že zákazníci nemůžou měnit velikost VHD v rámci bitové kopie v době nasazení. Virtuální pevné disky datového disku by se měly vytvářet jako virtuální pevné disky s pevným formátem. Měly by být také rozšiřitelné (zhuštěné/dynamické). Datové disky můžou být zpočátku prázdné nebo obsahovat data.
 
-### <a name="install-the-most-current-updates"></a>Instalace nejaktuálnějších aktualizací
+### <a name="install-the-most-current-updates"></a>Nainstalovat nejaktuálnější aktualizace
 
-Základní image virtuálních aplikací operačního systému musí obsahovat nejnovější aktualizace až do data publikování. Před publikováním vytvořeného virtuálního pevného disku operačního systému se ujistěte, že aktualizujete operační systém a všechny nainstalované služby pomocí všech nejnovějších oprav zabezpečení a údržby.
+Základní image virtuálních počítačů s operačním systémem musí obsahovat nejnovější aktualizace až do data publikování. Před publikováním virtuálního pevného disku s operačním systémem, který jste vytvořili, se ujistěte, že aktualizujete operační systém a všechny nainstalované služby se všemi nejnovějšími opravami zabezpečení a údržby.
 
-V systému Windows Server spusťte příkaz **Vyhledat aktualizace.**
+Pro Windows Server spusťte příkaz **Check for Updates** .
 
-Pro linuxové distribuce jsou aktualizace běžně stahovány a instalovány prostřednictvím nástroje příkazového řádku nebo grafického nástroje. Například Ubuntu Linux poskytuje příkaz [apt-get](https://manpages.ubuntu.com/manpages/cosmic/man8/apt-get.8.html) a nástroj [Správce aktualizací](https://manpages.ubuntu.com/manpages/cosmic/man8/update-manager.8.html) pro aktualizaci operačního systému.
+U distribucí pro Linux se aktualizace běžně stahují a instalují prostřednictvím nástroje příkazového řádku nebo grafického nástroje. Například Ubuntu Linux poskytuje příkaz [apt-get](https://manpages.ubuntu.com/manpages/cosmic/man8/apt-get.8.html) a nástroj [správce aktualizací](https://manpages.ubuntu.com/manpages/cosmic/man8/update-manager.8.html) pro aktualizaci operačního systému.
 
 ### <a name="perform-additional-security-checks"></a>Provedení dalších kontrol zabezpečení
 
-Udržujte vysokou úroveň zabezpečení pro image řešení na Azure Marketplace. Následující článek obsahuje kontrolní seznam konfigurací zabezpečení a postupů, které vám pomohou: [Doporučení zabezpečení pro image Azure Marketplace](https://docs.microsoft.com/azure/security/security-recommendations-azure-marketplace-images). Některá z těchto doporučení jsou specifická pro bitové kopie založené na Linuxu, ale většina se vztahuje na libovolnou image virtuálního počítače.
+Udržujte si vysokou úroveň zabezpečení pro obrázky vašich řešení v Azure Marketplace. Následující článek poskytuje kontrolní seznam konfigurací a postupů zabezpečení, které vám pomůžou: [doporučení zabezpečení pro Azure Marketplace image](https://docs.microsoft.com/azure/security/security-recommendations-azure-marketplace-images). Některá z těchto doporučení jsou specifická pro image založené na systému Linux, ale většina se vztahují na všechny image virtuálních počítačů.
 
-### <a name="perform-custom-configuration-and-scheduled-tasks"></a>Provádění vlastní konfigurace a naplánovaných úloh
+### <a name="perform-custom-configuration-and-scheduled-tasks"></a>Provádění vlastních konfigurací a naplánovaných úloh
 
-Pokud je potřeba další konfigurace, použijte naplánovanou úlohu, která se spustí při spuštění, k provádění konečných změn virtuálního počítače po jeho nasazení. Zvažte také následující doporučení:
+Pokud je potřeba další konfigurace, použijte naplánovanou úlohu, která se spustí při spuštění, aby se všechny závěrečné změny virtuálního počítače daly provést po jeho nasazení. Vezměte v úvahu také následující doporučení:
 
-* Pokud se jedná o úlohu spouštění jednou, měla by se po úspěšném dokončení odstranit sama.
-* Konfigurace by neměly spoléhat na jiné jednotky než C nebo D, protože pouze tyto dvě jednotky jsou vždy zaručena existovat (jednotka C je disk operačního systému a jednotka D je dočasný místní disk).
+* Pokud se jedná o úlohu spuštění jednou, je nutné úlohu po úspěšném dokončení odstranit.
+* Konfigurace by se neměla spoléhat na jiné jednotky než C nebo D, protože existují jenom tyto dvě jednotky (jednotka C je disk s operačním systémem a jednotka D je dočasný místní disk).
 
-Další informace o přizpůsobení Linuxu najdete v [tématu Rozšíření virtuálních strojů a funkce pro Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/features-linux).
+Další informace o úpravách pro Linux najdete v tématu [rozšíření a funkce virtuálních počítačů pro Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/features-linux).
 
-## <a name="generalize-the-image"></a>Zobecnění obrázku
+## <a name="generalize-the-image"></a>Generalizace bitové kopie
 
-Všechny image na Azure Marketplace musí být opakovaně použitelné obecným způsobem. K dosažení tohoto cíle musí být zobecněn operační systém VHD, operace, která odebere všechny identifikátory specifické pro instanci a softwarové ovladače z virtuálního počítače.
+Všechny obrázky v Azure Marketplace musí být obecně znovu použitelné. K tomu je potřeba, aby byl virtuální pevný disk operačního systému zobecněný, operace, která odebere všechny identifikátory jednotlivých instancí a softwarové ovladače z virtuálního počítače.
 
 ### <a name="windows"></a>Windows
 
-Disky operačního systému Windows jsou zobecněny [pomocí nástroje sysprep](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview). Pokud následně aktualizujete nebo překonfigurujete operační systém, je nutné znovu spustit sysprep.
+Disky s operačním systémem Windows jsou zobecněny pomocí [nástroje Sysprep](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview). Pokud následně aktualizujete nebo znovu nakonfigurujete operační systém, musíte znovu spustit nástroj Sysprep.
 
 > [!WARNING]
-> Vzhledem k tomu, že aktualizace může spustit automaticky, po spuštění sysprep, vypněte virtuální ho, dokud jeho nasazení. Tímto vypnutím zabráníte tomu, aby následné aktualizace nedělaly změny operačního systému nebo nainstalované služby specifické pro instance. Další informace o spuštění sysprepu naleznete v [tématu Kroky k generalizaci virtuálního pevného disku](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource#generalize-the-windows-vm-using-sysprep).
+> Vzhledem k tomu, že se aktualizace můžou spouštět automaticky po spuštění nástroje Sysprep, vypněte virtuální počítač, dokud nebude nasazený. Toto vypnutí zabrání následným aktualizacím v provádění změn specifických pro konkrétní instance v operačním systému nebo nainstalovaných službách. Další informace o spuštění nástroje Sysprep najdete v tématu [postup generalizace VHD](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource#generalize-the-windows-vm-using-sysprep).
 
 ### <a name="linux"></a>Linux
 
-Následující proces zobecnizuje virtuální počítač s Linuxem a znovu jej nasadí jako samostatný virtuální počítač. Podrobnosti najdete v [tématu Jak vytvořit bitovou kopii virtuálního počítače nebo virtuálního pevného disku](https://docs.microsoft.com/azure/virtual-machines/linux/capture-image). Můžete zastavit, když se dostanete do sekce "Vytvořit virtuální hod ze zachycené image".
+Následující proces generalizuje virtuální počítač Linux a znovu ho nasadí jako samostatný virtuální počítač. Podrobnosti najdete v tématu [Postup vytvoření image virtuálního počítače nebo virtuálního pevného disku](https://docs.microsoft.com/azure/virtual-machines/linux/capture-image). Až se dostanete do části "Vytvoření virtuálního počítače ze zaznamenané bitové kopie", můžete zastavit.
 
-1. **Odebrání agenta Azure Linuxu**
+1. **Odebrat agenta Azure Linux**
 
-    1. Připojte se k virtuálnímu počítači s Linuxem pomocí klienta SSH.
-    2. V okně SSH zadejte následující `sudo waagent -deprovision+user`příkaz: .
-    3. Chcete-li pokračovat, zadejte **y** (můžete přidat parametr **-force** k předchozímu příkazu, abyste se vyhnuli kroku potvrzení).
-    d. Po dokončení příkazu zadejte **Exit** zavřete klienta SSH.
+    1. Připojte se k VIRTUÁLNÍmu počítači se systémem Linux pomocí klienta SSH.
+    2. V okně SSH zadejte následující příkaz: `sudo waagent -deprovision+user`.
+    3. Zadejte **Y** pro pokračování (můžete přidat parametr **-Force** k předchozímu příkazu, abyste se vyhnuli potvrzovacímu kroku).
+    d. Po dokončení příkazu zadejte **příkaz exit** a zavřete tak klienta ssh.
 
 2. **Zastavení virtuálního počítače**
 
-    1. Na webu Azure Portal vyberte skupinu prostředků (RG) a zrušte přidělení virtuálního počítače.
-    2. Váš virtuální pevný disk je teď zobecněný a pomocí tohoto virtuálního počítače můžete vytvořit nový virtuální počítač.
+    1. V Azure Portal vyberte skupinu prostředků (RG) a zrušte přidělení virtuálního počítače.
+    2. Virtuální pevný disk je teď zobecněný a můžete vytvořit nový virtuální počítač pomocí tohoto virtuálního pevného disku.
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud jste zjistili potíže s vytvořením nového virtuálního pevného disku založeného na Azure, přečtěte [si téma Běžné problémy při vytváření virtuálního pevného disku](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-common-vhd-creation-issues).
+Pokud jste narazili na potíže s vytvářením nového virtuálního pevného disku založeného na Azure, přečtěte si téma [běžné problémy při vytváření VHD](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-common-vhd-creation-issues).
 
 V opačném případě:
 
-* [Certifikujte image virtuálního počítače](https://docs.microsoft.com/azure/marketplace/partner-center-portal/get-sas-uri) vysvětluje, jak otestovat a odeslat image virtuálního počítače pro certifikaci Azure Marketplace, včetně toho, kde získat *nástroj Certifikace Test Tool pro Azure Certified* a jak ho použít k certifikaci image virtuálního počítače.
+* Certifikace [vaší image virtuálního počítače](https://docs.microsoft.com/azure/marketplace/partner-center-portal/get-sas-uri) vysvětluje, jak otestovat a odeslat image virtuálního počítače pro Azure Marketplace certifikace, včetně toho, kde získat nástroj *pro testování certifikace pro nástroj pro certifikaci Azure* a jak ho použít k certifikaci vaší image virtuálního počítače.

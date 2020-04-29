@@ -1,6 +1,6 @@
 ---
 title: Pozvání interních uživatelů ke spolupráci B2B – Azure AD
-description: Pokud máte interní uživatelské účty pro partnery, distributory, dodavatele, dodavatele a další hosty, můžete přejít na spolupráci Azure AD B2B tak, že je vyzvete k přihlášení pomocí vlastních externích přihlašovacích údajů nebo přihlášení. Použijte rozhraní API pro pozvání k Prostředí PowerShell nebo Microsoft Graph.
+description: Pokud máte interní uživatelské účty pro partnery, distributory, dodavatele, dodavatele a další hosty, můžete přejít na spolupráci Azure AD B2B tím, že se přihlásíte, abyste se přihlásili pomocí svých externích přihlašovacích údajů nebo přihlášení. Použijte buď PowerShell, nebo rozhraní API pro Microsoft Graph pozvánky.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -12,52 +12,52 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 783fc0fa6f6c4e6c918fa3ff5fe0b53a71fa0178
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81680176"
 ---
 # <a name="invite-internal-users-to-b2b-collaboration"></a>Pozvání interních uživatelů ke spolupráci B2B
 
 |     |
 | --- |
-| Pozvání interních uživatelů k použití spolupráce B2B je funkce veřejného náhledu služby Azure Active Directory. Další informace o náhledech najdete v [tématu Doplňkové podmínky použití pro Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). |
+| Pozvání interních uživatelů k používání spolupráce B2B je funkce veřejné verze Preview Azure Active Directory. Další informace o verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview. |
 |     |
 
-Před dostupností spolupráce Azure AD B2B mohou organizace spolupracovat s distributory, dodavateli, dodavateli a dalšími uživateli typu Host tím, že pro ně nastaví interní pověření. Pokud máte interní uživatele typu Host, jako je tento, můžete je pozvat k použití spolupráce B2B, abyste mohli využívat výhod Azure AD B2B. Uživatelé typu Host B2B budou moci k přihlášení používat vlastní identity a přihlašovací údaje a nebudete muset spravovat hesla ani spravovat životní cykly účtu.
+Před dostupností spolupráce Azure AD B2B můžou organizace spolupracovat s distributory, dodavateli, dodavateli a dalšími uživateli typu Host nastavením interních přihlašovacích údajů pro tyto uživatele. Pokud máte tyto interní uživatele typu Host, můžete je pozvat, aby používaly spolupráci B2B, abyste mohli využít výhod Azure AD B2B. Uživatelé typu Host B2B budou moci používat vlastní identity a přihlašovací údaje pro přihlášení a nebudete muset uchovávat hesla ani spravovat životní cyklus účtů.
 
-Odesláním pozvánky na existující interní účet si můžete zachovat ID objektu tohoto uživatele, název uživatele, členství ve skupinách a přiřazení aplikací. Není nutné ručně odstranit a znovu pozvat uživatele nebo znovu přiřadit prostředky. Chcete-li pozvat uživatele, budete používat rozhraní API pozvánky předat interní objekt uživatele a e-mailovou adresu uživatele hosta spolu s pozvánkou. Když uživatel přijme pozvání, služba B2B změní existující objekt interního uživatele na uživatele B2B. Do budoucna se uživatel musí přihlásit ke službám cloudových prostředků pomocí svých pověření B2B. Mohou stále používat své interní pověření pro přístup k místním prostředkům, ale můžete tomu zabránit resetováním nebo změnou hesla v interním účtu.
-
-> [!NOTE]
-> Pozvánka je jednosměrná. Můžete pozvat interní uživatele k použití spolupráce B2B, ale pověření B2B po jejich přidání nelze odebrat. Chcete-li změnit uživatele zpět na uživatele pouze pro interní, budete muset odstranit objekt uživatele a vytvořit nový.
-
-Zatímco ve verzi Public Preview nelze v těchto případech použít metodu popsanou v tomto článku pro pozvání interních uživatelů ke spolupráci b2B:
-
-- Internímu uživateli již byla přiřazena licence serveru Exchange.
-- Uživatel pochází z domény, která je nastavena pro přímou federaci ve vašem adresáři.
-- Interní uživatel je účet pouze pro cloud a jejich hlavní účet není ve službě Azure AD.
-
-V těchto případech pokud interní uživatel musí být změněn na uživatele B2B, měli byste odstranit interní účet a odeslat uživateli pozvánku pro spolupráci B2B.
-
-**Místní synchronizovaní uživatelé**: Pro uživatelské účty, které jsou synchronizovány mezi místním a cloudem, zůstane místní adresář zdrojem autority i po pozvání k použití spolupráce B2B. Všechny změny, které provedete v místním účtu, se synchronizují s klientem cloudu, včetně zakázání nebo odstranění účtu. Proto nemůžete uživateli zabránit v přihlášení k místnímu účtu při zachování cloudového účtu pouhým odstraněním místního účtu. Místo toho můžete nastavit heslo místního účtu na náhodný identifikátor GUID nebo jinou neznámou hodnotu.
-
-## <a name="how-to-invite-internal-users-to-b2b-collaboration"></a>Jak pozvat interní uživatele na spolupráci B2B
-
-Pomocí prostředí PowerShell nebo rozhraní API pro pozvánku můžete odeslat pozvánku B2B internímu uživateli. Ujistěte se, že e-mailová adresa, kterou chcete použít pro pozvánku, je nastavena jako externí e-mailová adresa interního uživatelského objektu.
-
-- Pro uživatele pouze pro cloud použijte e-mailovou adresu ve vlastnosti User.OtherMails pro pozvánku.
-- Pro místnísynchronizované uživatele je nutné použít hodnotu ve vlastnosti User.Mail pro pozvánku.
-- Doména ve vlastnosti Pošty uživatele se musí shodovat s účtem, který používá k přihlášení. V opačném případě některé služby, jako je například Teams nebude moci ověřit uživatele.
-
-Ve výchozím nastavení odešle pozvánka uživateli e-mail s oznámením, že byl pozván, ale můžete tento e-mail potlačit a místo toho odeslat vlastní.
+Odeslání pozvánky na stávající interní účet vám umožní zachovat ID objektu, hlavní název uživatele, členství ve skupinách a přiřazení aplikací. Nemusíte ručně odstraňovat a znovu přiřazovat prostředky uživatele. Pokud chcete uživatele pozvat, použijte rozhraní API pro pozvání k předání interního uživatelského objektu i e-mailové adresy uživatele typu Host spolu s pozvánkou. Když uživatel pozvánku přijme, služba B2B změní stávající objekt interního uživatele na uživatele B2B. Až dál, uživatel se musí přihlásit ke službám cloudových prostředků pomocí svých přihlašovacích údajů B2B. Můžou pořád používat své interní přihlašovací údaje pro přístup k místním prostředkům, ale můžete to zabránit tím, že resetujete nebo změníte heslo k internímu účtu.
 
 > [!NOTE]
-> Chcete-li odeslat vlastní e-mail nebo jinou komunikaci, můžete použít New-AzureADMSInvitation s -SendInvitationMessage:$false pozvat uživatele tiše a potom odeslat vlastní e-mailovou zprávu převedeného uživatele. Viz [Rozhraní API pro spolupráci azure AD B2B a přizpůsobení](customize-invitation-api.md).
+> Pozvánka je jednosměrná. Můžete pozvat interní uživatele, aby mohli používat spolupráci B2B, ale po přidání už přihlašovací údaje B2B nemůžete odebrat. Pokud chcete uživatele změnit zpátky na uživatele, který je jenom interní, budete muset objekt uživatele odstranit a vytvořit nový.
 
-## <a name="use-powershell-to-send-a-b2b-invitation"></a>Odeslání pozvánky b2B pomocí PowerShellu
+V rámci verze Public Preview se metoda popsaná v tomto článku pro pozvání interních uživatelů do spolupráce B2B nedá použít v těchto instancích:
 
-Pomocí následujícího příkazu můžete uživatele pozvat ke spolupráci b2B:
+- Internímu uživateli je již přiřazena licence k systému Exchange.
+- Uživatel je z domény, která je nastavená pro přímou federaci v adresáři.
+- Interní uživatel je účet jenom pro Cloud a jeho hlavní účet není ve službě Azure AD.
+
+V těchto případech, pokud musí být interní uživatel změněn na uživatele B2B, byste měli interní účet odstranit a poslat uživateli pozvánku na spolupráci B2B.
+
+**Místní synchronizující uživatelé**: u uživatelských účtů synchronizovaných mezi místním prostředím a cloudem zůstane místní adresář zdrojovou autoritou od jejich pozvání k používání spolupráce B2B. Všechny změny, které provedete v místním účtu, se synchronizují s cloudovým účtem, včetně zakázání nebo odstranění účtu. Proto nemůžete zabránit tomu, aby se uživatel přihlásil k místnímu účtu a zároveň zachoval svůj cloudový účet pouhým odstraněním místního účtu. Místo toho můžete nastavit heslo místního účtu na náhodný identifikátor GUID nebo jinou neznámou hodnotu.
+
+## <a name="how-to-invite-internal-users-to-b2b-collaboration"></a>Postup při pozvání interních uživatelů ke spolupráci B2B
+
+K odeslání pozvánky B2B internímu uživateli můžete použít PowerShell nebo rozhraní API pro pozvání. Ujistěte se, že je e-mailová adresa, kterou chcete použít pro pozvánku, nastavená jako externí e-mailová adresa na objektu interního uživatele.
+
+- Pro uživatele jenom pro Cloud použijte e-mailovou adresu v vlastnosti User. OtherMails pozvánky.
+- U místních synchronizovaných uživatelů musíte pro pozvánku použít hodnotu ve vlastnosti User. mail.
+- Doména ve vlastnosti pošta uživatele musí odpovídat účtu, který používají k přihlášení. V opačném případě některé služby, jako jsou týmy, nebudou moci ověřit uživatele.
+
+Ve výchozím nastavení Pozvánka uživateli pošle e-mail s informacemi o tom, že je pozvaní, ale můžete tento e-mail potlačit a místo toho poslat vlastní.
+
+> [!NOTE]
+> K odeslání vlastního e-mailu nebo jiné komunikaci můžete použít New-AzureADMSInvitation with-SendInvitationMessage: $false pro pozvání uživatelů v tichém režimu a odeslání vlastní e-mailové zprávy převedené uživateli. Viz [rozhraní API pro spolupráci Azure AD B2B a přizpůsobení](customize-invitation-api.md).
+
+## <a name="use-powershell-to-send-a-b2b-invitation"></a>Použití PowerShellu k odeslání pozvánky B2B
+
+K pozvání uživatele ke spolupráci B2B použijte následující příkaz:
 
 ```powershell
 Uninstall-Module AzureADPreview
@@ -67,9 +67,9 @@ $msGraphUser = New-Object Microsoft.Open.MSGraph.Model.User -ArgumentList $ADGra
 New-AzureADMSInvitation -InvitedUserEmailAddress <<external email>> -SendInvitationMessage $True -InviteRedirectUrl "http://myapps.microsoft.com" -InvitedUser $msGraphUser
 ```
 
-## <a name="use-the-invitation-api-to-send-a-b2b-invitation"></a>Odeslání pozvánky b2B pomocí rozhraní API pro pozvánku
+## <a name="use-the-invitation-api-to-send-a-b2b-invitation"></a>Použití rozhraní API pro pozvánky k odeslání pozvánky B2B
 
-Ukázka níže ukazuje, jak volat rozhraní API pozvání pozvat interního uživatele jako uživatele B2B.
+Následující ukázka ukazuje, jak zavolat rozhraní API pro pozvání k pozvání interního uživatele jako uživatele B2B.
 
 ```json
 POST https://graph.microsoft.com/v1.0/invitations
@@ -97,8 +97,8 @@ ContentType: application/json
 }
 ```
 
-Odpověď na rozhraní API je stejná odpověď, kterou dostanete, když pozvete nového uživatele typu Host do adresáře.
+Odpověď na rozhraní API je stejná jako odpověď, kterou dostanete při pozvání nového uživatele typu Host do adresáře.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Uplatnění pozvánky na spolupráci B2B](redemption-experience.md)
+- [Uplatnění pozvánky B2B pro spolupráci](redemption-experience.md)

@@ -1,6 +1,6 @@
 ---
-title: Přesunutí oboru názvů Centra událostí Azure do jiné oblasti | Dokumenty společnosti Microsoft
-description: Tento článek ukazuje, jak přesunout obor názvů Centra událostí Azure z aktuální oblasti do jiné oblasti.
+title: Přesunutí oboru názvů Azure Event Hubs do jiné oblasti | Microsoft Docs
+description: V tomto článku se dozvíte, jak přesunout obor názvů Azure Event Hubs z aktuální oblasti do jiné oblasti.
 services: event-hubs
 author: spelluru
 ms.service: event-hubs
@@ -10,46 +10,46 @@ ms.date: 04/14/2020
 ms.author: spelluru
 ms.reviewer: shvija
 ms.openlocfilehash: 2dfc9c517605bbb48bee0b306fb275464cfebe39
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81606805"
 ---
-# <a name="move-an-azure-event-hubs-namespace-to-another-region"></a>Přesunutí oboru názvů Centra událostí Azure do jiné oblasti
-Existují různé scénáře, ve kterých byste chtěli přesunout existující obor názvů Event Hubs z jedné oblasti do druhé. Můžete například vytvořit obor názvů se stejnou konfigurací pro testování. Můžete také vytvořit sekundární obor názvů v jiné oblasti jako součást [plánování zotavení po havárii](event-hubs-geo-dr.md#setup-and-failover-flow).
+# <a name="move-an-azure-event-hubs-namespace-to-another-region"></a>Přesunutí oboru názvů Azure Event Hubs do jiné oblasti
+Existují různé scénáře, ve kterých byste chtěli přesunout existující Event Hubs obor názvů z jedné oblasti do druhé. Například můžete chtít vytvořit obor názvů se stejnou konfigurací pro testování. V rámci [Plánování zotavení po havárii](event-hubs-geo-dr.md#setup-and-failover-flow)možná budete chtít vytvořit také sekundární obor názvů v jiné oblasti.
 
 > [!NOTE]
-> Tento článek ukazuje, jak exportovat šablonu Azure Resource Manager pro existující obor názvů Event Hubs a potom pomocí šablony vytvořit obor názvů se stejným nastavením konfigurace v jiné oblasti. Tento proces však nepřesune události, které ještě nejsou zpracovány. Před odstraněním je třeba zpracovat události z původního oboru názvů.
+> V tomto článku se dozvíte, jak exportovat šablonu Azure Resource Manager pro existující obor názvů Event Hubs a potom použít šablonu k vytvoření oboru názvů se stejným nastavením konfigurace v jiné oblasti. Tento proces však nepřesouvá události, které ještě nebyly zpracovány. Před odstraněním je třeba zpracovat události z původního oboru názvů.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Ujistěte se, že služby a funkce, které váš účet používá, jsou podporovány v cílové oblasti.
-- U funkcí náhledu se ujistěte, že vaše předplatné je na seznamu povolených pro cílovou oblast.
-- Pokud máte **povolenou funkci pro zachycení** pro centra událostí v oboru názvů, přesuňte azure storage nebo Azure Data Lake Store Gen [2](../storage/common/storage-account-move.md) nebo Azure Data Lake Store [Gen 1](../data-lake-store/data-lake-store-migration-cross-region.md) před přesunutím oboru názvů Event Hubs. Skupinu prostředků, která obsahuje obory názvů Služby úložiště a centra událostí, můžete také přesunout do jiné oblasti podle následujících kroků podobných těm, které jsou popsány v tomto článku. 
-- Pokud je obor názvů Event Hubs v **clusteru Event Hubs**, vytvořte před procházením kroků v tomto článku [vyhrazený cluster](event-hubs-dedicated-cluster-create-portal.md) v **cílové oblasti.** 
+- Zajistěte, aby služby a funkce používané vaším účtem byly podporovány v cílové oblasti.
+- V případě funkcí verze Preview se ujistěte, že je vaše předplatné na seznamu povolených pro cílovou oblast.
+- Pokud jste povolili **funkci zachycení** pro centra událostí v oboru názvů, přesuňte účty [Azure Storage nebo Azure Data Lake Store gen 2](../storage/common/storage-account-move.md) nebo [Azure Data Lake Store 1.1](../data-lake-store/data-lake-store-migration-cross-region.md) . teprve potom přesuňte obor názvů Event Hubs. Můžete také přesunout skupinu prostředků, která obsahuje obory názvů úložiště i Event Hubs do jiné oblasti, a to pomocí následujících kroků, které jsou podobné těm, které jsou popsané v tomto článku. 
+- Pokud je obor názvů Event Hubs v **clusteru Event Hubs**, vytvořte před provedením kroků v tomto článku [vyhrazený cluster](event-hubs-dedicated-cluster-create-portal.md) v **cílové oblasti** . 
 
 ## <a name="prepare"></a>Příprava
-Chcete-li začít, exportujte šablonu Správce prostředků. Tato šablona obsahuje nastavení, která popisují obor názvů Centra událostí.
+Začněte tím, že vyexportujete šablonu Správce prostředků. Tato šablona obsahuje nastavení, která popisují váš obor názvů Event Hubs.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
-2. Vyberte **Všechny prostředky** a pak vyberte obor názvů Centra událostí.
+2. Vyberte **všechny prostředky** a pak vyberte svůj obor názvů Event Hubs.
 
-3. Vyberte > **nastavení** > **exportovat šablonu**.
+3. Vyberte > **Nastavení** > **Exportovat šablonu**.
 
-4. Na stránce **exportovat šablonu** zvolte **Stáhnout.**
+4. Na stránce **Exportovat šablonu** vyberte **Stáhnout** .
 
-    ![Stáhnout šablonu Správce prostředků](./media/move-across-regions/download-template.png)
+    ![Stažení šablony Správce prostředků](./media/move-across-regions/download-template.png)
 
-5. Vyhledejte soubor ZIP, který jste stáhli z portálu, a rozbalte jej do složky podle vašeho výběru.
+5. Vyhledejte soubor. zip, který jste stáhli z portálu, a rozbalte tento soubor do složky podle vašeho výběru.
 
-   Tento soubor zip obsahuje soubory JSON, které obsahují šablonu a skripty pro nasazení šablony.
+   Tento soubor zip obsahuje soubory. JSON, které obsahují šablonu a skripty pro nasazení šablony.
 
 
 ## <a name="move"></a>Přesunout
 
-Nasadte šablonu a vytvořte obor názvů Event Hubs v cílové oblasti. 
+Nasaďte šablonu pro vytvoření oboru názvů Event Hubs v cílové oblasti. 
 
 
 1. Na webu Azure Portal vyberte **Vytvořit prostředek**.
@@ -62,56 +62,56 @@ Nasadte šablonu a vytvořte obor názvů Event Hubs v cílové oblasti.
 
 5. Vyberte **Vytvořit vlastní šablonu v editoru**.
 
-6. Vyberte **Načíst soubor**a podle pokynů načtěte soubor **template.json,** který jste stáhli v poslední části.
+6. Vyberte **načíst soubor**a pak podle pokynů načtěte soubor **template. JSON** , který jste stáhli v poslední části.
 
-7. Vyberte **Uložit,** chcete-li šablonu uložit. 
+7. Vyberte **Uložit** a šablonu uložte. 
 
-8. Na stránce **Vlastní nasazení** postupujte takto: 
+8. Na stránce **vlastní nasazení** proveďte tyto kroky: 
 
-    1. Vyberte **předplatné**Azure . 
+    1. Vyberte **předplatné**Azure. 
 
     2. Vyberte existující **skupinu prostředků** nebo ji vytvořte. Pokud byl zdrojový obor názvů v clusteru Event Hubs, vyberte skupinu prostředků, která obsahuje cluster v cílové oblasti. 
 
-    3. Vyberte cílové **umístění** nebo oblast. Pokud jste vybrali existující skupinu prostředků, bude toto nastavení jen pro čtení. 
+    3. Vyberte cílové **umístění** nebo oblast. Pokud jste vybrali existující skupinu prostředků, toto nastavení je jen pro čtení. 
 
-    4. V části **NASTAVENÍ** postupujte takto:
+    4. V části **Nastavení** proveďte následující kroky:
     
-        1. zadejte nový **název oboru názvů**. 
+        1. Zadejte nový **název oboru názvů**. 
 
             ![Nasazení šablony Správce prostředků](./media/move-across-regions/deploy-template.png)
 
-        2. Pokud byl zdrojový obor názvů v **clusteru Event Hubs**, zadejte názvy **skupin y prostředků** a **clusteru Event Hubs** jako součást **externího ID**. 
+        2. Pokud byl váš zdrojový obor názvů v **clusteru Event Hubs**, zadejte názvy **skupin prostředků** a **Event HUBS clusteru** jako součást **externího ID**. 
 
               ```
               /subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<CLUSTER'S RESOURCE GROUP>/providers/Microsoft.EventHub/clusters/<CLUSTER NAME>
               ```   
-        3. Pokud centrum událostí ve vašem oboru názvů používá účet úložiště pro zachycení událostí, `StorageAccounts_<original storage account name>_external` zadejte název skupiny prostředků a účet úložiště pro pole. 
+        3. Pokud centrum událostí v oboru názvů používá účet úložiště pro zachycení událostí, zadejte název skupiny prostředků a účet úložiště pro `StorageAccounts_<original storage account name>_external` pole. 
             
             ```
             /subscriptions/0000000000-0000-0000-0000-0000000000000/resourceGroups/<STORAGE'S RESOURCE GROUP>/providers/Microsoft.Storage/storageAccounts/<STORAGE ACCOUNT NAME>
             ```    
-    5. Zaškrtněte políčko **Souhlasím s výše uvedenými podmínkami.** 
+    5. Zaškrtněte políčko Souhlasím **s podmínkami a ujednáními uvedenými nahoře** . 
     
-    6. Nyní vyberte **Vybrat nákup** a spusťte proces nasazení. 
+    6. Teď vyberte **Vybrat nákup** a zahajte proces nasazení. 
 
-## <a name="discard-or-clean-up"></a>Zlikvidovat nebo vyčistit
-Po nasazení, pokud chcete začít znovu, můžete odstranit **cílový obor názvů Event Hubs**a zopakovat kroky popsané v části [Příprava](#prepare) a [přesunutí](#move) v tomto článku.
+## <a name="discard-or-clean-up"></a>Zahodit nebo vyčistit
+Pokud po nasazení chcete začít znovu, můžete **cílový obor názvů Event Hubs**odstranit a postup opakovat postupem popsaným v části [Příprava](#prepare) a [Přesun](#move) v tomto článku.
 
-Chcete-li potvrdit změny a dokončit přesun oboru názvů Event Hubs, odstraňte **zdrojový obor názvů Event Hubs**. Před odstraněním oboru názvů zkontrolujte, zda jste zpracovali všechny události v oboru názvů. 
+Chcete-li potvrdit změny a dokončit přesun Event Hubs oboru názvů, odstraňte **zdrojový obor názvů Event Hubs**. Ujistěte se, že jste všechny události v oboru názvů před odstraněním oboru názvů zpracovali. 
 
-Odstranění oboru názvů Event Hubs (zdroj nebo cíl) pomocí portálu Azure:
+Odstranění oboru názvů Event Hubs (zdroj nebo cíl) pomocí Azure Portal:
 
-1. V okně hledání v horní části portálu Azure zadejte **Centra událostí**a z výsledků hledání vyberte **Centra událostí.** V seznamu se zobrazí obory názvů Centra událostí.
+1. V okně hledání v horní části Azure Portal zadejte **Event Hubs**a vyberte **Event Hubs** z výsledků hledání. V seznamu se zobrazí Event Hubs obory názvů.
 
-2. Vyberte cílový obor názvů, který chcete odstranit, a na panelu nástrojů vyberte **Odstranit.** 
+2. Vyberte cílový obor názvů, který chcete odstranit, a vyberte **Odstranit** z panelu nástrojů. 
 
-    ![Odstranit obor názvů - tlačítko](./media/move-across-regions/delete-namespace-button.png)
+    ![Odstranit obor názvů – tlačítko](./media/move-across-regions/delete-namespace-button.png)
 
-3. Na stránce **Odstranit zdroje*** ověřte vybrané prostředky a potvrďte odstranění zadáním **ano**a pak vyberte **Odstranit**. 
+3. Na stránce **Odstranit prostředky*** ověřte vybrané prostředky a potvrďte odstranění zadáním **Ano**a pak vyberte **Odstranit**. 
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste přesunuli obor názvů Centra událostí Azure z jedné oblasti do druhé a vyčistili zdrojové prostředky.  Další informace o přesunu prostředků mezi oblastmi a zotavení po havárii v Azure najdete v tématu:
+V tomto kurzu jste přesunuli obor názvů Azure Event Hubs z jedné oblasti na jiný a vyčistili zdrojové prostředky.  Další informace o přesouvání prostředků mezi oblastmi a zotavení po havárii v Azure najdete tady:
 
 
 - [Přesun prostředků do nové skupiny prostředků nebo předplatného](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)

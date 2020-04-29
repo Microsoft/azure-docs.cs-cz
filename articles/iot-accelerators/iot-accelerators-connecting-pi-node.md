@@ -1,6 +1,6 @@
 ---
-title: Připojení Raspberry Pi k řešení vzdáleného monitorování – Node.js – Azure | Dokumenty společnosti Microsoft
-description: Popisuje, jak připojit zařízení Raspberry Pi k akcelerátoru řešení vzdáleného monitorování pomocí aplikace napsané v Souboru Node.js.
+title: Připojit malinu pi k řešení vzdáleného monitorování – Node. js – Azure | Microsoft Docs
+description: Popisuje postup připojení zařízení malinu pi k akcelerátoru řešení vzdáleného monitorování pomocí aplikace napsané v Node. js.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -10,51 +10,51 @@ ms.date: 01/24/2018
 ms.author: dobett
 ms.custom: mqtt
 ms.openlocfilehash: 9335c45688752ea41801e988157740f4170cfcb4
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81683949"
 ---
-# <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-solution-accelerator-nodejs"></a>Připojení zařízení Raspberry Pi k akcelerátoru řešení vzdáleného monitorování (Node.js)
+# <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-solution-accelerator-nodejs"></a>Připojení zařízení malinu pi k akcelerátoru řešení vzdáleného monitorování (Node. js)
 
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-V tomto kurzu se můžete připojit skutečné zařízení k akcelerátoru řešení vzdáleného monitorování. V tomto kurzu použijete Node.js, což je dobrá volba pro prostředí s minimálními omezeními prostředků.
+V tomto kurzu se dozvíte, jak připojit reálné zařízení k akcelerátoru řešení vzdáleného monitorování. V tomto kurzu použijete Node. js, což je dobrá možnost pro prostředí s minimálními omezeními prostředků.
 
-Pokud dáváte přednost simulaci zařízení, přečtěte si informace [o vytvoření a testování nového simulovaného zařízení](iot-accelerators-remote-monitoring-create-simulated-device.md).
+Pokud dáváte přednost simulaci zařízení, přečtěte si téma [Vytvoření a otestování nového simulovaného zařízení](iot-accelerators-remote-monitoring-create-simulated-device.md).
 
 ### <a name="required-hardware"></a>Požadovaný hardware
 
-Stolní počítač, který vám umožní vzdáleně se připojit k příkazovému řádku na Raspberry Pi.
+Stolní počítač, který vám umožní vzdálené připojení k příkazovému řádku v malin. PI.
 
-[Microsoft IoT Starter Kit pro Raspberry Pi 3](https://azure.microsoft.com/develop/iot/starter-kits/) nebo ekvivalentní komponenty. Tento kurz používá následující položky ze sady:
+[Sada Microsoft IoT Starter Kit pro malinu PI 3](https://azure.microsoft.com/develop/iot/starter-kits/) nebo ekvivalentní součásti. Tento kurz používá následující položky ze sady:
 
 - Malina Pi 3
-- MicroSD karta (s NOOBS)
-- Kabel USB Mini
-- Ethernetový kabel
+- Karta MicroSD (s NOOBS)
+- Mini kabel USB
+- Kabel Ethernet
 
-### <a name="required-desktop-software"></a>Požadovaný software pro stolní počítače
+### <a name="required-desktop-software"></a>Požadovaný desktopový software
 
-Potřebujete klienta SSH na vašem stolním počítači, abyste mohli vzdáleně přistupovat k příkazovému řádku na Raspberry Pi.
+Na stolním počítači budete potřebovat klienta SSH, aby bylo možné vzdáleně přistupovat k příkazovému řádku v malinu PI.
 
-- Systém Windows neobsahuje klienta SSH. Doporučujeme používat [PuTTY](https://www.putty.org/).
-- Většina linuxových distribucí a Mac OS obsahuje nástroj SSH příkazového řádku. Další informace naleznete v tématu [SSH Using Linux nebo Mac OS](https://www.raspberrypi.org/documentation/remote-access/ssh/unix.md).
+- Systém Windows nezahrnuje klienta SSH. Doporučujeme použít k [disvýstupu](https://www.putty.org/).
+- Většina distribucí a Mac OS systému Linux zahrnuje nástroj SSH nástroje příkazového řádku. Další informace najdete v tématu [SSH pomocí systému Linux nebo Mac OS](https://www.raspberrypi.org/documentation/remote-access/ssh/unix.md).
 
-### <a name="required-raspberry-pi-software"></a>Požadovaný software Raspberry Pi
+### <a name="required-raspberry-pi-software"></a>Požadovaný software maliny PI
 
-Pokud jste tak ještě neučinili, nainstalujte na Raspberry Pi soubor Node.js verze 4.0.0 nebo novější. Následující kroky ukazují, jak nainstalovat Soubor Node.js v6 na raspberry pi:
+Pokud jste to ještě neudělali, nainstalujte Node. js verze 4.0.0 nebo novější do maliny PI. Následující kroky ukazují, jak nainstalovat Node. js v6 do složky malin PI:
 
-1. Připojte se k Raspberry Pi pomocí `ssh`. Další informace naleznete v tématu [SSH (Secure Shell)](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md) na [webových stránkách Raspberry Pi](https://www.raspberrypi.org/).
+1. Připojte se k malin. PI pomocí `ssh`. Další informace najdete v tématu [SSH (Secure Shell)](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md) na [webu maliny PI](https://www.raspberrypi.org/).
 
-1. Pomocí následujícího příkazu aktualizujte Raspberry Pi:
+1. Pomocí následujícího příkazu aktualizujte aplikaci malin PI:
 
     ```sh
     sudo apt-get update
     ```
 
-1. Pomocí následujících příkazů odeberte ze raspberry pi všechny existující instalace souboru Node.js:
+1. Pomocí následujících příkazů odeberte všechny existující instalace Node. js ze složky malin PI:
 
     ```sh
     sudo apt-get remove nodered -y
@@ -62,24 +62,24 @@ Pokud jste tak ještě neučinili, nainstalujte na Raspberry Pi soubor Node.js v
     sudo apt-get remove npm  -y
     ```
 
-1. Ke stažení a instalaci souboru Node.js v6 na raspberry pi použijte následující příkaz:
+1. Pomocí následujícího příkazu Stáhněte a nainstalujte Node. js v6 do složky malin. PI:
 
     ```sh
     curl -sL https://deb.nodesource.com/setup_6.x | sudo bash -
     sudo apt-get install nodejs npm
     ```
 
-1. Pomocí následujícího příkazu ověřte, zda jste úspěšně nainstalovali soubor Node.js v6.11.4:
+1. Pomocí následujícího příkazu ověřte, že jste úspěšně nainstalovali Node. js v 6.11.4:
 
     ```sh
     node --version
     ```
 
-## <a name="create-a-nodejs-solution"></a>Vytvoření řešení Node.js
+## <a name="create-a-nodejs-solution"></a>Vytvoření řešení Node. js
 
-Pomocí `ssh` připojení k Raspberry Pi proveďte následující kroky:
+Pomocí `ssh` připojení k aplikaci malin PI proveďte následující kroky:
 
-1. Vytvořte složku `remotemonitoring` s názvem ve vaší domovské složce na Raspberry Pi. Přejděte do této složky v příkazovém řádku:
+1. Vytvořte složku s názvem `remotemonitoring` v domovské složce na malinu PI. Přejděte do této složky na příkazovém řádku:
 
     ```sh
     cd ~
@@ -87,15 +87,15 @@ Pomocí `ssh` připojení k Raspberry Pi proveďte následující kroky:
     cd remotemonitoring
     ```
 
-1. Chcete-li stáhnout a nainstalovat balíčky, které potřebujete k dokončení ukázkové aplikace, spusťte následující příkazy:
+1. Pokud chcete stáhnout a nainstalovat balíčky, které potřebujete k dokončení ukázkové aplikace, spusťte následující příkazy:
 
     ```sh
     npm install async azure-iot-device azure-iot-device-mqtt
     ```
 
-1. Ve `remotemonitoring` složce vytvořte soubor s názvem **remote_monitoring.js**. Otevřete tento soubor v textovém editoru. Na Raspberry Pi můžete použít `nano` `vi` textové editory nebo textové editory.
+1. Ve `remotemonitoring` složce vytvořte soubor s názvem **remote_monitoring. js**. Otevřete tento soubor v textovém editoru. V aplikaci malin PI můžete použít editory `nano` nebo `vi` text.
 
-1. Do souboru **remote_monitoring.js** přidejte následující `require` příkazy:
+1. V souboru **remote_monitoring. js** přidejte následující `require` příkazy:
 
     ```javascript
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
@@ -104,13 +104,13 @@ Pomocí `ssh` připojení k Raspberry Pi proveďte následující kroky:
     var async = require('async');
     ```
 
-1. Přidejte následující deklarace proměnných za příkazy `require`. Nahraďte zástupnou hodnotu `{device connection string}` hodnotou, kterou jste si poznamenali pro zařízení, které jste zřídit v řešení vzdáleného monitorování:
+1. Přidejte následující deklarace proměnných za příkazy `require`. Nahraďte hodnotu `{device connection string}` zástupného symbolu hodnotou, kterou jste si poznamenali u zařízení, které jste zřídili v řešení vzdáleného monitorování:
 
     ```javascript
     var connectionString = '{device connection string}';
     ```
 
-1. Chcete-li definovat některá základní telemetrická data, přidejte následující proměnné:
+1. Pokud chcete definovat některá základní data telemetrie, přidejte následující proměnné:
 
     ```javascript
     var temperature = 50;
@@ -134,7 +134,7 @@ Pomocí `ssh` připojení k Raspberry Pi proveďte následující kroky:
     var deviceOnline = true;
     ```
 
-1. Přidejte následující proměnnou k definování ohlášených vlastností, které mají být odeslány do řešení. Tyto vlastnosti zahrnují metadata, která se mají zobrazit ve webovém uživatelském rozhraní:
+1. Přidejte následující proměnnou k definování hlášených vlastností k odeslání do řešení. Tyto vlastnosti zahrnují metadata, která se mají zobrazit ve webovém uživatelském rozhraní:
 
     ```javascript
     var reportedProperties = {
@@ -162,7 +162,7 @@ Pomocí `ssh` připojení k Raspberry Pi proveďte následující kroky:
     }
     ```
 
-1. Přidejte následující pomocnou funkci, která se použije k náhodnému použití hodnot telemetrie:
+1. Přidejte následující pomocnou funkci, která se použije k náhodnému použití hodnoty telemetrie:
 
      ```javascript
      function generateRandomIncrement() {
@@ -170,7 +170,7 @@ Pomocí `ssh` připojení k Raspberry Pi proveďte následující kroky:
      }
      ```
 
-1. Přidejte následující obecnou funkci pro zpracování přímých volání metod z řešení. Funkce zobrazí informace o přímé metodě, která byla vyvolána, ale v této ukázce žádným způsobem neupravuje zařízení. Řešení používá přímé metody k jednání na zařízeních:
+1. Přidejte následující obecnou funkci pro zpracování volání přímých metod z řešení. Funkce zobrazí informace o přímé metodě, která byla vyvolána, ale v této ukázce nemění zařízení jakýmkoli způsobem. Řešení používá přímé metody pro jednání na zařízeních:
 
      ```javascript
      function onDirectMethod(request, response) {
@@ -185,7 +185,7 @@ Pomocí `ssh` připojení k Raspberry Pi proveďte následující kroky:
      }
      ```
 
-1. Přidejte následující funkci pro zpracování volání přímé metody **FirmwareUpdate** z řešení. Funkce ověří parametry předané v přímé datové části metody a poté asynchronně spustí simulaci aktualizace firmwaru:
+1. Přidejte následující funkci pro zpracování volání přímé metody **FirmwareUpdate** z řešení. Funkce ověří parametry předané v datové části Direct Method a poté asynchronně spustí simulaci aktualizace firmwaru:
 
      ```javascript
      function onFirmwareUpdate(request, response) {
@@ -214,7 +214,7 @@ Pomocí `ssh` připojení k Raspberry Pi proveďte následující kroky:
      }
      ```
 
-1. Přidejte následující funkci pro simulaci dlouhotrvajícího toku aktualizace firmwaru, který hlásí průběh zpět do řešení:
+1. Přidejte následující funkci pro simulaci dlouhotrvajícího toku aktualizace firmwaru, který oznamuje průběh zpět do řešení:
 
      ```javascript
      // Simulated firmwareUpdate flow
@@ -292,7 +292,7 @@ Pomocí `ssh` připojení k Raspberry Pi proveďte následující kroky:
      }
      ```
 
-1. Přidejte následující kód pro odesílání telemetrických dat do řešení. Klientská aplikace přidá do zprávy vlastnosti k identifikaci schématu zprávy:
+1. Přidejte následující kód, který odešle data telemetrie do řešení. Klientská aplikace přidá do zprávy vlastnosti pro identifikaci schématu zprávy:
 
      ```javascript
      function sendTelemetry(data, schema) {
@@ -317,13 +317,13 @@ Pomocí `ssh` připojení k Raspberry Pi proveďte následující kroky:
      var client = Client.fromConnectionString(connectionString, Protocol);
      ```
 
-1. Do této oblasti přidejte následující kód:
+1. Přidejte následující kód do:
 
     * Otevřete připojení.
     * Nastavte obslužnou rutinu pro požadované vlastnosti.
-    * Odeslat ohlášené vlastnosti.
-    * Zaregistrujte obslužné rutiny pro přímé metody. Ukázka používá samostatnou obslužnou rutinu pro metodu přímé aktualizace firmwaru.
-    * Začněte posílat telemetrii.
+    * Odeslání hlášených vlastností.
+    * Zaregistrujte obslužné rutiny pro přímé metody. Ukázka používá samostatnou obslužnou rutinu pro přímou metodu aktualizace firmwaru.
+    * Zahájit odesílání telemetrie
 
       ```javascript
       client.open(function (err) {
@@ -385,9 +385,9 @@ Pomocí `ssh` připojení k Raspberry Pi proveďte následující kroky:
       });
       ```
 
-1. Uložte změny do souboru **remote_monitoring.js.**
+1. Uložte změny do souboru **remote_monitoring. js** .
 
-1. Chcete-li spustit ukázkovou aplikaci, spusťte na příkazovém řádku na Raspberry Pi následující příkaz:
+1. Chcete-li spustit ukázkovou aplikaci, spusťte následující příkaz na příkazovém řádku na adrese malin PI:
 
      ```sh
      node remote_monitoring.js

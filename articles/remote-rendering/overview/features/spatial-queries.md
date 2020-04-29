@@ -1,36 +1,36 @@
 ---
 title: Prostorové dotazy
-description: Jak provést prostorové dotazy ve scéně
+description: Jak provádět prostorové dotazy ve scéně
 author: jakrams
 ms.author: jakras
 ms.date: 02/07/2020
 ms.topic: article
 ms.openlocfilehash: 9a981aeb08ec46900994fd599b592b9f16034f34
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80680528"
 ---
 # <a name="spatial-queries"></a>Prostorové dotazy
 
-Prostorové dotazy jsou operace, pomocí kterých se můžete zeptat služby vzdáleného vykreslování, které objekty jsou umístěny v oblasti. Prostorové dotazy se často používají k implementaci interakcí, jako je například zjištění, na který objekt uživatel ukazuje.
+Prostorové dotazy jsou operace, se kterými můžete požádat o službu vzdáleného vykreslování, které objekty jsou umístěné v oblasti. Prostorové dotazy se často používají k implementaci interakcí, jako je například zjištění objektu, na kterém uživatel odkazuje.
 
-Všechny prostorové dotazy jsou vyhodnocovány na serveru. V důsledku toho se jedná o asynchronní operace a výsledky dorazí se zpožděním, které závisí na latenci sítě. Vzhledem k tomu, že každý prostorový dotaz generuje síťový provoz, dávejte pozor, abyste nedělali příliš mnoho najednou.
+Všechny prostorové dotazy jsou vyhodnocovány na serveru. V důsledku toho jsou asynchronní operace a výsledky se dostanou prodlevou, která závisí na latenci sítě. Vzhledem k tomu, že každý prostorový dotaz generuje síťový provoz, buďte opatrní, aby nedošlo k příliš velkému počtu současně.
 
-## <a name="collision-meshes"></a>Kolizní křovina
+## <a name="collision-meshes"></a>Kolize sítí
 
-Prostorové dotazy jsou poháněny motorem [Havok Physics](https://www.havok.com/products/havok-physics) a vyžadují, aby byla přítomna vyhrazená kolize. Ve výchozím nastavení [generuje převod modelu](../../how-tos/conversion/model-conversion.md) kolize míchací kódy. Pokud nepožadujete prostorové dotazy na složitý model, zvažte zakázání generování mřížky kolizí v [možnostech převodu](../../how-tos/conversion/configure-model-conversion.md), protože to má dopad několika způsoby:
+Prostorové dotazy používá modul [Havok fyzika](https://www.havok.com/products/havok-physics) a vyžadují, aby byla k dispozici vyhrazená síť kolizí. Ve výchozím nastavení [Převod modelu](../../how-tos/conversion/model-conversion.md) generuje sítě kolizí. Pokud nepotřebujete prostorové dotazy pro komplexní model, zvažte možnost zakázat generování sítě kolizí v [možnostech převodu](../../how-tos/conversion/configure-model-conversion.md), protože má dopad více způsobů:
 
-* [Převod modelu](../../how-tos/conversion/model-conversion.md) bude trvat podstatně déle.
-* Převedené velikosti souborů modelu jsou znatelně větší, což má vliv na rychlost stahování.
+* [Převod modelu](../../how-tos/conversion/model-conversion.md) bude trvat mnohem delší dobu.
+* Převedené velikosti souborů modelu jsou výrazně větší, což má vliv na rychlost stahování.
 * Doba načítání za běhu je delší.
-* Spotřeba paměti procesoru runtime je vyšší.
-* Je tu mírné řízení za běhu výkon režie pro každou instanci modelu.
+* Spotřeba paměti procesoru za běhu je vyšší.
+* Pro každou instanci modelu existuje mírné režie výkonu modulu runtime.
 
-## <a name="ray-casts"></a>Ray odlitky
+## <a name="ray-casts"></a>Přetypování Ray
 
-Ray *cast* je prostorový dotaz, kde modul runtime kontroluje, které objekty jsou protnuty paprskem, počínaje danou polohou a směřující do určitého směru. Jako optimalizace je také uvedena maximální vzdálenost paprsku, aby se nehledaly objekty, které jsou příliš daleko.
+*Jednosměrné přetypování* je prostorový dotaz, ve kterém modul runtime kontroluje, které objekty se protínají, od dané pozice a odkazuje na určitý směr. V rámci optimalizace je také k disdobu maximální vzdálenosti, aby nedošlo k hledání objektů, které jsou příliš daleko.
 
 ````c#
 async void CastRay(AzureSession session)
@@ -54,13 +54,13 @@ async void CastRay(AzureSession session)
 }
 ````
 
-Existují tři režimy shromažďování přístupů:
+Existují tři režimy kolekce přístupů:
 
-* **Nejbližší:** V tomto režimu bude hlášen pouze nejbližší zásah.
-* **Jakékoliv:** Preferujte tento režim, když vše, co chcete vědět, je, *zda* ray by hit něco, ale je jedno, co bylo přesně zasaženo. Tento dotaz může být podstatně levnější vyhodnotit, ale má také jen málo aplikací.
-* **Vše:** V tomto režimu jsou hlášeny všechny zásahy podél paprsku seřazené podle vzdálenosti. Nepoužívejte tento režim, pokud opravdu nepotřebujete více než první zásah. Omezte počet nahlášených přístupů s `MaxHits` možností.
+* **Nejbližší:** V tomto režimu bude hlášeno pouze nejbližší volání.
+* **Jakékoli:** Tento režim dáváte přednost, pokud chcete zjistit, *zda* se v Ray objevil cokoli, ale nezáleží na tom, co bylo dosaženo přesně. Tento dotaz může být výrazně levnější pro vyhodnocení, ale má i několik aplikací.
+* **Vše:** V tomto režimu jsou hlášeny všechny přístupy po celém Ray, seřazené podle vzdálenosti. Tento režim nepoužívejte, pokud skutečně nepotřebujete více než první zásah. Omezte počet nahlášených přístupů s `MaxHits` možností.
 
-Chcete-li vyloučit objekty selektivně z považovány za přetypování paprsku, [hierarchicalStateOverrideComponent](override-hierarchical-state.md) komponenty lze použít.
+Pokud chcete vyloučit objekty, které se selektivně považují za přetypování, je možné použít komponentu [HierarchicalStateOverrideComponent](override-hierarchical-state.md) .
 
 <!--
 The CollisionMask allows the quey to consider or ignore some objects based on their collision layer. If an object has layer L, it will be hit only if the mask has  bit L set.
@@ -68,17 +68,17 @@ It is useful in case you want to ignore objects, for instance when setting an ob
 TODO : Add an API to make that possible.
 -->
 
-### <a name="hit-result"></a>Výsledek zásahu
+### <a name="hit-result"></a>Výsledek volání
 
-Výsledkem dotazu ray cast je pole přístupů. Pole je prázdné, pokud nebyl nalezen žádný objekt.
+Výsledkem dotazu přetypování do Ray je pole přístupů. Pole je prázdné, pokud nebyl nalezen žádný objekt.
 
-Zásah má následující vlastnosti:
+K dispozice jsou následující vlastnosti:
 
-* **HitEntity:** Která [entita](../../concepts/entities.md) byla zasažena.
-* **SubPartId:** Která *podsíť* byla přístupů v [MeshComponent](../../concepts/meshes.md). Lze použít k `MeshComponent.UsedMaterials` indexování a vyhlédnout [materiál](../../concepts/materials.md) v tomto bodě.
-* **HitPosition:** Světová vesmírná pozice, kde paprsek protínal objekt.
-* **HitNormal:** Plocha světového prostoru normála sítě v poloze průsečíku.
-* **Vzdálenosttohit:** Vzdálenost od počáteční polohy paprsku k zásahu.
+* **HitEntity:** Která [entita](../../concepts/entities.md) byla vybrána.
+* **SubPartId:** Která *podsítě* byla vybrána v [MeshComponent](../../concepts/meshes.md). Dá se použít k indexování `MeshComponent.UsedMaterials` a hledání [materiálu](../../concepts/materials.md) v tomto okamžiku.
+* **HitPosition:** Pozice ve světě, kde se prostor protínají.
+* **HitNormal:** Střední plocha normálního prostoru na pozici průniku.
+* **DistanceToHit:** Vzdálenost od počáteční pozice od Ray po k dosažení.
 
 ## <a name="next-steps"></a>Další kroky
 

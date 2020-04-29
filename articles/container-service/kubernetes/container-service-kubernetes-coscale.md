@@ -1,6 +1,6 @@
 ---
-title: (ZASTARALÉ) Monitorování clusteru Azure Kubernetes pomocí CoScale
-description: Monitorování clusteru Kubernetes ve službě Azure Container Service pomocí funkce CoScale
+title: ZASTARALÉ Monitorování clusteru Azure Kubernetes s využitím spoluškálování
+description: Monitorování clusteru Kubernetes v Azure Container Service pomocí spoluškálování
 author: fryckbos
 ms.service: container-service
 ms.topic: conceptual
@@ -8,76 +8,76 @@ ms.date: 05/22/2017
 ms.author: saudas
 ms.custom: mvc
 ms.openlocfilehash: f195a5c05c6c95dac898b2d471747952a3446d52
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81681712"
 ---
-# <a name="deprecated-monitor-an-azure-container-service-kubernetes-cluster-with-coscale"></a>(ZASTARALÉ) Monitorování clusteru Kubernetes služby Azure Container Service pomocí coscale
+# <a name="deprecated-monitor-an-azure-container-service-kubernetes-cluster-with-coscale"></a>ZASTARALÉ Monitorování clusteru Azure Container Service Kubernetes s využitím spoluškálování
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
-V tomto článku vám ukážeme, jak nasadit [agenta CoScale](https://web.archive.org/web/20180317071550/https://www.coscale.com/) pro monitorování všech uzlů a kontejnerů v clusteru Kubernetes ve službě Azure Container Service. Pro tuto konfiguraci potřebujete účet s CoScale. 
+V tomto článku vám ukážeme, jak nasadit agenta [Koškály](https://web.archive.org/web/20180317071550/https://www.coscale.com/) pro monitorování všech uzlů a kontejnerů v clusteru Kubernetes v Azure Container Service. Pro tuto konfiguraci potřebujete účet se spoluškálou. 
 
 
-## <a name="about-coscale"></a>O společnosti Coscale 
+## <a name="about-coscale"></a>O koškále 
 
-CoScale je monitorovací platforma, která shromažďuje metriky a události ze všech kontejnerů v několika platformách orchestrace. CoScale nabízí monitorování celého zásobníku pro prostředí Kubernetes. Poskytuje vizualizace a analýzy pro všechny vrstvy v zásobníku: operační ho, Kubernetes, Docker a aplikace spuštěné uvnitř kontejnerů. CoScale nabízí několik integrovaných řídicích panelů monitorování a má vestavěnou detekci anomálií, která umožňuje operátorům a vývojářům rychle najít problémy s infrastrukturou a aplikacemi.
+Spoluškála je monitorovací platforma, která shromažďuje metriky a události ze všech kontejnerů v několika platformách Orchestration. Koškála nabízí kompletní monitorování pro Kubernetes prostředí. Poskytuje vizualizace a analýzy pro všechny vrstvy v zásobníku: operační systém, Kubernetes, Docker a aplikace běžící uvnitř vašich kontejnerů. Spoluškálování nabízí několik integrovaných řídicích panelů pro monitorování a má vestavěnou detekci anomálií, která umožňuje operátorům a vývojářům rychle najít problémy s infrastrukturou a aplikacemi.
 
-![CoScale UI](./media/container-service-kubernetes-coscale/coscale.png)
+![Uživatelské rozhraní pro spoluškálování](./media/container-service-kubernetes-coscale/coscale.png)
 
-Jak je znázorněno v tomto článku, můžete nainstalovat agenty v clusteru Kubernetes a spustit CoScale jako řešení SaaS. Pokud chcete zachovat data na místě, CoScale je také k dispozici pro místní instalaci.
+Jak je znázorněno v tomto článku, můžete nainstalovat agenty v clusteru Kubernetes ke spuštění spoluškálování jako řešení SaaS. Pokud chcete uchovávat data na pracovišti, je pro místní instalaci k dispozici i spoluškálování.
 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Nejprve je třeba [vytvořit účet CoScale](https://web.archive.org/web/20170507123133/https://www.coscale.com/free-trial).
+Nejdřív je potřeba [vytvořit účet Koškály](https://web.archive.org/web/20170507123133/https://www.coscale.com/free-trial).
 
-Tento návod předpokládá, že jste [vytvořili cluster Kubernetes pomocí služby Azure Container Service](container-service-kubernetes-walkthrough.md).
+Tento návod předpokládá, že jste [vytvořili cluster Kubernetes pomocí Azure Container Service](container-service-kubernetes-walkthrough.md).
 
-Také předpokládá, že máte `az` nainstalované `kubectl` azure cli a nástroje.
+Také předpokládá, že máte nainstalované rozhraní `az` příkazového řádku `kubectl` Azure a nástroje.
 
-Můžete otestovat, zda `az` máte nástroj nainstalován spuštěním:
+V případě, že máte `az` nástroj nainstalovaný, můžete otestovat spuštěním:
 
 ```azurecli
 az --version
 ```
 
-Pokud nástroj nemáte nainstalovaný, `az` jsou [zde](/cli/azure/install-azure-cli)pokyny .
+Pokud `az` nástroj nemáte nainstalovaný, [tady](/cli/azure/install-azure-cli)najdete pokyny.
 
-Můžete otestovat, zda `kubectl` máte nástroj nainstalován spuštěním:
+V případě, že máte `kubectl` nástroj nainstalovaný, můžete otestovat spuštěním:
 
 ```bash
 kubectl version
 ```
 
-Pokud nemáte `kubectl` nainstalovaný, můžete spustit:
+Pokud nemáte `kubectl` nainstalované, můžete spustit:
 
 ```azurecli
 az acs kubernetes install-cli
 ```
 
-## <a name="installing-the-coscale-agent-with-a-daemonset"></a>Instalace agenta CoScale s daemonsetem
-[DaemonSets](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) jsou používány Kubernetes spustit jednu instanci kontejneru na každém hostiteli v clusteru.
-Jsou ideální pro spuštění agentů monitorování, jako je například agent CoScale.
+## <a name="installing-the-coscale-agent-with-a-daemonset"></a>Instalace agenta spoluškálování s DaemonSet
+[DaemonSets](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) používají Kubernetes ke spuštění jedné instance kontejneru na každém hostiteli v clusteru.
+Jsou ideální pro spouštění agentů monitorování, jako je agent spoluškálování.
 
-Po přihlášení do CoScale přejděte na [stránku agenta](https://developer.newrelic.com/) a nainstalujte agenty CoScale do clusteru pomocí sady DaemonSet. CoScale UI poskytuje řízené kroky konfigurace k vytvoření agenta a začít sledovat celý cluster Kubernetes.
+Až se přihlásíte ke spoluškálování, na [stránce agenta](https://developer.newrelic.com/) Nainstalujte agenty spoluškálování na svůj cluster pomocí DaemonSet. Uživatelské rozhraní koškály poskytuje kroky konfigurace s asistencí pro vytvoření agenta a zahájení monitorování kompletního clusteru Kubernetes.
 
-![Konfigurace agenta CoScale](./media/container-service-kubernetes-coscale/installation.png)
+![Konfigurace agenta pro spoluškálování](./media/container-service-kubernetes-coscale/installation.png)
 
-Chcete-li spustit agenta v clusteru, spusťte dodaný příkaz:
+Chcete-li spustit agenta v clusteru, spusťte zadaný příkaz:
 
-![Spuštění agenta CoScale](./media/container-service-kubernetes-coscale/agent_script.png)
+![Spustit agenta spoluškálování](./media/container-service-kubernetes-coscale/agent_script.png)
 
-A to je vše! Jakmile jsou agenti v provozu, měli byste vidět data v konzole během několika minut. Navštivte [stránku agenta,](https://developer.newrelic.com/) kde najdete souhrn clusteru, proveďte další kroky konfigurace a řídicí panely, jako je **přehled clusteru Kubernetes**.
+A to je vše! Až budou agenti v provozu, měli byste během několika minut zobrazovat data v konzole. Navštivte [stránku agenta](https://developer.newrelic.com/) , kde se zobrazí souhrn vašeho clusteru, proveďte další konfigurační kroky a zobrazte řídicí panely, jako je například **Přehled clusteru Kubernetes**.
 
 ![Přehled clusteru Kubernetes](./media/container-service-kubernetes-coscale/dashboard_clusteroverview.png)
 
-Agent CoScale se automaticky nasazuje na nové počítače v clusteru. Agent se aktualizuje automaticky při vydání nové verze.
+Agent spoluškálování se automaticky nasadí na nové počítače v clusteru. Agent se aktualizuje automaticky, když se uvolní nová verze.
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o monitorovacích řešeních CoScale najdete v dokumentaci a [blogu](https://web.archive.org/web/20170501021344/http://www.coscale.com:80/blog) [CoScale.](https://web.archive.org/web/20180415164304/http://docs.coscale.com:80/) 
+Další informace o řešeních pro monitorování spoluškálování najdete v dokumentaci a [blogu](https://web.archive.org/web/20170501021344/http://www.coscale.com:80/blog) o [spoluškálování](https://web.archive.org/web/20180415164304/http://docs.coscale.com:80/) . 
 

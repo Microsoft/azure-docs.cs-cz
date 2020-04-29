@@ -6,103 +6,103 @@ ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
 ms.openlocfilehash: b86af2ff8fad3793fc47cec9399fd499c1cabba7
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81681856"
 ---
 # <a name="troubleshoot"></a>Řešení potíží
 
-Na této stránce jsou uvedeny běžné problémy, které narušují vzdálené vykreslování Azure, a způsoby jejich řešení.
+Tato stránka obsahuje seznam běžných problémů, které mají vliv na vzdálené vykreslování Azure, a způsoby, jak je vyřešit.
 
-## <a name="client-cant-connect-to-server"></a>Klient se nemůže připojit k serveru
+## <a name="client-cant-connect-to-server"></a>Klient se nemůže připojit k serveru.
 
-Ujistěte se, že brány firewall (na zařízení, uvnitř směrovačů atd.) neblokují následující porty:
+Ujistěte se, že brány firewall (na zařízení, ve směrovačích atd.) neblokují následující porty:
 
-* **50051 (TCP)** - vyžadováno pro počáteční připojení (HTTP handshake)
-* **8266 (TCP+UDP)** - vyžadováno pro přenos dat
-* **5000 (TCP)**, **5433 (TCP)**, **8443 (TCP)** - vyžadováno pro [ArrInspector](tools/arr-inspector.md)
+* **50051 (TCP)** – vyžaduje se pro počáteční připojení (http handshake)
+* **8266 (TCP + UDP)** – vyžadováno pro přenos dat
+* **5000 (TCP)**, **5433 (tcp)**, **8443 (TCP)** – požadováno pro [ArrInspector](tools/arr-inspector.md)
 
-## <a name="error-disconnected-videoformatnotavailable"></a>Chyba Odpojeno: VideoFormatNotavailable
+## <a name="error-disconnected-videoformatnotavailable"></a>Chyba "odpojeno: VideoFormatNotAvailable"
 
-Zkontrolujte, zda gpu podporuje hardwarové dekódování videa. Viz [Vývoj pc](../overview/system-requirements.md#development-pc).
+Ověřte, že grafický procesor podporuje dekódování hardwarových videí. Viz [vývojový počítač](../overview/system-requirements.md#development-pc).
 
-Pokud pracujete na přenosném počítači se dvěma grafickými procesory, je možné, že gpu, na kterém běžíte ve výchozím nastavení, neposkytuje funkci hardwarového dekódování videa. Pokud ano, zkuste aplikaci přinutit k použití jiného grafického procesoru. To je často možné v nastavení ovladače GPU.
+Pokud pracujete na přenosném počítači se dvěma grafickými procesory, je možné, že GPU, ve kterém pracujete, ve výchozím nastavení neposkytuje funkci dekódování hardwarových videí. Pokud ano, zkuste aplikaci vynutit, aby používala jiný GPU. To je často možné v nastavení ovladače GPU.
 
-## <a name="h265-codec-not-available"></a>Kodek H265 není k dispozici
+## <a name="h265-codec-not-available"></a>Kodek h265 není k dispozici.
 
-Existují dva důvody, proč server může odmítnout připojení k **kodeku není k dispozici** chyba.
+Existují dva důvody, proč se může server odmítat připojit pomocí **kodeku, který není k dispozici** .
 
-**Kodek H265 není nainstalován:**
+**Kodek h265 není nainstalován:**
 
-Nejprve se ujistěte, že jste nainstalovali **rozšíření HEVC Video Extensions,** jak je uvedeno v části [Software](../overview/system-requirements.md#software) v požadavcích na systém.
+Nejdřív se ujistěte, že jste nainstalovali **rozšíření videa HEVC** , jak je uvedeno v části [software](../overview/system-requirements.md#software) v tématu požadavky na systém.
 
-Pokud stále dochází k problémům, ujistěte se, že grafická karta podporuje H265 a máte nainstalován nejnovější grafický ovladač. Informace o dodavateli naleznete v části [Vývojový počítač](../overview/system-requirements.md#development-pc) v části Systémové požadavky.
+Pokud stále dochází k problémům, ujistěte se, že grafická karta podporuje h265 a máte nainstalovaný nejnovější ovladač grafiky. Informace o požadavcích specifických pro dodavatele najdete v části [vývojového počítače](../overview/system-requirements.md#development-pc) v tématu požadavky na systém.
 
 **Kodek je nainstalován, ale nelze jej použít:**
 
-Důvodem tohoto problému je nesprávné nastavení zabezpečení na knihovnách DLL. Tento problém se neprojevuje při pokusu o sledování videí kódovaných h265. Ani přeinstalování kodeku problém nevyřeší. Místo toho proveďte následující kroky:
+Důvodem tohoto problému je nesprávné nastavení zabezpečení v knihovnách DLL. Tento problém se nemanifestuje při pokusu o sledování videí kódovaných pomocí h265. Opětovná instalace kodeku neopraví problém buď. Místo toho proveďte následující kroky:
 
-1. Otevření **PowerShellu s právy správce** a spuštění
+1. Otevřete **PowerShell s právy správce** a spusťte
 
     ```PowerShell
     Get-AppxPackage -Name Microsoft.HEVCVideoExtension
     ```
   
-    Tento příkaz by `InstallLocation` měl výstup kodeku, něco jako:
+    Tento příkaz by měl výstup `InstallLocation` z kodeku, například:
   
     ```cmd
     InstallLocation   : C:\Program Files\WindowsApps\Microsoft.HEVCVideoExtension_1.0.23254.0_x64__5wasdgertewe
     ```
 
 1. Otevření této složky v Průzkumníkovi Windows
-1. Měla by existovat podsložka **x86** a **x64.** Klikněte pravým tlačítkem myši na jednu ze složek a zvolte **Vlastnosti**
-    1. Vyberte kartu **Zabezpečení** a klepněte na tlačítko **Upřesnit nastavení.**
-    1. Klikněte na **Změnit** **vlastníka.**
-    1. Zadejte **správce** do textového pole.
-    1. Klikněte na **Zkontrolovat jména** a **OK.**
-1. Opakování výše uvedených kroků pro druhou složku
-1. Také opakujte výše uvedené kroky v každém souboru DLL uvnitř obou složek. Měly by existovat celkem čtyři knihovny DLL.
+1. Měla by existovat podsložka **x86** a **x64** . Klikněte pravým tlačítkem na jednu ze složek a vyberte **vlastnosti** .
+    1. Vyberte kartu **zabezpečení** a klikněte na tlačítko **Upřesnit** nastavení.
+    1. Klikněte na **změnit** pro **vlastníka** .
+    1. Zadejte do textového pole **Administrators** .
+    1. Klikněte na **kontrolu názvů** a **OK** .
+1. Opakujte výše uvedené kroky u druhé složky.
+1. Také opakujte výše uvedené kroky v každém souboru DLL v obou složkách. Měly by být zcela čtyři knihovny DLL.
 
-Chcete-li ověřit, zda jsou nastavení nyní správná, proveďte to pro každý ze čtyř knihoven DLL:
+Pokud chcete ověřit, že jsou nastavení správná, udělejte to pro každou ze čtyř knihoven DLL:
 
-1. Vybrat **vlastnosti > zabezpečení > úpravy**
-1. Projděte si seznam všech **skupin / uživatelů** a ujistěte se, že každý z nich má správnou sadu Číst & **Provést** (zaškrtnutí ve sloupci **povolit** musí být zaškrtnuto)
+1. Vyberte **vlastnosti > zabezpečení > upravit** .
+1. Projděte si seznam všech **skupin nebo uživatelů** a ujistěte se, že každý z nich má nastavenou možnost **číst & spustit** vpravo (zaškrtnutí políčka ve sloupci **povoleno** musí být zaškrtne).
 
 ## <a name="low-video-quality"></a>Nízká kvalita videa
 
-Kvalita videa může být ohrožena buď kvalitou sítě, nebo chybějícím video kodekem H265.
+Kvalitu videa je možné ohrozit buď pomocí kvality sítě, nebo chybějícího H265ého kodeku videa.
 
-* Postup identifikace problémů se sítí naleznete v následujících [postupech](#unstable-holograms).
-* Podívejte se na [systémové požadavky](../overview/system-requirements.md#development-pc) pro instalaci nejnovějšího grafického ovladače.
+* Podívejte se na postup pro [identifikaci problémů se sítí](#unstable-holograms).
+* Podívejte se na [požadavky na systém](../overview/system-requirements.md#development-pc) pro instalaci nejnovějšího ovladače grafiky.
 
-## <a name="video-recorded-with-mrc-does-not-reflect-the-quality-of-the-live-experience"></a>Video nahrané pomocí MRC neodráží kvalitu živého zážitku
+## <a name="video-recorded-with-mrc-does-not-reflect-the-quality-of-the-live-experience"></a>Video zaznamenané v rámci MRC neodráží kvalitu živého prostředí.
 
-Video lze nahrát na Hololens přes [Mixed Reality Capture (MRC)](https://docs.microsoft.com/windows/mixed-reality/mixed-reality-capture-for-developers). Výsledné video má však horší kvalitu než živá zkušenost ze dvou důvodů:
-* Snímková frekvence videa je omezena na 30 Hz oproti 60 Hz.
-* Video obrázky neprocházejí [pozdní fázi reprojection](../overview/features/late-stage-reprojection.md) zpracování krok, takže video se zdá být choppier.
+Video se dá zaznamenat na HoloLens prostřednictvím aplikace [MRC (Mixed reality Capture)](https://docs.microsoft.com/windows/mixed-reality/mixed-reality-capture-for-developers). Výsledné video má však horší kvalitu než živé prostředí ze dvou důvodů:
+* Snímková frekvence videa se omezené na 30 Hz na rozdíl od 60 Hz.
+* Obrázky videa neprojde krok zpracování [promítnout v pozdní fázi](../overview/features/late-stage-reprojection.md) , takže se video zdá být choppier.
 
-Obě jsou inherentní omezení nahrávací techniky.
+Obě jsou základními omezeními techniky záznamu.
 
 ## <a name="black-screen-after-successful-model-loading"></a>Černá obrazovka po úspěšném načtení modelu
 
-Pokud jste připojeni k vykreslování runtime a úspěšně načten model, ale pouze vidět černou obrazovku poté, pak to může mít několik různých příčin.
+Pokud jste připojeni k modulu runtime vykreslování a úspěšně jste načetli model, ale po jeho zobrazení se zobrazí jenom černá obrazovka, může to mít několik různých příčin.
 
-Před provedením podrobnější analýzy doporučujeme otestovat následující věci:
+Než provedete podrobnější analýzu, doporučujeme, abyste provedli testování těchto věcí:
 
-* Je kodek H265 nainstalován? Ačkoli by měl být záložní k odevzdání kodeku H264, viděli jsme případy, kdy tento záložní nefungoval správně. Podívejte se na [systémové požadavky](../overview/system-requirements.md#development-pc) pro instalaci nejnovějšího grafického ovladače.
-* Při použití projektu Unity zavřete Unity, odstraňte dočasné *knihovny* a *obj* složky v adresáři projektu a načíst/sestavit projekt znovu. V některých případech data uložená v mezipaměti způsobila, že vzorek nefunguje správně bez zjevného důvodu.
+* Je kodek h265 nainstalován? I když by existovala záloha kodeku H264, zjistili jsme případy, kdy tato záloha nefungovala správně. Podívejte se na [požadavky na systém](../overview/system-requirements.md#development-pc) pro instalaci nejnovějšího ovladače grafiky.
+* Při použití projektu Unity zavřete Unity, odstraňte dočasnou *knihovnu* a složky *obj* v adresáři projektu a znovu načtěte nebo sestavte projekt. V některých případech data uložená v mezipaměti způsobila, že ukázka nebude správně fungovat bez zjevné příčiny.
 
-Pokud tyto dva kroky nepomohly, je nutné zjistit, zda jsou snímky videa klientem přijímány či nikoli. To lze dotazovat programově, jak je vysvětleno v kapitole [dotazy na výkon na straně serveru.](../overview/features/performance-queries.md) Má `FrameStatistics struct` člen, který označuje, kolik snímků videa byly přijaty. Pokud je toto číslo větší než 0 a v průběhu času se zvyšuje, klient obdrží skutečné snímky videa ze serveru. V důsledku toho musí být problém na straně klienta.
+Pokud vám tyto dva kroky nepomohly, je nutné zjistit, zda jsou snímky videa přijaty klientem nebo ne. To se dá dotazovat programově, jak je vysvětleno v kapitole [dotazy na výkon na straně serveru](../overview/features/performance-queries.md) . `FrameStatistics struct` Má člena, který určuje, kolik snímků videa bylo přijato. Pokud je toto číslo větší než 0 a v průběhu času se zvyšuje čas, klient obdrží skutečné video snímky ze serveru. V důsledku toho musí být problém na straně klienta.
 
 ### <a name="common-client-side-issues"></a>Běžné problémy na straně klienta
 
-**Model není uvnitř pohledu frustum:**
+**Model není v frustum zobrazení:**
 
-V mnoha případech je model zobrazen správně, ale nachází se mimo frustum fotoaparátu. Častým důvodem je, že model byl exportován s daleko mimostředovým čepem, takže je oříznut vzdálenou ořezovou rovinou fotoaparátu. Pomáhá dotaz modelu ohraničovací rámeček programově a vizualizovat pole s Unity jako řádek pole nebo vytisknout jeho hodnoty do protokolu ladění.
+V mnoha případech se model zobrazuje správně, ale je umístěný mimo frustum kamery. Běžným důvodem je to, že model byl exportován s mnohem mimo špičku, takže ho ořízne daleko ořezovou rovinou kamery. Pomáhá při programovém dotazování ohraničujícího rámečku modelu a vizualizaci pole pomocí Unity jako pole řádku nebo vytištění jeho hodnot do protokolu ladění.
 
-Kromě toho proces převodu generuje [výstupní soubor json](../how-tos/conversion/get-information.md) spolu s převedeným modelem. Chcete-li ladit problémy s umístěním `boundingBox` modelu, stojí za to podívat se na položku v [části outputStatistics](../how-tos/conversion/get-information.md#the-outputstatistics-section):
+Kromě toho proces převodu generuje [výstupní soubor JSON](../how-tos/conversion/get-information.md) společně s převedeným modelem. Chcete-li ladit problémy s polohou modelu, prohlédněte `boundingBox` si položku v [části outputStatistics](../how-tos/conversion/get-information.md#the-outputstatistics-section):
 
 ```JSON
 {
@@ -125,31 +125,31 @@ Kromě toho proces převodu generuje [výstupní soubor json](../how-tos/convers
 }
 ```
 
-Ohraničovací rámeček `min` je `max` popsán jako a pozice v 3D prostoru, v metrech. Takže souřadnice 1000.0 znamená, že je 1 kilometr od počátku.
+Ohraničovací rámeček je v metrech popsaný `min` jako `max` a pozice v prostorovém prostoru. Proto souřadnice 1000,0 znamená, že je 1 kilometer od počátku.
 
-S tímto ohraničovacím rámečkem mohou být dva problémy, které vedou k neviditelné geometrii:
-* **Pole může být daleko od středu**, takže objekt je oříznut úplně kvůli daleko rovina výstřižek. Hodnoty `boundingBox` v tomto případě bude `min = [-2000, -5,-5], max = [-1990, 5,5]`vypadat takto: , pomocí velké posun na ose x jako příklad zde. Chcete-li tento typ problému `recenterToOrigin` vyřešit, povolte tuto možnost v [konfiguraci převodu modelu](../how-tos/conversion/configure-model-conversion.md).
-* **Box může být vystředěný, ale řádově příliš velký**. To znamená, že i když kamera začíná ve středu modelu, jeho geometrie je oříznuta ve všech směrech. Typické `boundingBox` hodnoty v tomto případě `min = [-1000,-1000,-1000], max = [1000,1000,1000]`by vypadat takto: . Důvodem pro tento typ problému je obvykle neshoda měřítka jednotky. Chcete-li kompenzovat, zadejte [hodnotu měřítka během převodu](../how-tos/conversion/configure-model-conversion.md#geometry-parameters) nebo označte zdrojový model se správnými jednotkami. Změna měřítka lze také použít na kořenový uzel při načítání modelu za běhu.
+Existují dva problémy s tímto ohraničujícím polem, které vedou k neviditelné geometrii:
+* **Pole může být mimo střed**, takže objekt je zcela oříznutý z důvodu nadstřihu roviny. `boundingBox` Hodnoty v tomto případě by vypadaly takto: `min = [-2000, -5,-5], max = [-1990, 5,5]`jako příklad použijte velký posun na ose x. Chcete-li tento typ problému vyřešit, povolte `recenterToOrigin` možnost v [konfiguraci převodu modelu](../how-tos/conversion/configure-model-conversion.md).
+* **Pole se dá zarovnat na střed, ale jeho pořadí je moc velké**. To znamená, že i když fotoaparát začíná uprostřed modelu, jeho geometrie se v všech směrech ořízne. Typické `boundingBox` hodnoty v tomto případě by vypadaly takto: `min = [-1000,-1000,-1000], max = [1000,1000,1000]`. Důvodem pro tento typ problému je obvykle neshoda škálování jednotky. Chcete-li kompenzovat, určete [hodnotu škálování během převodu](../how-tos/conversion/configure-model-conversion.md#geometry-parameters) nebo označte zdrojový model správnými jednotkami. Při načítání modelu za běhu je také možné použít škálování na kořenový uzel.
 
-**Kanál vykreslení Unity neobsahuje vykreslovací háčky:**
+**Kanál vykreslování Unity neobsahuje zavěšení vykreslování:**
 
-Azure Remote Rendering háčky do unity vykreslovat kanálu provést složení rámce s videem a provést reprojekci. Chcete-li ověřit, zda tyto háčky existují, otevřete *nabídku Windows > Analysis > Frame ladicí program*. Povolte ji a ujistěte se, že existují dvě položky `HolographicRemotingCallbackPass` pro v potrubí:
+Vzdálené vykreslování Azure se zapojte do kanálu vykreslování Unity a provede kompozici snímků s videem a provede reprojekci. Chcete-li ověřit, zda tyto háky existují, otevřete *okno nabídky > analýza > ladicího programu rámce*. Povolte ji a ujistěte se, že `HolographicRemotingCallbackPass` v kanálu existují dvě položky:
 
 ![Ladicí program rámce Unity](./media/troubleshoot-unity-pipeline.png)
 
-## <a name="unity-code-using-the-remote-rendering-api-doesnt-compile"></a>Kód jednoty pomocí rozhraní API vzdáleného vykreslování se nekompiluje
+## <a name="unity-code-using-the-remote-rendering-api-doesnt-compile"></a>Kód Unity používající rozhraní API pro vzdálené vykreslování není zkompilován
 
-Přepněte *typ sestavení* řešení Unity na **ladění**. Při testování ARR v editoru Unity define je definice `UNITY_EDITOR` k dispozici pouze v sestaveních "Ladění". Všimněte si, že to nesouvisí s typem sestavení používané pro [nasazené aplikace](../quickstarts/deploy-to-hololens.md), kde byste měli dát přednost sestavení verze.
+Přepněte *typ sestavení* řešení Unity pro **ladění**. Při testování ARR v editoru Unity je tato definice `UNITY_EDITOR` dostupná pouze v sestavení ladění. Všimněte si, že se nevztahují k typu sestavení používanému pro [nasazené aplikace](../quickstarts/deploy-to-hololens.md), kde byste měli preferovat sestavení Release.
 
 ## <a name="unstable-holograms"></a>Nestabilní hologramy
 
-V případě, že se zdá, že se vykreslené objekty pohybují spolu s pohyby hlavy, může se u vás vyskytnat problémy s *reprojekcí pozdní fáze* (LSR). Pokyny, jak k takové situaci přistupovat, naleznete v části [Reprojection late stage.](../overview/features/late-stage-reprojection.md)
+V případě, že se vygenerované objekty budou pohybovat spolu s pohyby hlav, může docházet k potížím s fází LSR ( *opožděné reprojekce* ). Pokyny k tomu, jak se tyto situace týkají, najdete v části o [reprojekci v pozdní fázi](../overview/features/late-stage-reprojection.md) .
 
-Dalším důvodem nestabilních hologramů (kolísání, pokřivení, chvění nebo skákání hologramů) může být špatné připojení k síti, zejména nedostatečná šířka pásma sítě nebo příliš vysoká latence. Dobrým ukazatelem kvality síťového připojení je hodnota `ARRServiceStats.VideoFramesReused` [statistiky výkonu](../overview/features/performance-queries.md) . Opakované použití snímků označuje situace, kdy je třeba znovu použít starý snímek videa na straně klienta, protože nebyl k dispozici žádný nový snímek videa – například z důvodu ztráty paketů nebo z důvodu změn latence sítě. Pokud `ARRServiceStats.VideoFramesReused` je často větší než nula, to znamená problém se sítí.
+Dalším důvodem pro nestabilní hologramy (wobbling, reformace, kolísání nebo přechodové hologramy) může být špatné připojení k síti, zejména nedostatečná šířka pásma sítě nebo příliš vysoká latence. Dobrým indikátorem pro kvalitu síťového připojení je hodnota `ARRServiceStats.VideoFramesReused` [statistiky výkonu](../overview/features/performance-queries.md) . Znovu používané snímky označují situace, kdy se na straně klienta má znovu použít starý snímek videa, protože není k dispozici žádný nový snímek videa – například kvůli ztrátě paketů nebo kvůli variacím latence sítě. Pokud `ARRServiceStats.VideoFramesReused` je často větší než nula, znamená to, že dojde k potížím se sítí.
 
-Další hodnota, na `ARRServiceStats.LatencyPoseToReceiveAvg`které se můžete podívat, je . Mělo by být trvale nižší než 100 ms. Pokud se zobrazí vyšší hodnoty, znamená to, že jste připojeni k datovému centru, které je příliš daleko.
+Další hodnota, kterou chcete prohledat, je `ARRServiceStats.LatencyPoseToReceiveAvg`. Mělo by se konzistentně nacházet pod 100 ms. Pokud vidíte vyšší hodnoty, znamená to, že jste připojení k datovému centru, které je příliš daleko.
 
-Seznam možných zmírnění rizik naleznete v [pokynech pro připojení k síti](../reference/network-requirements.md#guidelines-for-network-connectivity).
+Seznam možných rizik najdete v [pokynech k připojení k síti](../reference/network-requirements.md#guidelines-for-network-connectivity).
 
 ## <a name="next-steps"></a>Další kroky
 

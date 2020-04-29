@@ -1,6 +1,6 @@
 ---
-title: Využití metod ověřování & přehledy – Azure Active Directory
-description: Vytváření sestav samoobslužných resetování hesla služby Azure AD a použití metody ověřování pomocí vícefaktorového ověřování
+title: Použití metod ověřování & Insights – Azure Active Directory
+description: Vytváření sestav o samoobslužném resetování hesla služby Azure AD a Multi-Factor Authentication použití metody ověřování
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,92 +12,92 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 053b052abf6f23c385dc7447639aa40b6c2c58a1
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81680193"
 ---
-# <a name="authentication-methods-usage--insights-preview"></a>Využití metod ověřování & přehledy (náhled)
+# <a name="authentication-methods-usage--insights-preview"></a>Použití metod ověřování & Insights (Preview)
 
-Přehledy o využití & vám umožní pochopit, jak ve vaší organizaci fungují metody ověřování pro funkce, jako je azure vícefaktorové ověřování a samoobslužné resetování hesla. Tato funkce vykazování poskytuje vaší organizaci prostředky k pochopení, jaké metody jsou registrovány a jak jsou používány.
+Využití & Insights vám umožní pochopit, jak metody ověřování pro funkce, jako je Azure Multi-Factor Authentication a Samoobslužné resetování hesla, fungují ve vaší organizaci. Tato funkce vytváření sestav poskytuje vaší organizaci prostředky, které vám pomohou pochopit, jaké metody se registrují a jak se používají.
 
 ## <a name="permissions-and-licenses"></a>Oprávnění a licence
 
-K využití a přehledům mají přístup následující role:
+K využití a přehledům můžou získat přístup následující role:
 
 - Globální správce
-- Čtečka zabezpečení
+- Čtecí modul zabezpečení
 - Správce zabezpečení
 - Čtečka sestav
 
-Pro přístup k využití a přehledům není vyžadována žádná další licence. Informace o licencování Azure Multi-Factor Authentication a samoobslužné resetování hesla (SSPR) najdete na [cenovém webu Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/).
+Pro přístup k používání a přehledům nejsou potřeba žádné další licence. Informace o licencování služby Azure Multi-Factor Authentication a Samoobslužné resetování hesla (SSPR) najdete na [webu Azure Active Directory s cenami](https://azure.microsoft.com/pricing/details/active-directory/).
 
 ## <a name="how-it-works"></a>Jak to funguje
 
-Přístup k využití metody ověřování a přehledům:
+Přístup k používání metod ověřování a přehledům:
 
-1. Přejděte na [portál Azure](https://portal.azure.com).
-1. Přejděte na **Azure Active Directory** > **Password reset** > **využití & přehledy**.
-1. V přehledech **registrace** nebo **využití** můžete otevřít předfiltrované sestavy a filtrovat je podle svých potřeb.
+1. Přejděte na [Azure Portal](https://portal.azure.com).
+1. Přejděte na **Azure Active Directory** > používání**resetování** > hesla **& přehledy**.
+1. Z přehledů **registrace** nebo **využití** můžete zvolit otevření předem filtrovaných sestav, které se budou filtrovat podle vašich potřeb.
 
-![Přehled & využití](./media/howto-authentication-methods-usage-insights/usage-insights-overview.png)
+![Přehled využití & Insights](./media/howto-authentication-methods-usage-insights/usage-insights-overview.png)
 
-Chcete-li získat přímý přístup [https://portal.azure.com/#blade/Microsoft_AAD_IAM/AuthMethodsOverviewBlade](https://portal.azure.com/#blade/Microsoft_AAD_IAM/AuthMethodsOverviewBlade)k informacím o využití &, přejděte na . Tento odkaz vás přenese do přehledu registrace.
+Pokud chcete získat přístup k využití & Insights přímo [https://portal.azure.com/#blade/Microsoft_AAD_IAM/AuthMethodsOverviewBlade](https://portal.azure.com/#blade/Microsoft_AAD_IAM/AuthMethodsOverviewBlade), přejděte na. Tento odkaz vás přenese na přehled registrace.
 
-Dlaždice Uživatelé, Uživatelé a Uživatelé, které jsou schopny, zobrazují uživatelům následující registrační data:
+Uživatelé zaregistrovaní, uživatelé a uživatelé s podporou dlaždic zobrazí následující registrační data pro vaše uživatele:
 
-- Registrovaný: Uživatel je považován za registrovaného, pokud (nebo správce) zaregistroval dostatek metod ověřování, aby splnil zásady samodotykového pr nebo vícefaktorového ověřování vaší organizace.
-- Povoleno: Uživatel je považován za povolený, pokud jsou v oboru zásady sspr. Pokud je povoleno přihlašování k tomuto číslu je povoleno pro skupinu, pak je uživatel považován za povolený, pokud jsou v této skupině. Pokud je povoleno přihlašování k internetu pro všechny uživatele, jsou všichni uživatelé v tenantovi (s výjimkou hostů) považováni za povolené.
-- Schopný: Uživatel je považován za schopného, pokud jsou registrovány a povoleny. Tento stav znamená, že mohou v případě potřeby kdykoli provést sspr.
+- Registrováno: uživatel se považuje za registrovaný, pokud (nebo správce) zaregistroval dostatek metod ověřování pro splnění zásad SSPR nebo Multi-Factor Authentication vaší organizace.
+- Povoleno: uživatel se považuje za povolený, pokud jsou v oboru pro zásady SSPR. Pokud je pro skupinu povolená možnost SSPR, bude uživatel považován za povolený, pokud se nachází v této skupině. Pokud je SSPR povolená pro všechny uživatele, považují se za povolené všechny uživatele v tenantovi (kromě hostů).
+- Možnost: uživatel se považuje za schopný, pokud je registrovaný i povolený. Tento stav znamená, že v případě potřeby mohou SSPR kdykoli provádět.
 
-Kliknutím na některou z těchto dlaždic nebo na postřehy, které jsou v nich zobrazeny, se dostanete do předem filtrovaného seznamu registračních údajů.
+Kliknutím na kteroukoli z těchto dlaždic nebo přehledů zobrazených v nich získáte předem filtrovaný seznam podrobností o registraci.
 
-Graf **Registrace** na kartě **Registrace** zobrazuje počet úspěšných a neúspěšných registrací metod ověřování metodou ověřování. Graf **Resetuje** na kartě **Využití** zobrazuje počet úspěšných a neúspěšných ověření během toku obnovení hesla metodou ověřování.
+Graf **registrací** na kartě **registrace** zobrazuje počet úspěšných a neúspěšných zaregistrovaných metod ověřování podle metody ověřování. Graf **Resets** resetování na kartě **využití** zobrazuje počet úspěšných a neúspěšných ověření během metody resetování hesla podle ověření.
 
-Kliknutím na některý z grafů se dostanete do předem filtrovaného seznamu událostí registrace nebo resetování.
+Když kliknete na některé z grafů, zobrazí se předem filtrovaný seznam událostí registrace nebo resetování.
 
-Pomocí ovládacího prvku v pravém horním rohu můžete změnit rozsah dat auditu zobrazených v grafech Registrace a Resetuje na 24 hodin, 7 dní nebo 30 dní.
+Pomocí ovládacího prvku v pravém horním rohu můžete změnit rozsah dat pro auditovaná data zobrazená v registracích a resetovat grafy na 24 hodin, 7 dní nebo 30 dní.
 
-### <a name="registration-details"></a>Registrační údaje
+### <a name="registration-details"></a>Podrobnosti registrace
 
-Kliknutím na **uživatele registrované**, **Uživatelé povoleno**, nebo **Uživatelé schopný** dlaždice nebo přehledy vás přenese na registrační údaje.
+Kliknutím na **zaregistrované uživatele**, **povoleným uživatelům**nebo **uživatelům, kteří** můžou používat dlaždice nebo přehledy, vás přenese podrobnosti o registraci.
 
-Sestava podrobností o registraci zobrazuje pro každého uživatele následující informace:
+Sestava Podrobnosti o registraci zobrazuje pro každého uživatele následující informace:
 
 - Název
 - Uživatelské jméno
-- Stav registrace (vše, registrováno, není registrováno)
-- Stav Povolená (Vše, Povoleno, Nepovoleno)
-- Schopný stav (vše, schopný, neschopný)
-- Metody (oznámení aplikace, kód aplikace, telefonní hovor, SMS, e-mail, bezpečnostní otázky)
+- Stav registrace (vše, registrováno, Neregistrováno)
+- Povolený stav (vše, povoleno, Nepovoleno)
+- Stav schopností (vše, schopný, neschopný)
+- Metody (oznámení aplikace, kód aplikace, telefonní hovor, SMS, E-mail, bezpečnostní otázky)
 
 Pomocí ovládacích prvků v horní části seznamu můžete vyhledat uživatele a filtrovat seznam uživatelů na základě zobrazených sloupců.
 
-### <a name="reset-details"></a>Obnovit podrobnosti
+### <a name="reset-details"></a>Resetovat podrobnosti
 
-Kliknutím na grafy Registrace nebo Resetuje se dostanete k podrobnostem resetu.
+Kliknutím na registrace nebo resetování grafů zobrazíte podrobnosti o resetování.
 
-Sestava podrobností o obnovení zobrazuje události registrace a obnovení za posledních 30 dní, včetně:
+Sestava obnovit podrobnosti zobrazuje události registrace a resetování za posledních 30 dní, včetně:
 
 - Název
 - Uživatelské jméno
-- Funkce (vše, registrace, reset)
-- Metoda ověřování (oznámení aplikace, kód aplikace, telefonní hovor, volání do Office, SMS, e-mail, bezpečnostní otázky)
-- Stav (vše, úspěch, neúspěch)
+- Funkce (vše, registrace, resetování)
+- Metoda ověřování (oznámení aplikace, kód aplikace, telefonní hovor, volání Office, SMS, E-mail, bezpečnostní otázky)
+- Stav (vše, úspěch, selhání)
 
 Pomocí ovládacích prvků v horní části seznamu můžete vyhledat uživatele a filtrovat seznam uživatelů na základě zobrazených sloupců.
 
 ## <a name="limitations"></a>Omezení
 
-Údaje uvedené v těchto zprávách budou zpožděny až o 60 minut. Na webu Azure Portal existuje pole "Poslední aktualizace", které identifikuje, jak poslední jsou vaše data.
+Data zobrazená v těchto sestavách se budou zpozdit až o 60 minut. V Azure Portal existuje pole Poslední aktualizace, které vám umožní určit, jak se vaše data nacházejí.
 
-Data o využití a přehledech nejsou náhradou za sestavy aktivit azure vícefaktorového ověřování nebo informace obsažené v sestavě přihlášení Azure AD.
+Data o využití a Insights nejsou náhradou za sestavy aktivit Azure Multi-Factor Authentication ani informace obsažené v sestavě přihlášení k Azure AD.
 
-Sestavu nelze aktuálně filtrovat, aby bylo možné vyloučit externí uživatele.
+Sestavu nejde aktuálně filtrovat, aby vyloučila externí uživatele.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Práce s rozhraním API pro použití metod ověřování](https://docs.microsoft.com/graph/api/resources/authenticationmethods-usage-insights-overview?view=graph-rest-beta)
-- [Volba metod ověřování pro vaši organizaci](concept-authentication-methods.md)
-- [Kombinovaná registrace](concept-registration-mfa-sspr-combined.md)
+- [Práce s rozhraním API pro sestavy využití metod ověřování](https://docs.microsoft.com/graph/api/resources/authenticationmethods-usage-insights-overview?view=graph-rest-beta)
+- [Výběr metod ověřování pro vaši organizaci](concept-authentication-methods.md)
+- [Prostředí kombinované registrace](concept-registration-mfa-sspr-combined.md)

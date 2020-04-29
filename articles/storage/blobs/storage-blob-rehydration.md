@@ -1,6 +1,6 @@
 ---
-title: Rehydrate dat objektu blob z archivní vrstvy
-description: Rehydratujte své objekty BLOB z úložiště archivu, abyste měli přístup k datům.
+title: Dehydratované data objektů BLOB z archivní úrovně
+description: Pokud chcete získat přístup k datům, rehydratované objekty BLOB z archivního úložiště.
 services: storage
 author: mhopkins-msft
 ms.author: mhopkins
@@ -10,75 +10,75 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: hux
 ms.openlocfilehash: 82ea4ad23e3207f5641ade196f69595cd1e7b323
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81684061"
 ---
-# <a name="rehydrate-blob-data-from-the-archive-tier"></a>Rehydrate dat objektu blob z archivní vrstvy
+# <a name="rehydrate-blob-data-from-the-archive-tier"></a>Dehydratované data objektů BLOB z archivní úrovně
 
-Zatímco objekt blob je v úrovni přístupu archivu, je považován za offline a nelze číst ani upravovat. Metadata objektu blob zůstanou online a dostupná, což umožňuje vypsat objekt blob a jeho vlastnosti. Čtení a úpravy dat objektů blob je k dispozici pouze s online úrovněmi, jako je horké nebo cool. Existují dvě možnosti pro načtení a přístup k datům uloženým v vrstvě přístupu archivu.
+Když je objekt BLOB v archivní úrovni, považuje se za offline a nedá se číst ani upravovat. Metadata objektu BLOB zůstávají v online a k dispozici, což vám umožní zobrazit seznam objektů BLOB a jejích vlastností. Čtení a úpravy dat objektů BLOB jsou k dispozici pouze u online vrstev, jako je horká nebo studená. K dispozici jsou dvě možnosti načtení a přístup k datům uloženým v archivní úrovni přístupu.
 
-1. [Rehydratujte archivovaný objekt blob na online úroveň](#rehydrate-an-archived-blob-to-an-online-tier) – rehydratujte objekt blob archivu na horký nebo ochlazovaný změnou úrovně pomocí operace [Nastavit úroveň blob.](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier)
-2. [Zkopírujte archivovaný objekt blob do online vrstvy](#copy-an-archived-blob-to-an-online-tier) – vytvořte novou kopii objektu blob archivu pomocí operace [Kopírování objektů blob.](https://docs.microsoft.com/rest/api/storageservices/copy-blob) Zadejte jiný název objektu blob a cílovou úroveň horké nebo studené.
+1. [Dehydratované archivovaný objekt blob do online úrovně](#rehydrate-an-archived-blob-to-an-online-tier) – dehydratované objekt BLOB archivu na horkou nebo studenou změnou jeho úrovně pomocí operace [nastavit vrstvu objektu BLOB](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) .
+2. [Zkopírování archivovaného objektu blob do online úrovně](#copy-an-archived-blob-to-an-online-tier) – vytvoří novou kopii objektu BLOB archivu pomocí operace [kopírování objektu BLOB](https://docs.microsoft.com/rest/api/storageservices/copy-blob) . Zadejte jiný název objektu BLOB a cílovou úroveň horké nebo studené.
 
- Další informace o úrovních najdete v [tématu úložiště objektů blob Azure: horké, studené a archivní úrovně přístupu](storage-blob-storage-tiers.md).
+ Další informace o úrovních najdete v tématu [Azure Blob Storage: horká, studená a archivní úroveň přístupu](storage-blob-storage-tiers.md).
 
-## <a name="rehydrate-an-archived-blob-to-an-online-tier"></a>Rehydratujte archivovaný objekt blob na online úroveň
+## <a name="rehydrate-an-archived-blob-to-an-online-tier"></a>Dehydratované archivovaný objekt blob do online úrovně
 
 [!INCLUDE [storage-blob-rehydration](../../../includes/storage-blob-rehydrate-include.md)]
 
 ## <a name="copy-an-archived-blob-to-an-online-tier"></a>Zkopírování archivovaného objektu blob na online úroveň
 
-Pokud nechcete znovu hydratovat objekt blob archivu, můžete provést operaci [objektu blob copy.](https://docs.microsoft.com/rest/api/storageservices/copy-blob) Původní objekt blob zůstane nezměněn v archivu, zatímco nový objekt blob se vytvoří v online horké nebo chladné vrstvě, na které můžete pracovat. V operaci Kopírování objektů blob můžete také nastavit volitelnou vlastnost *x-ms-rehydrate-priority* na Standardní nebo Vysoká k určení priority, při které chcete vytvořit kopii objektu blob.
+Pokud nechcete znovu vyměnit svůj archivní objekt blob, můžete zvolit operaci [kopírování objektu BLOB](https://docs.microsoft.com/rest/api/storageservices/copy-blob) . Původní objekt BLOB zůstane v archivu beze změny, zatímco nový objekt BLOB se vytvoří v online horké nebo studené vrstvě, kde můžete pracovat. V operaci kopírování objektu blob můžete také nastavit volitelnou vlastnost *x-MS-rehydratované priority* na hodnotu Standard nebo high a zadat prioritu, na které chcete vytvořit kopii objektu BLOB.
 
-Kopírování objektu blob z archivu může trvat hodiny v závislosti na vybrané prioritě rehydratace. Operace **Kopírování objektů blob** na pozadí přečte objekt blob zdroje archivu a vytvoří nový objekt blob online ve vybrané cílové vrstvě. Nový objekt blob může být viditelný při seznamu objektů BLOB, ale data nejsou k dispozici, dokud není čtení z objektu blob zdrojového archivu dokončeno a data se zapisují do nového cílového objektu online. Nový objekt blob je jako nezávislá kopie a žádné změny nebo odstranění na něj nemá vliv na objekt blob zdrojového archivu.
+Kopírování objektu BLOB z archivu může trvat hodiny na dokončení v závislosti na vybrané prioritě rehydratovaného. Na pozadí operace **kopírování objektu BLOB** přečte váš zdrojový objekt BLOB archivu a vytvoří nový objekt BLOB online ve vybrané cílové vrstvě. Nový objekt BLOB může být viditelný při výpisu objektů blob, ale data nejsou dostupná, dokud se nedokončí čtení ze zdrojového objektu BLOB archivu a data se zapisují do nového online cílového objektu BLOB. Nový objekt BLOB je jako nezávislá kopie a jakákoli změna nebo odstranění do něj nemá vliv na zdrojový objekt BLOB archivu.
 
-Objekty BLOB archivu lze zkopírovat pouze do cílových úrovní online v rámci stejného účtu úložiště. Kopírování objektu blob archivu do jiného objektu blob archivu není podporováno. V následující tabulce jsou uvedeny možnosti objektu CopyBlob.
+Archivní objekty BLOB se dají zkopírovat jenom do online cílových vrstev v rámci stejného účtu úložiště. Kopírování objektu BLOB archivu do jiného archivní objektu BLOB se nepodporuje. Následující tabulka uvádí možnosti CopyBlob.
 
-|                                           | **Zdroj horké úrovně**   | **Zdroj studené úrovně** | **Zdroj archivní vrstvy**    |
+|                                           | **Zdroj vrstvy Hot**   | **Zdroj studené vrstvy** | **Zdroj vrstvy archivu**    |
 | ----------------------------------------- | --------------------- | -------------------- | ------------------- |
-| **Cíl horké úrovně**                  | Podporuje se             | Podporuje se            | Podporováno v rámci stejného účtu; čeká na rehydrataci               |
-| **Cíl studené úrovně**                 | Podporuje se             | Podporuje se            | Podporováno v rámci stejného účtu; čeká na rehydrataci               |
-| **Cíl archivní úrovně**              | Podporuje se             | Podporuje se            | Nepodporované         |
+| **Cíl vrstvy Hot**                  | Podporuje se             | Podporuje se            | Podporováno v rámci stejného účtu; čeká na redehydrataci               |
+| **Cíl na studené úrovni**                 | Podporuje se             | Podporuje se            | Podporováno v rámci stejného účtu; čeká na redehydrataci               |
+| **Cíl vrstvy archivu**              | Podporuje se             | Podporuje se            | Nepodporované         |
 
 ## <a name="pricing-and-billing"></a>Ceny a fakturace
 
-Rehydrating objektů BLOB z archivu do horké nebo studené úrovně se účtují jako operace čtení a načítání dat. Použití vysoké priority má vyšší provozní náklady a náklady na načítání dat ve srovnání se standardní prioritou. Rehydratace s vysokou prioritou se na faktuře zobrazí jako samostatná řádková položka. Pokud požadavek na vrácení objektu BLOB archivu s několika gigabajty trvá déle než 5 hodin, nebude vám účtována rychlost načítání s vysokou prioritou. Standardní rychlosti načítání však stále platí jako rehydratace byla upřednostněna před jinými požadavky.
+Dosazování objektů BLOB z archivu do horké nebo studené úrovně se účtuje jako operace čtení a načítání dat. Použití vysoké priority má vyšší náklady na operace a načítání dat ve srovnání se standardní prioritou. Dosazování s vysokou prioritou se ve vašem vyúčtování zobrazí jako samostatná položka řádku. Pokud žádost s vysokou prioritou vrátí objekt BLOB pro archivaci o několika gigabajtech, bude trvat víc než 5 hodin, bude se vám účtovat frekvence načítání s vysokou prioritou. Nicméně standardní míry načítání se ještě použijí, protože pro vyvýšení se nacházelo upřednostnění přes jiné požadavky.
 
-Kopírování objektů BLOB z archivu do horkých nebo chladných úrovní se účtuje jako operace čtení a načítání dat. Operace zápisu se účtuje pro vytvoření nové kopie objektu blob. Poplatky za předčasné odstranění se nevztahují při kopírování do objektu blob online, protože zdrojový objekt blob zůstane v archivní vrstvě nezměněn. Pokud je vybrána, platí se poplatky za vyhledávání s vysokou prioritou.
+Kopírování objektů BLOB z archivu na horké nebo studené úrovně se účtuje jako operace čtení a načítání dat. Pro vytvoření nové kopie objektu BLOB se účtuje operace zápisu. Poplatky za předčasné odstranění se nepoužívají při kopírování do online objektu blob, protože zdrojový objekt BLOB zůstane v archivní úrovni nezměněný. Poplatky za načtení s vysokou prioritou se použijí, pokud je vybraná možnost.
 
-Objekty BLOB v archivní vrstvě by měly být uloženy po dobu minimálně 180 dnů. Odstranění nebo rehydratace archivovaných objektů BLOB před 180 dny bude mít za následek poplatky za předčasné odstranění.
+Objekty BLOB v archivní úrovni by měly být uložené minimálně 180 dnů. Odstranění nebo dehydratovanéní archivovaných objektů BLOB před 180 dny bude platit poplatky za předčasné odstranění.
 
 > [!NOTE]
-> Další informace o cenách pro objekty BLOB bloku a rehydrataci dat najdete v [tématu Ceny za úložiště Azure](https://azure.microsoft.com/pricing/details/storage/blobs/). Další informace o poplatcích za odchozí přenos dat naleznete v [tématu Podrobnosti o cenách přenosů dat](https://azure.microsoft.com/pricing/details/data-transfers/).
+> Další informace o cenách pro objekty blob bloku a data pro dehydrataci najdete v tématu [Azure Storage ceny](https://azure.microsoft.com/pricing/details/storage/blobs/). Další informace o poplatcích za odchozí přenosy dat najdete v [podrobnostech o cenách](https://azure.microsoft.com/pricing/details/data-transfers/)přenosů dat.
 
 ## <a name="quickstart-scenarios"></a>Scénáře Rychlý start
 
-### <a name="rehydrate-an-archive-blob-to-an-online-tier"></a>Rehydratujte objekt blob archivu na online úroveň
+### <a name="rehydrate-an-archive-blob-to-an-online-tier"></a>Dehydratované objekt BLOB archivu do online úrovně
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
-1. Na webu Azure Portal vyhledejte a vyberte **Všechny prostředky**.
+1. V Azure Portal vyhledejte a vyberte **všechny prostředky**.
 
 1. Vyberte svůj účet úložiště.
 
-1. Vyberte kontejner a pak vyberte objekt blob.
+1. Vyberte svůj kontejner a pak vyberte objekt BLOB.
 
-1. Ve **vlastnostech objektu blob**vyberte **Změnit úroveň**.
+1. Ve **vlastnostech objektu BLOB**vyberte **změnit úroveň**.
 
-1. Vyberte úroveň **přístupu za tepla** nebo **pohodě.** 
+1. Vyberte **horkou** nebo **studenou** úroveň přístupu. 
 
-1. Vyberte prioritu rehydratace **standardní** nebo **vysoké**.
+1. Vyberte rehydratované prioritu **Standard** nebo **High**.
 
-1. V dolní části vyberte **Uložit.**
+1. V dolní části vyberte **Uložit** .
 
-![Změna úrovně](media/storage-tiers/blob-access-tier.png)
-![účtu úložiště Kontrola stavu rehydratace](media/storage-tiers/rehydrate-status.png)
+![Změnit stav dehydratované](media/storage-tiers/blob-access-tier.png)
+![kontroly úrovně účtu úložiště](media/storage-tiers/rehydrate-status.png)
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-Následující skript prostředí PowerShell lze použít ke změně vrstvy objektu blob objektu blob archivu. Proměnná `$rgName` musí být inicializována s názvem skupiny prostředků. Proměnná `$accountName` musí být inicializována s názvem účtu úložiště. Proměnná `$containerName` musí být inicializována s názvem kontejneru. Proměnná `$blobName` musí být inicializována s názvem objektu blob. 
+# <a name="powershell"></a>[Prostředí](#tab/azure-powershell)
+Pomocí následujícího skriptu PowerShellu můžete změnit úroveň objektu BLOB archivu. `$rgName` Proměnná musí být inicializována s názvem vaší skupiny prostředků. `$accountName` Proměnná musí být inicializována s názvem vašeho účtu úložiště. `$containerName` Proměnná musí být inicializována s názvem kontejneru. `$blobName` Proměnná musí být inicializována s vaším názvem objektu BLOB. 
 ```powershell
 #Initialize the following with your resource group, storage account, container, and blob names
 $rgName = ""
@@ -98,8 +98,8 @@ $blob.ICloudBlob.SetStandardBlobTier("Hot", “Standard”)
 ```
 ---
 
-### <a name="copy-an-archive-blob-to-a-new-blob-with-an-online-tier"></a>Kopírování objektu blob archivu do nového objektu blob s online vrstvou
-Následující skript prostředí PowerShell lze použít ke kopírování objektu blob archivu do nového objektu blob v rámci stejného účtu úložiště. Proměnná `$rgName` musí být inicializována s názvem skupiny prostředků. Proměnná `$accountName` musí být inicializována s názvem účtu úložiště. Proměnné `$srcContainerName` `$destContainerName` a musí být inicializovány s názvy kontejnerů. Proměnné `$srcBlobName` `$destBlobName` a musí být inicializovány s názvy objektů blob. 
+### <a name="copy-an-archive-blob-to-a-new-blob-with-an-online-tier"></a>Kopírování objektu BLOB archivu do nového objektu BLOB s online vrstvou
+K zkopírování objektu BLOB archivu do nového objektu BLOB v rámci stejného účtu úložiště můžete použít následující skript PowerShellu. `$rgName` Proměnná musí být inicializována s názvem vaší skupiny prostředků. `$accountName` Proměnná musí být inicializována s názvem vašeho účtu úložiště. Proměnné `$srcContainerName` a `$destContainerName` musí být inicializovány s názvy kontejnerů. Proměnné `$srcBlobName` a `$destBlobName` musí být inicializovány s názvy objektů BLOB. 
 ```powershell
 #Initialize the following with your resource group, storage account, container, and blob names
 $rgName = ""
@@ -119,7 +119,7 @@ Start-AzStorageBlobCopy -SrcContainer $srcContainerName -SrcBlob $srcBlobName -D
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Další informace o vrstvách úložiště objektů Blob](storage-blob-storage-tiers.md)
+* [Další informace o Blob Storagech vrstvách](storage-blob-storage-tiers.md)
 * [Ověření cen horké, studené a archivní úrovně v účtech Blob Storage a GPv2 v jednotlivých oblastech](https://azure.microsoft.com/pricing/details/storage/)
 * [Správa životního cyklu úložiště objektů blob v Azure](storage-lifecycle-management-concepts.md)
 * [Posouzení cen přenosu dat](https://azure.microsoft.com/pricing/details/data-transfers/)

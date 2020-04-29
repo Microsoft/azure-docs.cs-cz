@@ -1,6 +1,6 @@
 ---
-title: Nejčastější dotazy týkající se různých api v Azure Cosmos DB
-description: Získejte odpovědi na nejčastější dotazy týkající se Azure Cosmos DB, globálně distribuované databázové služby s více modely. Seznamte se s kapacitou, úrovní výkonu a škálováním.
+title: Nejčastější dotazy k různým rozhraním API v Azure Cosmos DB
+description: Získejte odpovědi na nejčastější dotazy týkající se Azure Cosmos DB globálně distribuované databázové služby pro více modelů. Přečtěte si o kapacitě, úrovních výkonu a škálování.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,419 +8,419 @@ ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
 ms.openlocfilehash: 25b669493e1ee32df4a8c6fc33bdb1b21b08c70f
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81683330"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Nejčastější dotazy k různým rozhraním API ve službě Azure Cosmos DB
 
 ### <a name="what-are-the-typical-use-cases-for-azure-cosmos-db"></a>Jaké jsou typické případy použití pro Azure Cosmos DB?
 
-Azure Cosmos DB je dobrou volbou pro nové webové, mobilní, herní a IoT aplikace, kde je důležité automatické škálování, předvídatelný výkon, rychlé pořadí milisekundových dob odezvy a možnost dotazování na data bez schématu. Azure Cosmos DB se hodí k rychlému vývoji a podpoře průběžné iterace aplikačních datových modelů. Aplikace, které spravují obsah a data generovaná uživateli, jsou [běžné případy použití pro Azure Cosmos DB](use-cases.md).
+Azure Cosmos DB je vhodná volba pro nové webové, mobilní a herní aplikace a aplikace IoT, kde je důležité automatické škálování, předvídatelný výkon, rychlé řazení dob odezvy milisekund a možnost dotazování na data bez schémat. Azure Cosmos DB sám o sobě poskytovat rychlý vývoj a podporu průběžné iterace datových modelů aplikací. Aplikace, které spravují uživatelem generovaný obsah a data, jsou [běžné případy použití pro Azure Cosmos DB](use-cases.md).
 
 ### <a name="how-does-azure-cosmos-db-offer-predictable-performance"></a>Jak Azure Cosmos DB nabízí předvídatelný výkon?
 
-[Jednotka požadavku](request-units.md) (RU) je míra propustnostvosti v Azure Cosmos DB. Propustnost 1RU odpovídá propustnost GET dokumentu 1 KB. Každá operace v Azure Cosmos DB, včetně čtení, zápisy, SQL dotazy a uložené spuštění procedur, má deterministické RU hodnotu, která je založena na propustnosti potřebné k dokončení operace. Místo přemýšlení o procesoru, vi a paměti a jak každý z nich ovlivňují propustnost aplikace, můžete myslet z hlediska jednoho ru opatření.
+[Jednotka žádosti](request-units.md) (ru) je mírou propustnosti v Azure Cosmos DB. Propustnost 1RU odpovídá propustnosti získání dokumentu o 1 KB. Každá operace v Azure Cosmos DB, včetně čtení, zápisu, dotazů SQL a spuštění uložených procedur, má deterministické RU, který je založen na propustnosti potřebné k dokončení operace. Místo toho, abyste se přemysleli o procesoru, vstupně-výstupních operacích a paměti a o tom, jak mají vliv na propustnost vaší aplikace, si můžete představit v souvislosti s jedním mírou RU.
 
-Každý kontejner Azure Cosmos můžete nakonfigurovat s zřízenou propustností z hlediska ru propustnost za sekundu. Pro aplikace libovolného rozsahu můžete porovnat jednotlivé požadavky na měření jejich hodnot Ru a zřídit kontejner pro zpracování celkového počtu jednotek požadavků ve všech požadavcích. Můžete také vertikálně navýšit nebo vertikálně navýšit propustnost vašeho kontejneru podle vývoje potřeb vaší aplikace. Další informace o jednotkách požadavků a pomoc s určením potřeb kontejneru získáte [v kalkulátoru propustnosti](https://www.documentdb.com/capacityplanner).
+U každého kontejneru Azure Cosmos můžete nakonfigurovat zřízenou propustnost v podobě ru propustnosti za sekundu. U aplikací v jakémkoli měřítku můžete určit srovnávací testy jednotlivých požadavků a zajistit, aby se v rámci všech požadavků vytvořil kontejner pro zpracování celkových jednotek požadavků. Propustnost kontejneru můžete také škálovat směrem nahoru nebo dolů podle potřeb vaší aplikace. Pokud chcete získat další informace o jednotkách žádostí a nápovědu k určení potřeb kontejneru, zkuste použít [kalkulačku propustnosti](https://www.documentdb.com/capacityplanner).
 
-### <a name="how-does-azure-cosmos-db-support-various-data-models-such-as-keyvalue-columnar-document-and-graph"></a>Jak Azure Cosmos DB podporuje různé datové modely, jako je klíč/hodnota, sloupcové, dokument a graf?
+### <a name="how-does-azure-cosmos-db-support-various-data-models-such-as-keyvalue-columnar-document-and-graph"></a>Jak Azure Cosmos DB podporuje různé datové modely, jako je klíč/hodnota, sloupcový, dokument a graf?
 
-Klíč/hodnota (tabulka), sloupcové, dokument a graf datové modely jsou nativně podporovány z důvodu ars (atomy, záznamy a sekvence) návrh, který Je postaven na Azure Cosmos DB. Atomy, záznamy a sekvence lze snadno mapovat a promítat do různých datových modelů. Rozhraní API pro podmnožinu modelů jsou k dispozici právě teď (SQL, MongoDB, Table a Gremlin) a další specifické pro další datové modely budou k dispozici v budoucnu.
+Datové modely klíč/hodnota (tabulka), sloupcové, dokumentové a graf jsou nativně podporovány v důsledku návrhu ARS (atoms, Records a sequences), na který Azure Cosmos DB je postaven. Atomy, záznamy a sekvence je možné snadno namapovat a promítnout na různé datové modely. Rozhraní API pro podmnožinu modelů jsou nyní k dispozici (SQL, MongoDB, Table a Gremlin) a další specifické pro další datové modely budou v budoucnu k dispozici.
 
-Azure Cosmos DB má modul indexování agnostik schématu schopné automaticky indexovat všechna data, která ingestuje bez nutnosti jakékoli schéma nebo sekundární indexy od vývojáře. Modul spoléhá na sadu rozložení logického indexu (invertované, sloupcové, strom), které odpojí rozložení úložiště od podsystémů zpracování indexu a dotazů. Cosmos DB má také schopnost podporovat sadu drátových protokolů a rozhraní API rozšiřitelným způsobem a efektivně je překládat do základního datového modelu (1) a rozložení logického indexu (2), takže je jedinečně schopen podporovat více než jeden datový model nativně.
+Azure Cosmos DB má modul indexování nezávislá schématu, který umožňuje automaticky indexovat všechna data, která ingestuje, bez nutnosti jakéhokoli schématu nebo sekundárních indexů od vývojáře. Tento modul spoléhá na sadu rozložení logických indexů (obrácený, sloupcový, strom), která odděluje rozložení úložiště od subsystémů zpracování dotazů a indexů. Cosmos DB má také možnost podporovat sadu přenosových protokolů a rozhraní API rozšiřitelným způsobem a efektivně je přeložit na základní datový model (1) a na rozložení logických indexů (2), což umožňuje jednoznačně podporovat více než jeden datový model nativně.
 
-### <a name="can-i-use-multiple-apis-to-access-my-data"></a>Můžu k přístupu ke svým datům použít více api?
+### <a name="can-i-use-multiple-apis-to-access-my-data"></a>Můžu pro přístup k datům použít více rozhraní API?
 
-Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu s více modely. Kde vícemodelové prostředky Azure Cosmos DB podporuje více api a více datových modelů, různá api používají různé formáty dat pro úložiště a drátový protokol. Například SQL používá JSON, MongoDB používá BSON, Tabulka používá EDM, Cassandra používá CQL, Gremlin používá formát JSON. V důsledku toho doporučujeme používat stejné rozhraní API pro veškerý přístup k datům v daném účtu.
+Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Kde multi-model znamená Azure Cosmos DB podporuje více rozhraní API a více datových modelů, používají různá rozhraní API pro úložiště a síťový protokol různé formáty dat. Například SQL používá JSON, MongoDB používá BSON, tabulka používá EDM, Cassandra používá CQL, Gremlin používá formát JSON. V důsledku toho doporučujeme použít stejné rozhraní API pro veškerý přístup k datům v daném účtu.
 
-Každé rozhraní API pracuje nezávisle, s výjimkou Gremlin a SQL API, které jsou interoperabilní.
+Každé rozhraní API funguje nezávisle, s výjimkou Gremlin a SQL API, které jsou interoperabilní.
 
-### <a name="is-azure-cosmos-db-hipaa-compliant"></a>Je kompatibilní s Azure Cosmos DB HIPAA?
+### <a name="is-azure-cosmos-db-hipaa-compliant"></a>Je Azure Cosmos DB HIPAA kompatibilní?
 
-Ano, Azure Cosmos DB je kompatibilní s HIPAA. HIPAA zavádí požadavky na použití, zveřejnění a ochranu jednotlivě identifikovatelných zdravotních informací. Další informace naleznete v [centru zabezpečení společnosti Microsoft](https://www.microsoft.com/en-us/TrustCenter/Compliance/HIPAA).
+Ano, Azure Cosmos DB je kompatibilní s HIPAA. HIPAA zavádí požadavky na použití, zveřejnění a ochranu jednotlivě identifikovatelných zdravotních informací. Další informace najdete na [webu Microsoft Trust Center](https://www.microsoft.com/en-us/TrustCenter/Compliance/HIPAA).
 
-### <a name="what-are-the-storage-limits-of-azure-cosmos-db"></a>Jaké jsou limity úložiště Azure Cosmos DB?
+### <a name="what-are-the-storage-limits-of-azure-cosmos-db"></a>Jaká jsou omezení úložiště Azure Cosmos DB?
 
-Neexistuje žádné omezení na celkové množství dat, které kontejner můžete uložit v Azure Cosmos DB.
+Neexistuje žádné omezení na celkové množství dat, které kontejner může ukládat v Azure Cosmos DB.
 
-### <a name="what-are-the-throughput-limits-of-azure-cosmos-db"></a>Jaké jsou limity propustnosti Azure Cosmos DB?
+### <a name="what-are-the-throughput-limits-of-azure-cosmos-db"></a>Jaká jsou omezení propustnosti Azure Cosmos DB?
 
-Neexistuje žádné omezení na celkové množství propustnost, které kontejner může podporovat v Azure Cosmos DB. Klíčovou myšlenkou je distribuovat vaše úlohy zhruba rovnoměrně mezi dostatečně velký počet klíčů oddílů.
+Neexistuje žádné omezení na celkovou míru propustnosti, kterou může kontejner podporovat v Azure Cosmos DB. Klíčovým nápadem je distribuce úloh zhruba rovnoměrně mezi dostatečně velkým počtem klíčů oddílů.
 
-### <a name="are-direct-and-gateway-connectivity-modes-encrypted"></a>Jsou režimy přímého připojení a připojení brány šifrovány?
+### <a name="are-direct-and-gateway-connectivity-modes-encrypted"></a>Jsou zašifrované režimy přímého připojení a připojení brány?
 
-Ano, oba režimy jsou vždy plně šifrovány.
+Ano oba režimy jsou vždy plně šifrované.
 
-### <a name="how-much-does-azure-cosmos-db-cost"></a>Kolik stojí Azure Cosmos DB?
+### <a name="how-much-does-azure-cosmos-db-cost"></a>Kolik se Azure Cosmos DB náklady?
 
-Podrobnosti najdete na stránce [s podrobnostmi o cenách Azure Cosmos DB.](https://azure.microsoft.com/pricing/details/cosmos-db/) Poplatky za využití Azure Cosmos DB jsou určeny počtem zřízených kontejnerů, počtem hodin, po které byly kontejnery online, a zřízenou propustností pro každý kontejner.
+Podrobnosti najdete na stránce s [podrobnostmi o cenách Azure Cosmos DB](https://azure.microsoft.com/pricing/details/cosmos-db/) . Poplatky za použití Azure Cosmos DB se určují podle počtu zřízených kontejnerů, počtu hodin, po které byly kontejnery online, a zřízené propustnosti pro každý kontejner.
 
 ### <a name="is-a-free-account-available"></a>Je k dispozici bezplatný účet?
 
-Ano, můžete se zaregistrovat na časově omezený účet zdarma, bez závazku. Pokud se chcete zaregistrovat, navštivte [zdarma try Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) nebo si přečtěte další informace v [nejčastějších dotazech k try Azure Cosmos DB](#try-cosmos-db).
+Ano, můžete si zdarma zaregistrovat účet s časovým limitem bez jakýchkoli závazků. Pokud se chcete zaregistrovat, navštivte web vyzkoušet [Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) nebo si přečtěte další informace v [nejčastějších dotazech k Azure Cosmos DB](#try-cosmos-db).
 
-Pokud s Azure tečeme, můžete si zaregistrovat [bezplatný účet Azure](https://azure.microsoft.com/free/), který vám poskytne 30 dní a kredit na vyzkoušení všech služeb Azure. Pokud máte předplatné Visual Studia, máte taky nárok na [bezplatné kredity Azure,](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) které můžete použít na libovolné službě Azure.
+Pokud s Azure začínáte, můžete si zaregistrovat [bezplatný účet Azure](https://azure.microsoft.com/free/), který vám poskytne 30 dnů a kredit na to, abyste si vyzkoušeli všechny služby Azure. Máte-li předplatné sady Visual Studio, máte také nárok na používání [bezplatného kreditu Azure](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) na jakékoli službě Azure.
 
-[Emulátor Azure Cosmos DB](local-emulator.md) můžete taky použít k vývoji a testování vaší aplikace místně zdarma, bez vytvoření předplatného Azure. Jakmile budete spokojeni s fungováním aplikace v emulátoru, můžete přejít na účet služby Azure Cosmos DB v cloudu.
+[Emulátor Azure Cosmos DB](local-emulator.md) můžete také použít k místnímu vývoji a testování vaší aplikace bez nutnosti vytvářet předplatné Azure. Jakmile budete spokojeni s fungováním aplikace v emulátoru, můžete přejít na účet služby Azure Cosmos DB v cloudu.
 
 ### <a name="how-can-i-get-additional-help-with-azure-cosmos-db"></a>Jak můžu získat další pomoc s Azure Cosmos DB?
 
-Chcete-li položit technickou otázku, můžete odeslat na jedno z těchto dvou fór otázek a odpovědí:
+Pokud se chcete zeptat na technický dotaz, můžete publikovat na jedno z těchto dvou fór otázek a odpovědí:
 
 * [Fórum MSDN](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecosmosdb)
-* [Přetečení zásobníku](https://stackoverflow.com/questions/tagged/azure-cosmosdb). Přetečení zásobníku je nejlepší pro programování otázek. Ujistěte se, že vaše otázka je [on-topic](https://stackoverflow.com/help/on-topic) a [poskytnout co nejvíce podrobností, jak je to možné, takže otázka jasná a odpovědětelná](https://stackoverflow.com/help/how-to-ask).
+* [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-cosmosdb). Stack Overflow je nejvhodnější pro otázky týkající se programování. Ujistěte se, že je váš dotaz [v rámci vašeho tématu](https://stackoverflow.com/help/on-topic) [, a uveďte co nejvíce podrobností a vymažte otázku a odpovězte na](https://stackoverflow.com/help/how-to-ask)ně.
 
-Chcete-li požádat o nové funkce, vytvořte nový požadavek na [hlas uživatele](https://feedback.azure.com/forums/263030-azure-cosmos-db).
+Pokud chcete požádat o nové funkce, vytvořte nový požadavek na [uživatelský hlas](https://feedback.azure.com/forums/263030-azure-cosmos-db).
 
 Pokud řešíte problém s účtem, podejte prostřednictvím webu Azure Portal [žádost o podporu](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
-## <a name="try-azure-cosmos-db-subscriptions"></a><a id="try-cosmos-db"></a>Vyzkoušejte předplatná Azure Cosmos DB
+## <a name="try-azure-cosmos-db-subscriptions"></a><a id="try-cosmos-db"></a>Vyzkoušet Azure Cosmos DB předplatná
 
-Teď si můžete vychutnat časově omezené prostředí Azure Cosmos DB bez předplatného, zdarma a závazků. Pokud si chcete zaregistrovat předplatné Try Azure Cosmos DB, přejděte zdarma na [Vyzkoušejte Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) a použijte libovolný osobní účet Microsoft (MSA). Toto předplatné je oddělené od [bezplatné zkušební verze Azure](https://azure.microsoft.com/free/)a dá se používat spolu s bezplatnou zkušební verzí Azure nebo placeným předplatným Azure.
+Nyní můžete využívat časově omezené prostředí Azure Cosmos DB bez předplatného, zdarma a závazky. Pokud se chcete zaregistrovat k předplatnému vyzkoušet Azure Cosmos DB, pokračujte [Azure Cosmos DB vyzkoušet si zdarma](https://azure.microsoft.com/try/cosmosdb/) a použijte libovolné osobní účet Microsoft (MSA). Toto předplatné je nezávislé na [bezplatné zkušební verzi Azure](https://azure.microsoft.com/free/)a dá se použít společně s bezplatnou zkušební verzí Azure nebo s placeným předplatným Azure.
 
-Vyzkoušejte předplatná Azure Cosmos DB, která se zobrazí na webu Azure Portal, další další předplatná přidružená k vašemu ID uživatele.
+Vyzkoušejte Azure Cosmos DB odběry se zobrazí v Azure Portal další předplatná přidružená k vašemu ID uživatele.
 
-Následující podmínky platí pro vyzkoušení předplatného Azure Cosmos DB:
+Následující podmínky se vztahují na zkoušení Azure Cosmos DB předplatných:
 
-* Přístup k účtu lze udělit osobním účtům Microsoft (MSA). Vyhněte se použití účtů služby Active Directory (AAD) nebo účtů patřících k podnikovým klientům AAD, mohou mít zavedena omezení, která by mohla blokovat udělování přístupu.
-* Jeden [propustný kontejner zřízený](./set-throughput.md#set-throughput-on-a-container) na předplatné pro účty SQL, Gremlin API a table.
-* Až tři [kolekce zřízená propustnost na](./set-throughput.md#set-throughput-on-a-container) předplatné pro účty MongoDB.
-* Jedna [propustnost zřízená databáze](./set-throughput.md#set-throughput-on-a-database) na předplatné. Databáze zřízené propustnostmi mohou obsahovat libovolný počet kontejnerů uvnitř.
-* 10 GB úložné kapacity.
-* Globální replikace je dostupná v [následujících oblastech Azure:](https://azure.microsoft.com/regions/)Střední USA, Severní Evropa a Jihovýchodní Asie.
-* Maximální propustnost 5 K RU/s při zřizování na úrovni kontejneru.
-* Maximální propustnost 20 K RU/s při zřízení na úrovni databáze.
-* Platnost předplatného vyprší po 30 dnech a lze je prodloužit na maximálně 31 dní.
-* Lístky podpory Azure nelze vytvořit pro účty Try Azure Cosmos DB; podpora je však k dispozici pro předplatitele s existující plány podpory.
+* Přístup k účtu se dá udělit pro osobní účty Microsoft (MSA). Nepoužívejte účty nebo účty služby Active Directory (AAD) patřící k podnikovým klientům AAD, ale můžou mít omezení, která by mohla blokovat udělení přístupu.
+* Jeden [kontejner zřízený propustností](./set-throughput.md#set-throughput-on-a-container) na předplatné pro SQL, Gremlin API a účty tabulek.
+* Až tři [zajištěné propustnosti](./set-throughput.md#set-throughput-on-a-container) v rámci předplatného pro účty MongoDB.
+* Jedna [zajištěná propustnost databáze](./set-throughput.md#set-throughput-on-a-database) na jedno předplatné. Databáze zřízené v propustnosti můžou obsahovat libovolný počet kontejnerů.
+* kapacita úložiště o velikosti 10 GB.
+* Globální replikace je dostupná v následujících [oblastech Azure](https://azure.microsoft.com/regions/): Střed USA, Severní Evropa a jihovýchodní Asie.
+* Maximální propustnost 5 000 RU/s v případě zřízení na úrovni kontejneru.
+* Maximální propustnost 20 000 RU/s, pokud je zajištěna na úrovni databáze.
+* Platnost předplatných vyprší po 30 dnech a dají se prodloužit na maximum 31 dní.
+* Pro účty try Azure Cosmos DB se nedají vytvořit lístky podpory Azure; Nicméně podpora je poskytována pro předplatitele se stávajícími plány podpory.
 
-## <a name="set-up-azure-cosmos-db"></a>Nastavení Azure Cosmos DB
+## <a name="set-up-azure-cosmos-db"></a>Nastavit Azure Cosmos DB
 
-### <a name="how-do-i-sign-up-for-azure-cosmos-db"></a>Jak se přihlásím do Služby Azure Cosmos DB?
+### <a name="how-do-i-sign-up-for-azure-cosmos-db"></a>Návody se zaregistrovat Azure Cosmos DB?
 
-Azure Cosmos DB je k dispozici na webu Azure Portal. Nejprve si zaregistrujte předplatné Azure. Po registraci můžete do předplatného Azure přidat účet Azure Cosmos DB.
+Azure Cosmos DB je k dispozici v Azure Portal. Nejdřív si zaregistrujte předplatné Azure. Po registraci můžete do svého předplatného Azure přidat účet Azure Cosmos DB.
 
 ### <a name="what-is-a-master-key"></a>Co je hlavní klíč?
 
-Hlavní klíč je token zabezpečení pro přístup ke všem prostředkům účtu. Jednotlivci s klíčem mají přístup ke všem prostředkům v databázovém účtu a mají přístup ke všem prostředkům. Při distribuci hlavních klíčů buďte opatrní. Primární hlavní klíč a sekundární hlavní klíč jsou k dispozici v okně **Klíče** [na webu Azure Portal][azure-portal]. Další informace o klíčích najdete v tématu [Zobrazení, kopírování a obnovení přístupových klíčů](manage-with-cli.md#list-account-keys).
+Hlavní klíč je token zabezpečení pro přístup ke všem prostředkům účtu. Jednotlivci s klíčem mají přístup pro čtení a zápis ke všem prostředkům v databázovém účtu. Při distribuci hlavních klíčů buďte opatrní. Primární hlavní klíč a sekundární hlavní klíč jsou k dispozici v okně **klíče** [Azure Portal][azure-portal]. Další informace o klíčích najdete v tématu [Zobrazení, kopírování a obnovení přístupových klíčů](manage-with-cli.md#list-account-keys).
 
-### <a name="what-are-the-regions-that-preferredlocations-can-be-set-to"></a>Jaké jsou oblasti, které PreferredLocations lze nastavit?
+### <a name="what-are-the-regions-that-preferredlocations-can-be-set-to"></a>Jaké jsou oblasti, na které se PreferredLocations dá nastavit?
 
-PreferredLocations hodnotu můžete nastavit na některou z oblastí Azure, ve kterém cosmos DB je k dispozici. Seznam dostupných oblastí najdete v [tématu Oblasti Azure](https://azure.microsoft.com/regions/).
+Hodnotu PreferredLocations lze nastavit na libovolnou oblast Azure, ve které je Cosmos DB k dispozici. Seznam oblastí, které jsou k dispozici, najdete v tématu [oblasti Azure](https://azure.microsoft.com/regions/).
 
-### <a name="is-there-anything-i-should-be-aware-of-when-distributing-data-across-the-world-via-the-azure-datacenters"></a>Je něco, co bych měl vědět při distribuci dat po celém světě prostřednictvím datových center Azure?
+### <a name="is-there-anything-i-should-be-aware-of-when-distributing-data-across-the-world-via-the-azure-datacenters"></a>Je potřeba vědět o tom, co byste měli vědět při distribuci dat napříč celým světem přes datacentra Azure?
 
-Azure Cosmos DB se kdispozici ve všech oblastech Azure, jak je určeno na stránce [oblasti Azure.](https://azure.microsoft.com/regions/) Protože se jedná o základní službu, každé nové datové centrum má přítomnost Azure Cosmos DB.
+Azure Cosmos DB se nachází ve všech oblastech Azure, jak je uvedeno na stránce [oblasti Azure](https://azure.microsoft.com/regions/) . Vzhledem k tomu, že se jedná o základní službu, má každé nové datové centrum Azure Cosmos DBou přítomnost.
 
-Když nastavíte oblast, nezapomeňte, že Azure Cosmos DB respektuje suverénní a vládní cloudy. To znamená, že pokud vytvoříte účet v [suverénní oblasti](https://azure.microsoft.com/global-infrastructure/), nelze replikovat z této [suverénní oblasti](https://azure.microsoft.com/global-infrastructure/). Podobně nelze povolit replikaci do jiných suverénních umístění z externího účtu.
+Při nastavování oblasti Pamatujte na to, že Azure Cosmos DB ctí cloudy svrchovaného a státní správy. To znamená, že pokud v [oblasti svrchovaného](https://azure.microsoft.com/global-infrastructure/)účtu vytvoříte účet, nebudete moci replikovat z této [oblasti svrchovan](https://azure.microsoft.com/global-infrastructure/). Podobně nemůžete povolit replikaci do jiných umístění svrchovaného účtu mimo účet.
 
-### <a name="is-it-possible-to-switch-from-container-level-throughput-provisioning-to-database-level-throughput-provisioning-or-vice-versa"></a>Je možné přepnout z propustnosti na úrovni kontejneru na zřizování propustnosti na úrovni databáze? Nebo naopak
+### <a name="is-it-possible-to-switch-from-container-level-throughput-provisioning-to-database-level-throughput-provisioning-or-vice-versa"></a>Je možné přepínat z zřizování propustnosti na úrovni kontejneru do zřizování propustnosti na úrovni databáze? Nebo naopak
 
-Zřizování propustností na úrovni kontejnerů a databází jsou samostatné nabídky a přepínání mezi některou z nich vyžaduje migraci dat ze zdroje do cíle. To znamená, že musíte vytvořit novou databázi nebo nový kontejner a pak migrovat data pomocí [knihovny hromadného prováděcího modulu](bulk-executor-overview.md) nebo [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md).
+Zřizování propustnosti na úrovni kontejneru a databáze jsou oddělené nabídky a přepínání mezi nimi vyžaduje migraci dat ze zdroje do cíle. To znamená, že je potřeba vytvořit novou databázi nebo nový kontejner a pak migrovat data pomocí [knihovny hromadného prováděcího modulu](bulk-executor-overview.md) nebo [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md).
 
 ### <a name="does-azure-cosmosdb-support-time-series-analysis"></a>Podporuje Azure CosmosDB analýzu časových řad?
 
-Ano, Azure CosmosDB podporuje analýzu časových řad, tady je ukázka pro [vzorek časových řad](https://github.com/Azure/azure-cosmosdb-dotnet/tree/master/samples/Patterns). Tato ukázka ukazuje, jak pomocí informačního kanálu o změnách vytvářet agregovaná zobrazení v průběhu dat časových řad. Tento přístup můžete rozšířit pomocí streamování jiskry nebo jiného datového procesoru datového proudu.
+Ano, Azure CosmosDB podporuje analýzu časových řad. tady je ukázka pro [vzor časových řad](https://github.com/Azure/azure-cosmosdb-dotnet/tree/master/samples/Patterns). V této ukázce se dozvíte, jak pomocí kanálu změn sestavovat agregovaná zobrazení v datech časových řad. Tento přístup můžete roztáhnout pomocí streamování Sparku nebo jiného procesoru streamování dat.
 
-## <a name="what-are-the-azure-cosmos-db-service-quotas-and-throughput-limits"></a>Jaké jsou kvóty služeb Azure Cosmos DB a omezení propustnost
+## <a name="what-are-the-azure-cosmos-db-service-quotas-and-throughput-limits"></a>Jaké jsou kvóty Azure Cosmos DB služeb a omezení propustnosti
 
-Další informace najdete v [tématu kvóty služeb](concepts-limits.md) Azure Cosmos DB a [v rámci limitů na kontejner a databázové](set-throughput.md#comparison-of-models) články.
+Další informace najdete v článku [kvóty Azure Cosmos DB služeb](concepts-limits.md) a [v rámci limitu pro jednotlivé kontejnery a databáze](set-throughput.md#comparison-of-models) .
 
 ## <a name="sql-api"></a>SQL API
 
-### <a name="how-do-i-start-developing-against-the-sql-api"></a>Jak se začnu vyvíjet v rozhraní SQL API?
+### <a name="how-do-i-start-developing-against-the-sql-api"></a>Návody začít vyvíjet s rozhraním SQL API?
 
-Nejprve se musíte zaregistrovat k předplatnému Azure. Jakmile se zaregistrujete k předplatnému Azure, můžete do předplatného Azure přidat kontejner ROZHRANÍ SQL API. Pokyny k přidání účtu Azure Cosmos DB najdete [v tématu Vytvoření databázového účtu Azure Cosmos](create-sql-api-dotnet.md#create-account).
+Nejdřív si musíte zaregistrovat předplatné Azure. Po registraci předplatného Azure můžete k předplatnému Azure přidat kontejner rozhraní SQL API. Pokyny k přidání Azure Cosmos DB účtu najdete v tématu [Vytvoření účtu databáze Azure Cosmos](create-sql-api-dotnet.md#create-account).
 
-Pro .NET, Python, Node.js, JavaScript a Javu jsou k dispozici sady [SDK](sql-api-sdk-dotnet.md). Vývojáři můžou také použít [http api RESTful](/rest/api/cosmos-db/) k interakci s prostředky Azure Cosmos DB z různých platforem a jazyků.
+Pro .NET, Python, Node.js, JavaScript a Javu jsou k dispozici sady [SDK](sql-api-sdk-dotnet.md). Vývojáři můžou také používat [rozhraní RESTFUL HTTP API](/rest/api/cosmos-db/) k interakci s Azure Cosmos DBmi prostředky z různých platforem a jazyků.
 
-### <a name="can-i-access-some-ready-made-samples-to-get-a-head-start"></a>Mohu získat přístup k připraveným vzorkům, abych získal náskok?
+### <a name="can-i-access-some-ready-made-samples-to-get-a-head-start"></a>Můžu získat přístup k některým předem připraveným ukázkám, aby bylo možné začít?
 
-Ukázky pro SQL API [.NET](sql-api-dotnet-samples.md), [Java](https://github.com/Azure/azure-documentdb-java), [Node.js](sql-api-nodejs-samples.md)a [Python](sql-api-python-samples.md) SDK jsou k dispozici na GitHubu.
+Ukázky pro sady SDK rozhraní SQL API [.NET](sql-api-dotnet-samples.md), [Java](https://github.com/Azure/azure-documentdb-java), [Node. js](sql-api-nodejs-samples.md)a [Python](sql-api-python-samples.md) jsou k dispozici na GitHubu.
 
-### <a name="does-the-sql-api-database-support-schema-free-data"></a>Podporuje databáze rozhraní SQL API data bez schématu?
+### <a name="does-the-sql-api-database-support-schema-free-data"></a>Podporuje databáze rozhraní SQL API data bez schémat?
 
-Ano, rozhraní SQL API umožňuje aplikacím ukládat libovolné dokumenty JSON bez definic schématu nebo rad. Data jsou okamžitě k dispozici pro dotaz prostřednictvím rozhraní dotazu Azure Cosmos DB SQL.
+Ano, rozhraní SQL API umožňuje aplikacím ukládat libovolné dokumenty JSON bez definic schémat nebo tipů. Data jsou okamžitě k dispozici pro dotazování prostřednictvím rozhraní Azure Cosmos DB SQL Query.
 
-### <a name="does-the-sql-api-support-acid-transactions"></a>Podporuje rozhraní SQL API transakce ACID?
+### <a name="does-the-sql-api-support-acid-transactions"></a>Podporuje rozhraní SQL API transakce s KYSELINou?
 
-Ano, rozhraní SQL API podporuje transakce mezi dokumenty vyjádřené jako procedury a aktivační události uložené v jazyce JavaScript. Transakce jsou vymezeny na jeden oddíl v rámci každého kontejneru a provedeny s acid sémantiku jako "vše nebo nic", izolované od jiných souběžně vykonávající kód a požadavky uživatelů. Pokud jsou výjimky vyvolány prostřednictvím spuštění kódu aplikace JavaScript na straně serveru, je celá transakce vrácena zpět. 
+Ano, rozhraní SQL API podporuje transakce mezi dokumenty vyjádřené jako procedury a triggery uložené v JavaScriptu. Transakce jsou vymezeny na jeden oddíl v rámci každého kontejneru a jsou spouštěny s sémantikou kyseliny jako "vše nebo nic" izolované od ostatních souběžně prováděných požadavků kódu a uživatelů. Pokud jsou výjimky vyvolány prostřednictvím spuštění kódu aplikace JavaScriptu na straně serveru, celá transakce je vrácena zpět. 
 
 ### <a name="what-is-a-container"></a>Co je kontejner?
 
-Kontejner je skupina dokumentů a jejich přidružené aplikační logiky JavaScriptu. Kontejner je fakturovatelná entita, kde [jsou náklady](performance-levels.md) určeny propustností a použitým úložištěm. Kontejnery mohou span jeden nebo více oddílů nebo serverů a škálovat pro zpracování prakticky neomezené svazky úložiště nebo propustnost.
+Kontejner je skupina dokumentů a jejich přidružená logika aplikace JavaScriptu. Kontejner je fakturovatelná entita, kde [náklady](performance-levels.md) určují propustnost a využité úložiště. Kontejnery můžou zahrnovat jeden nebo víc oddílů nebo serverů a můžou se škálovat na zpracování prakticky neomezených objemů úložiště nebo propustnosti.
 
-* Pro rozhraní SQL API kontejner mapuje kontejneru.
-* Pro rozhraní API Cosmos DB pro účty MongoDB kontejner mapuje na kolekci.
-* Pro účty Cassandra a Table API kontejner mapuje na tabulka.
-* Pro účty Gremlin API kontejner mapuje na graf.
+* Pro rozhraní SQL API se kontejner mapuje na kontejner.
+* Pro Cosmos DB rozhraní API pro účty MongoDB se kontejner mapuje na kolekci.
+* Pro účty Cassandra a rozhraní API pro tabulky se kontejner mapuje na tabulku.
+* V případě účtů rozhraní Gremlin API se kontejner mapuje do grafu.
 
-Kontejnery jsou také fakturační entity pro Azure Cosmos DB. Každý kontejner se účtuje každou hodinu na základě zřízené propustnosti a využitého úložného prostoru. Další informace najdete v tématu [Azure Cosmos DB Pricing](https://azure.microsoft.com/pricing/details/cosmos-db/).
+Kontejnery jsou také fakturačními entitami pro Azure Cosmos DB. Každý kontejner se účtuje po hodinách na základě zřízené propustnosti a využitého prostoru úložiště. Další informace najdete v tématu [Azure Cosmos DB ceny](https://azure.microsoft.com/pricing/details/cosmos-db/).
 
 ### <a name="how-do-i-create-a-database"></a>Jak vytvořím databázi?
 
-Databáze můžete vytvářet pomocí [portálu Azure](https://portal.azure.com), jak je popsáno v [části Přidat kontejner](create-sql-api-java.md#add-a-container), jednu z sad Azure [Cosmos DB SDK](sql-api-sdk-dotnet.md)nebo [REST API](/rest/api/cosmos-db/).
+Databáze můžete vytvářet pomocí [Azure Portal](https://portal.azure.com), jak je popsáno v tématu [Přidání kontejneru](create-sql-api-java.md#add-a-container), jedna ze sady [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)nebo [rozhraní REST API](/rest/api/cosmos-db/).
 
 ### <a name="how-do-i-set-up-users-and-permissions"></a>Jak nastavím uživatele a oprávnění?
 
-Můžete vytvořit uživatele a oprávnění pomocí jednoho z [kosmos DB API Sady SDK](sql-api-sdk-dotnet.md) nebo [rozhraní REST API](/rest/api/cosmos-db/).
+Uživatele a oprávnění můžete vytvořit pomocí jedné ze sady [sdk Cosmos DB API](sql-api-sdk-dotnet.md) nebo rozhraní [REST API](/rest/api/cosmos-db/).
 
-### <a name="does-the-sql-api-support-sql"></a>Podporuje rozhraní SQL rozhraní SQL?
+### <a name="does-the-sql-api-support-sql"></a>Podporuje rozhraní SQL API SQL?
 
-Dotazovací jazyk SQL podporovaný účty rozhraní SQL API je rozšířená podmnožina funkce dotazu, která je podporována sql serverem. Dotazovací jazyk Sql Azure Cosmos DB poskytuje bohaté hierarchické a relační operátory a rozšiřitelnost prostřednictvím funkcí založených na uživateli (UOF) založených na JavaScriptu. Gramatika JSON umožňuje modelování dokumentů JSON jako stromy s označenými uzly, které se používají pomocí technik automatického indexování Azure Cosmos DB a dialektu dotazu SQL služby Azure Cosmos DB. Informace o použití gramatiky SQL naleznete v článku [dotazu SQL.][query]
+Dotazovací jazyk SQL podporovaný účty SQL API je rozšířená podmnožina funkcí dotazů, které podporuje SQL Server. Azure Cosmos DB dotazovací jazyk SQL poskytuje bohatý hierarchické a relační operátory a rozšiřitelnost prostřednictvím uživatelsky definovaných funkcí (UDF) založených na JavaScriptu. Gramatika JSON umožňuje modelování dokumentů JSON jako stromů s označenými uzly, které jsou používány postupy Azure Cosmos DB automatické indexování a dialektem dotazu SQL Azure Cosmos DB. Informace o použití gramatiky SQL najdete v článku [dotaz SQL][query] .
 
-### <a name="does-the-sql-api-support-sql-aggregation-functions"></a>Podporuje rozhraní SQL API funkce agregace SQL?
+### <a name="does-the-sql-api-support-sql-aggregation-functions"></a>Podporuje rozhraní SQL API agregační funkce SQL?
 
-Rozhraní SQL API podporuje agregaci s nízkou latencí `MIN` `MAX`v `AVG`libovolném měřítku prostřednictvím agregačních funkcí `SUM` `COUNT`, , a prostřednictvím gramatiky SQL. Další informace naleznete v tématu [Agregační funkce](sql-query-aggregates.md).
+Rozhraní SQL API podporuje agregaci s nízkou latencí v jakémkoli měřítku prostřednictvím `COUNT`agregačních `MAX`funkcí `AVG`, `MIN`, `SUM` , a prostřednictvím gramatiky SQL. Další informace najdete v tématu [agregační funkce](sql-query-aggregates.md).
 
-### <a name="how-does-the-sql-api-provide-concurrency"></a>Jak rozhraní SQL API poskytuje souběžnost?
+### <a name="how-does-the-sql-api-provide-concurrency"></a>Jak rozhraní API SQL zajišťuje souběžnost?
 
-Rozhraní SQL API podporuje optimistické řízení souběžnosti (OCC) prostřednictvím značek entit HTTP nebo etags. Každý prostředek rozhraní SQL API má etag a ETag je nastavena na serveru při každé aktualizaci dokumentu. Hlavička ETag a aktuální hodnota jsou zahrnuty ve všech zprávách odpovědi. ETags lze použít s If-Match záhlaví umožnit serveru rozhodnout, zda prostředek by měl být aktualizován. Hodnota If-Match je hodnota ETag, která má být kontrolována. Pokud hodnota ETag odpovídá hodnotě etag serveru, prostředek se aktualizuje. Pokud eTag již není aktuální, server odmítne operaci s kódem odpovědi "HTTP 412 Precondition failure". Klient pak znovu načte prostředek k získání aktuální hodnoty ETag pro prostředek. Kromě toho ETags lze použít s If-None-Match záhlaví k určení, zda je potřeba znovu načíst prostředek.
+Rozhraní SQL API podporuje optimistické řízení souběžnosti (OCC) prostřednictvím značek entit HTTP nebo značek ETag. Každý prostředek rozhraní API SQL má ETag a značka ETag je nastavená na serveru pokaždé, když se dokument aktualizuje. Hlavička ETag a aktuální hodnota jsou zahrnuty ve všech zprávách s odpovědí. Značky ETag se dají použít spolu s hlavičkou If-Match, která umožňuje serveru rozhodnout, jestli se má prostředek aktualizovat. Hodnota If-Match je hodnota ETag, která se má zkontrolovat. Pokud hodnota ETag odpovídá hodnotě ETag serveru, prostředek se aktualizuje. Pokud značka ETag již není aktuální, server odmítne operaci s kódem odpovědi "selhání předběžné podmínky HTTP 412". Klient pak znovu načte prostředek, aby získal aktuální hodnotu ETag pro daný prostředek. Značky ETag lze navíc použít s hlavičkou If-None-Match k určení, zda je nutné znovu načíst prostředek.
 
-Chcete-li použít optimistickou souběžnost v rozhraní .NET, použijte třídu [AccessCondition.](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.accesscondition.aspx) Ukázka rozhraní .NET najdete [v tématu Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DocumentManagement/Program.cs) v ukázce DocumentManagement na GitHubu.
+Chcete-li použít optimistickou souběžnost v rozhraní .NET, použijte třídu [AccessCondition](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.accesscondition.aspx) . Ukázku .NET najdete v tématu [program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DocumentManagement/Program.cs) v ukázce DocumentManagement na GitHubu.
 
-### <a name="how-do-i-perform-transactions-in-the-sql-api"></a>Jak lze provádět transakce v rozhraní SQL API?
+### <a name="how-do-i-perform-transactions-in-the-sql-api"></a>Návody provádět transakce v rozhraní SQL API?
 
-Rozhraní SQL API podporuje transakce integrované jazykem prostřednictvím procedur a aktivačních událostí uložených javascriptem. Všechny databázové operace uvnitř skriptů jsou prováděny pod snímek izolace. Pokud je kontejner s jedním oddílem, provádění je vymezena na kontejner. Pokud je kontejner rozdělen na oddíly, provádění je vymezeno na dokumenty se stejnou hodnotou klíče oddílu v rámci kontejneru. Na začátku transakce se pořídí snímek verzí dokumentů (ETagy) a k potvrzení dojde pouze v případě, že skript uspěje. Pokud JavaScript vyvolá chybu, transakce se vrátí zpět. Další informace najdete [v tématu Programování JavaScriptu na straně serveru pro Azure Cosmos DB](stored-procedures-triggers-udfs.md).
+Rozhraní SQL API podporuje transakce integrované s jazykem prostřednictvím procedur a triggerů uložených v JavaScriptu. Všechny databázové operace uvnitř skriptů jsou spouštěny při izolaci snímku. Pokud se jedná o kontejner s jedním oddílem, je spuštění vymezeno na kontejner. Pokud je kontejner rozdělený, je spuštění vymezeno na dokumenty se stejnou hodnotou klíče oddílu v rámci kontejneru. Na začátku transakce se pořídí snímek verzí dokumentů (ETagy) a k potvrzení dojde pouze v případě, že skript uspěje. Pokud JavaScript vyvolá chybu, transakce se vrátí zpět. Další informace najdete v tématu [programování JavaScriptu na straně serveru pro Azure Cosmos DB](stored-procedures-triggers-udfs.md).
 
-### <a name="how-can-i-bulk-insert-documents-into-cosmos-db"></a>Jak lze hromadně vkládat dokumenty do cosmos DB?
+### <a name="how-can-i-bulk-insert-documents-into-cosmos-db"></a>Jak můžu hromadně vkládat dokumenty do Cosmos DB?
 
-Dokumenty můžete do Služby Azure Cosmos DB hromadně vkládat jedním z následujících způsobů:
+Dokumenty můžete do Azure Cosmos DB hromadně vkládat jedním z následujících způsobů:
 
-* Nástroj hromadného vykonavatele, jak je popsáno v [části Použití knihovny .NET hromadného vykonavatele](bulk-executor-dot-net.md) a [Použití knihovny Java hromadného vykonavatele](bulk-executor-java.md)
-* Nástroj pro migraci dat, jak je popsáno v [nástroji pro migraci databáze pro Azure Cosmos DB](import-data.md).
-* Uložené procedury, jak je popsáno v [programování JavaScriptu na straně serveru pro Azure Cosmos DB](stored-procedures-triggers-udfs.md).
+* Nástroj hromadný prováděcí modul, jak je popsáno v tématu [použití knihovny hromadného prováděcího modulu .NET](bulk-executor-dot-net.md) a [použití knihovny hromadného vykonavatele Java](bulk-executor-java.md)
+* Nástroj pro migraci dat, jak je popsáno v tématu [Nástroj pro migraci databáze pro Azure Cosmos DB](import-data.md).
+* Uložené procedury, jak je popsáno v tématu [programování JavaScriptu na straně serveru pro Azure Cosmos DB](stored-procedures-triggers-udfs.md).
 
-### <a name="does-the-sql-api-support-resource-link-caching"></a>Podporuje rozhraní SQL API ukládání do mezipaměti propojení prostředků?
+### <a name="does-the-sql-api-support-resource-link-caching"></a>Podporuje rozhraní API SQL odkaz na prostředek do mezipaměti?
 
-Ano, protože Azure Cosmos DB je služba RESTful, odkazy prostředků jsou neměnné a lze uložit do mezipaměti. Klienti rozhraní SQL API mohou zadat hlavičku "If-None-Match" pro čtení proti dokumentu nebo kontejneru podobnému prostředkům a poté aktualizovat místní kopie po změně verze serveru.
+Ano, protože Azure Cosmos DB je služba RESTful, odkazy na prostředky jsou neměnné a dají se ukládat do mezipaměti. Klienti rozhraní SQL API mohou zadat hlavičku "If-None-Match" pro čtení na libovolný dokument nebo kontejner, který odpovídá prostředkům, a po změně verze serveru aktualizovat jejich místní kopie.
 
 ### <a name="is-a-local-instance-of-sql-api-available"></a>Je k dispozici místní instance rozhraní SQL API?
 
-Ano. [Emulátor Azure Cosmos DB](local-emulator.md) poskytuje emulaci služby Cosmos DB s vysokou věrností. Podporuje funkce, které jsou shodné s Azure Cosmos DB, včetně podpory pro vytváření a dotazování dokumentů JSON, zřizování a škálování kolekcí a provádění uložených procedur a aktivačních událostí. Můžete vyvíjet a testovat aplikace pomocí Emulátoru Azure Cosmos DB a nasadit je do Azure v globálním měřítku provedením jediné změny konfigurace koncového bodu připojení pro Azure Cosmos DB.
+Ano. [Emulátor Azure Cosmos DB](local-emulator.md) zajišťuje emulaci služby Cosmos DB s vysokou přesností. Podporuje funkce, které jsou stejné jako Azure Cosmos DB, včetně podpory pro vytváření a dotazování dokumentů JSON, zřizování a škálování kolekcí a spouštění uložených procedur a triggerů. Můžete vyvíjet a testovat aplikace pomocí emulátoru Azure Cosmos DB a nasadit je do Azure v globálním měřítku, a to tak, že pro Azure Cosmos DB provedete jednu změnu konfigurace koncového bodu připojení.
 
-### <a name="why-are-long-floating-point-values-in-a-document-rounded-when-viewed-from-data-explorer-in-the-portal"></a>Proč jsou dlouhé hodnoty s plovoucí desetinnou desetinnou desetinnou desetinnou hodnotou v dokumentu zaokrouhlené při zobrazení z průzkumníka dat na portálu.
+### <a name="why-are-long-floating-point-values-in-a-document-rounded-when-viewed-from-data-explorer-in-the-portal"></a>Proč jsou při zobrazení v Průzkumníku dat na portálu dlouhé hodnoty s plovoucí desetinnou čárkou v dokumentu zaokrouhlené.
 
-Toto je omezení JavaScriptu. JavaScript používá double-přesnost s plovoucí desetinnou desetinnou položkou formát čísla, jak je uvedeno v IEEE 754 a může bezpečně držet čísla mezi -(2<sup>53</sup> - 1) a 2<sup>53</sup>-1 (tj. 9007199254740991) pouze.
+Toto je omezení JavaScriptu. JavaScript používá čísla formátu s plovoucí desetinnou čárkou s dvojitou přesností, jak je uvedeno v IEEE 754, a může bezpečně držet čísla mezi-(2<sup>53</sup> -1) a 2<sup>53</sup>-1 (tj., 9007199254740991).
 
-### <a name="where-are-permissions-allowed-in-the-object-hierarchy"></a>Kde jsou v hierarchii objektů povolena oprávnění?
+### <a name="where-are-permissions-allowed-in-the-object-hierarchy"></a>Kde jsou oprávnění povolená v hierarchii objektů?
 
-Vytváření oprávnění pomocí ResourceTokens je povoleno na úrovni kontejneru a jeho potomků (například dokumenty, přílohy). To znamená, že pokus o vytvoření oprávnění na úrovni databáze nebo účtu není aktuálně povolen.
+Vytváření oprávnění pomocí ResourceTokens je povoleno na úrovni kontejneru a jejích potomků (například dokumenty, přílohy). To znamená, že pokus o vytvoření oprávnění v databázi nebo na úrovni účtu není aktuálně povolen.
 
 ## <a name="azure-cosmos-dbs-api-for-mongodb"></a>Rozhraní API služby Azure Cosmos DB pro MongoDB
 
-### <a name="what-is-the-azure-cosmos-dbs-api-for-mongodb"></a>Jaké je rozhraní API Azure Cosmos DB pro MongoDB?
+### <a name="what-is-the-azure-cosmos-dbs-api-for-mongodb"></a>Co je rozhraní API Azure Cosmos DB pro MongoDB?
 
-Rozhraní API Azure Cosmos DB pro MongoDB je vrstva kompatibility drátových protokolů, která umožňuje aplikacím snadno a transparentně komunikovat s nativním databázovým strojem Azure Cosmos pomocí existujících sad SDK a ovladačů podporovaných komunitou pro MongoDB. Vývojáři teď můžou používat existující řetězce nástrojů mongoDB a dovednosti k vytváření aplikací, které využívají Azure Cosmos DB. Vývojáři těží z jedinečných funkcí Azure Cosmos DB, které zahrnují globální distribuci s replikací více hlavních serverů, automatickým indexováním, údržbou zálohování, finančně podporovanými smlouvami o úrovni služeb (SLA) atd.
+Rozhraní API pro Azure Cosmos DB pro MongoDB je vrstva kompatibility protokolů, která umožňuje aplikacím snadno a transparentně komunikovat s nativním databázovým strojem Azure Cosmos pomocí stávajících sad SDK a ovladačů podporovaných komunitou pro MongoDB. Vývojáři teď můžou využívat stávající MongoDB sady nástrojů a dovednosti k sestavování aplikací, které využívají Azure Cosmos DB. Vývojáři mají výhodu jedinečných funkcí Azure Cosmos DB, které zahrnují globální distribuci s více hlavními replikacemi, automatické indexování, údržbu zálohování, finančně zálohovaných smluv o úrovni služeb (SLA) atd.
 
-### <a name="how-do-i-connect-to-my-database"></a>Jak se připojím ke své databázi?
+### <a name="how-do-i-connect-to-my-database"></a>Návody se připojit k databázi?
 
-Nejrychlejší způsob, jak se připojit k databázi Cosmos pomocí rozhraní API Azure Cosmos DB pro MongoDB, je přejít na [portál Azure](https://portal.azure.com). Přejděte na svůj účet a v levé navigační nabídce klikněte na **Rychlý start**. Rychlý start je nejlepší způsob, jak získat fragmenty kódu pro připojení k databázi.
+Nejrychlejší způsob, jak se připojit k databázi Cosmos s rozhraním API Azure Cosmos DB pro MongoDB, je přejít na [Azure Portal](https://portal.azure.com). Přejděte na svůj účet a potom v levé navigační nabídce klikněte na **rychlé zprovoznění**. Rychlý Start je nejlepší způsob, jak získat fragmenty kódu pro připojení k vaší databázi.
 
-Azure Cosmos DB vynucuje přísné požadavky na zabezpečení a standardy. Účty Azure Cosmos DB vyžadují ověřování a zabezpečenou komunikaci prostřednictvím tls, takže nezapomeňte použít TLSv1.2.
+Azure Cosmos DB vynutil přísné požadavky na zabezpečení a standardy. Účty Azure Cosmos DB vyžadují ověřování a zabezpečenou komunikaci pomocí protokolu TLS, proto nezapomeňte používat TLSv 1.2.
 
-Další informace najdete [v tématu Připojení k databázi Cosmos pomocí rozhraní API Azure Cosmos DB pro MongoDB](connect-mongodb-account.md).
+Další informace najdete v tématu [připojení k databázi Cosmos s rozhraním API Azure Cosmos DB pro MongoDB](connect-mongodb-account.md).
 
-### <a name="are-there-additional-error-codes-that-i-need-to-deal-with-while-using-azure-cosmos-dbs-api-for-mongodb"></a>Existují další kódy chyb, které musím řešit při používání rozhraní API Azure Cosmos DB pro MongoDB?
+### <a name="are-there-additional-error-codes-that-i-need-to-deal-with-while-using-azure-cosmos-dbs-api-for-mongodb"></a>Existují další chybové kódy, které potřebuji řešit při používání rozhraní API Azure Cosmos DB pro MongoDB?
 
-Spolu se společnými kódy chyb MongoDB má rozhraní API Azure Cosmos DB pro MongoDB své vlastní specifické kódy chyb:
+Spolu s běžnými kódy chyb MongoDB má rozhraní API Azure Cosmos DB pro MongoDB vlastní konkrétní kódy chyb:
 
 | Chyba               | kód  | Popis  | Řešení  |
 |---------------------|-------|--------------|-----------|
-| TooManyRequests     | 16500 | Celkový počet spotřebovaných jednotek požadavku je větší než zřízená sazba jednotky požadavku pro kontejner a byla omezena. | Zvažte škálování propustnost přiřazené ke kontejneru nebo sadu kontejnerů z portálu Azure nebo opakování znovu. |
-| ExceededMemoryLimit | 16501 | Jako služba s více tenanty operace přešla přes přidělení paměti klienta. | Zmenšete rozsah operace prostřednictvím přísnějších kritérií dotazu nebo se obraťte na podporu z [webu Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). <br><br><em> &nbsp; &nbsp;Příklad: &nbsp; &nbsp;db.getCollection('users').aggregate([<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$match: {jméno: "Andy"}}, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$sort: {věk: -1}}<br>&nbsp;&nbsp;&nbsp;&nbsp;])</em>) |
+| TooManyRequests     | 16500 | Celkový počet spotřebovaných jednotek žádostí je vyšší než zřízené procento požadavků a Jednotková sazba pro daný kontejner a byla omezena. | Zvažte možnost škálování propustnosti přiřazené kontejneru nebo sady kontejnerů z Azure Portal nebo opakujte pokus. |
+| ExceededMemoryLimit | 16501 | Jako služba pro více tenantů se operace převzala v průběhu plnění paměti klienta. | Snižte rozsah operace prostřednictvím přísnějších kritérií dotazu nebo kontaktujte podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). <br><br><em> &nbsp; &nbsp;Příklad: &nbsp;DB. GetCollection (' Users '). Aggregate ([ &nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$match: {Name: "Andy"}}, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$sort: {Age:-1}}<br>&nbsp;&nbsp;&nbsp;&nbsp;])</em>) |
 
 ### <a name="is-the-simba-driver-for-mongodb-supported-for-use-with-azure-cosmos-dbs-api-for-mongodb"></a>Je ovladač Simba pro MongoDB podporovaný pro použití s rozhraním API Azure Cosmos DB pro MongoDB?
 
-Ano, ovladač Mongo ODBC společnosti Simba můžete použít s rozhraním API Azure Cosmos DB pro MongoDB.
+Ano, můžete použít ovladač ODBC Simba Mongo s rozhraním API Azure Cosmos DB pro MongoDB
 
 ## <a name="table-api"></a><a id="table"></a>Rozhraní Table API
 
-### <a name="how-can-i-use-the-table-api-offering"></a>Jak mohu použít nabídku rozhraní TABLE API?
+### <a name="how-can-i-use-the-table-api-offering"></a>Jak můžu použít nabídku rozhraní API pro tabulky?
 
-Rozhraní Azure Cosmos DB Table API je dostupné na [webu Azure Portal][azure-portal]. Nejprve se musíte zaregistrovat k předplatnému Azure. Po registraci můžete do předplatného Azure přidat účet rozhraní API Azure Cosmos DB Table API a pak do svého účtu přidat tabulky.
+Rozhraní API pro tabulky Azure Cosmos DB je k dispozici v [Azure Portal][azure-portal]. Nejdřív si musíte zaregistrovat předplatné Azure. Po registraci můžete do svého předplatného Azure přidat účet Azure Cosmos DB rozhraní API pro tabulky a pak do svého účtu přidat tabulky.
 
-Podporované jazyky a přidružené rychlé spuštění najdete v [rozhraní The Introduction to Azure Cosmos DB Table API](table-introduction.md).
+Podporované jazyky a související rychlé starty najdete v [úvodu k Azure Cosmos DB rozhraní API pro tabulky](table-introduction.md).
 
-### <a name="do-i-need-a-new-sdk-to-use-the-table-api"></a>Potřebuji novou sdk pro použití rozhraní Table API?
+### <a name="do-i-need-a-new-sdk-to-use-the-table-api"></a>Potřebuji pro používání rozhraní API pro tabulky novou sadu SDK?
 
-Ne, existující sady SDK úložiště by měly stále fungovat. Doporučuje se však, aby se vždy dostalo nejnovějšísady SDK pro nejlepší podporu a v mnoha případech vynikající výkon. Podívejte se na seznam dostupných jazyků v [úvodu k rozhraní API tabulky Azure Cosmos DB](table-introduction.md).
+Ne, existující sady SDK úložiště by měly pořád fungovat. Doporučuje se ale, aby jeden vždy dostal nejnovější sady SDK na nejlepší podporu a v mnoha případech vynikající výkon. Seznam dostupných jazyků najdete v tématu [Úvod do Azure Cosmos DB rozhraní API pro tabulky](table-introduction.md).
 
 ### <a name="where-is-table-api-not-identical-with-azure-table-storage-behavior"></a>V čem není rozhraní API pro tabulky shodné s chováním s Azure Table Storage?
 
-Existují určité rozdíly v chování, které by uživatelé z úložiště Azure Table Storage, kteří chtějí vytvářet tabulky pomocí rozhraní Azure Cosmos DB Table API, měli znát:
+Existují některé rozdíly v chování, které uživatelé přicházejí z Azure Table Storage, a chtějí vytvářet tabulky s Azure Cosmos DB rozhraní API pro tabulky by měli mít na paměti:
 
-* Azure Cosmos DB Table API používá model vyhrazené kapacity k zajištění garantovaného výkonu, ale to znamená, že se platí za kapacitu, jakmile je tabulka vytvořena, i když se kapacita nepoužívá. S úložištěm Azure Table se platí jenom za využitou kapacitu. To pomáhá vysvětlit, proč table api může nabídnout 10 ms čtení a 15 ms psát SLA na 99 percentilu, zatímco Azure Table storage nabízí 10 sekund SLA. Ale v důsledku toho s tabulkami table API, i prázdné tabulky bez jakýchkoli požadavků, stojí peníze, aby bylo zajištěno, že kapacita je k dispozici pro zpracování všech požadavků na ně na SLA nabízí Azure Cosmos DB.
-* Výsledky dotazu vrácené rozhraním TABLE API nejsou seřazeny v pořadí klíčů mezi klíči oddílu a řádky, jako jsou v úložišti Azure Table.
-* Klíče řádků mohou mít pouze 255 bajtů
-* Dávky mohou mít pouze 2 MBs
-* CORS není momentálně podporován.
-* Názvy tabulek v úložišti tabulek Azure nerozlišují malá a velká písmena, ale jsou v rozhraní API tabulky Db Azure Cosmos
-* Některé interní formáty Azure Cosmos DB pro kódování informací, jako jsou binární pole, nejsou aktuálně tak efektivní, jak by se mohlo líbit. Proto to může způsobit neočekávaná omezení velikosti dat. Například v současné době nelze použít celou jednu Meg entity tabulky k ukládání binárních dat, protože kódování zvyšuje velikost dat.
-* Název vlastnosti entity ID není aktuálně podporován.
-* TableQuery TakeCount není omezena na 1000
+* Azure Cosmos DB rozhraní API pro tabulky používá rezervovaný model kapacity, aby zajistil Zaručený výkon, ale to znamená, že po vytvoření tabulky platí za kapacitu, a to i v případě, že se kapacita nepoužívá. S Azure Table Storage jedna platí jenom pro využitou kapacitu. To pomáhá vysvětlit, proč rozhraní API pro tabulky může nabízet smlouvu SLA 10 MS pro čtení a 15 MS Write na 99 percentilu, zatímco Azure Table Storage nabízí 10 sekund SLA. Ale jako důsledek s rozhraní API pro tabulky tabulek, a to i s prázdnými tabulkami bez jakýchkoli požadavků, a to za účelem zajištění dostupnosti kapacity pro zpracování všech žádostí o smlouvu SLA nabízených Azure Cosmos DB.
+* Výsledky dotazu vrácené rozhraní API pro tabulky nejsou seřazené v pořadí podle klíče oddílu nebo klíče řádku, protože jsou v úložišti tabulek Azure.
+* Klíče řádků můžou být jenom až 255 bajtů.
+* Dávky můžou mít až 2 MB.
+* CORS není momentálně podporovaná.
+* Názvy tabulek v Azure Table Storage nerozlišují velká a malá písmena, ale jsou v Azure Cosmos DB rozhraní API pro tabulky
+* Některé z interních formátů Azure Cosmos DB pro kódování informací, jako jsou například binární pole, nejsou aktuálně tak efektivní jako jedna. Proto to může způsobit neočekávané omezení velikosti dat. Aktuálně jedna z nich například nemůže použít celý jeden typ MB entity tabulky pro ukládání binárních dat, protože kódování zvyšuje velikost dat.
+* Název vlastnosti entity ' ID ' aktuálně není podporován.
+* TableQuery TakeCount není omezen na 1000
 
-Pokud jde o rozhraní REST API existuje řada koncových bodů/možností dotazu, které nejsou podporovány rozhraním AZURE Cosmos DB Table API:
+V souvislosti s REST API je k dispozici několik možností pro koncové body nebo dotazy, které nepodporují Azure Cosmos DB rozhraní API pro tabulky:
 
-| Metoda odpočinku (metody) | Možnost koncového bodu nebo dotazu | Adresy URL dokumentů | Vysvětlení |
+| Metody REST | Možnost koncový bod nebo dotaz REST | Adresy URL dokumentů | Vysvětlení |
 | ------------| ------------- | ---------- | ----------- |
-| ZÍSKAT, DÁT | /?restype=service@comp=vlastnosti| [Nastavit vlastnosti služby Table Service](https://docs.microsoft.com/rest/api/storageservices/set-table-service-properties) a [získat vlastnosti služby table service](https://docs.microsoft.com/rest/api/storageservices/get-table-service-properties) | Tento koncový bod se používá k nastavení pravidel CORS, konfigurace analýzy úložiště a nastavení protokolování. CORS momentálně není podporovaný a analýzy a protokolování se v Azure Cosmos DB zpracovávají jinak než tabulky úložišť Azure. |
-| Možnosti | /\<> názvu zdroje tabulky | [Předletový požadavek na tabulku CORS](https://docs.microsoft.com/rest/api/storageservices/preflight-table-request) | Toto je součástí CORS, které Azure Cosmos DB aktuálně nepodporuje. |
-| GET | /?restype=service@comp=statistiky | [Získat statistiky stolních služeb](https://docs.microsoft.com/rest/api/storageservices/get-table-service-stats) | Obsahuje informace o tom, jak rychle se data replikují mezi primárními a sekundárními údaji. To není potřeba v Cosmos DB jako replikace je součástí zápisů. |
-| ZÍSKAT, DÁT | /mytable?comp=acl | [Získat acl acl tabulky](https://docs.microsoft.com/rest/api/storageservices/get-table-acl) a [nastavit tabulku](https://docs.microsoft.com/rest/api/storageservices/set-table-acl) | Tím získáte a nastavíte uložené zásady přístupu používané ke správě sdílených přístupových podpisů (SAS). Přestože je podporováno SAS, jsou nastaveny a spravovány odlišně. |
+| ZÍSKAT, PUT | /? restype =service@comp= – vlastnosti| [Nastavení vlastností služby Table](https://docs.microsoft.com/rest/api/storageservices/set-table-service-properties) a [získání vlastností služby Table Service](https://docs.microsoft.com/rest/api/storageservices/get-table-service-properties) | Tento koncový bod se používá k nastavení pravidel CORS, konfigurace analýzy úložiště a nastavení protokolování. CORS není momentálně podporovaná a analýzy a protokolování se v Azure Cosmos DB než v Azure Storage tabulkách zpracovávají jinak. |
+| NASTAVENÍ | /\<název tabulky a prostředku> | [Požadavek na tabulku CORS před lety](https://docs.microsoft.com/rest/api/storageservices/preflight-table-request) | Toto je součást CORS, kterou Azure Cosmos DB v současnosti nepodporuje. |
+| GET | /? restype =service@comp= statistiky | [Získat statistiku služby Table](https://docs.microsoft.com/rest/api/storageservices/get-table-service-stats) | Poskytuje informace o tom, jak rychle se data replikují mezi primárním a sekundárním serverem. V Cosmos DB to není potřeba, protože replikace je součástí zápisů. |
+| ZÍSKAT, PUT | /myTable? COMP = ACL | [Získat seznam ACL tabulky](https://docs.microsoft.com/rest/api/storageservices/get-table-acl) a [nastavit seznam ACL tabulky](https://docs.microsoft.com/rest/api/storageservices/set-table-acl) | Tím se získá a nanastaví uložené zásady přístupu používané ke správě sdílených přístupových podpisů (SAS). I když se SAS podporuje, nastavují a spravují jinak. |
 
-Kromě toho rozhraní API tabulky Azure Cosmos DB podporuje jenom formát JSON, nikoli ATOM.
+Kromě Azure Cosmos DB rozhraní API pro tabulky podporuje jenom formát JSON, ne ATOM.
 
-Zatímco Azure Cosmos DB podporuje sdílené přístupové podpisy (SAS), existují určité zásady, které nepodporuje, konkrétně ty, které souvisejí s operacemi správy, jako je právo vytvářet nové tabulky.
+I když Azure Cosmos DB podporuje sdílené přístupové podpisy (SAS), existují určité zásady, které nepodporují, konkrétně ty, které se týkají operací správy, jako je právo vytvářet nové tabulky.
 
-Zejména pro sdk .NET existují některé třídy a metody, které Azure Cosmos DB aktuálně nepodporuje.
+Konkrétně pro sadu .NET SDK existují některé třídy a metody, které Azure Cosmos DB aktuálně nepodporují.
 
 | Třída | Nepodporovaná metoda |
 |-------|-------- |
-| CloudTableClient | \*Vlastnosti služby* |
-|                  | \*Statistiky služeb* |
-| Cloudtable | Nastavit oprávnění* |
-|            | Získat oprávnění* |
-| TableServiceContext | * (tato třída je zastaralá) |
+| Cloudtableclient vám | \*ServiceProperties* |
+|                  | \*ServiceStats* |
+| CloudTable | SetPermissions* |
+|            | GetPermissions * |
+| TableServiceContext | * (Tato třída je zastaralá.) |
 | TableServiceEntity | " " |
-| Rozšíření tableserviceextensions | " " |
+| TableServiceExtensions | " " |
 | TableServiceQuery | " " |
 
-### <a name="how-do-i-provide-feedback-about-the-sdk-or-bugs"></a>Jak mohu poskytnout zpětnou vazbu o SDK nebo chyby?
+### <a name="how-do-i-provide-feedback-about-the-sdk-or-bugs"></a>Návody poskytnout zpětnou vazbu k sadě SDK nebo chybám?
 
-Svůj názor můžete sdílet libovolným z následujících způsobů:
+Svůj názor můžete sdílet některým z následujících způsobů:
 
-* [Hlas uživatele](https://feedback.azure.com/forums/263030-azure-cosmos-db)
+* [User Voice](https://feedback.azure.com/forums/263030-azure-cosmos-db)
 * [Fórum MSDN](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecosmosdb)
-* [Přetečení zásobníku](https://stackoverflow.com/questions/tagged/azure-cosmosdb). Přetečení zásobníku je nejlepší pro programování otázek. Ujistěte se, že vaše otázka je [on-topic](https://stackoverflow.com/help/on-topic) a [poskytnout co nejvíce podrobností, jak je to možné, takže otázka jasná a odpovědětelná](https://stackoverflow.com/help/how-to-ask).
+* [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-cosmosdb). Stack Overflow je nejvhodnější pro otázky týkající se programování. Ujistěte se, že je váš dotaz [v rámci vašeho tématu](https://stackoverflow.com/help/on-topic) [, a uveďte co nejvíce podrobností a vymažte otázku a odpovězte na](https://stackoverflow.com/help/how-to-ask)ně.
 
-### <a name="what-is-the-connection-string-that-i-need-to-use-to-connect-to-the-table-api"></a>Jaký je připojovací řetězec, který potřebuji použít pro připojení k rozhraní TABLE API?
+### <a name="what-is-the-connection-string-that-i-need-to-use-to-connect-to-the-table-api"></a>Jaký je připojovací řetězec, který potřebuji použít pro připojení k rozhraní API pro tabulky?
 
-Připojovací řetězec je:
+Připojovací řetězec:
 
 ```
 DefaultEndpointsProtocol=https;AccountName=<AccountNamefromCosmos DB;AccountKey=<FromKeysPaneofCosmosDB>;TableEndpoint=https://<AccountName>.table.cosmosdb.azure.com
 ```
 
-Připojovací řetězec můžete získat ze stránky připojovací řetězec na webu Azure Portal.
+Připojovací řetězec můžete získat na stránce připojovací řetězec v Azure Portal.
 
-### <a name="how-do-i-override-the-config-settings-for-the-request-options-in-the-net-sdk-for-the-table-api"></a>Jak přepíšem nastavení konfigurace možností požadavku v sedstě .NET SDK pro rozhraní TABLE API?
+### <a name="how-do-i-override-the-config-settings-for-the-request-options-in-the-net-sdk-for-the-table-api"></a>Návody přepsat nastavení konfigurace pro možnosti žádosti v sadě .NET SDK pro rozhraní API pro tabulky?
 
-Některá nastavení jsou zpracována metodou CreateCloudTableClient a další prostřednictvím application.config v části appSettings v klientské aplikaci. Informace o nastavení konfigurace najdete v tématu [možnosti Azure Cosmos DB](tutorial-develop-table-dotnet.md).
+Některá nastavení jsou zpracována v metodě CreateCloudTableClient a další prostřednictvím souboru App. config v části appSettings v klientské aplikaci. Informace o nastavení konfigurace najdete v tématu [možnosti Azure Cosmos DB](tutorial-develop-table-dotnet.md).
 
-### <a name="are-there-any-changes-for-customers-who-are-using-the-existing-azure-table-storage-sdks"></a>Existují nějaké změny pro zákazníky, kteří používají existující sady SDK úložiště tabulky Azure?
+### <a name="are-there-any-changes-for-customers-who-are-using-the-existing-azure-table-storage-sdks"></a>Existují nějaké změny pro zákazníky, kteří používají existující sady SDK služby Azure Table Storage?
 
-Žádné. Neexistují žádné změny pro stávající nebo nové zákazníky, kteří používají existující sady SDK úložiště tabulky Azure.
+Žádné. Pro stávající nebo nové zákazníky, kteří používají existující sady SDK služby Azure Table Storage, nejsou žádné změny.
 
-### <a name="how-do-i-view-table-data-thats-stored-in-azure-cosmos-db-for-use-with-the-table-api"></a>Jak se zobrazí data tabulky, která jsou uložená v Azure Cosmos DB pro použití s rozhraním Table API?
+### <a name="how-do-i-view-table-data-thats-stored-in-azure-cosmos-db-for-use-with-the-table-api"></a>Návody zobrazit tabulková data uložená v Azure Cosmos DB pro použití s rozhraní API pro tabulky?
 
-K procházení dat můžete použít portál Azure. Můžete také použít kód rozhraní API tabulky nebo nástroje uvedené v další odpovědi.
+K procházení dat můžete použít Azure Portal. Můžete také použít kód rozhraní API pro tabulky nebo nástroje, které jsou uvedené v další odpovědi.
 
-### <a name="which-tools-work-with-the-table-api"></a>Které nástroje fungují s rozhraním Table API?
+### <a name="which-tools-work-with-the-table-api"></a>Které nástroje pracují s rozhraní API pro tabulky?
 
-Můžete použít [Průzkumníka úložiště Azure](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer).
+Můžete použít [Průzkumník služby Azure Storage](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer).
 
-Nástroje s flexibilitou pro převzetí připojovacího řetězce ve formátu, který byl dříve zadaný, mohou podporovat nové rozhraní TABLE API. Seznam nástrojů tabulky je k dispozici na stránce [Nástroje klienta úložiště Azure.](../storage/common/storage-explorers.md)
+Nástroje s flexibilitou pro povýšení připojovacího řetězce ve výše zadaném formátu mohou podporovat nové rozhraní API pro tabulky. Seznam nástrojů tabulky je k dispozici na stránce [Azure Storage klientských nástrojů](../storage/common/storage-explorers.md) .
 
-### <a name="is-the-concurrency-on-operations-controlled"></a>Je souběžnost operací řízena?
+### <a name="is-the-concurrency-on-operations-controlled"></a>Je souběžnost řízených operací?
 
-Ano, optimistická souběžnost je poskytována pomocí mechanismu ETag.
+Ano, Optimistická souběžnost je poskytována prostřednictvím použití mechanismu ETag.
 
-### <a name="is-the-odata-query-model-supported-for-entities"></a>Je model dotazu OData podporován pro entity?
+### <a name="is-the-odata-query-model-supported-for-entities"></a>Je model dotazů OData podporovaný pro entity?
 
-Ano, rozhraní TABLE API podporuje dotaz OData a linq dotaz.
+Ano, rozhraní API pro tabulky podporuje dotazy OData a dotaz LINQ.
 
-### <a name="can-i-connect-to-azure-table-storage-and-azure-cosmos-db-table-api-side-by-side-in-the-same-application"></a>Můžu se ve stejné aplikaci připojit k Azure Table Storage a rozhraníapi tabulky Azure Cosmos DB vedle sebe?
+### <a name="can-i-connect-to-azure-table-storage-and-azure-cosmos-db-table-api-side-by-side-in-the-same-application"></a>Můžu se připojit k Azure Table Storage a Azure Cosmos DB rozhraní API pro tabulky vedle sebe ve stejné aplikaci?
 
-Ano, můžete se připojit vytvořením dvou samostatných instancí cloudtableclient, z nichž každá ukazuje na vlastní identifikátor URI prostřednictvím připojovacího řetězce.
+Ano, můžete se připojit tak, že vytvoříte dvě samostatné instance Cloudtableclient vám, z nichž každý odkazuje na vlastní identifikátor URI prostřednictvím připojovacího řetězce.
 
-### <a name="how-do-i-migrate-an-existing-azure-table-storage-application-to-this-offering"></a>Jak můžu migrovat existující aplikaci úložiště Azure Table do této nabídky?
+### <a name="how-do-i-migrate-an-existing-azure-table-storage-application-to-this-offering"></a>Návody migrovat existující aplikaci Azure Table Storage do této nabídky?
 
-[AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy) a [Nástroj pro migraci dat Azure Cosmos DB](import-data.md) jsou podporovány.
+[AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy) a [Nástroj pro migraci dat Azure Cosmos DB](import-data.md) jsou podporované.
 
-### <a name="how-is-expansion-of-the-storage-size-done-for-this-service-if-for-example-i-start-with-n-gb-of-data-and-my-data-will-grow-to-1-tb-over-time"></a>Jak se rozšíření velikosti úložiště provádí pro tuto službu, pokud například začnu s *n* GB dat a moje data se časem zvýší na 1 TB?
+### <a name="how-is-expansion-of-the-storage-size-done-for-this-service-if-for-example-i-start-with-n-gb-of-data-and-my-data-will-grow-to-1-tb-over-time"></a>Jak funguje rozšíření velikosti úložiště pro tuto službu, pokud například začínáte *n* GB dat a data se v průběhu času zvětší na 1 TB?
 
-Azure Cosmos DB je navržený tak, aby poskytoval neomezené úložiště pomocí horizontálníškálování. Služba může monitorovat a efektivně zvyšovat vaše úložiště.
+Azure Cosmos DB je navržený tak, aby poskytoval neomezené úložiště pomocí horizontálního škálování. Služba může monitorovat a efektivně rozšiřovat vaše úložiště.
 
-### <a name="how-do-i-monitor-the-table-api-offering"></a>Jak můžu sledovat nabídku rozhraní TABLE API?
+### <a name="how-do-i-monitor-the-table-api-offering"></a>Návody monitorovat nabídku rozhraní API pro tabulky?
 
-Podokno **Metriky** rozhraní TABLE API můžete použít ke sledování požadavků a využití úložiště.
+K monitorování požadavků a využití úložiště můžete použít podokno **metriky** rozhraní API pro tabulky.
 
-### <a name="how-do-i-calculate-the-throughput-i-require"></a>Jak vypočítám propustnost, kterou potřebuji?
+### <a name="how-do-i-calculate-the-throughput-i-require"></a>Návody vypočítat požadovanou propustnost?
 
-Odhad kapacity můžete použít k výpočtu TableThroughput, který je požadován pro operace. Další informace naleznete v [tématu Odhad jednotek požadavků a úložiště dat](https://www.documentdb.com/capacityplanner). Obecně můžete zobrazit entitu jako JSON a zadat čísla pro vaše operace.
+Kapacitu Estimator můžete použít k výpočtu TableThroughput, který je potřeba pro operace. Další informace najdete v tématu [odhad jednotek žádostí a úložiště dat](https://www.documentdb.com/capacityplanner). Obecně můžete zobrazit vaši entitu jako JSON a zadat čísla pro vaše operace.
 
-### <a name="can-i-use-the-table-api-sdk-locally-with-the-emulator"></a>Lze pomocí emulátoru používat sdk rozhraní Table API místně?
+### <a name="can-i-use-the-table-api-sdk-locally-with-the-emulator"></a>Můžu použít sadu rozhraní API pro tabulky SDK lokálně s emulátorem?
 
 V tuto chvíli to není možné.
 
-### <a name="can-my-existing-application-work-with-the-table-api"></a>Může moje stávající aplikace pracovat s rozhraním Table API?
+### <a name="can-my-existing-application-work-with-the-table-api"></a>Může moje existující aplikace pracovat s rozhraní API pro tabulky?
 
 Ano, je podporováno stejné rozhraní API.
 
-### <a name="do-i-need-to-migrate-my-existing-azure-table-storage-applications-to-the-sdk-if-i-dont-want-to-use-the-table-api-features"></a>Musím migrovat své stávající aplikace úložiště Azure Table do sady SDK, pokud nechci používat funkce rozhraní TABLE API?
+### <a name="do-i-need-to-migrate-my-existing-azure-table-storage-applications-to-the-sdk-if-i-dont-want-to-use-the-table-api-features"></a>Potřebuji migrovat stávající aplikace služby Azure Table Storage do sady SDK, pokud nechcete používat funkce rozhraní API pro tabulky?
 
-Ne, můžete vytvořit a používat existující prostředky úložiště Azure Table bez přerušení jakéhokoli druhu. Pokud však nepoužíváte rozhraní TABLE API, nemůžete využívat výhod automatického indexu, další možnostkonzistence nebo globální distribuce.
+Ne, můžete vytvářet a používat existující prostředky služby Azure Table Storage bez přerušení jakéhokoli druhu. Pokud ale rozhraní API pro tabulky nepoužíváte, nemůžete využít automatický index, další možnost konzistence nebo globální distribuci.
 
-### <a name="how-do-i-add-replication-of-the-data-in-the-table-api-across-more-than-one-region-of-azure"></a>Jak přidám replikaci dat v rozhraní Table API ve více než jedné oblasti Azure?
+### <a name="how-do-i-add-replication-of-the-data-in-the-table-api-across-more-than-one-region-of-azure"></a>Návody přidat replikaci dat v rozhraní API pro tabulky napříč více než jednou oblastí Azure?
 
-Pomocí [globálního nastavení replikace](tutorial-global-distribution-sql-api.md#portal) portálu Azure Cosmos DB můžete přidat oblasti, které jsou vhodné pro vaši aplikaci. Chcete-li vyvinout globálně distribuované aplikace, měli byste také přidat aplikaci s PreferredLocation informace nastavena do místní oblasti pro poskytování nízké latence čtení.
+[Nastavení globální replikace](tutorial-global-distribution-sql-api.md#portal) Azure Cosmos DBového portálu můžete použít k přidání oblastí, které jsou vhodné pro vaši aplikaci. Chcete-li vytvořit globálně distribuovanou aplikaci, měli byste také přidat aplikaci s informacemi PreferredLocation nastavenými do místní oblasti pro zajištění nízké latence čtení.
 
-### <a name="how-do-i-change-the-primary-write-region-for-the-account-in-the-table-api"></a>Jak změním primární oblast zápisu pro účet v rozhraní TABLE API?
+### <a name="how-do-i-change-the-primary-write-region-for-the-account-in-the-table-api"></a>Návody změnit primární oblast zápisu pro účet v rozhraní API pro tabulky?
 
-Podokno portálu globální replikace Azure Cosmos DB můžete použít k přidání oblasti a převzetí služeb při selhání do požadované oblasti. Pokyny naleznete v [tématu Vývoj s účty Azure Cosmos DB s více oblastmi](high-availability.md).
+K přidání oblasti a následnému převzetí služeb při selhání v požadované oblasti můžete použít podokno Azure Cosmos DB globálního replikačního portálu. Pokyny najdete v tématu [vývoj s využitím účtů Azure Cosmos dB ve více oblastech](high-availability.md).
 
-### <a name="how-do-i-configure-my-preferred-read-regions-for-low-latency-when-i-distribute-my-data"></a>Jak nakonfiguruji preferované oblasti čtení pro nízkou latenci při distribuci dat?
+### <a name="how-do-i-configure-my-preferred-read-regions-for-low-latency-when-i-distribute-my-data"></a>Návody nakonfigurovat preferované oblasti čtení pro nízkou latenci při distribuci dat?
 
-Chcete-li pomoci číst z místního umístění, použijte klíč PreferredLocation v souboru app.config. Pro existující aplikace rozhraní TABLE API vyvolá chybu, pokud locationmode je nastavena. Odeberte tento kód, protože rozhraní TABLE API tyto informace vyzvedne ze souboru app.config. 
+K usnadnění čtení z místního umístění použijte klíč PreferredLocation v souboru App. config. U existujících aplikací rozhraní API pro tabulky vyvolá chybu, pokud je nastavené LocationMode. Odeberte tento kód, protože rozhraní API pro tabulky přebírá tyto informace ze souboru App. config. 
 
-### <a name="how-should-i-think-about-consistency-levels-in-the-table-api"></a>Jak mám přemýšlet o úrovních konzistence v rozhraní Table API?
+### <a name="how-should-i-think-about-consistency-levels-in-the-table-api"></a>Jak se mám domnívat o úrovních konzistence v rozhraní API pro tabulky?
 
-Azure Cosmos DB poskytuje dobře odůvodněné kompromisy mezi konzistencí, dostupností a latencí. Azure Cosmos DB nabízí vývojářům rozhraní TABLE API pět úrovní konzistence, takže si můžete vybrat správný model konzistence na úrovni tabulky a provádět jednotlivé požadavky při dotazování na data. Když se klient připojí, může určit úroveň konzistence. Úroveň můžete změnit pomocí argumentu consistencyLevel klienta CreateCloudTableClient.
+Azure Cosmos DB poskytuje dobře odůvodněné kompromisy mezi konzistencí, dostupností a latencí. Azure Cosmos DB nabízí pro rozhraní API pro tabulky vývojářům pět úrovní konzistence, takže můžete zvolit správný model konzistence na úrovni tabulky a při dotazování na data vytvořit jednotlivé požadavky. Když se klient připojí, může určit úroveň konzistence. Úroveň můžete změnit pomocí argumentu consistencyLevel pro CreateCloudTableClient.
 
-Tabulka ROZHRANÍ API poskytuje čtení s nízkou latencí s "Číst vlastní zápisy," s bounded-zastaralá konzistence jako výchozí. Další informace naleznete v [tématu Úrovně konzistence](consistency-levels.md).
+Rozhraní API pro tabulky poskytuje s nízkou latencí čtení s "čtenými vlastními zápisy" s konzistencí s vazbou na neaktuálnost jako výchozí. Další informace najdete v tématu [úrovně konzistence](consistency-levels.md).
 
-Ve výchozím nastavení azure table storage poskytuje silnou konzistenci v rámci oblasti a konzistenci Eventuální v sekundárních umístěních.
+Ve výchozím nastavení poskytuje Azure Table Storage silnou konzistenci v rámci oblasti a konečnou konzistenci v sekundárních lokalitách.
 
-### <a name="does-azure-cosmos-db-table-api-offer-more-consistency-levels-than-azure-table-storage"></a>Nabízí rozhraní API tabulky Db Azure Cosmos více úrovní konzistence než úložiště table Azure?
+### <a name="does-azure-cosmos-db-table-api-offer-more-consistency-levels-than-azure-table-storage"></a>Nabízí Azure Cosmos DB rozhraní API pro tabulky větší úrovně konzistence než Azure Table Storage?
 
-Ano, informace o tom, jak těžit z distribuované povahy Azure Cosmos DB, najdete v [tématu úrovně konzistence](consistency-levels.md). Vzhledem k tomu, že jsou k dispozici záruky pro úrovně konzistence, můžete je použít s jistotou.
+Ano, informace o tom, jak těžit z distribuované povahy Azure Cosmos DB, najdete v tématu [úrovně konzistence](consistency-levels.md). Vzhledem k tomu, že záruky jsou k dispozici pro úrovně konzistence, můžete je použít s jistotou.
 
-### <a name="when-global-distribution-is-enabled-how-long-does-it-take-to-replicate-the-data"></a>Pokud je povolena globální distribuce, jak dlouho trvá replikace dat?
+### <a name="when-global-distribution-is-enabled-how-long-does-it-take-to-replicate-the-data"></a>Pokud je povolená globální distribuce, jak dlouho trvá replikace dat?
 
-Azure Cosmos DB potvrdí data trvale v místní oblasti a odešle data do jiných oblastí okamžitě během několika milisekund. Tato replikace je závislá pouze na době odezvy (RTT) datového centra. Další informace o možnostech globální distribuce služby Azure Cosmos DB najdete v tématu [Azure Cosmos DB: Globálně distribuovaná databázová služba v Azure](distribute-data-globally.md).
+Azure Cosmos DB potvrdí data trvale v místní oblasti a hned je pošle do jiných oblastí, a to v milisekundách. Tato replikace závisí jenom na době odezvy datacentra (RTT). Další informace o schopnostech globální distribuce Azure Cosmos DB najdete v tématu [Azure Cosmos DB: globálně distribuovaná databázová služba v Azure](distribute-data-globally.md).
 
-### <a name="can-the-read-request-consistency-level-be-changed"></a>Lze změnit úroveň konzistence požadavku na čtení?
+### <a name="can-the-read-request-consistency-level-be-changed"></a>Je možné změnit úroveň konzistence žádosti o čtení?
 
-S Azure Cosmos DB můžete nastavit úroveň konzistence na úrovni kontejneru (v tabulce). Pomocí sady .NET SDK můžete změnit úroveň zadáním hodnoty klávesy TableConsistencyLevel v souboru app.config. Možné hodnoty jsou: Silná, ohraničená neaktuálnost, Relace, Konzistentní předpona a Eventual. Další informace najdete [v tématu Laditelné úrovně konzistence dat v Azure Cosmos DB](consistency-levels.md). Klíčovou myšlenkou je, že nelze nastavit úroveň konzistence požadavku na více než nastavení pro tabulku. Například nelze nastavit úroveň konzistence pro tabulku na eventual a úroveň konzistence požadavku na silné.
+Pomocí Azure Cosmos DB můžete nastavit úroveň konzistence na úrovni kontejneru (v tabulce). Pomocí sady .NET SDK můžete změnit úroveň poskytnutím hodnoty pro klíč TableConsistencyLevel v souboru App. config. Možné hodnoty jsou: silná, ohraničená neaktuálnost, relace, konzistentní předpona a případné. Další informace najdete v tématu [přizpůsobitelné úrovně konzistence dat v Azure Cosmos DB](consistency-levels.md). Klíčovým nápadem je, že úroveň konzistence žádosti nemůžete nastavit na více než nastavení pro tabulku. Například nemůžete nastavit úroveň konzistence pro tabulku, kdykoli a úroveň konzistence žádosti na silný.
 
-### <a name="how-does-the-table-api-handle-failover-if-a-region-goes-down"></a>Jak rozhraní API tabulky zpracovává převzetí služeb při selhání, pokud dojde k selhání oblasti?
+### <a name="how-does-the-table-api-handle-failover-if-a-region-goes-down"></a>Jak rozhraní API pro tabulky převzetí služeb při selhání v případě výpadku oblasti?
 
-Rozhraní Table API využívá globálně distribuovanou platformu Azure Cosmos DB. Chcete-li zajistit, aby vaše aplikace mohla tolerovat prostoje datového centra, povolte alespoň jednu další oblast pro účet na portálu Azure Cosmos DB [Vývoj s účty Azure Cosmos DB s více oblastmi](high-availability.md). Prioritu oblasti můžete nastavit pomocí portálu [Vývoj s účty Azure Cosmos DB s více oblastmi](high-availability.md).
+Rozhraní API pro tabulky využívá globálně distribuovanou platformu Azure Cosmos DB. Aby bylo zajištěno, že vaše aplikace může tolerovat výpadky datového centra, povolte alespoň jednu oblast pro účet na portálu Azure Cosmos DB, [vývoj s využitím Azure Cosmos DBch účtů ve více oblastech](high-availability.md). Prioritu oblasti můžete nastavit pomocí portálu, který [se vyvíjí s Azure Cosmos DBmi účty ve více oblastech](high-availability.md).
 
-Můžete přidat libovolný počet oblastí pro účet a řídit, kde může převzít služby při selhání, a to poskytnutím priority převzetí služeb při selhání. Chcete-li použít databázi, musíte také zadat aplikaci. Pokud tak učiníte, vaši zákazníci nebudou mít prostoje. [Nejnovější sada SDK klienta .NET](table-sdk-dotnet.md) je automatické navádění, ale ostatní sady SDK nejsou. To znamená, že může zjistit oblast, která je dolů a automaticky převzetí služeb při selhání do nové oblasti.
+Pro účet můžete přidat tolik oblastí, kolik chcete, a určit, kde při převzetí služeb při selhání bude možné převzít služby při selhání. Chcete-li použít databázi, je nutné zadat také aplikaci. Když to uděláte, vaši zákazníci nebudou mít žádný výpadek. [Nejnovější klientská sada SDK pro .NET](table-sdk-dotnet.md) je automatická odstavování, ale ostatní sady SDK ne. To znamená, že dokáže detekovat oblast, která je mimo provoz, a automaticky převezme služby při selhání nové oblasti.
 
-### <a name="is-the-table-api-enabled-for-backups"></a>Je rozhraní TABLE API povoleno pro zálohování?
+### <a name="is-the-table-api-enabled-for-backups"></a>Je rozhraní API pro tabulky povoleno zálohování?
 
-Ano, rozhraní Table API využívá platformu Azure Cosmos DB pro zálohování. Zálohy se provádějí automaticky. Další informace najdete [v tématu Online zálohování a obnovení pomocí Azure Cosmos DB](online-backup-and-restore.md).
+Ano, rozhraní API pro tabulky využívá platformu Azure Cosmos DB k zálohování. Zálohování se provádí automaticky. Další informace najdete v tématu [zálohování a obnovení online pomocí Azure Cosmos DB](online-backup-and-restore.md).
 
-### <a name="does-the-table-api-index-all-attributes-of-an-entity-by-default"></a>Indexuje rozhraní TABLE API ve výchozím nastavení všechny atributy entity?
+### <a name="does-the-table-api-index-all-attributes-of-an-entity-by-default"></a>Má rozhraní API pro tabulky index všechny atributy entity ve výchozím nastavení?
 
-Ano, všechny atributy entity jsou ve výchozím nastavení indexovány. Další informace najdete v [tématu Azure Cosmos DB: Zásady indexování](index-policy.md).
+Ano, všechny atributy entity jsou indexovány ve výchozím nastavení. Další informace najdete v tématu [Azure Cosmos DB: zásady indexování](index-policy.md).
 
-### <a name="does-this-mean-i-dont-have-to-create-more-than-one-index-to-satisfy-the-queries"></a>Znamená to, že není třeba vytvářet více než jeden index pro uspokojení dotazů?
+### <a name="does-this-mean-i-dont-have-to-create-more-than-one-index-to-satisfy-the-queries"></a>Neznamená to, že nemusíte vytvořit více než jeden index, aby bylo možné vyhovět dotazům?
 
-Ano, rozhraní Azure Cosmos DB Table API poskytuje automatické indexování všech atributů bez definice schématu. Tato automatizace uvolní vývojáři zaměřit se na aplikaci, spíše než na vytváření a správu indexu. Další informace najdete v [tématu Azure Cosmos DB: Zásady indexování](index-policy.md).
+Ano, Azure Cosmos DB rozhraní API pro tabulky poskytuje automatické indexování všech atributů bez definice schématu. Tato automatizace uvolní vývojářům, aby se zaměřili na aplikaci, a ne na vytváření a správu indexů. Další informace najdete v tématu [Azure Cosmos DB: zásady indexování](index-policy.md).
 
-### <a name="can-i-change-the-indexing-policy"></a>Mohu změnit zásady indexování?
+### <a name="can-i-change-the-indexing-policy"></a>Můžu změnit zásady indexování?
 
-Ano, zásady indexování můžete změnit poskytnutím definice indexu. Musíte správně zakódovat a uniknout nastavení.
+Ano, zásady indexování můžete změnit zadáním definice indexu. Musíte správně zakódovat a napřed nastavit řídicí.
 
-U sad non-.NET sad SDK lze zásady indexování nastavit pouze na portálu v **Průzkumníku dat**, přejděte na konkrétní tabulku, kterou chcete změnit, a potom přejděte na **& nastavení měřítka**– >zásady indexování, proveďte požadovanou změnu a **potom uložte**.
+V případě sad non-.NET SDK se dá zásada indexování nastavit jenom na portálu na **Průzkumník dat**, přejděte na konkrétní tabulku, kterou chcete změnit, a potom přejděte do části **škálování & nastavení**– >zásadu indexování, proveďte požadovanou změnu a pak ji **uložte**.
 
-Ze sady .NET SDK jej lze odeslat v souboru app.config:
+Ze sady .NET SDK je možné ji odeslat do souboru App. config:
 
 ```JSON
 {
@@ -452,123 +452,123 @@ Ze sady .NET SDK jej lze odeslat v souboru app.config:
 }
 ```
 
-### <a name="azure-cosmos-db-as-a-platform-seems-to-have-lot-of-capabilities-such-as-sorting-aggregates-hierarchy-and-other-functionality-will-you-be-adding-these-capabilities-to-the-table-api"></a>Zdá se, že Azure Cosmos DB jako platforma má mnoho funkcí, jako je řazení, agregace, hierarchie a další funkce. Budete přidávat tyto funkce do rozhraní TABLE API?
+### <a name="azure-cosmos-db-as-a-platform-seems-to-have-lot-of-capabilities-such-as-sorting-aggregates-hierarchy-and-other-functionality-will-you-be-adding-these-capabilities-to-the-table-api"></a>Azure Cosmos DB jako platforma se jeví mít spoustu možností, jako je řazení, agregace, hierarchie a další funkce. Budete tyto možnosti přidávat do rozhraní API pro tabulky?
 
-Rozhraní TABLE API poskytuje stejné funkce dotazu jako úložiště tabulky Azure. Azure Cosmos DB podporuje také řazení, agregace, geoprostorové dotazy, hierarchie a širokou škálu integrovaných funkcí. Další informace naleznete v tématu [dotazy SQL](how-to-sql-query.md).
+Rozhraní API pro tabulky poskytuje stejné funkce dotazů jako úložiště tabulek Azure. Azure Cosmos DB podporuje také řazení, agregace, geoprostorové dotazy, hierarchie a širokou škálu integrovaných funkcí. Další informace najdete v tématu [SQL dotazy](how-to-sql-query.md).
 
-### <a name="when-should-i-change-tablethroughput-for-the-table-api"></a>Kdy mám změnit TableThroughput pro rozhraní TABLE API?
+### <a name="when-should-i-change-tablethroughput-for-the-table-api"></a>Kdy bych měl změnit TableThroughput rozhraní API pro tabulky?
 
-Měli byste změnit TableThroughput, pokud platí jedna z následujících podmínek:
+TableThroughput byste měli změnit, pokud platí některá z následujících podmínek:
 
-* Provádíte extrahování, transformace a načtení (ETL) dat, nebo chcete nahrát velké množství dat v krátkém čase.
-* Potřebujete větší propustnost z kontejneru nebo ze sady kontejnerů na back-endu. Například uvidíte, že použitá propustnost je větší než zřízená propustnost a dochází k omezení. Další informace najdete v tématu [Set propustnost pro kontejnery Azure Cosmos](set-throughput.md).
+* Provádíte extrakci, transformaci a načítání dat (ETL), nebo chcete v krátké době nahrávat velké množství dat.
+* Potřebujete větší propustnost z kontejneru nebo ze sady kontejnerů na back-endu. Vidíte například, že použitá propustnost je větší než zajištěná propustnost a že se vám přihlásilo omezení. Další informace najdete v tématu [nastavení propustnosti pro kontejnery Azure Cosmos](set-throughput.md).
 
-### <a name="can-i-scale-up-or-scale-down-the-throughput-of-my-table-api-table"></a>Je možné vertikálně navýšit kapacitu nebo zmenšit propustnost tabulky rozhraní TABLE API?
+### <a name="can-i-scale-up-or-scale-down-the-throughput-of-my-table-api-table"></a>Můžu snížit propustnost rozhraní API pro tabulky tabulky a snížit jejich velikost?
 
-Ano, podokno škálování portálu Azure Cosmos DB můžete použít ke škálování propustnost. Další informace naleznete v tématu [Set propustnost](set-throughput.md).
+Ano, k škálování propustnosti můžete použít podokno škále Azure Cosmos DBového portálu. Další informace najdete v tématu [nastavení propustnosti](set-throughput.md).
 
-### <a name="is-a-default-tablethroughput-set-for-newly-provisioned-tables"></a>Je výchozí TableThroughput nastavena pro nově zřízené tabulky?
+### <a name="is-a-default-tablethroughput-set-for-newly-provisioned-tables"></a>Je výchozí TableThroughput sada pro nově zřízené tabulky?
 
-Ano, pokud nepřepíšete TableThroughput prostřednictvím app.config a nepoužíváte předem vytvořený kontejner v Azure Cosmos DB, služba vytvoří tabulku s propustností 400.
+Ano, Pokud nepřepíšete TableThroughput pomocí App. config a nepoužijete předem vytvořený kontejner v Azure Cosmos DB, služba vytvoří tabulku s propustností 400.
 
-### <a name="is-there-any-change-of-pricing-for-existing-customers-of-the-azure-table-storage-service"></a>Došlo ke změně cen pro stávající zákazníky služby Azure Table storage?
+### <a name="is-there-any-change-of-pricing-for-existing-customers-of-the-azure-table-storage-service"></a>Je u stávajících zákazníků služby Azure Table Storage nějaká změna cen?
 
-Žádné. Pro stávající zákazníky úložiště Azure Table nedojde k žádné změně ceny.
+Žádné. U stávajících zákazníků Azure Table Storage se cena nemění.
 
-### <a name="how-is-the-price-calculated-for-the-table-api"></a>Jak se vypočítává cena pro rozhraní TABLE API?
+### <a name="how-is-the-price-calculated-for-the-table-api"></a>Jak se počítá cena za rozhraní API pro tabulky?
 
-Cena závisí na přidělené TableThroughput.
+Cena závisí na přidělených TableThroughput.
 
-### <a name="how-do-i-handle-any-rate-limiting-on-the-tables-in-table-api-offering"></a>Jak zpracovat omezení rychlosti v tabulkách v nabídce rozhraní Table API?
+### <a name="how-do-i-handle-any-rate-limiting-on-the-tables-in-table-api-offering"></a>Návody zpracování všech sazeb v tabulkách v nabídce rozhraní API pro tabulky?
 
-Pokud je míra požadavku větší než kapacita zřízené propustnosti pro základní kontejner nebo sadu kontejnerů, zobrazí se chyba a sada SDK opakuje volání použitím zásady opakování.
+Pokud je frekvence požadavků větší než kapacita zřízené propustnosti pro příslušný kontejner nebo sadu kontejnerů, zobrazí se chyba a sada SDK se znovu pokusí zavolat pomocí zásad opakování.
 
-### <a name="why-do-i-need-to-choose-a-throughput-apart-from-partitionkey-and-rowkey-to-take-advantage-of-the-table-api-offering-of-azure-cosmos-db"></a>Proč musím vybrat propustnost kromě PartitionKey a RowKey, abych mohl využít nabídku rozhraní Table API azure cosmos db?
+### <a name="why-do-i-need-to-choose-a-throughput-apart-from-partitionkey-and-rowkey-to-take-advantage-of-the-table-api-offering-of-azure-cosmos-db"></a>Proč potřebuji zvolit propustnost mimo PartitionKey a RowKey, abyste mohli využít Azure Cosmos DB rozhraní API pro tabulky nabídky?
 
-Azure Cosmos DB nastaví výchozí propustnost pro váš kontejner, pokud nezadáte v souboru app.config nebo prostřednictvím portálu.
+Azure Cosmos DB nastaví výchozí propustnost pro váš kontejner, pokud ho nezadáte do souboru App. config nebo prostřednictvím portálu.
 
-Azure Cosmos DB poskytuje záruky výkonu a latence s horní hranice na provoz. Tato záruka je možné, když modul můžete vynutit zásadsprávné zásady na operace klienta. Nastavení TableThroughput zajišťuje, že získáte garantovanou propustnost a latenci, protože platforma rezervuje tuto kapacitu a zaručuje provozní úspěch.
+Azure Cosmos DB poskytuje záruky pro výkon a latenci a horní meze provozu. Tato záruka je možná, když modul může vyhovět zásadám správného řízení operací klienta. Nastavení TableThroughput zajistí, že získáte zaručenou propustnost a latenci, protože platforma rezervuje tuto kapacitu a zaručuje provozní úspěch.
 
-Pomocí specifikace propustnosti ji můžete elasticky změnit, abyste mohli využívat sezónnost vaší aplikace, splňovat potřeby propustnosti a šetřit náklady.
+Pomocí specifikace propustnosti je možné elasticky změnit, aby vytěžit z sezónnost vaší aplikace, splnění potřeb propustnosti a úspory nákladů.
 
-### <a name="azure-table-storage-has-been-inexpensive-for-me-because-i-pay-only-to-store-the-data-and-i-rarely-query-the-azure-cosmos-db-table-api-offering-seems-to-be-charging-me-even-though-i-havent-performed-a-single-transaction-or-stored-anything-can-you-explain"></a>Azure Table storage je pro mě levné, protože platím jenom za ukládání dat a zřídka se dotazuji. Zdá se, že nabídka rozhraní API Table API Azure Cosmos mě účtuje, i když jsem neprovedl jedinou transakci ani nic neuložil. Můžete mi to vysvětlit?
+### <a name="azure-table-storage-has-been-inexpensive-for-me-because-i-pay-only-to-store-the-data-and-i-rarely-query-the-azure-cosmos-db-table-api-offering-seems-to-be-charging-me-even-though-i-havent-performed-a-single-transaction-or-stored-anything-can-you-explain"></a>Služba Azure Table Storage je pro mě nenákladná, protože mám platit jenom za uložení dat a jenom zřídka dotazování. V nabídce Azure Cosmos DB rozhraní API pro tabulky se jeví, že se mi bude účtovat, i když jsem neprováděl jednu transakci nebo cokoli neuložilo. Můžete vysvětlit?
 
-Azure Cosmos DB je navržený jako globálně distribuovaný systém založený na sla se zárukami dostupnosti, latence a propustnosti. Když si rezervujete propustnost v Azure Cosmos DB, je zaručena, na rozdíl od propustnosti jiných systémů. Azure Cosmos DB poskytuje další funkce, které zákazníci požadovali, jako jsou sekundární indexy a globální distribuce.
+Azure Cosmos DB je navržený tak, aby byl globálně distribuovaný systém založený na smlouvě SLA se zárukami na dostupnost, latenci a propustnost. Když rezervujete propustnost v Azure Cosmos DB, zaručuje se to na rozdíl od propustnosti jiných systémů. Azure Cosmos DB poskytuje další možnosti, které si zákazníci požádali, jako jsou sekundární indexy a globální distribuce.
 
-### <a name="i-never-get-a-quota-full-notification-indicating-that-a-partition-is-full-when-i-ingest-data-into-azure-table-storage-with-the-table-api-i-do-get-this-message-is-this-offering-limiting-me-and-forcing-me-to-change-my-existing-application"></a>Při ingestování dat do úložiště Azure Table se nikdy nezobrazí úplné oznámení o kvótě (označující, že oddíl je plný). S table API, já si tuto zprávu. Je tato nabídka omezení mě a nutí mě změnit svou stávající aplikaci?
+### <a name="i-never-get-a-quota-full-notification-indicating-that-a-partition-is-full-when-i-ingest-data-into-azure-table-storage-with-the-table-api-i-do-get-this-message-is-this-offering-limiting-me-and-forcing-me-to-change-my-existing-application"></a>Nikdy nezískám plnou kvótu "oznámení" (což znamená, že oddíl je plný) při ingestování dat do služby Azure Table Storage. Po rozhraní API pro tabulky se zobrazí tato zpráva. Je tato nabídka omezená a přinutil jsem, aby mě změnila existující aplikace?
 
-Azure Cosmos DB je systém založený na sla, který poskytuje neomezené škálování se zárukami latence, propustnosti, dostupnosti a konzistence. Chcete-li zajistit zaručený výkon premium, ujistěte se, že velikost dat a index jsou spravovatelné a škálovatelné. Limit 10 GB na počet entit nebo položek na klíč oddílu je zajistit, že poskytujeme skvělé vyhledávání a výkon dotazu. Chcete-li zajistit, že vaše aplikace škáluje dobře, a to i pro Azure Storage, doporučujeme *nevytvářet* aktivní oddíl uložením všech informací v jednom oddílu a dotazování na něj.
+Azure Cosmos DB je systém založený na smlouvě SLA, který poskytuje neomezenou škálu, se zárukami na latenci, propustnost, dostupnost a konzistenci. Abyste zajistili Zaručený výkon Premium, ujistěte se, že je velikost a index dat spravovatelná a škálovatelná. Limit 10 GB u počtu entit nebo položek na klíč oddílu je, aby bylo zajištěno, že budeme poskytovat skvělé vyhledávání a dotaz na výkon. Aby se zajistilo, že se vaše aplikace dobře škáluje, i když Azure Storage, doporučujeme, abyste nevytvořili aktivní oddíl tím, *že budete ukládat* všechny informace v jednom oddílu a dotazovat se na něj.
 
-### <a name="so-partitionkey-and-rowkey-are-still-required-with-the-table-api"></a>Takže PartitionKey a RowKey jsou stále vyžadovány s rozhraním API tabulky?
+### <a name="so-partitionkey-and-rowkey-are-still-required-with-the-table-api"></a>Takže PartitionKey a RowKey se pořád vyžadují s rozhraní API pro tabulky?
 
-Ano. Vzhledem k tomu, že plocha rozhraní TABLE API je podobná ploše sady Azure Table storage SDK, klíč oddílu poskytuje efektivní způsob distribuce dat. Klíč řádku je jedinečný v rámci tohoto oddílu. Klíč řádku musí být přítomen a nemůže být null jako ve standardní sadě SDK. Délka RowKey je 255 bajtů a délka PartitionKey je 1 KB.
+Ano. Vzhledem k tomu, že plocha oblasti rozhraní API pro tabulky je podobná sadě SDK služby Azure Table Storage, klíč oddílu poskytuje efektivní způsob, jak distribuovat data. Klíč řádku je v rámci tohoto oddílu jedinečný. Klíč řádku musí být přítomen a nemůže být null jako v rámci standardní sady SDK. Délka RowKey je 255 bajtů a délka PartitionKey je 1 KB.
 
-### <a name="what-are-the-error-messages-for-the-table-api"></a>Jaké jsou chybové zprávy pro rozhraní TABLE API?
+### <a name="what-are-the-error-messages-for-the-table-api"></a>Jaké jsou chybové zprávy pro rozhraní API pro tabulky?
 
-Azure Table storage a Azure Cosmos DB Table API používají stejné sady SDK, takže většina chyb bude stejná.
+Azure Table Storage a Azure Cosmos DB rozhraní API pro tabulky používají stejné sady SDK, takže většina chyb bude stejná.
 
-### <a name="why-do-i-get-throttled-when-i-try-to-create-lot-of-tables-one-after-another-in-the-table-api"></a>Proč se mi v rozhraní TABLE API snažím vytvářet velké množství tabulek jeden po druhém?
+### <a name="why-do-i-get-throttled-when-i-try-to-create-lot-of-tables-one-after-another-in-the-table-api"></a>Proč se při pokusu o vytvoření velké části tabulek jednu po druhé v rozhraní API pro tabulky vyomezovat?
 
-Azure Cosmos DB je systém založený na sla, který poskytuje latenci, propustnost, dostupnost a konzistenci záruky. Vzhledem k tomu, že se jedná o zřízený systém, rezervuje prostředky k zajištění těchto požadavků. Rychlost vytváření tabulek je detekována a omezena. Doporučujeme, abyste se podívali na rychlost vytváření tabulek a snížili ji na méně než 5 za minutu. Nezapomeňte, že rozhraní Table API je zřízený systém. V okamžiku, kdy ji zřídíte, začnete za to platit.
+Azure Cosmos DB je systém založený na smlouvě SLA, který poskytuje latenci, propustnost, dostupnost a záruky konzistence. Vzhledem k tomu, že se jedná o zřízený systém, rezervuje prostředky, aby tyto požadavky zaručoval. Je detekována rychlá míra vytváření tabulek a omezení. Doporučujeme se podívat na rychlost vytváření tabulek a snížit ji na méně než 5 za minutu. Pamatujte, že rozhraní API pro tabulky je zřízeným systémem. Okamžik, kdy ho zřídíte, začnete platit za něj.
 
 ## <a name="gremlin-api"></a>Rozhraní Gremlin API
 
-### <a name="for-cnet-development-should-i-use-the-microsoftazuregraphs-package-or-gremlinnet"></a>Pro vývoj jazyka C#/.NET mám použít balíček Microsoft.Azure.Graphs nebo Gremlin.NET?
+### <a name="for-cnet-development-should-i-use-the-microsoftazuregraphs-package-or-gremlinnet"></a>Pro vývoj v jazyce C#/.NET je vhodné použít balíček Microsoft. Azure. Graphs nebo Gremlin.NET?
 
-Rozhraní API Azure Cosmos DB Gremlin využívá ovladače s otevřeným zdrojovým kódem jako hlavní konektory pro službu. Takže doporučená možnost je použít [ovladače, které jsou podporovány Apache Tinkerpop](https://tinkerpop.apache.org/).
+Rozhraní API pro Azure Cosmos DB Gremlin využívá Open Source ovladače jako hlavní konektory pro službu. Doporučenou možností je použít [ovladače, které podporuje Apache Tinkerpop](https://tinkerpop.apache.org/).
 
-### <a name="how-are-rus-charged-when-running-queries-on-a-graph-database"></a>Jak se ru/s účtují při spuštění dotazů v databázi grafů?
+### <a name="how-are-rus-charged-when-running-queries-on-a-graph-database"></a>Jak se účtují RU/s při spouštění dotazů v databázi grafu?
 
-Všechny objekty grafu, vrcholy a hrany jsou zobrazeny jako dokumenty JSON v back-endu. Vzhledem k tomu, že jeden dotaz Gremlin můžete upravit jeden nebo více objektů grafu najednou, náklady s ním spojené přímo souvisí s objekty, hrany, které jsou zpracovány dotazem. Jedná se o stejný proces, který používá Azure Cosmos DB pro všechna ostatní api. Další informace najdete v tématu [o jednotkách žádostí v Azure Cosmos DB](request-units.md).
+Všechny objekty grafu, vrcholy a hrany se v back-endu zobrazují jako dokumenty JSON. Vzhledem k tomu, že jeden dotaz Gremlin může současně upravovat jeden nebo více objektů grafu, jsou náklady spojené s ním přímo spojeny s objekty, hranami, které jsou zpracovány dotazem. Jedná se o stejný postup, který Azure Cosmos DB používá pro všechna ostatní rozhraní API. Další informace najdete v tématu [o jednotkách žádostí v Azure Cosmos DB](request-units.md).
 
-Poplatek ŽP je založen na pracovní datové sadě průchodu, nikoli na sadě výsledků. Například pokud dotaz má za cíl získat jeden vrchol jako výsledek, ale potřebuje procházet více než jeden jiný objekt na cestě, pak náklady budou založeny na všech objektů grafu, které bude trvat k výpočtu jeden výsledek vrchol.
+Poplatek za RU je založen na pracovní sadě dat procházení, nikoli v sadě výsledků dotazu. Například pokud se dotaz pokusí získat jeden vrchol jako výsledek, ale potřebuje projít více než jeden jiný objekt na cestě, pak budou náklady založeny na všech objektech grafu, které bude trvat, aby vypočítala jeden vrchol výsledku.
 
-### <a name="whats-the-maximum-scale-that-a-graph-database-can-have-in-azure-cosmos-db-gremlin-api"></a>Jaké je maximální škálování, které může mít databáze grafů v rozhraní API Azure Cosmos DB Gremlin?
+### <a name="whats-the-maximum-scale-that-a-graph-database-can-have-in-azure-cosmos-db-gremlin-api"></a>Jaká je maximální škála, kterou může databáze grafu mít Azure Cosmos DB rozhraní Gremlin API?
 
-Azure Cosmos DB využívá [horizontální dělení](partition-data.md) automaticky řešit zvýšení požadavků na úložiště a propustnost. Maximální propustnost a kapacita úložiště úlohy je určena počtem oddílů, které jsou přidruženy k danému kontejneru. Kontejner rozhraní API Gremlin má však konkrétní sadu pokynů k zajištění správné ho výkonu ve velkém měřítku. Další informace o dělení a doporučené postupy najdete v článku [dělení v azure cosmos db.](partition-data.md)
+Azure Cosmos DB využívá [horizontální dělení](partition-data.md) k automatickému zvýšení počtu požadavků na úložiště a propustnost. Maximální propustnost a kapacita úložiště úloh se určují podle počtu oddílů, které jsou přidružené k danému kontejneru. Kontejner rozhraní API Gremlin ale obsahuje specifickou sadu pokynů, které zajistí správné prostředí výkonu ve velkém měřítku. Další informace o dělení a osvědčených postupech najdete [v tématu dělení v Azure Cosmos DB](partition-data.md) článku.
 
-### <a name="how-can-i-protect-against-injection-attacks-using-gremlin-drivers"></a>Jak se mohu chránit před injekčními útoky pomocí ovladačů Gremlin?
+### <a name="how-can-i-protect-against-injection-attacks-using-gremlin-drivers"></a>Jak můžu chránit před útoky prostřednictvím injektáže pomocí ovladačů Gremlin?
 
-Většina nativních ovladačů Apache Tinkerpop Gremlin umožňuje poskytnout slovník parametrů pro spuštění dotazu. Toto je příklad toho, jak to udělat v [Gremlin.Net](https://tinkerpop.apache.org/docs/3.2.7/reference/#gremlin-DotNet) a v [Gremlin-Javascript](https://github.com/Azure-Samples/azure-cosmos-db-graph-nodejs-getting-started/blob/master/app.js).
+Většina nativních ovladačů Apache Tinkerpop Gremlin umožňuje, aby možnost poskytovala slovník parametrů pro provádění dotazů. Toto je příklad, jak to provést v [Gremlin.NET](https://tinkerpop.apache.org/docs/3.2.7/reference/#gremlin-DotNet) a v [Gremlin-JavaScript](https://github.com/Azure-Samples/azure-cosmos-db-graph-nodejs-getting-started/blob/master/app.js).
 
-### <a name="why-am-i-getting-the-gremlin-query-compilation-error-unable-to-find-any-method-error"></a>Proč se zobrazuje chyba "Chyba kompilace gremlinského dotazu: Nelze najít žádnou metodu"?
+### <a name="why-am-i-getting-the-gremlin-query-compilation-error-unable-to-find-any-method-error"></a>Proč se mi zobrazuje chyba kompilace dotazu Gremlin: nepovedlo se najít žádnou metodu?
 
-Rozhraní Azure Cosmos DB Gremlin API implementuje podmnožinu funkcí definovaných v oblasti povrchu Gremlin. Podporované kroky a další informace naleznete v článku [podpory gremlin.](gremlin-support.md)
+Azure Cosmos DB rozhraní API Gremlin implementuje podmnožinu funkcí definovaných v oblasti povrchu Gremlin. Podporované kroky a další informace najdete v článku [Gremlin support](gremlin-support.md) .
 
-Nejlepším řešením je přepsat požadované kroky Gremlin s podporovanou funkcí, protože všechny základní kroky Gremlin jsou podporovány Službou Azure Cosmos DB.
+Nejlepším řešením je přepsat požadované Gremlin kroky s podporovanými funkcemi, protože všechny základní kroky Gremlin jsou podporovány Azure Cosmos DB.
 
-### <a name="why-am-i-getting-the-websocketexception-the-server-returned-status-code-200-when-status-code-101-was-expected-error"></a>Proč se zobrazuje chyba "WebSocketException: Server vrátil stavový kód 200"?
+### <a name="why-am-i-getting-the-websocketexception-the-server-returned-status-code-200-when-status-code-101-was-expected-error"></a>Proč se mi zobrazuje "WebSocketException: Server vrátil stavový kód" 200 ", když se očekával stavový kód" 101 "?
 
-Tato chyba je pravděpodobně vyvolána při použití nesprávného koncového bodu. Koncový bod, který generuje tuto chybu má následující vzor:
+Tato chyba je nejspíš vyvolána, když se používá nesprávný koncový bod. Koncový bod, který generuje tuto chybu, má následující vzor:
 
 `https:// YOUR_DATABASE_ACCOUNT.documents.azure.com:443/`
 
-Toto je koncový bod dokumentů pro databázi grafů.  Správný koncový bod, který se má použít, je koncový bod Gremlin, který má následující formát:
+Toto je koncový bod dokumentů pro vaši databázi grafu.  Správný koncový bod, který se má použít, je koncový bod Gremlin, který má následující formát:
 
 `https://YOUR_DATABASE_ACCOUNT.gremlin.cosmosdb.azure.com:443/`
 
-### <a name="why-am-i-getting-the-requestrateistoolarge-error"></a>Proč se zobrazuje chyba RequestRateIsTooLarge?
+### <a name="why-am-i-getting-the-requestrateistoolarge-error"></a>Proč se mi zobrazuje chyba "RequestRateIsTooLarge"?
 
-Tato chyba znamená, že přidělené jednotky požadavků za sekundu nestačí k zobrazení dotazu. Tato chyba se obvykle zobrazí při spuštění dotazu, který získá všechny vrcholy:
+Tato chyba znamená, že přidělené jednotky žádostí za sekundu nejsou dostačující pro obsluhu dotazu. K této chybě obvykle dochází, když spustíte dotaz, který získá všechny vrcholy:
 
 ```
 // Query example:
 g.V()
 ```
 
-Tento dotaz se pokusí načíst všechny vrcholy z grafu. Náklady na tento dotaz se tedy budou rovnat alespoň počtu vrcholů z hlediska ru. Nastavení ŽP/s by mělo být upraveno tak, aby tento dotaz řešilo.
+Tento dotaz se pokusí načíst všechny vrcholy z grafu. Proto budou náklady na tento dotaz rovny alespoň počtu vrcholů z pohledu ru. Aby bylo možné tento dotaz vyřešit, je třeba upravit nastavení RU/s.
 
-### <a name="why-do-my-gremlin-driver-connections-get-dropped-eventually"></a>Proč se moje spoje ovladačů Gremlin nakonec vypustí?
+### <a name="why-do-my-gremlin-driver-connections-get-dropped-eventually"></a>Proč se moje připojení ovladačů Gremlin vynechává nakonec?
 
-Připojení Gremlin je provedeno prostřednictvím připojení WebSocket. Přestože připojení WebSocket nemají konkrétní čas k životu, rozhraní API Azure Cosmos DB Gremlin ukončí nečinnosti připojení po 30 minutách nečinnosti.
+Připojení Gremlin se provádí prostřednictvím připojení protokolu WebSocket. I když připojení protokolu WebSocket nemají určitou dobu provozu, Azure Cosmos DB rozhraní Gremlin API ukončí nečinné připojení po 30 minutách nečinnosti.
 
-### <a name="why-cant-i-use-fluent-api-calls-in-the-native-gremlin-drivers"></a>Proč nemohu používat plynulá volání rozhraní API v nativních ovladačích Gremlin?
+### <a name="why-cant-i-use-fluent-api-calls-in-the-native-gremlin-drivers"></a>Proč se v nativních ovladačích Gremlin nedají používat volání rozhraní Fluent API?
 
-Fluent API volání ještě nejsou podporovány rozhraní API Azure Cosmos DB Gremlin. Fluent API volání vyžadují interní formátování funkce známé jako podpora bajtkódu, který aktuálně není podporován rozhraním API Azure Cosmos DB Gremlin. Ze stejného důvodu není v současné době podporován ani nejnovější ovladač Gremlin-JavaScript.
+Rozhraní API pro Azure Cosmos DB Gremlin ještě nepodporuje volání rozhraní API Fluent. Volání rozhraní API Fluent vyžadují funkci interního formátování známou jako podpora bytového kódu, kterou aktuálně nepodporuje Azure Cosmos DB rozhraní API pro Gremlin. Z důvodu stejného důvodu se v současné době nepodporují i nejnovější ovladače Gremlin-JavaScript.
 
-### <a name="how-can-i-evaluate-the-efficiency-of-my-gremlin-queries"></a>Jak mohu vyhodnotit efektivitu svých dotazů gremlin?
+### <a name="how-can-i-evaluate-the-efficiency-of-my-gremlin-queries"></a>Jak můžu vyhodnotit efektivitu mých dotazů Gremlin?
 
-**SpuštěníProfil()** náhled krok lze poskytnout analýzu plánu spuštění dotazu. Tento krok je třeba přidat na konec každého dotazu Gremlin, jak je znázorněno v následujícím příkladu:
+Krok **executionProfile ()** Preview lze použít k poskytnutí analýzy plánu spouštění dotazů. Tento krok je nutné přidat na konec kteréhokoli dotazu Gremlin, jak je znázorněno v následujícím příkladu:
 
 **Příklad dotazu**
 
@@ -636,7 +636,7 @@ g.V('mary').out('knows').executionProfile()
 ]
 ```
 
-Výstup výše uvedeného profilu ukazuje, kolik času je vynaloženo na získání objektů vrcholu, objektů hran a velikosti pracovní datové sady. To souvisí s měřením standardních nákladů pro dotazy Azure Cosmos DB.
+Výstup výše uvedeného profilu ukazuje, kolik času stráví získáním objektů vrcholu, objektů Edge a velikosti pracovní sady dat. To se vztahuje na měření standardních nákladů pro Azure Cosmos DB dotazy.
 
 [azure-portal]: https://portal.azure.com
 [query]: sql-api-sql-query.md

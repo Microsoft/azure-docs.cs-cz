@@ -1,6 +1,6 @@
 ---
-title: Onboardingové počítače pro správu pomocí konfigurace stavu azure automatizace
-description: Jak nastavit počítače pro správu pomocí konfigurace stavu automatizace Azure
+title: Připojování počítačů pro správu podle konfigurace stavu Azure Automation
+description: Nastavení počítačů pro správu pomocí konfigurace stavu Azure Automation
 services: automation
 ms.service: automation
 ms.subservice: dsc
@@ -10,115 +10,115 @@ ms.topic: conceptual
 ms.date: 12/10/2019
 manager: carmonm
 ms.openlocfilehash: d4e008a0bd43f10b01d78a1c388f1ca6fee983ab
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81457735"
 ---
-# <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Onboardingové počítače pro správu pomocí konfigurace stavu azure automatizace
+# <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Připojování počítačů pro správu podle konfigurace stavu Azure Automation
 
-## <a name="why-manage-machines-with-azure-automation-state-configuration"></a>Proč spravovat počítače s azure automation state configuration?
+## <a name="why-manage-machines-with-azure-automation-state-configuration"></a>Proč spravovat počítače s konfigurací stavu Azure Automation?
 
-Azure Automation State Configuration je služba správy konfigurace pro uzly konfigurace požadovaného stavu (DSC) v libovolném cloudu nebo místním datovém centru. K přístupu na webu Azure Portal je výběrem **konfigurace stavu (DSC)** v části **Configuration Management**. 
+Konfigurace stavu Azure Automation je služba správy konfigurace pro požadované uzly Konfigurace stavu (DSC) v jakémkoli cloudu nebo v místním datacentru. V Azure Portal k němu v části **Správa konfigurace**vyberte **Konfigurace stavu (DSC)** . 
 
-Tato služba umožňuje škálovatelnost napříč tisíci počítači rychle a snadno z centrálního a zabezpečeného umístění. Můžete snadno napalubě počítačů, přiřadit jim deklarativní konfigurace a zobrazit sestavy zobrazující dodržování požadavků každého počítače s požadovaným stavem, který zadáte.
+Tato služba umožňuje snadno a rychle využít škálovatelnost v tisících počítačů z centrálního a bezpečného umístění. Můžete snadno připojit počítače, přiřazovat jim deklarativní konfigurace a zobrazovat sestavy, které zobrazují kompatibilitu jednotlivých počítačů s požadovaným stavem, který zadáte.
 
-Služba Konfigurace stavu azure automatizace je DSC, co azure automatizace runbooky jsou skriptování PowerShell. Jinými slovy, stejným způsobem, že Azure Automation pomáhá spravovat skripty PowerShell, ale také vám pomůže spravovat konfigurace DSC. Další informace o výhodách používání konfigurace stavu azure automatizace najdete v [tématu Přehled konfigurace stavu automatizace Azure](automation-dsc-overview.md).
+Služba konfigurace stavu Azure Automation je DSC, které Azure Automation Runbooky využívají ke skriptování prostředí PowerShell. Jinými slovy, a to stejným způsobem, jakým Azure Automation pomáhá spravovat skripty prostředí PowerShell, vám také pomůže spravovat konfigurace DSC. Další informace o výhodách použití konfigurace stavu Azure Automation najdete v tématu [Přehled konfigurace stavu Azure Automation](automation-dsc-overview.md).
 
-Konfigurace stavu azure automatizace slouží ke správě různých počítačů:
+Konfigurace stavu Azure Automation se dá použít ke správě různých počítačů:
 
 - Virtuální počítače Azure
 - Virtuální počítače Azure (klasické)
-- Fyzické/virtuální počítače s Windows v místním prostředí nebo v cloudu jiném než Azure (včetně instancí AWS EC2)
-- Fyzické/virtuální počítače s Linuxem v místním prostředí, v Azure nebo v cloudu jiném než Azure
+- Fyzické nebo virtuální počítače s Windows v místním prostředí nebo v jiném cloudu než Azure (včetně instancí AWS EC2)
+- Fyzické nebo virtuální počítače se systémem Linux v místním prostředí, v Azure nebo v jiném cloudu než Azure
 
-Pokud nejste připraveni ke správě konfigurace počítače z cloudu, můžete použít Azure Automation State Configuration jako koncový bod pouze sestavy. Tato funkce umožňuje nastavit (push) konfigurace prostřednictvím DSC a zobrazit podrobnosti sestavy v Azure Automation.
+Pokud nejste připraveni ke správě konfigurace počítače z cloudu, můžete použít konfiguraci Azure Automationho stavu jako koncový bod pouze sestavy. Tato funkce umožňuje nastavení (push) konfigurací prostřednictvím DSC a zobrazení podrobností o vytváření sestav v Azure Automation.
 
 > [!NOTE]
-> Správa virtuálních počítačů Azure s Azure Automation State Configuration je zahrnuta bez příplatku, pokud je nainstalovaná verze rozšíření konfigurace požadovaného stavu virtuálního počítače Azure větší než 2.70. Další informace naleznete na [**stránce S cenami automatizace**](https://azure.microsoft.com/pricing/details/automation/).
+> Správa virtuálních počítačů Azure s konfigurací stavu Azure Automation je zahrnutá bez dalších poplatků, pokud je nainstalovaná verze rozšíření konfigurace požadovaného stavu virtuálního počítače Azure větší než 2,70. Další informace najdete na [**stránce s cenami pro automatizaci**](https://azure.microsoft.com/pricing/details/automation/).
 
-Následující části tohoto článku popisují, jak můžete na palubě počítačů uvedených výše konfigurace stavu Azure Automation.
+V následujících částech tohoto článku se naučíte, jak můžete připojit počítače uvedené výše k Azure Automation konfigurace stavu.
 
 >[!NOTE]
->Tento článek je aktualizovaný a využívá nový modul Az Azure PowerShellu. Můžete dál využívat modul AzureRM, který bude dostávat opravy chyb nejméně do prosince 2020. Další informace o kompatibilitě nového modulu Az a modulu AzureRM najdete v tématu [Seznámení s novým modulem Az Azure PowerShellu](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Pokyny k instalaci modulu AZ na pracovníka hybridní sady Runbook najdete [v tématu Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). U vašeho účtu Automation můžete aktualizovat moduly na nejnovější verzi pomocí [funkce Jak aktualizovat moduly Azure PowerShellu v Azure Automation](automation-update-azure-modules.md).
+>Tento článek je aktualizovaný a využívá nový modul Az Azure PowerShellu. Můžete dál využívat modul AzureRM, který bude dostávat opravy chyb nejméně do prosince 2020. Další informace o kompatibilitě nového modulu Az a modulu AzureRM najdete v tématu [Seznámení s novým modulem Az Azure PowerShellu](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Pokyny k instalaci nástroje AZ Module Hybrid Runbook Worker najdete v tématu [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Pro váš účet Automation můžete aktualizovat moduly na nejnovější verzi pomocí [postupu aktualizace modulů Azure PowerShell v Azure Automation](automation-update-azure-modules.md).
 
-## <a name="onboarding-azure-vms"></a>Registrace virtuálních počítačů Azure
+## <a name="onboarding-azure-vms"></a>Připojování virtuálních počítačů Azure
 
-Konfigurace stavu Azure Automation umožňuje snadno založit virtuální počítače Azure pro správu konfigurace pomocí portálu Azure, šablon Azure Resource Manager nebo PowerShellu. Pod kapotou a bez správce museli vzdálené do virtuálního počítače, rozšíření konfigurace požadovaného stavu virtuálního počítače Azure zaregistruje virtuální počítač s Azure Automation state Configuration. Vzhledem k tomu, že rozšíření Azure běží asynchronně, kroky ke sledování jeho průběhu nebo řešení potíží jsou k dispozici v [části Řešení potíží s virtuálním počítačem Azure onboarding](#troubleshooting-azure-virtual-machine-onboarding) části tohoto článku.
+Konfigurace stavu Azure Automation umožňuje snadno připojit virtuální počítače Azure ke správě konfigurace pomocí Azure Portal, šablon Azure Resource Manager nebo PowerShellu. V digestoři a bez správce, který se musí vzdáleně přidružit k virtuálnímu počítači, registruje rozšíření konfigurace požadovaného stavu virtuálního počítače Azure konfiguraci stavu Azure Automation. Vzhledem k tomu, že se rozšíření Azure spouští asynchronně, postup sledování jeho průběhu nebo odstraňování potíží je k dispozici v části [řešení potíží s virtuálním počítačem Azure](#troubleshooting-azure-virtual-machine-onboarding) v tomto článku.
 
 > [!NOTE]
->Nasazení DSC do uzlu Linuxu používá složku **/tmp.** Moduly, `nxautomation` jako jsou dočasně staženy k ověření před jejich instalací v příslušných umístěních. Chcete-li zajistit, aby moduly nainstalovat správně, agent Log Analytics pro Linux potřebuje oprávnění ke čtení a zápisu ve složce **/tmp.**<br><br>
->Agent Log Analytics pro Linux `omsagent` běží jako uživatel. Chcete-li uživateli `omsagent` udělit oprávnění `setfacl -m u:omsagent:rwx /tmp`k zápisu >, spusťte příkaz .
+>Nasazení DSC na uzel Linux používá složku **adresáře/TMP** . Moduly, jako `nxautomation` jsou dočasně staženy k ověření před jejich instalací do příslušných umístění. Aby se zajistilo, že se moduly správně nainstalují, musí mít agent Log Analytics pro Linux oprávnění ke čtení a zápisu ve složce **adresáře/TMP** .<br><br>
+>Agent Log Analytics pro Linux se spouští jako `omsagent` uživatel. Pokud chcete `omsagent` uživateli udělit oprávnění k zápisu >, spusťte příkaz `setfacl -m u:omsagent:rwx /tmp`.
 
-### <a name="onboard-a-vm-using-azure-portal"></a>Napalubí virtuálního počítače pomocí portálu Azure
+### <a name="onboard-a-vm-using-azure-portal"></a>Připojení virtuálního počítače pomocí Azure Portal
 
-Chcete-li napalubě konfigurace stavu virtuálního počítače Azure k Azure automation prostřednictvím [portálu Azure:](https://portal.azure.com/)
+Připojení virtuálního počítače Azure k Azure Automation konfiguraci stavu prostřednictvím [Azure Portal](https://portal.azure.com/):
 
-1. Přejděte na účet Azure Automation, ve kterém chcete napalubě virtuálních počítačích. 
+1. Přejděte na účet Azure Automation, ve kterém se budou virtuální počítače připojit. 
 
-2. Na stránce Konfigurace stavu vyberte kartu **Uzly a** klikněte na **Přidat**.
+2. Na stránce Konfigurace stavu vyberte kartu **uzly** a pak klikněte na **Přidat**.
 
-3. Zvolte virtuální počítač na palubě.
+3. Vyberte virtuální počítač, který se má připojit.
 
-4. Pokud v zařízení není nainstalováno rozšíření požadovaného stavu prostředí PowerShell a je spuštěný stav napájení, klepněte na tlačítko **Připojit**.
+4. Pokud na počítači není nainstalovaná požadovaná rozšíření stavu prostředí PowerShell a stav napájení je spuštěno, klikněte na **připojit**.
 
-5. V **části Registrace**zadejte hodnoty Nástroje pro místní [konfiguraci prostředí PowerShell DSC, které](/powershell/scripting/dsc/managing-nodes/metaConfig) jsou vyžadovány pro případ použití. Volitelně můžete zadat konfiguraci uzlu, kterou chcete přiřadit k virtuálnímu počítače.
+5. V části **registrace**zadejte [hodnoty pro místní Configuration Manager PowerShellu DSC](/powershell/scripting/dsc/managing-nodes/metaConfig) vyžadované pro váš případ použití. Volitelně můžete zadat konfiguraci uzlu, která se přiřadí k virtuálnímu počítači.
 
 ![registrace](./media/automation-dsc-onboarding/DSC_Onboarding_6.png)
 
-### <a name="onboard-a-vm-using-azure-resource-manager-templates"></a>Napalubí virtuálního počítače pomocí šablon Azure Resource Manager
+### <a name="onboard-a-vm-using-azure-resource-manager-templates"></a>Připojení virtuálního počítače pomocí šablon Azure Resource Manager
 
-Můžete nasadit a napalubě konfigurace stavu virtuálního počítače do Azure Automation state configuration pomocí šablon Azure Resource Manager. Viz [Server spravované službou Konfigurace požadovaného stavu](https://azure.microsoft.com/resources/templates/101-automation-configuration/) pro ukázkovou šablonu, která zapisuje existující konfiguraci stavu virtuálního počítače do konfigurace stavu automatizace Azure. Pokud spravujete škálovací sadu virtuálních počítačů, podívejte se na ukázkovou šablonu v [konfiguraci škálovací sady virtuálních počítačů spravované službou Azure Automation](https://azure.microsoft.com/resources/templates/201-vmss-automation-dsc/).
+Pomocí šablon Azure Resource Manager můžete nasadit a připojit virtuální počítač k Azure Automation konfigurace stavu. Příklad šablony, která připojí existující virtuální počítač k Azure Automation konfiguraci stavu, najdete v části [Server spravovaný službou pro konfiguraci požadovaného stavu](https://azure.microsoft.com/resources/templates/101-automation-configuration/) . Pokud spravujete sadu škálování virtuálního počítače, podívejte se na příklad šablony v [konfiguraci sady škálování virtuálního počítače spravované pomocí Azure Automation](https://azure.microsoft.com/resources/templates/201-vmss-automation-dsc/).
 
-### <a name="onboard-machines-using-powershell"></a>Palubní počítače používající Prostředí PowerShell
+### <a name="onboard-machines-using-powershell"></a>Zprovoznění počítačů pomocí PowerShellu
 
-Rutina [Register-AzAutomationDscNode](/powershell/module/az.automation/register-azautomationdscnode) v prostředí PowerShell můžete použít k nazabezpečení virtuálních počítačů do konfigurace stavu automatizace Azure. 
+Pomocí rutiny [Register-AzAutomationDscNode](/powershell/module/az.automation/register-azautomationdscnode) v PowerShellu můžete připojit virtuální počítače do konfigurace stavu Azure Automation. 
 
 > [!NOTE]
->Rutina `Register-AzAutomationDscNode` je implementována v současné době pouze pro počítače se systémem Windows, protože aktivuje pouze rozšíření systému Windows.
+>Rutina je implementována v `Register-AzAutomationDscNode` současné době pouze pro počítače s Windows, protože aktivuje pouze rozšíření systému Windows.
 
 ### <a name="register-vms-across-azure-subscriptions"></a>Registrace virtuálních počítačů napříč předplatnými Azure
 
-Nejlepší způsob, jak zaregistrovat virtuální počítače z jiných předplatných Azure, je použít rozšíření DSC v šabloně nasazení Azure Resource Manageru. Příklady jsou k dispozici v [rozšíření Konfigurace požadovaného stavu se šablonami Azure Resource Manager](https://docs.microsoft.com/azure/virtual-machines/extensions/dsc-template).
+Nejlepším způsobem, jak registrovat virtuální počítače z jiných předplatných Azure, je použít rozšíření DSC v šabloně nasazení Azure Resource Manager. Příklady jsou k dispozici v [rozšíření konfigurace požadovaného stavu pomocí šablon Azure Resource Manager](https://docs.microsoft.com/azure/virtual-machines/extensions/dsc-template).
 
-Chcete-li najít registrační klíč a registrační adresu URL, které chcete použít jako parametry v šabloně, přečtěte si část [Onboarding bezpečně pomocí registrační](#onboarding-securely-using-registration) části v tomto článku.
+Pokud chcete najít registrační klíč a registrační adresu URL, které se mají použít jako parametry v šabloně, podívejte se do části [zabezpečené používáním registrace](#onboarding-securely-using-registration) v tomto článku.
 
-## <a name="onboarding-physicalvirtual-windows-machines"></a>Registrace fyzických/virtuálních počítačů s Windows
+## <a name="onboarding-physicalvirtual-windows-machines"></a>Připojování fyzických a virtuálních počítačů s Windows
 
-Můžete na palubě serverů Windows spuštěných místně nebo v jiných cloudových prostředích (včetně instancí AWS EC2) do konfigurace stavu automatizace Azure. Servery musí mít [odchozí přístup k Azure](automation-dsc-overview.md#network-planning).
+Můžete připojit servery Windows spuštěné místně nebo v jiných cloudových prostředích (včetně instancí AWS EC2), aby se konfigurace stavu Azure Automation. Servery musí mít [odchozí přístup k Azure](automation-dsc-overview.md#network-planning).
 
-1. Ujistěte se, že nejnovější verze [WMF 5](https://aka.ms/wmf5latest) je nainstalována na počítačích na palubě konfigurace stavu azure automatizace. Kromě toho musí být wmf 5 nainstalován v počítači, který používáte pro operaci připojení.
-1. Postupujte podle pokynů v části [Generování metakonfigurací DSC](#generating-dsc-metaconfigurations) a vytvořte složku obsahující požadované metakonfigurace DSC. 
-1. Pomocí následující rutiny můžete metakonfigurace prostředí PowerShell DSC vzdáleně použít na počítače, které chcete napalubě. 
+1. Ujistěte se, že je na počítačích nainstalovaných nejnovější verze [WMF 5](https://aka.ms/wmf5latest) , aby bylo možné konfigurovat stav Azure Automation. Kromě toho musí být na počítači, který používáte pro operaci zprovoznění, nainstalovaná aplikace WMF 5.
+1. Postupujte podle pokynů v části [generování DSC metaconfigurations](#generating-dsc-metaconfigurations) a vytvořte složku, která obsahuje požadované metaconfigurations DSC. 
+1. Pomocí následující rutiny použijte vzdálenou aplikaci PowerShell DSC metaconfigurations na počítače, které chcete připojit. 
 
    ```powershell
    Set-DscLocalConfigurationManager -Path C:\Users\joe\Desktop\DscMetaConfigs -ComputerName MyServer1, MyServer2
    ```
 
-1. Pokud nelze použít metakonfigurace Prostředí PowerShell DSC vzdáleně, zkopírujte složku **metakonfigurace** do počítačů, které se zapisujete. Pak přidejte kód pro volání [Set-DscLocalConfigurationManager](https://docs.microsoft.com/powershell/module/psdesiredstateconfiguration/set-dsclocalconfigurationmanager?view=powershell-5.1) místně na počítačích.
-1. Pomocí portálu Azure nebo rutiny ověřte, že počítače na palubě se zobrazí jako uzly konfigurace stavu registrované ve vašem účtu Azure Automation.
+1. Pokud nemůžete použít metaconfigurations prostředí PowerShell DSC vzdáleně, zkopírujte složku **metaconfigurations** na počítače, které se chystáte připojit. Pak přidejte kód pro volání [set-DscLocalConfigurationManager](https://docs.microsoft.com/powershell/module/psdesiredstateconfiguration/set-dsclocalconfigurationmanager?view=powershell-5.1) místně na počítačích.
+1. Pomocí rutin Azure Portal a ověřte, že se počítače, které se mají připojit, zobrazují jako uzly Konfigurace stavu zaregistrované ve vašem účtu Azure Automation.
 
-## <a name="onboarding-physicalvirtual-linux-machines"></a>Onboarding fyzické/virtuální linuxové stroje
+## <a name="onboarding-physicalvirtual-linux-machines"></a>Připojování fyzických a virtuálních počítačů se systémem Linux
 
-Do konfigurace stavu Azure Automation můžete napalubě linuxových serverů spuštěných místně nebo v jiných cloudových prostředích. Servery musí mít [odchozí přístup k Azure](automation-dsc-overview.md#network-planning).
+Můžete připojit servery Linux spuštěné místně nebo v jiných cloudových prostředích a Azure Automation konfigurace stavu. Servery musí mít [odchozí přístup k Azure](automation-dsc-overview.md#network-planning).
 
-1. Ujistěte se, že nejnovější verze [konfigurace požadovaného stavu Prostředí PowerShell pro Linux](https://github.com/Microsoft/PowerShell-DSC-for-Linux) je nainstalovaná na počítačích na konfigurací do konfigurace stavu azure automatizace.
-2. Pokud [výchozí nastavení správce místní konfigurace prostředí PowerShell DSC](/powershell/scripting/dsc/managing-nodes/metaConfig4) odpovídá vašemu případu použití a chcete napalubě počítačů tak, aby oba natahovaly z konfigurace stavu automatizace Azure a hlásily se k ní:
+1. Zajistěte, aby byla na počítačích, kde je nainstalovaná konfigurace stavu Azure Automation, nainstalovaná nejnovější verze [PowerShellu pro konfiguraci požadovaného stavu pro Linux](https://github.com/Microsoft/PowerShell-DSC-for-Linux) .
+2. Pokud se [výchozí nastavení Configuration Manager PowerShellu pro DSC](/powershell/scripting/dsc/managing-nodes/metaConfig4) shodují s vaším případem použití, a chcete připojit počítače tak, aby využívaly i sestavy Azure Automation konfigurace stavu:
 
-   - Na každém počítači s Linuxem na `Register.py` konfiguraci do konfigurace stavu Azure Automation můžete použít připojení pomocí výchozích hodnot Správce místní konfigurace prostředí PowerShell DSC.
+   - V každém počítači se systémem Linux, který se má připojit ke konfiguraci `Register.py` stavu Azure Automation, použijte příkaz k připojení pomocí výchozích nastavení Configuration Manager PowerShellu pro DSC.
 
      `/opt/microsoft/dsc/Scripts/Register.py <Automation account registration key> <Automation account registration URL>`
 
-   - Pokud chcete najít registrační klíč a registrační adresu URL pro svůj účet Automation, přečtěte si článek [Bezpečné připojení pomocí registrace](#onboarding-securely-using-registration) v tomto článku.
+   - Pokud chcete najít registrační klíč a adresu URL pro registraci k vašemu účtu Automation, přečtěte si část věnované [bezpečné registraci pomocí registrace](#onboarding-securely-using-registration) v tomto článku.
 
-3. Pokud výchozí hodnoty PowerShell DSC Local Configuration Manager (LCM) neodpovídají vašemu případu použití nebo chcete založit počítače, které se hlásí jenom do konfigurace stavu azure automatizace, postupujte podle kroků 4-7. V opačném případě pokračujte přímo ke kroku 7.
+3. Pokud se výchozí hodnoty prostředí PowerShell DSC Local Configuration Manager (LCM) neshodují s vaším případem použití, nebo chcete připojit počítače, které nastavují pouze Azure Automation konfigurace stavu, postupujte podle kroků 4-7. V opačném případě pokračujte přímo na krok 7.
 
-4. Postupujte podle pokynů v části [Generování metakonfigurací DSC](#generating-dsc-metaconfigurations) a vyrobte složku obsahující požadované metakonfigurace dsc.
+4. Postupujte podle pokynů v části [generování DSC metaconfigurations](#generating-dsc-metaconfigurations) a vytvořte složku obsahující požadované metaconfigurations DSC.
 
-5. Ujistěte se, že je v počítači používaném pro přivádění nainstalována nejnovější verze [wmf 5.](https://aka.ms/wmf5latest)
+5. Ujistěte se, že je v počítači, který se používá pro registraci, nainstalovaná nejnovější verze [WMF 5](https://aka.ms/wmf5latest) .
 
-6. Přidejte kód takto, chcete-li použít metakonfigurace Prostředí DSC prostředí PowerShell vzdáleně na počítače, které chcete na palubě.
+6. Následujícím způsobem přidejte kód pro použití prostředí PowerShell DSC metaconfigurations vzdáleně na počítače, které chcete připojit.
 
     ```powershell
     $SecurePass = ConvertTo-SecureString -String '<root password>' -AsPlainText -Force
@@ -131,30 +131,30 @@ Do konfigurace stavu Azure Automation můžete napalubě linuxových serverů sp
     Set-DscLocalConfigurationManager -CimSession $Session -Path C:\Users\joe\Desktop\DscMetaConfigs
     ```
 
-7. Pokud nelze použít metakonfigurace Prostředí PowerShell DSC vzdáleně, zkopírujte metakonfigurace odpovídající vzdáleným počítačům ze složky popsané v kroku 4 do počítačů s Linuxem.
+7. Pokud nemůžete použít metaconfigurations prostředí PowerShell DSC vzdáleně, zkopírujte metaconfigurations odpovídající vzdáleným počítačům ze složky popsané v kroku 4 do počítačů se systémem Linux.
 
-8. Přidejte kód `Set-DscLocalConfigurationManager.py` pro místní volání na každém počítači s Linuxem do palubní konfigurace azure automation stavu.
+8. Přidejte kód pro volání `Set-DscLocalConfigurationManager.py` lokálně na každém počítači se systémem Linux, který se připojí k konfiguraci stavu Azure Automation.
 
    `/opt/microsoft/dsc/Scripts/SetDscLocalConfigurationManager.py -configurationmof <path to metaconfiguration file>`
 
-9. Pomocí portálu Azure nebo rutiny, ujistěte se, že počítače na palubě teď zobrazí jako dsc uzly registrované ve vašem účtu Azure Automation.
+9. Pomocí rutin Azure Portal nebo zajistěte, aby se počítače, které se mají připojit, nyní zobrazovaly jako uzly DSC zaregistrované ve vašem účtu Azure Automation.
 
-## <a name="generating-dsc-metaconfigurations"></a>Generování metakonfigurací DSC
+## <a name="generating-dsc-metaconfigurations"></a>Generování DSC metaconfigurations
 
-Chcete-li zavést libovolný počítač do konfigurace stavu automatizace Azure, můžete vygenerovat [metakonfiguraci DSC](/powershell/scripting/dsc/managing-nodes/metaConfig). Tato konfigurace říká agentdsc navádět nebo sestavy konfigurace stavu automatizace Azure. Metakonfigurace DSC pro konfiguraci stavu automatizace Azure můžete vygenerovat buď pomocí konfigurace DSC prostředí PowerShell, nebo pomocí rutin Prostředí PowerShell azure automation.
+Pokud chcete připojit jakýkoli počítač ke konfiguraci stavu Azure Automation, můžete vygenerovat [Metaconfiguration DSC](/powershell/scripting/dsc/managing-nodes/metaConfig). Tato konfigurace oznamuje agentovi DSC, aby načetl zprávu z nebo do konfigurace stavu Azure Automation. Metaconfiguration DSC můžete vygenerovat pro konfiguraci stavu Azure Automation pomocí konfigurace PowerShellu DSC nebo rutin Azure Automation PowerShellu.
 
 > [!NOTE]
-> Metakonfigurace DSC obsahují tajné kódy potřebné k nazabezpečení počítače k účtu automatizace pro správu. Ujistěte se, že správně chránit všechny metakonfigurace DSC, které vytvoříte, nebo je odstranit po použití.
+> DSC metaconfigurations obsahují tajné klíče potřebné k připojení počítače k účtu Automation pro správu. Ujistěte se, že jste správně chránili všechny metaconfigurationsy DSC, které jste vytvořili, nebo je po použití odstraňte.
 
-Podpora proxy pro metakonfigurace je řízena LCM, což je modul Windows PowerShell DSC. LCM běží na všech cílových uzlech a je zodpovědný za volání konfiguračních prostředků, které jsou zahrnuty ve skriptu metakonfigurace DSC. Podporu proxy serveru můžete zahrnout do metakonfigurace zahrnutím definic adresy URL `ConfigurationRepositoryWeb`proxy `ResourceRepositoryWeb`a `ReportServerWeb` pověření proxy podle potřeby v blocích , a blocích. Viz [Konfigurace správce místní konfigurace](https://docs.microsoft.com/powershell/scripting/dsc/managing-nodes/metaconfig?view=powershell-7).
+Podpora proxy serveru pro metaconfigurations je řízena pomocí LCM, což je modul Windows PowerShell DSC. LCM běží na všech cílových uzlech a zodpovídá za volání prostředků konfigurace, které jsou součástí skriptu DSC metaconfiguration. Do metaconfiguration můžete zahrnout podporu proxy serveru tak, že zahrnete definice adresy URL proxy serveru a přihlašovacích údajů proxy serveru `ConfigurationRepositoryWeb`podle `ResourceRepositoryWeb`potřeby v `ReportServerWeb` blocích, a. Viz [Konfigurace místního Configuration Manager](https://docs.microsoft.com/powershell/scripting/dsc/managing-nodes/metaconfig?view=powershell-7).
 
-### <a name="generate-dsc-metaconfigurations-using-a-dsc-configuration"></a>Generování metakonfigurací DSC pomocí konfigurace DSC
+### <a name="generate-dsc-metaconfigurations-using-a-dsc-configuration"></a>Generování DSC metaconfigurations pomocí konfigurace DSC
 
-1. Otevřete VSCode (nebo váš oblíbený editor) jako správce na počítači v místním prostředí. Počítač musí mít nainstalovanou nejnovější verzi [WMF 5.](https://aka.ms/wmf5latest)
-1. Zkopírujte následující skript místně. Tento skript obsahuje konfiguraci Prostředí PowerShell DSC pro vytváření metakonfigurací a příkaz pro zahájení vytvoření metakonfigurace.
+1. Otevřete VSCode (nebo oblíbený editor) jako správce na počítači v místním prostředí. Počítač musí mít nainstalovanou nejnovější verzi [WMF 5](https://aka.ms/wmf5latest) .
+1. Zkopírujte následující skript místně. Tento skript obsahuje konfiguraci PowerShellu DSC pro vytvoření metaconfigurations a příkaz pro vytvoření metaconfiguration.
 
     > [!NOTE]
-    > Názvy konfigurace uzlu konfigurace stavu jsou rozlišování velkých a malých písmen na webu Azure Portal. Pokud je případ neodpovídající, uzel se nezobrazí na kartě **Uzly.**
+    > Názvy konfigurací uzlu Konfigurace stavu rozlišují velká a malá písmena v Azure Portal. Pokud se případ neshoduje, uzel se nezobrazí na kartě **uzly** .
 
    ```powershell
    # The DSC configuration that will generate metaconfigurations
@@ -266,25 +266,25 @@ Podpora proxy pro metakonfigurace je řízena LCM, což je modul Windows PowerSh
    DscMetaConfigs @Params
    ```
 
-1. Vyplňte registrační klíč a adresu URL svého účtu Automation a také názvy zařízení na palubě. Všechny ostatní parametry jsou volitelné. Pokud chcete najít registrační klíč a registrační adresu URL svého účtu Automation, přečtěte si část [Bezpečné připojení pomocí registrace.](#onboarding-securely-using-registration)
+1. Zadejte registrační klíč a adresu URL pro váš účet Automation a názvy počítačů, které se mají připojit. Všechny ostatní parametry jsou volitelné. Pokud chcete najít registrační klíč a adresu URL pro registraci k vašemu účtu Automation, přečtěte si část věnované [bezpečné registraci pomocí registračního](#onboarding-securely-using-registration) oddílu.
 
-1. Pokud chcete, aby počítače oznamovaly informace o stavu DSC do konfigurace `ReportOnly` stavu automatizace Azure, ale ne vyžádat konfiguraci nebo moduly Prostředí PowerShell, nastavte parametr na hodnotu true.
+1. Pokud chcete, aby počítače nahlásily informace o stavu DSC do konfigurace stavu Azure Automation, ale ne z konfigurace Pull nebo modulů prostředí `ReportOnly` PowerShell, nastavte parametr na hodnotu true.
 
-1. Pokud `ReportOnly` není nastavena, počítače hlásí informace o stavu DSC konfigurace stavu automatizace Azure a konfigurace vyžádat nebo moduly PowerShell. Nastavte parametry odpovídajícím `ConfigurationRepositoryWeb`způsobem `ResourceRepositoryWeb`v `ReportServerWeb` , a bloky.
+1. Pokud `ReportOnly` není nastavené, počítače nahlásí informace o stavu DSC do konfigurace stavu Azure Automation a konfigurace pro vyžádání obsahu nebo moduly prostředí PowerShell. Nastavte parametry odpovídajícím způsobem `ConfigurationRepositoryWeb`v `ResourceRepositoryWeb`blocích, `ReportServerWeb` a.
 
-1. Spusťte skript. Nyní byste měli mít pracovní adresář s názvem **DscMetaConfigs**, obsahující metakonfigurace Prostředí DSC pro počítače na palubě (jako správce).
+1. Spusťte skript. Teď byste měli mít pracovní složku s názvem **DscMetaConfigs**, která obsahuje PowerShell DSC metaconfigurations pro počítače, které se mají připojit (jako správce).
 
     ```powershell
     Set-DscLocalConfigurationManager -Path ./DscMetaConfigs
     ```
 
-### <a name="generate-dsc-metaconfigurations-using-azure-automation-cmdlets"></a>Generování metakonfigurací DSC pomocí rutin Azure Automation
+### <a name="generate-dsc-metaconfigurations-using-azure-automation-cmdlets"></a>Generování DSC metaconfigurations pomocí rutin Azure Automation
 
-Pokud výchozí hodnoty PowerShell DSC LCM odpovídají vašemu případu použití a chcete napalubě počítače navádět se z konfigurace stavu automatizace Azure a sestavy, můžete vygenerovat potřebné metakonfigurace DSC jednodušeji pomocí rutin Azure Automation.
+Pokud se výchozí hodnoty prostředí PowerShell DSC shodují s vaším případem použití a chcete zařadit počítače do konfigurace Azure Automation stavů a nahlásit je, můžete vygenerovat potřebné DSC metaconfigurations pomocí rutin Azure Automation.
 
-1. Otevřete konzolu PowerShell nebo VSCode jako správce počítače v místním prostředí.
-2. Připojte se ke Správci prostředků Azure pomocí [connect-azaccount](https://docs.microsoft.com/powershell/module/Az.Accounts/Connect-AzAccount?view=azps-3.7.0).
-3. Stáhněte si metakonfigurace Prostředí PowerShell DSC pro počítače, které chcete nastoupit z účtu Automatizace, ve kterém nastavujete uzly.
+1. Otevřete konzolu PowerShellu nebo VSCode jako správce na počítači v místním prostředí.
+2. Připojte se k Azure Resource Manager pomocí [Connect-AzAccount](https://docs.microsoft.com/powershell/module/Az.Accounts/Connect-AzAccount?view=azps-3.7.0).
+3. Stáhněte si prostředí PowerShell DSC metaconfigurations pro počítače, které chcete připojit z účtu Automation, ve kterém nastavujete uzly.
 
    ```powershell
    # Define the parameters for Get-AzAutomationDscOnboardingMetaconfig using PowerShell Splatting
@@ -299,58 +299,58 @@ Pokud výchozí hodnoty PowerShell DSC LCM odpovídají vašemu případu použi
    Get-AzAutomationDscOnboardingMetaconfig @Params
    ```
 
-1. Nyní byste měli mít složku **DscMetaConfigs** obsahující metakonfigurace Prostředí DSC prostředí Pro počítače na palubě (jako správce).
+1. Teď byste měli mít složku **DscMetaConfigs** , která obsahuje PowerShell DSC metaconfigurations pro počítače, které se mají připojit (jako správce).
 
     ```powershell
     Set-DscLocalConfigurationManager -Path $env:UserProfile\Desktop\DscMetaConfigs
     ```
 
-## <a name="onboarding-securely-using-registration"></a>Bezpečné zapisování pomocí registrace
+## <a name="onboarding-securely-using-registration"></a>Zabezpečené připojení pomocí registrace
 
-Počítače můžou bezpečně nastoupit na účet Azure Automation prostřednictvím registračního protokolu WMF 5 DSC. Tento protokol umožňuje uzlu DSC k ověření na server vyžádat nebo sestavy Prostředí PowerShell DSC, včetně konfigurace stavu automatizace Azure. Uzel se zaregistruje na serveru na registrační adrese URL a ověří se pomocí registračního klíče. Během registrace uzel DSC a server vyžádat vyžádat a sestav DSC vyjednat jedinečný certifikát pro uzel použít pro ověřování na serveru po registraci. Tento proces zabraňuje na palubě uzly z osobit jeden druhého, například v případě, že uzel je ohrožena a chová se zlomyslně. Po registraci registrační klíč není použit pro ověřování znovu a je odstraněn z uzlu.
+Počítače mohou bezpečně připojit Azure Automation k účtu pomocí registračního protokolu WMF 5 DSC. Tento protokol umožňuje, aby se uzel DSC ověřil na server pro vyžádání obsahu nebo na serveru sestav PowerShellu DSC, včetně konfigurace stavu Azure Automation. Uzel se registruje u serveru v registrační adrese URL a ověřuje se pomocí registračního klíče. V průběhu registrace vyjednávat uzel DSC a server pro vyžádání/sestavování DSC jedinečný certifikát, který má uzel použít k ověřování po registraci serveru. Tento proces znemožňuje uzlům připojit uzly od sebe navzájem, například pokud dojde k ohrožení bezpečnosti uzlu a pracuje se zlými úmysly. Po registraci se registrační klíč znovu nepoužívá pro ověřování a z uzlu se odstraní.
 
-Informace požadované pro registrační protokol konfigurace stavu můžete získat z **klíčů** v části **Nastavení účtu** na webu Azure Portal. 
+Informace požadované pro registrační protokol konfigurace stavu můžete získat z **klíčů** v části **nastavení účtu** v Azure Portal. 
 
-![Klíče a adresa URL azure automatizace](./media/automation-dsc-onboarding/DSC_Onboarding_4.png)
+![Klíče a adresa URL služby Azure Automation](./media/automation-dsc-onboarding/DSC_Onboarding_4.png)
 
-- Registrační adresa URL je pole URL na stránce Klíče.
-- Registrační klíč je hodnota pole **Primární přístupový klíč** nebo pole **Sekundární přístupový klíč** na stránce Klíče. Lze použít buď klíč.
+- Adresa URL registrace je pole Adresa URL na stránce klíče.
+- Registrační klíč je hodnota pole **Primární přístupový klíč** nebo **sekundární přístupový klíč** na stránce klíče. Lze použít buď klíč.
 
-Pro zvýšení zabezpečení můžete kdykoli na stránce Klíče znovu vygenerovat primární a sekundární přístupové klíče účtu Automation. Regenerace klíčů zabraňuje budoucím registracím uzlů používat předchozí klíče.
+Pro zvýšení zabezpečení můžete na stránce klíče kdykoli znovu vygenerovat primární a sekundární přístupové klíče účtu Automation. Opětovné vygenerování klíče brání v budoucí registraci uzlu v použití předchozích klíčů.
 
-## <a name="re-registering-a-node"></a>Opětovná registrace uzlu
+## <a name="re-registering-a-node"></a>Opětovné registrace uzlu
 
-Po registraci počítače jako uzlu DSC v konfiguraci stavu automatizace Azure, existuje několik důvodů, proč budete muset znovu zaregistrovat tento uzel v budoucnu.
+Po registraci počítače jako uzlu DSC v konfiguraci stavu Azure Automation existuje několik důvodů, proč možná budete muset uzel v budoucnu znovu zaregistrovat.
 
-- **Obnovení certifikátu.** U verzí systému Windows Server před systémem Windows Server 2019 každý uzel automaticky vyjedná jedinečný certifikát pro ověřování, jehož platnost vyprší po jednom roce. Pokud vyprší platnost certifikátu bez obnovení, uzel nemůže komunikovat s `Unresponsive`Azure Automation a je označen . V současné době powershellový protokol registrace DSC nemůže automaticky obnovit certifikáty, když se blíží vypršení jejich platnosti a je nutné znovu zaregistrovat uzly po roce. Před opětovnou registrací se ujistěte, že každý uzel je spuštěn WMF 5 RTM. 
+- **Obnovení certifikátu.** U verzí Windows serveru před Windows serverem 2019 každý uzel automaticky vyjednává jedinečný certifikát pro ověřování, jehož platnost vyprší po jednom roce. Pokud certifikát vyprší bez obnovení, uzel nebude schopen komunikovat s Azure Automation a je označen `Unresponsive`. V současné době nemůže registrační protokol pro PowerShell DSC automaticky obnovovat certifikáty, když se blíží vypršení platnosti, a musíte uzly znovu zaregistrovat po roce. Před opakovaným registrací se ujistěte, že na každém uzlu je spuštěný WMF 5 RTM. 
 
-    Opětovná registrace provedená 90 dnů nebo méně od vypršení platnosti certifikátu nebo kdykoli po vypršení platnosti certifikátu vede k generování a použití nového certifikátu. Řešení tohoto problému je součástí Windows Server 2019 a novější.
+    Opakovaná registrace provedla 90 dní nebo méně z času vypršení platnosti certifikátu nebo kdykoli po uplynutí doby vypršení platnosti certifikátu dojde k vygenerování a použití nového certifikátu. Řešení tohoto problému je součástí Windows serveru 2019 a novějších verzí.
 
-- **Změny hodnot DSC LCM.** Možná budete muset změnit [hodnoty LCM prostředí PowerShell,](/powershell/scripting/dsc/managing-nodes/metaConfig4) které jsou nastaveny `ConfigurationMode`při počáteční registraci uzlu, například . V současné době můžete změnit pouze tyto hodnoty agenta DSC prostřednictvím opětovné registrace. Jedinou výjimkou je hodnota konfigurace uzlu přiřazená uzlu. Můžete to změnit v Azure Automation DSC přímo.
+- **Změny hodnot LCM v DSC.** Možná budete muset změnit [hodnoty prostředí POWERSHELL DSC](/powershell/scripting/dsc/managing-nodes/metaConfig4) , které nastavíte při počáteční registraci uzlu, například `ConfigurationMode`. V současné době můžete tyto hodnoty agenta DSC změnit pouze pomocí opětovné registrace. Jedinou výjimkou je hodnota konfigurace uzlu přiřazená uzlu. Tuto možnost můžete v Azure Automation DSC změnit přímo.
 
-Uzel můžete znovu zaregistrovat stejně jako původně registrovaný uzel pomocí některé z metod registrace popsaných v tomto dokumentu. Před opětovnou registrací není nutné zrušit registraci uzlu z konfigurace stavu automatizace Azure.
+Uzel můžete znovu zaregistrovat stejným způsobem, jako jste předtím zaregistrovali uzel, pomocí kterékoli metody připojování popsané v tomto dokumentu. Před opětovnou registrací není nutné zrušit registraci uzlu v konfiguraci stavu Azure Automation.
 
-## <a name="troubleshooting-azure-virtual-machine-onboarding"></a>Řešení potíží s připnutím virtuálního počítače Azure
+## <a name="troubleshooting-azure-virtual-machine-onboarding"></a>Řešení potíží s připojováním virtuálních počítačů Azure
 
-Konfigurace stavu Azure Automation umožňuje snadno založit virtuální počítače Azure windows pro správu konfigurace. Pod kapotou rozšíření konfigurace požadovaného stavu virtuálního počítače Azure se používá k registraci virtuálního počítače s azure automation state configuration. Vzhledem k tomu, že rozšíření konfigurace požadovaného stavu virtuálního počítače Azure běží asynchronně, sledování jeho průběhu a řešení potíží s jeho spuštěním může být důležité.
+Konfigurace stavu Azure Automation umožňuje snadno připojit virtuální počítače Azure s Windows ke správě konfigurace. V digestoři se k registraci virtuálního počítače s konfigurací stavu Azure Automation používá rozšíření konfigurace požadovaného stavu virtuálního počítače Azure. Vzhledem k tomu, že se rozšíření konfigurace požadovaného stavu virtuálního počítače Azure spouští asynchronně, sledování průběhu a řešení potíží s jeho spuštěním může být důležité.
 
 > [!NOTE]
-> Jakákoli metoda registrace virtuálního počítače Azure Windows na konfiguraci stavu automatizace Azure, která používá rozšíření konfigurace požadovaného stavu virtuálního počítače Azure, může trvat až hodinu, než azure automation zobrazí jako registrovaný. Toto zpoždění je způsobeno instalací WMF 5 na virtuálním počítači pomocí rozšíření konfigurace požadovaného stavu virtuálního počítače Azure, které je nutné k nazabezpečení konfigurace stavu virtuálního počítače do azure automation.
+> Jakákoli metoda připojení virtuálního počítače Azure s Windows k Azure Automation stavu, který používá rozšíření konfigurace požadovaného stavu virtuálního počítače Azure, může trvat až hodinu, než se Azure Automation zobrazí jako zaregistrované. Tato prodleva je způsobená instalací WMF 5 na VIRTUÁLNÍm počítači pomocí rozšíření konfigurace požadovaného stavu virtuálního počítače Azure, které je nutné k připojení virtuálního počítače ke konfiguraci stavu Azure Automation.
 
-Řešení potíží nebo zobrazení stavu rozšíření Konfigurace požadovaného stavu virtuálního počítače Azure:
+Postup při odstraňování potíží nebo zobrazení stavu rozšíření konfigurace požadovaného stavu virtuálního počítače Azure:
 
-1. Na webu Azure Portal přejděte na virtuální počítač, který je na palubě.
-2. V části **Nastavení**klepněte na **položku Rozšíření** . 
-3. Nyní vyberte **DSC** nebo **DSCForLinux**, v závislosti na operačním systému. 
-4. Další podrobnosti získáte klepnutím na tlačítko **Zobrazit podrobný stav**.
+1. V Azure Portal přejděte na virtuální počítač, který jste připojili.
+2. V části **Nastavení**klikněte na **rozšíření** . 
+3. V závislosti na vašem operačním systému teď vyberte **DSC** nebo **DSCForLinux**. 
+4. Pro další podrobnosti můžete kliknout na **zobrazit podrobný stav**.
 
-Další informace o řešení potíží najdete [v tématu řešení potíží s konfigurací požadovaného stavu Azure Automation (DSC).](./troubleshoot/desired-state-configuration.md)
+Další informace o řešení potíží najdete v tématu [řešení potíží s Azure Automation konfigurace požadovaného stavu (DSC)](./troubleshoot/desired-state-configuration.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace najdete [v tématu Začínáme s azure automation state configuration](automation-dsc-getting-started.md).
-- Další informace o kompilaci konfigurací DSC, abyste je mohli přiřadit k cílovým uzlům, najdete [v tématu Kompilace konfigurací v konfiguraci stavu automatizace Azure](automation-dsc-compile.md).
-- Odkaz na rutinu prostředí PowerShell naleznete v tématu [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+- Informace o tom, jak začít, najdete v tématu [Začínáme s konfigurací stavu Azure Automation](automation-dsc-getting-started.md).
+- Další informace o kompilaci konfigurací DSC, abyste je mohli přiřadit cílovým uzlům, najdete v tématu [kompilace konfigurací v konfiguraci stavu Azure Automation](automation-dsc-compile.md).
+- Referenční informace k rutinám PowerShellu najdete v tématu [AZ. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
 ).
-- Informace o cenách najdete v [tématu Ceny konfigurace stavu Azure Automation](https://azure.microsoft.com/pricing/details/automation/).
-- Příklad použití konfigurace stavu azure automatizace v kanálu průběžného nasazení najdete v [tématu Příklad použití: Průběžné nasazení do virtuálních počítačů pomocí konfigurace stavu automatizace Azure a Chocolatey](automation-dsc-cd-chocolatey.md).
+- Informace o cenách najdete v tématu [Azure Automation ceny konfigurace stavu](https://azure.microsoft.com/pricing/details/automation/).
+- Příklad použití konfigurace stavu Azure Automation v kanálu průběžného nasazování najdete v tématu [Příklad použití: průběžné nasazování do virtuálních počítačů pomocí konfigurace stavu Azure Automation a čokolády](automation-dsc-cd-chocolatey.md).

@@ -1,6 +1,6 @@
 ---
 title: Vývoj zabezpečených aplikací v Microsoft Azure
-description: Tento článek popisuje osvědčené postupy, které je třeba zvážit během fáze implementace a ověřování projektu webové aplikace.
+description: Tento článek popisuje osvědčené postupy, které je třeba zvážit během fáze implementace a ověření projektu webové aplikace.
 author: TerryLanfear
 manager: barbkess
 ms.author: terrylan
@@ -14,144 +14,144 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.openlocfilehash: 03f5b0124f95465c4a5da5043364a2f5816dae62
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81685752"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Vývoj zabezpečených aplikací v Azure
-V tomto článku uvádíme aktivity zabezpečení a ovládací prvky, které je třeba zvážit při vývoji aplikací pro cloud. Bezpečnostní otázky a koncepty, které je třeba zvážit během fází implementace a ověřování životního cyklu vývoje zabezpečení společnosti Microsoft [(SDL),](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) jsou zahrnuty. Cílem je pomoci vám definovat aktivity a služby Azure, které můžete použít k vývoji bezpečnější aplikace.
+V tomto článku jsou uvedeny bezpečnostní aktivity a ovládací prvky, které je potřeba vzít v úvahu při vývoji aplikací pro Cloud. Pojednává o bezpečnostních otázkách a konceptech, které je potřeba vzít v úvahu během fáze implementace a ověření v rámci služby [SDL (Microsoft Security Development Lifecycle)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) . Cílem je pomáhat vám definovat aktivity a služby Azure, které můžete použít k vývoji bezpečnější aplikace.
 
-Následující fáze SDL jsou uvedeny v tomto článku:
+V tomto článku jsou uvedené tyto fáze SDL:
 
 - Implementace
 - Ověření
 
 ## <a name="implementation"></a>Implementace
-Fáze implementace se zaměřuje na zavedení osvědčených postupů pro včasnou prevenci a na detekci a odstranění bezpečnostních problémů z kódu.
-Předpokládejme, že vaše aplikace bude použita způsoby, které jste neměli v úmyslu použít. To vám pomůže chránit před náhodným nebo úmyslným zneužitím vaší aplikace.
+Cílem fáze implementace je vytvořit osvědčené postupy pro včasnou prevenci a zjistit a odebrat problémy zabezpečení z kódu.
+Předpokládejme, že se vaše aplikace bude používat způsobem, který jste nechtěli použít. To vám pomůže chránit proti náhodnému nebo úmyslnému zneužití vaší aplikace.
 
-### <a name="perform-code-reviews"></a>Provádění kontrol kódu
+### <a name="perform-code-reviews"></a>Provést revize kódu
 
-Než začnete kontrolovat kód, proveďte [revize kódu,](https://docs.microsoft.com/azure/devops/learn/devops-at-microsoft/code-reviews-not-primarily-finding-bugs) abyste zvýšili celkovou kvalitu kódu a snížili riziko vytváření chyb. [Pomocí sady Visual Studio](https://docs.microsoft.com/azure/devops/repos/tfvc/get-code-reviewed-vs?view=vsts) můžete spravovat proces kontroly kódu.
+Před vrácením kódu se změnami proveďte [Revize kódu](https://docs.microsoft.com/azure/devops/learn/devops-at-microsoft/code-reviews-not-primarily-finding-bugs) a zvyšte tak celkovou kvalitu kódu a snižte riziko vytváření chyb. Můžete použít [Visual Studio](https://docs.microsoft.com/azure/devops/repos/tfvc/get-code-reviewed-vs?view=vsts) ke správě procesu revize kódu.
 
 ### <a name="perform-static-code-analysis"></a>Provedení analýzy statického kódu
 
-[Analýza statického kódu](https://www.owasp.org/index.php/Static_Code_Analysis) (označovaná také jako *analýza zdrojového kódu)* se obvykle provádí jako součást revize kódu. Analýza statického kódu běžně odkazuje na spuštění nástrojů pro analýzu statického kódu k nalezení potenciálních chyb zabezpečení v neběžícím kódu pomocí technik, jako [je kontrola počitadla](https://en.wikipedia.org/wiki/Taint_checking) a [analýza toku dat](https://en.wikipedia.org/wiki/Data-flow_analysis).
+[Statická analýza kódu](https://www.owasp.org/index.php/Static_Code_Analysis) (označovaná také jako *analýza zdrojového kódu*) se obvykle provádí jako součást revize kódu. Analýza statického kódu obvykle odkazuje na spouštění nástrojů pro analýzu statického kódu pro nalezení potenciálních chyb zabezpečení v nespuštěném kódu pomocí technik, jako je [Kontrola chuti](https://en.wikipedia.org/wiki/Taint_checking) a [Analýza toku dat](https://en.wikipedia.org/wiki/Data-flow_analysis).
 
-Azure Marketplace nabízí [vývojářské nástroje,](https://azuremarketplace.microsoft.com/marketplace/apps/category/developer-tools?page=1&search=code%20review) které provádějí analýzu statického kódu a pomáhají s revizemi kódu.
+Azure Marketplace nabízí [vývojářské nástroje](https://azuremarketplace.microsoft.com/marketplace/apps/category/developer-tools?page=1&search=code%20review) , které provádějí analýzu statického kódu a pomáhají s revizemi kódu.
 
-### <a name="validate-and-sanitize-every-input-for-your-application"></a>Ověření a dezinfekce každého vstupu pro vaši aplikaci
+### <a name="validate-and-sanitize-every-input-for-your-application"></a>Ověření a upravení všech vstupů aplikace
 
-Považovat všechny vstupy za nedůvěryhodné, aby byla vaše aplikace chráněna před nejčastějšími chybami zabezpečení webových aplikací. Nedůvěryhodná data jsou prostředkem pro vstřikovací útoky. Vstup pro vaši aplikaci obsahuje parametry v adrese URL, vstup od uživatele, data z databáze nebo z rozhraní API a vše, co je předánv tom, že uživatel může potenciálně manipulovat. Aplikace by měla [ověřit,](https://owasp.org/www-project-proactive-controls/v3/en/c5-validate-inputs) že data jsou syntakticky a sémanticky platná, než aplikace data jakýmkoli způsobem použije (včetně zobrazení zpět uživateli).
+Zacházet se všemi vstupy jako nedůvěryhodnými k ochraně aplikace před nejběžnějšími ohroženími zabezpečení webových aplikací. Nedůvěryhodná data jsou vozidlo pro útoky prostřednictvím injektáže. Vstup pro vaši aplikaci zahrnuje parametry v adrese URL, vstup od uživatele, data z databáze nebo z rozhraní API a cokoli, co se předává v tom, že uživatel může potenciálně manipulovat. Aplikace by měla [ověřit](https://owasp.org/www-project-proactive-controls/v3/en/c5-validate-inputs) , že data jsou syntakticky a sémanticky platná předtím, než aplikace použije data jakýmkoli způsobem (včetně jejich zobrazení zpět uživateli).
 
-Ověřte vstup v rané fázi toku dat, abyste zajistili, že do pracovního postupu vstoupí pouze správně vytvořená data. Nechcete, aby poškozená data přetrvávala v databázi nebo spouštěla selhání v podřízené součásti.
+Ověřte vstup na začátku v toku dat, abyste zajistili, že pracovní postup bude do pracovního postupu zajišťovat pouze správně vytvořená data. Nechcete, aby ve vaší databázi trvaly poškozená data, nebo aby se v součásti pro příjem dat aktivovala selhání.
 
-Blacklisting a whitelisting jsou dva obecné přístupy k provádění ověření vstupní syntaxe:
+Zakázané a povolené přidávání jsou dva obecné přístupy k provádění ověřování zadáním syntaxe:
 
-  - Blacklisting se pokusí zkontrolovat, zda daný uživatelský vstup neobsahuje obsah "známý jako škodlivý".
+  - Zakázané pokusy o kontrolu, že zadaný uživatelský vstup neobsahuje "známý jako škodlivý" obsah.
 
-  - Whitelisting se pokusí zkontrolovat, zda daný vstup uživatele odpovídá sadě vstupů "známého zboží". Seznam povolených znaků je forma whitelistingu, kde aplikace kontroluje, že vstup uživatele obsahuje pouze znaky "známé dobré" nebo že vstup odpovídá známému formátu.
-    To může například zahrnovat kontrolu, že uživatelské jméno obsahuje pouze alfanumerické znaky nebo že obsahuje přesně dvě čísla.
+  - Seznam povolených pokusů o kontrolu, že daný vstup uživatele odpovídá sadě "známých dobrých" vstupů. Přidávání na základě znaků je forma seznamu povolených, kde aplikace kontroluje, jestli vstup uživatele obsahuje jenom "známé" znaky, nebo že tento vstup odpovídá známému formátu.
+    To může zahrnovat například kontrolu, že uživatelské jméno obsahuje pouze alfanumerické znaky nebo že obsahuje přesně dvě čísla.
 
-Whitelisting je preferovaný přístup pro vytváření zabezpečeného softwaru.
-Blacklisting je náchylný k chybám, protože je nemožné myslet na úplný seznam potenciálně špatný vstup.
+Seznam povolených je upřednostňovaným přístupem k sestavování zabezpečeného softwaru.
+Zakázané je náchylné k chybě, protože není možné považovat úplný seznam potenciálně špatného vstupu.
 
-Proveďte tuto práci na serveru, nikoli na straně klienta (nebo na serveru a na straně klienta).
+Proveďte tuto činnost na serveru, nikoli na straně klienta (nebo na straně serveru a na straně klienta).
 
 ### <a name="verify-your-applications-outputs"></a>Ověření výstupů aplikace
 
-Všechny výstupy, které prezentujete vizuálně nebo v rámci dokumentu, by měly být vždy zakódovány a uvozeny. [Escapování](https://www.owasp.org/index.php/Injection_Theory#Escaping_.28aka_Output_Encoding.29), označované také jako *kódování výstupu*, se používá k zajištění, že nedůvěryhodná data nejsou nástrojem pro vstřikovací útok. Escapování, v kombinaci s ověřením dat, poskytuje vrstvené obrany pro zvýšení zabezpečení systému jako celku.
+Jakýkoli výstup, který prezentujete vizuálně nebo v dokumentu, by měl být vždy kódovaný a řídicí. [Uvozovací znaky](https://www.owasp.org/index.php/Injection_Theory#Escaping_.28aka_Output_Encoding.29), označované také jako *výstupní kódování*, slouží k zajištění, že nedůvěryhodná data nejsou vozidlo pro útok na injektáže. Uvozovací znaky kombinované s ověřováním dat poskytují vrstvenou obranu za účelem zvýšení zabezpečení systému jako celku.
 
-Únik zajišťuje, že vše je zobrazeno jako *výstup.* Escaping také umožňuje interpretu vědět, že data nejsou určena k provedení, a to zabraňuje útokům z práce. Jedná se o další běžnou techniku útoku, která se nazývá *skriptování mezi sítěmi* (XSS).
+Uvozovací znaky zajistí, že se všechny zobrazují jako *výstup.* Uvozovací znaky také umožňuje Překladači zjistit, že data nejsou určena ke spuštění, a tím zabráníte útokům v práci. Toto je další běžná technika útoku označovaná jako *skriptování mezi weby* (XSS).
 
-Pokud používáte webový rámec od třetí strany, můžete ověřit možnosti kódování výstupu na webových stránkách pomocí [cheat sheet prevence OWASP XSS](https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.md).
+Pokud používáte webovou architekturu od třetí strany, můžete ověřit možnosti pro výstupní kódování na webech pomocí [listu tahák pro ochranu OWASP XSS](https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.md).
 
 ### <a name="use-parameterized-queries-when-you-contact-the-database"></a>Použití parametrizovaných dotazů při kontaktování databáze
 
-Nikdy nevytvářejte vsazený databázový dotaz "průběžně" v kódu a odesílejte jej přímo do databáze. Škodlivý kód vložený do aplikace může potenciálně způsobit odcizení, vymazání nebo úpravu databáze. Aplikace může být také použita ke spuštění škodlivých příkazů operačního systému v operačním systému, který je hostitelem databáze.
+Nikdy nevytvářejte vložený databázový dotaz "průběžně" v kódu a odešlete ho přímo do databáze. Škodlivý kód vložený do vaší aplikace může potenciálně způsobit odcizení, vymazání nebo úpravu databáze. Vaši aplikaci je také možné použít ke spouštění škodlivých příkazů operačního systému v operačním systému, který hostuje vaši databázi.
 
-Místo toho použijte parametrizované dotazy nebo uložené procedury. Při použití parametrizované dotazy, můžete vyvolat postup z kódu bezpečně a předat řetězec bez obav, že bude považována za součást příkazu dotazu.
+Místo toho použijte parametrizované dotazy nebo uložené procedury. Použijete-li parametrizované dotazy, můžete vyvolat proceduru z kódu bezpečně a předat ji řetězci bez obav, že bude zpracována jako součást příkazu dotazu.
 
-### <a name="remove-standard-server-headers"></a>Odebrání standardních záhlaví serveru
+### <a name="remove-standard-server-headers"></a>Odebrat standardní hlavičky serveru
 
-Záhlaví jako Server, X-Powered-By a X-AspNet-Version odhalují informace o serveru a základních technologiích. Doporučujeme potlačit tyto hlavičky, aby se zabránilo snímání otisků prstů aplikace.
-Viz [odebrání standardních záhlaví serverů na webech Azure](https://azure.microsoft.com/blog/removing-standard-server-headers-on-windows-azure-web-sites/).
+Hlavičky, jako jsou server, X se systémem a X-AspNet – verze, odhalují informace o serveru a základních technologiích. Doporučujeme potlačit tyto hlavičky, abyste se vyhnuli otiskům prstů aplikace.
+Podívejte se [na téma odebrání standardních hlaviček serveru na webech Azure](https://azure.microsoft.com/blog/removing-standard-server-headers-on-windows-azure-web-sites/).
 
-### <a name="segregate-your-production-data"></a>Oddělení výrobních dat
+### <a name="segregate-your-production-data"></a>Oddělení provozních dat
 
-Vaše produkční data, nebo "skutečné" data, by neměly být používány pro vývoj, testování, nebo jakýkoli jiný účel, než to, co firma zamýšlela. Pro veškerý vývoj a testování by měla být použita maskovaná ([anonymizovaná)](https://en.wikipedia.org/wiki/Data_anonymization)datová sada.
+Vaše produkční data nebo "skutečná" data by se neměla používat pro vývoj, testování nebo jiné účely, než jaké jsou zamýšlené v podniku. Pro všechny účely vývoje a testování by se měla použít maskovaná datová sada ([anonymitá](https://en.wikipedia.org/wiki/Data_anonymization)).
 
-To znamená, že k vašim skutečným datům má přístup méně lidí, což snižuje vaši prostor pro útok. Znamená to také, že osobní údaje vidí méně zaměstnanců, což eliminuje možné porušení důvěrnosti.
+To znamená, že přístup k vašim skutečným datům má méně lidí, což snižuje plochu útoku. Znamená to také méně zaměstnanců, kteří uvidí osobní údaje, což eliminuje případné porušení důvěrnosti.
 
 ### <a name="implement-a-strong-password-policy"></a>Implementace zásad silného hesla
 
-Chcete-li se bránit proti hrubou silou a hádání založenéna slovníku, musíte implementovat zásady silné heslo zajistit, aby uživatelé vytvořit složité heslo (například 12 znaků minimální délka a vyžadující alfanumerické a speciální znaky).
+Aby bylo možné chránit před hrubou silou a odhadem na základě slovníku, je nutné implementovat zásady silného hesla, aby uživatelé mohli vytvářet složitá hesla (například 12 znaků minimální délky a vyžadovat alfanumerické a speciální znaky).
 
-K vytvoření a vynucení zásad hesel můžete použít rozhraní identity. Azure AD B2C vám pomůže se správou hesel tím, že poskytuje [integrované zásady](../../active-directory-b2c/tutorial-create-user-flows.md#create-a-password-reset-user-flow), [samoobslužné resetování hesla](../../active-directory-b2c/user-flow-self-service-password-reset.md)a další.
+Rozhraní identity můžete použít k vytvoření a prosazování zásad hesel. Azure AD B2C vám pomůže se správou hesel tím, že poskytuje [předdefinované zásady](../../active-directory-b2c/tutorial-create-user-flows.md#create-a-password-reset-user-flow), [Samoobslužné resetování hesla](../../active-directory-b2c/user-flow-self-service-password-reset.md)a další služby.
 
-Chcete-li se bránit útokům na výchozí účty, ověřte, zda jsou všechny klíče a hesla nahraditelné a zda jsou po instalaci prostředků generována nebo nahrazena.
+Aby se zabránilo útokům na výchozí účty, ověřte, že jsou všechny klíče a hesla nahraditelný a že jsou vygenerované nebo nahrazené po instalaci prostředků.
 
 Pokud aplikace musí automaticky generovat hesla, ujistěte se, že vygenerovaná hesla jsou náhodná a že mají vysokou entropii.
 
-### <a name="validate-file-uploads"></a>Ověřit odeslání souborů
+### <a name="validate-file-uploads"></a>Ověřit nahrávání souborů
 
-Pokud vaše aplikace umožňuje [nahrávání souborů](https://www.owasp.org/index.php/Unrestricted_File_Upload), zvažte opatření, která můžete přijmout pro tuto rizikovou aktivitu. Prvním krokem v mnoha útocích je dostat nějaký škodlivý kód do systému, který je pod útokem. Použití nahrávání souborů pomáhá útočníkovi toho dosáhnout. OWASP nabízí řešení pro ověření souboru, aby bylo zajištěno, že soubor, který nahráváte, je bezpečný.
+Pokud vaše aplikace umožňuje [nahrávání souborů](https://www.owasp.org/index.php/Unrestricted_File_Upload), zvažte opatření, která můžete pro tuto rizikové aktivity provést. Prvním krokem v mnoha útokech je získání škodlivého kódu do systému, který je napadený. K tomu může útočník využít nahrávání souboru. OWASP nabízí řešení pro ověřování souboru, aby se zajistilo, že soubor, který odesíláte, je bezpečný.
 
-Antimalwarová ochrana pomáhá identifikovat a odstranit viry, spyware a další škodlivý software. Můžete nainstalovat [program Microsoft Antimalware](../fundamentals/antimalware.md) nebo řešení ochrany koncového bodu partnera společnosti Microsoft ([Trend Micro](https://www.trendmicro.com/azure/), [Broadcom](https://www.broadcom.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)a [Endpoint Protection](https://docs.microsoft.com/configmgr/protect/deploy-use/endpoint-protection)).
+Ochrana proti malwaru pomáhá identifikovat a odstraňovat viry, spyware a další škodlivý software. Můžete nainstalovat [Microsoft Antimalware](../fundamentals/antimalware.md) nebo řešení ochrany koncového bodu Microsoft Partner Microsoftu ([Trend Micro](https://www.trendmicro.com/azure/), [Broadcom](https://www.broadcom.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)a [Endpoint Protection](https://docs.microsoft.com/configmgr/protect/deploy-use/endpoint-protection)).
 
-[Microsoft Antimalware](../fundamentals/antimalware.md) obsahuje funkce, jako je ochrana v reálném čase, plánované skenování, náprava malwaru, aktualizace podpisů, aktualizace motorů, ukázky hlášení a shromažďování událostí vyloučení. Antimalwarová a partnerská řešení Microsoftu můžete integrovat pomocí [Azure Security Center](../../security-center/security-center-partner-integration.md) pro snadné nasazení a integrované detekce (výstrahy a incidenty).
+[Microsoft Antimalware](../fundamentals/antimalware.md) obsahuje funkce, jako je ochrana v reálném čase, plánované prohledávání, náprava malwaru, aktualizace signatur, aktualizace modulu, vytváření sestav ukázek a shromažďování událostí vyloučení. Pomocí [Azure Security Center](../../security-center/security-center-partner-integration.md) můžete integrovat řešení Microsoftu proti malwaru a partnerům, aby se usnadnilo nasazení a vestavěné detekce (výstrahy a incidenty).
 
-### <a name="dont-cache-sensitive-content"></a>Neukládat do mezipaměti citlivý obsah
+### <a name="dont-cache-sensitive-content"></a>Neukládat citlivý obsah do mezipaměti
 
-Neukládat citlivý obsah do mezipaměti v prohlížeči. Prohlížeče mohou ukládat informace pro ukládání do mezipaměti a historii. Soubory uložené v mezipaměti jsou uloženy ve složce, jako je složka Dočasné soubory Internetu, v případě aplikace Internet Explorer. Když jsou tyto stránky znovu odkazovány, prohlížeč zobrazí stránky ze své mezipaměti. Pokud se uživateli zobrazí citlivé informace (adresa, údaje o kreditní kartě, číslo sociálního pojištění, uživatelské jméno), mohou být tyto informace uloženy v mezipaměti prohlížeče a mohou být možné je získat kontrolou mezipaměti prohlížeče nebo pouhým stisknutím tlačítka **Zpět** prohlížeče.
+Nepoužívejte v prohlížeči ukládání citlivého obsahu do mezipaměti. Prohlížeče můžou ukládat informace pro ukládání do mezipaměti a historii. Soubory uložené v mezipaměti se ukládají do složky, jako je například složka dočasných souborů Internetu, v případě aplikace Internet Explorer. Když se tyto stránky označují znovu, prohlížeč zobrazí stránky ze své mezipaměti. Pokud se uživateli zobrazí citlivé informace (adresa, podrobnosti kreditní karty, číslo sociálního pojištění, uživatelské jméno), mohou být informace uloženy v mezipaměti prohlížeče a lze je získat prozkoumáním mezipaměti prohlížeče nebo pouhým stisknutím tlačítka **zpět** v prohlížeči.
 
 ## <a name="verification"></a>Ověření
-Ověřovací fáze zahrnuje komplexní úsilí o zajištění toho, aby kodex splňoval zásady zabezpečení a ochrany osobních údajů, které byly stanoveny v předchozích fázích.
+Fáze ověření zahrnuje komplexní úsilí, které zajistí, že kód bude vyhovovat zabezpečení a ochraně osobních údajů principy, které byly vytvořeny v předchozích fázích.
 
-### <a name="find-and-fix-vulnerabilities-in-your-application-dependencies"></a>Vyhledání a oprava slabých míst v závislostech aplikací
+### <a name="find-and-fix-vulnerabilities-in-your-application-dependencies"></a>Vyhledání a oprava chyb zabezpečení v závislostech aplikace
 
-Prohledáte aplikaci a její závislé knihovny, abyste identifikovali všechny známé ohrožené součásti. Mezi produkty, které jsou k dispozici pro provedení této [kontroly, patří Kontrola závislostí OWASP](https://www.owasp.org/index.php/OWASP_Dependency_Check),[Snyk](https://snyk.io/)a [Černá kachna](https://www.blackducksoftware.com/).
+Provedete kontrolu aplikace a jejích závislých knihoven, abyste identifikovali všechny známé ohrožené součásti. K dispozici jsou produkty, které jsou k dispozici k provedení tohoto hledání, včetně [OWASP závislostí](https://www.owasp.org/index.php/OWASP_Dependency_Check),[Snyk](https://snyk.io/)a [černých kachen](https://www.blackducksoftware.com/).
 
-Pro webové aplikace Azure App Service Web Apps je k dispozici prohledávání zranitelnosti využívající zabezpečení [tinfoil.](https://www.tinfoilsecurity.com/) [Tinfoil Security scanning prostřednictvím služby App Service](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/) nabízí vývojářům a správcům rychlý, integrovaný a ekonomický způsob zjišťování a řešení chyb zabezpečení dříve, než je škodlivý objekt může využít.
+Pro Azure App Service Web Apps je k dispozici kontrola ohrožení zabezpečení založená na [zabezpečení TINFOIL](https://www.tinfoilsecurity.com/) . [TINFOIL prověřování zabezpečení prostřednictvím App Service](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/) nabízí vývojářům a správcům rychlý, integrovaný a ekonomický způsob zjišťování a řešení ohrožení zabezpečení předtím, než ho škodlivý objekt actor může využít.
 
 > [!NOTE]
-> Zabezpečení [tinfoilů](../../active-directory/saas-apps/tinfoil-security-tutorial.md)můžete také integrovat s Azure AD . Integrace zabezpečení alobalu s Azure AD vám poskytuje následující výhody:
->  - Ve službě Azure AD můžete řídit, kdo má přístup k zabezpečení tinfoil.
->  - Vaši uživatelé mohou být automaticky přihlášeni k zabezpečení tinfoil (jednotné přihlašování) pomocí svých účtů Azure AD.
->  - Své účty můžete spravovat v jediném centrálním umístění, na webu Azure Portal.
+> [Zabezpečení TINFOIL můžete také integrovat s Azure AD](../../active-directory/saas-apps/tinfoil-security-tutorial.md). Integrace zabezpečení TINFOIL s Azure AD poskytuje následující výhody:
+>  - V Azure AD můžete řídit, kdo má přístup k TINFOIL zabezpečení.
+>  - Uživatelé můžou být automaticky přihlášení k zabezpečení TINFOIL (jednotné přihlašování) pomocí svých účtů Azure AD.
+>  - Účty můžete spravovat v jednom centrálním umístění, Azure Portal.
 
 ### <a name="test-your-application-in-an-operating-state"></a>Testování aplikace v provozním stavu
 
-Dynamické testování zabezpečení aplikací (DAST) je proces testování aplikace v provozním stavu za účelem nalezení slabých míst zabezpečení. Nástroje DAST analyzují programy při jejich provádění, aby nalezly chyby zabezpečení, jako je poškození paměti, nezabezpečená konfigurace serveru, skriptování mezi sítěmi, problémy s oprávněními uživatelů, vkládání SQL a další důležité problémy se zabezpečením.
+Testování dynamického zabezpečení aplikací (DAST) je proces testování aplikace v operačním stavu za účelem nalezení slabých chyb zabezpečení. Nástroje DAST analyzují programy, když se spouštějí, aby našli chyby zabezpečení, například poškození paměti, nezabezpečenou konfiguraci serveru, skriptování mezi weby, problémy s uživatelskými oprávněními, injektáže SQL a další důležité aspekty zabezpečení.
 
-DAST se liší od testování zabezpečení statické aplikace (SAST). Nástroje SAST analyzují zdrojový kód nebo zkompilované verze kódu, když se kód neprovádí, aby našel chyby zabezpečení.
+DAST se liší od statického testování zabezpečení aplikací (SAST). Nástroje SAST analyzují zdrojový kód nebo zkompilované verze kódu, když kód není spuštěn, aby bylo možné najít chyby zabezpečení.
 
-Proveďte DAST, nejlépe s pomocí bezpečnostního odborníka [(tester penetračního testu](../fundamentals/pen-testing.md) nebo posuzovatel zranitelnosti). Pokud odborník na zabezpečení není k dispozici, můžete dast provést sami pomocí webového proxy skeneru a některých školení. Připojte skener DAST včas, abyste zajistili, že do kódu nezavedete zjevné problémy se zabezpečením. Seznam skenerů ohrožení zabezpečení webových aplikací naleznete na webu [OWASP.](https://www.owasp.org/index.php/Category:Vulnerability_Scanning_Tools)
+Proveďte DAST, nejlépe s asistencí odborníka na zabezpečení ( [Tester pro průnik](../fundamentals/pen-testing.md) nebo posuzovatel ohrožení zabezpečení). Pokud není k dispozici specialista zabezpečení, můžete DAST sami provádět pomocí webového proxy serveru a některých školení. Připojte se k DAST skeneru na začátku, abyste se ujistili, že do kódu nepřinášíte zjevné problémy zabezpečení. Seznam skenerů ohrožení zabezpečení webových aplikací najdete na webu [OWASP](https://www.owasp.org/index.php/Category:Vulnerability_Scanning_Tools) .
 
-### <a name="perform-fuzz-testing"></a>Proveďte testování fuzz
+### <a name="perform-fuzz-testing"></a>Provést testování fuzzy
 
-Při [testování fuzz](https://cloudblogs.microsoft.com/microsoftsecure/2007/09/20/fuzz-testing-at-microsoft-and-the-triage-process/), můžete vyvolat selhání programu záměrným zavedením poškozených nebo náhodných dat do aplikace. Vyvolání selhání programu pomáhá odhalit potenciální problémy se zabezpečením před vydáním aplikace.
+V případě neočekávaného [testování](https://cloudblogs.microsoft.com/microsoftsecure/2007/09/20/fuzz-testing-at-microsoft-and-the-triage-process/)vystavíte selhání programu záměrně, když do aplikace zavedete poškozená nebo náhodná data. Selhání programu pomáhá odhalit potenciální problémy zabezpečení před vydáním aplikace.
 
-[Detekce bezpečnostních rizik](https://docs.microsoft.com/security-risk-detection/) je jedinečná testovací služba společnosti Microsoft pro hledání chyb v softwaru kritických pro zabezpečení.
+[Detekce rizik se zabezpečením](https://docs.microsoft.com/security-risk-detection/) je jedinečná služba pro nenáročné testování Microsoftu pro nalezení chyb kritických pro zabezpečení v softwaru.
 
-### <a name="conduct-attack-surface-review"></a>Proveďte kontrolu povrchu útoku
+### <a name="conduct-attack-surface-review"></a>Provést kontrolu na Surface útoků
 
-Kontrola povrchu útoku po dokončení kódu pomáhá zajistit, že byly zváženy všechny změny návrhu nebo implementace aplikace nebo systému. Pomáhá zajistit, že všechny nové způsoby útoku, které byly vytvořeny v důsledku změn, včetně modelů hrozeb, byly přezkoumány a zmírněny.
+Kontrola prostoru pro útoky po dokončení kódu pomáhá zajistit, že byly zváženy všechny změny návrhu nebo implementace v aplikaci nebo systému. Pomáhá zajistit, že všechny nové vektory útoku, které byly vytvořeny v důsledku změn, včetně modelů hrozeb, byly zkontrolovány a omezeny.
 
-Můžete vytvořit obrázek o povrchu útoku skenováním aplikace. Společnost Microsoft nabízí nástroj pro analýzu povrchu útoku s názvem [Attack Surface Analyzer](https://www.microsoft.com/download/details.aspx?id=24487). Můžete si vybrat z mnoha komerčních dynamických testovacích a zranitelných nástrojů nebo služeb, včetně [OWASP Zed Attack Proxy Project](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project), [Arachni](http://arachni-scanner.com/), [Skipfish](https://code.google.com/p/skipfish/)a [w3af](http://w3af.sourceforge.net/). Tyto nástroje pro skenování procházet aplikaci a mapovat části aplikace, které jsou přístupné přes web. Na Azure Marketplace můžete taky hledat podobné [vývojářské nástroje](https://azuremarketplace.microsoft.com/marketplace/apps/category/developer-tools?page=1).
+Pomocí prohledávání aplikace můžete vytvořit obrázek prostoru pro útoky. Microsoft nabízí analytický nástroj pro útoky, který se nazývá [analyzátor Surface útoků](https://www.microsoft.com/download/details.aspx?id=24487). Můžete si vybrat z mnoha komerčních nástrojů pro kontrolu a testování ohrožení zabezpečení, včetně [projektu proxy útoku OWASP zovaný](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project), [Arachni](http://arachni-scanner.com/), [Skipfish](https://code.google.com/p/skipfish/)a [w3af](http://w3af.sourceforge.net/). Tyto skenovací nástroje procházejí vaši aplikaci a mapují části aplikace, které jsou přístupné přes web. Můžete také Hledat v Azure Marketplace podobných [vývojářských nástrojů](https://azuremarketplace.microsoft.com/marketplace/apps/category/developer-tools?page=1).
 
-### <a name="perform-security-penetration-testing"></a>Provedení testování průniku zabezpečení
+### <a name="perform-security-penetration-testing"></a>Provádění testování průniku zabezpečení
 
-Zajištění zabezpečení aplikace je stejně důležité jako testování jiných funkcí. Udělejte [penetrační testování](../fundamentals/pen-testing.md) standardní součástí procesu sestavení a nasazení. Naplánujte pravidelné testy zabezpečení a prohledávání chyb zabezpečení v nasazených aplikacích a sledujte otevřené porty, koncové body a útoky.
+Zajištění zabezpečení vaší aplikace je důležité jako testování jakékoli jiné funkce. Proveďte [testování průniku](../fundamentals/pen-testing.md) standardní části procesu sestavení a nasazení. Naplánujte pravidelné testy zabezpečení a kontrolu ohrožení zabezpečení u nasazených aplikací a sledujte otevřené porty, koncové body a útoky.
 
-### <a name="run-security-verification-tests"></a>Spuštění ověřovacích testů zabezpečení
+### <a name="run-security-verification-tests"></a>Spustit ověřovací testy zabezpečení
 
-[Secure DevOps Kit for Azure](https://azsk.azurewebsites.net/index.html) (AzSK) obsahuje SVT pro více služeb platformy Azure. Tyto spouštění SVTs pravidelně zajistit, že vaše předplatné Azure a různé prostředky, které tvoří vaše aplikace jsou v zabezpečeném stavu. Můžete také automatizovat tyto testy pomocí průběžné integrace/průběžné nasazení (CI/CD) rozšíření funkce AzSK, který zpřístupňuje SVTs jako rozšíření sady Visual Studio.
+[Sada Secure DevOps Kit for Azure](https://azsk.azurewebsites.net/index.html) (AzSK) obsahuje SVTs pro několik služeb platformy Azure. Tyto SVTs pravidelně spouštíte, abyste měli jistotu, že vaše předplatné Azure a různé prostředky, které tvoří vaši aplikaci, jsou v zabezpečeném stavu. Tyto testy můžete automatizovat také pomocí funkce rozšíření průběžná integrace/průběžné nasazování (CI/CD) v AzSK, která zpřístupňuje SVTs jako rozšíření sady Visual Studio.
 
 ## <a name="next-steps"></a>Další kroky
-V následujících článcích doporučujeme ovládací prvky zabezpečení a aktivity, které vám pomohou navrhovat a nasazovat zabezpečené aplikace.
+V následujících článcích doporučujeme kontrolu zabezpečení a aktivity, které vám pomůžou navrhovat a nasazovat zabezpečené aplikace.
 
-- [Navrhujte zabezpečené aplikace](secure-design.md)
+- [Návrh zabezpečených aplikací](secure-design.md)
 - [Nasazení zabezpečených aplikací](secure-deploy.md)

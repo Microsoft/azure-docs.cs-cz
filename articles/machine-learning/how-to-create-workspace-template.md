@@ -1,7 +1,7 @@
 ---
-title: Vytvoření pracovního prostoru pomocí šablony Azure Resource Manager
+title: Vytvoření pracovního prostoru s Azure Resource Manager šablonou
 titleSuffix: Azure Machine Learning
-description: Zjistěte, jak pomocí šablony Azure Resource Manager vytvořit nový pracovní prostor Azure Machine Learning.
+description: Naučte se používat šablonu Azure Resource Manager k vytvoření nového pracovního prostoru Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,26 +11,26 @@ author: Blackmist
 ms.date: 03/05/2020
 ms.custom: seoapril2019
 ms.openlocfilehash: b802a9c9df7e7f0c44ea66ee0061efb517b80050
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81682762"
 ---
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 <br>
 
-# <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Vytvoření pracovního prostoru pro Azure Machine Learning pomocí šablony Azure Resource Manageru
+# <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Použití šablony Azure Resource Manager k vytvoření pracovního prostoru pro Azure Machine Learning
 
-V tomto článku se dozvíte několik způsobů, jak vytvořit pracovní prostor Azure Machine Learning pomocí šablon Azure Resource Manager. Šablona Správce prostředků usnadňuje vytváření prostředků jako jedné koordinované operace. Šablona je dokument JSON, který definuje prostředky, které jsou potřebné pro nasazení. Může také určit parametry nasazení. Parametry se používají k zadání vstupních hodnot při použití šablony.
+V tomto článku se dozvíte několik způsobů, jak vytvořit pracovní prostor Azure Machine Learning pomocí šablon Azure Resource Manager. Šablona Správce prostředků usnadňuje vytváření prostředků jako jediné koordinované operace. Šablona je dokument JSON, který definuje prostředky, které jsou potřebné pro nasazení. Může také specifikovat parametry nasazení. Parametry slouží k poskytnutí vstupních hodnot při použití šablony.
 
-Další informace najdete [v tématu Nasazení aplikace pomocí šablony Azure Resource Manager](../azure-resource-manager/templates/deploy-powershell.md).
+Další informace najdete v tématu [nasazení aplikace pomocí šablony Azure Resource Manager](../azure-resource-manager/templates/deploy-powershell.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné **Azure**. Pokud ho nemáte, vyzkoušejte [bezplatnou nebo placenou verzi Azure Machine Learning](https://aka.ms/AMLFree).
+* **Předplatné Azure**. Pokud ho nemáte, vyzkoušejte [bezplatnou nebo placená verzi Azure Machine Learning](https://aka.ms/AMLFree).
 
-* Pokud chcete použít šablonu z příkazového příkazového příkazu, potřebujete buď [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.2.0) nebo [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+* Pokud chcete použít šablonu z CLI, potřebujete buď [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.2.0) , nebo rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## <a name="resource-manager-template"></a>Šablona Resource Manageru
 
@@ -47,43 +47,43 @@ Tato šablona vytvoří následující služby Azure:
 * Azure Container Registry
 * Pracovní prostor služby Azure Machine Learning
 
-Skupina prostředků je kontejner, který obsahuje služby. Různé služby jsou vyžadovány pracovního prostoru Azure Machine Learning.
+Skupina prostředků je kontejner, který obsahuje služby. Jednotlivé služby jsou vyžadovány pracovním prostorem Azure Machine Learning.
 
-Ukázková šablona má dva parametry:
+Příklad šablony má dva parametry:
 
-* **Umístění,** kde bude vytvořena skupina prostředků a služby.
+* **Umístění** , kde se vytvoří skupina prostředků a služby.
 
-    Šablona použije umístění, které vyberete pro většinu zdrojů. Výjimkou je služba Application Insights, která není k dispozici ve všech umístěních, ve kterých jsou ostatní služby. Pokud vyberete umístění, kde není k dispozici, služba bude vytvořena v umístění –– usa.
+    Šablona bude používat umístění, které jste vybrali pro většinu prostředků. Výjimkou je služba Application Insights, která není dostupná ve všech umístěních, ve kterých jsou jiné služby. Pokud vyberete umístění, kde není k dispozici, bude služba vytvořena v umístění Střed USA – jih.
 
 * **Název pracovního prostoru**, což je popisný název pracovního prostoru Azure Machine Learning.
 
     > [!NOTE]
-    > Název pracovního prostoru nerozlišuje malá a velká písmena.
+    > V názvu pracovního prostoru se nerozlišují malá a velká písmena.
 
-    Názvy ostatních služeb jsou generovány náhodně.
+    Názvy ostatních služeb jsou vygenerovány náhodně.
 
 > [!TIP]
-> Zatímco šablona přidružená k tomuto dokumentu vytvoří nový registr kontejnerů Azure, můžete také vytvořit nový pracovní prostor bez vytvoření registru kontejnerů. Jeden bude vytvořen při provádění operace, která vyžaduje registr kontejneru. Například školení nebo nasazení modelu.
+> Zatímco šablona přidružená k tomuto dokumentu vytvoří novou Azure Container Registry, můžete také vytvořit nový pracovní prostor bez vytvoření registru kontejneru. Ten se vytvoří při provedení operace, která vyžaduje Registry kontejneru. Například školení nebo nasazení modelu.
 >
-> Můžete také odkazovat na existující registr kontejneru nebo účet úložiště v šabloně Azure Resource Manager, namísto vytvoření nového.
+> Místo vytvoření nové služby můžete také odkazovat na existující registr kontejnerů nebo účet úložiště v šabloně Azure Resource Manager.
 
 [!INCLUDE [machine-learning-delete-acr](../../includes/machine-learning-delete-acr.md)]
 
-Další informace o šablonách naleznete v následujících článcích:
+Další informace o šablonách najdete v následujících článcích:
 
-* [Autor šablony Azure Resource Manager](../azure-resource-manager/templates/template-syntax.md)
-* [Nasazení aplikace pomocí šablon Azure Resource Manageru](../azure-resource-manager/templates/deploy-powershell.md)
-* [Typy zdrojů Microsoft.MachineLearningServices](https://docs.microsoft.com/azure/templates/microsoft.machinelearningservices/allversions)
+* [Vytváření šablon Azure Resource Manager](../azure-resource-manager/templates/template-syntax.md)
+* [Nasazení aplikace pomocí šablon Azure Resource Manager](../azure-resource-manager/templates/deploy-powershell.md)
+* [Typy prostředků Microsoft. MachineLearningServices](https://docs.microsoft.com/azure/templates/microsoft.machinelearningservices/allversions)
 
 ### <a name="advanced-template"></a>Pokročilá šablona
 
-Následující ukázková šablona ukazuje, jak vytvořit pracovní prostor se třemi nastaveními:
+Následující příklad šablony ukazuje, jak vytvořit pracovní prostor se třemi nastaveními:
 
-* Povolit nastavení vysoké důvěrnosti pracovního prostoru
+* Povolit nastavení vysoké důvěrnosti pro pracovní prostor
 * Povolení šifrování pro pracovní prostor
-* Používá existující Azure Key Vault k načtení klíčů spravovaných zákazníkem.
+* Použije existující Azure Key Vault k načtení klíčů spravovaných zákazníkem.
 
-Další informace naleznete [v tématu Šifrování v klidovém stavu](concept-enterprise-security.md#encryption-at-rest).
+Další informace najdete v tématu věnovaném [šifrování v klidovém umístění](concept-enterprise-security.md#encryption-at-rest).
 
 ```json
 {
@@ -265,40 +265,40 @@ Další informace naleznete [v tématu Šifrování v klidovém stavu](concept-e
 }
 ```
 
-Chcete-li získat ID trezoru klíčů a identifikátor URI klíče, který tato šablona potřebuje, můžete použít azure CLI. Následující příkaz získá ID trezoru klíčů:
+Pokud chcete získat ID Key Vault a klíč k identifikátoru URI, který potřebuje Tato šablona, můžete použít rozhraní příkazového řádku Azure CLI. Následující příkaz získá ID Key Vault:
 
 ```azurecli-interactive
 az keyvault show --name mykeyvault --resource-group myresourcegroup --query "id"
 ```
 
-Tento příkaz vrátí hodnotu podobnou . `"/subscriptions/{subscription-guid}/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mykeyvault"`
+Tento příkaz vrátí hodnotu podobnou `"/subscriptions/{subscription-guid}/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mykeyvault"`.
 
-Chcete-li získat identifikátor URI pro klíč spravovaný zákazníkem, použijte následující příkaz:
+Identifikátor URI pro spravovaný klíč zákazníka získáte pomocí následujícího příkazu:
 
 ```azurecli-interactive
 az keyvault key show --vault-name mykeyvault --name mykey --query "key.kid"
 ```
 
-Tento příkaz vrátí hodnotu podobnou . `"https://mykeyvault.vault.azure.net/keys/mykey/{guid}"`
+Tento příkaz vrátí hodnotu podobnou `"https://mykeyvault.vault.azure.net/keys/mykey/{guid}"`.
 
 > [!IMPORTANT]
-> Po vytvoření pracovního prostoru nelze změnit nastavení důvěrných dat, šifrování, ID trezoru klíčů nebo identifikátorů klíčů. Chcete-li tyto hodnoty změnit, musíte vytvořit nový pracovní prostor pomocí nových hodnot.
+> Po vytvoření pracovního prostoru nemůžete změnit nastavení pro důvěrná data, šifrování, ID trezoru klíčů nebo identifikátory klíčů. Chcete-li tyto hodnoty změnit, je nutné vytvořit nový pracovní prostor s použitím nových hodnot.
 
 ## <a name="use-the-azure-portal"></a>Použití webu Azure Portal
 
-1. Postupujte podle pokynů v [části Nasazení prostředků z vlastní šablony](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal#deploy-resources-from-custom-template). Když se dostanete na obrazovku __Upravit šablonu,__ vložte ji do šablony z tohoto dokumentu.
-1. Vyberte __Uložit,__ chcete-li šablonu použít. Uveďte následující informace a souhlasíte s uvedenými podmínkami:
+1. Postupujte podle kroků v části [nasazení prostředků z vlastní šablony](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal#deploy-resources-from-custom-template). Po přijetí na obrazovku __Upravit šablonu__ vložte do šablony z tohoto dokumentu šablonu.
+1. Vyberte __Uložit__ a použijte šablonu. Zadejte následující informace a vyjádřete souhlas s uvedenými podmínkami a ujednáními:
 
-   * Předplatné: Vyberte předplatné Azure, které chcete použít pro tyto prostředky.
-   * Skupina prostředků: Vyberte nebo vytvořte skupinu prostředků, která bude obsahovat služby.
-   * Název pracovního prostoru: Název, který se má použít pro pracovní prostor Azure Machine Learning, který se vytvoří. Název pracovního prostoru musí být mezi 3 a 33 znaky. Může obsahovat pouze alfanumerické znaky a '-'.
-   * Umístění: Vyberte umístění, kde budou zdroje vytvořeny.
+   * Předplatné: vyberte předplatné Azure, které chcete použít pro tyto prostředky.
+   * Skupina prostředků: vyberte nebo vytvořte skupinu prostředků, která bude obsahovat služby.
+   * Název pracovního prostoru: název, který se má použít pro pracovní prostor Azure Machine Learning, který se vytvoří. Název pracovního prostoru musí být dlouhý 3 až 33 znaků. Může obsahovat pouze alfanumerické znaky a znak "-".
+   * Umístění: vyberte umístění, kde se budou prostředky vytvářet.
 
-Další informace naleznete v [tématu Nasazení prostředků z vlastní šablony](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template).
+Další informace najdete v tématu [nasazení prostředků z vlastní šablony](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template).
 
 ## <a name="use-azure-powershell"></a>Použití Azure Powershell
 
-Tento příklad předpokládá, že jste uložili `azuredeploy.json` šablonu do souboru pojmenovaného v aktuálním adresáři:
+V tomto příkladu se předpokládá, že jste šablonu uložili do souboru s `azuredeploy.json` názvem v aktuálním adresáři:
 
 ```powershell
 New-AzResourceGroup -Name examplegroup -Location "East US"
@@ -307,11 +307,11 @@ new-azresourcegroupdeployment -name exampledeployment `
   -templatefile .\azuredeploy.json -workspaceName "exampleworkspace" -sku "basic"
 ```
 
-Další informace najdete [v tématu Nasazení prostředků pomocí šablon Správce prostředků a Azure PowerShellu](../azure-resource-manager/templates/deploy-powershell.md) a [Nasazení privátní šablony Správce prostředků s tokenem SAS a Azure PowerShellem.](../azure-resource-manager/templates/secure-template-with-sas-token.md)
+Další informace najdete v tématu [nasazení prostředků pomocí šablon Správce prostředků a Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md) a [nasazení privátní šablony Správce prostředků pomocí tokenu SAS a Azure PowerShell](../azure-resource-manager/templates/secure-template-with-sas-token.md).
 
 ## <a name="use-the-azure-cli"></a>Použití Azure CLI
 
-Tento příklad předpokládá, že jste uložili `azuredeploy.json` šablonu do souboru pojmenovaného v aktuálním adresáři:
+V tomto příkladu se předpokládá, že jste šablonu uložili do souboru s `azuredeploy.json` názvem v aktuálním adresáři:
 
 ```azurecli-interactive
 az group create --name examplegroup --location "East US"
@@ -322,35 +322,35 @@ az group deployment create \
   --parameters workspaceName=exampleworkspace location=eastus sku=basic
 ```
 
-Další informace najdete [v tématu Nasazení prostředků pomocí šablon Správce prostředků a Azure CLI](../azure-resource-manager/templates/deploy-cli.md) a [nasazení privátní šablony Správce prostředků s tokenem SAS a Azure CLI](../azure-resource-manager/templates/secure-template-with-sas-token.md).
+Další informace najdete v tématu [nasazení prostředků pomocí šablon Správce prostředků a Azure CLI](../azure-resource-manager/templates/deploy-cli.md) a [nasazení privátních správce prostředků šablony s tokenem SAS a](../azure-resource-manager/templates/secure-template-with-sas-token.md)rozhraním příkazového řádku Azure CLI.
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
-### <a name="resource-provider-errors"></a>Chyby zprostředkovatele prostředků
+### <a name="resource-provider-errors"></a>Chyby poskytovatele prostředků
 
 [!INCLUDE [machine-learning-resource-provider](../../includes/machine-learning-resource-provider.md)]
 
-### <a name="azure-key-vault-access-policy-and-azure-resource-manager-templates"></a>Zásady přístupu k úložišti Azure Key Vault a šablony Azure Resource Manageru
+### <a name="azure-key-vault-access-policy-and-azure-resource-manager-templates"></a>Azure Key Vault zásady přístupu a šablony Azure Resource Manager
 
-Když použijete šablonu Azure Resource Manager k vytvoření pracovního prostoru a přidružených prostředků (včetně Azure Key Vault), vícekrát. Například použití šablony vícekrát se stejnými parametry jako součást průběžné integrace a nasazení kanálu.
+Když použijete šablonu Azure Resource Manager k vytvoření pracovního prostoru a přidružených prostředků (včetně Azure Key Vault), několikrát. Například použití šablony několikrát se stejnými parametry jako součást kanálu průběžné integrace a nasazení.
 
-Většina operací vytváření prostředků prostřednictvím šablon je idempotentní, ale trezor klíčů vymaže zásady přístupu při každém použití šablony. Vymazáním zásad přístupu přerušíte přístup k trezoru klíčů pro všechny existující pracovní prostory, které jej používají. Například stop/create funkce virtuálního počítače Azure poznámkových bloků může selhat.  
+Většina operací vytváření prostředků prostřednictvím šablon je idempotentní, ale Key Vault neodstraní zásady přístupu pokaždé, když se šablona používá. Vymazání zásad přístupu přeruší přístup k Key Vault pro libovolný existující pracovní prostor, který ho používá. Například zastavení/vytvoření funkcí Azure Notebooks virtuálního počítače může selhat.  
 
 Chcete-li se tomuto problému vyhnout, doporučujeme jeden z následujících přístupů:
 
-* Nenasazujte šablonu více než jednou pro stejné parametry. Nebo odstraňte existující prostředky před použitím šablony k jejich opětovnému vytvoření.
+* Nesaďte šablonu více než jednou pro stejné parametry. Nebo odstraňte existující prostředky, abyste je mohli znovu vytvořit pomocí šablony.
 
-* Zkontrolujte zásady přístupu trezoru klíčů `accessPolicies` a potom pomocí těchto zásad nastavte vlastnost šablony. Chcete-li zobrazit zásady přístupu, použijte následující příkaz příkazu Azure CLI:
+* Zkontrolujte zásady přístupu Key Vault a pak tyto zásady použijte k nastavení `accessPolicies` vlastnosti šablony. Zásady přístupu zobrazíte pomocí následujícího příkazu rozhraní příkazového řádku Azure:
 
     ```azurecli-interactive
     az keyvault show --name mykeyvault --resource-group myresourcegroup --query properties.accessPolicies
     ```
 
-    Další informace o `accessPolicies` použití části šablony naleznete v [odkazu na objekt AccessPolicyEntry](https://docs.microsoft.com/azure/templates/Microsoft.KeyVault/2018-02-14/vaults#AccessPolicyEntry).
+    Další informace o použití `accessPolicies` části šablony naleznete v tématu [AccessPolicyEntry Object reference](https://docs.microsoft.com/azure/templates/Microsoft.KeyVault/2018-02-14/vaults#AccessPolicyEntry).
 
-* Zkontrolujte, zda prostředek trezoru klíčů již existuje. Pokud ano, nevytvářejte ji znovu prostřednictvím šablony. Chcete-li například použít existující trezor klíčů namísto vytvoření nového, proveďte v šabloně následující změny:
+* Ověřte, zda prostředek Key Vault již existuje. Pokud tomu tak není, nevytvářejte ho znovu prostřednictvím šablony. Chcete-li například použít existující Key Vault místo vytvoření nové, proveďte následující změny šablony:
 
-    * **Přidejte** parametr, který přijímá ID existujícího prostředku trezoru klíčů:
+    * **Přidejte** parametr, který přijímá ID existujícího prostředku Key Vault:
 
         ```json
         "keyVaultId":{
@@ -361,7 +361,7 @@ Chcete-li se tomuto problému vyhnout, doporučujeme jeden z následujících p�
         }
       ```
 
-    * **Odeberte** oddíl, který vytváří prostředek trezoru klíčů:
+    * **Odeberte** část, která vytvoří prostředek Key Vault:
 
         ```json
         {
@@ -381,7 +381,7 @@ Chcete-li se tomuto problému vyhnout, doporučujeme jeden z následujících p�
         },
         ```
 
-    * **Odeberte** `"[resourceId('Microsoft.KeyVault/vaults', variables('keyVaultName'))]",` čáru `dependsOn` z části pracovního prostoru. Změňte `keyVault` **také** položku `properties` v části pracovního `keyVaultId` prostoru tak, aby odkazovala na parametr:
+    * **Odeberte** `"[resourceId('Microsoft.KeyVault/vaults', variables('keyVaultName'))]",` řádek z `dependsOn` části pracovního prostoru. Také **změňte** `keyVault` položku v `properties` části pracovního prostoru tak, aby odkazovala na `keyVaultId` parametr:
 
         ```json
         {
@@ -409,9 +409,9 @@ Chcete-li se tomuto problému vyhnout, doporučujeme jeden z následujících p�
         }
         ```
 
-    Po těchto změnách můžete při spuštění šablony určit ID existujícího prostředku trezoru klíčů. Šablona pak znovu použije trezor klíčů `keyVault` nastavením vlastnosti pracovního prostoru na jeho ID.
+    Po těchto změnách můžete zadat ID existujícího prostředku Key Vault při spuštění šablony. Šablona pak znovu použije Key Vault nastavením `keyVault` vlastnosti pracovního prostoru na jeho ID.
 
-    Chcete-li získat ID trezoru klíčů, můžete odkazovat na výstup původní šablony spustit nebo použít Azure CLI. Následující příkaz je příkladem použití azure CLI získat ID prostředku trezoru klíčů:
+    Pokud chcete získat ID Key Vault, můžete odkazovat na výstup původní šablony a použít Azure CLI. Následující příkaz je příkladem použití rozhraní příkazového řádku Azure k získání ID Key Vault prostředku:
 
     ```azurecli-interactive
     az keyvault show --name mykeyvault --resource-group myresourcegroup --query id
@@ -425,5 +425,5 @@ Chcete-li se tomuto problému vyhnout, doporučujeme jeden z následujících p�
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Nasazení prostředků pomocí šablon Správce prostředků a rozhraní REST API správce prostředků](../azure-resource-manager/templates/deploy-rest.md).
-* [Vytváření a nasazování skupin prostředků Azure prostřednictvím sady Visual Studio](../azure-resource-manager/templates/create-visual-studio-deployment-project.md).
+* [Nasazení prostředků pomocí Správce prostředků šablon a Správce prostředků REST API](../azure-resource-manager/templates/deploy-rest.md).
+* [Vytvoření a nasazení skupin prostředků Azure pomocí sady Visual Studio](../azure-resource-manager/templates/create-visual-studio-deployment-project.md).

@@ -1,6 +1,6 @@
 ---
 title: Důležitost úloh
-description: Pokyny pro nastavení důležitosti pro dotazy fondu SYNApse SQL v Azure Synapse Analytics.
+description: Pokyny pro nastavení důležitosti pro dotazy synapse fondu SQL ve službě Azure synapse Analytics.
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -12,58 +12,58 @@ ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: 43ee14784b6049e9b5c1a78e733e72bbc45f915d
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80744035"
 ---
-# <a name="azure-synapse-analytics-workload-importance"></a>Důležitost pracovního vytížení Azure Synapse Analytics
+# <a name="azure-synapse-analytics-workload-importance"></a>Důležitost úloh služby Azure synapse Analytics
 
-Tento článek vysvětluje, jak důležitost úlohy může ovlivnit pořadí provádění požadavků fondu SYNApse SQL v Azure Synapse.
+Tento článek vysvětluje, jak důležitost úloh může ovlivnit pořadí spouštění synapse požadavků na fond SQL v Azure synapse.
 
 ## <a name="importance"></a>Důležitost
 
 > [!Video https://www.youtube.com/embed/_2rLMljOjw8]
 
-Obchodní potřeby mohou vyžadovat, aby úlohy ukládání dat byly důležitější než jiné.  Zvažte scénář, kdy jsou důležitá data o prodeji načtena před uzavřením fiskálního období.  Načítání dat pro jiné zdroje, jako jsou data o počasí, nemají přísné sla. Nastavení vysoké důležitosti požadavku na načtení dat o prodeji a nízké důležitosti požadavku na načtení dat o počasí zajistí, že zatížení dat o prodeji získá první přístup k prostředkům a dokončí se rychleji.
+Obchodní potřeby můžou vyžadovat, aby úlohy datových skladů byly důležitější než jiné.  Vezměte v úvahu scénář, při kterém jsou data důležitých prodejů načtena před zavřením fiskálního období.  Načtení dat pro jiné zdroje, například data o počasí, nemá striktní SLA. Nastavení vysoké důležitosti pro požadavek na načtení prodejních dat a nízké důležitost požadavků na načtení dat o počasí zajišťuje, že při načtení dat z prodeje se získá první přístup k prostředkům a dokončí se rychleji.
 
 ## <a name="importance-levels"></a>Úrovně důležitosti
 
-Existuje pět úrovní důležitosti: nízká, below_normal, normální, above_normal a vysoká.  Požadavkům, které nenastavují důležitost, je přiřazena výchozí úroveň normálu. Požadavky, které mají stejnou úroveň důležitosti, mají stejné chování plánování, které existuje dnes.
+Existuje pět úrovní důležitosti: nízká, below_normal, Normal, above_normal a High.  Požadavky, které nemají nastavenou důležitost, jsou přiřazeny výchozí úrovni normální. Žádosti, které mají stejnou úroveň důležitosti, mají stejné chování plánování, které už dnes existuje.
 
 ## <a name="importance-scenarios"></a>Scénáře důležitosti
 
-Kromě scénáře základní důležitosti popsaného výše s daty o prodeji a počasí existují další scénáře, kde důležitost úlohy pomáhá plnit požadavky na zpracování dat a dotazování.
+Mimo základní scénář důležitosti, který je popsaný výše s údaji o prodeji a počasí, jsou k dispozici další scénáře, kdy důležité úlohy pomáhají splnit požadavky na zpracování a dotazování dat.
 
 ### <a name="locking"></a>Uzamčení
 
-Přístup ke zámkům pro čtení a zápis aktivity je jednou z oblastí přirozené tvrzení. Aktivity, jako je [přepínání oddílů](sql-data-warehouse-tables-partition.md) nebo [přejmenování objektu](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) vyžadují zvýšené zámky.  Bez důležitosti úlohy optimalizuje fond Synapse SQL v Azure Synapse propropustnost. Optimalizace pro propustnost znamená, že při spuštění a fronty požadavky mají stejné potřeby uzamčení a prostředky jsou k dispozici, požadavky ve frontě můžete obejít požadavky s vyšší potřeby uzamčení, které byly doručeny do fronty požadavků dříve. Jakmile je důležitost pracovního vytížení použita na požadavky s vyššími potřebami uzamčení. Požadavek s vyšší důležitostí bude spuštěn před požadavkem s nižší důležitostí.
+Přístup k zámkům pro aktivitu čtení a zápisu představuje jednu oblast přirozeného sporu. Aktivity, jako je [přepínání oddílů](sql-data-warehouse-tables-partition.md) nebo [přejmenování objektu](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) , vyžadují zvýšené zámky.  Bez důležitosti úloh se synapse fond SQL ve službě Azure synapse optimalizuje pro propustnost. Optimalizace pro propustnost znamená, že při spuštění a frontě požadavků mají být k dispozici stejné požadavky na uzamykání a prostředky, požadavky ve frontě mohou obejít požadavky s vyššími požadavky na uzamykání, které byly přijaty do fronty požadavků dříve. Po použití důležitosti na požadavky s vyššími nároky na uzamykání. Požadavek s vyšší důležitostí se spustí před vyžádáním s nižší důležitostí.
 
 Uvažujte následující příklad:
 
-- Q1 je aktivně spuštěna a výběr dat z SalesFact.
-- Q2 je ve frontě čeká na dokončení Q1.  Byl odeslán v 9 hodin ráno a pokouší se rozdělit nová data do SalesFact.
-- Q3 je odeslána v 9:01 a chce vybrat data z SalesFact.
+- Q1 aktivně běží a vybírá data z SalesFact.
+- Q2 je zařazen do fronty čekání na dokončení Q1.  Byl odeslán na 9:00 a pokouší se rozdělit nová data do SalesFact.
+- Čtvrtletí se odešle do 9:01am a chce vybrat data z SalesFact.
 
-Pokud Q2 a Q3 mají stejný význam a Q1 je stále spuštěna, Q3 začne provádění. Q2 bude i nadále čekat na výhradní zámek na SalesFact.  Pokud Q2 má vyšší význam než Q3, Q3 bude čekat, až Q2 je dokončena před zahájením provádění.
+Pokud má dotaz na hodnotu F2 a Q3 stejnou důležitost a je-li stále spuštěn, bude zahájena otázka Q3. Dotaz Q2 bude nadále čekat na výhradní zámek na SalesFact.  Pokud má dotaz D2 větší důležitost než v rámci třetího čtvrtletí, před zahájením provádění vyprší před tím, než se dokončí spuštění.
 
-### <a name="non-uniform-requests"></a>Nejednotné žádosti
+### <a name="non-uniform-requests"></a>Neuniformní žádosti
 
-Dalším scénářem, kde důležitost může pomoci splnit požadavky na dotazování, je při odeslání požadavků s různými třídami prostředků.  Jak již bylo zmíněno, podle stejného významu, Synapse SQL fond v Azure Synapse optimalizuje pro propustnost. Při smíšené velikosti požadavky (například smallrc nebo mediumrc) jsou ve frontě, Synapse SQL fond vybere nejbližší příchozí požadavek, který se vejde do dostupných prostředků. Pokud je použita důležitost pracovního vytížení, je naplánovánpožadavek nejvyšší důležitosti.
+Dalším scénářem, kde důležitost může přispět k splnění požadavků na dotazování, je při odeslání požadavků s různými třídami prostředků.  Jak bylo uvedeno výše, v rámci stejné důležitosti se synapse fond SQL ve službě Azure synapse optimalizuje pro propustnost. Pokud jsou požadavky na smíšenou velikost (například smallrc nebo mediumrc) zařazeny do fronty, bude synapse fond SQL zvolit nejstarší požadavek, který se vejde do dostupných prostředků. Pokud se používá důležitost úloh, naplánuje se další požadavek na důležitost.
   
-Zvažte následující příklad na DW500c:
+Vezměte v úvahu následující příklad v DW500c:
 
-- Q1, Q2, Q3 a Q4 jsou spuštěny smallrc dotazy.
-- Q5 je odeslána s mediumrc třídy prostředků v 9 hodin ráno.
-- Q6 je odeslána s třídou prostředků smallrc v 9:01.
+- V Q1, Q2, Q3 a Q4 se spouští dotazy smallrc.
+- Q5 se odešle s třídou prostředků mediumrc na 9:00.
+- Q6 se odešle s třídou prostředků smallrc na 9:01am.
 
-Vzhledem k tomu, že Q5 je mediumrc, vyžaduje dva sloty souběžnosti. Q5 musí čekat na dokončení dvou spuštěných dotazů.  Však po dokončení jednoho z běžících dotazů (Q1-Q4) Q6 je naplánováno okamžitě, protože existují prostředky pro spuštění dotazu.  Pokud Q5 má vyšší význam než Q6, Q6 čeká, dokud Q5 je spuštěna před zahájením provádění.
+Vzhledem k tomu, že Q5 je mediumrc, vyžaduje dva sloty souběžnosti. Q5 musí počkat na dokončení dvou spuštěných dotazů.  Pokud se ale jeden ze spuštěných dotazů (Q1-Q4) dokončí, Q6 se okamžitě naplánuje, protože prostředky existují ke spuštění dotazu.  Pokud má Q5 vyšší důležitost než Q6, Q6 počká, dokud nebude Q5 spuštěn, než bude moci začít s prováděním.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o vytvoření třídění naleznete [v tématu CREATE WORKLOAD CLASSIFIER (Transact-SQL).](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)  
-- Další informace o klasifikaci pracovního vytížení naleznete v [tématu Klasifikace pracovního vytížení](sql-data-warehouse-workload-classification.md).  
-- Postup vytvoření třídění pracovního vytížení najdete v tématu Třídění úloh vytvoření rychlého [startu.](quickstart-create-a-workload-classifier-tsql.md)
-- Podívejte se na články s postupy [pro konfiguraci důležitosti pracovního vytížení](sql-data-warehouse-how-to-configure-workload-importance.md) a [jak spravovat a monitorovat správu úloh](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md).
-- Viz [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) pro zobrazení dotazů a přiřazený význam.
+- Další informace o vytvoření klasifikátoru najdete v tématu [Vytvoření klasifikátoru úloh (Transact-SQL)](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).  
+- Další informace o klasifikaci úloh najdete v tématu [klasifikace úloh](sql-data-warehouse-workload-classification.md).  
+- Informace o tom, jak vytvořit klasifikátor úloh, najdete v tématu rychlý Start – [Vytvoření klasifikátoru úloh](quickstart-create-a-workload-classifier-tsql.md) .
+- V článcích s postupy můžete [nakonfigurovat důležitost úloh](sql-data-warehouse-how-to-configure-workload-importance.md) a [Spravovat a monitorovat správu úloh](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md).
+- V tématu [Sys. dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) můžete zobrazit dotazy a přiřazené důležitost.

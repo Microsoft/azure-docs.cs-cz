@@ -6,18 +6,12 @@
     - name: Co je Content Moderator?
       href: overview.md
       expanded: true
-- name: Šablony Rychlý start
+- name: Rychlé starty
   items:
     - name: Vyzkoušejte si Content Moderator na webu
       href: quick-start.md
-    - name: S využitím klientské sady SDK
-      items:
-        - name: S využitím .NET SDK
-          href: dotnet-sdk-quickstart.md
-        - name: Používání sady Python SDK
-          href: python-sdk-quickstart.md
-        - name: Používání sady Java SDK
-          href: java-sdk-quickstart.md
+    - name: S využitím klientské knihovny
+      href: client-libraries.md
 - name: Kurzy
   items:
     - name: Moderování obrázků elektronického obchodování
@@ -104,7 +98,7 @@
           href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/contentmoderator'
 - name: Zdroje a prostředky
   items:
-    - name: Ukázky
+    - name: ukázky
       items:
         - name: Ukázky .NET SDK
           href: samples-dotnet.md

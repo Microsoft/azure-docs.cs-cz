@@ -1,6 +1,6 @@
 ---
 title: Výběr a nasazení agentů zabezpečení
-description: Přečtěte si, jak výběr a nasazení Azure Security Center pro agenty zabezpečení IoT na zařízeních IoT.
+description: Přečtěte si, jak vybírat a nasazovat Azure Security Center pro agenty zabezpečení IoT na zařízeních IoT.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,73 +16,73 @@ ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
 ms.openlocfilehash: c3b514c79be87cd136375b4853226426965f4185
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81311202"
 ---
 # <a name="select-and-deploy-a-security-agent-on-your-iot-device"></a>Výběr a nasazení agenta zabezpečení na zařízení IoT
 
 Azure Security Center pro IoT poskytuje referenční architektury pro agenty zabezpečení, kteří monitorují a shromažďují data ze zařízení IoT.
-Další informace naleznete v [tématu Referenční architektura agenta zabezpečení](security-agent-architecture.md).
+Další informace najdete v tématu [Referenční architektura agenta zabezpečení](security-agent-architecture.md).
 
-Agenti jsou vyvíjeny jako open-source projekty a jsou k dispozici ve dvou variantách: <br> [C](https://aka.ms/iot-security-github-c)a [C#](https://aka.ms/iot-security-github-cs).
+Agenti se vyvíjí jako open source projekty a jsou k dispozici ve dvou charakterech: <br> [C](https://aka.ms/iot-security-github-c)a [C#](https://aka.ms/iot-security-github-cs).
 
 V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Porovnat příchutě agenta zabezpečení
-> * Objevte podporované platformy agentů
-> * Vyberte si správnou variantu agenta pro vaše řešení
+> * Porovnání charakteru agenta zabezpečení
+> * Zjistit podporované platformy agenta
+> * Volba správného charakteru agenta pro vaše řešení
 
-## <a name="understand-security-agent-options"></a>Principy možností agenta zabezpečení
+## <a name="understand-security-agent-options"></a>Pochopení možností agenta zabezpečení
 
-Každý Azure Security Center pro zabezpečení IoT agent chuť nabízí stejnou sadu funkcí a podporuje podobné možnosti konfigurace.
+Každý Azure Security Center pro charakter služby IoT Security Agent nabízí stejnou sadu funkcí a podporuje podobné možnosti konfigurace.
 
-Agent zabezpečení založený na C má nižší nároky na paměť a je ideální volbou pro zařízení s menším počtem dostupných prostředků.
+Agent zabezpečení založený na jazyce C má nižší nároky na paměť a je ideální volbou pro zařízení s menšími dostupnými prostředky.
 
-|     | Agent zabezpečení na bázi C | Agent zabezpečení založený na c# |
+|     | Agent zabezpečení založený na jazyce C | Agent zabezpečení založený na jazyce C# |
 | --- | ----------- | --------- |
-| Open-source | K dispozici pod [licencí MIT](https://en.wikipedia.org/wiki/MIT_License) v [GitHubu](https://aka.ms/iot-security-github-cs) | K dispozici pod [licencí MIT](https://en.wikipedia.org/wiki/MIT_License) v [GitHubu](https://aka.ms/iot-security-github-c) |
+| Open Source | K dispozici v rámci [licence MIT](https://en.wikipedia.org/wiki/MIT_License) na [GitHubu](https://aka.ms/iot-security-github-cs) | K dispozici v rámci [licence MIT](https://en.wikipedia.org/wiki/MIT_License) na [GitHubu](https://aka.ms/iot-security-github-c) |
 | Vývojový jazyk    | C | C# |
 | Podporované platformy Windows? | Ne | Ano |
-| Požadavky systému Windows | --- | [WMI](https://docs.microsoft.com/windows/desktop/wmisdk/) |
-| Podporované platformy Linuxu? | Ano, x64 a x86 | Ano, pouze x64 |
-| Požadované součásti systému Linux | libunwind8, libcurl3, uuid-runtime, auditováno, audispd-pluginy | libunwind8, libcurl3, uuid-runtime, auditováno, audispd-pluginy, sudo, netstat, iptables |
-| Stopa disku | 10,5 MB | 90 MB |
-| Paměťová stopa (v průměru) | 5,5 MB | 33 MB |
-| [Ověřování](concept-security-agent-authentication-methods.md) pro službu IoT Hub | Ano | Ano |
-| [Shromažďování](how-to-agent-configuration.md#supported-security-events) bezpečnostních dat | Ano | Ano |
+| Požadavky Windows | --- | [WMI](https://docs.microsoft.com/windows/desktop/wmisdk/) |
+| Podporované platformy Linux? | Ano, x64 a x86 | Ano, pouze x64 |
+| Požadované součásti systému Linux | libunwind8, libcurl3, UUID – modul runtime, audit, audispd – moduly plug-in | libunwind8, libcurl3, UUID-runtime, audited, audispd-plugins, sudo, netstat, softwaru iptables |
+| Nároky na disk | 10,5 MB | 90 MB |
+| Nároky na paměť (v průměru) | 5,5 MB | 33 MB |
+| [Ověřování](concept-security-agent-authentication-methods.md) pro IoT Hub | Ano | Ano |
+| [Shromažďování](how-to-agent-configuration.md#supported-security-events) dat zabezpečení | Ano | Ano |
 | Agregace událostí | Ano | Ano |
-| Vzdálená konfigurace prostřednictvím [dvojčete modulu zabezpečení](concept-security-module.md) | Ano | Ano |
+| Vzdálená konfigurace prostřednictvím [modulu zabezpečení je dvojitá](concept-security-module.md) . | Ano | Ano |
 |
 
-## <a name="security-agent-installation-guidelines"></a>Pokyny pro instalaci agenta zabezpečení
+## <a name="security-agent-installation-guidelines"></a>Pokyny k instalaci agenta zabezpečení
 
-Pro **systém Windows**: Skript Install SecurityAgent.ps1 musí být spuštěn z okna prostředí PowerShell správce.
+Pro **Windows**: skript Install SecurityAgent. ps1 se musí spustit z okna PowerShellu pro správu.
 
-Pro **Linux**: InstallSecurityAgent.sh musí být spuštěn jako superuser. Doporučujeme předpojit instalační příkaz "sudo".
+Pro **Linux**: InstallSecurityAgent.sh musí být spuštěný jako uživatel. Doporučujeme použít předponu instalačního příkazu s názvem "sudo".
 
-## <a name="choose-an-agent-flavor"></a>Vyberte si agent chuť
+## <a name="choose-an-agent-flavor"></a>Volba charakteru agenta
 
 Odpovězte na následující otázky týkající se zařízení IoT a vyberte správného agenta:
 
 - Používáte _Windows Server_ nebo _Windows IoT Core_?
 
-    [Nasazení agenta zabezpečení založeného na c#pro systém Windows](how-to-deploy-windows-cs.md).
+    [Nasazení agenta zabezpečení založeného na jazyce C# pro systém Windows](how-to-deploy-windows-cs.md).
 
-- Používáte linuxovou distribuci s architekturou x86?
+- Používáte distribuci Linux s architekturou x86?
 
-    [Nasazení agenta zabezpečení založeného na C pro Linux](how-to-deploy-linux-c.md).
+    [Nasazení agenta zabezpečení založeného na jazyce C pro Linux](how-to-deploy-linux-c.md).
 
-- Používáte linuxovou distribuci s architekturou x64?
+- Používáte distribuci systému Linux s architekturou x64?
 
-    Lze použít obě příchutě činidla. <br>
-    [Nasazení agenta zabezpečení založeného na C pro Linux](how-to-deploy-linux-c.md) a/nebo nasazení [agenta zabezpečení založeného na C#pro Linux](how-to-deploy-linux-cs.md).
+    Lze použít jak charakter agenta. <br>
+    [Nasazení agenta zabezpečení založeného na jazyce C pro Linux](how-to-deploy-linux-c.md) nebo [nasazení agenta zabezpečení založeného na jazyce C# pro Linux](how-to-deploy-linux-cs.md).
 
-Obě varianty agenta nabízejí stejnou sadu funkcí a podporují podobné možnosti konfigurace.
-Další informace najdete v [tématu Porovnání bezpečnostních agentů.](how-to-deploy-agent.md#understand-security-agent-options)
+Charakter obou agentů nabízí stejnou sadu funkcí a podporují podobné možnosti konfigurace.
+Další informace najdete v tématu [porovnání agenta zabezpečení](how-to-deploy-agent.md#understand-security-agent-options) .
 
 ## <a name="supported-platforms"></a>Podporované platformy
 
@@ -97,11 +97,11 @@ Následující seznam obsahuje všechny aktuálně podporované platformy.
 |C#|Ubuntu 18.04    |x64, ARMv7|
 |C#|Debian 9    |x64|
 |C#|Windows Server 2016|    x64|
-|C#|Windows 10 IoT Core, sestavení 17763    |x64|
+|C#|Windows 10 IoT Core, Build 17763    |x64|
 |
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o možnostech konfigurace najdete v návodu pro konfiguraci agenta.
+Pokud chcete získat další informace o možnostech konfigurace, přejděte k příručce Průvodce konfigurací agenta.
 > [!div class="nextstepaction"]
-> [Konfigurace agenta, jak vést](./how-to-agent-configuration.md)
+> [Průvodce konfigurací agenta](./how-to-agent-configuration.md)

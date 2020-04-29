@@ -1,6 +1,6 @@
 ---
-title: Dav4 a Dasv4-series – virtuální počítače Azure
-description: Specifikace pro virtuální chody řady Dav4 a Dasv4.
+title: Dav4 a Dasv4-Series – Azure Virtual Machines
+description: Specifikace pro virtuální počítače s Dav4 a Dasv4-Series.
 services: virtual-machines
 author: migerdes
 ms.service: virtual-machines
@@ -8,65 +8,65 @@ ms.topic: article
 ms.date: 02/03/2020
 ms.author: jushiman
 ms.openlocfilehash: c7a2fea94e0dc1ff868eff26399877cab66e6f66
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81115339"
 ---
 # <a name="dav4-and-dasv4-series"></a>Řada Dav4 a Dasv4
 
-Dav4-series a Dasv4-series jsou nové velikosti využívající procesor 2.35Ghz EPYC<sup>TM</sup> 7452 společnosti AMD v konfiguraci s více vlákny s mezipamětí L3 o velikosti až 256 MB, která věnuje 8 MB této mezipaměti L3 každému 8 jádrům, což zvyšuje možnosti zákazníků pro spuštění jejich úloh pro obecné účely. Řady Dav4 a Dasv4 mají stejnou konfiguraci paměti a disku jako řada D & Dsv3.
+Řady Dav4-Series a Dasv4-Series jsou novými velikostmi, které využívají procesor AMD 2.35 EPYC<sup>TM</sup> 7452 v konfiguraci s více vlákny s více než 256 MB mezipaměti L3, která vynásobí 8 MB této mezipaměti L3 každých 8 jader a zvyšuje možnosti zákazníků na spouštění jejich obecných úloh pro účely. Řady Dav4-Series a Dasv4-Series mají stejnou konfiguraci paměti a disku jako řada D & Dsv3-Series.
 
-## <a name="dav4-series"></a>Řada Dav4
+## <a name="dav4-series"></a>Dav4-Series
 
 ACU: 230-260
 
-Úložiště Premium: Není podporováno
+Premium Storage: nepodporováno
 
-Ukládání do mezipaměti úložiště Premium: Není podporováno
+Ukládání Premium Storage do mezipaměti: nepodporováno
 
-Migrace za provozu: Podporováno
+Migrace za provozu: podporováno
 
-Aktualizace pro zachování paměti: Podporováno
+Aktualizace pro zachování paměti: podporováno
 
-Velikosti řady Dav4 jsou založeny na procesoru 2.35Ghz AMD EPYC<sup>TM</sup> 7452, který může dosáhnout zvýšené maximální frekvence 3.35GHz. Velikosti řady Dav4 nabízejí kombinaci virtuálních procesorů, paměti a dočasného úložiště pro většinu produkčních úloh. Úložiště datových disků se účtuje nezávisle na virtuálních počítačích. Chcete-li použít premium SSD, použijte velikosti Dasv4. Měřiče cen a fakturace pro velikosti Dasv4 jsou stejné jako řady Dav4.
+Velikosti řady Dav4-Series jsou založené na procesoru AMD EPYC<sup>TM</sup> 7452 v 2.35 GHz, který může dosáhnout zvýšení maximální frekvence 3.35 GHz. Velikosti řady Dav4-Series nabízejí kombinaci vCPU, paměti a dočasného úložiště pro většinu produkčních úloh. Úložiště datových disků se účtuje nezávisle na virtuálních počítačích. Pokud chcete použít disk SSD úrovně Premium, použijte velikosti Dasv4. Měřiče cen a účtování pro velikosti Dasv4 jsou stejné jako pro Dav4-Series.
 
-| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost dočasného úložiště: IOPS / čtení v MB/s / zápis v MB/s | Maximální počet síťových připojení / Očekávaná šířka pásma sítě (Mb/s) |
+| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost dočasného úložiště: IOPS / čtení v MB/s / zápis v MB/s | Maximální počet síťových karet/očekávaná šířka pásma sítě (MB/s) |
 |-----|-----|-----|-----|-----|-----|-----|
 | Standard_D2a_v4 |  2  | 8  | 50  | 4  | 3000 / 46 / 23   | 2 / 1 000 |
 | Standard_D4a_v4 |  4  | 16 | 100 | 8  | 6000 / 93 / 46   | 2 / 2 000 |
 | Standard_D8a_v4 |  8  | 32 | 200 | 16 | 12000 / 187 / 93 | 4 / 4000 |
 | Standard_D16a_v4|  16 | 64 | 400 |32  | 24000 / 375 / 187 |8 / 8000 |
 | Standard_D32a_v4|  32 | 128| 800 | 32 | 48000 / 750 / 375 |8 / 16 000 |
-| Standard_D48a_v4| 48 | 192| 1200 | 32 | 96000 / 1000 / 500 | 8 / 24000 |
-| Standard_D64a_v4| 64 | 256 | 1600 | 32 | 96000 / 1000 / 500 | 8 / 30000 |
-| Standard_D96a_v4| 96 | 384 | 2400 | 32 | 96000 / 1000 / 500 | 8 / 30000 |
+| Standard_D48a_v4| 48 | 192| 1200 | 32 | 96000/1000/500 | 8 / 24000 |
+| Standard_D64a_v4| 64 | 256 | 1600 | 32 | 96000/1000/500 | 8 / 30000 |
+| Standard_D96a_v4| 96 | 384 | 2400 | 32 | 96000/1000/500 | 8 / 30000 |
 
-## <a name="dasv4-series"></a>Řada Dasv4
+## <a name="dasv4-series"></a>Dasv4-Series
 
 ACU: 230-260
 
-Úložiště Premium: Podporováno
+Premium Storage: podporováno
 
-Ukládání do mezipaměti úložiště Premium: Podporováno
+Ukládání Premium Storage do mezipaměti: podporováno
 
-Migrace za provozu: Podporováno
+Migrace za provozu: podporováno
 
-Aktualizace pro zachování paměti: Podporováno
+Aktualizace pro zachování paměti: podporováno
 
-Velikosti řady Dasv4 jsou založeny na procesoru 2.35Ghz AMD EPYC<sup>TM</sup> 7452, který dokáže dosáhnout zvýšené maximální frekvence 3,35 GHz a používat prémiové SSD. Velikosti řady Dasv4 nabízejí kombinaci virtuálních procesorů, paměti a dočasného úložiště pro většinu produkčních úloh.
+Velikosti řady Dasv4-Series jsou založené na procesoru AMD EPYC<sup>TM</sup> 7452 v 2.35 GHz, který může dosáhnout zvýšení maximální frekvence 3.35 GHz a používání jednotky SSD úrovně Premium. Velikosti řady Dasv4-Series nabízejí kombinaci vCPU, paměti a dočasného úložiště pro většinu produkčních úloh.
 
-| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost dočasného úložiště a úložiště v mezipaměti: IOPS / MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku bez mezipaměti: IOPS / MB/s | Maximální počet síťových připojení / Očekávaná šířka pásma sítě (Mb/s) |
+| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost dočasného úložiště a úložiště v mezipaměti: IOPS / MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku bez mezipaměti: IOPS / MB/s | Maximální počet síťových karet/očekávaná šířka pásma sítě (MB/s) |
 |-----|-----|-----|-----|-----|-----|-----|-----|
-| Standard_D2as_v4|2|8|16|4|4000 / 32 (50)|3200 / 48|2 / 1 000 |
-| Standard_D4as_v4|4|16|32|8|8000 / 64 (100)|6400 / 96|2 / 2 000 |
-| Standard_D8as_v4|8|32|64|16|16000 / 128 (200)|12800 / 192|4 / 4000 |
-| Standard_D16as_v4|16|64|128|32|32000 / 255 (400)|25600 / 384|8 / 8000 |
-| Standard_D32as_v4|32|128|256|32|64000 / 510 (800)|51200 / 768|8 / 16 000 |
-| Standard_D48as_v4|48|192|384|32|96000 / 1020 (1200)|76800 / 1148|8 / 24000 |
-| Standard_D64as_v4|64|256|512|32|128000 / 1020 (1600)|80000 / 1200|8 / 30000 | 
-| Standard_D96as_v4|96|384|768|32|192000 / 1020 (2400)|80000 / 1200|8 / 30000 |
+| Standard_D2as_v4|2|8|16|4|4000/32 (50)|3200/48|2 / 1 000 |
+| Standard_D4as_v4|4|16|32|8|8000/64 (100)|6400/96|2 / 2 000 |
+| Standard_D8as_v4|8|32|64|16|16000/128 (200)|12800/192|4 / 4000 |
+| Standard_D16as_v4|16|64|128|32|32000/255 (400)|25600/384|8 / 8000 |
+| Standard_D32as_v4|32|128|256|32|64000/510 (800)|51200/768|8 / 16 000 |
+| Standard_D48as_v4|48|192|384|32|96000/1020 (1200)|76800/1148|8 / 24000 |
+| Standard_D64as_v4|64|256|512|32|128000/1020 (1600)|80000/1200|8 / 30000 | 
+| Standard_D96as_v4|96|384|768|32|192000/1020 (2400)|80000/1200|8 / 30000 |
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
@@ -81,4 +81,4 @@ Velikosti řady Dasv4 jsou založeny na procesoru 2.35Ghz AMD EPYC<sup>TM</sup> 
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o tom, jak [výpočetní jednotky Azure (ACU)](acu.md) vám můžou pomoct porovnat výpočetní výkon napříč virtuálními jednotkami Azure.
+Přečtěte si další informace o tom, jak [výpočetní jednotky Azure (ACU)](acu.md) vám pomůžou porovnat výpočetní výkon napříč SKU Azure.

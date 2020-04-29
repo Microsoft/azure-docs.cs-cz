@@ -1,7 +1,7 @@
 ---
-title: Jak nasadit modely pro výpočetní instance
+title: Postup nasazení modelů do výpočetních instancí
 titleSuffix: Azure Machine Learning
-description: Zjistěte, jak nasadit modely Azure Machine Learning jako webovou službu pomocí výpočetních instancí.
+description: Naučte se, jak nasadit modely Azure Machine Learning jako webovou službu pomocí výpočetních instancí.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,58 +11,58 @@ author: MrudulaN
 ms.reviewer: larryfr
 ms.date: 03/05/2020
 ms.openlocfilehash: 09164580b8bdb249fc12d14e827ad799d51cab34
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80756592"
 ---
-# <a name="deploy-a-model-to-azure-machine-learning-compute-instances"></a>Nasazení modelu do výpočetních instancí Azure Machine Learning
+# <a name="deploy-a-model-to-azure-machine-learning-compute-instances"></a>Nasazení modelu pro Azure Machine Learning výpočetních instancí
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Zjistěte, jak pomocí Azure Machine Learning nasadit model jako webovou službu na výpočetní instanci Azure Machine Learning. Výpočetní instance použijte, pokud platí jedna z následujících podmínek:
+Naučte se používat Azure Machine Learning k nasazení modelu jako webové služby ve vaší instanci služby Azure Machine Learning Compute. Pokud je splněna jedna z následujících podmínek, použijte výpočetní instance:
 
-- Je třeba rychle nasadit a ověřit model.
+- Potřebujete rychle nasadit a ověřit model.
 - Testujete model, který je ve vývoji.
 
 > [!TIP]
-> Nasazení modelu z poznámkového bloku Jupyter na výpočetní instanci do webové služby na stejném virtuálním počítači je _místní nasazení_. V tomto případě je "místní" počítač výpočetní instance. Další informace o nasazeních najdete v [tématu Nasazení modelů pomocí Azure Machine Learning](how-to-deploy-and-where.md).
+> Nasazení modelu z Jupyter Notebook na výpočetní instanci, do webové služby na stejném virtuálním počítači, je _místní nasazení_. V tomto případě je místní počítač výpočetní instancí. Další informace o nasazeních najdete v tématu [nasazení modelů pomocí Azure Machine Learning](how-to-deploy-and-where.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Pracovní prostor Azure Machine Learning se spuštěnou výpočetní instanci. Další informace naleznete v [tématu Nastavení prostředí a pracovního prostoru](tutorial-1st-experiment-sdk-setup.md).
+- Azure Machine Learning pracovní prostor se spuštěnou výpočetní instancí. Další informace najdete v tématu [nastavení prostředí a pracovního prostoru](tutorial-1st-experiment-sdk-setup.md).
 
 ## <a name="deploy-to-the-compute-instances"></a>Nasazení do výpočetních instancí
 
-Ukázkový poznámkový blok, který ukazuje místní nasazení, je součástí instance výpočetních prostředků. Pomocí následujících kroků načtěte poznámkový blok a nasaďte model jako webovou službu na virtuálním počítači:
+Příklad poznámkového bloku, který ukazuje místní nasazení, je součástí výpočetní instance. Pomocí následujících kroků načtete Poznámkový blok a nasadíte model jako webovou službu na virtuálním počítači:
 
-1. Z [Azure Machine Learning studio](https://ml.azure.com), vyberte azure machine learning výpočetní instance.
+1. V [Azure Machine Learning Studiu](https://ml.azure.com)vyberte své Azure Machine Learning výpočetní instance.
 
-1. Otevřete `samples-*` podadresář a `how-to-use-azureml/deploy-to-local/register-model-deploy-local.ipynb`potom otevřete . Po otevření spusťte poznámkový blok.
+1. `samples-*` Otevřete podadresář a pak otevřete `how-to-use-azureml/deploy-to-local/register-model-deploy-local.ipynb`. Po otevření spusťte Poznámkový blok.
 
-    ![Snímek obrazovky spuštěné místní služby v poznámkovém bloku](./media/how-to-deploy-local-container-notebook-vm/deploy-local-service.png)
+    ![Snímek obrazovky běžící místní služby v poznámkovém bloku](./media/how-to-deploy-local-container-notebook-vm/deploy-local-service.png)
 
-1. Poznámkový blok zobrazuje adresu URL a port, na kterých je služba spuštěna. Například, `https://localhost:6789`. Můžete také spustit buňku `print('Local service port: {}'.format(local_service.port))` obsahující pro zobrazení portu.
+1. Poznámkový blok zobrazuje adresu URL a port, na kterém je služba spuštěná. Například, `https://localhost:6789`. Můžete také spustit buňku obsahující `print('Local service port: {}'.format(local_service.port))` k zobrazení portu.
 
-    ![Snímek obrazovky spuštěného portu místní služby](./media/how-to-deploy-local-container-notebook-vm/deploy-local-service-port.png)
+    ![Snímek obrazovky běžícího portu místní služby](./media/how-to-deploy-local-container-notebook-vm/deploy-local-service-port.png)
 
-1. Chcete-li otestovat službu z `https://localhost:<local_service.port>` výpočetní instance, použijte adresu URL. Chcete-li otestovat ze vzdáleného klienta, získejte veřejnou adresu URL služby spuštěné na výpočetní instanci. Veřejnou adresu URL lze určit pomocí následujícího vzorce. 
-    * Virtuální počítač `https://<vm_name>-<local_service_port>.<azure_region_of_workspace>.notebooks.azureml.net/score`notebooku: . 
-    * Instance Výpočtu: `https://<vm_name>-<local_service_port>.<azure_region_of_workspace>.instances.azureml.net/score`. 
+1. K otestování služby z výpočetní instance použijte `https://localhost:<local_service.port>` adresu URL. Chcete-li provést test ze vzdáleného klienta, Získejte veřejnou adresu URL služby běžící na instanci Compute. Veřejnou adresu URL lze určit pomocí následujícího vzorce: 
+    * Virtuální počítač poznámkového bloku: `https://<vm_name>-<local_service_port>.<azure_region_of_workspace>.notebooks.azureml.net/score`. 
+    * Instance Compute: `https://<vm_name>-<local_service_port>.<azure_region_of_workspace>.instances.azureml.net/score`. 
 
     Například: 
-    * Virtuální počítač notebooku:`https://vm-name-6789.northcentralus.notebooks.azureml.net/score` 
-    * Instance Výpočtu:`https://vm-name-6789.northcentralus.instances.azureml.net/score`
+    * Virtuální počítač poznámkového bloku:`https://vm-name-6789.northcentralus.notebooks.azureml.net/score` 
+    * Instance Compute:`https://vm-name-6789.northcentralus.instances.azureml.net/score`
 
 ## <a name="test-the-service"></a>Testování služby
 
-Chcete-li odeslat ukázková data spuštěné službě, použijte následující kód. Nahraďte `service_url` hodnotu url z předchozího kroku:
+Chcete-li odeslat ukázková data do běžící služby, použijte následující kód. Nahraďte hodnotu `service_url` adresou URL z předchozího kroku:
 
 > [!NOTE]
-> Při ověřování nasazení na výpočetní instanci se ověřování provádí pomocí služby Azure Active Directory. Volání v `interactive_auth.get_authentication_header()` ukázkovém kódu vás ověří pomocí služby AAD a vrátí záhlaví, které lze pak použít k ověření služby v instanci výpočetních prostředků. Další informace najdete v tématu [Nastavení ověřování pro prostředky a pracovní postupy Azure Machine Learning](how-to-setup-authentication.md#interactive-authentication).
+> Při ověřování k nasazení na výpočetní instanci se ověřování provádí pomocí Azure Active Directory. Volání `interactive_auth.get_authentication_header()` v příkladu kódu ověřujete pomocí AAD a vrátí hlavičku, která se pak může použít k ověření služby na výpočetní instanci. Další informace najdete v tématu [nastavení ověřování pro Azure Machine Learning prostředky a pracovní postupy](how-to-setup-authentication.md#interactive-authentication).
 >
-> Při ověřování nasazení ve službě Azure Kubernetes service nebo Azure Container Instances se používá jiná metoda ověřování. Další informace o tématu [Nastavení ověřování pro prostředky a pracovní postupy Azure Machine Learning](how-to-setup-authentication.md#web-service-authentication).
+> Při ověřování pro nasazení ve službě Azure Kubernetes nebo Azure Container Instances se používá jiná metoda ověřování. Další informace o najdete v tématu [nastavení ověřování pro Azure Machine Learning prostředky a pracovní postupy](how-to-setup-authentication.md#web-service-authentication).
 
 ```python
 import requests
@@ -94,9 +94,9 @@ print("prediction:", resp.text)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Jak nasadit model pomocí vlastní image Dockeru](how-to-deploy-custom-docker-image.md)
+* [Postup nasazení modelu pomocí vlastní image Docker](how-to-deploy-custom-docker-image.md)
 * [Řešení potíží s nasazením](how-to-troubleshoot-deployment.md)
-* [Použití TLS k zabezpečení webové služby prostřednictvím Azure Machine Learning](how-to-secure-web-service.md)
-* [Využití modelu ML nasazeného jako webová služba](how-to-consume-web-service.md)
-* [Monitorování modelů Azure Machine Learning pomocí přehledů aplikací](how-to-enable-app-insights.md)
-* [Shromažďování dat pro modely ve výrobě](how-to-enable-data-collection.md)
+* [Použití protokolu TLS k zabezpečení webové služby prostřednictvím Azure Machine Learning](how-to-secure-web-service.md)
+* [Využití modelu ML nasazeného jako webové služby](how-to-consume-web-service.md)
+* [Monitorování modelů Azure Machine Learning s využitím Application Insights](how-to-enable-app-insights.md)
+* [Shromažďování dat pro modely v produkčním prostředí](how-to-enable-data-collection.md)

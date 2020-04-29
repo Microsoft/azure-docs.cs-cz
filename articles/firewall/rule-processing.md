@@ -1,6 +1,6 @@
 ---
 title: Logika zpracování pravidel Azure Firewall
-description: Azure Firewall má pravidla NAT, pravidla sítě a pravidla aplikací. Pravidla jsou zpracována podle typu pravidla.
+description: Azure Firewall obsahuje pravidla překladu adres (NAT), pravidla sítě a aplikace. Pravidla se zpracovávají podle typu pravidla.
 services: firewall
 author: vhorne
 ms.service: firewall
@@ -8,95 +8,95 @@ ms.topic: article
 ms.date: 04/10/2020
 ms.author: victorh
 ms.openlocfilehash: 93677b3e473ab825665fed5590ac345a8cfcc300
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81113437"
 ---
 # <a name="azure-firewall-rule-processing-logic"></a>Logika zpracování pravidel Azure Firewall
-Pravidla překladu a řízení o azure firewall můžete nakonfigurovat pravidla překladu a aplikací. Kolekce pravidel jsou zpracovány podle typu pravidla v pořadí podle priority, nižší čísla na vyšší čísla od 100 do 65 000. Název kolekce pravidel může mít pouze písmena, čísla, podtržítka, tečky nebo pomlčky. Musí začínat písmenem nebo číslem a končit písmenem, číslem nebo podtržítkem. Maximální délka názvu je 80 znaků.
+Pravidla překladu adres (NAT), pravidla sítě a aplikace můžete nakonfigurovat na Azure Firewall. Kolekce pravidel se zpracovávají podle typu pravidla v pořadí podle priority, nižších čísel od 100 do 65 000. Název kolekce pravidel může obsahovat jenom písmena, číslice, podtržítka, tečky nebo spojovníky. Musí začínat písmenem nebo číslicí a končit písmenem, číslicí nebo podtržítkem. Maximální délka názvu je 80 znaků.
 
-Zpočátku je vhodné rozmístit čísla priorit kolekce pravidel ve 100 krocích (100, 200, 300 a tak dále), abyste měli v případě potřeby prostor pro přidání dalších kolekcí pravidel.
+Doporučujeme, abyste v případě potřeby nasadili čísla priority kolekce pravidel v 100 přírůstcích (100, 200, 300 a tak dále).
 
 > [!NOTE]
-> Pokud povolíte filtrování založené na inteligenci hrozeb, mají tato pravidla nejvyšší prioritu a jsou vždy zpracována jako první. Filtrování threat-intelligence může odepřít provoz před zpracováním všech nakonfigurovaných pravidel. Další informace najdete v tématu [filtrování založené na analýzách hrozeb azure firewall](threat-intel.md).
+> Pokud povolíte filtrování na základě logiky hrozeb, tato pravidla mají nejvyšší prioritu a jsou vždy zpracována jako první. Filtrování logiky hrozeb může před zpracováním všech nakonfigurovaných pravidel odepřít provoz. Další informace najdete v tématu [Azure firewall filtrování na základě logiky hrozeb](threat-intel.md).
 
 ## <a name="outbound-connectivity"></a>Odchozí připojení
 
-### <a name="network-rules-and-applications-rules"></a>Pravidla sítě a pravidla aplikací
+### <a name="network-rules-and-applications-rules"></a>Pravidla sítě a pravidla pro aplikace
 
-Pokud nakonfigurujete síťová pravidla a pravidla aplikací, budou pravidla sítě použita v pořadí priorit před pravidly aplikace. Pravidla se ukončují. Pokud je tedy shoda nalezena v síťovém pravidle, nebudou zpracována žádná další pravidla.  Pokud neexistuje žádná shoda pravidel sítě a pokud je protokol HTTP, HTTPS nebo MSSQL, je paket vyhodnocen pravidly aplikace v pořadí podle priority. Pokud stále není nalezena žádná shoda, je paket vyhodnocen proti [kolekci pravidel infrastruktury](infrastructure-fqdns.md). Pokud se stále nenajde žádná shoda, ve výchozím nastavení se paket odepře.
+Pokud konfigurujete Síťová pravidla a pravidla pro aplikace, budou se Síťová pravidla aplikována v pořadí podle priority před pravidly aplikací. Pravidla se ukončí. Takže pokud se shoda najde v síťovém pravidle, nezpracovávají se žádná další pravidla.  Pokud se neshoduje žádné pravidlo sítě, a pokud je protokol HTTP, HTTPS nebo MSSQL, pak se paket vyhodnotí podle pravidel aplikace v pořadí podle priority. Pokud se pořád nenajde žádná shoda, vyhodnotí se paket na základě [kolekce pravidel infrastruktury](infrastructure-fqdns.md). Pokud se stále nenajde žádná shoda, ve výchozím nastavení se paket odepře.
 
 ## <a name="inbound-connectivity"></a>Příchozí připojení
 
-### <a name="nat-rules"></a>Pravidla NAT
+### <a name="nat-rules"></a>Pravidla překladu adres (NAT)
 
-Příchozí připojení k Internetu lze povolit konfigurací překladu cílové síťové adresy (DNAT), jak je popsáno v [kurzu: Filtrování příchozích přenosů pomocí DNAT brány Azure firewall pomocí portálu Azure](tutorial-firewall-dnat.md). Pravidla překladu nanesení paměti jsou před síťovými pravidly použita jako priorita. Pokud je nalezena shoda, je přidáno implicitní odpovídající síťové pravidlo umožňující přeložený provoz. Toto chování můžete přepsat explicitním přidáním kolekce pravidel sítě s pravidly pro odepření, která odpovídají přeloženému provozu.
+Příchozí připojení k Internetu můžete povolit konfigurací překladu cílové sítě (DNAT), jak je popsáno v [kurzu: filtrování příchozího provozu pomocí Azure firewall DNAT pomocí Azure Portal](tutorial-firewall-dnat.md). Pravidla překladu adres (NAT) se aplikují přednostně před pravidly sítě. Pokud se najde shoda, přidá se implicitní odpovídající síťové pravidlo, které povolí přeložený provoz. Toto chování můžete přepsat explicitním přidáním kolekce pravidel sítě s pravidly pro odepření, která odpovídají přeloženému provozu.
 
-Pravidla aplikace nejsou použita pro příchozí připojení. Pokud tedy chcete filtrovat příchozí přenosy HTTP/S, měli byste použít bránu firewall pro webové aplikace (WAF). Další informace najdete v tématu [Co je brána firewall pro webové aplikace Azure?](../web-application-firewall/overview.md)
+Pro příchozí připojení se nepoužijí pravidla aplikací. Takže pokud chcete filtrovat příchozí přenosy HTTP/S, měli byste použít Firewall webových aplikací (WAF). Další informace najdete v tématu [co je firewall webových aplikací Azure?](../web-application-firewall/overview.md)
 
 ## <a name="examples"></a>Příklady
 
-Následující příklady ukazují výsledky některých z těchto kombinací pravidel.
+Následující příklady znázorňují výsledky některých z těchto kombinací pravidel.
 
 ### <a name="example-1"></a>Příklad 1
 
-Připojení k google.com je povoleno z důvodu odpovídajícího síťového pravidla.
+Připojení k google.com je povolené z důvodu odpovídajícího síťového pravidla.
 
 **Síťové pravidlo**
 
 - Akce: Povolit
 
 
-|jméno  |Protocol (Protokol)  |Typ zdroje  |Zdroj  |Typ cíle  |Cílová adresa  |Cílové porty|
+|jméno  |Protocol (Protokol)  |Typ zdroje  |Zdroj  |Cílový typ  |Cílová adresa  |Cílové porty|
 |---------|---------|---------|---------|----------|----------|--------|
-|Povolit web     |TCP|IP adresa|*|IP adresa|*|80,443
+|Povolení – Web     |TCP|IP adresa|*|IP adresa|*|80,443
 
 **Pravidlo aplikace**
 
 - Akce: Odepřít
 
-|jméno  |Typ zdroje  |Zdroj  |Protokol:Port|Cílové skupinové název nqdn|
+|jméno  |Typ zdroje  |Zdroj  |Protokol: port|Cílové plně kvalifikované názvy domén|
 |---------|---------|---------|---------|----------|----------|
-|Odepřít-google     |IP adresa|*|http:80,https:443|google.com
+|Odepřít – Google     |IP adresa|*|http: 80, https: 443|google.com
 
 **Výsledek**
 
-Připojení k google.com je povoleno, protože paket odpovídá pravidlu *povolit webovou* síť. Zpracování pravidel se v tomto okamžiku zastaví.
+Připojení k google.com je povoleno, protože paket se shoduje s pravidlem " *Povolení-webové* sítě". Zpracování pravidla se v tomto okamžiku zastaví.
 
 ### <a name="example-2"></a>Příklad 2
 
-Provoz SSH je odepřen, protože ho blokuje kolekce pravidel sítě S vyšší *prioritu.*
+Přenosy SSH se zamítly, protože kolekce *síťových pravidel* s vyšší prioritou je blokuje.
 
-**Kolekce síťových pravidel 1**
+**Kolekce pravidel sítě 1**
 
-- Název: Povolit sběr
+- Název: Allow-Collection
 - Priorita: 200
 - Akce: Povolit
 
-|jméno  |Protocol (Protokol)  |Typ zdroje  |Zdroj  |Typ cíle  |Cílová adresa  |Cílové porty|
+|jméno  |Protocol (Protokol)  |Typ zdroje  |Zdroj  |Cílový typ  |Cílová adresa  |Cílové porty|
 |---------|---------|---------|---------|----------|----------|--------|
-|Povolit-SSH     |TCP|IP adresa|*|IP adresa|*|22
+|Povolení – SSH     |TCP|IP adresa|*|IP adresa|*|22
 
-**Kolekce síťových pravidel 2**
+**Kolekce pravidel sítě 2**
 
-- Název: Deny-collection
+- Název: Deny-Collection
 - Priorita: 100
 - Akce: Odepřít
 
-|jméno  |Protocol (Protokol)  |Typ zdroje  |Zdroj  |Typ cíle  |Cílová adresa  |Cílové porty|
+|jméno  |Protocol (Protokol)  |Typ zdroje  |Zdroj  |Cílový typ  |Cílová adresa  |Cílové porty|
 |---------|---------|---------|---------|----------|----------|--------|
-|Odepřít-SSH     |TCP|IP adresa|*|IP adresa|*|22
+|Odepřít – SSH     |TCP|IP adresa|*|IP adresa|*|22
 
 **Výsledek**
 
-Připojení SSH jsou odepřena, protože je blokuje kolekce pravidel sítě s vyšší prioritou. Zpracování pravidel se v tomto okamžiku zastaví.
+Připojení SSH jsou odepřena, protože je zablokovala kolekce pravidel sítě s vyšší prioritou. Zpracování pravidla se v tomto okamžiku zastaví.
 
-## <a name="rule-changes"></a>Změny pravidel
+## <a name="rule-changes"></a>Změny pravidla
 
-Pokud změníte pravidlo pro odepření dříve povoleného provozu, budou vynechány všechny relevantní existující relace.
+Pokud změníte pravidlo na odepřít dříve povolený provoz, všechny relevantní existující relace budou zrušeny.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si, jak [nasadit a nakonfigurovat bránu Azure Firewall](tutorial-firewall-deploy-portal.md).
+- Přečtěte si, jak [nasadit a nakonfigurovat Azure firewall](tutorial-firewall-deploy-portal.md).

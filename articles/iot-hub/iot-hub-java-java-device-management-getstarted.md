@@ -1,6 +1,6 @@
 ---
-title: Začínáme se správou zařízení Azure IoT Hub (Java) | Dokumenty společnosti Microsoft
-description: Jak pomocí správy zařízení Azure IoT Hub zahájit restartování vzdáleného zařízení. Pomocí sady Azure IoT zařízení SDK pro Java implementovat aplikaci simulované zařízení, která obsahuje přímou metodu a Azure IoT služby SDK pro Java k implementaci aplikace služby, která vyvolá přímou metodu.
+title: Začínáme se správou zařízení v Azure IoT Hub (Java) | Microsoft Docs
+description: Jak používat správu zařízení v Azure IoT Hub k zahájení restartování vzdáleného zařízení. Pomocí sady SDK pro zařízení Azure IoT pro jazyk Java implementujete aplikaci simulovaného zařízení, která zahrnuje přímou metodu a sadu SDK služby Azure IoT pro jazyk Java k implementaci aplikace služby, která vyvolá přímou metodu.
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.custom: mqtt
 ms.openlocfilehash: 75d89b54bae6eb8166d44e08ea020a0da67ad20c
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81732557"
 ---
 # <a name="get-started-with-device-management-java"></a>Začínáme se správou zařízení (Java)
@@ -23,82 +23,82 @@ ms.locfileid: "81732557"
 
 V tomto kurzu získáte informace o následujících postupech:
 
-* Pomocí portálu Azure vytvořte službu IoT Hub a vytvořte identitu zařízení ve svém centru IoT hub.
+* Pomocí Azure Portal můžete vytvořit IoT Hub a vytvořit identitu zařízení ve službě IoT Hub.
 
-* Vytvořte simulovanou aplikaci zařízení, která implementuje přímou metodu restartování zařízení. Přímé metody jsou vyvolány z cloudu.
+* Vytvořte aplikaci simulovaného zařízení, která implementuje přímou metodu pro restartování zařízení. Přímé metody jsou vyvolány z cloudu.
 
-* Vytvořte aplikaci, která vyvolá metodu přímého restartování v aplikaci simulovaných zařízení prostřednictvím služby IoT hub. Tato aplikace pak monitoruje hlášené vlastnosti ze zařízení, aby zjistila, kdy je operace restartování dokončena.
+* Vytvořte aplikaci, která vyvolá přímou metodu restart v aplikaci simulovaného zařízení ve službě IoT Hub. Tato aplikace následně monitoruje hlášené vlastnosti ze zařízení, aby zjistila, že se operace restartování dokončila.
 
 Na konci tohoto kurzu máte dvě konzolové aplikace Java:
 
 **simulované zařízení**. Tato aplikace:
 
-* Připojí se k centru IoT s identitou zařízení vytvořenou dříve.
+* Připojí se ke službě IoT Hub s identitou zařízení vytvořenou dříve.
 
-* Přijímá volání přímé metody restartování.
+* Přijme volání přímé metody restart.
 
-* Simuluje fyzické restartování.
+* Simuluje fyzický restart.
 
-* Hlásí čas posledního restartování prostřednictvím ohlášené vlastnosti.
+* Oznamuje čas posledního restartování prostřednictvím hlášené vlastnosti.
 
-**spuštění-restart**. Tato aplikace:
+**Trigger-restart**. Tato aplikace:
 
-* Volá přímou metodu v aplikaci simulované zařízení.
+* Volá přímo metodu v aplikaci simulovaného zařízení.
 
-* Zobrazí odpověď na přímé volání metody odeslané simulovaným zařízením.
+* Zobrazí odpověď na volání přímé metody odesílané simulovaným zařízením.
 
-* Zobrazí aktualizované ohlášené vlastnosti.
+* Zobrazí aktualizované hlášené vlastnosti.
 
 > [!NOTE]
-> Informace o sadách SDK, které můžete použít k vytváření aplikací pro spuštění na zařízeních a back-endu vašeho řešení, naleznete v [tématu sady Azure IoT SDK](iot-hub-devguide-sdks.md).
+> Informace o sadách SDK, které můžete použít k sestavení aplikací pro spouštění na zařízeních a back-endu vašeho řešení, najdete v tématu sady [SDK služby Azure IoT](iot-hub-devguide-sdks.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-* [Java SE Vývojová sada 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable). Ujistěte se, že jste v části **Dlouhodobá podpora** vybrali **Javu 8,** abyste se dostali ke stažení pro JDK 8.
+* [Java se Development Kit 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable). Ujistěte se, že jste v části **Dlouhodobá podpora** vybrali **Java 8** , abyste se dostali ke stažení pro JDK 8.
 
 * [Maven 3](https://maven.apache.org/download.cgi)
 
-* Aktivní účet Azure. (Pokud nemáte účet, můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) během několika minut.)
+* Aktivní účet Azure. (Pokud účet nemáte, můžete si během několika minut vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) .)
 
-* Zkontrolujte, zda je v bráně firewall otevřený port 8883. Ukázka zařízení v tomto článku používá protokol MQTT, který komunikuje přes port 8883. Tento port může být blokován v některých prostředích podnikové a vzdělávací sítě. Další informace a způsoby, jak tento problém vyřešit, najdete [v tématu připojení k centru IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+* Ujistěte se, že je v bráně firewall otevřený port 8883. Ukázka zařízení v tomto článku používá protokol MQTT, který komunikuje přes port 8883. Tento port může být blokovaný v některých podnikových a vzdělávacích prostředích sítě. Další informace a způsoby, jak tento problém obejít, najdete v tématu [připojení k IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
 ## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-## <a name="register-a-new-device-in-the-iot-hub"></a>Registrace nového zařízení v centru IoT hub
+## <a name="register-a-new-device-in-the-iot-hub"></a>Registrace nového zařízení ve službě IoT Hub
 
 [!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
 
-## <a name="get-the-iot-hub-connection-string"></a>Získání připojovacího řetězce centra IoT hub
+## <a name="get-the-iot-hub-connection-string"></a>Získání připojovacího řetězce centra IoT Hub
 
 [!INCLUDE [iot-hub-howto-device-management-shared-access-policy-text](../../includes/iot-hub-howto-device-management-shared-access-policy-text.md)]
 
 [!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
 
-## <a name="trigger-a-remote-reboot-on-the-device-using-a-direct-method"></a>Spuštění vzdáleného restartování zařízení pomocí přímé metody
+## <a name="trigger-a-remote-reboot-on-the-device-using-a-direct-method"></a>Aktivace vzdáleného restartování zařízení pomocí přímé metody
 
 V této části vytvoříte konzolovou aplikaci Java, která:
 
-1. Vyvolá metodu přímého restartování v aplikaci simulované zařízení.
+1. Vyvolá přímou metodu restartu v aplikaci simulovaného zařízení.
 
 2. Zobrazí odpověď.
 
-3. Dotazuje hlášené vlastnosti odeslané ze zařízení k určení, kdy je restartování dokončeno.
+3. Provede dotazování hlášených vlastností odeslaných ze zařízení za účelem určení, kdy se restart dokončí.
 
-Tato konzolová aplikace se připojí k centru IoT Hub, aby vyvolala přímou metodu a přečetla ohlášené vlastnosti.
+Tato Konzolová aplikace se připojí k vašemu IoT Hub a vyvolá přímo metodu a přečte hlášené vlastnosti.
 
-1. Vytvořte prázdnou složku nazvanou **dm-get-started**.
+1. Vytvořte prázdnou složku s názvem **DM-Get-Started**.
 
-2. Ve složce **dm-get-started** vytvořte projekt Maven s názvem **trigger-reboot** pomocí následujícího příkazu na příkazovém řádku:
+2. Ve složce **DM-Get-Started** vytvořte pomocí následujícího příkazu na příkazovém řádku projekt Maven s názvem **Trigger-restart** .
 
     ```cmd/sh
     mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=trigger-reboot -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 
-3. Na příkazovém řádku přejděte do složky **trigger-reboot.**
+3. Na příkazovém řádku přejděte do složky **Trigger-restart** .
 
-4. Pomocí textového editoru otevřete soubor **pom.xml** ve složce **trigger-reboot** a přidejte do uzlu **závislostí** následující závislost. Tato závislost umožňuje používat balíček iot-service-client ve vaší aplikaci ke komunikaci s centrem IoT:
+4. Pomocí textového editoru otevřete soubor **pom. XML** ve složce **Trigger-restart** a přidejte následující závislost na uzel **závislosti** . Tato závislost vám umožní komunikovat se službou IoT Hub pomocí balíčku IoT-Service-Client ve vaší aplikaci:
 
     ```xml
     <dependency>
@@ -112,7 +112,7 @@ Tato konzolová aplikace se připojí k centru IoT Hub, aby vyvolala přímou me
     > [!NOTE]
     > Můžete vyhledat nejnovější verzi **iot-service-client** pomocí [vyhledávání Maven](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22).
 
-5. Za uzel **závislostí** přidejte následující uzel **sestavení.** Tato konfigurace instruuje Maven používat Java 1.8 k vytvoření aplikace:
+5. Přidejte následující uzel **sestavení** za uzel **závislosti** . Tato konfigurace instruuje Maven, aby k sestavení aplikace použil Java 1,8:
 
     ```xml
     <build>
@@ -132,7 +132,7 @@ Tato konzolová aplikace se připojí k centru IoT Hub, aby vyvolala přímou me
 
 6. Uložte a zavřete soubor **pom.xml**.
 
-7. Pomocí textového editoru otevřete zdrojový soubor **trigger-reboot\src\main\java\com\mycompany\app\App.java.**
+7. Pomocí textového editoru otevřete zdrojový soubor **Trigger-reboot\src\main\java\com\mycompany\app\App.Java** .
 
 8. Do souboru přidejte následující příkazy pro **import**:
 
@@ -149,7 +149,7 @@ Tato konzolová aplikace se připojí k centru IoT Hub, aby vyvolala přímou me
     import java.util.concurrent.ExecutorService;
     ```
 
-9. Do třídy **App** přidejte následující proměnné na úrovni třídy. Nahraďte `{youriothubconnectionstring}` připojovacím řetězcem ioT hubu, který jste dříve zkopírovali v [části Získání připojovacího řetězce centra IoT Hub](#get-the-iot-hub-connection-string):
+9. Do třídy **App** přidejte následující proměnné na úrovni třídy. Nahraďte `{youriothubconnectionstring}` připojovacím řetězcem IoT Hub, který jste dříve zkopírovali v části [získání připojovacího řetězce centra IoT](#get-the-iot-hub-connection-string):
 
     ```java
     public static final String iotHubConnectionString = "{youriothubconnectionstring}";
@@ -160,7 +160,7 @@ Tato konzolová aplikace se připojí k centru IoT Hub, aby vyvolala přímou me
     private static final Long connectTimeout = TimeUnit.SECONDS.toSeconds(5);
     ```
 
-10. Chcete-li implementovat vlákno, které čte hlášené vlastnosti z dvojčete zařízení každých 10 sekund, přidejte do třídy **App** následující vnořenou třídu:
+10. K implementaci vlákna, které přečte hlášené vlastnosti ze zařízení je v každém 10 sekundách, přidejte do třídy **aplikace** následující vnořenou třídu:
 
     ```java
     private static class ShowReportedProperties implements Runnable {
@@ -181,13 +181,13 @@ Tato konzolová aplikace se připojí k centru IoT Hub, aby vyvolala přímou me
     }
     ```
 
-11. Upravte podpis **hlavní** metody tak, aby vyvolávat následující výjimku:
+11. Upravte podpis metody **Main** tak, aby vyvolal následující výjimku:
 
     ```java
     public static void main(String[] args) throws IOException
     ```
 
-12. Chcete-li vyvolat metodu přímého restartování na simulovaném zařízení, nahraďte kód v **hlavní** metodě následujícím kódem:
+12. Chcete-li vyvolat přímou metodu restartu na simulovaném zařízení, nahraďte kód v metodě **Main** následujícím kódem:
 
     ```java
     System.out.println("Starting sample...");
@@ -212,7 +212,7 @@ Tato konzolová aplikace se připojí k centru IoT Hub, aby vyvolala přímou me
     }
     ```
 
-13. Chcete-li spustit vlákno k dotazování na hlášené vlastnosti ze simulovaného zařízení, přidejte do **hlavní** metody následující kód:
+13. Chcete-li spustit vlákno pro dotazování hlášených vlastností z simulovaného zařízení, přidejte do metody **Main** následující kód:
 
     ```java
     ShowReportedProperties showReportedProperties = new ShowReportedProperties();
@@ -220,7 +220,7 @@ Tato konzolová aplikace se připojí k centru IoT Hub, aby vyvolala přímou me
     executor.execute(showReportedProperties);
     ```
 
-14. Chcete-li aplikaci zastavit, přidejte k **hlavní** metodě následující kód:
+14. K tomu, abyste mohli aplikaci zastavit, přidejte do metody **Main** následující kód:
 
     ```java
     System.out.println("Press ENTER to exit.");
@@ -229,9 +229,9 @@ Tato konzolová aplikace se připojí k centru IoT Hub, aby vyvolala přímou me
     System.out.println("Shutting down sample...");
     ```
 
-15. Uložte a zavřete soubor **trigger-reboot\src\main\java\com\mycompany\app\App.java.**
+15. Uložte a zavřete soubor **Trigger-reboot\src\main\java\com\mycompany\app\App.Java** .
 
-16. Vytvořte **aplikaci back-end spouště-restartu** a opravte všechny chyby. Na příkazovém řádku přejděte do složky **trigger-reboot** a spusťte následující příkaz:
+16. Vytvořte **Trigger – restartujte** back-end aplikaci a opravte všechny chyby. Na příkazovém řádku přejděte do složky **Trigger-restart** a spusťte následující příkaz:
 
     ```cmd/sh
     mvn clean package -DskipTests
@@ -239,17 +239,17 @@ Tato konzolová aplikace se připojí k centru IoT Hub, aby vyvolala přímou me
 
 ## <a name="create-a-simulated-device-app"></a>Vytvoření aplikace simulovaného zařízení
 
-V této části vytvoříte konzolovou aplikaci Java, která simuluje zařízení. Aplikace naslouchá volání přímé metody restartování z vašeho centra IoT hub a okamžitě reaguje na toto volání. Aplikace pak přejde na chvíli simulovat proces restartování před používá ohlášenou vlastnost upozornit **aktivační událost restartovat** back-end aplikace, že restartování je dokončena.
+V této části vytvoříte konzolovou aplikaci Java, která simuluje zařízení. Aplikace čeká na restartování přímé volání metody ze služby IoT Hub a okamžitě reaguje na toto volání. Aplikace následně v režimu spánku, aby simulovala proces restartování před tím, než použije hlášenou vlastnost, aby upozornila back-end aplikaci na **aktivační událost** , že se restart dokončil.
 
-1. Ve složce **dm-get-started** vytvořte projekt Maven s názvem **simulované zařízení** pomocí následujícího příkazu na příkazovém řádku:
+1. Ve složce **DM-Get-Started** vytvořte pomocí následujícího příkazu na příkazovém řádku projekt Maven s názvem **simulované zařízení** :
 
     ```cmd/sh
     mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=simulated-device -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 
-2. Na příkazovém řádku přejděte do složky **simulované zařízení.**
+2. Na příkazovém řádku přejděte do složky **simulovaného zařízení** .
 
-3. Pomocí textového editoru otevřete soubor **pom.xml** ve složce **simulované zařízení** a přidejte následující závislost do uzlu **závislostí.** Tato závislost umožňuje používat balíček iot-service-client ve vaší aplikaci ke komunikaci s centrem IoT:
+3. Pomocí textového editoru otevřete soubor **pom. XML** ve složce **simulovaného zařízení** a přidejte následující závislost na uzel **závislosti** . Tato závislost vám umožní komunikovat se službou IoT Hub pomocí balíčku IoT-Service-Client ve vaší aplikaci:
 
     ```xml
     <dependency>
@@ -262,7 +262,7 @@ V této části vytvoříte konzolovou aplikaci Java, která simuluje zařízen�
     > [!NOTE]
     > Můžete vyhledat nejnovější verzi **iot-device-client** pomocí [vyhledávání Maven](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-device-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22).
 
-4. Přidejte následující závislost do uzlu **závislostí.** Tato závislost konfiguruje NOP pro fasádu protokolování Apache [SLF4J,](https://www.slf4j.org/) kterou sada SDK klienta zařízení používá k implementaci protokolování. Tato konfigurace je volitelná, ale pokud ji vynecháme, může se při spuštění aplikace zobrazit upozornění v konzole. Další informace o protokolování v sdk klienta zařízení najdete v [tématu protokolování ukázek](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/readme.md#logging) pro soubor Readme *zařízení Azure IoT pro Java.*
+4. Přidejte následující závislost na uzel **závislosti** . Tato závislost konfiguruje NOP pro přihlašování k Apache [SLF4J](https://www.slf4j.org/) , které používá klientská sada SDK pro zařízení k implementaci protokolování. Tato konfigurace je volitelná, ale pokud ji vynecháte, může se při spuštění aplikace zobrazit upozornění v konzole. Další informace o protokolování v sadě SDK klienta zařízení najdete v tématu [protokolování](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/readme.md#logging) v ukázkách pro soubor Readme pro *zařízení Azure IoT SDK pro jazyk Java* .
 
     ```xml
     <dependency>
@@ -272,7 +272,7 @@ V této části vytvoříte konzolovou aplikaci Java, která simuluje zařízen�
     </dependency>
     ```
 
-5. Za uzel **závislostí** přidejte následující uzel **sestavení.** Tato konfigurace instruuje Maven používat Java 1.8 k vytvoření aplikace:
+5. Přidejte následující uzel **sestavení** za uzel **závislosti** . Tato konfigurace instruuje Maven, aby k sestavení aplikace použil Java 1,8:
 
     ```xml
     <build>
@@ -292,7 +292,7 @@ V této části vytvoříte konzolovou aplikaci Java, která simuluje zařízen�
 
 6. Uložte a zavřete soubor **pom.xml**.
 
-7. Pomocí textového editoru otevřete zdrojový soubor **simulované zařízení\src\main\java\com\mycompany\app\App.java.**
+7. Pomocí textového editoru otevřete zdrojový soubor **Simulated-device\src\main\java\com\mycompany\app\App.Java** .
 
 8. Do souboru přidejte následující příkazy pro **import**:
 
@@ -308,7 +308,7 @@ V této části vytvoříte konzolovou aplikaci Java, která simuluje zařízen�
     import java.util.HashSet;
     ```
 
-9. Do třídy **App** přidejte následující proměnné na úrovni třídy. Nahraďte `{yourdeviceconnectionstring}` připojovacím řetězcem zařízení, který jste si zapsali v části [Registrovat nové zařízení v centru IoT:](#register-a-new-device-in-the-iot-hub)
+9. Do třídy **App** přidejte následující proměnné na úrovni třídy. Nahraďte `{yourdeviceconnectionstring}` připojovacím řetězcem zařízení, který jste si poznamenali v části [Registrace nového zařízení v centru IoT Hub](#register-a-new-device-in-the-iot-hub) :
 
     ```java
     private static final int METHOD_SUCCESS = 200;
@@ -319,7 +319,7 @@ V této části vytvoříte konzolovou aplikaci Java, která simuluje zařízen�
     private static DeviceClient client;
     ```
 
-10. Chcete-li implementovat obslužnou rutinu zpětného volání pro události stavu přímé metody, přidejte do třídy **App** následující vnořenou třídu:
+10. Pro implementaci obslužné rutiny zpětného volání pro události stavu přímé metody přidejte do třídy **aplikace** následující vnořenou třídu:
 
     ```java
     protected static class DirectMethodStatusCallback implements IotHubEventCallback
@@ -331,7 +331,7 @@ V této části vytvoříte konzolovou aplikaci Java, která simuluje zařízen�
     }
     ```
 
-11. Chcete-li implementovat obslužnou rutinu zpětného volání pro události stavu dvojčete zařízení, přidejte do třídy **App** následující vnořenou třídu:
+11. K implementaci obslužné rutiny zpětného volání pro události stavu zařízení s dvojitým stavem přidejte do třídy **aplikace** následující vnořenou třídu:
 
     ```java
     protected static class DeviceTwinStatusCallback implements IotHubEventCallback
@@ -343,7 +343,7 @@ V této části vytvoříte konzolovou aplikaci Java, která simuluje zařízen�
     }
     ```
 
-12. Chcete-li implementovat obslužnou rutinu zpětného volání pro události vlastností, přidejte do třídy **App** následující vnořenou třídu:
+12. Chcete-li implementovat obslužnou rutinu zpětného volání pro události vlastností, přidejte do třídy **aplikace** následující vnořenou třídu:
 
     ```java
     protected static class PropertyCallback implements PropertyCallBack<String, String>
@@ -356,7 +356,7 @@ V této části vytvoříte konzolovou aplikaci Java, která simuluje zařízen�
     }
     ```
 
-13. Chcete-li implementovat vlákno pro simulaci restartování zařízení, přidejte do třídy **App** následující vnořenou třídu. Vlákno přepne po dobu pěti sekund a potom nastaví **lastReboot** ohlášenou vlastnost:
+13. K implementaci vlákna pro simulaci restartování zařízení přidejte do třídy **App** následující vnořenou třídu. Vlákno se v režimu spánku po dobu pěti sekund a pak nastaví vlastnost **lastRebooted** :
 
     ```java
     protected static class RebootDeviceThread implements Runnable {
@@ -377,7 +377,7 @@ V této části vytvoříte konzolovou aplikaci Java, která simuluje zařízen�
     }
     ```
 
-14. Chcete-li implementovat přímou metodu na zařízení, přidejte následující vnořenou třídu do třídy **App.** Když simulovaná aplikace přijme volání metody **přímé restartování,** vrátí potvrzení volajícímu a pak spustí vlákno pro zpracování restartování:
+14. K implementaci přímé metody na zařízení přidejte do třídy **App** následující vnořenou třídu. Když simulovaná aplikace přijme volání přímé metody **restartu** , vrátí volajícímu a potom spustí vlákno pro zpracování restartování:
 
     ```java
     protected static class DirectMethodCallback implements com.microsoft.azure.sdk.iot.device.DeviceTwin.DeviceMethodCallback
@@ -409,20 +409,20 @@ V této části vytvoříte konzolovou aplikaci Java, která simuluje zařízen�
     }
     ```
 
-15. Upravte podpis **hlavní** metody tak, aby vyvolávat následující výjimky:
+15. Upravte podpis metody **Main** tak, aby se vyvolaly následující výjimky:
 
     ```java
     public static void main(String[] args) throws IOException, URISyntaxException
     ```
 
-16. Chcete-li vytvořit instanci **DeviceClient**, nahraďte kód v **hlavní** metodě následujícím kódem:
+16. Chcete-li vytvořit instanci **DeviceClient**, nahraďte kód v metodě **Main** následujícím kódem:
 
     ```java
     System.out.println("Starting device client sample...");
     client = new DeviceClient(connString, protocol);
     ```
 
-17. Chcete-li začít naslouchat volání přímé metody, přidejte následující kód k **hlavní** metodě:
+17. Chcete-li začít naslouchat volání přímých metod, přidejte do metody **Main** následující kód:
 
     ```java
     try
@@ -440,7 +440,7 @@ V této části vytvoříte konzolovou aplikaci Java, která simuluje zařízen�
     }
     ```
 
-18. Chcete-li vypnout simulátor zařízení, přidejte do **hlavní** metody následující kód:
+18. Chcete-li vypnout simulátor zařízení, přidejte do metody **Main** následující kód:
 
     ```java
     System.out.println("Press any key to exit...");
@@ -451,9 +451,9 @@ V této části vytvoříte konzolovou aplikaci Java, která simuluje zařízen�
     System.out.println("Shutting down...");
     ```
 
-19. Uložte a zavřete soubor simulované zařízení\src\main\java\com\mycompany\app\App.java.
+19. Uložte a zavřete soubor simulated-device\src\main\java\com\mycompany\app\App.java.
 
-20. Vytvořte aplikaci **simulované zařízení** a opravte všechny chyby. Na příkazovém řádku přejděte do složky **simulovaných zařízení** a spusťte následující příkaz:
+20. Sestavte aplikaci **simulovaného zařízení** a opravte všechny chyby. Na příkazovém řádku přejděte do složky **simulovaného zařízení** a spusťte následující příkaz:
 
     ```cmd/sh
     mvn clean package -DskipTests
@@ -461,26 +461,26 @@ V této části vytvoříte konzolovou aplikaci Java, která simuluje zařízen�
 
 ## <a name="run-the-apps"></a>Spouštění aplikací
 
-Nyní jste připraveni ke spuštění aplikací.
+Nyní jste připraveni spustit aplikace.
 
-1. Na příkazovém řádku ve složce **simulovaných zařízení** spusťte následující příkaz a začněte naslouchat voláním metod restartování z centra IoT Hub:
-
-    ```cmd/sh
-    mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
-    ```
-
-    ![Java IoT Hub simulované zařízení aplikace pro poslech volání přímé metody restartu](./media/iot-hub-java-java-device-management-getstarted/launchsimulator.png)
-
-2. Na příkazovém řádku ve složce **trigger-reboot** spusťte následující příkaz a zavolejte metodu restartování na simulovaném zařízení z centra IoT:
+1. Na příkazovém řádku ve složce **simulovaného zařízení** spusťte následující příkaz, který zahájí naslouchání volání metod restartování ze služby IoT Hub:
 
     ```cmd/sh
     mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
     ```
 
-    ![Java IoT Hub servisní aplikace pro volání metody přímého restartování](./media/iot-hub-java-java-device-management-getstarted/triggerreboot.png)
+    ![Aplikace pro simulované zařízení Java IoT Hub k naslouchání volání přímých metod restartování](./media/iot-hub-java-java-device-management-getstarted/launchsimulator.png)
+
+2. Na příkazovém řádku ve složce **Trigger-restart** spusťte následující příkaz, který zavolá metodu restart na simulovaném zařízení ve službě IoT Hub:
+
+    ```cmd/sh
+    mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
+    ```
+
+    ![Aplikace služby Java IoT Hub pro volání přímé metody restartování](./media/iot-hub-java-java-device-management-getstarted/triggerreboot.png)
 
 3. Simulované zařízení reaguje na volání přímé metody restartování:
 
-    ![Aplikace simulovaná zařízení java ioT hubreaguje na volání přímé metody](./media/iot-hub-java-java-device-management-getstarted/respondtoreboot.png)
+    ![Aplikace s simulovaným zařízením Java IoT Hub reaguje na přímé volání metody](./media/iot-hub-java-java-device-management-getstarted/respondtoreboot.png)
 
 [!INCLUDE [iot-hub-dm-followup](../../includes/iot-hub-dm-followup.md)]

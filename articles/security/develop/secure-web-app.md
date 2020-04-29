@@ -1,6 +1,6 @@
 ---
-title: Vývoj zabezpečené webové aplikace | Dokumenty společnosti Microsoft
-description: Tato jednoduchá ukázková aplikace implementuje osvědčené postupy zabezpečení, které vylepšují vaši aplikaci a stav zabezpečení vaší organizace při vývoji v Azure.
+title: Vývoj zabezpečené webové aplikace | Microsoft Docs
+description: Tato jednoduchá ukázková aplikace implementuje osvědčené postupy zabezpečení, které zlepšují vaši aplikaci a zabezpečení stav vaší organizace při vývoji v Azure.
 keywords: není k dispozici
 services: security
 documentationcenter: na
@@ -17,80 +17,80 @@ ms.workload: na
 ms.date: 07/23/2019
 ms.author: terrylan
 ms.openlocfilehash: 730e478622da8cd90af1c559e4d0c6fd04151cca
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81686795"
 ---
 # <a name="develop-a-secure-web-app"></a>Vývoj zabezpečené webové aplikace
 
-Tato ukázka je jednoduchá aplikace Pythonu, která zobrazuje webovou stránku obsahující odkazy na prostředky zabezpečení pro vývoj aplikací v Azure. Aplikace implementuje osvědčené postupy zabezpečení, které vám pomůžou zlepšit vaši aplikaci a stav zabezpečení vaší organizace při vývoji aplikací v Azure.
+Tato ukázka je jednoduchá aplikace v Pythonu, která zobrazuje webovou stránku obsahující odkazy na prostředky zabezpečení pro vývoj aplikací v Azure. Aplikace implementuje osvědčené postupy zabezpečení, které vám při vývoji aplikací v Azure můžou zlepšit zabezpečení vaší aplikace a stav zabezpečení vaší organizace.
 
-Měli byste postupovat podle kroků popsaných v tomto článku postupně, abyste zajistili, že součásti aplikace jsou správně nakonfigurovány. Databáze, služba Azure App Service, instance Azure Key Vault a instance Azure Application Gateway závisí na sobě navzájem.
+Postupujte podle kroků popsaných v tomto článku postupně a ujistěte se, že součásti aplikace jsou správně nakonfigurovány. Databáze, Azure App Service, instance Azure Key Vault a instance služby Azure Application Gateway, jsou na sobě navzájem závislé.
 
-Skripty nasazení nastavují infrastrukturu. Po spuštění skriptů nasazení budete muset provést nějakou ruční konfiguraci na webu Azure Portal, abyste propojili součásti a služby dohromady.
+Skripty nasazení nastavily infrastrukturu. Po spuštění skriptů nasazení budete muset v Azure Portal provést několik ručních konfigurací, aby se komponenty a služby vzájemně procházely.
 
-Ukázková aplikace je zaměřena na začátečníky vyvíjející aplikace v Azure, kteří chtějí implementovat bezpečnostní opatření ve svých aplikacích.
+Ukázková aplikace je zaměřená na začátečníky vyvíjet aplikace v Azure, které chtějí implementovat bezpečnostní opatření ve svých aplikacích.
 
-Při vývoji a nasazování této aplikace se dozvíte, jak:
+Při vývoji a nasazení této aplikace se naučíte:
 
-- Vytvořte instanci Azure Key Vault, uložte a načtěte z ní tajné klíče.
-- Nasaďte Azure Database pro PostgreSQL, nastavte zabezpečená hesla a autorizujte k nim přístup.
-- Spusťte kontejner Alpine Linuxu v Azure Web Apps pro Linux a povolte spravované identity pro prostředky Azure.
-- Vytvořte a nakonfigurujte instanci Aplikační brány Azure pomocí brány firewall, která používá [sadu pravidel OWASP Top 10](https://coreruleset.org/).
-- Povolte šifrování dat při přenosu a v klidovém stavu pomocí služeb Azure.
+- Vytvořte instanci Azure Key Vault, uložte si z ní a načtěte tajné kódy.
+- Nasaďte Azure Database for PostgreSQL, nastavte bezpečná hesla a udělte k ní přístup.
+- Spusťte kontejner Alpine Linux v Azure Web Apps pro Linux a povolte spravované identity pro prostředky Azure.
+- Vytvořte a nakonfigurujte instanci Azure Application Gateway s bránou firewall, která používá [OWASP prvních 10 RuleSet](https://coreruleset.org/).
+- Povolí šifrování dat při přenosu a v klidovém provozu pomocí služeb Azure.
 
-Po vývoji a nasazení této aplikace budete mít nastavena následující ukázková webová aplikace spolu s konfigurací a bezpečnostními opatřeními, která jsou popsána.
+Po vývoji a nasazení této aplikace budete mít k dispozici následující ukázkovou webovou aplikaci spolu s popsanými opatřeními konfigurace a zabezpečení.
 
 ![Ukázková webová aplikace](./media/secure-web-app/demo-app.png)
 
 ## <a name="architecture"></a>Architektura
 
-Aplikace je typická n-vrstvá aplikace se třemi vrstvami. Front-end, back-end a databázová vrstva s integrovanými komponentami monitorování a správy tajných klíčů jsou zobrazeny zde:
+Aplikace je typickou n-vrstvou aplikací se třemi úrovněmi. Rozhraní front-end, back-end a databázová vrstva s integrovanými součástmi pro monitorování a správu tajného kódu se zobrazují tady:
 
 ![Architektura aplikací](./media/secure-web-app/architecture.png)
 
-Architektura se skládá z těchto komponent:
+Tato architektura se skládá z těchto součástí:
 
-- [Brána aplikací Azure](../../application-gateway/index.yml). Poskytuje bránu a bránu firewall pro naši aplikační architekturu.
-- [Azure Web Apps na Linuxu](../../app-service/containers/app-service-linux-intro.md). Poskytuje modul runtime kontejneru pro spuštění aplikace Python v prostředí Linuxu.
-- [Azure Key Vault](../../key-vault/index.yml). Ukládá a šifruje tajné kódy naší aplikace a spravuje vytváření zásad přístupu kolem nich.
-- [Databáze Azure pro PostgreSQL](https://azure.microsoft.com/services/postgresql/). Bezpečně ukládá data naší aplikace.
-- [Azure Security Center](../../security-center/index.yml) a [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md). Poskytuje monitorování a upozornění na provoz naší aplikace.
+- [Application Gateway Azure](../../application-gateway/index.yml). Poskytuje bránu a bránu firewall pro naši aplikační architekturu.
+- [Azure Web Apps v systému Linux](../../app-service/containers/app-service-linux-intro.md). Poskytuje modul runtime kontejneru pro spuštění aplikace v Pythonu v prostředí Linux.
+- [Azure Key Vault](../../key-vault/index.yml). Ukládá a šifruje tajné kódy naší aplikace a spravuje vytváření zásad přístupu.
+- [Azure Database for PostgreSQL](https://azure.microsoft.com/services/postgresql/). Bezpečně ukládá data naší aplikace.
+- [Azure Security Center](../../security-center/index.yml) a [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md). Poskytuje monitorování a výstrahy týkající se provozu naší aplikace.
 
-## <a name="threat-model"></a>Model hrozby
+## <a name="threat-model"></a>Model hrozeb
 
-Modelování hrozeb je proces identifikace potenciálních bezpečnostních hrozeb pro vaši firmu a aplikaci a zajištění, že je zaveden správný plán zmírnění.
+Modelování hrozeb je proces identifikace potenciálních bezpečnostních hrozeb pro vaši firmu a aplikaci a následnému zajištění správného plánu zmírnění.
 
-Tato ukázka používá [Microsoft Threat Modeling Tool](threat-modeling-tool.md) k implementaci modelování hrozeb pro zabezpečenou ukázkovou aplikaci. Pomocí diagramu komponent a toků dat můžete identifikovat problémy a hrozby v rané fázi procesu vývoje. To šetří čas a peníze později.
+Tato ukázka používá [Microsoft Threat Modeling Tool](threat-modeling-tool.md) k implementaci modelování hrozeb pro zabezpečenou ukázkovou aplikaci. Díky vytváření diagramů komponent a toků dat můžete identifikovat problémy a hrozby včas v procesu vývoje. Tím ušetříte čas i peníze později.
 
-Toto je model ohrožení pro ukázkovou aplikaci:
+Toto je model hrozeb pro ukázkovou aplikaci:
 
-![Model hrozby](./media/secure-web-app/threat-model.png)
+![Model hrozeb](./media/secure-web-app/threat-model.png)
 
-Některé ukázkové hrozby a potenciální chyby zabezpečení, které generuje nástroj pro modelování hrozeb, jsou zobrazeny na následujícím snímku obrazovky. Model hrozeb poskytuje přehled o vystaveném povrchu útoku a vyzve vývojáře, aby přemýšleli o tom, jak zmírnit problémy.
+Některé ukázkové hrozby a potenciální ohrožení zabezpečení, které nástroj pro modelování hrozeb generuje, se zobrazují na následujícím snímku obrazovky. Model hrozeb poskytuje přehled o zpřístupnění plochy pro útok a vyzývá vývojáře, aby si myslí, jak tyto problémy zmírnit.
 
-![Výstup modelu hrozby](./media/secure-web-app/threat-model-output.png)
+![Výstup modelu hrozeb](./media/secure-web-app/threat-model-output.png)
 
-Například vkládání SQL v předchozím výstupu modelu hrozeb je zmírněno dezinfekcí uživatelských vstupů a použitím uložených funkcí v Azure Database pro PostgreSQL. Toto zmírnění zabraňuje svévolné provádění dotazů během čtení a zápisy dat.
+Například injektáže SQL na předchozím výstupu modelu hrozeb se omezuje úpravou uživatelských vstupů a pomocí uložených funkcí v Azure Database for PostgreSQL. Toto zmírnění brání libovolnému spuštění dotazů během čtení a zápisu dat.
 
-Vývojáři zlepšují celkové zabezpečení systému tím, že zmírňují každou hrozbu ve výstupu modelu hrozeb.
+Vývojáři zlepšují celkové zabezpečení systému tím, že zmírnit jednotlivé hrozby ve výstupu modelu hrozeb.
 
 ## <a name="deployment"></a>Nasazení
 
-Následující možnosti umožňují spouštět Linux ve službě Azure App Service:
+Následující možnosti umožňují spustit Linux na Azure App Service:
 
-- Vyberte kontejner ze seznamu předem sestavených kontejnerů Microsoftu v Azure, které byly vytvořeny s podpůrnými technologiemi (Python, Ruby, PHP, Java, Node.js, .NET Core).
-- Použijte kontejner na zakázku. Vyberte vlastní registry kontejnerů jako zdroj bitové kopie a nastavujte na mnoha dostupných technologiích, které podporují protokol HTTP.
+- Vyberte kontejner ze seznamu předem vytvořených kontejnerů Microsoft v Azure, které byly vytvořeny s podpůrnými technologiemi (Python, Ruby, PHP, Java, Node. js, .NET Core).
+- Použijte vlastní kontejner. Jako zdroj bitové kopie vyberte vlastní Registry kontejnerů a sestavte je na mnoha dostupných technologiích podporujících protokol HTTP.
 
-V tomto příkladu spustíte skript nasazení, který nasadí webovou aplikaci do služby App Service a vytvoří prostředky.
+V tomto příkladu spustíte skript nasazení, který nasadí WebApp do App Service a vytvoří prostředky.
 
-Aplikace může používat různé modely nasazení uvedené níže:
+Aplikace může používat různé modely nasazení, které jsou uvedené níže:
 
 ![Diagram toku dat nasazení](./media/secure-web-app/deployment.png)
 
-Existuje mnoho způsobů nasazení aplikací v Azure, včetně:
+Existuje mnoho způsobů, jak nasadit aplikace v Azure, včetně těchto:
 
 - Šablony Azure Resource Manageru
 - PowerShell
@@ -98,77 +98,77 @@ Existuje mnoho způsobů nasazení aplikací v Azure, včetně:
 - portál Azure
 - Azure DevOps
 
-Tato aplikace používá:
+Tato aplikace se používá:
 
-- [Docker](https://docs.docker.com/) k vytvoření a sestavení iimages kontejneru.
-- [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) pro nasazení.
-- [Docker Hub](https://hub.docker.com/) jako registr kontejnerů.
+- [Docker](https://docs.docker.com/) pro vytvoření a sestavení imagí kontejneru.
+- Rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) pro nasazení
+- [Docker Hub](https://hub.docker.com/) jako registr kontejneru.
 
 ## <a name="security-considerations"></a>Důležité informace o zabezpečení
 
 ### <a name="network"></a>Síť
 
-Ukázková aplikace používá end-to-end TLS/SSL šifrování pro příchozí data proudící do a ze sítě. Brána je konfigurována s certifikátem podepsaným svým držitelem.
+Ukázková aplikace používá kompletní šifrování TLS/SSL pro přenos dat do sítě a ze sítě. Brána je nakonfigurována s certifikátem podepsaným svým držitelem.
 > [!IMPORTANT]
-> V této demonstraci se používá certifikát podepsaný svým držitelem. V provozním prostředí byste měli získat certifikáty od ověřené certifikační autority (CA).
+> V této ukázce se používá certifikát podepsaný svým držitelem. V produkčním prostředí byste měli získat certifikáty od ověřené certifikační autority (CA).
 
-Brána firewall aplikace také kontroluje příchozí provoz a upozorní správce, když je zjištěn škodlivý provoz v síťovém provozu.
-Application Gateway zmírňuje možnost hrozby vkládání DDoS a SQL zjištěné v modelu hrozeb.
+Brána firewall aplikace také kontroluje příchozí provoz a správce výstrah, když se v síťovém provozu zjistí škodlivý provoz.
+Application Gateway zmírnit možnost DDoS a hrozby injektáže SQL zjištěné v modelu hrozeb.
 
 ### <a name="identity"></a>Identita
 
-Pro přihlášení k portálu, ukázkové aplikace používá vícefaktorové ověřování pro Azure Active Directory (Azure AD) správci, kteří jsou přiřazen přístup k prostředkům.
-Ukázková aplikace používá spravované identity získat oprávnění ke čtení a načtení tajných klíčů z Azure Key Vault, zajištění aplikace není nutné pevný kód přihlašovací údaje a tokeny číst tajné klíče. Azure AD automaticky vytvoří instanční objekty, které aplikace potřebuje ke čtení a upravuje tajné klíče při použití spravovaných identit.
+K přihlášení k portálu ukázková aplikace používá Multi-Factor Authentication pro správce služby Azure Active Directory (Azure AD), kteří mají přiřazený přístup k prostředkům.
+Ukázková aplikace používá spravované identity k získání oprávnění ke čtení a načítání tajných kódů z Azure Key Vault, takže aplikace nepotřebuje při čtení tajných kódů zadat přihlašovací údaje a tokeny. Služba Azure AD automaticky vytvoří instanční objekty, které aplikace potřebuje pro čtení a změny tajných kódů při použití spravovaných identit.
 
-Spravované identity pro prostředky Azure a MFA ztěžují protivníkům získat oprávnění a eskalovat jejich oprávnění v systému. Tato hrozba byla zdůrazněna v modelu hrozby.
+Spravované identity pro prostředky Azure a MFA usnadňují nežádoucí osoby získání oprávnění a eskalaci jejich oprávnění v systému. Tato hrozba byla poukázána v modelu hrozeb.
 Aplikace používá OAuth, který umožňuje uživatelům registrovaným v aplikaci OAuth přihlásit se k aplikaci.
 
 ### <a name="storage"></a>Storage
 
-Data v databázi PostgreSQL se automaticky šifrují v klidovém stavu službou Azure Database for PostgreSQL. Databáze autorizuje IP adresy služby App Service, takže k prostředkům databáze má přístup ke správným ověřovacím přihlašovacím údajům je pouze nasazená webová aplikace App Service.
+Data v databázi PostgreSQL se automaticky zašifrují, Azure Database for PostgreSQL. Databáze autorizuje App Service IP adresy, takže přístup k prostředkům databáze pomocí správných přihlašovacích údajů může pouze nasazená webová aplikace App Service.
 
 ### <a name="logging-and-auditing"></a>Protokolování a auditování
 
-Aplikace implementuje protokolování pomocí Application Insights ke sledování metrik, protokolů a výjimek, ke kterým dochází. Toto protokolování poskytuje dostatek metadat aplikace informovat vývojáře a členy provozního týmu o stavu aplikace. Poskytuje také dostatek dat k zpětnému odkupu v případě bezpečnostních incidentů.
+Aplikace implementuje protokolování pomocí Application Insights ke sledování metrik, protokolů a výjimek, ke kterým dojde. Toto protokolování poskytuje dostatek metadat aplikace pro informování vývojářů a členů provozního týmu ve stavu aplikace. Poskytuje také dostatek dat pro obvracení v případě incidentů zabezpečení.
 
 ## <a name="cost-considerations"></a>Důležité informace o nákladech
 
-Pokud ještě nemáte účet Azure, můžete si vytvořit bezplatný účet. Na [stránce bezplatného účtu](https://azure.microsoft.com/free/) můžete začít, zjistit, co můžete dělat s bezplatným účtem Azure, a zjistit, které produkty jsou zdarma po dobu 12 měsíců.
+Pokud ještě nemáte účet Azure, můžete si vytvořit nějaký bezplatný. Přejděte na [stránku bezplatný účet](https://azure.microsoft.com/free/) , abyste mohli začít, podívejte se, co můžete dělat s bezplatným účtem Azure, a zjistěte, které produkty jsou zdarma po dobu 12 měsíců.
 
-Chcete-li nasadit prostředky v ukázkové aplikaci s funkcemi zabezpečení, musíte zaplatit za některé prémiové funkce. Vzhledem k tomu, že aplikace se škáluje a bezplatné úrovně a zkušební verze nabízené Azure je třeba upgradovat tak, aby splňovaly požadavky aplikací, vaše náklady se mohou zvýšit. K odhadu nákladů použijte [cenovou kalkulačku](https://azure.microsoft.com/pricing/calculator/) Azure.
+Pokud chcete nasadit prostředky v ukázkové aplikaci s funkcemi zabezpečení, musíte platit za některé prémiové funkce. Vzhledem k tomu, že se aplikace škáluje a úrovně Free a zkušební verze, které nabízí Azure, je potřeba upgradovat, aby splňovaly požadavky na aplikace, může dojít ke zvýšení nákladů. Pomocí [cenové kalkulačky](https://azure.microsoft.com/pricing/calculator/) Azure můžete odhadnout náklady.
 
 ## <a name="deploy-the-solution"></a>Nasazení řešení
 
 ### <a name="prerequisites"></a>Požadavky
 
-Chcete-li aplikaci zprovoznit, je třeba nainstalovat tyto nástroje:
+Chcete-li aplikaci nainstalovat a spustit, je nutné nainstalovat tyto nástroje:
 
-- Editor kódu pro úpravu a zobrazení kódu aplikace. [Visual Studio Code](https://code.visualstudio.com/) je open source možnost.
-- [Azure CLI](/cli/azure/install-azure-cli) ve vývojovém počítači.
-- [Git](https://git-scm.com/) ve vašem systému. Git se používá k místnímu klonování zdrojového kódu.
-- [jq](https://stedolan.github.io/jq/), unixový nástroj pro dotazování JSON uživatelsky přívětivým způsobem.
+- Editor kódu pro úpravu a zobrazení kódu aplikace. [Visual Studio Code](https://code.visualstudio.com/) je možnost Open Source.
+- Rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli) ve vývojovém počítači.
+- V systému [Git](https://git-scm.com/) . Git se používá ke klonování zdrojového kódu místně.
+- [JQ](https://stedolan.github.io/jq/), nástroj pro systém UNIX pro dotazování formátu JSON uživatelsky přívětivým způsobem.
 
-K nasazení prostředků ukázkové aplikace potřebujete předplatné Azure. Pokud nemáte předplatné Azure, můžete [si vytvořit bezplatný účet](https://azure.microsoft.com/free/) pro testování ukázkové aplikace.
+K nasazení prostředků ukázkové aplikace potřebujete předplatné Azure. Pokud nemáte předplatné Azure, můžete si [vytvořit bezplatný účet](https://azure.microsoft.com/free/) pro otestování ukázkové aplikace.
 
-Po instalaci těchto nástrojů jste připraveni nasadit aplikaci v Azure.
+Po instalaci těchto nástrojů jste připraveni aplikaci nasadit do Azure.
 
 ### <a name="environment-setup"></a>Nastavení prostředí
 
-Spusťte skripty nasazení pro nastavení prostředí a předplatného:
+Spusťte skripty nasazení a nastavte prostředí a předplatné:
 
-1. Chcete-li klonovat úložiště zdrojového kódu, použijte tento příkaz Git:
+1. Pokud chcete klonovat úložiště zdrojového kódu, použijte tento příkaz git:
 
    ```shell
    git clone https://github.com/Azure-Samples/sample-linux-python-app tutorial-project
    ```
 
-2. Chcete-li se přesunout do adresáře, použijte tento příkaz:
+2. Pokud se chcete přesunout do adresáře, použijte tento příkaz:
 
    ```shell
    cd tutorial-project/scripts
    ```
 
-3. Ve složce skriptů jsou soubory, které jsou specifické pro platformu, kterou používáte (Windows nebo Linux). Při instalaci azure cli už bylo nainstalované, přihlaste se k účtu Azure na příkazovém řádku spuštěním tohoto příkazu Azure CLI:
+3. Ve složce Scripts jsou soubory, které jsou specifické pro platformu, kterou používáte (Windows nebo Linux). Protože rozhraní Azure CLI už je nainstalované, přihlaste se k účtu Azure na příkazovém řádku spuštěním tohoto příkazu Azure CLI:
 
    ```azurecli-interactive
    az login
@@ -176,39 +176,39 @@ Spusťte skripty nasazení pro nastavení prostředí a předplatného:
 
 Prohlížeč se otevře, přihlaste se pomocí svých přihlašovacích údajů. Po přihlášení můžete začít nasazovat prostředky z příkazového řádku.
 
-Skripty `deploy-powershell.ps1` nasazení `deploy-bash.sh` a obsahují kód, který nasazuje celou aplikaci.
+Skripty `deploy-powershell.ps1` nasazení a `deploy-bash.sh` obsahují kód, který nasadí celou aplikaci.
 Nasazení řešení:
 
-1. Pokud jste v PowerShellu, `deploy-powershell.ps1` spusťte soubor zadáním `./deploy-powershell.ps1 REGION RESOURCE_GROUP_NAME` nahrazení názvu oblasti a skupiny prostředků vhodnými oblastmi Azure a názvem pro skupinu prostředků
-2. Pokud jste na Linuxu `deploy-bash.sh` spustit `/deploy-bash.sh REGION RESOURCE_GROUP_NAME`soubor zadáním , budete muset vytvořit soubor spustitelný zadáním`chmod +x deploy-bash.sh`
+1. Pokud jste v prostředí PowerShell, spusťte `deploy-powershell.ps1` soubor zadáním `./deploy-powershell.ps1 REGION RESOURCE_GROUP_NAME` nahrazení oblasti a názvu skupiny prostředků vhodnými oblastmi Azure a názvem pro skupinu prostředků.
+2. Pokud jste v systému Linux spustili `deploy-bash.sh` soubor zadáním `/deploy-bash.sh REGION RESOURCE_GROUP_NAME`, bude pravděpodobně nutné nastavit spustitelný soubor souboru zadáním`chmod +x deploy-bash.sh`
 
-Následující příklady představují úryvky klíčových součástí. Příklady můžete nasadit jednotlivě nebo se zbývajícími součástmi spuštěním nasadit soubory.
+Následující příklady prezentují fragmenty klíčových komponent. Můžete nasadit příklady jednotlivě nebo se zbytkem součástí spuštěním souborů nasazení.
 
-### <a name="implementation-guidance"></a>Prováděcí pokyny
+### <a name="implementation-guidance"></a>Pokyny k implementaci
 
-Skript nasazení je jeden skript, který lze rozdělit do čtyř fází. Každá fáze nasazuje a konfiguruje prostředek Azure, který je v [diagramu architektury](#architecture).
+Skript nasazení je jeden skript, který může být rozdělen do čtyř fází. Každá fáze nasadí a nakonfiguruje prostředek Azure, který je v [diagramu architektury](#architecture).
 
-Čtyři fáze jsou:
+Čtyři fáze:
 
-- Nasazení trezoru klíčů Azure.
-- Nasazení databáze Azure pro PostgreSQL.
-- Nasaďte Azure Web Apps na Linuxu.
-- Nasazení brány aplikace pomocí brány firewall webových aplikací
+- Nasazení Azure Key Vault.
+- Nasazení Azure Database for PostgreSQL.
+- Nasazení Azure Web Apps v systému Linux.
+- Nasaďte Application Gateway s bránou firewall webových aplikací.
 
-Každá fáze vychází z předchozí ho pomocí konfigurace z dříve nasazených prostředků.
+Každá fáze sestaví na předchozí straně pomocí konfigurace z dříve nasazených prostředků.
 
-Chcete-li dokončit kroky implementace, ujistěte se, že jste nainstalovali nástroje uvedené v části [Požadavky](#prerequisites).
+K dokončení kroků implementace se ujistěte, že jste nainstalovali nástroje uvedené v části [požadavky](#prerequisites).
 
-#### <a name="deploy-azure-key-vault"></a>Nasazení trezoru klíčů Azure
+#### <a name="deploy-azure-key-vault"></a>Nasazení Azure Key Vault
 
-V této části vytvoříte a nasadíte instanci Azure Key Vault, která se používá k ukládání tajných kódů a certifikátů.
+V této části vytvoříte a nasadíte instanci Azure Key Vault, která se používá k ukládání tajných klíčů a certifikátů.
 
-Po dokončení nasazení máte instanci Azure Key Vault nasazenou v Azure.
+Po dokončení nasazení budete mít na Azure nasazenou instanci Azure Key Vault.
 
-Nasazení úložiště klíčů Azure pomocí azure cli:
+Nasazení Azure Key Vault pomocí rozhraní příkazového řádku Azure:
 
 1. Deklarujte proměnné pro Azure Key Vault.
-2. Zaregistrujte zprostředkovatele Azure Key Vault.
+2. Zaregistrujte poskytovatele Azure Key Vault.
 3. Vytvořte skupinu prostředků pro instanci.
 4. Vytvořte instanci Azure Key Vault ve skupině prostředků vytvořené v kroku 3.
 
@@ -248,23 +248,23 @@ Nasazení úložiště klíčů Azure pomocí azure cli:
 
    ```
 
-Je osvědčeným postupem používat spravované identity pro prostředky Azure v aplikacích, které používají Key Vault pro přístup k prostředkům. Stav zabezpečení se zvyšuje, když přístupové klíče k trezoru klíčů nejsou uloženy v kódu nebo v konfiguraci.
+Osvědčeným postupem je použití spravovaných identit pro prostředky Azure v aplikacích, které používají Key Vault k přístupu k prostředkům. Stav zabezpečení se zvyšuje, když se přístupové klíče Key Vault neukládají v kódu nebo v konfiguraci.
 
-#### <a name="deploy-azure-database-for-postgresql"></a>Nasazení databáze Azure pro PostgreSQL
+#### <a name="deploy-azure-database-for-postgresql"></a>Nasazení Azure Database for PostgreSQL
 
-Azure Database for PostgreSQL funguje následujícím způsobem, nejprve vytvořte databázový server a pak vytvořte databázi, na které chcete uložit schéma a data.
+Azure Database for PostgreSQL funguje následujícím způsobem, nejprve vytvořte databázový server a pak vytvořte databázi, do které chcete uložit schéma a data.
 
-Po dokončení nasazení máte v Azure spuštěný postgresql server a databázi.
+Po dokončení nasazení budete mít PostgreSQL Server a databázi běžící v Azure.
 
-Nasazení Azure Database pro PostgreSQL pomocí Azure CLI:
+Nasazení Azure Database for PostgreSQL pomocí rozhraní příkazového řádku Azure:
 
-1. Otevřete terminál pomocí azure CLI a nastavení předplatného Azure.
-2. Vygenerujte kombinaci zabezpečeného uživatelského jména a hesla, která se používá pro přístup k databázi. (Ty by měly být uloženy v Azure Key Vault pro aplikace, které je používají.)
+1. Otevřete terminál pomocí Azure CLI a nastavení předplatného Azure.
+2. Vygeneruje zabezpečenou kombinaci uživatelského jména a hesla, která se používá pro přístup k databázi. (Ty by měly být uložené v Azure Key Vault pro aplikace, které je používají.)
 3. Vytvořte instanci serveru PostgreSQL.
 4. Vytvořte databázi na instanci serveru, kterou jste vytvořili v kroku 3.
-5. Spusťte skripty PostgreSQL na instanci PostgreSQL.
+5. Spusťte skripty PostgreSQL v instanci PostgreSQL.
 
-Níže uvedený kód závisí na PGUSERNAME a PGPASSWORD tajemství uložené v Azure KeyVault z nasazení KeyVault výše.
+Následující kód závisí na tajných klíčích PGUSERNAME a PGPASSWORD uložených ve službě Azure klíčů v kroku nasazení trezoru klíčů výše.
 
    ```powershell-interactive
    $pgUsername = $(az keyvault secret show --name PGUSERNAME --vault-name $kvName --query value) -replace '"',''
@@ -307,29 +307,29 @@ Níže uvedený kód závisí na PGUSERNAME a PGPASSWORD tajemství uložené v 
        --verbose
    ```
 
-Po nasazení databáze je potřeba uložit jeho přihlašovací údaje a připojovací řetězec v Azure Key Vault.
-Ve složce skripty je `functions.sql` soubor, který obsahuje kód PL/pgSQL, který při spuštění vytváří uložené funkce. Spuštění tohoto souboru parametrizuje vstupy k omezení vkládání SQL.
+Po nasazení databáze je třeba uložit své přihlašovací údaje a připojovací řetězec do Azure Key Vault.
+Ve složce Scripts je `functions.sql` soubor, který obsahuje kód pl/PGSQL, který při spuštění vytvoří uložené funkce. Po spuštění tohoto souboru se parameterizes vstupy a omezí se vkládání SQL.
 
-PostgreSQL je dodáván s `psql` nástrojem s názvem, který se používá pro připojení k databázi. Chcete-li spustit `functions.sql`, musíte se připojit k azure databáze pro postgreSQL instance z místního počítače a spustit ji odtud. Instalace psql nástroje je součástí výchozí instalace postgreSQL na každém operačním systému.
-Další informace naleznete v [dokumentaci k psql](https://www.postgresql.org/docs/9.3/app-psql.html).
+PostgreSQL je součástí balíčku s názvem `psql` , který se používá pro připojení k databázi nástroje. Aby bylo `functions.sql`možné spustit, musíte se z místního počítače připojit k instanci Azure Database for PostgreSQL a spustit ji. Instalace nástroje psql je součástí výchozí instalace pro PostgreSQL v každém operačním systému.
+Další informace najdete v [dokumentaci k psql](https://www.postgresql.org/docs/9.3/app-psql.html).
 
-Azure Cloud Shell `psql` také obsahuje nástroj. Cloud Shell můžete použít přímo z portálu Azure výběrem ikony cloudového prostředí.
+Azure Cloud Shell také obsahuje `psql` nástroj. Cloud Shell můžete použít přímo z Azure Portal tak, že vyberete ikonu Cloud Shell.
 
-Chcete-li povolit vzdálený přístup k instanci PostgreSQL, musíte autorizovat IP adresu v PostgreSQL.
-Tento přístup povolíte tak, že přejdete na kartu **Zabezpečení připojení,** vyberete **možnost Přidat IP klienta**a uložíte nové nastavení.
+Pokud chcete povolit vzdálený přístup k instanci PostgreSQL, musíte autorizovat IP adresu v PostgreSQL.
+Tento přístup povolíte tak, že na kartě **zabezpečení připojení** vyberete **Přidat IP adresu klienta**a uložíte nová nastavení.
 
 ![Autorizovat IP adresu klienta](./media/secure-web-app/add-client-ip-postgres.png)
 
-Pokud používáte Cloud Shell místo místního nástroje pSQL, vyberte **Povolit přístup ke službám Azure** a změňte jeho hodnotu **na ZAPNUTO,** abyste mohli mít přístup ke cloudovému prostředí.
+Pokud místo místního nástroje psql používáte Cloud Shell, vyberte možnost **Povolení přístupu ke službám Azure** a změňte její hodnotu na **zapnuto** , aby byl přístup k Cloud Shell povolen.
 
-Pak se připojte k instanci spuštěním příkazu níže psql s parametry připojovacího řetězce na kartě **Připojovací řetězce** instance PostgreSQL na webu Azure Portal.
-Nahraďte prázdné závorky parametry z okna připojovacího řetězce databáze a heslo s heslem z trezoru klíčů Azure.
+Pak se připojte k instanci spuštěním níže uvedeného příkazu psql s parametry připojovacího řetězce na kartě **připojovací řetězce** instance PostgreSQL na Azure Portal.
+Nahraďte prázdné složené závorky parametry z okna připojovací řetězec databáze a heslo heslem z Azure Key Vault.
 
 ```shell
 psql "host={} port=5432 dbname=hellodb user={} password=PGPASSWORD sslmode=require"
 ```
 
-Spusťte následující PL/pgSQL skript poté, co se ujistěte, že jste připojeni k databázi. Skript vytvoří uložené funkce používané k vložení dat do databáze.
+Po ujištění, že jste připojení k databázi, spusťte následující skript PL/pgSQL. Skript vytvoří uložené funkce, které slouží k vložení dat do databáze.
 
 ```shell
 CREATE OR REPLACE FUNCTION insert_visitor(country VARCHAR(40), browser VARCHAR(40), operating_system VARCHAR(40)) RETURNS void AS $$
@@ -363,27 +363,27 @@ END;
 $$ LANGUAGE PLPGSQL;
 ```
 
-Další informace o nastavení ověření TLS a Certifikační autority (CA) pro PostgreSQL najdete [v tématu Konfigurace připojení TLS v Azure Database for PostgreSQL](/azure/postgresql/concepts-ssl-connection-security).
+Další informace o tom, jak nastavit ověřování TLS a certifikační autority (CA) pro PostgreSQL, najdete v tématu [Konfigurace připojení TLS v Azure Database for PostgreSQL](/azure/postgresql/concepts-ssl-connection-security).
 
-Kořenový certifikát je součástí kontejneru. K získání certifikátu jsou podniknuty tyto kroky:
+V kontejneru je zahrnutý kořenový certifikát. Postup pro získání certifikátu:
 
-1. Stáhněte soubor certifikátu z [certifikační autority](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt).
-2. [Stáhněte a nainstalujte OpenSSL do počítače](/azure/postgresql/concepts-ssl-connection-security).
-3. Dekódujte soubor certifikátu:
+1. Stáhněte si soubor certifikátu od [certifikační autority](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt).
+2. [Stáhněte a nainstalujte si OpenSSL na svém počítači](/azure/postgresql/concepts-ssl-connection-security).
+3. Dekódování souboru certifikátu:
 
    ```shell
    openssl x509 -inform DER -in BaltimoreCyberTrustRoot.crt -text -out root.crt
    ```
 
-Přečtěte si více o tom, jak nakonfigurovat zabezpečení TLS pro PostgreSQL zde [Konfigurace zabezpečení připojení TLS](/azure/postgresql/concepts-ssl-connection-security).
+Další informace o tom, jak nakonfigurovat zabezpečení TLS pro PostgreSQL, najdete tady v tématu [Konfigurace zabezpečení připojení TLS](/azure/postgresql/concepts-ssl-connection-security).
 
-#### <a name="deploy-azure-web-apps-on-linux"></a>Nasazení Webových aplikací Azure na Linuxu
+#### <a name="deploy-azure-web-apps-on-linux"></a>Nasazení Azure Web Apps v systému Linux
 
-Služby Linuxu můžete snadno vytvářet nad Azure App Service, protože Azure poskytuje sadu předem vytvořených kontejnerů a ibi pro široce používané jazyky, jako je Python, Ruby, C# a Java. Azure také podporuje vlastní kontejnery, které můžou prakticky všechny programovací jazyky spouštět na platformě Azure App Service.
+Můžete snadno vytvářet služby Linux na Azure App Service, protože Azure poskytuje sadu předem připravených kontejnerů a imagí pro široce používané jazyky, jako je Python, Ruby, C# a Java. Azure podporuje také vlastní kontejnery, které umožňují spouštět prakticky všechny programovací jazyky na platformě Azure App Service.
 
-Naváděná aplikace je jednoduchá aplikace Pythonu, která běží na nejnovější distribuci Ubuntu Linux. Připojuje se k instancím Azure Key Vault a PostgreSQL, které byly vytvořeny v předchozích částech pro správu přihlašovacích údajů a ukládání dat.
+Nasazená aplikace je jednoduchá aplikace v Pythonu, která běží na nejnovější distribuci Ubuntu Linux. Připojuje se k instancím Azure Key Vault a PostgreSQL, které byly vytvořeny v předchozích částech pro správu přihlašovacích údajů a úložiště dat.
 
-Následující soubor Dockeru je k dispozici v kořenové složce aplikace:
+V kořenové složce aplikace je k dispozici následující soubor Docker:
 
 ```dockerfile
 # Docker file for the basic web app
@@ -436,14 +436,14 @@ USER appuser
 ENTRYPOINT ["/usr/local/bin/init.sh"]
 ```
 
-Výše uvedený soubor Dockerfile se používá k vytvoření kontejneru, `mcr.microsoft.com/samples/basic-linux-app`který je hostovaný v registru kontejnerů Azure na adrese .
+Souboru Dockerfile výše se používá k sestavení kontejneru hostovaného na Azure Container Registry `mcr.microsoft.com/samples/basic-linux-app`.
 
-Kód níže:
+Následující kód:
 
-1. Deklaruje proměnné a názvy pro instanci služby App Service.
-2. Vytvoří skupinu prostředků pro plán služby App Service.
-3. Zřídí azure web apps na linuxové kontejnery instance.
-4. Umožňuje protokolování pro kontejner webové aplikace.
+1. Deklaruje proměnné a názvy pro instanci App Service.
+2. Vytvoří skupinu prostředků pro plán App Service.
+3. Zřídí instanci Azure Web Apps v kontejnerech platformy Linux.
+4. Povolí protokolování pro kontejner webové aplikace.
 5. Nastaví některé konfigurace aplikací v nastavení aplikace kontejneru.
 
    ```powershell-interactive
@@ -517,32 +517,32 @@ Kód níže:
    }
    ```
 
-Tento skript vytvoří přiřazenou identitu pro instanci služby App Service, kterou lze použít s MSI k interakci s trezorem klíčů Azure bez tajných kódů pevného kódování v kódu nebo konfiguraci.
+Tento skript vytvoří přiřazenou identitu pro instanci App Service, kterou lze použít s balíčkem MSI k interakci s Azure Key Vault bez tajných tajných kódů v kódu nebo konfiguraci.
 
-Přejděte na instanci Azure Key Vault na portálu a autorizujte přiřazenou identitu na kartě zásad přístupu. **Add new access policy** V **části Vybrat hlavní objekt**vyhledejte název aplikace, který je podobný názvu vytvořené instance služby App Service.
-Instanční objekt připojený k aplikaci by měl být viditelný. Vyberte ji a uložte stránku zásad přístupu, jak je znázorněno na následujícím snímku obrazovky.
+Na portálu přejděte na instanci Azure Key Vault a autorizujte přiřazenou identitu na kartě zásady přístupu. Vyberte **Přidat nové zásady přístupu**. V části **Vybrat objekt zabezpečení**vyhledejte název aplikace, který se podobá názvu vytvořené instance App Service.
+Objekt služby připojený k aplikaci by měl být viditelný. Vyberte stránku a uložte si zásadu přístupu, jak je znázorněno na následujícím snímku obrazovky.
 
-Vzhledem k tomu, že aplikace potřebuje pouze načíst klíče, vyberte **získat** oprávnění v možnostech tajných klíčů, povolení přístupu při současném snížení udělených oprávnění.
+Vzhledem k tomu, že aplikace potřebuje jenom načíst klíče, vyberte v možnostech tajných kódů oprávnění **získat** a umožněte přístup při omezení udělených oprávnění.
 
-![Zásady přístupu k trezoru klíčů](./media/secure-web-app/kv-access-policy.png)
+![Zásada přístupu Key Vault](./media/secure-web-app/kv-access-policy.png)
 
-*Vytvoření zásad přístupu trezoru klíčů*
+*Vytvoření zásady přístupu Key Vault*
 
-Uložte zásady přístupu a pak uložte novou změnu na kartě **Zásady přístupu** a aktualizujte zásady.
+Uložte zásady přístupu a pak uložte novou změnu na kartě **zásady přístupu** a aktualizujte zásady.
 
-#### <a name="deploy-application-gateway-with-web-application-firewall-enabled"></a>Nasazení aplikační brány s povolenou bránou firewall webových aplikací
+#### <a name="deploy-application-gateway-with-web-application-firewall-enabled"></a>Nasazení Application Gateway s povoleným firewallem webových aplikací
 
-Ve webových aplikacích se nedoporučuje vystavovat služby přímo vnějšímu světu na internetu.
-Pravidla vyrovnávání zatížení a brány firewall poskytují větší zabezpečení a kontrolu nad příchozím provozem a pomáhají vám je spravovat.
+Ve službě Web Apps nedoporučujeme vystavovat služby přímo na světovém světě na internetu.
+Vyrovnávání zatížení a pravidla brány firewall poskytují lepší zabezpečení a kontrolu nad příchozím provozem a umožňují vám ho spravovat.
 
-Nasazení instance aplikační brány:
+Nasazení instance Application Gateway:
 
-1. Vytvořte skupinu prostředků pro použití aplikační brány.
-2. Zřízení virtuální sítě připojit k bráně.
+1. Vytvořte skupinu prostředků, která bude obsahovat Aplikační bránu.
+2. Zajistěte, aby se virtuální síť připojila k bráně.
 3. Vytvořte podsíť pro bránu ve virtuální síti.
-4. Zřídit veřejnou IP adresu.
-5. Zřízení brány aplikace.
-6. Povolte bránu firewall webových aplikací na bráně.
+4. Zřízení veřejné IP adresy.
+5. Zřídit Aplikační bránu.
+6. Povolte v bráně firewall webových aplikací.
 
    ```powershell-interactive
    az keyvault certificate create --vault-name $kvName `
@@ -577,7 +577,7 @@ Předchozí skript:
 4. Exportuje certifikát jako soubor PFX podepsaný heslem.
 5. Ukládá heslo certifikátu v Azure Key Vault.
 
-Tato část nasazuje aplikační bránu:
+Tato část nasazuje Aplikační bránu:
 
 ```powershell-interactive
 # Create a virtual network required by the gateway
@@ -677,318 +677,318 @@ az network application-gateway http-settings update --gateway-name $gwName `
     --verbose
 ```
 
-Po dokončení nasazení máte aplikační bránu s povolenou bránou firewall webové aplikace.
+Po dokončení nasazení máte bránu Application Gateway s povoleným firewallem webových aplikací.
 
-Instance brány zpřístupňuje port 443 pro protokol HTTPS. Tato konfigurace zajišťuje, že naše aplikace je přístupná pouze na portu 443 prostřednictvím protokolu HTTPS.
+Instance brány zveřejňuje port 443 pro protokol HTTPS. Tato konfigurace zajišťuje, že naše aplikace je přístupná jenom na portu 443 přes protokol HTTPS.
 
-Blokování nepoužívaných portů a omezení expozice povrchu útoku je osvědčeným postupem zabezpečení.
+Osvědčeným postupem zabezpečení blokování nepoužívaných portů a omezení expozice prostoru pro útok.
 
-#### <a name="add-network-security-groups-to-the-app-service-instance"></a>Přidání skupin zabezpečení sítě do instance služby App Service
+#### <a name="add-network-security-groups-to-the-app-service-instance"></a>Přidání skupin zabezpečení sítě do instance App Service
 
-Instance služby App Service lze integrovat s virtuálními sítěmi. Tato integrace umožňuje jejich konfiguraci pomocí zásad skupiny zabezpečení sítě, které spravují příchozí a odchozí provoz aplikace.
+Instance App Service lze integrovat s virtuálními sítěmi. Tato integrace umožňuje nakonfigurovat zásady skupiny zabezpečení sítě, které spravují příchozí a odchozí provoz aplikace.
 
-1. Chcete-li tuto funkci povolit, vyberte v okně instance služby Azure App v části **Nastavení** **položku Networking**. V pravém podokně v části **Integrace virtuální sítě**vyberte Klepnutím **sem nakonfigurujete**.
+1. Pokud chcete tuto funkci povolit, v okně instance služby Azure App Service v části **Nastavení**vyberte **sítě**. V pravém podokně v části **Integrace virtuální**sítě vyberte **kliknutím sem proveďte konfiguraci**.
 
    ![Nová integrace virtuální sítě](./media/secure-web-app/app-vnet-menu.png)
 
-    *Nová integrace virtuální sítě pro službu App Service*
+    *Nová integrace virtuální sítě pro App Service*
 
-1. Na další stránce vyberte **Přidat virtuální síť (náhled).**
+1. Na další stránce vyberte **Přidat virtuální síť (Preview)**.
 
-1. V další nabídce vyberte virtuální síť vytvořenou `hello-vnet`v nasazení, které začíná na . Můžete buď vytvořit novou podsíť, nebo vybrat existující síť.
-   V takovém případě vytvořte novou podsíť. Nastavte **rozsah Adresa** na **10.0.3.0/24** a pojmenujte **podsíť podsítě podsítě**.
+1. V další nabídce vyberte virtuální síť vytvořenou v nasazení, které začíná na `hello-vnet`. Můžete buď vytvořit novou podsíť, nebo vybrat některou z existujících.
+   V takovém případě vytvořte novou podsíť. Nastavte **Rozsah adres** na **10.0.3.0/24** a pojmenujte podsíť **AppDomain App-Subnet**.
 
-   ![Konfigurace virtuální sítě služby App Service](./media/secure-web-app/app-vnet-config.png)
+   ![Konfigurace App Service virtuální sítě](./media/secure-web-app/app-vnet-config.png)
 
-    *Konfigurace virtuální sítě pro službu App Service*
+    *Konfigurace virtuální sítě pro App Service*
 
 Teď, když jste povolili integraci virtuální sítě, můžete do naší aplikace přidat skupiny zabezpečení sítě.
 
-1. Použijte vyhledávací pole, vyhledejte **skupiny zabezpečení sítě**. Ve výsledcích vyberte **skupiny zabezpečení sítě.**
+1. Pomocí vyhledávacího pole vyhledejte **skupiny zabezpečení sítě**. Ve výsledcích vyberte **skupiny zabezpečení sítě** .
 
-    ![Hledání skupin zabezpečení sítě](./media/secure-web-app/nsg-search-menu.png)
+    ![Vyhledat skupiny zabezpečení sítě](./media/secure-web-app/nsg-search-menu.png)
 
-    *Hledání skupin zabezpečení sítě*
+    *Vyhledat skupiny zabezpečení sítě*
 
-2. V další nabídce vyberte **Přidat**. Zadejte **název** skupiny nsg a **skupiny prostředků,** ve které by měl být umístěn. Tento soubor nsg bude použit v podsíti aplikační brány.
+2. V další nabídce vyberte **Přidat**. Zadejte **název** NSG a **skupinu prostředků** , ve které se má umístit. Tento NSG se použije pro podsíť služby Application Gateway.
 
-    ![Vytvoření nSG](./media/secure-web-app/nsg-create-new.png)
+    ![Vytvoření NSG](./media/secure-web-app/nsg-create-new.png)
 
-    *Vytvoření nSG*
+    *Vytvoření NSG*
 
-3. Po vytvoření souboru nsg vyberte jej. V okně vyberte v části **Nastavení** **pravidla příchozího zabezpečení**. Nakonfigurujte tato nastavení tak, aby umožňovala připojení přicházející do brány aplikace přes port 443.
+3. Po vytvoření NSG ho vyberte. V okně v části **Nastavení**vyberte **příchozí pravidla zabezpečení**. Nakonfigurujte tato nastavení tak, aby umožňovala připojení přicházející do aplikační brány přes port 443.
 
-   ![Konfigurace sítě zabezpečení sítě](./media/secure-web-app/nsg-gateway-config.png)
+   ![Konfigurace NSG](./media/secure-web-app/nsg-gateway-config.png)
 
-   *Konfigurace sítě zabezpečení sítě*
+   *Konfigurace NSG*
 
-4. V odchozích pravidlech pro službu nsg brány přidejte pravidlo, které umožňuje odchozí připojení k `AppService`instanci služby App Service vytvořením pravidla, které cílí na značku služby :
+4. V odchozích pravidlech pro bránu NSG přidejte pravidlo, které umožňuje odchozí připojení k instanci App Service vytvořením pravidla, které cílí na tag `AppService`služby:
 
-   ![Přidání odchozích pravidel pro zákon o neplnění pravidel silničního provozu](./media/secure-web-app/nsg-outbound-allowappserviceout.png)
+   ![Přidat odchozí pravidla pro NSG](./media/secure-web-app/nsg-outbound-allowappserviceout.png)
 
-   *Přidání odchozích pravidel pro zákon o neplnění pravidel silničního provozu*
+   *Přidat odchozí pravidla pro NSG*
 
-    Přidejte další odchozí pravidlo, které povoluje bráně odesílat odchozí pravidla do virtuální sítě.
+    Přidejte další odchozí pravidlo, které povolí bráně odesílat odchozí pravidla do virtuální sítě.
 
-   ![Přidání dalšího odchozího pravidla](./media/secure-web-app/nsg-outbound-vnet.png)
+   ![Přidat další odchozí pravidlo](./media/secure-web-app/nsg-outbound-vnet.png)
 
-    *Přidání dalšího odchozího pravidla*
+    *Přidat další odchozí pravidlo*
 
-5. V okně podsítí skupiny nsg vyberte **Přidružit**, vyberte virtuální síť vytvořenou v nasazení a vyberte podsíť brány s názvem **gw-podsíť**. Skupina nsg se použije v podsíti.
+5. V okně podsítě v NSG vyberte **přidružit**, vyberte virtuální síť vytvořenou v nasazení a vyberte podsíť brány s názvem **GS-Subnet**. NSG se aplikuje na podsíť.
 
-6. Vytvořte jiný soubor služeb nsg jako v předchozím kroku, tentokrát pro instanci služby App Service. Dejte mu jméno. Přidejte příchozí pravidlo pro port 443 stejně jako pro soubor NSG aplikační brány.
+6. Vytvořte další NSG jako v předchozím kroku, tentokrát pro instanci App Service. Zadejte název. Přidejte příchozí pravidlo pro port 443 jako u služby Application Gateway NSG.
 
-   Pokud máte instanci služby App Service nasazenou v instanci prostředí služby App Service, což není případ této aplikace, můžete přidat příchozí pravidla, která povolí sondy Azure Service Health otevřením portů 454-455 na příchozích skupinách zabezpečení vašeho nsg služby App Service. Zde je konfigurace:
+   Pokud máte nasazenou instanci App Service v instanci služby App Service Environment, která není pro tuto aplikaci případ, můžete přidat příchozí pravidla a povolit Azure Service Health sondy otevřením portů 454-455 v příchozích skupinách zabezpečení App Service NSG. Tady je konfigurace:
 
-   ![Přidání pravidel pro sondy stavu služby Azure](./media/secure-web-app/nsg-create-healthprobes.png)
+   ![Přidat pravidla pro Azure Service Health sondy](./media/secure-web-app/nsg-create-healthprobes.png)
 
-    *Přidání pravidel pro sondy stavu služby Azure (jenom prostředí služby App Service)*
+    *Přidat pravidla pro Azure Service Health sondy (jenom App Service Environment)*
 
-7. V odchozích bezpečnostních pravidlech vytvořte nové pravidlo odchozího zabezpečení, které umožňuje instanci služby App Service komunikovat s databází PostgreSQL. Nakonfigurujte ji takto:
+7. V odchozích pravidlech zabezpečení vytvořte nové odchozí pravidlo zabezpečení, které umožňuje instanci App Service komunikovat s databází PostgreSQL. Nakonfigurujte ho takto:
 
    ![Pravidlo pro povolení odchozích připojení PostgreSQL](./media/secure-web-app/nsg-outbound-postgresql.png)
 
    *Přidání pravidla pro povolení odchozích připojení PostgreSQL*
 
-Chcete-li omezit prostor pro útok, upravte nastavení sítě služby App Service tak, aby přístup k aplikaci umožňovala pouze aplikační bráně.
-Můžete to provést tak, že přejdete na kartu síť služby App Service, vyberete kartu **Omezení IP** a vytvoříte pravidlo povolit, které umožňuje přímo přistupovat ke službě pouze ip adresy brány aplikace.
+Chcete-li omezit plochu pro útok, upravte nastavení App Service sítě tak, aby umožňovalo přístup k aplikaci pouze bráně aplikace.
+Provedete to tak, že na kartě App Service síť vyberete kartu **omezení IP adres** a vytvoříte pravidlo Povolit, které umožňuje, aby se k této službě mohl přímo přistupovat jenom IP adresa služby Application Gateway.
 
-IP adresu brány můžete načíst z její stránky s přehledem. Na kartě **CIDR IP adresy** zadejte ADRESU `<GATEWAY_IP_ADDRESS>/32`IP v tomto formátu: .
+IP adresu brány můžete načíst ze své stránky s přehledem. Na kartě **IP adresa CIDR** zadejte IP adresu v tomto formátu: `<GATEWAY_IP_ADDRESS>/32`.
 
-![Povolit pouze bránu](./media/secure-web-app/app-allow-gw-only.png)
+![Povolí jenom bránu.](./media/secure-web-app/app-allow-gw-only.png)
 
-*Povolit přístup ke službě App Service pouze IP bráně*
+*Pro přístup k App Service Povolte jenom IP adresu brány.*
 
-#### <a name="implement-azure-active-directory-oauth"></a>Implementace služby Azure Active Directory OAuth
+#### <a name="implement-azure-active-directory-oauth"></a>Implementovat Azure Active Directory OAuth
 
-Dokumenty Azure distribuované na stránce ukázkové webové aplikace jsou prostředky v naší aplikaci, které mohou potřebovat ochranu. Azure Active Directory (Azure AD) můžete použít k implementaci ověřování pro webové, desktopové a mobilní aplikace pomocí různých toků ověřování.
-Aplikace používá **přihlášení s Microsoft**, který umožňuje aplikaci číst profily uživatelů, kteří byli přidáni do našeho seznamu uživatelů Azure AD s jedním tenantem.
+Dokumenty Azure distribuované na stránce Ukázková webová aplikace jsou prostředky v naší aplikaci, které by mohly potřebovat ochranu. Azure Active Directory (Azure AD) můžete použít k implementaci ověřování pro webové, desktopové a mobilní aplikace pomocí různých toků ověřování.
+Aplikace používá **přihlášení s Microsoftem**, které umožňuje aplikaci číst profily uživatelů, kteří byli přidáni do našeho seznamu uživatelů Azure AD pro jednoho tenanta.
 
-Na webu Azure Portal nakonfigurujte aplikaci tak, aby používala požadovaná pověření:
+V Azure Portal nakonfigurujte aplikaci tak, aby používala požadované přihlašovací údaje:
 
-1. Vyberte **Službu Azure Active Directory**nebo ji vyhledejte pomocí vyhledávacího pole.
+1. Vyberte **Azure Active Directory**nebo ho vyhledejte pomocí vyhledávacího pole.
 
-2. Vyberte **novou registraci**:
+2. Vyberte **Nová registrace**:
 
-   ![Vytvoření registrace](./media/secure-web-app/ad-auth-create.png)
+   ![Vytvořit registraci](./media/secure-web-app/ad-auth-create.png)
 
    *Vytvoření registrace aplikace Azure AD*
 
-3. Na další stránce zadejte název aplikace. V části **Podporované typy účtů**vyberte možnost Účty pouze v tomto **organizačním adresáři**.
-    V části **Identifikátor URI přesměrování**zadejte základní doménu, na které bude aplikace spuštěna, plus doménu s koncovým bodem tokenu. Například: *GATEWAY_HASH*.cloudapp.net/token.
+3. Na další stránce zadejte název aplikace. V části **podporované typy účtů**vyberte **účty jenom v tomto organizačním adresáři**.
+    V části **identifikátor URI přesměrování**zadejte základní doménu, na které bude aplikace spuštěná, a jednu s koncovým bodem tokenu. Například: *GATEWAY_HASH*. cloudapp.NET/token.
 
-   ![Konfigurace registrace aplikace Azure AD](./media/secure-web-app/ad-auth-type.png)
+   ![Konfigurace registrace aplikace v Azure AD](./media/secure-web-app/ad-auth-type.png)
 
-   *Konfigurace registrace aplikace Azure AD*
+   *Konfigurace registrace aplikace v Azure AD*
 
-4. Zobrazí se obrazovka s registrovanou aplikací a jejími informacemi. Tyto informace je potřeba přidat do instance Azure Key Vault.
-   1. Zkopírujte ID aplikace (klienta) a `CLIENTID`uložte ji do trezoru klíčů jako .
-   2. Zkopírujte identifikátor URI přesměrování, který jste zadali `REDIRECTURI`v předchozím kroku, a uložte jej jako .
-   3. Zkopírujte název výchozího adresáře Azure AD, který má *název*formátu `TENANT`.microsoftonline.com, a uložte jej do trezoru klíčů jako .
-   4. Přejděte na kartu **Certifikáty & tajných kódů** aplikace Azure AD, kterou jste vytvořili dříve, a vyberte **Nový tajný klíč klienta**, jak je znázorněno na následujícím snímku obrazovky. Nastavte datum vypršení platnosti a zkopírujte vygenerovanou hodnotu a uložte ji do trezoru klíčů jako `CLIENTSECRET`.
+4. Zobrazí se obrazovka, která zobrazuje registrovanou aplikaci a její informace. Tyto informace je nutné přidat do instance Azure Key Vault.
+   1. Zkopírujte ID aplikace (klienta) a uložte ho v Key Vault jako `CLIENTID`.
+   2. Zkopírujte identifikátor URI přesměrování, který jste zadali v předchozím kroku, a uložte ho `REDIRECTURI`jako.
+   3. Zkopírujte název výchozího adresáře služby Azure AD s *názvem*format. microsoftonline.com a uložte ho do Key Vault jako `TENANT`.
+   4. Na kartě **certifikáty & tajné klíče** aplikace Azure AD, kterou jste vytvořili dříve, vyberte **nový tajný klíč klienta**, jak je znázorněno na následujícím snímku obrazovky. Nastavte datum vypršení platnosti a potom zkopírujte vygenerovanou hodnotu a uložte ji v Key Vault jako `CLIENTSECRET`.
 
-      ![Tajný klíč autorizace Azure AD](./media/secure-web-app/ad-auth-secrets.png)
+      ![Autorizační klíč autorizace Azure AD](./media/secure-web-app/ad-auth-secrets.png)
 
-      *Tajný klíč autorizace Azure AD*
+      *Autorizační klíč autorizace Azure AD*
 
-   5. Vygenerujte zabezpečený náhodný tajný klíč pomocí libovolného nástroje příkazového řádku/online. Uložte jej do `FLASKSECRETKEY`trezoru klíčů jako . Aplikační rámec používá tento klíč k vytvoření relací.
-        Informace o generování tajného klíče naleznete v tématu [Flask Sessions](http://flask.pocoo.org/docs/1.0/quickstart/#sessions).
+   5. Vygenerujte zabezpečený náhodný tajný klíč pomocí libovolného nástroje příkazového řádku/online. Uložte ho do Key Vault jako `FLASKSECRETKEY`. Aplikační rozhraní používá tento klíč k vytváření relací.
+        Informace o tom, jak vygenerovat tajný klíč, najdete v tématu věnovaném [relacím na baňce](http://flask.pocoo.org/docs/1.0/quickstart/#sessions).
 
-5. Po konfiguraci přihlášení, budete muset přidat uživatele do propojení Azure AD, aby jim umožnilo přihlásit se k prostředku. Pokud je chcete přidat, přejděte na kartu **Uživatelé** ve službě Azure AD, vyberte **Všichni uživatelé**a pak vyberte **Nový uživatel** nebo Nový uživatel **typu Host**. Pro testování můžete přidat uživatele typu Host a pozvat uživatele do adresáře. Nebo můžete přidat nového uživatele, pokud byla ověřena doména, ve které aplikace běží. V tomto příkladu lze zaregistrovat pouze uživatele registrované v tenantovi Azure AD pro přístup. Informace o přístupu k víceklientské přihlášení naleznete v dokumentaci.
+5. Po nakonfigurování přihlášení budete muset přidat uživatele do odkazu Azure AD, aby se mohly přihlašovat k prostředku. Pokud je chcete přidat, klikněte na kartu **Uživatelé** v Azure AD, vyberte **Všichni uživatelé**a pak vyberte **Nový uživatel** nebo **Nový uživatel typu Host**. Pro účely testování můžete přidat uživatele typu Host a pozvat uživatele do adresáře. Nebo můžete přidat nového uživatele, pokud je ověřená doména, ve které je aplikace spuštěná. V tomto příkladu je možné zaregistrovat přístup jenom uživatelům registrovaným v tenantovi Azure AD. Informace o přístupu pro více tenantů naleznete v dokumentaci.
 
-   ![Přidání uživatelů do výchozí domény](./media/secure-web-app/ad-auth-add-user.png)
+   ![Přidat uživatele do výchozí domény](./media/secure-web-app/ad-auth-add-user.png)
 
-   *Přidání uživatelů do výchozí domény Služby Azure Active Directory*
+   *Přidat uživatele do výchozí domény Azure Active Directory*
 
-Po přidání konfigurace Azure AD a tajných kódů do trezoru klíčů, uživatelé mohou být ověřeny do aplikace pomocí azure oauth ověřování.
-V kódu aplikace to zpracovává Azure Active Directory Authentication Library (ADAL).
+Po přidání konfigurace a tajných kódů Azure AD do Key Vault se uživatelé můžou do aplikace ověřit pomocí ověřování Azure OAuth.
+V kódu aplikace to zpracovává knihovna Azure Active Directory Authentication Library (ADAL).
 
-Poté, co jsou tajné klíče v trezoru klíčů a aplikace má přístup k tajným kódům a\/databázi, aplikační služba může být dosaženo prostřednictvím adresy URL aplikace brány (https: /GATEWAY_HASH.cloudapp.net), které můžete získat z jeho blade.
+Po použití tajných kódů v Key Vault a aplikace má přístup k tajným klíčům a databázi, může být Aplikační služba dostupná prostřednictvím adresy URL aplikace brány (https:\//GATEWAY_HASH. cloudapp. NET), kterou můžete získat z svého okna.
 
-Pokud při přihlášení k Azure AD, zobrazí se chyba, která říká, že "Uživatel není registrován v adresáři, který se pokoušíte přihlásit do" je třeba přidat uživatele. Chcete-li přidat uživatele, přejděte na kartu **Uživatelé** ve službě Azure AD a přidejte uživatele ručně zadáním jeho podrobností nebo pozváním uživatele zadáním jeho e-mailové adresy jako uživatele typu Host do služby Azure AD v okně **Pozvat hosta.**
+Pokud se při přihlášení ke službě Azure AD zobrazí chybová zpráva "uživatel není zaregistrován v adresáři, ke kterému se pokoušíte přihlašovat", je nutné přidat uživatele. Pokud chcete uživatele přidat, klikněte na kartu **Uživatelé** služby Azure AD a přidejte uživatele ručně zadáním jejich podrobností nebo pozváním uživatele do služby Azure AD zadáním e-mailové adresy jako uživatel typu Host v okně **pozvat Host** .
 
 #### <a name="deploy-application-insights"></a>Nasazení služby Application Insights
-Teď, když je aplikace nasazená a funkční, musíte zpracovat chyby, ke kterým dochází v rámci aplikace spolu s protokolováním a shromažďováním dat trasování.
+Teď, když je aplikace nasazená a funkční, je potřeba zpracovat chyby, ke kterým dochází v rámci aplikace společně s shromažďováním dat protokolování a trasování.
 Shromažďování dat protokolování a trasování poskytuje zobrazení událostí auditu, ke kterým dochází v aplikaci.
 
 Application Insights je služba, která shromažďuje protokoly, které mohou být generovány uživateli nebo systémem.
 
 Vytvoření instance Application Insights:
 
-1. Vyhledejte **přehledy aplikací** pomocí vyhledávacího pole na webu Azure Portal.
-2. Vyberte **Application Insights**. Zadejte podrobnosti zde uvedené k vytvoření instance.
+1. Vyhledejte **Application Insights** pomocí vyhledávacího pole v Azure Portal.
+2. Vyberte **Application Insights**. Zadáním níže uvedených podrobností vytvořte instanci.
 
    ![Vytvoření instance Application Insights](./media/secure-web-app/app-insights-data.png)
 
-Po dokončení nasazení máte instanci Application Insights.
+Po dokončení nasazení budete mít instanci Application Insights.
 
-Po vytvoření instance Applications Insights, musíte aplikaci seznámit s instrumentace klíč, který umožňuje odesílat protokoly do cloudu. To provést načtením application insights klíč a jeho použití v rámci knihovny aplikací, které Azure poskytuje pro Application Insights. Osvědčeným postupem je ukládání klíčů a tajných klíčů v azure key vault uchovávat je v bezpečí.
+Po vytvoření instance Application Insights je potřeba, aby aplikace měla na paměti klíč instrumentace, která umožňuje odesílání protokolů do cloudu. Provedete to tak, že načtete Application Insights klíč a použijete ho v knihovnách aplikací, které Azure poskytuje pro Application Insights. Osvědčeným postupem je ukládání klíčů a tajných kódů v Azure Key Vault pro zajištění zabezpečení.
 
-Pro základní ukázkové aplikace, po vytvoření aplikace Insights instance, je třeba, aby aplikace vědomi instrumentace klíč, který umožňuje odesílat protokoly do cloudu.
-V trezoru `APPINSIGHTSKEY` klíčů nastavte tajný klíč a nastavte jeho hodnotu jako klíč instrumentace. To umožňuje aplikaci odesílat protokoly a metriky do Application Insights.
+Pro základní ukázkovou aplikaci je po vytvoření instance Application Insights nutné, aby aplikace měla na paměti klíč instrumentace, která umožňuje odesílání protokolů do cloudu.
+V Key Vault nastavte `APPINSIGHTSKEY` tajný klíč a nastavte jeho hodnotu jako klíč instrumentace. Tím umožníte, aby aplikace odesílala protokoly a metriky do Application Insights.
 
-#### <a name="implement-multi-factor-authentication-for-azure-active-directory"></a>Implementace vícefaktorového ověřování pro Azure Active Directory
+#### <a name="implement-multi-factor-authentication-for-azure-active-directory"></a>Implementovat Multi-Factor Authentication pro Azure Active Directory
 
-Správci musí zajistit, aby byly chráněny účty předplatného na portálu. Předplatné je zranitelné vůči útokům, protože spravuje prostředky, které jste vytvořili. Chcete-li předplatné chránit, povolte vícefaktorové ověřování na kartě **Azure Active Directory** předplatného.
+Správci musí zajistit, aby byly účty předplatného na portálu chráněné. Předplatné je zranitelné vůči útokům, protože spravuje prostředky, které jste vytvořili. Pokud chcete předplatné chránit, povolte Multi-Factor Authentication na kartě **Azure Active Directory** předplatného.
 
-Azure AD funguje na základě zásad, které se používají pro uživatele nebo skupiny uživatelů, které odpovídají určitým kritériím.
-Azure vytvoří výchozí zásadu určující, že správci potřebují dvoufaktorové ověřování pro přihlášení k portálu.
-Po povolení této zásady se můžete zobrazit výzva k odhlášení a opětovnému přihlášení k portálu Azure.
+Azure AD funguje na základě zásad, které se aplikují na uživatele nebo skupiny uživatelů, kteří odpovídají určitým kritériím.
+Azure vytvoří výchozí zásadu, která určuje, že správci pro přihlášení k portálu potřebují ověřování pomocí dvou faktorů.
+Po povolení této zásady se může zobrazit výzva, abyste se odhlásili a znovu přihlásili do Azure Portal.
 
-Povolení vícefaktorové registrace pro přihlášení správce:
+Povolení MFA pro přihlášení správce:
 
-1. Přejděte na kartu **Azure Active Directory** na webu Azure Portal
+1. Přejít na kartu **Azure Active Directory** v Azure Portal
 2. V kategorii zabezpečení vyberte podmíněný přístup. Zobrazí se tato obrazovka:
 
    ![Podmíněný přístup – zásady](./media/secure-web-app/ad-mfa-conditional-add.png)
 
 Pokud nemůžete vytvořit novou zásadu:
 
-1. Přejděte na kartu **Vícefaktorové.**
-2. Vyberte bezplatný **zkušební** odkaz Azure AD Premium a přihlaste se k odběru bezplatné zkušební verze.
+1. Přejít na kartu **MFA**
+2. Vyberte odkaz Azure AD Premium **bezplatnou zkušební verzi** , abyste se přihlásili k odběru bezplatné zkušební verze.
 
-   ![Bezplatná zkušební verze Azure AD Premium](./media/secure-web-app/ad-trial-premium.png)
+   ![Azure AD Premium bezplatnou zkušební verzi](./media/secure-web-app/ad-trial-premium.png)
 
 Vraťte se na obrazovku podmíněného přístupu.
 
-1. Vyberte novou kartu zásad.
+1. Vyberte kartu nová zásada.
 2. Zadejte název zásady.
-3. Vyberte uživatele nebo skupiny, pro které chcete povolit vícefaktorové povolení.
-4. V části **Access controls**vyberte kartu **Grant** a pak vyberte **Vyžadovat vícefaktorové ověřování** (a další nastavení, pokud chcete).
+3. Vyberte uživatele nebo skupiny, pro které chcete povolit MFA.
+4. V části **řízení přístupu**vyberte kartu **udělení** a potom v případě potřeby vyberte **vyžadovat vícefaktorové ověřování** (a další nastavení).
 
    ![Vyžadování MFA](./media/secure-web-app/ad-mfa-conditional-add.png)
 
-Zásadu můžete povolit zaškrtnutím políčka v horní části obrazovky nebo na kartě **Podmíněný přístup.** Pokud je zásada povolena, uživatelé potřebují vícefaktorové povolení k přihlášení k portálu.
+Zásadu můžete povolit zaškrtnutím políčka v horní části obrazovky nebo na kartě **podmíněný přístup** . Pokud je tato zásada povolená, uživatelé se k portálu budou potřebovat MFA pro přihlášení k portálu.
 
-Existuje zásada směrného plánu, která vyžaduje vícefaktorové zabezpečení pro všechny správce Azure. Můžete ji okamžitě povolit na portálu. Povolení této zásady může zneplatnit aktuální relaci a přinutit vás znovu přihlásit.
+Existují základní zásady, které vyžadují MFA pro všechny správce Azure. Můžete ji povolit hned na portálu. Když se tyto zásady povolí, může se zrušit platnost aktuální relace a znovu se přihlašujete.
 
-Pokud zásady směrného plánu nejsou povoleny:
+Pokud není zásada standardních hodnot povolená:
 
-1. Vyberte **vyžadovat vícefaktorové finanční správy pro správce**.
-2. Vyberte **možnost Použít zásady okamžitě**.
+1. Vyberte **vyžadovat MFA pro správce**.
+2. Vyberte možnost **použít zásadu hned**.
 
-   ![Vyberte okamžitě použít zásady](./media/secure-web-app/ad-mfa-conditional-enable.png)
+   ![Vybrat použít zásadu hned](./media/secure-web-app/ad-mfa-conditional-enable.png)
 
-#### <a name="use-azure-sentinel-to-monitor-apps-and-resources"></a>Monitorování aplikací a prostředků pomocí Azure Sentinelu
+#### <a name="use-azure-sentinel-to-monitor-apps-and-resources"></a>Použití služby Azure Sentinel k monitorování aplikací a prostředků
 
-Jak aplikace roste, je obtížné agregovat všechny signály zabezpečení a metriky přijaté z prostředků a učinit je užitečné způsobem orientovaným na akci.
+Vzhledem k tomu, že aplikace roste, je obtížné agregovat všechny signály zabezpečení a metriky obdržené z prostředků a učinit je užitečné v cestě orientované na akce.
 
-Azure Sentinel je navržený tak, aby shromažďoval data, zjišťoval možné typy hrozeb a poskytoval přehled o incidentech zabezpečení.
-Zatímco čeká na ruční zásah, Azure Sentinel se může spolehnout na předem napsané playbooky k zahájení výstrah a procesů správy incidentů.
+Sentinel Azure je navržená tak, aby shromáždila data, zjistila možné typy hrozeb a poskytovala přehled o incidentech zabezpečení.
+I když čeká na ruční zásah, může Azure Sentinel spoléhat na předem zapsané playbooky, aby se aktivovaly výstrahy a procesy správy incidentů.
 
-Ukázková aplikace se skládá z několika prostředků, které azure sentinel můžete sledovat.
-Chcete-li nastavit Azure Sentinel, musíte nejprve vytvořit pracovní prostor Analýzy protokolů, který ukládá všechna data shromážděná z různých prostředků.
+Ukázková aplikace se skládá z několika prostředků, které může sledovat Azure Sentinel.
+Pokud chcete nastavit službu Azure Sentinel, musíte nejdřív vytvořit Log Analytics pracovní prostor, ve kterém se budou ukládat všechna data shromážděná z různých prostředků.
 
-Vytvoření tohoto pracovního prostoru:
+Postup vytvoření tohoto pracovního prostoru:
 
-1. Ve vyhledávacím poli na webu Azure Portal vyhledejte **službu Log Analytics**. Vyberte **pracovní prostory Analýzy protokolů**.
+1. Do vyhledávacího pole v Azure Portal vyhledejte **Log Analytics**. Vyberte **Log Analytics pracovní prostory**.
 
-   ![Hledání pracovních prostorů Analýzy protokolů](./media/secure-web-app/sentinel-log-analytics.png)
+   ![Hledání Log Analytics pracovních prostorů](./media/secure-web-app/sentinel-log-analytics.png)
 
-    *Hledání pracovních prostorů Analýzy protokolů*
+    *Hledání Log Analytics pracovních prostorů*
 
-2. Na další stránce vyberte **Přidat** a zadejte název, skupinu prostředků a umístění pracovního prostoru.
+2. Na další stránce vyberte **Přidat** a potom zadejte název, skupinu prostředků a umístění pro pracovní prostor.
    ![Vytvoření pracovního prostoru služby Log Analytics](./media/secure-web-app/sentinel-log-analytics-create.png)
 
    *Vytvoření pracovního prostoru služby Log Analytics*
 
-3. Pomocí vyhledávacího pole vyhledejte **Azure Sentinel**.
+3. Pomocí vyhledávacího pole vyhledejte službu **Azure Sentinel**.
 
    ![Vyhledání textu Azure Sentinel](./media/secure-web-app/sentinel-add.png)
 
     *Vyhledání textu Azure Sentinel*
 
-4. Vyberte **Přidat** a pak vyberte pracovní prostor Analýzy protokolů, který jste vytvořili dříve.
+4. Vyberte **Přidat** a potom vyberte pracovní prostor Log Analytics, který jste vytvořili dříve.
 
-   ![Přidání pracovního prostoru Analýzy protokolů](./media/secure-web-app/sentinel-workspace-add.png)
+   ![Přidání pracovního prostoru Log Analytics](./media/secure-web-app/sentinel-workspace-add.png)
 
-    *Přidání pracovního prostoru Analýzy protokolů*
+    *Přidání pracovního prostoru Log Analytics*
 
-5. Na stránce **Azure Sentinel – datové konektory** v části **Konfigurace**vyberte **Datové konektory**. Zobrazí se pole služeb Azure, které můžete propojit s instancí úložiště Log Analytics pro analýzu v Azure Sentinelu.
+5. Na stránce **datové konektory Azure Sentinel** v části **Konfigurace**vyberte **datové konektory**. Zobrazí se pole služeb Azure, které můžete propojit s instancí úložiště Log Analytics pro analýzu ve službě Azure Sentinel.
 
-   ![Datové konektory Log Analytics](./media/secure-web-app/sentinel-connectors.png)
+   ![Log Analytics datových konektorů](./media/secure-web-app/sentinel-connectors.png)
 
-    *Přidání datového konektoru do Azure Sentinelu*
+    *Přidání datového konektoru do Azure Sentinel*
 
-   Chcete-li například připojit aplikační bránu, postupujte takto:
+   Chcete-li například připojit Aplikační bránu, proveďte tyto kroky:
 
-   1. Otevřete okno instance Aplikační brány Azure.
+   1. Otevřete okno instance služby Azure Application Gateway.
    2. V části **Monitorování** vyberte **Nastavení diagnostiky**.
-   3. Vyberte **Přidat diagnostické nastavení**.
+   3. Vyberte **Přidat nastavení diagnostiky**.
 
-      ![Přidat diagnostiku aplikační brány](./media/secure-web-app/sentinel-gateway-connector.png)
+      ![Přidat diagnostiku Application Gateway](./media/secure-web-app/sentinel-gateway-connector.png)
 
-      *Přidat diagnostiku aplikační brány*
+      *Přidat diagnostiku Application Gateway*
 
-   4. Na stránce **Nastavení diagnostiky** vyberte pracovní prostor Log Analytics, který jste vytvořili, a pak vyberte všechny metriky, které chcete shromáždit a odeslat do Azure Sentinelu. Vyberte **Uložit**.
+   4. Na stránce **nastavení diagnostiky** vyberte pracovní prostor Log Analytics, který jste vytvořili, a pak vyberte všechny metriky, které chcete shromáždit a odeslat do Azure Sentinel. Vyberte **Uložit**.
 
-        ![Nastavení konektoru Azure Sentinel](./media/secure-web-app/sentinel-connector-settings.png)
+        ![Nastavení konektoru služby Azure Sentinel](./media/secure-web-app/sentinel-connector-settings.png)
 
-        *Nastavení konektoru Azure Sentinel*
+        *Nastavení konektoru služby Azure Sentinel*
 
-  Metriky z prostředku jsou v Azure Sentinelu, kde můžete dotazovat a zkoumat je.
+  Metriky z prostředku jsou ve službě Azure Sentinel, kde se můžete dotazovat a prozkoumat.
 
-   Přidejte stejné metriky v diagnostických nastaveních pro Azure Key Vault, veřejnou IP adresu, Azure Database for PostgreSQL a všechny služby, které podporují diagnostické protokoly ve vašem účtu.
+   Přidejte stejné metriky do nastavení diagnostiky pro Azure Key Vault, veřejnou IP adresu, Azure Database for PostgreSQL a všechny služby podporující diagnostické protokoly ve vašem účtu.
 
-Po nastavení metriky Azure Sentinel má data k analýze.
+Po nastavení metrik Azure Sentinel obsahuje data, která se mají analyzovat.
 
-## <a name="evaluate-and-verify"></a>Vyhodnocení a ověření
+## <a name="evaluate-and-verify"></a>Vyhodnotit a ověřit
 
-Po vývoji a nasazení architektury je třeba zajistit, aby kód a nasazené služby splňovaly standardy zabezpečení. Toto jsou některé kroky, které můžete provést k ověření softwaru:
+Po vývoji a nasazení architektury je potřeba zajistit, aby kód a nasazené služby splňovaly bezpečnostní standardy. Toto jsou některé kroky, které můžete provést k ověření softwaru:
 
 - Analýza statického kódu
-- Prohledávání chyb zabezpečení
-- Hledání a oprava chyb zabezpečení v závislostech aplikací
+- Kontrola ohrožení zabezpečení
+- Hledání a oprava ohrožení zabezpečení v závislostech aplikace
 
-Jedná se o základní stavební kameny pro osvědčené postupy v bezpečném vývoji.
+Toto jsou základní stavební bloky pro osvědčené postupy při bezpečném vývoji.
 
 ### <a name="static-code-analysis"></a>Analýza statického kódu
 
-U ukázkové aplikace ověřování pomocí nástrojů pro statickou analýzu zahrnuje hledání chyb zabezpečení v kódu aplikace pomocí technik, jako je kontrola pošcení a analýza toku dat. Nástroje pro statickou analýzu pythonu vám dávají větší jistotu, že vaše aplikace je bezpečná.
+U ukázkové aplikace ověřování pomocí nástrojů statické analýzy zahrnuje hledání ohrožení zabezpečení v kódu aplikace pomocí technik, jako je kontrola chuti a analýza toku dat. Nástroje pro statické analýzy Pythonu vám poskytnou větší jistotu, že je vaše aplikace zabezpečená.
 
 **Analyzování kódu**
 
-PyFlakes, knihovna v Pythonu, vám pomůže odstranit mrtvý kód a nepoužívané funkce z aplikací, jak je znázorněno zde:
+PyFlakes, knihovna Python linting Library vám pomůže odebrat mrtvý kód a nepoužívané funkce z aplikací, jak je znázorněno zde:
 
 ![PyFlakes](./media/secure-web-app/pyflakes.png)
 
-Linting poskytuje rady a možné změny, které mohou váš kód čistší a méně náchylné k chybám za běhu.
+Linting poskytuje tipy a možné změny, které mohou být v průběhu běhu náchylné k vyčištění kódu a méně náchylné k chybám.
 
 **PyLint**
 
-PyLint poskytl největší hodnotu pro tento projekt. Provádí kontroly standardu kódu, kontrolu chyb a refaktoring tipy k zajištění, že kód spuštěný na serveru je bezpečný. Pomocí PyLint aktualizovat kód, můžete odstranit chyby a zlepšit hodnocení PyLint, jak ukazují následující obrázky.
+PyLint poskytl nejvíc hodnotu pro tento projekt. Provádí kontroly kódu – standardní, kontrolu chyb a refaktoring, aby bylo zajištěno, že je kód spuštěný na serveru bezpečný. Když použijete PyLint k aktualizaci kódu, můžete eliminovat chyby a zlepšit hodnocení PyLint, jak ukazuje následující obrázek.
 
 ![Před PyLint](./media/secure-web-app/before-pylint.png)
 
 *Před PyLint*
 
-Po opravě některých chyb kódu nalezených pomocí nástrojů linting máte větší jistotu, že kód není náchylný k chybám. Oprava chyb výrazně snižuje bezpečnostní rizika, ke kterým může dojít při nasazení kódu do produkčního prostředí.
+Po opravě některých chyb kódu zjištěných nástroji linting máte větší jistotu, že kód není náchylný k chybám. Oprava chyb významně snižuje bezpečnostní rizika, ke kterým může dojít při nasazení kódu do produkčních prostředí.
 
-![Po Pylintovi](./media/secure-web-app/after-pylint.png)
+![Po Pylint](./media/secure-web-app/after-pylint.png)
 
 *Po PyLint*
 
-### <a name="vulnerability-scanning"></a>Prohledávání chyb zabezpečení
+### <a name="vulnerability-scanning"></a>Kontrola ohrožení zabezpečení
 
-[Nástroj ZAP společnosti OWASP](https://www.zaproxy.org/) je open-source skener zranitelnosti webových aplikací, který můžete použít ke kontrole chyb zabezpečení ukázkové aplikace. Spuštění nástroje v ukázkové aplikaci odhalí některé možné chyby a vektory útoku.
+[OWASP](https://www.zaproxy.org/) je open source nástroj pro ohrožení zabezpečení webových aplikací, který můžete použít ke kontrole ohrožení zabezpečení v ukázkové aplikaci. Spuštění nástroje na ukázkové aplikaci odhalí některé možné chyby a vektory útoku.
 
-![NÁSTROJ ZAP](./media/secure-web-app/zap-tool.png)
+![Nástroj ZAP](./media/secure-web-app/zap-tool.png)
 
-*NÁSTROJ ZAP*
+*Nástroj ZAP*
 
-### <a name="find-and-fix-vulnerabilities-in-app-dependencies"></a>Hledání a oprava slabých míst v závislostech aplikací
+### <a name="find-and-fix-vulnerabilities-in-app-dependencies"></a>Vyhledání a oprava chyb zabezpečení v závislostech aplikací
 
-Chcete-li najít a opravit závislosti aplikací, můžete použít [kontrolu závislostí oWASP](https://owasp.org/www-project-dependency-check/).
+Chcete-li vyhledat a opravit závislosti aplikace, můžete použít [kontrolu závislostí OWASP](https://owasp.org/www-project-dependency-check/).
 
-Bezpečnost je podobná aplikace, která kontroluje závislosti. Najdete ji na [GitHubu](https://github.com/pyupio/safety). Bezpečnostní kontrola chyb zabezpečení nalezených ve známých databázích zranitelnosti.
+Bezpečnost je podobná aplikace, která kontroluje závislosti. Můžete ji najít na [GitHubu](https://github.com/pyupio/safety). Bezpečnostní kontroly chyb zabezpečení nalezené v dobře známých databázích ohrožení zabezpečení.
 
-![Bezpečnost](./media/secure-web-app/pysafety.png)
+![Bezpečnostních](./media/secure-web-app/pysafety.png)
 
-*Bezpečnost*
+*Bezpečnostních*
 
 ## <a name="next-steps"></a>Další kroky
 
-Následující články vám mohou pomoci navrhovat, vyvíjet a nasazovat zabezpečené aplikace.
+Následující články vám pomůžou při návrhu, vývoji a nasazení zabezpečených aplikací.
 
 - [Návrh](secure-design.md)
 - [Vývoj](secure-develop.md)

@@ -1,33 +1,33 @@
 ---
-title: Rozhraní REST API pro správu relací
-description: Popisuje způsob správy relací.
+title: REST API správy relací
+description: Popisuje, jak spravovat relace.
 author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: article
 ms.openlocfilehash: 46560f067e020236031487677ad4f48a9560d4e1
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681243"
 ---
 # <a name="use-the-session-management-rest-api"></a>Použití rozhraní REST API pro správu relací
 
-Chcete-li použít funkci vzdáleného vykreslování Azure, musíte vytvořit *relaci*. Každá relace odpovídá virtuálnímu počítači (VM) přiděleného v Azure a čekání na připojení klientského zařízení. Když se zařízení připojí, virtuální modul vykreslí požadovaná data a zobrazí výsledek jako datový proud videa. Během vytváření relace jste zvolili, na kterém druhu serveru chcete spustit, což určuje ceny. Jakmile relace již není potřeba, měla by být zastavena. Pokud není zastavena ručně, bude automaticky vypnuta po vypršení *doby zapůjčení* relace.
+Pokud chcete používat funkci vzdáleného vykreslování Azure, musíte vytvořit *relaci*. Každá relace odpovídá virtuálnímu počítači, který se přiřazuje v Azure, a čeká na připojení klientského zařízení. Když se zařízení připojí, virtuální počítač vykreslí požadovaná data a zachová výsledek jako datový proud videa. Během vytváření relace jste zvolili druh serveru, na kterém chcete běžet, což určuje ceny. Jakmile již relace není potřebná, měla by být zastavena. Pokud se nezastaví ručně, automaticky se ukončí, až vyprší *doba zapůjčení* relace.
 
-Poskytujeme skript prostředí PowerShell v [úložišti ukázek ARR](https://github.com/Azure/azure-remote-rendering) ve složce *Skripty* s názvem *RenderingSession.ps1*, který demonstruje použití naší služby. Skript a jeho konfigurace jsou popsány zde: [Příklad skriptů prostředí PowerShell](../samples/powershell-example-scripts.md)
+Poskytujeme skript prostředí PowerShell v [úložišti ukázek ARR](https://github.com/Azure/azure-remote-rendering) ve složce *Scripts* s názvem *RenderingSession. ps1*, která demonstruje použití naší služby. Skript a jeho konfigurace jsou popsané tady: [Příklady skriptů PowerShellu](../samples/powershell-example-scripts.md)
 
 > [!TIP]
-> Příkazy prostředí PowerShell uvedené na této stránce se mají vzájemně doplňovat. Pokud spustíte všechny skripty v pořadí ve stejném příkazovém řádku prostředí PowerShell, budou stavět na sebe.
+> Příkazy PowerShellu uvedené na této stránce jsou určeny k tomu, aby je bylo možné doplnit. Pokud všechny skripty spouštíte v rámci stejného příkazového řádku PowerShellu, sestaví se na sebe navzájem.
 
 ## <a name="regions"></a>Oblasti
 
-Podívejte se na [seznam dostupných oblastí](../reference/regions.md) pro základní adresy URL, na které chcete odeslat požadavky.
+Přečtěte si [seznam dostupných oblastí](../reference/regions.md) pro základní adresy URL, na které se mají požadavky odesílat.
 
-Pro ukázkové skripty níže jsme zvolili region *westus2*.
+Pro ukázkové skripty jsme zvolili region *westus2*(oblast).
 
-### <a name="example-script-choose-an-endpoint"></a>Příklad skriptu: Volba koncového bodu
+### <a name="example-script-choose-an-endpoint"></a>Ukázkový skript: volba koncového bodu
 
 ```PowerShell
 $endPoint = "https://remoterendering.westus2.mixedreality.azure.com"
@@ -35,9 +35,9 @@ $endPoint = "https://remoterendering.westus2.mixedreality.azure.com"
 
 ## <a name="accounts"></a>Účty
 
-Pokud nemáte účet vzdáleného vykreslování, [vytvořte si ho](create-an-account.md). Každý prostředek je identifikován *accountId*, který se používá v rámci relace API.
+Pokud nemáte účet vzdáleného vykreslování, [vytvořte ho](create-an-account.md). Každý prostředek je identifikován *accountId*, který se používá v rámci celé rozhraní API relace.
 
-### <a name="example-script-set-accountid-and-accountkey"></a>Příklad skriptu: Nastavit accountId a accountKey
+### <a name="example-script-set-accountid-and-accountkey"></a>Ukázkový skript: nastavení accountId a accountKey
 
 ```PowerShell
 $accountId = "********-****-****-****-************"
@@ -46,9 +46,9 @@ $accountKey = "*******************************************="
 
 ## <a name="common-request-headers"></a>Běžné hlavičky požadavků
 
-* Hlavička *Autorizace* musí mít`Bearer TOKEN`hodnotu`TOKEN`" ", kde " je ověřovací token [vrácený službou Secure Token Service](tokens.md).
+* *Autorizační* hlavička musí mít hodnotu`Bearer TOKEN`, kde`TOKEN`je ověřovací token [vrácený službou tokenu zabezpečení](tokens.md).
 
-### <a name="example-script-request-a-token"></a>Příklad skriptu: Žádost o token
+### <a name="example-script-request-a-token"></a>Příklad skriptu: vyžádání tokenu
 
 ```PowerShell
 [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
@@ -59,29 +59,29 @@ $token = $response.AccessToken;
 
 ## <a name="common-response-headers"></a>Běžné hlavičky odpovědí
 
-* Hlavičku *MS-CV* může produktový tým použít ke sledování volání v rámci služby.
+* Produktový tým může použít hlavičku *MS-CV* k trasování volání v rámci služby.
 
 ## <a name="create-a-session"></a>Vytvoření relace
 
-Tento příkaz vytvoří relaci. Vrátí ID nové relace. ID relace potřebujete pro všechny ostatní příkazy.
+Tento příkaz vytvoří relaci. Vrátí ID nové relace. Budete potřebovat ID relace pro všechny ostatní příkazy.
 
 | Identifikátor URI | Metoda |
 |-----------|:-----------|
-| /v1/účty/*accountId*/sessions/create | POST |
+| /V1/Accounts/*accountId*/Sessions/Create | POST |
 
-**Tělo požadavku:**
+**Text žádosti:**
 
-* maxLeaseTime (časový limit): hodnota časového limitu, když bude virtuální med automaticky vyřazen z provozu
-* modely (pole): adresy URL kontejneru datových zdrojů pro předběžné načtení
-* velikost (řetězec): velikost virtuálního počítače (**"standardní"** nebo **"premium"**). Viz omezení velikosti konkrétního [virtuálního počítače](../reference/limits.md#overall-number-of-polygons).
+* maxLeaseTime (TimeSpan): hodnota časového limitu v případě, že se virtuální počítač automaticky vyřadí z provozu
+* modely (pole): adresy URL kontejneru assetů k přednačtení
+* velikost (String): velikost virtuálního počítače (**"Standard"** nebo **"Premium"**). Podívejte se na určitá [omezení velikosti virtuálních počítačů](../reference/limits.md#overall-number-of-polygons).
 
-**Reakce:**
+**Požadavků**
 
 | Kód stavu | Datová část JSON | Komentáře |
 |-----------|:-----------|:-----------|
-| 202 | - sessionId: GUID | Úspěch |
+| 202 | -sessionId: GUID | Úspěch |
 
-### <a name="example-script-create-a-session"></a>Příklad skriptu: Vytvoření relace
+### <a name="example-script-create-a-session"></a>Ukázkový skript: vytvoření relace
 
 ```PowerShell
 Invoke-WebRequest -Uri "$endPoint/v1/accounts/$accountId/sessions/create" -Method Post -ContentType "application/json" -Body "{ 'maxLeaseTime': '4:0:0', 'models': [], 'size': 'standard' }" -Headers @{ Authorization = "Bearer $token" }
@@ -109,9 +109,9 @@ ParsedHtml        : mshtml.HTMLDocumentClass
 RawContentLength  : 52
 ```
 
-### <a name="example-script-store-sessionid"></a>Příklad skriptu: Store sessionId
+### <a name="example-script-store-sessionid"></a>Ukázkový skript: Uložit sessionId
 
-Odpověď z výše uvedenéžádosti obsahuje **sessionId**, které potřebujete pro všechny žádosti o zpracování.
+Odpověď od výše uvedeného požadavku zahrnuje **identifikátor SessionID**, který potřebujete pro všechny žádosti o další zpracování.
 
 ```PowerShell
 $sessionId = "d31bddca-dab7-498e-9bc9-7594bc12862f"
@@ -119,26 +119,26 @@ $sessionId = "d31bddca-dab7-498e-9bc9-7594bc12862f"
 
 ## <a name="update-a-session"></a>Aktualizace relace
 
-Tento příkaz aktualizuje parametry relace. V současné době můžete pouze prodloužit dobu zapůjčení relace.
+Tento příkaz aktualizuje parametry relace. V současné době můžete pouze roztáhnout dobu zapůjčení relace.
 
 > [!IMPORTANT]
-> Doba zapůjčení je vždy uvedena jako celková doba od začátku relace. To znamená, že pokud jste vytvořili relaci s dobou zapůjčení jedné hodiny a chcete prodloužit dobu zapůjčení o další hodinu, budete muset aktualizovat jeho maxLeaseTime na dvě hodiny.
+> Doba zapůjčení je vždy dána jako celková doba od začátku relace. To znamená, že pokud jste vytvořili relaci s časem zapůjčení za jednu hodinu a chcete prodloužení doby zapůjčení na jinou hodinu, musíte aktualizovat její maxLeaseTime na dvě hodiny.
 
 | Identifikátor URI | Metoda |
 |-----------|:-----------|
-| /v1/účty/*accountID*/sessions/*sessionId* | Oprava |
+| /V1/Accounts/*accountid*/Sessions/*SessionID* | POUŽITA |
 
-**Tělo požadavku:**
+**Text žádosti:**
 
-* maxLeaseTime (časový limit): hodnota časového limitu, když bude virtuální med automaticky vyřazen z provozu
+* maxLeaseTime (TimeSpan): hodnota časového limitu v případě, že se virtuální počítač automaticky vyřadí z provozu
 
-**Reakce:**
+**Požadavků**
 
 | Kód stavu | Datová část JSON | Komentáře |
 |-----------|:-----------|:-----------|
 | 200 | | Úspěch |
 
-### <a name="example-script-update-a-session"></a>Příklad skriptu: Aktualizace relace
+### <a name="example-script-update-a-session"></a>Ukázkový skript: aktualizace relace
 
 ```PowerShell
 Invoke-WebRequest -Uri "$endPoint/v1/accounts/$accountId/sessions/$sessionId" -Method Patch -ContentType "application/json" -Body "{ 'maxLeaseTime': '5:0:0' }" -Headers @{ Authorization = "Bearer $token" }
@@ -160,21 +160,21 @@ Headers           : {[MS-CV, Fe+yXCJumky82wuoedzDTA.0], [Content-Length, 0], [Da
 RawContentLength  : 0
 ```
 
-## <a name="get-active-sessions"></a>Získání aktivních relací
+## <a name="get-active-sessions"></a>Získat aktivní relace
 
 Tento příkaz vrátí seznam aktivních relací.
 
 | Identifikátor URI | Metoda |
 |-----------|:-----------|
-| /v1/účty/*accountId*/sessions | GET |
+| /V1/Accounts/*accountId*/Sessions | GET |
 
-**Reakce:**
+**Požadavků**
 
 | Kód stavu | Datová část JSON | Komentáře |
 |-----------|:-----------|:-----------|
-| 200 | - relace: pole vlastností relace | Popis vlastností relace naleznete v části Získat vlastnosti relace |
+| 200 | -Sessions: pole vlastností relace | Popis vlastností relace najdete v části získání vlastností relace. |
 
-### <a name="example-script-query-active-sessions"></a>Příklad skriptu: Dotaz na aktivní relace
+### <a name="example-script-query-active-sessions"></a>Ukázkový skript: dotaz na aktivní relace
 
 ```PowerShell
 Invoke-WebRequest -Uri "$endPoint/v1/accounts/$accountId/sessions" -Method Get -Headers @{ Authorization = "Bearer $token" }
@@ -203,21 +203,21 @@ ParsedHtml        : mshtml.HTMLDocumentClass
 RawContentLength  : 2
 ```
 
-## <a name="get-sessions-properties"></a>Získání vlastností relací
+## <a name="get-sessions-properties"></a>Získat vlastnosti relací
 
-Tento příkaz vrátí informace o relaci, jako je například název hostitele virtuálního soudu.
+Tento příkaz vrátí informace o relaci, jako je název hostitele virtuálního počítače.
 
 | Identifikátor URI | Metoda |
 |-----------|:-----------|
-| /v1/účty/*accountId*/sessions/*sessionId*/properties | GET |
+| /V1/Accounts/*accountId*/Sessions/*SessionID*/Properties | GET |
 
-**Reakce:**
+**Požadavků**
 
 | Kód stavu | Datová část JSON | Komentáře |
 |-----------|:-----------|:-----------|
-| 200 | - zpráva: řetězec<br/>- sessionElapsedTime: časový interval<br/>- sessionHostname: řetězec<br/>- sessionId: řetězec<br/>- sessionMaxLeaseTime: časový rozpětí<br/>- sessionVelikost: výčet<br/>- sessionStatus: výčet | Enum sessionStatus { spuštění, připravenost, zastavení, zastavení, její platnost, chyba}<br/>Pokud je stav "chyba" nebo "vypršela platnost", bude zpráva obsahovat další informace |
+| 200 | -Message: řetězec<br/>-sessionElapsedTime: TimeSpan<br/>-sessionHostname: String<br/>-sessionId: String<br/>-sessionMaxLeaseTime: TimeSpan<br/>-sessionSize: Enum<br/>-sessionStatus: Enum | vyčíslení výčtu sessionStatus {Start, Read, Stopped, Stopped, vypršela platnost, chyba}<br/>Pokud je stav "Error" nebo "vypršela", zpráva bude obsahovat další informace |
 
-### <a name="example-script-get-session-properties"></a>Příklad skriptu: Získat vlastnosti relace
+### <a name="example-script-get-session-properties"></a>Příklad skriptu: získání vlastností relace
 
 ```PowerShell
 Invoke-WebRequest -Uri "$endPoint/v1/accounts/$accountId/sessions/$sessionId/properties" -Method Get -Headers @{ Authorization = "Bearer $token" }
@@ -248,19 +248,19 @@ RawContentLength  : 60
 
 ## <a name="stop-a-session"></a>Zastavení relace
 
-Tento příkaz zastaví relaci. Přidělený virtuální virtuální město bude vyučován krátce poté.
+Tento příkaz zastaví relaci. Přidělený virtuální počítač se po uplynutí chvilky uvolní.
 
 | Identifikátor URI | Metoda |
 |-----------|:-----------|
-| /v1/účty/*accountId*/sessions/*sessionId* | DELETE |
+| /V1/Accounts/*accountId*/Sessions/*SessionID* | DELETE |
 
-**Reakce:**
+**Požadavků**
 
 | Kód stavu | Datová část JSON | Komentáře |
 |-----------|:-----------|:-----------|
 | 204 | | Úspěch |
 
-### <a name="example-script-stop-a-session"></a>Příklad skriptu: Zastavení relace
+### <a name="example-script-stop-a-session"></a>Ukázkový skript: zastavení relace
 
 ```PowerShell
 Invoke-WebRequest -Uri "$endPoint/v1/accounts/$accountId/sessions/$sessionId" -Method Delete -Headers @{ Authorization = "Bearer $token" }
@@ -283,4 +283,4 @@ RawContentLength  : 0
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Příklad skriptů prostředí PowerShell](../samples/powershell-example-scripts.md)
+* [Ukázkové skripty PowerShellu](../samples/powershell-example-scripts.md)

@@ -1,6 +1,6 @@
 ---
-title: Použití vyrovnávacích pamětí protokolu se simulací zařízení – Azure| Dokumenty společnosti Microsoft
-description: V tomto návodu se dozvíte, jak pomocí vyrovnávacích pamětí protokolu serializovat telemetrická data odeslaná z akcelerátoru řešení Simulace zařízení.
+title: Použití vyrovnávacích pamětí protokolu s simulací zařízení – Azure | Microsoft Docs
+description: V této příručce se dozvíte, jak používat vyrovnávací paměti protokolu k serializaci telemetrie odeslané z akcelerátoru řešení pro simulaci zařízení.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -12,81 +12,81 @@ ms.custom:
 ms.date: 11/06/2018
 ms.author: dobett
 ms.openlocfilehash: c49745b30d2c4acc115a72af095f3e941dc4d509
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81683995"
 ---
 # <a name="serialize-telemetry-using-protocol-buffers"></a>Serializace telemetrie pomocí vyrovnávacích pamětí protokolu
 
-Buffers Protocol Buffers (Protobuf) je binární serializační formát pro strukturovaná data. Protobuf je navržen tak, aby zdůraznil jednoduchost a výkon s cílem být menší a rychlejší než XML.
+Vyrovnávací paměti protokolu (Protobuf) je binární formát serializace pro strukturovaná data. Protobuf je navržený tak, aby zdůraznil jednoduchost a výkon s cílem být menší a rychlejší než XML.
 
-Simulace zařízení podporuje **proto3** verzi jazyka vyrovnávacích pamětí protokolu.
+Simulace zařízení podporuje verzi **proto3** jazyka vyrovnávací paměti protokolu.
 
-Protože Protobuf vyžaduje zkompilovaný kód serializovat data, musíte vytvořit vlastní verzi simulace zařízení.
+Vzhledem k tomu, že Protobuf vyžaduje zkompilovaný kód k serializaci dat, je nutné vytvořit vlastní verzi simulace zařízení.
 
-Kroky v tomto návodu vám ukážou, jak:
+Postup v tomto návodu vám ukáže, jak:
 
 1. Příprava vývojového prostředí
 1. Určení použití formátu Protobuf v modelu zařízení
 1. Definování formátu Protobuf
 1. Generovat třídy Protobuf
-1. Testování místně
+1. Test lokálně
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li postupovat podle pokynů v tomto návodu, potřebujete:
+Pokud chcete postupovat podle kroků v tomto průvodci, budete potřebovat:
 
-* Visual Studio Code. Můžete si stáhnout [Visual Studio Code for Mac, Linux a Windows](https://code.visualstudio.com/download).
-* Jádro .NET. Zde si můžete stáhnout [.NET Core pro Mac, Linux a Windows](https://www.microsoft.com/net/download).
-* Pošťák. Zde si můžete stáhnout [Postman pro Mac, Windows, nebo Linux](https://www.getpostman.com/apps).
-* [Centrum IoT nasazené do vašeho předplatného Azure](../iot-hub/iot-hub-create-through-portal.md). K dokončení kroků v této příručce potřebujete připojovací řetězec centra IoT hub. Připojovací řetězec můžete získat z webu Azure Portal.
-* [Databáze Cosmos DB nasazená do vašeho předplatného Azure,](../cosmos-db/create-sql-api-dotnet.md#create-account) která používá rozhraní SQL API a která je nakonfigurovaná pro [silnou konzistenci](../cosmos-db/manage-account.md). K dokončení kroků v této příručce potřebujete připojovací řetězec databáze Cosmos DB. Připojovací řetězec můžete získat z webu Azure Portal.
-* [Účet úložiště Azure nasazený do vašeho předplatného Azure](../storage/common/storage-account-create.md). K dokončení kroků v této příručce potřebujete připojovací řetězec účtu úložiště. Připojovací řetězec můžete získat z webu Azure Portal.
+* Visual Studio Code. Můžete si stáhnout [Visual Studio Code pro Mac, Linux a Windows](https://code.visualstudio.com/download).
+* .NET Core. Můžete stáhnout [.NET Core pro Mac, Linux a Windows](https://www.microsoft.com/net/download).
+* Postman. Můžete si stáhnout [pro Mac, Windows nebo Linux](https://www.getpostman.com/apps).
+* [Centrum IoT nasazené ve vašem předplatném Azure](../iot-hub/iot-hub-create-through-portal.md). K dokončení kroků v této příručce potřebujete připojovací řetězec centra IoT. Připojovací řetězec můžete získat z Azure Portal.
+* [Cosmos DB databáze nasazené do předplatného Azure](../cosmos-db/create-sql-api-dotnet.md#create-account) , které používá rozhraní SQL API a která je nakonfigurovaná pro [silnou konzistenci](../cosmos-db/manage-account.md). K dokončení kroků v této příručce potřebujete připojovací řetězec databáze Cosmos DB. Připojovací řetězec můžete získat z Azure Portal.
+* [Účet služby Azure Storage nasazený do vašeho předplatného Azure](../storage/common/storage-account-create.md). K dokončení kroků v této příručce potřebujete připojovací řetězec účtu úložiště. Připojovací řetězec můžete získat z Azure Portal.
 
 ## <a name="prepare-your-development-environment"></a>Příprava vývojového prostředí
 
-Pro přípravu vývojového prostředí proveďte následující úkoly:
+Při přípravě vývojového prostředí dokončete následující úlohy:
 
 * Stáhněte si zdroj pro mikroslužbu simulace zařízení.
-* Stáhněte zdroj mikroslužby adaptéru úložiště.
+* Stáhněte si zdroj pro mikroslužbu adaptéru úložiště.
 * Spusťte mikroslužbu adaptéru úložiště místně.
 
-Pokyny v tomto článku předpokládají, že používáte systém Windows. Pokud používáte jiný operační systém, bude pravděpodobně nutné upravit některé cesty a příkazy souborů tak, aby vyhovovaly vašemu prostředí.
+Pokyny v tomto článku předpokládají, že používáte systém Windows. Pokud používáte jiný operační systém, možná budete muset upravit některé cesty k souboru a příkazy tak, aby vyhovovaly vašemu prostředí.
 
 ### <a name="download-the-microservices"></a>Stažení mikroslužeb
 
-Stáhněte a rozbalte [mikroslužby vzdáleného monitorování](https://github.com/Azure/remote-monitoring-services-dotnet/archive/master.zip) z GitHubu do vhodného umístění v místním počítači. Toto úložiště obsahuje mikroslužbu adaptéru úložiště, které potřebujete pro tento postup.
+Stáhněte a rozbalte [mikroslužby vzdáleného monitorování](https://github.com/Azure/remote-monitoring-services-dotnet/archive/master.zip) z GitHubu do vhodného umístění v místním počítači. Toto úložiště zahrnuje mikroslužbu adaptéru úložiště, kterou potřebujete pro tento postup.
 
-Stáhněte a rozbalte [mikroslužbu simulace zařízení](https://github.com/Azure/device-simulation-dotnet/archive/master.zip) z GitHubu na vhodné místo v místním počítači.
+Stáhněte a rozbalte [mikroslužbu simulace zařízení](https://github.com/Azure/device-simulation-dotnet/archive/master.zip) z GitHubu do vhodného umístění v místním počítači.
 
 ### <a name="run-the-storage-adapter-microservice"></a>Spuštění mikroslužby adaptéru úložiště
 
-V kódu sady Visual Studio otevřete složku **vzdáleného monitorování služeb-dotnet-master\storage-adapter.** Chcete-li opravit nevyřešené závislosti, klepněte na ně tlačítka **obnovení.**
+V Visual Studio Code otevřete složku **Remote-Monitoring-Services-dotnet-master\storage-Adapter** . Chcete-li opravit nevyřešené závislosti, klikněte na tlačítko **obnovit** .
 
-Otevřete soubor **.vscode/launch.json** a přiřaďte připojovací řetězec Cosmos DB proměnné prostředí **PCS\_STORAGEADAPTER\_DOCUMENTDB\_CONNSTRING.**
+Otevřete soubor **. VSCode/Launch. JSON** a přiřaďte svůj připojovací řetězec Cosmos DB k proměnné **prostředí\_počítače\_STORAGEADAPTER\_DOCUMENTDB CONNSTRING** .
 
 > [!NOTE]
-> Když spustíte mikroslužbu místně na vašem počítači, stále vyžaduje cosmos DB instance v Azure pracovat správně.
+> Když mikroslužbu spustíte místně na svém počítači, vyžaduje se i v Azure instance Cosmos DB, aby fungovala správně.
 
-Chcete-li mikroslužbu adaptéru úložiště spustit místně, klepněte na tlačítko **Ladění \> ladění spustit**.
+Pokud chcete spustit mikroslužbu adaptéru úložiště místně, klikněte **na \> ladění spustit ladění**.
 
-Okno **Terminál** v kódu sady Visual Studio zobrazuje výstup ze spuštěné mikroslužby včetně adresy URL pro kontrolu stavu webové služby: <http://127.0.0.1:9022/v1/status>. Při přechodu na tuto adresu by měl být stav "OK: Alive and well".
+Okno **terminálu** v Visual Studio Code zobrazuje výstup z běžící mikroslužby včetně adresy URL pro kontrolu stavu webové služby: <http://127.0.0.1:9022/v1/status>. Při přechodu na tuto adresu by měl být ve stavu "OK: Alive" a dobře ".
 
-Ponechte mikroslužbu adaptéru úložiště spuštěnou v této instanci kódu sady Visual Studio, zatímco dokončíte následující kroky.
+Ponechte mikroslužbu adaptéru úložiště spuštěnou v této instanci Visual Studio Code, zatímco provedete následující kroky.
 
-## <a name="define-your-device-model"></a>Definování modelu zařízení
+## <a name="define-your-device-model"></a>Definice modelu zařízení
 
-Otevřete složku **device-simulation-dotnet-master,** kterou jste stáhli z GitHubu v nové instanci kódu Visual Studia. Chcete-li opravit všechny nevyřešené závislosti, klepněte na ně tlačítka **obnovení.**
+Otevřete složku **Device-simulace-dotnet-Master** , kterou jste stáhli z GitHubu, do nové instance Visual Studio Code. Kliknutím na jakékoli tlačítko **obnovit** opravíte nevyřešené závislosti.
 
-V tomto návodu vytvoříte nový model zařízení pro nástroj pro sledování majetku:
+V tomto průvodci vytvoříte nový model zařízení pro sledování prostředků:
 
-1. Vytvořte nový soubor modelu zařízení s názvem **assettracker-01.json** ve složce **Services\data\devicemodels.**
+1. Ve složce **Services\data\devicemodels** vytvořte nový soubor modelu zařízení s názvem **assettracker-01. JSON** .
 
-1. Definujte funkci zařízení v souboru **assettracker-01.json** modelu zařízení. Telemetrická část modelu zařízení Protobuf musí:
+1. Definujte funkčnost zařízení v souboru **assettracker-01. JSON** modelu zařízení. Oddíl telemetrie modelu zařízení Protobuf musí:
 
-   * Uveďte název třídy Protobuf, kterou pro své zařízení vygenerujete. V následující části se zobrazí způsob generování této třídy.
+   * Zahrňte název třídy Protobuf, kterou vygenerujete pro vaše zařízení. V následující části se dozvíte, jak vygenerovat tuto třídu.
    * Jako formát zprávy zadejte Protobuf.
 
      ```json
@@ -141,19 +141,19 @@ V tomto návodu vytvoříte nový model zařízení pro nástroj pro sledování
 
 ### <a name="create-device-behaviors-script"></a>Vytvořit skript chování zařízení
 
-Napište skript chování, který definuje, jak se vaše zařízení chová. Další informace naleznete [v tématu Vytvoření rozšířeného simulovaného zařízení](iot-accelerators-device-simulation-advanced-device.md).
+Napište skript chování, který definuje, jak se vaše zařízení chová. Další informace najdete v tématu [vytvoření pokročilého simulovaného zařízení](iot-accelerators-device-simulation-advanced-device.md).
 
 ## <a name="define-your-protobuf-format"></a>Definování formátu Protobuf
 
-Pokud máte model zařízení a určili formát zprávy, můžete vytvořit **soubor proto.** V souboru **proto** přidáte:
+Když máte model zařízení a určíte formát zprávy, můžete **vytvořit soubor.** Do souboru **proto** přidáte:
 
-* A, `csharp_namespace` která odpovídá vlastnosti **ClassName** v modelu zařízení.
-* Zpráva pro každou datovou strukturu serializovat.
+* Který se shoduje s vlastností ClassName v modelu zařízení. **ClassName** `csharp_namespace`
+* Zpráva pro každou strukturu dat k serializaci.
 * Název a typ pro každé pole ve zprávě.
 
-1. Vytvořte nový soubor s názvem **assettracker.proto** ve složce **Services\Models\Protobuf\proto.**
+1. Ve složce **Services\Models\Protobuf\proto** vytvořte nový soubor s názvem **assettracker.**
 
-1. Syntaxi, obor názvů a schéma zprávy definujte v souboru **proto** následujícím způsobem:
+1. V souboru **proto** definujte syntaxi, obor názvů a schéma zprávy následujícím způsobem:
 
     ```proto
     syntax = "proto3";
@@ -168,45 +168,45 @@ Pokud máte model zařízení a určili formát zprávy, můžete vytvořit **so
     }
     ```
 
-`=1`Značky `=2` na každém prvku určují jedinečnou značku, kterou pole používá v binárním kódování. Čísla 1-15 vyžadují pro kódování o jeden bajt méně než vyšší čísla.
+Značky `=1`, `=2` na jednotlivých prvcích, určují jedinečnou značku, kterou pole používá v binárním kódování. Čísla 1-15 vyžadují jeden méně bajt pro kódování než vyšší čísla.
 
 ## <a name="generate-the-protobuf-class"></a>Generovat třídu Protobuf
 
-pokud máte **soubor proto,** dalším krokem je generovat třídy potřebné ke čtení a zápisu zpráv. K dokončení tohoto kroku potřebujete kompilátor **Protoc** Protobuf.
+**v případě souboru s** tímto souborem je dalším krokem vygenerování tříd potřebných pro čtení a zápis zpráv. K dokončení tohoto kroku potřebujete kompilátor **Protoc** Protobuf.
 
 1. [Stažení kompilátoru Protobuf z GitHubu](https://github.com/protocolbuffers/protobuf/releases/download/v3.4.0/protoc-3.4.0-win32.zip)
 
-1. Spusťte kompilátor a určete zdrojový adresář, cílový adresář a název **proto** souboru. Příklad:
+1. Spusťte kompilátor, určete zdrojový adresář, cílový adresář a **název souboru.** Příklad:
 
     ```cmd
     protoc -I c:\temp\device-simulation-dotnet-master\Services\Models\Protobuf\proto --csharp_out=C:\temp\device-simulation-dotnet-master\Services\Models\Protobuf assettracker.proto
     ```
 
-    Tento příkaz vygeneruje **soubor Assettracker.cs** ve složce **Services\Models\Protobuf.**
+    Tento příkaz vygeneruje soubor **Assettracker.cs** ve složce **Services\Models\Protobuf** .
 
-## <a name="test-protobuf-locally"></a>Test Protobuf lokálně
+## <a name="test-protobuf-locally"></a>Místní test Protobuf
 
-V této části otestujete zařízení pro sledování majetku, které jste vytvořili v předchozích částech místně.
+V této části otestujete zařízení pro sledování assetu, které jste vytvořili v předchozích částech místně.
 
 ### <a name="run-the-device-simulation-microservice"></a>Spuštění mikroslužby simulace zařízení
 
-Otevřete soubor **.vscode/launch.json** a přiřaďte:
+Otevřete soubor **. VSCode/Launch. JSON** a přiřaďte své:
 
-* Připojovací řetězec IoT Hub k proměnné prostředí **PCS\_\_IOTHUB CONNSTRING.**
-* Připojovací řetězec účtu úložiště k proměnné prostředí **účtu ÚLOŽIŠTĚ\_\_\_PCS AZURE.**
-* Připojovací řetězec Cosmos DB k proměnné prostředí **PCS\_STORAGEADAPTER\_DOCUMENTDB\_CONNSTRING.**
+* IoT Hub připojovací řetězec k proměnné **prostředí\_IOTHUB\_počítače CONNSTRING** .
+* Připojovací řetězec účtu úložiště k proměnné **prostředí\_účtu\_úložiště\_Azure** .
+* Cosmos DB připojovací řetězec k proměnné **prostředí\_CONNSTRING\_počítače\_s DOCUMENTDB STORAGEADAPTER** .
 
-Otevřete soubor **WebService/Properties/launchSettings.json** a přiřaďte:
+Otevřete soubor **WebService/Properties/launchSettings. JSON** a přiřaďte své:
 
-* Připojovací řetězec IoT Hub k proměnné prostředí **PCS\_\_IOTHUB CONNSTRING.**
-* Připojovací řetězec účtu úložiště k proměnné prostředí **účtu ÚLOŽIŠTĚ\_\_\_PCS AZURE.**
-* Připojovací řetězec Cosmos DB k proměnné prostředí **PCS\_STORAGEADAPTER\_DOCUMENTDB\_CONNSTRING.**
+* IoT Hub připojovací řetězec k proměnné **prostředí\_IOTHUB\_počítače CONNSTRING** .
+* Připojovací řetězec účtu úložiště k proměnné **prostředí\_účtu\_úložiště\_Azure** .
+* Cosmos DB připojovací řetězec k proměnné **prostředí\_CONNSTRING\_počítače\_s DOCUMENTDB STORAGEADAPTER** .
 
 Otevřete soubor **WebService\appsettings.ini** a upravte nastavení následujícím způsobem:
 
-#### <a name="configure-the-solution-to-include-your-new-device-model-files"></a>Konfigurace řešení tak, aby zahrnovalo nové soubory modelů zařízení
+#### <a name="configure-the-solution-to-include-your-new-device-model-files"></a>Nakonfigurujte řešení tak, aby zahrnovalo vaše nové soubory modelu zařízení.
 
-Ve výchozím nastavení se nové soubory JSON a JS nového modelu zařízení nezkopírují do integrovaného řešení. Musíte je explicitně zahrnout.
+Ve výchozím nastavení se vaše nové soubory JSON a JS modelů zařízení do sestaveného řešení nekopírují. Je nutné je explicitně zahrnout.
 
 Přidejte položku do souboru **services\services.csproj** pro každý soubor, který chcete zahrnout. Příklad:
 
@@ -219,17 +219,17 @@ Přidejte položku do souboru **services\services.csproj** pro každý soubor, k
 </None>
 ```
 
-Chcete-li spustit mikroslužbu místně, klepněte na tlačítko **Ladění \> začít ladění**.
+Pokud chcete spustit mikroslužbu místně, klikněte **na \> ladění spustit ladění**.
 
-Okno **Terminálv** kódu sady Visual Studio zobrazuje výstup z běžící mikroslužby.
+Okno **terminálu** v Visual Studio Code zobrazuje výstup z běžící mikroslužby.
 
-Ponechte mikroslužbu simulace zařízení spuštěnou v této instanci kódu sady Visual Studio a dokončete další kroky.
+Ponechte mikroslužbu simulace zařízení spuštěnou v této instanci Visual Studio Code během provádění dalších kroků.
 
-### <a name="set-up-a-monitor-for-device-events"></a>Nastavení monitoru pro události zařízení
+### <a name="set-up-a-monitor-for-device-events"></a>Nastavení monitorování pro události zařízení
 
-V této části použijete azure CLI k nastavení monitorování událostí k zobrazení telemetrie odeslané ze zařízení připojených k centru IoT.
+V této části použijete rozhraní příkazového řádku Azure CLI k nastavení monitorování událostí pro zobrazení telemetrie odesílané ze zařízení připojených ke službě IoT Hub.
 
-Následující skript předpokládá, že název vašeho centra IoT hub je **test simulace zařízení**.
+Následující skript předpokládá, že název vašeho centra IoT je typu **zařízení-simulace-test**.
 
 ```azurecli-interactive
 # Install the IoT extension if it's not already installed
@@ -239,44 +239,44 @@ az extension add --name azure-iot
 az iot hub monitor-events --hub-name device-simulation-test
 ```
 
-Při testování simulovaných zařízení ponechte monitor událostí spuštěný.
+Při testování simulovaných zařízení nechte monitorování událostí spuštěné.
 
-### <a name="create-a-simulation-with-the-asset-tracker-device-type"></a>Vytvoření simulace s typem zařízení pro sledování majetku
+### <a name="create-a-simulation-with-the-asset-tracker-device-type"></a>Vytvořit simulaci s typem zařízení pro sledování prostředků
 
-V této části použijete nástroj Postman k vyžádání mikroslužby simulace zařízení ke spuštění simulace pomocí typu zařízení sledování prostředků. Pošťák je nástroj, který umožňuje odesílat požadavky REST webové službě.
+V této části vyžádáte pomocí nástroje pro simulaci simulaci zařízení, aby spouštěla simulaci pomocí typu zařízení sledovacího modulu assetu. Post je nástroj, který umožňuje odesílat žádosti REST do webové služby.
 
-Nastavení pošťáka:
+Nastavení post:
 
-1. Otevřete pošťáka na místním počítači.
+1. Otevřete post na místním počítači.
 
-1. Klepněte na **položku Import souborů \> **. Pak klepněte na **tlačítko Vybrat soubory**.
+1. Klikněte **na \> Import souboru**. Pak klikněte na **zvolit soubory**.
 
-1. Vyberte **Azure IoT Device Simulation\_solution accelerator.postman collection** a **Azure\_IoT Device Simulation solution accelerator.postman environment** a klikněte na **Otevřít**.
+1. Vyberte možnost **akcelerátor řešení simulace zařízení Azure IoT\_. kolekce pro vystavování** a řešení pro **simulaci zařízení Azure\_IoT. proúčtujte prostředí** a klikněte na **otevřít**.
 
-1. Rozbalte **akcelerátor řešení Simulace zařízení Azure IoT** a zobrazte si požadavky, které můžete odeslat.
+1. Rozbalte **akcelerátor řešení pro simulaci zařízení Azure IoT** , abyste viděli požadavky, které můžete odeslat.
 
-1. Klikněte na **Žádné prostředí** a vyberte **akcelerátor řešení Simulace zařízení Azure IoT**.
+1. Klikněte na **žádné prostředí** a vyberte **akcelerátor řešení pro simulaci zařízení Azure IoT**.
 
-Nyní máte kolekci a prostředí načtené v pracovním prostoru Postman, který můžete použít k interakci s mikroslužbou simulace zařízení.
+Nyní máte v pracovním prostoru pro práci vytvořenou kolekci a prostředí, kterou můžete použít k interakci s mikroslužbou simulace zařízení.
 
 Konfigurace a spuštění simulace:
 
-1. V kolekci Pošťák vyberte **Vytvořit simulaci sledování majetku** a klepněte na tlačítko **Odeslat**. Tento požadavek vytvoří čtyři instance simulovaného typu zařízení sledování prostředků.
+1. V kolekci post vyberte **vytvořit simulaci sledování assetu** a klikněte na **Odeslat**. Tento požadavek vytvoří čtyři instance typu simulovaného zařízení sledovacího přehledu prostředků.
 
-1. Výstup monitorování událostí v okně Azure CLI zobrazuje telemetrii ze simulovaných zařízení.
+1. Výstup sledování událostí v okně Azure CLI zobrazuje telemetrii z simulovaných zařízení.
 
-Chcete-li simulaci zastavit, vyberte v pořštěnu požadavek **na zastavení simulace** a klepněte na tlačítko **Odeslat**.
+Chcete-li zastavit simulaci, vyberte možnost **zastavit simulaci** v příspěvku a klikněte na **Odeslat**.
 
 ### <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Můžete zastavit dvě místně spuštěné mikroslužby v jejich instancích kódu sady Visual Studio **(Ladění \> stop ladění).**
+V jejich instancích Visual Studio Code můžete zastavit dvě místně běžící mikroslužby (** \> ladění zastavit ladění**).
 
-Pokud už nepotřebujete instance Služby IoT Hub a Cosmos DB, odstraňte je z předplatného Azure, abyste se vyhnuli zbytečným poplatkům.
+Pokud už nepotřebujete instance IoT Hub a Cosmos DB, odstraňte je z předplatného Azure, abyste se vyhnuli zbytečným poplatkům.
 
-## <a name="iot-hub-support"></a>Podpora ioT hubu
+## <a name="iot-hub-support"></a>Podpora IoT Hub
 
-Mnoho funkcí služby IoT Hub nativně nepodporuje Protobuf nebo jiné binární formáty. Například nelze směrovat na základě datové části zprávy, protože služba IoT Hub nebude moci zpracovat datovou část zprávy. Můžete však směrovat na základě záhlaví zpráv.
+Mnoho funkcí IoT Hub neumožňuje nativně podporovat Protobuf nebo jiné binární formáty. Například nelze směrovat na základě datové části zprávy, protože IoT Hub nebude moci zpracovat datovou část zprávy. Můžete ale směrovat na základě záhlaví zpráv.
 
 ## <a name="next-steps"></a>Další kroky
 
-Nyní jste se naučili, jak přizpůsobit simulaci zařízení pro použití Protobuf k odesílání telemetrie, dalším krokem je naučit se nyní [nasadit vlastní image do cloudu](iot-accelerators-device-simulation-deploy-image.md).
+Nyní jste se naučili, jak přizpůsobit simulaci zařízení, aby při posílání telemetrie používal Protobuf, v dalším kroku se dozvíte, jak [nasadit vlastní image do cloudu](iot-accelerators-device-simulation-deploy-image.md).

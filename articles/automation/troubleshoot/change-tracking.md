@@ -1,6 +1,6 @@
 ---
-title: Řešení problémů se sledováním změn a inventářem
-description: Zjistěte, jak řešit a řešit problémy s řešením Azure Automation Change Tracking and Inventory.
+title: Řešení potíží s Change Tracking a inventářem
+description: Naučte se řešit problémy s Azure Automation Change Tracking a inventáře řešení potíží.
 services: automation
 ms.service: automation
 ms.subservice: change-inventory-management
@@ -10,39 +10,39 @@ ms.date: 01/31/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 11c1fd05055922b07801c20d525d852d5360b069
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81679353"
 ---
-# <a name="troubleshoot-change-tracking-and-inventory-issues"></a>Poradce při potížích se sledováním změn a inventářem
+# <a name="troubleshoot-change-tracking-and-inventory-issues"></a>Řešení problémů s Change Tracking a inventářem
 
-Tento článek popisuje, jak řešit problémy se sledováním změn a inventářem.
+Tento článek popisuje, jak řešit problémy s Change Tracking a inventářem.
 
 >[!NOTE]
->Tento článek je aktualizovaný a využívá nový modul Az Azure PowerShellu. Můžete dál využívat modul AzureRM, který bude dostávat opravy chyb nejméně do prosince 2020. Další informace o kompatibilitě nového modulu Az a modulu AzureRM najdete v tématu [Seznámení s novým modulem Az Azure PowerShellu](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Pokyny k instalaci modulu AZ na pracovníka hybridní sady Runbook najdete [v tématu Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). U vašeho účtu Automation můžete aktualizovat moduly na nejnovější verzi pomocí [funkce Jak aktualizovat moduly Azure PowerShellu v Azure Automation](../automation-update-azure-modules.md).
+>Tento článek je aktualizovaný a využívá nový modul Az Azure PowerShellu. Můžete dál využívat modul AzureRM, který bude dostávat opravy chyb nejméně do prosince 2020. Další informace o kompatibilitě nového modulu Az a modulu AzureRM najdete v tématu [Seznámení s novým modulem Az Azure PowerShellu](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Pokyny k instalaci nástroje AZ Module Hybrid Runbook Worker najdete v tématu [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Pro váš účet Automation můžete aktualizovat moduly na nejnovější verzi pomocí [postupu aktualizace modulů Azure PowerShell v Azure Automation](../automation-update-azure-modules.md).
 
 ## <a name="windows"></a>Windows
 
-### <a name="scenario-change-tracking-and-inventory-records-arent-showing-for-windows-machines"></a><a name="records-not-showing-windows"></a>Scénář: Záznamy sledování změn a zásob se nezobrazují pro počítače s Windows.
+### <a name="scenario-change-tracking-and-inventory-records-arent-showing-for-windows-machines"></a><a name="records-not-showing-windows"></a>Scénář: u počítačů s Windows se nezobrazuje Change Tracking a záznamy inventáře.
 
 #### <a name="issue"></a>Problém
 
-U počítačů s Windows, které jsou na palubě, se nezobrazují žádné výsledky sledování změn a inventáře.
+Pro počítače s Windows, které jsou připojené, se nezobrazuje žádné výsledky Change Tracking a inventáře.
 
 #### <a name="cause"></a>Příčina
 
 Tato chyba může mít následující příčiny:
 
-* Agent analýzy protokolů pro Systém Windows není spuštěn.
-* Komunikace zpět k účtu Automation je blokována.
-* Balíčky sledování změn a správy inventáře se nestahují.
-* Virtuální počítač je na palubě může pocházet z klonovaného počítače, který nebyl sysprepped s agentem Log Analytics pro systém Windows nainstalován.
+* Agent Log Analytics pro Windows není spuštěný.
+* Komunikace zpět s účtem Automation je zablokovaná.
+* Sady Management Pack pro Change Tracking a inventář se nestáhnou.
+* Virtuální počítač, který se připojuje, může pocházet z klonovaného počítače, který se nástroje Sysprep s nainstalovaným agentem Log Analytics pro Windows.
 
 #### <a name="resolution"></a>Řešení
 
-V počítači agenta Log Analytics přejděte na **c:\programfiles\Microsoft Monitoring Agent\Agent\Tools** a spusťte následující příkazy:
+Na počítači Log Analytics agenta přejděte do složky **C:\Program Files\Microsoft monitoring Agent\Agent\Tools** a spusťte následující příkazy:
 
 ```cmd
 net stop healthservice
@@ -51,76 +51,76 @@ StartTracing.cmd VER
 net start healthservice
 ```
 
-Pokud stále potřebujete pomoc, můžete shromažďovat diagnostické informace a kontaktovat podporu. 
+Pokud stále potřebujete pomoc, můžete shromáždit diagnostické informace a kontaktovat podporu. 
 
 > [!NOTE]
-> Agent Log Analyticss umožňuje ve výchozím nastavení trasování chyb. Chcete-li povolit podrobné chybové zprávy jako `VER` v předchozím příkladu, použijte parametr. Pro informace stopy, použijte `INF` při `StartTracing.cmd`vyvolání .
+> Agent Log Analytics umožňuje ve výchozím nastavení trasování chyb. Chcete-li povolit podrobné chybové zprávy jako v předchozím příkladu, použijte `VER` parametr. Pro trasování informací použijte `INF` při vyvolání. `StartTracing.cmd`
 
-##### <a name="log-analytics-agent-for-windows-not-running"></a>Agent analýzy protokolů pro systém Windows není spuštěn
+##### <a name="log-analytics-agent-for-windows-not-running"></a>Agent Log Analytics pro Windows není spuštěný.
 
-Ověřte, zda je v počítači spuštěn agent Analýzy protokolů pro systém Windows **(HealthService.exe).**
+Ověřte, zda je na tomto počítači spuštěný agent Log Analytics pro systém Windows (**HealthService. exe**).
 
-##### <a name="communication-to-automation-account-blocked"></a>Komunikace s účtem Automation byla zablokována.
+##### <a name="communication-to-automation-account-blocked"></a>Komunikace s blokovaným účtem služby Automation
 
-Zkontrolujte Prohlížeč událostí v počítači a vyhledejte všechny události, které mají slovo `changetracking` v nich.
+Zkontrolujte Prohlížeč událostí na počítači a vyhledejte všechny události, které obsahují slovo `changetracking` .
 
-Viz [Automatizace prostředků ve vašem datovém centru nebo cloudu pomocí hybridního runbook workeru,](../automation-hybrid-runbook-worker.md#network-planning) kde se dozvíte o adresách a portech, které musí být povoleny, aby sledování změn a inventář fungovaly.
+Informace o adresách a portech, které je potřeba pro práci s Change Tracking a inventářem, najdete v tématu [Automatizace prostředků ve vašem datovém centru nebo cloudu pomocí Hybrid Runbook Worker](../automation-hybrid-runbook-worker.md#network-planning) .
 
-##### <a name="management-packs-not-downloaded"></a>Nestažené sady Management Pack
+##### <a name="management-packs-not-downloaded"></a>Sady Management Pack nebyly staženy
 
-Ověřte, zda jsou místně nainstalovány následující balíčky sledování změn a správy inventáře:
+Ověřte, zda jsou místně nainstalovány následující Change Tracking a sady Management Pack inventáře:
 
 * `Microsoft.IntelligencePacks.ChangeTrackingDirectAgent.*`
 * `Microsoft.IntelligencePacks.InventoryChangeTracking.*`
 * `Microsoft.IntelligencePacks.SingletonInventoryCollection.*`
 
-##### <a name="vm-from-cloned-machine-that-has-not-been-sysprepped"></a>Virtuální počítač z klonovaného počítače, který nebyl sysprepped
+##### <a name="vm-from-cloned-machine-that-has-not-been-sysprepped"></a>VIRTUÁLNÍ počítač z klonovaného počítače, který nebyl nástroje Sysprep
 
-Pokud používáte klonoci bitové kopie, sysprep bitovou kopii první a potom nainstalujte agenta Log Analytics pro Systém Windows.
+Pokud používáte Klonovaný obrázek, napřed nejprve nástroj Sysprep a poté nainstalujte agenta Log Analytics pro systém Windows.
 
 ## <a name="linux"></a>Linux
 
-### <a name="scenario-no-change-tracking-and-inventory-results-on-linux-machines"></a>Scénář: Žádné sledování změn a výsledky inventarizace na počítačích s Linuxem
+### <a name="scenario-no-change-tracking-and-inventory-results-on-linux-machines"></a>Scénář: žádné Change Tracking a výsledky inventáře na počítačích se systémem Linux
 
 #### <a name="issue"></a>Problém
 
-Nevidíte žádné výsledky inventáře a sledování změn pro počítače s Linuxem, které jsou na palubě pro řešení. 
+Nevidíte žádné inventáře a výsledky Change Tracking pro počítače se systémem Linux, které jsou zaregistrované pro řešení. 
 
 #### <a name="cause"></a>Příčina
-Zde jsou možné příčiny specifické pro tento problém:
-* Agent Log Analytics pro Linux není spuštěn.
-* Agent Analýzy protokolů pro Linux není správně nakonfigurován.
-* Existují konflikty monitorování integrity souborů (FIM).
+Tady jsou možné příčiny specifické pro tento problém:
+* Agent Log Analytics pro Linux neběží.
+* Agent Log Analytics pro Linux není správně nakonfigurovaný.
+* Došlo ke konfliktu monitorování integrity souborů (FIM).
 
 #### <a name="resolution"></a>Řešení 
 
-##### <a name="log-analytics-agent-for-linux-not-running"></a>Agent Log Analytics pro Linux neběží
+##### <a name="log-analytics-agent-for-linux-not-running"></a>Agent Log Analytics pro Linux není spuštěný.
 
-Ověřte, zda je v počítači spuštěn daemon pro agenta Log Analytics pro Linux **(omsagent).** Spusťte následující dotaz v pracovním prostoru Log Analytics, který je propojen s vaším účtem Automation.
+Ověřte, že je na vašem počítači spuštěn démon pro agenta Log Analytics pro Linux (**omsagent**). Spusťte následující dotaz v pracovním prostoru Log Analytics, který je propojený s vaším účtem Automation.
 
 ```loganalytics Copy
 Heartbeat
 | summarize by Computer, Solutions
 ```
 
-Pokud počítač ve výsledcích dotazu nevidíte, není v poslední době vrácení se změnami. Pravděpodobně došlo k problému s místní konfigurací a měli byste přeinstalovat agenta. Informace o instalaci a konfiguraci naleznete v [tématu Shromažďování dat protokolu s agentem Log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent). 
+Pokud se Váš počítač nezobrazuje ve výsledcích dotazu, nedošlo v poslední době k vrácení se změnami. Pravděpodobně došlo k potížím s místní konfigurací a je třeba agenta přeinstalovat. Informace o instalaci a konfiguraci najdete v tématu [shromáždění dat protokolu pomocí agenta Log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent). 
 
-Pokud se váš počítač zobrazí ve výsledcích dotazu, ověřte konfiguraci oboru. Viz [Řešení monitorování cílení v Azure Monitoru](https://docs.microsoft.com/azure/azure-monitor/insights/solution-targeting).
+Pokud se Váš počítač zobrazí ve výsledcích dotazu, ověřte konfiguraci oboru. Informace najdete [v tématu cílení řešení monitorování v Azure monitor](https://docs.microsoft.com/azure/azure-monitor/insights/solution-targeting).
 
-Další řešení tohoto problému naleznete v [tématu Problém: Nevidíte žádná data Linuxu](https://docs.microsoft.com/azure/azure-monitor/platform/agent-linux-troubleshoot#issue-you-are-not-seeing-any-linux-data).
+Další řešení potíží s tímto problémem najdete v tématu [problém: nevidíte žádná data pro Linux](https://docs.microsoft.com/azure/azure-monitor/platform/agent-linux-troubleshoot#issue-you-are-not-seeing-any-linux-data).
 
-##### <a name="log-analytics-agent-for-linux-not-configured-correctly"></a>Agent Log Analytics pro Linux není správně nakonfigurován
+##### <a name="log-analytics-agent-for-linux-not-configured-correctly"></a>Agent Log Analytics pro Linux není správně nakonfigurovaný.
 
-Agent Log Analytics pro Linux nemusí být správně nakonfigurován pro kolekci výstupu protokolu a příkazového řádku pomocí nástroje OMS Log Collector. Viz [Sledování změn ve vašem prostředí pomocí řešení Sledování změn a Zásoby](../change-tracking.md).
+Agent Log Analytics pro Linux se nemusí správně nakonfigurovat pro výstupní kolekci protokolů a příkazového řádku pomocí nástroje kolektor protokolů OMS. Podívejte se [na téma sledování změn ve vašem prostředí pomocí řešení Change Tracking a inventáře](../change-tracking.md).
 
 ##### <a name="fim-conflicts"></a>Konflikty FIM
 
-Funkce FIM centra zabezpečení Azure může nesprávně ověřovat integritu souborů Linuxu. Ověřte, zda je FIM funkční a správně nakonfigurovaný pro monitorování souborů Linuxu. Viz [Sledování změn ve vašem prostředí pomocí řešení Sledování změn a Zásoby](../change-tracking.md).
+Funkce FIM Azure Security Center možná nesprávně ověřuje integritu souborů Linux. Ověřte, že je produkt FIM funkční a správně nakonfigurovaný pro monitorování souborů systému Linux. Podívejte se [na téma sledování změn ve vašem prostředí pomocí řešení Change Tracking a inventáře](../change-tracking.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud problém nevidíte výše nebo nemůžete problém vyřešit, vyzkoušejte další podporu jedním z následujících kanálů:
+Pokud nevidíte výše uvedený problém nebo nemůžete problém vyřešit, zkuste pro další podporu použít jeden z následujících kanálů:
 
-* Získejte odpovědi od odborníků na Azure prostřednictvím [fór Azure .](https://azure.microsoft.com/support/forums/)
-* Spojte [@AzureSupport](https://twitter.com/azuresupport)se s oficiálním účtem Microsoft Azure a vylepšete tak zákaznickou zkušenost propojením komunity Azure se správnými prostředky: odpověďmi, podporou a odborníky.
-* Soubor incidentu podpory Azure. Přejděte na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte Získat **podporu**.
+* Získejte odpovědi od odborníků na Azure prostřednictvím [fór Azure](https://azure.microsoft.com/support/forums/).
+* Připojte se [@AzureSupport](https://twitter.com/azuresupport)k, oficiální Microsoft Azure účet pro zlepšení zkušeností zákazníků tím, že propojíte komunitu Azure se správnými zdroji: odpověďmi, podporou a odborníky.
+* Zasouborové incidenty podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte **získat podporu**.

@@ -1,6 +1,6 @@
 ---
-title: Odstín s Hadoopem na clusterech založených na SYSTÉMU HDInsight na Linuxu – Azure
-description: Přečtěte si, jak nainstalovat Hue do clusterů HDInsight a pomocí tunelového propojení směrovat požadavky do Hue. Pomocí hue můžete procházet úložiště a spouštět Hive nebo Pig.
+title: Odstín pomocí Hadoop v clusterech se systémem HDInsight Linux – Azure
+description: Naučte se instalovat odstín v clusterech HDInsight a pomocí tunelového propojení směrovat požadavky do odstínu. Pomocí odstínu můžete procházet úložiště a spustit podregistr nebo prase.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,122 +9,122 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 03/31/2020
 ms.openlocfilehash: dea7e8d5679c8c5a14d6a4253b8a4b36343e6ed8
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80887091"
 ---
-# <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>Instalace a použití hue na clusterech HDInsight Hadoop
+# <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>Instalace a použití odstínu v clusterech HDInsight Hadoop
 
-Přečtěte si, jak nainstalovat Hue do clusterů HDInsight a pomocí tunelového propojení směrovat požadavky do Hue.
+Naučte se instalovat odstín v clusterech HDInsight a pomocí tunelového propojení směrovat požadavky do odstínu.
 
-## <a name="what-is-hue"></a>Co je Hue?
+## <a name="what-is-hue"></a>Co je odstín?
 
-Hue je sada webových aplikací používaných k interakci s clusterem Apache Hadoop. Hue můžete použít k procházení úložiště přidruženého ke clusteru Hadoop (WASB, v případě clusterů HDInsight), spuštění úloh Hive a skriptů Pig a tak dále. Následující součásti jsou k dispozici s instalacemi Hue v clusteru HDInsight Hadoop.
+Odstín je sada webových aplikací používaných pro interakci s clusterem Apache Hadoop. Pomocí odstínu můžete procházet úložiště přidružené k clusteru Hadoop (WASB, v případě clusterů HDInsight), spouštět úlohy podregistru a skripty pro vepřové prostředí a tak dále. Následující komponenty jsou k dispozici s odstínem instalací v clusteru HDInsight Hadoop.
 
-* Editor úlu včelaře
-* Apache prase
-* Metastore manažer
-* Apač Oozie
-* FileBrowser (který mluví s WASB výchozí kontejner)
-* Job Browser
+* Editor podregistru beeswax
+* Apache prasete
+* Metastore Manager
+* Apache Oozie
+* Prohlížeč (který mluví s WASB výchozím kontejnerem)
+* Prohlížeč úloh
 
 > [!WARNING]  
-> Součásti dodávané s clusterem HDInsight jsou plně podporovány a podpora společnosti Microsoft pomůže izolovat a vyřešit problémy související s těmito součástmi.
+> Komponenty dodávané s clusterem HDInsight jsou plně podporované a podpora Microsoftu vám pomůžou izolovat a řešit problémy související s těmito součástmi.
 >
-> Vlastní součásti obdrží komerčně přiměřenou podporu, která vám pomůže dále řešit problém. To může vést k vyřešení problému nebo s žádostí o zapojení dostupných kanálů pro technologie s otevřeným zdrojovým kódem, kde jsou nalezeny hluboké odborné znalosti pro tuto technologii. Existuje například mnoho komunitních webů, které lze použít, například: [https://stackoverflow.com](https://stackoverflow.com) [Fórum MSDN pro HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight). Také Apache projekty [https://apache.org](https://apache.org)mají projektové weby na , například: [Hadoop](https://hadoop.apache.org/).
+> Vlastní komponenty získají komerčně přiměřenou podporu, která vám může pomoct s dalším řešením tohoto problému. To může vést k vyřešení problému nebo požádá vás o zapojení dostupných kanálů pro technologie Open Source, ve kterých se najde hlubokou odbornost pro danou technologii. Například existuje mnoho webů komunity, které lze použít jako: [Fórum MSDN pro HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight) [https://stackoverflow.com](https://stackoverflow.com). Projekty Apache také obsahují projektové weby [https://apache.org](https://apache.org), například: [Hadoop](https://hadoop.apache.org/).
 
-## <a name="install-hue-using-script-actions"></a>Instalace odstínu pomocí akcí skriptu
+## <a name="install-hue-using-script-actions"></a>Instalace odstínu pomocí akcí skriptů
 
-Informace v následující tabulce použijte pro akci skriptu. Konkrétní pokyny k používání akcí skriptu najdete v tématu [Přizpůsobení clusterů HDInsight pomocí akcí skriptu.](hdinsight-hadoop-customize-cluster-linux.md)
+Pro akci skriptu použijte informace v následující tabulce. Konkrétní pokyny k používání akcí skriptů najdete v tématu [Přizpůsobení clusterů HDInsight pomocí akcí skriptů](hdinsight-hadoop-customize-cluster-linux.md) .
 
 > [!NOTE]  
-> Chcete-li nainstalovat Hue na HDInsight clustery, doporučená velikost headnode je alespoň A4 (8 jader, 14 GB paměti).
+> K instalaci odstínu u clusterů HDInsight je doporučená velikost hlavnímu uzlu aspoň A4 (8 jader, 14 GB paměti).
 
 |Vlastnost |Hodnota |
 |---|---|
-|Typ skriptu:|- Vlastní|
-|Name (Název)|Instalace odstínu|
-|Bash skript URI|`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`|
-|Typ uzlu(y):|Head|
+|Typ skriptu:|– Vlastní|
+|Název|Nainstalovat odstín|
+|Identifikátor URI skriptu bash|`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`|
+|Typ (typy) uzlů:|Head|
 
-## <a name="use-hue-with-hdinsight-clusters"></a>Použití hue s clustery HDInsight
+## <a name="use-hue-with-hdinsight-clusters"></a>Použití odstínu u clusterů HDInsight
 
-V běžných clusterech můžete mít pouze jeden uživatelský účet s hue. Pro přístup více uživatelů povolte v clusteru [balíček Enterprise Security Package.](./domain-joined/hdinsight-security-overview.md) Tunelové propojení SSH je jediný způsob, jak získat přístup k Hue v clusteru, jakmile je spuštěn. Tunelové propojení přes SSH umožňuje přenos přejít přímo do hlavního uzlu clusteru, kde je spuštěn Hue. Po dokončení zřizování clusteru použijte následující kroky k použití hue v clusteru HDInsight.
+V pravidelných clusterech můžete mít jenom jeden uživatelský účet s odstínem. V případě přístupu s více uživateli povolte [balíček zabezpečení podniku](./domain-joined/hdinsight-security-overview.md) v clusteru. Tunelové propojení SSH je jediným způsobem, jak získat přístup k odstínům clusteru po jeho spuštění. Tunelové propojení prostřednictvím SSH umožňuje provoz přejít přímo na hlavnímu uzlu clusteru, kde je spuštěný odstín. Po dokončení zřizování clusteru použijte následující postup k použití odstínu v clusteru HDInsight.
 
 > [!NOTE]  
-> Doporučujeme používat webový prohlížeč Firefox, abyste postupovali podle níže uvedených pokynů.
+> Doporučujeme použít webový prohlížeč Firefox a postupovat podle následujících pokynů.
 
-1. Pomocí informací v [aplikaci Use SSH Tunneling získáte přístup k webovému uživatelskému rozhraní Apache Ambari, ResourceManager, JobHistory, NameNode, Oozie a dalšíwebové uživatelské rozhraní](hdinsight-linux-ambari-ssh-tunnel.md) k vytvoření tunelu SSH z klientského systému do clusteru HDInsight a k nakonfiguraci webového prohlížeče tak, aby používal tunel SSH jako proxy server.
+1. Použijte informace v části [použití tunelového propojení SSH pro přístup k webovému uživatelskému rozhraní Apache Ambari, ResourceManager, JobHistory, NameNode, Oozie a jinému webovému uživatelskému rozhraní](hdinsight-linux-ambari-ssh-tunnel.md) k vytvoření tunelu SSH z klientského systému do clusteru HDInsight a pak nakonfigurujte webový prohlížeč tak, aby používal tunel SSH jako proxy.
 
-1. Pomocí [příkazu ssh](./hdinsight-hadoop-linux-use-ssh-unix.md) se připojte ke clusteru. Upravte níže uvedený příkaz nahrazením názvu clusteru názvem clusteru a zadejte příkaz:
+1. Připojte se ke clusteru pomocí [příkazu SSH](./hdinsight-hadoop-linux-use-ssh-unix.md) . Níže uvedený příkaz upravte tak, že ho nahradíte názvem clusteru a pak zadáte tento příkaz:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-1. Po připojení použijte následující příkaz k získání plně kvalifikovaného názvu domény primárního headnode:
+1. Po připojení k získání plně kvalifikovaného názvu domény primárního hlavnímu uzlu použijte následující příkaz:
 
     ```bash
     hostname -f
     ```
 
-    Tím se vrátí název podobný následujícímu:
+    Tato akce vrátí název podobný následujícímu:
 
         myhdi-nfebtpfdv1nubcidphpap2eq2b.ex.internal.cloudapp.net
 
-    Toto je název hostitele primárního headnode, kde se nachází web Hue.
+    Toto je název hostitele primární hlavnímu uzlu, kde se nachází web odstín.
 
-1. Pomocí prohlížeče otevřete portál `http://HOSTNAME:8888`Hue na adrese . Nahraďte název hostname s názvem, který jste získali v předchozím kroku.
+1. Pomocí prohlížeče otevřete portál odstínů na adrese `http://HOSTNAME:8888`. Nahraďte název hostitele názvem, který jste získali v předchozím kroku.
 
    > [!NOTE]  
-   > Při prvním přihlášení budete vyzváni k vytvoření účtu pro přihlášení k portálu Hue. Pověření, která zde zadáte, budou omezena na portál a nebudou souviset s pověřeními uživatele správce nebo SSH, která jste zadali při zřizování clusteru.
+   > Při prvním přihlášení se zobrazí výzva k vytvoření účtu pro přihlášení k portálu odstínování. Přihlašovací údaje, které tady zadáte, budou omezené na portál a nesouvisejí s přihlašovacími údaji uživatele správce nebo SSH, které jste zadali při zřizování clusteru.
 
-    ![Okno pro přihlášení portálu odstínu HDInsight](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-login.png "Určení přihlašovacích údajů pro portál Hue")
+    ![Přihlašovací okno portálu pro barevný interval HDInsight](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-login.png "Zadat přihlašovací údaje pro portál odstínů")
 
 ### <a name="run-a-hive-query"></a>Spuštění dotazu Hive
 
-1. Na portálu Hue vyberte **Editory dotazů**a pak vyberte **Hive,** chcete-li otevřít editor Hive.
+1. Z portálu odstínů vyberte **editory dotazů**a pak vyberte **podregistr** . otevře se Editor podregistru.
 
-    ![Portál hue HDInsight používá editor úlů](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-use-hive.png "Použít úl")
+    ![Portál pro odstíny HDInsight – použití editoru podregistru](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-use-hive.png "Použít podregistr")
 
-2. Na kartě **Assist** v části **Databáze**byste měli vidět **hivesampletable**. Toto je ukázková tabulka, která je dodávána se všemi clustery Hadoop na HDInsight. Zadejte ukázkový dotaz do pravého podokna a výstup na kartě **Výsledky** najdete v podokně níže, jak je znázorněno v zachycení obrazovky.
+2. Na kartě **pomoc** v části **databáze**by se měla zobrazit **hivesampletable**. Toto je ukázková tabulka, která se dodává se všemi clustery Hadoop v HDInsight. Do pravého podokna zadejte ukázkový dotaz a na kartě **výsledky** v podokně níže se zobrazí výstup, jak je znázorněno na snímku obrazovky.
 
-    ![Dotaz podregistru portálu hue HDInsight](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-hive-query.png "Spustit dotaz Hive")
+    ![Dotaz na podregistr na portálu pro odstíny HDInsight](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-hive-query.png "Spustit dotaz na podregistr")
 
-    Na kartě **Graf** můžete také zobrazit vizuální znázornění výsledku.
+    Můžete také použít kartu **graf** k zobrazení vizuální reprezentace výsledku.
 
 ### <a name="browse-the-cluster-storage"></a>Procházení úložiště clusteru
 
-1. Na portálu Hue vyberte **prohlížeč souborů** v pravém horním rohu řádku nabídek.
-2. Ve výchozím nastavení se prohlížeč souborů otevře v adresáři **/user/myuser.** Vyberte lomítko přímo před adresářem uživatele v cestě k kořenovému adresáři kontejneru úložiště Azure přidruženého ke clusteru.
+1. Z portálu odstínů vyberte v pravém horním rohu řádku nabídky možnost **Prohlížeč souborů** .
+2. Ve výchozím nastavení se prohlížeč souborů otevře v adresáři **/User/MyUser** . Vyberte lomítko přímo před adresářem uživatelů v cestě, abyste přešli do kořenového adresáře kontejneru úložiště Azure přidruženého ke clusteru.
 
-    ![Prohlížeč souborů portálu hue HDInsight](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-file-browser.png "Použití prohlížeče souborů")
+    ![Prohlížeč souborů portálu pro odstíny HDInsight](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-file-browser.png "Použití prohlížeče souborů")
 
-3. Kliknutím pravým tlačítkem myši na soubor nebo složku zobrazíte dostupné operace. Pomocí tlačítka **Nahrát** v pravém rohu můžete nahrávat soubory do aktuálního adresáře. Pomocí tlačítka **Nový** můžete vytvářet nové soubory nebo adresáře.
+3. Kliknutím pravým tlačítkem na soubor nebo složku zobrazíte dostupné operace. Pomocí tlačítka **nahrát** v pravém horním rohu nahrajte soubory do aktuálního adresáře. Pomocí tlačítka **Nový** vytvořte nové soubory nebo adresáře.
 
 > [!NOTE]  
-> Prohlížeč souborů Hue může zobrazovat pouze obsah výchozího kontejneru přidruženého ke clusteru HDInsight. Všechny další účty úložiště nebo kontejnery, které jste mohli přidružit ke clusteru, nebudou přístupné pomocí prohlížeče souborů. Další kontejnery přidružené ke clusteru však budou vždy přístupné pro úlohy Hive. Pokud například zadáte příkaz `dfs -ls wasbs://newcontainer@mystore.blob.core.windows.net` v editoru Hive, zobrazí se také obsah dalších kontejnerů. V tomto příkazu **newcontainer** není výchozí kontejner přidružený ke clusteru.
+> Prohlížeč souborů odstínu může zobrazit jenom obsah výchozího kontejneru přidruženého ke clusteru HDInsight. Žádné další účty úložiště nebo kontejnery, které jste mohli přidružit ke clusteru, nebudou přístupné pomocí prohlížeče souborů. Další kontejnery spojené s clusterem budou ale vždy přístupné pro úlohy podregistru. Pokud například zadáte příkaz `dfs -ls wasbs://newcontainer@mystore.blob.core.windows.net` v editoru podregistru, můžete zobrazit také obsah dalších kontejnerů. V tomto příkazu není **newcontainer** výchozím kontejnerem přidruženým ke clusteru.
 
 ## <a name="important-considerations"></a>Důležité informace
 
-1. Skript použitý k instalaci Hue nainstaluje pouze na primární headnode clusteru.
+1. Skript použitý k instalaci odstínu se nainstaluje jenom na primární hlavnímu uzlu clusteru.
 
-1. Během instalace je restartováno více služeb Hadoop (HDFS, YARN, MR2, Oozie) pro aktualizaci konfigurace. Po dokončení skriptu instalace Hue, může nějakou dobu trvat, než se spustí další služby Hadoop. To může mít vliv na výkon Hue zpočátku. Jakmile se všechny služby spustí, Hue bude plně funkční.
+1. Během instalace se restartuje více služeb Hadoop (HDFS, PŘÍZe, MR2, Oozie), aby se aktualizovala konfigurace. Až se skript dokončí instalací odstínu, může trvat nějakou dobu, než se spustí další služby Hadoop. To může mít na začátku vliv na výkon odstínování. Po spuštění všech služeb bude odstín plně funkční.
 
-1. Hue nerozumí apache tez úlohy, což je aktuální výchozí pro Hive. Pokud chcete použít MapReduce jako modul spuštění Hive, aktualizujte skript tak, aby používal následující příkaz ve skriptu:
+1. Odstín nerozumí Apache Tez úlohám, což je aktuální výchozí nastavení pro podregistr. Pokud chcete jako spouštěcí modul podregistru použít MapReduce, aktualizujte skript tak, aby ve skriptu použil následující příkaz:
 
          set hive.execution.engine=mr;
 
-1. S clustery Linux, můžete mít scénář, kde jsou vaše služby spuštěny na primární headnode, zatímco Správce prostředků může být spuštěn na sekundární. Takový scénář může mít za následek chyby (viz níže) při použití Hue zobrazit podrobnosti o spuštění úloh v clusteru. Můžete však zobrazit podrobnosti o úloze po dokončení úlohy.
+1. U clusterů se systémem Linux můžete mít scénář, ve kterém jsou služby spuštěné na primárním hlavnímu uzlu, zatímco Správce prostředků může běžet na sekundárním počítači. V takovém případě může dojít k chybám (zobrazené níže) při použití funkce odstín k zobrazení podrobností o SPUŠTĚNých úlohách v clusteru. Po dokončení úlohy však můžete zobrazit podrobnosti o úloze.
 
-   ![Ukázková zpráva o chybě portálu Hue](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-error.png "Chyba portálu Hue")
+   ![Ukázka zprávy o chybě v portálu pro odstínování](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-error.png "Chyba portálu pro odstínování")
 
-   To je způsobeno známým problémem. Jako zástupné řešení upravte Ambari tak, aby aktivní Správce prostředků také běží na primárním headnode.
+   Důvodem je známý problém. Jako alternativní řešení upravte Ambari tak, aby se aktivní Správce prostředků taky spouštěla na primárním hlavnímu uzlu.
 
-1. Hue rozumí WebHDFS, zatímco clustery HDInsight používají Azure Storage pomocí `wasbs://`. Takže vlastní skript používaný s akcí skriptu nainstaluje WebWasb, což je služba kompatibilní s WebHDFS pro rozhovor s WASB. Takže, i když portál Hue říká HDFS v místech (jako když se pohybujete myší přes **prohlížeč souborů),** měl by být interpretován jako WASB.
+1. Odstín rozumí WebHDFS, zatímco clustery HDInsight používají Azure Storage `wasbs://`pomocí. Vlastní skript, který se používá pro akci skriptu, nainstaluje WebWasb, což je služba kompatibilní s WebHDFS pro komunikaci s WASB. Takže i když se na portálu pro odstíny říká HDFS (například když přesunete myš přes **Prohlížeč souborů**), mělo by se interpretovat jako WASB.
 
 ## <a name="next-steps"></a>Další kroky
 
-[Nainstalujte R do clusterů HDInsight](hdinsight-hadoop-r-scripts-linux.md). Pomocí vlastního nastavení clusteru nainstalujte R do clusterů HDInsight Hadoop. R je open source jazyk a prostředí pro statistické výpočty. Poskytuje stovky vestavěných statistických funkcí a vlastní programovací jazyk, který kombinuje aspekty funkčního a objektově orientovaného programování. Poskytuje také rozsáhlé grafické možnosti.
+[Nainstalujte R v clusterech HDInsight](hdinsight-hadoop-r-scripts-linux.md). Pomocí vlastního nastavení clusteru můžete v clusterech HDInsight Hadoop nainstalovat R. R je open source jazyk a prostředí pro statistické výpočty. Poskytuje stovky integrovaných statistických funkcí a jejich vlastního programovacího jazyka, který kombinuje aspekty funkčního a objektově orientovaného programování. Poskytuje také rozsáhlé grafické možnosti.

@@ -1,6 +1,6 @@
 ---
-title: Průvodce nastavením zrychleného laboratorního účtu pro služby Azure Lab Services
-description: Tato příručka pomáhá správcům rychle nastavit účet testovacího prostředí pro použití v rámci své školy.
+title: Průvodce nastavením akcelerovaného účtu testovacího prostředí pro Azure Lab Services
+description: Tato příručka správcům pomáhá rychle nastavit účet testovacího prostředí pro použití v rámci své školy.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -14,101 +14,101 @@ ms.topic: article
 ms.date: 3/18/2020
 ms.author: spelluru
 ms.openlocfilehash: 8fcc46487e7f7c2d075639f10a30cae9950ff31b
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80879577"
 ---
-# <a name="lab-account-setup-guide"></a>Průvodce nastavením účtu lab
+# <a name="lab-account-setup-guide"></a>Průvodce nastavením účtu testovacího prostředí
 
-Jako první krok by správci měli nastavit účet testovacího prostředí v rámci vašeho předplatného Azure. Laboratorní účet je kontejner pro vaše učebny laboratoře a trvá jen několik minut nastavit.
+V prvním kroku by správci měli v rámci vašeho předplatného Azure nastavit účet testovacího prostředí. Účet testovacího prostředí je kontejner pro vaše učebny cvičení a nastavuje se jenom pár minut.
 
-## <a name="understand-your-schools-lab-account-requirements"></a>Seznamte se s požadavky na laboratorní účet vaší školy
+## <a name="understand-your-schools-lab-account-requirements"></a>Princip požadavků na školní účet školy
 
-Chcete-li pochopit, jak nakonfigurovat účet testovacího prostředí na základě potřeb vaší školy, měli byste zvážit tyto otázky.
+Pokud chcete pochopit, jak nakonfigurovat účet testovacího prostředí podle potřeb školy, měli byste tyto otázky vzít v úvahu.
 
 ### <a name="do-i-have-access-to-an-azure-subscription"></a>Mám přístup k předplatnému Azure?
 
-K vytvoření účtu testovacího prostředí potřebujete přístup k předplatnému Azure, které je nakonfigurované pro vaši školu. Vaše škola může mít jedno nebo více předplatných. Předplatné slouží ke správě fakturace a zabezpečení pro všechny prostředky a služby Azure, včetně testovacích účtů.
+K vytvoření účtu testovacího prostředí potřebujete přístup k předplatnému Azure, které je nakonfigurované pro vaši školu. Vaše škola může mít jeden nebo víc předplatných. Předplatné se používá ke správě fakturace a zabezpečení pro všechny prostředky a služby Azure, včetně účtů testovacího prostředí.
 
-### <a name="how-many-lab-accounts-need-to-be-created"></a>Kolik laboratorních účtů je třeba vytvořit?
+### <a name="how-many-lab-accounts-need-to-be-created"></a>Kolik účtů testovacího prostředí je potřeba vytvořit?
 
-Chcete-li začít rychle, vytvořte jeden účet testovacího prostředí a později vytvořte další účty testovacího prostředí podle potřeby. Například nakonec můžete mít jeden účet testovacího prostředí na oddělení.
+Pokud chcete rychle začít, vytvořte jeden účet testovacího prostředí a později podle potřeby vytvořte další účty testovacího prostředí. Můžete například nakonec mít jeden účet testovacího prostředí pro každé oddělení.
 
 ### <a name="who-should-be-owners-and-contributors-of-the-lab-account"></a>Kdo by měl být vlastníky a přispěvateli účtu testovacího prostředí?
 
-Správci jsou obvykle vlastníky a přispěvateli pro účet testovacího prostředí. Jsou zodpovědní za správu zásad, které platí pro všechna testovací prostředí obsažená v účtu testovacího prostředí. Osoba, která vytvoří účet testovacího prostředí, je automaticky vlastníkem. Můžete přidat další vlastníky a přispěvatele, obvykle z tenanta Azure Active Directory (Azure AD) přidruženého k vašemu předplatnému. To může být užitečné pro pomoc při správě účtu testovacího prostředí přiřazením role vlastníka nebo přispěvatele na úrovni účtu testovacího prostředí.
+Správci jsou obvykle vlastníci a Přispěvatelé pro účet testovacího prostředí. Zodpovídá za správu zásad, které se vztahují na všechny laboratoře obsažené v rámci účtu testovacího prostředí. Osoba, která vytváří účet testovacího prostředí, je automaticky vlastníkem. Můžete přidat další vlastníky a přispěvatele, obvykle z klienta Azure Active Directory (Azure AD) přidruženého k vašemu předplatnému. To může být užitečné při správě účtu testovacího prostředí přiřazením role vlastníka nebo přispěvatele na úrovni účtu testovacího prostředí.
 
 ### <a name="who-will-be-allowed-to-create-and-manage-labs"></a>Kdo bude moci vytvářet a spravovat laboratoře?
 
-Můžete se rozhodnout, že správci a členové fakulty budou vytvářet a spravovat testovací prostředí. Tito uživatelé (obvykle z tenanta Azure AD přidruženého k vašemu předplatnému) jsou přiřazeni k roli Tvůrce testovacího prostředí v rámci účtu testovacího prostředí.
+Můžete zvolit, aby měli správci a členové vyučujícího možnost vytvářet a spravovat laboratoře. Tito uživatelé (obvykle z klienta Azure AD přidruženého k vašemu předplatnému) jsou přiřazeni do role testovacího prostředí v rámci účtu testovacího prostředí.
 
-### <a name="do-you-want-to-give-lab-creators-the-ability-to-save-images-that-can-be-shared-across-labs"></a>Chcete dát tvůrcům testovacího prostředí možnost ukládat obrázky, které lze sdílet v rámci testovacích prostředí?
+### <a name="do-you-want-to-give-lab-creators-the-ability-to-save-images-that-can-be-shared-across-labs"></a>Chcete dát tvůrcům testovacího prostředí možnost ukládat obrázky, které se dají sdílet napříč laboratořemi?
 
-Sdílená galerie obrázků je úložiště, které můžete použít k ukládání a sdílení obrázků. Pokud máte několik tříd, které potřebují stejné obrázky, tvůrci testovacího prostředí můžete vytvořit obrázek jednou a sdílet je mezi laboratořemi. Chcete-li však začít, nemusíte nutně potřebovat sdílenou galerii obrázků, protože ji můžete vždy přidat později.
+Galerie sdílených imagí je úložiště, které můžete použít k ukládání a sdílení imagí. Pokud máte několik tříd, které potřebují stejné image, tvůrci testovacího prostředí můžou image vytvořit jednou a sdílet je napříč laboratořemi. Pokud ale chcete začít, nemusíte nutně potřebovat galerii sdílených imagí, protože ho můžete kdykoli přidat později.
 
-Pokud jste na tuto otázku odpověděli "ano", musíte k účtu testovacího prostředí vytvořit nebo připojit sdílenou galerii obrázků. Pokud jste odpověděli "Nevím", můžete toto rozhodnutí odložit na později.
+Pokud k této otázce odpovíte "Ano", budete muset vytvořit nebo připojit galerii sdílených imagí k vašemu účtu testovacího prostředí. Pokud jste odpověděli na "nevím", můžete toto rozhodnutí odložit až později.
 
-### <a name="which-images-in-azure-marketplace-will-your-classroom-labs-use"></a>Které image na Azure Marketplace budou vaše učebny používat?
+### <a name="which-images-in-azure-marketplace-will-your-classroom-labs-use"></a>Jaké obrázky v Azure Marketplace vaše učebná cvičení používá?
 
-Azure Marketplace poskytuje stovky ibi, které můžete povolit, aby tvůrci testovacího prostředí mohli použít image k vytvoření testovacího prostředí. Některé obrázky mohou obsahovat vše, co laboratoř již potřebuje. V ostatních případech můžete použít bitovou kopii jako výchozí bod a tvůrce testovacího prostředí jej pak může přizpůsobit instalací dalších aplikací nebo nástrojů.
+Azure Marketplace poskytuje stovky imagí, které můžete povolit, aby tvůrci testovacího prostředí mohli image použít k vytvoření testovacího prostředí. Některé obrázky můžou zahrnovat všechno, co testovací laboratoř už potřebuje. V jiných případech můžete jako výchozí bod použít obrázek a potom ho tvůrce testovacího prostředí může přizpůsobit instalací dalších aplikací nebo nástrojů.
 
-Pokud nevíte, které obrázky budete muset použít, můžete se k tomu vrátit později, abyste je povolili. Také nejlepší způsob, jak zjistit, které obrázky jsou k dispozici, je nejprve vytvořit účet testovacího prostředí. Získáte tak přístup, takže si můžete prohlédnout seznam dostupných obrázků a jejich obsah.
+Pokud si nejste jisti, které image budete potřebovat použít, můžete se kdykoli vrátit k této verzi a povolit je. Nejlepším způsobem, jak zjistit, jaké image jsou k dispozici, je také vytvoření účtu testovacího prostředí. Tím získáte přístup, abyste mohli zkontrolovat seznam dostupných imagí a jejich obsah.
   
-### <a name="do-the-labs-virtual-machines-need-to-have-access-to-other-azure-or-on-premises-resources"></a>Musí mít virtuální počítače testovacího prostředí přístup k jiným prostředkům Azure nebo místního prostředí?
+### <a name="do-the-labs-virtual-machines-need-to-have-access-to-other-azure-or-on-premises-resources"></a>Musí mít virtuální počítače testovacího prostředí přístup k jiným prostředkům Azure nebo místním prostředkům?
 
-Při nastavovat účet testovacího prostředí, máte také možnost peer s virtuální sítí. Chcete-li se rozhodnout, zda to potřebujete, zvažte následující otázky:
+Při nastavování účtu testovacího prostředí máte také možnost vytvořit partnerský vztah s virtuální sítí. Pokud se chcete rozhodnout, jestli to budete potřebovat, vezměte v úvahu následující otázky:
 
 - **Potřebujete poskytnout přístup k licenčnímu serveru?**
   
-   Pokud plánujete používat image Azure Marketplace, náklady na licenci operačního systému jsou sdružené do cen za laboratorní služby. Proto není nutné poskytovat licence pro samotný operační systém. Pro další software a aplikace, které jsou nainstalovány, je však nutné zadat licenci podle potřeby.
+   Pokud plánujete použít Azure Marketplace image, náklady na licenci na operační systém se začlení do cen za služby testovacího prostředí. Proto nemusíte zadávat licence pro samotný operační systém. Pro další nainstalované software a aplikace je však nutné poskytnout licenci podle potřeby.
 
-- **Potřebují virtuální počítačové s testovacím prostředím přístup k dalším místním prostředkům, jako je sdílená složka nebo databáze?**
+- **Potřebují testovací virtuální počítače přístup k jiným místním prostředkům, jako je například sdílená složka nebo databáze?**
 
-   Vytvoření virtuální sítě, která poskytuje přístup k místním prostředkům, obvykle pomocí brány virtuální sítě site-to-site. Pokud nemáte nakonfigurovanou virtuální síť, musíte do toho investovat další čas.
+   Vytvoříte virtuální síť, která poskytuje přístup k místním prostředkům, obvykle pomocí brány virtuální sítě typu Site-to-site. Pokud nemáte nakonfigurovanou virtuální síť, je potřeba pro ně investovat další čas.
 
-- **Potřebují virtuální počítače testovacího prostředí přístup k dalším prostředkům Azure, které jsou umístěné ve virtuální síti?**
+- **Potřebují virtuální počítače testovacího prostředí přístup k jiným prostředkům Azure, které se nacházejí ve virtuální síti?**
 
-   Pokud potřebujete přístup k prostředkům Azure, které *nejsou* zabezpečené v rámci virtuální sítě, pak můžete přistupovat k těmto prostředkům prostřednictvím veřejného internetu, aniž byste dělali jakýkoli partnerský vztah.
+   Pokud potřebujete přístup k prostředkům Azure, které nejsou *zabezpečené v* rámci virtuální sítě, můžete k těmto prostředkům přistupovat prostřednictvím veřejného Internetu bez jakýchkoli partnerských vztahů.
 
-Pokud jste odpověděli "ano" na jednu nebo více otázek, budete muset peer účet testovacího prostředí do virtuální sítě. Pokud jste odpověděli "Nevím", pak můžete odložit toto rozhodnutí na později. Po vytvoření účtu testovacího prostředí můžete vždy zvolit partnerský vztah virtuální sítě.
+Pokud jste na jednu nebo více otázek odpověděli na Ano, budete muset vytvořit Partnerský účet pro virtuální síť. Pokud jste odpověděli na "nevím", pak můžete toto rozhodnutí odložit až později. Po vytvoření účtu testovacího prostředí se můžete vždy rozhodnout, že se má vytvořit partnerský vztah k virtuální síti.
 
 ## <a name="set-up-your-lab-account"></a>Nastavení účtu testovacího prostředí
 
-Až porozumíte požadavkům na účet testovacího prostředí, můžete ho nastavit.
+Po pochopení požadavků vašeho účtu testovacího prostředí jste připraveni ho nastavit.
 
-1. **Vytvořte si účet v testovacím prostředí.** Pokyny naleznete v kurzu o [vytvoření účtu testovacího prostředí.](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account#create-a-lab-account)
+1. **Vytvořte účet testovacího prostředí.** Pokyny najdete v kurzu [Vytvoření účtu testovacího prostředí](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account#create-a-lab-account) .
 
-   Když vytváříte účet testovacího prostředí, může být užitečné seznámit se s prostředky Azure, které se týkají. Další informace najdete v těchto článcích:
+   Při vytváření účtu testovacího prostředí vám může být užitečné se seznámit s prostředky Azure, které jsou v ní spojené. Další informace najdete v těchto článcích:
 
    - [Předplatné](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#subscription)
    - [Skupina prostředků](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#resource-group)
-   - [Laboratorní účet](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#lab-account)
-   - [Učebna laboratoř](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#classroom-lab)
+   - [Účet testovacího prostředí](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#lab-account)
+   - [Testovací prostředí pro učebnu](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#classroom-lab)
    - [Výběr oblasti a umístění](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#regionslocations)
-   - [Pokyny k pojmenování pro prostředky](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#naming)
+   - [Pokyny pro pojmenování prostředků](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#naming)
 
-2. **Přidejte uživatele do role tvůrce testovacího prostředí.** Pokyny naleznete v [tématu přidání uživatelů do role tvůrce testovacího prostředí](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account#add-a-user-to-the-lab-creator-role).
+2. **Přidejte uživatele do role testovacího tvůrce.** Pokyny najdete v tématu [Přidání uživatelů do role testovacího prostředí](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account#add-a-user-to-the-lab-creator-role).
 
-   Další informace o různých rolích, které lze přiřadit uživatelům, kteří budou spravovat účty testovacího prostředí a testovací prostředí, naleznete v [příručce ke správě identity](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#manage-identity).
+   Další informace o různých rolích, které je možné přiřadit uživatelům, kteří budou spravovat účty testovacího prostředí a Labs, najdete v [příručce ke správě identity](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#manage-identity).
 
-3. **Připojte se k partnerské virtuální síti.** Pokyny najdete v [tématu připojení sítě testovacího prostředí k partnerské virtuální síti](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-connect-peer-virtual-network).
+3. **Připojte se k partnerské virtuální síti.** Pokyny najdete v tématu [propojení sítě testovacího prostředí s partnerskými virtuálními sítěmi](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-connect-peer-virtual-network).
 
-   Možná budete také muset odkazovat na pokyny ke [konfiguraci rozsahu adres virtuálních počítačích testovacího prostředí](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-lab-accounts#specify-an-address-range-for-vms-in-the-lab).
+   Může se také vyžadovat, abyste odkazovali na pokyny týkající se [Konfigurace rozsahu adres virtuálních počítačů v testovacím prostředí](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-lab-accounts#specify-an-address-range-for-vms-in-the-lab).
 
-4. **Povolte a zkontrolujte obrázky.** Pokyny najdete v [tématu povolení image Azure Marketplace pro tvůrce testovacího prostředí](https://docs.microsoft.com/azure/lab-services/classroom-labs/specify-marketplace-images).
+4. **Povolte a zkontrolujte obrázky.** Pokyny najdete v tématu [Povolení imagí Azure Marketplace pro tvůrci testovacího prostředí](https://docs.microsoft.com/azure/lab-services/classroom-labs/specify-marketplace-images).
 
-   Pokud chcete zkontrolovat obsah každé image Azure Marketplace, vyberte název bitové kopie. Například následující snímek obrazovky zobrazuje podrobnosti o obrázku virtuálního účtu Ubuntu Data Science:
+   Chcete-li zkontrolovat obsah jednotlivých Azure Marketplace imagí, vyberte název bitové kopie. Například následující snímek obrazovky ukazuje podrobnosti pro Ubuntu bitovou kopii Data Science VM:
 
-   ![Snímek obrazovky s obrázky Recenze Azure Marketplace](../media/setup-guide/review-marketplace-images.png)
+   ![Snímek obrazovky s revizemi Azure Marketplace imagí](../media/setup-guide/review-marketplace-images.png)
 
-   Pokud máte k účtu testovacího prostředí připojenou sdílenou galerii obrázků a chcete povolit sdílení vlastních obrázků tvůrci testovacího prostředí, proveďte podobné kroky jako na následujícím snímku obrazovky:
+   Pokud máte sdílenou galerii imagí připojenou k vašemu účtu testovacího prostředí a chcete povolit sdílení vlastních imagí tvůrci testovacích prostředí, proveďte kroky podobné těm, které jsou uvedené na následujícím snímku obrazovky:
 
-   ![Snímek obrazovky s povolením vlastních obrázků ve sdílené galerii obrázků](../media/setup-guide/enable-sig-custom-images.png)
+   ![Snímek obrazovky s povolením vlastních imagí v galerii sdílených imagí](../media/setup-guide/enable-sig-custom-images.png)
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Správa účtů testovacího prostředí](how-to-manage-lab-accounts.md)
 
-- [Průvodce nastavením učebny v laboratoři](setup-guide.md)
+- [Průvodce nastavením testovacího prostředí pro učebnu](setup-guide.md)

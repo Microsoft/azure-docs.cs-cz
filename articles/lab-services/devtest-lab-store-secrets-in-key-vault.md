@@ -1,6 +1,6 @@
 ---
-title: Ukládání tajných kódů v trezoru klíčů v laboratořích Azure DevTest Labs | Dokumenty společnosti Microsoft
-description: Zjistěte, jak ukládat tajné klíče v trezoru klíčů Azure a používat je při vytváření virtuálního počítače, vzorce nebo prostředí.
+title: Ukládejte tajné klíče v trezoru klíčů v Azure DevTest Labs | Microsoft Docs
+description: Naučte se ukládat tajné klíče do Azure Key Vault a používat je při vytváření virtuálního počítače, vzorce nebo prostředí.
 services: devtest-lab
 documentationcenter: na
 author: spelluru
@@ -15,44 +15,44 @@ ms.topic: article
 ms.date: 07/11/2018
 ms.author: spelluru
 ms.openlocfilehash: 0ca36a7081aaf70ee2045ee7586184c89591df16
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81461510"
 ---
-# <a name="store-secrets-in-a-key-vault-in-azure-devtest-labs"></a>Ukládání tajných kódů do trezoru klíčů v laboratořích Azure DevTest Labs
-Možná budete muset zadat komplexní tajný klíč při použití Azure DevTest Labs: heslo pro váš virtuální počítač s Windows, veřejný klíč SSH pro váš virtuální počítač s Linuxem nebo osobní přístupový token pro klonování úložiště Gitprostředprostřednictvím artefaktu. Tajemství jsou obvykle dlouhá a mají náhodné znaky. Proto jejich zadání může být složité a nepohodlné, zvláště pokud používáte stejné tajemství vícekrát.
+# <a name="store-secrets-in-a-key-vault-in-azure-devtest-labs"></a>Ukládejte tajné klíče v trezoru klíčů v Azure DevTest Labs
+Pokud používáte Azure DevTest Labs: heslo pro virtuální počítač s Windows, veřejný klíč SSH pro virtuální počítač se systémem Linux nebo token pro osobní přístup k klonování úložiště Git pomocí artefaktu, může být potřeba zadat složitý tajný klíč. Tajné kódy jsou obvykle dlouhé a mají náhodné znaky. Zadávání těchto údajů může být obtížné a nepohodlné, obzvláště pokud použijete stejný tajný klíč několikrát.
 
-Chcete-li tento problém vyřešit a také uchovávat vaše tajemství na bezpečném místě, DevTest Labs podporuje ukládání tajných kódů v [trezoru klíčů Azure](../key-vault/general/overview.md). Když uživatel uloží tajný klíč poprvé, služba DevTest Labs automaticky vytvoří trezor klíčů ve stejné skupině prostředků, která obsahuje testovací prostředí a uloží tajný klíč do trezoru klíčů. DevTest Labs vytvoří samostatný trezor klíčů pro každého uživatele. 
+DevTest Labs podporuje ukládání tajných klíčů v [trezoru klíčů Azure](../key-vault/general/overview.md), aby tento problém vyřešil a na bezpečném místě zajistil i tajné klíče. Když uživatel poprvé uloží tajný klíč, služba DevTest Labs automaticky vytvoří Trezor klíčů ve stejné skupině prostředků, která obsahuje testovací prostředí a uloží tajný klíč do trezoru klíčů. DevTest Labs vytvoří pro každého uživatele samostatný Trezor klíčů. 
 
-Upozorňujeme, že uživatel testovacího prostředí bude muset nejprve vytvořit virtuální počítač testovacího prostředí, než bude moci vytvořit tajný klíč v trezoru klíčů. Důvodem je, že služba DevTest Lab potřebuje přidružit uživatele testovacího prostředí k platnému uživatelskému dokumentu, než mohou vytvářet a ukládat tajné klíče v trezoru klíčů. 
+Všimněte si, že před vytvořením tajného klíče v trezoru klíčů bude uživatel testovacího prostředí muset nejdřív vytvořit virtuální počítač testovacího prostředí. Je to proto, že služba DevTest Labs musí přidružit uživatele testovacího prostředí k platnému uživatelskému dokumentu, aby mohli vytvářet a ukládat tajné klíče v trezoru klíčů. 
 
 
-## <a name="save-a-secret-in-azure-key-vault"></a>Uložení tajného klíče do služby Azure Key Vault
-Pokud chcete tajný klíč uložit do služby Azure Key Vault, postupujte takto:
+## <a name="save-a-secret-in-azure-key-vault"></a>Uložení tajného kódu v Azure Key Vault
+Pokud chcete svůj tajný klíč uložit v Azure Key Vault, proveďte následující kroky:
 
-1. V levé nabídce vyberte **moje tajemství.**
-2. Zadejte **název** tajného klíče. Tento název se zobrazí v rozevíracím seznamu při vytváření virtuálního virtuálního soudu, vzorce nebo prostředí. 
-3. Zadejte tajný klíč jako **hodnotu**.
+1. V nabídce vlevo vyberte **Moje tajné** kódy.
+2. Zadejte **název** tajného kódu. Tento název se zobrazí v rozevíracím seznamu při vytváření virtuálního počítače, vzorce nebo prostředí. 
+3. Jako **hodnotu**zadejte tajný klíč.
 
-    ![Ukládat tajné klíče](media/devtest-lab-store-secrets-in-key-vault/store-secret.png)
+    ![Tajný kód úložiště](media/devtest-lab-store-secrets-in-key-vault/store-secret.png)
 
-## <a name="use-a-secret-from-azure-key-vault"></a>Použití tajného klíče z azure key vaultu
-Když potřebujete zadat tajný klíč k vytvoření virtuálního virtuálního soudu, vzorce nebo prostředí, můžete buď zadat tajný klíč ručně, nebo vybrat uložený tajný klíč z trezoru klíčů. Chcete-li použít tajný klíč uložený v trezoru klíčů, proveďte následující akce:
+## <a name="use-a-secret-from-azure-key-vault"></a>Použít tajný klíč z Azure Key Vault
+Pokud k vytvoření virtuálního počítače, vzorce nebo prostředí potřebujete zadat tajný klíč, můžete buď zadat tajný klíč ručně, nebo z trezoru klíčů vybrat uložený tajný klíč. Chcete-li použít tajný klíč uložený v trezoru klíčů, proveďte následující akce:
 
-1. Vyberte **Použít uložený tajný klíč**. 
-2. Vyberte svůj tajný klíč z rozevíracího seznamu **pro vyskladnění tajného klíče**. 
+1. Vyberte možnost **použít uložený tajný kód**. 
+2. Z rozevíracího seznamu vyberte svůj tajný kód pro **Výběr tajného klíče**. 
 
-    ![Použití tajného klíče ve virtuálním provozu](media/devtest-lab-store-secrets-in-key-vault/secret-store-pick-a-secret.png)
+    ![Použití tajného klíče ve virtuálním počítači](media/devtest-lab-store-secrets-in-key-vault/secret-store-pick-a-secret.png)
 
-## <a name="use-a-secret-in-an-azure-resource-manager-template"></a>Použití tajného klíče v šabloně Správce prostředků Azure
+## <a name="use-a-secret-in-an-azure-resource-manager-template"></a>Použití tajného klíče v šabloně Azure Resource Manager
 Svůj tajný název můžete zadat v šabloně Azure Resource Manager, která se používá k vytvoření virtuálního počítače, jak je znázorněno v následujícím příkladu:
 
 ![Použití tajného klíče ve vzorci nebo prostředí](media/devtest-lab-store-secrets-in-key-vault/secret-store-arm-template.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Vytvoření virtuálního virtuálního aplikace pomocí tajného klíče](devtest-lab-add-vm.md) 
+- [Vytvoření virtuálního počítače pomocí tajného klíče](devtest-lab-add-vm.md) 
 - [Vytvoření vzorce pomocí tajného klíče](devtest-lab-manage-formulas.md)
 - [Vytvoření prostředí pomocí tajného klíče](devtest-lab-create-environment-from-arm.md)

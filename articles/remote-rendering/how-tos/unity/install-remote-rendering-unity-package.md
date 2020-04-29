@@ -1,28 +1,28 @@
 ---
-title: Instalace balíčku vzdáleného vykreslování pro unity
-description: Vysvětluje, jak nainstalovat knihovny DLL vzdáleného vykreslování pro jednotu
+title: Instalace balíčku Remote Renderingu pro Unity
+description: Vysvětluje, jak nainstalovat knihovny DLL klienta vzdáleného vykreslování pro Unity.
 author: florianborn71
 ms.author: flborn
 ms.date: 02/26/2020
 ms.topic: how-to
 ms.openlocfilehash: 86ffe47c009f9e0ae121ffc6ab57bff8fb73210f
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681178"
 ---
-# <a name="install-the-remote-rendering-package-for-unity"></a>Instalace balíčku vzdáleného vykreslování pro unity
+# <a name="install-the-remote-rendering-package-for-unity"></a>Instalace balíčku Remote Renderingu pro Unity
 
-Azure Remote Rendering používá balíček Unity k zapouzdření integrace do Unity.
+Vzdálené vykreslování Azure používá balíček Unity k zapouzdření integrace do Unity.
 
 ## <a name="manage-the-remote-rendering-packages-in-unity"></a>Správa balíčků vzdáleného vykreslování v Unity
 
-Unity balíčky jsou kontejnery, které lze spravovat prostřednictvím Unity [správce balíčků](https://docs.unity3d.com/Packages/com.unity.package-manager-ui@1.8/manual/index.html).
-Tento balíček obsahuje celé rozhraní API jazyka C# a také všechny binární soubory modulů plug-in, které jsou nutné k použití vzdáleného vykreslování Azure s unity.
-Po unity schéma pojmenování pro balíčky, balíček se nazývá **com.microsoft.azure.remote-rendering**.
+Balíčky Unity jsou kontejnery, které se dají spravovat přes [Správce balíčků](https://docs.unity3d.com/Packages/com.unity.package-manager-ui@1.8/manual/index.html)Unity.
+Tento balíček obsahuje celé rozhraní C# API a také všechny binární soubory modulů plug-in, které jsou nutné pro použití vzdáleného vykreslování Azure s Unity.
+Následující schéma pojmenování v Unity pro balíčky se nazývá **com. Microsoft. Azure. Remote-rendering**.
 
-Balíček není součástí [úložiště vzorků ARR](https://github.com/Azure/azure-remote-rendering)a není k dispozici z registru interních balíčků Unity. Chcete-li jej přidat do projektu, musíte ručně `manifest.md` upravit soubor projektu a přidat následující:
+Balíček není součástí [úložiště ukázek ARR](https://github.com/Azure/azure-remote-rendering)a není dostupný z vnitřního registru balíčku Unity. Chcete-li jej přidat do projektu, je nutné ručně upravit `manifest.md` soubor projektu a přidat následující:
 ```json
 {
   "scopedRegistries": [
@@ -38,16 +38,16 @@ Balíček není součástí [úložiště vzorků ARR](https://github.com/Azure/
   }
 }
 ```
-Po přidání můžete pomocí Správce balíčků Unity zajistit, že máte nejnovější verzi.
-Komplexnější pokyny jsou uvedeny v [tutoriálu: Nastavení projektu Unity od nuly](../../tutorials/unity/project-setup.md).
+Po přidání můžete použít Správce balíčků Unity, abyste měli jistotu, že máte nejnovější verzi.
+V tomto kurzu jsou uvedené komplexnější pokyny [: nastavení projektu Unity od začátku](../../tutorials/unity/project-setup.md).
 
-## <a name="unity-render-pipelines"></a>Unity vykreslovat kanály
+## <a name="unity-render-pipelines"></a>Kanály vykreslování Unity
 
-Vzdálené vykreslování funguje s **kanálem univerzálního vykreslení** i **s kanálem vykreslení Standard**. Z důvodů výkonu univerzální vykreslení kanálu se doporučuje.
+Vzdálené vykreslování funguje s **kanálem univerzálního vykreslování** i s **standardním kanálem vykreslování**. Z důvodů výkonu doporučujeme kanál univerzálního vykreslování.
 
-Chcete-li použít **kanál univerzální vykreslení**, jeho balíček musí být nainstalován v Unity. To lze provést buď v Unity **package manager** uI (název balíčku **Universal RP**, verze `Packages/manifest.json` 7.2.1 nebo novější), nebo prostřednictvím souboru, jak je popsáno v [unity instalačníkurze projektu](../../tutorials/unity/project-setup.md#configure-the-projects-manifest).
+Chcete-li použít **kanál univerzálního vykreslování**, musí být jeho balíček nainstalován v Unity. To se dá udělat buď v uživatelském rozhraní **Správce balíčků** Unity (název balíčku **Universal RP**, verze 7.2.1 nebo novější), nebo prostřednictvím `Packages/manifest.json` souboru, jak je popsáno v [kurzu nastavení projektu Unity](../../tutorials/unity/project-setup.md#configure-the-projects-manifest).
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Unity herní objekty a komponenty](objects-components.md)
-* [Kurz: Nastavení projektu Unity od nuly](../../tutorials/unity/project-setup.md)
+* [Objekty a komponenty hry Unity](objects-components.md)
+* [Kurz: vytvoření projektu Unity od začátku](../../tutorials/unity/project-setup.md)

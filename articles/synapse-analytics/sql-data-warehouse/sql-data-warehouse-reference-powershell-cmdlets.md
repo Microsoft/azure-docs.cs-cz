@@ -1,6 +1,6 @@
 ---
-title: Api rest prostředí PowerShell &
-description: Najděte nejlepší rutiny Prostředí PowerShell pro fond SQL Azure Synapse Analytics, včetně toho, jak pozastavit a obnovit databázi.
+title: Rozhraní REST API & PowerShellu
+description: Najděte si hlavní rutiny PowerShellu pro fond SQL synapse Analytics pro Azure, včetně toho, jak pozastavit a obnovit databázi.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -12,22 +12,22 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: f3d6d0c1f71e2262e943998cdc08717291903365
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80743816"
 ---
-# <a name="powershell--rest-apis-for-azure-synapse-analytics-sql-pool"></a>PowerShell & REST API pro fond SQL Azure Synapse Analytics
+# <a name="powershell--rest-apis-for-azure-synapse-analytics-sql-pool"></a>Rozhraní API REST & PowerShellu pro fond SQL Azure synapse Analytics
 
-Mnoho úloh správy fondu SQL Azure Synapse Analytics lze spravovat pomocí rutin Azure PowerShell nebo REST API.  Níže jsou uvedeny některé příklady, jak pomocí příkazů prostředí PowerShell automatizovat běžné úkoly ve fondu SQL.  Některé dobré příklady REST najdete v článku [Správa škálovatelnosti pomocí REST](sql-data-warehouse-manage-compute-rest-api.md).
+Mnohé úlohy správy fondu SQL Azure synapse Analytics se dají spravovat pomocí rutin Azure PowerShell nebo rozhraní REST API.  Níže jsou uvedeny některé příklady použití příkazů PowerShellu k automatizaci běžných úloh ve vašem fondu SQL.  Některé dobré příklady REST najdete v článku [Správa škálovatelnosti pomocí REST](sql-data-warehouse-manage-compute-rest-api.md).
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="get-started-with-azure-powershell-cmdlets"></a>Začínáme s rutinami Azure PowerShellu
+## <a name="get-started-with-azure-powershell-cmdlets"></a>Začínáme s rutinami Azure PowerShell
 
 1. Otevřete Windows PowerShell.
-2. Na příkazovém řádku Prostředí PowerShell spusťte tyto příkazy a přihlaste se ke Správci prostředků Azure a vyberte předplatné.
+2. Spuštěním těchto příkazů na příkazovém řádku PowerShellu se přihlaste k Azure Resource Manager a vyberte své předplatné.
 
     ```powershell
     Connect-AzAccount
@@ -37,13 +37,13 @@ Mnoho úloh správy fondu SQL Azure Synapse Analytics lze spravovat pomocí ruti
 
 ## <a name="pause-data-warehouse-example"></a>Příklad pozastavení datového skladu
 
-Pozastavit databázi s názvem "Database02" hostovací na serveru s názvem Server01.  Server se nachází ve skupině prostředků Azure s názvem Skupina prostředků1.
+Pozastavení databáze s názvem "Database02", která je hostována na serveru s názvem "Server01".  Server je ve skupině prostředků Azure s názvem "ResourceGroup1".
 
 ```Powershell
 Suspend-AzSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" –DatabaseName "Database02"
 ```
 
-Varianta, v tomto příkladu kanály načtený objekt [Suspend-AzSqlDatabase](/powershell/module/az.sql/suspend-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).  V důsledku toho je databáze pozastavena. Konečný příkaz zobrazí výsledky.
+Varianta, v tomto příkladu, přeruší načtený objekt na [Suspend-AzSqlDatabase](/powershell/module/az.sql/suspend-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).  V důsledku toho je databáze pozastavena. Poslední příkaz zobrazí výsledky.
 
 ```Powershell
 $database = Get-AzSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" –DatabaseName "Database02"
@@ -53,13 +53,13 @@ $resultDatabase
 
 ## <a name="start-data-warehouse-example"></a>Příklad spuštění datového skladu
 
-Obnovit provoz databáze s názvem "Database02" hostované na serveru s názvem Server01. Server je obsažen ve skupině prostředků s názvem Skupina prostředků1.
+Operace obnovení databáze s názvem "Database02", která je hostována na serveru s názvem "Server01". Server je součástí skupiny prostředků s názvem "ResourceGroup1".
 
 ```Powershell
 Resume-AzSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" -DatabaseName "Database02"
 ```
 
-Varianta, tento příklad načte databázi s názvem "Database02" ze serveru s názvem "Server01", který je obsažen ve skupině prostředků s názvem ResourceGroup1. To kanály načtený objekt [Resume-AzSqlDatabase](/powershell/module/az.sql/resume-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
+V tomto příkladu se v tomto příkladu načte databáze s názvem "Database02" ze serveru s názvem "Server01", který je součástí skupiny prostředků s názvem "ResourceGroup1". Napředá načtený objekt pro [pokračování – AzSqlDatabase](/powershell/module/az.sql/resume-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 
 ```Powershell
 $database = Get-AzSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" –DatabaseName "Database02"
@@ -67,27 +67,27 @@ $resultDatabase = $database | Resume-AzSqlDatabase
 ```
 
 > [!NOTE]
-> Všimněte si, že pokud je váš server foo.database.windows.net, použijte "foo" jako -ServerName v rutinách prostředí PowerShell.
+> Všimněte si, že pokud je váš server foo.database.windows.net, použijte v rutinách PowerShellu "foo" jako "servername".
 
-## <a name="other-supported-powershell-cmdlets"></a>Další podporované rutiny prostředí PowerShell
+## <a name="other-supported-powershell-cmdlets"></a>Další podporované rutiny PowerShellu
 
-Tyto rutiny prostředí PowerShell jsou podporované datovým skladem Azure Synapse Analytics.
+Tyto rutiny PowerShellu se podporují s datovým skladem Azure synapse Analytics.
 
-* [Databáze Get-AzSql](/powershell/module/az.sql/get-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
-* [Get-AzSqlDeletedZálohování databáze](/powershell/module/az.sql/get-azsqldeleteddatabasebackup?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
-* [Get-AzSqlDatabázeObnovit bod](/powershell/module/az.sql/get-azsqldatabaserestorepoint?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
-* [Nová databáze AzSql](/powershell/module/az.sql/new-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
-* [Odebrat databázi AzSql](/powershell/module/az.sql/remove-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
-* [Restore-AzSqlDatabase]/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/strouhanka/toc.json)
-* [Databáze Životopis-AzSql](/powershell/module/az.sql/resume-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
-* [Set-AzSqlDatabáze](/powershell/module/az.sql/set-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
-* [Databáze pozastavit azsql](/powershell/module/az.sql/suspend-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
+* [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
+* [Get-AzSqlDeletedDatabaseBackup](/powershell/module/az.sql/get-azsqldeleteddatabasebackup?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
+* [Get-AzSqlDatabaseRestorePoint](/powershell/module/az.sql/get-azsqldatabaserestorepoint?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
+* [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
+* [Remove-AzSqlDatabase](/powershell/module/az.sql/remove-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
+* [Restore-AzSqlDatabase]/PowerShell/Module/AZ.SQL/Restore-azsqldatabase? TOC =/Azure/synapse-Analytics/SQL-Data-Warehouse/TOC.JSON&BC =/Azure/synapse-Analytics/SQL-Data-Warehouse/breadcrumb/TOC.JSON)
+* [Pokračovat – AzSqlDatabase](/powershell/module/az.sql/resume-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
+* [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
+* [Pozastavit – AzSqlDatabase](/powershell/module/az.sql/suspend-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
 
 ## <a name="next-steps"></a>Další kroky
 
-Další příklady Prostředí PowerShell najdete v tématu:
+Další příklady PowerShellu najdete v tématech:
 
-* [Vytvoření datového skladu pomocí PowerShellu](create-data-warehouse-powershell.md)
+* [Vytvoření datového skladu pomocí prostředí PowerShell](create-data-warehouse-powershell.md)
 * [Obnovení databáze](sql-data-warehouse-restore-points.md)
 
-Další úkoly, které lze automatizovat pomocí prostředí PowerShell, najdete v tématu [Rutiny Azure SQL Database]/powershell/module/az.sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/strouhanka/toc.json). Ne všechny rutiny Azure SQL Database jsou podporované pro datový sklad Azure Synapse Analytics. Seznam úloh, které lze automatizovat pomocí rest, najdete v [tématu Operace pro Azure SQL Database](/rest/api/sql/?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
+Další úkoly, které je možné automatizovat pomocí PowerShellu, najdete v tématu [Azure SQL Database rutiny]/PowerShell/Module/AZ.SQL? TOC =/Azure/synapse-Analytics/SQL-Data-Warehouse/TOC.JSON&BC =/Azure/synapse-Analytics/SQL-Data-Warehouse/breadcrumb/TOC.JSON). Pro datový sklad Azure synapse Analytics nejsou podporovány všechny rutiny Azure SQL Database. Seznam úloh, které je možné automatizovat pomocí REST, najdete v tématu [operace pro Azure SQL Database](/rest/api/sql/?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).

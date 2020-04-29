@@ -1,45 +1,45 @@
 ---
-title: Schéma rozšíření diagnostiky systému Windows
-description: Odkaz na schéma konfigurace pro rozšíření diagnostiky Systému Windows (WAD) v Azure Monitoru.
+title: Schéma rozšíření diagnostiky Windows
+description: Referenční informace ke schématu konfigurace pro rozšíření diagnostiky systému Windows (WAD) v Azure Monitor.
 ms.subservice: diagnostic-extension
 ms.topic: reference
 author: bwren
 ms.author: bwren
 ms.date: 01/20/2020
 ms.openlocfilehash: c04fc82b8b04e474a656a0849177f7aa5d27b427
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81676429"
 ---
-# <a name="windows-diagnostics-extension-schema"></a>Schéma rozšíření diagnostiky systému Windows
-Rozšíření Azure Diagnostics je agent ve službě Azure Monitor, který shromažďuje data monitorování z hostovaného operačního systému a úloh výpočetních prostředků Azure. Tento článek podrobně popisuje schéma používané pro konfiguraci rozšíření diagnostiky na virtuálních počítačích s Windows a dalších výpočetních prostředků.
+# <a name="windows-diagnostics-extension-schema"></a>Schéma rozšíření diagnostiky Windows
+Azure Diagnostics rozšíření je agent v Azure Monitor, který shromažďuje data monitorování z hostovaného operačního systému a zatížení výpočetních prostředků Azure. Tento článek podrobně popisuje schéma používané pro konfiguraci diagnostického rozšíření na virtuálních počítačích s Windows a dalších výpočetních prostředcích.
 
 > [!NOTE]
-> Schéma v tomto článku je platné pro verze 1.3 a novější (Azure SDK 2.4 a novější). Novější konfigurační oddíly jsou komentovány, aby se zobrazily, v jaké verzi byly přidány. Verze 1.0 a 1.2 schématu byly archivovány a již nejsou k dispozici. 
+> Schéma v tomto článku je platné pro verze 1,3 a novější (Azure SDK 2,4 a novější). Novější konfigurační oddíly jsou komentáře, aby se zobrazily informace o tom, jaká verze byla přidána. Archivovaná verze 1,0 a 1,2 schématu byla archivována a již není k dispozici. 
 
-## <a name="public-configuration-file-schema"></a>Schéma veřejného konfiguračního souboru
+## <a name="public-configuration-file-schema"></a>Schéma souboru veřejného konfigurace
 
-Stáhněte si definici schématu veřejného konfiguračního souboru spuštěním následujícího příkazu Prostředí PowerShell:  
+Stáhněte si definici schématu veřejného konfiguračního souboru spuštěním následujícího příkazu PowerShellu:  
 
 ```powershell  
 (Get-AzureServiceAvailableExtension -ExtensionName 'PaaSDiagnostics' -ProviderNamespace 'Microsoft.Azure.Diagnostics').PublicConfigurationSchema | Out-File –Encoding utf8 -FilePath 'C:\temp\WadConfig.xsd'  
 ```  
 
 
-## <a name="common-attribute-types"></a>Běžné typy atributů  
- **scheduledTransferPeriod** atribut se zobrazí v několika prvcích. Jedná se o interval mezi plánovanými převody do úložiště zaokrouhlený nahoru na nejbližší minutu. Hodnota je [XML "Doba trvání datový typ."](https://www.w3schools.com/xml/schema_dtypes_date.asp)
+## <a name="common-attribute-types"></a>Společné typy atributů  
+ atribut **scheduledTransferPeriod** se zobrazí v několika prvcích. Je to interval mezi plánovanými přenosy do úložiště zaokrouhlený na nejbližší minutu. Hodnota je [datový typ doba trvání "XML".](https://www.w3schools.com/xml/schema_dtypes_date.asp)
 
 
-## <a name="diagnosticsconfiguration-element"></a>DiagnosticsKonfigurační prvek  
- *Strom: Kořen – diagnostikaKonfigurace*
+## <a name="diagnosticsconfiguration-element"></a>Element DiagnosticsConfiguration  
+ *Strom: root-DiagnosticsConfiguration*
 
-Přidáno ve verzi 1.3.  
+Přidáno ve verzi 1,3.  
 
-Prvek nejvyšší úrovně diagnostického konfiguračního souboru.  
+Element nejvyšší úrovně konfiguračního souboru diagnostiky.  
 
-**Atribut** xmlns - Obor názvů XML pro konfigurační soubor diagnostiky je:  
+**Atribut** xmlns-obor názvů XML pro konfigurační soubor diagnostiky je:  
 `http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration`
 
 
@@ -47,287 +47,287 @@ Prvek nejvyšší úrovně diagnostického konfiguračního souboru.
 |--------------------|-----------------|  
 |**PublicConfig**|Povinná hodnota. Viz popis jinde na této stránce.|  
 |**PrivateConfig**|Nepovinný parametr. Viz popis jinde na této stránce.|  
-|**IsEnabled**|Boolean. Viz popis jinde na této stránce.|  
+|**IsEnabled**|Datového. Viz popis jinde na této stránce.|  
 
-## <a name="publicconfig-element"></a>PublicConfig Element  
- *Strom: Kořen - DiagnostikaKonfigurace - PublicConfig*
+## <a name="publicconfig-element"></a>Element PublicConfig  
+ *Strom: root-DiagnosticsConfiguration-PublicConfig*
 
  Popisuje konfiguraci veřejné diagnostiky.  
 
 |Podřízené elementy|Popis|  
 |--------------------|-----------------|  
 |**WadCfg**|Povinná hodnota. Viz popis jinde na této stránce.|  
-|**StorageAccount**|Název účtu Azure Storage pro ukládání dat. Může být také zadán jako parametr při provádění rutiny Set-AzureServiceDiagnosticsExtension.|  
-|**StorageType**|Může být *tabulka*, *blob*nebo *tableandblob*. Tabulka je výchozí. Je-li vybrána možnost TableAndBlob, diagnostická data se zapisují dvakrát – jednou do každého typu.|  
-|**LocalResourceDirectory**|Adresář na virtuálním počítači, kde agent monitorování ukládá data událostí. Pokud ne, nastavte, použije se výchozí adresář:<br /><br /> Pro roli pracovníka/webu:`C:\Resources\<guid>\directory\<guid>.<RoleName.DiagnosticStore\`<br /><br /> Pro virtuální počítač:`C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<WADVersion>\WAD<WADVersion>`<br /><br /> Požadované atributy jsou:<br /><br /> - **cesta** – adresář v systému, který má být používán diagnostikou Azure.<br /><br /> - **expandEnvironment** - Určuje, zda proměnné prostředí jsou rozbaleny v názvu cesty.|  
+|**StorageAccount**|Název účtu Azure Storage, do kterého se mají ukládat data Může být také zadáno jako parametr při spuštění rutiny Set-AzureServiceDiagnosticsExtension.|  
+|**StorageType**|Může být *Table*, *BLOB*nebo *TableAndBlob*. Tabulka je výchozí. Je-li zvolena možnost TableAndBlob, jsou diagnostická data do každého typu zapisována dvakrát.|  
+|**LocalResourceDirectory**|Adresář na virtuálním počítači, kde agent monitorování ukládá data událostí. Pokud ne, nastavte, že se použije výchozí adresář:<br /><br /> Pro pracovní proces nebo webovou roli:`C:\Resources\<guid>\directory\<guid>.<RoleName.DiagnosticStore\`<br /><br /> Pro virtuální počítač:`C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<WADVersion>\WAD<WADVersion>`<br /><br /> Požadované atributy jsou:<br /><br /> - **cesta** – adresář v systému, který má Azure Diagnostics použít.<br /><br /> - **expandEnvironment** – určuje, jestli se v názvu cesty rozbalí proměnné prostředí.|  
 
-## <a name="wadcfg-element"></a>WadCFG prvek  
- *Strom: Kořen - DiagnostikaKonfigurace - PublicConfig - WadCFG*
+## <a name="wadcfg-element"></a>Element WadCFG  
+ *Strom: root-DiagnosticsConfiguration-PublicConfig-WadCFG*
 
- Identifikuje a konfiguruje data telemetrie, která mají být shromažďována.  
+ Identifikuje a konfiguruje data telemetrie, která se mají shromáždit.  
 
 
-## <a name="diagnosticmonitorconfiguration-element"></a>Diagnostickýkonfigurační prvek
- *Strom: Kořen - DiagnostikaKonfigurace - PublicConfig - WadCFG - DiagnosticMonitorConfiguration*
+## <a name="diagnosticmonitorconfiguration-element"></a>Element DiagnosticMonitorConfiguration
+ *Strom: root-DiagnosticsConfiguration-PublicConfig-WadCFG-DiagnosticMonitorConfiguration*
 
  Požaduje se
 
 |Atributy|Popis|  
 |----------------|-----------------|  
-| **celková kvótaInMB** | Maximální množství místa na místním disku, které mohou být spotřebovány různými typy diagnostických dat shromážděných diagnostikou Azure. Výchozí nastavení je 4096 MB.<br />
-|**useProxyServer** | Nakonfigurujte Diagnostiku Azure tak, aby používala nastavení proxy serveru nastavená v nastavení aplikace IE.|
-|**Propadů** | Přidáno v 1.5. Nepovinný parametr. Odkazuje na umístění jímky také odeslat diagnostická data pro všechny podřízené prvky, které podporují jímky. Příklad jímky je Application Insights nebo Event Hubs.|  
+| **overallQuotaInMB** | Maximální místo na místním disku, které mohou být spotřebovány různými typy diagnostických dat shromažďovaných Azure Diagnostics. Výchozí nastavení je 4096 MB.<br />
+|**useProxyServer** | Nakonfigurujte Azure Diagnostics, aby používala nastavení proxy server nastavená v nastavení IE.|
+|**jímky** | Přidáno v 1,5. Nepovinný parametr. Odkazuje na umístění jímky, aby také odesílal diagnostická data pro všechny podřízené prvky, které podporují jímky. Příklad jímky je Application Insights nebo Event Hubs.|  
 
 
 <br /> <br />
 
 |Podřízené elementy|Popis|  
 |--------------------|-----------------|  
-|**Crashdumps**|Viz popis jinde na této stránce.|  
-|**DiagnosticInfrastructureLogs**|Povolte shromažďování protokolů generovaných diagnostikou Azure. Protokoly diagnostické infrastruktury jsou užitečné pro řešení potíží samotného diagnostického systému. Volitelné atributy jsou:<br /><br /> - **scheduledTransferLogLevelFilter** - Nakonfiguruje minimální úroveň závažnosti shromážděných protokolů.<br /><br /> - **scheduledTransferPeriod** - interval mezi plánovanými převody do úložiště zaokrouhlený nahoru na nejbližší minutu. Hodnota je [XML "Doba trvání datový typ."](https://www.w3schools.com/xml/schema_dtypes_date.asp) |  
+|**Verzí**|Viz popis jinde na této stránce.|  
+|**DiagnosticInfrastructureLogs**|Povolí shromažďování protokolů generovaných Azure Diagnostics. Protokoly diagnostické infrastruktury jsou užitečné při řešení problémů samotného diagnostického systému. Volitelné atributy jsou:<br /><br /> - **scheduledTransferLogLevelFilter** – konfiguruje minimální úroveň závažnosti protokolů, které se shromáždily.<br /><br /> - **scheduledTransferPeriod** – interval mezi plánovanými transfery do úložiště se zaokrouhluje na nejbližší minutu. Hodnota je [datový typ doba trvání "XML".](https://www.w3schools.com/xml/schema_dtypes_date.asp) |  
 |**Adresáře**|Viz popis jinde na této stránce.|  
-|**Poskytovatelé etw**|Viz popis jinde na této stránce.|  
+|**EtwProviders**|Viz popis jinde na této stránce.|  
 |**Metriky**|Viz popis jinde na této stránce.|  
 |**Čítače výkonu**|Viz popis jinde na této stránce.|  
-|**Program WindowsEventLog**|Viz popis jinde na této stránce.|
-|**Zdroje dockeru**|Viz popis jinde na této stránce. |
+|**WindowsEventLog**|Viz popis jinde na této stránce.|
+|**DockerSources**|Viz popis jinde na této stránce. |
 
 
 
-## <a name="crashdumps-element"></a>CrashDumps Element  
- *Strom: Kořen - DiagnostikaKonfigurace - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - CrashDumps*
+## <a name="crashdumps-element"></a>Element verzí  
+ *Strom: root-DiagnosticsConfiguration-PublicConfig-WadCFG-DiagnosticMonitorConfiguration-verzí*
 
- Povolte kolekci výpisů stavu.  
+ Povolte shromažďování výpisů stavu systému.  
 
 |Atributy|Popis|  
 |----------------|-----------------|  
-|**containerName**|Nepovinný parametr. Název kontejneru objektů blob ve vašem účtu Azure Storage, který se má použít k ukládání výpisů stavu.|  
-|**crashDumpType**|Nepovinný parametr.  Konfiguruje Diagnostika Azure tak, aby shromažďovala mini nebo úplné výpisy stavu systému.|  
-|**adresářQuotaPercentage**|Nepovinný parametr.  Nakonfiguruje procento **celkové quotaInMB,** které mají být vyhrazeny pro výpisy stavu systému na virtuálním počítači.|  
+|**containerName**|Nepovinný parametr. Název kontejneru objektů BLOB v účtu Azure Storage, který se má použít k ukládání výpisů stavu systému.|  
+|**crashDumpType**|Nepovinný parametr.  Nakonfiguruje Azure Diagnostics ke shromažďování minimálních nebo úplných výpisů stavu systému.|  
+|**directoryQuotaPercentage**|Nepovinný parametr.  Nastaví procentuální hodnotu **overallQuotaInMB** , která se má rezervovat pro výpisy stavu systému na virtuálním počítači.|  
 
 |Podřízené elementy|Popis|  
 |--------------------|-----------------|  
-|**CrashDumpKonfigurace**|Povinná hodnota. Definuje hodnoty konfigurace pro každý proces.<br /><br /> Je také vyžadován následující atribut:<br /><br /> **processName** – název procesu, který má diagnostika Azure shromažďovat výpis stavu systému.|  
+|**CrashDumpConfiguration**|Povinná hodnota. Definuje hodnoty konfigurace pro každý proces.<br /><br /> Vyžaduje se taky následující atribut:<br /><br /> název **procesu** – název procesu, pro který chcete Azure Diagnostics shromažďovat výpis stavu systému.|  
 
-## <a name="directories-element"></a>Element adresářů
- *Strom: Kořen - DiagnostikaKonfigurace - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - Adresáře*
+## <a name="directories-element"></a>Adresář – element
+ *Strom: root-DiagnosticsConfiguration-PublicConfig-WadCFG-DiagnosticMonitorConfiguration-adresáře*
 
- Povolí shromažďování obsahu adresáře, protokolů neúspěšných žádostí o přístup služby IIS a protokolů služby IIS.  
+ Umožňuje shromažďování obsahu adresáře, protokolů požadavků na přístup služby IIS a protokolů služby IIS.  
 
- Volitelný atribut **scheduledTransferPeriod.** Viz vysvětlení dříve.  
-
-|Podřízené elementy|Popis|  
-|--------------------|-----------------|  
-|**Logy iIS**|Zahrnutí tohoto prvku do konfigurace umožňuje shromažďování protokolů služby IIS:<br /><br /> **containerName** – název kontejneru objektů blob ve vašem účtu služby Azure Storage, který se má použít k ukládání protokolů služby IIS.|   
-|**Protokoly FailedRequestLogs**|Zahrnutí tohoto prvku do konfigurace umožňuje shromažďování protokolů o neúspěšných požadavcích na web služby IIS nebo aplikaci. Je také nutné povolit možnosti trasování v **systému. WebServer** v **souboru Web.config**.|  
-|**Datasources**|Seznam adresářů ke sledování.|
-
-
-
-
-## <a name="datasources-element"></a>Element Zdroje dat  
- *Strom: Kořen - DiagnostikaKonfigurace - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - Adresáře - DataSources*
-
- Seznam adresářů ke sledování.  
+ Volitelný atribut **scheduledTransferPeriod** Viz vysvětlení výše.  
 
 |Podřízené elementy|Popis|  
 |--------------------|-----------------|  
-|**Konfigurace adresářů**|Povinná hodnota. Povinný atribut:<br /><br /> **containerName** – název kontejneru objektů blob ve vašem účtu služby Azure Storage, který se má použít k ukládání souborů protokolu.|  
+|**IISLogs**|Zahrnutí tohoto elementu v konfiguraci umožňuje shromažďování protokolů služby IIS:<br /><br /> **ContainerName** – název kontejneru objektů BLOB ve vašem účtu Azure Storage, který se má použít k ukládání protokolů IIS.|   
+|**FailedRequestLogs**|Zahrnutí tohoto elementu v konfiguraci umožňuje shromažďování protokolů o neúspěšných požadavcích na web nebo aplikaci služby IIS. Také je nutné povolit možnosti trasování v části **systém. Webový server** v **souboru Web. config**.|  
+|**Zdroje dat**|Seznam adresářů, které se mají monitorovat|
 
 
 
 
+## <a name="datasources-element"></a>Element DataSources  
+ *Strom: root-DiagnosticsConfiguration-PublicConfig-WadCFG-DiagnosticMonitorConfiguration-directorys-zdroje dat*
 
-## <a name="directoryconfiguration-element"></a>Prvek Konfigurace adresářů  
- *Strom: Kořen - DiagnostikaKonfigurace - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - Adresáře - Datové zdroje - DirectoryConfiguration*
-
- Může obsahovat element **Absolute** nebo **LocalResource,** ale ne obojí.  
-
-|Podřízené elementy|Popis|  
-|--------------------|-----------------|  
-|**Absolutní**|Absolutní cesta k adresáři ke sledování. Jsou vyžadovány následující atributy:<br /><br /> - **Cesta** - Absolutní cesta k adresáři sledovat.<br /><br /> - **expandEnvironment** - Konfiguruje, zda jsou rozbaleny proměnné prostředí v path.|  
-|**Místní zdroj**|Cesta vzhledem k místnímu prostředku ke sledování. Požadované atributy jsou:<br /><br /> - **Název** - Místní prostředek, který obsahuje adresář ke sledování<br /><br /> - **relativePath** - Cesta relativní k Name, která obsahuje adresář sledovat|  
-
-
-
-## <a name="etwproviders-element"></a>Prvek EtwProviders  
- *Strom: Kořen - DiagnostikaKonfigurace - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - EtwProviders*
-
- Konfiguruje kolekci událostí ETW z EventSource a/nebo zprostředkovatelů založených na Manifestu ETW.  
+ Seznam adresářů, které se mají monitorovat  
 
 |Podřízené elementy|Popis|  
 |--------------------|-----------------|  
-|**Konfigurace poskytovatele etwEventSourceProvider**|Konfiguruje kolekci událostí generovaných z [třídy EventSource .](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx) Povinný atribut:<br /><br /> **provider** - Název třídy události EventSource.<br /><br /> Volitelné atributy jsou:<br /><br /> - **scheduledTransferLogLevelFilter** - Minimální úroveň závažnosti pro přenos do účtu úložiště.<br /><br /> - **scheduledTransferPeriod** - interval mezi plánovanými převody do úložiště zaokrouhlený nahoru na nejbližší minutu. Hodnota je [XML "Doba trvání datový typ."](https://www.w3schools.com/xml/schema_dtypes_date.asp) |  
-|**EtwManifestProviderKonfigurace**|Povinný atribut:<br /><br /> **zprostředkovatel** - IDENTIFIKÁTOR GUID poskytovatele události<br /><br /> Volitelné atributy jsou:<br /><br /> - **scheduledTransferLogLevelFilter** - Minimální úroveň závažnosti pro přenos do účtu úložiště.<br /><br /> - **scheduledTransferPeriod** - interval mezi plánovanými převody do úložiště zaokrouhlený nahoru na nejbližší minutu. Hodnota je [XML "Doba trvání datový typ."](https://www.w3schools.com/xml/schema_dtypes_date.asp) |  
+|**DirectoryConfiguration**|Povinná hodnota. Požadovaný atribut:<br /><br /> **ContainerName** – název kontejneru objektů BLOB ve vašem účtu Azure Storage, který se má použít k ukládání souborů protokolu.|  
 
 
 
-## <a name="etweventsourceproviderconfiguration-element"></a>Prvek konfigurace etwEventSourceProvider  
- *Strom: Kořen - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - EtwProviders- EtwEventSourceProviderKonfigurace*
-
- Konfiguruje kolekci událostí generovaných z [třídy EventSource .](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx)  
-
-|Podřízené elementy|Popis|  
-|--------------------|-----------------|  
-|**Výchozí události**|Volitelný atribut:<br/><br/> **eventDestination** - Název tabulky pro uložení událostí|  
-|**Událost**|Povinný atribut:<br /><br /> **id** - ID události.<br /><br /> Volitelný atribut:<br /><br /> **eventDestination** - Název tabulky pro uložení událostí|  
 
 
+## <a name="directoryconfiguration-element"></a>Element DirectoryConfiguration  
+ *Strom: root-DiagnosticsConfiguration-PublicConfig-WadCFG-DiagnosticMonitorConfiguration-Directory-DataSources-DirectoryConfiguration*
 
-## <a name="etwmanifestproviderconfiguration-element"></a>Konfigurační prvek EtwManifestProvider  
- *Strom: Kořen - DiagnostikaKonfigurace - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - EtwProviders - EtwManifestProviderConfiguration*
+ Může zahrnovat buď **absolutní** , nebo element **LocalResource** , ale ne obojí.  
 
 |Podřízené elementy|Popis|  
 |--------------------|-----------------|  
-|**Výchozí události**|Volitelný atribut:<br /><br /> **eventDestination** - Název tabulky pro uložení událostí|  
-|**Událost**|Povinný atribut:<br /><br /> **id** - ID události.<br /><br /> Volitelný atribut:<br /><br /> **eventDestination** - Název tabulky pro uložení událostí|  
+|**Absolutní**|Absolutní cesta k adresáři, který se má monitorovat Jsou vyžadovány následující atributy:<br /><br /> - **Cesta** – absolutní cesta k adresáři, který se má monitorovat<br /><br /> - **expandEnvironment** – konfiguruje, zda jsou proměnné prostředí v cestě rozbaleny.|  
+|**LocalResource**|Cesta relativní k místnímu prostředku, který se má monitorovat Požadované atributy jsou:<br /><br /> - **Název** – místní prostředek, který obsahuje adresář, který se má monitorovat<br /><br /> - **RelativePath** – cesta relativní k názvu, který obsahuje adresář, který se má monitorovat|  
 
 
 
-## <a name="metrics-element"></a>Element metriky  
- *Strom: Kořen - DiagnostikaKonfigurace - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - Metriky*
+## <a name="etwproviders-element"></a>Element EtwProviders  
+ *Strom: root-DiagnosticsConfiguration-PublicConfig-WadCFG-DiagnosticMonitorConfiguration-EtwProviders*
 
- Umožňuje generovat tabulku čítačů výkonu, která je optimalizována pro rychlé dotazy. Každý čítač výkonu, který je definován v **PerformanceCounters** prvek je uložen v tabulce Metriky kromě tabulky Čítač výkonu.  
-
- Je vyžadován atribut **resourceId.**  ID prostředku virtuálního počítače nebo škálovací sady virtuálních strojů, do které nasazujete diagnostiku Azure. Získejte **id prostředků** z [webu Azure Portal](https://portal.azure.com). Vyberte **procházet** -> **skupiny**  ->  prostředků **<název\>**. Klikněte na dlaždici **Vlastnosti** a zkopírujte hodnotu z pole **ID.**  
+ Konfiguruje shromažďování událostí ETW od zprostředkovatelů EventSource a/nebo poskytovatelů ETW založených na manifestech ETW.  
 
 |Podřízené elementy|Popis|  
 |--------------------|-----------------|  
-|**MetricAgregation**|Povinný atribut:<br /><br /> **scheduledTransferPeriod** - interval mezi plánovanými převody do úložiště zaokrouhlený nahoru na nejbližší minutu. Hodnota je [XML "Doba trvání datový typ."](https://www.w3schools.com/xml/schema_dtypes_date.asp) |  
+|**EtwEventSourceProviderConfiguration**|Konfiguruje kolekci událostí vygenerovaných z [třídy EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx). Požadovaný atribut:<br /><br /> **Provider** – název třídy události EventSource.<br /><br /> Volitelné atributy jsou:<br /><br /> - **scheduledTransferLogLevelFilter** – minimální úroveň závažnosti, která se má přenést do svého účtu úložiště.<br /><br /> - **scheduledTransferPeriod** – interval mezi plánovanými transfery do úložiště se zaokrouhluje na nejbližší minutu. Hodnota je [datový typ doba trvání "XML".](https://www.w3schools.com/xml/schema_dtypes_date.asp) |  
+|**EtwManifestProviderConfiguration**|Požadovaný atribut:<br /><br /> **poskytovatel** – identifikátor GUID zprostředkovatele událostí<br /><br /> Volitelné atributy jsou:<br /><br /> - **scheduledTransferLogLevelFilter** – minimální úroveň závažnosti, která se má přenést do svého účtu úložiště.<br /><br /> - **scheduledTransferPeriod** – interval mezi plánovanými transfery do úložiště se zaokrouhluje na nejbližší minutu. Hodnota je [datový typ doba trvání "XML".](https://www.w3schools.com/xml/schema_dtypes_date.asp) |  
 
 
 
-## <a name="performancecounters-element"></a>PerformanceCounters Element  
- *Strom: Kořen - DiagnostikaKonfigurace - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - PerformanceCounters*
+## <a name="etweventsourceproviderconfiguration-element"></a>Element EtwEventSourceProviderConfiguration  
+ *Strom: root-DiagnosticsConfiguration-PublicConfig-WadCFG-DiagnosticMonitorConfiguration-EtwProviders-EtwEventSourceProviderConfiguration*
 
- Umožňuje shromažďování čítačů výkonu.  
+ Konfiguruje kolekci událostí vygenerovaných z [třídy EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx).  
+
+|Podřízené elementy|Popis|  
+|--------------------|-----------------|  
+|**DefaultEvents**|Volitelný atribut:<br/><br/> **eventDestination** – název tabulky, do které se mají ukládat události|  
+|**Událostí**|Požadovaný atribut:<br /><br /> **ID** – ID události<br /><br /> Volitelný atribut:<br /><br /> **eventDestination** – název tabulky, do které se mají ukládat události|  
+
+
+
+## <a name="etwmanifestproviderconfiguration-element"></a>Element EtwManifestProviderConfiguration  
+ *Strom: root-DiagnosticsConfiguration-PublicConfig-WadCFG-DiagnosticMonitorConfiguration-EtwProviders-EtwManifestProviderConfiguration*
+
+|Podřízené elementy|Popis|  
+|--------------------|-----------------|  
+|**DefaultEvents**|Volitelný atribut:<br /><br /> **eventDestination** – název tabulky, do které se mají ukládat události|  
+|**Událostí**|Požadovaný atribut:<br /><br /> **ID** – ID události<br /><br /> Volitelný atribut:<br /><br /> **eventDestination** – název tabulky, do které se mají ukládat události|  
+
+
+
+## <a name="metrics-element"></a>Metrika – element  
+ *Strom: root-DiagnosticsConfiguration-PublicConfig-WadCFG-DiagnosticMonitorConfiguration-Metrics*
+
+ Umožňuje vygenerovat tabulku čítače výkonu, která je optimalizována pro rychlé dotazy. Každý čítač výkonu, který je definován v elementu **čítače výkonu** , je uložen v tabulce metrik společně s tabulkou čítače výkonu.  
+
+ Atribut **ResourceID** je povinný.  ID prostředku virtuálního počítače nebo sady škálování virtuálních počítačů, do které nasazujete Azure Diagnostics. Získá **ResourceID** z [Azure Portal](https://portal.azure.com). Vyberte **Procházet** -> **skupiny**  ->  prostředků **<název\>**. Klikněte na dlaždici **vlastnosti** a zkopírujte hodnotu z pole **ID** .  
+
+|Podřízené elementy|Popis|  
+|--------------------|-----------------|  
+|**MetricAggregation**|Požadovaný atribut:<br /><br /> **scheduledTransferPeriod** – interval mezi plánovanými transfery do úložiště se zaokrouhluje na nejbližší minutu. Hodnota je [datový typ doba trvání "XML".](https://www.w3schools.com/xml/schema_dtypes_date.asp) |  
+
+
+
+## <a name="performancecounters-element"></a>Element čítače výkonu  
+ *Strom: root-DiagnosticsConfiguration-PublicConfig-WadCFG-DiagnosticMonitorConfiguration-čítače výkonu*
+
+ Povolí shromažďování čítačů výkonu.  
 
  Volitelný atribut:  
 
- Volitelný atribut **scheduledTransferPeriod.** Viz vysvětlení dříve.
+ Volitelný atribut **scheduledTransferPeriod** Viz vysvětlení výše.
 
 |Podřízený element|Popis|  
 |-------------------|-----------------|  
-|**Konfigurace čítače PerformanceCounter**|Jsou vyžadovány následující atributy:<br /><br /> - **counterSpecifier** - Název čítače výkonu. Například, `\Processor(_Total)\% Processor Time`. Chcete-li získat seznam čítačů výkonu `typeperf`na hostiteli, spusťte příkaz .<br /><br /> - **sampleRate** - Jak často by měl být čítač vzorkován.<br /><br /> Volitelný atribut:<br /><br /> **jednotka** - Měrná jednotka čítače. Hodnoty jsou k dispozici ve [třídě UnitType.](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.sql.models.unittype?view=azure-dotnet) |
-|**Propadů** | Přidáno v 1.5. Nepovinný parametr. Odkazuje na umístění jímky a odesílá také diagnostická data. Například Azure Monitor nebo Centra událostí.|    
+|**PerformanceCounterConfiguration**|Jsou vyžadovány následující atributy:<br /><br /> - **counterSpecifier** – název čítače výkonu. Například, `\Processor(_Total)\% Processor Time`. Chcete-li získat seznam čítačů výkonu na hostiteli, spusťte příkaz `typeperf`.<br /><br /> - **sampleRate** – jak často se má čítač vzorkovat.<br /><br /> Volitelný atribut:<br /><br /> **jednotka** – Měrná jednotka čítače. Hodnoty jsou k dispozici na [jednotkách UnitType třídě](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.sql.models.unittype?view=azure-dotnet) |
+|**jímky** | Přidáno v 1,5. Nepovinný parametr. Odkazuje na umístění jímky, aby bylo možné také odeslat diagnostická data. Například Azure Monitor nebo Event Hubs.|    
 
 
 
 
-## <a name="windowseventlog-element"></a>WindowsEventLog Element
- *Strom: Kořen - DiagnostikaKonfigurace - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - WindowsEventLog*
+## <a name="windowseventlog-element"></a>Element WindowsEventLog
+ *Strom: root-DiagnosticsConfiguration-PublicConfig-WadCFG-DiagnosticMonitorConfiguration-WindowsEventLog*
 
- Povolí kolekci protokolů událostí systému Windows.  
+ Povolí shromažďování protokolů událostí systému Windows.  
 
- Volitelný atribut **scheduledTransferPeriod.** Viz vysvětlení dříve.  
+ Volitelný atribut **scheduledTransferPeriod** Viz vysvětlení výše.  
 
 |Podřízený element|Popis|  
 |-------------------|-----------------|  
-|**Datasource**|Protokoly událostí systému Windows ke shromažďování. Povinný atribut:<br /><br /> **Name** - Dotaz XPath popisující události systému Windows, které mají být shromažďovány. Příklad:<br /><br /> `Application!*[System[(Level <=3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level <= 3)]`<br /><br /> Chcete-li shromáždit všechny události, zadejte "*" |
-|**Propadů** | Přidáno v 1.5. Nepovinný parametr. Odkazuje na umístění jímky také odeslat diagnostická data pro všechny podřízené prvky, které podporují jímky. Příklad jímky je Application Insights nebo Event Hubs.|  
+|**Datového**|Protokoly událostí systému Windows, které mají být shromažďovány. Požadovaný atribut:<br /><br /> **název** – dotaz XPath popisující události systému Windows, které mají být shromažďovány. Příklad:<br /><br /> `Application!*[System[(Level <=3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level <= 3)]`<br /><br /> Chcete-li shromáždit všechny události, zadejte "*" |
+|**jímky** | Přidáno v 1,5. Nepovinný parametr. Odkazuje na umístění jímky, aby také odesílal diagnostická data pro všechny podřízené prvky, které podporují jímky. Příklad jímky je Application Insights nebo Event Hubs.|  
 
 
-## <a name="logs-element"></a>Element protokolů  
- *Strom: Kořen - DiagnostikaKonfigurace - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - Protokoly*
+## <a name="logs-element"></a>Logs – element  
+ *Strom: root-DiagnosticsConfiguration-PublicConfig-WadCFG-DiagnosticMonitorConfiguration-logs*
 
- Přítomno ve verzích 1.0 a 1.1. Chybí v 1.2. Přidáno zpět v 1.3.  
+ K dispozici ve verzi 1,0 a 1,1. Chybějící v 1,2. Přidáno zpět v 1,3.  
 
  Definuje konfiguraci vyrovnávací paměti pro základní protokoly Azure.  
 
 |Atribut|Typ|Popis|  
 |---------------|----------|-----------------|  
-|**bufferQuotaInMB**|**nesignedInt**|Nepovinný parametr. Určuje maximální velikost úložiště systému souborů, které je k dispozici pro zadaná data.<br /><br /> Výchozí hodnota je 0.|  
-|**scheduledTransferLogLevelFilter**|**Řetězec**|Nepovinný parametr. Určuje minimální úroveň závažnosti pro položky protokolu, které jsou přeneseny. Výchozí hodnota je **Undefined**, která přenáší všechny protokoly. Další možné hodnoty (v pořadí od většiny až nejmenších informací) jsou **Podrobné**, **Informace**, **Upozornění**, **Chyba**a **Kritické**.|  
-|**scheduledTransferPeriod**|**Doba trvání**|Nepovinný parametr. Určuje interval mezi plánovanými přenosy dat zaokrouhlenými nahoru na nejbližší minutu.<br /><br /> Výchozí hodnota je PT0S.|  
-|**Propadů** |**Řetězec**| Přidáno v 1.5. Nepovinný parametr. Odkazuje na umístění jímky a odesílá také diagnostická data. Například Application Insights nebo Event Hubs.|  
+|**bufferQuotaInMB**|**unsignedInt**|Nepovinný parametr. Určuje maximální velikost úložiště systému souborů, která je k dispozici pro zadaná data.<br /><br /> Výchozí hodnota je 0.|  
+|**scheduledTransferLogLevelFilter**|**řetězec**|Nepovinný parametr. Určuje minimální úroveň závažnosti pro přenesené položky protokolu. Výchozí hodnota není **definována**, což přenáší všechny protokoly. Další možné hodnoty (v pořadí od nejvyšších po nejnižší) jsou **podrobné**, **informace**, **varování**, **Chyba**a **kritická**.|  
+|**scheduledTransferPeriod**|**úkolu**|Nepovinný parametr. Určuje interval mezi plánovanými přenosy dat, zaokrouhlený na nejbližší minutu.<br /><br /> Výchozí hodnota je PT0S.|  
+|**jímky** |**řetězec**| Přidáno v 1,5. Nepovinný parametr. Odkazuje na umístění jímky, aby bylo možné také odeslat diagnostická data. Například Application Insights nebo Event Hubs.|  
 
-## <a name="dockersources"></a>Zdroje dockeru
- *Strom: Kořen - DiagnostikaKonfigurace - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - DockerSources*
+## <a name="dockersources"></a>DockerSources
+ *Strom: root-DiagnosticsConfiguration-PublicConfig-WadCFG-DiagnosticMonitorConfiguration-DockerSources*
 
- Přidáno v 1.9.
+ Přidáno v 1,9.
 
 |Název prvku|Popis|  
 |------------------|-----------------|  
-|**Statistiky**|Říká systému, aby shromažďoval statistiky pro kontejnery Dockeru|  
+|**Statistiky**|Oznamuje systému, aby shromáždil statistiku pro kontejnery Docker.|  
 
-## <a name="sinksconfig-element"></a>SinksConfig Element  
- *Strom: Kořen - DiagnostikaKonfigurace - PublicConfig - WadCFG - SinksConfig*
+## <a name="sinksconfig-element"></a>Element SinksConfig  
+ *Strom: root-DiagnosticsConfiguration-PublicConfig-WadCFG-SinksConfig*
 
- Seznam umístění, do kterých se mají odesílat diagnostická data, a konfigurace přidružená k těmto umístěním.  
+ Seznam umístění pro odeslání diagnostických dat do a konfigurace související s těmito umístěními.  
 
 |Název prvku|Popis|  
 |------------------|-----------------|  
 |**Jímka**|Viz popis jinde na této stránce.|  
 
-## <a name="sink-element"></a>Prvek jímky
- *Strom: Kořen - DiagnostikaKonfigurace - PublicConfig - WadCFG - SinksConfig - Sink*
+## <a name="sink-element"></a>Element jímky
+ *Strom: root-DiagnosticsConfiguration-PublicConfig-WadCFG-SinksConfig-jímka*
 
- Přidáno ve verzi 1.5.  
+ Přidáno ve verzi 1,5.  
 
- Definuje umístění, do kterých chcete odesílat diagnostická data. Například služba Application Insights.  
+ Definuje umístění, do kterých se budou posílat diagnostická data. Například služba Application Insights.  
 
 |Atribut|Typ|Popis|  
 |---------------|----------|-----------------|  
-|**Jméno**|řetězec|Řetězec identifikující název pořezaní.|  
+|**Jméno**|řetězec|Řetězec identifikující jímku.|  
 
 |Prvek|Typ|Popis|  
 |-------------|----------|-----------------|  
-|**Application Insights**|řetězec|Používá se pouze při odesílání dat do Application Insights. Obsahují klíč instrumentace pro aktivní účet Application Insights, ke kterému máte přístup.|  
-|**Kanály**|řetězec|Jeden pro každé další filtrování, které stream, který jste|  
+|**Application Insights**|řetězec|Používá se pouze při odesílání dat do Application Insights. Obsahuje klíč instrumentace pro aktivní účet Application Insights, ke kterému máte přístup.|  
+|**Kanály**|řetězec|Jedno pro každé další filtrování, které je datového proudu|  
 
-## <a name="channels-element"></a>Element kanálů  
- *Strom: Kořen - DiagnostikaKonfigurace - PublicConfig - WadCFG - SinksConfig - Sink - Kanály*
+## <a name="channels-element"></a>Element Channels  
+ *Strom: root-DiagnosticsConfiguration-PublicConfig-WadCFG-SinksConfig-jímka – kanály*
 
- Přidáno ve verzi 1.5.  
+ Přidáno ve verzi 1,5.  
 
- Definuje filtry pro datové proudy dat protokolu procházející jímky.  
+ Definuje filtry pro streamování dat protokolu procházející jímkou.  
 
 |Prvek|Typ|Popis|  
 |-------------|----------|-----------------|  
 |**Kanál**|řetězec|Viz popis jinde na této stránce.|  
 
-## <a name="channel-element"></a>Prvek kanálu
- *Strom: Kořen - DiagnostikaKonfigurace - PublicConfig - WadCFG - SinksConfig - Sink - Kanály - Kanál*
+## <a name="channel-element"></a>Element kanálu
+ *Strom: root-DiagnosticsConfiguration-PublicConfig-WadCFG-SinksConfig-jímka-kanály-kanál*
 
- Přidáno ve verzi 1.5.  
+ Přidáno ve verzi 1,5.  
 
- Definuje umístění, do kterých chcete odesílat diagnostická data. Například služba Application Insights.  
+ Definuje umístění, do kterých se budou posílat diagnostická data. Například služba Application Insights.  
 
 |Atributy|Typ|Popis|  
 |----------------|----------|-----------------|  
-|**Loglevel**|**Řetězec**|Určuje minimální úroveň závažnosti pro položky protokolu, které jsou přeneseny. Výchozí hodnota je **Undefined**, která přenáší všechny protokoly. Další možné hodnoty (v pořadí od většiny až nejmenších informací) jsou **Podrobné**, **Informace**, **Upozornění**, **Chyba**a **Kritické**.|  
-|**Jméno**|**Řetězec**|Jedinečný název kanálu, na který se má odkazovat|  
+|**logLevel**|**řetězec**|Určuje minimální úroveň závažnosti pro přenesené položky protokolu. Výchozí hodnota není **definována**, což přenáší všechny protokoly. Další možné hodnoty (v pořadí od nejvyšších po nejnižší) jsou **podrobné**, **informace**, **varování**, **Chyba**a **kritická**.|  
+|**Jméno**|**řetězec**|Jedinečný název kanálu, na který se má odkazovat|  
 
 
-## <a name="privateconfig-element"></a>PrivateConfig Element
- *Strom: Kořen - DiagnostikaKonfigurace - PrivateConfig*
+## <a name="privateconfig-element"></a>Element PrivateConfig
+ *Strom: root-DiagnosticsConfiguration-PrivateConfig*
 
- Přidáno ve verzi 1.3.  
+ Přidáno ve verzi 1,3.  
 
  Nepovinné  
 
- Ukládá soukromé podrobnosti účtu úložiště (název, klíč a koncový bod). Tyto informace se odešlou do virtuálního počítače, ale nelze z něj načíst.  
+ Ukládá soukromé údaje o účtu úložiště (název, klíč a koncový bod). Tyto informace se odesílají do virtuálního počítače, ale nedají se z něho načíst.  
 
 |Podřízené elementy|Popis|  
 |--------------------|-----------------|  
-|**StorageAccount**|Účet úložiště, který chcete použít. Následující atributy jsou povinné<br /><br /> - **name** - Název účtu úložiště.<br /><br /> - **klíč** - Klíč k účtu úložiště.<br /><br /> - **koncový bod** - koncový bod pro přístup k účtu úložiště. <br /><br /> -**sasToken** (přidáno 1.8.1) - Můžete zadat token SAS namísto klíče účtu úložiště v privátní konfigurace. Pokud je k dispozici, klíč účtu úložiště je ignorována. <br />Požadavky na token SAS: <br />- Podporuje pouze token SAS účtu <br />- *b* *,* jsou vyžadovány typy služeb t. <br /> - *a*, *c*, *u*, *w* oprávnění jsou požadovány. <br /> - *c*, *o* typy prostředků jsou povinné. <br /> - Podporuje pouze protokol HTTPS <br /> - Doba zahájení a vypršení platnosti musí být platná.|  
+|**StorageAccount**|Účet úložiště, který se má použít. Jsou vyžadovány následující atributy.<br /><br /> - **název** – název účtu úložiště.<br /><br /> - **klíč** -klíč k účtu úložiště.<br /><br /> - **koncový** bod – koncový bod pro přístup k účtu úložiště. <br /><br /> -**sasToken** (přidané 1.8.1) – v privátní konfiguraci můžete místo klíče účtu úložiště zadat token SAS. Pokud je zadaný, klíč účtu úložiště se ignoruje. <br />Požadavky na token SAS: <br />– Podporuje jenom token SAS účtu. <br />- jsou požadovány typy služeb *b*, *t* . <br /> - jsou vyžadována oprávnění *a*, *c*, *u*, *w* . <br /> - jsou požadovány typy prostředků *c*, *o* . <br /> – Podporuje jenom protokol HTTPS. <br /> – Čas zahájení a vypršení platnosti musí být platný.|  
 
 
-## <a name="isenabled-element"></a>Prvek Isenabled  
- *Strom: Kořen – diagnostikaKonfigurace – IsEnabled*
+## <a name="isenabled-element"></a>Nepovolený element  
+ *Strom: root-DiagnosticsConfiguration--povoleno*
 
- Boolean. Slouží `true` k povolení diagnostiky nebo `false` k zakázání diagnostiky.
+ Datového. Použijte `true` k povolení diagnostiky nebo `false` zakázání diagnostiky.
 
 ## <a name="example-configuration"></a>Příklad konfigurace
- Následuje kompletní ukázková konfigurace pro rozšíření diagnostiky systému Windows zobrazená v jazycích JSON i XML.
+ Následuje kompletní Ukázková konfigurace pro rozšíření diagnostiky Windows zobrazené v JSON a XML.
 
  
 ### <a name="json"></a>JSON
 
-*PublicConfig* a *PrivateConfig* jsou odděleny, protože ve většině případů použití JSON jsou předány jako různé proměnné. Mezi tyto případy patří šablony Správce prostředků, Prostředí PowerShell a Visual Studio.
+*PublicConfig* a *PrivateConfig* jsou oddělené, protože ve většině případů použití JSON jsou předány jako jiné proměnné. Mezi tyto případy patří šablony Správce prostředků, PowerShell a Visual Studio.
 
 > [!NOTE]
-> Veřejná konfigurace Azure Monitor jíme definice má dvě vlastnosti, *resourceId* a *oblast*. Ty jsou potřeba jenom pro klasické virtuální aplikace a klasické cloudové služby. Tyto vlastnosti by neměly být použity pro jiné prostředky.
+> Definice veřejné jímky Azure Monitor pro konfiguraci má dvě vlastnosti, *ResourceID* a *region*. Ty se vyžadují jenom pro klasické virtuální počítače a klasické cloudové služby. Tyto vlastnosti by neměly být používány pro jiné prostředky.
 
 ```json
 "PublicConfig" {
@@ -505,7 +505,7 @@ Prvek nejvyšší úrovně diagnostického konfiguračního souboru.
 ```
 
 > [!NOTE]
-> Privátní konfigurace Azure Monitor jímky definice má dvě vlastnosti *PrincipalId* a *tajné*. Ty jsou potřeba jenom pro klasické virtuální aplikace a klasické cloudové služby. Tyto vlastnosti by neměly být použity pro jiné prostředky.
+> Definice privátního jímky konfigurace Azure Monitor má dvě vlastnosti, *PrincipalId* a *tajný kód*. Ty se vyžadují jenom pro klasické virtuální počítače a klasické cloudové služby. Tyto vlastnosti by neměly být používány pro jiné prostředky.
 
 
 ```json
@@ -671,6 +671,6 @@ Prvek nejvyšší úrovně diagnostického konfiguračního souboru.
 
 ```  
 > [!NOTE]
-> Veřejná konfigurace Azure Monitor definice jímky má dvě vlastnosti, resourceId a oblast. Ty jsou potřeba jenom pro klasické virtuální aplikace a klasické cloudové služby. Tyto vlastnosti by neměly být používány pro virtuální počítače správce prostředků nebo škálovací sady virtuálních počítačů.
-> K dispozici je také další private config prvek pro jímky Azure Monitor, který prochází v Id jistiny a tajné. To se vyžaduje jenom pro klasické virtuální choda a klasické cloudové služby. Pro virtuální počítače správce prostředků a VMSS definice Azure Monitor v privátní konfigurační prvek může být vyloučena.
+> Definice veřejné jímky Azure Monitor pro konfiguraci má dvě vlastnosti, resourceId a region. Ty se vyžadují jenom pro klasické virtuální počítače a klasické cloudové služby. Tyto vlastnosti by se neměly používat pro Správce prostředků Virtual Machines nebo Virtual Machine Scale Sets.
+> K dispozici je také další soukromý prvek konfigurace pro Azure Monitor jímka, který projde identifikátorem zabezpečení a tajným kódem. Tento požadavek se vyžaduje jenom pro klasické virtuální počítače a klasické Cloud Services. Pro Správce prostředků virtuální počítače a VMSS definici Azure Monitor v soukromém elementu konfigurace lze vyloučit.
 >

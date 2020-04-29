@@ -1,6 +1,6 @@
 ---
-title: Sledování stavu služby Azure IoT Hub | Dokumenty společnosti Microsoft
-description: Pomocí Azure Monitoru a Azure Resource Health monitorujete ioT hub a rychle diagnostikují problémy.
+title: Monitorujte stav služby Azure IoT Hub | Microsoft Docs
+description: Pomocí Azure Monitor a Azure Resource Health můžete rychle monitorovat IoT Hub a diagnostikovat problémy.
 author: kgremban
 manager: philmea
 ms.service: iot-hub
@@ -10,45 +10,45 @@ ms.date: 11/11/2019
 ms.author: kgremban
 ms.custom: amqp
 ms.openlocfilehash: a1d74085090a3e20764d7b6fee84ffca52d5cb74
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81732431"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Monitorování stavu služby Azure IoT Hub a rychlá diagnostika potíží
 
-Firmy, které implementují Azure IoT Hub, očekávají spolehlivý výkon ze svých prostředků. Služba IoT Hub je plně integrovaná s Azure [Monitor](../azure-monitor/index.yml) a [Azure Resource Health,](../service-health/resource-health-overview.md)které vám pomohou pečlivě sledovat vaše operace. Tyto dvě služby vám poskytují data, která potřebujete k tomu, aby vaše řešení IoT byla v provozu v pořádku.
+Firmy, které implementují Azure IoT Hub očekávají od svých prostředků spolehlivý výkon. Abychom vám pomohli udržovat v rámci svých operací uzavřený kukátko, IoT Hub je plně integrovaná s [Azure monitor](../azure-monitor/index.yml) a [Azure Resource Health](../service-health/resource-health-overview.md). Tyto dvě služby fungují tak, aby vám poskytovaly data, která potřebujete k zajištění aktuálnosti řešení IoT a jejich spuštění v dobrém stavu.
 
-Azure Monitor je jediný zdroj monitorování a protokolování pro všechny vaše služby Azure. Diagnostické protokoly, které Azure Monitor generuje, můžete odeslat do protokolů Azure Monitor, event hubů nebo úložiště Azure pro vlastní zpracování. Azure Monitor metriky a nastavení diagnostiky vám přehled o výkonu vašich prostředků. Pokračujte ve čtení tohoto článku a zjistěte, jak [používat Azure Monitor](#use-azure-monitor) s centrem IoT. 
+Azure Monitor je jeden zdroj monitorování a protokolování pro všechny služby Azure. Můžete odeslat diagnostické protokoly, které Azure Monitor generuje pro Azure Monitor protokoly, Event Hubs nebo Azure Storage pro vlastní zpracování. Metriky a nastavení diagnostiky Azure Monitor poskytují přehled o výkonu vašich prostředků. V tomto článku se dozvíte, jak [používat Azure monitor](#use-azure-monitor) ve službě IoT Hub. 
 
 > [!IMPORTANT]
-> Události vyzařované službou IoT Hub pomocí diagnostických protokolů Azure Monitor upozorní, že budou spolehlivé nebo objednané. Některé události mohou být ztraceny nebo doručeny mimo objednávku. Diagnostické protokoly také nejsou určeny k real-time a může trvat několik minut pro události, které mají být zaznamenány na výběr cíle.
+> Události generované službou IoT Hub pomocí protokolů Azure Monitor diagnostiky nejsou zaručené jako spolehlivé nebo seřazené. Některé události mohou být ztraceny nebo doručeny mimo pořadí. Diagnostické protokoly také nemají smysl v reálném čase a může trvat několik minut, než se události zaprotokolují do svého výběru cíle.
 
-Azure Resource Health vám pomůže diagnostikovat a získat podporu, když problém Azure ovlivní vaše prostředky. Řídicí panel poskytuje aktuální a minulý stav pro každý z vašich center IoT. Pokračujte v části v dolní části tohoto článku, kde se dozvíte, jak [používat Azure Resource Health](#use-azure-resource-health) s centrem IoT. 
+Azure Resource Health vám pomůže diagnostikovat a získat podporu v případě, že problém Azure ovlivňuje vaše prostředky. Řídicí panel poskytuje aktuální a minulý stav pro každé z vašich Center IoT. V části v dolní části tohoto článku se dozvíte, jak [používat Azure Resource Health](#use-azure-resource-health) ve službě IoT Hub. 
 
-IoT Hub také poskytuje vlastní metriky, které můžete použít k pochopení stavu prostředků IoT. Další informace najdete [v tématu Principy metrik centra IoT Hub](iot-hub-metrics.md).
+IoT Hub také nabízí vlastní metriky, které vám pomohou pochopit stav svých prostředků IoT. Další informace najdete v tématu [vysvětlení metrik IoT Hub](iot-hub-metrics.md).
 
 ## <a name="use-azure-monitor"></a>Použití Azure Monitoru
 
-Azure Monitor poskytuje diagnostické informace pro prostředky Azure, což znamená, že můžete monitorovat operace, které probíhají v rámci služby IoT hub.
+Azure Monitor poskytuje diagnostické informace o prostředcích Azure, což znamená, že můžete sledovat operace, které probíhají v rámci služby IoT Hub.
 
-Nastavení diagnostiky Azure Monitoru nahrazuje monitorování operací služby IoT Hub. Pokud v současné době používáte monitorování operací, měli byste migrovat pracovní postupy. Další informace naleznete v [tématu Migrace z monitorování operací do nastavení diagnostiky](iot-hub-migrate-to-diagnostics-settings.md).
+Nastavení diagnostiky Azure Monitor nahrazuje monitorování operací IoT Hub. Pokud aktuálně používáte monitorování provozu, měli byste pracovní postupy migrovat. Další informace najdete v tématu [migrace z monitorování provozu na nastavení diagnostiky](iot-hub-migrate-to-diagnostics-settings.md).
 
-Další informace o konkrétních metrikách a událostech, které Azure Monitor sleduje, najdete v [tématu Podporované metriky s Azure Monitorem](../azure-monitor/platform/metrics-supported.md) a [podporovanými službami, schématy a kategoriemi pro diagnostické protokoly Azure](../azure-monitor/platform/diagnostic-logs-schema.md).
+Další informace o konkrétních metrikách a událostech, které Azure Monitor sleduje, najdete v tématu [podporované metriky s Azure monitor](../azure-monitor/platform/metrics-supported.md) a [podporovanými službami, schématy a kategoriemi pro diagnostické protokoly Azure](../azure-monitor/platform/diagnostic-logs-schema.md).
 
 [!INCLUDE [iot-hub-diagnostics-settings](../../includes/iot-hub-diagnostics-settings.md)]
 
 ### <a name="understand-the-logs"></a>Vysvětlení protokolů
 
-Azure Monitor sleduje různé operace, ke kterým dochází v centru IoT Hub. Každá kategorie má schéma, které definuje, jak jsou hlášeny události v této kategorii.
+Azure Monitor sleduje různé operace, ke kterým dochází v IoT Hub. Každá kategorie má schéma, které definuje způsob hlášení událostí v této kategorii.
 
 #### <a name="connections"></a>Připojení
 
-Kategorie připojení sleduje události připojení zařízení a odpojení od centra IoT a také chyby. Tato kategorie je užitečná pro identifikaci pokusů o neoprávněné připojení a upozornění, když ztratíte připojení k zařízením.
+Kategorie připojení sleduje události připojení zařízení a odpojení od služby IoT Hub a také chyby. Tato kategorie je užitečná pro identifikaci neautorizovaných pokusů o připojení a upozornění, když ztratíte připojení k zařízením.
 
 > [!NOTE]
-> Pro spolehlivý stav připojení zařízení zkontrolujte [prezenční signál zařízení](iot-hub-devguide-identity-registry.md#device-heartbeat).
+> U spolehlivých stavů připojení zařízení se kontrolují [prezenční signály zařízení](iot-hub-devguide-identity-registry.md#device-heartbeat).
 
 ```json
 {
@@ -67,15 +67,15 @@ Kategorie připojení sleduje události připojení zařízení a odpojení od c
 }
 ```
 
-#### <a name="cloud-to-device-commands"></a>Příkazy cloud-to-device
+#### <a name="cloud-to-device-commands"></a>Příkazy z cloudu na zařízení
 
-Kategorie příkazů cloud-zařízení sleduje chyby, ke kterým dochází v centru IoT a souvisejí s kanálem zpráv mezi cloudy a zařízení. Tato kategorie zahrnuje chyby, ke kterým dochází z:
+Kategorie příkazy Cloud-zařízení sleduje chyby, ke kterým dochází ve službě IoT Hub a které souvisejí s kanálem zpráv z cloudu na zařízení. Tato kategorie zahrnuje chyby, ke kterým dochází:
 
-* Odesílání zpráv z cloudu na zařízení (jako jsou chyby neoprávněného odesílatele),
-* Příjem zpráv mezi cloudy (jako je počet doručení překročen počet chyb) a
-* Příjem zpětné vazby ze zpráv z cloudu na zařízení (jako jsou chyby, jejichž platnost vypršela).
+* Posílání zpráv z cloudu na zařízení (jako jsou chyby neautorizovaných odesílatelů),
+* Příjem zpráv z cloudu na zařízení (jako je počet předaných doručení překročil chyby) a
+* Příjem zpětné vazby ze zpráv typu cloud-zařízení (jako jsou chyby vypršení zpětné vazby)
 
-Tato kategorie nezachytí chyby při úspěšném doručení zprávy cloud zařízení, ale potom nesprávně zpracována zařízením.
+Tato kategorie nezachycuje chyby, když se zpráva z cloudu na zařízení úspěšně doručí, ale zařízení nesprávně zpracuje.
 
 ```json
 {
@@ -98,7 +98,7 @@ Tato kategorie nezachytí chyby při úspěšném doručení zprávy cloud zař�
 
 #### <a name="device-identity-operations"></a>Operace identity zařízení
 
-Kategorie operací identity zařízení sleduje chyby, ke kterým dochází při pokusu o vytvoření, aktualizaci nebo odstranění položky v registru identit služby IoT hub. Sledování této kategorie je užitečné pro zřizování scénáře.
+Kategorie operace identity zařízení sleduje chyby, ke kterým dochází při pokusu o vytvoření, aktualizaci nebo odstranění záznamu v registru identit ve službě IoT Hub. Sledování této kategorie je užitečné pro scénáře zřizování.
 
 ```json
 {
@@ -121,13 +121,13 @@ Kategorie operací identity zařízení sleduje chyby, ke kterým dochází při
 
 #### <a name="routes"></a>Trasy
 
-Kategorie směrování zpráv sleduje chyby, ke kterým dochází během vyhodnocení trasy zprávy a stavu koncového bodu, jak je vnímá služba IoT Hub. Tato kategorie zahrnuje události, jako jsou:
+Kategorie směrování zpráv sleduje chyby, ke kterým došlo během hodnocení směrování zpráv a stavu koncového bodu, jak je uvedeno IoT Hub. Tato kategorie zahrnuje události jako:
 
-* Pravidlo se vyhodnotí jako "nedefinované",
+* Pravidlo se vyhodnotí jako nedefinované.
 * IoT Hub označí koncový bod jako mrtvý nebo
-* Všechny chyby přijaté z koncového bodu. 
+* Jakékoli chyby přijaté z koncového bodu. 
 
-Tato kategorie nezahrnuje konkrétní chyby týkající se samotných zpráv (jako jsou chyby omezení zařízení), které jsou hlášeny v kategorii "telemetrie zařízení".
+Tato kategorie neobsahuje konkrétní chyby týkající se samotných zpráv (například chyby omezování zařízení), které jsou uvedeny v kategorii telemetrie zařízení.
 
 ```json
 {
@@ -148,7 +148,7 @@ Tato kategorie nezahrnuje konkrétní chyby týkající se samotných zpráv (ja
 
 #### <a name="device-telemetry"></a>Telemetrie zařízení
 
-Kategorie telemetrie zařízení sleduje chyby, ke kterým dochází v centru IoT a souvisejí s kanálem telemetrie. Tato kategorie zahrnuje chyby, ke kterým dochází při odesílání událostí telemetrie (například omezení) a přijímání telemetrických událostí (například neautorizovaného čtecího zařízení). Tato kategorie nemůže zachytit chyby způsobené kódem spuštěným na samotném zařízení.
+Kategorie telemetrie zařízení sleduje chyby, ke kterým dochází ve službě IoT Hub a souvisí s kanálem telemetrie. Tato kategorie zahrnuje chyby, ke kterým dochází při posílání událostí telemetrie (například omezování) a přijímání událostí telemetrie (například neoprávněné čtecí zařízení). Tato kategorie nemůže zachytit chyby způsobené kódem běžícím na samotném zařízení.
 
 ```json
 {
@@ -171,15 +171,15 @@ Kategorie telemetrie zařízení sleduje chyby, ke kterým dochází v centru Io
 
 #### <a name="file-upload-operations"></a>Operace nahrávání souborů
 
-Kategorie nahrávání souborů sleduje chyby, ke kterým dochází v centru IoT a souvisí s funkcí nahrávání souborů. Tato kategorie zahrnuje:
+Kategorie nahrání souborů sleduje chyby, ke kterým dochází ve službě IoT Hub a souvisí s funkcemi pro nahrávání souborů. Tato kategorie zahrnuje:
 
-* Chyby, ke kterým dochází s identifikátorem URI SAS, například když vyprší jeho platnost předtím, než zařízení upozorní centrum dokončeného nahrávání.
+* Chyby, ke kterým dochází s identifikátorem URI SAS, například když vyprší platnost před tím, než zařízení upozorní centrum dokončeného nahrávání.
 
-* Neúspěšná nahraná nahlášená zařízením.
+* Neúspěšná odeslání uvedená v zařízení
 
-* Chyby, ke kterým dochází, když soubor není nalezen v úložišti během vytváření zpráv oznámení služby IoT Hub.
+* Chyby, ke kterým dochází, když se během vytváření zprávy IoT Hub oznámení v úložišti nenajde soubor
 
-Tato kategorie nemůže zachytit chyby, ke kterým dochází přímo, když zařízení nahrává soubor do úložiště.
+Tato kategorie nemůže zachytit chyby, ke kterým přímo dojde, když zařízení nahrává do úložiště soubor.
 
 ```json
 {
@@ -201,9 +201,9 @@ Tato kategorie nemůže zachytit chyby, ke kterým dochází přímo, když zař
 }
 ```
 
-#### <a name="cloud-to-device-twin-operations"></a>Operace s dvojčaty cloud-to-device
+#### <a name="cloud-to-device-twin-operations"></a>Zdvojené operace z cloudu na zařízení
 
-Kategorie operací dvojčete cloud-to-device sleduje události iniciované službou na dvojčatech zařízení. Tyto operace mohou zahrnovat získání dvojčete, aktualizaci nebo nahrazení značek a aktualizaci nebo nahrazení požadovaných vlastností.
+Kategorie dvojitých operací z cloudu na zařízení sleduje události iniciované službou v případě vláken zařízení. Tyto operace mohou zahrnovat získání dvojitých značek, aktualizovat nebo nahradit značky a aktualizovat nebo nahrazovat požadované vlastnosti.
 
 ```json
 {
@@ -223,9 +223,9 @@ Kategorie operací dvojčete cloud-to-device sleduje události iniciované služ
 }
 ```
 
-#### <a name="device-to-cloud-twin-operations"></a>Operace dvojčete zařízení cloudu
+#### <a name="device-to-cloud-twin-operations"></a>Zdvojené operace mezi zařízeními a cloudem
 
-Kategorie operací dvojčete zařízení cloud sleduje události iniciované zařízením na dvojčatech zařízení. Tyto operace mohou zahrnovat získat dvojče, aktualizovat hlášené vlastnosti a přihlásit se k odběru požadovaných vlastností.
+Kategorie operace s dvojitým cloudem v zařízení sleduje události iniciované zařízením v případě nevláken zařízení. Tyto operace mohou zahrnovat získat zdvojené, aktualizovat hlášené vlastnosti a přihlásit se k odběru požadovaných vlastností.
 
 ```json
 {
@@ -245,9 +245,9 @@ Kategorie operací dvojčete zařízení cloud sleduje události iniciované za�
 }
 ```
 
-#### <a name="twin-queries"></a>Dvojité dotazy
+#### <a name="twin-queries"></a>Zdvojené dotazy
 
-Twin dotazy kategorie sestavy na požadavky na dotazy pro dvojčata zařízení, které jsou inicializovány v cloudu.
+Kategorie dvojitých dotazů se sestavuje na dotazech na požadavky na vlákna zařízení, která jsou inicializovaná v cloudu.
 
 ```json
 {
@@ -269,7 +269,7 @@ Twin dotazy kategorie sestavy na požadavky na dotazy pro dvojčata zařízení,
 
 #### <a name="jobs-operations"></a>Operace úloh
 
-Sestavy kategorie operací úloh y na základě požadavků na úlohy pro aktualizaci dvojčat zařízení nebo vyvolání přímých metod na více zařízeních. Tyto požadavky jsou inicializovány v cloudu.
+Kategorie operace úlohy se sestavuje na žádostech o úlohy, aby se aktualizovaly vlákna zařízení nebo vyvolaly přímé metody na více zařízeních. Tyto požadavky jsou iniciovány v cloudu.
 
 ```json
 {
@@ -291,7 +291,7 @@ Sestavy kategorie operací úloh y na základě požadavků na úlohy pro aktual
 
 #### <a name="direct-methods"></a>Přímé metody
 
-Kategorie přímých metod sleduje interakce požadavku a odpovědi odeslané jednotlivým zařízením. Tyto požadavky jsou inicializovány v cloudu.
+Kategorie přímé metody sleduje interakce odpovědí na požadavky odeslané na jednotlivá zařízení. Tyto požadavky jsou iniciovány v cloudu.
 
 ```json
 {
@@ -311,15 +311,15 @@ Kategorie přímých metod sleduje interakce požadavku a odpovědi odeslané je
 }
 ```
 
-#### <a name="distributed-tracing-preview"></a>Distribuované trasování (náhled)
+#### <a name="distributed-tracing-preview"></a>Distribuované trasování (Preview)
 
-Kategorie distribuovaného trasování sleduje ID korelace pro zprávy, které nesou záhlaví kontextu trasování. Chcete-li tyto protokoly plně povolit, musí být kód na straně klienta aktualizován pomocí [funkce Analyzovat a diagnostikovat aplikace IoT od konce pomocí distribuovaného trasování služby IoT Hub (náhled).](iot-hub-distributed-tracing.md)
+Kategorie distribuované trasování sleduje ID korelace pro zprávy, které přenášejí hlavičku kontextu trasování. Aby bylo možné tyto protokoly plně povolit, musí být kód na straně klienta aktualizován pomocí následujících příkazů [analyzovat a diagnostikovat aplikace IoT pomocí IoT Hub distribuované trasování (Preview)](iot-hub-distributed-tracing.md).
 
-Všimněte `correlationId` si, že je v souladu s [W3C trasovací kontext](https://github.com/w3c/trace-context) návrhu, kde obsahuje `trace-id` i . `span-id`
+Všimněte si `correlationId` , že odpovídá návrhu [kontextu trasování W3C](https://github.com/w3c/trace-context) , kde obsahuje `trace-id` , a také. `span-id`
 
-##### <a name="iot-hub-d2c-device-to-cloud-logs"></a>Protokoly Služby IoT Hub D2C (zařízení cloud)
+##### <a name="iot-hub-d2c-device-to-cloud-logs"></a>Protokoly IoT Hub D2C (zařízení-Cloud)
 
-Služba IoT Hub zaznamená tento protokol, když do služby IoT Hub dorazí zpráva obsahující platné vlastnosti trasování.
+IoT Hub zaznamenává tento protokol, když se do IoT Hub dorazí zpráva obsahující platné vlastnosti trasování.
 
 ```json
 {
@@ -342,18 +342,18 @@ Služba IoT Hub zaznamená tento protokol, když do služby IoT Hub dorazí zpr�
 }
 ```
 
-Zde `durationMs` se nepočítá, protože hodiny služby IoT Hub nemusí být synchronizovány s hodinami zařízení, a proto může být výpočet doby trvání zavádějící. Doporučujeme psát logiku pomocí časová razítka v `properties` části zachytit špičky v latenci zařízení cloud.
+V tomto `durationMs` případě se nepočítá, protože hodiny IoT Hub nemusejí být synchronizované s hodinami zařízení, takže výpočet doby trvání může být zavádějící. Pro zachycení špičky v latenci v rámci zařízení `properties` do cloudu doporučujeme napsat logiku pomocí časových razítek v části.
 
 | Vlastnost | Typ | Popis |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
-| **messageSize** | Integer | Velikost zprávy mezi zařízeními a cloudem v bajtech |
-| **deviceId** | Řetězec 7bitových alfanumerických znaků ASCII | Identita zařízení |
-| **volajícíLocalTimeUtc** | Časové razítko Času UTC | Čas vytvoření zprávy, jak je hlášenmístní hodiny zařízení |
-| **voleLocalTimeUtc** | Časové razítko Času UTC | Čas doručení zprávy na bránu služby IoT Hub, jak je hlásí hodiny na straně služby služby Služby IoT Hub |
+| **messageSize** | Integer | Velikost zprávy typu zařízení-Cloud v bajtech |
+| **deviceId** | Řetězec alfanumerických alfanumerických znaků ASCII | Identita zařízení |
+| **callerLocalTimeUtc** | Časové razítko UTC | Čas vytvoření zprávy, jak je uvedeno v místních hodinách zařízení |
+| **calleeLocalTimeUtc** | Časové razítko UTC | Čas doručení zprávy na bránu IoT Hub, jak je uvedeno v IoT Hub hodiny na straně služby |
 
-##### <a name="iot-hub-ingress-logs"></a>Protokoly příchozích dat v centru IoT
+##### <a name="iot-hub-ingress-logs"></a>IoT Hub protokoly příchozího přenosu dat
 
-Služba IoT Hub zaznamenává tento protokol, když zpráva obsahující platné vlastnosti trasování zapíše do interního nebo předdefinovaného centra událostí.
+IoT Hub zaznamenává tento protokol, pokud zpráva obsahující platné vlastnosti trasování zapisuje do interního nebo integrovaného centra událostí.
 
 ```json
 {
@@ -376,16 +376,16 @@ Služba IoT Hub zaznamenává tento protokol, když zpráva obsahující platné
 }
 ```
 
-V `properties` části tento protokol obsahuje další informace o příchozím přenosu dat zprávy.
+V `properties` části Tento protokol obsahuje další informace o příchozím přenosu zpráv.
 
 | Vlastnost | Typ | Popis |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
-| **jepovoleno RoutingEnabled** | Řetězec | True nebo false označuje, zda je směrování zpráv povoleno v centru IoT Hub |
-| **parentSpanId** | Řetězec | [Span-id](https://w3c.github.io/trace-context/#parent-id) nadřazené zprávy, která by trasování zprávy D2C v tomto případě |
+| **isRoutingEnabled** | Řetězec | Hodnota true nebo false označuje, zda je v IoT Hub povoleno směrování zpráv. |
+| **parentSpanId** | Řetězec | [Identifikátor rozsahu](https://w3c.github.io/trace-context/#parent-id) nadřazené zprávy, který by byl trasováním zpráv D2C v tomto případě |
 
-##### <a name="iot-hub-egress-logs"></a>Protokoly odchozích přenosů v centru IoT
+##### <a name="iot-hub-egress-logs"></a>Protokoly odchozího IoT Hub
 
-Služba IoT Hub zaznamenává tento protokol, když je [směrování](iot-hub-devguide-messages-d2c.md) povoleno a zpráva je zapsána do [koncového bodu](iot-hub-devguide-endpoints.md). Pokud směrování není povoleno, služba IoT Hub tento protokol nezaznamená.
+IoT Hub zaznamenává tento protokol, pokud je povoleno [Směrování](iot-hub-devguide-messages-d2c.md) a zpráva je zapsána do [koncového bodu](iot-hub-devguide-endpoints.md). Pokud směrování není povolené, IoT Hub tento protokol nezaznamenává.
 
 ```json
 {
@@ -408,17 +408,17 @@ Služba IoT Hub zaznamenává tento protokol, když je [směrování](iot-hub-de
 }
 ```
 
-V `properties` části tento protokol obsahuje další informace o příchozím přenosu dat zprávy.
+V `properties` části Tento protokol obsahuje další informace o příchozím přenosu zpráv.
 
 | Vlastnost | Typ | Popis |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
-| **název koncového bodu** | Řetězec | Název koncového bodu směrování |
+| **koncový bod** | Řetězec | Název koncového bodu směrování |
 | **endpointType** | Řetězec | Typ koncového bodu směrování |
-| **parentSpanId** | Řetězec | [Span-id](https://w3c.github.io/trace-context/#parent-id) nadřazené zprávy, která by byla trasování příchozích zpráv služby IoT Hub v tomto případě |
+| **parentSpanId** | Řetězec | [Identifikátor ID](https://w3c.github.io/trace-context/#parent-id) nadřazené zprávy, který bude v tomto případě IoT Hub trasování zprávy příchozího přenosu dat |
 
 #### <a name="configurations"></a>Konfigurace
 
-Protokoly konfigurace služby IoT Hub sledují události a chyby sady funkcí Automatické správy zařízení.
+Protokoly konfigurace IoT Hub sledují události a chyby pro sadu funkcí automatické správy zařízení.
 
 ```json
 {
@@ -440,9 +440,9 @@ Protokoly konfigurace služby IoT Hub sledují události a chyby sady funkcí Au
 }
 ```
 
-### <a name="device-streams-preview"></a>Datové proudy zařízení (náhled)
+### <a name="device-streams-preview"></a>Datové proudy zařízení (Preview)
 
-Kategorie streamů zařízení sleduje interakce požadavku a odpovědi odeslané jednotlivým zařízením.
+Kategorie streamy zařízení sleduje interakce požadavků a odpovědí odeslaných na jednotlivá zařízení.
 
 ```json
 {
@@ -466,7 +466,7 @@ Kategorie streamů zařízení sleduje interakce požadavku a odpovědi odeslan�
 
 ### <a name="read-logs-from-azure-event-hubs"></a>Čtení protokolů z Azure Event Hubs
 
-Po nastavení protokolování událostí prostřednictvím nastavení diagnostiky můžete vytvořit aplikace, které odečtou protokoly, takže můžete provést akci na základě informací v nich. Tento ukázkový kód načte protokoly z centra událostí:
+Po nastavení protokolování událostí prostřednictvím nastavení diagnostiky můžete vytvářet aplikace, které čtou protokoly, takže můžete provádět akce na základě informací v nich. Tento ukázkový kód načte protokoly z centra událostí:
 
 ```csharp
 class Program
@@ -533,23 +533,23 @@ class Program
 }
 ```
 
-## <a name="use-azure-resource-health"></a>Použití stavu prostředků Azure
+## <a name="use-azure-resource-health"></a>Použít Azure Resource Health
 
-Pomocí Azure Resource Health můžete sledovat, jestli je vaše centrum IoT zprovozněné. Můžete se také dozvědět, jestli místní výpadek ovlivňuje zdraví vašeho centra IoT hub. Chcete-li porozumět konkrétním podrobnostem o stavu služby Azure IoT Hub, doporučujeme [použít Azure Monitor](#use-azure-monitor).
+Pomocí Azure Resource Health můžete monitorovat, jestli je vaše centrum IoT v provozu. Můžete se také seznámit s tím, jestli je dopad na stav služby IoT Hub ovlivněný oblastní výpadky. Pro pochopení konkrétních podrobností o stavu IoT Hub Azure doporučujeme [používat Azure monitor](#use-azure-monitor).
 
-Azure IoT Hub označuje stav na místní úrovni. Pokud místní výpadek ovlivní vaše centrum IoT, stav se zobrazí jako **Neznámý**. Další informace najdete v tématu [typy prostředků a kontroly stavu v Azure stavu prostředků](../service-health/resource-health-checks-resource-types.md).
+Azure IoT Hub indikuje stav na regionální úrovni. Pokud oblastní výpadek ovlivňuje vaše centrum IoT, stav se zobrazí jako **Neznámý**. Další informace najdete v tématu [typy prostředků a kontroly stavu v Azure Resource Health](../service-health/resource-health-checks-resource-types.md).
 
-Chcete-li zkontrolovat stav vašich center IoT, postupujte takto:
+Pokud chcete zjistit stav vašich Center IoT, postupujte takto:
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
-2. Přejděte na**stav zdroje** **stavu** > služby .
+2. Přejděte na **Service Health** > **Resource Health**.
 
-3. V rozevíracích seznamech vyberte předplatné a pak vyberte **IoT Hub** jako typ prostředku.
+3. V rozevíracích seznamech vyberte své předplatné a pak jako typ prostředku vyberte **IoT Hub** .
 
-Další informace o interpretaci dat o stavu najdete v [tématu Přehled stavu prostředků Azure](../service-health/resource-health-overview.md).
+Další informace o tom, jak interpretovat údaje o stavu, najdete v tématu [Přehled Azure Resource Health](../service-health/resource-health-overview.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Principy metrik centra IoT Hub](iot-hub-metrics.md)
-* [Vzdálené monitorování ioT a oznámení pomocí aplikací Azure Logic Apps, které propojují vaše centrum IoT a poštovní schránku](iot-hub-monitoring-notifications-with-azure-logic-apps.md)
+* [Pochopení IoT Hub metriky](iot-hub-metrics.md)
+* [Vzdálené monitorování a oznámení IoT pomocí Azure Logic Apps připojení ke službě IoT Hub a poštovní schránce](iot-hub-monitoring-notifications-with-azure-logic-apps.md)

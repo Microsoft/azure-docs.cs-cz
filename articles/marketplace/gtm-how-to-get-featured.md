@@ -1,6 +1,6 @@
 ---
-title: Go-To-Market Services - Jak se dostat vystupoval na trhu | Azure Marketplace
-description: Služby go-to-market – tato část popisuje, jak získat výpis, který se zobrazuje na Azure Marketplace.
+title: Služby pro uvedení na trh – jak získat vybrané na webu Marketplace | Azure Marketplace
+description: Služby pro uvedení na trh – v této části se dozvíte, jak získat seznam doporučený pro Azure Marketplace
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,44 +8,44 @@ ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: dsindona
 ms.openlocfilehash: fe18ca41942ff58b8d9eefef3122c90980029766
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81684606"
 ---
-# <a name="how-to-get-featured-in-appsource-and-azure-marketplace"></a>Jak se dostat do AppSource a Azure Marketplace
+# <a name="how-to-get-featured-in-appsource-and-azure-marketplace"></a>Jak získat Doporučené informace v AppSource a Azure Marketplace
 
-Azure Marketplace a AppSource mají doporučené části **aplikací,** kde můžete získat aplikaci:
+Azure Marketplace a AppSource obsahují oddíly s **vybranými aplikacemi** , kde můžete mít vybranou aplikaci:
 
-* Za prvé, pokud máte zkušební verzi nebo transakci nabídku, můžete použít "kategorie propagace" prospěch prostřednictvím [komerčního trhu výhody](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits).
-* Za druhé, zkontrolujte níže uvedený seznam osvědčených postupů a kritérií, abyste získali místo.
+* Za prvé, pokud máte nabídku zkušební verze nebo transakce, můžete využít výhody "propagace kategorií" prostřednictvím [výhod komerčního tržiště](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits).
+* Potom si přečtěte seznam osvědčených postupů a kritérií níže, abyste mohli získat na místě.
 
-Algoritmus výběru vybraných aplikací generuje skóre do aplikace od společnosti Microsoft, stejně jako kreditní skóre osoby v USA.  Týdenní výběr doporučených aplikací bude založen na výpočtu výkonu aplikací a služeb.
+Algoritmus výběru vybrané aplikace vygeneruje skóre pro aplikaci od Microsoftu, stejně jako platební skóre osoby v USA.  Týdenní výběr doporučených aplikací bude založen na výpočtu výkonu aplikace a služby.
 
-## <a name="steps-to-take"></a>Kroky, které je třeba podniknout
+## <a name="steps-to-take"></a>Kroky, které je potřeba provést
 
-Ke zlepšení skóre můžete provést následující položky akce:
+Ke zlepšení skóre můžete použít následující akce:
 
-1. *Ujistěte se, že vaše aplikace nebo služba je správně kategorizována:* zvolte tři kategorie, které představují možnosti aplikace nebo služby.
-2. *Aplikace Azure Marketplace: spotřebovávejte azure měsíc za měsíc.* Pokud se vám podaří dosáhnout 1 000 hodin využití Azure měsíčně, výrazně zvýšíte vaše šance na nejlepší roli.
-3. *AppSource Apps: zvyšte akvizice, které přicházejí do vaší nabídky.* Pokud jste schopni dosáhnout 10 akvizic za měsíc, budete výrazně zvýšit své šance na bytí vystupoval. 
-4. *Dosáhněte stavu Co-Sell ready*: vyplňte požadavky na co-sell ready.
-5. *Zlepšete kvalitu nabídky*: informace o úpravě nabídky naleznete v [pokynech](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation) pro obsah
-6. Publikování více nabídek na Marketplace: jsou uvedeny všechny základní aplikace a služby? Máte zkušební zkušenosti?
-7. Povzbuďte své zákazníky, aby psali recenze.
+1. *Ujistěte se, že je vaše aplikace nebo služba vhodně zařazené*: vyberte tři kategorie, které reprezentují možnosti vaší aplikace nebo služby.
+2. *Azure Marketplace aplikace: Rozšiřte využití Azure za měsíc měsíčně.* Pokud můžete dosáhnout 1 000 hodin využití Azure v měsíci, bude se vám značně zvyšovat pravděpodobnost, že se vám bude podařit.
+3. *Aplikace AppSource: Zvyšte akvizice, které připravujeme na vaši nabídku.* Pokud máte možnost dosáhnout 10 akvizic za měsíc, budete značně zvyšovat pravděpodobnost, že se vám bude vymezit. 
+4. *Dosažení stavu připraveného pro společný prodej*: splnění požadavků pro spoluprodejní přípravu.
+5. *Zlepšení kvality vaší nabídky*: informace o tom, jak upravit nabídku, najdete v [pokynech pro výpis obsahu](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation) .
+6. Publikujete několik nabídek na webu Marketplace: jsou uvedené všechny vaše základní aplikace a služby? Máte zkušební prostředí?
+7. Doporučte zákazníkům psát recenze.
 
-Doporučené nabídky aplikací fungují odděleně od vyhledávacího algoritmu.
+Vybrané aplikace propagační akce fungují odděleně od vyhledávacího algoritmu.
 
 >[!Note]
->Pokud se vaše řešení ve výsledcích hledání nezobrazuje správně, najděte lístek podpory prostřednictvím nabídky Nápověda v [Centru partnerů](https://partner.microsoft.com/).
+>Pokud se vaše řešení nezobrazuje správně ve výsledcích hledání, zadávejte lístek podpory prostřednictvím nabídky Help v [partnerském centru](https://partner.microsoft.com/).
 
-Vaše podpora GTM také obsahuje úplnou knihovnu svépomocných šablon, webového obsahu, školení a nástrojů, které vám pomohou dále propagovat vaše zápisy a vaši firmu.
+Vaše podpora GTM také obsahuje úplnou knihovnu šablon samoobslužných pomoc, webového obsahu, školení a nástrojů, které vám pomůžou lépe propagovat vaše výpisy a vaše podnikání.
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o [výhodách komerčního trhu](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits).
+Přečtěte si další informace o [výhodách komerčního tržiště](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits).
 
-Chcete-li vytvořit a nakonfigurovat nabídku, přihlaste se do [Centra partnerů.](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)
+Přihlaste se k [partnerskému centru](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) , abyste mohli vytvořit a nakonfigurovat vaši nabídku.
 
 ---

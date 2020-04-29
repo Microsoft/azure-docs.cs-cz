@@ -1,6 +1,6 @@
 ---
-title: Připojení Raspberry Pi k Azure IoT Hub pomocí C | Dokumenty společnosti Microsoft
-description: Přečtěte si, jak nastavit a připojit Raspberry Pi k Azure IoT Hub pro Raspberry Pi k odesílání dat na cloudovou platformu Azure
+title: Připojení malinu pi k Azure IoT Hub pomocí jazyka C | Microsoft Docs
+description: Naučte se, jak nastavit a připojit malinu PI do Azure IoT Hub pro malinu pi k odesílání dat na cloudovou platformu Azure.
 author: wesmc7777
 ms.service: iot-hub
 services: iot-hub
@@ -9,190 +9,190 @@ ms.topic: conceptual
 ms.date: 02/14/2019
 ms.author: wesmc
 ms.openlocfilehash: 03f9d58cab725335b0f4090ac1a7289c32c0af7f
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81640550"
 ---
-# <a name="connect-raspberry-pi-to-azure-iot-hub-c"></a>Připojení Raspberry Pi k Azure IoT Hub (C)
+# <a name="connect-raspberry-pi-to-azure-iot-hub-c"></a>Připojit malinu pi k Azure IoT Hub (C)
 
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
 
-V tomto kurzu začnete tím, že se naučíte základy práce s Raspberry Pi, který běží Raspbian. Pak se dozvíte, jak bez problémů připojit vaše zařízení ke cloudu pomocí [Služby Azure IoT Hub](about-iot-hub.md). Ukázky jádra IoT core pro Windows 10 najdete v [Centru pro windows dev .](https://www.windowsondevices.com/)
+V tomto kurzu začnete seznámení se základy práce s malinou PI, na kterých běží Raspbian. Pak se dozvíte, jak hladce připojit zařízení ke cloudu pomocí služby [Azure IoT Hub](about-iot-hub.md). Ukázky pro Windows 10 IoT Core najdete na webu [Windows Dev Center](https://www.windowsondevices.com/).
 
-Ještě nemáte soupravu? Zkuste [Raspberry Pi online simulátor](iot-hub-raspberry-pi-web-simulator-get-started.md). Nebo koupit novou soupravu [zde](https://azure.microsoft.com/develop/iot/starter-kits).
+Ještě nemáte k dispozici sadu? Zkuste použít [simulátor malinu PI online](iot-hub-raspberry-pi-web-simulator-get-started.md). [Můžete](https://azure.microsoft.com/develop/iot/starter-kits)si také koupit novou sadu.
 
-## <a name="what-you-do"></a>Co děláte
+## <a name="what-you-do"></a>Co dělat
 
 * Vytvořte centrum IoT.
 
-* Zaregistrujte zařízení pro Pi ve svém centru IoT.
+* Zaregistrujte zařízení pro PI ve službě IoT Hub.
 
-* Nastavení Raspberry Pi.
+* Instalační program maliny PI.
 
-* Spusťte ukázkovou aplikaci na Pi a odešlete data senzorů do centra IoT hub.
+* Spusťte v PI ukázkovou aplikaci, která odešle data ze senzorů do služby IoT Hub.
 
-Připojte Raspberry Pi k centru IoT, které vytvoříte. Poté spustíte ukázkovou aplikaci na Pi, abyste shromáždili údaje o teplotě a vlhkosti ze senzoru BME280. Nakonec odešlete data senzoru do centra IoT hub.
+Připojte malinu PI ke službě IoT Hub, kterou vytvoříte. Pak spustíte ukázkovou aplikaci na PI a shromáždíte data o teplotě a vlhkosti ze senzoru BME280. Nakonec odešlete data ze senzorů do služby IoT Hub.
 
 ## <a name="what-you-learn"></a>Co se naučíte
 
-* Jak vytvořit azure iot hub a získat nový řetězec připojení zařízení.
+* Jak vytvořit službu Azure IoT Hub a získat nový připojovací řetězec zařízení.
 
-* Jak připojit Pi se snímačem BME280.
+* Jak připojit pi k BME280 senzoru.
 
-* Jak shromažďovat data senzorů spuštěním ukázkové aplikace na Pi.
+* Jak shromažďovat data ze senzorů spuštěním ukázkové aplikace na pi.
 
-* Jak odeslat data ze senzorů do centra IoT.
+* Jak odesílat data ze senzorů do služby IoT Hub.
 
 ## <a name="what-you-need"></a>Co potřebujete
 
 ![Co potřebujete](./media/iot-hub-raspberry-pi-kit-c-get-started/0-starter-kit.png)
 
-* Deska Raspberry Pi 2 nebo Raspberry Pi 3.
+* Deska Malina Pi 2 nebo malin PI 3.
 
-* Aktivní předplatné Azure. Pokud nemáte účet Azure, [vytvořte si bezplatný zkušební účet Azure](https://azure.microsoft.com/free/) během několika minut.
+* Aktivní předplatné Azure. Pokud účet Azure nemáte, [Vytvořte si bezplatný zkušební účet Azure](https://azure.microsoft.com/free/) během několika minut.
 
 * Monitor, klávesnice USB a myš, které se připojují k Pi.
 
-* Mac nebo počítač se systémem Windows nebo Linux.
+* Počítač Mac nebo počítač se systémem Windows nebo Linux.
 
 * Připojení k Internetu.
 
-* 16 GB nebo vyšší karta microSD.
+* Karta microSD o velikosti 16 GB nebo vyšší.
 
-* Adaptér USB-SD nebo karta microSD pro vypálení bitové kopie operačního systému na kartu microSD.
+* Adaptér USB-SD nebo karta microSD, která zapisuje bitovou kopii operačního systému na kartu microSD.
 
-* 5-volt 2-amp napájecí zdroj s 6-noha micro USB kabel.
+* Zdroj napájení 5 Volt 2-amp s kabelem 6 – kabelem USB.
 
 Následující položky jsou volitelné:
 
-* Sestavený snímač teploty, tlaku a vlhkosti Adafruit BME280.
+* Sestrojované teploty Adafruit BME280, tlak a snímač vlhkosti.
 
-* Prkénkem.
+* Breadboard.
 
-* 6 f/m propojovacích vodičů.
+* 6 vodičů můstků F/M.
 
-* Rozptýlená 10mm LED.
+* Indikátor rozptýlený 10 mm.
 
 > [!NOTE]
-> Tyto položky jsou volitelné, protože ukázka kódu podporuje simulovaná data senzoru.
+> Tyto položky jsou volitelné, protože ukázka kódu podporuje Simulovaná data senzorů.
 >
 
 ## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-## <a name="register-a-new-device-in-the-iot-hub"></a>Registrace nového zařízení v centru IoT hub
+## <a name="register-a-new-device-in-the-iot-hub"></a>Registrace nového zařízení ve službě IoT Hub
 
 [!INCLUDE [iot-hub-include-create-device](../../includes/iot-hub-include-create-device.md)]
 
-## <a name="set-up-raspberry-pi"></a>Nastavit Raspberry Pi
+## <a name="set-up-raspberry-pi"></a>Nastavení malin. PI
 
-Nyní nastavte Raspberry Pi.
+Teď vytvořte soubor malin. PI.
 
-### <a name="install-the-raspbian-operating-system-for-pi"></a>Instalace operačního systému Raspbian pro Pi
+### <a name="install-the-raspbian-operating-system-for-pi"></a>Nainstalujte operační systém Raspbian pro PI.
 
-Připravte kartu microSD pro instalaci raspbianimage.
+Připravte kartu microSD pro instalaci image Raspbian.
 
-1. Stáhnout Raspbian.
+1. Stáhněte si Raspbian.
 
-   1. [Stáhnout Raspbian Stretch s Desktop](https://www.raspberrypi.org/downloads/raspbian/) (soubor ZIP).
+   1. [Stáhněte si Raspbian Stretch with Desktop](https://www.raspberrypi.org/downloads/raspbian/) (soubor. zip).
 
-   2. Extrahujte raspbianský obraz do složky v počítači.
+   2. Rozbalte image Raspbian do složky v počítači.
 
 2. Nainstalujte Raspbian na kartu microSD.
 
-   1. [Stáhněte a nainstalujte nástroj pro vypalovačku karet Etcher SD](https://etcher.io/).
+   1. [Stáhněte a nainstalujte si nástroj pro vypalovací kartu SD karty leptání](https://etcher.io/).
 
-   2. Spusťte Etcher a vyberte raspbian obraz, který jste extrahovali v kroku 1.
+   2. Spusťte leptání a vyberte Image Raspbian, kterou jste extrahovali v kroku 1.
 
-   3. Vyberte jednotku karty microSD. Všimněte si, že Etcher již možná vybral správný disk.
+   3. Vyberte diskovou kartu microSD. Všimněte si, že leptaný už možná vybrala správnou jednotku.
 
-   4. Klepnutím na tlačítko Flash nainstalujte raspbian na kartu microSD.
+   4. Kliknutím na flash nainstalujte Raspbian na kartu microSD.
 
-   5. Po dokončení instalace vyjměte kartu microSD z počítače. Je bezpečné vyjmout kartu microSD přímo, protože Etcher automaticky vysune nebo odpojí kartu microSD po dokončení.
+   5. Až se instalace dokončí, odeberte kartu microSD z počítače. Kartu microSD je bezpečné odebrat přímo, protože leptání po dokončení automaticky vysune nebo odpojí kartu microSD.
 
-   6. Vložte kartu microSD do pi.
+   6. Vložte kartu microSD do Pi.
 
 ### <a name="enable-ssh-and-spi"></a>Povolit SSH a SPI
 
-1. Připojte Pi k monitoru, klávesnici a myši, spusťte Pi `pi` a přihlaste se k Raspbian pomocí uživatelského jména a `raspberry` jako heslo.
+1. Připojte pi k monitoru, klávesnici a myši, spusťte PI a pak se přihlaste k Raspbian pomocí `pi` uživatelského jména a `raspberry` hesla.
  
-2. Klikněte na ikonu Raspberry > **Předvolby** > **Raspberry Pi Configuration**.
+2. Klikněte na ikonu maliny > **Předvolby** > **malin. PI**.
 
-   ![Nabídka Raspbian Preferences](./media/iot-hub-raspberry-pi-kit-c-get-started/1-raspbian-preferences-menu.png)
+   ![Nabídka předvolby Raspbian](./media/iot-hub-raspberry-pi-kit-c-get-started/1-raspbian-preferences-menu.png)
 
-3. Na kartě **Rozhraní** nastavte **spi** a **SSH** na **povolit**a klepněte na tlačítko **OK**. Pokud nemáte fyzické senzory a chcete použít simulovaná data senzorů, je tento krok volitelný.
+3. Na kartě **rozhraní** nastavte **SPI** a **SSH** na **Povolit**a pak klikněte na **OK**. Pokud nemáte fyzické senzory a chcete použít Simulovaná data senzorů, je tento krok nepovinný.
 
-   ![Povolit SPI a SSH na Raspberry Pi](./media/iot-hub-raspberry-pi-kit-c-get-started/2-enable-spi-ssh-on-raspberry-pi.png)
+   ![Povolit SPI a SSH v malinách PI](./media/iot-hub-raspberry-pi-kit-c-get-started/2-enable-spi-ssh-on-raspberry-pi.png)
 
 > [!NOTE]
-> Chcete-li povolit SSH a SPI, můžete najít další referenční dokumenty na [raspberrypi.org](https://www.raspberrypi.org/documentation/remote-access/ssh/) a [RASPI-CONFIG](https://www.raspberrypi.org/documentation/configuration/raspi-config.md).
+> Pokud chcete povolit SSH a SPI, můžete najít další referenční dokumenty v [RaspberryPI.org](https://www.raspberrypi.org/documentation/remote-access/ssh/) a [RASPI-config](https://www.raspberrypi.org/documentation/configuration/raspi-config.md).
 >
 
-### <a name="connect-the-sensor-to-pi"></a>Připojte senzor k Pi
+### <a name="connect-the-sensor-to-pi"></a>Připojit senzor k Pi
 
-Pomocí prkénku a propojovacích vodičů připojte k Pi LED a BME280 takto. Pokud senzor nemáte, [přeskočte tuto část](#connect-pi-to-the-network).
+Použijte Breadboard a vodiče můstků k připojení indikátoru LED a BME280 k Pi následujícím způsobem. Pokud senzor nemáte, [přeskočte tuto část](#connect-pi-to-the-network).
 
-![Připojení Raspberry Pi a senzoru](./media/iot-hub-raspberry-pi-kit-c-get-started/3-raspberry-pi-sensor-connection.png)
+![Připojení k malinu PI a snímač](./media/iot-hub-raspberry-pi-kit-c-get-started/3-raspberry-pi-sensor-connection.png)
 
-Snímač BME280 může shromažďovat údaje o teplotě a vlhkosti. A LED dioda bude blikat, pokud dojde ke komunikaci mezi zařízením a cloudem.
+Senzor BME280 může shromažďovat data o teplotě a vlhkosti. A indikátor LED bude blikat, pokud dojde ke komunikaci mezi zařízením a cloudem.
 
-Pro kolíky senzorů použijte následující kabeláž:
+Pro PIN kódy senzorů použijte následující kabely:
 
-| Start (& LED senzor)     | Konec (deska)            | Barva kabelu   |
+| Start (indikátor & snímače)     | Konec (panel)            | Barva kabelu   |
 | -----------------------  | ---------------------- | ------------: |
-| LED VDD (Pin 5G)         | GPIO 4 (kolík 7)         | Bílý kabel   |
-| LED GND (Pin 6G)         | GND (Kolík 6)            | Černý kabel   |
-| VDD (kolík 18F)            | 3.3V PWR (pin 17)      | Bílý kabel   |
-| GND (Pin 20F)            | GND (Kolík 20)           | Černý kabel   |
-| SCK (Kolík 21F)            | SPI0 SCLK (kolík 23)     | Oranžový kabel  |
-| SDO (pin 22F)            | SPI0 MISO (kolík 21)     | Žlutý kabel  |
-| SDI (pin 23F)            | SPI0 MOSI (kolík 19)     | Zelený kabel   |
-| CS (Pin 24F)             | SPI0 CS (Kolík 24)       | Modrý kabel    |
+| VDD LED (připnout 5G)         | GPIO 4 (PIN 7)         | Bílý kabel   |
+| GND LED (připnout 6G)         | GND (PIN 6)            | Černý kabel   |
+| VDD (připnout 18F)            | 3.3 v PWR (PIN 17)      | Bílý kabel   |
+| GND (připnout 20F)            | GND (PIN 20)           | Černý kabel   |
+| SCK (připnout 21F)            | SPI0 SCLK (PIN kód 23)     | Oranžový kabel  |
+| SDO (PIN 22F)            | SPI0 MISO (PIN 21)     | Žlutý kabel  |
+| SDI (PIN 23F)            | SPI0 MOSI (PIN 19)     | Zelený kabel   |
+| CS (PIN 24F)             | SPI0 CS (PIN kód 24)       | Modrý kabel    |
 
-Klikněte pro zobrazení [Raspberry Pi 2 & 3 Pin mapování](https://developer.microsoft.com/windows/iot/docs/pinmappingsrpi) pro váš odkaz.
+Kliknutím zobrazíte [& 3 – mapování kódu PIN pro malin 2](https://developer.microsoft.com/windows/iot/docs/pinmappingsrpi) pro váš odkaz.
 
-Po úspěšném připojení BME280 k raspberry pi by to mělo být jako pod obrázkem.
+Po úspěšném připojení BME280 k malinu PI by měl být podobný jako obrázek.
 
-![Připojené Pí a BME280](./media/iot-hub-raspberry-pi-kit-c-get-started/4-connected-pi.png)
+![Připojené PI a BME280](./media/iot-hub-raspberry-pi-kit-c-get-started/4-connected-pi.png)
 
-### <a name="connect-pi-to-the-network"></a>Připojení Pi k síti
+### <a name="connect-pi-to-the-network"></a>Připojit pi k síti
 
-Zapněte Pi pomocí kabelu micro USB a napájecího zdroje. Pomocí ethernetového kabelu připojte Pi k kabelové síti nebo postupujte [podle pokynů nadace Raspberry Pi Foundation](https://www.raspberrypi.org/documentation/configuration/wireless/) pro připojení Pi k bezdrátové síti. Po úspěšném připojení pi k síti je třeba poznamenat [IP adresu vašeho Pi](https://www.raspberrypi.org/documentation/remote-access/ip-address.md).
+Zapněte Pi pomocí kabelu micro USB a zdroje napájení. Pomocí kabelu Ethernet připojte pi k pevné síti nebo podle [pokynů od Malin. PI Foundation](https://www.raspberrypi.org/documentation/configuration/wireless/) připojte pi k bezdrátové síti. Až se vaše PI úspěšně připojí k síti, musíte si poznamenat [IP adresu vašeho PI](https://www.raspberrypi.org/documentation/remote-access/ip-address.md).
 
-![Připojení k kabelové síti](./media/iot-hub-raspberry-pi-kit-c-get-started/5-power-on-pi.png)
+![Připojeno k drátové síti](./media/iot-hub-raspberry-pi-kit-c-get-started/5-power-on-pi.png)
 
-## <a name="run-a-sample-application-on-pi"></a>Spuštění ukázkové aplikace na Pi
+## <a name="run-a-sample-application-on-pi"></a>Spustit ukázkovou aplikaci na PI
 
-### <a name="sign-into-your-raspberry-pi"></a>Přihlaste se do svého Raspberry Pi
+### <a name="sign-into-your-raspberry-pi"></a>Přihlaste se k malinu PI.
 
-1. Použijte jeden z následujících klientů SSH z hostitelského počítače pro připojení k Raspberry Pi.
+1. Pomocí jednoho z následujících klientů SSH z hostitelského počítače se připojte k malinu PI.
    
    **Uživatelé systému Windows**
-   1. Stáhněte a nainstalujte [PuTTY](https://www.putty.org/) pro Windows. 
-   1. Zkopírujte IP adresu vašeho Pi do oddílu Název hostitele (nebo IP adresa) a jako typ připojení vyberte SSH.
+   1. Stažení a instalace [výstupu](https://www.putty.org/) pro Windows 
+   1. Zkopírujte IP adresu vašeho PI do části název hostitele (nebo IP adresa) a jako typ připojení vyberte SSH.
    
-   ![Putty](./media/iot-hub-raspberry-pi-kit-node-get-started/7-putty-windows.png)
+   ![PuTTy](./media/iot-hub-raspberry-pi-kit-node-get-started/7-putty-windows.png)
 
-   **Uživatelé Macu a Ubuntu**
+   **Uživatelé počítačů Mac a Ubuntu**
 
-   Použijte vestavěného klienta SSH na Ubuntu nebo macOS. Možná budete muset `ssh pi@<ip address of pi>` spustit pro připojení Pi přes SSH.
+   Použijte integrovaného klienta SSH na Ubuntu nebo macOS. Možná budete muset spustit `ssh pi@<ip address of pi>` pro připojení Pi přes SSH.
    > [!NOTE]
-   > Výchozí uživatelské jméno `pi` je a `raspberry`heslo je .
+   > Výchozí uživatelské jméno je `pi` a heslo `raspberry`.
 
 
 ### <a name="configure-the-sample-application"></a>Konfigurace ukázkové aplikace
 
-1. Klonujte ukázkovou aplikaci spuštěním následujícího příkazu:
+1. Naklonujte ukázkovou aplikaci spuštěním následujícího příkazu:
 
    ```bash
    sudo apt-get install git-core
    git clone https://github.com/Azure-Samples/iot-hub-c-raspberrypi-client-app.git
    ```
 
-2. Spustit instalační skript:
+2. Spusťte instalační skript:
 
    ```bash
    cd ./iot-hub-c-raspberrypi-client-app
@@ -201,18 +201,18 @@ Zapněte Pi pomocí kabelu micro USB a napájecího zdroje. Pomocí ethernetové
    ```
 
    > [!NOTE] 
-   > Pokud **nemáte fyzický BME280**, můžete použít '--simulovaná data' jako parametr příkazového řádku k simulaci teploty&vlhkosti. `sudo ./setup.sh --simulated-data`
+   > Pokud nemáte **fyzický BME280**, můžete k simulaci teploty&dat vlhkosti použít "--Simulovaná data" jako parametr příkazového řádku. `sudo ./setup.sh --simulated-data`
    >
 
 ### <a name="build-and-run-the-sample-application"></a>Sestavení a spuštění ukázkové aplikace
 
-1. Vytvořte ukázkovou aplikaci spuštěním následujícího příkazu:
+1. Sestavte ukázkovou aplikaci spuštěním následujícího příkazu:
 
    ```bash
    cmake . && make
    ```
    
-   ![Vytvořit výstup](./media/iot-hub-raspberry-pi-kit-c-get-started/7-build-output.png)
+   ![Výstup sestavení](./media/iot-hub-raspberry-pi-kit-c-get-started/7-build-output.png)
 
 1. Spusťte ukázkovou aplikaci spuštěním následujícího příkazu:
 
@@ -221,21 +221,21 @@ Zapněte Pi pomocí kabelu micro USB a napájecího zdroje. Pomocí ethernetové
    ```
 
    > [!NOTE] 
-   > Ujistěte se, že zkopírujete a vložíte připojovací řetězec zařízení do jednotlivých uvozovek.
+   > Nezapomeňte zkopírovat a vložit připojovací řetězec zařízení do jednoduchých uvozovek.
    >
 
 Měl by se zobrazit následující výstup s daty snímače a zprávami posílanými do vašeho centra IoT Hub.
 
 ![Výstup – data snímače odesílaná z Raspberry Pi do centra IoT](./media/iot-hub-raspberry-pi-kit-c-get-started/8-run-output.png)
 
-## <a name="read-the-messages-received-by-your-hub"></a>Čtení zpráv přijatých vaším centrem
+## <a name="read-the-messages-received-by-your-hub"></a>Přečtěte si zprávy přijaté vaším rozbočovačem.
 
-Jedním ze způsobů, jak sledovat zprávy přijaté vaším centrem IoT hub z vašeho zařízení, je použití nástroje Azure IoT Tools for Visual Studio Code. Další informace najdete [v tématu Použití nástrojů Azure IoT pro kód Visual Studia k odesílání a přijímání zpráv mezi zařízením a službou IoT Hub](iot-hub-vscode-iot-toolkit-cloud-device-messaging.md).
+Jedním ze způsobů, jak monitorovat zprávy přijaté službou IoT Hub ze svého zařízení, je používat nástroje Azure IoT pro Visual Studio Code. Další informace najdete v tématu [použití nástrojů Azure IoT pro Visual Studio Code k posílání a přijímání zpráv mezi zařízením a IoT Hub](iot-hub-vscode-iot-toolkit-cloud-device-messaging.md).
 
-Další způsoby zpracování dat odeslaných zařízením najdete v další části.
+Další způsoby, jak zpracovávat data odesílaná vaším zařízením, můžete pokračovat k další části.
 
 ## <a name="next-steps"></a>Další kroky
 
-Spouštěli jste ukázkovou aplikaci pro shromažďování dat senzorů a jejich odeslání do služby IoT hub.
+Spustili jste ukázkovou aplikaci, která shromáždí data ze senzorů a pošle ji do služby IoT Hub.
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

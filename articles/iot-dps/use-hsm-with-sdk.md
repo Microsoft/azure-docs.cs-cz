@@ -1,6 +1,6 @@
 ---
-title: Použití různých mechanismů ověřování se sadou Azure IoT Hub Device Provisioning Service Client SDK
-description: Azure Jak – jak používat různé mechanismy ověřování s sdk msa (Device Provisioning Service) client SDK v Azure
+title: Použití různých mechanismů ověřování s klientskou sadou SDK pro Azure IoT Hub Device Provisioning Service
+description: Postup pro Azure – použití různých mechanismů ověřování pomocí klientské sady SDK služby Device Provisioning (DPS) v Azure
 author: robinsh
 ms.author: robinsh
 ms.date: 03/30/2018
@@ -11,10 +11,10 @@ ms.custom:
 - mvc
 - amqp
 ms.openlocfilehash: c110e90f26f595bcbf181b72e13f12a6de2fa8ce
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81687213"
 ---
 # <a name="how-to-use-different-attestation-mechanisms-with-device-provisioning-service-client-sdk-for-c"></a>Použití různých mechanismů ověřování pomocí klientské sady SDK služby Device Provisioning pro C
@@ -41,7 +41,7 @@ Než bude možné zaregistrovat fyzické zařízení nebo simulátor na webu Azu
 
 ### <a name="use-x509-with-simulator"></a>Použití X.509 se simulátorem
 
-Zřizovací služba je dodávána s emulátorem DICE (Device Identity Composition Engine), který generuje certifikát **X.509** pro ověření zařízení. Chcete-li povolit ověřování **X.509,** spusťte následující příkaz: 
+Zřizovací služba se dodává s emulátorem modulu složení identity zařízení (kost), který generuje certifikát **X. 509** pro ověřování zařízení. Pokud chcete povolit ověřování **X. 509** , spusťte následující příkaz: 
 
 ```
 cmake -Ddps_auth_type=x509 ..
@@ -51,7 +51,7 @@ Informace o hardwaru s emulátorem DICE najdete [tady](https://azure.microsoft.c
 
 ### <a name="use-x509-with-hardware"></a>Použití X.509 s hardwarem
 
-Zřizování služby lze použít s **X.509** na jiném hardwaru. K navázání připojení je potřeba rozhraní mezi hardwarem a sadou SDK. Pokud potřebujete informace o rozhraní, obraťte se na výrobce vašeho HSM.
+Službu zřizování lze použít s **X. 509** na jiném hardwaru. K navázání připojení je potřeba rozhraní mezi hardwarem a sadou SDK. Pokud potřebujete informace o rozhraní, obraťte se na výrobce vašeho HSM.
 
 ### <a name="use-tpm"></a>Použití TPM
 
@@ -150,8 +150,8 @@ Pokud používáte TPM, podle pokynů v tématu [Vytvoření a zřízení simulo
       ./azure-iot-sdk-c/dps_client/tools/x509_device_provision/x509_device_provision.exe
       ```
 2. Přihlaste se k webu Azure Portal, v nabídce vlevo klikněte na tlačítko **Všechny prostředky** a otevřete svou službu Device Provisioning.
-   - **Individuální registrace X.509**: V okně souhrnu služby zřizování vyberte **Spravovat registrace**. Vyberte **kartu Jednotlivé registrace** a klikněte nahoře na tlačítko **Přidat.** Vyberte **X.509** jako *mechanismus*ověření identity , nahrajte listový certifikát podle požadavků čepele. Jakmile budete hotovi, klikněte na tlačítko **Uložit**. 
-   - **Registrace skupiny X.509**: V okně souhrnu služby zřizování vyberte **Spravovat registrace**. Vyberte kartu **Skupinové registrace** a klikněte na tlačítko **Přidat** v horní části. Vyberte **X.509** jako *mechanismus*ověření identity , zadejte název skupiny a název certifikace, nahrajte certifikát CA/Intermediate podle požadavků okna. Jakmile budete hotovi, klikněte na tlačítko **Uložit**. 
+   - **X. 509 jednotlivé registrace**: v okně s přehledem zřizovací služby vyberte **spravovat registrace**. Vyberte kartu **jednotlivé registrace** a klikněte na tlačítko **Přidat** v horní části. Jako *mechanismus*ověření identity vyberte **X. 509** , nahrajte listový certifikát, jak to okno vyžaduje. Jakmile budete hotovi, klikněte na tlačítko **Uložit**. 
+   - **Registrace skupiny X. 509**: v okně s přehledem zřizovací služby vyberte **spravovat registrace**. Vyberte kartu **Skupinové registrace** a klikněte na tlačítko **Přidat** v horní části. Jako *mechanismus*ověření identity vyberte **X. 509** , zadejte název skupiny a název certifikace, nahrajte CA/zprostředkující certifikát, jak to okno vyžaduje. Jakmile budete hotovi, klikněte na tlačítko **Uložit**. 
 
 ## <a name="enable-authentication-for-devices-using-a-custom-attestation-mechanism-optional"></a>Povolení ověřování pro zařízení používající vlastní mechanismus ověřování (volitelné)
 
@@ -183,7 +183,7 @@ Jakmile se vaše knihovna sama úspěšně sestaví, je potřeba ji integrovat s
 
 ## <a name="connecting-to-iot-hub-after-provisioning"></a>Připojení ke službě IoT Hub po zřízení
 
-Jakmile je zařízení zřízeno se službou zřizování, toto rozhraní API používá zadaný režim ověřování **(X.509** nebo TPM) pro připojení k iot hubu: 
+Po zřízení zařízení pomocí zřizovací služby používá toto rozhraní API zadaný režim ověřování (**X. 509** nebo TPM) pro připojení k IoT Hub: 
   ```
   IOTHUB_CLIENT_LL_HANDLE handle = IoTHubClient_LL_CreateFromDeviceAuth(iothub_uri, device_id, iothub_transport);
   ```

@@ -1,6 +1,6 @@
 ---
-title: Konfigurace vlastního klíče pro šifrování dat centra událostí Azure v klidovém stavu
-description: Tento článek obsahuje informace o tom, jak nakonfigurovat vlastní klíč pro šifrování úložiště dat centra událostí Azure.
+title: Konfigurace vlastního klíče pro šifrování dat služby Azure Event Hubs v klidovém prostředí
+description: Tento článek poskytuje informace o tom, jak nakonfigurovat vlastní klíč pro šifrování služby Azure Event Hubs data REST.
 services: event-hubs
 ms.service: event-hubs
 documentationcenter: ''
@@ -9,108 +9,108 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: spelluru
 ms.openlocfilehash: f515d3ad832db7f78f98111ab67628a2874033ff
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81459130"
 ---
-# <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Konfigurace klíčů spravovaných zákazníkem pro šifrování dat služby Azure Event Hubs v klidovém stavu pomocí portálu Azure
-Azure Event Hubs poskytuje šifrování dat v klidovém stavu pomocí šifrování služby Azure Storage Service (Azure SSE). Event Hubs spoléhá na Azure Storage pro ukládání dat a ve výchozím nastavení, všechna data, která jsou uložená s Azure Storage je šifrována pomocí klíčů spravovaných Microsoftem. 
+# <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Konfigurace klíčů spravovaných zákazníkem pro šifrování dat Azure Event Hubs v klidovém formátu pomocí Azure Portal
+Azure Event Hubs poskytuje šifrování neaktivních dat pomocí šifrování služby Azure Storage (Azure SSE). Event Hubs spoléhá na Azure Storage uložení dat a ve výchozím nastavení se všechna data uložená pomocí Azure Storage šifrují pomocí klíčů spravovaných Microsoftem. 
 
 ## <a name="overview"></a>Přehled
-Azure Event Hubs teď podporuje možnost šifrování dat v klidovém stavu pomocí klíčů spravovaných microsoftem nebo klíčů spravovaných zákazníky (Bring Your Own Key – BYOK). Tato funkce umožňuje vytvářet, otáčet, zakázat a odvolat přístup ke klíčům spravovaným zákazníkem, které se používají k šifrování dat centra událostí Azure v klidovém stavu.
+Azure Event Hubs teď podporuje možnost šifrování neaktivních dat buď pomocí klíčů spravovaných Microsoftem nebo klíčů spravovaných zákazníkem (Bring Your Own Key – BYOK). Tato funkce umožňuje vytvořit, otočit, zakázat a odvolat přístup k klíčům spravovaným zákazníkem, které se používají k šifrování neaktivních dat služby Azure Event Hubs.
 
-Povolení funkce BYOK je proces jednorázového nastavení v oboru názvů.
+Povolení funkce BYOK je jednorázovým procesem nastavení v oboru názvů.
 
 > [!NOTE]
-> Funkce BYOK je podporována [clustery s vyhrazenými clustery s jedním tenantem.](event-hubs-dedicated-overview.md) Nelze povolit pro standardní obory názvů Event Hubs.
+> Funkce BYOK je podporována [Event Hubs vyhrazenými clustery s jedním tenantů](event-hubs-dedicated-overview.md) . Nedá se povolit pro standardní Event Hubs obory názvů.
 
-Azure Key Vault můžete použít ke správě klíčů a auditování využití klíčů. Můžete buď vytvořit vlastní klíče a uložit je do trezoru klíčů, nebo můžete použít Azure Key Vault API ke generování klíčů. Další informace o Azure Key Vault najdete v tématu [Co je Azure Key Vault?](../key-vault/general/overview.md)
+Pomocí Azure Key Vault můžete spravovat klíče a auditovat používání klíčů. Můžete buď vytvořit vlastní klíče a uložit je do trezoru klíčů, nebo můžete použít rozhraní API Azure Key Vault k vygenerování klíčů. Další informace o Azure Key Vault najdete v tématu [co je Azure Key Vault?](../key-vault/general/overview.md)
 
-Tento článek ukazuje, jak nakonfigurovat trezor klíčů pomocí klíčů spravovaných zákazníkem pomocí portálu Azure. Informace o tom, jak vytvořit trezor klíčů pomocí webu Azure Portal, najdete v [tématu Úvodní příručka: Nastavení a načtení tajného klíče z Azure Key Vault pomocí portálu Azure](../key-vault/secrets/quick-create-portal.md).
+V tomto článku se dozvíte, jak nakonfigurovat Trezor klíčů pomocí klíčů spravovaných zákazníkem pomocí Azure Portal. Informace o tom, jak vytvořit Trezor klíčů pomocí Azure Portal, najdete v tématu [rychlý Start: nastavení a načtení tajného klíče z Azure Key Vault pomocí Azure Portal](../key-vault/secrets/quick-create-portal.md).
 
 > [!IMPORTANT]
-> Použití klíčů spravovaných zákazníkem s Azure Event Hubs vyžaduje, aby trezor klíčů měl nakonfigurované dvě požadované vlastnosti. Jsou to: **Obnovitelné odstranění** a **Nečistit**. Tyto vlastnosti jsou ve výchozím nastavení povolené při vytváření nového trezoru klíčů na webu Azure Portal. Pokud však potřebujete povolit tyto vlastnosti v existujícím trezoru klíčů, musíte použít buď PowerShell nebo Azure CLI.
+> Použití klíčů spravovaných zákazníkem v Azure Event Hubs vyžaduje, aby měl Trezor klíčů nakonfigurované dvě požadované vlastnosti. Jsou to: **obnovitelné odstranění** a **Nemazat**. Tyto vlastnosti jsou ve výchozím nastavení povolené, když v Azure Portal vytvoříte nový trezor klíčů. Pokud ale potřebujete tyto vlastnosti v existujícím trezoru klíčů povolit, musíte použít buď PowerShell, nebo rozhraní příkazového řádku Azure CLI.
 
-## <a name="enable-customer-managed-keys"></a>Povolení klíčů spravovaných zákazníkem
-Pokud chcete povolit klíče spravované zákazníky na webu Azure Portal, postupujte takto:
+## <a name="enable-customer-managed-keys"></a>Povolit klíče spravované zákazníkem
+Pokud chcete povolit klíčům spravovaným zákazníkem v Azure Portal, postupujte následovně:
 
-1. Přejděte do vyhrazeného clusteru Centra událostí.
-1. Vyberte obor názvů, ve kterém chcete povolit byok.
-1. Na stránce **Nastavení** oboru názvů Event Hubs vyberte **Šifrování**. 
-1. Vyberte **šifrování klíče spravované zákazníkem v klidovém stavu,** jak je znázorněno na následujícím obrázku. 
+1. Přejděte do clusteru Event Hubs úrovně Dedicated.
+1. Vyberte obor názvů, na kterém chcete povolit BYOK.
+1. Na stránce **Nastavení** v oboru názvů Event Hubs vyberte **šifrování**. 
+1. Vyberte **šifrování klíče spravovaného zákazníkem v klidovém** formátu, jak je znázorněno na následujícím obrázku. 
 
-    ![Povolit klíč spravovaný zákazníkem](./media/configure-customer-managed-key/enable-customer-managed-key.png)
+    ![Povolit spravovaný klíč zákazníka](./media/configure-customer-managed-key/enable-customer-managed-key.png)
 
 ## <a name="set-up-a-key-vault-with-keys"></a>Nastavení trezoru klíčů s klíči
-Po povolení klíčů spravovaných zákazníkem je potřeba přidružit klíč spravovaný zákazníkem k oboru názvů Centra událostí Azure. Centra událostí podporuje jenom Azure Key Vault. Pokud povolíte **možnost Šifrování s klíčem spravovaným zákazníkem** v předchozí části, musíte mít klíč importován do úložiště klíčů Azure. Klíče musí mít také pro klíč nakonfigurovány **funkce Obnovitelné odstranění** a **Neodstraňovat.** Tato nastavení lze nakonfigurovat pomocí [prostředí PowerShell](../key-vault/general/soft-delete-powershell.md) nebo [CLI](../key-vault/general/soft-delete-cli.md#enabling-purge-protection).
+Po povolení klíčů spravovaných zákazníkem je potřeba přidružit spravovaný klíč zákazníka k vašemu oboru názvů Azure Event Hubs. Event Hubs podporuje pouze Azure Key Vault. Pokud zapnete možnost **šifrování pomocí klíče spravovaného zákazníkem** v předchozí části, je potřeba, abyste klíč importovali do Azure Key Vault. Klíče musí také obsahovat **obnovitelné odstranění** a pro tento klíč **se** neodstraňují konfigurace. Tato nastavení se dají nakonfigurovat pomocí [PowerShellu](../key-vault/general/soft-delete-powershell.md) nebo rozhraní příkazového [řádku](../key-vault/general/soft-delete-cli.md#enabling-purge-protection).
 
-1. Chcete-li vytvořit nový trezor klíčů, postupujte podle [úvodního panelu Azure](../key-vault/general/overview.md)Key Vault . Další informace o importu existujících klíčů naleznete [v tématu O klíčích, tajných klíčích a certifikátech](../key-vault/about-keys-secrets-and-certificates.md).
-1. Chcete-li při vytváření trezoru zapnout ochranu proti měkkému odstranění i vymazání, použijte příkaz [az keyvault create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) .
+1. Pokud chcete vytvořit nový trezor klíčů, postupujte podle pokynů pro [rychlý start](../key-vault/general/overview.md)Azure Key Vault. Další informace o importu existujících klíčů najdete v tématu [informace o klíčích, tajných klíčích a certifikátech](../key-vault/about-keys-secrets-and-certificates.md).
+1. Pokud chcete při vytváření trezoru zapnout ochranu pomocí obnovitelného odstranění i vyprázdnění, použijte příkaz [AZ datatrezor Create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) .
 
     ```azurecli-interactive
     az keyvault create --name ContosoVault --resource-group ContosoRG --location westus --enable-soft-delete true --enable-purge-protection true
     ```    
-1. Chcete-li přidat ochranu proti vymazání do existujícího trezoru (který již má povoleno obnovitelné odstranění), použijte příkaz [az keyvault update.](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-update)
+1. Pokud chcete přidat ochranu vyprázdnit do existujícího trezoru (který už má povolené obnovitelné odstranění), použijte příkaz [AZ klíčů trezor Update](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-update) .
 
     ```azurecli-interactive
     az keyvault update --name ContosoVault --resource-group ContosoRG --enable-purge-protection true
     ```
-1. Vytvořte klíče následujícím postupem:
-    1. Chcete-li vytvořit novou klávesu, vyberte **Generovat/importovat** z nabídky **Klávesy** v části **Nastavení**.
+1. Pomocí následujících kroků vytvořte klíče:
+    1. Pokud chcete vytvořit nový klíč, vyberte v nabídce **klíče** v části **Nastavení**možnost **Generovat/importovat** .
         
-        ![Tlačítko Vybrat generovat/importovat](./media/configure-customer-managed-key/select-generate-import.png)
-    1. Nastavte **možnosti** **pro generování** a pojmenujte klíč.
+        ![Vybrat tlačítko pro vygenerování/import](./media/configure-customer-managed-key/select-generate-import.png)
+    1. Nastavte **Možnosti** , které se mají **vygenerovat** , a zadejte název klíče.
 
         ![Vytvoření klíče](./media/configure-customer-managed-key/create-key.png) 
-    1. Nyní můžete vybrat tento klíč, který chcete přidružit k oboru názvů Centra událostí pro šifrování z rozevíracího seznamu. 
+    1. Nyní můžete vybrat tento klíč, který chcete přidružit k oboru názvů Event Hubs pro šifrování z rozevíracího seznamu. 
 
-        ![Vybrat klíč z trezoru klíčů](./media/configure-customer-managed-key/select-key-from-key-vault.png)
-    1. Vyplňte podrobnosti klíče a klepněte na **tlačítko Vybrat**. To umožní šifrování dat v klidovém stavu v oboru názvů pomocí klientského spravovaného klíče. 
+        ![Vyberte klíč z trezoru klíčů.](./media/configure-customer-managed-key/select-key-from-key-vault.png)
+    1. Zadejte podrobnosti pro klíč a klikněte na **Vybrat**. Tím se povolí Šifrování neaktivních dat v oboru názvů pomocí klíče spravovaného zákazníkem. 
 
 
 ## <a name="rotate-your-encryption-keys"></a>Otočení šifrovacích klíčů
-Klíč v trezoru klíčů můžete otočit pomocí mechanismu střídání trezorů klíčů Azure. Další informace naleznete v [tématu Nastavení střídání klíčů a auditování](../key-vault/secrets/key-rotation-log-monitoring.md). Data aktivace a vypršení platnosti lze také nastavit tak, aby automatizovala střídání klíčů. Služba Event Hubs rozpozná nové verze klíčů a začne je automaticky používat.
+Svůj klíč můžete v trezoru klíčů otočit pomocí mechanismu rotace trezorů klíčů Azure. Další informace najdete v tématu [Nastavení rotace klíčů a auditování](../key-vault/secrets/key-rotation-log-monitoring.md). Data o aktivaci a vypršení platnosti je také možné nastavit na automatizaci střídání klíčů. Služba Event Hubs detekuje nové verze klíčů a automaticky je začne používat.
 
-## <a name="revoke-access-to-keys"></a>Odvolání přístupu ke klíčům
-Zrušením přístupu k šifrovacím klíčům se data z centra událostí nevymaže. Data však nelze přistupovat z oboru názvů Centra událostí. Šifrovací klíč můžete odvolat prostřednictvím zásad přístupu nebo odstraněním klíče. Přečtěte si další informace o zásadách přístupu a zabezpečení trezoru klíčů z [zabezpečeného přístupu k trezoru klíčů](../key-vault/general/secure-your-key-vault.md).
+## <a name="revoke-access-to-keys"></a>Odvolat přístup k klíčům
+Odvolání přístupu k šifrovacím klíčům neodstraní data z Event Hubs. K datům ale nelze přicházet z oboru názvů Event Hubs. Šifrovací klíč můžete odvolat pomocí zásad přístupu nebo odstraněním klíče. Přečtěte si další informace o zásadách přístupu a zabezpečení trezoru klíčů před [zabezpečeným přístupem k trezoru klíčů](../key-vault/general/secure-your-key-vault.md).
 
-Po odvolání šifrovacího klíče se služba Event Hubs v šifrovaném oboru názvů stane nefunkční. Pokud je přístup ke klíči povolen nebo je obnoven klíč pro odstranění, služba Event Hubs vybere klíč, abyste měli přístup k datům z oboru názvů zašifrovaných center událostí.
+Po odvolání šifrovacího klíče se služba Event Hubs v zašifrovaném oboru názvů stane nefunkčním. Pokud je povolený přístup ke klíči nebo je obnovený klíč, Event Hubs služba vybere klíč, abyste měli přístup k datům z šifrovaného názvového prostoru Event Hubs.
 
 ## <a name="set-up-diagnostic-logs"></a>Nastavení diagnostických protokolů 
-Nastavení diagnostických protokolů pro obory názvů s povolenou funkcí BYOK poskytuje požadované informace o operacích, když je obor názvů šifrován pomocí klíčů spravovaných zákazníkem. Tyto protokoly lze povolit a později streamovat do centra událostí nebo analyzovat prostřednictvím analýzy protokolů nebo streamované do úložiště za účelem provádění vlastníanalýzy. Další informace o diagnostických protokolech najdete v [tématu Přehled protokolů diagnostiky Azure](../azure-monitor/platform/platform-logs-overview.md).
+Nastavení protokolů diagnostiky pro obory názvů s povoleným BYOK poskytuje požadované informace o operacích, když je obor názvů zašifrovaný pomocí klíčů spravovaných zákazníkem. Tyto protokoly je možné povolit a později streamovat do centra událostí nebo analyzovat prostřednictvím Log Analytics nebo streamovat do úložiště a provádět přizpůsobené analýzy. Další informace o diagnostických protokolech najdete v tématu [Přehled diagnostických protokolů Azure](../azure-monitor/platform/platform-logs-overview.md).
 
-## <a name="enable-user-logs"></a>Povolení protokolů uživatelů
-Následujícím postupem povolte protokoly pro klíče spravované zákazníkem.
+## <a name="enable-user-logs"></a>Povolit protokoly uživatelů
+Pomocí těchto kroků povolte protokoly pro klíče spravované zákazníkem.
 
-1. Na webu Azure Portal přejděte do oboru názvů, který má povolenou funkcí BYOK.
-1. V části **Sledování**vyberte Nastavení **diagnostiky** .
+1. V Azure Portal přejděte na obor názvů, který má povolenou možnost BYOK.
+1. V části **monitorování**vyberte **nastavení diagnostiky** .
 
-    ![Výběr nastavení diagnostiky](./media/configure-customer-managed-key/select-diagnostic-settings.png)
-1. Vyberte **možnost +Přidat diagnostické nastavení**. 
+    ![Vybrat nastavení diagnostiky](./media/configure-customer-managed-key/select-diagnostic-settings.png)
+1. Vyberte **+ Přidat nastavení diagnostiky**. 
 
-    ![Vybrat nastavení přidat diagnostiku](./media/configure-customer-managed-key/select-add-diagnostic-setting.png)
-1. Zadejte **název** a vyberte, kam chcete datové proudy protokolů.
-1. Vyberte **CustomerManagedKeyUserLogs** a **Uložit**. Tato akce umožňuje protokoly pro BYOK v oboru názvů.
+    ![Vyberte Přidat nastavení diagnostiky.](./media/configure-customer-managed-key/select-add-diagnostic-setting.png)
+1. Zadejte **název** a vyberte, kam chcete zasílat streamování protokolů.
+1. Vyberte **CustomerManagedKeyUserLogs** a **uložte**. Tato akce povolí protokoly pro BYOK v oboru názvů.
 
-    ![Vybrat možnost protokolů klíčových uživatelů spravovaných zákazníkem](./media/configure-customer-managed-key/select-customer-managed-key-user-logs.png)
+    ![Vybrat možnost uživatelských protokolů pro klíč uživatele spravovaný zákazníkem](./media/configure-customer-managed-key/select-customer-managed-key-user-logs.png)
 
 ## <a name="log-schema"></a>Schéma protokolu 
-Všechny protokoly jsou uloženy ve formátu JavaScript Object Notation (JSON). Každá položka obsahuje řetězcová pole, která používají formát popsaný v následující tabulce. 
+Všechny protokoly jsou uložené ve formátu JavaScript Object Notation (JSON). Každá položka má pole řetězce, která používají formát popsaný v následující tabulce. 
 
 | Název | Popis |
 | ---- | ----------- | 
-| Název_úkolu | Popis úlohy, která se nezdařila. |
-| ActivityId | Interní ID, které se používá pro sledování. |
-| category | Definuje klasifikaci úkolu. Pokud je například klíč z trezoru klíčů zakázán, jedná se o informační kategorii nebo pokud klíč nelze rozbalit, může se dostat pod chybu. |
-| resourceId | ID prostředků Správce prostředků Azure |
-| keyVault | Úplný název trezoru klíčů. |
-| key | Název klíče, který se používá k šifrování oboru názvů Event Hubs. |
-| version | Verze klíče, který se používá. |
-| Operace | Operace, která se provádí na klíč i v trezoru klíčů. Například zakázat/povolit klíč, obtékat nebo rozbalit |
-| kód | Kód, který je přidružen k operaci. Příklad: Kód chyby 404 znamená, že klíč nebyl nalezen. |
-| zpráva | Všechny chybové zprávy spojené s operací |
+| /TN | Popis úlohy, která selhala. |
+| ActivityId | Interní ID, které se používá ke sledování. |
+| category | Definuje klasifikaci úkolu. Například pokud je klíč z vašeho trezoru klíčů zakázaný, pak se jedná o kategorii informací, nebo pokud se klíč nedá rozdělit, může dojít k chybě. |
+| resourceId | ID prostředku Azure Resource Manager |
+| keyVault | Úplný název trezoru klíčů |
+| key | Název klíče, který slouží k šifrování oboru názvů Event Hubs. |
+| version | Verze používaného klíče |
+| NázevOperace | Operace, která se provádí na klíči v trezoru klíčů. Můžete například zakázat/povolit klíč, zalamovat nebo rozbalení. |
+| kód | Kód, který je přidružen k operaci. Příklad: kód chyby 404 znamená, že klíč nebyl nalezen. |
+| zpráva | Jakákoli chybová zpráva přidružená k operaci |
 
 Tady je příklad protokolu pro klíč spravovaný zákazníkem:
 
@@ -144,18 +144,18 @@ Tady je příklad protokolu pro klíč spravovaný zákazníkem:
 }
 ```
 
-## <a name="use-resource-manager-template-to-enable-encryption"></a>Povolení šifrování pomocí šablony Správce prostředků
-Tato část ukazuje, jak provést následující úkoly pomocí **šablon Azure Resource Manager**. 
+## <a name="use-resource-manager-template-to-enable-encryption"></a>Použití šablony Správce prostředků k povolení šifrování
+V této části se dozvíte, jak provádět následující úlohy pomocí **Azure Resource Manager šablon**. 
 
 1. Vytvořte **obor názvů Event Hubs** s identitou spravované služby.
-2. Vytvořte **trezor klíčů** a udělte identitě služby přístup k trezoru klíčů. 
-3. Aktualizujte obor názvů Event Hubs informacemi o trezoru klíčů (klíč/hodnota). 
+2. Vytvořte **Trezor klíčů** a Udělte identitě služby přístup k trezoru klíčů. 
+3. Aktualizujte obor názvů Event Hubs s informacemi o trezoru klíčů (klíč/hodnota). 
 
 
-### <a name="create-an-event-hubs-cluster-and-namespace-with-managed-service-identity"></a>Vytvoření clusteru centra událostí a oboru názvů s identitou spravované služby
-Tato část ukazuje, jak vytvořit obor názvů Centra událostí Azure s identitou spravované služby pomocí šablony Azure Resource Manager a Prostředí PowerShell. 
+### <a name="create-an-event-hubs-cluster-and-namespace-with-managed-service-identity"></a>Vytvoření clusteru Event Hubs a oboru názvů s identitou spravované služby
+V této části se dozvíte, jak vytvořit obor názvů Azure Event Hubs s identitou spravované služby pomocí šablony Azure Resource Manager a PowerShellu. 
 
-1. Vytvořte šablonu Azure Resource Manager u vytvoření oboru názvů Event Hubs s identitou spravované služby. Pojmenujte soubor: **CreateEventHubClusterAndNamespace.json**: 
+1. Vytvořte šablonu Azure Resource Manager pro vytvoření oboru názvů Event Hubs s identitou spravované služby. Název souboru: **CreateEventHubClusterAndNamespace. JSON**: 
 
     ```json
     {
@@ -224,13 +224,13 @@ Tato část ukazuje, jak vytvořit obor názvů Centra událostí Azure s identi
        }
     }
     ```
-2. Vytvořte soubor parametrů šablony s **názvem: CreateEventHubClusterAndNamespaceParams.json**. 
+2. Vytvořte soubor parametrů šablony s názvem: **CreateEventHubClusterAndNamespaceParams. JSON**. 
 
     > [!NOTE]
     > Nahraďte následující hodnoty: 
-    > - `<EventHubsClusterName>`- Název clusteru Event Hubs    
-    > - `<EventHubsNamespaceName>`- Název oboru názvů Event Hubs
-    > - `<Location>`- Umístění oboru názvů Event Hubs
+    > - `<EventHubsClusterName>`– Název Event Hubsho clusteru    
+    > - `<EventHubsNamespaceName>`– Název oboru názvů Event Hubs
+    > - `<Location>`– Umístění vašeho oboru názvů Event Hubs
 
     ```json
     {
@@ -250,7 +250,7 @@ Tato část ukazuje, jak vytvořit obor názvů Centra událostí Azure s identi
     }
     
     ```
-3. Spusťte následující příkaz Prostředí PowerShell a nasadíte šablonu a vytvořte obor názvů Event Hubs. Potom načtěte ID oboru názvů Event Hubs a použijte ho později. Před `{MyRG}` spuštěním příkazu nahraďte názvem skupiny prostředků.  
+3. Spuštěním následujícího příkazu PowerShellu nasaďte šablonu a vytvořte obor názvů Event Hubs. Pak načtěte ID Event Hubs oboru názvů pro pozdější použití. Před `{MyRG}` spuštěním příkazu nahraďte názvem skupiny prostředků.  
 
     ```powershell
     $outputs = New-AzResourceGroupDeployment -Name CreateEventHubClusterAndNamespace -ResourceGroupName {MyRG} -TemplateFile ./CreateEventHubClusterAndNamespace.json -TemplateParameterFile ./CreateEventHubClusterAndNamespaceParams.json
@@ -258,22 +258,22 @@ Tato část ukazuje, jak vytvořit obor názvů Centra událostí Azure s identi
     $EventHubNamespaceId = $outputs.Outputs["eventHubNamespaceId"].value
     ```
  
-### <a name="grant-event-hubs-namespace-identity-access-to-key-vault"></a>Udělit přístup k identitě oboru názvů centra událostí do trezoru klíčů
+### <a name="grant-event-hubs-namespace-identity-access-to-key-vault"></a>Udělení přístupu k identitě oboru názvů Event Hubs k trezoru klíčů
 
-1. Spuštěním následujícího příkazu vytvořte trezor klíčů s **povolenou ochranou proti vymazání** a **měkkým odstraněním.** 
+1. Spusťte následující příkaz, který vytvoří Trezor klíčů s povoleným **ochranou vyprázdnění** a **obnovitelného odstranění** . 
 
     ```powershell
     New-AzureRmKeyVault -Name {keyVaultName} -ResourceGroupName {RGName}  -Location {location} -EnableSoftDelete -EnablePurgeProtection    
     ```     
     
-    (NEBO)    
+    ANI    
     
-    Chcete-li aktualizovat **existující trezor klíčů**, spusťte následující příkaz . Před spuštěním příkazu zadejte hodnoty pro názvy skupin prostředků a trezoru klíčů. 
+    Spuštěním následujícího příkazu aktualizujte **existující Trezor klíčů**. Před spuštěním příkazu zadejte hodnoty pro názvy skupin prostředků a trezorů klíčů. 
     
     ```powershell
     ($updatedKeyVault = Get-AzureRmResource -ResourceId (Get-AzureRmKeyVault -ResourceGroupName {RGName} -VaultName {keyVaultName}).ResourceId).Properties| Add-Member -MemberType "NoteProperty" -Name "enableSoftDelete" -Value "true"-Force | Add-Member -MemberType "NoteProperty" -Name "enablePurgeProtection" -Value "true" -Force
     ``` 
-2. Nastavte zásady přístupu trezoru klíčů tak, aby spravovaná identita oboru názvů Event Hubs mohla přistupovat k hodnotě klíče v trezoru klíčů. Použijte ID oboru názvů Event Hubs z předchozí části. 
+2. Nastavte zásady přístupu trezoru klíčů tak, aby spravovaná identita oboru názvů Event Hubs mohla přistupovat k hodnotě klíče v trezoru klíčů. Použijte ID Event Hubs oboru názvů z předchozí části. 
 
     ```powershell
     $identity = (Get-AzureRmResource -ResourceId $EventHubNamespaceId -ExpandProperties).Identity
@@ -281,15 +281,15 @@ Tato část ukazuje, jak vytvořit obor názvů Centra událostí Azure s identi
     Set-AzureRmKeyVaultAccessPolicy -VaultName {keyVaultName} -ResourceGroupName {RGName} -ObjectId $identity.PrincipalId -PermissionsToKeys get,wrapKey,unwrapKey,list
     ```
 
-### <a name="encrypt-data-in-event-hubs-namespace-with-customer-managed-key-from-key-vault"></a>Šifrování dat v oboru názvů Event Hubs pomocí klíče spravovaného zákazníkem z trezoru klíčů
-Zatím jste provedli následující kroky: 
+### <a name="encrypt-data-in-event-hubs-namespace-with-customer-managed-key-from-key-vault"></a>Šifrování dat v Event Hubs obor názvů s klíčem spravovaným zákazníkem z trezoru klíčů
+V tomto případě jste provedli následující kroky: 
 
-1. Vytvořil i prémiový obor názvů se spravovanou identitou.
-2. Vytvořte trezor klíčů a udělte spravované identitě přístup k trezoru klíčů. 
+1. Vytvořili jste obor názvů Premium se spravovanou identitou.
+2. Vytvořte Trezor klíčů a udělený přístup ke spravovaným identitám do trezoru klíčů. 
 
-V tomto kroku aktualizujete obor názvů Event Hubs informacemi o trezoru klíčů. 
+V tomto kroku aktualizujete obor názvů Event Hubs s použitím informací o trezoru klíčů. 
 
-1. Vytvořte soubor JSON s názvem **CreateEventHubClusterAndNamespace.json** s následujícím obsahem: 
+1. Vytvořte soubor JSON s názvem **CreateEventHubClusterAndNamespace. JSON** s následujícím obsahem: 
 
     ```json
     {
@@ -361,15 +361,15 @@ V tomto kroku aktualizujete obor názvů Event Hubs informacemi o trezoru klíč
     }
     ``` 
 
-2. Vytvoření souboru parametru šablony: **UpdateEventHubClusterAndNamespaceParams.json**. 
+2. Vytvořte soubor parametrů šablony: **UpdateEventHubClusterAndNamespaceParams. JSON**. 
 
     > [!NOTE]
     > Nahraďte následující hodnoty: 
-    > - `<EventHubsClusterName>`- Název clusteru Event Hubs.        
-    > - `<EventHubsNamespaceName>`- Název oboru názvů Event Hubs
-    > - `<Location>`- Umístění oboru názvů Event Hubs
-    > - `<KeyVaultName>`- Název trezoru klíčů
-    > - `<KeyName>`- Název klíče v trezoru klíčů
+    > - `<EventHubsClusterName>`– Název Event Hubsho clusteru.        
+    > - `<EventHubsNamespaceName>`– Název oboru názvů Event Hubs
+    > - `<Location>`– Umístění vašeho oboru názvů Event Hubs
+    > - `<KeyVaultName>`– Název vašeho trezoru klíčů
+    > - `<KeyName>`– Název klíče v trezoru klíčů
 
     ```json
     {
@@ -394,36 +394,36 @@ V tomto kroku aktualizujete obor názvů Event Hubs informacemi o trezoru klíč
        }
     }
     ```             
-3. Spusťte následující příkaz Prostředí PowerShell a nasaďte šablonu Správce prostředků. Před `{MyRG}` spuštěním příkazu nahraďte názvem skupiny prostředků. 
+3. Spusťte následující příkaz prostředí PowerShell, který nasadí šablonu Správce prostředků. Před `{MyRG}` spuštěním příkazu nahraďte názvem vaší skupiny prostředků. 
 
     ```powershell
     New-AzResourceGroupDeployment -Name UpdateEventHubNamespaceWithEncryption -ResourceGroupName {MyRG} -TemplateFile ./UpdateEventHubClusterAndNamespace.json -TemplateParameterFile ./UpdateEventHubClusterAndNamespaceParams.json 
     ```
 
 ## <a name="troubleshoot"></a>Řešení potíží
-Jako osvědčený postup vždy povolte protokoly, jako je uvedeno v předchozí části. Pomáhá při sledování aktivit, pokud je povoleno šifrování BYOK. To také pomáhá při vymezení dolů problémy.
+V rámci osvědčeného postupu doporučujeme vždy povolit protokoly, jako jsou uvedené v předchozí části. Pomáhá sledovat aktivity, když je povolené šifrování BYOK. Pomáhá také při určování rozsahu problémů.
 
-Následují běžné chybové kódy, které je třeba vyhledat, když je povoleno šifrování BYOK.
+Níže jsou uvedené běžné kódy chyb, které se hledají, když je povolené šifrování BYOK.
 
 | Akce | Kód chyby | Výsledný stav dat |
 | ------ | ---------- | ----------------------- | 
-| Odebrání oprávnění k obtékání nebo rozbalení z trezoru klíčů | 403 |    Nepřístupné |
-| Odebrání členství v roli AAD z objektu Zabezpečení AAD, který udělil oprávnění zalamování nebo rozbalení | 403 |  Nepřístupné |
-| Odstranění šifrovacího klíče z trezoru klíčů | 404 | Nepřístupné |
-| Odstranění trezoru klíčů | 404 | Nepřístupné (předpokládá, že je povoleno obnovitelné odstranění, což je požadované nastavení.) |
-| Změna doby vypršení platnosti šifrovacího klíče tak, že jeho platnost již vypršela | 403 |   Nepřístupné  |
-| Změna NBF (ne dříve) tak, aby šifrovací klíč nebyl aktivní | 403 | Nepřístupné  |
-| Výběr možnosti **Povolit službu MSFT** pro bránu firewall trezoru klíčů nebo jiné blokování přístupu k síti k trezoru klíčů, který má šifrovací klíč | 403 | Nepřístupné |
-| Přesunutí trezoru klíčů do jiného klienta | 404 | Nepřístupné |  
-| Občasný problém se sítí nebo výpadek DNS/AAD/MSI |  | Přístupné pomocí šifrovacího klíče dat uložených v mezipaměti |
+| Odebrat oprávnění k zabalení a rozbalení z trezoru klíčů | 403 |    Nepřístupný |
+| Odebere členství role AAD z objektu zabezpečení AAD, který udělil oprávnění k zabalení nebo rozbalení. | 403 |  Nepřístupný |
+| Odstranění šifrovacího klíče z trezoru klíčů | 404 | Nepřístupný |
+| Odstranění trezoru klíčů | 404 | Nedostupné (předpokládá, že je povolené obnovitelné odstranění, což je povinné nastavení.) |
+| Doba vypršení platnosti šifrovacího klíče se mění tak, že už vypršela její platnost. | 403 |   Nepřístupný  |
+| Mění se NBF (ne dřív), takže šifrovací klíč klíče není aktivní. | 403 | Nepřístupný  |
+| Výběr možnosti **Povolení protokolu MSFT** pro bránu firewall trezoru klíčů nebo jiným blokování síťového přístupu k trezoru klíčů, který má šifrovací klíč | 403 | Nepřístupný |
+| Přesun trezoru klíčů do jiného tenanta | 404 | Nepřístupný |  
+| Přerušované síťové potíže nebo výpadky DNS/AAD/MSI |  | K dispozici pomocí šifrovacího klíče dat uložených v mezipaměti |
 
 > [!IMPORTANT]
-> Chcete-li povolit geo-DR v oboru názvů, který používá šifrování BYOK, musí být sekundární obor názvů pro párování ve vyhrazeném clusteru a musí mít v něm povolenou spravovanou identitu přiřazenou systémem. Další informace najdete v tématu [Spravované identity pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md).
+> Pokud chcete povolit geografickou možnost DR na oboru názvů, který používá šifrování BYOK, sekundární obor názvů pro párování musí být v vyhrazeném clusteru a musí mít povolenou spravovanou identitu přiřazenou systémem. Další informace najdete v tématu [spravované identity pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md).
 
 ## <a name="next-steps"></a>Další kroky
 Viz následující články:
-- [Přehled centra událostí](event-hubs-about.md)
-- [Trezor klíčů – přehled](../key-vault/general/overview.md)
+- [Přehled Event Hubs](event-hubs-about.md)
+- [Přehled služby Key Vault](../key-vault/general/overview.md)
 
 
 

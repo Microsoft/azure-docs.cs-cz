@@ -1,51 +1,51 @@
 ---
-title: Důležité informace o úložišti pro funkce Azure
-description: Přečtěte si o požadavcích na úložiště v Azure Functions a o šifrování uložených dat.
+title: Požadavky na úložiště pro Azure Functions
+description: Seznamte se s požadavky na úložiště Azure Functions a o šifrování uložených dat.
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.openlocfilehash: 48ff2dedd997cccb76b13acdadc895504f656ea3
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80984159"
 ---
-# <a name="storage-considerations-for-azure-functions"></a>Důležité informace o úložišti pro funkce Azure
+# <a name="storage-considerations-for-azure-functions"></a>Požadavky na úložiště pro Azure Functions
 
-Funkce Azure vyžadují účet Azure Storage při vytváření instance aplikace funkce. Aplikace funkce může používat následující služby úložiště:
+Azure Functions vyžaduje účet Azure Storage při vytváření instance aplikace Function App. Vaše aplikace Function App může používat následující služby úložiště:
 
 
 |Služba úložiště  | Využití funkcí  |
 |---------|---------|
-| [Úložiště objektů blob Azure](../storage/blobs/storage-blobs-introduction.md)     | Udržovat vazby stavu a funkční klíče.  <br/>Používá se také [v rozbočovačích úloh v aplikaci Durable Functions](durable/durable-functions-task-hubs.md). |
-| [Soubory Azure](../storage/files/storage-files-introduction.md)  | Sdílená složka používaná k uložení a spuštění kódu aplikace funkce v [plánu spotřeby](functions-scale.md#consumption-plan). |
-| [Úložiště fronty Azure](../storage/queues/storage-queues-introduction.md)     | Používá se [rozbočovači úloh v trvanlivé funkce](durable/durable-functions-task-hubs.md).   |
-| [Azure Table storage](../storage/tables/table-storage-overview.md)  |  Používá se [rozbočovači úloh v trvanlivé funkce](durable/durable-functions-task-hubs.md).       |
+| [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md)     | Zachovat stav vazeb a klíče funkcí  <br/>Používá se také pro [centra úloh v Durable Functions](durable/durable-functions-task-hubs.md). |
+| [Soubory Azure](../storage/files/storage-files-introduction.md)  | Sdílená složka používaná k ukládání a spouštění kódu aplikace Function App v [plánu spotřeby](functions-scale.md#consumption-plan). |
+| [Úložiště front Azure](../storage/queues/storage-queues-introduction.md)     | Používá [se pro centra úloh v Durable Functions](durable/durable-functions-task-hubs.md).   |
+| [Úložiště tabulek v Azure](../storage/tables/table-storage-overview.md)  |  Používá [se pro centra úloh v Durable Functions](durable/durable-functions-task-hubs.md).       |
 
 > [!IMPORTANT]
 > Pokud použijete plán hostování Consumption, kód vaší funkce a vázané konfigurační soubory se ukládají ve službě Azure File Storage v hlavním účtu úložiště. Když odstraníte hlavní účet úložiště, tento obsah se odstraní a není možné ho obnovit.
 
 ## <a name="storage-account-requirements"></a>Požadavky na účet úložiště
 
-Při vytváření aplikace funkce musíte vytvořit nebo propojit účet úložiště Azure pro obecné účely, který podporuje úložiště objektů Blob, Fronta a Tabulka. Důvodem je, že funkce závisí na Azure Storage pro operace, jako je správa aktivačních událostí a spuštění funkcí protokolování. Některé účty úložiště nepodporují fronty a tabulky. Tyto účty zahrnují účty úložiště pouze pro objekty blob, Azure Premium Storage a účty úložiště pro obecné účely s replikací ZRS. Tyto nepodporované účty jsou odfiltrovány z okna účtu úložiště při vytváření aplikace funkce.
+Při vytváření aplikace Function App musíte vytvořit nebo propojit s Azure Storage účet pro obecné účely, který podporuje úložiště objektů blob, front a tabulek. Důvodem je to, že funkce spoléhají na Azure Storage pro operace, jako je Správa triggerů a spouštění funkcí protokolování. Některé účty úložiště nepodporují fronty a tabulky. Tyto účty zahrnují účty úložiště jen pro objekty blob, Azure Premium Storage a účty úložiště pro obecné účely s replikací ZRS. Tyto nepodporované účty se při vytváření aplikace Function App odfiltrují z okna účtu úložiště.
 
 Další informace o typech účtů úložiště najdete v tématu [Seznámení se službami Azure Storage](../storage/common/storage-introduction.md#core-storage-services). 
 
-Zatímco můžete použít existující účet úložiště s vaší aplikace funkce, musíte se ujistit, že splňuje tyto požadavky. Účty úložiště vytvořené jako součást toku vytvoření aplikace funkce je zaručeno, že splňují tyto požadavky na účet úložiště.  
+I když pomocí aplikace Function App můžete použít existující účet úložiště, musíte se ujistit, že splňuje tyto požadavky. Účty úložiště vytvořené jako součást služby Function App vytvořit tok jsou zaručené splňovat tyto požadavky na účet úložiště.  
 
-## <a name="storage-account-guidance"></a>Pokyny k účtu úložiště
+## <a name="storage-account-guidance"></a>Doprovodné materiály k účtu úložiště
 
-Každá aplikace funkce vyžaduje účet úložiště pro provoz. Pokud je tento účet odstraněn, vaše funkční aplikace se nespustí. Informace o řešení problémů souvisejících s úložištěm najdete v [tématu Řešení potíží souvisejících s úložištěm](functions-recover-storage-account.md). Následující další aspekty platí pro účet úložiště používané funkce aplikací.
+Každá aplikace Function App vyžaduje, aby účet úložiště fungoval. Pokud se tento účet odstraní, aplikace Function App se nespustí. Pokud chcete řešit problémy související s úložištěm, přečtěte si téma řešení [potíží souvisejících s úložištěm](functions-recover-storage-account.md). Následující další požadavky platí pro účet úložiště používaný aplikacemi Function App.
 
 ### <a name="storage-account-connection-setting"></a>Nastavení připojení účtu úložiště
 
-Připojení účtu úložiště se udržuje v [nastavení aplikace AzureWebJobsStorage](./functions-app-settings.md#azurewebjobsstorage). 
+Připojení k účtu úložiště se udržuje v [nastavení aplikace AzureWebJobsStorage](./functions-app-settings.md#azurewebjobsstorage). 
 
-Při opětovném generování klíčů úložiště je nutné aktualizovat připojovací řetězec účtu úložiště. [Další informace o správě klíčů úložiště načteme zde](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account).
+Připojovací řetězec účtu úložiště se musí aktualizovat při opětovném generování klíčů úložiště. [Přečtěte si další informace o správě klíčů úložiště tady](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account).
 
-### <a name="shared-storage-accounts"></a>Účty sdíleného úložiště
+### <a name="shared-storage-accounts"></a>Sdílené účty úložiště
 
-Je možné, že více funkčních aplikací sdílí stejný účet úložiště bez problémů. Například v Sadě Visual Studio můžete vyvíjet více aplikací pomocí emulátoru úložiště Azure. V tomto případě emulátor funguje jako jeden účet úložiště. Stejný účet úložiště, který používá vaše aplikace funkce, lze také použít k ukládání dat aplikace. Tento přístup však není vždy dobrý nápad v produkčním prostředí.
+Je možné, že více aplikací Function App sdílí stejný účet úložiště bez problémů. Například v aplikaci Visual Studio můžete vyvíjet více aplikací pomocí emulátoru Azure Storage. V takovém případě emulátor funguje jako jeden účet úložiště. K ukládání dat aplikací se dá použít taky stejný účet úložiště, který používá vaše aplikace Function App. Tento přístup ale není vždycky dobrý nápad v produkčním prostředí.
 
 ### <a name="optimize-storage-performance"></a>Optimalizace výkonu úložiště
 
@@ -53,21 +53,21 @@ Je možné, že více funkčních aplikací sdílí stejný účet úložiště 
 
 ## <a name="storage-data-encryption"></a>Šifrování dat úložiště
 
-Azure Storage šifruje všechna data v účtu úložiště v klidovém stavu. Další informace najdete v tématu [šifrování Azure Storage pro data v klidovém stavu](../storage/common/storage-service-encryption.md).
+Azure Storage šifruje všechna data v účtu úložiště v klidovém umístění. Další informace najdete v tématu [Azure Storage šifrování pro](../storage/common/storage-service-encryption.md)neaktivní neaktivní data.
 
-Ve výchozím nastavení jsou data šifrována pomocí klíčů spravovaných společností Microsoft. Pro další kontrolu nad šifrovacími klíči můžete zadat klíče spravované zákazníkem, které se použijí pro šifrování dat objektů blob a souborů. Tyto klíče musí být k dispozici v trezoru klíčů Azure pro funkce, aby bylo možné získat přístup k účtu úložiště. Další informace najdete [v tématu Konfigurace klíčů spravovaných zákazníky pomocí Azure Key Vault pomocí webu Azure Portal](../storage/common/storage-encryption-keys-portal.md).  
+Ve výchozím nastavení se data šifrují pomocí klíčů spravovaných Microsoftem. Pro další kontrolu nad šifrovacími klíči můžete zadat klíče spravované zákazníkem, které se použijí k šifrování dat objektů BLOB a souborů. Aby funkce mohly získat přístup k účtu úložiště, musí se tyto klíče vyskytovat v Azure Key Vault. Další informace najdete v tématu [konfigurace klíčů spravovaných zákazníkem pomocí Azure Key Vault pomocí Azure Portal](../storage/common/storage-encryption-keys-portal.md).  
 
-## <a name="mount-file-shares-linux"></a>Připojení sdílených složek (Linux)
+## <a name="mount-file-shares-linux"></a>Připojit sdílené soubory (Linux)
 
-Existující sdílené složky Azure Files můžete připojit do aplikací pro funkce Linuxu. Připojením sdílené položky do aplikace pro funkce Linuxu můžete ve svých funkcích využít stávající modely strojového učení nebo jiná data. Pomocí příkazu [`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account#az-webapp-config-storage-account-add) můžete připojit existující sdílenou složku do aplikace pro funkce Linuxu. 
+Existující sdílené složky Azure můžete připojit k aplikacím funkcí pro Linux. Připojením sdílené složky k aplikaci Functions pro Linux můžete využít stávající modely strojového učení nebo jiná data ve vašich funkcích. Pomocí [`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account#az-webapp-config-storage-account-add) příkazu můžete připojit existující sdílenou složku k aplikaci Functions pro Linux. 
 
-V tomto `share-name` příkazu je název existující sdílené `custom-id` složky Azure Files a může být libovolný řetězec, který jedinečně definuje sdílenou složku při připojení k aplikaci funkce. Také `mount-path` je cesta, ze které je sdílená skupina přístupná ve vaší aplikaci funkce. `mount-path`musí být ve `/dir-name`formátu a nemůže začínat na . `/home`
+V tomto příkazu `share-name` je název existující sdílené složky Azure Files a `custom-id` může to být libovolný řetězec, který jedinečně definuje sdílenou složku, když je připojená k aplikaci Function App. Také je `mount-path` cesta, ze které je sdílená složka k dispozici ve vaší aplikaci Function App. `mount-path`musí být ve formátu `/dir-name`a nemůže začínat na. `/home`
 
-Úplný příklad najdete v tématu skripty v [aplikaci Vytvoření funkce Pythonu a připojení sdílené složky Azure Files](scripts/functions-cli-mount-files-storage-linux.md). 
+Úplný příklad najdete ve skriptech v tématu [Vytvoření aplikace funkcí Pythonu a připojení sdílené složky služby soubory Azure](scripts/functions-cli-mount-files-storage-linux.md). 
 
-V současné době `storage-type` `AzureFiles` je podporovánpouze z je podporována. Do aplikace pro danou funkci můžete připojit pouze pět sdílených složek. Připojení sdílené složky může zvýšit čas studeného startu nejméně o 200 až 300 ms nebo dokonce více, když je účet úložiště v jiné oblasti.
+V současné době je `storage-type` podporována `AzureFiles` pouze část z. Do dané aplikace Function App můžete připojit jenom pět sdílených složek. Připojení sdílené složky může prodloužit čas spuštění alespoň 200-300ms nebo ještě více, pokud je účet úložiště v jiné oblasti.
 
-Připojená sdílená složky je `mount-path` k dispozici pro kód funkce na zadaný. Například když `mount-path` `/path/to/mount`je , můžete přistupovat k cílovému adresáři pomocí rozhraní API systému souborů, jako v následujícím příkladu Pythonu:
+Připojená sdílená složka je k dispozici pro váš `mount-path` kód funkce na zadaném. Například když `mount-path` je `/path/to/mount`, můžete získat přístup k cílovému adresáři pomocí rozhraní API systému souborů, jak je uvedeno v následujícím příkladu Pythonu:
 
 ```python
 import os

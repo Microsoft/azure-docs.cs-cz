@@ -1,50 +1,50 @@
 ---
-title: Upgrade uzlů clusteru na spravované disky Azure
-description: Tady je postup, jak upgradovat existující cluster Service Fabric tak, aby používal spravované disky Azure s malými nebo žádnými prostoji vašeho clusteru.
+title: Upgrade uzlů clusteru pro používání služby Azure Managed disks
+description: Tady je postup, jak upgradovat existující Cluster Service Fabric tak, aby používal Azure Managed disks s malým nebo žádným výpadkem clusteru.
 ms.topic: how-to
 ms.date: 4/07/2020
 ms.openlocfilehash: 5f4698718a35970e47de2a0ee6d053802c8ef919
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80991207"
 ---
-# <a name="upgrade-cluster-nodes-to-use-azure-managed-disks"></a>Upgrade uzlů clusteru na spravované disky Azure
+# <a name="upgrade-cluster-nodes-to-use-azure-managed-disks"></a>Upgrade uzlů clusteru pro používání služby Azure Managed disks
 
-[Spravované disky Azure](../virtual-machines/windows/managed-disks-overview.md) jsou doporučené nabídky diskového úložiště pro použití s virtuálními počítači Azure pro trvalé ukládání dat. Odolnost úloh Service Fabric můžete zlepšit upgradem škálovacích sad virtuálních počítačů, které jsou základem typů uzlů, aby používaly spravované disky. Tady je postup, jak upgradovat existující cluster Service Fabric tak, aby používal spravované disky Azure s malými nebo žádnými prostoji vašeho clusteru.
+[Azure Managed disks](../virtual-machines/windows/managed-disks-overview.md) je doporučená nabídka diskového úložiště pro použití s virtuálními počítači Azure k trvalému ukládání dat. Odolnost vašich Service Fabricch úloh můžete zlepšit tím, že upgradujete sady škálování virtuálních počítačů, které budou základem typů uzlů, aby používaly spravované disky. Tady je postup, jak upgradovat existující Cluster Service Fabric tak, aby používal Azure Managed disks s malým nebo žádným výpadkem clusteru.
 
-Obecnou strategií pro inovaci uzlu clusteru Service Fabric pro použití spravovaných disků je:
+Všeobecná strategie pro upgrade uzlu clusteru Service Fabric na používání spravovaných disků:
 
-1. Nasaďte jinak duplicitní škálovací sadu virtuálních počítačů tohoto typu uzlu, ale s objektem [managedDisk](https://docs.microsoft.com/azure/templates/microsoft.compute/2019-07-01/virtualmachinescalesets/virtualmachines#ManagedDiskParameters) přidaným `osDisk` do části šablony nasazení škálovací sady virtuálních počítačů. Nová škálovací sada by se měla vázat na stejný nástroj pro vyrovnávání zatížení / IP jako původní, aby vaši zákazníci během migrace nezaznamenali výpadek služby.
+1. Nasaďte jinak duplicitní sadu škálování virtuálního počítače pro daný typ uzlu, ale s objektem [managedDisk](https://docs.microsoft.com/azure/templates/microsoft.compute/2019-07-01/virtualmachinescalesets/virtualmachines#ManagedDiskParameters) přidaným `osDisk` do části šablony nasazení sady škálování virtuálního počítače. Nová sada škálování by se měla navazovat na stejný nástroj pro vyrovnávání zatížení/IP adresu jako originál, aby vaši zákazníci během migrace nepracovali jako výpadek služeb.
 
-2. Jakmile jsou původní i upgradované škálovací sady spuštěny vedle sebe, zakažte původní instance uzlů jeden po druhém, aby systémové služby (nebo repliky stavových služeb) migrovaly do nové škálovací sady.
+2. Po souběžném spuštění původní i upgradované sady škálování zakažte instance původních uzlů po jednom, aby se systémové služby (nebo repliky stavových služeb) migrovali do nové sady škálování.
 
-3. Ověřte, zda jsou cluster a nové uzly v pořádku, a potom odeberte původní škálovací sadu a stav uzlu odstraněných uzlů.
+3. Ověřte, že cluster a nové uzly jsou v pořádku, a pak odeberte původní sadu škálování a stav uzlu pro odstraněné uzly.
 
-Tento článek vás provede kroky upgradu typu primárního uzlu ukázkového clusteru tak, aby používal spravované disky, aniž byste museli prostoji clusteru (viz poznámka níže). Počáteční stav ukázkového testovacího clusteru se skládá z jednoho typu uzlu [odolnosti silver](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster), podporovaného jednou škálovací sadou s pěti uzly.
+Tento článek vás provede jednotlivými kroky upgradu primárního typu uzlu ukázkového clusteru, který bude používat spravované disky, a zároveň vyloučí jakékoli výpadky clusteru (viz poznámka níže). Počáteční stav ukázkového testovacího clusteru se skládá z jednoho typu uzlu [odolného proti stříbrnému](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster), který je zajištěný jednou sadou škálování s pěti uzly.
 
 > [!CAUTION]
-> K výpadku tohoto postupu dojde pouze v případě, že máte závislosti na dns clusteru (například při přístupu k [aplikaci Service Fabric Explorer).](service-fabric-visualizing-your-cluster.md) [Architektonická best practice pro front-end ové služby](https://docs.microsoft.com/azure/architecture/microservices/design/gateway) je mít nějaký druh nástrojů pro [vyrovnávání zatížení](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview) před typy uzlů, aby bylo možné vyměnit uzel bez výpadku.
+> Tento postup se projeví pouze v případě, že máte závislosti na DNS clusteru (například při přístupu k [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)). [Osvědčeným postupem pro front-end služby](https://docs.microsoft.com/azure/architecture/microservices/design/gateway) je mít určitý druh nástroje pro [Vyrovnávání zatížení](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview) před typy uzlů, aby bylo možné přeměnit uzel bez výpadku.
 
-Tady jsou [šablony a rutiny](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade-no-outage) pro Azure Resource Manager, které použijeme k dokončení scénáře upgradu. Změny šablony budou vysvětleny v [části Nasazení upgradované škálovací sady pro typ primárního uzlu](#deploy-an-upgraded-scale-set-for-the-primary-node-type) níže.
+Tady jsou [šablony a rutiny](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade-no-outage) pro Azure Resource Manager, které použijeme k dokončení scénáře upgradu. Změny šablon budou vysvětleny v části [nasazení upgradované sady škálování pro typ primárního uzlu](#deploy-an-upgraded-scale-set-for-the-primary-node-type) níže.
 
 ## <a name="set-up-the-test-cluster"></a>Nastavení testovacího clusteru
 
-Nastavíme počáteční testovací cluster Service Fabric. Nejprve [si stáhněte](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade-no-outage) ukázkové šablony Správce prostředků Azure, které použijeme k dokončení tohoto scénáře.
+Pojďme nastavit počáteční testovací Cluster Service Fabric. Nejdřív [Stáhněte](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade-no-outage) ukázkové šablony Azure Resource Manageru, které použijeme k dokončení tohoto scénáře.
 
-Dále se přihlaste ke svému účtu Azure.
+Potom se přihlaste ke svému účtu Azure.
 
 ```powershell
 # Sign in to your Azure account
 Login-AzAccount -SubscriptionId "<subscription ID>"
 ```
 
-Následující příkazy vás provedou generováním nového certifikátu podepsaného svým držitelem a nasazením testovacího clusteru. Pokud již máte certifikát, který chcete použít, přeskočte na [Použít existující certifikát k nasazení clusteru](#use-an-existing-certificate-to-deploy-the-cluster).
+Následující příkazy vás provede vygenerováním nového certifikátu podepsaného svým držitelem a nasazením testovacího clusteru. Pokud už máte certifikát, který byste chtěli použít, přejděte k [nasazení clusteru pomocí existujícího certifikátu](#use-an-existing-certificate-to-deploy-the-cluster).
 
-### <a name="generate-a-self-signed-certificate-and-deploy-the-cluster"></a>Generovat certifikát podepsaný svým držitelem a nasadit cluster
+### <a name="generate-a-self-signed-certificate-and-deploy-the-cluster"></a>Vygenerování certifikátu podepsaného svým držitelem a nasazení clusteru
 
-Nejprve přiřaďte proměnné, které budete potřebovat pro nasazení clusteru Service Fabric. Upravte hodnoty `resourceGroupName` `certSubjectName`pro `parameterFilePath`, `templateFilePath` , a pro váš konkrétní účet a prostředí:
+Nejdřív přiřaďte proměnné, které budete potřebovat pro nasazení clusteru Service Fabric. `resourceGroupName`Upravte hodnoty pro `certSubjectName`,, `parameterFilePath`a `templateFilePath` pro konkrétní účet a prostředí:
 
 ```powershell
 # Assign deployment variables
@@ -57,11 +57,11 @@ $parameterFilePath = "C:\Initial-1NodeType-UnmanagedDisks.parameters.json"
 ```
 
 > [!NOTE]
-> Před spuštěním `certOutputFolder` příkazu pro nasazení nového clusteru Service Fabric se ujistěte, že v místním počítači existuje umístění.
+> Před spuštěním příkazu `certOutputFolder` pro nasazení nového clusteru Service Fabric zajistěte, aby umístění existovalo na vašem místním počítači.
 
-Dále otevřete soubor [*Initial-1NodeType-UnmanagedDisks.parameters.json*](https://github.com/erikadoyle/service-fabric-scripts-and-templates/blob/managed-disks/templates/nodetype-upgrade-no-outage/Initial-1NodeType-UnmanagedDisks.parameters.json) a `clusterName` `dnsName` upravte hodnoty a odpovídající dynamickým hodnotám nastaveným v prostředí PowerShell a uložte změny.
+Pak otevřete [*počáteční soubor-1NodeType-UnmanagedDisks. Parameters. JSON*](https://github.com/erikadoyle/service-fabric-scripts-and-templates/blob/managed-disks/templates/nodetype-upgrade-no-outage/Initial-1NodeType-UnmanagedDisks.parameters.json) a upravte hodnoty pro `clusterName` a `dnsName` tak, aby odpovídaly dynamickým hodnotám, které jste nastavili v prostředí PowerShell, a uložte změny.
 
-Potom nasaďte testovací cluster Service Fabric:
+Pak nasaďte testovací Cluster Service Fabric:
 
 ```powershell
 # Deploy the initial test cluster
@@ -74,7 +74,7 @@ New-AzServiceFabricCluster `
     -ParameterFile $parameterFilePath
 ```
 
-Po dokončení nasazení vyhledejte soubor *.pfx* (`$certPfx`) v místním počítači a importujte jej do úložiště certifikátů:
+Po dokončení nasazení Najděte na svém místním počítači soubor *. pfx* (`$certPfx`) a naimportujte ho do úložiště certifikátů:
 
 ```powershell
 cd c:\certificates
@@ -86,11 +86,11 @@ Import-PfxCertificate `
      -Password (ConvertTo-SecureString Password!1 -AsPlainText -Force)
 ```
 
-Operace vrátí kryptografický otisk certifikátu, který použijete k [připojení k novému clusteru](#connect-to-the-new-cluster-and-check-health-status) a ke kontrole jeho stavu. (Přeskočte následující část, která je alternativním přístupem k nasazení clusteru.)
+Tato operace vrátí kryptografický otisk certifikátu, který použijete k [připojení k novému clusteru](#connect-to-the-new-cluster-and-check-health-status) a kontrole jeho stavu. (Přeskočte následující část, která je alternativním přístupem k nasazení clusteru.)
 
-### <a name="use-an-existing-certificate-to-deploy-the-cluster"></a>Nasazení clusteru pomocí existujícího certifikátu
+### <a name="use-an-existing-certificate-to-deploy-the-cluster"></a>Použít existující certifikát k nasazení clusteru
 
-K nasazení testovacího clusteru můžete také použít existující certifikát Azure Key Vault. Chcete-li to provést, budete muset [získat odkazy na trezor klíčů](#obtain-your-key-vault-references) a kryptografický otisk certifikátu.
+K nasazení testovacího clusteru můžete použít také existující Azure Key Vault certifikát. K tomu je potřeba [získat odkazy na Key Vault](#obtain-your-key-vault-references) a kryptografický otisk certifikátu.
 
 ```powershell
 # Key Vault variables
@@ -99,12 +99,12 @@ $sourceVaultValue = "/subscriptions/########-####-####-####-############/resourc
 $thumb = "BB796AA33BD9767E7DA27FE5182CF8FDEE714A70"
 ```
 
-Otevřete soubor [*Initial-1NodeType-UnmanagedDisks.parameters.json*](https://github.com/erikadoyle/service-fabric-scripts-and-templates/blob/managed-disks/templates/nodetype-upgrade-no-outage/Initial-1NodeType-UnmanagedDisks.parameters.json) a `clusterName` změňte hodnoty pro a `dnsName` na něco jedinečného.
+Otevřete soubor [*Initial-1NodeType-UnmanagedDisks. Parameters. JSON*](https://github.com/erikadoyle/service-fabric-scripts-and-templates/blob/managed-disks/templates/nodetype-upgrade-no-outage/Initial-1NodeType-UnmanagedDisks.parameters.json) a změňte hodnoty parametrů `clusterName` a `dnsName` na něco jedinečného.
 
-Nakonec určete název skupiny prostředků pro `templateFilePath` `parameterFilePath` cluster a nastavte umístění a souborů *Initial-1NodeType-UnmanagedDisks:*
+Nakonec určete název skupiny prostředků pro cluster a nastavte umístění `templateFilePath` a `parameterFilePath` umístění *počátečních souborů 1NodeType-UnmanagedDisks* :
 
 > [!NOTE]
-> Určená skupina prostředků musí již existovat a musí být umístěna ve stejné oblasti jako trezor klíčů.
+> Určená skupina prostředků už musí existovat a musí se nacházet ve stejné oblasti jako vaše Key Vault.
 
 ```powershell
 # Deploy the new scale set (upgraded to use managed disks) into the primary node type.
@@ -113,7 +113,7 @@ $templateFilePath = "C:\Upgrade-1NodeType-2ScaleSets-ManagedDisks.json"
 $parameterFilePath = "C:\Upgrade-1NodeType-2ScaleSets-ManagedDisks.parameters.json"
 ```
 
-Nakonec spusťte následující příkaz k nasazení počátečnítestovací cluster:
+Nakonec spuštěním následujícího příkazu nasaďte počáteční testovací cluster:
 
 ```powershell
 New-AzResourceGroupDeployment `
@@ -126,9 +126,9 @@ New-AzResourceGroupDeployment `
     -Verbose
 ```
 
-### <a name="connect-to-the-new-cluster-and-check-health-status"></a>Připojení k novému clusteru a kontrola stavu
+### <a name="connect-to-the-new-cluster-and-check-health-status"></a>Připojení k novému clusteru a kontrolu stavu
 
-Připojte se ke clusteru a ujistěte se, že `clusterName` všech `thumb` pět jeho uzlů je v pořádku (nahrazení proměnných a pro váš cluster):
+Připojte se ke clusteru a ujistěte se, že všechny pět jeho uzlů je v pořádku ( `clusterName` nahrazuje `thumb` proměnné a pro váš cluster):
 
 ```powershell
 # Connect to the cluster
@@ -149,23 +149,23 @@ Connect-ServiceFabricCluster `
 Get-ServiceFabricClusterHealth
 ```
 
-S tím jsme připraveni zahájit upgrade procedury.
+V takovém případě jsme připraveni zahájit postup upgradu.
 
-## <a name="deploy-an-upgraded-scale-set-for-the-primary-node-type"></a>Nasazení upgradované škálovací sady pro primární typ uzlu
+## <a name="deploy-an-upgraded-scale-set-for-the-primary-node-type"></a>Nasazení upgradované sady škálování pro typ primárního uzlu
 
-Chcete-li upgradovat nebo *vertikálně škálovat*typ uzlu, budeme muset nasadit kopii škálovací sady virtuálního počítače tohoto typu uzlu, která `nodeTypeRef` `subnet`je `loadBalancerBackendAddressPools`jinak shodná s původní škálovací sadou (včetně odkazu na stejnou , a ) s tím rozdílem, že obsahuje požadovanou upgrade/změny a vlastní samostatnou podsíť a vstupní fond adres NAT. Vzhledem k tomu, že upgradujeme typ primárního uzlu, bude nová škálovací sada označena jako primární (`isPrimary: true`), stejně jako původní škálovací sada. (Pro upgrady typu primárního uzlu jednoduše vynechte.)
+Aby bylo možné upgradovat nebo *vertikálně škálovat*typ uzlu, bude nutné nasadit kopii této sady škálování virtuálního počítače typu uzel, která je jinak shodná s původní sadou škálování (včetně odkazu na stejnou `nodeTypeRef`, `subnet`a `loadBalancerBackendAddressPools`) s tím rozdílem, že obsahuje požadovaný upgrade/změny a vlastní samostatnou podsíť a fond adres příchozího překladu adres (NAT). Vzhledem k tomu, že upgradujete typ primárního uzlu, nová sada škálování bude označena jako primární (`isPrimary: true`), stejně jako původní sada škálování. (U neprimárních upgradů typu uzlu jednoduše tuto dobu vynechejte.)
 
-Pro větší pohodlí již byly provedeny požadované změny v [šabloně](https://github.com/erikadoyle/service-fabric-scripts-and-templates/blob/managed-disks/templates/nodetype-upgrade-no-outage/Upgrade-1NodeType-2ScaleSets-ManagedDisks.json) *Upgrade-1NodeType-2ScaleSets-ManagedDisks* a [v souborech parametrů.](https://github.com/erikadoyle/service-fabric-scripts-and-templates/blob/managed-disks/templates/nodetype-upgrade-no-outage/Upgrade-1NodeType-2ScaleSets-ManagedDisks.parameters.json)
+Pro usnadnění práce se pro vás už požadované změny provedly v [šablonách](https://github.com/erikadoyle/service-fabric-scripts-and-templates/blob/managed-disks/templates/nodetype-upgrade-no-outage/Upgrade-1NodeType-2ScaleSets-ManagedDisks.json) *upgrade-1NodeType-2ScaleSets-ManagedDisks* a v souborech [parametrů](https://github.com/erikadoyle/service-fabric-scripts-and-templates/blob/managed-disks/templates/nodetype-upgrade-no-outage/Upgrade-1NodeType-2ScaleSets-ManagedDisks.parameters.json) .
 
-V následujících částech budou podrobně vysvětleny změny šablony. Pokud chcete, můžete přeskočit vysvětlení a pokračovat k [dalšímu kroku postupu upgradu](#obtain-your-key-vault-references).
+V následujících částech se podrobně vysvětlují změny v šabloně. Pokud budete chtít, můžete vysvětlení přeskočit a pokračovat k [dalšímu kroku postupu upgradu](#obtain-your-key-vault-references).
 
-### <a name="update-the-cluster-template-with-the-upgraded-scale-set"></a>Aktualizace šablony clusteru pomocí upgradované škálovací sady
+### <a name="update-the-cluster-template-with-the-upgraded-scale-set"></a>Aktualizuje šablonu clusteru s inovovanou sadou škálování.
 
-Zde jsou změny po oddílech původní šablony nasazení clusteru pro přidání upgradované škálovací sady pro primární typ uzlu.
+Tady je přehled úprav původní šablony nasazení clusteru pro přidání upgradované sady škálování pro typ primárního uzlu.
 
 #### <a name="parameters"></a>Parametry
 
-Přidejte parametry pro název instance, počet a velikost nové škálovací sady. Všimněte `vmNodeType1Name` si, že je jedinečný pro novou škálovací sadu, zatímco hodnoty počtu a velikosti jsou shodné s původní škálovací sadou.
+Přidejte parametry pro název instance, počet a velikost nové sady škálování. Všimněte si `vmNodeType1Name` , že je jedinečný pro novou sadu škálování, zatímco hodnoty počtu a velikosti se shodují s původní sadou škálování.
 
 **Soubor šablony**
 
@@ -204,7 +204,7 @@ Přidejte parametry pro název instance, počet a velikost nové škálovací sa
 
 ### <a name="variables"></a>Proměnné
 
-V části `variables` šablony nasazení přidejte položku pro příchozí fond adres NAT nové škálovací sady.
+V části Šablona `variables` nasazení přidejte položku pro fond adres příchozího překladu adres (NAT) nové sady škálování.
 
 **Soubor šablony**
 
@@ -214,15 +214,15 @@ V části `variables` šablony nasazení přidejte položku pro příchozí fond
 
 ### <a name="resources"></a>Zdroje a prostředky
 
-V části *prostředky šablony* nasazení přidejte novou škálovací sadu virtuálních strojů a mějte na paměti následující:
+V části *prostředky* šablony nasazení přidejte novou sadu škálování virtuálního počítače. Pamatujte na tyto věci:
 
-* Nová škálovací sada odkazuje na stejný typ uzlu jako originál:
+* Nová sada škálování odkazuje na stejný typ uzlu jako původní:
 
     ```json
     "nodeTypeRef": "[parameters('vmNodeType0Name')]",
     ```
 
-* Nová škálovací sada odkazuje na stejnou back-endovou adresu a podsíť vykladače vyrovnávání zatížení (ale používá jiný příchozí fond NAT pro vyrovnávání zatížení):
+* Nová sada škálování odkazuje na stejnou adresu back-end služby Vyrovnávání zatížení a podsíť (ale používá jiný fond NAT příchozího vyrovnávání zatížení):
 
    ```json
     "loadBalancerBackendAddressPools": [
@@ -240,13 +240,13 @@ V části *prostředky šablony* nasazení přidejte novou škálovací sadu vir
     }
    ```
 
-* Stejně jako původní škálovací sada je nová škálovací sada označena jako primární typ uzlu. (Při inovaci typů neprimárních uzlů tuto změnu vynechte.)
+* Podobně jako původní sada škálování je nová sada škálování označená jako primární typ uzlu. (Při upgradu neprimárních typů uzlů tuto změnu vynechejte.)
 
     ```json
     "isPrimary": true,
     ```
 
-* Na rozdíl od původní škálovací sady je nová škálovací sada upgradována tak, aby používala spravované disky.
+* Na rozdíl od původní sady škálování je nová sada škálování upgradována, aby používala spravované disky.
 
     ```json
     "managedDisk": {
@@ -254,25 +254,25 @@ V části *prostředky šablony* nasazení přidejte novou škálovací sadu vir
     }
     ```
 
-Po implementaci všech změn v souborech šablon a parametrů přejděte k další části, kde získáte odkazy na trezor klíčů a nasadíte aktualizace do clusteru.
+Po implementaci všech změn v šabloně a souborech parametrů přejděte k další části, kde získáte odkazy na Key Vault a nasazení aktualizací do clusteru.
 
-### <a name="obtain-your-key-vault-references"></a>Získání referencí trezoru klíčů
+### <a name="obtain-your-key-vault-references"></a>Získat odkazy na Key Vault
 
-Chcete-li nasadit aktualizovanou konfiguraci, nejprve získáte několik odkazů na certifikát clusteru uložených v trezoru klíčů. Nejjednodušší způsob, jak najít tyto hodnoty je prostřednictvím portálu Azure. Budete potřebovat:
+Pokud chcete nasadit aktualizovanou konfiguraci, můžete nejdřív získat několik odkazů na certifikát clusteru uložený ve vašem Key Vault. Nejjednodušší způsob, jak tyto hodnoty najít, je prostřednictvím Azure Portal. Budete potřebovat:
 
-* **Adresa URL trezoru klíčů vašeho certifikátu clusteru.** Z trezoru klíčů na webu Azure Portal vyberte **certifikáty** > Požadovaný tajný identifikátor*certifikátu* > **Secret Identifier**:
+* **Key Vault URL certifikátu clusteru.** Z Key Vault v Azure Portal vyberte **certifikáty** > *požadovaný* > **identifikátor tajného**certifikátu.
 
     ```powershell
     $certUrlValue="https://sftestupgradegroup.vault.azure.net/secrets/sftestupgradegroup20200309235308/dac0e7b7f9d4414984ccaa72bfb2ea39"
     ```
 
-* **Kryptografický otisk certifikátu clusteru.** (Pravděpodobně již máte, pokud jste [připojeni k počáteční clusteru](#connect-to-the-new-cluster-and-check-health-status) ke kontrole jeho stavu stavu.) Ze stejného listu certifikátu **(certifikáty** > *požadovaný certifikát)* na webu Azure Portal zkopírujte **x.509 SHA-1 thumbprint (v hex)**:
+* **Kryptografický otisk certifikátu clusteru** (Už to budete mít, pokud jste [připojení k počátečnímu clusteru](#connect-to-the-new-cluster-and-check-health-status) , abyste zkontrolovali stav jeho stavu.) Z okna se stejným certifikátem (**certifikáty** > *požadovaná certifikát*) v Azure Portal zkopírujte **kryptografický otisk X. 509 SHA-1 (v šestnáctkové soustavě)**:
 
     ```powershell
     $thumb = "BB796AA33BD9767E7DA27FE5182CF8FDEE714A70"
     ```
 
-* **ID prostředku trezoru klíčů.** Z trezoru klíčů na webu Azure portal vyberte**ID prostředku** **vlastnosti** > :
+* **ID prostředku Key Vault.** Z Key Vault v Azure Portal vyberte **vlastnosti** > **ID prostředku**:
 
     ```powershell
     $sourceVaultValue = "/subscriptions/########-####-####-####-############/resourceGroups/sftestupgradegroup/providers/Microsoft.KeyVault/vaults/sftestupgradegroup"
@@ -280,7 +280,7 @@ Chcete-li nasadit aktualizovanou konfiguraci, nejprve získáte několik odkazů
 
 ### <a name="deploy-the-updated-template"></a>Nasazení aktualizované šablony
 
-Upravte `parameterFilePath` `templateFilePath` a podle potřeby a spusťte následující příkaz:
+Podle potřeby `parameterFilePath` upravte `templateFilePath` a pak spusťte následující příkaz:
 
 ```powershell
 # Deploy the new scale set (upgraded to use managed disks) into the primary node type.
@@ -297,15 +297,15 @@ New-AzResourceGroupDeployment `
     -Verbose
 ```
 
-Po dokončení nasazení zkontrolujte stav clusteru znovu a ujistěte se, že všech deset uzlů (pět na původní a pět na nové škálovací sady) jsou v pořádku.
+Až se nasazení dokončí, zkontrolujte stav clusteru znovu a zajistěte, aby všechny deset uzlů (pět v originálu a pět v nové sadě škálování) byly v pořádku.
 
 ```powershell
 Get-ServiceFabricClusterHealth
 ```
 
-## <a name="migrate-seed-nodes-to-the-new-scale-set"></a>Migrace semenných uzlů do nové škálovací sady
+## <a name="migrate-seed-nodes-to-the-new-scale-set"></a>Migrace počátečních uzlů do nové sady škálování
 
-Nyní jsme připraveni začít zakázat uzly původní škálovací sady. Jakmile se tyto uzly stanou zakázanými, systémové služby a osiva uzly migrují do virtuálních terminálů nové škálovací sady, protože jsou také označeny jako primární typ uzlu.
+Nyní jsme připraveni začít s zakázáním uzlů v původní sadě škálování. Vzhledem k tomu, že tyto uzly jsou zakázané, jsou systémové služby a počáteční uzly migrovány na virtuální počítače nové sady škálování, protože jsou také označeny jako primární typ uzlu.
 
 ```powershell
 # Disable the nodes in the original scale set.
@@ -317,16 +317,16 @@ foreach($name in $nodeNames){
 }
 ```
 
-Pomocí průzkumníka service fabric můžete sledovat migraci osivových uzlů do nové škálovací sady a postup uzlů v původní škálovací sadě ze *stavu Zakázání* na *Zakázané.*
+Pomocí Service Fabric Explorer můžete monitorovat migraci počátečních uzlů do nové sady škálování a průběh uzlů v původní sadě škálování z *zakázání* na stav *zakázáno* .
 
-![Průzkumník prostředků infrastruktury služby zobrazující stav zakázaných uzlů](./media/upgrade-managed-disks/service-fabric-explorer-node-status.png)
+![Service Fabric Explorer zobrazení stavu zakázaných uzlů](./media/upgrade-managed-disks/service-fabric-explorer-node-status.png)
 
 > [!NOTE]
-> Může trvat nějakou dobu k dokončení operace zakázání přes všechny uzly původní škálovací sady. Chcete-li zaručit konzistenci dat, může se měnit pouze jeden osivový uzel. Každá změna osiva uzlu vyžaduje aktualizaci clusteru; proto nahrazení uzlu osiva vyžaduje dva upgrady clusteru (jeden pro přidání uzlu a odebrání). Inovace pěti uzly osiva v tomto ukázkovém scénáři bude mít za následek deset upgradů clusteru.
+> Dokončení operace zakázání ve všech uzlech původní sady škálování může nějakou dobu trvat. Aby se zajistila konzistence dat, může se v jednom okamžiku změnit jenom jeden počáteční uzel. Každá změna uzlu dosazení vyžaduje aktualizaci clusteru. Proto výměna počátečního uzlu vyžaduje dva upgrady clusteru (jeden pro každý pro přidání a odebrání uzlu). Upgrade pěti uzlů počátečních hodnot v tomto ukázkovém scénáři bude mít za následek deset upgradů clusteru.
 
-## <a name="remove-the-original-scale-set"></a>Odebrání původní škálovací sady
+## <a name="remove-the-original-scale-set"></a>Odebrat původní sadu škálování
 
-Po dokončení operace zakázání odeberte škálovací sadu.
+Po dokončení operace vypnutí odeberte sadu škálování.
 
 ```powershell
 # Remove the original scale set
@@ -340,9 +340,9 @@ Remove-AzVmss `
 Write-Host "Removed scale set $scaleSetName"
 ```
 
-V Průzkumníku prostředků service fabric se odebrané uzly (a tedy *stav clusteru*) nyní zobrazí ve stavu *Chybová.*
+V Service Fabric Explorer se teď odebrané uzly (a tedy *stav clusteru*) zobrazí v *chybovém* stavu.
 
-![Průzkumník prostředků infrastruktury služby zobrazující zakázané uzly v chybovém stavu](./media/upgrade-managed-disks/service-fabric-explorer-disabled-nodes-error-state.png)
+![Service Fabric Explorer zobrazení zakázaných uzlů v chybovém stavu](./media/upgrade-managed-disks/service-fabric-explorer-disabled-nodes-error-state.png)
 
 Odeberte zastaralé uzly z clusteru Service Fabric a obnovte stav clusteru na *OK*.
 
@@ -354,22 +354,22 @@ foreach($name in $nodeNames){
 }
 ```
 
-![Průzkumník prostředků Service Fabric s odebranými uzly v chybovém stavu](./media/upgrade-managed-disks/service-fabric-explorer-healthy-cluster.png)
+![Odebraná Service Fabric Explorer s vypnutými uzly v chybovém stavu](./media/upgrade-managed-disks/service-fabric-explorer-healthy-cluster.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto návodu jste se dozvěděli, jak upgradovat škálovací sady virtuálních počítačů clusteru Service Fabric tak, aby používaly spravované disky, aniž byste během procesu zabraňovali výpadkům služeb. Další informace o souvisejících tématech najdete v následujících zdrojích.
+V tomto návodu jste se dozvěděli, jak upgradovat sadu škálování virtuálního počítače Service Fabric clusteru na používání spravovaných disků a vyhnout se výpadkům služby během procesu. Další informace o souvisejících tématech najdete v následujících zdrojích informací.
 
 Naučte se:
 
 * [Vertikální navýšení kapacity primárního typu uzlu clusteru Service Fabric](service-fabric-scale-up-node-type.md)
 
-* [Převedení šablony škálovací sady na spravované disky](../virtual-machine-scale-sets/virtual-machine-scale-sets-convert-template-to-md.md)
+* [Převod šablony sady škálování na používání spravovaných disků](../virtual-machine-scale-sets/virtual-machine-scale-sets-convert-template-to-md.md)
 
-* [Odebrání typu uzlu Service Fabric](service-fabric-how-to-remove-node-type.md)
+* [Odebrání typu Service Fabric uzlu](service-fabric-how-to-remove-node-type.md)
 
 Viz také:
 
-* [Ukázka: Upgrade uzlů clusteru na spravované disky Azure](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade-no-outage)
+* [Ukázka: upgrade uzlů clusteru pro použití služby Azure Managed disks](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade-no-outage)
 
-* [Důležité informace o vertikálním měřítku](service-fabric-best-practices-capacity-scaling.md#vertical-scaling-considerations)
+* [Požadavky vertikálního škálování](service-fabric-best-practices-capacity-scaling.md#vertical-scaling-considerations)

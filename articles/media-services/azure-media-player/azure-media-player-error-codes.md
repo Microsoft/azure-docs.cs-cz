@@ -1,5 +1,5 @@
 ---
-title: Chybové kódy přehrávače Azure Media Player
+title: Kódy chyb Azure Media Player
 description: Odkaz na kód chyby pro Azure Media Player.
 author: IngridAtMicrosoft
 ms.author: inhenkel
@@ -7,15 +7,15 @@ ms.service: media-services
 ms.topic: error-reference
 ms.date: 04/20/2020
 ms.openlocfilehash: 13d804ec39c3d7753d4ee04962a88d4451fb04d9
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81727252"
 ---
 # <a name="error-codes"></a>Kódy chyb #
 
-Když přehrávání nelze spustit nebo se zastavilo, dojde k `error()` chybě a funkce vrátí kód a volitelnou zprávu, která pomůže vývojáři aplikace získat další podrobnosti. `error().message`není zpráva zobrazená uživateli.  Zpráva zobrazená uživateli je `error().code` založena na bitech 27-20, viz tabulka níže.
+Když přehrávání nepůjde spustit nebo se zastavilo, aktivuje se událost chyby a `error()` funkce vrátí kód a volitelnou zprávu, aby vývojář aplikace mohl získat další podrobnosti. `error().message`není zobrazena zpráva uživateli.  Zpráva zobrazená uživateli je založena na `error().code` službě BITS 27-20, viz tabulka níže.
 
 ```javascript
 
@@ -27,93 +27,93 @@ Když přehrávání nelze spustit nebo se zastavilo, dojde k `error()` chybě a
     }
 ```
 
-## <a name="error-codes-bits-31-28-4-bits"></a>Chybové kódy, bity [31-28] (4 bity) ##
+## <a name="error-codes-bits-31-28-4-bits"></a>Kódy chyb, bity [31-28] (4 bity) ##
 
 Popište oblast chyby.
 
 - 0 – Neznámé
-- 1 - AMP
-- 2 - AzureHtml5JS
-- 3 - Záblesky
-- 4 - SilverlightSS
-- 5 - Html5
-- 6 - Html5FairPlayHLS
+- 1 – AMP
+- 2 – AzureHtml5JS
+- 3 – bliknutí
+- 4 – Silverlight
+- 5. Html5
+- 6 – Html5FairPlayHLS
 
-## <a name="error-codes-bits-27-0-28-bits"></a>Chybové kódy, bity [27-0] (28 bitů) ##
+## <a name="error-codes-bits-27-0-28-bits"></a>Kódy chyb, bity [27-0] (28 bitů) ##
 
-Popište podrobnosti o chybě, bity 27-20 poskytují vysokou úroveň, bity 19-0 poskytují další podrobnosti, pokud jsou k dispozici.
+Popište podrobnosti o chybě. bity 27-20 poskytují vysokou úroveň, bity 19-0 poskytují více podrobností, pokud jsou k dispozici.
 
 
-| amp.errorCode. [jméno] | Kódy, bity [27-0] (28 bitů) | Popis |
+| amp. errorCode. název | Kódy, bity [27-0] (28 bitů) | Popis |
 |---|---:|---|
-| **rozsah chyb MEDIA_ERR_ABORTED (0x0100000 - 0x01FFFFF)** | | |
+| **Rozsah chyb MEDIA_ERR_ABORTED (0x0100000-0x01FFFFF)** | | |
 | abortedErrUnknown | 0x0100000 | Obecná chyba přerušení |
-| abortedErrNotImplemented abortedAbort abortEdRNotImplemented aborted | 0x0100001 | Chyba přerušení, není implementována |
-| abortedErrHttpMixedContentBlocked | 0x0100002 | Přerušit chybu, smíšený obsah blokován - `http://` obvykle dochází `https://` při načítání datového proudu ze stránky |
-| **počáteční hodnota chyb MEDIA_ERR_NETWORK (0x0200000 - 0x02FFFFF)** | | |
+| abortedErrNotImplemented | 0x0100001 | Chyba přerušení, neimplementováno |
+| abortedErrHttpMixedContentBlocked | 0x0100002 | Chyba přerušení, zakázaný smíšený obsah při načítání `http://` datového proudu ze `https://` stránky obvykle dochází k zablokování smíšeného obsahu |
+| **Počáteční hodnota chyb MEDIA_ERR_NETWORK (0x0200000-0x02FFFFF)** | | |
 | networkErrUnknown | 0x0200000 | Obecná chyba sítě |
-| networkRHttpBadUrlFormat | 0x0200190 | Odpověď na chybu http 400 |
-| networkErrHttpUserAuthVyžadováno | 0x0200191 | Odpověď na chybu http 401 |
-| networkErrHttpUserForbidden | 0x0200193 | Odpověď na chybu http 403 |
-| networkErhttpUrlNotFound | 0x0200194 | Odpověď na chybu http 404 |
-| networkErhttpNotAllowed | 0x0200195 | Odpověď na chybu http 405 |
-| networkErrHttpGone | 0x020019A | Odpověď na chybu http 410 |
-| networkRHttpPreconditionFailed | 0x020019C | Odpověď na chybu http 412 |
-| networkRHttpInternalServerFailure | 0x02001F4 | Http 500 odpověď na chybu
-| networkErhttpBadGateway | 0x02001F6 | Odpověď na chybu http 502 |
-| networkRHttpServiceNení k dispozici | 0x02001F7 | Odpověď na chybu http 503 |
-| networkRHttpGatewayTimeout | 0x02001F8 | Odpověď na chybu http 504 |
-| networkErrTimeout | 0x0200258 | Chyba časového opojení sítě
-| networkErrErr | 0x0200259 | Odpověď na chybu síťového připojení |
-| **MEDIA_ERR_DECODE chyby (0x0300000 - 0x03FFFFF)** | | |
+| networkErrHttpBadUrlFormat | 0x0200190 | Chybová odpověď HTTP 400 |
+| networkErrHttpUserAuthRequired | 0x0200191 | Chybová odpověď HTTP 401 |
+| networkErrHttpUserForbidden | 0x0200193 | Chybová odpověď HTTP 403 |
+| networkErrHttpUrlNotFound | 0x0200194 | Chybová odpověď HTTP 404 |
+| networkErrHttpNotAllowed | 0x0200195 | Chybová odpověď HTTP 405 |
+| networkErrHttpGone | 0x020019A | Chybová odpověď HTTP 410 |
+| networkErrHttpPreconditionFailed | 0x020019C | Chybová odpověď HTTP 412 |
+| networkErrHttpInternalServerFailure | 0x02001F4 | Chybová odpověď HTTP 500
+| networkErrHttpBadGateway | 0x02001F6 | Chybová odpověď HTTP 502 |
+| networkErrHttpServiceUnavailable | 0x02001F7 | Chybová odpověď HTTP 503 |
+| networkErrHttpGatewayTimeout | 0x02001F8 | Chybová odpověď HTTP 504 |
+| networkErrTimeout | 0x0200258 | Chyba časového limitu sítě
+| networkErrErr | 0x0200259 | Chybová odpověď síťového připojení |
+| **Chyby MEDIA_ERR_DECODE (0x0300000-0x03FFFFF)** | | |
 | decodeErrUnknown | 0x0300000 | Obecná chyba dekódování |
-| **MEDIA_ERR_SRC_NOT_SUPPORTED chyby (0x0400000 - 0x04FFFFF)** | | |
-| srcErrNeznámý | 0x0400000 | Chyba obecného zdroje není podporována |
-| srcErrParsePrezentace | 0x0400001 | Chyba analýzy prezentace |
-| srcErrParseSegment | 0x0400002 | Chyba analýzy segmentu |
-| srcErrNepodporovanýPrezentace | 0x0400003 | Prezentace není podporována. |
+| **Chyby MEDIA_ERR_SRC_NOT_SUPPORTED (0x0400000-0x04FFFFF)** | | |
+| srcErrUnknown | 0x0400000 | Nepodporovaná obecná zdrojová chyba |
+| srcErrParsePresentation | 0x0400001 | Chyba analýzy prezentace |
+| srcErrParseSegment | 0x0400002 | Chyba analýzy segmentů |
+| srcErrUnsupportedPresentation | 0x0400003 | Prezentace není podporovaná. |
 | srcErrInvalidSegment | 0x0400004 | Neplatný segment |
-| **MEDIA_ERR_ENCRYPTED chyby počáteční hodnota (0x0500000 - 0x05FFFFF)** | | |
-| encryptErrUnknown | 0x0500000 | Obecná šifrovaná chyba | 
-| encryptErrDecrypterNotFound | 0x0500001 | Dešifrovací systém nebyl nalezen. |
+| **Počáteční hodnota chyb MEDIA_ERR_ENCRYPTED (0x0500000-0x05FFFFF)** | | |
+| encryptErrUnknown | 0x0500000 | Obecná zašifrovaná chyba | 
+| encryptErrDecrypterNotFound | 0x0500001 | Dešifrer se nenašel. |
 | encryptErrDecrypterInit | 0x0500002 | Chyba inicializace dešifrování |
-| encryptErrDecrypterNotSupported | 0x0500003 | Dešifrovací program není podporován. |
-| encryptErrKeyAcquire | 0x0500004 | Získání klíče se nezdařilo. |
-| encryptErrDecryption | 0x0500005 | Dešifrování segmentu se nezdařilo. |
+| encryptErrDecrypterNotSupported | 0x0500003 | Dešifrovací modul není podporovaný. |
+| encryptErrKeyAcquire | 0x0500004 | Nepovedlo se získat klíč |
+| encryptErrDecryption | 0x0500005 | Dešifrování segmentu selhalo. |
 | encryptErrLicenseAcquire | 0x0500006 | Získání licence se nezdařilo. |
-| **SRC_PLAYER_MISMATCH počáteční hodnota chyb (0x0600000 - 0x06FFFFF)** | | |
-| srcPlayerMismatchNeznámý | 0x0600000 | Obecný žádný odpovídající tech přehrávač hrát zdroj |
-| srcPlayerMismatchFlashNotinstalled | 0x0600001 |Flash plugin není nainstalován, je-li nainstalován zdroj může hrát. *NEBO* Flash 30 je nainstalován a přehrává obsah AES.  Pokud se jedná o tento případ, zkuste jiný prohlížeč. Flash 30 je dnes nepodporovaný od 7. Další podrobnosti najdete v [tématu Známé problémy.](azure-media-player-known-issues.md) Poznámka: Pokud 0x00600003, flash a Silverlight nejsou nainstalovány, pokud je uvedeno v techOrder.|
-| srcPlayerMismatchSilverlightNotinstalled | 0x0600002 | Silverlight plugin není nainstalován, je-li nainstalován zdroj může hrát. Poznámka: Pokud 0x00600003, flash a Silverlight nejsou nainstalovány, pokud je uvedeno v techOrder. |
-| | 0x00600003 | Flash a Silverlight nejsou nainstalovány, pokud je uvedeno v techOrder. |
+| **Počáteční hodnota chyb SRC_PLAYER_MISMATCH (0x0600000-0x06FFFFF)** | | |
+| srcPlayerMismatchUnknown | 0x0600000 | Obecný aktér bez odpovídajícího odborného hráče pro přehrání zdroje |
+| srcPlayerMismatchFlashNotInstalled | 0x0600001 |Modul plug-in Flash není nainstalovaný, pokud je nainstalovaná, může zdroj přehrát. *Nebo* Flash 30 je nainstalovaný a přehrávání obsahu AES.  Pokud se jedná o tento případ, zkuste prosím použít jiný prohlížeč. Blesk 30 se nepodporovaný dnes od 7. června. Další podrobnosti najdete v tématu [známé problémy](azure-media-player-known-issues.md) . Poznámka: Pokud je 0x00600003, nejsou nainstalované ani Flash a Silverlight, pokud jsou zadané v techOrder.|
+| srcPlayerMismatchSilverlightNotInstalled | 0x0600002 | Modul plug-in Silverlight není nainstalován, pokud je nainstalovaná, může zdroj přehrát. Poznámka: Pokud je 0x00600003, nejsou nainstalované ani Flash a Silverlight, pokud jsou zadané v techOrder. |
+| | 0x00600003 | Flash a Silverlight nejsou nainstalované, pokud jsou zadané v techOrder. |
 | **Neznámé chyby (0x0FF00000)** | | |
-| errNeznámý | 0xFF00000 | Neznámé chyby |
+| errUnknown | 0xFF00000 | Neznámé chyby |
 
 ## <a name="user-error-messages"></a>Chybové zprávy uživatele ##
 
-Zobrazená zpráva uživatele je založena na bitech kódu chyby 27-20.
+Zobrazená zpráva uživatele je založena na bitech v kódu chyby 27-20.
 
-- MEDIA_ERR_ABORTED (1) -"Přerušili jste přehrávání videa"
-- MEDIA_ERR_NETWORK (2) - "Chyba sítě způsobila selhání stahování videa na částečný úvazek."
-- MEDIA_ERR_DECODE (3) - "Přehrávání videa bylo přerušeno z důvodu problému s poškozením nebo proto, že použité video funkce, které váš prohlížeč nepodporoval."
-- MEDIA_ERR_SRC_NOT_SUPPORTED (4)-"Video nelze načíst, protože server nebo síť selhala nebo protože formát není podporován."
-- MEDIA_ERR_ENCRYPTED (5) - "Video je zašifrováno a nemáme klíče k jeho dešifrování."
-- SRC_PLAYER_MISMATCH (6) - "Pro toto video nebyl nalezen žádný kompatibilní zdroj."
-- MEDIA_ERR_UNKNOWN (0xFF) - "Došlo k neznámé chybě."
+- MEDIA_ERR_ABORTED (1) – "přehrávání videa bylo přerušeno"
+- MEDIA_ERR_NETWORK (2) – chyba sítě způsobila selhání stažení videa. "
+- MEDIA_ERR_DECODE (3)-"přehrávání videa bylo přerušeno z důvodu problému s poškozením nebo vzhledem k tomu, že použité video nepodporovalo váš prohlížeč."
+- MEDIA_ERR_SRC_NOT_SUPPORTED (4)-"video se nepovedlo načíst, protože server nebo síť selhala, nebo protože není podporovaný formát."
+- MEDIA_ERR_ENCRYPTED (5) – "video je šifrované a nemáme k dekódování klíče."
+- SRC_PLAYER_MISMATCH (6) – pro toto video se nenašel žádný kompatibilní zdroj.
+- MEDIA_ERR_UNKNOWN (0xFF) – došlo k neznámé chybě.
 
 ## <a name="examples"></a>Příklady ##
 
 ### <a name="0x10600001"></a>0x10600001 ##
 
-"Pro toto video nebyl nalezen žádný kompatibilní zdroj." se zobrazí koncovému uživateli.
+Pro toto video se nenašel žádný kompatibilní zdroj. se zobrazí koncovému uživateli.
 
-Neexistuje žádný tech přehrávač, který může hrát požadované zdroje, ale pokud flash plugin je nainstalován, je pravděpodobné, že zdroj by mohl být hrán.  
+Není k dispozici žádný odborný přehrávač, který by mohl přehrávat požadované zdroje, ale pokud je nainstalovaný modul plug-in Flash, je pravděpodobně možné přehrát zdroj.  
 
 ### <a name="0x20200194"></a>0x20200194 ###
 
-"Chyba sítě způsobila selhání stahování videa na částečný úvazek." se zobrazí koncovému uživateli.
+"Chyba sítě způsobila neúspěšné stažení videa." se zobrazí koncovému uživateli.
 
-AzureHtml5JS se nepodařilo přehrát z odpovědi http 404.
+AzureHtml5JS se nepodařilo přehrát z odpovědi HTTP 404.
 
 ### <a name="categorizing-errors"></a>Kategorizace chyb ###
 
@@ -141,9 +141,9 @@ AzureHtml5JS se nepodařilo přehrát z odpovědi http 404.
     }
 ```
 
-### <a name="catching-a-specific-error"></a>Zachycení určité chyby ###
+### <a name="catching-a-specific-error"></a>Zachycení konkrétní chyby ###
 
-Následující kód zachycuje pouze 404 chyb:
+Následující kód zachytává jenom 404 chyb:
 
 ```javascript
     if(myPlayer.error().code & amp.errorCode.networkErrHttpUrlNotFound) {
@@ -153,4 +153,4 @@ Následující kód zachycuje pouze 404 chyb:
 
 ## <a name="next-steps"></a>Další kroky ##
 
-- [Rychlý start přehrávače médií Azure](azure-media-player-quickstart.md)
+- [Rychlý Start Azure Media Player](azure-media-player-quickstart.md)

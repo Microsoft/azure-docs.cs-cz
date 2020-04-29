@@ -1,7 +1,7 @@
 ---
-title: Převést starší přímý partnerský vztah na prostředek Azure pomocí PowerShellu
+title: Převod starší verze přímého partnerského vztahu na prostředek Azure pomocí PowerShellu
 titleSuffix: Azure
-description: Převést starší přímý partnerský vztah na prostředek Azure pomocí PowerShellu
+description: Převod starší verze přímého partnerského vztahu na prostředek Azure pomocí PowerShellu
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
@@ -9,31 +9,31 @@ ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 5d2a8c910c9e384e137785bc1cd491bc85c7e7a8
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81678508"
 ---
-# <a name="convert-a-legacy-direct-peering-to-an-azure-resource-by-using-powershell"></a>Převést starší přímý partnerský vztah na prostředek Azure pomocí PowerShellu
+# <a name="convert-a-legacy-direct-peering-to-an-azure-resource-by-using-powershell"></a>Převod starší verze přímého partnerského vztahu na prostředek Azure pomocí PowerShellu
 
-Tento článek popisuje, jak převést existující starší přímé partnerského vztahu na prostředek Azure pomocí rutin prostředí PowerShell.
+Tento článek popisuje, jak převést existující starší verzi přímého partnerského vztahu na prostředek Azure pomocí rutin PowerShellu.
 
-Pokud chcete, můžete tuto příručku dokončit pomocí [portálu](howto-legacy-direct-portal.md)Azure .
+Pokud chcete, můžete tuto příručku dokončit pomocí webu Azure [Portal](howto-legacy-direct-portal.md).
 
-## <a name="before-you-begin"></a>Než začnete
-* Před zahájením konfigurace zkontrolujte [požadavky](prerequisites.md) a [návod k přímému partnerského vztahu.](walkthrough-direct-all.md)
+## <a name="before-you-begin"></a>Před zahájením
+* Před zahájením konfigurace si Projděte návod [požadavky](prerequisites.md) a [přímý partnerský vztah](walkthrough-direct-all.md) .
 
-### <a name="work-with-azure-powershell"></a>Práce s Azure PowerShellem
+### <a name="work-with-azure-powershell"></a>Práce s Azure PowerShell
 [!INCLUDE [CloudShell](./includes/cloudshell-powershell-about.md)]
 
-## <a name="convert-a-legacy-direct-peering-to-an-azure-resource"></a>Převést starší přímý partnerský vztah na prostředek Azure
+## <a name="convert-a-legacy-direct-peering-to-an-azure-resource"></a>Převod starší verze přímého partnerského vztahu na prostředek Azure
 
-### <a name="sign-in-to-your-azure-account-and-select-your-subscription"></a>Přihlaste se ke svému účtu Azure a vyberte předplatné.
+### <a name="sign-in-to-your-azure-account-and-select-your-subscription"></a>Přihlaste se ke svému účtu Azure a vyberte své předplatné.
 [!INCLUDE [Account](./includes/account-powershell.md)]
 
-### <a name="get-a-legacy-direct-peering-for-conversion"></a><a name= get></a>Získání staršího přímého partnerského vztahu pro převod
-Tento příklad ukazuje, jak získat starší přímé peering v umístění partnerského vztahu Seattle.
+### <a name="get-a-legacy-direct-peering-for-conversion"></a><a name= get></a>Získat starší verzi přímého partnerského vztahu pro převod
+Tento příklad ukazuje, jak získat starší verzi přímého partnerského vztahu v umístění partnerského vztahu pro Seattle.
 
 ```powershell
 $legacyPeering = Get-AzLegacyPeering `
@@ -79,13 +79,13 @@ ProvisionedBandwidthInMbps : 20000
 ProvisioningState          : Succeeded
 ```
 
-### <a name="convert-a-legacy-direct-peering"></a>Převedení staršího přímého partnerského vztahu
+### <a name="convert-a-legacy-direct-peering"></a>Převod starší verze přímého partnerského vztahu
 
 &nbsp;
 > [!IMPORTANT]
-> Když převedete starší partnerský vztah na prostředek Azure, úpravy nejsou podporované. &nbsp;
+> Když převedete starší verzi partnerského vztahu na prostředek Azure, úpravy se nepodporují. &nbsp;
 
-Pomocí tohoto příkazu můžete převést starší přímý partnerský vztah na prostředek Azure:
+Pomocí tohoto příkazu můžete převést starší verze přímého partnerského vztahu na prostředek Azure:
 
 ```powershell
 $legacyPeering[0] | New-AzPeering `
@@ -112,14 +112,14 @@ Tags                 : {}
 ```
 
 ## <a name="additional-resources"></a>Další zdroje
-Kliknutím tohoto příkazu můžete získat podrobný popis všech parametrů:
+Podrobnější popis všech parametrů získáte spuštěním tohoto příkazu:
 
 ```powershell
 Get-Help Get-AzPeering -detailed
 ```
 
-Další informace naleznete v tématech Nejčastější dotazy [k internetovému partnerovi](faqs.md).
+Další informace najdete v tématu [Nejčastější dotazy k internetovým partnerům](faqs.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Vytvoření nebo úprava přímého partnerského vztahu pomocí PowerShellu](howto-direct-powershell.md)
+* [Vytvoření nebo úprava přímého partnerského vztahu pomocí prostředí PowerShell](howto-direct-powershell.md)

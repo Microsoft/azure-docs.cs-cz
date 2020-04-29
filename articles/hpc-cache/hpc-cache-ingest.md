@@ -1,88 +1,88 @@
 ---
-title: Přesunutí dat do cloudového kontejneru azure hpc cache
-description: Jak naplnit úložiště objektů blob Azure pro použití s mezipamětí Azure HPC
+title: Přesun dat do cloudového kontejneru mezipaměti HPC Azure
+description: Jak naplnit službu Azure Blob Storage pro použití s mezipamětí Azure HPC
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: rohogue
 ms.openlocfilehash: fd21a78d0271f91d334bba5aba748f3770ad38cf
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81537929"
 ---
-# <a name="move-data-to-azure-blob-storage"></a>Přesunutí dat do úložiště objektů blob Azure
+# <a name="move-data-to-azure-blob-storage"></a>Přesun dat do služby Azure Blob Storage
 
-Pokud váš pracovní postup zahrnuje přesun dat do úložiště objektů Blob Azure, ujistěte se, že používáte efektivní strategii. Můžete buď předem načíst data v novém kontejneru objektů Blob před definováním jako cíl úložiště, nebo přidat kontejner a pak zkopírovat data pomocí Azure HPC Cache.
+Pokud váš pracovní postup zahrnuje přesun dat do služby Azure Blob Storage, ujistěte se, že používáte efektivní strategii. Data můžete buď předem načíst do nového kontejneru objektů blob, abyste je mohli definovat jako cíl úložiště, nebo přidat kontejner a potom zkopírovat data pomocí Azure HPC cache.
 
-Tento článek vysvětluje nejlepší způsoby, jak přesunout data do úložiště objektů Blob pro použití s Azure HPC Cache.
+Tento článek vysvětluje nejlepší způsoby přesunu dat do úložiště objektů BLOB pro použití s mezipamětí Azure HPC.
 
-Mějte na paměti tyto skutečnosti:
+Pamatujte na tyto skutečnosti:
 
-* Azure HPC Cache používá specializovaný formát úložiště k uspořádání dat v úložišti objektů Blob. To je důvod, proč cíl úložiště objektů blob musí být buď nový, prázdný kontejner nebo kontejner objektů Blob, který byl dříve použit pro data mezipaměti Azure HPC.
+* Mezipaměť prostředí Azure HPC používá pro uspořádání dat v úložišti objektů BLOB specializované formáty úložiště. To je důvod, proč cíl úložiště BLOB musí být buď nový prázdný kontejner, nebo kontejner objektů blob, který se dřív používal pro data mezipaměti Azure HPC.
 
-* Kopírování dat prostřednictvím mezipaměti Azure HPC do cíle back-endového úložiště je efektivnější, když používáte více klientů a paralelní operace. Jednoduchý příkaz kopírování z jednoho klienta bude přesouvat data pomalu.
+* Kopírování dat prostřednictvím mezipaměti prostředí Azure HPC do cílového záložního úložiště je efektivnější, pokud používáte více klientů a paralelních operací. Jednoduchý příkaz kopírování z jednoho klienta přesune data pomalu.
 
-Nástroj založený na Pythonu je k dispozici pro načtení obsahu do kontejneru úložiště objektů Blob. Přečtěte si [přednačtení dat v úložišti objektů Blob,](#pre-load-data-in-blob-storage-with-clfsload) kde se dozvíte víc.
+Nástroj založený na Pythonu je k dispozici pro načtení obsahu do kontejneru úložiště objektů BLOB. Další informace najdete [v tématu předběžné načtení dat v úložišti objektů BLOB](#pre-load-data-in-blob-storage-with-clfsload) .
 
-Pokud nechcete používat nástroj načítání nebo pokud chcete přidat obsah do existujícího cíle úložiště, postupujte podle paralelních tipů pro ingestování dat v [kopírovat data prostřednictvím mezipaměti Azure HPC](#copy-data-through-the-azure-hpc-cache).
+Pokud nechcete použít nástroj pro načítání, nebo pokud chcete přidat obsah do existujícího cíle úložiště, postupujte podle tipů paralelního příjmu dat v [části kopírování dat prostřednictvím mezipaměti HPC Azure](#copy-data-through-the-azure-hpc-cache).
 
-## <a name="pre-load-data-in-blob-storage-with-clfsload"></a>Předběžné načtení dat v úložišti objektů Blob pomocí CLFSLoad
+## <a name="pre-load-data-in-blob-storage-with-clfsload"></a>Předběžné načtení dat v úložišti objektů BLOB pomocí CLFSLoad
 
-Nástroj Avere CLFSLoad můžete použít ke kopírování dat do nového kontejneru úložiště objektů Blob, než je přidáte jako cíl úložiště. Tento nástroj běží na jednom systému Linux a zapisuje data v proprietárním formátu potřebném pro Azure HPC Cache. CLFSLoad je nejúčinnější způsob, jak naplnit kontejner úložiště objektů Blob pro použití s mezipamětí.
+Nástroj avere CLFSLoad můžete použít ke zkopírování dat do nového kontejneru úložiště objektů blob, než ho přidáte jako cíl úložiště. Tento nástroj běží na jednom systému Linux a zapisuje data ve speciálním formátu potřebném pro mezipaměť prostředí Azure HPC. CLFSLoad je nejúčinnější způsob, jak naplnit kontejner úložiště objektů BLOB pro použití s mezipamětí.
 
-Nástroj Avere CLFSLoad je k dispozici na vyžádání od vašeho týmu Azure HPC Cache. Požádejte o to kontakt svého týmu nebo otevřete [lístek podpory](hpc-cache-support-ticket.md) a požádejte o pomoc.
+Nástroj avere CLFSLoad je k dispozici na vyžádání od týmu Azure HPC cache. Požádejte o pomoc svého týmu, nebo otevřete [lístek podpory](hpc-cache-support-ticket.md) , který vám požádá o pomoc.
 
-Tato možnost funguje pouze s novými prázdnými kontejnery. Vytvořte kontejner před použitím Avere CLFSLoad.
+Tato možnost funguje jenom s novými prázdnými kontejnery. Vytvořte kontejner před použitím avere CLFSLoad.
 
-Podrobné informace jsou součástí distribuce Avere CLFSLoad, která je k dispozici na vyžádání od týmu Azure HPC Cache.
+Podrobné informace jsou součástí distribuce avere CLFSLoad, která je k dispozici na vyžádání od týmu Azure HPC cache.
 
 Obecný přehled procesu:
 
-1. Připravte linuxový systém (VM nebo fyzický) s Pythonem verze 3.6 nebo novějším. Python 3.7 se doporučuje pro lepší výkon.
-1. Nainstalujte software Avere-CLFSLoad do systému Linux.
-1. Spusťte přenos z příkazového řádku Linuxu.
+1. Připravte systém Linux (virtuální počítač nebo fyzický) pomocí Pythonu verze 3,6 nebo novější. Pro lepší výkon doporučujeme Python 3,7.
+1. Nainstalujte software avere-CLFSLoad do systému Linux.
+1. Spusťte přenos z příkazového řádku systému Linux.
 
-Nástroj Avere CLFSLoad potřebuje následující informace:
+Nástroj avere CLFSLoad potřebuje následující informace:
 
-* ID účtu úložiště, které obsahuje kontejner úložiště objektů Blob
-* Název prázdného kontejneru úložiště objektů Blob
+* ID účtu úložiště, které obsahuje kontejner úložiště objektů BLOB
+* Název prázdného kontejneru úložiště objektů BLOB
 * Token sdíleného přístupového podpisu (SAS), který umožňuje nástroji zapisovat do kontejneru
-* Místní cesta ke zdroji dat – buď místní adresář, který obsahuje data ke kopírování, nebo místní cesta k připojenému vzdálenému systému s daty
+* Místní cesta ke zdroji dat – buď místní adresář, který obsahuje data ke zkopírování, nebo místní cestu k připojenému vzdálenému systému s daty
 
-## <a name="copy-data-through-the-azure-hpc-cache"></a>Kopírování dat prostřednictvím mezipaměti Azure HPC
+## <a name="copy-data-through-the-azure-hpc-cache"></a>Kopírování dat prostřednictvím mezipaměti HPC Azure
 
-Pokud nechcete používat nástroj Avere CLFSLoad nebo pokud chcete přidat velké množství dat do existujícího cíle úložiště objektů Blob, můžete jej zkopírovat prostřednictvím mezipaměti. Azure HPC Cache je navržen tak, aby obsluhoval více klientů současně, takže ke kopírování dat prostřednictvím mezipaměti byste měli používat paralelní zápisy z více klientů.
+Pokud nechcete použít nástroj avere CLFSLoad, nebo pokud chcete do existujícího cíle úložiště objektů BLOB přidat velké množství dat, můžete ho zkopírovat přes mezipaměť. Mezipaměť HPC Azure je navržená tak, aby sloužila více klientům současně, takže ke kopírování dat prostřednictvím mezipaměti byste měli použít paralelní zápisy z více klientů.
 
-![Diagram znázorňující přesun dat s více klienty a více vlákny: V levém horním rohu je na ní několik šipek, které z něj pocházejí. Šipky ukazují na čtyři klientské počítače. Z každého klientského počítače tři šipky ukazují na azure hpc mezipaměť. Z mezipaměti Azure HPC více šipek ukazuje na úložiště objektů Blob.](media/hpc-cache-parallel-ingest.png)
+![Diagram znázorňující pohyb vícevláknových dat s více klienty: vlevo nahoře je ikona pro místní hardwarové úložiště s více šipkami. Šipky ukazují na čtyři klientské počítače. Z každého klientského počítače tři šipky směřuje k mezipaměti HPC Azure. Z mezipaměti HPC Azure se několik šipek odkazuje na úložiště objektů BLOB.](media/hpc-cache-parallel-ingest.png)
 
-``cp`` Příkazy ``copy`` nebo, které obvykle používáte k přenosu dat z jednoho systému úložiště do jiného, jsou procesy s jedním podprocesem, které kopírují pouze jeden soubor najednou. To znamená, že souborový server ingestuje pouze jeden soubor najednou - což je plýtvání prostředků mezipaměti.
+Příkazy ``cp`` nebo ``copy`` , které obvykle slouží k přenosu dat z jednoho úložného systému do jiného, jsou procesy s jedním vláknem, které kopírují pouze jeden soubor v jednom okamžiku. To znamená, že souborový server bude v jednom okamžiku uchovávat pouze jeden soubor, což je odpad z prostředků mezipaměti.
 
-Tato část vysvětluje strategie pro vytvoření víceklientského systému kopírování souborů s více vlákny pro přesun dat do úložiště objektů Blob pomocí mezipaměti Azure HPC. Vysvětluje koncepty přenosu souborů a rozhodovací body, které lze použít pro efektivní kopírování dat pomocí více klientů a jednoduchých příkazů pro kopírování.
+V této části se dozvíte o strategiích pro vytvoření vícevláknového systému kopírování souborů s více vlákny pro přesun dat do úložiště objektů BLOB s využitím Azure HPC cache. Vysvětluje koncepty přenosu souborů a body rozhodování, které lze použít k efektivnímu kopírování dat pomocí více klientů a jednoduchých příkazů kopírování.
 
-To také vysvětluje některé nástroje, které mohou pomoci. Nástroj ``msrsync`` lze částečně automatizovat proces rozdělení datové sady do bloků a pomocí příkazů rsync. Skript ``parallelcp`` je jiný nástroj, který čte zdrojový adresář a vydává příkazy kopírování automaticky.
+Vysvětluje taky některé nástroje, které vám pomůžou. ``msrsync`` Nástroj lze použít k částečnému automatizaci procesu rozdělení datové sady do kontejnerů a používání příkazů rsync. Tento ``parallelcp`` skript je další nástroj, který čte zdrojový adresář a automaticky vystavuje příkazy kopírování.
 
 ### <a name="strategic-planning"></a>Strategické plánování
 
-Při vytváření strategie pro paralelní kopírování dat byste měli pochopit kompromisy v velikosti souboru, počtu souborů a hloubce adresáře.
+Při sestavování strategie pro paralelní kopírování dat byste měli pochopit kompromisy v velikosti souborů, počtu souborů a hloubkě adresáře.
 
-* Pokud jsou soubory malé, metrika zájmu je soubory za sekundu.
-* Pokud jsou soubory velké (10MiBi nebo vyšší), metrika zájmu je bajtů za sekundu.
+* Když jsou soubory malé, je metrika zájmu soubory za sekundu.
+* Když jsou soubory velké (10MiBi nebo větší), je metrika zájmu v bajtech za sekundu.
 
-Každý proces kopírování má propustnost a rychlost přenesené soubory, kterou lze měřit časováním délky příkazu kopírování a faktoringem velikosti souboru a počtu souborů. Vysvětlení, jak měřit sazby, je mimo rozsah tohoto dokumentu, ale je nutné pochopit, zda se budete zabývat malými nebo velkými soubory.
+Každý proces kopírování má míru propustnosti a přenosovou rychlost přenosu souborů, která se dá změřit časováním příkazu pro kopírování a určením velikosti souboru a počtu souborů. Vysvětluje, jak změřit sazby jsou mimo rozsah tohoto dokumentu, ale je důležité pochopit, zda budete pracovat s malými nebo velkými soubory.
 
-Strategie pro paralelní ingestování dat s azure hpc mezipaměť patří:
+Strategie paralelního příjmu dat s mezipamětí služby Azure HPC cache zahrnují:
 
-* Ruční kopírování – můžete ručně vytvořit kopii s více vlákny na straně klienta spuštěním více než jednoho příkazu kopírování najednou na pozadí proti předdefinovaným masem souborů nebo cest. Přečtěte si [azure hpc cache data ingestestování – ruční kopírování metoda](hpc-cache-ingest-manual.md) podrobnosti.
+* Ruční kopírování – vícevláknové kopírování můžete vytvořit ručně na straně klienta spuštěním více než jednoho příkazu kopírování na pozadí v porovnání s předdefinovanými sadami souborů nebo cest. Přečtěte si podrobnosti v tématu [Azure HPC cache ingestování – metoda ručního kopírování](hpc-cache-ingest-manual.md) .
 
-* Částečně automatizované kopírování ``msrsync``  -  ``msrsync`` s je obálka nástroj, který běží více paralelních ``rsync`` procesů. Podrobnosti načtete na [číst data mezipaměti Azure HPC ingestiusární – msrsync metoda](hpc-cache-ingest-msrsync.md).
+* Částečně automatizované kopírování s ``msrsync``  -  ``msrsync`` nástrojem je Obálkový nástroj, který spouští ``rsync`` více paralelních procesů. Podrobnosti si můžete přečíst v tématu [Azure HPC cache data ingestování – metoda msrsync](hpc-cache-ingest-msrsync.md).
 
-* Skriptované kopírování ``parallelcp`` s - Naučte se, jak vytvořit a spustit skript paralelní kopírování v [Azure HPC Cache data ingestování - paralelní kopírování skript metody](hpc-cache-ingest-parallelcp.md).
+* Skriptované kopírování pomocí ``parallelcp`` – Zjistěte, jak vytvořit a spustit skript paralelního kopírování v [Azure HPC cache – paralelní kopírování metody skriptu](hpc-cache-ingest-parallelcp.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Po nastavení úložiště se dozvíte, jak mohou klienti připojit mezipaměť.
+Po nastavení úložiště se dozvíte, jak můžou klienti připojit mezipaměť.
 
-* [Přístup k systému Azure HPC Cache](hpc-cache-mount.md)
+* [Přístup k systému mezipaměti HPC Azure](hpc-cache-mount.md)

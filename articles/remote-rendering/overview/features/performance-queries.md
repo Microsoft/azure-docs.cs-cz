@@ -1,41 +1,41 @@
 ---
 title: Dotazy na výkon na straně serveru
-description: Jak provést dotazy na výkon na straně serveru prostřednictvím volání rozhraní API
+description: Jak provádět dotazy na výkon na straně serveru prostřednictvím volání rozhraní API
 author: florianborn71
 ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
 ms.openlocfilehash: 9a28dee2d1e6d1355b729a56e8eeb8447e4ed8c8
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80682023"
 ---
 # <a name="server-side-performance-queries"></a>Dotazy na výkon na straně serveru
 
-Dobrý výkon vykreslování na serveru je rozhodující pro stabilní snímkové frekvence a dobré uživatelské zkušenosti. Je důležité pečlivě sledovat charakteristiky výkonu na serveru a v případě potřeby optimalizovat. Údaje o výkonu lze dotazovat prostřednictvím vyhrazených funkcí rozhraní API.
+Dobrý výkon vykreslování na serveru je zásadní pro stabilní kmitočty snímků a dobré uživatelské prostředí. Je důležité monitorovat charakteristiky výkonu na serveru pečlivě a optimalizovat tam, kde je to potřeba. Údaje o výkonu se dají dotazovat prostřednictvím vyhrazených funkcí rozhraní API.
 
-Nejpůsobivější pro výkon vykreslování je vstupní data modelu. Vstupní data můžete vyladit, jak je popsáno v [části Konfigurace převodu modelu](../../how-tos/conversion/configure-model-conversion.md).
+Největší dopad na výkon vykreslování je vstupní data modelu. Vstupní data můžete upravit, jak je popsáno v tématu [konfigurace převodu modelu](../../how-tos/conversion/configure-model-conversion.md).
 
-Výkon aplikace na straně klienta může být také kritickým bodem. Pro hloubkovou analýzu výkonu na straně klienta se doporučuje provést [trasování výkonu](../../how-tos/performance-tracing.md).
+Výkon aplikace na straně klienta může být také kritickým bodem. Při podrobné analýze výkonu na straně klienta se doporučuje provést [trasování výkonu](../../how-tos/performance-tracing.md).
 
-## <a name="clientserver-timeline"></a>Časová osa klient/server
+## <a name="clientserver-timeline"></a>Časová osa klienta/serveru
 
-Než půjdete do podrobností týkajících se různých hodnot latence, stojí za to podívat se na synchronizační body mezi klientem a serverem na časové ose:
+Než přejdete k podrobnostem o různých hodnotách latence, je vhodné se podívat na body synchronizace mezi klientem a serverem na časové ose:
 
 ![Časová osa kanálu](./media/server-client-timeline.png)
 
 Obrázek ukazuje, jak:
 
-* *odhad Pose* je klientem odstartován při konstantní snímkové frekvenci 60 Hz (každých 16,6 ms)
-* server pak spustí vykreslování na základě
-* server odešle zpět kódovaný obraz videa
-* klient dekóduje obraz, provádí některé CPU a GPU práce na vrcholu to a pak zobrazí obraz
+* od klienta je *odhadnuta hodnota odhadu pozice* 60-Hz snímková frekvence (každých 16,6 MS).
+* Server pak spustí vykreslování na základě pozice
+* Server pošle zpátky kódovaný obraz videa.
+* klient dekóduje bitovou kopii, provádí v nich více PROCESORů a GPU a pak zobrazuje obrázek.
 
-## <a name="frame-statistics-queries"></a>Dotazy na statistiku rámce
+## <a name="frame-statistics-queries"></a>Dotazy na statistiky snímků
 
-Statistiky rámce poskytují některé informace na vysoké úrovni pro poslední rámec, jako je například latence. Data poskytnutá ve `FrameStatistics` struktuře jsou měřena na straně klienta, takže rozhraní API je synchronní volání:
+Statistiky snímků poskytují některé informace vysoké úrovně pro poslední rámec, například latenci. Data zadaná ve `FrameStatistics` struktuře se měří na straně klienta, takže rozhraní API je synchronní volání:
 
 ````c#
 void QueryFrameData(AzureSession session)
@@ -52,28 +52,28 @@ Načtený `FrameStatistics` objekt obsahuje následující členy:
 
 | Člen | Vysvětlení |
 |:-|:-|
-| latencyPoseToReceive | Latence z aplikace kamery představují odhad na klientském zařízení, dokud není pro klientskou aplikaci plně k dispozici rámeček serveru pro tuto pózu. Tato hodnota zahrnuje síťový roundtrip, čas vykreslení serveru, dekódování videa a kompenzaci kolísání. Viz **interval 1 na obrázku výše.**|
-| latencyReceiveToPresent | Latence z dostupnosti přijatého vzdáleného rámce, dokud klientská aplikace nezavolá PresentFrame na procesoru. |
-| latencyPresentToDisplay  | Latence z prezentace rámce na procesoru, dokud se nerozsvítí displej. Tato hodnota zahrnuje čas gpu klienta, jakékoli ukládání rámce do vyrovnávací paměti prováděné osem, reprojekce hardwaru a čas prohledávání displeje závislé na zařízení. Viz **interval 2 na obrázku výše.**|
-| timeSinceLastPresent | Doba mezi následnými voláními PresentFrame na procesoru. Hodnoty větší než doba zobrazení (například 16,6 ms na klientském zařízení 60 Hz) označují problémy způsobené klientskou aplikací, která nedokončila své zatížení procesoru v čase. Viz **interval 3 na obrázku výše.**|
-| videoFramesReceived | Počet rámců přijatých ze serveru v poslední sekundě. |
-| videoFrameReusedCount | Počet přijatých snímků v poslední sekundě, které byly v zařízení použity více než jednou. Nenulové hodnoty označují, že rámce musely být znovu použity a znovu promítnuty z důvodu kolísání sítě nebo nadměrné doby vykreslování serveru. |
-| videoFramesSkippedipped | Počet přijatých rámců v poslední sekundě, které byly dekódovány, ale nebyly zobrazeny na displeji, protože dorazil novější snímek. Nenulové hodnoty označují, že kolísání sítě způsobilo zpoždění více rámců a následné doručení do klientského zařízení společně v shlukování. |
-| videoFramesDiscarded | Velmi podobné **videoFramesSkipped**, ale důvodem pro vyřazení je, že snímek přišel tak pozdě, že to nemůže být ani koreluje s probíhající představovat už. Pokud k tomu dojde, je některé závažné síťové tvrzení.|
-| videoFrameMinDelta | Minimální doba mezi dvěma po sobě jdoucími snímky přicházejícími během poslední sekundy. Spolu s videoFrameMaxDelta, tento rozsah poskytuje údaj o chvění způsobené buď sítě nebo video kodek. |
-| videoFrameMaxDelta | Maximální doba mezi dvěma po sobě jdoucími snímky přicházejícími během poslední sekundy. Spolu s videoFrameMinDelta, tento rozsah poskytuje údaj o chvění způsobené sítě nebo video kodek. |
+| latencyPoseToReceive | Latence z fotoaparátu představuje odhad na klientském zařízení, dokud není rámec serveru pro tuto pozici plně dostupný klientské aplikaci. Tato hodnota zahrnuje zpáteční dobu v síti, čas vykreslování serveru, dekódování videa a kompenzaci kolísání. Viz **interval 1 na obrázku výše.**|
+| latencyReceiveToPresent | Latence z dostupnosti přijatého vzdáleného rámce, dokud klientská aplikace nevolá PresentFrame na procesor. |
+| latencyPresentToDisplay  | Latence v zobrazování snímku na CPU, dokud se nezobrazují indikátory Tato hodnota zahrnuje čas GPU klienta, všechny snímky uložené do vyrovnávací paměti prováděné operačním systémem, reprojektování hardwaru a čas vyzkoušení displeje závislého na zařízení. Viz **interval 2 na obrázku výše.**|
+| timeSinceLastPresent | Čas mezi následnými voláními PresentFrame na procesoru. Hodnoty větší než doba trvání displeje (například 16,6 MS na klientském zařízení 60-Hz) označují problémy způsobené klientskou aplikací v čase, kdy nedokončuje zatížení procesoru. Viz **interval 3 na obrázku výše.**|
+| videoFramesReceived | Počet rámců přijatých ze serveru za poslední sekundu. |
+| videoFrameReusedCount | Počet přijatých snímků za poslední sekundu, které byly použity na zařízení více než jednou. Nenulové hodnoty označují, že se snímky musely znovu použít a znovu promítnout z důvodu kolísání sítě nebo nadměrného vykreslování serveru. |
+| videoFramesSkipped | Počet přijatých rámců za poslední sekundu, které byly Dekódovatelné, ale nebyly zobrazeny při zobrazení, protože byl přijat novější rámec. Nenulové hodnoty označují, že kolísání sítě způsobilo zpoždění více rámců a pak dorazí do klientského zařízení dohromady v shluku. |
+| videoFramesDiscarded | Velmi podobné jako **videoFramesSkipped**, ale důvod, který je zahozený, je, že snímek byl v tom pozdě, takže ještě není možné ho ještě vzájemně sladit s případnými nedokončenými pozicemi. Pokud k tomu dojde, dojde k výraznému kolizi sítě.|
+| videoFrameMinDelta | Minimální doba mezi dvěma po sobě jdoucích snímky přicházejících během poslední sekundy. Tento rozsah spolu s videoFrameMaxDelta poskytuje indikaci kolísání způsobený buď kodekem sítě, nebo kodekem videa. |
+| videoFrameMaxDelta | Maximální doba mezi dvěma po sobě jdoucích rámců přicházejících během poslední sekundy. Tento rozsah spolu s videoFrameMinDelta poskytuje indikaci kolísání způsobený buď kodekem sítě, nebo kodekem videa. |
 
-Součet všech hodnot latence je obvykle mnohem větší než dostupný čas snímků v 60 Hz. To je v pořádku, protože více snímků je v letu paralelně a nové požadavky na snímek jsou zahájeny při požadovaném kmitočeti snímků, jak je znázorněno na obrázku. Pokud se však latence stane příliš velkou, ovlivní kvalitu [reprojekce pozdní fáze](../../overview/features/late-stage-reprojection.md)a může ohrozit celkové prostředí.
+Součet všech hodnot latence je obvykle mnohem větší než dostupný čas snímku v 60 Hz. To je v pořádku, protože více snímků je současně souběžně a nové žádosti o snímek jsou v požadované snímkové sazbě aktivní, jak je znázorněno na obrázku. Pokud je latence příliš velká, ovlivňuje kvalitu [reprojekce za fáze v pozdní fázi](../../overview/features/late-stage-reprojection.md)a může ohrozit celkové prostředí.
 
-`videoFramesReceived`, `videoFrameReusedCount`a `videoFramesDiscarded` lze jej použít k měření výkonu sítě a serveru. Pokud `videoFramesReceived` je `videoFrameReusedCount` nízká a vysoká, může to znamenat zahlcení sítě nebo nízký výkon serveru. Vysoká `videoFramesDiscarded` hodnota také označuje zahlcení sítě.
+`videoFramesReceived`, `videoFrameReusedCount`a `videoFramesDiscarded` lze je použít k měření výkonu sítě a serveru. Pokud `videoFramesReceived` je nízká a `videoFrameReusedCount` vysoká, může to znamenat zahlcení sítě nebo nedostatečný výkon serveru. Vysoká `videoFramesDiscarded` hodnota také označuje zahlcení sítě.
 
-A konečně `videoFrameMinDelta`, `videoFrameMaxDelta` `timeSinceLastPresent`a uveďte představu o rozptylu příchozích snímků videa a místních současných volání. Vysoká odchylka znamená nestabilní kmitočet snímků.
+Nakonec, a `videoFrameMaxDelta` Podělte se o odchylku příchozích snímků videa a místních současných volání.`timeSinceLastPresent` `videoFrameMinDelta` Vysoká odchylka znamená nestabilní snímkovou sazbu.
 
-Žádná z výše uvedených hodnot neposkytuje jasnou indikaci čisté latence sítě (červené šipky na obrázku), protože přesný `latencyPoseToReceive`čas, po který je server zaneprázdněn vykreslováním, musí být odečten od hodnoty roundtrip . Část celkové latence na straně serveru je informace, které není k dispozici pro klienta. Další odstavec však vysvětluje, jak je tato hodnota aproximována prostřednictvím dalšího vstupu ze serveru a vystavena `networkLatency` prostřednictvím hodnoty.
+Žádná z výše uvedených hodnot neposkytuje jasné označení čisté latence sítě (červené šipky na obrázku), protože přesný čas, kdy je server zaneprázdněný vykreslováním, je nutné odečíst od hodnoty `latencyPoseToReceive`zpětného převodu. Na straně serveru celkové latence jsou informace, které nejsou pro klienta k dispozici. Další odstavec ale vysvětluje, jak se tato hodnota blíží k dalšímu vstupu ze serveru a je `networkLatency` vystavená prostřednictvím hodnoty.
 
-## <a name="performance-assessment-queries"></a>Dotazy na posouzení výkonu
+## <a name="performance-assessment-queries"></a>Dotazy na vyhodnocení výkonu
 
-*Dotazy na posouzení výkonu* poskytují podrobnější informace o zatížení procesoru a GPU na serveru. Vzhledem k tomu, že data jsou požadována ze serveru, dotazování na snímek výkonu následuje obvyklý asynchronní vzor:
+*Dotazy na vyhodnocení výkonu* poskytují podrobné informace o procesoru a úlohách GPU na serveru. Vzhledem k tomu, že data jsou požadována ze serveru, dotazování snímku výkonu následuje po běžném asynchronním vzoru:
 
 ``` cs
 PerformanceAssessmentAsync _assessmentQuery = null;
@@ -92,25 +92,25 @@ void QueryPerformanceAssessment(AzureSession session)
 }
 ```
 
-Na rozdíl `FrameStatistics` od objektu `PerformanceAssessment` objekt obsahuje informace na straně serveru:
+V rozporu s `FrameStatistics` objektem obsahuje `PerformanceAssessment` objekt informace na straně serveru:
 
 | Člen | Vysvětlení |
 |:-|:-|
-| timeCPU | Průměrný čas procesoru serveru na snímek v milisekundách |
-| timeGPU | Průměrný čas gpu serveru na snímek v milisekundách |
-| využitíCPU | Celkové využití procesoru serveru v procentech |
-| využitíGPU | Celkové využití gpu serveru v procentech |
+| timeCPU | Průměrná doba procesoru serveru na rámec v milisekundách |
+| timeGPU | Průměrná doba GPU serveru na rámec v milisekundách |
+| utilizationCPU | Celkové využití procesoru serveru v procentech |
+| utilizationGPU | Celkové využití GPU serveru v procentech |
 | memoryCPU | Celkové využití hlavní paměti serveru v procentech |
-| memoryGPU | Celkové využití vyhrazené grafické paměti v procentech gpu serveru |
-| networkLatency | Přibližná průměrná latence sítě roundtrip v milisekundách. Na obrázku výše to odpovídá součtu červených šipek. Hodnota se vypočítá odečtením skutečné doby vykreslování serveru od `latencyPoseToReceive` hodnoty . `FrameStatistics` I když tato aproximace není přesná, poskytuje některé informace o latenci sítě, izolované od hodnoty latence vypočítané na straně klienta. |
-| polygonyVykresleno | Počet trojúhelníků vykreslených v jednom snímku. Toto číslo také zahrnuje trojúhelníky, které jsou vyřazeny později během vykreslování. To znamená, že toto číslo se v různých polohách kamery mnoho nemění, ale výkon se může výrazně lišit v závislosti na míře utracení trojúhelníku.|
+| memoryGPU | Celkové využití vyhrazené paměti pro video v procentech GPU serveru |
+| networkLatency | Přibližná Průměrná doba odezvy sítě v milisekundách Na ilustraci výše to odpovídá součtu červené šipky. Hodnota je vypočítána odečtením skutečného času vykreslování serveru od `latencyPoseToReceive` hodnoty. `FrameStatistics` I když tato aproximace není přesná, poskytuje určitou indikaci latence sítě, která je izolovaná od hodnot latence vypočítaných v klientovi. |
+| polygonsRendered | Počet trojúhelníků vykreslených v jednom snímku. Toto číslo zahrnuje také trojúhelníky, které byly po vygenerování později poraženy. To znamená, že toto číslo se neliší v různých polohách kamery, ale výkon se může výrazně lišit v závislosti na sazbě pro odstranení trojúhelníku.|
 
-Abychom vám pomohli posoudit hodnoty, každá část je dodávána s klasifikací kvality, jako **je Velký**, **Dobrý**, **Průměrný**nebo **Špatný**.
-Tato metrika hodnocení poskytuje hrubé označení stavu serveru, ale neměla by být považována za absolutní. Předpokládejme například, že se zobrazí "průměrné" skóre pro čas GPU. To je považováno za průměrné, protože se blíží limitpro celkový časový rozpočet rámce. Ve vašem případě však může být dobrá hodnota nicméně, protože vykreslujete složitý model.
+Pro lepší vyhodnocení hodnot zahrnuje každá část klasifikaci kvality, jako je **Skvělé**, **dobrá**, **Mediocre**nebo **špatná**.
+Tato metrika posouzení poskytuje přibližnou indikaci stavu serveru, ale neměla by být zobrazena jako absolutní. Předpokládejme například, že se zobrazí skóre Mediocre pro čas GPU. Je považován za Mediocre, protože se blíží limitu pro celkové časové náklady v rámci rámce. V takovém případě může být nicméně dobrá hodnota, protože vykreslujete složitý model.
 
-## <a name="statistics-debug-output"></a>Výstup ladění statistiky
+## <a name="statistics-debug-output"></a>Statistika ladění výstupu
 
-Třída `ARRServiceStats` obtéká statistiky rámce a dotazy na hodnocení výkonu a poskytuje pohodlné funkce pro vrácení statistiky jako agregované hodnoty nebo jako předem sestavený řetězec. Následující kód je nejjednodušší způsob, jak zobrazit statistiky na straně serveru v klientské aplikaci.
+Třída `ARRServiceStats` se zalomí kolem statistik rámců a dotazů na vyhodnocení výkonu a poskytuje pohodlný funkce pro vracení statistik jako agregovaných hodnot nebo jako předem sestavený řetězec. Následující kód představuje nejjednodušší způsob, jak zobrazit statistiky na straně serveru v klientské aplikaci.
 
 ``` cs
 ARRServiceStats _stats = null;
@@ -142,11 +142,11 @@ Výše uvedený kód naplní textový popisek následujícím textem:
 
 ![Výstup řetězce ArrServiceStats](./media/arr-service-stats.png)
 
-Rozhraní `GetStatsString` API formátuje řetězec všech hodnot, ale každá jedna hodnota může být `ARRServiceStats` také dotazován programově z instance.
+`GetStatsString` Rozhraní API formátuje řetězec všech hodnot, ale každá jediná hodnota může být z `ARRServiceStats` instance také dotazována prostřednictvím kódu programu.
 
-Existují také varianty členů, které agregují hodnoty v čase. Viz členy s `*Avg`příponou , `*Max`nebo `*Total`. Člen `FramesUsedForAverage` označuje, kolik rámců bylo použito pro tuto agregaci.
+Existují také varianty členů, které hodnoty agreguje v průběhu času. Viz členy s `*Avg`příponou `*Max`, nebo `*Total`. Člen `FramesUsedForAverage` indikuje, kolik snímků bylo pro tuto agregaci použito.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Vytvoření trasování výkonu](../../how-tos/performance-tracing.md)
+* [Vytváření trasování výkonu](../../how-tos/performance-tracing.md)
 * [Konfigurace převodu modelu](../../how-tos/conversion/configure-model-conversion.md)

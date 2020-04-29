@@ -1,6 +1,6 @@
 ---
 title: Vytvoření upozornění na metriku pomocí šablony Resource Manageru
-description: Přečtěte si, jak pomocí šablony Správce prostředků vytvořit metriku.
+description: Naučte se používat šablonu Správce prostředků k vytvoření upozornění na metriku.
 author: harelbr
 ms.author: harelbr
 services: azure-monitor
@@ -8,33 +8,33 @@ ms.topic: conceptual
 ms.date: 2/24/2020
 ms.subservice: alerts
 ms.openlocfilehash: 02424d7df24305d6642c364f12e3ed6e8674a01d
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80677012"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Vytvoření upozornění na metriku pomocí šablony Resource Manageru
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Tento článek ukazuje, jak můžete použít [šablonu Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md) ke konfiguraci [novějších upozornění metriky](../../azure-monitor/platform/alerts-metric-near-real-time.md) v Azure Monitoru. Šablony Správce prostředků umožňují programově nastavit výstrahy konzistentním a reprodukovatelným způsobem v celém prostředí. Novější upozornění metriky jsou aktuálně k dispozici v [této sadě typů prostředků](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported).
+V tomto článku se dozvíte, jak můžete pomocí [šablony Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md) nakonfigurovat [novější výstrahy metriky](../../azure-monitor/platform/alerts-metric-near-real-time.md) v Azure monitor. Šablony Správce prostředků umožňují programově nastavit výstrahy konzistentně a reprodukovatelným způsobem napříč vašimi prostředími. V [této sadě typů prostředků](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)jsou aktuálně k dispozici novější výstrahy metriky.
 
 > [!IMPORTANT]
-> Šablona prostředků pro vytváření upozornění na metriky pro typ prostředku: `Microsoft.OperationalInsights/workspaces`Pracovní prostor Azure Log Analytics (tj. , vyžaduje další kroky. Podrobnosti naleznete v článku upozornění na [metriky pro protokoly – šablona prostředků](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs).
+> Šablona prostředků pro vytváření výstrah metrik pro typ prostředku: pracovní prostor Azure Log Analytics (tj. `Microsoft.OperationalInsights/workspaces`) vyžaduje další kroky. Podrobnosti najdete v článku o [výstraze metriky pro protokoly – šablona prostředků](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs).
 
-Základní kroky jsou následující:
+Základní postup je následující:
 
 1. Použijte jednu z níže uvedených šablon jako soubor JSON, který popisuje, jak vytvořit výstrahu.
-2. Upravte a použijte odpovídající parametry souboru jako JSON přizpůsobit výstrahu.
-3. Parametr `metricName` najdete v tématu dostupné metriky v [Azure Monitor upodporovaných metrik](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported).
+2. Upravte a použijte odpovídající soubor parametrů jako JSON pro přizpůsobení výstrahy.
+3. Pro `metricName` parametr se podívejte na dostupné metriky v [Azure monitor podporované metriky](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported).
 4. Nasaďte šablonu pomocí [libovolné metody nasazení](../../azure-resource-manager/templates/deploy-powershell.md).
 
-## <a name="template-for-a-simple-static-threshold-metric-alert"></a>Šablona pro jednoduchou výstrahu statické prahové hodnoty
+## <a name="template-for-a-simple-static-threshold-metric-alert"></a>Šablona pro jednoduchou výstrahu metriky se statickou prahovou hodnotou
 
-Chcete-li vytvořit výstrahu pomocí šablony Správce prostředků, vytvořte zdroj typu `Microsoft.Insights/metricAlerts` a vyplňte všechny související vlastnosti. Níže je ukázková šablona, která vytvoří pravidlo upozornění metriky.
+Chcete-li vytvořit výstrahu pomocí šablony Správce prostředků, vytvořte prostředek typu `Microsoft.Insights/metricAlerts` a vyplňte všechny související vlastnosti. Níže je uvedená Ukázková šablona, která vytvoří pravidlo upozornění metriky.
 
-Pro účely tohoto návodu uložte json níže jako simplestaticmetricalert.json.
+Následující kód JSON uložte jako simplestaticmetricalert. JSON pro účely tohoto Názorného postupu.
 
 ```json
 {
@@ -204,11 +204,11 @@ Pro účely tohoto návodu uložte json níže jako simplestaticmetricalert.json
 }
 ```
 
-Vysvětlení schématu a vlastností pravidla výstrahy [je k dispozici zde](https://docs.microsoft.com/rest/api/monitor/metricalerts/createorupdate).
+Vysvětlení schématu a vlastností pro pravidlo výstrahy [jsou k dispozici zde](https://docs.microsoft.com/rest/api/monitor/metricalerts/createorupdate).
 
-Hodnoty parametrů můžete nastavit buď na příkazovém řádku, nebo prostřednictvím souboru parametrů. Ukázkový soubor parametrů je uveden níže.
+Hodnoty parametrů můžete nastavit buď na příkazovém řádku, nebo pomocí souboru parametrů. Ukázkový soubor parametrů je uveden níže.
 
-Uložte json níže jako simplestaticmetricalert.parameters.json a upravte jej podle potřeby.
+Níže uvedený formát JSON uložte jako simplestaticmetricalert. Parameters. JSON a upravte ho podle potřeby.
 
 ```json
 {
@@ -250,7 +250,7 @@ Uložte json níže jako simplestaticmetricalert.parameters.json a upravte jej p
 ```
 
 
-Výstrahu metriky můžete vytvořit pomocí souboru šablony a parametrů pomocí PowerShellu nebo Azure CLI.
+Pomocí PowerShellu nebo rozhraní příkazového řádku Azure můžete vytvořit výstrahu metriky pomocí souboru šablony a parametrů.
 
 Použití Azure Powershell
 
@@ -277,13 +277,13 @@ az group deployment create \
 
 > [!NOTE]
 >
-> Zatímco upozornění metriky může být vytvořena v jiné skupině prostředků k cílovému prostředku, doporučujeme použít stejnou skupinu prostředků jako cílový prostředek.
+> I když se upozornění na metriku dá vytvořit v jiné skupině prostředků jako cílový prostředek, doporučujeme použít stejnou skupinu prostředků jako cílový prostředek.
 
-## <a name="template-for-a-simple-dynamic-thresholds-metric-alert"></a>Šablona pro jednoduchou upozornění na metriku Dynamické prahové hodnoty
+## <a name="template-for-a-simple-dynamic-thresholds-metric-alert"></a>Šablona pro jednoduchou výstrahu metriky dynamické prahové hodnoty
 
-Chcete-li vytvořit výstrahu pomocí šablony Správce prostředků, vytvořte zdroj typu `Microsoft.Insights/metricAlerts` a vyplňte všechny související vlastnosti. Níže je ukázková šablona, která vytvoří pravidlo upozornění metriky.
+Chcete-li vytvořit výstrahu pomocí šablony Správce prostředků, vytvořte prostředek typu `Microsoft.Insights/metricAlerts` a vyplňte všechny související vlastnosti. Níže je uvedená Ukázková šablona, která vytvoří pravidlo upozornění metriky.
 
-Pro účely tohoto návodu uložte json níže jako simpledynamicmetricalert.json.
+Následující kód JSON uložte jako simpledynamicmetricalert. JSON pro účely tohoto Názorného postupu.
 
 ```json
 {
@@ -477,11 +477,11 @@ Pro účely tohoto návodu uložte json níže jako simpledynamicmetricalert.jso
 }
 ```
 
-Vysvětlení schématu a vlastností pravidla výstrahy [je k dispozici zde](https://docs.microsoft.com/rest/api/monitor/metricalerts/createorupdate).
+Vysvětlení schématu a vlastností pro pravidlo výstrahy [jsou k dispozici zde](https://docs.microsoft.com/rest/api/monitor/metricalerts/createorupdate).
 
-Hodnoty parametrů můžete nastavit buď na příkazovém řádku, nebo prostřednictvím souboru parametrů. Ukázkový soubor parametrů je uveden níže. 
+Hodnoty parametrů můžete nastavit buď na příkazovém řádku, nebo pomocí souboru parametrů. Ukázkový soubor parametrů je uveden níže. 
 
-Uložte json níže jako simpledynamicmetricalert.parameters.json a upravte jej podle potřeby.
+Níže uvedený formát JSON uložte jako simpledynamicmetricalert. Parameters. JSON a upravte ho podle potřeby.
 
 ```json
 {
@@ -532,7 +532,7 @@ Uložte json níže jako simpledynamicmetricalert.parameters.json a upravte jej 
 ```
 
 
-Výstrahu metriky můžete vytvořit pomocí souboru šablony a parametrů pomocí PowerShellu nebo Azure CLI.
+Pomocí PowerShellu nebo rozhraní příkazového řádku Azure můžete vytvořit výstrahu metriky pomocí souboru šablony a parametrů.
 
 Použití Azure Powershell
 
@@ -559,20 +559,20 @@ az group deployment create \
 
 > [!NOTE]
 >
-> Zatímco upozornění metriky může být vytvořena v jiné skupině prostředků k cílovému prostředku, doporučujeme použít stejnou skupinu prostředků jako cílový prostředek.
+> I když se upozornění na metriku dá vytvořit v jiné skupině prostředků jako cílový prostředek, doporučujeme použít stejnou skupinu prostředků jako cílový prostředek.
 
-## <a name="template-for-a-static-threshold-metric-alert-that-monitors-multiple-criteria"></a>Šablona pro upozornění na metriku statické prahové hodnoty, která sleduje více kritérií
+## <a name="template-for-a-static-threshold-metric-alert-that-monitors-multiple-criteria"></a>Šablona pro výstrahu metriky statického prahového hodnoty, která monitoruje více kritérií
 
-Novější upozornění na metriky podporují upozorňování na vícerozměrné metriky a podporu definování více kritérií (až 5 kritérií na pravidlo výstrahy). Pomocí následující šablony můžete vytvořit pokročilejší pravidlo upozornění metriky na dimenzionální metriky a zadat více kritérií.
+Novější výstrahy metrik podporují upozorňování na multidimenzionální metriky i podporu definující více kritérií (až 5 kritérií na pravidlo výstrahy). Pomocí následující šablony můžete vytvořit pokročilejší pravidlo výstrahy metriky pro multidimenzionální metriky a zadat více kritérií.
 
-Při použití dimenzí v pravidle výstrahy, které obsahuje více kritérií, si všimněte následujících omezení:
-- V rámci každého kritéria můžete vybrat pouze jednu hodnotu pro každou dimenzi.
-- \*"" nelze použít jako hodnotu dimenze.
-- Pokud metriky, které jsou konfigurovány v různých kritériích, podporují stejnou dimenzi, musí být nakonfigurovaná hodnota dimenze explicitně nastavena stejným způsobem pro všechny tyto metriky (v příslušných kritériích).
-    - V níže uvedeném příkladu, protože transakce a **SuccessE2ELatency metriky** mají **dimenzi ApiName** a *criterion1* určuje hodnotu *"GetBlob"* pro dimenzi **ApiName,** pak *kritérium2* musí také nastavit hodnotu *"GetBlob"* pro dimenzi **ApiName.** **Transactions**
+Při použití dimenzí v pravidle výstrahy obsahujícím více kritérií Pamatujte na následující omezení:
+- V rámci každého kritéria můžete vybrat jenom jednu hodnotu na dimenzi.
+- Jako hodnotu dimenze nelze\*použít "".
+- Pokud metriky, které jsou konfigurovány v různých kriteriích, podporují stejnou dimenzi, pak musí být nakonfigurovaná hodnota dimenze explicitně nastavena stejným způsobem pro všechny tyto metriky (v příslušných kritériích).
+    - V následujícím příkladu, protože **transakce** i metriky **SuccessE2ELatency** mají dimenzi **ApiName** a *Criterion1* Určuje hodnotu *getblob* pro dimenzi **ApiName** , pak *criterion2* musí také nastavit hodnotu *getblob* pro dimenzi **ApiName** .
 
 
-Pro účely tohoto návodu uložte json níže jako advancedstaticmetricalert.json.
+Následující kód JSON uložte jako advancedstaticmetricalert. JSON pro účely tohoto Názorného postupu.
 
 ```json
 {
@@ -705,9 +705,9 @@ Pro účely tohoto návodu uložte json níže jako advancedstaticmetricalert.js
 }
 ```
 
-Můžete použít výše uvedenou šablonu spolu s níže uvedeným souborem parametrů. 
+Můžete použít výše uvedenou šablonu spolu se souborem parametrů uvedeným níže. 
 
-Uložit a upravit json níže jako advancedstaticmetricalert.parameters.json pro účely tohoto návodu.
+Uložte a upravte JSON níže jako advancedstaticmetricalert. Parameters. JSON pro účely tohoto Názorného postupu.
 
 ```json
 {
@@ -774,7 +774,7 @@ Uložit a upravit json níže jako advancedstaticmetricalert.parameters.json pro
 ```
 
 
-Výstrahu metriky můžete vytvořit pomocí souboru šablony a parametrů pomocí PowerShellu nebo Azure CLI z aktuálního pracovního adresáře.
+Upozornění na metriku můžete vytvořit pomocí souboru šablony a parametrů pomocí PowerShellu nebo Azure CLI z aktuálního pracovního adresáře.
 
 Použití Azure Powershell
 ```powershell
@@ -800,23 +800,23 @@ az group deployment create \
 ```
 
 
-## <a name="template-for-a-static-metric-alert-that-monitors-multiple-dimensions"></a>Šablona pro upozornění na statickou metriku, která monitoruje více dimenzí
+## <a name="template-for-a-static-metric-alert-that-monitors-multiple-dimensions"></a>Šablona pro statickou výstrahu metriky, která monitoruje více dimenzí
 
-Následující šablona můžete vytvořit pravidlo upozornění statické metriky na dimenzionální metriky.
+Pomocí následující šablony můžete vytvořit pravidlo statické výstrahy metriky pro multidimenzionální metriky.
 
-Jedno pravidlo výstrahy může sledovat více časových řad metrik najednou, což má za následek méně pravidel výstrah pro správu.
+Jedno pravidlo výstrahy může sledovat několik časových řad metrik najednou, což má za následek méně pravidel upozornění, která se mají spravovat.
 
-V níže uvedeném příkladu pravidlo výstrahy monitoruje kombinace hodnot dimenzí dimenze **ResponseType** a **ApiName** dimenze pro metriku **Transakce:**
-1. **ResponsType** - Použití zástupného znaku "\*znamená, že pro každou hodnotu dimenze **ResponseType,** včetně budoucích hodnot, je jednotlivě sledována jiná časová řada.
-2. **ApiName** - Různé časové řady je sledována pouze pro hodnoty dimenze **GetBlob** a **PutBlob.**
+V následujícím příkladu pravidlo výstrahy monitoruje kombinace hodnot dimenzí **ResponseType** a **ApiName** dimenzí pro metriku **transakcí** :
+1. **ResponsType** – použití\*zástupného znaku znamená, že pro každou hodnotu dimenze **ResponseType** , včetně budoucích hodnot, se monitoruje různou časovou řadou individuálně.
+2. **ApiName** -jiná časová řada se monitoruje pouze pro hodnoty dimenze **getblob** a **PutBlob** .
 
-Například několik potenciálních časových řad, které jsou sledovány tímto pravidlem výstrahy jsou:
-- Metric = *Transactions*, ResponseType = *Success*, ApiName = *GetBlob*
+Například několik možných časových řad, které jsou monitorovány pomocí tohoto pravidla výstrahy:
+- Metrika = *transakce*, ResponseType = *úspěch*, ApiName = *getblob*
 - Metrika = *transakce*, ResponseType = *úspěch*, ApiName = *PutBlob*
-- Metrika = *transakce*, ResponseType = *časový výtok serveru*, ApiName = *GetBlob*
-- Metrika = *transakce*, ResponseType = *časový výtok serveru*, ApiName = *PutBlob*
+- Metrika = *transakce*, ResponseType = *časový limit serveru*, ApiName = *getblob*
+- Metrika = *transakce*, ResponseType = *časový limit serveru*, ApiName = *PutBlob*
 
-Pro účely tohoto návodu uložte json níže jako multidimensionalstaticmetricalert.json.
+Následující kód JSON uložte jako multidimensionalstaticmetricalert. JSON pro účely tohoto Názorného postupu.
 
 ```json
 {
@@ -941,9 +941,9 @@ Pro účely tohoto návodu uložte json níže jako multidimensionalstaticmetric
 }
 ```
 
-Můžete použít výše uvedenou šablonu spolu s níže uvedeným souborem parametrů. 
+Můžete použít výše uvedenou šablonu spolu se souborem parametrů uvedeným níže. 
 
-Uložit a upravit json níže jako multidimensionalstaticmetricalert.parameters.json pro účely tohoto návodu.
+Uložte a upravte JSON níže jako multidimensionalstaticmetricalert. Parameters. JSON pro účely tohoto Názorného postupu.
 
 ```json
 {
@@ -994,7 +994,7 @@ Uložit a upravit json níže jako multidimensionalstaticmetricalert.parameters.
 ```
 
 
-Výstrahu metriky můžete vytvořit pomocí souboru šablony a parametrů pomocí PowerShellu nebo Azure CLI z aktuálního pracovního adresáře.
+Upozornění na metriku můžete vytvořit pomocí souboru šablony a parametrů pomocí PowerShellu nebo Azure CLI z aktuálního pracovního adresáře.
 
 Použití Azure Powershell
 ```powershell
@@ -1020,23 +1020,23 @@ az group deployment create \
 ```
 
 
-## <a name="template-for-a-dynamic-thresholds-metric-alert-that-monitors-multiple-dimensions"></a>Výstraha metriky Dynamické prahové hodnoty, která monitoruje více dimenzí
+## <a name="template-for-a-dynamic-thresholds-metric-alert-that-monitors-multiple-dimensions"></a>Šablona pro upozornění na dynamické prahové hodnoty, která monitoruje více dimenzí
 
-Pomocí následující šablony můžete vytvořit pokročilejší pravidlo upozornění na metriky dynamických prahových hodnot pro dimenzionální metriky.
+Pomocí následující šablony můžete vytvořit pokročilejší pravidlo výstrahy metriky s dynamickými prahovými hodnotami pro multidimenzionální metriky.
 
-Jediné pravidlo upozornění dynamické prahové hodnoty můžete vytvořit přizpůsobené prahové hodnoty pro stovky časových řad metrik (i různé typy) najednou, což má za následek méně pravidel výstrah pro správu.
+Jedno pravidlo výstrahy s jedním dynamickými prahovými hodnotami může vytvořit přizpůsobené prahové hodnoty pro stovky časových řad (dokonce i různých typů), což vede k menšímu počtu pravidel upozornění, která se mají spravovat.
 
-V níže uvedeném příkladu pravidlo výstrahy monitoruje kombinace hodnot dimenzí dimenze **ResponseType** a **ApiName** dimenze pro metriku **Transakce:**
-1. **ResponsType** - Pro každou hodnotu dimenze **ResponseType,** včetně budoucích hodnot, je sledována jednotlivě jiná časová řada.
-2. **ApiName** - Různé časové řady je sledována pouze pro hodnoty dimenze **GetBlob** a **PutBlob.**
+V následujícím příkladu pravidlo výstrahy monitoruje kombinace hodnot dimenzí **ResponseType** a **ApiName** dimenzí pro metriku **transakcí** :
+1. **ResponsType** – pro každou hodnotu dimenze **ResponseType** , včetně budoucích hodnot, se monitorování různých časových řad provádí jednotlivě.
+2. **ApiName** -jiná časová řada se monitoruje pouze pro hodnoty dimenze **getblob** a **PutBlob** .
 
-Například několik potenciálních časových řad, které jsou sledovány tímto pravidlem výstrahy jsou:
-- Metric = *Transactions*, ResponseType = *Success*, ApiName = *GetBlob*
+Například několik možných časových řad, které jsou monitorovány pomocí tohoto pravidla výstrahy:
+- Metrika = *transakce*, ResponseType = *úspěch*, ApiName = *getblob*
 - Metrika = *transakce*, ResponseType = *úspěch*, ApiName = *PutBlob*
-- Metrika = *transakce*, ResponseType = *časový výtok serveru*, ApiName = *GetBlob*
-- Metrika = *transakce*, ResponseType = *časový výtok serveru*, ApiName = *PutBlob*
+- Metrika = *transakce*, ResponseType = *časový limit serveru*, ApiName = *getblob*
+- Metrika = *transakce*, ResponseType = *časový limit serveru*, ApiName = *PutBlob*
 
-Pro účely tohoto návodu uložte json níže jako advanceddynamicmetricalert.json.
+Následující kód JSON uložte jako advanceddynamicmetricalert. JSON pro účely tohoto Názorného postupu.
 
 ```json
 {
@@ -1156,9 +1156,9 @@ Pro účely tohoto návodu uložte json níže jako advanceddynamicmetricalert.j
 }
 ```
 
-Můžete použít výše uvedenou šablonu spolu s níže uvedeným souborem parametrů. 
+Můžete použít výše uvedenou šablonu spolu se souborem parametrů uvedeným níže. 
 
-Uložit a upravit json níže jako advanceddynamicmetricalert.parameters.json pro účely tohoto návodu.
+Uložte a upravte JSON níže jako advanceddynamicmetricalert. Parameters. JSON pro účely tohoto Názorného postupu.
 
 ```json
 {
@@ -1214,7 +1214,7 @@ Uložit a upravit json níže jako advanceddynamicmetricalert.parameters.json pr
 ```
 
 
-Výstrahu metriky můžete vytvořit pomocí souboru šablony a parametrů pomocí PowerShellu nebo Azure CLI z aktuálního pracovního adresáře.
+Upozornění na metriku můžete vytvořit pomocí souboru šablony a parametrů pomocí PowerShellu nebo Azure CLI z aktuálního pracovního adresáře.
 
 Použití Azure Powershell
 ```powershell
@@ -1241,18 +1241,18 @@ az group deployment create \
 
 >[!NOTE]
 >
-> Pro pravidla upozornění na metriky, která používají dynamické prahové hodnoty, není aktuálně podporováno více kritérií.
+> Pro pravidla upozornění metrik, která používají dynamické prahové hodnoty, se aktuálně nepodporují více kritérií.
 
 
-## <a name="template-for-a-static-threshold-metric-alert-that-monitors-a-custom-metric"></a>Šablona pro upozornění na metriku statické prahové hodnoty, která monitoruje vlastní metriku
+## <a name="template-for-a-static-threshold-metric-alert-that-monitors-a-custom-metric"></a>Šablona pro výstrahu metriky se statickou prahovou hodnotou, která monitoruje vlastní metriku
 
-Pomocí následující šablony můžete vytvořit pokročilejší pravidlo upozornění na metriku statické prahové hodnoty pro vlastní metriku.
+Pomocí následující šablony můžete vytvořit pokročilejší pravidlo výstrahy metriky pro metriky pro vlastní metriky.
 
-Další informace o vlastních metrikách ve Službě Azure Monitor najdete v [tématu Vlastní metriky v Azure Monitoru](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview).
+Další informace o vlastních metrikách v Azure Monitor najdete v tématu [vlastní metriky v Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview).
 
-Při vytváření pravidla výstrahy pro vlastní metriku je třeba zadat název metriky i obor názvů metriky. Měli byste se také ujistit, že vlastní metrika je již hlášena, protože nelze vytvořit pravidlo výstrahy na vlastní metriku, která ještě neexistuje.
+Při vytváření pravidla výstrahy na vlastní metriky musíte zadat název metriky i obor názvů metriky. Ujistěte se také, že je již hlášena vlastní metrika, protože nemůžete vytvořit pravidlo upozornění pro vlastní metriku, která ještě neexistuje.
 
-Pro účely tohoto návodu uložte json níže jako customstaticmetricalert.json.
+Následující kód JSON uložte jako customstaticmetricalert. JSON pro účely tohoto Názorného postupu.
 
 ```json
 {
@@ -1430,9 +1430,9 @@ Pro účely tohoto návodu uložte json níže jako customstaticmetricalert.json
 }
 ```
 
-Můžete použít výše uvedenou šablonu spolu s níže uvedeným souborem parametrů. 
+Můžete použít výše uvedenou šablonu spolu se souborem parametrů uvedeným níže. 
 
-Pro účely tohoto návodu uložte a upravte json níže jako customstaticmetricalert.parameters.json.
+Uložte a upravte JSON níže jako customstaticmetricalert. Parameters. JSON pro účely tohoto Názorného postupu.
 
 ```json
 {
@@ -1477,7 +1477,7 @@ Pro účely tohoto návodu uložte a upravte json níže jako customstaticmetric
 ```
 
 
-Výstrahu metriky můžete vytvořit pomocí souboru šablony a parametrů pomocí PowerShellu nebo Azure CLI z aktuálního pracovního adresáře.
+Upozornění na metriku můžete vytvořit pomocí souboru šablony a parametrů pomocí PowerShellu nebo Azure CLI z aktuálního pracovního adresáře.
 
 Použití Azure Powershell
 ```powershell
@@ -1504,30 +1504,30 @@ az group deployment create \
 
 >[!NOTE]
 >
-> Obor názvů metrik y konkrétní vlastní metriky najdete procházením [vlastních metrik na webu Azure Portal.](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview#browse-your-custom-metrics-via-the-azure-portal)
+> Obor názvů metriky konkrétní vlastní metriky můžete najít [procházením vlastních metrik pomocí Azure Portal](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview#browse-your-custom-metrics-via-the-azure-portal)
 
 
-## <a name="template-for-a-metric-alert-that-monitors-multiple-resources"></a>Šablona pro upozornění na metriku, která monitoruje více zdrojů
+## <a name="template-for-a-metric-alert-that-monitors-multiple-resources"></a>Šablona výstrahy metriky, která monitoruje více prostředků
 
-Předchozí části jsou popsány ukázkové šablony Azure Resource Manager k vytvoření upozornění metriky, které monitorují jeden prostředek. Azure Monitor teď podporuje monitorování více prostředků (stejného typu) s jedno pravidlo upozornění metriky pro prostředky, které existují ve stejné oblasti Azure. Tato funkce je momentálně podporovaná jenom ve veřejném cloudu Azure a jenom pro virtuální počítače, databáze serverů SQL, elastické fondy SQL serverů a hraniční zařízení datové schránky. Tato funkce je také k dispozici pouze pro metriky platformy a není podporována pro vlastní metriky.
+Předchozí části popisují ukázkovou Azure Resource Manager šablon pro vytváření výstrah metrik, které sledují jeden prostředek. Azure Monitor teď podporuje monitorování více prostředků (stejného typu) s jedním pravidlem upozornění na metriky pro prostředky, které existují ve stejné oblasti Azure. Tato funkce je momentálně podporovaná jenom ve veřejném cloudu Azure a jenom pro virtuální počítače, databáze SQL serveru, elastické fondy SQL serveru a Databox hraniční zařízení. Tato funkce je také k dispozici pouze pro metriky platforem a není podporována pro vlastní metriky.
 
-Pravidlo upozornění dynamických prahových hodnot může také pomoci vytvořit přizpůsobené prahové hodnoty pro stovky metrických řad (i různé typy) najednou, což má za následek méně pravidel výstrah pro správu.
+Pravidlo upozornění na dynamické prahové hodnoty může také vytvořit přizpůsobené prahové hodnoty pro stovky řady metrik (dokonce i různých typů), což vede k menšímu počtu pravidel upozornění, která se mají spravovat.
 
-Tato část bude popisovat šablony Azure Resource Manager pro tři scénáře pro monitorování více prostředků s jedním pravidlem.
+V této části najdete popis Azure Resource Manager šablon pro různé scénáře monitorování více prostředků s jedním pravidlem.
 
 - Monitorování všech virtuálních počítačů (v jedné oblasti Azure) v jedné nebo více skupinách prostředků.
-- Monitorování všech virtuálních počítačů (v jedné oblasti Azure) v rámci předplatného.
-- Sledování seznamu virtuálních počítačů (v jedné oblasti Azure) v předplatném.
+- Monitorování všech virtuálních počítačů (v jedné oblasti Azure) v předplatném.
+- Monitorování seznamu virtuálních počítačů (v jedné oblasti Azure) v předplatném.
 
 > [!NOTE]
 >
-> V pravidle upozornění metriky, které monitoruje více prostředků, je povolena pouze jedna podmínka.
+> V pravidle výstrahy metriky, které monitorují více prostředků, je povolena pouze jedna podmínka.
 
-### <a name="static-threshold-alert-on-all-virtual-machines-in-one-or-more-resource-groups"></a>Upozornění na statickou prahovou hodnotu na všech virtuálních počítačích v jedné nebo více skupinách prostředků
+### <a name="static-threshold-alert-on-all-virtual-machines-in-one-or-more-resource-groups"></a>Výstraha statické prahové hodnoty na všech virtuálních počítačích v jedné nebo více skupinách prostředků
 
-Tato šablona vytvoří pravidlo upozornění na statickou prahovou hodnotu, které monitoruje procento procesoru pro všechny virtuální počítače (v jedné oblasti Azure) v jedné nebo více skupinách prostředků.
+Tato šablona vytvoří pravidlo upozornění na metriku statického prahového hodnoty, které monitoruje procentuální hodnotu procesoru pro všechny virtuální počítače (v jedné oblasti Azure) v jedné nebo více skupinách prostředků.
 
-Pro účely tohoto návodu uložte json níže jako vše vms-in-resource-group-static.json.
+Pro účely tohoto návodu uložte JSON jako all-VM-in-Resource-Group-static. JSON.
 
 ```json
 {
@@ -1759,8 +1759,8 @@ Pro účely tohoto návodu uložte json níže jako vše vms-in-resource-group-s
 }
 ```
 
-Můžete použít výše uvedenou šablonu s níže uvedeným souborem parametrů.
-Pro účely tohoto návodu uložte a upravte json níže jako vše vms-in-resource-group-static.parameters.json.
+Výše uvedenou šablonu můžete použít spolu se souborem parametrů uvedeným níže.
+Pro účely tohoto návodu uložte a upravte JSON níže jako all-VM-in-Resource-Group-static. Parameters. JSON.
 
 ```json
 {
@@ -1810,7 +1810,7 @@ Pro účely tohoto návodu uložte a upravte json níže jako vše vms-in-resour
 }
 ```
 
-Výstrahu statické metriky můžete vytvořit pomocí souboru šablony a parametrů pomocí PowerShellu nebo Azure CLI z aktuálního pracovního adresáře.
+Výstrahu statické metriky můžete vytvořit pomocí souboru Template a Parameters pomocí PowerShellu nebo Azure CLI z aktuálního pracovního adresáře.
 
 Použití Azure Powershell
 
@@ -1835,11 +1835,11 @@ az group deployment create \
     --parameters @all-vms-in-resource-group-static.parameters.json
 ```
 
-### <a name="dynamic-thresholds-alert-on-all-virtual-machines-in-one-or-more-resource-groups"></a>Upozornění dynamické prahové hodnoty na všech virtuálních počítačích v jedné nebo více skupinách prostředků
+### <a name="dynamic-thresholds-alert-on-all-virtual-machines-in-one-or-more-resource-groups"></a>Upozornění na dynamické prahové hodnoty na všech virtuálních počítačích v jedné nebo více skupinách prostředků
 
-Tato šablona vytvoří pravidlo upozornění metriky dynamické prahové hodnoty, které monitoruje procento procesoru pro všechny virtuální počítače (v jedné oblasti Azure) v jedné nebo více skupin ách prostředků.
+Tato šablona vytvoří pravidlo upozornění na metriku dynamických prahových hodnot, které monitoruje procentuální hodnotu procesoru pro všechny virtuální počítače (v jedné oblasti Azure) v jedné nebo více skupinách prostředků.
 
-Pro účely tohoto návodu uložte json níže jako all-vms-in-resource-group-dynamic.json.
+Pro účely tohoto návodu uložte JSON jako all-VM-in-Resource-Group-Dynamic. JSON.
 
 ```json
 {
@@ -2088,8 +2088,8 @@ Pro účely tohoto návodu uložte json níže jako all-vms-in-resource-group-dy
 }
 ```
 
-Můžete použít výše uvedenou šablonu s níže uvedeným souborem parametrů.
-Pro účely tohoto návodu uložte a upravte json níže jako vše vms-in-resource-group-dynamic.parameters.json.
+Výše uvedenou šablonu můžete použít spolu se souborem parametrů uvedeným níže.
+Pro účely tohoto návodu uložte a upravte JSON níže jako all-VM-in-Resource-Group-Dynamic. Parameters. JSON.
 
 ```json
 {
@@ -2145,7 +2145,7 @@ Pro účely tohoto návodu uložte a upravte json níže jako vše vms-in-resour
 }
 ```
 
-Výstrahu metriky můžete vytvořit pomocí souboru šablony a parametrů pomocí PowerShellu nebo Azure CLI z aktuálního pracovního adresáře.
+Upozornění na metriku můžete vytvořit pomocí souboru šablony a parametrů pomocí PowerShellu nebo Azure CLI z aktuálního pracovního adresáře.
 
 Použití Azure Powershell
 
@@ -2170,11 +2170,11 @@ az group deployment create \
     --parameters @all-vms-in-resource-group-dynamic.parameters.json
 ```
 
-### <a name="static-threshold-alert-on-all-virtual-machines-in-a-subscription"></a>Upozornění na statickou prahovou hodnotu na všech virtuálních počítačích v předplatném
+### <a name="static-threshold-alert-on-all-virtual-machines-in-a-subscription"></a>Výstraha statické prahové hodnoty na všech virtuálních počítačích v předplatném
 
-Tato šablona vytvoří pravidlo upozornění na statickou prahovou hodnotu, které v rámci předplatného monitoruje procento procesoru pro všechny virtuální počítače (v jedné oblasti Azure).
+Tato šablona vytvoří pravidlo upozornění na metriku statické prahové hodnoty, které monitoruje procentuální hodnotu procesoru pro všechny virtuální počítače (v jedné oblasti Azure) v předplatném.
 
-Uložit json níže jako all-vms-in-subscription-static.json pro účely tohoto walk-through.
+Následující kód JSON uložte jako all-VM-in-Subscription-static. JSON pro účely tohoto návodu.
 
 ```json
 {
@@ -2407,8 +2407,8 @@ Uložit json níže jako all-vms-in-subscription-static.json pro účely tohoto 
 }
 ```
 
-Můžete použít výše uvedenou šablonu s níže uvedeným souborem parametrů.
-Uložit a upravit json níže jako all-vms-in-subscription-static.parameters.json pro účely tohoto návodu.
+Výše uvedenou šablonu můžete použít spolu se souborem parametrů uvedeným níže.
+Pro účely tohoto návodu uložte a upravte níže uvedený formát JSON jako all-VM-in-Subscription-static. Parameters. JSON.
 
 ```json
 {
@@ -2455,7 +2455,7 @@ Uložit a upravit json níže jako all-vms-in-subscription-static.parameters.jso
 }
 ```
 
-Výstrahu metriky můžete vytvořit pomocí souboru šablony a parametrů pomocí PowerShellu nebo Azure CLI z aktuálního pracovního adresáře.
+Upozornění na metriku můžete vytvořit pomocí souboru šablony a parametrů pomocí PowerShellu nebo Azure CLI z aktuálního pracovního adresáře.
 
 Použití Azure Powershell
 
@@ -2480,11 +2480,11 @@ az group deployment create \
     --parameters @all-vms-in-subscription.parameters-static.json
 ```
 
-### <a name="dynamic-thresholds-alert-on-all-virtual-machines-in-a-subscription"></a>Upozornění dynamické prahové hodnoty na všech virtuálních počítačích v předplatném
+### <a name="dynamic-thresholds-alert-on-all-virtual-machines-in-a-subscription"></a>Upozornění na dynamické prahové hodnoty na všech virtuálních počítačích v předplatném
 
-Tato šablona vytvoří pravidlo upozornění metriky dynamické prahové hodnoty, které monitoruje procento procesoru pro všechny virtuální počítače (v jedné oblasti Azure) v předplatném.
+Tato šablona vytvoří pravidlo upozornění na metriku dynamických prahových hodnot, které monitoruje procentuální hodnotu procesoru pro všechny virtuální počítače (v jedné oblasti Azure) v předplatném.
 
-Uložit json níže jako all-vms-in-subscription-dynamic.json pro účely tohoto walk-through.
+Pro účely tohoto postupu si níže uložte JSON jako all-VM-in-Subscription-Dynamic. JSON.
 
 ```json
 {
@@ -2733,8 +2733,8 @@ Uložit json níže jako all-vms-in-subscription-dynamic.json pro účely tohoto
 }
 ```
 
-Můžete použít výše uvedenou šablonu s níže uvedeným souborem parametrů.
-Pro účely tohoto návodu uložte a upravte json níže jako vše vms-in-subscription-dynamic.parameters.json.
+Výše uvedenou šablonu můžete použít spolu se souborem parametrů uvedeným níže.
+Pro účely tohoto návodu uložte a upravte JSON níže jako all-VM-Subscription-Dynamic. Parameters. JSON.
 
 ```json
 {
@@ -2787,7 +2787,7 @@ Pro účely tohoto návodu uložte a upravte json níže jako vše vms-in-subscr
 }
 ```
 
-Výstrahu metriky můžete vytvořit pomocí souboru šablony a parametrů pomocí PowerShellu nebo Azure CLI z aktuálního pracovního adresáře.
+Upozornění na metriku můžete vytvořit pomocí souboru šablony a parametrů pomocí PowerShellu nebo Azure CLI z aktuálního pracovního adresáře.
 
 Použití Azure Powershell
 
@@ -2812,11 +2812,11 @@ az group deployment create \
     --parameters @all-vms-in-subscription-dynamic.parameter-dynamics.json
 ```
 
-### <a name="static-threshold-alert-on-a-list-of-virtual-machines"></a>Upozornění na statickou prahovou hodnotu v seznamu virtuálních počítačů
+### <a name="static-threshold-alert-on-a-list-of-virtual-machines"></a>Výstraha statické prahové hodnoty v seznamu virtuálních počítačů
 
-Tato šablona vytvoří pravidlo upozornění na statickou prahovou hodnotu, které v rámci předplatného monitoruje procentuální procesor pro seznam virtuálních počítačů (v jedné oblasti Azure).
+Tato šablona vytvoří pravidlo upozornění na metriku statického prahového hodnoty, které monitoruje procentuální hodnotu procesoru pro seznam virtuálních počítačů (v jedné oblasti Azure) v předplatném.
 
-Uložit json níže jako seznam-z-vms-static.json pro účely tohoto walk-through.
+Pro účely tohoto návodu uložte níže uvedený formát JSON jako list-VM-static. JSON.
 
 ```json
 {
@@ -3049,8 +3049,8 @@ Uložit json níže jako seznam-z-vms-static.json pro účely tohoto walk-throug
 }
 ```
 
-Můžete použít výše uvedenou šablonu s níže uvedeným souborem parametrů.
-Pro účely tohoto návodu uložte a upravte json níže jako seznam vms-static.parameters.json.
+Výše uvedenou šablonu můžete použít spolu se souborem parametrů uvedeným níže.
+Pro účely tohoto návodu uložte a upravte níže uvedený formát JSON jako list-VM-static. Parameters. JSON.
 
 ```json
 {
@@ -3100,7 +3100,7 @@ Pro účely tohoto návodu uložte a upravte json níže jako seznam vms-static.
 }
 ```
 
-Výstrahu metriky můžete vytvořit pomocí souboru šablony a parametrů pomocí PowerShellu nebo Azure CLI z aktuálního pracovního adresáře.
+Upozornění na metriku můžete vytvořit pomocí souboru šablony a parametrů pomocí PowerShellu nebo Azure CLI z aktuálního pracovního adresáře.
 
 Použití Azure Powershell
 
@@ -3125,11 +3125,11 @@ az group deployment create \
     --parameters @list-of-vms-static.parameters.json
 ```
 
-### <a name="dynamic-thresholds-alert-on-a-list-of-virtual-machines"></a>Upozornění dynamické prahové hodnoty na seznamu virtuálních počítačů
+### <a name="dynamic-thresholds-alert-on-a-list-of-virtual-machines"></a>Upozornění na dynamické prahové hodnoty v seznamu virtuálních počítačů
 
-Tato šablona vytvoří pravidlo upozornění metriky dynamické prahové hodnoty, které monitoruje procento procesoru pro seznam virtuálních počítačů (v jedné oblasti Azure) v předplatném.
+Tato šablona vytvoří pravidlo upozornění na metriku dynamických prahových hodnot, které monitoruje procentuální hodnotu procesoru pro seznam virtuálních počítačů (v jedné oblasti Azure) v předplatném.
 
-Uložit json níže jako seznam-z-vms-dynamic.json pro účely tohoto walk-through.
+Pro účely tohoto návodu uložte níže uvedený formát JSON jako list-VMS-Dynamic. JSON.
 
 ```json
 {
@@ -3378,8 +3378,8 @@ Uložit json níže jako seznam-z-vms-dynamic.json pro účely tohoto walk-throu
 }
 ```
 
-Můžete použít výše uvedenou šablonu s níže uvedeným souborem parametrů.
-Pro účely tohoto návodu uložte a upravte json níže jako seznam vms-dynamic.parameters.json.
+Výše uvedenou šablonu můžete použít spolu se souborem parametrů uvedeným níže.
+Pro účely tohoto návodu uložte a upravte následující JSON jako list-VM-Dynamic. Parameters. JSON.
 
 ```json
 {
@@ -3435,7 +3435,7 @@ Pro účely tohoto návodu uložte a upravte json níže jako seznam vms-dynamic
 }
 ```
 
-Výstrahu metriky můžete vytvořit pomocí souboru šablony a parametrů pomocí PowerShellu nebo Azure CLI z aktuálního pracovního adresáře.
+Upozornění na metriku můžete vytvořit pomocí souboru šablony a parametrů pomocí PowerShellu nebo Azure CLI z aktuálního pracovního adresáře.
 
 Použití Azure Powershell
 
@@ -3460,12 +3460,12 @@ az group deployment create \
     --parameters @list-of-vms-dynamic.parameters.json
 ```
 
-## <a name="template-for-an-availability-test-along-with-a-metric-alert"></a>Šablona pro test dostupnosti spolu s upozorněním na metriku
+## <a name="template-for-an-availability-test-along-with-a-metric-alert"></a>Šablona pro test dostupnosti společně s výstrahou metriky
 
-[Testy dostupnosti Application Insights](../../azure-monitor/app/monitor-web-app-availability.md) vám pomohou sledovat dostupnost vašich webových stránek nebo aplikací z různých míst po celém světě. Upozornění na test dostupnosti vás upozorní, když testy dostupnosti selžou z určitého počtu umístění.
-Upozornění na test dostupnosti stejného typu prostředku jako upozornění na metriky (Microsoft.Insights/metricAlerts). Následující ukázka šablony Azure Resource Manager umíte nastavit jednoduchý test dostupnosti a přidružené výstrahy.
+[Application Insights testy dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md) vám pomůžou monitorovat dostupnost vašeho webu nebo aplikace z různých míst po celém světě. Výstrahy testu dostupnosti vás upozorní, když testy dostupnosti selžou z určitého počtu míst.
+Výstrahy testu dostupnosti stejného typu prostředku jako výstrahy metriky (Microsoft. Insights/metricAlerts). Následující vzorovou Azure Resource Manager šablonu lze použít k nastavení jednoduchého testu dostupnosti a přidružené výstrahy.
 
-Pro účely tohoto návodu uložte json níže jako availabilityalert.json.
+Následující kód JSON uložte jako availabilityalert. JSON pro účely tohoto Názorného postupu.
 
 ```json
 {
@@ -3567,14 +3567,14 @@ Pro účely tohoto návodu uložte json níže jako availabilityalert.json.
 }
 ```
 
-Hodnoty parametrů můžete nastavit buď na příkazovém řádku, nebo prostřednictvím souboru parametrů. Ukázkový soubor parametrů je uveden níže.
+Hodnoty parametrů můžete nastavit buď na příkazovém řádku, nebo pomocí souboru parametrů. Ukázkový soubor parametrů je uveden níže.
 
 
 > [!NOTE]
 >
-> `&amp`; je odkaz na entitu HTML pro &. Parametry adresy URL jsou stále odděleny jedním &, ale pokud adresu URL zmíníte v HTML, musíte ji zakódovat. Takže, pokud máte nějaké "&" v pingURL hodnotu parametru, budete muset uniknout s "`&amp`;"
+> `&amp`; je odkaz na entitu HTML pro &. Parametry adresy URL jsou pořád oddělené jednou &, ale pokud si adresu URL ve formátu HTML zmiňujete, budete ji muset zakódovat. Takže pokud máte v hodnotě parametru pingURL nějaké "&", musíte ho řídicím znakem "`&amp`;".
 
-Uložte json níže jako availabilityalert.parameters.json a upravte jej podle potřeby.
+Níže uvedený formát JSON uložte jako availabilityalert. Parameters. JSON a upravte ho podle potřeby.
 
 ```json
 {
@@ -3597,7 +3597,7 @@ Uložte json níže jako availabilityalert.parameters.json a upravte jej podle p
 }
 ```
 
-Test dostupnosti a přidruženou výstrahu můžete vytvořit pomocí souboru šablony a parametrů pomocí PowerShellu nebo Azure CLI.
+Test dostupnosti a přidruženou výstrahu můžete vytvořit pomocí souboru šablony a parametrů pomocí PowerShellu nebo rozhraní příkazového řádku Azure CLI.
 
 Použití Azure Powershell
 
@@ -3624,6 +3624,6 @@ az group deployment create \
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o [výstrahách v Azure](alerts-overview.md)
-- Zjistěte, jak [vytvořit skupinu akcí pomocí šablon Správce prostředků](action-groups-create-resource-manager-template.md)
-- Syntaxe a vlastnosti JSON najdete v tématu Odkaz na šablonu [Microsoft.Insights/metricAlerts.](/azure/templates/microsoft.insights/metricalerts)
+- Přečtěte si další informace o [výstrahách v Azure](alerts-overview.md) .
+- Naučte [se vytvořit skupinu akcí pomocí šablon Správce prostředků](action-groups-create-resource-manager-template.md) .
+- Syntaxi a vlastnosti JSON najdete v referenčních informacích k šabloně [Microsoft. Insights/metricAlerts](/azure/templates/microsoft.insights/metricalerts) .

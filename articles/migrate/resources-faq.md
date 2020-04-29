@@ -1,75 +1,75 @@
 ---
-title: Nejčastější dotazy k migraci do Azure
-description: Získejte odpovědi na běžné otázky týkající se služby Migrace Azure.
+title: Nejčastější dotazy k Azure Migrate
+description: Získejte odpovědi na běžné otázky týkající se služby Azure Migrate.
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.openlocfilehash: 9b71888b284fd9cc125def4758d1e3800a92acf2
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81530313"
 ---
-# <a name="azure-migrate-common-questions"></a>Migrace Azure: Běžné otázky
+# <a name="azure-migrate-common-questions"></a>Azure Migrate: běžné otázky
 
-Tento článek odpovídá na běžné otázky týkající se migrace Azure. Pokud máte otázky po přečtení tohoto článku, můžete je zveřejnit ve [fóru Migrace Azure](https://aka.ms/AzureMigrateForum). Můžete si také prohlédnout tyto články:
+Tento článek obsahuje odpovědi na běžné otázky týkající se Azure Migrate. Pokud máte dotazy i po přečtení tohoto článku, můžete je publikovat ve [fóru Azure Migrate](https://aka.ms/AzureMigrateForum). Můžete si také projít tyto články:
 
-- Otázky týkající se [zařízení Azure Migrate](common-questions-appliance.md)
-- Otázky týkající se [vizualizace zjišťování, hodnocení a závislosti](common-questions-discovery-assessment.md)
+- Dotazy týkající se [zařízení Azure Migrate](common-questions-appliance.md)
+- Dotazy týkající [se vizualizace zjišťování, hodnocení a závislostí](common-questions-discovery-assessment.md)
 
 ## <a name="what-is-azure-migrate"></a>Co je Azure Migrate?
 
-Azure Migrate poskytuje centrální centrum pro sledování zjišťování, hodnocení a migrace místních aplikací a úloh a virtuálních počítačích privátního a veřejného cloudu do Azure. Centrum poskytuje nástroje pro migraci Azure pro hodnocení a migraci a nabídky nesmějovačů isv třetích stran. [Další informace](migrate-services-overview.md).
+Azure Migrate poskytuje centrální centrum pro sledování zjišťování, hodnocení a migrace vašich místních aplikací a úloh a privátních a veřejných cloudových virtuálních počítačů do Azure. Centrum poskytuje Azure Migrate nástroje pro posuzování a migraci a nabídky nezávislých výrobců softwaru. [Další informace](migrate-services-overview.md).
 
-## <a name="what-can-i-do-with-azure-migrate"></a>Co můžu dělat s Azure Migrate?
+## <a name="what-can-i-do-with-azure-migrate"></a>Co se dá dělat s Azure Migrate?
 
-Pomocí Migrace Azure můžete do Azure zjišťovat, vyhodnocovat a migrovat místní infrastrukturu, aplikace a data. Azure Migrate podporuje vyhodnocení a migraci místních virtuálních počítačů VMware, virtuálních počítačů Hyper-V, fyzických serverů, dalších virtualizovaných virtuálních počítačů, databází, webových aplikací a virtuálních desktopů. 
+Pomocí Azure Migrate můžete zjišťovat, hodnotit a migrovat místní infrastrukturu, aplikace a data do Azure. Azure Migrate podporuje posuzování a migraci místních virtuálních počítačů VMware, virtuálních počítačů Hyper-V, fyzických serverů, dalších virtualizovaných virtuálních počítačů, databází, webových aplikací a virtuálních ploch. 
 
-## <a name="whats-the-difference-between-azure-migrate-and-azure-site-recovery"></a>Jaký je rozdíl mezi migrací Azure a Azure Site Recovery?
+## <a name="whats-the-difference-between-azure-migrate-and-azure-site-recovery"></a>Jaký je rozdíl mezi Azure Migrate a Azure Site Recovery?
 
-[Azure Migrate](migrate-services-overview.md) poskytuje centralizované centrum pro hodnocení a migraci do Azure. 
+[Azure Migrate](migrate-services-overview.md) poskytuje centralizované centrum pro posuzování a migraci do Azure. 
 
 [Azure Site Recovery](../site-recovery/site-recovery-overview.md) je řešení zotavení po havárii. 
 
-Nástroj Migrace Azure: Migrace serveru používá některé funkce back-end site recovery pro migraci některých místních počítačů.
+Azure Migrate: Nástroj pro migraci serveru používá některé funkce back-Site Recovery Endu pro migraci některých místních počítačů do migrace typu "a Shift".
 
-## <a name="whats-the-difference-between-azure-migrate-server-assessment-and-the-map-toolkit"></a>Jaký je rozdíl mezi migrací Azure: Vyhodnocení serveru a sadou nástrojů MAP?
+## <a name="whats-the-difference-between-azure-migrate-server-assessment-and-the-map-toolkit"></a>Jaký je rozdíl mezi Azure Migrate: posouzení serveru a MAPOVou Toolkit?
 
-Vyhodnocení serveru poskytuje hodnocení, které vám pomůže s připraveností na migraci a vyhodnocením úloh pro migraci do Azure. Sada [nástrojů Microsoft Assessment and Planning (MAP)](https://www.microsoft.com/download/details.aspx?id=7826) pomáhá s dalšími úkoly, včetně plánování migrace pro novější verze klientských a serverových operačních systémů systému Windows a sledování využití softwaru. V těchto scénářích pokračujte v používání sady mapových nástrojů.
+Posouzení serveru poskytuje hodnocení, které vám pomůžou s připraveností na migraci, a vyhodnocení úloh pro migraci do Azure. [Sada nástrojů Microsoft Assessment and Planning (map) Toolkit](https://www.microsoft.com/download/details.aspx?id=7826) pomáhá s dalšími úkoly, včetně plánování migrace novějších verzí klientských a serverových operačních systémů Windows a sledování využívání softwaru. V těchto scénářích pokračujte v používání sady MAP Toolkit.
 
-## <a name="whats-the-difference-between-server-assessment-and-the-site-recovery-deployment-planner"></a>Jaký je rozdíl mezi vyhodnocením serveru a plánovačem nasazení obnovení webu?
+## <a name="whats-the-difference-between-server-assessment-and-the-site-recovery-deployment-planner"></a>Jaký je rozdíl mezi posuzováním serveru a Site Recovery Plánovač nasazení?
 
-Vyhodnocení serveru je nástroj pro plánování migrace. Plánovač nasazení obnovení lokality je nástroj pro plánování zotavení po havárii.
+Posuzování serveru je nástroj pro plánování migrace. Plánovač nasazení Site Recovery je nástroj pro plánování zotavení po havárii.
 
-Vyberte si nástroj na základě toho, co chcete udělat:
+Vyberte si nástroj podle toho, co chcete udělat:
 
-- **Plánování místní migrace do Azure**: Pokud plánujete migrovat místní servery do Azure, použijte pro plánování migrace serverové hodnocení. Hodnocení serveru vyhodnocuje místní úlohy a poskytuje pokyny a nástroje, které vám pomohou migrovat. Po plánu migrace je na místě, můžete použít nástroje, jako je Migrace Azure: Migrace serveru k migraci počítačů do Azure.
-- **Plánování zotavení po havárii do Azure:** Pokud plánujete nastavit zotavení po havárii z místního do Azure s site recovery, použijte Plánovač nasazení obnovení webu. Plánovač nasazení poskytuje podrobné posouzení místního prostředí specifické pro obnovení webu za účelem zotavení po havárii. Poskytuje doporučení týkající se zotavení po havárii, jako je například replikace a převzetí služeb při selhání.
+- **Plánování místní migrace do Azure**: Pokud plánujete migrovat místní servery do Azure, použijte k plánování migrace server hodnocení. Posouzení serveru vyhodnocuje místní úlohy a poskytuje pokyny a nástroje, které vám pomůžou s migrací. Po dokončení plánu migrace můžete použít nástroje jako Azure Migrate: Migrace serveru pro migraci počítačů do Azure.
+- **Plánování zotavení po havárii do Azure**: Pokud plánujete nastavovat zotavení po havárii z místního prostředí do azure pomocí Site Recovery, použijte Plánovač nasazení Site Recovery. Plánovač nasazení poskytuje hloubkové a Site Recovery vyhodnocení místního prostředí pro účely zotavení po havárii. Poskytuje doporučení týkající se zotavení po havárii, jako je například replikace a převzetí služeb při selhání.
 
-## <a name="how-does-server-migration-work-with-site-recovery"></a>Jak migrace serveru funguje s obnovením webu?
+## <a name="how-does-server-migration-work-with-site-recovery"></a>Jak funguje migrace serveru s Site Recovery?
 
-- Pokud používáte Migraci Azure: Migrace serveru k provedení migrace místních virtuálních počítačů VMware *bez agenta,* migrace se narodí na Azure Migrate a obnovení webu se nepoužívá.
-- Pokud používáte Azure Migrate: Migrace serveru k provedení migrace virtuálních počítačů VMware *na základě agenta* nebo pokud migrujete virtuální počítače Hyper-V nebo fyzické servery, migrace Azure: Migrace serveru používá replikační modul Azure Site Recovery.
+- Pokud používáte Azure Migrate: Migrace serveru k provedení migrace místních virtuálních počítačů VMware bez *agenta* , je migrace nativní pro Azure Migrate a Site Recovery se nepoužívá.
+- Pokud používáte Azure Migrate: Migrace serveru k provedení migrace virtuálních počítačů VMware *na základě agenta* , nebo pokud migrujete virtuální počítače Hyper-V nebo fyzické servery, Azure Migrate: Migrace serveru používá Azure Site Recovery replikační modul.
 
-## <a name="which-geographies-are-supported"></a>Které zeměpisné oblasti jsou podporovány?
+## <a name="which-geographies-are-supported"></a>Které geografické oblasti jsou podporovány?
 
-Projděte si podporované zeměpisné oblasti pro [veřejné](migrate-support-matrix.md#supported-geographies-public-cloud) a [vládní cloudy](migrate-support-matrix.md#supported-geographies-azure-government).
+Projděte si podporované geografické oblasti pro cloudy [veřejné](migrate-support-matrix.md#supported-geographies-public-cloud) a [státní správy](migrate-support-matrix.md#supported-geographies-azure-government).
 
 ## <a name="how-do-i-get-started"></a>Jak mám začít?
 
-Identifikujte nástroj, který potřebujete, a pak ho přidejte do projektu Migrace Azure. 
+Identifikujte potřebný nástroj a pak přidejte nástroj do projektu Azure Migrate. 
 
-Přidání nástroje ISV nebo movere:
+Postup přidání nástroje nebo stěhovací společnosti ISV:
 
-1. Můžete začít získáním licence nebo se zaregistrovat k bezplatné zkušební verzi v souladu se zásadami nástroje. Licencování nástrojů je v souladu s isv nebo nástroj licenční model.
-2. V každém nástroji je možnost připojení k Azure Migrate. Podle pokynů k nástroji a dokumentace připojte nástroj k Azure Migrate.
+1. Začněte získáním licence nebo si zaregistrujte bezplatnou zkušební verzi v souladu se zásadami nástroje. Licencování pro nástroje je v souladu s modelem licencování ISV nebo nástrojů.
+2. V každém nástroji je k dispozici možnost připojit se k Azure Migrate. Použijte pokyny a dokumentaci k nástroji k připojení nástroje k Azure Migrate.
 
-Cestu migrace můžete sledovat z projektu Migrace Azure, přes Azure a v dalších nástrojích.
+Svou cestu migrace můžete sledovat z Azure Migrateho projektu v rámci Azure a v jiných nástrojích.
 
-## <a name="how-do-i-delete-a-project"></a>Jak odstraním projekt?
+## <a name="how-do-i-delete-a-project"></a>Návody odstranit projekt?
 
-Přečtěte si, jak [odstranit projekt](how-to-delete-project.md). 
+Přečtěte si, jak [Odstranit projekt](how-to-delete-project.md). 
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si [přehled Migrace Azure](migrate-services-overview.md).
+Přečtěte si [přehled Azure Migrate](migrate-services-overview.md).

@@ -1,6 +1,6 @@
 ---
-title: Přidání a odebrání jednotek pro správu (preview) – Azure Active Directory | Dokumenty společnosti Microsoft
-description: Pomocí jednotek pro správu můžete omezit rozsah oprávnění role ve službě Azure Active Directory.
+title: Přidat a odebrat jednotky pro správu (Preview) – Azure Active Directory | Microsoft Docs
+description: Pomocí jednotek pro správu Omezte rozsah oprávnění role v Azure Active Directory.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -15,54 +15,54 @@ ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7a4a0dfaeda18b3f68ddc3c7cc7333b8c994d174
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81684919"
 ---
-# <a name="manage-administrative-units-in-azure-active-directory"></a>Správa administrativních jednotek ve službě Azure Active Directory
+# <a name="manage-administrative-units-in-azure-active-directory"></a>Správa jednotek pro správu v Azure Active Directory
 
-Pro podrobnější řízení správy ve službě Azure Active Directory (Azure AD) můžete přiřadit uživatele k roli Azure AD s oborem, který je omezený na jednu nebo více jednotek pro správu (AU).
+Pro přesnější administrativní řízení v Azure Active Directory (Azure AD) můžete přiřadit uživatele k roli Azure AD s oborem, který je omezený na jednu nebo více jednotek pro správu (Austrálie).
 
 ## <a name="get-started"></a>Začínáme
 
-1. Chcete-li spustit dotazy z následujících pokynů v [aplikaci Graph Explorer](https://aka.ms/ge), postupujte takto:
+1. Pokud chcete spouštět dotazy z následujících pokynů pomocí [Graph Exploreru](https://aka.ms/ge), udělejte toto:
 
-    a. Na webu Azure Portal přejděte na Azure AD. V seznamu aplikací vyberte **Průzkumník a**pak vyberte **Udělit souhlas správce s aplikací Graph Explorer**.
+    a. V Azure Portal přejdete do služby Azure AD. V seznamu aplikace vyberte **Průzkumník grafů**a potom v **Graph Exploreru vyberte udělit souhlas správce**.
 
-    ![Snímek obrazovky s odkazem na "Udělit souhlas správce"](./media/roles-admin-units-manage/select-graph-explorer.png)
+    ![Snímek obrazovky ukazující odkaz na udělení souhlasu správce](./media/roles-admin-units-manage/select-graph-explorer.png)
 
-    b. V Průzkumníkovi grafů vyberte **beta** verzi.
+    b. V Průzkumníku grafů vyberte **beta** verzi.
 
-    ![Snímek obrazovky s vybranou beta verzí](./media/roles-admin-units-manage/select-beta-version.png)
+    ![Snímek obrazovky zobrazující vybranou verzi beta](./media/roles-admin-units-manage/select-beta-version.png)
 
-1. Použijte verzi preview Azure AD PowerShellu.
+1. Použijte verzi Preview služby Azure AD PowerShell.
 
-## <a name="add-an-administrative-unit"></a>Přidání administrativní jednotky
+## <a name="add-an-administrative-unit"></a>Přidat jednotku pro správu
 
 ### <a name="use-the-azure-portal"></a>Použití webu Azure Portal
 
-1. Na webu Azure Portal přejděte na Azure AD a v levém podokně vyberte **jednotky pro správu**.
+1. V Azure Portal otevřete službu Azure AD a v levém podokně vyberte **jednotky pro správu**.
 
-    ![Snímek obrazovky s odkazem Pro správu (Preview) ve službě Azure AD](./media/roles-admin-units-manage/nav-to-admin-units.png)
+    ![Snímek obrazovky s odkazem na jednotky pro správu (Preview) v Azure AD](./media/roles-admin-units-manage/nav-to-admin-units.png)
 
-1. Vyberte **Přidat** a zadejte název administrativní jednotky. Volitelně můžete přidat popis správní jednotky.
+1. Vyberte **Přidat** a potom zadejte název jednotky pro správu. Volitelně můžete přidat popis jednotky pro správu.
 
-    ![Snímek obrazovky s tlačítkem Přidat a textového pole pro zadání názvu administrativní jednotky](./media/roles-admin-units-manage/add-new-admin-unit.png)
+    ![Snímek obrazovky s tlačítkem Přidat a textové pole pro zadání názvu jednotky pro správu](./media/roles-admin-units-manage/add-new-admin-unit.png)
 
-1. Vyberte **Přidat,** chcete-li dokončit administrativní jednotku.
+1. Chcete-li dokončit jednotku správy, vyberte možnost **Přidat** .
 
 ### <a name="use-powershell"></a>Použití prostředí PowerShell
 
-Nainstalujte Azure AD PowerShell (preview) před pokusem o spuštění následujících příkazů:
+Než se pokusíte spustit následující příkazy, nainstalujte Azure AD PowerShell (Preview):
 
     Connect-AzureAD
     New-AzureADAdministrativeUnit -Description "West Coast region" -DisplayName "West Coast"
 
-Podle potřeby můžete upravit hodnoty, které jsou uzavřeny v uvozovkách.
+V případě potřeby můžete upravit hodnoty, které jsou uzavřeny v uvozovkách.
 
-### <a name="use-microsoft-graph"></a>Použití microsoft graphu
+### <a name="use-microsoft-graph"></a>Použít Microsoft Graph
 
     Http Request
     POST /administrativeUnits
@@ -72,26 +72,26 @@ Podle potřeby můžete upravit hodnoty, které jsou uzavřeny v uvozovkách.
         "description": "North America Operations administration"
     }
 
-## <a name="remove-an-administrative-unit"></a>Odebrání administrativní jednotky
+## <a name="remove-an-administrative-unit"></a>Odebrání jednotky pro správu
 
-Ve službě Azure AD můžete odebrat administrativní jednotku, kterou už nepotřebujete jako jednotku oboru pro role pro správu.
+V Azure AD můžete odebrat jednotku pro správu, kterou už nebudete potřebovat, jako jednotku rozsahu pro administrativní role.
 
 ### <a name="use-the-azure-portal"></a>Použití webu Azure Portal
 
-1. Na webu Azure Portal přejděte na azure **ad** > **jednotky pro správu**. 
-1. Vyberte administrativní jednotku, která má být odstraněna, a pak vyberte **odstranit**. 
-1. Chcete-li potvrdit, že chcete odstranit administrativní jednotku, vyberte **možnost Ano**. Administrativní jednotka bude odstraněna.
+1. V Azure Portal přejdete na**jednotky pro správu** **Azure AD** > . 
+1. Vyberte jednotku pro správu, kterou chcete odstranit, a pak vyberte **Odstranit**. 
+1. Chcete-li potvrdit, že chcete jednotku pro správu odstranit, vyberte možnost **Ano**. Jednotka pro správu se odstraní.
 
-![Snímek obrazovky s administrativní jednotkou Odstranit a potvrzovacího okna](./media/roles-admin-units-manage/select-admin-unit-to-delete.png)
+![Snímek obrazovky s tlačítkem odstranit jednotku pro správu a potvrzovacím oknem](./media/roles-admin-units-manage/select-admin-unit-to-delete.png)
 
 ### <a name="use-powershell"></a>Použití prostředí PowerShell
 
     $delau = Get-AzureADAdministrativeUnit -Filter "displayname eq 'DeleteMe Admin Unit'"
     Remove-AzureADAdministrativeUnit -ObjectId $delau.ObjectId
 
-Můžete upravit hodnoty, které jsou uzavřeny v uvozovkách, jak je požadováno pro konkrétní prostředí.
+Hodnoty, které jsou uzavřeny v uvozovkách, můžete upravit podle potřeby konkrétního prostředí.
 
-### <a name="use-the-graph-api"></a>Použití rozhraní API pro grafy
+### <a name="use-the-graph-api"></a>Použití Graph API
 
     HTTP request
     DELETE /administrativeUnits/{Admin id}
@@ -100,5 +100,5 @@ Můžete upravit hodnoty, které jsou uzavřeny v uvozovkách, jak je požadová
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Správa uživatelů ve správní jednotce](roles-admin-units-add-manage-users.md)
-* [Správa skupin ve správní jednotce](roles-admin-units-add-manage-groups.md)
+* [Správa uživatelů v jednotce pro správu](roles-admin-units-add-manage-users.md)
+* [Správa skupin v jednotce pro správu](roles-admin-units-add-manage-groups.md)

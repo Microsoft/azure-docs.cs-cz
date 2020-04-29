@@ -1,6 +1,6 @@
 ---
 title: Azure Service Bus – počet zpráv
-description: Načtěte počet zpráv uchovávaných ve frontách a předplatných pomocí Azure Resource Manager a Azure Service Bus NamespaceManager API.
+description: Načtěte počet zpráv uchovávaných ve frontách a odběrech pomocí Azure Resource Manager a rozhraní API Azure Service Bus NamespaceManager.
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -14,19 +14,19 @@ ms.topic: article
 ms.date: 04/08/2020
 ms.author: aschhab
 ms.openlocfilehash: 8020b12ca892fbf7dec6fed6259526d958fb110f
-ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80891760"
 ---
 # <a name="message-counters"></a>Čítače zpráv
 
-Počet zpráv uchovávaných ve frontách a předplatných můžete načíst pomocí Správce prostředků Azure a rozhraní API Service Bus [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) v sdk rozhraní .NET Framework.
+Počet zpráv ve frontách a odběrech můžete načíst pomocí Azure Resource Manager a rozhraní API Service Bus [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) v sadě SDK .NET Framework.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-S Prostředím PowerShell můžete získat počet takto:
+Pomocí PowerShellu můžete tento počet získat následujícím způsobem:
 
 ```powershell
 (Get-AzServiceBusQueue -ResourceGroup mygrp -NamespaceName myns -QueueName myqueue).CountDetails
@@ -34,25 +34,25 @@ S Prostředím PowerShell můžete získat počet takto:
 
 ## <a name="message-count-details"></a>Podrobnosti o počtu zpráv
 
-Znalost počtu aktivních zpráv je užitečná při určování, zda fronta vytvoří nevyřízené položky, které vyžaduje více prostředků ke zpracování, než co bylo aktuálně nasazeno. Následující podrobnosti čítače jsou k dispozici ve třídě [MessageCountDetails:](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails)
+Znalost počtu aktivních zpráv je užitečná při určování, zda fronta sestaví nevyřízené položky, které vyžadují více prostředků pro zpracování, než kolik je aktuálně nasazeno. Ve třídě [MessageCountDetails](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails) jsou k dispozici následující podrobnosti čítače:
 
--   [ActiveMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.activemessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_ActiveMessageCount): Zprávy ve frontě nebo odběr, které jsou v aktivním stavu a připraven k doručení.
--   [DeadLetterMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.deadlettermessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_DeadLetterMessageCount): Zprávy ve frontě nedoručených zpráv.
--   [ScheduledMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.scheduledmessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_ScheduledMessageCount): Zprávy v naplánovaném stavu.
--   [TransferDeadLetterMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.transferdeadlettermessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_TransferDeadLetterMessageCount): Zprávy, které se nezdařily převod do jiné fronty nebo tématu a byly přesunuty do fronty nedoručených zpráv přenosu.
--   [TransferMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.transfermessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_TransferMessageCount): Zprávy čekající na převod do jiné fronty nebo tématu.
+-   [ActiveMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.activemessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_ActiveMessageCount): zprávy ve frontě nebo předplatném, které jsou v aktivním stavu a připravené k doručení.
+-   [DeadLetterMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.deadlettermessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_DeadLetterMessageCount): zprávy ve frontě nedoručených zpráv.
+-   [ScheduledMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.scheduledmessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_ScheduledMessageCount): zprávy v naplánovaném stavu.
+-   [TransferDeadLetterMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.transferdeadlettermessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_TransferDeadLetterMessageCount): zprávy, které se nepodařilo přenést do jiné fronty nebo tématu, a byly přesunuty do fronty nedoručených zpráv přenosu.
+-   [TransferMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.transfermessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_TransferMessageCount): zprávy čekající na přenos do jiné fronty nebo tématu.
 
-Pokud aplikace chce škálovat prostředky na základě délky fronty, měla by tak učinit s měřeným tempem. Získání čítače zpráv je nákladné operace uvnitř zprostředkovatele zpráv a provádění často přímo a nepříznivě ovlivňuje výkon entity.
+Pokud aplikace chce škálovat prostředky na základě délky fronty, měla by to udělat se změřeným tempem. Získání čítačů zpráv je náročná operace uvnitř zprostředkovatele zpráv a jejich provádění je často přímo a nepříznivě ovlivňuje výkon entity.
 
 > [!NOTE]
-> Zprávy, které jsou odesílány do tématu service bus jsou předány odběry pro toto téma. Takže počet aktivních zpráv na samotné téma je 0, protože tyto zprávy byly úspěšně předány k odběru. Získejte počet zpráv na předplatné a ověřte, že je větší než 0. I když se zobrazí zprávy v předplatném, jsou ve skutečnosti uloženy v úložišti vlastněném tématem. 
+> Zprávy odeslané do tématu Service Bus jsou předávány do předplatných tohoto tématu. Proto je počet aktivních zpráv v samotném tématu 0, protože tyto zprávy byly úspěšně předány do předplatného. Získejte počet zpráv v předplatném a ověřte, že je větší než 0. I když vidíte zprávy v předplatném, jsou ve skutečnosti uloženy v úložišti, které vlastní téma. 
 
-Pokud se podíváte na odběry, pak by měly nenulový počet zpráv (které přidávají až 323 MB místa pro celou entitu).
+Pokud se podíváte na odběry, měly by mít nenulový počet zpráv (které přidávají až 323MB prostoru pro celou entitu).
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o zasílání zpráv služby Service Bus najdete v následujících tématech:
+Další informace o Service Bus zasílání zpráv najdete v následujících tématech:
 
 * [Fronty, témata a odběry služby Service Bus](service-bus-queues-topics-subscriptions.md)
-* [Začínáme s frontami služby Service Bus](service-bus-dotnet-get-started-with-queues.md)
+* [Začínáme s frontami Service Bus](service-bus-dotnet-get-started-with-queues.md)
 * [Jak používat témata a odběry Service Bus](service-bus-dotnet-how-to-use-topics-subscriptions.md)

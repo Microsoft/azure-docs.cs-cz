@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/05/2019
+ms.date: 04/27/2020
 ms.author: allensu
-ms.openlocfilehash: 64940ee6451ef1a9e153ef4d699bdaed32d4030e
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.openlocfilehash: a698d0cc4653a7a9f938b8f013352d9b51e2e18c
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82146345"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82203722"
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>Typy IP adres a metody přidělování v Azure
 
@@ -59,6 +59,22 @@ Veřejné IP adresy se vytvářejí s jednou z následujících SKU:
 >[!IMPORTANT]
 > Pro nástroj pro vyrovnávání zatížení a veřejné prostředky IP se musí použít odpovídající SKU. Není možné kombinovat prostředky z SKU Basic s prostředky z SKU Standard. Samostatné virtuální počítače, virtuální počítače v prostředku skupiny dostupnosti ani prostředky škálovacích sad virtuálních počítačů není možné připojit k oběma SKU zároveň.  Při nových návrzích by se měla zvážit možnost použít prostředky SKU Standard.  Podrobnosti najdete v článku o [nástroji pro vyrovnávání zatížení úrovně Standard](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
+#### <a name="standard"></a>Standard
+
+Veřejné IP adresy standardních SKU jsou:
+
+- Vždy použít metodu statického přidělení.
+- Musí mít nastavitelný časový limit nečinnosti příchozího výstupního toku 4-30 minut, výchozí hodnota je 4 minuty a pevný časový limit odchozího pocházejícího toku je 4 minuty.
+- Standardně zabezpečené a uzavřené vůči příchozímu provozu. Příchozí provoz je nutné explicitně povolit pomocí [skupiny zabezpečení sítě](security-overview.md#network-security-groups).
+- Přiřazeno k síťovým rozhraním, standardním veřejným nástrojům pro vyrovnávání zatížení nebo aplikačním branám. Další informace o Standard Load Balancer najdete v tématu [Azure Standard Load Balancer](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- Může být redundantní nebo Geografická zóna (lze vytvořit oblast a zaručit ji v konkrétní zóně dostupnosti). Další informace o zónách dostupnosti najdete v článku s [přehledem zón dostupnosti](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a v článku o [nástroji pro vyrovnávání zatížení úrovně Standard a zónách dostupnosti](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+ 
+> [!NOTE]
+> Příchozí komunikace se zdrojem standardní skladové položky selže, dokud nevytvoříte a nepřidružíte [skupinu zabezpečení sítě](security-overview.md#network-security-groups) a výslovně nepovolíte požadovaný příchozí provoz.
+
+> [!NOTE]
+> Při použití [služby metadata instance IMDS](../virtual-machines/windows/instance-metadata-service.md)jsou k dispozici pouze veřejné IP adresy se základní SKU. Standardní SKU se nepodporuje.
+
 #### <a name="basic"></a>Základní
 
 Všechny veřejné IP adresy vytvořené před zavedením skladových položek jsou veřejné IP adresy základních SKU. Se zavedením skladových položek máte možnost pro veřejnou IP adresu určit požadovanou SKU. Adresy základních SKU:
@@ -68,22 +84,6 @@ Všechny veřejné IP adresy vytvořené před zavedením skladových položek j
 - Jsou standardně otevřené.  K omezení příchozího a odchozího provozu se doporučuje použít skupiny zabezpečení sítě, ale není to nezbytné.
 - Jsou přiřazované k jakémukoli prostředku Azure, ke kterému může být přiřazena veřejná IP adresa, jako jsou například síťová rozhraní, brány VPN Gateway, brány Application Gateway a internetové nástroje pro vyrovnávání zatížení.
 - Nepodporují scénáře zón dostupnosti.  Pro scénáře zón dostupnosti je třeba použít veřejnou IP adresu standardního SKU. Další informace o zónách dostupnosti najdete v článku s [přehledem zón dostupnosti](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a v článku o [nástroji pro vyrovnávání zatížení úrovně Standard a zónách dostupnosti](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-
-#### <a name="standard"></a>Standard
-
-Veřejné IP adresy standardních SKU jsou:
-
-- Vždy použít metodu statického přidělení.
-- Musí mít nastavitelný časový limit nečinnosti příchozího výstupního toku 4-30 minut, výchozí hodnota je 4 minuty a pevný časový limit odchozího pocházejícího toku je 4 minuty.
-- Standardně zabezpečené a uzavřené vůči příchozímu provozu. Příchozí provoz je nutné explicitně povolit pomocí [skupiny zabezpečení sítě](security-overview.md#network-security-groups).
-- Přiřazeno k síťovým rozhraním, standardním veřejným nástrojům pro vyrovnávání zatížení nebo aplikačním branám. Další informace o Standard Load Balancer najdete v tématu [Azure Standard Load Balancer](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-- Zóna redundantní ve výchozím nastavení a volitelná oblast (lze vytvořit oblast a zaručit ji v konkrétní zóně dostupnosti). Další informace o zónách dostupnosti najdete v článku s [přehledem zón dostupnosti](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a v článku o [nástroji pro vyrovnávání zatížení úrovně Standard a zónách dostupnosti](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
- 
-> [!NOTE]
-> Příchozí komunikace se zdrojem standardní skladové položky selže, dokud nevytvoříte a nepřidružíte [skupinu zabezpečení sítě](security-overview.md#network-security-groups) a výslovně nepovolíte požadovaný příchozí provoz.
-
-> [!NOTE]
-> Při použití [služby metadata instance IMDS](../virtual-machines/windows/instance-metadata-service.md)jsou k dispozici pouze veřejné IP adresy se základní SKU. Standardní SKU se nepodporuje.
 
 ### <a name="allocation-method"></a>Metoda přidělování
 
@@ -135,7 +135,7 @@ Veřejnou IP adresu můžete přiřadit službě [Azure Application Gateway](../
 ### <a name="at-a-glance"></a>Přehledně
 Následující tabulka ukazuje konkrétní vlastnost, jejímž prostřednictvím je možné veřejnou IP adresu přiřadit prostředku nejvyšší úrovně, a metody přidělení (dynamické nebo statické), které je možné použít.
 
-| Prostředek nejvyšší úrovně | Přidružení IP adresy | Dynamická | Statická |
+| Prostředek nejvyšší úrovně | Přidružení IP adresy | Dynamická | Static |
 | --- | --- | --- | --- |
 | Virtuální počítač |Síťové rozhraní |Ano |Ano |
 | Internetový nástroj pro vyrovnávání zatížení |Konfigurace front-endu |Ano |Ano |
@@ -179,7 +179,7 @@ Privátní IP adresu můžete přiřadit konfiguraci **front-endu** nástroje [A
 ### <a name="at-a-glance"></a>Přehledně
 Následující tabulka ukazuje konkrétní vlastnost, jejímž prostřednictvím je možné privátní IP adresu přiřadit prostředku nejvyšší úrovně, a metody přidělení (dynamické nebo statické), které je možné použít.
 
-| Prostředek nejvyšší úrovně | Přidružení IP adresy | Dynamická | Statická |
+| Prostředek nejvyšší úrovně | Přidružení IP adresy | Dynamická | Static |
 | --- | --- | --- | --- |
 | Virtuální počítač |Síťové rozhraní |Ano |Ano |
 | Nástroj pro vyrovnávání zatížení |Konfigurace front-endu |Ano |Ano |

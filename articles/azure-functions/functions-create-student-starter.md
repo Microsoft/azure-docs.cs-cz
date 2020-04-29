@@ -1,29 +1,29 @@
 ---
 title: Vytvoření funkce pomocí Azure for Students Starter
-description: Přečtěte si, jak vytvořit funkci Azure z předplatného Azure for Student Starter
+description: Naučte se vytvořit funkci Azure pomocí předplatného Azure for student Starter.
 Customer intent: As a student, I want to be able to create an HTTP triggered Function App within the Student Starter plan so that I can easily add APIs to any project.
 author: alexkarcher-msft
 ms.topic: how-to
 ms.date: 02/22/2019
 ms.author: alkarche
 ms.openlocfilehash: c7dd88bf0ead558a0c4951baf38543566d805caa
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80756471"
 ---
 # <a name="create-a-function-using-azure-for-students-starter"></a>Vytvoření funkce pomocí Azure for Students Starter
 
-V tomto kurzu vytvoříme funkci HTTP "hello world" v předplatném Azure for Students Starter. V tomto typu předplatného také probereme, co je dostupné v Azure Functions.
+V tomto kurzu vytvoříme funkci "Hello World" HTTP v předplatném Azure for Students Starter. Také vás probereme, co je k dispozici v Azure Functions v tomto typu předplatného.
 
-Microsoft *Azure for Students Starter* vám zachce začít s produkty Azure, které potřebujete vyvíjet v cloudu, a to bez nákladů. [Další informace o této nabídce naleznete zde.](https://azure.microsoft.com/offers/ms-azr-0144p/)
+Microsoft *Azure for Students Starter* vám pomůže začít s produkty Azure, které potřebujete pro vývoj v cloudu, a to bez nákladů. [Další informace o této nabídce najdete tady.](https://azure.microsoft.com/offers/ms-azr-0144p/)
 
-Služba Azure Functions umožňuje spuštění kódu v prostředí [bez serveru](https://azure.microsoft.com/solutions/serverless/), aniž byste nejdřív museli vytvořit virtuální počítač nebo publikovat webovou aplikaci. [Další informace o funkcích naleznete zde.](./functions-overview.md)
+Služba Azure Functions umožňuje spuštění kódu v prostředí [bez serveru](https://azure.microsoft.com/solutions/serverless/), aniž byste nejdřív museli vytvořit virtuální počítač nebo publikovat webovou aplikaci. [Další informace o funkcích najdete tady.](./functions-overview.md)
 
 ## <a name="create-a-function"></a>Vytvoření funkce
 
- V tomto tématu se dozvíte, jak pomocí funkce funkce vytvořit funkci HTTP aktivovanou "hello world" na webu Azure Portal.
+ V tomto tématu se dozvíte, jak pomocí Functions vytvořit funkci "Hello World", která se aktivuje protokolem HTTP v Azure Portal.
 
 ![Vytvoření aplikace Function App na webu Azure Portal](./media/functions-create-student-starter/function-app-in-portal-editor.png)
 
@@ -33,9 +33,9 @@ Přihlaste se k webu Azure Portal na adrese <https://portal.azure.com> pomocí s
 
 ## <a name="create-a-function-app"></a>Vytvoření Function App
 
-K hostování provádění funkcí musíte mít aplikaci Function App. Aplikace funkce umožňuje seskupit funkce jako logická jednotka pro snadnější správu, nasazení, škálování a sdílení prostředků.
+K hostování provádění funkcí musíte mít aplikaci Function App. Aplikace Function App umožňuje seskupit funkce jako logickou jednotku pro snadnější správu, nasazování, škálování a sdílení prostředků.
 
-1. Vyberte tlačítko **Vytvořit prostředek,** které se nachází v levém horním rohu portálu Azure. Pak vyberte **aplikaci výpočetní** > **funkce**.
+1. Vyberte tlačítko **vytvořit prostředek** v levém horním rohu Azure Portal. Pak vyberte **COMPUTE** > **Function App**.
 
     ![Vytvoření aplikace Function App na portálu Azure Portal](./media/functions-create-student-starter/function-app-create-flow.png)
 
@@ -48,15 +48,15 @@ K hostování provádění funkcí musíte mít aplikaci Function App. Aplikace 
     | **Název aplikace** | Globálně jedinečný název | Název identifikující novou aplikaci Function App. Platné znaky jsou `a-z`, `0-9` a `-`.  | 
     | **Předplatné** | Vaše předplatné | Předplatné, pod kterým je tato nová aplikace Function App vytvořena. | 
     | **[Skupina prostředků](../azure-resource-manager/management/overview.md)** |  myResourceGroup | Název nové skupiny prostředků, ve které chcete vytvořit aplikaci Function App. |
-   | **[Plán/umístění služby App Service](./functions-scale.md)** | Nová | Plán hostování, který určuje, do jaké oblasti se aplikace funkce nasadí a hustota vašich prostředků. Více aplikací funkcí nasazených do stejného plánu bude všechny sdílet stejnou jednu bezplatnou instanci. Jedná se o omezení plánu Student Starter. Plné možnosti hostingu jsou [vysvětleny zde.](./functions-scale.md)|
+   | **[App Service plán/umístění](./functions-scale.md)** | Nová | Plán hostování, který určuje, do jaké oblasti je aplikace Function App nasazená, a hustota prostředků. Všechny aplikace Function App nasazené do stejného plánu budou sdílet stejnou jedinou volnou instanci. Toto je omezení plánu počátečního startu studenta. Možnosti úplného hostování jsou [vysvětleny zde.](./functions-scale.md)|
     | **Zásobník modulu runtime** | Upřednostňovaný jazyk | Vyberte modul runtime, který podporuje váš oblíbený programovací jazyk funkcí. Zvolte **.NET** pro funkce C# a F#. |
-    |**[Application Insights](./functions-monitoring.md)**| Povoleno | Application Insights se používá k ukládání a analýze protokolů aplikace funkce. Je ve výchozím nastavení povolena, pokud zvolíte umístění, které podporuje Application Insights. Application Insights lze povolit pro libovolnou funkci ručním výběrem blízké oblasti pro nasazení Application Insights. Bez Application Insights, budete moci zobrazit pouze živé streamování protokoly.
+    |**[Application Insights](./functions-monitoring.md)**| Povoleno | Application Insights se používá k ukládání a analýze protokolů aplikace Function App. Pokud zvolíte umístění, které podporuje Application Insights, je povolené ve výchozím nastavení. Application Insights můžete pro libovolnou funkci povolit ručním výběrem okolní oblasti pro nasazení Application Insights. Bez Application Insights budete moct zobrazit jenom protokoly živého streamování.
 
-3. Chcete-li zvolit jiné umístění, vyberte výše uvedený **plán služby App Service/umístění.**
+3. Vyberte **App Service plán/umístění** výše a zvolte jiné umístění.
 
-4. Vyberte **Vytvořit nový** a pak dát svému plánu jedinečný název.
+4. Vyberte **vytvořit nové** a zadejte jedinečný název pro svůj plán.
 
-5. Vyberte umístění, které je vám nejblíže. [Tady najdete celou mapu oblastí Azure.](https://azure.microsoft.com/global-infrastructure/regions/) 
+5. Vyberte umístění, které je pro vás nejblíže. [Tady najdete úplnou mapu oblastí Azure.](https://azure.microsoft.com/global-infrastructure/regions/) 
 
     <img src="./media/functions-create-student-starter/Create-ASP.png" width="800">
 
@@ -74,7 +74,7 @@ Dál vytvoříte v nové aplikaci Function App funkci.
 
 ## <a name="create-an-http-triggered-function"></a><a name="create-function"></a>Vytvoření funkce aktivované protokolem HTTP
 
-1. Rozbalte novou aplikaci funkcí, pak **+** vyberte tlačítko vedle **položky Funkce**, zvolte **In-portal**a vyberte **Pokračovat**.
+1. Rozbalte novou **+** aplikaci Function App, klikněte na tlačítko vedle možnosti **funkce**, zvolte možnost **v portálu**a vyberte možnost **pokračovat**.
 
     ![Rychlý start služby Functions – výběr platformy](./media/functions-create-student-starter/function-app-quickstart-choose-portal.png)
 
@@ -110,27 +110,27 @@ Novou funkci můžete spustit odesláním požadavku HTTP.
 
 ## <a name="supported-features-in-azure-for-students-starter"></a>Podporované funkce v Azure for Students Starter
 
-V Azure for Students Starter máte přístup k většině funkcí runtime Funkce Azure, s několika klíčovými omezeními uvedenými níže:
+V Azure for Students Starter máte přístup k většině funkcí prostředí Azure Functions runtime s několika omezeními, která jsou uvedená níže:
 
-* Aktivační událost PROTOKOLU HTTP je jediným podporovaným typem aktivační události.
-    * Všechny vstupy a všechny výstupní vazby jsou podporovány! [Celý seznam naleznete zde.](functions-triggers-bindings.md)
+* Trigger HTTP je jediným podporovaným typem triggeru.
+    * Podporují se všechny vstupní a výstupní vazby. [Úplný seznam najdete tady.](functions-triggers-bindings.md)
 * Podporované jazyky: 
     * C# (.NET Core 2)
-    * JavaScript (Node.js 8 & 10)
-    * F# (.NET Core 2)
-    * [Viz jazyky podporované ve vyšších plánech zde](supported-languages.md)
-* Systém Windows je jediným podporovaným operačním systémem.
-* Škálování je omezeno na [jednu bezplatnou instanci úrovně,](https://azure.microsoft.com/pricing/details/app-service/windows/) která běží až 60 minut každý den. Budete serverlessly škálovat od 0 do 1 instance automaticky jako přenos HTTP je přijata, ale žádné další.
-* Je podporována pouze [verze 2.x a novější](functions-versions.md) modul runtime Funkce.
-* Všechny vývojářské nástroje jsou podporovány pro úpravy a publikování funkcí. To zahrnuje VS Code, Visual Studio, Azure CLI a portál Azure. Pokud chcete použít něco jiného než portál, budete muset nejprve vytvořit aplikaci na portálu a pak ji v preferovaném nástroji vybrat jako cíl nasazení.
+    * JavaScript (Node. js 8 & 10)
+    * F # (.NET Core 2)
+    * [Tady najdete jazyky podporované v vyšších plánech.](supported-languages.md)
+* Jediným podporovaným operačním systémem je Windows.
+* Rozsah je omezen na [jednu instanci bezplatné úrovně](https://azure.microsoft.com/pricing/details/app-service/windows/) , která je spuštěna po dobu až 60 minut každého dne. Serverlessly se bude automaticky škálovat z 0 na 1 instanci, protože se obdrží přenos HTTP, ale ještě ne.
+* Podporují se jenom [verze 2. x a novější](functions-versions.md) z modulu runtime Functions.
+* Pro funkce úprav a publikování se podporují všechny vývojářské nástroje. To zahrnuje VS Code, Visual Studio, Azure CLI a Azure Portal. Pokud byste chtěli použít jinou možnost než portál, budete muset nejdřív vytvořit aplikaci na portálu a pak tuto aplikaci zvolit jako cíl nasazení v preferovaném nástroji.
 
 ## <a name="next-steps"></a>Další kroky
 
-Vytvořili jste aplikaci funkcí s jednoduchou funkcí spouštěnou http! Nyní můžete prozkoumat místní nástroje, více jazyků, monitorování a integrace.
+Vytvořili jste aplikaci funkcí s jednoduchou funkcí aktivovanou protokolem HTTP! Nyní můžete prozkoumat místní nástroje, další jazyky, monitorování a integrace.
 
  * [Vytvoření první funkce pomocí sady Visual Studio](./functions-create-your-first-function-visual-studio.md)
  * [Vytvoření první funkce pomocí Visual Studio Code](./functions-create-first-function-vs-code.md)
- * [Průvodce vývojářem JavaScriptu azure funkce](./functions-reference-node.md)
- * [Připojení k databázi Azure SQL pomocí funkcí Azure](./functions-scenario-database-table-cleanup.md)
- * [Další informace o vazbách HTTP Azure Functions](./functions-bindings-http-webhook.md).
- * [Sledování funkcí Azure](./functions-monitoring.md)
+ * [Azure Functions příručka pro vývojáře JavaScriptu](./functions-reference-node.md)
+ * [Připojení k Azure SQL Database pomocí Azure Functions](./functions-scenario-database-table-cleanup.md)
+ * [Přečtěte si další informace o Azure Functions vazeb HTTP](./functions-bindings-http-webhook.md).
+ * [Monitorování Azure Functions](./functions-monitoring.md)

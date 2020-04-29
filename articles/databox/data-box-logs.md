@@ -1,6 +1,6 @@
 ---
-title: Sledování a protokolování Azure Data Box, události Azure Data Box Heavy| Dokumenty společnosti Microsoft
-description: Popisuje, jak sledovat a protokolovat události v různých fázích vaší Azure Data Box a Azure Data Box těžké pořadí.
+title: Sledování a Azure Data Box protokolu Azure Data Box Heavy události | Microsoft Docs
+description: Popisuje, jak sledovat a protokolovat události v různých fázích Azure Data Box a Azure Data Box Heavy pořadí.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,79 +9,79 @@ ms.topic: article
 ms.date: 08/08/2019
 ms.author: alkohli
 ms.openlocfilehash: 74d38af4a64a184b26bd6ba1105db0d2530d8ba6
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81676412"
 ---
-# <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy"></a>Sledování a protokolování událostí pro azure datovou schránku a Azure Data Box Heavy
+# <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy"></a>Sledování a protokolování událostí pro Azure Data Box a Azure Data Box Heavy
 
-Objednávka Data Box nebo Data Box Heavy prochází následujícími kroky: pořadí, nastavení, kopírování dat, vrácení, nahrávání do Azure a ověření a vymazání dat. Odpovídající každému kroku v pořadí, můžete provést více akcí k řízení přístupu k objednávce, audit událostí, sledovat pořadí a interpretovat různé protokoly, které jsou generovány.
+Data Box nebo Data Box Heavy objednávka prochází následujícími kroky: pořadí, nastavení, kopírování dat, vrácení, nahrání do Azure a ověření a mazání dat. V souladu s každým krokem v pořadí můžete provést několik akcí pro řízení přístupu k objednávce, Auditovat události, sledovat pořadí a interpretovat různé protokoly, které jsou vygenerovány.
 
-V následující tabulce je uveden souhrn kroků objednávky Datové schránky nebo Datové schránky A nástrojů, které jsou k dispozici pro sledování a auditování objednávky během každého kroku.
+Následující tabulka obsahuje souhrn kroků Data Box nebo Data Box Heavy objednávek a nástroje, které jsou k dispozici pro sledování a auditování pořadí v průběhu každého kroku.
 
-| Fáze objednávky datové schránky       | Nástroj pro sledování a audit                                                                        |
+| Fáze pořadí Data Box       | Nástroj pro sledování a audit                                                                        |
 |----------------------------|------------------------------------------------------------------------------------------------|
-| Vytvoření objednávky               | [Nastavit řízení přístupu na objednávku přes RBAC](#set-up-access-control-on-the-order)                                                    |
-| Objednávka zpracována            | [Sledování objednávky](#track-the-order) prostřednictvím <ul><li> portál Azure </li><li> Webové stránky dopravce </li><li>E-mailová oznámení</ul> |
-| Nastavení zařízení              | Přístup k pověřením zařízení [přihlášených v protokolech aktivit](#query-activity-logs-during-setup)                                              |
-| Kopírování dat do zařízení        | [Zobrazení souborů *error.xml* ](#view-error-log-during-data-copy) pro kopírování dat                                                             |
-| Příprava k odeslání            | [Kontrola souborů kusovníků](#inspect-bom-during-prepare-to-ship) nebo souborů manifestu v zařízení                                      |
-| Nahrávání dat do Azure       | [Kontrola protokolů kopírování](#review-copy-log-during-upload-to-azure) na chyby během nahrávání dat v datovém centru Azure                         |
-| Vymazání dat ze zařízení   | [Zobrazit řetěz protokolů úschovy](#get-chain-of-custody-logs-after-data-erasure) včetně protokolů auditu a historie objednávek                |
+| Vytvoření objednávky               | [Nastavení řízení přístupu v pořadí přes RBAC](#set-up-access-control-on-the-order)                                                    |
+| Zpracování objednávky            | [Sledovat pořadí](#track-the-order) přes <ul><li> portál Azure </li><li> Web lodního dopravce </li><li>E-mailová oznámení</ul> |
+| Nastavení zařízení              | Přístup k přihlašovacím údajům zařízení přihlášení k [protokolům aktivit](#query-activity-logs-during-setup)                                              |
+| Kopírování dat do zařízení        | [Zobrazení souboru *Error. XML* ](#view-error-log-during-data-copy) pro kopírování dat                                                             |
+| Příprava k odeslání            | [Zkontrolujte soubory kusovníku](#inspect-bom-during-prepare-to-ship) nebo soubory manifestu na zařízení.                                      |
+| Nahrávání dat do Azure       | [Kontrola chyb v protokolech kopírování](#review-copy-log-during-upload-to-azure) při nahrávání dat v datovém centru Azure                         |
+| Data mazání ze zařízení   | [Zobrazit řetěz protokolů o úschově](#get-chain-of-custody-logs-after-data-erasure) včetně protokolů auditu a historie objednávek                |
 
-Tento článek podrobně popisuje různé mechanismy nebo nástroje, které jsou k dispozici pro sledování a auditování data boxu nebo objednávky Data Box Heavy. Informace v tomto článku platí jak pro Datovou schránku, tak pro Datovou schránku Heavy. V následujících částech se odkazy na Datovou schránku vztahují i na Data Box Heavy.
+Tento článek podrobně popisuje různé mechanismy a nástroje, které jsou k dispozici pro sledování a audit Data Box nebo Data Box Heavy objednávky. Informace v tomto článku se vztahují na Data Box i Data Box Heavy. V následujících částech se všechny odkazy na Data Box vztahují také na Data Box Heavy.
 
 ## <a name="set-up-access-control-on-the-order"></a>Nastavení řízení přístupu na objednávce
 
-Můžete určit, kdo má přístup k vaší objednávce při prvním vytvoření objednávky. Nastavte role řízení přístupu na základě rolí (RBAC) v různých oborech pro řízení přístupu k pořadí datových schrápte. Role RBAC určuje typ přístupu – jen pro čtení, jen pro čtení, pro čtení a zápis do podmnožiny operací.
+Můžete určit, kdo má mít přístup k vaší objednávce při prvním vytvoření objednávky. Nastavte role Access Control na základě rolí (RBAC) v různých oborech, abyste mohli řídit přístup k objednávce Data Box. Role RBAC určuje typ přístupu – čtení i zápis, čtení i zápis v podmnožině operací.
 
-Dvě role, které lze definovat pro službu Azure Data Box jsou:
+Pro službu Azure Data Box lze definovat dvě role:
 
-- **Čtečka datových schronů** - mají přístup jen pro čtení k objednávkám, jak je definováno oborem. Mohou zobrazit pouze podrobnosti objednávky. Nemají přístup k žádným dalším podrobnostem týkajícím se účtů úložiště ani nemají upravovat podrobnosti objednávky, jako je adresa a tak dále.
-- **Přispěvatel datové schránky** – můžete vytvořit objednávku pro přenos dat do daného účtu úložiště pouze *v případě, že již mají přístup pro zápis k účtu úložiště*. Pokud nemají přístup k účtu úložiště, nemohou ani vytvořit příkaz data boxu ke kopírování dat do účtu. Tato role nedefinuje žádná oprávnění související s účtem úložiště ani neuděluje přístup k účtům úložiště.  
+- **Data box Reader** – mají přístup jen pro čtení k objednávkám definovaným oborem. Mohou pouze zobrazit podrobnosti o objednávce. Nemůžou přistupovat k žádným jiným podrobnostem souvisejícím s účty úložiště ani upravovat podrobnosti objednávky, jako je například adresa a tak dále.
+- **Přispěvatel data box** – může vytvořit objednávku pro přenos dat do daného účtu úložiště jenom v *případě, že už mají oprávnění k zápisu do účtu úložiště*. Pokud nemají přístup k účtu úložiště, nemůžou ani vytvořit Data Box objednávku ke zkopírování dat do účtu. Tato role nedefinuje žádné související oprávnění účtu úložiště ani neuděluje přístup k účtům úložiště.  
 
 Chcete-li omezit přístup k objednávce, můžete:
 
-- Přiřazení role na úrovni objednávky Uživatel má pouze tato oprávnění definovaná rolemi pro interakci s tímto konkrétním pořadím datové schránky a nic jiného.
-- Přiřaďte roli na úrovni skupiny prostředků, uživatel má přístup ke všem objednávkám datové schránky v rámci skupiny prostředků.
+- Přiřaďte roli na úrovni objednávky. Uživatel má pouze ta oprávnění definovaná rolemi k interakci s tímto konkrétním Data Box objednávka a nic jiného.
+- Přiřaďte roli na úrovni skupiny prostředků, uživatel má přístup ke všem Data Box objednávkám v rámci skupiny prostředků.
 
-Další informace o navrhované matné službě RBAC najdete v [tématu Doporučené postupy pro Azure RBAC](../role-based-access-control/best-practices.md).
+Další informace o navrhovaném použití RBAC najdete v tématu [osvědčené postupy pro službu Azure RBAC](../role-based-access-control/best-practices.md).
 
 ## <a name="track-the-order"></a>Sledování objednávky
 
-Svou objednávku můžete sledovat prostřednictvím portálu Azure a na webu dopravce. Pro sledování objednávky datové schránky jsou kdykoli zavedeny následující mechanismy:
+Můžete sledovat svou objednávku prostřednictvím Azure Portal a prostřednictvím webu přepravce. K dispozici jsou následující mechanismy pro sledování pořadí Data Box.
 
-- Pokud chcete sledovat pořadí, když je zařízení v datovém centru Azure nebo ve vašem areálu, přejděte na **> přehled o objednávce datové schránky** na webu Azure Portal.
+- Pokud chcete sledovat pořadí, v jakém je zařízení v datovém centru Azure nebo v místním prostředí, v Azure Portal můžete **> přehled na objednávku data box** .
 
-    ![Zobrazit stav objednávky a sledování ne](media/data-box-logs/overview-view-status-1.png)
+    ![Zobrazit stav objednávky a sledovat ne](media/data-box-logs/overview-view-status-1.png)
 
-- Chcete-li sledovat objednávku během přenosu zařízení, přejděte na web regionálního operátora, například na web SPOLEČNOSTI UPS v USA. Zadejte sledovací číslo přidružené k objednávce.
-- Data Box také odesílá e-mailová oznámení kdykoli v závislosti na změně stavu objednávky na základě e-mailů poskytnutých při vytvoření objednávky. Seznam všech stavů objednávek datových schrátek naleznete v tématu [Zobrazení stavu objednávky](data-box-portal-admin.md#view-order-status). Pokud chcete změnit nastavení oznámení přidružené k objednávce, přečtěte si informace [o úpravách podrobností o oznámení](data-box-portal-admin.md#edit-notification-details).
+- Pokud chcete sledovat pořadí, v jakém je zařízení v provozu, přečtěte si web pro místní dopravce, například web UPS v USA. Zadejte sledovací číslo přidružené k vaší objednávce.
+- Data Box taky pošle e-mailová oznámení, kdykoli se změní stav objednávky na základě e-mailů, které jste zadali při vytvoření objednávky. Seznam všech stavů Data Box objednávek najdete v tématu [zobrazení stavu objednávky](data-box-portal-admin.md#view-order-status). Postup změny nastavení oznámení přidružených k objednávce najdete v tématu [úprava podrobností oznámení](data-box-portal-admin.md#edit-notification-details).
 
-## <a name="query-activity-logs-during-setup"></a>Protokoly aktivit dotazu během instalace
+## <a name="query-activity-logs-during-setup"></a>Dotazování protokolů aktivit během instalace
 
-- Vaše datová schránka dorazí do vašich prostor v uzamčeném stavu. Pro vaši objednávku můžete použít přihlašovací údaje zařízení, které jsou dostupné na webu Azure Portal.  
+- Vaše Data Box dorazí na vaše místní prostředí v uzamčeném stavu. K dispozici jsou přihlašovací údaje pro zařízení, které jsou k dispozici v Azure Portal pro vaši objednávku.  
 
-    Když je datová schránka nastavena, možná budete potřebovat vědět, kdo všichni přistupovali k přihlašovacím údajům zařízení. Chcete-li zjistit, kdo přistupoval k rozhraní **pověření zařízení,** můžete dotaz protokoly aktivit.  Každá akce, která zahrnuje přístup **k podrobnostem zařízení > okno Pověření** je přihlášen do protokolů aktivit jako `ListCredentials` akce.
+    Když se nastaví Data Box, možná budete muset zjistit, kdo získal všechna oprávnění k těmto přihlašovacím údajům pro zařízení. Chcete-li zjistit, kdo získal do okna **pověření zařízení** , můžete zadat dotaz na protokoly aktivit.  Všechny akce, které zahrnují přístup k **podrobnostem o zařízení > přihlašovací údaje** , se zaprotokolují do protokolů aktivit jako `ListCredentials` akce.
 
     ![Dotazy na protokoly aktivit](media/data-box-logs/query-activity-log-1.png)
 
-- Každé přihlášení do datové schránky je zaznamenáno v reálném čase. Tyto informace jsou však k dispozici pouze v [protokolech auditu](#audit-logs) po úspěšném dokončení objednávky.
+- Každé přihlášení k Data Box je zaznamenáno v reálném čase. Tyto informace jsou však k dispozici pouze v [protokolech auditu](#audit-logs) po úspěšném dokončení objednávky.
 
 ## <a name="view-error-log-during-data-copy"></a>Zobrazit protokol chyb během kopírování dat
 
-Během kopírování dat do datové schránky nebo datové schránky Heavy je generován soubor chyb, pokud se jedná o problémy s kopírovanými daty.
+Při kopírování dat do Data Box nebo Data Box Heavy se vygeneruje chybový soubor, pokud dojde k problémům s kopírovanými daty.
 
-### <a name="errorxml-file"></a>Soubor Error.xml
+### <a name="errorxml-file"></a>Error. XML – soubor
 
-Ujistěte se, že úlohy kopírování byly dokončeny bez chyb. Pokud během kopírování dojde k chybám, stáhněte protokoly ze stránky **Připojit a zkopírovat.**
+Ujistěte se, že úlohy kopírování byly dokončeny bez chyb. Pokud během kopírování dojde k chybám, Stáhněte si protokoly ze stránky **připojit a kopírovat** .
 
-- Pokud jste zkopírovali soubor, který není 512 bajtů zarovnaný do složky spravovaného disku v datové schránce, soubor se nenahraje jako objekt blob stránky do vašeho účtu pracovního úložiště. Zobrazí se chyba v protokolech. Odeberte soubor a zkopírujte soubor, který je zarovnaný o velikosti 512 bajtů.
-- Pokud jste zkopírovali VHDX nebo dynamický virtuální pevný disk nebo differencing VHD (tyto soubory nejsou podporovány), zobrazí se chyba v protokolech.
+- Pokud jste zkopírovali soubor, který není 512 bajtů zarovnaný do složky spravovaného disku na vašem Data Box, soubor se do pracovního účtu úložiště nenahrál jako objekt blob stránky. V protokolech se zobrazí chyba. Odeberte soubor a zkopírujte soubor, který je 512 bajtů zarovnaných.
+- Pokud jste zkopírovali VHDX nebo dynamický virtuální pevný disk nebo Rozdílový virtuální pevný disk (tyto soubory nejsou podporované), zobrazí se v protokolech chyba.
 
-Zde je ukázka *error.xml* pro různé chyby při kopírování na spravované disky.
+Tady je ukázka souboru *Error. XML* pro různé chyby při kopírování na spravované disky.
 
 ```xml
 <file error="ERROR_BLOB_OR_FILE_TYPE_UNSUPPORTED">\StandardHDD\testvhds\differencing-vhd-022019.vhd</file>
@@ -90,7 +90,7 @@ Zde je ukázka *error.xml* pro různé chyby při kopírování na spravované d
 <file error="ERROR_BLOB_OR_FILE_TYPE_UNSUPPORTED">\StandardHDD\testvhds\insidediffvhd-022019.vhd</file>
 ```
 
-Zde je ukázka *error.xml* pro různé chyby při kopírování na objekty BLOB stránky.
+Tady je ukázka *Error. XML* pro různé chyby při kopírování do objektů blob stránky.
 
 ```xml
 <file error="ERROR_BLOB_OR_FILE_SIZE_ALIGNMENT">\PageBlob512NotAligned\File100Bytes</file>
@@ -101,7 +101,7 @@ Zde je ukázka *error.xml* pro různé chyby při kopírování na objekty BLOB 
 ```
 
 
-Zde je ukázka *error.xml* pro různé chyby při kopírování do bloku objektů BLOB.
+Tady je ukázka *Error. XML* pro různé chyby při kopírování do objektů blob bloku.
 
 ```xml
 <file error="ERROR_CONTAINER_OR_SHARE_NAME_LENGTH">\ab</file>
@@ -129,7 +129,7 @@ Zde je ukázka *error.xml* pro různé chyby při kopírování do bloku objekt�
 <file error="ERROR_BLOB_OR_FILE_NAME_CHARACTER_ILLEGAL" name_encoding="Base64">XEludmFsaWRVbmljb2RlRmlsZXNcU3BjQ2hhci01NTI5Ny3vv70=</file>
 ```
 
-Tady je ukázka *chyby.xml* pro různé chyby při kopírování do souborů Azure.
+Tady je ukázka *Error. XML* pro různé chyby při kopírování do souborů Azure.
 
 ```xml
 <file error="ERROR_BLOB_OR_FILE_SIZE_LIMIT">\AzFileMorethan1TB\AzFile1.2TB</file>
@@ -147,31 +147,31 @@ Tady je ukázka *chyby.xml* pro různé chyby při kopírování do souborů Azu
 <file error="ERROR_CONTAINER_OR_SHARE_NAME_ALPHA_NUMERIC_DASH">\Starting with Capital</file>
 ```
 
-V každém z výše uvedených případů vyřešte chyby dříve, než přejdete k dalšímu kroku. Další informace o chybách přijatých při kopírování dat do datové schránky prostřednictvím protokolů SMB nebo NFS naleznete [v tématu Poradce při potížích s datovou schránkou a problémy s datovou schránkou .](data-box-troubleshoot.md) Informace o chybách přijatých během kopírování dat do datové schránky přes REST najdete [v tématu Poradce při potížích s úložištěm objektů blob datové schránky](data-box-troubleshoot-rest.md).
+V každém z výše uvedených případů vyřešte chyby a potom přejděte k dalšímu kroku. Další informace o chybách přijatých během kopírování dat do Data Box přes protokoly SMB nebo NFS najdete v tématu [řešení potíží s data box a data box Heavy problémy](data-box-troubleshoot.md). Informace o chybách přijatých během kopírování dat do Data Box prostřednictvím REST najdete v tématu [řešení potíží s data Boxm úložištěm objektů BLOB](data-box-troubleshoot-rest.md).
 
-## <a name="inspect-bom-during-prepare-to-ship"></a>Zkontrolujte kusovník během přípravy na odeslání
+## <a name="inspect-bom-during-prepare-to-ship"></a>Kontrola kusovníku během přípravy na dodání
 
-Během přípravy na odeslání je vytvořen seznam souborů označovaných jako kusovník nebo soubor manifestu.
+Během přípravy na odeslání se vytvoří seznam souborů, které jsou známé jako kusovník (BOM) nebo soubor manifestu.
 
-- Tento soubor slouží k ověření skutečných názvů a počtu souborů, které byly zkopírovány do datové schránky.
-- Tento soubor slouží k ověření skutečné velikosti souborů.
-- Ověřte, zda *crc64* odpovídá nenulovému řetězci. <!--A null value for crc64 indicates that there was a reparse point error)-->
+- Tento soubor použijte k ověření proti skutečným názvům a počtu souborů, které byly zkopírovány do Data Box.
+- Pomocí tohoto souboru můžete ověřit skutečné velikosti souborů.
+- Ověřte, že *crc64* odpovídá nenulovému typu řetězce. <!--A null value for crc64 indicates that there was a reparse point error)-->
 
-Další informace o chybách, které se zobrazily během přípravy na odeslání, najdete [v tématu Poradce při potížích s datovou schránkou a problémy s datovou schránkou .](data-box-troubleshoot.md)
+Další informace o chybách přijatých během přípravy na odeslání najdete v tématu [řešení potíží s data box a data box Heavy problémů](data-box-troubleshoot.md).
 
-### <a name="bom-or-manifest-file"></a>Kusovník nebo soubor manifestu
+### <a name="bom-or-manifest-file"></a>Soubor kusovníku nebo manifestu
 
-Kusovník nebo soubor manifestu obsahuje seznam všech souborů, které jsou zkopírovány do zařízení Data Box. Soubor kusovníku má názvy souborů a odpovídající velikosti, stejně jako kontrolní součet. Samostatný soubor kusovníku se vytvoří pro objekty BLOB bloku, objekty BLOB stránky, soubory Azure, pro kopírování prostřednictvím souborů REST API a pro kopii na spravované disky v datovéschránce. Soubory kusovníku si můžete stáhnout z místního webového uživatelského rozhraní zařízení během přípravy na odeslání.
+Soubor BOM nebo manifest obsahuje seznam všech souborů, které jsou zkopírovány do Data Boxho zařízení. Soubor BOM má názvy souborů a odpovídající velikosti a také kontrolní součet. Vytvoří se samostatný soubor kusovníku pro objekty blob bloku, objekty blob stránky, soubory Azure, pro kopírování přes rozhraní REST API a pro kopírování na spravované disky na Data Box. Soubory kusovníku si můžete stáhnout z místního webového uživatelského rozhraní zařízení během Příprava na odeslání.
 
-Tyto soubory jsou také umístěny na zařízení Data Box a jsou odeslány do přidruženého účtu úložiště v datovém centru Azure.
+Tyto soubory se také nacházejí v zařízení Data Box a odesílají se do přidruženého účtu úložiště v datacentru Azure.
 
-### <a name="bom-file-format"></a>Formát souboru kusovníku
+### <a name="bom-file-format"></a>Formát souboru BOM
 
-Kusovník nebo soubor manifestu má následující obecný formát:
+Soubor BOM nebo manifest má následující obecný formát:
 
 `<file size = "file-size-in-bytes" crc64="cyclic-redundancy-check-string">\folder-path-on-data-box\name-of-file-copied.md</file>`
 
-Tady je ukázka manifestu generovaného při kopírování dat do sdílené položky blob bloku v datové schránce.
+Tady je ukázka manifestu vygenerovaného při zkopírování dat do sdílené složky objektů blob bloku v Data Box.
 
 ```
 <file size="10923" crc64="0x51c78833c90e4e3f">\databox\media\data-box-deploy-copy-data\connect-shares-file-explorer1.png</file>
@@ -191,29 +191,29 @@ Tady je ukázka manifestu generovaného při kopírování dat do sdílené polo
 <file size="3220" crc64="0x7257a263c434839a">\databox\data-box-system-requirements.md</file>
 ```
 
-Soubory kusovníku nebo manifestu se také zkopírují do účtu úložiště Azure. Pomocí kusovníku nebo souborů manifestu můžete ověřit, že soubory nahrané do Azure odpovídají datům, která byla zkopírována do datové schránky.
+Soubory kusovníku nebo manifestu se také zkopírují do účtu služby Azure Storage. Soubory BOM nebo manifest můžete použít k ověření, že se soubory odeslané do Azure shodují s daty, která byla zkopírována do Data Box.
 
-## <a name="review-copy-log-during-upload-to-azure"></a>Kontrola protokolu kopírování během nahrávání do Azure
+## <a name="review-copy-log-during-upload-to-azure"></a>Přečtěte si protokol kopírování během nahrávání do Azure.
 
-Během odesílání dat do Azure se vytvoří protokol kopírování.
+Během nahrávání dat do Azure se vytvoří protokol kopírování.
 
 ### <a name="copy-log"></a>Kopírovat protokol
 
-Pro každou objednávku, která je zpracována, služba Data Box vytvoří protokol kopírování v přidruženém účtu úložiště. Protokol kopírování má celkový počet souborů, které byly odeslány a počet souborů, které došlo k chybě během kopírování dat z datové schránky do účtu úložiště Azure.
+Pro každé zpracovávané pořadí vytvoří služba Data Box v přidruženém účtu úložiště protokol kopírování. Protokol kopírování má celkový počet souborů, které byly odeslány, a počet souborů, které byly při kopírování dat z Data Box do vašeho účtu úložiště Azure vydány chybou.
 
-Cyklický redundantní kontrola (CRC) výpočtu se provádí během nahrávání do Azure. CrC z kopírování dat a po nahrání dat jsou porovnány. Neshoda CRC označuje, že odpovídající soubory se nepodařilo odeslat.
+Při nahrávání do Azure se provádí výpočet s cyklicky redundantní kontrola (CRC). CRCs z kopie dat a po nahrání dat se porovnávají. Neshoda CRC znamená, že se nepovedlo nahrát odpovídající soubory.
 
-Ve výchozím nastavení jsou protokoly `copylog`zapsány do kontejneru s názvem . Protokoly jsou uloženy s následující zásadou pojmenování:
+Ve výchozím nastavení se protokoly zapisují do kontejneru s `copylog`názvem. Protokoly se ukládají s následujícími zásadami vytváření názvů:
 
 `storage-account-name/databoxcopylog/ordername_device-serial-number_CopyLog_guid.xml`.
 
-Cesta protokolu kopírování se také zobrazí v okně **Přehled** pro portál.
+Cesta k protokolu kopírování se taky zobrazuje v okně **Přehled** pro portál.
 
 ![Cesta ke kopírování protokolu v okně Přehled po dokončení](media/data-box-logs/copy-log-path-1.png)
 
-### <a name="upload-completed-successfully"></a>Nahrávání bylo úspěšně dokončeno. 
+### <a name="upload-completed-successfully"></a>Nahrávání se úspěšně dokončilo. 
 
-Následující ukázka popisuje obecný formát protokolu kopírování pro nahrání datové schránky, který byl úspěšně dokončen:
+Následující příklad popisuje obecný formát protokolu kopírování pro Data Box nahrání, které se úspěšně dokončilo:
 
 ```
 <?xml version="1.0"?>
@@ -224,13 +224,13 @@ Následující ukázka popisuje obecný formát protokolu kopírování pro nahr
 </CopyLog>
 ```
 
-### <a name="upload-completed-with-errors"></a>Nahrávání dokončeno s chybami 
+### <a name="upload-completed-with-errors"></a>Nahrávání se dokončilo s chybami. 
 
-Nahrávání do Azure může také kompletní s chybami.
+Nahrávání do Azure se může také dokončit s chybami.
 
 ![Cesta ke kopírování protokolu v okně Přehled po dokončení s chybami](media/data-box-logs/copy-log-path-2.png)
 
-Zde je příklad protokolu kopírování, kde nahrávání dokončeno s chybami:
+Tady je příklad protokolu kopírování, ve kterém se nahrávání dokončilo s chybami:
 
 ```xml
 <ErroredEntity Path="iso\samsungssd.iso">
@@ -249,15 +249,15 @@ Zde je příklad protokolu kopírování, kde nahrávání dokončeno s chybami:
   <FilesErrored>2</FilesErrored>
 </CopyLog>
 ```
-### <a name="upload-completed-with-warnings"></a>Nahrání doplněno upozorněními
+### <a name="upload-completed-with-warnings"></a>Nahrávání se dokončilo s upozorněními.
 
-Nahrajte do Azure s upozorněními, pokud vaše data měla názvy kontejnerů/objektů blob/souborů, které neodpovídaly konvencím pojmenování Azure, a názvy byly upraveny tak, aby data nahrály do Azure.
+Nahrávání do Azure se dokončí s upozorněními, pokud data obsahovala názvy kontejnerů, objektů BLOB nebo souborů, které nebyly v souladu se zásadami vytváření názvů Azure, a názvy se změnily, aby se nahrály do Azure
 
-![Cesta ke kopírování protokolu v okně Přehled po dokončení s upozorněními](media/data-box-logs/copy-log-path-3.png)
+![Cesta ke kopírování protokolu v okně s přehledem po dokončení s upozorněními](media/data-box-logs/copy-log-path-3.png)
 
-Tady je příklad protokolu kopírování, kde byly kontejnery, které neodpovídaly konvencím pojmenování Azure, přejmenovány během nahrávání dat do Azure.
+Tady je příklad protokolu kopírování, ve kterém se při nahrávání dat do Azure přejmenovaly kontejnery, které nesplňovaly zásady vytváření názvů Azure.
 
-Nové jedinečné názvy pro kontejnery jsou ve formátu `DataBox-GUID` a data pro kontejner jsou vloženy do nového přejmenovaného kontejneru. Protokol kopírování určuje starý a nový název kontejneru pro kontejner.
+Nové jedinečné názvy kontejnerů jsou ve formátu `DataBox-GUID` a data pro kontejner jsou vložena do nového přejmenovaného kontejneru. Protokol kopírování určuje Starý a nový název kontejneru pro kontejner.
 
 ```xml
 <ErroredEntity Path="New Folder">
@@ -268,9 +268,9 @@ Nové jedinečné názvy pro kontejnery jsou ve formátu `DataBox-GUID` a data p
 </ErroredEntity>
 ```
 
-Tady je příklad protokolu kopírování, kde byly objekty BLOB nebo soubory, které neodpovídaly konvencím pojmenování Azure, přejmenovány během nahrávání dat do Azure. Nové názvy objektů blob nebo souborů jsou převedeny na SHA256 digest relativní cestu do kontejneru a jsou odeslány na cestu na základě cílového typu. Cílem může být objekty BLOB bloku, objekty BLOB stránky nebo soubory Azure.
+Tady je příklad protokolu kopírování, ve kterém se při nahrávání dat do Azure přejmenovaly objekty blob nebo soubory, které nesplňovaly zásady vytváření názvů Azure. Nové názvy objektů BLOB nebo souborů jsou převedeny na SHA256 výtah relativní cesty ke kontejneru a jsou nahrány do cesty na základě cílového typu. Cílem mohou být objekty blob bloku, objekty blob stránky nebo soubory Azure.
 
-Určuje `copylog` starý a nový název objektu blob nebo souboru a cestu v Azure.
+`copylog` Určuje Starý a nový objekt BLOB nebo název souboru a cestu v Azure.
 
 ```xml
 <ErroredEntity Path="TesDir028b4ba9-2426-4e50-9ed1-8e89bf30d285\Ã">
@@ -291,15 +291,15 @@ Určuje `copylog` starý a nový název objektu blob nebo souboru a cestu v Azur
 </ErroredEntity>
 ```
 
-## <a name="get-chain-of-custody-logs-after-data-erasure"></a>Získejte protokoly řetězce úschovy po vymazání dat
+## <a name="get-chain-of-custody-logs-after-data-erasure"></a>Získání řetězu protokolů pro úschov po vymazání dat
 
-Po vymazání dat z disků datové schránky podle pokynů NIST SP 800-88 Revize 1 jsou k dispozici protokoly řetězce úschovy. Tyto protokoly zahrnují protokoly auditu a historii objednávek. Soubory kusovníku nebo manifestu jsou také zkopírovány protokoly auditu.
+Po vymazání dat z Data Box disků podle pokynů pro NIST SP 800-88 verze 1 je k dispozici řetěz protokolů o úschově. Tyto protokoly zahrnují protokoly auditu a historii objednávek. Soubory kusovníku nebo manifestu jsou také zkopírovány pomocí protokolů auditu.
 
 ### <a name="audit-logs"></a>Protokoly auditu
 
-Protokoly auditu obsahují informace o tom, jak zapnout sdílené složky a získat k nim přístup ke sdíleným položkám v datové schránce nebo datové schránce Těžké, když je mimo datové centrum Azure. Tyto protokoly jsou umístěny na adrese:`storage-account/azuredatabox-chainofcustodylogs`
+Protokoly auditu obsahují informace o tom, jak zapnout a přistupovat ke sdíleným složkám na Data Box nebo Data Box Heavy, pokud se nachází mimo datové centrum Azure. Tyto protokoly jsou umístěny na adrese:`storage-account/azuredatabox-chainofcustodylogs`
 
-Zde je ukázka protokolu auditu z datové schránky:
+Tady je ukázka protokolu auditu z Data Box:
 
 ```
 9/10/2018 8:23:01 PM : The operating system started at system time ‎2018‎-‎09‎-‎10T20:23:01.497758400Z.
@@ -354,15 +354,15 @@ The authentication information fields provide detailed information about this sp
 
 ## <a name="download-order-history"></a>Stažení historie objednávky
 
-Historie objednávek je dostupná na webu Azure Portal. Pokud je objednávka dokončena a vyčištění zařízení (vymazání dat z disků) je dokončeno, přejděte do pořadí zařízení a přejděte na **podrobnosti objednávky**. Máte k dispozici možnost **Stáhnout historii objednávky**. Další informace naleznete v [tématu Download order history](data-box-portal-admin.md#download-order-history).
+Historie objednávek je k dispozici v Azure Portal. Pokud je objednávka dokončená a vyčištění zařízení (data mazání z disků) je dokončené, přejděte do pořadí zařízení a přejděte na **Podrobnosti o objednávce**. Máte k dispozici možnost **Stáhnout historii objednávky**. Další informace najdete v tématu [historie pořadí stahování](data-box-portal-admin.md#download-order-history).
 
-Pokud procházíte historii objednávek, zobrazí se:
+Pokud se posunete přes historii objednávek, uvidíte:
 
-- Informace o sledování operátora pro vaše zařízení.
-- Události s aktivitou *SecureErase.* Tyto události odpovídají vymazání dat na disku.
-- Odkazy protokolu datové schránky. Jsou uvedeny cesty pro *protokoly auditu*, *protokoly kopírování*a soubory *kusovníku.*
+- Informace o sledování dopravce pro vaše zařízení.
+- Události s aktivitou *SecureErase* Tyto události odpovídají mazání dat na disku.
+- Data Box odkazy protokolu. Zobrazí se cesty k *protokolům auditu*, *kopírování protokolů*a souborům *kusovníků* .
 
-Tady je ukázka protokolu historie objednávek z webu Azure Portal:
+Tady je ukázka protokolu historie objednávky z Azure Portal:
 
 ```
 -------------------------------
@@ -413,4 +413,4 @@ BOM Files Path       : azuredatabox-chainofcustodylogs\<GUID>\<Device-serial-no>
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte [si, jak řešit problémy s datovou schránkou a datovou schránkou Heavy](data-box-troubleshoot.md).
+- Naučte se [řešit problémy s data box a data box Heavy](data-box-troubleshoot.md).

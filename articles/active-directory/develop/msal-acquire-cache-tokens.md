@@ -1,7 +1,7 @@
 ---
-title: Získat tokeny mezipaměti & pomocí msal | Azure
+title: Získat tokeny & cache pomocí MSAL | Azure
 titleSuffix: Microsoft identity platform
-description: Další informace o získávání a ukládání tokenů do mezipaměti pomocí knihovny Microsoft Authentication Library (MSAL).
+description: Přečtěte si o získání a ukládání tokenů do mezipaměti pomocí knihovny Microsoft Authentication Library (MSAL).
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -14,101 +14,101 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 647dff9e6401322371ef795a25ca5ced2b517e9c
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81534580"
 ---
-# <a name="acquire-and-cache-tokens-using-the-microsoft-authentication-library-msal"></a>Získání a mezipaměti tokenů pomocí ověřovací knihovny Microsoft (MSAL)
+# <a name="acquire-and-cache-tokens-using-the-microsoft-authentication-library-msal"></a>Získání a ukládání tokenů do mezipaměti pomocí knihovny Microsoft Authentication Library (MSAL)
 
-[Přístupové tokeny](access-tokens.md) umožňují klientům bezpečně volat webová api chráněná Azure. Existuje mnoho způsobů, jak získat token pomocí Knihovny ověřování Microsoft (MSAL). Některé způsoby vyžadují interakci uživatele prostřednictvím webového prohlížeče. Některé nevyžadují žádné interakce s uživatelem. Obecně platí, že způsob získání tokenu závisí na tom, zda je aplikace veřejná klientská aplikace (desktopová nebo mobilní aplikace) nebo důvěrná klientská aplikace (webová aplikace, webové rozhraní API nebo aplikace pro daemon, jako je služba Windows).
+[Přístupové tokeny](access-tokens.md) umožňují klientům bezpečně volat webová rozhraní API chráněná Azure. Existuje mnoho způsobů, jak získat token pomocí knihovny Microsoft Authentication Library (MSAL). Některé způsoby vyžadují interakci s uživatelem prostřednictvím webového prohlížeče. Některé nevyžadují interakci s uživatelem. Obecně platí, že způsob získání tokenu závisí na tom, jestli je aplikace veřejná klientská aplikace (desktopová nebo mobilní aplikace), nebo důvěrná klientská aplikace (webová aplikace, webové rozhraní API nebo aplikace démona, jako je například služba systému Windows).
 
-MSAL ukládá token po jeho získání.  Kód aplikace by se měl pokusit získat token tiše (z mezipaměti), nejprve před získáním tokenu jinými prostředky.
+MSAL uloží token po jeho získání.  Kód aplikace by se měl v tichém pokusu získat token (z mezipaměti), nejdřív před získáním tokenu jiným způsobem.
 
-Můžete také vymazat mezipaměť tokenů, které je dosaženo odebráním účtů z mezipaměti. Tím se však neodstraní soubor cookie relace, který je v prohlížeči.
+Můžete také vymazat mezipaměť tokenu, která se dosahuje odebráním účtů z mezipaměti. Tím nedojde k odebrání souboru cookie relace, který je v prohlížeči, ale.
 
 ## <a name="scopes-when-acquiring-tokens"></a>Obory při získávání tokenů
 
-[Obory](v2-permissions-and-consent.md) jsou oprávnění, která webové rozhraní API zveřejňuje pro klientské aplikace, ke kterým mohou požádat o přístup. Klientské aplikace požadují souhlas uživatele pro tyto obory při vytváření požadavků na ověření získat tokeny pro přístup k webovým rozhraním API. MSAL umožňuje získat tokeny pro přístup k Azure AD pro vývojáře (v1.0) a Microsoft identity platformy (v2.0) rozhraní API. V2.0 protokol používá obory namísto prostředku v požadavcích. Další informace naleznete [v porovnání v1.0 a v2.0](active-directory-v2-compare.md). Na základě konfigurace webového rozhraní API verze tokenu, kterou přijímá, koncový bod v2.0 vrátí přístupový token do služby MSAL.
+[Obory](v2-permissions-and-consent.md) jsou oprávnění, která WEBOVÝm rozhraním API zpřístupňuje klientským aplikacím, aby si vyžádali přístup. Klientské aplikace požadují souhlas uživatele pro tyto obory při vytváření žádostí o ověření, aby získaly tokeny pro přístup k webovým rozhraním API. MSAL umožňuje získat tokeny pro přístup k Azure AD pro vývojáře (v 1.0) a rozhraní Microsoft Identity Platform (v 2.0). protokol v 2.0 místo prostředků v požadavcích používá obory. Další informace najdete v tématu [porovnání čtení v 1.0 a v 2.0](active-directory-v2-compare.md). Na základě konfigurace webového rozhraní API verze tokenu, kterou přijímá, vrátí koncový bod v 2.0 přístupový token do MSAL.
 
-Počet metod získání tokenu MSAL vyžaduje parametr *oboru.* Tento parametr je jednoduchý seznam řetězců, které deklarují požadovaná oprávnění a prostředky, které jsou požadovány. Dobře známé obory jsou [oprávnění aplikace Microsoft Graph](/graph/permissions-reference).
+Počet metod MSAL získat token vyžaduje parametr *scopes* . Tento parametr je jednoduchý seznam řetězců, který deklaruje požadovaná oprávnění a požadované prostředky. Dobře známé obory jsou [Microsoft Graph oprávnění](/graph/permissions-reference).
 
-Je také možné v MSAL pro přístup k prostředkům v1.0. Další informace naleznete [v scopes pro aplikaci v1.0](msal-v1-app-scopes.md).
+V MSAL je také možné získat přístup k prostředkům v 1.0. Další informace najdete v tématu [obory čtení pro aplikaci v 1.0](msal-v1-app-scopes.md).
 
-### <a name="request-specific-scopes-for-a-web-api"></a>Vyžádání konkrétních oborů pro webové rozhraní API
+### <a name="request-specific-scopes-for-a-web-api"></a>Vyžádat konkrétní obory pro webové rozhraní API
 
-Když vaše aplikace potřebuje požadovat tokeny s konkrétními oprávněními pro rozhraní API prostředků, budete muset předat obory obsahující identifikátor URI rozhraní API id aplikace v níže uvedeném formátu: * &lt;obor URI identifikátorů&gt;/&lt;ID aplikace&gt;*
+Pokud vaše aplikace potřebuje požádat o tokeny s konkrétními oprávněními pro rozhraní API prostředků, budete muset předat obory obsahující identifikátor URI ID aplikace rozhraní API ve spodním formátu: * &lt;obor identifikátoru URI&gt;/&lt;ID aplikace&gt;*
 
-Obory pro rozhraní Microsoft Graph API:`https://graph.microsoft.com/User.Read`
+Například obory pro rozhraní Microsoft Graph API:`https://graph.microsoft.com/User.Read`
 
-Nebo například obory pro vlastní webové rozhraní API:`api://abscdefgh-1234-abcd-efgh-1234567890/api.read`
+Například obory pro vlastní webové rozhraní API:`api://abscdefgh-1234-abcd-efgh-1234567890/api.read`
 
-Pro rozhraní API Microsoft Graph pouze `user.read` obor `https://graph.microsoft.com/User.Read` hodnota mapuje formátování a lze použít zaměnitelně.
+Pro rozhraní Microsoft Graph API se hodnota `user.read` oboru mapuje na `https://graph.microsoft.com/User.Read` Format a dá se použít zaměnitelné.
 
 > [!NOTE]
-> Některá webová rozhraní API,https://management.core.windows.net/) jako je například rozhraní API Azure Resource Manager ( očekávejte koncové '/' v deklaraci cílové skupiny (aud) přístupového tokenu. V tomto případě je důležité předat https://management.core.windows.net//user_impersonation obor jako (všimněte si dvojité lomítko), pro token platný v rozhraní API.
+> Některá webová rozhraní API, jako je napříkladhttps://management.core.windows.net/) rozhraní api pro Azure Resource Manager (očekávají na konci deklarace identity cílové skupiny (AUD) přístupového tokenu. V takovém případě je důležité předat obor jako https://management.core.windows.net//user_impersonation (poznámku s dvojitým lomítkem), aby byl token platný v rozhraní API.
 
-### <a name="request-dynamic-scopes-for-incremental-consent"></a>Požadovat dynamické obory pro přírůstkový souhlas
+### <a name="request-dynamic-scopes-for-incremental-consent"></a>Požádat o dynamické obory pro přírůstkové vyjádření souhlasu
 
-Při vytváření aplikací pomocí v1.0 jste museli zaregistrovat úplnou sadu oprávnění (statické obory) vyžadované aplikací pro uživatele k souhlasu v době přihlášení. Ve v2.0 můžete požádat o další oprávnění podle potřeby pomocí parametru oboru. Tyto obory se nazývají dynamické obory a umožňují uživateli poskytnout přírůstkový souhlas s obory.
+Při sestavování aplikací pomocí verze 1.0 jste museli zaregistrovat úplnou sadu oprávnění (statické obory), které aplikace požaduje, aby uživatel mohl vyjádřit souhlas v době přihlášení. V 2.0 můžete podle potřeby požádat o další oprávnění pomocí parametru Scope. Nazývají se dynamické obory a umožňují uživateli poskytovat přírůstkový souhlas s obory.
 
-Můžete například zpočátku přihlásit uživatele a odepřít mu jakýkoli druh přístupu. Později jim můžete dát možnost číst kalendář uživatele vyžádáním oboru kalendáře v metodách získání tokenu a získat souhlas uživatele.
+Například můžete uživatele nejprve podepsat a odepřít jim jakýkoliv druh přístupu. Později jim můžete dát možnost číst kalendář uživatele tím, že si vyžádáte rozsah kalendáře v metodách získat token a získáte souhlas uživatele.
 
 Například: `https://graph.microsoft.com/User.Read` a`https://graph.microsoft.com/Calendar.Read`
 
-## <a name="acquiring-tokens-silently-from-the-cache"></a>Získávání tokenů tiše (z mezipaměti)
+## <a name="acquiring-tokens-silently-from-the-cache"></a>Tiché získávání tokenů (z mezipaměti)
 
-MSAL udržuje mezipaměť tokenů (nebo dvě mezipaměti pro důvěrné klientské aplikace) a ukládá token po jeho získání.  V mnoha případech pokus o tiše získat token získá jiný token s více oborů na základě tokenu v mezipaměti. Je také schopen aktualizovat token, když se blíží vypršení platnosti (jako mezipaměť tokenu také obsahuje token aktualizace).
+MSAL udržuje mezipaměť tokenů (nebo dvě mezipaměti pro důvěrné klientské aplikace) a po získání token uloží do mezipaměti.  V mnoha případech se při pokusu o tiché získání tokenu získá další token s více rozsahy na základě tokenu v mezipaměti. Je také možné aktualizovat token, když se blíží vypršení platnosti (protože mezipaměť tokenů obsahuje také obnovovací token).
 
-### <a name="recommended-call-pattern-for-public-client-applications"></a>Doporučený způsob volání pro veřejné klientské aplikace
+### <a name="recommended-call-pattern-for-public-client-applications"></a>Doporučený vzor volání pro veřejné klientské aplikace
 
-Kód aplikace by se měl pokusit získat token tiše (z mezipaměti), první.  Pokud volání metody vrátí chybu nebo výjimku "Je vyžadováno uj., zkuste získat token jinými prostředky.
+Kód aplikace by se měl nejdříve pokusit získat token v tichém (z mezipaměti).  Pokud volání metody vrátí chybu "požadováno UI" nebo výjimku, zkuste získat token jiným způsobem.
 
-Existují však dva toky, před kterými byste se **neměli** pokoušet tiše získat token:
+Existují však dva toky před tím, **než se pokusíte o** tiché získání tokenu:
 
-- [tok pověření klienta](msal-authentication-flows.md#client-credentials), který nepoužívá mezipaměť tokenů uživatele, ale mezipaměti tokenů aplikace. Tato metoda se stará o ověření mezipaměti tokenu této aplikace před odesláním požadavku na SLUŽBY STS.
-- [tok autorizačního kódu](msal-authentication-flows.md#authorization-code) ve webových aplikacích, protože uplatní kód, který aplikace získala přihlášením uživatele a jejich souhlasem s více obory. Vzhledem k tomu, že kód je předán jako parametr, a nikoli účet, metoda nemůže hledat v mezipaměti před uplatněním kódu, který vyžaduje, stejně, volání služby.
+- [tok přihlašovacích údajů klienta](msal-authentication-flows.md#client-credentials), který nepoužívá mezipaměť tokenu uživatele, ale mezipaměť tokenu aplikace. Tato metoda postará o ověření této mezipaměti tokenů aplikace před odesláním žádosti službě STS.
+- [tok autorizačního kódu](msal-authentication-flows.md#authorization-code) ve webových aplikacích, protože uplatňuje kód, který aplikace získala přihlašováním uživatele, a má souhlas s více obory. Vzhledem k tomu, že je kód předán jako parametr, a nikoli účet, metoda nemůže najít mezipaměť v mezipaměti před uplatněním kódu, který vyžaduje, aby bylo volání služby úspěšné.
 
-### <a name="recommended-call-pattern-in-web-apps-using-the-authorization-code-flow"></a>Doporučený způsob volání ve webových aplikacích pomocí toku autorizačního kódu
+### <a name="recommended-call-pattern-in-web-apps-using-the-authorization-code-flow"></a>Doporučený vzor volání ve webových aplikacích s využitím toku autorizačního kódu
 
-Pro webové aplikace, které používají [tok autorizačního kódu OpenID Connect](v2-protocols-oidc.md), je doporučeným vzorem v řadičích:
+U webových aplikací, které používají [tok autorizačního kódu OpenID Connect](v2-protocols-oidc.md), je doporučený vzor v řadičích:
 
-- Vytvořte instanci důvěrné klientské aplikace s mezipamětí tokenů s přizpůsobenou serializací.
+- Vytvořte instanci důvěrné klientské aplikace s mezipamětí tokenu s přizpůsobenou serializací.
 - Získání tokenu pomocí toku autorizačního kódu
 
-## <a name="acquiring-tokens"></a>Získání tokenů
+## <a name="acquiring-tokens"></a>Získávání tokenů
 
-Obecně platí, že způsob získání tokenu závisí na tom, zda se jedná o veřejnou klientskou nebo důvěrnou klientskou aplikaci.
+Obecně platí, že metoda získání tokenu závisí na tom, jestli je to veřejný klient nebo důvěrná klientská aplikace.
 
 ### <a name="public-client-applications"></a>Veřejné klientské aplikace
 
-U veřejných klientských aplikací (desktopových nebo mobilních aplikací):
-- Často získat tokeny interaktivně, s uživatelem přihlásit prostřednictvím uživatelského rozhraní nebo automaticky otevírané okno.
-- Můžete [získat token tiše pro přihlášený uživatel](msal-authentication-flows.md#integrated-windows-authentication) pomocí integrovaného ověřování systému Windows (IWA/Kerberos), pokud desktopová aplikace běží na počítači se systémem Windows připojen k doméně nebo k Azure.
-- Může [získat token s uživatelským jménem a heslem](msal-authentication-flows.md#usernamepassword) v klientských aplikacích desktopové klienty rozhraní .NET Framework, ale to se nedoporučuje. Nepoužívejte uživatelské jméno/heslo v důvěrných klientských aplikacích.
-- Může získat token prostřednictvím [toku kódu zařízení](msal-authentication-flows.md#device-code) v aplikacích spuštěných na zařízeních, která nemají webový prohlížeč. Uživateli je poskytnuta adresa URL a kód, který poté přejde do webového prohlížeče na jiném zařízení a zadá kód a přihlásí se.  Azure AD pak odešle token zpět do zařízení bez prohlížeče.
+Pro veřejné klientské aplikace (desktopové nebo mobilní aplikace):
+- Tokeny se často získávají interaktivně, takže se uživatel přihlásí prostřednictvím uživatelského rozhraní nebo automaticky otevíraného okna.
+- Může [pro přihlášeného uživatele tiše získat token](msal-authentication-flows.md#integrated-windows-authentication) pomocí integrovaného ověřování systému Windows (IWA/Kerberos), pokud je desktopová aplikace spuštěná na počítači s Windows připojeném k doméně nebo do Azure.
+- Může [získat token s uživatelským jménem a heslem](msal-authentication-flows.md#usernamepassword) v klientských aplikacích rozhraní .NET Framework pro stolní počítače, ale nedoporučuje se to. V důvěrných klientských aplikacích nepoužívejte uživatelské jméno a heslo.
+- Může získat token prostřednictvím [toku kódu zařízení](msal-authentication-flows.md#device-code) v aplikacích spuštěných na zařízeních, která nemají webový prohlížeč. Uživatel se poskytuje s adresou URL a kódem, který potom přejde do webového prohlížeče na jiném zařízení a vloží kód a přihlásí se.  Azure AD pak pošle token zpátky do zařízení bez prohlížeče.
 
 ### <a name="confidential-client-applications"></a>Důvěrné klientské aplikace
 
-U důvěrných klientských aplikací (webová aplikace, webové rozhraní API nebo daemon aplikace, jako je služba Windows), můžete:
-- Získat tokeny **pro samotnou aplikaci** a ne pro uživatele pomocí [toku pověření klienta](msal-authentication-flows.md#client-credentials). To lze použít pro synchronizaci nástrojů nebo nástroje, které zpracovávají uživatele obecně a není konkrétní uživatel.
-- Pomocí [toku on-behalf-of](msal-authentication-flows.md#on-behalf-of) pro webové rozhraní API volat rozhraní API jménem uživatele. Aplikace je identifikována s pověřeními klienta za účelem získání tokenu na základě kontrolního výrazu uživatele (SAML například nebo tokenu JWT). Tento tok je používán aplikacemi, které potřebují přístup k prostředkům konkrétního uživatele v volání služby služby.
-- Získejte tokeny pomocí [toku autorizačního kódu](msal-authentication-flows.md#authorization-code) ve webových aplikacích poté, co se uživatel přihlásí prostřednictvím adresy URL žádosti o autorizaci. Aplikace OpenID Connect obvykle používá tento mechanismus, který umožňuje uživateli přihlásit se pomocí open ID connect a pak přistupovat k webovým rozhraním API jménem uživatele.
+Pro důvěrné klientské aplikace (webová aplikace, webové rozhraní API nebo aplikace démona, jako je například služba systému Windows):
+- Získejte tokeny **pro samotnou aplikaci** , nikoli pro uživatele, pomocí [toku přihlašovacích údajů klienta](msal-authentication-flows.md#client-credentials). Dá se použít k synchronizaci nástrojů nebo k nástrojům, které obecně zpracovávají uživatele a nikoli konkrétního uživatele.
+- K volání rozhraní API jménem uživatele používejte tok spouštěný [jménem](msal-authentication-flows.md#on-behalf-of) webového rozhraní API. Aplikace je identifikována s přihlašovacími údaji klienta, aby získala token na základě kontrolního výrazu uživatele (například SAML nebo token JWT). Tento tok se používá aplikacemi, které potřebují přístup k prostředkům určitého uživatele v voláních služby-služba.
+- Získejte tokeny pomocí [toku autorizačního kódu](msal-authentication-flows.md#authorization-code) ve webových aplikacích poté, co se uživatel přihlásí prostřednictvím adresy URL žádosti o autorizaci. Aplikace OpenID Connect obvykle používá tento mechanismus, který umožňuje uživatelům přihlašovat se pomocí otevřeného ID připojit a pak přistupovat k webovým rozhraním API jménem uživatele.
 
 ## <a name="authentication-results"></a>Výsledky ověřování
 
-Když váš klient požaduje přístupový token, Azure AD také vrátí výsledek ověřování, který obsahuje některá metadata o přístupový token. Tyto informace zahrnují čas vypršení platnosti přístupového tokenu a obory, pro které je platný. Tato data umožňují vaší aplikaci provést inteligentní ukládání přístupových tokenů do mezipaměti, aniž by bylo třeba analyzovat samotný přístupový token.  Výsledek ověřování zveřejňuje:
+Když si klient vyžádá přístupový token, Azure AD také vrátí výsledek ověření, který obsahuje metadata o přístupovém tokenu. Tyto informace zahrnují čas vypršení platnosti přístupového tokenu a rozsahy, pro které je platná. Tato data umožňují vaší aplikaci inteligentní ukládání přístupových tokenů do mezipaměti bez nutnosti analyzovat samotný přístupový token.  Výsledek ověřování vystavuje:
 
-- [Přístupový token](access-tokens.md) pro webové rozhraní API pro přístup k prostředkům. Toto je řetězec, obvykle base64 kódované JWT, ale klient by nikdy neměl hledat uvnitř přístupového tokenu. Formát není zaručeno, že zůstane stabilní a může být šifrována pro prostředek. Lidé, kteří píší kód v závislosti na obsahu přístupového tokenu v klientovi, jsou jedním z největších zdrojů chyb a přestávek logiky klienta.
-- [ID token](id-tokens.md) pro uživatele (toto je JWT).
-- Vypršení platnosti tokenu, který říká datum a čas, kdy vyprší platnost tokenu.
-- ID klienta obsahuje klienta, ve kterém byl nalezen uživatel. Pro uživatele typu Host (scénáře Azure AD B2B) je ID klienta klienta, nikoli jedinečným tenantem. Při doručení tokenu jménem uživatele obsahuje výsledek ověřování také informace o tomto uživateli. Pro důvěrné toky klientů, kde jsou požadovány tokeny bez uživatele (pro aplikaci), je tato informace o uživateli null.
-- Obory, pro které byl vydán token.
-- Jedinečné ID pro uživatele.
+- [Přístupový token](access-tokens.md) webového rozhraní API pro přístup k prostředkům Toto je řetězec, obvykle token JWT kódovaný ve formátu base64, ale klient by nikdy neměl být v přístupovém tokenu. Formát není zaručený, aby zůstal stabilní a mohl by být zašifrovaný pro daný prostředek. Lidé, kteří vytvářejí kód v závislosti na obsahu přístupového tokenu na klientovi, je jedním z největších zdrojů chyb a konců klientských logik.
+- [Token ID](id-tokens.md) pro uživatele (Toto je token JWT).
+- Vypršení platnosti tokenu, které oznamuje datum a čas, kdy vyprší platnost tokenu.
+- ID tenanta obsahuje tenanta, ve kterém se uživatel našel. Pro uživatele typu Host (scénáře Azure AD B2B) je ID tenanta tenant hosta, nikoli jedinečný tenant. Pokud je token dodán jménem uživatele, výsledek ověřování obsahuje také informace o tomto uživateli. U důvěrných toků klienta, kde jsou požadovány tokeny bez uživatele (pro aplikaci), jsou informace o uživateli null.
+- Obory, pro které byl token vydán.
+- Jedinečné ID uživatele
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud používáte MSAL pro Jazyk Java, přečtěte si informace o [vlastní serializaci mezipaměti tokenů v MSAL pro Javu](msal-java-token-cache-serialization.md).
+Pokud používáte MSAL for Java, přečtěte si informace o [serializaci mezipaměti vlastního tokenu v MSAL pro Java](msal-java-token-cache-serialization.md).
 
-Informace o [zpracování chyb a výjimek](msal-handling-exceptions.md).
+Další informace o [zpracování chyb a výjimek](msal-handling-exceptions.md).

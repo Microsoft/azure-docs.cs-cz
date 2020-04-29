@@ -1,7 +1,7 @@
 ---
-title: 'Spustit skript Pythonu: Odkaz na modul'
+title: 'Spustit skript jazyka Python: odkaz na modul'
 titleSuffix: Azure Machine Learning
-description: Přečtěte si, jak spustit modul Script Pythonu v Azure Machine Learning ke spuštění kódu Pythonu.
+description: Naučte se používat modul spuštění skriptu Pythonu v Azure Machine Learning ke spouštění kódu Pythonu.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,141 +10,141 @@ author: likebupt
 ms.author: keli19
 ms.date: 03/10/2020
 ms.openlocfilehash: 79dc1b188e91028a98f43dc24972228f2d2101be
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81684733"
 ---
-# <a name="execute-python-script-module"></a>Spuštění modulu Skript Pythonu
+# <a name="execute-python-script-module"></a>Spustit modul Python Script
 
-Tento článek popisuje modul v návrháři Azure Machine Learning (preview).
+Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
 
-Tento modul slouží ke spuštění kódu Pythonu. Další informace o architektuře a principech návrhu Pythonu naleznete [v následujícím článku](https://docs.microsoft.com/azure/machine-learning/machine-learning-execute-python-scripts).
+Tento modul použijte ke spuštění kódu Pythonu. Další informace o architektuře a zásadách návrhu Pythonu najdete v [následujícím článku](https://docs.microsoft.com/azure/machine-learning/machine-learning-execute-python-scripts).
 
-V Pythonu můžete provádět úkoly, které momentálně nejsou podporovány existujícími moduly, například:
+Pomocí Pythonu můžete provádět úlohy, které aktuálně nejsou podporované existujícími moduly, například:
 
 + Vizualizace dat pomocí`matplotlib`
-+ Použití knihoven Pythonu k vytvoření výčtu datových sad a modelů v pracovním prostoru
-+ Čtení, načítání a manipulace s daty ze zdrojů, které nejsou podporovány modulem [Import dat](./import-data.md)
-+ Spusťte svůj vlastní kód pro hluboké učení 
++ Vytvoření výčtu datových sad a modelů v pracovním prostoru pomocí knihoven Pythonu
++ Čtení, načítání a manipulace s daty ze zdrojů, které nepodporují modul [Import dat](./import-data.md)
++ Spusťte si vlastní kód hloubkového učení. 
 
 
-Azure Machine Learning používá distribuci Anaconda pythonu, která zahrnuje mnoho běžných nástrojů pro zpracování dat. Budeme aktualizovat verzi Anaconda automaticky. Aktuální verze je:
- -  Distribuce Anaconda 4.5+ pro Python 3.6 
+Azure Machine Learning používá Anaconda distribuci Pythonu, která zahrnuje mnoho běžných nástrojů pro zpracování dat. Verze Anaconda se aktualizuje automaticky. Aktuální verze je:
+ -  Anaconda 4.5 + distribuce pro Python 3,6 
 
-Předinstalované balíčky jsou:
--    adal==1,2,2
--    applicationinsights==0.11.9
--    attrs==19.3.0
--    azurová-společná==1.1.25
--    azurové jádro==1.3.0
--    azurový grafrbac==0,61,1
--    azurová identita==1.3.0
--    azure-mgmt-authorization==0.60.0
--    azure-mgmt-containerregistry==2.8.0
--    azure-mgmt-keyvault==2.2.0
--    azure-mgmt-resource==8.0.1
--    azure-mgmt-storage==8.0.0
--    azure-storage-blob==1.5.0
--    azurové úložiště-společné==1.4.2
--    azureml-core==1.1.5.5
--    azureml-dataprep-nativní==14.1.0
--    azureml-dataprep==1.3.5
--    azureml-defaults==1.1.5.1
--    azureml-designer-classic-modules==0.0.118
--    azureml-designer-core==0.0.31
--    azureml-designer-interní==0.0.18
--    azureml-model-management-sdk==1.0.1b6.post1
--    azureml-pipeline-core==1.1.5
--    azureml-telemetrie==1.1.5.3
--    backports.tempfile==1.0
--    backports.weakref==1.0.post1
--    boto3==1,12,29
--    botocore==1,15,29
--    cachetools==4.0.0
--    certifi==2019.11.28
--    cffi==1,12,3
--    chardet==3.0.4
--    cvaknutí==7.1.1
--    cloudpickle==1.3.0
--    configparser==3.7.4
--    contextlib2==0.6.0.post1
--    kryptografie==2,8
--    cyklor==0,10,0
--    kopr==0,3,1,1
--    distro==1.4.0
--    docker==4.2.0
--    docutils==0,15,2
--    dotnetcore2==2.1.13
--    baňka==1,0,3
--    pojistka==3,0,1
--    gensim==3.8.1
--    google-api-core==1.16.0
--    google-auth==1.12.0
--    google-cloud-core==1.3.0
--    google-cloud-storage==1.26.0
--    google-resumable-media==0.5.0
--    googleapis-common-protos==1.51.0
--    gunicorn==19.9.0
--    idna==2,9
--    imbalanced-learn==0,4,3
--    isodate==0,6,0
--    itsdangerous==1.1.0
--    jeepney==0,4,3
--    jinja2==2,11,1
--    jmespath==0,9,5
--    joblib==0,14,0
--    json-logování-py==0,2
--    jsonpickle==1,3
--    jsonschema==3.0.1
--    kiwisolver==1.1.0
--    liac-arff==2.4.0
--    lightgbm==2.2.3
--    markupsafe==1.1.1
--    matplotlib==3.1.3
--    více itertools==6.0.0
--    mSal-rozšíření==0,1,3
--    msal==1,1,0
--    msrest==0,6,11
--    msrestazure==0,6,3
--    ndg-httpsclient==0.5.1
--    nimbusml==1.6.1
--    numpy==1,18,2
--    oauthlib==3.1.0
--    pandy==0,25,3
--    pathspec==0,7,0
--    pip==20.0.2
--    portalocker==1.6.0
--    protobuf==3,11,3
--    pyarrow==0,16,0
--    pyasn1-moduly==0.2.8
--    pyasn1==0,4,8
--    pycparser==2,20
--    pycryptodomex==3.7.3
--    pyjwt==1,7,1
--    pyopenssl==19.1.0
--    pyparsing==2.4.6
--    pyrsistent==0,16,0
--    python-dateutil==2.8.1
--    pytz==2019.3
--    požadavky-oauthlib==1.3.0
--    požadavky==2.23.0
--    rsa==4,0
--    ruamel.yaml==0,15,89
--    s3transfer==0,3,3
--    scikit-learn==0,22,2
--    scipy==1,4,1
--    tajné skladování==3.1.2
--    instalační nástroje==46.1.1.post20200323
--    šest==1,14,0
--    smart-open==1.10.0
--    urllib3==1,25,8
--    websocket-client==0.57.0
--    werkzeug==0,16,1
--    kolo==0,34,2
+Předem nainstalované balíčky jsou:
+-    ADAL = = 1.2.2
+-    ApplicationInsights = = 0.11.9
+-    attrs = = 19.3.0
+-    Azure – běžné = = 1.1.25
+-    Azure-Core = = 1.3.0
+-    Azure – graphrbac = = 0.61.1
+-    Azure-identity = = 1.3.0
+-    Azure-Správa-autorizace = = 0.60.0
+-    Azure-Správa – containerregistry = = 2.8.0
+-    Azure-Správa – Trezor klíčů = = 2.2.0
+-    Azure-Správa-prostředek = = 8.0.1
+-    Azure-Správa-Storage = = 8.0.0
+-    Azure-Storage-BLOB = = 1.5.0
+-    Azure-Storage-Common = = 1.4.2
+-    AzureML-Core = = 1.1.5.5
+-    AzureML-dataprep-Native = = 14.1.0
+-    AzureML-dataprep = = 1.3.5
+-    AzureML – výchozí = = 1.1.5.1
+-    AzureML-Designer-Classic-modules = = 0.0.118
+-    AzureML-Designer-Core = = 0.0.31
+-    AzureML-Designer-Internal = = 0.0.18
+-    AzureML-Model-Management-SDK = = 1.0.1 B6. post1
+-    AzureML-Pipeline-Core = = 1.1.5
+-    AzureML-telemetrie = = 1.1.5.3
+-    neporty. tempFile = = 1.0
+-    neports. WeakRef = = 1.0. post1
+-    boto3 = = 1.12.29
+-    botocore = = 1.15.29
+-    cachetools = = 4.0.0
+-    certifi = = 2019.11.28
+-    cffi = = 1.12.3
+-    chardet = = 3.0.4
+-    klikněte na = = 7.1.1
+-    cloudpickle = = 1.3.0
+-    ConfigParser = = 3.7.4
+-    contextlib2 = = 0.6.0. post1
+-    kryptografie = = 2.8
+-    koloběh = = 0.10.0
+-    Dill = = 0.3.1.1
+-    distribuce = = 1.4.0
+-    Docker = = 4.2.0
+-    Docutils = = 0.15.2
+-    dotnetcore2 = = 2.1.13
+-    Baňka = = 1.0.3
+-    fusepy = = 3.0.1
+-    gensim = = 3.8.1
+-    Google-API-Core = = 1.16.0
+-    Google-auth = = 1.12.0
+-    Google-Cloud-Core = = 1.3.0
+-    Google-Cloud-Storage = = 1.26.0
+-    Google – obnovitelné – médium = = 0.5.0
+-    googleapis – společný – proto = = 1.51.0
+-    Gunicorn = = 19.9.0
+-    IDNA = = 2.9
+-    nevyvážené – Další informace = = 0.4.3
+-    isodate = = 0.6.0
+-    itsdangerous = = 1.1.0
+-    jeepney = = 0.4.3
+-    jinja2 = = 2.11.1
+-    jmespath = = 0.9.5
+-    joblib = = 0.14.0
+-    JSON – protokolování-py = = 0,2
+-    jsonpickle = = 1.3
+-    jsonschema = = 3.0.1
+-    kiwisolver = = 1.1.0
+-    liac-arff = = 2.4.0
+-    lightgbm = = 2.2.3
+-    markupsafe = = 1.1.1
+-    matplotlib = = 3.1.3
+-    more – itertools = = 6.0.0
+-    msal-Extensions = = 0.1.3
+-    msal = = 1.1.0
+-    msrest = = 0.6.11
+-    msrestazure = = 0.6.3
+-    NDG-httpsclient = = 0.5.1
+-    nimbusml = = 1.6.1
+-    numpy = = 1.18.2
+-    oauthlib = = 3.1.0
+-    PANDAS = = 0.25.3
+-    pathSpec = = 0.7.0
+-    PIP = = 20.0.2
+-    portalocker = = 1.6.0
+-    protobuf = = 3.11.3
+-    pyarrow = = 0.16.0
+-    pyasn1-modules = 0.2.8
+-    pyasn1 = = 0.4.8
+-    pycparser = = 2.20
+-    pycryptodomex = = 3.7.3
+-    pyjwt = = 1.7.1
+-    pyopenssl = = 19.1.0
+-    pyparsing = = 2.4.6
+-    pyrsistent = = 0.16.0
+-    Python – dateutil = = 2.8.1
+-    pytz = = 2019.3
+-    požadavky – oauthlib = = 1.3.0
+-    požadavky = = 2.23.0
+-    RSA = = 4.0
+-    ruamel. yaml = = 0.15.89
+-    s3transfer = = 0.3.3
+-    scikit-učení = = 0.22.2
+-    scipy = = 1.4.1
+-    secretstorage = = 3.1.2
+-    setuptools = = 46.1.1. post20200323
+-    šest = = 1.14.0
+-    Smart-Open = = 1.10.0
+-    urllib3 = = 1.25.8
+-    WebSocket – klient = = 0.57.0
+-    Werkzeug = = 0.16.1
+-    kolo = = 0.34.2
 
- Chcete-li nainstalovat další balíčky, které nejsou v předinstalovaném seznamu, například *scikit-misc*, přidejte do skriptu následující kód: 
+ Pokud chcete nainstalovat další balíčky, které nejsou v seznamu předem nainstalovaných, například *scikit-misc*, přidejte do skriptu následující kód: 
 
  ```python
 import os
@@ -152,9 +152,9 @@ os.system(f"pip install scikit-misc")
 ```
 
 ## <a name="upload-files"></a>Nahrání souborů
-**Spouštění pythonového skriptu** podporuje nahrávání souborů pomocí [sady Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#upload-file-name--path-or-stream-).
+**Skript spouštějící Python** podporuje nahrávání souborů pomocí [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#upload-file-name--path-or-stream-).
 
-Následující příklad ukazuje, jak nahrát soubor obrázku v modulu **Spustit skript Pythonu:**
+Následující příklad ukazuje, jak nahrát soubor obrázku do modulu **spouštění skriptu Pythonu** :
 
 ```Python
 
@@ -190,63 +190,63 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 }
 ```
 
-Po dokončení spuštění potrubí můžete zobrazit náhled obrazu v pravém panelu modulu
+Po dokončení spuštění kanálu můžete zobrazit náhled obrázku na pravém panelu modulu.
 
 > [!div class="mx-imgBorder"]
-> ![Nahraný obrázek](media/module/upload-image-in-python-script.png)
+> ![Nahráno – obrázek](media/module/upload-image-in-python-script.png)
 
-## <a name="how-to-configure-execute-python-script"></a>Jak nakonfigurovat spuštění skriptu Pythonu
+## <a name="how-to-configure-execute-python-script"></a>Jak nakonfigurovat skript spustit v Pythonu
 
-Modul **Execute Python Script** obsahuje ukázkový kód Pythonu, který můžete použít jako výchozí bod. Chcete-li nakonfigurovat modul **Spouštět skript Pythonu,** zadejte sadu vstupů a kód Pythonu, které se mají spustit v textovém poli **skriptu Pythonu.**
+Modul **spuštění skriptu Pythonu** obsahuje ukázkový kód Pythonu, který můžete použít jako výchozí bod. Pokud chcete nakonfigurovat modul **spouštění skriptu Pythonu** , zadáte sadu vstupů a kódů Pythonu, které se spustí v textovém poli **skript Pythonu** .
 
-1. Přidejte do kanálu modul **Spouštět skript Pythonu.**
+1. Přidejte modul **spuštění skriptu Pythonu** do vašeho kanálu.
 
-2. Přidejte a připojte **dataset1** všechny datové sady z návrháře, který chcete použít pro vstup. Odkazujte na tuto datovou sadu ve skriptu Pythonu jako **Na dataframe1**.
+2. Přidejte a připojte se k **DataSet1.** datových sad z návrháře, který chcete použít pro vstup. Odkazujte tuto datovou sadu ve skriptu Pythonu jako **DataFrame1**.
 
     Použití datové sady je volitelné, pokud chcete generovat data pomocí Pythonu, nebo použít kód Pythonu k importu dat přímo do modulu.
 
-    Tento modul podporuje přidání druhé datové sady na **Dataset2**. Odkazujte na druhou datovou sadu ve skriptu Pythonu jako Na DataFrame2.
+    Tento modul podporuje přidání druhé datové sady na **Dataset2**. Odkaz na druhou datovou sadu ve skriptu Pythonu jako DataFrame2.
 
-    Datové sady uložené v Azure Machine Learning se automaticky převedou na **pandas** data.frames při načtení s tímto modulem.
+    Datové sady, které jsou uložené v Azure Machine Learning, se automaticky převedou na data **PANDAS** . po načtení do tohoto modulu se snímky načítají.
 
     ![Spustit vstupní mapu Pythonu](media/module/python-module.png)
 
-4. Chcete-li zahrnout nové balíčky pythonu nebo kód, přidejte soubor zip obsahující tyto vlastní prostředky do **sady Script**. Vstup do **sady Skript** musí být zip soubor nahraný do pracovního prostoru jako datový soubor typu soubor. Datovou sadu můžete nahrát na stránce datové **sady** a můžete přetáhnout modul datové sady ze seznamu **Moje datové sady** ve stromu levého modulu na stránce vytváření návrháře. 
+4. Pokud chcete zahrnout nové balíčky nebo kód v Pythonu, přidejte do **svazku skriptu**soubor zip, který obsahuje tyto vlastní prostředky. **Sada prostředků skriptu** musí být soubor zip odeslaný do vašeho pracovního prostoru jako datová sada typu souboru. Datovou sadu můžete nahrát na stránce Asset **sady** dat a můžete ji přetáhnout ze seznamu **Moje datové sady** na levém stromu modulu na stránce vytváření návrháře. 
 
-    Jakýkoli soubor obsažený v nahraném archivu zip lze použít při provádění kanálu. Pokud archiv obsahuje adresářovou strukturu, struktura je zachována, ale je nutné předřadit adresář s názvem **src** na cestu.
+    Během provádění kanálu lze použít jakýkoli soubor obsažený v odeslaném archivu zip. Pokud archiv obsahuje adresářovou strukturu, struktura se zachová, ale musíte do cesty předřadit adresář **Src** .
 
-5. Do textového pole **skriptu Pythonu** zadejte nebo vložte platný skript Pythonu.
+5. Do textového pole **skript Pythonu** zadejte nebo vložte platný skript Pythonu.
 
     > [!NOTE]
-    > Při psaní skriptu buďte velmi opatrní a ujistěte se, že nedochází k žádné chybě syntaxe, například při použití nedeklarovaného objektu nebo neimportovaného modulu. Zvláštní pozornost také věnujte předinstalovanému seznamu modulů. Chcete-li importovat moduly, které nejsou uvedeny, nainstalujte odpovídající balíčky do skriptu, například
+    > Při psaní skriptu Buďte velmi opatrní a ujistěte se, že nedochází k žádné chybě syntaxe, jako je například použití nedeklarovaného objektu nebo neimportovaného modulu. V seznamu předem nainstalovaných modulů také věnujte další pozornost. Pokud chcete importovat moduly, které nejsou v seznamu, nainstalujte odpovídající balíčky do skriptu, například
     >  ``` Python
     > import os
     > os.system(f"pip install scikit-misc")
     > ```
     
-    Textové pole **skriptu Pythonu** je předem vyplněno některými pokyny v komentářích a ukázkovým kódem pro přístup k datům a výstup. Tento kód je nutné upravit nebo nahradit. Ujistěte se, že postupujte podle pythonských konvencí o odsazení a caseingu.
+    Textové pole **skriptu Pythonu** se předem vyplní některými pokyny v komentářích a vzorový kód pro přístup k datům a výstup. Tento kód musíte upravit nebo nahradit. Nezapomeňte dodržovat konvence Pythonu týkající se odsazení a používání velkých a malých písmen.
 
-    + Skript musí obsahovat `azureml_main` funkci pojmenovanou jako vstupní bod pro tento modul.
-    + Funkce vstupního bodu musí mít `Param<dataframe1>` dva `Param<dataframe2>`vstupní argumenty: a , i když tyto argumenty nejsou použity ve skriptu.
-    + Zip soubory připojené k třetímu vstupnímu portu jsou `.\Script Bundle`rozbaleny a uloženy `sys.path`v adresáři , který je také přidán do Pythonu . 
+    + Skript musí obsahovat funkci s názvem `azureml_main` jako vstupní bod pro tento modul.
+    + Funkce vstupního bodu musí mít dva vstupní argumenty: `Param<dataframe1>` a, `Param<dataframe2>`a to i v případě, že se tyto argumenty ve skriptu nepoužívají.
+    + Soubory zip připojené k třetímu vstupnímu portu jsou komprimovány a uloženy v adresáři, `.\Script Bundle`který je také přidán do jazyka Python `sys.path`. 
 
-    Pokud tedy soubor ZIP `mymodule.py`obsahuje , `import mymodule`importujte jej pomocí aplikace .
+    Proto pokud váš soubor zip obsahuje `mymodule.py`, importujte ho pomocí. `import mymodule`
 
-    + Dvě datové sady mohou být vráceny návrháři, `pandas.DataFrame`což musí být posloupnost typu . Můžete vytvořit další výstupy v kódu Pythonu a zapsat je přímo do úložiště Azure.
+    + Do návrháře lze vrátit dvě datové sady, které musí být sekvence typu `pandas.DataFrame`. V kódu Pythonu můžete vytvořit další výstupy a zapsat je přímo do služby Azure Storage.
 
-6. Odešlete kanál nebo vyberte modul a kliknutím na **Spustit vybraný** spustit pouze skript Pythonu.
+6. Odešlete kanál, nebo vyberte modul a klikněte na **Spustit vybraný** , aby se spouštěl jenom skript Pythonu.
 
     Všechna data a kód se načtou do virtuálního počítače a spustí se pomocí zadaného prostředí Pythonu.
 
 ## <a name="results"></a>Výsledky
 
-Výsledky všech výpočtů prováděných vloženým kódem Pythonu musí být poskytnuty jako pandy. DataFrame, který se automaticky převede do formátu datové sady Azure Machine Learning, takže můžete použít výsledky s jinými moduly v kanálu.
+Výsledky jakýchkoli výpočtů provedených integrovaným kódem Pythonu musí být poskytnuty jako PANDAS. Datový rámec, který je automaticky převeden do formátu datové sady Azure Machine Learning, abyste mohli výsledky použít s jinými moduly v kanálu.
 
-Modul vrátí dvě datové sady:  
+Modul vrací dvě datové sady:  
   
-+ **Dataset výsledků 1**, definovaný prvním vráceným datovým rámcem pand ve skriptu Pythonu
++ **Datová sada výsledků 1**definovaná prvním vráceným pandasm datovým rámcem ve skriptu Pythonu
 
-+ **Datová sada výsledků 2**, definovaná druhým vráceným datovým rámcem pandas ve skriptu Pythonu
++ **Výsledná datová sada 2**definovaná druhým vráceným pandasm datovým snímkem ve skriptu Pythonu
 
 
 ## <a name="next-steps"></a>Další kroky

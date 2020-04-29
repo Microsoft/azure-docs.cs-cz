@@ -1,6 +1,6 @@
 ---
-title: Použití S2S VPN jako zálohy pro privátní partnerský vztah Azure ExpressRoute | Dokumenty společnosti Microsoft
-description: Tato stránka obsahuje doporučení architektury pro zálohování privátního partnerského vztahu Azure ExpressRoute pomocí S2S VPN.
+title: Použití S2S VPN jako zálohy pro privátní partnerské vztahy Azure ExpressRoute | Microsoft Docs
+description: Tato stránka poskytuje doporučení pro architekturu pro zálohování privátního partnerského vztahu Azure ExpressRoute pomocí S2S VPN.
 services: networking
 author: rambk
 ms.service: expressroute
@@ -8,68 +8,68 @@ ms.topic: article
 ms.date: 02/05/2020
 ms.author: rambala
 ms.openlocfilehash: a6a22b667bc66d6ee69bfbd7ad1db88f72d8df0e
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81687837"
 ---
-# <a name="using-s2s-vpn-as-a-backup-for-expressroute-private-peering"></a>Použití S2S VPN jako zálohy pro soukromý partnerský vztah ExpressRoute
+# <a name="using-s2s-vpn-as-a-backup-for-expressroute-private-peering"></a>Použití S2S VPN jako zálohy privátního partnerského vztahu ExpressRoute
 
-V článku s názvem [Projektování pro zotavení po havárii s ExpressRoute soukromé partnerský vztah][DR-PP], jsme diskutovali o potřebě řešení připojení zálohování pro expressroute privátní partnerský vztah připojení a jak používat geograficky redundantní ExpressRoute obvody pro tento účel. V tomto článku zvažme, jak využít a udržovat síť VPN typu site-to-site (S2S) jako záda pro soukromý partnerský vztah ExpressRoute. 
+V článku s názvem [Návrh pro zotavení po havárii s privátním partnerským vztahem ExpressRoute][DR-PP]jsme si pobývali potřebu řešení pro připojení k zálohování pro připojení privátního partnerského vztahu ExpressRoute a použití geograficky redundantních okruhů ExpressRoute pro účely. V tomto článku můžeme zvážit, jak využít a udržovat VPN typu Site-to-Site (S2S) VPN jako back pro privátní partnerské vztahy ExpressRoute. 
 
-Na rozdíl od georedundantních obvodů ExpressRoute můžete kombinaci zotavení po havárii ExpressRoute-VPN používat pouze v režimu aktivní ho pasivního režimu. Hlavní výzvou použití libovolného připojení k síti zálohování v pasivním režimu je, že pasivní připojení by často selhat vedle primární připojení. Častým důvodem selhání pasivního připojení je nedostatečná aktivní údržba. Proto v tomto článku se zaměříme na to, jak ověřit a aktivně udržovat připojení S2S VPN, které zálohuje soukromý partnerský vztah ExpressRoute.
+Na rozdíl od geograficky redundantních okruhů ExpressRoute můžete použít kombinaci ExpressRoute-VPN Recovery v režimu aktivní-pasivní. Hlavní výzvou k použití libovolného záložního připojení k síti v pasivním režimu je to, že pasivní připojení často selže vedle primárního připojení. Běžným důvodem pro selhání pasivního připojení je neexistence aktivní údržby. Proto se v tomto článku zaměřte na to, jak ověřit a aktivně udržovat připojení S2S VPN, které provádí zálohování privátního partnerského vztahu ExpressRoute.
 
 >[!NOTE] 
->Když je daná trasa inzerována prostřednictvím ExpressRoute i VPN, Azure by dal přednost směrování přes ExpressRoute.  
+>V případě inzerce dané trasy prostřednictvím ExpressRoute i VPN by Azure chtěl upřednostnit směrování přes ExpressRoute.  
 >
 
-V tomto článku se podíváme, jak ověřit připojení z hlediska Azure a z hlediska okrajové sítě na straně zákazníka. Možnost ověření z obou kont ů pomůže bez ohledu na to, zda spravujete síťová zařízení na straně zákazníka, která jsou partnerem síťových entit společnosti Microsoft. 
+V tomto článku se podíváme, jak ověřit konektivitu z perspektivy Azure a perspektivy hraniční sítě pro zákazníky. Možnost ověření z obou konců vám pomůže bez ohledu na to, jestli spravujete zařízení se sítí na straně zákazníka, která jsou rovnocenná entitám sítě Microsoftu. 
 
-## <a name="example-topology"></a>Příklad topologie
+## <a name="example-topology"></a>Ukázková topologie
 
-V našem nastavení máme místní síť připojenou k virtuální síti Azure hub uprostřed prostřednictvím okruhu ExpressRoute i připojení S2S VPN. Virtuální síť azure rozbočovače se zase přeřazuje do virtuální sítě s paprsky, jak je znázorněno na obrázku níže:
+V naší instalaci máme místní síť připojenou k virtuální síti centra Azure přes okruh ExpressRoute a připojení VPN S2S. Virtuální síť centra Azure je v partnerském vztahu k virtuální síti paprsků, jak je znázorněno na následujícím obrázku:
 
 ![1][1]
 
-V nastavení je okruh ExpressRoute ukončen na dvojici směrovačů "Customer Edge" (CE) v místním prostředí. Místní síť LAN je připojena k CE routerům prostřednictvím dvojice firewallů, které pracují v režimu leader-follower. S2S VPN je přímo ukončena na firewallech.
+V nastavení se okruh ExpressRoute ukončí na páru směrovačů "zákazník Edge" (CE) v místním prostředí. Místní síť LAN je připojená k směrovačům CE prostřednictvím dvojice bran firewall, které fungují v režimu vedoucího procesu následného řízení. S2S VPN se v bránách firewall přímo ukončí.
 
-V následující tabulce jsou uvedeny klíčové předpony IP topologie:
+V následující tabulce jsou uvedeny klíčové předpony IP pro topologii:
 
 | **Entita** | **Předpona** |
 | --- | --- |
 | Místní síť LAN | 10.1.11.0/25 |
-| Virtuální síť Azure Hub | 10.17.11.0/25 |
-| Virtuální síť s paprsky Azure | 10.17.11.128/26 |
+| Virtuální síť centra Azure | 10.17.11.0/25 |
+| Virtuální síť Azure s paprsky | 10.17.11.128/26 |
 | Místní testovací server | 10.1.11.10 |
-| Virtuální virtuální virtuální síť pro paprsky | 10.17.11.132 |
-| Primární podsíť podsítě ExpressRoute p2p | 192.168.11.16/30 |
-| Sekundární připojení ExpressRoute podsíť p2p | 192.168.11.20/30 |
-| Primární IP adresa partnera BGP brány VPN | 10.17.11.76 |
-| Sekundární IP adresa partnera protokolu BGP brány VPN | 10.17.11.77 |
-| Místní ip adresa partnera VPN BGP sítě VPN | 192.168.11.88 |
-| Primární CE router i/f směrem k firewallu IP | 192.168.11.0/31 |
-| Firewall i/f směrem k primárnímu CE routeru IP | 192.168.11.1/31 |
-| Sekundární CE router i/f směrem k firewallu IP | 192.168.11.2/31 |
-| Firewall i/f směrem k sekundárnímu CE routeru IP | 192.168.11.3/31 |
+| Virtuální počítač testu virtuální sítě | 10.17.11.132 |
+| Podsíť P2P pro primární připojení ExpressRoute | 192.168.11.16/30 |
+| Podsíť P2P pro sekundární připojení ExpressRoute | 192.168.11.20/30 |
+| IP adresa primárního partnerského uzlu BGP brány VPN | 10.17.11.76 |
+| Sekundární IP adresa partnerského uzlu protokolu BGP brány VPN | 10.17.11.77 |
+| Místní IP adresa partnerského uzlu BGP brány firewall sítě VPN | 192.168.11.88 |
+| Primární směrovač CE i/f směrem k IP adrese brány firewall | 192.168.11.0/31 |
+| Brána firewall i/f směrem k IP adrese primárního směrovače CE | 192.168.11.1/31 |
+| Sekundární směrovač CE i/f směrem k IP adrese brány firewall | 192.168.11.2/31 |
+| I/f brány firewall k sekundární IP adrese směrovače CE | 192.168.11.3/31 |
 
 
-V následující tabulce jsou uvedeny seznamy ASN topologie:
+V následující tabulce je uveden seznam čísla ASN topologie:
 
-| **Autonomní systém** | **Asn** |
+| **Autonomní systém** | **ASN** |
 | --- | --- |
 | Lokálně | 65020 |
-| Microsoft Enterprise Edge | 12076 |
-| Virtuální síť GW (ExR) | 65515 |
-| Virtuální síť GW (VPN) | 65515 |
+| Microsoft Edge | 12076 |
+| Virtual Network GS (ExR) | 65515 |
+| Virtual Network GS (VPN) | 65515 |
 
-## <a name="high-availability-without-asymmetricity"></a>Vysoká dostupnost bez asymetrie
+## <a name="high-availability-without-asymmetricity"></a>Vysoká dostupnost bez asymetrického použití
 
 ### <a name="configuring-for-high-availability"></a>Konfigurace pro vysokou dostupnost
 
-[Konfigurace koexistujících připojení ExpressRoute a Site-to-Site][Conf-CoExist] popisuje, jak nakonfigurovat koexistující okruh ExpressRoute a připojení VPN S2S. Jak jsme diskutovali v [navrhování pro vysokou dostupnost s ExpressRoute][HA], ke zlepšení ExpressRoute vysokou dostupnost naše nastavení udržuje redundanci sítě (zabraňuje jeden bod selhání) celou cestu až do koncových bodů. Také primární a sekundární připojení obvodů ExpressRoute jsou konfigurovány tak, aby fungovaly v aktivním aktivním režimu inzeruje místní předpony stejným způsobem prostřednictvím obou připojení. 
+[Konfigurace ExpressRoute a současně existujících připojení typu Site-to-site][Conf-CoExist] popisuje, jak nakonfigurovat existující okruh ExpressRoute a připojení S2S VPN. Jak jsme probrali v tématu [navrhování pro zajištění vysoké dostupnosti s ExpressRoute][HA], aby se zlepšila vysoká dostupnost ExpressRoute, naše nastavení udržuje redundanci sítě (nezpůsobuje selhání jednoho bodu) až do koncových bodů. I primární i sekundární připojení okruhu ExpressRoute jsou taky nakonfigurovaná tak, aby fungovala v režimu aktivní-aktivní díky inzerování místních předpon stejným způsobem prostřednictvím obou připojení. 
 
-Místní inzerování tras primárního ce routeru prostřednictvím primárního připojení okruhu ExpressRoute je uvedeno níže (junos příkazy):
+Místní oznámení o trasách primárního směrovače CE prostřednictvím primárního připojení okruhu ExpressRoute se zobrazuje níže (příkazy Junos):
 
     user@SEA-MX03-01> show route advertising-protocol bgp 192.168.11.18 
 
@@ -77,7 +77,7 @@ Místní inzerování tras primárního ce routeru prostřednictvím primárníh
       Prefix                  Nexthop              MED     Lclpref    AS path
     * 10.1.11.0/25            Self                                    I
 
-Místní inzerování tras sekundárního CE routeru prostřednictvím sekundárního připojení okruhu ExpressRoute je uvedeno níže (Junos příkazy):
+Místní oznámení o trasách sekundárního směrovače CE prostřednictvím sekundárního připojení okruhu ExpressRoute se zobrazuje níže (příkazy Junos):
 
     user@SEA-MX03-02> show route advertising-protocol bgp 192.168.11.22 
 
@@ -85,11 +85,11 @@ Místní inzerování tras sekundárního CE routeru prostřednictvím sekundár
       Prefix                  Nexthop              MED     Lclpref    AS path
     * 10.1.11.0/25            Self                                    I
 
-Chcete-li zlepšit vysokou dostupnost připojení zálohování, s2S VPN je také nakonfigurován v aktivním aktivním režimu. Konfigurace brány Azure VPN je uvedená níže. Poznámka: Jako součást konfigurace VPN VPN jsou také uvedeny IP adresy Druhé strany Protokolu BGP brány--10.17.11.76 a 10.17.11.77--.
+Pro zvýšení vysoké dostupnosti záložního připojení je síť VPN S2S taky nakonfigurovaná v režimu aktivní-aktivní. Níže je uvedená konfigurace Azure VPN Gateway. Poznámka: v rámci sítě VPN konfigurace sítě VPN jsou uvedeny i IP adresy partnerského uzlu protokolu BGP brány--10.17.11.76 a 10.17.11.77--.
 
 ![2][2]
 
-Místní trasa je inzerována bránami firewall pro primární a sekundární partnery Protokolu BGP brány VPN. Inzerování tras je uvedeno níže (Junos):
+Místní trasu inzerují brány firewall k primárním a sekundárním partnerským partnerům protokolu BGP brány VPN. Inzerce tras se zobrazuje níže (Junos):
 
     user@SEA-SRX42-01> show route advertising-protocol bgp 10.17.11.76 
 
@@ -105,16 +105,16 @@ Místní trasa je inzerována bránami firewall pro primární a sekundární pa
     * 10.1.11.0/25            Self                                    I
 
 >[!NOTE] 
->Konfigurace sítě S2S VPN v aktivním aktivním režimu poskytuje nejen vysokou dostupnost pro připojení k síti zálohování zotavení po havárii, ale také poskytuje vyšší propustnost pro připojení zálohy. Jinými slovy, konfigurace S2S VPN v aktivním aktivním režimu se doporučuje, protože vynutí vytvoření více podkladových tunelů.
+>Konfigurace S2S VPN v režimu aktivní-aktivní neposkytuje vysokou dostupnost připojení k síti zálohování pro zotavení po havárii, ale také poskytuje vyšší propustnost připojení k zálohování. Jinými slovy konfigurace S2S VPN v režimu aktivní-aktivní se doporučuje, protože vynutí vytvoření několika podkladových tunelů.
 >
 
-### <a name="configuring-for-symmetric-traffic-flow"></a>Konfigurace pro symetrický tok provozu
+### <a name="configuring-for-symmetric-traffic-flow"></a>Konfigurace pro tok symetrického provozu
 
-Všimli jsme si, že když je daná místní trasa inzerována prostřednictvím ExpressRoute i S2S VPN, Azure by dal přednost cestě ExpressRoute. Chcete-li vynutit Azure preferovat cestu S2S VPN přes koexistující ExpressRoute, je třeba inzerovat konkrétnější trasy (delší předponu s větší maskou podsítě) prostřednictvím připojení VPN. Naším cílem je použít připojení VPN pouze jako záda. Výchozí chování výběru cesty Azure je tedy v souladu s naším cílem. 
+Poznamenali jsme, že když je daná místní trasa inzerována prostřednictvím sítě VPN ExpressRoute i S2S, Azure by preferovat cestu ExpressRoute. Pokud chcete vynutit, aby Azure preferovat S2S VPN cestou přes kostávající ExpressRoute, je potřeba prostřednictvím připojení VPN inzerovat konkrétnější trasy (delší předponu s větší maskou podsítě). Naším cílem je, aby se připojení VPN používala jenom zpátky. Proto je výchozí chování při výběru cesty v Azure v souladu s naším cílem. 
 
-Je naší odpovědností zajistit, aby provoz určený do Azure z místního prostředí také upřednostňoval cestu ExpressRoute před S2S VPN. Výchozí místní preference ce směrovačů a firewallů v našem místním nastavení je 100. Takže konfigurací místní předvolby tras přijatých prostřednictvím expressroute soukromé partnerské společnosti větší než 100 (řekněme 150), můžeme způsobit, že provoz určený pro Azure preferuje okruh ExpressRoute v ustáleném stavu.
+Je naše zodpovědnost za to, že přenos, který je určený pro Azure z místního prostředí, taky upřednostňuje ExpressRoute cestu přes S2S VPN. Výchozí místní preference směrovačů CE a bran firewall v naší místní instalaci jsou 100. Pokud tedy nakonfigurujete místní preference tras přijatých prostřednictvím privátních partnerských vztahů ExpressRoute větší než 100 (řekněme 150), můžeme provoz určený pro Azure preferovat ExpressRoute okruh ve stabilním stavu.
 
-Konfigurace Protokolu BGP primárního směrovače CE, který ukončí primární připojení okruhu ExpressRoute, je uvedena níže. Všimněte si, že hodnota místní předvolby tras inzerovaných v průběhu relace iBGP je nakonfigurována jako 150. Podobně musíme zajistit, aby místní preference sekundárního CE routeru, který ukončí sekundární připojení okruhu ExpressRoute, byla také nakonfigurována na 150.
+Konfigurace protokolu BGP primárního směrovače CE, který ukončuje primární připojení okruhu ExpressRoute, je uvedená níže. Všimněte si, že hodnota místní předvolby tras inzerovaných v relaci iBGP je nakonfigurovaná tak, aby byla 150. Podobně je potřeba zajistit, aby byla místní priorita sekundárního směrovače CE, která ukončuje sekundární připojení okruhu ExpressRoute, taky nakonfigurovaná tak, aby byla 150.
 
     user@SEA-MX03-01> show configuration routing-instances Cust11 
     description "Customer 11 VRF";
@@ -139,7 +139,7 @@ Konfigurace Protokolu BGP primárního směrovače CE, který ukončí primárn�
       }
     }
 
-Směrovací tabulka místních bran firewall potvrzuje (viz níže), že pro místní provoz, který je určen pro Azure upřednostňované cesty je přes ExpressRoute v ustáleném stavu.
+Směrovací tabulka místních bran firewall potvrzuje (viz níže), které jsou pro místní provoz určené pro Azure upřednostňovanou cestou nad ExpressRoute ve stabilním stavu.
 
     user@SEA-SRX42-01> show route table Cust11.inet.0 10.17.11.0/24    
 
@@ -177,11 +177,11 @@ Směrovací tabulka místních bran firewall potvrzuje (viz níže), že pro mí
                           AS path: 65515 I, validation-state: unverified
                         > via st0.119
 
-Ve výše uvedené tabulce tras pro trasy virtuální sítě rozbočovače a paprsku --10.17.11.0/25 a 10.17.11.128/26 -- vidíme, že okruh ExpressRoute je upřednostňován před připojením VPN. Jedničky 192.168.11.0 a 192.168.11.2 jsou IP adresy na rozhraní brány firewall směrem k ce routerům.
+Ve výše uvedené tabulce směrování pro trasy virtuální sítě rozbočovače a paprsků – 10.17.11.0/25 a 10.17.11.128/26 – uvidíme, že u připojení VPN se upřednostňuje okruh ExpressRoute. 192.168.11.0 a 192.168.11.2 jsou IP adresy na rozhraní brány firewall směrem k ES.
 
-## <a name="validation-of-route-exchange-over-s2s-vpn"></a>Ověření výměny tras přes S2S VPN
+## <a name="validation-of-route-exchange-over-s2s-vpn"></a>Ověření metody Route Exchange přes S2S VPN
 
-Dříve v tomto článku jsme ověřili místní inzerování tras brány firewall primárním a sekundárním partnerům protokolu BGP brány VPN. Kromě toho potvrdíme trasy Azure přijaté branami firewall od primárních a sekundárních partnerů Protokolu BGP brány VPN.
+Dříve v tomto článku jsme ověřili místní oznámení o trasách bran firewall k primárním a sekundárním partnerským partnerům protokolu BGP služby VPN Gateway. Pojďme taky potvrdit trasy Azure přijaté branami firewall od primárních a sekundárních partnerských uzlů protokolu BGP služby VPN Gateway.
 
     user@SEA-SRX42-01> show route receive-protocol bgp 10.17.11.76 table Cust11.inet.0 
 
@@ -198,7 +198,7 @@ Dříve v tomto článku jsme ověřili místní inzerování tras brány firewa
       10.17.11.0/25           10.17.11.77                             65515 I
       10.17.11.128/26         10.17.11.77                             65515 I
 
-Podobně pojďme ověřit místní předpony síťových tras přijatých bránou Azure VPN. 
+Podobně je možné ověřit předpony tras místní sítě přijaté bránou Azure VPN. 
 
     PS C:\Users\user> Get-AzVirtualNetworkGatewayLearnedRoute -ResourceGroupName SEA-Cust11 -VirtualNetworkGatewayName SEA-Cust11-VNet01-gw-vpn | where {$_.Network -eq "10.1.11.0/25"} | select Network, NextHop, AsPath, Weight
 
@@ -213,9 +213,9 @@ Podobně pojďme ověřit místní předpony síťových tras přijatých bráno
     10.1.11.0/25 10.17.11.69   12076-65020  32769
     10.1.11.0/25 10.17.11.69   12076-65020  32769
 
-Jak je vidět výše, brána VPN má trasy přijaté primárními i sekundárními partnery Protokolu BGP brány VPN. Má také viditelnost přes trasy přijaté prostřednictvím primárních a sekundárních expressroute připojení (ty s AS-cesta před12076). Chcete-li potvrdit trasy přijaté prostřednictvím připojení VPN, potřebujeme znát místní IP adresy partnera Protokolu BGP připojení. V našem nastavení v úvahu, je to 192.168.11.88 a vidíme trasy přijaté z něj.
+Jak vidíte výše, brána sítě VPN obsahuje trasy přijaté primárním i sekundárním partnerským uzlem protokolu BGP brány VPN. Má také přehled o trasách přijatých prostřednictvím primárních a sekundárních připojení ExpressRoute (ta se stejnou cestou představila 12076). Abychom potvrdili, že trasy byly přijaty prostřednictvím připojení VPN, musíme znát místní IP adresu partnerského uzlu BGP připojení. V našem nastavení je 192.168.11.88 a my se zobrazuje z něj přijaté trasy.
 
-Dále ověřme trasy inzerované bránou Azure VPN do místního partnera Protokolu BGP brány firewall (192.168.11.88).
+V dalším kroku ověříte trasy inzerované bránou Azure VPN na místní partnerský uzel BGP brány firewall (192.168.11.88).
 
     PS C:\Users\user> Get-AzVirtualNetworkGatewayAdvertisedRoute -Peer 192.168.11.88 -ResourceGroupName SEA-Cust11 -VirtualNetworkGatewayName SEA-Cust11-VNet01-gw-vpn |  select Network, NextHop, AsPath, Weight
 
@@ -227,17 +227,17 @@ Dále ověřme trasy inzerované bránou Azure VPN do místního partnera Protok
     10.17.11.128/26 10.17.11.77 65515       0
 
 
-Nezobrazení výměny tras indikuje selhání připojení. Viz [Řešení potíží: Připojení VPN azure site-to-site se nemůže připojit a přestane pracovat][VPN Troubleshoot] s nápovědou k řešení potíží s připojením VPN.
+Nepovedlo se zobrazit výměny tras, což znamená selhání připojení. Další informace najdete v tématu [řešení potíží: připojení VPN typu Site-to-Site VPN se nemůže připojit a přestane fungovat,][VPN Troubleshoot] Pokud potřebujete pomoc s řešením potíží s připojením VPN.
 
 ## <a name="testing-failover"></a>Testování převzetí služeb při selhání
 
-Nyní, když jsme potvrdili úspěšné výměny tras přes připojení VPN (řídicí rovina), jsme připraveni přepnout provoz (rovinu dat) z připojení ExpressRoute na připojení VPN. 
+Teď, když jsme potvrdili úspěšné pokusy o vystavování tras přes připojení VPN (řídicí plocha), jsme nastavili přepínání přenosů (roviny dat) od připojení ExpressRoute k připojení VPN. 
 
 >[!NOTE] 
->V produkčních prostředích je nutné provést testování převzetí služeb při selhání během plánovaného pracovního okna údržby sítě, protože může být rušivé pro služby.
+>V produkčních prostředích se testování převzetí služeb při selhání musí provést během plánovaného časového období údržby sítě, protože může být služba přerušená.
 >
 
-Před spuštěním přepínače provozu trasujme aktuální cestu v našem nastavení z místního testovacího serveru do testovacího virtuálního počítače ve virtuální síti s paprskem.
+Předtím, než provedete přepínač provozu, sledujeme trasu aktuální cesty v naší instalaci z místního testovacího serveru do testovacího virtuálního počítače ve virtuální síti rozbočovače.
 
     C:\Users\PathLabUser>tracert 10.17.11.132
 
@@ -251,15 +251,15 @@ Před spuštěním přepínače provozu trasujme aktuální cestu v našem nasta
 
     Trace complete.
 
-Primární a sekundární podsítě připojení ExpressRoute point-to-point našeho nastavení jsou 192.168.11.16/30 a 192.168.11.20/30. Ve výše uvedené trasovací trase, v kroku 3 vidíme, že jsme bít 192.168.11.18, což je rozhraní IP primární MSEE. Přítomnost rozhraní MSEE potvrzuje, že podle očekávání je naše aktuální cesta přes ExpressRoute.
+Primární a sekundární podsítě ExpressRoute připojení typu Point-to-Point našeho nastavení jsou v uvedeném pořadí 192.168.11.16/30 a 192.168.11.20/30. V výše uvedeném postupu trasování se v kroku 3 zobrazuje, že jsme rádi 192.168.11.18, což je IP adresa rozhraní primárního MSEE. Přítomnost rozhraní MSEE potvrdí, že aktuální cesta je nad ExpressRoute.
 
-Jak je uvedeno v [partnerských linkách okruhu Reset ExpressRoute][RST], použijte následující příkazy prostředí powershell uzakázat primární i sekundární partnerský vztah okruhu ExpressRoute.
+Jak je uvedeno v části [resetování partnerských okruhů ExpressRoute][RST], pomocí následujících příkazů PowerShellu zakažte primární i sekundární partnerský vztah okruhu ExpressRoute.
 
     $ckt = Get-AzExpressRouteCircuit -Name "expressroute name" -ResourceGroupName "SEA-Cust11"
     $ckt.Peerings[0].State = "Disabled"
     Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 
-Doba přepnutí převzetí služeb při selhání závisí na době konvergence protokolu BGP. V našem nastavení přepínač převzetí služeb při selhání trvá několik sekund (méně než 10). Po přepínači opakování traceroute ukazuje následující cestu:
+Doba přepínání převzetí služeb při selhání závisí na době konvergence protokolu BGP. V naší instalaci trvá přepínač převzetí služeb při selhání několik sekund (méně než 10). Po přepínači opakuje traceroute zobrazení následující cesty:
 
     C:\Users\PathLabUser>tracert 10.17.11.132
 
@@ -271,25 +271,25 @@ Doba přepnutí převzetí služeb při selhání závisí na době konvergence 
 
     Trace complete.
 
-Výsledek traceroute potvrzuje, že záložní připojení přes S2S VPN je aktivní a může poskytnout kontinuitu služby, pokud primární i sekundární ExpressRoute připojení nezdaří. Chcete-li dokončit testování převzetí služeb při selhání, povolte připojení ExpressRoute zpět a normalizujte tok provozu pomocí následující sady příkazů.
+Výsledkem traceroute je potvrzení, že záložní připojení prostřednictvím S2S VPN je aktivní a může zajistit kontinuitu služeb, pokud dojde k selhání primárních i sekundárních připojení ExpressRoute. Aby bylo možné provést testování převzetí služeb při selhání, umožněte ExpressRoute připojení zpět a Normalizujte tok přenosů pomocí následující sady příkazů.
 
     $ckt = Get-AzExpressRouteCircuit -Name "expressroute name" -ResourceGroupName "SEA-Cust11"
     $ckt.Peerings[0].State = "Enabled"
     Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 
-Chcete-li potvrdit, že provoz je přepnut zpět na ExpressRoute, opakujte traceroute a ujistěte se, že prochází ExpressRoute soukromé peering.
+Pokud chcete potvrdit, že se provoz přepne zpátky na ExpressRoute, opakujte traceroute a ujistěte se, že prochází přes soukromý partnerský vztah ExpressRoute.
 
 ## <a name="next-steps"></a>Další kroky
 
-ExpressRoute je určen pro vysokou dostupnost bez jediného bodu selhání v rámci sítě společnosti Microsoft. Okruh ExpressRoute je stále omezen na jednu zeměpisnou oblast a na poskytovatele služeb. S2S VPN může být dobrým řešením pasivního zálohování zotavení po havárii pro okruh ExpressRoute. Pro spolehlivé řešení pasivního zálohování připojení je důležitá pravidelná údržba pasivní konfigurace a pravidelné ověřování připojení. Je nezbytné, aby konfigurace VPN stala zastaralou a pravidelně (řekněme každé čtvrtletí) opakovat kroky ověření a převzetí služeb při selhání popsané v tomto článku během okna údržby.
+ExpressRoute je navržená pro vysokou dostupnost bez jednoho bodu selhání v síti Microsoftu. Okruh ExpressRoute je stále omezen na jednu geografickou oblast a na poskytovatele služeb. S2S VPN může být dobrým řešením pro zotavení po havárii do okruhu ExpressRoute. Pro závislé řešení pasivního zálohovacího připojení je důležité pravidelnou údržbu pasivní konfigurace a pravidelného ověřování připojení. Není nutné, aby konfigurace sítě VPN byla zastaralá a pravidelně (například každé čtvrtletí) opakovala kroky pro ověření a převzetí služeb při selhání, které jsou popsané v tomto článku, během časového období údržby.
 
-Informace o povolení monitorování a výstrah založených na metrikách brány VPN najdete v [tématu Nastavení výstrah na metriky brány VPN][VPN-alerts].
+Pokud chcete povolit monitorování a výstrahy na základě metrik brány VPN Gateway, přečtěte si téma [Nastavení výstrah pro VPN Gateway metriky][VPN-alerts].
 
-Chcete-li urychlit konvergenci protokolu BGP po selhání expressroute, [nakonfigurujte BFD přes ExpressRoute][BFD].
+Pro urychlení konvergence BGP po ExpressRoute selhání [NAKONFIGURUJTE BFD přes ExpressRoute][BFD].
 
 <!--Image References-->
-[1]: ./media/use-s2s-vpn-as-backup-for-expressroute-privatepeering/topology.png "topologie v úvahu"
-[2]: ./media/use-s2s-vpn-as-backup-for-expressroute-privatepeering/vpn-gw-config.png "Konfigurace VPN GW"
+[1]: ./media/use-s2s-vpn-as-backup-for-expressroute-privatepeering/topology.png "uvažované topologie"
+[2]: ./media/use-s2s-vpn-as-backup-for-expressroute-privatepeering/vpn-gw-config.png "Konfigurace GS sítě VPN"
 
 <!--Link References-->
 [DR-PP]: https://docs.microsoft.com/azure/expressroute/designing-for-disaster-recovery-with-expressroute-privatepeering

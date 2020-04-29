@@ -1,6 +1,6 @@
 ---
-title: Přidání osobního účtu Microsoft do aplikace Microsoft Authenticator – Azure AD
-description: Přidejte do aplikace Microsoft Authenticator osobní účty Microsoft, například pro Outlook.com nebo Xbox LIVE, abyste ověřili svou identitu při použití dvoufaktorového ověřování.
+title: Přidání osobního účet Microsoft do aplikace Microsoft Authenticator – Azure AD
+description: Přidejte osobní účty Microsoft, například pro Outlook.com nebo Xbox LIVE do aplikace Microsoft Authenticator k ověření vaší identity při použití dvojúrovňového ověřování.
 services: active-directory
 author: curtand
 manager: daveba
@@ -12,64 +12,64 @@ ms.date: 04/08/2020
 ms.author: curtand
 ms.reviewer: olhaun
 ms.openlocfilehash: cef4f83881aed67c46477110de530bbf191ee39f
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80984733"
 ---
 # <a name="add-personal-microsoft-accounts-to-the-microsoft-authenticator-app"></a>Přidání osobních účtů Microsoft do aplikace Microsoft Authenticator
 
-Přidejte své osobní účty Microsoft, například pro Outlook.com a Xbox LIVE, do aplikace Microsoft Authenticator pro standardní dvoufaktorový proces ověřování i přihlášení telefonu bez hesla.
+Přidejte své osobní účty Microsoft, například pro účty Outlook.com a Xbox LIVE, do aplikace Microsoft Authenticator pro standardní proces ověřování dvou procesorů a pro přihlášení bez hesla pro telefonování.
 
-- **Standardní metoda dvoufaktorového ověřování.** Do zařízení, ke které se přihlašujete, zadejte své uživatelské jméno a heslo a pak zvolte, jestli aplikace Microsoft Authenticator odešle oznámení nebo jestli chcete zkopírovat přidružený ověřovací kód z obrazovky **Účty** aplikace Microsoft Authenticator.
+- **Standardní metoda ověřování dvou faktorů.** Zadejte své uživatelské jméno a heslo do zařízení, ke kterému se přihlašujete, a pak zvolte, jestli Microsoft Authenticator Aplikace pošle oznámení, nebo pokud byste chtěli zkopírovat přidružený ověřovací kód z obrazovky **účtů** aplikace Microsoft Authenticator.
 
-- **Metoda přihlášení bez hesla.** Zadejte své uživatelské jméno do zařízení, ke kterému se přihlašujete, abyste používali svůj osobní účet Microsoft, a pak pomocí mobilního zařízení ověřte, že jste to vy, kteří používáte otisk prstu, obličej nebo PIN kód. Pro tuto metodu není nutné zadávat heslo.
+- **Metoda přihlašování v neheslech** Zadejte své uživatelské jméno do zařízení, ke kterému se přihlašujete, pomocí osobního účet Microsoft a pak použijte své mobilní zařízení, abyste ověřili, že používáte otisk prstu, obličeje nebo PIN. Pro tuto metodu není nutné zadávat heslo.
 
 >[!Important]
->Před přidáním účtu je nutné stáhnout a nainstalovat aplikaci Microsoft Authenticator. Pokud jste to ještě neudělali, postupujte podle pokynů v článku [Ke stažení a instalaci aplikace.](user-help-auth-app-download-install.md)
+>Než budete moct přidat svůj účet, musíte si stáhnout a nainstalovat aplikaci Microsoft Authenticator. Pokud jste to ještě neudělali, postupujte podle kroků v článku [Stažení a instalace aplikace](user-help-auth-app-download-install.md) .
 
-Svůj osobní účet Microsoft můžete přidat tak, že nejprve zapnete dvoufaktorové ověření a pak účet přidáte do aplikace. Nemusíte zapínat dvoufaktorové ověřování, abyste pro svůj účet používali pouze přihlašování bez hesla, ale důrazně doporučujeme zapnout dvoufaktorové ověření pro další zabezpečení účtu.
+Vlastní účet Microsoft můžete přidat tak, že nejprve zapnete dvojúrovňové ověřování a potom přidáte účet do aplikace. Nemusíte zapnout dvojúrovňové ověřování, abyste pro svůj účet mohli používat jenom přihlášení pro telefon bez hesla, ale důrazně doporučujeme, abyste pro další zabezpečení účtů zapnuli dvojúrovňové ověřování.
 
-## <a name="turn-on-two-factor-verification"></a>Zapnutí dvoufaktorového ověření
+## <a name="turn-on-two-factor-verification"></a>Zapnout dvojúrovňové ověřování
 
-1. Na počítači přejděte na stránku [Základy zabezpečení](https://account.microsoft.com/security) a přihlaste se pomocí svého osobního účtu Microsoft. Například, alain@outlook.com.
+1. Na svém počítači navštivte stránku [Základy zabezpečení](https://account.microsoft.com/security) a přihlaste se pomocí svých osobních účet Microsoft. Například, alain@outlook.com.
 
-2. V dolní části stránky **Základy zabezpečení** zvolte odkaz **další možnosti zabezpečení.**
+2. V dolní části stránky **Základy zabezpečení** klikněte na odkaz **Další možnosti zabezpečení** .
 
-    ![Stránka Základy zabezpečení se zvýrazněným odkazem "Další možnosti zabezpečení"](./media/user-help-auth-app-add-personal-ms-account/more-security-options-link.png)
+    ![Stránka základy zabezpečení s zvýrazněným odkazem další možnosti zabezpečení](./media/user-help-auth-app-add-personal-ms-account/more-security-options-link.png)
 
-3. Přejděte do části **Dvoustupňové ověření** a zvolte zapnutí **funkce**. Můžete jej také vypnout zde, pokud již nechcete používat s osobním účtem.
+3. **V**části **dvoustupňové ověřování** klikněte na možnost pro zapnutí funkce. Můžete ho také vypnout tady, pokud ho už nechcete používat s vaším osobním účtem.
 
-## <a name="add-your-microsoft-account-to-the-app"></a>Přidání účtu Microsoft do aplikace
+## <a name="add-your-microsoft-account-to-the-app"></a>Přidání účet Microsoft do aplikace
 
-1. Otevřete aplikaci Microsoft Authenticator na svém mobilním zařízení.
+1. Na svém mobilním zařízení otevřete aplikaci Microsoft Authenticator.
 
-1. V Systému Android vyberte **Přidat účet** z ikony Přizpůsobit **a řídit** v pravém horním seřízení.
+1. V Androidu v pravém horním rohu vyberte **Přidat účet** v ikoně **přizpůsobení a řízení** .
 
     ![Stránky pro výběr účtu Android](media/user-help-auth-app-add-personal-ms-account/customize-and-control-icon.png)
 
-    V iOS vyberte ikonu plus v pravém horním.
+    V systému iOS vyberte v pravém horním rohu ikonu se symbolem plus.
 
-    ![iOS verze prostředí pro výběr účtu](media/user-help-auth-app-add-personal-ms-account/customize-and-control-icon-ios.png)
+    ![verze iOS prostředí pro výběr účtu](media/user-help-auth-app-add-personal-ms-account/customize-and-control-icon-ios.png)
 
-1. Na stránce **Přidat účet** zvolte **Osobní účet**.
+1. Na stránce **Přidat účet** vyberte možnost **osobní účet**.
 
-1. Vyberte **Přihlásit se pomocí Microsoftu** a přidejte svůj účet. QR kód lze použít, pokud je k dispozici, ale vždy můžete přidat svůj účet po přihlášení pomocí uživatelského jména a hesla.
+1. Vyberte **Přihlásit se účtem Microsoft** pro přidání svého účtu. Kód QR se dá použít, když je dostupný, ale kdykoli můžete přidat svůj účet tím, že se přihlásíte pomocí uživatelského jména a hesla.
 
-    ![Vyberte účet Microsoft nebo naskenujte QR kód, pokud je k dispozici](media/user-help-auth-app-add-personal-ms-account/add-account-android.png)
+    ![Vyberte buď účet Microsoft, nebo naskenujte kód QR, pokud je k dispozici.](media/user-help-auth-app-add-personal-ms-account/add-account-android.png)
 
-1. Přihlaste se ke svému osobnímu účtu alain@outlook.compomocí příslušné e-mailové adresy (například) a pak vyberte **Další**.
+1. Přihlaste se k osobnímu účtu pomocí příslušné e-mailové adresy alain@outlook.com(například) a pak vyberte **Další**.
 
     >[!Note]
     >Pokud nemáte osobní účet Microsoft, [můžete si ho vytvořit](https://account.microsoft.com/account/Account?refd=www.bing.com&ru=https%3A%2F%2Faccount.microsoft.com%2F%3Frefd%3Dwww.bing.com&destrt=home-index).
 
-1. Zadejte heslo a pak **vyberte Přihlásit se**. Váš osobní účet se přidá do aplikace Microsoft Authenticator.
+1. Zadejte heslo a pak vyberte **Přihlásit**se. Váš osobní účet se přidá do aplikace Microsoft Authenticator.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Po přidání účtů do aplikace se můžete přihlásit pomocí aplikace Authenticator v zařízení. Další informace najdete [v tématu Přihlášení pomocí aplikace](user-help-auth-app-sign-in.md).
+- Po přidání účtů do aplikace se můžete přihlásit pomocí ověřovací aplikace na svém zařízení. Další informace najdete v tématu [přihlášení pomocí aplikace](user-help-auth-app-sign-in.md).
 
-- Pokud máte potíže se získáním ověřovacího kódu pro svůj osobní účet Microsoft, přečtěte si článek **Problémy s ověřovacím kódem řešení potíží** v článku [bezpečnostní údaje účtu Microsoft & ověřovací kódy.](https://support.microsoft.com/help/12428/microsoft-account-security-info-verification-codes)
+- Pokud máte potíže s získáním ověřovacího kódu pro osobní účet Microsoft, přečtěte si část **problémy s ověřovacím kódem pro řešení potíží** v článku [účet Microsoft informace o zabezpečení & ověřovací kódy](https://support.microsoft.com/help/12428/microsoft-account-security-info-verification-codes) .
 
-- U zařízení se systémem iOS můžete také zálohovat přihlašovací údaje k účtu a související nastavení aplikací, jako je pořadí vašich účtů, do cloudu. Další informace naleznete v [tématu Zálohování a obnovení pomocí aplikace Microsoft Authenticator](user-help-auth-app-backup-recovery.md).
+- U zařízení se systémem iOS můžete také zálohovat přihlašovací údaje účtu a související nastavení aplikace, jako je například pořadí účtů, do cloudu. Další informace najdete v tématu [zálohování a obnovení pomocí aplikace Microsoft Authenticator](user-help-auth-app-backup-recovery.md).

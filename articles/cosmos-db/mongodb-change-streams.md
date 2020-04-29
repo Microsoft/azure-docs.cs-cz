@@ -1,6 +1,6 @@
 ---
-title: Změna datových proudů v rozhraní API Služby Azure Cosmos DB pro MongoDB
-description: Zjistěte, jak používat datové proudy změn v rozhraní API Azure Cosmos DB pro MongoDB k získání změn provedených v datech.
+title: Změna datových proudů v rozhraní Azure Cosmos DB API pro MongoDB
+description: Naučte se, jak pomocí rozhraní Change Streams v rozhraní Azure Cosmos DB API pro MongoDB získat změny provedené ve vašich datech.
 author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
@@ -8,44 +8,44 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: tisande
 ms.openlocfilehash: 38e262abefe5444c1fe7586810f4b971cc7baf6c
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81114154"
 ---
-# <a name="change-streams-in-azure-cosmos-dbs-api-for-mongodb"></a>Změna datových proudů v rozhraní API Služby Azure Cosmos DB pro MongoDB
+# <a name="change-streams-in-azure-cosmos-dbs-api-for-mongodb"></a>Změna datových proudů v rozhraní Azure Cosmos DB API pro MongoDB
 
-[Podpora kanálu změn](change-feed.md) v rozhraní API Azure Cosmos DB pro MongoDB je dostupná pomocí rozhraní API datových proudů změn. Pomocí rozhraní API datových proudů změn, vaše aplikace můžete získat změny provedené v kolekci nebo položky v jednom oddílu. Později můžete provést další akce na základě výsledků. Změny položek v kolekci jsou zachyceny v pořadí jejich čas úpravy a pořadí řazení je zaručena na klíč střepu.
+Podpora [kanálů změn](change-feed.md) v rozhraní Azure Cosmos DB API pro MongoDB je k dispozici prostřednictvím rozhraní API Change Streams. Pomocí rozhraní Change Streams API můžou vaše aplikace získat změny provedené v kolekci nebo na položky v jednom horizontálních oddílů. Později můžete na základě výsledků provádět další akce. Změny položek v kolekci jsou zachyceny v pořadí podle doby jejich úpravy a je zaručeno pořadí řazení podle horizontálních oddílů klíče.
 
 > [!NOTE]
-> Chcete-li použít datové proudy změn, vytvořte účet s verzí 3.6 rozhraní API Azure Cosmos DB pro MongoDB nebo novější verzi. Pokud spustíte příklady datového proudu změn proti `Unrecognized pipeline stage name: $changeStream` starší verzi, může se zobrazit chyba.
+> Chcete-li použít změnu datových proudů, vytvořte účet s verzí 3,6 rozhraní API Azure Cosmos DB pro MongoDB nebo novější verzi. Pokud spustíte příklady pro Stream změn v předchozí verzi, může se `Unrecognized pipeline stage name: $changeStream` zobrazit chyba.
 
 ## <a name="current-limitations"></a>Aktuální omezení
 
-Následující omezení platí při použití datových proudů změn:
+Při použití datových proudů změn platí následující omezení:
 
-* `operationType` Vlastnosti `updateDescription` a ještě nejsou podporovány ve výstupním dokumentu.
-* Typy `insert` `update`, `replace` a operace jsou aktuálně podporovány. 
-* Operace odstranění nebo jiné události ještě nejsou podporovány.
+* Vlastnosti `operationType` a `updateDescription` se zatím nepodporují ve výstupním dokumentu.
+* Typy `insert`operací `update`, a `replace` jsou aktuálně podporovány. 
+* Operace odstranění nebo jiné události ještě nejsou podporované.
 
-Z důvodu těchto omezení jsou vyžadovány $match fáze, $project fáze a fullDocument možnosti, jak je znázorněno v předchozích příkladech.
+V důsledku těchto omezení jsou vyžadovány $match fáze, $project fáze a možnosti fullDocument, jak je znázorněno v předchozích příkladech.
 
-Na rozdíl od kanálu změn v rozhraní SQL API služby Azure Cosmos DB neexistuje samostatná [knihovna procesoru kanálu změn,](change-feed-processor.md) která by spotřebovávala datové proudy změn nebo potřeba zapůjčení kontejneru. V současné době není podpora [pro Azure Functions aktivační události](change-feed-functions.md) pro zpracování datových proudů změn.
+Na rozdíl od kanálu změn v rozhraní SQL API Azure Cosmos DB není k dispozici samostatná [Knihovna pro změny kanálu](change-feed-processor.md) , která by mohla využívat datové proudy změn, nebo vyžaduje kontejner zapůjčení. V současné době není podporovaná podpora pro [Azure Functions triggery](change-feed-functions.md) pro zpracování datových proudů změn.
 
 ## <a name="error-handling"></a>Zpracování chyb
 
-Při použití datových proudů změn jsou podporovány následující kódy chyb a zprávy:
+Při použití datových proudů změn jsou podporovány následující chybové kódy a zprávy:
 
-* **Kód chyby HTTP 16500** - Při omezení datového proudu změn vrátí prázdnou stránku.
+* **Kód chyby HTTP 16500** – Pokud je datový proud změny omezený, vrátí prázdnou stránku.
 
-* **NamespaceNotFound (OperationType Invalidate)** - Pokud spustíte datový proud změny v kolekci, `NamespaceNotFound` která neexistuje, nebo pokud je kolekce vynechána, je vrácena chyba. Vzhledem `operationType` k tomu, že vlastnost nemůže být `operationType Invalidate` vrácena `NamespaceNotFound` ve výstupním dokumentu, místo chyby je vrácena chyba.
+* **NamespaceNotFound (typem operace OperationType unvalidate)** – Pokud spustíte datový proud změn v kolekci, která neexistuje, nebo pokud je kolekce vyřazena, vrátí se `NamespaceNotFound` chyba. Vzhledem k `operationType` tomu, že vlastnost nemůže být vrácena ve výstupním dokumentu, `operationType Invalidate` místo chyby se `NamespaceNotFound` vrátí chyba.
 
 ## <a name="examples"></a>Příklady
 
-Následující příklad ukazuje, jak získat datové proudy změn na všechny položky v kolekci. Tento příklad vytvoří kurzor pro sledování položek při jejich vložení, aktualizaci nebo nahrazení. Fáze, `$match` `$project` fáze a `fullDocument` možnost jsou nutné k získání datových proudů změn. Sledování operací odstranění pomocí datových proudů změn není aktuálně podporováno. Jako řešení můžete přidat měkkou značku na položky, které jsou odstraněny. Můžete například přidat atribut v položce s názvem "odstraněno". Pokud chcete položku odstranit, můžete nastavit "deleted" `true` a nastavit ttl na položku. Vzhledem k tomu, že `true` aktualizace "odstraněno" je aktualizace, bude tato změna viditelná v datovém proudu změn.
+Následující příklad ukazuje, jak získat datové proudy změn pro všechny položky v kolekci. Tento příklad vytvoří kurzor pro sledování položek při jejich vložení, aktualizaci nebo nahrazení. K `$match` získání datových `$project` proudů změn `fullDocument` jsou vyžadovány fáze, fáze a možnosti. Sledování operací odstranění pomocí datových proudů není aktuálně podporováno. Jako alternativní řešení můžete přidat měkké označení pro položky, které se odstraňují. Můžete například přidat atribut v položce s názvem "odstraněno". Pokud chcete položku odstranit, můžete nastavit hodnotu "odstraněno" na `true` a nastavit hodnotu TTL pro položku. Vzhledem k tomu, že aktualizace `true` "Deleted" na aktualizaci je aktualizace, tato změna se zobrazí v datovém proudu změn.
 
-### <a name="javascript"></a>Javascript:
+### <a name="javascript"></a>JavaScriptu
 
 ```javascript
 var cursor = db.coll.watch(
@@ -83,9 +83,9 @@ while (enumerator.MoveNext()){
 enumerator.Dispose();
 ```
 
-## <a name="changes-within-a-single-shard"></a>Změny v rámci jednoho úlomku
+## <a name="changes-within-a-single-shard"></a>Změny v rámci jednoho horizontálních oddílů
 
-Následující příklad ukazuje, jak získat změny položek v rámci jednoho šmejdu. Tento příklad získá změny položek, které mají klíč střepu rovná "a" a hodnota klíče střepu rovná "1". Je možné mít různé klienty čtení změn z různých štírových dříčů paralelně.
+Následující příklad ukazuje, jak získat změny položek v rámci jednoho horizontálních oddílů. Tento příklad načte změny položek, které mají klíč horizontálních oddílů se rovná "a" a hodnotu klíče horizontálních oddílů rovnající se 1. Je možné, že různé klienty čtou změny z různých horizontálních oddílů paralelně.
 
 ```javascript
 var cursor = db.coll.watch(
@@ -106,5 +106,5 @@ var cursor = db.coll.watch(
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Využijte čas k automatickému vypršení platnosti dat v rozhraní API Azure Cosmos DB pro MongoDB](mongodb-time-to-live.md)
-* [Indexování v rozhraní API Služby Azure Cosmos DB pro MongoDB](mongodb-indexing.md)
+* [Využijte čas k automatickému vypršení platnosti dat v rozhraní Azure Cosmos DB API pro MongoDB](mongodb-time-to-live.md)
+* [Indexování v rozhraní API Azure Cosmos DB pro MongoDB](mongodb-indexing.md)

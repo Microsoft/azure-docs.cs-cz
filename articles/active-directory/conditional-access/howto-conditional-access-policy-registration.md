@@ -1,5 +1,5 @@
 ---
-title: Podmíněný přístup – kombinované informace o zabezpečení – Služba Azure Active Directory
+title: Podmíněný přístup – kombinované informace o zabezpečení – Azure Active Directory
 description: Vytvoření vlastní zásady podmíněného přístupu pro registraci bezpečnostních údajů
 services: active-directory
 ms.service: active-directory
@@ -12,60 +12,60 @@ manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9c8081bb8145a6654c168fb2d664e1666b32dc18
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81457905"
 ---
-# <a name="conditional-access-securing-security-info-registration"></a>Podmíněný přístup: Zabezpečení registrace bezpečnostních údajů
+# <a name="conditional-access-securing-security-info-registration"></a>Podmíněný přístup: zabezpečení registrace informací o zabezpečení
 
-Zabezpečení, kdy a jak se uživatelé registrují pro azure vícefaktorové ověřování a samoobslužné resetování hesla je teď možné s akcemi uživatelů v zásadách podmíněného přístupu. Tato funkce náhledu je k dispozici organizacím, které povolily [kombinovaný náhled registrace](../authentication/concept-registration-mfa-sspr-combined.md). Tato funkce může být povolena v organizacích, kde chtějí používat podmínky, jako je důvěryhodné umístění v síti, k omezení přístupu k registraci pro azure multi-factor authentication a samoobslužné resetování hesla (SSPR). Další informace o použitelných podmínkách naleznete v článku [Podmíněný přístup: Podmínky](concept-conditional-access-conditions.md).
+Zabezpečení, kdy a jak se uživatelé registrují pro Azure Multi-Factor Authentication a Samoobslužné resetování hesla, je teď možné u uživatelských akcí v zásadách podmíněného přístupu. Tato funkce ve verzi Preview je dostupná pro organizace, u kterých je povolená [Kombinovaná registrace ve verzi Preview](../authentication/concept-registration-mfa-sspr-combined.md). Tato funkce může být povolená v organizacích, kde chtějí použít podmínky jako důvěryhodné síťové umístění k omezení přístupu k registraci pro Azure Multi-Factor Authentication a Samoobslužné resetování hesla (SSPR). Další informace o použitelných podmínkách najdete v článku [podmíněný přístup: podmínky](concept-conditional-access-conditions.md).
 
 ## <a name="create-a-policy-to-require-registration-from-a-trusted-location"></a>Vytvoření zásady, která vyžaduje registraci z důvěryhodného umístění
 
-Následující zásady platí pro všechny vybrané uživatele, kteří se pokoušejí zaregistrovat pomocí kombinovaného registračního prostředí, a zablokují přístup, pokud se nepřipojují z umístění označeného jako důvěryhodná síť.
+Následující zásady platí pro všechny vybrané uživatele, kteří se pokoušejí zaregistrovat pomocí kombinovaného prostředí pro registraci, a zablokují přístup, pokud se nepřipojují z umístění označeného jako důvěryhodná síť.
 
-1. Na **webu Azure Portal**přejděte na Azure **Active Directory** > **Security** > **Conditional Access**.
+1. V **Azure Portal**přejděte na **Azure Active Directory** > **zabezpečení** > **podmíněný přístup**.
 1. Vyberte **nové zásady**.
-1. V pojmenujete název této zásady. Například **kombinovaná registrace informací o zabezpečení v důvěryhodných sítích**.
-1. V části **Přiřazení**vyberte **Položku Uživatelé a skupiny**a vyberte uživatele a skupiny, na které se má tato zásada vztahovat.
+1. Do název zadejte název pro tuto zásadu. Například **Kombinovaná registrace informací o zabezpečení v důvěryhodných sítích**.
+1. V části **přiřazení**vyberte **Uživatelé a skupiny**a vyberte uživatele a skupiny, pro které chcete tuto zásadu použít.
 
    > [!WARNING]
-   > Uživatelé musí být povolena pro [kombinovanou registraci](../authentication/howto-registration-mfa-sspr-combined.md).
+   > Pro [kombinovanou registraci](../authentication/howto-registration-mfa-sspr-combined.md)je nutné povolit uživatele.
 
-1. V části **Cloudové aplikace nebo akce**vyberte **Akce uživatele**, **zaškrtněte políčko Registrovat informace o zabezpečení**.
-1. V **podmínkách** > **Umístění**.
-   1. Konfigurace **programu Ano**.
-   1. Zahrnout **libovolné umístění**.
-   1. Vyloučit **všechna důvěryhodná umístění**.
-   1. V yberte **Hotovo** v okně Umístění.
-   1. V yberte **Hotovo** na okně Podmínky.
-1. V **části Podmínky** > **Klientské aplikace (Preview)** nastavte **Configure** to **Yes**a vyberte **Hotovo**.
-1. V části **Access controls** > **Grant**.
-   1. Vyberte **možnost Blokovat přístup**.
+1. V části **cloudové aplikace nebo akce**vyberte **akce uživatele**a zaškrtněte políčko **zaregistrovat informace o zabezpečení**.
+1. V části**umístění** **podmínek** > .
+   1. Nakonfigurujte **Ano**.
+   1. Uveďte **libovolné umístění**.
+   1. Vylučte **všechna důvěryhodná umístění**.
+   1. V okně umístění vyberte **Hotovo** .
+   1. V okně podmínky vyberte **Hotovo** .
+1. V části **podmínky** > **klientské aplikace (Preview)** nastavte **Konfigurovat** na **Ano**a vyberte **Hotovo**.
+1. V části **řízení** > přístupu**udělení oprávnění**.
+   1. Vyberte **blokovat přístup**.
    1. Pak klikněte na **Vybrat**.
 1. Nastavte **Povolit zásadu** na **Zapnuté**.
 1. Potom vyberte **Uložit**.
 
-V kroku 6 v této zásadě mají organizace možnosti, které mohou provést. Výše uvedené zásady vyžadují registraci z důvěryhodného síťového umístění. Organizace se mohou rozhodnout využít všechny dostupné podmínky místo **lokalit**. Nezapomeňte, že tato zásada je bloková zásada, takže vše, co je zahrnuto, je blokováno a vše, co neodpovídá zahrnutí, je povoleno. 
+V kroku 6 v této zásadě mají organizace volby, které můžou dělat. Výše uvedená zásada vyžaduje registraci z důvěryhodného umístění v síti. Organizace si můžou zvolit, že budou využívat jakékoli dostupné podmínky místo **umístění**. Mějte na paměti, že tato zásada je zásada blokování, takže cokoli zahrnuto je blokované a povoluje se cokoli, co se neshoduje s zahrnutím. 
 
-Někteří se mohou rozhodnout použít stav zařízení namísto umístění v kroku 6 výše:
+Některé můžou místo umístění v kroku 6 použít stav zařízení:
 
-6. V **části Podmínky** > **Stav zařízení (náhled)**.
-   1. Konfigurace **programu Ano**.
-   1. Zahrnout **stav všech zařízení**.
-   1. Vyloučit **připojení hybridního zařízení Azure AD** nebo **zařízení označené jako vyhovující**
-   1. V yberte **Hotovo** v okně Umístění.
-   1. V yberte **Hotovo** na okně Podmínky.
+6. V části **podmínky** > **stav zařízení (Preview)**.
+   1. Nakonfigurujte **Ano**.
+   1. Zahrnout **všechny stavy zařízení**
+   1. Vyloučit **zařízení připojené k hybridní službě Azure AD** nebo **zařízení označené jako vyhovující**
+   1. V okně umístění vyberte **Hotovo** .
+   1. V okně podmínky vyberte **Hotovo** .
 
 > [!WARNING]
-> Pokud použijete stav zařízení jako podmínku v zásadách, může to mít vliv na uživatele typu Host v adresáři. [Režim pouze pro sestavu](concept-conditional-access-report-only.md) může pomoci určit dopad rozhodnutí zásad.
+> Pokud v zásadě použijete jako podmínku stav zařízení, může to mít vliv na uživatele typu Host v adresáři. [Režim pouze pro sestavy](concept-conditional-access-report-only.md) vám pomůže určit dopad rozhodnutí o zásadách.
 
 ## <a name="next-steps"></a>Další kroky
 
-[Podmíněné přístupové běžné zásady](concept-conditional-access-policy-common.md)
+[Společné zásady podmíněného přístupu](concept-conditional-access-policy-common.md)
 
-[Určení dopadu pomocí režimu pouze pro sestavu podmíněného přístupu](howto-conditional-access-report-only.md)
+[Určení dopadu pomocí režimu pouze sestavy podmíněného přístupu](howto-conditional-access-report-only.md)
 
-[Simulovat chování přihlášení pomocí nástroje Co-li podmíněného přístupu](troubleshoot-conditional-access-what-if.md)
+[Simulace chování při přihlašování pomocí nástroje pro What If podmíněného přístupu](troubleshoot-conditional-access-what-if.md)

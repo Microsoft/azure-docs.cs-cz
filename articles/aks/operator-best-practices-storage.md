@@ -1,102 +1,102 @@
 ---
-title: Doporučené postupy pro ukládání a zálohování
+title: Osvědčené postupy pro úložiště a zálohování
 titleSuffix: Azure Kubernetes Service
-description: Seznamte se s doporučenými postupy operátora clusteru pro úložiště, šifrování dat a zálohování ve službě Azure Kubernetes Service (AKS).
+description: Seznamte se s osvědčenými postupy pro úložiště, šifrování dat a zálohy ve službě Azure Kubernetes Service (AKS) od operátora clusteru.
 services: container-service
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 843b775f7761af7cd40140c9bf34768d63eb5a50
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80877894"
 ---
-# <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>Doporučené postupy pro ukládání a zálohování ve službě Azure Kubernetes Service (AKS)
+# <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro úložiště a zálohování ve službě Azure Kubernetes (AKS)
 
-Při vytváření a správě clusterů ve službě Azure Kubernetes Service (AKS) vaše aplikace často potřebují úložiště. Je důležité pochopit potřeby výkonu a metody přístupu pro pody, abyste mohli poskytnout příslušné úložiště aplikacím. Velikost uzlu AKS může mít vliv na tyto možnosti úložiště. Měli byste také naplánovat způsoby zálohování a testování procesu obnovení připojeného úložiště.
+Při vytváření a správě clusterů ve službě Azure Kubernetes Service (AKS) vaše aplikace často potřebují úložiště. Je důležité pochopit požadavky na výkon a přístupové metody pro lusky, abyste mohli zajistit příslušné úložiště pro aplikace. Velikost uzlu AKS může mít vliv na tyto možnosti úložiště. Měli byste taky naplánovat způsob zálohování a testování procesu obnovení pro připojené úložiště.
 
-Tento článek osvědčených postupů se zaměřuje na důležité informace o úložišti pro operátory clusteru. V tomto článku se dozvíte:
+Tento článek o osvědčených postupech se zaměřuje na požadavky na úložiště u operátorů clusteru. V tomto článku se naučíte:
 
 > [!div class="checklist"]
-> * Jaké typy úložišť jsou k dispozici
-> * Jak správně velikost uzlů AKS pro výkon úložiště
+> * Jaké typy úložiště jsou k dispozici
+> * Postup správného určení velikosti uzlů AKS pro výkon úložiště
 > * Rozdíly mezi dynamickým a statickým zřizováním svazků
 > * Způsoby zálohování a zabezpečení datových svazků
 
-## <a name="choose-the-appropriate-storage-type"></a>Zvolte vhodný typ úložiště
+## <a name="choose-the-appropriate-storage-type"></a>Zvolit vhodný typ úložiště
 
-**Pokyny pro osvědčené postupy** – seznamte se s potřebami vaší aplikace a vyberte správné úložiště. Používejte vysoce výkonné úložiště s s ssd pro produkční úlohy. Naplánujte síťové úložiště, pokud je potřeba více souběžných připojení.
+**Doprovodné materiály k osvědčeným postupům** – pochopení potřeb vaší aplikace k výběru správného úložiště. Pro produkční úlohy Používejte vysoce výkonné úložiště zálohované na jednotku SSD. Naplánujte síťové úložiště, když je potřeba víc souběžných připojení.
 
-Aplikace často vyžadují různé typy a rychlosti úložiště. Potřebují vaše aplikace úložiště, které se připojuje k jednotlivým podům nebo je sdíleno mezi více pody? Je úložiště pro přístup jen pro čtení k datům nebo k zápisu velkého množství strukturovaných dat? Tyto potřeby úložiště určují nejvhodnější typ úložiště, který se má použít.
+Aplikace často vyžadují různé typy a rychlosti úložiště. Potřebují vaše aplikace úložiště, které se připojuje k jednotlivým luskům, nebo se sdílí napříč více lusky? Je úložiště pro přístup k datům jen pro čtení nebo k zápisu velkých objemů strukturovaných dat? Toto úložiště potřebuje k určení nejvhodnějšího typu úložiště, které se má použít.
 
-V následující tabulce jsou uvedeny dostupné typy úložišť a jejich možnosti:
+Následující tabulka popisuje dostupné typy úložišť a jejich možnosti:
 
-| Případ použití | Modul plug-in pro objem | Čtení/zápis jednou | Mnoho lidí jen pro čtení | Čtení/zápis mnoho | Podpora kontejnerů systému Windows Server |
+| Případ použití | Modul plug-in svazku | Čtení a zápis jednou | Velký počet jen pro čtení | Čtení a zápis mnoha | Podpora kontejneru Windows serveru |
 |----------|---------------|-----------------|----------------|-----------------|--------------------|
 | Sdílená konfigurace       | Soubory Azure   | Ano | Ano | Ano | Ano |
-| Strukturovaná data aplikací        | Disky Azure   | Ano | Ne  | Ne  | Ano |
+| Data strukturovaných aplikací        | Disky Azure   | Ano | Ne  | Ne  | Ano |
 | Nestrukturovaná data, operace systému souborů | [BlobFuse][blobfuse] | Ano | Ano | Ano | Ne |
 
-Dva primární typy úložiště poskytované pro svazky v AKS jsou zálohovány Azure Disky nebo Soubory Azure. Chcete-li zlepšit zabezpečení, oba typy úložiště používají Azure Storage Service Encryption (SSE) ve výchozím nastavení, který šifruje data v klidovém stavu. Disky nelze aktuálně šifrovat pomocí šifrování disku Azure na úrovni uzlu AKS.
+Dva primární typy úložiště poskytované pro svazky v AKS se zálohují na disky Azure nebo soubory Azure. Pro zvýšení zabezpečení oba typy úložiště ve výchozím nastavení používají šifrování služby Azure Storage (SSE), které šifruje neaktivní neaktivní data. Disky se momentálně nedají šifrovat pomocí Azure Disk Encryption na úrovni uzlu AKS.
 
-Soubory Azure i disky Azure jsou dostupné v úrovních výkonu Standard a Premium:
+Soubory Azure a disky Azure jsou dostupné na úrovních výkonu Standard a Premium:
 
-- *Disky Premium* jsou zálohovány vysoce výkonnými disky SSD (SSD). Disky Premium se doporučují pro všechny produkční úlohy.
-- *Standardní* disky jsou zálohovány běžnými rotujícími disky (HDD) a jsou vhodné pro archivní nebo zřídka přistupovaná data.
+- Disky *Premium* jsou založené na vysoce výkonných discích Solid-State (SSD). Prémiové disky se doporučují pro všechny produkční úlohy.
+- *Standardní* disky jsou zajištěné pravidelnými otáčejícími se disky (HDD) a jsou vhodné pro archivované nebo zřídka používaná data.
 
-Seznamte se s potřebami výkonu aplikace a vzory přístupu a zvolte příslušnou úroveň úložiště. Další informace o velikostech a úrovních výkonu spravovaných disků najdete v tématu [Přehled spravovaných disků Azure][managed-disks]
+Seznámení s požadavky na výkon aplikace a vzory přístupu k výběru vhodné úrovně úložiště. Další informace o velikostech Managed Disks a úrovních výkonu najdete v tématu [Azure Managed disks Overview][managed-disks] .
 
 ### <a name="create-and-use-storage-classes-to-define-application-needs"></a>Vytvoření a použití tříd úložiště k definování potřeb aplikace
 
-Typ úložiště, které používáte, je definován pomocí *tříd úložiště*Kubernetes . Třída úložiště je pak odkazována ve specifikaci podu nebo nasazení. Tyto definice spolupracují na vytvoření vhodného úložiště a jeho připojení k podům. Další informace naleznete [v tématu Storage třídy v AKS][aks-concepts-storage-classes].
+Typ úložiště, který použijete, je definovaný pomocí *tříd úložiště*Kubernetes. Na třídu úložiště se pak odkazuje ve specifikaci pod nebo nasazováním. Tyto definice společně vytvoří vhodné úložiště a připojí je k luskům. Další informace najdete v tématu [třídy úložiště v AKS][aks-concepts-storage-classes].
 
 ## <a name="size-the-nodes-for-storage-needs"></a>Velikost uzlů pro potřeby úložiště
 
-**Pokyny pro osvědčené postupy** – velikost každého uzlu podporuje maximální počet disků. Různé velikosti uzlů také poskytují různé objemy místního úložiště a šířku pásma sítě. Naplánujte pro vaše požadavky aplikace nasadit odpovídající velikost uzlů.
+**Doprovodné materiály k osvědčeným postupům** – velikost jednotlivých uzlů podporuje maximální počet disků. Různé velikosti uzlů také poskytují různé objemy místního úložiště a šířky pásma sítě. Plánování vaší aplikace požaduje nasazení příslušné velikosti uzlů.
 
-Uzly AKS běží jako virtuální počítače Azure. K dispozici jsou různé typy a velikosti virtuálního počítače. Každá velikost virtuálního počítače poskytuje různé množství základních prostředků, jako je procesor a paměť. Tyto velikosti virtuálních počítačů mají maximální počet disků, které lze připojit. Výkon úložiště se také liší mezi velikostmi virtuálních počítačů pro maximální místní a připojené diskové vstupně-výstupní operace (vstupní a výstupní operace za sekundu).
+Uzly AKS se spouštějí jako virtuální počítače Azure. K dispozici jsou různé typy a velikosti virtuálního počítače. Každá velikost virtuálního počítače poskytuje různé množství základních prostředků, jako je například procesor a paměť. Tyto velikosti virtuálních počítačů mají maximální počet disků, které je možné připojit. Výkon úložiště se taky mění mezi velikostmi virtuálních počítačů pro maximální místní a připojené diskové IOPS (vstupně-výstupní operace za sekundu).
 
-Pokud vaše aplikace vyžadují Azure Disky jako jejich řešení úložiště, naplánujte a zvolte vhodnou velikost virtuálního počítače uzlu. Množství procesoru a paměti není jediným faktorem, když zvolíte velikost virtuálního počítače. Možnosti úložiště jsou také důležité. Například *velikosti Standard_B2ms* a *Standard_DS2_v2* virtuálních počítače obsahují podobné množství prostředků procesoru a paměti. Jejich potenciální výkon úložiště se liší, jak je znázorněno v následující tabulce:
+Pokud vaše aplikace jako řešení úložiště vyžadují disky Azure, naplánujte a vyberte vhodnou velikost virtuálního počítače uzlu. Množství procesoru a paměti není jediným faktorem, když zvolíte velikost virtuálního počítače. Možnosti úložiště jsou také důležité. Mezi například *Standard_B2ms* i *Standard_DS2_v2* velikosti virtuálních počítačů patří podobné množství prostředků procesoru a paměti. Jejich potenciální výkon úložiště je jiný, jak je znázorněno v následující tabulce:
 
-| Typ a velikost uzlu | Virtuální procesory | Paměť (GiB) | Max. datových disků | Maximální počet viopů disku bez mezipaměti | Maximální propustnost bez mezipaměti (Mb/s) |
+| Typ a velikost uzlu | Virtuální procesory | Paměť (GiB) | Max. datových disků | Maximální počet necachených vstupně-výstupních operací disku | Maximální propustnost při neukládání do mezipaměti (MB/s) |
 |--------------------|------|--------------|----------------|------------------------|--------------------------------|
-| Standard_B2ms      | 2    | 8            | 4              | 1,920                  | 22.5                           |
-| Standard_DS2_v2    | 2    | 7            | 8              | 6,400                  | 96                             |
+| Standard_B2ms      | 2    | 8            | 4              | 1 920                  | 22,5                           |
+| Standard_DS2_v2    | 2    | 7            | 8              | 6 400                  | 96                             |
 
-Zde *Standard_DS2_v2* umožňuje zdvojnásobit počet připojených disků a poskytuje třikrát až čtyřikrát množství viposlužby a propustnost disku. Pokud jste se podívali jenom na základní výpočetní prostředky a porovnání nákladů, můžete zvolit *Standard_B2ms* velikost virtuálního počítače a mají nízký výkon úložiště a omezení. Spolupracujte s týmem pro vývoj aplikací a seznamte se s jejich potřeby v oblasti kapacity a výkonu. Zvolte vhodnou velikost virtuálního počítače pro uzly AKS, abyste vyhověli nebo překročili jejich potřeby výkonu. Pravidelně směrné aplikace upravit velikost virtuálního počítače podle potřeby.
+V tomto případě *Standard_DS2_v2* umožňuje dvojnásobek počtu připojených disků a poskytuje tři až ČTYŘIKRÁT množství IOPS a propustnosti disku. Pokud jste si prohlédli jenom základní výpočetní prostředky a porovnané náklady, můžete si vybrat velikost virtuálního počítače *Standard_B2ms* a snížit výkon a omezení úložiště. Pracujte s vývojovým týmem vaší aplikace, abyste pochopili kapacitu úložiště a požadavky na výkon. Vyberte odpovídající velikost virtuálního počítače pro uzly AKS, které splňují nebo překračují jejich požadavky na výkon. Pravidelné standardní aplikace pro přizpůsobení velikosti virtuálních počítačů podle potřeby.
 
-Další informace o dostupných velikostech virtuálních počítačů najdete [v tématu Velikosti pro virtuální počítače s Linuxem v Azure][vm-sizes].
+Další informace o dostupných velikostech virtuálních počítačů najdete v tématu [velikosti pro virtuální počítače Linux v Azure][vm-sizes].
 
-## <a name="dynamically-provision-volumes"></a>Dynamicky zřizovací svazky
+## <a name="dynamically-provision-volumes"></a>Dynamické zřizování svazků
 
-**Pokyny pro osvědčené postupy** – chcete-li snížit režii správy a umožňují škálování, nevytvářejte a nepřiřazujte trvalé svazky. Použijte dynamické zřizování. Ve třídách úložiště definujte příslušnou zásadu vrácení, abyste minimalizovali nepotřebné náklady na úložiště po odstranění podů.
+**Doprovodné materiály k osvědčeným postupům** – ke snížení režijních nákladů na správu a umožňují škálování, nevytvářejte staticky a přiřazujte trvalé svazky. Použijte dynamické zřizování. V třídách úložiště Definujte příslušné zásady uvolnění, aby se minimalizovaly nepotřebné náklady na úložiště, když se odstraní lusky.
 
-Když potřebujete připojit úložiště k podům, použijete trvalé svazky. Tyto trvalé svazky lze vytvořit ručně nebo dynamicky. Ruční vytváření trvalých svazků zvyšuje režii na správu a omezuje možnost škálování. Pomocí dynamického trvalého zřizování svazků můžete zjednodušit správu úložiště a podle potřeby umožnit, aby vaše aplikace rostly a škálovaly.
+Pokud potřebujete připojit úložiště k luskům, použijte trvalé svazky. Tyto trvalé svazky lze vytvořit ručně nebo dynamicky. Ruční vytvoření trvalých svazků přináší režijní náklady na správu a omezí možnost škálování. Pomocí dynamického zřizování svazků můžete zjednodušit správu úložiště a umožníte vašim aplikacím růst a škálování podle potřeby.
 
-![Trvalé deklarace svazku v clusteru Služeb Azure Kubernetes (AKS)](media/concepts-storage/persistent-volume-claims.png)
+![Deklarace trvalých svazků v clusteru Azure Kubernetes Services (AKS)](media/concepts-storage/persistent-volume-claims.png)
 
-Trvalá deklarace svazku (PVC) umožňuje dynamicky vytvářet úložiště podle potřeby. Podkladové disky Azure se vytvoří jako pody, které je požadují. V definici podu požadujete vytvoření svazku a připojení k určené cestě připojení.
+Deklarace trvalého objemu (PVC) umožňuje dynamicky vytvářet úložiště podle potřeby. Základní disky Azure se vytvářejí v případě, že si je požádají. V definici pod vyžádáte svazek, který se má vytvořit a připojit k určené cestě připojení.
 
-Koncepty dynamického vytváření a používání svazků naleznete v tématu [Trvalé deklarace svazků][aks-concepts-storage-pvcs].
+Koncepce, jak dynamicky vytvářet a používat svazky, najdete v tématu [deklarace trvalých svazků][aks-concepts-storage-pvcs].
 
-Pokud chcete tyto svazky zobrazit v akci, přečtěte si, jak dynamicky vytvořit a použít trvalý svazek s [Disky Azure][dynamic-disks] nebo [Soubory Azure][dynamic-files].
+Pokud se chcete podívat na tyto svazky v akci, přečtěte si téma postup dynamického vytvoření a použití trvalého svazku s [disky Azure][dynamic-disks] nebo [soubory Azure][dynamic-files].
 
-Jako součást definice třídy úložiště nastavte příslušné *zásady reclaimpolicy*. Toto zásady rekultivace řídí chování základního prostředku úložiště Azure při odstranění podu a trvalý svazek již nemusí být vyžadován. Základní prostředek úložiště lze odstranit nebo zachovat pro použití s budoucí pod. Zásady reclaimpolicy lze nastavit *zachovat* nebo *odstranit*. Seznamte se s potřebami aplikací a implementujte pravidelné kontroly úložiště, které je zachováno, aby se minimalizovalo množství nevyužitého úložiště, které se používá a účtuje.
+Jako součást definic vaší třídy úložiště nastavte odpovídající *reclaimPolicy*. Tento reclaimPolicy řídí chování podkladového prostředku služby Azure Storage, když se odstraní pole pod a trvalý svazek už nemusí být potřeba. Základní prostředek úložiště je možné odstranit, případně uchovat pro použití s budoucím pod. ReclaimPolicy může nastavit, aby se *zachoval* nebo *odstranil*. Seznamte se s požadavky vaší aplikace a implementujte pravidelné kontroly úložiště, které jsou zachované, aby se minimalizovalo množství nevyužitého úložiště, které se používá a účtuje.
 
-Další informace o možnostech třídy úložiště najdete v [tématu zásady obnovení úložiště][reclaim-policy].
+Další informace o možnostech třídy úložiště najdete v tématu [zásady pro redeklaraci úložiště][reclaim-policy].
 
 ## <a name="secure-and-back-up-your-data"></a>Zabezpečení a zálohování dat
 
-**Pokyny pro osvědčené postupy** – Zálohujte data pomocí vhodného nástroje pro váš typ úložiště, jako je Velero nebo Azure Site Recovery. Ověřte integritu a zabezpečení těchto záloh.
+**Doprovodné materiály k osvědčeným postupům** – zálohujte data pomocí vhodného nástroje pro typ úložiště, například Velero nebo Azure Site Recovery. Ověřte integritu a zabezpečení těchto záloh.
 
-Když vaše aplikace ukládají a spotřebovávají data trvalá na discích nebo v souborech, je třeba provádět pravidelné zálohování nebo snímky těchto dat. Disky Azure můžou používat integrované technologie snímků. Možná budete muset vyhledat aplikace pro vyprázdnění zápisů na disk před provedením operace snímek. [Velero][velero] může zálohovat trvalé svazky spolu s dalšími prostředky clusteru a konfiguracemi. Pokud nemůžete [odebrat stav z vašich aplikací][remove-state], zálohovat data z trvalých svazků a pravidelně testovat operace obnovení k ověření integrity dat a požadovaných procesů.
+Pokud vaše aplikace ukládají a spotřebovávají data trvalá na discích nebo v souborech, je třeba provést pravidelná zálohování nebo snímky těchto dat. Disky Azure můžou používat integrované technologie snímků. Před provedením operace snímku možná budete muset vyhledat své aplikace a vyprázdnit zápisy na disk. [Velero][velero] může zálohovat trvalé svazky spolu s dalšími prostředky a konfiguracemi clusteru. Pokud nemůžete [Odebrat stav z vašich aplikací][remove-state], zálohujte data z trvalých svazků a pravidelně otestujte operace obnovení, abyste ověřili integritu dat a požadované procesy.
 
-Seznamte se s omezeními různých přístupů k zálohování dat a pokud potřebujete utišit data před snímek. Zálohování dat nemusí nutně umožňují obnovit aplikační prostředí nasazení clusteru. Další informace o těchto scénářích naleznete v [tématu Doporučené postupy pro kontinuitu provozu a zotavení po havárii v AKS][best-practices-multi-region].
+Seznamte se s omezeními různých přístupů k zálohování dat a v případě, že před snímkem potřebujete data uvést do nečinnosti. Zálohování dat nemusí nutně umožnit obnovení prostředí aplikace pro nasazení clusteru. Další informace o těchto scénářích najdete v tématu [osvědčené postupy pro zajištění kontinuity podnikových procesů a zotavení po havárii v AKS][best-practices-multi-region].
 
 ## <a name="next-steps"></a>Další kroky
 
-Tento článek se zaměřil na osvědčené postupy úložiště v AKS. Další informace o základech úložiště v Kubernetes najdete v [tématu Koncepty úložiště pro aplikace v AKS][aks-concepts-storage].
+Tento článek se zaměřuje na osvědčené postupy pro úložiště v AKS. Další informace o základech úložiště v Kubernetes najdete v tématu [Koncepty úložiště pro aplikace v AKS][aks-concepts-storage].
 
 <!-- LINKS - External -->
 [velero]: https://github.com/heptio/velero

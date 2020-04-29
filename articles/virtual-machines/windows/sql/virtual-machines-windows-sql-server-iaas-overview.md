@@ -15,10 +15,10 @@ ms.date: 11/27/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 4186a4ed369eb289360b74c0758e5ce3f7eca929
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81482158"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Co je SQL Server na virtuálních počítačích Azure? (Windows)
@@ -27,7 +27,7 @@ ms.locfileid: "81482158"
 > * [Windows](virtual-machines-windows-sql-server-iaas-overview.md)
 > * [Linux](../../linux/sql/sql-server-linux-virtual-machines-overview.md)
 
-[SQL Server na virtuálních počítačích Azure](https://azure.microsoft.com/services/virtual-machines/sql-server/) umožňuje používat plné verze SQL Serveru v cloudu, aniž byste museli spravovat místní hardware. Pokud platíte průběžně, pro virtuální počítače s SQL Serverem se také zjednoduší náklady na licencování.
+[SQL Server na virtuálních počítačích Azure](https://azure.microsoft.com/services/virtual-machines/sql-server/) umožňuje používat plné verze SQL Server v cloudu, aniž byste museli spravovat jakýkoli místní hardware. Pokud platíte průběžně, pro virtuální počítače s SQL Serverem se také zjednoduší náklady na licencování.
 
 Virtuální počítače Azure běží v mnoha různých [geografických oblastech](https://azure.microsoft.com/regions/) po celém světě. Také nabízejí celou řadu [velikostí počítačů](../sizes.md). Galerie imagí virtuálních počítačů umožňuje vytvoření virtuálního počítače s SQL Serverem, který má správnou verzi, vydání i operační systém. Díky tomu jsou virtuální počítače vhodné pro mnoho různých úloh SQL Serveru.
 
@@ -39,7 +39,7 @@ Virtuální počítače Azure s SQL Serverem mohou používat [Automatické opra
 
 Virtuální počítače Azure s SQL Serverem mohou využívat výhod [automatizovaného zálohování](virtual-machines-windows-sql-automated-backup-v2.md), které pravidelně vytváří zálohy databáze do Blob Storage. Tento postup můžete použít také ručně. Další informace najdete v tématu [Použití služby Azure Storage pro zálohování a obnovování SQL Serveru](virtual-machines-windows-use-storage-sql-server-backup-restore.md).
 
-Azure také nabízí řešení zálohování podnikové třídy pro SQL Server spuštěný ve virtuálních počítačích Azure. Plně spravované řešení zálohování podporuje skupiny dostupnosti Always On, dlouhodobé uchovávání informací, obnovení v čase a centrální správu a monitorování. Další informace najdete v tématu [Zálohování Azure pro SQL Server ve virtuálním počítači Azure](https://docs.microsoft.com/azure/backup/backup-azure-sql-database).
+Azure také nabízí řešení zálohování na podnikové úrovni pro SQL Server běžící na virtuálních počítačích Azure. Plně spravované řešení zálohování podporuje skupiny dostupnosti Always On, dlouhodobé uchovávání, obnovení k určitému bodu v čase a centrální správu a monitorování. Další informace najdete v tématu [Azure Backup pro SQL Server na virtuálním počítači Azure](https://docs.microsoft.com/azure/backup/backup-azure-sql-database).
   
 
 ## <a name="high-availability"></a>Vysoká dostupnost
@@ -57,12 +57,12 @@ Chcete-li začít, zvolte image virtuálního počítače s SQL Serverem s poža
 > [!TIP]
 > Další informace pro lepší pochopení cen imagí SQL najdete v [doprovodných materiálech k cenám pro virtuální počítače Azure s SQL Serverem](virtual-machines-windows-sql-server-pricing-guidance.md). 
 
-### <a name="pay-as-you-go"></a><a id="payasyougo"></a>Plaťte průběžně
+### <a name="pay-as-you-go"></a><a id="payasyougo"></a>Průběžné platby
 Následující tabulka obsahuje matici imagí SQL Serveru s průběžnými platbami.
 
 | Version | Operační systém | Edice |
 | --- | --- | --- |
-| **SQL Server 2019** | Windows Server 2019 | [Organizace](https://ms.portal.azure.com/#create/microsoftsqlserver.sql2019-ws2019enterprise), [Standard](https://ms.portal.azure.com/#create/microsoftsqlserver.sql2019-ws2019standard), [Web](https://ms.portal.azure.com/#create/microsoftsqlserver.sql2019-ws2019web), [Vývojář](https://ms.portal.azure.com/#create/microsoftsqlserver.sql2019-ws2019sqldev) | 
+| **SQL Server 2019** | Windows Server 2019 | [Enterprise](https://ms.portal.azure.com/#create/microsoftsqlserver.sql2019-ws2019enterprise), [Standard](https://ms.portal.azure.com/#create/microsoftsqlserver.sql2019-ws2019standard), [Web](https://ms.portal.azure.com/#create/microsoftsqlserver.sql2019-ws2019web), [Developer](https://ms.portal.azure.com/#create/microsoftsqlserver.sql2019-ws2019sqldev) | 
 | **SQL Server 2017** |Windows Server 2016 |[Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2017EnterpriseWindowsServer2016), [Standard](https://portal.azure.com/#create/Microsoft.SQLServer2017StandardonWindowsServer2016), [Web](https://portal.azure.com/#create/Microsoft.SQLServer2017WebonWindowsServer2016), [Express](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017ExpressonWindowsServer2016), [Developer](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017DeveloperonWindowsServer2016) |
 | **SQL Server 2016 SP2** |Windows Server 2016 |[Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2016SP2EnterpriseWindowsServer2016), [Standard](https://portal.azure.com/#create/Microsoft.SQLServer2016SP2StandardWindowsServer2016), [Web](https://portal.azure.com/#create/Microsoft.SQLServer2016SP2WebWindowsServer2016), [Express](https://portal.azure.com/#create/Microsoft.FreeLicenseSQLServer2016SP2ExpressWindowsServer2016), [Developer](https://portal.azure.com/#create/Microsoft.FreeLicenseSQLServer2016SP2DeveloperWindowsServer2016) |
 | **SQL Server 2014 SP2** |Windows Server 2012 R2 |[Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2014SP2EnterpriseWindowsServer2012R2), [Standard](https://portal.azure.com/#create/Microsoft.SQLServer2014SP2StandardWindowsServer2012R2), [Web](https://portal.azure.com/#create/Microsoft.SQLServer2014SP2WebWindowsServer2012R2), [Express](https://portal.azure.com/#create/Microsoft.SQLServer2014SP2ExpressWindowsServer2012R2) |
@@ -72,28 +72,28 @@ Následující tabulka obsahuje matici imagí SQL Serveru s průběžnými platb
 Dostupné image virtuálních počítačů s Linuxem a SQL Serverem najdete v tématu [Přehled SQL Serveru na virtuálních počítačích Azure (Linux)](../../linux/sql/sql-server-linux-virtual-machines-overview.md).
 
 > [!NOTE]
-> Nyní je možné změnit licenční model virtuálního počítače SQL Server s platbou za použití a použít vlastní licenci. Další informace naleznete [v tématu Jak změnit model licencování pro virtuální virtuální modul SQL](virtual-machines-windows-sql-ahb.md). 
+> Nyní je možné změnit licenční model s platbami podle využití SQL Server virtuálního počítače na používání vlastní licence. Další informace najdete v tématu [Změna modelu licencování pro virtuální počítač s SQL](virtual-machines-windows-sql-ahb.md). 
 
 ### <a name="bring-your-own-license"></a><a id="BYOL"></a> Používání vlastní licence
 Můžete také používat vlastní licenci (BYOL). V tomto scénáři zaplatíte jenom za virtuální počítač bez jakýchkoli dalších poplatků za licencování SQL Serveru.  Používáním vlastní licence můžete časem ušetřit peníze za nepřetržité produkční úlohy. Požadavky k použití této možnosti najdete v tématu [Doprovodné materiály k cenám pro virtuální počítače Azure s SQL Serverem](virtual-machines-windows-sql-server-pricing-guidance.md#byol).
 
-Chcete-li přenést vlastní licenci, můžete buď převést existující virtuální počítač SQL s platbou za použití, nebo můžete nasadit bitovou kopii s předponou **{BYOL}**. Další informace o přepínání licenčního modelu mezi platbami za použití a BYOL najdete [v tématu Jak změnit licenční model pro virtuální počítač SQL](virtual-machines-windows-sql-ahb.md). 
+Pokud chcete využít vlastní licenci, můžete buď převést stávající virtuální počítač SQL s platbami za použití, nebo můžete nasadit image s předem opraveným **{BYOL}**. Další informace o přepínání licenčního modelu mezi platbami podle využití a BYOL najdete v tématu [Změna licenčního modelu pro virtuální počítač s SQL](virtual-machines-windows-sql-ahb.md)serverem. 
 
 | Version | Operační systém | Edice |
 | --- | --- | --- |
 | **SQL Server 2019** | Windows Server 2019 | [Enterprise BYOL](https://ms.portal.azure.com/#create/microsoftsqlserver.sql2019-ws2019-byolenterprise), [Standard BYOL](https://ms.portal.azure.com/#create/microsoftsqlserver.sql2019-ws2019-byolstandard)| 
-| **SQL Server 2017** |Windows Server 2016 |[Podnik BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2017EnterpriseWindowsServer2016), [Standardní BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2017StandardonWindowsServer2016) |
-| **SQL Server 2016 SP2** |Windows Server 2016 |[Podnik BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2016SP2EnterpriseWindowsServer2016), [Standardní BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2016SP2StandardWindowsServer2016) |
-| **SQL Server 2014 SP2** |Windows Server 2012 R2 |[Podnik BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2014SP2EnterpriseWindowsServer2012R2), [Standardní BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2014SP2StandardWindowsServer2012R2) |
+| **SQL Server 2017** |Windows Server 2016 |[Enterprise BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2017EnterpriseWindowsServer2016), [Standard BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2017StandardonWindowsServer2016) |
+| **SQL Server 2016 SP2** |Windows Server 2016 |[Enterprise BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2016SP2EnterpriseWindowsServer2016), [Standard BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2016SP2StandardWindowsServer2016) |
+| **SQL Server 2014 SP2** |Windows Server 2012 R2 |[Enterprise BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2014SP2EnterpriseWindowsServer2012R2), [Standard BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2014SP2StandardWindowsServer2012R2) |
 | **SQL Server 2012 SP4** |Windows Server 2012 R2 |[Enterprise BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2012SP4EnterpriseWindowsServer2012R2), [Standard BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2012SP4StandardWindowsServer2012R2) |
 
-Je možné nasadit starší image SQL Serveru, který není k dispozici na webu Azure Portal pomocí PowerShellu. Chcete-li zobrazit všechny dostupné obrázky pomocí powershellu, použijte následující příkaz:
+Je možné nasadit starší bitovou kopii SQL Server, která není k dispozici v Azure Portal pomocí prostředí PowerShell. Pokud chcete zobrazit všechny dostupné Image pomocí PowerShellu, použijte následující příkaz:
 
   ```powershell
   Get-AzVMImageOffer -Location $Location -Publisher 'MicrosoftSQLServer'
   ```
 
-Další informace o nasazení virtuálních počítačů SQL Server pomocí PowerShellu našel v článku [Jak zřídit virtuální počítače SQL Serveru pomocí Azure PowerShellu](virtual-machines-windows-ps-sql-create.md).
+Další informace o nasazení SQL Server virtuálních počítačů pomocí prostředí PowerShell najdete v tématu [jak zřídit SQL Server virtuálních počítačů pomocí Azure PowerShell](virtual-machines-windows-ps-sql-create.md).
 
 
 ### <a name="connect-to-the-vm"></a>Připojení k virtuálnímu počítači
@@ -102,31 +102,31 @@ Po vytvoření virtuálního počítače s SQL Serverem se k němu připojte z a
 ### <a name="migrate-your-data"></a>Migrace dat
 Pokud máte existující databázi, bude ji nutné přesunout do nově zřízeného virtuálního počítače s SQL Serverem. Seznam možností migrace a pokyny najdete v části [Migrace databáze do SQL Serveru ve virtuálním počítači Azure](virtual-machines-windows-migrate-sql.md).
 
-## <a name="create-and-manage-azure-sql-resources-with-the-azure-portal"></a>Vytváření a správa prostředků Azure SQL pomocí portálu Azure
+## <a name="create-and-manage-azure-sql-resources-with-the-azure-portal"></a>Vytváření a Správa prostředků Azure SQL pomocí Azure Portal
 
-Portál Azure poskytuje jednu stránku, kde můžete spravovat [všechny prostředky Azure SQL,](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Sql%2Fazuresql) včetně virtuálních počítačů SQL.
+Azure Portal poskytuje jednu stránku, kde můžete spravovat [všechny prostředky Azure SQL](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Sql%2Fazuresql) , včetně vašich virtuálních počítačů SQL.
 
-Pokud chcete získat přístup na stránku **prostředků Azure SQL,** vyberte **Azure SQL** v nabídce portálu Azure nebo vyhledejte a vyberte Azure **SQL** z libovolné stránky.
+Pokud chcete získat přístup k **prostředkům Azure SQL** , vyberte v nabídce Azure Portal položku **Azure SQL** , nebo vyhledejte a na libovolné stránce vyberte **Azure SQL** .
 
 ![Hledání Azure SQL](./media/quickstart-sql-vm-create-portal/search-for-azure-sql.png)
 
 > [!NOTE]
-> **Azure SQL** poskytuje rychlý a snadný způsob přístupu ke všem databázím SQL, elastickým fondům, databázovým serverům, instancím spravovaným SQL a virtuálním počítačům SQL. Azure SQL není služba nebo prostředek. 
+> **Azure SQL** nabízí rychlý a snadný způsob, jak získat přístup ke všem databázím SQL, elastickým fondům, databázovým serverům, spravovaným instancím SQL a virtuálním počítačům SQL. Azure SQL není služba nebo prostředek. 
 
-Chcete-li spravovat existující zdroje, vyberte požadovanou položku v seznamu. Chcete-li vytvořit nové prostředky Azure SQL, vyberte **+ Přidat**. 
+Pokud chcete spravovat existující prostředky, vyberte požadovanou položku v seznamu. Pokud chcete vytvořit nové prostředky Azure SQL, vyberte **+ Přidat**. 
 
 ![Vytvoření prostředku Azure SQL](./media/quickstart-sql-vm-create-portal/create-azure-sql-resource.png)
 
-Po výběru **+ Přidat**zobrazte další informace o různých možnostech výběrem **možnosti Zobrazit podrobnosti** na libovolné dlaždici.
+Po výběru možnosti **+ Přidat**zobrazte další informace o různých možnostech výběrem možnosti **Zobrazit podrobnosti** na libovolné dlaždici.
 
-![databáze dlaždice podrobnosti](./media/quickstart-sql-vm-create-portal/sql-vm-details.png)
+![Podrobnosti dlaždice databáze](./media/quickstart-sql-vm-create-portal/sql-vm-details.png)
 
 Podrobnosti najdete tady:
 
-- [Vytvoření jedné databáze](../../../sql-database/sql-database-single-database-get-started.md)
+- [Vytvoření izolované databáze](../../../sql-database/sql-database-single-database-get-started.md)
 - [Vytvoření elastického fondu](../../../sql-database/sql-database-elastic-pool.md#creating-a-new-sql-database-elastic-pool-using-the-azure-portal)
 - [Vytvoření spravované instance](../../../sql-database/sql-database-managed-instance-get-started.md)
-- [Vytvoření virtuálního počítače SQL](quickstart-sql-vm-create-portal.md)
+- [Vytvoření virtuálního počítače s SQL](quickstart-sql-vm-create-portal.md)
 
 ## <a name="sql-vm-image-refresh-policy"></a><a id="lifecycle"></a>Zásady aktualizace imagí virtuálních počítačů SQL
 Azure pro každou podporovanou kombinaci operačního systému, jeho verze a edice udržuje pouze jednu image virtuálního počítače. To znamená, že se image v průběhu času aktualizují a staré image se odebírají. Další informace najdete v části **Image** tématu [Nejčastější dotazy k virtuálním počítačům s SQL Serverem](virtual-machines-windows-sql-server-iaas-faq.md#images).
@@ -160,7 +160,7 @@ Odpovědi na nejčastější dotazy o virtuálních počítačích SQL:
 
 * [SQL Server na Azure Virtual Machines – nejčastější dotazy](virtual-machines-windows-sql-server-iaas-faq.md)
 
-Zobrazení referenčních architektur pro spouštění n-vrstvých aplikací na serveru SQL Server v systému IaaS
+Zobrazení referenčních architektur pro spouštění N-vrstvých aplikací na SQL Server v IaaS
 
-* [Aplikace Úrovně Windows N v Azure pomocí SQL Serveru](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/n-tier-sql-server)
-* [Spuštění n-vrstvé aplikace ve více oblastech Azure pro vysokou dostupnost](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/multi-region-sql-server)
+* [N-vrstvá aplikace Windows v Azure s SQL Server](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/n-tier-sql-server)
+* [Spuštění N-vrstvé aplikace v několika oblastech Azure pro zajištění vysoké dostupnosti](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/multi-region-sql-server)

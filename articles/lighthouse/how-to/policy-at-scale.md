@@ -1,24 +1,24 @@
 ---
-title: Nasazení zásad Azure na delegovaná předplatná ve velkém měřítku
-description: Zjistěte, jak správa delegovaných prostředků Azure umožňuje nasadit definici zásad a přiřazení zásad napříč více klienty.
+title: Nasazení Azure Policy k delegovaným předplatným ve velkém měřítku
+description: Přečtěte si, jak vám Správa delegovaných prostředků v Azure umožňuje nasazení definice zásady a přiřazení zásad napříč více klienty.
 ms.date: 11/8/2019
 ms.topic: conceptual
 ms.openlocfilehash: 3fe7e48c56e9a5af93e9642ee16c50cfbce34f9e
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81481826"
 ---
-# <a name="deploy-azure-policy-to-delegated-subscriptions-at-scale"></a>Nasazení zásad Azure na delegovaná předplatná ve velkém měřítku
+# <a name="deploy-azure-policy-to-delegated-subscriptions-at-scale"></a>Nasazení Azure Policy k delegovaným předplatným ve velkém měřítku
 
-Jako poskytovatel služeb můžete mít na palubě více klienty zákazníků pro správu delegovaných prostředků Azure. [Azure Lighthouse](../overview.md) umožňuje poskytovatelům služeb provádět operace ve velkém měřítku napříč několika tenanty najednou, což zefektivňuje úlohy správy.
+Jako poskytovatel služeb můžete mít k dispozici více zákazníků pro správu delegovaných prostředků Azure. [Azure Lighthouse](../overview.md) umožňuje poskytovatelům služeb provádět operace ve velkém měřítku napříč několika klienty najednou, což usnadňuje úlohy správy.
 
-Toto téma ukazuje, jak pomocí [zásad Azure](../../governance/policy/index.yml) nasadit definici zásad a přiřazení zásad napříč více klienty pomocí příkazů PowerShellu. V tomto příkladu definice zásad zajišťuje, že účty úložiště jsou zabezpečeny povolením pouze přenosy HTTPS.
+V tomto tématu se dozvíte, jak použít [Azure Policy](../../governance/policy/index.yml) k nasazení definice zásady a přiřazení zásad napříč více klienty pomocí příkazů PowerShellu. V tomto příkladu definice zásad zajišťuje zabezpečení účtů úložiště tím, že povoluje jenom přenosy HTTPS.
 
-## <a name="use-azure-resource-graph-to-query-across-customer-tenants"></a>Použití Azure Resource Graph k dotazování napříč klienty zákazníků
+## <a name="use-azure-resource-graph-to-query-across-customer-tenants"></a>Použití Azure Resource graphu k dotazování napříč klienty zákazníka
 
-[Azure Resource Graph](../../governance/resource-graph/index.yml) můžete použít k dotazování napříč všemi předplatnými v klientech zákazníků, které spravujete. V tomto příkladu identifikujeme všechny účty úložiště v těchto předplatných, které aktuálně nevyžadují provoz HTTPS.  
+Pomocí [Azure Resource graphu](../../governance/resource-graph/index.yml) se můžete dotazovat napříč všemi předplatnými v klientech zákazníků, které spravujete. V tomto příkladu zjistíme všechny účty úložiště v těchto předplatných, které aktuálně nevyžadují provoz HTTPS.  
 
 ```powershell
 $MspTenant = "insert your managing tenantId here"
@@ -30,9 +30,9 @@ $ManagedSubscriptions = Search-AzGraph -Query "ResourceContainers | where type =
 Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Storage/storageAccounts' | project name, location, subscriptionId, tenantId, properties.supportsHttpsTrafficOnly" -subscription $ManagedSubscriptions.subscriptionId | convertto-json
 ```
 
-## <a name="deploy-a-policy-across-multiple-customer-tenants"></a>Nasazení zásad y pro více klientských klientů zákazníků
+## <a name="deploy-a-policy-across-multiple-customer-tenants"></a>Nasazení zásady napříč několika klienty zákazníka
 
-Následující příklad ukazuje, jak použít [šablonu Azure Resource Manager](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/policy-enforce-https-storage/enforceHttpsStorage.json) k nasazení definice zásad a přiřazení zásad napříč delegovanými předplatnými ve více klientech zákazníků. Tato definice zásad vyžaduje, aby všechny účty úložiště používaly přenosy HTTPS, což brání vytváření nových účtů úložiště, které nesplňují požadavky, a označení existujících účtů úložiště bez nastavení jako nekompatibilní.
+Následující příklad ukazuje, jak použít [šablonu Azure Resource Manager](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/policy-enforce-https-storage/enforceHttpsStorage.json) k nasazení definice zásady a přiřazení zásad v rámci delegovaných předplatných ve více zákaznických klientech. Tato definice zásady vyžaduje, aby všechny účty úložiště používaly přenosy protokolu HTTPS, což brání vytvoření jakýchkoli nových účtů úložiště, které nedodržují předpisy, a označení stávajících účtů úložiště bez nastavení jako nevyhovující.
 
 ```powershell
 Write-Output "In total, there are $($ManagedSubscriptions.Count) delegated customer subscriptions to be managed"
@@ -50,7 +50,7 @@ foreach ($ManagedSub in $ManagedSubscriptions)
 
 ## <a name="validate-the-policy-deployment"></a>Ověření nasazení zásad
 
-Po nasazení šablony Azure Resource Manageru můžete potvrdit, že definice zásad byla úspěšně použita pokusem o vytvoření účtu úložiště s **EnableHttpsTrafficPouze** nastavena na **false** v jednom z vašich delegovaných předplatných. Z důvodu přiřazení zásad byste neměli být schopni vytvořit tento účet úložiště.  
+Po nasazení Azure Resource Manager šablony si můžete ověřit, že se definice zásady úspěšně použila při pokusu o vytvoření účtu úložiště s **EnableHttpsTrafficOnly** nastaveným na **hodnotu false** v jednom z vašich delegovaných předplatných. Vzhledem k přiřazení zásad by neměl být možné vytvořit tento účet úložiště.  
 
 ```powershell
 New-AzStorageAccount -ResourceGroupName (New-AzResourceGroup -name policy-test -Location eastus -Force).ResourceGroupName `
@@ -63,7 +63,7 @@ New-AzStorageAccount -ResourceGroupName (New-AzResourceGroup -name policy-test -
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Po dokončení odeberte definici zásad a přiřazení vytvořené nasazením.
+Až budete hotovi, odeberte definici zásady a přiřazení vytvořená nasazením.
 
 ```powershell
 foreach ($ManagedSub in $ManagedSubscriptions)
@@ -90,5 +90,5 @@ foreach ($ManagedSub in $ManagedSubscriptions)
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o [zásadách Azure](../../governance/policy/index.yml).
-- Další informace o [prostředích správy mezi tenanty](../concepts/cross-tenant-management-experience.md).
+- Přečtěte si o [Azure Policy](../../governance/policy/index.yml).
+- Přečtěte si o [prostředích pro správu mezi klienty](../concepts/cross-tenant-management-experience.md).
