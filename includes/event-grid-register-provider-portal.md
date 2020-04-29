@@ -9,10 +9,10 @@ ms.date: 04/16/2020
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: 8833bb75f5f50372deda3e71c1df90bed9a20054
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81605704"
 ---
 ## <a name="enable-event-grid-resource-provider"></a>Povolit poskytovatele prostředků služby Event Grid
@@ -21,9 +21,9 @@ Pokud jste ve vašem předplatném Azure ještě službu Event Grid nepoužíval
 
 Na webu Azure Portal:
 
-1. V levé nabídce vyberte **Předplatná.**
+1. V nabídce vlevo vyberte **odběry** .
 1. Vyberte předplatné, které používáte pro službu Event Grid.
-1. V levé nabídce vyberte v části **Nastavení** **položku Zprostředkovatelé prostředků**.
+1. V nabídce vlevo v části **Nastavení**vyberte **poskytovatelé prostředků**.
 1. Vyhledejte **Microsoft.EventGrid**.
 1. Pokud prostředek není zaregistrovaný, vyberte **Zaregistrovat**. 
 

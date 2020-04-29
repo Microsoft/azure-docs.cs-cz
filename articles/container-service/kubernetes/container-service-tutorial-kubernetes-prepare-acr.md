@@ -1,5 +1,5 @@
 ---
-title: (ZASTARALÉ) Kurz služby Azure Container Service – příprava acr
+title: ZASTARALÉ Kurz Azure Container Service – Příprava ACR
 description: Kurz Azure Container Service – Příprava ACR
 author: iainfoulds
 ms.service: container-service
@@ -8,16 +8,16 @@ ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: 087530fd3834c4ec4620c087134bee0ed26bb6c9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78399782"
 ---
-# <a name="deprecated-deploy-and-use-azure-container-registry"></a>(ZASTARALÉ) Nasazení a použití registru kontejnerů Azure
+# <a name="deprecated-deploy-and-use-azure-container-registry"></a>ZASTARALÉ Nasazení a použití Azure Container Registry
 
 > [!TIP]
-> Aktualizovaná verze tohoto kurzu, který používá službu Azure Kubernetes, [najdete v tématu Kurz: Nasazení a použití registru kontejnerů Azure](../../aks/tutorial-kubernetes-prepare-acr.md).
+> Aktualizovanou verzi v tomto kurzu, který používá službu Azure Kubernetes, najdete v tématu [kurz: nasazení a použití Azure Container Registry](../../aks/tutorial-kubernetes-prepare-acr.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -30,7 +30,7 @@ Azure Container Registry (ACR) je privátní registr prostředí Azure pro image
 
 V následujících kurzech bude tato instance služby ACR integrována do clusteru Kubernetes v Azure Container Service. 
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 V [předchozím kurzu](./container-service-tutorial-kubernetes-prepare-app.md) byla vytvořena image kontejneru pro jednoduchou hlasovací aplikaci v Azure. Pokud jste image hlasovací aplikace v Azure ještě nevytvořili, vraťte se ke [kurzu 1 – Vytváření imagí kontejneru](./container-service-tutorial-kubernetes-prepare-app.md).
 
@@ -46,7 +46,7 @@ Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/gr
 az group create --name myResourceGroup --location westeurope
 ```
 
-Vytvořte registr kontejneru Azure pomocí příkazu [az acr create.](/cli/azure/acr#az-acr-create) Název registru kontejneru **musí být jedinečný**.
+Pomocí příkazu [AZ ACR Create](/cli/azure/acr#az-acr-create) vytvořte službu Azure Container Registry. Název registru kontejneru **musí být jedinečný**.
 
 ```azurecli
 az acr create --resource-group myResourceGroup --name <acrName> --sku Basic

@@ -1,6 +1,6 @@
 ---
-title: Certifikace virtuálních strojů Azure – Azure Marketplace
-description: Přečtěte si, jak otestovat a odeslat nabídku virtuálních strojů na komerčním trhu.
+title: Certifikace virtuálních počítačů Azure – Azure Marketplace
+description: Přečtěte si, jak otestovat a odeslat nabídku virtuálních počítačů na komerčním webu Marketplace.
 author: emuench
 ms.author: mingshen
 ms.service: marketplace
@@ -8,50 +8,50 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.openlocfilehash: 9bd7e40855f30612b90cf28365c0b1410cd3e3d8
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81731131"
 ---
-# <a name="azure-virtual-machine-vm-image-certification"></a>Certifikace image virtuálního počítače (VM) Azure
+# <a name="azure-virtual-machine-vm-image-certification"></a>Certifikace imagí virtuálních počítačů Azure
 
 > [!NOTE]
-> Přesouváme správu nabídek virtuálních virtuálních zařízení Azure z portálu partnerů cloudu do Centra partnerů. Dokud se vaše nabídky nebudou migrovat, pokračujte podle pokynů v tématu [Vytvoření certifikátů pro Azure Key Vault](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-create-key-vault-cert) na portálu cloudových partnerů a spravujte své nabídky.
+> Přesouváme správu nabídek virtuálních počítačů Azure z portál partnerů cloudu do partnerského centra. Dokud se vaše nabídky nemigrují, pokračujte podle pokynů v tématu [Vytvoření certifikátů pro Azure Key Vault](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-create-key-vault-cert) v portál partnerů cloudu ke správě nabídek.
 
-Tento článek popisuje, jak otestovat a odeslat image virtuálního počítače (VM) na komerčním trhu, aby bylo zajištěno, že splňuje nejnovější požadavky na publikování na Azure Marketplace.
+Tento článek popisuje, jak otestovat a odeslat image virtuálního počítače (VM) na komerčním tržišti, aby splňovala nejnovější Azure Marketplace požadavky na publikování.
 
-Před odesláním nabídky virtuálního počítače proveďte tyto kroky:
+Před odesláním nabídky virtuálního počítače dokončete tyto kroky:
 
-1. Vytvářejte a nasazujte certifikáty.
-2. Nasaďte virtuální počítač Azure pomocí zobecněné image.
-3. Spusťte ověření.
+1. Vytvoření a nasazení certifikátů.
+2. Nasaďte virtuální počítač Azure pomocí generalizované image.
+3. Spusťte ověřování.
 
-## <a name="create-and-deploy-certificates-for-azure-key-vault"></a>Vytváření a nasazování certifikátů pro Azure Key Vault
+## <a name="create-and-deploy-certificates-for-azure-key-vault"></a>Vytvoření a nasazení certifikátů pro Azure Key Vault
 
-Tato část popisuje, jak vytvořit a nasadit certifikáty podepsané svým držitelem, které jsou nutné k nastavení připojení Windows Remote Management (WinRM) k virtuálnímu počítači hostovanému v Azure.
+Tato část popisuje, jak vytvořit a nasadit certifikáty podepsané svým držitelem, které jsou nutné k nastavení připojení služby Vzdálená správa systému Windows (WinRM) k virtuálnímu počítači hostovanému v Azure.
 
-### <a name="create-certificates-for-azure-key-vault"></a>Vytvoření certifikátů pro Azure Key Vault
+### <a name="create-certificates-for-azure-key-vault"></a>Vytvořit certifikáty pro Azure Key Vault
 
 Tento proces se skládá ze tří kroků:
 
 1. Vytvořte certifikát zabezpečení.
-2. Vytvořte trezor klíčů Azure pro uložení certifikátu.
-3. Uložte certifikáty do trezoru klíčů.
+2. Vytvořte Azure Key Vault pro uložení certifikátu.
+3. Certifikáty uložte do trezoru klíčů.
 
-Pro tuto práci můžete použít novou nebo existující skupinu prostředků Azure.
+Pro tuto práci můžete použít buď novou, nebo existující skupinu prostředků Azure.
 
-#### <a name="create-the-security-certificate"></a>Vytvoření certifikátu zabezpečení
+#### <a name="create-the-security-certificate"></a>Vytvořit certifikát zabezpečení
 
-Chcete-li vytvořit soubor certifikátu (.pfx) v místní složce, upravte a spusťte následující skript Azure PowerShellu. Nahraďte hodnoty parametrů uvedených v následující tabulce.
+Úpravou a spuštěním následujícího skriptu Azure PowerShell vytvořte soubor certifikátu (. pfx) v místní složce. Nahraďte hodnoty parametrů, které jsou uvedeny v následující tabulce.
 
-| **Parametr** | **Popis** |
+| **Ukazatele** | **Popis** |
 | --- | --- |
-| $certroopath | Místní složka pro uložení souboru .pfx. |
-| $location | Jedna ze standardních geografických umístění Azure. |
+| $certroopath | Místní složka, do které se uloží soubor. pfx |
+| $location | Jedno ze standardních zeměpisných míst Azure. |
 | $vmName | Název plánovaného virtuálního počítače Azure. |
-| $certname | Název osvědčení; musí odpovídat plně kvalifikovaný název domény plánovaného virtuálního soudu. |
-| $certpassword | Heslo pro certifikáty, musí odpovídat heslo použité pro plánovaný virtuální počítače. |
+| $certname | Název certifikátu; musí odpovídat plně kvalifikovanému názvu domény plánovaného virtuálního počítače. |
+| $certpassword | Heslo pro certifikáty se musí shodovat s heslem použitým pro plánovaný virtuální počítač. |
 | | |
 
 ```PowerShell
@@ -82,14 +82,14 @@ Chcete-li vytvořit soubor certifikátu (.pfx) v místní složce, upravte a spu
 ```
 
 > [!TIP]
-> Zachovat stejnou relaci konzoly Azure PowerShell otevřené a spuštěné během těchto kroků zachovat hodnoty různých parametrů.
+> V průběhu těchto kroků nechejte stejnou relaci konzoly Azure PowerShell otevřít a spustit, aby se zachovaly hodnoty různých parametrů.
 
 > [!WARNING]
-> Pokud uložíte tento skript, uložte jej pouze na bezpečném místě, protože obsahuje informace o zabezpečení (heslo).
+> Pokud tento skript uložíte, uložte ho pouze do zabezpečeného umístění, protože obsahuje informace o zabezpečení (heslo).
 
 #### <a name="create-the-azure-key-vault-to-store-the-certificate"></a>Vytvoření trezoru klíčů Azure pro uložení certifikátu
 
-Zkopírujte obsah šablony níže do souboru v místním počítači. V ukázkovém skriptu `C:\certLocation\keyvault.json`níže je tento prostředek ).
+Zkopírujte obsah šablony níže do souboru na místním počítači. V následujícím příkladu skriptu je `C:\certLocation\keyvault.json`tento prostředek).
 
 ```json
 {
@@ -184,15 +184,15 @@ Zkopírujte obsah šablony níže do souboru v místním počítači. V ukázkov
 
 ```
 
-Upravte a spusťte následující skript Azure PowerShell u vytvořit Azure Key Vault a přidružené skupiny prostředků. Nahrazení hodnot parametrů uvedených v následující tabulce
+Úpravou a spuštěním následujícího skriptu Azure PowerShell vytvořte Azure Key Vault a přidruženou skupinu prostředků. Nahraďte hodnoty parametrů, které jsou uvedeny v následující tabulce.
 
-| **Parametr** | **Popis** |
+| **Ukazatele** | **Popis** |
 | --- | --- |
-| $postfix | Náhodný číselný řetězec připojený k identifikátorům nasazení. |
-| $rgName | Název skupiny prostředků Azure (RG), který chcete vytvořit. |
-| $location | Jedna ze standardních geografických umístění Azure. |
-| $kvTemplateJson | Cesta k souboru (keyvault.json) obsahující šablonu Správce prostředků pro trezor klíčů. |
-| $kvname | Název nového trezoru klíčů.|
+| $postfix | Náhodný numerický řetězec připojený k identifikátorům nasazení. |
+| $rgName | Název skupiny prostředků Azure (RG), která se má vytvořit |
+| $location | Jedno ze standardních zeměpisných míst Azure. |
+| $kvTemplateJson | Cesta k souboru (Trezor klíčů. JSON), který obsahuje šablonu Správce prostředků pro Trezor klíčů. |
+| $kvname | Název nového trezoru klíčů|
 |   |   |
 
 ```PowerShell
@@ -293,7 +293,7 @@ Upravte a spusťte následující skript Azure PowerShell u vytvořit Azure Key 
 
 #### <a name="store-the-certificates-to-the-key-vault"></a>Uložení certifikátů do trezoru klíčů
 
-Certifikáty obsažené v souboru PFX uložte do nového trezoru klíčů pomocí tohoto skriptu:
+Certifikáty obsažené v souboru. pfx uložte do nového trezoru klíčů pomocí tohoto skriptu:
 
 ```PowerShell
      $fileName =$certroopath+"\$certname"+".pfx"
@@ -317,13 +317,13 @@ Certifikáty obsažené v souboru PFX uložte do nového trezoru klíčů pomoc�
 
 ```
 
-## <a name="deploy-an-azure-vm-using-your-generalized-image"></a>Nasazení virtuálního počítače Azure pomocí zobecněné image
+## <a name="deploy-an-azure-vm-using-your-generalized-image"></a>Nasazení virtuálního počítače Azure pomocí generalizované image
 
-Tato část popisuje, jak nasadit zobecněnou image virtuálního pevného disku k vytvoření nového prostředku virtuálního počítače Azure. Pro tento proces použijeme dodanou šablonu Azure Resource Manager a skript Azure PowerShell.
+Tato část popisuje, jak nasadit zobecněnou image virtuálního pevného disku pro vytvoření nového prostředku virtuálního počítače Azure. Pro tento proces budeme používat dodanou šablonu Azure Resource Manager a skript Azure PowerShell.
 
-### <a name="prepare-an-azure-resource-manager-template"></a>Příprava šablony Azure Resource Manageru
+### <a name="prepare-an-azure-resource-manager-template"></a>Příprava šablony Azure Resource Manager
 
-Zkopírujte následující šablonu Správce prostředků Azure pro nasazení virtuálního pevného disku do místního souboru s názvem VHDtoImage.json. Další skript bude požadovat umístění v místním počítači používat tento JSON.
+Zkopírujte následující šablonu Azure Resource Manager pro nasazení VHD do místního souboru s názvem VHDtoImage. JSON. Další skript požádá o umístění v místním počítači, aby se tento kód JSON použil.
 
 ```JSON
 {
@@ -558,32 +558,32 @@ Zkopírujte následující šablonu Správce prostředků Azure pro nasazení vi
 
 ```
 
-Chcete-li zadat hodnoty pro tyto parametry, upravte tento soubor:
+Upravte tento soubor a zadejte hodnoty pro tyto parametry:
 
-| **Parametr** | **Popis** |
+| **Ukazatele** | **Popis** |
 | --- | --- |
-| ResourceGroupName | Název existující skupiny prostředků Azure. Obvykle použijte stejný RG jako trezor klíčů. |
-| Soubor šablony | Úplný název cesty k souboru VHDtoImage.json. |
-| userStorageAccountName | Název účtu úložiště. |
-| sNameForPublicIP | Název DNS pro veřejnou IP adresu; musí být malá písmena. |
+| ResourceGroupName | Název existující skupiny prostředků Azure Obvykle používejte stejný RG jako Trezor klíčů. |
+| TemplateFile | Úplná cesta k souboru VHDtoImage. JSON. |
+| userStorageAccountName | Název účtu úložiště |
+| sNameForPublicIP | Název DNS pro veřejnou IP adresu; musí být malými písmeny. |
 | subscriptionId | Identifikátor předplatného Azure. |
-| Umístění | Standardní geografické umístění Azure skupiny prostředků. |
-| vmName | Název virtuálního počítače. |
-| název trezoru | Název trezoru klíčů. |
-| vaultResourceGroup | Skupina prostředků trezoru klíčů |
-| certificateUrl | Webová adresa (URL) certifikátu, včetně verze uložené v `https://testault.vault.azure.net/secrets/testcert/b621es1db241e56a72d037479xab1r7`trezoru klíčů, například: . |
+| Umístění | Standardní geografické umístění skupiny prostředků v Azure. |
+| vmName | Název virtuálního počítače |
+| vaultName | Název trezoru klíčů |
+| vaultResourceGroup | Skupina prostředků trezoru klíčů. |
+| certificateUrl | Webová adresa (URL) certifikátu, včetně verze uložené v trezoru klíčů, například: `https://testault.vault.azure.net/secrets/testcert/b621es1db241e56a72d037479xab1r7`. |
 | vhdUrl | Webová adresa virtuálního pevného disku. |
-| vmSize | Velikost instance virtuálního počítače. |
+| vmSize | Velikost instance virtuálního počítače |
 | publicIPAddressName | Název veřejné IP adresy. |
 | virtualNetworkName | Název virtuální sítě. |
-| nicNázev | Název karty síťového rozhraní pro virtuální síť. |
+| nicName | Název karty síťového rozhraní pro virtuální síť. |
 | adminUserName | Uživatelské jméno účtu správce. |
 | adminPassword | Heslo správce. |
 |   |   |
 
 ### <a name="deploy-an-azure-vm"></a>Nasazení virtuálního počítače Azure
 
-Zkopírujte a upravte následující skript `$storageaccount` `$vhdUrl` a zadejte hodnoty pro proměnné a. Spusťte jej k vytvoření prostředku virtuálního počítače Azure z existujícího generalizovaného virtuálního pevného disku.
+Zkopírujte a upravte následující skript, který poskytne hodnoty pro proměnné `$storageaccount` a `$vhdUrl` . Spusťte ho k vytvoření prostředku virtuálního počítače Azure ze stávajícího zobecněného virtuálního pevného disku.
 
 ```PowerShell
 
@@ -603,53 +603,53 @@ New-AzResourceGroupDeployment -Name"dplisvvm$postfix" -ResourceGroupName"$rgName
 
 ```
 
-## <a name="run-validations"></a>Spuštění ověření
+## <a name="run-validations"></a>Spustit ověřování
 
-Existují dva způsoby, jak spustit ověření na nasazené bitové kopie:
+Existují dva způsoby, jak spustit ověřování na nasazené imagi:
 
-- Použití certifikačního testovacího nástroje pro certifikaci Azure Certified
-- Použití rozhraní API pro vlastní testování
+- Použití nástroje pro testování certifikace pro certifikaci v Azure
+- Použití rozhraní API pro samočinné testování
 
-### <a name="download-and-run-the-certification-test-tool"></a>Stažení a spuštění certifikačního testovacího nástroje
+### <a name="download-and-run-the-certification-test-tool"></a>Stažení a spuštění nástroje certifikace test
 
-Certifikační testovací nástroj pro Azure Certified běží na místním počítači s Windows, ale testuje virtuální počítač s Windows nebo Linux založený na Azure. Potvrzuje, že image virtuálního počítače uživatele lze použít s Microsoft Azure a že byly splněny pokyny a požadavky týkající se přípravy virtuálního pevného disku. Výstupem nástroje je zpráva o kompatibilitě, kterou nahrajete na portál Partnerského centra a požádáte o certifikaci virtuálních zařízení.
+Nástroj certifikace pro certifikaci pro Azure Certified běží na místním počítači s Windows, ale testuje virtuální počítač se systémem Windows nebo Linux na platformě Azure. Potvrzuje, že vaše uživatelská image virtuálního počítače se dá používat s Microsoft Azure a že se splnily pokyny a požadavky týkající se přípravy vašeho virtuálního pevného disku. Výstupem nástroje je zpráva o kompatibilitě, kterou nahrajete na portál partnerského centra a vyžádáte certifikaci virtuálního počítače.
 
-1. Stáhněte a nainstalujte nejnovější [certifikační testovací nástroj pro Azure Certified](https://www.microsoft.com/download/details.aspx?id=44299).
-2. Otevřete certifikační nástroj a vyberte **Spustit nový test**.
-3. Na obrazovce **Informace o testu** zadejte název **testu** pro testovací běh.
-4. Vyberte **platformu** pro váš virtuální počítač, windows server nebo linux. Volba platformy ovlivní zbývající možnosti.
-5. Pokud váš virtuální počítač používá tuto databázovou službu, zaškrtněte políčko **Testovat pro Azure SQL Database.**
+1. Stáhněte a nainstalujte si nejnovější [Nástroj pro testování certifikace pro certifikaci Azure](https://www.microsoft.com/download/details.aspx?id=44299).
+2. Otevřete nástroj certifikace a pak vyberte **Spustit nový test**.
+3. Na obrazovce **informace o testu** zadejte **název testu** testovacího běhu.
+4. Vyberte **platformu** pro váš virtuální počítač, buď Windows Server nebo Linux. Volba vaší platformy má vliv na zbývající možnosti.
+5. Pokud váš virtuální počítač používá tuto databázovou službu, zaškrtněte políčko **test pro Azure SQL Database** .
 
-### <a name="connect-the-certification-tool-to-a-vm-image"></a>Připojení certifikačního nástroje k bitové kopii virtuálního zařízení
+### <a name="connect-the-certification-tool-to-a-vm-image"></a>Připojení certifikačního nástroje k imagi virtuálního počítače
 
-Nástroj se připojuje k virtuálním počítačům se systémem Windows pomocí [Azure PowerShellu](https://docs.microsoft.com/powershell/) a připojuje se k virtuálním počítačům s Linuxem prostřednictvím [SSH.Net](https://www.ssh.com/ssh/protocol/).
+Nástroj se připojuje k virtuálním počítačům s Windows pomocí [Azure PowerShell](https://docs.microsoft.com/powershell/) a připojuje se k virtuálním počítačům Linux prostřednictvím [SSH.NET](https://www.ssh.com/ssh/protocol/).
 
-### <a name="connect-the-certification-tool-to-a-linux-vm-image"></a>Připojení certifikačního nástroje k bitové kopii virtuálního počítače s Linuxem
+### <a name="connect-the-certification-tool-to-a-linux-vm-image"></a>Připojení certifikačního nástroje k imagi virtuálního počítače se systémem Linux
 
-1. Vyberte režim **ověřování SSH:** Ověřování heslem nebo ověřování souborů klíčů.
-2. Pokud používáte ověřování pomocí hesla, zadejte hodnoty pro **název DNS virtuálního počítače**, uživatelské **jméno**a **heslo**. Můžete také změnit výchozí číslo **portu SSH.**
+1. Vyberte režim **ověřování SSH** : ověřování hesla nebo ověření souboru klíče.
+2. Pokud používáte ověřování na základě hesla, zadejte hodnoty pro **název DNS virtuálního počítače**, **uživatelské jméno**a **heslo**. Můžete také změnit výchozí číslo **portu SSH** .
 
-    ![Azure Certified Test Tool, ověřování heslem image virtuálního počítače s Linuxem](media/avm-cert2.png)
+    ![Nástroj pro testování Azure Certified, ověřování hesla pro image virtuálního počítače se systémem Linux](media/avm-cert2.png)
 
-3. Pokud používáte ověřování pomocí souboru klíčů, zadejte hodnoty pro **název DNS virtuálního uživatele**, uživatelské **jméno**a umístění **soukromého klíče.** Můžete také zahrnout **přístupové heslo** nebo změnit výchozí číslo **portu SSH.**
+3. Pokud používáte ověřování na základě klíčového souboru, zadejte hodnoty pro **název DNS virtuálního počítače**, **uživatelské jméno**a umístění **privátního klíče** . Můžete také zahrnout **heslo** nebo změnit výchozí číslo **portu SSH** .
 
-### <a name="connect-the-certification-tool-to-a-windows-based-vm-image"></a>**Připojení certifikačního nástroje k bitové kopii virtuálního zařízení založeného na Windows**
+### <a name="connect-the-certification-tool-to-a-windows-based-vm-image"></a>**Připojení certifikačního nástroje k imagi virtuálního počítače se systémem Windows**
 
-1. Zadejte plně kvalifikovaný **název DNS virtuálního zařízení** (například MyVMName.Cloudapp.net).
+1. Zadejte plně kvalifikovaný **název DNS virtuálního počítače** (například MyVMName.cloudapp.NET).
 2. Zadejte hodnoty **uživatelského jména** a **hesla**.
 
-    ![Azure Certified Test Tool, ověřování heslem image virtuálního počítače se systémem Windows](media/avm-cert4.png)
+    ![Nástroj pro testování Azure Certified, ověřování hesla bitové kopie virtuálního počítače se systémem Windows](media/avm-cert4.png)
 
-### <a name="run-a-certification-test"></a>Spuštění certifikačního testu
+### <a name="run-a-certification-test"></a>Spustit test certifikace
 
-Po zadaných hodnoty parametrů pro image virtuálního počítače v certifikačním nástroji, vyberte **Test připojení** k vytvoření platné připojení k virtuálnímu počítači. Po ověření připojení vyberte **další** a spusťte test. Po dokončení testu jsou výsledky testů zobrazeny v tabulce. Stav sloupec zobrazuje (Pass / Fail / Upozornění) pro každý test. Pokud některý z testů selže, vaše image _není_ certifikována. V takovém případě zkontrolujte požadavky a zprávy selhání, proveďte navrhované změny a spusťte test znovu.
+Po zadání hodnot parametrů pro vaši image virtuálního počítače v nástroji certifikace vyberte **Test připojení** a vytvořte platné připojení k vašemu virtuálnímu počítači. Po ověření připojení vyberte **Další** a spusťte test. Po dokončení testu jsou výsledky testu zobrazeny v tabulce. U každého testu se ve sloupci Stav zobrazuje (úspěch/chyba/upozornění). Pokud některý z testů selže, váš obrázek _není certifikovaný._ V takovém případě zkontrolujte zprávy o požadavcích a chybách, proveďte navrhované změny a spusťte test znovu.
 
-Po dokončení automatického testu zadejte další informace o obrázku virtuálního počítače na dvou kartách obrazovky **Dotazník,** **Obecné hodnocení** a **Přizpůsobení jádra**a pak vyberte **Další**.
+Po dokončení automatizovaného testu zadejte další informace o imagi virtuálního počítače na dvou kartách obrazovky **dotazníku** , **Obecné vyhodnocení** a **přizpůsobení jádra**a pak vyberte **Další**.
 
-Poslední obrazovka umožňuje poskytnout další informace, jako jsou informace o přístupu SSH pro bitovou kopii virtuálního počítače s Linuxem a vysvětlení všech neúspěšných hodnocení, pokud hledáte výjimky.
+Poslední obrazovka vám umožní zadat další informace, například informace o přístupu SSH pro image virtuálního počítače se systémem Linux, a vysvětlení všech neúspěšných posouzení, pokud hledáte výjimky.
 
-Nakonec vyberte **generovat sestavu,** chcete-li stáhnout výsledky testů a soubory protokolu pro provedené testovací případy spolu s odpověďmi na dotazník. Uložte výsledky ve stejném kontejneru jako vaše Virtuální počítače.
+Nakonec vyberte možnost **Generovat sestavu** pro stažení výsledků testů a souborů protokolu pro provedené testovací případy spolu s vašimi odpověďmi na dotazník. Výsledky uložte do stejného kontejneru jako vaše virtuální pevné disky.
 
 ## <a name="next-step"></a>Další krok
 
-- [Generovat jednotné identifikátory prostředků (URI) pro každý virtuální pevný disk](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-get-sas-uri)
+- [Vygenerujte identifikátory URI (Uniform Resource Identifier) pro každý virtuální pevný disk.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-get-sas-uri)

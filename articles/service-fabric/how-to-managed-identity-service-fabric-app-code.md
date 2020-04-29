@@ -1,48 +1,48 @@
 ---
 title: Použití spravované identity s aplikací
-description: Jak používat spravované identity v kódu aplikace Azure Service Fabric pro přístup ke službám Azure Services.
+description: Použití spravovaných identit v Azure Service Fabric kódu aplikace pro přístup ke službám Azure.
 ms.topic: article
 ms.date: 10/09/2019
 ms.openlocfilehash: 8f1f355d6add16f3b3ec25bc569f9b198a8d6778
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81461561"
 ---
 # <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services"></a>Jak využít spravovanou identitu aplikace Service Fabric pro přístup ke službám Azure
 
-Aplikace Service Fabric můžou využít spravované identity k přístupu k dalším prostředkům Azure, které podporují ověřování na základě Azure Active Directory. Aplikace může získat [přístupový token](../active-directory/develop/developer-glossary.md#access-token) představující jeho identitu, který může být přiřazen k systému nebo uživateli, a použít jej jako token nosiče k ověření na jinou službu , označovanou také jako [chráněný server prostředků](../active-directory/develop/developer-glossary.md#resource-server). Token představuje identitu přiřazenou aplikaci Service Fabric a bude vydán pouze prostředkům Azure (včetně aplikací SF), které tuto identitu sdílejí. Podrobný popis spravovaných identit a také rozlišení mezi identitami přiřazenými systémem a identitami přiřazenými uživatelem naleznete v dokumentaci [k přehledu spravovaných](../active-directory/managed-identities-azure-resources/overview.md) identit. Budeme odkazovat na aplikaci Service Fabric s povolenou spravovanou identitou jako [klientskou aplikaci](../active-directory/develop/developer-glossary.md#client-application) v celém tomto článku.
+Service Fabric aplikace můžou využívat spravované identity pro přístup k jiným prostředkům Azure, které podporují ověřování založené na Azure Active Directory. Aplikace může získat [přístupový token](../active-directory/develop/developer-glossary.md#access-token) představující jeho identitu, která může být přiřazena systémem nebo uživateli, a použít ji jako token nosiče k ověření sebe sama na jinou službu, která se označuje také jako [chráněný server prostředků](../active-directory/develop/developer-glossary.md#resource-server). Token představuje identitu přiřazenou Service Fabric aplikaci a bude ji vydávat jenom pro prostředky Azure (včetně SF aplikací), které tuto identitu sdílejí. Podrobný popis spravovaných identit a rozdíl mezi identitami přiřazenými systémem a uživatelem přiřazenými uživateli najdete v dokumentaci [Přehled spravované identity](../active-directory/managed-identities-azure-resources/overview.md) . V rámci tohoto článku budeme označovat jako [klientskou aplikaci](../active-directory/develop/developer-glossary.md#client-application) Service Fabric aplikace s podporou identity.
 
 > [!IMPORTANT]
-> Spravovaná identita představuje přidružení mezi prostředkem Azure a instancí v odpovídajícím tenantovi Azure AD přidruženém k předplatnému obsahujícímu prostředek. Jako takové, v kontextu Service Fabric spravované identity jsou podporovány pouze pro aplikace nasazené jako prostředky Azure. 
+> Spravovaná identita představuje přidružení mezi prostředkem Azure a instančním objektem v odpovídajícím tenantovi Azure AD, který je přidružený k předplatnému, které obsahuje daný prostředek. V kontextu Service Fabric se spravované identity podporují jenom pro aplikace nasazené jako prostředky Azure. 
 
 > [!IMPORTANT]
-> Před použitím spravované identity aplikace Service Fabric musí být klientské aplikaci udělen přístup k chráněnému prostředku. Naleznete v seznamu [služeb Azure, které podporují ověřování Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources) ke kontrole podpory a pak do dokumentace příslušné služby pro konkrétní kroky k udělení přístupu k identitě zájmu. 
+> Před použitím spravované identity Service Fabric aplikace musí mít klientská aplikace udělený přístup k chráněnému prostředku. V seznamu [služeb Azure, které podporují ověřování Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources) pro kontrolu podpory, a pak v dokumentaci příslušné služby najdete konkrétní kroky pro udělení přístupu identit k prostředkům, které vás zajímají. 
 
-## <a name="acquiring-an-access-token-using-rest-api"></a>Získání přístupového tokenu pomocí rozhraní REST API
-V clusterech povolených pro spravovanou identitu zpřístupňuje runtime Service Fabric koncový bod localhost, který aplikace mohou použít k získání přístupových tokenů. Koncový bod je k dispozici na každém uzlu clusteru a je přístupný všem entitám v tomto uzlu. Autorizovaní volající mohou získat přístupové tokeny voláním tohoto koncového bodu a předložením ověřovacího kódu. kód je generován runtime Service Fabric pro každou aktivaci odlišného balíčku kódu služby a je vázán na životnost procesu hostujícího tento balíček kódu služby.
+## <a name="acquiring-an-access-token-using-rest-api"></a>Získání přístupového tokenu pomocí REST API
+V clusterech povolených pro spravovanou identitu modul runtime Service Fabric zveřejňuje koncový bod localhost, který mohou aplikace použít k získání přístupových tokenů. Koncový bod je k dispozici na každém uzlu clusteru a je přístupný všem entitám v tomto uzlu. Autorizovaní volající mohou získat přístupové tokeny voláním tohoto koncového bodu a předkládáním ověřovacího kódu; kód je generován modulem runtime Service Fabric pro každou aktivaci balíčku kódu služby a je vázán na životní cyklus procesu hostujícího daný balíček kódu služby.
 
-Konkrétně prostředí služby Service Fabric s podporou spravované identity bude nasazeno s následujícími proměnnými:
-- "IDENTITY_ENDPOINT": koncový bod localhost odpovídající spravované identitě služby
-- 'IDENTITY_HEADER': jedinečný ověřovací kód představující službu na aktuálním uzlu
-- 'IDENTITY_SERVER_THUMBPRINT' : Kryptografický otisk serveru identity spravovaného službou Fabric
+Konkrétně prostředí Service Fabric služby spravované identity, která je s povolenou identitou, se dosadí s následujícími proměnnými:
+- ' IDENTITY_ENDPOINT ': koncový bod localhost odpovídající spravované identitě služby
+- ' IDENTITY_HEADER ': jedinečný ověřovací kód představující službu v aktuálním uzlu
+- ' IDENTITY_SERVER_THUMBPRINT ': kryptografický otisk serveru spravované identity Service Fabric
 
 > [!IMPORTANT]
-> Kód aplikace by měl hodnotu proměnné prostředí "IDENTITY_HEADER" považovat za citlivé údaje – neměla by být zaznamenávána ani jinak šířena. Ověřovací kód nemá žádnou hodnotu mimo místní uzel nebo po ukončení procesu hostujícího službu, ale představuje identitu služby Service Fabric, a proto by měl být zpracován se stejnými opatřeními jako samotný přístupový token.
+> Kód aplikace by měl uvažovat o hodnotě proměnné prostředí IDENTITY_HEADER jako citlivých dat – neměl by se protokolovat ani jinak šířit. Ověřovací kód nemá žádnou hodnotu mimo místní uzel, nebo po ukončení procesu, který hostuje službu, ale představuje identitu služby Service Fabric, a měl by být zpracován se stejnými opatřeními jako přístupový token sám.
 
-Chcete-li získat token, klient provede následující kroky:
-- vytvoří identifikátor URI zřetězením koncového bodu spravované identity (IDENTITY_ENDPOINT hodnota) s verzí rozhraní API a prostředek (cílovou skupinu) požadovaný pro token
-- vytvoří požadavek GET http(s) pro zadaný identifikátor URI
-- přidá příslušnou logiku ověření certifikátu serveru
-- přidá ověřovací kód (IDENTITY_HEADER hodnotu) jako hlavičku do požadavku
-- podá žádost
+K získání tokenu klient provede následující kroky:
+- Vytvoří identifikátor URI zřetězením spravovaného koncového bodu identity (IDENTITY_ENDPOINT hodnoty) s verzí rozhraní API a prostředkem (cílovou skupinou), který je pro token vyžadován.
+- vytvoří požadavek GET http (s) pro zadaný identifikátor URI.
+- Přidá odpovídající logiku ověřování certifikátů serveru.
+- Přidá ověřovací kód (IDENTITY_HEADER hodnotu) jako hlavičku do žádosti.
+- odešle žádost.
 
-Úspěšná odpověď bude obsahovat datovou část JSON představující výsledný přístupový token a také metadata popisující ji. Neúspěšná odpověď bude také obsahovat vysvětlení selhání. Další podrobnosti o zpracování chyb naleznete níže.
+Úspěšná odpověď bude obsahovat datovou část JSON, která představuje výsledný přístupový token, a také metadata, která ho popisují. Neúspěšná odpověď bude obsahovat také vysvětlení selhání. Další podrobnosti o zpracování chyb najdete níže.
 
-Přístupové tokeny budou ukládány service fabric na různých úrovních (uzel, cluster, služba zprostředkovatele prostředků), takže úspěšná odpověď nemusí nutně znamenat, že token byl vydán přímo v reakci na požadavek uživatelské aplikace. Tokeny budou uloženy do mezipaměti po dobu kratší než jejich životnost, a proto je zaručeno, že aplikace obdrží platný token. Doporučuje se, aby kód aplikace ukládá do mezipaměti sám všechny přístupové tokeny, které získá; klíč pro ukládání do mezipaměti by měl obsahovat (odvození) publika. 
+Přístupové tokeny budou uloženy v mezipaměti Service Fabric na různých úrovních (uzel, cluster, služba poskytovatele prostředků), takže úspěšná odpověď nutně neznamená, že se token vystavil přímo v reakci na žádost uživatelské aplikace. Tokeny budou uloženy v mezipaměti po dobu kratší, než je jejich životnost, a proto je zaručeno, že aplikace získá platný token. Doporučuje se, aby kód aplikace do mezipaměti získal všechny přístupové tokeny, které získá. klíč pro ukládání do mezipaměti by měl zahrnovat (odvození) cílové skupiny. 
 
-Žádost o vzorek:
+Vzorový požadavek:
 ```http
 GET 'https://localhost:2377/metadata/identity/oauth2/token?api-version=2019-07-01-preview&resource=https://vault.azure.net/' HTTP/1.1 Secret: 912e4af7-77ba-4fa5-a737-56c8e3ace132
 ```
@@ -50,14 +50,14 @@ kde:
 
 | Prvek | Popis |
 | ------- | ----------- |
-| `GET` | Sloveso HTTP označující, že chcete načíst data z koncového bodu. V tomto případě přístupový token OAuth. | 
-| `https://localhost:2377/metadata/identity/oauth2/token` | Koncový bod spravované identity pro aplikace Service Fabric, poskytované prostřednictvím proměnné prostředí IDENTITY_ENDPOINT. |
-| `api-version` | Parametr řetězce dotazu určující verzi rozhraní API služby Token spravované identity; v současné době je `2019-07-01-preview`jedinou přijatou hodnotou a může se změnit. |
-| `resource` | Parametr řetězce dotazu označující identifikátor URI ID aplikace cílového prostředku. To se projeví `aud` jako (publikum) nárok vydaného tokenu. Tento příklad požaduje token pro přístup k trezoru klíčů Azure,\/jehož identifikátor URI ID aplikace je https: /vault.azure.net/. |
-| `Secret` | Pole hlavičky požadavku HTTP vyžadované službou Service Fabric Managed Identity Token Service Service Service Services k ověření volajícího. Tato hodnota je poskytována runtime SF prostřednictvím proměnné prostředí IDENTITY_HEADER. |
+| `GET` | Příkaz HTTP, který indikuje, že chcete načíst data z koncového bodu. V tomto případě se jedná o přístupový token OAuth. | 
+| `https://localhost:2377/metadata/identity/oauth2/token` | Spravovaný koncový bod identity pro aplikace Service Fabric poskytovaný přes proměnnou prostředí IDENTITY_ENDPOINT. |
+| `api-version` | Parametr řetězce dotazu, který určuje verzi rozhraní API spravované služby tokenu identity; v současné době je `2019-07-01-preview`jediná přijatá hodnota a může se změnit. |
+| `resource` | Parametr řetězce dotazu, který označuje identifikátor URI ID aplikace cílového prostředku. Tato akce se projeví jako `aud` deklarace identity (cílová skupina) vydaného tokenu. Tento příklad vyžaduje token pro přístup k Azure Key Vault, jehož identifikátor URI ID aplikace je https:\//Vault.Azure.NET/. |
+| `Secret` | Pole hlavičky požadavku HTTP, které vyžaduje služba Service Fabric Managed identity token Service pro Service Fabric Services k ověření volajícího. Tuto hodnotu poskytuje modul runtime SF prostřednictvím proměnné prostředí IDENTITY_HEADER. |
 
 
-Odpověď vzorku:
+Ukázková odpověď:
 ```json
 HTTP/1.1 200 OK
 Content-Type: application/json
@@ -72,14 +72,14 @@ kde:
 
 | Prvek | Popis |
 | ------- | ----------- |
-| `token_type` | Typ tokenu; v tomto případě přístupový token "Nosič", což znamená, že prezentující ("nosič") tohoto tokenu je zamýšleným předmětem tokenu. |
-| `access_token` | Požadovaný přístupový token. Při volání zabezpečené rozhraní REST API je `Authorization` token vložen do pole hlavičky požadavku jako token "nosiče", což umožňuje rozhraní API k ověření volajícího. | 
-| `expires_on` | Časové razítko vypršení platnosti přístupového tokenu; reprezentovány jako počet sekund od "1970-01-01T0:0:0Z UTC" a `exp` odpovídá deklaraci tokenu. V tomto případě platnost tokenu vyprší na 2019-08-08T06:10:11+00:00 (v RFC 3339)|
-| `resource` | Prostředek, pro který byl vydán přístupový `resource` token, určený pomocí parametru řetězce dotazu požadavku; odpovídá deklaraci tokenu "aud". |
+| `token_type` | Typ tokenu; v tomto případě se jedná o přístupový token "nosiče", což znamená, že předvádějící ("Bearer") tohoto tokenu je zamýšlený předmět tokenu. |
+| `access_token` | Požadovaný přístupový token Při volání zabezpečeného REST API se token vloží do pole hlavička `Authorization` požadavku jako "nosič", což umožňuje rozhraní API ověřit volajícího. | 
+| `expires_on` | Časové razítko vypršení platnosti přístupového tokenu; reprezentované jako počet sekund od "1970-01-01T0:0: 0Z UTC" a odpovídá `exp` deklaraci identity tokenu. V tomto případě vyprší platnost tokenu v 2019-08-08T06:10:11 + 00:00 (v dokumentu RFC 3339).|
+| `resource` | Prostředek, pro který se přístupový token vystavil, zadaný přes parametr `resource` řetězce dotazu žádosti; odpovídá deklaraci identity AUD tokenu. |
 
 
-## <a name="acquiring-an-access-token-using-c"></a>Získání přístupového tokenu pomocí c #
-Výše uvedené se stává v C#:
+## <a name="acquiring-an-access-token-using-c"></a>Získání přístupového tokenu pomocí jazyka C #
+Výše uvedený postup se bude v jazyce C#:
 
 ```C#
 namespace Azure.ServiceFabric.ManagedIdentity.Samples
@@ -172,8 +172,8 @@ namespace Azure.ServiceFabric.ManagedIdentity.Samples
     } // class AccessTokenAcquirer
 } // namespace Azure.ServiceFabric.ManagedIdentity.Samples
 ```
-## <a name="accessing-key-vault-from-a-service-fabric-application-using-managed-identity"></a>Přístup k trezoru klíčů z aplikace Service Fabric pomocí spravované identity
-Tato ukázka vychází z výše uvedeného, aby demonstrovala přístup k tajnému klíči uloženému v trezoru klíčů pomocí spravované identity.
+## <a name="accessing-key-vault-from-a-service-fabric-application-using-managed-identity"></a>Přístup k Key Vault z aplikace Service Fabric pomocí spravované identity
+Tato ukázka sestaví na výše uvedeném obrázku, který předvádí přístup k tajnému kódu uloženému v Key Vault pomocí spravované identity.
 
 ```C#
         /// <summary>
@@ -321,14 +321,14 @@ Tato ukázka vychází z výše uvedeného, aby demonstrovala přístup k tajné
 ```
 
 ## <a name="error-handling"></a>Zpracování chyb
-Pole Stavový kód v hlavičce odpovědi HTTP označuje stav úspěchu požadavku. stav "200 OK" označuje úspěch a odpověď bude obsahovat přístupový token, jak je popsáno výše. Následuje krátký výčet možných chybových odpovědí.
+Pole Stavový kód hlavičky HTTP Response indikuje stav úspěch žádosti; stav "200 OK" indikuje úspěch a odpověď bude obsahovat přístupový token, jak je popsáno výše. Níže jsou uvedené krátké výčty možných chybových odpovědí.
 
-| Stavový kód | Důvod chyby | Jak zacházet |
+| Stavový kód | Důvod chyby | Postup zpracování |
 | ----------- | ------------ | ------------- |
-| 404 Nalezeno. | Neznámý ověřovací kód nebo aplikaci nebyla přiřazena spravovaná identita. | Opravit nastavení aplikace nebo token pořízení kódu. |
-| 429 Příliš mnoho žádostí. |  Omezení škrticí klapky, které je uloženo aad nebo SF. | Opakujte akci s exponenciálním vypnutím. Viz pokyny níže. |
-| 4xx Chyba v požadavku. | Jeden nebo více parametrů požadavku bylo nesprávné. | Neopakujte akci.  Další informace naleznete v podrobnostech o chybě.  4xx chyby jsou chyby návrhu.|
-| 5xx Chyba ze služby. | Subsystém spravované identity nebo služba Azure Active Directory vrátila přechodnou chybu. | Po krátké době je bezpečné to zkusit znovu. Můžete zasáhnout omezení podmínku (429) při opakování.|
+| 404 nebyl nalezen. | Neznámý ověřovací kód nebo aplikace nebyla přiřazena spravovaná identita. | Opravit nastavení aplikace nebo kód pro získání tokenu. |
+| 429 příliš mnoho požadavků. |  Dosáhli jste limitu omezení, který je uložený pomocí AAD nebo SF. | Zkuste to znovu s exponenciálním omezení rychlosti. Viz pokyny níže. |
+| Chyba 4xx v žádosti. | Minimálně jeden parametr požadavku byl nesprávný. | Neopakovat akci.  Další informace najdete v podrobnostech o chybě.  chyby 4xx jsou chyby v době návrhu.|
+| 5xx Chyba služby. | Spravovaný subsystém identity nebo Azure Active Directory vrátil přechodnou chybu. | Po krátké době to může být bezpečné. Při opakovaném pokusu se můžete setkat s podmínkou omezení (429).|
 
 Pokud dojde k chybě, odpovídající tělo odpovědi HTTP obsahuje objekt JSON s podrobnostmi o chybě:
 
@@ -336,9 +336,9 @@ Pokud dojde k chybě, odpovídající tělo odpovědi HTTP obsahuje objekt JSON 
 | ------- | ----------- |
 | kód | Kód chyby |
 | correlationId | ID korelace, které lze použít pro ladění. |
-| zpráva | Podrobný popis chyby. **Popisy chyb se mohou kdykoli změnit. Nezávisejte na samotné chybové zprávě.**|
+| zpráva | Podrobný popis chyby **Popisy chyb se můžou kdykoli změnit. Nezávisí na samotné chybové zprávě.**|
 
-Ukázková chyba:
+Ukázková Chyba:
 ```json
 {"error":{"correlationId":"7f30f4d3-0f3a-41e0-a417-527f21b3848f","code":"SecretHeaderNotFound","message":"Secret is not found in the request headers."}}
 ```
@@ -347,33 +347,33 @@ Následuje seznam typických chyb Service Fabric specifických pro spravované i
 
 | kód | Zpráva | Popis | 
 | ----------- | ----- | ----------------- |
-| SecretHeaderNotFound | Tajný klíč nebyl v hlavičkách požadavku nalezen. | Ověřovací kód nebyl k dispozici s požadavkem. | 
-| Nenalezeno identity spravované identity | Spravovaná identita nebyla pro zadaný hostitel aplikace nalezena. | Aplikace nemá žádnou identitu nebo ověřovací kód není znám. |
-| ArgumentnullorEmpty | Parametr 'resource' by neměl být prázdný nebo prázdný řetězec. | Prostředek (publikum) nebyl v požadavku poskytnut. |
-| Verze InvalidApiVersion | Verze rozhraní api '' není podporována. Podporovaná verze je '2019-07-01-preview'. | Chybí nebo nepodporovaná verze rozhraní API zadaná v identifikátoru URI požadavku. |
-| InternalServerError | Došlo k chybě. | V subsystému spravované identity došlo k chybě, pravděpodobně mimo zásobník Service Fabric. Nejpravděpodobnější příčinou je nesprávná hodnota zadaná pro prostředek (zkontrolujte koncové '/'?) | 
+| SecretHeaderNotFound | Tajný kód nebyl nalezen v hlavičce požadavku. | S požadavkem nebyl poskytnut ověřovací kód. | 
+| ManagedIdentityNotFound | Pro zadaného hostitele aplikace se nenašla spravovaná identita. | Aplikace nemá žádnou identitu, nebo je ověřovací kód neznámý. |
+| ArgumentNullOrEmpty | Parametr Resource by neměl mít hodnotu null nebo být prázdným řetězcem. | V požadavku nebyl uveden prostředek (cílová skupina). |
+| InvalidApiVersion | Verze API-Version není podporovaná. Podporovaná verze je "2019-07-01-Preview". | V identifikátoru URI požadavku je uvedena chybějící nebo Nepodporovaná verze rozhraní API. |
+| InternalServerError | Došlo k chybě. | V spravovaném subsystému identity došlo k chybě, která může být mimo Service Fabric zásobník. Nejpravděpodobnější příčinou je nesprávná hodnota pro prostředek (kontrolu koncového lomítka '/'?) | 
 
 ## <a name="retry-guidance"></a>Pokyny pro opakování 
 
-Obvykle je pouze opakovatelný kód chyby je 429 (příliš mnoho požadavků); interní server chyby/5xx kódy chyb může být opakovatelné, i když příčina může být trvalé. 
+Obvykle jediný kód chyby s opakováním je 429 (příliš mnoho požadavků); interní chyby serveru/kódy chyb 5xx můžou být opakované, ale příčina může být trvalá. 
 
-Omezení omezení platí pro počet volání do subsystému spravované identity – konkrétně "upstream" závislosti (služba Managed Identity Azure nebo služba zabezpečeného tokenu). Service Fabric ukládá tokeny na různých úrovních v kanálu, ale vzhledem k distribuované povaze zapojených součástí může volající dojít k nekonzistentní omezení odpovědi (tj. získat omezení na jeden uzel nebo instance aplikace, ale ne na jiném uzlu při požadování tokenu pro stejnou identitu.) Pokud je nastavena podmínka omezení, následné požadavky ze stejné aplikace může selhat se stavovým kódem HTTP 429 (příliš mnoho požadavků), dokud není podmínka vymazána.  
+Omezení omezování se vztahují na počet volání prováděných v rámci spravovaného subsystému identity – konkrétně závislosti "nadřazených" (spravovaná identita Azure nebo služba tokenů zabezpečení). Service Fabric ukládá do mezipaměti tokeny na různých úrovních kanálu, ale s ohledem na distribuovanou povahu zúčastněných komponent, volající může zasahovat do nekonzistentních reakcí omezování (tzn. omezení na jednom uzlu nebo instanci aplikace, ale ne na jiném uzlu při požadavku na token pro stejnou identitu). Pokud je nastavená podmínka omezování, následné požadavky ze stejné aplikace můžou selhat s kódem stavu HTTP 429 (příliš mnoho požadavků), dokud se podmínka nevymaže.  
 
-Doporučuje se, aby požadavky se nezdařily z důvodu omezení jsou opakovány s exponenciální backoff, takto: 
+Doporučuje se, aby se požadavky nezdařily, protože došlo k opakovanému pokusu pomocí exponenciálního omezení rychlosti, jak je znázorněno níže: 
 
-| Index volání | Opatření týkající se přijetí 429 | 
+| Index volání | Akce při přijetí 429 | 
 | --- | --- | 
-| 1 | Počkejte 1 sekundu a opakujte akci |
-| 2 | Počkejte 2 sekundy a akci opakujte |
-| 3 | Počkejte 4 sekundy a akci opakujte |
-| 4 | Počkejte 8 sekund a akci opakujte |
-| 4 | Počkejte 8 sekund a akci opakujte |
-| 5 | Počkejte 16 sekund a akci opakujte |
+| 1 | Počkejte 1 sekundu a zkuste to znovu. |
+| 2 | Počkejte 2 sekundy a zkuste to znovu. |
+| 3 | Počkejte 4 sekundy a zkuste to znovu. |
+| 4 | Počkejte 8 sekund a zkuste to znovu. |
+| 4 | Počkejte 8 sekund a zkuste to znovu. |
+| 5 | Počkejte 16 sekund a zkuste to znovu. |
 
 ## <a name="resource-ids-for-azure-services"></a>ID prostředků pro služby Azure
-Podívejte se na [služby Azure, které podporují ověřování Azure AD](../active-directory/managed-identities-azure-resources/services-support-msi.md) pro seznam prostředků, které podporují Azure AD a jejich příslušná ID prostředků.
+V tématu [služby Azure, které podporují ověřování Azure AD](../active-directory/managed-identities-azure-resources/services-support-msi.md) , najdete seznam prostředků, které podporují Azure AD, a jejich odpovídajících ID prostředků.
 
 ## <a name="next-steps"></a>Další kroky
 * [Nasazení aplikace Azure Service Fabric se spravovanou identitou přiřazenou systémem](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
 * [Nasazení aplikace Azure Service Fabric s uživatelem přiřazenou spravovanou identitou](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
-* [Udělení přístupu aplikací Azure Service Fabric k dalším prostředkům Azure](./how-to-grant-access-other-resources.md)
+* [Udělení přístupu k aplikacím Azure Service Fabric k ostatním prostředkům Azure](./how-to-grant-access-other-resources.md)

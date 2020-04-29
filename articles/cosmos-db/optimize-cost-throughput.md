@@ -6,66 +6,66 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/07/2020
-ms.openlocfilehash: c80ab4acd745717e2e68ae7d9dc818594ad1ce9e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c6c3e9462b26b44857eea6b53092baeeb5034364
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79501464"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Optimalizace nákladů na zřízenou propustnost ve službě Azure Cosmos DB
 
-Díky nabídce zřízeného modelu propustnosti nabízí Azure Cosmos DB předvídatelný výkon v libovolném měřítku. Rezervace nebo zřizování propustnosti dopředu eliminuje "hlučný soused efekt" na výkon. Zadáte přesné množství propustnost, kterou potřebujete a Azure Cosmos DB zaručuje nakonfigurovanou propustnost, podporovanou sla.
+Díky zajišťování modelu propustnosti nabízí Azure Cosmos DB předvídatelný výkon v jakémkoli měřítku. Zachovávání nebo zřizování propustnosti předem eliminuje u vašeho výkonu "hlučné sousední účinky". Zadáváte přesnou míru propustnosti, kterou potřebujete, a Azure Cosmos DB garantuje nakonfigurovanou propustnost, kterou zajišťuje smlouva SLA.
 
-Můžete začít s minimální propustností 400 RU/s a škálovat až desítky milionů požadavků za sekundu nebo dokonce více. Každý požadavek, který vystavíte proti kontejneru nebo databázi Azure Cosmos, jako je požadavek na čtení, požadavek na zápis, požadavek na dotaz, uložené procedury mají odpovídající náklady, které se odečtou z vaší zřízené propustnosti. Pokud zřídíte 400 RU/s a vydáte dotaz, který stojí 40 ru, budete moci vydat 10 takových dotazů za sekundu. Jakýkoli požadavek nad rámec, který bude mít rychlost-omezené a měli byste opakovat požadavek. Pokud používáte klientské ovladače, podporují logiku automatického opakování.
+Můžete začít s minimální propustností 400 RU/s a škálovat až desítky milionů požadavků za sekundu nebo ještě víc. Každý požadavek, který vyřešíte v rámci vašeho kontejneru nebo databáze Azure Cosmos, jako je žádost o čtení, žádost o zápis, požadavek na dotaz, uložené procedury mají odpovídající cenu, která se od zřízené propustnosti odečte. Pokud zřídíte 400 RU/s a vydáte dotaz, který by ru náklady 40, bude možné vystavit 10 takových dotazů za sekundu. Jakýkoli požadavek nad tím, který získá omezení četnosti a žádost by se měla opakovat. Pokud používáte klientské ovladače, podporují logiku automatického opakování.
 
 Propustnost můžete zřídit pro databáze nebo kontejnery a v závislosti na konkrétním scénáři vám obě strategie můžou pomoct ušetřit náklady.
 
-## <a name="optimize-by-provisioning-throughput-at-different-levels"></a>Optimalizujte zřizováním propustností na různých úrovních
+## <a name="optimize-by-provisioning-throughput-at-different-levels"></a>Optimalizace pomocí zřizování propustnosti na různých úrovních
 
-* Pokud zřídíte propustnost v databázi, všechny kontejnery, například kolekce/tabulky/grafy v rámci této databáze můžete sdílet propustnost na základě zatížení. Propustnost vyhrazená na úrovni databáze je sdílena nerovnoměrně, v závislosti na zatížení na konkrétní sadu kontejnerů.
+* Při zřizování propustnosti v databázi může všechny kontejnery, například kolekce/tabulky nebo grafy v této databázi, sdílet propustnost na základě zatížení. Propustnost rezervovaný na úrovni databáze je nerovnoměrně sdílená v závislosti na zatížení konkrétní sady kontejnerů.
 
-* Pokud zřídíte propustnost na kontejneru, propustnost je zaručena pro tento kontejner, podporovaný SLA. Volba klíče logického oddílu je rozhodující pro rovnoměrné rozložení zatížení napříč všemi logickými oddíly kontejneru. Další podrobnosti najdete [v článku Dělení](partitioning-overview.md) a [vodorovné škálování](partition-data.md) článků.
+* Pokud zřizujete propustnost na kontejneru, je zajištěna propustnost tohoto kontejneru, kterou zajišťuje smlouva SLA. Volba klíče logického oddílu je zásadní pro rovnoměrné rozložení zatížení ve všech logických oddílech kontejneru. Další podrobnosti najdete v článcích [dělení](partitioning-overview.md) a [horizontální škálování](partition-data.md) .
 
-Níže jsou uvedeny některé pokyny pro rozhodnutí o strategii zřízené propustnost:
+Níže jsou uvedeny některé pokyny k rozhodování o strategii zřízené propustnosti:
 
-**Zvažte zřizování propustnost v databázi Azure Cosmos (obsahující sadu kontejnerů), pokud**:
+**Zvažte zajištění propustnosti v databázi Azure Cosmos (obsahující sadu kontejnerů), pokud**:
 
-1. Máte několik desítek kontejnerů Azure Cosmos a chcete sdílet propustnost přes některé nebo všechny z nich. 
+1. Máte několik desítek Cosmos kontejnerů Azure a chcete sdílet propustnost napříč některými nebo všemi z nich. 
 
-2. Migrujete z databáze s jedním tenantem určené ke spuštění na virtuálních počítačích hostovaných iaaS nebo místně, například NoSQL nebo relační databáze do Azure Cosmos DB. A pokud máte mnoho kolekcí / tabulek / grafů a nechcete provádět žádné změny datového modelu. Všimněte si, že budete muset ohrozit některé výhody, které nabízí Azure Cosmos DB, pokud neaktualizujete datový model při migraci z místní databáze. Doporučujeme vždy znovu získat přístup k datovému modelu, abyste získali co nejvíce z hlediska výkonu a také optimalizovali náklady. 
+2. Migrujete z databáze s jednou tenantů navrženou tak, aby běžela na virtuálních počítačích hostovaných v IaaS nebo v místním prostředí, například v NoSQL nebo relačních databázích, které Azure Cosmos DB. A pokud máte mnoho kolekcí, tabulek a grafů a nechcete provádět žádné změny v datovém modelu. Upozorňujeme, že pokud při migraci z místní databáze neaktualizujete datový model, může být nutné narušit některé z výhod, které nabízí Azure Cosmos DB. Doporučuje se vždycky znovu přistoupit k datovému modelu a získat tak nejvíc z hlediska výkonu a optimalizovat pro náklady. 
 
-3. Chcete absorbovat neplánované špičky v úlohách na základě sdružené propustnost na úrovni databáze vystavené neočekávanému nárůstu zatížení. 
+3. Chcete absorbovat neplánované špičky v úlohách na základě propustnosti fondu na úrovni databáze v závislosti na neočekávaném špičkě úlohy. 
 
-4. Namísto nastavení konkrétní propustnost na jednotlivé kontejnery, máte hlad o získání agregační propustnost přes sadu kontejnerů v rámci databáze.
+4. Místo nastavení konkrétní propustnosti pro jednotlivé kontejnery se zajímáte o získání agregované propustnosti napříč sadou kontejnerů v rámci databáze.
 
-**Zvažte zřizování propustnost na jednotlivé matné kontejneru, pokud:**
+**Zvažte zajištění propustnosti pro jednotlivé kontejnery, pokud:**
 
-1. Máte několik kontejnerů Azure Cosmos. Vzhledem k tomu, že Azure Cosmos DB je bez ohledu na schéma, kontejner může obsahovat položky, které mají heterogenní schémata a nevyžaduje, aby zákazníci vytvořili více typů kontejnerů, jeden pro každou entitu. Je vždy možnost zvážit, zda seskupení samostatné řekněme 10-20 kontejnerů do jednoho kontejneru má smysl. S minimálně 400 RU pro kontejnery, sdružování všech 10-20 kontejnerů do jednoho může být nákladově efektivnější. 
+1. Máte několik kontejnerů Azure Cosmos. Vzhledem k tomu, že Azure Cosmos DB je nezávislá schématu, kontejner může obsahovat položky s heterogenními schématy a nevyžaduje, aby zákazníci vytvářeli více typů kontejnerů, jeden pro každou entitu. Je vždy možnost zvážit, zda je vhodné seskupit samostatné kontejnery 10-20, které tvoří jeden kontejner. Při 400 ru minimálních objemů pro kontejnery může být sdružování všech 10-20 kontejnerů do jednoho cenově výhodnější. 
 
-2. Chcete řídit propustnost na konkrétní kontejner a získat zaručenou propustnost na daný kontejner zálohovaný SLA.
+2. Chcete řídit propustnost konkrétního kontejneru a získat zaručenou propustnost na daném kontejneru, který je zajištěn smlouvou SLA.
 
-**Vezměme si hybrid výše uvedených dvou strategií:**
+**Vezměte v úvahu hybridní z výše uvedených dvou strategií:**
 
-1. Jak již bylo zmíněno dříve, Azure Cosmos DB umožňuje kombinovat výše uvedené dvě strategie, takže teď můžete mít některé kontejnery v databázi Azure Cosmos, které mohou sdílet propustnost zzřízenou v databázi, stejně jako některé kontejnery v rámci stejné databáze , které mohou mít vyhrazené částky zřízená propustnost. 
+1. Jak bylo zmíněno dříve, Azure Cosmos DB umožňuje kombinovat a porovnat výše uvedené dvě strategie, takže teď můžete mít v databázi Azure Cosmos nějaké kontejnery, které mohou sdílet propustnost zřízenou v databázi, a také některé kontejnery ve stejné databázi, které mohou mít vyhrazené množství zřízené propustnosti. 
 
-2. Výše uvedené strategie můžete použít přijít s hybridní konfiguraci, kde máte obě úrovně databáze zřízená propustnost s některými kontejnery s vyhrazenou propustnost.
+2. Výše uvedené strategie můžete použít k tomu, aby se nacházela s hybridní konfigurací, ve které je zajištěná propustnost v úrovni databáze s některými kontejnery, které mají vyhrazenou propustnost.
 
-Jak je znázorněno v následující tabulce, v závislosti na volbě rozhraní API můžete zřídit propustnost v různých rozlišovacích podmínek.
+Jak je znázorněno v následující tabulce v závislosti na volbě rozhraní API, můžete zajistit propustnost v různých členitcích.
 
-|rozhraní API|Pro **sdílenou** propustnost nakonfigurujte |Pro **vyhrazenou** propustnost nakonfigurujte |
+|Rozhraní API|Pro **sdílenou** propustnost nakonfigurujte |U **vyhrazené** propustnosti nakonfigurujte |
 |----|----|----|
-|SQL API|Databáze|Kontejner|
-|Rozhraní API služby Azure Cosmos DB pro MongoDB|Databáze|Kolekce|
-|Rozhraní Cassandra API|Prostor klíče|Table|
+|SQL API|databáze|Kontejner|
+|Rozhraní API služby Azure Cosmos DB pro MongoDB|databáze|Kolekce|
+|Rozhraní Cassandra API|Prostor klíčů|Table|
 |Rozhraní Gremlin API|Databázový účet|Graph|
 |Rozhraní Table API|Databázový účet|Table|
 
-Zřízením propustnost na různých úrovních můžete optimalizovat náklady na základě charakteristik úlohy. Jak již bylo zmíněno dříve, můžete programově a kdykoli zvýšit nebo snížit zřízenou propustnost pro jednotlivé kontejnery nebo společně v rámci sady kontejnerů. Pružně škálování propustnost jako změny pracovního vytížení, platíte pouze za propustnost, kterou jste nakonfigurovali. Pokud je váš kontejner nebo sada kontejnerů distribuována ve více oblastech, pak je zaručeno, že propustnost, kterou nakonfigurujete v kontejneru nebo sada kontejnerů, bude k dispozici ve všech oblastech.
+Díky zajištění propustnosti na různých úrovních můžete optimalizovat náklady na základě charakteristik vašich úloh. Jak bylo zmíněno dříve, můžete programově a kdykoli zvětšit nebo zmenšit zřízenou propustnost pro jednotlivé kontejnery nebo souhrnně napříč sadou kontejnerů. Díky elastickému škálování propustnosti při změnách zatížení platíte jenom za propustnost, kterou jste nakonfigurovali. Pokud je váš kontejner nebo sada kontejnerů distribuován napříč několika oblastmi, je zaručená propustnost, kterou nakonfigurujete na kontejneru nebo sadě kontejnerů, ve všech oblastech.
 
-## <a name="optimize-with-rate-limiting-your-requests"></a>Optimalizujte s omezením rychlosti vašich požadavků
+## <a name="optimize-with-rate-limiting-your-requests"></a>Optimalizace pomocí hodnocení – omezení vašich požadavků
 
-Pro úlohy, které nejsou citlivé na latenci, můžete zřídit menší propustnost a nechat aplikaci zpracovávat omezení rychlosti, když skutečná propustnost překročí zřízené propustnosti. Server preventivně ukončí požadavek `RequestRateTooLarge` (stavový kód HTTP 429) a vrátí `x-ms-retry-after-ms` záhlaví označující dobu v milisekundách, po kterou musí uživatel před opakováním požadavku počkat. 
+Pro úlohy, které nejsou citlivé na latenci, můžete zřídit menší propustnost a nechat aplikaci omezit rychlost, když Skutečná propustnost překročí zřízenou propustnost. Server bude žádost bez `RequestRateTooLarge` jakýchkoli požadavků (kód stavu HTTP 429) a vrátí `x-ms-retry-after-ms` hlavičku udávající, jak dlouho (v milisekundách) musí uživatel čekat, než bude požadavek opakovat. 
 
 ```html
 HTTP Status 429, 
@@ -75,11 +75,11 @@ HTTP Status 429,
 
 ### <a name="retry-logic-in-sdks"></a>Logika opakování v sadách SDK 
 
-Nativní sady SDK (jádra.NET/.NET, java, node.js a Python) implicitně zachycují tuto odpověď, respektují hlavičku po opakování zadané serverem a opakují požadavek. Pokud váš účet není přistupovat současně více klientů, další opakování bude úspěšné.
+Nativní sady SDK (.NET/.NET Core, Java, Node. js a Python) implicitně zachytí tuto odpověď, a to s ohledem na server, který je zadaný na základě opakování, a zkuste požadavek zopakovat. Pokud k účtu nebudete mít souběžně více klientů, další pokus bude úspěšný.
 
-Pokud máte více než jednoho klienta, který kumulativně pracuje konzistentně nad sazbu požadavku, nemusí být výchozí počet opakování, který je aktuálně nastaven na hodnotu 9, dostačující. V takových případech klient vyvolá `RequestRateTooLargeException` se stavovým kódem 429 do aplikace. Výchozí počet opakování lze změnit nastavením `RetryOptions` instance ConnectionPolicy. Ve výchozím `RequestRateTooLargeException` nastavení se stavovým kódem 429 je vrácena po kumulativní čekací doby 30 sekund, pokud požadavek nadále pracovat nad sazbu požadavku. K tomu dochází i v případě, že aktuální počet opakování je menší než maximální počet opakování, ať už je to výchozí hodnota 9 nebo uživatelem definovaná hodnota. 
+Pokud máte více než jednoho klienta, který se v současné době průběžně pracuje konzistentně nad rámec požadavků, výchozí počet opakování, který je aktuálně nastavený na 9, nemusí být dostatečný. V takových případech klient vyvolá aplikaci `RequestRateTooLargeException` se stavovým kódem 429. Výchozí počet opakování lze změnit nastavením `RetryOptions` v instanci ConnectionPolicy. Ve výchozím nastavení `RequestRateTooLargeException` se stavový kód 429 vrátí po kumulativní čekací době 30 sekund, pokud požadavek nadále funguje nad sazbou požadavku. K tomu dojde i v případě, že aktuální počet opakování je menší než maximální počet opakování, výchozí hodnota je 9 nebo uživatelem definovaná hodnota. 
 
-[MaxRetryAttemptsOnThrottledRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?view=azure-dotnet) je nastavena na 3, takže v tomto případě pokud je operace požadavku omezena překročením vyhrazené propustnosti pro kontejner, operace požadavku opakování třikrát před vyvoláním výjimky do aplikace. [MaxRetryWaitTimeInSeconds](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) je nastavena na 60, takže v tomto případě pokud kumulativní opakování čekací doba v sekundách od prvního požadavku překročí 60 sekund, je vyvolána výjimka.
+[MaxRetryAttemptsOnThrottledRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?view=azure-dotnet) je nastavené na hodnotu 3, takže v tomto případě platí, že pokud je operace požadavku omezená na překročení rezervované propustnosti kontejneru, operace požadavku se třikrát pokusí vyvoláním výjimky do aplikace. [MaxRetryWaitTimeInSeconds](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) je nastavená na 60, takže v tomto případě je výjimka kumulativního opakování pokusu v sekundách od prvního požadavku delší než 60 sekund.
 
 ```csharp
 ConnectionPolicy connectionPolicy = new ConnectionPolicy(); 
@@ -89,98 +89,98 @@ connectionPolicy.RetryOptions.MaxRetryWaitTimeInSeconds = 60;
 
 ## <a name="partitioning-strategy-and-provisioned-throughput-costs"></a>Strategie dělení a náklady na zřízenou propustnost
 
-Dobrá strategie dělení je důležitá pro optimalizaci nákladů v Azure Cosmos DB. Ujistěte se, že neexistuje žádné zkosení oddílů, které jsou vystaveny prostřednictvím metriky úložiště. Ujistěte se, že neexistuje žádné zkosení propustnost pro oddíl, který je vystaven s propustnost metriky. Ujistěte se, že neexistuje žádný zkosení směrem k určité klíče oddílu. Dominantní klíče v úložišti jsou vystaveny prostřednictvím metriky, ale klíč bude záviset na vzoru přístupu k aplikaci. Nejlepší je přemýšlet o správném logickém klíči oddílu. Očekává se, že dobrý klíč oddílu bude mít následující charakteristiky:
+Dobrá strategie vytváření oddílů je důležitá pro optimalizaci nákladů v Azure Cosmos DB. Zajistěte, aby nedošlo k žádnému zkosení oddílů, které jsou zpřístupněny prostřednictvím metrik úložiště. Zajistěte, aby nedošlo k žádnému zkosení propustnosti oddílu, který je vystavený s metrikami propustnosti. Zajistěte, aby nedošlo k žádnému zkosení na konkrétní klíče oddílu. Dominantní klíče v úložišti jsou zpřístupněny prostřednictvím metrik, ale klíč bude závislý na vašem vzoru přístupu k aplikaci. Nejlépe se zamyslete nad správným klíčem logického oddílu. Očekává se, že klíč oddílu bude mít následující vlastnosti:
 
-* Zvolte klíč oddílu, který rovnoměrně rozloží úlohy napříč všemi oddíly a rovnoměrně v průběhu času. Jinými slovy, neměli byste mít některé klíče s většinou dat a některé klíče s méně nebo žádná data. 
+* Vyberte klíč oddílu, který rovnoměrně rozšíří úlohy napříč všemi oddíly a rovnoměrně v průběhu času. Jinými slovy, neměli byste mít některé klíče na většinu dat a některé klíče s méně nebo bez dat. 
 
-* Zvolte klíč oddílu, který umožňuje rovnoměrně rozprostřené vzory přístupu mezi logické oddíly. Úloha je přiměřeně i napříč všemi klíči. Jinými slovy, většina úlohy by neměla být zaměřena na několik konkrétních klíčů. 
+* Vyberte klíč oddílu, který umožní, aby byly vzory přístupu rovnoměrně rozloženy mezi logické oddíly. Zatížení je rozumně i napříč všemi klíči. Jinými slovy, většina úloh by neměla být zaměřena na několik specifických klíčů. 
 
-* Zvolte klíč oddílu, který má širokou škálu hodnot. 
+* Vyberte klíč oddílu, který má velký rozsah hodnot. 
 
-Základní myšlenkou je rozložení dat a aktivity v kontejneru mezi sadu logických oddílů, aby prostředky pro ukládání dat a propustnost lze distribuovat mezi logické oddíly. Kandidáti pro klíče oddílů mohou obsahovat vlastnosti, které se v dotazech často zobrazují jako filtr. Dotazy lze efektivně směrovat zahrnutím klíče oddílu do predikátu filtru. S takovou strategií dělení bude optimalizace zřízená propustnost mnohem jednodušší. 
+Základní nápad je rozprostřít data a aktivity ve vašem kontejneru napříč sadou logických oddílů, aby bylo možné distribuovat prostředky pro ukládání a propustnost dat napříč logickými oddíly. Kandidáti na klíče oddílů můžou zahrnovat vlastnosti, které se v dotazech často zobrazují jako filtr. Dotazy lze efektivně směrovat zahrnutím klíče oddílu do predikátu filtru. Díky takové strategii dělení bude optimalizace zřízené propustností mnohem jednodušší. 
 
 ### <a name="design-smaller-items-for-higher-throughput"></a>Návrh menších položek pro vyšší propustnost 
 
-Poplatek za požadavek nebo náklady na zpracování požadavku dané operace přímo souvisí s velikostí položky. Operace s velkými položkami budou stát více než operace s menšími položkami. 
+Poplatek za požadavek nebo náklady na zpracování požadavků na danou operaci je přímo koreluje s velikostí položky. Operace s velkými položkami budou mít více než operace s menšími položkami. 
 
 ## <a name="data-access-patterns"></a>Vzory přístupu k datům 
 
-Je vždy vhodné logicky oddělit data do logických kategorií na základě toho, jak často k těmto datům přistupujete. Kategorizací jako horká, střední nebo studená data můžete doladit úložiště spotřebované a požadovanou propustnost. V závislosti na četnosti přístupu můžete data umístit do samostatných kontejnerů (například tabulek, grafů a kolekcí) a doladit zřízenou propustnost na nich tak, aby vyhovovala potřebám tohoto segmentu dat. 
+Je vždy dobrým zvykem logicky oddělit vaše data do logických kategorií podle toho, jak často k datům přistupujete. Oddělením IT jako horká, střední nebo studená data můžete vyladit spotřebované úložiště a požadovanou propustnost. V závislosti na četnosti přístupu můžete data umístit do samostatných kontejnerů (například tabulky, grafy a kolekce) a doladit zajištěné propustnosti pro ně, aby vyhovovaly potřebám daného segmentu dat. 
 
-Kromě toho pokud používáte Azure Cosmos DB a víte, že nebudete hledat podle určitých datových hodnot nebo k nim budete mít jen zřídka přístup, měli byste uložit komprimované hodnoty těchto atributů. Pomocí této metody ušetříte úložný prostor, indexovací prostor a zřízenou propustnost a výsledkem budou nižší náklady.
+Kromě toho, pokud používáte Azure Cosmos DB a víte, že nebudete Hledat podle určitých hodnot dat nebo k nim jen zřídka, měli byste uložit komprimované hodnoty těchto atributů. Pomocí této metody ušetříte prostor úložiště, Rejstříkový prostor a zřízenou propustnost a výsledkem jsou nižší náklady.
 
 ## <a name="optimize-by-changing-indexing-policy"></a>Optimalizace změnou zásad indexování 
 
-Ve výchozím nastavení Azure Cosmos DB automaticky indexuje každou vlastnost každého záznamu. To je určen pro usnadnění vývoje a zajištění vynikající výkon v mnoha různých typů dotazů ad hoc. Pokud máte velké záznamy s tisíci vlastnostmi, nemusí být platba nákladů na propustnost pro indexování každé vlastnosti užitečná, zejména pokud se dotazujete pouze na 10 nebo 20 těchto vlastností. Jak se dostanete blíže k získání popisovač na konkrétní pracovní vytížení, naše pokyny je vyladit zásady indexu. Podrobné informace o zásadách indexování Azure Cosmos DB najdete [zde](indexing-policies.md). 
+Ve výchozím nastavení Azure Cosmos DB automaticky indexuje všechny vlastnosti každého záznamu. Cílem je usnadnit vývoj a zajistit špičkový výkon v mnoha různých typech dotazů ad hoc. Pokud máte velké záznamy s tisíci vlastností, nemusíte platit náklady na propustnost při indexování každé vlastnosti, zejména pokud se dotazuje pouze na 10 nebo 20 těchto vlastností. Díky lepšímu způsobu, jak získat popisovač na konkrétní úlohu, je naše příručka vyladit zásady indexů. Úplné podrobnosti o zásadách indexování Azure Cosmos DB najdete [tady](indexing-policies.md). 
 
 ## <a name="monitoring-provisioned-and-consumed-throughput"></a>Monitorování zřízené a spotřebované propustnosti 
 
-Můžete sledovat celkový počet zřízených ru, počet požadavků s omezenou sazbou a také počet ru, které jste spotřebované na webu Azure Portal. Následující obrázek znázorňuje ukázkovou metriku využití:
+Můžete monitorovat celkový počet ru zřízené, počet omezených požadavků a také počet ru, které jste v Azure Portal využili. Následující obrázek ukazuje příklad metriky využití:
 
-![Monitorování jednotek požadavků na webu Azure Portal](./media/optimize-cost-throughput/monitoring.png)
+![Monitorovat jednotky žádosti v Azure Portal](./media/optimize-cost-throughput/monitoring.png)
 
-Můžete také nastavit výstrahy pro kontrolu, zda počet požadavků s omezenou mírou překračuje určitou prahovou hodnotu. Další informace najdete v článku [Jak monitorovat Azure Cosmos DB](use-metrics.md) další podrobnosti. Tyto výstrahy můžete odeslat e-mail správcům účtu nebo volání vlastní HTTP Webhook nebo funkce Azure automaticky zvýšit zřízenou propustnost. 
+Můžete také nastavit výstrahy, abyste zkontrolovali, jestli počet neomezených požadavků překročí určitou prahovou hodnotu. Další podrobnosti najdete v článku [jak monitorovat Azure Cosmos DB](use-metrics.md) . Tyto výstrahy můžou poslat e-mailem správcům účtů nebo volat vlastní Webhook HTTP nebo funkci Azure, aby se automaticky zvýšila zajištěná propustnost. 
 
-## <a name="scale-your-throughput-elastically-and-on-demand"></a>Elastické měřítko propustnost i na vyžádání 
+## <a name="scale-your-throughput-elastically-and-on-demand"></a>Škálujte svou propustnost elastickě a na vyžádání 
 
-Vzhledem k tomu, že se vám účtují zřízené propustnost, odpovídající zřízená propustnost vašim potřebám vám pomůže vyhnout se poplatkům za nevyužitou propustnost. Zřízenou propustnost můžete kdykoli podle potřeby škálovat. Pokud jsou vaše potřeby propustnost velmi předvídatelné, můžete použít funkce Azure a pomocí aktivační události časovače [zvýšit nebo snížit propustnost podle plánu](scale-on-schedule.md). 
+Vzhledem k tomu, že se vám bude účtovat zajištěná propustnost, která vyhovuje zřízené propustnosti vašim potřebám, vám může pomáhat se vyhnout poplatkům za nevyužitou propustnost. Podle potřeby můžete škálovat zřízenou propustnost nahoru nebo dolů. Pokud jsou potřebné propustnosti hodně předvídatelné, můžete použít Azure Functions a použít Trigger časovače ke [zvýšení nebo snížení propustnosti podle plánu](scale-on-schedule.md). 
 
-* Sledování spotřeby vašich ru a poměr požadavků s omezenou mírou může odhalit, že není nutné udržovat zřízené po celý den nebo týden. V noci nebo o víkendu můžete dostat menší provoz. Pomocí azure portálu nebo Azure Cosmos DB nativní sady SDK nebo rozhraní REST API můžete kdykoli škálovat zřízené propustnost. Rozhraní REST rozhraní REST služby Azure Cosmos DB poskytuje koncové body pro programovou aktualizaci úrovně výkonu kontejnerů, takže je jednoduché upravit propustnost z vašeho kódu v závislosti na denní době nebo dni v týdnu. Operace se provádí bez prostojů a obvykle se projeví za méně než minutu. 
+* Monitorování spotřeby ru a poměr požadavků, které jsou omezené, můžou odhalit, že v průběhu celého dne nebo týdne nemusíte udržovat v průběhu celé konstanty. Můžete obdržet méně provozu v noci nebo během víkendu. Pomocí Azure Portal nebo Azure Cosmos DB nativních sad SDK nebo REST API můžete kdykoli škálovat zřízenou propustnost. REST API Azure Cosmos DB poskytuje koncové body pro programové aktualizace úrovně výkonu kontejnerů, které usnadňují úpravu propustnosti kódu v závislosti na čase dne nebo dne v týdnu. Operace se provádí bez výpadků a obvykle se projeví za méně než minutu. 
 
-* Jednou z oblastí, které byste měli škálovat propustnost je při ingestování dat do Azure Cosmos DB, například během migrace dat. Po dokončení migrace můžete škálovat zřízenou propustnost dolů tak, aby zpracovával ustálený stav řešení.  
+* Jedna z oblastí, které byste měli škálovat, je při ingestování dat do Azure Cosmos DB například během migrace dat. Po dokončení migrace můžete nastavit škálování zřízené propustnosti za účelem zpracování stabilního stavu řešení.  
 
-* Nezapomeňte, že fakturace je rozlišovací na jednu hodinu, takže nebudete šetřit žádné peníze, pokud změníte zřízenou propustnost častěji než jednu hodinu najednou.
+* Pamatujte si, že účtování je v členitosti na jednu hodinu, takže nebudete ukládat žádné peníze, pokud jste provedli změnu zajištěné propustnosti častěji než jednou za hodinu.
 
-## <a name="determine-the-throughput-needed-for-a-new-workload"></a>Určení propustnosti potřebné pro nové pracovní vytížení 
+## <a name="determine-the-throughput-needed-for-a-new-workload"></a>Určení propustnosti potřebného pro nové zatížení 
 
-Chcete-li určit zřízenou propustnost pro nové zatížení, můžete použít následující kroky: 
+K určení zřízené propustnosti pro novou úlohu můžete použít následující postup: 
 
-1. Proveďte počáteční hrubé vyhodnocení pomocí plánovače kapacit a upravte odhady pomocí Průzkumníka Azure Cosmos na webu Azure Portal. 
+1. Proveďte počáteční přibližné hodnocení pomocí plánovače kapacity a upravte své odhady pomocí Azure Cosmos Exploreru v Azure Portal. 
 
-2. Doporučujeme vytvořit kontejnery s vyšší propustností, než bylo očekáváno, a pak škálování dolů podle potřeby. 
+2. Doporučuje se vytvořit kontejnery s vyšší propustností, než se očekávalo, a pak podle potřeby škálovat dolů. 
 
-3. Doporučujeme použít jeden z nativních sad Azure Cosmos DB SDK s využitím výhod automatické hoopakování při získání požadavků s omezenou sazbou. Pokud pracujete na platformě, která není podporována a používat rozhraní REST API Cosmos `x-ms-retry-after-ms` DB, implementujte vlastní zásady opakování pomocí záhlaví. 
+3. Doporučuje se použít jednu z nativních sad Azure Cosmos DB SDK, abyste využili výhody automatických opakovaných pokusů, když se požadavky získají s omezením četnosti. Pokud pracujete na platformě, která není podporovaná a používá REST API Cosmos DB, implementujte vlastní zásady opakování pomocí `x-ms-retry-after-ms` hlavičky. 
 
-4. Ujistěte se, že kód aplikace řádně podporuje případ, když všechny pokusy nezdaří. 
+4. Ujistěte se, že kód aplikace bez problémů podporuje případ, kdy se všechny opakované pokusy nezdaří. 
 
-5. Můžete nakonfigurovat výstrahy z portálu Azure dostávat oznámení o omezení rychlosti. Můžete začít s konzervativními limity, jako jsou požadavky s omezenými 10 sazbami za posledních 15 minut, a přepnout na dychtivější pravidla, jakmile zjistíte skutečnou spotřebu. Občasné limity sazby jsou v pořádku, ukazují, že hrajete s limity, které jste nastavili, a to je přesně to, co chcete dělat. 
+5. Můžete nakonfigurovat výstrahy z Azure Portal, abyste získali oznámení pro omezení četnosti. Po posledních 15 minutách můžete začít s konzervativními limity, jako je 10 – omezené žádosti za posledních 15 minut a přejít na další pravidla Eager, až si vydáte skutečnou spotřebu. Omezení příležitostné míry jsou podrobná, ukazují, že hrajete s omezeními, která jste nastavili a která je přesně to, co chcete udělat. 
 
-6. Pomocí monitorování pochopte svůj vzor provozu, abyste mohli zvážit potřebu dynamicky upravit zřizování propustnosti během dne nebo týdne. 
+6. Použijte monitorování, abyste porozuměli vzoru provozu, takže můžete zvážit nutnost dynamického přizpůsobení zřizování propustnosti v průběhu dne nebo týdne. 
 
-7. Pravidelně monitorujte svůj zřízený a spotřebovaný poměr propustnosti a ujistěte se, že jste nezpracovali víc než požadovaný počet kontejnerů a databází. S trochu nad zřízenou propustností je dobrá bezpečnostní kontrola.  
+7. Pravidelně Sledujte svůj zřízený poměr propustnosti a využití, abyste se ujistili, že jste nezřídili více než požadovaný počet kontejnerů a databází. Nízká výše zřízená propustnost je dobrým bezpečnostním kontrolou.  
 
-### <a name="best-practices-to-optimize-provisioned-throughput"></a>Doporučené postupy pro optimalizaci zřízené propustnosti 
+### <a name="best-practices-to-optimize-provisioned-throughput"></a>Osvědčené postupy pro optimalizaci zřízené propustnosti 
 
-Následující kroky vám pomůžou, aby vaše řešení byla vysoce škálovatelná a nákladově efektivní při používání Azure Cosmos DB.  
+Následující kroky vám pomůžou zajistit, aby vaše řešení byla při použití Azure Cosmos DB vysoce škálovatelná a nákladově efektivní.  
 
-1. Pokud jste výrazně překročili zřízenou propustnost napříč kontejnery a databázemi, měli byste zkontrolovat zřízené ru zřízené vs spotřebované ru a doladit úlohy.  
+1. Pokud jste významně využili zajištěné propustnosti napříč kontejnery a databázemi, měli byste zkontrolovat ru zřízené vs spotřebované ru a vyladit úlohy.  
 
-2. Jednou z metod pro odhad velikosti rezervované propustnosti vyžadované vaší aplikací je zaznamenat poplatek RU jednotky požadavku spojený se spuštěním typických operací proti reprezentativnímu kontejneru nebo databázi Azure Cosmos používané vaší aplikací a pak odhadněte počet operací, které očekáváte k provedení každé sekundy. Nezapomeňte měřit a zahrnout typické dotazy a jejich použití také. Informace o tom, jak programově odhadnout náklady ru na dotazy nebo pomocí portálu, najdete [v tématu Optimalizace nákladů na dotazy](../synapse-analytics/sql-data-warehouse/backup-and-restore.md). 
+2. Jednou z metod pro odhad množství rezervované propustnosti, kterou vaše aplikace vyžaduje, je zaznamenat poplatky za RU jednotky žádosti spojené s běžícími typickými operacemi na reprezentativním kontejneru Azure Cosmos nebo databázi, kterou vaše aplikace používá, a pak odhadnout počet operací, které předpokládáte za sekundu. Nezapomeňte měřit a zahrnovat i typické dotazy a jejich využití. Informace o tom, jak odhadnout náklady na dotazy pomocí kódu programu nebo pomocí portálu, najdete v tématu [optimalizace nákladů na dotazy](online-backup-and-restore.md). 
 
-3. Dalším způsobem, jak získat operace a jejich náklady v ru, je povolení protokolů Azure Monitor, které vám poskytnou rozpis operace nebo doby trvání a poplatek za požadavek. Azure Cosmos DB poskytuje poplatek za požadavek pro každou operaci, takže každý poplatek za operaci lze uložit zpět z odpovědi a pak použít pro analýzu. 
+3. Dalším způsobem, jak získat operace a jejich náklady v ru, je povolit protokoly Azure Monitor, což vám poskytne rozpis operace/trvání a poplatků za požadavek. Azure Cosmos DB poskytuje pro každou operaci poplatek za požadavky, takže každý poplatek za operaci lze uložit zpět z odpovědi a pak použít k analýze. 
 
-4. Můžete elasticky vertikálně vertikálně vertikálně navýšit a snížit zřízenou propustnost, jak potřebujete, aby vyhovovalvašim potřebám úlohy. 
+4. Zajištěné propustnosti můžete elasticky škálovat nahoru a dolů, protože potřebujete přizpůsobit potřebám vašich úloh. 
 
-5. Můžete přidat a odebrat oblasti přidružené k účtu Azure Cosmos podle potřeby a řídit náklady. 
+5. Můžete přidávat a odebírat oblasti přidružené k vašemu účtu Azure Cosmos, jak potřebujete, a řídit náklady. 
 
-6. Ujistěte se, že máte i distribuci dat a úloh napříč logickými oddíly kontejnerů. Pokud máte nerovnoměrné rozdělení oddílu, to může způsobit zřízení vyšší množství propustnost než hodnota, která je potřeba. Pokud zjistíte, že máte zkosené rozdělení, doporučujeme rovnoměrně distribuovat úlohy mezi oddíly nebo přerozdělit data. 
+6. Ujistěte se, že máte dokonce i distribuci dat a zatížení napříč logickými oddíly vašich kontejnerů. Pokud máte Nerovnoměrné rozdělení oddílů, může to vést k zajištění vyššího objemu propustnosti, než je požadovaná hodnota. Pokud zjistíte, že máte nakloněnou distribuci, doporučujeme, aby se zatížení rovnoměrně rozdělilo napříč oddíly nebo znovu rozdělit data. 
 
-7. Pokud máte mnoho kontejnerů a tyto kontejnery nevyžadují sla, můžete použít nabídku založenou na databázi pro případy, kdy se nevztahují na kontejner propustnost. Měli byste určit, které z kontejnerů Azure Cosmos, které chcete migrovat do nabídky propustnost na úrovni databáze a pak je migrovat pomocí řešení založeného na kanálu změn. 
+7. Pokud máte mnoho kontejnerů a tyto kontejnery nevyžadují SLA, můžete použít nabídku založenou na databázích pro případy, kdy se SLA na propustnost kontejneru nevztahuje. Měli byste určit, které z kontejnerů Azure Cosmos chcete migrovat do nabídky propustnosti na úrovni databáze, a pak je migrovat pomocí řešení změn na základě kanálu. 
 
-8. Zvažte použití "Cosmos DB Free Tier" (zdarma po dobu jednoho roku), Zkuste Cosmos DB (až tři oblasti) nebo ke stažení Cosmos DB emulátor pro scénáře pro vývoj a testování. Pomocí těchto možností pro test-dev, můžete podstatně snížit své náklady.  
+8. Zvažte použití "Cosmos DB úrovně Free" (zdarma po dobu jednoho roku), vyzkoušejte Cosmos DB (až na tři oblasti) nebo proveďte stažení Cosmos DB emulátoru pro scénáře vývoje a testování. Pomocí těchto možností pro testování vývoje můžete významně snížit náklady.  
 
-9. Můžete dále provádět optimalizace nákladů specifické pro úlohu – například zvýšení dávky velikosti, vyrovnávání zatížení čtení ve více oblastech a de-duplikace dat, pokud je to možné.
+9. Můžete dále provádět optimalizace nákladů na konkrétní úlohy – například zvýšení velikosti dávek, čtení vyrovnávání zatížení napříč několika oblastmi a odstraňování duplicitních dat (Pokud je to možné).
 
-10. S rezervovanou kapacitou Azure Cosmos DB můžete získat významné slevy až 65 % po dobu tří let. Azure Cosmos DB rezervované kapacity modelu je předem závazek na jednotky požadavků potřebné v průběhu času. Slevy jsou odstupňovány tak, že čím více jednotek požadavků používáte po delší období, tím více bude vaše sleva. Tyto slevy jsou uplatněny okamžitě. Všechny ru používané nad zřízenými hodnotami se účtují na základě nerezervovaných nákladů na kapacitu. Další podrobnosti najdete v [části Rezervovaná kapacita Cosmos DB](cosmos-db-reserved-capacity.md)). Zvažte zakoupení rezervované kapacity, abyste dále snížili náklady na zřízenou propustnost.  
+10. Díky Azure Cosmos DB rezervované kapacity můžete pro tři roky získat až 65% významné slevy. Model rezervované kapacity Azure Cosmos DB je předem stanovený závazek na jednotky požadavků, které jsou potřeba v průběhu času. Tyto slevy jsou vrstveny, takže čím více jednotek požadavků budete používat v delší době, tím déle bude vaše sleva. Tyto slevy se projeví okamžitě. Všechny ru použité nad zřízené hodnoty se účtují na základě nerezervovaných nákladů na kapacitu. Další podrobnosti najdete v tématu [Cosmos DB rezervovanou kapacitu](cosmos-db-reserved-capacity.md)). Zvažte zakoupení rezervované kapacity k dalšímu snížení nákladů na náklady na zajištění propustnosti.  
 
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o optimalizaci nákladů v Azure Cosmos DB najdete v následujících článcích:
 
 * Další informace o [optimalizaci pro vývoj a testování](optimize-dev-test.md)
-* Další informace o [vysvětlení vaší faktury z DB Služby Azure Cosmos](understand-your-bill.md)
+* Další informace o [Azure Cosmos DB vyúčtování](understand-your-bill.md)
 * Další informace o [optimalizaci nákladů na úložiště](optimize-cost-storage.md)
 * Další informace o [optimalizaci nákladů na čtení a zápisy](optimize-cost-reads-writes.md)
 * Další informace o [optimalizaci nákladů na dotazy](optimize-cost-queries.md)
-* Další informace o [optimalizaci nákladů na účty Azure Cosmos s více oblastmi](optimize-cost-regions.md)
+* Další informace o [optimalizaci nákladů na účty Azure Cosmos ve více oblastech](optimize-cost-regions.md)
 

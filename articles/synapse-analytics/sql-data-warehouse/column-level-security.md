@@ -1,6 +1,6 @@
 ---
-title: Co je zabezpečení na úrovni sloupců pro Azure Synapse?
-description: Zabezpečení na úrovni sloupců umožňuje zákazníkům řídit přístup ke sloupcům databázové tabulky na základě kontextu spuštění uživatele nebo členství ve skupině, zjednodušit návrh a kódování zabezpečení ve vaší aplikaci a umožnit implementovat omezení přístupu ke sloupcům.
+title: Co je zabezpečení na úrovni sloupců pro Azure synapse?
+description: Zabezpečení na úrovni sloupců umožňuje zákazníkům řídit přístup k sloupcům tabulky databáze na základě kontextu spuštění uživatele nebo členství ve skupině, zjednodušit návrh a kódování zabezpečení ve vaší aplikaci a umožňuje implementovat omezení přístupu k sloupci.
 services: synapse-analytics
 author: julieMSFT
 manager: craigg
@@ -13,24 +13,24 @@ ms.reviewer: igorstan, carlrab
 ms.custom: seo-lt-2019
 tags: azure-synapse
 ms.openlocfilehash: b0a783ad5db86ca783ff1cebceec8d77ab528047
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81687922"
 ---
 # <a name="column-level-security"></a>Zabezpečení na úrovni sloupců
 
-Zabezpečení na úrovni sloupců umožňuje zákazníkům řídit přístup ke sloupcům tabulky na základě kontextu spuštění uživatele nebo členství ve skupině.
+Zabezpečení na úrovni sloupců umožňuje zákazníkům řídit přístup k sloupcům tabulky na základě kontextu spuštění nebo členství ve skupině uživatele.
 
 > [!VIDEO https://www.youtube.com/embed/OU_ESg0g8r8]
-Vzhledem k tomu, že toto video bylo zveřejněno [na úrovni řádku zabezpečení](/sql/relational-databases/security/row-level-security?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) bylo k dispozici pro Azure Synapse.
+Vzhledem k tomu, že toto video bylo zveřejněné [zabezpečení na úrovni řádků](/sql/relational-databases/security/row-level-security?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) , které se stalo pro Azure synapse.
 
-Zabezpečení na úrovni sloupců zjednodušuje návrh a kódování zabezpečení ve vaší aplikaci a umožňuje omezit přístup ke sloupcům a chránit citlivá data. Například zajištění, že konkrétní uživatelé mají přístup pouze k určitým sloupcům tabulky, které se připodobují k jejich oddělení. Logika omezení přístupu se nachází v databázové vrstvě, nikoli mimo data v jiné aplikační vrstvě. Databáze použije omezení přístupu při každém pokusu o přístup k datům z libovolné vrstvy. Toto omezení činí zabezpečení spolehlivější a robustnější tím, že zužuje plochu celkového bezpečnostního systému. Zabezpečení na úrovni sloupců navíc také eliminuje potřebu zavádět zobrazení pro odfiltrování sloupců pro uložení omezení přístupu pro uživatele.
+Zabezpečení na úrovni sloupců zjednodušuje návrh a kódování zabezpečení ve vaší aplikaci. umožňuje omezit přístup k sloupci na ochranu citlivých dat. Například zajistěte, aby konkrétní uživatelé měli přístup pouze k určitým sloupcům tabulky, které se vztahují k jejich oddělení. Logika omezení přístupu se nachází v databázové vrstvě, nikoli z dat v jiné aplikační vrstvě. Databáze použije omezení přístupu při každém pokusu o přístup k datům z jakékoli úrovně. Toto omezení zajišťuje spolehlivější a robustní zabezpečení tím, že redukuje plochu celkového systému zabezpečení. Kromě toho zabezpečení na úrovni sloupců také eliminuje nutnost zavedení zobrazení pro odfiltrování sloupců pro ukládání omezení přístupu uživatelům.
 
-Zabezpečení na úrovni sloupce můžete implementovat pomocí příkazu [GRANT](/sql/t-sql/statements/grant-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL. Pomocí tohoto mechanismu jsou podporovány ověřování SQL a Azure Active Directory (AAD).
+Můžete implementovat zabezpečení na úrovni sloupce pomocí příkazu [grant](/sql/t-sql/statements/grant-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL. Tento mechanismus podporuje ověřování SQL i Azure Active Directory (AAD).
 
-![Cls](./media/column-level-security/cls.png)
+![specifikaci](./media/column-level-security/cls.png)
 
 ## <a name="syntax"></a>Syntaxe
 
@@ -52,9 +52,9 @@ GRANT <permission> [ ,...n ] ON
 
 ## <a name="example"></a>Příklad
 
-Následující příklad ukazuje, `TestUser` jak omezit `SSN` přístup ke `Membership` sloupci tabulky:
+Následující příklad ukazuje, jak omezit `TestUser` přístup k `SSN` sloupci `Membership` tabulky:
 
-Vytvořit `Membership` tabulku se sloupcem SSN, který slouží k ukládání čísel sociálního pojištění:
+Vytvořit `Membership` tabulku se sloupcem SSN, který se používá k uložení čísel sociálního pojištění:
 
 ```sql
 CREATE TABLE Membership
@@ -66,13 +66,13 @@ CREATE TABLE Membership
    Email varchar(100) NULL);
 ```
 
-Povolit `TestUser` přístup ke všem sloupcům s výjimkou sloupce SSN, který obsahuje citlivá data:
+Umožňuje `TestUser` přístup ke všem sloupcům s výjimkou sloupce SSN, který má citlivá data:
 
 ```sql
 GRANT SELECT ON Membership(MemberID, FirstName, LastName, Phone, Email) TO TestUser;
 ```
 
-Dotazy provedené jako `TestUser` se nezdaří, pokud obsahují sloupec SSN:
+Dotazy provedené jako `TestUser` selžou, pokud budou zahrnovat sloupec SSN:
 
 ```sql
 SELECT * FROM Membership;
@@ -83,7 +83,7 @@ SELECT * FROM Membership;
 
 ## <a name="use-cases"></a>Případy použití
 
-Některé příklady, jak se dnes používá zabezpečení na úrovni sloupců:
+Některé příklady použití zabezpečení na úrovni sloupců v současnosti:
 
-- Firma poskytující finanční služby umožňuje pouze správcům účtů přístup k číslům sociálního zabezpečení zákazníků (SSN), telefonním číslům a dalším osobním údajům(PII).
-- Poskytovatel zdravotní péče umožňuje pouze lékařům a sestrám přístup k citlivým lékařským záznamům a zároveň zabraňuje členům fakturačního oddělení v prohlížení těchto údajů.
+- Společnost DataServices zajišťuje přístup jenom správcům účtů, kteří mají přístup k číslům sociálního pojištění zákazníka (rodné číslo), telefonním číslům a dalším identifikovatelným osobním údajům (PII).
+- Poskytovatel péče o zdravotní péči umožňuje přístup k citlivým lékařským záznamům jenom lékaři a zdravotní sestry a zároveň brání členům fakturačního oddělení zobrazit tato data.

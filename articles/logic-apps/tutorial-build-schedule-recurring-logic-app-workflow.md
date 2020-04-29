@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/12/2019
 ms.openlocfilehash: 5d4990fd806aed75d9b5e5ddd3e9a615631d9d65
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82146520"
 ---
 # <a name="tutorial-create-automated-schedule-based-recurring-workflows-by-using-azure-logic-apps"></a>Kurz: vytvoření automatizovaných pracovních postupů založených na plánech pomocí Azure Logic Apps
@@ -151,7 +151,7 @@ Teď, když máte trigger, přidejte [akci](../logic-apps/logic-apps-overview.md
 
 1. V akci otevřete **seznam přidat nový parametr**a vyberte tyto vlastnosti, které chcete přidat k akci.
 
-   * **Optimalizace**
+   * **Zvýšit**
    * **Jednotka vzdálenosti**
    * **Způsob cestování**
 
@@ -165,7 +165,7 @@ Teď, když máte trigger, přidejte [akci](../logic-apps/logic-apps-overview.md
    |----------|----------|-------|-------------|
    | **Bod na trase 1** | Ano | <*Začátek – umístění*> | Počátek vaší cesty |
    | **Bod na trase 2** | Ano | <*koncové umístění*> | Cíl vaší trasy |
-   | **Optimalizace** | Ne | timeWithTraffic | Parametr k optimalizaci vaší trasy, jako je například vzdálenost, doba trvání cesty včetně dopravní situace atd. Vyberte parametr "timeWithTraffic". |
+   | **Zvýšit** | Ne | timeWithTraffic | Parametr k optimalizaci vaší trasy, jako je například vzdálenost, doba trvání cesty včetně dopravní situace atd. Vyberte parametr "timeWithTraffic". |
    | **Jednotka vzdálenosti** | Ne | <*vaše preference*> | Jednotka vzdálenosti použitá pro trasu. V tomto příkladu se jako jednotka používá "km". |
    | **Způsob cestování** | Ne | Autem | Způsob cestování pro danou trasu. Vyberte režim "řízení". |
    ||||

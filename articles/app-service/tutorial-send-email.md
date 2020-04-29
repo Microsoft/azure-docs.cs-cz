@@ -1,30 +1,30 @@
 ---
-title: 'Kurz: odesílání e-mailů pomocí logic aplikací'
-description: Přečtěte si, jak vyvolat obchodní procesy z aplikace App Service. Posílejte e-maily, tweety a příspěvky na Facebooku, přidávejte do seznamů adresátů a mnoho dalšího.
+title: 'Kurz: odesílání e-mailů pomocí Logic Apps'
+description: Naučte se volat obchodní procesy z aplikace App Service. Posílání e-mailů, tweety a příspěvků na Facebooku, přidávání do seznamů adresátů a mnoho dalších.
 ms.topic: tutorial
 ms.date: 04/08/2020
 ms.custom: mvc
 ms.openlocfilehash: 4073b49a134356943bd7da8d54bf574f2e0d5eea
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81604854"
 ---
-# <a name="tutorial-send-email-and-invoke-other-business-processes-from-app-service"></a>Kurz: Odeslání e-mailu a vyvolání dalších obchodních procesů ze služby App Service
+# <a name="tutorial-send-email-and-invoke-other-business-processes-from-app-service"></a>Kurz: odesílání e-mailů a vyvolání dalších obchodních procesů z App Service
 
-V tomto kurzu se dozvíte, jak integrovat aplikaci App Service s obchodními procesy. To je běžné pro scénáře webových aplikací, jako jsou:
+V tomto kurzu se naučíte integrovat aplikaci App Service s vašimi obchodními procesy. To je běžné pro scénáře webových aplikací, jako například:
 
-- Odeslání potvrzovacího e-mailu pro transakci
-- Přidání uživatele do skupiny Facebook
+- Odeslat potvrzující e-mail pro transakci
+- Přidat uživatele do skupiny Facebook
 - Připojte se k systémům třetích stran, jako je SAP, SalesForce atd.
-- Standardní zprávy B2B serveru Exchange
+- Zprávy Standard B2B pro Exchange
 
-V tomto kurzu odesíláte e-maily s Gmailem z aplikace App Service pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md). Existují i jiné způsoby odesílání e-mailů z webové aplikace, jako je konfigurace SMTP poskytovaná jazykovým rámcem. Aplikace Logic Apps však přináší mnohem více energie do aplikace App Service bez přidání složitosti vašeho kódu. Logic Apps poskytuje jednoduché konfigurační rozhraní pro nejoblíbenější obchodní integrace a vaše aplikace je může kdykoli volat pomocí požadavku HTTP.
+V tomto kurzu posíláte e-maily pomocí služby Gmail z aplikace App Service pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md). Existují i jiné způsoby, jak odesílat e-maily z webové aplikace, jako je například konfigurace SMTP poskytovaná vaším jazykovým rozhraním. Nicméně Logic Apps přináší mnohem větší výkon vaší aplikace App Service, aniž by bylo nutné do kódu přidat složitost. Logic Apps poskytuje jednoduché konfigurační rozhraní pro nejoblíbenější obchodní integrace a vaše aplikace je může kdykoli zavolat s požadavkem HTTP.
 
 ## <a name="prerequisite"></a>Požadavek
 
-Nasaďte si aplikaci s jazykovou architekturou podle vašeho výběru do služby App Service. Chcete-li postupovat podle kurzu k nasazení ukázkové aplikace, přečtěte si níže:
+Nasaďte aplikaci s použitím jazykové architektury podle vašeho výběru na App Service. Postup nasazení ukázkové aplikace najdete v kurzu níže:
 
 # <a name="aspnet"></a>[ASP.NET](#tab/dotnet)
 
@@ -32,37 +32,37 @@ Nasaďte si aplikaci s jazykovou architekturou podle vašeho výběru do služby
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/dotnetcore)
 
-[Kurz: Vytvoření aplikace ASP.NET core a sql database ve službě Azure App Service](app-service-web-tutorial-dotnetcore-sqldb.md)
+[Kurz: Vytvoření aplikace ASP.NET Core a SQL Database v Azure App Service](app-service-web-tutorial-dotnetcore-sqldb.md)
 
 # <a name="nodejs"></a>[Node.js](#tab/node)
 
-[Kurz: Vytvoření aplikace Node.js a MongoDB v Azure](app-service-web-tutorial-nodejs-mongodb-app.md)
+[Kurz: Vytvoření aplikace Node. js a MongoDB v Azure](app-service-web-tutorial-nodejs-mongodb-app.md)
 
 # <a name="php"></a>[PHP](#tab/php)
 
-[Kurz: Vytvoření aplikace PHP a MySQL v Azure](app-service-web-tutorial-php-mysql.md)
+[Kurz: sestavení aplikace PHP a MySQL v Azure](app-service-web-tutorial-php-mysql.md)
 
 # <a name="python"></a>[Python](#tab/python)
 
-[Kurz: Spuštění webové aplikace Python (Django) s PostgreSQL ve službě Azure App Service](containers/tutorial-python-postgresql-app.md)
+[Kurz: spuštění webové aplikace v Pythonu (Django) s PostgreSQL v Azure App Service](containers/tutorial-python-postgresql-app.md)
 
 # <a name="ruby"></a>[Ruby](#tab/ruby)
 
-[Vytvoření aplikace Ruby a Postgres ve službě Azure App Service na Linuxu](containers/tutorial-ruby-postgres-app.md)
+[Vytvoření aplikace Ruby a Postgres v Azure App Service v systému Linux](containers/tutorial-ruby-postgres-app.md)
 
 ---
 
 ## <a name="create-the-logic-app"></a>Vytvoření aplikace logiky
 
-1. Na [webu Azure Portal](https://portal.azure.com)vytvořte prázdnou aplikaci logiky podle pokynů v části [Vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md#create-your-logic-app). Když se zobrazí **Návrhář logických aplikací**, vraťte se k tomuto kurzu.
-1. Na úvodní stránce aplikace Logic Apps vyberte **Při přijetí požadavku HTTP** v části Spustit s běžnou aktivační **událostí**.
+1. V [Azure Portal](https://portal.azure.com)vytvořte prázdnou aplikaci logiky podle pokynů v tématu [Vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md#create-your-logic-app). Když se zobrazí **návrhář Logic Apps**, vraťte se k tomuto kurzu.
+1. Na úvodní stránce pro návrháře Logic Apps vyberte, kdy se v části začátek **přijme požadavek HTTP** **se společným triggerem**.
 
     ![](./media/tutorial-send-email/receive-http-request.png)
-1. V dialogovém okně **Při přijetí požadavku HTTP**vyberte použít **ukázkovou datovou část ke generování schématu**.
+1. V dialogu pro, **kdy se přijme požadavek HTTP**, vyberte **použít ukázkovou datovou část k vygenerování schématu**.
 
     ![](./media/tutorial-send-email/generate-schema-with-payload.png)
 
-1. Zkopírujte následující ukázku JSON do textového pole a vyberte **Hotovo**.
+1. Zkopírujte následující vzorový kód JSON do textového pole a vyberte **Hotovo**.
 
     ```json
     {
@@ -72,70 +72,70 @@ Nasaďte si aplikaci s jazykovou architekturou podle vašeho výběru do služby
     }
     ```
 
-    Schéma je nyní generováno pro požadovaná data požadavku. V praxi můžete jen zachytit skutečná data požadavku, která generuje kód aplikace, a nechat Azure generovat schéma JSON za vás. 
-1. V horní části Návrháře logických aplikací vyberte **Uložit**. 
+    Schéma je nyní vygenerováno pro požadovaná data požadavku. V praxi můžete pouze zachytit skutečná data žádosti, která kód aplikace generuje, a nechat si pro vás Azure vygenerovat schéma JSON. 
+1. V horní části návrháře Logic Apps vyberte **Uložit**. 
 
-    Nyní můžete zobrazit adresu URL aktivační události požadavku HTTP. Vyberte ikonu kopírování, kterou chcete zkopírovat pro pozdější použití.
+    Teď uvidíte adresu URL triggeru požadavku HTTP. Vyberte ikonu kopírování a zkopírujte ji pro pozdější použití.
 
     ![](./media/tutorial-send-email/http-request-url.png)
 
-    Tato definice požadavku HTTP je aktivační událost pro cokoli, co chcete dělat v této aplikaci logiky, ať už je to Gmail nebo cokoli jiného. Později vyvoláte tuto adresu URL v aplikaci App Service. Další informace o aktivační události požadavku naleznete v [odkazu na požadavek/odpověď HTTP](../connectors/connectors-native-reqres.md).
+    Tato definice požadavku HTTP je triggerem pro cokoli, co chcete v této aplikaci logiky dělat, může to být Gmail nebo cokoli jiného. Později tuto adresu URL vyvoláte ve vaší aplikaci App Service. Další informace o triggeru žádosti najdete v [referenčních informacích o požadavku a odpovědi HTTP](../connectors/connectors-native-reqres.md).
 
-1. V dolní části návrháře klikněte na **Nový krok**, do vyhledávacího pole akce zadejte **Gmail** a najděte a vyberte **Odeslat e-mail (V2).**
+1. V dolní části návrháře klikněte na **Nový krok**, do vyhledávacího pole Akce zadejte **Gmail** a vyhledejte a vyberte **Odeslat e-mail (v2)**.
     
     > [!TIP]
-    > Můžete vyhledat další typy integrací, jako je SendGrid, MailChimp, Office 365 a SalesForce. Další informace naleznete v [dokumentaci k logicaplikacím](https://docs.microsoft.com/azure/logic-apps/).
-1. V dialogovém okně **Gmail** vyberte **Přihlásit se** a přihlásit se k účtu Gmail, ze kterého chcete e-mail poslat.
+    > Můžete hledat další typy integrace, například SendGrid, MailChimp, Office 365 a SalesForce. Další informace najdete v [dokumentaci Logic Apps](https://docs.microsoft.com/azure/logic-apps/).
+1. V dialogovém okně **Gmail** vyberte **Přihlásit** se a přihlaste se k účtu Gmail, ze kterého chcete e-mail odeslat.
 
     ![](./media/tutorial-send-email/gmail-sign-in.png)
 
-1. Po přihlášení klikněte do textového pole **Do** a automaticky se otevře dialogové okno dynamického obsahu.
+1. Po přihlášení klikněte do textového pole **k** a automaticky se otevře dialogové okno dynamického obsahu.
 
-1. Vedle akce **Při přijetí požadavku HTTP** vyberte Zobrazit **další**.
+1. U akce **když se přijme požadavek HTTP** , vyberte **Zobrazit další**.
 
     ![](./media/tutorial-send-email/expand-dynamic-content.png)
 
-    Nyní byste měli vidět tři vlastnosti z ukázkových dat JSON, které jste použili dříve. V tomto kroku použijete tyto vlastnosti z požadavku HTTP k vytvoření e-mailu.
-1. Vzhledem k tomu, že vybíráte hodnotu pro pole **Do,** zvolte **e-mail**. Pokud chcete, vypněte dialogové okno dynamického obsahu klepnutím na **přidat dynamický obsah**.
+    Nyní byste měli vidět tři vlastnosti z ukázkových dat JSON, která jste použili dříve. V tomto kroku použijete tyto vlastnosti z požadavku HTTP k vytvoření e-mailu.
+1. Vzhledem k tomu, že vybíráte hodnotu pro pole **do** , zvolte **e-mail**. Pokud chcete, přepínejte dialogové okno dynamického obsahu kliknutím na **Přidat dynamický obsah**.
 
     ![](./media/tutorial-send-email/hide-dynamic-content.png)
 
-1. V rozevíracím seznamu **Přidat nový parametr** vyberte **Předmět** a **Tělo**.
+1. V rozevíracím seznamu **Přidat nový parametr** vyberte **Předmět** a **text**.
 
-1. Klepněte do textového pole **Předmět** a stejným způsobem zvolte **úkol**. Pokud je kurzor stále v poli **Předmět,** zadejte *příkaz created*. 
+1. Klikněte do textového pole **Předmět** a stejným způsobem vyberte možnost **úloha**. Když se kurzor stále nachází v poli **subject (předmět** ), zadejte *vytvořit*. 
 
-1. Klikněte na **tělo**a stejným způsobem zvolte **splatné**. Přesuňte kurzor nalevo od **splatnosti** a zadejte *Tato pracovní položka je splatná na*.
+1. Klikněte na **text**a stejným způsobem vyberte možnost **nesplnit**. Přesune kurzor nalevo od **termínu splnění** a typ, *na který je tato pracovní položka splatná*.
 
     > [!TIP]
-    > Pokud chcete upravit obsah HTML přímo v těle e-mailu, vyberte **zobrazení kódu** v horní části okna Návrhář eaplikací logiky. Jen se ujistěte, že jste zachovali kód dynamického obsahu `@{triggerBody()?['due']}`(například)
+    > Chcete-li upravit obsah HTML přímo v těle e-mailu, vyberte v horní části okna návrháře Logic Apps **zobrazení kódu** . Stačí zajistit, abyste zachovali kód dynamického obsahu (například `@{triggerBody()?['due']}`).
     >
     > ![](./media/tutorial-send-email/edit-rich-html-email.png) 
 
-1. Dále přidejte asynchronní odpověď HTTP do aktivační události HTTP. Mezi aktivační událostí HTTP a akcí **+** Gmail klikněte na znaménko a vyberte **Přidat paralelní větev**.
+1. Dále přidejte asynchronní odpověď HTTP do triggeru HTTP. Mezi triggerem HTTP a akcí Gmail klikněte na **+** znaménko a vyberte **Přidat paralelní větev**.
 
     ![](./media/tutorial-send-email/add-http-response.png)
 
-1. Ve vyhledávacím poli vyhledejte **odpověď**a vyberte akci **Odpověď.**
+1. Do vyhledávacího pole vyhledejte **odpověď**a pak vyberte akci **reakce** .
 
     ![](./media/tutorial-send-email/choose-response-action.png)
 
-    Ve výchozím nastavení odešle akce odpovědi protokol HTTP 200. To je dost dobré pro tento výukový program. Další informace naleznete v [odkazu na požadavek/odpověď HTTP](../connectors/connectors-native-reqres.md).
+    Akce odpovědi ve výchozím nastavení odešle HTTP 200. To je pro tento kurz dostatečné. Další informace najdete v [referenčních informacích o žádostech a odpovědích http](../connectors/connectors-native-reqres.md).
 
-1. V horní části Návrháře logických aplikací vyberte **Uložit** znovu. 
+1. V horní části návrháře Logic Apps vyberte **Uložit** znovu. 
 
 ## <a name="add-http-request-code-to-app"></a>Přidání kódu požadavku HTTP do aplikace
 
-Ujistěte se, že jste zkopírovali adresu URL aktivační události požadavku HTTP z předchozích. Vzhledem k tomu, že obsahuje citlivé informace, je osvědčeným postupem, abyste je nevložili přímo do kódu. Pomocí služby App Service na něj můžete odkazovat jako na proměnnou prostředí pomocí nastavení aplikace. 
+Ujistěte se, že jste zkopírovali adresu URL triggeru požadavku HTTP z předchozích verzí. Protože obsahuje citlivé informace, je osvědčeným postupem Nevkládat je přímo do kódu. Pomocí App Service můžete místo toho odkazovat jako na proměnnou prostředí, a to pomocí nastavení aplikace. 
 
-V [prostředí Cloud Shell](https://shell.azure.com)vytvořte nastavení aplikace pomocí následujícího příkazu (nahraďte * \<>s názvem aplikace *, * \<>název skupiny prostředků *a * \<>logic-app-url *):
+V [Cloud Shell](https://shell.azure.com)vytvořte nastavení aplikace pomocí následujícího příkazu (nahraďte * \<>název aplikace *, * \<Resource-Group-Name>* a * \<Logic-URL>*):
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings LOGIC_APP_URL="<your-logic-app-url>"
 ```
 
-V kódu vytvořte standardní příspěvek HTTP na adresu URL pomocí libovolného klientského jazyka HTTP, který je k dispozici pro váš jazykový rámec, s následující konfigurací:
+Ve svém kódu proveďte standardní příspěvek HTTP na adresu URL pomocí libovolného jazyka klienta HTTP, který je k dispozici pro vaše jazyková rozhraní, s následující konfigurací:
 
-- Tělo požadavku obsahuje stejný formát JSON, který jste zadali do aplikace logiky:
+- Tělo žádosti obsahuje stejný formát JSON, který jste zadali do vaší aplikace logiky:
 
     ```json
     {
@@ -145,14 +145,14 @@ V kódu vytvořte standardní příspěvek HTTP na adresu URL pomocí libovolné
     }
     ```
 
-- Požadavek obsahuje `Content-Type: application/json`nadpis . 
-- Chcete-li optimalizovat výkon, odešlete požadavek asynchronně, pokud je to možné.
+- Požadavek obsahuje záhlaví `Content-Type: application/json`. 
+- Pokud chcete optimalizovat výkon, odešlete požadavek asynchronně, pokud je to možné.
 
-Kliknutím na kartu preferovaný jazyk/architektura zobrazíte příklad.
+Příklad zobrazíte kliknutím na kartu preferovaný jazyk/rozhraní.
 
 # <a name="aspnet"></a>[ASP.NET](#tab/dotnet)
 
-V ASP.NET můžete odeslat příspěvek HTTP s třídou [System.Net.Http.HttpClient.](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient) Příklad:
+V ASP.NET můžete odeslat příspěvek HTTP pomocí třídy [System .NET. http. HttpClient](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient) . Příklad:
 
 ```csharp
 // requires using System.Net.Http;
@@ -173,11 +173,11 @@ HttpResponseMessage result = await client.PostAsync(
 var statusCode = result.StatusCode.ToString();
 ```
 
-Pokud testujete tento kód v ukázkové aplikaci pro [kurz: Vytvoření ASP.NET aplikace v Azure s databází SQL](app-service-web-tutorial-dotnet-sqldatabase.md), můžete ji použít k odeslání potvrzení e-mailu v akci [Vytvořit](https://github.com/Azure-Samples/dotnet-sqldb-tutorial/blob/master/DotNetAppSqlDb/Controllers/TodosController.cs#L52-L63)po přidání `Todo` položky. Chcete-li použít výše uvedený asynchronní kód, převeďte akci Vytvořit na asynchronní.
+Pokud testujete tento kód v ukázkové aplikaci pro [kurz: Vytvoření aplikace ASP.NET v Azure pomocí SQL Database](app-service-web-tutorial-dotnet-sqldatabase.md), můžete ji použít k odeslání e-mailového potvrzení v [akci vytvořit](https://github.com/Azure-Samples/dotnet-sqldb-tutorial/blob/master/DotNetAppSqlDb/Controllers/TodosController.cs#L52-L63)po přidání `Todo` položky. Chcete-li použít asynchronní kód výše, převeďte akci vytvořit na asynchronní.
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/dotnetcore)
 
-V ASP.NET Core můžete odeslat příspěvek HTTP s třídou [System.Net.Http.HttpClient.](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient) Příklad:
+V ASP.NET Core můžete odeslat příspěvek HTTP pomocí třídy [System .NET. http. HttpClient](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient) . Příklad:
 
 ```csharp
 // requires using System.Net.Http;
@@ -199,13 +199,13 @@ var statusCode = result.StatusCode.ToString();
 ```
 
 > [!NOTE]
-> Tento kód je napsán pro jednoduchost demonstrace. V praxi není konkretizovat `HttpClient` objekt pro každý požadavek. Postupujte podle pokynů na [použití IHttpClientFactory k implementaci odolných požadavků HTTP](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests).
+> Tento kód je zapsán z důvodu jednoduchosti ukázky. V praxi nevytvářejte instanci `HttpClient` objektu pro každý požadavek. Pokud [chcete implementovat odolné požadavky HTTP](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests), postupujte podle pokynů v části použití IHttpClientFactory.
 
-Pokud testujete tento kód v ukázkové aplikaci pro [kurz: Vytvoření aplikace ASP.NET core a SQL Database ve službě Azure App Service](app-service-web-tutorial-dotnetcore-sqldb.md), můžete ho použít k odeslání potvrzení e-mailu v akci [Vytvořit](https://github.com/Azure-Samples/dotnetcore-sqldb-tutorial/blob/master/Controllers/TodosController.cs#L56-L65)po přidání `Todo` položky.
+Pokud testujete tento kód v ukázkové aplikaci pro [kurz: Vytvoření aplikace ASP.NET Core a SQL Database v Azure App Service](app-service-web-tutorial-dotnetcore-sqldb.md), můžete ji použít k odeslání e-mailového potvrzení v [akci vytvořit](https://github.com/Azure-Samples/dotnetcore-sqldb-tutorial/blob/master/Controllers/TodosController.cs#L56-L65)po přidání `Todo` položky.
 
 # <a name="nodejs"></a>[Node.js](#tab/node)
 
-V Node.js můžete snadno odeslat http příspěvek pomocí balíčku npm, jako [je axios](https://www.npmjs.com/package/axios). Příklad:
+V Node. js můžete odeslat příspěvek HTTP snadno pomocí balíčku NPM, jako je [axios](https://www.npmjs.com/package/axios). Příklad:
 
 ```javascript
 // Requires npm install --save axios
@@ -228,11 +228,11 @@ var jsonData = {
 
 ```
 
-Pokud testujete tento kód v ukázkové aplikaci pro [kurz: Vytvoření aplikace Node.js a MongoDB v Azure](app-service-web-tutorial-nodejs-mongodb-app.md), můžete ho použít k odeslání potvrzení e-mailu ve [funkci vytvořit](https://github.com/Azure-Samples/meanjs/blob/master/modules/articles/server/controllers/articles.server.controller.js#L14-L27)po [úspěšném uložení článku](https://github.com/Azure-Samples/meanjs/blob/master/modules/articles/server/controllers/articles.server.controller.js#L24).
+Pokud tento kód testujete v ukázkové aplikaci pro [kurz: sestavte aplikaci Node. js a MongoDB v Azure](app-service-web-tutorial-nodejs-mongodb-app.md), můžete ji použít k odeslání e-mailového potvrzení ve [funkci Create](https://github.com/Azure-Samples/meanjs/blob/master/modules/articles/server/controllers/articles.server.controller.js#L14-L27)po [úspěšném uložení článku](https://github.com/Azure-Samples/meanjs/blob/master/modules/articles/server/controllers/articles.server.controller.js#L24).
 
 # <a name="php"></a>[PHP](#tab/php)
 
-V PHP, můžete poslat HTTP post snadno s [Guzzle](http://docs.guzzlephp.org/en/stable/index.html). Příklad:
+V PHP můžete snadno odeslat příspěvek HTTP pomocí [Guzzle](http://docs.guzzlephp.org/en/stable/index.html). Příklad:
 
 ```php
 // Requires composer require guzzlehttp/guzzle:~6.0
@@ -260,11 +260,11 @@ $response = $promise->wait();
 Log::info(print_r($response, TRUE));
 ```
 
-Pokud testujete tento kód v ukázkové aplikaci pro [kurz: Sestavení aplikace PHP a MySQL v Azure](app-service-web-tutorial-php-mysql.md), můžete ji použít k odeslání potvrzení e-mailu ve [funkci Route::post](https://github.com/Azure-Samples/laravel-tasks/blob/master/routes/web.php#L30-L48)těsně před příkazem return.
+Pokud tento kód testujete v ukázkové aplikaci pro [kurz: sestavte aplikaci PHP a MySQL v Azure](app-service-web-tutorial-php-mysql.md), můžete ji použít k odeslání e-mailového potvrzení ve [funkci Route::p OST](https://github.com/Azure-Samples/laravel-tasks/blob/master/routes/web.php#L30-L48)těsně před příkazem Return.
 
 # <a name="python"></a>[Python](#tab/python)
 
-V Pythonu můžete snadno odeslat http příspěvek s [požadavky](https://pypi.org/project/requests/). Příklad:
+V Pythonu můžete pomocí [požadavků](https://pypi.org/project/requests/)snadno odeslat příspěvek http. Příklad:
 
 ```python
 # Requires pip install requests && pip freeze > requirements.txt
@@ -291,11 +291,11 @@ async with aiohttp.post('http://httpbin.org/post', data=json.dump(payload)) as r
     print(await resp.status())
 ``` -->
 
-Pokud testujete tento kód v ukázkové aplikaci pro [kurz: Spusťte webovou aplikaci Python (Django) s PostgreSQL ve službě Azure App Service](containers/tutorial-python-postgresql-app.md), můžete ho použít k odeslání potvrzení e-mailu ve funkci [Route::post](https://github.com/Azure-Samples/laravel-tasks/blob/master/routes/web.php#L30-L48)těsně před příkazem return.
+Pokud testujete tento kód v ukázkové aplikaci pro [kurz: spuštění webové aplikace Python (Django) s PostgreSQL v Azure App Service](containers/tutorial-python-postgresql-app.md)můžete použít k odeslání e-mailového potvrzení ve [funkci Route::p OST](https://github.com/Azure-Samples/laravel-tasks/blob/master/routes/web.php#L30-L48)těsně před příkazem Return.
 
 # <a name="ruby"></a>[Ruby](#tab/ruby)
 
-V Ruby můžete snadno odeslat http příspěvek pomocí [JSONClient](https://www.rubydoc.info/gems/httpclient/JSONClient). Příklad:
+V Ruby můžete odeslat příspěvek HTTP snadno pomocí [JSONClient](https://www.rubydoc.info/gems/httpclient/JSONClient). Příklad:
 
 ```ruby
 clnt = JSONClient.new
@@ -308,12 +308,12 @@ body = {
 connection = clnt.post_async(ENV['LOGIC_APP_URL'], body)
 ```
 
-Pokud testujete tento kód v ukázkové aplikaci build [a Ruby a Postgres v Azure App Service na Linuxu](containers/tutorial-ruby-postgres-app.md), můžete ho použít k odeslání potvrzení e-mailu v akci [vytvořit,](https://github.com/Azure-Samples/rubyrails-tasks/blob/master/app/controllers/tasks_controller.rb#L26-L38) [když @task.save uspěje](https://github.com/Azure-Samples/rubyrails-tasks/blob/master/app/controllers/tasks_controller.rb#L30).
+Pokud testujete tento kód v ukázkové aplikaci pro [Vytvoření aplikace Ruby a Postgres v Azure App Service v systému Linux](containers/tutorial-ruby-postgres-app.md), můžete ji použít k odeslání e-mailového potvrzení v akci [vytvořit](https://github.com/Azure-Samples/rubyrails-tasks/blob/master/app/controllers/tasks_controller.rb#L26-L38) , [ @task.save Pokud bude úspěšná](https://github.com/Azure-Samples/rubyrails-tasks/blob/master/app/controllers/tasks_controller.rb#L30).
 
 ---
 
 # <a name="more-resources"></a>Další zdroje informací
 
 [Kurz: Hostování rozhraní RESTful API s CORS v Azure App Service](app-service-web-tutorial-rest-api.md)  
-[Odkaz na požadavek/odpověď HTTP pro logice apps](../connectors/connectors-native-reqres.md)  
-[Úvodní příručka: Vytvoření prvního pracovního postupu pomocí Azure Logic Apps – portál Azure](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+[Referenční dokumentace žádosti a odpovědi HTTP pro Logic Apps](../connectors/connectors-native-reqres.md)  
+[Rychlý Start: vytvoření prvního pracovního postupu pomocí Azure Logic Apps-Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md)

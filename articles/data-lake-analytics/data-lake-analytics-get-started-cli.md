@@ -1,6 +1,6 @@
 ---
-title: Vytvoření & dotazu Azure Data Lake Analytics – Azure CLI
-description: Přečtěte si, jak pomocí rozhraní příkazového řádku Azure vytvořit účet Azure Data Lake Analytics a odeslat úlohu U-SQL.
+title: Vytvoření & dotazů Azure Data Lake Analytics – Azure CLI
+description: Naučte se používat rozhraní příkazového řádku Azure k vytvoření účtu Azure Data Lake Analytics a odeslání úlohy U-SQL.
 ms.service: data-lake-analytics
 author: saveenr
 ms.author: saveenr
@@ -8,22 +8,22 @@ ms.reviewer: jasonwhowell
 ms.topic: conceptual
 ms.date: 06/18/2017
 ms.openlocfilehash: d9fc9bee98391f7272a417324b9c3a540b6adbe6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79474505"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-cli"></a>Začínáme s Azure Data Lake Analytics s využitím rozhraní Azure CLI
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
-Tento článek popisuje, jak používat rozhraní příkazového řádku Azure CLI k vytvoření účtů Azure Data Lake Analytics, odeslání úloh USQL a katalogů. Tato úloha načte soubor hodnot oddělených tabulátory (TSV) a převede ho na soubor hodnot oddělených čárkami (CSV). 
+Tento článek popisuje, jak pomocí rozhraní příkazového řádku Azure CLI vytvářet účty Azure Data Lake Analytics, odesílat úlohy USQL a katalogy. Tato úloha načte soubor hodnot oddělených tabulátory (TSV) a převede ho na soubor hodnot oddělených čárkami (CSV). 
 
 ## <a name="prerequisites"></a>Požadavky
 Než začnete, budete potřebovat tyto položky:
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
-* Tento článek vyžaduje, abyste spouštěli Azure CLI verze 2.0 nebo novější. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli). 
+* Tento článek vyžaduje, abyste spustili Azure CLI verze 2,0 nebo novější. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli). 
 
 
 
@@ -48,7 +48,7 @@ az account set --subscription <subscription id>
 ## <a name="create-data-lake-analytics-account"></a>Vytvoření účtu Data Lake Analytics
 Je nutné, abyste před spuštěním jakékoli úlohy měli účet Data Lake Analytics. Pokud chcete vytvořit účet Data Lake Analytics, je nutné zadat následující položky:
 
-* **Skupina prostředků Azure**. Účet Data Lake Analytics se musí vytvořit v rámci Skupiny prostředků Azure. [Azure Resource Manager](../azure-resource-manager/management/overview.md) umožňuje pracovat s prostředky ve vaší aplikaci jako skupina. Všechny prostředky pro aplikaci můžete nasadit, aktualizovat nebo odstranit v rámci jediné koordinované operace.  
+* **Skupina prostředků Azure**. Účet Data Lake Analytics se musí vytvořit v rámci Skupiny prostředků Azure. [Azure Resource Manager](../azure-resource-manager/management/overview.md) vám umožní pracovat s prostředky v aplikaci jako se skupinou. Všechny prostředky pro aplikaci můžete nasadit, aktualizovat nebo odstranit v rámci jediné koordinované operace.  
 
 Výpis seznamu stávajících skupin prostředků v rámci vašeho předplatného:
 
@@ -62,9 +62,9 @@ Pokud chcete vytvořit novou skupinu prostředků:
 az group create --name "<Resource Group Name>" --location "<Azure Location>"
 ```
 
-* **Název účtu Data Lake Analytics**. Každý účtu Data Lake Analytics má název.
+* **Data Lake Analytics název účtu**. Každý účtu Data Lake Analytics má název.
 * **Umístění**. Použijte jedno z datových center Azure, které podporuje Data Lake Analytics.
-* **Výchozí účet Data Lake Store**: Každý účet Data Lake Analytics má výchozí účet Data Lake Store.
+* **Výchozí účet Data Lake Store**: každý Data Lake Analytics účet má výchozí data Lake Store účet.
 
 Zobrazení seznamu stávajícího účtu Data Lake Store:
 
@@ -96,7 +96,7 @@ V tomto kurzu zpracujete několik protokolů hledání.  Protokol hledání se d
 
 Azure Portal poskytuje uživatelské rozhraní pro kopírování některých ukázkových datových souborů (včetně souboru protokolu hledání) do výchozího účtu Data Lake Store. Pokud chcete nahrát data do výchozího účtu Data Lake Store, informace najdete v části [Příprava zdrojových dat](data-lake-analytics-get-started-portal.md).
 
-Chcete-li nahrávat soubory pomocí příkazového příkazu Azure CLI, použijte následující příkazy:
+Pokud chcete nahrávat soubory pomocí Azure CLI, použijte následující příkazy:
 
 ```azurecli
 az dls fs upload --account "<Data Lake Store Account Name>" --source-path "<Source File Path>" --destination-path "<Destination File Path>"
@@ -129,7 +129,7 @@ Tento skript U-SQL přečte zdrojový datový soubor pomocí **Extractors.Tsv()*
 
 Pokud zdrojový soubor nekopírujete do jiného umístění, tyto dvě cesty neupravujte.  Data Lake Analytics vytvoří výstupní složku, pokud neexistuje.
 
-U souborů uložených ve výchozích účtech Data Lake Store je jednodušší použít relativní cesty. Můžete také použít absolutní cesty.  Například:
+U souborů uložených ve výchozích účtech Data Lake Store je jednodušší použít relativní cesty. Můžete také použít absolutní cesty.  Příklad:
 
 ```
 adl://<Data LakeStorageAccountName>.azuredatalakestore.net:443/Samples/Data/SearchLog.tsv
@@ -154,7 +154,7 @@ Při odeslání úlohy použijte následující syntaxi.
 az dla job submit --account "<Data Lake Analytics Account Name>" --job-name "<Job Name>" --script "<Script Path and Name>"
 ```
 
-Například:
+Příklad:
 
 ```azurecli
 az dla job submit --account "myadlaaccount" --job-name "myadlajob" --script @"C:\DLA\myscript.txt"
@@ -184,7 +184,7 @@ az dls fs preview --account "<Data Lake Store Account Name>" --path "/Output/Sea
 az dls fs download --account "<Data Lake Store Account Name>" --source-path "/Output/SearchLog-from-Data-Lake.csv" --destination-path "<Destination Path and File Name>"
 ```
 
-Například:
+Příklad:
 
 ```azurecli
 az dls fs download --account "myadlsaccount" --source-path "/Output/SearchLog-from-Data-Lake.csv" --destination-path "C:\DLA\myfile.csv"
@@ -192,6 +192,6 @@ az dls fs download --account "myadlsaccount" --source-path "/Output/SearchLog-fr
 
 ## <a name="next-steps"></a>Další kroky
 
-* Referenční dokument datového nastavení příkazu KOT Analytics najdete v tématu [Analýza datových jezer](/cli/azure/dla).
-* Referenční dokument datového úložiště datových úložišti Dat Store Azure najdete v [tématu Úložiště datových jezer](/cli/azure/dls).
+* Referenční dokument Data Lake Analytics Azure CLI najdete v článku [Data Lake Analytics](/cli/azure/dla).
+* Referenční dokument Data Lake Store Azure CLI najdete v článku [Data Lake Store](/cli/azure/dls).
 * Pokud chcete zobrazit komplexnější dotaz, přejděte k tématu [Analýza webových protokolů pomocí Azure Data Lake Analytics](data-lake-analytics-analyze-weblogs.md).

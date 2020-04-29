@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Hostování statického webu v úložišti objektů Blob – Azure Storage'
-description: Zjistěte, jak nakonfigurovat účet úložiště pro statický web hosting a nasadit statický web do Azure Storage.
+title: 'Kurz: hostování statického webu v úložišti objektů blob – Azure Storage'
+description: Naučte se konfigurovat účet úložiště pro hostování statických webů a nasadit statický web pro Azure Storage.
 author: normesta
 ms.service: storage
 ms.subservice: blobs
@@ -9,22 +9,22 @@ ms.date: 1/22/2020
 ms.author: normesta
 ms.reviewer: dineshm
 ms.openlocfilehash: 03850315a05f569d2c6ba9405b6ec38bb6b1305d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78330391"
 ---
 <!---Customer intent: I want to host files for a static website in Blob storage and access the website from an Azure endpoint.--->
 
-# <a name="tutorial-host-a-static-website-on-blob-storage"></a>Kurz: Hostování statického webu v úložišti objektů Blob
+# <a name="tutorial-host-a-static-website-on-blob-storage"></a>Kurz: hostování statického webu na Blob Storage
 
-V tomto kurzu se dozvíte, jak vytvořit a nasadit statický web do Služby Azure Storage. Po dokončení budete mít statický web, ke kterému budou mít uživatelé přístup veřejně. 
+V tomto kurzu se dozvíte, jak vytvořit a nasadit statický web pro Azure Storage. Až budete hotovi, budete mít statický web, ke kterému uživatelé budou mít přístup veřejně. 
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Konfigurace statického hostingu webových stránek
+> * Konfigurace hostování statického webu
 > * Nasazení webu Hello World
 
 ## <a name="prerequisites"></a>Požadavky
@@ -32,74 +32,74 @@ V tomto kurzu se naučíte:
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
 > [!NOTE] 
-> Ujistěte se, že vytvořit účet úložiště pro obecné účely v2 Standard . Statické weby nejsou k dispozici v žádném jiném typu účtu úložiště.
+> Ujistěte se, že jste vytvořili účet úložiště úrovně Standard pro obecné účely v2. Statické weby nejsou k dispozici v žádném jiném typu účtu úložiště.
 
-Tento kurz používá [Visual Studio Code](https://code.visualstudio.com/download), bezplatný nástroj pro programátory, k vytvoření statického webu a jeho nasazení do účtu Azure Storage.
+V tomto kurzu se používá [Visual Studio Code](https://code.visualstudio.com/download)bezplatný nástroj pro programátory k sestavení statického webu a jeho nasazení na účet Azure Storage.
 
-Po instalaci kódu Visual Studia nainstalujte rozšíření Azure Storage preview. Toto rozšíření integruje funkce správy úložiště Azure s Visual Studio Code. Rozšíření použijete k nasazení statického webu do Azure Storage. Instalace rozšíření:
+Po instalaci Visual Studio Code nainstalujte rozšíření Azure Storage Preview. Toto rozšíření integruje Azure Storage funkce správy s Visual Studio Code. Pomocí tohoto rozšíření nasadíte svůj statický web na Azure Storage. Instalace rozšíření:
 
 1. Spusťte editor Visual Studio Code.
-2. Na panelu nástrojů klepněte na **položku Rozšíření**. Vyhledejte *Azure Storage*a vyberte rozšíření Úložiště **Azure** ze seznamu. Potom kliknutím na tlačítko **Instalovat** nainstalujte rozšíření.
+2. Na panelu nástrojů klikněte na tlačítko **rozšíření**. Vyhledejte *Azure Storage*a v seznamu vyberte rozšíření **Azure Storage** . Pak klikněte na tlačítko **nainstalovat** a nainstalujte rozšíření.
 
-    ![Instalace rozšíření úložiště Azure v kódu VS](media/storage-blob-static-website-host/install-extension-vs-code.png)
+    ![Instalace rozšíření Azure Storage v VS Code](media/storage-blob-static-website-host/install-extension-vs-code.png)
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Chcete-li začít, přihlaste se na [portál Azure.](https://portal.azure.com/)
+Začněte tím, že se přihlásíte k [Azure Portal](https://portal.azure.com/) .
 
-## <a name="configure-static-website-hosting"></a>Konfigurace statického hostingu webových stránek
+## <a name="configure-static-website-hosting"></a>Konfigurace hostování statického webu
 
-Prvním krokem je konfigurace účtu úložiště pro hostování statického webu na webu Azure Portal. Když nakonfigurujete svůj účet pro statický hosting webů, Azure Storage automaticky vytvoří kontejner s názvem *$web*. Kontejner *$web* bude obsahovat soubory pro statický web. 
+Prvním krokem je konfigurace účtu úložiště pro hostování statického webu v Azure Portal. Když nakonfigurujete účet pro hostování statického webu, Azure Storage automaticky vytvoří kontejner s názvem *$Web*. Kontejner *$Web* bude obsahovat soubory pro váš statický Web. 
 
-1. Otevřete [portál Azure](https://portal.azure.com/) ve webovém prohlížeči. 
+1. Otevřete [Azure Portal](https://portal.azure.com/) ve webovém prohlížeči. 
 1. Vyhledejte svůj účet úložiště a zobrazte přehled účtu.
-1. Vyberte **Statický web,** chcete-li zobrazit konfigurační stránku pro statické weby.
-1. Výběrem **možnosti Povoleno** povolíte statický hosting webu pro účet úložiště.
-1. V poli **Název dokumentu Rejstříku** zadejte výchozí stránku indexu *index.html*. Výchozí stránka indexu se zobrazí, když uživatel přejde do kořenového adresáře statického webu.  
-1. V poli **Cesta dokumentu Chyba** zadejte výchozí chybovou stránku *404.html*. Výchozí chybová stránka se zobrazí, když se uživatel pokusí přejít na stránku, která na statickém webu neexistuje.
-1. Klikněte na **Uložit**. Portál Azure teď zobrazuje koncový bod statického webu. 
+1. Vyberte možnost **statický web** pro zobrazení konfigurační stránky pro statické weby.
+1. Vyberte **povoleno** , pokud chcete povolit statické hostování webů pro účet úložiště.
+1. V poli **název dokumentu indexu** zadejte výchozí indexovou stránku *index. html*. Výchozí stránka indexu se zobrazí, když uživatel přejde do kořenového adresáře vašeho statického webu.  
+1. V poli **cesta k chybovému dokumentu** zadejte výchozí chybovou stránku *404. html*. Výchozí chybová stránka se zobrazí, když se uživatel pokusí přejít na stránku, která na vašem statickém webu neexistuje.
+1. Klikněte na **Uložit**. Azure Portal teď zobrazuje váš koncový bod statického webu. 
 
-    ![Povolení statického hostování webových stránek pro účet úložiště](media/storage-blob-static-website-host/enable-static-website-hosting.png)
+    ![Povolení hostování statických webů pro účet úložiště](media/storage-blob-static-website-host/enable-static-website-hosting.png)
 
 ## <a name="deploy-a-hello-world-website"></a>Nasazení webu Hello World
 
-Dále vytvořte webovou stránku Hello World s visual studio kód a nasadit ji na statické webové stránky hostované ve vašem účtu Azure Storage.
+Dále vytvořte webovou stránku Hello World s Visual Studio Code a nasaďte ji na statický web hostovaný ve vašem účtu Azure Storage.
 
-1. Vytvořte prázdnou složku s názvem *mywebsite* v místním systému souborů. 
-1. Spusťte kód Visual Studia a otevřete složku, kterou jste právě vytvořili z panelu **Průzkumníka.**
+1. V místním systému souborů vytvořte prázdnou složku s názvem *mywebsite* . 
+1. Spusťte Visual Studio Code a otevřete složku, kterou jste právě vytvořili, z panelu **Průzkumník** .
 
-    ![Otevřít složku v kódu Visual Studia](media/storage-blob-static-website-host/open-folder-vs-code.png)
+    ![Otevřít složku v Visual Studio Code](media/storage-blob-static-website-host/open-folder-vs-code.png)
 
-1. Vytvořte výchozí indexový soubor ve složce *mywebsite* a pojmenujte jej *index.html*.
+1. Ve složce *mywebsite* Vytvořte výchozí indexový soubor a pojmenujte ho *index. html*.
 
-    ![Vytvoření výchozího souboru indexu v kódu sady Visual Studio](media/storage-blob-static-website-host/create-index-file-vs-code.png)
+    ![Vytvořte výchozí indexový soubor v Visual Studio Code](media/storage-blob-static-website-host/create-index-file-vs-code.png)
 
-1. Otevřete *soubor index.html* v editoru, vložte do souboru následující text a uložte jej:
+1. V editoru otevřete soubor *index. html* , do souboru vložte následující text a uložte ho:
 
     ```
     <h1>Hello World!</h1>
     ```
 
-1. Vytvořte výchozí soubor chyb a pojmenujte jej *404.html*.
-1. Otevřete v editoru *soubor 404.html,* vložte do souboru následující text a uložte jej:
+1. Vytvořte výchozí chybový soubor a pojmenujte ho *404. html*.
+1. V editoru otevřete soubor *404. html* a vložte do něj následující text a uložte ho:
 
     ```
     <h1>404</h1>
     ```
 
-1. Klikněte pravým tlačítkem myši pod složku *myweb* v panelu **Průzkumník** a vyberte **nasadit na statický web...** a nasadit svůj web. Budete vyzváni k přihlášení do Azure k načtení seznamu předplatných.
+1. Klikněte pravým tlačítkem na složku *mywebsite* na panelu **Průzkumníka** a vyberte **nasadit na statický Web...** a nasaďte svůj web. Zobrazí se výzva, abyste se přihlásili k Azure a načetli seznam předplatných.
 
-1. Vyberte předplatné obsahující účet úložiště, pro který jste povolili statický web hosting. Dále vyberte účet úložiště po zobrazení výzvy.
+1. Vyberte předplatné obsahující účet úložiště, pro který jste povolili hostování statických webů. Potom po zobrazení výzvy vyberte účet úložiště.
 
-Visual Studio Code teď nahraje vaše soubory do koncového bodu webu a zobrazí stavový řádek úspěchu. Spusťte web a zobrazte ho v Azure.
+Visual Studio Code nyní nahrajte soubory do vašeho webového koncového bodu a zobrazí se stavový řádek úspěch. Otevřete web a zobrazte ho v Azure.
 
-Úspěšně jste dokončili kurz a nasadili statický web do Azure.
+Úspěšně jste dokončili kurz a nasadili jste statický web do Azure.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste se naučili, jak nakonfigurovat účet úložiště Azure pro statické hostování webů a jak vytvořit a nasadit statický web do koncového bodu Azure.
+V tomto kurzu jste zjistili, jak nakonfigurovat účet Azure Storage pro hostování statických webů a jak vytvořit a nasadit statický web do koncového bodu Azure.
 
-Dále se dozvíte, jak nakonfigurovat vlastní doménu pomocí statického webu.
+V dalším kroku se dozvíte, jak nakonfigurovat vlastní doménu s vaším statickým webem.
 
 > [!div class="nextstepaction"]
-> [Mapování vlastní domény na koncový bod úložiště objektů blob Azure](storage-custom-domain-name.md)
+> [Mapování vlastní domény na koncový bod Azure Blob Storage](storage-custom-domain-name.md)

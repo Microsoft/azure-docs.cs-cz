@@ -1,6 +1,6 @@
 ---
 title: Doporučení k zabezpečení služby Azure Key Vault
-description: Doporučení zabezpečení pro Azure Key Vault. Provádění těchto pokynů vám pomůže splnit vaše bezpečnostní povinnosti, jak je popsáno v našem modelu sdílené odpovědnosti
+description: Doporučení zabezpečení pro Azure Key Vault. Implementace těchto pokynů vám pomůže splnit vaše povinnosti zabezpečení, jak je popsáno v našem modelu sdílení zodpovědnosti.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -11,47 +11,47 @@ ms.date: 09/30/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
 ms.openlocfilehash: 0da1a3019124f62aba6a959ce9104c85bd85d3fc
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81616487"
 ---
 # <a name="security-recommendations-for-azure-key-vault"></a>Doporučení k zabezpečení služby Azure Key Vault
 
-Tento článek obsahuje doporučení zabezpečení pro Azure Key Vault. Implementace těchto doporučení vám pomůže splnit vaše bezpečnostní povinnosti, jak je popsáno v našem modelu sdílené odpovědnosti. Další informace o tom, co společnost Microsoft dělá pro plnění povinností poskytovatele služeb, našlápne [na sdílené odpovědnosti za cloud computing](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91).
+Tento článek obsahuje doporučení zabezpečení pro Azure Key Vault. Implementace těchto doporučení vám pomůže splnit vaše povinnosti zabezpečení, jak je popsáno v našem sdíleném modelu zodpovědnosti. Další informace o tom, co společnost Microsoft splní zodpovědností poskytovatele služeb, najdete v článku [sdílené odpovědnosti pro cloud computing](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91).
 
-Některá doporučení zahrnutá v tomto článku můžete automaticky sledovat pomocí Azure Security Center. Azure Security Center je první obranná linie ochrany vašich prostředků v Azure. Pravidelně analyzuje stav zabezpečení prostředků Azure k identifikaci potenciálních chyb zabezpečení. Poté poskytuje doporučení, jak je řešit.
+Některá doporučení obsažená v tomto článku můžete automaticky monitorovat pomocí Azure Security Center. Azure Security Center je první linií obrany při ochraně vašich prostředků v Azure. Pravidelně analyzuje stav zabezpečení vašich prostředků Azure, aby identifikovala potenciální ohrožení zabezpečení. Pak vám poskytne doporučení, jak je řešit.
 
-- Další informace o doporučeních Azure Security Center najdete [v tématu Doporučení zabezpečení v Azure Security Center](../../security-center/security-center-recommendations.md).
-- Informace o Azure Security Center najdete v tématu [Co je Azure Security Center?](../../security-center/security-center-intro.md)
+- Další informace o Azure Security Center doporučeních najdete v tématu [doporučení zabezpečení v Azure Security Center](../../security-center/security-center-recommendations.md).
+- Informace o Azure Security Center najdete v [Azure Security Center?](../../security-center/security-center-intro.md)
 
 ## <a name="data-protection"></a>Ochrana dat
 
 | Doporučení | Komentáře | Security Center |
 |-|----|--|
-|Povolit obnovitelné odstranění | [Obnovitelné odstranění](overview-soft-delete.md)) umožňuje obnovit odstraněné úschovny a objekty úschovny |  - |
-| Omezení přístupu k datům úschovny  | Postupujte podle zásady nejnižších oprávnění a omezení toho, kteří členové vaší organizace mají přístup k datům trezoru |  - |
+|Povolit obnovitelné odstranění | [Obnovitelné odstranění](overview-soft-delete.md)) umožňuje obnovit odstraněné trezory a objekty trezoru. |  - |
+| Omezení přístupu k datům trezoru  | Sledujte princip nejnižších oprávnění a omezte, kteří členové vaší organizace mají přístup k datům trezoru. |  - |
 
 ## <a name="identity-and-access-management"></a>Správa identit a přístupu
 
 | Doporučení | Komentáře | Security Center |
 |-|----|--|
-| Omezení počtu uživatelů s přístupem přispěvatele | Pokud má uživatel oprávnění přispěvatele k rovině správy trezoru klíčů, může si udělit přístup k rovině dat nastavením zásad přístupu trezoru klíčů. Měli byste přísně řídit, kdo má přístup k roli přispěvatele k vašim trezorům klíčů. Zajistěte, aby k vašim trezorům měli přístup a spravovali je pouze ti, kteří potřebují přístup k oprávněným osobám. Můžete si [přečíst Zabezpečený přístup k trezoru klíčů](secure-your-key-vault.md)) | - |
+| Omezte počet uživatelů s přístupem přispěvatele. | Pokud má uživatel oprávnění přispěvatele k rovině správy trezoru klíčů, může uživatel sami udělit přístup k rovině dat nastavením zásady přístupu Key Vault. Měli byste přesně řídit, kdo má roli přispěvatele přístup k vašim trezorům klíčů. Zajistěte, aby k trezorům mohli přistupovat a spravovat jenom uživatelé s potřebou přístupu oprávněným osobám. Můžete číst [zabezpečený přístup k trezoru klíčů](secure-your-key-vault.md).) | - |
 
 ## <a name="monitoring"></a>Monitorování
 
 | Doporučení | Komentáře | Security Center |
 |-|----|--|
- Měly by být povolené diagnostické protokoly v trezoru klíčů | Povolte protokoly a uchovávejte je až jeden rok. To umožňuje znovu vytvořit stopy aktivit pro účely vyšetřování, když dojde k incidentu zabezpečení nebo dojde k ohrožení sítě. | [Ano](../../security-center/security-center-identity-access.md) |
-| Omezení přístupu k protokolům trezoru azure key vault | [Protokoly trezoru klíčů](logging.md)) uložení informací o činnostech prováděných v trezoru, jako je vytvoření nebo odstranění trezorů, klíčů, tajných kódů a může být použito během vyšetřování |  - |
+ Měly by být povolené diagnostické protokoly v trezoru klíčů | Povolte protokoly a zachovejte je po celý rok. To umožňuje znovu vytvořit stopy aktivity pro účely šetření, pokud dojde k bezpečnostnímu incidentu nebo dojde k ohrožení zabezpečení vaší sítě. | [Ano](../../security-center/security-center-identity-access.md) |
+| Omezit, kdo má přístup k protokolům trezoru klíčů Azure | [Protokoly Key Vault](logging.md)) Ukládejte si informace o aktivitách provedených v trezoru, jako je vytváření nebo odstraňování trezorů, klíčů, tajných kódů a jejich použití při vyšetřování. |  - |
 
 ## <a name="networking"></a>Sítě
 
 | Doporučení | Komentáře | Security Center |
 |-|----|--|
-|Omezit expozici sítě | Přístup k síti by měl být omezen na virtuální sítě používané řešeními, která vyžadují přístup k trezoru. Kontrola informací o [koncových bodech služby Virtuální síť pro azure key vault](overview-vnet-service-endpoints.md)) | - |
+|Omezit vystavení sítě | Přístup k síti by měl být omezený na virtuální sítě používané řešeními, které vyžadují přístup k trezoru. Zkontrolujte informace o [koncových bodech služby virtuální sítě pro Azure Key Vault](overview-vnet-service-endpoints.md)). | - |
 
 ## <a name="next-steps"></a>Další kroky
 
-Obraťte se na svého poskytovatele aplikace a zjistěte, zda existují další požadavky na zabezpečení. Další informace o vývoji zabezpečených aplikací naleznete v [tématu Bezpečná vývojová dokumentace](../../security/fundamentals/abstract-develop-secure-apps.md).
+Obraťte se na poskytovatele aplikace a zjistěte, zda jsou k dispozici další požadavky na zabezpečení. Další informace o vývoji zabezpečených aplikací najdete v [dokumentaci k zabezpečení vývoje](../../security/fundamentals/abstract-develop-secure-apps.md).

@@ -1,6 +1,6 @@
 ---
-title: Omezení přístupu k službě Azure App Service
-description: Zjistěte, jak zabezpečit aplikaci ve službě Azure App Service zadáním omezení přístupu.
+title: Omezení přístupu Azure App Service
+description: Přečtěte si, jak zabezpečit aplikaci v Azure App Service zadáním omezení přístupu.
 author: ccompy
 ms.assetid: 3be1f4bd-8a81-4565-8a56-528c037b24bd
 ms.topic: article
@@ -8,106 +8,106 @@ ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 298555da2056bc4c16d4d7b16615604f9798b91b
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81639274"
 ---
-# <a name="azure-app-service-access-restrictions"></a>Omezení přístupu k službě Azure App Service
+# <a name="azure-app-service-access-restrictions"></a>Omezení přístupu Azure App Service
 
-Omezení přístupu umožňují definovat seznam povolených a povolaných položek seřazené s prioritou, který řídí přístup k síti k vaší aplikaci. Seznam může obsahovat IP adresy nebo podsítě virtuální sítě Azure. Pokud existuje jedna nebo více položek, je pak implicitní "odepřít vše", který existuje na konci seznamu.
+Omezení přístupu umožňují definovat prioritní seřazený seznam povolených a zakázaných aplikací, který řídí přístup k síti pro vaši aplikaci. Seznam může zahrnovat IP adresy nebo podsítě Azure Virtual Network. Pokud existuje jedna nebo více položek, je na konci seznamu implicitní implicitní "Odepřít vše".
 
-Možnost omezení přístupu funguje se všemi pracovními zatíženími hostované službou App Service, včetně; webové aplikace, aplikace API, linuxové aplikace, aplikace pro kontejnery linuxu a funkce.
+Schopnost omezení přístupu funguje se všemi App Servicemi hostovanými pracovními zatíženími, včetně; webové aplikace, aplikace API, aplikace pro Linux, aplikace pro kontejner pro Linux a funkce.
 
-Když je žádost podána do vaší aplikace, adresa FROM se vyhodnotí podle pravidel IP adresy v seznamu omezení přístupu. Pokud je adresa FROM v podsíti, která je nakonfigurována s koncovými body služby na Microsoft.Web, bude zdrojová podsíť porovnána s pravidly virtuální sítě v seznamu omezení přístupu. Pokud není přístup k adrese povolen na základě pravidel v seznamu, služba odpoví stavovým kódem [HTTP 403.](https://en.wikipedia.org/wiki/HTTP_403)
+Po podání žádosti do vaší aplikace se adresa z vyhodnotí na základě pravidel IP adres v seznamu omezení přístupu. Pokud je adresa v podsíti, která je nakonfigurovaná s koncovými body služby na Microsoft. Web, pak se zdrojová podsíť porovná s pravidly virtuální sítě v seznamu omezení přístupu. Pokud adresa nemá povolený přístup na základě pravidel v seznamu, služba odpoví pomocí kódu stavu [HTTP 403](https://en.wikipedia.org/wiki/HTTP_403) .
 
-Možnost omezení přístupu je implementována v rolích front-endslužby služby App Service, které jsou před pracovními hostiteli, kde je váš kód spuštěn. Omezení přístupu jsou proto efektivně sítě ACS.
+Funkce omezení přístupu je implementovaná v App Service rolích front-endu, které jsou v nadřazeném hostiteli hostitele, kde se váš kód spouští. Proto jsou omezení přístupu efektivně v síti seznamy ACL.
 
-Možnost omezit přístup k webové aplikaci z virtuální sítě Azure (VNet) se nazývá [koncové body služby][serviceendpoints]. Koncové body služby umožňují omezit přístup ke službě s více klienty z vybraných podsítí. Musí být povolena na straně sítě i na službě, se kterou je povolena. Nefunguje omezit provoz na aplikace, které jsou hostované v prostředí služby App Service. Pokud se unavujete v prostředí služby App Service, můžete řídit přístup k aplikaci pomocí pravidel IP adresy.
+Možnost omezit přístup k vaší webové aplikaci z Azure Virtual Network (VNet) se nazývá [koncové body služby][serviceendpoints]. Koncové body služby umožňují omezit přístup ke službě pro více tenantů z vybraných podsítí. Musí být povolená jak na straně sítě, tak i na službě, se kterou se povoluje. Nefunguje tak, aby se omezil provoz na aplikace, které jsou hostované v App Service Environment. Pokud jste v App Service Environment, můžete řídit přístup k aplikaci pomocí pravidel IP adres.
 
 ![tok omezení přístupu](media/app-service-ip-restrictions/access-restrictions-flow.png)
 
 ## <a name="adding-and-editing-access-restriction-rules-in-the-portal"></a>Přidání a úprava pravidel omezení přístupu na portálu ##
 
-Chcete-li do aplikace přidat pravidlo omezení přístupu, otevřete pomocí nabídky**omezení přístupu** k **síti**>a klikněte na Konfigurovat **omezení přístupu.**
+Pokud chcete do aplikace přidat pravidlo omezení přístupu, otevřete pomocí nabídky**omezení přístupu k** **síti**>a klikněte na **konfigurovat omezení přístupu** .
 
-![Možnosti sítě služby App Service](media/app-service-ip-restrictions/access-restrictions.png)  
+![Možnosti App Service sítě](media/app-service-ip-restrictions/access-restrictions.png)  
 
-V uzdu omezení přístupu můžete zkontrolovat seznam pravidel omezení přístupu definovaných pro vaši aplikaci.
+V uživatelském rozhraní omezení přístupu si můžete prohlédnout seznam pravidel omezení přístupu definovaných pro vaši aplikaci.
 
-![omezení přístupu k seznamu](media/app-service-ip-restrictions/access-restrictions-browse.png)
+![Vypsat omezení přístupu](media/app-service-ip-restrictions/access-restrictions-browse.png)
 
-V seznamu se zobrazí všechna aktuální omezení, která jsou ve vaší aplikaci. Pokud máte omezení virtuální sítě pro vaši aplikaci, tabulka se zobrazí, pokud jsou pro Microsoft.Web povoleny koncové body služby. Pokud vaše aplikace nedefinuje žádná definovaná omezení, bude přístupná odkudkoli.  
+V seznamu se zobrazí všechna aktuální omezení, která jsou ve vaší aplikaci. Pokud máte v aplikaci omezení virtuální sítě, tabulka zobrazí, jestli jsou pro Microsoft. Web povolené koncové body služby. Pokud vaše aplikace nemá žádná definovaná omezení, bude vaše aplikace přístupná odkudkoli.  
 
-## <a name="adding-ip-address-rules"></a>Přidání pravidel IP adresy
+## <a name="adding-ip-address-rules"></a>Přidávání pravidel IP adres
 
-Kliknutím na **tlačítko [+] Přidat pravidlo** můžete přidat nové pravidlo omezení přístupu. Jakmile přidáte pravidlo, bude účinné okamžitě. Pravidla jsou vynucena v pořadí podle priority počínaje nejnižším číslem a zvýšením. Existuje implicitní odepřít vše, co je v platnosti po přidání i jedno pravidlo.
+Kliknutím na **[+] přidat pravidlo** můžete přidat nové pravidlo omezení přístupu. Jakmile přidáte pravidlo, stane se hned platným. Pravidla se vynutila v pořadí podle priority počínaje nejnižším číslem a se zaměří. Je-li k dispozici implicitní pravidlo odepření, je nutné, když přidáte dokonce jedno pravidlo.
 
-Při vytváření pravidla je nutné vybrat povolit/odepřít a také typ pravidla. Jste také povinni zadat hodnotu priority a to, k čemu omezujete přístup.  Volitelně můžete k pravidlu přidat název a popis.  
+Při vytváření pravidla musíte vybrat možnost povolit/odepřít a také typ pravidla. Je také nutné zadat hodnotu priority a k čemu se omezuje přístup.  Volitelně můžete přidat název a popis pravidla.  
 
-![přidání pravidla omezení přístupu k protokolu IP](media/app-service-ip-restrictions/access-restrictions-ip-add.png)
+![Přidat pravidlo omezení přístupu k IP adrese](media/app-service-ip-restrictions/access-restrictions-ip-add.png)
 
-Chcete-li nastavit pravidlo založené na adrese IP, vyberte typ protokolu IPv4 nebo IPv6. Zápis IP adresy musí být zadán v zápisu CIDR pro adresy IPv4 i IPv6. Chcete-li zadat přesnou adresu, můžete použít něco jako 1.2.3.4/32, kde první čtyři oktety představují vaši IP adresu a /32 je maska. Zápis CIDR IPv4 pro všechny adresy je 0.0.0.0/0. Chcete-li se dozvědět více o zápisu CIDR, můžete číst [Classless Inter-Domain Routing](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing). 
+Pokud chcete nastavit pravidlo na základě IP adresy, vyberte typ protokolu IPv4 nebo IPv6. Zápis IP adres musí být zadán v zápisu CIDR pro adresy IPv4 i IPv6. Pokud chcete zadat konkrétní adresu, můžete použít něco jako 1.2.3.4/32, kde první čtyři oktety reprezentují vaši IP adresu a/32 je maska. Zápis IPv4 protokolu IPv4 pro všechny adresy je 0.0.0.0/0. Pokud se chcete dozvědět víc o zápisu CIDR, můžete číst [směrování mezi doménami bez třídy](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing). 
 
 ## <a name="service-endpoints"></a>Koncové body služby
 
-Koncové body služby umožňují omezit přístup k vybraným podsítím virtuální sítě Azure. Chcete-li omezit přístup k určité podsíti, vytvořte pravidlo omezení s typem virtuální sítě. Můžete vybrat předplatné, virtuální síť a podsíť, se kterými chcete povolit nebo odepřít přístup. Pokud koncové body služby ještě nejsou povoleny s Microsoft.Web pro podsíť, kterou jste vybrali, bude automaticky povolena pro vás, pokud zaškrtnete políčko s žádostí o to, aby to neudělal. Situace, kdy byste ji chtěli povolit v aplikaci, ale ne v podsíti, do značné míry souvisí s tím, pokud máte oprávnění k povolení koncových bodů služby v podsíti nebo ne. Pokud potřebujete získat někoho jiného, kdo povolí koncové body služby v podsíti, můžete zaškrtnout políčko a nechat si aplikaci nakonfigurovat pro koncové body služby v očekávání, že bude povolena později v podsíti. 
+Koncové body služby umožňují omezit přístup k vybraným podsítím virtuální sítě Azure. Chcete-li omezit přístup k určité podsíti, vytvořte pravidlo omezení s typem Virtual Network. Můžete vybrat předplatné, virtuální síť a podsíť, ke kterým chcete povolit nebo odepřít přístup. Pokud koncové body služby již nejsou povoleny s Microsoft. Web pro podsíť, kterou jste vybrali, bude automaticky povolena, pouze pokud jste zaškrtli políčko s výzvou k provedení. Situace, kdy byste ji chtěli povolit v aplikaci, ale ne v podsíti, je z velké části spojená s tím, že máte oprávnění k povolení koncových bodů služby v podsíti, nebo ne. Pokud potřebujete někomu jinému, aby se povolily koncové body služby v podsíti, můžete zaškrtnout políčko a nechat aplikaci nakonfigurovanou pro koncové body služby ve předvídání jejího povolení později v podsíti. 
 
-![přidání pravidla omezení přístupu virtuální sítě](media/app-service-ip-restrictions/access-restrictions-vnet-add.png)
+![Přidat pravidlo omezení přístupu k virtuální síti](media/app-service-ip-restrictions/access-restrictions-vnet-add.png)
 
-Koncové body služby nelze použít k omezení přístupu k aplikacím, které běží v prostředí služby App Service. Když je vaše aplikace v prostředí služby App Service, můžete řídit přístup k aplikaci pomocí pravidel přístupu k IP. 
+Koncové body služby nelze použít k omezení přístupu k aplikacím, které běží v App Service Environment. Když je vaše aplikace v App Service Environment, můžete řídit přístup k aplikaci pomocí pravidel přístupu IP. 
 
-Pomocí koncových bodů služby můžete aplikaci nakonfigurovat pomocí aplikačních bran nebo jiných zařízení WAF. Můžete také nakonfigurovat vícevrstvé aplikace se zabezpečenými back-endy. Další podrobnosti o některých možnostech najdete v části Síťové funkce a Integrace [služby App Service](networking-features.md) a [Application Gateway s koncovými body služby](networking/app-gateway-with-service-endpoints.md).
+Pomocí koncových bodů služby můžete nakonfigurovat aplikaci pomocí aplikačních bran nebo jiných zařízení WAF. Vícevrstvé aplikace můžete konfigurovat také pomocí zabezpečených back-endu. Další informace o některých možnostech najdete v článku [funkce sítě a App Service](networking-features.md) a [Application Gateway integraci s koncovými body služby](networking/app-gateway-with-service-endpoints.md).
 
 ## <a name="managing-access-restriction-rules"></a>Správa pravidel omezení přístupu
 
-Kliknutím na libovolný řádek můžete upravit existující pravidlo omezení přístupu. Úpravy jsou účinné okamžitě, včetně změn v pořadí priorit.
+Můžete kliknout na libovolný řádek a upravit existující pravidlo omezení přístupu. Úpravy jsou okamžitě platné, včetně změn v pořadí podle priority.
 
-![úprava pravidla omezení přístupu](media/app-service-ip-restrictions/access-restrictions-ip-edit.png)
+![Upravit pravidlo omezení přístupu](media/app-service-ip-restrictions/access-restrictions-ip-edit.png)
 
-Při úpravě pravidla nelze změnit typ mezi pravidlem adresy IP a pravidlem virtuální sítě. 
+Když upravujete pravidlo, nemůžete změnit typ pravidla IP adresy a pravidla Virtual Network. 
 
-![úprava pravidla omezení přístupu](media/app-service-ip-restrictions/access-restrictions-vnet-edit.png)
+![Upravit pravidlo omezení přístupu](media/app-service-ip-restrictions/access-restrictions-vnet-edit.png)
 
-Pokud chcete pravidlo odstranit, **klikněte** na ... na pravidlo a potom klikněte na **Odebrat**.
+Pokud chcete pravidlo odstranit, klikněte na **...** v pravidle a pak klikněte na **Odebrat**.
 
-![odstranit pravidlo omezení přístupu](media/app-service-ip-restrictions/access-restrictions-delete.png)
+![Odstranit pravidlo omezení přístupu](media/app-service-ip-restrictions/access-restrictions-delete.png)
 
 ## <a name="blocking-a-single-ip-address"></a>Blokování jedné IP adresy ##
 
-Při přidávání prvního pravidla omezení IP služba přidá explicitní **pravidlo Odepřít vše** s prioritou 2147483647. V praxi bude explicitně **pravidlo Odepřít vše** naposledy spuštěno a zablokuje přístup k libovolné adrese IP, která není explicitně povolena pomocí pravidla **Povolit.**
+Při přidání prvního pravidla omezení protokolu IP bude služba přidat explicitní pravidlo **Odepřít všechna** pravidla s prioritou 2147483647. V praxi se explicitně spustí pravidlo **Odepřít všechna** pravidla a zablokuje přístup k jakékoli IP adrese, která není explicitně povolená pomocí pravidla **Povolit** .
 
-Pro scénář, kde uživatelé chtějí explicitně blokovat jednu ADRESU IP nebo blok IP adresy, ale povolit přístup ke všemu ostatnímu, je nutné přidat explicitní pravidlo **Povolit vše.**
+V případě scénáře, kdy uživatelé chtějí explicitně blokovat jednu IP adresu nebo blok IP adres, ale umožňují všem jiným přístupům, je nutné přidat explicitní pravidlo **Allow all** .
 
 ![blokovat jednu IP adresu](media/app-service-ip-restrictions/block-single-address.png)
 
-## <a name="scm-site"></a>SCM stránky 
+## <a name="scm-site"></a>Web SCM 
 
-Kromě toho, že můžete řídit přístup k vaší aplikaci, můžete také omezit přístup k webu scm používanému vaší aplikací. Scm web je koncový bod pro nasazení webu a také konzole Kudu. Můžete samostatně přiřadit omezení přístupu k webu scm z aplikace nebo použít stejnou sadu pro aplikaci i web scm. Když zaškrtnete políčko, abyste měli stejná omezení jako vaše aplikace, je vše prázdné. Pokud odškrtnete políčko, použije se jakékoli nastavení, které jste měli dříve na webu scm. 
+Kromě toho, že je možné řídit přístup k vaší aplikaci, můžete také omezit přístup k webu SCM, který používá vaše aplikace. Web SCM je koncovým bodem nasazení webu a také konzolou Kudu. Můžete samostatně přiřadit omezení přístupu k webu SCM z aplikace nebo použít stejnou sadu pro aplikaci i web SCM. Když zaškrtnete políčko, aby měla stejná omezení jako vaše aplikace, vše je prázdné. Pokud zrušíte jeho zrušení, budou použita všechna nastavení, která jste předtím použili na webu SCM. 
 
-![omezení přístupu k seznamu](media/app-service-ip-restrictions/access-restrictions-scm-browse.png)
+![Vypsat omezení přístupu](media/app-service-ip-restrictions/access-restrictions-scm-browse.png)
 
 ## <a name="programmatic-manipulation-of-access-restriction-rules"></a>Programová manipulace s pravidly omezení přístupu ##
 
-[Azure CLI](https://docs.microsoft.com/cli/azure/webapp/config/access-restriction?view=azure-cli-latest) a [Azure PowerShell](https://docs.microsoft.com/powershell/module/Az.Websites/Add-AzWebAppAccessRestrictionRule?view=azps-3.1.0) má podporu pro úpravy omezení přístupu. Příklad přidání omezení přístupu pomocí azure cli:
+[Azure CLI](https://docs.microsoft.com/cli/azure/webapp/config/access-restriction?view=azure-cli-latest) a [Azure PowerShell](https://docs.microsoft.com/powershell/module/Az.Websites/Add-AzWebAppAccessRestrictionRule?view=azps-3.1.0) podporují úpravy omezení přístupu. Příklad přidání omezení přístupu pomocí Azure CLI:
 
 ```azurecli-interactive
 az webapp config access-restriction add --resource-group ResourceGroup --name AppName \
     --rule-name 'IP example rule' --action Allow --ip-address 122.133.144.0/24 --priority 100
 ```
-Příklad přidání omezení přístupu pomocí Azure PowerShellu:
+Příklad přidání omezení přístupu pomocí Azure PowerShell:
 
 ```azurepowershell-interactive
 Add-AzWebAppAccessRestrictionRule -ResourceGroupName "ResourceGroup" -WebAppName "AppName"
     -Name "Ip example rule" -Priority 100 -Action Allow -IpAddress 122.133.144.0/24
 ```
 
-Hodnoty lze nastavit ručně pomocí operace [Azure REST API](https://docs.microsoft.com/rest/api/azure/) PUT v konfiguraci aplikace ve Správci prostředků nebo pomocí šablony Azure Resource Manager. Jako příklad můžete použít resources.azure.com a upravit blok ipSecurityRestrictions k přidání požadovaného JSON.
+Hodnoty lze také ručně nastavit pomocí operace Put služby [Azure REST API](https://docs.microsoft.com/rest/api/azure/) Put v konfiguraci aplikace v Správce prostředků nebo pomocí šablony Azure Resource Manager. Jako příklad můžete použít resources.azure.com a upravit blok ipSecurityRestrictions pro přidání požadovaného formátu JSON.
 
-Umístění těchto informací ve Správci prostředků je:
+Umístění pro tyto informace v Správce prostředků:
 
-management.azure.com/subscriptions/**ID předplatného**/resourceGroups/**skupiny prostředků**/providers/Microsoft.Web/sites/ název webové**aplikace**/config/web?api-version=2018-02-01
+**ID předplatného**Management.Azure.com/Subscriptions//resourceGroups/**skupiny prostředků**/Providers/Microsoft.Web/Sites/**název webové aplikace**/config/Web? API-Version = 2018-02-01
 
 Syntaxe JSON pro předchozí příklad je:
 ```json
@@ -125,14 +125,14 @@ Syntaxe JSON pro předchozí příklad je:
 }
 ```
 
-## <a name="azure-functions-access-restrictions"></a>Omezení přístupu k funkcím Azure
+## <a name="azure-functions-access-restrictions"></a>Omezení přístupu Azure Functions
 
-Omezení přístupu jsou k dispozici také pro funkční aplikace se stejnými funkcemi jako plány služby App Service. Povolení omezení přístupu zakáže editor kódu portálu pro všechny nepovolené IP adresy.
+Pro aplikace Function App jsou k dispozici také omezení přístupu se stejnými funkcemi jako App Service plány. Povolením omezení přístupu se zakáže Editor kódu portálu pro jakékoli nepovolené IP adresy.
 
 ## <a name="next-steps"></a>Další kroky
-[Omezení přístupu pro funkce Azure](../azure-functions/functions-networking-options.md#inbound-ip-restrictions)
+[Omezení přístupu pro Azure Functions](../azure-functions/functions-networking-options.md#inbound-ip-restrictions)
 
-[Integrace aplikační brány s koncovými body služby](networking/app-gateway-with-service-endpoints.md)
+[Integrace Application Gateway s koncovými body služby](networking/app-gateway-with-service-endpoints.md)
 
 <!--Links-->
 [serviceendpoints]: https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview

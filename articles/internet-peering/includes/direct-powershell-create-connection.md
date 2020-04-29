@@ -9,15 +9,15 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 610bac5c08d7f3aa3c93e273bc6573a08ca1239f
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81680764"
 ---
-Následující příklad ukazuje, jak vytvořit přímý partnerský vztah 10 Gb/s v Seattlu.
+Následující příklad ukazuje, jak vytvořit přímý partnerský vztah 10 GB/s v Seattlu.
 
-Pomocí rutiny prostředí PowerShell **New-AzPeeringDirectConnectionObject** vytvořte objekty DirectConnection, které mají být použity v novém požadavku partnerského vztahu.
+Pomocí rutiny prostředí PowerShell **New-AzPeeringDirectConnectionObject** můžete vytvořit objekty DirectConnection, které se mají použít v novém požadavku partnerského vztahu.
 
 Tento příklad ukazuje, jak vytvořit objekt DirectConnection.
 
@@ -32,9 +32,9 @@ $connection1 = New-AzPeeringDirectConnectionObject `
 ```
 
 > [!NOTE]
-> Hodnota pro <index> **$peeringLocation[]** <index> v předchozím příkladu by měla odpovídat umístění partnerského vztahu podle vašeho výběru.
+> Hodnota parametru <index> **$peeringLocation []** <index> v předchozím příkladu by měla odpovídat umístění partnerského vztahu dle vašeho výběru.
 
-Vytvořte další připojení v případě, že potřebujete redundanci v daném umístění partnerského vztahu.
+Vytvořte další připojení pro případ, že budete potřebovat redundanci v daném umístění partnerského vztahu.
 
 ```powershell
 $connection2 = New-AzPeeringDirectConnectionObject `
@@ -46,7 +46,7 @@ $connection2 = New-AzPeeringDirectConnectionObject `
     -BandwidthInMbps 10000
 ```
 
-Pomocí rutiny prostředí PowerShell **New-AzPeering** vytvořte nový přímý partnerský vztah. Tento příkaz vyžaduje ID prostředku ASN, které lze načíst, jak je uvedeno zde.
+Pomocí rutiny prostředí PowerShell **New-AzPeering** vytvořte nový přímý partnerský vztah. Tento příkaz vyžaduje ID prostředku ASN, které lze načíst, jak je znázorněno zde.
 
 
 ```powershell
@@ -60,7 +60,7 @@ New-AzPeering `
 ```
 &nbsp;
 
-Tento příklad ukazuje odpověď při úspěšném zpracování požadavku.
+Tento příklad ukazuje odpověď při úspěšném zpracování žádosti.
 
 ```powershell
 
@@ -78,4 +78,4 @@ Tento příklad ukazuje odpověď při úspěšném zpracování požadavku.
     Tags                 : {}
 
 ```
-Všimněte si, že místo **{subscriptionId}** v tomto výstupu se zobrazí skutečné ID předplatného.
+Všimněte si, že místo **{SubscriptionId}** v tomto výstupu se zobrazí aktuální ID předplatného.

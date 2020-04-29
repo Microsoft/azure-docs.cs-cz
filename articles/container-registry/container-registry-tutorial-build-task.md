@@ -1,24 +1,24 @@
 ---
-title: Kurz – sestavení image na potvrzení kódu
-description: V tomto kurzu se dozvíte, jak nakonfigurovat úlohu registru kontejneru Azure tak, aby automaticky aktivovala sestavení image kontejneru v cloudu, když potvrdíte zdrojový kód do úložiště Git.
+title: Kurz – sestavení image při potvrzení kódu
+description: V tomto kurzu se naučíte konfigurovat úlohu Azure Container Registry, která automaticky aktivuje sestavení imagí kontejneru v cloudu při potvrzení zdrojového kódu do úložiště Git.
 ms.topic: tutorial
 ms.date: 05/04/2019
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 2f70b829e2202c3d28adcfbbb07338923c43e8a8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78402845"
 ---
-# <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>Kurz: Automatizace image kontejneru se staví v cloudu při potvrzení zdrojového kódu
+# <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>Kurz: automatizace sestavení imagí kontejneru v cloudu při potvrzení zdrojového kódu
 
-Kromě rychlé [úlohy](container-registry-tutorial-quick-task.md)podporuje Úlohy ACR automatické sestavení kontejneru Dockeru v cloudu, když potvrdíte zdrojový kód do úložiště Git. Mezi podporované kontexty Gitu pro úlohy ACR patří veřejná nebo soukromá úložiště GitHub nebo Azure.
+Kromě [Rychlé úlohy](container-registry-tutorial-quick-task.md)ACR úlohy podporují automatické sestavení imagí kontejneru Docker v cloudu, když potvrdíte zdrojový kód do úložiště Git. Podporované kontexty Git pro úlohy ACR zahrnují veřejné nebo soukromé úložiště GitHubu nebo Azure.
 
 > [!NOTE]
-> V současné době acr úkoly nepodporuje potvrzení nebo žádosti o vyžádat aktivační události v úložiště GitHub Enterprise.
+> V současné době ACR úkoly nepodporují potvrzení změn nebo triggery žádostí o přijetí změn v úložištích GitHub Enterprise.
 
-V tomto kurzu úloha ACR vytvoří a odešle jednu bitovou kopii kontejneru zadanou v souboru Dockerfile, když potvrdíte zdrojový kód do úložiště Git. Chcete-li vytvořit [vícekrokovou úlohu,](container-registry-tasks-multi-step.md) která používá soubor YAML k definování kroků k sestavení, nabízení a volitelnému testování více kontejnerů při potvrzení kódu, [přečtěte si informace o spuštění pracovního postupu vícekrokového kontejneru v cloudu při potvrzení zdrojového kódu](container-registry-tutorial-multistep-task.md). Přehled úloh ACR najdete v tématu [Automatizace os a opravy architektury s úlohami ACR](container-registry-tasks-overview.md)
+V tomto kurzu vaše úloha ACR sestaví a nahraje jednu Image kontejneru určenou v souboru Dockerfile při potvrzení zdrojového kódu do úložiště Git. Pokud chcete vytvořit [úlohu s více kroky](container-registry-tasks-multi-step.md) , která používá soubor YAML k definování kroků pro sestavování, nasdílení a volitelně testování více kontejnerů při potvrzení kódu, přečtěte si téma [kurz: spuštění pracovního postupu s více kroky v cloudu při potvrzení zdrojového kódu](container-registry-tutorial-multistep-task.md). Přehled úloh ACR najdete v tématu [Automatizace oprav operačního systému a architektury s úlohami ACR](container-registry-tasks-overview.md) .
 
 V tomto kurzu:
 
@@ -32,7 +32,7 @@ Tento kurz předpokládá, že jste už dokončili kroky z [předchozího kurzu]
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud chcete používat Azure CLI místně, musíte mít Azure CLI verze **2.0.46** nebo novější nainstalované a přihlášené pomocí [přihlášení az][az-login]. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade rozhraní příkazového řádku (CLI), přečtěte si téma [Instalace Azure CLI][azure-cli].
+Pokud chcete rozhraní příkazového řádku Azure používat místně, musíte mít nainstalovanou verzi Azure CLI **2.0.46** nebo novější a přihlášeni pomocí [AZ Login][az-login]. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade rozhraní příkazového řádku (CLI), přečtěte si téma [Instalace Azure CLI][azure-cli].
 
 [!INCLUDE [container-registry-task-tutorial-prereq.md](../../includes/container-registry-task-tutorial-prereq.md)]
 
@@ -40,9 +40,9 @@ Pokud chcete používat Azure CLI místně, musíte mít Azure CLI verze **2.0.4
 
 Dokončili jste kroky potřebné k tomu, abyste službě ACR Tasks povolili číst stav potvrzení a vytvářet webhooky v úložišti. Teď můžete vytvořit úlohu, která aktivuje sestavení image kontejneru při potvrzení do úložiště.
 
-Nejdřív vyplňte tyto proměnné prostředí hodnotami vhodnými pro vaše prostředí. Tento krok není nezbytně nutný, ale usnadní provádění víceřádkových příkazů Azure CLI v tomto kurzu. Pokud tyto proměnné prostředí nenaplníte, je nutné ručně nahradit každou hodnotu všude tam, kde se zobrazí v ukázkových příkazech.
+Nejdřív vyplňte tyto proměnné prostředí hodnotami vhodnými pro vaše prostředí. Tento krok není nezbytně nutný, ale usnadní provádění víceřádkových příkazů Azure CLI v tomto kurzu. Pokud tyto proměnné prostředí neplníte, je nutné ručně nahradit každou hodnotu, pokud se zobrazí v ukázkových příkazech.
 
-[![Spuštění vložení](https://shell.azure.com/images/launchcloudshell.png "Spuštění služby Azure Cloud Shell")](https://shell.azure.com)
+[![Vložit spuštění](https://shell.azure.com/images/launchcloudshell.png "Spuštění služby Azure Cloud Shell")](https://shell.azure.com)
 
 ```console
 ACR_NAME=<registry-name>        # The name of your Azure container registry
@@ -50,7 +50,7 @@ GIT_USER=<github-username>      # Your GitHub user account name
 GIT_PAT=<personal-access-token> # The PAT you generated in the previous section
 ```
 
-Nyní vytvořte úlohu provedením [následujícího příkazu az acr task create:][az-acr-task-create]
+Teď úlohu vytvořte spuštěním následujícího příkazu [AZ ACR Task Create][az-acr-task-create] :
 
 ```azurecli-interactive
 az acr task create \
@@ -65,7 +65,7 @@ az acr task create \
 > [!IMPORTANT]
 > Pokud jste už dříve vytvořili úlohy ve verzi Preview pomocí příkazu `az acr build-task`, tyto úlohy bude potřeba vytvořit znovu pomocí příkazu [az acr task][az-acr-task].
 
-Tato úloha určuje, že kdykoli se do *hlavní* větve úložiště určeného parametrem `--context` potvrdí kód, služba ACR Tasks z kódu v této větvi sestaví image kontejneru. Dockerfile zadaný `--file` z kořenového adresáře úložiště se používá k vytvoření image. Argument `--image` určuje parametrizovanou hodnotu `{{.Run.ID}}` pro část verze značky image a zajišťuje tak, že sestavená image koreluje s konkrétním sestavením a je jedinečným způsobem označená.
+Tato úloha určuje, že kdykoli se do *hlavní* větve úložiště určeného parametrem `--context` potvrdí kód, služba ACR Tasks z kódu v této větvi sestaví image kontejneru. K sestavení image se `--file` používá souboru Dockerfile určený z kořenu úložiště. Argument `--image` určuje parametrizovanou hodnotu `{{.Run.ID}}` pro část verze značky image a zajišťuje tak, že sestavená image koreluje s konkrétním sestavením a je jedinečným způsobem označená.
 
 Výstup úspěšného příkazu [az acr task create][az-acr-task-create] je podobný následujícímu:
 

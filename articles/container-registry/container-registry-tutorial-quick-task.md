@@ -1,17 +1,17 @@
 ---
-title: Kurz – rychlé sestavení image kontejneru
+title: Kurz – rychlé sestavení imagí kontejneru
 description: V tomto kurzu zjistíte, jak sestavit image kontejneru Dockeru v Azure pomocí Azure Container Registry Tasks (ACR Tasks) a pak ji nasadit do služby Azure Container Instances.
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 82b539ba8f275755ee31a00c2127a0dba7c38d9f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78398510"
 ---
-# <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>Kurz: Vytváření a nasazování ibi kontejnerů v cloudu pomocí úloh registru kontejnerů Azure
+# <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>Kurz: sestavování a nasazování imagí kontejneru v cloudu s využitím Azure Container Registrych úloh
 
 **ACR Tasks** je sada funkcí ve službě Azure Container Registry, která poskytuje zjednodušená a efektivní sestavení imagí kontejnerů Dockeru v Azure. V tomto článku se dozvíte, jak používat funkci *rychlé úlohy* služby ACR Tasks.
 
@@ -26,7 +26,7 @@ V tomto kurzu, který je první částí série, se naučíte:
 > * Sestavit image kontejneru v Azure
 > * Nasazení kontejneru do služby Azure Container Instances
 
-V následujících kurzech se naučíte použít ACR Tasks k automatizovanému sestavení imagu kontejneru při potvrzení kódu a aktualizaci základní image. Úlohy ACR mohou také spouštět [vícekrokové úlohy](container-registry-tasks-multi-step.md)pomocí souboru YAML k definování kroků pro sestavení, nabízení a volitelné testování více kontejnerů.
+V následujících kurzech se naučíte použít ACR Tasks k automatizovanému sestavení imagu kontejneru při potvrzení kódu a aktualizaci základní image. ACR úlohy mohou také spouštět [úlohy s více kroky](container-registry-tasks-multi-step.md), pomocí souboru YAML k definování kroků pro sestavení, vložení a volitelně testování více kontejnerů.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -50,7 +50,7 @@ Vytvořte fork tohoto úložiště: https://github.com/Azure-Samples/acr-build-h
 
 Po vytvoření forku úložiště fork naklonujte a zadejte adresář obsahující místní klon.
 
-Naklonujte úložiště `git`na , nahraďte ** \<své\> uživatelské jméno github-s** uživatelským jménem GitHub:
+Naklonujte úložiště `git`pomocí, nahraďte ** \<své uživatelské jméno\> GitHubu** svým uživatelským jménem GitHubu:
 
 ```console
 git clone https://github.com/<your-github-username>/acr-build-helloworld-node
@@ -70,9 +70,9 @@ Příkazy v této sérii kurzů jsou formátované pro prostředí Bash. Pokud b
 
 Když teď máte zdrojový kód ve svém počítači, postupujte podle těchto kroků k vytvoření registru kontejneru a sestavení image kontejneru pomocí ACR Tasks.
 
-Aby bylo spouštění ukázkových souborů jednodušší, používají kurzy v této sérii proměnné prostředí shell. Spuštěním následujícího příkazu nastavte proměnnou `ACR_NAME`. Nahraďte ** \<\> název registru** jedinečným názvem nového registru kontejnerů. Název registru musí být jedinečný v rámci Azure, obsahovat pouze malá písmena a obsahovat 5-50 alfanumerických znaků. Další prostředky, které v tomto kurzu vytvoříte, jsou založené na tomto názvu. Proto byste měli změnit jenom tuto první proměnnou.
+Aby bylo spouštění ukázkových souborů jednodušší, používají kurzy v této sérii proměnné prostředí shell. Spuštěním následujícího příkazu nastavte proměnnou `ACR_NAME`. ** \<Název\> registru** nahraďte jedinečným názvem nového registru kontejneru. Název registru musí být v rámci Azure jedinečný, obsahovat pouze malá písmena a musí obsahovat 5-50 alfanumerických znaků. Další prostředky, které v tomto kurzu vytvoříte, jsou založené na tomto názvu. Proto byste měli změnit jenom tuto první proměnnou.
 
-[![Spuštění vložení](https://shell.azure.com/images/launchcloudshell.png "Spuštění služby Azure Cloud Shell")](https://shell.azure.com)
+[![Vložit spuštění](https://shell.azure.com/images/launchcloudshell.png "Spuštění služby Azure Cloud Shell")](https://shell.azure.com)
 
 ```console
 ACR_NAME=<registry-name>
@@ -203,7 +203,7 @@ az keyvault secret set \
                 --output tsv)
 ```
 
-Argument `--role` v předchozím příkazu konfiguruje instanční objekt s rolí *acrpull,* která mu uděluje přístup pouze pro vyžádat do registru. Chcete-li udělit přístup push `--role` i pull, změňte argument na *acrpush*.
+`--role` Argument v předchozím příkazu nakonfiguruje instanční objekt pomocí role *acrpull* , která uděluje přístup pouze pro získání přístupu k registru. Chcete-li udělit přístup push i Pull, změňte `--role` argument na *acrpush*.
 
 V dalším kroku uložte *appId* instančního objektu v trezoru. Jedná se o **uživatelské jméno**, které předáte službě Azure Container Registry pro ověření:
 

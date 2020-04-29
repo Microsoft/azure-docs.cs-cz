@@ -1,86 +1,86 @@
 ---
-title: Podpora hodnocení Technologie Hyper-V v Azure Migrate
-description: Informace o podpoře hodnocení Hyper-V pomocí azure migrate server assessment
+title: Podpora pro vyhodnocení technologie Hyper-V v Azure Migrate
+description: Další informace o podpoře pro vyhodnocení technologie Hyper-V s Azure Migrate posouzení serveru
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.openlocfilehash: 990d5026d9621c144c31635fabac4416eb9d20e6
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81538167"
 ---
-# <a name="support-matrix-for-hyper-v-assessment"></a>Matice podpory pro hodnocení Hyper-V
+# <a name="support-matrix-for-hyper-v-assessment"></a>Matice podpory pro posouzení technologie Hyper-V
 
-Tento článek shrnuje požadavky na požadavky na požadavky na požadavky na podporu při posuzování virtuálních počítačů Hyper-V pro migraci do Azure pomocí nástroje [Azure Migrate:Server Assessment.](migrate-services-overview.md#azure-migrate-server-assessment-tool) Pokud chcete migrovat hypervirtuální počítače do Azure, zkontrolujte [matici podpory migrace](migrate-support-matrix-hyper-v-migration.md).
+Tento článek shrnuje požadavky a požadavky na podporu při vyhodnocení virtuálních počítačů Hyper-V pro migraci do Azure pomocí nástroje [Azure Migrate: Server Assessment](migrate-services-overview.md#azure-migrate-server-assessment-tool) Tool. Pokud chcete migrovat virtuální počítače Hyper-V do Azure, přečtěte si [matici podpora migrace](migrate-support-matrix-hyper-v-migration.md).
 
-Chcete-li nastavit hodnocení virtuálních počítačů Hyper-V, vytvořte projekt Migrace Azure a přidejte do projektu nástroj vyhodnocení serveru. Po přidání nástroje nasadíte [zařízení Azure Migrate](migrate-appliance.md). Zařízení průběžně zjišťuje místní počítače a odesílá metadata a údaje o výkonu počítače do Azure. Po dokončení zjišťování shromáždíte zjištěné počítače do skupin a spustíte hodnocení pro skupinu.
+Pokud chcete nastavit posouzení virtuálního počítače Hyper-V, vytvořte projekt Azure Migrate a přidejte do projektu nástroj pro vyhodnocení serveru. Po přidání nástroje nasadíte [zařízení Azure Migrate](migrate-appliance.md). Zařízení nepřetržitě zjišťuje místní počítače a odesílá do Azure metadata počítače a data o výkonu. Po dokončení zjišťování shromáždíte zjištěné počítače do skupin a spustíte posouzení pro skupinu.
 
 
 ## <a name="limitations"></a>Omezení
 
-**Podpora** | **Podrobnosti**
+**Podpora** | **Zobrazí**
 --- | ---
-**Hodnotící limity** | Můžete zjistit a vyhodnotit až 35 000 virtuálních počítačů Hyper-V v jednom [projektu Migrace Azure](migrate-support-matrix.md#azure-migrate-projects).
-**Limity projektu** | V předplaceně Azure můžete vytvořit více projektů. Kromě virtuálních měn Hyper-V může projekt zahrnovat virtuální zařízení VMware a fyzické servery až do limitů hodnocení pro každý z nich.
-**Objev** | Zařízení Azure Migrate může zjistit až 5000 virtuálních počítačů Hyper-V.<br/><br/> Zařízení se může připojit až k 300 hostitelům Hyper-V.
-**Posouzení** | V jedné skupině můžete přidat až 35 000 počítačů.<br/><br/> Můžete posoudit až 35 000 virtuálních< virtuálních mv v rámci jednoho hodnocení pro skupinu.
+**Omezení hodnocení** | V jednom [Azure Migrate projektu](migrate-support-matrix.md#azure-migrate-projects)můžete vyhledat a posoudit až 35 000 virtuálních počítačů Hyper-V.
+**Omezení projektu** | V předplatném Azure můžete vytvořit více projektů. Kromě virtuálních počítačů Hyper-V může projekt zahrnovat virtuální počítače VMware a fyzické servery až po omezení pro posouzení jednotlivých.
+**Rozpoznávání** | Zařízení Azure Migrate může zjistit až 5000 virtuálních počítačů Hyper-V.<br/><br/> Zařízení se může připojit k až 300 hostitelům Hyper-V.
+**Posouzení** | Do jedné skupiny můžete přidat až 35 000 počítačů.<br/><br/> V jednom posouzení pro skupinu můžete vyhodnotit až 35 000 virtuálních počítačů.
 
-[Přečtěte si další informace](concepts-assessment-calculation.md) o hodnoceních.
+[Přečtěte si další informace](concepts-assessment-calculation.md) o posouzení.
 
 
 
-## <a name="hyper-v-host-requirements"></a>Požadavky hostitele Hyper-V
+## <a name="hyper-v-host-requirements"></a>Požadavky na hostitele Hyper-V
 
-| **Podpora**                | **Podrobnosti**               
+| **Podpora**                | **Zobrazí**               
 | :-------------------       | :------------------- |
-| **Hostitel Hyper-V**       | Hostitel Hyper-V může být samostatný nebo nasazený v clusteru.<br/><br/> Hostitel Hyper-V může spustit Windows Server 2019, Windows Server 2016 nebo Windows Server 2012 R2.<br/> Virtuální počítače na hostitelích Hyper-V s Windows Serverem 2012 hodnotit nemůžete.
-| **Oprávnění**           | Potřebujete oprávnění správce pro hostitele Hyper-V. <br/> Pokud nechcete přiřazovat oprávnění správce, vytvořte uživatelský účet místní ho nebo domény a přidejte uživatelský účet do těchto skupin – uživatelé vzdálené správy, správci technologie Hyper-V a uživatelé sledování výkonu. |
-| **Vzdálená komunikace PowerShellu**   | [Vzdálené komunikace prostředí PowerShell](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/enable-psremoting?view=powershell-7) musí být povolena na každém hostiteli Hyper-V. |
-| **Replika technologie Hyper-V**       | Pokud používáte repliku Hyper-V (nebo máte více virtuálních počítačů se stejnými identifikátory virtuálních zařízení) a zjistíte původní i replikované virtuální počítače pomocí Migrace Azure, hodnocení generované azure migrate nemusí být přesné. |
+| **Hostitel Hyper-V**       | Hostitel Hyper-V může být samostatný nebo nasazený v clusteru.<br/><br/> Hostitel Hyper-V může používat Windows Server 2019, Windows Server 2016 nebo Windows Server 2012 R2.<br/> Virtuální počítače na hostitelích Hyper-V s Windows Serverem 2012 hodnotit nemůžete.
+| **Oprávnění**           | Na hostiteli Hyper-V potřebujete oprávnění správce. <br/> Pokud nechcete přiřazovat oprávnění správce, vytvořte místní účet nebo uživatelský účet domény a přidejte do těchto skupin uživatelský účet – Uživatelé vzdálené správy, Správci technologie Hyper-V a uživatelé nástroje Performance Monitor. |
+| **Vzdálená komunikace PowerShellu**   | Na každém hostiteli Hyper-V musí být povolená [Vzdálená komunikace PowerShellu](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/enable-psremoting?view=powershell-7) . |
+| **Replika technologie Hyper-V**       | Pokud používáte repliku technologie Hyper-V (nebo máte více virtuálních počítačů se stejnými identifikátory virtuálních počítačů) a zjistíte jak původní, tak replikované virtuální počítače pomocí Azure Migrate, hodnocení vygenerované Azure Migrate nemusí být přesné. |
 
 
-## <a name="hyper-v-vm-requirements"></a>Požadavky na virtuální vana Hyper-V
+## <a name="hyper-v-vm-requirements"></a>Požadavky na virtuální počítače Hyper-V
 
-| **Podpora**                  | **Podrobnosti**               
+| **Podpora**                  | **Zobrazí**               
 | :----------------------------- | :------------------- |
-| **Operační systém** | Všechny operační systémy [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) a [Linux.](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) |
-| **Služba Integration Services**       | [Služba Hyper-V Integration Services](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/integration-services) musí být spuštěna na virtuálních počítačích, které vyhodnocujete, aby bylo možné zachytit informace o operačním systému. |
+| **Operační systém** | Všechny operační systémy [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) a [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) . |
+| **Služba Integration Services**       | Aby bylo možné zachytit informace o operačním systému, musí být na virtuálních počítačích, které jste vyhodnotili, spuštěny [integrační služby technologie Hyper-v](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/integration-services) . |
 
 
 ## <a name="azure-migrate-appliance-requirements"></a>Požadavky zařízení Azure Migrate
 
-Azure Migrate používá [zařízení Azure Migrate](migrate-appliance.md) pro zjišťování a hodnocení. Zařízení můžete nasadit pomocí komprimovaného virtuálního pevného disku Hyper-V,, který stáhnete z portálu, nebo pomocí [skriptu prostředí PowerShell](deploy-appliance-script.md).
+Azure Migrate používá [zařízení Azure Migrate](migrate-appliance.md) ke zjišťování a hodnocení. Zařízení můžete nasadit pomocí komprimovaného virtuálního pevného disku Hyper-V, který stáhnete z portálu, nebo pomocí [skriptu PowerShellu](deploy-appliance-script.md).
 
-- Seznamte se s [požadavky na zařízení](migrate-appliance.md#appliance---hyper-v) pro technologie Hyper-V.
-- Přečtěte si o adresách URL, ke kterým zařízení potřebuje přístup ve [veřejných](migrate-appliance.md#public-cloud-urls) a [vládních](migrate-appliance.md#government-cloud-urls) cloudech.
-- Ve službě Azure Government je nutné nasadit zařízení pomocí skriptu.
+- Přečtěte si informace o [požadavcích na zařízení](migrate-appliance.md#appliance---hyper-v) pro Hyper-V.
+- Přečtěte si o adresách URL, které zařízení potřebuje k přístupu ve [veřejných](migrate-appliance.md#public-cloud-urls) a [státních](migrate-appliance.md#government-cloud-urls) cloudech.
+- V Azure Government musíte zařízení nasadit pomocí skriptu.
 
 ## <a name="port-access"></a>Přístup k portu
 
-Následující tabulka shrnuje požadavky na portpro posouzení.
+Následující tabulka shrnuje požadavky na porty pro posouzení.
 
 **Zařízení** | **Připojení**
 --- | ---
-**Přístroj** | Příchozí připojení na portu TCP 3389, která umožňují připojení ke vzdálené ploše k zařízení.<br/><br/> Příchozí připojení na portu 44368 pro vzdálený přístup k aplikaci pro správu zařízení pomocí adresy URL:``` https://<appliance-ip-or-name>:44368 ```<br/><br/> Odchozí připojení na portech 443 (HTTPS) pro odesílání metadat zjišťování a výkonu do Migrace Azure.
-**Hostitel/cluster Hyper-V** | Příchozí připojení na portech WinRM 5985 (HTTP) a 5986 (HTTPS) pro vytahování metadat a dat o výkonu pro virtuální počítači Hyper-V pomocí relace společného informačního modelu (CIM).
+**Náplně** | Příchozí připojení na portu TCP 3389 umožňující připojení ke vzdálené ploše zařízení.<br/><br/> Příchozí připojení na portu 44368 pro vzdálený přístup k aplikaci pro správu zařízení pomocí adresy URL:``` https://<appliance-ip-or-name>:44368 ```<br/><br/> Odchozí připojení na portech 443 (HTTPS), která odesílají metadata zjišťování a výkonu Azure Migrate.
+**Hostitel nebo cluster Hyper-V** | Příchozí připojení na portech WinRM 5985 (HTTP) a 5986 (HTTPS) k vyžádání dat o metadatech a výkonu pro virtuální počítače Hyper-V pomocí relace model CIM (Common Information Model) (CIM).
 
-## <a name="agent-based-dependency-analysis-requirements"></a>Požadavky na analýzu závislostí na základě agenta
+## <a name="agent-based-dependency-analysis-requirements"></a>Požadavky na analýzu závislostí na základě agentů
 
-[Analýza závislostí](concepts-dependency-visualization.md) vám pomůže identifikovat závislosti mezi místními počítači, které chcete posoudit a migrovat do Azure. Tabulka shrnuje požadavky na nastavení analýzy závislostí založené na agentovi. Technologie Hyper-V aktuálně podporuje pouze vizualizaci závislostí založenou na agentovi. 
+[Analýza závislostí](concepts-dependency-visualization.md) vám pomůže identifikovat závislosti mezi místními počítači, které chcete vyhodnotit a migrovat do Azure. Tabulka shrnuje požadavky na nastavení analýzy závislostí založené na agentech. Technologie Hyper-V aktuálně podporuje vizualizaci závislostí založenou na agentech. 
 
-**Požadavek** | **Podrobnosti** 
+**Požadavek** | **Zobrazí** 
 --- | --- 
-**Před nasazením** | Měli byste mít projekt Migrace Azure na místě, s nástrojem hodnocení serveru přidán do projektu.<br/><br/>  Vizualizace závislostí nasadíte po nastavení zařízení Azure Migrate ke zjištění místních počítačů.<br/><br/> [Přečtěte si, jak](create-manage-projects.md) vytvořit projekt poprvé.<br/> [Přečtěte si, jak](how-to-assess.md) přidat nástroj pro hodnocení do existujícího projektu.<br/> Přečtěte si, jak nastavit zařízení Azure Migrate pro vyhodnocení [virtuálních počítačích Hyper-V](how-to-set-up-appliance-hyper-v.md).
-**Azure Government** | Vizualizace závislostí není ve službě Azure Government dostupná.
-**Log Analytics** | Azure Migrate používá řešení [map služeb](../operations-management-suite/operations-management-suite-service-map.md) v [protokolech Azure Monitor](../log-analytics/log-analytics-overview.md) u vizualizace závislostí.<br/><br/> Přidružíte nový nebo existující pracovní prostor Log Analytics k projektu Migrace Azure. Pracovní prostor pro projekt Migrace Azure nelze změnit po jeho přidání. <br/><br/> Pracovní prostor musí být ve stejném předplatném jako projekt Migrace Azure.<br/><br/> Pracovní prostor musí být umístěn v oblastech východní CH VUSA, Jihovýchodní Asie nebo Západní Evropa. Pracovní prostory v jiných oblastech nelze přidružit k projektu.<br/><br/> Pracovní prostor musí být v oblasti, ve které [je podporována mapa služeb](../azure-monitor/insights/vminsights-enable-overview.md#prerequisites).<br/><br/> V Log Analytics je pracovní prostor přidružený k migraci Azure označen klíčem Projektu migrace a názvem projektu.
-**Požadované agenty** | Na každém počítači, který chcete analyzovat, nainstalujte následující agenty:<br/><br/> [Agent monitorování společnosti Microsoft (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows).<br/> [Agent závislostí](../azure-monitor/platform/agents-overview.md#dependency-agent).<br/><br/> Pokud místní počítače nejsou připojené k internetu, musíte si na ně stáhnout a nainstalovat bránu Log Analytics.<br/><br/> Další informace o instalaci [agenta závislostí](how-to-create-group-machine-dependencies.md#install-the-dependency-agent) a [MMA](how-to-create-group-machine-dependencies.md#install-the-mma).
-**Pracovní prostor služby Log Analytics** | Pracovní prostor musí být ve stejném předplatném jako projekt Migrace Azure.<br/><br/> Azure Migrate podporuje pracovní prostory s bydlištěm v oblastech východní USA, jihovýchodní Asie a západní Evropy.<br/><br/>  Pracovní prostor musí být v oblasti, ve které [je podporována mapa služeb](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-enable-overview#prerequisites).<br/><br/> Pracovní prostor pro projekt Migrace Azure nelze změnit po jeho přidání.
-**Náklady** | Řešení mapy služeb neúčtuje žádné poplatky za prvních 180 dní (ode dne, kdy přidružíte pracovní prostor Log Analytics k projektu Migrace Azure)/<br/><br/> Po uplynutí 180 dnů se začnou účtovat standardní poplatky za Log Analytics.<br/><br/> Použití jakéhokoli jiného řešení než mapy služeb v přidruženém pracovním prostoru Log Analytics bude účtovány [standardní poplatky za](https://azure.microsoft.com/pricing/details/log-analytics/) log analytics.<br/><br/> Když se odstraní projekt Migrace Azure, pracovní prostor se neodstraní spolu s ním. Po odstranění projektu není využití mapy služeb zdarma a každý uzel se bude účtovat podle placené úrovně pracovního prostoru Log Analytics.<br/><br/>Pokud máte projekty, které jste vytvořili před Azure Migrate obecné dostupnosti (GA- 28 Únor 2018), může vzniknout další poplatky mapy služeb. Chcete-li zajistit platbu pouze po 180 dnech, doporučujeme vytvořit nový projekt, protože stávající pracovní prostory před GA jsou stále zpoplatněny.
-**správy** | Když zaregistrujete agenty do pracovního prostoru, použijete ID a klíč poskytované projektem Migrace Azure.<br/><br/> Pracovní prostor Log Analytics můžete použít mimo Azure Migrate.<br/><br/> Pokud odstraníte přidružený projekt Migrace Azure, pracovní prostor se neodstraní automaticky. [Odstraňte jej ručně](../azure-monitor/platform/manage-access.md).<br/><br/> Neodstraňujte pracovní prostor vytvořený Azure Migrate, pokud neodstraníte projekt Migrace Azure. Pokud tak učiníte, funkce vizualizace závislostí nebude fungovat podle očekávání.
-**Připojení k Internetu** | Pokud počítače nejsou připojené k internetu, je třeba nainstalovat bránu Log Analytics na ně.
-**Azure Government** | Analýza závislostí založená na agentovi není podporována.
+**Před nasazením** | Měli byste mít Azure Migrate projekt, pomocí nástroje pro vyhodnocení serveru přidaný do projektu.<br/><br/>  Vizualizace závislostí nasadíte po nastavení zařízení Azure Migrate pro zjištění vašich místních počítačů.<br/><br/> [Naučte](create-manage-projects.md) se, jak poprvé vytvořit projekt.<br/> [Přečtěte si, jak](how-to-assess.md) přidat nástroj pro vyhodnocení do existujícího projektu.<br/> Přečtěte si, jak nastavit zařízení Azure Migrate pro posouzení [virtuálních počítačů Hyper-V](how-to-set-up-appliance-hyper-v.md).
+**Azure Government** | Vizualizace závislostí není v Azure Government k dispozici.
+**Log Analytics** | Azure Migrate používá řešení [Service map](../operations-management-suite/operations-management-suite-service-map.md) v [protokolech Azure monitor](../log-analytics/log-analytics-overview.md) pro vizualizaci závislostí.<br/><br/> K projektu Azure Migrate přidružíte nový nebo existující Log Analytics pracovní prostor. Pracovní prostor pro Azure Migrate projekt nelze po přidání změnit. <br/><br/> Pracovní prostor musí být ve stejném předplatném jako projekt Azure Migrate.<br/><br/> Pracovní prostor se musí nacházet v oblastech Východní USA, jihovýchodní Asie nebo Západní Evropa. Pracovní prostory v jiných oblastech nelze přidružit k projektu.<br/><br/> Pracovní prostor musí být v oblasti, ve které [je podporovaná Service map](../azure-monitor/insights/vminsights-enable-overview.md#prerequisites).<br/><br/> V Log Analytics je pracovní prostor přidružený k Azure Migrate označený klíčem projektu migrace a názvem projektu.
+**Vyžadovaná agenti** | Na každém počítači, který chcete analyzovat, nainstalujte následující agenty:<br/><br/> [Microsoft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows).<br/> [Agent závislostí](../azure-monitor/platform/agents-overview.md#dependency-agent).<br/><br/> Pokud nejsou místní počítače připojené k Internetu, musíte na ně stáhnout a nainstalovat bránu Log Analytics.<br/><br/> Přečtěte si další informace o instalaci [agenta závislostí](how-to-create-group-machine-dependencies.md#install-the-dependency-agent) a [MMA](how-to-create-group-machine-dependencies.md#install-the-mma).
+**Pracovní prostor služby Log Analytics** | Pracovní prostor musí být ve stejném předplatném jako projekt Azure Migrate.<br/><br/> Azure Migrate podporuje pracovní prostory, které jsou umístěné v oblastech Východní USA, jihovýchodní Asie a Západní Evropa.<br/><br/>  Pracovní prostor musí být v oblasti, ve které [je podporovaná Service map](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-enable-overview#prerequisites).<br/><br/> Pracovní prostor pro Azure Migrate projekt nelze po přidání změnit.
+**Náklady** | V řešení Service Map se neúčtují žádné poplatky za prvních 180 dní (od dne, kdy přidružíte pracovní prostor Log Analytics k projektu Azure Migrate)/<br/><br/> Po uplynutí 180 dnů se začnou účtovat standardní poplatky za Log Analytics.<br/><br/> Použití jiného řešení než Service Map v přidruženém pracovním prostoru Log Analytics bude účtovat [standardní poplatky](https://azure.microsoft.com/pricing/details/log-analytics/) za Log Analytics.<br/><br/> Když se projekt Azure Migrate odstraní, pracovní prostor se spolu s ním neodstraní. Po odstranění projektu Service Map využití není volné a každý uzel se bude účtovat podle placené úrovně Log Analytics pracovního prostoru/<br/><br/>Pokud máte projekty, které jste vytvořili před Azure Migrate všeobecné dostupnosti (GA-28 února 2018), mohly by vám být účtovány další Service Map poplatky. Aby se zajistila platba jenom po 180 dnech, doporučujeme vytvořit nový projekt, protože stávající pracovní prostory před GAm jsou stále Fakturovatelné.
+**správy** | Při registraci agentů do pracovního prostoru použijete ID a klíč poskytnutý Azure Migrate projektem.<br/><br/> Pracovní prostor Log Analytics můžete použít mimo Azure Migrate.<br/><br/> Pokud odstraníte přidružený Azure Migrate projekt, pracovní prostor se automaticky neodstraní. [Odstraňte ji ručně](../azure-monitor/platform/manage-access.md).<br/><br/> Pokud neodstraníte projekt Azure Migrate, neodstraňujte pracovní prostor vytvořený pomocí Azure Migrate. Pokud to uděláte, funkce vizualizace závislosti nebude fungovat podle očekávání.
+**Připojení k Internetu** | Pokud nejsou počítače připojené k Internetu, musíte na ně nainstalovat bránu Log Analytics.
+**Azure Government** | Analýza závislostí založená na agentech není podporována.
 
 ## <a name="next-steps"></a>Další kroky
 
-[Příprava na vyhodnocení virtuálního počítače Hyper-V](tutorial-prepare-hyper-v.md)
+[Příprava na posouzení virtuálních počítačů Hyper-V](tutorial-prepare-hyper-v.md)

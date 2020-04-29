@@ -1,42 +1,42 @@
 ---
-title: Odkaz na rozhraní API rozhraní API azure application insights .Net agent
-description: Odkaz na rozhraní API agenta Application Insights. Sledujte výkon webových stránek bez opětovného nasazení webu. Funguje s ASP.NET webových aplikací hostovaných místně, ve virtuálních počítačích nebo v Azure.
+title: Reference k rozhraní API agenta Azure Application Insights .NET
+description: Reference k rozhraní API agenta Application Insights. Monitorujte výkon webu bez nutnosti opětovného nasazení webu. Funguje s ASP.NET webovými aplikacemi hostovanými místně, na virtuálních počítačích nebo v Azure.
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
 ms.openlocfilehash: 02762c4b3af735eb0b4c19aaf450b2b3a416a2be
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81733671"
 ---
-# <a name="azure-monitor-application-insights-agent-api-reference"></a>Odkaz na rozhraní API rozhraní API azure monitoru pro přehledy aplikací
+# <a name="azure-monitor-application-insights-agent-api-reference"></a>Reference k rozhraní API agenta Azure Monitor Application Insights
 
-Tento článek popisuje rutinu, která je členem [modulu Az.ApplicationMonitor PowerShell](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/).
+Tento článek popisuje rutinu, která je členem [modulu PowerShellu AZ. ApplicationMonitor](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/).
 
 > [!NOTE] 
-> - Chcete-li začít, potřebujete klíč instrumentace. Další informace naleznete [v tématu Vytvoření prostředku](create-new-resource.md#copy-the-instrumentation-key).
-> - Tato rutina vyžaduje, abyste si přečetli a přijali naše licenční a prohlášení o zásadách ochrany osobních údajů.
+> - Abyste mohli začít, budete potřebovat klíč instrumentace. Další informace najdete v tématu [vytvoření prostředku](create-new-resource.md#copy-the-instrumentation-key).
+> - Tato rutina vyžaduje, abyste zkontrolovali a přijali naše licence a prohlášení o zásadách ochrany osobních údajů.
 
 > [!IMPORTANT] 
-> Tato rutina vyžaduje relaci prostředí PowerShell s oprávněními správce a zásady zvýšeného spuštění. Další informace naleznete v [tématu Spuštění prostředí PowerShell jako správce se zvýšenými zásadami provádění](status-monitor-v2-detailed-instructions.md#run-powershell-as-admin-with-an-elevated-execution-policy).
-> - Tato rutina vyžaduje, abyste si přečetli a přijali naše licenční a prohlášení o zásadách ochrany osobních údajů.
-> - Přístrojový stroj přidává další režii a je ve výchozím nastavení vypnutý.
+> Tato rutina vyžaduje relaci PowerShellu s oprávněními správce a zásadou spuštění se zvýšenými oprávněními. Další informace najdete v tématu [spuštění PowerShellu jako správce se zvýšenými zásadami spouštění](status-monitor-v2-detailed-instructions.md#run-powershell-as-admin-with-an-elevated-execution-policy).
+> - Tato rutina vyžaduje, abyste zkontrolovali a přijali naše licence a prohlášení o zásadách ochrany osobních údajů.
+> - Modul instrumentace přidává další režii a je ve výchozím nastavení vypnutý.
 
 
-## <a name="enable-instrumentationengine"></a>Enable-InstrumentationEngineEngine
+## <a name="enable-instrumentationengine"></a>Enable – InstrumentationEngine
 
-Povolí instrumentační modul nastavením některých klíčů registru.
-Změny se projeví až po restartování služby IIS.
+Povolí modul instrumentace nastavením některých klíčů registru.
+Restartujte službu IIS, aby se změny projevily.
 
-Instrumentační modul může doplnit data shromážděná sadami .NET SDK.
-Shromažďuje události a zprávy, které popisují spuštění spravovaného procesu. Tyto události a zprávy zahrnují kódy výsledků závislostí, slovesa HTTP a [text příkazu SQL](asp-net-dependencies.md#advanced-sql-tracking-to-get-full-sql-query).
+Modul instrumentace může doplnit data shromažďovaná sadami .NET SDK.
+Shromažďuje události a zprávy, které popisují spuštění spravovaného procesu. Mezi tyto události a zprávy patří kódy výsledků závislosti, příkazy HTTP a [text příkazu SQL](asp-net-dependencies.md#advanced-sql-tracking-to-get-full-sql-query).
 
-Přístrojový motor povolte, pokud:
-- Monitorování jste již povolili pomocí rutiny Povolit, ale nepovolili jste modul instrumentace.
-- Ručně jste instrumentovali aplikaci pomocí sad SDK .NET a chcete shromažďovat další telemetrii.
+Modul instrumentace povolte, pokud:
+- Již jste povolili monitorování pomocí rutiny Enable, ale nepovolili jste modul instrumentace.
+- Aplikaci jste ručně nastavili pomocí sady .NET SDK a chtěli byste shromažďovat další telemetrii.
 
 ### <a name="examples"></a>Příklady
 
@@ -47,49 +47,49 @@ PS C:\> Enable-InstrumentationEngine
 ### <a name="parameters"></a>Parametry
 
 #### <a name="-acceptlicense"></a>-AcceptLicense
-**Volitelné.** Pomocí tohoto přepínače můžete přijmout licenci a prohlášení o zásadách ochrany osobních údajů v bezhlavých instalacích.
+**Volitelné.** Pomocí tohoto přepínače přijměte licence a prohlášení o zásadách ochrany osobních údajů v bezobslužné instalaci.
 
-#### <a name="-verbose"></a>-Podrobné
-**Společný parametr.** Tento přepínač použijte k výstupu podrobných protokolů.
+#### <a name="-verbose"></a>– Verbose
+**Společný parametr** Pomocí tohoto přepínače můžete vyvýstupovat podrobné protokoly.
 
 ### <a name="output"></a>Výstup
 
 
-##### <a name="example-output-from-successfully-enabling-the-instrumentation-engine"></a>Příklad výstupu z úspěšného povolení přístrojového stroje
+##### <a name="example-output-from-successfully-enabling-the-instrumentation-engine"></a>Příklad výstupu úspěšného povolení modulu instrumentace
 
 ```
 Configuring IIS Environment for instrumentation engine...
 Configuring registry for instrumentation engine...
 ```
 
-## <a name="enable-applicationinsightsmonitoring"></a>Enable-ApplicationInsightsMonitoring
+## <a name="enable-applicationinsightsmonitoring"></a>Enable – ApplicationInsightsMonitoring
 
-Umožňuje monitorování aplikací služby IIS v cílovém počítači bez kódů.
+Povoluje nekódovatelné monitorování aplikací služby IIS na cílovém počítači.
 
-Tato rutina upraví iis applicationHost.config a nastaví některé klíče registru.
-Vytvoří také soubor applicationinsights.ikey.config, který definuje klíč instrumentace používaný každou aplikací.
-Služby IIS načtou modul RedfieldModule při spuštění, který při spuštění aplikace vloží sadu Application Insights SDK do aplikací.
-Změny se projeví až po restartování služby IIS.
+Tato rutina změní soubor applicationHost. config služby IIS a nastavila některé klíče registru.
+Vytvoří také soubor ApplicationInsights. ikey. config, který definuje klíč instrumentace používaný jednotlivými aplikacemi.
+Služba IIS načte RedfieldModule při spuštění, čímž vloží sadu Application Insights SDK do aplikací jako spuštění aplikací.
+Restartujte službu IIS, aby se provedené změny projevily.
 
-Po povolení monitorování doporučujeme pomocí [live metrik rychle](live-stream.md) zkontrolovat, jestli nám vaše aplikace posílá telemetrii.
+Po povolení monitorování doporučujeme pomocí [živých metrik](live-stream.md) rychle zjistit, jestli vaše aplikace posílá telemetrii v USA.
 
 ### <a name="examples"></a>Příklady
 
 #### <a name="example-with-a-single-instrumentation-key"></a>Příklad s jedním klíčem instrumentace
-V tomto příkladu jsou všem aplikacím v aktuálním počítači přiřazen jeden klíč instrumentace.
+V tomto příkladu jsou všem aplikacím v aktuálním počítači přiřazený jeden klíč instrumentace.
 
 ```powershell
 PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 ```
 
-#### <a name="example-with-an-instrumentation-key-map"></a>Příklad s mapou klíčů instrumentace
+#### <a name="example-with-an-instrumentation-key-map"></a>Příklad s mapou klíče instrumentace
 V tomto příkladu:
-- `MachineFilter`odpovídá aktuálnímu počítači `'.*'` pomocí zástupných symbolů.
-- `AppFilter='WebAppExclude'`poskytuje `null` klíč instrumentace. Zadaná aplikace nebude instrumentována.
+- `MachineFilter`odpovídá aktuálnímu počítači pomocí `'.*'` zástupného znaku.
+- `AppFilter='WebAppExclude'`poskytuje klíč `null` instrumentace. Zadaná aplikace nebude instrumentovaná.
 - `AppFilter='WebAppOne'`přiřadí zadané aplikaci jedinečný klíč instrumentace.
 - `AppFilter='WebAppTwo'`přiřadí zadané aplikaci jedinečný klíč instrumentace.
-- Nakonec `AppFilter` také používá `'.*'` zástupný znak tak, aby odpovídal všem webovým aplikacím, které nejsou spárovány s dřívějšími pravidly, a přiřadí výchozí klíč instrumentace.
-- Prostory jsou přidány pro čitelnost.
+- Nakonec `AppFilter` taky používá `'.*'` zástupný znak ke spárování se všemi webovými aplikacemi, které se neshodují s předchozími pravidly a přiřazují výchozí klíč instrumentace.
+- Jsou přidány mezery pro čitelnost.
 
 ```powershell
 PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap 
@@ -103,48 +103,48 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap
 
 ### <a name="parameters"></a>Parametry
 
-#### <a name="-instrumentationkey"></a>-InstrumentationKey
-**Povinná hodnota.** Tento parametr slouží k zadání jediného klíče instrumentace pro všechny aplikace v cílovém počítači.
+#### <a name="-instrumentationkey"></a>– InstrumentationKey
+**Povinná hodnota.** Pomocí tohoto parametru můžete zadat jeden klíč instrumentace pro použití všemi aplikacemi v cílovém počítači.
 
 #### <a name="-instrumentationkeymap"></a>-InstrumentationKeyMap
-**Povinná hodnota.** Tento parametr slouží k zadání více instrumentačních klíčů a mapování instrumentačních klíčů používaných každou aplikací.
-Nastavením `MachineFilter`můžete vytvořit jeden instalační skript pro několik počítačů .
+**Povinná hodnota.** Tento parametr použijte k zadání více klíčů instrumentace a mapování klíčů instrumentace používaných jednotlivými aplikacemi.
+Jeden instalační skript pro několik počítačů můžete vytvořit nastavením `MachineFilter`.
 
 > [!IMPORTANT]
-> Aplikace se budou shodovat s pravidly v pořadí, v jakém jsou pravidla k dispozici. Proto byste měli nejprve zadat nejkonkrétnější pravidla a nejobecnější pravidla poslední.
+> Aplikace budou odpovídat pravidlům v pořadí, v jakém jsou tato pravidla k dispozici. Proto byste měli nejdřív zadat nejvíce specifická pravidla a nejobecnější pravidla.
 
 ##### <a name="schema"></a>Schéma
 `@(@{MachineFilter='.*';AppFilter='.*';InstrumentationSettings=@{InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'}})`
 
 - **MachineFilter** je povinný regulární výraz jazyka C# počítače nebo názvu virtuálního počítače.
-    - '.*' bude odpovídat všem
-    - Název_počítače bude shodovat pouze s počítači s přesným názvem.
-- **AppFilter** je povinný regulární výraz jazyka C# názvu webu iis. Seznam webů na serveru můžete získat spuštěním příkazu [get-iissite](https://docs.microsoft.com/powershell/module/iisadministration/get-iissite).
-    - '.*' bude odpovídat všem
-    - Název_webu bude odpovídat pouze webu iis s přesným názvem.
-- **InstrumentationKey** je nutné povolit monitorování aplikací, které odpovídají předchozí dva filtry.
-    - Pokud chcete definovat pravidla pro vyloučení monitorování, ponechte tuto hodnotu nulovou.
+    - '. * ' bude odpovídat všem
+    - Hodnota ComputerName bude odpovídat jenom počítačům se zadaným přesným názvem.
+- **AppFilter** je požadovaný regulární výraz jazyka C# názvu webu služby IIS. Seznam webů na serveru můžete získat spuštěním příkazu [Get-iissite](https://docs.microsoft.com/powershell/module/iisadministration/get-iissite).
+    - '. * ' bude odpovídat všem
+    - Možnost ' název_webu ' bude odpovídat pouze stránce služby IIS se zadaným přesným názvem.
+- **InstrumentationKey** se vyžaduje k tomu, aby bylo možné monitorovat aplikace, které odpovídají předchozím dvěma filtrům.
+    - Pokud chcete definovat pravidla pro vyloučení monitorování, ponechte tuto hodnotu null.
 
 
 #### <a name="-enableinstrumentationengine"></a>-EnableInstrumentationEngine
-**Volitelné.** Pomocí tohoto přepínače povolte instrumentační modul shromažďovat události a zprávy o tom, co se děje během provádění spravovaného procesu. Tyto události a zprávy zahrnují kódy výsledků závislostí, slovesa HTTP a text příkazu SQL.
+**Volitelné.** Tento přepínač použijte, pokud chcete, aby modul instrumentace mohl shromažďovat události a zprávy o tom, co se děje během provádění spravovaného procesu. Mezi tyto události a zprávy patří kódy výsledků závislosti, příkazy HTTP a text příkazu SQL.
 
-Přístrojové stroje přidává nad hlavou a je vypnutý ve výchozím nastavení.
+Modul instrumentace zvyšuje režii a je ve výchozím nastavení vypnutý.
 
 #### <a name="-acceptlicense"></a>-AcceptLicense
-**Volitelné.** Pomocí tohoto přepínače můžete přijmout licenci a prohlášení o zásadách ochrany osobních údajů v bezhlavých instalacích.
+**Volitelné.** Pomocí tohoto přepínače přijměte licence a prohlášení o zásadách ochrany osobních údajů v bezobslužné instalaci.
 
 #### <a name="-ignoresharedconfig"></a>-IgnoreSharedConfig
-Pokud máte cluster webových serverů, je možné, že používáte [sdílenou konfiguraci](https://docs.microsoft.com/iis/web-hosting/configuring-servers-in-the-windows-web-platform/shared-configuration_211).
-HttpModule nelze vložit do této sdílené konfigurace.
-Tento skript se nezdaří se zprávou, že jsou požadovány další kroky instalace.
-Pomocí tohoto přepínače můžete tuto kontrolu ignorovat a pokračovat v instalaci požadavků. Další informace naleznete v [tématu známý konflikt se sdílenou konfigurací](status-monitor-v2-troubleshoot.md#conflict-with-iis-shared-configuration)
+Pokud máte cluster webových serverů, můžete použít [sdílenou konfiguraci](https://docs.microsoft.com/iis/web-hosting/configuring-servers-in-the-windows-web-platform/shared-configuration_211).
+Do této sdílené konfigurace nelze vložit modul HTTP.
+Tento skript selže a zobrazí se zpráva, že je nutné provést další kroky instalace.
+Pomocí tohoto přepínače tuto kontrolu ignorujte a pokračujte v instalaci požadovaných součástí. Další informace najdete v tématu [známé konflikty – with-IIS-Shared-Configuration](status-monitor-v2-troubleshoot.md#conflict-with-iis-shared-configuration) .
 
-#### <a name="-verbose"></a>-Podrobné
-**Společný parametr.** Tento přepínač slouží k zobrazení podrobných protokolů.
+#### <a name="-verbose"></a>– Verbose
+**Společný parametr** Pomocí tohoto přepínače zobrazíte podrobné protokoly.
 
-#### <a name="-whatif"></a>-Co když 
-**Společný parametr.** Pomocí tohoto přepínače otestujte a ověřte vstupní parametry bez skutečného povolení monitorování.
+#### <a name="-whatif"></a>-WhatIf 
+**Společný parametr** Tento přepínač použijte k otestování a ověření vstupních parametrů, aniž byste umožnili monitorování.
 
 ### <a name="output"></a>Výstup
 
@@ -181,10 +181,10 @@ Updating app pool permissions...
 Successfully enabled Application Insights Status Monitor
 ```
 
-## <a name="disable-instrumentationengine"></a>Funkce Disable-InstrumentationEngine
+## <a name="disable-instrumentationengine"></a>Disable-InstrumentationEngine
 
-Zakáže instrumentační modul odebráním některých klíčů registru.
-Změny se projeví až po restartování služby IIS.
+Zakáže modul instrumentace odebráním některých klíčů registru.
+Restartujte službu IIS, aby se změny projevily.
 
 ### <a name="examples"></a>Příklady
 
@@ -194,13 +194,13 @@ PS C:\> Disable-InstrumentationEngine
 
 ### <a name="parameters"></a>Parametry 
 
-#### <a name="-verbose"></a>-Podrobné
-**Společný parametr.** Tento přepínač použijte k výstupu podrobných protokolů.
+#### <a name="-verbose"></a>– Verbose
+**Společný parametr** Pomocí tohoto přepínače můžete vyvýstupovat podrobné protokoly.
 
 ### <a name="output"></a>Výstup
 
 
-##### <a name="example-output-from-successfully-disabling-the-instrumentation-engine"></a>Příklad výstupu z úspěšného vypnutí instrumentačního stroje
+##### <a name="example-output-from-successfully-disabling-the-instrumentation-engine"></a>Příklad výstupu z úspěšného zakázání modulu instrumentace
 
 ```powershell
 Configuring IIS Environment for instrumentation engine...
@@ -210,10 +210,10 @@ Registry: removing 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WAS[Env
 Configuring registry for instrumentation engine...
 ```
 
-## <a name="disable-applicationinsightsmonitoring"></a>Zakázat-ApplicationInsightsMonitoring
+## <a name="disable-applicationinsightsmonitoring"></a>Disable-ApplicationInsightsMonitoring
 
 Zakáže monitorování v cílovém počítači.
-Tato rutina odebere úpravy aplikace IISHost.config a odebere klíče registru.
+Tato rutina odstraní úpravy souboru applicationHost. config služby IIS a odebere klíče registru.
 
 ### <a name="examples"></a>Příklady
 
@@ -223,8 +223,8 @@ PS C:\> Disable-ApplicationInsightsMonitoring
 
 ### <a name="parameters"></a>Parametry 
 
-#### <a name="-verbose"></a>-Podrobné
-**Společný parametr.** Tento přepínač slouží k zobrazení podrobných protokolů.
+#### <a name="-verbose"></a>– Verbose
+**Společný parametr** Pomocí tohoto přepínače zobrazíte podrobné protokoly.
 
 ### <a name="output"></a>Výstup
 
@@ -255,7 +255,7 @@ Successfully disabled Application Insights Status Monitor
 
 ## <a name="get-applicationinsightsmonitoringconfig"></a>Get-ApplicationInsightsMonitoringConfig
 
-Získá konfigurační soubor a vytiskne hodnoty do konzoly.
+Načte konfigurační soubor a vytiskne hodnoty do konzoly.
 
 ### <a name="examples"></a>Příklady
 
@@ -270,7 +270,7 @@ Nejsou vyžadovány žádné parametry.
 ### <a name="output"></a>Výstup
 
 
-##### <a name="example-output-from-reading-the-config-file"></a>Příklad výstupu ze čtení konfiguračního souboru
+##### <a name="example-output-from-reading-the-config-file"></a>Příklad výstupu z čtení konfiguračního souboru
 
 ```
 RedfieldConfiguration:
@@ -282,15 +282,15 @@ Filters:
 
 ## <a name="get-applicationinsightsmonitoringstatus"></a>Get-ApplicationInsightsMonitoringStatus
 
-Tato rutina poskytuje informace o řešení potíží s monitorováním stavu.
-Tato rutina slouží k prozkoumání stavu monitorování, verze modulu prostředí PowerShell a ke kontrole spuštěného procesu.
-Tato rutina bude hlásit informace o verzi a informace o klíčových souborů potřebných pro monitorování.
+Tato rutina poskytuje informace o řešení potíží s Monitorování stavu.
+Pomocí této rutiny můžete prozkoumat stav monitorování, verzi modulu PowerShellu a zkontrolovat běžící proces.
+Tato rutina oznámí informace o verzi a informace o souborech klíčů potřebných pro monitorování.
 
 ### <a name="examples"></a>Příklady
 
-#### <a name="example-application-status"></a>Příklad: Stav aplikace
+#### <a name="example-application-status"></a>Příklad: stav aplikace
 
-Spuštěním `Get-ApplicationInsightsMonitoringStatus` příkazu zobrazíte stav monitorování webových serverů.
+Spuštěním příkazu `Get-ApplicationInsightsMonitoringStatus` zobrazte stav monitorování webů.
 
 ```powershell
 
@@ -326,16 +326,16 @@ AppAlreadyInstrumented : true
 ```
 
 V tomto příkladu;
-- **Identifikátor počítače** je anonymní ID používané k jednoznačné identifikaci serveru. Pokud vytvoříte žádost o podporu, budeme potřebovat toto ID k vyhledání protokolů pro váš server.
-- **Výchozí web** je ve službě IIS zastaven.
-- **DemoWebApp111** byl spuštěn ve službě IIS, ale neobdržel žádné požadavky. Tato sestava ukazuje, že neexistuje žádný spuštěný proces (ProcessId: nebyl nalezen).
-- **DemoWebApp222** je spuštěn a je monitorován (Instrumented: true). Na základě konfigurace uživatele, Instrumentation Key xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx123 byl uzavřeno pro tento web.
-- **DemoWebApp333** byl ručně instrumentován pomocí sady Application Insights SDK. Sledování stavu zjistilo sadu SDK a nebude tento web monitorovat.
+- **Identifikátor počítače** je anonymní ID, které slouží k jednoznačné identifikaci vašeho serveru. Pokud vytvoříte žádost o podporu, budeme toto ID potřebovat k nalezení protokolů pro váš server.
+- **Výchozí web** je zastavený ve službě IIS.
+- Služba **DemoWebApp111** byla spuštěna ve službě IIS, ale neobdržela žádné požadavky. Tato sestava obsahuje nespuštěný proces (ProcessId: Nenalezeno).
+- Služba **DemoWebApp222** je spuštěná a monitorovaná (instrumentovaná: true). Na základě konfigurace uživatele instrumentace klíče xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx123 byla pro tento web shodná.
+- **DemoWebApp333** se ručně instrumentoval pomocí sady Application Insights SDK. Monitorování stavu zjistila sadu SDK a nebude monitorovat tuto lokalitu.
 
 
-#### <a name="example-powershell-module-information"></a>Příklad: Informace o modulu PowerShellu
+#### <a name="example-powershell-module-information"></a>Příklad: informace o modulu PowerShellu
 
-Spuštěním `Get-ApplicationInsightsMonitoringStatus -PowerShellModule` příkazu zobrazíte informace o aktuálním modulu:
+Spusťte příkaz `Get-ApplicationInsightsMonitoringStatus -PowerShellModule` , který zobrazí informace o aktuálním modulu:
 
 ```powershell
 
@@ -388,11 +388,11 @@ ApplicationInsightsSdkPath (Exists: True)
 C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\Runtime\Microsoft.ApplicationInsights.dll
 ```
 
-#### <a name="example-runtime-status"></a>Příklad: Stav runtime
+#### <a name="example-runtime-status"></a>Příklad: běhový stav
 
-Můžete zkontrolovat proces v počítači s přístrojem a zjistit, zda jsou načteny všechny knihovny DLL. Pokud monitorování funguje, by mělo být načteno alespoň 12 knihoven DLL.
+Můžete zkontrolovat proces v instrumentované počítači a zjistit, jestli jsou všechny knihovny DLL načtené. Pokud monitorování funguje, měli byste načíst aspoň 12 knihoven DLL.
 
-Spusťte `Get-ApplicationInsightsMonitoringStatus -InspectProcess`příkaz :
+Spusťte příkaz `Get-ApplicationInsightsMonitoringStatus -InspectProcess`:
 
 
 ```
@@ -430,58 +430,58 @@ listdlls64.exe -accepteula w3wp
 
 #### <a name="no-parameters"></a>(Žádné parametry)
 
-Ve výchozím nastavení bude tato rutina hlásit stav monitorování webových aplikací.
-Tuto možnost použijte ke kontrole, pokud byla vaše aplikace úspěšně instrumentována.
-Můžete si také prohlédnout, který klíč instrumentace byl spárován s vaším webem.
+Ve výchozím nastavení tato rutina oznámí stav monitorování webových aplikací.
+Tuto možnost použijte, pokud chcete zkontrolovat, jestli se aplikace úspěšně instrumentoval.
+Můžete také zkontrolovat, který klíč instrumentace byl spárován s vaší lokalitou.
 
 
-#### <a name="-powershellmodule"></a>-PowerShellModul
-**Nepovinné**. Tento přepínač slouží k vykazovat čísla verzí a cesty knihoven DLL potřebných pro monitorování.
-Tuto možnost použijte, pokud potřebujete identifikovat verzi libovolné dll, včetně sady Application Insights SDK.
+#### <a name="-powershellmodule"></a>-PowerShellModule
+**Volitelné**. Pomocí tohoto přepínače můžete nahlásit čísla verzí a cesty knihoven DLL, které jsou požadovány pro monitorování.
+Tuto možnost použijte, pokud potřebujete určit verzi jakékoli knihovny DLL, včetně sady Application Insights SDK.
 
 #### <a name="-inspectprocess"></a>-InspectProcess
 
-**Nepovinné**. Pomocí tohoto přepínače můžete ohlásit, zda je spuštěna iis.
-Bude také stahovat externí nástroje k určení, zda jsou potřebné knihovny DLL načteny do běhu iis.
+**Volitelné**. Pomocí tohoto přepínače můžete ohlásit, jestli je služba IIS spuštěná.
+Stáhne také externí nástroje a určí, zda jsou potřebné knihovny DLL načteny do modulu runtime služby IIS.
 
 
-Pokud se tento proces z nějakého důvodu nezdaří, můžete tyto příkazy spustit ručně:
-- iisreset.exe /stav
-- [handle64.exe](https://docs.microsoft.com/sysinternals/downloads/handle) -p w3wp | findstr /I "InstrumentationEngineEngine AI. ApplicationInsights"
-- [listdlls64.exe](https://docs.microsoft.com/sysinternals/downloads/listdlls) w3wp | findstr /I "InstrumentationEngineEngine AI ApplicationInsights"
+Pokud se tento proces z jakéhokoli důvodu nepovede, můžete tyto příkazy spustit ručně:
+- iisreset. exe/status
+- [handle64. exe](https://docs.microsoft.com/sysinternals/downloads/handle) – p W3wp | Findstr/I "InstrumentationEngine AI". ApplicationInsights
+- [listdlls64. exe](https://docs.microsoft.com/sysinternals/downloads/listdlls) W3wp | Findstr/I "InstrumentationEngine AI ApplicationInsights"
 
 
 #### <a name="-force"></a>-Force
 
-**Nepovinné**. Používá se pouze s InspectProcess. Pomocí tohoto přepínače můžete přeskočit výzvu uživatele, která se zobrazí před stažením dalších nástrojů.
+**Volitelné**. Používáno pouze s InspectProcess. Pomocí tohoto přepínače přeskočíte výzvu uživatele, která se zobrazí před stažením dalších nástrojů.
 
 
 ## <a name="set-applicationinsightsmonitoringconfig"></a>Set-ApplicationInsightsMonitoringConfig
 
-Nastaví konfigurační soubor bez úplné přeinstalace.
-Změny se projeví až po restartování služby IIS.
+Nastaví konfigurační soubor bez provedení úplné přeinstalace.
+Restartujte službu IIS, aby se provedené změny projevily.
 
 > [!IMPORTANT] 
-> Tato rutina vyžaduje relaci prostředí PowerShell s oprávněními správce.
+> Tato rutina vyžaduje relaci PowerShellu s oprávněními správce.
 
 
 ### <a name="examples"></a>Příklady
 
 #### <a name="example-with-a-single-instrumentation-key"></a>Příklad s jedním klíčem instrumentace
-V tomto příkladu bude všem aplikacím v aktuálním počítači přiřazen jeden klíč instrumentace.
+V tomto příkladu se všem aplikacím v aktuálním počítači přiřadí jeden klíč instrumentace.
 
 ```powershell
 PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 ```
 
-#### <a name="example-with-an-instrumentation-key-map"></a>Příklad s mapou klíčů instrumentace
+#### <a name="example-with-an-instrumentation-key-map"></a>Příklad s mapou klíče instrumentace
 V tomto příkladu:
-- `MachineFilter`odpovídá aktuálnímu počítači `'.*'` pomocí zástupných symbolů.
-- `AppFilter='WebAppExclude'`poskytuje `null` klíč instrumentace. Zadaná aplikace nebude instrumentována.
+- `MachineFilter`odpovídá aktuálnímu počítači pomocí `'.*'` zástupného znaku.
+- `AppFilter='WebAppExclude'`poskytuje klíč `null` instrumentace. Zadaná aplikace nebude instrumentovaná.
 - `AppFilter='WebAppOne'`přiřadí zadané aplikaci jedinečný klíč instrumentace.
 - `AppFilter='WebAppTwo'`přiřadí zadané aplikaci jedinečný klíč instrumentace.
-- Nakonec `AppFilter` také používá `'.*'` zástupný znak tak, aby odpovídal všem webovým aplikacím, které nejsou spárovány s dřívějšími pravidly, a přiřadí výchozí klíč instrumentace.
-- Prostory jsou přidány pro čitelnost.
+- Nakonec `AppFilter` taky používá `'.*'` zástupný znak ke spárování se všemi webovými aplikacemi, které se neshodují s předchozími pravidly a přiřazují výchozí klíč instrumentace.
+- Jsou přidány mezery pro čitelnost.
 
 ```powershell
 Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap `
@@ -493,38 +493,38 @@ Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap `
 
 ### <a name="parameters"></a>Parametry
 
-#### <a name="-instrumentationkey"></a>-InstrumentationKey
-**Povinná hodnota.** Tento parametr slouží k zadání jediného klíče instrumentace pro všechny aplikace v cílovém počítači.
+#### <a name="-instrumentationkey"></a>– InstrumentationKey
+**Povinná hodnota.** Pomocí tohoto parametru můžete zadat jeden klíč instrumentace pro použití všemi aplikacemi v cílovém počítači.
 
 #### <a name="-instrumentationkeymap"></a>-InstrumentationKeyMap
-**Povinná hodnota.** Tento parametr slouží k zadání více instrumentačních klíčů a mapování instrumentačních klíčů používaných každou aplikací.
-Nastavením `MachineFilter`můžete vytvořit jeden instalační skript pro několik počítačů .
+**Povinná hodnota.** Tento parametr použijte k zadání více klíčů instrumentace a mapování klíčů instrumentace používaných jednotlivými aplikacemi.
+Jeden instalační skript pro několik počítačů můžete vytvořit nastavením `MachineFilter`.
 
 > [!IMPORTANT]
-> Aplikace se budou shodovat s pravidly v pořadí, v jakém jsou pravidla k dispozici. Proto byste měli nejprve zadat nejkonkrétnější pravidla a nejobecnější pravidla poslední.
+> Aplikace budou odpovídat pravidlům v pořadí, v jakém jsou tato pravidla k dispozici. Proto byste měli nejdřív zadat nejvíce specifická pravidla a nejobecnější pravidla.
 
 ##### <a name="schema"></a>Schéma
 `@(@{MachineFilter='.*';AppFilter='.*';InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'})`
 
 - **MachineFilter** je povinný regulární výraz jazyka C# počítače nebo názvu virtuálního počítače.
-    - '.*' bude odpovídat všem
-    - Název_počítače bude odpovídat pouze počítačům se zadaným názvem.
-- **AppFilter** je povinný regulární výraz jazyka C# názvu počítače nebo virtuálního počítače.
-    - '.*' bude odpovídat všem
-    - Název_aplikace bude shodovat pouze aplikace služby IIS se zadaným názvem.
-- **InstrumentationKey** je nutné povolit monitorování aplikací, které odpovídají předchozí dva filtry.
-    - Pokud chcete definovat pravidla pro vyloučení monitorování, ponechte tuto hodnotu nulovou.
+    - '. * ' bude odpovídat všem
+    - Hodnota ComputerName bude odpovídat jenom počítačům se zadaným názvem.
+- **AppFilter** je povinný regulární výraz jazyka C# počítače nebo názvu virtuálního počítače.
+    - '. * ' bude odpovídat všem
+    - ' ApplicationName ' bude odpovídat pouze aplikacím služby IIS se zadaným názvem.
+- **InstrumentationKey** se vyžaduje k tomu, aby bylo možné monitorovat aplikace, které odpovídají předchozím dvěma filtrům.
+    - Pokud chcete definovat pravidla pro vyloučení monitorování, ponechte tuto hodnotu null.
 
 
-#### <a name="-verbose"></a>-Podrobné
-**Společný parametr.** Tento přepínač slouží k zobrazení podrobných protokolů.
+#### <a name="-verbose"></a>– Verbose
+**Společný parametr** Pomocí tohoto přepínače zobrazíte podrobné protokoly.
 
 
 ### <a name="output"></a>Výstup
 
-Ve výchozím nastavení žádný výstup.
+Ve výchozím nastavení není k dispozici žádný výstup.
 
-##### <a name="example-verbose-output-from-setting-the-config-file-via--instrumentationkey"></a>Příklad podrobného výstupu z nastavení konfiguračního souboru přes -InstrumentationKey
+##### <a name="example-verbose-output-from-setting-the-config-file-via--instrumentationkey"></a>Příklad podrobného výstupu z nastavení konfiguračního souboru prostřednictvím-InstrumentationKey
 
 ```
 VERBOSE: Operation: InstallWithIkey
@@ -536,7 +536,7 @@ VERBOSE: Config File Path:
 C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\applicationInsights.ikey.config
 ```
 
-##### <a name="example-verbose-output-from-setting-the-config-file-via--instrumentationkeymap"></a>Příklad podrobného výstupu z nastavení konfiguračního souboru přes -InstrumentationKeyMap
+##### <a name="example-verbose-output-from-setting-the-config-file-via--instrumentationkeymap"></a>Příklad podrobného výstupu z nastavení konfiguračního souboru prostřednictvím-InstrumentationKeyMap
 
 ```
 VERBOSE: Operation: InstallWithIkeyMap
@@ -550,55 +550,55 @@ VERBOSE: Config File Path:
 C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\applicationInsights.ikey.config
 ```
 
-## <a name="start-applicationinsightsmonitoringtrace"></a>Spuštění aplikaceInsightsMonitoringTrace
+## <a name="start-applicationinsightsmonitoringtrace"></a>Spustit – ApplicationInsightsMonitoringTrace
 
-Shromažďuje [Události ETW](https://docs.microsoft.com/windows/desktop/etw/event-tracing-portal) z bezkódového připojení runtime. Tato rutina je alternativou ke spuštění [PerfView](https://github.com/microsoft/perfview).
+Shromažďuje [události ETW](https://docs.microsoft.com/windows/desktop/etw/event-tracing-portal) z běhového modulu připojení s kódováním. Tato rutina je alternativou ke spuštění [PerfView](https://github.com/microsoft/perfview).
 
-Shromážděné události budou vytištěny do konzoly v reálném čase a uloženy do souboru ETL. Výstupní soubor ETL lze otevřít [PerfView](https://github.com/microsoft/perfview) pro další šetření.
+Shromážděné události budou v reálném čase vytištěny do konzoly a uloženy do souboru ETL. Výstupní soubor ETL může otevřít [PerfView](https://github.com/microsoft/perfview) k dalšímu prošetření.
 
-Tato rutina bude spuštěna, dokud nedosáhne doby trvání časového limitu`Ctrl + C`(výchozí 5 minut) nebo dokud není zastavena ručně ( ).
+Tato rutina se spustí, dokud nedosáhne časového limitu (výchozí hodnota je 5 minut) nebo`Ctrl + C`se zastaví ručně ().
 
 ### <a name="examples"></a>Příklady
 
 #### <a name="how-to-collect-events"></a>Jak shromažďovat události
 
-Za normálních okolností bychom vás požádat, abyste shromažďovat události, aby prošetřila, proč vaše aplikace není instrumentované.
+Normálně bychom vás poznamenali, že shromáždíte události, abyste zjistili, proč se vaše aplikace neinstrumentuje.
 
-Bezkódový připojit runtime bude vyzařovat Události ETW při spuštění služby IIS a při spuštění aplikace.
+Modul runtime pro nekódování kódu bude generovat události ETW při spuštění služby IIS a při spuštění aplikace.
 
-Chcete-li shromáždit tyto události:
-1. V konzoli cmd s oprávněními správce spouštějte `iisreset /stop` Vypnutí služby IIS a všech webových aplikací.
+Shromažďování těchto událostí:
+1. V konzole cmd s oprávněními správce spusťte `iisreset /stop` vypnutí služby IIS a všech webových aplikací.
 2. Spustit tuto rutinu
-3. V konzoli cmd s oprávněními správce spusťte `iisreset /start` Spuštění služby IIS.
+3. V konzole cmd s oprávněními `iisreset /start` správce spusťte službu IIS.
 4. Zkuste přejít do aplikace.
-5. Po dokončení načítání aplikace ji můžete ručně`Ctrl + C`zastavit ( ) nebo počkat na časový rámec.
+5. Po dokončení načítání aplikace ji můžete zastavit ručně (`Ctrl + C`) nebo počkat na časový limit.
 
-#### <a name="what-events-to-collect"></a>Jaké události sbírat
+#### <a name="what-events-to-collect"></a>Jaké události se mají shromáždit
 
-Při shromažďování událostí máte tři možnosti:
-1. Přepínač slouží `-CollectSdkEvents` ke shromažďování událostí vyzařovaných ze sady Application Insights SDK.
-2. Přepínač slouží `-CollectRedfieldEvents` ke shromažďování událostí vyzařovaných sledováním stavu a redfieldovým runtime. Tyto protokoly jsou užitečné při diagnostice služby IIS a spuštění aplikace.
-3. Pomocí obou přepínačů můžete shromažďovat oba typy událostí.
+Při shromažďování událostí máte k dispozici tři možnosti:
+1. Pomocí přepínače `-CollectSdkEvents` Shromážděte události vydávané ze sady Application Insights SDK.
+2. Pomocí přepínače `-CollectRedfieldEvents` Shromážděte události vydávané monitorování stavu a modulu runtime Redfield. Tyto protokoly jsou užitečné při diagnostikování služby IIS a spuštění aplikace.
+3. Oba přepínače slouží ke shromáždění obou typů událostí.
 4. Ve výchozím nastavení, pokud není zadán žádný přepínač, budou shromažďovány oba typy událostí.
 
 
 ### <a name="parameters"></a>Parametry
 
-#### <a name="-maxdurationinminutes"></a>-MaxdurationInMinutes
-**Volitelné.** Tento parametr slouží k nastavení, jak dlouho by měl tento skript shromažďovat události. Výchozí hodnota je 5 minut.
+#### <a name="-maxdurationinminutes"></a>-MaxDurationInMinutes
+**Volitelné.** Pomocí tohoto parametru můžete nastavit, jak dlouho má tento skript shromažďovat události. Výchozí hodnota je 5 minut.
 
 #### <a name="-logdirectory"></a>-LogDirectory
-**Volitelné.** Tento přepínač slouží k nastavení výstupního adresáře souboru ETL. Ve výchozím nastavení bude tento soubor vytvořen v adresáři Modules prostředí PowerShell. Úplná cesta se zobrazí během spuštění skriptu.
+**Volitelné.** Pomocí tohoto přepínače Nastavte výstupní adresář souboru ETL. Ve výchozím nastavení se tento soubor vytvoří v adresáři modulů PowerShellu. Úplná cesta se zobrazí během provádění skriptu.
 
 
 #### <a name="-collectsdkevents"></a>-CollectSdkEvents
-**Volitelné.** Tento přepínač slouží ke shromažďování událostí sady Application Insights SDK.
+**Volitelné.** Pomocí tohoto přepínače můžete shromažďovat události Application Insights SDK.
 
-#### <a name="-collectredfieldevents"></a>-CollectRedfieldUdálosti
-**Volitelné.** Tento přepínač slouží ke shromažďování událostí z monitoru stavu a runtime Redfield.
+#### <a name="-collectredfieldevents"></a>-CollectRedfieldEvents
+**Volitelné.** Pomocí tohoto přepínače můžete shromažďovat události z Monitorování stavu a modulu runtime Redfield.
 
-#### <a name="-verbose"></a>-Podrobné
-**Společný parametr.** Tento přepínač použijte k výstupu podrobných protokolů.
+#### <a name="-verbose"></a>– Verbose
+**Společný parametr** Pomocí tohoto přepínače můžete vyvýstupovat podrobné protokoly.
 
 
 
@@ -637,18 +637,18 @@ Timeout Reached. Stopping...
 ## <a name="next-steps"></a>Další kroky
 
   Zobrazení telemetrických dat:
- - [Prozkoumejte metriky](../../azure-monitor/app/metrics-explorer.md) a sledujte výkon a využití.
-- [Hledat události a protokoly](../../azure-monitor/app/diagnostic-search.md) diagnostikovat problémy.
-- Pro pokročilejší dotazy používejte [analýzy.](../../azure-monitor/app/analytics.md)
-- [Vytvořte řídicí panely](../../azure-monitor/app/overview-dashboard.md).
+ - [Prozkoumejte metriky](../../azure-monitor/app/metrics-explorer.md) pro monitorování výkonu a využití.
+- [Prohledejte události a protokoly](../../azure-monitor/app/diagnostic-search.md) a Diagnostikujte problémy.
+- K pokročilejším dotazům použijte [Analytics](../../azure-monitor/app/analytics.md) .
+- [Vytváření řídicích panelů](../../azure-monitor/app/overview-dashboard.md).
  
  Přidání další telemetrie:
  - [Vytvoření webových testů](monitor-web-app-availability.md) a ověření, jestli web zůstává živý.
-- [Přidejte telemetrickou službu webového klienta,](../../azure-monitor/app/javascript.md) chcete-li zobrazit výjimky z kódu webové stránky a povolit volání trasování.
-- [Přidejte do kódu sadou SDK application insights,](../../azure-monitor/app/asp-net.md) abyste mohli vkládat volání trasování a protokolování.
+- [Přidejte telemetrii webového klienta](../../azure-monitor/app/javascript.md) pro zobrazení výjimek z kódu webové stránky a umožnění volání trasování.
+- [Přidejte sadu Application Insights SDK do kódu](../../azure-monitor/app/asp-net.md) , abyste mohli vložit trasování a protokolování volání.
  
- S agentem Application Insights toho zvládnete víc:
- - Použijte náš průvodce [k řešení potíží s](status-monitor-v2-troubleshoot.md) agentem Application Insights.
+ Další Application Insights agenta:
+ - Pomocí naší příručky můžete [řešit potíže s](status-monitor-v2-troubleshoot.md) agentem Application Insights.
 
 
 

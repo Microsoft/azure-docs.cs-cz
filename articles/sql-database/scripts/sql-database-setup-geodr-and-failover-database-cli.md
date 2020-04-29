@@ -1,6 +1,6 @@
 ---
-title: Jako příklad aktivní geograficky replikační databáze Azure SQL Database je aktivní funkce AKTIVACE
-description: Ukázkový skript Azure CLI pro nastavení aktivní geografické replikace pro jednu databázi v Azure SQL Database a převzetí služeb při selhání.
+title: Příklad rozhraní příkazového řádku – aktivní geografická replikace – jedna Azure SQL Database
+description: Ukázkový skript Azure CLI pro nastavení aktivní geografické replikace pro izolovanou databázi v Azure SQL Database a převzetí služeb při selhání.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -12,15 +12,15 @@ ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 03/12/2019
 ms.openlocfilehash: 3bc6cbe025854286b0a24a34240396eea16292b6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80067410"
 ---
-# <a name="use-cli-to-configure-active-geo-replication-for-a-single-database-in-azure-sql-database"></a>Konfigurace aktivní geografické replikace pro jednu databázi v Azure SQL Database pomocí rozhraní příkazového příkazového příkazu
+# <a name="use-cli-to-configure-active-geo-replication-for-a-single-database-in-azure-sql-database"></a>Konfigurace aktivní geografické replikace pro izolovanou databázi v Azure SQL Database pomocí rozhraní příkazového řádku
 
-Tento příklad skriptu Azure CLI konfiguruje aktivní geografickou replikaci pro jednu databázi a převezme ji do sekundární repliky databáze.
+Tento ukázkový skript rozhraní příkazového řádku Azure nakonfiguruje aktivní geografickou replikaci pro izolovanou databázi a převezme její služby při selhání do sekundární repliky databáze.
 
 Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (CLI) místně, musíte mít spuštěnou verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli).
 
@@ -42,19 +42,19 @@ az account set -s $subscription # ...or use 'az login'
 
 ### <a name="clean-up-deployment"></a>Vyčištění nasazení
 
-Pomocí následujícího příkazu odeberte skupinu prostředků a všechny k ní spojené prostředky.
+Pomocí následujícího příkazu odeberte skupinu prostředků a všechny k ní přidružené prostředky.
 
 ```azurecli-interactive
 az group delete --name $resource
 ```
 
-## <a name="sample-reference"></a>Odkaz na vzorek
+## <a name="sample-reference"></a>Vzorový odkaz
 
 Tento skript používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
 | | |
 |---|---|
-| [az sql db replika](/cli/azure/sql/db/replica) | Příkazy repliky databáze. |
+| [AZ SQL DB Replica](/cli/azure/sql/db/replica) | Příkazy repliky databáze. |
 
 ## <a name="next-steps"></a>Další kroky
 

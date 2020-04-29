@@ -1,6 +1,6 @@
 ---
-title: Filtrování transformace v toku dat mapování
-description: Odfiltrování řádků pomocí transformace filtru v toku dat mapování Azure Data Factory
+title: Filtrovat transformaci v toku dat mapování
+description: Odfiltrování řádků pomocí transformace filtru v Azure Data Factory toku dat mapování
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
@@ -9,23 +9,23 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/16/2019
 ms.openlocfilehash: 32a40f3d4da93318c6d2ec25295c89a7b53141e4
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81606424"
 ---
-# <a name="filter-transformation-in-mapping-data-flow"></a>Filtrování transformace v toku dat mapování
+# <a name="filter-transformation-in-mapping-data-flow"></a>Filtrovat transformaci v toku dat mapování
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Filtr transformace umožňuje filtrování řádků na základě podmínky. Výstupní datový proud obsahuje všechny řádky, které odpovídají podmínce filtrování. Transformace filtru je podobná klauzuli WHERE v SQL.
+Transformace filtru umožňují filtrování řádků na základě podmínky. Výstupní datový proud obsahuje všechny řádky, které odpovídají podmínkám filtrování. Transformace filtru je podobná klauzuli WHERE v SQL.
 
 ## <a name="configuration"></a>Konfigurace
 
-Pomocí tvůrce výrazů toku dat zadejte výraz pro podmínku filtru. Chcete-li otevřít tvůrce výrazů, klikněte na modré pole. Podmínka filtru musí být typu logická hodnota. Další informace o tom, jak vytvořit výraz, naleznete v dokumentaci [tvůrce výrazů.](concepts-data-flow-expression-builder.md)
+Pomocí Tvůrce výrazů toku dat zadejte výraz pro podmínku filtru. Chcete-li otevřít Tvůrce výrazů, klikněte na modrý rámeček. Podmínka filtru musí být typu Boolean. Další informace o tom, jak vytvořit výraz, najdete v dokumentaci k [tvůrci výrazů](concepts-data-flow-expression-builder.md) .
 
-![Transformace filtru](media/data-flow/filter1.png "Transformace filtru")
+![Filtrovat transformaci](media/data-flow/filter1.png "Filtrovat transformaci")
 
 ## <a name="data-flow-script"></a>Skript toku dat
 
@@ -40,13 +40,13 @@ Pomocí tvůrce výrazů toku dat zadejte výraz pro podmínku filtru. Chcete-li
 
 ### <a name="example"></a>Příklad
 
-Níže uvedený příklad je `FilterBefore1960` transformace filtru s `CleanData`názvem, která přijímá příchozí datový proud . Podmínka filtru je `year <= 1960`výraz .
+Níže uvedený příklad je transformace filtru s názvem `FilterBefore1960` , která přebírá příchozí `CleanData`datový proud. Podmínka filtru je výraz `year <= 1960`.
 
-V ux datové továrny tato transformace vypadá jako následující obrázek:
+V uživatelském prostředí Data Factory Tato transformace vypadá jako na následujícím obrázku:
 
-![Transformace filtru](media/data-flow/filter1.png "Transformace filtru")
+![Filtrovat transformaci](media/data-flow/filter1.png "Filtrovat transformaci")
 
-Skript toku dat pro tuto transformaci je ve fragmentu níže:
+Skript toku dat pro tuto transformaci je v následujícím fragmentu kódu:
 
 ```
 CleanData
@@ -58,4 +58,4 @@ CleanData
 
 ## <a name="next-steps"></a>Další kroky
 
-Odfiltrování sloupců pomocí [vybrané transformace](data-flow-select.md)
+Filtrování sloupců pomocí [transformace Select](data-flow-select.md)

@@ -1,8 +1,8 @@
 ---
-title: Kodéry živého streamování doporučené mediálními službami – Azure | Dokumenty společnosti Microsoft
-description: Informace o místních kodérech živého streamování doporučených službou Media Services
+title: Kodéry živého streamování doporučují Media Services – Azure | Microsoft Docs
+description: Přečtěte si o službě Live streamování pro místní kodéry Doporučené Media Services
 services: media-services
-keywords: kódování;kodéry;média
+keywords: kódování; kodéry; média
 author: johndeu
 manager: johndeu
 ms.author: johndeu
@@ -10,103 +10,103 @@ ms.date: 04/16/2020
 ms.topic: article
 ms.service: media-services
 ms.openlocfilehash: 0676b6b183c64dcd0fb15b87de48a4afed3a0011
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81641809"
 ---
-# <a name="tested-on-premises-live-streaming-encoders"></a>Testované místní kodéry živého streamování
+# <a name="tested-on-premises-live-streaming-encoders"></a>Testování místních kodérů živého streamování
 
-Ve službě Azure Media Services [představuje živá událost](https://docs.microsoft.com/rest/api/media/liveevents) (kanál) kanál pro zpracování obsahu živého streamování. Živá událost přijímá živé vstupní proudy jedním ze dvou způsobů.
+V Azure Media Services [živá událost](https://docs.microsoft.com/rest/api/media/liveevents) (kanál) představuje kanál pro zpracování obsahu živého streamování. Živá událost přijímá živé vstupní proudy jedním ze dvou způsobů.
 
-* Místní živý kodér odesílá vícebitový datový proud RTMP nebo plynulého streamování (fragmentovaný protokol MP4) do živé události, která není povolena k provádění živého kódování pomocí služby Media Services. Ingestované datové proudy procházejí živými událostmi bez dalšího zpracování. Tato metoda se nazývá **předávací**. Doporučujeme, aby živý kodér odesílal datové proudy s více přenosovým tokem namísto datového proudu s jedním datovým tokem do předávací živé události, aby bylo možné do klienta přenášet datový tok. 
+* On-premises Live Encoder odesílá datový proud s více přenosovými rychlostmi nebo Smooth Streaming (fragmentovaný MP4) do živé události, která není povolena k provádění živého kódování pomocí Media Services. Ingestované datové proudy procházejí živými událostmi bez dalšího zpracování. Tato metoda se nazývá **předávací**. Pro živý kodér doporučujeme, aby odesílal datové proudy s více přenosovými rychlostmi, a nikoli datový proud s jednou přenosovou rychlostí, který umožňuje streamování s adaptivní přenosovou rychlostí na klienta. 
 
-    Pokud používáte datové proudy s více přenosovými rychlostmi pro předávací živou událost, musí být synchronizována velikost videa GOP a fragmenty videa na různých datových tocích, aby se zabránilo neočekávanému chování na straně přehrávání.
+    Pokud pro průchozí živou událost používáte datové proudy s více přenosovými rychlostmi, musí být velikost videa skupinu GOP a fragmenty videa na různých přenosech se musí synchronizovat, aby nedocházelo k neočekávanému chování na straně přehrávání.
 
   > [!TIP]
-  > Použití metody průchozí je nejekonomičtější způsob, jak provést živé vysílání.
+  > Použití předávací metody je nejúčinnější způsob, jak provádět živé streamování.
  
-* Místní živý kodér odešle datový proud s jedním přenosovým tokem do živé události, který je povolen k živému kódování pomocí služby Media Services v jednom z následujících formátů: RTMP nebo Plynulé streamování (fragmentované MP4). Živá událost pak provádí živé kódování příchozího datového proudu s jedním přenosovým tokem do datového proudu videa s více přenosovou rychlostí (adaptivní).
+* On-premises Live Encoder pošle datový proud s jednou přenosovou rychlostí do živé události, která má povoleno provádět kódování v reálném čase pomocí Media Services v jednom z následujících formátů: RTMP nebo Smooth Streaming (fragmentovaný MP4). Živá událost pak provede živé kódování příchozího datového proudu s jednou přenosovou rychlostí do datového proudu s více přenosovými rychlostmi (adaptivní).
 
-Tento článek popisuje testované místní živé streamování kodérů. Pokyny k ověření místního živého kodéru najdete v [tématu Ověření místního kodéru.](become-on-premises-encoder-partner.md)
+Tento článek popisuje testování místních kodérů živého streamování. Pokyny, jak ověřit váš místní kodér v reálném čase, najdete v tématu [ověření místního kodéru](become-on-premises-encoder-partner.md) .
 
-Podrobné informace o živém kódování pomocí služby Media Services naleznete v [tématu Živé vysílání pomocí služby Media Services v3](live-streaming-overview.md).
+Podrobné informace o živém kódování pomocí Media Services najdete v tématu [živé streamování s Media Services V3](live-streaming-overview.md).
 
-## <a name="encoder-requirements"></a>Požadavky na kodér
+## <a name="encoder-requirements"></a>Požadavky kodéru
 
-Kodéry musí podporovat TLS 1.2 při použití protokolů HTTPS nebo RTMPS.
+Kodéry musí podporovat protokol TLS 1,2 při použití protokolů HTTPS nebo RTMP.
 
-## <a name="live-encoders-that-output-rtmp"></a>Živé kodéry, které vydezkují RTMP
+## <a name="live-encoders-that-output-rtmp"></a>Živé kodéry, které mají výstup RTMP
 
-Služba Media Services doporučuje používat jeden z následujících kodérů pro kódování v reálném čase, které mají RTMP jako výstup. Podporovaná schémata `rtmp://` adres `rtmps://`URL jsou nebo .
+Služba Media Services doporučuje používat jeden z následujících kodérů pro kódování v reálném čase, které mají RTMP jako výstup. Podporovaná schémata URL jsou `rtmp://` nebo `rtmps://`.
 
 Při streamování přes RTMP zkontrolujte nastavení brány firewall nebo proxy serveru, aby se zajistilo, že jsou otevřené odchozí porty TCP 1935 a 1936.<br/><br/>
 Při streamování přes RTMPS zkontrolujte nastavení brány firewall nebo proxy serveru, aby se zajistilo, že jsou otevřené odchozí porty TCP 2935 a 2936.
 
 > [!NOTE]
-> Kodéry musí při použití protokolů RTMPS podporovat protokoly TLS 1.2.
+> Kodéry musí podporovat protokol TLS 1,2 při použití protokolů RTMP.
 
 - Adobe Flash Media Live Encoder 3.2
 - [Cambria Live 4,3](https://www.capellasystems.net/products/cambria-live/)
-- Elementární Live (verze 2.14.15 a vyšší)
+- Element-Live (verze 2.14.15 a vyšší)
 - Haivision KB
 - Haivision Makito X HEVC
 - OBS Studio
 - Switcher Studio (iOS)
-- Telestream Wirecast (verze 13.0.2 nebo vyšší z důvodu požadavku TLS 1.2)
-- Telestream Wirecast S (podporuje se pouze RTMP)
+- Wirecast (verze 13.0.2 nebo vyšší) z důvodu požadavku TLS 1,2)
+- Wirecast S-Stream (podporuje se jenom RTMP)
 - Teradek Slice 756
 - VMIX
 - xStream
-- [Ffmpeg](https://www.ffmpeg.org)
-- [GoPro](https://gopro.com/help/articles/block/getting-started-with-live-streaming) Hrdina 7 a Hrdina 8
+- [FFmpeg](https://www.ffmpeg.org)
+- [GoPro](https://gopro.com/help/articles/block/getting-started-with-live-streaming) Hero 7 a Hero 8
 - [Restream.io](https://restream.io/)
 
-## <a name="live-encoders-that-output-fragmented-mp4"></a>Živé kodéry, které výstup fragmentované MP4
+## <a name="live-encoders-that-output-fragmented-mp4"></a>Živé kodéry, jejichž výstupem je fragment MP4
 
-Služba Media Services doporučuje jako výstup použít jeden z následujících živých kodérů, které mají vícebitové plynulé streamování (fragmentované MP4). Podporovaná schémata `http://` adres `https://`URL jsou nebo .
+Media Services doporučuje použít jeden z následujících živých kodérů, které mají s více přenosovými rychlostmi Smooth Streaming (fragmentované MP4) jako výstup. Podporovaná schémata URL jsou `http://` nebo `https://`.
 
 > [!NOTE]
-> Kodéry musí při používání protokolů HTTPS podporovat protokoly TLS 1.2.
+> Kodéry musí podporovat protokol TLS 1,2 při použití protokolů HTTPS.
 
 - Ateme TITAN Live
 - Cisco Digital Media Encoder 2200
-- Elementární Live (verze 2.14.15 a vyšší kvůli požadavku TLS 1.2)
+- Element-Live (verze 2.14.15 a vyšší z důvodu požadavku TLS 1,2)
 - Envivio 4Caster C4 Gen III 
-- Představte si, že komunikace Selenio MCP3
+- Představte si Communications Selenio MCP3
 - Media Excel Hero Live a Hero 4K (UHD/HEVC)
-- [Ffmpeg](https://www.ffmpeg.org)
+- [FFmpeg](https://www.ffmpeg.org)
 
 > [!TIP]
->  Pokud vysíláte živé události ve více jazycích (například jednu zvukovou stopu v angličtině a jednu zvukovou stopu ze španělštiny), můžete toho dosáhnout pomocí živého kodéru aplikace Media Excel nakonfigurovaného k odeslání živého přenosu do předávací živé události.
+>  Pokud vytváříte streamování živých událostí v několika jazycích (například jedna anglická zvuková stopa a jedna Španělská zvuková stopa), můžete toho dosáhnout pomocí Media Encoder Live kodéru nakonfigurovaného tak, aby odesílal živý kanál do předávací živé události.
 
-## <a name="configuring-on-premises-live-encoder-settings"></a>Konfigurace místního nastavení živého kodéru
+## <a name="configuring-on-premises-live-encoder-settings"></a>Konfigurace nastavení místního kodéru pro Live Encoder
 
-Informace o tom, jaká nastavení jsou platná pro typ živé události, naleznete v [tématu Porovnání typů živých událostí](live-event-types-comparison.md).
+Informace o tom, jaká nastavení jsou platná pro váš typ živé události, najdete v tématu [porovnání typů událostí typu Live](live-event-types-comparison.md).
 
 ### <a name="playback-requirements"></a>Požadavky pro přehrávání
 
-Chcete-li přehrávat obsah, musí být k dispozici datový proud zvuku i videa. Přehrávání datového proudu pouze pro video není podporováno.
+Aby bylo možné přehrávat obsah, musí být k dispozici zvukový a obrazový Stream. Přehrávání datového proudu, který je jen pro video, se nepodporuje.
 
 ### <a name="configuration-tips"></a>Konfigurační tipy
 
 - Kdykoli je to možné, použijte kabelové internetové připojení.
-- Při určování požadavků na šířku pásma zdvojnásobte datové přenosové rychlosti streamování. Ačkoli toto jednoduché pravidlo není povinné, pomáhá zmírnit dopad přetížení sítě.
-- Při použití softwarových kodérů uzavřete všechny nepotřebné programy.
-- Změna konfigurace kodéru poté, co začne tlačit, má negativní vliv na událost. Změny konfigurace může způsobit, že událost nestabilní. 
-- Ujistěte se, že si dáváte dostatek času na nastavení události. U událostí ve velkém měřítku doporučujeme spustit instalaci hodinu před událostí.
-- Použijte výstup videa H.264 a zvukového kodeku AAC.
-- Ujistěte se, že je klíčový snímek nebo GOP časové zarovnání přes video vlastnosti.
+- Při určování požadavků na šířku pásma Zdvojnásobte přenosové rychlosti streamování. I když není povinné, toto jednoduché pravidlo pomáhá zmírnit dopad zahlcení sítě.
+- Při používání softwarových kodérů zavřete všechny nepotřebné programy.
+- Změna konfigurace kodéru po zahájení práce má na událost negativní vliv. Změny konfigurace můžou způsobit, že dojde k nestabilitě události. 
+- Ujistěte se, že máte k nastavení události dostatek času. Pro vysoce škálovatelné události doporučujeme spustit nastavení hodinu před událostí.
+- Použijte výstup videa H. 264 a zvukový kodek AAC.
+- Zajistěte, aby existoval klíčový snímek nebo skupinu GOP dočasné zarovnání napříč kvalitou videa.
 - Ujistěte se, že pro každou kvalitu videa existuje jedinečný název datového proudu.
-- Pro optimální výkon adaptivního přenosové rychlosti používejte přísné kódování CBR doporučené.
+- Pro optimální výkon adaptivní přenosové rychlosti doporučujeme použít striktní kódování CBR.
 
 > [!IMPORTANT]
-> Sledujte fyzický stav stroje (CPU / Memory / etc) jako nahrávání fragmentů do cloudu zahrnuje CPU a IO operace. Pokud změníte nastavení v kodéru, být některé obnovit kanály / živá událost pro změnu se projeví.
+> Sledujte fyzickou podmínku počítače (CPU/paměť/atd.), protože nahrávání fragmentů do cloudu zahrnuje vstupně-výstupní operace procesoru a vstupně-výstupních operací. Pokud v kodéru změníte nějaká nastavení, nezapomeňte nastavit, aby se změna projevila v kanálech/živé události.
 
 ## <a name="see-also"></a>Viz také
 
-[Živé vysílání pomocí mediálních služeb v3](live-streaming-overview.md)
+[Živé streamování s Media Services V3](live-streaming-overview.md)
 
 ## <a name="next-steps"></a>Další kroky
 

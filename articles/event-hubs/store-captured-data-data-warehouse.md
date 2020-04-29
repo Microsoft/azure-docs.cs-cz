@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Migrace dat událostí do datového skladu SQL – centra událostí Azure'
-description: 'Kurz: Tento kurz ukazuje, jak zachytit data z centra událostí do datového skladu SQL pomocí funkce Azure spouštěné mřížkou událostí.'
+title: 'Kurz: migrace dat událostí do SQL Data Warehouse – Azure Event Hubs'
+description: 'Kurz: v tomto kurzu se dozvíte, jak zachytit data z centra událostí do služby SQL Data Warehouse pomocí funkce Azure aktivované službou Event Grid.'
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: ''
@@ -10,13 +10,13 @@ ms.date: 01/15/2020
 ms.topic: tutorial
 ms.service: event-hubs
 ms.openlocfilehash: 28fa9dddda94845511ead7d8fb7481aff6b6b044
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80130851"
 ---
-# <a name="tutorial-migrate-captured-event-hubs-data-to-a-sql-data-warehouse-using-event-grid-and-azure-functions"></a>Kurz: Migrace zachycených dat centra událostí do datového skladu SQL pomocí gridu událostí a funkcí Azure
+# <a name="tutorial-migrate-captured-event-hubs-data-to-a-sql-data-warehouse-using-event-grid-and-azure-functions"></a>Kurz: migrace zachycených Event Hubs dat do SQL Data Warehouse pomocí Event Grid a Azure Functions
 
 [Zachytávání](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview) služby Event Hubs představuje nejjednodušší způsob, jak automaticky doručovat streamovaná data ve službě Event Hubs do služby Azure Blob Storage nebo Azure Data Lake Store. Následně můžete tato data zpracovávat a doručovat do libovolných dalších cílových úložišť, například do služby SQL Data Warehouse nebo Cosmos DB. V tomto kurzu se dozvíte, jak pomocí funkce Azure aktivované [Event Gridem](https://docs.microsoft.com/azure/event-grid/overview) zachytávat data z centra událostí do služby SQL Data Warehouse.
 
@@ -40,11 +40,11 @@ V tomto kurzu provedete následující akce:
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 - [Visual studio 2019](https://www.visualstudio.com/vs/). Při instalaci nezapomeňte nainstalovat následující sady funkcí: Vývoj desktopových aplikací .NET, Vývoj pro Azure, Vývoj pro ASP.NET a web, Vývoj v Node.js a Vývoj v Pythonu.
-- Ke stažení [ukázky Git](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/EventHubsCaptureEventGridDemo) Ukázkové řešení obsahuje následující součásti:
+- Stažení [ukázky Gitu](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/EventHubsCaptureEventGridDemo) ukázka řešení obsahuje následující součásti:
     - *WindTurbineDataGenerator* – Jednoduchý vydavatel odesílající ukázková data větrné turbíny do centra událostí s povolenou funkcí Zachytávání.
     - *FunctionDWDumper* – Funkce Azure, která přijímá oznámení Event Gridu při zachycení souboru Avro do objektu blob služby Azure Storage. Přijme cestu URI objektu blob, načte jeho obsah a odešle tato data do služby SQL Data Warehouse.
 
-    Tato ukázka používá nejnovější balíček Azure.Messaging.EventHubs. Starou ukázku, která používá balíček Microsoft.Azure.EventHubs, [najdete zde](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo). 
+    Tato ukázka používá nejnovější balíček Azure. Messaging. EventHubs. Starou ukázku, která používá balíček Microsoft. Azure. EventHubs, můžete najít [tady](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo). 
 
 ### <a name="deploy-the-infrastructure"></a>Nasazení infrastruktury
 Pomocí Azure PowerShellu nebo Azure CLI nasaďte infrastrukturu potřebnou pro tento kurz s využitím této [šablony Azure Resource Manageru](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/EventHubsDataMigration.json). Tato šablona vytvoří následující prostředky:
@@ -108,7 +108,7 @@ WITH (CLUSTERED COLUMNSTORE INDEX, DISTRIBUTION = ROUND_ROBIN);
 
 ## <a name="publish-code-to-the-functions-app"></a>Publikování kódu do aplikace Functions
 
-1. Otevřete řešení *EventHubsCaptureEventGridDemo.sln* ve Visual Studiu 2019.
+1. Otevřete řešení *EventHubsCaptureEventGridDemo. sln* v aplikaci Visual Studio 2019.
 
 1. V průzkumníku řešení klikněte pravým tlačítkem na *FunctionEGDWDumper* a vyberte **Publikovat**.
 
@@ -131,7 +131,7 @@ Po publikování funkce můžete začít odebírat událost zachycení ze služb
 
 ## <a name="create-an-event-grid-subscription-from-the-functions-app"></a>Vytvoření odběru Event Gridu v aplikaci Functions
  
-1. Přejděte na [portál Azure](https://portal.azure.com/). Vyberte skupinu prostředků a aplikaci funkcí.
+1. Přejít na [Azure Portal](https://portal.azure.com/). Vyberte skupinu prostředků a aplikaci funkcí.
 
    ![Zobrazení aplikace funkcí](./media/store-captured-data-data-warehouse/view-function-app.png)
 

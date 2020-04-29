@@ -1,6 +1,6 @@
 ---
-title: Řazení transformace v toku dat mapování
-description: Transformace řazení dat mapování datových tok ových společností Azure
+title: Transformace řazení v toku dat mapování
+description: Azure Data Factory transformace řazení dat mapování
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
@@ -9,34 +9,34 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/14/2020
 ms.openlocfilehash: 26852ec77194714c8236856b7cb496170bf0d777
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81606325"
 ---
-# <a name="sort-transformation-in-mapping-data-flow"></a>Řazení transformace v toku dat mapování
+# <a name="sort-transformation-in-mapping-data-flow"></a>Transformace řazení v toku dat mapování
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Transformace řazení umožňuje seřadit příchozí řádky v aktuálním datovém proudu. Můžete vybrat jednotlivé sloupce a seřadit je vzestupně nebo sestupně.
+Transformace řazení umožňuje řadit příchozí řádky v aktuálním datovém proudu. Můžete zvolit jednotlivé sloupce a seřadit je ve vzestupném nebo sestupném pořadí.
 
 > [!NOTE]
-> Mapování datových toků se provádí na podhřcí clustery, které distribuují data mezi více uzlů a oddílů. Pokud se rozhodnete znovu rozdělit data v následné transformaci, může dojít ke ztrátě řazení z důvodu přemísťování dat.
+> Mapování toků dat je prováděno v clusterech Spark, které distribuují data mezi více uzly a oddíly. Pokud se rozhodnete znovu rozdělit data v následné transformaci, může dojít ke ztrátě řazení z důvodu přerozdělování dat.
 
 ## <a name="configuration"></a>Konfigurace
 
 ![Nastavení řazení](media/data-flow/sort.png "Seřadit")
 
-**Malá a velká písmena:** Zda chcete ignorovat případ při řazení řetězcových nebo textových polí
+**Nerozlišuje velká a malá písmena:** Bez ohledu na to, zda chcete ignorovat velikost písmen při řazení řetězce nebo textových polí
 
-**Seřadit pouze v rámci oddílů:** Jako toky dat jsou spuštěny na jiskru, každý datový proud je rozdělen do oddílů. Toto nastavení seřadí data pouze v rámci příchozích oddílů namísto řazení celého datového proudu. 
+**Seřadit pouze v rámci oddílů:** Při spuštění datových toků ve Sparku jsou jednotlivé datové proudy rozdělené do oddílů. Toto nastavení seřadí data pouze v příchozích oddílech, nikoli pro řazení celého datového proudu. 
 
-**Podmínky řazení:** Zvolte sloupce, podle kterých se řadíte a v jakém pořadí řazení dochází. Pořadí určuje prioritu řazení. Zvolte, zda se hodnoty null zobrazí na začátku nebo na konci datového proudu.
+**Podmínky řazení:** Vyberte sloupce, podle kterých řadíte a v jakém pořadí se má řazení provést. Pořadí určuje prioritu řazení. Vyberte, zda se na začátku nebo na konci datového proudu budou zobrazovat hodnoty null.
 
 ### <a name="computed-columns"></a>Vypočítané sloupce
 
-Chcete-li upravit nebo extrahovat hodnotu sloupce před použitím řazení, najeďte nad sloupec a vyberte "vypočítaný sloupec". Tím otevřete tvůrce výrazů a vytvořte výraz pro operaci řazení namísto použití hodnoty sloupce.
+Chcete-li upravit nebo extrahovat hodnotu sloupce před použitím řazení, umístěte ukazatel myši na sloupec a vyberte "vypočítaný sloupec". Tím se otevře Tvůrce výrazů pro vytvoření výrazu pro operaci řazení namísto použití hodnoty sloupce.
 
 ## <a name="data-flow-script"></a>Skript toku dat
 
@@ -64,4 +64,4 @@ BasketballStats sort(desc(PTS, true),
 
 ## <a name="next-steps"></a>Další kroky
 
-Po řazení můžete použít [agregační transformace](data-flow-aggregate.md)
+Po řazení možná budete chtít použít [agregační transformaci](data-flow-aggregate.md) .

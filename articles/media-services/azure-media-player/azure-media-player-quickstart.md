@@ -1,20 +1,20 @@
 ---
-title: Rychlý start přehrávače médií Azure
-description: Přečtěte si základní kroky k nastavení Azure Media Playeru.
+title: Rychlý Start Azure Media Player
+description: Seznamte se se základními kroky pro nastavení Azure Media Player.
 author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: quickstart
 ms.date: 04/20/2020
 ms.openlocfilehash: ac81832765f674e58ad6b3213238e9c68e04d2dc
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81726463"
 ---
-# <a name="azure-media-player-quickstart"></a>Rychlý start programu Azure Media Player
-Azure Media Player se snadno nastavuje. Získání základního přehrávání mediálního obsahu z účtu Azure Media Services trvá jen několik minut. Tato část ukazuje základní kroky a nezachází do podrobností. Následující části poskytují podrobnosti o tom, jak nastavit a nakonfigurovat Azure Media Player.  Stačí přidat následující příkazy include do části `<head>` vašeho dokumentu:
+# <a name="azure-media-player-quickstart"></a>Rychlé zprovoznění Azure Media Playeru
+Nastavení Azure Media Player je snadné. Získání základního přehrávání mediálního obsahu z vašeho účtu Azure Media Services trvá jenom několik minut. Tato část ukazuje základní kroky a nezachází do podrobností. Následující části vám poskytnou konkrétní informace o tom, jak nastavit a nakonfigurovat Azure Media Player.  Stačí přidat následující příkazy include do části `<head>` vašeho dokumentu:
 
 ```html
     <link href="//amp.azure.net/libs/amp/latest/skins/amp-default/azuremediaplayer.min.css" rel="stylesheet">
@@ -22,11 +22,11 @@ Azure Media Player se snadno nastavuje. Získání základního přehrávání m
 ```
 
 > [!IMPORTANT]
-> **Neměli** `latest` byste používat verzi v produkčním prostředí, protože to může změnit na vyžádání. Nahraďte `latest` verzí programu Azure Media Player. například `latest` nahradit `1.0.0`. Verze programu Azure Media Player lze dotazovat [zde](azure-media-player-changelog.md).
+> Tuto `latest` verzi byste **neměli používat v** produkčním prostředí, protože se tato verze může změnit na vyžádání. Nahraďte `latest` verzí Azure Media Player; například nahraďte `latest` parametr `1.0.0`. Z [tohoto místa](azure-media-player-changelog.md)se dá dotazovat na Azure Media Player verze.
 
-## <a name="use-the-video-element"></a>Použití prvku videa
+## <a name="use-the-video-element"></a>Použití prvku video
 
-Dále jednoduše použijte `<video>` prvek jako obvykle, ale `data-setup` s dalším atributem obsahujícím všechny možnosti. Tyto možnosti mohou zahrnovat libovolnou možnost Azure Media Services v platném objektu JSON.
+V dalším kroku jednoduše použijte `<video>` prvek, jako byste normálně, ale s dodatečným `data-setup` atributem, který obsahuje všechny možnosti. Tyto možnosti mohou zahrnovat libovolnou možnost Azure Media Services v platném objektu JSON.
 
 ```html
     <video id="vid1" class="azuremediaplayer amp-default-skin" autoplay controls width="640" height="400" poster="poster.jpg" data-setup='{"nativeControlsForTouch": false}'>
@@ -37,7 +37,7 @@ Dále jednoduše použijte `<video>` prvek jako obvykle, ale `data-setup` s dal�
     </video>
 ```
 
-Pokud nechcete používat automatické nastavení, můžete `data-setup` atribut vynechat a inicializovat prvek videa ručně.
+Pokud nechcete použít automatické nastavení, můžete `data-setup` atribut vynechat a inicializovat prvek videa ručně.
 
 ```html
     var myPlayer = amp('vid1', { /* Options */
@@ -63,4 +63,4 @@ Pokud nechcete používat automatické nastavení, můžete `data-setup` atribut
 
 ## <a name="next-steps"></a>Další kroky ##
 
-- [Rychlý start přehrávače médií Azure](azure-media-player-quickstart.md)
+- [Rychlý Start Azure Media Player](azure-media-player-quickstart.md)

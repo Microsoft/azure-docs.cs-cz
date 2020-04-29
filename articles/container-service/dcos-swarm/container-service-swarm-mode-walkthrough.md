@@ -1,5 +1,5 @@
 ---
-title: (ZASTARALÉ) Úvodní příručka – cluster Azure Docker CE pro Linux
+title: ZASTARALÉ Rychlý Start – cluster Azure Docker CE pro Linux
 description: Rychle se naučíte, jak pomocí Azure CLI vytvořit cluster Docker CE pro kontejnery Linuxu ve službě Azure Container Service.
 author: iainfoulds
 ms.service: container-service
@@ -8,21 +8,21 @@ ms.date: 07/16/2018
 ms.author: iainfou
 ms.custom: ''
 ms.openlocfilehash: d4bbd5560681aa73709019e87c6c22470a64ad78
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79481734"
 ---
-# <a name="deprecated-deploy-docker-ce-cluster"></a>(ZASTARALÉ) Nasazení clusteru Docker CE
+# <a name="deprecated-deploy-docker-ce-cluster"></a>ZASTARALÉ Nasazení clusteru Docker CE
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
-V tomto rychlém startu se cluster Docker CE nasazuje pomocí příkazového příkazového příkazu Azure. Následně se na tomto clusteru nasadí a spustí vícekontejnerová aplikace skládající se z webu front-end a instance Redis. Po dokončení bude aplikace přístupná přes internet.
+V tomto rychlém startu se nasadí cluster Docker CE pomocí Azure CLI. Následně se na tomto clusteru nasadí a spustí vícekontejnerová aplikace skládající se z webu front-end a instance Redis. Po dokončení bude aplikace přístupná přes internet.
 
 Docker CE ve službě Azure Container Service je ve verzi Preview a **neměl by se používat pro produkční úlohy**.
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít rozhraní příkazového řádku Azure ve verzi 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI]( /cli/azure/install-azure-cli).
 
@@ -30,7 +30,7 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku 
 
 Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az-group-create). Skupina prostředků Azure je logická skupina, ve které se nasazují a spravují prostředky Azure.
 
-Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v umístění *westus2.*
+Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v umístění *westus2* .
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location westus2
@@ -53,7 +53,7 @@ Výstup:
 
 ## <a name="create-docker-swarm-cluster"></a>Vytvoření clusteru Docker Swarm
 
-Vytvořte cluster Docker CE ve službě Azure Container Service pomocí příkazu [az acs create](/cli/azure/acs#az-acs-create). Informace o dostupnosti oblasti Docker CE, najdete v tématu [ACS oblasti pro Docker CE](https://github.com/Azure/ACS/blob/master/announcements/2017-08-04_additional_regions.md)
+Vytvořte cluster Docker CE ve službě Azure Container Service pomocí příkazu [az acs create](/cli/azure/acs#az-acs-create). Informace o dostupnosti oblasti Docker CE najdete v tématu [oblasti ACS pro Docker CE](https://github.com/Azure/ACS/blob/master/announcements/2017-08-04_additional_regions.md) .
 
 Následující příklad vytvoří cluster *mySwarmCluster* s jedním hlavním linuxovým uzlem a třemi agentskými linuxovými uzly.
 
@@ -67,7 +67,7 @@ Po několika minutách se příkaz dokončí a vrátí informace o clusteru ve 
 
 ## <a name="connect-to-the-cluster"></a>Připojení ke clusteru
 
-Během tohoto rychlého startu potřebujete hlavní směrovací program reqdn hlavního serveru Docker Swarm i fondu agentů Dockeru. Spusťte následující příkaz, který vrátí plně kvalifikované názvy domén hlavního uzlu i agentských uzlů.
+V rámci tohoto rychlého startu potřebujete plně kvalifikovaný název domény pro hlavní server Docker Swarm i fond agenta Docker. Spusťte následující příkaz, který vrátí plně kvalifikované názvy domén hlavního uzlu i agentských uzlů.
 
 ```azurecli
 az acs list --resource-group myResourceGroup --query '[*].{Master:masterProfile.fqdn,Agent:agentPoolProfiles[0].fqdn}' -o table
@@ -159,15 +159,15 @@ az group delete --name myResourceGroup --yes --no-wait
 
 ## <a name="get-the-code"></a>Získání kódu
 
-V tomto rychlém startu byly k vytvoření služby Dockeru použity předem vytvořené image kontejneru. Související kód aplikace, soubor Dockerfile a soubor Compose jsou k dispozici na GitHubu.
+V tomto rychlém startu se předem vytvořené image kontejneru použily k vytvoření služby Docker. Související kód aplikace, soubor Dockerfile a soubor Compose jsou k dispozici na GitHubu.
 
 [https://github.com/Azure-Samples/azure-voting-app-redis](https://github.com/Azure-Samples/azure-voting-app-redis.git)
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste nasadili cluster Docker Swarm a nasadili do něj vícekontejnerovou aplikaci.
+V tomto rychlém startu jste nasadili cluster Docker Swarm a do něj jste nasadili aplikaci s více kontejnery.
 
-Další informace o integraci roje Dockeru s Azure DevOps, pokračujte ci/CD s Docker Swarm a Azure DevOps.
+Další informace o integraci Docker Swarm s Azure DevOps najdete v části CI/CD s Docker Swarm a Azure DevOps.
 
 > [!div class="nextstepaction"]
 > [Průběžná integrace a doručování s využitím Dockeru Swarm a Azure DevOps](./container-service-docker-swarm-setup-ci-cd.md)

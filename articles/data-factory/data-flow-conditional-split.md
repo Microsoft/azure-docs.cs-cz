@@ -1,6 +1,6 @@
 ---
-title: Podmíněná rozdělení transformace v toku dat mapování
-description: Rozdělení dat do různých datových proudů pomocí podmíněné rozdělení transformace v toku dat mapování Azure Data Factory
+title: Podmíněné transformace rozdělení v toku dat mapování
+description: Rozdělení dat do různých datových proudů pomocí podmíněné transformace rozdělení v Azure Data Factory mapování toku dat
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
@@ -9,23 +9,23 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/16/2019
 ms.openlocfilehash: bd9241e526d7cf42f0697afb8635c085a08c80d8
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81606486"
 ---
-# <a name="conditional-split-transformation-in-mapping-data-flow"></a>Podmíněná rozdělení transformace v toku dat mapování
+# <a name="conditional-split-transformation-in-mapping-data-flow"></a>Podmíněné transformace rozdělení v toku dat mapování
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Podmíněné rozdělení transformace trasy řádky dat do různých datových proudů na základě odpovídajícípodmínky. Podmíněné rozdělení transformace je podobná struktury rozhodnutí CASE v programovacím jazyce. Transformace vyhodnotí výrazy a na základě výsledků přesměruje řádek dat na zadaný datový proud.
+Podmíněná transformace rozdělení směruje řádky dat do různých datových proudů na základě vyhovujících podmínek. Podmíněná transformace rozdělení je podobná struktuře PŘÍPADných rozhodnutí v programovacím jazyce. Transformace vyhodnocuje výrazy a na základě výsledků směruje datový řádek na zadaný datový proud.
 
 ## <a name="configuration"></a>Konfigurace
 
-Nastavení **Rozdělit na** určuje, zda řádek dat toky na první odpovídající datový proud nebo každý datový proud, který odpovídá.
+Nastavení **rozdělení** určuje, zda řádek dat pokračuje na první odpovídající datový proud nebo na každý datový proud, na který odpovídá.
 
-Pomocí tvůrce výrazů toku dat zadejte výraz pro podmínku rozdělení. Chcete-li přidat novou podmínku, klikněte na ikonu plus v existujícím řádku. Výchozí datový proud lze přidat také pro řádky, které neodpovídají žádné podmínce.
+Pomocí Tvůrce výrazů toku dat zadejte výraz pro podmínku rozdělení. Chcete-li přidat novou podmínku, klikněte na ikonu Plus v existujícím řádku. Je možné přidat výchozí datový proud i pro řádky, které neodpovídají žádné podmínce.
 
 ![podmíněné rozdělení](media/data-flow/conditionalsplit1.png "možnosti podmíněného rozdělení")
 
@@ -45,13 +45,13 @@ Pomocí tvůrce výrazů toku dat zadejte výraz pro podmínku rozdělení. Chce
 
 ### <a name="example"></a>Příklad
 
-Níže uvedený příklad je podmíněné rozdělení transformace s názvem, `SplitByYear` který trvá v příchozí datový proud `CleanData`. Tato transformace má `year < 1960` dvě `year > 1980`podmínky rozdělení a . `disjoint`je false, protože data přejde na první odpovídající podmínku. Každý řádek odpovídající první podmínce přejde do výstupního datového proudu `moviesBefore1960`. Všechny zbývající řádky odpovídající druhé podmínce přejdou na výstupní datový proud `moviesAFter1980`. Všechny ostatní řádky protékají výchozím datovým proudem `AllOtherMovies`.
+V následujícím příkladu je podmíněná transformace rozdělení s názvem `SplitByYear` , která přijímá příchozí datový `CleanData`proud. Tato transformace má dvě podmínky `year < 1960` rozdělení a `year > 1980`. `disjoint`hodnota je false, protože data přecházejí na první podmínku porovnání. Každý řádek, který odpovídá první podmínce, přejde `moviesBefore1960`do výstupního proudu. Všechny zbývající řádky, které odpovídají druhé podmínce, přešly do výstupního datového proudu `moviesAFter1980`. Všechny ostatní řádky přecházejí přes výchozí datový `AllOtherMovies`proud.
 
-V ux datové továrny tato transformace vypadá jako následující obrázek:
+V uživatelském prostředí Data Factory Tato transformace vypadá jako na následujícím obrázku:
 
 ![podmíněné rozdělení](media/data-flow/conditionalsplit1.png "možnosti podmíněného rozdělení")
 
-Skript toku dat pro tuto transformaci je ve fragmentu níže:
+Skript toku dat pro tuto transformaci je v následujícím fragmentu kódu:
 
 ```
 CleanData
@@ -64,4 +64,4 @@ CleanData
 
 ## <a name="next-steps"></a>Další kroky
 
-Běžné transformace toku dat používané s podmíněným rozdělením jsou [transformace spojení](data-flow-join.md), [transformace vyhledávání](data-flow-lookup.md)a [vybraná transformace](data-flow-select.md)
+Běžné transformace toku dat, které se používají s podmíněným rozdělením, jsou [transformace spojení](data-flow-join.md), [transformace vyhledávání](data-flow-lookup.md)a [transformace výběru](data-flow-select.md) .

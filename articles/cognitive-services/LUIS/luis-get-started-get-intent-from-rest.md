@@ -1,17 +1,17 @@
 ---
-title: 'Rychlý start: Získejte záměr s REST API - LUIS'
-description: V tomto rychlém startu rozhraní REST API použijte dostupnou veřejnou aplikaci LUIS k určení záměru uživatele z konverzačního textu.
+title: 'Rychlý Start: získání záměru pomocí rozhraní REST API – LUIS'
+description: V tomto REST API rychlého startu pomocí dostupné veřejné aplikace LUIS určete záměr uživatele z konverzačního textu.
 ms.topic: quickstart
 ms.date: 04/20/2020
 zone_pivot_groups: programming-languages-set-one
 ms.openlocfilehash: 03f1c1539233872d9b98fab317c9caf997d5df69
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81733293"
 ---
-# <a name="quickstart-get-intent-with-rest-apis"></a>Rychlý start: Získejte záměr s REST API
+# <a name="quickstart-get-intent-with-rest-apis"></a>Rychlý Start: získání záměru pomocí rozhraní REST API
 
 V tomto rychlém startu použijete dostupnou veřejnou aplikaci LUIS ke zjištění záměru uživatele z textu konverzace. Odešlete záměr uživatele jako text do koncového bodu předpovědí HTTP veřejné aplikace. Služba LUIS použije v koncovém bodě model veřejné aplikace k analýze smyslu textu v přirozeném jazyce, zjištění celkového záměru a extrakci dat, která jsou relevantní pro doménu subjektu aplikace.
 

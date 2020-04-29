@@ -4,10 +4,10 @@ description: Analyzujte využití a výkon vaší desktopové aplikace Windows p
 ms.topic: conceptual
 ms.date: 10/29/2019
 ms.openlocfilehash: eb9e0fc480098478a3a68265ac85e0d5450e27fe
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81537385"
 ---
 # <a name="monitoring-usage-and-performance-in-classic-windows-desktop-apps"></a>Monitorování využití a výkonu klasických desktopových aplikací pro Windows
@@ -28,7 +28,7 @@ Aplikace hostované místně, v Azure a jiných cloudech mohou využít všech v
    
     Pokud používáte soubor ApplicationInsights.config, ujistěte se, že jsou jeho vlastnosti v Průzkumníku řešení nastavené na: **Build Action = Content, Copy to Output Directory = Copy**.
 5. [Použijte rozhraní API](../../azure-monitor/app/api-custom-events-metrics.md) k odesílání telemetrie.
-6. Spusťte aplikaci a podívejte se na telemetrii v prostředku, který jste vytvořili na webu Azure Portal.
+6. Spusťte aplikaci a podívejte se na telemetrii v prostředku, který jste vytvořili v Azure Portal.
 
 ## <a name="example-code"></a><a name="telemetry"></a>Příklad kódu
 ```csharp
@@ -70,9 +70,9 @@ using Microsoft.ApplicationInsights;
 
 ## <a name="override-storage-of-computer-name"></a>Přepsat úložiště názvu počítače
 
-Ve výchozím nastavení bude tato sada SDK shromažďovat a ukládat název počítače vyzařující telemetrii. Chcete-li přepsat kolekci, musíte použít telemetrickou inicializátor:
+Ve výchozím nastavení bude tato sada SDK shromažďovat a ukládat název počítače, který generuje telemetrii. Pro přepsání kolekce potřebujete použít inicializátor telemetrie:
 
-**Napište vlastní TelemetryInitializer, jak je uvedeno níže.**
+**Pište vlastní TelemetryInitializer, jak je uvedeno níže.**
 
 ```csharp
 using Microsoft.ApplicationInsights.Channel;
@@ -93,7 +93,7 @@ namespace CustomInitializer.Telemetry
     }
 }
 ```
-Vytvořte iniciaci v `Program.cs` `Main()` níže uvedené metodě nastavení instrumentačního klíče:
+Vytvořte instanci inicializátoru v `Program.cs` `Main()` metodě níže nastavením klíče instrumentace:
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;
@@ -108,7 +108,7 @@ Vytvořte iniciaci v `Program.cs` `Main()` níže uvedené metodě nastavení in
 
 ## <a name="next-steps"></a>Další kroky
 * [Vytvoření řídicího panelu](../../azure-monitor/app/overview-dashboard.md)
-* [Diagnostické vyhledávání](../../azure-monitor/app/diagnostic-search.md)
+* [Diagnostické hledání](../../azure-monitor/app/diagnostic-search.md)
 * [Zkoumání metrik](../../azure-monitor/platform/metrics-charts.md)
 * [Psaní analytických dotazů](../../azure-monitor/app/analytics.md)
 

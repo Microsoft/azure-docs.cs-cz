@@ -1,6 +1,6 @@
 ---
-title: Geografická dostupnost a měnová podpora pro komerční trh | Azure Marketplace
-description: Geografická dostupnost na komerčním trhu
+title: Geografická dostupnost a podpora měny pro komerční tržiště | Azure Marketplace
+description: Geografická dostupnost na komerčním webu Marketplace
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 01/29/2020
 ms.author: dsindona
 ms.openlocfilehash: 83906e6270ed41c2ea8f489c5a5312d32a565a29
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81687591"
 ---
-# <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>Geografická dostupnost a měnová podpora pro komerční tržiště
+# <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>Geografická dostupnost a podpora měny pro komerční tržiště
 
-Nabídky na komerčním trhu lze zakoupit ve 141 zeměpisných oblastech definovaných fakturační adresou zákazníka a transakce lze dokončit v 17 měnách. V následující tabulce je uvedena každá podporovaná zeměpisná poloha, [dvoumístný alfa kód ISO 3166](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)a přiřazená měna.
+Nabídky komerčních webů na webu Marketplace si můžete koupit v 141 zeměpisných oblastech, jak jsou definované fakturační adresou zákazníka, a transakce můžou být dokončené ve 17 měnách. V následující tabulce jsou uvedeny všechny podporované geografické polohy, jejich [kód ISO 3166 2-číslice alfa](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)a přiřazená měna.
 
 |   Název země nebo oblasti               |   ISO-2   |   Měna   |
 |-------------------------------------|-----------|--------------|
@@ -36,7 +36,7 @@ Nabídky na komerčním trhu lze zakoupit ve 141 zeměpisných oblastech definov
 | Bělorusko                             | BY        | USD          |
 | Belgie                             | BE        | EUR          |
 | Belize                              | BZ        | USD          |
-| Bermudy                             | Bm        | USD          |
+| Bermudy                             | BM        | USD          |
 | Bolívie                             | BO        | USD          |
 | Bosna a Hercegovina              | BA        | USD          |
 | Botswana                            | BW        | USD          |
@@ -48,12 +48,12 @@ Nabídky na komerčním trhu lze zakoupit ve 141 zeměpisných oblastech definov
 | Cabo Verde                          | CV        | USD          |
 | Kajmanské ostrovy                      | KY        | USD          |
 | Chile                               | CL        | USD          |
-| Čína\**                            | CN        | –          |
+| Lidov\**                            | CN        | –          |
 | Kolumbie                            | CO        | USD          |
 | Kostarika                          | CR        | USD          |
 | Côte d’Ivoire (Pobřeží slonoviny)                       | CI        | USD          |
 | Chorvatsko                             | HR        | EUR          |
-| Curaçao                             | Cw        | USD          |
+| Curaçao                             | Skupina        | USD          |
 | Kypr                              | CY        | EUR          |
 | Česká republika                      | CZ        | EUR          |
 | Dánsko                             | DK        | DKK          |
@@ -100,7 +100,7 @@ Nabídky na komerčním trhu lze zakoupit ve 141 zeměpisných oblastech definov
 | Severní Makedonie                     | MK        | USD          |
 | Malajsie                            | MY        | USD          |
 | Malta                               | MT        | EUR          |
-| Mauricius                           | MU        | USD          |
+| Mauricius                           | SAMOHLÁSK        | USD          |
 | Mexiko                              | MX        | USD          |
 | Moldavsko                             | MD        | USD          |
 | Monako                              | MC        | EUR          |
@@ -148,8 +148,8 @@ Nabídky na komerčním trhu lze zakoupit ve 141 zeměpisných oblastech definov
 | Tunisko                             | TN        | USD          |
 | Turecko                              | TR        | USD          |
 | Turkmenistán                        | TM        | USD          |
-| Vatikán (Svatý stolec)             | VA        | EUR          |
-| Panenské ostrovy Spojených států | VI        | USD          |
+| Vatikán (Svatý stolec viz)             | VA        | EUR          |
+| Panenské ostrovy USA | VI        | USD          |
 | Uganda                              | UG        | USD          |
 | Ukrajina                             | UA        | USD          |
 | Spojené arabské emiráty                | AE        | USD          |
@@ -159,11 +159,11 @@ Nabídky na komerčním trhu lze zakoupit ve 141 zeměpisných oblastech definov
 | Uzbekistán                          | UZ        | USD          |
 | Venezuela                           | VE        | USD          |
 | Vietnam                             | VN        | USD          |
-| Jemen                               | VY        | USD          |
+| Jemen                               | JE        | USD          |
 | Zambie                              | ZM        | USD          |
 | Zimbabwe                            | ZW        | USD          |
 |   |   |   |
 
-\*Pro zákazníky v Brazílii používá Marketplace prostřednictvím zprostředkovatelů cloudových řešení (CSP) USD.
+\*Pro zákazníky v Brazílii používá web Marketplace v rámci poskytovatelů cloudových řešení (CSP) USD.
 
-\** Zdarma a BYOL VM obrázky pouze.
+\** Jenom image virtuálních počítačů s bezplatným a BYOL.

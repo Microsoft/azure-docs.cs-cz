@@ -1,37 +1,37 @@
 ---
-title: Povolení Azure Monitoru pro virtuální počítače pomocí PowerShellu nebo šablon
-description: Tento článek popisuje, jak povolíte Azure Monitor pro virtuální počítače pro jeden nebo více virtuálních počítačů Azure nebo škálovací sady virtuálních počítačů pomocí azure powershellu nebo šablony Azure Resource Manager.
+title: Povolení Azure Monitor pro virtuální počítače s využitím PowerShellu nebo šablon
+description: Tento článek popisuje, jak povolíte Azure Monitor pro virtuální počítače pro jeden nebo několik virtuálních počítačů Azure nebo sady škálování virtuálních počítačů pomocí šablon Azure PowerShell nebo Azure Resource Manager.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2019
 ms.openlocfilehash: 75d5203e7c475a44b6a00dbf9286f43114b7b54f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79480840"
 ---
-# <a name="enable-azure-monitor-for-vms-using-azure-powershell-or-resource-manager-templates"></a>Povolení Azure Monitoru pro virtuální počítače pomocí azure prostředí Nebo šablon Správce prostředků
+# <a name="enable-azure-monitor-for-vms-using-azure-powershell-or-resource-manager-templates"></a>Povolení Azure Monitor pro virtuální počítače pomocí šablon Azure PowerShell nebo Správce prostředků
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Tento článek vysvětluje, jak povolit Azure Monitor pro virtuální počítače pro virtuální počítače Azure nebo škálovací sady virtuálních počítačů pomocí azure powershellu nebo šablony Azure Resource Manager. Na konci tohoto procesu úspěšně začnete sledovat všechny vaše virtuální počítače a zjistit, zda se některé mají problémy s výkonem nebo dostupností.
+Tento článek vysvětluje, jak povolit Azure Monitor pro virtuální počítače pro virtuální počítače Azure nebo sady škálování virtuálních počítačů pomocí šablon Azure PowerShell nebo Azure Resource Manager. Na konci tohoto procesu budete úspěšně započati monitorování všech virtuálních počítačů a zjistili jste, jestli u nich dochází k problémům s výkonem nebo dostupností.
 
-## <a name="set-up-a-log-analytics-workspace"></a>Nastavení pracovního prostoru Analýzy protokolů
+## <a name="set-up-a-log-analytics-workspace"></a>Nastavení pracovního prostoru Log Analytics
 
-Pokud nemáte pracovní prostor Log Analytics, musíte ho vytvořit. Zkontrolujte metody, které jsou navrženy v části [Požadavky,](vminsights-enable-overview.md#log-analytics) než budete pokračovat v krocích k jeho konfiguraci. Pak můžete dokončit nasazení Azure Monitor pro virtuální počítače pomocí metody šablony Azure Resource Manager.
+Pokud nemáte pracovní prostor Log Analytics, budete ho muset vytvořit. Než budete pokračovat postupem konfigurace, přečtěte si metody, které jsou navržené v části [požadavky](vminsights-enable-overview.md#log-analytics) . Pak můžete dokončit nasazení Azure Monitor pro virtuální počítače pomocí metody Azure Resource Manager šablony.
 
 ### <a name="install-the-vminsights-solution"></a>Instalace řešení VMInsights
 
-Tato metoda zahrnuje šablonu JSON, která určuje konfiguraci pro povolení součástí řešení v pracovním prostoru Log Analytics.
+Tato metoda zahrnuje šablonu JSON, která určuje konfiguraci pro povolení součástí řešení ve vašem pracovním prostoru Log Analytics.
 
-Pokud nevíte, jak nasadit prostředky pomocí šablony, přečtěte si:
+Pokud nevíte, jak nasadit prostředky pomocí šablony, přečtěte si téma:
 * [Nasazení prostředků pomocí šablon Resource Manageru a Azure PowerShellu](../../azure-resource-manager/templates/deploy-powershell.md)
-* [Nasazení prostředků pomocí šablon Správce prostředků a nastavení příkazového uživatelského příkazu Azure](../../azure-resource-manager/templates/deploy-cli.md)
+* [Nasazení prostředků pomocí šablon Správce prostředků a Azure CLI](../../azure-resource-manager/templates/deploy-cli.md)
 
-Chcete-li použít příkazové příkazové příkazové příkazy Azure, musíte nejprve nainstalovat a použít příkazový příkaz cli místně. Musíte spouštět Azure CLI verze 2.0.27 nebo novější. Chcete-li identifikovat `az --version`verzi, spusťte aplikaci . Pokud chcete nainstalovat nebo upgradovat azure cli, najdete [v tématu instalace příkazového příkazového příkazu k webu Azure](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Pokud chcete používat rozhraní příkazového řádku Azure, musíte nejdřív nainstalovat a používat rozhraní příkazového řádku (CLI). Musíte používat Azure CLI verze 2.0.27 nebo novější. Pro identifikaci vaší verze spusťte `az --version`. Pokud chcete nainstalovat nebo upgradovat rozhraní příkazového řádku Azure CLI, přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 1. Zkopírujte a vložte do souboru následující syntaxi JSON:
 
@@ -79,25 +79,25 @@ Chcete-li použít příkazové příkazové příkazové příkazy Azure, musí
     }
     ```
 
-1. Uložte tento soubor jako *installsolutionsforvminsights.json* do místní složky.
+1. Uložte tento soubor jako *installsolutionsforvminsights. JSON* do místní složky.
 
-1. Zachyťte hodnoty pro *název_pracovního_ ka*, *Název_prostředku_* *WorkspaceLocation* Hodnota pro *název pracovního_ kva to* je název pracovního prostoru Analýzy protokolů. Hodnota pro *WorkspaceLocation* je oblast, ve které je pracovní prostor definován.
+1. Zachyťte hodnoty pro pole *pracovní prostor*, *ResourceGroupName*a *WorkspaceLocation*. Hodnota pro název *pracovního prostoru* je název vašeho pracovního prostoru Log Analytics. Hodnota pro *WorkspaceLocation* je oblast, ve které je pracovní prostor definován.
 
 1. Jste připraveni k nasazení této šablony.
 
-    * Ve složce, která šablonu obsahuje, použijte následující příkazy Prostředí PowerShell:
+    * Ve složce obsahující šablonu použijte následující příkazy PowerShellu:
 
         ```powershell
         New-AzResourceGroupDeployment -Name DeploySolutions -TemplateFile InstallSolutionsForVMInsights.json -ResourceGroupName <ResourceGroupName> -WorkspaceName <WorkspaceName> -WorkspaceLocation <WorkspaceLocation - example: eastus>
         ```
 
-        Dokončení změny konfigurace může trvat několik minut. Po dokončení se zobrazí zpráva podobná následujícímu a obsahuje výsledek:
+        Dokončení změny konfigurace může trvat několik minut. Po dokončení se zobrazí zpráva podobná následujícímu, která zahrnuje výsledek:
 
         ```output
         provisioningState       : Succeeded
         ```
 
-    * Spuštění následujícího příkazu pomocí příkazového příkazu Azure:
+    * Pokud chcete spustit následující příkaz pomocí Azure CLI:
 
         ```azurecli
         az login
@@ -105,56 +105,56 @@ Chcete-li použít příkazové příkazové příkazové příkazy Azure, musí
         az group deployment create --name DeploySolutions --resource-group <ResourceGroupName> --template-file InstallSolutionsForVMInsights.json --parameters WorkspaceName=<workspaceName> WorkspaceLocation=<WorkspaceLocation - example: eastus>
         ```
 
-        Dokončení změny konfigurace může trvat několik minut. Po dokončení se zobrazí zpráva podobná následující a obsahuje výsledek:
+        Dokončení změny konfigurace může trvat několik minut. Po dokončení se zobrazí zpráva podobná následujícímu příkladu, která obsahuje výsledek:
 
         ```output
         provisioningState       : Succeeded
         ```
 
-## <a name="enable-with-azure-resource-manager-templates"></a>Povolení pomocí šablon Azure Resource Manageru
+## <a name="enable-with-azure-resource-manager-templates"></a>Povolit s Azure Resource Managermi šablonami
 
-Vytvořili jsme příklady šablon Azure Resource Manager pro připojení virtuálních počítačů a škálovacísady virtuálních počítačů. Tyto šablony zahrnují scénáře, které můžete použít k povolení monitorování existujícího prostředku a k vytvoření nového prostředku, který má monitorování povoleno.
+Vytvořili jsme příklady Azure Resource Manager šablon pro připojování virtuálních počítačů a sady škálování virtuálních počítačů. Tyto šablony obsahují scénáře, pomocí kterých můžete povolit monitorování stávajícího prostředku a vytvořit nový prostředek, který má povolené monitorování.
 
 >[!NOTE]
->Šablona musí být nasazena ve stejné skupině prostředků jako prostředek, který má být uveden na palubu.
+>Šablona musí být nasazená ve stejné skupině prostředků jako prostředek, který se má uvést na desce.
 
-Pokud nevíte, jak nasadit prostředky pomocí šablony, přečtěte si:
+Pokud nevíte, jak nasadit prostředky pomocí šablony, přečtěte si téma:
 * [Nasazení prostředků pomocí šablon Resource Manageru a Azure PowerShellu](../../azure-resource-manager/templates/deploy-powershell.md)
-* [Nasazení prostředků pomocí šablon Správce prostředků a nastavení příkazového uživatelského příkazu Azure](../../azure-resource-manager/templates/deploy-cli.md)
+* [Nasazení prostředků pomocí šablon Správce prostředků a Azure CLI](../../azure-resource-manager/templates/deploy-cli.md)
 
-Chcete-li použít příkazové příkazové příkazové příkazy Azure, musíte nejprve nainstalovat a použít příkazový příkaz cli místně. Musíte spouštět Azure CLI verze 2.0.27 nebo novější. Chcete-li identifikovat `az --version`verzi, spusťte aplikaci . Pokud chcete nainstalovat nebo upgradovat azure cli, najdete [v tématu instalace příkazového příkazového příkazu k webu Azure](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Pokud chcete používat rozhraní příkazového řádku Azure, musíte nejdřív nainstalovat a používat rozhraní příkazového řádku (CLI). Musíte používat Azure CLI verze 2.0.27 nebo novější. Pro identifikaci vaší verze spusťte `az --version`. Pokud chcete nainstalovat nebo upgradovat rozhraní příkazového řádku Azure CLI, přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
-### <a name="download-templates"></a>Stáhnout šablony
+### <a name="download-templates"></a>Stažení šablon
 
-Šablony Azure Resource Manager jsou k dispozici v archivním souboru (.zip), který si můžete [stáhnout](https://aka.ms/VmInsightsARMTemplates) z našeho úložiště GitHub. Obsah souboru obsahuje složky, které představují každý scénář nasazení se šablonou a souborem parametrů. Před jejich spuštěním upravte soubor parametrů a zadejte požadované hodnoty. Neupravujte soubor šablony, pokud jej nepotřebujete přizpůsobit tak, aby podporoval vaše konkrétní požadavky. Po úpravě souboru parametrů jej můžete nasadit pomocí následujících metod popsaných dále v tomto článku.
+Šablony Azure Resource Manager jsou k dispozici v souboru archivu (. zip), který si můžete [Stáhnout](https://aka.ms/VmInsightsARMTemplates) z našeho úložiště GitHub. Obsah souboru zahrnuje složky, které reprezentují jednotlivé scénáře nasazení, pomocí šablony a souboru parametrů. Než je spustíte, upravte soubor parametrů a zadejte požadované hodnoty. Neupravujte soubor šablony, pokud ho nepotřebujete přizpůsobit, aby podporoval vaše konkrétní požadavky. Po úpravě souboru parametrů ho můžete nasadit pomocí následujících metod popsaných dále v tomto článku.
 
 Soubor ke stažení obsahuje následující šablony pro různé scénáře:
 
-- **Existující Šablona VmOnboarding** umožňuje Azure Monitor pro virtuální počítače, pokud virtuální počítač už existuje.
-- **Šablona NewVmOnboarding** vytvoří virtuální počítač a umožní Azure Monitoru pro virtuální počítače, aby ho monitorovali.
-- **Šablona ExistingVmssOnboarding** umožňuje Azure Monitor pro virtuální počítače, pokud škálovací sada virtuálních strojů už existuje.
-- **Šablona NewVmssOnboarding** vytváří škálovací sady virtuálních strojů a umožňuje Azure Monitoru pro virtuální počítače je monitorovat.
-- **Šablona ConfigureWorkspace** konfiguruje pracovní prostor Log Analytics tak, aby podporoval Azure Monitor pro virtuální počítače povolením řešení a kolekce čítačů výkonu operačního systému Linux a Windows.
+- Šablona **ExistingVmOnboarding** povoluje Azure monitor pro virtuální počítače, pokud virtuální počítač už existuje.
+- Šablona **NewVmOnboarding** vytvoří virtuální počítač a povolí Azure monitor pro virtuální počítače k jeho monitorování.
+- Šablona **ExistingVmssOnboarding** povoluje Azure monitor pro virtuální počítače, pokud už existuje sada škálování virtuálního počítače.
+- **NewVmssOnboarding** Template vytvoří virtuální počítač Scale Sets a povolí Azure monitor pro virtuální počítače k jejich monitorování.
+- Šablona **ConfigureWorkspace** konfiguruje pracovní prostor Log Analytics tak, aby podporoval Azure monitor pro virtuální počítače tím, že umožňuje řešení a shromažďování čítačů výkonu operačního systému Linux a Windows.
 
 >[!NOTE]
->Pokud škálovací sady virtuálních strojů už byly k dispozici a zásady upgradu jsou **nastavené**na ruční , Azure Monitor pro virtuální počítače se po spuštění šablony **ExistingVmssOnboarding** Azure Resource Manager ve výchozím nastavení neaktivuje. Je nutné ručně upgradovat instance.
+>Pokud se sada škálování virtuálních počítačů už nastavila a zásada upgradu je nastavená na **Ruční**, Azure monitor pro virtuální počítače po spuštění šablony Azure Resource Manager **ExistingVmssOnboarding** nebude ve výchozím nastavení povolená. Je nutné ručně upgradovat instance.
 
 ### <a name="deploy-by-using-azure-powershell"></a>Nasazení s využitím Azure PowerShellu
 
-Následující krok umožňuje monitorování pomocí Azure PowerShellu.
+Následující krok umožňuje monitorování pomocí Azure PowerShell.
 
 ```powershell
 New-AzResourceGroupDeployment -Name OnboardCluster -ResourceGroupName <ResourceGroupName> -TemplateFile <Template.json> -TemplateParameterFile <Parameters.json>
 ```
-Dokončení změny konfigurace může trvat několik minut. Po dokončení se zobrazí zpráva podobná následujícímu a obsahuje výsledek:
+Dokončení změny konfigurace může trvat několik minut. Po dokončení se zobrazí zpráva podobná následujícímu, která zahrnuje výsledek:
 
 ```output
 provisioningState       : Succeeded
 ```
 
-### <a name="deploy-by-using-the-azure-cli"></a>Nasazení pomocí azure cli
+### <a name="deploy-by-using-the-azure-cli"></a>Nasazení pomocí Azure CLI
 
-Následující krok umožňuje monitorování pomocí azure CLI.
+Následující krok umožňuje monitorování pomocí Azure CLI.
 
 ```azurecli
 az login
@@ -162,25 +162,25 @@ az account set --subscription "Subscription Name"
 az group deployment create --resource-group <ResourceGroupName> --template-file <Template.json> --parameters <Parameters.json>
 ```
 
-Výstup se podobá následující:
+Výstup se podobá následujícímu:
 
 ```output
 provisioningState       : Succeeded
 ```
 
-## <a name="enable-with-powershell"></a>Povolení pomocí PowerShellu
+## <a name="enable-with-powershell"></a>Povolit s PowerShellem
 
-Pokud chcete povolit Azure Monitor pro virtuální počítače pro více virtuálních počítačů nebo škálovací sady virtuálních strojů, použijte skript PowerShell [Install-VMInsights.ps1](https://www.powershellgallery.com/packages/Install-VMInsights/1.0). Je k dispozici v Galerii Azure PowerShell. Tento skript iterates prostřednictvím:
+Pokud chcete povolit Azure Monitor pro virtuální počítače pro víc virtuálních počítačů nebo Virtual Machine Scale Sets, použijte skript PowerShellu [install-VMInsights. ps1](https://www.powershellgallery.com/packages/Install-VMInsights/1.0). Je k dispozici z Galerie Azure PowerShell. Tento skript prochází:
 
-- Každý virtuální počítač a škálovací sada virtuálních strojů ve vašem předplatném.
-- Skupina prostředků s vymezeným oborem určená skupinou *ResourceGroup*.
-- Jeden virtuální počítač nebo škálovací sada virtuálního počítače určená *názvem*.
+- Všechny virtuální počítače a sady škálování virtuálních počítačů ve vašem předplatném.
+- Rozsah skupiny prostředků, který je *určený skupinou zdrojů.*
+- Jeden virtuální počítač nebo sada škálování virtuálního počítače určené *názvem*.
 
-Pro každý virtuální počítač nebo škálovací sadu virtuálních počítačů skript ověří, jestli je rozšíření virtuálního počítače už nainstalované. Pokud je nainstalováno rozšíření virtuálního zařízení, skript se pokusí přeinstalovat. Pokud není nainstalované rozšíření virtuálního zařízení, skript nainstaluje rozšíření virtuálních aplikací Pro analýzu protokolů a závislostí.
+Pro každý virtuální počítač nebo sadu škálování virtuálního počítače skript ověří, zda je rozšíření virtuálního počítače již nainstalováno. Pokud je rozšíření virtuálního počítače nainstalované, skript se ho pokusí znovu nainstalovat. Pokud rozšíření virtuálního počítače není nainstalované, skript nainstaluje rozšíření virtuálního počítače agenta Log Analytics a závislostí.
 
-Ověřte, zda používáte modul Azure PowerShell Az `Enable-AzureRM` verze 1.0.0 nebo novější s povolenými aliasy kompatibility. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, musíte taky `Connect-AzAccount` spustit k vytvoření připojení s Azure.
+Ověřte, že používáte Azure PowerShell modul AZ verze 1.0.0 nebo novější s `Enable-AzureRM` povolenými aliasy kompatibility. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps). Pokud používáte prostředí PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
 
-Chcete-li získat seznam podrobností argumentu skriptu `Get-Help`a ukázkového použití, spusťte .
+Chcete-li získat seznam podrobností o argumentu skriptu a příklady použití, spusťte `Get-Help`příkaz.
 
 ```powershell
 Get-Help .\Install-VMInsights.ps1 -Detailed
@@ -282,7 +282,7 @@ PARAMETERS
     Specify to use a PolicyAssignmentName for source and to reinstall (move to a new workspace)
 ```
 
-Následující příklad ukazuje použití příkazů Prostředí PowerShell ve složce k povolení Azure Monitor pro virtuální počítače a pochopení očekávaného výstupu:
+Následující příklad ukazuje použití příkazů PowerShellu ve složce k povolení Azure Monitor pro virtuální počítače a pochopení očekávaného výstupu:
 
 ```powershell
 $WorkspaceId = "<GUID>"
@@ -333,8 +333,8 @@ Failed: (0)
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když je monitorování povolené pro vaše virtuální počítače, jsou tyto informace dostupné pro analýzu pomocí Azure Monitoru pro virtuální počítače.
+Teď, když je monitorování povolené pro vaše virtuální počítače, jsou tyto informace k dispozici pro analýzu pomocí Azure Monitor pro virtuální počítače.
 
-- Informace o zjištěných závislostech aplikací najdete [v tématu Zobrazení programu Azure Monitor for VMS .](vminsights-maps.md)
+- Pokud chcete zobrazit zjištěné závislosti aplikací, přečtěte si téma [zobrazení Azure monitor pro virtuální počítače mapa](vminsights-maps.md).
 
-- Informace o problémových místech a celkovém využití s výkonem virtuálního počítače najdete v [tématu Zobrazení výkonu virtuálních počítačích Azure](vminsights-performance.md).
+- Pokud chcete zjistit kritické body a celkové využití výkonu vašeho virtuálního počítače, přečtěte si téma [zobrazení výkonu virtuálních počítačů Azure](vminsights-performance.md).

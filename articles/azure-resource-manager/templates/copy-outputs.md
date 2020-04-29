@@ -1,24 +1,24 @@
 ---
-title: Definování více instancí výstupní hodnoty
-description: Při vracení hodnoty z nasazení použijte operaci kopírování v šabloně Správce prostředků Azure k větší iterace.
+title: Definovat více instancí výstupní hodnoty
+description: Použijte operaci kopírování v šabloně Azure Resource Manager k iterování více časů při vracení hodnoty z nasazení.
 ms.topic: conceptual
 ms.date: 04/17/2020
 ms.openlocfilehash: 0315af2f083285c4704b08fec608341b6f0b2231
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81617828"
 ---
 # <a name="output-iteration-in-arm-templates"></a>Výstupní iterace v šablonách ARM
 
-Tento článek ukazuje, jak vytvořit více než jednu hodnotu pro výstup v šabloně Správce prostředků Azure (ARM). Přidáním elementu **copy** do části výstupy šablony můžete dynamicky vrátit počet položek během nasazení.
+V tomto článku se dozvíte, jak vytvořit více než jednu hodnotu pro výstup v šabloně Azure Resource Manager (ARM). Přidáním elementu **kopírování** do části výstupy ve vaší šabloně můžete dynamicky vracet počet položek během nasazování.
 
-Můžete také použít kopii s [prostředky](copy-resources.md), [vlastnostmi v prostředku](copy-properties.md)a [proměnnými](copy-variables.md).
+Můžete také použít kopírování s [prostředky](copy-resources.md), [vlastnosti v prostředku](copy-properties.md)a [proměnné](copy-variables.md).
 
-## <a name="outputs-iteration"></a>Iterace výstupů
+## <a name="outputs-iteration"></a>Iterace výstupu
 
-Prvek kopírování má následující obecný formát:
+Element Copy má následující obecný formát:
 
 ```json
 "copy": {
@@ -27,9 +27,9 @@ Prvek kopírování má následující obecný formát:
 }
 ```
 
-Vlastnost **count** určuje počet iterací, které chcete pro výstupní hodnotu.
+Vlastnost **Count** určuje počet iterací, které chcete pro výstupní hodnotu.
 
-Vlastnost **input** určuje vlastnosti, které chcete opakovat. Vytvoříte pole prvků vytvořených z hodnoty ve **vstupní** vlastnosti. Může se jedná o jednu vlastnost (například řetězec) nebo objekt s několika vlastnostmi.
+Vlastnost **input** určuje vlastnosti, které chcete opakovat. Vytvoříte pole prvků vytvořené z hodnoty vlastnosti **input** . Může se jednat o jedinou vlastnost (například řetězec) nebo o objekt s několika vlastnostmi.
 
 Následující příklad vytvoří proměnný počet účtů úložiště a vrátí koncový bod pro každý účet úložiště:
 
@@ -84,7 +84,7 @@ Předchozí šablona vrátí pole s následujícími hodnotami:
 ]
 ```
 
-Další příklad vrátí tři vlastnosti z nových účtů úložiště.
+V dalším příkladu vrátí tři vlastnosti z nových účtů úložiště.
 
 ```json
 {
@@ -151,11 +151,11 @@ Předchozí příklad vrátí pole s následujícími hodnotami:
 
 ## <a name="next-steps"></a>Další kroky
 
-* Chcete-li projít kurz, [najdete v tématu Kurz: vytvoření více instancí prostředků pomocí ARM šablony](template-tutorial-create-multiple-instances.md).
-* Další použití prvku kopírování naleznete v následujících tématech:
+* Pokud chcete projít kurz, přečtěte si [kurz: vytvoření více instancí prostředků pomocí šablon ARM](template-tutorial-create-multiple-instances.md).
+* Pro jiné použití kopie elementu viz:
   * [Iterace prostředků v šablonách ARM](copy-resources.md)
-  * [Iterace vlastností v šablonách ARM](copy-properties.md)
+  * [Iterace vlastnosti v šablonách ARM](copy-properties.md)
   * [Iterace proměnných v šablonách ARM](copy-variables.md)
-* Pokud se chcete dozvědět o částech šablony, [přečtěte si](template-syntax.md)část Vytváření šablon ARM .
-* Informace o nasazení šablony najdete [v tématu Nasazení aplikace pomocí šablony ARM](deploy-powershell.md).
+* Pokud se chcete dozvědět o oddílech šablony, přečtěte si téma [vytváření šablon ARM](template-syntax.md).
+* Informace o tom, jak šablonu nasadit, najdete v tématu [nasazení aplikace se šablonou ARM](deploy-powershell.md).
 

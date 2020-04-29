@@ -1,6 +1,6 @@
 ---
-title: 'CLI: Nahrání a svázání certifikátu TLS/SSL do aplikace'
-description: Zjistěte, jak pomocí azure cli automatizovat nasazení a správu aplikace App Service. Tato ukázka ukazuje, jak svázat vlastní certifikát TLS/SSL s aplikací.
+title: 'CLI: nahrání a vazba certifikátu TLS/SSL do aplikace'
+description: Naučte se používat rozhraní příkazového řádku Azure k automatizaci nasazení a správy aplikace App Service. V této ukázce se dozvíte, jak vytvořit vazby vlastního certifikátu TLS/SSL k aplikaci.
 tags: azure-service-management
 ms.assetid: eb95d350-81ea-4145-a1e2-6eea3b7469b2
 ms.devlang: azurecli
@@ -8,18 +8,18 @@ ms.topic: sample
 ms.date: 12/11/2017
 ms.custom: mvc, seodec18
 ms.openlocfilehash: d1775f3af390bb71b6895dc6d43c5ae574371aef
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81537657"
 ---
-# <a name="bind-a-custom-tlsssl-certificate-to-an-app-service-app-using-cli"></a>Svázání vlastního certifikátu TLS/SSL s aplikací služby App Service pomocí funkce cli
+# <a name="bind-a-custom-tlsssl-certificate-to-an-app-service-app-using-cli"></a>Vytvoření vazby vlastního certifikátu TLS/SSL k aplikaci App Service pomocí rozhraní příkazového řádku
 
-Tento ukázkový skript vytvoří aplikaci ve službě App Service se souvisejícími prostředky a pak s váže certifikát TLS/SSL vlastního názvu domény. Pro tuto ukázku potřebujete:
+Tento ukázkový skript vytvoří aplikaci v App Service se souvisejícími prostředky a pak naváže certifikát TLS/SSL vlastního názvu domény. Pro tuto ukázku potřebujete:
 
 * Přístup ke konfigurační stránce DNS doménového registrátora.
-* Platný . PFX a jeho heslo pro certifikát TLS/SSL, který chcete nahrát a svázat.
+* Platná. Soubor PFX a jeho heslo pro certifikát TLS/SSL, který chcete nahrát a vytvořit.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -41,10 +41,10 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 |---|---|
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | Vytvoří plán služby App Service. |
-| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Vytvoří aplikaci služby App Service. |
-| [`az webapp config hostname add`](/cli/azure/webapp/config/hostname?view=azure-cli-latest#az-webapp-config-hostname-add) | Mapuje vlastní doménu na aplikaci App Service. |
-| [`az webapp config ssl upload`](/cli/azure/webapp/config/ssl?view=azure-cli-latest#az-webapp-config-ssl-upload) | Nahraje certifikát TLS/SSL do aplikace služby App Service. |
-| [`az webapp config ssl bind`](/cli/azure/webapp/config/ssl?view=azure-cli-latest#az-webapp-config-ssl-bind) | Sváže nahraný certifikát TLS/SSL s aplikací služby App Service. |
+| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Vytvoří aplikaci App Service. |
+| [`az webapp config hostname add`](/cli/azure/webapp/config/hostname?view=azure-cli-latest#az-webapp-config-hostname-add) | Namapuje vlastní doménu na App Service aplikaci. |
+| [`az webapp config ssl upload`](/cli/azure/webapp/config/ssl?view=azure-cli-latest#az-webapp-config-ssl-upload) | Nahraje certifikát TLS/SSL do aplikace App Service. |
+| [`az webapp config ssl bind`](/cli/azure/webapp/config/ssl?view=azure-cli-latest#az-webapp-config-ssl-bind) | Vytvoří připojení nahraného certifikátu TLS/SSL k aplikaci App Service. |
 
 ## <a name="next-steps"></a>Další kroky
 

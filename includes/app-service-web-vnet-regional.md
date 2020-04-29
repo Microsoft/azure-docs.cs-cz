@@ -5,96 +5,96 @@ ms.topic: include
 ms.date: 04/15/2020
 ms.author: ccompy
 ms.openlocfilehash: f7208307df51ecefb76f9adaedea59b327cdc19e
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81604882"
 ---
-Použití místní integrace virtuální sítě umožňuje vaší aplikaci přístup:
+Použití místní integrace virtuální sítě umožňuje aplikacím přístup k těmto akcím:
 
 * Prostředky ve virtuální síti ve stejné oblasti jako vaše aplikace.
-* Prostředky ve virtuálních sítích, které jsou součástí virtuální sítě, se kterou je vaše aplikace integrovaná.
+* Prostředky v virtuální sítě s partnerským vztahem k virtuální síti, do které je vaše aplikace integrovaná.
 * Zabezpečené služby koncového bodu služby.
-* Prostředky napříč připojeními Azure ExpressRoute.
-* Prostředky ve virtuální síti, do které jste integrovaní.
-* Prostředky napříč partnerskými připojeními, která zahrnují připojení Azure ExpressRoute.
+* Prostředky v rámci připojení Azure ExpressRoute.
+* Prostředky ve virtuální síti, do které jste integraci.
+* Prostředky napříč partnerskými připojeními, mezi které patří připojení Azure ExpressRoute.
 * Soukromé koncové body 
 
-Když používáte integraci virtuální sítě s virtuálními sítěmi ve stejné oblasti, můžete použít následující síťové funkce Azure:
+Když použijete integraci virtuální sítě s virtuální sítě ve stejné oblasti, můžete použít tyto funkce sítě Azure:
 
-* **Skupiny zabezpečení sítě :** Odchozí provoz můžete blokovat pomocí skupiny zabezpečení sítě, která je umístěna v podsíti integrace. Příchozí pravidla neplatí, protože k poskytování příchozího přístupu k vaší aplikaci nemůžete použít integraci virtuální sítě.
-* **Směrovací tabulky (UDR):** Můžete umístit směrovací tabulku do podsítě integrace a odeslat odchozí provoz tam, kde chcete.
+* **Skupiny zabezpečení sítě (skupin zabezpečení sítě)**: můžete blokovat odchozí přenos pomocí NSG, který je umístěný v podsíti integrace. Příchozí pravidla se nevztahují, protože integraci virtuální sítě nemůžete použít k zajištění příchozího přístupu do vaší aplikace.
+* **Směrovací tabulky (udr)**: můžete umístit směrovací tabulku do podsítě Integration pro odeslání odchozího provozu tam, kde chcete.
 
-Ve výchozím nastavení aplikace směruje jenom rfc1918 provoz do vaší virtuální sítě. Pokud chcete směrovat všechny odchozí provoz do virtuální sítě, použijte nastavení aplikace WEBSITE_VNET_ROUTE_ALL na vaši aplikaci. Postup konfigurace nastavení aplikace:
+Ve výchozím nastavení vaše aplikace směruje jenom RFC1918 provoz do vaší virtuální sítě. Pokud chcete směrovat veškerý odchozí provoz do vaší virtuální sítě, použijte nastavení aplikace WEBSITE_VNET_ROUTE_ALL pro vaši aplikaci. Konfigurace nastavení aplikace:
 
-1. Přejděte na portálu aplikace do možnosti **konfiguračního** uznatí. Vyberte **nové nastavení aplikace**.
-1. Zadejte **WEBSITE_VNET_ROUTE_ALL** do pole **Název** a do pole Hodnota zadejte **hodnotu 1.** **Value**
+1. Na portálu aplikací přejdete na uživatelské rozhraní **Konfigurace** . Vyberte možnost **nové nastavení aplikace**.
+1. Do pole **název** zadejte **WEBSITE_VNET_ROUTE_ALL** a do pole **hodnota zadejte hodnotu** **1** .
 
-   ![Poskytnout nastavení aplikace][4]
+   ![Zadat nastavení aplikace][4]
 
 1. Vyberte **OK**.
 1. Vyberte **Uložit**.
 
-Pokud směrujete všechny odchozí provoz do virtuální sítě, podléhá skupiny nsg a UDR, které se použijí pro podsíť integrace. Když směrujete všechny odchozí provoz do virtuální sítě, vaše odchozí adresy jsou stále odchozí adresy, které jsou uvedeny ve vlastnostech aplikace, pokud nezadáte trasy pro odeslání provozu jinam.
+Pokud budete směrovat veškerý odchozí provoz do vaší virtuální sítě, bude se jednat o skupin zabezpečení sítě a udr, které se vztahují k vaší podsíti integrace. Při směrování veškerého odchozího provozu do virtuální sítě jsou vaše odchozí adresy stále výstupními adresami, které jsou uvedené ve vlastnostech vaší aplikace, pokud nezadáte trasy k odeslání provozu jinde.
 
-Existují určitá omezení s použitím integrace virtuální sítě s virtuálními sítěmi ve stejné oblasti:
+Při použití integrace virtuální sítě s virtuální sítě ve stejné oblasti je potřeba mít určitá omezení:
 
-* Nelze dosáhnout prostředky přes globální partnerských společností připojení.
-* Tato funkce je dostupná jenom z novějších jednotek škálování služby Azure App Service, které podporují plány služby PremiumV2 App Service.
-* Integrační podsíť může používat pouze jeden plán služby App Service.
-* Tuto funkci nelze použít aplikace izolovaného plánu, které jsou v prostředí služby App Service.
-* Tato funkce vyžaduje nepoužívanou podsíť, která je /27 s 32 adresami nebo větší ve virtuální síti Azure Resource Manager.
+* Nemůžete se připojit k prostředkům napříč globálními připojeními partnerských vztahů.
+* Tato funkce je dostupná jenom z novějších jednotek škálování Azure App Service, které podporují plány App Service PremiumV2.
+* Podsíť Integration můžete použít jenom v jednom plánu App Service.
+* Tuto funkci nemůžou používat aplikace pro izolované plánování, které jsou ve App Service Environment.
+* Tato funkce vyžaduje nepoužitou podsíť, která je a/27 s 32 adresou nebo větší ve Azure Resource Manager virtuální síti.
 * Aplikace a virtuální síť musí být ve stejné oblasti.
-* Virtuální síť nelze odstranit pomocí integrované aplikace. Před odstraněním virtuální sítě odeberte integraci.
-* Můžete integrovat jenom s virtuálními sítěmi ve stejném předplatném jako aplikace.
-* Můžete mít jenom jednu regionální integraci virtuální sítě podle plánu služby App Service. Více aplikací ve stejném plánu služby App Service můžete použít stejnou virtuální síť.
-* Nemůžete změnit předplatné aplikace nebo plánu, když je aplikace, která používá místní integraci virtuální sítě.
-* Vaše aplikace nemůže vyřešit adresy v privátních zónách Azure DNS bez změn konfigurace
+* Virtuální síť nejde odstranit pomocí integrované aplikace. Před odstraněním virtuální sítě odeberte integraci.
+* Integraci s virtuální sítě můžete integrovat jenom do stejného předplatného jako aplikace.
+* Pro každý App Service plán můžete mít jenom jednu místní integraci virtuální sítě. Víc aplikací ve stejném plánu App Service může používat stejnou virtuální síť.
+* Pokud máte aplikaci, která používá místní integraci virtuální sítě, nemůžete změnit předplatné aplikace ani plán.
+* Vaše aplikace nemůže překládat adresy v Azure DNS Private Zones bez změny konfigurace.
 
-Pro každou instanci plánu se používá jedna adresa. Pokud změníte velikost aplikace na pět instancí, použije se pět adres. Vzhledem k tomu, že velikost podsítě nelze po přiřazení změnit, musíte použít podsíť, která je dostatečně velká, aby vyhovovala všem měřítkům, na které vaše aplikace může dosáhnout. Doporučená velikost je A /26 s 64 adresami. A /26 s 64 adresami pojme plán Premium s 30 instancemi. Při škálování plánu nahoru nebo dolů, budete potřebovat dvakrát tolik adres na krátkou dobu.
+Pro každou instanci plánu se používá jedna adresa. Při škálování aplikace na pět instancí se použije pět adres. Vzhledem k tomu, že velikost podsítě po přiřazení nelze změnit, je nutné použít dostatečně velkou podsíť, aby se vešlo do škálování, které vaše aplikace může dosáhnout. Doporučená velikost je a/26 s 64 adresami. A/26 s 64 adresami přizpůsobil plán Premium s 30 instancemi. Když naplánujete horizontální navýšení nebo snížení kapacity plánu, budete potřebovat dvojnásobný počet adres po krátkou dobu.
 
-Pokud chcete, aby vaše aplikace v jiném plánu dosáhly virtuální sítě, která je už připojená aplikacemi v jiném plánu, vyberte jinou podsíť, než kterou používá již existující integrace virtuální sítě.
+Pokud chcete, aby vaše aplikace v jiném plánu dosáhly virtuální sítě, ke které už jsou připojené aplikace v jiném plánu, vyberte jinou podsíť, než kterou používá stávající integrace virtuální sítě.
 
-Tato funkce je ve verzi preview pro Linux. Linuxová forma funkce podporuje pouze volání na adresy RFC 1918 (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16).
+Tato funkce je ve verzi Preview pro Linux. Forma systému Linux funkce podporuje pouze volání adres RFC 1918 (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16).
 
-### <a name="web-or-function-app-for-containers"></a>Webová nebo funkční aplikace pro kontejnery
+### <a name="web-or-function-app-for-containers"></a>Web nebo Function App pro kontejnery
 
-Pokud vlastníte aplikaci na Linuxu s integrovanými bitovými kopiemi, regionální integrace virtuální sítě funguje bez dalších změn. Pokud používáte webovou nebo funkční aplikaci pro kontejnery, musíte upravit image dockeru tak, aby se používala integrace virtuální sítě. V bitové kopii dockeru použijte proměnnou prostředí PORT jako naslouchací port hlavního webového serveru namísto pevného čísla portu. Proměnná prostředí PORT je automaticky nastavena platformou v době spuštění kontejneru. Pokud používáte SSH, musí být daemon SSH nakonfigurován tak, aby naslouchal číslu portu určenému proměnnou prostředí SSH_PORT při použití místní integrace virtuální sítě. Neexistuje žádná podpora pro integraci virtuální sítě v y na Linuxu po dálnici.
+Pokud vaše aplikace hostuje v systému Linux pomocí integrovaných imagí, místní integrace virtuální sítě funguje bez dalších změn. Pokud používáte web nebo Function App pro kontejnery, musíte upravit image Docker tak, aby používala integraci virtuální sítě. V imagi Docker použijte proměnnou prostředí portu jako port naslouchání hlavního webového serveru namísto použití pevně zakódované čísla portu. Proměnná prostředí portu je automaticky nastavená platformou v době spuštění kontejneru. Pokud používáte SSH, musí být démon procesu SSH nakonfigurovaný tak, aby naslouchal na čísle portu určeném proměnnou prostředí SSH_PORT při použití místní integrace virtuální sítě. V systému Linux není k dispozici žádná podpora pro integraci virtuální sítě požadovaná bránou.
 
 ### <a name="service-endpoints"></a>Koncové body služby
 
-Regionální integrace virtuální sítě umožňuje používat koncové body služby. Pokud chcete s vaší aplikací používat koncové body služby, připojte se k vybrané virtuální síti k místní integraci virtuální sítě a pak nakonfigurujte koncové body služby s cílovou službou v podsíti, kterou jste použili pro integraci. Pokud jste pak chtěli získat přístup ke službě přes koncové body služby:
+Místní integrace virtuální sítě umožňuje používat koncové body služby. Pokud chcete pro vaši aplikaci používat koncové body služby, použijte místní integraci virtuální sítě pro připojení k vybrané virtuální síti a pak nakonfigurujte koncové body služby s cílovou službou v podsíti, kterou jste použili pro integraci. Pokud jste pak chtěli získat přístup k koncovým bodům služby Service Over:
 
-1. konfigurace regionální integrace virtuální sítě s webovou aplikací
-1. přejděte na cílovou službu a nakonfigurujte koncové body služby proti podsíti používané pro integraci
+1. Konfigurace místní integrace virtuální sítě pomocí webové aplikace
+1. Přejít na cílovou službu a nakonfigurovat koncové body služby proti podsíti používané pro integraci
 
 ### <a name="network-security-groups"></a>Skupiny zabezpečení sítě
 
-Skupiny zabezpečení sítě můžete použít k blokování příchozích a odchozích přenosů do prostředků ve virtuální síti. Aplikace, která používá místní integraci virtuální sítě, může pomocí [skupiny zabezpečení sítě][VNETnsg] blokovat odchozí provoz na prostředky ve vaší virtuální síti nebo na Internetu. Chcete-li blokovat provoz na veřejné adresy, musíte mít nastavení aplikace WEBSITE_VNET_ROUTE_ALL nastavena na 1. Příchozí pravidla v souboru sítě sítě se nevztahují na vaši aplikaci, protože integrace virtuální sítě ovlivňuje jenom odchozí provoz z vaší aplikace.
+Skupiny zabezpečení sítě můžete použít k blokování příchozího a odchozího provozu do prostředků ve virtuální síti. Aplikace, která používá místní integraci virtuální sítě, může používat [skupinu zabezpečení sítě][VNETnsg] k blokování odchozího provozu do prostředků ve vaší virtuální síti nebo v Internetu. Chcete-li zablokovat provoz na veřejné adresy, je nutné, aby nastavení aplikace WEBSITE_VNET_ROUTE_ALL nastaveno na hodnotu 1. Příchozí pravidla ve NSG se nevztahují na vaši aplikaci, protože integrace virtuální sítě má vliv jenom na odchozí přenosy z vaší aplikace.
 
-Chcete-li řídit příchozí provoz do aplikace, použijte funkci Omezení přístupu. Skupina nsg, která je použita pro podsíť integrace je ve skutečnosti bez ohledu na všechny trasy použité pro podsíť integrace. Pokud je WEBSITE_VNET_ROUTE_ALL nastavena na 1 a nemáte žádné trasy, které by ovlivnily provoz veřejné adresy v podsíti integrace, veškerý odchozí provoz stále podléhá skupinám nsg přiřazených k podsíti integrace. Pokud WEBSITE_VNET_ROUTE_ALL není nastavena, nsgs jsou použity pouze pro provoz RFC1918.
+K řízení příchozího provozu do aplikace použijte funkci omezení přístupu. NSG, který se používá pro vaši podsíť integrace, je v platnosti bez ohledu na to, jaké trasy se v podsíti pro integraci nastavily. Pokud je WEBSITE_VNET_ROUTE_ALL nastavené na hodnotu 1 a nemáte žádné trasy, které by ovlivnily provoz veřejných adres v podsíti Integration, bude se veškerý odchozí provoz dál řídit skupin zabezpečení sítě přiřazeným vaší podsíti integrace. Pokud WEBSITE_VNET_ROUTE_ALL není nastavená, skupin zabezpečení sítě se aplikují jenom na RFC1918 provoz.
 
 ### <a name="routes"></a>Trasy
 
-Pomocí tabulek tras můžete směrovat odchozí provoz z aplikace kamkoli chcete. Ve výchozím nastavení ovlivňují tabulky tras pouze cílový provoz RFC1918. Pokud nastavíte WEBSITE_VNET_ROUTE_ALL na 1, budou ovlivněny všechny odchozí hovory. Trasy nastavené v podsíti integrace neovlivní odpovědi na příchozí žádosti o aplikace. Mezi běžné cíle patří zařízení brány firewall nebo brány.
+Směrovací tabulky můžete použít ke směrování odchozího provozu z vaší aplikace do libovolného, kdykoli potřebujete. Ve výchozím nastavení mají směrovací tabulky vliv jenom na váš cílový provoz RFC1918. Pokud nastavíte WEBSITE_VNET_ROUTE_ALL na 1, budou ovlivněna všechna odchozí volání. Trasy, které jsou nastavené ve vaší podsíti Integration, neovlivní odpovědi na příchozí žádosti o aplikace. Mezi běžné cíle můžou patřit zařízení firewallu nebo brány.
 
-Pokud chcete směrovat všechny odchozí přenosy místně, můžete použít směrovací tabulku k odeslání veškerého odchozího provozu do brány ExpressRoute. Pokud směrujete provoz do brány, nezapomeňte nastavit trasy v externí síti, aby se všechny odpovědi odeslala zpět.
+Pokud chcete směrovat veškerý odchozí provoz do místní sítě, můžete k posílání všech odchozích přenosů do brány ExpressRoute použít směrovací tabulku. Pokud provedete směrování provozu do brány, nezapomeňte nastavit trasy v externí síti pro posílání odpovědí zpět.
 
-Trasy protokolu Brána ohraničení (BGP) také ovlivňují provoz aplikace. Pokud máte trasy BGP z něčeho jako brána ExpressRoute, bude ovlivněn odchozí provoz aplikace. Ve výchozím nastavení trasy Protokolu BGP ovlivňují pouze cílový provoz RFC1918. Pokud je WEBSITE_VNET_ROUTE_ALL nastavena na 1, všechny odchozí provozy mohou být ovlivněny trasy BGP.
+Trasy Border Gateway Protocol (BGP) ovlivňují také přenosy aplikací. Pokud máte trasy protokolu BGP z nějakého ExpressRoute brány, bude to mít vliv na odchozí přenosy aplikace. Ve výchozím nastavení mají trasy protokolu BGP vliv jenom na váš cílový provoz RFC1918. Pokud je WEBSITE_VNET_ROUTE_ALL nastavené na 1, všechny odchozí přenosy můžou být ovlivněné vašimi trasami protokolu BGP.
 
-### <a name="azure-dns-private-zones"></a>Privátní zóny Azure DNS 
+### <a name="azure-dns-private-zones"></a>Azure DNS Private Zones 
 
-Po integraci aplikace s vaší virtuální sítí používá stejný server DNS, se kterým je virtuální síť nakonfigurovaná. Ve výchozím nastavení nebude vaše aplikace fungovat s privátními zónami Azure DNS. Chcete-li pracovat s privátními zónami Azure DNS, musíte přidat následující nastavení aplikace:
+Jakmile se vaše aplikace integruje s vaší virtuální sítí, používá stejný server DNS, se kterým je nakonfigurovaná vaše virtuální síť. Ve výchozím nastavení vaše aplikace nebude fungovat s Azure DNS Private Zones. Pokud chcete pracovat s Azure DNS Private Zones musíte přidat následující nastavení aplikace:
 
-1. WEBSITE_DNS_SERVER s hodnotou 168,63,129,16 
+1. WEBSITE_DNS_SERVER s hodnotou 168.63.129.16 
 1. WEBSITE_VNET_ROUTE_ALL s hodnotou 1
 
-Tato nastavení budou odesílat všechny odchozí hovory z vaší aplikace do virtuální sítě a navíc umožní vaší aplikaci používat privátní zóny Azure DNS.
+Tato nastavení budou posílat všechna vaše odchozí volání z vaší aplikace do vaší virtuální sítě a zároveň umožníte, aby aplikace používala Azure DNS privátní zóny.
 
 ### <a name="private-endpoints"></a>Soukromé koncové body
 
-Pokud chcete volat [privátní koncové body][privateendpoints], pak je potřeba buď integrovat s Privátní zóny Azure DNS nebo spravovat privátní koncový bod na serveru DNS používá vaše aplikace. 
+Pokud chcete provést volání do [soukromých koncových bodů][privateendpoints], musíte integrovat s Azure DNS Private Zones nebo spravovat privátní koncový bod na serveru DNS, který používá vaše aplikace. 
 
 <!--Image references-->
 [4]: ../includes/media/web-sites-integrate-with-vnet/vnetint-appsetting.png

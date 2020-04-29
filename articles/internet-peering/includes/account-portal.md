@@ -9,22 +9,22 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 9e9a9a0415a85c8b8c5fb27d911124c43a2447d0
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81678571"
 ---
-Z prohlížeče přejděte na [portál](https://portal.azure.com/) Azure a přihlaste se pomocí svého účtu Azure.
+V prohlížeči přejdete na Azure [Portal](https://portal.azure.com/) a přihlaste se pomocí svého účtu Azure.
 
-Pokud máte více předplatných a potřebujete přepnutí předplatného:
+Pokud máte více předplatných a potřebujete přepnout předplatná:
 
-1. Vyberte tlačítko profilu a pak vyberte **Přepnout adresář**.
+1. Vyberte tlačítko profil a pak vyberte **Přepnout adresář**.
 
     > [!div class="mx-imgBorder"]
-    > ![Vybrat přepnout adresář](../media/choose-subscription-2.png)
+    > ![Vybrat přepínač adresář](../media/choose-subscription-2.png)
 
 1. Vyberte předplatné, které chcete použít pro nastavení partnerského vztahu.
 
     > [!div class="mx-imgBorder"]
-    > ![Zvolte předplatné](../media/choose-subscription-3.png)
+    > ![Zvolit předplatné](../media/choose-subscription-3.png)

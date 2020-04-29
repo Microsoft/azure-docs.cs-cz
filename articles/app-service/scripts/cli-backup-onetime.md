@@ -1,6 +1,6 @@
 ---
-title: 'CLI: Zálohování aplikace'
-description: Zjistěte, jak pomocí azure cli automatizovat nasazení a správu aplikace App Service. Tato ukázka ukazuje, jak zálohovat aplikaci.
+title: 'CLI: zálohování aplikace'
+description: Naučte se používat rozhraní příkazového řádku Azure k automatizaci nasazení a správy aplikace App Service. V této ukázce se dozvíte, jak zálohovat aplikaci.
 author: msangapu-msft
 tags: azure-service-management
 ms.devlang: azurecli
@@ -10,15 +10,15 @@ ms.author: msangapu
 ms.reviewer: cephalin
 ms.custom: mvc, seodec18
 ms.openlocfilehash: fd310e81c6a86e651e27518acfdefa66980fa938
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80059143"
 ---
-# <a name="back-up-an-app-using-cli"></a>Zálohování aplikace pomocí funkce velonek
+# <a name="back-up-an-app-using-cli"></a>Zálohování aplikace pomocí rozhraní příkazového řádku
 
-Tento ukázkový skript vytvoří aplikaci ve službě App Service s jeho související prostředky a potom vytvoří jednorázovou zálohu pro něj. 
+Tento ukázkový skript vytvoří aplikaci v App Service se souvisejícími prostředky a pak pro ni vytvoří jednorázovou zálohu. 
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -43,9 +43,9 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [`az storage container create`](/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create) | Vytvoří kontejner úložiště Azure. |
 | [`az storage container generate-sas`](/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-generate-sas) | Vygeneruje token SAS pro kontejner úložiště Azure.  |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | Vytvoří plán služby App Service. |
-| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Vytvoří aplikaci služby App Service. |
-| [`az webapp config backup create`](/cli/azure/webapp/config/backup?view=azure-cli-latest#az-webapp-config-backup-create) | Vytvoří zálohu pro aplikaci Služby aplikací. |
-| [`az webapp config backup list`](/cli/azure/webapp/config/backup?view=azure-cli-latest#az-webapp-config-backup-list) | Získá seznam záloh pro aplikaci App Service. |
+| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Vytvoří aplikaci App Service. |
+| [`az webapp config backup create`](/cli/azure/webapp/config/backup?view=azure-cli-latest#az-webapp-config-backup-create) | Vytvoří zálohu pro aplikaci App Service. |
+| [`az webapp config backup list`](/cli/azure/webapp/config/backup?view=azure-cli-latest#az-webapp-config-backup-list) | Načte seznam záloh pro aplikaci App Service. |
 
 ## <a name="next-steps"></a>Další kroky
 

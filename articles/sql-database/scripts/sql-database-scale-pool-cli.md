@@ -1,6 +1,6 @@
 ---
-title: Příklad příkazového příkazového příkazu škáluje databázi SQL elastického fondu Azure SQL Database
-description: Ukázkový skript Azure CLI pro škálování elastického fondu v Azure SQL Database
+title: Příklad rozhraní příkazového řádku škáluje elastický fond SQL – Azure SQL Database
+description: Ukázkový skript Azure CLI pro horizontální navýšení kapacity elastického fondu v Azure SQL Database
 services: sql-database
 ms.service: sql-database
 ms.subservice: elastic-pools
@@ -12,15 +12,15 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/25/2019
 ms.openlocfilehash: b229aa8976705c5e3ad83c468ebc10a261f14a4f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80067392"
 ---
-# <a name="use-cli-to-scale-an-elastic-pool-in-azure-sql-database"></a>Použití příkazového příkazového příkazu k škálování elastického fondu v Azure SQL Database
+# <a name="use-cli-to-scale-an-elastic-pool-in-azure-sql-database"></a>Použití CLI k horizontálnímu škálování elastického fondu v Azure SQL Database
 
-Tento příklad skriptu Azure CLI vytvoří elastické fondy, přesune sdružené databáze a změní výpočetní velikoste elastického fondu.
+Tento ukázkový skript Azure CLI vytvoří elastické fondy, přesune databáze ve fondu a změní výpočetní velikosti elastického fondu.
 
 Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (CLI) místně, musíte mít spuštěnou verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI]( /cli/azure/install-azure-cli).
 
@@ -36,21 +36,21 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (
 
 ### <a name="clean-up-deployment"></a>Vyčištění nasazení
 
-Pomocí následujícího příkazu odeberte skupinu prostředků a všechny k ní spojené prostředky.
+Pomocí následujícího příkazu odeberte skupinu prostředků a všechny k ní přidružené prostředky.
 
 ```azurecli-interactive
 az group delete --name $resource
 ```
 
-## <a name="sample-reference"></a>Odkaz na vzorek
+## <a name="sample-reference"></a>Vzorový odkaz
 
 Tento skript používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
 | | |
 |---|---|
-| [az sql server](/cli/azure/sql/server) | Serverové příkazy. |
-| [az SQL DB](/cli/azure/sql/db) | Příkazy databáze. |
-| [az sql elastické fondy](/cli/azure/sql/elastic-pool) | Příkazy elastického fondu. |
+| [az sql server](/cli/azure/sql/server) | Příkazy serveru. |
+| [AZ SQL DB](/cli/azure/sql/db) | Příkazy databáze. |
+| [AZ SQL elastické fondy](/cli/azure/sql/elastic-pool) | Příkazy elastického fondu. |
 
 ## <a name="next-steps"></a>Další kroky
 

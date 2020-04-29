@@ -1,346 +1,346 @@
 ---
-title: Ovládací prvky ukázkového plánu azure benchmarku zabezpečení
-description: Řízení mapování ukázky plánu azure standardu zabezpečení na zásady Azure.
+title: Ukázkové ovládací prvky podrobného plánu pro Azure Security test
+description: Mapování ovládacího prvku ukázka testu výkonnosti Azure Security test na Azure Policy.
 ms.date: 04/16/2020
 ms.topic: sample
 ms.openlocfilehash: 0f2d24d7d8c9f7ce2568f11b15e65ed1fcd02afb
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81538730"
 ---
-# <a name="control-mapping-of-the-azure-security-benchmark-blueprint-sample"></a>Mapování ovládacího prvku ukázky podrobného plánu azure standardu zabezpečení
+# <a name="control-mapping-of-the-azure-security-benchmark-blueprint-sample"></a>Mapování ovládacího prvku pro ukázku Azure Security test details
 
-V následujícím článku je podrobně popisuje, jak azure plán y Azure Security Benchmark ukázka mapuje na ovládací prvky Azure Security Benchmark. Další informace o ovládacích prvcích naleznete v [tématu Azure Security Benchmark](https://docs.microsoft.com/azure/security/benchmarks/overview).
+Následující článek podrobně popisuje, jak se ukázka Azure modrotisky Azure Security test Details mapuje na ovládací prvky srovnávacích testů zabezpečení Azure. Další informace o ovládacích prvcích najdete v článku [Srovnávací test zabezpečení Azure](https://docs.microsoft.com/azure/security/benchmarks/overview).
 
-Následující mapování jsou pro ovládací **prvky Azure Security Benchmark.** Pomocí navigace vpravo přejděte přímo na konkrétní mapování ovládacího prvku. Mapované ovládací prvky se implementují pomocí iniciativy [Zásad azure.](../../../policy/overview.md) Pokud chcete zkontrolovat celou iniciativu, otevřete **zásady** na webu Azure portal a vyberte stránku **Definice.** Potom najděte a vyberte ** \[náhled\]: Auditujte doporučení azure security benchmarku a nasaďte konkrétní podpůrnou** iniciativu integrovaných zásad rozšíření virtuálních počítače.
+Následující mapování jsou k ovládacím prvkům **benchmark zabezpečení Azure** . Pomocí navigace na pravé straně můžete přejít přímo k určitému mapování ovládacího prvku. Namapované ovládací prvky jsou implementovány s [Azure Policy](../../../policy/overview.md) iniciativou. Chcete-li si projít kompletní iniciativu, otevřete **zásadu** v Azure Portal a vyberte stránku **definice** . Pak vyhledejte a vyberte ve ** \[verzi Preview\]: Auditovat doporučení Azure Security test a nasaďte specifická podpůrná iniciativa rozšíření virtuálních počítačů** .
 
 > [!IMPORTANT]
-> Každý ovládací prvek níže je přidružen k jedné nebo více definic [zásad Azure.](../../../policy/overview.md) Tyto zásady vám mohou pomoci [posoudit dodržování](../../../policy/how-to/get-compliance-data.md) ovládacího prvku; však často není 1:1 nebo úplnou shodu mezi ovládacím prvkem a jednu nebo více zásad. Jako **takový, kompatibilní** v zásadách Azure odkazuje pouze na zásady samotné; Tím nezajistíte, že jste plně kompatibilní se všemi požadavky ovládacího prvku. Kromě toho může standard dodržování předpisů zahrnovat ovládací prvky, které nejsou v tuto chvíli adresovány žádnými definicemi zásad Azure. Dodržování předpisů v zásadách Azure je tedy pouze částečným zobrazením celkového stavu dodržování předpisů. Přidružení mezi ovládacími prvky a definicemi zásad Azure pro tento ukázkový plán dodržování předpisů se může v průběhu času měnit. Chcete-li zobrazit historii změn, podívejte se na [historii potvrzení GitHubu](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/azure-security-benchmark/control-mapping.md).
+> Každý ovládací prvek níže je přidružen k jedné nebo více definicím [Azure Policy](../../../policy/overview.md) . Tyto zásady vám pomůžou [zhodnotit dodržování předpisů](../../../policy/how-to/get-compliance-data.md) pomocí ovládacího prvku. často však není 1:1 nebo Úplná shoda mezi ovládacím prvkem a jednou nebo více zásadami. V takovém případě **vyhovuje** v Azure Policy pouze zásadám, které jsou samotné. Tím se nezajistí, že budete plně kompatibilní se všemi požadavky ovládacího prvku. Standard dodržování předpisů může navíc zahrnovat ovládací prvky, které nejsou v tuto chvíli řešeny žádnou definicí Azure Policy. Proto je dodržování předpisů v Azure Policy jenom částečný pohled na celkový stav dodržování předpisů. Přidružení mezi ovládacími prvky a definicemi Azure Policy pro tuto ukázku podrobného plánu dodržování předpisů se mohou v průběhu času měnit. Historii změn si můžete prohlédnout v [historii potvrzení GitHubu](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/azure-security-benchmark/control-mapping.md).
 
-## <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1.1 Ochrana prostředků pomocí skupin zabezpečení sítě nebo brány Azure Firewall ve virtuální síti
+## <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1,1 Ochrana prostředků pomocí skupin zabezpečení sítě nebo Azure Firewall v Virtual Network
 
-- Podsítě by měly být přidruženy ke skupině zabezpečení sítě.
-- Adaptivní síť Kalení doporučení by měla být použita na internetu čelí virtuální počítače
-- Virtuální počítače by měly být připojené ke schválené virtuální síti.
-- Virtuální počítače orientované na Internet by měly být chráněny pomocí skupin zabezpečení sítě.
-- Služba Service Bus by měla používat koncový bod služby virtuální sítě.
-- Služba App Service by měla používat koncový bod služby virtuální sítě.
-- SQL Server by měl používat koncový bod služby virtuální sítě.
+- Podsítě by měly být přidružené ke skupině zabezpečení sítě.
+- Doporučení adaptivního posílení zabezpečení sítě by se měla použít na internetových virtuálních počítačích.
+- Virtuální počítače by měly být připojené ke schválené virtuální síti
+- Virtuální počítače s přístupem k Internetu by měly být chráněné pomocí skupin zabezpečení sítě
+- Service Bus by měl používat koncový bod služby virtuální sítě
+- App Service by měl používat koncový bod služby virtuální sítě
+- SQL Server by měl používat koncový bod služby virtuální sítě
 - Centrum událostí by mělo používat koncový bod služby virtuální sítě.
 - Cosmos DB by měl používat koncový bod služby virtuální sítě
-- Trezor klíčů by měl používat koncový bod služby virtuální sítě.
-- Auditovat neomezený přístup k účtům úložiště v síti
+- Key Vault by měl používat koncový bod služby virtuální sítě
+- Auditování neomezeného síťového přístupu k účtům úložiště
 - Účty úložiště by měly používat koncový bod služby virtuální sítě.
-- Registr kontejnerů by měl používat koncový bod služby virtuální sítě.
-- Virtuální sítě by měly používat zadanou bránu virtuální sítě.
-- Autorizované rozsahy IP adres by měly být definovány ve službách Kubernetes
-- \[Náhled\]: Předávání IP adres na vašem virtuálním počítači by mělo být zakázáno
-- Virtuální počítače orientované na Internet by měly být chráněny pomocí skupin zabezpečení sítě.
+- Container Registry by měl používat koncový bod služby virtuální sítě
+- Virtuální sítě by měly používat zadanou bránu virtuální sítě
+- Pro služby Kubernetes by měly být definované rozsahy povolených IP adres.
+- \[Verze\]Preview: předávání IP na virtuálním počítači by mělo být zakázané.
+- Virtuální počítače s přístupem k Internetu by měly být chráněné pomocí skupin zabezpečení sítě
 - Na virtuálních počítačích by se mělo používat řízení přístupu k síti podle potřeby
 - Porty pro správu by měly být uzavřeny na virtuálních počítačích
 
-## <a name="12-monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>1.2 Sledování a protokolování konfigurace a provozu sítí, podsítí a síťových rozhraní
+## <a name="12-monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>1,2 monitorování a protokolování konfigurace a provozu virtuální sítě, podsítí a síťových karet
 
-- Sledování sítě by mělo být povoleno.
+- Network Watcher by měl být povolený.
 
-## <a name="13-protect-critical-web-applications"></a>1.3 Ochrana kritických webových aplikací
+## <a name="13-protect-critical-web-applications"></a>1,3 chránit kritické webové aplikace
 
-- Ujistěte se, že webová aplikace má "Klientské certifikáty (příchozí klientské certifikáty)' nastavené na "Zapnuto"
-- CORS by neměl povolit přístup k webovým aplikacím pro každý prostředek.
-- CORS by neměl a umožnit každému zdroji přístup k vašim funkčním aplikacím
-- CORS by neměl a) neumožňovat všem prostředkům přístup k vaší aplikaci API.
-- Vzdálené ladění by mělo být vypnuto pro webové aplikace.
-- Vzdálené ladění by mělo být vypnuto pro aplikace funkcí
-- Vzdálené ladění by mělo být vypnuto pro aplikace rozhraní API.
+- Zajistěte, aby webová aplikace měla klientské certifikáty (příchozí klientské certifikáty) nastavené na zapnuto.
+- CORS by neměl umožňovat každému prostředku přístup k vašim webovým aplikacím
+- CORS by neměl umožňovat každému prostředku přístup k aplikacím funkcí
+- CORS by neměl umožňovat každému prostředku přístup k vaší aplikaci API.
+- Vzdálené ladění by mělo být pro webové aplikace vypnuté.
+- Pro aplikace Function app by mělo být vypnuto vzdálené ladění.
+- Vzdálené ladění by mělo být pro API Apps vypnuté.
 
-## <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4 Odepřít komunikaci se známými škodlivými IP adresami
+## <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1,4 zamítnout komunikaci se známými škodlivými IP adresami
 
-- DDoS Protection Standard by měla být povolena
+- Měla by být povolená DDoS Protection Standard.
 - Na virtuálních počítačích by se mělo používat řízení přístupu k síti podle potřeby
-- Adaptivní síť Kalení doporučení by měla být použita na internetu čelí virtuální počítače
+- Doporučení adaptivního posílení zabezpečení sítě by se měla použít na internetových virtuálních počítačích.
 
-## <a name="15-record-network-packets-and-flow-logs"></a>1.5 Záznam síťových paketů a protokolů toku
+## <a name="15-record-network-packets-and-flow-logs"></a>1,5 záznam síťových paketů a protokolů toků
 
-- Sledování sítě by mělo být povoleno.
+- Network Watcher by měl být povolený.
 
-## <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11 Používání automatizovaných nástrojů ke sledování konfigurace síťových prostředků a zjišťování změn
+## <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1,11 pomocí automatizovaných nástrojů můžete monitorovat konfigurace síťových prostředků a zjišťovat změny.
 
-- Nasazení předpokladů pro audit konfigurace virtuálních počítačů se systémem Windows v části Možnosti zabezpečení – přístup k síti
-- Zobrazit výsledky auditu z konfigurací virtuálních počítačů se systémem Windows v části Možnosti zabezpečení – síťový klient společnosti Microsoft
-- Nasazení předpokladů pro audit konfigurace virtuálních počítačů se systémem Windows v části Možnosti zabezpečení – zabezpečení sítě
-- Zobrazit výsledky auditu z konfigurací virtuálních počítačů se systémem Windows v části Možnosti zabezpečení – zabezpečení sítě
-- Nasazení předpokladů pro audit konfigurace virtuálních počítačů se systémem Windows v části Možnosti zabezpečení – microsoft network server
-- Zobrazit výsledky auditu z konfigurací virtuálních počítačů se systémem Windows v části Možnosti zabezpečení – microsoft network server
-- Nasazení předpokladů pro audit konfigurace virtuálních počítačů se systémem Windows v části Šablony pro správu – síť
-- Zobrazit výsledky auditu z konfigurací virtuálních počítačů se systémem Windows v části Šablony pro správu – síť
+- Nasazení požadavků pro audit konfigurací virtuálních počítačů s Windows v možnosti zabezpečení-síťový přístup
+- Zobrazit výsledky auditu z konfigurací virtuálních počítačů s Windows v možnosti zabezpečení – Klient sítě Microsoft
+- Nasazení požadavků pro audit konfigurací virtuálních počítačů s Windows v možnosti zabezpečení – zabezpečení sítě
+- Zobrazit výsledky auditu z konfigurací virtuálních počítačů s Windows v možnosti zabezpečení – zabezpečení sítě
+- Nasazení požadavků pro audit konfigurací virtuálních počítačů s Windows v možnosti zabezpečení – síťový server Microsoftu
+- Zobrazit výsledky auditu z konfigurací virtuálních počítačů s Windows v možnosti zabezpečení – síťový server Microsoftu
+- Nasazení požadavků pro audit konfigurací virtuálních počítačů s Windows v síti Šablony pro správu-Network
+- Zobrazit výsledky auditu z konfigurací virtuálních počítačů s Windows v síti Šablony pro správu-Network
 
-## <a name="22-configure-central-security-log-management"></a>2.2 Konfigurace centrální správy protokolu zabezpečení
+## <a name="22-configure-central-security-log-management"></a>2,2 konfigurace centrální správy protokolů zabezpečení
 
-- Agent Log Analytics by měl být nainstalován na virtuálních počítačích
-- Agent Log Analytics by měl být nainstalován v škálovacích sadách virtuálních strojů.
-- Nasazení požadavků pro auditování virtuálních počítačů se systémem Windows, ke kterým není připojen agent Log Analytics podle očekávání
-- Zobrazit výsledky auditu z virtuálních počítačů se systémem Windows, ke kterým není připojen agent Analýzy protokolů podle očekávání
-- Profil protokolu Azure Monitor by měl shromažďovat protokoly pro kategorie "zápis", "odstranit" a "akce"
-- Azure Monitor by měl shromažďovat protokoly aktivit ze všech oblastí.
-- Automatické zřizování agenta monitorování Analýzy protokolů by mělo být povoleno ve vašem předplatném.
+- Agent Log Analytics by měl být nainstalovaný na virtuálních počítačích
+- Agent Log Analytics by měl být nainstalovaný na Virtual Machine Scale Sets
+- Nasaďte požadavky na auditování virtuálních počítačů s Windows, na kterých agent Log Analytics není připojený podle očekávání.
+- Zobrazit výsledky auditu z virtuálních počítačů s Windows, na kterých je agent Log Analytics nepřipojený podle očekávání
+- Profil protokolu Azure Monitor by měl shromažďovat protokoly pro kategorie Write, DELETE a Action.
+- Azure Monitor by měly shromažďovat protokoly aktivit ze všech oblastí
+- V předplatném by mělo být povolené Automatické zřizování agenta monitorování Log Analytics.
 
-## <a name="23-enable-audit-logging-for-azure-resources"></a>2.3 Povolení protokolování auditu pro prostředky Azure
+## <a name="23-enable-audit-logging-for-azure-resources"></a>2,3 povolení protokolování auditu pro prostředky Azure
 
-- Diagnostické protokoly v Azure Data Lake Store by měly být povolené
-- Diagnostické protokoly v logic apps by měly být povoleny
-- Diagnostické protokoly v centru IoT Hub by měly být povoleny
-- Diagnostické protokoly v dávkových účtech by měly být povoleny.
-- Diagnostické protokoly ve škálovacích sadách virtuálních strojů by měly být povoleny
-- Diagnostické protokoly v centru událostí by měly být povoleny
-- Diagnostické protokoly ve vyhledávacích službách by měly být povoleny.
-- Diagnostické protokoly ve službách App Services by měly být povoleny
-- Diagnostické protokoly v Data Lake Analytics by měly být povoleny
-- Diagnostické protokoly v trezoru klíčů by měly být povoleny
-- Diagnostické protokoly v service bus by měly být povoleny
-- Diagnostické protokoly ve službě Azure Stream Analytics by měly být povolené
-- Auditování na serveru SQL by mělo být povoleno.
+- Měly by být povolené diagnostické protokoly v Azure Data Lake Store.
+- Měly by být povolené diagnostické protokoly v Logic Apps.
+- Měly by být povolené diagnostické protokoly v IoT Hub.
+- V účtech Batch by měly být povolené diagnostické protokoly.
+- Měly by být povolené diagnostické protokoly v Virtual Machine Scale Sets.
+- Měly by být povolené diagnostické protokoly v centru událostí.
+- Měly by být povolené diagnostické protokoly ve vyhledávacích službách.
+- Měly by být povolené diagnostické protokoly v App Services.
+- Měly by být povolené diagnostické protokoly v Data Lake Analytics.
+- Měly by být povolené diagnostické protokoly v Key Vault.
+- Měly by být povolené diagnostické protokoly v Service Bus.
+- Měly by být povolené diagnostické protokoly v Azure Stream Analytics.
+- Auditování na SQL serveru by mělo být povolené.
 - Auditování nastavení diagnostiky
 
-## <a name="24-collect-security-logs-from-operating-systems"></a>2.4 Shromažďování protokolů zabezpečení z operačních systémů
+## <a name="24-collect-security-logs-from-operating-systems"></a>2,4 shromažďování protokolů zabezpečení z operačních systémů
 
-- Automatické zřizování agenta monitorování Analýzy protokolů by mělo být povoleno ve vašem předplatném.
-- Agent Log Analytics by měl být nainstalován na virtuálních počítačích
-- Agent Log Analytics by měl být nainstalován v škálovacích sadách virtuálních strojů.
-- Nasazení požadavků pro auditování virtuálních počítačů se systémem Windows, ke kterým není připojen agent Log Analytics podle očekávání
-- Zobrazit výsledky auditu z virtuálních počítačů se systémem Windows, ke kterým není připojen agent Analýzy protokolů podle očekávání
+- V předplatném by mělo být povolené Automatické zřizování agenta monitorování Log Analytics.
+- Agent Log Analytics by měl být nainstalovaný na virtuálních počítačích
+- Agent Log Analytics by měl být nainstalovaný na Virtual Machine Scale Sets
+- Nasaďte požadavky na auditování virtuálních počítačů s Windows, na kterých agent Log Analytics není připojený podle očekávání.
+- Zobrazit výsledky auditu z virtuálních počítačů s Windows, na kterých je agent Log Analytics nepřipojený podle očekávání
 
-## <a name="27-enable-alerts-for-anomalous-activity"></a>2.7 Povolit upozornění na anomální aktivitu
+## <a name="27-enable-alerts-for-anomalous-activity"></a>2,7 povolit výstrahy pro aktivitu neobvyklé
 
-- Měla by být vybrána standardní cenová úroveň Centra zabezpečení.
-- Na serverech SQL by mělo být povoleno rozšířené zabezpečení dat.
-- Rozšířené zabezpečení dat by mělo být povoleno ve vašich instancích spravovaných SQL.
-- Rozšířené typy ochrany před hrozbami by měly být v nastavení rozšířeného zabezpečení dat serveru SQL nastaveny na hodnotu Vše.
-- Rozšířené typy ochrany před internetovými hrozbami by měly být nastaveny na hodnotu "Vše" v nastavení rozšířeného zabezpečení dat spravované ho SQL.
+- Měla by se vybrat cenová úroveň Security Center Standard.
+- Na vašich serverech SQL by mělo být povolené rozšířené zabezpečení dat
+- Pro spravované instance SQL by mělo být povolené rozšířené zabezpečení dat
+- V rozšířených nastaveních zabezpečení dat SQL serveru by se měly nastavit rozšířené typy ochrany před internetovými útoky na ALL.
+- V rozšířených nastaveních zabezpečení dat spravované instance SQL by se měly nastavit rozšířené typy ochrany před internetovými útoky na ALL.
 
-## <a name="28-centralize-anti-malware-logging"></a>2.8 Centralizovat protokolování antimalwaru
+## <a name="28-centralize-anti-malware-logging"></a>2,8. centralizované protokolování proti malwaru
 
-- Microsoft Antimalware pro Azure by měl být nakonfigurován tak, aby automaticky aktualizoval podpisy ochrany.
-- Sledování chybějící ochrany koncového bodu v Azure Security Center
-- Řešení ochrany koncových bodů by mělo být nainstalováno na škálovacích sadách virtuálních strojů.
+- Microsoft Antimalware pro Azure by měl být nakonfigurovaný tak, aby automaticky aktualizoval podpisy ochrany.
+- Monitorovat chybějící Endpoint Protection v Azure Security Center
+- Řešení ochrany koncových bodů by se mělo nainstalovat na Virtual Machine Scale Sets.
 
-## <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1 Vedení soupisu administrativních účtů
+## <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1 udržování inventáře účtů pro správu
 
-- Pro vaše předplatné by měli být určeni maximálně 3 vlastníci.
-- K vašemu předplatnému by mělo být přiřazeno více než jednoho vlastníka.
-- Z předplatného by měly být odebrány externí účty s oprávněními vlastníka.
-- Zastaralé účty s oprávněními vlastníka by měly být odebrány z vašeho předplatného
+- Pro vaše předplatné by se mělo určit maximálně 3 vlastníci.
+- K vašemu předplatnému by měl být přiřazený víc než jeden vlastník.
+- Z vašeho předplatného byste měli odebrat externí účty s oprávněním vlastníka.
+- Zastaralé účty s oprávněním vlastníka by se měly odebrat z vašeho předplatného.
 
-## <a name="33-use-dedicated-administrative-accounts"></a>3.3 Používání vyhrazených administrativních účtů
+## <a name="33-use-dedicated-administrative-accounts"></a>3,3 použít vyhrazené účty pro správu
 
-- Nasazení požadavků pro auditování virtuálních aplikací systému Windows, ve kterých skupina Administrators neobsahuje pouze zadané členy
-- Zobrazit výsledky auditu z virtuálních aplikací systému Windows, ve kterých skupina Administrators neobsahuje pouze zadané členy
-- Nasazení požadavků pro auditování virtuálních aplikací systému Windows, ve kterých skupina Administrators neobsahuje všechny zadané členy
-- Zobrazit výsledky auditu z virtuálních aplikací systému Windows, ve kterých skupina Administrators neobsahuje všechny zadané členy
-- Nasazení požadavků pro auditování virtuálních účtů systému Windows, ve kterých skupina Administrators obsahuje některý ze zadaných členů
-- Zobrazit výsledky auditu z virtuálních aplikací systému Windows, ve kterých skupina Administrators obsahuje některý ze zadaných členů
-- Pro vaše předplatné by měli být určeni maximálně 3 vlastníci.
-- K vašemu předplatnému by mělo být přiřazeno více než jednoho vlastníka.
+- Nasaďte požadavky na auditování virtuálních počítačů s Windows, ve kterých skupina Administrators neobsahuje jenom zadané členy.
+- Zobrazí výsledky auditu z virtuálních počítačů s Windows, ve kterých skupina Administrators neobsahuje jenom určité členy.
+- Nasaďte požadavky na auditování virtuálních počítačů s Windows, ve kterých skupina Administrators neobsahuje všechny zadané členy.
+- Zobrazit výsledky auditu z virtuálních počítačů s Windows, ve kterých skupina Administrators neobsahuje všechny zadané členy
+- Nasaďte požadavky na auditování virtuálních počítačů s Windows, ve kterých skupina Administrators obsahuje některé ze zadaných členů.
+- Zobrazit výsledky auditu z virtuálních počítačů s Windows, ve kterých skupina Administrators obsahuje některé ze zadaných členů
+- Pro vaše předplatné by se mělo určit maximálně 3 vlastníci.
+- K vašemu předplatnému by měl být přiřazený víc než jeden vlastník.
 
-## <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5 Použití vícefaktorového ověřování pro veškerý přístup založený na službě Azure Active Directory
+## <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3,5 použití služby Multi-Factor Authentication pro veškerý přístup založený na Azure Active Directory
 
-- Vícefaktorové informace by měly být povoleny u účtů s oprávněními vlastníka k vašemu předplatnému.
-- MFA by měly mít povolené účty s oprávněními k zápisu ve vašem předplatném.
-- Vícefaktorové informace by měly být povoleny u účtů s oprávněními ke čtení v rámci vašeho předplatného.
+- Pro účty s oprávněním vlastníka pro vaše předplatné by se měla povolit vícefaktorové ověřování.
+- V rámci vašeho předplatného by měly být povolené účty s oprávněním k zápisu.
+- Pro účty s oprávněním ke čtení vašeho předplatného by se měla povolit vícefaktorové ověřování.
 
-## <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3.7 Protokolování a upozornění na podezřelou aktivitu z administrativních účtů
+## <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3,7 protokolování a upozornění na podezřelou aktivitu z účtů pro správu
 
-- Měla by být vybrána standardní cenová úroveň Centra zabezpečení.
+- Měla by se vybrat cenová úroveň Security Center Standard.
 
-## <a name="39-use-azure-active-directory"></a>3.9 Použití služby Azure Active Directory
+## <a name="39-use-azure-active-directory"></a>3,9 Azure Active Directory použít
 
-- Správce služby Azure Active Directory by měl být zřízen pro servery SQL.
-- Clustery Service Fabric by měly používat azure active directory jenom pro ověřování klientů.
-- Ujistěte se, že je v aplikaci API povolena registrace pomocí Služby Azure Active Directory.
-- Ujistěte se, že je v aplikaci WEB App povolena registrace pomocí služby Azure Active Directory.
-- Ujistěte se, že je v aplikaci Function App povolena registrace pomocí služby Azure Active Directory.
+- Pro SQL servery by se měl zřídit správce Azure Active Directory.
+- Clustery Service Fabric by se měly používat jenom Azure Active Directory pro ověřování klientů.
+- Ujistěte se, že v aplikaci API je povolená možnost registrovat v Azure Active Directory.
+- Zajistěte, aby byl ve webové aplikaci povolený registr s Azure Active Directory.
+- Ujistěte se, že je v Function App povolená možnost registrovat v Azure Active Directory.
 
-## <a name="310-regularly-review-and-reconcile-user-access"></a>3.10 Pravidelně kontrolujte a slaďujte přístup uživatelů
+## <a name="310-regularly-review-and-reconcile-user-access"></a>3,10 pravidelně kontrolovat a sjednotit přístup uživatelů
 
-- Zastaralé účty by měly být odebrány z vašeho předplatného
-- Zastaralé účty s oprávněními vlastníka by měly být odebrány z vašeho předplatného
-- Z předplatného by měly být odebrány externí účty s oprávněním ke čtení.
-- Z předplatného by měly být odebrány externí účty s oprávněními k zápisu.
-- Z předplatného by měly být odebrány externí účty s oprávněními vlastníka.
+- Zastaralé účty by se měly odebírat z předplatného.
+- Zastaralé účty s oprávněním vlastníka by se měly odebrat z vašeho předplatného.
+- Z vašeho předplatného by se měly odebrat externí účty s oprávněním ke čtení.
+- Z vašeho předplatného byste měli odebrat externí účty s oprávněním k zápisu.
+- Z vašeho předplatného byste měli odebrat externí účty s oprávněním vlastníka.
 
-## <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1 Udržovat soupis citlivých informací
+## <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1 udržování inventáře citlivých informací
 
-- Citlivá data ve vašich databázích SQL by měla být klasifikována
+- Citlivá data v databázích SQL by měla být klasifikována
 
-## <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4 Šifrování všech citlivých informací při přepravě
+## <a name="44-encrypt-all-sensitive-information-in-transit"></a>4,4 šifrování všech citlivých informací během přenosu
 
 - Měl by se povolit zabezpečený přenos do účtů úložiště
-- Nejnovější verze TLS by měla být použita ve vaší aplikaci API
-- Ve webové aplikaci by měla být použita nejnovější verze TLS.
-- Nejnovější verze TLS by měla být použita ve vaší funkční aplikaci
-- Aplikace function by měla být přístupná pouze přes protokol HTTPS
-- Webová aplikace by měla být přístupná pouze přes protokol HTTPS.
-- Aplikace API by měla být přístupná pouze přes protokol HTTPS
-- Vynutit připojení SSL by mělo být povoleno pro databázové servery MySQL
-- Vynutit připojení SSL by mělo být povoleno pro databázové servery PostgreSQL.
-- Měla by být povolena pouze zabezpečená připojení k mezipaměti Redis.
+- V aplikaci API by se měla použít nejnovější verze TLS.
+- Ve vaší webové aplikaci by se měla použít nejnovější verze TLS.
+- V Function App by se měla použít nejnovější verze TLS.
+- Function App by měl být přístupný jenom přes HTTPS
+- Webová aplikace by měla být přístupná jen přes protokol HTTPS
+- Aplikace API by měla být přístupná jen přes protokol HTTPS
+- Pro databázové servery MySQL by mělo být povoleno připojení SSL vynutilo.
+- Pro databázové servery PostgreSQL by mělo být povoleno připojení SSL vynutilo.
+- Měla by být povolená jenom zabezpečená připojení k vašemu Redis Cache.
 
-## <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.5 Použití aktivního nástroje pro zjišťování k identifikaci citlivých dat
+## <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4,5 k identifikaci citlivých dat použít aktivní nástroj zjišťování
 
-- Citlivá data ve vašich databázích SQL by měla být klasifikována
-- Na serverech SQL by mělo být povoleno rozšířené zabezpečení dat.
-- Rozšířené zabezpečení dat by mělo být povoleno ve vašich instancích spravovaných SQL.
+- Citlivá data v databázích SQL by měla být klasifikována
+- Na vašich serverech SQL by mělo být povolené rozšířené zabezpečení dat
+- Pro spravované instance SQL by mělo být povolené rozšířené zabezpečení dat
 
-## <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6 Použití Azure RBAC k řízení přístupu k prostředkům
+## <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6 použití služby Azure RBAC k řízení přístupu k prostředkům
 
-- Řízení přístupu na základě rolí (RBAC) by mělo být použito ve službách Kubernetes
-- Auditování použití vlastních pravidel RBAC
+- Pro služby Kubernetes by se měla použít Access Control na základě rolí (RBAC).
+- Auditovat využití vlastních pravidel RBAC
 
-## <a name="48-encrypt-sensitive-information-at-rest"></a>4.8 Šifrování citlivých informací v klidovém stavu
+## <a name="48-encrypt-sensitive-information-at-rest"></a>4,8 šifrování citlivých informací v klidovém umístění
 
-- Transparentní šifrování dat v databázích SQL by mělo být povoleno
-- Šifrování disku by mělo být použito na virtuálních počítačích.
-- Nepřipojené disky by měly být šifrovány
-- Ochrana TDE serveru SQL server by měla být šifrována pomocí vlastního klíče
-- Ochrana TDE spravované SQL by měla být šifrována pomocí vlastního klíče
-- Proměnné účtu automatizace by měly být šifrovány
-- Clustery Service Fabric by měly mít vlastnost ClusterProtectionLevel nastavenou na EncryptAndSign.
+- Je třeba povolit transparentní šifrování dat databází SQL.
+- Na virtuálních počítačích by se mělo použít šifrování disku
+- Nepřipojené disky by měly být zašifrované
+- Ochrana TDE systému SQL Server by měla být zašifrovaná pomocí vlastního klíče
+- Ochrana TDE spravované instance SQL by se měla šifrovat pomocí vlastního klíče.
+- Proměnné účtu Automation by se měly šifrovat.
+- Clustery Service Fabric musí mít vlastnost ClusterProtectionLevel nastavenou na EncryptAndSign.
 
-## <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9 Protokolování a upozornění na změny kritických prostředků Azure
+## <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>Protokol 4,9 a upozornění na změny důležitých prostředků Azure
 
-- Azure Monitor by měl shromažďovat protokoly aktivit ze všech oblastí.
+- Azure Monitor by měly shromažďovat protokoly aktivit ze všech oblastí
 
-## <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1 Spuštění automatizovaných nástrojů pro vyhledávání chyb zabezpečení
+## <a name="51-run-automated-vulnerability-scanning-tools"></a>5,1 spuštění automatizovaných nástrojů pro kontrolu ohrožení zabezpečení
 
-- Posouzení ohrožení zabezpečení by mělo být povoleno na serverech SQL
-- Posouzení ohrožení zabezpečení by mělo být povoleno ve vašich instancích spravovaných SQL.
-- \[Předběžné\] posouzení ohrožení zabezpečení by mělo být povoleno ve virtuálních počítačích
-- Nastavení posouzení ohrožení zabezpečení pro sql server by měla obsahovat e-mailovou adresu pro příjem zpráv o skenování
+- Na vašich serverech SQL by mělo být povolené posouzení ohrožení zabezpečení
+- Na spravovaných instancích SQL by mělo být povolené posouzení ohrožení zabezpečení
+- \[Posouzení\] ohrožení zabezpečení ve verzi Preview by mělo být povolené na Virtual Machines
+- Nastavení posouzení ohrožení zabezpečení pro SQL Server by mělo obsahovat e-mailovou adresu pro příjem sestav kontroly.
 
-## <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5.2 Nasazení řešení pro správu automatických oprav operačního systému
+## <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5,2 nasazení automatizovaného řešení pro správu oprav operačního systému
 
 - Na počítače by se měly nainstalovat aktualizace systému
-- Aktualizace systému na škálovacísady virtuálních strojů by měly být nainstalovány
-- Ujistěte se, že verze rozhraní .NET Framework je nejnovější, pokud je použita jako součást aplikace funkce
-- Ujistěte se, že verze rozhraní .NET Framework je nejnovější, pokud je použita jako součást webové aplikace
-- Ujistěte se, že verze rozhraní .NET Framework je nejnovější, pokud se používá jako součást aplikace ROZHRANÍ API
+- Musí být nainstalované aktualizace systému ve virtuálních počítačích Virtual Machine Scale Sets.
+- Zajistěte, aby byla verze .NET Framework nejnovější, pokud se používá jako součást Function App
+- Zajistěte, aby byla verze .NET Framework nejnovější, pokud se používá jako součást webové aplikace.
+- Zajistěte, aby byla verze .NET Framework nejnovější, pokud se používá jako součást aplikace API.
 
-## <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5.3 Nasazení automatizovaného řešení pro správu softwarových oprav od jiných výrobců
+## <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5,3 nasazení automatizovaného řešení pro správu oprav softwaru třetí strany
 
-- Ujistěte se, že "php verze" je nejnovější, pokud se používá jako součást aplikace Api
-- Ujistěte se, že "PHP verze" je nejnovější, pokud je použit jako součást webové aplikace
-- Ujistěte se, že "php verze" je nejnovější, pokud je použit jako součást aplikace Funkce
-- Ujistěte se, že "Java verze" je nejnovější, pokud se používá jako součást webové aplikace
-- Ujistěte se, že "Java verze" je nejnovější, pokud se používá jako součást aplikace Funkce
-- Ujistěte se, že "Java verze" je nejnovější, pokud se používá jako součást aplikace Api
-- Ujistěte se, že "Verze Pythonu" je nejnovější, pokud je použita jako součást webové aplikace
-- Ujistěte se, že "Verze Pythonu" je nejnovější, pokud je použita jako součást aplikace Function
-- Ujistěte se, že "Verze Pythonu" je nejnovější, pokud se používá jako součást aplikace Api
-- Služby Kubernetes by měly být upgradovány na nezranitelnou verzi Kubernetes
+- Zajistěte, aby byla verze PHP nejnovější, pokud se používá jako součást aplikace API.
+- Zajistěte, aby byla verze PHP nejnovější, pokud se používá jako součást webové aplikace.
+- Zajistěte, aby byla verze PHP nejnovější, pokud se používá jako součást aplikace Function App.
+- Zajistěte, aby byl jazyk Java verze nejnovější, pokud se používá jako součást webové aplikace.
+- Zajistěte, aby byl jazyk Java verze nejnovější, pokud se používá jako součást aplikace Function App.
+- Zajistěte, aby byl jazyk Java verze nejnovější, pokud se používá jako součást aplikace API.
+- Zajistěte, aby byla nejnovější verze Pythonu, pokud se používá jako součást webové aplikace.
+- Zajistěte, aby byla nejnovější verze Pythonu, pokud se používá jako součást aplikace Function App.
+- Zajistěte, aby byla nejnovější verze Pythonu, pokud se používá jako součást aplikace API.
+- Služby Kubernetes by se měly upgradovat na nezranitelnou Kubernetes verzi.
 
-## <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5.5 Použití procesu hodnocení rizik a upřednostnění nápravy zjištěných zranitelných míst
+## <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5,5 pomocí procesu hodnocení rizik můžete určit prioritu nápravy zjištěných chyb zabezpečení.
 
-- Chyby zabezpečení by měly být opraveny řešením pro posouzení zranitelnosti
-- Chyby zabezpečení v konfiguraci zabezpečení na vašich počítačích by měly být opraveny
-- Chyby zabezpečení v konfiguraci zabezpečení ve škálovacích sadách virtuálních počítačů by měly být opraveny.
-- Chyby zabezpečení v konfiguracích zabezpečení kontejnerů by měly být opraveny
-- Chyby zabezpečení v databázích SQL by měly být opraveny
+- Ohrožení zabezpečení by se mělo opravit řešením posouzení ohrožení zabezpečení.
+- Ohrožení zabezpečení v konfiguraci zabezpečení na vašich počítačích by mělo být opraveno
+- V konfiguraci zabezpečení v rámci sady škálování virtuálních počítačů by se měly napravit ohrožení zabezpečení.
+- Ohrožení zabezpečení v konfiguraci zabezpečení kontejneru by mělo být opraveno
+- Ohrožení zabezpečení vašich databází SQL by mělo být opraveno
 
-## <a name="68-use-only-approved-applications"></a>6.8 Používejte pouze schválené aplikace
+## <a name="68-use-only-approved-applications"></a>6,8 použít pouze schválené aplikace
 
-- Měla by být vybrána standardní cenová úroveň Centra zabezpečení.
-- Adaptivní ovládací prvky aplikací by měly být povoleny na virtuálních počítačích
+- Měla by se vybrat cenová úroveň Security Center Standard.
+- Na virtuálních počítačích by měly být povolené Adaptivní řízení aplikací.
 
-## <a name="69-use-only-approved-azure-services"></a>6.9 Používejte jenom schválené služby Azure
+## <a name="69-use-only-approved-azure-services"></a>6,9 použít jenom schválené služby Azure
 
-- Virtuální počítače by se měly migrovat do nových prostředků Azure Resource Manageru.
-- Účty úložiště by se měly migrovat do nových prostředků Azure Resource Manageru.
+- Virtuální počítače by se měly migrovat na nové prostředky Azure Resource Manager.
+- Účty úložiště by se měly migrovat na nové prostředky Azure Resource Manager.
 
-## <a name="610-implement-approved-application-list"></a>6.10 Implementace schváleného seznamu žádostí
+## <a name="610-implement-approved-application-list"></a>6,10 implementace seznamu schválených aplikací
 
-- Měla by být vybrána standardní cenová úroveň Centra zabezpečení.
-- Adaptivní ovládací prvky aplikací by měly být povoleny na virtuálních počítačích
+- Měla by se vybrat cenová úroveň Security Center Standard.
+- Na virtuálních počítačích by měly být povolené Adaptivní řízení aplikací.
 
-## <a name="73-maintain-secure-azure-resource-configurations"></a>7.3 Udržovat zabezpečené konfigurace prostředků Azure
+## <a name="73-maintain-secure-azure-resource-configurations"></a>7,3 udržování zabezpečených konfigurací prostředků Azure
 
-- \[Náhled\]: Zásady zabezpečení podbytů by měly být definovány ve službách Kubernetes
+- \[Preview\]: v Kubernetes službách by se měly definovat zásady zabezpečení pod.
 
-## <a name="74-maintain-secure-operating-system-configurations"></a>7.4 Udržovat bezpečné konfigurace operačního systému
+## <a name="74-maintain-secure-operating-system-configurations"></a>7,4 udržování zabezpečených konfigurací operačního systému
 
-- Chyby zabezpečení v konfiguraci zabezpečení na vašich počítačích by měly být opraveny
-- Chyby zabezpečení v konfiguracích zabezpečení kontejnerů by měly být opraveny
-- Chyby zabezpečení v konfiguraci zabezpečení ve škálovacích sadách virtuálních počítačů by měly být opraveny.
+- Ohrožení zabezpečení v konfiguraci zabezpečení na vašich počítačích by mělo být opraveno
+- Ohrožení zabezpečení v konfiguraci zabezpečení kontejneru by mělo být opraveno
+- V konfiguraci zabezpečení v rámci sady škálování virtuálních počítačů by se měly napravit ohrožení zabezpečení.
 
-## <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7.9 Implementace automatického monitorování konfigurace pro služby Azure
+## <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7,9 implementace automatizovaného monitorování konfigurace pro služby Azure
 
-- \[Náhled\]: Zásady zabezpečení podbytů by měly být definovány ve službách Kubernetes
+- \[Preview\]: v Kubernetes službách by se měly definovat zásady zabezpečení pod.
 
-## <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7.10 Implementace automatického monitorování konfigurace operačních systémů
+## <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7,10 implementace automatizovaného monitorování konfigurace pro operační systémy
 
-- Chyby zabezpečení v konfiguraci zabezpečení na vašich počítačích by měly být opraveny
-- Chyby zabezpečení v konfiguracích zabezpečení kontejnerů by měly být opraveny
-- Chyby zabezpečení v konfiguraci zabezpečení ve škálovacích sadách virtuálních počítačů by měly být opraveny.
+- Ohrožení zabezpečení v konfiguraci zabezpečení na vašich počítačích by mělo být opraveno
+- Ohrožení zabezpečení v konfiguraci zabezpečení kontejneru by mělo být opraveno
+- V konfiguraci zabezpečení v rámci sady škálování virtuálních počítačů by se měly napravit ohrožení zabezpečení.
 
-## <a name="711-manage-azure-secrets-securely"></a>7.11 Bezpečná správa tajných kódů Azure
+## <a name="711-manage-azure-secrets-securely"></a>7,11 spravujte zabezpečená tajná klíčová úložiště
 
-- Objekty trezoru klíčů by měly být obnovitelné
+- Key Vault objekty by měly být obnovitelné
 
-## <a name="712-manage-identities-securely-and-automatically"></a>7.12 Bezpečná a automatická správa identit
+## <a name="712-manage-identities-securely-and-automatically"></a>7,12 Správa identit zabezpečeně a automaticky
 
-- Spravovanou identitu by měla být použita ve vaší aplikaci funkce
-- Spravovanou identitu by měla být použita ve webové aplikaci.
-- Spravovanou identitu by se měla používat v aplikaci API.
+- Ve vašem Function App by se měla používat spravovaná identita.
+- Ve vaší webové aplikaci by se měla použít spravovaná identita.
+- Ve vaší aplikaci API by se měla používat spravovaná identita.
 
-## <a name="81-use-centrally-managed-anti-malware-software"></a>8.1 Používejte centrálně spravovaný antimalwarový software
+## <a name="81-use-centrally-managed-anti-malware-software"></a>8,1 použití centrálně spravovaného malwarového softwaru
 
-- Sledování chybějící ochrany koncového bodu v Azure Security Center
-- Řešení ochrany koncových bodů by mělo být nainstalováno na škálovacích sadách virtuálních strojů.
+- Monitorovat chybějící Endpoint Protection v Azure Security Center
+- Řešení ochrany koncových bodů by se mělo nainstalovat na Virtual Machine Scale Sets.
 
-## <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2 Předprohledávací soubory, které se mají nahrát do nevýpočetních prostředků Azure
+## <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8,2 předem kontrolovat soubory, které se mají nahrát do prostředků Azure, které nejsou COMPUTE
 
-- Měla by být vybrána standardní cenová úroveň Centra zabezpečení.
+- Měla by se vybrat cenová úroveň Security Center Standard.
 
-## <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>8.3 Zajistěte aktualizaci antimalwarového softwaru a podpisů
+## <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>8,3 zajistěte, aby byl antimalwarový software a signatury aktualizované
 
-- Microsoft Antimalware pro Azure by měl být nakonfigurován tak, aby automaticky aktualizoval podpisy ochrany.
+- Microsoft Antimalware pro Azure by měl být nakonfigurovaný tak, aby automaticky aktualizoval podpisy ochrany.
 
-## <a name="91-ensure-regular-automated-back-ups"></a>9.1 Zajistěte pravidelné automatické zálohování
+## <a name="91-ensure-regular-automated-back-ups"></a>9,1 zajištění normálního automatického zálohování
 
-- Pro Azure SQL Databases by měla být povolena dlouhodobá geograficky redundantní záloha.
-- Geograficky redundantní záloha by měla být povolena pro Azure Database for MySQL
-- Geograficky redundantní záloha by měla být povolena pro Azure Database for PostgreSQL
-- Geograficky redundantní záloha by měla být povolena pro Azure Database pro MariaDB
-- Azure Backup by měla být povolená pro virtuální počítače
+- Pro databáze SQL Azure by mělo být povolené dlouhodobé geograficky redundantní zálohování.
+- Pro Azure Database for MySQL by měla být povolená geograficky redundantní záloha.
+- Pro Azure Database for PostgreSQL by měla být povolená geograficky redundantní záloha.
+- Pro Azure Database for MariaDB by měla být povolená geograficky redundantní záloha.
+- Azure Backup by měla být povolená Virtual Machines
 
-## <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2 Proveďte kompletní zálohy systému a zálohujte všechny klienty spravované klíče
+## <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9,2 proveďte kompletní systémové zálohy a zálohujte všechny spravované klíče zákazníka.
 
-- Pro Azure SQL Databases by měla být povolena dlouhodobá geograficky redundantní záloha.
-- Geograficky redundantní záloha by měla být povolena pro Azure Database for MySQL
-- Geograficky redundantní záloha by měla být povolena pro Azure Database for PostgreSQL
-- Geograficky redundantní záloha by měla být povolena pro Azure Database pro MariaDB
-- Azure Backup by měla být povolená pro virtuální počítače
+- Pro databáze SQL Azure by mělo být povolené dlouhodobé geograficky redundantní zálohování.
+- Pro Azure Database for MySQL by měla být povolená geograficky redundantní záloha.
+- Pro Azure Database for PostgreSQL by měla být povolená geograficky redundantní záloha.
+- Pro Azure Database for MariaDB by měla být povolená geograficky redundantní záloha.
+- Azure Backup by měla být povolená Virtual Machines
 
-## <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4 Zajištění ochrany záloh a klíčů spravovaných zákazníkem
+## <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4 Zajistěte ochranu záloh a spravovaných klíčů zákazníků.
 
-- Objekty trezoru klíčů by měly být obnovitelné
+- Key Vault objekty by měly být obnovitelné
 
-## <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2 Vytvoření postupu hodnocení incidentů a stanovení priorit
+## <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10,2 Vytvoření bodování incidentu a postupu stanovení priorit
 
-- Měla by být vybrána standardní cenová úroveň Centra zabezpečení.
+- Měla by se vybrat cenová úroveň Security Center Standard.
 
-## <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4 Poskytnutí kontaktních údajů k bezpečnostním incidentům a konfigurace upozornění na bezpečnostní incidenty
+## <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10,4 Zadejte podrobnosti o incidentu zabezpečení a nakonfigurujte oznámení o výstrahách pro incidenty zabezpečení.
 
-- Pro vaše předplatné by měla být poskytnuta e-mailová adresa bezpečnostního kontaktu.
-- Pro vaše předplatné by mělo být k dispozici telefonní číslo bezpečnostního kontaktu.
-- Rozšířené nastavení zabezpečení dat pro SQL server by měl obsahovat e-mailovou adresu pro příjem výstrah zabezpečení
-- Pokročilá nastavení zabezpečení dat pro spravovanou instanci SQL by měla obsahovat e-mailovou adresu pro příjem výstrah zabezpečení
-- E-mailová oznámení správcům a vlastníkům předplatného by měla být povolena v rozšířeném nastavení zabezpečení dat serveru SQL Server.
-- E-mailová oznámení správcům a vlastníkům předplatného by měla být povolena v rozšířeném nastavení zabezpečení dat spravované sql.
+- Pro vaše předplatné by se měla zadat e-mailová adresa kontaktu pro zabezpečení.
+- Pro vaše předplatné by se mělo zadat telefonní číslo kontaktu zabezpečení.
+- Pokročilá nastavení zabezpečení dat pro SQL Server by měla obsahovat e-mailovou adresu pro příjem výstrah zabezpečení.
+- Pokročilá nastavení zabezpečení dat pro spravovanou instanci SQL by měla obsahovat e-mailovou adresu pro příjem výstrah zabezpečení.
+- E-mailová oznámení správcům a vlastníkům předplatného by měla být povolená v nastavení SQL Server Advanced Data Security
+- E-mailová oznámení správcům a vlastníkům předplatného by se měla povolit v rozšířených nastaveních zabezpečení dat spravované instance SQL
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste zkontrolovali mapování ovládacích prvku podrobného plánu Azure Security Benchmark, navštivte zásady Azure na webu Azure Portal a přiřaďte iniciativu:
+Teď, když jste zkontrolovali mapování ovládacího prvku Azure Security test test, přejděte k iniciativě v Azure Portal Azure Policy.
 
 > [!div class="nextstepaction"]
 > [Azure Policy](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyMenuBlade/Definitions)

@@ -1,38 +1,38 @@
 ---
-title: Výuka - přidání parametrů do šablony
-description: Přidejte parametry do šablony Azure Resource Manager, aby byla opakovaně použitelná.
+title: Kurz – přidání parametrů do šablony
+description: Přidejte parametry do šablony Azure Resource Manager, abyste je mohli opakovaně používat.
 author: mumian
 ms.date: 03/31/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.openlocfilehash: de7ec961672db2f3120e00f1a42b33f71e7ab092
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80437833"
 ---
 # <a name="tutorial-add-parameters-to-your-arm-template"></a>Kurz: Přidání parametrů do šablony ARM
 
-V [předchozím kurzu](template-tutorial-add-resource.md)jste se naučili, jak přidat účet úložiště do šablony a nasadit ho. V tomto kurzu se dozvíte, jak vylepšit šablonu Azure Resource Manager (ARM) přidáním parametrů. Tento kurz trvá přibližně **14 minut.**
+V [předchozím kurzu](template-tutorial-add-resource.md)jste zjistili, jak do šablony přidat účet úložiště a nasadit ho. V tomto kurzu se naučíte, jak vylepšit šablonu Azure Resource Manager (ARM) přidáním parametrů. Dokončení tohoto kurzu trvá přibližně **14 minut** .
 
 ## <a name="prerequisites"></a>Požadavky
 
-Doporučujeme dokončit [výukový program o zdrojích](template-tutorial-add-resource.md), ale není to nutné.
+Doporučujeme, abyste dokončili [kurz o prostředcích](template-tutorial-add-resource.md), ale není to nutné.
 
-Musíte mít kód Visual Studio s rozšířením Nástroje správce prostředků a buď Azure PowerShell nebo Azure CLI. Další informace naleznete v [tématu nástroje šablony](template-tutorial-create-first-template.md#get-tools).
+Musíte mít Visual Studio Code s rozšířením Správce prostředků Tools a buď Azure PowerShell, nebo v rozhraní příkazového řádku Azure. Další informace najdete v tématu [nástroje šablon](template-tutorial-create-first-template.md#get-tools).
 
-## <a name="review-template"></a>Šablona revize
+## <a name="review-template"></a>Zkontrolovat šablonu
 
-Na konci předchozího kurzu měla vaše šablona následující JSON:
+Na konci předchozího kurzu má vaše šablona následující JSON:
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-storage/azuredeploy.json":::
 
-Možná jste si všimli, že došlo k potížím s touto šablonou. Název účtu úložiště je pevně zakódovaný. Tuto šablonu můžete použít pouze k nasazení stejného účtu úložiště pokaždé. Chcete-li nasadit účet úložiště s jiným názvem, budete muset vytvořit novou šablonu, což samozřejmě není praktický způsob, jak automatizovat vaše nasazení.
+Možná jste si všimli, že došlo k potížím s touto šablonou. Název účtu úložiště je pevně kódovaný. Tuto šablonu můžete použít jenom k nasazení stejného účtu úložiště pokaždé, když. Chcete-li nasadit účet úložiště s jiným názvem, bude nutné vytvořit novou šablonu, což zjevně není praktický způsob, jak automatizovat nasazení.
 
-## <a name="make-template-reusable"></a>Nastavení šablony opakovaně použitelné
+## <a name="make-template-reusable"></a>Nastavit šablonu jako znovu
 
-Chcete-li šablonu znovu použít, přidejte parametr, který můžete použít k předání názvu účtu úložiště. Zvýrazněné JSON v následujícím příkladu ukazuje, co se změnilo v šabloně. Parametr **storageName** je identifikován jako řetězec. Maximální délka je nastavena na 24 znaků, aby se zabránilo všechny názvy, které jsou příliš dlouhé.
+Aby bylo možné šablonu znovu použít, přidejte parametr, který můžete použít k předání názvu účtu úložiště. Zvýrazněný kód JSON v následujícím příkladu ukazuje, co se změnilo ve vaší šabloně. Parametr **úložiště** je identifikován jako řetězec. Maximální délka je nastavená na 24 znaků, aby nedocházelo k příliš dlouhým názvům.
 
 Zkopírujte celý soubor a nahraďte šablonu jeho obsahem.
 
@@ -40,9 +40,9 @@ Zkopírujte celý soubor a nahraďte šablonu jeho obsahem.
 
 ## <a name="deploy-template"></a>Nasazení šablony
 
-Pojďme nasadit šablonu. Následující příklad nasadí šablonu pomocí Azure CLI nebo PowerShellu. Všimněte si, že zadáte název účtu úložiště jako jednu z hodnot v příkazu nasazení. Pro název účtu úložiště zadejte stejný název, který jste použili v předchozím kurzu.
+Pojďme šablonu nasadit. Následující příklad nasadí šablonu pomocí Azure CLI nebo PowerShellu. Všimněte si, že jako jednu z hodnot v příkazu nasazení zadáte název účtu úložiště. Jako název účtu úložiště zadejte stejný název, který jste použili v předchozím kurzu.
 
-Pokud jste skupinu prostředků nevytvořili, přečtěte si informace [o vytvoření skupiny prostředků](template-tutorial-create-first-template.md#create-resource-group). Příklad předpokládá, že jste nastavili proměnnou **templateFile** na cestu k souboru šablony, jak je znázorněno v [prvním kurzu](template-tutorial-create-first-template.md#deploy-template).
+Pokud jste ještě nevytvořili skupinu prostředků, přečtěte si téma [Vytvoření skupiny prostředků](template-tutorial-create-first-template.md#create-resource-group). V příkladu se předpokládá, že jste nastavili proměnnou **templateFile** na cestu k souboru šablony, jak je znázorněno v [prvním kurzu](template-tutorial-create-first-template.md#deploy-template).
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -56,7 +56,7 @@ New-AzResourceGroupDeployment `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Chcete-li spustit tento příkaz nasazení, musíte mít [nejnovější verzi](/cli/azure/install-azure-cli) azure cli.
+Pokud chcete spustit tento příkaz nasazení, musíte mít [nejnovější verzi](/cli/azure/install-azure-cli) rozhraní příkazového řádku Azure CLI.
 
 ```azurecli
 az deployment group create \
@@ -70,25 +70,25 @@ az deployment group create \
 
 ## <a name="understand-resource-updates"></a>Principy aktualizací prostředků
 
-V předchozí části jste nasadili účet úložiště se stejným názvem, který jste vytvořili dříve. Možná se divíte, jak je prostředek ovlivněn přeřazením.
+V předchozí části jste nasadili účet úložiště se stejným názvem, který jste vytvořili dříve. Možná vás zajímá, jak je prostředek ovlivněný znovu nasazením.
 
-Pokud prostředek již existuje a ve vlastnostech není zjištěna žádná změna, nebude provedena žádná akce. Pokud prostředek již existuje a vlastnost se změnila, bude aktualizován. Pokud prostředek neexistuje, je vytvořen.
+Pokud prostředek již existuje a ve vlastnostech není zjištěna žádná změna, není provedena žádná akce. Pokud prostředek už existuje a vlastnost se změnila, prostředek se aktualizuje. Pokud prostředek neexistuje, vytvoří se.
 
-Tento způsob zpracování aktualizací znamená, že vaše šablona může obsahovat všechny prostředky, které potřebujete pro řešení Azure. Šablonu můžete bezpečně znovu nasadit a vědět, že prostředky jsou změněny nebo vytvořeny pouze v případě potřeby. Pokud jste například přidali soubory do účtu úložiště, můžete účet úložiště znovu nasadit, aniž byste tyto soubory ztratili.
+Tato možnost manipulace s aktualizacemi znamená, že vaše šablona může zahrnovat všechny prostředky, které potřebujete pro řešení Azure. Šablonu můžete bezpečně znovu nasadit a zjistit, jestli se prostředky v případě potřeby změnily nebo vytvářejí. Pokud jste například přidali soubory do svého účtu úložiště, můžete znovu nasadit účet úložiště bez ztráty těchto souborů.
 
-## <a name="customize-by-environment"></a>Přizpůsobení podle prostředí
+## <a name="customize-by-environment"></a>Přizpůsobit podle prostředí
 
-Parametry umožňují přizpůsobit nasazení tím, že zadáte hodnoty vhodné pro konkrétní prostředí. Můžete například předat různé hodnoty na základě toho, zda nasazujete do prostředí pro vývoj, testování a výrobu.
+Parametry umožňují přizpůsobit nasazení tím, že zadáte hodnoty vhodné pro konkrétní prostředí. Můžete například předat různé hodnoty na základě toho, jestli nasazujete do prostředí pro vývoj, testování a produkci.
 
-Předchozí šablona vždy nasadila Standard_LRS účet úložiště. Můžete chtít flexibilitu k nasazení různých skum v závislosti na prostředí. Následující příklad ukazuje změny přidat parametr pro skladovou položku. Zkopírujte celý soubor a vložte přes šablonu.
+Předchozí šablona vždycky nasadila Standard_LRS účet úložiště. Možná budete chtít, aby flexibilita nasadila různé SKU v závislosti na prostředí. Následující příklad ukazuje změny pro přidání parametru pro SKLADOVOU položku. Zkopírujte celý soubor a vložte ho do šablony.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-sku/azuredeploy.json" range="1-40" highlight="10-23,32":::
 
-Parametr **storageSKU** má výchozí hodnotu. Tato hodnota se používá, když hodnota není zadánběhem nasazení. Má také seznam povolených hodnot. Tyto hodnoty odpovídají hodnotám, které jsou potřebné k vytvoření účtu úložiště. Nechcete, aby uživatelé šablony předávat ve skum, které nefungují.
+Parametr **storageSKU** má výchozí hodnotu. Tato hodnota se používá v případě, že při nasazení není zadána hodnota. Obsahuje také seznam povolených hodnot. Tyto hodnoty odpovídají hodnotám, které jsou potřeba k vytvoření účtu úložiště. Nechcete, aby uživatelé šablony předávali do SKU, které nefungují.
 
 ## <a name="redeploy-template"></a>Opětovné nasazení šablony
 
-Jste připraveni k nasazení znovu. Vzhledem k tomu, že výchozí skladová položka je nastavena na **Standard_LRS**, není nutné zadat hodnotu pro tento parametr.
+Jste připraveni znovu nasadit. Vzhledem k tomu, že výchozí SKU je nastavená na **Standard_LRS**, nemusíte zadávat hodnotu pro tento parametr.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -113,9 +113,9 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> Pokud se nasazení nezdařilo, zobrazte protokoly ladění pomocí **přepínače ladění** s příkazem deployment.  Můžete také použít **podrobný** přepínač k zobrazení úplné protokoly ladění.
+> Pokud se nasazení nepovedlo, použijte k zobrazení protokolů ladění přepínač **ladění** s příkazem nasazení.  Můžete také použít **podrobný** přepínač k zobrazení úplných protokolů ladění.
 
-Chcete-li zobrazit flexibilitu šablony, pojďme nasadit znovu. Tento čas nastavit skladovou položku parametr **Standard_GRS**. Můžete buď předat nový název a vytvořit jiný účet úložiště, nebo použít stejný název k aktualizaci stávajícího účtu úložiště. Obě možnosti fungují.
+Chcete-li zobrazit flexibilitu šablony, nasaďte se znovu. Tentokrát nastavte parametr SKU na **Standard_GRS**. Můžete buď předat nový název a vytvořit jiný účet úložiště, nebo použít stejný název k aktualizaci stávajícího účtu úložiště. Obě možnosti fungují.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -140,7 +140,7 @@ az deployment group create \
 
 ---
 
-Nakonec spusťme ještě jeden test a uvidíme, co se stane, když předáte skladovou položku, která není jednou z povolených hodnot. V takovém případě otestujeme scénář, kdy si uživatel šablony myslí, že **základní** je jedním z skum.
+Nakonec spustíme ještě jeden test a zjistíte, co se stane, když předáte SKU, které není jednou z povolených hodnot. V tomto případě testujeme scénář, ve kterém bude uživatel vaší šablony považovat za **základ** jednu z SKU.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -165,22 +165,22 @@ az deployment group create \
 
 ---
 
-Příkaz selže okamžitě s chybovou zprávou, která uvádí, které hodnoty jsou povoleny. Správce prostředků identifikuje chybu před zahájením nasazení.
+Příkaz se okamžitě nezdařil s chybovou zprávou, která uvádí, které hodnoty jsou povoleny. Správce prostředků identifikuje chybu před spuštěním nasazení.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud přecházíte na další kurz, nemusíte odstraňovat skupinu prostředků.
+Pokud se chystáte pokračovat k dalšímu kurzu, nemusíte odstranit skupinu prostředků.
 
-Pokud nyní zastavujete, můžete chtít vyčistit prostředky, které jste nasadili, odstraněním skupiny prostředků.
+Pokud nyní zastavíte, budete možná chtít vyčistit prostředky, které jste nasadili, odstraněním skupiny prostředků.
 
-1. Na portálu Azure vyberte **skupinu prostředků** z levé nabídky.
+1. Z Azure Portal v nabídce vlevo vyberte **Skupina prostředků** .
 2. Do pole **Filtrovat podle názvu** zadejte název skupiny prostředků.
 3. Vyberte název skupiny prostředků.
-4. V horní nabídce vyberte **Odstranit skupinu prostředků.**
+4. V horní nabídce vyberte **Odstranit skupinu prostředků** .
 
 ## <a name="next-steps"></a>Další kroky
 
-Vylepšili jste šablonu vytvořenou v [prvním kurzu](template-tutorial-create-first-template.md) přidáním parametrů. V dalším kurzu se dozvíte o funkcích šablony.
+Vylepšili jste šablonu vytvořenou v [prvním kurzu](template-tutorial-create-first-template.md) přidáním parametrů. V dalším kurzu se dozvíte o funkcích šablon.
 
 > [!div class="nextstepaction"]
-> [Přidání funkcí šablony](template-tutorial-add-functions.md)
+> [Přidat funkce šablony](template-tutorial-add-functions.md)

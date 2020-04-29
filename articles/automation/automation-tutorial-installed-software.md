@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.subservice: change-inventory-management
 ms.custom: mvc
 ms.openlocfilehash: b93035fc7e315f8117516771236186f9d942a0aa
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81604666"
 ---
 # <a name="discover-what-software-is-installed-on-your-azure-and-non-azure-machines"></a>Zjišťování, jaký software je nainstalovaný na počítačích Azure a jiných počítačích než Azure
@@ -43,9 +43,9 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 Pro účely tohoto kurzu je nejprve potřeba povolit řešení Change Tracking a Inventory. Pokud jste už dříve povolili řešení **Change Tracking**, tento krok není nezbytný.
 
-Přejděte na účet automatizace a v části **Správa konfigurace**vyberte **Skladovat** .
+Přejděte do svého účtu Automation a v části **Správa konfigurace**vyberte **inventarizace** .
 
-Zvolte pracovní prostor Log Analytics a účet Automatizace a kliknutím na **Povolit** povolíte řešení. Povolení řešení trvá přibližně 15 minut.
+Vyberte pracovní prostor Log Analytics a účet Automation a kliknutím na **Povolit** povolte řešení. Povolení řešení trvá přibližně 15 minut.
 
 ![Banner konfigurace připojení k řešení Inventory](./media/automation-tutorial-installed-software/enableinventory.png)
 
@@ -57,18 +57,18 @@ Tento pracovní prostor poskytuje možnost kontroly a analýzy dat z několika z
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 Povolení řešení může trvat až 15 minut. Během této doby byste neměli zavírat okno prohlížeče.
-Po povolení řešení se informace o nainstalovaném softwaru a změnách na virtuálním počítači točtou do protokolů Azure Monitoru.
+Po povolení řešení budou informace o nainstalovaném softwaru a změnách na virtuálním počítači toky Azure Monitor protokoly.
 Zpřístupnění dat pro analýzu může trvat 30 minut až 6 hodin.
 
 ## <a name="onboard-a-vm"></a>Připojení virtuálního počítače
 
-V účtu Automation přejděte v části **Správa konfigurace**do **inventáře** .
+Ve svém účtu Automation přejděte na **inventář** v části **Správa konfigurace**.
 
 Vyberte **+ Přidat virtuální počítač Azure**. Otevře se stránka Virtuální počítače, na které můžete ze seznamu vybrat stávající virtuální počítače. Vyberte virtuální počítač, který chcete připojit. Na stránce, která se otevře, kliknutím na **Povolit** povolte řešení na virtuálním počítači. Na virtuální počítač se nasadí agent Microsoft Management Agent, který se nakonfiguruje ke komunikaci s pracovním prostorem služby Log Analytics, který jste nakonfigurovali při povolování řešení. Dokončení připojování může trvat několik minut. V tuto chvíli můžete ze seznamu vybrat nový virtuální počítač a připojit další virtuální počítač.
 
 ## <a name="onboard-a-non-azure-machine"></a>Připojení počítače mimo Azure
 
-Chcete-li přidat počítače, které nejsou azure, nainstalujte [agenta Log Analytics pro Windows](../azure-monitor/platform/agent-windows.md) nebo [agenta Log Analytics pro Linux](automation-linux-hrw-install.md)v závislosti na operačním systému. Po instalaci agenta přejděte na účet automatizace a přejděte do **části Inventář** v části **Správa konfigurace**. Po kliknutí na **Spravovat počítače** se zobrazí seznam počítačů, které se hlásí do vašeho pracovního prostoru služby Log Analytics a které nemají řešení povolené. Vyberte odpovídající možnost pro vaše prostředí.
+Pokud chcete přidat počítače mimo Azure, nainstalujte [agenta Log Analytics pro Windows](../azure-monitor/platform/agent-windows.md) nebo [agenta Log Analytics pro Linux](automation-linux-hrw-install.md), a to v závislosti na vašem operačním systému. Po instalaci agenta přejděte do svého účtu Automation a přejděte do části **inventarizace** **Správa konfigurace**. Po kliknutí na **Spravovat počítače** se zobrazí seznam počítačů, které se hlásí do vašeho pracovního prostoru služby Log Analytics a které nemají řešení povolené. Vyberte odpovídající možnost pro vaše prostředí.
 
 * **Povolit na všech dostupných počítačích** – Tato možnost povolí řešení na všech počítačích, které se aktuálně hlásí do vašeho pracovního prostoru služby Log Analytics.
 * **Povolit na všech dostupných i budoucích počítačích** – Tato možnost povolí řešení na všech počítačích, které se hlásí do vašeho pracovního prostoru služby Log Analytics, a následně i na všech počítačích, které se do pracovního prostoru přidají v budoucnu.
@@ -78,9 +78,9 @@ Chcete-li přidat počítače, které nejsou azure, nainstalujte [agenta Log Ana
 
 ## <a name="view-installed-software"></a>Zobrazení nainstalovaného softwaru
 
-Jakmile je povoleno řešení Sledování změn a zásoby, můžete zobrazit výsledky na stránce Zásoby.
+Po povolení řešení Change Tracking a inventáře můžete zobrazit výsledky na stránce inventáře.
 
-V účtu Automation vyberte v části Správa konfigurace **položku** **Zásoby**.
+Ve svém účtu Automation v části **Správa konfigurace**vyberte **inventarizace** .
 
 Na stránce Inventory klikněte na kartu **Software**.
 
@@ -95,14 +95,14 @@ Kliknutím na nějaký řádek zobrazíte vlastnosti záznamu softwaru a názvy 
 Pokud hledáte konkrétní software nebo skupinu softwaru, můžete je vyhledat v textovém poli přímo nad seznamem softwaru.
 Filtr umožňuje vyhledávat podle názvu softwaru, verze nebo vydavatele.
 
-Hledání **contoso** například vrátí veškerý software s názvem, vydavatelem nebo verzí obsahující **contoso**.
+Například vyhledávání **Contoso** vrátí veškerý software s názvem, vydavatelem nebo verzí obsahující **Contoso**.
 
 ## <a name="search-inventory-logs-for-installed-software"></a>Vyhledávání nainstalovaného softwaru v protokolech inventáře
 
-Inventář generuje data protokolu, která se odesílá do protokolů Azure Monitor. Chcete-li prohledávat protokoly spuštěním dotazů, vyberte **Log Analytics** v horní části stránky Inventáře.
+Inventář generuje data protokolu, která se odesílají do protokolů Azure Monitor. Pokud chcete v protokolech Hledat spouštěním dotazů, vyberte **Log Analytics** v horní části stránky inventáře.
 
-Data zásob jsou uložena pod typem `ConfigurationData`.
-Následující ukázkový dotaz Log Analytics vrátí výsledky inventáře, kde se vydavatel rovná **společnosti Microsoft Corporation**.
+Data inventáře se ukládají pod typ `ConfigurationData`.
+Následující vzorový Log Analytics dotaz vrátí výsledky inventáře, kde se Vydavatel rovná **Microsoft Corporation**.
 
 ```loganalytics
 ConfigurationData
@@ -111,12 +111,12 @@ ConfigurationData
 | summarize arg_max(TimeGenerated, *) by SoftwareName, Computer
 ```
 
-Další informace o spouštění a prohledávání souborů protokolu v protokolech Azure Monitoru najdete v [tématu protokoly Azure Monitor .](../azure-monitor/log-query/log-query-overview.md)
+Další informace o spouštění a hledání souborů protokolu v protokolech Azure Monitor najdete v tématu [protokoly Azure monitor](../azure-monitor/log-query/log-query-overview.md).
 
 ### <a name="single-machine-inventory"></a>Inventarizace jediného počítače
 
-Pokud chcete zobrazit inventář softwaru pro jeden počítač, můžete přistupovat k inventáři ze stránky prostředků virtuálního počítače Azure nebo pomocí protokolů Azure Monitor filtrovat dolů na odpovídající počítač.
-Následující příklad dotazu Log Analytics vrátí seznam softwaru pro počítač s názvem **ContosoVM**.
+Pokud chcete zobrazit inventář softwaru pro jeden počítač, můžete získat přístup k inventáři na stránce prostředku virtuálního počítače Azure nebo použít protokoly Azure Monitor k filtrování dolů na odpovídající počítač.
+Následující příklad Log Analytics dotazu vrátí seznam softwaru pro počítač s názvem **ContosoVM**.
 
 ```loganalytics
 ConfigurationData

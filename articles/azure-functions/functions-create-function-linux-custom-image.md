@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.custom: mvc
 zone_pivot_groups: programming-languages-set-functions
 ms.openlocfilehash: fee4e16bd77664e541eeb36cb807a77d13191899
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82165718"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Vytvoření funkce na platformě Linux pomocí vlastního kontejneru
@@ -83,7 +83,7 @@ Spuštěním následujícího příkazu v prázdné složce vygenerujte projekt 
 ```bash
 mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype -Ddocker
 ```
-# <a name="powershell"></a>[Prostředí](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 ```powershell
 mvn archetype:generate "-DarchetypeGroupId=com.microsoft.azure" "-DarchetypeArtifactId=azure-functions-archetype" "-Ddocker"
 ```

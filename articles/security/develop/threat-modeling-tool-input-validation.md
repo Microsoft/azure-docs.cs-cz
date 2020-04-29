@@ -1,6 +1,6 @@
 ---
-title: Ověření vstupu – Nástroj pro modelování hrozeb společnosti Microsoft – Azure | Dokumenty společnosti Microsoft
-description: zmírnění hrozeb vystavených v nástroji pro modelování hrozeb
+title: Ověřování vstupu – Microsoft Threat Modeling Tool – Azure | Microsoft Docs
+description: zmírnění rizik pro ohrožené hrozby v Threat Modeling Tool
 services: security
 documentationcenter: na
 author: jegeib
@@ -16,22 +16,22 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.openlocfilehash: 712a0707826f97f29b015a2c5892f8d20577e41b
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81687897"
 ---
-# <a name="security-frame-input-validation--mitigations"></a>Bezpečnostní rámec: Ověření vstupu | Skutečnosti snižující závažnost rizika 
+# <a name="security-frame-input-validation--mitigations"></a>Rámec zabezpečení: ověření vstupu | Hrozeb 
 | Produkt/služba | Článek |
 | --------------- | ------- |
-| **Webová aplikace** | <ul><li>[Zakázání skriptování XSLT pro všechny transformace pomocí nedůvěryhodných šablon stylů](#disable-xslt)</li><li>[Ujistěte se, že každá stránka, která by mohla obsahovat uživatelsky kontrolovatelný obsah, se odhlásí z automatického čichání MIME](#out-sniffing)</li><li>[Zpevnění nebo zakázání rozlišení entit XML](#xml-resolution)</li><li>[Aplikace využívající http.sys provádějí ověření kanonizace url](#app-verification)</li><li>[Ujistěte se, že jsou při přijímání souborů od uživatelů zavedeny příslušné ovládací prvky.](#controls-users)</li><li>[Ujistěte se, že jsou ve webové aplikaci používány parametry zajišťující bezpečnost typů pro přístup k datům.](#typesafe)</li><li>[Použití samostatných tříd vazeb modelu nebo seznamů filtrů vazeb, abyste zabránili chybě zabezpečení přiřazení hmoty MVC](#binding-mvc)</li><li>[Kódování nedůvěryhodného webového výstupu před vykreslováním](#rendering)</li><li>[Provedení ověření vstupu a filtrování všech vlastností modelu typu řetězec](#typemodel)</li><li>[Sanitace by měla být použita na pole formuláře, která přijímají všechny znaky, např.](#richtext)</li><li>[Nepřiřazovat prvky DOM k propadům, které nemají vestavěné kódování](#inbuilt-encode)</li><li>[Ověřit, že všechna přesměrování v rámci aplikace jsou uzavřena nebo provedena bezpečně](#redirect-safe)</li><li>[Implementovat ověření vstupu u všech parametrů typu řetězce přijatých metodami kontroleru](#string-method)</li><li>[Nastavení časového limitu horního limitu pro zpracování regulárních výrazů, aby se zabránilo dos z důvodu chybné regulární výrazy](#dos-expression)</li><li>[Vyhněte se použití Html.Raw v zobrazení Razor](#html-razor)</li></ul> | 
-| **databáze** | <ul><li>[Nepoužívejte dynamické dotazy v uložených procedurách](#stored-proc)</li></ul> |
-| **Webové rozhraní API** | <ul><li>[Ujistěte se, že ověření modelu se provádí na metody webového rozhraní API](#validation-api)</li><li>[Implementace ověření vstupu u všech parametrů typu řetězce přijatých metodami webového rozhraní API](#string-api)</li><li>[Ujistěte se, že jsou ve webovém rozhraní API používány parametry zajišťující bezpečnost typů pro přístup k datům.](#typesafe-api)</li></ul> | 
-| **Databáze dokumentů Azure** | <ul><li>[Použití parametrizovaných dotazů SQL pro Azure Cosmos DB](#sql-docdb)</li></ul> | 
-| **WCF** | <ul><li>[Ověřování vstupu WCF prostřednictvím vazby schématu](#schema-binding)</li><li>[WCF - Ověření vstupu prostřednictvím inspektorů parametrů](#parameters)</li></ul> |
+| **Webová aplikace** | <ul><li>[Zakázat skriptování XSLT pro všechny transformace pomocí nedůvěryhodných šablon stylů](#disable-xslt)</li><li>[Zajistěte, aby každá stránka, která by mohla obsahovat uživatelsky ovladatelného obsahu, výslovný z automatického sledování MIME.](#out-sniffing)</li><li>[Posílení nebo zakázání rozlišení entit XML](#xml-resolution)</li><li>[Aplikace, které využívají http. sys, provádějí ověřování pomocí kanonického zpracování adresy URL.](#app-verification)</li><li>[Zajistěte, aby byly při přijímání souborů od uživatelů k dismístě správné ovládací prvky.](#controls-users)</li><li>[Zajistěte, aby se pro přístup k datům používaly parametry bezpečné pro typ ve webové aplikaci.](#typesafe)</li><li>[Použití samostatných tříd vazeb modelů nebo seznamů filtru vazeb k zamezení ohrožení zabezpečení pro hromadné přiřazení MVC](#binding-mvc)</li><li>[Kódování nedůvěryhodného webového výstupu před vykreslením](#rendering)</li><li>[Provede ověřování vstupu a filtrování u všech vlastností modelu řetězcového typu.](#typemodel)</li><li>[Pro pole formuláře, která přijímají všechny znaky, například Editor formátovaného textu, by měla být použita upravená část.](#richtext)</li><li>[Nepřiřazujte elementy modelu DOM k jímky, které nemají sestavené kódování.](#inbuilt-encode)</li><li>[Ověření všech přesměrování v rámci aplikace je uzavřeno nebo provedeno bezpečně.](#redirect-safe)</li><li>[Implementovat ověřování vstupu pro všechny parametry řetězcového typu akceptované metodami řadiče](#string-method)</li><li>[Nastavte časový limit horní meze pro zpracování regulárního výrazu, aby se zabránilo DoS v důsledku chybných regulárních výrazů.](#dos-expression)</li><li>[Nepoužívejte HTML. Raw v zobrazeních Razor](#html-razor)</li></ul> | 
+| **Databáze** | <ul><li>[Nepoužívejte dynamické dotazy v uložených procedurách](#stored-proc)</li></ul> |
+| **Webové rozhraní API** | <ul><li>[Ujistěte se, že se ověřování modelu provádí na metodách webového rozhraní API.](#validation-api)</li><li>[Implementovat ověřování vstupu pro všechny parametry řetězcového typu akceptované metodami webového rozhraní API](#string-api)</li><li>[Zajistěte, aby se pro přístup k datům používaly parametry bezpečné pro typ ve webovém rozhraní API.](#typesafe-api)</li></ul> | 
+| **Azure Document DB** | <ul><li>[Použití parametrizovaných dotazů SQL pro Azure Cosmos DB](#sql-docdb)</li></ul> | 
+| **WCF** | <ul><li>[Ověřování vstupu WCF prostřednictvím vazby schématu](#schema-binding)</li><li>[WCF – ověřování vstupu prostřednictvím inspektorů parametrů](#parameters)</li></ul> |
 
-## <a name="disable-xslt-scripting-for-all-transforms-using-untrusted-style-sheets"></a><a id="disable-xslt"></a>Zakázání skriptování XSLT pro všechny transformace pomocí nedůvěryhodných šablon stylů
+## <a name="disable-xslt-scripting-for-all-transforms-using-untrusted-style-sheets"></a><a id="disable-xslt"></a>Zakázat skriptování XSLT pro všechny transformace pomocí nedůvěryhodných šablon stylů
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
@@ -39,8 +39,8 @@ ms.locfileid: "81687897"
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | –  |
-| **Odkazy**              | [Zabezpečení XSLT](https://msdn.microsoft.com/library/ms763800(v=vs.85).aspx), [vlastnost XsltSettings.EnableScript](https://msdn.microsoft.com/library/system.xml.xsl.xsltsettings.enablescript.aspx) |
-| **Kroky** | XSLT podporuje skriptování uvnitř `<msxml:script>` šablon stylů pomocí prvku. To umožňuje vlastní funkce, které mají být použity v transformaci XSLT. Skript je spuštěn v kontextu procesu provádění transformace. Skript XSLT musí být zakázán v nedůvěryhodném prostředí, aby se zabránilo spuštění nedůvěryhodného kódu. *Pokud používáte rozhraní .NET:* Skriptování XSLT je ve výchozím nastavení zakázáno. však je nutné zajistit, že nebylexplicitně povolena prostřednictvím vlastnosti. `XsltSettings.EnableScript`|
+| **Odkazy**              | [Zabezpečení XSLT](https://msdn.microsoft.com/library/ms763800(v=vs.85).aspx), [vlastnost XsltSettings. EnableScript](https://msdn.microsoft.com/library/system.xml.xsl.xsltsettings.enablescript.aspx) |
+| **Uvedené** | XSLT podporuje skriptování uvnitř šablon stylů pomocí `<msxml:script>` elementu. To umožňuje použití vlastních funkcí v transformaci XSLT. Skript je spuštěn v kontextu procesu, který provádí transformaci. Skript XSLT musí být zakázán, pokud je v nedůvěryhodném prostředí, aby nedocházelo k provádění nedůvěryhodného kódu. *Pokud používáte rozhraní .NET:* Ve výchozím nastavení je skriptování XSLT zakázané. je však nutné zajistit, aby nebyla explicitně povolena prostřednictvím `XsltSettings.EnableScript` vlastnosti.|
 
 ### <a name="example"></a>Příklad 
 
@@ -50,20 +50,20 @@ settings.EnableScript = true; // WRONG: THIS SHOULD BE SET TO false
 ```
 
 ### <a name="example"></a>Příklad
-Pokud používáte jazyk MSXML 6.0, je skriptování XSLT ve výchozím nastavení zakázáno. je však nutné zajistit, aby nebyl explicitně povolen prostřednictvím vlastnosti objektu XML DOM AllowXsltScript. 
+Pokud používáte MSXML 6,0, ve výchozím nastavení je skriptování XSLT zakázané. je však nutné zajistit, aby nebyl explicitně povolen prostřednictvím vlastnosti objektu XML DOM AllowXsltScript. 
 
 ```csharp
 doc.setProperty("AllowXsltScript", true); // WRONG: THIS SHOULD BE SET TO false
 ```
 
 ### <a name="example"></a>Příklad
-Pokud používáte msxml 5 nebo nižší, je skriptování XSLT ve výchozím nastavení povoleno a je nutné jej explicitně zakázat. Nastavte vlastnost objektu XML DOM AllowXsltScript na hodnotu false. 
+Pokud používáte MSXML 5 nebo níže, je ve výchozím nastavení povoleno skriptování XSLT a je nutné je explicitně zakázat. Nastavte vlastnost objektu XML DOM AllowXsltScript na hodnotu false. 
 
 ```csharp
 doc.setProperty("AllowXsltScript", false); // CORRECT. Setting to false disables XSLT scripting.
 ```
 
-## <a name="ensure-that-each-page-that-could-contain-user-controllable-content-opts-out-of-automatic-mime-sniffing"></a><a id="out-sniffing"></a>Ujistěte se, že každá stránka, která by mohla obsahovat uživatelsky kontrolovatelný obsah, se odhlásí z automatického čichání MIME
+## <a name="ensure-that-each-page-that-could-contain-user-controllable-content-opts-out-of-automatic-mime-sniffing"></a><a id="out-sniffing"></a>Zajistěte, aby každá stránka, která by mohla obsahovat uživatelsky ovladatelného obsahu, výslovný z automatického sledování MIME.
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
@@ -71,13 +71,13 @@ doc.setProperty("AllowXsltScript", false); // CORRECT. Setting to false disables
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | –  |
-| **Odkazy**              | [IE8 Bezpečnostní část V - Komplexní ochrana](https://blogs.msdn.com/ie/archive/2008/07/02/ie8-security-part-v-comprehensive-protection.aspx)  |
-| **Kroky** | <p>Pro každou stránku, která by mohla obsahovat uživatelsky kontrolovatelný obsah, je nutné použít hlavičku `X-Content-Type-Options:nosniff`HTTP . Chcete-li tento požadavek splnit, můžete buď nastavit požadovanou stránku záhlaví po stránce pouze pro stránky, které mohou obsahovat obsah, který lze ovládat uživatelem, nebo jej můžete nastavit globálně pro všechny stránky v aplikaci.</p><p>Každý typ souboru dodaného z webového serveru má přidružený [typ MIME](https://en.wikipedia.org/wiki/Mime_type) (nazývaný také *typ obsahu),* který popisuje povahu obsahu (tj. obrázek, text, aplikaci atd.)</p><p>Hlavička X-Content-Type-Options je hlavička HTTP, která vývojářům umožňuje určit, že jejich obsah by neměl být mime-sniffed. Tato hlavička je určena ke zmírnění útoků MIME-sniffing. Podpora pro toto záhlaví byla přidána v aplikaci Internet Explorer 8 (IE8)</p><p>Z možností X-Content-Type-Options budou mít prospěch pouze uživatelé aplikace Internet Explorer 8 (IE8). Předchozí verze aplikace Internet Explorer v současné době nerespektují záhlaví X-Content-Type-Options</p><p>Internet Explorer 8 (a novější) jsou pouze hlavní prohlížeče implementovat MIME-sniffing opt-out funkce. Pokud a kdy ostatní hlavní prohlížeče (Firefox, Safari, Chrome) implementují podobné funkce, bude toto doporučení aktualizováno tak, aby zahrnovalo syntaxi pro tyto prohlížeče.</p>|
+| **Odkazy**              | [IE8 zabezpečení část V – komplexní ochrana](https://blogs.msdn.com/ie/archive/2008/07/02/ie8-security-part-v-comprehensive-protection.aspx)  |
+| **Uvedené** | <p>Pro každou stránku, která by mohla obsahovat uživatelsky ovladatelné obsahy, je nutné použít `X-Content-Type-Options:nosniff`hlavičku protokolu HTTP. Aby bylo možné tento požadavek splnit, můžete buď nastavit požadovanou stránku záhlaví na stránce pouze na ty stránky, které mohou obsahovat uživatelsky přizpůsobený obsah, nebo je můžete nastavit globálně pro všechny stránky v aplikaci.</p><p>Každý typ souboru dodaný z webového serveru má přidružený [typ MIME](https://en.wikipedia.org/wiki/Mime_type) (označuje se také jako *typ obsahu*), který popisuje povahu obsahu (tj. obrázek, text, aplikace atd.).</p><p>Hlavička X-Content-Type-Options je hlavička protokolu HTTP, která vývojářům umožňuje určit, že jejich obsah by neměl být ve formátu MIME. Tato hlavička je navržená tak, aby zmírnila útoky využívající kódování MIME. Podpora pro tuto hlavičku se přidala v Internet Exploreru 8 (IE8).</p><p>Jenom uživatelé aplikace Internet Explorer 8 (IE8) budou využívat možnosti X-Content-Type-Type. Předchozí verze aplikace Internet Explorer aktuálně nerespektují hlavičku X-Content-Type-Options</p><p>Internet Explorer 8 (a novější) jsou jediné hlavní prohlížeče, které implementují funkci pro odhlášení pomocí kódování MIME. Pokud a pokud jiné hlavní prohlížeče (Firefox, Safari, Chrome) implementují podobné funkce, bude toto doporučení aktualizováno, aby obsahovalo i syntaxi pro tyto prohlížeče.</p>|
 
 ### <a name="example"></a>Příklad
-Chcete-li povolit požadované záhlaví globálně pro všechny stránky v aplikaci, můžete provést jednu z následujících akcí: 
+Pokud chcete povinnou hlavičku globálně povolit pro všechny stránky v aplikaci, můžete provést jednu z následujících akcí: 
 
-* Přidání záhlaví do souboru web.config, pokud je aplikace hostována Internetovou informační službou (IIS) 7 
+* Pokud je aplikace hostována službou Internetová informační služba (IIS) 7, přidejte do souboru Web. config hlavičku. 
 
 ```
 <system.webServer> 
@@ -89,7 +89,7 @@ Chcete-li povolit požadované záhlaví globálně pro všechny stránky v apli
 </system.webServer> 
 ```
 
-* Přidání záhlaví prostřednictvím\_globálního požadavku BeginRequest aplikace 
+* Přidat hlavičku do globální aplikace\_beginRequest 
 
 ``` 
 void Application_BeginRequest(object sender, EventArgs e)
@@ -126,13 +126,13 @@ public class XContentTypeOptionsModule : IHttpModule
 
 ``` 
 
-* Požadované záhlaví můžete povolit pouze pro určité stránky přidáním jednotlivých odpovědí: 
+* Požadovanou hlavičku můžete povolit jenom pro konkrétní stránky tak, že ji přidáte do jednotlivých odpovědí: 
 
 ```
 this.Response.Headers[""X-Content-Type-Options""] = ""nosniff""; 
 ``` 
 
-## <a name="harden-or-disable-xml-entity-resolution"></a><a id="xml-resolution"></a>Zpevnění nebo zakázání rozlišení entit XML
+## <a name="harden-or-disable-xml-entity-resolution"></a><a id="xml-resolution"></a>Posílení nebo zakázání rozlišení entit XML
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
@@ -140,11 +140,11 @@ this.Response.Headers[""X-Content-Type-Options""] = ""nosniff"";
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | –  |
-| **Odkazy**              | [Rozšíření entit XML](https://capec.mitre.org/data/definitions/197.html), [Útoky a obrana odmítnutí služby XML](https://msdn.microsoft.com/magazine/ee335713.aspx), Přehled zabezpečení [msxml](https://msdn.microsoft.com/library/ms754611(v=VS.85).aspx), [doporučené postupy pro zabezpečení kódu MSXML](https://msdn.microsoft.com/library/ms759188(VS.85).aspx), Odkaz na protokol [NSXMLParserDelegate ,](https://developer.apple.com/library/ios/#documentation/cocoa/reference/NSXMLParserDelegate_Protocol/Reference/Reference.html)Řešení [externích odkazů](https://msdn.microsoft.com/library/5fcwybb2.aspx) |
-| **Kroky**| <p>Ačkoli není široce používán, existuje funkce XML, která umožňuje analyzátoru XML rozbalit entity maker s hodnotami definovanými buď v samotném dokumentu, nebo z externích zdrojů. Dokument může například definovat entitu "název společnosti" s hodnotou Microsoft,&companyname;takže pokaždé, když se v dokumentu zobrazí text " ", bude automaticky nahrazen textem Microsoft. Nebo dokument může definovat entitu "MSFTStock", která odkazuje na externí webovou službu pro načtení aktuální hodnoty akcií společnosti Microsoft.</p><p>Poté se&MSFTStock;v dokumentu objeví " " , je automaticky nahrazen aktuální cenou akcií. Tato funkce však může být zneužita k vytvoření podmínek odmítnutí služby (DoS). Útočník může vnořit více entit a vytvořit exponenciální rozšiřující bombu XML, která spotřebovává veškerou dostupnou paměť v systému. </p><p>Alternativně může vytvořit externí odkaz, který streamuje zpět nekonečné množství dat nebo který jednoduše zablokuje vlákno. V důsledku toho musí všechny týmy zcela zakázat interní nebo externí rozlišení entit XML, pokud je jejich aplikace nepoužívá, nebo ručně omezit množství paměti a čas, který aplikace může spotřebovat pro rozlišení entity, pokud je tato funkce naprosto nezbytná. Pokud aplikace nevyžaduje rozlišení entity, zakažte ji. </p>|
+| **Odkazy**              | [Rozšíření entit XML](https://capec.mitre.org/data/definitions/197.html), [útoky DOS a obrany služby XML](https://msdn.microsoft.com/magazine/ee335713.aspx), [Přehled zabezpečení MSXML](https://msdn.microsoft.com/library/ms754611(v=VS.85).aspx), [osvědčené postupy pro zabezpečení kódu MSXML](https://msdn.microsoft.com/library/ms759188(VS.85).aspx), [reference protokolu NSXMLParserDelegate](https://developer.apple.com/library/ios/#documentation/cocoa/reference/NSXMLParserDelegate_Protocol/Reference/Reference.html)a [Překlad externích odkazů](https://msdn.microsoft.com/library/5fcwybb2.aspx) |
+| **Uvedené**| <p>I když se v současnosti nepoužívá, je funkce jazyka XML, která umožňuje analyzátoru jazyka XML rozbalovat entity maker s hodnotami definovanými buď v samotném dokumentu, nebo z externích zdrojů. Dokument může například definovat entitu "CompanyName" s hodnotou "Microsoft", takže pokaždé, když se text "&companyname;" zobrazí v dokumentu, bude automaticky nahrazen textem společnosti Microsoft. Nebo může dokument definovat entitu "MSFTStock", která odkazuje na externí webovou službu, aby se načetla aktuální hodnota akcie Microsoft.</p><p>V dokumentu se pak&MSFTStock;zobrazí všechny časy, automaticky se nahradí aktuální cenou akcií. Tato funkce se ale dá zneužít, aby se vytvořily podmínky DOS (Denial of Service). Útočník může vnořit více entit pro vytvoření exponenciálního rozšíření bomb XML, které spotřebovává veškerou dostupnou paměť v systému. </p><p>Alternativně může vytvořit externí odkaz, který streamuje zpět nekonečné množství dat nebo jednoduše zablokuje vlákno. V důsledku toho musí všechny týmy zakázat interní nebo externí rozlišení entity XML, pokud je aplikace nepoužívá, nebo ručně omezit množství paměti a času, který může aplikace spotřebovat pro řešení entit, pokud je tato funkce nezbytně nutná. Pokud vaše aplikace nevyžaduje překlad entit, pak ho zakažte. </p>|
 
 ### <a name="example"></a>Příklad
-Pro kód rozhraní .NET Framework můžete použít následující přístupy:
+Pro .NET Framework kód můžete použít následující přístupy:
 
 ```csharp
 XmlTextReader reader = new XmlTextReader(stream);
@@ -159,10 +159,10 @@ XmlReaderSettings settings = new XmlReaderSettings();
 settings.DtdProcessing = DtdProcessing.Prohibit;
 XmlReader reader = XmlReader.Create(stream, settings);
 ```
-Všimněte si, `ProhibitDtd` že `XmlReaderSettings` výchozí hodnota `XmlTextReader` in je true, ale v něm je false. Pokud používáte XmlReaderSettings, není nutné explicitně nastavit ProhibitDtd na true, ale z bezpečnostních důvodů, které provádíte. Všimněte si také, že třída XmlDocument umožňuje ve výchozím nastavení rozlišení entit. 
+Všimněte si, že výchozí hodnota `ProhibitDtd` v `XmlReaderSettings` je true, ale v `XmlTextReader` této hodnotě je false. Pokud používáte XmlReaderSettings, nemusíte explicitně nastavit ProhibitDtd na hodnotu true, ale doporučuje se z důvodu bezpečnosti. Všimněte si také, že Třída XmlDocument ve výchozím nastavení umožňuje překlad entit. 
 
 ### <a name="example"></a>Příklad
-Chcete-li zakázat rozlišení entit pro XmlDocuments, použijte `XmlDocument.Load(XmlReader)` přetížení metody Load a nastavte příslušné vlastnosti v argumentu XmlReader, abyste zakázali rozlišení, jak je znázorněno v následujícím kódu: 
+Chcete-li zakázat překlad entit pro XmlDocument, použijte `XmlDocument.Load(XmlReader)` přetížení metody Load a nastavte příslušné vlastnosti v argumentu XmlReader pro zakázání rozlišení, jak je znázorněno v následujícím kódu: 
 
 ```csharp
 XmlReaderSettings settings = new XmlReaderSettings();
@@ -173,7 +173,7 @@ doc.Load(reader);
 ```
 
 ### <a name="example"></a>Příklad
-Pokud zakázání rozlišení entity není možné pro vaši aplikaci, nastavte XmlReaderSettings.MaxCharactersFromEntities vlastnost přiměřenou hodnotu podle potřeb vaší aplikace. Tím se omezí dopad potenciálních exponenciálních expanzních útoků DoS. Následující kód poskytuje příklad tohoto přístupu: 
+Pokud není u vaší aplikace možné zakázat řešení entity, nastavte vlastnost XmlReaderSettings. MaxCharactersFromEntities na rozumnou hodnotu podle potřeb vaší aplikace. Tím se omezí dopad potenciálních útoků na exponenciální rozšíření DoS. Následující kód poskytuje příklad tohoto přístupu: 
 
 ```csharp
 XmlReaderSettings settings = new XmlReaderSettings();
@@ -183,7 +183,7 @@ XmlReader reader = XmlReader.Create(stream, settings);
 ```
 
 ### <a name="example"></a>Příklad
-Pokud potřebujete vyřešit včleněné entity, ale nepotřebujete přeložit externí entity, nastavte vlastnost XmlReaderSettings.XmlResolver na hodnotu null. Příklad: 
+Pokud potřebujete vyřešit vložené entity, ale nepotřebujete přeložit externí entity, nastavte vlastnost XmlReaderSettings. objekt XmlResolver na hodnotu null. Příklad: 
 
 ```csharp
 XmlReaderSettings settings = new XmlReaderSettings();
@@ -192,9 +192,9 @@ settings.MaxCharactersFromEntities = 1000;
 settings.XmlResolver = null;
 XmlReader reader = XmlReader.Create(stream, settings);
 ```
-Všimněte si, že v MSXML6, ProhibitDTD je nastavena na hodnotu true (zakázání zpracování DTD) ve výchozím nastavení. Pro kód Apple OSX/iOS můžete použít dva analyzátory XML: NSXMLParser a libXML2. 
+Všimněte si, že ve MSXML6 je ProhibitDTD ve výchozím nastavení nastaveno na hodnotu true (zakázání zpracování DTD). Pro kód Apple OSX/iOS existují dva analyzátory XML, které můžete použít: NSXMLParser a libXML2. 
 
-## <a name="applications-utilizing-httpsys-perform-url-canonicalization-verification"></a><a id="app-verification"></a>Aplikace využívající http.sys provádějí ověření kanonizace url
+## <a name="applications-utilizing-httpsys-perform-url-canonicalization-verification"></a><a id="app-verification"></a>Aplikace, které využívají http. sys, provádějí ověřování pomocí kanonického zpracování adresy URL.
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
@@ -203,9 +203,9 @@ Všimněte si, že v MSXML6, ProhibitDTD je nastavena na hodnotu true (zakázán
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | –  |
 | **Odkazy**              | –  |
-| **Kroky** | <p>Každá aplikace, která používá http.sys by měly dodržovat tyto pokyny:</p><ul><li>Omezte délku adresy URL na maximálně 16 384 znaků (ASCII nebo Unicode). Toto je absolutní maximální délka adresy URL založená na výchozím nastavení Internetové informační služby (IIS) 6. Webové stránky by měly usilovat o kratší délku, než je to, pokud je to možné</li><li>Použijte standardní vstupně-to-v. třídy souboru rozhraní .NET Framework (například FileStream), protože budou využívat pravidla kanonizace v rozhraní .NET FX</li><li>Explicitně sestavit seznam známých názvů souborů</li><li>Explicitně odmítnout známé typy souborů nebudete sloužit UrlScan odmítá: exe, bat, cmd, com, htw, ida, idq, htr, idc, shtm[l], stm, tiskárna, ini, pol, dat files</li><li>Zachyťte následující výjimky:<ul><li>System.ArgumentException (pro názvy zařízení)</li><li>System.NotSupportedException (pro datové proudy)</li><li>System.IO.FileNotFoundException (pro neplatné názvy uvozevačů)</li><li>System.IO.DirectoryNotFoundException (pro neplatné uvozené dirs)</li></ul></li><li>*Nevolat* na win32 soubor vstupně-v., vstupně-v. API. Na neplatnou adresu URL řádně vrátit chybu 400 uživateli a protokolovat skutečnou chybu.</li></ul>|
+| **Uvedené** | <p>Každá aplikace, která používá protokol HTTP. sys, by měla postupovat podle těchto pokynů:</p><ul><li>Omezte délku adresy URL na maximálně 16 384 znaků (ASCII nebo Unicode). Toto je absolutní maximální délka adresy URL na základě výchozího nastavení Internetová informační služba (IIS) 6. Weby by se měly snažit s kratší délkou, pokud je to možné.</li><li>Použijte standardní .NET Framework třídy I/O souborů (například FileStream), protože budou využívat pravidla kanonikalizace v rozhraní .NET FX.</li><li>Explicitní sestavení seznamu známých názvů souborů jako povolených</li><li>Explicitně zamítnout známé typy souborů. nebudete zajišťovat nástroje UrlScan: exe, bat, cmd, com, HTW, IDA, IDQ, htr, IDC, SHTM [l], STM, tiskárna, ini, Pol, soubory dat dat.</li><li>Zachytit následující výjimky:<ul><li>System. ArgumentException (pro názvy zařízení)</li><li>System. NotSupportedException (pro datové proudy)</li><li>System. IO. FileNotFoundException (v případě neplatných řídicích názvů souborů)</li><li>System. IO. DirectoryNotFoundException (pro neplatnou řídicí adresářů)</li></ul></li><li>*Nevolejte na* vstupně-výstupní rozhraní API souborů Win32. Na neplatné adrese URL vrátí uživatel chybu 400 a zaprotokoluje skutečnou chybu.</li></ul>|
 
-## <a name="ensure-appropriate-controls-are-in-place-when-accepting-files-from-users"></a><a id="controls-users"></a>Ujistěte se, že jsou při přijímání souborů od uživatelů zavedeny příslušné ovládací prvky.
+## <a name="ensure-appropriate-controls-are-in-place-when-accepting-files-from-users"></a><a id="controls-users"></a>Zajistěte, aby byly při přijímání souborů od uživatelů k dismístě správné ovládací prvky.
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
@@ -213,11 +213,11 @@ Všimněte si, že v MSXML6, ProhibitDTD je nastavena na hodnotu true (zakázán
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | –  |
-| **Odkazy**              | [Neomezené nahrávání souborů](https://www.owasp.org/index.php/Unrestricted_File_Upload), [tabulka podpisů souborů](https://www.garykessler.net/library/file_sigs.html) |
-| **Kroky** | <p>Nahrané soubory představují významné riziko pro aplikace.</p><p>Prvním krokem v mnoha útocích je získat nějaký kód do systému, který má být napaden. Pak útok potřebuje pouze najít způsob, jak získat kód spuštěn. Použití nahrání souboru pomáhá útočníkovi provést první krok. Důsledky neomezeného nahrávání souborů se mohou lišit, včetně úplného převzetí systému, přetíženého systému souborů nebo databáze, předávání útoků do back-endových systémů a jednoduchého znehodnocení.</p><p>Záleží na tom, co aplikace dělá s nahraným souborem a zejména tam, kde je uložen. Chybí ověření na straně serveru pro nahrávání souborů. Pro funkci nahrávání souborů by měly být implementovány následující ovládací prvky zabezpečení:</p><ul><li>Kontrola přípona souboru (měla by být přijata pouze platná sada povoleného typu souboru)</li><li>Maximální limit velikosti souboru</li><li>Soubor by neměl být nahrán do webroot; umístění by mělo být adresář na non-systémové jednotky</li><li>Je třeba dodržovat konvence pojmenování tak, aby nahraný název souboru měl určitou náhodnost, aby se zabránilo přepsání souborů.</li><li>Soubory by měly být před zápisem na disk zkontrolovány na ochranu proti virům.</li><li>Ujistěte se, že název souboru a všechna další metadata (např. cesta k souboru) jsou ověřena pro škodlivé znaky</li><li>Je třeba zkontrolovat podpis ve formátu souboru, aby uživatel nemohl nahrát maskovaný soubor (např. nahrání souboru exe změnou přípony na txt)</li></ul>| 
+| **Odkazy**              | [Neomezená nahrávání souborů](https://www.owasp.org/index.php/Unrestricted_File_Upload), [tabulka podpisů souborů](https://www.garykessler.net/library/file_sigs.html) |
+| **Uvedené** | <p>Nahrané soubory představují významné riziko pro aplikace.</p><p>Prvním krokem v mnoha útokech je, že systém získá nějaký kód k útokům. Pak útok potřebuje najít způsob, jak spustit kód. Použití nahrávání souborů pomáhá útočníkovi dosáhnout prvního kroku. Důsledky neomezeného nahrávání souboru se můžou lišit, včetně úplného převzetí systému, přetíženého systému souborů nebo databáze, předávání útoků back-endovém systémům a jednoduchého přítváření.</p><p>Záleží na tom, co aplikace dělá s nahraným souborem, a to hlavně tam, kde je uložená. Chybí ověření pro nahrávání souborů na straně serveru. Pro funkci nahrávání souborů by se měly implementovat následující ovládací prvky zabezpečení:</p><ul><li>Ověření přípony souboru (je třeba přijmout jenom platnou sadu povolených typů souborů)</li><li>Maximální omezení velikosti souboru</li><li>Soubor by neměl být nahrán do Webroot; umístění by mělo být adresářem na nesystémové jednotce.</li><li>Musí následovat konvence pojmenování, aby název nahraného souboru měl určitou náhodnost, aby se zabránilo přepsání souborů.</li><li>Před zápisem na disk musí být soubory zkontrolovány na antivirový program.</li><li>Zajistěte, aby byl název souboru a další metadata (například cesta k souboru) ověřeny pro škodlivé znaky.</li><li>Je nutné zkontrolovat podpis formátu souboru, aby uživatel mohl nahrávat maskovaný soubor (např. nahrání souboru exe změnou přípony na txt).</li></ul>| 
 
 ### <a name="example"></a>Příklad
-Poslední bod týkající se ověření podpisu ve formátu souboru naleznete v následující třídě podrobnosti: 
+Pro poslední bod týkající se ověření podpisu formátu souboru použijte níže uvedenou třídu pro podrobnosti: 
 
 ```csharp
         private static Dictionary<string, List<byte[]>> fileSignature = new Dictionary<string, List<byte[]>>
@@ -321,7 +321,7 @@ Poslední bod týkající se ověření podpisu ve formátu souboru naleznete v 
         }
 ```
 
-## <a name="ensure-that-type-safe-parameters-are-used-in-web-application-for-data-access"></a><a id="typesafe"></a>Ujistěte se, že jsou ve webové aplikaci používány parametry zajišťující bezpečnost typů pro přístup k datům.
+## <a name="ensure-that-type-safe-parameters-are-used-in-web-application-for-data-access"></a><a id="typesafe"></a>Zajistěte, aby se pro přístup k datům používaly parametry bezpečné pro typ ve webové aplikaci.
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
@@ -330,10 +330,10 @@ Poslední bod týkající se ověření podpisu ve formátu souboru naleznete v 
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | –  |
 | **Odkazy**              | –  |
-| **Kroky** | <p>Pokud použijete parametry kolekce, SQL zachází vstup je jako literál hodnotu spíše než jako spustitelný kód. Kolekce Parametry lze vynutit omezení typu a délky na vstupní data. Hodnoty mimo rozsah aktivují výjimku. Pokud nejsou použity parametry SQL bezpečné pro daný typ, útočníci mohou být schopni provést injektážní útoky, které jsou vloženy do nefiltrovaného vstupu.</p><p>Při vytváření dotazů SQL používejte parametry typu safe, abyste se vyhnuli možným útokům injektáže SQL, ke kterým může dojít s nefiltrovaným vstupem. Můžete použít typ bezpečné parametry s uloženými procedurami a s dynamickými příkazy SQL. Parametry jsou považovány za literálové hodnoty databáze a nikoli jako spustitelný kód. Parametry jsou také kontrolovány pro typ a délku.</p>|
+| **Uvedené** | <p>Použijete-li kolekci Parameters, SQL považuje vstup za hodnotu literálu, a ne jako spustitelný kód. Kolekci Parameters lze použít k vynutit omezení typu a délky vstupních dat. Hodnoty mimo rozsah spouštějí výjimku. Pokud se nepoužívají parametry SQL bezpečného typu, útočník může být schopen spustit útoky prostřednictvím injektáže vložené do nefiltrovaného vstupu.</p><p>Při vytváření dotazů SQL použijte parametry typově bezpečné, aby nedocházelo k útokům prostřednictvím injektáže SQL, ke kterým může dojít s nefiltrovaným vstupem. Typ bezpečné parametry můžete použít s uloženými procedurami a s dynamickými příkazy SQL. Parametry jsou považovány za hodnoty literálu v databázi, nikoli jako spustitelný kód. U parametrů se také kontroluje typ a délka.</p>|
 
 ### <a name="example"></a>Příklad 
-Následující kód ukazuje, jak používat typ bezpečné parametry s SqlParameterCollection při volání uložené procedury. 
+Následující kód ukazuje, jak použít parametry typu Safe s SqlParameterCollection při volání uložené procedury. 
 
 ```csharp
 using System.Data;
@@ -349,9 +349,9 @@ myCommand.SelectCommand.Parameters["@au_id"].Value = SSN.Text;
 myCommand.Fill(userDataset);
 }  
 ```
-V předchozím příkladu kódu nesmí být vstupní hodnota delší než 11 znaků. Pokud data neodpovídá typu nebo délce definované parametrem, třída SqlParameter vyvolá výjimku. 
+V předchozím příkladu kódu nemůže být vstupní hodnota delší než 11 znaků. Pokud data neodpovídají typu nebo délce definované parametrem, třída SqlParameter vyvolá výjimku. 
 
-## <a name="use-separate-model-binding-classes-or-binding-filter-lists-to-prevent-mvc-mass-assignment-vulnerability"></a><a id="binding-mvc"></a>Použití samostatných tříd vazeb modelu nebo seznamů filtrů vazeb, abyste zabránili chybě zabezpečení přiřazení hmoty MVC
+## <a name="use-separate-model-binding-classes-or-binding-filter-lists-to-prevent-mvc-mass-assignment-vulnerability"></a><a id="binding-mvc"></a>Použití samostatných tříd vazeb modelů nebo seznamů filtru vazeb k zamezení ohrožení zabezpečení pro hromadné přiřazení MVC
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
@@ -359,10 +359,10 @@ V předchozím příkladu kódu nesmí být vstupní hodnota delší než 11 zna
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | MVC5, MVC6 |
 | **Atributy**              | –  |
-| **Odkazy**              | [Atributy metadat](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.metadatatypeattribute), [Chyba zabezpečení veřejného klíče a zmírnění rizik](https://github.com/blog/1068-public-key-security-vulnerability-and-mitigation), Kompletní průvodce [hromadným přiřazením v ASP.NET MVC](https://odetocode.com/Blogs/scott/archive/2012/03/11/complete-guide-to-mass-assignment-in-asp-net-mvc.aspx), [Začínáme s EF pomocí MVC](https://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application#overpost) |
-| **Kroky** | <ul><li>**Kdy bych měl hledat chyby zabezpečení nadměrného vysílání?** Chyby zabezpečení při nadměrném účtování mohou nastat na libovolném místě, které svážete třídy modelu ze vstupu uživatele. Architektury jako MVC mohou představovat uživatelská data ve vlastních třídách .NET, včetně prostých starých objektů CLR (POCO). MVC automaticky vyplní tyto třídy modelu s daty z požadavku, poskytuje pohodlné reprezentace pro práci s vstupem uživatele. Pokud tyto třídy obsahují vlastnosti, které by neměly být nastaveny uživatelem, aplikace může být ohrožena útoky nadměrného účtování, které umožňují uživatelské řízení dat, která aplikace nikdy nezamýšlela. Stejně jako vazba modelu MVC, technologie přístupu k databázi, jako jsou objekt/relační mapovače, jako je Entity Framework, často také podporují použití objektů POCO k reprezentaci databázových dat. Tyto třídy datového modelu poskytují stejné pohodlí při práci s daty databáze jako MVC při práci s vstupem uživatele. Vzhledem k tomu, že MVC a databáze podporují podobné modely, jako jsou objekty POCO, zdá se snadné znovu použít stejné třídy pro oba účely. Tento postup nezachová oddělení obavy a je jedna společná oblast, kde jsou nezamýšlené vlastnosti vystaveny vazby modelu, povolení over-posting útoky.</li><li>**Proč bych neměl používat své nefiltrované třídy modelu databáze jako parametry pro mé akce MVC?** Protože vazba modelu MVC bude vázat cokoliv v této třídě. I v případě, že data se nezobrazí ve vašem zobrazení, uživatel se zlými úmysly můžete odeslat požadavek HTTP s tato data zahrnuty a MVC bude rádi svázat, protože vaše akce říká, že třída databáze je tvar dat, které by měl přijmout pro vstup uživatele.</li><li>**Proč bych se měl starat o tvar používaný pro modelovou vazbu?** Použití ASP.NET vazbě modelu MVC s příliš širokými modely zpřístupňuje aplikaci k útokům nadměrného účtování. Nadměrné zaúčtování by mohlo útočníkům umožnit změnit data aplikací nad rámec toho, co vývojář zamýšlel, například přepsání ceny za položku nebo oprávnění zabezpečení pro účet. Aplikace by měly používat modely vazeb specifických pro akci (nebo seznamy filtrů určitých povolených vlastností) k poskytnutí explicitní smlouvy pro nedůvěryhodný vstup, který má být povolen prostřednictvím vazby modelu.</li><li>**Je mít samostatné vazby modely jen duplikaci kódu? -** Ne, je to otázka oddělení obav. Pokud znovu použijete databázové modely v metodách akce, říkáte, že všechny vlastnosti (nebo dílčí vlastnosti) v této třídě mohou být nastaveny uživatelem v požadavku HTTP. Pokud to není to, co chcete, aby MVC dělat, budete potřebovat seznam filtrů nebo samostatné třídy obrazec ukázat MVC, jaká data mohou pocházet z uživatelského vstupu místo.</li><li>**Pokud mám samostatné modely vazeb pro vstup uživatele, musím duplikovat všechny atributy anotace dat? -** Ne nutně. Atribut MetadataTypeAttribute ve třídě modelu databáze můžete použít k propojení s metadaty ve třídě vazby modelu. Jen si všimněte, že typ odkazovaný MetadataTypeAttribute musí být podmnožinou typu odkazování (může mít méně vlastností, ale ne více).</li><li>**Přesouvání dat tam a zpět mezi modely vstupu uživatele a databázové modely je únavné. Mohu jen zkopírovat všechny vlastnosti pomocí reflexe? -** Ano, je to tak. Jediné vlastnosti, které se zobrazí v modelech vazby jsou ty, které jste zjistili, že jsou bezpečné pro vstup uživatele. Neexistuje žádný důvod zabezpečení, který brání použití reflexe ke kopírování přes všechny vlastnosti, které existují společné mezi těmito dvěma modely.</li><li>**A co [Bind(Vyloučit&euro;="â ¦")]. Mohu použít, že místo toho, aby samostatné vazby modely? -** Tento přístup se nedoporučuje. Použití [Bind(Exclude ="â&euro;¦")] znamená, že všechny nové vlastnosti je bindable ve výchozím nastavení. Když je přidána nová vlastnost, je další krok k zapamatování, aby věci zabezpečené, spíše než mít návrh být bezpečné ve výchozím nastavení. V závislosti na vývojáře kontroly tohoto seznamu pokaždé, když je přidána vlastnost je riskantní.</li><li>**Je [Bind(Include ="â&euro;¦")] užitečné pro operace úprav? -** Ne. [Bind(Include ="â&euro;¦")] je vhodný pouze pro operace ve stylu INSERT (přidávání nových dat). Pro operace ve stylu UPDATE (revisuje existující data) použijte jiný přístup, jako je mít samostatné modely vazby nebo předávání explicitní seznam povolených vlastností UpdateModel nebo TryUpdateModel. Přidání atributu [Bind(Include&euro;="â ¦")] v operaci Úpravy znamená, že MVC vytvoří instanci objektu a nastaví pouze uvedené vlastnosti, přičemž všechny ostatní zůstanou na výchozích hodnotách. Pokud jsou data trvalá, zcela nahradí existující entitu a resetuje hodnoty všech vynechaných vlastností na výchozí hodnoty. Například pokud IsAdmin byl vynechán z [Bind(Include&euro;="â")] atribut na operaci upravit, každý uživatel, jehož jméno bylo upraveno prostřednictvím této akce by se obnovit Na IsAdmin = false (každý upravený uživatel ztratí stav správce). Pokud chcete zabránit aktualizacím určitých vlastností, použijte jeden z výše uvedených přístupů. Všimněte si, že některé verze nástrojů MVC generovat třídy&euro;řadiče s [Bind(Include ="â ¦")] na upravit akce a znamenat, že odebrání vlastnosti z tohoto seznamu zabrání over-posting útoky. Nicméně, jak je popsáno výše, tento přístup nefunguje tak, jak bylo zamýšleno a místo toho obnoví všechna data v vynechaných vlastnostech na jejich výchozí hodnoty.</li><li>**Pro operace vytvoření, existují nějaké upozornění&euro;pomocí [Bind(Include ="â ¦")] spíše než samostatné vazby modely? -** Ano. Za prvé tento přístup nefunguje pro scénáře úprav, které vyžadují zachování dvou samostatných přístupů pro zmírnění všech chyb zabezpečení over-posting. Za druhé, samostatné modely vazby vynucují oddělení obav mezi obrazec použitý pro vstup&euro;uživatele a obrazec použitý pro trvalost, něco [Bind(Include ="â ¦")] neprovede. Za třetí, všimněte si,&euro;že [Bind(Include ="â ¦")] může zpracovávat pouze vlastnosti nejvyšší úrovně; v atributu nelze povolit pouze části dílčích vlastností (například "Details.Name"). Nakonec a možná nejdůležitější, pomocí [Bind(Include&euro;="â ¦")] přidá další krok, který musí být zapamatován při každém použití třídy pro vazbu modelu. Pokud se nová metoda akce váže přímo na třídu dat a zapomene&euro;zahrnout atribut [Bind(Include ="â ¦")], může být zranitelná&euro;vůči útokům nadměrného účtování, takže přístup [Bind(Include ="â ¦")] je ve výchozím nastavení poněkud méně bezpečný. Pokud používáte [Bind(Include&euro;="â ¦")], dbejte vždy na to, abyste je zadali pokaždé, když se vaše třídy dat zobrazí jako parametry metody akce.</li><li>**Pro operace vytvořit, co uvedení [Bind(Include&euro;="â ¦")] atribut na samotné třídě modelu? Nevyhýbá se tento přístup nutnosti pamatovat si, že atribut je uveden na každé metodě akce? -** Tento přístup funguje v některých případech. Použití [Bind(Include ="â&euro;¦")] na samotném typu modelu (spíše než na parametry akce pomocí této třídy),&euro;se vyhnout nutnosti pamatovat zahrnout [Bind(Include ="â ¦")] atribut na každé metody akce. Pomocí atributu přímo na třídu efektivně vytvoří samostatnou plochu této třídy pro účely vazby modelu. Tento přístup však umožňuje pouze pro jeden tvar vazby modelu na třídu modelu. Pokud jedna metoda akce potřebuje povolit vazbu modelu pole (například akce pouze pro správce, která aktualizuje role uživatelů) a další akce musí zabránit vazbě modelu tohoto pole, tento přístup nebude fungovat. Každá třída může mít pouze jeden tvar vazby modelu; Pokud různé akce potřebují různé tvary vazby modelu, musí reprezentovat tyto samostatné tvary pomocí&euro;samostatných tříd vazby modelu nebo samostatných atributů [Bind(Include ="â ¦")] na metodách akce.</li><li>**Co jsou vázací modely? Jsou totéž jako zobrazit modely? -** To jsou dva související pojmy. Termín vazba model odkazuje na třídu modelu použitou v seznamu parametrů akce (tvar předaný z vazby modelu MVC na metodu akce). Model zobrazení termínodkazuje na třídu modelu předanou z metody akce do pohledu. Použití modelu specifického pro zobrazení je běžný přístup pro předávání dat z metody akce do zobrazení. Tento tvar je často vhodný i pro vazbu modelu a termín zobrazit model lze použít k odkazování na stejný model, který se používá na obou místech. Abych byl přesný, tento postup hovoří konkrétně o závazných modelech se zaměřením na tvar předaných akci, což je to, co je důležité pro účely hromadného postoupení.</li></ul>| 
+| **Odkazy**              | [Atributy metadat](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.metadatatypeattribute), [zranitelnost zabezpečení veřejného klíče a zmírnění rizika](https://github.com/blog/1068-public-key-security-vulnerability-and-mitigation), [kompletní příručka k hromadnému přiřazení v ASP.NET MVC](https://odetocode.com/Blogs/scott/archive/2012/03/11/complete-guide-to-mass-assignment-in-asp-net-mvc.aspx), [Začínáme s EF pomocí MVC](https://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application#overpost) |
+| **Uvedené** | <ul><li>**Kdy je vhodné pohlížet na chyby při převzetí služeb při selhání?-** K ohrožení zabezpečení při selhání může dojít na jakémkoli místě, kde svážete třídy modelu od vstupu uživatele. Architektury, jako je MVC, mohou představovat uživatelská data ve vlastních třídách .NET, včetně jednoduchých starých objektů CLR (POCOs). MVC automaticky naplní tyto třídy modelu daty z požadavku a poskytne tak praktické vyjádření pro práci s uživatelským vstupem. Pokud tyto třídy obsahují vlastnosti, které by neměly být nastavené uživatelem, může být aplikace zranitelná vůči útokům přes více než jednou, což umožňuje uživateli řídit data, která aplikace nikdy nezamýšlela. Podobně jako vazby modelů MVC, technologie přístupu k databázi, jako jsou například objekty nebo relační mapovače, jako je například Entity Framework často podporují také použití objektů POCO k reprezentaci dat databáze. Tyto třídy datového modelu poskytují stejnou pohodlí při práci s databázovými daty jako MVC při práci s uživatelským vstupem. Vzhledem k tomu, že MVC i databáze podporují podobné modely, jako jsou objekty POCO, je pravděpodobné, že pro oba účely snadno znovu použijete stejné třídy. Tento postup nepovede k zachování oddělení potíží a jedná se o jednu běžnou oblast, ve které jsou nezamýšlené vlastnosti vystavené vazbě modelu a umožňují útoky přes navýšení.</li><li>**Proč nepoužívejte moje nefiltrované třídy databázového modelu jako parametry do akcí MVC?-** Vzhledem k tomu, že vazba modelu MVC bude v této třídě svázat cokoli. I když se data ve vašem zobrazení nezobrazí, může uživatel se zlými úmysly odeslat požadavek HTTP s těmito daty a MVC ho sváže, protože tato akce říká, že databázová třída je tvar dat, který by měl přijmout pro vstup uživatele.</li><li>**Proč se mám zajímat o tvar použitý pro vazbu modelu?-** Použití vazby modelu ASP.NET MVC s nadširokou škálou modelů zpřístupňuje aplikaci k útokům přes více než po publikování. Při převzetí služeb při selhání může útočníkům umožnit změnit data aplikací nad rámec zamýšlené vývojářů, jako je například přepsání ceny za položku nebo oprávnění zabezpečení pro účet. Aplikace by měly použít modely vazeb specifické pro akci (nebo konkrétní povolené seznamy filtru vlastností) k poskytnutí explicitního kontraktu pro to, který nedůvěryhodný vstup umožňuje prostřednictvím vazby modelu.</li><li>**Mají samostatné modely vazeb pouze duplikování kódu?-** Ne, záleží na tom, co se týká oddělení. Pokud znovu použijete databázové modely v metodách akcí, říkáte jakoukoli vlastnost (nebo dílčí vlastnost) v této třídě, kterou může uživatel nastavit v požadavku HTTP. Pokud to není to, co má MVC dělat, budete potřebovat seznam filtrů nebo samostatný tvar třídy, aby se zobrazila třída MVC, kterou data mohou pocházet ze vstupu uživatele.</li><li>**Pokud mám samostatné modely vazeb pro uživatelský vstup, musím Duplikovat všechny atributy mých poznámek k datům?-** Ne nutně. MetadataTypeAttribute můžete použít na třídě databázového modelu a propojit k metadatům třídy vazby modelu. Všimněte si, že typ odkazovaný rozhraním MetadataTypeAttribute musí být podmnožinou odkazujícího typu (může mít méně vlastností, ale ne více).</li><li>**Přesouvání dat mezi modely vstupu uživatele a databázovými modely je zdlouhavé. Můžu jenom kopírovat všechny vlastnosti pomocí reflexe? –** Ano. Jediné vlastnosti, které se zobrazí v modelech vazeb, jsou ty, které jste určili jako bezpečné pro vstup uživatele. Neexistuje žádný důvod zabezpečení, který znemožňuje použití reflexe ke kopírování všech vlastností, které existují mezi těmito dvěma modely společně.</li><li>**Co je [BIND (Exclude = "â&euro;¦")]. Můžu místo toho používat samostatné modely vazeb? –** Tento přístup se nedoporučuje. Použití příkazu [BIND (Exclude = "&euro;â ¦")] znamená, že ve výchozím nastavení je vytvořena vazba jakékoli nové vlastnosti. Když se přidá nová vlastnost, je k dispozici další krok, abyste se zapamatovali o zabezpečení, ale nemuseli byste ji mít ve výchozím nastavení zabezpečené. V závislosti na tom, jak vývojář tuto vlastnost kontroluje, je riziková.</li><li>**Je [vazba (include = "â&euro;¦")] užitečná pro operace úpravy?-** Ne. [BIND (include = "â&euro;¦")] je vhodná jenom pro operace typu INSERT (přidávání nových dat). U operací se stylem aktualizace (revize stávajících dat) použijte jiný přístup, jako je například použití samostatných modelů vazby nebo předání explicitního seznamu povolených vlastností UpdateModel nebo TryUpdateModel. Přidání atributu [BIND (include = "â&euro;¦")] u operace Edit znamená, že MVC vytvoří instanci objektu a nastaví pouze uvedené vlastnosti, přičemž všechny ostatní na jejich výchozích hodnotách zůstanou. Když jsou data trvalá, nahradí ji zcela stávající entitou a obnoví jejich výchozí hodnoty z důvodu resetování hodnot pro všechny vynechané vlastnosti. Pokud je například správce v operaci Edit vynechán z atributu [BIND (include = "â&euro;¦")], bude každý uživatel, jehož název byl upraven pomocí této akce, resetován na hodnotu admin = false (libovolný upravovaný uživatel ztratí stav správce). Pokud chcete zabránit aktualizacím některých vlastností, použijte jeden z dalších přístupů. Všimněte si, že některé verze nástrojů MVC generují třídy kontroleru s [BIND (include = "â&euro;¦")] u akcí úprav a implikuje, že odebráním vlastnosti z tohoto seznamu zabráníte útokům přes opakované publikování. Jak je uvedeno výše, ale tento přístup nefunguje tak, jak je zamýšlený, a místo toho obnoví všechna data v vynechaných vlastnostech na jejich výchozí hodnoty.</li><li>V **případě operací vytváření jsou k dispozici nějaká upozornění pomocí [BIND (include = "&euro;â ¦")] namísto samostatných modelů vazeb?-** Ano. První tento přístup nefunguje pro scénáře úprav, což vyžaduje zachování dvou samostatných přístupů pro zmírnění všech zranitelných chyb zabezpečení. Za druhé, samostatné vazby modelů vynutily oddělení obav mezi tvarem použitým pro vstup uživatele a tvar použitý pro stálost, něco [BIND (include =&euro;"â ¦")] nedělá. Třetí, Všimněte si, že [BIND (include =&euro;"â ¦")] může zpracovávat pouze vlastnosti nejvyšší úrovně; v atributu nelze povolen pouze částí dílčích vlastností (například "Details.Name"). Nakonec, a možná nejdůležitější, pomocí [BIND (include = "â&euro;¦")] přidá dodatečný krok, který musí být zapamatovatelné vždy, když se třída používá pro vazbu modelu. Pokud se nová metoda akce váže k třídě dat přímo a zamezí, aby obsahovala atribut [BIND (include = "â&euro;¦")], může být zranitelná vůči útokům přes více než jednou, takže přístup [BIND (include = "&euro;â ¦")] je ve výchozím nastavení poněkud méně bezpečný. Použijete-li [BIND (include = "&euro;â ¦")], pokaždé, když se vaše datové třídy zobrazí jako parametry metody akce, pečlivě zapamatujte na jejich zadání.</li><li>**Informace o tom, jak vytvářet operace pro vytváření [BIND (include = "&euro;â ¦")] ve třídě modelu samotné? Nejedná se o tento přístup, aby nedocházelo k nutnosti zapamatovat si atribut pro každou metodu akce? –** Tento přístup funguje v některých případech. Použití [BIND (include = "â&euro;¦")] u samotného typu modelu (místo u parametrů akce pomocí této třídy) se nemusíte zapamatovat, aby bylo možné zahrnout atribut [BIND (include = "&euro;â ¦")] u každé metody akce. Použití atributu přímo na třídě efektivně vytvoří samostatnou oblast povrchu této třídy pro účely vazby modelu. Tento přístup však povoluje pouze jeden obrazec vazby modelu na třídu modelu. Pokud je nutné, aby jedna metoda akce povolila vazbu modelu pole (například akce jenom správce, která aktualizuje role uživatelů) a další akce, které vyžadují, aby vazba modelu tohoto pole byla zabráněno, tento přístup nebude fungovat. Každá třída může mít pouze jeden obrazec vazby modelu; Pokud různé akce vyžadují různé obrazce vazeb modelu, musí tyto samostatné tvary reprezentovat pomocí samostatné třídy vazby modelu nebo oddělit atributy [BIND (include = "â&euro;¦")] na metodách akcí.</li><li>**Co jsou vazby modelů? Mají stejné věci jako modely zobrazení? –** Jedná se o dvě související koncepce. Pojem vazby modelu odkazuje na třídu modelu použitou v seznamu parametrů akce (tvar předaný z vazby modelu MVC do metody Action). Pojem model zobrazení odkazuje na třídu modelu předanou metodou Action do zobrazení. Použití modelu specifického pro zobrazení je běžným přístupem k předávání dat z metody akce do zobrazení. Tento tvar je často vhodný také pro vazbu modelu a termínový model zobrazení lze použít k odkazování na stejný model, který je použit na obou místech. Aby byl tento postup přesný, hovoří se specificky o vazbách modelů a zaměřuje se na tvar předaný do akce, což je to, co je důležité pro účely hromadného přiřazení.</li></ul>| 
 
-## <a name="encode-untrusted-web-output-prior-to-rendering"></a><a id="rendering"></a>Kódování nedůvěryhodného webového výstupu před vykreslováním
+## <a name="encode-untrusted-web-output-prior-to-rendering"></a><a id="rendering"></a>Kódování nedůvěryhodného webového výstupu před vykreslením
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
@@ -370,8 +370,8 @@ V předchozím příkladu kódu nesmí být vstupní hodnota delší než 11 zna
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné, webové formuláře, MVC5, MVC6 |
 | **Atributy**              | –  |
-| **Odkazy**              | [Jak zabránit cross-site skriptování v ASP.NET](https://msdn.microsoft.com/library/ms998274.aspx), [Cross-site Scripting](https://cwe.mitre.org/data/definitions/79.html), [XSS (Cross Site Scripting) Prevence Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html) |
-| **Kroky** | Skriptování mezi weby (obvykle zkráceně XSS) je vektor útoku pro online služby nebo jakoukoli aplikaci/komponentu, která spotřebovává vstup z webu. Chyby zabezpečení xss mohou útočníkovi umožnit spouštět skript v počítači jiného uživatele prostřednictvím zranitelné webové aplikace. Škodlivé skripty mohou být použity ke krádeži cookies a jinak manipulovat s počítačem oběti prostřednictvím JavaScriptu. XSS je zabráněno ověřením vstupu uživatele, zajištění, že je dobře tvarované a kódování před tím, než je vykreslen na webové stránce. Vstupní ověření a kódování výstupu lze provést pomocí knihovny webové ochrany. Pro spravovaný kód (C,\#VB.NET atd.) použijte jednu nebo více vhodných metod kódování z knihovny Webové ochrany (Anti-XSS) v závislosti na kontextu, ve kterém se projeví vstup uživatele:| 
+| **Odkazy**              | [Jak zabránit skriptování mezi weby v ASP.NET](https://msdn.microsoft.com/library/ms998274.aspx), [skriptování mezi weby](https://cwe.mitre.org/data/definitions/79.html), skriptování [XSS (skriptování mezi weby) prevence tahák listů](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html) |
+| **Uvedené** | Skriptování mezi weby (obvykle se zkracuje jako XSS) je vektor útoku online služby nebo jakékoli aplikace nebo komponenty, která využívá vstup z webu. Ohrožení zabezpečení XSS může útočníkovi umožnit spouštění skriptu v počítači jiného uživatele prostřednictvím zranitelné webové aplikace. Škodlivé skripty lze použít ke krádeži souborů cookie a jiným způsobem manipulace s počítačem oběti prostřednictvím JavaScriptu. Skriptování XSS je znemožněno tím, že ověřuje vstup uživatele a zajišťuje správné formátování a kódování před jejich vykreslením na webové stránce. Ověřování vstupu a výstupní kódování lze provádět pomocí knihovny webové ochrany. Pro spravovaný kód (C\#, VB.NET atd.) použijte jednu nebo více odpovídajících metod kódování z knihovny webové ochrany (anti-XSS), v závislosti na kontextu, ve kterém se vstup uživatele stane manifestem:| 
 
 ### <a name="example"></a>Příklad
 
@@ -387,18 +387,18 @@ V předchozím příkladu kódu nesmí být vstupní hodnota delší než 11 zna
 * Encoder.LdapEncode 
 ```
 
-## <a name="perform-input-validation-and-filtering-on-all-string-type-model-properties"></a><a id="typemodel"></a>Provedení ověření vstupu a filtrování všech vlastností modelu typu řetězec
+## <a name="perform-input-validation-and-filtering-on-all-string-type-model-properties"></a><a id="typemodel"></a>Provede ověřování vstupu a filtrování u všech vlastností modelu řetězcového typu.
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **Fáze SDL**               | Sestavení |  
-| **Použitelné technologie** | Obecný, MVC5, MVC6 |
+| **Použitelné technologie** | Generic, MVC5, MVC6 |
 | **Atributy**              | –  |
-| **Odkazy**              | [Přidání validace](https://www.asp.net/mvc/overview/getting-started/introduction/adding-validation), [ověřování dat modelu v aplikaci MVC](https://msdn.microsoft.com/library/dd410404(v=vs.90).aspx), hlavní [zásady pro vaše ASP.NET aplikace MVC](https://msdn.microsoft.com/magazine/dd942822.aspx) |
-| **Kroky** | <p>Všechny vstupní parametry musí být ověřeny před jejich použitím v aplikaci, aby bylo zajištěno, že aplikace je chráněna proti vstupům uživatelů se zlými úmysly. Ověřte vstupní hodnoty pomocí ověření regulárních výrazů na straně serveru pomocí strategie ověření seznamu povolených serverů. Nedezinfikované uživatelské vstupy / parametry předané metodám mohou způsobit chyby zabezpečení vkládání kódu.</p><p>Pro webové aplikace mohou vstupní body zahrnovat také pole formuláře, řetězce querystringů, soubory cookie, hlavičky HTTP a parametry webové služby.</p><p>Následující kontroly ověření vstupu musí být provedeny na vazbě modelu:</p><ul><li>Vlastnosti modelu by měly být anotovány s poznámkou RegularExpression pro přijetí povolených znaků a maximální přípustné délky.</li><li>Metody řadiče by měly provádět platnost ModeluState</li></ul>|
+| **Odkazy**              | [Přidání ověřování](https://www.asp.net/mvc/overview/getting-started/introduction/adding-validation), [ověřování dat modelu v aplikaci MVC](https://msdn.microsoft.com/library/dd410404(v=vs.90).aspx), [Principy identifikátorů GUID pro aplikace ASP.NET MVC](https://msdn.microsoft.com/magazine/dd942822.aspx) |
+| **Uvedené** | <p>Před použitím v aplikaci musí být všechny vstupní parametry ověřeny, aby se zajistilo, že je aplikace chráněná před škodlivými uživatelskými vstupy. Ověřte vstupní hodnoty pomocí validace regulárních výrazů na straně serveru s strategií ověřování na seznam povolených. Neupravené uživatelské vstupy/parametry předané metodám můžou způsobit chyby zabezpečení injektáže kódu.</p><p>U webových aplikací můžou vstupní body zahrnovat také pole formuláře, řetězce dotazu, soubory cookie, hlavičky HTTP a parametry webové služby.</p><p>Po vytvoření vazby modelu je nutné provést následující kontroly ověřování:</p><ul><li>Vlastnosti modelu by měly být opatřeny poznámkou s poznámkou RegularExpression, aby bylo možné přijímat povolené znaky a maximální přípustnou délku.</li><li>Metody kontroleru by měly provádět ModelState platnosti</li></ul>|
 
-## <a name="sanitization-should-be-applied-on-form-fields-that-accept-all-characters-eg-rich-text-editor"></a><a id="richtext"></a>Sanitace by měla být použita na pole formuláře, která přijímají všechny znaky, např.
+## <a name="sanitization-should-be-applied-on-form-fields-that-accept-all-characters-eg-rich-text-editor"></a><a id="richtext"></a>Pro pole formuláře, která přijímají všechny znaky, například Editor formátovaného textu, by měla být použita upravená část.
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
@@ -406,10 +406,10 @@ V předchozím příkladu kódu nesmí být vstupní hodnota delší než 11 zna
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | –  |
-| **Odkazy**              | [Zakódovat nebezpečný vstup](https://msdn.microsoft.com/library/ff647397.aspx#paght000003_step3), [HTML sanitizer](https://github.com/mganss/HtmlSanitizer) |
-| **Kroky** | <p>Identifikujte všechny statické značky, které chcete použít. Běžnou praxí je omezit formátování na bezpečné prvky HTML, například `<b>` (tučné) a `<i>` (kurzíva).</p><p>Před zápisem dat je kódujte ve formátu HTML. To umožňuje jakýkoli škodlivý skript bezpečné tím, že způsobí, že je zpracován jako text, nikoli jako spustitelný kód.</p><ol><li>Zakázat ověření žádosti o ASP.NET přidáním atributu \@ ValidateRequest="false" do direktivy Page</li><li>Zakódovat vstup řetězce metodou HtmlEncode</li><li>Pomocí StringBuilder a volání jeho Nahradit metoda selektivně odebrat kódování na prvky HTML, které chcete povolit</li></ol><p>Stránka-v odkazy zakáže ověření ASP.NET `ValidateRequest="false"`požadavku nastavením . To HTML-kóduje vstup a selektivně umožňuje `<b>` a `<i>` alternativně, .NET knihovna pro html sanitace může být také použit.</p><p>HtmlSanitizer je knihovna .NET pro čištění fragmentů HTML a dokumentů z konstrukcí, které mohou vést k útokům XSS. Používá AngleSharp analyzovat, manipulovat a vykreslovat HTML a CSS. HtmlSanitizer lze nainstalovat jako balíček NuGet a vstup uživatele může být předán prostřednictvím příslušných metod sanitace HTML nebo CSS, podle potřeby na straně serveru. Vezměte prosím na vědomí, že sanitizace jako bezpečnostní kontrola by měla být považována pouze za poslední možnost.</p><p>Vstupní ověření a kódování výstupu jsou považovány za lepší ovládací prvky zabezpečení.</p> |
+| **Odkazy**              | [Kódování nebezpečného vstupu](https://msdn.microsoft.com/library/ff647397.aspx#paght000003_step3), [upraveného kódu HTML](https://github.com/mganss/HtmlSanitizer) |
+| **Uvedené** | <p>Identifikujte všechny značky statických značek, které chcete použít. Běžný postup je omezit formátování na bezpečné prvky HTML, například `<b>` (tučné) a `<i>` (kurzíva).</p><p>Před zápisem dat do HTML kódování. To způsobí, že by škodlivý skript mohl být zpracován jako text, nikoli jako spustitelný kód.</p><ol><li>Zakázat ověření žádosti ASP.NET přidáním atributu ValidateRequest = "false" do direktivy \@ stránky</li><li>Kódování řetězcového vstupu pomocí metody HtmlEncode</li><li>Použijte StringBuilder a zavolejte metodu Replace pro selektivní odebrání kódování u HTML elementů, které chcete povolit.</li></ol><p>Stránka – v odkazech zakáže ověřování žádostí ASP.NET nastavením `ValidateRequest="false"`. HTML – zakóduje vstup a selektivně povoluje `<b>` a `<i>` případně může být použita také knihovna .NET pro úpravu HTML.</p><p>HtmlSanitizer je knihovna .NET pro čištění fragmentů kódu HTML a dokumentů z konstrukcí, které mohou vést k útokům XSS. Používá AngleSharp k analýze, manipulaci a vykreslování HTML a CSS. HtmlSanitizer se dá nainstalovat jako balíček NuGet a vstup uživatele se dá na straně serveru předávat podle relevantních metod pro úpravu HTML nebo CSS. Mějte na paměti, že úpravu jako řízení zabezpečení byste měli vzít v úvahu jenom jako poslední možnost.</p><p>Ověřování vstupu a kódování výstupu se považují za lepší bezpečnostní prvky.</p> |
 
-## <a name="do-not-assign-dom-elements-to-sinks-that-do-not-have-inbuilt-encoding"></a><a id="inbuilt-encode"></a>Nepřiřazovat prvky DOM k propadům, které nemají vestavěné kódování
+## <a name="do-not-assign-dom-elements-to-sinks-that-do-not-have-inbuilt-encoding"></a><a id="inbuilt-encode"></a>Nepřiřazujte elementy modelu DOM k jímky, které nemají sestavené kódování.
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
@@ -418,10 +418,10 @@ V předchozím příkladu kódu nesmí být vstupní hodnota delší než 11 zna
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | –  |
 | **Odkazy**              | –  |
-| **Kroky** | Mnoho funkcí javascriptu ve výchozím nastavení nekóduje. Při přiřazování nedůvěryhodný vstup do dom prvky prostřednictvím těchto funkcí, může mít za následek spuštění skriptu mezi lokalitami (XSS).| 
+| **Uvedené** | Mnoho funkcí jazyka JavaScript ve výchozím nastavení nepoužívá kódování. Při přiřazování nedůvěryhodného vstupu k prvkům modelu DOM prostřednictvím takových funkcí může dojít k vykonání provádění skriptů skriptování mezi weby (XSS).| 
 
 ### <a name="example"></a>Příklad
-Následují nezabezpečené příklady: 
+Níže jsou uvedeny nezabezpečené příklady: 
 
 ```
 document.getElementByID("div1").innerHtml = value;
@@ -429,9 +429,9 @@ $("#userName").html(res.Name);
 return $('<div/>').html(value)
 $('body').append(resHTML);   
 ```
-Nepoužívejte `innerHtml`; místo `innerText`toho použijte . Podobně místo `$("#elm").html()`, použijte`$("#elm").text()` 
+Nepoužívat `innerHtml`; místo toho `innerText`použijte. Podobně místo `$("#elm").html()`použijte`$("#elm").text()` 
 
-## <a name="validate-all-redirects-within-the-application-are-closed-or-done-safely"></a><a id="redirect-safe"></a>Ověřit, že všechna přesměrování v rámci aplikace jsou uzavřena nebo provedena bezpečně
+## <a name="validate-all-redirects-within-the-application-are-closed-or-done-safely"></a><a id="redirect-safe"></a>Ověření všech přesměrování v rámci aplikace je uzavřeno nebo provedeno bezpečně.
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
@@ -439,21 +439,21 @@ Nepoužívejte `innerHtml`; místo `innerText`toho použijte . Podobně místo `
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | –  |
-| **Odkazy**              | [Autorizační rámec OAuth 2.0 - Otevřené přeředitelů](https://tools.ietf.org/html/rfc6749#section-10.15) |
-| **Kroky** | <p>Návrh aplikace vyžadující přesměrování do umístění zadaného uživatelem musí omezit možné cíle přesměrování na předdefinovaný "bezpečný" seznam sítí nebo domén. Všechna přesměrování v aplikaci musí být uzavřena/bezpečná.</p><p>Použijte následující postup:</p><ul><li>Identifikovat všechna přesměrování</li><li>Implementujte vhodné zmírnění pro každé přesměrování. Mezi příslušné skutečnosti snižující závažnost rizika patří seznam povolených přesměrování nebo potvrzení uživatele. Pokud web nebo služba s otevřenou chybou zabezpečení přesměrování využívá zprostředkovatele identity Facebook/OAuth/OpenID, může útočník ukrást přihlašovací token uživatele a zosobnit tohoto uživatele. To je inherentní riziko při použití OAuth, který je dokumentován v RFC 6749 "OAuth 2.0 Authorization Framework", Oddíl 10.15 "Open Redirects" Podobně mohou být přihlašovací údaje uživatelů ohroženy phishingovými útoky s kopím pomocí otevřených přesměrování</li></ul>|
+| **Odkazy**              | [Autorizační rozhraní OAuth 2,0 – otevřené přesměrování](https://tools.ietf.org/html/rfc6749#section-10.15) |
+| **Uvedené** | <p>Návrh aplikace vyžadující přesměrování do umístění zadaného uživatelem musí omezit možné cíle přesměrování na předdefinovaný seznam webů nebo domén. Všechna přesměrování v aplikaci musí být uzavřená/bezpečná.</p><p>Použijte následující postup:</p><ul><li>Identifikace všech přesměrování</li><li>Implementujte vhodné zmírnění pro každé přesměrování. Vhodná rizika zahrnují seznam povolených přesměrování nebo potvrzení uživatele. Pokud web nebo služba s otevřenou chybou zabezpečení přesměrování používá poskytovatele identity Facebook/OAuth/OpenID, může útočníka ukrást přihlašovací token uživatele a zosobnit tohoto uživatele. Jedná se o rizikové riziko při použití OAuth, které je popsané v dokumentu RFC 6749 "autorizační rozhraní OAuth 2,0", oddíl 10,15 "otevřít přesměrování" podobně, přihlašovací údaje uživatele můžou být ohrožené útoky typu phishing Spear pomocí otevřených přesměrování.</li></ul>|
 
-## <a name="implement-input-validation-on-all-string-type-parameters-accepted-by-controller-methods"></a><a id="string-method"></a>Implementovat ověření vstupu u všech parametrů typu řetězce přijatých metodami kontroleru
+## <a name="implement-input-validation-on-all-string-type-parameters-accepted-by-controller-methods"></a><a id="string-method"></a>Implementovat ověřování vstupu pro všechny parametry řetězcového typu akceptované metodami řadiče
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **Fáze SDL**               | Sestavení |  
-| **Použitelné technologie** | Obecný, MVC5, MVC6 |
+| **Použitelné technologie** | Generic, MVC5, MVC6 |
 | **Atributy**              | –  |
-| **Odkazy**              | [Ověření modelových dat v aplikaci MVC](https://msdn.microsoft.com/library/dd410404(v=vs.90).aspx), [hlavní zásady pro vaše ASP.NET aplikace MVC](https://msdn.microsoft.com/magazine/dd942822.aspx) |
-| **Kroky** | Pro metody, které pouze přijmout primitivní datový typ a ne modely jako argument, vstupní ověření pomocí regulárního výrazu by mělo být provedeno. Zde Regex.IsMatch by měl být použit s platným vzorem regulární výraz. Pokud vstup neodpovídá zadanému regulárnímu výrazu, ovládací prvek by neměl pokračovat dále a mělo by se zobrazit odpovídající upozornění týkající se selhání ověření.| 
+| **Odkazy**              | [Ověřování dat modelu v aplikaci MVC](https://msdn.microsoft.com/library/dd410404(v=vs.90).aspx), [Principy identifikátorů guid pro aplikace ASP.NET MVC](https://msdn.microsoft.com/magazine/dd942822.aspx) |
+| **Uvedené** | Pro metody, které pouze akceptují primitivní datový typ a nikoli modely jako argument, by mělo být provedeno ověřování vstupu pomocí regulárního výrazu. Regulární výraz Regex. Match by měl být použit s platným vzorem regulárního výrazu. Pokud vstup neodpovídá zadanému regulárnímu výrazu, ovládací prvek by neměl pokračovat dále a zobrazí se odpovídající upozornění týkající se selhání ověřování.| 
 
-## <a name="set-upper-limit-timeout-for-regular-expression-processing-to-prevent-dos-due-to-bad-regular-expressions"></a><a id="dos-expression"></a>Nastavení časového limitu horního limitu pro zpracování regulárních výrazů, aby se zabránilo dos z důvodu chybné regulární výrazy
+## <a name="set-upper-limit-timeout-for-regular-expression-processing-to-prevent-dos-due-to-bad-regular-expressions"></a><a id="dos-expression"></a>Nastavte časový limit horní meze pro zpracování regulárního výrazu, aby se zabránilo DoS v důsledku chybných regulárních výrazů.
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
@@ -462,16 +462,16 @@ Nepoužívejte `innerHtml`; místo `innerText`toho použijte . Podobně místo `
 | **Použitelné technologie** | Obecné, webové formuláře, MVC5, MVC6  |
 | **Atributy**              | –  |
 | **Odkazy**              | [Vlastnost DefaultRegexMatchTimeout](https://msdn.microsoft.com/library/system.web.configuration.httpruntimesection.defaultregexmatchtimeout.aspx) |
-| **Kroky** | Chcete-li zajistit útoky odmítnutí služby proti špatně vytvořeným regulárním výrazům, které způsobují velké množství zpětných navracení, nastavte globální výchozí časový limit. Pokud doba zpracování trvá déle, než je definovaný horní limit, vyvolá výjimku časového limitu. Pokud není nic nakonfigurováno, časový čas by byl nekonečný.| 
+| **Uvedené** | Aby bylo zajištěno odmítnutí útoků proti chybně vytvořeným regulárním výrazům, které způsobují hodně zpětného navrácení, nastavte globální výchozí časový limit. Pokud doba zpracování trvá déle než definovaný horní limit, vyvolala výjimku Timeout. Pokud není nic nakonfigurované, časový limit by měl být nekonečný.| 
 
 ### <a name="example"></a>Příklad
-Například následující konfigurace vyvolá RegexMatchTimeoutException, pokud zpracování trvá déle než 5 sekund: 
+Například následující konfigurace vyvolá RegexMatchTimeoutException, pokud zpracování trvá více než 5 sekund: 
 
 ```csharp
 <httpRuntime targetFramework="4.5" defaultRegexMatchTimeout="00:00:05" />
 ```
 
-## <a name="avoid-using-htmlraw-in-razor-views"></a><a id="html-razor"></a>Vyhněte se použití Html.Raw v zobrazení Razor
+## <a name="avoid-using-htmlraw-in-razor-views"></a><a id="html-razor"></a>Nepoužívejte HTML. Raw v zobrazeních Razor
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
@@ -480,10 +480,10 @@ Například následující konfigurace vyvolá RegexMatchTimeoutException, pokud
 | **Použitelné technologie** | MVC5, MVC6 |
 | **Atributy**              | –  |
 | **Odkazy**              | –  |
-| Krok | ASP.NET webových stránek (Razor) provádí automatické kódování HTML. Všechny řetězce vytištěné vloženými kódovými kostkami (@ blocks) jsou automaticky kódovány ve formátu HTML. Však `HtmlHelper.Raw` při method je vyvolána, vrátí značky, které není kódován HTML. Pokud `Html.Raw()` je použita pomocná metoda, obchází ochranu automatického kódování, kterou poskytuje Razor.|
+| Krok | Webové stránky ASP.NET (Razor) provádějí automatické kódování HTML. Všechny řetězce vytištěné pomocí vloženého kódu Nuggets (@ Blocks) jsou automaticky kódovány HTML. Nicméně, pokud `HtmlHelper.Raw` je vyvolána metoda, vrátí kód, který není kódovaný v jazyce HTML. Pokud `Html.Raw()` je použita pomocná metoda, obchází automatickou ochranu kódování, kterou Razor poskytuje.|
 
 ### <a name="example"></a>Příklad
-Následuje nezabezpečený příklad: 
+Následuje příklad nezabezpečeného: 
 
 ```csharp
 <div class="form-group">
@@ -494,7 +494,7 @@ Následuje nezabezpečený příklad:
         </div>
 </div>
 ```
-Nepoužívejte, `Html.Raw()` pokud nepotřebujete zobrazit značky. Tato metoda neprovádí implicitní kódování výstupu. Používejte jiné ASP.NET pomocníky např.`@Html.DisplayFor()` 
+Nepoužívejte `Html.Raw()` , pokud není nutné zobrazit značky. Tato metoda neprovádí implicitní kódování výstupu. Použijte další ASP.NET pomocníky, např.`@Html.DisplayFor()` 
 
 ## <a name="do-not-use-dynamic-queries-in-stored-procedures"></a><a id="stored-proc"></a>Nepoužívejte dynamické dotazy v uložených procedurách
 
@@ -505,7 +505,7 @@ Nepoužívejte, `Html.Raw()` pokud nepotřebujete zobrazit značky. Tato metoda 
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | –  |
 | **Odkazy**              | –  |
-| **Kroky** | <p>Útok injektáží SQL využívá chyby zabezpečení při ověřování vstupů ke spuštění libovolných příkazů v databázi. Může dojít, když vaše aplikace používá vstup pro vytvoření dynamické příkazy SQL pro přístup k databázi. Může také dojít, pokud váš kód používá uložené procedury, které jsou předány řetězce, které obsahují nezpracovaná vstup uživatele. Pomocí útoku injektáží SQL může útočník provádět libovolné příkazy v databázi. Všechny příkazy SQL (včetně příkazů SQL v uložených procedurách) musí být parametrizovány. Parametrizované příkazy SQL budou přijímat znaky, které mají zvláštní význam pro SQL (jako je jedna uvozovka) bez problémů, protože jsou silně zadány. |
+| **Uvedené** | <p>Útok prostřednictvím injektáže SQL zneužije chyby zabezpečení ve vstupním ověřování a spustí v databázi libovolné příkazy. K tomu může dojít, pokud vaše aplikace používá vstup k vytváření dynamických příkazů SQL pro přístup k databázi. K tomu může dojít také v případě, že váš kód používá uložené procedury, které jsou předány řetězcem, který obsahuje nezpracovaný uživatelský vstup. Pomocí útoku na injektáže SQL může útočník spustit v databázi libovolné příkazy. Všechny příkazy SQL (včetně příkazů SQL v uložených procedurách) musí být parametrizované. Parametrizované příkazy SQL budou přijímat znaky, které mají zvláštní význam pro SQL (například jednoduchá uvozovky) bez problémů, protože jsou silného typu. |
 
 ### <a name="example"></a>Příklad
 Následuje příklad nezabezpečené dynamické uložené procedury: 
@@ -536,7 +536,7 @@ AS
 ```
 
 ### <a name="example"></a>Příklad
-Následuje stejná uložená procedura implementovaná bezpečně: 
+Následuje postup bezpečné implementace stejné uložené procedury: 
 ```csharp
 CREATE PROCEDURE [dbo].[uspGetProductsByCriteriaSecure]
 (
@@ -556,7 +556,7 @@ AS
        END
 ```
 
-## <a name="ensure-that-model-validation-is-done-on-web-api-methods"></a><a id="validation-api"></a>Ujistěte se, že ověření modelu se provádí na metody webového rozhraní API
+## <a name="ensure-that-model-validation-is-done-on-web-api-methods"></a><a id="validation-api"></a>Ujistěte se, že se ověřování modelu provádí na metodách webového rozhraní API.
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
@@ -564,11 +564,11 @@ AS
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | MVC5, MVC6 |
 | **Atributy**              | –  |
-| **Odkazy**              | [Ověření modelu v ASP.NET webovérozhraní API](https://www.asp.net/web-api/overview/formats-and-model-binding/model-validation-in-aspnet-web-api) |
-| **Kroky** | Když klient odesílá data do webového rozhraní API, je povinné ověřit data před provedením jakékoli zpracování. Pro ASP.NET webová rozhraní API, která přijímají modely jako vstup, použijte datové poznámky na modelech k nastavení ověřovacích pravidel pro vlastnosti modelu.|
+| **Odkazy**              | [Ověření modelu ve webovém rozhraní API ASP.NET](https://www.asp.net/web-api/overview/formats-and-model-binding/model-validation-in-aspnet-web-api) |
+| **Uvedené** | Když klient odešle data do webového rozhraní API, je povinné ověřit data před jakýmkoli zpracováním. Pro ASP.NET webová rozhraní API, která přijímají modely jako vstup, použijte datové poznámky k modelům pro nastavení ověřovacích pravidel pro vlastnosti modelu.|
 
 ### <a name="example"></a>Příklad
-Následující kód ukazuje totéž: 
+Následující kód demonstruje stejné: 
 
 ```csharp
 using System.ComponentModel.DataAnnotations;
@@ -589,7 +589,7 @@ namespace MyApi.Models
 ```
 
 ### <a name="example"></a>Příklad
-V akční metodě řadičů rozhraní API musí být platnost modelu explicitně zkontrolována, jak je znázorněno níže: 
+V metodě Action řadičů rozhraní API musí být platnost modelu explicitně zkontrolována, jak je znázorněno níže: 
 
 ```csharp
 namespace MyApi.Controllers
@@ -613,18 +613,18 @@ namespace MyApi.Controllers
 }
 ```
 
-## <a name="implement-input-validation-on-all-string-type-parameters-accepted-by-web-api-methods"></a><a id="string-api"></a>Implementace ověření vstupu u všech parametrů typu řetězce přijatých metodami webového rozhraní API
+## <a name="implement-input-validation-on-all-string-type-parameters-accepted-by-web-api-methods"></a><a id="string-api"></a>Implementovat ověřování vstupu pro všechny parametry řetězcového typu akceptované metodami webového rozhraní API
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webové rozhraní API | 
 | **Fáze SDL**               | Sestavení |  
-| **Použitelné technologie** | Obecný, MVC 5, MVC 6 |
+| **Použitelné technologie** | Obecné, MVC 5, MVC 6 |
 | **Atributy**              | –  |
-| **Odkazy**              | [Ověření modelových dat v aplikaci MVC](https://msdn.microsoft.com/library/dd410404(v=vs.90).aspx), [hlavní zásady pro vaše ASP.NET aplikace MVC](https://msdn.microsoft.com/magazine/dd942822.aspx) |
-| **Kroky** | Pro metody, které pouze přijmout primitivní datový typ a ne modely jako argument, vstupní ověření pomocí regulárního výrazu by mělo být provedeno. Zde Regex.IsMatch by měl být použit s platným vzorem regulární výraz. Pokud vstup neodpovídá zadanému regulárnímu výrazu, ovládací prvek by neměl pokračovat dále a mělo by se zobrazit odpovídající upozornění týkající se selhání ověření.|
+| **Odkazy**              | [Ověřování dat modelu v aplikaci MVC](https://msdn.microsoft.com/library/dd410404(v=vs.90).aspx), [Principy identifikátorů guid pro aplikace ASP.NET MVC](https://msdn.microsoft.com/magazine/dd942822.aspx) |
+| **Uvedené** | Pro metody, které pouze akceptují primitivní datový typ a nikoli modely jako argument, by mělo být provedeno ověřování vstupu pomocí regulárního výrazu. Regulární výraz Regex. Match by měl být použit s platným vzorem regulárního výrazu. Pokud vstup neodpovídá zadanému regulárnímu výrazu, ovládací prvek by neměl pokračovat dále a zobrazí se odpovídající upozornění týkající se selhání ověřování.|
 
-## <a name="ensure-that-type-safe-parameters-are-used-in-web-api-for-data-access"></a><a id="typesafe-api"></a>Ujistěte se, že jsou ve webovém rozhraní API používány parametry zajišťující bezpečnost typů pro přístup k datům.
+## <a name="ensure-that-type-safe-parameters-are-used-in-web-api-for-data-access"></a><a id="typesafe-api"></a>Zajistěte, aby se pro přístup k datům používaly parametry bezpečné pro typ ve webovém rozhraní API.
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
@@ -633,10 +633,10 @@ namespace MyApi.Controllers
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | –  |
 | **Odkazy**              | –  |
-| **Kroky** | <p>Pokud použijete parametry kolekce, SQL zachází vstup je jako literál hodnotu spíše než jako spustitelný kód. Kolekce Parametry lze vynutit omezení typu a délky na vstupní data. Hodnoty mimo rozsah aktivují výjimku. Pokud nejsou použity parametry SQL bezpečné pro daný typ, útočníci mohou být schopni provést injektážní útoky, které jsou vloženy do nefiltrovaného vstupu.</p><p>Při vytváření dotazů SQL používejte parametry typu safe, abyste se vyhnuli možným útokům injektáže SQL, ke kterým může dojít s nefiltrovaným vstupem. Můžete použít typ bezpečné parametry s uloženými procedurami a s dynamickými příkazy SQL. Parametry jsou považovány za literálové hodnoty databáze a nikoli jako spustitelný kód. Parametry jsou také kontrolovány pro typ a délku.</p>|
+| **Uvedené** | <p>Použijete-li kolekci Parameters, SQL považuje vstup za hodnotu literálu, a ne jako spustitelný kód. Kolekci Parameters lze použít k vynutit omezení typu a délky vstupních dat. Hodnoty mimo rozsah spouštějí výjimku. Pokud se nepoužívají parametry SQL bezpečného typu, útočník může být schopen spustit útoky prostřednictvím injektáže vložené do nefiltrovaného vstupu.</p><p>Při vytváření dotazů SQL použijte parametry typově bezpečné, aby nedocházelo k útokům prostřednictvím injektáže SQL, ke kterým může dojít s nefiltrovaným vstupem. Typ bezpečné parametry můžete použít s uloženými procedurami a s dynamickými příkazy SQL. Parametry jsou považovány za hodnoty literálu v databázi, nikoli jako spustitelný kód. U parametrů se také kontroluje typ a délka.</p>|
 
 ### <a name="example"></a>Příklad
-Následující kód ukazuje, jak používat typ bezpečné parametry s SqlParameterCollection při volání uložené procedury. 
+Následující kód ukazuje, jak použít parametry typu Safe s SqlParameterCollection při volání uložené procedury. 
 
 ```csharp
 using System.Data;
@@ -652,18 +652,18 @@ myCommand.SelectCommand.Parameters["@au_id"].Value = SSN.Text;
 myCommand.Fill(userDataset);
 }  
 ```
-V předchozím příkladu kódu nesmí být vstupní hodnota delší než 11 znaků. Pokud data neodpovídá typu nebo délce definované parametrem, třída SqlParameter vyvolá výjimku. 
+V předchozím příkladu kódu nemůže být vstupní hodnota delší než 11 znaků. Pokud data neodpovídají typu nebo délce definované parametrem, třída SqlParameter vyvolá výjimku. 
 
 ## <a name="use-parameterized-sql-queries-for-cosmos-db"></a><a id="sql-docdb"></a>Použití parametrizovaných dotazů SQL pro Cosmos DB
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | Databáze dokumentů Azure | 
+| **Komponenta**               | Azure Document DB | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | –  |
-| **Odkazy**              | [Oznámení parametrizace SQL v Db Azure Cosmos](https://azure.microsoft.com/blog/announcing-sql-parameterization-in-documentdb/) |
-| **Kroky** | Přestože Azure Cosmos DB podporuje pouze dotazy jen pro čtení, vkládání SQL je stále možné, pokud dotazy jsou vytvořeny zřetězení s vstupem uživatele. Může být možné pro uživatele získat přístup k datům, které by neměly být přístup v rámci stejné kolekce crafting škodlivé dotazy SQL. Parametrizované dotazy SQL použijte, pokud jsou dotazy vytvořeny na základě vstupu uživatele. |
+| **Odkazy**              | [Oznamujeme Parametrizace SQL v Azure Cosmos DB](https://azure.microsoft.com/blog/announcing-sql-parameterization-in-documentdb/) |
+| **Uvedené** | I když Azure Cosmos DB podporuje jenom dotazy jen pro čtení, vkládání SQL je stále možné, pokud jsou dotazy vytvořené zřetězením s uživatelským vstupem. Může být možné, že uživatel získá přístup k datům, ke kterým by neměl přistupovat v rámci stejné kolekce, a to díky tomu, že se zlými úmysly dotazování SQL. Použijte parametrizované dotazy SQL, pokud jsou dotazy vytvořené na základě vstupu uživatele. |
 
 ## <a name="wcf-input-validation-through-schema-binding"></a><a id="schema-binding"></a>Ověřování vstupu WCF prostřednictvím vazby schématu
 
@@ -671,18 +671,18 @@ V předchozím příkladu kódu nesmí být vstupní hodnota delší než 11 zna
 | ----------------------- | ------------ |
 | **Komponenta**               | WCF | 
 | **Fáze SDL**               | Sestavení |  
-| **Použitelné technologie** | Obecný, NET Framework 3 |
+| **Použitelné technologie** | Obecné, NET Framework 3 |
 | **Atributy**              | –  |
 | **Odkazy**              | [MSDN](https://msdn.microsoft.com/library/ff647820.aspx) |
-| **Kroky** | <p>Nedostatečná validace vede k útokům injekce jiného typu.</p><p>Ověření zprávy představuje jednu linii obrany v ochraně aplikace WCF. Pomocí tohoto přístupu ověřte zprávy pomocí schémat k ochraně operací služby WCF před útokem klienta se zlými úmysly. Ověřte všechny zprávy přijaté klientem, abyste klienta ochránili před útokem škodlivé služby. Ověření zprávy umožňuje ověřit zprávy, když operace spotřebovávají smlouvy zpráv nebo kontrakty dat, což nelze provést pomocí ověření parametru. Ověření zprávy umožňuje vytvořit logiku ověření uvnitř schémat, a tím poskytuje větší flexibilitu a zkrátí dobu vývoje. Schémata lze znovu použít v různých aplikacích v rámci organizace a vytvářet standardy pro reprezentaci dat. Ověření zpráv navíc umožňuje chránit operace, když spotřebovávají složitější datové typy zahrnující smlouvy představující obchodní logiku.</p><p>Chcete-li provést ověření zprávy, nejprve vytvořte schéma, které představuje operace vaší služby a datové typy spotřebované těmito operacemi. Potom vytvoříte třídu .NET, která implementuje vlastní inspektor zpráv klienta a vlastního inspektora zpráv dispečera k ověření zpráv odeslaných/přijatých do/ze služby. Dále implementovat vlastní chování koncového bodu povolit ověření zprávy na straně klienta i služby. Nakonec implementovat vlastní konfigurační prvek na třídu, která umožňuje vystavit rozšířené chování vlastního koncového bodu v konfiguračním souboru služby nebo klienta"</p>|
+| **Uvedené** | <p>Nedostatek ověřování vede k různým útokům na vkládání typů.</p><p>Ověřování zpráv představuje jednu linii obrany v ochraně vaší aplikace WCF. Pomocí tohoto přístupu ověříte zprávy pomocí schémat k ochraně operací služby WCF proti útokům prostřednictvím škodlivého klienta. Ověří všechny zprávy, které klient přijal, aby chránil klienta před útoky přes škodlivou službu. Ověřování zpráv umožňuje ověřovat zprávy, když operace spotřebovávají kontrakty zpráv nebo kontrakty dat, které nelze provést pomocí ověření parametru. Ověřování zpráv umožňuje vytvořit logiku ověřování v rámci schémat a zajistit tak větší flexibilitu a zkrátit dobu vývoje. Schémata je možné v rámci organizace znovu použít v různých aplikacích a vytváření standardů pro reprezentace dat. Kromě toho ověřování zpráv umožňuje chránit operace při využívání složitějších datových typů, které zahrnují kontrakty představující obchodní logiku.</p><p>Chcete-li provést ověření zprávy, nejprve Sestavte schéma, které představuje operace vaší služby, a datové typy spotřebované těmito operacemi. Pak vytvoříte třídu .NET, která implementuje vlastní inspektor zprávy klienta a vlastní inspektor zprávy dispečera k ověření zpráv odeslaných/přijatých do/ze služby. Dále implementujete chování vlastního koncového bodu, které umožňuje ověřování zpráv na straně klienta i služby. Nakonec implementujete vlastní prvek konfigurace na třídu, která umožňuje vystavit rozšířené chování koncového bodu v konfiguračním souboru služby nebo klienta. "</p>|
 
-## <a name="wcf--input-validation-through-parameter-inspectors"></a><a id="parameters"></a>WCF - Ověření vstupu prostřednictvím inspektorů parametrů
+## <a name="wcf--input-validation-through-parameter-inspectors"></a><a id="parameters"></a>WCF – ověřování vstupu prostřednictvím inspektorů parametrů
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | WCF | 
 | **Fáze SDL**               | Sestavení |  
-| **Použitelné technologie** | Obecný, NET Framework 3 |
+| **Použitelné technologie** | Obecné, NET Framework 3 |
 | **Atributy**              | –  |
 | **Odkazy**              | [MSDN](https://msdn.microsoft.com/library/ff647875.aspx) |
-| **Kroky** | <p>Ověření vstupu a dat představuje jednu důležitou obrannou linii v ochraně aplikace WCF. Měli byste ověřit všechny parametry vystavené v operacích služby WCF k ochraně služby před útokem klienta se zlými úmysly. Naopak byste měli také ověřit všechny vrácené hodnoty přijaté klientem k ochraně klienta před útokem škodlivé služby</p><p>WCF poskytuje různé body rozšiřitelnosti, které umožňují přizpůsobit chování wcf runtime vytvořením vlastní rozšíření. Inspektoři zpráv a inspektoři parametrů jsou dva mechanismy rozšiřitelnosti, které se používají k získání větší kontroly nad daty předávaných mezi klientem a službou. Inspektory parametrů byste měli použít pro ověření vstupu a inspektoři zpráv pouze v případě, že potřebujete zkontrolovat celou zprávu, která proudí do a ze služby.</p><p>Chcete-li provést ověření vstupu, vytvoříte třídu .NET a implementujete vlastní inspektor parametrů za účelem ověření parametrů operací ve vaší službě. Potom implementujete vlastní chování koncového bodu, abyste povolili ověření na straně klienta i služby. Nakonec implementujete vlastní konfigurační prvek ve třídě, který umožňuje vystavit rozšířené chování vlastního koncového bodu v konfiguračním souboru služby nebo klienta</p>|
+| **Uvedené** | <p>Ověřování vstupu a dat představuje jednu významnou linii obrany v ochraně vaší aplikace WCF. Měli byste ověřit všechny parametry vystavené v operacích služby WCF, aby služba chránila před útoky ze škodlivého klienta. Naopak byste měli taky ověřit všechny vrácené hodnoty, které klient přijal, aby chránil klienta před útoky přes škodlivou službu.</p><p>Služba WCF poskytuje různé body rozšiřitelnosti, které umožňují přizpůsobit chování modulu runtime WCF vytvořením vlastních rozšíření. Kontrolory zpráv a kontroloři parametrů jsou dva mechanismy rozšíření, které umožňují získat větší kontrolu nad předáváním dat mezi klientem a službou. Měli byste použít inspektory parametrů pro ověřování vstupu a použít nástroje pro kontrolu zpráv pouze v případě, že potřebujete kontrolovat celou zprávu v toku a ze služby.</p><p>Chcete-li provést ověření vstupu, vytvoříte třídu .NET a implementujete vlastní inspektor parametrů, aby bylo možné ověřit parametry operací ve vaší službě. Pak implementujete chování vlastního koncového bodu, aby bylo možné ověřování povolit jak pro klienta, tak pro službu. Nakonec implementujete vlastní prvek konfigurace pro třídu, která umožňuje vystavit rozšířené chování vlastního koncového bodu v konfiguračním souboru služby nebo klienta nástroje.</p>|

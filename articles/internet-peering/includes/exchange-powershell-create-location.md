@@ -9,28 +9,28 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 2ebf5d574b4d185953ab0f7984648c440d6f107e
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81678639"
 ---
-Rutina prostředí PowerShell **Get-AzPeeringLocation** vrátí seznam umístění partnerského `Kind`vztahu s povinným parametrem , který použijete v pozdějších krocích.
+Rutina PowerShellu **Get-AzPeeringLocation** vrátí seznam umístění partnerského vztahu s povinným `Kind`parametrem, který použijete v pozdějších krocích.
 
 ```powershell
 Get-AzPeeringLocation -Kind "Exchange"
 ```
 
-Umístění partnerského vztahu serveru Exchange obsahují následující pole:
-* ExchangeName
-* Umístění partnerského vztahu
+Umístění partnerských vztahů Exchange obsahují následující pole:
+* Výměna
+* PeeringLocation
 * Země
 * PeeringDBFacilityId
 * PeeringDBFacilityLink
-* Adresa MicrosoftIPv4Address
-* Adresa MicrosoftIPv6Address
+* MicrosoftIPv4Address
+* MicrosoftIPv6Address
 
-Ověřte, zda se k dispozici v požadovaném partnerském vztahu pomocí [PeeringDB](https://wwww.peeringdb.com).
+Pomocí odkazu na [PeeringDB](https://wwww.peeringdb.com)ověřte, že se nacházíte na požadovaném zařízení pro partnerský vztah.
 
 Tento příklad ukazuje, jak použít Seattle jako umístění partnerského vztahu k vytvoření partnerského vztahu.
 

@@ -1,7 +1,7 @@
 ---
-title: Použití dynamické konfigurace v aplikaci Spring Boot
+title: Použití dynamické konfigurace v aplikaci pružinového spuštění
 titleSuffix: Azure App Configuration
-description: Přečtěte si, jak dynamicky aktualizovat konfigurační data pro aplikace spring boot
+description: Naučte se dynamicky aktualizovat konfigurační data pro aplikace pro spouštění pružiny.
 services: azure-app-configuration
 author: lisaguthrie
 ms.service: azure-app-configuration
@@ -9,27 +9,27 @@ ms.topic: tutorial
 ms.date: 3/5/2020
 ms.author: lcozzens
 ms.openlocfilehash: 37c832e3b6d1430da0b45558c9632f0486a7233b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79216761"
 ---
-# <a name="tutorial-use-dynamic-configuration-in-a-java-spring-app"></a>Kurz: Použití dynamické konfigurace v aplikaci Java Spring
+# <a name="tutorial-use-dynamic-configuration-in-a-java-spring-app"></a>Kurz: použití dynamické konfigurace v aplikaci Java pružiny
 
-Klientská knihovna Application Configuration Spring Boot podporuje aktualizaci sady nastavení konfigurace na vyžádání, aniž by došlo k restartování aplikace. Klientská knihovna ukládá každé nastavení do mezipaměti, aby se zabránilo příliš mnoha voláním do úložiště konfigurace. Operace aktualizace neaktualizuje hodnotu, dokud nevyprší platnost hodnoty uložené v mezipaměti, a to ani v případě, že se hodnota v úložišti konfigurace změnila. Výchozí doba vypršení platnosti pro každý požadavek je 30 sekund. V případě potřeby jej lze přepsat.
+Klientská knihovna konfigurace aplikace pro spouštění nástroje podporuje aktualizaci sady nastavení konfigurace na vyžádání, aniž by způsobila restartování aplikace. Klientská knihovna ukládá do mezipaměti každé nastavení, aby nedocházelo k příliš velkému počtu volání do úložiště konfigurace. Operace aktualizace neaktualizuje hodnotu, dokud nevyprší platnost hodnoty uložené v mezipaměti, a to i v případě, že se hodnota v úložišti konfigurací změnila. Výchozí doba vypršení platnosti každé žádosti je 30 sekund. V případě potřeby ho můžete přepsat.
 
-Aktualizované nastavení můžete zkontrolovat na `AppConfigurationRefresh`vyžádání `refreshConfigurations()` voláním metody 's.
+Můžete vyhledat aktualizované nastavení na vyžádání `AppConfigurationRefresh`voláním `refreshConfigurations()` metody.
 
-Alternativně můžete použít `spring-cloud-azure-appconfiguration-config-web` balíček, který trvá `spring-web` závislost na zpracování automatické aktualizace.
+Alternativně můžete použít `spring-cloud-azure-appconfiguration-config-web` balíček, který využívá závislost na `spring-web` zpracování automatizované aktualizace.
 
-## <a name="use-automated-refresh"></a>Použití automatické aktualizace
+## <a name="use-automated-refresh"></a>Použít automatizovanou aktualizaci
 
-Chcete-li používat automatickou aktualizaci, začněte s aplikací Spring Boot, která používá konfiguraci aplikace, například aplikaci, kterou vytvoříte, pomocí [rychlého startu jarního spuštění pro konfiguraci aplikace](quickstart-java-spring-app.md).
+Pokud chcete používat automatizovanou aktualizaci, začněte s aplikací pro spouštění pružiny, která používá konfiguraci aplikace, jako je třeba aplikace, kterou vytvoříte pomocí [rychlého startu při spuštění pro konfiguraci aplikací](quickstart-java-spring-app.md).
 
-Potom otevřete soubor *pom.xml* v textovém `<dependency>` editoru a přidejte pro `spring-cloud-azure-appconfiguration-config-web`.
+Pak otevřete soubor *pom. XML* v textovém editoru a přidejte `<dependency>` pro. `spring-cloud-azure-appconfiguration-config-web`
 
-**Jarní mrak 1.1.x**
+**Jarní Cloud 1.1. x**
 
 ```xml
 <dependency>
@@ -39,7 +39,7 @@ Potom otevřete soubor *pom.xml* v textovém `<dependency>` editoru a přidejte 
 </dependency>
 ```
 
-**Jarní mrak 1.2.x**
+**Jarní Cloud 1.2. x**
 
 ```xml
 <dependency>
@@ -49,11 +49,11 @@ Potom otevřete soubor *pom.xml* v textovém `<dependency>` editoru a přidejte 
 </dependency>
 ```
 
-Uložte soubor a pak vytvořte a spusťte aplikaci obvyklým způsobem.
+Uložte soubor a pak Sestavte a spusťte aplikaci obvyklým způsobem.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste povolili aplikaci Spring Boot dynamicky aktualizovat nastavení konfigurace z konfigurace aplikace. Chcete-li se dozvědět, jak používat spravovanou identitu Azure ke zjednodušení přístupu ke konfiguraci aplikací, pokračujte dalším kurzem.
+V tomto kurzu jste povolili aplikaci pro spouštění pružiny, která dynamicky aktualizuje nastavení konfigurace z konfigurace aplikace. Další informace o tom, jak používat spravovanou identitu Azure ke zjednodušení přístupu ke konfiguraci aplikace, najdete v dalším kurzu.
 
 > [!div class="nextstepaction"]
-> [Integrace spravované identity](./howto-integrate-azure-managed-service-identity.md)
+> [Spravovaná integrace identit](./howto-integrate-azure-managed-service-identity.md)

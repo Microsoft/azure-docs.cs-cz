@@ -1,135 +1,135 @@
 ---
 title: Nastavení zařízení Azure Migrate pro VMware
-description: Zjistěte, jak nastavit zařízení Azure Migrate pro posouzení a migraci virtuálních počítačích VMware.
+description: Naučte se, jak nastavit zařízení Azure Migrate pro vyhodnocení a migraci virtuálních počítačů VMware.
 ms.topic: article
 ms.date: 04/16/2020
 ms.openlocfilehash: b32c6a9b703e4d341fe353d6b472ea7a18adadf3
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81538252"
 ---
-# <a name="set-up-an-appliance-for-vmware-vms"></a>Nastavení zařízení pro virtuální zařízení VMware
+# <a name="set-up-an-appliance-for-vmware-vms"></a>Nastavení zařízení pro virtuální počítače VMware
 
-V tomto článku nastavte zařízení Azure Migrate pro vyhodnocení pomocí nástroje [Azure Migrate:Server Assessment](migrate-services-overview.md#azure-migrate-server-assessment-tool) a migrace bez agenta pomocí nástroje [Migrace:server Azure.](migrate-services-overview.md#azure-migrate-server-migration-tool)
+Podle tohoto článku nastavte zařízení Azure Migrate pro posouzení pomocí nástroje [Azure Migrate: Nástroj pro vyhodnocení serveru](migrate-services-overview.md#azure-migrate-server-assessment-tool) a migraci bez agenta pomocí nástroje [Azure Migrate: Server pro migraci](migrate-services-overview.md#azure-migrate-server-migration-tool) .
 
-[Zařízení Migrace Azure](migrate-appliance.md) je zjednodušené zařízení používané Azure Migrate:Server Assessment a Migrace serveru ke zjišťování místních virtuálních měn VMware, odesílání dat metadat a výkonu virtuálního počítače do Azure a replikace virtuálních měn VMware během migrace bez agenta.
+[Zařízení Azure Migrate](migrate-appliance.md) je odlehčené zařízení, které používá Azure Migrate: Server Assessment and Server Migration pro zjišťování místních virtuálních počítačů VMware, posílání METADAT virtuálního počítače/dat výkonu do Azure a replikace virtuálních počítačů VMware během migrace bez agenta.
 
 Zařízení můžete nasadit pomocí několika metod:
 
-- Nastavení virtuálního počítače VMware pomocí stažené šablony OVA. Toto je metoda popsaná v tomto článku.
-- Nastavení na virtuálním počítači VMware nebo fyzickém počítači se skriptem instalačního programu prostředí PowerShell. [Tato metoda](deploy-appliance-script.md) by se měla použít, pokud nemůžete nastavit virtuální počítač pomocí šablony OVA, nebo pokud jste ve vládě Azure.
+- Nastavte na virtuálním počítači VMware pomocí stažené šablony vajíček. Tato metoda je popsaná v tomto článku.
+- Nastavte na VIRTUÁLNÍm počítači VMware nebo fyzickém počítači pomocí skriptu instalačního programu PowerShell. [Tato metoda](deploy-appliance-script.md) by se měla použít, pokud nemůžete nastavit virtuální počítač pomocí šablony pro vajíčka nebo pokud jste v rámci služby Azure pro státní správu.
 
-Po vytvoření zařízení zkontrolujte, zda se může připojit k Azure Migrate:Server Assessment, poprvé ho nakonfigurovat a zaregistrovat v projektu Azure Migrate.
+Po vytvoření zařízení zkontrolujete, že se může připojit k Azure Migrate: posouzení serveru, nakonfigurovat ho poprvé a zaregistrujte ho v projektu Azure Migrate.
 
 
-## <a name="appliance-deployment-ova"></a>Nasazení zařízení (OVA)
+## <a name="appliance-deployment-ova"></a>Nasazení zařízení (VAJÍČKa)
 
-Chcete-li přístroj nastavit pomocí šablony OVA, tak:
-- Stáhněte soubor šablony OVA a importujte jej do serveru vCenter.
-- Vytvořte zařízení a zkontrolujte, zda se může připojit k Azure Migrate Server Assessment.
-- Nakonfigurujte zařízení poprvé a zaregistrujte ho pomocí projektu Azure Migrate.
+K nastavení zařízení pomocí šablony vajíček:
+- Stáhněte soubor šablony vajíček a naimportujte ho do vCenter Server.
+- Vytvořte zařízení a ověřte, že se může připojit k Azure Migrate posouzení serveru.
+- Nakonfigurujete zařízení poprvé a zaregistrujete ho do projektu Azure Migrate.
 
-## <a name="download-the-ova-template"></a>Stažení šablony OVA
+## <a name="download-the-ova-template"></a>Stažení šablony pro VAJÍČKy
 
-1. V **serverech cílů** > **migrace, které** > **Azure migruje: Vyhodnocení serveru**, klepněte na tlačítko **Objevit**.
-2. V **discover machines** > **Jsou vaše počítače virtualizované?**, klikněte na **Ano, s hypervisorem VMWare vSphere**.
+1. V Azure Migrate **cíle** > migrace na**servery** > **: vyhodnocování serveru**klikněte na **zjistit**.
+2. V nabídce **zjistit** > počítače**jsou vaše počítače virtualizované?** klikněte na **Ano a hypervisor VMware vSphere**.
 3. Pokud si chcete stáhnout soubor šablony .OVA, klikněte na **Stáhnout**.
 
-  ![Výběry pro stažení souboru OVA](./media/tutorial-assess-vmware/download-ova.png)
+  ![Výběry pro stažení souboru vajíček](./media/tutorial-assess-vmware/download-ova.png)
 
-### <a name="verify-security"></a>Ověření zabezpečení
+### <a name="verify-security"></a>Ověřit zabezpečení
 
-Před nasazením souboru OVA zkontrolujte, zda je soubor OVA zabezpečený.
+Před nasazením ověřte, zda je soubor sady vajíček zabezpečený.
 
 1. Na počítači, do kterého jste soubor stáhli, otevřete jako správce příkazový řádek.
-2. Spusťte následující příkaz, chcete-li generovat hash pro OVA:
+2. Spusťte následující příkaz, který vygeneruje hodnotu hash pro VAJÍČKu:
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Příklady použití: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
-3. Pro nejnovější verzi zařízení by se vygenerovaná hash měla shodovat s těmito [nastaveními](https://docs.microsoft.com/azure/migrate/tutorial-assess-vmware#verify-security).
+3. Pro nejnovější verzi zařízení by se vygenerovaná hodnota hash měla shodovat s tímto [nastavením](https://docs.microsoft.com/azure/migrate/tutorial-assess-vmware#verify-security).
 
 
 
-## <a name="create-the-appliance-vm"></a>Vytvoření virtuálního virtuálního zařízení
+## <a name="create-the-appliance-vm"></a>Vytvoření virtuálního počítače zařízení
 
-Importujte stažený soubor a vytvořte virtuální hod.
+Naimportujte stažený soubor a vytvořte virtuální počítač.
 
-1. V konzole klienta vSphere klepněte na **položku Nasazení souboru** > **ovf šablony**.
+1. V klientské konzole vSphere klikněte na **soubor** > **nasadit šablonu OVF**.
 ![Příkaz nabídky pro nasazení šablony OVF](./media/tutorial-assess-vmware/deploy-ovf.png)
 
-2. V Průvodci nasazením šablony OVF > **zdroj**zadejte umístění souboru OVA.
-3. V **části Název** a **umístění**zadejte popisný název virtuálního soudu. Vyberte objekt zásob, ve kterém bude virtuální ms hostován.
-5. V **hostiteli/clusteru**určete hostitele nebo cluster, na kterém bude virtuální počítač spuštěn.
-6. V **úložišti**zadejte cíl úložiště pro virtuální ho.
+2. V Průvodci nasazením šablony OVF > **zdroj**zadejte umístění souboru vajíček.
+3. Do pole **název** a **umístění**zadejte popisný název virtuálního počítače. Vyberte objekt inventáře, do kterého bude virtuální počítač hostovat.
+5. V části **hostitel nebo cluster**zadejte hostitele nebo cluster, na kterém se virtuální počítač spustí.
+6. V části **Storage (úložiště**) zadejte cíl úložiště pro virtuální počítač.
 7. V části **Disk Format** (Formát disku) zadejte typ a velikost disku.
-8. V **mapování sítě**určete síť, ke které se bude virtuální montovna připojovat. Síť potřebuje připojení k internetu, k odeslání metadat do Azure Migrate Server Assessment.
+8. V části **mapování sítě**určete síť, ke které se bude virtuální počítač připojovat. Síť potřebuje připojení k Internetu, aby odesílala metadata Azure Migrate posouzení serveru.
 9. Zkontrolujte a ověřte všechna nastavení a pak klikněte na **Finish** (Dokončit).
 
 
 ## <a name="verify-appliance-access-to-azure"></a>Ověření přístupu zařízení k Azure
 
-Ujistěte se, že virtuální počítač zařízení se může připojit k adresám URL Azure pro [veřejné](migrate-appliance.md#public-cloud-urls) a [vládní](migrate-appliance.md#government-cloud-urls) cloudy.
+Ujistěte se, že se virtuální počítač zařízení může připojit k adresám URL Azure pro cloudy [veřejné](migrate-appliance.md#public-cloud-urls) a [státní správy](migrate-appliance.md#government-cloud-urls) .
 
 
 ## <a name="configure-the-appliance"></a>Konfigurace zařízení
 
-Přístroj nastavte poprvé. Pokud nasadíte zařízení pomocí skriptu namísto šablony OVA, první dva kroky v postupu nejsou použitelné.
+Nastavte zařízení poprvé. Pokud zařízení nasadíte pomocí skriptu místo šablony vajíček, první dva kroky v proceduře se nepoužijí.
 
 1. V konzoli vSphere Client klikněte pravým tlačítkem na daný virtuální počítač a pak na **Open Console** (Otevřít konzolu).
 2. Zadejte jazyk, časové pásmo a heslo pro zařízení.
-3. Otevřete prohlížeč na libovolném počítači, který se může připojit k virtuálnímu počítači, a otevřete adresu URL webové aplikace zařízení: **https:// název zařízení nebo IP*adresu*: 44368**.
+3. Otevřete prohlížeč na jakémkoli počítači, který se může připojit k VIRTUÁLNÍmu počítači, a otevřete adresu URL webové aplikace zařízení: ***název zařízení https://nebo IP adresa*: 44368**.
 
-   Případně můžete aplikaci otevřít z plochy zařízení kliknutím na zástupce aplikace.
-4. Ve webové aplikaci > **Nastavení požadavků**postupujte takto:
-    - **Licence**: Přijměte licenční podmínky a přečtěte si informace třetích stran.
-    - **Připojení**: Aplikace zkontroluje, zda má virtuální uživatel přístup k internetu. Pokud virtuální virtuální server používá proxy server:
-        - Klepněte na **položku Nastavení proxy serveru**a http://ProxyIPAddress zadejte adresu proxy a port pro naslouchání ve formuláři nebo http://ProxyFQDN.
+   Alternativně můžete aplikaci otevřít z plochy zařízení kliknutím na zástupce aplikace.
+4. Ve webové aplikaci > **nastavení požadavků**postupujte takto:
+    - **Licence**: přijměte licenční podmínky a přečtěte si informace třetích stran.
+    - **Připojení**: aplikace kontroluje, jestli má virtuální počítač přístup k Internetu. Pokud virtuální počítač používá proxy server:
+        - Klikněte na **nastavení proxy serveru**a zadejte adresu proxy serveru a port naslouchání ve formuláři http://ProxyIPAddress nebo http://ProxyFQDN.
         - Pokud proxy server potřebuje přihlašovací údaje, zadejte je.
         - Podporuje se jen proxy protokolu HTTP.
-    - **Synchronizace času**: Čas je ověřen. Čas na zařízení by měl být synchronizován s časem internetu, aby zjišťování fungovalo správně.
-    - **Aktualizace instalace**: Azure Migrate kontroluje, že jsou nainstalovány nejnovější aktualizace zařízení.
-    - **Instalace VDDK**: Migrace Azure kontroluje, zda je nainstalována sada VMWare vSphere Virtual Disk Development Kit (VDDK).
-        - Azure Migrates používá VDDK k replikaci počítačů během migrace do Azure.
-        - Stáhněte si vddk 6.7 ze společnosti VMware a extrahujte stažený obsah zipu do určeného umístění na zařízení.
+    - **Časová synchronizace**: čas je ověřený. Čas na zařízení by měl být synchronizovaný s internetovým časem, aby zjišťování fungovalo správně.
+    - **Instalovat aktualizace**: Azure Migrate kontroluje, jestli jsou nainstalované nejnovější aktualizace zařízení.
+    - **Instalace VDDK**: Azure Migrate kontroluje, jestli je nainstalovaná sada Virtual disks Development Kit (VDDK) VMware vSphere.
+        - Migrace do Azure používá VDDK k replikaci počítačů během migrace do Azure.
+        - Stáhněte si VDDK 6,7 z VMware a Extrahujte stažený obsah zip do zadaného umístění na zařízení.
 
-## <a name="register-the-appliance-with-azure-migrate"></a>Registrace zařízení pomocí Migrace Azure
+## <a name="register-the-appliance-with-azure-migrate"></a>Zaregistrovat zařízení ve Azure Migrate
 
-1. Klepněte na tlačítko **Přihlásit se**. Pokud se nezobrazí, ujistěte se, že jste v prohlížeči zakázali blokování automaticky otevíraných míst.
-2. Na nové kartě se přihlaste pomocí přihlašovacích údajů Azure.
+1. Klikněte na **Přihlásit se**. Pokud se nezobrazí, ujistěte se, že jste v prohlížeči zakázali blokování automaticky otevíraných oken.
+2. Na nové kartě se přihlaste pomocí svých přihlašovacích údajů Azure.
     - Přihlaste se pomocí svého uživatelského jména a hesla.
-    - Přihlášení pomocí kódu PIN není podporováno.
-3. Po úspěšném přihlášení se vraťte do webové aplikace.
-2. Vyberte předplatné, ve kterém byl vytvořen projekt Migrace Azure. Pak vyberte projekt.
-3. Zadejte název zařízení. Název by měl být alfanumerický s 14 znaky nebo méně.
-4. Klepněte na tlačítko **Registrovat**.
+    - Přihlášení pomocí PIN kódu se nepodporuje.
+3. Po úspěšném přihlášení se vraťte k webové aplikaci.
+2. Vyberte předplatné, ve kterém byl vytvořen Azure Migrate projekt. Pak vyberte projekt.
+3. Zadejte název zařízení. Název by měl být alfanumerický a nesmí obsahovat více než 14 znaků.
+4. Klikněte na **zaregistrovat**.
 
 
-## <a name="start-continuous-discovery-by-providing-vcenter-server-and-vm-credential"></a>Spuštění průběžného zjišťování poskytnutím pověření serveru vCenter a virtuálního zařízení
+## <a name="start-continuous-discovery-by-providing-vcenter-server-and-vm-credential"></a>Spustit průběžné zjišťování poskytnutím vCenter Server a přihlašovacích údajů k virtuálnímu počítači
 
-Zařízení se musí připojit k serveru vCenter, aby zjistilo údaje o konfiguraci a výkonu virtuálních počítačů.
+Aby bylo možné zjistit konfiguraci a údaje o výkonu virtuálních počítačů, musí se zařízení připojit k vCenter Server.
 
 ### <a name="specify-vcenter-server-details"></a>Zadání podrobností vCenter Serveru
-1. V **části Zadejte podrobnosti o serveru vCenter**zadejte název (FQDN) nebo ADRESU IP serveru vCenter. Můžete ponechat výchozí port nebo zadat vlastní port, na kterém váš server vCenter naslouchá.
-2. V **části Uživatelské jméno** a **heslo**zadejte přihlašovací údaje účtu jen pro čtení, které bude zařízení používat ke zjišťování virtuálních počítačů na serveru vCenter. Zjišťování můžete obor omezením přístupu k účtu vCenter. [Další informace](set-discovery-scope.md).
-3. Klikněte na **Ověřit připojení** a ujistěte se, že se zařízení může připojit k serveru vCenter.
+1. V části **zadat vCenter Server podrobnosti**zadejte název (FQDN) nebo IP adresu vCenter Server. Můžete ponechat výchozí port nebo zadat vlastní port, na kterém vCenter Server naslouchá.
+2. V části **uživatelské jméno** a **heslo**zadejte přihlašovací údaje účtu jen pro čtení, které zařízení použije ke zjištění virtuálních počítačů na serveru vCenter. Rozsah zjišťování můžete omezit omezením přístupu k účtu vCenter. [Další informace](set-discovery-scope.md).
+3. Klikněte na **ověřit připojení** a ujistěte se, že se zařízení může připojit k vCenter Server.
 
-### <a name="specify-vm-credentials"></a>Určení pověření virtuálního virtuálního ms
-Pro zjišťování aplikací, rolí a funkcí a vizualizaci závislostí virtuálních aplikací můžete poskytnout pověření virtuálního zařízení, které má přístup k virtuálním mům VMware. Můžete přidat jedno pověření pro virtuální počítače se systémem Windows a jedno pověření pro virtuální počítače s Linuxem. [Přečtěte si další informace](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware) o potřebných přístupových oprávněních.
+### <a name="specify-vm-credentials"></a>Zadat přihlašovací údaje virtuálního počítače
+Pro zjišťování aplikací, rolí a funkcí a vizualizací závislostí virtuálních počítačů můžete zadat přihlašovací údaje k virtuálnímu počítači, které mají přístup k virtuálním počítačům VMware. Můžete přidat jednu přihlašovací údaje pro virtuální počítače s Windows a jedno přihlašovací údaje pro virtuální počítače se systémem Linux. [Přečtěte si další informace](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware) o požadovaných oprávněních pro přístup.
 
 > [!NOTE]
-> Tento vstup je volitelný a je potřeba k povolení zjišťování aplikací a vizualizace závislostí bez agenta.
+> Tento vstup je nepovinný a je potřeba, aby se povolilo zjišťování aplikací a vizualizace závislostí bez agentů.
 
-1. V **discover aplikacích a závislostech na virtuálních počítačích**klikněte na **Přidat pověření**.
-2. Vyberte **možnost Operační systém**.
-3. Zadejte popisný název pověření.
-4. V **poli Uživatelské jméno** a **heslo**zadejte účet, který má alespoň přístup hosta na virtuálních počítačích.
+1. V nabídce **zjistit aplikace a závislosti na virtuálních počítačích**klikněte na **Přidat přihlašovací údaje**.
+2. Vyberte **operační systém**.
+3. Zadejte popisný název přihlašovacích údajů.
+4. V části **uživatelské jméno** a **heslo**zadejte účet, který má alespoň přístup k hostům na virtuálních počítačích.
 5. Klikněte na tlačítko **Add** (Přidat).
 
-Po zadání pověření vCenter Serveru a virtuálního počítače (volitelné), klepněte na tlačítko **Uložit a spustit zjišťování** zahájit zjišťování místního prostředí.
+Po zadání vCenter Server a přihlašovacích údajů k virtuálnímu počítači (volitelné) klikněte na **Uložit a spusťte zjišťování** a spusťte zjišťování místního prostředí.
 
-Trvá přibližně 15 minut, než se metadata zjištěných virtuálních volání zobrazí na portálu. Zjišťování nainstalovaných aplikací, rolí a funkcí nějakou dobu trvá, doba trvání závisí na počtu zjištěných virtuálních počítačích. U 500 virtuálních počítačů trvá přibližně 1 hodinu, než se inventář aplikací zobrazí na portálu Migrace Azure.
+Zobrazení metadat zjištěných virtuálních počítačů na portálu trvá přibližně 15 minut. Zjišťování nainstalovaných aplikací, rolí a funkcí nějakou dobu trvá, doba trvání závisí na počtu zjištěných virtuálních počítačů. Pro virtuální počítače 500 trvá na portálu Azure Migrate přibližně 1 hodinu, než se inventář aplikace zobrazí.
 
 ## <a name="next-steps"></a>Další kroky
 
-Projděte si kurzy pro [hodnocení vmware](tutorial-assess-vmware.md) a [migraci bez agentů](tutorial-migrate-vmware.md).
+Přečtěte si kurzy pro [vyhodnocení VMware](tutorial-assess-vmware.md) a [migraci bez agentů](tutorial-migrate-vmware.md).

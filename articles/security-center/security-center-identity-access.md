@@ -14,58 +14,58 @@ ms.workload: na
 ms.date: 03/16/2020
 ms.author: memildin
 ms.openlocfilehash: 152168bbadd5815659bc5f70c91bd2a28f5e049d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79481955"
 ---
 # <a name="monitor-identity-and-access"></a>Monitorování identity a přístupu
 
 > [!TIP]
-> Od března 2020 jsou identity azure security center a doporučení pro přístup zahrnuty ve všech předplatných na bezplatné cenové úrovni. Pokud máte předplatná na bezplatné úrovni, jejich skóre zabezpečení bude ovlivněno, protože nebyly dříve posouzeny z hlediska jejich identity a zabezpečení přístupu. 
+> Od března 2020 jsou doporučení identit a přístupu Azure Security Center součástí všech předplatných v bezplatné cenové úrovni. Pokud máte předplatné na bezplatné úrovni, bude to mít vliv na jejich bezpečné skóre, protože nebyly dříve vyhodnoceny pro jejich identitu a zabezpečení přístupu. 
 
-Když Security Center identifikuje potenciální slabá místa zabezpečení, vytvoří doporučení, která vás provedou procesem konfigurace potřebných ovládacích prvků pro posílení a ochranu vašich prostředků.
+Když Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří doporučení, která vás provedou procesem konfigurace potřebných ovládacích prvků k posílení a ochraně vašich prostředků.
 
-Bezpečnostní perimetr se vyvinul z obvodu sítě na obvod identity. Zabezpečení se stává méně o obraně vaší sítě a více o obraně dat, stejně jako o správě zabezpečení vašich aplikací a uživatelů. V současné době se ale čím dál víc dat a aplikací přesouvá do cloudu a novým perimetrem se proto stává identita.
+Hraniční zabezpečení se vyvinulo z hraniční sítě až po hranice identity. Zabezpečení se zasahuje do ochrany vaší sítě a další informace o tom, jak chrání vaše data, a také o správě zabezpečení vašich aplikací a uživatelů. V současné době se ale čím dál víc dat a aplikací přesouvá do cloudu a novým perimetrem se proto stává identita.
 
-Sledováním aktivit identity můžete před incidentem provést proaktivní akce nebo reaktivní akce k zastavení pokusu o útok. Centrum zabezpečení může například označit zastaralé účty (účty, které už nejsou potřeba, a zablokovat přihlášení službou Azure Active Directory) pro odebrání. 
+Sledováním aktivit identity můžete proaktivně provádět aktivní akce, než dojde k incidentu, nebo reaktivní akce k zastavení pokusu o útok. Security Center například můžou označovat zastaralé účty (účty, které už nepotřebujete, a zablokovat přihlášení pomocí Azure Active Directory) k odebrání. 
 
-Příklady doporučení, která se mohou zobrazit v části Zabezpečení **prostředků identity a přístupu** v Centru zabezpečení Azure, zahrnují:
+Příklady doporučení, která se můžou zobrazit v části Azure Security Center **Identita a přístup k** prostředkům zabezpečení, zahrnují:
 
-- Vícefaktorové informace by měly být povoleny u účtů s oprávněními vlastníka k vašemu předplatnému.
-- Pro vaše předplatné by měli být určeni maximálně 3 vlastníci.
-- Z předplatného by měly být odebrány externí účty s oprávněním ke čtení.
-- Zastaralé účty by měly být odebrány z vašeho předplatného
+- Pro účty s oprávněním vlastníka pro vaše předplatné by se měla povolit vícefaktorové ověřování.
+- Pro vaše předplatné by se mělo určit maximálně 3 vlastníci.
+- Z vašeho předplatného by se měly odebrat externí účty s oprávněním ke čtení.
+- Zastaralé účty by se měly odebírat z předplatného.
 
-Další informace o těchto doporučeních a úplný seznam doporučení, která se mohou zobrazit zde, naleznete v [tématu Doporučení pro identitu a přístup](recommendations-reference.md#recs-identity).
+Další informace o těchto doporučeních a úplném seznamu doporučených doporučení najdete v tématu [věnovaném doporučením pro identitu a přístup](recommendations-reference.md#recs-identity).
 
 > [!NOTE]
-> Pokud vaše předplatné obsahuje více než 600 účtů, Security Center nemůže spustit doporučení identity proti předplatnému. Doporučení, která nejsou spuštěna, jsou uvedena v části "nedostupná hodnocení" níže.
-Security Center nemůže spustit doporučení identity proti agentům správce partnera cloudového řešení (CSP).
+> Pokud má vaše předplatné více než 600 účtů, Security Center není možné spustit doporučení identity pro vaše předplatné. Doporučení, která nejsou spuštěná, jsou uvedená v části "nedostupná posouzení" níže.
+Security Center není možné spustit doporučení identity pro agenty správce Cloud Solution Provider (CSP).
 >
 
 
-Všechna doporučení pro identitu a přístup jsou k dispozici v rámci dvou ovládacích prvků zabezpečení na stránce **Doporučení:**
+Všechna doporučení pro identitu a přístup jsou k dispozici ve dvou ovládacích prvcích zabezpečení na stránce **doporučení** :
 
 - Správa přístupu a oprávnění 
 - Povolení MFA
 
-![Dvě bezpečnostní kontroly s doporučeními týkajícími se identity a přístupu](media/security-center-identity-access/two-security-controls-for-identity-and-access.png)
+![Dva bezpečnostní prvky zabezpečení s doporučeními souvisejícími s identitou a přístupem](media/security-center-identity-access/two-security-controls-for-identity-and-access.png)
 
 
-## <a name="enable-multi-factor-authentication-mfa"></a>Povolit vícefaktorové ověřování (MFA)
+## <a name="enable-multi-factor-authentication-mfa"></a>Povolit službu Multi-Factor Authentication (MFA)
 
-Povolení vícefaktorové informace vyžaduje [oprávnění klienta služby Azure Active Directory (AD).](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) 
+Povolení MFA vyžaduje [oprávnění klienta Azure Active Directory (AD)](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles). 
 
-- Pokud máte prémiovou edici služby AD, povolte vícefaktorové povolení pomocí [podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/conditional-access/overview).
+- Pokud máte edici Premium ve službě AD, povolte vícefaktorové ověřování pomocí [podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/conditional-access/overview).
 
-- Uživatelé edice AD free edition můžou ve službě Azure Active Directory povolit **výchozí nastavení zabezpečení,** jak je popsáno v [dokumentaci služby AD,](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults) ale doporučení Centra zabezpečení pro povolení vícefaktorového přístupu se stále zobrazí.
+- Uživatelé edice Free můžou povolit **výchozí hodnoty zabezpečení** v Azure Active Directory, jak je popsáno v [dokumentaci AD](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults) , ale doporučení pro Security Center povolení vícefaktorového ověřování se pořád projeví.
 
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o doporučeních, která platí pro jiné typy prostředků Azure, najdete v následujících článcích:
+Další informace o doporučeních, která se vztahují na jiné typy prostředků Azure, najdete v následujících článcích:
 
 - [Ochrana počítačů a aplikací ve službě Azure Security Center](security-center-virtual-machine-protection.md)
 - [Ochrana sítě pomocí Azure Security Center](security-center-network-recommendations.md)
-- [Ochrana služby Azure SQL a dat v Azure Security Center](security-center-sql-service-recommendations.md)
+- [Ochrana dat a služby SQL Azure v Azure Security Center](security-center-sql-service-recommendations.md)

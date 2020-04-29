@@ -1,5 +1,5 @@
 ---
-title: Vyrovnávání zatížení virtuálních počítače v rámci zóny – Azure CLI
+title: Vyrovnávání zatížení virtuálních počítačů v rámci zóny – Azure CLI
 description: Tento ukázkový skript Azure CLI provádí vyrovnávání zatížení provozu na virtuálních počítačích v rámci konkrétní zóny dostupnosti
 services: load-balancer
 documentationcenter: load-balancer
@@ -15,13 +15,13 @@ ms.workload: infrastructure
 ms.date: 06/14/2018
 ms.author: allensu
 ms.openlocfilehash: 0ae159b57a89b4238d52d178d59cb79b452e0411
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79214545"
 ---
-# <a name="azure-cli-script-example-load-balance-traffic-to-vms-within-a-specific-availability-zone"></a>Příklad skriptu Azure CLI: Provoz vyrovnávání zatížení na virtuální počítače v rámci určité zóny dostupnosti
+# <a name="azure-cli-script-example-load-balance-traffic-to-vms-within-a-specific-availability-zone"></a>Ukázkový skript Azure CLI: Vyrovnávání zatížení provozu na virtuální počítače v rámci konkrétní zóny dostupnosti
 
 Tento ukázkový skript Azure CLI vytvoří vše potřebné pro spuštění několika virtuálních počítačů s Ubuntu v konfiguraci s vysokou dostupností a vyrovnáváním zatížení v rámci konkrétní zóny dostupnosti. Po spuštění skriptu budete mít v jedné zóně dostupnosti v rámci oblasti tři virtuální počítače, které budou přístupné přes službu Azure Standard Load Balancer. 
 

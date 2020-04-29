@@ -1,46 +1,46 @@
 ---
-title: Posouzení fyzických serverů pro migraci do Azure pomocí azure migrate server assessment
-description: Popisuje, jak posoudit místní fyzické servery pro migraci do Azure pomocí Azure Migrate Server Assessment.
+title: Posouzení fyzických serverů pro migraci do Azure pomocí posouzení serveru Azure Migrate
+description: Popisuje postup vyhodnocení místních fyzických serverů pro migraci do Azure pomocí Azure Migrate posouzení serveru.
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.openlocfilehash: b36cba18bd154cd5d14e16a9f8bf85cda6bf87a8
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81535430"
 ---
-# <a name="assess-physical-servers-with-azure-migrateserver-assessment"></a>Posouzení fyzických serverů pomocí Azure Migrate:Vyhodnocení serveru
+# <a name="assess-physical-servers-with-azure-migrateserver-assessment"></a>Vyhodnotit fyzické servery pomocí Azure Migrate: posouzení serveru
 
-Tento článek ukazuje, jak posoudit místní fyzické servery pomocí nástroje Azure Migrate:Server Assessment.
+V tomto článku se dozvíte, jak pomocí nástroje Azure Migrate: Server Assessment Tool zhodnotit místní fyzické servery.
 
-[Azure Migrate](migrate-services-overview.md) poskytuje centrum nástrojů, které vám pomůžou objevovat, vyhodnocovat a migrovat aplikace, infrastrukturu a úlohy do Microsoft Azure. Centrum obsahuje nástroje pro migraci Azure a nabídky nezávislého dodavatele softwaru (ISV) od jiných výrobců.
+[Azure Migrate](migrate-services-overview.md) poskytuje centrum nástrojů, které vám pomůžou zjišťovat, vyhodnocovat a migrovat aplikace, infrastrukturu a úlohy do Microsoft Azure. Centrum zahrnuje nástroje pro Azure Migrate a nabídky nezávislého výrobce softwaru (ISV) od jiných výrobců.
 
-Tento kurz je druhý v řadě, který ukazuje, jak posoudit a migrovat fyzické servery do Azure. V tomto kurzu se naučíte:
+Tento kurz je druhý v řadě, který ukazuje, jak vyhodnocovat a migrovat fyzické servery do Azure. V tomto kurzu se naučíte:
 > [!div class="checklist"]
-> * Nastavte projekt Migrace Azure.
-> * Nastavte zařízení Azure Migrate, které běží místně k posouzení fyzických serverů.
-> * Spusťte průběžné zjišťování místních fyzických serverů. Zařízení odesílá data o konfiguraci a výkonu zjištěných serverů do Azure.
-> * Seskupení zjištěných serverů a vyhodnocení skupiny serverů.
-> * Přezkoumat hodnocení.
+> * Nastavte Azure Migrate projekt.
+> * Nastavte Azure Migrate zařízení, které běží místně, aby posoudilo fyzické servery.
+> * Spusťte nepřetržité zjišťování místních fyzických serverů. Zařízení odesílá údaje o konfiguraci a výkonu pro zjištěné servery do Azure.
+> * Seskupit zjištěné servery a vyhodnotit skupinu serverů.
+> * Projděte si posouzení.
 
 > [!NOTE]
-> Kurzy ukazují nejjednodušší cestu nasazení pro scénář, takže můžete rychle nastavit proof-of-concept. Kurzy používají výchozí možnosti tam, kde je to možné, a nezobrazují všechna možná nastavení a cesty. Podrobné pokyny naleznete v článcích s postupy.
+> Kurzy vám ukážou nejjednodušší cestu nasazení pro scénář, abyste mohli rychle nastavit zkušební verzi. Kurzy používají výchozí možnosti, pokud je to možné, a nezobrazují všechna možná nastavení a cesty. Podrobné pokyny najdete v článcích s postupy.
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/pricing/free-trial/) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) před tím, než začnete.
 
 
 ## <a name="prerequisites"></a>Požadavky
 
-- [Dokončete](tutorial-prepare-physical.md) první kurz v této sérii. Pokud tak nechcete, pokyny v tomto kurzu nebude fungovat.
-- Zde je to, co jste měli udělat v prvním tutoriálu:
-    - [Nastavte oprávnění Azure](tutorial-prepare-physical.md) pro Migraci Azure.
-    - [Připravte fyzické servery](tutorial-prepare-physical.md#prepare-for-physical-server-assessment) k posouzení. Požadavky na spotřebič by měly být ověřeny. Měli byste mít také účet nastaven pro zjišťování fyzického serveru. Požadované porty by měly být k dispozici a měli byste si být vědomi adres URL potřebných pro přístup k Azure.
+- [Dokončete](tutorial-prepare-physical.md) první kurz v této sérii. Pokud to neuděláte, pokyny v tomto kurzu nebudou fungovat.
+- Tady je seznam toho, co byste měli udělat v prvním kurzu:
+    - [Nastavte oprávnění Azure](tutorial-prepare-physical.md) pro Azure Migrate.
+    - [Připravte fyzické servery](tutorial-prepare-physical.md#prepare-for-physical-server-assessment) na posouzení. Je třeba ověřit požadavky na zařízení. Měli byste mít také nastavený účet pro zjišťování fyzického serveru. Požadované porty by měly být k dispozici a měli byste si uvědomit o adresách URL potřebných pro přístup k Azure.
 
 
 
 
-## <a name="set-up-an-azure-migrate-project"></a>Nastavení projektu migrace Azure
+## <a name="set-up-an-azure-migrate-project"></a>Nastavení Azure Migrateho projektu
 
 Následujícím způsobem nastavte nový projekt Azure Migrate.
 
@@ -48,246 +48,246 @@ Následujícím způsobem nastavte nový projekt Azure Migrate.
 2. V části **Služby** vyberte **Azure Migrate**.
 3. Na stránce **Přehled** v části **Zjistit, posoudit a migrovat servery** klikněte na **Posoudit a migrovat servery**.
 
-    ![Zjišťování a posuzování serverů](./media/tutorial-assess-physical/assess-migrate.png)
+    ![Zjišťování a vyhodnocení serverů](./media/tutorial-assess-physical/assess-migrate.png)
 
 4. V části **Začínáme** klikněte na **Přidat nástroje**.
 5. V části **Projekt migrace** vyberte své předplatné Azure a vytvořte skupinu prostředků, pokud ji ještě nemáte.  
-6. V **části Podrobnosti projektu**zadejte název projektu a zeměpisnou polohu, ve které chcete projekt vytvořit. Zkontrolujte podporované zeměpisné oblasti pro [veřejné](migrate-support-matrix.md#supported-geographies-public-cloud) a [vládní cloudy](migrate-support-matrix.md#supported-geographies-azure-government).
+6. V části **Project Details (podrobnosti projektu**) zadejte název projektu a zeměpisnou oblast, ve které chcete vytvořit projekt. Projděte si podporované geografické oblasti pro cloudy [veřejné](migrate-support-matrix.md#supported-geographies-public-cloud) a [státní správy](migrate-support-matrix.md#supported-geographies-azure-government).
 
-    - Zeměpis projektu se používá pouze k ukládání metadat shromážděných z místních serverů.
+    - Zeměpisná oblast projektu se používá jenom k ukládání metadat shromážděných z místních serverů.
     - Při spouštění migrace můžete vybrat jakoukoli cílovou oblast.
 
-    ![Vytvoření projektu migrace Azure](./media/tutorial-assess-physical/migrate-project.png)
+    ![Vytvoření projektu Azure Migrate](./media/tutorial-assess-physical/migrate-project.png)
 
 
 7. Klikněte na **Další**.
-8. V **nástroji Pro výběr vyberte**možnost Migrace **Azure: Vyhodnocení serveru** > **Další**.
+8. V **nástroji vybrat nástroj pro posouzení**vyberte **Azure Migrate: vyhodnocení** > serveru**Další**.
 
-    ![Vytvoření projektu migrace Azure](./media/tutorial-assess-physical/assessment-tool.png)
+    ![Vytvoření projektu Azure Migrate](./media/tutorial-assess-physical/assessment-tool.png)
 
 9. V části **Vybrat nástroj pro migraci** vyberte **V tuto chvíli přeskočit přidání nástroje pro migraci** > **Další**.
-10. V **části Revize + přidat nástroje**zkontrolujte nastavení a klepněte na přidat **nástroje**.
+10. V části **Revize + přidat nástroje**zkontrolujte nastavení a klikněte na **Přidat nástroje**.
 11. Počkejte několik minut, než se projekt Azure Migrate nasadí. Budete přesměrováni na stránku projektu. Pokud se projekt nezobrazí, můžete k němu přejít z části **Servery** na řídicím panelu služby Azure Migrate.
 
 
-## <a name="set-up-the-appliance"></a>Nastavte přístroj
+## <a name="set-up-the-appliance"></a>Nastavení zařízení
 
-Migrace Azure: Vyhodnocení serveru spouští zjednodušené zařízení.
+Azure Migrate: posouzení serveru spouští odlehčené zařízení.
 
-- Toto zařízení provádí zjišťování fyzického serveru a odesílá metadata serveru a data o výkonu do Azure Migrate Server Assessment.
-- Chcete-li přístroj nastavit, tak:
-    - Stáhněte si zip soubor s instalačním skriptem Azure Migrate z webu Azure Portal.
-    - Extrahujte obsah ze souboru zip. Spusťte konzolu PowerShell s oprávněními správce.
-    - Spusťte skript Prostředí PowerShell a spusťte webovou aplikaci zařízení.
-    - Nakonfigurujte zařízení poprvé a zaregistrujte ho pomocí projektu Azure Migrate.
-- Můžete nastavit více zařízení pro jeden projekt Migrace Azure. Ve všech zařízeních můžete zjistit libovolný počet fyzických serverů. Na jedno zařízení lze objevit maximálně 250 serverů.
+- Toto zařízení provádí zjišťování fyzického serveru a odesílá údaje o metadatech a výkonu serveru pro Azure Migrate posouzení serveru.
+- Nastavení zařízení:
+    - Stáhněte si soubor ZIP pomocí skriptu Azure Migrate Installer z Azure Portal.
+    - Extrahujte obsah ze souboru ZIP. Spusťte konzolu PowerShellu s oprávněními správce.
+    - Spusťte skript prostředí PowerShell pro spuštění webové aplikace zařízení.
+    - Nakonfigurujete zařízení poprvé a zaregistrujete ho do projektu Azure Migrate.
+- Pro jeden Azure Migrate projekt můžete nastavit více zařízení. U všech zařízení můžete zjistit libovolný počet fyzických serverů. Pro každé zařízení je možné zjistit maximálně 250 serverů.
 
 ### <a name="download-the-installer-script"></a>Stažení instalačního skriptu
 
-Stáhněte si zip soubor pro zařízení.
+Stáhněte si soubor zip pro zařízení.
 
-1. V **serverech cílů** > **migrace, které** > **Azure migruje: Vyhodnocení serveru**, klepněte na tlačítko **Objevit**.
-2. V **discover strojích** > **Jsou vaše počítače virtualizované?**, klikněte na **Není virtualizováno/Jiné**.
-3. Chcete-li stáhnout soubor zip, klepněte na tlačítko **Stáhnout.**
+1. V Azure Migrate **cíle** > migrace na**servery** > **: vyhodnocování serveru**klikněte na **zjistit**.
+2. V nabídce **zjistit** > počítače**jsou vaše počítače virtualizované?** klikněte na **nevirtualizované/jiné**.
+3. Kliknutím na **Stáhnout** Stáhněte soubor zip.
 
-    ![Stáhnout instalační program](./media/tutorial-assess-physical/download-appliance.png)
+    ![Stažení instalačního programu](./media/tutorial-assess-physical/download-appliance.png)
 
 
-### <a name="verify-security"></a>Ověření zabezpečení
+### <a name="verify-security"></a>Ověřit zabezpečení
 
-Před nasazením zkontrolujte, zda je soubor zip zabezpečený.
+Před nasazením souboru ZIP ověřte, zda je soubor zip zabezpečený.
 
 1. Na počítači, do kterého jste soubor stáhli, otevřete jako správce příkazový řádek.
-2. Spusťte následující příkaz pro generování hash pro soubor zip:
+2. Spusťte následující příkaz, který vygeneruje hodnotu hash pro soubor zip:
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - Příklad využití pro veřejný cloud:```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256 ```
-    - Příklad využití pro vládní cloud:```  C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip MD5 ```
-3.  Ověřte hodnoty hash:
+    - Příklad použití pro veřejný cloud:```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256 ```
+    - Příklad použití pro oficiální Cloud:```  C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip MD5 ```
+3.  Ověřit hodnoty hash:
  
     - Pro veřejný cloud (pro nejnovější verzi zařízení):
 
         **Algoritmus** | **Hodnota hash**
           --- | ---
           MD5 | 1e92ede3e87c03bd148e56a708cdd33f
-          SHA256 | a3fa78edc8ff8aff9ab5ae66be1b64e6de7b9f475b6542beef114b20bfdac3c
+          SHA256 | a3fa78edc8ff8aff9ab5ae66be1b64e66de7b9f475b6542beef114b20bfdac3c
 
-    - Pro azure government (pro nejnovější verzi zařízení):
+    - Pro vládu Azure (pro nejnovější verzi zařízení):
 
         **Algoritmus** | **Hodnota hash**
           --- | ---
           MD5 | f81c155fc4a1409901caea948713913f
 
-### <a name="run-the-azure-migrate-installer-script"></a>Spuštění skriptu instalačního programu Azure Migrate
+### <a name="run-the-azure-migrate-installer-script"></a>Spusťte skript instalačního programu Azure Migrate
 
-Instalační skript provádí následující akce:
+Skript instalačního programu provede následující akce:
 
-- Nainstaluje agenty a webovou aplikaci pro zjišťování a hodnocení fyzického serveru.
-- Nainstalujte role systému Windows, včetně služby aktivace systému Windows, služby IIS a prostředí PowerShell ISE.
-- Stáhněte a nainstaluje modul s přepychovým službou IIS. [Další informace](https://www.microsoft.com/download/details.aspx?id=7435).
-- Aktualizuje klíč registru (HKLM) s trvalými podrobnostmi o nastavení pro Azure Migrate.
-- Vytvoří pod cestou následující soubory:
-    - **Soubory konfigurace**: %Programdata%\Microsoft Azure\Config
-    - **Soubory protokolu**: %Programdata%\Microsoft Azure\Protokoly
+- Nainstaluje agenty a webovou aplikaci pro zjišťování a hodnocení fyzických serverů.
+- Nainstalujte role Windows, včetně aktivační služby Windows, služby IIS a prostředí PowerShell ISE.
+- Stáhněte a nainstalujte zapisovatelný modul IIS. [Další informace](https://www.microsoft.com/download/details.aspx?id=7435).
+- Aktualizuje klíč registru (HKLM) o trvalé podrobnosti nastavení pro Azure Migrate.
+- Vytvoří následující soubory pod cestou:
+    - **Konfigurační soubory**:%ProgramData%\Microsoft Azure\Config
+    - **Soubory protokolu**:%ProgramData%\Microsoft Azure\Logs
 
-Spusťte skript takto:
+Spusťte skript následujícím způsobem:
 
-1. Extrahujte soubor zip do složky na serveru, která bude hostitelem zařízení.  Ujistěte se, že nespustíte skript na počítači na existujícízařízení Azure Migrate.
-2. Spusťte prostředí PowerShell na výše uvedeném serveru s oprávněním správce (se zvýšenými oprávněními).
-3. Změňte adresář prostředí PowerShell na složku, do které byl obsah extrahován ze staženého zipového souboru.
-4. Spusťte skript s názvem **AzureMigrateInstaller.ps1** spuštěním následujícího příkazu:
+1. Extrahujte soubor zip do složky na serveru, který bude hostitelem zařízení.  Ujistěte se, že nespouštíte skript na počítači v existujícím zařízení Azure Migrate.
+2. Na výše uvedeném serveru s oprávněním správce (zvýšené) spusťte PowerShell.
+3. Změňte adresář PowerShellu na složku, do které byl obsah extrahován ze staženého souboru ZIP.
+4. Spusťte skript s názvem **AzureMigrateInstaller. ps1** spuštěním následujícího příkazu:
 
     - Pro veřejný cloud:``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1 ```
     - Pro Azure Government:``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-Server-USGov>AzureMigrateInstaller.ps1 ```
 
-    Skript spustí webové aplikace zařízení po úspěšném dokončení.
+    Skript spustí webovou aplikaci zařízení po úspěšném dokončení.
 
-Pokud narazíte na nějaké problémy, můžete získat přístup k protokolům skriptů na adrese C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Timestamp</em>.log pro řešení potíží.
+Pokud přecházíte mezi všemi problémy, získáte přístup k protokolům skriptu na adrese C:\ProgramData\Microsoft Azure\Logs\ AzureMigrateScenarioInstaller_<em>timestamp</em>. log pro řešení potíží.
 
 ### <a name="verify-appliance-access-to-azure"></a>Ověření přístupu zařízení k Azure
 
-Ujistěte se, že se zařízení může připojit k adresám URL Azure pro [veřejné](migrate-appliance.md#public-cloud-urls) a [vládní](migrate-appliance.md#government-cloud-urls) cloudy.
+Ujistěte se, že se zařízení může připojit k adresám URL Azure pro cloudy [veřejné](migrate-appliance.md#public-cloud-urls) a [státní správy](migrate-appliance.md#government-cloud-urls) .
 
 
 ### <a name="configure-the-appliance"></a>Konfigurace zařízení
 
-Přístroj nastavte poprvé.
+Nastavte zařízení poprvé.
 
-1. Otevřete prohlížeč na libovolném počítači, který se může připojit k zařízení, a otevřete adresu URL webové aplikace zařízení: **https:// název zařízení nebo IP*adresu*: 44368**.
+1. Otevřete prohlížeč na jakémkoli počítači, který se může připojit k zařízení, a otevřete adresu URL webové aplikace zařízení: ***název zařízení https://nebo IP adresa*: 44368**.
 
-   Případně můžete aplikaci otevřít z plochy kliknutím na zástupce aplikace.
-2. Ve webové aplikaci > **Nastavení požadavků**postupujte takto:
-    - **Licence**: Přijměte licenční podmínky a přečtěte si informace třetích stran.
-    - **Připojení**: Aplikace zkontroluje, zda má server přístup k internetu. Pokud server používá proxy server:
-        - Klepněte na **položku Nastavení proxy serveru**a http://ProxyIPAddress zadejte adresu proxy a port pro naslouchání ve formuláři nebo http://ProxyFQDN.
+   Alternativně můžete aplikaci otevřít z plochy kliknutím na zástupce aplikace.
+2. Ve webové aplikaci > **nastavení požadavků**postupujte takto:
+    - **Licence**: přijměte licenční podmínky a přečtěte si informace třetích stran.
+    - **Připojení**: aplikace kontroluje, jestli má server přístup k Internetu. Pokud server používá proxy server:
+        - Klikněte na **nastavení proxy serveru**a zadejte adresu proxy serveru a port naslouchání ve formuláři http://ProxyIPAddress nebo http://ProxyFQDN.
         - Pokud proxy server potřebuje přihlašovací údaje, zadejte je.
         - Podporuje se jen proxy protokolu HTTP.
-    - **Synchronizace času**: Čas je ověřen. Čas na zařízení by měl být synchronizován s časem internetu, aby zjišťování serveru fungovalo správně.
-    - **Aktualizace instalace**: Azure Migrate Server Assessment zkontroluje, zda má zařízení nainstalovány nejnovější aktualizace.
+    - **Časová synchronizace**: čas je ověřený. Čas v zařízení by měl být synchronizovaný s internetovým časem, aby zjišťování serveru fungovalo správně.
+    - **Instalovat aktualizace**: posouzení Azure Migrate serveru kontroluje, jestli má zařízení nainstalované nejnovější aktualizace.
 
-### <a name="register-the-appliance-with-azure-migrate"></a>Registrace zařízení pomocí Migrace Azure
+### <a name="register-the-appliance-with-azure-migrate"></a>Zaregistrovat zařízení ve Azure Migrate
 
-1. Klepněte na tlačítko **Přihlásit se**. Pokud se nezobrazí, ujistěte se, že jste v prohlížeči zakázali blokování automaticky otevíraných míst.
-2. Na nové kartě se přihlaste pomocí přihlašovacích údajů Azure.
+1. Klikněte na **Přihlásit se**. Pokud se nezobrazí, ujistěte se, že jste v prohlížeči zakázali blokování automaticky otevíraných oken.
+2. Na nové kartě se přihlaste pomocí svých přihlašovacích údajů Azure.
     - Přihlaste se pomocí svého uživatelského jména a hesla.
-    - Přihlášení pomocí kódu PIN není podporováno.
-3. Po úspěšném přihlášení se vraťte do webové aplikace.
-4. Vyberte předplatné, ve kterém byl vytvořen projekt Migrace Azure. Pak vyberte projekt.
-5. Zadejte název zařízení. Název by měl být alfanumerický s 14 znaky nebo méně.
-6. Klepněte na tlačítko **Registrovat**.
+    - Přihlášení pomocí PIN kódu se nepodporuje.
+3. Po úspěšném přihlášení se vraťte k webové aplikaci.
+4. Vyberte předplatné, ve kterém byl vytvořen Azure Migrate projekt. Pak vyberte projekt.
+5. Zadejte název zařízení. Název by měl být alfanumerický a nesmí obsahovat více než 14 znaků.
+6. Klikněte na **zaregistrovat**.
 
 
-## <a name="start-continuous-discovery"></a>Spuštění průběžného zjišťování
+## <a name="start-continuous-discovery"></a>Spustit průběžné zjišťování
 
-Nyní se připojte ze zařízení k fyzickým serverům, které mají být objeveny, a spusťte zjišťování.
+Nyní se z zařízení připojte k fyzickým serverům, které se mají zjistit, a spusťte zjišťování.
 
-1. Kliknutím na **Přidat pověření** určete přihlašovací údaje účtu, které bude zařízení používat ke zjišťování serverů.  
-2. Zadejte **operační systém**, popisný název pověření a uživatelské jméno a heslo. Pak klikněte na **Přidat**.
-Můžete přidat jednu sadu pověření pro servery Windows a Linux.
-4. Klepněte na tlačítko **Přidat server**a zadejte podrobnosti o serveru – adresa FQDN/IP a popisný název pověření (jedna položka na řádek) pro připojení k serveru.
-3. Klikněte na **Validate** (Ověřit). Po ověření je zobrazen seznam serverů, které lze zjistit.
-    - Pokud se ověření serveru nezdaří, zkontrolujte chybu umístěním na ikonu ve sloupci **Stav.** Opravte problémy a znovu ověřte.
-    - Chcete-li odebrat server, vyberte možnost > **Odstranit**.
-4. Po ověření klikněte na **Uložit a spusťte zjišťování** a spusťte proces zjišťování.
+1. Klikněte na **Přidat přihlašovací údaje** a zadejte přihlašovací údaje účtu, které zařízení použije k zjišťování serverů.  
+2. Zadejte **operační systém**, popisný název přihlašovacích údajů a uživatelské jméno a heslo. Pak klikněte na **Přidat**.
+Každé pro servery se systémem Windows a Linux můžete přidat jednu sadu přihlašovacích údajů.
+4. Klikněte na **Přidat server**a zadejte podrobnosti o serveru – plně kvalifikovaný název domény/IP adresa a popisný název přihlašovacích údajů (jedna položka na řádek) pro připojení k serveru.
+3. Klikněte na **Validate** (Ověřit). Po ověření se zobrazí seznam serverů, které se dají zjistit.
+    - Pokud se ověření serveru nepovede, zkontrolujte chybu přesunutím ukazatele myši na ikonu ve sloupci **stav** . Opravte problémy a znovu ověřte.
+    - Pokud chcete odebrat server, vyberte > **Odstranit**.
+4. Po ověření klikněte na **Uložit a spusťte zjišťování a** spusťte proces zjišťování.
 
-Tím se spustí zjišťování. Trvá přibližně 1,5 minuty na server, než se metadata zjištěného serveru zobrazí na webu Azure Portal.
+Spustí se zjišťování. Vybere se přibližně 1,5 minut na server, aby se metadata zjištěného serveru zobrazovala v Azure Portal.
 
-### <a name="verify-servers-in-the-portal"></a>Ověření serverů na portálu
+### <a name="verify-servers-in-the-portal"></a>Ověřit servery na portálu
 
-Po zjišťování můžete ověřit, že se servery zobrazují na webu Azure Portal.
+Po zjištění můžete ověřit, že se servery zobrazují v Azure Portal.
 
-1. Otevřete řídicí panel Migrace Azure.
-2. V **Azure Migrate – servery, které** > **Azure migruje:** Stránka Vyhodnocení serveru, klikněte na ikonu, která zobrazuje počet **zjištěných serverů**.
+1. Otevřete řídicí panel Azure Migrate.
+2. V **Azure Migrate-servery** > **Azure Migrate: na stránce posouzení serveru** klikněte na ikonu, která zobrazuje počet **zjištěných serverů**.
 
-## <a name="set-up-an-assessment"></a>Nastavení hodnocení
+## <a name="set-up-an-assessment"></a>Nastavení posouzení
 
-Existují dva typy hodnocení, které můžete vytvořit pomocí Migrace Azure: Vyhodnocení serveru.
+Existují dva typy hodnocení, které můžete vytvořit pomocí Azure Migrate: posouzení serveru.
 
-**Posouzení** | **Podrobnosti** | **Data**
+**Posouzení** | **Zobrazí** | **Data**
 --- | --- | ---
-**Na základě výkonu** | Hodnocení založená na shromážděných údajích o výkonnosti | **Doporučená velikost virtuálního počítače:** Na základě dat o využití procesoru a paměti.<br/><br/> **Doporučený typ disku (standardní nebo prémiový spravovaný disk):** Na základě vodítek viopa a propustnost místních disků.
-**Jako místní** | Hodnocení založená na místním dimenzování. | **Doporučená velikost virtuálního počítače:** Na základě velikosti místního serveru<br/><br> **Doporučený typ disku**: Na základě nastavení typu úložiště, které vyberete pro posouzení.
+**Na základě výkonu** | Posouzení na základě shromážděných dat o výkonu | **Doporučená velikost virtuálního počítače**: na základě dat využití procesoru a paměti.<br/><br/> **Doporučený typ disku (spravovaný disk Standard nebo Premium)**: na základě vstupně-výstupních operací a propustnosti místních disků.
+**Jako místní** | Posouzení na základě místních velikostí. | **Doporučená velikost virtuálního počítače**: na základě velikosti místního serveru<br/><br> **Doporučený typ disku**: na základě nastavení typu úložiště, které jste vybrali pro posouzení.
 
 
 ### <a name="run-an-assessment"></a>Spuštění posouzení
 
-Spusťte hodnocení takto:
+Proveďte posouzení následujícím způsobem:
 
 1. Projděte si [osvědčené postupy](best-practices-assessment.md) pro vytváření hodnocení.
-2. Na kartě **Servery** klikněte na dlaždici **Azure Migrate: Server Assessment** na **Assess**.
+2. Na kartě **servery** na dlaždici **Azure Migrate: vyhodnocování serveru** klikněte na možnost **vyhodnotit**.
 
     ![Posouzení](./media/tutorial-assess-physical/assess.png)
 
-2. V **poli Posoudit servery**zadejte název hodnocení.
+2. V poli **vyhodnotit servery**zadejte název posouzení.
 3. Kliknutím na **Zobrazit vše** zobrazíte vlastnosti posouzení.
 
     ![Vlastnosti posouzení](./media/tutorial-assess-physical/view-all.png)
 
-3. V **poli Vybrat nebo vytvořit skupinu**vyberte Vytvořit **nový**a zadejte název skupiny. Skupina shromažďuje jeden nebo více serverů společně pro posouzení.
-4. V **části Přidat počítače do skupiny**vyberte servery, které chcete přidat do skupiny.
-5. Kliknutím na **Vytvořit hodnocení** vytvořte skupinu a spusťte hodnocení.
+3. V **Vyberte nebo vytvořte skupinu**vyberte **vytvořit novou**a zadejte název skupiny. Skupina shromažďuje jeden nebo více serverů dohromady pro posouzení.
+4. V části **přidat počítače do skupiny**vyberte servery, které chcete přidat do skupiny.
+5. Kliknutím na **vytvořit posouzení** vytvořte skupinu a spusťte posouzení.
 
     ![Vytvoření posouzení](./media/tutorial-assess-physical/assessment-create.png)
 
-6. Po vytvoření hodnocení jej zobrazte v **části Servery, které** > **Azure migruje: Hodnocení hodnocení** > **serveru**.
+6. Po vytvoření posouzení ho zobrazte na stránce **servery** > **Azure Migrate:** > **vyhodnocení**vyhodnocení serveru.
 7. Klikněte na **Exportovat posouzení** a stáhněte ho jako excelový soubor.
 
 
 
-## <a name="review-an-assessment"></a>Přezkoumat posouzení
+## <a name="review-an-assessment"></a>Kontrola posouzení
 
-Hodnocení popisuje:
+Posouzení popisuje:
 
-- **Připravenost Azure**: Jestli jsou servery vhodné pro migraci do Azure.
-- **Měsíční odhad nákladů**: Odhadované měsíční náklady na výpočetní výkon a úložiště pro spouštění serverů v Azure.
-- Měsíční odhad nákladů na úložiště : Odhadované náklady na diskové úložiště po **migraci.**
+- **Připravenost na Azure**: jestli jsou servery vhodné pro migraci do Azure.
+- **Odhad měsíčních nákladů**: Odhadované měsíční náklady na výpočetní prostředky a úložiště pro provoz serverů v Azure.
+- **Odhad měsíčních nákladů na úložiště**: Odhadované náklady na diskové úložiště po migraci.
 
-### <a name="view-an-assessment"></a>Zobrazit hodnocení
+### <a name="view-an-assessment"></a>Zobrazit posouzení
 
-1. V**oblasti serverů** **cílů** >  migrace klikněte na **Hodnocení** v **Azure Migrate: Server Assessment**.
-2. V **hodnocení**, klikněte na hodnocení otevřít.
+1. V případě **migrace** >  na**serverech**klikněte na **posouzení** v **Azure Migrate: posouzení serveru**.
+2. V **posouzení**klikněte na posouzení a otevřete ho.
 
-    ![Shrnutí hodnocení](./media/tutorial-assess-physical/assessment-summary.png)
+    ![Souhrn posouzení](./media/tutorial-assess-physical/assessment-summary.png)
 
-### <a name="review-azure-readiness"></a>Kontrola připravenosti Azure
+### <a name="review-azure-readiness"></a>Kontrola připravenosti na Azure
 
-1. V **připravenosti Azure**ověřte, jestli jsou servery připravené k migraci do Azure.
+1. V části **připravenost na Azure**ověřte, jestli jsou servery připravené na migraci do Azure.
 2. Zkontrolujte stav:
-    - **Připraveno pro Azure**: Azure Migrate doporučuje odhady velikosti virtuálních počítače a nákladů pro virtuální počítače v hodnocení.
-    - **Připraveno s podmínkami**: Zobrazuje problémy a navrhovanou nápravu.
-    - **Není připraven pro Azure**: Zobrazuje problémy a navrhované nápravy.
-    - **Připravenost neznámý**: Používá se v případě, že Azure Migrate nemůže posoudit připravenost, z důvodu problémů s dostupností dat.
+    - **Připraveno pro Azure**: Azure Migrate doporučuje velikost virtuálního počítače a odhad nákladů pro virtuální počítače ve vyhodnocování.
+    - **Připraveno s podmínkami**: zobrazuje problémy a navrhovanou nápravu.
+    - **Nepřipraveno pro Azure**: zobrazuje problémy a navrhovanou nápravu.
+    - **Připravenost neznámá**: používá se, když Azure Migrate nedokáže vyhodnotit připravenost kvůli problémům s dostupností dat.
 
-2. Klikněte na stav **připravenosti Azure.** Můžete zobrazit podrobnosti o připravenosti serveru a přejít k podrobnostem o serveru, včetně výpočetních, úložných a síťových nastavení.
+2. Klikněte na stav **připravenosti na Azure** . Můžete zobrazit podrobnosti o připravenosti serveru a přejít k podrobnostem a zobrazit podrobnosti o serveru, včetně výpočetních prostředků, úložiště a nastavení sítě.
 
 
 
-### <a name="review-cost-details"></a>Zkontrolovat podrobnosti o nákladech
+### <a name="review-cost-details"></a>Podrobnosti o kontrole nákladů
 
-Toto zobrazení zobrazuje odhadované náklady na výpočetní prostředky a úložiště pro spouštění virtuálních počítačů v Azure.
+Toto zobrazení ukazuje odhadované náklady na výpočetní prostředky a úložiště pro provozování virtuálních počítačů v Azure.
 
-1. Zkontrolujte měsíční náklady na výpočetní prostředky a úložiště. Náklady jsou agregovány pro všechny servery v posuzované skupině.
+1. Projděte si měsíční náklady na výpočetní prostředky a úložiště. Náklady se sčítají pro všechny servery v hodnocené skupině.
 
-    - Odhady nákladů jsou založeny na doporučení velikosti pro počítač a jeho disky a vlastnosti.
-    - Jsou zobrazeny odhadované měsíční náklady na výpočetní prostředky a úložiště.
-    - Odhad nákladů je pro spuštění místních serverů jako virtuální chod IaaS. Azure Migrate Server Assessment nebere v úvahu PaaS nebo SaaS náklady.
+    - Odhad nákladů vychází z doporučení na velikost počítače a jeho disků a vlastností.
+    - Zobrazí se Odhadované měsíční náklady na výpočetní prostředky a úložiště.
+    - Odhad nákladů slouží ke spuštění místních serverů jako virtuálních počítačů IaaS. Posouzení Azure Migrate serveru nebere v úvahu náklady na PaaS nebo SaaS.
 
-2. Můžete zkontrolovat odhady měsíčních nákladů na úložiště. Toto zobrazení zobrazuje agregované náklady na úložiště pro vyměřenou skupinu rozdělenou na různé typy disků úložiště.
-3. Chcete-li zobrazit podrobnosti o konkrétních serverech, můžete přejít k podrobnostem.
+2. Můžete zkontrolovat odhady měsíčních nákladů na úložiště. Toto zobrazení ukazuje agregované náklady na úložiště pro vyhodnocenou skupinu rozdělené přes různé typy úložných disků.
+3. Můžete přejít k podrobnostem a zobrazit podrobnosti o konkrétních serverech.
 
 
 ### <a name="review-confidence-rating"></a>Kontrola hodnocení spolehlivosti
 
-Při spuštění hodnocení na základě výkonu je hodnocení přiřazeno hodnocení.
+Když spustíte posouzení na základě výkonu, bude posouzení k posouzení přiřazeno hodnocení spolehlivosti.
 
 ![Hodnocení spolehlivosti](./media/tutorial-assess-physical/confidence-rating.png)
 
-- Uděluje se hodnocení od 1 hvězdičky (nejnižší) do 5 hvězdiček (nejvyšší).
-- Hodnocení spolehlivosti vám pomůže odhadnout spolehlivost doporučení velikosti, která hodnocení poskytuje.
-- Hodnocení spolehlivosti je založeno na dostupnosti datových bodů potřebných k výpočtu hodnocení.
+- Je uděleno hodnocení od 1 hvězdičky (nejnižší) do 5 hvězdiček (nejvyšší).
+- Hodnocení spolehlivosti vám pomůže odhadnout spolehlivost doporučení týkajících se velikosti, která poskytuje posouzení.
+- Hodnocení spolehlivosti je založeno na dostupnosti datových bodů potřebných k výpočtu posouzení.
 
-Hodnocení spolehlivosti pro hodnocení je následující.
+Hodnocení spolehlivosti pro posouzení je následující.
 
-**Dostupnost datových bodů** | **Hodnocení spolehlivosti**
+**Dostupnost datového bodu** | **Hodnocení spolehlivosti**
 --- | ---
 0 až 20 % | 1 hvězdička
 21 až 40 % | 2 hvězdičky
@@ -295,7 +295,7 @@ Hodnocení spolehlivosti pro hodnocení je následující.
 61 až 80 % | 4 hvězdičky
 81 až 100 % | 5 hvězdiček
 
-[Přečtěte si další informace](best-practices-assessment.md#best-practices-for-confidence-ratings) o doporučených postupech pro hodnocení spolehlivosti.
+[Přečtěte si další](best-practices-assessment.md#best-practices-for-confidence-ratings) informace o osvědčených postupech pro hodnocení spolehlivosti.
 
 
 ## <a name="next-steps"></a>Další kroky
@@ -306,7 +306,7 @@ V tomto kurzu jste:
 > * Nastavení zařízení Azure Migrate
 > * Vytvoření a přezkoumání posouzení
 
-Pokračujte třetím kurzem v řadě a dozvíte se, jak migrovat fyzické servery do Azure pomocí Migrace Azure: Migrace serveru.
+Další informace o tom, jak migrovat fyzické servery do Azure pomocí Azure Migrate: Migrace serveru, najdete v dalším kurzu v řadě.
 
 > [!div class="nextstepaction"]
 > [Migrace fyzických serverů](./tutorial-migrate-physical-virtual-machines.md)
