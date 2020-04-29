@@ -1,5 +1,5 @@
 ---
-title: Nasazení zařízení řady StorSimple 8000 na webu Azure Portal
+title: Nasazení zařízení řady StorSimple 8000 v Azure Portal
 description: Popis kroků a osvědčených postupů pro nasazení zařízení StorSimple řady 8000 s aktualizací Update 3 nebo novější a služby Správce zařízení StorSimple.
 author: alkohli
 ms.service: storsimple
@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: alkohli
 ms.openlocfilehash: a56610dd81d6e50da11bbd65bcf0682e399b1783
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79267947"
 ---
 # <a name="deploy-your-on-premises-storsimple-device-update-3-and-later"></a>Nasazení místního zařízení StorSimple (Update 3 a novější)
@@ -28,7 +28,7 @@ Informace v těchto kurzech předpokládají, že jste si přečetli informace o
 K dokončení této instalace a procesu konfigurace potřebujete oprávnění správce. Doporučujeme, abyste si před zahájením práce prošli kontrolní seznam konfigurace. Proces nasazení a konfigurace může trvat nějakou dobu.
 
 > [!NOTE]
-> Informace o nasazení zařízení StorSimple publikované na webu Microsoft Azure platí pouze pro řadu zařízení StorSimple 8000. Úplné informace o zařízeních řady 7000 [http://onlinehelp.storsimple.com/](http://onlinehelp.storsimple.com)naleznete na adrese: . Informace o nasazení řady 7000 najdete v [Úvodní příručce k systému StorSimple](http://onlinehelp.storsimple.com/111_Appliance/). 
+> Informace o nasazení zařízení StorSimple publikované na webu Microsoft Azure platí pouze pro řadu zařízení StorSimple 8000. Úplné informace o zařízeních řady 7000 naleznete zde: [http://onlinehelp.storsimple.com/](http://onlinehelp.storsimple.com). Informace o nasazení řady 7000 najdete v [Úvodní příručce k systému StorSimple](http://onlinehelp.storsimple.com/111_Appliance/). 
 
 
 ## <a name="deployment-steps"></a>Kroky nasazení
@@ -36,25 +36,25 @@ Pomocí níže uvedených požadovaných kroků zařízení StorSimple nakonfigu
 
 | Krok | Popis |
 | --- | --- |
-| **Požadavky** |Tyto požadavky je nutné splnit v rámci přípravy na nasazení. |
+| **POŽADOVANÝ** |Tyto požadavky je nutné splnit v rámci přípravy na nasazení. |
 | [Kontrolní seznam konfigurace nasazení](#deployment-configuration-checklist) |Kontrolní seznam použijte ke shromáždění a zaznamenání informací před nasazením a během nasazení. |
 | [Požadavky nasazení](#deployment-prerequisites) |Splnění požadavků nasazení kvalifikuje prostředí jako připravené na nasazení. |
 |  | |
 | **PODROBNÝ POSTUP NASAZENÍ** |Tyto kroky jsou požadované k produkčnímu nasazení zařízení StorSimple. |
-| [Krok 1: Vytvoření nové služby](#step-1-create-a-new-service) |Nastavte správu cloudu a úložiště pro zařízení StorSimple. *Tento krok přeskočte, pokud máte existující službu pro jiná zařízení StorSimple*. |
+| [Krok 1: Vytvoření nové služby](#step-1-create-a-new-service) |Nastavte správu cloudu a úložiště pro zařízení StorSimple. *Pokud máte existující službu pro jiná zařízení StorSimple, tento krok přeskočte*. |
 | [Krok 2: Získání registračního klíče služby](#step-2-get-the-service-registration-key) |Pomocí tohoto klíče zaregistrujte zařízení StorSimple ve službě správy a připojte je k ní. |
-| [Krok 3: Konfigurace a registrace zařízení prostřednictvím prostředí Windows PowerShell pro StorSimple](#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple) |Pokud chcete instalaci dokončit pomocí služby pro správu, připojte zařízení k síti a zaregistrujte ho v Azure. |
+| [Krok 3: konfigurace a registrace zařízení prostřednictvím Windows PowerShell pro StorSimple](#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple) |Pokud chcete instalaci dokončit pomocí služby pro správu, připojte zařízení k síti a zaregistrujte ho v Azure. |
 | [Krok 4: Dokončení minimální instalace zařízení](#step-4-complete-minimum-device-setup)</br>[Osvědčený postup: Aktualizace zařízení StorSimple](#scan-for-and-apply-updates) |Pomocí služby pro správu dokončete instalaci zařízení a aktivujte je k poskytování úložiště. |
-| [Krok 5: Vytvoření kontejneru svazků](#step-5-create-a-volume-container) |Vytvořte kontejner ke zřízení svazků. Kontejner svazků obsahuje účet úložiště, šířku pásma a nastavení šifrování pro všechny svazky, které jsou v něm obsažené. |
+| [Krok 5: vytvoření kontejneru svazků](#step-5-create-a-volume-container) |Vytvořte kontejner ke zřízení svazků. Kontejner svazků obsahuje účet úložiště, šířku pásma a nastavení šifrování pro všechny svazky, které jsou v něm obsažené. |
 | [Krok 6: Vytvoření svazku](#step-6-create-a-volume) |V zařízení StorSimple zřiďte svazky úložiště pro vaše servery. |
 | [Krok 7: Připojení, inicializace a formátování svazků](#step-7-mount-initialize-and-format-a-volume)</br>[Volitelné: Konfigurace funkce MPIO](storsimple-8000-configure-mpio-windows-server.md) |Připojte své servery k úložišti iSCSI poskytovanému zařízením. Volitelně konfigurujte funkci MPIO, abyste zajistili, že servery budou tolerovat chyby připojení, sítě a rozhraní. |
-| [Krok 8: Vytvoření zálohy](#step-8-take-a-backup) |Nastavte zásady zálohování pro ochranu dat. |
+| [Krok 8: provedení zálohy](#step-8-take-a-backup) |Nastavte zásady zálohování pro ochranu dat. |
 |  | |
 | **DALŠÍ POSTUPY** |Tyto postupy můžete někdy potřebovat při nasazování svého řešení. |
 | [Konfigurace nového účtu úložiště pro službu](#configure-a-new-storage-account-for-the-service) | |
 | [Použití klienta PuTTY k připojení ke konzole sériového portu zařízení](#use-putty-to-connect-to-the-device-serial-console) | |
-| [Získání IQN hostitele systému Windows Server](#get-the-iqn-of-a-windows-server-host) | |
-| [Vytvoření ručního zálohování](#create-a-manual-backup) | |
+| [Získání názvu IQN hostitele Windows serveru](#get-the-iqn-of-a-windows-server-host) | |
+| [Vytvoření ruční zálohy](#create-a-manual-backup) | |
 
 
 ## <a name="deployment-configuration-checklist"></a>Kontrolní seznam konfigurace nasazení

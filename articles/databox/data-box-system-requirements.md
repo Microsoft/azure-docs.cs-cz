@@ -1,5 +1,5 @@
 ---
-title: Požadavky na systém datové schránky Microsoft Azure| Dokumenty společnosti Microsoft
+title: Microsoft Azure Data Box požadavky na systém | Microsoft Docs
 description: Seznamte se s požadavky vašeho Azure Data Boxu na software a síť.
 services: databox
 author: alkohli
@@ -9,31 +9,31 @@ ms.topic: article
 ms.date: 07/11/2019
 ms.author: alkohli
 ms.openlocfilehash: e232ad131b1c0930afcf5e7e78b386aba2c9490b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79259952"
 ---
-# <a name="azure-data-box-system-requirements"></a>Požadavky na systém Azure Data Box
+# <a name="azure-data-box-system-requirements"></a>Azure Data Box požadavky na systém
 
-Tento článek popisuje důležité systémové požadavky pro datové schránky Microsoft Azure a pro klienty, kteří se připojují k datové schránce. Doporučujeme, abyste si tyto informace před nasazením datové schránky pečlivě prostudovali a pak se k ní vrátili podle potřeby během nasazení a následné operace.
+Tento článek popisuje důležité systémové požadavky pro Microsoft Azure Data Box a pro klienty, kteří se připojují k Data Box. Před nasazením Data Box doporučujeme pečlivě zkontrolovat informace a pak je v případě potřeby v průběhu nasazení a následné operace vrátit na ni.
 
-Systémové požadavky zahrnují:
+Požadavky na systém zahrnují:
 
-* **Požadavky na software pro hostitele, kteří se připojují k datové schránce** – popisuje podporované platformy, prohlížeče pro místní webové uživatelské prostředí, klienty SMB a všechny další požadavky pro hostitele, kteří se mohou připojit k datové schránce.
-* **Síťové požadavky pro Datovou schránku** - poskytuje informace o síťových požadavcích pro optimální provoz datové schránky.
+* **Požadavky na software pro hostitele, kteří se připojují k data box** – popisuje podporované platformy, prohlížeče pro místní webové uživatelské rozhraní, klienty SMB a jakékoli další požadavky pro hostitele, kteří se mohou připojit k data box.
+* **Požadavky na síť pro data box** – poskytuje informace o požadavcích sítě pro optimální fungování data box.
 
 
 ## <a name="software-requirements"></a>Požadavky na software
 
-Požadavky na software zahrnují informace o podporovaných operačních systémech, podporovaných prohlížečích pro místní webové uživatelské prostředí a klientech SMB.
+Požadavky na software zahrnují informace o podporovaných operačních systémech, podporovaných prohlížečích místních webových uživatelských rozhraní a klientech SMB.
 
 ### <a name="supported-operating-systems-for-clients"></a>Podporované operační systémy pro klienty
 
 [!INCLUDE [data-box-supported-os-clients](../../includes/data-box-supported-os-clients.md)]
 
-### <a name="supported-file-systems-for-linux-clients"></a>Podporované souborové systémy pro klienty Linuxu
+### <a name="supported-file-systems-for-linux-clients"></a>Podporované systémy souborů pro klienty se systémem Linux
 
 [!INCLUDE [data-box-supported-file-systems-clients](../../includes/data-box-supported-file-systems-clients.md)]
 
@@ -49,17 +49,17 @@ Požadavky na software zahrnují informace o podporovaných operačních systém
 
 [!INCLUDE [data-box-supported-web-browsers](../../includes/data-box-supported-web-browsers.md)]
 
-## <a name="networking-requirements"></a>Požadavky na vytváření sítí
+## <a name="networking-requirements"></a>Požadavky na síť
 
-Vaše datacentrum má přístup k vysokorychlostní síti. Důrazně doporučujeme, abyste měli připojení minimálně 10 GbE. Pokud připojení 10 GbE není k dispozici, lze ke kopírování dat použít datové spojení 1 GbE, ale rychlost kopírování je ovlivněna.
+Vaše datacentrum má přístup k vysokorychlostní síti. Důrazně doporučujeme, abyste měli připojení minimálně 10 GbE. Pokud není k dispozici připojení s 10 GbEmi, je možné ke kopírování dat použít datové propojení s 1 GbEí, ale budou to mít vliv na rychlost kopírování.
 
-### <a name="port-requirements"></a>Požadavky na port
+### <a name="port-requirements"></a>Požadavky na porty
 
-V následující tabulce jsou uvedeny porty, které je třeba otevřít v bráně firewall, aby bylo možné provádět přenosy se systémem SMB nebo NFS. V této tabulce *in* nebo *příchozí* odkazuje na směr, ze kterého příchozí klient požaduje přístup k vašemu zařízení. *Odchozí* nebo *odchozí* označuje směr, ve kterém vaše zařízení Data Box odesílá data externě, mimo nasazení: například odchozí do Internetu.
+Následující tabulka uvádí porty, které je třeba v bráně firewall otevřít, aby bylo možné provozovat přenosy SMB nebo NFS. V této tabulce se *v* nebo *příchozí* odkazuje na směr, ze kterého příchozí klient žádá o přístup k vašemu zařízení. *Výstupní* nebo *odchozí* odkazuje na směr, ve kterém vaše zařízení data Box odesílá data externě, mimo nasazení: například odchozí na Internet.
 
 [!INCLUDE [data-box-port-requirements](../../includes/data-box-port-requirements.md)]
 
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Nasazení datové schránky Azure](data-box-deploy-ordered.md)
+* [Nasazení Azure Data Box](data-box-deploy-ordered.md)

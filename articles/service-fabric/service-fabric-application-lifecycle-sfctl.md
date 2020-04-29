@@ -1,34 +1,34 @@
 ---
-title: Správa aplikací Azure Service Fabric pomocí sfctl
-description: Zjistěte, jak nasadit a odebrat aplikace z clusteru Azure Service Fabric pomocí příkazového příkazu Azure Service Fabric
+title: Správa aplikací Service Fabric v Azure pomocí sfctl
+description: Naučte se nasazovat a odebírat aplikace z clusteru Azure Service Fabric pomocí Azure Service Fabric CLI.
 author: Christina-Kang
 ms.topic: conceptual
 ms.date: 07/31/2018
 ms.author: bikang
 ms.openlocfilehash: 7d361d44c349bc7a6e3c041f78d00ad66182fa15
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79259068"
 ---
-# <a name="manage-an-azure-service-fabric-application-by-using-azure-service-fabric-cli-sfctl"></a>Správa aplikace Azure Service Fabric pomocí Azure Service Fabric CLI (sfctl)
+# <a name="manage-an-azure-service-fabric-application-by-using-azure-service-fabric-cli-sfctl"></a>Správa aplikace Service Fabric Azure pomocí Azure Service Fabric CLI (sfctl)
 
-Zjistěte, jak vytvářet a odstraňovat aplikace spuštěné v clusteru Azure Service Fabric.
+Naučte se vytvářet a odstraňovat aplikace, které běží v clusteru Azure Service Fabric.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Nainstalujte cli služby fabric. Potom vyberte cluster Service Fabric. Další informace naleznete [v tématu Začínáme s linkou CLI služby Fabric](service-fabric-cli.md).
+* Nainstalujte Service Fabric CLI. Pak vyberte svůj Cluster Service Fabric. Další informace najdete v tématu [Začínáme s Service Fabric CLI](service-fabric-cli.md).
 
-* Připravte si balíček aplikace Service Fabric k nasazení. Další informace o tom, jak vytvořit a zabalit aplikaci, načtěte o [aplikačním modelu Service Fabric](service-fabric-application-model.md).
+* Připravte balíček aplikace Service Fabric, který se má nasadit. Další informace o tom, jak vytvořit a zabalit aplikaci, najdete v článku o [Service Fabric aplikačním modelu](service-fabric-application-model.md).
 
 ## <a name="overview"></a>Přehled
 
 Chcete-li nasadit novou aplikaci, proveďte tyto kroky:
 
-1. Nahrajte balíček aplikace do úložiště obrázků Service Fabric.
-2. Zřízení typu aplikace.
-3. Odstraňte obsah úložiště obrázků.
+1. Nahrajte balíček aplikace do úložiště imagí Service Fabric.
+2. Zřídí typ aplikace.
+3. Odstraňte obsah úložiště imagí.
 4. Zadejte a vytvořte aplikaci.
 5. Zadejte a vytvořte služby.
 
@@ -39,23 +39,23 @@ Chcete-li odebrat existující aplikaci, proveďte tyto kroky:
 
 ## <a name="deploy-a-new-application"></a>Nasazení nové aplikace
 
-Chcete-li nasadit novou aplikaci, proveďte následující úkoly:
+Chcete-li nasadit novou aplikaci, proveďte následující úlohy:
 
-### <a name="upload-a-new-application-package-to-the-image-store"></a>Nahrání nového balíčku aplikace do úložiště obrázků
+### <a name="upload-a-new-application-package-to-the-image-store"></a>Nahrání nového balíčku aplikace do úložiště imagí
 
-Před vytvořením aplikace nahrajte balíček aplikace do úložiště bitové kopie Service Fabric.
+Před vytvořením aplikace nahrajte balíček aplikace do úložiště imagí Service Fabric.
 
-Pokud je například balíček `app_package_dir` aplikace v adresáři, nahrajte adresář pomocí následujících příkazů:
+Například pokud je balíček aplikace v `app_package_dir` adresáři, použijte následující příkazy pro nahrání adresáře:
 
 ```shell
 sfctl application upload --path ~/app_package_dir
 ```
 
-U velkých balíčků aplikací můžete `--show-progress` určit možnost zobrazení průběhu nahrávání.
+Pro velké balíčky aplikací můžete zadat `--show-progress` možnost zobrazení průběhu nahrávání.
 
-### <a name="provision-the-application-type"></a>Zřízení typu aplikace
+### <a name="provision-the-application-type"></a>Zřídit typ aplikace
 
-Po dokončení nahrávání zřídit aplikaci. Chcete-li zřídit aplikaci, použijte následující příkaz:
+Po dokončení nahrávání zajistěte aplikaci. Chcete-li zřídit aplikaci, použijte následující příkaz:
 
 ```shell
 sfctl application provision --application-type-build-path app_package_dir
@@ -65,19 +65,19 @@ Hodnota pro `application-type-build-path` je název adresáře, do kterého jste
 
 ### <a name="delete-the-application-package"></a>Odstranění balíčku aplikace
 
-Doporučujeme odebrat balíček aplikace po úspěšné registraci aplikace.  Odstraněním balíčků aplikací z úložiště bitové kopie uvolníte systémové prostředky.  Udržování nepoužívaných balíčků aplikací spotřebovává diskové úložiště a vede k problémům s výkonem aplikace. 
+Doporučuje se odebrat balíček aplikace po úspěšné registraci aplikace.  Odstranění balíčků aplikace z úložiště imagí uvolní systémové prostředky.  Udržování nepoužívaných balíčků aplikací spotřebovává diskové úložiště a vede k problémům s výkonem aplikací. 
 
-Chcete-li odstranit balíček aplikace z úložiště obrázků, použijte následující příkaz:
+Chcete-li odstranit balíček aplikace z úložiště imagí, použijte následující příkaz:
 
 ```shell
 sfctl store delete --content-path app_package_dir
 ```
 
-`content-path`musí být název adresáře, který jste nahráli při vytváření aplikace.
+`content-path`musí se jednat o název adresáře, který jste nahráli při vytváření aplikace.
 
 ### <a name="create-an-application-from-an-application-type"></a>Vytvoření aplikace z typu aplikace
 
-Po zřízení aplikace, použijte následující příkaz k názvu a vytvoření aplikace:
+Po zřízení aplikace použijte následující příkaz k pojmenování a vytvoření aplikace:
 
 ```shell
 sfctl application create --app-name fabric:/TestApp --app-type TestAppType --app-version 1.0
@@ -85,20 +85,20 @@ sfctl application create --app-name fabric:/TestApp --app-type TestAppType --app
 
 `app-name`je název, který chcete použít pro instanci aplikace. Můžete získat další parametry z dříve zřízeného manifestu aplikace.
 
-Název aplikace musí začínat `fabric:/`předponou .
+Název aplikace musí začínat předponou `fabric:/`.
 
 ### <a name="create-services-for-the-new-application"></a>Vytvořit služby pro novou aplikaci
 
-Po vytvoření aplikace vytvořte služby z aplikace. V následujícím příkladu vytvoříme novou bezstavovou službu z naší aplikace. Služby, které můžete vytvořit z aplikace jsou definovány v manifestu služby v dříve zřízené matné aplikace balíčku.
+Po vytvoření aplikace vytvořte služby z aplikace. V následujícím příkladu vytvoříme z naší aplikace novou bezstavovou službu. Služby, které můžete vytvořit z aplikace, jsou definovány v manifestu služby v dříve zřízeném balíčku aplikace.
 
 ```shell
 sfctl service create --app-id TestApp --name fabric:/TestApp/TestSvc --service-type TestServiceType \
 --stateless --instance-count 1 --singleton-scheme
 ```
 
-## <a name="verify-application-deployment-and-health"></a>Ověření nasazení a stavu aplikací
+## <a name="verify-application-deployment-and-health"></a>Ověření nasazení aplikace a stavu
 
-Chcete-li ověřit, že je vše v pořádku, použijte následující příkazy stavu:
+Chcete-li ověřit, zda je vše v pořádku, použijte následující příkazy pro stav:
 
 ```shell
 sfctl application list
@@ -112,35 +112,35 @@ sfctl application health --application-id TestApp
 sfctl service health --service-id TestApp/TestSvc
 ```
 
-Zdravé služby a `HealthState` aplikace `Ok`mají hodnotu .
+Služby a aplikace v pořádku mají `HealthState` hodnotu `Ok`.
 
 ## <a name="remove-an-existing-application"></a>Odebrání existující aplikace
 
-Chcete-li aplikaci odebrat, proveďte následující úkoly:
+Chcete-li odebrat aplikaci, proveďte následující úlohy:
 
-### <a name="delete-the-application"></a>Odstranit aplikaci
+### <a name="delete-the-application"></a>Odstranění aplikace
 
-Chcete-li aplikaci odstranit, použijte následující příkaz:
+Pokud chcete aplikaci odstranit, použijte následující příkaz:
 
 ```shell
 sfctl application delete --application-id TestEdApp
 ```
 
-### <a name="unprovision-the-application-type"></a>Zrušení zřízení typu aplikace
+### <a name="unprovision-the-application-type"></a>Zrušit zřízení typu aplikace
 
-Po odstranění aplikace můžete zrušit zřízení typu aplikace, pokud jej již nepotřebujete. Chcete-li zrušit zřízení typu aplikace, použijte následující příkaz:
+Po odstranění aplikace můžete typ aplikace zrušit, pokud ji už nepotřebujete. Chcete-li zrušit zřízení typu aplikace, použijte následující příkaz:
 
 ```shell
 sfctl application unprovision --application-type-name TestAppType --application-type-version 1.0
 ```
 
-Název typu a verze typu se musí shodovat s názvem a verzí v dříve zřízeném manifestu aplikace.
+Název typu a verze typu se musí shodovat s názvem a verzí v dřív zřízeném manifestu aplikace.
 
-## <a name="upgrade-application"></a>Upgrade aplikace
+## <a name="upgrade-application"></a>Upgradovat aplikaci
 
-Po vytvoření aplikace můžete opakovat stejnou sadu kroků pro zřízení druhé verze aplikace. Potom s upgradem aplikace Service Fabric můžete přejít na spuštění druhé verze aplikace. Další informace naleznete v dokumentaci k [upgradům aplikací Service Fabric](service-fabric-application-upgrade.md).
+Po vytvoření aplikace můžete zopakovat stejnou sadu kroků pro zřízení druhé verze aplikace. Pak se pomocí upgradu Service Fabric aplikace můžete převést na provoz druhé verze aplikace. Další informace najdete v dokumentaci k [Service Fabric upgrady aplikací](service-fabric-application-upgrade.md).
 
-Chcete-li provést upgrade, nejprve zřídit další verzi aplikace pomocí stejných příkazů jako dříve:
+Chcete-li provést upgrade, nejprve zajistěte novou verzi aplikace pomocí stejných příkazů jako dříve:
 
 ```shell
 sfctl application upload --path ~/app_package_dir_2
@@ -148,22 +148,22 @@ sfctl application provision --application-type-build-path app_package_dir_2
 sfctl store delete --content-path app_package_dir_2
 ```
 
-Doporučujeme provést monitorovaný automatický upgrade, spustit upgrade spuštěním následujícího příkazu:
+Doporučuje se následně provést monitorovaný automatický upgrade, spustit upgrade spuštěním následujícího příkazu:
 
 ```shell
 sfctl application upgrade --app-id TestApp --app-version 2.0.0 --parameters "{\"test\":\"value\"}" --mode Monitored
 ```
 
-Upgrady přepsat existující parametry s bez ohledu na sadu je zadán. Parametry aplikace by měly být v případě potřeby předány jako argumenty příkazu upgrade. Parametry aplikace by měly být kódovány jako objekt JSON.
+Upgrady přepíšou existující parametry s libovolnou nastavenou sadou. Parametry aplikace by měly být v případě potřeby předány jako argumenty příkazu upgrade. Parametry aplikace by měly být kódované jako objekt JSON.
 
-Chcete-li načíst všechny dříve zadané `sfctl application info` parametry, můžete použít příkaz.
+Chcete-li načíst všechny parametry, které byly zadány `sfctl application info` dříve, můžete použít příkaz.
 
-Když probíhá upgrade aplikace, lze stav načíst `sfctl application upgrade-status` pomocí příkazu.
+Když probíhá upgrade aplikace, lze stav získat pomocí `sfctl application upgrade-status` příkazu.
 
-Nakonec pokud probíhá upgrade a je třeba jej zrušit, `sfctl application upgrade-rollback` můžete upgrade vrátit zpět.
+Nakonec, pokud probíhá upgrade a je potřeba ho zrušit, můžete `sfctl application upgrade-rollback` k obnovení upgradu použít.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Základy příkazových příkazových odpočtek service fabric](service-fabric-cli.md)
-* [Začínáme s Service Fabric na Linuxu](service-fabric-get-started-linux.md)
-* [Spuštění upgradu aplikace Service Fabric](service-fabric-application-upgrade.md)
+* [Základy rozhraní příkazového řádku Service Fabric](service-fabric-cli.md)
+* [Začínáme s Service Fabric v systému Linux](service-fabric-get-started-linux.md)
+* [Spouští se upgrade aplikace Service Fabric.](service-fabric-application-upgrade.md)

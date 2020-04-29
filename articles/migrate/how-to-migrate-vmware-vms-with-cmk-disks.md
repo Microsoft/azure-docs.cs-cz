@@ -1,6 +1,6 @@
 ---
-title: Migrace virtuálních počítačů VMware do Azure pomocí šifrování na straně serveru (SSE) a klíčů spravovaných zákazníky (CMK) pomocí migrace migrace serveru Azure
-description: Zjistěte, jak migrovat virtuální počítače VMware do Azure pomocí šifrování na straně serveru (SSE) a klíčů spravovaných zákazníkem (CMK) pomocí migrace migrace serveru Azure
+title: Migrace virtuálních počítačů VMware do Azure pomocí šifrování na straně serveru (SSE) a klíčů spravovaných zákazníkem (CMK) pomocí migrace serveru Azure Migrate
+description: Naučte se migrovat virtuální počítače VMware do Azure pomocí šifrování na straně serveru (SSE) a klíčů spravovaných zákazníkem (CMK) pomocí migrace Azure Migrate serveru.
 author: bsiva
 ms.service: azure-migrate
 ms.manager: carmonm
@@ -8,57 +8,57 @@ ms.topic: article
 ms.date: 03/12/2020
 ms.author: raynew
 ms.openlocfilehash: c6b791fda43a018a26204b2b43dc1e581ff3a945
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79269481"
 ---
-# <a name="migrate-vmware-vms-to-azure-vms-enabled-with-server-side-encryption-and-customer-managed-keys"></a>Migrace virtuálních počítačů VMware do virtuálních počítačů Azure s povoleným šifrováním na straně serveru a klíči spravovanými zákazníky
+# <a name="migrate-vmware-vms-to-azure-vms-enabled-with-server-side-encryption-and-customer-managed-keys"></a>Migrace virtuálních počítačů VMware na virtuální počítače Azure s povoleným šifrováním na straně serveru a zákaznickými klíči
 
-Tento článek popisuje, jak migrovat virtuální počítače VMware do virtuálních počítačů Azure s disky šifrovanými pomocí šifrování na straně serveru (SSE) s klíči spravovanými zákazníky (CMK) pomocí migrace migrace serveru Azure (replikace bez agentů).
+Tento článek popisuje, jak migrovat virtuální počítače VMware do virtuálních počítačů Azure pomocí disků šifrovaných pomocí šifrování na straně serveru (SSE) pomocí klíčů spravovaných zákazníkem (CMK), a to pomocí Azure Migrate migrace serveru (bez agenta).
 
-Prostředí migrace portálu migrace serveru Azure umožňuje [migrovat virtuální počítače VMware do Azure s replikací bez agenta.](tutorial-migrate-vmware.md) Prostředí portálu aktuálně nenabízí možnost zapnout SSE s CMK pro replikované disky v Azure. Možnost zapnout SSE s CMK pro replikované disky je aktuálně k dispozici pouze prostřednictvím rozhraní REST API. V tomto článku uvidíte, jak vytvořit a nasadit [šablonu Azure Resource Manager](../azure-resource-manager/templates/overview.md) replikovat virtuální počítač VMware a nakonfigurovat replikované disky v Azure pro použití SSE s CMK.
+Prostředí portálu pro migraci Azure Migrate serveru umožňuje [migrovat virtuální počítače VMware do Azure s replikací bez agenta.](tutorial-migrate-vmware.md) Prostředí portálu aktuálně nenabízí možnost zapnout SSE s CMK pro vaše replikované disky v Azure. Možnost zapnout SSE s CMK pro replikované disky je aktuálně dostupná jenom prostřednictvím REST API. V tomto článku se dozvíte, jak vytvořit a nasadit [šablonu Azure Resource Manager](../azure-resource-manager/templates/overview.md) pro replikaci virtuálního počítače VMware a konfiguraci replikovaných disků v Azure tak, aby používala SSE s CMK.
 
-Příklady v tomto článku používají [Azure PowerShell](/powershell/azure/new-azureps-module-az) k provádění úloh potřebných k vytvoření a nasazení šablony Správce prostředků.
+Příklady v tomto článku se používají [Azure PowerShell](/powershell/azure/new-azureps-module-az) k provedení úloh potřebných k vytvoření a nasazení Správce prostředků šablony.
 
-[Další informace](../virtual-machines/windows/disk-encryption.md) o šifrování na straně serveru (SSE) s klíči spravovanými zákazníky (CMK) pro spravované disky.
+[Přečtěte si další informace](../virtual-machines/windows/disk-encryption.md) o šifrování na straně serveru (SSE) se spravovanými klíči Customer (CMK) pro spravované disky.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- [Projděte si kurz](tutorial-migrate-vmware.md) o migraci virtuálních počítačů VMware do Azure s replikací bez agentů, abyste pochopili požadavky na nástroje.
-- [Podle těchto pokynů](how-to-add-tool-first-time.md) vytvořte projekt Migrace Azure a přidejte do projektu nástroj **Migrace: Server Azure.**
-- [Podle těchto pokynů](how-to-set-up-appliance-vmware.md) nastavte zařízení Azure Migrate pro VMware v místním prostředí a úplné zjišťování.
+- [Přečtěte si kurz](tutorial-migrate-vmware.md) migrace virtuálních počítačů VMware do Azure s replikací bez agentů, abyste pochopili požadavky na nástroj.
+- [Postupujte podle těchto pokynů](how-to-add-tool-first-time.md) a vytvořte projekt Azure Migrate a přidejte do projektu nástroj pro **migraci serveru Azure Migrate: Server** .
+- [Podle těchto pokynů](how-to-set-up-appliance-vmware.md) nastavte zařízení Azure Migrate pro VMware v místním prostředí a dokončete zjišťování.
 
 ## <a name="prepare-for-replication"></a>Příprava na replikaci
 
-Po dokončení zjišťování virtuálních zařízení se na řádku Zjištěné servery na dlaždici Migrace serveru zobrazí počet virtuálních počítačích VMware zjištěných zařízením.
+Po dokončení zjišťování virtuálních počítačů se na dlaždici zjištěné servery na dlaždici migrace serveru zobrazí počet virtuálních počítačů VMware zjištěných zařízením.
 
-Než začnete replikovat virtuální počítače, musí být připravena infrastruktura replikace.
+Než budete moct začít replikovat virtuální počítače, je potřeba připravit infrastrukturu replikace.
 
-1. Vytvořte instanci služby Service Bus v cílové oblasti. Service Bus používá místní zařízení Azure Migrate ke komunikaci se službou Migrace serveru ke koordinaci replikace a migrace.
+1. Vytvoří instanci Service Bus v cílové oblasti. Service Bus používá místní zařízení Azure Migrate ke komunikaci se službou pro migraci serveru za účelem koordinace replikace a migrace.
 2. Vytvořte účet úložiště pro přenos protokolů operací z replikace.
-3. Vytvořte účet úložiště, do kterého zařízení Azure Migrate nahraje replikační data.
-4. Vytvořte trezor klíčů a nakonfigurujte trezor klíčů pro správu tokenů sdílených přístupových podpisů pro přístup k objektům blob na účtech úložiště vytvořených v kroku 3 a 4.
-5. Vygenerujte token sdíleného přístupového podpisu pro sběrnici služby vytvořenou v kroku 1 a vytvořte tajný klíč pro token v trezoru klíčů vytvořeném v předchozím kroku.
-6. Vytvořte zásady přístupu trezoru klíčů, které místnímu zařízení Azure Migrate (pomocí aplikace AAD zařízení) a službě migrace serveru poskytují přístup k trezoru klíčů.
-7. Vytvořte zásady replikace a nakonfigurujte službu Migrace serveru s podrobnostmi o infrastruktuře replikace vytvořené v předchozím kroku.
+3. Vytvořte účet úložiště, do kterého Azure Migrate zařízení nahrává data replikace.
+4. Vytvořte Key Vault a nakonfigurujte Key Vault, abyste mohli spravovat tokeny sdíleného přístupového podpisu pro přístup k objektu BLOB v účtech úložiště vytvořených v kroku 3 a 4.
+5. Vygenerujte token sdíleného přístupového podpisu pro službu Service Bus vytvořenou v kroku 1 a vytvořte tajný klíč pro token ve Key Vault vytvořeném v předchozím kroku.
+6. Vytvořte zásadu přístupu Key Vault, která poskytne místní zařízení Azure Migrate (pomocí aplikace AAD pro zařízení) a přístup k Key Vault službě migrace serveru.
+7. Vytvořte zásadu replikace a nakonfigurujte službu migrace serveru s podrobnostmi o infrastruktuře replikace vytvořené v předchozím kroku.
 
-Infrastruktura replikace musí být vytvořená v cílové oblasti Azure pro migraci a v cílovém předplatném Azure, do kterého se virtuální počítače migrují.
+Infrastruktura replikace se musí vytvořit v cílové oblasti Azure pro migraci a v cílovém předplatném Azure, na které se virtuální počítače migrují.
 
-Prostředí portálu migrace serveru zjednodušuje přípravu infrastruktury replikace tím, že to automaticky dělá za vás, když replikujete virtuální hod poprvé v projektu. V tomto článku budeme předpokládat, že jste již replikovali jeden nebo více virtuálních klíčů pomocí prostředí portálu a že infrastruktura replikace je již vytvořená. Podíváme se, jak zjistit podrobnosti o existující infrastruktury replikace a jak použít tyto podrobnosti jako vstupy do šablony Správce prostředků, který se použije k nastavení replikace s CMK.
+Prostředí portálu pro migraci serveru zjednodušuje přípravu infrastruktury replikace tím, že je automaticky provede při první replikaci virtuálního počítače v projektu. V tomto článku předpokládáme, že už máte replikovaný jeden nebo víc virtuálních počítačů s využitím portálu a že už je vytvořená infrastruktura replikace. Podíváme se na to, jak zjistit podrobnosti o stávající infrastruktuře replikace a jak tyto podrobnosti použít jako vstupy do šablony Správce prostředků, která se použije k nastavení replikace pomocí CMK.
 
-### <a name="identifying-replication-infrastructure-components"></a>Identifikace součástí infrastruktury replikace
+### <a name="identifying-replication-infrastructure-components"></a>Určení součástí infrastruktury replikace
 
-1. Na webu Azure Portal přejděte na stránku skupiny prostředků a vyberte skupinu prostředků, ve které byl vytvořen projekt Migrace Azure.
-2. V levé nabídce **vyberte Možnost Nasazení** a vyhledejte název nasazení začínající řetězcem *Microsoft.MigrateV2.VMwareV2EnableMigrate*. Zobrazí se seznam šablon Správce prostředků vytvořených prostředím portálu k nastavení replikace pro virtuální počítače v tomto projektu. Stáhneme jednu takovou šablonu a použijeme ji jako základ pro přípravu šablony pro replikaci s CMK.
-3. Chcete-li šablonu stáhnout, vyberte libovolné nasazení odpovídající řetězci v předchozím kroku > v levé nabídce vyberte **šablonu** > Z horní nabídky klepněte na **tlačítko Stáhnout.** Uložte soubor template.json místně. Tento soubor šablony upravíte v posledním kroku.
+1. Na Azure Portal otevřete stránku skupiny prostředků a vyberte skupinu prostředků, ve které byl vytvořen Azure Migrate projekt.
+2. V nabídce vlevo vyberte **nasazení** a vyhledejte název nasazení začínající řetězcem *"Microsoft. MigrateV2. VMwareV2EnableMigrate"*. Zobrazí se seznam šablon Správce prostředků vytvořených prostředím portálu pro nastavení replikace pro virtuální počítače v tomto projektu. Stáhneme jednu takovou šablonu a použijeme ji jako základ pro přípravu šablony pro replikaci pomocí CMK.
+3. Pokud chcete stáhnout šablonu, vyberte libovolné nasazení, které odpovídá vzoru řetězce v předchozím kroku > v nabídce vlevo vyberte **šablonu** > v horní nabídce klikněte na **Stáhnout** . Uložte soubor Template. JSON místně. Tento soubor šablony budete upravovat v posledním kroku.
 
-## <a name="create-a-disk-encryption-set"></a>Vytvoření sady šifrování disku
+## <a name="create-a-disk-encryption-set"></a>Vytvoření sady šifrování disků
 
-Objekt sady šifrování disku mapuje spravované disky na trezor klíčů, který obsahuje sadu CMK pro sazbu. Chcete-li replikovat virtuální počítače s CMK, vytvoříte sadu šifrování disku a předáte ji jako vstup do operace replikace.
+Objekty pro nastavení šifrování disku – mapování Managed Disks na Key Vault obsahující CMK, který se má použít pro SSE. K replikaci virtuálních počítačů pomocí CMK vytvoříte sadu pro šifrování disků a předáte ji jako vstup do operace replikace.
 
-Podle příkladu [zde](../virtual-machines/windows/disk-encryption.md#powershell) vytvořte sadu šifrování disku pomocí Azure PowerShellu. Ujistěte se, že sada šifrování disku se vytvoří v cílovém předplatném, do kterého se migrují virtuální počítače, a v cílové oblasti Azure pro migraci.
+Podle [následujícího příkladu vytvořte](../virtual-machines/windows/disk-encryption.md#powershell) pomocí Azure PowerShell sadu šifrování disku. Ujistěte se, že je v cílovém předplatném, na které jsou virtuální počítače migrovány, vytvořená sada Disk Encryption, a v cílové oblasti Azure pro migraci.
 
 ```azurepowershell
 $Location = "southcentralus"                           #Target Azure region for migration 
@@ -81,12 +81,12 @@ Set-AzKeyVaultAccessPolicy -VaultName $KeyVaultName -ObjectId $des.Identity.Prin
 New-AzRoleAssignment -ResourceName $KeyVaultName -ResourceGroupName $TargetResourceGroupName -ResourceType "Microsoft.KeyVault/vaults" -ObjectId $des.Identity.PrincipalId -RoleDefinitionName "Reader"
 ```
 
-## <a name="get-details-of-the-vmware-vm-to-migrate"></a>Získání podrobností o virtuálním mísu VMware k migraci
+## <a name="get-details-of-the-vmware-vm-to-migrate"></a>Získat podrobnosti o virtuálním počítači VMware pro migraci
 
-V tomto kroku použijete Azure PowerShell k získání podrobností o virtuálním počítači, který je potřeba migrovat. Tyto podrobnosti budou použity k vytvoření šablony Správce prostředků pro replikaci. Konkrétně jsou to dvě vlastnosti zájmu:
+V tomto kroku použijete Azure PowerShell k získání podrobných informací o virtuálním počítači, který je potřeba migrovat. Tyto podrobnosti budou použity k vytvoření šablony Správce prostředků pro replikaci. Konkrétně jsou to tyto dvě vlastnosti zájmu:
 
 - ID prostředku počítače pro zjištěné virtuální počítače.
-- Seznam disků pro virtuální počítače a jejich identifikátory disků.
+- Seznam disků pro virtuální počítač a jejich identifikátory disku.
 
 ```azurepowershell
 
@@ -105,7 +105,7 @@ ApplianceName  SiteId
 VMwareApplianc /subscriptions/509099b2-9d2c-4636-b43e-bd5cafb6be69/resourceGroups/ContosoVMwareCMK/providers/Microsoft.OffAzure/VMwareSites/VMwareApplianca8basite
 ```
 
-Zkopírujte hodnotu řetězce SiteId odpovídající zařízení Azure Migrate, které je zjištěna prostřednictvím virtuálního počítače. Ve výše uvedeném příkladu je SiteId *"/subscriptions/509099b2-9d2c-4636-b43e-bd5cafb6be69/resourceGroups/ContosoVMwareCMK/providers/Microsoft.OffAzure/VMwareSites/VMwareApplianca8basite"*
+Zkopírujte hodnotu identifikátoru řetězce, který odpovídá Azure Migratemu zařízení, prostřednictvím kterého se virtuální počítač objevil. V příkladu uvedeném výše je identifikátor ID *"/Subscriptions/509099b2-9d2c-4636-b43e-bd5cafb6be69/resourceGroups/ContosoVMwareCMK/Providers/Microsoft.OffAzure/VMwareSites/VMwareApplianca8basite"* .
 
 ```azurepowershell
 
@@ -120,7 +120,7 @@ PS /home/bharathram> $machine = $Discoveredmachines | where {$_.Properties.displ
 PS /home/bharathram> $machine.count   #Validate that only 1 VM was found matching this name.
 ```
 
-Zkopírujte hodnoty ResourceId, name a disk uuid pro zařízení, které má být migrováno.
+Zkopírujte hodnoty ResourceId, Name a UUID disku pro počítač, který chcete migrovat.
 ```Output
 PS > $machine.Name
 10-150-8-52-b090bef3-b733-5e34-bc8f-eb6f2701432a_50098f99-f949-22ca-642b-724ec6595210
@@ -139,10 +139,10 @@ uuid                                 label       name    maxSizeInBytes
 
 ## <a name="create-resource-manager-template-for-replication"></a>Vytvořit šablonu Správce prostředků pro replikaci
 
-- Otevřete soubor šablony Resource Manager, který jste stáhli v kroku **Identifikace součástí infrastruktury replikace** v editoru podle vašeho výběru.
-- Odeberte ze šablony všechny definice prostředků s výjimkou prostředků, které jsou typu *Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems.*
-- Pokud existuje více definic prostředků výše uvedeného typu, odeberte všechny kromě jednoho. Odeberte všechny definice vlastností **dependsOn** z definice prostředku.
-- Na konci tohoto kroku byste měli mít soubor, který vypadá jako příklad níže a má stejnou sadu vlastností.
+- Otevřete soubor šablony Správce prostředků, který jste si stáhli v kroku **identifikující infrastrukturu replikace** v libovolném editoru.
+- Odebere z šablony všechny definice prostředků kromě prostředků, které jsou typu *Microsoft. RecoveryServices/trezors/replicationFabrics/replicationProtectionContainers/replicationMigrationItems* .
+- Pokud existuje více definic prostředků výše uvedeného typu, odeberte všechny kromě jednoho. Odeberte všechny definice vlastností **dependsOn** z definice prostředků.
+- Na konci tohoto kroku byste měli mít soubor, který vypadá podobně jako v následujícím příkladu a má stejnou sadu vlastností.
 
 ```
 {
@@ -182,14 +182,14 @@ uuid                                 label       name    maxSizeInBytes
 }
 ```
 
-- Upravte vlastnost **name** v definici prostředku. Nahraďte řetězec, který následuje za poslední "/" ve vlastnosti name hodnotou *$machine. Název*( z předchozího kroku).
-- Změňte hodnotu **vlastnosti properties.providerSpecificDetails.vmwareMachineId** s hodnotou *$machine. ResourceId*( z předchozího kroku).
-- Nastavte hodnoty pro **targetResourceGroupId**, **targetNetworkId**, **targetSubnetName** na ID cílové skupiny prostředků, ID cílové virtuální sítě a název cílové podsítě.
-- Nastavte hodnotu **licenseType** na "WindowsServer" pro použití hybridní výhody Azure pro tento virtuální počítač. Pokud tento virtuální počítač nemá nárok na hybridní výhody Azure, nastavte hodnotu **licenseType** na NoLicenseType.
+- V definici prostředků upravte vlastnost **název** . Nahraďte řetězec, který následuje za posledním znakem "/" ve vlastnosti Name s hodnotou *$Machine. Název*(z předchozího kroku).
+- Změňte hodnotu vlastnosti **. providerSpecificDetails. vmwareMachineId** s hodnotou *$Machine. ResourceId*(z předchozího kroku).
+- Nastavte hodnoty pro **targetResourceGroupId**, **targetNetworkId**, **targetSubnetName** na ID cílové skupiny prostředků, ID prostředku cílové virtuální sítě a název cílové podsítě.
+- Pro použití Zvýhodněné hybridní využití Azure pro tento virtuální počítač nastavte hodnotu **LicenseType** na "windowsserver". Pokud tento virtuální počítač nemá nárok na Zvýhodněné hybridní využití Azure, nastavte hodnotu **LicenseType** na NoLicenseType.
 - Změňte hodnotu vlastnosti **targetVmName** na požadovaný název virtuálního počítače Azure pro migrovaný virtuální počítač.
-- Volitelně přidat vlastnost s názvem **targetVmSize** pod **vlastnost targetVmName.** Nastavte hodnotu vlastnosti **targetVmSize** na požadovanou velikost virtuálního počítače Azure pro migrovaný virtuální počítač.
-- Vlastnost **disksToInclude** je seznam diskových vstupů pro replikaci s každou položkou seznamu představující jeden místní disk. Vytvořte tolik položek seznamu jako počet disků na místním virtuálním počítači. Nahraďte vlastnost **diskId** v položce seznamu na uuid disků identifikovaných v předchozím kroku. Nastavte hodnotu **isOSDisk** na hodnotu "true" pro disk operačního systému virtuálního počítače a "false" pro všechny ostatní disky. Ponechte vlastnosti **logStorageAccountId** a **logStorageAccountSasSecretName** beze změny. Nastavte hodnotu **diskType** na typ spravovaného disku Azure *(Standard_LRS, Premium_LRS, StandardSSD_LRS)* pro použití pro disk. Pro disky, které je třeba zašifrovat pomocí CMK, přidejte vlastnost s názvem **diskEncryptionSetId** a nastavte hodnotu na ID prostředku vytvořené šifrovací sady disku(**$des. Id**) v kroku *Vytvořit sadu šifrování disku*
-- Uložte upravený soubor šablony. Ve výše uvedeném příkladu vypadá upravený soubor šablony takto:
+- Volitelně přidejte vlastnost s názvem **targetVmSize** pod vlastnost **targetVmName** . Nastavte hodnotu vlastnosti **targetVmSize** na požadovanou velikost virtuálního počítače Azure pro migrovaný virtuální počítač.
+- Vlastnost **disksToInclude** je seznam vstupů disku pro replikaci s každou položkou seznamu, která představuje jeden místní disk. Vytvořte tolik položek seznamu jako počet disků na místním virtuálním počítači. Nahraďte vlastnost **diskId** v položce seznamu identifikátorem UUID disků identifikovaných v předchozím kroku. Nastavte hodnotu **isOSDisk** na "true" pro disk s operačním systémem virtuálního počítače a "false" pro všechny ostatní disky. **LogStorageAccountId** a vlastnosti **logStorageAccountSasSecretName** ponechte beze změny. Nastavte hodnotu **diskType** na typ spravovaného disku Azure (*Standard_LRS, Premium_LRS, StandardSSD_LRS*), který se má použít pro disk. Pro disky, které je potřeba zašifrovat pomocí CMK přidejte vlastnost s názvem **diskEncryptionSetId** a nastavte hodnotu na ID prostředku pro vytvořenou sadu šifrování disku (**$des. ID**) v kroku *Vytvoření šifrovacího disku sady*
+- Uložte upravený soubor šablony. V příkladu výše vypadá upravený soubor šablony následujícím způsobem:
 
 ```
 {
@@ -249,7 +249,7 @@ uuid                                 label       name    maxSizeInBytes
 
 ## <a name="set-up-replication"></a>Nastavení replikace
 
-Nyní můžete nasadit upravenou šablonu Správce prostředků do skupiny zdrojů projektu a nastavit replikaci pro virtuální počítače. Zjistěte, jak [nasadit prostředky pomocí šablon Azure Resource Manageru a Azure PowerShellu](../azure-resource-manager/templates/deploy-powershell.md)
+Nyní můžete nasadit upravenou šablonu Správce prostředků do skupiny prostředků projektu pro nastavení replikace pro virtuální počítač. Naučte se [nasadit prostředek pomocí Azure Resource Manager šablon a Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName $ProjectResourceGroup -TemplateFile "C:\Users\Administrator\Downloads\template.json"

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 46c5e1ed0a1d0db100c3415c40f59d46f62b21f9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79258938"
 ---
 # <a name="azure-service-fabric-cli"></a>Azure Service Fabric CLI
@@ -22,7 +22,7 @@ Rozhraní příkazového řádku (CLI) Azure Service Fabric je nástroj příkaz
 
 Před instalací se ujistěte, že je ve vašem prostředí nainstalovaný Python a pip. Další informace najdete v [úvodní dokumentaci nástroje pip](https://pip.pypa.io/en/latest/quickstart/) a oficiální [dokumentaci k instalaci Pythonu](https://wiki.python.org/moin/BeginnersGuide/Download).
 
-CLI podporuje Python verze 2.7, 3.5, 3.6 a 3.7. Python 3.x je doporučená verze, protože Python 2.7 brzy dosáhne konce podpory.
+Rozhraní příkazového řádku podporuje Python verze 2,7, 3,5, 3,6 a 3,7. Python 3. x je doporučená verze, protože Python 2,7 se brzy dokončí.
 
 ### <a name="service-fabric-target-runtime"></a>Cílový modul runtime Service Fabric
 
@@ -30,7 +30,7 @@ Smyslem Service Fabric CLI je podpora nejnovější verze modulu runtime sady Se
 
 | Verze rozhraní příkazového řádku   | Podporovaná verze modulu runtime |
 |---------------|---------------------------|
-| Nejnovější (~=9)  | Nejnovější (~=7)              |
+| Nejnovější (~ = 9)  | Nejnovější (~ = 7)              |
 | 8.0.0         | 6.5                       |
 | 7.1.0         | 6.4                       |
 | 6.0.0         | 6.3                       |
@@ -57,11 +57,11 @@ Na své platformě můžete pip a Python nainstalovat mnoha způsoby. Tady je n�
 
 Ve Windows 10, Windows Server 2016 a Windows Server 2012 R2 použijte standardní oficiální pokyny k instalaci. Instalační program Pythonu ve výchozím nastavení nainstaluje také pip.
 
-1. Přejděte na oficiální [stránku pro stahování pythonů](https://www.python.org/downloads/)a stáhněte si nejnovější verzi Pythonu 3.7.
+1. Přejít na oficiální [stránku ke stažení v Pythonu](https://www.python.org/downloads/)a Stáhněte si nejnovější verzi pythonu 3,7.
 
 2. Spusťte instalační program.
 
-3. V dolní části výzvy vyberte **Přidat Python 3.7 do CESTY**.
+3. V dolní části výzvy vyberte **Přidat Python 3,7 k cestě**.
 
 4. Vyberte **Install Now** (Nainstalovat) a dokončete instalaci.
 
@@ -72,7 +72,7 @@ python --version
 pip --version
 ```
 
-Potom spusťte následující příkaz k instalaci příkazu Cli Azure Service Fabric (sfctl) a zobrazte stránku nápovědy příkazového příkazu:
+Pak spuštěním následujícího příkazu nainstalujte rozhraní příkazového řádku Azure Service Fabric CLI (sfctl) a zobrazte stránku s přehledem CLI:
 
 ```shell
 pip install sfctl
@@ -114,7 +114,7 @@ sudo pip3 install sfctl
 
 ### <a name="red-hat-enterprise-linux-74-service-fabric-preview-support"></a>Red Hat Enterprise Linux 7.4 (podpora Service Fabric ve verzi Preview)
 
-Chcete-li nainstalovat příkaz příkazpříkazpříkazy Service Fabric na Red Hat, spusťte následující příkazy:
+Pokud chcete nainstalovat Service Fabric CLI v Red Hat, spusťte následující příkazy:
 
 ```bash
 sudo yum install -y python34
@@ -123,7 +123,7 @@ sudo easy_install-3.4 pip
 sudo pip3 install sfctl
 ```
 
-Pro testování instalace, můžete odkazovat na kroky uvedené v **Ubuntu a Windows subsystém pro Linux** sekce
+Při testování instalace se můžete podívat na postup uvedený v části **Ubuntu a subsystém Windows pro Linux** .
 
 <a name = "cli-mac"></a>
 ### <a name="macos"></a>MacOS
@@ -134,7 +134,7 @@ V systému MacOS doporučujeme použít [správce balíčků HomeBrew](https://b
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
-Potom z terminálu nainstalujte Python 3.7, pip a Service Fabric CLI spuštěním následujících příkazů:
+Pak z terminálu nainstalujte Python 3,7, PIP a Service Fabric CLI spuštěním následujících příkazů:
 
 ```bash
 brew install python3
@@ -240,7 +240,7 @@ Ověřte, že zadaný koncový bod clusteru je dostupný a naslouchá. Ověřte 
 
 ### <a name="detailed-logs"></a>Podrobné protokoly
 
-Podrobné protokoly jsou často užitečné při ladění nebo hlášení problému. Příznak `--debug` zvyšuje podrobnost výstupu.
+Podrobné protokoly jsou často užitečné při ladění nebo hlášení problému. `--debug` Příznak zvyšuje úroveň podrobností výstupu.
 
 ### <a name="command-help-and-syntax"></a>Nápověda k příkazům a jejich syntaxe
 

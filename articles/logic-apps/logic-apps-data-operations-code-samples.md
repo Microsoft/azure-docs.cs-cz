@@ -1,29 +1,29 @@
 ---
 title: Ukázky kódu pro použití datových operací
-description: Vyzkoušejte tyto ukázky kódu, které ukazují, jak můžete používat datové operace v automatizovaných pracovních postupech vytvořených pomocí Azure Logic Apps
+description: Vyzkoušejte tyto ukázky kódu, které ukazují, jak můžete používat operace s daty v automatizovaných pracovních postupech vytvořených pomocí Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/01/2019
 ms.openlocfilehash: c56c31bb6f56efb10808ce25b6b232089391e831
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79270521"
 ---
-# <a name="data-operation-code-samples-for-azure-logic-apps"></a>Ukázky kódu operace dat pro Aplikace logiky Azure
+# <a name="data-operation-code-samples-for-azure-logic-apps"></a>Ukázky kódu operací s daty pro Azure Logic Apps
 
-Zde jsou ukázky kódu pro definice akcí operace dat v článku [Provést operace dat](../logic-apps/logic-apps-perform-data-operations.md). Tyto ukázky můžete použít, když chcete vyzkoušet příklady s vlastní logiky aplikace základní definice pracovního postupu, předplatné Azure a připojení rozhraní API. Stačí zkopírovat a vložit tyto definice akcí do editoru zobrazení kódu pro definici pracovního postupu aplikace logiky a potom upravit definice pro konkrétní pracovní postup. 
+Tady jsou ukázky kódu pro definice akcí operací s daty v článku, které [provádějí operace s daty](../logic-apps/logic-apps-perform-data-operations.md). Tyto ukázky můžete použít pro případy, kdy chcete vyzkoušet příklady s vlastní definicí pracovního postupu aplikace logiky, předplatným Azure a připojením rozhraní API. Jednoduše zkopírujte a vložte tyto definice akcí do editoru zobrazení kódu pro definici pracovního postupu vaší aplikace logiky a pak upravte definice pro konkrétní pracovní postup. 
 
-Na základě standardů JavaScript Object Notation (JSON) se tyto definice akcí zobrazují v abecedním pořadí. V návrháři aplikace logiky se však každá definice zobrazí ve správném `runAfter` pořadí v rámci pracovního postupu, protože vlastnost definice každé akce určuje pořadí spuštění.
+Na základě standardů JavaScript Object Notation (JSON) se tyto definice akcí zobrazují v abecedním pořadí. V návrháři aplikace logiky se však každá definice zobrazí ve správném pořadí v rámci pracovního postupu, protože každá `runAfter` vlastnost definice akce určuje pořadí spuštění.
 
 <a name="compose-action-example"></a>
 
 ## <a name="compose"></a>Vytvořit
 
-Chcete-li vyzkoušet příklad akce [ **Compose** ](../logic-apps/logic-apps-perform-data-operations.md#compose-action), zde jsou definice akcí, které můžete použít:
+Chcete-li vyzkoušet [příklad akce **psaní** ](../logic-apps/logic-apps-perform-data-operations.md#compose-action), tady jsou definice akcí, které můžete použít:
 
 ```json
 "actions": {
@@ -93,7 +93,7 @@ Chcete-li vyzkoušet příklad akce [ **Compose** ](../logic-apps/logic-apps-per
 
 ## <a name="create-csv-table"></a>Vytvoření tabulky CSV
 
-Chcete-li [ **vyzkoušet** příklad akce vytvořit tabulku CSV](../logic-apps/logic-apps-perform-data-operations.md#create-csv-table-action), zde jsou definice akcí, které můžete použít:
+Pokud chcete vyzkoušet [příklad akce **Vytvoření tabulky CSV** ](../logic-apps/logic-apps-perform-data-operations.md#create-csv-table-action), najdete tady definice akcí, které můžete použít:
 
 ```json
 "actions": {
@@ -138,7 +138,7 @@ Chcete-li [ **vyzkoušet** příklad akce vytvořit tabulku CSV](../logic-apps/l
 
 ## <a name="create-html-table"></a>Vytvoření tabulky HTML
 
-Chcete-li [ **vyzkoušet** příklad akce vytvořit tabulku HTML](../logic-apps/logic-apps-perform-data-operations.md#create-html-table-action), zde jsou definice akcí, které můžete použít:
+Pokud chcete vyzkoušet [příklad akce **Vytvoření tabulky HTML** ](../logic-apps/logic-apps-perform-data-operations.md#create-html-table-action), najdete tady definice akcí, které můžete použít:
 
 ```json
 "actions": {
@@ -181,9 +181,9 @@ Chcete-li [ **vyzkoušet** příklad akce vytvořit tabulku HTML](../logic-apps/
 
 <a name="filter-array-action-example"></a>
 
-## <a name="filter-array"></a>Pole filtru
+## <a name="filter-array"></a>Filtrovat pole
 
-Chcete-li vyzkoušet příklad akce [ **pole filtrů** ](../logic-apps/logic-apps-perform-data-operations.md#filter-array-action), zde jsou definice akcí, které můžete použít:
+Pokud chcete vyzkoušet [příklad akce **pole filtru** ](../logic-apps/logic-apps-perform-data-operations.md#filter-array-action), tady jsou definice akcí, které můžete použít:
 
 ```json
 "actions": {
@@ -224,7 +224,7 @@ Chcete-li vyzkoušet příklad akce [ **pole filtrů** ](../logic-apps/logic-app
 
 ## <a name="join"></a>Spojit
 
-Chcete-li [ **vyzkoušet** příklad akce Připojit](../logic-apps/logic-apps-perform-data-operations.md#join-action)se , zde jsou definice akcí, které můžete použít:
+Pokud chcete vyzkoušet [příklad akce **spojení** ](../logic-apps/logic-apps-perform-data-operations.md#join-action), můžete použít tyto definice akcí:
 
 ```json
 "actions": {
@@ -265,7 +265,7 @@ Chcete-li [ **vyzkoušet** příklad akce Připojit](../logic-apps/logic-apps-pe
 
 ## <a name="parse-json"></a>Parsovat JSON
 
-Chcete-li [vyzkoušet příklad akce **Analyzovat JSON** ](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action), zde jsou definice akcí, které můžete použít:
+Pokud chcete vyzkoušet [příklad akce **analyzovat JSON** ](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action), najdete tady definice akcí, které můžete použít:
 
 ```json
 "actions": {
@@ -324,7 +324,7 @@ Chcete-li [vyzkoušet příklad akce **Analyzovat JSON** ](../logic-apps/logic-a
 
 ## <a name="select"></a>Vyberte
 
-Chcete-li vyzkoušet příklad akce [ **Výběr** ](../logic-apps/logic-apps-perform-data-operations.md#select-action), zde jsou definice akcí, které můžete použít:
+Pokud chcete vyzkoušet [příklad akce **výběru** ](../logic-apps/logic-apps-perform-data-operations.md#select-action), můžete použít tyto definice akcí:
 
 ```json
 "actions": {

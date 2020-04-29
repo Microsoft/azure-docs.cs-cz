@@ -1,6 +1,6 @@
 ---
-title: Konfigurace správy relací ověřování – služba Azure Active Directory
-description: Přizpůsobte konfiguraci relace ověřování Azure AD včetně četnosti přihlášení uživatele a trvalosti relace prohlížeče.
+title: Konfigurace správy relace ověřování – Azure Active Directory
+description: Upravte konfiguraci relace ověřování Azure AD, včetně četnosti přihlašovacích uživatelů a trvalosti relace prohlížeče.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -12,34 +12,34 @@ manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6e9c0c88064c00c97de7dc58a500910e81c04eef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79263280"
 ---
-# <a name="configure-authentication-session-management-with-conditional-access"></a>Konfigurace správy ověřovacích relací pomocí podmíněného přístupu
+# <a name="configure-authentication-session-management-with-conditional-access"></a>Konfigurace správy relace ověřování pomocí podmíněného přístupu
 
-Ve složitých nasazeních mohou mít organizace potřebu omezit relace ověřování. Některé scénáře mohou zahrnovat:
+Ve složitých nasazeních můžou organizace potřebovat omezit relace ověřování. Některé scénáře můžou zahrnovat:
 
 * Přístup k prostředkům z nespravovaného nebo sdíleného zařízení
 * Přístup k citlivým informacím z externí sítě
 * Uživatelé s vysokým dopadem
-* Kritické podnikové aplikace
+* Důležité obchodní aplikace
 
-Ovládací prvky podmíněného přístupu umožňují vytvářet zásady, které cílí na konkrétní případy použití ve vaší organizaci, aniž by to ovlivnilo všechny uživatele.
+Řízení podmíněného přístupu umožňuje vytvářet zásady, které cílí na konkrétní případy použití v rámci vaší organizace, aniž by to ovlivnilo všechny uživatele.
 
-Než se ponoříte do podrobností o tom, jak zásadu nakonfigurovat, podívejme se na výchozí konfiguraci.
+Než se začnete na podrobnosti o tom, jak nakonfigurovat zásady, Podívejme se na výchozí konfiguraci.
 
-## <a name="user-sign-in-frequency"></a>Frekvence přihlašování uživatele
+## <a name="user-sign-in-frequency"></a>Frekvence přihlašování uživatelů
 
-Frekvence přihlášení definuje časové období, než je uživatel vyzván k novému přihlášení při pokusu o přístup k prostředku.
+Frekvence přihlášení definuje časový interval před tím, než se uživateli zobrazí výzva k opětovnému přihlášení při pokusu o přístup k prostředku.
 
-Výchozí konfigurace služby Azure Active Directory (Azure AD) pro frekvenci přihlášení uživatele je postupné okno 90 dní. Žádat uživatele o pověření se často jeví jako rozumná věc, ale může se vymstít: uživatelé, kteří jsou vyškoleni k zadání svých přihlašovacích údajů bez přemýšlení, je mohou neúmyslně poskytnout na výzvu škodlivého pověření.
+Výchozí konfigurací Azure Active Directory (Azure AD) pro frekvenci přihlašování uživatelů je posuvné okno 90 dnů. Dotazování uživatelů na přihlašovací údaje se často zdá jako rozumné, ale může Backfire: uživatelé, kteří jsou vyškoleni k zadání přihlašovacích údajů, aniž by si je mohli omylem dodávat do výzvy ke škodlivým přihlašovacím údajům.
 
-Může to znít alarmující, nežádat uživatele, aby se přihlásil zpět, ve skutečnosti jakékoli porušení zásad IT zruší relaci. Některé příklady zahrnují (ale nejsou omezeny na) změnu hesla, nekompatibilní zařízení nebo účet zakázat. Můžete také explicitně [odvolat relace uživatelů pomocí prostředí PowerShell](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0). Výchozí konfigurace Azure AD přijde na "neptejte se uživatelů, aby poskytli svá pověření, pokud se nezměnil stav zabezpečení jejich relací".
+Může to vést ke zvukovému signalizaci, že nežádá uživatele, aby se k němu přihlásil. v důsledku toho jakékoli porušení zásad IT odvolá relaci. Mezi příklady patří (ale nejsou omezené na) změnu hesla, nekompatibilní zařízení nebo účet zakážete. Relace uživatelů taky můžete explicitně [odvolat pomocí prostředí PowerShell](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0). Výchozí konfigurace služby Azure AD se zobrazí v případě, že uživatel nepožaduje zadání přihlašovacích údajů, pokud se zabezpečení stav jejich relací nezměnilo.
 
-Nastavení frekvence přihlášení funguje s aplikacemi, které implementovaly protokoly OAUTH2 nebo OIDC podle standardů. S tímto nastavením je v souladu většina nativních aplikací Microsoftu pro Windows, Mac a Mobile, včetně následujících webových aplikací.
+Nastavení četnosti přihlašování funguje s aplikacemi, které implementovaly protokoly OAUTH2 nebo OIDC podle standardů. Většina nativních aplikací Microsoftu pro Windows, Mac a mobilní zařízení, včetně těchto webových aplikací, dodržuje toto nastavení.
 
 - Word, Excel, PowerPoint Online
 - OneNote Online
@@ -47,88 +47,88 @@ Nastavení frekvence přihlášení funguje s aplikacemi, které implementovaly 
 - Portál pro správu O365
 - Exchange Online
 - SharePoint a OneDrive
-- Webový klient Teams
+- Webový klient pro týmy
 - Dynamics CRM Online
 - portál Azure
 
-### <a name="user-sign-in-frequency-and-device-identities"></a>Frekvence přihlášení uživatelů a identity zařízení
+### <a name="user-sign-in-frequency-and-device-identities"></a>Četnost přihlašování uživatelů a identit zařízení
 
-Pokud máte Azure AD připojen, hybridní Azure AD připojen, nebo Azure AD registrovaná zařízení, když uživatel odemkne své zařízení nebo přihlášení interně, tato událost uspokojí zásady frekvence přihlášení také. V následujících 2 příkladech je frekvence přihlášení uživatele nastavena na 1 hodinu:
+Pokud máte připojenou službu Azure AD, připojené k hybridní službě Azure AD nebo zařízení registrovaná v Azure AD, když uživatel odemkne své zařízení nebo přihlášení interaktivně, bude tato událost vyhovovat i zásadám četnosti přihlašování. V následujících 2 příkladech je četnost přihlášení uživatele nastavena na 1 hodinu:
 
 Příklad 1:
 
-- V 00:00 se uživatel přihlásí ke svému zařízení s Windows 10 Azure AD a začne pracovat na dokumentu uloženém na SharePointu Online.
-- Uživatel pokračuje v práci na stejném dokumentu na svém zařízení po dobu jedné hodiny.
-- V 01:00 je uživatel vyzván k novému přihlášení na základě požadavku na frekvenci přihlášení v zásadách podmíněného přístupu nakonfigurovaných jeho správcem.
+- V 00:00 se uživatel přihlásí k zařízení připojenému ke službě Azure AD ve Windows 10 a spustí práci na dokumentu uloženém na SharePointu Online.
+- Uživatel pokračuje v práci na stejném dokumentu na svém zařízení po celou hodinu.
+- V 01:00 se uživateli zobrazí výzva k opětovnému přihlášení na základě požadavku na četnost přihlášení v zásadách podmíněného přístupu nakonfigurovaných správcem.
 
 Příklad 2:
 
-- V 00:00 se uživatel přihlásí ke svému zařízení s Windows 10 Azure AD a začne pracovat na dokumentu uloženém na SharePointu Online.
-- V 00:30 uživatel vstane a provede přestávku a zamkne své zařízení.
-- V 00:45 se uživatel vrátí z přestávky a odemkne zařízení.
-- V 01:45 je uživatel vyzván k přihlášení znovu na základě požadavku frekvence přihlášení v zásadách podmíněného přístupu nakonfigurovaných jejich správcem od posledního přihlášení v 00:45.
+- V 00:00 se uživatel přihlásí k zařízení připojenému ke službě Azure AD ve Windows 10 a spustí práci na dokumentu uloženém na SharePointu Online.
+- V 00:30 se uživatel zaregistruje a provede přerušení uzamykání zařízení.
+- V 00:45 se uživatel vrátí z jeho přerušení a odemkne zařízení.
+- V 01:45 se uživateli zobrazí výzva k opětovnému přihlášení na základě požadavku na četnost přihlášení v zásadách podmíněného přístupu nakonfigurovaných správcem od posledního přihlášení v 00:45.
 
-## <a name="persistence-of-browsing-sessions"></a>Trvalá procházení relací
+## <a name="persistence-of-browsing-sessions"></a>Trvalost relací procházení
 
 Trvalá relace prohlížeče umožňuje uživatelům zůstat přihlášeni po zavření a opětovném otevření okna prohlížeče.
 
-Výchozí nastavení azure ad pro trvalost relace prohlížeče umožňuje uživatelům na osobních zařízeních zvolit, zda chcete zachovat relaci zobrazením "Zůstat přihlášeni?" po úspěšném ověření. Pokud je trvalost prohlížeče nakonfigurována ve službě AD FS pomocí pokynů v článku [Nastavení jednotného přihlášení služby AD FS](/windows-server/identity/ad-fs/operations/ad-fs-single-sign-on-settings#enable-psso-for-office-365-users-to-access-sharepoint-online
-), budeme dodržovat tyto zásady a také zachováme relaci Azure AD. Můžete také nakonfigurovat, zda se uživatelům ve vašem tenantovi zobrazí možnost Zůstat přihlášeni? výzvou změnou příslušného nastavení v podokně značky společnosti na webu Azure Portal pomocí pokynů v článku [Přizpůsobení přihlašovací stránky Azure AD](../fundamentals/customize-branding.md).
+Výchozí nastavení Azure AD pro trvalost relace prohlížeče umožňuje uživatelům na osobních zařízeních vybrat, jestli se má relace zachovat, a to tak, že zobrazí "zůstat přihlášeni?". Po úspěšném ověření se zobrazí výzva. Pokud je trvalost prohlížeče nakonfigurované v AD FS pomocí pokynů v článku [AD FS nastavení jednotného přihlašování](/windows-server/identity/ad-fs/operations/ad-fs-single-sign-on-settings#enable-psso-for-office-365-users-to-access-sharepoint-online
+), budeme tyto zásady dodržovat a zároveň trvale zachová relaci Azure AD. Můžete také nakonfigurovat, jestli uživatelé ve vašem tenantovi uvidí "zůstat přihlášeni?" pomocí pokynů v článku [přizpůsobení přihlašovací stránky služby Azure AD](../fundamentals/customize-branding.md)se zobrazí výzva, že změníte příslušné nastavení v podokně Branding společnosti v Azure Portal.
 
 ## <a name="configuring-authentication-session-controls"></a>Konfigurace ovládacích prvků relace ověřování
 
-Podmíněný přístup je funkce Azure AD Premium a vyžaduje prémiovou licenci. Pokud se chcete dozvědět víc o podmíněném přístupu, přečtěte si informace [o podmíněném přístupu ve službě Azure Active Directory?](overview.md#license-requirements)
+Podmíněný přístup je Azure AD Premium schopnost a vyžaduje licenci na prémii. Pokud se chcete dozvědět víc o podmíněném přístupu, přečtěte si téma [co je podmíněný přístup v Azure Active Directory?](overview.md#license-requirements)
 
 > [!WARNING]
-> Pokud používáte [konfigurovatelnou](../develop/active-directory-configurable-token-lifetimes.md) funkci životnosti tokenu, která je aktuálně ve verzi Public Preview, upozorňujeme, že nepodporujeme vytváření dvou různých zásad pro stejnou kombinaci uživatelů nebo aplikací: jednu s touto funkcí a druhou s konfigurovatelnou funkcí životnosti tokenu. Společnost Microsoft plánuje vyřadit konfigurovatelnou funkci životnosti tokenu 1.  
+> Pokud používáte funkci [existence konfigurovatelného tokenu](../develop/active-directory-configurable-token-lifetimes.md) , která je aktuálně ve verzi Public Preview, pamatujte, že nepodporujeme vytváření dvou různých zásad pro stejnou kombinaci uživatelů nebo aplikací: jednu s touto funkcí a další s funkcí konfigurovatelný životností tokenu. Microsoft plánuje vyřadit z provozu konfigurovatelnou funkci životnosti tokenu 1. května 2020 a nahradit ji funkcí správy relace ověřování pomocí podmíněného přístupu.  
 
-### <a name="policy-1-sign-in-frequency-control"></a>Zásady 1: Řízení frekvence přihlášení
+### <a name="policy-1-sign-in-frequency-control"></a>Zásady 1: řízení četnosti přihlašování
 
 1. Vytvořit novou zásadu
 1. Vyberte všechny požadované podmínky pro prostředí zákazníka, včetně cílových cloudových aplikací.
 
    > [!NOTE]
-   > Doporučujeme nastavit stejnou četnost ověřování pro klíčové aplikace Microsoft Office, jako je Exchange Online a SharePoint Online, abyste se co nejlépe domátli uživatelského prostředí.
+   > Pro klíčové systém Microsoft Office aplikace, jako je Exchange Online a SharePoint Online, se doporučuje nastavit četnost výzvy pro ověření, která se bude používat pro nejlepší uživatelské prostředí.
 
-1. Přejděte na Relaci **ovládacích prvků** > **přístupu** a klikněte na **Četnost přihlášení.**
+1. Přejít do > **relace** **řízení přístupu**a kliknout na **četnost přihlášení**
 1. Zadejte požadovanou hodnotu dnů a hodin do prvního textového pole.
-1. Výběr hodnoty **hodin** nebo **dnů** z rozevíracího pole
-1. Uložení zásad
+1. Vyberte v rozevíracím seznamu hodnotu **hodiny** nebo **dny** .
+1. Uložit zásadu
 
-![Zásady podmíněného přístupu nakonfigurované pro frekvenci přihlášení](media/howto-conditional-access-session-lifetime/conditional-access-policy-session-sign-in-frequency.png)
+![Zásada podmíněného přístupu konfigurovaná pro četnost přihlášení](media/howto-conditional-access-session-lifetime/conditional-access-policy-session-sign-in-frequency.png)
 
-Na azure ad registrovaných zařízení s Windows přihlášení k zařízení se považuje za výzvu. Pokud jste například nakonfigurovali frekvenci přihlášení na 24 hodin pro aplikace Office, uživatelé na zařízeních s Windows registrovanými službou Azure AD uspokojí zásady četnosti přihlášení přihlášením přihlášením se k zařízení a při otevírání aplikací Office se znovu nezobrazí výzva.
+V zaregistrovaných zařízeních s Windows Azure AD se k zařízení přihlásí za výzvu. Pokud jste například nakonfigurovali četnost přihlášení na 24 hodin pro aplikace Office, uživatelé na registrovaných zařízeních s Windows v Azure AD splní zásady četnosti přihlašování přihlašováním k zařízení a při otevírání aplikací Office se neobjeví znovu.
 
-Pokud jste nakonfigurovali různé frekvence přihlášení pro různé webové aplikace, které běží ve stejné relaci prohlížeče, budou nejpřísnější zásady použity pro obě aplikace, protože všechny aplikace spuštěné ve stejné relaci prohlížeče sdílejí jeden token relace.
+Pokud jste nakonfigurovali různou frekvenci přihlašování pro různé webové aplikace, které běží ve stejné relaci prohlížeče, použije se u obou aplikací nejpřísnější zásada, protože všechny aplikace spuštěné ve stejné relaci prohlížeče sdílejí jeden token relace.
 
-### <a name="policy-2-persistent-browser-session"></a>Zásady 2: Trvalá relace prohlížeče
+### <a name="policy-2-persistent-browser-session"></a>Zásada 2: trvalá relace prohlížeče
 
 1. Vytvořit novou zásadu
 1. Vyberte všechny požadované podmínky.
 
    > [!NOTE]
-   > Vezměte prosím na vědomí, že tento ovládací prvek vyžaduje zvolit "Všechny cloudové aplikace" jako podmínku. Trvalost relace prohlížeče je řízena tokenem relace ověřování. Všechny karty v relaci prohlížeče sdílejí jeden token relace, a proto musí všechny sdílet stav trvalosti.
+   > Upozorňujeme, že tento ovládací prvek vyžaduje jako podmínku možnost "všechny cloudové aplikace". Trvalost relace prohlížeče se řídí tokenem relace ověřování. Všechny karty v relaci prohlížeče sdílejí jeden token relace, takže všichni musí sdílet stav trvalosti.
 
-1. Přejděte na**relaci** **ovládacích prvků** > aplikace Access a klikněte na **trvalá relace prohlížeče.**
-1. Výběr hodnoty z rozevíracího pole
+1. Přejděte na > **relaci** **řízení přístupu**a klikněte na **trvalá relace prohlížeče** .
+1. Vybrat hodnotu z rozevíracího seznamu
 1. Uložit zásady
 
-![Zásady podmíněného přístupu nakonfigurované pro trvalý prohlížeč](media/howto-conditional-access-session-lifetime/conditional-access-policy-session-persistent-browser.png)
+![Zásada podmíněného přístupu konfigurovaná pro trvalý prohlížeč](media/howto-conditional-access-session-lifetime/conditional-access-policy-session-persistent-browser.png)
 
 > [!NOTE]
-> Trvalá konfigurace relace prohlížeče v podmíněném přístupu Azure AD přepíše možnost Zůstat přihlášená? nastavení v podokně značky společnosti na portálu Azure pro stejného uživatele, pokud jste nakonfigurovali obě zásady.
+> Trvalá konfigurace relace prohlížeče v rámci podmíněného přístupu Azure AD přepíše "zůstat přihlášeni?" nastavení v podokně Branding společnosti v Azure Portal pro stejného uživatele, pokud jste nakonfigurovali obě zásady.
 
 ## <a name="validation"></a>Ověřování
 
-Pomocí nástroje What-If simulujte přihlášení uživatele k cílové aplikaci a další podmínky na základě toho, jak jste nakonfigurovali zásady. Ovládací prvky správy relace ověřování se zobrazí ve výsledku nástroje.
+Pomocí nástroje citlivosti pro simulaci přihlášení uživatele k cílové aplikaci a dalším podmínkám na základě toho, jak jste nakonfigurovali zásady. Ve výsledku nástroje se zobrazí ovládací prvky správy relace ověřování.
 
-![Výsledky nástroje Co-li podmíněného přístupu](media/howto-conditional-access-session-lifetime/conditional-access-what-if-tool-result.png)
+![Výsledky nástroje What If podmíněného přístupu](media/howto-conditional-access-session-lifetime/conditional-access-what-if-tool-result.png)
 
 ## <a name="policy-deployment"></a>Nasazení zásad
 
-Chcete-li se ujistit, že vaše zásady fungují podle očekávání, doporučujeme osvědčeným postupem otestovat před jejich zavedením do produkčního prostředí. V ideálním případě použijte testovacího klienta k ověření, zda vaše nové zásady fungují tak, jak bylo zamýšleno. Další informace naleznete v článku [Doporučené postupy pro podmíněný přístup ve službě Azure Active Directory](best-practices.md).
+Abyste se ujistili, že vaše zásada funguje podle očekávání, doporučuje se před jejich vyzkoušením do produkčního prostředí otestovat. V ideálním případě použijte testovacího tenanta a ověřte, zda vaše nové zásady fungují tak, jak mají. Další informace najdete v článku [osvědčené postupy pro podmíněný přístup v Azure Active Directory](best-practices.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-* Pokud chcete vědět, jak nakonfigurovat zásady podmíněného přístupu, přečtěte si článek [Vyžadovat vícefaktorové povolení pro konkrétní aplikace s podmíněným přístupem Azure Active Directory](app-based-mfa.md).
-* Pokud jste připraveni nakonfigurovat zásady podmíněného přístupu pro vaše prostředí, přečtěte si článek [Doporučené postupy pro podmíněný přístup ve službě Azure Active Directory](best-practices.md).
+* Pokud chcete zjistit, jak nakonfigurovat zásadu podmíněného přístupu, přečtěte si článek věnované použití [vícefaktorového ověřování pro konkrétní aplikace s Azure Active Directory podmíněný přístup](app-based-mfa.md).
+* Pokud jste připraveni ke konfiguraci zásad podmíněného přístupu pro vaše prostředí, přečtěte si článek [osvědčené postupy pro podmíněný přístup v Azure Active Directory](best-practices.md).

@@ -1,29 +1,29 @@
 ---
-title: Jak upgradovat nástroje Azure Dev Spaces
+title: Postup upgradu Azure Dev Spacesch nástrojů
 services: azure-dev-spaces
 ms.date: 07/03/2018
 ms.topic: conceptual
-description: Zjistěte, jak upgradovat nástroje příkazového řádku Azure Dev Spaces, rozšíření kódu Sady Visual Studio a rozšíření Sady Visual Studio
+description: Informace o upgradu Azure Dev Spaces nástrojů příkazového řádku, Visual Studio Code rozšíření a rozšíření sady Visual Studio
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, kontejnery
 ms.openlocfilehash: 748ed4699591a21a5a09da924e093011b0813b46
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79265230"
 ---
-# <a name="how-to-upgrade-azure-dev-spaces-tools"></a>Jak upgradovat nástroje Azure Dev Spaces
+# <a name="how-to-upgrade-azure-dev-spaces-tools"></a>Postup upgradu Azure Dev Spacesch nástrojů
 
-Pokud je k dispozici nová verze a už používáte Azure Dev Spaces, možná budete muset upgradovat vaše nástroje klienta Azure Dev Spaces.
+Pokud je k dispozici nová verze, kterou už Azure Dev Spaces používáte, možná budete muset upgradovat klientské nástroje Azure Dev Spaces.
 
-## <a name="update-the-azure-cli"></a>Aktualizace nastavení příkazu k onomu Azure
+## <a name="update-the-azure-cli"></a>Aktualizace rozhraní příkazového řádku Azure
 
-Když aktualizujete nejnovější nastavení příkazového příkazu k dispozici pro Azure, získáte také nejnovější verzi rozšíření příkazového příkazu pro dev spaces.
+Když aktualizujete nejnovější rozhraní příkazového řádku Azure CLI, získáte také nejnovější verzi rozšíření vývojové prostory CLI.
 
-Nemusíte odinstalovat předchozí verzi, stačí najít odpovídající stáhnout na [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
+Nemusíte odinstalovat předchozí verzi, stačí najít příslušné soubory ke stažení v [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 
-## <a name="update-the-dev-spaces-cli-extension-and-command-line-tools"></a>Aktualizace rozšíření a nástrojů příkazového řádku Dev Spaces
+## <a name="update-the-dev-spaces-cli-extension-and-command-line-tools"></a>Aktualizace rozšíření pro vývoj a nástroje příkazového řádku pro vývojové prostory
 
 Spusťte následující příkaz:
 
@@ -33,14 +33,14 @@ az aks use-dev-spaces -n <your-aks-cluster> -g <your-aks-cluster-resource-group>
 
 ## <a name="update-the-vs-code-extension"></a>Aktualizace rozšíření VS Code
 
-Po instalaci se rozšíření automaticky aktualizuje. Možná budete muset znovu načíst rozšíření používat nové funkce. V kódu VS otevřete podokno **Rozšíření,** zvolte rozšíření **Azure Dev Spaces** a zvolte **Znovu načíst**.
+Po instalaci se rozšíření automaticky aktualizuje. Je možné, že bude nutné znovu načíst rozšíření pro použití nových funkcí. V VS Code otevřete podokno **rozšíření** , vyberte rozšíření **Azure dev Spaces** a vyberte možnost **znovu načíst**.
 
 ## <a name="update-the-visual-studio-extension"></a>Aktualizace rozšíření sady Visual Studio
 
-Stejně jako u jiných rozšíření a aktualizací vás Visual Studio upozorní, když je k dispozici aktualizace nástrojů sady Visual Studio pro Kubernetes, která zahrnuje Azure Dev Spaces. V pravém horním rohu obrazovky vyhledejte ikonu vlajky.
+Podobně jako u jiných rozšíření a aktualizací Visual Studio vás upozorní, jakmile bude k dispozici aktualizace Visual Studio Tools for Kubernetes, která zahrnuje Azure Dev Spaces. Vyhledejte ikonu příznaku v pravém horním rohu obrazovky.
 
-Chcete-li aktualizovat nástroje v sadě Visual Studio, zvolte položku nabídky **Nástroje > rozšíření a aktualizace** a na levé straně zvolte **Aktualizace**. Najděte **nástroje Visual Studia pro Kubernetes** a zvolte tlačítko **Aktualizovat.**
+Chcete-li aktualizovat nástroje v aplikaci Visual Studio, klikněte na položku nabídky **rozšíření a aktualizace nástroje >** a na levé straně vyberte možnost **aktualizace**. Vyhledejte **Visual Studio Tools for Kubernetes** a klikněte na tlačítko **aktualizovat** .
 
 ## <a name="next-steps"></a>Další kroky
 
-Vyzkoušejte nové nástroje vytvořením nového clusteru. Vyzkoušejte rychlé starty a kurzy v [Azure Dev Spaces](/azure/dev-spaces).
+Otestujte nové nástroje vytvořením nového clusteru. Vyzkoušejte rychlé starty a kurzy na [Azure dev Spaces](/azure/dev-spaces).

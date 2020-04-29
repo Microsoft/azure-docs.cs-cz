@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Přidání elastického fondu do skupiny převzetí služeb při selhání'
-description: Přidejte elastický fond Azure SQL Database do skupiny s podporou převzetí služeb při selhání pomocí portálu Azure, PowerShellu nebo nastavení řízení příkazového příkazu Azure.
+description: Přidejte Azure SQL Database elastický fond do skupiny převzetí služeb při selhání pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -12,67 +12,67 @@ ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 08/27/2019
 ms.openlocfilehash: c57f9eed2147504dd7b3313d58468fb76ab40caa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79268974"
 ---
 # <a name="tutorial-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>Kurz: Přidání elastického fondu Azure SQL Database do skupiny převzetí služeb při selhání
 
-Nakonfigurujte skupinu převzetí služeb při selhání pro elastický fond Azure SQL Database a otestujte převzetí služeb při selhání pomocí portálu Azure.  V tomto kurzu se naučíte:
+Nakonfiguruje skupinu převzetí služeb při selhání pro elastický fond Azure SQL Database a testovací převzetí služeb při selhání pomocí Azure Portal.  V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> - Vytvořte jednu databázi Azure SQL Database.
-> - Přidejte jednu databázi do elastického fondu. 
+> - Vytvořte Azure SQL Database izolovanou databázi.
+> - Přidejte do elastického fondu jednu databázi. 
 > - Vytvořte [skupinu převzetí služeb při selhání](sql-database-auto-failover-group.md) pro dva elastické fondy mezi dvěma logickými servery SQL.
-> - Otestujte převzetí služeb při selhání.
+> - Testovací převzetí služeb při selhání.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Abyste mohli absolvovat tento kurz, ujistěte se, že máte následující: 
 
-- Předplatné Azure. [Vytvořte si bezplatný účet,](https://azure.microsoft.com/free/) pokud ho ještě nemáte.
+- Předplatné Azure. Pokud ho ještě nemáte, [Vytvořte si bezplatný účet](https://azure.microsoft.com/free/) .
 
 
-## <a name="1---create-a-single-database"></a>1 - Vytvoření jedné databáze 
+## <a name="1---create-a-single-database"></a>1. vytvoření samostatné databáze 
 
 [!INCLUDE [sql-database-create-single-database](includes/sql-database-create-single-database.md)]
 
-## <a name="2---add-single-database-to-elastic-pool"></a>2 - Přidání jedné databáze do elastického fondu
+## <a name="2---add-single-database-to-elastic-pool"></a>2 – přidat izolovanou databázi do elastického fondu
 V tomto kroku vytvoříte elastický fond a přidáte do něj jednu databázi. 
 
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-Vytvořte elastický fond pomocí portálu Azure. 
+Vytvořte elastický fond pomocí Azure Portal. 
 
 
-1. V levé nabídce portálu Azure vyberte **Azure SQL.** Pokud **Azure SQL** není v seznamu, vyberte Všechny **služby**, zadejte Azure SQL do vyhledávacího pole. (Nepovinné) Vyberte hvězdičku vedle **Azure SQL,** kterou chcete uvěznit a přidejte ji jako položku v levé navigaci. 
-1. Výběrem **možnosti + Přidat** otevřete stránku **možnosti Vybrat nasazení SQL.** Další informace o různých databázích můžete zobrazit výběrem možnosti Zobrazit podrobnosti na dlaždici Databáze.
-1. V rozevíracím okně **Typ prostředku** vyberte **elastický fond** v rozbalovací masce Typ prostředku na **dlaždici Databáze SQL.** Vyberte **Vytvořit,** chcete-li vytvořit elastický fond. 
+1. V nabídce na levé straně Azure Portal vyberte **Azure SQL** . Pokud **Azure SQL** není v seznamu, vyberte **všechny služby**a do vyhledávacího pole zadejte Azure SQL. Volitelné Vyberte hvězdičku vedle **Azure SQL** , kterou chcete oblíbenou, a přidejte ji jako položku v levém navigačním panelu. 
+1. Výběrem **+ Přidat** otevřete stránku **vybrat možnost nasazení SQL** . Další informace o různých databázích můžete zobrazit tak, že na dlaždici databáze vyberete Zobrazit podrobnosti.
+1. V rozevíracím seznamu **typ prostředku** na dlaždici **databáze SQL** vyberte **elastický fond** . Vyberte **vytvořit** a vytvořte tak elastický fond. 
 
-    ![Výběr elastického fondu](media/sql-database-elastic-pool-failover-group-tutorial/select-azure-sql-elastic-pool.png)
+    ![Vybrat elastický fond](media/sql-database-elastic-pool-failover-group-tutorial/select-azure-sql-elastic-pool.png)
 
-1. Nakonfigurujte elastický fond s následujícími hodnotami:
+1. Nastavte elastický fond s následujícími hodnotami:
    - **Název**: Zadejte jedinečný název elastického fondu, například `myElasticPool`. 
-   - **Předplatné**: Vyberte si předplatné z rozevíracího souboru.
-   - **ResourceGroup**: `myResourceGroup` Vyberte z rozevíracího souboru skupiny prostředků, kterou jste vytvořili v části 1. 
-   - **Server**: V rozevíracím souboru vyberte server, který jste vytvořili v části 1.  
+   - **Předplatné**: v rozevíracím seznamu vyberte své předplatné.
+   - Skupina **prostředků: v**rozevíracím seznamu vyberte `myResourceGroup` skupinu prostředků, kterou jste vytvořili v části 1. 
+   - **Server**: vyberte server, který jste vytvořili v části 1, z rozevíracího seznamu.  
 
-       ![Vytvoření nového serveru pro elastický fond](media/sql-database-elastic-pool-failover-group-tutorial/use-existing-server-for-elastic-pool.png)
+       ![Vytvořit nový server pro elastický fond](media/sql-database-elastic-pool-failover-group-tutorial/use-existing-server-for-elastic-pool.png)
 
-   - **Výpočetní + úložiště:** Vyberte **Konfigurovat elastický fond** pro konfiguraci výpočetních prostředků, úložiště a přidejte do elastického fondu jednu databázi. Na kartě **Nastavení fondu** ponechte výchozí gen5 s 2 virtuálními jádry a 32 gb. 
+   - **COMPUTE + úložiště**: vyberte **Konfigurovat elastický fond** pro konfiguraci výpočetních prostředků, úložiště a přidejte svoji databázi do elastického fondu. Na kartě **nastavení fondu** ponechte výchozí hodnotu Gen5 se 2 virtuální jádra a 32 GB. 
 
-1. Na stránce **Konfigurovat** vyberte kartu **Databáze** a pak zvolte **Přidat databázi**. Vyberte databázi, kterou jste vytvořili v části 1 a pak vyberte **Použít,** chcete-li ji přidat do elastického fondu. Vyberte **Použít** znovu, chcete-li použít nastavení elastického fondu a zavřete stránku **Konfigurovat.** 
+1. Na stránce **Konfigurace** vyberte kartu **databáze** a pak zvolte možnost **Přidat databázi**. Zvolte databázi, kterou jste vytvořili v části 1, a pak vyberte **použít** pro přidání do elastického fondu. Pokud chcete použít nastavení elastického fondu a zavřít stránku **Konfigurace** , vyberte **použít** znovu. 
 
-    ![Přidání jazyka SQL DB do elastického fondu](media/sql-database-elastic-pool-failover-group-tutorial/add-database-to-elastic-pool.png)
+    ![Přidat databázi SQL do elastického fondu](media/sql-database-elastic-pool-failover-group-tutorial/add-database-to-elastic-pool.png)
 
-1. Vyberte **Revize + vytvořit,** chcete-li zkontrolovat nastavení elastického fondu, a pak vyberte **Vytvořit** a vytvořte elastický fond. 
+1. Výběrem možnosti **zkontrolovat + vytvořit** zkontrolujte nastavení elastického fondu a potom vyberte **vytvořit** a vytvořte tak elastický fond. 
 
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-Vytvořte elastické fondy a sekundární server pomocí PowerShellu. 
+# <a name="powershell"></a>[Prostředí](#tab/azure-powershell)
+Vytvořte své elastické fondy a sekundární server pomocí PowerShellu. 
 
    ```powershell-interactive
    # Set variables for your server and database
@@ -116,56 +116,56 @@ Vytvořte elastické fondy a sekundární server pomocí PowerShellu.
    $addDatabase
    ```
 
-Tato část kurzu používá následující rutiny prostředí PowerShell:
+Tato část kurzu používá následující rutiny PowerShellu:
 
 | Příkaz | Poznámky |
 |---|---|
-| [Nový elastický fond AzSql](/powershell/module/az.sql/new-azsqlelasticpool) | Vytvoří fond elastické databáze pro Azure SQL Database.| 
-| [Set-AzSqlDatabáze](/powershell/module/az.sql/set-azsqldatabase) | Nastaví vlastnosti databáze nebo přesune existující databázi do elastického fondu. | 
+| [New-AzSqlElasticPool](/powershell/module/az.sql/new-azsqlelasticpool) | Vytvoří fond elastické databáze pro Azure SQL Database.| 
+| [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) | Nastaví vlastnosti pro databázi nebo přesune existující databázi do elastického fondu. | 
 
 ---
 
-## <a name="3---create-the-failover-group"></a>3 - Vytvoření skupiny převzetí služeb při selhání 
-V tomto kroku vytvoříte [skupinu převzetí služeb při selhání](sql-database-auto-failover-group.md) mezi existujícím serverem Azure SQL a novým serverem Azure SQL v jiné oblasti. Potom přidejte elastický fond do skupiny převzetí služeb při selhání. 
+## <a name="3---create-the-failover-group"></a>3. Vytvoření skupiny převzetí služeb při selhání 
+V tomto kroku vytvoříte [skupinu převzetí služeb při selhání](sql-database-auto-failover-group.md) mezi existujícím serverem SQL Azure a novým serverem SQL Azure v jiné oblasti. Pak přidejte elastický fond do skupiny převzetí služeb při selhání. 
 
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-Vytvořte skupinu s podporou převzetí služeb při selhání pomocí portálu Azure. 
+Vytvořte skupinu převzetí služeb při selhání pomocí Azure Portal. 
 
-1. V levém menu [portálu Azure](https://portal.azure.com)vyberte **Azure SQL** . Pokud **Azure SQL** není v seznamu, vyberte Všechny **služby**, zadejte Azure SQL do vyhledávacího pole. (Nepovinné) Vyberte hvězdičku vedle **Azure SQL,** kterou chcete uvěznit a přidejte ji jako položku v levé navigaci. 
-1. Vyberte elastický fond vytvořený v `myElasticPool`předchozí části, například . 
-1. V podokně **Přehled** vyberte název serveru v části **Název serveru** a otevřete nastavení serveru.
+1. V nabídce na levé straně [Azure Portal](https://portal.azure.com)vyberte **Azure SQL** . Pokud **Azure SQL** není v seznamu, vyberte **všechny služby**a do vyhledávacího pole zadejte Azure SQL. Volitelné Vyberte hvězdičku vedle **Azure SQL** , kterou chcete oblíbenou, a přidejte ji jako položku v levém navigačním panelu. 
+1. Vyberte elastický fond vytvořený v předchozí části, například `myElasticPool`. 
+1. V podokně **Přehled** vyberte název serveru v části **název serveru** a otevřete tak nastavení serveru.
   
-    ![Otevřený server pro elastický fond](media/sql-database-elastic-pool-failover-group-tutorial/server-for-elastic-pool.png)
+    ![Otevřít server pro elastický fond](media/sql-database-elastic-pool-failover-group-tutorial/server-for-elastic-pool.png)
 
-1. V podokně **Nastavení** vyberte **skupiny převzetí služeb při selhání** a pak vyberte **Přidat skupinu,** abyste vytvořili novou skupinu převzetí služeb při selhání. 
+1. V podokně **Nastavení** vyberte **skupiny převzetí služeb při selhání** a pak vyberte **Přidat skupinu** a vytvořte novou skupinu převzetí služeb při selhání. 
 
     ![Přidat novou skupinu převzetí služeb při selhání](media/sql-database-elastic-pool-failover-group-tutorial/elastic-pool-failover-group.png)
 
-1. Na stránce **Skupina převzetí služeb při selhání** zadejte nebo vyberte následující hodnoty a pak vyberte **Vytvořit**:
-    - **Název skupiny převzetí služeb při selhání**: Zadejte jedinečný název skupiny s podporou převzetí služeb při selhání, například `failovergrouptutorial`. 
-    - **Sekundární server**: Vyberte možnost *konfigurace požadovaných nastavení* a pak zvolte vytvořit nový **server**. Případně můžete zvolit již existující server jako sekundární server. Po zadání následujících hodnot pro nový sekundární server vyberte **vybrat**. 
-        - **Název serveru**: Zadejte jedinečný název sekundárního `mysqlsecondary`serveru, například . 
-        - **Přihlášení správce serveru**: Zadejte`azureuser`
-        - **Heslo**: Zadejte složité heslo, které splňuje požadavky na heslo.
-        - **Umístění**: Z rozbalovací nabídky zvolte `East US`umístění, například . Toto umístění nemůže být stejné jako primární server.
+1. Na stránce **Skupina převzetí služeb při selhání** zadejte nebo vyberte následující hodnoty a pak vyberte **vytvořit**:
+    - **Název skupiny převzetí služeb při selhání**: Zadejte jedinečný název skupiny převzetí `failovergrouptutorial`služeb při selhání, například. 
+    - **Sekundární server**: vyberte možnost *Konfigurace požadovaných nastavení* a pak zvolte **Vytvoření nového serveru**. Alternativně můžete zvolit již existující server jako sekundární server. Po zadání následujících hodnot pro nový sekundární server vyberte **Vybrat**. 
+        - **Název serveru**: Zadejte jedinečný název sekundárního serveru, například `mysqlsecondary`. 
+        - **Přihlašovací jméno správce serveru**: typ`azureuser`
+        - **Heslo**: zadejte komplexní heslo, které splňuje požadavky na heslo.
+        - **Umístění**: vyberte umístění z rozevíracího seznamu, například `East US`. Toto umístění nemůže být stejné jako primární server.
 
        > [!NOTE]
-       > Nastavení přihlášení a brány firewall serveru se musí shodovat s nastavením primárního serveru. 
+       > Přihlašovací údaje serveru a firewall se musí shodovat s nastavením vašeho primárního serveru. 
     
        ![Vytvoření sekundárního serveru pro skupinu převzetí služeb při selhání](media/sql-database-elastic-pool-failover-group-tutorial/create-secondary-failover-server.png)
 
-1. Vyberte **Databáze ve skupině** a vyberte elastický fond, který jste vytvořili v oddíle 2. Mělo by se zobrazit upozornění s výzvou k vytvoření elastického fondu na sekundárním serveru. Vyberte upozornění a pak vyberte **OK,** chcete-li vytvořit elastický fond na sekundárním serveru. 
+1. Vyberte **databáze ve skupině** a potom vyberte elastický fond, který jste vytvořili v části 2. Mělo by se zobrazit upozornění, které vás vyzve k vytvoření elastického fondu na sekundárním serveru. Vyberte upozornění a pak vyberte **OK** a vytvořte elastický fond na sekundárním serveru. 
         
-    ![Přidání elastického fondu do skupiny převzetí služeb při selhání](media/sql-database-elastic-pool-failover-group-tutorial/add-elastic-pool-to-failover-group.png)
+    ![Přidat elastický fond do skupiny převzetí služeb při selhání](media/sql-database-elastic-pool-failover-group-tutorial/add-elastic-pool-to-failover-group.png)
         
-1. Vyberte **Vybrat,** chcete-li použít nastavení elastického fondu pro skupinu s podporou převzetí služeb při selhání, a pak vyberte **Vytvořit,** chcete-li vytvořit skupinu převzetí služeb při selhání. Přidáním elastického fondu do skupiny převzetí služeb při selhání se automaticky spustí proces geografické replikace.
+1. Vyberte **možnost vyberte** , pokud chcete nastavení elastického fondu použít pro skupinu převzetí služeb při selhání, a pak vyberte **vytvořit** a vytvořte skupinu převzetí služeb při selhání. Přidáním elastického fondu do skupiny převzetí služeb při selhání se automaticky spustí proces geografické replikace.
 
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Prostředí](#tab/azure-powershell)
 
-Vytvořte skupinu s podporou převzetí služeb při selhání pomocí Prostředí PowerShell. 
+Vytvořte skupinu převzetí služeb při selhání pomocí PowerShellu. 
 
    ```powershell-interactive
    # Set variables for your server and database
@@ -234,51 +234,51 @@ Vytvořte skupinu s podporou převzetí služeb při selhání pomocí Prostřed
    $failoverGroup
    ```
 
-Tato část kurzu používá následující rutiny prostředí PowerShell:
+Tato část kurzu používá následující rutiny PowerShellu:
 
 | Příkaz | Poznámky |
 |---|---|
-| [Nový-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Vytvoří databázový server SQL, který hostuje jednotlivé databáze a elastické fondy. |
-| [Nové pravidlo azsqlserverfirewallfirewall](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Vytvoří pravidlo brány firewall pro logický server. | 
-| [Nový elastický fond AzSql](/powershell/module/az.sql/new-azsqlelasticpool) | Vytvoří fond elastické databáze pro Azure SQL Database.| 
-| [Nová-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/new-azsqldatabasefailovergroup) | Vytvoří novou skupinu převzetí služeb při selhání. |
-| [Add-AzSqlDatabaseToFailoverGroup](/powershell/module/az.sql/add-azsqldatabasetofailovergroup) | Přidá jednu nebo více databází Azure SQL do skupiny převzetí služeb při selhání. |
-| [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Získá nebo zobrazí seznam skupin y převzetí služeb při selhání Azure SQL Database. |
+| [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Vytvoří server SQL Database hostující jednotlivé databáze a elastické fondy. |
+| [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Vytvoří pravidlo brány firewall pro logický Server. | 
+| [New-AzSqlElasticPool](/powershell/module/az.sql/new-azsqlelasticpool) | Vytvoří fond elastické databáze pro Azure SQL Database.| 
+| [New-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/new-azsqldatabasefailovergroup) | Vytvoří novou skupinu převzetí služeb při selhání. |
+| [Add-AzSqlDatabaseToFailoverGroup](/powershell/module/az.sql/add-azsqldatabasetofailovergroup) | Přidá jednu nebo více databází SQL Azure do skupiny převzetí služeb při selhání. |
+| [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Získá nebo zobrazí seznam Azure SQL Database skupin převzetí služeb při selhání. |
 
 ---
 
 
-## <a name="4---test-failover"></a>4 - Zkušební převzetí služeb při selhání 
-V tomto kroku se nezdaří vaše skupina převzetí služeb při selhání přejdete na sekundární server a potom poselháníní pomocí portálu Azure. 
+## <a name="4---test-failover"></a>4. testovací převzetí služeb při selhání 
+V tomto kroku dojde k selhání skupiny převzetí služeb při selhání pro sekundární server a následnému navrácení služeb po obnovení pomocí Azure Portal. 
 
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-Otestujte převzetí služeb při selhání skupiny převzetí služeb při selhání pomocí portálu Azure. 
+Otestujte převzetí služeb při selhání ve skupině převzetí služeb při selhání pomocí Azure Portal. 
 
-1. V levém menu [portálu Azure](https://portal.azure.com)vyberte **Azure SQL** . Pokud **Azure SQL** není v seznamu, vyberte Všechny **služby**, zadejte Azure SQL do vyhledávacího pole. (Nepovinné) Vyberte hvězdičku vedle **Azure SQL,** kterou chcete uvěznit a přidejte ji jako položku v levé navigaci. 
-1. Vyberte elastický fond vytvořený v `myElasticPool`předchozí části, například . 
-1. Vyberte název serveru v části **Název serveru** a otevřete nastavení serveru.
+1. V nabídce na levé straně [Azure Portal](https://portal.azure.com)vyberte **Azure SQL** . Pokud **Azure SQL** není v seznamu, vyberte **všechny služby**a do vyhledávacího pole zadejte Azure SQL. Volitelné Vyberte hvězdičku vedle **Azure SQL** , kterou chcete oblíbenou, a přidejte ji jako položku v levém navigačním panelu. 
+1. Vyberte elastický fond vytvořený v předchozí části, například `myElasticPool`. 
+1. Kliknutím na název serveru v části **název serveru** otevřete nastavení serveru.
 
-    ![Otevřený server pro elastický fond](media/sql-database-elastic-pool-failover-group-tutorial/server-for-elastic-pool.png)
+    ![Otevřít server pro elastický fond](media/sql-database-elastic-pool-failover-group-tutorial/server-for-elastic-pool.png)
 
-1. V podokně **Nastavení** vyberte **skupiny s podporou převzetí služeb při selhání** a pak zvolte skupinu s podporou převzetí služeb při selhání, kterou jste vytvořili v části 2. 
+1. V podokně **Nastavení** vyberte **skupiny převzetí služeb při selhání** a pak vyberte skupinu převzetí služeb při selhání, kterou jste vytvořili v části 2. 
   
    ![Výběr skupiny převzetí služeb při selhání z portálu](media/sql-database-elastic-pool-failover-group-tutorial/select-failover-group.png)
 
 1. Zkontrolujte, který server je primární a který server je sekundární. 
-1. Vyberte **převzetí služeb při selhání** z podokna úloh, chcete-li přepojit skupinu převzetí služeb při selhání obsahující elastický fond. 
-1. Vyberte **Ano** na upozornění, které vás upozorní, že relace TDS budou odpojeny. 
+1. V podokně úloh vyberte **převzetí služeb při** selhání pro skupinu převzetí služeb při selhání, která obsahuje váš elastický fond. 
+1. U upozornění, které vás upozorní na to, že relace TDS budou odpojeny, vyberte **Ano** . 
 
-   ![Převzetí služeb při selhání skupiny převzetí služeb při selhání obsahující databázi SQL](media/sql-database-elastic-pool-failover-group-tutorial/failover-sql-db.png)
+   ![Převzetí služeb při selhání ve skupině, která obsahuje vaše databáze SQL](media/sql-database-elastic-pool-failover-group-tutorial/failover-sql-db.png)
 
-1. Zkontrolujte, který server je primární, který server je sekundární. Pokud je převzetí služeb při selhání úspěšné, měly mít dva servery vyměněné role. 
-1. Vyberte **převzetí služeb při selhání** znovu, chcete-li skupinu převzetí služeb při selhání vrátit zpět do původního nastavení. 
+1. Zkontrolujte, který server je primární a který server je sekundární. Pokud se převzetí služeb při selhání úspěšně převedlo, musí mít dva servery zaměnitelné role. 
+1. Znovu vyberte **převzetí služeb při** selhání, abyste skupinu převzetí služeb při selhání mohli obnovit původní nastavení. 
 
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Prostředí](#tab/azure-powershell)
 
-Otestujte převzetí služeb při selhání skupiny s podporou převzetí služeb při selhání pomocí prostředí PowerShell. 
+Testovací převzetí služeb při selhání ve skupině převzetí služeb při selhání pomocí PowerShellu 
 
    ```powershell-interactive
    # Set variables for your server and database
@@ -310,7 +310,7 @@ Otestujte převzetí služeb při selhání skupiny s podporou převzetí služe
    Write-host "Failover group failed over to" $drServerName 
    ```
 
-Selhat skupiny převzetí služeb při selhání převést na sekundární server a potom zpět pomocí služby Poselhání z mocenek. 
+Převzetí služeb při selhání pro skupinu převezmete do sekundárního serveru a pak navrácení služeb po obnovení pomocí PowerShellu. 
 
    ```powershell-interactive
    # Set variables for your server and database
@@ -342,12 +342,12 @@ Selhat skupiny převzetí služeb při selhání převést na sekundární serve
    Write-host "Failover group failed over to" $serverName 
    ```
 
-Tato část kurzu používá následující rutiny prostředí PowerShell:
+Tato část kurzu používá následující rutiny PowerShellu:
 
 | Příkaz | Poznámky |
 |---|---|
-| [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Získá nebo zobrazí seznam skupin y převzetí služeb při selhání Azure SQL Database. |
-| [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup)| Provede převzetí služeb při selhání skupiny Azure SQL Database převzetí služeb při selhání. |
+| [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Získá nebo zobrazí seznam Azure SQL Database skupin převzetí služeb při selhání. |
+| [Switch – AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup)| Provede převzetí služeb při selhání skupiny převzetí služeb při selhání Azure SQL Database. |
 
 
 ---
@@ -360,12 +360,12 @@ Vyčistěte prostředky odstraněním skupiny prostředků.
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
 
-1. Přejděte do skupiny prostředků na [webu Azure Portal](https://portal.azure.com).
-1. Vyberte **Odstranit skupinu prostředků,** chcete-li odstranit všechny prostředky ve skupině, stejně jako samotnou skupinu prostředků. 
-1. Do textového pole zadejte název skupiny prostředků `myResourceGroup`, a pak vyberte **Odstranit,** chcete-li skupinu prostředků odstranit. 
+1. Přejděte do skupiny prostředků v [Azure Portal](https://portal.azure.com).
+1. Vyberte **Odstranit skupinu prostředků** a odstraňte všechny prostředky ve skupině a také samotnou skupinu prostředků. 
+1. Zadejte název skupiny `myResourceGroup`prostředků, v textovém poli a pak vyberte **Odstranit** a odstraňte skupinu prostředků. 
 
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Prostředí](#tab/azure-powershell)
 
 Vyčistěte prostředky pomocí PowerShellu. 
 
@@ -379,7 +379,7 @@ Vyčistěte prostředky pomocí PowerShellu.
    Write-host "Resource group removed =" $resourceGroupName
    ```
 
-Tato část kurzu používá následující rutinu prostředí PowerShell:
+Tato část kurzu používá následující rutinu PowerShellu:
 
 | Příkaz | Poznámky |
 |---|---|
@@ -388,11 +388,11 @@ Tato část kurzu používá následující rutinu prostředí PowerShell:
 ---
 
 > [!IMPORTANT]
-> Pokud chcete zachovat skupinu prostředků, ale odstranit sekundární databázi, odeberte ji ze skupiny převzetí služeb při selhání před odstraněním. Odstranění sekundární databáze před odebráním ze skupiny převzetí služeb při selhání může způsobit nepředvídatelné chování. 
+> Pokud chcete zachovat skupinu prostředků, ale odstranit sekundární databázi, odeberte ji ze skupiny převzetí služeb při selhání a teprve potom ji odstraňte. Odstranění sekundární databáze před jejím odebráním ze skupiny převzetí služeb při selhání může způsobit nepředvídatelné chování. 
 
 ## <a name="full-script"></a>Celý skript
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Prostředí](#tab/azure-powershell)
 
 [!code-powershell-interactive[main](../../powershell_scripts/sql-database/failover-groups/add-elastic-pool-to-failover-group-az-ps.ps1 "Add elastic pool to a failover group")]
 
@@ -401,35 +401,35 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | Příkaz | Poznámky |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
-| [Nový-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Vytvoří databázový server SQL, který hostuje jednotlivé databáze a elastické fondy. |
-| [Nové pravidlo azsqlserverfirewallfirewall](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Vytvoří pravidlo brány firewall pro logický server. | 
-| [Nová databáze AzSql](/powershell/module/az.sql/new-azsqldatabase) | Vytvoří novou databázi Azure SQL Database. | 
-| [Nový elastický fond AzSql](/powershell/module/az.sql/new-azsqlelasticpool) | Vytvoří fond elastické databáze pro Azure SQL Database.| 
-| [Set-AzSqlDatabáze](/powershell/module/az.sql/set-azsqldatabase) | Nastaví vlastnosti databáze nebo přesune existující databázi do elastického fondu. | 
-| [Nová-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/new-azsqldatabasefailovergroup) | Vytvoří novou skupinu převzetí služeb při selhání. |
-| [Databáze Get-AzSql](/powershell/module/az.sql/get-azsqldatabase) | Získá jednu nebo více databází SQL. |
-| [Add-AzSqlDatabaseToFailoverGroup](/powershell/module/az.sql/add-azsqldatabasetofailovergroup) | Přidá jednu nebo více databází Azure SQL do skupiny převzetí služeb při selhání. |
-| [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Získá nebo zobrazí seznam skupin y převzetí služeb při selhání Azure SQL Database. |
-| [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup)| Provede převzetí služeb při selhání skupiny Azure SQL Database převzetí služeb při selhání. |
+| [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Vytvoří server SQL Database hostující jednotlivé databáze a elastické fondy. |
+| [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Vytvoří pravidlo brány firewall pro logický Server. | 
+| [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Vytvoří novou Azure SQL Database jedinou databázi. | 
+| [New-AzSqlElasticPool](/powershell/module/az.sql/new-azsqlelasticpool) | Vytvoří fond elastické databáze pro Azure SQL Database.| 
+| [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) | Nastaví vlastnosti pro databázi nebo přesune existující databázi do elastického fondu. | 
+| [New-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/new-azsqldatabasefailovergroup) | Vytvoří novou skupinu převzetí služeb při selhání. |
+| [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase) | Získá jednu nebo více databází SQL. |
+| [Add-AzSqlDatabaseToFailoverGroup](/powershell/module/az.sql/add-azsqldatabasetofailovergroup) | Přidá jednu nebo více databází SQL Azure do skupiny převzetí služeb při selhání. |
+| [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Získá nebo zobrazí seznam Azure SQL Database skupin převzetí služeb při selhání. |
+| [Switch – AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup)| Provede převzetí služeb při selhání skupiny převzetí služeb při selhání Azure SQL Database. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Odebere skupinu prostředků. | 
 
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
-Pro portál Azure portal nejsou k dispozici žádné skripty.
+Pro Azure Portal nejsou k dispozici žádné skripty.
 
 ---
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste přidali elastický fond Azure SQL Database do skupiny převzetí služeb při selhání a otestovali převzetí služeb při selhání. Naučili jste se tyto postupy:
+V tomto kurzu jste do skupiny převzetí služeb při selhání přidali elastický fond Azure SQL Database a otestujete převzetí služeb při selhání. Naučili jste se tyto postupy:
 
 > [!div class="checklist"]
-> - Vytvořte jednu databázi Azure SQL Database.
-> - Přidejte jednu databázi do elastického fondu. 
+> - Vytvořte Azure SQL Database izolovanou databázi.
+> - Přidejte do elastického fondu jednu databázi. 
 > - Vytvořte [skupinu převzetí služeb při selhání](sql-database-auto-failover-group.md) pro dva elastické fondy mezi dvěma logickými servery SQL.
-> - Otestujte převzetí služeb při selhání.
+> - Testovací převzetí služeb při selhání.
 
-Převést na další návod, jak migrovat pomocí DMS.
+Přejděte k dalšímu kurzu migrace pomocí DMS.
 
 > [!div class="nextstepaction"]
-> [Kurz: Migrace serveru SQL Server do sdružené databáze pomocí služby DMS](../dms/tutorial-sql-server-to-azure-sql.md?toc=/azure/sql-database/toc.json)
+> [Kurz: migrace SQL Server do fondu databáze pomocí DMS](../dms/tutorial-sql-server-to-azure-sql.md?toc=/azure/sql-database/toc.json)

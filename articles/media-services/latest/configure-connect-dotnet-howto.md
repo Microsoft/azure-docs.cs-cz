@@ -1,6 +1,6 @@
 ---
-title: Připojení k rozhraní API Azure Media Services v3 – rozhraní .NET
-description: Tento článek ukazuje, jak se připojit k rozhraní API Media Services v3 s rozhraním .NET.
+title: Připojení k Azure Media Services V3 API – .NET
+description: Tento článek ukazuje, jak se připojit k rozhraní Media Services V3 API s rozhraním .NET.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,63 +14,63 @@ ms.topic: article
 ms.date: 09/18/2019
 ms.author: juliako
 ms.openlocfilehash: b8f4de1a5b9d8216ae2442631f5f9135c3c72d0b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79269806"
 ---
-# <a name="connect-to-media-services-v3-api---net"></a>Připojení k rozhraní API Media Services v3 - .NET
+# <a name="connect-to-media-services-v3-api---net"></a>Připojení k Media Services V3 API – .NET
 
-Tento článek ukazuje, jak se připojit k Azure Media Services v3 .NET SDK pomocí metody přihlášení instančního objektu.
+V tomto článku se dozvíte, jak se připojit k sadě Azure Media Services V3 .NET SDK pomocí metody Login objektu služby.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- [Vytvořte účet mediálních služeb](create-account-cli-how-to.md). Nezapomeňte si zapamatovat název skupiny prostředků a název účtu Služby Media Services.
-- Nainstalujte nástroj, který chcete použít pro vývoj rozhraní .NET. Kroky v tomto článku ukazují, jak používat [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Můžete použít Visual Studio Kód, naleznete v [tématu Práce s C#](https://code.visualstudio.com/docs/languages/csharp). Nebo můžete použít jiný editor kódu.
+- [Vytvořte účet Media Services](create-account-cli-how-to.md). Nezapomeňte si pamatovat název skupiny prostředků a název účtu Media Services
+- Nainstalujte nástroj, který byste chtěli použít pro vývoj pro .NET. Postup v tomto článku ukazuje, jak používat [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Můžete použít Visual Studio Code, viz [práce s jazykem C#](https://code.visualstudio.com/docs/languages/csharp). Nebo můžete použít jiný Editor kódu.
 
 > [!IMPORTANT]
-> Zkontrolujte [konvence pojmenování](media-services-apis-overview.md#naming-conventions).
+> Přečtěte si [zásady vytváření názvů](media-services-apis-overview.md#naming-conventions).
 
 ## <a name="create-a-console-application"></a>Vytvoření konzolové aplikace
 
 1. Spusťte Visual Studio. 
-1. V nabídce **Soubor** klepněte na položku **Nový** > **projekt**. 
-1. Vytvořte aplikaci konzoly **.NET Core.**
+1. V nabídce **soubor** klikněte na příkaz **Nový** > **projekt**. 
+1. Vytvořte konzolovou aplikaci **.NET Core** .
 
-Ukázková aplikace v tomto `netcoreapp2.0`tématu cílí na . Kód používá 'asynchronní hlavní', který je k dispozici počínaje C# 7.1. Viz tento [blog](https://blogs.msdn.microsoft.com/benwilli/2017/12/08/async-main-is-available-but-hidden/) pro více informací.
+Ukázková aplikace v tomto tématu cílí na `netcoreapp2.0`cíle. Kód používá Async Main, který je k dispozici počínaje jazykem C# 7,1. Další podrobnosti najdete v tomto [blogu](https://blogs.msdn.microsoft.com/benwilli/2017/12/08/async-main-is-available-but-hidden/) .
 
-## <a name="add-required-nuget-packages"></a>Přidání požadovaných balíčků NuGet
+## <a name="add-required-nuget-packages"></a>Přidat požadované balíčky NuGet
 
-1. V sadě Visual Studio vyberte **nástroje** > **NuGet Správce balíčků** > **NuGet Manager Console**.
-2. V okně **konzoly** Správce `Install-Package` balíčků přidejte pomocí příkazu následující balíčky NuGet. Například, `Install-Package Microsoft.Azure.Management.Media`.
+1. V > aplikaci Visual Studio vyberte **nástroje** > **Správce balíčků NuGet****Konzola správce NuGet**.
+2. V okně **konzoly Správce balíčků** přidejte následující balíčky `Install-Package` NuGet pomocí příkazu. Například, `Install-Package Microsoft.Azure.Management.Media`.
 
 |Balíček|Popis|
 |---|---|
-|`Microsoft.Azure.Management.Media`|Azure Media Services SDK. <br/>Chcete-li se ujistit, že používáte nejnovější balíček Služby Azure Media Services, podívejte se na [Microsoft.Azure.Management.Media](https://www.nuget.org/packages/Microsoft.Azure.Management.Media).|
-|`Microsoft.Rest.ClientRuntime.Azure.Authentication`|ADAL ověřování knihovna pro Azure SDK pro NET|
-|`Microsoft.Extensions.Configuration.EnvironmentVariables`|Čtení konfiguračních hodnot z proměnných prostředí a místních souborů JSON|
-|`Microsoft.Extensions.Configuration.Json`|Čtení konfiguračních hodnot z proměnných prostředí a místních souborů JSON
-|`WindowsAzure.Storage`|Sada SDK úložiště|
+|`Microsoft.Azure.Management.Media`|Azure Media Services SDK. <br/>Abyste měli jistotu, že používáte nejnovější balíček Azure Media Services, zkontrolujte [Microsoft. Azure. Management. Media](https://www.nuget.org/packages/Microsoft.Azure.Management.Media).|
+|`Microsoft.Rest.ClientRuntime.Azure.Authentication`|Knihovna ověřování ADAL pro sadu Azure SDK pro NET|
+|`Microsoft.Extensions.Configuration.EnvironmentVariables`|Čtení hodnot konfigurace z proměnných prostředí a místních souborů JSON|
+|`Microsoft.Extensions.Configuration.Json`|Čtení hodnot konfigurace z proměnných prostředí a místních souborů JSON
+|`WindowsAzure.Storage`|Sada SDK pro úložiště|
 
 ## <a name="create-and-configure-the-app-settings-file"></a>Vytvoření a konfigurace souboru nastavení aplikace
 
-### <a name="create-appsettingsjson"></a>Vytvoření souboru appsettings.json
+### <a name="create-appsettingsjson"></a>Vytvořit appSettings. JSON
 
-1. Přejít **Obecný** > **textový soubor**.
-1. Pojmenujte jej "appsettings.json".
-1. Nastavte vlastnost "Kopírovat do výstupního adresáře" souboru JSON na "Kopírovat, pokud novější" (tak, aby aplikace mohla přistupovat k němu při publikování).
+1. Přejít na **obecný** > **textový soubor**
+1. Pojmenujte ho "appSettings. JSON".
+1. Nastavte vlastnost kopírovat do výstupního adresáře souboru. JSON na kopírovat, pokud je novější (takže aplikace bude mít k nim přístup, když je publikovaná).
 
-### <a name="set-values-in-appsettingsjson"></a>Nastavení hodnot v souboru appsettings.json
+### <a name="set-values-in-appsettingsjson"></a>Nastavení hodnot v souboru appSettings. JSON
 
-Spusťte příkaz, `az ams account sp create` jak je popsáno v [přístupových api](access-api-cli-how-to.md). Příkaz vrátí json, který byste měli zkopírovat do "appsettings.json".
+Spusťte příkaz `az ams account sp create` , jak je popsáno v tématu [přístupová rozhraní API](access-api-cli-how-to.md). Příkaz vrátí JSON, který byste měli zkopírovat do souboru appSettings. JSON.
  
 ## <a name="add-configuration-file"></a>Přidání konfiguračního souboru
 
-Pro větší pohodlí přidejte konfigurační soubor, který je zodpovědný za čtení hodnot z "appsettings.json".
+Pro usnadnění práce přidejte konfigurační soubor, který je zodpovědný za čtení hodnot z "appSettings. JSON".
 
-1. Přidejte do projektu novou třídu .cs. Pojmenujte ji `ConfigWrapper`. 
-1. Vložte do tohoto souboru následující kód (tento příklad `ConsoleApp1`předpokládá, že máte obor názvů ).
+1. Přidejte do projektu novou třídu. cs. Pojmenujte ji `ConfigWrapper`. 
+1. Do tohoto souboru vložte následující kód (Tento příklad předpokládá, že máte obor názvů `ConsoleApp1`).
 
 ```csharp
 using System;
@@ -141,9 +141,9 @@ namespace ConsoleApp1
 }
 ```
 
-## <a name="connect-to-the-net-client"></a>Připojení ke klientovi .NET
+## <a name="connect-to-the-net-client"></a>Připojení k klientovi .NET
 
-Pokud chcete začít používat rozhraní Media Services API se sadou .NET SDK, musíte vytvořit objekt **AzureMediaServicesClient**. K vytvoření tohoto objektu, musíte zadat přihlašovací údaje, aby se klient mohl připojit k Azure pomocí Azure AD. V níže uvedeném kódu vytvoří funkce GetCredentialsAsync objekt ServiceClientCredentials na základě pověření zadaných v místním konfiguračním souboru.
+Pokud chcete začít používat rozhraní Media Services API se sadou .NET SDK, musíte vytvořit objekt **AzureMediaServicesClient**. K vytvoření tohoto objektu, musíte zadat přihlašovací údaje, aby se klient mohl připojit k Azure pomocí Azure AD. V následujícím kódu GetCredentialsAsync funkce vytvoří objekt ServiceClientCredentials na základě přihlašovacích údajů dodaných v místním konfiguračním souboru.
 
 1. Otevřete `Program.cs`.
 1. Vložte následující kód:
@@ -228,19 +228,19 @@ namespace ConsoleApp1
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Kurz: Nahrávání, kódování a streamování videí - .NET](stream-files-tutorial-with-api.md) 
-- [Kurz: Streamujte živě s Mediálními službami v3 - .NET](stream-live-tutorial-with-api.md)
-- [Kurz: Analýza videí pomocí mediálních služeb v3 - .NET](analyze-videos-tutorial-with-api.md)
-- [Vytvoření vstupu úlohy z místního souboru - .NET](job-input-from-local-file-how-to.md)
-- [Vytvoření vstupu úlohy z adresy URL HTTPS - .NET](job-input-from-http-how-to.md)
-- [Zakódovat pomocí vlastní transformace - .NET](customize-encoder-presets-how-to.md)
-- [Použití dynamického šifrování AES-128 a služby doručování klíčů - .NET](protect-with-aes128.md)
-- [Použití dynamického šifrování DRM a služby doručování licencí - .NET](protect-with-drm.md)
-- [Získání podpisového klíče ze stávajících zásad - .NET](get-content-key-policy-dotnet-howto.md)
-- [Vytváření filtrů pomocí mediálních služeb - .NET](filters-dynamic-manifest-dotnet-howto.md)
-- [Pokročilé příklady videa na vyžádání azure functions v2 s Mediální službou v3](https://aka.ms/ams3functions)
+- [Kurz: nahrávání, kódování a streamování videí – .NET](stream-files-tutorial-with-api.md) 
+- [Kurz: živé streamování s Media Services V3 – .NET](stream-live-tutorial-with-api.md)
+- [Kurz: analýza videí pomocí Media Services V3-.NET](analyze-videos-tutorial-with-api.md)
+- [Vytvoření vstupu úlohy z místního souboru – .NET](job-input-from-local-file-how-to.md)
+- [Vytvoření vstupu úlohy z adresy URL protokolu HTTPS – .NET](job-input-from-http-how-to.md)
+- [Kódování pomocí vlastní transformace – .NET](customize-encoder-presets-how-to.md)
+- [Použití dynamického šifrování AES-128 a služby pro doručování klíčů – .NET](protect-with-aes128.md)
+- [Použití dynamického šifrování DRM a služby doručování licencí – .NET](protect-with-drm.md)
+- [Získat podpisový klíč ze stávající zásady – .NET](get-content-key-policy-dotnet-howto.md)
+- [Vytváření filtrů pomocí Media Services – .NET](filters-dynamic-manifest-dotnet-howto.md)
+- [Příklady pokročilých videí na vyžádání Azure Functions v2 s Media Services V3](https://aka.ms/ams3functions)
 
 ## <a name="see-also"></a>Viz také
 
 * [Reference k .NET](https://docs.microsoft.com/dotnet/api/overview/azure/mediaservices/management?view=azure-dotnet)
-* Další příklady kódu naleznete [v ukládat ukázky sady .NET SDK.](https://github.com/Azure-Samples/media-services-v3-dotnet)
+* Další příklady kódu naleznete v tématu úložiště [ukázek sady .NET SDK](https://github.com/Azure-Samples/media-services-v3-dotnet) .

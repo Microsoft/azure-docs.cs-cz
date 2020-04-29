@@ -1,6 +1,6 @@
 ---
-title: Šablony rozhraní API ve správě rozhraní Azure API | Dokumenty společnosti Microsoft
-description: Zjistěte, jak přizpůsobit obsah stránek rozhraní API na portálu pro vývojáře ve správě rozhraní Azure API.
+title: Šablony rozhraní API v Azure API Management | Microsoft Docs
+description: Naučte se přizpůsobit obsah stránek rozhraní API na portálu pro vývojáře v Azure API Management.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,15 +14,15 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: eee95a2b6acde3ad3b7d94cf5cdd0f74f9f09fd9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79265958"
 ---
-# <a name="api-templates-in-azure-api-management"></a>Šablony rozhraní API ve správě rozhraní Azure API
+# <a name="api-templates-in-azure-api-management"></a>Šablony rozhraní API v Azure API Management
 
-Azure API Management poskytuje možnost přizpůsobit obsah stránek portálu pro vývojáře pomocí sady šablon, které konfigurují jejich obsah. Pomocí [DotLiquid](http://dotliquidmarkup.org/) syntaxe a editor podle vašeho výběru, jako je [například DotLiquid pro návrháře](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)a za předpokladu, sadu lokalizovaných [prostředků řetězce](api-management-template-resources.md#strings), glyph [prostředky](api-management-template-resources.md#glyphs)a page [ovládací prvky](api-management-page-controls.md), máte velkou flexibilitu ke konfiguraci obsahu stránek, jak uznáte za vhodné pomocí těchto šablon.  
+Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu pro vývojáře pomocí sady šablon, které konfigurují svůj obsah. Pomocí syntaxe [DotLiquid](http://dotliquidmarkup.org/) a editoru podle vlastního výběru, jako je například [DotLiquid pro návrháře](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)a poskytnutá sada lokalizovaných [řetězcových prostředků](api-management-template-resources.md#strings), [prostředků glyfů](api-management-template-resources.md#glyphs)a [ovládacích prvků stránky](api-management-page-controls.md), máte skvělou flexibilitu pro konfiguraci obsahu stránek, jak vidíte, aby byly použity pomocí těchto šablon.  
 
 Šablony v této části umožňují přizpůsobit obsah stránek rozhraní API na portálu pro vývojáře.  
   
@@ -30,25 +30,25 @@ Azure API Management poskytuje možnost přizpůsobit obsah stránek portálu pr
 -   [Operace](#Product)  
 -   [Ukázky kódu](#CodeSamples)  
     -   [Curl](#Curl)  
-    -   [C #](#CSharp)  
+    -   [C#](#CSharp)  
     -   [Java](#Stub)  
-    -   [Javascript](#JavaScript)  
+    -   [JavaScript](#JavaScript)  
     -   [Cíl C](#ObjectiveC)  
     -   [PHP](#PHP)  
     -   [Python](#Python)  
     -   [Ruby](#Ruby)  
 
 > [!NOTE]
->  Ukázkové výchozí šablony jsou zahrnuty v následující dokumentaci, ale mohou se měnit z důvodu neustálého zlepšování. Výchozí živé šablony můžete zobrazit na portálu pro vývojáře tak, že přejdete na požadované jednotlivé šablony. Další informace o práci se šablonami najdete [v tématu Jak přizpůsobit portál pro vývojáře pro správu rozhraní API pomocí šablon](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
+>  Ukázkové výchozí šablony jsou uvedené v následující dokumentaci, ale můžou se změnit z důvodu průběžných vylepšení. Živé výchozí šablony můžete zobrazit na portálu pro vývojáře tak, že přejdete na požadované jednotlivé šablony. Další informace o práci se šablonami najdete v tématu [Postup přizpůsobení API Management portálu pro vývojáře pomocí šablon](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
 
 [!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
 ## <a name="api-list"></a><a name="APIList"></a>Seznam rozhraní API  
- Šablona **seznamu rozhraní API** umožňuje přizpůsobit text stránky seznamu rozhraní API na portálu pro vývojáře.  
+ Šablona **seznam rozhraní API** vám umožní přizpůsobit tělo stránky seznam rozhraní API na portálu pro vývojáře.  
   
- ![Seznam rozhraní API portálu pro vývojáře](./media/api-management-api-templates/APIM-Developer-Portal-Templates-API-List.png "Seznam rozhraní APIM Developer Portal Templates API")  
+ ![Seznam rozhraní API portálu pro vývojáře](./media/api-management-api-templates/APIM-Developer-Portal-Templates-API-List.png "Seznam rozhraní API šablon portálu pro vývojáře APIM")  
   
 ### <a name="default-template"></a>Výchozí šablona  
   
@@ -81,17 +81,17 @@ Azure API Management poskytuje možnost přizpůsobit obsah stránek portálu pr
 ```  
   
 ### <a name="controls"></a>Ovládací prvky  
- Šablona `API list` může používat následující [ovládací prvky stránky](api-management-page-controls.md).  
+ `API list` Šablona může používat následující [ovládací prvky stránky](api-management-page-controls.md).  
   
--   [stránkovací řízení](api-management-page-controls.md#paging-control)  
+-   [ovládací prvek stránkování](api-management-page-controls.md#paging-control)  
   
--   [řízení vyhledávání](api-management-page-controls.md#search-control)  
+-   [hledání – ovládací prvek](api-management-page-controls.md#search-control)  
   
 ### <a name="data-model"></a>Datový model  
   
 |Vlastnost|Typ|Popis|  
 |--------------|----------|-----------------|  
-|`apis`|Kolekce [souhrnných](api-management-template-data-model-reference.md#APISummary) entit rozhraní API.|Rozhraní API viditelná pro aktuálního uživatele.|  
+|`apis`|Kolekce [souhrnných entit rozhraní API](api-management-template-data-model-reference.md#APISummary)|Rozhraní API viditelné pro aktuálního uživatele.|  
   
 ### <a name="sample-template-data"></a>Ukázková data šablony  
   
@@ -113,10 +113,10 @@ Azure API Management poskytuje možnost přizpůsobit obsah stránek portálu pr
 }  
 ```  
   
-## <a name="operation"></a><a name="Product"></a>Operace  
- Šablona **Operace** umožňuje přizpůsobit tělo stránky operace na portálu pro vývojáře.  
+## <a name="operation"></a><a name="Product"></a>NázevOperace  
+ Šablona **operace** vám umožní přizpůsobit tělo stránky operace na portálu pro vývojáře.  
   
- ![Stránka Operace portálu pro vývojáře](./media/api-management-api-templates/APIM-Developer-Portal-templates-Operation-page.png "Stránka Operace šablon APIM Developer Portal")  
+ ![Stránka operace portálu pro vývojáře](./media/api-management-api-templates/APIM-Developer-Portal-templates-Operation-page.png "Stránka operace šablony portálu pro vývojáře APIM")  
   
 ### <a name="default-template"></a>Výchozí šablona  
   
@@ -340,21 +340,21 @@ Azure API Management poskytuje možnost přizpůsobit obsah stránek portálu pr
 ```  
   
 ### <a name="controls"></a>Ovládací prvky  
- Šablona `Operation` neumožňuje použití žádných [ovládacích prvků stránky](api-management-page-controls.md).  
+ `Operation` Šablona nepovoluje použití žádných [ovládacích prvků stránky](api-management-page-controls.md).  
   
 ### <a name="data-model"></a>Datový model  
   
 |Vlastnost|Typ|Popis|  
 |--------------|----------|-----------------|  
-|`apiId`|řetězec|ID aktuální rozhraní API.|  
+|`apiId`|řetězec|ID aktuálního rozhraní API|  
 |`apiName`|řetězec|Název rozhraní API.|  
-|`apiDescription`|řetězec|Popis rozhraní API.|  
-|`api`|[Souhrnná](api-management-template-data-model-reference.md#APISummary) entita rozhraní API.|Aktuální rozhraní API.|  
+|`apiDescription`|řetězec|Popis rozhraní API|  
+|`api`|[Souhrnná entita rozhraní API](api-management-template-data-model-reference.md#APISummary) .|Aktuální rozhraní API.|  
 |`operation`|[Operace](api-management-template-data-model-reference.md#Operation)|Aktuálně zobrazená operace.|  
-|`sampleUrl`|řetězec|Adresa URL pro aktuální operaci.|  
-|`operationMenu`|[Operační menu](api-management-template-data-model-reference.md#Menu)|Nabídka operací pro toto rozhraní API.|  
-|`consoleUrl`|Identifikátor URI|Identifikátor URI pro tlačítko **Try it.**|  
-|`samples`|Kolekce [ukázkových](api-management-template-data-model-reference.md#Sample) entit kódu.|Ukázky kódu pro aktuální operaci..|  
+|`sampleUrl`|řetězec|Adresa URL aktuální operace|  
+|`operationMenu`|[Nabídka operace](api-management-template-data-model-reference.md#Menu)|Nabídka operací pro toto rozhraní API.|  
+|`consoleUrl`|Identifikátor URI|Identifikátor URI pro tlačítko **vyzkoušet**|  
+|`samples`|Kolekce entit s [ukázkami kódu](api-management-template-data-model-reference.md#Sample) .|Ukázky kódu pro aktuální operaci..|  
   
 ### <a name="sample-template-data"></a>Ukázková data šablony  
   
@@ -644,17 +644,17 @@ Azure API Management poskytuje možnost přizpůsobit obsah stránek portálu pr
 ```  
   
 ## <a name="code-samples"></a><a name="CodeSamples"></a>Ukázky kódu  
- Následující šablony umožňují přizpůsobit tělo jednotlivých ukázek kódu na stránce operace.  
+ Následující šablony vám umožní přizpůsobit tělo jednotlivých ukázek kódu na stránce operace.  
   
- ![Ukázky kódu šablon portálu pro vývojáře](./media/api-management-api-templates/APIM-Developer-Portal-Templates-Code-samples.png "Ukázky kódu šablon portálu APIM pro vývojáře")  
+ ![Ukázky kódu šablon portálu pro vývojáře](./media/api-management-api-templates/APIM-Developer-Portal-Templates-Code-samples.png "Ukázky kódu šablon portálu pro vývojáře APIM")  
   
 -   [Curl](#Curl)  
   
--   [C #](#CSharp)  
+-   [C#](#CSharp)  
   
 -   [Java](#Stub)  
   
--   [Javascript](#JavaScript)  
+-   [JavaScript](#JavaScript)  
   
 -   [Cíl C](#ObjectiveC)  
   
@@ -665,7 +665,7 @@ Azure API Management poskytuje možnost přizpůsobit obsah stránek portálu pr
 -   [Ruby](#Ruby)  
   
 ### <a name="curl"></a><a name="Curl"></a>Curl  
- Šablona **DocumentationSamplesCurl** umožňuje přizpůsobit ukázku kódu v části ukázky kódu na stránce operace.  
+ Šablona **DocumentationSamplesCurl** vám umožňuje přizpůsobit ukázku kódu v části Ukázky kódu stránky operace.  
   
 #### <a name="default-template"></a>Výchozí šablona  
   
@@ -683,10 +683,10 @@ curl -v -X {{method}} "{{scheme}}://{{host}}{{path}}{{query | escape }}"
 ```  
   
 #### <a name="controls"></a>Ovládací prvky  
- Ukázkové šablony kódu neumožňují použití žádných [ovládacích prvků stránky](api-management-page-controls.md).  
+ Šablony vzorových kódů neumožňují použití žádných [ovládacích prvků stránky](api-management-page-controls.md).  
   
 #### <a name="data-model"></a>Datový model  
- [Ukázková entita kódu.](api-management-template-data-model-reference.md#Sample)  
+ [Ukázková entita kódu](api-management-template-data-model-reference.md#Sample)  
   
 #### <a name="sample-template-data"></a>Ukázková data šablony  
   
@@ -717,8 +717,8 @@ curl -v -X {{method}} "{{scheme}}://{{host}}{{path}}{{query | escape }}"
 }  
 ```  
   
-### <a name="c"></a><a name="CSharp"></a>C #  
- Šablona **DocumentationSamplesCsharp** umožňuje přizpůsobit ukázku kódu v části ukázky kódu na stránce operace.  
+### <a name="c"></a><a name="CSharp"></a>R #  
+ Šablona **DocumentationSamplesCsharp** vám umožňuje přizpůsobit ukázku kódu v části Ukázky kódu stránky operace.  
   
 #### <a name="default-template"></a>Výchozí šablona  
   
@@ -862,10 +862,10 @@ namespace CSHttpClientSample
 ```  
   
 #### <a name="controls"></a>Ovládací prvky  
- Ukázkové šablony kódu neumožňují použití žádných [ovládacích prvků stránky](api-management-page-controls.md).  
+ Šablony vzorových kódů neumožňují použití žádných [ovládacích prvků stránky](api-management-page-controls.md).  
   
 #### <a name="data-model"></a>Datový model  
- [Ukázková entita kódu.](api-management-template-data-model-reference.md#Sample)  
+ [Ukázková entita kódu](api-management-template-data-model-reference.md#Sample)  
   
 #### <a name="sample-template-data"></a>Ukázková data šablony  
   
@@ -896,8 +896,8 @@ namespace CSHttpClientSample
 }  
 ```  
   
-### <a name="java"></a><a name="Stub"></a>Java  
- Šablona **DocumentationSamplesJava** umožňuje přizpůsobit ukázku kódu v části ukázky kódu na stránce operace.  
+### <a name="java"></a><a name="Stub"></a>Kompilátor  
+ Šablona **DocumentationSamplesJava** vám umožňuje přizpůsobit ukázku kódu v části Ukázky kódu stránky operace.  
   
 #### <a name="default-template"></a>Výchozí šablona  
   
@@ -958,10 +958,10 @@ public class JavaSample
 ```  
   
 #### <a name="controls"></a>Ovládací prvky  
- Ukázkové šablony kódu neumožňují použití žádných [ovládacích prvků stránky](api-management-page-controls.md).  
+ Šablony vzorových kódů neumožňují použití žádných [ovládacích prvků stránky](api-management-page-controls.md).  
   
 #### <a name="data-model"></a>Datový model  
- [Ukázková entita kódu.](api-management-template-data-model-reference.md#Sample)  
+ [Ukázková entita kódu](api-management-template-data-model-reference.md#Sample)  
   
 #### <a name="sample-template-data"></a>Ukázková data šablony  
   
@@ -992,8 +992,8 @@ public class JavaSample
 }  
 ```  
   
-### <a name="javascript"></a><a name="JavaScript"></a>Javascript  
- Šablona **DocumentationSamplesJs** umožňuje přizpůsobit ukázku kódu v části ukázky kódu na stránce operace.  
+### <a name="javascript"></a><a name="JavaScript"></a>JavaScriptu  
+ Šablona **DocumentationSamplesJs** vám umožňuje přizpůsobit ukázku kódu v části Ukázky kódu stránky operace.  
   
 #### <a name="default-template"></a>Výchozí šablona  
   
@@ -1047,10 +1047,10 @@ public class JavaSample
 ```  
   
 #### <a name="controls"></a>Ovládací prvky  
- Ukázkové šablony kódu neumožňují použití žádných [ovládacích prvků stránky](api-management-page-controls.md).  
+ Šablony vzorových kódů neumožňují použití žádných [ovládacích prvků stránky](api-management-page-controls.md).  
   
 #### <a name="data-model"></a>Datový model  
- [Ukázková entita kódu.](api-management-template-data-model-reference.md#Sample)  
+ [Ukázková entita kódu](api-management-template-data-model-reference.md#Sample)  
   
 #### <a name="sample-template-data"></a>Ukázková data šablony  
   
@@ -1082,7 +1082,7 @@ public class JavaSample
 ```  
   
 ### <a name="objective-c"></a><a name="ObjectiveC"></a>Cíl C  
- Šablona **DocumentationSamplesObjc** umožňuje přizpůsobit ukázku kódu v části ukázky kódu na stránce operace.  
+ Šablona **DocumentationSamplesObjc** vám umožňuje přizpůsobit ukázku kódu v části Ukázky kódu stránky operace.  
   
 #### <a name="default-template"></a>Výchozí šablona  
   
@@ -1159,10 +1159,10 @@ int main(int argc, const char * argv[])
 ```  
   
 #### <a name="controls"></a>Ovládací prvky  
- Ukázkové šablony kódu neumožňují použití žádných [ovládacích prvků stránky](api-management-page-controls.md).  
+ Šablony vzorových kódů neumožňují použití žádných [ovládacích prvků stránky](api-management-page-controls.md).  
   
 #### <a name="data-model"></a>Datový model  
- [Ukázková entita kódu.](api-management-template-data-model-reference.md#Sample)  
+ [Ukázková entita kódu](api-management-template-data-model-reference.md#Sample)  
   
 #### <a name="sample-template-data"></a>Ukázková data šablony  
   
@@ -1193,8 +1193,8 @@ int main(int argc, const char * argv[])
 }  
 ```  
   
-### <a name="php"></a><a name="PHP"></a>Php  
- Šablona **DocumentationSamplesPhp** umožňuje přizpůsobit ukázku kódu v části ukázky kódu na stránce operace.  
+### <a name="php"></a><a name="PHP"></a>PHP  
+ Šablona **DocumentationSamplesPhp** vám umožňuje přizpůsobit ukázku kódu v části Ukázky kódu stránky operace.  
   
 #### <a name="default-template"></a>Výchozí šablona  
   
@@ -1249,10 +1249,10 @@ catch (HttpException $ex)
 ```  
   
 #### <a name="controls"></a>Ovládací prvky  
- Ukázkové šablony kódu neumožňují použití žádných [ovládacích prvků stránky](api-management-page-controls.md).  
+ Šablony vzorových kódů neumožňují použití žádných [ovládacích prvků stránky](api-management-page-controls.md).  
   
 #### <a name="data-model"></a>Datový model  
- [Ukázková entita kódu.](api-management-template-data-model-reference.md#Sample)  
+ [Ukázková entita kódu](api-management-template-data-model-reference.md#Sample)  
   
 #### <a name="sample-template-data"></a>Ukázková data šablony  
   
@@ -1284,7 +1284,7 @@ catch (HttpException $ex)
 ```  
   
 ### <a name="python"></a><a name="Python"></a>Python  
- Šablona **DocumentationSamplesPython** umožňuje přizpůsobit ukázku kódu v části ukázky kódu na stránce operace.  
+ Šablona **DocumentationSamplesPython** vám umožňuje přizpůsobit ukázku kódu v části Ukázky kódu stránky operace.  
   
 #### <a name="default-template"></a>Výchozí šablona  
   
@@ -1367,10 +1367,10 @@ except Exception as e:
 ```
   
 #### <a name="controls"></a>Ovládací prvky  
- Ukázkové šablony kódu neumožňují použití žádných [ovládacích prvků stránky](api-management-page-controls.md).  
+ Šablony vzorových kódů neumožňují použití žádných [ovládacích prvků stránky](api-management-page-controls.md).  
   
 #### <a name="data-model"></a>Datový model  
- [Ukázková entita kódu.](api-management-template-data-model-reference.md#Sample)  
+ [Ukázková entita kódu](api-management-template-data-model-reference.md#Sample)  
   
 #### <a name="sample-template-data"></a>Ukázková data šablony  
   
@@ -1402,7 +1402,7 @@ except Exception as e:
 ```  
   
 ### <a name="ruby"></a><a name="Ruby"></a>Ruby  
- Šablona **DocumentationSamplesRuby** umožňuje přizpůsobit ukázku kódu v části ukázky kódu na stránce operace.  
+ Šablona **DocumentationSamplesRuby** vám umožňuje přizpůsobit ukázku kódu v části Ukázky kódu stránky operace.  
   
 #### <a name="default-template"></a>Výchozí šablona  
   
@@ -1438,10 +1438,10 @@ puts response.body
 ```  
   
 #### <a name="controls"></a>Ovládací prvky  
- Ukázkové šablony kódu neumožňují použití žádných [ovládacích prvků stránky](api-management-page-controls.md).  
+ Šablony vzorových kódů neumožňují použití žádných [ovládacích prvků stránky](api-management-page-controls.md).  
   
 #### <a name="data-model"></a>Datový model  
- [Ukázková entita kódu.](api-management-template-data-model-reference.md#Sample)  
+ [Ukázková entita kódu](api-management-template-data-model-reference.md#Sample)  
   
 #### <a name="sample-template-data"></a>Ukázková data šablony  
   
@@ -1473,4 +1473,4 @@ puts response.body
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o práci se šablonami najdete [v tématu Jak přizpůsobit portál pro vývojáře pro správu rozhraní API pomocí šablon](api-management-developer-portal-templates.md).
+Další informace o práci se šablonami najdete v tématu [Postup přizpůsobení API Management portálu pro vývojáře pomocí šablon](api-management-developer-portal-templates.md).

@@ -1,5 +1,5 @@
 ---
-title: Dotaz na Azure Data Lake Analytics – Visual Studio
+title: Dotaz Azure Data Lake Analytics – Visual Studio
 description: Naučte se nainstalovat nástroje Data Lake pro Visual Studio a vyvíjet a testovat skripty U-SQL.
 services: data-lake-analytics
 ms.service: data-lake-analytics
@@ -10,22 +10,22 @@ ms.assetid: ad8a6992-02c7-47d4-a108-62fc5a0777a3
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.openlocfilehash: dacce0d4f40f077b5da6221000192a4398da99e0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79260342"
 ---
 # <a name="develop-u-sql-scripts-by-using-data-lake-tools-for-visual-studio"></a>Vývoj skriptů U-SQL pomocí nástrojů Data Lake pro Visual Studio
 
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
-Nástroje Azure Data Lake a Stream Analytics zahrnují funkce související se dvěma službami Azure, Azure Data Lake Analytics a Azure Stream Analytics. Další informace o scénářích Azure Stream Analytics najdete v [tématu nástroje Azure Stream Analytics pro Visual Studio](../stream-analytics/stream-analytics-tools-for-visual-studio-install.md).
+Nástroje Azure Data Lake a Stream Analytics zahrnují funkce související se dvěma službami Azure, Azure Data Lake Analytics a Azure Stream Analytics. Další informace o scénářích Azure Stream Analytics naleznete v tématu [Azure Stream Analytics Tools for Visual Studio](../stream-analytics/stream-analytics-tools-for-visual-studio-install.md).
 
-Tento článek popisuje, jak pomocí Visual Studia vytvořit účty Azure Data Lake Analytics. Můžete definovat úlohy v [U-SQL](data-lake-analytics-u-sql-get-started.md)a odeslat úlohy do služby Data Lake Analytics. Další informace o službě Data Lake Analytics najdete v [tématu Přehled Azure Data Lake Analytics](data-lake-analytics-overview.md).
+Tento článek popisuje, jak pomocí sady Visual Studio vytvořit účty Azure Data Lake Analytics. Můžete definovat úlohy v [u-SQL](data-lake-analytics-u-sql-get-started.md)a odesílat úlohy do služby Data Lake Analytics. Další informace o Data Lake Analytics najdete v tématu [Azure Data Lake Analytics Overview](data-lake-analytics-overview.md).
 
 > [!IMPORTANT]
-> Doporučujeme upgradovat na Nástroje datového jezera Azure pro Visual Studio verze 2.3.3000.4 nebo novější. Předchozí verze jsou zastaralé a nejsou už k dispozici ke stažení.
+> Doporučujeme, abyste upgradovali na verzi Nástroje Azure Data Lake pro Visual Studio 2.3.3000.4 nebo novější. Předchozí verze jsou zastaralé a nejsou už k dispozici ke stažení.
 >
 > 1. Zkontrolujte, jestli používáte Nástroje Azure Data Lake pro Visual Studio verze starší než 2.3.3000.4.
 >
@@ -49,17 +49,17 @@ Tento článek popisuje, jak pomocí Visual Studia vytvořit účty Azure Data L
 
 ## <a name="install-azure-data-lake-tools-for-visual-studio"></a>Instalace nástrojů Azure Data Lake pro Visual Studio
 
-Tento kurz vyžaduje, aby byly nainstalované Nástroje Data Lake pro Visual Studio. Další informace naleznete v [tématu Instalace nástrojů datového jezera pro visual studio](data-lake-analytics-data-lake-tools-install.md).
+Tento kurz vyžaduje, aby byly nainstalované Nástroje Data Lake pro Visual Studio. Další informace najdete v tématu [Instalace nástrojů Data Lake pro Visual Studio](data-lake-analytics-data-lake-tools-install.md).
 
 ## <a name="connect-to-an-azure-data-lake-analytics-account"></a>Připojení k účtu Azure Data Lake Analytics
 
 1. Otevřete sadu Visual Studio.
 
-1. Sem **Sem Explorer serveru** vyberte **Zobrazit** > **Průzkumníka serveru**.
+1. Otevřete **Průzkumník serveru** výběrem možnosti **Zobrazit** > **Průzkumník serveru**.
 
-1. Klikněte pravým tlačítkem na **Azure**a pak vyberte **Připojit k předplatnému Microsoft Azure**. **Přihlaste se ke svému účtu**, postupujte podle pokynů.
+1. Klikněte pravým tlačítkem na **Azure**a pak vyberte **připojit k Microsoft Azure předplatnému**. Při **přihlašování ke svému účtu**postupujte podle pokynů.
 
-1. V **Průzkumníkovi serveru**vyberte **Azure** > **Data Lake Analytics**. Zobrazí se seznam vašich účtů Data Lake Analytics.
+1. V **Průzkumník serveru**vyberte **Azure** > **Data Lake Analytics**. Zobrazí se seznam vašich účtů Data Lake Analytics.
 
 ## <a name="write-your-first-u-sql-script"></a>Napsání prvního skriptu U-SQL
 
@@ -82,17 +82,17 @@ OUTPUT @a
 
 ## <a name="submit-a-data-lake-analytics-job"></a>Odeslání úlohy Data Lake Analytics
 
-1. V sadě Visual Studio vyberte **Soubor** > **nový** > **projekt**.
+1. V aplikaci Visual Studio vyberte **soubor** > **Nový** > **projekt**.
 
-1. Vyberte typ **projektu U-SQL** a pak vyberte **Další**. V **okně Konfigurace nového projektu**vyberte **vytvořit**.
+1. Vyberte typ **projektu U-SQL** a pak vyberte **Další**. V **konfiguraci nového projektu**vyberte **vytvořit**.
 
-   Visual Studio vytvoří řešení, které obsahuje soubor **Script.usql.**
+   Visual Studio vytvoří řešení, které obsahuje soubor **script. usql** .
 
-1. Vložte skript z [Napište svůj první U-SQL skript](#write-your-first-u-sql-script) do okna **Script.usql.**
+1. Vložte skript z [napsání prvního skriptu U-SQL](#write-your-first-u-sql-script) do okna **script. usql** .
 
-1. V **Průzkumníku řešení**klepněte pravým tlačítkem myši na **soubor Script.usql**a vyberte **příkaz Odeslat skript**.
+1. V **Průzkumník řešení**klikněte pravým tlačítkem myši na **script. Usql**a vyberte **Odeslat skript**.
 
-1. V **možnosti Odeslat úlohu**zvolte svůj účet Data Lake Analytics a vyberte **Odeslat**.
+1. V možnosti **Odeslat úlohu**zvolte účet Data Lake Analytics a vyberte **Odeslat**.
 
    ![Odeslání projektu U-SQL sady Visual Studio](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-submit-job-vs2019.png)
 
@@ -103,16 +103,16 @@ Po odeslání úlohy se otevře karta **Zobrazení úlohy**, na které se zobraz
 * **Operace s metadaty** zobrazují všechny akce provedené s katalogem U-SQL.
 * **Data** zobrazují všechny vstupy a výstupy.
 * **Historie stavu** ukazuje časovou osu a podrobnosti o stavu.
-* **Analýza AU** ukazuje, kolik au byly použity v úloze a prozkoumat simulace různých strategií přidělení AU.
+* **Analýza au** ukazuje, kolik jednotek Austrálie se v úloze použilo, a prozkoumejte simulace různých strategií přidělení au.
 * **Diagnostika** poskytuje pokročilé analýzy spouštění úlohy a optimalizace výkonu.
 
 ![Graf výkonu úlohy U-SQL Visual Studio Data Lake Analytics](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-performance-graph.png)
 
-Chcete-li zobrazit nejnovější stav úlohy a aktualizovat obrazovku, vyberte **aktualizovat**.
+Pokud chcete zobrazit nejnovější stav úlohy a aktualizovat obrazovku, vyberte **aktualizovat**.
 
 ## <a name="check-job-status"></a>Kontrola stavu úlohy
 
-1. V **Průzkumníkovi serveru**vyberte **Azure** > **Data Lake Analytics**.
+1. V **Průzkumník serveru**vyberte **Azure** > **Data Lake Analytics**.
 
 1. Rozbalte název účtu Data Lake Analytics.
 
@@ -122,7 +122,7 @@ Chcete-li zobrazit nejnovější stav úlohy a aktualizovat obrazovku, vyberte *
 
 ## <a name="see-the-job-output"></a>Zobrazení výstupu úlohy
 
-1. V **Průzkumníkovi serveru**přejděte k úloze, kterou jste odeslali.
+1. V **Průzkumník serveru**přejděte do úlohy, kterou jste odeslali.
 
 1. Klikněte na kartu **Data**.
 

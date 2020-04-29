@@ -1,6 +1,6 @@
 ---
-title: Požadavky na systém Microsoft Azure Data Box Heavy| Dokumenty společnosti Microsoft
-description: Informace o softwaru a síťových požadavcích pro azure data box heavy
+title: Microsoft Azure Data Box Heavy požadavky na systém | Microsoft Docs
+description: Seznamte se s požadavky na software a sítě pro vaše Azure Data Box Heavy
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,30 +9,30 @@ ms.topic: article
 ms.date: 07/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 6097dba9193fce4c8158137b488080107881994a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79260069"
 ---
-# <a name="azure-data-box-heavy-system-requirements"></a>Požadavky na systém Azure Data Box Heavy
+# <a name="azure-data-box-heavy-system-requirements"></a>Azure Data Box Heavy požadavky na systém
 
-Tento článek popisuje důležité systémové požadavky pro vaše zařízení Azure Data Box Heavy a pro klienty, kteří se k němu připojují. Doporučujeme, abyste si tyto informace před nasazením datové schránky Heavy pečlivě prostudovali a pak se k ní vrátili podle potřeby během nasazení a následné operace.
+Tento článek popisuje důležité systémové požadavky pro vaše zařízení Azure Data Box Heavy a klienty, kteří se k zařízení připojují. Před nasazením Data Box Heavy doporučujeme pečlivě zkontrolovat informace a pak je v případě potřeby v průběhu nasazení a následné operace vrátit na ni.
 
-Systémové požadavky zahrnují:
+Požadavky na systém zahrnují:
 
-* **Požadavky na software pro hostitele, kteří se připojují k datové schránce Heavy** – popisují podporované platformy, prohlížeče pro místní webové uživatelské prostředí, klienty SMB a všechny další požadavky pro hostitele, kteří se mohou připojit k datové schránce.
-* **Síťové požadavky pro datovou schránku Heavy** - poskytuje informace o síťových požadavcích pro optimální provoz zařízení Data Box Heavy.
+* **Požadavky na software pro hostitele, kteří se připojují k data box Heavy** – popisuje podporované platformy, prohlížeče pro místní webové uživatelské rozhraní, klienty SMB a jakékoli další požadavky pro hostitele, kteří se mohou připojit k data box.
+* **Požadavky na síť pro data box Heavy** – poskytuje informace o požadavcích sítě pro optimální provoz data box Heavy zařízení.
 
 ## <a name="software-requirements"></a>Požadavky na software
 
-Požadavky na software zahrnují informace o podporovaných operačních systémech, podporovaných prohlížečích pro místní webové uživatelské prostředí a klientech SMB.
+Požadavky na software zahrnují informace o podporovaných operačních systémech, podporovaných prohlížečích místních webových uživatelských rozhraní a klientech SMB.
 
 ### <a name="supported-operating-systems-for-clients"></a>Podporované operační systémy pro klienty
 
 [!INCLUDE [data-box-supported-os-clients](../../includes/data-box-supported-os-clients.md)]
 
-### <a name="supported-file-systems-for-linux-clients"></a>Podporované souborové systémy pro klienty Linuxu
+### <a name="supported-file-systems-for-linux-clients"></a>Podporované systémy souborů pro klienty se systémem Linux
 
 [!INCLUDE [data-box-supported-file-systems-clients](../../includes/data-box-supported-file-systems-clients.md)]
 
@@ -48,16 +48,16 @@ Požadavky na software zahrnují informace o podporovaných operačních systém
 
 [!INCLUDE [data-box-supported-web-browsers](../../includes/data-box-supported-web-browsers.md)]
 
-## <a name="networking-requirements"></a>Požadavky na vytváření sítí
+## <a name="networking-requirements"></a>Požadavky na síť
 
-Vaše datacentrum má přístup k vysokorychlostní síti. Pro nejrychlejší rychlostkopírování lze paralelně využít dvě připojení 40 GbE (jeden na uzel). Pokud nemáte k dispozici 40 GbE, doporučujeme mít alespoň dvě připojení 10 GbE (jeden na uzel).
+Vaše datacentrum má přístup k vysokorychlostní síti. Pro nejrychlejší rychlost kopírování je možné používat paralelní připojení 2 40 (jeden pro každý uzel). Pokud nemáte k dispozici 40 až GbE, doporučujeme, abyste měli aspoň 2 10 připojení (jedna na uzel).
 
-### <a name="port-requirements"></a>Požadavky na port
+### <a name="port-requirements"></a>Požadavky na porty
 
-V následující tabulce jsou uvedeny porty, které je třeba otevřít v bráně firewall, aby bylo možné provádět přenosy se systémem SMB nebo NFS. V této tabulce *in* nebo *příchozí* odkazuje na směr, ze kterého příchozí klient požaduje přístup k vašemu zařízení. *Odchozí* nebo *odchozí* označuje směr, ve kterém vaše zařízení Data Box Heavy odesílá data externě, mimo nasazení: například odchozí do Internetu.
+Následující tabulka uvádí porty, které je třeba v bráně firewall otevřít, aby bylo možné provozovat přenosy SMB nebo NFS. V této tabulce se *v* nebo *příchozí* odkazuje na směr, ze kterého příchozí klient žádá o přístup k vašemu zařízení. *Výstupní* nebo *odchozí* odkazuje na směr, ve kterém vaše zařízení data box Heavy odesílá data externě, mimo nasazení: například odchozí na Internet.
 
 [!INCLUDE [data-box-port-requirements](../../includes/data-box-port-requirements.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Nasazení datové schránky Azure](data-box-deploy-ordered.md)
+* [Nasazení Azure Data Box](data-box-deploy-ordered.md)

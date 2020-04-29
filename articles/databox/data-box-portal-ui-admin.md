@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 01/09/2019
 ms.author: alkohli
 ms.openlocfilehash: 01e3ed9f94b575aae4ce0ed12eb63e3cf40d99ce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79259965"
 ---
 # <a name="use-azure-portal-to-administer-your-data-box-disk"></a>Správa Data Box Disku pomocí webu Azure Portal
@@ -71,7 +71,7 @@ Odstranit se dají jenom dokončené nebo zrušené objednávky. Pokud chcete od
 
     ![Odstranění objednávky Data Box Disku 1](media/data-box-portal-ui-admin/delete-order1.png)
 
-3. Po zobrazení výzvy k potvrzení odstranění objednávky zadejte název objednávky. Klepněte na **tlačítko Odstranit**.
+3. Po zobrazení výzvy k potvrzení odstranění objednávky zadejte název objednávky. Klikněte na **Odstranit**.
 
      ![Odstranění objednávky Data Box Disku 2](media/data-box-portal-ui-admin/delete-order2.png)
 
@@ -105,7 +105,7 @@ Pokud chcete upravit objednávku, proveďte následující kroky.
 
 ## <a name="edit-notification-details"></a>Úprava podrobností o oznámení
 
-Může být potřeba změnit uživatele, kteří mají dostávat e-maily se stavem objednávky. Některý uživatel například může potřebovat informaci o doručení nebo vyzvednutí disku. Jiný uživatel může být nutné, aby byl informován po dokončení kopírování dat, aby mohl ověřit, že data jsou v účtu úložiště Azure před jejich odstraněním ze zdroje. V takových případech můžete upravit podrobnosti o oznámení.
+Může být potřeba změnit uživatele, kteří mají dostávat e-maily se stavem objednávky. Některý uživatel například může potřebovat informaci o doručení nebo vyzvednutí disku. Po dokončení kopírování dat může být potřeba informovat jiného uživatele, aby před jeho odstraněním ze zdroje mohl ověřit data v účtu služby Azure Storage. V takových případech můžete upravit podrobnosti o oznámení.
 
 Pokud chcete upravit podrobnosti o oznámení, proveďte následující kroky.
 
@@ -125,11 +125,11 @@ Pokud chcete upravit podrobnosti o oznámení, proveďte následující kroky.
 |Zpracováno     | Proběhlo zpracování objednávky. <br> Během zpracování objednávky dochází k těmto akcím:<li>Disky se zašifrují pomocí šifrování AES-128 nástrojem BitLocker. </li> <li>Data Box Disk se uzamkne, aby se zabránilo neoprávněnému přístupu.</li><li>Během tohoto procesu se vygeneruje klíč k odemknutí disků.</li>        |
 |Odesláno     | Došlo k odeslání objednávky. Objednávka by k vám měla dorazit během 1–2 dnů.        |
 |Doručeno     | Proběhlo doručení objednávky na uvedenou adresu.        |
-|Vyzvednuto     |Došlo k vyzvednutí zpáteční zásilky. <br> Po přijetí zásilky v datovém centru Azure se data automaticky nahrají do Azure.         |
+|Vyzvednuto     |Došlo k vyzvednutí zpáteční zásilky. <br> Po přijetí expedice v datacentru Azure se data automaticky nahrají do Azure.         |
 |Přijato     | Vaše disky dorazily do datového centra Azure. Brzy začne kopírování dat.        |
 |Data se zkopírovala     |Probíhá kopírování dat.<br> Počkejte, dokud se kopírování dat nedokončí.         |
 |Dokončeno       |Objednávka se úspěšně dokončila.<br> Než odstraníte data z místních serverů, zkontrolujte, jestli se data objevila v Azure.         |
-|Dokončeno s chybami| Kopírování dat se dokončilo, ale došlo k chybám. <br> Zkontrolujte protokoly chyb pro nahrávání pomocí cesty uvedené v **přehledu**. Další informace naleznete v článku [Stažení chybových protokolů nahrávání](data-box-disk-troubleshoot-upload.md#download-logs).   |
+|Dokončeno s chybami| Kopírování dat se dokončilo, ale došlo k chybám. <br> Přečtěte si protokoly chyb pro nahrávání pomocí cesty uvedené v **přehledu**. Další informace najdete v souborech ke [stažení protokoly chyb při nahrávání](data-box-disk-troubleshoot-upload.md#download-logs).   |
 |Zrušeno            |Došlo ke zrušení objednávky. <br> Buď jste objednávku zrušili, nebo došlo k chybě a objednávku zrušila služba.     |
 
 
