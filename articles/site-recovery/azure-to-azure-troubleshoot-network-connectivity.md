@@ -1,136 +1,136 @@
 ---
-title: Poradce při potížích s připojením pro zotavení po havárii Azure azure pomocí Azure Site Recovery
-description: Řešení problémů s připojením v zotavení po havárii virtuálního počítače Azure
+title: Řešení potíží s připojením pro zotavení po havárii Azure do Azure pomocí Azure Site Recovery
+description: Řešení potíží s připojením v zotavení po havárii virtuálních počítačů Azure
 author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/06/2020
 ms.openlocfilehash: d2cc4133e52e7cab812413d23948da6ac2660e77
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80884864"
 ---
-# <a name="troubleshoot-azure-to-azure-vm-network-connectivity-issues"></a>Poradce při potížích s připojením k síti virtuálních zařízení Azure-to-Azure
+# <a name="troubleshoot-azure-to-azure-vm-network-connectivity-issues"></a>Řešení potíží s připojením k síti virtuálních počítačů z Azure do Azure
 
-Tento článek popisuje běžné problémy související s připojením k síti při replikaci a obnovení virtuálních počítačů Azure (VM) z jedné oblasti do jiné oblasti. Další informace o požadavcích na síť najdete v [tématu požadavky na připojení pro replikaci virtuálních počítačů Azure](azure-to-azure-about-networking.md).
+Tento článek popisuje běžné problémy související s připojením k síti při replikaci a obnovení virtuálních počítačů Azure z jedné oblasti do jiné oblasti. Další informace o požadavcích na síť najdete v tématu [požadavky na připojení pro replikaci virtuálních počítačů Azure](azure-to-azure-about-networking.md).
 
-Aby replikace obnovení lokality fungovala, je z virtuálního počítačů vyžadováno odchozí připojení k určitým adresám URL nebo rozsahům IP adres. Pokud váš virtuální počítač je za bránou firewall nebo používá pravidla skupiny zabezpečení sítě (NSG) k řízení odchozí připojení, může čelit jeden z těchto problémů.
+Aby mohla replikace Site Recovery fungovat, z virtuálního počítače se vyžaduje odchozí připojení ke konkrétním adresám URL nebo rozsahům IP adres. Pokud je váš virtuální počítač za bránou firewall nebo používá pravidla skupiny zabezpečení sítě (NSG) k řízení odchozího připojení, můžete se setkat s jedním z těchto problémů.
 
 | zprostředkovatele identity | Podrobnosti |
 |---|---|
-| `*.blob.core.windows.net` | Povinné, aby data mohla být zapsána do účtu úložiště mezipaměti ve zdrojové oblasti z virtuálního účtu. Pokud znáte všechny účty úložiště mezipaměti pro vaše virtuální počítače, můžete použít seznam povolených adres pro konkrétní adresy URL účtu úložiště. Například `cache1.blob.core.windows.net` a `cache2.blob.core.windows.net` místo `*.blob.core.windows.net`. |
-| `login.microsoftonline.com` | Vyžadováno pro autorizaci a autentizaci adres URL služby Site Recovery. |
-| `*.hypervrecoverymanager.windowsazure.com` | Povinné tak, aby služba obnovení webu komunikace může dojít z virtuálního provozu. Pokud proxy firewall podporuje IP adresy, můžete použít odpovídající ip adresu _site recovery._ |
-| `*.servicebus.windows.net` | Povinné tak, aby monitorování webu obnovení a diagnostická data mohou být zapsány z virtuálního zařízení. Pokud proxy firewall podporuje IP adresy, můžete použít odpovídající ip adresu _sledování obnovení webu._ |
+| `*.blob.core.windows.net` | Vyžaduje se, aby se data mohla zapsat do účtu úložiště mezipaměti ve zdrojové oblasti z virtuálního počítače. Pokud znáte všechny účty úložiště mezipaměti pro vaše virtuální počítače, můžete použít seznam povolených adres pro konkrétní adresy URL účtu úložiště. Například `cache1.blob.core.windows.net` a `cache2.blob.core.windows.net` místo `*.blob.core.windows.net`. |
+| `login.microsoftonline.com` | Vyžaduje se pro autorizaci a ověřování adres URL služby Site Recovery. |
+| `*.hypervrecoverymanager.windowsazure.com` | Vyžaduje se, aby na virtuálním počítači mohla probíhat komunikace služby Site Recovery. Pokud proxy server firewall podporuje IP adresy, můžete použít odpovídající _Site Recovery IP adresu_ . |
+| `*.servicebus.windows.net` | Požadováno, aby se z virtuálního počítače mohla zapisovat data monitorování Site Recovery a diagnostická data. Pokud proxy server firewall podporuje IP adresy, můžete použít odpovídající _IP adresu monitorování Site Recovery_ . |
 
-## <a name="outbound-connectivity-for-site-recovery-urls-or-ip-ranges-error-code-151037-or-151072"></a>Odchozí připojení pro adresy URL obnovení lokality nebo rozsahy IP adres (kód chyby 151037 nebo 151072)
+## <a name="outbound-connectivity-for-site-recovery-urls-or-ip-ranges-error-code-151037-or-151072"></a>Odchozí připojení pro adresy URL Site Recovery nebo rozsahy IP adres (kód chyby 151037 nebo 151072)
 
-### <a name="issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151195"></a>Problém 1: Nepodařilo se zaregistrovat virtuální počítač Azure pomocí site recovery (151195)
+### <a name="issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151195"></a>Problém 1: registrace virtuálního počítače Azure pomocí Site Recovery se nezdařila (151195)
 
 #### <a name="possible-cause"></a>Možná příčina
 
-Připojení nelze navázat na koncové body obnovení lokality z důvodu selhání překladu dns (Domain Name System). Tento problém je častější při opětovném protekci, když jste selhali přes virtuální hod, ale dns server není dosažitelný z oblasti zotavení po havárii (DR).
+Nelze navázat připojení k Site Recovery koncovým bodům z důvodu chyby rozlišení DNS (Domain Name System). Tento problém je častější během ochrany při převzetí služeb při selhání virtuálního počítače, ale server DNS není dosažitelný z oblasti zotavení po havárii (DR).
 
 #### <a name="resolution"></a>Řešení
 
-Pokud používáte vlastní DNS, ujistěte se, že dns server je přístupný z oblasti zotavení po havárii.
+Pokud používáte vlastní server DNS, ujistěte se, že je server DNS přístupný z oblasti zotavení po havárii.
 
-Chcete-li zkontrolovat, jestli virtuální hod používá vlastní nastavení DNS:
+Pokud chcete zjistit, jestli virtuální počítač používá vlastní nastavení DNS:
 
 1. Otevřete **virtuální počítače** a vyberte virtuální počítač.
-1. Přejděte na **nastavení** virtuálních počítače a vyberte **síť .**
-1. Ve **virtuální síti nebo podsíti**vyberte odkaz pro otevření stránky prostředků virtuální sítě.
-1. Přejděte na **Nastavení** a vyberte **servery DNS**.
+1. Přejděte do **Nastavení** virtuálních počítačů a vyberte **sítě**.
+1. V části **virtuální síť/podsíť**vyberte odkaz a otevřete stránku prostředku virtuální sítě.
+1. Přejít na **Nastavení** a vyberte **servery DNS**.
 
-Pokuste se získat přístup k serveru DNS z virtuálního počítače. Pokud server DNS není přístupný, zpřístupníte jej buď selháním přes server DNS, nebo vytvořením řádku sítě mezi sítí Zotavení po havárii a službou DNS.
+Pokuste se získat přístup k serveru DNS z virtuálního počítače. Pokud server DNS není přístupný, zpřístupněte ho buď při selhání přes server DNS, nebo při vytváření sítě mezi sítí DR a DNS.
 
-  :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/custom_dns.png" alt-text="com-chyba":::
+  :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/custom_dns.png" alt-text="com – chyba":::
 
-### <a name="issue-2-site-recovery-configuration-failed-151196"></a>Problém 2: Konfigurace obnovení lokality se nezdařila (151196)
+### <a name="issue-2-site-recovery-configuration-failed-151196"></a>Problém 2: Konfigurace Site Recovery se nezdařila (151196)
 
 > [!NOTE]
-> Pokud virtuální aplikace jsou za **standardní** interní vyrovnávání zatížení, ve výchozím nastavení, nebude mít přístup `login.microsoftonline.com`k IP adresy Office 365, jako je například . Změňte jej na **základní** typ interního vyvažovače zatížení nebo vytvořte odchozí přístup, jak je uvedeno v článku [Konfigurace vyrovnávání zatížení a odchozích pravidel ve standardním vyvyřiču zatížení pomocí rozhraní příkazového příkazu Azure CLI](/azure/load-balancer/configure-load-balancer-outbound-cli).
+> Pokud jsou virtuální počítače za **standardním** interním nástrojem pro vyrovnávání zatížení, má ve výchozím nastavení přístup k IP adresám Office 365 `login.microsoftonline.com`, jako je například. Buď změňte na **základní** typ interního nástroje pro vyrovnávání zatížení, nebo vytvořte odchozí přístup, jak je uvedeno v článku [konfigurace vyrovnávání zatížení a odchozích pravidel v Standard Load Balancer pomocí](/azure/load-balancer/configure-load-balancer-outbound-cli)rozhraní příkazového řádku Azure.
 
 #### <a name="possible-cause"></a>Možná příčina
 
-Připojení nelze navázat na koncové body office 365 ověřování a identity IP4.
+Nejde navázat připojení k ověřování Office 365 a koncovým bodům IP4 identity.
 
 #### <a name="resolution"></a>Řešení
 
 - Azure Site Recovery vyžaduje přístup k rozsahům IP adres Office 365 pro ověřování.
-- Pokud používáte pravidla skupiny zabezpečení Azure Network (NSG) nebo proxy firewall k řízení odchozího připojení k síti na virtuálním počítači, ujistěte se, že povolíte komunikaci s rozsahy IP adres Office 365. Vytvořte pravidlo nsg založené na [značce služby Azure Active Directory (Azure AD),](/azure/virtual-network/security-overview#service-tags) které umožňuje přístup ke všem IP adresám odpovídajícím Azure AD.
-- Pokud nové adresy jsou přidány do Služby Azure AD v budoucnu, je třeba vytvořit nová pravidla nsg.
+- Pokud k řízení odchozího připojení k síti na virtuálním počítači používáte pravidla skupiny zabezpečení sítě Azure (NSG) nebo proxy serveru brány firewall, ujistěte se, že jste povolili komunikaci s rozsahy IP adres Office 365. Azure Active Directory vytvořte pravidlo NSG založené na [značkách služby Azure AD](/azure/virtual-network/security-overview#service-tags) , které umožňuje přístup ke všem IP adresám, které odpovídají službě Azure AD.
+- Pokud v budoucnu přidáte do Azure AD nové adresy, budete muset vytvořit nová pravidla NSG.
 
-### <a name="example-nsg-configuration"></a>Příklad konfigurace nsg
+### <a name="example-nsg-configuration"></a>Příklad konfigurace NSG
 
-Tento příklad ukazuje, jak nakonfigurovat pravidla sítě zabezpečení sítě pro virtuální počítače replikovat.
+Tento příklad ukazuje, jak nakonfigurovat NSG pravidla pro replikaci virtuálního počítače.
 
-- Pokud používáte pravidla nsg k řízení odchozí připojení, použijte **Povolit https odchozí** pravidla na port 443 pro všechny požadované rozsahy IP adres.
-- Příklad předpokládá, že umístění zdroje virtuálního soudu je **východní USA** a cílové umístění je **centrální USA**.
+- Pokud používáte pravidla NSG k řízení odchozího připojení, použijte možnost **Povolení odchozích pravidel https** pro všechny požadované rozsahy IP adres portu 443.
+- V příkladu se předpokládá, že umístění zdroje virtuálního počítače je **východní USA** a cílové umístění je **střed USA**.
 
-#### <a name="nsg-rules---east-us"></a>Pravidla nsg - Východní USA
+#### <a name="nsg-rules---east-us"></a>Pravidla NSG – Východní USA
 
-1. Vytvořte pravidlo odchozího zabezpečení HTTPS pro skupinu zabezpečení zabezpečení, jak je znázorněno na následujícím snímku obrazovky. Tento příklad používá **značku cílové služby**: **Rozsahy portů** _Storage.EastUS_ a Destination : _443_.
+1. Vytvořte odchozí pravidlo zabezpečení HTTPS pro NSG, jak je znázorněno na následujícím snímku obrazovky. Tento příklad používá **cílovou značku služby**: _Storage. EastUS_ a **rozsahy cílových portů**: _443_.
 
-     :::image type="content" source="./media/azure-to-azure-about-networking/storage-tag.png" alt-text="značka úložiště":::
+     :::image type="content" source="./media/azure-to-azure-about-networking/storage-tag.png" alt-text="úložiště – značka":::
 
-1. Vytvořte pravidlo odchozího zabezpečení HTTPS pro skupinu zabezpečení zabezpečení, jak je znázorněno na následujícím snímku obrazovky. Tento příklad používá **značku cílové služby**: **Rozsahy portů** _AzureActiveDirectory_ a Cílové porty : _443_.
+1. Vytvořte odchozí pravidlo zabezpečení HTTPS pro NSG, jak je znázorněno na následujícím snímku obrazovky. V tomto příkladu se používá **označení cílové služby**: rozsahy _azureactivedirectory selhala_ a **cílové porty**: _443_.
 
-     :::image type="content" source="./media/azure-to-azure-about-networking/aad-tag.png" alt-text="aad-tag":::
+     :::image type="content" source="./media/azure-to-azure-about-networking/aad-tag.png" alt-text="AAD – značka":::
 
-1. Vytvořte odchozí pravidla portu HTTPS 443 pro IP adresy obnovení webu, které odpovídají cílovému umístění:
+1. Vytvořte odchozí pravidla portu HTTPS 443 pro IP adresy Site Recovery, které odpovídají cílovému umístění:
 
-   | Umístění | IP adresa pro obnovení webu | IP adresa monitorování obnovení lokality |
+   | Umístění | Site Recovery IP adresa | IP adresa monitorování Site Recovery |
    | --- | --- | --- |
    | USA – střed | 40.69.144.231 | 52.165.34.144 |
 
-#### <a name="nsg-rules---central-us"></a>Pravidla nsg - Centrální USA
+#### <a name="nsg-rules---central-us"></a>Pravidla NSG – Střed USA
 
-V tomto příkladu jsou tato pravidla skupiny sítě pro sítě požadována, aby replikace mohla být povolena z cílové oblasti do zdrojové oblasti po převzetí služeb při selhání:
+V tomto příkladu jsou potřeba tato pravidla NSG, aby bylo možné replikaci z cílové oblasti do zdrojové oblasti po převzetí služeb při selhání povolit.
 
-1. Vytvořte pravidlo odchozího zabezpečení protokolu HTTPS pro _službu Storage.CentralUS_:
+1. Vytvořte odchozí pravidlo zabezpečení HTTPS pro _Storage. CentralUS_:
 
-   - **Cílová značka služby:** _Storage.CentralUS_
-   - **Rozsahy cílových přístavů**: _443_
+   - **Značka cílové služby**: _Storage. CentralUS_
+   - **Rozsahy cílových portů**: _443_
 
-1. Vytvořte pravidlo odchozího zabezpečení https pro _AzureActiveDirectory_.
+1. Vytvořte odchozí pravidlo zabezpečení HTTPS pro _azureactivedirectory selhala_.
 
-   - **Cílová značka služby**: _AzureActiveDirectory_
-   - **Rozsahy cílových přístavů**: _443_
+   - **Značka cílové služby**: _azureactivedirectory selhala_
+   - **Rozsahy cílových portů**: _443_
 
-1. Vytvořte odchozí pravidla portu HTTPS 443 pro IP adresy obnovení webu, které odpovídají zdrojovému umístění:
+1. Vytvořte odchozí pravidla portu HTTPS 443 pro IP adresy Site Recovery, které odpovídají zdrojovému umístění:
 
-   | Umístění | IP adresa pro obnovení webu | IP adresa monitorování obnovení lokality |
+   | Umístění | Site Recovery IP adresa | IP adresa monitorování Site Recovery |
    | --- | --- | --- |
    | USA – východ | 13.82.88.226 | 104.45.147.24 |
 
-### <a name="issue-3-site-recovery-configuration-failed-151197"></a>Problém 3: Konfigurace obnovení lokality se nezdařila (151197)
+### <a name="issue-3-site-recovery-configuration-failed-151197"></a>Problém 3: Konfigurace Site Recovery se nezdařila (151197)
 
 #### <a name="possible-cause"></a>Možná příčina
 
-Připojení nelze navázat na koncové body služby Azure Site Recovery.
+Nepovedlo se navázat připojení k Azure Site Recovery koncovým bodům služby.
 
 #### <a name="resolution"></a>Řešení
 
-Azure Site Recovery vyžaduje přístup k [rozsahům IP adres služby Site Recovery](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags) v závislosti na konkrétní oblasti. Ujistěte se, že požadované rozsahy IP jsou přístupné z virtuálního počítačů.
+Azure Site Recovery vyžaduje přístup k [rozsahům IP adres služby Site Recovery](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags) v závislosti na konkrétní oblasti. Ujistěte se, že virtuální počítač má přístup k požadovaným rozsahům IP adres.
 
-### <a name="issue-4-azure-to-azure-replication-failed-when-the-network-traffic-goes-through-on-premises-proxy-server-151072"></a>Problém 4: Replikace Azure se nezdařila, když síťový provoz prochází místním proxy serverem (151072)
+### <a name="issue-4-azure-to-azure-replication-failed-when-the-network-traffic-goes-through-on-premises-proxy-server-151072"></a>Problém 4: replikace z Azure do Azure se nezdařila, když síťový provoz projde místními proxy server (151072)
 
 #### <a name="possible-cause"></a>Možná příčina
 
-Vlastní nastavení proxy serveru je neplatné a agent služby Mobility azure site recovery nezjistil automatické rozpoznání nastavení proxy serveru z aplikace Internet Explorer (IE).
+Vlastní nastavení proxy serveru je neplatné a agent služby Azure Site Recovery mobility automaticky nerozpoznal nastavení proxy serveru z Internet Exploreru (IE).
 
 #### <a name="resolution"></a>Řešení
 
-1. Agent služby Mobility detekuje nastavení proxy serveru `/etc/environment` z aplikace IE v systému Windows a v systému Linux.
-1. Pokud dáváte přednost nastavení proxy pouze pro službu Azure Site Recovery Mobility, můžete poskytnout podrobnosti proxy serveru v _ProxyInfo.conf_ umístěném na adrese:
+1. Agent služby mobility detekuje nastavení proxy serveru z IE ve Windows a `/etc/environment` v systému Linux.
+1. Pokud dáváte přednost nastavení proxy serveru jenom pro Azure Site Recovery služby mobility, můžete zadat podrobnosti o proxy serveru v souboru _ProxyInfo. conf_ , který najdete na adrese:
 
    - **Linux**:`/usr/local/InMage/config/`
    - **Windows**:`C:\ProgramData\Microsoft Azure Site Recovery\Config`
 
-1. _ProxyInfo.conf_ by měl mít nastavení proxy serveru v následujícím formátu _INI:_
+1. _ProxyInfo. conf_ by měl mít nastavení proxy v následujícím formátu _ini_ :
 
    ```plaintext
    [proxy]
@@ -139,11 +139,11 @@ Vlastní nastavení proxy serveru je neplatné a agent služby Mobility azure si
    ```
 
 > [!NOTE]
-> Agent služby Azure Site Recovery Mobility podporuje pouze **neověřené proxy servery**.
+> Agent služby mobility Azure Site Recovery podporuje jenom **neověřené proxy servery**.
 
 ### <a name="fix-the-problem"></a>Oprava problému
 
-Chcete-li povolit [požadované adresy URL](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) nebo požadované [rozsahy IP adres](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags), postupujte podle pokynů pro [síť](site-recovery-azure-to-azure-networking-guidance.md).
+Pokud chcete povolené [adresy URL](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) nebo požadované [rozsahy IP](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags)adres, postupujte podle kroků v [dokumentu s pokyny k síti](site-recovery-azure-to-azure-networking-guidance.md).
 
 ## <a name="next-steps"></a>Další kroky
 

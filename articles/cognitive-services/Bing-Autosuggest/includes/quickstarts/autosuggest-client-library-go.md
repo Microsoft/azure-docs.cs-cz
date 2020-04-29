@@ -1,5 +1,5 @@
 ---
-title: Rychlý start klientské knihovny Bing Autosuggest Go
+title: Průvodce rychlým startem klientské knihovny Automatické návrhy Bingu
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,40 +9,40 @@ ms.topic: include
 ms.date: 04/06/2020
 ms.author: aahi
 ms.openlocfilehash: b352e785673d7c4ed3a9b346758ef0d1fa68b36d
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80887540"
 ---
-Začínáme s klientskou knihovnou Bing Autosuggest pro Go. Podle těchto kroků nainstalujte knihovnu a vyzkoušejte naše příklady základních úkolů. 
+Začínáme s klientskou knihovnou Automatické návrhy Bingu pro přejít. Pomocí těchto kroků nainstalujte knihovnu a vyzkoušejte si naše příklady pro základní úlohy. 
 
-Pomocí klientské knihovny Bing Autosuggest pro přejít získat návrhy hledání na základě částečných řetězců dotazu.
+Pomocí klientské knihovny Automatické návrhy Bingu můžete získat návrhy hledání na základě částečných řetězců dotazů.
 
-[Referenční dokumentace](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/autosuggest) |  | [Ukázkový kód zdrojového](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/go/BingAutoSuggest/BingAutoSuggestQuickstart.go) [kódu knihovny](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/textanalytics)
+[Reference documentation](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/autosuggest) |  | [Vzorový kód](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/go/BingAutoSuggest/BingAutoSuggestQuickstart.go) [zdrojového kódu knihovny](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/textanalytics)Referenční dokumentace
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure – [vytvořte si ho zdarma](https://azure.microsoft.com/free/)
-* Nejnovější verze [Go](https://golang.org/dl/)
+* Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/) .
+* Nejnovější verze nástroje [Přejít](https://golang.org/dl/)
 
 ## <a name="setting-up"></a>Nastavení
 
 ### <a name="create-an-azure-resource"></a>Vytvoření prostředku Azure 
 
-Začněte používat knihovnu klienta Bing Autosuggest vytvořením prostředku Azure. Vyberte typ zdroje, který je pro vás ten pravý:
+Začněte používat klientskou knihovnu Automatické návrhy Bingu vytvořením prostředku Azure. Vyberte typ prostředku, který je pro vás nejvhodnější:
 
 [!INCLUDE [cognitive-services-bing-autosuggest-signup-requirements](~/includes/cognitive-services-bing-autosuggest-signup-requirements.md)]
 
 ### <a name="create-an-environment-variable"></a>Vytvoření proměnné prostředí
 
 >[!NOTE]
-> Koncové body pro nezkušební prostředky vytvořené po 1. Další informace a úplný seznam místních koncových bodů naleznete [v tématu Vlastní názvy subdomén pro služby Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains). 
+> Koncové body pro prostředky nevyužívající zkušební verzi vytvořené po 1. červenci 2019 používají vlastní formát subdomény, který vidíte níže. Další informace a úplný seznam regionálních koncových bodů najdete v tématu [názvy vlastních subdomén pro Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains). 
 
 Pomocí klíče a koncového bodu z prostředku, který jste vytvořili, vytvořte dvě proměnné prostředí pro ověřování:
 <!-- replace the below variable names with the names expected in the code sample.-->
-* `AUTOSUGGEST_SUBSCRIPTION_KEY`- Klíč zdroje pro ověřování vašich požadavků.
-* `AUTOSUGGEST_ENDPOINT`- Koncový bod prostředku pro odesílání požadavků rozhraní API. Bude to vypadat takto: 
+* `AUTOSUGGEST_SUBSCRIPTION_KEY`– Klíč prostředku pro ověření vašich požadavků.
+* `AUTOSUGGEST_ENDPOINT`– Koncový bod prostředku pro odesílání požadavků rozhraní API. Bude vypadat takto: 
   * `https://<your-custom-subdomain>.api.cognitive.microsoft.com` 
 
 Použijte pokyny pro váš operační systém.
@@ -67,7 +67,7 @@ Po přidání proměnné prostředí spusťte v okně konzoly příkaz `source ~
 
 #### <a name="macos"></a>[macOS](#tab/unix)
 
-Upravte `.bash_profile`aplikaci a přidejte proměnnou prostředí:
+`.bash_profile`Upravte a přidejte proměnnou prostředí:
 
 ```bash
 export AUTOSUGGEST_SUBSCRIPTION_KEY=<replace-with-your-autosuggest-api-key>
@@ -77,41 +77,41 @@ export AUTOSUGGEST_ENDPOINT=<replace-with-your-autosuggest-api-endpoint>
 Po přidání proměnné prostředí spusťte v okně konzoly příkaz `source .bash_profile`, aby se změny projevily.
 ***
 
-### <a name="create-a-new-go-project"></a>Vytvoření nového projektu Go
+### <a name="create-a-new-go-project"></a>Vytvoření nového projektu přejít
 
-V okně konzoly (cmd, PowerShell, Terminal, Bash) vytvořte nový pracovní prostor pro projekt Go a přejděte na něj. Pracovní prostor bude obsahovat tři složky: 
+V okně konzoly (cmd, PowerShell, terminál, bash) vytvořte nový pracovní prostor pro projekt přejít a přejděte na něj. Váš pracovní prostor bude obsahovat tři složky: 
 
-* **src** - Tento adresář obsahuje zdrojový kód a balíčky. Všechny balíčky `go get` nainstalované pomocí příkazu budou umístěny zde.
-* **pkg** - Tento adresář obsahuje zkompilované objekty balíčku Go. Všechny tyto soubory `.a` mají příponu.
-* **bin** - Tento adresář obsahuje binární spustitelné soubory, které jsou vytvořeny při spuštění `go install`.
+* **Src** – tento adresář obsahuje zdrojový kód a balíčky. Všechny balíčky nainstalované s tímto `go get` příkazem budou umístěny zde.
+* **pkg** – tento adresář obsahuje kompilované objekty balíčku pro přechod. Všechny tyto soubory mají `.a` rozšíření.
+* **bin** – tento adresář obsahuje binární spustitelné soubory, které se vytvoří při spuštění `go install`.
 
 > [!TIP]
-> Přečtěte si další informace o struktuře [pracovního prostoru Go](https://golang.org/doc/code.html#Workspaces). Tato příručka obsahuje `$GOPATH` `$GOROOT`informace pro nastavení a .
+> Přečtěte si další informace o struktuře [pracovního prostoru přejít](https://golang.org/doc/code.html#Workspaces). Tato příručka obsahuje informace o nastavení `$GOPATH` a `$GOROOT`.
 
-Vytvoříme pracovní prostor s `my-app` názvem a požadované `src`podadresáře pro , `pkg`a `bin`:
+Pojďme vytvořit pracovní prostor s názvem `my-app` a požadované podadresáře pro `src`, `pkg`a `bin`:
 
 ```
 $ mkdir -p my-app/{src, bin, pkg}  
 $ cd my-app
 ```
 
-### <a name="install-the-client-library-for-go"></a>Instalace klientské knihovny pro Přejít
+### <a name="install-the-client-library-for-go"></a>Instalace klientské knihovny pro přejít
 
-Nyní nainstalujeme klientskou knihovnu pro Go: 
+Teď si nainstalujeme klientskou knihovnu pro přejít: 
 
 ```bash
 $ go get -u <library-location-or-url>
 ```
 
-nebo pokud používáte dep, v rámci vašeho repo běhu:
+nebo pokud používáte DEP, v rámci vašeho úložiště úložišť:
 
 ```bash
 $ dep ensure -add <library-location-or-url>
 ```
 
-### <a name="create-your-go-application"></a>Vytvoření aplikace Go
+### <a name="create-your-go-application"></a>Vytvoření aplikace v cestách
 
-Dále vytvoříme soubor s `src/sample-app.go`názvem :
+Nyní vytvoříme soubor s názvem `src/sample-app.go`:
 
 ```bash
 $ cd src
@@ -133,7 +133,7 @@ import (
 )
 ```
 
-Vytvořte funkci `main`s názvem . Pak vytvořte proměnné prostředí pro klíč a koncový bod Bing Autosuggest.
+Vytvořte funkci s názvem `main`. Pak vytvořte proměnné prostředí pro svůj Automatické návrhy Bingu klíč a koncový bod.
 
 ```go
 func main() {
@@ -152,17 +152,17 @@ func main() {
 
 ## <a name="code-examples"></a>Příklady kódu
 
-Tyto ukázky kódu ukazují, jak dokončit základní úkoly pomocí knihovny klienta Bing Autosuggest pro Go:
+Tyto ukázky kódu ukazují, jak dokončit základní úlohy pomocí Automatické návrhy Bingu klientské knihovny pro přejít:
 
 * [Ověření klienta](#authenticate-the-client)
-* [Odeslání požadavku na rozhraní API](#send-an-api-request)
+* [Odeslat žádost o rozhraní API](#send-an-api-request)
 
 ## <a name="authenticate-the-client"></a>Ověření klienta
 
 > [!NOTE] 
-> Tento rychlý start předpokládá, že jste [vytvořili proměnnou](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) prostředí `BING_AUTOSUGGEST_SUBSCRIPTION_KEY`pro klíč automatického `BING_AUTOSUGGEST_ENDPOINT`návrhu Bingu s názvem a jeden pro koncový bod s názvem .
+> V tomto rychlém startu se předpokládá, že jste [vytvořili proměnnou prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro klíč pro automatický `BING_AUTOSUGGEST_SUBSCRIPTION_KEY`návrh Bingu s názvem a jednu `BING_AUTOSUGGEST_ENDPOINT`pro váš koncový bod s názvem.
 
-Ve `main()` funkci vytvořte instanci klienta pomocí koncového bodu a klíče. 
+Ve `main()` funkci vytvořte instanci klienta s vaším koncovým bodem a klíčem. 
 
 ```go
 // Get the context, which is required by the SDK methods.
@@ -174,9 +174,9 @@ client.Authorizer = autorest.NewCognitiveServicesAuthorizer(subscription_key)
 client.Endpoint = endpoint
 ```
 
-## <a name="send-an-api-request"></a>Odeslání požadavku na rozhraní API
+## <a name="send-an-api-request"></a>Odeslat žádost o rozhraní API
 
-Ve stejné metodě použijte metodu [AutoSuggestMethodAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.autosuggestclientextensions.autosuggestmethodasync?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Search_AutoSuggest_AutoSuggestClientExtensions_AutoSuggestMethodAsync_Microsoft_Azure_CognitiveServices_Search_AutoSuggest_IAutoSuggestClient_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_Collections_Generic_IList_System_String__System_Threading_CancellationToken_) klienta k odeslání dotazu bingu. Poté iterate přes [návrhy](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.models.suggestions?view=azure-dotnet) odpověď a vytisknout první návrh.
+Ve stejné metodě odešlete dotaz do Bingu pomocí metody [AutoSuggestMethodAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.autosuggestclientextensions.autosuggestmethodasync?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Search_AutoSuggest_AutoSuggestClientExtensions_AutoSuggestMethodAsync_Microsoft_Azure_CognitiveServices_Search_AutoSuggest_IAutoSuggestClient_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_Collections_Generic_IList_System_String__System_Threading_CancellationToken_) klienta. Pak proiterujte odpověď na [návrhy](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.models.suggestions?view=azure-dotnet) a vytiskněte první návrh.
 
 ```Go
 // This should return the query suggestion "xbox."
@@ -204,7 +204,7 @@ if len(groups) > 0 {
 
 ## <a name="run-the-application"></a>Spuštění aplikace
 
-Spusťte aplikaci `go run [arguments]` Go pomocí příkazu z adresáře aplikace.
+Spusťte aplikaci v `go run [arguments]` příkazu přejít pomocí příkazu z adresáře aplikace.
 
 ```Go
 go run sample-app.go
@@ -212,7 +212,7 @@ go run sample-app.go
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud chcete vyčistit a odebrat předplatné služeb Cognitive Services, můžete odstranit prostředek nebo skupinu prostředků. Odstraněním skupiny prostředků také odstraníte všechny další prostředky, které jsou s ní spojené.
+Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prostředek nebo skupinu prostředků odstranit. Odstraněním skupiny prostředků se odstraní také všechny další prostředky, které jsou k ní přidružené.
 
 * [Portál](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)

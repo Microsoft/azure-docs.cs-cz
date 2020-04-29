@@ -1,7 +1,7 @@
 ---
-title: Použití identifikátorů URI přesměrování s nástrojem MSAL (iOS/macOS) | Azure
+title: Použití identifikátorů URI pro přesměrování s MSAL (iOS/macOS) | Azure
 titleSuffix: Microsoft identity platform
-description: Přečtěte si o rozdílech mezi knihovnou ověřování Microsoftu pro ObjectiveC (MSAL pro iOS a macOS) a Knihovnou ověřování Azure AD pro objectivec (ADAL. ObjC) a jak mezi nimi migrovat.
+description: Přečtěte si o rozdílech mezi Microsoft Authentication Library for ObjectiveC (MSAL for iOS and macOS) a s knihovnou ověřování Azure AD pro ObjectiveC (ADAL. ObjC) a postup migrace mezi nimi.
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -14,50 +14,50 @@ ms.author: marsma
 ms.reviewer: jak
 ms.custom: aaddev
 ms.openlocfilehash: 1291563a39e3cf3acd4b343302be8b150bf794ca
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80883504"
 ---
-# <a name="using-redirect-uris-with-the-microsoft-authentication-library-for-ios-and-macos"></a>Použití identifikátorů URI přesměrování s ověřovací knihovnou Microsoftu pro iOS a macOS
+# <a name="using-redirect-uris-with-the-microsoft-authentication-library-for-ios-and-macos"></a>Použití identifikátorů URI pro přesměrování s knihovnou Microsoft Authentication Library pro iOS a macOS
 
-Když se uživatel ověří, Azure Active Directory (Azure AD) odešle token do aplikace pomocí identifikátoru URI přesměrování registrovaného v aplikaci Azure AD.
+Když se uživatel ověří, Azure Active Directory (Azure AD) pošle token do aplikace pomocí identifikátoru URI přesměrování zaregistrovaného v aplikaci Azure AD.
 
-Knihovna Microsoft Authentication (MSAL) vyžaduje, aby identifikátor URI přesměrování byl registrován v aplikaci Azure AD v určitém formátu. MSAL používá výchozí identifikátor URI přesměrování, pokud jej nezadáte. Formát je `msauth.[Your_Bundle_Id]://auth`.
+Knihovna Microsoft Authentication Library (MSAL) vyžaduje, aby identifikátor URI přesměrování byl zaregistrován v aplikaci Azure AD v konkrétním formátu. MSAL používá výchozí identifikátor URI přesměrování, pokud ho nezadáte. Formát je `msauth.[Your_Bundle_Id]://auth`.
 
-Výchozí formát IDENTIFIKÁTORU URI přesměrování funguje pro většinu aplikací a scénářů, včetně zprostředkovaného ověřování a webového zobrazení systému. Pokud je to možné, použijte výchozí formát.
+Výchozí formát identifikátoru URI pro přesměrování funguje pro většinu aplikací a scénářů, jako je například zprostředkované ověřování a systémové webové zobrazení. Pokud je to možné, použijte výchozí formát.
 
-Však může být nutné změnit přesměrování URI pro pokročilé scénáře, jak je popsáno níže.
+V případě pokročilých scénářů ale možná budete muset změnit identifikátor URI přesměrování, jak je popsáno níže.
 
-## <a name="scenarios-that-require-a-different-redirect-uri"></a>Scénáře, které vyžadují jiný identifikátor URI přesměrování
+## <a name="scenarios-that-require-a-different-redirect-uri"></a>Scénáře, které vyžadují jiný identifikátor URI pro přesměrování
 
-### <a name="cross-app-single-sign-on-sso"></a>Jednotné přihlášení mezi aplikacemi (Jednotné přihlašování)
+### <a name="cross-app-single-sign-on-sso"></a>Jednotné přihlašování mezi aplikacemi (SSO)
 
-Aby mohla platforma Microsoft Identity sdílet tokeny mezi aplikacemi, musí mít každá aplikace stejné ID klienta nebo ID aplikace. Jedná se o jedinečný identifikátor poskytnutý při registraci aplikace na portálu (nikoli ID sady aplikací, které registrujete na aplikaci u společnosti Apple).
+Aby mohla platforma Microsoft Identity sdílet tokeny napříč aplikacemi, musí mít každá aplikace stejné ID klienta nebo ID aplikace. Toto je jedinečný identifikátor, který jste zadali při registraci aplikace na portálu (ne ID sady prostředků aplikace, které zaregistrujete na aplikaci pomocí Applu).
 
-Identifikátory URI přesměrování musí být pro každou aplikaci pro iOS odlišné. To umožňuje službě identit společnosti Microsoft jednoznačně identifikovat různé aplikace, které sdílejí ID aplikace. Každá aplikace může mít více identifikátorů URI přesměrování registrovaných na webu Azure Portal. Každá aplikace ve vaší sadě bude mít jiný identifikátor URI přesměrování. Příklad:
+Identifikátory URI pro přesměrování musí být pro každou aplikaci pro iOS odlišné. To umožňuje službě Microsoft Identity jednoznačně identifikovat různé aplikace, které sdílejí ID aplikace. Každá aplikace může mít v Azure Portal zaregistrováno více identifikátorů URI pro přesměrování. Každá aplikace v sadě bude mít jiný identifikátor URI pro přesměrování. Příklad:
 
-Vzhledem k následující registraci aplikace na webu Azure Portal:
+Při následující registraci aplikace v Azure Portal:
 
     Client ID: ABCDE-12345 (this is a single client ID)
     RedirectUris: msauth.com.contoso.app1://auth, msauth.com.contoso.app2://auth, msauth.com.contoso.app3://auth
 
-App1 používá `msauth.com.contoso.app1://auth` přesměrování App2 používá `msauth.com.contoso.app2://auth` App3 používá`msauth.com.contoso.app1://auth`
+App1 používá přesměrování `msauth.com.contoso.app1://auth` app2 používá `msauth.com.contoso.app2://auth` APP3 použití`msauth.com.contoso.app1://auth`
 
-### <a name="migrating-from-adal-to-msal"></a>Migrace z ADAL do MSAL
+### <a name="migrating-from-adal-to-msal"></a>Migrace z knihovny ADAL na MSAL
 
-Při migraci kódu, který používá Azure AD Ověřování library (ADAL) na MSAL, můžete již mít přesměrování URI nakonfigurované pro vaši aplikaci. Můžete pokračovat v používání stejného identifikátoru URI přesměrování, dokud byla aplikace ADAL nakonfigurována tak, aby podporovala zprostředkované scénáře a identifikátor URI přesměrování splňuje požadavky na formát URI přesměrování MSAL.
+Při migraci kódu, který používal knihovnu ověřování Azure AD (ADAL) na MSAL, už možná máte pro vaši aplikaci nakonfigurovanou identifikátor URI pro přesměrování. Stejný identifikátor URI pro přesměrování můžete dál používat, pokud byla aplikace ADAL nakonfigurovaná tak, aby podporovala zprostředkované scénáře, a váš identifikátor URI přesměrování splňuje požadavky formátu URI MSAL přesměrování.
 
-## <a name="msal-redirect-uri-format-requirements"></a>Požadavky na formát identifikátoru URI přesměrování služby MSAL
+## <a name="msal-redirect-uri-format-requirements"></a>Požadavky formátu identifikátoru URI pro přesměrování MSAL
 
-* Identifikátor URI přesměrování MSAL musí být ve formuláři.`<scheme>://host`
+* Identifikátor URI pro přesměrování MSAL musí být ve formátu.`<scheme>://host`
 
-    Kde `<scheme>` je jedinečný řetězec, který identifikuje vaši aplikaci. Je primárně založen na identifikátoru sady vaší aplikace, aby byla zaručena jedinečnost. Pokud je `com.contoso.myapp`například ID sady aplikace , identifikátor URI přesměrování bude `msauth.com.contoso.myapp://auth`ve formuláři: .
+    Kde `<scheme>` je jedinečný řetězec, který identifikuje vaši aplikaci. Primárně se vychází z identifikátoru sady prostředků vaší aplikace, aby se zaručila jedinečnost. Pokud má `com.contoso.myapp`vaše aplikace například ID sady, váš identifikátor URI přesměrování by měl být ve formátu: `msauth.com.contoso.myapp://auth`.
 
-    Pokud migrujete z ADAL, identifikátor URI přesměrování bude `<scheme>://[Your_Bundle_Id]`mít `scheme` pravděpodobně tento formát: , kde je jedinečný řetězec. Tento formát bude i nadále fungovat při použití MSAL.
+    Pokud migrujete z knihovny ADAL, váš identifikátor URI pro přesměrování bude pravděpodobně mít tento `<scheme>://[Your_Bundle_Id]`formát: `scheme` , kde je jedinečný řetězec. Tento formát bude fungovat i v případě, že použijete MSAL.
 
-* `<scheme>`musí být zaregistrovány v seznamu Info.plist vaší aplikace pod . `CFBundleURLTypes > CFBundleURLSchemes`  V tomto příkladu byl soubor Info.plist otevřen jako zdrojový kód:
+* `<scheme>`musí se zaregistrovat v souboru info. plist vaší aplikace v `CFBundleURLTypes > CFBundleURLSchemes`části.  V tomto příkladu byl otevřen info. plist jako zdrojový kód:
 
     ```xml
     <key>CFBundleURLTypes</key>
@@ -72,13 +72,13 @@ Při migraci kódu, který používá Azure AD Ověřování library (ADAL) na M
     ```
     
 
-MSAL ověří, zda se identifikátor URI přesměrování registruje správně, a vrátí chybu, pokud není.
+MSAL ověří, zda identifikátor URI přesměrování správně zaregistruje, a vrátí chybu, pokud není.
     
-* Pokud chcete použít univerzální odkazy jako identifikátor `<scheme>` URI `https` přesměrování, musí být a `CFBundleURLSchemes`nemusí být deklarován v . Místo toho nakonfigurujte aplikaci a doménu podle `handleMSALResponse:sourceApplication:` pokynů `MSALPublicClientApplication` společnosti Apple na [univerzálních odkazech pro vývojáře](https://developer.apple.com/ios/universal-links/) a zavolejte metodu, kdy je vaše aplikace otevřena prostřednictvím univerzálního odkazu.
+* Pokud chcete použít univerzální odkazy jako identifikátor URI přesměrování, `<scheme>` musí být `https` a nemusí být deklarován v. `CFBundleURLSchemes` Místo toho nakonfigurujte informace o aplikaci a doméně na společnosti Apple na stránce [Universal Links pro vývojáře](https://developer.apple.com/ios/universal-links/) a `handleMSALResponse:sourceApplication:` zavolejte metodu `MSALPublicClientApplication` pro, když je vaše aplikace otevírána prostřednictvím univerzálního odkazu.
 
-## <a name="use-a-custom-redirect-uri"></a>Použití vlastního identifikátoru URI přesměrování
+## <a name="use-a-custom-redirect-uri"></a>Použít vlastní identifikátor URI pro přesměrování
 
-Chcete-li použít vlastní identifikátor `redirectUri` URI `MSALPublicClientApplicationConfig` přesměrování, předajte parametr a předajte mu tento objekt při `MSALPublicClientApplication` inicializaci objektu. Pokud je identifikátor URI přesměrování neplatný, `nil` inicializátor se vrátí a nastaví `redirectURIError`další informace.  Příklad:
+Chcete-li použít vlastní identifikátor URI přesměrování, `redirectUri` předejte `MSALPublicClientApplicationConfig` parametr do a předejte `MSALPublicClientApplication` tomuto objektu při inicializaci objektu. Pokud je identifikátor URI přesměrování neplatný, inicializátor vrátí `nil` a nastaví `redirectURIError`Další informace.  Příklad:
 
 Cíl-C:
 
@@ -92,7 +92,7 @@ MSALPublicClientApplication *application =
         [[MSALPublicClientApplication alloc] initWithConfiguration:config error:&redirectURIError];
 ```
 
-Swift:
+SWIFT
 
 ```swift
 let config = MSALPublicClientApplicationConfig(clientId: "your-client-id",
@@ -108,9 +108,9 @@ do {
 
 
 
-## <a name="handle-the-url-opened-event"></a>Zpracování události otevření adresy URL
+## <a name="handle-the-url-opened-event"></a>Zpracovat událost otevření adresy URL
 
-Aplikace by měla volat MSAL, když obdrží jakoukoli odpověď prostřednictvím schémat URL nebo univerzální odkazy. Volání `handleMSALResponse:sourceApplication:` metody `MSALPublicClientApplication` při otevření aplikace. Tady je příklad vlastních schémat:
+Vaše aplikace by měla volat MSAL, když přijme jakoukoli odpověď prostřednictvím schémat adres URL nebo univerzálních odkazů. `MSALPublicClientApplication` Při otevření aplikace zavolejte `handleMSALResponse:sourceApplication:` metodu. Tady je příklad pro vlastní schémata:
 
 Cíl-C:
 
@@ -124,7 +124,7 @@ Cíl-C:
 }
 ```
 
-Swift:
+SWIFT
 
 ```swift
 func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {

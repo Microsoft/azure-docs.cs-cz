@@ -1,6 +1,6 @@
 ---
 title: Zlepšení zabezpečení vzdálené správy v Azure | Dokumentace Microsoftu
-description: Tento článek popisuje kroky pro zvýšení zabezpečení vzdálené správy při správě prostředí Microsoft Azure, včetně cloudových služeb, virtuálních počítačů a vlastních aplikací.
+description: Tento článek popisuje kroky pro zlepšení zabezpečení vzdálené správy při správě Microsoft Azure prostředí, včetně cloudových služeb, virtuálních počítačů a vlastních aplikací.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 04/08/2020
 ms.author: terrylan
 ms.openlocfilehash: e1223560c5d7b19bf9da4c7c16a56c4741e582a0
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80981303"
 ---
 # <a name="security-management-in-azure"></a>Správa zabezpečení v Azure
@@ -119,7 +119,7 @@ Brána vzdálené plochy je proxy služba protokolu RDP založená na zásadách
 Obecně platí, že zabezpečení pracovních stanic správce používaných s cloudem je podobné postupům používaným pro všechny místní pracovní stanice – například minimalizovaná oprávnění k sestavení a omezující oprávnění. Některé jedinečné aspekty správy cloudu se více podobají vzdálené nebo podnikové správě mimo IP síť. Patří sem používání a auditování přihlašovacích údajů, vzdálený přístup s rozšířeným zabezpečením a detekce a reakce na ohrožení.
 
 ### <a name="authentication"></a>Authentication
-K omezení zdrojových IP adres pro přístup k nástrojům pro správu a požadavkům na audit přístupu můžete použít přihlašovací omezení Azure. Aby chomáč Klientů Azure identifikoval klienty pro správu (pracovní stanice nebo aplikace), můžete kromě certifikátů TLS/SSL nakonfigurovat rozhraní SMAPI (prostřednictvím nástrojů vyvinutých zákazníkem, jako jsou rutiny prostředí Windows PowerShell), a portál Azure, aby vyžadovaly instalaci certifikátů správy na straně klienta. V případě přístupu pro správce doporučujeme vyžadovat vícefaktorové ověřování.
+K omezení zdrojových IP adres pro přístup k nástrojům pro správu a požadavkům na audit přístupu můžete použít přihlašovací omezení Azure. Aby bylo možné Azure identifikovat klienty pro správu (pracovní stanice nebo aplikace), můžete nakonfigurovat rozhraní SMAPI (prostřednictvím zákaznických nástrojů, jako jsou rutiny prostředí Windows PowerShell) a Azure Portal, aby vyžadovaly instalaci certifikátů pro správu na straně klienta, kromě certifikátů TLS/SSL. V případě přístupu pro správce doporučujeme vyžadovat vícefaktorové ověřování.
 
 Některé aplikace nebo služby, které nasadíte do Azure, můžou mít vlastní mechanismy ověřování pro přístup koncových uživatelů i správce, zatímco ostatní plně využívají výhody Azure AD. V závislosti na tom, jestli federujete přihlašovací údaje prostřednictvím služby Active Directory Federation Services (AD FS), vám synchronizace adresářů nebo správa uživatelských účtů výhradně v cloudu a pomocí [Microsoft Identity Manager](https://technet.microsoft.com/library/mt218776.aspx) (část Azure AD Premium) pomůže se správou životních cyklů identit mezi prostředky.
 
@@ -176,7 +176,7 @@ Nepředpokládejte, že po uzamčení pracovní stanice už není nutné splnit 
 
 | Chybný postup | Správný postup |
 | --- | --- |
-| Nezanesílejte e-mailem přihlašovací údaje pro přístup správce nebo jiné tajné klíče (například TLS/SSL nebo certifikáty pro správu) |Zachovávejte důvěrnost tak, že názvy účtů a hesla sdělíte ústně (ale neukládejte je do hlasové pošty), provádějte vzdálenou instalaci certifikátů klienta a serveru (prostřednictvím šifrované relace), stahujte z chráněných síťových sdílených položek nebo data předávejte ručně pomocí vyměnitelného média. |
+| Nepoužívejte e-mailová pověření pro přístup správce nebo jiné tajné kódy (například TLS/SSL nebo certifikáty pro správu). |Zachovávejte důvěrnost tak, že názvy účtů a hesla sdělíte ústně (ale neukládejte je do hlasové pošty), provádějte vzdálenou instalaci certifikátů klienta a serveru (prostřednictvím šifrované relace), stahujte z chráněných síťových sdílených položek nebo data předávejte ručně pomocí vyměnitelného média. |
 | - | Životní cykly certifikátu pro správu spravujte proaktivně. |
 | Neukládejte hesla účtů do úložiště aplikací (například tabulek, webů SharePoint nebo sdílených složek) v nezašifrované podobě nebo bez použití algoritmu hash. |Vytvořte zásady pro správu zabezpečení a zásady pro posilování systému a používejte je na svoje vývojové prostředí. |
 | - | K zajištění řádného přístup k webům Azure s protokoly SSL a TLS používejte pravidla pro připnutí certifikátu ze sady nástrojů [Enhanced Mitigation Experience Toolkit 5.5](https://technet.microsoft.com/security/jj653751). |

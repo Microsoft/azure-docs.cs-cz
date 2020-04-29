@@ -1,39 +1,39 @@
 ---
-title: Plán kontinuity provozu - QnA Maker
-description: Primárním cílem plánu kontinuity podnikání je vytvořit odolný koncový bod znalostní báze, který by zajistil, že bot nebo aplikace, která ji spotřebuje, nebude promítat čas.
+title: Plán provozní kontinuity – QnA Maker
+description: Hlavním cílem plánu kontinuity podnikových aplikací je vytvořit odolný koncový bod ve znalostní bázi Knowledge Base, který by pro něj neměl nic trvat ani to, jestli ho aplikace spotřebovává.
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.openlocfilehash: 5d1501ecc42fe948959075cec7d728f6c9df908a
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80887060"
 ---
-# <a name="create-a-business-continuity-plan-for-your-qna-maker-service"></a>Vytvoření plánu kontinuity provozu pro službu QnA Maker
+# <a name="create-a-business-continuity-plan-for-your-qna-maker-service"></a>Vytvoření plánu provozní kontinuity pro vaši službu QnA Maker
 
-Primárním cílem plánu kontinuity podnikání je vytvořit odolný koncový bod znalostní báze, který by zajistil, že bot nebo aplikace, která ji spotřebuje, nebude promítat čas.
+Hlavním cílem plánu kontinuity podnikových aplikací je vytvořit odolný koncový bod ve znalostní bázi Knowledge Base, který by pro něj neměl nic trvat ani to, jestli ho aplikace spotřebovává.
 
-## <a name="business-continuity-with-traffic-manager"></a>Kontinuita provozu s dopravním manažerem
+## <a name="business-continuity-with-traffic-manager"></a>Kontinuita podnikových aplikací pomocí Traffic Manageru
 
 > [!div class="mx-imgBorder"]
-> ![Plán bcp výrobce QnA](../media/qnamaker-how-to-bcp-plan/qnamaker-bcp-plan.png)
+> ![Plán QnA Maker BCP](../media/qnamaker-how-to-bcp-plan/qnamaker-bcp-plan.png)
 
-Myšlenka na vysoké úrovni, jak je znázorněna výše, je následující:
+Nejdůležitější nápad, jak je znázorněno výše, je následující:
 
-1. Nastavte dvě paralelní [služby QnA Maker](set-up-qnamaker-service-azure.md) ve [spárovaných oblastech Azure](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
+1. Nastavte dvě paralelní [QnA maker služby](set-up-qnamaker-service-azure.md) v [spárovaných oblastech Azure](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
 
-2. [Zálohujte](../../../app-service/manage-backup.md) primární službu QnA Maker App service a [obnovte](../../../app-service/web-sites-restore.md) ji v sekundárním nastavení. Tím zajistíte, že obě nastavení budou pracovat se stejným názvem hostitele a klíči.
+2. [Zálohujte](../../../app-service/manage-backup.md) primární QnA maker App Service a [obnovte](../../../app-service/web-sites-restore.md) ji v sekundární instalaci. Tím se zajistí, že obě nastavení budou fungovat se stejným názvem hostitele a klíči.
 
-3. Udržujte primární a sekundární indexy hledání Azure synchronizované. Tady se podívejte [na](https://github.com/pchoudhari/QnAMakerBackupRestore) ukázku GitHubu, jak zálohovat a obnovovat indexy Azure.
+3. Udržování primárních a sekundárních indexů Azure Search v synchronizaci. Pomocí ukázky na GitHubu [tady](https://github.com/pchoudhari/QnAMakerBackupRestore) zjistíte, jak zálohovat a obnovit indexy Azure.
 
-4. Zálohujte přehledy aplikací pomocí [průběžného exportu](../../../application-insights/app-insights-export-telemetry.md).
+4. Zazálohujte Application Insights pomocí [průběžného exportu](../../../application-insights/app-insights-export-telemetry.md).
 
-5. Po nastavení primárnía sekundární zásobníky, použijte [Traffic Manager](../../../traffic-manager/traffic-manager-overview.md) nakonfigurovat dva koncové body a nastavit metodu směrování.
+5. Po nastavení primárních a sekundárních zásobníků nakonfigurujte pomocí [Traffic Manageru](../../../traffic-manager/traffic-manager-overview.md) dva koncové body a nastavte metodu směrování.
 
-6. Budete muset vytvořit zabezpečení transportní vrstvy (TLS), dříve známý jako SSL (Secure Sockets Layer), certifikát pro koncový bod správce provozu. [Svažte certifikát TLS/SSL](../../../app-service/configure-ssl-bindings.md) ve svých službách aplikací.
+6. Museli byste vytvořit protokol TLS (Transport Layer Security), dříve označovaný jako SSL (Secure Sockets Layer) (SSL), certifikát pro koncový bod služby Traffic Manager. [Navažte certifikát TLS/SSL](../../../app-service/configure-ssl-bindings.md) ve vašich aplikačních službách.
 
-7. Nakonec použijte koncový bod správce provozu ve vašem botu nebo aplikaci.
+7. Nakonec v robotu nebo v aplikaci použijte koncový bod Traffic Manageru.
 
 ## <a name="next-steps"></a>Další kroky
 

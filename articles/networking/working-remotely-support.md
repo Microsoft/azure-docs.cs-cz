@@ -1,6 +1,6 @@
 ---
-title: Vzdálená práce pomocí síťových služeb Azure
-description: Tato stránka popisuje, jak můžete používat síťové služby Azure, které jsou k dispozici k povolení vzdálené práce a jak zmírnit problémy s provozem vyplývající ze zvýšeného počtu lidí pracujících na dálku.
+title: Vzdálená práce pomocí Azure Networking Services
+description: Tato stránka popisuje, jak můžete pomocí síťových služeb Azure, které jsou k dispozici pro vzdálenou práci, a jak zmírnit problémy s přenosem dat, které vyplývají z většího počtu lidí pracujících vzdáleně.
 services: networking
 author: rambk
 ms.service: virtual-network
@@ -8,88 +8,88 @@ ms.topic: article
 ms.date: 03/26/2020
 ms.author: rambala
 ms.openlocfilehash: e0e5806ec59cd2d75111db213d8511488d043eec
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80982850"
 ---
-# <a name="working-remotely-using-azure-networking-services"></a>Vzdálená práce pomocí síťových služeb Azure
+# <a name="working-remotely-using-azure-networking-services"></a>Vzdálená práce pomocí Azure Networking Services
 
 >[!NOTE]
-> Tento článek popisuje, jak můžete využít síťové služby Azure, síť Microsoftu a ekosystém partnerů Azure k vzdálené práci a zmírnění problémů se sítí, kterým můžete čelit kvůli krizi COVID-19.
+> Tento článek popisuje, jak můžete využít Azure Networking Services, síť Microsoftu a partnerský ekosystém Azure k tomu, aby fungovaly vzdáleně a zmírnit problémy se sítí, na které se můžete zajímat z důvodu krize v COVID-19.
 
-Tento článek popisuje možnosti, které jsou k dispozici organizacím nastavit vzdálený přístup pro své uživatele nebo doplnit jejich stávající řešení s další kapacitou během období využití ve špičce. Síťoví architekti čelí následujícím výzvám:
+Tento článek popisuje možnosti, které jsou k dispozici organizacím k nastavení vzdáleného přístupu pro své uživatele nebo k doplnění stávajících řešení s dodatečnou kapacitou během období špičky využití. Architektům sítě se čelí následujícím problémům:
 
-- Řešení zvýšení využití sítě.
-- Poskytněte spolehlivé bezpečné připojení více zaměstnancům jejich společnosti a zákazníkům.
-- Poskytněte připojení ke vzdáleným místům po celém světě.
+- Vyřešte zvýšení využití sítě.
+- Poskytněte spolehlivé zabezpečené připojení k více zaměstnancům společnosti a zákazníkům.
+- Poskytněte připojení ke vzdáleným lokalitám po celém světě.
 
-Ne všechny sítě (například privátní sítě WAN a podnikové základní sítě) dochází k přetížení z zatížení vzdáleného pracovního vytížení ve špičce. Kritická místa se běžně hlásí pouze v domácích širokopásmových sítích a privátních branách místních sítí společností.
+Nemusíte využívat všechny sítě (například privátní sítě WAN a podnikové základní sítě) při zahlcení zatížení vzdáleného pracovního procesu ve špičce. Kritické body jsou běžně hlášeny jenom v domácích sítích a branách VPN v místních sítích společnosti.
 
-Plánovači sítě mohou pomoci zmírnit úzká místa a zmírnit přetížení sítě tím, že mají na paměti, že různé typy přenosů vyžadují různé priority zpracování sítě a některé inteligentní přesměrování/distribuce zatížení. Například, real-time tele-medecine provoz lékaře-pacienta interakce je velmi důležité a zpoždění / nervozita citlivé. Vzhledem k tomu, replikace stejného provozu mezi úložišti není citlivé zpoždění. Dřívější provoz musí být směrován po nejoptimálnější síťové cestě s vyšší kvalitou služeb; že je přijatelné směrovat pozdější provoz po suboptimální trase.
+Plánovače sítě mohou zvýšit kritická místa a zmírnit zahlcení sítě tím, že si myslíte, že různé typy přenosů potřebují různé priority v oblasti zpracování sítě a některé inteligentní přesměrování nebo distribuce inteligentního zatížení. Například provoz v reálném čase tele-medecine s přenosem lékařů proti pacientům má vysokou důležitost a citlivou dobu zpoždění a kolísání. Vzhledem k tomu, že replikace stejného provozu mezi úložišti nezáleží na zpoždění. Původní provoz se musí směrovat přes optimální síťovou cestu s vyšší kvalitou služeb. vzhledem k tomu, že je přijatelné směrovat pozdější přenos prostřednictvím dílčí optimální trasy.
 
 
 
-## <a name="sharing-our-best-practices---azure-network-is-designed-for-elasticity-and-high-availability"></a>Sdílení našich osvědčených postupů – síť Azure je navržena pro pružnost a vysokou dostupnost
+## <a name="sharing-our-best-practices---azure-network-is-designed-for-elasticity-and-high-availability"></a>Sdílení našich osvědčených postupů – síť Azure je navržená pro pružnost a vysokou dostupnost.
 
-Azure je navržený tak, aby odolávat náhlým změnám ve využití prostředků a může výrazně pomoci během období využití ve špičce. Společnost Microsoft také udržuje a provozuje jednu z největších sítí na světě. Síť společnosti Microsoft byla navržena pro vysokou dostupnost, která vydrží různé typy selhání: od selhání jednoho síťového prvku až po selhání celé oblasti.
+Azure je navržený tak, aby vydržel náhlé změny v využívání prostředků a může značně pomáhat během období špičky. Společnost Microsoft také udržuje a provozuje jednu z největších sítí v světů. Síť Microsoftu je navržená pro vysokou dostupnost, která může odolat různým typům selhání: z jedné síťové prvku selže selhání celé oblasti.
 
-Síť Microsoftu je navržena tak, aby splňovala požadavky a poskytovala optimální výkon pro různé typy síťových přenosů, včetně multimediálního provozu citlivého na zpoždění pro Skype a teams, CDN, analýzu velkých objemů dat v reálném čase, úložiště Azure, Bing a Xbox. Chcete-li zajistit optimální výkon pro různé typy provozu, síť Společnosti Microsoft přitahuje veškerý provoz, který je určen k přenosu nebo chtějí tranzitu prostřednictvím svých prostředků co nejblíže k původu provozu.
+Síť Microsoftu je navržená tak, aby splňovala požadavky a poskytovala optimální výkon pro různé typy síťových přenosů, včetně zpoždění citlivého multimediálního provozu pro Skype a týmy, CDN, analýzu velkých objemů dat v reálném čase, služby Azure Storage, Bing a Xbox. Pro zajištění optimálního výkonu pro různé typy provozu síť Microsoftu přilákat veškerý provoz, který je určený k přenosu prostředků, a jeho prostředky, co je potřeba k tomu, aby se nacházel co nejblíže původu provozu.
 
 >[!NOTE] 
->Použití síťových funkcí Azure popsaných níže využívá chování dopravní přitažlivosti globální sítě Microsoftu k zajištění lepšího prostředí pro vytváření sítí zákazníků. Dopravní přitažlivost chování sítě Společnosti Microsoft pomáhá off načítání provozu co nejdříve z první / poslední míle sítí, které mohou dojít k přetížení během období využití ve špičce.
+>Používání síťových funkcí Azure popsaných níže využívá chování přitažlivosti provozu globální sítě Microsoftu k poskytování lepších síťových prostředí pro zákazníky. Chování provozu sítě Microsoftu, které přitažlivosti provoz, pomáhá co nejdříve načítat provoz z prvních nebo posledních sítí v mílích, které můžou vyskytnout přetížení během období špičky využití.
 >
 
-## <a name="enable-employees-to-work-remotely"></a>Umožnit zaměstnancům pracovat na dálku
+## <a name="enable-employees-to-work-remotely"></a>Umožnění vzdálené práce zaměstnanců
 
-Brána Azure VPN podporuje připojení VPN z bodu na místo (P2S) i sítě k webu (S2S). Pomocí brány Azure VPN můžete škálovat připojení zaměstnanců, abyste měli zabezpečený přístup k nasazeným prostředkům Azure i místním prostředkům. Další informace naleznete v tématu [Jak povolit uživatelům vzdáleně pracovat](../vpn-gateway/work-remotely-support.md). 
+Azure VPN Gateway podporuje připojení typu Point-to-Site (P2S) a VPN typu Site-to-Site (S2S). Pomocí Azure VPN Gateway můžete škálovat připojení zaměstnanců a bezpečně přistupovat k prostředkům nasazeným v Azure i k místním prostředkům. Další informace najdete v tématu [Jak povolit uživatelům vzdálenou práci](../vpn-gateway/work-remotely-support.md). 
 
-Pokud používáte protokol SSTP (SSTP) se zabezpečeným soketem, počet souběžných připojení je omezen na 128. Chcete-li získat vyšší počet připojení, doporučujeme přechod na OpenVPN nebo IKEv2. Další informace naleznete v [tématu Přechod na protokol OpenVPN nebo IKEv2 z SSTP](../vpn-gateway/ikev2-openvpn-from-sstp.md
+Pokud používáte protokol SSTP (Secure Sockets Tunneling Protocol), je počet souběžných připojení omezený na 128. Pokud chcete získat větší počet připojení, doporučujeme, abyste přešli na OpenVPN nebo IKEv2. Další informace najdete v tématu [Přechod na Protokol OpenVPN nebo IKEv2 z protokolu SSTP](../vpn-gateway/ikev2-openvpn-from-sstp.md
 ).
 
-Pro přístup k prostředkům nasazeným v Azure mohou vzdálení vývojáři místo připojení VPN používat řešení Azure Bastion k získání zabezpečeného přístupu prostředí (RDP nebo SSH), aniž by bylo nutné přistupovat k veřejným IP adresy na virtuálních počítačích. Další informace najdete [v tématu Práce na dálku pomocí Azure Bastion](../bastion/work-remotely-support.md).
+Pro přístup k prostředkům nasazeným v Azure můžou vzdálení vývojáři použít řešení Azure bastionu namísto připojení VPN k získání zabezpečeného přístupu do prostředí (RDP nebo SSH) bez vyžadování veřejných IP adres na virtuálních počítačích, ke kterým se přistupuje. Další informace najdete v tématu [práce vzdáleně pomocí Azure bastionu](../bastion/work-remotely-support.md).
 
-Pro agregaci rozsáhlého připojení VPN, pro podporu připojení libovolného k libovolnému připojení mezi prostředky v různých místních globálních umístěních, v různých místních virtuálních sítích rozbočovače a paprsky a pro optimalizaci využití více domácích širokopásmových sítí můžete použít Azure Virtual WAN. Další informace naleznete [v tématu Boj o řešení práce z domova potřebuje? Tady může azure virtuální wan pomoct](../virtual-wan/work-remotely-support.md).
+Pro agregaci vysoce škálovatelného připojení k síti VPN, aby bylo možné podporovat jakékoli připojení mezi prostředky v různých místních lokalitách, v různých místních virtuálních sítích centrálních hub a paprsků a k optimalizaci využití více domácích širokopásmových sítí můžete použít Azure Virtual WAN. Další informace najdete v tématu [působit potíže to stravování pro práci s požadavky na domácnosti? Tady je, kde může pomáhat Azure Virtual WAN](../virtual-wan/work-remotely-support.md).
 
-Dalším způsobem, jak podporovat vzdálenou pracovní sílu, je nasazení infrastruktury virtuálních ploch (VDI) hostované ve vaší virtuální síti Azure, zabezpečené pomocí brány Azure Firewall. Například Windows Virtual Desktop (WVD) je služba virtualizace plochy a aplikací, která běží v Azure. S Windows Virtual Desktop můžete nastavit škálovatelné a flexibilní prostředí ve vašem předplatném Azure bez nutnosti spouštět další servery brány. Jste zodpovědní pouze za virtuální počítače WVD ve vaší virtuální síti. Další informace naleznete v tématu [Podpora vzdálené práce azure firewallu](../firewall/remote-work-support.md). 
+Další možností, jak zajistit podporu vzdálených zaměstnanců, je nasazení infrastruktury virtuálních klientských počítačů (VDI), která je hostovaná ve službě Azure Virtual Network, zabezpečená pomocí Azure Firewall. Například virtuální počítač s Windows (WVD) je služba virtualizace plochy a aplikací, která běží v Azure. S virtuálním počítačem s Windows můžete nastavit škálovatelné a flexibilní prostředí v předplatném Azure, aniž byste museli spouštět žádné další servery brány. Zodpovídáte jenom za virtuální počítače s WVD ve vaší virtuální síti. Další informace najdete v tématu [Podpora vzdálené práce Azure firewall](../firewall/remote-work-support.md). 
 
-Azure má také bohatou sadu partnerů ekologického systému. Naši partneři Síťová virtuální zařízení v Azure můžou taky pomoct škálovat připojení VPN. Další informace naleznete v [tématu network virtual appliance (NVA) aspekty pro práci na dálku](../vpn-gateway/nva-work-remotely-support.md).
+Azure má také bohatou sadu partnerů pro ekosystém systému. Naši partneři sítě virtuální zařízení v Azure můžou také lépe škálovat připojení VPN. Další informace najdete v tématu [požadavky na síťové virtuální zařízení (síťové virtuální zařízení) pro vzdálenou práci](../vpn-gateway/nva-work-remotely-support.md).
 
-## <a name="extend-employees-connection-to-access-globally-distributed-resources"></a>Rozšíření připojení zaměstnanců pro přístup k globálně distribuovaným prostředkům
+## <a name="extend-employees-connection-to-access-globally-distributed-resources"></a>Rozšiřování připojení zaměstnanců pro přístup k globálně distribuovaným prostředkům
 
-Následující služby Azure můžou zaměstnancům umožnit přístup k globálně distribuovaným prostředkům. Vaše prostředky mohou být v libovolné oblasti Azure, v místních sítích nebo dokonce v jiných veřejných nebo privátních cloudech. 
+Tyto služby Azure můžou pracovníkům umožnit přístup k globálním distribuovaným prostředkům. Vaše prostředky můžou být v některé oblasti Azure, v místních sítích nebo dokonce i v jiných veřejných nebo privátních cloudech. 
 
-- **Partnerský vztah virtuální sítě Azure**: Pokud nasadíte prostředky ve více než jedné oblasti Azure a/nebo pokud agregujete připojení vzdáleně pracujících zaměstnanců pomocí více virtuálních sítí, můžete vytvořit připojení mezi více virtuálními sítěmi Azure pomocí partnerského vztahu virtuální sítě. Další informace naleznete v [tématu Partnerský vztah virtuální sítě][VNet-peer].
+- **Partnerský vztah virtuálních sítí Azure**: Pokud nasazujete prostředky ve více oblastech Azure a/nebo pokud agregujete připojení vzdálených pracovních zaměstnanců pomocí více virtuálních sítí, můžete vytvořit připojení mezi několika virtuálními sítěmi Azure pomocí partnerského vztahu virtuálních sítí. Další informace najdete v tématu [partnerský vztah virtuálních sítí][VNet-peer].
 
-- **Řešení založené na AZURE:** Pro vzdálené zaměstnance připojené k Azure přes P2S nebo S2S VPN můžete povolit přístup k místním sítím konfigurací S2S VPN mezi místními sítěmi a bránou Azure VPN. Další informace naleznete [v tématu Vytvoření připojení k webu na web][S2S].
+- **Řešení založené na Azure VPN**: pro vaše vzdálené zaměstnance připojené k Azure prostřednictvím P2S nebo S2S VPN můžete povolit přístup k místním SÍTÍM konfigurací S2S VPN mezi místními sítěmi a Azure VPN Gateway. Další informace najdete v tématu [vytvoření připojení typu Site-to-site][S2S].
 
-- **ExpressRoute**: Pomocí soukromého partnerského vztahu ExpressRoute můžete povolit privátní připojení mezi nasazením Azure a místní infrastrukturou nebo infrastrukturou v zařízení společného umístění. ExpressRoute prostřednictvím partnerského vztahu Microsoftu také umožňuje přístup k veřejným koncovým bodům v Microsoftu z vaší místní sítě. Připojení ExpressRoute se nepřenášejí prostřednictvím veřejného internetu. Nabízejí zabezpečené připojení, spolehlivost, vyšší propustnost s nižší a konzistentní latencí než typická připojení přes Internet. Další informace najdete v článku [Přehled ExpressRoute][ExR]. Využití stávajícího poskytovatele sítě, který je již součástí našeho [ekosystému partnerů ExpressRoute,][ExR-eco] může pomoci zkrátit dobu potřebnou k získání připojení s velkou šířkou pásma k Microsoftu.  Pomocí [služby ExpressRoute Direct][ExR-D] můžete přímo připojit místní síť k páteřní síti Microsoftu. ExpressRoute Direct nabízí dvě různé možnosti linkové sazby duální 10 Gbps nebo 100 Gbps. 
+- **ExpressRoute**: použití privátního partnerského vztahu ExpressRoute můžete povolit privátní připojení mezi nasazeními Azure a místní infrastrukturou nebo vaší infrastrukturou v zařízení společného umístění. ExpressRoute prostřednictvím partnerského vztahu Microsoftu také umožňuje přístup k veřejným koncovým bodům v Microsoftu z vaší místní sítě. Připojení ExpressRoute se nepřenášejí prostřednictvím veřejného internetu. Nabízí zabezpečené připojení, spolehlivost a vyšší propustnost s nižší a konzistentní latencí než typická připojení přes Internet. Další informace najdete v článku [Přehled ExpressRoute][ExR]. Využití stávajícího poskytovatele sítě, který už je součástí našeho [ekosystému partnerských ExpressRoute][ExR-eco] , může zkrátit dobu, po kterou se získá velká šířka připojení k Microsoftu.  Pomocí [ExpressRoute Direct][ExR-D] můžete svoji místní síť připojit přímo k páteřní síti Microsoftu. ExpressRoute Direct nabízí dvě různé možnosti přenosové rychlosti Dual 10 GB/s nebo 100 GB/s. 
 
-- **Virtuální síť Azure:** Azure Virtual WAN umožňuje bezproblémovou interoperabilitu mezi připojeními VPN a okruhy ExpressRoute. Jak již bylo zmíněno dříve, Azure Virtual WAN také podporovat any-to-any připojení mezi prostředky v různých on-prem globální umístění, v různých regionálních rozbočovače a virtuální sítě pro paprsky
+- **Azure Virtual WAN**: Azure Virtual WAN umožňuje bezproblémovou spolupráci mezi připojeními VPN a okruhy ExpressRoute. Jak už bylo zmíněno dříve, Azure Virtual WAN podporuje taky jakékoli propojení mezi prostředky v různých globálních umístěních Prem v různých místních a koncových virtuálních sítích.
 
-## <a name="scale-customer-connectivity-to-frontend-resources"></a>Škálování připojení zákazníků na front-endové prostředky
+## <a name="scale-customer-connectivity-to-frontend-resources"></a>Škálování připojení zákazníků k prostředkům front-endu
 
-V době, kdy více lidí jít on-line, mnoho firemních webových stránek zkušenosti zvýšený provoz zákazníků. Azure Application Gateway může pomoci spravovat toto zvýšené front-endové zatížení. Další informace naleznete v [tématu Podpora vysokého provozu aplikace gateway .](../application-gateway/high-traffic-support.md)
+V době, kdy se více lidí přejdou online, mnoho podnikových webů zvyšuje provoz zákazníků. Azure Application Gateway může pomáhat spravovat tuto zvýšené zatížení front-endu. Další informace najdete v tématu [Podpora vysokého provozu v Application Gateway](../application-gateway/high-traffic-support.md).
 
-## <a name="microsoft-support-for-multi-cloud-traffic"></a>Podpora microsoftu pro provoz ve více cloudech
+## <a name="microsoft-support-for-multi-cloud-traffic"></a>Podpora pro provoz ve více cloudech od Microsoftu
 
-Pro vaše nasazení v jiných veřejných cloudech může společnost Microsoft poskytovat globální připojení. V tomto ohledu vám můžou pomoct virtuální SÍŤ AZURE, VPN nebo ExpressRoute. Chcete-li rozšířit připojení z Azure do jiných cloudů, můžete nakonfigurovat S2S VPN mezi dvěma cloudy. Pomocí expressroute můžete také navázat připojení z Azure do jiných veřejných cloudů. Oracle cloud je součástí partnerského ekosystému ExpressRoute. Můžete [nastavit přímé propojení mezi Azure a infrastrukturou Oracle Cloud Infrastructure][Az-OCI]. Většina poskytovatelů služeb, kteří jsou součástí ekosystému partnerů ExpressRoute, také nabízí privátní připojení k jiným veřejným cloudům. S využitím těchto poskytovatelů služeb můžete prostřednictvím ExpressRoute vytvořit privátní připojení mezi nasazeními v Azure a dalšími cloudy.
+Pro vaše nasazení v jiných veřejných cloudech může společnost Microsoft poskytovat globální připojení. V tomto ohledu vám může pomáhat Azure Virtual WAN, VPN nebo ExpressRoute. Pokud chcete připojit připojení z Azure k jiným cloudům, můžete nakonfigurovat S2S VPN mezi těmito dvěma cloudy. Připojení z Azure můžete také navázat na jiné veřejné cloudy pomocí ExpressRoute. Oracle Cloud je součástí ekosystému partnerů ExpressRoute. Můžete [nastavit přímé propojení mezi cloudovou infrastrukturou Azure a Oracle][Az-OCI]. Většina poskytovatelů služeb, kteří jsou součástí ekosystému partnerů ExpressRoute, taky nabízí privátní připojení k ostatním veřejným cloudům. S využitím těchto poskytovatelů služeb můžete vytvořit privátní připojení mezi nasazeními v Azure a dalšími cloudy prostřednictvím ExpressRoute.
 
 ## <a name="next-steps"></a>Další kroky
 
-Následující články popisují, jak lze různé síťové funkce Azure použít k škálování uživatelů tak, aby pracovali na dálku:
+Následující články popisují, jak lze pomocí různých síťových funkcí Azure škálovat uživatele, aby fungovaly vzdáleně:
 
-| **Článku** | **Popis** |
+| **Předmětu** | **Popis** |
 | --- | --- |
-| [Jak povolit uživatelům pracovat na dálku](../vpn-gateway/work-remotely-support.md) | Zkontrolujte dostupné možnosti nastavení vzdáleného přístupu pro uživatele nebo doplnění jejich stávajících řešení o další kapacitu pro vaši organizaci.|
-| [Snaží se obstarávat práci z domova potřeb? Zde je místo, kde azure virtuální WAN může pomoci](../virtual-wan/work-remotely-support.md) | Azure Virtual WAN slouží k řešení potřeb vzdáleného připojení vaší organizace.|
-| [Podpora vysokého provozu služby Application Gateway](../application-gateway/high-traffic-support.md) | Pomocí brány aplikace s bránou webových aplikací (WEB Application Firewall) můžete škálovatelný a bezpečný způsob správy provozu webových aplikací. |
-| [Aspekty síťového virtuálního zařízení (NVA) pro práci na dálku](../vpn-gateway/nva-work-remotely-support.md)|Přečtěte si pokyny týkající se využití virtuálních zařízení v Azure k poskytování řešení pro vzdálený přístup. |
-| [Přechod na protokol OpenVPN nebo IKEv2 z SSTP](https://go.microsoft.com/fwlink/?linkid=2124112) | Překonejte limit souběžného připojení 128 SSTP přechodem na protokol OpenVPN nebo IKEv2.|
-| [Vzdálená práce s Azure Bastion](../bastion/work-remotely-support.md) | Poskytujte zabezpečené a bezproblémové připojení RDP/SSH k virtuálním počítačům v rámci virtuální sítě Azure, přímo na portálu Azure, bez použití veřejné IP adresy. |
-| [Použití Služby Azure ExpressRoute k vytvoření hybridního připojení pro podporu vzdálených uživatelů](../expressroute/work-remotely-support.md) | Pomocí aplikace ExpressRoute pro hybridní připojení umožníte uživatelům ve vaší organizaci pracovat na dálku.|
-| [Podpora vzdálené práce azure firewallu](../firewall/remote-work-support.md)|Chraňte své prostředky virtuální sítě Azure pomocí Azure Firewall. |
+| [Jak povolit vzdálenou práci uživatelů](../vpn-gateway/work-remotely-support.md) | Projděte si dostupné možnosti pro nastavení vzdáleného přístupu pro uživatele nebo doplnění stávajících řešení o další kapacitu vaší organizace.|
+| [Působit potíže se do služby stravování, abyste mohli pracovat s požadavky na domácnosti? Tady je místo, kde může Azure Virtual WAN pomáhat.](../virtual-wan/work-remotely-support.md) | Využijte Azure Virtual WAN k řešení potřeb vaší organizace pro vzdálené připojení.|
+| [Podpora vysokého provozu služby Application Gateway](../application-gateway/high-traffic-support.md) | Pomocí Application Gateway s firewallem webových aplikací (WAF) můžete škálovatelný a zabezpečený způsob správy provozu do webových aplikací. |
+| [Požadavky na síťové virtuální zařízení (síťové virtuální zařízení) pro vzdálenou práci](../vpn-gateway/nva-work-remotely-support.md)|Přečtěte si pokyny k využití síťová virtuální zařízení v Azure k poskytování řešení vzdáleného přístupu. |
+| [Přechod na Protokol OpenVPN nebo IKEv2 z SSTP](https://go.microsoft.com/fwlink/?linkid=2124112) | Přechodem na Protokol OpenVPN nebo IKEv2 překonání limitu souběžného počtu připojení (SSTP) 128.|
+| [Vzdálená práce pomocí Azure bastionu](../bastion/work-remotely-support.md) | Poskytněte zabezpečené a bezproblémové připojení RDP/SSH k virtuálním počítačům v rámci virtuální sítě Azure přímo v Azure Portal bez použití veřejné IP adresy. |
+| [Použití Azure ExpressRoute k vytvoření hybridního připojení pro podporu vzdálených uživatelů](../expressroute/work-remotely-support.md) | Použijte ExpressRoute pro hybridní připojení, aby uživatelé ve vaší organizaci mohli pracovat vzdáleně.|
+| [Podpora vzdálené práce Azure Firewall](../firewall/remote-work-support.md)|Chraňte své prostředky virtuální sítě Azure pomocí Azure Firewall. |
 
 <!--Link References-->
 [VNet-peer]: https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview

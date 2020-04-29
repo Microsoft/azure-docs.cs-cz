@@ -1,6 +1,6 @@
 ---
-title: Azure Front Door – architektura směrování | Dokumenty společnosti Microsoft
-description: Tento článek vám pomůže pochopit globální pohled aspekt architektury Front Door.
+title: Přední vrátka Azure – architektura směrování | Microsoft Docs
+description: Tento článek vám pomůže pochopit, jaký je globální aspekt zobrazení architektury předních dveří.
 services: front-door
 documentationcenter: ''
 author: sharad4u
@@ -12,36 +12,36 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: a088e52f742f96a13ba61969c2d7a6697c96b145
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80879288"
 ---
 # <a name="routing-architecture-overview"></a>Přehled architektury směrování
 
-Azure Front Door, když obdrží vaše požadavky klienta pak buď odpovědi na ně (pokud ukládání do mezipaměti je povoleno) nebo je předá do příslušného back-endu aplikace (jako reverzní proxy server).
+Přední dveře Azure, když obdrží požadavky klientů, na ně odpoví (Pokud je povoleno ukládání do mezipaměti) nebo předají do příslušné aplikace back-end (jako reverzní proxy server).
 
-</br>Existují příležitosti k optimalizaci provozu při směrování na Azure Front Door, stejně jako při směrování do back-endů.
+</br>Při směrování do front Azure a také při směrování do back-endu jsou k dispozici příležitosti pro optimalizaci provozu.
 
-## <a name="selecting-the-front-door-environment-for-traffic-routing-anycast"></a><a name = "anycast"></a>Výběr prostředí Přední dveře pro směrování provozu (Anycast)
+## <a name="selecting-the-front-door-environment-for-traffic-routing-anycast"></a><a name = "anycast"></a>Výběr prostředí front-dveří pro směrování provozu (libovolného vysílání)
 
-Směrování do prostředí Azure Front Door využívá [Anycast](https://en.wikipedia.org/wiki/Anycast) pro provoz DNS (Domain Name System) a HTTP (Hypertext Transfer Protocol), takže provoz uživatelů přejde do nejbližšího prostředí z hlediska topologie sítě (nejmenší počet směrování). Tato architektura obvykle nabízí lepší časy odezvy pro koncové uživatele (maximalizace výhod split tcp). Přední dveře organizují své prostředí do primárních a záložních "kroužků".  Vnější kroužek má prostředí, která jsou blíže k uživatelům a nabízejí nižší latenci.  Vnitřní kroužek má prostředí, které může zpracovat převzetí služeb při selhání pro prostředí vnějšího kroužku v případě, že dojde k problému. Vnější kroužek je preferovaným cílem pro veškerý provoz, ale vnitřní kroužek je nezbytný pro zvládnutí přetečení provozu z vnějšího kroužku. Pokud jde o VIP (Virtual Internet Protocol addresses), každému hostiteli frontendu nebo doméně obsluhované front door je přiřazenprimární VIP, který je oznamován prostředím ve vnitřním i vnějším kroužku, stejně jako záložní VIP, který je oznamován pouze prostředími ve vnitřním kruhu. 
+Směrování do prostředí front Azure [využívá pro přenos](https://en.wikipedia.org/wiki/Anycast) dat DNS (Domain Name System) i protokol HTTP (Hypertext Transfer Protocol) i příchozí přenos dat, takže přenosy uživatelů budou přejít do nejbližšího prostředí z hlediska síťové topologie (s nejmenším segmentem směrování). Tato architektura obvykle nabízí lepší dobu odezvy pro koncové uživatele (což maximalizuje výhody rozděleného protokolu TCP). Přední dvířka uspořádávají svoje prostředí do primárních a záložních "okruhů".  Vnější prstenec má prostředí, která jsou blíže uživatelům, a nabízí nižší latence.  Vnitřní prstenec obsahuje prostředí, která můžou zpracovávat převzetí služeb při selhání pro vnější kruhové prostředí pro případ, že dojde k problému. Vnější prstenec je upřednostňovaným cílem pro veškerý provoz, ale vnitřní prstenec je nezbytný pro zpracování přetečení provozu z vnějšího prstence. Z hlediska VIP (virtuálních Internet Protocol adres) se každému hostiteli front-endu nebo doméně, která je obsluhována přes dvířka, přiřadí primární VIP, která je oznámená prostředími v interním i vnějším prstenci, a také záložní VIP, která je hlášena pouze v prostředích vnitřního prstence. 
 
-</br>Tato celková strategie zajišťuje, že požadavky od koncových uživatelů vždy dosáhnou nejbližšího prostředí předních dveří a že i když je upřednostňované prostředí Front Door není v pořádku, provoz se automaticky přesune do nejbližšího prostředí.
+</br>Tato celková strategie zajišťuje, že požadavky od koncových uživatelů mají vždycky přístup k nejbližšímu prostředí front-endu a že i v případě, že upřednostňované prostředí front-endu není v pořádku, provoz se automaticky přesune do dalšího nejbližšího prostředí.
 
-## <a name="connecting-to-front-door-environment-split-tcp"></a><a name = "splittcp"></a>Připojení k prostředí předních dveří (Split TCP)
+## <a name="connecting-to-front-door-environment-split-tcp"></a><a name = "splittcp"></a>Připojení k prostředí front-end (rozdělený protokol TCP)
 
-[Split TCP](https://en.wikipedia.org/wiki/Performance-enhancing_proxy) je technika ke snížení latence a tcp problémy tím, že dojde k přerušení připojení, které by vznikly vysoké round-trip čas na menší kousky.  Umístěním prostředí front door blíže koncovým uživatelům a ukončení mn. Krátké spojení mezi koncovým uživatelem a prostředím front door znamená, že připojení získá navázáno přes tři krátké zpáteční lety namísto tří dlouhých zpátečních cest, což šetří latenci.  Dlouhé připojení mezi prostředím Přední dveře a back-endem lze předem navázat a znovu použít přes více volání koncových uživatelů, což opět šetří čas připojení TCP.  Efekt se násobí při navazování připojení SSL/TLS (Transport Layer Security), protože existuje více zpátečních cest k zabezpečení připojení.
+[Rozdělený protokol TCP](https://en.wikipedia.org/wiki/Performance-enhancing_proxy) je způsob, jak snížit latence a problémy s protokolem TCP tím, že dojde k přerušení připojení, které by znamenalo vysokou dobu odezvy na menší části.  Po umístění front-endové prostředí blíže koncovým uživatelům a ukončení připojení TCP v prostředí front-endu je jedno připojení TCP s velkou dobou odezvy (RTT) do back-endu aplikace rozděleno na dvě připojení TCP. Krátké připojení mezi koncovým uživatelem a front-endové prostředí znamená, že se připojení navázalo se třemi krátkými zpětnými zpátečními znaky namísto tří dlouhých přenosů, což šetří latenci.  Dlouhé připojení mezi prostředími front-endu a back-end se dá předem zřídit a znovu použít napříč několika voláními koncových uživatelů, takže se znovu uloží doba připojení protokolu TCP.  Tento efekt se vynásobí při vytváření připojení SSL/TLS (Transport Layer Security), protože k zabezpečení připojení je k dispozici více cyklických cest.
 
-## <a name="processing-request-to-match-a-routing-rule"></a>Zpracování požadavku tak, aby odpovídal pravidlu směrování
-Po navázání připojení a provedení protokolu TLS handshake, když požadavek přistane v prostředí front door, odpovídající pravidlo směrování je prvním krokem. Tato shoda v podstatě určuje ze všech konfigurací v předních dveřích, které konkrétní pravidlo směrování odpovídá požadavku. Přečtěte si o tom, jak front door dělá [odpovídající trasy](front-door-route-matching.md) se dozvědět více.
+## <a name="processing-request-to-match-a-routing-rule"></a>Zpracovává se žádost, aby odpovídala pravidlu směrování.
+Po navázání připojení a provedení metody handshake TLS dojde v případě, že je žádost umístěná v prostředí front-dveří, jako je první krok. Tato shoda v podstatě vychází ze všech konfigurací v předních dveřích, které konkrétní pravidlo směrování odpovídá požadavku. Přečtěte si informace o tom, jak přední dvířka [přesměrují směrování](front-door-route-matching.md) .
 
-## <a name="identifying-available-backends-in-the-backend-pool-for-the-routing-rule"></a>Identifikace dostupných back-endů v back-endovém fondu pro pravidlo směrování
-Jakmile přední dveře má shoda pro pravidlo směrování na základě příchozí požadavek a pokud není ukládání do mezipaměti, pak dalším krokem je vyžádat stav sondy stavu pro fond back-endu přidružené s odpovídající trasy. Přečtěte si o tom, jak front door monitoruje stav back-endu pomocí [sond stavu,](front-door-health-probes.md) abyste se dozvěděli více.
+## <a name="identifying-available-backends-in-the-backend-pool-for-the-routing-rule"></a>Určení dostupných back-endu ve fondu back-end pro pravidlo směrování
+Jakmile má dopředné dveře shodu s pravidlem směrování na základě příchozího požadavku a pokud není ukládání do mezipaměti, pak dalším krokem je vyžádat si stav sondy stavu pro back-end fond přidružený k odpovídající trase. Přečtěte si o tom, jak přední dveře monitorují stav back-endu s využitím [sond stavu](front-door-health-probes.md) pro další informace.
 
-## <a name="forwarding-the-request-to-your-application-backend"></a>Předání požadavku back-endu aplikace
-Nakonec za předpokladu, že není nakonfigurováno ukládání do mezipaměti, je požadavek uživatele předán "nejlepší" back-end na základě konfigurace [metody směrování předních dveří.](front-door-routing-methods.md)
+## <a name="forwarding-the-request-to-your-application-backend"></a>Předání žádosti do back-endu aplikace
+Za předpokladu, že není nakonfigurované žádné ukládání do mezipaměti, požadavek uživatele se přesměruje do "nejlepšího" back-endu na základě konfigurace [metody směrování na přední dveře](front-door-routing-methods.md) .
 
 ## <a name="next-steps"></a>Další kroky
 

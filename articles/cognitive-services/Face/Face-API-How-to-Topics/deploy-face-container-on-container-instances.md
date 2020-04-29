@@ -1,7 +1,7 @@
 ---
-title: Spuštění kontejneru face v instanci kontejneru Azure
+title: Spustit kontejner obličeje v Azure Container Instances
 titleSuffix: Azure Cognitive Services
-description: Nasaďte kontejner Face do instance kontejneru Azure a otestujte ho ve webovém prohlížeči.
+description: Nasaďte kontejner obličeje do instance kontejneru Azure a otestujte ho ve webovém prohlížeči.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 4df5949e24e3fa59d37379c058a777c93dda2c44
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80878356"
 ---
-# <a name="deploy-the-face-container-to-azure-container-instances"></a>Nasazení kontejneru Face do instancí kontejnerů Azure
+# <a name="deploy-the-face-container-to-azure-container-instances"></a>Nasazení kontejneru obličeje do Azure Container Instances
 
-Zjistěte, jak nasadit kontejner [Face](../face-how-to-install-containers.md) služeb Cognitive Services do [instancí kontejnerů](https://docs.microsoft.com/azure/container-instances/)Azure . Tento postup ukazuje vytvoření prostředku Azure Face. Pak budeme diskutovat o vytažení přidružené image kontejneru. Nakonec zvýrazněme schopnost vykonávat orchestraci obou z prohlížeče. Pomocí kontejnerů můžete přesunout pozornost vývojářů od správy infrastruktury místo toho se zaměřením na vývoj aplikací.
+Přečtěte si, jak nasadit kontejner Cognitive Services [obličeje](../face-how-to-install-containers.md) do Azure [Container Instances](https://docs.microsoft.com/azure/container-instances/). Tento postup ukazuje vytvoření prostředku Azure Face. Pak se podíváme na navýšení přidružené image kontejneru. Nakonec zvýrazníme možnost cvičení těchto dvou z prohlížeče. Pomocí kontejnerů můžete před správou infrastruktury místo toho, aby se zaměřily na vývoj aplikací, posunout pozornost vývojářů.
 
 [!INCLUDE [Prerequisites](../../containers/includes/container-preview-prerequisites.md)]
 
-## <a name="request-access-to-the-private-container-registry"></a>Požádat o přístup k registru privátního kontejneru
+## <a name="request-access-to-the-private-container-registry"></a>Požádat o přístup k privátnímu registru kontejnerů
 
 [!INCLUDE [Request access to private container registry](../../../../includes/cognitive-services-containers-request-access.md)]
 

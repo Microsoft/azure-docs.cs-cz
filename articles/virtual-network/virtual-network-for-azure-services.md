@@ -1,7 +1,7 @@
 ---
 title: Virtuální síť pro služby Azure
 titlesuffix: Azure Virtual Network
-description: Přečtěte si o výhodách nasazení prostředků do virtuální sítě. Prostředky ve virtuálních sítích mohou komunikovat mezi sebou a místní mi se kontumačně, aniž by se přecprocházel provoz po Internetu.
+description: Přečtěte si o výhodách nasazení prostředků do virtuální sítě. Prostředky ve virtuálních sítích mohou komunikovat mezi sebou a místními prostředky, aniž by bylo nutné přecházet přes Internet.
 services: virtual-network
 documentationcenter: na
 author: malopMSFT
@@ -14,42 +14,42 @@ ms.date: 09/25/2017
 ms.author: malop
 ms.reviewer: kumud
 ms.openlocfilehash: 70266a1280b90b4573073d633a918f701f9ee8c2
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80878268"
 ---
 # <a name="deploy-dedicated-azure-services-into-virtual-networks"></a>Nasazení vyhrazených služeb Azure do virtuálních sítí
 
-Když nasadíte vyhrazené služby Azure ve [virtuální síti](virtual-networks-overview.md), můžete komunikovat s prostředky služby soukromě, prostřednictvím privátních IP adres.
+Když nasadíte vyhrazené služby Azure ve [virtuální síti](virtual-networks-overview.md), můžete komunikovat s prostředky služby soukromě prostřednictvím privátních IP adres.
 
 ![Služby nasazené ve virtuální síti](./media/virtual-network-for-azure-services/deploy-service-into-vnet.png)
 
 Nasazení služeb v rámci virtuální sítě poskytuje následující možnosti:
 
-- Prostředky v rámci virtuální sítě mohou komunikovat mezi sebou soukromě, prostřednictvím privátních IP adres. Například přímý přenos dat mezi HDInsight a SQL Server běží na virtuálním počítači, ve virtuální síti.
-- Místní prostředky mohou přistupovat k prostředkům ve virtuální síti pomocí privátních IP adres přes [síť VPN (brána VPN)](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#s2smulti) nebo [ExpressRoute](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-- Virtuální sítě lze [peered](virtual-network-peering-overview.md) povolit prostředky ve virtuálních sítích komunikovat mezi sebou, pomocí privátní IP adresy.
-- Instance služeb ve virtuální síti jsou obvykle plně spravované službou Azure. To zahrnuje sledování stavu prostředků a škálování s zatížením.
-- Instance služby se nasazují do podsítě ve virtuální síti. Příchozí a odchozí přístup k síti pro podsíť musí být otevřen prostřednictvím [skupin zabezpečení sítě](security-overview.md#network-security-groups)podle pokynů poskytovaných službou.
-- Některé služby také ukládají omezení pro podsíť, ve které jsou nasazeny, a omezují použití zásad, tras nebo kombinování virtuálních počítačů a prostředků služeb v rámci stejné podsítě. Obraťte se na každou službu na konkrétní omezení, jak se mohou měnit v průběhu času. Příklady takových služeb jsou Soubory Azure NetApp, Vyhrazený modul hardwarového zabezpečení, Instance kontejnerů Azure, Služba aplikací. 
-- Volitelně mohou služby vyžadovat [delegovanou podsíť](virtual-network-manage-subnet.md#add-a-subnet) jako explicitní identifikátor, který může podsíť hostovat určitou službu. Delegováním získají služby explicitní oprávnění k vytvoření prostředků specifických pro službu v delegované podsíti.
-- Podívejte se na příklad odpovědi rozhraní REST API ve [virtuální síti s delegovanou podsítí](https://docs.microsoft.com/rest/api/virtualnetwork/virtualnetworks/get#get-virtual-network-with-a-delegated-subnet). Úplný seznam služeb, které používají model delegované podsítě lze získat prostřednictvím rozhraní API [k dispozici delegování.](https://docs.microsoft.com/rest/api/virtualnetwork/availabledelegations/list)
+- Prostředky ve virtuální síti můžou vzájemně komunikovat soukromě prostřednictvím privátních IP adres. Například přímý přenos dat mezi HDInsight a SQL Server běžící na virtuálním počítači ve virtuální síti.
+- Místní prostředky mají přístup k prostředkům ve virtuální síti pomocí privátních IP adres přes [síť VPN typu Site-to-Site (VPN Gateway)](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#s2smulti) nebo [ExpressRoute](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- U virtuálních sítí je možné navázat [partnerský vztah](virtual-network-peering-overview.md) , aby bylo možné mezi sebou vzájemně komunikovat prostředky pomocí privátních IP adres.
+- Instance služby ve virtuální síti jsou většinou plně spravovány službou Azure. To zahrnuje monitorování stavu prostředků a škálování s využitím zátěže.
+- Instance služby jsou nasazeny do podsítě ve virtuální síti. Příchozí a odchozí síťový přístup pro podsíť musí být otevřený prostřednictvím [skupin zabezpečení sítě](security-overview.md#network-security-groups)podle pokynů poskytovaných službou.
+- Některé služby také ukládají omezení pro podsíť, ve které jsou nasazená, a omezují použití zásad, trasy nebo kombinování virtuálních počítačů a prostředků služeb ve stejné podsíti. U každé služby se můžete podívat na konkrétní omezení, která se v průběhu času můžou měnit. Příklady takových služeb jsou Azure NetApp Files, vyhrazené HSM, Azure Container Instances App Service. 
+- V případě potřeby můžou služby vyžadovat [delegovanou podsíť](virtual-network-manage-subnet.md#add-a-subnet) jako explicitní identifikátor, který podsíť může hostovat určitou službu. Delegováním služeb získají explicitní oprávnění k vytváření prostředků specifických pro službu v delegované podsíti.
+- Podívejte se na příklad odpovědi REST API ve [virtuální síti s delegovanou podsítí](https://docs.microsoft.com/rest/api/virtualnetwork/virtualnetworks/get#get-virtual-network-with-a-delegated-subnet). K dispozici je úplný seznam služeb, které používají delegovaný model podsítě, [k dispozici](https://docs.microsoft.com/rest/api/virtualnetwork/availabledelegations/list) prostřednictvím rozhraní API pro delegování.
 
 ### <a name="services-that-can-be-deployed-into-a-virtual-network"></a>Služby, které je možné nasadit do virtuální sítě
 
-|Kategorie|Služba| Vyhrazeno<sup>1</sup>sup>1</sup> podsíť
+|Kategorie|Služba| Vyhrazená podsíť<sup>1</sup>SUP</sup>>1
 |-|-|-|
-| Služba Compute | Virtuální počítače: [Linux](../virtual-machines/linux/infrastructure-networking-guidelines.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nebo [Windows](../virtual-machines/windows/infrastructure-networking-guidelines.md?toc=%2fazure%2fvirtual-network%2ftoc.json) <br/>[Škálovací sady virtuálních strojů](../virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-existing-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Cloudová služba](https://msdn.microsoft.com/library/azure/jj156091): Pouze virtuální síť (klasická)<br/> [Azure Batch](../batch/batch-api-basics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual-network-vnet-and-firewall-configuration)| Ne <br/> Ne <br/> Ne <br/> Č.<sup>2</sup>sup>2</sup>
-| Síť | [Aplikační brána - WAF](../application-gateway/application-gateway-ilb-arm.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Brána Azure Firewall](../firewall/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) <br/>[Síťová virtuální zařízení](/windows-server/networking/sdn/manage/use-network-virtual-appliances-on-a-vn) | Ano <br/> Ano <br/> Ano <br/> Ne
+| Compute | Virtuální počítače: [Linux](../virtual-machines/linux/infrastructure-networking-guidelines.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nebo [Windows](../virtual-machines/windows/infrastructure-networking-guidelines.md?toc=%2fazure%2fvirtual-network%2ftoc.json) <br/>[Virtual Machine Scale Sets](../virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-existing-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Cloudová služba](https://msdn.microsoft.com/library/azure/jj156091): jenom virtuální síť (Classic)<br/> [Azure Batch](../batch/batch-api-basics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual-network-vnet-and-firewall-configuration)| Ne <br/> Ne <br/> Ne <br/> Žádné<sup>2</sup>SUP>2</sup>
+| Síť | [Application Gateway – WAF](../application-gateway/application-gateway-ilb-arm.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Brána Azure Firewall](../firewall/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) <br/>[Síťová virtuální zařízení](/windows-server/networking/sdn/manage/use-network-virtual-appliances-on-a-vn) | Ano <br/> Ano <br/> Ano <br/> Ne
 |Data|[RedisCache](../azure-cache-for-redis/cache-how-to-premium-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure SQL Database Managed Instance](../sql-database/sql-database-managed-instance-connectivity-architecture.md?toc=%2fazure%2fvirtual-network%2ftoc.json)| Ano <br/> Ano <br/> 
-|Analýza | [Azure HDInsight](../hdinsight/hdinsight-extend-hadoop-virtual-network.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure Databricks](../azure-databricks/what-is-azure-databricks.md?toc=%2fazure%2fvirtual-network%2ftoc.json) |Č.<sup>2</sup>sup>2</su<sup>2</sup>> <br/> <sup>2.</sup> <br/> 
+|Analýzy | [Azure HDInsight](../hdinsight/hdinsight-extend-hadoop-virtual-network.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure Databricks](../azure-databricks/what-is-azure-databricks.md?toc=%2fazure%2fvirtual-network%2ftoc.json) |Žádné<sup>2</sup>SUP>2</Su<sup>2</sup>> <br/> Ne<sup>2</sup> <br/> 
 | Identita | [Azure Active Directory Domain Services](../active-directory-domain-services/active-directory-ds-getting-started-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json) |Ne <br/>
-| Containers | [Azure Kubernetes Service (AKS)](../aks/concepts-network.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure Container Instance (ACI)](https://www.aka.ms/acivnet)<br/>[Modul plug-in Azure Container Service Engine](https://github.com/Azure/acs-engine) s [modulem plug-in](https://github.com/Azure/acs-engine/tree/master/examples/vnet) CNI virtuální sítě Azure<br/>[Azure Functions](../azure-functions/functions-networking-options.md#virtual-network-integration) |Č.<sup>2</sup>sup>2</sup><br/> Ano <br/><br/> Ne <br/> Ano
-| Web | [API Management](../api-management/api-management-using-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Webové aplikace](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[App Service Environment](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure Logic Apps](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>|Ano <br/> Ano <br/> Ano <br/> Ano
-| Hostil | [Rezervované HSM Azure](../dedicated-hsm/index.yml?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure NetApp Files](../azure-netapp-files/azure-netapp-files-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>|Ano <br/> Ano <br/>
+| Containers | [Azure Kubernetes Service (AKS)](../aks/concepts-network.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure Container Instance (ACI)](https://www.aka.ms/acivnet)<br/>Modul [Azure Container Service](https://github.com/Azure/acs-engine) s [modulem plug-in](https://github.com/Azure/acs-engine/tree/master/examples/vnet) Azure Virtual Network CNI<br/>[Azure Functions](../azure-functions/functions-networking-options.md#virtual-network-integration) |Žádné<sup>2</sup>SUP>2</sup><br/> Ano <br/><br/> Ne <br/> Ano
+| Web | [API Management](../api-management/api-management-using-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Web Apps](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[App Service Environment](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure Logic Apps](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>|Ano <br/> Ano <br/> Ano <br/> Ano
+| Hostova | [Rezervované HSM Azure](../dedicated-hsm/index.yml?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure NetApp Files](../azure-netapp-files/azure-netapp-files-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>|Ano <br/> Ano <br/>
 | | |
 
-<sup>1</sup> "Vyhrazené" znamená, že v této podsíti lze nasadit pouze prostředky specifické pro služby a nelze je kombinovat se zákazníky v oblasti virtuálních mís/virtuálních měn. <br/> 
-<sup>2</sup> Doporučuje se mít tyto služby ve vyhrazené podsíti jako osvědčený postup, nikoli však povinný požadavek uložený službou.
+<sup>1</sup> "vyhrazené" znamená, že v této podsíti můžou být nasazené jenom prostředky specifické pro službu a nejde je kombinovat s virtuálním počítačem/VMSSs zákazníka. <br/> 
+<sup>2</sup> doporučuje se mít tyto služby ve vyhrazené podsíti, ale nejedná se o povinný požadavek, který služba ukládá.

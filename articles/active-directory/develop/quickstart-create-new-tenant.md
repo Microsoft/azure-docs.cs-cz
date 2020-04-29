@@ -13,15 +13,15 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
 ms.openlocfilehash: 0e2247e94b20846f19c2ed26c96a5dc53972e770
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80883809"
 ---
-# <a name="quickstart-set-up-a-tenant"></a>Úvodní příručka: Nastavení klienta
+# <a name="quickstart-set-up-a-tenant"></a>Rychlý Start: nastavení tenanta
 
-Microsoft Identity Platform umožňuje vývojářům vytvářet aplikace určené pro širokou škálu vlastních prostředí a identit Microsoft 365. Abyste mohli začít používat platformu identit Microsoftu, budete potřebovat přístup k prostředí, nazývanému také tenant azure ad, které může registrovat a spravovat aplikace, mít přístup k datům Microsoftu 365 a nasadit vlastní omezení podmíněného přístupu a tenanta.
+Microsoft Identity Platform umožňuje vývojářům vytvářet aplikace určené pro širokou škálu vlastních prostředí a identit Microsoft 365. Pokud chcete začít používat Microsoft Identity Platform, budete potřebovat přístup k prostředí, které se označuje taky jako tenant služby Azure AD, který může registrovat a spravovat aplikace, mít přístup k Microsoft 365 dat a nasazovat vlastní podmíněný přístup a omezení klientů.
 
 Tenant je reprezentace organizace. Jedná se o vyhrazenou instanci Azure AD, kterou organizace nebo vývojář aplikací obdrží při vytvoření partnerství s Microsoftem, například registrací do Azure, Microsoft Intune nebo Microsoft 365.
 
@@ -56,14 +56,14 @@ Pokud existujícího tenanta přidruženého k účtu nemáte, zobrazí se pod n
 
 ### <a name="create-a-new-azure-ad-tenant"></a>Vytvoření nového tenanta Azure AD
 
-Pokud ještě nemáte klienta Azure AD nebo chcete vytvořit nový pro vývoj, podívejte se na [rychlý start](../fundamentals/active-directory-access-create-new-tenant.md) nebo jednoduše postupujte podle prostředí [vytváření adresářů](https://portal.azure.com/#create/Microsoft.AzureActiveDirectory). Při vytváření nového tenanta budete muset zadat následující informace:
+Pokud ještě nemáte tenanta Azure AD nebo chcete vytvořit nový pro vývoj, Projděte si [rychlý Start](../fundamentals/active-directory-access-create-new-tenant.md) nebo jednoduše postupujte podle [možnosti vytvoření adresáře](https://portal.azure.com/#create/Microsoft.AzureActiveDirectory). Při vytváření nového tenanta budete muset zadat následující informace:
 
 - **Název organizace**
 - **Počáteční doména** – bude to část domény *.onmicrosoft.com. Doménu můžete dále přizpůsobit později.
 - **Země nebo oblast**
 
 > [!NOTE]
-> Při pojmenování klienta použijte alfanumerické znaky. Speciální znaky nejsou povoleny. Název nesmí přesáhnout 256 znaků.
+> Při pojmenování tenanta použijte alfanumerické znaky. Speciální znaky nejsou povoleny. Název nesmí být delší než 256 znaků.
 
 ## <a name="social-and-local-accounts"></a>Účty na sociálních sítích a místní účty
 
@@ -71,6 +71,6 @@ Pokud chcete začít vytvářet aplikace s přihlašováním účtů na sociáln
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Zaregistrujte aplikaci](quickstart-register-app.md) a integrujte ji s platformou microsoftu pro identity. 
-* Naučte se [základy ověřování](authentication-scenarios.md).
-* Podrobnosti o vztahu mezi předplatnými a klientem Azure AD najdete v tématu [Jak jsou předplatná Azure přidružená k Azure Active Directory.](../fundamentals/active-directory-how-subscriptions-associated-directory.md)
+* [Zaregistrujte aplikaci](quickstart-register-app.md) a integrujte ji s platformou Microsoft identity. 
+* Seznamte se se [základy ověřování](authentication-scenarios.md).
+* Podrobnosti o vztahu mezi předplatnými a klientem služby Azure AD najdete v článku [o tom, jak jsou předplatná Azure přidružená k Azure Active Directory](../fundamentals/active-directory-how-subscriptions-associated-directory.md) .

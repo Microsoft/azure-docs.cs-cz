@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Vytvoření záznamu aliasu Azure DNS, který bude odkazovat na veřejnou IP adresu Azure'
+title: 'Kurz: vytvoření záznamu aliasu Azure DNS, který odkazuje na veřejnou IP adresu Azure'
 description: V tomto kurzu se dozvíte, jak nakonfigurovat záznam aliasu Azure DNS tak, aby odkazoval na veřejnou IP adresu Azure.
 services: dns
 author: rohinkoul
@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 9/25/2018
 ms.author: rohink
 ms.openlocfilehash: d3017d09e94040d16950598dad360fe32930c16b
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80985435"
 ---
 # <a name="tutorial-configure-an-alias-record-to-refer-to-an-azure-public-ip-address"></a>Kurz: Konfigurace záznamu aliasu odkazujícího na veřejnou IP adresu Azure 
@@ -25,7 +25,7 @@ V tomto kurzu se naučíte:
 > * Test záznamu aliasu
 
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 Musíte mít k dispozici název domény, kterou můžete hostovat v Azure DNS a použít k testování. Musíte mít úplnou kontrolu nad touto doménou. Úplná kontrola zahrnuje možnost nastavit pro doménu záznamy názvového serveru (NS).
@@ -36,25 +36,25 @@ Ukázková doména použitá v tomto kurzu je contoso.com, ale použijte vlastn�
 
 ## <a name="create-the-network-infrastructure"></a>Vytvoření síťové infrastruktury
 Nejprve vytvořte virtuální síť a podsíť, do které umístíte webové servery.
-1. Přihlaste se k [https://portal.azure.com](https://portal.azure.com)portálu Azure na adrese .
+1. Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 2. V levém horním rohu portálu vyberte **Vytvořit prostředek**. Do vyhledávacího pole zadejte *skupina prostředků* a vytvořte skupinu prostředků **RG-DNS-Alias-pip**.
-3. Vyberte**Networking** > možnost Vytvořit**síť**ovou síť **prostředků** > .
+3. Vyberte **vytvořit prostředek** > **síť** > **virtuální síť**.
 4. Vytvořte virtuální síť **VNet-Server**. Umístěte ji do skupiny prostředků **RG-DNS-Alias-pip** a podsíť pojmenujte **SN-Web**.
 
 ## <a name="create-a-web-server-virtual-machine"></a>Vytvoření virtuálního počítače s webovým serverem
-1. Vyberte **Vytvořit prostředek** > **virtuálního připojení windows server 2016**.
+1. Vyberte **vytvořit prostředek** > **virtuální počítač s Windows serverem 2016**.
 2. Jako název zadejte **Web-01** a umístěte virtuální počítač do skupiny prostředků **RG-DNS-Alias-TM**. Zadejte uživatelské jméno a heslo a vyberte **OK**.
 3. Jako **Velikost** vyberte skladovou položku s 8 GB paměti RAM.
-4. V části **Nastavení** vyberte virtuální síť **VNet-Servers** a podsíť **SN-Web**. U veřejných příchozích portů vyberte **HTTP** > **HTTPS** > **RDP (3389)** a pak vyberte **OK**.
+4. V části **Nastavení** vyberte virtuální síť **VNet-Servers** a podsíť **SN-Web**. Pro veřejné příchozí porty vyberte **http** > **https** > **RDP (3389)** a pak vyberte **OK**.
 5. Na stránce **Souhrn** vyberte **Vytvořit**.
 
-Dokončení tohoto postupu trvá několik minut. Virtuální počítač bude mít připojenou síťovou síťovou karty, která bude mít základní dynamickou veřejnou IP adresu nazvanou Web-01-ip. Veřejná IP adresa se změní při každém restartování virtuálního počítače.
+Dokončení tohoto postupu trvá několik minut. Virtuální počítač bude mít připojenou síťovou kartu, která bude mít základní dynamickou veřejnou IP adresu nazvanou web-01-IP. Veřejná IP adresa se změní pokaždé, když se virtuální počítač restartuje.
 
 ### <a name="install-iis"></a>Instalace služby IIS
 
 Na virtuální počítač **Web-01** nainstalujte službu IIS.
 
-1. Připojte se k **webu Web-01**a přihlaste se.
+1. Připojte se k **webu-01**a přihlaste se.
 2. Na řídicím panelu **Správce serveru** vyberte **Přidat role a funkce**.
 3. Třikrát vyberte **Další**. Na stránce **Role serveru** vyberte **Webový server (IIS)**.
 4. Vyberte **Přidat funkce** a pak **Další**.

@@ -1,7 +1,7 @@
 ---
-title: Vyhněte se nadměrnému přizpůsobení & nevyvážená data pomocí funkce AutoML
+title: Vyhněte se přebudování & nevyvážených dat pomocí AutoML
 titleSuffix: Azure Machine Learning
-description: Identifikujte a spravujte běžné úskalí modelů ML pomocí automatizovaných řešení strojového učení Azure Machine Learning.
+description: Identifikujte a spravujte běžné nástrah modelů ML pomocí automatizovaných řešení strojového učení Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,21 +11,21 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 04/09/2020
 ms.openlocfilehash: 76f920ad6aae68defb567a7a6623d1ffd488af5f
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80874853"
 ---
-# <a name="prevent-overfitting-and-imbalanced-data-with-automated-machine-learning"></a>Zabraňte nadměrnému vybavení a nerovnováze dat pomocí automatizovaného strojového učení
+# <a name="prevent-overfitting-and-imbalanced-data-with-automated-machine-learning"></a>Ochrana před přeložením a nevyváženými daty pomocí automatizovaného strojového učení
 
-Nadměrná a nevyvážená data jsou běžnými úskalími při vytváření modelů strojového učení. Ve výchozím nastavení poskytuje automatizované strojové učení Azure Machine Learning grafy a metriky, které vám pomohou tato rizika identifikovat, a implementuje osvědčené postupy, které jim pomohou je zmírnit. 
+Při sestavování modelů strojového učení jsou běžné nástrah a nevyvážená data. Ve výchozím nastavení poskytuje automatizované Machine Learning Azure Machine Learning grafy a metriky, které vám pomůžou tato rizika identifikovat, a implementuje osvědčené postupy, které jim pomůžou je zmírnit. 
 
-## <a name="identify-over-fitting"></a>Identifikovat nadměrné přizpůsobení
+## <a name="identify-over-fitting"></a>Identifikace přebudování
 
-K nadměrné montáži ve strojovém učení dochází, když model odpovídá příliš dobře trénovacím datům a v důsledku toho nelze přesně předpovědět neviditelná testovací data. Jinými slovy, model má jednoduše zapamatováno konkrétní vzory a šum v trénovacích dat, ale není dostatečně flexibilní, aby předpovědi na skutečná data.
+K naplnění ve strojovém učení dochází, když model přesně odpovídá školicím datům, a v důsledku toho nemůže přesně odhadnout data nefungujících testů. Jinými slovy, model jednoduše zapamatovaných konkrétní vzorky a šum ve školicích datech, ale není dostatečně flexibilní, aby předpovědi na skutečná data.
 
-Zvažte následující trénované modely a jejich odpovídající přesnosti vlaků a zkoušek.
+Vezměte v úvahu následující vyškolené modely a jejich odpovídající přesností a testování.
 
 | Model | Přesnost vlaku | Přesnost testu |
 |-------|----------------|---------------|
@@ -33,84 +33,84 @@ Zvažte následující trénované modely a jejich odpovídající přesnosti vl
 | B | 87% | 87% |
 | C | 99,9 % | 45 % |
 
-S ohledem na model **A**existuje běžná mylná představa, že pokud je přesnost testu na neviditelných datech nižší než přesnost trénování, je model přemontován. Přesnost zkoušek by však měla být vždy menší než přesnost tréninku a rozlišení pro nadměrné přizpůsobení vs. vhodně vhodné přizpůsobí se tomu, *o kolik* méně přesné. 
+Zvažujeme model **a**, pokud je přesnost testu u nezobrazených dat nižší než přesnost školení, model je přemontovaný. Přesnost testu by však měla být vždy menší než přesnost školení a rozlišení pro převzetí služeb při selhání, které je vhodné, bude mít za *cíl méně přesné* . 
 
-Při porovnávání modelů **A** a **B**je model **A** lepším modelem, protože má vyšší přesnost testu, a přestože je přesnost testu mírně nižší na 95 %, není významný rozdíl, který by naznačoval, že je přítomen přemontování. Model **B** byste si nevybrali jen proto, že přesnost vlaku a testu jsou blíže k sobě.
+Při porovnávání modelů **a** a **B**model **a** je lepší model, protože má vyšší přesnost testování, i když je přesnost testu mírně nižší v 95%, nejedná se o významný rozdíl, který navrhuje přemístění, je k dispozici. Model **B** byste nezvolili jednoduše proto, že vlak a test přesností jsou bližší dohromady.
 
-Model **C** představuje jasný případ nadměrnémontáže; přesnost tréninku je velmi vysoká, ale přesnost testu není ani zdaleka tak vysoká. Tento rozdíl je subjektivní, ale pochází ze znalosti vašeho problému a dat, a jaké velikosti chyb jsou přijatelné.
+Model **C** představuje nejasný případ přeložení; přesnost školení je velmi vysoká, ale přesnost testu není nikde blízko nejvyšší úrovně. Tento rozdíl je subjektivní, ale pochází ze znalostí o vašem problému a datech a o tom, jaké množství chyb je přijatelné.
 
-## <a name="prevent-over-fitting"></a>Zabraňte nadměrnémontáži
+## <a name="prevent-over-fitting"></a>Zabránit přebudování
 
-V nejkřiklavějších případech bude přemontovaný model předpokládat, že kombinace hodnot prvku, které se zobrazí během tréninku, budou vždy mít za následek přesně stejný výstup pro cíl.
+Ve většině případů egregious bude převedený model předpokládat, že kombinace hodnot funkcí zobrazených během školení vždy způsobí přesný stejný výstup pro cíl.
 
-Nejlepší způsob, jak zabránit nadměrnému přizpůsobení, je dodržovat osvědčené postupy ML, včetně:
+Nejlepším způsobem, jak zabránit přebudování, je sledovat osvědčené postupy ML, včetně těchto:
 
-* Použití více trénovacích dat a eliminace statistické hojné zkreslení
+* Používání dalších školicích dat a odstraňování statistického posunu
 * Zabránění úniku cíle
-* Používání méně funkcí
-* **Optimalizace regularizace a hyperparametrů**
+* Použití méně funkcí
+* **Pravidelná optimalizace a optimalizace parametrů**
 * **Omezení složitosti modelu**
 * **Křížové ověření**
 
-V kontextu automatické ml první tři výše uvedené položky jsou **osvědčené postupy, které implementujete**. Poslední tři tučné položky jsou **doporučené postupy automatické ML implementuje** ve výchozím nastavení k ochraně proti nadměrné montáže. V jiných nastaveních než v automatizovaném ml, všech šest osvědčených postupů stojí za to sledovat, aby se zabránilo over-montáž modely.
+V kontextu automatizovaného ML jsou první tři výše uvedené položky **osvědčené postupy, které implementujete**. Poslední tři tučné položky jsou **osvědčenými postupy automatizovaného** STANDARDu ml, které se ve výchozím nastavení implementují k ochraně před umísťováním. V jiných nastaveních než automatizované ML se za každých šest osvědčených postupů doporučuje, abyste se vyhnuli modelům přebudování.
 
 ### <a name="best-practices-you-implement"></a>Osvědčené postupy, které implementujete
 
-Použití **více dat** je nejjednodušší a nejlepší možný způsob, jak zabránit nadměrné montáži, a jako bonus obvykle zvyšuje přesnost. Při použití více dat, bude pro model obtížnější zapamatovat si přesné vzory a je nucen dosáhnout řešení, která jsou flexibilnější, aby vyhovovaly více podmínek. Je také důležité rozpoznat **statistické zkreslení**, aby vaše trénovací data neobsahovala izolované vzory, které nebudou existovat v datech živé předpovědi. Tento scénář může být obtížné vyřešit, protože nemusí být over-fitting mezi vlak a testovací sady, ale může být over-fitting přítomen ve srovnání s daty živé ho testu.
+Použití **většího množství dat** je nejjednodušší a nejlepší možný způsob, jak zabránit převzetí služeb při selhání, protože přidaný bonus obvykle zvyšuje přesnost. Když použijete více dat, bude model mnohem obtížnější, aby nepamatují přesné vzory a bylo nuceno dosáhnout řešení, která jsou pružnější, aby se vešly další podmínky. Je také důležité rozpoznat **statistickou bias**, abyste zajistili, že vaše školicí data neobsahují izolované vzory, které neexistují v datech živé předpovědi. Tento scénář může být obtížné vyřešit, protože nemůžete překládat mezi vlakem a sadami testů, ale ve srovnání s živými testovacími daty může být přítomno více.
 
-Únik cíle je podobný problém, kdy se nemusí zobrazit nadměrné zamontážmezi vlakovými/testovacími soupravami, ale spíše se objeví v době předpovědi. Cíl úniku dochází, když váš model "podvádí" během trénování tím, že přístup k datům, které by za normálních okolností nemají v době předpovědi. Pokud je například vaším problémem předpovědět v pondělí, jaká bude cena komodity v pátek, ale jedna z vašich funkcí náhodně zahrnovala data ze čtvrtka, to by byla data, která model nebude mít v době předpovědi, protože nevidí do budoucna. Únik cíle je snadnou chybou, kterou můžete přehlédnout, ale často se vyznačuje abnormálně vysokou přesností vašeho problému. Pokud se pokoušíte předpovědět cenu akcií a vyškolil model s 95% přesností, je pravděpodobné, že cíl únik někde ve vašich funkcích.
+Netěsnost cíle je podobný problém, ve kterém se možná nezobrazuje přemístění mezi sadami vlaků a testování, ale místo toho se zobrazí v době předpovědi. K úniku cíle dojde, když během školení model "podvádět" použijete přístup k datům, která by neměla být normálně v době předpovědi. Například pokud váš problém má předpovídat pondělí, jakou má cena za komoditu v pátek, ale jedna z vašich funkcí omylem zahrnovala data z čtvrtek, která by byla data modelu, nebude mít v čase předpovědi, protože nemůže být v budoucnu. Prosakování cíle představuje snadnou chybu, ale často je charakterizována neobvyklou vysokou přesností pro váš problém. Pokud se pokoušíte odhadnout cenu akcií a vyškolený model s 95% přesností, je pravděpodobná netěsné úniky do vašich funkcí.
 
-Odebrání prvků může také pomoci při nadměrném přizpůsobení tím, že zabrání modelu, aby měl příliš mnoho polí, aby se zapamatovaly konkrétní vzory, což způsobí, že bude flexibilnější. Může být obtížné měřit kvantitativně, ale pokud můžete odstranit prvky a zachovat stejnou přesnost, pravděpodobně jste model učinili flexibilnějším a snížili riziko nadměrnémontáže.
+Odebrání funkcí může také pomáhat s převzetím, protože brání modelu v použití příliš velkého množství polí k nepamatujíí specifických vzorů, což způsobí, že bude pružnější. Může být obtížné změřit kvantitativní měření, ale pokud můžete odebrat funkce a zachovat stejnou přesnost, pravděpodobně jste model lépe flexibilní a snížili rizika při přebudování.
 
-### <a name="best-practices-automated-ml-implements"></a>Osvědčené postupy automatizované ml implementuje
+### <a name="best-practices-automated-ml-implements"></a>Osvědčené postupy automatizované implementace ML
 
-Regularizace je proces minimalizace funkce nákladů k penalizaci složitých a nadměrně vybavených modelů. Existují různé typy funkcí regularizace, ale obecně všechny penalizují velikost, odchylku a složitost modelu. Automatizované ML používá L1 (Laso), L2 (Ridge) a ElasticNet (L1 a L2 současně) v různých kombinacích s různými nastaveními hyperparametrů modelu, které řídí nadměrné přizpůsobení. Jednoduše řečeno, automatizovaná ml se bude lišit, kolik model je regulován a zvolit nejlepší výsledek.
+Pravidelná operace je proces minimalizace nákladové funkce k postihu složitých a namontovaných modelů. Existují různé typy probíhající funkce, ale obecně všechny postihují velikost modelu, rozptyl a složitost. Automatizované ML používá L1 (laso), L2 (Ridge) a ElasticNet (L1 a L2 současně) v různých kombinacích s různými nastaveními parametrů modelu, které ovládají přizpůsobení. V jednoduchých výrazech se automatizovaná ML bude lišit v tom, kolik modelu je regulováno, a zvolit nejlepší výsledek.
 
-Automatizovaná funkce ML také implementuje explicitní omezení složitosti modelu, aby se zabránilo nadměrnému přizpůsobení. Ve většině případů je tato implementace specificky pro rozhodovací strom nebo lesní oborové algoritmy, kde je omezená maximální hloubka jednotlivých stromů a celkový počet stromů používaných v doménové struktuře nebo technikách souboru je omezen.
+Automatizované ML také implementuje explicitní omezení složitosti modelu, aby se zabránilo přebudování. Ve většině případů tato implementace slouží konkrétně pro rozhodovací strom nebo algoritmy doménové struktury, přičemž maximální hloubka jednotlivého stromu je omezená a celkový počet stromů používaných v doménové struktuře nebo v technikech kompletování jsou omezené.
 
-Křížové ověření (CV) je proces s mnoha podmnožiny vašich úplných trénovacích dat a trénování modelu na každé podmnožině. Myšlenka je, že model by mohl dostat "štěstí" a mají velkou přesnost s jednou podmnožinou, ale pomocí mnoha podmnožiny modelu nebude dosáhnout této vysoké přesnosti pokaždé. Při provádění cv, můžete zadat ověření holdout datové sady, zadejte životopis záhyby (počet podmnožiny) a automatizované ML bude trénovat váš model a vyladit hyperparameters minimalizovat chyby na vaší sady ověření. Jeden cv záhyb může být příliš fit, ale použitím mnoha z nich snižuje pravděpodobnost, že váš konečný model je přes-fit. Kompromis je, že životopis má za následek delší tréninkové časy a tím i vyšší náklady, protože místo školení modelu jednou, trénujete jej jednou pro každou *podmřadu n* CV. 
+Křížové ověření (CV) je proces, který zabírá mnoho podmnožin vašich úplných školicích dat a školení modelu v každé podmnožině. Nápad je, že model by mohl získat "štěstí" a mít skvělou přesnost s jednou podmnožinou, ale s využitím mnoha dílčích sad model nedosáhne pokaždé, když se vyhodnotí. Při provádění CV zadáte datovou sadu pro blokování ověřování, určíte vaše přeložená omezení (počet podmnožin) a automatizovaná ML nasadí váš model a optimalizuje parametry pro minimalizaci chyby v sadě ověřování. Jedno přeložení CV může být příliš velké, ale s využitím mnoha z nich snižuje pravděpodobnost, že je finální model vyhodnocený. Kompromisy jsou v tom, že CV má za následek delší dobu školení, takže větší náklady, protože místo toho, abyste model provedli jednou, je pro každou *n* -podmnožinu CV jednou vyškolí. 
 
 > [!NOTE]
-> Křížové ověřování není ve výchozím nastavení povoleno. musí být konfigurován v automatickém nastavení ML. Po konfiguraci křížového ověření a poskytnutí ověřovací ho souboru dat je však proces automatizován za vás. Seznamte se s  
+> Křížové ověření není ve výchozím nastavení povolené. musí být nakonfigurovaný v nastavení automatizovaného ML. Po nakonfigurování křížového ověření a zadání ověřovací sady dat je však proces automatizován. Seznamte se s  
 
 <a name="imbalance"></a>
 
 ## <a name="identify-models-with-imbalanced-data"></a>Identifikace modelů s nevyváženými daty
 
-Nevyvážená data se běžně vyskytují v datech pro scénáře klasifikace strojového učení a odkazuje na data, která obsahuje nepřiměřený poměr pozorování v každé třídě. Tato nerovnováha může vést k falešně vnímanému pozitivnímu efektu přesnosti modelu, protože vstupní data mají předpojatost vůči jedné třídě, což vede k tomu, že trénovaný model napodobuje toto zkreslení. 
+Nevyvážená data se běžně nacházejí v datech pro scénáře klasifikace Machine Learning a odkazují na data, která obsahují neúměrný poměr pozorování v každé třídě. Tato nerovnováha může vést k falešně vnímanému kladnému účinku přesnosti modelu, protože vstupní data mají posun směrem k jedné třídě, což vede k vyškolený model k napodobení tohoto posunu. 
 
-Jako klasifikační algoritmy jsou běžně vyhodnocovány přesností, kontrola skóre přesnosti modelu je dobrý způsob, jak zjistit, zda byl ovlivněn nevyváženými daty. Měl opravdu vysokou přesnost nebo opravdu nízkou přesnost pro určité třídy?
+Vzhledem k tomu, že algoritmy klasifikace jsou obvykle vyhodnocovány přesností, je kontrola přesnosti modelu dobrým způsobem, jak zjistit, zda byla ovlivněna nevyváženými daty. Má velmi vysokou přesnost nebo velmi nízkou přesnost pro určité třídy?
 
-Automatizované spuštění ml navíc automaticky generuje následující grafy, které vám pomohou pochopit správnost klasifikací modelu a identifikovat modely potenciálně ovlivněné nevyváženámi daty.
+Automatizované spuštění ML navíc generuje následující grafy automaticky, což vám pomůže pochopit správnost klasifikací modelu a identifikovat modely, které mohou ovlivnit data, která jsou potenciálně ovlivněná nevyváženými daty.
 
 Graf| Popis
 ---|---
-[Matice záměny](how-to-understand-automated-ml.md#confusion-matrix)| Vyhodnotí správně klasifikované popisky proti skutečné popisky dat. 
-[Přesné vyvolání](how-to-understand-automated-ml.md#precision-recall-chart)| Vyhodnotí poměr správných popisků k poměru nalezených instancí popisků dat. 
-[Roc křivky](how-to-understand-automated-ml.md#roc)| Vyhodnotí poměr správných popisků k poměru falešně pozitivních popisků.
+[Nejasná matice](how-to-understand-automated-ml.md#confusion-matrix)| Vyhodnotí správně klasifikované popisky proti skutečným popiskům dat. 
+[Přesnost – odvolání](how-to-understand-automated-ml.md#precision-recall-chart)| Vyhodnotí poměr správných popisků oproti poměru nalezených instancí popisků dat. 
+[ROC – křivky](how-to-understand-automated-ml.md#roc)| Vyhodnotí poměr správných jmenovek proti poměru falešně pozitivních popisků.
 
-## <a name="handle-imbalanced-data"></a>Zpracování nevyvážených dat 
+## <a name="handle-imbalanced-data"></a>Zpracovat nevyvážená data 
 
-V rámci svého cíle zjednodušit pracovní postup strojového učení má automatizovaná ml vestavěné funkce, které pomáhají řešit nevyvážená data, jako jsou 
+V rámci svého cíle zjednodušit pracovní postup strojového učení mají automatizované funkce ML integrované možnosti, které vám pomůžou se zabývat nevyváženými daty, jako je například, 
 
-- **Sloupec váhy**: automatizovaný ml podporuje vážený sloupec jako vstup, což způsobuje, že řádky v datech mají být váženy nahoru nebo dolů, což může třídu více či méně "důležité".
+- **Sloupec váhy**: automatizovaná ml podporuje jako vstup vážený sloupec, což způsobuje, že řádky v datech mají být vyšší nebo nižší, což může způsobit větší nebo menší "důležité" třídy.
 
-- Algoritmy používané automatizované ML může správně zpracovat nerovnováhu až 20:1, což znamená, že nejběžnější třída může mít 20 krát více řádků v datech než nejméně běžné třídy.
+- Algoritmy používané automatizovanou ML dokáže správně zvládnout nerovnováhu až 20:1, což znamená, že nejběžnější třída může mít 20 krát více řádků v datech než nejméně společná třída.
 
 Následující techniky jsou další možnosti pro zpracování nevyvážených dat mimo automatizované ML. 
 
-- Převzorkování na i třídy nerovnováhy, buď nahoru vzorkování menší třídy nebo dolů vzorkování větší třídy. Tyto metody vyžadují odborné znalosti pro zpracování a analýzu.
+- Převzorkování na dokonce i nevyrovnanost třídy, a to buď pomocí vzorkování menších tříd, nebo dolů vyvzorkováním větších tříd. Tyto metody vyžadují, aby byly zkušenosti se zpracováním a analýzou.
 
-- Použijte metriku výkonu, která lépe řeší nevyvážená data. Například skóre F1 je vážený průměr přesnosti a odvolání. Přesnost měří přesnost klasifikátoru-- nízká přesnost naznačuje vysoký počet falešných poplachů--, zatímco odvolání měří úplnost klasifikátoru-- nízké odvolání naznačuje vysoký počet falešných negativů. 
+- Využijte metriku výkonu, která se bude lépe dopracovat s nevyváženými daty. Například skóre F1 je vážený průměr přesnosti a odvolání. Míry přesnosti – přesnost přesného třídění – nízká přesnost označuje vysoký počet falešně pozitivních hodnot--, zatímco při odvolání měření úplnosti klasifikátoru udává vysoký počet falešně negativních hodnot. 
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na příklady a zjistěte, jak vytvářet modely pomocí automatizovaného strojového učení:
+Podívejte se na příklady a Naučte se vytvářet modely pomocí automatizovaného strojového učení:
 
-+ Postupujte [podle kurzu: Automatické trénování regresního modelu pomocí Azure Machine Learning](tutorial-auto-train-models.md)
++ Postupujte podle [kurzu: Automatické učení regresního modelu s Azure Machine Learning](tutorial-auto-train-models.md)
 
-+ Konfigurace nastavení pro automatický tréninkový experiment:
-  + V Azure Machine Learning studio, [použijte tyto kroky](how-to-use-automated-ml-for-ml-models.md).
-  + Pomocí sady Python SDK [postupujte takto](how-to-configure-auto-train.md).
++ Nakonfigurujte nastavení pro experiment automatických školení:
+  + V Azure Machine Learning Studiu [použijte tento postup](how-to-use-automated-ml-for-ml-models.md).
+  + Pomocí sady Python SDK [použijte následující postup](how-to-configure-auto-train.md).
 
 

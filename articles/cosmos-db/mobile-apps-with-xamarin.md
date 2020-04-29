@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Vytváření mobilních aplikací s Xamarinem a Azure Cosmos DB'
-description: 'Kurz: Kurz, který vytvoří aplikaci Xamarin iOS, Android nebo Forms pomocí Azure Cosmos DB. Azure Cosmos DB je rychlá cloudová databáze v globálním měřítku pro mobilní aplikace.'
+title: 'Kurz: sestavování mobilních aplikací pomocí Xamarin a Azure Cosmos DB'
+description: 'Kurz: kurz, který vytváří aplikaci pro Xamarin iOS, Android nebo Forms pomocí Azure Cosmos DB. Azure Cosmos DB je rychlá cloudová databáze v globálním měřítku pro mobilní aplikace.'
 author: SnehaGunda
 ms.service: cosmos-db
 ms.devlang: dotnet
@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
 ms.openlocfilehash: 8fbd2065ceae1aadf1dc57c78adb21b7c2848297
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80985554"
 ---
-# <a name="tutorial-build-mobile-applications-with-xamarin-and-azure-cosmos-db"></a>Kurz: Vytváření mobilních aplikací s Xamarinem a Azure Cosmos DB
+# <a name="tutorial-build-mobile-applications-with-xamarin-and-azure-cosmos-db"></a>Kurz: sestavování mobilních aplikací pomocí Xamarin a Azure Cosmos DB
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-dotnet-application.md)
@@ -35,7 +35,7 @@ Azure Cosmos DB poskytuje vývojářům mobilních aplikací následující klí
 
 * Bohaté dotazy nad daty bez schématu. Azure Cosmos DB ukládá data jako dokumenty JSON bez schématu v heterogenních kolekcích. Nabízí [bohaté a rychlé dotazy](how-to-sql-query.md), aniž byste si museli dělat starosti se schématy nebo indexy.
 * Vysoká propustnost. Se službou Azure Cosmos DB trvá čtení a zápis dokumentů pouze několik milisekund. Vývojáři můžou určit požadovanou propustnost a Azure Cosmos DB ji bude respektovat se smlouvou SLA o 99,99% dostupnosti pro všechny účty v jedné oblasti a všechny účty ve více oblastech s mírnější konzistencí a 99,999% dostupnosti čtení pro všechny účty databáze ve více oblastech.
-* Neomezené škálování. Vaše kontejnery Azure Cosmos [rostou s růstem vaší aplikace](partition-data.md). Můžete začít s malým množstvím dat a propustností v řádu stovek požadavků za sekundu. Vaše kolekce nebo databáze se můžou rozšířit na petabajty dat s libovolně velkou propustností v řádu stovek milionů požadavků za sekundu.
+* Neomezené škálování. Vaše kontejnery Azure Cosmos se [při zvětšování vaší aplikace zvětšují](partition-data.md). Můžete začít s malým množstvím dat a propustností v řádu stovek požadavků za sekundu. Vaše kolekce nebo databáze se můžou rozšířit na petabajty dat s libovolně velkou propustností v řádu stovek milionů požadavků za sekundu.
 * Globální distribuce. Uživatelé mobilních aplikací jsou v pohybu, často po celém světě. Azure Cosmos DB je [globálně distribuovaná databáze](distribute-data-globally.md). Kliknutím na mapu zpřístupníte svá data uživatelům.
 * Integrovaná bohatá autorizace. Azure Cosmos DB umožňujte snadnou implementaci oblíbených modelů, jako jsou [data jednotlivých uživatelů](https://github.com/kirillg/azure-documentdb-dotnet/tree/master/samples/xamarin/UserItems) nebo data sdílená několika uživateli bez potřeby vlastního složitého autorizačního kódu.
 * Geoprostorové dotazy. Řada mobilních aplikací dnes nabízí prostředí využívající geografický kontext. Azure Cosmos DB usnadňuje vytváření takových prostředí díky prvotřídní podpoře [geoprostorových typů](geospatial.md).
@@ -45,7 +45,7 @@ Azure Cosmos DB poskytuje vývojářům mobilních aplikací následující klí
 Následující kurz ukazuje, jak vytvořit mobilní aplikaci s využitím Xamarinu a služby Azure Cosmos DB. Kompletní zdrojový kód pro tento kurz najdete v úložišti [Xamarin a Azure Cosmos DB na GitHubu](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin).
 
 ### <a name="get-started"></a>Začínáme
-Začít se službou Azure Cosmos DB je snadné. Přejděte na web Azure Portal a vytvořte si nový účet služby Azure Cosmos DB. Klikněte na kartu **Rychlý start.** Stáhněte si ukázku seznamu úkolů xamarinových formulářů, která je už připojená k vašemu účtu Azure Cosmos DB. 
+Začít se službou Azure Cosmos DB je snadné. Přejděte na web Azure Portal a vytvořte si nový účet služby Azure Cosmos DB. Klikněte na kartu **rychlý Start** . Stáhněte si ukázku seznamu úkolů Xamarin Forms pro, který je už připojený k vašemu Azure Cosmos DB účtu. 
 
 ![Azure Cosmos DB pro mobilní aplikace – Rychlý start](media/mobile-apps-with-xamarin/cosmos-db-quickstart.png)
 
@@ -70,7 +70,7 @@ V projektech Xamarin můžete k dotazování dat bez schématu využít dotazy i
         Items.AddRange(await query.ExecuteNextAsync<TodoItem>());
     }
 ```
-### <a name="add-users"></a>Přidání uživatelů
+### <a name="add-users"></a>Přidávání uživatelů
 Stejně jako většina úvodních ukázek se ukázka Azure Cosmos DB, kterou jste stáhli, ověřuje ve službě pomocí hlavního klíče pevně zakódovaného v kódu aplikace. Toto výchozí chování není vhodné pro aplikaci, kterou chcete spouštět kdekoli mimo místní emulátor. Kdyby neoprávněný uživatel získal hlavní klíč, mohlo by dojít k ohrožení všech dat v celém účtu služby Azure Cosmos DB. Místo toho by vaše aplikace měla mít přístup pouze k záznamům pro přihlášeného uživatele. Azure Cosmos DB umožňuje vývojářům udělit aplikaci oprávnění ke čtení nebo zápisu a čtení ke kolekci, k sadě dokumentů seskupených podle klíče oddílu nebo ke konkrétnímu dokumentu. 
 
 Podle těchto pokynů upravte aplikaci seznamu úkolů na víceuživatelskou aplikaci seznamu úkolů: 

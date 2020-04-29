@@ -1,7 +1,7 @@
 ---
-title: Spuštění služby Azure Kubernetes – analýza textu
+title: Spuštění služby Azure Kubernetes – Analýza textu
 titleSuffix: Azure Cognitive Services
-description: Nasaďte image kontejneru Text Analytics do služby Azure Kubernetes a otestujte ji ve webovém prohlížeči.
+description: Nasaďte Analýza textu image kontejneru do služby Azure Kubernetes a otestujte ji ve webovém prohlížeči.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,27 +11,27 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 155f32ee76f69fe0f16e7698123381fdc12efd0e
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80877808"
 ---
-# <a name="deploy-a-text-analytics-container-to-azure-kubernetes-service"></a>Nasazení kontejneru Analýzy textu do služby Azure Kubernetes
+# <a name="deploy-a-text-analytics-container-to-azure-kubernetes-service"></a>Nasazení kontejneru Analýza textu do služby Azure Kubernetes
 
-Zjistěte, jak nasadit image kontejneru Azure Cognitive Services [Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-install-containers) do služby Azure Kubernetes Service (AKS). Tento postup ukazuje, jak vytvořit prostředek analýzy textu, jak vytvořit přidružený obrázek analýzy mínění a jak tuto orchestraci obou z prohlížeče uplatnit. Pomocí kontejnerů můžete přesunout vaši pozornost od správy infrastruktury místo toho se zaměřením na vývoj aplikací.
+Přečtěte si, jak nasadit image kontejneru Azure Cognitive Services [Analýza textu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-install-containers) do služby Azure Kubernetes Service (AKS). Tento postup ukazuje, jak vytvořit prostředek Analýza textu, jak vytvořit přidružený obrázek analýzy mínění a jak tuto orchestraci těchto dvou způsobů vykonat z prohlížeče. Pomocí kontejnerů můžete posouvat pozornost od správy infrastruktury a místo toho se zaměřit na vývoj aplikací.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Tento postup vyžaduje několik nástrojů, které musí být nainstalovány a spuštěny místně. Nepoužívejte Azure Cloud Shell. Potřebujete následující:
+Tento postup vyžaduje několik nástrojů, které je třeba nainstalovat a spustit místně. Nepoužívejte Azure Cloud Shell. Potřebujete následující:
 
-* Předplatné Azure. Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 * Textový editor, například [Visual Studio Code](https://code.visualstudio.com/download).
-* Nainstalované [vázané příkazové k mizér Azure.](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
-* [Kubernetes CLI](https://kubernetes.io/docs/tasks/tools/install-kubectl/) nainstalován.
-* Prostředek Azure se správnou cenovou úrovní. S tímto kontejnerem nefungují všechny cenové úrovně:
-    * **Azure Text Analytics** prostředek s F0 nebo standardní cenové úrovně jenom.
-    * **Prostředek Azure Cognitive Services** s cenovou úrovní S0.
+* Rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) je nainstalované.
+* Rozhraní [CLI Kubernetes](https://kubernetes.io/docs/tasks/tools/install-kubectl/) je nainstalované.
+* Prostředek Azure se správnou cenovou úrovní. Ne všechny cenové úrovně v tomto kontejneru fungují:
+    * **Azure analýza textu** prostředky s cenovou úrovní F0 nebo Standard.
+    * Prostředek **Azure Cognitive Services** s cenovou úrovní S0
 
 [!INCLUDE [Create a Cognitive Services Text Analytics resource](../includes/create-text-analytics-resource.md)]
 
@@ -59,5 +59,5 @@ Tento postup vyžaduje několik nástrojů, které musí být nainstalovány a s
 
 ## <a name="next-steps"></a>Další kroky
 
-* Použití [dalších kontejnerů služeb Cognitive Services](../../cognitive-services-container-support.md)
-* Použití [propojené služby Analýzy textu](../vs-text-connected-service.md)
+* Použít více [Cognitive Servicesch kontejnerů](../../cognitive-services-container-support.md)
+* Použití [připojené služby analýza textu](../vs-text-connected-service.md)

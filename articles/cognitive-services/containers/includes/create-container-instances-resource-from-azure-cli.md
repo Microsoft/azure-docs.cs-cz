@@ -1,7 +1,7 @@
 ---
 title: Podpora kontejnerů
 titleSuffix: Azure Cognitive Services
-description: Zjistěte, jak vytvořit prostředek instance kontejneru Azure z azure cli.
+description: Přečtěte si, jak vytvořit prostředek Azure Container instance z Azure CLI.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,15 +10,15 @@ ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: e3542b976921aa45794d62cad9517984c8348ce3
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80875104"
 ---
-## <a name="create-an-azure-container-instance-resource-from-the-azure-cli"></a>Vytvoření prostředku instance kontejneru Azure z azure cli
+## <a name="create-an-azure-container-instance-resource-from-the-azure-cli"></a>Vytvoření prostředku Azure Container instance z Azure CLI
 
-Níže uvedený yaml definuje prostředek instance kontejneru Azure. Zkopírujte a vložte obsah do `my-aci.yaml` nového souboru s názvem a nahraďte komentované hodnoty vlastními. Platný formát YAML naleznete ve [formátu šablony.][template-format] Názvy dostupných obrázků a jejich odpovídající úložiště naleznete v [úložišti kontejnerů a na obrázcích.][repositories-and-images] Další informace o odkazu YAML pro instance kontejnerů najdete v [tématu Odkaz YAML: Instance kontejnerů Azure][aci-yaml-ref].
+Následující YAML definuje prostředek instance kontejneru Azure. Zkopírujte a vložte obsah do nového souboru s názvem `my-aci.yaml` a nahraďte hodnoty s poznámkami vlastními. Platný YAML najdete ve [formátu šablony][template-format] . Podívejte se na [úložiště kontejnerů a obrázky][repositories-and-images] pro dostupné názvy imagí a jejich odpovídající úložiště. Další informace o YAML reference pro instance kontejnerů naleznete v tématu [reference YAML: Azure Container Instances][aci-yaml-ref].
 
 ```YAML
 apiVersion: 2018-10-01
@@ -64,18 +64,18 @@ type: Microsoft.ContainerInstance/containerGroups
 ```
 
 > [!NOTE]
-> Ne všechna umístění mají stejnou dostupnost procesoru a paměti. Seznam dostupných prostředků pro kontejnery pro umístění a operační operační režim naleznete v tabulce [umístění a zdrojů.][location-to-resource]
+> Ne všechna umístění mají stejnou dostupnost procesoru a paměti. Seznam dostupných prostředků pro kontejnery na umístění a operační systém najdete v tabulce [umístění a prostředky][location-to-resource] .
 
-Budeme se spoléhat na soubor YAML, který jsme vytvořili [`az container create`][azure-container-create] pro příkaz. Z azure cli, `az container create` spusťte `<resource-group>` příkaz nahrazení vlastní. Navíc pro zabezpečení hodnot v rámci nasazení YAML odkazují na [zabezpečené hodnoty][secure-values].
+Budeme spoléhat na soubor YAML, který jsme vytvořili pro [`az container create`][azure-container-create] příkaz. V Azure CLI spusťte `az container create` příkaz, který `<resource-group>` nahradí vlastní. Kromě toho se pro zabezpečení hodnot v rámci nasazení YAML odkazují na [zabezpečené hodnoty][secure-values].
 
 ```azurecli
 az container create -g <resource-group> -f my-aci.yaml
 ```
 
-Výstup příkazu je, pokud je `Running...` platný, po někdy se výstup změní na řetězec JSON představující nově vytvořený prostředek ACI. Image kontejneru je více než pravděpodobné, že není k dispozici na chvíli, ale prostředek je nyní nasazen.
+Výstup příkazu je `Running...` v případě, že se výstup změní na řetězec JSON, který představuje nově vytvořený prostředek ACI, po nějaké době. Bitová kopie kontejneru je větší, než je pravděpodobně k dispozici v době běhu, ale prostředek je nyní nasazen.
 
 > [!TIP]
-> Věnujte velkou pozornost umístění nabídky služby Azure Cognitive Service ve verzi Public Preview, protože yaml bude potřeba odpovídajícím způsobem upravit tak, aby odpovídalumístění.
+> Zaměřte se na umístění veřejné verze Preview nabídky služby pro rozpoznávání Azure ve verzi Public Preview, protože YAML bude nutné přizpůsobit tak, aby odpovídala umístění.
 
 [azure-container-create]: https://docs.microsoft.com/cli/azure/container?view=azure-cli-latest#az-container-create
 [template-format]: https://docs.microsoft.com/azure/templates/Microsoft.ContainerInstance/2018-10-01/containerGroups#template-format

@@ -1,7 +1,7 @@
 ---
-title: Omezení kontejnerů – luis
+title: Omezení kontejneru – LUIS
 titleSuffix: Azure Cognitive Services
-description: Jazyky kontejneru LUIS, které jsou podporovány.
+description: Podporované jazyky kontejneru LUIS.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,42 +11,42 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 7fe773b35c5aba31b2fea66bd2be7b2745eac3ee
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80879237"
 ---
-# <a name="language-understanding-luis-container-limitations"></a>Omezení kontejnerů pro porozumění jazykům (LUIS)
+# <a name="language-understanding-luis-container-limitations"></a>Omezení kontejneru Language Understanding (LUIS)
 
-Kontejnery LUIS mají několik významných omezení. Z nepodporovaných závislostí na podmnožinu podporovaných jazyků, tento článek podrobně popisuje tato omezení.
+Kontejnery LUIS mají několik důležitých omezení. Tento článek podrobně popisuje tato omezení z nepodporovaných závislostí až po podmnožinu podporovaných jazyků.
 
-## <a name="supported-dependencies-for-latest-container"></a>Podporované závislosti `latest` pro kontejner
+## <a name="supported-dependencies-for-latest-container"></a>Podporované závislosti pro `latest` kontejner
 
-Nejnovější kontejner LUIS, vydaný na [//build/ 2019](https://news.microsoft.com/build2019/), bude podporovat:
+Nejnovější LUIS kontejner vydaný na [//build/2019](https://news.microsoft.com/build2019/)bude podporovat:
 
-* [Nové předem sestavené domény](luis-reference-prebuilt-domains.md): tyto domény zaměřené na rozlehlé sítě zahrnují entity, ukázkové projevy a vzory. Rozšiřte tyto domény pro vlastní potřebu.
+* [Nové předem připravené domény](luis-reference-prebuilt-domains.md): tyto domény zaměřené na podnikové sítě zahrnují entity, příklady projevy a vzory. Rozšíří tyto domény pro vlastní použití.
 
 ## <a name="unsupported-dependencies-for-latest-container"></a>Nepodporované závislosti `latest` pro kontejner
 
-Chcete-li [exportovat pro kontejner](luis-container-howto.md#export-packaged-app-from-luis), je nutné odebrat nepodporované závislosti z aplikace LUIS. Při pokusu o export pro kontejner, portál LUIS hlásí tyto nepodporované funkce, které je třeba odebrat.
+Pokud chcete [exportovat kontejner](luis-container-howto.md#export-packaged-app-from-luis), musíte z aplikace Luis odebrat nepodporované závislosti. Při pokusu o export do kontejneru nahlásí portál LUIS tyto nepodporované funkce, které je třeba odebrat.
 
-Aplikaci LUIS můžete použít, pokud **neobsahuje** žádné z následujících závislostí:
+Aplikaci LUIS můžete **použít, pokud neobsahuje žádnou z** následujících závislostí:
 
 Nepodporované konfigurace aplikací|Podrobnosti|
 |--|--|
-|Nepodporované jazykové verze kontejnerů| Holandština (`nl-NL`)<br>V`ja-JP`japonštině ( )<br>Němčina je podporována pouze [tokenizérem 1.0.2](luis-language-support.md#custom-tokenizer-versions).|
-|Nepodporované entity pro všechny jazykové verze|Předdefinovaná entita [KeyPhrase](luis-reference-prebuilt-keyphrase.md) pro všechny jazykové verze|
-|Nepodporované entity pro`en-US`jazykovou verzi angličtiny ( ).|[GeografieV2](luis-reference-prebuilt-geographyV2.md) předem sestavené entity|
-|Řečové priming|Externí závislosti nejsou v kontejneru podporovány.|
+|Nepodporované jazykové verze kontejneru| Holandština`nl-NL`()<br>Japonština`ja-JP`()<br>Němčina se podporuje jenom s [1.0.2 provádějících tokenizaci](luis-language-support.md#custom-tokenizer-versions).|
+|Nepodporované entity pro všechny jazykové verze|[KeyPhrase](luis-reference-prebuilt-keyphrase.md) předem vytvořenou entitu pro všechny jazykové verze|
+|Nepodporované entity pro jazykovou verzi Angličtina (`en-US`)|[GeographyV2](luis-reference-prebuilt-geographyV2.md) předem připravené entity|
+|Neprojevení řeči|Externí závislosti nejsou v kontejneru podporovány.|
 |Analýza mínění|Externí závislosti nejsou v kontejneru podporovány.|
-|Kontrola pravopisu bingu|Externí závislosti nejsou v kontejneru podporovány.|
+|Kontrola pravopisu Bingu|Externí závislosti nejsou v kontejneru podporovány.|
 
 ## <a name="languages-supported"></a>Podporované jazyky
 
-Kontejnery LUIS podporují podmnožinu [jazyků podporovaných](luis-language-support.md#languages-supported) vlastní LUIS. Kontejnery LUIS jsou schopné pochopit projevy v následujících jazycích:
+Kontejnery LUIS podporují podmnožinu jazyků, které [podporuje](luis-language-support.md#languages-supported) Luis správně. Kontejnery LUIS jsou schopné pochopit projevy v následujících jazycích:
 
-| Jazyk | Národní prostředí | Předem vyestavěná doména | Předem sestavená entita | Doporučení pro seznam frází | **[Analýza textu](../text-analytics/language-support.md)<br>(Sentiment a<br>Klíčová slova)|
+| Jazyk | Národní prostředí | Předem sestavená doména | Předem vytvořená entita | Doporučení pro seznam frází | **[Analýza textu](../text-analytics/language-support.md)<br>(Mínění a<br>Klíčov|
 |--|--|:--:|:--:|:--:|:--:|
 | Americká angličtina | `en-US` | ✔️ | ✔️ | ✔️ | ✔️ |
 | *[Čínština](#chinese-support-notes) |`zh-CN` | ✔️ | ✔️ | ✔️ | ❌ |
@@ -55,11 +55,11 @@ Kontejnery LUIS podporují podmnožinu [jazyků podporovaných](luis-language-su
 | Němčina |`de-DE` | ✔️ | ✔️ | ✔️ | ✔️ |
 | Hindština | `hi-IN`| ❌ | ❌ | ❌ | ❌ |
 | Italština |`it-IT` | ✔️ | ✔️ | ✔️ | ✔️ |
-| Korejština |`ko-KR` | ✔️ | ❌ | ❌ | *Pouze klíčová fráze* |
-| Portugalština (Brazílie) |`pt-BR` | ✔️ | ✔️ | ✔️ | ne všechny subkultury |
+| Korejština |`ko-KR` | ✔️ | ❌ | ❌ | Jenom *klíčová fráze* |
+| Portugalština (Brazílie) |`pt-BR` | ✔️ | ✔️ | ✔️ | Ne všechny dílčí kultury |
 | Španělština (Španělsko) |`es-ES` | ✔️ | ✔️ |✔️|✔️|
 | Španělština (Mexiko)|`es-MX` | ❌ | ❌ |✔️|✔️|
-| Turečtina | `tr-TR` |✔️| ❌ | ❌ | *Pouze sentiment* |
+| Turečtina | `tr-TR` |✔️| ❌ | ❌ | Jenom *mínění* |
 
 [!INCLUDE [Chinese language support notes](includes/chinese-language-support-notes.md)]
 

@@ -1,5 +1,5 @@
 ---
-title: Aktualizace TLS centra oznámení
+title: Aktualizace Notification Hubs TLS
 description: Přečtěte si o podpoře TLS v Azure Notification Hubs.
 services: notification-hubs
 documentationcenter: .net
@@ -15,28 +15,28 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 01/28/2020
 ms.openlocfilehash: 4da96df50e961f4291029a37e883fdcf88c6c87f
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80885748"
 ---
 # <a name="transport-layer-security-tls"></a>Protokol TLS (Transport Layer Security)
 
-Chcete-li zajistit vyšší úroveň zabezpečení, notification hubs zakáže podporu pro TLS verze 1.0 a 1.1 na 31 května 2020 (prodloužena od dubna 30, 2020). Tyto starší protokoly poskytují slabou kryptografii a jsou náchylné k útokům BEAST a POODLE. Aplikace nasazené do zařízení se systémem Android verze 5 nebo vyšší nebo iOS verze 5 nebo vyšší nejsou touto změnou ovlivněny, protože tyto operační systémy podporují Protokol TLS 1.2 a klient a server budou při připojení vyjednat nejvyšší vzájemně podporovanou verzi protokolu.
+Aby se zajistila vyšší úroveň zabezpečení, Notification Hubs zakáže podporu pro TLS verze 1,0 a 1,1 v 31. dubna 2020 (rozšířené od 30. dubna 2020). Tyto starší protokoly poskytují slabou kryptografii a jsou zranitelné z útoků TOUCHDOWN a POODLE. Aplikace nasazené na zařízení s Androidem verze 5 nebo novějším nebo iOS verze 5 nebo vyšší nejsou touto změnou ovlivněné, protože tyto operační systémy podporují protokol TLS 1,2 a klient a server vyjednávají nejvyšší vzájemně podporovanou verzi protokolu při připojení.
 
-Doporučujeme zkontrolovat všechny vaše aplikace, které používají Azure Notification Hubs, abyste zajistili, že používají nejpoužitelnější knihovny a balíčky TLS, které podporují TLS 1.2.
+Doporučujeme zkontrolovat všechny aplikace, které používají Azure Notification Hubs, a zajistit tak, aby používaly nejvhodnější knihovny a zásobníky TLS, které podporují protokol TLS 1,2.
 
 ## <a name="update-apps"></a>Aktualizace aplikací
 
-Můžete zajistit, aby vaše aplikace pro iOS používaly TLS 1.2 pomocí funkce zabezpečení sítě společnosti Apple s názvem App Transport Security (ATS). Ats nelze použít pro sady SDK starší než iOS 9.0 nebo macOS 10.11 a můžete si přečíst dále z [dokumentace společnosti Apple](https://developer.apple.com/documentation/security/preventing_insecure_network_connections).
+Můžete zajistit, aby vaše aplikace pro iOS používaly protokol TLS 1,2 pomocí funkce zabezpečení sítě od společnosti Apple označované jako ATS (App Transport Security). ATS nelze použít pro sady SDK starší než iOS 9,0 nebo macOS 10,11. Další informace o této dokumentaci získáte z [dokumentace od společnosti Apple](https://developer.apple.com/documentation/security/preventing_insecure_network_connections).
 
-Pro aplikace pro Android, které používají instance SSLSocket, nastavte povolené protokoly na každé instanci SSLSocket, jak je uvedeno v [setEnabledProtocols](https://developer.android.com/reference/javax/net/ssl/SSLSocket#setEnabledProtocols(java.lang.String%5B%5D)).
+U aplikací pro Android, které používají instance SSLSocket, nastavte u každé instance SSLSocket Povolené protokoly, jak je uvedeno v [setEnabledProtocols](https://developer.android.com/reference/javax/net/ssl/SSLSocket#setEnabledProtocols(java.lang.String%5B%5D)).
 
 Tabulka na stránce podpory [kompatibility protokolu TLS](https://support.globalsign.com/customer/portal/articles/2934392-tls-protocol-compatibility) pomáhá mapovat operační systémy s kompatibilními verzemi TLS.
 
-Další informace naleznete v přehledu [podpory protokolů TLS v systému Windows](https://docs.microsoft.com/archive/blogs/kaushal/support-for-ssltls-protocols-on-windows).
+Další informace najdete v tématu Přehled [podpory protokolů TLS ve Windows](https://docs.microsoft.com/archive/blogs/kaushal/support-for-ssltls-protocols-on-windows).
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Přehled center oznámení](notification-hubs-push-notification-overview.md)
+- [Přehled Notification Hubs](notification-hubs-push-notification-overview.md)

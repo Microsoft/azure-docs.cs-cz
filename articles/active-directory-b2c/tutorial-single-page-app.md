@@ -1,7 +1,7 @@
 ---
-title: 'Kurz: Povolení ověřování v jednostránkové aplikaci'
+title: 'Kurz: povolení ověřování v jedné stránce aplikace'
 titleSuffix: Azure AD B2C
-description: V tomto kurzu se dozvíte, jak pomocí služby Azure Active Directory B2C poskytnout přihlášení uživatele pro jednostránkovou aplikaci (SPA) založenou na jazyce JavaScript.
+description: V tomto kurzu se naučíte používat Azure Active Directory B2C k poskytnutí přihlašovacích údajů uživatele pro jednostránkové aplikaci založenou na JavaScriptu (SPA).
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,73 +12,73 @@ ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
 ms.openlocfilehash: d7cd437f597fc34fe83904715fc2e459dfe4550f
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80875543"
 ---
-# <a name="tutorial-enable-authentication-in-a-single-page-application-with-azure-ad-b2c"></a>Kurz: Povolení ověřování v jednostránkové aplikaci pomocí Azure AD B2C
+# <a name="tutorial-enable-authentication-in-a-single-page-application-with-azure-ad-b2c"></a>Kurz: povolení ověřování v aplikaci s jednou stránkou s Azure AD B2C
 
-Tento kurz ukazuje, jak používat Azure Active Directory B2C (Azure AD B2C) k registraci a přihlášení uživatelů v jednostránkové aplikaci (SPA).
+V tomto kurzu se dozvíte, jak pomocí Azure Active Directory B2C (Azure AD B2C) se zaregistrovat a přihlašovat uživatele v aplikaci s jednou stránkou (SPA).
 
-V tomto kurzu první ve dvoudílné sérii:
+V tomto kurzu první v řadě dvou částí:
 
 > [!div class="checklist"]
-> * Přidání adresy URL odpovědi do aplikace registrované v tenantovi Azure AD B2C
+> * Přidání adresy URL odpovědi do aplikace zaregistrované ve vašem tenantovi Azure AD B2C
 > * Stažení ukázky kódu z GitHubu
-> * Úprava kódu ukázkové aplikace pro práci s tenantem
-> * Zaregistrujte se pomocí toku uživatelů registrace/přihlášení
+> * Úprava kódu ukázkové aplikace pro spolupráci s vaším klientem
+> * Zaregistrujte se pomocí uživatelského toku pro registraci a přihlašování.
 
-[Další kurz](tutorial-single-page-app-webapi.md) v řadě umožňuje web API část ukázky kódu.
+V [dalším kurzu](tutorial-single-page-app-webapi.md) v řadě se povoluje část webové rozhraní API v ukázce kódu.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
-Před pokračováním v krocích v tomto kurzu potřebujete následující prostředky Azure AD B2C na místě:
+Než budete pokračovat v krocích v tomto kurzu, budete potřebovat následující Azure AD B2C prostředky:
 
-* [Klient Azure AD B2C](tutorial-create-tenant.md)
-* [Aplikace registrovaná](tutorial-register-applications.md) ve vašem tenantovi
+* [Tenant Azure AD B2C](tutorial-create-tenant.md)
+* [Aplikace zaregistrovaná](tutorial-register-applications.md) ve vašem tenantovi
 * [Toky uživatelů vytvořené](tutorial-create-user-flows.md) ve vašem tenantovi
 
-Kromě toho budete potřebovat následující v prostředí místního rozvoje:
+V místním vývojovém prostředí budete navíc potřebovat následující:
 
-* [Visual Studio Code](https://code.visualstudio.com/) nebo jiný editor kódu
+* [Visual Studio Code](https://code.visualstudio.com/) nebo jiný Editor kódu
 * [Node.js](https://nodejs.org/en/download/)
 
 ## <a name="update-the-application"></a>Aktualizace aplikace
 
-Ve druhém kurzu, který jste dokončili jako součást předpokladů, jste zaregistrovali webovou aplikaci v Azure AD B2C. Chcete-li povolit komunikaci s ukázkou kódu v tomto kurzu, přidejte adresu URL odpovědi (označovanou také jako identifikátor URI přesměrování) k registraci aplikace.
+V druhém kurzu, který jste dokončili v rámci požadavků, jste zaregistrovali webovou aplikaci v Azure AD B2C. Pokud chcete povolit komunikaci s ukázkami kódu v tomto kurzu, přidejte do registrace aplikace adresu URL odpovědi (označuje se taky jako identifikátor URI přesměrování).
 
-K aktualizaci aplikace můžete použít aktuální prostředí **aplikací** nebo naše nové jednotné **registrace aplikací (Preview).** [Další informace o novém prostředí](https://aka.ms/b2cappregintro).
+K aktualizaci aplikace můžete použít aktuální prostředí **aplikací** nebo naše nové prostředí Unified **Registrace aplikací (Preview)** . [Další informace o novém prostředí](https://aka.ms/b2cappregintro).
 
 #### <a name="applications"></a>[Aplikace](#tab/applications/)
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-1. Ujistěte se, že používáte adresář, který obsahuje vašeho klienta Azure AD B2C výběrem directory **+ předplatné** filtr v horní nabídce a výběrem adresáře, který obsahuje vašeho klienta.
-1. V levém horním rohu portálu Azure vyberte **Všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
-1. Vyberte **Aplikace**a pak vyberte aplikaci *webapp1.*
-1. V části Adresa `http://localhost:6420`URL **odpovědi**přidejte .
+1. Ujistěte se, že používáte adresář, který obsahuje Azure AD B2C tenanta, a to tak, že v horní nabídce vyberete filtr **adresář + předplatné** a zvolíte adresář, který obsahuje vašeho tenanta.
+1. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
+1. Vyberte **aplikace**a pak vyberte aplikaci *WebApp1* .
+1. V části **Adresa URL odpovědi**přidejte `http://localhost:6420`.
 1. Vyberte **Uložit**.
-1. Na stránce vlastností zaznamenejte **ID aplikace**. ID aplikace se použije v pozdějším kroku při aktualizaci kódu ve webové aplikaci s jednou stránkou.
+1. Na stránce vlastnosti si poznamenejte **ID aplikace**. ID aplikace použijete v pozdějším kroku, když aktualizujete kód ve webové aplikaci s jednou stránkou.
 
-#### <a name="app-registrations-preview"></a>[Registrace aplikací (náhled)](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[Registrace aplikací (Preview)](#tab/app-reg-preview/)
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-1. V horní nabídce vyberte filtr **Directory + subscription** a pak vyberte adresář, který obsahuje vašeho klienta Azure AD B2C.
-1. V levé nabídce vyberte **Azure AD B2C**. Nebo vyberte **Všechny služby** a vyhledejte a vyberte **Azure AD B2C**.
-1. Vyberte **Registrace aplikací (náhled),** vyberte kartu **Vlastní aplikace** a pak vyberte aplikaci *webapp1.*
-1. Vyberte **Ověřování**, pak vyberte **Vyzkoušet nové prostředí** (pokud je zobrazeno).
-1. V části **Web**vyberte odkaz `http://localhost:6420`Přidat identifikátor **URI,** zadejte a pak vyberte **Uložit**.
+1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
+1. V nabídce vlevo vyberte **Azure AD B2C**. Případně vyberte **všechny služby** a vyhledejte a vyberte **Azure AD B2C**.
+1. Vyberte **Registrace aplikací (Preview)**, vyberte kartu **vlastněné aplikace** a pak vyberte aplikaci *WebApp1* .
+1. Vyberte **ověřování**a pak vyberte **vyzkoušet nové prostředí** (Pokud je zobrazeno).
+1. V části **Web**vyberte odkaz **Přidat identifikátor URI** , zadejte `http://localhost:6420`a potom vyberte **Uložit**.
 1. Vyberte **Přehled**.
-1. Zaznamenejte **ID aplikace (klienta)** pro pozdější krok při aktualizaci kódu ve webové aplikaci s jednou stránkou.
+1. Poznamenejte si **ID aplikace (klienta)** pro použití v pozdějším kroku, když aktualizujete kód ve webové aplikaci s jednou stránkou.
 
 * * *
 
 ## <a name="get-the-sample-code"></a>Získání ukázkového kódu
 
-V tomto kurzu nakonfigurujete ukázku kódu, kterou stáhnete z GitHubu pro práci s klientem B2C. Ukázka ukazuje, jak jednostránková aplikace můžete použít Azure AD B2C pro registraci uživatele a přihlášení a volání chráněné webové rozhraní API (povolíte webové rozhraní API v dalším kurzu v řadě).
+V tomto kurzu nakonfigurujete ukázku kódu, který stáhnete z GitHubu, abyste mohli pracovat s vaším klientem B2C. Ukázka předvádí, jak může aplikace s jednou stránkou používat Azure AD B2C pro registraci a přihlašování uživatelů a volání chráněného webového rozhraní API (povolení webového rozhraní API v dalším kurzu v řadě).
 
 [Stáhněte soubor .zip](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp/archive/master.zip) nebo naklonujte ukázku z GitHubu.
 
@@ -88,12 +88,12 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
 
 ## <a name="update-the-sample"></a>Aktualizace ukázky
 
-Teď, když jste získali ukázku, aktualizujte kód s názvem klienta Azure AD B2C a ID aplikace, které jste zaznamenali v předchozím kroku.
+Teď, když jste získali ukázku, aktualizujte kód pomocí Azure AD B2C název tenanta a ID aplikace, které jste si poznamenali v předchozím kroku.
 
-1. Otevřete soubor *authConfig.js* ve složce *JavaScriptSPA.*
+1. Otevřete soubor *authConfig. js* ve složce *JavaScriptSPA* .
 1. V `msalConfig` objektu aktualizujte:
-    * `clientId`s hodnotou S **ID Aplikace (klienta),** které jste zaznamenali v předchozím kroku
-    * `authority`Identifikátor URI s názvem klienta Azure AD B2C a názvem toku uživatelů registrace a přihlášení, který jste vytvořili jako součást předpokladů (například *B2C_1_signupsignin1)*
+    * `clientId`s hodnotou s **ID aplikace (klienta)** , které jste si poznamenali v dřívějším kroku
+    * `authority`Identifikátor URI s vaším Azure AD B2Cm jménem tenanta a názvem uživatelského toku pro registraci a přihlašování, který jste vytvořili jako součást požadavků (například *B2C_1_signupsignin1*)
 
     ```javascript
     const msalConfig = {
@@ -111,7 +111,7 @@ Teď, když jste získali ukázku, aktualizujte kód s názvem klienta Azure AD 
 
 ## <a name="run-the-sample"></a>Spuštění ukázky
 
-1. Otevřete okno konzoly a změňte na adresář obsahující ukázku. Příklad:
+1. Otevřete okno konzoly a přejděte do adresáře obsahujícího ukázku. Příklad:
 
     ```console
     cd active-directory-b2c-javascript-msal-singlepageapp
@@ -123,54 +123,54 @@ Teď, když jste získali ukázku, aktualizujte kód s názvem klienta Azure AD 
     npm start
     ```
 
-    V okně konzoly se zobrazí číslo portu místně spuštěného serveru Node.js:
+    V okně konzoly se zobrazí číslo portu místně běžícího serveru Node. js:
 
     ```console
     Listening on port 6420...
     ```
-1. Přejděte `http://localhost:6420` k zobrazení webové aplikace spuštěné v místním počítači.
+1. Přejděte k `http://localhost:6420` zobrazení webové aplikace spuštěné v místním počítači.
 
-    :::image type="content" source="media/tutorial-single-page-app/web-app-spa-01-not-logged-in.png" alt-text="Webový prohlížeč zobrazující jednostránkovou aplikaci spuštěnou místně":::
+    :::image type="content" source="media/tutorial-single-page-app/web-app-spa-01-not-logged-in.png" alt-text="Webový prohlížeč, na kterém běží samoobslužná aplikace spuštěná místně":::
 
 ### <a name="sign-up-using-an-email-address"></a>Registrace pomocí e-mailové adresy
 
-Tato ukázková aplikace podporuje registraci, přihlášení a resetování hesla. V tomto kurzu se zaregistrujete pomocí e-mailové adresy.
+Tato ukázková aplikace podporuje registraci, přihlášení a resetování hesla. V tomto kurzu se přihlásíte pomocí e-mailové adresy.
 
-1. Vyberte **Přihlásit,** chcete-li zahájit *tok B2C_1_signupsignin1* uživatele, který jste zadali v předchozím kroku.
-1. Azure AD B2C představuje přihlašovací stránku, která obsahuje odkaz pro registraci. Vzhledem k tomu, že ještě nemáte účet, vyberte odkaz **Zaregistrovat nyní.**
-1. Pracovní postup registrace představuje stránku pro shromažďování a ověřování identity uživatele pomocí e-mailové adresy. Pracovní postup registrace také shromažďuje heslo uživatele a požadované atributy definované v toku uživatele.
+1. Vyberte možnost **Přihlásit** se a zahajte tok *B2C_1_signupsignin1ho* uživatele, který jste zadali v předchozím kroku.
+1. Azure AD B2C zobrazí přihlašovací stránku, která obsahuje odkaz na registraci. Vzhledem k tomu, že ještě nemáte účet, vyberte odkaz **Registrovat nyní** .
+1. Pracovní postup registrace představuje stránku pro shromáždění a ověření identity uživatele pomocí e-mailové adresy. Pracovní postup registrace také shromažďuje heslo uživatele a požadované atributy definované v toku uživatele.
 
     Použijte platnou e-mailovou adresu a proveďte ověření pomocí ověřovacího kódu. Nastavte heslo. Zadejte hodnoty požadovaných atributů.
 
-    :::image type="content" source="media/tutorial-single-page-app/user-flow-sign-up-workflow-01.png" alt-text="Zaregistrovat stránku zobrazenou tokem uživatelů Azure AD B2C":::
+    :::image type="content" source="media/tutorial-single-page-app/user-flow-sign-up-workflow-01.png" alt-text="Stránka pro registraci zobrazená pomocí Azure AD B2C toku uživatele":::
 
-1. Vyberte **Vytvořit,** chcete-li vytvořit místní účet v adresáři Azure AD B2C.
+1. Vyberte **vytvořit** k vytvoření místního účtu v adresáři Azure AD B2C.
 
-Když vyberete **Vytvořit**, aplikace zobrazí jméno přihlášeného uživatele.
+Když vyberete **vytvořit**, aplikace zobrazí jméno přihlášeného uživatele.
 
 :::image type="content" source="media/tutorial-single-page-app/web-app-spa-02-logged-in.png" alt-text="Webový prohlížeč zobrazující jednostránkovou aplikaci s přihlášeným uživatelem":::
 
-Pokud chcete přihlásit, vyberte tlačítko **Odhlásit** se, pak vyberte **Přihlásit** se a přihlásit se pomocí e-mailové adresy a hesla, které jste zadali při registraci.
+Pokud chcete otestovat přihlášení, vyberte tlačítko **Odhlásit** se a pak vyberte **Přihlásit** se a přihlaste se pomocí e-mailové adresy a hesla, které jste zadali při registraci.
 
-### <a name="what-about-calling-the-api"></a>A co volání API?
+### <a name="what-about-calling-the-api"></a>Jak volat rozhraní API?
 
-Pokud po přihlášení vyberete tlačítko **Rozhraní API pro volání,** zobrazí se místo výsledků volání rozhraní API stránka toku pro přihlášení nebo přihlášení uživatele. To se očekává, protože jste ještě nenakonfigurovali část rozhraní API aplikace pro komunikaci s aplikací webového rozhraní API zaregistrovanou *v* tenantovi Azure AD B2C.
+Pokud po přihlášení vyberete tlačítko pro **volání rozhraní API** , zobrazí se místo výsledků volání rozhraní API stránka pro registraci a přihlášení uživatele s uživatelským tokem. Očekává se, že jste ještě nenakonfigurovali část aplikace API, aby komunikovala s aplikací webového rozhraní API registrovanou ve *vašem* Azure AD B2C tenantovi.
 
-V tomto okamžiku aplikace se stále pokouší komunikovat s rozhraním API registrovaným v ukázkovém tenantovi (fabrikamb2c.onmicrosoft.com) a protože nejste ověřeni s tímto tenantem, zobrazí se stránka registrace/přihlášení.
+V tomto okamžiku se aplikace stále snaží komunikovat s rozhraním API registrovaným v ukázkovém tenantovi (fabrikamb2c.onmicrosoft.com), a protože s tímto klientem nejste ověřeni, zobrazí se stránka pro registraci a přihlášení.
 
-Přejděte k dalšímu kurzu v řadě a povolte chráněné rozhraní API (viz část [Další kroky).](#next-steps)
+Přejděte k dalšímu kurzu v řadě v tématu a povolte chráněné rozhraní API (viz část [Další kroky](#next-steps) ).
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste nakonfigurovali jednostránkovou aplikaci pro práci s tokem uživatele v tenantovi Azure AD B2C, který poskytuje možnost registrace a přihlášení. Dokončili jste tyto kroky:
+V tomto kurzu jste nakonfigurovali jednostránkovou aplikaci, která bude pracovat s uživatelským tokem v tenantovi Azure AD B2C, aby se zajistila možnost registrace a přihlášení. Dokončili jste tyto kroky:
 
 > [!div class="checklist"]
-> * Přidána adresa URL odpovědi do aplikace registrované ve vašem tenantovi Azure AD B2C
-> * Stažena ukázka kódu z GitHubu
-> * Upraven kód ukázkové aplikace pro práci s tenantem
-> * Přihlášení pomocí toku uživatelů registrace nebo přihlášení
+> * Do aplikace zaregistrované ve vašem Azure AD B2C tenantovi se přidala adresa URL odpovědi.
+> * Stáhli ukázku kódu z GitHubu
+> * Upravení kódu ukázkové aplikace pro spolupráci s vaším klientem
+> * Zaregistrovali jste se pomocí uživatelského toku pro registraci a přihlašování.
 
-Nyní přejít na další kurz v sérii udělit přístup k chráněné webové api z SPA:
+Teď přejděte k dalšímu kurzu v řadě, abyste udělili přístup k chráněnému webovému rozhraní API z hesla SPA:
 
 > [!div class="nextstepaction"]
-> [Kurz: Ochrana a udělení přístupu k webovému rozhraní API z jednostránkové aplikace >](tutorial-single-page-app-webapi.md)
+> [Kurz: ochrana a udělení přístupu k webovému rozhraní API z jednostránkové aplikace >](tutorial-single-page-app-webapi.md)

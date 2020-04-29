@@ -1,5 +1,5 @@
 ---
-title: Rychlý start klientské knihovny klienta Bing Autosuggest C#
+title: Rychlý Start klientské knihovny Automatické návrhy Bingu C#
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,22 +9,22 @@ ms.topic: include
 ms.date: 04/06/2020
 ms.author: aahi
 ms.openlocfilehash: ac46eb0119ac95cf09e48823686a6c563d8d4d4a
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80887533"
 ---
-Začínáme s klientskou knihovnou Bing Autosuggest pro rozhraní .NET. Následujícím postupem nainstalujte balíček a vyzkoušejte ukázkový kód pro základní úkoly.
+Začněte s klientskou knihovnou Automatické návrhy Bingu pro .NET. Pomocí těchto kroků nainstalujete balíček a vyzkoušíte ukázkový kód pro základní úlohy.
 
-Pomocí klientské knihovny Bing Autosuggest pro rozhraní .NET můžete získat návrhy hledání založené na částečných řetězcích dotazu.
+Pomocí klientské knihovny Automatické návrhy Bingu pro .NET můžete získat návrhy hledání na základě částečných řetězců dotazů.
 
-[Referenční dokumentace](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingautosuggest?view=azure-dotnet) | [Ukázkový kód zdrojového kódu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingAutoSuggest) | [knihovny (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.AutoSuggest/) | [Sample code](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/BingAutoSuggest/Program.cs)
+[Reference documentation](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingautosuggest?view=azure-dotnet) | [Vzorový kód](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/BingAutoSuggest/Program.cs) knihovny dokumentace ke[zdroji](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingAutoSuggest) | Referenční dokumentace[(NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.AutoSuggest/) | 
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure – [vytvořte si ho zdarma](https://azure.microsoft.com/free/)
-* Aktuální verze rozhraní [.NET Core](https://dotnet.microsoft.com/download/dotnet-core).
+* Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
+* Aktuální verze [.NET Core](https://dotnet.microsoft.com/download/dotnet-core).
 
 ## <a name="setting-up"></a>Nastavení
 
@@ -35,12 +35,12 @@ Pomocí klientské knihovny Bing Autosuggest pro rozhraní .NET můžete získat
 ### <a name="create-an-environment-variable"></a>Vytvoření proměnné prostředí
 
 >[!NOTE]
-> Koncové body pro nezkušební prostředky vytvořené po 1. Další informace a úplný seznam místních koncových bodů naleznete [v tématu Vlastní názvy subdomén pro služby Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains). 
+> Koncové body pro prostředky nevyužívající zkušební verzi vytvořené po 1. červenci 2019 používají vlastní formát subdomény, který vidíte níže. Další informace a úplný seznam regionálních koncových bodů najdete v tématu [názvy vlastních subdomén pro Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains). 
 
 Pomocí klíče a koncového bodu z prostředku, který jste vytvořili, vytvořte dvě proměnné prostředí pro ověřování:
 <!-- replace the below variable names with the names expected in the code sample.-->
-* `AUTOSUGGEST_SUBSCRIPTION_KEY`- Klíč zdroje pro ověřování vašich požadavků.
-* `AUTOSUGGEST_ENDPOINT`- Koncový bod prostředku pro odesílání požadavků rozhraní API. Bude to vypadat takto: 
+* `AUTOSUGGEST_SUBSCRIPTION_KEY`– Klíč prostředku pro ověření vašich požadavků.
+* `AUTOSUGGEST_ENDPOINT`– Koncový bod prostředku pro odesílání požadavků rozhraní API. Bude vypadat takto: 
   * `https://<your-custom-subdomain>.api.cognitive.microsoft.com` 
 
 Použijte pokyny pro váš operační systém.
@@ -65,7 +65,7 @@ Po přidání proměnné prostředí spusťte v okně konzoly příkaz `source ~
 
 #### <a name="macos"></a>[macOS](#tab/unix)
 
-Upravte `.bash_profile`aplikaci a přidejte proměnnou prostředí:
+`.bash_profile`Upravte a přidejte proměnnou prostředí:
 
 ```bash
 export AUTOSUGGEST_SUBSCRIPTION_KEY=<replace-with-your-autosuggest-api-key>
@@ -75,23 +75,23 @@ export AUTOSUGGEST_ENDPOINT=<replace-with-your-autosuggest-api-endpoint>
 Po přidání proměnné prostředí spusťte v okně konzoly příkaz `source .bash_profile`, aby se změny projevily.
 ***
 
-### <a name="create-a-new-c-application"></a>Vytvoření nové aplikace C#
+### <a name="create-a-new-c-application"></a>Vytvoření nové aplikace v C#
 
-Vytvořte novou aplikaci .NET Core ve vašem upřednostňovaném editoru nebo ide. 
+Vytvořte novou aplikaci .NET Core v upřednostňovaném editoru nebo integrovaném vývojovém prostředí (IDE). 
 
-V okně konzoly (například cmd, PowerShell `dotnet new` nebo Bash) vytvořte pomocí `bing-autosuggest-quickstart`příkazu novou konzolovou aplikaci s názvem . Tento příkaz vytvoří jednoduchý projekt C# "Hello World" s jedním zdrojovým souborem: *program.cs*. 
+V okně konzoly (například cmd, PowerShell nebo bash) použijte `dotnet new` příkaz k vytvoření nové aplikace konzoly s názvem. `bing-autosuggest-quickstart` Tento příkaz vytvoří jednoduchý projekt C# "Hello World" s jedním zdrojovým souborem: *program.cs*. 
 
 ```console
 dotnet new console -n bing-autosuggest-quickstart
 ```
 
-Změňte adresář do nově vytvořené složky aplikace. Aplikaci můžete sestavit pomocí:
+Změňte adresář na nově vytvořenou složku aplikace. Aplikaci můžete vytvořit pomocí:
 
 ```console
 dotnet build
 ```
 
-Výstup sestavení by měl obsahovat žádná upozornění nebo chyby. 
+Výstup sestavení by neměl obsahovat žádná upozornění ani chyby. 
 
 ```console
 ...
@@ -101,7 +101,7 @@ Build succeeded.
 ...
 ```
 
-V adresáři projektu otevřete *soubor program.cs* v upřednostňovaném editoru nebo rozhraní IDE. Přidejte `using` následující direktivy:
+V adresáři projektu otevřete soubor *program.cs* v preferovaném editoru nebo integrovaném vývojovém prostředí (IDE). Přidejte následující `using` direktivy:
 
 ```csharp
 using System;
@@ -111,7 +111,7 @@ using System.Text;
 using System.Threading.Tasks;
 ```
 
-Ve `Program` třídě vytvořte proměnné pro koncový bod azure a klíč vašeho prostředku. Pokud jste vytvořili proměnnou prostředí po spuštění aplikace, budete muset zavřít a znovu otevřít editor, IDE nebo prostředí, které ji spustilo, abyste měli přístup k proměnné.
+Ve `Program` třídě vytvořte proměnné pro koncový bod a klíč Azure prostředku. Pokud jste po spuštění aplikace vytvořili proměnnou prostředí, budete muset zavřít a znovu otevřít Editor, rozhraní IDE nebo prostředí, na kterém je spuštěný, abyste měli přístup k této proměnné.
 
 ```csharp
 private const string key_var = "AUTOSUGGEST_SUBSCRIPTION_KEY";
@@ -122,7 +122,7 @@ private const string endpoint_var = "AUTOSUGGEST_ENDPOINT";
 private static readonly string endpoint = Environment.GetEnvironmentVariable(endpoint_var);
 ```
 
-Do `Main` metody aplikace přidejte následující volání metod, která definujete později.
+V `Main` metodě aplikace přidejte následující volání metody, které budete definovat později.
 
 ```csharp
 static void Main(string[] args)
@@ -135,28 +135,28 @@ static void Main(string[] args)
 
 ### <a name="install-the-client-library"></a>Instalace klientské knihovny
 
-V adresáři aplikace nainstalujte klientskou knihovnu Bing Autosuggest pro rozhraní .NET pomocí následujícího příkazu:
+V adresáři aplikace nainstalujte Automatické návrhy Bingu klientskou knihovnu pro .NET pomocí následujícího příkazu:
 
 ```console
 dotnet add package Microsoft.Azure.CognitiveServices.Search.AutoSuggest --version 2.0.0
 ```
 
-Pokud používáte IDE sady Visual Studio, klientská knihovna je k dispozici jako balíček NuGet ke stažení.
+Pokud používáte integrované vývojové prostředí (IDE) sady Visual Studio, je knihovna klienta k dispozici jako balíček NuGet ke stažení.
 
 ## <a name="code-examples"></a>Příklady kódu
 
-Tyto fragmenty kódu ukazují, jak provést následující úkoly s klientskou knihovnou Bing Autosuggest pro rozhraní .NET:
+Tyto fragmenty kódu ukazují, jak provádět následující úlohy pomocí klientské knihovny Automatické návrhy Bingu pro .NET:
 
 * [Ověření klienta](#authenticate-the-client)
-* [Odeslání žádosti o automatické navrhování](#send-an-autosuggest-request)
+* [Odeslat žádost o Automatický návrh](#send-an-autosuggest-request)
 
 ## <a name="authenticate-the-client"></a>Ověření klienta
 
 > [!NOTE]
-> Tento rychlý start předpokládá, že jste [vytvořili proměnnou](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) prostředí `AUTOSUGGEST_SUBSCRIPTION_KEY`pro klíč Automatické návrhy Bings s názvem a jeden pro koncový bod s názvem `AUTOSUGGEST_ENDPOINT`.
+> V tomto rychlém startu se předpokládá, že jste [vytvořili proměnnou prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro váš `AUTOSUGGEST_SUBSCRIPTION_KEY`automatické návrhy Bingu klíč s názvem a druhou pro `AUTOSUGGEST_ENDPOINT`svůj koncový bod s názvem.
 
 
-V nové asynchronní metodě vytvořte instanci klienta pomocí koncového bodu a klíče. Vytvořte objekt [ApiKeyServiceClientCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.apikeyserviceclientcredentials?view=azure-dotnet) s klíčem a použijte ho s koncovým bodem k vytvoření objektu [AutosuggestClient.](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.autosuggestclient?view=azure-dotnet)
+V nové asynchronní metodě vytvoří instanci klienta s vaším koncovým bodem a klíčem. Vytvořte objekt [ApiKeyServiceClientCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.apikeyserviceclientcredentials?view=azure-dotnet) s klíčem a použijte ho u svého koncového bodu k vytvoření objektu [AutosuggestClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.autosuggestclient?view=azure-dotnet) .
 
 ```csharp
 async static Task RunQuickstart()
@@ -170,9 +170,9 @@ async static Task RunQuickstart()
 }
 ```
 
-## <a name="send-an-autosuggest-request"></a>Odeslání žádosti o automatické navrhování
+## <a name="send-an-autosuggest-request"></a>Odeslat žádost o Automatický návrh
 
-Ve stejné metodě použijte metodu [AutoSuggestMethodAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.autosuggestclientextensions.autosuggestmethodasync?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Search_AutoSuggest_AutoSuggestClientExtensions_AutoSuggestMethodAsync_Microsoft_Azure_CognitiveServices_Search_AutoSuggest_IAutoSuggestClient_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_Collections_Generic_IList_System_String__System_Threading_CancellationToken_) klienta k odeslání dotazu bingu. Poté iterate přes [návrhy](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.models.suggestions?view=azure-dotnet) odpověď a vytisknout první návrh.
+Ve stejné metodě odešlete dotaz do Bingu pomocí metody [AutoSuggestMethodAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.autosuggestclientextensions.autosuggestmethodasync?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Search_AutoSuggest_AutoSuggestClientExtensions_AutoSuggestMethodAsync_Microsoft_Azure_CognitiveServices_Search_AutoSuggest_IAutoSuggestClient_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_Collections_Generic_IList_System_String__System_Threading_CancellationToken_) klienta. Pak proiterujte odpověď na [návrhy](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.models.suggestions?view=azure-dotnet) a vytiskněte první návrh.
 
 ```csharp
 var result = await client.AutoSuggestMethodAsync("xb");
@@ -200,7 +200,7 @@ else
 
 ## <a name="run-the-application"></a>Spuštění aplikace
 
-Spusťte aplikaci z `dotnet run` adresáře aplikace pomocí příkazu.
+Spusťte aplikaci z adresáře aplikace pomocí `dotnet run` příkazu.
 
 ```dotnet
 dotnet run
@@ -208,7 +208,7 @@ dotnet run
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud chcete vyčistit a odebrat předplatné služeb Cognitive Services, můžete odstranit prostředek nebo skupinu prostředků. Odstraněním skupiny prostředků také odstraníte všechny další prostředky, které jsou s ní spojené.
+Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prostředek nebo skupinu prostředků odstranit. Odstraněním skupiny prostředků se odstraní také všechny další prostředky, které jsou k ní přidružené.
 
 * [Portál](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
@@ -221,4 +221,4 @@ Pokud chcete vyčistit a odebrat předplatné služeb Cognitive Services, může
 ## <a name="see-also"></a>Viz také
 
 - [Co jsou Automatické návrhy Bingu?](../../get-suggested-search-terms.md)
-- [Odkaz na dotnet automatického návrhu bingu](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingautosuggest?view=azure-dotnet)
+- [Odkaz na Automatické návrhy Bingu dotnet](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingautosuggest?view=azure-dotnet)

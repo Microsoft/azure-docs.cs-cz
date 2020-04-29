@@ -1,60 +1,60 @@
 ---
 title: Prostředky Azure – QnA Maker
-description: QnA Maker používá několik zdrojů Azure, každý s jiným účelem. Pochopení toho, jak se používají jednotlivě, vám umožní naplánovat a vybrat správnou cenovou úroveň nebo vědět, kdy změnit cenovou úroveň. Pochopení toho, jak se používají v kombinaci umožňuje najít a opravit problémy, když k nim dojde.
+description: QnA Maker používá několik zdrojů Azure, z nichž každý má jiný účel. Porozumět tomu, jak se používají samostatně, vám umožní naplánovat a vybrat správnou cenovou úroveň nebo zjistit, kdy se má změnit cenová úroveň. Princip použití v kombinaci vám pomůže najít a opravit problémy, když k nim dojde.
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.openlocfilehash: 581029d2372f7a2ef704dcf02f266b66440aa246
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80873901"
 ---
 # <a name="azure-resources-for-qna-maker"></a>Prostředky Azure pro QnA Maker
 
-QnA Maker používá několik zdrojů Azure, každý s jiným účelem. Pochopení toho, jak se používají jednotlivě, vám umožní naplánovat a vybrat správnou cenovou úroveň nebo vědět, kdy změnit cenovou úroveň. Pochopení toho, jak se používají _v kombinaci_ umožňuje najít a opravit problémy, když k nim dojde.
+QnA Maker používá několik zdrojů Azure, z nichž každý má jiný účel. Porozumět tomu, jak se používají samostatně, vám umožní naplánovat a vybrat správnou cenovou úroveň nebo zjistit, kdy se má změnit cenová úroveň. Princip použití _v kombinaci_ vám pomůže najít a opravit problémy, když k nim dojde.
 
-## <a name="resource-planning"></a>Plánování zdrojů
+## <a name="resource-planning"></a>Plánování prostředků
 
-Při prvním vývoji znalostní báze QnA Maker ve fázi prototypu je běžné mít jeden prostředek QnA Maker pro testování i výrobu.
+Při prvním vývoji QnA Maker znalostní báze ve fázi prototypu je běžné mít jeden prostředek QnA Maker pro testování i pro produkční prostředí.
 
-Když se přesunete do fáze vývoje projektu, měli byste zvážit:
+Když přejdete do vývojové fáze projektu, měli byste zvážit:
 
-* kolik jazyků bude systém znalostní báze držet
-* kolik regionů potřebujete, aby vaše znalostní báze byla k dispozici
-* kolik dokumentů v každé doméně bude systém obsahovat
+* kolik jazyků systém vašeho znalostní báze bude obsahovat
+* Kolik oblastí potřebujete k dispozici ve znalostní bázi v/v
+* kolik dokumentů v jednotlivých doménách bude váš systém obsahovat.
 
-Naplánujte, že jeden prostředek QnA Maker uchová všechny znalostní báze, které mají stejný jazyk, stejnou oblast a stejnou kombinaci domény předmětu.
+Naplánujte, aby jeden prostředek QnA Maker obsahoval všechny znalostní báze, které mají stejný jazyk, stejnou oblast a stejnou kombinaci domény předmětu.
 
-## <a name="pricing-tier-considerations"></a>Aspekty cenové úrovně
+## <a name="pricing-tier-considerations"></a>Doporučení cenové úrovně
 
-Obvykle existují tři parametry, které je třeba zvážit:
+Obvykle existují tři parametry, které je třeba vzít v úvahu:
 
-* **Propustnost, kterou potřebujete od služby**:
-    * Vyberte vhodný [plán aplikací](https://azure.microsoft.com/pricing/details/app-service/plans/) pro vaši službu App na základě vašich potřeb. Můžete [vertikálně navýšit](https://docs.microsoft.com/azure/app-service/manage-scale-up) nebo snížit kapacitu aplikace.
-    * To by mělo také ovlivnit výběr skladové položky Azure **Cognitive Search,** další podrobnosti naleznete [zde](https://docs.microsoft.com/azure/search/search-sku-tier). Navíc budete muset upravit kognitivní vyhledávací [kapacitu](../../../search/search-capacity-planning.md) s replikami.
+* **Propustnost, kterou potřebujete ze služby**:
+    * Podle svých potřeb vyberte vhodný [plán aplikace](https://azure.microsoft.com/pricing/details/app-service/plans/) pro vaši službu App Service. Aplikaci můžete [škálovat směrem nahoru](https://docs.microsoft.com/azure/app-service/manage-scale-up) nebo dolů.
+    * Mělo by to mít vliv i na výběr skladové položky v Azure **kognitivní hledání** . Další podrobnosti najdete [tady](https://docs.microsoft.com/azure/search/search-sku-tier). Kromě toho možná budete muset nastavit [kapacitu](../../../search/search-capacity-planning.md) kognitivní hledání pomocí replik.
 
-* **Velikost a počet znalostních bází**: Zvolte příslušnou [skladovou položku azure pro](https://azure.microsoft.com/pricing/details/search/) váš scénář. Obvykle rozhodujete o počtu znalostních bází, které potřebujete, na základě počtu různých oborů předmětů. Jakmile předmět domény (pro jeden jazyk) by měla být v jedné znalostní bázi.
+* **Velikost a počet znalostí znalostní báze**: vyberte příslušnou skladovou položku [Azure Search](https://azure.microsoft.com/pricing/details/search/) pro váš scénář. Obvykle se na základě počtu různých domén předmětu rozhodnete, že potřebujete požadovaný počet znalostí. Doména předmětu (pro jeden jazyk) by měla být v jedné znalostní bázi.
 
-    Znalostní báze N-1 můžete publikovat v určité vrstvě, kde N je maximální indexy povolené ve vrstvě. Zkontrolujte také maximální velikost a počet dokumentů povolených na úroveň.
+    Můžete publikovat N-1 znalostní báze v určité úrovni, kde N je maximální počet indexů povolených v této vrstvě. Také ověřte maximální velikost a počet dokumentů povolených na jednu úroveň.
 
-    Například pokud vaše úroveň má 15 povolených indexů, můžete publikovat 14 znalostních bází (1 index na publikovanou znalostní bázi). Patnáctý index se používá pro všechny znalostní báze pro vytváření a testování.
+    Pokud má vaše úroveň například 15 povolených indexů, můžete publikovat 14 báze znalostí (1 index na publikovanou znalostní bázi). Patnáctý index se používá pro všechny znalostní báze pro vytváření a testování.
 
-* **Počet dokumentů jako zdrojů**: Volná skladová položka služby správy QnA Maker omezuje počet dokumentů, které můžete spravovat prostřednictvím portálu a api, na 3 (každá velikost 1 MB). Standardní skladová položka nemá žádné omezení počtu dokumentů, které můžete spravovat. Více informací [naleznete zde](https://aka.ms/qnamaker-pricing).
+* **Počet dokumentů jako zdrojů**: bezplatná SKU služby QnA maker Management omezuje počet dokumentů, které můžete spravovat přes portál, a rozhraní API na 3 (velikost 1 MB). Standardní SKU neomezuje počet dokumentů, které můžete spravovat. Další podrobnosti najdete [tady](https://aka.ms/qnamaker-pricing).
 
 V následující tabulce jsou uvedeny některé pokyny vysoké úrovně.
 
-|                        | QnA Maker Management | App Service | Azure Cognitive Search | Omezení                      |
+|                        | Správa QnA Maker | App Service | Azure Cognitive Search | Omezení                      |
 | ---------------------- | -------------------- | ----------- | ------------ | -------------------------------- |
-| Experimentování        | Volná skladová položka             | Úroveň zdarma   | Úroveň zdarma    | Publikovat až 2 kbs, velikost 50 MB  |
-| Vývoj/testování prostředí   | Standardní SKU         | Sdílená      | Základní        | Publikovat až 14 kb, velikost 2 GB    |
-| Výrobní prostředí | Standardní SKU         | Základní       | Standard     | Publikovat až 49 kb, velikost 25 GB |
+| Experimentování        | SKU zdarma             | Úroveň Free   | Úroveň Free    | Publikovat až 2 aktualizací KB velikost, 50 MB  |
+| Vývojové a testovací prostředí   | Standardní SKU         | Shared      | Základní        | Publikování až o 14 aktualizací KB velikosti 2 GB    |
+| Produkční prostředí | Standardní SKU         | Základní       | Standard     | Publikování až 49 aktualizací KB, velikost 25 GB |
 
-## <a name="recommended-settings"></a>Doporučená nastavení
+## <a name="recommended-settings"></a>Doporučené nastavení
 
-|Cíl QPS | App Service | Azure Cognitive Search |
+|Cílový QPS | App Service | Azure Cognitive Search |
 | -------------------- | ----------- | ------------ |
-| 3             | S1, 1 Instance   | S1, 1 Instance    |
+| 3             | S1, 1 instance   | S1, 1 instance    |
 | 50         | S3, 10 instancí       | S1, 12 instancí         |
 | 80         | S3, 10 instancí      |  S3, 12 instancí  |
 | 100         | P3V2, 10 instancí  | S3, 12 instancí, 3 oddíly   |
@@ -64,128 +64,128 @@ V následující tabulce jsou uvedeny některé pokyny vysoké úrovně.
 
 |Upgrade|Důvod|
 |--|--|
-|[Upgrade](../How-to/set-up-qnamaker-service-azure.md#upgrade-qna-maker-sku) Skladová položka správy qnA makeru|Chcete mít více párů QnA nebo zdrojů dokumentů ve znalostní bázi.|
-|[Upgrade](../How-to/set-up-qnamaker-service-azure.md#upgrade-app-service) SKU služby App Service a kontrola úrovně kognitivního vyhledávání a [vytváření replik kognitivního vyhledávání](../../../search/search-capacity-planning.md)|Vaše znalostní báze musí obsluhovat více požadavků z klientské aplikace, například chatovacího robota.|
-|[Upgrade](../How-to/set-up-qnamaker-service-azure.md#upgrade-the-azure-cognitive-search-service) Služba azure kognitivního vyhledávání|Máte v plánu mít mnoho znalostí.|
+|[Upgrade](../How-to/set-up-qnamaker-service-azure.md#upgrade-qna-maker-sku) SKU správy QnA Maker|Chcete mít ve znalostní bázi více QnA párů nebo zdrojů dokumentů.|
+|[Upgrade](../How-to/set-up-qnamaker-service-azure.md#upgrade-app-service) App Service SKU a zkontroluje Kognitivní hledání vrstvu a [vytvoří kognitivní hledání repliky](../../../search/search-capacity-planning.md) .|Vaše znalostní báze potřebuje k obsluze více požadavků z klientské aplikace, jako je například robot pro chat.|
+|[Upgrade](../How-to/set-up-qnamaker-service-azure.md#upgrade-the-azure-cognitive-search-service) Služba Azure Kognitivní hledání|Máte v plánu, abyste měli spoustu znalostní báze.|
 
-Nejnovější aktualizace za běhu získáte [aktualizací služby App Service na webu Azure Portal](../how-to/set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates).
+Pomocí [aktualizace App Service v Azure Portal](../how-to/set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates)získáte nejnovější aktualizace modulu runtime.
 
-## <a name="resource-naming-considerations"></a>Důležité informace o pojmenování prostředků
+## <a name="resource-naming-considerations"></a>Požadavky na pojmenovávání prostředků
 
-Název prostředku pro prostředek QnA Maker, například `qna-westus-f0-b`, se také používá k pojmenování ostatních prostředků.
+Název prostředku QnA Maker prostředku, například `qna-westus-f0-b`, se používá také k pojmenování dalších prostředků.
 
-Okno vytvoření portálu Azure umožňuje vytvořit prostředek QnA Maker a vybrat cenové úrovně pro ostatní prostředky.
+Okno Azure Portal vytvořit umožňuje vytvořit prostředek QnA Maker a vybrat cenové úrovně pro ostatní prostředky.
 
 > [!div class="mx-imgBorder"]
-> ![Snímek obrazovky portálu Azure pro vytvoření prostředků QnA Makeru](../media/concept-azure-resource/create-blade.png)
+> ![Snímek obrazovky Azure Portal pro vytváření prostředků QnA Maker](../media/concept-azure-resource/create-blade.png)
 
 Po vytvoření prostředků mají stejný název, s výjimkou volitelného prostředku Application Insights, který postpends znaky na název.
 
 > [!div class="mx-imgBorder"]
-> ![Snímek obrazovky se seznamem prostředků portálu Azure Portal](../media/concept-azure-resource/all-azure-resources-created-qnamaker.png)
+> ![Snímek obrazovky s Azure Portalm seznamem prostředků](../media/concept-azure-resource/all-azure-resources-created-qnamaker.png)
 
 > [!TIP]
-> Při vytváření prostředku QnA Maker vytvořte novou skupinu prostředků. To umožňuje zobrazit všechny prostředky přidružené k prostředku QnA Maker při vyhledávání podle skupiny prostředků.
+> Při vytváření prostředku QnA Maker vytvořte novou skupinu prostředků. To vám umožní zobrazit všechny prostředky přidružené k QnA Maker prostředku při hledání podle skupiny prostředků.
 
 > [!TIP]
-> K označení cenových úrovní v rámci názvu prostředku nebo skupiny prostředků použijte konvenci pojmenování. Při vytváření nové znalostní báze nebo přidávání nových dokumentů se při vytváření nových znalostních bází nebo přidávání nových dokumentů jedná o běžný problém limit cenové úrovně cognitive search.
+> Pomocí konvence vytváření názvů můžete označovat cenové úrovně v rámci názvu prostředku nebo skupiny prostředků. Když obdržíte chyby při vytváření nové znalostní báze nebo přidávání nových dokumentů, je běžným problémem omezení cenové úrovně Kognitivní hledání.
 
-## <a name="resource-purposes"></a>Účely zdrojů
+## <a name="resource-purposes"></a>Účely prostředků
 
-Každý prostředek Azure vytvořený pomocí QnA Makermá konkrétní účel:
+Každý prostředek Azure vytvořený pomocí QnA Maker má určitý účel:
 
-* Zdroj QnA Maker
-* Zdroj kognitivního vyhledávání
+* Prostředek QnA Maker
+* Prostředek Kognitivní hledání
 * App Service
-* Služba Plán aplikace
+* Služba plánu aplikací
 * Služba Application Insights
 
 
-### <a name="cognitive-search-resource"></a>Zdroj kognitivního vyhledávání
+### <a name="cognitive-search-resource"></a>Prostředek Kognitivní hledání
 
-Prostředek [kognitivního vyhledávání](../../../search/index.yml) se používá k:
+Prostředek [kognitivní hledání](../../../search/index.yml) se používá pro:
 
-* Uložení párů QnA
-* Poskytněte počáteční pořadí (ranker #1) párů QnA za běhu
+* Uložit páry QnA
+* Zadejte počáteční hodnocení (#1 hodnocení) párů QnA za běhu.
 
 #### <a name="index-usage"></a>Využití indexu
 
-Prostředek udržuje jeden index fungovat jako index testu a zbývající indexy korelovat s jedním publikované znalostní báze každý.
+Prostředek udržuje jeden index, který bude fungovat jako index testu, a zbývající indexy jsou v relaci k jedné publikované znalostní bázi.
 
-Prostředek s cenou 15 indexů bude obsahovat 14 publikovaných znalostních bází a jeden index se používá k testování všech znalostních bází. Tento testovací index je rozdělen podle znalostní báze, takže dotaz používající interaktivní testovací podokno použije testovací index, ale vrátí pouze výsledky z konkrétního oddílu přidruženého k konkrétní znalostní bázi.
+Cena za prostředek se zablokuje 15 indexů, bude obsahovat 14 publikovaných znalostní báze a jeden index se používá k testování všech znalostí. Tento index testu je rozdělený ve znalostní bázi, takže dotaz používající interaktivní testovací podokno použije index testu, ale vrátí jenom výsledky z konkrétního oddílu přidruženého ke konkrétní znalostní bázi.
 
-#### <a name="language-usage"></a>Používání jazyka
+#### <a name="language-usage"></a>Použití jazyka
 
-První znalostní báze vytvořená v prostředku QnA Maker se používá k určení _sady jednoho_ jazyka pro prostředek kognitivního vyhledávání a všechny jeho indexy. Pro službu QnA Maker můžete mít nastaven pouze _jeden jazyk._
+První znalostní báze vytvořená v prostředku QnA Maker slouží k určení _jedné_ sady jazyků pro prostředek kognitivní hledání a všech jeho indexů. Pro QnA Maker službu můžete mít jenom _jednu sadu jazyků_ .
 
-### <a name="qna-maker-resource"></a>Zdroj QnA Maker
+### <a name="qna-maker-resource"></a>Prostředek QnA Maker
 
-Prostředek QnA Maker poskytuje přístup k vytváření a publikování rozhraní API, stejně jako zpracování přirozeného jazyka (NLP) založené druhé pořadí vrstvy (ranker #2) párů QnA za běhu.
+Prostředek QnA Maker poskytuje přístup k rozhraním API pro vytváření a publikování a také ke vrstvě pro zpracování v přirozeném jazyce (NLP) na základě druhé vrstvy hodnocení (přiřazení #2) párů QnA za běhu.
 
-Druhé pořadí používá inteligentní filtry, které mohou obsahovat metadata a následné výzvy.
+Druhé hodnocení používá inteligentní filtry, které mohou zahrnovat metadata a výzvy pro následné zpracování.
 
-#### <a name="qna-maker-resource-configuration-settings"></a>Nastavení konfigurace prostředků programu QnA Maker
+#### <a name="qna-maker-resource-configuration-settings"></a>Nastavení konfigurace prostředků QnA Maker
 
-Když vytvoříte novou znalostní bázi na [portálu QnA Maker](https://qnamaker.ai), je nastavení **Jazyk** jediným nastavením, které je použito na úrovni prostředků. Jazyk vyberete při vytváření první znalostní báze pro zdroj.
+Když vytvoříte novou znalostní bázi na [portálu QnA maker](https://qnamaker.ai), nastavení **jazyka** bude jediným nastavením, které se použije na úrovni prostředků. Vyberte jazyk, když vytvoříte první znalostní bázi pro daný prostředek.
 
-### <a name="app-service-and-app-service-plan"></a>Plán služby App service a služby App service
+### <a name="app-service-and-app-service-plan"></a>Služba App Service a plán služby App Service
 
-[Služba App](../../../app-service/index.yml) používá vaše klientská aplikace pro přístup k publikovaným znalostním bázím prostřednictvím koncového bodu runtime.
+[Službu App Service](../../../app-service/index.yml) používá klientská aplikace pro přístup k publikovaným znalostní bázi prostřednictvím koncového bodu modulu runtime.
 
-Chcete-li zadat dotaz na publikovanou znalostní bázi, všechny publikované znalostní báze používají stejný koncový bod adresy URL, ale v rámci postupu zadejte **ID znalostní báze.**
+Aby se publikovala publikovaná znalostní báze, všechny publikované znalostní báze používají stejný koncový bod adresy URL, ale v rámci této trasy zadejte **ID znalostní báze** .
 
 `{RuntimeEndpoint}/qnamaker/knowledgebases/{kbId}/generateAnswer`
 
 ### <a name="application-insights"></a>Application Insights
 
-[Application Insights](../../../azure-monitor/app/app-insights-overview.md) se používá ke shromažďování protokolů chatu a telemetrie. Informace o vaší službě naleznete v [běžných dotazech kusto.](../how-to/get-analytics-knowledge-base.md)
+[Application Insights](../../../azure-monitor/app/app-insights-overview.md) se používá ke shromažďování protokolů a telemetrie chatu. Projděte si nejčastější [dotazy Kusto](../how-to/get-analytics-knowledge-base.md) , kde najdete informace o vaší službě.
 
-## <a name="share-services-with-qna-maker"></a>Sdílení služeb s QnA Makerem
+## <a name="share-services-with-qna-maker"></a>Sdílení služeb pomocí QnA Maker
 
-QnA Maker vytvoří několik prostředků Azure. Chcete-li snížit správu a těžit ze sdílení nákladů, použijte následující tabulku, abyste pochopili, co můžete a nemůžete sdílet:
+QnA Maker vytvoří několik prostředků Azure. Pokud chcete snížit úroveň správy a výhod sdílení nákladů, použijte následující tabulku, která vám pomůže pochopit, co můžete a nemůžete sdílet:
 
 |Služba|Sdílet|Důvod|
 |--|--|--|
-|Cognitive Services|×|Není možné záměrné|
-|Plán služby App Service|✔|Pevné místo na disku přidělené pro plán služby App Service. Pokud jiné aplikace, které sdílejí stejný plán služby App Service, využívají značné místo na disku, instance služby QnAMaker App Service se setká s problémy.|
-|App Service|×|Není možné záměrné|
-|Application Insights|✔|Lze sdílet|
-|Služba Search|✔|1. `testkb` je vyhrazený název pro službu QnAMaker; nemůže být použit ostatními.<br>2. Synonymní mapa `synonym-map` podle názvu je vyhrazena pro službu QnAMaker.<br>3. Počet publikovaných znalostních bází je omezen úrovní vyhledávacích služeb. Pokud jsou k dispozici volné indexy, mohou je používat jiné služby.|
+|Cognitive Services|×|Není možné podle návrhu|
+|Plán služby App Service|✔|Pevné místo na disku přidělené pro plán App Service. Pokud jiné aplikace sdílející stejný plán App Service používají významné místo na disku, dojde k problémům s instancí App Service Qnamakerem.|
+|App Service|×|Není možné podle návrhu|
+|Application Insights|✔|Může být sdíleno|
+|Služba Search|✔|1. `testkb` je vyhrazeným názvem pro službu qnamakerem. nedají se použít jiní uživatelé.<br>2. pro službu Qnamakerem je vyhrazená mapa synonym podle názvu `synonym-map` .<br>3. počet publikovaných znalostní báze je omezený na úrovni služby vyhledávání. Pokud jsou dostupné bezplatné indexy, můžou je používat i jiné služby.|
 
-### <a name="using-a-single-cognitive-search-service"></a>Použití jedné služby kognitivního vyhledávání
+### <a name="using-a-single-cognitive-search-service"></a>Použití jedné Kognitivní hledání služby
 
-Pokud vytvoříte službu QnA a její závislosti (například vyhledávání) prostřednictvím portálu, vyhledávací služba se vytvoří pro vás a propojí se službou QnA Maker. Po vytvoření těchto prostředků můžete aktualizovat nastavení služby App Service tak, aby používalo dříve existující vyhledávací službu, a odebrat tu, kterou jste právě vytvořili.
+Pokud vytvoříte službu QnA a její závislosti (například vyhledávání) prostřednictvím portálu, vytvoří se vyhledávací služba pro vás a bude propojena s QnA Makerovou službou. Po vytvoření těchto prostředků můžete aktualizovat nastavení App Service tak, aby používalo dříve existující vyhledávací službu, a odebrat tu, kterou jste právě vytvořili.
 
-[Zjistěte, jak nakonfigurovat](../How-To/set-up-qnamaker-service-azure.md#configure-qna-maker-to-use-different-cognitive-search-resource) QnA Maker tak, aby používal jiný prostředek služby Cognitive Service, než který byl vytvořen jako součást procesu vytváření prostředků qnA makeru.
+Naučte [se, jak nakonfigurovat](../How-To/set-up-qnamaker-service-azure.md#configure-qna-maker-to-use-different-cognitive-search-resource) QnA maker pro použití jiného prostředku služby rozpoznávání, než který je vytvořený jako součást procesu vytváření prostředků QnA maker.
 
-## <a name="management-service-region"></a>Oblast služeb správy
+## <a name="management-service-region"></a>Oblast služby správy
 
-Služba správy QnA Maker se používá pouze pro portál QnA Maker a pro počáteční zpracování dat. Tato služba je k dispozici pouze v oblasti **Západní USA.** V této službě v USA v usa nejsou uložena žádná zákaznická data.
+Služba správy QnA Maker se používá jenom pro QnA Maker portál a pro počáteční zpracování dat. Tato služba je k dispozici pouze v **západní USA** oblasti. V této Západní USA službě se neukládají žádná zákaznická data.
 
-## <a name="keys-in-qna-maker"></a>Klíče v QnA Makeru
+## <a name="keys-in-qna-maker"></a>Klíče v QnA Maker
 
-Vaše služba QnA Maker se zabývá dvěma druhy klíčů: **vytváření klíčů** a **koncových klíčů dotazu používaných** s runtime hostovaným ve službě App.
+Vaše služba QnA Maker se zabývá dvěma druhy klíčů: **vytváření klíčů** a **klíčů koncových bodů dotazů** , které se používají s modulem runtime hostovaným ve službě App Service.
 
-Pokud hledáte **klíč předplatného**, [terminologie se změnila](#subscription-keys).
+Pokud hledáte svůj **klíč předplatného**, [terminologie se změnila](#subscription-keys).
 
-Tyto klíče použijte při vytváření požadavků na službu prostřednictvím api.
+Tyto klíče použijte při provádění požadavků na službu prostřednictvím rozhraní API.
 
 ![Správa klíčů](../media/qnamaker-how-to-key-management/key-management.png)
 
-|Name (Název)|Umístění|Účel|
+|Název|Umístění|Účel|
 |--|--|--|
-|Klíč pro vytváření|[Portál Azure](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)|Tyto klíče se používají pro přístup k [řešení API služby správy služby QnA Maker](https://go.microsoft.com/fwlink/?linkid=2092179). Tato api umožňují upravovat otázky a odpovědi ve znalostní bázi a publikovat znalostní bázi. Tyto klíče jsou vytvořeny při vytváření nové služby QnA Maker.<br><br>Tyto klíče najdete v prostředku **služeb Cognitive Services** na stránce **Klíče.**|
-|Klíč koncového bodu dotazu|[Portál QnA Makeru](https://www.qnamaker.ai)|Tyto klíče se používají k dotazování publikovaný koncový bod znalostní báze získat odpověď na otázku uživatele. Tento koncový bod dotazu se obvykle používá v chatovacím robotu nebo v kódu klientské aplikace, který se připojuje ke službě QnA Maker. Tyto klíče jsou vytvořeny při publikování znalostní báze QnA Maker.<br><br>Tyto klíče najdete na stránce **Nastavení služby.** Tuto stránku naleznete v nabídce uživatele v pravém horním části stránky v rozevírací nabídce.|
+|Vytváření klíče|[portál Azure](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)|Tyto klíče se používají pro přístup k [rozhraním API služby QnA maker Management](https://go.microsoft.com/fwlink/?linkid=2092179). Tato rozhraní API umožňují upravovat otázky a odpovědi ve znalostní bázi a publikovat znalostní bázi. Tyto klíče se vytvoří při vytvoření nové služby QnA Maker.<br><br>Tyto klíče najdete na **Cognitive Services** prostředku na stránce **klíče** .|
+|Klíč koncového bodu dotazu|[Portál QnA Makeru](https://www.qnamaker.ai)|Tyto klíče se používají k dotazování publikovaného koncového bodu znalostní báze, aby se zobrazila odpověď pro otázku uživatele. Tento koncový bod dotazu obvykle používáte v robotovi chatu nebo v kódu klientské aplikace, který se připojuje ke službě QnA Maker. Tyto klíče se vytvoří při publikování QnA Maker znalostní báze Knowledge Base.<br><br>Tyto klíče najdete na stránce **nastavení služby** . Vyhledá tuto stránku v nabídce uživatele v pravém horním rohu stránky v rozevírací nabídce.|
 
 ### <a name="subscription-keys"></a>Klíče předplatného
 
-Termíny vytváření a koncový bod dotazu klíč jsou opravné termíny. Předchozí období bylo **klíčem předplatného**. Pokud se zobrazí další dokumentace odkazující na klíče předplatného, jsou ekvivalentní k vytváření a koncovýbod dotazu klíče (používá se v době runtime).
+Klíčovým bodem pro vytváření a dotazování podmínek jsou opravné výrazy. Předchozí termín byl **klíč předplatného**. Pokud se vám v dokumentaci k klíčům předplatného zobrazí další dokumentace, jsou ekvivalentní klíčům koncových bodů pro vytváření a dotazování (používá se v modulu runtime).
 
-Musíte vědět, k čemu klíč přistupuje, správa znalostní báze nebo dotazování znalostní báze, abyste věděli, který klíč potřebujete najít.
+Musíte znát, k čemu má klíč přístup, správu znalostní báze nebo dotazování znalostní báze, abyste věděli, který klíč potřebujete najít.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o [znalostní bázi](knowledge-base.md) QnA Maker
-* Principy [životního cyklu znalostní báze](development-lifecycle-knowledge-base.md)
-* Kontrola limitů služeb a znalostní [báze](../limits.md)
+* Další informace o QnA Maker [znalostní bázi Knowledge Base](knowledge-base.md)
+* Pochopení [životního cyklu znalostní báze](development-lifecycle-knowledge-base.md)
+* Kontrola [omezení](../limits.md) služby a znalostí znalostní báze
 

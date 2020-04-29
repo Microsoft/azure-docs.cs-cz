@@ -1,7 +1,7 @@
 ---
-title: Vytvoření prostředku analýzy textu služeb cognitive services
+title: Vytvořit prostředek Cognitive Services Analýza textu
 titleSuffix: Azure Cognitive Services
-description: Přečtěte si, jak vytvořit prostředek analýzy textu služeb Cognitive Services.
+description: Naučte se vytvořit prostředek Cognitive Services Analýza textu.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,31 +10,31 @@ ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 6cd653909e26dc5e0484ca289a1d2ab47e20457f
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80876398"
 ---
-## <a name="create-a-cognitive-services-text-analytics-resource"></a>Vytvoření prostředku analýzy textu služeb cognitive services
+## <a name="create-a-cognitive-services-text-analytics-resource"></a>Vytvořit prostředek Cognitive Services Analýza textu
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-1. Vyberte **Vytvořit zdroj**a přejděte na **AI + Machine Learning** > **Text Analytics**.
-   Nebo přejděte na [vytvořit analýzu textu](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics).
+1. Vyberte **vytvořit prostředek**a pak přejít na **AI + Machine Learning** > **Analýza textu**.
+   Případně můžete přejít na [vytvořit analýza textu](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics).
 1. Zadejte všechna požadovaná nastavení:
 
     |Nastavení|Hodnota|
     |--|--|
-    |Name (Název)|Zadejte název (2-64 znaků).|
+    |Název|Zadejte název (2-64 znaků).|
     |Předplatné|Vyberte příslušné předplatné.|
-    |Umístění|Vyberte blízké místo.|
-    |Cenová úroveň| Zadejte **S**, standardní cenovou úroveň.|
+    |Umístění|Vyberte okolní umístění.|
+    |Cenová úroveň| Zadejte **S**, cenová úroveň Standard.|
     |Skupina prostředků|Vyberte dostupnou skupinu prostředků.|
 
-1. Vyberte **Vytvořit**a počkejte, až bude zdroj vytvořen. Prohlížeč automaticky přesměruje na nově vytvořenou stránku zdroje.
-1. Shromážděte nakonfigurovaný `endpoint` klíč a klíč rozhraní API:
+1. Vyberte **vytvořit**a počkejte na vytvoření prostředku. Prohlížeč automaticky přesměruje na stránku nově vytvořeného prostředku.
+1. Shromáždění nakonfigurovaného `endpoint` a klíč rozhraní API:
 
-    |Karta Zdroj na portálu|Nastavení|Hodnota|
+    |Karta prostředek na portálu|Nastavení|Hodnota|
     |--|--|--|
-    |**Přehled**|Koncový bod|Zkopírujte koncový bod. Zdá se, `https://northeurope.api.cognitive.microsoft.com/text/analytics/v2.0`že podobné .|
-    |**Klíče**|Klíč rozhraní API|Zkopírujte jeden ze dvou klíčů. Jedná se o alfanumerický řetězec o 32 znacích bez mezer nebo pomlček: <`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`>.|
+    |**Přehled**|Koncový bod|Zkopírujte koncový bod. Vypadá to jako `https://northeurope.api.cognitive.microsoft.com/text/analytics/v2.0`.|
+    |**Klíče**|Klíč rozhraní API|Zkopírujte jeden ze dvou klíčů. Jedná se o alfanumerický řetězec s 32 znaky bez mezer nebo pomlček: <`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`>.|

@@ -1,6 +1,6 @@
 ---
-title: Azure Front Door – vyrovnávání zatížení pomocí sady pro doručování aplikací Azure | Dokumenty společnosti Microsoft
-description: Tento článek vám pomůže dozvědět se o tom, jak Azure doporučuje vyrovnávání zatížení s jeho sadu doručování aplikací
+title: Přední dvířka Azure – vyrovnávání zatížení s využitím sady pro doručování aplikací Azure | Microsoft Docs
+description: Tento článek vám pomůže získat informace o tom, jak Azure doporučuje vyrovnávání zatížení s jeho sadou pro doručování aplikací.
 services: frontdoor
 documentationcenter: ''
 author: sharad4u
@@ -12,73 +12,73 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: 44af14a01e7b045b7abb6a84db89a67f3dd22445
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80875278"
 ---
 # <a name="load-balancing-with-azures-application-delivery-suite"></a>Vyrovnávání zatížení s využitím sady pro doručování aplikací Azure
 
 ## <a name="introduction"></a>Úvod
-Microsoft Azure poskytuje několik globálních a regionálních služeb pro správu distribuce a vyrovnávání zatížení vašeho síťového provozu: Traffic Manager, Front Door, Application Gateway a Load Balancer.  Spolu s mnoha oblastmi Azure a architekturou zonální chod, pomocí těchto služeb společně umožňují vytvářet robustní, škálovatelné vysoce výkonné aplikace.
+Microsoft Azure poskytuje několik globálních a regionálních služeb pro správu způsobu distribuce a vyrovnávání zatížení vašeho síťového provozu: Traffic Manager, front-dveří, Application Gateway a Load Balancer.  Společně s mnoha regiony a architekturou oblastí Azure vám tyto služby umožňují vytvářet robustní a škálovatelné aplikace s vysokým výkonem.
 
 ![Sada pro doručování aplikací ][1]
  
-Tyto služby jsou rozděleny do dvou kategorií:
-1. **Globální služby vyrovnávání zatížení,** jako je Traffic Manager a Front Door, distribuují provoz od koncových uživatelů napříč místními back-endy, napříč cloudy nebo dokonce hybridními místními službami. Globální vyrovnávání zatížení směruje váš provoz do vašeho nejbližšího back-endu služby a reaguje na změny ve spolehlivosti nebo výkonu služeb, aby byl zachován vždy zapnutý a maximální výkon pro vaše uživatele. 
-2. **Regionální služby vyrovnávání zatížení,** jako je standardní nástroj pro vyrovnávání zatížení nebo aplikační brána, poskytují možnost distribuovat provoz v rámci virtuálních sítí (VNET) mezi virtuálními počítači (VM) nebo koncovými body zónové služby v rámci oblasti.
+Tyto služby jsou rozdělené do dvou kategorií:
+1. **Globální služby Vyrovnávání zatížení** , například Traffic Manager a přední dveře, distribuují provoz koncovými uživateli napříč místními back-endy napříč cloudy nebo dokonce i vašimi hybridními místními službami. Globální vyrovnávání zatížení směruje provoz do nejbližšího back-endu služby a reaguje na změny spolehlivosti nebo výkonu služby, aby se zajistila nepřetržitá a maximální výkon pro vaše uživatele. 
+2. **Regionální služby Vyrovnávání zatížení** , jako je Standard Load Balancer nebo Application Gateway, poskytují schopnost distribuovat provoz do virtuálních sítí (virtuální sítě) napříč virtuálními počítači nebo koncovými body služby v rámci oblasti.
 
-Kombinace globálních a regionálních služeb ve vaší aplikaci poskytuje komplexní spolehlivý, výkonný a bezpečný způsob směrování provozu k uživatelům a od uživatelů do služeb IaaS, PaaS nebo místních služeb. V další části popisujeme každou z těchto služeb.
+Kombinování globálních a regionálních služeb ve vaší aplikaci poskytuje kompletní spolehlivý, výkonné a zabezpečené způsoby směrování provozu do a z vašich uživatelů na vaše IaaS, PaaS nebo místní služby. V další části popisujeme každou z těchto služeb.
 
 ## <a name="global-load-balancing"></a>Globální vyrovnávání zatížení
-**Traffic Manager** poskytuje globální vyrovnávání zatížení DNS. Podívá se na příchozí požadavky DNS a reaguje s back-endem v pořádku v souladu se zásadami směrování, které zákazník vybral. Možnosti pro metody směrování jsou:
-- Směrování výkonu k odeslání žadatele do nejbližšího back-endu z hlediska latence.
-- Prioritní směrování pro přesměrování veškerého provozu do back-endu, s ostatními back-endy jako zálohou.
-- Vážené kruhové dotazování, které distribuuje provoz na základě vážení, které je přiřazeno každému back-endu.
-- Geografické směrování, které zajistí, že žadatelé umístění v určitých zeměpisných oblastech budou přesměrováni na back-endy namapované na tyto oblasti (například všechny požadavky ze Španělska by měly být směrovány do oblasti Francie – středOvý Azure).
-- Směrování podsítě, které umožňuje mapovat rozsahy IP adres na back-endy, takže požadavky přicházející z nich budou odeslány do zadaného back-endu (například všichni uživatelé, kteří se připojují z rozsahu IP adres vašeho podnikového ústředí, by měli získat jiný webový obsah než obecné uživatele)
+**Traffic Manager** poskytuje globální vyrovnávání zatížení DNS. Vyhledává příchozí požadavky DNS a reaguje na dobrý back-end, v souladu se zásadami směrování, které zákazník vybral. Pro metody směrování jsou k disdobu tyto možnosti:
+- Směrování výkonu pro odeslání žadatele do nejbližšího back-endu z podmínek latence.
+- Směrování priority, které směruje veškerý provoz do back-endu, s jinými back-endy jako zálohování.
+- Vážené směrování s kruhovým dotazováním, které distribuuje provoz na základě váhy přiřazené ke každému back-endu.
+- Geografické směrování, které zajišťuje, aby žadatelé v konkrétních geografických oblastech byli přesměrováni na back-endy namapované na tyto oblasti (například všechny žádosti ze Španělska by měly být směrovány do oblasti Francie centrálního Azure)
+- Směrování podsítě, které umožňuje mapovat rozsahy IP adres na back-endy, aby žádosti přicházející z těchto zařízení byly odesílány do zadaného back-endu (například všichni uživatelé, kteří se připojují z rozsahu IP adres vaší firmy sídel, by měli mít jiný webový obsah než uživatelé s obecnými uživateli).
 
-Klient se připojí přímo k tomuto back-endu. Azure Traffic Manager zjistí, když back-end není v pořádku a pak přesměruje klienty na jinou instanci v pořádku. Další informace o službě najdete v dokumentaci k [Azure Traffic Manageru.](../traffic-manager/traffic-manager-overview.md)
+Klient se připojuje přímo k tomuto back-endu. Azure Traffic Manager zjistí, že back-end není v pořádku, a pak přesměruje klienty na jinou funkční instanci. Další informace o této službě najdete v dokumentaci k [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) .
 
-**Azure Front Door** poskytuje dynamickou akceleraci webu (DSA) včetně globálního vyrovnávání zatížení HTTP.  Podívá se na příchozí požadavky HTTP trasy do nejbližší služby back-end / oblast pro zadaný název hostitele, URL cestu a nakonfigurovaná pravidla.  
-Front Door ukončí požadavky HTTP na okraji sítě společnosti Microsoft a aktivně sonduje ke zjištění stavu aplikace nebo infrastruktury nebo změn latence.  Přední dveře pak vždy směruje provoz na nejrychlejší a dostupný (zdravý) backend. Další informace o službě naleznete v [podrobnostech architektury směrování](front-door-routing-architecture.md) a [metodách směrování provozu.](front-door-routing-methods.md)
+**Přední dvířka Azure** poskytují akceleraci dynamického webu (DSA) včetně globálního vyrovnávání zatížení HTTP.  Vyhledá příchozí trasy požadavků HTTP do nejbližšího back-endu nebo oblasti služby pro zadaný název hostitele, cestu URL a konfigurovaná pravidla.  
+Přední dveře ukončí požadavky HTTP na hranici sítě Microsoftu a aktivně sonduje, aby zjistila, že se jedná o stav aplikace nebo infrastruktury nebo změny latence.  Přední dvířka vždy směrují provoz na nejrychlejší a dostupný (zdravý) back-end. Další informace o této službě najdete v tématu Podrobnosti [architektury směrování](front-door-routing-architecture.md) na předních dveřích a [metody směrování provozu](front-door-routing-methods.md) .
 
 ## <a name="regional-load-balancing"></a>Regionální vyrovnávání zatížení
-Aplikační brána poskytuje řadič pro doručování aplikací (ADC) jako službu, která nabízí různé možnosti vyrovnávání zatížení vrstvy 7 pro vaši aplikaci. Umožňuje zákazníkům optimalizovat produktivitu webové farmy převedením ukončení TLS náročné na procesor na aplikační bránu. Mezi další možnosti směrování vrstvy 7 patří distribuce příchozích přenosů s každým dotazováním, spřažení relací na základě souborů cookie, směrování založené na cestě url a možnost hostovat více webů za jednou aplikační bránou. Aplikační bránu lze nakonfigurovat jako internetovou bránu, bránu pouze pro interní nebo kombinaci obou. Aplikační brána je plně spravovaná, škálovatelná a vysoce dostupná. Nabízí celou řadu možností diagnostiky a protokolování, které zlepšují správu.
-Nástroj pro vyrovnávání zatížení je nedílnou součástí zásobníku Azure SDN a poskytuje vysoce výkonné služby vyrovnávání zatížení vrstvy 4 s nízkou latencí pro všechny protokoly UDP a TCP. Spravuje příchozí a odchozí připojení. Pokud chcete spravovat dostupnost služby, můžete nakonfigurovat veřejné a interní koncové body s vyrovnáváním zatížení a definovat pravidla pro mapování příchozích připojení na cíle v backendovém fondu s využitím možností monitorování stavu protokolů TCP a HTTP.
+Application Gateway poskytuje aplikaci Service Delivery Controller (ADC) jako službu a nabízí různé možnosti vyrovnávání zatížení vrstvy 7 pro vaši aplikaci. Umožňuje zákazníkům optimalizovat produktivitu webové farmy tím, že v aplikační bráně předává ukončení protokolu TLS náročné na procesor. Mezi další možnosti směrování vrstvy 7 patří kruhové dotazování příchozích přenosů, spřažení relací na základě souborů cookie, směrování na základě cesty URL a možnost hostování několika webů za jedinou aplikační bránou. Application Gateway lze nakonfigurovat jako bránu internetovou bránu, pouze pro interní bránu nebo kombinaci obou. Application Gateway je plně spravovaná, škálovatelná a vysoká dostupnost Azure. Nabízí celou řadu možností diagnostiky a protokolování, které zlepšují správu.
+Load Balancer je nedílnou součástí zásobníku Azure SDN, která poskytuje vysoce výkonné služby Vyrovnávání zatížení vrstvy 4 s nízkou latencí pro všechny protokoly UDP a TCP. Spravuje příchozí a odchozí připojení. Pokud chcete spravovat dostupnost služby, můžete nakonfigurovat veřejné a interní koncové body s vyrovnáváním zatížení a definovat pravidla pro mapování příchozích připojení na cíle v backendovém fondu s využitím možností monitorování stavu protokolů TCP a HTTP.
 
 
-## <a name="choosing-a-global-load-balancer"></a>Výběr globálního systému vyrovnávání zatížení
-Při výběru globálního nástroje pro vyrovnávání zatížení mezi Traffic Managerem a Azure Front Door pro globální směrování byste měli zvážit, co je podobné a co se liší o dvou službách.   Obě služby poskytují
-- **Multigeografická redundance:** Pokud jedna oblast přejde dolů, provoz bez problémů směruje do nejbližší oblasti bez zásahu vlastníka aplikace.
-- **Směrování nejbližší oblasti:** Provoz je automaticky směrován do nejbližší oblasti
+## <a name="choosing-a-global-load-balancer"></a>Výběr globálního nástroje pro vyrovnávání zatížení
+Při výběru globálního nástroje pro vyrovnávání zatížení mezi Traffic Manager a předními dveřmi Azure pro globální směrování byste měli zvážit, co je podobné a co se liší od těchto dvou služeb.   Obě služby poskytují
+- **Multi-geografická redundance:** Pokud dojde k výpadku jedné oblasti, provoz se hladce směruje do nejbližší oblasti bez zásahu vlastníka aplikace.
+- **Směrování nejbližší oblasti:** Provoz se automaticky směruje do nejbližší oblasti.
 
-</br>Následující tabulka popisuje rozdíly mezi Traffic Managerem a Azure Front Door:</br>
+</br>Následující tabulka popisuje rozdíly mezi Traffic Manager a předními dvířky Azure:</br>
 
 | Traffic Manager | Azure Front Door |
 | --------------- | ------------------------ |
-|**Jakýkoliv protokol:** Vzhledem k tomu, že Traffic Manager pracuje ve vrstvě DNS, můžete směrovat libovolný typ síťového provozu. HTTP, TCP, UDP atd. | **Akcelerace HTTP:** S front door provoz je proxied na okraji sítě společnosti Microsoft.  Z tohoto důvodu požadavky HTTP(S) viz latence a propustnost zlepšení snížení latence pro vyjednávání TLS a pomocí připojení za tepla z AFD do vaší aplikace.|
-|**Místní směrování:** Při směrování ve vrstvě DNS se provoz vždy převádí z bodu do bodu.  Směrování z vaší pobočky do vašeho místního datového centra může mít přímou cestu; dokonce i ve vaší vlastní síti pomocí Traffic Manageru. | **Nezávislé škálovatelnosti:** Vzhledem k tomu, že front door pracuje s požadavkem HTTP, požadavky na různé cesty URL mohou být směrovány do různých fondů back-endu / regionálních služeb (mikroslužeb) na základě pravidel a stavu každé mikroslužby aplikace.|
-|**Formát fakturace:** Fakturační stupnice založené na SLUŽBĚ DNS s vašimi uživateli a pro služby s více uživateli snižují náklady při vyšším využití. |**Zabezpečení v řádech:** Přední dveře umožňují pravidla, jako je omezení rychlosti a IP ACL-ing, které vám umožní chránit backendy před provoz dosáhne vaší aplikace. 
+|**Libovolný protokol:** Vzhledem k tomu, že Traffic Manager funguje ve vrstvě DNS, můžete směrovat jakýkoli typ síťového provozu; HTTP, TCP, UDP atd. | **Akcelerace http:** U front-provozních přenosů je proxy serverem na hranici sítě Microsoftu.  Z toho důvodu požadavky HTTP (S) uvidí latenci a vylepšení propustnosti při snižování latence pro vyjednávání TLS a používání Hot Connections z AFD do vaší aplikace.|
+|**Místní směrování:** Při směrování na vrstvě DNS se provoz vždy přechází z bodu na Point.  Směrování z firemní pobočky do místního datacentra může mít přímou cestu. i ve vaší vlastní síti pomocí Traffic Manager. | **Nezávislá škálovatelnost:** Vzhledem k tomu, že přední dvířka fungují s požadavkem HTTP, požadavky na různé cesty URL lze směrovat do různých fondů back-endu nebo regionálních služeb (mikroslužeb) na základě pravidel a stavu jednotlivých mikroslužeb aplikací.|
+|**Formát fakturace:** Fakturovaná služba DNS se škáluje s vašimi uživateli a pro služby, kteří mají více uživatelů, plateaus snížit náklady při vyšším využití. |**Vložené zabezpečení:** Přední dveře umožňují pravidla, jako je omezení četnosti a seznam ACL protokolu IP, a umožňují chránit vaše back-endy před tím, než zatížení dosáhne vaší aplikace. 
 
-</br>Vzhledem k výkonu, provozuschopnosti a výhodzabezpečení úloh HTTP s front door doporučujeme zákazníkům používat front door pro své úlohy HTTP.    Traffic Manager a Front Door lze použít paralelně sloužit veškerý provoz pro vaši aplikaci. 
+</br>Vzhledem k tomu, že výhody výkonu, operability a zabezpečení pro úlohy HTTP s předními dvířky, doporučujeme zákazníkům používat pro své úlohy HTTP přední dveře.    Pro obsluhu všech přenosů vaší aplikace je možné použít Traffic Manager a přední dveře paralelně. 
 
-## <a name="building-with-azures-application-delivery-suite"></a>Vytváření s sadou pro doručování aplikací Azure 
-Doporučujeme, aby všechny weby, api, služby byly geograficky redundantní a doručovaly jejich uživatelům provoz z nejbližšího umístění (nejnižší latence), kdykoli je to možné.  Kombinace služeb z Traffic Manager, Front Door, Application Gateway a Load Balancer umožňuje vytvářet geograficky a zónově redundantní maximalizovat spolehlivost, škálování a výkon.
+## <a name="building-with-azures-application-delivery-suite"></a>Sestavování s využitím sady pro doručování aplikací Azure 
+Doporučujeme, aby všechny weby, rozhraní API, služby byly geograficky redundantní a poskytovaly svým uživatelům provoz z nejbližšího umístění (nejnižší latence), kdykoli to bude možné.  Kombinování služeb z Traffic Manager, Frontních dveří, Application Gateway a Load Balancer umožňuje sestavovat geograficky a zonally redundantní a maximalizovat tak spolehlivost, škálování a výkon.
 
-V následujícím diagramu popisujeme ukázkovou službu, která používá kombinaci všech těchto služeb k vytvoření globální webové služby.   V tomto případě architekt použil Traffic Manager k směrování do globálních back-endů pro doručování souborů a objektů, zatímco pomocí front door globálně směrovat cesty URL, které odpovídají vzoru /store/* ke službě, kterou migrovali do služby App Service, při směrování všech ostatních požadavků na regionální aplikační brány.
+V následujícím diagramu popisujeme ukázkovou službu, která používá kombinaci všech těchto služeb k vytvoření globální webové služby.   V tomto případě se architekt použil Traffic Manager ke směrování do globálních back-endu pro doručování souborů a objektů, zatímco používá přední dvířka k globálně trasám adres URL, které odpovídají vzoru/Store/*, ke službě, kterou migrovali do App Service při směrování všech ostatních požadavků na místní aplikační brány.
 
-V oblasti pro svou službu IaaS vývojář aplikace rozhodl, že všechny adresy URL, které odpovídají vzoru /images/* jsou obsluhovány z vyhrazeného fondu virtuálních stránek, které se liší od zbytku webové farmy.
+V oblasti si vývojář aplikace rozhodl, že všechny adresy URL, které odpovídají vzoru/images/*, budou obsluhovány z vyhrazeného fondu virtuálních počítačů, které se liší od zbytku webové farmy.
 
-Kromě toho výchozí fond virtuálních her, který slouží dynamický obsah potřebuje mluvit do back-end databáze, která je hostovaná v clusteru s vysokou dostupností. Celé nasazení se nastavuje prostřednictvím Správce prostředků Azure.
+Kromě toho musí výchozí fond virtuálních počítačů, který obsluhuje dynamický obsah, komunikovat s back-end databází, která je hostována v clusteru s vysokou dostupností. Celé nasazení je nastaveno prostřednictvím Azure Resource Manager.
 
 Následující diagram znázorňuje architekturu tohoto scénáře:
 
-![Podrobná architektura sady Application Delivery Suite][2] 
+![Podrobná architektura sady pro doručování aplikací][2] 
 
 > [!NOTE]
-> Tento příklad je pouze jedním z mnoha možných konfigurací služby vyrovnávání zatížení, které Azure nabízí. Traffic Manager, Front Door, Application Gateway a Load Balancer mohou být smíchány a spárovány tak, aby co nejlépe vyhovovaly vašim potřebám vyrovnávání zatížení. Například pokud tls/Ssl přepětí nebo vrstva 7 zpracování není nutné, vyrovnávání zatížení lze použít místo aplikační brány.
+> V tomto příkladu je jenom jedna z mnoha možných konfigurací služeb vyrovnávání zatížení, které Azure nabízí. Traffic Manager, přední dvířka, Application Gateway a Load Balancer lze kombinovat a porovnat s nejlepšími požadavky na Vyrovnávání zatížení. Například pokud nepotřebujete snižování zátěže TLS/SSL nebo zpracování vrstvy 7, Load Balancer lze použít místo Application Gateway.
 
 
 ## <a name="next-steps"></a>Další kroky

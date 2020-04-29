@@ -1,5 +1,5 @@
 ---
-title: 'Kurz NoSQL: ROZHRANÍ SQL API pro Azure Cosmos DB Java SDK'
+title: 'Kurz k NoSQL: rozhraní SQL API pro Azure Cosmos DB Java SDK'
 description: Kurz k NoSQL, v rámci kterého se vytvoří online databáze a aplikace konzoly Java pomocí rozhraní SQL API pro Azure Cosmos DB. Azure SQL je databáze NoSQL pro JSON.
 author: SnehaGunda
 ms.service: cosmos-db
@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
 ms.openlocfilehash: 9f4757bca79476a1e59f5f18a94753c1ea06cf9c
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80985214"
 ---
 # <a name="nosql-tutorial-build-a-sql-api-java-console-application"></a>Kurz k NoSQL: Vytvoření aplikace konzoly Java rozhraní SQL API
@@ -84,7 +84,7 @@ Na webu Azure Portal přejděte do účtu služby Azure Cosmos DB a klikněte na
         , new ConnectionPolicy(),
         ConsistencyLevel.Session);
 
-![Snímek obrazovky s portálem Azure, který používá kurz NoSQL k vytvoření aplikace konzoly Java. Ukazuje účet služby Azure Cosmos DB se zvýrazněným aktivním centrem, zvýrazněným tlačítkem KLÍČE v okně účtu služby Azure Cosmos DB a zvýrazněnými hodnotami URI, PRIMÁRNÍ KLÍČ a SEKUNDÁRNÍ KLÍČ v okně Klíče.][keys]
+![Snímek obrazovky Azure Portal, který se používá v kurzu NoSQL k vytvoření konzolové aplikace Java Ukazuje účet služby Azure Cosmos DB se zvýrazněným aktivním centrem, zvýrazněným tlačítkem KLÍČE v okně účtu služby Azure Cosmos DB a zvýrazněnými hodnotami URI, PRIMÁRNÍ KLÍČ a SEKUNDÁRNÍ KLÍČ v okně Klíče.][keys]
 
 ## <a name="step-4-create-a-database"></a>Krok 4: Vytvoření databáze
 [Databázi](databases-containers-items.md#azure-cosmos-databases) Azure Cosmos DB je možné vytvořit pomocí metody [createDatabase](/java/api/com.microsoft.azure.documentdb.documentclient.createdatabase) třídy **DocumentClient**. Databáze je logický kontejner úložiště dokumentů JSON rozděleného mezi kolekcemi.

@@ -1,37 +1,37 @@
 ---
-title: Vývoj a ladění úloh Azure Stream Analytics místně
-description: Zjistěte, jak vyvíjet a testovat úlohy Azure Stream Analytics na místním počítači, než je spustíte na webu Azure Portal.
+title: Místní vývoj a ladění úloh Azure Stream Analytics
+description: Naučte se vyvíjet a testovat úlohy Azure Stream Analytics v místním počítači, než je spustíte v Azure Portal.
 ms.author: mamccrea
 author: mamccrea
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.service: stream-analytics
 ms.openlocfilehash: 736fce1d4b347e36ad5c10ca89ad0627104a0232
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80879840"
 ---
-# <a name="develop-and-debug-azure-stream-analytics-jobs-locally"></a>Vývoj a ladění úloh Azure Stream Analytics místně
+# <a name="develop-and-debug-azure-stream-analytics-jobs-locally"></a>Místní vývoj a ladění úloh Azure Stream Analytics
 
-I když můžete vytvářet a testovat úlohy Azure Stream Analytics na webu Azure Portal, mnoho vývojářů preferuje prostředí pro místní vývoj. Stream Analytics usnadňuje použití oblíbeného editoru kódu a vývojových nástrojů k vytváření a testování úloh pomocí živých streamů událostí z Azure Event Hub, IoT Hub a Blob Storage pomocí plně funkčního místního runtime jednoho uzlu. Úlohy můžete také odeslat do Azure přímo z místního vývojového prostředí.
+I když máte možnost vytvářet a testovat úlohy Azure Stream Analytics v Azure Portal, mnoho vývojářů dává přednost místnímu vývojovému prostředí. Stream Analytics usnadňuje použití vašeho oblíbeného editoru kódu a vývojářských nástrojů k vytváření a testování úloh pomocí živých streamů událostí z centra událostí Azure, IoT Hub a Blob Storage pomocí plně funkčního místního prostředí runtime s jedním uzlem. Do Azure můžete také odesílat úlohy přímo z místního vývojového prostředí.
 
-## <a name="local-development-environments"></a>Prostředí místního rozvoje
+## <a name="local-development-environments"></a>Místní vývojová prostředí
 
-Způsob vývoje úloh Služby Stream Analytics v místním počítači závisí na předvolbách nástrojů a dostupnosti funkcí. Podívejte se na [porovnání funkcí Azure Stream Analytics](feature-comparison.md) a zjistěte, jaké funkce jsou podporovány pro každé vývojové prostředí.
+Způsob, jakým vyvíjíte Stream Analytics úlohy na místním počítači, závisí na vašich volbách nástrojů a dostupnosti funkcí. Informace o tom, jaké funkce jsou podporovány pro každé vývojové prostředí, najdete v tématu [porovnání funkcí Azure Stream Analytics](feature-comparison.md) .
 
-Prostředí v následující tabulce podporují místní rozvoj:
+Prostředí v následující tabulce podporují místní vývoj:
 
 |Prostředí                              |Popis    |
 |-----------------------------------------|------------|
-|[Visual Studio Code](visual-studio-code-explore-jobs.md)| Rozšíření [Nástroje Azure Stream Analytics](https://marketplace.visualstudio.com/items?itemName=ms-bigdatatools.vscode-asa) pro kód Visual Studia umožňuje vytvářet, spravovat a testovat úlohu analýzy Streamu místně i v cloudu s bohatou službou IntelliSense a nativní správou zdrojových zdrojů. Podporuje vývoj na Linuxu, MacOS a Windows. Další informace najdete [v tématu Vytvoření úlohy Azure Stream Analytics v kódu Visual Studia](quick-create-vs-code.md).|
-|[Visual Studio 2019](stream-analytics-tools-for-visual-studio-install.md) |Nástroje Pro analýzu Stream Analytics jsou součástí úloh vývoje a ukládání a zpracování dat Azure ve Visual Studiu. Pomocí sady Visual Studio můžete psát vlastní uživatelem definované funkce jazyka C# a deserializátory. Další informace najdete [v tématu Vytvoření úlohy Azure Stream Analytics pomocí Visual Studia](stream-analytics-quick-create-vs.md).|
-|[Příkazový řádek nebo terminál](stream-analytics-tools-for-visual-studio-cicd.md)|Balíček NuGet služby Azure Stream Analytics CI/CD poskytuje nástroje pro sestavení projektu Visual studio, místní testování na libovolném počítači. Balíček Azure Stream Analytics CI/CD npm poskytuje nástroje pro sestavení projektu Visual Studio Code (který generuje šablonu Azure Resource Manager) na libovolném počítači.|
+|[Visual Studio Code](visual-studio-code-explore-jobs.md)| [Rozšíření Azure Stream Analytics nástrojů](https://marketplace.visualstudio.com/items?itemName=ms-bigdatatools.vscode-asa) pro Visual Studio Code umožňuje vytvářet, spravovat a testovat úlohu Stream Analytics jak místně, tak v cloudu pomocí bohatých technologií IntelliSense a nativního správy zdrojového kódu. Podporuje vývoj v systémech Linux, MacOS a Windows. Další informace najdete v tématu [Vytvoření úlohy Azure Stream Analytics v Visual Studio Code](quick-create-vs-code.md).|
+|[Visual Studio 2019](stream-analytics-tools-for-visual-studio-install.md) |Stream Analytics nástroje jsou součástí vývoje Azure a úloh úložiště a zpracování dat v aplikaci Visual Studio. Můžete použít Visual Studio k psaní vlastních uživatelsky definovaných funkcí C# a deserializace. Další informace najdete v tématu [Vytvoření úlohy Azure Stream Analytics pomocí sady Visual Studio](stream-analytics-quick-create-vs.md).|
+|[Příkazový řádek nebo terminál](stream-analytics-tools-for-visual-studio-cicd.md)|Balíček NuGet pro Azure Stream Analytics CI/CD poskytuje nástroje pro sestavení projektu sady Visual Studio, místní testování na libovolném počítači. Balíček Azure Stream Analytics CI/CD npm poskytuje nástroje pro Visual Studio Code sestavení projektů (které vygenerují šablonu Azure Resource Manager) na libovolném počítači.|
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Test Stream Analytics dotazy místně s ukázkovými daty pomocí kódu Sady Visual Studio](visual-studio-code-local-run.md)
-* [Test Stream Analytics dotazy místně proti vstupu živého datového proudu pomocí kódu Sady Visual Studio](visual-studio-code-local-run-live-input.md)
-* [Test Stream Analytics dotazy místně s Visual Studio](stream-analytics-vs-tools-local-run.md)
-* [Testování živých dat místně pomocí nástrojů Azure Stream Analytics pro Visual Studio](stream-analytics-live-data-local-testing.md)
+* [Test Stream Analytics dotazy místně s použitím ukázkových dat pomocí Visual Studio Code](visual-studio-code-local-run.md)
+* [Test Stream Analytics dotazy místně proti vstupu živého datového proudu pomocí Visual Studio Code](visual-studio-code-local-run-live-input.md)
+* [Testování Stream Analytics dotazů v místním prostředí se sadou Visual Studio](stream-analytics-vs-tools-local-run.md)
+* [Místní testování živých dat pomocí Azure Stream Analyticsch nástrojů pro Visual Studio](stream-analytics-live-data-local-testing.md)

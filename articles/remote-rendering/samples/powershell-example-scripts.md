@@ -1,52 +1,52 @@
 ---
 title: Ukázkové skripty PowerShellu
-description: Příklady, které ukazují, jak používat front-end pomocí skriptů prostředí PowerShell
+description: Příklady, které ukazují, jak používat front-end prostřednictvím skriptů PowerShellu
 author: florianborn71
 ms.author: flborn
 ms.date: 02/12/2020
 ms.topic: sample
 ms.openlocfilehash: c45d2fc34ccbab6d813f12563678d036f9f35753
-ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80891488"
 ---
 # <a name="example-powershell-scripts"></a>Ukázkové skripty PowerShellu
 
-Vzdálené vykreslování Azure poskytuje následující dvě rest api:
+Vzdálené vykreslování Azure poskytuje následující dvě rozhraní REST API:
 
-- [Rozhraní REST pro konverzi](../how-tos/conversion/conversion-rest-api.md)
-- [Rozhraní REST RELACE API](../how-tos/session-rest-api.md)
+- [REST API převodu](../how-tos/conversion/conversion-rest-api.md)
+- [REST API relace](../how-tos/session-rest-api.md)
 
-[Úložiště ukázek ARR](https://github.com/Azure/azure-remote-rendering) obsahuje ukázkové skripty ve složce *Skripty* pro interakci s rest API služby. Tento článek popisuje jejich použití.
+[Úložiště ukázek ARR](https://github.com/Azure/azure-remote-rendering) obsahuje ukázkové skripty ve složce *Scripts* pro interakci s rozhraními API REST služby. Tento článek popisuje jejich použití.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li spustit ukázkové skripty, potřebujete funkční nastavení [Azure PowerShellu](https://docs.microsoft.com/powershell/azure/).
+Chcete-li spustit ukázkové skripty, budete potřebovat instalaci funkcí [Azure PowerShell](https://docs.microsoft.com/powershell/azure/).
 
 1. Nainstalujte Azure PowerShell:
     1. Otevření PowerShellu s právy správce
-    1. Spustit:`Install-Module -Name Az -AllowClobber`
+    1. Spouštěl`Install-Module -Name Az -AllowClobber`
 
-1. Pokud se vám při spouštění skriptů přijdou k chybám, ujistěte se, že jsou [zásady spuštění](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6) správně nastaveny:
+1. Pokud se zobrazí chyby týkající se spouštění skriptů, ujistěte se, že jsou správně nastavené [zásady spouštění](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6) :
     1. Otevření PowerShellu s právy správce
-    1. Spustit:`Set-ExecutionPolicy -ExecutionPolicy Unrestricted`
+    1. Spouštěl`Set-ExecutionPolicy -ExecutionPolicy Unrestricted`
 
 1. [Příprava účtu Azure Storage](../how-tos/conversion/blob-storage.md#prepare-azure-storage-accounts)
 
-1. Přihlaste se k předplatnému obsahujícímu váš účet vzdáleného vykreslování Azure:
+1. Přihlaste se ke svému předplatnému, které obsahuje účet vzdáleného vykreslování Azure:
     1. Otevření PowerShellu
-    1. Spustit: `Connect-AzAccount` a postupujte podle pokynů na obrazovce.
+    1. Spusťte: `Connect-AzAccount` a postupujte podle pokynů na obrazovce.
 
 > [!NOTE]
-> V případě, že vaše organizace má více než jedno předplatné, budete muset zadat SubscriptionId a Tenant argumenty. Podrobnosti naleznete v [dokumentaci connect-azaccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount).
+> V případě, že má vaše organizace více než jedno předplatné, možná budete muset zadat SubscriptionId a argumenty tenanta. Vyhledejte podrobnosti v [dokumentaci Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount).
 
-1. Stáhněte složku *Skripty* z [úložiště GithHub vzdáleného vykreslování Azure](https://github.com/Azure/azure-remote-rendering).
+1. Stáhněte složku *skripty* z [úložiště GitHubu pro vzdálené vykreslování Azure](https://github.com/Azure/azure-remote-rendering).
 
 ## <a name="configuration-file"></a>Konfigurační soubor
 
-Vedle `.ps1` souborů je `arrconfig.json` třeba vyplnit:
+Vedle `.ps1` souborů `arrconfig.json` je potřeba vyplnit:
 
 ```json
 {
@@ -74,42 +74,42 @@ Vedle `.ps1` souborů je `arrconfig.json` třeba vyplnit:
 ```
 
 > [!CAUTION]
-> Ujistěte se, že správně uniknout zpětná lomítka v cestě\\\\LocalAssetDirectoryPath pomocí dvojité zpětná lomítka: " " a použít lomítka "/" ve všech ostatních cestách, jako je inputFolderPath a inputAssetPath.
+> Ujistěte se, že jsou v cestě LocalAssetDirectoryPath správně uvozená zpětná lomítka, pomocí dvojitých zpětných lomítek:\\\\a na všech ostatních cestách, jako je inputFolderPath a inputAssetPath, použijte lomítka (/).
 
-### <a name="accountsettings"></a>nastavení účtu
+### <a name="accountsettings"></a>accountSettings
 
-For `arrAccountId` `arrAccountKey`a , najdete [v tématu Vytvoření účtu vzdáleného vykreslování Azure](../how-tos/create-an-account.md).
-Prohlédněte `region` si [seznam dostupných oblastí](../reference/regions.md).
+Informace `arrAccountId` o `arrAccountKey`a najdete v tématu [Vytvoření účtu vzdáleného vykreslování Azure](../how-tos/create-an-account.md).
+`region` Zobrazí [seznam dostupných oblastí](../reference/regions.md).
 
 ### <a name="renderingsessionsettings"></a>renderingSessionSettings
 
-Tato struktura musí být vyplněna, pokud chcete spustit **RenderingSession.ps1**.
+Tato struktura musí být vyplněna, pokud chcete spustit **RenderingSession. ps1**.
 
-- **velikost vmVelikost:** Vybere velikost virtuálního počítače. Vyberte *standardní* nebo *prémii*. Vypněte relace vykreslování, když už je nepotřebujete.
-- **maxLeaseTime:** Doba, po kterou chcete zapůjčení virtuálního_ virtuálního montova. Bude ukončena po vypršení platnosti zapůjčení. Doba zapůjčení může být prodloužena později (viz níže).
+- **vmSize:** Vybere velikost virtuálního počítače. Vyberte *úroveň Standard* nebo *Premium*. Vypnutí relací vykreslování, když už je nepotřebujete
+- **maxLeaseTime:** Doba, po kterou chcete virtuální počítač zapůjčit. Po vypršení platnosti zapůjčení se vypne. Čas zapůjčení lze později prodloužit (viz níže).
 
 ### <a name="assetconversionsettings"></a>assetConversionSettings
 
-Tato struktura musí být vyplněna, pokud chcete spustit **Conversion.ps1**.
+Tato struktura musí být vyplněna, pokud chcete spustit **Conversion. ps1**.
 
-Podrobnosti najdete [v tématu Příprava účtu Azure Storage](../how-tos/conversion/blob-storage.md#prepare-azure-storage-accounts).
+Podrobnosti najdete v tématu [Příprava účtu Azure Storage](../how-tos/conversion/blob-storage.md#prepare-azure-storage-accounts).
 
-## <a name="script-renderingsessionps1"></a>Skript: RenderingSession.ps1
+## <a name="script-renderingsessionps1"></a>Skript: RenderingSession. ps1
 
-Tento skript se používá k vytvoření, dotazování a zastavení vykreslování relací.
+Tento skript slouží k vytváření, dotazování a zastavování relací vykreslování.
 
 > [!IMPORTANT]
-> Ujistěte se, že jste vyplnili *accountSettings* a *renderingSettings* oddíly v arrconfig.json.
+> Ujistěte se, že jste vyplnili oddíly *accountSettings* a *renderingSessionSettings* v ARRConfig. JSON.
 
 ### <a name="create-a-rendering-session"></a>Vytvoření relace vykreslování
 
-Běžné použití s plně vyplněným souborem arrconfig.json:
+Normální využití plně vyplněné ARRConfig. JSON:
 
 ```PowerShell
 .\RenderingSession.ps1
 ```
 
-Skript bude volat [rozhraní REST API pro správu relací,](../how-tos/session-rest-api.md) aby se spárovat virtuální virtuální počítače vykreslování se zadaným nastavením. Na úspěch načte *sessionId*. Potom bude dotazování vlastnosti relace, dokud relace je připraven nebo došlo k chybě.
+Skript zavolá [REST API správy relace](../how-tos/session-rest-api.md) , aby VYVOLAL virtuální počítač pro vykreslování se zadaným nastavením. Po úspěšném načtení bude *identifikátor SessionID*načten. Pak bude dotazovat vlastnosti relace až do chvíle, kdy je relace připravena nebo dojde k chybě.
 
 Použití **alternativního konfiguračního** souboru:
 
@@ -117,31 +117,31 @@ Použití **alternativního konfiguračního** souboru:
 .\RenderingSession.ps1 -ConfigFile D:\arr\myotherconfigFile.json
 ```
 
-Jednotlivá nastavení můžete **přepsat** z konfiguračního souboru:
+**Jednotlivá nastavení** můžete z konfiguračního souboru přepsat:
 
 ```PowerShell
 .\RenderingSession.ps1 -Region <region> -VmSize <vmsize> -MaxLeaseTime <hh:mm:ss>
 ```
 
-Chcete-li zahájit relaci pouze **bez dotazování**, můžete použít:
+Chcete-li **Spustit pouze relaci bez cyklického dotazování**, můžete použít:
 
 ```PowerShell
 .\RenderingSession.ps1 -CreateSession
 ```
 
-*SessionId,* že skript načte musí být předány většině ostatních příkazů relace.
+*Identifikátor SessionID* , který skript načte, musí být předán většině dalších příkazů relace.
 
 ### <a name="retrieve-session-properties"></a>Načíst vlastnosti relace
 
-Chcete-li získat vlastnosti relace, spusťte:
+Chcete-li získat vlastnosti relace, spusťte příkaz:
 
 ```PowerShell
 .\RenderingSession.ps1 -GetSessionProperties -Id <sessionID> [-Poll]
 ```
 
-Slouží `-Poll` k počkejte, dokud relace není *připravena* nebo dojde k chybě.
+Použijte `-Poll` k čekání, až bude relace *připravena* , nebo došlo k chybě.
 
-### <a name="list-active-sessions"></a>Seznam aktivních relací
+### <a name="list-active-sessions"></a>Výpis aktivních relací
 
 ```PowerShell
 .\RenderingSession.ps1 -GetSessions
@@ -153,43 +153,43 @@ Slouží `-Poll` k počkejte, dokud relace není *připravena* nebo dojde k chyb
 .\RenderingSession.ps1 -StopSession -Id <sessionID>
 ```
 
-### <a name="change-session-properties"></a>Změna vlastností relace
+### <a name="change-session-properties"></a>Změnit vlastnosti relace
 
-V současné době podporujeme pouze změnu maxLeaseTime relace.
+V tuto chvíli podporujeme jenom změnu maxLeaseTime relace.
 
 > [!NOTE]
-> Doba zapůjčení se vždy počítá od okamžiku, kdy byl virtuální virtuální hotel relace původně vytvořen. Takže prodloužit zapůjčení relace o další hodinu, zvýšit *maxLeaseTime* o jednu hodinu.
+> Doba zapůjčení se vždy počítá od okamžiku, kdy byl virtuální počítač relace původně vytvořen. Aby bylo možné zapůjčení relace prodloužit o jinou hodinu, zvyšte *maxLeaseTime* o jednu hodinu.
 
 ```PowerShell
 .\RenderingSession.ps1 -UpdateSession -Id <sessionID> -MaxLeaseTime <hh:mm:ss>
 ```
 
-## <a name="script-conversionps1"></a>Skript: Conversion.ps1
+## <a name="script-conversionps1"></a>Skript: Conversion. ps1
 
-Tento skript se používá k převodu vstupních modelů do specifického runtime formátu Azure Remote Rendering.
+Tento skript slouží k převodu vstupních modelů do formátu runtime specifického pro vzdálené vykreslování Azure.
 
 > [!IMPORTANT]
-> Ujistěte se, že jste vyplnili oddíly *accountSettings* a *assetConversionSettings* v souborech arrconfig.json.
+> Ujistěte se, že jste vyplnili oddíly *accountSettings* a *assetConversionSettings* v ARRConfig. JSON.
 
 Skript ukazuje dvě možnosti použití účtů úložiště se službou:
 
 - Účet úložiště propojený s účtem vzdáleného vykreslování Azure
-- Poskytování přístupu k úložišti prostřednictvím sdílených přístupových podpisů (SAS)
+- Poskytnutí přístupu k úložišti prostřednictvím sdílených přístupových podpisů (SAS)
 
-### <a name="linked-storage-account"></a>Účet propojeného úložiště
+### <a name="linked-storage-account"></a>Propojený účet úložiště
 
-Po úplném vyplnění souboru arrconfig.json a propojení účtu úložiště můžete použít následující příkaz. Propojení účtu úložiště je popsáno v článku [Vytvoření účtu](../how-tos/create-an-account.md#link-storage-accounts).
+Po úplném vyplňování ARRConfig. JSON a propojení účtu úložiště můžete použít následující příkaz. Odkaz na účet úložiště je popsaný v tématu [Vytvoření účtu](../how-tos/create-an-account.md#link-storage-accounts).
 
-Použití propojeného účtu úložiště je upřednostňovaný způsob použití služby převodu, protože není nutné generovat sdílené přístupové podpisy.
+Použití propojeného účtu úložiště je preferovaným způsobem, jak používat službu převodu, protože není potřeba generovat sdílené přístupové podpisy.
 
 ```PowerShell
 .\Conversion.ps1
 ```
 
-1. Nahrát všechny soubory `assetConversionSettings.modelLocation` obsažené ve vstupním kontejneru objektů blob pod daným`inputFolderPath`
-1. Volání [modelu konverze REST API](../how-tos/conversion/conversion-rest-api.md) zahájit [převod modelu](../how-tos/conversion/model-conversion.md)
-1. Dotazování na stav převodu, dokud se převod nepodaří nebo neselhal.
-1. Podrobnosti o umístění převedeného souboru (účet úložiště, výstupní kontejner, cesta k souboru v kontejneru)
+1. Nahrajte všechny soubory obsažené v `assetConversionSettings.modelLocation` do vstupního kontejneru objektů BLOB v rámci daného`inputFolderPath`
+1. Zavolejte [REST API převodu modelu](../how-tos/conversion/conversion-rest-api.md) , aby se aktivoval [Převod modelu](../how-tos/conversion/model-conversion.md) .
+1. Cyklické dotazování na stav převodu, dokud převod není úspěšný nebo neúspěšný
+1. Podrobnosti výstupu převedeného umístění souboru (účet úložiště, výstupní kontejner, cesta k souboru v kontejneru)
 
 ### <a name="access-to-storage-via-shared-access-signatures"></a>Přístup k úložišti prostřednictvím sdílených přístupových podpisů
 
@@ -197,15 +197,15 @@ Použití propojeného účtu úložiště je upřednostňovaný způsob použit
 .\Conversion.ps1 -UseContainerSas
 ```
 
-Tímto:
+Tato akce:
 
-1. Nahrání místního `assetConversionSettings.localAssetDirectoryPath` souboru ze vstupního kontejneru objektů blob
-1. Generovat identifikátor URI SAS pro vstupní kontejner
-1. Generovat identifikátor URI SAS pro výstupní kontejner
-1. Volání [modelu konverze REST API](../how-tos/conversion/conversion-rest-api.md) zahájit [převod modelu](../how-tos/conversion/model-conversion.md)
-1. Dotazování na stav převodu, dokud se převod nepodaří nebo neselhal.
-1. Podrobnosti o umístění převedeného souboru (účet úložiště, výstupní kontejner, cesta k souboru v kontejneru)
-1. Výstup identifikátoru URI SAS do převedeného modelu ve výstupním kontejneru objektů blob
+1. Nahrání místního souboru z `assetConversionSettings.localAssetDirectoryPath` do vstupního kontejneru objektů BLOB
+1. Vygenerovat identifikátor URI SAS pro vstupní kontejner
+1. Vygenerovat identifikátor URI SAS pro výstupní kontejner
+1. Zavolejte [REST API převodu modelu](../how-tos/conversion/conversion-rest-api.md) , aby se aktivoval [Převod modelu](../how-tos/conversion/model-conversion.md) .
+1. Cyklické dotazování na stav převodu, dokud převod není úspěšný nebo neúspěšný
+1. Podrobnosti výstupu převedeného umístění souboru (účet úložiště, výstupní kontejner, cesta k souboru v kontejneru)
+1. Výstup identifikátoru URI SAS do převedeného modelu ve výstupním kontejneru objektů BLOB
 
 ### <a name="additional-command-line-options"></a>Další možnosti příkazového řádku
 
@@ -215,28 +215,28 @@ Použití **alternativního konfiguračního** souboru:
 .\Conversion.ps1 -ConfigFile D:\arr\myotherconfigFile.json
 ```
 
-Chcete-li **spustit pouze převod modelu bez dotazování**, můžete použít:
+Chcete-li **Spustit převod modelu pouze bez cyklického dotazování**, můžete použít:
 
 ```PowerShell
 .\Conversion.ps1 -ConvertAsset
 ```
 
-**Jednotlivá nastavení** z konfiguračního souboru můžete přepsat pomocí následujících přepínačů příkazového řádku:
+**Jednotlivá nastavení** můžete z konfiguračního souboru přepsat pomocí následujících přepínačů příkazového řádku:
 
-* **Id:** Id převodu používané s Stavem GetConversionStatus
-* **ArrAccountId:** arrAccountId účtuNastavení
-* **ArrAccountKey:** přepsání pro arrAccountKey účtuNastavení
-* **Oblast:** přepsání pro oblast účtuNastavení
-* **ResourceGroup:** přepsání pro resourceGroup of assetConversionSettings
-* **StorageAccountName:** přepsání pro storageAccountName assetConversionSettings
-* **BlobInputContainerName:** přepsání pro objekt blobInputContainer assetConversionSettings
-* **LocalAssetDirectoryPath:** přepsání pro localAssetDirectoryPath assetConversionSettings
-* **InputAssetPath:** přepsání pro inputAssetPath assetConversionSettings
-* **Objekt BlobOutputContainerName:** přepsání objektu blobOutputContainerName assetConversionSettings
-* **OutputFolderPath:** přepsání pro outputFolderPath assetConversionSettings
-* **OutputAssetFileName:** přepsání pro outputAssetFileName assetConversionSettings
+* **ID:** ConversionId se používá s GetConversionStatus
+* **ArrAccountId:** ArrAccountId of accountSettings
+* **ArrAccountKey:** override pro ArrAccountKey of accountSettings
+* **Oblast:** přepsání pro oblast accountSettings
+* **ResourceName:** override pro zdroj dat assetConversionSettings
+* **StorageAccountName:** override pro StorageAccountName of assetConversionSettings
+* **BlobInputContainerName:** override pro BlobInputContainer of assetConversionSettings
+* **LocalAssetDirectoryPath:** override pro LocalAssetDirectoryPath of assetConversionSettings
+* **InputAssetPath:** override pro InputAssetPath of assetConversionSettings
+* **BlobOutputContainerName:** override pro BlobOutputContainerName of assetConversionSettings
+* **OutputFolderPath:** override pro OutputFolderPath of assetConversionSettings
+* **OutputAssetFileName:** override pro OutputAssetFileName of assetConversionSettings
 
-Můžete například kombinovat řadu daných možností, jako je tento:
+Například můžete zkombinovat určitý počet z těchto možností:
 
 ```PowerShell
 .\Conversion.ps1 -LocalAssetDirectoryPath "C:\\models\\box" -InputAssetPath box.fbx -OutputFolderPath another/converted/box -OutputAssetFileName newConversionBox.arrAsset
@@ -246,28 +246,28 @@ Můžete například kombinovat řadu daných možností, jako je tento:
 
 Pokud chcete spustit jednotlivé kroky procesu, můžete použít:
 
-Pouze nahrát data z daného LocalAssetDirectoryPath
+Nahrávat pouze data z daného LocalAssetDirectoryPath
 
 ```PowerShell
 .\Conversion.ps1 -Upload
 ```
 
-Spusťte pouze proces převodu modelu, který už byl nahrán do úložiště objektů blob (nespouštějte nahrát, nedotazujte se na stav převodu) Skript vrátí *id převodu*.
+Jenom spustit proces převodu modelu, který už je nahraný do úložiště objektů BLOB (nespouštět nahrávání, nedotazovat se na stav převodu), skript vrátí *conversionId*.
 
 ```PowerShell
 .\Conversion.ps1 -ConvertAsset
 ```
 
-A stav konverze této konverze můžete získat pomocí následujících částek:
+A můžete načíst stav převodu tohoto převodu pomocí:
 
 ```PowerShell
 .\Conversion.ps1 -GetConversionStatus -Id <conversionId> [-Poll]
 ```
 
-Slouží `-Poll` k počkejte, až dojde k převodu nebo dojde k chybě.
+Použijte `-Poll` k čekání na převod, nebo došlo k chybě.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Úvodní příručka: Vykreslení modelu pomocí Unity](../quickstarts/render-model.md)
-- [Úvodní příručka: Převod modelu pro vykreslování](../quickstarts/convert-model.md)
+- [Rychlý Start: vykreslení modelu pomocí Unity](../quickstarts/render-model.md)
+- [Rychlý Start: převod modelu pro vykreslování](../quickstarts/convert-model.md)
 - [Převod modelu](../how-tos/conversion/model-conversion.md)

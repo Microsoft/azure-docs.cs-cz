@@ -1,7 +1,7 @@
 ---
 title: Konfigurace kontejnerů řeči
 titleSuffix: Azure Cognitive Services
-description: Služba rozpoznávání řeči poskytuje každému kontejneru společnou konfigurační architekturu, takže můžete snadno konfigurovat a spravovat úložiště, protokolování a telemetrii a nastavení zabezpečení pro vaše kontejnery.
+description: Služba rozpoznávání řeči poskytuje každý kontejner se společným rozhraním konfigurace, takže můžete snadno konfigurovat a spravovat úložiště, protokolování a telemetrii a nastavení zabezpečení kontejnerů.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,58 +11,58 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 5c74aa48b18661236eb55278d1e5a05215b2432c
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80877571"
 ---
-# <a name="configure-speech-service-containers"></a>Konfigurace kontejnerů služby rozpoznávání řeči
+# <a name="configure-speech-service-containers"></a>Konfigurace kontejnerů služby Speech
 
-Kontejnery řeči umožňují zákazníkům vytvořit jednu architekturu aplikace pro rozpoznávání řeči, která je optimalizovaná tak, aby využívala výhod jak robustních cloudových funkcí, tak hraniční lokality. Čtyři kontejnery řeči, které nyní podporujeme, **jsou, převod řeči na text**, vlastní **řeč-k-text**, **převod textu na řeč**a vlastní text na **řeč**.
+Díky kontejnerům pro rozpoznávání řeči můžou zákazníci vytvářet jednu architekturu aplikace pro rozpoznávání řeči, která je optimalizovaná tak, aby využila výhod robustních cloudových funkcí i možností Edge. Čtyři kontejnery řeči teď podporujeme, jedná se o **Převod řeči na text**, **vlastní převod řeči na text**, převod **textu na řeč**a **vlastní převod textu na řeč**.
 
-Prostředí runtime **kontejneru řeči** `docker run` je konfigurováno pomocí argumentů příkazu. Tento kontejner má několik požadovaných nastavení, spolu s několika volitelnými nastaveními. K dispozici je několik [příkladů](#example-docker-run-commands) příkazu. Nastavení specifická pro kontejner jsou nastavení fakturace.
+Prostředí modulu runtime kontejneru **řeči** se konfiguruje pomocí argumentů `docker run` příkazu. Tento kontejner má několik požadovaných nastavení spolu s několika volitelnými nastaveními. K dispozici je několik [příkladů](#example-docker-run-commands) příkazu. Nastavení fakturace jsou specifická pro kontejner.
 
 ## <a name="configuration-settings"></a>Nastavení konfigurace
 
 [!INCLUDE [Container shared configuration settings table](../../../includes/cognitive-services-containers-configuration-shared-settings-table.md)]
 
 > [!IMPORTANT]
-> Nastavení [`ApiKey`](#apikey-configuration-setting) [`Billing`](#billing-configuration-setting), [`Eula`](#eula-setting) a jsou používány společně a je nutné zadat platné hodnoty pro všechny tři z nich; jinak se kontejner nespustí. Další informace o použití těchto nastavení konfigurace k vytvoření instance kontejneru naleznete v tématu [Fakturace](speech-container-howto.md#billing).
+> Nastavení [`ApiKey`](#apikey-configuration-setting), [`Billing`](#billing-configuration-setting)a [`Eula`](#eula-setting) se používají společně a je nutné zadat platné hodnoty pro všechny tři z nich. v opačném případě se Váš kontejner nespustí. Další informace o tom, jak pomocí těchto nastavení konfigurace vytvořit instanci kontejneru, najdete v tématu [fakturace](speech-container-howto.md#billing).
 
 ## <a name="apikey-configuration-setting"></a>Nastavení konfigurace ApiKey
 
-Toto `ApiKey` nastavení určuje klíč prostředků Azure, který slouží ke sledování fakturačních údajů pro kontejner. Je nutné zadat hodnotu pro ApiKey a hodnota musí _Speech_ být platný [`Billing`](#billing-configuration-setting) klíč pro prostředek řeči zadaný pro nastavení konfigurace.
+`ApiKey` Nastavení určuje klíč prostředku Azure, který se používá ke sledování fakturačních informací pro kontejner. Je nutné zadat hodnotu pro ApiKey a hodnota musí být platným klíčem pro prostředek _řeči_ zadaný pro nastavení [`Billing`](#billing-configuration-setting) konfigurace.
 
-Toto nastavení naleznete na následujícím místě:
+Toto nastavení najdete na následujícím místě:
 
-- Portál Azure: Správa prostředků **řeči** v části **Klíče**
+- Azure Portal: Správa prostředků **řeči** v části **klíče**
 
-## <a name="applicationinsights-setting"></a>ApplicationInsights, nastavení
+## <a name="applicationinsights-setting"></a>Nastavení ApplicationInsights
 
 [!INCLUDE [Container shared configuration ApplicationInsights settings](../../../includes/cognitive-services-containers-configuration-shared-settings-application-insights.md)]
 
 ## <a name="billing-configuration-setting"></a>Nastavení konfigurace fakturace
 
-Toto `Billing` nastavení určuje identifikátor URI koncového bodu prostředku _řeči_ v Azure, který slouží k měření fakturačních informací pro kontejner. Je nutné zadat hodnotu pro toto nastavení konfigurace a hodnota musí být platný identifikátor URI koncového bodu pro prostředek _řeči v_ Azure. Kontejner hlásí využití přibližně každých 10 až 15 minut.
+`Billing` Nastavení určuje identifikátor URI koncového bodu prostředku _řeči_ v Azure, který se používá pro informace o fakturaci pro daný kontejner. Je nutné zadat hodnotu pro toto nastavení konfigurace a tato hodnota musí být platným identifikátorem URI koncového bodu pro prostředek _řeči_ v Azure. Kontejner hlásí využití každých 10 až 15 minut.
 
-Toto nastavení naleznete na následujícím místě:
+Toto nastavení najdete na následujícím místě:
 
-- Portál Azure: Přehled **řeči** s označením`Endpoint`
+- Azure Portal: Přehled **rozpoznávání řeči** , označený`Endpoint`
 
-| Požaduje se | Name (Název) | Datový typ | Popis |
+| Požaduje se | Název | Datový typ | Popis |
 | -------- | ---- | --------- | ----------- |
-| Ano | `Billing` | Řetězec | Identifikátor URI koncového bodu fakturace. Další informace o získání fakturačního identifikátoru URI naleznete v [tématu shromažďování požadovaných parametrů](speech-container-howto.md#gathering-required-parameters). Další informace a úplný seznam místních koncových bodů naleznete [v tématu Vlastní názvy subdomén pro služby Cognitive Services](../cognitive-services-custom-subdomains.md). |
+| Ano | `Billing` | Řetězec | Identifikátor URI koncového bodu fakturace Další informace o získání identifikátoru URI fakturace najdete v tématu [shromáždění požadovaných parametrů](speech-container-howto.md#gathering-required-parameters). Další informace a úplný seznam regionálních koncových bodů najdete v tématu [názvy vlastních subdomén pro Cognitive Services](../cognitive-services-custom-subdomains.md). |
 
-## <a name="eula-setting"></a>Nastavení Eula
+## <a name="eula-setting"></a>Nastavení smlouvy EULA
 
 [!INCLUDE [Container shared configuration eula settings](../../../includes/cognitive-services-containers-configuration-shared-settings-eula.md)]
 
-## <a name="fluentd-settings"></a>Nastavení fluentdu
+## <a name="fluentd-settings"></a>Nastavení Fluent
 
 [!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-fluentd.md)]
 
-## <a name="http-proxy-credentials-settings"></a>Nastavení pověření proxy http
+## <a name="http-proxy-credentials-settings"></a>Nastavení přihlašovacích údajů proxy serveru HTTP
 
 [!INCLUDE [Container shared HTTP proxy settings](../../../includes/cognitive-services-containers-configuration-shared-settings-http-proxy.md)]
 
@@ -72,28 +72,28 @@ Toto nastavení naleznete na následujícím místě:
 
 ## <a name="mount-settings"></a>Nastavení připojení
 
-Pomocí vazební připojení číst a zapisovat data do a z kontejneru. Vstupní připojení nebo výstupní připojení můžete určit `--mount` zadáním možnosti v příkazu [spustit docker.](https://docs.docker.com/engine/reference/commandline/run/)
+Ke čtení a zápisu dat do a z kontejneru použijte připojení BIND. Zadáním `--mount` možnosti v příkazu [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) můžete zadat vstupní připojení nebo připojení pro výstup.
 
-Standardní kontejnery řeči nepoužívají vstupní nebo výstupní připojení k ukládání dat školení nebo služby. Vlastní kontejnery řeči však spoléhají na připojení svazku.
+Standardní kontejnery řeči nepoužívají vstupní ani výstupní připojení k ukládání dat o školeních nebo službách. Vlastní kontejnery řeči se však spoléhají na připojení svazků.
 
-Přesná syntaxe umístění připojení hostitele se liší v závislosti na hostitelském operačním systému. Umístění připojení [hostitelského počítače](speech-container-howto.md#the-host-computer)navíc nemusí být přístupné z důvodu konfliktu mezi oprávněními používanými účtem služby dockeru a oprávněními umístění připojení hostitele.
+Přesná syntaxe umístění hostitelského připojení se liší v závislosti na hostitelském operačním systému. Kromě toho je možné, že umístění pro připojení k [hostitelskému počítači](speech-container-howto.md#the-host-computer)není přístupné z důvodu konfliktu mezi oprávněními používanými účtem služby Docker a oprávněním pro umístění připojení hostitele.
 
-| Nepovinné | Name (Název) | Datový typ | Popis |
+| Nepovinné | Název | Datový typ | Popis |
 | -------- | ---- | --------- | ----------- |
-| Nepovolené | `Input` | Řetězec | Standardní kontejnery řeči nepoužívají toto. Vlastní kontejnery řeči používají [připojení svazku](#volume-mount-settings).                                                                                    |
-| Nepovinné | `Output` | Řetězec | Cíl výstupního připojení. Výchozí hodnota je `/output`. Toto je umístění protokolů. To zahrnuje protokoly kontejnerů. <br><br>Příklad:<br>`--mount type=bind,src=c:\output,target=/output` |
+| Nepovolené | `Input` | Řetězec | Standardní kontejnery řeči to nepoužívají. Vlastní kontejnery řeči používají [připojení svazků](#volume-mount-settings).                                                                                    |
+| Nepovinné | `Output` | Řetězec | Cíl připojení pro výstup. Výchozí hodnota je `/output`. Toto je umístění protokolů. To zahrnuje protokoly kontejnerů. <br><br>Příklad:<br>`--mount type=bind,src=c:\output,target=/output` |
 
 ## <a name="volume-mount-settings"></a>Nastavení připojení svazku
 
-Vlastní kontejnery řeči používají [připojení svazku](https://docs.docker.com/storage/volumes/) k zachování vlastních modelů. Připojení svazku můžete určit `-v` přidáním `--volume`možnosti (nebo) do příkazu [spustit docker.](https://docs.docker.com/engine/reference/commandline/run/)
+Vlastní kontejnery řeči používají k uchování vlastních modelů [připojení svazků](https://docs.docker.com/storage/volumes/) . Připojení svazku můžete zadat přidáním možnosti `-v` (nebo `--volume`) do příkazu [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) .
 
-Vlastní modely jsou staženy při prvním, kdy je nový model ingestován jako součást příkazu spuštění vlastního kontejneru řeči. Sekvenční `ModelId` spuštění stejné pro vlastní kontejner řeči bude používat dříve stažený model. Pokud není k dispozici připojení svazku, vlastní modely nelze zachovat.
+Vlastní modely se stáhnou při prvním ingestování nového modelu v rámci příkazu vlastního kontejneru řeči Docker run. Sekvenční spuštění stejného `ModelId` vlastního kontejneru řeči bude používat dříve stažený model. Pokud není k dispozici připojení svazku, vlastní modely nelze zachovat.
 
-Nastavení připojení svazku se `:` skládá ze tří barevně oddělených polí:
+Nastavení připojení svazku se skládá ze tří polí `:` s oddělovači barev:
 
-1. První pole je název svazku v hostitelském počítači, například _C:\input_.
-2. Druhé pole je adresář v kontejneru, například _/usr/local/models_.
-3. Třetí pole (volitelné) je seznam možností oddělených čárkami, další informace naleznete v tématu [použití svazků](https://docs.docker.com/storage/volumes/).
+1. První pole je název svazku na hostitelském počítači, například _C:\input_.
+2. Druhé pole je adresář v kontejneru, například _/usr/local/Models_.
+3. Třetí pole (volitelné) je čárkami oddělený seznam možností, další informace najdete v tématu [použití svazků](https://docs.docker.com/storage/volumes/).
 
 ### <a name="volume-mount-example"></a>Příklad připojení svazku
 
@@ -101,34 +101,34 @@ Nastavení připojení svazku se `:` skládá ze tří barevně oddělených pol
 -v C:\input:/usr/local/models
 ```
 
-Tento příkaz připojí hostitelský počítač _C:\vstupní_ adresář do adresáře kontejnerů _/usr/local/models._
+Tento příkaz připojí adresář _C:\input_ hostitelského počítače k adresáři _/usr/local/Models_ kontejnerů.
 
 > [!IMPORTANT]
-> Nastavení připojení svazku se vztahuje pouze na **vlastní kontejnery převodu řeči na text** a vlastní převod textu na **řeč.** Standardní **kontejnery převodu řeči na text** a **převod textu na řeč** nepoužívají připojení svazku.
+> Nastavení připojení svazku se dá použít jenom pro kontejnery **Custom Speechho** textu na text a **na vlastní řeč** . Standardní kontejnery **pro převod řeči na text** a **Převod textu na řeč** nepoužívají připojení svazků.
 
-## <a name="example-docker-run-commands"></a>Příklad příkazů spuštění dockeru
+## <a name="example-docker-run-commands"></a>Příklady příkazů pro spuštění Docker
 
-Následující příklady používají nastavení konfigurace pro ilustraci, jak psát a používat `docker run` příkazy. Po spuštění kontejneru pokračuje v běhu, dokud jej [nezastavíte.](speech-container-howto.md#stop-the-container)
+Následující příklady používají konfigurační nastavení k ilustraci, jak psát a používat `docker run` příkazy. Po spuštění bude kontejner dál běžet, dokud ho [nezastavíte](speech-container-howto.md#stop-the-container) .
 
-- **Znak pokračování řádku**: Příkazy Dockeru v následujících `\`částech používají jako znak pokračování řádku znak zpětného lomítka . Nazákladě požadavků hostitelského operačního systému jej nahraďte nebo odeberte.
-- **Pořadí argumentů**: Neměňte pořadí argumentů, pokud nejste obeznámeni s kontejnery Dockeru.
+- **Znak pro pokračování řádku**: příkazy Docker v následujících částech používají zpětné lomítko, `\`jako znak pro pokračování řádku. Tuto položku nahraďte nebo odeberte na základě požadavků vašich hostitelských operačních systémů.
+- **Pořadí argumentů**: Neměňte pořadí argumentů, pokud nejste obeznámeni s kontejnery Docker.
 
-Nahraďte {_argument_name_} vlastními hodnotami:
+Nahradit {_argument_name_} vlastními hodnotami:
 
 | Zástupný symbol | Hodnota | Formát nebo příklad |
 | ----------- | ----- | ----------------- |
-| **{API_KEY}** | Klíč koncového bodu `Speech` prostředku na `Speech` stránce Azure Keys.   | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`                                                                                  |
-| **{ENDPOINT_URI}** | Hodnota koncového bodu fakturace `Speech` je dostupná na stránce Přehled Azure. | Viz [shromažďování požadovaných parametrů](speech-container-howto.md#gathering-required-parameters) pro explicitní příklady. |
+| **{API_KEY}** | Klíč koncového bodu `Speech` prostředku na stránce klíčů Azure `Speech` .   | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`                                                                                  |
+| **{ENDPOINT_URI}** | Hodnota fakturačního koncového bodu je k dispozici na stránce Přehled Azure `Speech` . | Explicitní příklady najdete v tématu [shromažďování požadovaných parametrů](speech-container-howto.md#gathering-required-parameters) . |
 
 [!INCLUDE [subdomains-note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 > [!IMPORTANT]
-> `Eula`, `Billing`a `ApiKey` možnosti musí být zadány ke spuštění kontejneru; v opačném případě se kontejner nespustí. Další informace naleznete v [tématu Fakturace](#billing-configuration-setting).
-> Hodnota ApiKey je **klíč** ze stránky klíče prostředků řeči Azure.
+> Pro `Eula`spuštění `Billing`kontejneru musí `ApiKey` být zadány možnosti, a. v opačném případě se kontejner nespustí. Další informace najdete v tématu [fakturace](#billing-configuration-setting).
+> Hodnota ApiKey je **klíč** ze stránky klíče prostředků Azure Speech.
 
-## <a name="speech-container-docker-examples"></a>Příklady Dockeru kontejneru řeči
+## <a name="speech-container-docker-examples"></a>Příklady Docker kontejneru řeči
 
-Následující příklady Dockeru jsou pro kontejner řeči.
+Následující příklady Docker jsou pro kontejner řeči.
 
 ## <a name="speech-to-text"></a>[Převod řeči na text](#tab/stt)
 
@@ -153,9 +153,9 @@ ApiKey={API_KEY} \
 Logging:Console:LogLevel:Default=Information
 ```
 
-## <a name="custom-speech-to-text"></a>[Vlastní převod řeči na text](#tab/cstt)
+## <a name="custom-speech-to-text"></a>[Custom Speech na text](#tab/cstt)
 
-### <a name="basic-example-for-custom-speech-to-text"></a>Základní příklad pro vlastní převod řeči na text
+### <a name="basic-example-for-custom-speech-to-text"></a>Základní příklad pro Custom Speech textu
 
 ```Docker
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 4 \
@@ -167,7 +167,7 @@ Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
 ```
 
-### <a name="logging-example-for-custom-speech-to-text"></a>Příklad protokolování pro vlastní převod řeči na text
+### <a name="logging-example-for-custom-speech-to-text"></a>Příklad protokolování pro Custom Speech textu
 
 ```Docker
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 4 \
@@ -234,4 +234,4 @@ Logging:Console:LogLevel:Default=Information
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte [si, jak nainstalovat a spustit kontejnery](speech-container-howto.md)
+- Přečtěte si [, jak nainstalovat a spustit kontejnery](speech-container-howto.md) .

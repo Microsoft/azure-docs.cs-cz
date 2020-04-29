@@ -1,6 +1,6 @@
 ---
-title: Podpora Azure Front Door – HTTP2 | Dokumenty společnosti Microsoft
-description: Tento článek vám pomůže dozvědět se o podpoře HTTP/2 v Azure Front Door
+title: Přední vrátka Azure – podpora HTTP2 | Microsoft Docs
+description: Tento článek vám pomůže získat informace o podpoře HTTP/2 v Azure front-dveřích.
 services: frontdoor
 documentationcenter: ''
 author: sharad4u
@@ -12,41 +12,41 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: 8a3ae8065553b34a72528cb0f2681e327dc90097
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80985180"
 ---
-# <a name="http2-support-in-azure-front-door"></a>Podpora HTTP/2 v Azure Front Door
+# <a name="http2-support-in-azure-front-door"></a>Podpora HTTP/2 v Azure front-dveřích
 
-V současné době je podpora HTTP/2 aktivní pro všechny konfigurace Azure Front Door. Od zákazníků není vyžadována žádná další akce.
+V současné době je podpora protokolu HTTP/2 aktivní pro všechny konfigurace front-dveří Azure. Od zákazníků není vyžadována žádná další akce.
 
-HTTP/2 je hlavní revize HTTP/1.1. Poskytuje rychlejší výkon webu, kratší dobu odezvy a lepší uživatelské prostředí při zachování známých metod HTTP, stavových kódů a sémantiky. Přestože http/2 je určen pro práci s HTTP a HTTPS, mnoho klientských webových prohlížečů podporuje pouze HTTP/2 přes zabezpečení transportní vrstvy (TLS).
+HTTP/2 je hlavní revize HTTP/1.1. Poskytuje rychlejší webový výkon, omezenou dobu odezvy a vylepšené uživatelské prostředí a současně zachovává známé metody HTTP, stavové kódy a sémantiku. I když je protokol HTTP/2 navržený tak, aby fungoval s HTTP a HTTPS, mnoho klientských webových prohlížečů podporuje jenom HTTP/2 přes TLS (Transport Layer Security).
 
 > [!NOTE]
-> Podpora protokolu HTTP/2 je k dispozici pouze pro požadavky klientů na front door. Komunikace z front door do zadní chod v back-end fondu probíhá přes HTTP/1.1. 
+> Podpora protokolu HTTP/2 je k dispozici pouze pro požadavky od klientů do front-dveří. Komunikace z předních dveří do back-endu v rámci fondu back-end se stává přes HTTP/1.1. 
 
-### <a name="http2-benefits"></a>Výhody HTTP/2
+### <a name="http2-benefits"></a>Výhody protokolu HTTP/2
 
-Výhody HTTP/2 zahrnují:
+Mezi výhody HTTP/2 patří:
 
 *   **Multiplexování a souběžnost**
 
-    Pomocí protokolu HTTP 1.1 vyžaduje vytváření více požadavků na prostředky více připojení TCP a každé připojení má s sebou spojené nároky na výkon. Protokol HTTP/2 umožňuje vyžádání více prostředků v jednom připojení TCP.
+    Pomocí protokolu HTTP 1,1 vyžaduje více žádostí o prostředky více připojení TCP a každé z nich má k sobě přiřazené nároky na výkon. HTTP/2 umožňuje vyžádání více prostředků v jednom připojení TCP.
 
-*   **Komprese záhlaví**
+*   **Komprese hlaviček**
 
-    Komprimací hlavičky HTTP pro obsluhované prostředky se výrazně sníží čas na lince.
+    Díky komprimaci hlaviček protokolu HTTP pro obsluhované prostředky se čas na lince významně sníží.
 
-*   **Závislosti datového proudu**
+*   **Závislosti streamu**
 
-    Závislosti datového proudu umožňují klientovi označit serveru, které prostředky mají prioritu.
+    Závislosti streamu umožňují klientovi označovat serveru, který má prostředky přednost.
 
 
 ## <a name="http2-browser-support"></a>Podpora prohlížeče HTTP/2
 
-Všechny hlavní prohlížeče implementovaly podporu HTTP/2 ve svých aktuálních verzích. Nepodporované prohlížeče automaticky záložní na HTTP/1.1.
+Všechny hlavní prohlížeče mají v jejich současných verzích naimplementovaná podpora HTTP/2. Nepodporované prohlížeče se automaticky přenemají na HTTP/1.1.
 
 |Prohlížeč|Minimální verze|
 |-------------|------------|
@@ -58,9 +58,9 @@ Všechny hlavní prohlížeče implementovaly podporu HTTP/2 ve svých aktuáln�
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o protokolu HTTP/2 naleznete v následujících zdrojích:
+Další informace o HTTP/2 najdete v následujících zdrojích informací:
 
 - [Domovská stránka specifikace HTTP/2](https://http2.github.io/)
-- [Oficiální OTÁZKY HTTP/2](https://http2.github.io/faq/)
+- [Oficiální Nejčastější dotazy k HTTP/2](https://http2.github.io/faq/)
 - Přečtěte si, jak [vytvořit Front Door](quickstart-create-front-door.md).
 - Přečtěte si, [jak služba Front Door funguje](front-door-routing-architecture.md).

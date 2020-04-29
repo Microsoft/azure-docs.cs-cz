@@ -1,77 +1,77 @@
 ---
-title: Provádění aktualizací kódu ve funkcích Azure pomocí akcí GitHubu
-description: Zjistěte, jak pomocí akcí GitHubu definovat pracovní postup k vytváření a nasazování projektů Azure Functions na GitHubu.
+title: Použití akcí GitHubu ke zpřístupnění aktualizací kódu v Azure Functions
+description: Naučte se používat akce GitHubu k definování pracovního postupu pro sestavování a nasazování projektů Azure Functions v GitHubu.
 author: craigshoemaker
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: cshoe
 ms.openlocfilehash: 54010269e5b61ebf28a29dd3165c4310f3472817
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80878200"
 ---
-# <a name="continuous-delivery-by-using-github-action"></a>Průběžné doručování pomocí akce GitHub
+# <a name="continuous-delivery-by-using-github-action"></a>Průběžné doručování pomocí akce GitHubu
 
-[Akce GitHubu](https://github.com/features/actions) umožňují definovat pracovní postup pro automatické sestavení a nasazení kódu funkcí pro aplikaci Azure. 
+[Akce GitHubu](https://github.com/features/actions) vám umožní definovat pracovní postup, který automaticky vytvoří a nasadí kód Functions do aplikace Function App v Azure. 
 
-V akcích GitHubu je [pracovní postup](https://help.github.com/articles/about-github-actions#workflow) automatizovaný proces, který definujete v úložišti GitHubu. Tento proces říká GitHubu, jak sestavit a nasadit projekt aplikace pro funkce na GitHubu. 
+[Pracovní postup](https://help.github.com/articles/about-github-actions#workflow) v akcích GitHub je automatizovaný proces, který definujete v úložišti GitHub. Tento proces oznamuje GitHubu, jak sestavit a nasadit projekt Function App na GitHubu. 
 
-Pracovní postup je definován souborem YAML (.yml) v `/.github/workflows/` cestě v úložišti. Tato definice obsahuje různé kroky a parametry, které tvoří pracovní postup. 
+Pracovní postup je definovaný souborem YAML (. yml) v `/.github/workflows/` cestě v úložišti. Tato definice obsahuje různé kroky a parametry, které tvoří pracovní postup. 
 
-Pro pracovní postup Azure Functions má soubor tři části: 
+V případě pracovního postupu Azure Functions má soubor tři části: 
 
-| Sekce | Úkoly |
+| Sekce | Úlohy |
 | ------- | ----- |
-| **Authentication** | <ol><li>Definujte instanční objekt.</li><li>Stáhněte si profil publikování.</li><li>Vytvořte tajný klíč GitHubu.</li></ol>|
-| **Sestavení** | <ol><li>Nastavte prostředí.</li><li>Vytvořte aplikaci funkcí.</li></ol> |
-| **Nasadit** | <ol><li>Nasaďte aplikaci funkce.</li></ol>|
+| **Authentication** | <ol><li>Definujte instanční objekt.</li><li>Stáhnout profil publikování.</li><li>Vytvořte tajný klíč GitHubu.</li></ol>|
+| **Sestavení** | <ol><li>Nastavte prostředí.</li><li>Sestavte aplikaci Function App.</li></ol> |
+| **Nasadit** | <ol><li>Nasaďte aplikaci Function App.</li></ol>|
 
 > [!NOTE]
-> Pokud se rozhodnete použít profil publikování k ověřování, není nutné vytvářet instanční objekt.
+> Pokud se rozhodnete použít profil publikování pro ověřování, nemusíte vytvářet instanční objekt.
 
 ## <a name="create-a-service-principal"></a>Vytvoření instančního objektu
 
-[Instanční objekt](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) můžete vytvořit pomocí příkazu [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) v [příkazovém příkazu Azure CLI](/cli/azure/). Tento příkaz můžete spustit pomocí [Azure Cloud Shell](https://shell.azure.com) na webu Azure Portal nebo výběrem tlačítka Try **It.**
+[Instanční objekt](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) můžete vytvořit pomocí příkazu [AZ AD SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) v rozhraní příkazového [řádku Azure CLI](/cli/azure/). Tento příkaz můžete spustit pomocí [Azure Cloud Shell](https://shell.azure.com) v Azure Portal nebo tak, že vyberete tlačítko **vyzkoušet** .
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP>/providers/Microsoft.Web/sites/<APP_NAME> --sdk-auth
 ```
 
-V tomto příkladu nahraďte zástupné symboly v prostředku ID předplatného, skupinou prostředků a názvem aplikace funkce. Výstup je pověření přiřazení role, která poskytuje přístup k aplikaci funkce. Zkopírujte tento objekt JSON, který můžete použít k ověření z GitHubu.
+V tomto příkladu Nahraďte zástupné symboly v prostředku ID vašeho předplatného, skupiny prostředků a názvu aplikace Function App. Výstupem jsou přihlašovací údaje přiřazení role, které poskytují přístup k vaší aplikaci Function App. Zkopírujte tento objekt JSON, který můžete použít k ověření z GitHubu.
 
 > [!IMPORTANT]
-> Je vždy dobrým zvykem udělit minimální přístup. To je důvod, proč obor v předchozím příkladu je omezena na konkrétní funkce aplikace a ne celou skupinu prostředků.
+> Je vždy dobrým zvykem udělit minimální přístup. To je důvod, proč je obor v předchozím příkladu omezený na konkrétní aplikaci Function App, a ne na celou skupinu prostředků.
 
-## <a name="download-the-publishing-profile"></a>Stažení profilu publikování
+## <a name="download-the-publishing-profile"></a>Stáhnout profil publikování
 
-Profil publikování aplikace funkce si můžete stáhnout tak, že přejdete na stránku **Přehled** aplikace a kliknete na **Získat profil publikování**.
+Profil publikování aplikace Function App si můžete stáhnout tak, že přejdete na stránku **Přehled** vaší aplikace a kliknete na **získat profil publikování**.
 
    ![Stáhnout profil publikování](media/functions-how-to-github-actions/get-publish-profile.png)
 
 Zkopírujte obsah souboru.
 
-## <a name="configure-the-github-secret"></a>Konfigurace tajného klíče GitHubu
+## <a name="configure-the-github-secret"></a>Konfigurace tajného kódu GitHubu
 
-1. V [GitHubu](https://github.com)přejděte do svého úložiště a vyberte **Nastavení** > **Tajných kódů** > **Přidat nový tajný klíč**.
+1. V [GitHubu](https://github.com)přejděte do úložiště, vyberte **Nastavení** > **tajné klíče** > **Přidat nový tajný kód**.
 
-   ![Přidat tajný klíč](media/functions-how-to-github-actions/add-secret.png)
+   ![Přidat tajný kód](media/functions-how-to-github-actions/add-secret.png)
 
-1. Přidejte nové tajemství.
+1. Přidejte nový tajný kód.
 
-   * Pokud používáte instanční objekt, který jste vytvořili `AZURE_CREDENTIALS` pomocí příkazového příkazu k webu Azure, použijte pro **název**. Potom vložte zkopírovaný výstup objektu JSON pro **hodnotu**a vyberte **Přidat tajný klíč**.
-   * Pokud používáte profil publikování, `SCM_CREDENTIALS` použijte pro **název**. Potom použijte obsah souboru profilu publikování pro **hodnotu**a vyberte **Přidat tajný klíč**.
+   * Pokud používáte instanční objekt, který jste vytvořili pomocí Azure CLI, použijte `AZURE_CREDENTIALS` **název**. Pak vložte zkopírovaný výstup objektu JSON pro **hodnotu**a vyberte **Přidat tajný klíč**.
+   * Pokud používáte profil publikování, použijte `SCM_CREDENTIALS` pro **název**. Pak použijte obsah souboru profilu publikování pro **hodnotu**a vyberte **Přidat tajný kód**.
 
-GitHub teď můžou ověřit vaši funkční aplikaci v Azure.
+GitHub se teď může ověřit pro vaši aplikaci Function App v Azure.
 
 ## <a name="set-up-the-environment"></a>Nastavení prostředí 
 
-Nastavení prostředí se provádí pomocí akce nastavení publikování specifické pro jazyk.
+Nastavení prostředí se provádí pomocí akce nastavení publikování pro konkrétní jazyk.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Následující příklad ukazuje část pracovního postupu, která používá `actions/setup-node` akci k nastavení prostředí:
+Následující příklad ukazuje část pracovního postupu, který používá `actions/setup-node` akci pro nastavení prostředí:
 
 ```yaml
     - name: 'Login via Azure CLI'
@@ -86,7 +86,7 @@ Následující příklad ukazuje část pracovního postupu, která používá `
 
 # <a name="python"></a>[Python](#tab/python)
 
-Následující příklad ukazuje část pracovního postupu, která používá `actions/setup-python` akci k nastavení prostředí:
+Následující příklad ukazuje část pracovního postupu, který používá `actions/setup-python` akci pro nastavení prostředí:
 
 ```yaml
     - name: 'Login via Azure CLI'
@@ -99,9 +99,9 @@ Následující příklad ukazuje část pracovního postupu, která používá `
         python-version: 3.6
 ```
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
-Následující příklad ukazuje část pracovního postupu, která používá `actions/setup-dotnet` akci k nastavení prostředí:
+Následující příklad ukazuje část pracovního postupu, který používá `actions/setup-dotnet` akci pro nastavení prostředí:
 
 ```yaml
     - name: 'Login via Azure CLI'
@@ -116,7 +116,7 @@ Následující příklad ukazuje část pracovního postupu, která používá `
 
 # <a name="java"></a>[Java](#tab/java)
 
-Následující příklad ukazuje část pracovního postupu, která používá `actions/setup-java` akci k nastavení prostředí:
+Následující příklad ukazuje část pracovního postupu, který používá `actions/setup-java` akci pro nastavení prostředí:
 
 ```yaml
     - name: 'Login via Azure CLI'
@@ -132,11 +132,11 @@ Následující příklad ukazuje část pracovního postupu, která používá `
 ```
 ---
 
-## <a name="build-the-function-app"></a>Vytvoření aplikace funkcí
+## <a name="build-the-function-app"></a>Sestavení aplikace Function App
 
-To závisí na jazyku a pro jazyky podporované funkce Azure, tato část by měla být standardní kroky sestavení každého jazyka.
+To závisí na jazyku a jazycích podporovaných nástrojem Azure Functions, Tato část by měla být standardním postupem sestavení každého jazyka.
 
-Následující příklad ukazuje část pracovního postupu, která vytváří aplikaci funkce, která je specifická pro jazyk:
+Následující příklad ukazuje část pracovního postupu, který vytváří aplikaci Function App, která je specifická pro jazyk:
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -167,7 +167,7 @@ Následující příklad ukazuje část pracovního postupu, která vytváří a
         popd
 ```
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```yaml
     - name: 'Run dotnet build'
@@ -197,15 +197,15 @@ Následující příklad ukazuje část pracovního postupu, která vytváří a
 
 ## <a name="deploy-the-function-app"></a>Nasazení aplikace funkcí
 
-Chcete-li nasadit kód do aplikace funkce, `Azure/functions-action` budete muset použít akci. Tato akce má dva parametry:
+K nasazení kódu do aplikace Function App budete muset použít `Azure/functions-action` akci. Tato akce má dva parametry:
 
 |Parametr |Vysvětlení  |
 |---------|---------|
-|**_název aplikace_** | (Povinné) Název aplikace funkce. |
-|_**název slotu**_ | (Nepovinné) Název [slotu nasazení,](functions-deployment-slots.md) do kterého chcete nasadit. Slot musí být již definován ve vaší aplikaci funkce. |
+|**_název aplikace_** | Závaznou Název vaší aplikace Function App |
+|_**název slotu**_ | Volitelné Název [slotu nasazení](functions-deployment-slots.md) , na který chcete nasadit. Slot už musí být definovaný ve vaší aplikaci Function App. |
 
 
-Následující příklad používá verzi `functions-action`1 :
+V následujícím příkladu je použita verze 1 z `functions-action`:
 
 ```yaml
     - name: 'Run Azure Functions Action'
@@ -217,7 +217,7 @@ Následující příklad používá verzi `functions-action`1 :
 
 ## <a name="next-steps"></a>Další kroky
 
-Chcete-li zobrazit kompletní pracovní postup .yaml, podívejte se na jeden ze `functionapp` souborů v [ukázkách pracovního postupu Azure GitHub akce,](https://aka.ms/functions-actions-samples) které mají v názvu. Tyto ukázky můžete použít jako výchozí bod pro váš pracovní postup.
+Pokud chcete zobrazit úplný pracovní postup. yaml, podívejte se na jeden ze souborů na webu [Azure Actions Workflow Samples úložiště](https://aka.ms/functions-actions-samples) , které mají `functionapp` název. Tyto ukázky můžete použít jako výchozí bod pro pracovní postup.
 
 > [!div class="nextstepaction"]
 > [Další informace o akcích GitHubu](https://help.github.com/en/articles/about-github-actions)

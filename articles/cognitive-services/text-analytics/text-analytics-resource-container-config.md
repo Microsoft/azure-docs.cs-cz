@@ -1,7 +1,7 @@
 ---
-title: Konfigurace kontejnerů – analýza textu
+title: Konfigurace kontejnerů – Analýza textu
 titleSuffix: Azure Cognitive Services
-description: Služba Text Analytics poskytuje každému kontejneru společnou konfigurační architekturu, takže můžete snadno konfigurovat a spravovat úložiště, protokolování a telemetrii a nastavení zabezpečení pro vaše kontejnery.
+description: Analýza textu poskytuje každému kontejneru společné konfigurační rozhraní, abyste mohli snadno nakonfigurovat a spravovat úložiště, protokolování a telemetrii a nastavení zabezpečení kontejnerů.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -12,56 +12,56 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: f062fb2f3a653bc1b2845b92e373fdb67ba583d8
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80878654"
 ---
-# <a name="configure-text-analytics-docker-containers"></a>Konfigurace kontejnerů dockeru analýzy textu
+# <a name="configure-text-analytics-docker-containers"></a>Konfigurace kontejnerů Docker Analýza textu
 
-Služba Text Analytics poskytuje každému kontejneru společnou konfigurační architekturu, takže můžete snadno konfigurovat a spravovat úložiště, protokolování a telemetrii a nastavení zabezpečení pro vaše kontejnery.
+Analýza textu poskytuje každému kontejneru společné konfigurační rozhraní, abyste mohli snadno nakonfigurovat a spravovat úložiště, protokolování a telemetrii a nastavení zabezpečení kontejnerů.
 
 ## <a name="configuration-settings"></a>Nastavení konfigurace
 
 [!INCLUDE [Container shared configuration settings table](../../../includes/cognitive-services-containers-configuration-shared-settings-table.md)]
 
 > [!IMPORTANT]
-> Nastavení [`ApiKey`](#apikey-configuration-setting) [`Billing`](#billing-configuration-setting), [`Eula`](#eula-setting) a jsou používány společně a je nutné zadat platné hodnoty pro všechny tři z nich; jinak se kontejner nespustí. Další informace o použití těchto nastavení konfigurace k vytvoření instance kontejneru naleznete v tématu [Fakturace](how-tos/text-analytics-how-to-install-containers.md#billing).
+> Nastavení [`ApiKey`](#apikey-configuration-setting), [`Billing`](#billing-configuration-setting)a [`Eula`](#eula-setting) se používají společně a je nutné zadat platné hodnoty pro všechny tři z nich. v opačném případě se Váš kontejner nespustí. Další informace o tom, jak pomocí těchto nastavení konfigurace vytvořit instanci kontejneru, najdete v tématu [fakturace](how-tos/text-analytics-how-to-install-containers.md#billing).
 
 ## <a name="apikey-configuration-setting"></a>Nastavení konfigurace ApiKey
 
-Toto `ApiKey` nastavení určuje klíč prostředků Azure, který slouží ke sledování fakturačních údajů pro kontejner. Je nutné zadat hodnotu pro apikey a hodnota musí být platný klíč [`Billing`](#billing-configuration-setting) pro prostředek _analýzy textu_ zadaný pro nastavení konfigurace.
+`ApiKey` Nastavení určuje klíč prostředku Azure, který se používá ke sledování fakturačních informací pro kontejner. Je nutné zadat hodnotu pro ApiKey a hodnota musí být platný klíč pro prostředek _Analýza textu_ zadaný pro nastavení [`Billing`](#billing-configuration-setting) konfigurace.
 
-Toto nastavení naleznete na následujícím místě:
+Toto nastavení najdete na následujícím místě:
 
-* Portál Azure: Správa prostředků **Textové analýzy** v části **Klíče**
+* Azure Portal: Správa prostředků **Analýza textu** v části **klíče**
 
-## <a name="applicationinsights-setting"></a>ApplicationInsights, nastavení
+## <a name="applicationinsights-setting"></a>Nastavení ApplicationInsights
 
 [!INCLUDE [Container shared configuration ApplicationInsights settings](../../../includes/cognitive-services-containers-configuration-shared-settings-application-insights.md)]
 
 ## <a name="billing-configuration-setting"></a>Nastavení konfigurace fakturace
 
-Toto `Billing` nastavení určuje identifikátor URI koncového bodu prostředku _Analýzy textu v_ Azure, který slouží k měření fakturačních informací pro kontejner. Je nutné zadat hodnotu pro toto nastavení konfigurace a hodnota musí být platný identifikátor URI koncového bodu pro prostředek __Text Analytics_ v Azure. Kontejner hlásí využití přibližně každých 10 až 15 minut.
+`Billing` Nastavení určuje identifikátor URI koncového bodu _Analýza textu_ prostředku v Azure, který se používá pro informace o fakturaci pro daný kontejner. Je nutné zadat hodnotu pro toto nastavení konfigurace a tato hodnota musí být platným identifikátorem URI koncového bodu pro objekt __Analýza textu_ prostředku v Azure. Kontejner hlásí využití každých 10 až 15 minut.
 
-Toto nastavení naleznete na následujícím místě:
+Toto nastavení najdete na následujícím místě:
 
-* Portál Azure: Přehled **analýzy textu,** označený`Endpoint`
+* Azure Portal: Přehled **Analýza textu** , označený`Endpoint`
 
-|Požaduje se| Name (Název) | Datový typ | Popis |
+|Požaduje se| Název | Datový typ | Popis |
 |--|------|-----------|-------------|
-|Ano| `Billing` | Řetězec | Identifikátor URI koncového bodu fakturace. Další informace o získání fakturačního identifikátoru URI naleznete v [tématu shromažďování požadovaných parametrů](how-tos/text-analytics-how-to-install-containers.md#gathering-required-parameters). Další informace a úplný seznam místních koncových bodů naleznete [v tématu Vlastní názvy subdomén pro služby Cognitive Services](../cognitive-services-custom-subdomains.md). |
+|Ano| `Billing` | Řetězec | Identifikátor URI koncového bodu fakturace Další informace o získání identifikátoru URI fakturace najdete v tématu [shromáždění požadovaných parametrů](how-tos/text-analytics-how-to-install-containers.md#gathering-required-parameters). Další informace a úplný seznam regionálních koncových bodů najdete v tématu [názvy vlastních subdomén pro Cognitive Services](../cognitive-services-custom-subdomains.md). |
 
-## <a name="eula-setting"></a>Nastavení Eula
+## <a name="eula-setting"></a>Nastavení smlouvy EULA
 
 [!INCLUDE [Container shared configuration eula settings](../../../includes/cognitive-services-containers-configuration-shared-settings-eula.md)]
 
-## <a name="fluentd-settings"></a>Nastavení fluentdu
+## <a name="fluentd-settings"></a>Nastavení Fluent
 
 [!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-fluentd.md)]
 
-## <a name="http-proxy-credentials-settings"></a>Nastavení pověření proxy http
+## <a name="http-proxy-credentials-settings"></a>Nastavení přihlašovacích údajů proxy serveru http
 
 [!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-http-proxy.md)]
 
@@ -71,34 +71,34 @@ Toto nastavení naleznete na následujícím místě:
 
 ## <a name="mount-settings"></a>Nastavení připojení
 
-Pomocí vazební připojení číst a zapisovat data do a z kontejneru. Vstupní připojení nebo výstupní připojení můžete určit `--mount` zadáním možnosti v příkazu [spustit docker.](https://docs.docker.com/engine/reference/commandline/run/)
+Ke čtení a zápisu dat do a z kontejneru použijte připojení BIND. Zadáním `--mount` možnosti v příkazu [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) můžete zadat vstupní připojení nebo připojení pro výstup.
 
-Kontejnery analýzy textu nepoužívají vstupní nebo výstupní připojení k ukládání dat školení nebo služby. 
+Kontejnery Analýza textu nepoužívají k ukládání dat školení nebo služby vstupní ani výstupní připojení. 
 
-Přesná syntaxe umístění připojení hostitele se liší v závislosti na hostitelském operačním systému. Umístění připojení [hostitelského počítače](how-tos/text-analytics-how-to-install-containers.md#the-host-computer)navíc nemusí být přístupné z důvodu konfliktu mezi oprávněními používanými účtem služby dockeru a oprávněními umístění připojení hostitele. 
+Přesná syntaxe umístění hostitelského připojení se liší v závislosti na hostitelském operačním systému. Kromě toho je možné, že umístění pro připojení k [hostitelskému počítači](how-tos/text-analytics-how-to-install-containers.md#the-host-computer)není přístupné z důvodu konfliktu mezi oprávněními používanými účtem služby Docker a oprávněním pro umístění připojení hostitele. 
 
-|Nepovinné| Name (Název) | Datový typ | Popis |
+|Nepovinné| Název | Datový typ | Popis |
 |-------|------|-----------|-------------|
-|Nepovolené| `Input` | Řetězec | Kontejnery analýzy textu tuto možnost nepoužívají.|
-|Nepovinné| `Output` | Řetězec | Cíl výstupního připojení. Výchozí hodnota je `/output`. Toto je umístění protokolů. To zahrnuje protokoly kontejnerů. <br><br>Příklad:<br>`--mount type=bind,src=c:\output,target=/output`|
+|Nepovolené| `Input` | Řetězec | Kontejnery Analýza textu nepoužívají.|
+|Nepovinné| `Output` | Řetězec | Cíl připojení pro výstup. Výchozí hodnota je `/output`. Toto je umístění protokolů. To zahrnuje protokoly kontejnerů. <br><br>Příklad:<br>`--mount type=bind,src=c:\output,target=/output`|
 
-## <a name="example-docker-run-commands"></a>Příklad příkazů spuštění dockeru 
+## <a name="example-docker-run-commands"></a>Příklady příkazů pro spuštění Docker 
 
-Následující příklady používají nastavení konfigurace pro ilustraci, jak psát a používat `docker run` příkazy.  Po spuštění kontejneru pokračuje v běhu, dokud jej [nezastavíte.](how-tos/text-analytics-how-to-install-containers.md#stop-the-container)
+Následující příklady používají konfigurační nastavení k ilustraci, jak psát a používat `docker run` příkazy.  Po spuštění bude kontejner dál běžet, dokud ho [nezastavíte](how-tos/text-analytics-how-to-install-containers.md#stop-the-container) .
 
-* **Znak pokračování řádku**: Příkazy dockeru v následujících `\`částech používají jako znak pokračování řádku znak zpětného lomítka . Nazákladě požadavků hostitelského operačního systému jej nahraďte nebo odeberte. 
-* **Pořadí argumentů**: Neměňte pořadí argumentů, pokud nejste velmi dobře obeznámeni s kontejnery dockeru.
+* **Znak pro pokračování řádku**: příkazy Docker v následujících částech používají zpětné lomítko, `\`jako znak pro pokračování řádku. Tuto položku nahraďte nebo odeberte na základě požadavků vašich hostitelských operačních systémů. 
+* **Pořadí argumentů**: Neměňte pořadí argumentů, pokud neznáte kontejnery Docker.
 
-Nahraďte {_argument_name_} vlastními hodnotami:
+Nahradit {_argument_name_} vlastními hodnotami:
 
 | Zástupný symbol | Hodnota | Formát nebo příklad |
 |-------------|-------|---|
-| **{API_KEY}** | Klíč koncového bodu `Text Analytics` prostředku, který `Text Analytics` je k dispozici na stránce Azure Keys. |`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`|
-| **{ENDPOINT_URI}** | Hodnota koncového bodu fakturace `Text Analytics` je dostupná na stránce Přehled Azure.| Viz [shromažďování požadovaných parametrů](how-tos/text-analytics-how-to-install-containers.md#gathering-required-parameters) pro explicitní příklady. |
+| **{API_KEY}** | Klíč koncového bodu prostředku `Text Analytics` , který je k dispozici na stránce klíčů Azure `Text Analytics` . |`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`|
+| **{ENDPOINT_URI}** | Hodnota fakturačního koncového bodu je k dispozici na stránce Přehled Azure `Text Analytics` .| Explicitní příklady najdete v tématu [shromažďování požadovaných parametrů](how-tos/text-analytics-how-to-install-containers.md#gathering-required-parameters) . |
 
 > [!IMPORTANT]
-> `Eula`, `Billing`a `ApiKey` možnosti musí být zadány ke spuštění kontejneru; v opačném případě se kontejner nespustí.  Další informace naleznete v [tématu Fakturace](how-tos/text-analytics-how-to-install-containers.md#billing).
-> Hodnota ApiKey je **klíč** ze `Text Analytics` stránky klíče prostředků Azure. 
+> Pro `Eula`spuštění `Billing`kontejneru musí `ApiKey` být zadány možnosti, a. v opačném případě se kontejner nespustí.  Další informace najdete v tématu [fakturace](how-tos/text-analytics-how-to-install-containers.md#billing).
+> Hodnota ApiKey je **klíč** ze stránky klíče prostředků Azure `Text Analytics` . 
 
 #### <a name="key-phrase-extraction"></a>[Extrakce klíčových frází](#tab/keyphrase)
 
@@ -116,5 +116,5 @@ Nahraďte {_argument_name_} vlastními hodnotami:
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte [si, jak nainstalovat a spustit kontejnery](how-tos/text-analytics-how-to-install-containers.md)
-* Použití více [kontejnerů služeb Cognitive Services](../cognitive-services-container-support.md)
+* Přečtěte si [, jak nainstalovat a spustit kontejnery](how-tos/text-analytics-how-to-install-containers.md) .
+* Použít více [Cognitive Servicesch kontejnerů](../cognitive-services-container-support.md)

@@ -1,7 +1,7 @@
 ---
-title: Detekce jazyka Kubernetes config a nasazení kroky
+title: Rozpoznávání jazyka Kubernetes konfigurace a postup nasazení
 titleSuffix: Azure Cognitive Services
-description: Detekce jazyka Kubernetes config a nasazení kroky
+description: Rozpoznávání jazyka Kubernetes konfigurace a postup nasazení
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,45 +10,45 @@ ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: dc344bd6e4927d39b72ba9af3ae2eeb61d9cec95
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80877804"
 ---
-### <a name="deploy-the-language-detection-container-to-an-aks-cluster"></a>Nasazení kontejneru rozpoznávání jazyka do clusteru AKS
+### <a name="deploy-the-language-detection-container-to-an-aks-cluster"></a>Nasazení kontejneru Rozpoznávání jazyka do clusteru AKS
 
-1. Otevřete azure cli a přihlaste se k Azure.
+1. Otevřete rozhraní příkazového řádku Azure a přihlaste se k Azure.
 
     ```azurecli
     az login
     ```
 
-1. Přihlaste se ke clusteru AKS. Nahraďte `your-cluster-name` a `your-resource-group` zaměřte příslušné hodnoty.
+1. Přihlaste se ke clusteru AKS. `your-cluster-name` Nahraďte `your-resource-group` a odpovídajícími hodnotami.
 
     ```azurecli
     az aks get-credentials -n your-cluster-name -g -your-resource-group
     ```
 
-    Po spuštění tohoto příkazu hlásí zprávu podobnou následující:
+    Po spuštění tohoto příkazu se nahlásí zpráva podobná následující:
 
     ```output
     Merged "your-cluster-name" as current context in /home/username/.kube/config
     ```
 
     > [!WARNING]
-    > Pokud máte k dispozici více předplatných na `az aks get-credentials` vašem účtu Azure a příkaz se vrátí s chybou, běžný problém je, že používáte nesprávné předplatné. Nastavte kontext relace azure cli použít stejné předplatné, které jste vytvořili prostředky s a zkuste to znovu.
+    > Pokud máte na svém účtu Azure k dispozici více předplatných a `az aks get-credentials` příkaz se vrátí k chybě, běžný problém je, že používáte nesprávné předplatné. Nastavte kontext relace Azure CLI tak, aby používal stejné předplatné, se kterým jste prostředky vytvořili, a zkuste to znovu.
     > ```azurecli
     >  az account set -s subscription-id
     > ```
 
-1. Otevřete textový editor podle výběru. Tento příklad používá visual studio kód.
+1. Otevřete textový editor, který vyberete. Tento příklad používá Visual Studio Code.
 
     ```console
     code .
     ```
 
-1. V textovém editoru vytvořte nový soubor s názvem *language.yaml*a vložte do něj následující yaml. Nezapomeňte nahradit `billing/value` a `apikey/value` s vlastními informacemi.
+1. V textovém editoru vytvořte nový soubor s názvem *Language. yaml*a vložte do něj následující YAML. Nezapomeňte nahradit `billing/value` a `apikey/value` vlastními informacemi.
 
     ```yaml
     apiVersion: apps/v1beta1
@@ -95,38 +95,38 @@ ms.locfileid: "80877804"
     ```
 
 1. Uložte soubor a zavřete textový editor.
-1. Spusťte příkaz Kubernetes `apply` se souborem *language.yaml* jako jeho cílem:
+1. Spusťte příkaz Kubernetes `apply` se souborem *Language. yaml* jako jeho cíl:
 
     ```console
     kubectl apply -f language.yaml
     ```
 
-    Po úspěšném použití konfigurace nasazení se zobrazí zpráva podobná následujícímu výstupu:
+    Poté, co příkaz úspěšně použije konfiguraci nasazení, se zobrazí zpráva podobná následujícímu výstupu:
 
     ```output
     deployment.apps "language" created
     service "language" created
     ```
-1. Ověřte, zda byl pod nasazen:
+1. Ověřte, že byla nasazena pod:
 
     ```console
     kubectl get pods
     ```
 
-    Výstup pro provozní stav podu:
+    Výstup pro stav spuštění pod:
 
     ```output
     NAME                         READY     STATUS    RESTARTS   AGE
     language-5c9ccdf575-mf6k5   1/1       Running   0          1m
     ```
 
-1. Ověřte, zda je služba k dispozici, a získejte adresu IP.
+1. Ověřte, zda je služba k dispozici a získejte IP adresu.
 
     ```console
     kubectl get services
     ```
 
-    Výstup pro provozní stav *služby jazyka* v podu:
+    Výstup stavu spuštění *jazykové* služby v části pod:
 
     ```output
     NAME         TYPE           CLUSTER-IP    EXTERNAL-IP      PORT(S)          AGE

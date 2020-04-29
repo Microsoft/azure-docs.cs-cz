@@ -1,7 +1,7 @@
 ---
-title: 'Známé problémy: Migrace z MongoDB do Azure CosmosDB'
+title: 'Známé problémy: migrace z MongoDB do Azure CosmosDB'
 titleSuffix: Azure Database Migration Service
-description: Zjistěte o známých problémech a omezeních migrace s migracemi z MongoDB do Azure Cosmos DB pomocí služby Migrace databáze Azure.
+description: Přečtěte si o známých problémech a omezeních migrace s migracemi z MongoDB na Azure Cosmos DB pomocí Azure Database Migration Service.
 services: database-migration
 author: pochiraju
 ms.author: rajpo
@@ -13,41 +13,41 @@ ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/27/2020
 ms.openlocfilehash: ae5d5f2d282c546f5172ca1c8cb0e420d3b6e96b
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80878047"
 ---
-# <a name="known-issuesmigration-limitations-with-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>Známé problémy/omezení migrace s migrací z MongoDB do rozhraní API Azure Cosmos DB pro MongoDB
+# <a name="known-issuesmigration-limitations-with-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>Známé problémy/omezení migrace s migracemi z MongoDB Azure Cosmos DB do rozhraní API pro MongoDB
 
-Známé problémy a omezení spojené s migrací z MongoDB do rozhraní API Cosmos DB pro MongoDB jsou popsány v následujících částech.
+Známé problémy a omezení související s migrací z MongoDB Cosmos DB do rozhraní API pro MongoDB jsou popsány v následujících částech.
 
-## <a name="migration-fails-as-a-result-of-using-the-incorrect-ssl-cert"></a>Migrace se nezdaří v důsledku použití nesprávného certifikátu SSL
+## <a name="migration-fails-as-a-result-of-using-the-incorrect-ssl-cert"></a>Migrace se nezdařila z důvodu použití nesprávného certifikátu SSL.
 
-* **Příznak**: Tento problém je zřejmý, když se uživatel nemůže připojit ke zdrojovému serveru MongoDB. Přestože mají všechny porty brány firewall otevřené, uživatel se stále nemůže připojit.
-
-| Příčina         | Řešení |
-| ------------- | ------------- |
-| Použití certifikátu podepsaného svým držitelem ve službě Migrace databáze Azure může vést k selhání migrace z důvodu nesprávného certifikátu SSL. Chybová zpráva může obsahovat "Vzdálený certifikát je neplatný podle postupu ověření." | Použijte originální certifikát od certifikační autority.  Certifikáty podepsané svým držitelem se obvykle používají pouze v interních testech. Při instalaci originálnícertifikát z autority certifikační autority pak můžete použít SSL ve službě Migrace databáze Azure bez problémů (připojení k Cosmos DB použít SSL přes Rozhraní API Mongo).<br><br> |
-
-## <a name="unable-to-get-the-list-of-databases-to-map-in-dms"></a>Nelze získat seznam databází mapovat v DMS
-
-* **Příznak**: Nelze získat seznam DB na okno **nastavení databáze** při použití dat z režimu **úložiště Azure** na select **source** blade.
+* **Příznak**: Tento problém je zjevné, když se uživatel nemůže připojit k MongoDB zdrojovému serveru. Bez ohledu na to, že se všechny porty brány firewall otevřou, se uživatel stále nemůže připojit.
 
 | Příčina         | Řešení |
 | ------------- | ------------- |
-| Připojovací řetězec účtu úložiště chybí informace SAS a proto nelze ověřit. | Vytvořte SAS na kontejneru objektů blob v Průzkumníku úložiště a použijte adresu URL s informacemi o kontejneru SAS jako připojovací řetězec podrobností zdroje.<br><br> |
+| Použití certifikátu podepsaného svým držitelem v Azure Database Migration Service může způsobit selhání migrace z důvodu nesprávného certifikátu SSL. Chybová zpráva může obsahovat "vzdálený certifikát je podle ověřovací procedury neplatný." | Použijte originální certifikát od certifikační autority.  Certifikáty podepsané svým držitelem se obecně používají pouze při interních testech. Při instalaci originálního certifikátu od autority certifikační autority můžete použít protokol SSL v Azure Database Migration Service bez problému (připojení k Cosmos DB používat protokol SSL přes Mongo API).<br><br> |
 
-## <a name="using-an-unsupported-version-of-the-database"></a>Použití nepodporované verze databáze
+## <a name="unable-to-get-the-list-of-databases-to-map-in-dms"></a>Nepovedlo se získat seznam databází pro mapování v DMS.
 
-* **Příznak**: Migrace se nezdaří.
+* **Příznak**: v okně **nastavení databáze** nejde získat seznam dB při použití **dat z režimu Azure Storage** v okně **Vybrat zdroj** .
 
 | Příčina         | Řešení |
 | ------------- | ------------- |
-| Pokusíte se migrovat do Azure Cosmos DB z nepodporované verze MongoDB. | Jako nové verze MongoDB jsou vydány, jsou testovány k zajištění kompatibility se službou Migrace databáze Azure a služba je pravidelně aktualizována, aby přijímala nejnovější verze. Pokud je okamžitá potřeba migrovat, jako řešení můžete exportovat databáze/kolekce do Služby Azure Storage a pak nasměrovat zdroj na výsledný výpis. Vytvořte SAS v kontejneru objektů blob v Průzkumníku úložiště a pak použijte adresu URL s informacemi o Kontejneru SAS jako připojovací řetězec podrobností zdroje.<br><br> |
+| V připojovacím řetězci účtu úložiště chybí informace o SAS, takže se nedá ověřit. | V Průzkumník služby Storage vytvořte SAS pro kontejner objektů BLOB a použijte adresu URL s informacemi o SAS kontejneru jako zdrojový připojovací řetězec.<br><br> |
+
+## <a name="using-an-unsupported-version-of-the-database"></a>Používání nepodporované verze databáze
+
+* **Příznak**: migrace se nezdařila.
+
+| Příčina         | Řešení |
+| ------------- | ------------- |
+| Pokusíte se migrovat na Azure Cosmos DB z nepodporované verze MongoDB. | Při vydání nových verzí MongoDB jsou testovány, aby se zajistila kompatibilita s Azure Database Migration Service a služba se pravidelně aktualizuje, aby přijímala nejnovější verze. Pokud je potřeba migrovat okamžitě, jako alternativní řešení můžete exportovat databáze nebo kolekce do Azure Storage a pak zdroj nasměrovat na výsledný výpis. V Průzkumník služby Storage vytvořte SAS pro kontejner objektů BLOB a pak použijte adresu URL s informacemi o SAS kontejneru jako zdrojový připojovací řetězec podrobností.<br><br> |
 
 ## <a name="next-steps"></a>Další kroky
 
-* Zobrazit kurz [Migrace MongoDB do rozhraní API Azure Cosmos DB pro MongoDB online pomocí DMS](tutorial-mongodb-cosmos-db-online.md).
-* Zobrazit kurz [Migrace MongoDB do rozhraní API Azure Cosmos DB pro MongoDB offline pomocí DMS](tutorial-mongodb-cosmos-db.md).
+* Podívejte se na kurz [migrace MongoDB Azure Cosmos DB a rozhraní API pro MongoDB online pomocí DMS](tutorial-mongodb-cosmos-db-online.md).
+* Podívejte se na kurz [migrace MongoDB a rozhraní API pro Azure Cosmos DB pro MongoDB v režimu offline pomocí DMS](tutorial-mongodb-cosmos-db.md).

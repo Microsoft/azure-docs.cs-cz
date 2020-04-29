@@ -1,5 +1,5 @@
 ---
-title: Aktualizace uživatelského jména a hesla RDP v Prostředí PowerShell
+title: Aktualizace uživatelského jména a hesla protokolu RDP v PowerShellu
 description: Ukázkový skript Azure PowerShellu – Aktualizace uživatelského jména a hesla protokolu RDP pro všechny uzly clusteru Service Fabric konkrétního typu
 services: service-fabric
 documentationcenter: ''
@@ -15,10 +15,10 @@ ms.date: 03/19/2018
 ms.author: atsenthi
 ms.custom: mvc
 ms.openlocfilehash: b7f229162ed745408121d898f5af516d22a0c039
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80984925"
 ---
 # <a name="update-the-admin-username-and-password-of-the-vms-in-a-cluster"></a>Aktualizace uživatelského jména a hesla správce virtuálních počítačů v clusteru
@@ -39,13 +39,13 @@ Tento skript používá následující příkazy: Každý příkaz v tabulce odk
 
 | Příkaz | Poznámky |
 |---|---|
-| [Získat-AzVmss](/powershell/module/az.compute/get-azvmss) | Získá vlastnosti typu uzlu clusteru (škálovací sada virtuálních počítačů).   |
-| [Přidat-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension)| Přidá do škálovací sady virtuálních počítačů rozšíření.|
-| [Aktualizace-AzVmss](/powershell/module/az.compute/update-azvmss)|Aktualizuje stav škálovací sady virtuálních počítačů na stav místního objektu škálovací sady virtuálních počítačů.|
+| [Get-AzVmss](/powershell/module/az.compute/get-azvmss) | Získá vlastnosti typu uzlu clusteru (škálovací sada virtuálních počítačů).   |
+| [Add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension)| Přidá do škálovací sady virtuálních počítačů rozšíření.|
+| [Update – AzVmss](/powershell/module/az.compute/update-azvmss)|Aktualizuje stav škálovací sady virtuálních počítačů na stav místního objektu škálovací sady virtuálních počítačů.|
 
 ## <a name="duration"></a>Doba trvání
 
-Jeden typ uzlu s pěti uzly, například má dobu trvání 45 až 60 minut změnit uživatelské jméno nebo heslo. 
+Jeden typ uzlu s pěti uzly má například dobu trvání 45 až 60 minut ke změně uživatelského jména nebo hesla. 
 
 ## <a name="next-steps"></a>Další kroky
 
