@@ -1,6 +1,6 @@
 ---
-title: Skript PowerShellu pro aktualizaci RU/s pro rozhraní API tabulky Azure Cosmos DB
-description: Zjistěte, jak pomocí skriptu PowerShellu aktualizovat propustnost pro databázi nebo kontejner v účtu rozhraní API tabulky Db Azure Cosmos
+title: Skript PowerShellu pro aktualizaci RU/s pro Azure Cosmos DB rozhraní API pro tabulky
+description: Naučte se používat skript prostředí PowerShell k aktualizaci propustnosti databáze nebo kontejneru v Azure Cosmos DB rozhraní API pro tabulkym účtu.
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
@@ -8,13 +8,13 @@ ms.topic: sample
 ms.date: 03/18/2020
 ms.author: mjbrown
 ms.openlocfilehash: 101e9e5591198b84bb9bba886249b0784cc6b43e
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80365953"
 ---
-# <a name="update-rus-for-a-table-for-azure-cosmos-db---table-api"></a>Aktualizace RU/s pro tabulku pro Azure Cosmos DB – rozhraní TABLE API
+# <a name="update-rus-for-a-table-for-azure-cosmos-db---table-api"></a>Aktualizace RU/s pro tabulku pro Azure Cosmos DB rozhraní API pro tabulky
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -39,7 +39,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | Příkaz | Poznámky |
 |---|---|
 |**Azure Cosmos DB**| |
-| [Set-AzCosmosDBTable](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbtable) | Vytvoří nebo aktualizuje tabulku rozhraní API tabulky Cosmos DB. |
+| [Set-AzCosmosDBTable](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbtable) | Vytvoří nebo aktualizuje tabulku Cosmos DB rozhraní API pro tabulky. |
 |**Skupiny prostředků Azure**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 |||

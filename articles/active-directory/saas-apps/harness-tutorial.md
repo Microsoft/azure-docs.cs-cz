@@ -17,10 +17,10 @@ ms.date: 09/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 21409eb056743d92db42e0787af24f8cec07db1b
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "72026959"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-harness"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s využitím
@@ -33,7 +33,7 @@ V tomto kurzu se dozvíte, jak integrovat pomocí Azure Active Directory (Azure 
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -50,7 +50,7 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 
 Pokud chcete nakonfigurovat integraci se systémem do služby Azure AD, musíte z Galerie přidat ze seznamu spravovaných aplikací SaaS.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
 1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
@@ -70,7 +70,7 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
     1. **[Vytvořte testovacího uživatele](#create-harness-test-user)** , abyste měli protějšek B. Simon ve svazku, který je propojený s reprezentací uživatele v Azure AD.
 1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
+## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
@@ -82,11 +82,11 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , zadejte v **základní části Konfigurace SAML** hodnoty následujících polí:
 
-    Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://app.harness.io/gateway/api/users/saml-login?accountId=<harness_account_id>`.
+    Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://app.harness.io/gateway/api/users/saml-login?accountId=<harness_account_id>`
 
 1. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    Do textového pole **přihlašovací adresa URL** zadejte adresu url: `https://app.harness.io/`.
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL:`https://app.harness.io/`
 
     > [!NOTE]
     > Hodnota adresy URL odpovědi není reálné číslo. V části Konfigurace nástroje pro **jednotné přihlašování** se zobrazí skutečná adresa URL odpovědi, která se vysvětluje později v tomto kurzu. Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -141,11 +141,11 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 3. Pokud chcete nastavit vlastní nastavení ručně, otevřete nové okno webového prohlížeče a přihlaste se k webovému serveru společnosti jako správce a proveďte následující kroky:
 
-4. V pravém horním rohu stránky klikněte na **průběžné zabezpečení** > **Správa přístupu** > **nastavení ověřování**.
+4. V pravém horním rohu stránky klikněte na > **nastavení ověřování**pro správu **nepřetržitého** > **přístupu**zabezpečení.
 
     ![Konfigurace svazku](./media/harness-tutorial/configure01.png)
 
-5. V části **poskytovatelé jednotného přihlašování** klikněte na **+ Přidat poskytovatele jednotného přihlašování** > **SAML**.
+5. V části **Zprostředkovatelé jednotného přihlašování** klikněte na >  **+ Přidat poskytovatele jednotného přihlašování****SAML**.
 
     ![Konfigurace svazku](./media/harness-tutorial/configure03.png)
 
@@ -169,7 +169,7 @@ Pokud chcete uživatelům Azure AD povolit, aby se přihlásili ke svým kabelů
 
 1. Přihlaste se ke službě jako správce.
 
-1. V pravém horním rohu stránky klikněte na **průběžné zabezpečení** > **Správa přístupu** > **Uživatelé**.
+1. V pravém horním rohu stránky klikněte na **nepřetržitý** > **uživatel****pro správu** > zabezpečení přístupu.
 
     ![Konfigurace svazku](./media/harness-tutorial/configure04.png)
 
@@ -181,7 +181,7 @@ Pokud chcete uživatelům Azure AD povolit, aby se přihlásili ke svým kabelů
 
     ![Konfigurace svazku](./media/harness-tutorial/configure06.png)
 
-    a. Do textového pole **e-mailová adresa** zadejte e-maily uživatele, jako `B.simon@contoso.com`.
+    a. Do textového pole **e-mailová adresa** zadejte e-maily uživatele, `B.simon@contoso.com`jako je.
 
     b. Vyberte **skupiny uživatelů**.
 
@@ -193,7 +193,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Po kliknutí na dlaždici se předepsanou na přístupovém panelu byste měli být automaticky přihlášení ke svazku, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály a zdroje informací
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

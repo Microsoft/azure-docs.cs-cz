@@ -15,13 +15,13 @@ ms.date: 12/06/2017
 ms.author: atsenthi
 ms.custom: ''
 ms.openlocfilehash: 34f2ae6f3a2ff3adc35794d6e7dfd682640c646b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75614719"
 ---
-# <a name="update-an-application-using-the-service-fabric-cli"></a>Aktualizace aplikace pomocí cli service fabric
+# <a name="update-an-application-using-the-service-fabric-cli"></a>Aktualizace aplikace pomocí rozhraní příkazového řádku Service Fabric
 
 Tento ukázkový skript odešle novou verzi existující aplikace a potom upgraduje nasazenou aplikaci novými bity.
 

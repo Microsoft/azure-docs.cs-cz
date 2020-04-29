@@ -17,10 +17,10 @@ ms.date: 12/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ef28b95e779e2b814b0ae91059c3edd12644d7c9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75430938"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-leapsome"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Leapsome
@@ -50,7 +50,7 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 
 Pokud chcete nakonfigurovat integraci Leapsome do služby Azure AD, musíte přidat Leapsome z Galerie do svého seznamu spravovaných aplikací SaaS.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
 1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
@@ -70,7 +70,7 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
     * **[Vytvořte Leapsome Test User](#create-leapsome-test-user)** -to, abyste měli protějšek B. Simon v Leapsome, která je propojená s reprezentací uživatele v Azure AD.
 1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
+## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
@@ -82,13 +82,13 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , zadejte v **základní části Konfigurace SAML** hodnoty následujících polí:
 
-    a. Do textového pole **identifikátor** zadejte adresu URL: `https://www.leapsome.com`
+    a. Do textového pole **identifikátor** zadejte adresu URL:`https://www.leapsome.com`
 
-    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://www.leapsome.com/api/users/auth/saml/<CLIENTID>/assert`
+    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://www.leapsome.com/api/users/auth/saml/<CLIENTID>/assert`
 
 1. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://www.leapsome.com/api/users/auth/saml/<CLIENTID>/login`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://www.leapsome.com/api/users/auth/saml/<CLIENTID>/login`
 
     > [!NOTE]
     > Hodnota adresy URL předchozí odpovědi a přihlašovací adresy URL nejsou reálné hodnoty. Ty budete aktualizovat o skutečné hodnoty, které jsou vysvětleny dále v tomto kurzu.
@@ -99,12 +99,12 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě toho očekává aplikace Leapsome několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
 
-    | Name (Název) | Zdrojový atribut | Obor názvů |
+    | Název | Zdrojový atribut | Obor názvů |
     | ---------------| --------------- | --------- |  
-    | firstname | user.givenname | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
-    | Příjmení | user.surname | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
-    | title | user.jobtitle | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
-    | fotka | Adresa URL obrázku zaměstnance | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | FirstName | User. křestní jméno | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | polím | User. příjmení | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | title | User. jobtitle | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | obrázk | Adresa URL obrázku zaměstnance | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
     | | |
 
     > [!Note]
@@ -112,25 +112,25 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
 
-    ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
+    ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
 1. V části **Nastavení Leapsome** zkopírujte na základě vašeho požadavku příslušné adresy URL.
 
     ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
 1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
-1. Vyberte **nového uživatele** v horní části obrazovky.
+1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k Leapsome.
 
@@ -138,7 +138,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 1. V seznamu aplikace vyberte **Leapsome**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
-   ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+   ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
 1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
@@ -168,21 +168,21 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     d. Do textového pole **Adresa URL pro přihlášení SSO (poskytovatel identity)** vložte hodnotu **přihlašovací adresa URL**, kterou jste zkopírovali z Azure Portal.
 
-    e. Zkopírujte certifikát, který jste si stáhli z Azure Portal bez `--BEGIN CERTIFICATE and END CERTIFICATE--` komentářů a vložte ho do textového pole **certifikát (poskytnutý zprostředkovatelem identity)** .
+    e. Zkopírujte certifikát, který jste si stáhli z Azure Portal `--BEGIN CERTIFICATE and END CERTIFICATE--` bez komentářů a vložte ho do textového pole **certifikát (poskytnutý zprostředkovatelem identity)** .
 
     f. Klikněte na **aktualizovat nastavení jednotného přihlašování**.
 
 ### <a name="create-leapsome-test-user"></a>Vytvořit testovacího uživatele Leapsome
 
-V této části vytvoříte uživatele s názvem Britta Simon v Leapsome. Pokud chcete přidat uživatele nebo doménu, která musí být přidána do seznamu povolených platforem Leapsome, pracujte s [týmem podpory klienta Leapsome](mailto:support@leapsome.com) . Pokud je doména přidána týmem, uživatelé se automaticky zřídí pro platformu Leapsome. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+V této části vytvoříte uživatele s názvem Britta Simon v Leapsome. Pokud chcete přidat uživatele nebo doménu, která musí být přidána do seznamu povolených platforem Leapsome, pracujte s [týmem podpory klienta Leapsome](mailto:support@leapsome.com) . Pokud je doména přidána týmem, uživatelé se automaticky zřídí pro platformu Leapsome. Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
 ## <a name="test-sso"></a>Test SSO
 
-V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
 Když na přístupovém panelu kliknete na dlaždici Leapsome, měli byste se automaticky přihlásit k Leapsome, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály a zdroje informací
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

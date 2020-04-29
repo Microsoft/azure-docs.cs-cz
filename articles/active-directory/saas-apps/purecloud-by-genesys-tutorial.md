@@ -17,10 +17,10 @@ ms.date: 10/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: dac8e0f2e10906f2cc56ecf86e0cc70947cb7e85
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78897783"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-purecloud-by-genesys"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s PureCloud pomocí Genesys
@@ -73,7 +73,7 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
     1. **[Vytvořte PureCloud pomocí Genesys testovacího uživatele](#create-purecloud-by-genesys-test-user)** , aby měl protějšek B. Simon v PureCloud by Genesys, který je propojený s reprezentací uživatele Azure AD.
 1. **[Otestujte jednotné přihlašování](#test-sso)** a ověřte, jestli konfigurace funguje.
 
-## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
+## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
 
 Pokud chcete povolit jednotné přihlašování služby Azure AD v Azure Portal, postupujte následovně:
 
@@ -125,18 +125,18 @@ Pokud chcete povolit jednotné přihlašování služby Azure AD v Azure Portal,
 
     | Název | Zdrojový atribut|
     | ---------------| --------------- |
-    | E-mail | user.userprincipalname |
-    | Název organizace | `Your organization name` |
+    | E-mailu | User. userPrincipalName |
+    | OrganizationName | `Your organization name` |
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
 
-    ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
+    ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
 1. V části **Nastavení PureCloud podle Genesys** zkopírujte příslušnou adresu URL (nebo adresy URL) na základě vašich požadavků.
 
     ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
 V této části vytvoříte testovacího uživatele s názvem B. Simon v Azure Portal:
 
@@ -148,7 +148,7 @@ V této části vytvoříte testovacího uživatele s názvem B. Simon v Azure P
    1. Zaškrtněte políčko **Zobrazit heslo** a potom si poznamenejte hodnotu zobrazenou v poli **heslo** .
    1. Vyberte **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části nastavíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k PureCloud pomocí Genesys.
 
@@ -156,7 +156,7 @@ V této části nastavíte B. Simon pro použití jednotného přihlašování A
 1. V seznamu aplikace vyberte **PureCloud podle Genesys**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
-   ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+   ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
 1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
@@ -188,7 +188,7 @@ V této části nastavíte B. Simon pro použití jednotného přihlašování A
 
     ![Konfigurace jednotného přihlašování](./media/purecloud-by-genesys-tutorial/configure06.png)
 
-    e. Vyberte **Save** (Uložit).
+    e. Vyberte **Uložit**.
 
 ### <a name="create-purecloud-by-genesys-test-user"></a>Vytvořit PureCloud podle Genesys testovacího uživatele
 

@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Návrh víceklientské databáze – Hyperscale (Citus) – databáze Azure pro PostgreSQL'
-description: Tento kurz ukazuje, jak vytvořit, naplnit a dotazovat distribuované tabulky v Azure Database for PostgreSQL Hyperscale (Citus).
+title: 'Kurz: návrh databáze s více instancemi – Citus (multi-tenant) – Azure Database for PostgreSQL'
+description: V tomto kurzu se dozvíte, jak vytvořit, naplnit a dotazovat distribuované tabulky na Azure Database for PostgreSQL Citus (Scale).
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
@@ -10,24 +10,24 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 05/14/2019
 ms.openlocfilehash: 17ac29de243f4abfff1cfc83fc6424799978bf0e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74978147"
 ---
-# <a name="tutorial-design-a-multi-tenant-database-by-using-azure-database-for-postgresql--hyperscale-citus"></a>Kurz: návrh víceklientské databáze pomocí Azure Database for PostgreSQL – Hyperscale (Citus)
+# <a name="tutorial-design-a-multi-tenant-database-by-using-azure-database-for-postgresql--hyperscale-citus"></a>Kurz: návrh databáze s více klienty pomocí Azure Database for PostgreSQL – Citus (škálování)
 
-V tomto kurzu pomocí Azure Database for PostgreSQL – Hyperscale (Citus) se dozvíte, jak:
+V tomto kurzu se naučíte, jak používat Azure Database for PostgreSQL-Citus (škálování na více procesorů):
 
 > [!div class="checklist"]
 > * Vytvoření skupiny serverů Hyperscale (Citus)
 > * Vytvoření schématu pomocí nástroje psql
-> * Tabulky šmejení mezi uzly
+> * Tabulky horizontálních oddílů napříč uzly
 > * Ingestace ukázkových dat
-> * Dotaz na data klienta
+> * Dotaz na data tenanta
 > * Sdílení dat mezi klienty
-> * Přizpůsobení schématu na tenanta
+> * Přizpůsobení schématu pro jednotlivé klienty
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -35,9 +35,9 @@ V tomto kurzu pomocí Azure Database for PostgreSQL – Hyperscale (Citus) se do
 
 ## <a name="use-psql-utility-to-create-a-schema"></a>Vytvoření schématu pomocí nástroje psql
 
-Po připojení k databázi Azure pro PostgreSQL – Hyperscale (Citus) pomocí psql můžete dokončit některé základní úkoly. Tento kurz vás provede vytvořením webové aplikace, která inzerentům umožní sledovat jejich kampaně.
+Po připojení k Azure Database for PostgreSQL – Citus () pomocí psql můžete dokončit některé základní úlohy. Tento kurz vás provede vytvořením webové aplikace, která umožňuje inzerentům sledovat své kampaně.
 
-Aplikaci může používat více společností, takže vytvoříme tabulku, která bude držet společnosti a další pro jejich kampaně. V konzoli psql spusťte tyto příkazy:
+Aplikace může používat více společností, takže vytvoříme tabulku, která bude uchovávat společnosti a jinou pro své kampaně. V konzole psql spusťte tyto příkazy:
 
 ```sql
 CREATE TABLE companies (
@@ -63,7 +63,7 @@ CREATE TABLE campaigns (
 );
 ```
 
-Každá kampaň se vyplatí za provozování reklam. Přidejte tabulku pro reklamy příliš spuštěním následující kód v psql po výše uvedený kód:
+Každá kampaň bude platit pro spuštění reklam. Přidejte tabulku pro reklamu, a to spuštěním následujícího kódu v psql po výše uvedeném kódu:
 
 ```sql
 CREATE TABLE ads (
@@ -84,7 +84,7 @@ CREATE TABLE ads (
 );
 ```
 
-Nakonec budeme sledovat statistiky o kliknutích a zobrazeních pro každou reklamu:
+Nakonec budeme sledovat statistiku kliknutí a potlačení pro každou reklamu:
 
 ```sql
 CREATE TABLE clicks (
@@ -118,19 +118,19 @@ CREATE TABLE impressions (
 );
 ```
 
-Nově vytvořené tabulky můžete zobrazit v seznamu tabulek, které jsou nyní v psql, spuštěním:
+Nově vytvořené tabulky můžete zobrazit v seznamu tabulek nyní v psql spuštěním:
 
 ```postgres
 \dt
 ```
 
-Víceklientské aplikace můžete vynutit jedinečnost pouze na klienta, což je důvod, proč všechny primární a cizí klíče patří ID společnosti.
+Víceklientské aplikace můžou vymáhat jedinečnost jenom pro každého tenanta, což znamená, proč všechny primární a cizí klíče zahrnují ID společnosti.
 
-## <a name="shard-tables-across-nodes"></a>Tabulky šmejení mezi uzly
+## <a name="shard-tables-across-nodes"></a>Tabulky horizontálních oddílů napříč uzly
 
-Nasazení hyperškálování ukládá řádky tabulky na různých uzlech na základě hodnoty sloupce určeného uživatelem. Tento "distribuční sloupec" označuje, který tenant vlastní které řádky.
+Nasazení v rámci škálování ukládá řádky tabulky na různých uzlech na základě hodnoty uživatelem označeného sloupce. Tento "distribuční sloupec" označuje, ve kterém tenantovi vlastní řádky.
 
-Nastavíme sloupec distribuce jako\_ID společnosti, identifikátor klienta. V psql spusťte tyto funkce:
+Pojďme nastavit distribuční sloupec jako ID společnosti\_, identifikátor tenanta. V psql spusťte tyto funkce:
 
 ```sql
 SELECT create_distributed_table('companies',   'id');
@@ -142,7 +142,7 @@ SELECT create_distributed_table('impressions', 'company_id');
 
 ## <a name="ingest-sample-data"></a>Ingestace ukázkových dat
 
-Mimo psql nyní, v normálním příkazovém řádku, stáhněte ukázkové datové sady:
+Mimo psql nyní na běžném příkazovém řádku Stáhněte ukázkové sady dat:
 
 ```bash
 for dataset in companies campaigns ads clicks impressions geo_ips; do
@@ -150,7 +150,7 @@ for dataset in companies campaigns ads clicks impressions geo_ips; do
 done
 ```
 
-Zpět uvnitř psql, hromadné načtení dat. Ujistěte se, že spustit psql ve stejném adresáři, kde jste stáhli datové soubory.
+Zpět v rámci psql data hromadného načtení. Nezapomeňte spustit psql ve stejném adresáři, kam jste stáhli datové soubory.
 
 ```sql
 SET CLIENT_ENCODING TO 'utf8';
@@ -162,11 +162,11 @@ SET CLIENT_ENCODING TO 'utf8';
 \copy impressions from 'impressions.csv' with csv
 ```
 
-Tato data budou nyní rozložena mezi pracovní uzly.
+Tato data se teď rozšíří mezi pracovními uzly.
 
-## <a name="query-tenant-data"></a>Dotaz na data klienta
+## <a name="query-tenant-data"></a>Dotaz na data tenanta
 
-Když aplikace požaduje data pro jednoho klienta, databáze může spustit dotaz na jednom pracovním uzlu. Dotazy s jedním tenantem filtrují podle jednoho ID klienta. Následující filtry `company_id = 5` dotazů například pro reklamy a zobrazení. Zkuste spustit v psql vidět výsledky.
+Když aplikace požaduje data pro jednoho tenanta, databáze může spustit dotaz na jednom pracovním uzlu. Dotazy jednoho tenanta se filtrují podle jednoho ID tenanta. Například následující filtry dotazu vyfiltrují `company_id = 5` reklamy a natisky. Zkuste ho spustit v psql, aby se zobrazily výsledky.
 
 ```sql
 SELECT a.campaign_id,
@@ -185,9 +185,9 @@ ORDER BY a.campaign_id, n_impressions desc;
 
 ## <a name="share-data-between-tenants"></a>Sdílení dat mezi klienty
 
-Až dosud byly všechny `company_id`tabulky distribuovány aplikacemi , ale některá data přirozeně "nepatří" k žádnému konkrétnímu klientovi a lze je sdílet. Například všechny společnosti v příkladu platformy pro reklamy mohou chtít získat geografické informace pro své publikum na základě IP adres.
+Až do chvíle, kdy byly všechny tabulky `company_id`distribuovány, ale některá data nejsou přirozeně "patřila" do jakéhokoli klienta, konkrétně a lze je sdílet. Například všechny společnosti v ukázkové platformě služby AD mohou chtít získat geografické informace pro svou cílovou skupinu na základě IP adres.
 
-Vytvořte tabulku pro uložení sdílených geografických informací. Spusťte v psql následující příkazy:
+Vytvořte tabulku pro ukládání sdílených geografických informací. V psql spusťte následující příkazy:
 
 ```sql
 CREATE TABLE geo_ips (
@@ -199,20 +199,20 @@ CREATE TABLE geo_ips (
 CREATE INDEX ON geo_ips USING gist (addrs inet_ops);
 ```
 
-Dále `geo_ips` vytvořte "referenční tabulku" pro uložení kopie tabulky na každém pracovním uzlu.
+Dále vytvořte `geo_ips` odkazovou tabulku pro uložení kopie tabulky v každém pracovním uzlu.
 
 ```sql
 SELECT create_reference_table('geo_ips');
 ```
 
-Načtěte jej s ukázkovými daty. Nezapomeňte spustit tento příkaz v psql z adresáře, kde jste stáhli datovou sadu.
+Načtěte ho s ukázkovými daty. Nezapomeňte spustit tento příkaz v psql zevnitř v adresáři, do kterého jste stáhli datovou sadu.
 
 ```sql
 \copy geo_ips from 'geo_ips.csv' with csv
 ```
 
-Připojení k tabulce kliknutí\_pomocí geografických ips je efektivní na všech uzlech.
-Zde je připojit se k nalezení místa každého, kdo klikl na reklamu
+Spojování tabulky kliknutí s geografickými\_IP adresami je efektivní na všech uzlech.
+Tady je spojení, kde najdete umístění všech uživatelů, kteří na reklamu klikli.
 290. Zkuste spustit dotaz v psql.
 
 ```sql
@@ -223,14 +223,14 @@ SELECT c.id, clicked_at, latlon
    AND c.ad_id = 290;
 ```
 
-## <a name="customize-the-schema-per-tenant"></a>Přizpůsobení schématu na tenanta
+## <a name="customize-the-schema-per-tenant"></a>Přizpůsobení schématu pro jednotlivé klienty
 
-Každý klient může potřebovat ukládat speciální informace, které ostatní nepotřebují. Všichni klienti však sdílejí společnou infrastrukturu se schématem identických databází. Kam mohou být další data?
+Každý tenant může potřebovat ukládat speciální informace, které jiné nevyžadují. Všichni klienti ale sdílejí společnou infrastrukturu se stejným schématem databáze. Kde může další data přejít?
 
-Jedním z triků je použít otevřený typ sloupce, jako je JSONB PostgreSQL.  Naše schéma má pole JSONB `clicks` s `user_data`názvem .
-Společnost (řekněme společnost pět) může sloupec použít ke sledování, zda je uživatel na mobilním zařízení.
+Jedním z zdvihů je použití typu otevřeného a koncového sloupce, jako je PostgreSQL JSONB.  Naše schéma má `clicks` VOLANÉ `user_data`pole JSONB.
+Společnost (vyslovit pět firem) může pomocí sloupce sledovat, jestli je uživatel v mobilním zařízení.
 
-Tady je dotaz, který zjistí, kdo klikne na další: mobilní nebo tradiční návštěvníky.
+Tady je dotaz, který zjistí, kdo klikne na další: mobilní nebo tradiční Návštěvníci.
 
 ```sql
 SELECT
@@ -242,7 +242,7 @@ GROUP BY user_data->>'is_mobile'
 ORDER BY count DESC;
 ```
 
-Můžeme optimalizovat tento dotaz pro jednu společnost vytvořením [částečného indexu](https://www.postgresql.org/docs/current/static/indexes-partial.html).
+Tento dotaz pro jednu společnost můžeme optimalizovat vytvořením [částečného indexu](https://www.postgresql.org/docs/current/static/indexes-partial.html).
 
 ```sql
 CREATE INDEX click_user_data_is_mobile
@@ -250,7 +250,7 @@ ON clicks ((user_data->>'is_mobile'))
 WHERE company_id = 5;
 ```
 
-Obecněji můžeme vytvořit [indexy GIN](https://www.postgresql.org/docs/current/static/gin-intro.html) na každý klíč a hodnotu ve sloupci.
+Obecněji můžeme vytvořit [gin indexy](https://www.postgresql.org/docs/current/static/gin-intro.html) pro každý klíč a hodnotu ve sloupci.
 
 ```sql
 CREATE INDEX click_user_data
@@ -267,12 +267,12 @@ SELECT id
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-V předchozích krocích jste vytvořili prostředky Azure ve skupině serverů. Pokud neočekáváte, že budete tyto prostředky v budoucnu potřebovat, odstraňte skupinu serverů. Stiskněte tlačítko *Odstranit* na stránce *Přehled* pro skupinu serverů. Po zobrazení výzvy na vyskakovací stránce potvrďte název skupiny serverů a klepněte na tlačítko *Konečné odstranění.*
+V předchozích krocích jste vytvořili prostředky Azure ve skupině serverů. Pokud neočekáváte, že tyto prostředky budete potřebovat v budoucnu, odstraňte skupinu serverů. Stiskněte tlačítko *Odstranit* na stránce *Přehled* pro skupinu serverů. Po zobrazení výzvy na místní stránce potvrďte název skupiny serverů a klikněte na tlačítko poslední *Odstranit* .
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste se naučili, jak zřídit skupinu serveru Hyperscale (Citus). Připojili jste k němu psql, vytvořili schéma a distribuovaná data. Naučili jste se dotazovat data v rámci klienta i mezi nimi a přizpůsobit schéma na klienta.
+V tomto kurzu jste zjistili, jak zřídit skupinu serverů (Citus). K němu jste se připojili pomocí psql, vytvořili schéma a distribuovaná data. Seznámili jste se s dotazem na data uvnitř i mezi klienty a k přizpůsobení schématu pro každého tenanta.
 
-Dále se dozvíte o konceptech hyperškálování.
+V dalším kroku se dozvíte o konceptech škálování.
 > [!div class="nextstepaction"]
-> [Typy uzlů s převažovací kapacitou](https://aka.ms/hyperscale-concepts)
+> [Typy uzlů s měřítkem](https://aka.ms/hyperscale-concepts)

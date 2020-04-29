@@ -1,5 +1,5 @@
 ---
-title: Výuka – nasazení lampy na virtuálním počítači s Linuxem v Azure
+title: Kurz – nasazení LAMPy na virtuálním počítači se systémem Linux v Azure
 description: V tomto kurzu zjistíte, jak nainstalovat stack LAMP na virtuální počítač s Linuxem v Azure
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 01/30/2019
 ms.author: cynthn
 ms.openlocfilehash: 2a636ae5609d9cb5c81782af5a419a27d7880106
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80154368"
 ---
 # <a name="tutorial-install-a-lamp-web-server-on-a-linux-virtual-machine-in-azure"></a>Kurz: Instalace webového serveru LAMP na virtuální počítač s Linuxem v Azure
@@ -35,7 +35,7 @@ Tento článek vás provede nasazením webového serveru Apache, MySQL a PHP (st
 
 Toto nastavení je určené pro rychlé testy nebo testování konceptu. Další informace o stacku LAMP, včetně doporučení pro produkční prostředí, najdete v [dokumentaci k Ubuntu](https://help.ubuntu.com/community/ApacheMySQLPHP).
 
-Tento kurz používá vynesené mezizaviny příkazového příkazové číslo v rámci [prostředí Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), které se neustále aktualizuje na nejnovější verzi. Chcete-li otevřít prostředí Cloud Shell, vyberte **Vyzkoušet** v horní části libovolného bloku kódu.
+V tomto kurzu se používá CLI v rámci [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), který se průběžně aktualizuje na nejnovější verzi. Chcete-li otevřít Cloud Shell, vyberte možnost **vyzkoušet** v horní části libovolného bloku kódu.
 
 Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0.30 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
 
@@ -55,7 +55,7 @@ Zobrazí se výzva k instalaci balíčků a dalších závislostí. Tímto postu
 ## <a name="verify-installation-and-configuration"></a>Ověření instalace a konfigurace
 
 
-### <a name="verify-apache"></a>Ověřit Apache
+### <a name="verify-apache"></a>Ověření Apache
 
 Zkontrolujte verzi Apache pomocí následujícího příkazu:
 ```bash
@@ -67,7 +67,7 @@ Když je teď server Apache nainstalovaný a port 80 k virtuálnímu počítači
 ![Výchozí stránka Apache][3]
 
 
-### <a name="verify-and-secure-mysql"></a>Ověřit a zabezpečit MySQL
+### <a name="verify-and-secure-mysql"></a>Ověření a zabezpečení MySQL
 
 Zkontrolujte verzi MySQL pomocí následujícího příkazu (všimněte si parametru velké `V`):
 
@@ -75,13 +75,13 @@ Zkontrolujte verzi MySQL pomocí následujícího příkazu (všimněte si param
 mysql -V
 ```
 
-Chcete-li pomoci zabezpečit instalaci MySQL, včetně `mysql_secure_installation` nastavení kořenového hesla, spusťte skript. 
+Chcete-li zvýšit zabezpečení instalace MySQL, včetně nastavení kořenového hesla, spusťte `mysql_secure_installation` skript. 
 
 ```bash
 sudo mysql_secure_installation
 ```
 
-Volitelně můžete nastavit modul plug-in ověření hesla (doporučeno). Poté nastavte heslo pro uživatele kořenového adresáře MySQL a nakonfigurujte zbývající nastavení zabezpečení pro vaše prostředí. Doporučujeme odpovědět na všechny otázky "Y" (ano).
+Volitelně můžete nastavit modul plug-in pro ověřování hesel (doporučeno). Pak nastavte heslo pro kořenového uživatele MySQL a nakonfigurujte zbývající nastavení zabezpečení pro vaše prostředí. Doporučujeme, abyste na všechny otázky odpověděli na Y (Ano).
 
 Pokud chcete vyzkoušet funkce MySQL (vytvoření databáze MySQL, přidání uživatelů nebo změna nastavení konfigurace), přihlaste se k MySQL. Tento krok není nezbytný k dokončení kurzu.
 
@@ -91,7 +91,7 @@ sudo mysql -u root -p
 
 Jakmile budete hotovi, ukončete příkazový řádek mysql zadáním `\q`.
 
-### <a name="verify-php"></a>Ověření PHP
+### <a name="verify-php"></a>Ověřit PHP
 
 Zkontrolujte verzi PHP pomocí následujícího příkazu:
 
@@ -122,10 +122,10 @@ V tomto kurzu jste nasadili server LAMP v Azure. Naučili jste se tyto postupy:
 > * Ověření instalace a konfigurace
 > * Instalace WordPressu na server LAMP
 
-Přejdete k dalšímu kurzu, kde se dozvíte, jak zabezpečit webové servery pomocí certifikátů TLS/SSL.
+Přejděte k dalšímu kurzu, kde se dozvíte, jak zabezpečit webové servery pomocí certifikátů TLS/SSL.
 
 > [!div class="nextstepaction"]
-> [Zabezpečený webový server s TLS](tutorial-secure-web-server.md)
+> [Zabezpečený webový server s protokolem TLS](tutorial-secure-web-server.md)
 
 [2]: ./media/tutorial-lamp-stack/phpsuccesspage.png
 [3]: ./media/tutorial-lamp-stack/apachesuccesspage.png

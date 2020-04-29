@@ -1,5 +1,5 @@
 ---
-title: Kurz`:` Použití spravované identity pro přístup k Azure SQL – Windows – Azure AD
+title: Kurz`:` použití spravované identity pro přístup k Azure SQL – Windows – Azure AD
 description: Tento kurz vás postupně provede používáním spravované identity přiřazené systémem na virtuálním počítači s Windows pro přístup k Azure SQL.
 services: active-directory
 documentationcenter: ''
@@ -15,10 +15,10 @@ ms.date: 01/14/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2fc5596c6914b77b09db10528af891d7e6bd0159
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75977866"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-sql"></a>Kurz: Použití spravované identity přiřazené systémem na virtuálním počítači s Windows pro přístup k Azure SQL
@@ -52,9 +52,9 @@ Udělení přístupu virtuálnímu počítači k databázi se skládá ze dvou k
 1. Povolení ověřování Azure AD pro server SQL
 2. Vytvoření **uživatele** v databázi reprezentujícího systémem přiřazenou identitu virtuálního počítače
 
-### <a name="enable-azure-ad-authentication"></a>Povolení ověřování Azure AD
+### <a name="enable-azure-ad-authentication"></a>Povolit ověřování Azure AD
 
-**[Konfigurace ověřování Azure AD pro sql server:](/azure/sql-database/sql-database-aad-authentication-configure)**
+**[Konfigurace ověřování Azure AD pro SQL Server](/azure/sql-database/sql-database-aad-authentication-configure):**
 
 1.  Na levém navigačním panelu na webu Azure Portal vyberte **Servery SQL**.
 2.  Kliknutím na server SQL u něj povolte ověřování Azure AD.
@@ -65,14 +65,14 @@ Udělení přístupu virtuálnímu počítači k databázi se skládá ze dvou k
 
 ### <a name="create-contained-user"></a>Vytvořit obsaženého uživatele
 
-Tato část ukazuje, jak vytvořit obsaženého uživatele v databázi, která představuje systém ovou identitu přiřazenou v systému. V tomto kroku potřebujete [Microsoft SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS). Než začnete, můžete si také přečíst následující články se základními informacemi o integraci Azure AD:
+V této části se dozvíte, jak v databázi vytvořit obsaženého uživatele, který reprezentuje identitu přiřazenou systémem virtuálního počítače. Pro tento krok potřebujete [Microsoft SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS). Než začnete, můžete si také přečíst následující články se základními informacemi o integraci Azure AD:
 
 - [Univerzální ověřování s využitím služeb SQL Database a SQL Data Warehouse (podpora SSMS pro MFA)](/azure/sql-database/sql-database-ssms-mfa-authentication)
 - [Konfigurace a správa ověřování služby Azure Active Directory s využitím služby SQL Database nebo SQL Data Warehouse](/azure/sql-database/sql-database-aad-authentication-configure)
 
-SQL DB vyžaduje jedinečné zobrazované názvy AAD. Díky tomu musí být účty AAD, jako jsou uživatelé, skupiny a instanční objekty (aplikace) a názvy virtuálních počítačů povolené pro spravovanou identitu, jednoznačně definovány v aad, pokud jde o jejich zobrazované názvy. SQL DB zkontroluje zobrazovaný název AAD během vytvoření T-SQL těchto uživatelů a pokud není jedinečný, příkaz se nezdaří a požaduje poskytnutí jedinečného zobrazovaného názvu AAD pro daný účet.
+DATABÁZE SQL vyžaduje jedinečné zobrazované názvy AAD. V tomto případě musí být účty AAD, jako jsou uživatelé, skupiny a instanční objekty (aplikace) a názvy virtuálních počítačů povolené pro spravovanou identitu, jedinečné v AAD, které se týkají jejich zobrazovaných názvů. SQL DB kontroluje zobrazované jméno AAD během vytváření takových uživatelů T-SQL, a pokud není jedinečné, příkaz se nepovede, aby pro daný účet zadal jedinečný zobrazovaný název AAD.
 
-**Vytvoření obsaženého uživatele:**
+**Vytvoření uživatele s omezením:**
 
 1. Spusťte aplikaci SQL Server Management Studio.
 2. V dialogovém okně **Připojení k serveru** zadejte do pole **Název serveru** název vašeho serveru SQL.
@@ -108,9 +108,9 @@ Kód spuštěný na virtuálním počítači teď může ze spravované identity
 
 ## <a name="access-data"></a>Přístup k datům
 
-Tato část ukazuje, jak získat přístupový token pomocí spravované identity přiřazené k virtuálnímu počítači a použít ji k volání Azure SQL. Azure SQL nativně podporuje ověřování Azure AD, takže může přímo přijímat přístupové tokeny získané pomocí spravovaných identit pro prostředky Azure. Pomocí metody s využitím **přístupového tokenu** můžete vytvořit připojení k SQL. Jedná se o součást integrace Azure SQL s Azure AD a liší se od zadávání přihlašovacích údajů v připojovacím řetězci.
+V této části se dozvíte, jak získat přístupový token pomocí spravované identity přiřazené systémem virtuálního počítače a použít ho k volání Azure SQL. Azure SQL nativně podporuje ověřování Azure AD, takže může přímo přijímat přístupové tokeny získané pomocí spravovaných identit pro prostředky Azure. Pomocí metody s využitím **přístupového tokenu** můžete vytvořit připojení k SQL. Jedná se o součást integrace Azure SQL s Azure AD a liší se od zadávání přihlašovacích údajů v připojovacím řetězci.
 
-Zde je příklad kódu .NET otevření připojení k SQL pomocí přístupového tokenu. Tento kód je potřeba spustit na virtuálním počítači, aby byl možný přístup ke koncovému bodu spravované identity přiřazené systémem virtuálního počítače. **Rozhraní .NET Framework 4.6** nebo vyšší nebo **.NET Core 2.2** nebo vyšší je nutné použít metodu přístupového tokenu. Nahraďte hodnoty AZURE-SQL-SERVERNAME a DATABASE odpovídajícím způsobem. Všimněte si, že ID prostředku pro Azure SQL je `https://database.windows.net/`.
+Tady je příklad kódu .NET pro otevření připojení k SQL pomocí přístupového tokenu. Tento kód je potřeba spustit na virtuálním počítači, aby byl možný přístup ke koncovému bodu spravované identity přiřazené systémem virtuálního počítače. K použití metody přístupového tokenu se vyžaduje **.NET Framework 4,6** nebo vyšší nebo **.NET Core 2,2** nebo vyšší. Nahraďte hodnoty AZURE-SQL-SERVERNAME a DATABASE odpovídajícím způsobem. Všimněte si, že ID prostředku pro Azure `https://database.windows.net/`SQL je.
 
 ```csharp
 using System.Net;
@@ -158,7 +158,7 @@ Dalším způsobem, jak rychle otestovat kompletní nastavení bez nutnosti psá
 
 1.  Na portálu přejděte na **Virtuální počítače**, přejděte ke svému virtuálnímu počítači s Windows a v části **Přehled** klikněte na **Připojit**.
 2.  Zadejte své **Uživatelské jméno** a **Heslo**, které jste přidali při vytváření virtuálního počítače s Windows.
-3.  Teď, když jste vytvořili **připojení ke vzdálené ploše** s virtuálním počítačem, otevřete **powershell** ve vzdálené relaci.
+3.  Teď, když jste vytvořili **připojení ke vzdálené ploše** s virtuálním počítačem, otevřete **PowerShell** ve vzdálené relaci.
 4.  Pomocí příkazu `Invoke-WebRequest` v PowerShellu odešlete do místního koncového bodu spravované identity žádost o přístupový token pro Azure SQL.
 
     ```powershell

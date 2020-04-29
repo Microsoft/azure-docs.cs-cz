@@ -1,5 +1,5 @@
 ---
-title: Ukázka skriptu Prostředí Azure – odstranění kontejnerů pomocí předpony | Dokumenty společnosti Microsoft
+title: Ukázka skriptu Azure PowerShell – odstranění kontejnerů podle prefixu | Microsoft Docs
 description: Kontejnery objektů blob ve službě Azure Storage můžete odstranit na základě předpony názvu kontejneru.
 services: storage
 author: tamram
@@ -10,15 +10,15 @@ ms.topic: sample
 ms.date: 06/13/2017
 ms.author: tamram
 ms.openlocfilehash: 73c2f221d2ac0b3ceb76e3db0fdc6379a6dd330a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80060885"
 ---
 # <a name="delete-containers-based-on-container-name-prefix"></a>Odstranění kontejnerů na základě předpony názvu kontejneru
 
-Tento skript odstraní kontejnery v úložišti objektů Blob Azure na základě předpony v názvu kontejneru.
+Tento skript odstraní kontejnery v úložišti objektů BLOB v Azure na základě předpony v názvu kontejneru.
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
@@ -42,9 +42,9 @@ Tento skript k odstranění kontejnerů na základě předpony názvu kontejneru
 
 | Příkaz | Poznámky |
 |---|---|
-| [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) | Získá zadaný účet úložiště nebo všechny účty úložiště ve skupině prostředků nebo předplatné. |
-| [Kontejner Get-AzStorageContainer](/powershell/module/az.storage/Get-AzStorageContainer) | Zobrazí seznam kontejnerů úložiště přidružených k účtu úložiště. |
-| [Odebrat kontejner AzStorageContainer](/powershell/module/az.storage/Remove-AzStorageContainer) | Odebere zadaný kontejner úložiště. |
+| [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) | Načte zadaný účet úložiště nebo všechny účty úložiště v rámci skupiny prostředků nebo předplatného. |
+| [Get-AzStorageContainer](/powershell/module/az.storage/Get-AzStorageContainer) | Zobrazuje seznam kontejnerů úložiště přidružených k účtu úložiště. |
+| [Remove-AzStorageContainer](/powershell/module/az.storage/Remove-AzStorageContainer) | Odebere zadaný kontejner úložiště. |
 
 ## <a name="next-steps"></a>Další kroky
 

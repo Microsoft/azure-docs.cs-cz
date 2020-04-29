@@ -1,5 +1,5 @@
 ---
-title: Použití řešení vzdáleného monitorování ke zjišťování problémů se zařízeními – Azure | Dokumenty společnosti Microsoft
+title: Použití řešení vzdáleného monitorování k detekci problémů zařízení – Azure | Microsoft Docs
 description: V tomto kurzu se dozvíte, jak v řešení pro vzdálené monitorování pomocí pravidel a akcí automaticky detekovat problémy se zařízeními na základě prahových hodnot.
 author: dominicbetts
 manager: timlt
@@ -10,10 +10,10 @@ ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
 ms.openlocfilehash: 676f1133a516174478a456a97bc467e7770fe6e7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79239515"
 ---
 # <a name="tutorial-detect-issues-with-devices-connected-to-your-monitoring-solution"></a>Kurz: Detekce problémů se zařízeními připojenými k řešení pro monitorování
@@ -33,7 +33,7 @@ V tomto kurzu jste:
 > * Úprava existujícího pravidla
 > * Zapnutí a vypnutí pravidel
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 [!INCLUDE [iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
 
@@ -41,7 +41,7 @@ Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azur
 
 Na stránce **Pravidla** v akcelerátoru řešení se zobrazí seznam všech aktuálních pravidel:
 
-[![Stránka Pravidla](./media/iot-accelerators-remote-monitoring-automate/rulesactions_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactions_v2-expanded.png#lightbox)
+[![Stránka pravidla](./media/iot-accelerators-remote-monitoring-automate/rulesactions_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactions_v2-expanded.png#lightbox)
 
 Pokud chcete zobrazit pouze pravidla, která se týkají chladících zařízení, použijte filtr. Výběrem pravidla v seznamu můžete zobrazit další informace o pravidle a upravit ho:
 
@@ -68,7 +68,7 @@ Nové pravidlo uložíte kliknutím na **Použít**.
 
 Aktivaci pravidla můžete zobrazit na stránce **Pravidla** nebo na stránce **Řídicí panel**:
 
-[![Pravidlo upozornění se spustí.](./media/iot-accelerators-remote-monitoring-automate/warningruletriggered-inline.png)](./media/iot-accelerators-remote-monitoring-automate/warningruletriggered-expanded.png#lightbox)
+[![Pravidlo upozornění aktivované](./media/iot-accelerators-remote-monitoring-automate/warningruletriggered-inline.png)](./media/iot-accelerators-remote-monitoring-automate/warningruletriggered-expanded.png#lightbox)
 
 ## <a name="create-an-advanced-rule"></a>Vytvoření pokročilého pravidla
 
@@ -86,7 +86,7 @@ Pokud chcete vytvořit pravidlo s několika podmínkami, které generuje kritick
 | Hodnota podmínky 1    | 80                                |
 | Úroveň závažnosti  | Kritická                              |
 
-[![Vytvořit více podmínek pravidlo část jedna](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_mult_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_mult_v2-expanded.png#lightbox)
+[![Vytvořit více částí pravidla podmínky 1](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_mult_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_mult_v2-expanded.png#lightbox)
 
 Druhou podmínku přidáte kliknutím na + Přidat podmínku. Pro novou podmínku použijte následující hodnoty:
 
@@ -96,13 +96,13 @@ Druhou podmínku přidáte kliknutím na + Přidat podmínku. Pro novou podmínk
 | Operátor podmínky 2 | Větší než                      |
 | Hodnota podmínky 2    | 75                                |
 
-[![Vytvořit více podmínk pravidlo část dvě](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_mult_cond2_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_mult_cond2_v2-expanded.png#lightbox)
+[![Vytvoření více částí pravidla podmínky 2](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_mult_cond2_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_mult_cond2_v2-expanded.png#lightbox)
 
 Nové pravidlo uložíte kliknutím na **Použít**.
 
 Aktivaci pravidla můžete zobrazit na stránce **Pravidla** nebo na stránce **Řídicí panel**:
 
-[![Pravidlo více podmínek bylo aktivováno](./media/iot-accelerators-remote-monitoring-automate/criticalruletriggered-inline.png)](./media/iot-accelerators-remote-monitoring-automate/criticalruletriggered-expanded.png#lightbox)
+[![Bylo aktivováno pravidlo vícenásobné podmínky.](./media/iot-accelerators-remote-monitoring-automate/criticalruletriggered-inline.png)](./media/iot-accelerators-remote-monitoring-automate/criticalruletriggered-expanded.png#lightbox)
 
 ## <a name="edit-an-existing-rule"></a>Úprava existujícího pravidla
 

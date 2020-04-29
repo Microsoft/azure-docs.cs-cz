@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Konfigurace zscaleru ZSCloud pro automatické zřizování uživatelů pomocí Služby Azure Active Directory | Dokumenty společnosti Microsoft'
-description: V tomto kurzu se dozvíte, jak nakonfigurovat Službu Azure Active Directory tak, aby automaticky zřašla a zřaštila uživatelské účty z zscaleru ZSCloud.
+title: 'Kurz: Konfigurace Zscaler ZSCloud pro Automatické zřizování uživatelů pomocí Azure Active Directory | Microsoft Docs'
+description: V tomto kurzu se dozvíte, jak nakonfigurovat Azure Active Directory pro automatické zřízení a zrušení zřízení uživatelských účtů na Zscaler ZSCloud.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,44 +16,44 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: af9d4aa15a4ff2784d2e1ca1334d9c24a8d12251
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77062672"
 ---
-# <a name="tutorial-configure-zscaler-zscloud-for-automatic-user-provisioning"></a>Kurz: Konfigurace Zscaleru ZSCloud pro automatické zřizování uživatelů
+# <a name="tutorial-configure-zscaler-zscloud-for-automatic-user-provisioning"></a>Kurz: Konfigurace Zscaler ZSCloud pro Automatické zřizování uživatelů
 
-V tomto kurzu se dozvíte, jak nakonfigurovat Azure Active Directory (Azure AD) automaticky zřídit a deprovision uživatelů a/nebo skupin z Zscaler ZSCloud.
+V tomto kurzu se dozvíte, jak nakonfigurovat Azure Active Directory (Azure AD) k automatickému zřízení a zrušení zřízení uživatelů nebo skupin pro Zscaler ZSCloud.
 
 > [!NOTE]
-> Tento kurz popisuje konektor, který je postaven na službě zřizování uživatelů Azure AD. Důležité podrobnosti o tom, co tato služba dělá a jak funguje, a odpovědi na nejčastější dotazy najdete [v tématu Automatizace zřizování uživatelů a deprovisioning u aplikací SaaS pomocí služby Azure Active Directory](../active-directory-saas-app-provisioning.md).
+> Tento kurz popisuje konektor, který je založený na službě zřizování uživatelů Azure AD. Důležité informace o tom, co tato služba dělá a jak funguje, a odpovědi na nejčastější dotazy najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů při SaaS aplikací pomocí Azure Active Directory](../active-directory-saas-app-provisioning.md).
 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li dokončit kroky popsané v tomto kurzu, potřebujete následující:
+K dokončení kroků popsaných v tomto kurzu budete potřebovat následující:
 
 * Tenanta Azure AD.
 * Tenant Zscaler ZSCloud.
 * Uživatelský účet v Zscaler ZSCloud s oprávněními správce.
 
 > [!NOTE]
-> Integrace zřizování Azure AD závisí na rozhraní API Zscaler ZSCloud SCIM, které je dostupné pro podnikové účty.
+> Integrace zřizování Azure AD spoléhá na rozhraní Zscaler ZSCloud SCIM API, které je k dispozici pro podnikové účty.
 
-## <a name="add-zscaler-zscloud-from-the-gallery"></a>Přidání Zscaleru ZSCloud z galerie
+## <a name="add-zscaler-zscloud-from-the-gallery"></a>Přidání Zscaler ZSCloud z Galerie
 
-Než nakonfigurujete Zscaler ZSCloud pro automatické zřizování uživatelů pomocí Azure AD, je potřeba přidat Zscaler ZSCloud z galerie aplikací Azure AD do seznamu spravovaných aplikací SaaS.
+Před konfigurací Zscaler ZSCloud pro Automatické zřizování uživatelů pomocí Azure AD je nutné přidat Zscaler ZSCloud z Galerie aplikací Azure AD do svého seznamu spravovaných aplikací SaaS.
 
-Na [webu Azure Portal](https://portal.azure.com)v levém podokně vyberte **Službu Azure Active Directory**:
+V [Azure Portal](https://portal.azure.com)v levém podokně vyberte **Azure Active Directory**:
 
 ![Vyberte Azure Active Directory.](common/select-azuread.png)
 
-Přejděte do **podnikové aplikace** a vyberte **všechny aplikace**:
+Přejít na **podnikové aplikace** a pak vyberte **všechny aplikace**:
 
 ![Podnikové aplikace](common/enterprise-applications.png)
 
-Chcete-li přidat aplikaci, vyberte v horní části okna možnost **Nová aplikace:**
+Chcete-li přidat aplikaci, vyberte v horní části okna možnost **Nová aplikace** :
 
 ![Vybrat novou aplikaci](common/add-new-app.png)
 
@@ -63,103 +63,103 @@ Do vyhledávacího pole zadejte **Zscaler ZSCloud**. Ve výsledcích vyberte **Z
 
 ## <a name="assign-users-to-zscaler-zscloud"></a>Přiřazení uživatelů k Zscaler ZSCloud
 
-Uživatelům Azure AD je potřeba před použitím přiřadit přístup k vybraným aplikacím. V kontextu automatického zřizování uživatelů jsou synchronizováni pouze uživatelé nebo skupiny, které jsou přiřazeny k aplikaci ve službě Azure AD.
+Uživatelé Azure AD musí mít přiřazený přístup k vybraným aplikacím, aby je mohli používat. V kontextu automatického zřizování uživatelů se synchronizují jenom uživatelé nebo skupiny, kteří jsou přiřazeni k aplikaci v Azure AD.
 
-Než nakonfigurujete a povolíte automatické zřizování uživatelů, měli byste se rozhodnout, kteří uživatelé nebo skupiny ve službě Azure AD potřebují přístup k Zscaler ZSCloud. Poté, co se rozhodnete, že můžete přiřadit tyto uživatele a skupiny Zscaler ZSCloud podle pokynů v [Přiřadit uživatele nebo skupiny k podnikové aplikaci](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal).
+Než nakonfigurujete a povolíte automatické zřizování uživatelů, měli byste se rozhodnout, kteří uživatelé a skupiny ve službě Azure AD potřebují přístup k Zscaler ZSCloud. Až se rozhodnete, že můžete přiřadit tyto uživatele a skupiny k Zscaler ZSCloud podle pokynů v tématu [přiřazení uživatele nebo skupiny k podnikové aplikaci](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal).
 
-### <a name="important-tips-for-assigning-users-to-zscaler-zscloud"></a>Důležité tipy pro přiřazení uživatelů do Zscaler ZSCloud
+### <a name="important-tips-for-assigning-users-to-zscaler-zscloud"></a>Důležité tipy pro přiřazení uživatelů k Zscaler ZSCloud
 
-* Doporučujeme nejprve přiřadit jednoho uživatele Azure AD zscaler ZSCloud k testování konfigurace automatického zřizování uživatelů. Později můžete přiřadit více uživatelů a skupin.
+* Doporučujeme, abyste nejdřív přiřadili jednoho uživatele Azure AD k Zscaler ZSCloud, abyste mohli otestovat automatickou konfiguraci zřizování uživatelů. Později můžete přiřadit více uživatelů a skupin.
 
-* Když přiřadíte uživatele k Zscaler ZSCloud, musíte v dialogovém okně přiřazení vybrat libovolnou platnou roli specifickou pro aplikaci (pokud je k dispozici). Uživatelé s rolí **Výchozí přístup** jsou z zřizování vyloučeni.
+* Když přiřadíte uživatele k Zscaler ZSCloud, musíte v dialogovém okně přiřazení vybrat jakoukoli platnou roli specifickou pro aplikaci (Pokud je dostupná). Uživatelé s **výchozí rolí přístupu** se z zřizování vylučují.
 
 ## <a name="set-up-automatic-user-provisioning"></a>Nastavení automatického zřizování uživatelů
 
-Tato část vás provede kroky pro konfiguraci služby zřizování Azure AD k vytvoření, aktualizaci a zakázání uživatelů a skupin v Zscaler ZSCloud na základě přiřazení uživatelů a skupin ve službě Azure AD.
+V této části se seznámíte s postupem konfigurace služby zřizování Azure AD k vytváření, aktualizaci a zakázání uživatelů a skupin v Zscaler ZSCloud na základě přiřazení uživatelů a skupin ve službě Azure AD.
 
 > [!TIP]
-> Můžete také povolit jednotné přihlašování na saml pro Zscaler ZSCloud. Pokud tak učiníte, postupujte podle pokynů v [Zscaler ZSCloud jednotné přihlášení-na tutorial](zscaler-zsCloud-tutorial.md). Jednotné přihlašování lze konfigurovat nezávisle na automatické zřizování uživatelů, ale obě funkce se vzájemně doplňují.
+> Pro Zscaler ZSCloud možná budete chtít povolit jednotné přihlašování založené na SAML. Pokud to uděláte, postupujte podle pokynů v [kurzu Zscaler ZSCloud jednotného přihlašování](zscaler-zsCloud-tutorial.md). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování uživatelů, ale tyto dvě funkce spolu doplňují.
 
-1. Přihlaste se na [portál Azure](https://portal.azure.com) a vyberte **podnikové aplikace** > **Všechny aplikace** > **Zscaler ZSCloud**:
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) a **Vyberte podnikové aplikace** > **všechny aplikace** > **Zscaler ZSCloud**:
 
     ![Podnikové aplikace](common/enterprise-applications.png)
 
-2. V seznamu aplikací vyberte **Zscaler ZSCloud**:
+2. V seznamu aplikace vyberte **Zscaler ZSCloud**:
 
     ![Seznam aplikací](common/all-applications.png)
 
-3. Vyberte kartu **Zřizování:**
+3. Vyberte kartu **zřizování** :
 
-    ![Zscaler ZSCloud Zřizování](./media/zscaler-zscloud-provisioning-tutorial/provisioningtab.png)
+    ![Zřizování Zscaler ZSCloud](./media/zscaler-zscloud-provisioning-tutorial/provisioningtab.png)
 
-4. Nastavte **režim zřizování** na **automatický**:
+4. Nastavte **režim zřizování** na **automaticky**:
 
     ![Nastavení režimu zřizování](./media/zscaler-zscloud-provisioning-tutorial/provisioningcredentials.png)
 
-5. V části **Přihlašovací údaje správce** zadejte adresu URL **klienta** a **tajný token** vašeho účtu Zscaler ZSCloud, jak je popsáno v dalším kroku.
+5. V části **přihlašovací údaje správce** zadejte **adresu URL tenanta** a **tajný token** účtu Zscaler ZSCloud, jak je popsáno v dalším kroku.
 
-6. Chcete-li získat **adresu URL klienta** a **tajný token**, přejděte na**nastavení ověřování** **správy** > na portálu Zscaler ZSCloud a v části **Typ ověřování**vyberte **možnost SAML** :
+6. Pokud chcete získat **adresu URL tenanta** a **tajný token**, klikněte na portál Zscaler ZSCloud na**nastavení ověřování** pro **správu** > a v části **typ ověřování**vyberte **SAML** :
 
     ![Nastavení ověřování Zscaler ZSCloud](./media/zscaler-zscloud-provisioning-tutorial/secrettoken1.png)
 
-    Chcete-li otevřít okno **Konfigurovat saml,** vyberte **Konfigurovat saml:**
+    Vyberte **Konfigurovat SAML** pro otevření okna **Konfigurovat okno SAML** :
 
-    ![Konfigurace okna SAML](./media/zscaler-zscloud-provisioning-tutorial/secrettoken2.png)
+    ![Konfigurovat okno SAML](./media/zscaler-zscloud-provisioning-tutorial/secrettoken2.png)
 
-    Vyberte **Povolit zřizování založené na SCIM** a zkopírujte **základní adresu URL** a token **nosiče**a pak uložte nastavení. Na webu Azure portal vložte **základní adresu URL** do pole URL **klienta** a **token nosiče** do pole **tajný token.**
+    Vyberte **Povolit zřizování na základě SCIM** a zkopírujte **základní adresu URL** a **nosný token**a pak nastavení uložte. V Azure Portal vložte **základní adresu URL** do pole **Adresa URL tenanta** a **token nosiče** do pole **tajný token** .
 
-7. Po zadání hodnot do polí **Adresa URL klienta** a **tajný token,** vyberte **Test připojení** a ujistěte se, že Azure AD můžete připojit k Zscaler ZSCloud. Pokud se připojení nezdaří, ujistěte se, že váš účet Zscaler ZSCloud má oprávnění správce a zkuste to znovu.
+7. Až zadáte hodnoty do polí **Adresa URL tenanta** a **tajný token** , vyberte **Test připojení** a ujistěte se, že se služba Azure AD může připojit k Zscaler ZSCloud. Pokud se připojení nepovede, ujistěte se, že váš účet Zscaler ZSCloud má oprávnění správce, a zkuste to znovu.
 
     ![Otestování připojení](./media/zscaler-zscloud-provisioning-tutorial/testconnection.png)
 
-8. Do pole **E-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, která by měla dostávat oznámení o chybách zřizování. Vyberte **Odeslat e-mailové oznámení, když dojde k chybě**:
+8. V poli **e-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování. Vyberte **Odeslat e-mailové oznámení, když dojde k selhání**:
 
     ![Nastavení e-mailu s oznámením](./media/zscaler-zscloud-provisioning-tutorial/Notification.png)
 
 9. Vyberte **Uložit**.
 
-10. V části **Mapování** vyberte **Synchronizovat uživatele služby Azure Active Directory s zscalerZSCloud**:
+10. V části **mapování** vyberte **synchronizovat Azure Active Directory uživatelé ZscalerZSCloud**:
 
     ![Synchronizace uživatelů Azure AD](./media/zscaler-zscloud-provisioning-tutorial/usermappings.png)
 
-11. Zkontrolujte atributy uživatele, které jsou synchronizovány z Azure AD na Zscaler ZSCloud v části **Mapování atributů.** Atributy vybrané jako **odpovídající** vlastnosti se používají tak, aby odpovídaly uživatelským účtům v Zscaler ZSCloud pro operace aktualizace. Chcete-li potvrdit všechny změny, vyberte **uložit.**
+11. Zkontrolujte atributy uživatele synchronizované z Azure AD do Zscaler ZSCloud v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v Zscaler ZSCloud pro operace aktualizace. Vyberte **Uložit** a potvrďte všechny změny.
 
     ![Mapování atributů](./media/zscaler-zscloud-provisioning-tutorial/userattributemappings.png)
 
-12. V části **Mapování** vyberte **Synchronizovat skupiny Služby Active Directory Azure s zscalerZSCloud**:
+12. V části **mapování** vyberte možnost **synchronizovat Azure Active Directory skupiny do ZscalerZSCloud**:
 
     ![Synchronizace skupin Azure AD](./media/zscaler-zscloud-provisioning-tutorial/groupmappings.png)
 
-13. Zkontrolujte atributy skupiny, které jsou synchronizovány z Azure AD na Zscaler ZSCloud v části **Mapování atributů.** Atributy vybrané jako **odpovídající** vlastnosti se používají tak, aby odpovídaly skupinám v Zscaler ZSCloud pro operace aktualizace. Chcete-li potvrdit všechny změny, vyberte **uložit.**
+13. Zkontrolujte atributy skupiny synchronizované z Azure AD do Zscaler ZSCloud v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování skupin v Zscaler ZSCloud pro operace aktualizace. Vyberte **Uložit** a potvrďte všechny změny.
 
     ![Mapování atributů](./media/zscaler-zscloud-provisioning-tutorial/groupattributemappings.png)
 
-14. Chcete-li konfigurovat filtry oborů, naleznete v pokynech v [kurzu filtru oborů](./../active-directory-saas-scoping-filters.md).
+14. Pokud chcete nakonfigurovat filtry oborů, přečtěte si pokyny v [kurzu filtr oboru](./../active-directory-saas-scoping-filters.md).
 
-15. Chcete-li povolit službu zřizování Azure AD pro Zscaler ZSCloud, změňte **stav zřizování** **na Zapnuto** v části **Nastavení:**
+15. Pokud chcete povolit službu Azure AD Provisioning pro Zscaler ZSCloud, změňte **stav zřizování** na **zapnuto** v části **Nastavení** :
 
     ![Stav zřizování](./media/zscaler-zscloud-provisioning-tutorial/provisioningstatus.png)
 
-16. Definujte uživatele a/nebo skupiny, které chcete zřídit Zscaler ZSCloud, výběrem požadovaných hodnot v části **Obor** v části **Nastavení:**
+16. Určete uživatele nebo skupiny, které chcete zřídit pro Zscaler ZSCloud, a to výběrem požadovaných hodnot v části **obor** v části **Nastavení** :
 
     ![Hodnoty oboru](./media/zscaler-zscloud-provisioning-tutorial/scoping.png)
 
-17. Až budete připraveni k zřízení, vyberte **Uložit**:
+17. Až budete připraveni zřídit, vyberte **Uložit**:
 
     ![Vyberte možnost Uložit.](./media/zscaler-zscloud-provisioning-tutorial/saveprovisioning.png)
 
-Tato operace spustí počáteční synchronizaci všech uživatelů a skupin definovaných v části **Obor** v části **Nastavení.** Počáteční synchronizace trvá déle než následné synchronizace, ke kterým dochází přibližně každých 40 minut, tak dlouho, dokud je spuštěna služba zřizování Azure AD. Průběh můžete sledovat v části **Podrobnosti synchronizace.** Můžete také sledovat odkazy na sestavu aktivit zřizování, která popisuje všechny akce prováděné službou zřizování Azure AD na Zscaler ZSCloud.
+Tato operace spustí počáteční synchronizaci všech uživatelů a skupin definovaných v části **obor** v části **Nastavení** . Počáteční synchronizace trvá déle než následující synchronizace, ke kterým dochází každých 40 minut, pokud je služba zřizování Azure AD spuštěná. Průběh můžete sledovat v části **Podrobnosti o synchronizaci** . Můžete také sledovat odkazy na sestavu aktivity zřizování, která popisuje všechny akce prováděné službou zřizování Azure AD na Zscaler ZSCloud.
 
-Informace o tom, jak číst protokoly zřizování Azure AD, naleznete v [tématu Vytváření sestav na automatické zřizování uživatelských účtů](../active-directory-saas-provisioning-reporting.md).
+Informace o tom, jak číst protokoly zřizování služby Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../active-directory-saas-provisioning-reporting.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály a zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy o aktivitě zřizování.](../active-directory-saas-provisioning-reporting.md)
+* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../active-directory-saas-provisioning-reporting.md)
 
 <!--Image references-->
 [1]: ./media/zscaler-zscloud-provisioning-tutorial/tutorial-general-01.png

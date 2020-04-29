@@ -1,6 +1,6 @@
 ---
-title: 'PowerShell: Odstranění zálohy aplikace'
-description: Zjistěte, jak pomocí Azure PowerShellu automatizovat nasazení a správu služby App Service. Tato ukázka ukazuje, jak odstranit zálohu aplikace.
+title: 'PowerShell: odstranění zálohy aplikace'
+description: Naučte se používat Azure PowerShell k automatizaci nasazení a správy App Service. V této ukázce se dozvíte, jak odstranit zálohu aplikace.
 author: msangapu-msft
 tags: azure-service-management
 ms.assetid: ebcadb49-755d-4202-a5eb-f211827a9168
@@ -9,13 +9,13 @@ ms.date: 10/30/2017
 ms.author: msangapu
 ms.custom: mvc, seodec18
 ms.openlocfilehash: 93b53bedef291b9aa740f5bbe9c492185f035f89
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80044833"
 ---
-# <a name="delete-a-backup-for-a-web-using-azure-powershell"></a>Odstranění zálohy pro web pomocí Azure PowerShellu
+# <a name="delete-a-backup-for-a-web-using-azure-powershell"></a>Odstranění zálohy webu pomocí Azure PowerShell
 
 Tento ukázkový skript vytvoří ve službě App Service webovou aplikaci se souvisejícími prostředky a pak pro ni vytvoří jednorázovou zálohu. 
 
@@ -41,8 +41,8 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 
 | Příkaz | Poznámky |
 |---|---|
-| [Seznam Get-AzWebAppBackupList](/powershell/module/az.websites/get-azwebappbackuplist) | Získá seznam záloh webové aplikace. |
-| [Odebrat-AzWebAppBackup](/powershell/module/az.websites/remove-azwebappbackup) | Odebere zadanou zálohu webové aplikace. |
+| [Get-AzWebAppBackupList](/powershell/module/az.websites/get-azwebappbackuplist) | Získá seznam záloh webové aplikace. |
+| [Remove-AzWebAppBackup](/powershell/module/az.websites/remove-azwebappbackup) | Odebere zadanou zálohu webové aplikace. |
 
 ## <a name="next-steps"></a>Další kroky
 

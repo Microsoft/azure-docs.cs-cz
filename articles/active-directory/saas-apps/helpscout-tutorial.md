@@ -17,10 +17,10 @@ ms.date: 10/24/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b71ccbc6cfdb9d3d37fc46b0e932fa98eee2fb43
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73159089"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-help-scout"></a>Kurz: Azure Active Directory integrace s Help Scout
@@ -33,9 +33,9 @@ Integrace Help Scout s Azure AD poskytuje následující výhody:
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Ke konfiguraci integrace služby Azure AD pomocí programu Help Scout budete potřebovat následující položky:
 
@@ -53,7 +53,7 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 
 Pokud chcete nakonfigurovat integraci Help Scout do služby Azure AD, musíte do seznamu spravovaných aplikací SaaS přidat Help Scout z galerie.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
 1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
@@ -74,7 +74,7 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
     * **[Vytvořte Help Scout Test User](#create-help-scout-test-user)** – Pokud chcete mít protějšek B. Simon v nápovědě Scout, která je propojená s reprezentací uživatele v Azure AD.
 1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
+### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
 
 V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
 
@@ -96,9 +96,9 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Help Sco
 
     ![Informace o jednotném přihlašování k doméně Scout a adresám URL](common/idp-intiated.png)
 
-    a. **Identifikátor** je identifikátor **URI cílové skupiny (ID entity poskytovatele služeb)** z Help Scout, začíná na `urn:`
+    a. **Identifikátor** je identifikátor **URI cílové skupiny (ID entity poskytovatele služeb)** z Help Scout, začíná na`urn:`
 
-    b. **Adresa URL odpovědi** je **Adresa URL pro zpětné odeslání (adresa URL služby potvrzení)** z tématu Help Scout, začíná na `https://` 
+    b. **Adresa URL odpovědi** je **Adresa URL pro zpětné odeslání (adresa URL služby potvrzení)** z Help Scout, začíná na`https://` 
 
     > [!NOTE]
     > Hodnoty v těchto adresách URL jsou pouze pro ukázku. Tyto hodnoty je potřeba aktualizovat ze skutečné adresy URL a identifikátoru odpovědi. Tyto hodnoty získáte na kartě **jednotného přihlašování** v části ověřování, které jsou vysvětleny dále v tomto kurzu.
@@ -107,7 +107,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Help Sco
 
     ![Informace o jednotném přihlašování k doméně Scout a adresám URL](common/metadata-upload-additional-signon.png)
 
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL jako: `https://secure.helpscout.net/members/login/`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL jako:`https://secure.helpscout.net/members/login/`
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
@@ -210,7 +210,7 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
     b. Kliknutím na **nahrát certifikát** nahrajte **certifikát (Base64)** stažený z Azure Portal.
 
-    c. Do textového pole **e-mailové domény** zadejte e-mailové domény vaší organizace e.x. `contoso.com`. Více domén můžete oddělit čárkou. Kdykoli vám pomůže uživatel nebo správce Scout, který zadá konkrétní doménu na přihlašovací [stránce help Scout](https://secure.helpscout.net/members/login/) , směrovat do zprostředkovatele identity, aby se ověřil s jejich přihlašovacími údaji.
+    c. Zadejte e-mailové domény vaší organizace e.x. – `contoso.com` v textovém poli **e-mailové domény** . Více domén můžete oddělit čárkou. Kdykoli vám pomůže uživatel nebo správce Scout, který zadá konkrétní doménu na přihlašovací [stránce help Scout](https://secure.helpscout.net/members/login/) , směrovat do zprostředkovatele identity, aby se ověřil s jejich přihlašovacími údaji.
 
     d. Nakonec můžete přepnout **vynucené přihlášení** pomocí protokolu SAML, pokud chcete, aby se uživatelé přihlásili jenom k nápovědě Scout prostřednictvím této metody. Pokud si chcete ponechat možnost, aby se přihlásili pomocí přihlašovacích údajů pro nápovědu Scout, můžete je nechat zapnuté. I když je tato možnost povolená, vlastník účtu se vždycky bude moct přihlásit k nápovědě Scout s heslem k účtu.
 
@@ -226,7 +226,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Po kliknutí na dlaždici Help Scout na přístupovém panelu byste se měli automaticky přihlášeni k nápovědě Scout, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

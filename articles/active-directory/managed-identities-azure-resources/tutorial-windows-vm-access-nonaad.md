@@ -1,5 +1,5 @@
 ---
-title: Kurz`:` Použití spravované identity pro přístup k Azure Key Vault – Windows – Azure AD
+title: Kurz`:` použití spravované identity pro přístup k Azure Key Vault-Windows-Azure AD
 description: Tento kurz vás postupně provede používáním spravované identity přiřazené systémem na virtuálním počítači s Windows pro přístup k Azure Key Vaultu.
 services: active-directory
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.date: 01/10/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cd9f85e3bfd11ee655ce581c60a5b65e13f4497b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75971827"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-key-vault"></a>Kurz: Použití spravované identity přiřazené systémem na virtuálním počítači s Windows pro přístup k Azure Key Vaultu 
@@ -48,11 +48,11 @@ Získáte informace o těchto tématech:
 
 ## <a name="grant-access"></a>Udělení přístupu  
  
-Tato část ukazuje, jak udělit přístup virtuálního počítače k tajnému klíči uloženému v trezoru klíčů. Když použijete spravované identity pro prostředky Azure, může kód získat přístupové tokeny sloužící k ověření přístupu k prostředkům, které podporují ověřování Azure AD.Všechny služby Azure ale nepodporují ověřování Azure AD.Pokud chcete používat spravované identity pro prostředky Azure s těmito službami, uložte přihlašovací údaje služby do Azure Key Vaultu a použijte spravovanou identitu virtuálního počítače k získání přístupu ke Key Vaultu, abyste načetli přihlašovací údaje. 
+V této části se dozvíte, jak udělit přístup k VIRTUÁLNÍmu počítači pro tajný kód uložený v Key Vault. Když použijete spravované identity pro prostředky Azure, může kód získat přístupové tokeny sloužící k ověření přístupu k prostředkům, které podporují ověřování Azure AD.Všechny služby Azure ale nepodporují ověřování Azure AD.Pokud chcete používat spravované identity pro prostředky Azure s těmito službami, uložte přihlašovací údaje služby do Azure Key Vaultu a použijte spravovanou identitu virtuálního počítače k získání přístupu ke Key Vaultu, abyste načetli přihlašovací údaje. 
 
 Napřed potřebujete vytvořit Key Vault a pak k němu udělíte přístup spravované identitě přiřazené systémem virtuálního počítače.   
 
-1. V horní části levého navigačního panelu vyberte Vytvořit trezor se **zabezpečením a** > **klíči****identity** > .  
+1. V horní části levého navigačního panelu vyberte **vytvořit prostředek** > **zabezpečení a identita** > **Key Vault**.  
 2. Zadejte **název** nového trezoru klíčů. 
 3. Umístěte trezor klíčů do stejného předplatného a stejné skupiny prostředků jako virtuální počítač, který jste vytvořili dříve. 
 4. Vyberte **Zásady přístupu** a klikněte na **Přidat novou**. 
@@ -75,12 +75,12 @@ Potom přidejte do trezoru klíčů tajný kód, abyste ho mohli později načí
  
 ## <a name="access-data"></a>Přístup k datům  
 
-Tato část ukazuje, jak získat přístupový token pomocí identity virtuálního připojení a použít jej k načtení tajného klíče z trezoru klíčů. Pokud nemáte nainstalovaný PowerShell 4.3.1 nebo novější, budete si muset [stáhnout a nainstalovat nejnovější verzi](https://docs.microsoft.com/powershell/azure/overview).
+V této části se dozvíte, jak získat přístupový token pomocí identity virtuálního počítače a jak ho použít k načtení tajného kódu z Key Vault. Pokud nemáte nainstalovaný PowerShell 4.3.1 nebo novější, budete si muset [stáhnout a nainstalovat nejnovější verzi](https://docs.microsoft.com/powershell/azure/overview).
 
 Nejdřív použijeme spravovanou identitu přiřazenou systémem virtuálního počítače k získání přístupového tokenu pro ověření v Key Vaultu:
  
 1. Na portálu přejděte na **Virtuální počítače**, přejděte ke svému virtuálnímu počítači s Windows a v části **Přehled** klikněte na **Připojit**.
-2. Zadejte **své uživatelské jméno** a **heslo,** pro které jste přidali při vytváření **virtuálního počítače se systémem Windows**.  
+2. Do svého **uživatelského jména** a **hesla** zadejte svoje uživatelské jméno a heslo, které jste přidali při vytváření **virtuálního počítače s Windows**.  
 3. Teď, když jste vytvořili **připojení ke vzdálené ploše** virtuálního počítače, otevřete ve vzdálené relaci PowerShell.  
 4. V PowerShellu vyvolejte na tenantovi webový požadavek na získání tokenu pro místního hostitele na konkrétním portu pro virtuální počítač.  
 

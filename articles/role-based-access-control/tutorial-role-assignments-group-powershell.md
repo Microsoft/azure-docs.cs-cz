@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Udělte skupině přístup k prostředkům Azure pomocí RBAC a Azure PowerShellu'
-description: Zjistěte, jak udělit skupině přístup k prostředkům Azure pomocí řízení přístupu na základě rolí (RBAC) a Azure PowerShell v tomto kurzu.
+title: 'Kurz: udělení přístupu skupiny k prostředkům Azure pomocí RBAC a Azure PowerShell'
+description: Naučte se, jak udělit skupině přístup k prostředkům Azure pomocí řízení přístupu na základě role (RBAC) a Azure PowerShell v tomto kurzu.
 services: active-directory
 documentationCenter: ''
 author: rolyon
@@ -14,15 +14,15 @@ ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
 ms.openlocfilehash: 2f001e781640704cfcee161b3de75b3f4cae1423
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77138243"
 ---
-# <a name="tutorial-grant-a-group-access-to-azure-resources-using-rbac-and-azure-powershell"></a>Kurz: Udělení skupiny přístupu k prostředkům Azure pomocí RBAC a Azure PowerShellu
+# <a name="tutorial-grant-a-group-access-to-azure-resources-using-rbac-and-azure-powershell"></a>Kurz: udělení přístupu skupině k prostředkům Azure pomocí RBAC a Azure PowerShell
 
-[Řízení přístupu na základě rolí (RBAC)](overview.md) je způsob, jakým spravujete přístup k prostředkům Azure. V tomto kurzu pomocí Azure PowerShellu udělíte skupině přístup k zobrazení všeho v předplatném a správě všeho ve skupině prostředků.
+[Řízení přístupu na základě role (RBAC)](overview.md) je způsob, jakým můžete spravovat přístup k prostředkům Azure. V tomto kurzu pomocí Azure PowerShellu udělíte skupině přístup k zobrazení všeho v předplatném a správě všeho ve skupině prostředků.
 
 V tomto kurzu se naučíte:
 
@@ -31,7 +31,7 @@ V tomto kurzu se naučíte:
 > * Výpis přístupu
 > * Odebrání přístupu
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
@@ -70,13 +70,13 @@ Pro přiřazení role potřebujete uživatele, skupinu nebo instanční objekt. 
    11111111-1111-1111-1111-111111111111 RBAC Tutorial Group
    ```
 
-Pokud nemáte oprávnění k vytváření skupin, můžete zkusit [kurz: Udělit uživateli přístup k prostředkům Azure pomocí RBAC a Azure PowerShell](tutorial-role-assignments-user-powershell.md) místo.
+Pokud nemáte oprávnění k vytváření skupin, můžete vyzkoušet [kurz: udělení přístupu uživatele k prostředkům Azure pomocí RBAC a Azure PowerShell](tutorial-role-assignments-user-powershell.md) místo toho.
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
 Skupinu prostředků použijeme k ukázce, jak přiřadit roli v oboru skupiny prostředků.
 
-1. Seznam umístění oblastí získáte pomocí příkazu [Get-AzLocation.](/powershell/module/az.resources/get-azlocation)
+1. Seznam umístění oblastí získáte pomocí příkazu [Get-AzLocation](/powershell/module/az.resources/get-azlocation) .
 
    ```azurepowershell
    Get-AzLocation | select Location
@@ -88,7 +88,7 @@ Skupinu prostředků použijeme k ukázce, jak přiřadit roli v oboru skupiny p
    $location = "westus"
    ```
 
-1. Vytvořte novou skupinu prostředků pomocí příkazu [New-AzResourceGroup.](/powershell/module/az.resources/new-azresourcegroup)
+1. Pomocí příkazu [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) vytvořte novou skupinu prostředků.
 
    ```azurepowershell
    New-AzResourceGroup -Name "rbac-tutorial-resource-group" -Location $location
@@ -104,7 +104,7 @@ Skupinu prostředků použijeme k ukázce, jak přiřadit roli v oboru skupiny p
 
 ## <a name="grant-access"></a>Udělení přístupu
 
-Chcete-li skupině udělit přístup, přiřaďte roli pomocí příkazu [New-AzRoleAssignment.](/powershell/module/az.resources/new-azroleassignment) Musíte zadat objekt zabezpečení, definici role a obor.
+K udělení přístupu skupině použijte příkaz [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) k přiřazení role. Musíte zadat objekt zabezpečení, definici role a obor.
 
 1. Získejte ID objektu skupiny pomocí příkazu [Get-AzureADGroup](/powershell/module/azuread/new-azureadgroup).
 
@@ -124,7 +124,7 @@ Chcete-li skupině udělit přístup, přiřaďte roli pomocí příkazu [New-Az
     $groupId = "11111111-1111-1111-1111-111111111111"
     ```
 
-1. Získejte ID předplatného pomocí příkazu [Get-AzSubscription.](/powershell/module/Az.Accounts/Get-AzSubscription)
+1. Pomocí příkazu [Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription) Získejte ID vašeho předplatného.
 
     ```azurepowershell
     Get-AzSubscription
@@ -185,7 +185,7 @@ Chcete-li skupině udělit přístup, přiřaďte roli pomocí příkazu [New-Az
 
 ## <a name="list-access"></a>Výpis přístupu
 
-1. Chcete-li ověřit přístup k odběru, použijte příkaz [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) k zobrazení seznamu přiřazení rolí.
+1. Pokud chcete ověřit přístup k předplatnému, použijte k zobrazení seznamu přiřazení rolí příkaz [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) .
 
     ```azurepowershell
     Get-AzRoleAssignment -ObjectId $groupId -Scope $subScope
@@ -205,7 +205,7 @@ Chcete-li skupině udělit přístup, přiřaďte roli pomocí příkazu [New-Az
 
     Ve výstupu vidíte, že se skupině RBAC Tutorial Group přiřadila role Čtenář v oboru předplatného.
 
-1. Chcete-li ověřit přístup ke skupině prostředků, použijte příkaz [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) k zobrazení seznamu přiřazení rolí.
+1. Pokud chcete ověřit přístup pro skupinu prostředků, použijte k zobrazení seznamu přiřazení rolí příkaz [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) .
 
     ```azurepowershell
     Get-AzRoleAssignment -ObjectId $groupId -ResourceGroupName "rbac-tutorial-resource-group"
@@ -247,7 +247,7 @@ Chcete-li skupině udělit přístup, přiřaďte roli pomocí příkazu [New-Az
 
 ## <a name="remove-access"></a>Odebrání přístupu
 
-Chcete-li odebrat přístup uživatelům, skupinám a aplikacím, odeberte přiřazení role pomocí [funkce Remove-AzRoleAssignment.](/powershell/module/az.resources/remove-azroleassignment)
+Pokud chcete odebrat přístup pro uživatele, skupiny a aplikace, odeberte přiřazení role pomocí [Remove-AzRoleAssignment](/powershell/module/az.resources/remove-azroleassignment) .
 
 1. Pomocí následujícího příkazu odeberte skupině přiřazení role Přispěvatel v oboru skupiny prostředků.
 
@@ -269,7 +269,7 @@ Chcete-li odebrat přístup uživatelům, skupinám a aplikacím, odeberte při�
 
 Pokud chcete vyčistit prostředky vytvořené v tomto kurzu, odstraňte skupinu prostředků a skupinu.
 
-1. Odstraňte skupinu prostředků pomocí příkazu [Remove-AzResourceGroup.](/powershell/module/az.resources/remove-azresourcegroup)
+1. Odstraňte skupinu prostředků pomocí příkazu [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) .
 
     ```azurepowershell
     Remove-AzResourceGroup -Name "rbac-tutorial-resource-group"
@@ -281,7 +281,7 @@ Pokud chcete vyčistit prostředky vytvořené v tomto kurzu, odstraňte skupinu
     [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"):
     ```
     
-1. Po potvrže zadejte **Y**. Odstranění bude trvat několik sekund.
+1. Po zobrazení výzvy k potvrzení zadejte **Y**. Odstranění bude trvat několik sekund.
 
 1. Odstraňte skupinu pomocí příkazu [Remove-AzureADGroup](/powershell/module/azuread/remove-azureadgroup).
 
@@ -294,4 +294,4 @@ Pokud chcete vyčistit prostředky vytvořené v tomto kurzu, odstraňte skupinu
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Správa přístupu k prostředkům Azure pomocí RBAC a Azure PowerShellu](role-assignments-powershell.md)
+> [Správa přístupu k prostředkům Azure pomocí RBAC a Azure PowerShell](role-assignments-powershell.md)

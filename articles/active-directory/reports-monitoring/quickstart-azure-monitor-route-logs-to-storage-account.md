@@ -1,6 +1,6 @@
 ---
-title: Výuka – archivovat protokoly adresářů do účtu úložiště | Dokumenty společnosti Microsoft
-description: Zjistěte, jak nastavit Diagnostiku Azure tak, aby se protokoly Služby Azure active Directory předávaly účtu úložiště.
+title: Kurz – archivace protokolů adresářů do účtu úložiště | Microsoft Docs
+description: Přečtěte si, jak nastavit Azure Diagnostics pro odesílání Azure Active Directory protokolů do účtu úložiště.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -18,13 +18,13 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fa2cac7c89a2cb1bd99675727bcd51e82c4a18ef
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74007859"
 ---
-# <a name="tutorial-archive-azure-ad-logs-to-an-azure-storage-account"></a>Kurz: Archivujte protokoly Azure AD do účtu úložiště Azure
+# <a name="tutorial-archive-azure-ad-logs-to-an-azure-storage-account"></a>Kurz: archivace protokolů služby Azure AD do účtu služby Azure Storage
 
 V tomto kurzu se dozvíte, jak nastavit diagnostiku ve službě Azure Monitor na směrování protokolů Azure Active Directory (Azure AD) do účtu úložiště Azure.
 
@@ -38,9 +38,9 @@ Pokud chcete používat tuto funkci, potřebujete tyto položky:
 
 ## <a name="archive-logs-to-an-azure-storage-account"></a>Archivace protokolů do účtu úložiště Azure
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com). 
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
 
-2. Vyberte > **protokoly auditování****aktivit služby** **Azure Active Directory** > . 
+2. Vyberte **Azure Active Directory** > **Activity** > **protokoly auditu**aktivit. 
 
 3. Vyberte **Exportovat nastavení**. 
 
@@ -75,6 +75,6 @@ Pokud chcete používat tuto funkci, potřebujete tyto položky:
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Interpretace schématu protokolů auditu v Azure Monitoru](reference-azure-monitor-audit-log-schema.md)
+* [Interpretace schématu protokolů auditu v Azure Monitor](reference-azure-monitor-audit-log-schema.md)
 * [Interpretace schématu protokolů přihlášení ve službě Azure Monitor](reference-azure-monitor-sign-ins-log-schema.md)
 * [Nejčastější dotazy a známé problémy](concept-activity-logs-azure-monitor.md#frequently-asked-questions)

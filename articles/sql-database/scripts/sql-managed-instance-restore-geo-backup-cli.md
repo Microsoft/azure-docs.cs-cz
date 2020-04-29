@@ -1,6 +1,6 @@
 ---
-title: Příklad rozhraní příkazového řádku Obnovení geografické zálohy – Azure SQL Database
-description: Ukázkový skript Azure CLI pro obnovení databáze spravovaných instancí Azure SQL z geograficky redundantní zálohy.
+title: Příklad rozhraní příkazového řádku obnovení geografické zálohy – Azure SQL Database
+description: Ukázkový skript Azure CLI pro obnovení databáze spravované instance Azure SQL z geograficky redundantní zálohy.
 services: sql-database
 ms.service: sql-database
 ms.subservice: backup-restore
@@ -12,15 +12,15 @@ ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 07/03/2019
 ms.openlocfilehash: 1bd0322aee83fb980c60382a2ff3eaab1cd1313c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80061746"
 ---
-# <a name="use-cli-to-restore-a-managed-instance-database-to-another-geo-region"></a>Obnovení databáze spravované instance do jiné geografické oblasti pomocí zapisovaného zapisování a zabezpečení
+# <a name="use-cli-to-restore-a-managed-instance-database-to-another-geo-region"></a>Obnovení databáze spravované instance do jiné geografické oblasti pomocí rozhraní příkazového řádku
 
-Tento příklad skriptu Azure CLI obnoví databázi spravované instance Azure SQL ze vzdálené geografické oblasti (geografické obnovení).  
+Tento ukázkový skript Azure CLI obnoví databázi spravované instance Azure SQL ze vzdálené geografické oblasti (geografické obnovení).  
 
 Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (CLI) místně, musíte mít spuštěnou verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli).
 
@@ -28,7 +28,7 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (
 
 ### <a name="prerequisites"></a>Požadavky
 
-Existující dvojice spravovaných instancí najdete v článku [Použití nastavení příkazového příkazu k azure k vytvoření spravované instance Azure SQL Database](sql-database-create-configure-managed-instance-cli.md).
+Existující dvojici spravovaných instancí najdete v tématu [použití rozhraní příkazového řádku Azure k vytvoření spravované instance Azure SQL Database](sql-database-create-configure-managed-instance-cli.md).
 
 ### <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -52,13 +52,13 @@ echo "Restoring $($managedDatabase) to $($targetInstance)..."
 az sql midb restore -g $resource --mi $instance -n $managedDatabase --dest-name $targetInstance --time "2018-05-20T05:34:22"
 ```
 
-## <a name="sample-reference"></a>Odkaz na vzorek
+## <a name="sample-reference"></a>Vzorový odkaz
 
 Tento skript používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
 | | |
 |---|---|
-| [az sql midb](/cli/azure/sql/midb) | Příkazy databáze spravovaných instancí. |
+| [AZ SQL MIDB](/cli/azure/sql/midb) | Příkazy databáze spravované instance. |
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -16,10 +16,10 @@ ms.date: 01/23/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 74da278dbbc0ac32407c345524e224ca5f7616da
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77194593"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-coda"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s Coda
@@ -53,7 +53,7 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 
 Pokud chcete nakonfigurovat integraci sady Coda do služby Azure AD, musíte přidat Coda z Galerie do seznamu spravovaných aplikací SaaS.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
 1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
@@ -95,7 +95,7 @@ Pokud chcete začít, postupujte podle těchto kroků v Coda.
 
    ![ID entity a adresa URL odpovědi SAML pro použití v Azure](media/coda-tutorial/azure-settings.png)
 
-## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
+## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
@@ -107,22 +107,22 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** zadejte hodnoty pro následující pole:
 
-   a. Do textového pole **identifikátor** zadejte "ID entity". Měl by postupovat podle vzoru: `https://coda.io/samlId/<CUSTOMID>`
+   a. Do textového pole **identifikátor** zadejte "ID entity". Měl by postupovat podle vzoru:`https://coda.io/samlId/<CUSTOMID>`
 
-   b. Do textového pole **Adresa URL odpovědi** zadejte "URL odpověď SAML". Měl by postupovat podle vzoru: `https://coda.io/login/sso/saml/<CUSTOMID>/consume`
+   b. Do textového pole **Adresa URL odpovědi** zadejte "URL odpověď SAML". Měl by postupovat podle vzoru:`https://coda.io/login/sso/saml/<CUSTOMID>/consume`
 
    > [!NOTE]
    > Vaše hodnoty se budou lišit od výše uvedeného. vaše hodnoty najdete v konzole Coda "konfigurace SAML". Aktualizujte tyto hodnoty skutečným identifikátorem a adresou URL odpovědi.
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
 
-   ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
+   ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
 1. V části **Nastavení Coda** zkopírujte příslušné adresy URL na základě vašeho požadavku.
 
    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
@@ -130,11 +130,11 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. například `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte B. Simon používat jednotné přihlašování pomocí Azure tím, že udělíte přístup k Coda.
 
@@ -142,7 +142,7 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 1. V seznamu aplikace vyberte položku **Coda**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
-   ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+   ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
 1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
@@ -162,7 +162,7 @@ Chcete-li dokončit instalaci, zadejte hodnoty z Azure Active Directory v panelu
 1. V části **Adresa URL pro přihlášení zprostředkovatele identity**vložte **přihlašovací adresu URL** z konzoly Azure.
 1. V části **Vystavitel zprostředkovatele identity**vložte **identifikátor Azure AD** z konzoly Azure.
 1. V části **veřejný certifikát poskytovatele identity**vyberte možnost **nahrát certifikát** a vyberte soubor certifikátu, který jste stáhli dříve.
-1. Vyberte **Save** (Uložit).
+1. Vyberte **Uložit**.
 
 Tím se dokončí práce, která je nezbytná pro nastavení připojení SAML SSO.
 
@@ -172,7 +172,7 @@ V této části se ve Coda vytvoří uživatel s názvem Britta Simon. Systém C
 
 ## <a name="test-sso"></a>Test SSO
 
-V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
 Po kliknutí na dlaždici CODA na přístupovém panelu byste se měli automaticky přihlášeni k Coda, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 

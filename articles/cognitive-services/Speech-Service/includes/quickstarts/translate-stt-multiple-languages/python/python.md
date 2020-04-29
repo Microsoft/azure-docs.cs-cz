@@ -1,5 +1,5 @@
 ---
-title: 'Úvodní příručka: Rozpoznat řeč, Python - Služba řeči'
+title: 'Rychlý Start: rozpoznávání rozpoznávání řeči, Python-Speech Service'
 titleSuffix: Azure Cognitive Services
 description: Bude doplněno
 services: cognitive-services
@@ -11,18 +11,18 @@ ms.topic: include
 ms.date: 04/04/2020
 ms.author: chlandsi
 ms.openlocfilehash: 3758b035e7840c63c895417d0ed3d8dca0ab618f
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80671155"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
-Než začnete, ujistěte se, že:
+Než začnete, nezapomeňte:
 
 > [!div class="checklist"]
-> * [Vytvoření řečového prostředku Azure](../../../../get-started.md)
+> * [Vytvoření prostředku Azure Speech](../../../../get-started.md)
 > * [Nastavení vývojového prostředí a vytvoření prázdného projektu](../../../../quickstarts/setup-platform.md?tabs=python&pivots=programming-language-python)
 
 ## <a name="add-sample-code"></a>Přidání ukázkového kódu
@@ -80,17 +80,17 @@ Než začnete, ujistěte se, že:
 
 1. Řetězec `YourServiceRegion` nahraďte [oblastí](../../../../regions.md) přidruženou k vašemu předplatnému (například `westus` pro bezplatnou zkušební verzi předplatného).
 
-1. Uložte změny, které `quickstart.py`jste provedli.
+1. Uložte změny, které jste udělali v `quickstart.py`.
 
-## <a name="build-and-run-your-app"></a>Vytvoření a spuštění aplikace
+## <a name="build-and-run-your-app"></a>Sestavení a spuštění aplikace
 
-1. Spusťte ukázku z konzoly nebo v ide:
+1. Spusťte ukázku z konzoly nebo v integrovaném vývojovém prostředí:
 
    ```
    python quickstart.py
    ```
 
-1. Vyslovte anglickou frázi nebo větu. Aplikace přenáší váš projev do služby Speech, která překládá a přepisuje na text (v tomto případě do francouzštiny a němčiny). Služba Řeč pak odešle text zpět do aplikace pro zobrazení.
+1. Vyslovte anglickou frázi nebo větu. Aplikace přenáší váš hlas do služby pro rozpoznávání řeči, která převádí a transcribes na text (v tomto případě na francouzštinu a němčinu). Služba rozpoznávání řeči pak pošle text zpátky do aplikace k zobrazení.
 
    ```
    Say something...

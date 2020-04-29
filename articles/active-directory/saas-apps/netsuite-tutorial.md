@@ -16,10 +16,10 @@ ms.date: 01/22/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6a920e58f1ffd4c3e3e9769bf6346100a8677b90
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76760044"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-sso-with-netsuite"></a>Kurz: Integrace jednotného přihlašování (SSO) Azure AD pomocí NetSuite
@@ -77,7 +77,7 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
     * [Vytvořte testovacího uživatele NetSuite](#create-the-netsuite-test-user) , který bude mít protějšek uživatele B. Simon v NetSuite, který je propojený s Předprezentací Azure AD.
 1. [Otestujte jednotné přihlašování](#test-sso) a ověřte, jestli konfigurace funguje.
 
-## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
+## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
 
 Pokud chcete povolit jednotné přihlašování služby Azure AD v Azure Portal, udělejte toto:
 
@@ -98,7 +98,7 @@ Pokud chcete povolit jednotné přihlašování služby Azure AD v Azure Portal,
     | `https://<Account ID>.na1.sandbox.NetSuite.com/saml2/acs`|
     | `https://<Account ID>.na2.sandbox.NetSuite.com/saml2/acs`|
 
-    * V části Konfigurace NetSuite se zobrazí hodnota **>`Account ID`** , která je vysvětlena dále v kurzu v kroku 8 v části Konfigurace Netsuite.< V tomto případě najdete konkrétní doménu (například system.na0.netsuite.com).
+    * V části Konfigurace NetSuite se zobrazí **hodnota, která je vysvětlena dále v kurzu v kroku 8 v části Konfigurace NetSuite. < `Account ID` ** V tomto případě najdete konkrétní doménu (například system.na0.netsuite.com).
 
         ![Konfigurace jednotného přihlašování](./media/NetSuite-tutorial/domain-value.png)
 
@@ -111,7 +111,7 @@ Pokud chcete povolit jednotné přihlašování služby Azure AD v Azure Portal,
 
 1. Kromě toho očekává aplikace NetSuite několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
 
-    | Name (Název) | Zdrojový atribut |
+    | Název | Zdrojový atribut |
     | ---------------| --------------- |
     | account  | `account id` |
 
@@ -126,22 +126,22 @@ Pokud chcete povolit jednotné přihlašování služby Azure AD v Azure Portal,
 
     ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně Azure Portal vyberte **Azure Active Directory** > **uživatelů** > **všech uživatelích**.
+1. V levém podokně Azure Portal vyberte **Azure Active Directory** > **Uživatelé** > **Všichni uživatelé**.
 
-1. Vyberte **nového uživatele** v horní části obrazovky.
+1. V horní části obrazovky vyberte **Nový uživatel** .
 
 1. V podokně vlastnosti **uživatele** proveďte následující kroky:
 
    a. Do pole **název** zadejte **B. Simon**.  
    b. Do pole **uživatelské jméno** zadejte username@companydomain.extension (například B.Simon@contoso.com).  
    c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .  
-   d. Vyberte **Create** (Vytvořit).
+   d. Vyberte **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte uživateli B. Simon používat jednotné přihlašování pomocí Azure tím, že udělíte přístup k NetSuite.
 
@@ -149,7 +149,7 @@ V této části povolíte uživateli B. Simon používat jednotné přihlašová
 1. V seznamu aplikace vyberte **NetSuite**.
 1. V podokně Přehled vyhledejte část **Správa** a potom vyberte odkaz **Uživatelé a skupiny** .
 
-   ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+   ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
 1. Vyberte **Přidat uživatele** a potom v podokně **Přidat přiřazení** vyberte **Uživatelé a skupiny**.
 
@@ -166,7 +166,7 @@ V této části povolíte uživateli B. Simon používat jednotné přihlašová
 
 1. V prohlížeči otevřete novou kartu a přihlaste se k webu NetSuite společnosti jako správce.
 
-2. V horním navigačním panelu vyberte **Nastavení**a potom vyberte **Společnost** > **Povolit funkce**.
+2. V horním navigačním panelu vyberte možnost **Nastavení**a potom vyberte možnost **Company** > **Povolit funkce**společnosti.
 
     ![Konfigurace jednotného přihlašování](./media/NetSuite-tutorial/ns-setupsaml.png)
 
@@ -198,9 +198,9 @@ V této části povolíte uživateli B. Simon používat jednotné přihlašová
 
     b. V části **metadata poskytovatele identity SAMLV2**vyberte **nahrát soubor metadat IDP**a pak vyberte **Procházet** a nahrajte soubor metadat, který jste stáhli z Azure Portal.
 
-    c. Vyberte **odeslat**.
+    c. Vyberte **Odeslat**.
 
-9. V horním navigačním panelu NetSuite vyberte **Nastavení**a potom vyberte **Společnost** > **informace o společnosti**.
+9. V horním navigačním panelu NetSuite vyberte **Nastavení**a pak vyberte**informace o**společnosti **společnosti** > .
 
     ![Konfigurace jednotného přihlašování](./media/NetSuite-tutorial/ns-com.png)
 
@@ -264,9 +264,9 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu vyberete dlaždici NetSuite, měli byste se automaticky přihlásit k NetSuite, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály a zdroje informací
 
-- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 - [Vyzkoušejte si NetSuite s Azure AD](https://aad.portal.azure.com/)

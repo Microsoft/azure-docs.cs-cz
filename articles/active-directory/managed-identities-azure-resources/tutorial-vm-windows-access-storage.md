@@ -1,5 +1,5 @@
 ---
-title: Přístup k Úložišti Azure pomocí spravované identity přiřazené k virtuálnímu počítači windows | Dokumenty společnosti Microsoft
+title: Přístup k Azure Storage pomocí spravované identity přiřazené systémem Windows VM | Microsoft Docs
 description: Tento kurz vás postupně provede používáním spravované identity přiřazené systémem na virtuálním počítači s Windows pro přístup k Azure Storage.
 services: active-directory
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.date: 01/14/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 182bf02bfaad598a447304cc9f2ed42f6221176d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75971967"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage"></a>Kurz: Použití spravované identity přiřazené systémem na virtuálním počítači s Windows pro přístup k Azure Storage
@@ -82,12 +82,12 @@ Soubory vyžadují úložiště objektů blob. Proto potřebujete vytvořit kont
 
 ### <a name="grant-access"></a>Udělení přístupu
 
-Tato část ukazuje, jak udělit přístup virtuálního počítače ke kontejneru úložiště Azure. Spravovanou identitu přiřazenou systémem na virtuálním počítači můžete použít k načtení dat, která jsou v úložišti Azure Storage Blob.
+V této části se dozvíte, jak udělit VIRTUÁLNÍmu počítači přístup k kontejneru Azure Storage. Spravovanou identitu přiřazenou systémem na virtuálním počítači můžete použít k načtení dat, která jsou v úložišti Azure Storage Blob.
 
 1. Přejděte zpět k nově vytvořenému účtu úložiště.
 2. Na panelu vlevo klikněte na odkaz **Řízení přístupu (IAM)**.
-3. Kliknutím **na + Přidat přiřazení role** v horní části stránky přidáte nové přiřazení role pro váš virtuální počítač.
-4. V části **Role**v rozevíracím souboru vyberte **vyberte Čtečka dat objektů blob úložiště**.
+3. Kliknutím na **+ Přidat přiřazení role** v horní části stránky přidejte nové přiřazení role pro svůj virtuální počítač.
+4. V části **role**v rozevíracím seznamu vyberte **čtečka dat objektů BLOB úložiště**.
 5. V dalším rozevíracím seznamu **Přiřadit přístup k** vyberte **Virtuální počítač**.
 6. Potom se ujistěte, že v rozevíracím seznamu **Předplatné** je správné předplatné, a nastavte **Skupinu prostředků** na **Všechny skupiny prostředků**.
 7. V části **Vybrat** zvolte svůj virtuální počítač a klikněte na **Uložit**.
@@ -98,7 +98,7 @@ Tato část ukazuje, jak udělit přístup virtuálního počítače ke kontejne
 
 Azure Storage nativně podporuje ověřování Azure AD, takže může přímo přijímat přístupové tokeny získané pomocí spravované identity. Je to součást integrace Azure Storage do Azure AD, ale nejde o poskytnutí přihlašovacích údajů v připojovacím řetězci.
 
-Tady je příklad kódu .NET otevření připojení k Azure Storage pomocí přístupového tokenu a čtení obsahu souboru, který jste vytvořili dříve. Tento kód je potřeba spustit na virtuálním počítači, aby byl možný přístup ke koncovému bodu spravované identity virtuálního počítače. K použití metody přístupového tokenu je vyžadována rozhraní .NET Framework 4.6 nebo vyšší. Parametr `<URI to blob file>` nahraďte odpovídající hodnotou. Tuto hodnotu získáte, když přejdete k vytvořenému souboru, který jste nahráli do úložiště objektů blob, a zkopírujete **adresu URL**, která je na stránce **Přehled** v části **Vlastnosti**.
+Tady je příklad kódu .NET pro otevření připojení k Azure Storage pomocí přístupového tokenu a následného čtení obsahu souboru, který jste vytvořili dříve. Tento kód je potřeba spustit na virtuálním počítači, aby byl možný přístup ke koncovému bodu spravované identity virtuálního počítače. K použití metody přístupového tokenu se vyžaduje .NET Framework 4,6 nebo vyšší. Parametr `<URI to blob file>` nahraďte odpovídající hodnotou. Tuto hodnotu získáte, když přejdete k vytvořenému souboru, který jste nahráli do úložiště objektů blob, a zkopírujete **adresu URL**, která je na stránce **Přehled** v části **Vlastnosti**.
 
 ```csharp
 using System;

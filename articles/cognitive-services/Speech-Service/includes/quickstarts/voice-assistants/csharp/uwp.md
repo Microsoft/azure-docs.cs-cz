@@ -5,36 +5,36 @@ ms.topic: include
 ms.date: 04/04/2020
 ms.author: travisw
 ms.openlocfilehash: 62c317843c275531286eeb2ae616d79ad76c6f99
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80671196"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
-Než začnete, ujistěte se, že:
+Než začnete, nezapomeňte:
 
 > [!div class="checklist"]
-> * [Vytvoření prostředku řeči Azure](~/articles/cognitive-services/speech-service/get-started.md)
+> * [Vytvoření prostředku Azure Speech](~/articles/cognitive-services/speech-service/get-started.md)
 > * [Nastavení vývojového prostředí a vytvoření prázdného projektu](~/articles/cognitive-services/speech-service/quickstarts/setup-platform.md?tabs=uwp&pivots=programming-language-csharp)
-> * Vytvoření robota připojeného ke [kanálu řeči přímé čáry](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
-> * Ujistěte se, že máte přístup k mikrofonu pro snímání zvuku
+> * Vytvoření robota připojeného k [kanálu pro přímý vstup řeči](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
+> * Ujistěte se, že máte přístup k mikrofonu pro záznam zvuku
 > 
   > [!NOTE]
-  > Informace o tom, že hlasové asistenty nasadíte v jedné z těchto oblastí, naleznete v [seznamu podporovaných oblastí.](~/articles/cognitive-services/speech-service/regions.md#voice-assistants)
+  > Přečtěte si [seznam podporovaných oblastí pro hlasové asistenty](~/articles/cognitive-services/speech-service/regions.md#voice-assistants) a zajistěte, aby byly prostředky nasazeny v jedné z těchto oblastí.
 
-## <a name="open-your-project-in-visual-studio"></a>Otevření projektu v sadě Visual Studio
+## <a name="open-your-project-in-visual-studio"></a>Otevřete projekt v aplikaci Visual Studio
 
-Prvním krokem je ujistěte se, že máte projekt otevřený v sadě Visual Studio.
+Prvním krokem je ujistit se, že máte projekt otevřený v aplikaci Visual Studio.
 
-## <a name="start-with-some-boilerplate-code"></a>Začněte s nějakým standardním kódem
+## <a name="start-with-some-boilerplate-code"></a>Začínáme s některým často používaným kódem
 
-Přidáme nějaký kód, který funguje jako kostra pro náš projekt.
+Pojďme přidat kód, který funguje jako kostra pro náš projekt.
 
-1. V **Průzkumníku** `MainPage.xaml`řešení otevřete .
+1. V **Průzkumník řešení**otevřete `MainPage.xaml`.
 
-1. V zobrazení XAML návrháře nahraďte celý obsah následujícím fragmentem, který definuje základní uživatelské rozhraní:
+1. V zobrazení jazyka XAML návrháře nahraďte celý obsah následujícím fragmentem kódu, který definuje uživatelské rozhraní základní:
 
     ```xml
     <Page
@@ -81,16 +81,16 @@ Přidáme nějaký kód, který funguje jako kostra pro náš projekt.
     </Page>
     ```
 
-Návrhové zobrazení je aktualizováno tak, aby zobrazovala uživatelské rozhraní aplikace.
+Zobrazení Návrh se aktualizuje a zobrazí se uživatelské rozhraní aplikace.
 
-1. V **Průzkumníku řešení**otevřete zdrojový `MainPage.xaml.cs`soubor s kódem na pozadí . (Je seskupena pod `MainPage.xaml`.) Nahraďte obsah tohoto souboru níže, který zahrnuje:
+1. V **Průzkumník řešení**otevřete zdrojový soubor `MainPage.xaml.cs`kódu na pozadí. (Je seskupena pod `MainPage.xaml`.) Obsah tohoto souboru nahraďte níže, která zahrnuje:
 
-- `using`příkazy `Speech` pro `Speech.Dialog` obory názvů a
-- Jednoduchá implementace pro zajištění přístupu k mikrofonu, připojená k obslužné rutině tlačítek
-- Základní pomocníci ui pro prezentaci zpráv a chyb v aplikaci
-- Přistávací bod pro cestu inicializace kódu, který bude naplněn později
-- Pomocník pro přehrávání textu na řeč (bez podpory streamování)
-- Prázdná obslužná rutina tlačítka pro zahájení poslechu, která bude naplněna později
+- `using`příkazy pro `Speech` obory `Speech.Dialog` názvů a
+- Jednoduchá implementace pro zajištění přístupu přes mikrofon, který je kabelem k obslužné rutině tlačítka
+- Základní pomocníky uživatelského rozhraní pro prezentování zpráv a chyb v aplikaci
+- Místo pro cestu inicializačního kódu, který se naplní později
+- Pomocná funkce pro přehrání textu na řeč (bez podpory streamování)
+- Prázdná obslužná rutina tlačítka pro zahájení naslouchání, které se naplní později
 
     ```csharp
     using Microsoft.CognitiveServices.Speech;
@@ -259,7 +259,7 @@ Návrhové zobrazení je aktualizováno tak, aby zobrazovala uživatelské rozhr
         }
     }
     ```
-1. Přidejte následující fragment kódu do těla `InitializeDialogServiceConnector`metody . Tento kód `DialogServiceConnector` vytvoří s informacemi o předplatném.
+1. Do těla metody přidejte následující fragment kódu `InitializeDialogServiceConnector`. Tento kód vytvoří `DialogServiceConnector` informace o vašem předplatném.
 
     ```csharp
     // Create a BotFrameworkConfig by providing a Speech service subscription key
@@ -273,14 +273,14 @@ Návrhové zobrazení je aktualizováno tak, aby zobrazovala uživatelské rozhr
     ```
 
    > [!NOTE]
-   > Informace o tom, že hlasové asistenty nasadíte v jedné z těchto oblastí, naleznete v [seznamu podporovaných oblastí.](~/articles/cognitive-services/speech-service/regions.md#voice-assistants)
+   > Přečtěte si [seznam podporovaných oblastí pro hlasové asistenty](~/articles/cognitive-services/speech-service/regions.md#voice-assistants) a zajistěte, aby byly prostředky nasazeny v jedné z těchto oblastí.
 
    > [!NOTE]
-   > Informace o konfiguraci robota naleznete v dokumentaci k rozhraní Bot Framework pro [kanál Přímé řeči .](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
+   > Informace o konfiguraci robota najdete v dokumentaci k rozhraní bot pro [kanál Direct line Speech](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech).
 
-1. Nahraďte `YourSpeechSubscriptionKey` řetězce `YourServiceRegion` a vlastní hodnoty pro odběr řeči a [oblast](~/articles/cognitive-services/speech-service/regions.md).
+1. Nahraďte řetězce `YourSpeechSubscriptionKey` a `YourServiceRegion` vlastními hodnotami pro vaše předplatné a [oblast](~/articles/cognitive-services/speech-service/regions.md)řeči.
 
-1. Připojujte následující fragment kódu na konec těla `InitializeDialogServiceConnector`metody . Tento kód nastaví obslužné rutiny pro události, na které `DialogServiceConnector` se spoléhá ke komunikaci aktivit svých robotů, výsledků rozpoznávání řeči a dalších informací.
+1. Přidejte následující fragment kódu na konec těla metody `InitializeDialogServiceConnector`. Tento kód nastaví obslužné rutiny pro události, které `DialogServiceConnector` se spoléhaly na, aby komunikovaly své aktivity robota, výsledky rozpoznávání řeči a další informace.
 
     ```csharp
     // ActivityReceived is the main way your bot will communicate with the client 
@@ -335,7 +335,7 @@ Návrhové zobrazení je aktualizováno tak, aby zobrazovala uživatelské rozhr
     };
     ```
 
-1. Přidejte následující fragment kódu do těla `ListenButton_ButtonClicked` metody `MainPage` ve třídě. Tento kód `DialogServiceConnector` nastaví naslouchat, protože jste již vytvořili konfiguraci a zaregistrovali obslužné rutiny událostí.
+1. Do těla `ListenButton_ButtonClicked` metody ve `MainPage` třídě přidejte následující fragment kódu. Tento kód nastaví, `DialogServiceConnector` aby naslouchal, protože už jste navázali konfiguraci a zaregistrovali obslužné rutiny událostí.
 
     ```csharp
     if (connector == null)
@@ -364,21 +364,21 @@ Návrhové zobrazení je aktualizováno tak, aby zobrazovala uživatelské rozhr
     }
     ```
     
-## <a name="build-and-run-your-app"></a>Vytvoření a spuštění aplikace
+## <a name="build-and-run-your-app"></a>Sestavení a spuštění aplikace
 
-Teď jste připraveni vytvořit aplikaci a otestovat vlastního hlasového asistenta pomocí služby Řeč.
+Teď jste připraveni vytvořit aplikaci a otestovat vlastní hlasový asistent pomocí služby Speech.
 
-1. Na řádku nabídek zvolte **Sestavení** > **sestavení řešení** k sestavení aplikace. Kód by se teď měl zkompilovat bez chyb.
+1. V řádku nabídek vyberte **sestavení** > sestavit**řešení** a sestavte aplikaci. Kód by se teď měl zkompilovat bez chyb.
 
-1. **Chcete-li** > spustit aplikaci, zvolte Ladění**spouštění ladění** (nebo stisknutím **klávesy F5).** Zobrazí se okno **Helloworld.**
+1. Zvolte **ladění** > **Spustit ladění** (nebo stiskněte klávesu **F5**) a spusťte aplikaci. Zobrazí se okno **HelloWorld** .
 
-   ![Ukázka aplikace hlasového asistenta UPW v C# - rychlý start](~/articles/cognitive-services/Speech-Service/media/sdk/qs-voice-assistant-uwp-helloworld-window.png)
+   ![Ukázka aplikace hlasového asistenta UWP v C# – rychlý Start](~/articles/cognitive-services/Speech-Service/media/sdk/qs-voice-assistant-uwp-helloworld-window.png)
 
-1. Vyberte **Povolit mikrofon**a když se objeví žádost o přístupová oprávnění, vyberte **Ano**.
+1. Vyberte možnost **Povolit mikrofon**a když se zobrazí žádost o přístupové oprávnění, vyberte **Ano**.
 
    ![Žádost o oprávnění k přístupu k mikrofonu](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-10-access-prompt.png)
 
-1. Vyberte **Promluvte si se svým robotem**a do mikrofonu zařízení vyslovte anglickou frázi nebo větu. Vaše řeč je přenášena do kanálu Direct Line Speech a přepsána na text, který se zobrazí v okně.
+1. Vyberte možnost **mluvit na robota**a mluvte do mikrofonu zařízení anglickou frázi nebo větu. Váš hlas se přenáší na kanál s přímým přístupem a přepisu na text, který se zobrazí v okně.
 
 ## <a name="next-steps"></a>Další kroky
 

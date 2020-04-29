@@ -1,7 +1,7 @@
 ---
-title: Synchronizace dat z Azure SQL Database Edge pomocí Azure Data Factory | Dokumenty společnosti Microsoft
-description: Informace o synchronizaci dat mezi Azure SQL Database Edge a úložištěm objektů blob Azure
-keywords: SQL Database Edge,synchronizace dat z okraje databáze SQL, sql database edge data factory
+title: Synchronizace dat z Azure SQL Database Edge pomocí Azure Data Factory | Microsoft Docs
+description: Další informace o synchronizaci dat mezi Azure SQL Database Edge a úložištěm objektů BLOB v Azure
+keywords: Edge SQL Database, synchronizace dat z okraje SQL Database, SQL Database Edge Data Factory
 services: sql-database-edge
 ms.service: sql-database-edge
 ms.topic: tutorial
@@ -10,25 +10,25 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 11/04/2019
 ms.openlocfilehash: e6fd9e6431137708ba93328a8ed1359b93b4ee1f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74851685"
 ---
-# <a name="tutorial-sync-data-from-sql-database-edge-to-azure-blob-storage-by-using-azure-data-factory"></a>Kurz: Synchronizace dat z SQL Database Edge do úložiště objektů blob Azure pomocí Azure Data Factory
+# <a name="tutorial-sync-data-from-sql-database-edge-to-azure-blob-storage-by-using-azure-data-factory"></a>Kurz: synchronizace dat z SQL Database Edge do úložiště objektů BLOB v Azure pomocí Azure Data Factory
 
-V tomto kurzu budete používat Azure Data Factory k postupné synchronizaci dat do úložiště objektů Blob Azure z tabulky v instanci Azure SQL Database Edge.
+V tomto kurzu použijete Azure Data Factory k přírůstkové synchronizaci dat do služby Azure Blob Storage z tabulky v instanci Azure SQL Database Edge.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
-Pokud jste ještě nevytvořili databázi nebo tabulku v nasazení Azure SQL Database Edge, vytvořte jednu z těchto metod:
+Pokud jste ještě nevytvořili databázi nebo tabulku v nasazení Azure SQL Database Edge, použijte jednu z těchto metod, která ji vytvoří:
 
-* K připojení k SQL Database Edge použijte [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms/) nebo Azure Data [Studio.](/sql/azure-data-studio/download/) Spusťte skript SQL a vytvořte databázi a tabulku.
-* Vytvořte databázi sql a tabulku pomocí [SQLCMD](/sql/tools/sqlcmd-utility/) přímým připojením k modulu SQL Database Edge. Další informace naleznete [v tématu Připojení k databázovému stroji pomocí sqlcmd](/sql/ssms/scripting/sqlcmd-connect-to-the-database-engine/).
-* Pomocí nástroje SQLPackage.exe nasazujte soubor balíčku DAC do kontejneru SQL Database Edge. Tento proces můžete automatizovat zadáním identifikátoru URI souboru SqlPackage jako součásti požadované konfigurace vlastností modulu. Můžete také přímo použít sqlpackage.exe klientský nástroj k nasazení balíčku DAC sql database edge.
+* K připojení SQL Database Edge použijte [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms/) nebo [Azure Data Studio](/sql/azure-data-studio/download/) . Spusťte skript SQL pro vytvoření databáze a tabulky.
+* Vytvořte databázi SQL a tabulku pomocí nástroje [Sqlcmd](/sql/tools/sqlcmd-utility/) pomocí přímého připojení k modulu SQL Database Edge. Další informace najdete v tématu [připojení k databázovému stroji pomocí nástroje Sqlcmd](/sql/ssms/scripting/sqlcmd-connect-to-the-database-engine/).
+* Pomocí SQLPackage. exe nasaďte soubor balíčku DAC do kontejneru SQL Database Edge. Tento proces můžete automatizovat zadáním identifikátoru URI souboru SqlPackage jako součást konfigurace požadovaných vlastností modulu. K nasazení balíčku DAC na SQL Database Edge můžete také přímo použít klientský nástroj SqlPackage. exe.
 
-    Informace o stažení souboru SqlPackage.exe naleznete v [tématu Stažení a instalace balíčku SQLPackage](/sql/tools/sqlpackage-download/). Následují některé ukázkové příkazy pro sqlpackage.exe. Další informace naleznete v dokumentaci sqlpackage.exe.
+    Informace o tom, jak stáhnout SqlPackage. exe, najdete v tématu [Stažení a instalace SqlPackage](/sql/tools/sqlpackage-download/). Následuje několik ukázkových příkazů pro SqlPackage. exe. Další informace najdete v dokumentaci k SqlPackage. exe.
 
     **Vytvoření balíčku DAC**
 
@@ -42,9 +42,9 @@ Pokud jste ještě nevytvořili databázi nebo tabulku v nasazení Azure SQL Dat
     sqlpackage /Action:Publish /Sourcefile:<dacpac_file_name> /TargetServerName:<Server_Name>,<port> /TargetDatabaseName:<DB_Name> /TargetUser:<user> /TargetPassword:<password>
     ```
 
-## <a name="create-a-sql-table-and-procedure-to-store-and-update-the-watermark-levels"></a>Vytvoření tabulky a postupu SQL pro uložení a aktualizaci úrovní vodoznaku
+## <a name="create-a-sql-table-and-procedure-to-store-and-update-the-watermark-levels"></a>Vytvoření tabulky a procedury SQL pro ukládání a aktualizaci úrovní meze
 
-Tabulka vodoznaků se používá k uložení posledního časového razítka, do kterého byla data již synchronizována s Azure Storage. Uložená procedura Transact-SQL (T-SQL) se používá k aktualizaci tabulky vodoznaku po každé synchronizaci.
+Tabulka meze se používá k uložení posledního časového razítka, na které už byla synchronizovaná data s Azure Storage. Uloženou proceduru jazyka Transact-SQL (T-SQL) slouží k aktualizaci tabulky meze po každé synchronizaci.
 
 Spusťte tyto příkazy na instanci SQL Database Edge:
 
@@ -65,43 +65,43 @@ Spusťte tyto příkazy na instanci SQL Database Edge:
     Go
 ```
 
-## <a name="create-a-data-factory-pipeline"></a>Vytvoření kanálu datové továrny
+## <a name="create-a-data-factory-pipeline"></a>Vytvoření kanálu Data Factory
 
-V této části vytvoříte kanál Azure Data Factory pro synchronizaci dat do úložiště objektů Blob Azure z tabulky v Azure SQL Database Edge.
+V této části vytvoříte kanál Azure Data Factory k synchronizaci dat do služby Azure Blob Storage z tabulky v Azure SQL Database Edge.
 
-### <a name="create-a-data-factory-by-using-the-data-factory-ui"></a>Vytvoření datové továrny pomocí ui datové továrny
+### <a name="create-a-data-factory-by-using-the-data-factory-ui"></a>Vytvoření datové továrny pomocí Data Factoryho uživatelského rozhraní
 
-Vytvořte továrnu dat podle pokynů v [tomto kurzu](../data-factory/quickstart-create-data-factory-portal.md#create-a-data-factory).
+Pomocí pokynů v [tomto kurzu](../data-factory/quickstart-create-data-factory-portal.md#create-a-data-factory)Vytvořte datovou továrnu.
 
-### <a name="create-a-data-factory-pipeline"></a>Vytvoření kanálu datové továrny
+### <a name="create-a-data-factory-pipeline"></a>Vytvoření kanálu Data Factory
 
-1. Na stránce **Začínáme** v uzu Data Factory vyberte **Vytvořit kanál**.
+1. Na stránce **Začínáme** v uživatelském rozhraní Data Factory vyberte **vytvořit kanál**.
 
-    ![Vytvoření kanálu datové továrny](media/tutorial-sync-data-factory/data-factory-get-started.png)
+    ![Vytvoření kanálu Data Factory](media/tutorial-sync-data-factory/data-factory-get-started.png)
 
-2. Na stránce **Obecné** v okně **Vlastnosti** pro kanál zadejte pro název **PeriodicSync.**
+2. Na stránce **Obecné** v okně **vlastnosti** pro kanál zadejte **PeriodicSync** pro název.
 
-3. Přidejte aktivitu vyhledávání, abyste získali starou hodnotu vodoznaku. V podokně **Aktivity** rozbalte **položku Obecné** a přetáhněte aktivitu **vyhledávání** na povrch návrháře kanálu. Změňte název aktivity na **OldWatermark**.
+3. Přidejte aktivitu vyhledávání a získejte tak starou hodnotu meze. V podokně **aktivity** rozbalte **Obecné** a přetáhněte aktivitu **vyhledávání** na plochu návrháře kanálu. Změňte název aktivity na **OldWatermark**.
 
     ![Přidání starého vyhledávání vodoznaku](media/tutorial-sync-data-factory/create-old-watermark-lookup.png)
 
-4. Přepněte na kartu **Nastavení** a vyberte **Nový** pro **zdrojovou datovou sadu**. Nyní vytvoříte datovou sadu představující data v tabulce vodoznaku. Tato tabulka obsahuje starou mez, která se použila v předchozí operaci kopírování.
+4. Přepněte na kartu **Nastavení** a pro **zdrojovou datovou sadu**vyberte **Nový** . Nyní vytvoříte datovou sadu, která bude představovat data v tabulce meze. Tato tabulka obsahuje starou mez, která se použila v předchozí operaci kopírování.
 
-5. V okně **Nová datová sada** vyberte **Azure SQL Server**a pak vyberte **Pokračovat**.  
+5. V okně **Nová datová sada** vyberte **Azure SQL Server**a pak vyberte **pokračovat**.  
 
-6. V okně **Nastavit vlastnosti** datové sady zadejte v části **Název** **vodoznakDataset**.
+6. V okně **nastavit vlastnosti** pro datovou sadu v části **název**zadejte **WatermarkDataset**.
 
-7. V **případě propojené služby**vyberte **nový**a proveďte tyto kroky:
+7. V případě **propojené služby**vyberte **Nový**a pak dokončete tyto kroky:
 
-    1. V části **Název**zadejte **SQLDBEdgeLinkedService**.
+    1. Do **pole název**zadejte **SQLDBEdgeLinkedService**.
 
-    2. V části **Název serveru**zadejte podrobnosti o serveru SQL Database Edge.
+    2. V části **název serveru**zadejte podrobnosti serveru SQL Database Edge.
 
-    3. V seznamu vyberte **název databáze.**
+    3. V seznamu vyberte **název vaší databáze** .
 
-    4. Zadejte **své uživatelské jméno** a **heslo**.
+    4. Zadejte své **uživatelské jméno** a **heslo**.
 
-    5. Chcete-li otestovat připojení k instanci SQL Database Edge, vyberte **možnost Testovat připojení**.
+    5. Chcete-li otestovat připojení k instanci SQL Database Edge, vyberte možnost **Test připojení**.
 
     6. Vyberte **Vytvořit**.
 
@@ -111,25 +111,25 @@ Vytvořte továrnu dat podle pokynů v [tomto kurzu](../data-factory/quickstart-
 
 8. Na kartě **Nastavení** vyberte **Upravit**.
 
-9. Na kartě **Připojení** vyberte **možnost [dbo].[ vodoznak]** pro **table**. Pokud chcete zobrazit náhled dat v tabulce, vyberte **Náhled dat**.
+9. Na kartě **připojení** vyberte **[dbo]. [ vodotisk]** pro **tabulku**. Chcete-li zobrazit náhled dat v tabulce, vyberte možnost **Náhled dat**.
 
-10. Přepněte do editoru kanálu výběrem karty kanálu v horní části nebo výběrem názvu kanálu ve stromovém zobrazení vlevo. V okně vlastností aktivity vyhledávání zkontrolujte, zda je v seznamu **Zdrojová datová sada** vybraná volba **VodoznakDataset.**
+10. Přepněte do editoru kanálů tak, že vyberete kartu kanál v horní části nebo vyberete název kanálu ve stromovém zobrazení vlevo. V okně vlastnosti aktivity vyhledávání potvrďte, že je v seznamu **zdrojovou datovou sadu** vybraná možnost **WatermarkDataset** .
 
-11. V podokně **Aktivity** rozbalte **položku Obecné** a přetáhněte jinou aktivitu **vyhledávání** na povrch návrháře kanálu. Nastavte název na **NewWatermark** na kartě **Obecné** v okně vlastností. Tato vyhledávací aktivita získá novou hodnotu vodoznaku z tabulky, která obsahuje zdrojová data, aby ji bylo možné zkopírovat do cíle.
+11. V podokně **aktivity** rozbalte **Obecné** a přetáhněte další aktivitu **vyhledávání** na plochu návrháře kanálu. Na kartě **Obecné** v okně Vlastnosti nastavte název na **NewWatermark** . Tato aktivita vyhledávání získá novou hodnotu meze z tabulky, která obsahuje zdrojová data, aby se mohla zkopírovat do cíle.
 
-12. V okně vlastností pro druhou aktivitu vyhledávání přepněte na kartu **Nastavení** a výběrem možnosti **Nový** vytvořte datovou sadu, která bude ukazovat na zdrojovou tabulku, která obsahuje novou hodnotu vodoznaku.
+12. V okně Vlastnosti druhé aktivity vyhledávání přepněte na kartu **Nastavení** a výběrem možnosti **nové** Vytvořte datovou sadu, která bude odkazovat na zdrojovou tabulku, která obsahuje novou hodnotu meze.
 
-13. V okně **Nová datová sada** vyberte **instanci SQL Database Edge**a pak vyberte **Pokračovat**.
+13. V okně **Nová datová sada** vyberte **SQL Database Edge instance**a pak vyberte **pokračovat**.
 
-    1. V okně **Nastavit vlastnosti** v části **Název**zadejte **SourceDataset**. V části **Propojená služba**vyberte **SQLDBEdgeLinkedService**.
+    1. V okně **nastavit vlastnosti** v části **název**zadejte **SourceDataset**. V části **propojená služba**vyberte **SQLDBEdgeLinkedService**.
 
-    2. V části **Tabulka**vyberte tabulku, kterou chcete synchronizovat. Můžete také zadat dotaz pro tuto datovou sadu, jak je popsáno dále v tomto kurzu. Dotaz má přednost před tabulkou zadanou v tomto kroku.
+    2. V části **tabulka**vyberte tabulku, kterou chcete synchronizovat. Můžete také zadat dotaz pro tuto datovou sadu, jak je popsáno dále v tomto kurzu. Dotaz má přednost před tabulkou, kterou zadáte v tomto kroku.
 
     3. Vyberte **OK**.
 
-14. Přepněte do editoru kanálu výběrem karty kanálu v horní části nebo výběrem názvu kanálu ve stromovém zobrazení vlevo. V okně vlastností aktivity vyhledávání zkontrolujte, zda je v seznamu **Zdrojová datová sada** vybraná možnost **SourceDataset.**
+14. Přepněte do editoru kanálů tak, že vyberete kartu kanál v horní části nebo vyberete název kanálu ve stromovém zobrazení vlevo. V okně vlastnosti aktivity vyhledávání potvrďte, že je v seznamu **zdrojovou datovou sadu** vybraná možnost **SourceDataset** .
 
-15. V části **Použít dotaz**vyberte **Dotaz** . Aktualizujte název tabulky v následujícím dotazu a zadejte dotaz. Vybíráte pouze maximální hodnotu `timestamp` z tabulky. Nezapomeňte vybrat **pouze první řádek**.
+15. V části **použít dotaz**vyberte **dotaz** . Aktualizujte název tabulky v následujícím dotazu a pak zadejte dotaz. Vybíráte pouze maximální hodnotu `timestamp` z tabulky. Nezapomeňte vybrat **pouze první řádek**.
 
     ```sql
     select MAX(timestamp) as NewWatermarkvalue from [TableName]
@@ -137,87 +137,87 @@ Vytvořte továrnu dat podle pokynů v [tomto kurzu](../data-factory/quickstart-
 
     ![vybrat dotaz](media/tutorial-sync-data-factory/select-query-data-factory.png)
 
-16. V podokně **Aktivity** rozbalte **možnost Přesunout & transformace** a přetáhněte aktivitu **Kopírovat** z podokna **Aktivity** na povrch návrháře. Nastavte název aktivity na **IncrementalCopy**.
+16. V podokně **aktivity** rozbalte **přesunout & transformovat** a přetáhněte aktivitu **kopírování** z podokna **aktivity** na plochu návrháře. Nastavte název aktivity na **IncrementalCopy**.
 
-17. Propojte obě aktivity vyhledávání s aktivitou kopírování přetažením zeleného tlačítka připojeného k aktivitám vyhledávání na aktivitu kopírování. Uvolněte tlačítko myši, když se zobrazí barva ohraničení změny aktivity kopírování na modrou.
+17. Propojte obě aktivity vyhledávání s aktivitou kopírování přetažením zeleného tlačítka připojeného k aktivitám vyhledávání na aktivitu kopírování. Až se barva ohraničení aktivity kopírování změní na modrou, uvolněte tlačítko myši.
 
 18. Vyberte aktivitu kopírování a ověřte, že se v okně **Vlastnosti** zobrazí vlastnosti aktivity.
 
-19. Přepněte na kartu **Zdroj** v okně **Vlastnosti** a proveďte tyto kroky:
+19. V okně **vlastnosti** přepněte na kartu **zdroj** a proveďte tyto kroky:
 
-    1. V poli **Zdrojová datová sada** vyberte **SourceDataset**.
+    1. V poli **zdrojová datová sada** vyberte **SourceDataset**.
 
-    2. V části **Použít dotaz**vyberte **Dotaz**.
+    2. V části **použít dotaz**vyberte **dotaz**.
 
-    3. Do pole **Dotaz** zadejte dotaz SQL. Zde je ukázkový dotaz:
+    3. Do pole **dotaz** zadejte dotaz SQL. Tady je ukázkový dotaz:
 
     ```sql
     select * from TemperatureSensor where timestamp > '@{activity('OldWaterMark').output.firstRow.WatermarkValue}' and timestamp <= '@{activity('NewWaterMark').output.firstRow.NewWatermarkvalue}'
     ```
 
-20. Na kartě **Jímka** vyberte **Nový** v části **Dataset jímky**.
+20. Na kartě **jímka** vyberte v části **datová sada jímky**možnost **Nový** .
 
-21. V tomto kurzu úložiště dat jímky je úložiště dat úložiště objektů blob Azure. Vyberte **azure blob úložiště**a pak vyberte **pokračovat** v okně **Nová datová sada.**
+21. V tomto kurzu je úložiště dat jímky úložiště dat úložiště objektů BLOB v Azure. Vyberte **úložiště objektů BLOB v Azure**a potom v okně **Nová datová sada** vyberte **pokračovat** .
 
-22. V okně **Vybrat formát** vyberte formát dat a pak vyberte **Pokračovat**.
+22. V okně **Vybrat formát** vyberte formát dat a pak vyberte **pokračovat**.
 
-23. V okně **Nastavit vlastnosti** zadejte v části **Název** **sadu SinkDataset**. V části **Propojená služba**vyberte **Nový**. Teď vytvoříte připojení (propojenou službu) k úložišti objektů Blob Azure.
+23. V okně **nastavit vlastnosti** v části **název**zadejte **SinkDataset**. V části **propojená služba**vyberte **Nový**. Nyní vytvoříte připojení (propojená služba) k úložišti objektů BLOB v Azure.
 
-24. V okně **Nová propojená služba (azure blob storage)** proveďte tyto kroky:
+24. V okně **Nová propojená služba (Azure Blob Storage)** proveďte tyto kroky:
 
-    1. Do pole **Název** zadejte **AzureStorageLinkedService**.
+    1. Do pole **název** zadejte **AzureStorageLinkedService**.
 
-    2. V části **Název účtu úložiště**vyberte účet úložiště Azure pro vaše předplatné Azure.
+    2. V části **název účtu úložiště**vyberte účet úložiště Azure pro vaše předplatné Azure.
 
     3. Otestujte připojení a pak vyberte **Dokončit**.
 
-25. V okně **Nastavit vlastnosti** zkontrolujte, že je v části **Propojená služba**vybraná možnost **AzureStorageLinkedService** . Vyberte **Vytvořit** a **OK**.
+25. V okně **nastavit vlastnosti** potvrďte, že je v části **propojená služba**vybraná možnost **AzureStorageLinkedService** . Vyberte **vytvořit** a **OK**.
 
-26. Na kartě **Dřez** vyberte **Upravit**.
+26. Na kartě **jímka** vyberte **Upravit**.
 
-27. Přejděte na kartu **Připojení** v sadě SinkDataset a proveďte tyto kroky:
+27. V SinkDataset klikněte na kartu **připojení** a proveďte tyto kroky:
 
-    1. V části **Cesta k souboru**zadejte *asdedatasync/incrementalcopy*, kde *asdedatasync* je název kontejneru objektu blob a *incrementalcopy* je název složky. Vytvořte kontejner, pokud neexistuje, nebo použijte název existujícího kontejneru. Azure Data Factory automaticky vytvoří přírůstkovou *kopii* výstupní složky, pokud neexistuje. Můžete také použít tlačítko **Procházet** u možnosti **Cesta k souboru** a přejít ke složce v kontejneru objektů blob.
+    1. V části **cesta k souboru**zadejte *asdedatasync/incrementalcopy*, kde *asdedatasync* je název kontejneru objektů BLOB a *incrementalcopy* je název složky. Pokud tento kontejner neexistuje, vytvořte ho nebo použijte název existujícího kontejneru. Azure Data Factory automaticky vytvoří výstupní složku *incrementalcopy* , pokud neexistuje. Můžete také použít tlačítko **Procházet** u možnosti **Cesta k souboru** a přejít ke složce v kontejneru objektů blob.
 
-    2. Pro **část Soubor** **cesty k souboru**vyberte **Přidat dynamický obsah [Alt+P]** a zadejte ** @CONCAT('Přírůstkové-', pipeline(). RunId, '.txt')** v okně, které se otevře. Vyberte **Finish** (Dokončit). Název souboru je dynamicky generován výrazem. Každé spuštění kanálu má jedinečné ID. Aktivita kopírování používá ID spuštění k vygenerování názvu souboru.
+    2. V části **soubor** **cesta**k souboru vyberte **Přidat dynamický obsah [ALT + P]** a potom zadejte ** @CONCAT("přírůstkové,", kanál (). RunId, '. txt ')** v okně, které se otevře. Vyberte **Finish** (Dokončit). Název souboru se dynamicky generuje pomocí výrazu. Každé spuštění kanálu má jedinečné ID. Aktivita kopírování používá ID spuštění k vygenerování názvu souboru.
 
-28. Přepněte do editoru kanálu výběrem karty kanálu v horní části nebo výběrem názvu kanálu ve stromovém zobrazení vlevo.
+28. Přepněte do editoru kanálů tak, že vyberete kartu kanál v horní části nebo vyberete název kanálu ve stromovém zobrazení vlevo.
 
-29. V podokně **Aktivity** rozbalte **položku Obecné** a přetáhněte aktivitu **Uložená procedura** z podokna **Aktivity** na povrch návrháře kanálu. Připojte zelený (úspěch) výstup Copy aktivity uložené procedury aktivity.
+29. V podokně **aktivity** rozbalte **Obecné** a přetáhněte aktivitu **uložená procedura** z podokna **aktivity** na plochu návrháře kanálu. Propojte zelenou (úspěšnost) výstup aktivity kopírování s aktivitou uložené procedury.
 
-30. Vyberte **uloženou aktivitu procedury** v návrháři kanálu a změňte jeho název na **SPtoUpdateWatermarkActivity**.
+30. Vyberte v Návrháři kanálu **aktivitu uložená procedura** a změňte její název na **SPtoUpdateWatermarkActivity**.
 
-31. Přepněte na kartu **účet SQL** a vyberte ***QLDBEdgeLinkedService** v části **Propojená služba**.
+31. Přepněte na kartu **účet SQL** a v části **propojená služba**vyberte ***QLDBEdgeLinkedService** .
 
-32. Přepněte na kartu **Uložená procedura** a proveďte tyto kroky:
+32. Přepněte na kartu **uložená procedura** a proveďte tyto kroky:
 
-    1. V části **Název uložené procedury**vyberte **možnost [dbo].[ usp_write_watermark]**.
+    1. V části **název uložené procedury**vyberte **[dbo]. [ usp_write_watermark]**.
 
-    2. Chcete-li zadat hodnoty pro parametry uložené procedury, vyberte **importovat parametr** a zadejte tyto hodnoty pro parametry:
+    2. Chcete-li zadat hodnoty parametrů uložené procedury, vyberte možnost **importovat parametr** a zadejte tyto hodnoty parametrů:
 
-    |Name (Název)|Typ|Hodnota|
+    |Název|Typ|Hodnota|
     |-----|----|-----|
-    |LastModifiedtime|DateTime|@{activity('NewWaterMark').output.firstRow.NewWatermarkvalue}|
-    |TableName|Řetězec|@{activity('OldWaterMark').output.firstRow.TableName}|
+    |LastModifiedtime|DateTime|@ {Activity (' NewWaterMark '). Output. firstRow. NewWatermarkvalue}|
+    |TableName|Řetězec|@ {Activity (' OldWaterMark '). Output. firstRow. TableName}|
 
-33. Chcete-li ověřit nastavení kanálu, vyberte na panelu nástrojů **možnost Ověřit.** Ověřte, že se nezobrazí žádné chyby ověření. Chcete-li zavřít okno Sestava **>>** ověření **kanálu,** vyberte položku .
+33. Pokud chcete ověřit nastavení kanálu, vyberte **ověřit** na panelu nástrojů. Ověřte, že se nezobrazí žádné chyby ověření. Chcete-li zavřít okno **Sestava ověření kanálu** , **>>** vyberte.
 
-34. Publikujte entity (propojené služby, datové sady a kanály) do služby Azure Data Factory výběrem tlačítka **Publikovat vše.** Počkejte, až se zobrazí zpráva potvrzující, že operace publikování byla úspěšná.
+34. Publikujte entity (propojené služby, datové sady a kanály) do služby Azure Data Factory tak, že vyberete tlačítko **publikovat vše** . Počkejte, dokud se nezobrazí zpráva s potvrzením, že operace publikování proběhla úspěšně.
 
-## <a name="trigger-a-pipeline-based-on-a-schedule"></a>Aktivace kanálu na základě plánu
+## <a name="trigger-a-pipeline-based-on-a-schedule"></a>Aktivace kanálu podle plánu
 
-1. Na panelu nástrojů kanálu vyberte **Přidat aktivační událost**, vyberte **Nový/Upravit**a pak vyberte **Nový**.
+1. Na panelu nástrojů kanálu vyberte **Přidat Trigger**, vyberte **Nový/upravit**a pak vyberte **Nový**.
 
-2. Pojmenujte aktivační událost **HourlySync**. V části **Typ**vyberte **Možnost Naplánovat**. Nastavte **opakování** na každou 1 hodinu.
+2. Pojmenujte aktivační událost **HourlySync**. V části **typ**vyberte **plán**. Nastavte **opakování** na každých 1 hodinu.
 
 3. Vyberte **OK**.
 
 4. Vyberte **Publikovat vše**.
 
-5. Vyberte **možnost Spustit nyní**.
+5. Vyberte **aktivovat nyní**.
 
 6. Vlevo přepněte na kartu **Monitorování**. Zobrazí se stav ručně aktivovaného spuštění kanálu. Seznam můžete aktualizovat kliknutím na **Aktualizovat**.
 
 ## <a name="next-steps"></a>Další kroky
 
-Kanál Azure Data Factory v tomto kurzu zkopíruje data z tabulky na instanci SQL Database Edge do umístění v úložišti objektů blob Azure jednou za hodinu. Informace o používání data factory v jiných scénářích, najdete v těchto [kurzech](../data-factory/tutorial-copy-data-portal.md).
+Kanál Azure Data Factory v tomto kurzu kopíruje data z tabulky v instanci SQL Database Edge do umístění v úložišti objektů BLOB v Azure každou hodinu. Další informace o používání Data Factory v jiných scénářích najdete v těchto [kurzech](../data-factory/tutorial-copy-data-portal.md).

@@ -16,10 +16,10 @@ ms.date: 12/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7ab2dc71f39164988e0d229fc994548a00447986
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77185620"
 ---
 # <a name="tutorial-integrate-azure-active-directory-single-sign-on-sso-with-contractsafe-saml2-sso"></a>Kurz: Integrace Azure Active Directory jednotného přihlašování (SSO) pomocí jednotného přihlašování ContractSafe typu Saml2
@@ -68,7 +68,7 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
    * [Vytvořte uživatele ContractSafe typu Saml2 SSO Test User](#create-a-contractsafe-saml2-sso-test-user) , který bude mít protějšek **B. Simon** v ContractSafe typu Saml2 SSO, který je propojený s předprezentací Azure AD.
 2. [Otestujte jednotné přihlašování](#test-sso) a ověřte, jestli konfigurace funguje.
 
-## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
+## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal:
 
@@ -80,9 +80,9 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** zadejte do odpovídajících polí následující hodnoty:
 
-    a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího formátu: `https://app.contractsafe.com/saml2_auth/<UNIQUEID>/acs/`
+    a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího formátu:`https://app.contractsafe.com/saml2_auth/<UNIQUEID>/acs/`
 
-    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího formátu: `https://app.contractsafe.com/saml2_auth/<UNIQUEID>/acs/`
+    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího formátu:`https://app.contractsafe.com/saml2_auth/<UNIQUEID>/acs/`
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem a adresou URL odpovědi. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory ContractSafe typu Saml2 SSO Client support](mailto:support@contractsafe.com) . Můžete se také podívat na formáty zobrazené v části **základní konfigurace SAML** v Azure Portal.
@@ -95,18 +95,18 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     | Název | Zdrojový atribut|
     | ---------------| --------------- |
-    | e-mailová adresa | user.userprincipalname |
+    | e-mailová adresa | User. userPrincipalName |
     | e-mail | User. onpremisesuserprincipalname |
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** Najděte **XML federačních metadat**. Vyberte **Stáhnout** a Stáhněte certifikát a pak ho uložte na svém počítači.
 
-    ![Odkaz ke stažení certifikátu](common/metadataxml.png)
+    ![Odkaz na stažení certifikátu](common/metadataxml.png)
 
 1. V části **set up ContractSafe typu Saml2 SSO** zkopírujte příslušné adresy URL na základě vašeho požadavku.
 
     ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-## <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
+## <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem **B. Simon**.
 
@@ -114,11 +114,11 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem **
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte e-mailovou adresu ve formátu `username@companydomain.extension`. Příklad: `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte e-mailovou adresu ve `username@companydomain.extension` formátu. Příklad: `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Vyberte **Create** (Vytvořit).
+   1. Vyberte **Vytvořit**.
 
-## <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+## <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte **B. Simon** používat jednotné přihlašování Azure tím, že udělíte přístup k CONTRACTSAFE typu Saml2 SSO.
 
@@ -126,7 +126,7 @@ V této části povolíte **B. Simon** používat jednotné přihlašování Azu
 1. V seznamu aplikace vyberte **ContractSafe typu Saml2 SSO**.
 1. Na stránce Přehled aplikace najděte část **Správa** a pak vyberte **Uživatelé a skupiny**.
 
-   ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+   ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
 1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 

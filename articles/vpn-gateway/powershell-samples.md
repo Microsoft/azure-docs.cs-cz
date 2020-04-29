@@ -8,10 +8,10 @@ ms.topic: sample
 ms.date: 01/10/2020
 ms.author: cherylmc
 ms.openlocfilehash: 7510b0243db25752a61d3711c88a250b7ae3b576
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75867233"
 ---
 # <a name="azure-powershell-samples-for-vpn-gateway"></a>Ukázky Azure PowerShellu pro VPN Gateway
@@ -24,5 +24,5 @@ Následující tabulka obsahuje odkazy na skripty Azure PowerShellu:
 | [Vytvoření brány VPN a konfigurace P2S – RADIUS](./scripts/vpn-gateway-sample-point-to-site-radius-authentication-powershell.md) | Vytvoří bránu VPN založenou na směrování a konfiguraci P2S s ověřováním pomocí přihlašovacích údajů k serveru RADIUS. |
 | [Vytvoření brány VPN a konfigurace P2S – ověřování pomocí certifikátu](./scripts/vpn-gateway-sample-point-to-site-certificate-authentication-powershell.md) | Vytvoří bránu VPN založenou na směrování a konfiguraci P2S s ověřováním pomocí nativního certifikátu Azure. |
 | [Vytvoření brány VPN a připojení Site-to-Site](./scripts/vpn-gateway-sample-site-to-site-powershell.md) | Vytvoří bránu VPN založenou na směrování a připojení S2S. |
-| [Vytvoření připojení virtuální sítě k virtuální síti](./scripts/vpn-gateway-sample-vnet-vnet-powershell.md) | Vytváření připojení typu VNet-to-VNet |
+| [Vytvoření připojení VNet-to-VNet](./scripts/vpn-gateway-sample-vnet-vnet-powershell.md) | Vytváření připojení typu VNet-to-VNet |
 | [Stažení šablony zařízení VPN](./scripts/vpn-gateway-sample-site-to-site-download-devicescript-powershell.md) | Stažení šablony zařízení VPN |

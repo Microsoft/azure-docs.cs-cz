@@ -1,113 +1,113 @@
 ---
-title: Připojení klientů do clusteru Microsoft Azure FXT Edge Filer
-description: Jak mohou klientské počítače nfs připojit mezipaměť hybridního úložiště Azure FXT Edge Filer
+title: Připojení klientů v clusteru Microsoft Azure FXT Edge souborového
+description: Jak můžou klientské počítače NFS připojit mezipaměť hybridního úložiště Azure FXT Edge souborového
 author: ekpgh
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: rohogue
 ms.openlocfilehash: 43223db298e4ad170ea6d0687a342b3aee35500e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80130774"
 ---
-# <a name="tutorial-mount-the-cluster"></a>Kurz: Připojení clusteru
+# <a name="tutorial-mount-the-cluster"></a>Kurz: připojení clusteru
 
-Tento kurz vás naučí, jak připojit klienty systému souborů NFS do clusteru Azure FXT Edge Filer. Klienti připojují cesty virtuálního oboru názvů, které jste přiřadili při přidání back-endového úložiště.
+V tomto kurzu se naučíte připojit klienty systému souborů NFS ke clusteru Azure FXT Edge souborového. Klienti připojí cesty k virtuálnímu oboru názvů, které jste přiřadili při přidání back-endu úložiště.
 
-Tento výukový program učí:
+V tomto kurzu se naučíme:
 
 > [!div class="checklist"]
-> * Strategie pro klienty vyrovnávání zatížení v rozsahu IP adres orientovaných na klienta
-> * Jak vytvořit cestu připojení z klienta-čelí IP adresu a název oboru spojení
-> * Které argumenty se mají použít v příkazu připojit
+> * Strategie pro vyrovnávání zatížení klientů v rámci rozsahu IP adres směřujících na klienta
+> * Jak vytvořit cestu pro připojení z IP adresy a spojení s oborem názvů směřujícími na klienta
+> * Argumenty, které se mají použít v příkazu Mount
 
-Tento kurz trvá přibližně 45 minut.
+Dokončení tohoto kurzu trvá přibližně 45 minut.
 
-## <a name="steps-to-mount-the-cluster"></a>Kroky pro připojení clusteru
+## <a name="steps-to-mount-the-cluster"></a>Postup připojení clusteru
 
-Podle těchto kroků připojte klientské počítače ke clusteru Azure FXT Edge Filer.
+Pomocí těchto kroků připojíte klientské počítače k vašemu clusteru Azure FXT Edge souborového.
 
-1. Rozhodněte se, jak vyvážit zatížení klientského provozu mezi uzly clusteru. Přečtěte si [zůstatek zatížení klienta](#balance-client-load), níže, podrobnosti.
-1. Identifikujte adresu IP clusteru a spojovací cestu k připojení.
-1. Určete cestu směřující ke klientovi pro připojení.
-1. Vystaví [příkaz mount](#use-recommended-mount-command-options)s příslušnými argumenty.
+1. Rozhodněte, jak vyrovnávat zatížení klientských přenosů mezi uzly clusteru. Podrobnosti o [Vyrovnávání zatížení klienta](#balance-client-load)najdete níže.
+1. Identifikujte IP adresu clusteru a cestu spojení, která se má připojit.
+1. Určete cestu k klientovi pro připojení.
+1. Vydejte odpovídající argumenty pomocí [příkazu Mount](#use-recommended-mount-command-options).
 
-## <a name="balance-client-load"></a>Vyvažit zatížení klienta
+## <a name="balance-client-load"></a>Vyvážit zatížení klienta
 
-Chcete-li pomoci vyvážit požadavky klientů mezi všechny uzly v clusteru, měli byste připojit klienty k plnému rozsahu adres IP klientů. Existuje několik způsobů, jak tuto úlohu automatizovat.
+Aby bylo možné vyrovnávat požadavky klientů mezi všemi uzly v clusteru, měli byste připojit klienty k celé škále IP adres klientů. Existuje několik způsobů, jak tuto úlohu automatizovat.
 
-Informace o kruhovém vyrovnávání zatížení DNS pro cluster najdete v části [Konfigurace DNS pro cluster Azure FXT Edge Filer](fxt-configure-network.md#configure-dns-for-load-balancing). Chcete-li použít tuto metodu, je nutné udržovat server DNS, který není vysvětlen v těchto článcích.
+Pokud se chcete dozvědět víc o vyrovnávání zatížení DNS v kruhovém dotazování, přečtěte si téma [Konfigurace DNS pro cluster Azure FXT Edge souborového](fxt-configure-network.md#configure-dns-for-load-balancing). Chcete-li použít tuto metodu, musíte udržovat server DNS, který není v těchto článcích vysvětlen.
 
-Jednodušší metodou pro malé instalace je použití skriptu pro přiřazení adres IP v celém rozsahu v době připojení klienta.
+Jednodušší způsob, jak malé instalace, je použít skript k přiřazení IP adres v celém rozsahu v době připojení klienta.
 
-Jiné metody vyrovnávání zatížení mohou být vhodné pro velké nebo složité systémy. Obraťte se na zástupce společnosti Microsoft nebo otevřete [žádost o pomoc.](fxt-support-ticket.md) (Azure Load Balancer není momentálně *podporované* s Azure FXT Edge Filer.)
+Jiné metody vyrovnávání zatížení můžou být vhodné pro velké nebo komplikované systémy. Požádejte o pomoc zástupce Microsoftu nebo otevřete [žádost o podporu](fxt-support-ticket.md) . (Azure Load Balancer se pro Azure FXT Edge souborového *aktuálně nepodporuje.* )
 
-## <a name="create-the-mount-command"></a>Vytvoření příkazu připojit
+## <a name="create-the-mount-command"></a>Vytvoření příkazu Mount
 
-Z vašeho klienta ``mount`` příkaz mapuje virtuální server (vserver) v clusteru Azure FXT Edge Filer na cestu v místním souborovém systému.
+Z klienta ``mount`` příkaz mapuje virtuální server (VServer) v clusteru Azure FXT Edge souborového na cestu v místním systému souborů.
 
 Formát je``mount <FXT cluster path> <local path> {options}``
 
-Příkaz mount má tři prvky:
+Příkaz Mount obsahuje tři prvky:
 
-* cesta clusteru - kombinace IP adresy a cesty spojení oboru názvů popsaná níže
-* místní cesta - cesta na straně klienta
-* možnosti příkazu mount - (uvedeny v [části Použít doporučené možnosti příkazu připojit](#use-recommended-mount-command-options))
+* cesta clusteru – kombinace IP adresy a cesty pro spojení oboru názvů popsané níže
+* místní cesta – cesta na klientovi
+* parametry příkazu připojení – (uvedená v [příkazu použít Doporučené možnosti připojení](#use-recommended-mount-command-options))
 
-### <a name="create-the-cluster-path"></a>Vytvoření cesty k clusteru
+### <a name="create-the-cluster-path"></a>Vytvořit cestu clusteru
 
-Cesta k clusteru je kombinací *adresy IP* vserveru a cesty ke spojení oboru *názvů*. Spojení oboru názvů je virtuální cesta, kterou jste definovali při [přidání úložného systému](fxt-add-storage.md#create-a-junction).
+Cesta clusteru je kombinací *IP adresy* VServer a cesty ke *spojení s oborem názvů*. Spojení oboru názvů je virtuální cesta, kterou jste definovali při [Přidání systému úložiště](fxt-add-storage.md#create-a-junction).
 
-Pokud jste například ``/fxt/files`` použili jako cestu oboru názvů, klienti by *IP_address*:/fxt/files do místního přípojného bodu.
+Pokud jste například použili ``/fxt/files`` jako cestu k oboru názvů, klienti budou připojeni *IP_address*:/FXT/Files do svého místního přípojného bodu.
 
-![Dialogové okno Přidat novou křižovatku s parametrem /avere/files v poli cesty oboru názvů](media/fxt-mount/fxt-junction-example.png)
+![Dialogové okno Přidat nový spojovací bod s/avere/Files v poli cesta oboru názvů](media/fxt-mount/fxt-junction-example.png)
 
-IP adresa je jednou z ip adres určených pro klienta definovaných pro vserver. Rozsah ip adresy orientovaných na klienta najdete na dvou místech v Ovládacích panelech clusteru:
+IP adresa je jedna z klientských IP adres definovaných pro VServer. Rozsah IP adres klientů můžete najít na dvou místech na ovládacím panelu clusteru:
 
-* Tabulka **VServers** (karta Řídicí panel) -
+* Tabulka **VServers** (karta řídicí panel) –
 
-  ![Karta Řídicí panel ovládacího panelu s kartou VServer vybranou v tabulce dat pod grafem a sekce IP adresa byla zakroužkovaná](media/fxt-mount/fxt-ip-addresses-dashboard.png)
+  ![Karta řídicí panel ovládacího panelu s kartou VServer vybranou v tabulce dat pod grafem a část IP adresa v kruhu](media/fxt-mount/fxt-ip-addresses-dashboard.png)
 
-* Stránka Nastavení **sítě směřující k klientům** -
+* Stránka nastavení **sítě s přístupem klienta** –
 
-  ![Nastavení > konfigurační stránku VServer > klientskou síť s kruhem kolem části Rozsah adres v tabulce pro konkrétní vserver](media/fxt-mount/fxt-ip-addresses-settings.png)
+  ![Nastavení > VServer > stránce konfigurace sítě klientské sítě s kruhem kolem části rozsah adres v tabulce pro konkrétní VServer](media/fxt-mount/fxt-ip-addresses-settings.png)
 
-Zkombinujte adresu IP a cestu oboru názvů a vytvořte cestu clusteru pro příkaz připojení.
+Zkombinujte IP adresu a cestu k oboru názvů, abyste pomohli vytvořit cestu clusteru pro příkaz Mount.
 
-Příklad příkazu připojení klienta:``mount 10.0.0.12:/sd-access /mnt/fxt {options}``
+Příklad příkazu pro připojení klienta:``mount 10.0.0.12:/sd-access /mnt/fxt {options}``
 
 ### <a name="create-the-local-path"></a>Vytvoření místní cesty
 
-Místní cesta pro příkaz připojení je na vás. Jako součást virtuálního oboru názvů můžete nastavit libovolnou strukturu cesty. Navrhněte obor názvů a místní cestu, která je vhodná pro pracovní postup klienta.
+Místní cesta pro příkaz Mount je pro vás. Můžete nastavit libovolnou strukturu cesty, kterou chcete mít v rámci virtuálního oboru názvů. Navrhněte obor názvů a místní cestu, která je vhodná pro váš klientský pracovní postup.
 
-Další informace o oboru názvů směřujícím ke klientům naleznete v [přehledu oboru oboru oboru názvů](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gns_overview.html)Průvodce konfigurací clusteru .
+Další informace o oboru názvů směřujícím na klienta najdete v [přehledu oboru názvů](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gns_overview.html)Průvodce konfigurací clusteru.
 
-Kromě cest při montáži každého klienta zahrňte níže popsané [možnosti příkazu připojení.](#use-recommended-mount-command-options)
+Kromě cest přidejte [Možnosti příkazu připojit](#use-recommended-mount-command-options) popsané níže při připojování jednotlivých klientů.
 
 ### <a name="use-recommended-mount-command-options"></a>Použití doporučených možností příkazu pro připojení
 
-Chcete-li zajistit bezproblémové připojení klienta, předejte v příkazu připojení tato nastavení a argumenty:
+Chcete-li zajistit bezproblémové připojení klienta, předejte tato nastavení a argumenty do příkazu mount:
 
 ``mount -o hard,nointr,proto=tcp,mountproto=tcp,retry=30 ${VSERVER_IP_ADDRESS}:/${NAMESPACE_PATH} ${LOCAL_FILESYSTEM_MOUNT_POINT}``
 
 | Požadovaná nastavení | |
 --- | ---
-``hard`` | Měkké připojení ke clusteru Azure FXT Edge Filer jsou spojeny s selháním aplikací a možnou ztrátou dat.
-``proto=netid`` | Tato možnost podporuje vhodné zpracování chyb sítě NFS.
-``mountproto=netid`` | Tato možnost podporuje vhodné zpracování chyb sítě pro operace připojení.
-``retry=n`` | Nastavte, ``retry=30`` aby se zabránilo přechodným selháním připojení. (V úchytech v popředí se doporučuje jiná hodnota.)
+``hard`` | Do clusteru Azure FXT Edge souborového se dočasná připojení pojí s chybami aplikací a možnou ztrátou dat.
+``proto=netid`` | Tato možnost podporuje odpovídající zpracování chyb sítě systému souborů NFS.
+``mountproto=netid`` | Tato možnost podporuje odpovídající zpracování chyb sítě pro operace připojení.
+``retry=n`` | Nastavte ``retry=30`` , aby nedocházelo k přechodným chybám připojení. (V připojeních na popředí se doporučuje jiná hodnota.)
 
-| Upřednostňovaná nastavení  | |
+| Preferované nastavení  | |
 --- | ---
-``nointr``            | Pokud vaši klienti používají starší jádra operačního režimu (před dubnem 2008), která tuto možnost podporují, použijte ji. Možnost "intr" je výchozí.
+``nointr``            | Pokud klienti používají starší jádra operačního systému (do 15. dubna 2008), které podporují tuto možnost, použijte ji. Výchozím nastavením je možnost "intr".
 
 ## <a name="next-steps"></a>Další kroky
 
-Po montáži klientů můžete otestovat pracovní postup a začít s clusterem.
+Po připojení klientů můžete otestovat pracovní postup a začít s clusterem.
 
-Pokud potřebujete přesunout data do nového fileru jádra cloudu, využijte výhod struktury mezipaměti pomocí paralelního příjmu dat. Některé strategie jsou popsány v [přesunutí dat do clusteru vFXT](https://docs.microsoft.com/azure/avere-vfxt/avere-vfxt-data-ingest). (Avere vFXT pro Azure je cloudový produkt, který používá technologii ukládání do mezipaměti velmi podobnou Azure FXT Edge Filer.)
+Pokud potřebujete přesunout data do nového cloudového jádra souborového, využijte výhod struktury mezipaměti pomocí paralelní ingestování dat. Některé strategie jsou popsány v tématu [přesun dat do clusteru vFXT](https://docs.microsoft.com/azure/avere-vfxt/avere-vfxt-data-ingest). (Avere vFXT for Azure je cloudový produkt, který používá technologii pro ukládání do mezipaměti, která se velmi podobá Azure FXT Edge souborového.)
 
-Přečtěte si [monitor Azure FXT Edge Filer stav hardwaru,](fxt-monitor.md) pokud potřebujete řešit problémy s hardwarem.
+Pokud potřebujete řešit problémy s hardwarem, přečtěte si téma [monitorování stavu hardwaru Azure FXT Edge souborového](fxt-monitor.md) .

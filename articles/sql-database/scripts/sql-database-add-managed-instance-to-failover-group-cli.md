@@ -1,6 +1,6 @@
 ---
-title: Příklad příkazového příkazu k selhání – skupina převzetí služeb při selhání – instance spravovaná azure SQL database
-description: Ukázkový skript Azure CLI k vytvoření instance spravované azure SQL database, jeho přidání do skupiny převzetí služeb při selhání a testování převzetí služeb při selhání.
+title: Příklad rozhraní příkazového řádku – skupina převzetí služeb při selhání Azure SQL Database spravovaná instance
+description: Ukázkový skript Azure CLI pro vytvoření spravované instance Azure SQL Database, její přidání do skupiny převzetí služeb při selhání a testovací převzetí služeb při selhání.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -12,15 +12,15 @@ ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 07/16/2019
 ms.openlocfilehash: 8ffe40662ffaf8a1fb35a3d31acfaea78ea0fbeb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80061920"
 ---
-# <a name="use-cli-to-add-an-azure-sql-database-managed-instance-to-a-failover-group"></a>Přidání spravované instance Azure SQL Database do skupiny převzetí služeb při selhání pomocí příkazového příkazu k přidání instance spravované službou Azure SQL Database
+# <a name="use-cli-to-add-an-azure-sql-database-managed-instance-to-a-failover-group"></a>Přidání spravované instance Azure SQL Database do skupiny převzetí služeb při selhání pomocí rozhraní příkazového řádku
 
-Tento příklad rozhraní příkazového příkazu k řešení Azure vytvoří dvě spravované instance, přidá je do skupiny převzetí služeb při selhání a pak testuje převzetí služeb při selhání z primární spravované instance na sekundární spravovanou instanci.
+Tento příklad rozhraní příkazového řádku Azure vytvoří dvě spravované instance, přidá je do skupiny převzetí služeb při selhání a pak otestuje převzetí služeb při selhání z primární spravované instance do sekundární spravované instance.
 
 Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (CLI) místně, musíte mít spuštěnou verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli).
 
@@ -36,26 +36,26 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (
 
 ### <a name="clean-up-deployment"></a>Vyčištění nasazení
 
-Pomocí následujícího příkazu odeberte skupinu prostředků a všechny k ní spojené prostředky. Skupinu prostředků budete muset odebrat dvakrát. První odebrání skupiny prostředků odebere spravované instance a virtuální clustery, `az group delete : Long running operation failed with status 'Conflict'.`ale poté se chybová zpráva nezdaří . Spusťte příkaz odstranění skupiny az podruhé, abyste odstranili všechny zbývající prostředky i skupinu prostředků.
+Pomocí následujícího příkazu odeberte skupinu prostředků a všechny k ní přidružené prostředky. Skupinu prostředků budete muset odebrat dvakrát. Když se skupina prostředků odebere poprvé, odebere se spravovaná instance a virtuální clustery, ale tato chybová zpráva `az group delete : Long running operation failed with status 'Conflict'.`se pak nezdaří. Pokud chcete odebrat všechny zbývající prostředky i skupinu prostředků, spusťte příkaz AZ Group DELETE a podruhé.
 
 ```azurecli-interactive
 az group delete --name $resource
 ```
 
-## <a name="sample-reference"></a>Odkaz na vzorek
+## <a name="sample-reference"></a>Vzorový odkaz
 
 Tento skript používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
 | | |
 |---|---|
-| [síťová síť ová síť ová síť ová](/cli/azure/network/vnet) | Příkazy virtuální sítě.  |
-| [podsíť síťové virtuální sítě AZ](/cli/azure/network/vnet/subnet) | Příkazy podsítě virtuální sítě. |
-| [az síť nsg](/cli/azure/network/nsg) | Příkazy skupiny zabezpečení sítě. |
-| [az síťová trasovací tabulka](/cli/azure/network/route-table) | Příkazy směrovací tabulky. |
-| [az sql mi](/cli/azure/sql/mi) | Příkazy spravované instance. |
-| [az síť public-ip](/cli/azure/network/public-ip) | Příkazy veřejných IP adres sítě. |
-| [az síť virtuální síť-brána](/cli/azure/network/vnet-gateway) | Příkazy brány virtuální sítě. |
-| [az sql instance-failover-group](/cli/azure/sql/instance-failover-group) | Příkazy skupiny převzetí služeb při selhání spravované instance. |
+| [AZ Network VNet](/cli/azure/network/vnet) | Příkazy virtuální sítě.  |
+| [AZ Network VNet Subnet](/cli/azure/network/vnet/subnet) | Příkazy podsítě virtuální sítě. |
+| [AZ Network NSG](/cli/azure/network/nsg) | Příkazy skupiny zabezpečení sítě. |
+| [AZ Network Route-Table](/cli/azure/network/route-table) | Příkazy tabulky směrování |
+| [AZ SQL mi](/cli/azure/sql/mi) | Příkazy spravované instance. |
+| [AZ Network Public-IP](/cli/azure/network/public-ip) | Příkazy pro veřejnou IP adresu sítě. |
+| [AZ Network VNet-Gateway](/cli/azure/network/vnet-gateway) | Příkazy Virtual Network brány |
+| [AZ SQL instance-Failover-Group](/cli/azure/sql/instance-failover-group) | Příkazy skupiny pro převzetí služeb při selhání spravované instance. |
 
 ## <a name="next-steps"></a>Další kroky
 

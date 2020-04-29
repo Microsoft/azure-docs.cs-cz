@@ -16,10 +16,10 @@ ms.date: 01/02/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4b20ce5f754333aec78513e32901b0608f8bee3b
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75638718"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hrworks-single-sign-on"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s jednotným přihlašováním HRworks
@@ -49,7 +49,7 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 
 Pokud chcete nakonfigurovat integraci jednotného přihlašování HRworks do služby Azure AD, musíte do seznamu spravovaných aplikací pro SaaS přidat HRworks jednotné přihlašování z galerie.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
 1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
@@ -69,7 +69,7 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
     * **[Vytvořte testovacího uživatele s jednotným přihlašováním HRworks](#create-hrworks-single-sign-on-test-user)** , abyste měli protějšek B. Simon v HRworks jednotném přihlašování, která je propojená s reprezentací uživatele v Azure AD.
 1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
+## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
@@ -81,32 +81,32 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V části **základní konfigurace SAML** zadejte hodnoty pro následující pole:
 
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://login.hrworks.de/?companyId=<companyId>&directssologin=true`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://login.hrworks.de/?companyId=<companyId>&directssologin=true`
 
     > [!NOTE]
     > Hodnota není reálné číslo. Aktualizujte hodnotu skutečnou přihlašovací adresou URL. Pokud chcete získat hodnotu, obraťte se na [tým podpory HRworks jednotného přihlašování pro klienty](mailto:nadja.sommerfeld@hrworks.de) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** Najděte **XML metadata federace** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do svého počítače.
 
-    ![Odkaz ke stažení certifikátu](common/metadataxml.png)
+    ![Odkaz na stažení certifikátu](common/metadataxml.png)
 
 1. V části **nastavení jednotného přihlašování HRworks** zkopírujte příslušné adresy URL na základě vašeho požadavku.
 
     ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
 1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
-1. Vyberte **nového uživatele** v horní části obrazovky.
+1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k jednotnému přihlašování HRworks.
 
@@ -114,7 +114,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 1. V seznamu aplikace vyberte **HRworks jednotné přihlašování**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
-   ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+   ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
 1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
@@ -136,7 +136,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. Pokud chcete ručně nastavit jednotné přihlašování HRworks, otevřete nové okno webového prohlížeče a přihlaste se k webu HRworks jednotného přihlašování jako správce a proveďte následující kroky:
 
-1. V části > **zabezpečení** > **jednotné přihlašování** na levé straně řádku nabídek klikněte na **správce** > **základy** a proveďte následující kroky:
+1.  > Klikněte na **Administrator****základní informace** > o**zabezpečení** > **jednotného přihlašování** na levé straně řádku nabídek a proveďte následující kroky:
 
     ![Konfigurace jednotného přihlašování](./media/hrworks-single-sign-on-tutorial/configure01.png)
 
@@ -148,7 +148,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     d. V programu Poznámkový blok otevřete XML metadat, které jste stáhli z Azure Portal, zkopírujte jeho obsah a vložte ho do textového pole **metadata** .
 
-    e. Klikněte na možnost **Uložit**.
+    e. Klikněte na **Uložit**.
 
 ### <a name="create-hrworks-single-sign-on-test-user"></a>Vytvořit testovacího uživatele jednotného přihlašování HRworks
 
@@ -158,7 +158,7 @@ Pokud chcete povolit uživatele Azure AD, přihlaste se k HRworks jednotnému p�
 
 1. Přihlaste se, abyste HRworks jednotné přihlašování jako správce.
 
-1. V nabídce na levé straně řádku nabídek klikněte na **správce** > **osoby** > **osoby** > **nové osobě** .
+1. V nabídce na levé straně řádku nabídek klikněte na**osoby** > **Persons** > s **oprávněními správce** > **nová osoba** .
 
      ![Konfigurace jednotného přihlašování](./media/hrworks-single-sign-on-tutorial/configure02.png)
 
@@ -172,11 +172,11 @@ Pokud chcete povolit uživatele Azure AD, přihlaste se k HRworks jednotnému p�
 
 ## <a name="test-sso"></a>Test SSO
 
-V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
 Když na přístupovém panelu kliknete na dlaždici jednotného přihlašování HRworks, měli byste se automaticky přihlásit k HRworks jednotnému přihlašování, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály a zdroje informací
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

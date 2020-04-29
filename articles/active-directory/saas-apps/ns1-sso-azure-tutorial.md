@@ -16,10 +16,10 @@ ms.date: 02/12/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5e917265f4bf6f857a0eada2433f0a0e4e24d7c5
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77565566"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ns1-sso-for-azure"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s NS1 SSO pro Azure
@@ -75,7 +75,7 @@ Tady jsou obecné kroky pro konfiguraci a testování jednotného přihlašován
     a. **[Vytvořte ns1 SSO pro Azure Test User](#create-an-ns1-sso-for-azure-test-user)** , aby měl protějšek B. Simon v rámci ns1 jednotného přihlašování pro Azure. Tato strana je propojená se zastoupením uživatele v Azure AD.
 1. **[Otestujte jednotné přihlašování](#test-sso)** a ověřte, jestli konfigurace funguje.
 
-## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
+## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
@@ -87,13 +87,13 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , zadejte v části **základní konfigurace SAML** hodnoty následujících polí:
 
-    a. Do textového pole **identifikátor** zadejte následující adresu URL: `https://api.nsone.net/saml/metadata`
+    a. Do textového pole **identifikátor** zadejte následující adresu URL:`https://api.nsone.net/saml/metadata`
 
-    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL, která používá následující vzor: `https://api.nsone.net/saml/sso/<ssoid>`
+    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL, která používá následující vzor:`https://api.nsone.net/saml/sso/<ssoid>`
 
 1. Vyberte **nastavit další adresy URL**a proveďte následující krok, pokud chcete aplikaci nakonfigurovat v režimu iniciované **SP** :
 
-    Do textového pole **Adresa URL pro přihlášení** zadejte následující adresu url: `https://my.nsone.net/#/login/sso`
+    Do textového pole **Adresa URL pro přihlášení** zadejte následující adresu URL:`https://my.nsone.net/#/login/sso`
 
     > [!NOTE]
     > Hodnota adresy URL odpovědi není skutečná. Aktualizujte hodnotu adresy URL odpovědi skutečnou adresou URL odpovědi. Pokud chcete získat hodnotu, obraťte se na [tým podpory ns1 SSO pro Azure Client support](mailto:techops@nsone.net) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -120,30 +120,30 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     1. Vyberte **Přidat**.
 
-    1. Vyberte **Save** (Uložit).
+    1. Vyberte **Uložit**.
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyberte tlačítko Kopírovat. Tím se zkopíruje **Adresa URL federačních metadat aplikace** a uloží se do počítače.
 
     ![Snímek pro podpisový certifikát SAML s zvýrazněným tlačítkem pro kopírování](common/copy-metadataurl.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně Azure Portal vyberte **Azure Active Directory** > **uživatelů** > **všech uživatelích**.
+1. V levém podokně Azure Portal vyberte **Azure Active Directory** > **Uživatelé** > **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
 
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. například `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a potom zapište hodnotu zobrazenou v poli **heslo** .
    1. Vyberte **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte B. Simon používat jednotné přihlašování pomocí Azure tím, že udělíte přístup k NS1 SSO pro Azure.
 
-1. V Azure Portal vyberte **podnikové aplikace** > **všech aplikacích**.
+1. V Azure Portal vyberte možnost **podnikové aplikace** > **všechny aplikace**.
 1. V seznamu aplikace vyberte **ns1 SSO pro Azure**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 

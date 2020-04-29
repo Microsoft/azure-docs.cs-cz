@@ -16,10 +16,10 @@ ms.date: 02/13/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 33a8035f16f531dbb17177d1c2f4d5cd344e5a28
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77565770"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-single-sign-on-for-skytap"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s jednotným přihlašováním pro Skytap
@@ -73,7 +73,7 @@ Tady je obecný postup konfigurace a testování jednotného přihlašování sl
     a. **[Vytvořte jednotné přihlašování pro Skytap testovacího uživatele](#create-single-sign-on-for-skytap-test-user)** , které bude mít protějšek B. Simon v rámci jednotného přihlašování pro Skytap. Tato strana je propojená se zastoupením uživatele v Azure AD.
 1. **[Otestujte jednotné přihlašování](#test-sso)** a ověřte, jestli konfigurace funguje.
 
-## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
+## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
@@ -85,16 +85,16 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , zadejte v části **základní konfigurace SAML** hodnoty následujících polí:
 
-    a. Do textového pole **identifikátor** zadejte adresu URL, která používá následující vzor: `http://pingone.com/<custom EntityID>`
+    a. Do textového pole **identifikátor** zadejte adresu URL, která používá následující vzor:`http://pingone.com/<custom EntityID>`
 
-    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL, která používá následující vzor: `https://sso.connect.pingidentity.com/sso/sp/ACS.saml2`
+    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL, která používá následující vzor:`https://sso.connect.pingidentity.com/sso/sp/ACS.saml2`
 
 1. Vyberte **nastavit další adresy URL**a proveďte následující kroky, pokud chcete aplikaci nakonfigurovat v režimu iniciované **SP** :
 
-    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL, která používá následující vzor: `https://sso.connect.pingidentity.com/sso/sp/initsso?saasid=<saasid>&idpid=<idpid>`
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL, která používá následující vzor:`https://sso.connect.pingidentity.com/sso/sp/initsso?saasid=<saasid>&idpid=<idpid>`
 
     
-    b. Do textového pole **stav přenosu** zadejte adresu URL, která používá následující vzor: `https://pingone.com/1.0/<custom ID>`
+    b. Do textového pole **stav přenosu** zadejte adresu URL, která používá následující vzor:`https://pingone.com/1.0/<custom ID>`
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi, přihlašovací adresou URL a stavem přenosu. Chcete-li získat tyto hodnoty, obraťte se na [jednotné přihlašování pro Skytap tým podpory klientů](mailto:support@skytap.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -107,23 +107,23 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     ![Snímek obrazovky s adresami URL konfigurace kopírování](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně Azure Portal vyberte **Azure Active Directory** > **uživatelů** > **všech uživatelích**.
+1. V levém podokně Azure Portal vyberte **Azure Active Directory** > **Uživatelé** > **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. například `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a potom zapište hodnotu zobrazenou v poli **heslo** .
    1. Vyberte **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte B. Simon používat jednotné přihlašování pomocí Azure tím, že udělíte přístup k jednotnému přihlašování pro Skytap.
 
-1. V Azure Portal vyberte **podnikové aplikace** > **všech aplikacích**.
+1. V Azure Portal vyberte možnost **podnikové aplikace** > **všechny aplikace**.
 1. V seznamu aplikace vyberte **jednotné přihlašování pro Skytap**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 

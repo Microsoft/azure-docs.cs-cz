@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Návrh databáze Azure pro MariaDB – portál Azure'
+title: 'Kurz: návrh Azure Database for MariaDB-Azure Portal'
 description: Tento kurz vysvětluje, jak vytvořit a spravovat databázi a server Azure Database for MariaDB pomocí webu Azure Portal.
 author: ajlam
 ms.author: andrela
@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 3/18/2020
 ms.custom: mvc
 ms.openlocfilehash: 974b6a1e980119582d4fedb5f8b4e73685290de3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80063789"
 ---
 # <a name="tutorial-design-an-azure-database-for-mariadb-database-by-using-the-azure-portal"></a>Kurz: Návrh databáze Azure Database for MariaDB pomocí webu Azure Portal
@@ -41,18 +41,18 @@ Server Azure Database for MariaDB vytvoříte s definovanou sadou [výpočetníc
 
 1. Vyberte tlačítko **Vytvořit prostředek** (+) v levém horním rohu portálu.
 
-2. Vyberte **databáze** > **databáze Azure databáze pro MariaDB**. Můžete také zadat **MariaDB** do vyhledávacího pole a najít službu.
+2. Vyberte **databáze** > **Azure Database for MariaDB**. Službu můžete vyhledat také zadáním **MariaDB** do vyhledávacího pole.
 
    ![Přechod k MySQL](./media/tutorial-design-database-using-portal/1-Navigate-to-mariadb.png)
 
-3. Vyberte **dlaždici Azure Database for MariaDB.** Zadejte nebo vyberte požadované informace.
+3. Vyberte dlaždici **Azure Database for MariaDB** . Zadejte nebo vyberte požadované informace.
 
    ![Vytvoření formuláře](./media/tutorial-design-database-using-portal/2-create-form.png)
 
     Nastavení | Navrhovaná hodnota | Popis pole
     ---|---|---
     Název serveru | *Jedinečný název serveru* | Zvolte jedinečný název serveru, který identifikuje váš server Azure Database for MariaDB. Například **mydemoserver**. K zadanému názvu serveru se připojí název domény *.mariadb.database.azure.com*. Název serveru může obsahovat pouze malá písmena, číslice a znak spojovníku (-). Musí mít 3 až 63 znaků.
-    Předplatné | *vaše předplatné* | Vyberte předplatné Azure, které chcete použít pro váš server. Pokud máte více předplatných, zvolte předplatné, ve kterém se vám prostředek účtuje.
+    Předplatné | *Vaše předplatné* | Vyberte předplatné Azure, které chcete použít pro váš server. Pokud máte více předplatných, zvolte předplatné, ve kterém se vám prostředek účtuje.
     Skupina prostředků | **myresourcegroup** | Zadejte název nové skupiny prostředků nebo vyberte existující skupinu prostředků.
     Výběr zdroje | **Prázdné** | Vyberte **Prázdné** a vytvořte nový server. (Pokud vytváříte server z geografické zálohy existujícího serveru Azure Database for MariaDB, vyberte **Záloha**.)
     Přihlašovací jméno správce serveru | **myadmin** | Přihlašovací účet, který budete používat pro připojení k serveru. Přihlašovací jméno správce nemůže být **azure_superuser**, **admin**, **administrator**, **root**, **guest** ani **public**.
@@ -60,14 +60,14 @@ Server Azure Database for MariaDB vytvoříte s definovanou sadou [výpočetníc
     Potvrzení hesla | *Nějaké si zvolte*| Potvrďte heslo účtu správce.
     Umístění | *Oblast nejbližší vašim uživatelům*| Vyberte umístění co nejblíže vašim uživatelům nebo vašim dalším aplikacím Azure.
     Version | *Nejnovější verze*| Nejnovější verze (pokud nemáte specifické požadavky vyžadující použití jiné verze).
-    Cenová úroveň | Viz popis. | Konfigurace výpočtů, úložiště a zálohování pro nový server. Vyberte **Cenovou úroveň** > **obecného použití**. U následujících nastavení ponechte výchozí hodnoty:<br><ul><li>**Výpočetní generace** (Gen 5)</li><li>**virtuální jádro** (4 virtuální jádra)</li><li>**Úložiště** (100 GB)</li><li>**Období uchování zálohy** (7 dnů)</li></ul><br>Pokud chcete povolit zálohování serveru v geograficky redundantním úložišti, v části **Možnosti redundance zálohy** vyberte **Geograficky redundantní**. <br><br>Vyberte **OK** a uložte tento výběr cenové úrovně. Další snímek zachycuje tyto výběry.
+    Cenová úroveň | Viz popis. | Konfigurace výpočtů, úložiště a zálohování pro nový server. Vyberte**pro obecné účely** **cenové úrovně** > . U následujících nastavení ponechte výchozí hodnoty:<br><ul><li>**Výpočetní generace** (Gen 5)</li><li>**Vcore** (4 virtuální jádra)</li><li>**Úložiště** (100 GB)</li><li>**Období uchování zálohy** (7 dnů)</li></ul><br>Pokud chcete povolit zálohování serveru v geograficky redundantním úložišti, v části **Možnosti redundance zálohy** vyberte **Geograficky redundantní**. <br><br>Vyberte **OK** a uložte tento výběr cenové úrovně. Další snímek zachycuje tyto výběry.
     
    ![Cenová úroveň](./media/tutorial-design-database-using-portal/3-pricing-tier.png)
 
    > [!TIP]
-   > S **automatickým růstem** povoleno váš server zvyšuje úložiště, když se blíží přiděleném limitu, aniž by to mělo vliv na vaše pracovní vytížení.
+   > Díky **automatickému růstu** může server zvýšit kapacitu úložiště při přístupu k přidělenému limitu, aniž by to ovlivnilo vaše zatížení.
 
-4. Klikněte na **Zkontrolovat a vytvořit**. Můžete kliknout na tlačítko **Oznámení** na panelu nástrojů a sledovat proces nasazení. Nasazení může trvat až 20 minut.
+4. Klikněte na **Zkontrolovat a vytvořit**. Můžete kliknout na tlačítko **oznámení** na panelu nástrojů a monitorovat proces nasazení. Nasazení může trvat až 20 minut.
 
 ## <a name="configure-the-firewall"></a>Konfigurace brány firewall
 
@@ -93,7 +93,7 @@ Na webu Azure Portal získejte hodnoty **Název serveru** (plně kvalifikovaný)
 
    ![Vlastnosti serveru](./media/tutorial-design-database-using-portal/2-server-properties.png)
 
-V našem příkladu je název serveru **mydemoserver.mariadb.database.azure.com** a přihlašovací jméno správce serveru je **myadmin\@mydemoserver**.
+V našem příkladu je název serveru **mydemoserver.MariaDB.Database.Azure.com** a přihlašovací jméno správce serveru je **myadmin\@mydemoserver**.
 
 ## <a name="connect-to-the-server-by-using-mysql"></a>Připojení k serveru pomocí mysql
 
@@ -107,7 +107,7 @@ mysql -h mydemoserver.mariadb.database.azure.com -u myadmin@mydemoserver -p
 
 ## <a name="create-a-blank-database"></a>Vytvoření prázdné databáze
 
-Když jste připojeni k serveru, vytvořte prázdnou databázi, se kterou můžete pracovat:
+Když jste připojeni k serveru, vytvořte prázdnou databázi, se kterou chcete pracovat:
 
 ```sql
 CREATE DATABASE mysampledb;

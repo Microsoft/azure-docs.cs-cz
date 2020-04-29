@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace služby Azure Active Directory se službou JEDNOTNÉHO PŘIHLADA SAML pro soutok podle překladu GmbH | Dokumenty společnosti Microsoft'
-description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Službou Azure Active Directory a jednotném přihlašování SAML pro confluence by resolution GmbH.
+title: 'Kurz: Azure Active Directory integrace se službou SAML SSO pro Confluence podle rezoluce GmbH | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a SAML SSO pro Confluence pomocí rezoluce GmbH.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,133 +17,133 @@ ms.date: 12/24/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9676a71940569b26d6b0b6bfef767108ae57d953
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73161211"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-confluence-by-resolution-gmbh"></a>Kurz: Integrace služby Azure Active Directory s jednotném přihlašovacím službou SAML pro soužení podle řešení GmbH
+# <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-confluence-by-resolution-gmbh"></a>Kurz: Azure Active Directory integrace se službou SAML SSO pro Confluence podle rezoluce GmbH
 
-V tomto kurzu se dozvíte, jak integrovat jednotné přihlašovací služby SAML pro confluence podle řešení GmbH s Azure Active Directory (Azure AD).
-Integrace jednotného přihlašování SAML pro confluence podle řešení GmbH s Azure AD vám poskytuje následující výhody:
+V tomto kurzu se naučíte integrovat jednotné přihlašování SAML pro Confluence pomocí rezoluce GmbH s Azure Active Directory (Azure AD).
+Integrace jednotného přihlašování SAML pro Confluence podle rezoluce GmbH s Azure AD poskytuje následující výhody:
 
-* Můžete řídit ve službě Azure AD, který má přístup k jednotnému přihlašovacím místě SAML pro confluence podle řešení GmbH.
-* Můžete povolit, aby vaši uživatelé byli automaticky přihlášeni k jednotnému přihlašování SAML pro confluence podle řešení GmbH (Single Sign-On) s jejich účty Azure AD.
-* Své účty můžete spravovat v jednom centrálním umístění – na portálu Azure.
+* Můžete řídit v Azure AD, který má přístup k SAML SSO pro Confluence podle rezoluce GmbH.
+* Můžete povolit, aby se vaši uživatelé automaticky přihlásili k SAML SSO pro Confluence pomocí rezoluce GmbH (jednotné přihlašování) se svými účty Azure AD.
+* Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
-Pokud se chcete dozvědět více podrobností o integraci aplikací SaaS s Azure AD, přečtěte [si, co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li nakonfigurovat integraci Azure AD s jednotného přihlašovacího zabezpečení SAML pro confluence podle řešení GmbH, budete potřebovat následující položky:
+K nakonfigurování integrace služby Azure AD pomocí jednotného přihlašování SAML pro Confluence podle rezoluce GmbH budete potřebovat následující položky:
 
-* Předplatné Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební [verzi zde](https://azure.microsoft.com/pricing/free-trial/)
-* Saml Jednotné přihlašování pro confluence podle rozlišení GmbH jednotné přihlášení povoleno předplatné
+* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verzi [tady](https://azure.microsoft.com/pricing/free-trial/) .
+* JEDNOTNÉ přihlašování SAML pro Confluence podle řešení GmbH s povoleným jednotným přihlašováním
 
 ## <a name="scenario-description"></a>Popis scénáře
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* SAML SSO pro confluence podle rozlišení GmbH podporuje **SP** a **IDP** inicioval jednotné hospo-
+* Jednotné přihlašování SAML pro Confluence podle rezoluce GmbH podporuje **aktualizace SP** a **IDP** , které iniciovaly jednotné přihlašování
 
-## <a name="adding-saml-sso-for-confluence-by-resolution-gmbh-from-the-gallery"></a>Přidání SAML SSO pro Confluence podle rozlišení GmbH z galerie
+## <a name="adding-saml-sso-for-confluence-by-resolution-gmbh-from-the-gallery"></a>Přidání jednotného přihlašování SAML pro Confluence podle rezoluce GmbH z Galerie
 
-Chcete-li nakonfigurovat integraci jednotného přihlašovacího zařízení SAML pro souběh podle řešení GmbH do azure ad, je třeba přidat jednotné přihlašovací služby SAML pro confluence podle překladu GmbH z galerie do seznamu spravovaných aplikací SaaS.
+Pokud chcete nakonfigurovat integraci SAML SSO pro Confluence podle rezoluce GmbH na Azure AD, musíte do svého seznamu spravovaných aplikací pro SaaS přidat jednotné přihlašování SAML pro Confluence podle rezoluce GmbH z galerie.
 
-**Chcete-li přidat jednotné přihlašovací právo SAML pro confluence podle rozlišení GmbH z galerie, proveďte následující kroky:**
+**K přidání jednotného přihlašování SAML pro Confluence podle rezoluce GmbH z Galerie proveďte následující kroky:**
 
-1. Na **[portálu Azure](https://portal.azure.com)** klikněte na levém navigačním panelu na ikonu **Služby Azure Active Directory.**
+1. V **[Azure Portal](https://portal.azure.com)** na levém navigačním panelu klikněte na ikonu **Azure Active Directory** .
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte do **podnikových aplikací** a pak vyberte možnost **Všechny aplikace.**
+2. Přejděte na **podnikové aplikace** a vyberte možnost **všechny aplikace** .
 
-    ![Okno Aplikace Enterprise](common/enterprise-applications.png)
+    ![Okno podnikové aplikace](common/enterprise-applications.png)
 
-3. Chcete-li přidat novou aplikaci, klepněte na tlačítko **Nová aplikace** v horní části dialogového okna.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **Nová aplikace** v horní části dialogového okna.
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Ve vyhledávacím poli zadejte **SAML SSO pro Confluence by resolution GmbH**, zvolte **SAML SSO pro Confluence by resolution GmbH** z panelu výsledků a pak kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **SAML SSO pro Confluence podle rezoluce GmbH**, vyberte položku **SAML SSO pro Confluence podle rezoluce GmbH** z panelu výsledek a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
-     ![SAML SSO pro confluence podle rozlišení GmbH v seznamu výsledků](common/search-new-app.png)
+     ![Jednotné přihlašování SAML pro Confluence podle rezoluce GmbH v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí jednotného přihlašování SAML pro soutok podle řešení GmbH na základě testovacího uživatele s názvem **Britta Simon**.
-Aby jednotné přihlašování fungovalo, je třeba vytvořit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v jednotném přihlašování SAML pro confluence podle řešení GmbH.
+V této části nakonfigurujete a otestujete jednotné přihlašování služby Azure AD pomocí jednotného přihlašování SAML pro Confluence podle rezoluce GmbH na základě testovacího uživatele s názvem **Britta Simon**.
+Aby jednotné přihlašování fungovalo, je potřeba zřídit odkaz na propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v rámci SAML SSO pro Confluence podle rezoluce GmbH.
 
-Chcete-li nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí jednotného přihlašování SAML pro confluence podle řešení GmbH, je třeba dokončit následující stavební bloky:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí jednotného přihlašování SAML pro Confluence pomocí nástroje Solution GmbH, musíte dokončit tyto stavební bloky:
 
-1. **[Nakonfigurujte azure ad jednotné přihlašování](#configure-azure-ad-single-sign-on)** – aby vaši uživatelé mohli používat tuto funkci.
-2. **[Nakonfigurujte jednotné přihlašování SAML pro soutok podle rozlišení GmbH Single Sign-On](#configure-saml-sso-for-confluence-by-resolution-gmbh-single-sign-on)** - pro konfiguraci nastavení jednotného přihlášení na straně aplikace.
-3. **[Vytvořte uživatele testu Azure AD](#create-an-azure-ad-test-user)** – k testování jednotného přihlášení Azure AD s Brittou Simonovou.
-4. **[Přiřaďte testovacímu uživateli Azure AD](#assign-the-azure-ad-test-user)** – chcete-li Britta Simon ové povolit použití jednotného přihlášení azure ad.
-5. **[Vytvořte jednotné přihlašování SAML pro confluence podle rozlišení gmbh testovací uživatel](#create-saml-sso-for-confluence-by-resolution-gmbh-test-user)** – mít protějšek Britta Simon v SAML Jednotné přihlašování pro confluence podle řešení GmbH, který je propojen s reprezentaci Azure AD uživatele.
-6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** - chcete-li ověřit, zda konfigurace funguje.
+1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
+2. Nakonfigurujte jednotné přihlašování **[SAML pro Confluence podle rezoluce GmbH jednotného přihlašování](#configure-saml-sso-for-confluence-by-resolution-gmbh-single-sign-on)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace.
+3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
+4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
+5. **[Vytvořte jednotné přihlašování SAML pro Confluence podle řešení GmbH Test User](#create-saml-sso-for-confluence-by-resolution-gmbh-test-user)** – Pokud chcete mít protějšek Britta Simon v jednotném přihlašování SAML pro Confluence podle rezoluce GmbH, která je propojená s reprezentací uživatele v Azure AD.
+6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** – ověřte, jestli konfigurace funguje.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
 
-V této části povolíte jednotné přihlašování Azure AD na webu Azure Portal.
+V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
 
-Chcete-li nakonfigurovat jednotné přihlašování Azure AD pomocí jednotného přihlašování SAML pro confluence podle řešení GmbH, proveďte následující kroky:
+Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí jednotného přihlašování SAML pro Confluence podle rezoluce GmbH, proveďte následující kroky:
 
-1. Na [portálu Azure](https://portal.azure.com/)na stránce integrace aplikací **SAML SSO for Confluence by resolution GmbH** vyberte **Jednotné přihlašování**.
+1. V [Azure Portal](https://portal.azure.com/)na stránce pro integraci aplikace **SAML pro Confluence podle rezoluce GmbH** vyberte **jednotné přihlašování**.
 
-    ![Konfigurace odkazu pro jednotné přihlášení](common/select-sso.png)
+    ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
 
-2. V **dialogovém okně Vybrat metodu jednotného přihlašování** vyberte režim **SAML/WS-Fed,** abyste povolili jednotné přihlašování.
+2. V dialogovém okně **Vyberte metodu jednotného přihlašování** vyberte možnost režim **SAML/WS** , čímž povolíte jednotné přihlašování.
 
-    ![Režim výběru jednotného přihlášení](common/select-saml-option.png)
+    ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na stránce **Nastavit jednotné přihlašování pomocí saml** kliknutím na ikonu **Upravit** otevřete dialogové okno Základní **konfigurace SAML.**
+3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-4. V části **Základní konfigurace SAML** proveďte následující kroky, pokud chcete nakonfigurovat aplikaci v režimu iniciovaného iniciátorem **Protokolu IDP:**
+4. V části **základní konfigurace SAML** proveďte následující kroky, pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** :
 
-    ![Saml Jednotné přihlašování pro soutok podle rozlišení GmbH Domény a adresy URL jednotné přihlašovací informace](common/idp-intiated.png)
+    ![Jednotné přihlašování SAML pro Confluence podle rozlišení domény a adres URL v protokolu GmbH](common/idp-intiated.png)
 
-    a. Do textového pole **Identifikátor** zadejte adresu URL pomocí následujícího vzoru:`https://<server-base-url>/plugins/servlet/samlsso`
+    a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:`https://<server-base-url>/plugins/servlet/samlsso`
 
-    b. Do textového pole **Odpovědět na adresu URL** zadejte adresu URL pomocí následujícího vzoru:`https://<server-base-url>/plugins/servlet/samlsso`
+    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://<server-base-url>/plugins/servlet/samlsso`
 
-    c. Klepněte na tlačítko **Nastavit další adresy URL** a proveďte následující krok, pokud chcete aplikaci nakonfigurovat v režimu iniciovaném službou SP:
+    c. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované SP:
 
-    ![Saml Jednotné přihlašování pro soutok podle rozlišení GmbH Domény a adresy URL jednotné přihlašovací informace](common/metadata-upload-additional-signon.png)
+    ![Jednotné přihlašování SAML pro Confluence podle rozlišení domény a adres URL v protokolu GmbH](common/metadata-upload-additional-signon.png)
 
-    Do textového pole **Přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<server-base-url>/plugins/servlet/samlsso`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<server-base-url>/plugins/servlet/samlsso`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou skutečné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL pro odpověď a přihlašovací adresou URL. Obraťte se [na saml jednotného přihlašovacího místa pro confluence podle řešení GmbH Klient tým podpory](https://www.resolution.de/go/support) získat tyto hodnoty. Můžete také odkazovat na vzory uvedené v části **Základní konfigurace SAML** na webu Azure Portal.
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Chcete-li získat tyto hodnoty, obraťte se na [podporu SAML SSO pro Confluence podle týmu podpory pro klienty](https://www.resolution.de/go/support) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-4. Na stránce **Nastavit jednotné přihlašování pomocí saml** klikněte v části **Podpisový certifikát SAML** na **Stáhnout** a stáhněte si xml **metadat federace** z daných možností podle vašeho požadavku a uložte ho do počítače.
+4. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
-    ![Odkaz ke stažení certifikátu](common/metadataxml.png)
+    ![Odkaz na stažení certifikátu](common/metadataxml.png)
 
-### <a name="configure-saml-sso-for-confluence-by-resolution-gmbh-single-sign-on"></a>Konfigurace jednotného přihlašování SAML pro soutok podle rozlišení GmbH Single Sign-On
+### <a name="configure-saml-sso-for-confluence-by-resolution-gmbh-single-sign-on"></a>Konfigurace jednotného přihlašování SAML pro Confluence podle rozlišení GmbH
 
-1. V jiném okně webového prohlížeče se přihlaste ke svému **jednotnému přihlašování SAML pro confluence podle překladu portálu pro správu společnosti GmbH** jako správce.
+1. V jiném okně webového prohlížeče se přihlaste ke svému **jednotnému přihlašování SAML pro Confluence pomocí portálu pro správu s rozlišením GmbH** jako správce.
 
-2. Najeďte přes kolečko a klikněte **na doplňky**.
+2. Najeďte myší na ozubeného kola a klikněte na **Doplňky**.
     
     ![Konfigurace jednotného přihlašování](./media/samlssoconfluence-tutorial/addon1.png)
 
-3. Budete přesměrováni na stránku Přístup správce. Zadejte heslo a klepněte na **tlačítko Potvrdit.**
+3. Budete přesměrováni na stránku pro přístup správce. Zadejte heslo a klikněte na tlačítko **Potvrdit** .
 
     ![Konfigurace jednotného přihlašování](./media/samlssoconfluence-tutorial/addon2.png)
 
-4. Na kartě **ATLASSIAN MARKETPLACE** klikněte na **Najít nové doplňky**. 
+4. Na kartě **tržiště ATLASSIAN** klikněte na **najít nové doplňky**. 
 
     ![Konfigurace jednotného přihlašování](./media/samlssoconfluence-tutorial/addon.png)
 
-5. Vyhledejte **saml jednotné přihlášení na (SSO) pro confluence** a klepněte na tlačítko **Nainstalovat** nainstalovat nainstalovat nový plugin SAML.
+5. Prohledejte **jednotné přihlašování (SSO) SAML pro Confluence** a kliknutím na tlačítko **nainstalovat** nainstalujte nový modul plug-in SAML.
 
     ![Konfigurace jednotného přihlašování](./media/samlssoconfluence-tutorial/addon7.png)
 
-6. Spustí se instalace pluginu. Klikněte na **Zavřít**.
+6. Spustí se instalace modulu plug-in. Klikněte na **Zavřít**.
 
     ![Konfigurace jednotného přihlašování](./media/samlssoconfluence-tutorial/addon8.png)
 
@@ -153,153 +153,153 @@ Chcete-li nakonfigurovat jednotné přihlašování Azure AD pomocí jednotného
 
     ![Konfigurace jednotného přihlašování](./media/samlssoconfluence-tutorial/addon10.png)
     
-8. Chcete-li nakonfigurovat nový plugin, klepněte na **tlačítko Konfigurovat.**
+8. Kliknutím na **Konfigurovat** Nakonfigurujte nový modul plug-in.
 
     ![Konfigurace jednotného přihlašování](./media/samlssoconfluence-tutorial/addon11.png)
 
-9. Tento nový plugin lze také nalézt v záložce **USERS & SECURITY.**
+9. Tento nový modul plug-in je taky možné najít na kartě **uživatelé & zabezpečení** .
 
     ![Konfigurace jednotného přihlašování](./media/samlssoconfluence-tutorial/addon3.png)
     
-10. Na stránce **Konfigurace modulu plug-in SAML SingleSignOn** klikněte na **tlačítko Přidat nové tlačítko IdP** a nakonfigurujte nastavení zprostředkovatele identity.
+10. Na stránce **Konfigurace modulu plug-in SAML SingleSignon** klikněte na tlačítko **Přidat nové IDP** a nakonfigurujte nastavení poskytovatele identity.
 
     ![Konfigurace jednotného přihlašování](./media/samlssoconfluence-tutorial/addon4.png)
 
-11. Na **stránce Vyberte si poskytovatele identity SAML** proveďte následující kroky:
+11. Na stránce **zvolit poskytovatele identity SAML** proveďte následující kroky:
 
     ![Konfigurace jednotného přihlašování](./media/samlssoconfluence-tutorial/addon5a.png)
  
-    a. Nastavte **Azure AD** jako typ IdP.
+    a. Nastavte **Azure AD** jako typ IDP.
     
-    b. Přidejte **název** zprostředkovatele identity (např. Azure AD).
+    b. Přidejte **jméno** zprostředkovatele identity (např. Azure AD).
     
-    c. Přidejte **popis** zprostředkovatele identity (např. Azure AD).
+    c. Přidejte **Popis** zprostředkovatele identity (např. Azure AD).
     
-    d. Klikněte na **Další**.
+    d. Klikněte na **Další**.
     
-12. Na **konfigurační stránce zprostředkovatele identity** klikněte na tlačítko **Další.**
+12. Na stránce **Konfigurace zprostředkovatele identity** klikněte na tlačítko **Další** .
 
     ![Konfigurace jednotného přihlašování](./media/samlssoconfluence-tutorial/addon5b.png)
 
-13. Na stránce **Metadata idp importu SAML** proveďte následující kroky:
+13. Na stránce **importovat metadata IDP SAML** proveďte následující kroky:
 
     ![Konfigurace jednotného přihlašování](./media/samlssoconfluence-tutorial/addon5c.png)
 
-    a. Klikněte na tlačítko **Načíst soubor** a vyberte soubor XML metadat, který jste stáhli v kroku 5.
+    a. Klikněte na tlačítko **načíst soubor** a vyberte soubor XML s metadaty, který jste stáhli v kroku 5.
 
-    b. Klikněte na **tlačítko Importovat.**
+    b. Klikněte na tlačítko **importovat** .
     
-    c. Krátce počkejte, dokud import nebude úspěšný.
+    c. Chvíli počkejte, dokud nebude import úspěšný.
     
-    d. Klikněte na tlačítko **Další.**
+    d. Klikněte na tlačítko **Další** .
     
-14. Na **stránce atributu ID uživatele a transformační** stránky klikněte na tlačítko **Další.**
+14. Kliknutím na tlačítko Další na stránce **atributu ID uživatele a transformaci** klikněte na tlačítko **Další** .
 
     ![Konfigurace jednotného přihlašování](./media/samlssoconfluence-tutorial/addon5d.png)
     
-15. Na stránce **Vytvoření a aktualizace uživatele** mi tešete nastavení na Uložit & **další.**   
+15. Na stránce **Vytvoření a aktualizace uživatele** klikněte na **Uložit & vedle** možnosti Uložit nastavení.   
     
     ![Konfigurace jednotného přihlašování](./media/samlssoconfluence-tutorial/addon6a.png)
     
-16. Na **stránce Test nastavení** klikněte na Přeskočit test & **nakonfigurovat ručně** přeskočit uživatelský test pro tuto chvíli. To se provede v další části a vyžaduje některá nastavení na webu Azure Portal. 
+16. Na stránce **Testovat nastavení** klikněte na **Přeskočit test & nakonfigurovat ručně** , aby se tento test uživatele teď přeskočil. Tato akce se provede v následující části a vyžaduje některá nastavení v Azure Portal. 
     
     ![Konfigurace jednotného přihlašování](./media/samlssoconfluence-tutorial/addon6b.png)
     
-17. V zobrazeném dialogovém okně, ve **které se zobrazí přeskočení testovacích prostředků...**, klepněte na tlačítko **OK**.
+17. V dialogovém okně zobrazení, které **přeskočí test znamená...**, klikněte na tlačítko **OK**.
     
     ![Konfigurace jednotného přihlašování](./media/samlssoconfluence-tutorial/addon6c.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
 
-Cílem této části je vytvořit testovacího uživatele na webu Azure portal s názvem Britta Simon.
+Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. Na webu Azure Portal v levém podokně vyberte **Azure Active Directory**, vyberte **Uživatelé**a pak vyberte **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
 
-    ![Odkazy "Uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
+    ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
-2. V horní části obrazovky vyberte **Nový uživatel.**
+2. V horní části obrazovky vyberte **Nový uživatel** .
 
-    ![Tlačítko nového uživatele](common/new-user.png)
+    ![Tlačítko pro nového uživatele](common/new-user.png)
 
-3. Ve vlastnostech User proveďte následující kroky.
+3. Ve vlastnostech uživatele proveďte následující kroky.
 
-    ![Dialogové okno Uživatel](common/user-properties.png)
+    ![Uživatelský dialog](common/user-properties.png)
 
-    a. Do pole **Název** zadejte **BrittaSimon**.
+    a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. V poli **Uživatelské jméno** zadejte **\@brittasimon vašecompanydomain.extension**  
+    b. Do pole **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain. extension.**  
     Například BrittaSimon@contoso.com.
 
-    c. Zaškrtněte **políčko Zobrazit heslo** a poznamenejte si hodnotu, která se zobrazí v poli Heslo.
+    c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
     d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon používat Azure jednotné přihlašování udělením přístupu k jednotnému přihlašování SAML pro confluence podle řešení GmbH.
+V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k JEDNOTNÉmu přihlašování SAML pro Confluence podle rezoluce GmbH.
 
-1. Na portálu Azure vyberte **Podnikové aplikace**, vyberte **Všechny aplikace**a pak vyberte jednotné **přihlašování SAML pro soutok podle překladu GmbH**.
+1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte položku **SAML SSO pro Confluence podle rezoluce GmbH**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikací zadejte a vyberte **jednotné přihlašování SAML pro confluence podle rozlišení GmbH**.
+2. V seznamu aplikace zadejte a vyberte **jednotné přihlašování SAML pro Confluence podle rezoluce GmbH**.
 
-    ![Odkaz SAML SSO pro confluence by resolution GmbH v seznamu Aplikace](common/all-applications.png)
+    ![Odkaz na rozhraní SAML SSO pro Confluence podle rezoluce GmbH v seznamu aplikací](common/all-applications.png)
 
-3. V nabídce vlevo vyberte **Možnost Uživatelé a skupiny**.
+3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
 
-    ![Odkaz "Uživatelé a skupiny"](common/users-groups-blade.png)
+    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-4. Klikněte na tlačítko **Přidat uživatele** a v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny.**
+4. Klikněte na tlačítko **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
-    ![Podokno Přidat přiřazení](common/add-assign-user.png)
+    ![Podokno přidat přiřazení](common/add-assign-user.png)
 
-5. V dialogovém okně **Uživatelé a skupiny** vyberte **brittu Simonovou** v seznamu Uživatelé a klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+5. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **Britta Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-6. Pokud očekáváte libovolnou hodnotu role v kontrolním výrazu SAML, vyberte v dialogovém okně **Vybrat roli** příslušnou roli pro uživatele ze seznamu a klepněte na tlačítko **Vybrat** v dolní části obrazovky.
+6. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, pak v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-7. V dialogovém okně **Přidat přiřazení** klepněte na tlačítko **Přiřadit.**
+7. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-### <a name="create-saml-sso-for-confluence-by-resolution-gmbh-test-user"></a>Vytvoření jednotného přihlašovacího úbytku SAML pro soutok podle rozlišení uživatele testu GmbH
+### <a name="create-saml-sso-for-confluence-by-resolution-gmbh-test-user"></a>Vytvoření jednotného přihlašování SAML pro Confluence podle řešení GmbH Test User
 
-Aby se uživatelé Azure AD mohli přihlásit k jednotnému přihlašování SAML pro confluence by resolution GmbH, musí být zřízeni do jednotného přihlašování SAML pro confluence podle řešení GmbH.  
-V saml jednotného přihlašování pro soutok podle řešení GmbH zřizování je ruční úlohy.
+Aby se uživatelé Azure AD mohli přihlásit ke SAML SSO pro Confluence podle rezoluce GmbH, musí se zřídit do jednotného přihlašování SAML pro Confluence podle rezoluce GmbH.  
+V případě jednotného přihlašování SAML pro Confluence podle rezoluce GmbH je zřizování ručním úkolem.
 
 **Chcete-li zřídit uživatelský účet, proveďte následující kroky:**
 
-1. Přihlaste se ke svému jednotnému přihlašování SAML pro confluence podle řešení společnosti GmbH jako správce.
+1. Přihlaste se ke svému jednotnému přihlašování SAML pro Confluence pomocí webu usnesení GmbH jako správce.
 
-2. Najeďte přes kolečko a klikněte na **správu uživatelů**.
+2. Najeďte myší na ozubeného kola a klikněte na **Správa uživatelů**.
 
     ![Přidat zaměstnance](./media/samlssoconfluence-tutorial/user1.png) 
 
-3. V části Uživatelé klikněte na kartu **Přidat uživatele.** Na stránce dialogového okna **Přidat uživatele** proveďte následující kroky:
+3. V části Uživatelé klikněte na kartu **Přidat uživatele** . Na stránce **Přidat uživatele** proveďte následující kroky:
 
     ![Přidat zaměstnance](./media/samlssoconfluence-tutorial/user2.png) 
 
-    a. Do textového pole **Uživatelské jméno** zadejte e-mail uživatele, jako je Britta Simon.
+    a. Do textového pole **uživatelské jméno** zadejte e-mail uživatele, jako je Britta Simon.
 
-    b. Do textového pole **Celé jméno** zadejte celé jméno uživatele, jako je Britta Simon.
+    b. Do textového pole **celé jméno** zadejte jméno a příjmení uživatele, jako je Britta Simon.
 
-    c. Do textového pole **E-mail** zadejte Brittasimon@contoso.come-mailovou adresu uživatele, který se líbí .
+    c. Do textového pole **e-mail** zadejte e-mailovou adresu uživatele Brittasimon@contoso.com.
 
-    d. Do textového pole **Heslo** zadejte heslo pro Brittu Simonovou.
+    d. Do textového pole **heslo** zadejte heslo pro Britta Simon.
 
-    e. Klikněte na **Potvrdit heslo** znovu zadat heslo.
+    e. Klikněte na **Potvrdit heslo** znovu zadejte heslo.
     
-    f. Klikněte na **tlačítko Přidat.**
+    f. Klikněte na tlačítko **Přidat** .
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
-V této části otestujete konfiguraci jednotného přihlášení Azure AD pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Po kliknutí na dlaždici JEDNOTNÉHO PŘIHLADĚK SAML pro soutok podle rozlišení GmbH na přístupovém panelu, měli byste být automaticky přihlášeni k jednotnému přihlašovacím příkazu SAML pro confluence podle řešení GmbH, pro které nastavíte jednotné přihlašovací právo. Další informace o přístupovém panelu naleznete [v tématu Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici SSO SSO pro Confluence podle rezoluce GmbH, měli byste se automaticky přihlásit k rozhraní SAML SSO pro Confluence, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály a zdroje informací
 
-- [Seznam výukových programů o integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co je podmíněný přístup ve službě Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

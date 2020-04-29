@@ -17,10 +17,10 @@ ms.date: 10/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0900f730c287586725722f0b8baaeb0c22f850c2
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "72791229"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-elium"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Elium
@@ -33,7 +33,7 @@ V tomto kurzu se dozvíte, jak integrovat Elium s Azure Active Directory (Azure 
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -51,7 +51,7 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 
 Pokud chcete nakonfigurovat integraci Elium do služby Azure AD, musíte přidat Elium z Galerie do svého seznamu spravovaných aplikací SaaS.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
 1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
@@ -71,7 +71,7 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
     * **[Vytvořte Elium Test User](#create-elium-test-user)** -to, abyste měli protějšek B. Simon v Elium, která je propojená s reprezentací uživatele v Azure AD.
 1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
+## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
@@ -83,16 +83,16 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , zadejte v **základní části Konfigurace SAML** hodnoty následujících polí:
 
-    a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru: `https://<platform-domain>.elium.com/login/saml2/metadata`
+    a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:`https://<platform-domain>.elium.com/login/saml2/metadata`
 
-    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://<platform-domain>.elium.com/login/saml2/acs`
+    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://<platform-domain>.elium.com/login/saml2/acs`
 
 1. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<platform-domain>.elium.com/login/saml2/login`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<platform-domain>.elium.com/login/saml2/login`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Tyto hodnoty ze **souboru s metadaty SP** můžete stáhnout na `https://<platform-domain>.elium.com/login/saml2/metadata`, což je vysvětleno dále v tomto kurzu.
+    > Tyto hodnoty nejsou reálné. Tyto hodnoty se zobrazí ze **souboru metadat SP** ke stažení v `https://<platform-domain>.elium.com/login/saml2/metadata`, což je vysvětleno dále v tomto kurzu.
 
 1. Elium aplikace očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů.
 
@@ -100,13 +100,13 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě toho očekává aplikace Elium několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
 
-    | Name (Název) | Zdrojový atribut|
+    | Název | Zdrojový atribut|
     | ---------------| ----------------|
     | e-mail   |uživatel. pošta |
-    | křestní_jméno| User. křestní jméno |
-    | příjmení| User. příjmení|
+    | first_name| User. křestní jméno |
+    | last_name| User. příjmení|
     | job_title| User. jobtitle|
-    | Podnikový| User. CompanyName|
+    | company| User. CompanyName|
 
     > [!NOTE]
     > Toto jsou výchozí deklarace identity. **Vyžaduje se jenom deklarace identity e-mailu**. Pro zřizování JIT je také povinné jenom deklarace identity e-mailu. Další vlastní deklarace identity se můžou lišit od zákaznické platformy k jiné zákaznické platformě.
@@ -165,7 +165,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     ![Konfigurace jednotného přihlašování](./media/elium-tutorial/user1.png)
 
-1. Vyberte kartu **zabezpečení** .
+1. Vyberte kartu **Zabezpečení**.
 
     ![Konfigurace jednotného přihlašování](./media/elium-tutorial/user2.png)
 
@@ -176,7 +176,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
     a. Zkopírujte hodnotu **ověřit, jestli typu Saml2 ověřování funguje pro váš účet** , a vložte ho do textového pole **přihlašovací adresa URL** v základní části **Konfigurace SAML** v Azure Portal.
 
     > [!NOTE]
-    > Po konfiguraci jednotného přihlašování (SSO) máte vždycky přístup k výchozí stránce vzdáleného přihlášení na následující adrese URL: `https://<platform_domain>/login/regular/login` 
+    > Po konfiguraci jednotného přihlašování (SSO) máte vždycky přístup k výchozí stránce vzdáleného přihlášení na následující adrese URL:`https://<platform_domain>/login/regular/login` 
 
     b. Zaškrtněte políčko **Povolit federaci typu Saml2** .
 
@@ -209,7 +209,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici Elium, měli byste se automaticky přihlásit k Elium, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály a zdroje informací
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
