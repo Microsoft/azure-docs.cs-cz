@@ -1,6 +1,6 @@
 ---
-title: Vypnutí virtuálních počítačů Azure se zaseklo při restartování, vypnutí nebo zastavení služeb | Dokumenty společnosti Microsoft
-description: Tento článek vám pomůže vyřešit chyby služby ve virtuálních počítačích Azure Windows.
+title: Služba Azure Virtual Machines Shutdown se zablokuje při restartování, vypínání nebo zastavování služeb | Microsoft Docs
+description: Tento článek vám pomůže při řešení chyb služby v Azure Windows Virtual Machines.
 services: virtual-machines-windows
 documentationCenter: ''
 author: v-miegge
@@ -13,99 +13,99 @@ ms.workload: infrastructure
 ms.date: 12/19/2019
 ms.author: tibasham
 ms.openlocfilehash: 5d6396efc9ab25baa0d32e7c33c7715863516249
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77371356"
 ---
-# <a name="azure-windows-vm-shutdown-is-stuck-on-restarting-shutting-down-or-stopping-services"></a>Vypnutí virtuálního počítače Azure windows se zaseklo na "Restartování", "Vypnutí" nebo "Zastavení služeb"
+# <a name="azure-windows-vm-shutdown-is-stuck-on-restarting-shutting-down-or-stopping-services"></a>Vypnutí virtuálního počítače Azure s Windows se zablokuje při restartování, vypínání nebo zastavování služeb.
 
-Tento článek obsahuje kroky k vyřešení problémů "Restartování", "Vypnutí" nebo "Zastavení služeb" zprávy, které se mohou vyskytnou při restartování virtuálního počítače (VM) Windows v Microsoft Azure.
+Tento článek popisuje kroky pro řešení potíží se zprávami "restartování", "vypnutí" nebo "zastavení služeb", se kterými se můžete setkat při restartování virtuálního počítače s Windows v Microsoft Azure.
 
 ## <a name="symptoms"></a>Příznaky
 
-Při použití [boot diagnostiky](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) k zobrazení snímku obrazovky virtuálního virtuálního soudu, můžete vidět, že snímek obrazovky se zobrazí zpráva "Restartování", "Vypnutí" nebo "Zastavení služby".
+Když pomocí [diagnostiky spouštění](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) zobrazíte snímek obrazovky virtuálního počítače, může se zobrazit, že snímek obrazovky zobrazuje zprávu "restartování", "vypínání" nebo "zastavení služeb".
 
-![Restartování, vypnutí a zastavení obrazovek služeb](./media/boot-error-troubleshooting-windows/restart-shut-down-stop-service.png)
+![Restart, vypínání a zastavování obrazovek služby](./media/boot-error-troubleshooting-windows/restart-shut-down-stop-service.png)
  
 ## <a name="cause"></a>Příčina
 
-Systém Windows používá proces vypnutí k provádění operací údržby systému a ke změnám, jako jsou aktualizace, role a funkce. Nedoporučuje se přerušit tento kritický proces, dokud nebude dokončen. V závislosti na počtu aktualizací nebo změn a velikosti virtuálního počítače může proces trvat dlouhou dobu. Pokud je proces zastaven, je možné, že operační systém bude poškozen. Proces přerušte pouze v případě, že trvá příliš dlouho.
+Systém Windows pomocí procesu vypnutí provádí operace údržby systému a zpracovává změny, jako jsou například aktualizace, role a funkce. Nedoporučujeme tento kritický proces přerušit, dokud se nedokončí. V závislosti na počtu aktualizací/změn a velikosti virtuálního počítače může proces trvat dlouhou dobu. Pokud je proces zastavený, je možné, že operační systém bude poškozený. Proces bude přerušen pouze v případě, že trvá příliš dlouho.
 
 ## <a name="solution"></a>Řešení
 
-### <a name="collect-a-process-memory-dump"></a>Shromažďování výpisu stavu paměti procesu
+### <a name="collect-a-process-memory-dump"></a>Shromažďování výpisu paměti procesu
 
-1. Stáhněte [nástroj Procdump](http://download.sysinternals.com/files/Procdump.zip) do nového nebo existujícího datového disku, který je připojený k fungujícímu virtuálnímu počítače ze stejné oblasti.
+1. Stáhněte si [Nástroj ProcDump](http://download.sysinternals.com/files/Procdump.zip) do nového nebo existujícího datového disku, který je připojený k PRACOVNÍmu virtuálnímu počítači ze stejné oblasti.
 
-2. Odpojte disk obsahující soubory potřebné z funkčního virtuálního počítače a připojte disk k poškozenému virtuálnímu počítači. Voláme tento disk **Utility disk**.
+2. Odpojte disk obsahující soubory potřebné z pracovního virtuálního počítače a připojte tento disk k poškozenému VIRTUÁLNÍmu počítači. Tento disk voláme na **disk s nástrojem**.
 
-Pomocí [konzoly Serial Console](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-windows) proveďte následující kroky:
+Pomocí [konzoly sériového portu](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-windows) proveďte následující kroky:
 
-1. Otevřete prostředí Powershell pro správu a zkontrolujte službu, která je zavěšena při zastavení.
+1. Otevřete modul PowerShell pro správu a ověřte, jestli služba při zastavování neodpovídá.
 
    ``
    Get-Service | Where-Object {$_.Status -eq "STOP_PENDING"}
    ``
 
-2. Na administrativní CMD, získat PID zavěšené služby.
+2. V nástroji pro správu nástroje se Získejte PID nereagující služby.
 
    ``
    tasklist /svc | findstr /i <STOPING SERVICE>
    ``
 
-3. Získejte vzorek výpisu stavu <STOPPING SERVICE>paměti z procesu zavěšení .
+3. Získejte ukázku výpisu paměti z procesu s nezpracovanými <STOPPING SERVICE>.
 
    ``
    procdump.exe -s 5 -n 3 -ma <PID>
    ``
 
-4. Nyní zabít zavěšený proces odemknout proces vypnutí.
+4. Nyní ukončete proces nastavování, aby se proces vypnutí odemkl.
 
    ``
    taskkill /PID <PID> /t /f
    ``
 
-Jakmile operační spouštěč začne znovu, pokud se boty normálně, pak jen zajistit konzistence operačního serveru je v pořádku. Pokud je hlášeno poškození, spusťte následující příkaz, dokud není disk bez poškození:
+Po opětovném spuštění operačního systému, pokud se spustí normálně, stačí, abyste zajistili konzistenci OS v pořádku. Pokud je oznámeno poškození, spusťte následující příkaz, dokud disk nedosáhne poškozeného:
 
 ``
 dism /online /cleanup-image /restorehealth
 ``
 
-Pokud se vám nedaří shromáždit výpis stavu paměti procesu nebo tento problém je rekurzivní a vyžadujete analýzu hlavní příčiny, pokračujte ve shromažďování výpisu stavu paměti operačního systému níže, pokračujte k otevření žádosti o podporu.
+Pokud nemůžete shromáždit výpis paměti procesu, nebo je tento problém rekurzivní a vyžadujete analýzu původní příčiny, pokračujte v shromažďování výpisu paměti operačního systému níže, přejděte k otevření žádosti o podporu.
 
-### <a name="collect-an-os-memory-dump"></a>Shromáždění výpisu stavu paměti operačního systému
+### <a name="collect-an-os-memory-dump"></a>Shromažďování výpisu paměti operačního systému
 
-Pokud se problém nevyřeší po čekání na změny procesu, budete muset shromáždit soubor s výpisem stavu paměti a podporu kontaktu. Chcete-li soubor s výpisem stavu paměti shromáždit, postupujte takto:
+Pokud se problém nevyřeší po čekání na zpracování změn, budete potřebovat shromáždit soubor s výpisem paměti a kontaktovat podporu. Chcete-li shromáždit soubor s výpisem paměti, postupujte podle následujících kroků:
 
-**Připojení disku operačního systému k virtuálnímu virtuálnímu počítače pro obnovení**
+**Připojení disku s operačním systémem k virtuálnímu počítači pro obnovení**
 
-1. Pořiďte snímek disku operačního systému ovlivněného virtuálního počítače jako zálohu. Další informace naleznete [v tématu Snímek disku](https://docs.microsoft.com/azure/virtual-machines/windows/snapshot-copy-managed-disk).
+1. Pořídit snímek disku s operačním systémem ovlivněného virtuálního počítače jako zálohy. Další informace najdete v tématu [vytvoření snímku disku](https://docs.microsoft.com/azure/virtual-machines/windows/snapshot-copy-managed-disk).
 
-2. [Připojte disk operačního systému k virtuálnímu virtuálnímu počítače pro obnovení](https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-recovery-disks-portal).
+2. [Připojte disk s operačním systémem k virtuálnímu počítači pro obnovení](https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-recovery-disks-portal).
 
-3. Vzdálená plocha k virtuálnímu počítači pro obnovení.
+3. Vzdálená plocha do virtuálního počítače pro obnovení.
 
-4. Pokud je disk operačního systému zašifrován, musíte před přechodem k dalšímu kroku šifrování vypnout. Další informace naleznete [v tématu Dešifrování šifrovaného disku operačního systému ve virtuálním počítače, který nelze spustit](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-bitlocker-boot-error#solution).
+4. Pokud je disk s operačním systémem zašifrovaný, musíte před přechodem k dalšímu kroku vypnout šifrování. Další informace najdete v tématu [dešifrujte zašifrovaný disk s operačním systémem ve virtuálním počítači, který se nedá spustit](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-bitlocker-boot-error#solution).
 
-**Vyhledání souboru s výpisem stavu paměti a odeslání lístku podpory**
+**Vyhledat soubor s výpisem paměti a odeslat lístek podpory**
 
-1. Na virtuálním počítači pro obnovení přejděte do složky Windows na připojeném disku operačního systému. Pokud je písmeno ovladače přiřazené k připojenému disku operačního systému F, musíte přejít na f:\Windows.
+1. Na virtuálním počítači pro obnovení otevřete složku Windows na připojeném disku s operačním systémem. Pokud je písmeno přiřazené k připojenému disku s operačním systémem F, je nutné přejít na F:\Windows.
 
-2. Vyhledejte soubor memory.dmp a [odešlete lístek podpory](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) se souborem s výpisem stavu paměti.
+2. Vyhledejte soubor Memory. dmp a pak [odešlete lístek podpory](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) se souborem s výpisem paměti.
 
-Pokud nemůžete najít soubor s výpisem stavu paměti, přesuňte další krok a povolte protokol výpisu a konzolu Serial Console.
+Pokud soubor s výpisem paměti nemůžete najít, přejděte k dalšímu kroku a Povolte protokol výpisu a sériovou konzolu.
 
-**Povolení protokolu výpisu a sériové konzoly**
+**Povolit protokol výpisu paměti a sériová konzola**
 
-Chcete-li povolit protokol s výpisem stavu paměti a konzolu Serial Console, spusťte následující skript.
+Pokud chcete povolit protokol výpisu a sériovou konzolu, spusťte následující skript.
 
-1. Otevřete relaci příkazu Se zvýšenými oprávněními (Spustit jako správce).
+1. Otevřete relaci příkazového řádku se zvýšenými oprávněními (Spustit jako správce).
 
 2. Spusťte tento skript:
 
-   V tomto skriptu předpokládáme, že písmeno jednotky, které je přiřazeno k připojenému disku operačního systému, je F. Nahraďte ho příslušnou hodnotou ve vašem virtuálním počítači.
+   V tomto skriptu předpokládáme, že písmeno jednotky přiřazené k připojenému disku s operačním systémem je F. nahraďte ho příslušnou hodnotou ve vašem VIRTUÁLNÍm počítači.
 
    ```
    reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
@@ -129,9 +129,9 @@ Chcete-li povolit protokol s výpisem stavu paměti a konzolu Serial Console, sp
    reg unload HKLM\BROKENSYSTEM
    ```
 
-3. Ověřte, zda je na disku dostatek místa pro přidělení tolik paměti jako ram, což závisí na velikosti, kterou vybíráte pro tento virtuální počítač.
+3. Ověřte, zda je na disku dostatek místa pro přidělení tolika paměti jako paměti RAM, což závisí na velikosti, kterou vybíráte pro tento virtuální počítač.
 
-4. Pokud není dostatek místa nebo je velký virtuální modul (řada G, GS nebo E), můžete změnit umístění, kde bude tento soubor vytvořen, a odkazovat na jakýkoli jiný datový disk, který je připojený k virtuálnímu počítače. Chcete-li změnit umístění, je nutné změnit následující klíč:
+4. Pokud není dostatek místa nebo je virtuální počítač velký (G, GS nebo E-series), můžete změnit umístění, kde bude tento soubor vytvořen, a odkazovat na jakýkoli jiný datový disk, který je připojen k virtuálnímu počítači. Chcete-li změnit umístění, je nutné změnit následující klíč:
 
    ```
    reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
@@ -142,16 +142,16 @@ Chcete-li povolit protokol s výpisem stavu paměti a konzolu Serial Console, sp
    reg unload HKLM\BROKENSYSTEM
    ```
 
-5. [Odpojte disk operačního systému a potom znovu připojte disk operačního systému k ovlivněnému virtuálnímu počítače](https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-recovery-disks-portal).
+5. [Odpojte disk s operačním systémem a pak znovu připojte disk s operačním systémem k ovlivněnému virtuálnímu počítači](https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-recovery-disks-portal).
 
-6. Spusťte virtuální ho spouštěč a získejte přístup k konzole Serial Console.
+6. Spusťte virtuální počítač a otevřete konzolu sériového portu.
 
-7. Chcete-li aktivovat výpis stavu paměti, vyberte možnost Odeslat nemaskovatelné přerušení (NMI).
+7. Chcete-li aktivovat výpis paměti, vyberte možnost Odeslat nemaskovatelné přerušení (NMI).
 
-   ![Odeslat nemaskovatelné přerušení](./media/boot-error-troubleshooting-windows/send-nonmaskable-interrupt.png)
+   ![Odeslat nemaskované přerušení](./media/boot-error-troubleshooting-windows/send-nonmaskable-interrupt.png)
 
-8. Připojte disk operačního systému k virtuálnímu virtuálnímu počítače pro obnovení znovu, shromažďovat soubor s výpisem stavu paměti.
+8. Znovu připojte disk s operačním systémem k virtuálnímu počítači pro obnovení, shromážděte soubor výpisu paměti.
 
 ## <a name="contact-microsoft-support"></a>Obraťte se na podporu Microsoftu
 
-Po shromáždění souboru s výpisem stavu paměti se obraťte na podporu společnosti Microsoft a zjistěte hlavní příčinu.
+Po shromáždění souboru s výpisem paměti kontaktujte podporu Microsoftu, abyste zjistili hlavní příčinu.

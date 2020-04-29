@@ -1,64 +1,64 @@
 ---
-title: Ovládací prvky zabezpečení pro škálovací sady virtuálních strojů Azure
-description: Kontrolní seznam ovládacích prvků zabezpečení pro vyhodnocení škálovacích sad virtuálních strojů Azure
+title: Řízení zabezpečení pro Azure Virtual Machine Scale Sets
+description: Kontrolní seznam ovládacích prvků zabezpečení pro vyhodnocení Virtual Machine Scale Sets Azure
 ms.service: virtual-machine-scale-sets
 author: msmbaldwin
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 4007f4adeee065fe32492d3bd16f3a06d24e7d96
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77190610"
 ---
-# <a name="security-controls-for-azure-virtual-machine-scale-sets"></a>Ovládací prvky zabezpečení pro škálovací sady virtuálních strojů Azure
+# <a name="security-controls-for-azure-virtual-machine-scale-sets"></a>Řízení zabezpečení pro Azure Virtual Machine Scale Sets
 
-Tento článek dokumentuje ovládací prvky zabezpečení integrované do škálovacích sad virtuálních strojů Azure.
+Tento článek popisuje ovládací prvky zabezpečení integrované do Azure Virtual Machine Scale Sets.
 
 [!INCLUDE [Security controls header](../../includes/security-controls-header.md)]
 
-## <a name="network"></a>Network (Síť)
+## <a name="network"></a>Síť
 
-| Ovládací prvek zabezpečení | Ano/Ne | Poznámky |
+| Řízení zabezpečení | Ano/Ne | Poznámky |
 |---|---|--|
 | Podpora koncového bodu služby| Ano | |
-| Podpora vstřikování virtuální sítě| Ano | |
-| Podpora izolace sítě a brány firewall| Ano |  |
-| Podpora vynuceného tunelování| Ano | Viz [Konfigurace vynuceného tunelového propojení pomocí modelu nasazení Azure Resource Manageru](/azure/vpn-gateway/vpn-gateway-forced-tunneling-rm). |
+| Podpora vkládání virtuální sítě| Ano | |
+| Izolace sítě a podpora brány firewall| Ano |  |
+| Podpora vynuceného tunelování| Ano | Další informace najdete v tématu [Konfigurace vynuceného tunelování pomocí modelu nasazení Azure Resource Manager](/azure/vpn-gateway/vpn-gateway-forced-tunneling-rm). |
 
-## <a name="monitoring--logging"></a>Sledování & protokolování
+## <a name="monitoring--logging"></a>Monitorování protokolování &
 
-| Ovládací prvek zabezpečení | Ano/Ne | Poznámky|
+| Řízení zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
-| Podpora monitorování Azure (analýza protokolů, přehledy aplikací atd.)| Ano | Viz [Sledování a aktualizace virtuálního počítače SIP v Azure](/azure/virtual-machines/linux/tutorial-monitoring) a Monitorování a aktualizace [virtuálního počítače s Windows v Azure](/azure/virtual-machines/windows/tutorial-monitoring). |
+| Podpora monitorování Azure (Log Analytics, App Insights atd.)| Ano | Podívejte se na téma [monitorování a aktualizace virtuálního počítače se systémem Linux v Azure](/azure/virtual-machines/linux/tutorial-monitoring) a [monitorování a aktualizace virtuálního počítače s Windows v Azure](/azure/virtual-machines/windows/tutorial-monitoring). |
 | Protokolování a audit roviny řízení a správy| Ano |  |
 | Protokolování a audit roviny dat | Ne |  |
 
 ## <a name="identity"></a>Identita
 
-| Ovládací prvek zabezpečení | Ano/Ne | Poznámky|
+| Řízení zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
-| Ověřování| Ano |  |
+| Authentication| Ano |  |
 | Autorizace| Ano |  |
 
 ## <a name="data-protection"></a>Ochrana dat
 
-| Ovládací prvek zabezpečení | Ano/Ne | Poznámky |
+| Řízení zabezpečení | Ano/Ne | Poznámky |
 |---|---|--|
-| Šifrování na straně serveru v klidovém stavu: Klíče spravované společností Microsoft | Ano | Viz [Azure Disk Encryption for Virtual Machine Scale Sets](disk-encryption-overview.md). |
-| Šifrování při přenosu (například šifrování ExpressRoute, šifrování ve virtuální síti a šifrování virtuální sítě)| Ano | Virtuální počítače Azure podporují šifrování [ExpressRoute](/azure/expressroute) a Virtuální sítě. Viz [Šifrování na cestě ve virtuálních discích](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms). |
-| Šifrování na straně serveru v klidovém stavu: klíče spravované zákazníkem (BYOK) | Ano | Klíče spravované zákazníkem je podporovaný scénář šifrování Azure; Viz [Šifrování disku Azure pro škálovací sady virtuálních počítačů](disk-encryption-overview.md)|
-| Šifrování na úrovni sloupců (Azure Data Services)| Není dostupné. | |
-| Zašifrovaná volání rozhraní API| Ano | Prostřednictvím protokolů HTTPS a TLS. |
+| Šifrování na straně serveru v klidovém umístění: klíče spravované společností Microsoft | Ano | Virtual Machine Scale Sets najdete v tématu [Azure Disk Encryption](disk-encryption-overview.md). |
+| Šifrování při přenosu (například šifrování ExpressRoute, šifrování virtuální sítě a šifrování virtuální sítě)| Ano | Azure Virtual Machines podporuje šifrování [ExpressRoute](/azure/expressroute) a virtuální sítě. Viz [šifrování v přenosech na virtuálních počítačích](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms). |
+| Šifrování na straně serveru v klidovém umístění: klíče spravované zákazníkem (BYOK) | Ano | Klíče spravované zákazníkem jsou podporovaným scénářem šifrování Azure; Viz téma [Azure Disk Encryption Virtual Machine Scale Sets](disk-encryption-overview.md)|
+| Šifrování na úrovni sloupce (Azure Data Services)| – | |
+| Zašifrovaná volání rozhraní API| Ano | Přes HTTPS a TLS. |
 
 ## <a name="configuration-management"></a>Správa konfigurace
 
-| Ovládací prvek zabezpečení | Ano/Ne | Poznámky|
+| Řízení zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
-| Podpora správy konfigurace (správa verzí konfigurace atd.)| Ano |  | 
+| Podpora správy konfigurace (Správa verzí konfigurace atd.)| Ano |  | 
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si další informace o [integrovaných ovládacích prvcích zabezpečení napříč službami Azure](../security/fundamentals/security-controls.md).
+- Přečtěte si další informace o [integrovaných kontrolních prvcích zabezpečení napříč službami Azure](../security/fundamentals/security-controls.md).

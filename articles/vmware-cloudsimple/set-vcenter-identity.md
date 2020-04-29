@@ -1,6 +1,6 @@
 ---
-title: Řešení Azure VMware od CloudSimple – nastavení zdrojů identit y vCenter v privátním cloudu
-description: Popisuje, jak nastavit vcenter Pricloud pro ověřování pomocí služby Active Directory pro správce vMware pro přístup k programu vCenter.
+title: Řešení Azure VMware podle CloudSimple – nastavení zdrojů vCenter identity v privátním cloudu
+description: Popisuje, jak nastavit privátní cloud vCenter pro ověřování pomocí služby Active Directory pro správce VMware pro přístup k serveru vCenter.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/15/2019
@@ -9,65 +9,65 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 5355e43ca6ac075e76a76ceb51be135cf4b62b0a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77564019"
 ---
-# <a name="set-up-vcenter-identity-sources-to-use-active-directory"></a>Nastavení zdrojů identit vCenter pro použití služby Active Directory
+# <a name="set-up-vcenter-identity-sources-to-use-active-directory"></a>Nastavení zdrojů identity vCenter pro používání služby Active Directory
 
-## <a name="about-vmware-vcenter-identity-sources"></a>O zdrojích identit vCenter vMware
+## <a name="about-vmware-vcenter-identity-sources"></a>O zdrojích identity VMware vCenter
 
-VMware vCenter podporuje různé zdroje identit pro ověřování uživatelů, kteří přistupují k programu vCenter.  VCenter CloudSimple Private Cloud lze nastavit tak, aby se ověřovali pomocí služby Active Directory, aby správci společnosti VMware měli přístup k programu vCenter. Po dokončení instalace může uživatel **cloudu** přidat uživatele ze zdroje identity do aplikace vCenter.  
+VMware vCenter podporuje různé zdroje identity pro ověřování uživatelů, kteří přistupují k vCenter.  Váš CloudSimple privátní cloud vCenter se dá nastavit tak, aby se pro správce VMware nastavila ověřování se službou Active Directory pro přístup k serveru vCenter. Po dokončení instalace může uživatel **cloudowner** přidat uživatele ze zdroje identity do vCenter.  
 
-Doménu a řadiče domény služby Active Directory můžete nastavit libovolným z následujících způsobů:
+Doménu a řadiče domény služby Active Directory můžete nastavit některým z těchto způsobů:
 
-* Místní řadiče domény a domény služby Active Directory
-* Domény a řadiče domény služby Active Directory spuštěné v Azure jako virtuální počítače ve vašem předplatném Azure
-* Nová doména a řadiče domény služby Active Directory spuštěné v privátním cloudu
+* Doména a řadiče domény služby Active Directory místně spuštěné
+* Doména a řadiče domény služby Active Directory běžící na Azure jako virtuální počítače ve vašem předplatném Azure
+* Nová doména a řadiče domény služby Active Directory běžící v privátním cloudu
 * Služba Azure Active Directory
 
-Tato příručka vysvětluje úkoly pro nastavení domény služby Active Directory a řadičů domény spuštěných v místním prostředí nebo jako virtuálnípočítače ve vašich předplatných.  Pokud chcete použít Azure AD jako zdroj identity, najdete v části [Použití Azure AD jako zprostředkovatele identity pro vCenter na CloudSimple Private Cloud](azure-ad.md) pro podrobné pokyny při nastavování zdroje identity.
+V této příručce se dozvíte, jak nastavit doménu a řadiče domény služby Active Directory, které jsou spuštěné místně nebo jako virtuální počítače ve vašich předplatných.  Pokud chcete jako zdroj identity použít Azure AD, přečtěte si téma [použití Azure AD jako zprostředkovatele identity pro vCenter v CloudSimple privátním cloudu](azure-ad.md) , kde najdete podrobné pokyny k nastavení zdroje identity.
 
-Před [přidáním zdroje identity](#add-an-identity-source-on-vcenter)dočasně [eskalujte oprávnění programu vCenter](escalate-private-cloud-privileges.md).
+Před [přidáním zdroje identity](#add-an-identity-source-on-vcenter)dočasně předávejte [oprávnění vCenter](escalate-private-cloud-privileges.md).
 
 > [!CAUTION]
-> Noví uživatelé musí být přidáni pouze do *skupiny Cloud-Owner-Group*, *Cloud-Global-Cluster-Admin-Group*, *Cloud-Global-Storage-Admin-Group*, *Cloud-Global-Network-Admin-Group* *nebo, Cloud-Global-VM-Admin-Group*.  Uživatelé připřidání do *skupiny Administrators* budou automaticky odebráni.  K přihlášení k webovému uživatelskému rozhraní vSphere je nutné přidat pouze účty služeb a účty služeb *administrators* a účty služeb.   
+> Noví uživatelé musí být přidáni pouze *ke skupině*Cloud-Owner-Group *-Global-cluster-admin-Group*, *Cloud-Global-Storage-admin-Group*, *Cloud-Global-Network-admin* -Group nebo, *Cloud-Global-VM-admin-Group*.  Uživatelé přidaní do skupiny *správců* se automaticky odeberou.  Pouze účty služeb musí být přidány do skupiny *Administrators* a účty služeb nesmí být použity pro přihlášení k WEBOVÉmu uživatelskému rozhraní vSphere.   
 
 
 ## <a name="identity-source-options"></a>Možnosti zdroje identity
 
-* [Přidání místní služby Active Directory jako zdroje identity jednotného přihlášení](#add-on-premises-active-directory-as-a-single-sign-on-identity-source)
+* [Přidání místní služby Active Directory jako zdroje identity jednotného přihlašování](#add-on-premises-active-directory-as-a-single-sign-on-identity-source)
 * [Nastavení nové služby Active Directory v privátním cloudu](#set-up-new-active-directory-on-a-private-cloud)
 * [Nastavení služby Active Directory v Azure](#set-up-active-directory-on-azure)
 
-## <a name="add-on-premises-active-directory-as-a-single-sign-on-identity-source"></a>Přidání místního služby Active Directory jako zdroje identity jednotného přihlášení
+## <a name="add-on-premises-active-directory-as-a-single-sign-on-identity-source"></a>Přidání místní služby Active Directory jako zdroje identity jednotného přihlašování
 
-Chcete-li nastavit místní službu Active Directory jako zdroj identity jednotného přihlášení, potřebujete:
+Pokud chcete nastavit místní službu Active Directory jako zdroj identity jednotného přihlašování, budete potřebovat:
 
-* [Připojení VPN site-to-Site](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway) z místního datového centra do privátního cloudu.
-* Místní IP adresa serveru DNS byla přidána do řadiče vCenter a platformových služeb (PSC).
+* [Připojení VPN typu Site-to-site](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway) z místního datacentra do privátního cloudu.
+* IP adresa místního serveru DNS přidaná do vCenter a řadiče služeb platformy (PSC).
 
 Při nastavování domény služby Active Directory použijte informace v následující tabulce.
 
 | **Možnost** | **Popis** |
 |------------|-----------------|
-| **Název** | Název zdroje identity. |
-| **Základní DN pro uživatele** | Základní rozlišující název pro uživatele. |
-| **Název domény** | Například example.com. Do tohoto textového pole nezadejte adresu IP. |
-| **Alias domény** | Název netbios domény. Pokud používáte ověřování SSPI, přidejte název netbios domény služby Active Directory jako alias zdroje identity. |
-| **Základní DN pro skupiny** | Základní rozlišující název pro skupiny. |
-| **Adresa URL primárního serveru** | Primární server LDAP řadiče domény pro doménu.<br><br>Použijte formát `ldap://hostname:port`  `ldaps://hostname:port`nebo . Port je obvykle 389 pro připojení LDAP a 636 pro připojení LDAPS. Pro nasazení řadičů s více doménami služby Active Directory je port obvykle 3268 pro ldap a 3269 pro LDAPS.<br><br>Při použití `ldaps://` v primární nebo sekundární adrese URL LDAP je vyžadován certifikát, který vytváří vztah důvěryhodnosti pro koncový bod LDAPS serveru Active Directory. |
-| **Adresa URL sekundárního serveru** | Adresa sekundárního serveru LDAP řadiče domény, který se používá pro převzetí služeb při selhání. |
-| **Zvolte certifikát** | Chcete-li používat protokol LDAPS se serverem LDAP služby Active Directory nebo zdrojem `ldaps://` identity serveru OpenLDAP Server, zobrazí se po zadání textového pole URL tlačítko Zvolit certifikát. Sekundární adresa URL není vyžadována. |
-| **Username** | ID uživatele v doméně, který má minimální přístup jen pro čtení k základní dn pro uživatele a skupiny. |
-| **Heslo** | Heslo uživatele, které je určeno uživatelským jménem. |
+| **Název** | Název zdroje identity |
+| **Základní rozlišující název pro uživatele** | Základní rozlišující název pro uživatele |
+| **Název domény** | Plně kvalifikovaný název domény pro doménu, například example.com. V tomto textovém poli nezadávejte IP adresu. |
+| **Alias domény** | Název domény pro rozhraní NetBIOS. Pokud používáte ověřování pomocí rozhraní SSPI, přidejte název domény služby Active Directory jako alias zdroje identity. |
+| **Základní rozlišující název pro skupiny** | Základní rozlišující název pro skupiny |
+| **Adresa URL primárního serveru** | Server LDAP primárního řadiče domény pro doménu.<br><br>Použijte formát `ldap://hostname:port` nebo `ldaps://hostname:port`. Port je obvykle 389 pro připojení LDAP a 636 pro připojení LDAPs. Pro nasazení služby Active Directory Multi-Domain Controller je port obvykle 3268 pro LDAP a 3269 pro LDAPs.<br><br>Certifikát, který vytváří vztah důvěryhodnosti pro koncový bod LDAPS serveru Active Directory, se vyžaduje při použití `ldaps://` v primární nebo sekundární adrese URL protokolu LDAP. |
+| **Adresa URL sekundárního serveru** | Adresa serveru LDAP sekundárního řadiče domény, který se používá pro převzetí služeb při selhání. |
+| **Zvolit certifikát** | Pokud chcete použít LDAPS se serverem služby Active Directory LDAP nebo zdrojem identity serveru OpenLDAP, zobrazí se po zadání `ldaps://` v textovém poli Adresa URL tlačítko zvolit certifikát. Sekundární adresa URL není povinná. |
+| **Jmen** | ID uživatele v doméně, který má minimální přístup jen pro čtení k základnímu rozlišujícímu názvu pro uživatele a skupiny. |
+| **Heslo** | Heslo uživatele, který je určen uživatelským jménem. |
 
-Pokud máte informace v předchozí tabulce, můžete přidat místní službu Active Directory jako zdroj identity jednotného přihlášení do aplikace vCenter.
+Pokud máte informace v předchozí tabulce, můžete do vCenter přidat místní službu Active Directory jako zdroj identity jednotného přihlašování.
 
 > [!TIP]
-> Další informace o zdrojích identity jednotného přihlašování najdete na [stránce dokumentace společnosti VMware](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.psc.doc/GUID-B23B1360-8838-4FF2-B074-71643C4CB040.html).
+> Další informace o zdrojích identity jednotného přihlašování najdete na [stránce dokumentace k VMware](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.psc.doc/GUID-B23B1360-8838-4FF2-B074-71643C4CB040.html).
 
 ## <a name="set-up-new-active-directory-on-a-private-cloud"></a>Nastavení nové služby Active Directory v privátním cloudu
 
@@ -75,59 +75,59 @@ V privátním cloudu můžete nastavit novou doménu služby Active Directory a 
 
 ### <a name="new-active-directory-forest-and-domain"></a>Nová doménová struktura a doména služby Active Directory
 
-Chcete-li nastavit novou doménovou strukturu a doménu služby Active Directory, potřebujete:
+K nastavení nové doménové struktury a domény služby Active Directory potřebujete:
 
-* Jeden nebo více virtuálních počítačů se systémem Microsoft Windows Server, které lze použít jako řadiče domény pro novou doménovou strukturu a doménu služby Active Directory.
+* Jeden nebo více virtuálních počítačů se systémem Microsoft Windows Server, které se mají použít jako řadiče domény pro novou doménovou strukturu a doménu služby Active Directory.
 * Jeden nebo více virtuálních počítačů se službou DNS pro překlad názvů.
 
-Podrobné kroky naleznete [v tématu Instalace nové doménové struktury služby Active Directory systému Windows Server 2012.](https://docs.microsoft.com/windows-server/identity/ad-ds/deploy/install-a-new-windows-server-2012-active-directory-forest--level-200-)
+Podrobné pokyny najdete v tématu [instalace nové doménové struktury služby Active Directory systému Windows Server 2012](https://docs.microsoft.com/windows-server/identity/ad-ds/deploy/install-a-new-windows-server-2012-active-directory-forest--level-200-) .
 
 > [!TIP]
-> Pro vysokou dostupnost služeb doporučujeme nastavit více řadičů domény a serverů DNS.
+> Pro zajištění vysoké dostupnosti služeb doporučujeme nastavit několik řadičů domény a serverů DNS.
 
-Po nastavení doménové struktury a domény služby Active Directory můžete [přidat zdroj identity do programu vCenter](#add-an-identity-source-on-vcenter) pro novou službu Active Directory.
+Po nastavení doménové struktury a domény služby Active Directory můžete do [vCenter přidat zdroj identity](#add-an-identity-source-on-vcenter) pro novou službu Active Directory.
 
 ### <a name="new-active-directory-domain-in-an-existing-active-directory-forest"></a>Nová doména služby Active Directory v existující doménové struktuře služby Active Directory
 
-Chcete-li nastavit novou doménu služby Active Directory v existující doménové struktuře služby Active Directory, potřebujete:
+Chcete-li nastavit novou doménu služby Active Directory v existující doménové struktuře služby Active Directory, budete potřebovat:
 
-* Připojení VPN mezi lokalitami k umístění doménové struktury služby Active Directory.
-* Server DNS, chcete-li přeložit název existující doménové struktury služby Active Directory.
+* Připojení VPN typu Site-to-site k umístění doménové struktury služby Active Directory.
+* Server DNS pro překlad názvu vaší existující doménové struktury služby Active Directory.
 
-Podrobné kroky naleznete [v tématu Instalace nové podřízené nebo stromové domény služby Active Directory ve windowsserveru 2012.](https://docs.microsoft.com/windows-server/identity/ad-ds/deploy/install-a-new-windows-server-2012-active-directory-child-or-tree-domain--level-200-)
+Podrobné pokyny najdete v tématu [instalace nové podřízené domény nebo domény stromové struktury služby Active Directory systému Windows Server 2012](https://docs.microsoft.com/windows-server/identity/ad-ds/deploy/install-a-new-windows-server-2012-active-directory-child-or-tree-domain--level-200-) .
 
-Po nastavení domény služby Active Directory můžete [přidat zdroj identity do programu vCenter](#add-an-identity-source-on-vcenter) pro novou službu Active Directory.
+Po nastavení domény služby Active Directory můžete do [vCenter přidat zdroj identity](#add-an-identity-source-on-vcenter) pro novou službu Active Directory.
 
 ## <a name="set-up-active-directory-on-azure"></a>Nastavení služby Active Directory v Azure
 
-Služba Active Directory spuštěná v Azure je podobná službě Active Directory, která běží místně.  Chcete-li nastavit službu Active Directory spuštěnou v Azure jako zdroj identity jednotného přihlášení v centru vCenter, musí mít server vCenter a PSC síťové připojení k virtuální síti Azure, kde jsou spuštěny služby Active Directory.  Toto připojení můžete vytvořit pomocí [připojení virtuální sítě Azure pomocí ExpressRoute](azure-expressroute-connection.md) z virtuální sítě Azure, kde služby Active Directory běží do cloudového privátního cloudu.
+Služba Active Directory běžící v Azure je podobná službě Active Directory běžící v místním prostředí.  K nastavení služby Active Directory běžící v Azure jako zdroje identity jednotného přihlašování na vCenter musí mít vCenter Server a PSC připojení k síti Azure Virtual Network, kde jsou spuštěné služby Active Directory.  Toto připojení můžete vytvořit pomocí [azure Virtual Networkho připojení pomocí služby ExpressRoute](azure-expressroute-connection.md) z Azure Virtual Network, kde jsou spuštěné služby Active Directory pro CloudSimple privátní cloud.
 
-Po navázání síťového připojení postupujte podle pokynů v [části Přidání místní ho služby Active Directory jako zdroje identity jednotného přihlášení](#add-on-premises-active-directory-as-a-single-sign-on-identity-source) a přidejte jej jako zdroj identity.  
+Po navázání síťového připojení použijte postup v části [Přidání místní služby Active Directory jako zdroje identity jednotného přihlašování](#add-on-premises-active-directory-as-a-single-sign-on-identity-source) a přidejte ho jako zdroj identity.  
 
-## <a name="add-an-identity-source-on-vcenter"></a>Přidání zdroje identity do aplikace vCenter
+## <a name="add-an-identity-source-on-vcenter"></a>Přidání zdroje identity na vCenter
 
-1. [Eskalovat oprávnění](escalate-private-cloud-privileges.md) ve vašem privátním cloudu.
+1. [Eskalace oprávnění](escalate-private-cloud-privileges.md) ve vašem privátním cloudu.
 
-2. Přihlaste se do virtuálního centra pro svůj privátní cloud.
+2. Přihlaste se k vCenter pro váš privátní cloud.
 
-3. Vyberte **možnost Správa domácí>**.
+3. Vyberte možnost **domovská > Správa**.
 
     ![Správa](media/OnPremAD01.png)
 
-4. Vyberte **možnost Jednotné přihlášení > konfigurace**.
+4. Vyberte **konfiguraci jednotného přihlašování >**.
 
     ![Jednotné přihlašování](media/OnPremAD02.png)
 
-5. Otevřete kartu **Zdroje identity** a kliknutím **+** přidáte nový zdroj identity.
+5. Otevřete kartu **zdroje identit** a kliknutím **+** přidejte nový zdroj identity.
 
     ![Zdroje identity](media/OnPremAD03.png)
 
-6. Vyberte **službu Active Directory jako server LDAP** a klepněte na tlačítko **Další**.
+6. Vyberte **Active Directory jako server LDAP** a klikněte na **Další**.
 
     ![Active Directory](media/OnPremAD04.png)
 
-7. Zadejte parametry zdroje identity pro vaše prostředí a klepněte na tlačítko **Další**.
+7. Zadejte zdrojové parametry identity pro vaše prostředí a klikněte na **Další**.
 
     ![Active Directory](media/OnPremAD05.png)
 
-8. Zkontrolujte nastavení a klepněte na tlačítko **Dokončit**.
+8. Zkontrolujte nastavení a klikněte na **Dokončit**.

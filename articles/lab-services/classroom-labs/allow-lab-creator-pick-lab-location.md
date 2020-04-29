@@ -1,6 +1,6 @@
 ---
-title: Povolit tvůrci testovacího prostředí vybrat umístění ve službě Azure Lab Services
-description: Tento článek popisuje, jak správce účtu testovacího prostředí může povolit tvůrcům testovacího prostředí výběr umístění pro jejich testovací prostředí.
+title: Umožňuje tvůrci testovacího prostředí vybrat umístění v Azure Lab Services
+description: Tento článek popisuje, jak může správce účtu testovacího prostředí dovolit tvůrcům testovacího prostředí vybrat umístění pro své laboratoře.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -14,67 +14,67 @@ ms.topic: article
 ms.date: 02/14/2020
 ms.author: spelluru
 ms.openlocfilehash: 52d5628698d1f945a7f672595ee7ce4739b6d13c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77444362"
 ---
-# <a name="allow-lab-creator-to-pick-location-for-the-lab-in-azure-lab-services"></a>Povolit tvůrci testovacího prostředí vybrat umístění pro testovací prostředí ve službě Azure Lab Services
-Ve službě Azure Lab Services může vlastník účtu testovacího prostředí povolit tvůrcům testovacího prostředí (pedagogům) vybrat umístění pro testovací prostředí, které vytvoří. Toto umístění se může lišit od umístění účtu testovacího prostředí. Umístění je skupina oblastí Azure. Například umístění ve Spojených státech je skupina oblastí, jako je například východní USA, západní USA a tak dále. 
+# <a name="allow-lab-creator-to-pick-location-for-the-lab-in-azure-lab-services"></a>Umožňuje tvůrci testovacího prostředí vybrat umístění pro testovací prostředí v Azure Lab Services
+V Azure Lab Services může vlastník účtu testovacího prostředí dovolit tvůrcům testovacího prostředí (pedagogům) vybrat umístění pro testovací prostředí, které vytvoří. Toto umístění se může lišit od umístění účtu testovacího prostředí. Umístění je skupina oblastí Azure. Například umístění USA je skupina oblastí, například Východní USA, Západní USA a tak dále. 
 
-Vy, jako vlastník účtu testovacího prostředí, můžete vybrat **možnost Povolit tvůrce testovacího prostředí vybrat umístění testovacího prostředí** možnost při vytváření účtu testovacího prostředí a po vytvoření účtu testovacího prostředí (nebo existující účet testovacího prostředí). 
+Jako vlastník účtu testovacího prostředí můžete při vytváření účtu testovacího prostředí a po vytvoření účtu testovacího prostředí (nebo existujícího účtu testovacího prostředí) vybrat možnost zvolit **umístění testovacího** prostředí. 
 
-## <a name="at-the-time-of-lab-account-creation"></a>V době vytvoření účtu laboratoře
-Při vytváření účtu testovacího prostředí se tato možnost zobrazí na první obrazovce (karta**Základy).** 
+## <a name="at-the-time-of-lab-account-creation"></a>V době vytváření účtu testovacího prostředí
+Když vytvoříte účet testovacího prostředí, zobrazí se na první obrazovce (karta**základy** ) Tato možnost. 
 
-![Povolit tuto možnost v době vytvoření testovacího prostředí](../media/allow-lab-creator-pick-lab-location/create-lab-account.png)
+![Povolit možnost v době vytváření testovacího prostředí](../media/allow-lab-creator-pick-lab-location/create-lab-account.png)
 
-Tato možnost je zakázána, pokud vyberete partnerskou virtuální síť pro váš účet testovacího prostředí na kartě **Upřesnit.**  
+Tato možnost je zakázaná, pokud vyberete partnerský virtuální síť pro svůj účet testovacího prostředí na kartě **Upřesnit** .  
 
-![Když je povolena virtuální síť peer](../media/allow-lab-creator-pick-lab-location/peer-virtual-network.png)
+![Když je povolena rovnocenná virtuální síť](../media/allow-lab-creator-pick-lab-location/peer-virtual-network.png)
 
 
 ## <a name="after-the-lab-account-is-created"></a>Po vytvoření účtu testovacího prostředí
-Po vytvoření účtu testovacího prostředí můžete tuto možnost povolit nebo zakázat následujícím postupem: 
+Po vytvoření účtu testovacího prostředí můžete tuto možnost povolit nebo zakázat pomocí následujících kroků: 
 
-1. Na stránce **Účet testovacího prostředí** vyberte v levé nabídce **nastavení testovacího prostředí.**
-2. Pokud chcete autorovi testovacího prostředí povolit výběr umístění testovacího prostředí, vyberte možnost **Povolit autorovi testovacího** prostředí výběr umístění pro testovací prostředí. Pokud je zakázáno, testovací prostředí jsou automaticky vytvořeny ve stejném umístění, ve kterém existuje účet testovacího prostředí. 
+1. Na stránce **účet testovacího prostředí** vyberte v nabídce vlevo možnost **Nastavení testovacího prostředí** .
+2. Vyberte možnost **Povolení testovacího prostředí pro výběr umístění testovacího** prostředí, pokud chcete, aby autor testovacího prostředí mohl vybrat umístění pro testovací prostředí. Pokud je tato verze zakázaná, laboratoře se automaticky vytvoří ve stejném umístění, ve kterém účet testovacího prostředí existuje. 
     
-    Toto pole je zakázáno, když vyberete virtuální síť pro pole **virtuální sítě Peer.** Je to proto, že testovací prostředí v účtu testovacího prostředí musí být ve stejné oblasti jako účet testovacího prostředí pro přístup k prostředkům ve virtuální síti druhé strany. 
+    Toto pole je zakázáno, když vyberete virtuální síť pro pole **partnerské virtuální sítě** . Je to proto, že laboratoře v účtu testovacího prostředí musí být ve stejné oblasti jako účet testovacího prostředí pro přístup k prostředkům v partnerské virtuální síti. 
 1. Na panelu nástrojů vyberte **Uložit**. 
 
-    ![Nastavení laboratoře](../media/allow-lab-creator-pick-lab-location/lab-settings.png)
+    ![Nastavení testovacího prostředí](../media/allow-lab-creator-pick-lab-location/lab-settings.png)
 
-## <a name="no-virtual-network-and-location-selection-isnt-allowed"></a>Není povolen žádný výběr virtuální sítě a umístění.
-V tomto scénáři jste nepovolili **možnost Povolit autorovi testovacího prostředí k výběru umístění testovacího prostředí.** 
+## <a name="no-virtual-network-and-location-selection-isnt-allowed"></a>Žádná virtuální síť a výběr umístění nejsou povolené.
+V tomto scénáři jste nepovolili možnost **Povolit nástroj pro tvorbu testovacího prostředí pro výběr umístění testovacího prostředí** . 
 
-![Žádné umístění v laboratoři](../media/allow-lab-creator-pick-lab-location/lab-no-location.png)
+![Žádné umístění testovacího prostředí](../media/allow-lab-creator-pick-lab-location/lab-no-location.png)
 
-Tvůrci testovacího prostředí (pedagogové) pak nevidí možnost vybrat místo pro testovací prostředí. Uvidí cenu za hodinu pro každou možnost velikosti, která je jim k dispozici. Když vytvoří testovací prostředí, vytvoří se v oblasti Azure, která je ve stejném umístění jako oblast Azure, ve které se nachází jejich účet testovacího prostředí. Pokud je například účet testovacího prostředí v **usa – západ**, může být vytvořeno v usa – střed **usa,** ale nebude vytvořeno v **Kanadě – východ**. Nezaručujeme nic o regionu, který si vybereme, kromě toho, že je v místě. Pokud je velikost aktuálně omezena, zobrazí se autorovi testovacího prostředí zaškrtávací políčko, ve kterém uvidí velikosti, které běžně podporujeme, ale momentálně nejsou k dispozici. 
+Pak tvůrci testovacích prostředí (pedagogy) nevidí možnost vybrat umístění pro testovací prostředí. Pro každou možnost velikosti, která je k dispozici, uvidí cenu za hodinu. Když vytvoří testovací prostředí, vytvoří se v oblasti Azure, která je ve stejném umístění jako oblast Azure, ve které je jejich účet testovacího prostředí. Pokud je například účet testovacího prostředí v **západní USA**, testovací prostředí se může vytvořit v **střed USA – jih** , ale nevytvoří se v oblasti **Kanada – východ**. Nezaručujeme vám žádné informace o oblasti, kterou zvolíme z toho, kde se nachází v tomto umístění. Pokud je velikost aktuálně omezená, pak autor testovacího prostředí uvidí zaškrtávací políčko, kde uvidí velikosti, které běžně podporují, ale aktuálně nejsou k dispozici. 
 
-## <a name="in-virtual-network-and-location-selection-isnt-allowed"></a>Ve virtuální síti a výběr umístění není povolen
-V tomto scénáři **povolit tvůrce testovacího prostředí vybrat umístění testovacího prostředí** možnost je zakázána, protože jste vybrali peer virtuální síť pro účet testovacího prostředí. Tvůrci testovacího prostředí pak uvidí stejnou obrazovku jako u předchozí možnosti. Protože všechny virtuální počítače musí být ve stejné oblasti Azure jako virtuální síť, testovací prostředí se vytvoří ve stejné oblasti Azure, ve které se virtuální síť nachází. Pokud je tato konkrétní oblast omezena na velikost, velikost se zobrazí jako nedostupná. 
+## <a name="in-virtual-network-and-location-selection-isnt-allowed"></a>Virtuální síť a výběr umístění nejsou povolené.
+V tomto scénáři je možnost **Povolení testovacího prostředí pro výběr umístění testovacího** prostředí zakázaná, protože jste vybrali partnerský virtuální síť pro účet testovacího prostředí. Pak budou tvůrci testovacího prostředí zobrazovat stejnou obrazovku jako s předchozí možností. Vzhledem k tomu, že všechny virtuální počítače musí být ve stejné oblasti Azure jako virtuální síť, testovací prostředí se vytvoří ve stejné oblasti Azure, ve které je virtuální síť. Pokud je tato konkrétní oblast omezená na velikost, bude se tato velikost zobrazovat jako nedostupná. 
 
-## <a name="location-selection-is-enabled"></a>Výběr umístění je povolen.
-Když vyberete **Povolit tvůrci testovacího prostředí k výběru umístění testovacího prostředí**, tvůrci testovacího prostředí (pedagogové) uvidí možnost vybrat umístění při vytváření testovacího prostředí. 
+## <a name="location-selection-is-enabled"></a>Výběr umístění je povolený.
+Když vyberete možnost **Povolení programu Lab Creator pro výběr umístění testovacího prostředí**, tvůrci testovacích prostředí (pedagogy) uvidí možnost vybrat umístění při vytváření testovacího prostředí. 
 
-![Výběr umístění v laboratoři](../media/allow-lab-creator-pick-lab-location/location-selection.png)
+![Vybrat umístění testovacího prostředí](../media/allow-lab-creator-pick-lab-location/location-selection.png)
 
-Tvůrci testovacího prostředí vidí rozsah cen pro všechna místa, ve kterých je tato velikost, a mohou zvolit umístění. Testovací prostředí se vytvoří v jakékoli oblasti Azure, která se mapuje na toto umístění.
+Tvůrci testovacího prostředí uvidí celou řadu cen pro všechna umístění, která jsou ve velikosti, a můžou zvolit umístění. Testovací prostředí se vytvoří v jakékoli oblasti Azure, která se mapuje na toto umístění.
 
-Pokud je umístění omezené, ve výchozím nastavení se v seznamu nezobrazuje. Rozbalte rozevírací seznam a vyberte **Zobrazit nedostupná umístění pro tuto velikost**. 
+Pokud je umístění omezené, v seznamu se ve výchozím nastavení nezobrazí. Rozbalte rozevírací seznam a vyberte **Zobrazit nedostupná umístění této velikosti**. 
 
-![Zobrazit nedostupná místa](../media/allow-lab-creator-pick-lab-location/show-unavailable-locations.png)
+![Zobrazit nedostupná umístění](../media/allow-lab-creator-pick-lab-location/show-unavailable-locations.png)
 
 ## <a name="cost"></a>Náklady
-Dříve byly ceny založeny na velikosti virtuálního počítače, kterou jste zvolili pro testovací prostředí. Nyní je cena založena na kombinaci operačního systému (OS), velikosti a umístění. 
+Předchozí ceny vycházejí z velikosti virtuálního počítače, kterou zvolíte pro testovací prostředí. Cena je teď založená na kombinaci operačního systému (OS), velikosti a umístění. 
 
 ## <a name="next-steps"></a>Další kroky
 Viz následující články:
 
-- [Propojení sítě testovacího prostředí s virtuální virtuální sítí druhé strany](how-to-connect-peer-virtual-network.md)
-- [Připojení sdílené galerie obrázků k testovacímu prostředí](how-to-attach-detach-shared-image-gallery.md)
-- [Přidání uživatele jako vlastníka testovacího prostředí](how-to-add-user-lab-owner.md)
-- [Zobrazení nastavení brány firewall pro testovací prostředí](how-to-configure-firewall-settings.md)
-- [Konfigurace dalších nastavení testovacího prostředí](how-to-configure-lab-accounts.md)
+- [Připojení sítě testovacího prostředí k partnerské virtuální síti](how-to-connect-peer-virtual-network.md)
+- [Připojení Galerie sdílených imagí k testovacímu prostředí](how-to-attach-detach-shared-image-gallery.md)
+- [Přidat uživatele jako vlastníka testovacího prostředí](how-to-add-user-lab-owner.md)
+- [Zobrazit nastavení brány firewall pro testovací prostředí](how-to-configure-firewall-settings.md)
+- [Konfigurace dalších nastavení pro testovací prostředí](how-to-configure-lab-accounts.md)

@@ -1,6 +1,6 @@
 ---
-title: Přiřazení vlastní role Azure AD – správa privilegovaných identit (PIM)
-description: Jak přiřadit vlastní roli Azure AD pro přiřazení privilegované správy identit (PIM)
+title: Přiřazení vlastní role Azure AD – Privileged Identity Management (PIM)
+description: Postup přiřazení vlastní role Azure AD pro přiřazení Privileged Identity Management (PIM)
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -17,70 +17,70 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0303d37ef5bbbf266feb5456b0bc224ce272ee13
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77499248"
 ---
-# <a name="assign-an-azure-ad-custom-role-in-privileged-identity-management"></a>Přiřazení vlastní role Azure AD ve správě privilegovaných identit
+# <a name="assign-an-azure-ad-custom-role-in-privileged-identity-management"></a>Přiřazení vlastní role Azure AD v Privileged Identity Management
 
-Tento článek vám řekne, jak pomocí správy privilegovaných identit (PIM) vytvořit přiřazení just-in-time a časově vázané na vlastní role vytvořené pro správu aplikací v prostředí správy Azure Active Directory (Azure AD).
+V tomto článku se dozvíte, jak pomocí Privileged Identity Management (PIM) vytvořit přiřazení za běhu a časově vázaný čas pro vlastní role vytvořené pro správu aplikací v prostředí pro správu Azure Active Directory (Azure AD).
 
-- Další informace o vytváření vlastních rolí pro delegování správy aplikací ve službě Azure AD najdete [v tématu Vlastní role správce ve službě Azure Active Directory (preview).](../users-groups-roles/roles-custom-overview.md)
-- Pokud jste dosud nepoužili správu privilegovaných identit, získejte další informace na [začátku pomocí správy privilegovaných identit](pim-getting-started.md).
-- Informace o udělení přístupu jinému správci ke správě privilegovaných identit naleznete v [tématu Udělení přístupu ostatním správcům ke správě privilegovaných identit](pim-how-to-give-access-to-pim.md).
+- Další informace o vytváření vlastních rolí pro delegování správy aplikací ve službě Azure AD najdete v tématu [vlastní role správců v Azure Active Directory (Preview)](../users-groups-roles/roles-custom-overview.md).
+- Pokud jste zatím Privileged Identity Management ještě nepoužili, získáte další informace na adrese Začínáme [s používáním Privileged Identity Management](pim-getting-started.md).
+- Informace o tom, jak udělit přístup jinému správci ke správě Privileged Identity Management, najdete v tématu [udělení přístupu jiným správcům pro správu Privileged Identity Management](pim-how-to-give-access-to-pim.md).
 
 > [!NOTE]
-> Vlastní role Azure AD nejsou integrované s předdefinovanými rolemi adresáře během předběžné verze. Jakmile je funkce obecně dostupná, správa rolí proběhne v integrovaném prostředí rolí. Pokud se zobrazí následující banner, tyto role by měly být spravovány [v předdefinované role zkušenosti](pim-how-to-activate-role.md) a tento článek se nevztahuje:
+> Vlastní role Azure AD nejsou integrovány s předdefinovanými rolemi adresáře ve verzi Preview. Jakmile je funkce všeobecně dostupná, bude se Správa rolí konat v prostředí integrovaných rolí. Pokud se zobrazí následující nápis, tyto role by se měly spravovat [v prostředí integrovaných rolí](pim-how-to-activate-role.md) a tento článek neplatí:
 >
 > [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
 ## <a name="assign-a-role"></a>Přiřazení role
 
-Správa privilegovaných identit může spravovat vlastní role, které můžete vytvořit ve správě aplikací Azure Active Directory (Azure AD).  Následující kroky vytvoří způsobilé přiřazení k vlastní roli adresáře.
+Privileged Identity Management může spravovat vlastní role, které můžete vytvořit v Azure Active Directory (Azure AD) Správa aplikací.  Následující kroky vytvoří opravňující přiřazení k roli vlastního adresáře.
 
-1. Přihlaste se ke [správě privilegovaných identit](https://portal.azure.com/?Microsoft_AAD_IAM_enableCustomRoleManagement=true&Microsoft_AAD_IAM_enableCustomRoleAssignment=true&feature.rbacv2roles=true&feature.rbacv2=true&Microsoft_AAD_RegisteredApps=demo#blade/Microsoft_Azure_PIMCommon/CommonMenuBlade/quickStart) na webu Azure Portal pomocí uživatelského účtu, který je přiřazený roli správce privilegované role.
-1. Vyberte **vlastní role Azure AD (preview).**
+1. Přihlaste se k [Privileged Identity Management](https://portal.azure.com/?Microsoft_AAD_IAM_enableCustomRoleManagement=true&Microsoft_AAD_IAM_enableCustomRoleAssignment=true&feature.rbacv2roles=true&feature.rbacv2=true&Microsoft_AAD_RegisteredApps=demo#blade/Microsoft_Azure_PIMCommon/CommonMenuBlade/quickStart) v Azure Portal pomocí uživatelského účtu, který je přiřazený k roli správce privilegované role.
+1. Vyberte **vlastní role Azure AD (Preview)**.
 
-    ![Výběrem náhledu vlastních rolí Azure AD zobrazíte vyhotovení přiřazení rolí.](./media/azure-ad-custom-roles-assign/view-custom.png)
+    ![Výběrem vlastní role Azure AD ve verzi Preview zobrazíte oprávněná přiřazení rolí.](./media/azure-ad-custom-roles-assign/view-custom.png)
 
-1. Výběrem **role** zobrazíte seznam vlastních rolí pro aplikace Azure AD.
+1. Vyberte **role** , abyste viděli seznam vlastních rolí pro aplikace Azure AD.
 
-    ![Vybrat role, zobrazit seznam způsobilých přiřazení rolí.](./media/azure-ad-custom-roles-assign/view-roles.png)
+    ![Vybrat role zobrazit seznam oprávněných přiřazení rolí](./media/azure-ad-custom-roles-assign/view-roles.png)
 
-1. Výběrem **možnosti Přidat člena** otevřete stránku přiřazení.
-1. Chcete-li omezit rozsah přiřazení role na jednu aplikaci, vyberte **obor** a určete obor aplikace.
+1. Výběrem **Přidat člena** otevřete stránku přiřazení.
+1. Pokud chcete omezit rozsah přiřazení role na jednu aplikaci, vyberte **Rozsah** pro určení rozsahu aplikace.
 
-    ![omezení rozsahu přiřazení způsobilých rolí ve službě Azure AD](./media/azure-ad-custom-roles-assign/set-scope.png)
+    ![omezení rozsahu přiřazení oprávněných rolí v Azure AD](./media/azure-ad-custom-roles-assign/set-scope.png)
 
-1. Vyberte **Vybrat roli,** chcete-li otevřít seznam **Vybrat roli.**
+1. Vyberte **Vybrat roli** a otevřete seznam **Vybrat roli** .
 
-    ![vyberte způsobilou roli, kterou chcete přiřadit uživateli](./media/azure-ad-custom-roles-assign/select-role.png)
+    ![Vyberte oprávněnou roli, kterou chcete přiřadit uživateli.](./media/azure-ad-custom-roles-assign/select-role.png)
 
-1. Vyberte roli, kterou chcete přiřadit, a klepněte na tlačítko **Vybrat**. Otevře se seznam **Vybrat člena.**
+1. Vyberte roli, kterou chcete přiřadit, a potom klikněte na **Vybrat**. Otevře se seznam **Vybrat člena** .
 
-    ![Vyberte uživatele, kterému roli přiřazujete](./media/azure-ad-custom-roles-assign/select-member.png)
+    ![Vyberte uživatele, kterému přiřadíte roli.](./media/azure-ad-custom-roles-assign/select-member.png)
 
-1. Vyberte uživatele, kterého chcete roli přiřadit, a klepněte na tlačítko **Vybrat**. Otevře se seznam **Nastavení členství.**
+1. Vyberte uživatele, kterého chcete přiřadit roli, a pak klikněte na **Vybrat**. Otevře se seznam **nastavení členství** .
 
-    ![Nastavení typu přiřazení role na způsobilé nebo aktivní](./media/azure-ad-custom-roles-assign/membership-settings.png)
+    ![Nastavte typ přiřazení role na způsobilé nebo aktivní.](./media/azure-ad-custom-roles-assign/membership-settings.png)
 
-1. Na stránce **Nastavení členství** vyberte **Způsobilé** nebo **Aktivní**:
+1. Na stránce **nastavení členství** vyberte **oprávněné** nebo **aktivní**:
 
-    - **Způsobilá** přiřazení vyžadují, aby uživatel přiřazený k roli provedl akci předtím, než bude moci roli použít. Akce mohou zahrnovat absolvování vícefaktorové kontroly ověřování, poskytnutí obchodního odůvodnění nebo vyžádání schválení od určených schvalovatelů.
-    - **Aktivní** přiřazení nevyžadují, aby přiřazený uživatel provedl žádnou akci k použití role. Aktivní uživatelé mají oprávnění přiřazená roli po celou dobu.
+    - **Způsobilá** přiřazení vyžadují, aby uživatel přiřazený k roli provedl akci předtím, než může tuto roli použít. Akce můžou zahrnovat předání kontroly služby Multi-Factor Authentication, poskytnutí obchodního odůvodnění nebo žádosti o schválení od určených schvalovatelů.
+    - **Aktivní** přiřazení nevyžadují, aby přiřazený uživatel prováděl jakoukoli akci pro použití této role. Aktivní uživatelé mají všechna oprávnění přiřazená k této roli.
 
-1. Pokud je k dispozici a je k dispozici **trvalé** políčko (v závislosti na nastavení role), můžete určit, zda je přiřazení trvalé. Zaškrtnutím políčka chcete-li, aby bylo přiřazení trvale způsobilé nebo trvale přiřazené. Chcete-li určit dobu trvání přiřazení, zrušte zaškrtnutí políčka.
-1. Chcete-li vytvořit nové přiřazení role, klepněte na tlačítko **Uložit** a potom **na Přidat**. Zobrazí se oznámení o stavu procesu přiřazení.
+1. Pokud je **trvalé** zaškrtávací políčko k dispozici a je k dispozici (v závislosti na nastavení role), můžete určit, zda je přiřazení trvalé. Zaškrtnutím políčka zajistěte, aby se přiřazení trvale způsobilo nebo trvale přiřadilo. Zrušte zaškrtnutí políčka a určete dobu trvání přiřazení.
+1. Pokud chcete vytvořit nové přiřazení role, klikněte na **Uložit** a pak na **Přidat**. Zobrazí se oznámení o stavu procesu přiřazení.
 
-Chcete-li ověřit přiřazení role, vyberte v otevřené roli **přiřazení** > **a** ověřte, zda je přiřazení role správně označeno jako způsobilé nebo aktivní.
+Přiřazení role ověříte tak, že v otevřené roli vyberete **přiřazení** > **přiřadíte** a ověříte, že je přiřazení role správně identifikované jako oprávněné nebo aktivní.
 
- ![Zkontrolujte, zda je přiřazení role viditelné jako způsobilé nebo aktivní.](./media/azure-ad-custom-roles-assign/verify-assignments.png)
+ ![Zkontrolujte, jestli je přiřazení role zobrazené jako oprávněné nebo aktivní.](./media/azure-ad-custom-roles-assign/verify-assignments.png)
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Aktivace vlastní role Azure AD](azure-ad-custom-roles-assign.md)
 - [Odebrání nebo aktualizace přiřazení vlastní role Azure AD](azure-ad-custom-roles-update-remove.md)
 - [Konfigurace přiřazení vlastní role Azure AD](azure-ad-custom-roles-configure.md)
-- [Definice rolí ve službě Azure AD](../users-groups-roles/directory-assign-admin-roles.md)
+- [Definice rolí v Azure AD](../users-groups-roles/directory-assign-admin-roles.md)

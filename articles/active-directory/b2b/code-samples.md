@@ -1,5 +1,5 @@
 ---
-title: Kód spolupráce B2B a ukázky Prostředí PowerShell – Azure AD
+title: Kód spolupráce B2B a ukázky prostředí PowerShell – Azure AD
 description: Kód a ukázky PowerShellu pro spolupráci B2B služby Azure Active Directory
 services: active-directory
 ms.service: active-directory
@@ -13,10 +13,10 @@ ms.reviewer: elisolMS
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 03a7a9c0c9ed308944b57e7659fefa81178af78b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77368143"
 ---
 # <a name="azure-active-directory-b2b-collaboration-code-and-powershell-samples"></a>Kód a ukázky PowerShellu spolupráce B2B služby Azure Active Directory
@@ -26,7 +26,7 @@ Externí uživatele můžete do organizace pozvat hromadně pomocí e-mailových
 
 1. Připravte si soubor CSV. Vytvořte nový soubor CSV a pojmenujte ho invitations.csv. V tomto příkladu soubor uložíme do adresáře C:\data a bude obsahovat následující informace:
   
-   Name (Název)                  |  InvitedUserEmailAddress (E-mailová adresa pozvaného uživatele)
+   Název                  |  InvitedUserEmailAddress (E-mailová adresa pozvaného uživatele)
    --------------------- | --------------------------
    Pozvaný uživatel B2B z Gmailu     | b2binvitee@gmail.com
    Pozvaný uživatel B2B z Outlooku   | b2binvitee@outlook.com
@@ -56,7 +56,7 @@ Tato rutina odešle pozvánku e-mailovým adresám v souboru invitations.csv. Me
 - Odeslání zpráv kopiím nebo úplné potlačení e-mailových zpráv
 
 ## <a name="code-sample"></a>Ukázka kódu
-Zde si ukážeme, jak zavolat rozhraní API pro pozvánky v režimu „výhradně pro aplikaci“, abyste získali adresu URL pro uplatnění pozvánky k prostředku, ke kterému uživatele B2B zvete. Cílem je odeslat vlastní e-mail s pozvánkou. E-mail lze vytvořit s klientem HTTP, takže můžete přizpůsobit, jak vypadá a odeslat jej prostřednictvím rozhraní Microsoft Graph API.
+Zde si ukážeme, jak zavolat rozhraní API pro pozvánky v režimu „výhradně pro aplikaci“, abyste získali adresu URL pro uplatnění pozvánky k prostředku, ke kterému uživatele B2B zvete. Cílem je odeslat vlastní e-mail s pozvánkou. E-mail se může skládat pomocí klienta HTTP, takže můžete přizpůsobit jeho vzhled a odeslat ho prostřednictvím rozhraní Microsoft Graph API.
 
 ```csharp
 namespace SampleInviteApp

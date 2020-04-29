@@ -1,83 +1,83 @@
 ---
 title: Obnovení virtuálních počítačů VMware s využitím Azure Backup Serveru
-description: Pomocí Azure Backup Server (MABS) obnovte virtuální počítače VMware spuštěné na serveru VMware vCenter/ESXi.
+description: K obnovení virtuálních počítačů VMware běžících na serveru VMware vCenter/ESXi použijte Azure Backup Server (MABS).
 ms.topic: conceptual
 ms.date: 08/18/2019
 ms.openlocfilehash: ab2fb4f8f79fa5a664f5cb0ba1bb537c1df658c2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77212369"
 ---
 # <a name="restore-vmware-virtual-machines"></a>Obnovení virtuálních počítačů VMware
 
-Tento článek vysvětluje, jak pomocí Microsoft Azure Backup Server (MABS) obnovit body obnovení virtuálního počítače VMWare. Přehled o použití MABS k obnovení dat naleznete v tématu [Obnovení chráněných dat](https://docs.microsoft.com/azure/backup/backup-azure-alternate-dpm-server). V konzole správce MABS existují dva způsoby, jak najít obnovitelná data - vyhledávání nebo procházení. Při obnovení dat můžete nebo nemusíte chtít obnovit data nebo virtuální ho dispozičně do stejného umístění. Z tohoto důvodu MABS podporuje tři možnosti obnovení pro zálohy virtuálních zařízení VMware:
+Tento článek vysvětluje, jak pomocí serveru Microsoft Azure Backup (MABS) obnovit body obnovení virtuálních počítačů VMware. Přehled použití MABS k obnovení dat najdete v tématu [obnovení chráněných dat](https://docs.microsoft.com/azure/backup/backup-azure-alternate-dpm-server). V konzole pro správu MABS existují dva způsoby, jak najít obnovitelná data – prohledávání nebo procházení. Při obnovování dat můžete nebo nebudete chtít obnovit data nebo virtuální počítač do stejného umístění. Z tohoto důvodu podporuje MABS tři možnosti obnovení pro zálohování virtuálních počítačů VMware:
 
-* **Obnovení původního umístění (OLR)** – pomocí OLR obnovit chráněný virtuální počítač do původního umístění. Virtuální modul můžete obnovit do původního umístění pouze v případě, že nebyly přidány nebo odstraněny žádné disky od doby, kdy došlo k zálohování. Pokud byly přidány nebo odstraněny disky, je nutné použít alternativní umístění obnovení.
+* **Obnovení původního umístění (OLR)** – k obnovení CHRÁNĚNÉHO virtuálního počítače do původního umístění použijte OLR. Virtuální počítač můžete obnovit do původního umístění pouze v případě, že nebyly přidány nebo smazány žádné disky, protože došlo k zálohování. Pokud byly disky přidány nebo odstraněny, je nutné použít obnovení do alternativního umístění.
 
-* **Alternativní umístění obnovení (ALR)** – Když původní virtuální hod chybí, nebo nechcete rušit původní virtuální ho, obnovit virtuální ho do alternativního umístění. Chcete-li obnovit virtuální ho do alternativního umístění, musíte zadat umístění hostitele ESXi, fondu prostředků, složky a úložiště dat úložiště a cestu. Chcete-li pomoci odlišit obnovené virtuálního virtuálního modod od původního virtuálního mase, MABS připojí "-Obnovené" k názvu virtuálního_
+* **Obnovení do alternativního umístění (ALR)** – Pokud původní virtuální počítač chybí nebo pokud nechcete narušit původní virtuální počítač, OBNOVte virtuální počítač do alternativního umístění. Pokud chcete virtuální počítač obnovit do alternativního umístění, musíte zadat umístění hostitele ESXi, fondu zdrojů, složky a úložiště dat úložiště a cesty. Z důvodu rozlišení obnoveného virtuálního počítače z původního virtuálního počítače MABS připojí k názvu virtuálního počítače "-obnovený".
 
-* **Individuální obnovení umístění souboru (ILR)** – Pokud chráněný virtuální počítač je virtuální počítač se systémem Windows Server, jednotlivé soubory nebo složky uvnitř virtuálního počítače lze obnovit pomocí funkce ILR MABS. Chcete-li obnovit jednotlivé soubory, naleznete postup dále v tomto článku.
+* **Individuální obnovení umístění souborů (ilr)** – Pokud je chráněný virtuální počítač s Windows serverem, můžete jednotlivé soubory nebo složky uvnitř virtuálního počítače obnovit pomocí ilr schopnosti MABS. Postup obnovení jednotlivých souborů najdete v postupu dále v tomto článku.
 
 ## <a name="restore-a-recovery-point"></a>Obnovení bodu obnovení
 
-1. V konzole správce MABS klikněte na zobrazení pro obnovení.
+1. V konzole pro správu MABS klikněte na zobrazení obnovení.
 
-2. Pomocí podokna Procházet vyhledejte virtuální ho virtuální ho sam, který chcete obnovit. Po výběru virtuálního aplikace nebo složky se v podokně body obnovení zobrazí dostupné body obnovení.
+2. Pomocí podokna procházení vyhledejte nebo vyfiltrujte virtuální počítač, který chcete obnovit. Jakmile vyberete virtuální počítač nebo složku, zobrazí se v podokně body obnovení dostupné body obnovení.
 
     ![Dostupné body obnovení](./media/restore-azure-backup-server-vmware/recovery-points.png)
 
-3. V **polích Body obnovení** vyberte pomocí kalendáře a rozevíracích nabídek datum, kdy byl bod obnovení odebrán. Data kalendáře tučně mají k dispozici body obnovení.
+3. V poli **body obnovení pro** vyberte v nabídce kalendář a rozevírací nabídky datum, kdy byl bod obnovení proveden. Kalendářní data v tučném textu mají dostupné body obnovení.
 
-4. Na pásu karet nástrojů klepněte na **tlačítko Obnovit** a otevřete **Průvodce obnovením**.
+4. Kliknutím na tlačítko **obnovit** na pásu karet nástroje spusťte **Průvodce obnovením**.
 
-    ![Průvodce obnovením, výběr obnovení recenze](./media/restore-azure-backup-server-vmware/recovery-wizard.png)
+    ![Průvodce obnovením, Kontrola výběru obnovení](./media/restore-azure-backup-server-vmware/recovery-wizard.png)
 
-5. Klepnutím na **tlačítko Další** přetočíme na obrazovku **Určit možnosti obnovení.**
+5. Kliknutím na tlačítko **Další** přejdete na obrazovku **zadat možnosti obnovení** .
 
-6. Chcete-li povolit omezení šířky pásma sítě, klepněte na obrazovce **Určit možnosti obnovení** na **tlačítko Změnit**. Chcete-li ponechat omezení sítě zakázané, klepněte na tlačítko **Další**. Pro virtuální počítače VMware nejsou k dispozici žádné další možnosti na této obrazovce průvodce. Pokud se rozhodnete upravit omezení šířky pásma sítě, v dialogovém okně Omezení vyberte **možnost Povolit omezení využití šířky pásma sítě,** abyste ji zapnuli. Po povolení nakonfigurujte **plán nastavení** a **práce**.
+6. Pokud chcete povolit omezování šířky pásma sítě, na obrazovce **zadat možnosti obnovení** klikněte na **Upravit**. Omezení sítě vypnete tak, že na tlačítko Další zadáte **Další**. Pro virtuální počítače VMware nejsou k dispozici žádné další možnosti na této obrazovce průvodce. Pokud se rozhodnete změnit omezení šířky pásma sítě, zapněte ji v dialogovém okně omezení výběrem možnosti **Povolit omezování využití šířky pásma sítě** . Po povolení nakonfigurujte **Nastavení** a **plán práce**.
 
-7. Na obrazovce **Vybrat typ obnovení** zvolte, zda chcete obnovit původní instanci nebo do nového umístění, a klepněte na tlačítko **Další**.
+7. Na obrazovce **Vybrat typ obnovení** vyberte, zda chcete provést obnovení do původní instance nebo do nového umístění, a klikněte na tlačítko **Další**.
 
-     * Pokud zvolíte **Obnovit původní instanci**, nemusíte v průvodci provádět žádné další volby. Data pro původní instanci se používá.
+     * Pokud zvolíte **obnovit do původní instance**, nemusíte v průvodci dělat žádné další volby. Použijí se data pro původní instanci.
 
-     * Pokud zvolíte **Obnovit jako virtuální počítač na libovolném hostiteli**, pak na obrazovce Zadat **cíl** zadejte informace pro **hostitele ESXi, fond zdrojů, složku** a **cestu**.
+     * Pokud zvolíte možnost **Obnovit jako virtuální počítač na jakémkoli hostiteli**, pak na obrazovce **zadat cíl** zadejte informace o **hostiteli ESXi, fondu zdrojů, složce** a **cestě**.
 
       ![Vybrat typ obnovení](./media/restore-azure-backup-server-vmware/recovery-type.png)
 
-8. Na obrazovce **Souhrn** zkontrolujte nastavení a kliknutím na **Obnovit** spusťte proces obnovení. Obrazovka **Stav obnovení** zobrazuje průběh operace obnovení.
+8. Na obrazovce **Souhrn** zkontrolujte nastavení a kliknutím na tlačítko **obnovit** spusťte proces obnovení. Na obrazovce **stav obnovení** se zobrazuje průběh operace obnovení.
 
-## <a name="restore-an-individual-file-from-a-vm"></a>Obnovení jednotlivého souboru z virtuálního virtuálního aplikace
+## <a name="restore-an-individual-file-from-a-vm"></a>Obnovení jednotlivého souboru z virtuálního počítače
 
-Jednotlivé soubory můžete obnovit z chráněného bodu obnovení virtuálního počítače. Tato funkce je k dispozici pouze pro virtuální servery Windows Server. Obnovení jednotlivých souborů je podobné obnovení celého virtuálního virtuálního ms, s výjimkou procházení do vmdk a najít soubory, které chcete, před zahájením procesu obnovení. Obnovení jednotlivého souboru nebo výběr souborů z virtuálního virtuálního serveru se systémem Windows Server:
+Jednotlivé soubory můžete obnovit z chráněného bodu obnovení virtuálního počítače. Tato funkce je dostupná jenom pro virtuální počítače s Windows serverem. Obnovení jednotlivých souborů je podobné jako obnovení celého virtuálního počítače, s výjimkou přechodu na VMDK a vyhledání souborů, které chcete, před zahájením procesu obnovení. Postup obnovení jednotlivého souboru nebo výběr souborů z virtuálního počítače s Windows serverem:
 
 >[!NOTE]
->Obnovení jednotlivého souboru z virtuálního počítače je k dispozici jenom pro body obnovení virtuálních počítačů s Windows a disku.
+>Obnovení jednotlivých souborů z virtuálního počítače je dostupné jenom pro body obnovení virtuálních počítačů s Windows a disků.
 
-1. V konzole správce MABS klikněte na zobrazení **pro obnovení.**
+1. V konzole pro správu MABS klikněte na zobrazení **obnovení** .
 
-2. Pomocí podokna **Procházet** vyhledejte virtuální ho virtuální ho sam, který chcete obnovit. Po výběru virtuálního aplikace nebo složky se v podokně body obnovení zobrazí dostupné body obnovení.
+2. Pomocí podokna **procházení** vyhledejte nebo vyfiltrujte virtuální počítač, který chcete obnovit. Jakmile vyberete virtuální počítač nebo složku, zobrazí se v podokně body obnovení dostupné body obnovení.
 
     ![Dostupné body obnovení](./media/restore-azure-backup-server-vmware/vmware-rp-disk.png)
 
-3. V podokně **Body obnovení pro:** vyberte pomocí kalendáře datum, které obsahuje požadované body obnovení. V závislosti na konfiguraci zásad zálohování mohou mít data více než jeden bod obnovení. Po výběru dne, kdy byl bod obnovení odebrán, se ujistěte, že jste zvolili správný **čas obnovení**. Pokud má vybrané datum více bodů obnovení, zvolte bod obnovení tak, že jej vyberete v rozevírací nabídce Doba obnovení. Po výběru bodu obnovení se seznam obnovitelných položek zobrazí v podokně **Cesta:** .
+3. V podokně **body obnovení pro:** pomocí kalendáře vyberte datum, které obsahuje požadovaný bod obnovení (y). V závislosti na tom, jak byla zásada zálohování nakonfigurovaná, můžou mít data více než jeden bod obnovení. Jakmile vyberete den, kdy byl bod obnovení proveden, ujistěte se, že jste zvolili správný **čas obnovení**. Pokud má vybrané datum více bodů obnovení, zvolte ho tak, že ho vyberete v rozevírací nabídce doba obnovení. Po zvolení bodu obnovení se seznam obnovitelných položek zobrazí v podokně **cesta:** .
 
-4. Chcete-li najít soubory, které chcete obnovit, otevřete v podokně **Cesta** položku ve sloupci Obnovitelné položky poklepáním na **položku.** Vyberte soubor, soubory nebo složky, které chcete obnovit. Chcete-li vybrat více položek, stiskněte při výběru jednotlivých položek klávesu **Ctrl.** Podokno **Cesta** slouží k prohledání seznamu souborů nebo složek zobrazených ve sloupci **Obnovitelná položka.** **Seznam hledání níže** neprohledává do podsložek. Chcete-li prohledávat podsložky, poklepejte na složku. Pomocí tlačítka **Nahoru** se přesuňte z podřízené složky do nadřazené složky. Můžete vybrat více položek (souborů a složek), ale musí být ve stejné nadřazené složce. Položky z více složek ve stejné úloze obnovení nelze obnovit.
+4. Chcete-li najít soubory, které chcete obnovit, v podokně **cesta** dvakrát klikněte na položku ve sloupci **obnovitelné položky** a otevřete ji. Vyberte soubor, soubory nebo složky, které chcete obnovit. Chcete-li vybrat více položek, stiskněte klávesu **CTRL** při výběru jednotlivých položek. Pomocí podokna **cesta** můžete vyhledat seznam souborů nebo složek zobrazených ve sloupci **obnovitelné položky** . **Seznam hledání dále** nehledá podsložky. Pokud chcete prohledávat podsložky, poklikejte na složku. K přesunu z podřízené složky do nadřazené složky použijte tlačítko **nahoru** . Můžete vybrat více položek (soubory a složky), ale musí být ve stejné nadřazené složce. Položky z více složek nelze obnovit v rámci jedné úlohy obnovení.
 
-    ![Zkontrolovat výběr obnovení](./media/restore-azure-backup-server-vmware/vmware-rp-disk-ilr-2.png)
+    ![Kontrola výběru obnovení](./media/restore-azure-backup-server-vmware/vmware-rp-disk-ilr-2.png)
 
-5. Po výběru položek pro obnovení otevřete na pásu karet nástroje Konzola správce klepnutím na **tlačítko Obnovit** **Průvodce obnovením**. V Průvodci obnovením se na obrazovce **Výběr obnovení recenze** zobrazí vybrané položky, které mají být obnoveny.
+5. Po výběru položek pro obnovení klikněte na pásu karet nástroje konzoly pro správu na tlačítko **obnovit** . tím otevřete **Průvodce obnovením**. V Průvodci obnovením obrazovka **Kontrola výběru obnovení** zobrazuje vybrané položky, které mají být obnoveny.
 
-6. Chcete-li povolit omezení šířky pásma sítě, klepněte na obrazovce **Určit možnosti obnovení** na **tlačítko Změnit**. Chcete-li ponechat omezení sítě zakázané, klepněte na tlačítko **Další**. Pro virtuální počítače VMware nejsou k dispozici žádné další možnosti na této obrazovce průvodce. Pokud se rozhodnete upravit omezení šířky pásma sítě, v dialogovém okně Omezení vyberte **možnost Povolit omezení využití šířky pásma sítě,** abyste ji zapnuli. Po povolení nakonfigurujte **plán nastavení** a **práce**.
-7. Na obrazovce **Vybrat typ obnovení** klepněte na tlačítko **Další**. Soubory nebo složky nebo složky lze obnovit pouze do síťové složky.
-8. Na obrazovce **Určit cíl** klikněte na **Procházet** a vyhledejte síťové umístění pro soubory nebo složky. MABS vytvoří složku, kde jsou zkopírovány všechny obnovené položky. Název složky má předponu MABS_day měsíc. Když vyberete umístění obnovených souborů nebo složky, zobrazí se podrobnosti o tomto umístění (cíl, cílová cesta a dostupné místo).
+6. Pokud chcete povolit omezování šířky pásma sítě, na obrazovce **zadat možnosti obnovení** klikněte na **Upravit**. Omezení sítě vypnete tak, že na tlačítko Další zadáte **Další**. Pro virtuální počítače VMware nejsou k dispozici žádné další možnosti na této obrazovce průvodce. Pokud se rozhodnete změnit omezení šířky pásma sítě, zapněte ji v dialogovém okně omezení výběrem možnosti **Povolit omezování využití šířky pásma sítě** . Po povolení nakonfigurujte **Nastavení** a **plán práce**.
+7. Na obrazovce **Vybrat typ obnovení** klikněte na **Další**. Soubory nebo složky můžete obnovit pouze do síťové složky.
+8. Na obrazovce **zadat cíl** klikněte na **Procházet** a vyhledejte síťové umístění pro vaše soubory nebo složky. MABS vytvoří složku, do které se zkopírují všechny obnovené položky. Název složky má předponu, MABS_day měsíc-rok. Když vyberete umístění obnovených souborů nebo složky, poskytnou se podrobnosti pro toto umístění (cíl, cílová cesta a dostupný prostor).
 
-    ![Určení umístění pro obnovení souborů](./media/restore-azure-backup-server-vmware/specify-destination.png)
+    ![Zadejte umístění pro obnovení souborů](./media/restore-azure-backup-server-vmware/specify-destination.png)
 
-9. Na obrazovce **Určit možnosti obnovení** zvolte, které nastavení zabezpečení se má použít. Můžete se rozhodnout upravit omezení využití šířky pásma sítě, ale omezení je ve výchozím nastavení zakázáno. Obnovení **sítě SAN** a **oznámení** také nejsou povoleny.
-10. Na obrazovce **Souhrn** zkontrolujte nastavení a kliknutím na **Obnovit** spusťte proces obnovení. Obrazovka **Stav obnovení** zobrazuje průběh operace obnovení.
+9. Na obrazovce **zadat možnosti obnovení** vyberte, které nastavení zabezpečení se má použít. Můžete se rozhodnout změnit omezení využití šířky pásma sítě, ale omezení je ve výchozím nastavení zakázané. Také není povoleno **obnovení sítě San** a **oznámení** .
+10. Na obrazovce **Souhrn** zkontrolujte nastavení a kliknutím na tlačítko **obnovit** spusťte proces obnovení. Na obrazovce **stav obnovení** se zobrazuje průběh operace obnovení.
 
 ## <a name="next-steps"></a>Další kroky
 
-Problémy s problémy při používání Serveru Zálohování Azure najdete [v průvodci odstraňováním potíží pro Server zálohování Azure](./backup-azure-mabs-troubleshoot.md).
+Pokud chcete řešit problémy při použití Azure Backup Server, přečtěte si [příručku pro řešení potíží pro Azure Backup Server](./backup-azure-mabs-troubleshoot.md).

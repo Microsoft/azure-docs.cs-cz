@@ -1,5 +1,5 @@
 ---
-title: Dotazování geoprostorových dat pomocí Azure Cosmos DB
+title: Dotazování na geoprostorové údaje pomocí Azure Cosmos DB
 description: Dotazování prostorových dat pomocí Azure Cosmos DB
 author: timsander1
 ms.service: cosmos-db
@@ -7,31 +7,31 @@ ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
 ms.openlocfilehash: 08b12bd9d35aaa61c79d35a55068983cdc0f1b83
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77566319"
 ---
-# <a name="querying-geospatial-data-with-azure-cosmos-db"></a>Dotazování geoprostorových dat pomocí Azure Cosmos DB
+# <a name="querying-geospatial-data-with-azure-cosmos-db"></a>Dotazování na geoprostorové údaje pomocí Azure Cosmos DB
 
-Tento článek se bude zabývat dotazem na geoprostorová data v Azure Cosmos DB pomocí SQL a LINQ. V současné době ukládání a přístup ke geoprostorovým datům je podporována azure cosmos DB SQL API účty jenom. Azure Cosmos DB podporuje následující otevřené geoprostorové konsorcium (OGC) integrované funkce pro geoprostorové dotazování. Další informace o kompletní sadě integrovaných funkcí v jazyce SQL najdete v tématu [Funkce dotazovacího systému v Azure Cosmos DB](sql-query-system-functions.md).
+Tento článek popisuje, jak zadávat dotazy na geoprostorové údaje v Azure Cosmos DB pomocí jazyka SQL a LINQ. V současné době jsou ukládání a přístup k geoprostorovému datům podporované jenom pomocí Azure Cosmos DBch jenom účtů rozhraní SQL API. Azure Cosmos DB podporuje následující integrované funkce pro geoprostorové dotazování (OGC) Open Geospatial Consortium (). Další informace o kompletní sadě integrovaných funkcí v jazyce SQL naleznete v tématu [Query System Functions in Azure Cosmos DB](sql-query-system-functions.md).
 
-## <a name="spatial-sql-built-in-functions"></a>Vestavěné funkce prostorového SQL
+## <a name="spatial-sql-built-in-functions"></a>Integrované funkce prostorového SQL serveru
 
-Tady je seznam funkcí geoprostorového systému užitečných pro dotazování v Azure Cosmos DB:
+Tady je seznam geoprostorových systémových funkcí užitečných pro dotazování v Azure Cosmos DB:
 
-|**Použití**|**Popis**|
+|**Využívání**|**Popis**|
 |---|---|
-| ST_DISTANCE (spatial_expr, spatial_expr) | Vrátí vzdálenost mezi dvěma výrazy GeoJSON Point, Polygon nebo LineString.|
-|ST_WITHIN (spatial_expr, spatial_expr) | Vrátí logický výraz označující, zda je první objekt GeoJSON (Point, Polygon nebo LineString) v rámci druhého objektu GeoJSON (Point, Polygon nebo LineString).|
-|ST_INTERSECTS (spatial_expr, spatial_expr)| Vrátí logický výraz označující, zda se dva zadané objekty GeoJSON (Point, Polygon nebo LineString) protínají.|
-|ST_ISVALID| Vrátí logickou hodnotu označující, zda je zadaný výraz GeoJSON Point, Polygon nebo LineString platný.|
-| ST_ISVALIDDETAILED| Vrátí hodnotu JSON obsahující logickou hodnotu, pokud je zadaný výraz GeoJSON Point, Polygon nebo LineString platný. Pokud je neplatný, vrátí důvod jako hodnotu řetězce.|
+| ST_DISTANCE (spatial_expr, spatial_expr) | Vrací vzdálenost mezi dvěma LineStringmi výrazy pro bodový odkaz, mnohoúhelník nebo.|
+|ST_WITHIN (spatial_expr, spatial_expr) | Vrátí logický výraz, který označuje, zda se první objekt LineString (Point, mnohoúhelník nebo) nachází v rámci druhého objektu. JSON (Point, mnohoúhelník nebo LineString).|
+|ST_INTERSECTS (spatial_expr, spatial_expr)| Vrátí logický výraz, který označuje, zda se protínají dva zadané objekty pro určování hodnoty Boolean (Point, mnohoúhelník nebo LineString).|
+|ST_ISVALID| Vrací logickou hodnotu označující, zda je zadaný bodový bod JSON, mnohoúhelník nebo výraz LineString platný.|
+| ST_ISVALIDDETAILED| Vrátí hodnotu JSON obsahující logickou hodnotu, pokud je platný zadaný bodový bod JSON, mnohoúhelník nebo výraz LineString. Pokud je neplatný, vrátí důvod jako řetězcovou hodnotu.|
 
-Prostorové funkce lze použít k provádění bezkontaktních dotazů proti prostorovým datům. Například je zde dotaz, který vrací všechny rodinné dokumenty, které jsou `ST_DISTANCE` do 30 km od zadaného umístění pomocí vestavěné funkce.
+Prostorové funkce lze použít k provádění dotazů na Proximity pro prostorová data. Tady je například dotaz, který vrátí všechny dokumenty rodiny, které jsou do 30 km ze zadaného umístění pomocí `ST_DISTANCE` předdefinované funkce.
 
-**Dotazu**
+**Dotaz**
 
 ```sql
     SELECT f.id
@@ -39,7 +39,7 @@ Prostorové funkce lze použít k provádění bezkontaktních dotazů proti pro
     WHERE ST_DISTANCE(f.location, {'type': 'Point', 'coordinates':[31.9, -4.8]}) < 30000
 ```
 
-**Results**
+**Výsledky**
 
 ```json
     [{
@@ -47,13 +47,13 @@ Prostorové funkce lze použít k provádění bezkontaktních dotazů proti pro
     }]
 ```
 
-Pokud zahrnete prostorové indexování v zásadách indexování, pak "dotazy na vzdálenost" budou efektivně obsluhovány prostřednictvím indexu. Další informace o prostorovém indexování naleznete v [tématu geoprostorové indexování](sql-query-geospatial-index.md). Pokud nemáte prostorový index pro zadané cesty, dotaz provede prohledání kontejneru.
+Pokud zahrnete prostorové indexování do zásad indexování, pak se v indexu budou efektivně obsluhovat dotazy na Distance. Další informace o prostorovém indexování najdete v tématu [geoprostorové indexování](sql-query-geospatial-index.md). Pokud pro zadané cesty nemáte prostorový index, dotaz provede kontrolu kontejneru.
 
-`ST_WITHIN`lze použít ke kontrole, zda bod leží v polygonu. Běžně polygony se používají k reprezentaci hranice jako PSČ, státní hranice nebo přírodní útvary. Opět platí, že pokud zahrnete prostorové indexování v zásadách indexování, pak "v rámci" dotazy budou obsluhovány efektivně prostřednictvím indexu.
+`ST_WITHIN`dá se použít ke kontrole, jestli v mnohoúhelníku leží bod. Běžně se používají mnohoúhelníky, které představují hranice, jako jsou PSČ, hranice státu nebo přirozené formy. Pokud zahrnete prostorové indexování do zásad indexování, pak budou dotazy v rámci v rámci indexu obsluhovány efektivně.
 
-Polygon argumenty `ST_WITHIN` v může obsahovat pouze jeden kroužek, to znamená, že polygony nesmí obsahovat díry v nich.
+Argumenty mnohoúhelníku `ST_WITHIN` v můžou obsahovat jenom jeden prstenec, to znamená, že mnohoúhelníky nesmí obsahovat v nich otvory.
 
-**Dotazu**
+**Dotaz**
 
 ```sql
     SELECT *
@@ -64,7 +64,7 @@ Polygon argumenty `ST_WITHIN` v může obsahovat pouze jeden kroužek, to znamen
     })
 ```
 
-**Results**
+**Výsledky**
 
 ```json
     [{
@@ -73,13 +73,13 @@ Polygon argumenty `ST_WITHIN` v může obsahovat pouze jeden kroužek, to znamen
 ```
 
 > [!NOTE]
-> Podobně jako neodpovídající typy fungují v dotazu Azure Cosmos DB, pokud je hodnota umístění zadaná v argumentu poškozená nebo neplatná, vyhodnotí se na **nedefinovaný** a vyhodnocený dokument, který má být přeskočen z výsledků dotazu. Pokud dotaz vrátí žádné `ST_ISVALIDDETAILED` výsledky, spusťte ladit, proč je prostorový typ neplatný.
+> Podobně jako v případě, že neodpovídající typy fungují v Azure Cosmos DB dotaz, pokud hodnota umístění zadaná v některém z argumentů je poškozená nebo neplatná, vyhodnotí se jako **nedefinované** a vyhodnocený dokument bude přeskočen z výsledků dotazu. Pokud Váš dotaz nevrátí žádné výsledky, `ST_ISVALIDDETAILED` spusťte příkaz pro ladění, proč je prostorový typ neplatný.
 >
 >
 
-Azure Cosmos DB také podporuje provádění inverzní dotazy, to znamená, že můžete indexovat polygony nebo řádky v Azure Cosmos DB, pak dotaz pro oblasti, které obsahují zadaný bod. Tento vzorec se běžně používá v logistice k identifikaci například při vjezdu nákladního vozidla nebo vyjetého z určeného prostoru.
+Azure Cosmos DB také podporuje provádění inverzních dotazů, to znamená, že je možné indexovat mnohoúhelníky nebo čáry v Azure Cosmos DB a pak se dotazovat na oblasti, které obsahují zadaný bod. Tento model se běžně používá v logistikě k identifikaci, například když nákladní vůz vstoupí nebo opustí určenou oblast.
 
-**Dotazu**
+**Dotaz**
 
 ```sql
     SELECT *
@@ -87,7 +87,7 @@ Azure Cosmos DB také podporuje provádění inverzní dotazy, to znamená, že 
     WHERE ST_WITHIN({'type': 'Point', 'coordinates':[31.9, -4.8]}, a.location)
 ```
 
-**Results**
+**Výsledky**
 
 ```json
     [{
@@ -99,15 +99,15 @@ Azure Cosmos DB také podporuje provádění inverzní dotazy, to znamená, že 
     }]
 ```
 
-`ST_ISVALID`a `ST_ISVALIDDETAILED` lze jej použít ke kontrole, zda je prostorový objekt platný. Například následující dotaz kontroluje platnost bodu s hodnotou šířky mimo rozsah (-132.8). `ST_ISVALID`vrátí pouze logickou hodnotu a `ST_ISVALIDDETAILED` vrátí logickou hodnotu a řetězec obsahující důvod, proč je považován za neplatný.
+`ST_ISVALID`a `ST_ISVALIDDETAILED` lze ji použít ke kontrole, zda je prostorový objekt platný. Například následující dotaz kontroluje platnost bodu s hodnotou zeměpisné šířky v rozsahu (-132,8). `ST_ISVALID`Vrátí pouze logickou hodnotu a `ST_ISVALIDDETAILED` vrátí logickou hodnotu a řetězec obsahující důvod, proč se považuje za neplatnou.
 
-**Dotazu**
+**Dotaz**
 
 ```sql
     SELECT ST_ISVALID({ "type": "Point", "coordinates": [31.9, -132.8] })
 ```
 
-**Results**
+**Výsledky**
 
 ```json
     [{
@@ -115,9 +115,9 @@ Azure Cosmos DB také podporuje provádění inverzní dotazy, to znamená, že 
     }]
 ```
 
-Tyto funkce lze také použít k ověření polygonů. Například zde používáme `ST_ISVALIDDETAILED` k ověření polygon, který není uzavřen.
+Tyto funkce lze také použít k ověření mnohoúhelníků. Například zde používáme `ST_ISVALIDDETAILED` k ověření mnohoúhelníku, který není uzavřený.
 
-**Dotazu**
+**Dotaz**
 
 ```sql
     SELECT ST_ISVALIDDETAILED({ "type": "Polygon", "coordinates": [[ 
@@ -125,7 +125,7 @@ Tyto funkce lze také použít k ověření polygonů. Například zde použív�
         ]]})
 ```
 
-**Results**
+**Výsledky**
 
 ```json
     [{
@@ -136,13 +136,13 @@ Tyto funkce lze také použít k ověření polygonů. Například zde použív�
     }]
 ```
 
-## <a name="linq-querying-in-the-net-sdk"></a>Dotazování LINQ v sdk .NET SDK
+## <a name="linq-querying-in-the-net-sdk"></a>Dotazování LINQ v sadě .NET SDK
 
-Sada SQL .NET SDK také `Distance()` `Within()` poskytovatelí metod se zakázaným inzerováním a pro použití v rámci výrazů LINQ. Zprostředkovatel SQL LINQ překládá volání této metody na ekvivalentní volání vestavěné funkce SQL (ST_DISTANCE a ST_WITHIN).
+Sada SQL .NET SDK také poskytovatelé zástupné metody `Distance()` a `Within()` pro použití ve výrazech LINQ. Poskytovatel SQL LINQ překládá tuto metodu na ekvivalentní volání integrovaných funkcí SQL (ST_DISTANCE a ST_WITHIN v uvedeném pořadí).
 
-Tady je příklad dotazu LINQ, který vyhledá všechny dokumenty `location` v kontejneru Azure Cosmos, jehož hodnota je v okruhu 30 km od zadaného bodu pomocí LINQ.
+Tady je příklad dotazu LINQ, který vyhledá všechny dokumenty v kontejneru Azure Cosmos, jehož `location` hodnota je v poloměru 30 km zadaného bodu pomocí LINQ.
 
-**Dotaz LINQ pro vzdálenost**
+**Dotaz LINQ na vzdálenost**
 
 ```csharp
     foreach (UserProfile user in container.GetItemLinqQueryable<UserProfile>(allowSynchronousQueryExecution: true)
@@ -152,9 +152,9 @@ Tady je příklad dotazu LINQ, který vyhledá všechny dokumenty `location` v k
     }
 ```
 
-Podobně zde je dotaz pro hledání všech `location` dokumentů, jejichž je v rámci zadaného pole/Polygon.
+Podobně tady je dotaz pro vyhledání všech dokumentů, jejichž `location` je v zadaném poli nebo mnohoúhelníku.
 
-**LINQ dotaz pro Uvnitř**
+**Dotaz LINQ pro v rámci**
 
 ```csharp
     Polygon rectangularArea = new Polygon(
@@ -178,8 +178,8 @@ Podobně zde je dotaz pro hledání všech `location` dokumentů, jejichž je v 
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste se naučili, jak začít s geoprostorovou podporou v Azure Cosmos DB, můžete další:
+Teď, když jste se naučili, jak začít se geoprostorové podpory v Azure Cosmos DB, můžete následující:
 
-* Další informace o [dotazu Azure Cosmos DB Query](sql-query-getting-started.md)
-* Další informace o [geografických prostorových datech a datech o poloze GeoJSON v Azure Cosmos DB](sql-query-geospatial-intro.md)
+* Další informace o [Azure Cosmos DB dotaz](sql-query-getting-started.md)
+* Další informace o [umístění geoprostorového a geografického umístění JSON v Azure Cosmos DB](sql-query-geospatial-intro.md)
 * Další informace o [indexování prostorových dat pomocí Azure Cosmos DB](sql-query-geospatial-index.md)

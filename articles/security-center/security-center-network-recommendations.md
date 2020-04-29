@@ -1,6 +1,6 @@
 ---
 title: Ochrana síťových prostředků v Azure Security Center
-description: Tento dokument řeší doporučení v Azure Security Center, které vám pomohou chránit vaše síťové prostředky Azure a zůstat v souladu se zásadami zabezpečení.
+description: Tento dokument popisuje doporučení v Azure Security Center, která vám pomůžou chránit vaše síťové prostředky Azure a zůstat v souladu se zásadami zabezpečení.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,131 +14,131 @@ ms.workload: na
 ms.date: 04/05/2019
 ms.author: memildin
 ms.openlocfilehash: 792b95b120f67afcd360730acbd783a3071388b2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77431481"
 ---
 # <a name="protect-your-network-resources"></a>Ochrana síťových prostředků
-Azure Security Center průběžně analyzuje stav zabezpečení vašich prostředků Azure pro osvědčené postupy zabezpečení sítě. Když Security Center identifikuje potenciální slabá místa zabezpečení, vytvoří doporučení, která vás provedou procesem konfigurace potřebných ovládacích prvků pro posílení a ochranu vašich prostředků.
+Azure Security Center průběžně analyzuje stav zabezpečení vašich prostředků Azure pro osvědčené postupy zabezpečení sítě. Když Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří doporučení, která vás provedou procesem konfigurace potřebných ovládacích prvků k posílení a ochraně vašich prostředků.
 
-Tento článek vysvětluje stránku **Síť** v části Zabezpečení prostředků centra zabezpečení.
+Tento článek vysvětluje stránku **síť** v části věnované zabezpečení prostředků v Security Center.
 
-Úplný seznam doporučení pro vytváření sítí naleznete v tématu [Networking recommendations](recommendations-reference.md#recs-network).
+Úplný seznam doporučení pro sítě najdete v tématu [doporučení pro sítě](recommendations-reference.md#recs-network).
 
-Tento článek řeší doporučení, která se vztahují na prostředky Azure z hlediska zabezpečení sítě. Doporučení pro sítě se soustřeďují kolem firewallů nové generace, skupin zabezpečení sítě, přístupu k virtuálním účtům JIT, příliš tolerantních pravidel příchozího provozu a dalších. Seznam doporučení pro sítě a nápravných akcí najdete [v tématu Správa doporučení zabezpečení v Centru zabezpečení Azure](security-center-recommendations.md).
+Tento článek se zabývá doporučeními, která se vztahují na vaše prostředky Azure z hlediska zabezpečení sítě. Doporučení pro sítě – centrum pro brány firewall nové generace, skupiny zabezpečení sítě, přístup k virtuálnímu počítači JIT, který má nadlimitně povolující pravidla příchozího provozu a další. Seznam doporučení k síti a nápravné akce najdete v tématu [Správa doporučení zabezpečení v Azure Security Center](security-center-recommendations.md).
 
 > [!NOTE]
-> Stránka **Síť** umožňuje podrobné prolomení stavu prostředků Azure z hlediska sítě. Mapa sítě a adaptivní síťové ovládací prvky jsou k dispozici pouze pro standardní úroveň Azure Security Center. [Pokud používáte bezplatnou úroveň, můžete klepnutím na tlačítko **zobrazit starší síť** a přijímat doporučení síťových prostředků](#legacy-networking).
+> Stránka **síť** vám umožňuje hluboko podrobně do stavu prostředků Azure z hlediska sítě. Mapa sítě a adaptivní síťové ovládací prvky jsou k dispozici pouze pro Azure Security Center úrovně Standard. [Pokud používáte úroveň Free, můžete kliknutím na toto tlačítko **Zobrazit starší síťové sítě** a přijímat doporučení síťových prostředků](#legacy-networking).
 >
 
-Stránka **Síť** poskytuje přehled oddílů, do kterých se můžete hlouběji ponořit, abyste získali další informace o stavu síťových prostředků:
+Stránka **sítě** poskytuje přehled oddílů, které můžete hluboko podrobně, a získat další informace o stavu síťových prostředků:
 
-- Mapa sítě (pouze úroveň Azure Security Center Standard)
+- Mapa sítě (jenom Azure Security Center úrovně Standard)
 - Adaptivní posilování zabezpečení sítě
 - Doporučení zabezpečení sítě.
-- Rozhraní Legacy **Networking** Blade (předchozí síťové okno) 
+- Okno starší **sítě** (okno předchozí sítě) 
  
-[![Podokno Síť](./media/security-center-network-recommendations/networking-pane.png)](./media/security-center-network-recommendations/networking-pane.png#lightbox)
+[![Podokno sítě](./media/security-center-network-recommendations/networking-pane.png)](./media/security-center-network-recommendations/networking-pane.png#lightbox)
 
 ## <a name="network-map"></a>Mapa sítě
-Interaktivní mapa sítě poskytuje grafické zobrazení s překryvy zabezpečení, které poskytují doporučení a přehledy pro posílení zabezpečení síťových prostředků. Pomocí mapy můžete zobrazit topologii sítě úloh Azure, připojení mezi virtuálními počítači a podsítěmi a možnost přejít z mapy na konkrétní prostředky a doporučení pro tyto prostředky.
+Mapa interaktivní sítě poskytuje grafické zobrazení s překryvy zabezpečení, které vám dává doporučení a přehledy o posílení vašich síťových prostředků. Pomocí mapy můžete zobrazit topologii sítě vašich úloh Azure, připojení mezi virtuálními počítači a podsítěmi a schopnost přejít k podrobnostem z mapy do konkrétních prostředků a doporučení pro tyto prostředky.
 
-Otevření mapy Sítě:
+Otevření mapy sítě:
 
-1. V Centru zabezpečení vyberte v části Hygiena zabezpečení prostředků **položku Networking**.
+1. V Security Center v části hygiena zabezpečení prostředků vyberte **sítě**.
 2. V části **Mapa sítě** klikněte na **Zobrazit topologii**.
  
-Výchozí zobrazení mapy topologie se zobrazí:
+Výchozí zobrazení mapy topologie zobrazuje:
 
-- Předplatná, která jste vybrali v Azure. Mapa podporuje více odběrů.
-- Virtuální počítače, podsítě a virtuální sítě typu prostředků Správce prostředků (klasické prostředky Azure nejsou podporované)
-- Partnerské virtuální sítě
+- Předplatná, která jste vybrali v Azure. Mapa podporuje více předplatných.
+- Virtuální počítače, podsítě a virtuální sítě typ prostředku pro Správce prostředků (klasické prostředky Azure se nepodporují.)
+- Partnerský virtuální sítě
 - Pouze prostředky, které mají [doporučení sítě](security-center-recommendations.md) s vysokou nebo střední závažností  
 - Internetové prostředky
-- Mapa je optimalizovaná pro předplatná, která jste vybrali v Azure. Pokud změníte výběr, mapa se přepočítá a přepracuje na základě nového nastavení.  
+- Mapa je optimalizovaná pro odběry, které jste vybrali v Azure. Pokud upravíte svůj výběr, mapa se přepočítá a znovu optimalizuje na základě vašeho nového nastavení.  
 
 [![Mapa topologie sítě](./media/security-center-network-recommendations/network-map-info.png)](./media/security-center-network-recommendations/network-map-info.png#lightbox)
 
-## <a name="understanding-the-network-map"></a>Principy mapy sítě
+## <a name="understanding-the-network-map"></a>Princip mapy sítě
 
-Mapa síť vám může zobrazit prostředky Azure v zobrazení **Topologie** a **Zobrazení provozu.** 
+Mapa sítě může zobrazit vaše prostředky Azure v zobrazení **topologie** a v zobrazení **přenosů** . 
 
 ### <a name="the-topology-view"></a>Zobrazení topologie
 
-V zobrazení **Topologie** na mapě sítě můžete zobrazit následující přehledy o síťových prostředcích:
+V zobrazení **topologie** mapy sítě si můžete zobrazit následující přehled o síťových prostředcích:
 
-- Ve vnitřním kruhu můžete vidět všechny virtuální sítě v rámci vybraných odběrů, další kruh jsou všechny podsítě, vnější kruh jsou všechny virtuální počítače.
-- Řádky spojující prostředky na mapě vás naštěhnou, které prostředky jsou vzájemně spojené a jak je vaše síť Azure strukturovaná. 
-- Pomocí indikátorů závažnosti můžete rychle získat přehled o tom, které prostředky mají otevřená doporučení z Centra zabezpečení.
-- Můžete kliknout na některý z prostředků k podrobnostem a zobrazit podrobnosti o tomto prostředku a jeho doporučení přímo a v kontextu mapy sítě.  
-- Pokud je na mapě zobrazeno příliš mnoho prostředků, Azure Security Center používá svůj vlastní algoritmus k inteligentnímu clusteru vašich prostředků, zvýraznění prostředků, které jsou v nejkritičtějším stavu a mají doporučení s nejvyšší závažností. 
+- Ve vnitřním kruhu vidíte všechny virtuální sítěy v rámci vybraných předplatných, další kruh je všechny podsítě, vnější kroužek je všech virtuálních počítačů.
+- Linky spojující prostředky na mapě vám umožní zjistit, které prostředky jsou vzájemně přidružené a jak je vaše síť Azure strukturovaná. 
+- Indikátory závažnosti vám umožní rychle získat přehled o tom, které prostředky mají otevřená doporučení od Security Center.
+- Kliknutím na kterýkoli z prostředků můžete přejít k podrobnostem a zobrazit podrobnosti o tomto prostředku a jeho doporučeních přímo a v kontextu mapy sítě.  
+- Pokud se na mapě zobrazuje příliš mnoho prostředků, Azure Security Center používá vlastní algoritmus k inteligentnímu clusteringu vašich prostředků, zvýrazňování prostředků, které jsou v nejzávažnější stavu, a má doporučení s vysokou závažností. 
 
-Vzhledem k tomu, že mapa je interaktivní a dynamická, lze na každý uzel kliknout a zobrazení se může měnit na základě filtrů:
+Vzhledem k tomu, že je mapa interaktivní a dynamická, na každý uzel lze kliknout a zobrazení se může změnit v závislosti na filtrech:
 
-1. To, co vidíte na mapě sítě, můžete upravit pomocí filtrů nahoře. Mapu můžete zaměřit na základě:
+1. To, co vidíte na mapě sítě, můžete změnit pomocí filtrů v horní části. Mapu můžete zaměřit na:
 
-   -  **Stav zabezpečení**: Mapu můžete filtrovat na základě závažnosti (vysoká, střední, nízká) prostředků Azure.
-   - **Doporučení**: Můžete vybrat, které prostředky se zobrazí na základě doporučení, která jsou aktivní na těchto prostředcích. Můžete například zobrazit pouze prostředky, pro které Centrum zabezpečení doporučuje povolit skupiny zabezpečení sítě.
-   - **Síťové zóny**: Ve výchozím nastavení se na mapě zobrazují pouze internetové prostředky, můžete také vybrat interní virtuální aplikace.
+   -  **Stav zabezpečení**: mapu můžete filtrovat podle závažnosti (vysoká, střední, nízká) vašich prostředků Azure.
+   - **Doporučení**: můžete vybrat, které prostředky se zobrazí v závislosti na tom, která doporučení jsou na těchto prostředcích aktivní. Můžete například zobrazit pouze prostředky, pro které Security Center doporučuje povolit skupiny zabezpečení sítě.
+   - **Síťové zóny**: ve výchozím nastavení se na mapě zobrazí jenom internetové prostředky, můžete vybrat taky interní virtuální počítače.
  
-2. Chcete-li mapu kdykoli vrátit do výchozího stavu, můžete kdykoli klepnout na tlačítko **Obnovit** v levém horním rohu.
+2. Kliknutím na **resetovat** v levém horním rohu můžete kdykoli vrátit mapu do výchozího stavu.
 
-Postup přechodu k podrobnostem o prostředku:
+Přechod k podrobnostem prostředku:
 
-1. Když vyberete konkrétní prostředek na mapě, otevře se pravé podokno a poskytne obecné informace o prostředku, připojených řešenízabezpečení, pokud existují, a doporučení týkající se prostředku. Jedná se o stejný typ chování pro každý typ prostředku, který vyberete. 
-2. Když najedete na uzel v mapě, můžete zobrazit obecné informace o prostředku, včetně předplatného, typu prostředku a skupiny prostředků.
-3. Pomocí odkazu můžete přiblížit špičku nástroje a znovu zaostřit mapu na daný uzel. 
-4. Chcete-li mapu znovu zaostřit od určitého uzlu, oddálit ji.
+1. Když na mapě vyberete konkrétní prostředek, otevře se pravé podokno a zobrazí se obecné informace o prostředku, připojená řešení zabezpečení, pokud existují, a doporučení relevantních pro daný prostředek. Je to stejný typ chování pro každý vybraný typ prostředku. 
+2. Když najedete myší na uzel v mapě, můžete zobrazit obecné informace o prostředku, včetně předplatného, typu prostředku a skupiny prostředků.
+3. Pomocí tohoto odkazu se přiblížíte k popisu tlačítka a přesměrujte mapu na daném konkrétním uzlu. 
+4. Chcete-li znovu umístit mapu z konkrétního uzlu, zmenšete ji.
 
-### <a name="the-traffic-view"></a>Zobrazení Dopravní
+### <a name="the-traffic-view"></a>Zobrazení přenosů
 
-Zobrazení **Dopravní** poskytuje mapu veškerého možného provozu mezi vašimi zdroji. To poskytuje vizuální mapu všech pravidel, která jste nakonfigurovali a která definují, které prostředky mohou komunikovat s kým. To umožňuje zobrazit existující konfiguraci skupin zabezpečení sítě a rychle identifikovat možné rizikové konfigurace v rámci úloh.
+Zobrazení **přenosů** poskytuje mapu veškerého možného provozu mezi prostředky. Zobrazí se vám vizuální mapa všech nakonfigurovaných pravidel definujících, které prostředky mohou komunikovat s kým. To vám umožní zobrazit existující konfiguraci skupin zabezpečení sítě a rychle identifikovat možné rizikové konfigurace v rámci vašich úloh.
 
-### <a name="uncover-unwanted-connections"></a>Odhalte nežádoucí připojení
+### <a name="uncover-unwanted-connections"></a>Odkrýt nechtěné připojení
 
-Síla tohoto zobrazení je v jeho schopnost zobrazit tato povolená připojení spolu s existujícími chybami zabezpečení, takže můžete použít tento průřez dat k provedení potřebné posílení zabezpečení na vaše prostředky. 
+Síla tohoto zobrazení je ve své schopnosti, aby vám ukázala, že tato povolená připojení jsou spojená s ohroženými chybami zabezpečení, takže můžete použít tuto průřezovou část dat k provádění nezbytných posílení zabezpečení vašich prostředků. 
 
-Můžete například zjistit dva počítače, o kterých jste nevěděli, že mohou komunikovat, což vám umožní lépe izolovat úlohy a podsítě.
+Můžete například zjistit, že se dva počítače, které nevíte, můžou komunikovat, a umožnit vám tak lepší izolaci úloh a podsítí.
 
-### <a name="investigate-resources"></a>Prozkoumání zdrojů
+### <a name="investigate-resources"></a>Prozkoumat prostředky
 
-Postup přechodu k podrobnostem o prostředku:
+Přechod k podrobnostem prostředku:
 
-1. Když vyberete konkrétní prostředek na mapě, otevře se pravé podokno a poskytne obecné informace o prostředku, připojených řešenízabezpečení, pokud existují, a doporučení týkající se prostředku. Jedná se o stejný typ chování pro každý typ prostředku, který vyberete. 
-2. Kliknutím na **položku Přenos** zobrazíte seznam možných odchozích a příchozích přenosů na prostředku – toto je úplný seznam toho, kdo může s zdrojem komunikovat a s kým může komunikovat a přes který protokoly a porty. Například když vyberete virtuální hod, zobrazí se všechny virtuální ho mohou komunikovat a když vyberete podsíť, zobrazí se všechny podsítě, se kterými může komunikovat.
+1. Když na mapě vyberete konkrétní prostředek, otevře se pravé podokno a zobrazí se obecné informace o prostředku, připojená řešení zabezpečení, pokud existují, a doporučení relevantních pro daný prostředek. Je to stejný typ chování pro každý vybraný typ prostředku. 
+2. Kliknutím na **provoz** zobrazíte seznam možných odchozích a příchozích přenosů v prostředku – jedná se o úplný seznam, který může komunikovat s prostředkem a na základě jakých protokolů a portů může komunikovat. Když například vyberete virtuální počítač, zobrazí se všechny virtuální počítače, se kterými může komunikovat, a když vyberete podsíť, zobrazí se všechny podsítě, se kterými může komunikovat.
 
-**Tato data jsou založena na analýze skupin zabezpečení sítě a pokročilých algoritmů strojového učení, které analyzují více pravidel, aby porozuměly jejich přechodům a interakcím.** 
+**Tato data vycházejí z analýzy skupin zabezpečení sítě a pokročilých algoritmů strojového učení, které analyzují více pravidel, aby bylo možné pochopit jejich křížení a interakce.** 
 
-[![Mapa síťového provozu](./media/security-center-network-recommendations/network-map-traffic.png)](./media/security-center-network-recommendations/network-map-traffic.png#lightbox)
+[![Mapa síťových přenosů](./media/security-center-network-recommendations/network-map-traffic.png)](./media/security-center-network-recommendations/network-map-traffic.png#lightbox)
 
 
-## <a name="legacy-networking"></a>Starší sítě<a name ="legacy-networking"></a>
+## <a name="legacy-networking"></a>Starší verze sítě<a name ="legacy-networking"></a>
 
-Pokud nemáte úroveň Standard Centra zabezpečení, tato část vysvětluje, jak zobrazit bezplatná doporučení pro vytváření sítí.
+Pokud nemáte Security Center úroveň Standard, v této části se dozvíte, jak zobrazit bezplatné síťové doporučení.
 
-Chcete-li získat přístup k těmto informacím, klepněte v okně Síť na **tlačítko Zobrazit starší síť**. 
+Pokud chcete získat přístup k těmto informacím, klikněte v okně síť na **Zobrazit starší síťové služby**. 
 
-[![Starší sítě](./media/security-center-network-recommendations/legacy-networking.png)](./media/security-center-network-recommendations/legacy-networking.png#lightbox)
+[![Starší verze sítě](./media/security-center-network-recommendations/legacy-networking.png)](./media/security-center-network-recommendations/legacy-networking.png#lightbox)
 
 ### <a name="internet-facing-endpoints-section"></a>Část internetových koncových bodů
-V části **koncové body směřující k Internetu** uvidíte virtuální počítače, které jsou aktuálně nakonfigurované s koncovým bodem směřujícím k Internetu a jeho stavem.
+V části **internetové koncové body** uvidíte virtuální počítače, které jsou aktuálně nakonfigurované s internetovým koncovým bodem, a jeho stav.
 
-Tato tabulka má název koncového bodu, internetovou adresu IP a aktuální stav závažnosti skupiny zabezpečení sítě a doporučení NGFW. Tabulka je seřazena podle závažnosti.
+Tato tabulka obsahuje název koncového bodu, internetovou IP adresu a aktuální stav závažnosti skupiny zabezpečení sítě a doporučení pro NGFW. Tabulka je řazená podle závažnosti.
 
 ### <a name="networking-topology-section"></a>Část topologie sítě
-Sekce **Topologie sítě** má hierarchické zobrazení zdrojů.
+Část **topologie sítě** obsahuje hierarchické zobrazení prostředků.
 
-Tato tabulka je seřazena (virtuální počítače a podsítě) podle závažnosti.
+Tato tabulka je seřazená podle závažnosti (virtuální počítače a podsítě).
 
-V tomto zobrazení topologie zobrazí první úroveň virtuální sítě. Druhá zobrazí podsítě a třetí úroveň zobrazí virtuální počítače, které patří do těchto podsítí. V pravém sloupci je uveden aktuální stav doporučení skupiny zabezpečení sítě pro tyto prostředky.
+V tomto zobrazení topologie zobrazuje první úroveň virtuální sítě. Druhý zobrazí podsítě a třetí úroveň zobrazí virtuální počítače, které patří do těchto podsítí. V pravém sloupci se zobrazuje aktuální stav doporučení skupiny zabezpečení sítě pro tyto prostředky.
 
-Třetí úroveň zobrazuje virtuální počítače, což je podobné tomu, co je popsáno výše. Kliknutím na libovolný prostředek se dozvíte více nebo použijete požadovaný ovládací prvek zabezpečení nebo konfiguraci.
+Třetí úroveň zobrazuje virtuální počítače, které jsou podobné tomu, co bylo popsáno dříve. Kliknutím na libovolný prostředek můžete získat další informace nebo použít požadovaný ovládací prvek zabezpečení nebo konfiguraci.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o doporučeních, která platí pro jiné typy prostředků Azure, najdete v následujících tématech:
+Další informace o doporučeních, která se vztahují na jiné typy prostředků Azure, najdete v následujících tématech:
 
 * [Ochrana počítačů a aplikací ve službě Azure Security Center](security-center-virtual-machine-protection.md)
-* [Ochrana služby Azure SQL v Azure Security Center](security-center-sql-service-recommendations.md)
+* [Ochrana služby Azure SQL Service v Azure Security Center](security-center-sql-service-recommendations.md)

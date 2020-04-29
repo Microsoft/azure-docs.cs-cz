@@ -9,10 +9,10 @@ ms.date: 09/11/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: 6911f769b95967aac933dd9762263e7506aef4b5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77192620"
 ---
 ## <a name="create-the-webapi-project"></a>Vytvoření projektu WebAPI
@@ -33,7 +33,7 @@ Vytvořte nový back-end ASP.NET WebAPI provedením následujících akcí:
 ![][B4]
 
 > [!NOTE]
-> Ujistěte se, že jste nainstalovali visual studio [Azure SDK](https://azure.microsoft.com/downloads/) pro nasazení webu.
+> Ujistěte se, že máte nainstalovanou sadu Visual Studio [Azure SDK](https://azure.microsoft.com/downloads/) pro nasazení webu.
 
 1. Spusťte sadu Visual Studio nebo Visual Studio Express.
 
@@ -59,7 +59,7 @@ Vytvořte nový back-end ASP.NET WebAPI provedením následujících akcí:
 
     ![Okno Konfigurovat webovou aplikaci Microsoft Azure][B5]
 
-    Pokud tuto stránku pro konfiguraci plánu služby App Service nevidíte, pokračujte v kurzu. Můžete ji nakonfigurovat při publikování aplikace později. 
+    Pokud nevidíte tuto stránku pro konfiguraci plánu služby App Service, pokračujte v tomto kurzu. Můžete ji nakonfigurovat při pozdějším publikování aplikace. 
 
 ## <a name="authenticate-clients-to-the-webapi-backend"></a>Ověřování klientů v back-endu WebAPI
 
@@ -186,7 +186,7 @@ V této části přidáte do back-endu WebAPI nový kontroler, který bude zprac
     }
     ```
     > [!IMPORTANT]
-    > Před pokračováním zadejte **název** a výchozí hodnotu **DefaultFullSharedAccessSignature** centra. 
+    > Než budete pokračovat, zadejte **název** a **DefaultFullSharedAccessSignature** svého rozbočovače. 
     
 7. Dále vytvořte nový kontroler **RegisterController**. V Průzkumníku řešení klikněte pravým tlačítkem na složku **Kontrolery**, vyberte **Přidat** a pak vyberte **Kontroler**.
 
@@ -390,7 +390,7 @@ Dále tuto aplikaci nasadíte na web Azure, aby byla přístupná ze všech zař
 
     ![Dlaždice Microsoft Azure App Service][B15]
 
-3. V okně **Vytvořit plán App Service** vyberte váš účet Azure. Vyberte **Změnit typ** > **webové aplikace**. Ponechejte výchozí **Název webové aplikace** a vyberte **Předplatné**, **Skupinu prostředků** a **Plán služby App Service**.
+3. V okně **Vytvořit plán App Service** vyberte váš účet Azure. Vyberte možnost **změnit typ** > **webové aplikace**. Ponechejte výchozí **Název webové aplikace** a vyberte **Předplatné**, **Skupinu prostředků** a **Plán služby App Service**.
 
 4. Vyberte **Vytvořit**.
 

@@ -1,6 +1,6 @@
 ---
-title: Použití rozhraní AMQP s rozhraním API služby Java Message Service & Azure Service Bus
-description: How to use the Java Message Service (JMS) with Azure Service Bus and Advanced Message Queuing Protocol (AMQP) 1.0.
+title: Použití AMQP s rozhraním API služby Java Message Service & Azure Service Bus
+description: Jak používat službu JMS (Java Message Service) s Azure Service Bus a rozšířený protokol řízení front zpráv (AMQP) (AMQP) 1,0.
 services: service-bus-messaging
 documentationcenter: java
 author: axisc
@@ -15,41 +15,41 @@ ms.date: 10/22/2019
 ms.author: aschhab
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
 ms.openlocfilehash: cd06838abbb69af5684fdea18c42f6a8f95ffe2f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77371251"
 ---
-# <a name="use-the-java-message-service-jms-with-azure-service-bus-and-amqp-10"></a>Use the Java Message Service (JMS) with Azure Service Bus and AMQP 1.0
-Tento článek vysvětluje, jak používat funkce zasílání zpráv Azure Service Bus (fronty a publikování/odběr témata) z aplikací Java pomocí populární java message service service (JMS) rozhraní API standard. Je [doprovodný článek,](service-bus-amqp-dotnet.md) který vysvětluje, jak provést totéž pomocí rozhraní AZURE Service Bus .NET API. Pomocí těchto dvou průvodců můžete společně získat informace o zasílání zpráv mezi platformami pomocí amqp 1.0.
+# <a name="use-the-java-message-service-jms-with-azure-service-bus-and-amqp-10"></a>Použití JMS (Java Message Service) s Azure Service Bus a AMQP 1,0
+V tomto článku se dozvíte, jak používat funkce Azure Service Bus zasílání zpráv (fronty a témata pro publikování a odběr) z aplikací Java pomocí oblíbeného standardu rozhraní API pro JMS (Java Message Service). K dispozici je [doprovodný článek](service-bus-amqp-dotnet.md) , který vysvětluje, jak to samé provést pomocí rozhraní API Azure Service Bus .NET. Tyto dvě příručky můžete použít společně a získat další informace o zasílání zpráv mezi různými platformami pomocí AMQP 1,0.
 
-Protokol AMQP (Advanced Message Queuing Protocol) 1.0 (Advanced Message Queuing Protocol) 1.0 je efektivní, spolehlivý protokol zasílání zpráv na úrovni drátu, který lze použít k vytváření robustních aplikací pro zasílání zpráv napříč platformami.
+Rozšířený protokol řízení front zpráv (AMQP) (AMQP) 1,0 je efektivní a spolehlivý přenosový protokol zasílání zpráv, který můžete použít k vytváření robustních aplikací zasílání zpráv pro různé platformy.
 
-Podpora AMQP 1.0 v Azure Service Bus znamená, že můžete použít fronty a publikovat a odebírat zprostředkované funkce zasílání zpráv z řady platforem pomocí efektivníbinární protokol. Kromě toho můžete vytvářet aplikace složené z součástí vytvořených pomocí kombinace jazyků, architektur a operačních systémů.
+Podpora AMQP 1,0 v Azure Service Bus znamená, že můžete používat funkce řazení a publikování zprostředkovaných zpráv z různých platforem pomocí efektivního binárního protokolu. Kromě toho můžete sestavovat aplikace tvořené komponentami sestavenými pomocí kombinace jazyků, platforem a operačních systémů.
 
 ## <a name="get-started-with-service-bus"></a>Začínáme se službou Service Bus
-Tato příručka předpokládá, že již máte obor názvů `basicqueue`Service Bus obsahující frontu s názvem . Pokud tak nechcete, můžete [vytvořit obor názvů a fronty](service-bus-create-namespace-portal.md) pomocí [portálu Azure](https://portal.azure.com). Další informace o vytváření oborů názvů a front služby Service Bus naleznete v tématu [Začínáme s frontami služby Service Bus](service-bus-dotnet-get-started-with-queues.md).
+V tomto průvodci se předpokládá, že už máte obor názvů Service Bus obsahující frontu s názvem `basicqueue`. Pokud to neuděláte, můžete [vytvořit obor názvů a frontu](service-bus-create-namespace-portal.md) pomocí [Azure Portal](https://portal.azure.com). Další informace o tom, jak vytvořit Service Bus obory názvů a fronty, najdete v tématu Začínáme [s Service Bus fronty](service-bus-dotnet-get-started-with-queues.md).
 
 > [!NOTE]
-> AMQP také podporují rozdělené fronty a témata. Další informace naleznete v [tématu Partitioned messaging entities](service-bus-partitioning.md) a [AMQP 1.0 support for Service Bus partitioned queues and topics](service-bus-partitioned-queues-and-topics-amqp-overview.md).
+> Dělené fronty a témata také podporují AMQP. Další informace najdete v tématech [rozdělené entity zasílání zpráv](service-bus-partitioning.md) a [Podpora AMQP 1,0 pro Service Bus dělené fronty a témata](service-bus-partitioned-queues-and-topics-amqp-overview.md).
 > 
 > 
 
-## <a name="downloading-the-amqp-10-jms-client-library"></a>Stažení klientské knihovny AMQP 1.0 JMS
-Informace o tom, kde stáhnout nejnovější verzi klientské knihovny Apache Qpid JMS AMQP 1.0, naleznete na adrese [https://qpid.apache.org/download.html](https://qpid.apache.org/download.html).
+## <a name="downloading-the-amqp-10-jms-client-library"></a>Stažení klientské knihovny AMQP 1,0 JMS
+Informace o tom, kde stáhnout nejnovější verzi klientské knihovny Apache Qpid JMS AMQP 1,0, najdete [https://qpid.apache.org/download.html](https://qpid.apache.org/download.html)v části.
 
-Při vytváření a spouštění aplikací JMS se službou Service Bus je nutné přidat následující čtyři soubory JAR z distribučního archivu Apache Qpid JMS AMQP 1.0 do cesty Java CLASSPATH:
+Při sestavování a spouštění aplikací JMS pomocí Service Bus musíte do cesty k cestě Java přidat následující čtyři soubory JAR z distribučního archivu Apache Qpid JMS AMQP 1,0:
 
-* geronimo-jms\_1.1\_spec-1.0.jar
-* qpid-jms-client-[verze].jar
+* Geronimo-JMS\_1,1\_spec-1.0. jar
+* qpid-JMS-Client-[verze]. jar
 
 > [!NOTE]
-> JMS JAR názvy a verze může změnit. Podrobnosti viz [Qpid JMS - AMQP 1.0](https://qpid.apache.org/maven.html#qpid-jms-amqp-10).
+> Názvy a verze JAR JMS se možná změnily. Podrobnosti najdete v tématu [QPID JMS-AMQP 1,0](https://qpid.apache.org/maven.html#qpid-jms-amqp-10).
 
-## <a name="coding-java-applications"></a>Kódování java aplikací
-### <a name="java-naming-and-directory-interface-jndi"></a>Java pojmenování a adresář rozhraní (JNDI)
-JMS používá Java Naming and Directory Interface (JNDI) k vytvoření oddělení logických názvů a fyzických názvů. Dva typy objektů JMS jsou vyřešeny pomocí JNDI: ConnectionFactory a Destination. JNDI používá model zprostředkovatele, do kterého můžete připojit různé adresářové služby pro zpracování povinností překladu názvů. Knihovna Apache Qpid JMS AMQP 1.0 je dodávána s jednoduchým poskytovatelem JNDI založeným na souboru vlastností, který je nakonfigurován pomocí souboru vlastností následujícího formátu:
+## <a name="coding-java-applications"></a>Kódování aplikací Java
+### <a name="java-naming-and-directory-interface-jndi"></a>Názvy rozhraní a adresáře Java (JNDI)
+JMS pomocí rozhraní JNDI (naming and Directory Interface) Java vytvoří oddělení mezi logickými názvy a fyzickými názvy. Dva typy objektů JMS jsou vyřešeny pomocí JNDI: ConnectionFactory a Destination. JNDI používá model poskytovatele, ve kterém můžete připojit různé adresářové služby ke zpracování povinností překladu názvů. Knihovna Apache Qpid JMS AMQP 1,0 obsahuje jednoduchý poskytovatel JNDI založený na souboru s vlastnostmi, který je nakonfigurovaný pomocí souboru vlastností v následujícím formátu:
 
 ```TEXT
 # servicebus.properties - sample JNDI configuration
@@ -64,9 +64,9 @@ connectionfactory.SBCF = amqps://[SASPolicyName]:[SASPolicyKey]@[namespace].serv
 queue.QUEUE = queue1
 ```
 
-#### <a name="setup-jndi-context-and-configure-the-connectionfactory"></a>Nastavení kontextu JNDI a Konfigurace technologie ConnectionFactory
+#### <a name="setup-jndi-context-and-configure-the-connectionfactory"></a>Nastavení kontextu JNDI a konfigurace ConnectionFactory
 
-**ConnectionString** odkazovaný v tom, který je k dispozici v "Zásady sdíleného přístupu" na [portálu Azure](https://portal.azure.com) v části **Primární připojovací řetězec**
+**ConnectionString** , na který se odkazuje v seznamu, který je k dispozici v části zásady sdíleného přístupu v [Azure Portal](https://portal.azure.com) pod **primárním připojovacím řetězcem**
 ```java
 // The connection string builder is the only part of the azure-servicebus SDK library
 // we use in this JMS sample and for the purpose of robustly parsing the Service Bus 
@@ -86,10 +86,10 @@ ConnectionFactory cf = (ConnectionFactory) context.lookup("SBCF");
 Destination queue = (Destination) context.lookup("QUEUE");
 ```
 
-#### <a name="configure-producer-and-consumer-destination-queues"></a>Konfigurace front určení výrobce a spotřebitele
-Položka použitá k definování cíle v souboru Vlastností Qpid jndi zprostředkovatele je následující formát:
+#### <a name="configure-producer-and-consumer-destination-queues"></a>Konfigurovat fronty výrobců a cílových uživatelů
+Položka použitá k definování cíle v Qpid vlastností souboru JNDI má následující formát:
 
-Vytvoření cílové fronty pro výrobce - 
+Vytvoření cílové fronty pro producenta – 
 ```java
 String queueName = "queueName";
 Destination queue = (Destination) queueName;
@@ -103,7 +103,7 @@ Session session = connection.createSession(false, Session.CLIENT_ACKNOWLEDGE);
 MessageProducer producer = session.createProducer(queue);
 ```
 
-Vytvoření cílové fronty pro příjemce - 
+Vytvoření cílové fronty pro příjemce – 
 ```java
 String queueName = "queueName";
 Destination queue = (Destination) queueName;
@@ -117,11 +117,11 @@ Session session = connection.createSession(false, Session.CLIENT_ACKNOWLEDGE);
 MessageConsumer consumer = session.createConsumer(queue);
 ```
 
-### <a name="write-the-jms-application"></a>Napsat aplikaci JMS
-Při použití JMS se službou Service Bus nejsou vyžadována žádná speciální řešení API ani možnosti. Existuje však několik omezení, která budou pokryta později. Stejně jako u všech aplikací JMS, první věc, kterou je třeba, je konfigurace prostředí JNDI, aby bylo možné vyřešit **ConnectionFactory** a cíle.
+### <a name="write-the-jms-application"></a>Zápis aplikace JMS
+Při použití JMS s Service Bus se nevyžadují žádná speciální rozhraní API ani možnosti. Existuje však několik omezení, která budou zahrnuta později. Stejně jako u libovolné aplikace JMS je první požadovaná věc konfigurací prostředí JNDI, aby bylo možné přeložit **ConnectionFactory** a cíle.
 
-#### <a name="configure-the-jndi-initialcontext"></a>Konfigurace kontextu INDI InitialContext
-Prostředí JNDI je konfigurováno předáním hashtable informací o konfiguraci do konstruktoru třídy javax.naming.InitialContext. Dva požadované prvky v hashtable jsou název třídy počáteční context factory a adresa URL zprostředkovatele. Následující kód ukazuje, jak nakonfigurovat prostředí JNDI tak, aby používalo zprostředkovatele JNDI založeného na souboru vlastností Qpid se souborem vlastností s názvem **servicebus.properties**.
+#### <a name="configure-the-jndi-initialcontext"></a>Konfigurace JNDI InitialContext
+Prostředí JNDI je konfigurováno předáním zatřiďovací tabulky informací o konfiguraci do konstruktoru třídy javax. pojmenování. InitialContext. Dva vyžadované elementy v zatřiďovací tabulce jsou název třídy počátečního kontextu objektu pro vytváření kontextu a adresy URL poskytovatele. Následující kód ukazuje, jak nakonfigurovat prostředí JNDI tak, aby používalo Qpidho poskytovatele JNDI s vlastnostmi souboru s názvem **ServiceBus. Properties**.
 
 ```java
 // set up JNDI context
@@ -133,10 +133,10 @@ hashtable.put(Context.INITIAL_CONTEXT_FACTORY, "org.apache.qpid.jms.jndi.JmsInit
 Context context = new InitialContext(hashtable);
 ``` 
 
-### <a name="a-simple-jms-application-using-a-service-bus-queue"></a>Jednoduchá aplikace JMS používající frontu služby Service Bus
-Následující ukázkový program odesílá textové zprávy JMS do fronty sběrnice s logickým názvem JNDI FRONTY a přijímá zprávy zpět.
+### <a name="a-simple-jms-application-using-a-service-bus-queue"></a>Jednoduchá aplikace JMS s využitím fronty Service Bus
+Následující ukázkový program odešle JMS TextMessages do fronty Service Bus s logickým názvem JNDI fronty a znovu obdrží zprávy.
 
-Všichni máte přístup ke všem zdrojový kód a informace o konfiguraci z [ukázky azure service bus JMS fronty rychlý start](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/qpid-jms-client/JmsQueueQuickstart)
+Všechny informace o zdrojovém kódu a konfiguraci můžete získat z úvodního [rychlého startu z Azure Service Bus JMS Samples](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/qpid-jms-client/JmsQueueQuickstart) .
 
 ```java
 // Copyright (c) Microsoft. All rights reserved.
@@ -298,7 +298,7 @@ public class JmsQueueQuickstart {
 ```
 
 ### <a name="run-the-application"></a>Spuštění aplikace
-Předajte **připojovací řetězec** ze zásad sdíleného přístupu ke spuštění aplikace.
+Pokud chcete aplikaci spustit, předejte **připojovací řetězec** ze zásad sdíleného přístupu.
 Níže je výstup formuláře spuštěním aplikace:
 
 ```Output
@@ -330,8 +330,8 @@ Closing queue client.
 
 ```
 
-## <a name="amqp-disposition-and-service-bus-operation-mapping"></a>Dispozice AMQP a mapování provozu sběrnice Service Bus
-Zde je způsob, jakým dispozice AMQP překládá do operace service bus:
+## <a name="amqp-disposition-and-service-bus-operation-mapping"></a>Mapování AMQP a operace Service Bus
+Tady je způsob, jakým je AMQP dispozice pro operaci Service Bus:
 
 ```Output
 ACCEPTED = 1; -> Complete()
@@ -341,50 +341,50 @@ MODIFIED_FAILED = 4; -> Abandon() which increases delivery count
 MODIFIED_FAILED_UNDELIVERABLE = 5; -> Defer()
 ```
 
-## <a name="jms-topics-vs-service-bus-topics"></a>Témata JMS vs. Témata servisní ho servisu
-Pomocí Azure Service Bus témata a předplatná prostřednictvím rozhraní API Java Message Service (JMS) poskytuje základní možnosti odesílání a přijímání. Je to vhodná volba při přenosu aplikací z jiných zprostředkovatelů zpráv s rozhraními API kompatibilními s JMS, i když se témata služby Service Bus liší od témat JMS a vyžadují několik úprav. 
+## <a name="jms-topics-vs-service-bus-topics"></a>Témata JMS a témata týkající se Service Bus
+Použití Azure Service Bus témata a odběry prostřednictvím rozhraní API služby Java Message Service (JMS) poskytuje základní funkce pro odesílání a příjem. To je vhodná volba při přenosu aplikací od jiných zprostředkovatelů zpráv s rozhraními API kompatibilních s JMS, i když Service Bus témata se liší od témat JMS a vyžadují několik úprav. 
 
-Témata Azure Service Bus směrují zprávy do pojmenovaných, sdílených a trvalých předplatných, která se spravují prostřednictvím rozhraní Azure Resource Management, nástrojů příkazového řádku Azure nebo prostřednictvím portálu Azure. Každé předplatné umožňuje až 2000 pravidel výběru, z nichž každý může mít podmínku filtru a pro filtry SQL také akce transformace metadat. Každá shoda podmínky filtru vybere vstupní zprávu, která má být zkopírována do předplatného.  
+Azure Service Bus témata směrují zprávy do pojmenovaných, sdílených a trvalých předplatných spravovaných prostřednictvím rozhraní pro správu prostředků Azure, nástrojů příkazového řádku Azure nebo prostřednictvím Azure Portal. Každé předplatné umožňuje až 2000 pravidel výběru, z nichž každá může mít podmínku filtru a pro filtry SQL i akci transformace metadat. Každá Podmínka filtru se shoduje s výběrem vstupní zprávy, která se má zkopírovat do předplatného.  
 
-Příjem zpráv z odběrů je identické příjem zpráv z front. Každé předplatné má přidruženou frontu nedoručených zpráv a možnost automaticky předávat zprávy do jiné fronty nebo témat. 
+Příjem zpráv z předplatných se shoduje s přijímáním zpráv z front. Každé předplatné má přidruženou frontu nedoručených zpráv a možnost automatického přeposílání zpráv do jiné fronty nebo témat. 
 
-Témata JMS umožňují klientům dynamicky vytvářet trvalé a trvalé předplatitele, které volitelně umožňují filtrování zpráv pomocí voliče zpráv. Tyto nesdílené entity nejsou podporovány service bus. Syntaxe pravidla filtru SQL pro service bus je však podobná syntaxi voliče zpráv podporovanou JMS. 
+Témata JMS umožňují klientům dynamicky vytvářet netrvalé a trvalé předplatitele, které volitelně umožňují filtrovat zprávy pomocí selektorů zpráv. Tyto nesdílené entity nejsou podporované nástrojem Service Bus. Syntaxe pravidla filtru SQL pro Service Bus je však podobná syntaxi selektoru zpráv, kterou podporuje JMS. 
 
-Strana vydavatele tématu JMS je kompatibilní se službou Service Bus, jak je znázorněno v této ukázce, ale dynamické odběratele nejsou. Následující kódy JMS související s topologii nejsou podporovány službou Service Bus. 
+Strana vydavatele tématu JMS je kompatibilní s Service Bus, jak je znázorněno v této ukázce, ale dynamická předplatitelé ne. Následující rozhraní JMS API související s topologií nejsou u Service Bus podporována. 
 
 ## <a name="unsupported-features-and-restrictions"></a>Nepodporované funkce a omezení
-Při použití JMS přes AMQP 1.0 se službou Service Bus existují následující omezení, a to:
+Následující omezení existují při použití JMS over AMQP 1,0 s Service Bus, konkrétně:
 
-* Pouze jeden **MessageProducer** nebo **MessageConsumer** je povoleno na **relaci**. Pokud potřebujete vytvořit více **MessageProducers** nebo **MessageConsumers** v aplikaci, **vytvořte** vyhrazenou relaci pro každou z nich.
-* Odběry těkavých témat nejsou aktuálně podporovány.
-* **Voliči zpráv** nejsou aktuálně podporovány.
-* Distribuované transakce nejsou podporovány (ale jsou podporovány transakční relace).
+* V jedné **relaci**je povolena pouze jedna **MessageProducer** nebo **MessageConsumer** . Pokud potřebujete v aplikaci vytvořit více **MessageProducers** nebo **MessageConsumers** , vytvořte pro každou z nich vyhrazenou **relaci** .
+* Nestálá předplatná témat nejsou v současné době podporována.
+* **MessageSelectors** se v tuto chvíli nepodporuje.
+* Distribuované transakce nejsou podporované (ale podporují se transakční relace).
 
-Azure Service Bus navíc rozdělí rovinu ovládacího prvku od roviny dat a proto nepodporuje několik funkcí dynamické topologie JMS:
+Navíc Azure Service Bus rozdělí rovinu ovládacího prvku z roviny dat, a proto nepodporuje několik funkcí dynamické topologie JMS:
 
 | Nepodporovaná metoda          | Nahradit hodnotou                                                                             |
 |-----------------------------|------------------------------------------------------------------------------------------|
-| createDurableSubscriber     | Vytvoření odběru tématu přenesené na volič zpráv                                 |
-| createDurableConsumer       | Vytvoření odběru tématu přenesené na volič zpráv                                 |
-| createSharedConsumer        | Témata služby Service Bus jsou vždy sdíletelná, viz výše                                       |
-| createSharedDurableConsumer | Témata služby Service Bus jsou vždy sdíletelná, viz výše                                       |
-| createTemporaryTopic        | vytvoření tématu pomocí rozhraní API/nástrojů/portálu pro správu s *nastavením automatického* odstranění onidle na dobu platnosti |
-| createTopic                 | vytvoření tématu pomocí api pro správu/nástroje/portál                                           |
-| Odhlásit                 | odstranění rozhraní API/nástrojů/portálu pro správu témat                                             |
-| vytvořitprohlížeč               | Nepodporovaný. Použití funkce Peek() rozhraní API služby Service Bus                         |
-| createQueue                 | vytvoření fronty pomocí rozhraní API pro správu/nástroje/portál                                           | 
-| createTemporaryQueue        | vytvoření fronty pomocí rozhraní API/nástrojů/portálu pro správu s nastaveným na dobu platnosti automatického odstranění *onidle* |
-| receiveNoWait               | použijte metodu receive() poskytovanou sadou Service Bus SDK a zadejte velmi nízký nebo nulový časový výběh |
+| createDurableSubscriber     | vytvoření předplatného tématu, které připravuje výběr zprávy                                 |
+| createDurableConsumer       | vytvoření předplatného tématu, které připravuje výběr zprávy                                 |
+| createSharedConsumer        | Témata Service Bus jsou vždycky sdílená, viz výše.                                       |
+| createSharedDurableConsumer | Témata Service Bus jsou vždycky sdílená, viz výše.                                       |
+| createTemporaryTopic        | vytvoření tématu prostřednictvím rozhraní API pro správu/nástrojů/portálu s *AutoDeleteOnIdle* nastavenou na období vypršení platnosti |
+| createTopic                 | vytvoření tématu prostřednictvím rozhraní API pro správu/nástrojů/portálu                                           |
+| Odhlásit odběr                 | Odstranění rozhraní API/nástrojů/portálu pro správu tématu                                             |
+| createBrowser               | neplatné. Použití funkce prohlížet () rozhraní API pro Service Bus                         |
+| createQueue                 | vytvoření fronty prostřednictvím rozhraní API pro správu/nástrojů/portálu                                           | 
+| createTemporaryQueue        | vytvoření fronty prostřednictvím rozhraní API pro správu/nástrojů/portálu s *AutoDeleteOnIdle* nastavenou na období vypršení platnosti |
+| receiveNoWait               | Použijte metodu Receive () poskytovanou sadou Service Bus SDK a zadejte velmi nízký nebo nulový časový limit. |
 
 ## <a name="summary"></a>Souhrn
-Tento návod ukázal, jak používat funkce service bus zprostředkované zasílání zpráv (fronty a publikovat / odebírat témata) z Javy pomocí populárníjms API a AMQP 1.0.
+Tato příručka ukázala, jak používat funkce Service Bus zprostředkovaných zpráv (fronty a témata pro publikování a odběr) z Java pomocí oblíbených rozhraní API pro JMS a AMQP 1,0.
 
-Service Bus AMQP 1.0 můžete také použít z jiných jazyků, včetně .NET, C, Python a PHP. Komponenty vytvořené pomocí těchto různých jazyků si mohou vyměňovat zprávy spolehlivě a v plné věrnosti pomocí podpory AMQP 1.0 v service bus.
+Service Bus AMQP 1,0 můžete také použít z jiných jazyků, včetně .NET, C, Pythonu a PHP. Komponenty sestavené pomocí těchto různých jazyků můžou spolehlivě vyměňovat zprávy a s plnou věrností pomocí podpory AMQP 1,0 v Service Bus.
 
 ## <a name="next-steps"></a>Další kroky
-* [Podpora AMQP 1.0 ve službě Azure Service Bus](service-bus-amqp-overview.md)
-* [Použití rozhraní AMQP 1.0 s rozhraním SERVICE BUS .NET API](service-bus-dotnet-advanced-message-queuing.md)
-* [Průvodce pro vývojáře Service Bus AMQP 1.0](service-bus-amqp-dotnet.md)
-* [Začínáme s frontami služby Service Bus](service-bus-dotnet-get-started-with-queues.md)
+* [Podpora AMQP 1,0 v Azure Service Bus](service-bus-amqp-overview.md)
+* [Jak používat AMQP 1,0 s rozhraním API Service Bus .NET](service-bus-dotnet-advanced-message-queuing.md)
+* [Příručka pro vývojáře Service Bus AMQP 1,0](service-bus-amqp-dotnet.md)
+* [Začínáme s frontami Service Bus](service-bus-dotnet-get-started-with-queues.md)
 * [Středisko pro vývojáře Java](https://azure.microsoft.com/develop/java/)
 

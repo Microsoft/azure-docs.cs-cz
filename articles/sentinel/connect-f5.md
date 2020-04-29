@@ -1,6 +1,6 @@
 ---
-title: Připojení dat F5 k Azure Sentinelu| Dokumenty společnosti Microsoft
-description: Přečtěte si, jak připojit data F5 k Azure Sentinelu.
+title: Připojit data F5 ke službě Azure Sentinel | Microsoft Docs
+description: Přečtěte si, jak připojit data F5 ke službě Azure Sentinel.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -16,33 +16,33 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: 6f33cecca1c67f91d0f2be64ab156f45ee500521
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77588259"
 ---
-# <a name="connect-f5-to-azure-sentinel"></a>Připojení F5 k Azure Sentinelu
+# <a name="connect-f5-to-azure-sentinel"></a>Připojit F5 ke službě Azure Sentinel
 
-Tento článek vysvětluje, jak připojit zařízení F5 k Azure Sentinelu. Datový konektor F5 umožňuje snadno připojit protokoly F5 k Azure Sentinelu, zobrazit řídicí panely, vytvořit vlastní výstrahy a zlepšit vyšetřování. Použití F5 v Azure Sentinelu vám poskytne další přehled o využití internetu vaší organizace a zlepší možnosti operací zabezpečení. 
+Tento článek vysvětluje, jak připojit zařízení F5 ke službě Azure Sentinel. Konektor pro data F5 umožňuje snadno připojit protokoly F5 pomocí funkce Azure Sentinel, zobrazit řídicí panely, vytvořit vlastní výstrahy a vylepšit šetření. Použití F5 v Azure Sentinel vám poskytne více informací o používání internetu vaší organizace a zlepší možnosti jejich provozu. 
 
-## <a name="configure-your-f5-to-send-cef-messages"></a>Konfigurace f5 pro odesílání zpráv CEF
+## <a name="configure-your-f5-to-send-cef-messages"></a>Konfigurace F5 pro posílání zpráv CEF
 
-1. Přejděte na [web F5 Konfigurace protokolování událostí zabezpečení aplikací](https://techdocs.f5.com/kb/en-us/products/big-ip_asm/manuals/product/asm-implementations-11-5-0/12.html)a podle pokynů nastavte vzdálené protokolování podle následujících pokynů:
-   - Nastavte **typ vzdáleného úložiště** na **Nástroj pro cef**.
-   - Nastavte **protokol** na **tcp**.
-   - Nastavte **ip adresu** na ip adresu serveru Syslog.
-   - Nastavte **číslo portu** na **514**nebo port, který jste nastavili agenta.
-   - Maximální velikost **řetězce dotazu** můžete nastavit na velikost nastavenou v agentovi.
+1. Přejděte na [F5 konfigurace protokolování událostí zabezpečení aplikace](https://techdocs.f5.com/kb/en-us/products/big-ip_asm/manuals/product/asm-implementations-11-5-0/12.html)a podle pokynů nastavte vzdálené protokolování, a to podle následujících pokynů:
+   - Nastavte **typ vzdáleného úložiště** na **CEF**.
+   - Nastavte **protokol** na **TCP**.
+   - Nastavte **IP adresu** na IP adresu serveru syslog.
+   - Nastavte **číslo portu** na **514**nebo port, který nastavíte pro použití v agentovi.
+   - Můžete nastavit **maximální velikost řetězce dotazu** na velikost, kterou jste nastavili v agentovi.
 
-1. Chcete-li použít příslušné schéma v log analytics pro události `CommonSecurityLog`CeF, vyhledejte .
+1. Pokud chcete použít příslušné schéma v Log Analytics pro události CEF, vyhledejte `CommonSecurityLog`.
 
-1. Pokračovat krokem [3: Ověřit připojení](connect-cef-verify.md).
+1. Pokračujte [krokem 3: ověření připojení](connect-cef-verify.md).
 
 
 ## <a name="next-steps"></a>Další kroky
-V tomto dokumentu jste se dozvěděli, jak připojit F5 k Azure Sentinelu. Další informace o Azure Sentinelu najdete v následujících článcích:
-- Přečtěte [si, jak získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
-- Začínáme [s detekcí hrozeb pomocí Azure Sentinelu](tutorial-detect-threats.md).
-- Ke sledování dat [použijte sešity.](tutorial-monitor-your-data.md)
+V tomto dokumentu jste zjistili, jak připojit F5 ke službě Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:
+- Naučte se [, jak získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
+- Začněte [s detekcí hrozeb pomocí služby Azure Sentinel](tutorial-detect-threats.md).
+- [Pomocí sešitů](tutorial-monitor-your-data.md) můžete monitorovat data.
 

@@ -8,13 +8,13 @@ ms.date: 09/12/2018
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: 5f5f682c8c31c17f1a645bcdacdc78f32bd5c001
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77205729"
 ---
-Kód pro všechny funkce v aplikaci konkrétní funkce je umístěn v kořenové složce projektu, která obsahuje konfigurační soubor hostitele a jednu nebo více podsložek. Každá podsložka obsahuje kód pro samostatnou funkci. Struktura složek je zobrazena v následující reprezentaci:
+Kód pro všechny funkce v konkrétní aplikaci Function App je umístěn v kořenové složce projektu, která obsahuje konfigurační soubor hostitele a jednu nebo více podsložek. Každá podsložka obsahuje kód pro samostatnou funkci. Struktura složek se zobrazuje v následujícím vyjádření:
 
 ```
 FunctionApp
@@ -29,13 +29,13 @@ FunctionApp
  | - bin
 ```
 
-Ve verzi 2.x a vyšší funkce runtime, všechny funkce v aplikaci funkce musí sdílet stejný jazyk zásobníku.  
+Ve verzi 2. x a vyšší modulu runtime funkcí musí všechny funkce v aplikaci Function App sdílet stejnou jazykovou sadu.  
 
-Soubor [host.json](../articles/azure-functions/functions-host-json.md) obsahuje konfigurace specifické pro runtime a je v kořenové složce aplikace funkce. Složka *přihrádky* obsahuje balíčky a další soubory knihovny, které aplikace funkce vyžaduje. Podívejte se na požadavky specifické pro jazyk pro projekt aplikace funkce:
+Soubor [Host. JSON](../articles/azure-functions/functions-host-json.md) obsahuje konfigurace specifické pro modul runtime a je v kořenové složce aplikace Function App. Složka *bin* obsahuje balíčky a jiné soubory knihovny, které aplikace Function App vyžaduje. Prohlédněte si požadavky na konkrétní jazyk pro projekt Function App:
 
-* [Knihovna tříd C# (.csproj)](../articles/azure-functions/functions-dotnet-class-library.md#functions-class-library-project)
+* [Knihovna tříd C# (. csproj)](../articles/azure-functions/functions-dotnet-class-library.md#functions-class-library-project)
 * [Skript jazyka C# (.csx)](../articles/azure-functions/functions-reference-csharp.md#folder-structure)
-* [Skript F#](../articles/azure-functions/functions-reference-fsharp.md#folder-structure)
+* [Skript F #](../articles/azure-functions/functions-reference-fsharp.md#folder-structure)
 * [Java](../articles/azure-functions/functions-reference-java.md#folder-structure)
-* [Javascript](../articles/azure-functions/functions-reference-node.md#folder-structure)
+* [JavaScript](../articles/azure-functions/functions-reference-node.md#folder-structure)
 * [Python](../articles/azure-functions/functions-reference-python.md#folder-structure)

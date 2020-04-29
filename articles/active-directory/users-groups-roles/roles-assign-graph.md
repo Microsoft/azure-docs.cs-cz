@@ -1,6 +1,6 @@
 ---
-title: Přiřazení rolí správce Azure AD pomocí rozhraní Microsoft Graph API | Dokumenty společnosti Microsoft
-description: Přiřazení a odebrání rolí správce Azure AD pomocí rozhraní Graph API ve službě Azure AD
+title: Přiřazení rolí správce Azure AD k rozhraní Microsoft Graph API | Microsoft Docs
+description: Přiřazení a odebrání rolí správce Azure AD pomocí Graph API v Azure Active Directory
 services: active-directory
 author: curtand
 manager: daveba
@@ -14,23 +14,23 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3632f8a360df8837569104232b7380fdc8383953
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77559143"
 ---
-# <a name="assign-custom-admin-roles-using-the-microsoft-graph-api-in-azure-active-directory"></a>Přiřazení rolí vlastních správců pomocí rozhraní Microsoft Graph API ve službě Azure Active Directory 
+# <a name="assign-custom-admin-roles-using-the-microsoft-graph-api-in-azure-active-directory"></a>Přiřaďte vlastní role správců pomocí rozhraní Microsoft Graph API v Azure Active Directory 
 
-Pomocí rozhraní Microsoft Graph API můžete automatizovat způsob přiřazování rolí k uživatelským účtům. Tento článek popisuje operace POST, GET a DELETE na roleAssignments.
+Můžete automatizovat způsob přiřazování rolí uživatelským účtům pomocí rozhraní Microsoft Graph API. Tento článek popisuje operace POST, GET a DELETE na roleAssignments.
 
 ## <a name="required-permissions"></a>Požadovaná oprávnění
 
-Připojte se ke svému tenantovi Azure AD pomocí globálního účtu správce nebo správce privilegované identity k přiřazení nebo odebrání rolí.
+Připojte se k tenantovi Azure AD pomocí účtu globálního správce nebo správce privilegovaných identit k přiřazení nebo odebrání rolí.
 
-## <a name="post-operations-on-roleassignment"></a>Post operace na rolepřiřazení
+## <a name="post-operations-on-roleassignment"></a>Operace POST na RoleAssignment
 
-Požadavek HTTP pro vytvoření přiřazení role mezi uživatelem a definicí role.
+Požadavek HTTP na vytvoření přiřazení role mezi uživatelem a definicí role
 
 POST
 
@@ -55,7 +55,7 @@ Odpověď
 HTTP/1.1 201 Created
 ```
 
-Požadavek HTTP pro vytvoření přiřazení role, kde neexistuje definice jistiny nebo role
+Požadavek HTTP na vytvoření přiřazení role, kde neexistuje definice objektu zabezpečení nebo role
 
 POST
 
@@ -79,10 +79,10 @@ Odpověď
 HTTP/1.1 404 Not Found
 ```
 
-Požadavek HTTP pro vytvoření přiřazení role s rozsahem jednoho prostředku pro předdefinovanou definici role.
+Požadavek HTTP na vytvoření jednoho přiřazení role v oboru prostředků u předdefinované definice role.
 
 > [!NOTE] 
-> Předdefinované role dnes mají omezení, kde mohou být vymezeny pouze na rozsah celé organizace nebo "/AU/*" oboru. Obor jednoho prostředku nefunguje pro předdefinované role, ale funguje pro vlastní role.
+> Předdefinované role v současnosti mají omezení, kde můžou být vymezené jenom na rozsah "/" v rámci organizace nebo na obor "/AU/*". Obory jednoho prostředku nefungují pro předdefinované role, ale fungují pro vlastní role.
 
 POST
 
@@ -124,9 +124,9 @@ HTTP/1.1 400 Bad Request
 }
 ```
 
-## <a name="get-operations-on-roleassignment"></a>GET Operace na přiřazení role
+## <a name="get-operations-on-roleassignment"></a>ZÍSKAT operace na RoleAssignment
 
-Požadavek HTTP pro získání přiřazení role pro danou hlavní moc
+Požadavek HTTP na získání přiřazení role pro daný objekt zabezpečení
 
 GET
 
@@ -152,7 +152,7 @@ HTTP/1.1 200 OK
 }
 ```
 
-Požadavek HTTP pro získání přiřazení role pro danou definici role.
+Požadavek HTTP na získání přiřazení role pro danou definici role
 
 GET
 
@@ -172,7 +172,7 @@ HTTP/1.1 200 OK
 }
 ```
 
-Požadavek HTTP pro získání přiřazení role podle ID.
+Požadavek HTTP na získání přiřazení role podle ID
 
 GET
 
@@ -192,9 +192,9 @@ HTTP/1.1 200 OK
 }
 ```
 
-## <a name="delete-operations-on-roleassignment"></a>Odstranit operace přiřazení role
+## <a name="delete-operations-on-roleassignment"></a>ODSTRANĚNÍ operací na RoleAssignment
 
-Požadavek HTTP na odstranění přiřazení role mezi uživatelem a definicí role.
+Požadavek HTTP na odstranění přiřazení role mezi uživatelem a definicí role
 
 DELETE
 
@@ -207,7 +207,7 @@ Odpověď
 HTTP/1.1 204 No Content
 ```
 
-Požadavek HTTP na odstranění přiřazení role, které již neexistuje
+Požadavek HTTP na odstranění přiřazení role, která už neexistuje
 
 DELETE
 
@@ -221,7 +221,7 @@ Odpověď
 HTTP/1.1 404 Not Found
 ```
 
-Požadavek HTTP na odstranění přiřazení role mezi vlastní a předdefinovanou definicí role
+Požadavek HTTP na odstranění přiřazení role mezi samoobslužnou a vestavěnou definicí role
 
 DELETE
 
@@ -249,6 +249,6 @@ HTTP/1.1 400 Bad Request
 
 ## <a name="next-steps"></a>Další kroky
 
-* Neváhejte se s námi podělit na [fóru rolí azure ad pro správu](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032).
-* Další informace o rolích a přiřazení rolí správce najdete v tématu [Přiřazení rolí správce](directory-assign-admin-roles.md).
-* Výchozí uživatelská oprávnění naleznete v [porovnání výchozích oprávnění hosta a člena uživatele](../fundamentals/users-default-permissions.md).
+* Můžete s námi sdílet na [fóru role pro správu Azure AD](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032).
+* Další informace o rolích a přiřazení rolí správců najdete v tématu [přiřazení rolí správce](directory-assign-admin-roles.md).
+* Pro výchozí uživatelská oprávnění si přečtěte téma [Porovnání výchozích oprávnění typu Host a uživatel](../fundamentals/users-default-permissions.md).

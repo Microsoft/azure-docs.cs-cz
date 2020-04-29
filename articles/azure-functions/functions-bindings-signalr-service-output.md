@@ -1,33 +1,33 @@
 ---
-title: Výstupní vazba služby Azure Functions SignalR Service
-description: Naučte se odesílat zprávy služby SignalR z funkce Azure.
+title: Výstupní vazba služby signalizace Azure Functions
+description: Naučte se odesílat zprávy služby signalizace z Azure Functions.
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/20/2020
 ms.author: cshoe
 ms.openlocfilehash: d3ba9183cdea752c3e69a41770b6a5319a4a601d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77530247"
 ---
-# <a name="signalr-service-output-binding-for-azure-functions"></a>Výstupní vazba služby SignalR pro funkce Azure
+# <a name="signalr-service-output-binding-for-azure-functions"></a>Výstupní vazba služby Signal pro Azure Functions
 
-Pomocí vazby výstupu *SignalR* odeslat jednu nebo více zpráv pomocí služby Azure SignalR. Zprávu můžete vysílat do:
+Pomocí výstupní vazby *signálu* můžete odeslat jednu nebo více zpráv pomocí služby Azure signaler. Můžete vysílat zprávu:
 
 - Všichni připojení klienti
-- Připojení klienti ověřeni konkrétnímu uživateli
+- Připojení klienti ověření pro konkrétního uživatele
 
 Výstupní vazba také umožňuje spravovat skupiny.
 
-Informace o nastavení a konfiguraci naleznete v [přehledu](functions-bindings-signalr-service.md).
+Informace o nastavení a podrobnostech o konfiguraci najdete v tématu [Přehled](functions-bindings-signalr-service.md).
 
-## <a name="broadcast-to-all-clients"></a>Vysílání všem klientům
+## <a name="broadcast-to-all-clients"></a>Všesměrové vysílání pro všechny klienty
 
-Následující příklad ukazuje funkci, která odešle zprávu pomocí výstupní vazby všem připojeným klientům. *Cíl* je název metody, která má být vyvolána u každého klienta. Vlastnost *Arguments* je pole nula nebo více objektů, které mají být předány do metody klienta.
+Následující příklad ukazuje funkci, která odesílá zprávu pomocí výstupní vazby pro všechny připojené klienty. *Cíl* je název metody, která se má vyvolat u každého klienta. Vlastnost *arguments* je pole nula nebo více objektů, které mají být předány metodě klienta.
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```cs
 [FunctionName("SendMessage")]
@@ -46,9 +46,9 @@ public static Task SendMessage(
 
 # <a name="c-script"></a>[Skript jazyka C#](#tab/csharp-script)
 
-Zde jsou vazby dat v souboru *function.json:*
+Tady je vazba dat v souboru *Function. JSON* :
 
-Příklad function.json:
+Příklad Function. JSON:
 
 ```json
 {
@@ -60,7 +60,7 @@ Příklad function.json:
 }
 ```
 
-Zde je kód skriptu C#:
+Tady je kód skriptu jazyka C#:
 
 ```cs
 #r "Microsoft.Azure.WebJobs.Extensions.SignalRService"
@@ -79,11 +79,11 @@ public static Task Run(
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Zde jsou vazby dat v souboru *function.json:*
+Tady je vazba dat v souboru *Function. JSON* :
 
-Příklad function.json:
+Příklad Function. JSON:
 
 ```json
 {
@@ -95,7 +95,7 @@ Příklad function.json:
 }
 ```
 
-Zde je kód JavaScript:
+Tady je kód JavaScriptu:
 
 ```javascript
 module.exports = async function (context, req) {
@@ -108,9 +108,9 @@ module.exports = async function (context, req) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Zde jsou vazby dat v souboru *function.json:*
+Tady je vazba dat v souboru *Function. JSON* :
 
-Příklad function.json:
+Příklad Function. JSON:
 
 ```json
 {
@@ -122,7 +122,7 @@ Příklad function.json:
 }
 ```
 
-Zde je kód Pythonu:
+Tady je kód Pythonu:
 
 ```python
 def main(req: func.HttpRequest, out_message: func.Out[str]) -> func.HttpResponse:
@@ -155,9 +155,9 @@ public SignalRMessage sendMessage(
 
 ## <a name="send-to-a-user"></a>Odeslat uživateli
 
-Zprávu můžete odeslat pouze na připojení, která byla ověřena uživateli nastavením *ID uživatele* ve zprávě SignalR.
+Můžete odeslat zprávu pouze do připojení, která byla ověřena uživateli, nastavením *ID uživatele* ve zprávě signalizace.
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```cs
 [FunctionName("SendMessage")]
@@ -178,7 +178,7 @@ public static Task SendMessage(
 
 # <a name="c-script"></a>[Skript jazyka C#](#tab/csharp-script)
 
-Příklad function.json:
+Příklad Function. JSON:
 
 ```json
 {
@@ -190,7 +190,7 @@ Příklad function.json:
 }
 ```
 
-Zde je kód skriptu C#:
+Tady je kód skriptu jazyka C#:
 
 ```cs
 #r "Microsoft.Azure.WebJobs.Extensions.SignalRService"
@@ -211,9 +211,9 @@ public static Task Run(
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Příklad function.json:
+Příklad Function. JSON:
 
 ```json
 {
@@ -225,7 +225,7 @@ Příklad function.json:
 }
 ```
 
-Zde je kód JavaScript:
+Tady je kód JavaScriptu:
 
 ```javascript
 module.exports = async function (context, req) {
@@ -240,9 +240,9 @@ module.exports = async function (context, req) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Zde jsou vazby dat v souboru *function.json:*
+Tady je vazba dat v souboru *Function. JSON* :
 
-Příklad function.json:
+Příklad Function. JSON:
 
 ```json
 {
@@ -254,7 +254,7 @@ Příklad function.json:
 }
 ```
 
-Zde je kód Pythonu:
+Tady je kód Pythonu:
 
 ```python
 def main(req: func.HttpRequest, out_message: func.Out[str]) -> func.HttpResponse:
@@ -288,11 +288,11 @@ public SignalRMessage sendMessage(
 
 ---
 
-## <a name="send-to-a-group"></a>Odeslat skupině
+## <a name="send-to-a-group"></a>Odeslat do skupiny
 
-Zprávu můžete odeslat pouze připojením, která byla přidána do skupiny, nastavením *názvu skupiny* ve zprávě SignalR.
+Můžete poslat zprávu jenom na připojení, která se přidala do skupiny, a to tak, že nastavíte *název skupiny* ve zprávě signalizace.
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```cs
 [FunctionName("SendMessage")]
@@ -313,7 +313,7 @@ public static Task SendMessage(
 
 # <a name="c-script"></a>[Skript jazyka C#](#tab/csharp-script)
 
-Příklad function.json:
+Příklad Function. JSON:
 
 ```json
 {
@@ -325,7 +325,7 @@ Příklad function.json:
 }
 ```
 
-Zde je kód skriptu C#:
+Tady je kód skriptu jazyka C#:
 
 ```cs
 #r "Microsoft.Azure.WebJobs.Extensions.SignalRService"
@@ -346,9 +346,9 @@ public static Task Run(
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Příklad function.json:
+Příklad Function. JSON:
 
 ```json
 {
@@ -360,7 +360,7 @@ Příklad function.json:
 }
 ```
 
-Zde je kód JavaScript:
+Tady je kód JavaScriptu:
 
 ```javascript
 module.exports = async function (context, req) {
@@ -375,9 +375,9 @@ module.exports = async function (context, req) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Zde jsou vazby dat v souboru *function.json:*
+Tady je vazba dat v souboru *Function. JSON* :
 
-Příklad function.json:
+Příklad Function. JSON:
 
 ```json
 {
@@ -389,7 +389,7 @@ Příklad function.json:
 }
 ```
 
-Zde je kód Pythonu:
+Tady je kód Pythonu:
 
 ```python
 def main(req: func.HttpRequest, out_message: func.Out[str]) -> func.HttpResponse:
@@ -425,11 +425,11 @@ public SignalRMessage sendMessage(
 
 ## <a name="group-management"></a>Správa skupin
 
-SignalR Service umožňuje uživatelům přidávat do skupin. Zprávy pak mohou být odeslány do skupiny. Výstupní vazbu `SignalR` můžete použít ke správě členství uživatele ve skupině.
+Služba Signal umožňuje přidat uživatele do skupin. Zprávy je pak možné odeslat do skupiny. K řízení členství uživatele `SignalR` ve skupině můžete použít výstupní vazbu.
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
-### <a name="add-user-to-a-group"></a>Přidání uživatele do skupiny
+### <a name="add-user-to-a-group"></a>Přidat uživatele do skupiny
 
 Následující příklad přidá uživatele do skupiny.
 
@@ -476,15 +476,15 @@ public static Task RemoveFromGroup(
 ```
 
 > [!NOTE]
-> Chcete-li získat `ClaimsPrincipal` správně vázané, musíte mít nakonfigurované nastavení ověřování v Azure Functions.
+> Aby bylo možné získat `ClaimsPrincipal` správnou vazbu, je nutné nakonfigurovat nastavení ověřování v Azure Functions.
 
 # <a name="c-script"></a>[Skript jazyka C#](#tab/csharp-script)
 
-### <a name="add-user-to-a-group"></a>Přidání uživatele do skupiny
+### <a name="add-user-to-a-group"></a>Přidat uživatele do skupiny
 
 Následující příklad přidá uživatele do skupiny.
 
-Příklad *function.json*
+Příklad *Function. JSON*
 
 ```json
 {
@@ -496,7 +496,7 @@ Příklad *function.json*
 }
 ```
 
-*Soubor Run.csx*
+*Spustit. csx*
 
 ```cs
 #r "Microsoft.Azure.WebJobs.Extensions.SignalRService"
@@ -522,7 +522,7 @@ public static Task Run(
 
 Následující příklad odebere uživatele ze skupiny.
 
-Příklad *function.json*
+Příklad *Function. JSON*
 
 ```json
 {
@@ -534,7 +534,7 @@ Příklad *function.json*
 }
 ```
 
-*Soubor Run.csx*
+*Spustit. csx*
 
 ```cs
 #r "Microsoft.Azure.WebJobs.Extensions.SignalRService"
@@ -557,15 +557,15 @@ public static Task Run(
 ```
 
 > [!NOTE]
-> Chcete-li získat `ClaimsPrincipal` správně vázané, musíte mít nakonfigurované nastavení ověřování v Azure Functions.
+> Aby bylo možné získat `ClaimsPrincipal` správnou vazbu, je nutné nakonfigurovat nastavení ověřování v Azure Functions.
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-### <a name="add-user-to-a-group"></a>Přidání uživatele do skupiny
+### <a name="add-user-to-a-group"></a>Přidat uživatele do skupiny
 
 Následující příklad přidá uživatele do skupiny.
 
-Příklad *function.json*
+Příklad *Function. JSON*
 
 ```json
 {
@@ -577,7 +577,7 @@ Příklad *function.json*
 }
 ```
 
-*index.js*
+*index. js*
 
 ```javascript
 module.exports = async function (context, req) {
@@ -593,7 +593,7 @@ module.exports = async function (context, req) {
 
 Následující příklad odebere uživatele ze skupiny.
 
-Příklad *function.json*
+Příklad *Function. JSON*
 
 ```json
 {
@@ -605,7 +605,7 @@ Příklad *function.json*
 }
 ```
 
-*index.js*
+*index. js*
 
 ```javascript
 module.exports = async function (context, req) {
@@ -619,11 +619,11 @@ module.exports = async function (context, req) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-### <a name="add-user-to-a-group"></a>Přidání uživatele do skupiny
+### <a name="add-user-to-a-group"></a>Přidat uživatele do skupiny
 
 Následující příklad přidá uživatele do skupiny.
 
-Příklad *function.json*
+Příklad *Function. JSON*
 
 ```json
 {
@@ -635,7 +635,7 @@ Příklad *function.json*
 }
 ```
 
-*\_\_init.py__*
+*\_\_init. py__*
 
 ```python
 def main(req: func.HttpRequest, action: func.Out[str]) -> func.HttpResponse:
@@ -650,7 +650,7 @@ def main(req: func.HttpRequest, action: func.Out[str]) -> func.HttpResponse:
 
 Následující příklad odebere uživatele ze skupiny.
 
-Příklad *function.json*
+Příklad *Function. JSON*
 
 ```json
 {
@@ -662,7 +662,7 @@ Příklad *function.json*
 }
 ```
 
-*\_\_init.py__*
+*\_\_init. py__*
 
 ```python
 def main(req: func.HttpRequest, action: func.Out[str]) -> func.HttpResponse:
@@ -675,7 +675,7 @@ def main(req: func.HttpRequest, action: func.Out[str]) -> func.HttpResponse:
 
 # <a name="java"></a>[Java](#tab/java)
 
-### <a name="add-user-to-a-group"></a>Přidání uživatele do skupiny
+### <a name="add-user-to-a-group"></a>Přidat uživatele do skupiny
 
 Následující příklad přidá uživatele do skupiny.
 
@@ -725,28 +725,28 @@ public SignalRGroupAction removeFromGroup(
 
 ### <a name="signalrconnectioninfo"></a>SignalRConnectionInfo
 
-Následující tabulka vysvětluje vlastnosti konfigurace vazby, které jste nastavili `SignalRConnectionInfo` v souboru *function.json* a atributu.
+Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v souboru *Function. JSON* a `SignalRConnectionInfo` atributu.
 
-|vlastnost function.json | Vlastnost atributu |Popis|
+|Function. JSON – vlastnost | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**Typ**| neuvedeno | Musí být `signalRConnectionInfo`nastavena na .|
-|**direction**| neuvedeno | Musí být `in`nastavena na .|
-|**Jméno**| neuvedeno | Název proměnné použitý v kódu funkce pro objekt informací o připojení. |
-|**název hubu**|**Název hubu**| Tato hodnota musí být nastavena na název rozbočovače SignalR, pro který jsou generovány informace o připojení.|
-|**Userid**|**Userid**| Volitelné: Hodnota deklarace identifikátoru uživatele, která má být nastavena v tokenu přístupového klíče. |
-|**connectionStringSetting**|**ConnectionStringSetting**| Název nastavení aplikace, která obsahuje připojovací řetězec služby SignalR (výchozí na "AzureSignalRConnectionString") |
+|**textový**| neuvedeno | Musí být nastaven na `signalRConnectionInfo`hodnotu.|
+|**direction**| neuvedeno | Musí být nastaven na `in`hodnotu.|
+|**Jméno**| neuvedeno | Název proměnné použitý v kódu funkce pro objekt s informacemi o připojení. |
+|**hubName**|**HubName**| Tato hodnota musí být nastavena na název centra signalizace, pro které jsou vygenerovány informace o připojení.|
+|**userId**|**UserId**| Volitelné: hodnota deklarace identity identifikátoru uživatele, která se má nastavit v tokenu přístupového klíče. |
+|**connectionStringSetting**|**ConnectionStringSetting**| Název nastavení aplikace, které obsahuje připojovací řetězec služby signalizace (výchozí hodnota je "AzureSignalRConnectionString") |
 
 ### <a name="signalr"></a>SignalR
 
-Následující tabulka vysvětluje vlastnosti konfigurace vazby, které jste nastavili `SignalR` v souboru *function.json* a atributu.
+Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v souboru *Function. JSON* a `SignalR` atributu.
 
-|vlastnost function.json | Vlastnost atributu |Popis|
+|Function. JSON – vlastnost | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**Typ**| neuvedeno | Musí být `signalR`nastavena na .|
-|**direction**| neuvedeno | Musí být `out`nastavena na .|
-|**Jméno**| neuvedeno | Název proměnné použitý v kódu funkce pro objekt informací o připojení. |
-|**název hubu**|**Název hubu**| Tato hodnota musí být nastavena na název rozbočovače SignalR, pro který jsou generovány informace o připojení.|
-|**connectionStringSetting**|**ConnectionStringSetting**| Název nastavení aplikace, která obsahuje připojovací řetězec služby SignalR (výchozí na "AzureSignalRConnectionString") |
+|**textový**| neuvedeno | Musí být nastaven na `signalR`hodnotu.|
+|**direction**| neuvedeno | Musí být nastaven na `out`hodnotu.|
+|**Jméno**| neuvedeno | Název proměnné použitý v kódu funkce pro objekt s informacemi o připojení. |
+|**hubName**|**HubName**| Tato hodnota musí být nastavena na název centra signalizace, pro které jsou vygenerovány informace o připojení.|
+|**connectionStringSetting**|**ConnectionStringSetting**| Název nastavení aplikace, které obsahuje připojovací řetězec služby signalizace (výchozí hodnota je "AzureSignalRConnectionString") |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 

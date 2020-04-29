@@ -1,6 +1,6 @@
 ---
 title: Knihovny Apache Hive během vytváření clusteru – Azure HDInsight
-description: Přečtěte si, jak přidat knihovny Apache Hive (jar soubory) do clusteru HDInsight během vytváření clusteru.
+description: Naučte se přidávat knihovny Apache Hive (soubory jar) do clusteru HDInsight během vytváření clusteru.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,23 +9,23 @@ ms.topic: conceptual
 ms.custom: H1Hack27Feb2017,hdinsightactive
 ms.date: 02/14/2020
 ms.openlocfilehash: 0b746963cea5a950ba47d8b4dfeb074cb0910436
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77471019"
 ---
-# <a name="add-custom-apache-hive-libraries-when-creating-your-hdinsight-cluster"></a>Přidání vlastních knihoven Apache Hive při vytváření clusteru HDInsight
+# <a name="add-custom-apache-hive-libraries-when-creating-your-hdinsight-cluster"></a>Při vytváření clusteru HDInsight přidat vlastní knihovny Apache Hive
 
-Přečtěte si, jak předběžně načíst knihovny [Apache Hive](https://hive.apache.org/) na HDInsightu. Tento dokument obsahuje informace o použití akce skriptu k předběžnému načtení knihoven během vytváření clusteru. Knihovny přidané pomocí kroků v tomto dokumentu jsou globálně dostupné v Úlu – k jejich načtení není nutné používat [ADD JAR.](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Cli)
+Naučte se, jak předem načíst knihovny [Apache Hive](https://hive.apache.org/) v HDInsight. Tento dokument obsahuje informace o použití akce skriptu pro předběžné načtení knihoven během vytváření clusteru. Knihovny přidané pomocí kroků v tomto dokumentu jsou v podregistru globálně dostupné – k jejich načtení není potřeba použít příkaz [Přidat jar](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Cli) .
 
 ## <a name="how-it-works"></a>Jak to funguje
 
-Při vytváření clusteru můžete pomocí akce skriptu upravit uzly clusteru při jejich vytváření. Skript v tomto dokumentu přijímá jeden parametr, což je umístění knihoven. Toto umístění musí být v účtu úložiště Azure a knihovny musí být uloženy jako jar soubory.
+Při vytváření clusteru můžete použít akci skriptu ke změně uzlů clusteru při jejich vytváření. Skript v tomto dokumentu přijímá jeden parametr, což je umístění knihoven. Toto umístění musí být v účtu Azure Storage a knihovny musí být uloženy jako soubory jar.
 
-Během vytváření clusteru skript vyjmenovává soubory, `/usr/lib/customhivelibs/` zkopíruje je do adresáře na `hive.aux.jars.path` hlavových `core-site.xml` a pracovních uzlech a přidá je do vlastnosti v souboru. V clusterech založených na Linuxu `hive-env.sh` také aktualizuje soubor s umístěním souborů.
+Při vytváření clusteru skript vypíše soubory, zkopíruje je do `/usr/lib/customhivelibs/` adresáře na hlavním a pracovním uzlu a pak je přidá do `hive.aux.jars.path` vlastnosti v `core-site.xml` souboru. U clusterů se systémem Linux aktualizuje také `hive-env.sh` soubor s umístěním souborů.
 
-Pomocí akce skriptv tomto článku zpřístupníte knihovny při použití klienta Hive pro **WebHCat**a **HiveServer2**.
+Použití akce skriptu v tomto článku zpřístupňuje knihovny při použití klientského podregistru pro **WebHCat**a **HiveServer2**.
 
 ## <a name="the-script"></a>Skript
 
@@ -35,42 +35,42 @@ Pomocí akce skriptv tomto článku zpřístupníte knihovny při použití klie
 
 ### <a name="requirements"></a>Požadavky
 
-* Skripty musí být použity jak **uzly Vedoucí,** tak **uzly pracovníka**.
+* Skripty musí být aplikovány na **hlavní uzly** i **pracovní uzly**.
 
-* Nádoby, které chcete nainstalovat, musí být uloženy v azure blob storage v **jednom kontejneru**.
+* JAR, který chcete nainstalovat, musí být uložený v Azure Blob Storage v **jediném kontejneru**.
 
-* Účet úložiště obsahující knihovnu souborů jar **musí** být během vytváření propojen s clusterem HDInsight. Musí se jednat buď o výchozí účet úložiště, nebo o účet přidaný prostřednictvím __nastavení účtu úložiště__.
+* Účet úložiště, který obsahuje knihovnu souborů JAR, se **musí** během vytváření propojit s clusterem HDInsight. Musí se jednat buď o výchozí účet úložiště, nebo o účet, který jste přidali prostřednictvím __Nastavení účtu úložiště__.
 
-* Cesta WASB ke kontejneru musí být zadána jako parametr akce skriptu. Například pokud jsou jars uloženy v kontejneru s názvem **libs** na `wasbs://libs@mystorage.blob.core.windows.net/`účtu úložiště s názvem **mystorage**, parametr by .
+* Cesta WASB k kontejneru musí být zadána jako parametr pro akci skriptu. Například pokud jsou jar uložené v kontejneru s názvem **knihovny** na účtu úložiště s názvem **mystorage**, parametr by byl `wasbs://libs@mystorage.blob.core.windows.net/`.
 
   > [!NOTE]  
-  > Tento dokument předpokládá, že jste již vytvořili účet úložiště, kontejner objektů blob a nahráli do něj soubory.
+  > V tomto dokumentu se předpokládá, že jste už vytvořili účet úložiště, kontejner objektů BLOB a nahráli do něj soubory.
   >
-  > Pokud jste nevytvořili účet úložiště, můžete tak učinit prostřednictvím [portálu Azure](https://portal.azure.com). Potom můžete použít nástroj, jako je [Například Azure Storage Explorer](https://storageexplorer.com/) k vytvoření kontejneru v účtu a nahrát soubory do něj.
+  > Pokud jste účet úložiště nevytvořili, můžete to provést prostřednictvím [Azure Portal](https://portal.azure.com). Pak můžete použít nástroj, jako je například [Průzkumník služby Azure Storage](https://storageexplorer.com/) , k vytvoření kontejneru v účtu a nahrání souboru do něj.
 
 ## <a name="create-a-cluster-using-the-script"></a>Vytvoření clusteru pomocí skriptu
 
-1. Začněte zřizování clusteru pomocí kroků v [provision HDInsight clusterů na Linuxu](hdinsight-hadoop-provision-linux-clusters.md), ale nedokončíte zřizování. K vytvoření clusteru pomocí tohoto skriptu můžete taky použít Azure PowerShell nebo HDInsight .NET SDK. Další informace o použití těchto metod naleznete v [tématu Přizpůsobení clusterů HDInsight pomocí akcí skriptů](hdinsight-hadoop-customize-cluster-linux.md). Na webu Azure Portal vyberte na kartě **Konfigurace + ceny** akci + Přidat **skript**.
+1. Spusťte zřizování clusteru pomocí postupu v části [zřízení clusterů HDInsight v systému Linux](hdinsight-hadoop-provision-linux-clusters.md), ale neprovádějte zřízení. Pomocí tohoto skriptu můžete také pomocí Azure PowerShell nebo sady HDInsight .NET SDK vytvořit cluster. Další informace o použití těchto metod najdete v tématu [Přizpůsobení clusterů HDInsight pomocí akcí skriptů](hdinsight-hadoop-customize-cluster-linux.md). V případě Azure Portal na kartě **Konfigurace + ceny** vyberte **akci + přidat skript**.
 
-1. Pokud **se**účet úložiště obsahující knihovnu souborů jar bude lišit od účtu použitého pro cluster, vyplňte další **účty úložiště**.
+1. Pokud se účet **úložiště, který**obsahuje knihovnu souborů JAR, liší od účtu, který se používá pro cluster, dokončete **Další účty úložiště**.
 
-1. V **části Akce skriptu**zadejte následující informace:
+1. V případě **akcí skriptu**zadejte následující informace:
 
     |Vlastnost |Hodnota |
     |---|---|
-    |Typ skriptu|- Vlastní|
-    |Name (Název)|Knihovny |
-    |Bash skript URI|`https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh`|
-    |Typ uzlu|Hlava, Pracovník|
-    |Parametry|Zadejte adresu WASB do kontejneru a účtu úložiště, který obsahuje sklenice. Například, `wasbs://libs@mystorage.blob.core.windows.net/`.|
+    |Typ skriptu|– Vlastní|
+    |Název|Knihovny |
+    |Identifikátor URI skriptu bash|`https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh`|
+    |Typ (typy) uzlů|Vedoucí pracovník|
+    |Parametry|Zadejte adresu WASB kontejneru a účtu úložiště, který obsahuje jar. Například, `wasbs://libs@mystorage.blob.core.windows.net/`.|
 
     > [!NOTE]
-    > Pro Apache Spark 2.1 použijte tento `https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v00.sh`bash skript URI: .
+    > Pro Apache Spark 2,1 použijte tento identifikátor URI bash skriptu: `https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v00.sh`.
 
-1. Pokračujte ve zřizování clusteru, jak je popsáno v [clusterech Provision HDInsight v Linuxu](hdinsight-hadoop-provision-linux-clusters.md).
+1. Pokračujte ve zřizování clusteru, jak je popsáno v tématu [zřizování clusterů HDInsight v systému Linux](hdinsight-hadoop-provision-linux-clusters.md).
 
-Po dokončení vytváření clusteru, budete moci použít sklenice přidané prostřednictvím tohoto skriptu `ADD JAR` z Hive bez nutnosti používat příkaz.
+Po dokončení vytváření clusteru můžete použít jar, které jste přidali prostřednictvím tohoto skriptu z podregistru, aniž byste museli `ADD JAR` příkaz použít.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o práci s Hive najdete v [tématu Použití Apache Hive s HDInsight](hadoop/hdinsight-use-hive.md)
+Další informace o práci s podregistrem najdete v tématu [použití Apache Hive se službou HDInsight](hadoop/hdinsight-use-hive.md) .

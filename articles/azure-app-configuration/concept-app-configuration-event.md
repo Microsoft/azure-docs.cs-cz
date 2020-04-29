@@ -1,6 +1,6 @@
 ---
-title: Reakce na události hodnoty klíče konfigurace aplikace Azure
-description: K odběru událostí konfigurace aplikací použijte Azure Event Grid.
+title: Reakce na události klíč-hodnota konfigurace aplikace Azure
+description: Použijte Azure Event Grid k přihlášení k odběru událostí konfigurace aplikace.
 services: azure-app-configuration,event-grid
 author: jimmyca
 ms.author: jimmyca
@@ -8,50 +8,50 @@ ms.date: 02/20/2020
 ms.topic: article
 ms.service: azure-app-configuration
 ms.openlocfilehash: a4f61d147ba1abf73ada6360b8d0d965d8e063a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77523794"
 ---
-# <a name="reacting-to-azure-app-configuration-events"></a>Reakce na události konfigurace aplikací Azure
+# <a name="reacting-to-azure-app-configuration-events"></a>Reakce na události konfigurace aplikace Azure
 
-Události konfigurace aplikací Azure umožňují aplikacím reagovat na změny hodnot klíčů. To se provádí bez nutnosti složitého kódu nebo nákladné a neefektivní volební služby. Místo toho se události přessazují přes [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) předplatitelům, jako jsou Azure [Functions](https://azure.microsoft.com/services/functions/), Azure [Logic Apps](https://azure.microsoft.com/services/logic-apps/)nebo dokonce na vlastní http naslouchací proces. Kriticky platíte pouze za to, co používáte.
+Události konfigurace aplikace Azure umožňují aplikacím reagovat na změny v klíčových hodnotách. Tato operace se provádí bez složitého kódu nebo nákladných a neefektivních služeb cyklického dotazování. Místo toho se události odesílají prostřednictvím [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) předplatitelům, jako je [Azure Functions](https://azure.microsoft.com/services/functions/), [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/)nebo dokonce i vlastní naslouchací proces http. V kritickém případě platíte jenom za to, co využijete.
 
-Události konfigurace aplikací Azure se odesílají do Azure Event Grid, která poskytuje spolehlivé doručovací služby vašim aplikacím prostřednictvím bohatých zásad opakování a doručování nedoručených dopisů. Další informace najdete v [tématu Doručování zpráv a opakování zprávy v mřížce událostí](https://docs.microsoft.com/azure/event-grid/delivery-and-retry).
+Události konfigurace aplikace Azure se odesílají do Azure Event Grid, které vašim aplikacím poskytuje spolehlivé služby doručování prostřednictvím zásad opakovaného opakování a doručování nedoručených zpráv. Další informace najdete v tématu [Event Grid doručování zpráv a zkuste to znovu](https://docs.microsoft.com/azure/event-grid/delivery-and-retry).
 
-Mezi scénáře událostí běžné konfigurace aplikace patří aktualizace konfigurace aplikace, spuštění nasazení nebo jakýkoli pracovní postup orientovaný na konfiguraci. Pokud změny nejsou časté, ale váš scénář vyžaduje okamžitou odezvu, architektura založená na událostech může být obzvláště efektivní.
+Mezi běžné scénáře události konfigurace aplikací patří aktualizace konfigurace aplikace, aktivace nasazení nebo libovolný pracovní postup orientovaný na konfiguraci. Pokud jsou změny nečasté, ale scénář vyžaduje okamžitou odezvu, může být velmi efektivní architektura založená na událostech.
 
-Podívejte se na [route Azure App Configuration události na vlastní webový koncový bod – CLI](./howto-app-configuration-event.md) pro rychlý příklad. 
+Podívejte se na stručný příklad [Směrování událostí konfigurace aplikace Azure do vlastního webového koncového bodu – rozhraní příkazového řádku](./howto-app-configuration-event.md) . 
 
-![Model mřížky událostí](./media/event-grid-functional-model.png)
+![Model Event Grid](./media/event-grid-functional-model.png)
 
-## <a name="available-azure-app-configuration-events"></a>Dostupné události konfigurace aplikací Azure
-Mřížka událostí používá [odběry událostí](../event-grid/concepts.md#event-subscriptions) ke směrování zpráv událostí odběratelům. Předplatné událostí konfigurace aplikace Azure může zahrnovat dva typy událostí:  
+## <a name="available-azure-app-configuration-events"></a>Dostupné události konfigurace aplikace Azure
+Event Grid používá [odběry událostí](../event-grid/concepts.md#event-subscriptions) ke směrování zpráv událostí odběratelům. Odběry událostí konfigurace aplikace Azure můžou zahrnovat dva typy událostí:  
 
 > |Název události|Popis|
 > |----------|-----------|
-> |`Microsoft.AppConfiguration.KeyValueModified`|Aktivováno při vytvoření nebo nahrazení hodnoty klíče|
-> |`Microsoft.AppConfiguration.KeyValueDeleted`|Aktivováno při odstranění hodnoty klíče|
+> |`Microsoft.AppConfiguration.KeyValueModified`|Je aktivována, když je vytvořena nebo nahrazena klíčová hodnota.|
+> |`Microsoft.AppConfiguration.KeyValueDeleted`|Je aktivována, když se odstraní klíčová hodnota.|
 
 ## <a name="event-schema"></a>Schéma událostí
-Události konfigurace aplikací Azure obsahují všechny informace, které potřebujete k reakci na změny v datech. Můžete identifikovat událost Konfigurace aplikace, protože vlastnost eventType začíná "Microsoft.AppConfiguration". Další informace o použití vlastností události Event Grid jsou popsány ve [schématu událostí Event Grid](../event-grid/event-schema.md).  
+Události konfigurace aplikace Azure obsahují všechny informace, které potřebujete k reakci na změny ve vašich datech. Můžete identifikovat událost konfigurace aplikace, protože vlastnost eventType začíná na Microsoft. AppConfiguration. Další informace o použití vlastností události Event Grid najdete v části [Event Grid schéma událostí](../event-grid/event-schema.md).  
 
 > |Vlastnost|Typ|Popis|
 > |-------------------|------------------------|-----------------------------------------------------------------------|
-> |téma|řetězec|Úplné ID Správce prostředků Azure konfigurace aplikace, která vyzařuje událost.|
-> |Předmět|řetězec|Identifikátor URI hodnoty klíče, která je předmětem události.|
-> |eventTime|řetězec|Datum a čas, kdy byla událost vygenerována ve formátu ISO 8601.|
-> |Eventtype|řetězec|"Microsoft.AppConfiguration.KeyValueModified" nebo "Microsoft.AppConfiguration.KeyValueDeleted".|
+> |téma|řetězec|Úplné Azure Resource Manager ID konfigurace aplikace, která událost emituje.|
+> |závislosti|řetězec|Identifikátor URI klíč-hodnota, která je předmětem události.|
+> |eventTime|řetězec|Datum a čas generování události ve formátu ISO 8601.|
+> |Typ|řetězec|"Microsoft. AppConfiguration. KeyValueModified" nebo "Microsoft. AppConfiguration. KeyValueDeleted".|
 > |ID|řetězec|Jedinečný identifikátor této události.|
 > |dataVersion|řetězec|Verze schématu datového objektu.|
 > |metadataVersion|řetězec|Verze schématu vlastností nejvyšší úrovně.|
-> |data|objekt|Shromažďování dat událostí specifických pro konfiguraci aplikace Azure|
-> |data.key|řetězec|Klíč hodnoty klíče, která byla změněna nebo odstraněna.|
-> |data.label|řetězec|Popisek, pokud existuje, hodnoty klíče, která byla změněna nebo odstraněna.|
-> |data.etag|řetězec|Pro `KeyValueModified` etag nové hodnoty klíče. Pro `KeyValueDeleted` etag klíč-hodnota, která byla odstraněna.|
+> |data|objekt|Kolekce dat událostí specifických pro konfiguraci aplikací Azure|
+> |data. Key|řetězec|Klíč hodnoty klíč-hodnota, která byla upravena nebo odstraněna.|
+> |data. Label|řetězec|Popisek (pokud existuje) hodnoty klíč-hodnota, která byla upravena nebo odstraněna.|
+> |data. ETag|řetězec|Pro `KeyValueModified` ETag nového klíč-hodnota. Pro `KeyValueDeleted` značku ETag hodnoty klíč-hodnota, která byla odstraněna.|
 
-Zde je příklad události KeyValueModified:
+Tady je příklad události KeyValueModified:
 ```json
 [{
   "id": "84e17ea4-66db-4b54-8050-df8f7763f87b",
@@ -70,21 +70,21 @@ Zde je příklad události KeyValueModified:
 
 ```
 
-Další informace najdete v [tématu Schéma událostí konfigurace aplikace Azure](../event-grid/event-schema-app-configuration.md).
+Další informace najdete v tématu [schéma událostí konfigurace aplikace Azure](../event-grid/event-schema-app-configuration.md).
 
 ## <a name="practices-for-consuming-events"></a>Postupy pro náročné události
-Aplikace, které zpracovávají události konfigurace aplikace, by se měly řídit následujícími doporučenými postupy:
+Aplikace, které zpracovávají události konfigurace aplikace, by měly dodržovat tyto Doporučené postupy:
 > [!div class="checklist"]
-> * Více odběrů lze nakonfigurovat pro směrování událostí do stejné obslužné rutiny události, takže nepředpokládejte, že události pocházejí z určitého zdroje. Místo toho zkontrolujte téma zprávy a ujistěte se, že instance konfigurace aplikace odesílá událost.
-> * Zkontrolujte eventType a nepředpokládejte, že všechny události, které obdržíte, budou typy, které očekáváte.
-> * Pomocí polí etag porozumíte tomu, zda jsou informace o objektech stále aktuální.  
-> * Pole sekvenceru slouží k pochopení pořadí událostí na libovolném konkrétním objektu.
-> * Pole předmět uusejte ke změně hodnoty klíče.
+> * Více předplatných lze nakonfigurovat pro směrování událostí do stejné obslužné rutiny události, takže nepředpokládá, že události jsou z konkrétního zdroje. Místo toho zkontrolujte téma zprávy a ujistěte se, že instance konfigurace aplikace posílá událost.
+> * Ověřte typ eventType a Nepředpokládat, že všechny události, které obdržíte, budou typy, které jste očekávali.
+> * Pomocí polí ETag Zjistěte, jestli jsou informace o objektech pořád aktuální.  
+> * Pomocí polí Sequencer můžete pochopit pořadí událostí u libovolného konkrétního objektu.
+> * Pro přístup k upravované hodnotě klíče použijte pole Subject.
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o Event Grid a vyzkoušejte události konfigurace aplikací Azure:
+Přečtěte si další informace o Event Grid a poskytněte události konfigurace aplikací Azure a zkuste:
 
 - [Informace o službě Event Grid](../event-grid/overview.md)
-- [Směrování událostí konfigurace aplikací Azure do vlastního koncového bodu webu](./howto-app-configuration-event.md)
+- [Směrování událostí konfigurace aplikace Azure do vlastního webového koncového bodu](./howto-app-configuration-event.md)

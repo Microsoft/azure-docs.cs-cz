@@ -1,30 +1,30 @@
 ---
-title: Vstupní vazba služby Azure Functions SignalR Service
-description: Naučte se vrátit adresu URL koncového bodu služby SignalR a přístupový token ve službě Azure Functions.
+title: Vstupní vazba služby Azure Functions Signal
+description: Naučte se vracet adresu URL koncového bodu služby signalizace a přístupový token v Azure Functions.
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/20/2020
 ms.author: cshoe
 ms.openlocfilehash: 53d336aff3177a76c5e02266ffb8484bd9945119
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77530260"
 ---
-# <a name="signalr-service-input-binding-for-azure-functions"></a>Vstupní vazba služby SignalR pro funkce Azure
+# <a name="signalr-service-input-binding-for-azure-functions"></a>Vstupní vazba služby Signal pro Azure Functions
 
-Než se klient bude moci připojit ke službě Azure SignalR, musí načíst adresu URL koncového bodu služby a platný přístupový token. Vstupní vazba *SignalRConnectionInfo* vytváří adresu URL koncového bodu služby SignalR a platný token, který se používá k připojení ke službě. Vzhledem k tomu, že token je časově omezený a lze jej použít k ověření konkrétního uživatele připojení, neměli byste ukládat token do mezipaměti nebo jej sdílet mezi klienty. Aktivační událost HTTP používající tuto vazbu mohou klienti použít k načtení informací o připojení.
+Předtím, než se může klient připojit ke službě Azure Signal, musí načíst adresu URL koncového bodu služby a platný přístupový token. Vstupní vazba *SignalRConnectionInfo* vytvoří adresu URL koncového bodu služby signalizace a platný token, který se používá pro připojení ke službě. Vzhledem k tomu, že token je časově omezený a dá se použít k ověření konkrétního uživatele k připojení, neměli byste token ukládat do mezipaměti ani sdílet mezi klienty. Trigger HTTP pomocí této vazby můžou klienti použít k načtení informací o připojení.
 
-Další informace o tom, jak se tato vazba používá k vytvoření funkce "negotiate", kterou může využívat sada SDK klienta SignalR, naleznete v [článku vývoje a konfigurace azure functions](../azure-signalr/signalr-concept-serverless-development-config.md) v dokumentaci konceptů služby SignalR.
+Další informace o tom, jak se tato vazba používá k vytvoření funkce "Negotiate", kterou může využívat klientská sada SDK pro signalizaci, najdete v [článku Azure Functions vývoj a konfigurace](../azure-signalr/signalr-concept-serverless-development-config.md) v dokumentaci k koncepcím služby Signal.
 
-Informace o nastavení a konfiguraci naleznete v [přehledu](functions-bindings-signalr-service.md).
+Informace o nastavení a podrobnostech o konfiguraci najdete v tématu [Přehled](functions-bindings-signalr-service.md).
 
 ## <a name="example"></a>Příklad
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
-Následující příklad ukazuje [funkci Jazyka C#,](functions-dotnet-class-library.md) která získává informace o připojení SignalR pomocí vstupní vazby a vrátí ji přes HTTP.
+Následující příklad ukazuje [funkci jazyka C#](functions-dotnet-class-library.md) , která získá informace o připojení k signalizaci pomocí vstupní vazby a vrátí ji přes HTTP.
 
 ```cs
 [FunctionName("negotiate")]
@@ -38,11 +38,11 @@ public static SignalRConnectionInfo Negotiate(
 
 # <a name="c-script"></a>[Skript jazyka C#](#tab/csharp-script)
 
-Následující příklad ukazuje vstupní vazbu informací o připojení SignalR v souboru *function.json* a [funkci Skript jazyka C,,](functions-reference-csharp.md) která používá vazbu k vrácení informací o připojení.
+Následující příklad ukazuje vstupní vazbu informace o připojení k signalizaci v souboru *Function. JSON* a [funkci skriptu jazyka C#](functions-reference-csharp.md) , která používá vazbu k vrácení informací o připojení.
 
-Zde jsou vazby dat v souboru *function.json:*
+Tady je vazba dat v souboru *Function. JSON* :
 
-Příklad function.json:
+Příklad Function. JSON:
 
 ```json
 {
@@ -54,7 +54,7 @@ Příklad function.json:
 }
 ```
 
-Zde je kód skriptu C#:
+Tady je kód skriptu jazyka C#:
 
 ```cs
 #r "Microsoft.Azure.WebJobs.Extensions.SignalRService"
@@ -66,13 +66,13 @@ public static SignalRConnectionInfo Run(HttpRequest req, SignalRConnectionInfo c
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Následující příklad ukazuje vstupní vazbu informací o připojení SignalR v souboru *function.json* a [funkci JavaScript,](functions-reference-node.md) která používá vazbu k vrácení informací o připojení.
+Následující příklad ukazuje vstupní vazbu informace o připojení k signalizaci v souboru *Function. JSON* a [funkci JavaScriptu](functions-reference-node.md) , která používá vazbu k vrácení informací o připojení.
 
-Zde jsou vazby dat v souboru *function.json:*
+Tady je vazba dat v souboru *Function. JSON* :
 
-Příklad function.json:
+Příklad Function. JSON:
 
 ```json
 {
@@ -84,7 +84,7 @@ Příklad function.json:
 }
 ```
 
-Zde je kód JavaScript:
+Tady je kód JavaScriptu:
 
 ```javascript
 module.exports = async function (context, req, connectionInfo) {
@@ -94,11 +94,11 @@ module.exports = async function (context, req, connectionInfo) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Následující příklad ukazuje vstupní vazbu informací o připojení SignalR v souboru *function.json* a [funkci Pythonu,](functions-reference-python.md) která používá vazbu k vrácení informací o připojení.
+Následující příklad ukazuje vstupní vazbu informace o připojení k signalizaci v souboru *Function. JSON* a [funkci Pythonu](functions-reference-python.md) , která používá vazbu k vrácení informací o připojení.
 
-Zde jsou vazby dat v souboru *function.json:*
+Tady je vazba dat v souboru *Function. JSON* :
 
-Příklad function.json:
+Příklad Function. JSON:
 
 ```json
 {
@@ -110,7 +110,7 @@ Příklad function.json:
 }
 ```
 
-Zde je kód Pythonu:
+Tady je kód Pythonu:
 
 ```python
 def main(req: func.HttpRequest, connectionInfoJson: str) -> func.HttpResponse:
@@ -125,7 +125,7 @@ def main(req: func.HttpRequest, connectionInfoJson: str) -> func.HttpResponse:
 
 # <a name="java"></a>[Java](#tab/java)
 
-Následující příklad ukazuje [funkci Java,](functions-reference-java.md) která získává informace o připojení SignalR pomocí vstupní vazby a vrátí ji přes HTTP.
+Následující příklad ukazuje [funkci jazyka Java](functions-reference-java.md) , která získá informace o připojení k signalizaci pomocí vstupní vazby a vrátí ji přes HTTP.
 
 ```java
 @FunctionName("negotiate")
@@ -145,13 +145,13 @@ public SignalRConnectionInfo negotiate(
 
 ## <a name="authenticated-tokens"></a>Ověřené tokeny
 
-Pokud je funkce spuštěna ověřeným klientem, můžete do generovaného tokenu přidat deklaraci ID uživatele. Ověřování můžete snadno přidat do aplikace funkce pomocí [ověřování pomocí služby App Service .](../app-service/overview-authentication-authorization.md)
+Pokud je funkce aktivována ověřeným klientem, můžete do vygenerovaného tokenu přidat deklaraci ID uživatele. Do aplikace Function App můžete snadno přidat ověřování pomocí [App Service ověřování](../app-service/overview-authentication-authorization.md).
 
-Ověřování služby App Service `x-ms-client-principal-id` `x-ms-client-principal-name` nastaví záhlaví PROTOKOLU HTTP s názvem a které obsahují ID a název objektu klienta ověřeného uživatele.
+App Service Authentication nastaví hlavičky HTTP `x-ms-client-principal-id` s `x-ms-client-principal-name` názvem a, které obsahují ID a ID objektu zabezpečení klienta ověřeného uživatele v uvedeném pořadí.
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
-Vlastnost vazby můžete nastavit na hodnotu z obou záhlaví `{headers.x-ms-client-principal-id}` `{headers.x-ms-client-principal-name}`pomocí [výrazu vazby](./functions-bindings-expressions-patterns.md): nebo . `UserId`
+Vlastnost vazby můžete nastavit na hodnotu z obou hlaviček pomocí [výrazu vazby](./functions-bindings-expressions-patterns.md): `{headers.x-ms-client-principal-id}` nebo `{headers.x-ms-client-principal-name}` `UserId`
 
 ```cs
 [FunctionName("negotiate")]
@@ -168,9 +168,9 @@ public static SignalRConnectionInfo Negotiate(
 
 # <a name="c-script"></a>[Skript jazyka C#](#tab/csharp-script)
 
-Vlastnost vazby můžete nastavit na hodnotu z obou záhlaví `{headers.x-ms-client-principal-id}` `{headers.x-ms-client-principal-name}`pomocí [výrazu vazby](./functions-bindings-expressions-patterns.md): nebo . `userId`
+Vlastnost vazby můžete nastavit na hodnotu z obou hlaviček pomocí [výrazu vazby](./functions-bindings-expressions-patterns.md): `{headers.x-ms-client-principal-id}` nebo `{headers.x-ms-client-principal-name}` `userId`
 
-Příklad function.json:
+Příklad Function. JSON:
 
 ```json
 {
@@ -183,7 +183,7 @@ Příklad function.json:
 }
 ```
 
-Zde je kód skriptu C#:
+Tady je kód skriptu jazyka C#:
 
 ```cs
 #r "Microsoft.Azure.WebJobs.Extensions.SignalRService"
@@ -197,11 +197,11 @@ public static SignalRConnectionInfo Run(HttpRequest req, SignalRConnectionInfo c
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Vlastnost vazby můžete nastavit na hodnotu z obou záhlaví `{headers.x-ms-client-principal-id}` `{headers.x-ms-client-principal-name}`pomocí [výrazu vazby](./functions-bindings-expressions-patterns.md): nebo . `userId`
+Vlastnost vazby můžete nastavit na hodnotu z obou hlaviček pomocí [výrazu vazby](./functions-bindings-expressions-patterns.md): `{headers.x-ms-client-principal-id}` nebo `{headers.x-ms-client-principal-name}` `userId`
 
-Příklad function.json:
+Příklad Function. JSON:
 
 ```json
 {
@@ -214,7 +214,7 @@ Příklad function.json:
 }
 ```
 
-Zde je kód JavaScript:
+Tady je kód JavaScriptu:
 
 ```javascript
 module.exports = async function (context, req, connectionInfo) {
@@ -226,9 +226,9 @@ module.exports = async function (context, req, connectionInfo) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Vlastnost vazby můžete nastavit na hodnotu z obou záhlaví `{headers.x-ms-client-principal-id}` `{headers.x-ms-client-principal-name}`pomocí [výrazu vazby](./functions-bindings-expressions-patterns.md): nebo . `userId`
+Vlastnost vazby můžete nastavit na hodnotu z obou hlaviček pomocí [výrazu vazby](./functions-bindings-expressions-patterns.md): `{headers.x-ms-client-principal-id}` nebo `{headers.x-ms-client-principal-name}` `userId`
 
-Příklad function.json:
+Příklad Function. JSON:
 
 ```json
 {
@@ -241,7 +241,7 @@ Příklad function.json:
 }
 ```
 
-Zde je kód Pythonu:
+Tady je kód Pythonu:
 
 ```python
 def main(req: func.HttpRequest, connectionInfoJson: str) -> func.HttpResponse:
@@ -258,7 +258,7 @@ def main(req: func.HttpRequest, connectionInfoJson: str) -> func.HttpResponse:
 
 # <a name="java"></a>[Java](#tab/java)
 
-Vlastnost vazby můžete nastavit na hodnotu z obou záhlaví `{headers.x-ms-client-principal-id}` `{headers.x-ms-client-principal-name}`pomocí [výrazu vazby](./functions-bindings-expressions-patterns.md): nebo . `userId`
+Vlastnost vazby můžete nastavit na hodnotu z obou hlaviček pomocí [výrazu vazby](./functions-bindings-expressions-patterns.md): `{headers.x-ms-client-principal-id}` nebo `{headers.x-ms-client-principal-name}` `userId`
 
 ```java
 @FunctionName("negotiate")
@@ -279,4 +279,4 @@ public SignalRConnectionInfo negotiate(
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Odeslat zprávy služby SignalR (výstupní vazba)](./functions-bindings-signalr-service-output.md) 
+- [Odeslat zprávy služby Signaler (výstupní vazba)](./functions-bindings-signalr-service-output.md) 

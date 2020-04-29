@@ -1,5 +1,5 @@
 ---
-title: Apache Hadoop & zabezpečené úložiště přenosu - Azure HDInsight
+title: Úložiště pro zabezpečený přenos Apache Hadoop & – Azure HDInsight
 description: Naučte se vytvářet clustery HDInsight s účty úložiště Azure s povoleným zabezpečeným přístupem.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,38 +9,38 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/18/2020
 ms.openlocfilehash: c1e5ca8b0bb828e5e8ce896bba6a5278266b118e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77560078"
 ---
-# <a name="apache-hadoop-clusters-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>Clustery Apache Hadoop s účty zabezpečeného úložiště přenosu v Azure HDInsight
+# <a name="apache-hadoop-clusters-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>Apache Hadoop clusterů s účty úložiště s bezpečným přenosem ve službě Azure HDInsight
 
 Funkce [Vyžadovat zabezpečený přenos](../storage/common/storage-require-secure-transfer.md) zvyšuje zabezpečení účtu služby Azure Storage tím, že vynucuje přenos všech požadavků na účet přes zabezpečené připojení. Tuto funkci a schéma wasbs podporují pouze clustery HDInsight verze 3.6 nebo novější.
 
 > [!IMPORTANT]
-> Povolení zabezpečeného přenosu úložiště po vytvoření clusteru může vést k chybám pomocí účtu úložiště a nedoporučuje se. Je lepší vytvořit nový cluster pomocí účtu úložiště s již povoleným zabezpečeným přenosem.
+> Povolení přenosu zabezpečeného úložiště po vytvoření clusteru může způsobit chyby v účtu úložiště a nedoporučuje se ho použít. Je lepší vytvořit nový cluster pomocí účtu úložiště s povoleným zabezpečeným přenosem.
 
 ## <a name="storage-accounts"></a>Účty úložiště
 
 ### <a name="azure-portal"></a>portál Azure
 
-Ve výchozím nastavení je vlastnost požadovaná pro zabezpečený přenos povolena při vytváření účtu úložiště na webu Azure Portal.
+Ve výchozím nastavení je při vytváření účtu úložiště v Azure Portal povolena vlastnost požadovaná zabezpečeným přenosem.
 
-Pokud chcete aktualizovat existující účet úložiště pomocí portálu Azure, přečtěte si informace [o vyžadování zabezpečeného přenosu pomocí portálu Azure](../storage/common/storage-require-secure-transfer.md#require-secure-transfer-for-an-existing-storage-account).
+Pokud chcete aktualizovat existující účet úložiště pomocí Azure Portal, přečtěte si téma [vyžadování zabezpečeného přenosu s Azure Portal](../storage/common/storage-require-secure-transfer.md#require-secure-transfer-for-an-existing-storage-account).
 
 ### <a name="powershell"></a>PowerShell
 
-U rutiny prostředí PowerShell [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount)zkontrolujte, zda je parametr `-EnableHttpsTrafficOnly` nastaven na . `1`
+Pro rutinu PowerShellu [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount)ověřte, `-EnableHttpsTrafficOnly` že parametr je `1`nastavený na.
 
-Informace o aktualizaci existujícího účtu úložiště pomocí PowerShellu najdete [v tématu Vyžadovat zabezpečený přenos pomocí PowerShellu](../storage/common/storage-require-secure-transfer.md#require-secure-transfer-with-powershell).
+Pokud chcete aktualizovat existující účet úložiště pomocí PowerShellu, přečtěte si téma [vyžadování zabezpečeného přenosu pomocí PowerShellu](../storage/common/storage-require-secure-transfer.md#require-secure-transfer-with-powershell).
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Pro vytvoření účtu [úložiště příkazu](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create)Azure CLI az zkontrolujte, zda je parametr `--https-only` nastaven na `true`.
+Pro příkaz Azure CLI [AZ Storage Account Create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create), ujistěte se, `--https-only` že parametr je `true`nastavený na.
 
-Pokud chcete aktualizovat existující účet úložiště pomocí azure cli, přečtěte si informace [o vyžadování zabezpečeného přenosu pomocí příkazového příkazového příkazu k řešení Azure](../storage/common/storage-require-secure-transfer.md#require-secure-transfer-with-azure-cli).
+Pokud chcete aktualizovat existující účet úložiště pomocí Azure CLI, přečtěte si téma [vyžadování zabezpečeného přenosu pomocí Azure CLI](../storage/common/storage-require-secure-transfer.md#require-secure-transfer-with-azure-cli).
 
 ## <a name="add-additional-storage-accounts"></a>Přidání dalších účtů úložiště
 
@@ -52,6 +52,6 @@ Existuje několik možností, jak přidat další účty úložiště s povolen�
 
 ## <a name="next-steps"></a>Další kroky
 
-* Použití Azure Storage (WASB) místo [Apache Hadoop HDFS](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsUserGuide.html) jako výchozí úložiště dat
+* Použití Azure Storage (WASB) místo [Apache HADOOP HDFS](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsUserGuide.html) jako výchozího úložiště dat
 * Informace o tom, jak HDInsight používá Azure Storage, najdete v tématu [Používání Azure Storage s HDInsight](hdinsight-hadoop-use-blob-storage.md).
 * Informace o tom, jak nahrát data do služby HDInsight, najdete v tématu [Nahrání dat do služby HDInsight](hdinsight-upload-data.md).

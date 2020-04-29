@@ -10,13 +10,13 @@ ms.date: 08/02/2019
 ms.author: cshoe
 ms.custom: include file
 ms.openlocfilehash: 512d05b245f1279a977ba61d5b4c4904fc0f6bf2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77202122"
 ---
-Pro vazbu vstupu objektu blob můžete použít následující typy parametrů:
+Pro vstupní vazbu objektu blob můžete použít následující typy parametrů:
 
 * `Stream`
 * `TextReader`
@@ -24,13 +24,13 @@ Pro vazbu vstupu objektu blob můžete použít následující typy parametrů:
 * `Byte[]`
 * `CloudBlobContainer`
 * `CloudBlobDirectory`
-* `ICloudBlob`<sup>1</sup>
-* `CloudBlockBlob`<sup>1</sup>
-* `CloudPageBlob`<sup>1</sup>
-* `CloudAppendBlob`<sup>1</sup>
+* `ICloudBlob`<sup>první</sup>
+* `CloudBlockBlob`<sup>první</sup>
+* `CloudPageBlob`<sup>první</sup>
+* `CloudAppendBlob`<sup>první</sup>
 
-<sup>1</sup> Vyžaduje vazbu `direction` "inout" v `FileAccess.ReadWrite` *function.json* nebo v knihovně tříd c#.
+<sup>1</sup> vyžaduje vázání `direction` "InOut" v *Function. JSON* nebo `FileAccess.ReadWrite` v knihovně tříd jazyka C#.
 
-Pokud se pokusíte vytvořit vazbu na jeden z typů sady Storage SDK a zobrazí se chybová zpráva, ujistěte se, že máte odkaz na [správnou verzi sady Storage SDK](../articles/azure-functions/functions-bindings-storage-blob.md#azure-storage-sdk-version-in-functions-1x).
+Pokud se pokusíte vytvořit propojení s jedním z typů sad SDK úložiště a získat chybovou zprávu, ujistěte se, že máte odkaz na [správnou verzi sady SDK služby Storage](../articles/azure-functions/functions-bindings-storage-blob.md#azure-storage-sdk-version-in-functions-1x).
 
-Vazba `string` `Byte[]` nebo je doporučena jenom v případě, že velikost objektu blob je malá, protože celý obsah objektu blob jsou načteny do paměti. Obecně je vhodnější použít `Stream` typ `CloudBlockBlob` nebo. Další informace naleznete v [tématu Souběžnost a využití paměti](../articles/azure-functions/functions-bindings-storage-blob-trigger.md#concurrency-and-memory-usage) dříve v tomto článku.
+Vazba na `string` nebo `Byte[]` je doporučena pouze v případě, že velikost objektu BLOB je malá, protože celý obsah objektu BLOB je načten do paměti. Obecně je vhodnější použít typ `Stream` nebo. `CloudBlockBlob` Další informace naleznete v části [využití souběžnosti a paměti](../articles/azure-functions/functions-bindings-storage-blob-trigger.md#concurrency-and-memory-usage) výše v tomto článku.

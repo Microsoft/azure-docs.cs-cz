@@ -1,57 +1,57 @@
 ---
-title: Jak nakonfigurovat čas zahájení procesoru kanálu změn – Azure Cosmos DB
-description: Přečtěte si, jak nakonfigurovat procesor kanálu změn tak, aby začal číst od určitého data a času
+title: Jak nakonfigurovat čas spuštění procesoru změny kanálu – Azure Cosmos DB
+description: Zjistěte, jak nakonfigurovat procesor změn kanálu tak, aby začal číst z konkrétní datum a čas.
 author: ealsur
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: maquaran
 ms.openlocfilehash: 600556a06d3f58c4d2ec79a49fdee5e8e04d4036
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77586270"
 ---
-# <a name="how-to-configure-the-change-feed-processor-start-time"></a>Jak nakonfigurovat čas zahájení procesoru kanálu změn
+# <a name="how-to-configure-the-change-feed-processor-start-time"></a>Jak nakonfigurovat počáteční čas procesoru změny kanálu
 
-Tento článek popisuje, jak můžete nakonfigurovat [kanál změny procesor](./change-feed-processor.md) začít číst od určitého data a času.
+Tento článek popisuje, jak můžete nakonfigurovat [procesor změn kanálu](./change-feed-processor.md) tak, aby se spouštěl z konkrétního data a času.
 
 ## <a name="default-behavior"></a>Výchozí chování
 
-Při prvním spuštění procesoru kanálu změn inicializuje kontejner zapůjčení a spustí [jeho životní cyklus zpracování](./change-feed-processor.md#processing-life-cycle). Nebudou zjištěny žádné změny, ke kterým došlo v kontejneru před první inicializaí procesoru kanálu změn.
+Když se procesor pro změnu kanálu poprvé spustí, inicializuje kontejner zapůjčení a spustí jeho [životní cyklus zpracování](./change-feed-processor.md#processing-life-cycle). Všechny změny, ke kterým došlo v kontejneru předtím, než byl procesor Change feed inicializován poprvé, se nezjistí.
 
 ## <a name="reading-from-a-previous-date-and-time"></a>Čtení z předchozího data a času
 
-Je možné inicializovat procesor kanálu změn číst změny počínaje **určité datum a čas** `DateTime` , `WithStartTime` předáním instance a do rozšíření tvůrce:
+Je možné inicializovat procesor změn, aby bylo možné číst změny od **určitého data a času**, a to předáním instance `DateTime` do rozšíření `WithStartTime` tvůrce:
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=TimeInitialization)]
 
-Procesor kanálu změn bude inicializován pro dané konkrétní datum a čas a začne číst změny, ke kterým došlo po.
+Procesor změnového kanálu se inicializuje pro konkrétní datum a čas a začne číst změny, ke kterým došlo po.
 
 ## <a name="reading-from-the-beginning"></a>Čtení od začátku
 
-V jiných scénářích, jako je migrace dat nebo analýza celé historie kontejneru, musíme číst kanál změn od **začátku životnosti tohoto kontejneru**. Chcete-li to provést, můžeme použít `WithStartTime` na `DateTime.MinValue.ToUniversalTime()`rozšíření tvůrce, ale předávání , `DateTime` které by generovat UTC reprezentace minimální hodnoty, jako je takto:
+V jiných scénářích, jako jsou migrace dat nebo analýza celé historie kontejneru, musíme načíst kanál změn od **začátku životnosti tohoto kontejneru**. K tomu můžeme použít `WithStartTime` rozšíření tvůrce, ale předáním `DateTime.MinValue.ToUniversalTime()`, což vygeneruje reprezentaci UTC minimální `DateTime` hodnoty, například:
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=StartFromBeginningInitialization)]
 
-Procesor kanálu změn bude inicializován a začne číst změny od začátku životnosti kontejneru.
+Procesor změny kanálu bude inicializován a začne číst změny od začátku životnosti kontejneru.
 
 > [!NOTE]
-> Tyto možnosti vlastního nastavení fungují pouze k nastavení počátečního bodu v čase procesoru kanálu změn. Jakmile zapůjčení kontejneru je inicializován a poprvé, jejich změna nemá žádný vliv.
+> Tyto možnosti přizpůsobení fungují pouze k nastavení počátečního bodu v čase procesoru Change feed. Po prvním spuštění kontejneru zapůjčení, změna nemá žádný vliv.
 
 > [!NOTE]
-> Při zadávání bodu v čase budou přečteny pouze změny pro položky, které aktuálně existují v kontejneru. Pokud byla položka odstraněna, odebere se také její historie v kanálu změn.
+> Při zadávání bodu v čase budou čteny pouze změny pro položky, které aktuálně existují v kontejneru. Pokud se položka odstranila, odebere se i její historie kanálu změn.
 
 ## <a name="additional-resources"></a>Další zdroje
 
-* [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)
-* [Ukázky využití na GitHubu](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed)
+* [Sada Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)
+* [Ukázky použití na GitHubu](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed)
 * [Další ukázky na GitHubu](https://github.com/Azure-Samples/cosmos-dotnet-change-feed-processor)
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o procesoru kanálu změn můžete získat v následujících článcích:
+Teď můžete pokračovat a získat další informace o procesoru Change feed v následujících článcích:
 
-* [Přehled zpracovatele zdrojů změn](change-feed-processor.md)
+* [Přehled procesoru Change feed](change-feed-processor.md)
 * [Použití estimátoru pro kanálu změn](how-to-use-change-feed-estimator.md)

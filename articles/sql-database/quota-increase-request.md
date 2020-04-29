@@ -1,6 +1,6 @@
 ---
-title: Žádost o zvýšení kvóty
-description: Tato stránka popisuje, jak vytvořit žádost o podporu pro zvýšení kvót pro Azure SQL Database jednotlivé databáze, servery a spravované instance.
+title: Požádat o zvýšení kvóty
+description: Tato stránka popisuje, jak vytvořit žádost o podporu pro zvýšení kvót pro Azure SQL Database izolované databáze, servery a spravované instance.
 services: sql-database
 ms.service: sql-database
 ms.topic: conceptual
@@ -9,115 +9,115 @@ ms.author: sachinp
 ms.reviewer: sstein
 ms.date: 02/04/2020
 ms.openlocfilehash: ff2be6972bb4e8af266d0aa8a56d1879bc1b8b78
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77586151"
 ---
-# <a name="request-quota-increases-for-azure-sql-database"></a>Zvýšení kvóty požadavků pro Azure SQL Database
+# <a name="request-quota-increases-for-azure-sql-database"></a>Zvýšení kvóty žádostí pro Azure SQL Database
 
-Tento článek vysvětluje, jak požádat o zvýšení kvóty pro Azure SQL Database pro jednotlivé databáze, servery a spravované instance. Také vysvětluje, jak povolit přístup k předplatnému do oblasti.
+Tento článek vysvětluje, jak požádat o zvýšení kvóty pro Azure SQL Database pro izolované databáze, servery a spravované instance. Vysvětluje také, jak povolit přístup k předplatnému v určité oblasti.
 
-## <a name="create-a-new-support-request"></a><a id="newquota"></a>Vytvoření nové žádosti o podporu
+## <a name="create-a-new-support-request"></a><a id="newquota"></a>Vytvořit novou žádost o podporu
 
-Pomocí následujících kroků vytvořte nový požadavek na podporu z portálu Azure pro SQL Database.
+Pomocí následujícího postupu můžete vytvořit novou žádost o podporu z Azure Portal pro SQL Database.
 
-1. V nabídce [Portál Azure](https://portal.azure.com) vyberte **Nápověda + podpora**.
+1. V nabídce [Azure Portal](https://portal.azure.com) vyberte možnost **help + podpora**.
 
-   ![Odkaz Nápověda + podpora](./media/quota-increase-request/help-plus-support.png)
+   ![Odkaz Help + support](./media/quota-increase-request/help-plus-support.png)
 
-1. V **nápovědě + podpoře**vyberte Nový **požadavek na podporu**.
+1. V **okně pomoc a podpora**vyberte **Nová žádost o podporu**.
 
-    ![Vytvoření nové žádosti o podporu](./media/quota-increase-request/new-support-request.png)
+    ![Vytvořit novou žádost o podporu](./media/quota-increase-request/new-support-request.png)
 
-1. V **případě typu Problém**vyberte možnost Omezení služeb a předplatného **(kvóty).**
+1. Jako **typ problému**vyberte **omezení služby a předplatné (kvóty)**.
 
-   ![Výběr typu problému](./media/quota-increase-request/select-quota-issue-type.png)
+   ![Vyberte typ problému.](./media/quota-increase-request/select-quota-issue-type.png)
 
-1. V **části Předplatné**vyberte předplatné, jehož kvótu chcete zvýšit.
+1. V poli **předplatné**vyberte předplatné, jehož kvótu chcete zvýšit.
 
-   ![Výběr předplatného pro zvýšenou kvótu](./media/quota-increase-request/select-subscription-support-request.png)
+   ![Vyberte předplatné pro zvýšenou kvótu.](./media/quota-increase-request/select-subscription-support-request.png)
 
-1. V **případě typu Kvóta**vyberte jeden z následujících typů kvót:
+1. Jako **typ kvóty**vyberte jeden z následujících typů kvót:
 
-   - **SQL Database** pro kvóty jednoho a elastického fondu.
-   - **Instance spravované databáze SQL Database** pro spravované instance.
+   - **SQL Database** pro kvóty pro izolovanou databázi a elastický fond.
+   - **SQL Database spravované instance** pro spravované instance.
 
-   Pak vyberte **Další: Řešení >>**.
+   Pak vyberte **Další: řešení >>**.
 
-   ![Výběr typu kvóty](./media/quota-increase-request/select-quota-type.png)
+   ![Vyberte typ kvóty.](./media/quota-increase-request/select-quota-type.png)
 
-1. V okně **Podrobnosti** vyberte **Zadat podrobnosti** a zadejte další informace.
+1. V okně **podrobností** vyberte **zadat podrobnosti** a zadejte další informace.
 
-   ![Odkaz "Poskytnout podrobnosti"](./media/quota-increase-request/provide-details-link.png)
+   ![Odkaz "poskytnout podrobnosti"](./media/quota-increase-request/provide-details-link.png)
 
-Kliknutím **na tlačítko Poskytnout podrobnosti** se zobrazí okno **Podrobnosti o kvótě,** které umožňuje přidat další informace. Následující části popisují různé možnosti pro typy kvót **spravovaných instancí** **databáze SQL** a SQL Database.
+Kliknutím na Zobrazit **Podrobnosti** zobrazíte okno **Podrobnosti o kvótě** , které vám umožní přidat další informace. Následující části popisují různé možnosti pro **SQL Database** a SQL Database typy kvót **spravované instance** .
 
-## <a name="sql-database-quota-types"></a><a id="sqldbquota"></a>Typy kvót sql database
+## <a name="sql-database-quota-types"></a><a id="sqldbquota"></a>SQL Database typy kvót
 
-Následující části popisují tři možnosti zvýšení kvóty pro typy kvót **sql database:**
+Následující části popisují tři možnosti zvýšení kvóty pro **SQL Database** typy kvót:
 
 - Jednotky transakcí databáze (DTU) na server
 - Servery na předplatné
-- Povolení přístupu předplatného do oblasti
+- Povolit přístup k předplatnému pro oblast
 
 ### <a name="database-transaction-units-dtus-per-server"></a>Jednotky transakcí databáze (DTU) na server
 
-Pomocí následujících kroků můžete požádat o zvýšení jednotky DTU na server.
+Pomocí následujících kroků můžete požádat o zvýšení DTU na server.
 
-1. Vyberte **jednotky transakcí databáze (DTU) podle typu kvóty serveru.**
+1. Vyberte typ kvóty **DTU (Database Transaction units) na server** .
 
-1. V seznamu **Zdroje** vyberte zdroj, na který chcete cílit.
+1. V seznamu **prostředků** vyberte prostředek, který chcete cílit.
 
 1. Do pole **Nová kvóta** zadejte nový limit DTU, který požadujete.
 
-   ![Podrobnosti o kvótě DTU](./media/quota-increase-request/quota-details-dtus.png)
+   ![Podrobnosti kvóty DTU](./media/quota-increase-request/quota-details-dtus.png)
 
-Další informace naleznete v [tématu Omezení prostředků pro jednotlivé databáze pomocí nákupního modelu DTU](sql-database-dtu-resource-limits-single-databases.md) a [omezení prostředků pro elastické fondy pomocí nákupního modelu DTU](sql-database-dtu-resource-limits-elastic-pools.md).
+Další informace najdete v tématu [omezení prostředků pro izolované databáze pomocí modelu nákupu DTU](sql-database-dtu-resource-limits-single-databases.md) a [omezení prostředků pro elastické fondy pomocí modelu nákupu DTU](sql-database-dtu-resource-limits-elastic-pools.md).
 
 ### <a name="servers-per-subscription"></a>Servery na předplatné
 
-Pomocí následujících kroků můžete požádat o zvýšení počtu serverů na odběr.
+Pomocí následujících kroků můžete požádat o zvýšení počtu serverů na předplatné.
 
-1. Vyberte typ **kvóty Servery podle předplatného.**
+1. Vyberte typ kvóty **servery podle předplatného** .
 
-1. V seznamu **Umístění** vyberte oblast Azure, kterou chcete použít. Kvóta je na předplatné v každé oblasti.
+1. V seznamu **umístění** vyberte oblast Azure, kterou chcete použít. Kvóta je vázaná na předplatné v každé oblasti.
 
-1. Do pole **Nová kvóta** zadejte požadavek na maximální počet serverů v této oblasti.
+1. Do pole **Nová kvóta** zadejte žádost o maximální počet serverů v této oblasti.
 
    ![Podrobnosti o kvótě serverů](./media/quota-increase-request/quota-details-servers.png)
 
-Další informace naleznete v [tématu omezení prostředků databáze SQL a zásadsprávné hospo-](sql-database-resource-limits-database-server.md)
+Další informace najdete v tématu [SQL Database omezení prostředků a zásady správného řízení prostředků](sql-database-resource-limits-database-server.md).
 
-### <a name="enable-subscription-access-to-a-region"></a><a id="other"></a>Povolení přístupu předplatného do oblasti
+### <a name="enable-subscription-access-to-a-region"></a><a id="other"></a>Povolit přístup k předplatnému pro oblast
 
-Některé typy nabídek nejsou k dispozici ve všech oblastech. Může se zobrazit chyba, například následující:
+Některé typy nabídek nejsou k dispozici v každé oblasti. Může se zobrazit chyba, například následující:
 
 `This location is not available for subscription`
 
-Pokud vaše předplatné potřebuje přístup v určité oblasti, použijte možnost **Žádost o další kvótu** a požádejte o přístup. V žádosti zadejte nabídku a podrobnosti skladové položky, které chcete povolit pro oblast. Informace o možnostech nabídky a skladové položky najdete v článku [Ceny databáze Azure SQL](https://azure.microsoft.com/pricing/details/sql-database/single/).
+Pokud vaše předplatné potřebuje přístup v konkrétní oblasti, požádejte prosím o přístup **jinou možnost žádosti o kvótu** . V žádosti zadejte podrobnosti nabídky a skladové položky, které chcete pro oblast povolit. Pokud chcete prozkoumat možnosti nabídky a SKU, přečtěte si téma [Azure SQL Database ceny](https://azure.microsoft.com/pricing/details/sql-database/single/).
 
-![Další podrobnosti o kvótách](./media/quota-increase-request/quota-details-whitelisting.png)
+![Podrobnosti o jiné kvótě](./media/quota-increase-request/quota-details-whitelisting.png)
 
 ## <a name="managed-instance-quota-type"></a><a id="sqlmiquota"></a>Typ kvóty spravované instance
 
-Pro typ kvóty **spravované instance serveru SQL Server** použijte následující kroky:
+V poli Typ kvóty **spravované Instance SQL Server** použijte následující postup:
 
-1. V seznamu **Oblast** vyberte oblast Azure, na kterou chcete cílit.
+1. V seznamu **oblast** vyberte oblast Azure, do které chcete cílit.
 
-1. Zadejte nová omezení, která požadujete pro **podsíť** a **virtuální jádro**.
+1. Zadejte nové limity, které požadujete pro **podsíť** a **Vcore**.
 
-   ![Podrobnosti o kvótě spravované instance](./media/quota-increase-request/quota-details-managed-instance.png)
+   ![Podrobnosti kvóty spravované instance](./media/quota-increase-request/quota-details-managed-instance.png)
 
-Další informace naleznete v [tématu Přehled omezení prostředků spravovaných instancí Azure SQL Database](sql-database-managed-instance-resource-limits.md).
+Další informace najdete v tématu [přehled Azure SQL Database omezení prostředků spravované instance](sql-database-managed-instance-resource-limits.md).
 
-## <a name="submit-your-request"></a>Odešlete svůj požadavek
+## <a name="submit-your-request"></a>Odeslat žádost
 
-Posledním krokem je vyplnění zbývajících podrobností o požadavku na kvótu databáze SQL. Pak vyberte **Další: Kontrola + vytvoření>>** a po kontrole podrobností žádosti klikněte na **Vytvořit** a odešlete žádost.
+Posledním krokem je vyplnit zbývající podrobnosti žádosti o kvótu SQL Database. Pak vyberte **Další: zkontrolovat + vytvořit>>** a po kontrole podrobností žádosti klikněte na **vytvořit** , aby se žádost odeslala.
 
 ## <a name="next-steps"></a>Další kroky
 
-Po odeslání žádosti bude žádost zkontrolována. Budete kontaktováni s odpovědí na základě informací, které jste poskytli ve formuláři.
+Po odeslání žádosti se bude zkontrolovat. Na základě informací, které jste zadali ve formuláři, se vám bude kontaktovat odpověď.
 
-Další informace o dalších omezeních Azure najdete v [tématu Limity předplatného azure a služeb, kvóty a omezení](../azure-resource-manager/management/azure-subscription-service-limits.md).
+Další informace o dalších omezeních Azure najdete v tématu [limity, kvóty a omezení předplatného a služeb Azure](../azure-resource-manager/management/azure-subscription-service-limits.md).

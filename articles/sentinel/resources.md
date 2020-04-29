@@ -1,6 +1,6 @@
 ---
-title: Užitečné prostředky při práci s Azure Sentinel| Dokumenty společnosti Microsoft
-description: Tento dokument poskytuje seznam užitečných prostředků při práci s Azure Sentinel.
+title: Užitečné prostředky při práci se službou Azure Sentinel | Microsoft Docs
+description: Tento dokument vám poskytne seznam užitečných prostředků při práci s Sentinel Azure.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -16,70 +16,70 @@ ms.workload: na
 ms.date: 12/02/2019
 ms.author: yelevin
 ms.openlocfilehash: 2110d3319cebf693ef06deec26a29fa655e35035
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77585267"
 ---
-# <a name="useful-resources-for-working-with-azure-sentinel"></a>Užitečné prostředky pro práci s Azure Sentinelem
+# <a name="useful-resources-for-working-with-azure-sentinel"></a>Užitečné prostředky pro práci s Sentinel Azure
 
 
 
-Tento článek uvádí prostředky, které vám můžou pomoct získat další informace o práci s Azure Sentinelem.
+V tomto článku najdete seznam prostředků, které vám pomůžou získat další informace o práci s Sentinel Azure Sentinel.
 
 Konektory Azure Logic Apps:<https://docs.microsoft.com/connectors/>
 
 
-## <a name="auditing-and-reporting"></a>Audit a podávání zpráv
-Protokoly auditu Azure Sentinelu se udržují v [protokolech aktivit Azure](../azure-monitor/platform/platform-logs-overview.md).
+## <a name="auditing-and-reporting"></a>Auditování a vytváření sestav
+Protokoly auditu Azure Sentinel se udržují v [protokolech aktivit Azure](../azure-monitor/platform/platform-logs-overview.md).
 
-Auditovat lze následující podporované operace.
+Můžete auditovat následující podporované operace.
 
 |Název operace|    Typ prostředku|
 |----|----|
-|Vytvoření nebo aktualizace sešitu  |Microsoft.Insights/sešity|
-|Odstranit sešit    |Microsoft.Insights/sešity|
-|Nastavit pracovní postup   |Microsoft.Logic/pracovní postupy|
-|Odstranit pracovní postup    |Microsoft.Logic/pracovní postupy|
-|Vytvořit uložené hledání    |Microsoft.OperationalInsights/pracovní prostory/uloženáVyhledávání|
-|Odstranit uložené hledání    |Microsoft.OperationalInsights/pracovní prostory/uloženáVyhledávání|
-|Aktualizovat pravidla výstrah |Microsoft.SecurityInsights/alertRules|
-|Odstranit pravidla výstrah |Microsoft.SecurityInsights/alertRules|
-|Aktualizovat akce odpovědi na pravidlo výstrahy |Microsoft.SecurityInsights/alertRules/actions|
-|Odstranit akce odpovědi na pravidlo výstrahy |Microsoft.SecurityInsights/alertRules/actions|
-|Aktualizovat záložky   |Microsoft.SecurityInsights/záložky|
-|Odstranit záložky   |Microsoft.SecurityInsights/záložky|
-|Aktualizovat případy   |Microsoft.SecurityInsights/Případy|
-|Aktualizovat vyšetřování případu  |Microsoft.SecurityInsights/Případy/vyšetřování|
-|Vytvořit poznámky k případu   |Microsoft.SecurityInsights/Případy/komentáře|
-|Aktualizovat datové konektory |Microsoft.SecurityInsights/dataConnectors|
-|Odstranění datových konektorů |Microsoft.SecurityInsights/dataConnectors|
-|Aktualizovat nastavení    |Microsoft.SecurityInsights/nastavení|
+|Vytvořit nebo aktualizovat sešit  |Microsoft. Insights/sešity|
+|Odstranit sešit    |Microsoft. Insights/sešity|
+|Nastavit pracovní postup   |Microsoft. Logic/Workflows|
+|Odstranit pracovní postup    |Microsoft. Logic/Workflows|
+|Vytvořit uložené výsledky hledání    |Microsoft. OperationalInsights/pracovní prostory/savedSearches|
+|Odstranit uložené výsledky hledání    |Microsoft. OperationalInsights/pracovní prostory/savedSearches|
+|Aktualizovat pravidla upozornění |Microsoft. SecurityInsights/alertRules|
+|Odstranit pravidla výstrah |Microsoft. SecurityInsights/alertRules|
+|Aktualizace akcí reakce na pravidlo upozornění |Microsoft. SecurityInsights/alertRules/Actions|
+|Odstranit akce reakce pravidla výstrahy |Microsoft. SecurityInsights/alertRules/Actions|
+|Aktualizovat záložky   |Microsoft. SecurityInsights/záložky|
+|Odstranit záložky   |Microsoft. SecurityInsights/záložky|
+|Aktualizační případy   |Microsoft. SecurityInsights/případy|
+|Aktualizovat případové šetření  |Microsoft. SecurityInsights/případy/vyšetřování|
+|Vytvořit komentáře k případu   |Microsoft. SecurityInsights/případy/komentáře|
+|Aktualizace datových konektorů |Microsoft. SecurityInsights/dataconnects|
+|Odstranit datové konektory |Microsoft. SecurityInsights/dataconnects|
+|Aktualizovat nastavení    |Microsoft. SecurityInsights/Settings|
 
-### <a name="view-audit-and-reporting-data-in-azure-sentinel"></a>Zobrazení dat auditu a sestav v Azure Sentinelu
+### <a name="view-audit-and-reporting-data-in-azure-sentinel"></a>Zobrazení dat pro audit a vytváření sestav v Azure Sentinel
 
-Tato data můžete zobrazit tak, že je streamujete z protokolu aktivit Azure do Azure Sentinelu, kde pak můžete provádět výzkum a analýzy na něm.
+Tato data můžete zobrazit jejich streamování z protokolu aktivit Azure do služby Azure Sentinel, kde pak můžete na svém základě provádět výzkum a analýzu.
 
-1. Připojte zdroj dat [aktivity Azure.](connect-azure-activity.md) Poté se události auditu streamují do nové tabulky na obrazovce **Protokoly** s názvem AzureActivity.
-2. Potom dotaz na data pomocí KQL, stejně jako u jakékoli jiné tabulky.
+1. Připojte zdroj dat o [aktivitě Azure](connect-azure-activity.md) . Po provedení tohoto postupu se události auditu streamují do nové tabulky na obrazovce **protokoly** s názvem AzureActivity.
+2. Pak Dotazujte data pomocí KQL, stejně jako u jakékoli jiné tabulky.
 
 
 
 ## <a name="vendor-documentation"></a>Dokumentace dodavatele
 
-| **Dodavatel**  | **Použití incidentu v Azure Sentinelu** | **Odkaz**|
+| **Dodavatel**  | **Použít incident v Azure Sentinel** | **Odkaz**|
 |----|----|----|
-| GitHub| Slouží k přístupu na stránku komunity| <https://github.com/Azure/Azure-Sentinel> |
-| PaloAlto| Konfigurace CeF| <https://www.paloaltonetworks.com/documentation/misc/cef.html>|
+| GitHubu| Používá se pro přístup ke stránce komunity.| <https://github.com/Azure/Azure-Sentinel> |
+| PaloAlto| Konfigurace CEF| <https://www.paloaltonetworks.com/documentation/misc/cef.html>|
 | PluralSight | Kurz dotazovacího jazyka Kusto| [https://www.pluralsight.com/courses/kusto-query-language-kql-from-scratch](https://www.pluralsight.com/courses/kusto-query-language-kql-from-scratch)|
 
 ## <a name="blogs-and-forums"></a>Blogy a fóra
 
-Zveřejněte své dotazy v [oblasti TechCommunity](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bd-p/AzureSentinel) pro Azure Sentinel.
+Vystavte své dotazy na [TechCommunity místo](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bd-p/AzureSentinel) pro Azure Sentinel.
 
-Prohlédněte si blogové příspěvky Azure Sentinelu z [TechCommunity](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bg-p/AzureSentinelBlog) a [Microsoft Azure](https://azure.microsoft.com/blog/tag/azure-sentinel/).
+Prohlédněte si blogové příspěvky Azure Sentinel z [TechCommunity](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bg-p/AzureSentinelBlog) a [Microsoft Azure](https://azure.microsoft.com/blog/tag/azure-sentinel/).
 
 
 ## <a name="next-steps"></a>Další kroky
-V tomto dokumentu máte seznam prostředků, které jsou užitečné při práci s Azure Sentinel. Další informace o zabezpečení Azure a dodržování předpisů najdete na [blogu Microsoft Azure Security and Compliance](https://blogs.msdn.com/b/azuresecurity/).
+V tomto dokumentu máte seznam prostředků, které jsou užitečné, když pracujete s ověřovacími službami Azure. Další informace o zabezpečení a dodržování předpisů Azure najdete na [blogu Microsoft Azure zabezpečení a dodržování předpisů](https://blogs.msdn.com/b/azuresecurity/).

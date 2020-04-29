@@ -1,6 +1,6 @@
 ---
-title: Koncepty učebních laboratoří – Služby Azure Lab Services | Dokumenty společnosti Microsoft
-description: Seznamte se se základními koncepty služeb Lab services a jak může usnadnit vytváření a správu testovacích prostředí.
+title: Koncepce Labs v učebně – Azure Lab Services | Microsoft Docs
+description: Seznamte se se základními koncepty služby Lab Service a s tím, jak usnadňují vytváření a správu cvičení.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -14,35 +14,35 @@ ms.topic: article
 ms.date: 02/26/2019
 ms.author: spelluru
 ms.openlocfilehash: 15fd3c18d059466c2b2bd5e2431013f393092b4b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77526225"
 ---
 # <a name="classroom-labs-concepts"></a>Koncepce testovacích prostředí v učebnách
 
-Následující seznam obsahuje klíčové koncepty a definice služeb Lab Services:
+Následující seznam obsahuje klíčové pojmy a definice služby testovacího prostředí:
 
 ## <a name="quota"></a>Kvóta
 
-Kvóta je časový limit (v hodinách), který může učitel nastavit pro studenta, aby používal virtuální virtuální virtuální ho diář v testovacím prostředí. Může být nastavena na 0 nebo určitý počet hodin. Pokud je kvóta nastavena na 0, může student virtuální počítač používat jenom v případě, že běží plán nebo když učitel ručně zapne virtuální počítač pro studenta.  
+Kvóta je časový limit (v hodinách), který může učitel nastavit pro studenta k použití testovacího virtuálního počítače. Může být nastavené na 0 nebo na určitý počet hodin. Pokud je kvóta nastavená na 0, student může virtuální počítač použít jenom v případě, že je plán spuštěný, nebo když ho pro studenty ručně zapnete na virtuálním počítači.  
 
-Kvóta hodin se počítají, když student spustí virtuální ho diář.  Pokud učitel ručně spustí virtuální ho diář pro studenta, kvóta hodiny se nepoužívají pro tohoto studenta.
+Doba kvóty se počítá, když Student spustí virtuální počítač testovacího prostředí sami.  Pokud učitel ručně spustí virtuální počítač testovacího prostředí pro studenta, nepoužijí se pro tohoto studenta kvóta.
 
 ## <a name="schedules"></a>Plány
 
-Plány jsou časové úseky, které může učitel vytvořit pro kurz, aby byly virtuální virtuální měničy studentů k dispozici pro čas kurzu.  Plány mohou být jednorázové nebo opakované.  Kvóta hodin se nepoužívají, pokud je spuštěn plán.
+Plány jsou časové sloty, které může učitel vytvořit pro třídu, takže virtuální počítače studenta jsou k dispozici pro čas třídy.  Plány můžou být jednorázové nebo opakované.  V případě, že je plán spuštěný, nepoužívají se hodiny kvóty.
 
-Existují tři typy plánů: Standardní, Pouze start a Zastavit.
+Existují tři typy plánů: standardní, pouze spustit a zastavit.
 
-- **Standardní**.  Tento plán spustí všechny virtuální počítače studentů v zadaném čase zahájení a vypnutí všech virtuálních počítače studentů v zadaném čase zastavení.
-- **Spustit pouze**.   Tento plán spustí všechny virtuální chodstudentů v určený čas.  Virtuální počítače pro studenty se nezastaví, dokud student nezastaví svůj virtuální počítač prostřednictvím portálu Azure Lab Services nebo dokud nedojde k plánu pouze pro zastavení.
-- **Zastavit pouze**.  Tento plán zastaví všechny virtuální chodstudentů v určený čas.  
+- **Úroveň Standard**.  Tento plán spustí všechny virtuální počítače studenta v zadaném čase zahájení a vypíná všechny virtuální počítače studenta v zadané době zastavení.
+- **Pouze spustit**.   Tento plán spustí všechny virtuální počítače studenta v zadanou dobu.  Virtuální počítače studenta se neukončí, dokud student nezastaví svůj virtuální počítač prostřednictvím portálu Azure Lab Services nebo dojde k zastavení pouze plánu.
+- **Pouze zastavit**.  Tento plán zastaví všechny virtuální počítače studenta v zadanou dobu.  
 
-## <a name="template-virtual-machine"></a>Šablona virtuální hopočítače
+## <a name="template-virtual-machine"></a>Virtuální počítač šablony
 
-Virtuální počítač šablony v testovacím prostředí je základní image virtuálního počítače, ze kterého se vytvářejí virtuální počítače všech uživatelů. Školitelé a tvůrci testovacího prostředí nastavují virtuální počítač šablony a nakonfigurují jej pomocí softwaru, který chtějí poskytnout účastníkům školení k testovacím prostředím. Když publikujete šablonu virtuálního počítače, Azure Lab Services vytvoří nebo aktualizuje virtuální počítače testovacího prostředí na základě šablony virtuálního počítače.
+Virtuální počítač šablony v testovacím prostředí je základní image virtuálního počítače, ze které se vytvářejí virtuální počítače všech uživatelů. Autoři školitel/testovacích prostředí nastavili virtuální počítač šablony a nakonfigurují ho pomocí softwaru, který chtějí poskytnout pro školení účastníků na cvičení. Když publikujete virtuální počítač šablony, Azure Lab Services vytvoří nebo aktualizuje testovací virtuální počítače založené na virtuálním počítači šablony.
 
 ## <a name="user-profiles"></a>Profily uživatelů
 
