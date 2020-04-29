@@ -1,7 +1,7 @@
 ---
-title: Jak nasadit modely do služby Azure Kubernetes
+title: Postup nasazení modelů do služby Azure Kubernetes
 titleSuffix: Azure Machine Learning
-description: Zjistěte, jak nasadit modely Azure Machine Learning jako webovou službu pomocí služby Azure Kubernetes Service.
+description: Naučte se, jak nasadit modely Azure Machine Learning jako webovou službu pomocí služby Azure Kubernetes.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,65 +11,65 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 01/16/2020
 ms.openlocfilehash: aec1b7f7bf60be34d21d52ca652a776cf3275fe8
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80811765"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Nasazení modelu do clusteru služby Azure Kubernetes
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Zjistěte, jak pomocí Azure Machine Learning nasadit model jako webovou službu ve službě Azure Kubernetes Service (AKS). Služba Azure Kubernetes service je vhodná pro nasazení ve vysokém měřítku. Pokud potřebujete jednu nebo více z následujících funkcí, použijte službu Azure Kubernetes:
+Naučte se používat Azure Machine Learning k nasazení modelu jako webové služby ve službě Azure Kubernetes Service (AKS). Služba Azure Kubernetes je vhodná pro vysoce škálovatelná produkční nasazení. Použijte službu Azure Kubernetes, pokud potřebujete jednu nebo více z následujících možností:
 
 - __Rychlá doba odezvy__.
-- __Automatické škálování__ nasazené služby.
-- __Možnosti hardwarové akcelerace,__ jako je GPU a pole programovatelná brány pole (FPGA).
+- Automatické __škálování__ nasazené služby.
+- Možnosti __hardwarové akcelerace__ , jako například GPU a pole programovatelné brány (FPGA).
 
 > [!IMPORTANT]
-> Škálování clusteru není k dispozici prostřednictvím sady Azure Machine Learning SDK. Další informace o škálování uzlů v clusteru AKS naleznete v [tématu Škálování počtu uzlů v clusteru AKS](../aks/scale-cluster.md).
+> Škálování clusteru není k dispozici prostřednictvím sady Azure Machine Learning SDK. Další informace o škálování uzlů v clusteru AKS najdete v tématu [škálování počtu uzlů v clusteru AKS](../aks/scale-cluster.md).
 
-Při nasazování do služby Azure Kubernetes se nasazujete do clusteru AKS, který je __připojený k vašemu pracovnímu prostoru__. Cluster AKS lze připojit ke svému pracovnímu prostoru dvěma způsoby:
+Při nasazování do služby Azure Kubernetes nasadíte do clusteru AKS, který je __připojený k vašemu pracovnímu prostoru__. Existují dva způsoby, jak připojit cluster AKS k vašemu pracovnímu prostoru:
 
-* Vytvořte cluster AKS pomocí azure machine learnings sdk, machine learningcli nebo [Azure Machine Learning studio](https://ml.azure.com). Tento proces automaticky připojí cluster k pracovnímu prostoru.
-* Připojte existující cluster AKS k pracovnímu prostoru Azure Machine Learning. Cluster lze připojit pomocí Azure Machine Learning SDK, Machine Learning CLI nebo Azure Machine Learning studio.
+* Vytvořte cluster AKS pomocí sady Azure Machine Learning SDK, Machine Learning CLI nebo [Azure Machine Learning Studio](https://ml.azure.com). Tento proces automaticky připojí cluster k pracovnímu prostoru.
+* Připojte existující cluster AKS k pracovnímu prostoru Azure Machine Learning. Cluster se dá připojit pomocí Azure Machine Learning SDK, Machine Learning CLI nebo Azure Machine Learning studia.
 
 > [!IMPORTANT]
-> Proces vytváření nebo připojování je jednorázový úkol. Jakmile je cluster AKS připojen k pracovnímu prostoru, můžete jej použít pro nasazení. Cluster AKS můžete odpojit nebo odstranit, pokud jej již nepotřebujete. Po odpojení nebo odstranění už nebudete moct nasadit do clusteru.
+> Proces vytvoření nebo přílohy je jednorázovým úkolem. Jakmile je cluster AKS připojený k pracovnímu prostoru, můžete ho použít pro nasazení. Cluster AKS můžete odpojit nebo odstranit, pokud ho už nepotřebujete. Až se odpojíte nebo odstraníte, nebudete už moct nasadit do clusteru.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Pracovní prostor služby Azure Machine Learning. Další informace najdete [v tématu Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).
+- Pracovní prostor služby Azure Machine Learning. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).
 
-- Model strojového učení registrovaný ve vašem pracovním prostoru. Pokud nemáte registrovaný model, přečtěte si, [jak a kde nasadit modely](how-to-deploy-and-where.md).
+- Model služby Machine Learning, který je zaregistrován ve vašem pracovním prostoru. Pokud nemáte registrovaný model, přečtěte si téma [jak a kde nasadit modely](how-to-deploy-and-where.md).
 
-- [Rozšíření Azure CLI pro službu Machine Learning](reference-azure-machine-learning-cli.md), Azure Machine Learning Python [SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)nebo [rozšíření Azure Machine Learning Visual Studio Code](tutorial-setup-vscode-extension.md).
+- [Rozšíření Azure CLI pro službu Machine Learning](reference-azure-machine-learning-cli.md), [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)nebo [rozšíření Azure Machine Learning Visual Studio Code](tutorial-setup-vscode-extension.md).
 
-- Fragmenty kódu __Pythonu__ v tomto článku předpokládají, že jsou nastaveny následující proměnné:
+- Fragmenty kódu __Pythonu__ v tomto článku předpokládají, že jsou nastavené následující proměnné:
 
-    * `ws`- Nastavte do pracovního prostoru.
-    * `model`- Nastavte na váš registrovaný model.
-    * `inference_config`- Nastavte na odvození konfigurace pro model.
+    * `ws`– Nastavte na svůj pracovní prostor.
+    * `model`– Nastavte na registrovaný model.
+    * `inference_config`– Nastavte na odvození konfigurace pro model.
 
-    Další informace o nastavení těchto proměnných naleznete v tématu [Jak a kde nasadit modely](how-to-deploy-and-where.md).
+    Další informace o nastavení těchto proměnných najdete v tématu [jak a kde nasadit modely](how-to-deploy-and-where.md).
 
-- Fragmenty __zapínání na vod v__ ykrese v tomto článku předpokládají, že jste vytvořili `inferenceconfig.json` dokument. Další informace o vytvoření tohoto dokumentu naleznete v tématu [Jak a kde nasadit modely](how-to-deploy-and-where.md).
+- Fragmenty rozhraní příkazového __řádku__ v tomto článku předpokládají, že jste `inferenceconfig.json` vytvořili dokument. Další informace o vytváření tohoto dokumentu najdete v tématu [jak a kde nasadit modely](how-to-deploy-and-where.md).
 
 ## <a name="create-a-new-aks-cluster"></a>Vytvoření nového clusteru AKS
 
-**Odhad času**: Přibližně 20 minut.
+**Časový odhad**: přibližně 20 minut.
 
-Vytvoření nebo připojení clusteru AKS je jednorázový proces pro váš pracovní prostor. Tento cluster můžete znovu použít pro více nasazení. Pokud odstraníte cluster nebo skupinu prostředků, která jej obsahuje, musíte vytvořit nový cluster při příštím nasazení. K pracovnímu prostoru můžete mít připojeno více clusterů AKS.
+Vytvoření nebo připojení clusteru AKS je jednorázový proces pro váš pracovní prostor. Tento cluster můžete použít pro více nasazení. Pokud odstraníte cluster nebo skupinu prostředků, která ho obsahuje, musíte při příštím nasazení vytvořit nový cluster. K vašemu pracovnímu prostoru můžete připojit více clusterů AKS.
 
 > [!TIP]
-> Pokud chcete zabezpečit cluster AKS pomocí virtuální sítě Azure, musíte nejprve vytvořit virtuální síť. Další informace najdete [v tématu Zabezpečené experimentování a odvození pomocí virtuální sítě Azure](how-to-enable-virtual-network.md#aksvnet).
+> Pokud chcete svůj cluster AKS zabezpečit pomocí Virtual Network Azure, musíte nejdřív vytvořit virtuální síť. Další informace najdete v tématu [zabezpečené experimenty a odvozování pomocí Azure Virtual Network](how-to-enable-virtual-network.md#aksvnet).
 
-Pokud chcete vytvořit cluster AKS pro __vývoj__, __ověřování__a __testování__ namísto výroby, můžete zadat __účel clusteru__ pro __vývoj .__
+Pokud chcete vytvořit cluster AKS pro __vývoj__, __ověřování__a __testování__ namísto produkčního prostředí, můžete určit __účel clusteru__ pro vývoj v __testovacím__prostředí.
 
 > [!WARNING]
-> Pokud nastavíte `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST`, cluster, který je vytvořen není vhodný pro provoz na úrovni výroby a může zvýšit dobu odvození. Vývojové a testovací clustery také nezaručují odolnost proti chybám. Pro vývojové a testovací clustery doporučujeme alespoň 2 virtuální procesory.
+> Pokud jste nastavili `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST`, cluster, který se vytvoří, není vhodný pro provoz na úrovni produkčního prostředí a může prodloužit dobu odvození. Clustery pro vývoj a testování také nezaručují odolnost proti chybám. Pro clustery pro vývoj a testování doporučujeme aspoň 2 virtuální procesory.
 
-Následující příklady ukazují, jak vytvořit nový cluster AKS pomocí sady SDK a CLI:
+Následující příklady ukazují, jak vytvořit nový cluster AKS pomocí sady SDK a rozhraní příkazového řádku:
 
 **Použití sady SDK**
 
@@ -92,53 +92,53 @@ aks_target.wait_for_completion(show_output = True)
 ```
 
 > [!IMPORTANT]
-> Pro [`provisioning_configuration()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py), pokud vyberete `agent_count` `vm_size`vlastní `cluster_purpose` hodnoty `DEV_TEST`pro a , a `agent_count` není `vm_size` , pak je třeba se ujistit, vynásobené je větší nebo rovno 12 virtuálních procesorů. Například pokud používáte `vm_size` "Standard_D3_v2", který má 4 virtuální procesory, `agent_count` pak byste měli vybrat 3 nebo vyšší.
+> V [`provisioning_configuration()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py)případě, že vyberete vlastní hodnoty pro `agent_count` a `vm_size`a `cluster_purpose` není `DEV_TEST`, je nutné zajistit, aby `agent_count` vynásobený hodnotou `vm_size` byla větší než nebo rovna 12 virtuálním procesorům. Pokud například použijete `vm_size` "Standard_D3_v2", která má 4 virtuální procesory, měli byste vybrat `agent_count` 3 nebo vyšší.
 >
-> Sada Azure Machine Learning SDK neposkytuje podporu škálování clusteru AKS. Chcete-li škálovat uzly v clusteru, použijte ui pro cluster AKS ve studiu Azure Machine Learning. Můžete změnit pouze počet uzlů, nikoli velikost virtuálního počítače clusteru.
+> Sada SDK pro Azure Machine Learning neposkytuje podporu škálování clusteru AKS. Pokud chcete škálovat uzly v clusteru, použijte uživatelské rozhraní pro cluster AKS v nástroji Azure Machine Learning Studio. Můžete změnit jenom počet uzlů, nikoli velikost virtuálního počítače v clusteru.
 
 Další informace o třídách, metodách a parametrech použitých v tomto příkladu naleznete v následujících referenčních dokumentech:
 
 * [AksCompute.ClusterPurpose](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.akscompute.clusterpurpose?view=azure-ml-py)
-* [AksCompute.provisioning_configuration](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)
-* [ComputeTarget.create](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computetarget?view=azure-ml-py#create-workspace--name--provisioning-configuration-)
-* [ComputeTarget.wait_for_completion](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computetarget?view=azure-ml-py#wait-for-completion-show-output-false-)
+* [AksCompute. provisioning_configuration](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)
+* [ComputeTarget. Create](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computetarget?view=azure-ml-py#create-workspace--name--provisioning-configuration-)
+* [ComputeTarget. wait_for_completion](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computetarget?view=azure-ml-py#wait-for-completion-show-output-false-)
 
-**Použití cli**
+**Použití rozhraní příkazového řádku**
 
 ```azurecli
 az ml computetarget create aks -n myaks
 ```
 
-Další informace naleznete [v az ml computetarget create aks](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-aks) odkaz.
+Další informace najdete v tématu [AZ ml computetarget Create AKS](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-aks) reference.
 
-## <a name="attach-an-existing-aks-cluster"></a>Připojení existujícího clusteru AKS
+## <a name="attach-an-existing-aks-cluster"></a>Připojit existující cluster AKS
 
 **Časový odhad:** Přibližně 5 minut.
 
-Pokud už máte cluster AKS ve vašem předplatném Azure a je verze 1.17 nebo nižší, můžete ji použít k nasazení image.
+Pokud už máte cluster AKS ve svém předplatném Azure a verze 1,17 nebo nižší, můžete ho použít k nasazení image.
 
 > [!TIP]
-> Existující cluster AKS může být v jiné oblasti Azure než váš pracovní prostor Azure Machine Learning.
+> Stávající cluster AKS může být v jiné oblasti Azure, než je váš pracovní prostor Azure Machine Learning.
 >
-> Pokud chcete zabezpečit cluster AKS pomocí virtuální sítě Azure, musíte nejprve vytvořit virtuální síť. Další informace najdete [v tématu Zabezpečené experimentování a odvození pomocí virtuální sítě Azure](how-to-enable-virtual-network.md#aksvnet).
+> Pokud chcete svůj cluster AKS zabezpečit pomocí Virtual Network Azure, musíte nejdřív vytvořit virtuální síť. Další informace najdete v tématu [zabezpečené experimenty a odvozování pomocí Azure Virtual Network](how-to-enable-virtual-network.md#aksvnet).
 
-Při připojování clusteru AKS k pracovnímu prostoru můžete definovat, `cluster_purpose` jak bude cluster používat, nastavením parametru.
+Při připojování clusteru AKS k pracovnímu prostoru můžete definovat, jak budete cluster používat, nastavením `cluster_purpose` parametru.
 
-Pokud nenastavíte `cluster_purpose` parametr nebo `cluster_purpose = AksCompute.ClusterPurpose.FAST_PROD`nastavení , musí mít cluster k dispozici alespoň 12 virtuálních procesorů.
+Pokud `cluster_purpose` parametr nezadáte nebo nastavíte `cluster_purpose = AksCompute.ClusterPurpose.FAST_PROD`, cluster musí mít k dispozici alespoň 12 virtuálních procesorů.
 
-Pokud nastavíte `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST`, pak cluster nemusí mít 12 virtuálních procesorů. Doporučujeme alespoň 2 virtuální procesory pro vývoj a testování. Cluster, který je nakonfigurován pro vývoj a testování, však není vhodný pro provoz na úrovni výroby a může zvýšit dobu odvození. Vývojové a testovací clustery také nezaručují odolnost proti chybám.
+Pokud nastavíte `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST`, cluster nemusí mít 12 virtuálních procesorů. Pro vývoj a testování doporučujeme aspoň 2 virtuální procesory. Cluster, který je nakonfigurovaný pro vývoj a testování, ale není vhodný pro provoz na úrovni produkčního prostředí a může prodloužit dobu odvození. Clustery pro vývoj a testování také nezaručují odolnost proti chybám.
 
 > [!WARNING]
-> Nevytvářejte více souběžných příloh ke stejnému clusteru AKS z pracovního prostoru. Například připojení jednoho clusteru AKS k pracovnímu prostoru pomocí dvou různých názvů. Každá nová příloha přeruší předchozí existující přílohy.
+> Nevytvářejte více souběžných příloh ke stejnému AKS clusteru z vašeho pracovního prostoru. Například připojení jednoho clusteru AKS k pracovnímu prostoru pomocí dvou různých názvů. Každá nová příloha zruší předchozí existující přílohy.
 >
-> Chcete-li znovu připojit cluster AKS, například změnit tls nebo jiné nastavení konfigurace clusteru, musíte nejprve odebrat existující přílohu pomocí [AksCompute.detach()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#detach--).
+> Pokud chcete cluster AKS znovu připojit, například pokud chcete změnit nastavení TLS nebo jiné konfigurace clusteru, musíte nejdřív odebrat existující přílohu pomocí [AksCompute. detach ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#detach--).
 
-Další informace o vytvoření clusteru AKS pomocí azure cli nebo portálu najdete v následujících článcích:
+Další informace o vytvoření clusteru AKS pomocí Azure CLI nebo portálu najdete v následujících článcích:
 
 * [Vytvoření clusteru AKS (rozhraní příkazového řádku)](https://docs.microsoft.com/cli/azure/aks?toc=%2Fazure%2Faks%2FTOC.json&bc=%2Fazure%2Fbread%2Ftoc.json&view=azure-cli-latest#az-aks-create)
 * [Vytvoření clusteru AKS (portál)](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough-portal?view=azure-cli-latest)
 
-Následující příklady ukazují, jak připojit existující cluster AKS k pracovnímu prostoru:
+Následující příklady ukazují, jak připojit existující cluster AKS k vašemu pracovnímu prostoru:
 
 **Použití sady SDK**
 
@@ -159,13 +159,13 @@ aks_target = ComputeTarget.attach(ws, 'myaks', attach_config)
 
 Další informace o třídách, metodách a parametrech použitých v tomto příkladu naleznete v následujících referenčních dokumentech:
 
-* [AksCompute.attach_configuration()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)
+* [AksCompute. attach_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)
 * [AksCompute.ClusterPurpose](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.akscompute.clusterpurpose?view=azure-ml-py)
-* [AksCompute.attach](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computetarget?view=azure-ml-py#attach-workspace--name--attach-configuration-)
+* [AksCompute. Attach](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computetarget?view=azure-ml-py#attach-workspace--name--attach-configuration-)
 
-**Použití cli**
+**Použití rozhraní příkazového řádku**
 
-Chcete-li připojit existující cluster pomocí vykreslování se konzaličování linek, je třeba získat ID prostředku existujícího clusteru. Chcete-li získat tuto hodnotu, použijte následující příkaz. Nahraďte `myexistingcluster` název clusteru AKS. Nahraďte `myresourcegroup` skupinou prostředků, která obsahuje cluster:
+Pokud chcete připojit existující cluster pomocí rozhraní příkazového řádku, musíte získat ID prostředku pro existující cluster. Tuto hodnotu získáte pomocí následujícího příkazu. Nahraďte `myexistingcluster` názvem vašeho clusteru AKS. Nahraďte `myresourcegroup` skupinou prostředků, která obsahuje cluster:
 
 ```azurecli
 az aks show -n myexistingcluster -g myresourcegroup --query id
@@ -177,17 +177,17 @@ Tento příkaz vrátí hodnotu podobnou následujícímu textu:
 /subscriptions/{GUID}/resourcegroups/{myresourcegroup}/providers/Microsoft.ContainerService/managedClusters/{myexistingcluster}
 ```
 
-Chcete-li připojit existující cluster k pracovnímu prostoru, použijte následující příkaz. Nahraďte `aksresourceid` hodnotou vrácenou předchozím příkazem. Nahraďte `myresourcegroup` skupinou prostředků, která obsahuje váš pracovní prostor. Nahraďte `myworkspace` název pracovního prostoru.
+Pokud chcete připojit existující cluster k pracovnímu prostoru, použijte následující příkaz. Nahraďte `aksresourceid` hodnotou vrácenou předchozím příkazem. Nahraďte `myresourcegroup` skupinou prostředků, která obsahuje váš pracovní prostor. Nahraďte `myworkspace` názvem vašeho pracovního prostoru.
 
 ```azurecli
 az ml computetarget attach aks -n myaks -i aksresourceid -g myresourcegroup -w myworkspace
 ```
 
-Další informace naleznete v tématu [az ml computetarget připojit aks](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/attach?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-attach-aks) odkaz.
+Další informace najdete v referenčních informacích [AZ ml computetarget Attach AKS](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/attach?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-attach-aks) .
 
 ## <a name="deploy-to-aks"></a>Nasazení do AKS
 
-Chcete-li nasadit model do služby Azure Kubernetes, vytvořte __konfiguraci nasazení,__ která popisuje potřebné výpočetní prostředky. Například počet jader a paměti. Potřebujete také __konfiguraci odvození__, která popisuje prostředí potřebné k hostování modelu a webové služby. Další informace o vytvoření konfigurace odvození naleznete v tématu [Jak a kde nasadit modely](how-to-deploy-and-where.md).
+Pokud chcete nasadit model do služby Azure Kubernetes, vytvořte __konfiguraci nasazení__ , která popisuje potřebné výpočetní prostředky. Například počet jader a paměti. Potřebujete také __konfiguraci odvození__, která popisuje prostředí potřebné pro hostování modelu a webové služby. Další informace o vytvoření konfigurace odvození najdete v tématu [jak a kde nasadit modely](how-to-deploy-and-where.md).
 
 ### <a name="using-the-sdk"></a>Použití sady SDK
 
@@ -209,13 +209,13 @@ print(service.get_logs())
 Další informace o třídách, metodách a parametrech použitých v tomto příkladu naleznete v následujících referenčních dokumentech:
 
 * [AksCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.akscompute?view=azure-ml-py)
-* [AksWebservice.deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aks.aksservicedeploymentconfiguration?view=azure-ml-py)
-* [Model.deploy](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)
-* [Webservice.wait_for_deployment](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#wait-for-deployment-show-output-false-)
+* [AksWebservice. deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aks.aksservicedeploymentconfiguration?view=azure-ml-py)
+* [Model. deploy](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)
+* [WebService. wait_for_deployment](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#wait-for-deployment-show-output-false-)
 
-### <a name="using-the-cli"></a>Použití cli
+### <a name="using-the-cli"></a>Použití rozhraní příkazového řádku
 
-Chcete-li nasadit pomocí příkazového příkazu k příkazu příkazu, použijte následující příkaz. Nahraďte `myaks` se názvem výpočetního cíle AKS. Nahraďte `mymodel:1` název a verzi registrovaného modelu. Chcete-li tuto službu poskytnout, nahraďte `myservice` názvem:
+Chcete-li nasadit pomocí rozhraní příkazového řádku, použijte následující příkaz. Nahraďte `myaks` názvem výpočetního cíle AKS. Nahraďte `mymodel:1` názvem a verzí registrovaného modelu. Nahraďte `myservice` názvem, který tuto službu poskytne:
 
 ```azurecli-interactive
 az ml model deploy -ct myaks -m mymodel:1 -n myservice -ic inferenceconfig.json -dc deploymentconfig.json
@@ -223,38 +223,38 @@ az ml model deploy -ct myaks -m mymodel:1 -n myservice -ic inferenceconfig.json 
 
 [!INCLUDE [deploymentconfig](../../includes/machine-learning-service-aks-deploy-config.md)]
 
-Další informace naleznete v odkazu [na nasazení modelu az ml.](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy)
+Další informace najdete v referenčních informacích k [nasazení modelu AZ ml model](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy) .
 
 ### <a name="using-vs-code"></a>Použití VS Code
 
-Informace o použití VS Code najdete [v tématu nasazení do AKS prostřednictvím rozšíření VS Code](tutorial-train-deploy-image-classification-model-vscode.md#deploy-the-model).
+Informace o použití VS Code najdete v tématu [nasazení do AKS prostřednictvím rozšíření vs Code](tutorial-train-deploy-image-classification-model-vscode.md#deploy-the-model).
 
 > [!IMPORTANT]
-> Nasazení prostřednictvím kódu VS vyžaduje, aby byl cluster AKS předem vytvořen nebo připojen k vašemu pracovnímu prostoru.
+> Nasazení prostřednictvím VS Code vyžaduje, aby byl cluster AKS vytvořen nebo připojen k vašemu pracovnímu prostoru předem.
 
-## <a name="deploy-models-to-aks-using-controlled-rollout-preview"></a>Nasazení modelů do AKS pomocí řízeného zavádění (náhled)
+## <a name="deploy-models-to-aks-using-controlled-rollout-preview"></a>Nasazení modelů do AKS pomocí řízeného zavedení (Preview)
 
-Analyzujte a povyšujte verze modelu řízeným způsobem pomocí koncových bodů. Můžete nasadit až šest verzí za jeden koncový bod. Koncové body poskytují následující funkce:
+Analyzujte a Propagujte verze modelu řízeným způsobem pomocí koncových bodů. Můžete nasadit až šest verzí za jedním koncovým bodem. Koncové body poskytují následující možnosti:
 
-* Nakonfigurujte __procento vyhodnocování přenosů odeslaných do každého koncového bodu__. Například trasa 20 % provozu na koncový bod "test" a 80 % na "výrobu".
+* Nakonfigurujte __procento provozu vyhodnocování odeslaného do každého koncového bodu__. Například směrujte 20% provozu do koncového bodu "test" a 80% na "produkční".
 
     > [!NOTE]
-    > Pokud neúčtujete 100 % provozu, všechny zbývající procento jsou směrovány na __výchozí__ verzi koncového bodu. Pokud například nakonfigurujete verzi koncového bodu "test" tak, aby získala 10 % provozu, a "prod" pro 30 %, zbývajících 60 % je odesláno do výchozí verze koncového bodu.
+    > Pokud neprovedete účet pro 100% provozu, všechna zbývající procentuální hodnota se směruje do __výchozí__ verze koncového bodu. Pokud například nakonfigurujete verzi Endpoint pro test, abyste získali 10% provozu a "prod" po dobu 30%, bude zbývající 60% odesláno do výchozí verze koncového bodu.
     >
-    > První vytvořená verze koncového bodu je automaticky nakonfigurována jako výchozí. To můžete změnit `is_default=True` nastavením při vytváření nebo aktualizaci verze koncového bodu.
+    > První vytvořená verze koncového bodu je automaticky nakonfigurovaná jako výchozí. Toto nastavení můžete změnit nastavením `is_default=True` při vytváření nebo aktualizaci verze koncového bodu.
      
-* Označte verzi koncového bodu jako __ovládací prvek__ nebo __ošetření__. Například aktuální verze koncového bodu výroby může být ovládací prvek, zatímco potenciální nové modely jsou nasazeny jako verze zpracování. Po vyhodnocení výkonu verze léčby, pokud jeden překonává aktuální ovládací prvek, může být povýšen na novou výrobu/ovládací prvek.
+* Označení verze koncového bodu buď jako __řízení__ , nebo jako __zpracování__. Například aktuální verze produkčního koncového bodu může být ovládací prvek, zatímco potenciální nové modely jsou nasazeny jako verze zpracování. Po vyhodnocení výkonu pro verze zpracování, pokud jeden z nich překoná aktuální ovládací prvek, může být povýšen na novou produkci nebo řízení.
 
     > [!NOTE]
-    > Můžete mít pouze __jeden__ ovládací prvek. Můžete mít více ošetření.
+    > Můžete mít jenom __jeden__ ovládací prvek. Můžete mít více způsobů zpracování.
 
-Přehledy aplikací můžete povolit k zobrazení provozních metrik koncových bodů a nasazených verzí.
+Službu App Insights můžete povolit pro zobrazení provozních metrik koncových bodů a nasazených verzí.
 
 ### <a name="create-an-endpoint"></a>Vytvoření koncového bodu
-Jakmile budete připraveni k nasazení modelů, vytvořte koncový bod vyhodnocování a nasaďte svou první verzi. Následující příklad ukazuje, jak nasadit a vytvořit koncový bod pomocí sady SDK. První nasazení bude definováno jako výchozí verze, což znamená, že nespecifikovaný percentil provozu ve všech verzích přejde na výchozí verzi.  
+Až budete připraveni k nasazení modelů, vytvořte hodnoticí koncový bod a nasaďte první verzi. Následující příklad ukazuje, jak nasadit a vytvořit koncový bod pomocí sady SDK. První nasazení bude definováno jako výchozí verze, což znamená, že nespecifikovaný percentil provozu napříč všemi verzemi přejde na výchozí verzi.  
 
 > [!TIP]
-> V následujícím příkladu konfigurace nastaví verzi počátečního koncového bodu pro zpracování 20 % provozu. Vzhledem k tomu, že se jedná o první koncový bod, je to také výchozí verze. A protože nemáme žádné jiné verze pro ostatní 80% provozu, je směrován a výchozí stejně. Dokud nebudou nasazeny jiné verze, které berou procento provozu, tato verze efektivně obdrží 100 % provozu.
+> V následujícím příkladu konfigurace nastavuje počáteční verzi koncového bodu pro zpracování 20% provozu. Vzhledem k tomu, že se jedná o první koncový bod, je to také výchozí verze. A vzhledem k tomu, že pro ostatní 80% provozu nejsou k dispozici žádné jiné verze, je tato hodnota směrována i na výchozí. Dokud nebudou nasazeny jiné verze, které berou v úvahu procento provozu, bude tato hodnota efektivně přijímat 100% provozu.
 
 ```python
 import azureml.core,
@@ -282,10 +282,10 @@ endpoint_deployment_config = AksEndpoint.deploy_configuration(cpu_cores = 0.1, m
 
 ### <a name="update-and-add-versions-to-an-endpoint"></a>Aktualizace a přidání verzí do koncového bodu
 
-Přidejte do koncového bodu další verzi a nakonfigurujte percentil vyhodnocování provozu, který bude na verzi. Existují dva typy verzí, kontrolní a léčebná verze. Může existovat více verzí léčby, které vám pomohou porovnat s jednou verzí ovládacího prvku.
+Přidejte do svého koncového bodu jinou verzi a nakonfigurujte percentil pro přenos dat bodování na verzi. Existují dva typy verzí, ovládací prvek a verze zpracování. Pro porovnání s verzí s jediným ovládacím prvkem může být více verzí zpracování.
 
 > [!TIP]
-> Druhá verze, vytvořená následujícím fragmentem kódu, přijímá 10 % provozu. První verze je nakonfigurována pro 20 %, takže pouze 30 % provozu je konfigurováno pro konkrétní verze. Zbývajících 70 % je odesláno do první verze koncového bodu, protože je také výchozí verze.
+> Druhá verze vytvořená následujícím fragmentem kódu přijímá 10% provozu. První verze je nakonfigurovaná na 20%, takže se pro konkrétní verze nakonfigurují jenom 30% provozu. Zbývající 70% se pošle na první verzi koncového bodu, protože to je taky výchozí verze.
 
  ```python
 from azureml.core.webservice import AksEndpoint
@@ -301,10 +301,10 @@ endpoint.create_version(version_name = version_name_add,
 endpoint.wait_for_deployment(True)
 ```
 
-Aktualizujte existující verze nebo je odstraňte v koncovém bodě. Můžete změnit výchozí typ verze, typ ovládacího prvku a percentil provozu. V následujícím příkladu druhá verze zvyšuje jeho provoz na 40 % a je nyní výchozí.
+Aktualizujte existující verze nebo je odstraňte v koncovém bodu. Můžete změnit výchozí typ verze, typ ovládacího prvku a percentil provozu. V následujícím příkladu druhá verze zvyšuje svůj provoz na 40% a teď je výchozí hodnota.
 
 > [!TIP]
-> Po následujícím fragmentu kódu je nyní výchozí druhá verze. Nyní je nakonfigurován pro 40 %, zatímco původní verze je stále nakonfigurována pro 20 %. To znamená, že 40 % provozu není započítáno podle konfigurace verzí. Zbývající provoz bude směrován na druhou verzi, protože je nyní výchozí. Účinně přijímá 80% provozu.
+> Po následujícím fragmentu kódu je teď ve výchozím nastavení druhá verze. Je teď nakonfigurované na 40%, ale původní verze je pořád nakonfigurovaná na 20%. To znamená, že 40% provozu není v konfiguracích verzí účtováno. Provoz zbylé bude směrován do druhé verze, protože je nyní výchozí. Efektivně přijímá 80% provozu.
 
  ```python
 from azureml.core.webservice import AksEndpoint
@@ -325,19 +325,19 @@ endpoint.delete_version(version_name="versionb")
 
 ## <a name="web-service-authentication"></a>Ověřování webové služby
 
-Při nasazování do služby Azure Kubernetes je ověřování založené na __klíči__ ve výchozím nastavení povolené. Můžete také povolit ověřování __založené na tokenech.__ Ověřování založené na tokenech vyžaduje, aby klienti používali účet Azure Active Directory k vyžádání ověřovacího tokenu, který se používá k požadavkům na nasazenou službu.
+Při nasazování do služby Azure Kubernetes je ve výchozím nastavení povolené ověřování __na základě klíčů__ . Můžete také povolit ověřování __na základě tokenů__ . Ověřování na základě tokenu vyžaduje, aby klienti používali účet Azure Active Directory k vyžádání ověřovacího tokenu, který se používá k provádění požadavků na nasazenou službu.
 
-Chcete-li __zakázat__ ověřování, nastavte `auth_enabled=False` parametr při vytváření konfigurace nasazení. Následující příklad zakáže ověřování pomocí sady SDK:
+Chcete-li __Zakázat__ ověřování, `auth_enabled=False` nastavte parametr při vytváření konfigurace nasazení. Následující příklad zakáže ověřování pomocí sady SDK:
 
 ```python
 deployment_config = AksWebservice.deploy_configuration(cpu_cores=1, memory_gb=1, auth_enabled=False)
 ```
 
-Informace o ověřování z klientské aplikace najdete v tématu [využití modelu Azure Machine Learning nasazeného jako webová služba](how-to-consume-web-service.md).
+Informace o ověřování od klientské aplikace najdete v tématu [využívání modelu Azure Machine Learning nasazeného jako webové služby](how-to-consume-web-service.md).
 
 ### <a name="authentication-with-keys"></a>Ověřování pomocí klíčů
 
-Pokud je povoleno ověřování pomocí `get_keys` klíče, můžete pomocí této metody načíst primární a sekundární ověřovací klíč:
+Pokud je povolené klíčové ověřování, můžete k načtení primárního `get_keys` a sekundárního ověřovacího klíče použít metodu:
 
 ```python
 primary, secondary = service.get_keys()
@@ -349,13 +349,13 @@ print(primary)
 
 ### <a name="authentication-with-tokens"></a>Ověřování pomocí tokenů
 
-Chcete-li povolit `token_auth_enabled=True` ověřování tokenů, nastavte parametr při vytváření nebo aktualizaci nasazení. Následující příklad umožňuje ověřování tokenů pomocí sady SDK:
+Pokud chcete povolit ověřování pomocí tokenu `token_auth_enabled=True` , nastavte parametr při vytváření nebo aktualizaci nasazení. Následující příklad povoluje ověření tokenu pomocí sady SDK:
 
 ```python
 deployment_config = AksWebservice.deploy_configuration(cpu_cores=1, memory_gb=1, token_auth_enabled=True)
 ```
 
-Pokud je povoleno ověřování tokenu, můžete použít metodu `get_token` k načtení tokenu JWT a doby vypršení platnosti tohoto tokenu:
+Pokud je povoleno ověřování tokenu, můžete použít `get_token` metodu k načtení tokenu JWT a času vypršení platnosti tokenu:
 
 ```python
 token, refresh_by = service.get_token()
@@ -363,9 +363,9 @@ print(token)
 ```
 
 > [!IMPORTANT]
-> Budete muset požádat o nový token `refresh_by` po uplynutí doby tokenu.
+> Po `refresh_by` čase tokenu budete muset požádat o nový token.
 >
-> Microsoft důrazně doporučuje vytvořit pracovní prostor Azure Machine Learning ve stejné oblasti jako cluster služby Azure Kubernetes. Chcete-li ověřit pomocí tokenu, webová služba provede volání do oblasti, ve které se vytvoří pracovní prostor Azure Machine Learning. Pokud oblast vašeho pracovního prostoru není k dispozici, nebude možné načíst token pro webovou službu, i když se váš cluster nachází v jiné oblasti než váš pracovní prostor. To efektivně vede k ověřování na základě tokenu není k dispozici, dokud oblast vašeho pracovního prostoru je opět k dispozici. Kromě toho, čím větší je vzdálenost mezi oblastí clusteru a oblastí pracovního prostoru, tím déle bude trvat načtení tokenu.
+> Microsoft důrazně doporučuje vytvořit pracovní prostor Azure Machine Learning ve stejné oblasti jako cluster služby Azure Kubernetes. K ověřování pomocí tokenu webová služba provede volání do oblasti, ve které je vytvořen Azure Machine Learning pracovní prostor. Pokud oblast pracovního prostoru není k dispozici, nebudete moci načíst token pro webovou službu, a to i v případě, že se váš cluster nachází v jiné oblasti než váš pracovní prostor. To efektivně vede k nedostupnosti ověřování na základě tokenů, dokud nebude oblast pracovního prostoru znovu dostupná. Navíc čím větší je vzdálenost mezi oblastí vašeho clusteru a oblastí vašeho pracovního prostoru, tím déle bude trvat Načtení tokenu.
 
 ## <a name="update-the-web-service"></a>Aktualizace webové služby
 
@@ -373,10 +373,10 @@ print(token)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Bezpečné experimentování a odvození ve virtuální síti](how-to-enable-virtual-network.md)
-* [Jak nasadit model pomocí vlastní image Dockeru](how-to-deploy-custom-docker-image.md)
+* [Zabezpečené experimentování a odvozování ve virtuální síti](how-to-enable-virtual-network.md)
+* [Postup nasazení modelu pomocí vlastní image Docker](how-to-deploy-custom-docker-image.md)
 * [Řešení potíží s nasazením](how-to-troubleshoot-deployment.md)
-* [Použití TLS k zabezpečení webové služby prostřednictvím Azure Machine Learning](how-to-secure-web-service.md)
-* [Využití modelu ML nasazeného jako webová služba](how-to-consume-web-service.md)
-* [Monitorování modelů Azure Machine Learning pomocí přehledů aplikací](how-to-enable-app-insights.md)
-* [Shromažďování dat pro modely ve výrobě](how-to-enable-data-collection.md)
+* [Použití protokolu TLS k zabezpečení webové služby prostřednictvím Azure Machine Learning](how-to-secure-web-service.md)
+* [Využití modelu ML nasazeného jako webové služby](how-to-consume-web-service.md)
+* [Monitorování modelů Azure Machine Learning s využitím Application Insights](how-to-enable-app-insights.md)
+* [Shromažďování dat pro modely v produkčním prostředí](how-to-enable-data-collection.md)

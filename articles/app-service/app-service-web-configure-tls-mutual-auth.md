@@ -1,30 +1,30 @@
 ---
 title: Konfigurace vzájemného ověřování TLS
-description: Přečtěte si, jak ověřit klientské certifikáty na TLS. Azure App Service můžete zpřístupnit klientský certifikát kód aplikace pro ověření.
+description: Přečtěte si, jak ověřit klientské certifikáty v TLS. Azure App Service může klientský certifikát zpřístupnit kódu aplikace pro ověření.
 ms.assetid: cd1d15d3-2d9e-4502-9f11-a306dac4453a
 ms.topic: article
 ms.date: 10/01/2019
 ms.custom: seodec18
 ms.openlocfilehash: 2f6dd455024aba184cbb16b5b9c7cfffd032dc70
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80811726"
 ---
-# <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>Konfigurace vzájemného ověřování TLS pro službu Azure App Service
+# <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>Konfigurace vzájemného ověřování TLS pro Azure App Service
 
-Přístup k aplikaci Azure App Service můžete omezit povolením různých typů ověřování. Jedním ze způsobů, jak to udělat, je požádat o klientský certifikát, když je požadavek klienta přes TLS/SSL a ověřit certifikát. Tento mechanismus se nazývá vzájemné ověřování TLS nebo ověřování klientského certifikátu. Tento článek ukazuje, jak nastavit aplikaci tak, aby používala ověřování klientských certifikátů.
+Přístup k aplikaci Azure App Service můžete omezit povolením různých typů ověřování. Jedním ze způsobů, jak to provést, je požádat o klientský certifikát, když požadavek klienta překročí protokol TLS/SSL a ověří certifikát. Tento mechanismus se nazývá vzájemné ověřování TLS nebo ověřování klientským certifikátem. Tento článek popisuje, jak nastavit aplikaci tak, aby používala ověřování klientským certifikátem.
 
 > [!NOTE]
-> Pokud přistupujete k webu přes protokol HTTP a nikoli protokol HTTPS, neobdržíte žádný klientský certifikát. Pokud tedy vaše aplikace vyžaduje klientské certifikáty, neměli byste povolit požadavky na aplikaci přes protokol HTTP.
+> Pokud k webu přistupujete přes HTTP a ne HTTPS, nebudete dostávat žádné klientské certifikáty. Takže pokud vaše aplikace vyžaduje klientské certifikáty, neměli byste žádosti do vaší aplikace povolovat přes HTTP.
 >
 
 [!INCLUDE [Prepare your web app](../../includes/app-service-ssl-prepare-app.md)]
 
-## <a name="enable-client-certificates"></a>Povolení klientských certifikátů
+## <a name="enable-client-certificates"></a>Povolit klientské certifikáty
 
-Pokud chcete aplikaci nastavit tak, aby vyžadovala `clientCertEnabled` klientské certifikáty, musíte nastavit nastavení aplikace na `true`. Chcete-li nastavení nastavit, spusťte následující příkaz v [prostředí Cloud Shell](https://shell.azure.com).
+Pokud chcete nastavit aplikaci tak, aby vyžadovala klientské certifikáty, musíte nastavit `clientCertEnabled` nastavení aplikace na. `true` Nastavení nastavíte spuštěním následujícího příkazu v [Cloud Shell](https://shell.azure.com).
 
 ```azurecli-interactive
 az webapp update --set clientCertEnabled=true --name <app_name> --resource-group <group_name>
@@ -32,22 +32,22 @@ az webapp update --set clientCertEnabled=true --name <app_name> --resource-group
 
 ## <a name="exclude-paths-from-requiring-authentication"></a>Vyloučit cesty z vyžadování ověřování
 
-Když povolíte vzájemné ověřování pro vaši aplikaci, všechny cesty pod kořenem aplikace bude vyžadovat klientský certifikát pro přístup. Chcete-li povolit, aby určité cesty zůstaly otevřené pro anonymní přístup, můžete definovat cesty vyloučení jako součást konfigurace aplikace.
+Pokud povolíte vzájemné ověřování pro vaši aplikaci, všechny cesty pod kořenem vaší aplikace budou vyžadovat klientský certifikát pro přístup. Pokud chcete, aby některé cesty zůstaly otevřené pro anonymní přístup, můžete v rámci konfigurace aplikace definovat cesty vyloučení.
 
-Cesty vyloučení lze nakonfigurovat výběrem**obecného nastavení** **konfigurace** > a definováním cesty vyloučení. V tomto příkladu `/public` by nic pod cestou pro vaši aplikaci nepožadovalo klientský certifikát.
+Cesty vyloučení se dají nakonfigurovat tak, že vyberete nastavení **Konfigurace** > **Obecné** a definujete cestu vyloučení. V tomto příkladu žádná z `/public` cest k vaší aplikaci nepožaduje klientský certifikát.
 
 ![Cesty vyloučení certifikátu][exclusion-paths]
 
 
-## <a name="access-client-certificate"></a>Přístup k klientským certifikátům
+## <a name="access-client-certificate"></a>Přístup k klientskému certifikátu
 
-Ve službě App Service dojde k ukončení požadavku TLS v front-endu v yvytárna zatížení. Při předávání požadavku na kód aplikace s [povolenými klientskými certifikáty](#enable-client-certificates)aplikace App Service vloží hlavičku `X-ARR-ClientCert` požadavku s klientským certifikátem. Služba App Service s tímto klientským certifikátem nedělá nic jiného než ho přeposílá do vaší aplikace. Kód aplikace je zodpovědný za ověření klientského certifikátu.
+V App Service se ukončení žádosti TLS provádí v nástroji pro vyrovnávání zatížení s front-endu. Při předávání žádosti do kódu aplikace s [povolenými klientskými certifikáty](#enable-client-certificates)App Service vloží hlavičku `X-ARR-ClientCert` žádosti s klientským certifikátem. App Service s tímto klientským certifikátem nedělá něco jiného než předání do aplikace. Kód vaší aplikace zodpovídá za ověřování klientského certifikátu.
 
-Pro ASP.NET je klientský certifikát k dispozici prostřednictvím vlastnosti **HttpRequest.ClientCertificate.**
+V případě ASP.NET je certifikát klienta k dispozici prostřednictvím vlastnosti **HttpRequest. ClientCertificate** .
 
-Pro ostatní zásobníky aplikací (Node.js, PHP atd.) je certifikát klienta ve vaší aplikaci `X-ARR-ClientCert` k dispozici prostřednictvím hodnoty kódované base64 v hlavičce požadavku.
+Pro ostatní zásobníky aplikací (Node. js, PHP atd.) je certifikát klienta k dispozici ve vaší aplikaci prostřednictvím hodnoty kódované v kódování Base64 v hlavičce `X-ARR-ClientCert` požadavku.
 
-## <a name="aspnet-sample"></a>ASP.NET vzorek
+## <a name="aspnet-sample"></a>Ukázka ASP.NET
 
 ```csharp
     using System;
@@ -171,9 +171,9 @@ Pro ostatní zásobníky aplikací (Node.js, PHP atd.) je certifikát klienta ve
     }
 ```
 
-## <a name="nodejs-sample"></a>Ukázka souboru Node.js
+## <a name="nodejs-sample"></a>Ukázka Node. js
 
-Následující ukázkový kód Node.js získá hlavičku `X-ARR-ClientCert` a použije [uzel-forge](https://github.com/digitalbazaar/forge) k převodu řetězce PEM kódu kódu base64 na objekt certifikátu a jeho ověření:
+Následující ukázkový kód Node. js získá `X-ARR-ClientCert` hlavičku a použije [Node-zfalšovat](https://github.com/digitalbazaar/forge) k převodu řetězce PEM kódovaného ve formátu base64 na objekt certifikátu a jeho ověření:
 
 ```javascript
 import { NextFunction, Request, Response } from 'express';
@@ -216,9 +216,9 @@ export class AuthorizationHandler {
 }
 ```
 
-## <a name="java-sample"></a>Ukázka javy
+## <a name="java-sample"></a>Ukázka Java
 
-Následující třída Java kóduje `X-ARR-ClientCert` certifikát `X509Certificate` z instance. `certificateIsValid()`ověří, zda kryptografický otisk certifikátu odpovídá kryptografickému otisku uvedenému v konstruktoru a že platnost certifikátu nevypršela.
+Následující třída jazyka Java kóduje certifikát z `X-ARR-ClientCert` do `X509Certificate` instance. `certificateIsValid()`ověřuje, že kryptografický otisk certifikátu odpovídá jednomu z daného konstruktoru a že nevypršela platnost certifikátu.
 
 
 ```java
