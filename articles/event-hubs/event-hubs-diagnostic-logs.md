@@ -1,6 +1,6 @@
 ---
-title: Nastavení diagnostických protokolů – Azure Event Hub | Dokumenty společnosti Microsoft
-description: Zjistěte, jak nastavit protokoly aktivit a diagnostické protokoly pro centra událostí v Azure.
+title: Nastavení diagnostických protokolů – centrum událostí Azure | Microsoft Docs
+description: Naučte se, jak nastavit protokoly aktivit a diagnostické protokoly pro centra událostí v Azure.
 keywords: ''
 documentationcenter: ''
 services: event-hubs
@@ -17,74 +17,74 @@ ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
 ms.openlocfilehash: 68aa62ad34f8db531d439a581ef024862da0f90c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77162306"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Nastavení diagnostických protokolů pro centra událostí Azure
 
-Můžete zobrazit dva typy protokolů pro Azure Event Hubs:
+Můžete si zobrazit dva typy protokolů pro Azure Event Hubs:
 
-* **[Protokoly aktivit](../azure-monitor/platform/platform-logs-overview.md)**: Tyto protokoly mají informace o operacích prováděných na úloze. Protokoly jsou vždy povoleny.
-* **[Diagnostické protokoly](../azure-monitor/platform/platform-logs-overview.md)**: Diagnostické protokoly můžete nakonfigurovat pro bohatší zobrazení všeho, co se děje s úlohou. Diagnostické protokoly pokrývají aktivity od okamžiku, kdy je úloha vytvořena, až do odstranění úlohy, včetně aktualizací a aktivit, ke kterým dochází při spuštění úlohy.
+* **[Protokoly aktivit](../azure-monitor/platform/platform-logs-overview.md)**: tyto protokoly obsahují informace o operacích provedených v rámci úlohy. Protokoly jsou vždycky povolené.
+* **[Diagnostické protokoly](../azure-monitor/platform/platform-logs-overview.md)**: můžete nakonfigurovat diagnostické protokoly pro rozsáhlejší zobrazení všeho, co se stane s úlohou. Diagnostické protokoly zahrnují aktivity z doby, kdy se úloha vytvoří, až do odstranění úlohy, včetně aktualizací a aktivit, ke kterým dojde, když je úloha spuštěná.
 
 ## <a name="enable-diagnostic-logs"></a>Povolení diagnostických protokolů
 
-Diagnostické protokoly jsou ve výchozím nastavení zakázány. Chcete-li povolit diagnostické protokoly, postupujte takto:
+Diagnostické protokoly jsou ve výchozím nastavení zakázané. K povolení diagnostických protokolů použijte následující postup:
 
-1.  Na [webu Azure Portal](https://portal.azure.com)klikněte v části **Monitoring + Management**na **Diagnostics logs**.
+1.  V [Azure Portal](https://portal.azure.com)v části **monitorování a Správa**klikněte na **diagnostické protokoly**.
 
-    ![Navigace v podokně do diagnostických protokolů](./media/event-hubs-diagnostic-logs/image1.png)
+    ![Navigační podokno pro diagnostické protokoly](./media/event-hubs-diagnostic-logs/image1.png)
 
-2.  Klikněte na prostředek, který chcete sledovat.
+2.  Klikněte na prostředek, který chcete monitorovat.
 
 3.  Klikněte na **Zapnout diagnostiku**.
 
-    ![Zapnutí diagnostických protokolů](./media/event-hubs-diagnostic-logs/image2.png)
+    ![Zapnout diagnostické protokoly](./media/event-hubs-diagnostic-logs/image2.png)
 
-4.  V **popřípadě stav**klepněte na **tlačítko Zapnuto**.
+4.  V případě **stavu**klikněte na možnost **zapnuto**.
 
     ![Změna stavu diagnostických protokolů](./media/event-hubs-diagnostic-logs/image3.png)
 
-5.  Nastavte požadovaný cíl archivu. Například účet úložiště, centrum událostí nebo protokoly Azure Monitor.
+5.  Nastavte cíl archivu, který chcete; například účet úložiště, centrum událostí nebo protokoly Azure Monitor.
 
-6.  Uložte nové nastavení diagnostiky.
+6.  Uložte nová nastavení diagnostiky.
 
-Nové nastavení se projeví asi za 10 minut. Poté se protokoly zobrazí v nakonfigurovaném cíli archivace v podokně **Protokoly diagnostiky.**
+Nové nastavení se projeví přibližně po dobu 10 minut. Pak se protokoly objeví v nakonfigurovaném cíli archivace v podokně **diagnostické protokoly** .
 
-Další informace o konfiguraci diagnostiky najdete v [přehledu protokolů diagnostiky Azure](../azure-monitor/platform/platform-logs-overview.md).
+Další informace o konfiguraci diagnostiky najdete v tématu [Přehled diagnostických protokolů Azure](../azure-monitor/platform/platform-logs-overview.md).
 
 ## <a name="diagnostic-logs-categories"></a>Kategorie diagnostických protokolů
 
-Centra událostí zachycují diagnostické protokoly pro dvě kategorie:
+Event Hubs zachycuje diagnostické protokoly pro dvě kategorie:
 
-* **Archivní protokoly**: protokoly související s archivy Event Hubs, konkrétně protokoly související s chybami archivu.
-* **Provozní protokoly**: informace o tom, co se děje během operací Event Hubs, konkrétně typ operace, včetně vytvoření centra událostí, použité prostředky a stav operace.
+* **Protokoly archivu**: protokoly související s Event Hubs archivy, konkrétně protokoly týkající se chyb archivu.
+* **Provozní protokoly**: informace o tom, co se děje během operací Event Hubs, konkrétně typ operace, včetně vytvoření centra událostí, použitých prostředků a stavu operace.
 
 ## <a name="diagnostic-logs-schema"></a>Schéma diagnostických protokolů
 
-Všechny protokoly jsou uloženy ve formátu JavaScript Object Notation (JSON). Každá položka má řetězcová pole, která používají formát popsaný v následujících částech.
+Všechny protokoly jsou uložené ve formátu JavaScript Object Notation (JSON). Každá položka má pole řetězce, která používají formát popsaný v následujících částech.
 
 ### <a name="archive-logs-schema"></a>Schéma protokolů archivu
 
 Řetězce JSON protokolu archivu obsahují prvky uvedené v následující tabulce:
 
-Name (Název) | Popis
+Název | Popis
 ------- | -------
-Název_úkolu | Popis úlohy, která se nezdařila.
-ActivityId | Interní ID, které se používá pro sledování.
-trackingId | Interní ID, které se používá pro sledování.
-resourceId | ID prostředku Správce prostředků Azure.
-eventHub | Úplný název centra událostí (obsahuje název oboru názvů).
-Partitionid | Oddíl Centra událostí se zapisuje.
-archivStep | ArchivFlushWriter
-startTime | Čas spuštění selhání.
-Selhání | Počet případů selhání došlo k selhání.
-durationInSeconds | Doba trvání selhání.
-zpráva | Chybová zpráva.
-category | Archivní logy
+/TN | Popis úlohy, která selhala.
+ActivityId | Interní ID, které se používá ke sledování.
+trackingId | Interní ID, které se používá ke sledování.
+resourceId | ID prostředku Azure Resource Manager.
+eventHub | Úplný název centra událostí (zahrnuje název oboru názvů).
+Oddílu | Probíhá zápis do oddílu centra událostí.
+archiveStep | ArchiveFlushWriter
+startTime | Čas spuštění se nezdařil.
+úspěšně | Počet výskytů chyby.
+durationInSeconds | Doba, po kterou došlo k chybě.
+zpráva | Chybová zpráva
+category | ArchiveLogs
 
 Následující kód je příkladem řetězce JSON protokolu archivu:
 
@@ -109,19 +109,19 @@ Následující kód je příkladem řetězce JSON protokolu archivu:
 
 Řetězce JSON provozního protokolu obsahují prvky uvedené v následující tabulce:
 
-Name (Název) | Popis
+Název | Popis
 ------- | -------
-ActivityId | Interní ID, které se používá ke sledování účelu.
+ActivityId | Interní ID, které slouží ke sledování účelu.
 EventName | Název operace  
-resourceId | ID prostředku Správce prostředků Azure.
+resourceId | ID prostředku Azure Resource Manager.
 SubscriptionId | ID předplatného.
-EventTimeString | Provozní doba.
-Vlastnosti eventu | Vlastnosti operace.
+EventTimeString | Operační čas.
+EventProperties | Vlastnosti operace.
 Status | Stav operace.
-Volající | Volající operace (portál Azure nebo klient pro správu).
-category | Provozní logy
+Volající | Volající operace (Azure Portal nebo klient pro správu).
+category | OperationalLogs
 
-Následující kód je příkladem provozního řetězce JSON protokolu:
+Následující kód je příkladem řetězce JSON provozního protokolu:
 
 ```json
 Example:
@@ -139,10 +139,10 @@ Example:
 ```
 
 ## <a name="next-steps"></a>Další kroky
-- [Úvod do centra událostí](event-hubs-what-is-event-hubs.md)
+- [Úvod do Event Hubs](event-hubs-what-is-event-hubs.md)
 - [Přehled rozhraní API služby Event Hubs](event-hubs-api-overview.md)
 - Začínáme se službou Event Hubs
     - [.NET Core](get-started-dotnet-standard-send-v2.md)
     - [Java](get-started-java-send-v2.md)
     - [Python](get-started-python-send-v2.md)
-    - [Javascript](get-started-java-send-v2.md)
+    - [JavaScript](get-started-java-send-v2.md)

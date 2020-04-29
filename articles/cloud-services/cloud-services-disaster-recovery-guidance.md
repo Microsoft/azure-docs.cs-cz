@@ -1,7 +1,7 @@
 ---
-title: Zpracování přerušení služeb Azure, které má vliv na cloudové služby Azure
+title: Zpracování přerušení služby Azure, které ovlivňuje Azure Cloud Services
 titleSuffix: Azure Cloud Services
-description: Zjistěte, co dělat v případě přerušení služby Azure, které má vliv na cloudové služby Azure.
+description: Seznamte se s tím, co dělat v případě výpadku služby Azure, který ovlivňuje Azure Cloud Services.
 services: cloud-services
 documentationcenter: ''
 author: mmccrory
@@ -11,49 +11,49 @@ ms.topic: article
 ms.date: 04/04/2017
 ms.author: memccror
 ms.openlocfilehash: e3f0fd88eb302dac208f43d0622ae28b31dcddc2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77157502"
 ---
 # <a name="what-to-do-in-the-event-of-an-azure-service-disruption-that-impacts-azure-cloud-services"></a>Co dělat v případě přerušení služby Azure, které ovlivní Azure Cloud Services
-Ve společnosti Microsoft usilovně pracujeme na tom, abychom zajistili, že naše služby budou vždy dostupné, když je budete potřebovat. Síly mimo naši kontrolu nás někdy ovlivňují způsoby, které způsobují neplánované přerušení služeb.
+V Microsoftu pracujeme na tom, abychom zajistili, že naše služby jsou vždycky k dispozici, až je budete potřebovat. Síly nad rámec našeho ovládacího prvku někdy ovlivňují způsob, jakým způsobují neplánované výpadky služeb.
 
-Společnost Microsoft poskytuje smlouvu o úrovni služeb (SLA) pro své služby jako závazek pro provozunostia a připojení. Smlouvu SLA pro jednotlivé služby Azure najdete na [webu Azure Service Level Agreements](https://azure.microsoft.com/support/legal/sla/).
+Společnost Microsoft poskytuje smlouva SLA (SLA) pro své služby jako závazek pro dobu provozu a připojení. Smlouvu SLA pro jednotlivé služby Azure najdete na stránce [smlouvy o úrovni služeb Azure](https://azure.microsoft.com/support/legal/sla/).
 
-Azure už má mnoho integrovaných funkcí platformy, které podporují vysoce dostupné aplikace. Další informace o těchto službách načtete [zotavení po havárii a vysokou dostupnost pro aplikace Azure](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md).
+Azure už obsahuje mnoho vestavěných funkcí platformy, které podporují vysoce dostupné aplikace. Další informace o těchto službách najdete v tématu [zotavení po havárii a vysoká dostupnost pro aplikace Azure](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md).
 
-Tento článek popisuje skutečný scénář zotavení po havárii, kdy celý region dojde k výpadku v důsledku závažné přírodní katastrofy nebo rozsáhlé přerušení služby. Jedná se o vzácné události, ale musíte se připravit na možnost, že dojde k výpadku celé oblasti. Pokud dojde k přerušení služby v celé oblasti, místně redundantní kopie dat by dočasně nebyly k dispozici. Pokud jste povolili geografickou replikaci, tři další kopie objektů blob a tabulky azure storage jsou uloženy v jiné oblasti. V případě úplného regionálního výpadku nebo havárie, ve které není obnovitelná primární oblast, Azure přemapuje všechny položky DNS do geograficky replikované oblasti.
+Tento článek se zabývá skutečným scénářem zotavení po havárii, když celá oblast dojde k výpadku, protože došlo k závažné přirozené havárii nebo rozšířenému přerušení služby. Jedná se o vzácná opakování, ale musíte připravit na možnost, že dojde k výpadku celé oblasti. Pokud v celé oblasti dojde k přerušení služby, místně redundantní kopie vašich dat nebudou dočasně k dispozici. Pokud jste povolili geografickou replikaci, budou se tři další kopie Azure Storage objektů BLOB a tabulek ukládat v jiné oblasti. V případě úplného výpadku v oblasti regionu nebo havárie, ve kterém se primární oblast nedá obnovit, Azure přemapuje všechny položky DNS do geografické replikované oblasti.
 
 > [!NOTE]
-> Uvědomte si, že nemáte žádnou kontrolu nad tímto procesem a dojde pouze pro přerušení služby celého datového centra. Z tohoto důvodu musíte také spoléhat na jiné strategie zálohování specifické pro aplikaci k dosažení nejvyšší úrovně dostupnosti. Další informace najdete [v tématu Zotavení po havárii a vysoká dostupnost pro aplikace postavené na Microsoft Azure](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md). Pokud chcete mít možnost ovlivnit vlastní převzetí služeb při selhání, můžete zvážit použití [geograficky redundantního úložiště pro čtení (RA-GRS),](../storage/common/storage-redundancy.md)které vytvoří kopii dat jen pro čtení v jiné oblasti.
+> Mějte na paměti, že k tomuto procesu nemáte žádnou kontrolu a dojde k tomu jenom pro přerušení služeb v rámci datového centra. Z tohoto důvodu musíte také spoléhat na jiné strategie zálohování specifické pro aplikace, abyste dosáhli nejvyšší úrovně dostupnosti. Další informace najdete v tématu [zotavení po havárii a vysoká dostupnost pro aplikace založené na Microsoft Azure](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md). Pokud chcete mít možnost ovlivnit vlastní převzetí služeb při selhání, můžete zvážit použití [geograficky redundantního úložiště s přístupem pro čtení (RA-GRS)](../storage/common/storage-redundancy.md), které v jiné oblasti vytvoří kopii vašich dat jen pro čtení.
 >
 >
 
 
-## <a name="option-1-use-a-backup-deployment-through-azure-traffic-manager"></a>Možnost 1: Použití nasazení zálohy prostřednictvím Azure Traffic Manageru
-Nejrobustnější řešení zotavení po havárii zahrnuje udržování více nasazení vaší aplikace v různých oblastech a pak pomocí [Azure Traffic Manageru](../traffic-manager/traffic-manager-overview.md) k přímému provozu mezi nimi. Azure Traffic Manager poskytuje více [metod směrování](../traffic-manager/traffic-manager-routing-methods.md), takže si můžete vybrat, jestli chcete spravovat nasazení pomocí primárního a záložního modelu nebo rozdělit provoz mezi nimi.
+## <a name="option-1-use-a-backup-deployment-through-azure-traffic-manager"></a>Možnost 1: použití nasazení zálohy prostřednictvím Azure Traffic Manager
+Nejbezpečnější řešení pro zotavení po havárii zahrnuje údržbu více nasazení aplikace v různých oblastech a následné použití [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) k přímému směrování provozu mezi nimi. Azure Traffic Manager poskytuje několik [metod směrování](../traffic-manager/traffic-manager-routing-methods.md), takže si můžete vybrat, jestli chcete spravovat nasazení pomocí primárního nebo záložního modelu, nebo rozdělit přenos mezi nimi.
 
-![Vyvažování cloudových služeb Azure napříč oblastmi pomocí Azure Traffic Manageru](./media/cloud-services-disaster-recovery-guidance/using-azure-traffic-manager.png)
+![Vyvážení Cloud Services Azure napříč oblastmi pomocí Azure Traffic Manager](./media/cloud-services-disaster-recovery-guidance/using-azure-traffic-manager.png)
 
-Pro nejrychlejší odpověď na ztrátu oblasti je důležité nakonfigurovat sledování [koncového bodu](../traffic-manager/traffic-manager-monitoring.md)Traffic Manageru .
+Pro nejrychlejší reakci na ztrátu oblasti je důležité nakonfigurovat [monitorování koncového bodu](../traffic-manager/traffic-manager-monitoring.md)Traffic Manager.
 
-## <a name="option-2-deploy-your-application-to-a-new-region"></a>Možnost 2: Nasazení aplikace do nové oblasti
-Udržování více aktivních nasazení, jak je popsáno v předchozí možnosti, způsobuje další průběžné náklady. Pokud je cíl doby obnovení (RTO) dostatečně flexibilní a máte původní kód nebo zkompilovaný balíček cloudových služeb, můžete vytvořit novou instanci aplikace v jiné oblasti a aktualizovat záznamy DNS tak, aby ukazovaly na nové nasazení.
+## <a name="option-2-deploy-your-application-to-a-new-region"></a>Možnost 2: nasazení aplikace do nové oblasti
+Údržba několika aktivních nasazení, jak je popsáno v předchozí možnosti, jsou další průběžné náklady. Pokud je váš cíl doby obnovení (RTO) dostatečně flexibilní a máte původní kód nebo kompilovaný Cloud Services balíček, můžete vytvořit novou instanci aplikace v jiné oblasti a aktualizovat záznamy DNS tak, aby odkazovaly na nové nasazení.
 
-Další podrobnosti o tom, jak vytvořit a nasadit aplikaci cloudové služby, najdete v [tématu Jak vytvořit a nasadit cloudovou službu](cloud-services-how-to-create-deploy-portal.md).
+Další informace o tom, jak vytvořit a nasadit aplikaci cloudové služby, najdete v tématu [jak vytvořit a nasadit cloudovou službu](cloud-services-how-to-create-deploy-portal.md).
 
-V závislosti na zdrojích dat aplikace může být nutné zkontrolovat postupy obnovení pro zdroj dat aplikace.
+V závislosti na zdrojích dat aplikací může být nutné ověřit postupy obnovení pro zdroj dat aplikace.
 
-* Zdroje dat Azure Storage najdete v tématu [redundance Azure Storage](../storage/common/storage-redundancy.md) a zkontrolujte možnosti, které jsou k dispozici na základě zvoleného modelu redundance pro vaši aplikaci.
-* Pro zdroje databáze SQL si přečtěte [přehled: Kontinuita podnikání v cloudu a obnovení databáze po havárii s databází SQL](../sql-database/sql-database-business-continuity.md) a zkontrolujte možnosti, které jsou k dispozici na základě zvoleného modelu replikace pro vaši aplikaci.
+* U Azure Storage zdrojů dat si Projděte [Azure Storage redundance](../storage/common/storage-redundancy.md) a zkontrolujte, jaké možnosti jsou k dispozici na základě zvoleného modelu redundance pro vaši aplikaci.
+* Informace o SQL Databasech zdrojích najdete v tématu [Přehled: cloudová Kontinuita podnikových prostředí a zotavení po havárii databáze pomocí SQL Database](../sql-database/sql-database-business-continuity.md) ke kontrole dostupných možností na základě zvoleného modelu replikace pro vaši aplikaci.
 
 
-## <a name="option-3-wait-for-recovery"></a>Možnost 3: Počkejte na obnovení
-V takovém případě není nutná žádná akce z vaší strany, ale vaše služba nebude k dispozici, dokud nebude oblast obnovena. Aktuální stav služby najdete na [řídicím panelu stavu služby Azure](https://azure.microsoft.com/status/).
+## <a name="option-3-wait-for-recovery"></a>Možnost 3: čekání na obnovení
+V takovém případě se nevyžaduje žádná akce s vaší částí, ale vaše služba nebude dostupná, dokud se oblast neobnoví. Aktuální stav služby můžete zobrazit na [řídicím panelu Azure Service Health](https://azure.microsoft.com/status/).
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o implementaci strategie zotavení po havárii a strategie vysoké dostupnosti najdete v [tématu Zotavení po havárii a vysoká dostupnost pro aplikace Azure](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md).
+Další informace o tom, jak implementovat strategii zotavení po havárii a vysokou dostupnost, najdete v tématu [zotavení po havárii a vysoká dostupnost pro aplikace Azure](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md).
 
-Podrobné technické znalosti o možnostech cloudové platformy najdete v [technických příručkách odolnosti azure](/azure/architecture/checklist/resiliency-per-service).
+Podrobné technické porozumění funkcím cloudové platformy najdete v tématu [technické pokyny k odolnosti Azure](/azure/architecture/checklist/resiliency-per-service).

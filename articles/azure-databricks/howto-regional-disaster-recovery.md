@@ -1,6 +1,6 @@
 ---
-title: Regionální zotavení po havárii pro Azure Databricks
-description: Tento článek popisuje přístup k řešení zotavení po havárii v Azure Databricks.
+title: Místní zotavení po havárii pro Azure Databricks
+description: Tento článek popisuje přístup k zotavení po havárii v Azure Databricks.
 services: azure-databricks
 author: mamccrea
 ms.author: mamccrea
@@ -9,54 +9,54 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.openlocfilehash: 2604d5b357feacce3493b4a4ded971144262611d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77161932"
 ---
-# <a name="regional-disaster-recovery-for-azure-databricks-clusters"></a>Regionální zotavení po havárii pro clustery Azure Databricks
+# <a name="regional-disaster-recovery-for-azure-databricks-clusters"></a>Místní zotavení po havárii pro clustery Azure Databricks
 
-Tento článek popisuje architekturu zotavení po havárii užitečnou pro clustery Azure Databricks a kroky k dosažení tohoto návrhu.
+Tento článek popisuje architekturu zotavení po havárii, která je užitečná pro Azure Databricks clustery, a postup pro provedení tohoto návrhu.
 
 ## <a name="azure-databricks-architecture"></a>Architektura Azure Databricks
 
-Na vysoké úrovni při vytváření pracovního prostoru Azure Databricks z portálu Azure se [spravované zařízení](../azure-resource-manager/managed-applications/overview.md) nasadí jako prostředek Azure ve vašem předplatném ve zvolené oblasti Azure (například západní USA). Toto zařízení se nasadí ve [virtuální síti Azure](../virtual-network/virtual-networks-overview.md) se [skupinou zabezpečení sítě](../virtual-network/manage-network-security-group.md) a účtem azure storage, který je k dispozici ve vašem předplatném. Virtuální síť poskytuje zabezpečení na úrovni obvodu pracovního prostoru Databricks a je chráněna skupinou zabezpečení sítě. V rámci pracovního prostoru můžete vytvořit clustery Databricks poskytnutím typu pracovního a ovladače typu virtuálního zařízení a databricks runtime verze. Trvalá data jsou dostupná ve vašem účtu úložiště, což můžou být Azure Blob Storage nebo Azure Data Lake Storage. Po vytvoření clusteru můžete spouštět úlohy prostřednictvím poznámkových bloků, rozhraní REST API, koncových bodů ODBC/JDBC jejich připojením k určitému clusteru.
+Při vytváření pracovního prostoru Azure Databricks z Azure Portal se [spravované zařízení](../azure-resource-manager/managed-applications/overview.md) nasadí jako prostředek Azure v rámci vašeho předplatného ve zvolené oblasti Azure (například západní USA). Toto zařízení je nasazené v [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) se [skupinou zabezpečení sítě](../virtual-network/manage-network-security-group.md) a účtem služby Azure Storage, který je ve vašem předplatném dostupný. Virtuální síť zajišťuje zabezpečení na úrovni hraničních prostředí pro pracovní prostor datacihly a je chráněn prostřednictvím skupiny zabezpečení sítě. V pracovním prostoru můžete vytvořit clustery datacihly poskytnutím typu VM Worker a Driver a verze modulu runtime datacihly. Trvalá data jsou dostupná ve vašem účtu úložiště, což může být Azure Blob Storage nebo Azure Data Lake Storage. Po vytvoření clusteru můžete úlohy spouštět pomocí poznámkových bloků, rozhraní REST API, koncových bodů ODBC/JDBC jejich připojením ke konkrétnímu clusteru.
 
-Rovina řízení Databricks spravuje a monitoruje prostředí pracovního prostoru Databricks. Všechny operace správy, jako je například vytvoření clusteru, budou zahájeny z roviny ovládacího prvku. Všechna metadata, jako jsou naplánované úlohy, se ukládají v databázi Azure s geografickou replikací pro odolnost proti chybám.
+Rovina ovládacího prvku datacihly spravuje a monitoruje prostředí pracovního prostoru datacihly. Všechny operace správy, jako je vytvoření clusteru, se iniciují z plochy ovládacího prvku. Všechna metadata, například naplánované úlohy, jsou uložena v databázi Azure s geografickou replikací pro odolnost proti chybám.
 
-![Architektura Databricks](media/howto-regional-disaster-recovery/databricks-architecture.png)
+![Architektura datacihly](media/howto-regional-disaster-recovery/databricks-architecture.png)
 
-Jednou z výhod této architektury je, že uživatelé mohou připojit Azure Databricks k libovolnému prostředku úložiště ve svém účtu. Klíčovou výhodou je, že výpočetní prostředky (Azure Databricks) a úložiště lze škálovat nezávisle na sobě.
+Jednou z výhod této architektury je, že se uživatelé můžou připojit Azure Databricks k jakémukoli prostředku úložiště v jejich účtu. Klíčovou výhodou je, že výpočetní výkon (Azure Databricks) i úložiště je možné škálovat nezávisle na sobě.
 
-## <a name="how-to-create-a-regional-disaster-recovery-topology"></a>Jak vytvořit regionální topologii zotavení po havárii
+## <a name="how-to-create-a-regional-disaster-recovery-topology"></a>Vytvoření místní topologie zotavení po havárii
 
-Jak jste si všimli v popisu předchozí architektury, existuje řada komponent používaných pro kanál velkých objemů dat s Azure Databricks: Azure Storage, Azure Database a další zdroje dat. Azure Databricks je *výpočetní prostředky* pro kanál velkých objemů dat. Je *dočasný* charakter, což znamená, že zatímco vaše data jsou stále k dispozici ve službě Azure Storage, *výpočetní (Cluster* Azure Databricks) může být ukončena, takže nemusíte platit za výpočetní prostředky, když je nepotřebujete. *Výpočetní prostředky* (Azure Databricks) a zdroje úložiště musí být ve stejné oblasti, aby úlohy nezůraly s vysokou latencí.  
+Jak vidíte v popisu předchozí architektury, je k dispozici řada komponent pro kanál velkých objemů dat s Azure Databricks: Azure Storage, Azure Database a dalšími zdroji dat. Azure Databricks je *výpočetní* prostředí pro kanál s velkými objemy dat. To znamená, že i když jsou vaše data stále k dispozici v Azure Storage, *výpočetní* prostředí (Azure Databricks cluster *) se může* ukončit, takže nemusíte platit za výpočetní výkon, když ho nepotřebujete. *Výpočetní* prostředí (Azure Databricks) a zdroje úložiště musí být ve stejné oblasti, aby úlohy nepracovaly s vysokou latencí.  
 
-Chcete-li vytvořit vlastní regionální topologii zotavení po havárii, postupujte podle následujících požadavků:
+Pokud chcete vytvořit svou vlastní místní topologii zotavení po havárii, postupujte podle těchto požadavků:
 
-   1. Zřizování více pracovních prostorů Azure Databricks v samostatných oblastech Azure. Můžete například vytvořit primární pracovní prostor Azure Databricks v east US2. Vytvořte sekundární pracovní prostor Azure Databricks pro zotavení po havárii v samostatné oblasti, jako je například Západní USA.
+   1. Zřizování více Azure Databricks pracovních prostorů v samostatných oblastech Azure. Můžete například vytvořit primární pracovní prostor Azure Databricks ve službě východní USA 2. Vytvořte sekundární pracovní prostor Azure Databricks obnovení po havárii v samostatné oblasti, například Západní USA.
 
-   2. Použijte [geograficky redundantní úložiště](../storage/common/storage-redundancy.md). Data přidružená k Datům Azure se ve výchozím nastavení ukládají ve službě Azure Storage. Výsledky úloh Databricks jsou také uloženy v azure blob storage, takže zpracovaná data jsou trvalá a zůstane vysoce dostupná po ukončení clusteru. Jako cluster storage a Databricks jsou umístěny společně, musíte použít geograficky redundantní úložiště, aby data přístupv sekundární oblasti, pokud primární oblast již není přístupná.
+   2. Použijte [geograficky redundantní úložiště](../storage/common/storage-redundancy.md). Data, která jsou Azure Databricks přidružená, se ve výchozím nastavení ukládají v Azure Storage. Výsledky z úloh datacihly se také ukládají do Azure Blob Storage, aby zpracovaná data byla trvalá a po ukončení clusteru zůstala vysoce dostupná. Vzhledem k tomu, že je cluster úložiště a datacihly společně umístěn, je nutné použít geograficky redundantní úložiště, aby k datům bylo možné přistupovat v sekundární oblasti, pokud již primární oblast nebude přístupná.
 
-   3. Po vytvoření sekundární oblasti je nutné migrovat uživatele, složky uživatelů, poznámkové bloky, konfiguraci clusteru, konfiguraci úloh, knihovny, úložiště, init skripty a překonfigurovat řízení přístupu. Další podrobnosti jsou popsány v následující části.
+   3. Po vytvoření sekundární oblasti je nutné migrovat uživatele, složky uživatelů, poznámkové bloky, konfiguraci clusteru, konfiguraci úloh, knihovny, úložiště, skripty init a znovu nakonfigurovat řízení přístupu. Další podrobnosti jsou popsaný v následující části.
 
 ## <a name="detailed-migration-steps"></a>Podrobný postup migrace
 
-1. **Nastavení rozhraní příkazového řádku Databricks v počítači**
+1. **Nastavení rozhraní příkazového řádku datacihly v počítači**
 
-   Tento článek ukazuje řadu příkladů kódu, které používají rozhraní příkazového řádku pro většinu automatizovaných kroků, protože se jedná o snadno uživatelské obálky přes rozhraní API REST Azure Databricks.
+   Tento článek ukazuje několik příkladů kódu, které používají rozhraní příkazového řádku pro většinu automatizovaných kroků, protože se jedná o uživatelskou obálku, která je snadno Azure Databricks REST API.
 
-   Před provedením jakýchkoli kroků migrace nainstalujte databricks-cli do stolního počítače nebo virtuálního počítače, ve kterém chcete pracovat. Další informace naleznete [v tématu Instalace funkce CLI Databricks](/azure/databricks/dev-tools/databricks-cli)
+   Před provedením jakýchkoli kroků migrace nainstalujte datacihly-CLI do stolního počítače nebo virtuálního počítače, na kterém plánujete práci. Další informace najdete v tématu Instalace rozhraní příkazového [řádku (CLI) datacihly](/azure/databricks/dev-tools/databricks-cli) .
 
    ```bash
    pip install databricks-cli
    ```
 
    > [!NOTE]
-   > Očekává se, že všechny skripty pythonu uvedené v tomto článku budou fungovat s Pythonem 2.7+ < 3.x.
+   > U všech skriptů Pythonu, které jsou součástí tohoto článku, se očekává, že budou fungovat s Pythonem 2.7 + < 3. x.
 
-2. **Konfigurace dvou profilů.**
+2. **Nakonfigurujte dva profily.**
 
    Nakonfigurujte jeden pro primární pracovní prostor a druhý pro sekundární pracovní prostor:
 
@@ -65,7 +65,7 @@ Chcete-li vytvořit vlastní regionální topologii zotavení po havárii, postu
    databricks configure --profile secondary
    ```
 
-   Bloky kódu v tomto článku přepínají mezi profily v každém následujícím kroku pomocí odpovídajícího příkazu pracovního prostoru. Ujistěte se, že názvy profilů, které vytvoříte, jsou nahrazeny do každého bloku kódu.
+   Bloky kódu v tomto článku přepínají mezi profily v každém dalším kroku pomocí příkazu odpovídajícím pracovnímu prostoru. Ujistěte se, že názvy profilů, které vytvoříte, jsou nahrazeny jednotlivými bloky kódu.
 
    ```python
    EXPORT_PROFILE = "primary"
@@ -79,18 +79,18 @@ Chcete-li vytvořit vlastní regionální topologii zotavení po havárii, postu
    databricks workspace ls --profile secondary
    ```
 
-3. **Migrace uživatelů služby Azure Active Directory**
+3. **Migrace Azure Active Directory uživatelů**
 
-   Ručně přidejte stejné uživatele služby Azure Active Directory do sekundárního pracovního prostoru, které existují v primárním pracovním prostoru.
+   Ručně přidejte stejné Azure Active Directory uživatele do sekundárního pracovního prostoru, který existuje v primárním pracovním prostoru.
 
-4. **Migrace uživatelských složek a poznámkových bloků**
+4. **Migrace složek a poznámkových bloků uživatele**
 
-   Následující kód pythonu použijte k migraci uživatelských prostředí v izolovaném prostoru, která zahrnují vnořenou strukturu složek a poznámkové bloky na uživatele.
+   Pomocí následujícího kódu Pythonu migrujte uživatelská prostředí v izolovaném prostoru, která zahrnují strukturu vnořené složky a poznámkové bloky na uživatele.
 
    > [!NOTE]
-   > Knihovny nejsou zkopírovány v tomto kroku, jako základní rozhraní API nepodporuje ty.
+   > Knihovny se v tomto kroku nekopírují, protože příslušné rozhraní API je nepodporuje.
 
-   Zkopírujte a uložte následující skript pythonu do souboru a spusťte jej v příkazovém řádku Databricks. Například, `python scriptname.py`.
+   Zkopírujte a uložte následující skript Pythonu do souboru a spusťte ho v příkazovém řádku datacihly. Například, `python scriptname.py`.
 
    ```python
    from subprocess import call, check_output
@@ -126,14 +126,14 @@ Chcete-li vytvořit vlastní regionální topologii zotavení po havárii, postu
 
 5. **Migrace konfigurací clusteru**
 
-   Po migraci poznámkových bloků můžete volitelně migrovat konfigurace clusteru do nového pracovního prostoru. Je to téměř plně automatizovaný krok pomocí databricks-cli, pokud byste chtěli udělat selektivní cluster config migrace spíše než pro všechny.
+   Po migraci poznámkových bloků můžete volitelně migrovat konfigurace clusteru do nového pracovního prostoru. Je skoro plně automatizovaný krok s použitím datacihly – CLI, pokud nechcete, aby se provede selektivní migrace konfigurace clusteru, ne vše.
 
    > [!NOTE]
-   > Bohužel neexistuje žádný koncový bod konfigurace clusteru vytvořit a tento skript se pokusí vytvořit každý cluster hned. Pokud není k dispozici dostatek jader v rámci vašeho předplatného, může dojít k selhání vytvoření clusteru. Selhání lze ignorovat, tak dlouho, dokud je konfigurace úspěšně přenesena.
+   > Bohužel není k dispozici žádný koncový bod konfigurace clusteru a tento skript se pokusí vytvořit každý cluster hned hned. Pokud ve vašem předplatném není k dispozici dostatek jader, vytvoření clusteru může selhat. Selhání se dá ignorovat, pokud se konfigurace úspěšně přenáší.
 
-   Následující skript za předpokladu, vytiskne mapování ze starého na nové ID clusteru, které by mohly být použity pro migraci úloh později (pro úlohy, které jsou nakonfigurovány pro použití existujících clusterů).
+   Následující skript poskytuje tisk mapování ze starých na nová ID clusteru, která se dají použít k migraci úlohy později (pro úlohy, které jsou nakonfigurované pro použití existujících clusterů).
 
-   Zkopírujte a uložte následující skript pythonu do souboru a spusťte jej v příkazovém řádku Databricks. Například, `python scriptname.py`.
+   Zkopírujte a uložte následující skript Pythonu do souboru a spusťte ho v příkazovém řádku datacihly. Například, `python scriptname.py`.
 
    ```python
    from subprocess import call, check_output
@@ -218,14 +218,14 @@ Chcete-li vytvořit vlastní regionální topologii zotavení po havárii, postu
 
 6. **Migrace konfigurace úloh**
 
-   Pokud jste v předchozím kroku migrovali konfigurace clusteru, můžete se rozhodnout pro migraci konfigurací úloh do nového pracovního prostoru. Jedná se o plně automatizovaný krok pomocí databricks-cli, pokud byste chtěli dělat selektivní práci config migrace spíše než dělat to pro všechny úlohy.
+   Pokud jste v předchozím kroku migrovali konfigurace clusteru, můžete se rozhodnout pro migraci konfigurací úloh do nového pracovního prostoru. Jedná se o plně automatizovaný krok pomocí datacihly – CLI, pokud nechcete provádět migraci selektivních konfigurací úloh místo toho, aby se to provádělo pro všechny úlohy.
 
    > [!NOTE]
-   > Konfigurace pro naplánovanou úlohu obsahuje také informace o plánu, takže ve výchozím nastavení začne fungovat podle nakonfigurovaného časování, jakmile se migruje. Proto následující blok kódu odebere všechny informace o plánu během migrace (aby se zabránilo duplicitní spuštění přes staré a nové pracovní prostory). Jakmile budete připraveni k přeškrtnutí, nakonfigurujte plány pro takové úlohy.
+   > Konfigurace pro naplánovanou úlohu obsahuje taky informace o plánu, takže ve výchozím nastavení začnou fungovat podle nakonfigurovaného časování, jakmile se migruje. Následující blok kódu proto v průběhu migrace odebere všechny informace o plánu (aby nedocházelo k duplicitním běhům v rámci starých a nových pracovních prostorů). Až budete připraveni na přímou migraci, nakonfigurujte plány pro tyto úlohy.
 
-   Konfigurace úlohy vyžaduje nastavení pro nový nebo existující cluster. Pokud používáte existující cluster, níže uvedený skript /kód se pokusí nahradit staré ID clusteru novým ID clusteru.
+   Konfigurace úlohy vyžaduje nastavení pro nový nebo existující cluster. Při použití existujícího clusteru se skript/Code níže pokusí nahradit staré ID clusteru novým ID clusteru.
 
-   Zkopírujte a uložte následující skript pythonu do souboru. Nahraďte `old_cluster_id` hodnotu pro a `new_cluster_id`, výstupem z migrace clusteru provedeného v předchozím kroku. Spusťte jej v příkazovém řádku databricks-cli, `python scriptname.py`například .
+   Zkopírujte a uložte následující skript Pythonu do souboru. Nahraďte hodnotu pro `old_cluster_id` a `new_cluster_id`výstupem z migrace clusteru provedené v předchozím kroku. Spusťte ji na příkazovém řádku datacihly-CLI, například `python scriptname.py`.
 
    ```python
    from subprocess import call, check_output
@@ -282,15 +282,15 @@ Chcete-li vytvořit vlastní regionální topologii zotavení po havárii, postu
 
 7. **Migrace knihoven**
 
-   V současné době neexistuje žádný jednoduchý způsob migrace knihoven z jednoho pracovního prostoru do druhého. Místo toho přeinstalujte tyto knihovny do nového pracovního prostoru ručně. Je možné automatizovat pomocí kombinace [DBFS CLI](https://github.com/databricks/databricks-cli#dbfs-cli-examples) nahrát vlastní knihovny do pracovního prostoru a [knihovny CLI](https://github.com/databricks/databricks-cli#libraries-cli).
+   Pro migraci knihoven z jednoho pracovního prostoru do jiného teď neexistuje žádný snadný způsob. Místo toho tyto knihovny přeinstalujte do nového pracovního prostoru ručně. Pro nahrání vlastních knihoven do pracovního prostoru a [knihoven CLI](https://github.com/databricks/databricks-cli#libraries-cli)je možné automatizovat použití kombinace [DBFS CLI](https://github.com/databricks/databricks-cli#dbfs-cli-examples) .
 
-8. **Migrace úložiště objektů blob Azure a připojení Azure Data Lake Storage**
+8. **Migrace služby Azure Blob Storage a Azure Data Lake Storage připojení**
 
-   Ručně znovu připojte všechny [azure blob úložiště](/azure/databricks/data/data-sources/azure/azure-storage) a [Azure Data Lake Storage (Gen 2)](/azure/databricks/data/data-sources/azure/azure-datalake-gen2) přípojné body pomocí řešení založené na poznámkových bloutech. Prostředky úložiště by byly připojeny v primárním pracovním prostoru a to se musí opakovat v sekundárním pracovním prostoru. Neexistuje žádné externí rozhraní API pro připojení.
+   Ručně znovu připojte všechny přípojné body služby [Azure Blob Storage](/azure/databricks/data/data-sources/azure/azure-storage) a [Azure Data Lake Storage (Gen 2)](/azure/databricks/data/data-sources/azure/azure-datalake-gen2) pomocí řešení založeného na poznámkovém bloku. Prostředky úložiště by byly připojené k primárnímu pracovnímu prostoru a musí se opakovat v sekundárním pracovním prostoru. Pro připojení není k dispozici žádné externí rozhraní API.
 
-9. **Migrace skriptů init clusteru**
+9. **Migrace inicializačních skriptů clusteru**
 
-   Všechny skripty inicializace clusteru lze migrovat ze starého do nového pracovního prostoru pomocí [cli DBFS](https://github.com/databricks/databricks-cli#dbfs-cli-examples). Nejprve zkopírujte potřebné `dbfs:/dat abricks/init/..` skripty z místní plochy nebo virtuálního počítače. Dále zkopírujte tyto skripty do nového pracovního prostoru na stejné cestě.
+   Všechny inicializační skripty clusteru je možné migrovat ze starých na nový pracovní prostor pomocí rozhraní příkazového [řádku DBFS](https://github.com/databricks/databricks-cli#dbfs-cli-examples). Nejdřív Zkopírujte potřebné skripty z `dbfs:/dat abricks/init/..` aplikace do místního počítače nebo virtuálního počítače. Potom tyto skripty zkopírujte do nového pracovního prostoru na stejné cestě.
 
    ```bash
    // Primary to local
@@ -300,16 +300,16 @@ Chcete-li vytvořit vlastní regionální topologii zotavení po havárii, postu
    dbfs cp -r old-ws-init-scripts dbfs:/databricks/init --profile secondary
    ```
 
-10. **Ručně překonfigurujte a znovu použijte řízení přístupu.**
+10. **Ručně znovu nakonfigurujte a znovu použijte řízení přístupu.**
 
-    Pokud je váš stávající primární pracovní prostor nakonfigurován tak, aby používal úroveň Premium (SKU), je pravděpodobné, že používáte také [funkci Řízení přístupu](/azure/databricks/administration-guide/access-control/index).
+    Pokud je váš stávající primární pracovní prostor nakonfigurovaný tak, aby používal úroveň Premium (SKU), je možné, že používáte také [funkci Access Control](/azure/databricks/administration-guide/access-control/index).
 
-    Pokud používáte funkci Řízení přístupu, ručně znovu použít řízení přístupu k prostředkům (poznámkové bloky, clustery, úlohy, tabulky).
+    Pokud použijete funkci Access Control, ručně znovu použijte řízení přístupu k prostředkům (poznámkovým blokům, clusterům, úlohám, tabulkám).
 
 ## <a name="disaster-recovery-for-your-azure-ecosystem"></a>Zotavení po havárii pro váš ekosystém Azure
 
-Pokud používáte jiné služby Azure, nezapomeňte implementovat osvědčené postupy pro zotavení po havárii pro tyto služby. Pokud se například rozhodnete použít externí instanci metaúložiště Hive, měli byste zvážit zotavení po havárii pro [Azure SQL Server](../sql-database/sql-database-disaster-recovery.md), Azure [HDInsight](../hdinsight/hdinsight-high-availability-linux.md)a/nebo [Azure Database for MySQL](../mysql/concepts-business-continuity.md). Obecné informace o zotavení po havárii najdete [v tématu Zotavení po havárii pro aplikace Azure](https://docs.microsoft.com/azure/architecture/resiliency/disaster-recovery-azure-applications).
+Pokud používáte další služby Azure, ujistěte se, že implementujete osvědčené postupy zotavení po havárii pro tyto služby. Pokud se například rozhodnete použít externí instanci metastore Hive, měli byste zvážit zotavení po havárii pro [azure SQL Server](../sql-database/sql-database-disaster-recovery.md), [Azure HDInsight](../hdinsight/hdinsight-high-availability-linux.md)a/nebo [Azure Database for MySQL](../mysql/concepts-business-continuity.md). Obecné informace o zotavení po havárii najdete v tématu [zotavení po havárii pro aplikace Azure](https://docs.microsoft.com/azure/architecture/resiliency/disaster-recovery-azure-applications).
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace najdete v [dokumentaci k Azure Databricks](index.yml).
+Další informace najdete v [dokumentaci Azure Databricks](index.yml).

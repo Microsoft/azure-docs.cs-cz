@@ -1,5 +1,5 @@
 ---
-title: Živý přenos s místními kodéry pomocí portálu Azure | Dokumenty společnosti Microsoft
+title: Živý datový proud s místními kodéry pomocí Azure Portal | Microsoft Docs
 description: Tento kurz vás provede kroky pro vytvoření Kanálu, který je nakonfigurován pro průchozí doručování.
 services: media-services
 documentationcenter: ''
@@ -15,22 +15,22 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: a83d6ae2e3ed13f0d03e0fdc87a3b45a4119ba88
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77162748"
 ---
-# <a name="perform-live-streaming-with-on-premises-encoders-using-azure-portal"></a>Živé streamování s místními kodéry pomocí portálu Azure Portal
+# <a name="perform-live-streaming-with-on-premises-encoders-using-azure-portal"></a>Živé streamování pomocí místních kodérů pomocí Azure Portal
 > [!div class="op_single_selector"]
 > * [Portál](media-services-portal-live-passthrough-get-started.md)
 > * [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
-> * [Odpočinku](https://docs.microsoft.com/rest/api/media/operations/channel)
+> * [REST](https://docs.microsoft.com/rest/api/media/operations/channel)
 > 
 > 
 
 > [!NOTE]
-> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Viz také [pokyny k migraci z v2 na v3](../latest/migrate-from-v2-to-v3.md)
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](https://docs.microsoft.com/azure/media-services/latest/). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
 
 Tento kurz vás provede kroky pro vytvoření **Kanálu**, který je nakonfigurován pro průchozí doručování. 
 
@@ -54,8 +54,8 @@ Následující kroky popisují úlohy, které jsou běžně součástí procesu 
 > [!NOTE]
 > Zkontrolujte, že koncový bod streamování, ze kterého chcete streamovat obsah, je ve stavu **Spuštěno**. 
     
-1. Připojte k počítači videokameru. <br/>Pro nastavení nápady, podívejte se na [jednoduché a přenosné události video zařízení nastavení]( https://link.medium.com/KNTtiN6IeT).
-1. Spusťte a nakonfigurujte místní kodér pro kódování v reálném čase, který produkuje RTMP s více přenosovými rychlostmi nebo fragmentovaný proud MP4. Další informace najdete v článku [Podpora RTMP ve službě Azure Media Services a kodéry pro kódování v reálném čase](https://go.microsoft.com/fwlink/?LinkId=532824).<br/>Také, podívejte se na tento blog: [Live streaming produkce s OBS](https://link.medium.com/ttuwHpaJeT).
+1. Připojte k počítači videokameru. <br/>V případě nápadů při instalaci se podívejte na [Nastavení jednoduchého a přenosného kormidelního videa událostí]( https://link.medium.com/KNTtiN6IeT).
+1. Spusťte a nakonfigurujte místní kodér pro kódování v reálném čase, který produkuje RTMP s více přenosovými rychlostmi nebo fragmentovaný proud MP4. Další informace najdete v článku [Podpora RTMP ve službě Azure Media Services a kodéry pro kódování v reálném čase](https://go.microsoft.com/fwlink/?LinkId=532824).<br/>Podívejte se také na tento blog: [živá streamovaná výroba pomocí OBS](https://link.medium.com/ttuwHpaJeT).
    
     Tento krok můžete provést i po vytvoření kanálu.
 1. Vytvořit a spustit průchozí kanál.
@@ -148,7 +148,7 @@ Další podrobnosti o průchozích kanálech najdete v tématu [Živé streamov�
 ## <a name="view-archived-content"></a>Zobrazení archivovaného obsahu
 I po zastavení a odstranění události můžou uživatelé streamovat archivovaný obsah jako video na vyžádání, a to tak dlouho, dokud asset neodstraníte. Asset nemůžete odstranit, pokud ho událost používá. Nejdřív odstraňte událost. 
 
-Chcete-li spravovat datové zdroje, vyberte **možnost Nastavení** a klepněte na **položku Datové zdroje**.
+Pokud chcete spravovat prostředky, vyberte **Nastavení** a klikněte na **prostředky**.
 
 ![Prostředky](./media/media-services-portal-passthrough-get-started/media-services-assets.png)
 

@@ -1,6 +1,6 @@
 ---
-title: Ukázky – Centra událostí Azure | Dokumenty společnosti Microsoft
-description: Tento článek obsahuje seznam ukázek pro Centra událostí Azure, které jsou na GitHubu.
+title: Ukázky – Azure Event Hubs | Microsoft Docs
+description: Tento článek poskytuje seznam ukázek pro Azure Event Hubs, které jsou na GitHubu.
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -16,59 +16,59 @@ ms.workload: na
 ms.date: 01/15/2020
 ms.author: shvija
 ms.openlocfilehash: da950c2219d3faf679953690d207372b64913ba8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77162054"
 ---
-# <a name="git-repositories-with-samples-for-azure-event-hubs"></a>Úložiště Git uukázek pro Azure Event Hubs 
-Ukázky centra událostí najdete na [GitHubu](https://github.com/Azure/azure-event-hubs/tree/master/samples). Tyto ukázky ukazují klíčové funkce v [Azure Event Hubs](/azure/event-hubs/). Tento článek kategorizuje a popisuje vzorky k dispozici, s odkazy na každý.
+# <a name="git-repositories-with-samples-for-azure-event-hubs"></a>Úložiště Git s ukázkami pro Azure Event Hubs 
+Ukázky Event Hubs najdete na [GitHubu](https://github.com/Azure/azure-event-hubs/tree/master/samples). Tyto ukázky demonstrují klíčové funkce v [Azure Event Hubs](/azure/event-hubs/). Tento článek obsahuje kategorizaci a popis dostupných ukázek s odkazy na jednotlivé.
 
 ## <a name="net-samples"></a>Ukázky .NET
 
-| Version | Umístění vzorků |
+| Version | Umístění ukázek |
 | ------- | ---------------- | 
-| Azure.Messaging.EventHubs verze 5 (nejnovější) | [Ukázky centra událostí na GitHubu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs/samples)<br/>[Ukázky procesorů event hubů na GitHubu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples) | 
-| Microsoft.Azure.EventHubs verze 4 (starší verze) | [Umístění GitHubu](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/) |
+| Azure. Messaging. EventHubs verze 5 (nejnovější) | [Ukázky Event Hubs na GitHubu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs/samples)<br/>[Ukázky Event Hubsch procesorů na GitHubu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples) | 
+| Microsoft. Azure. EventHubs verze 4 (starší verze) | [Umístění GitHubu](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/) |
 
 ## <a name="java-samples"></a>Ukázky Java
 
-| Version | Umístění vzorků |
+| Version | Umístění ukázek |
 | ------- | ---------------- | 
-| azure-messaging-eventhubs verze 5 (nejnovější) | [Umístění GitHubu](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs) | 
-| azure-eventhubs verze 3 (starší verze) | [Umístění GitHubu](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java/) |
+| Azure-zasílání zpráv – eventhubs verze 5 (nejnovější) | [Umístění GitHubu](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs) | 
+| Azure – eventhubs verze 3 (starší verze) | [Umístění GitHubu](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java/) |
 
 ## <a name="python-samples"></a>Ukázky Pythonu
 
-| Version | Umístění vzorků |
+| Version | Umístění ukázek |
 | ------- | ---------------- | 
-| azure-eventhub verze 5 (nejnovější) | [Umístění GitHubu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhub/samples) | 
-| azure-eventhub verze 1 (starší verze) | [Umístění GitHubu](https://github.com/Azure/azure-sdk-for-python/tree/release/eventhub-v1/sdk/eventhub/azure-eventhubs/examples) |
+| Azure – eventhub verze 5 (nejnovější) | [Umístění GitHubu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhub/samples) | 
+| Azure – eventhub verze 1 (starší verze) | [Umístění GitHubu](https://github.com/Azure/azure-sdk-for-python/tree/release/eventhub-v1/sdk/eventhub/azure-eventhubs/examples) |
 
 ## <a name="javascript-samples"></a>Ukázky JavaScriptu
 
-| Version | Umístění vzorků |
+| Version | Umístění ukázek |
 | ------- | ---------------- | 
-| azure/event-hubs verze 5 (nejnovější) | [Umístění GitHubu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs/samples) | 
-| azure/event-hubs verze 2 (starší verze) | [Umístění GitHubu](https://github.com/Azure/azure-sdk-for-js/tree/%40azure/event-hubs_2.1.0/sdk/eventhub/event-hubs/samples) |
+| Azure/Event – centra – verze 5 (nejnovější) | [Umístění GitHubu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs/samples) | 
+| Azure/Event – centra verze 2 (starší verze) | [Umístění GitHubu](https://github.com/Azure/azure-sdk-for-js/tree/%40azure/event-hubs_2.1.0/sdk/eventhub/event-hubs/samples) |
 
 
-## <a name="go-samples"></a>Přejít ukázky
-Ukázky go pro Azure Event Hubs najdete v úložišti GitHub [azure-event-hubs.Can](https://github.com/Azure/azure-event-hubs-go/tree/master/_examples) for Azure Event Hub s vyvažovaného úložiště GitHub.
+## <a name="go-samples"></a>Ukázky pro přejít
+Ukázky pro Azure Event Hubs najdete v úložišti GitHub [Azure-Event-hub-přejít](https://github.com/Azure/azure-event-hubs-go/tree/master/_examples) na adresu.
 
 ## <a name="azure-cli-samples"></a>Ukázky Azure CLI
-Ukázky rozhraní Azure CLI pro Azure Event Hubs najdete v úložišti GitHub [azure-event-hub.](https://github.com/Azure/azure-event-hubs/tree/master/samples/Management/CLI)
+Ukázky v Azure CLI pro Azure Event Hubs najdete v úložišti GitHubu pro Azure [– centra událostí](https://github.com/Azure/azure-event-hubs/tree/master/samples/Management/CLI) .
 
 ## <a name="azure-powershell-samples"></a>Ukázky Azure PowerShellu
-Ukázky Azure PowerShellu pro Azure Event Hubs najdete v úložišti GitHub [azure-event-hub.](https://github.com/Azure/azure-event-hubs/tree/master/samples/Management/PowerShell)
+Ukázky Azure PowerShell pro Azure Event Hubs najdete v úložišti GitHubu pro [Azure – centra událostí](https://github.com/Azure/azure-event-hubs/tree/master/samples/Management/PowerShell) .
  
-## <a name="apache-kafka-samples"></a>Apache Kafka vzorky
-Ukázky pro centra událostí pro funkci Apache Kafka najdete v úložišti [GitHub azure-event-hubs-for-kafka.](https://github.com/Azure/azure-event-hubs-for-kafka)
+## <a name="apache-kafka-samples"></a>Ukázky Apache Kafka
+Ukázky pro funkci Event Hubs for Apache Kafka najdete v úložišti GitHub [Azure-Event-Center-for-Kafka](https://github.com/Azure/azure-event-hubs-for-kafka) .
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o centru událostí najdete v následujících článcích:
+Další informace o Event Hubs najdete v následujících článcích:
 
-- [Přehled centra událostí](event-hubs-what-is-event-hubs.md)
+- [Přehled Event Hubs](event-hubs-what-is-event-hubs.md)
 - [Funkce Event Hubs](event-hubs-features.md)
 - [Nejčastější dotazy k Event Hubs](event-hubs-faq.md)
