@@ -1,6 +1,6 @@
 ---
-title: Konfigurace a správa
-description: Přečtěte si, jak nakonfigurovat a spravovat Azure SQL Database.
+title: Konfigurace a Správa
+description: Naučte se konfigurovat a spravovat Azure SQL Database.
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
@@ -12,19 +12,19 @@ ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 11/14/2019
 ms.openlocfilehash: c3f7b33e4b42b08334cfb687024985c878dc3713
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79209425"
 ---
 # <a name="how-to-use-azure-sql-database"></a>Jak používat Azure SQL Database
 
-V této části najdete různé příručky, skripty a vysvětlení, které vám pomůžou spravovat a konfigurovat azure SQL database. Můžete také najít konkrétní návody pro [jednu databázi](sql-database-howto-single-database.md) a [spravovanou instanci](sql-database-howto-managed-instance.md).
+V této části najdete různé příručky, skripty a vysvětlení, které vám pomůžou se správou a konfigurací Azure SQL Database. Můžete také najít konkrétní návody pro [jednotlivé databáze](sql-database-howto-single-database.md) a [spravované instance](sql-database-howto-managed-instance.md).
 
 ## <a name="load-data"></a>Načtení dat
 
-- [Kopírování jedné databáze nebo sdružené databáze v rámci Azure](sql-database-copy.md)
+- [Kopírování jedné databáze nebo databáze ve fondu v rámci Azure](sql-database-copy.md)
 - [Import databáze z BACPAC](sql-database-import.md)
 - [Export databáze do BACPAC](sql-database-export.md)
 - [Načítání dat pomocí BCP](sql-database-load-from-csv-with-bcp.md)
@@ -51,8 +51,8 @@ V této části najdete různé příručky, skripty a vysvětlení, které vám
 ### <a name="extended-events"></a>Rozšířené události
 
 - [Rozšířené události](sql-database-xevent-db-diff-from-svr.md)
-- [Uložit rozšířené události do souboru událostí](sql-database-xevent-code-event-file.md)
-- [Uložit rozšířené události do kruhové vyrovnávací paměti](sql-database-xevent-code-ring-buffer.md)
+- [Ukládat rozšířené události do souboru událostí](sql-database-xevent-code-event-file.md)
+- [Ukládání rozšířených událostí do kruhové vyrovnávací paměti](sql-database-xevent-code-ring-buffer.md)
 
 ## <a name="configure-features"></a>Konfigurace funkcí
 
@@ -65,20 +65,20 @@ V této části najdete různé příručky, skripty a vysvětlení, které vám
 - [Obměna klíčů BYOK transparentního šifrování dat](transparent-data-encryption-byok-azure-sql-key-rotation.md)
 - [Odebrání ochrany transparentního šifrování dat](transparent-data-encryption-byok-azure-sql-remove-tde-protector.md)
 - [Konfigurace OLTP v paměti](sql-database-in-memory-oltp-migration.md)
-- [Konfigurace automatizace Azure](sql-database-manage-automation.md)
+- [Konfigurace Azure Automation](sql-database-manage-automation.md)
 
 ## <a name="develop-applications"></a>Vývoj aplikací
 
 - [Připojení](sql-database-libraries.md)
 - [Použití konektoru Spark](sql-database-spark-connector.md)
-- [Ověřit aplikaci](sql-database-client-id-keys.md)
+- [Ověření aplikace](sql-database-client-id-keys.md)
 - [Použití dávkování pro lepší výkon](sql-database-use-batching-to-improve-performance.md)
 - [Pokyny pro připojení](sql-database-connectivity-issues.md)
 - [Aliasy DNS](dns-alias-overview.md)
-- [Nastavení aliasu DNS PowerShell](dns-alias-powershell.md)
+- [Nastavení PowerShellu aliasu DNS](dns-alias-powershell.md)
 - [Porty – ADO.NET](sql-database-develop-direct-route-ports-adonet-v12.md)
 - [C a C ++](sql-database-develop-cplusplus-simple.md)
-- [Aplikace excel](sql-database-connect-excel.md)
+- [Excel](sql-database-connect-excel.md)
 
 ## <a name="design-applications"></a>Návrh aplikací
 
@@ -86,7 +86,7 @@ V této části najdete různé příručky, skripty a vysvětlení, které vám
 - [Návrh pro elastické fondy](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)
 - [Návrh pro upgrady aplikací](sql-database-manage-application-rolling-upgrade.md)
 
-### <a name="design-multi-tenant-saas-applications"></a>Návrh víceklientských aplikací SaaS
+### <a name="design-multi-tenant-saas-applications"></a>Návrh aplikací SaaS pro více tenantů
 
 - [Způsoby návrhu SaaS](saas-tenancy-app-design-patterns.md)
 - [Indexer videa SaaS](saas-tenancy-video-index-wingtip-brk3120-20171011.md)
@@ -94,5 +94,5 @@ V této části najdete různé příručky, skripty a vysvětlení, které vám
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si další informace o [postupech pro spravované instance](sql-database-howto-managed-instance.md).
-- Další informace o [postupech pro jednotlivé databáze](sql-database-howto-single-database.md).
+- Přečtěte si další informace o [průvodcích pro spravované instance](sql-database-howto-managed-instance.md).
+- Přečtěte si další informace o [průvodcích s jednotlivými databázemi](sql-database-howto-single-database.md).
