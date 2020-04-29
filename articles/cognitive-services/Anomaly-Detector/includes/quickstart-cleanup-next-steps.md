@@ -9,15 +9,15 @@ ms.topic: include
 ms.date: 11/19/2019
 ms.author: aahi
 ms.openlocfilehash: eb00d680e6312bb7f380e27d2fa6bb6fe34fa616
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74483026"
 ---
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud chcete vyčistit a odebrat předplatné služeb Cognitive Services, můžete odstranit prostředek nebo skupinu prostředků. Odstraněním skupiny prostředků se odstraní také všechny další prostředky přidružené ke skupině prostředků.
+Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prostředek nebo skupinu prostředků odstranit. Odstraněním skupiny prostředků dojde také k odstranění všech dalších prostředků přidružených ke skupině prostředků.
 
 * [Portál](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
@@ -28,7 +28,7 @@ Koncepty:
 
 * [Co je rozhraní API Detektoru anomálií?](../overview.md)
 * [Metody detekce anomálií](../how-to/identify-anomalies.md)
-* [Doporučené postupy při použití rozhraní API detektoru anomálií.](../concepts/anomaly-detection-best-practices.md) 
+* [Osvědčené postupy při použití rozhraní API detektoru anomálií](../concepts/anomaly-detection-best-practices.md) 
 
 Kurzy:
 

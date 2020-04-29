@@ -1,5 +1,5 @@
 ---
-title: 'Úvodní příručka: Překlad řeči na text - služba Řeči'
+title: 'Rychlý Start: Převod řeči na text – služba pro rozpoznávání řeči'
 titleSuffix: Azure Cognitive Services
 description: Bude doplněno
 services: cognitive-services
@@ -11,16 +11,16 @@ ms.topic: include
 ms.date: 12/09/2019
 ms.author: yulili
 ms.openlocfilehash: d4781808ce8e80f62e86ce1d0c6db9c38b2636d0
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74980513"
 ---
-V tomto rychlém startu použijete [sadu Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) k interaktivnímu překladu řeči z jednoho jazyka do textu v jiném jazyce. Po splnění několika předpokladů trvá překlad převod řeči na text pouze pět kroků:
+V tomto rychlém startu použijete [sadu Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) pro interaktivní převod řeči z jednoho jazyka na text v jiném jazyce. Po splnění několika požadavků se převod řeči na text provede jenom pět kroků:
 > [!div class="checklist"]
-> * Vytvořte ````SpeechConfig```` objekt z klíče předplatného a oblasti.
+> * Vytvořte ````SpeechConfig```` objekt z klíče a oblasti předplatného.
 > * Aktualizujte ````SpeechConfig```` objekt a určete zdrojové a cílové jazyky.
-> * Vytvořte ````TranslationRecognizer```` objekt ````SpeechConfig```` pomocí objektu shora.
+> * Vytvořte ````TranslationRecognizer```` objekt pomocí výše uvedeného ````SpeechConfig```` objektu.
 > * Pomocí ````TranslationRecognizer```` objektu spusťte proces rozpoznávání pro jeden utterance.
-> * Zkontrolujte ````TranslationRecognitionResult```` vrácené.
+> * Zkontrolujte ````TranslationRecognitionResult```` vrácenou.

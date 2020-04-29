@@ -1,7 +1,7 @@
 ---
 title: 'Rychlý start: Volání rozhraní API pro analýzu textu pomocí PHP'
 titleSuffix: Azure Cognitive Services
-description: Tento rychlý start ukazuje, jak získat informace a ukázky kódu, které vám pomůžou rychle začít používat rozhraní API pro analýzu textu ve službách Azure Cognitive Services.
+description: V tomto rychlém startu se dozvíte, jak získat informace a ukázky kódu, které vám pomůžou rychle začít používat rozhraní API pro analýzu textu ve službě Azure Cognitive Services.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,16 +11,16 @@ ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: aahi
 ms.openlocfilehash: a74cdb79da668cdba44c051c7b7eada3ace8abe4
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75378581"
 ---
 # <a name="quickstart-using-php-to-call-the-text-analytics-cognitive-service"></a>Rychlý start: Volání rozhraní API pro analýzu textu ve službách Cognitive Services pomocí PHP
 <a name="HOLTop"></a>
 
-Tento článek ukazuje, jak [zjistit jazyk](#Detect), [analyzovat mínění](#SentimentAnalysis), [extrahovat klíčové fráze](#KeyPhraseExtraction)a identifikovat propojené [entity](#Entities) pomocí rozhraní API [pro analýzu textu](//go.microsoft.com/fwlink/?LinkID=759711) s PHP.
+V tomto článku se dozvíte, jak [detekovat jazyk](#Detect), [analyzovat mínění](#SentimentAnalysis), [extrahovat klíčové fráze](#KeyPhraseExtraction)a [identifikovat propojené entity](#Entities) pomocí [Analýza textu rozhraní API](//go.microsoft.com/fwlink/?LinkID=759711) s využitím php.
 
 [!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
@@ -36,7 +36,7 @@ Rozhraní API pro rozpoznávání jazyka rozpozná jazyk textového dokumentu po
 
 1. Ve svém oblíbeném integrovaném vývojovém prostředí vytvořte nový projekt PHP.
 1. Přidejte níže uvedený kód.
-1. Zkopírujte klíč a koncový bod Analýzy textu do kódu.
+1. Zkopírujte klíč Analýza textu a koncový bod do kódu.
 1. Spusťte program.
 
 ```php
@@ -144,7 +144,7 @@ Rozhraní API pro analýzu mínění rozpozná mínění sady textových záznam
 
 1. Ve svém oblíbeném integrovaném vývojovém prostředí vytvořte nový projekt PHP.
 1. Přidejte níže uvedený kód.
-1. Zkopírujte klíč a koncový bod Analýzy textu do kódu.
+1. Zkopírujte klíč Analýza textu a koncový bod do kódu.
 1. Spusťte program.
 
 ```php
@@ -229,7 +229,7 @@ echo json_encode (json_decode ($result), JSON_PRETTY_PRINT);
 Rozhraní API pro extrakci klíčových frází extrahuje klíčové fráze z textového dokumentu pomocí [metody Key Phrases](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6). Následující příklad extrahuje klíčové fráze z anglického i španělského dokumentu.
 1. Ve svém oblíbeném integrovaném vývojovém prostředí vytvořte nový projekt PHP.
 1. Přidejte níže uvedený kód.
-1. Zkopírujte klíč a koncový bod Analýzy textu do kódu.
+1. Zkopírujte klíč Analýza textu a koncový bod do kódu.
 1. Spusťte program.
 
 ```php
@@ -329,7 +329,7 @@ Rozhraní API pro entity identifikuje dobře známé entity v textovém dokument
 
 1. Ve svém oblíbeném integrovaném vývojovém prostředí vytvořte nový projekt PHP.
 1. Přidejte níže uvedený kód.
-1. Zkopírujte klíč a koncový bod Analýzy textu do kódu. 
+1. Zkopírujte klíč Analýza textu a koncový bod do kódu. 
 1. Spusťte program.
 
 ```php
@@ -435,5 +435,5 @@ echo json_encode (json_decode ($result), JSON_PRETTY_PRINT);
 
 ## <a name="see-also"></a>Viz také 
 
- [Přehled analýzy textu](../overview.md)  
- [Nejčastější dotazy (FAQ)](../text-analytics-resource-faq.md)
+ [Přehled Analýza textu](../overview.md)  
+ [Nejčastější dotazy](../text-analytics-resource-faq.md)

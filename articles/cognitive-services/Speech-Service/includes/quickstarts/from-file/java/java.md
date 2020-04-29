@@ -1,5 +1,5 @@
 ---
-title: 'Úvodní příručka: Rozpoznávání řeči ze zvukového souboru, Java - služba Řeči'
+title: 'Rychlý Start: rozpoznávání řeči ze zvukového souboru, Java-Speech Service'
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: erhopf
@@ -10,10 +10,10 @@ ms.topic: include
 ms.date: 12/17/2019
 ms.author: erhopf
 ms.openlocfilehash: c98f748838c17156447f9004db32f8f84aaf7228
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75467145"
 ---
 [!INCLUDE [jre](./jre.md)]

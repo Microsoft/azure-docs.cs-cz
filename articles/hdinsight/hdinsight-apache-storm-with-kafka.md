@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Apache Storm s Apache Kafka - Azure HDInsight'
+title: 'Kurz: Apache Storm s využitím Apache Kafka-Azure HDInsight'
 description: Přečtěte si, jak vytvořit streamovací kanál pomocí systémů Apache Storm a Apache Kafka ve službě HDInsight. V tomto kurzu použijete komponenty KafkaBolt a KafkaSpout ke streamování dat ze systému Kafka.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,15 +9,15 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/25/2019
 ms.openlocfilehash: eac9bee6992520492b846e3b579d8a05c327e749
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73494351"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>Kurz: Použití Apache Stormu se systémem Apache Kafka ve službě HDInsight
 
-Tento kurz ukazuje, jak používat topologii [Apache Storm](https://storm.apache.org/) ke čtení a zápisu dat pomocí [Apache Kafka](https://kafka.apache.org/) na HDInsight. Tento kurz také ukazuje, jak zachovat data do apache [hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html) kompatibilní úložiště v clusteru Storm.
+Tento kurz ukazuje použití topologie [Apache Storm](https://storm.apache.org/) ke čtení a zápisu dat pomocí [Apache Kafka](https://kafka.apache.org/) v HDInsight. Tento kurz také ukazuje, jak zachovat data do úložiště s nezaručeným úložištěm [Apache HADOOP HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html) kompatibilní s clustery.
 
 V tomto kurzu se naučíte:
 
@@ -36,7 +36,7 @@ V tomto kurzu se naučíte:
 
 * Znalost vytváření témat Kafka. Další informace najdete v dokumentu [Rychlý start k systému Kafka ve službě HDInsight](./kafka/apache-kafka-get-started.md).
 
-* Znalost vytváření a nasazení řešení Storm (topologií). Konkrétně topologie, které používají [Apache Storm Flux](https://storm.apache.org/releases/current/flux.html) framework. Další informace najdete v dokumentu [Vytvořit topologii Apache Storm v jazyce Java.](./storm/apache-storm-develop-java-topology.md)
+* Znalost vytváření a nasazení řešení Storm (topologií). Konkrétně topologie, které používají [Apache Stormch toků](https://storm.apache.org/releases/current/flux.html) rozhraní. Další informace najdete v dokumentu [Vytvoření topologie Apache Storm v dokumentu Java](./storm/apache-storm-develop-java-topology.md) .
 
 * [Java JDK 1.8](https://www.oracle.com/technetwork/pt/java/javase/downloads/jdk8-downloads-2133151.html) nebo vyšší. HDInsight 3.5 nebo vyšší vyžadují Java 8.
 
@@ -58,7 +58,7 @@ Když na svoji vývojářskou pracovní stanici nainstalujete Javu a JDK, mohou 
 > 
 > Pro usnadnění práce tento dokument odkazuje na šablonu, která může vytvořit všechny požadované prostředky Azure. 
 >
-> Další informace o používání HDInsight ve virtuální síti najdete v tématu [Plánování virtuální sítě pro HDInsight](hdinsight-plan-virtual-network-deployment.md) dokumentu.
+> Další informace o používání služby HDInsight ve virtuální síti najdete v tématu [Naplánování služby Virtual Network for HDInsight](hdinsight-plan-virtual-network-deployment.md) .
 
 ## <a name="storm-and-kafka"></a>Storm a Kafka
 
@@ -79,9 +79,9 @@ Apache Storm poskytuje několik komponent pro práci s Apache Kafka. V tomto ku
     * `org.apache.storm.kafka.bolt.mapper.FieldNameBasedTupleToKafkaMapper`: Mapování datové struktury řazené kolekce členů používané v topologii Storm na pole ukládaná do systému Kafka.
 
 Tyto komponenty jsou dostupné v balíčku `org.apache.storm : storm-kafka`. Použijte verzi balíčku, která odpovídá verzi Stormu. Pro HDInsight 3.6 je verze Stormu 1.1.0.
-Budete také potřebovat balíček `org.apache.kafka : kafka_2.10` s dalšími komponentami systému Kafka. Použijte verzi balíčku, která odpovídá verzi systému Kafka. Pro HDInsight 3.6 je verze Kafka 1.1.1.
+Budete také potřebovat balíček `org.apache.kafka : kafka_2.10` s dalšími komponentami systému Kafka. Použijte verzi balíčku, která odpovídá verzi systému Kafka. V případě HDInsight 3,6 je Kafka verze 1.1.1.
 
-Následující XML je deklarace závislostí v projektu `pom.xml` [Apache Maven:](https://maven.apache.org/)
+Následující kód XML je deklarace závislosti v `pom.xml` projektu [Apache Maven](https://maven.apache.org/) :
 
 ```xml
 <!-- Storm components for talking to Kafka -->
@@ -115,7 +115,7 @@ Následující XML je deklarace závislostí v projektu `pom.xml` [Apache Maven:
 
 ## <a name="understanding-the-code"></a>Vysvětlení kódu
 
-Kód použitý v tomto dokumentu [https://github.com/Azure-Samples/hdinsight-storm-java-kafka](https://github.com/Azure-Samples/hdinsight-storm-java-kafka)je k dispozici na adrese .
+Kód použitý v tomto dokumentu je k dispozici [https://github.com/Azure-Samples/hdinsight-storm-java-kafka](https://github.com/Azure-Samples/hdinsight-storm-java-kafka)na adrese.
 
 V tomto kurzu se využívají dvě topologie:
 
@@ -128,7 +128,7 @@ V tomto kurzu se využívají dvě topologie:
     >
     > Pokud nepoužijete k vytvoření clusteru Storm šablonu v tomto dokumentu, pak musíte akci skriptu použít na cluster ručně.
     >
-    > Akce skriptu je [https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh](https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh) umístěna na a je použita pro nadřízené a nimbus uzly clusteru Storm. Další informace o použití akcí skriptu najdete v dokumentu [Přizpůsobení HDInsightu pomocí akcí skriptu](hdinsight-hadoop-customize-cluster-linux.md).
+    > Akce skriptu je umístěna v [https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh](https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh) umístění a je použita na uzel správce a Nimbus v clusteru s více clustery. Další informace o použití akcí skriptu najdete v dokumentu [Přizpůsobení HDInsightu pomocí akcí skriptu](hdinsight-hadoop-customize-cluster-linux.md).
 
 Topologie se definují pomocí komponenty [Flux](https://storm.apache.org/releases/current/flux.html). Flux byl uveden ve Stormu 0.10.x a umožňuje oddělení konfigurace topologie od kódu. Pro topologie používající architekturu Flux se topologie definuje v souboru YAML. Soubor YAML je možné zahrnout jako součást topologie. Může to ale být také samostatný soubor, který použijete při odesílání topologie. Flux také podporuje různé substituce za běhu, což se využívá i v tomto příkladu.
 
@@ -140,11 +140,11 @@ Pro tyto topologie jsou za běhu nastaveny následující parametry:
 
 * `${kafka.zookeeper.hosts}`: Hostitelé, na kterých v clusteru Kafka běží Zookeeper.
 
-* `${hdfs.url}`: URL systému souborů pro komponentu HDFSBolt. Označuje, jestli se data zapisují do účtu Azure Storage nebo Azure Data Lake Storage.
+* `${hdfs.url}`: URL systému souborů pro komponentu HDFSBolt. Určuje, zda jsou data zapsána do účtu Azure Storage nebo Azure Data Lake Storage.
 
 * `${hdfs.write.dir}`: Adresář, do kterého se data zapisují.
 
-Další informace o topologii Flux [https://storm.apache.org/releases/current/flux.html](https://storm.apache.org/releases/current/flux.html)naleznete v tématu .
+Další informace o topologiích toků najdete v [https://storm.apache.org/releases/current/flux.html](https://storm.apache.org/releases/current/flux.html)tématu.
 
 ### <a name="kafka-writer"></a>Kafka-writer
 
@@ -368,11 +368,11 @@ Projekt obsahuje soubor s názvem `dev.properties`, který se používá pro př
 
 | Soubor dev.properties | Popis |
 | --- | --- |
-| `kafka.zookeeper.hosts` | [Apache ZooKeeper](https://zookeeper.apache.org/) hostí cluster Kafka. |
+| `kafka.zookeeper.hosts` | [Apache Zookeeper](https://zookeeper.apache.org/) hostitelé pro cluster Kafka. |
 | `kafka.broker.hosts` | Hostitelé zprostředkovatelů Kafka (pracovní uzly). |
 | `kafka.topic` | Téma Kafka, které topologie používají. |
 | `hdfs.write.dir` | Adresář, do kterého topologie Kafka-reader zapisuje. |
-| `hdfs.url` | Systém souborů používaný clusterem Storm. Pro účty úložiště Azure Storage použijte hodnotu `wasb://`. Pro Azure Data Lake Storage Gen2 `abfs://`použijte hodnotu . Pro Azure Data Lake Storage Gen1 `adl://`použijte hodnotu . |
+| `hdfs.url` | Systém souborů používaný clusterem Storm. Pro účty úložiště Azure Storage použijte hodnotu `wasb://`. Pro Azure Data Lake Storage Gen2 použijte hodnotu `abfs://`. Pro Azure Data Lake Storage Gen1 použijte hodnotu `adl://`. |
 
 ## <a name="create-the-clusters"></a>Vytvoření clusterů
 
@@ -383,7 +383,7 @@ Následující diagram znázorňuje tok komunikace mezi Stormem a systémem Kafk
 ![Diagram clusterů Storm a Kafka ve virtuální síti Azure](./media/hdinsight-apache-storm-with-kafka/apache-storm-kafka-vnet.png)
 
 > [!NOTE]  
-> Další služby v clusteru, jako jsou SSH a [Apache Ambari,](https://ambari.apache.org/) jsou přístupné přes internet. Další informace o veřejných portech dostupných ve službě HDInsight najdete v tématu [Porty a identifikátory URI používané službou HDInsight](hdinsight-hadoop-port-settings-for-services.md).
+> K dalším službám v clusteru, jako jsou SSH a [Apache Ambari](https://ambari.apache.org/) , se dá dostat přes Internet. Další informace o veřejných portech dostupných ve službě HDInsight najdete v tématu [Porty a identifikátory URI používané službou HDInsight](hdinsight-hadoop-port-settings-for-services.md).
 
 K vytvoření virtuální sítě Azure a následnému vytvoření clusterů Kafka a Storm v rámci této sítě použijte následující postup:
 
@@ -391,7 +391,7 @@ K vytvoření virtuální sítě Azure a následnému vytvoření clusterů Kafk
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fhdinsight-storm-java-kafka%2Fmaster%2Fcreate-kafka-storm-clusters-in-vnet.json" target="_blank"><img src="./media/hdinsight-apache-storm-with-kafka/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
-    Šablona Azure Resource Manager **https://github.com/Azure-Samples/hdinsight-storm-java-kafka/blob/master/create-kafka-storm-clusters-in-vnet.json**je umístěna na adrese . Vytvoří následující prostředky:
+    Šablona Azure Resource Manager se nachází na adrese **https://github.com/Azure-Samples/hdinsight-storm-java-kafka/blob/master/create-kafka-storm-clusters-in-vnet.json**. Vytvoří následující prostředky:
 
     * Skupina prostředků Azure
     * Azure Virtual Network
@@ -420,7 +420,7 @@ K vytvoření virtuální sítě Azure a následnému vytvoření clusterů Kafk
    
       ![Obrázek parametrů šablony](./media/hdinsight-apache-storm-with-kafka/storm-kafka-template.png)
 
-3. Přečtěte si **obchodní podmínky**a pak vyberte Souhlasím s **výše uvedenými podmínkami**.
+3. Přečtěte si **podmínky a ujednání**a potom vyberte Souhlasím **s výše uvedenými podmínkami a ujednáními**.
 
 4. Nakonec zaškrtněte políčko **Připnout na řídicí panel** a vyberte **Koupit**.
 
@@ -429,7 +429,7 @@ K vytvoření virtuální sítě Azure a následnému vytvoření clusterů Kafk
 
 ## <a name="build-the-topology"></a>Vytvoření topologie
 
-1. Ve vývojovém prostředí stáhněte [https://github.com/Azure-Samples/hdinsight-storm-java-kafka](https://github.com/Azure-Samples/hdinsight-storm-java-kafka)projekt z , otevřete příkazový řádek a změňte adresáře na umístění, které jste stáhli.
+1. Ve svém vývojovém prostředí Stáhněte projekt z [https://github.com/Azure-Samples/hdinsight-storm-java-kafka](https://github.com/Azure-Samples/hdinsight-storm-java-kafka), otevřete příkazový řádek a změňte adresář na umístění, do kterého jste stáhli projekt.
 
 2. V adresáři **hdinsight-storm-java-kafka** následujícím příkazem zkompilujte projekt a vytvořte balíček pro nasazení:
 
@@ -514,7 +514,7 @@ K vytvoření virtuální sítě Azure a následnému vytvoření clusterů Kafk
         kafka.topic: stormtopic
 
     > [!IMPORTANT]  
-    > Položka `hdfs.url` je konfigurována pro cluster, který používá účet úložiště Azure Storage. Chcete-li tuto topologii použít s clusterem Storm, `wasb` který `adl`používá úložiště datových jezer, změňte tuto hodnotu z na .
+    > Položka `hdfs.url` je konfigurována pro cluster, který používá účet úložiště Azure Storage. Pokud chcete tuto topologii použít s clusterem s více podmnožinami, který `wasb` používá `adl`Data Lake Storage, změňte tuto hodnotu z na.
 
 4. Uložte soubor `dev.properties` a následujícím příkazem ho nahrajte do clusteru **Storm**:
 
@@ -633,7 +633,7 @@ Odebrání skupiny prostředků pomocí webu Azure Portal:
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste se naučili používat topologii [Apache Storm](https://storm.apache.org/) k zápisu a čtení z [Apache Kafka](https://kafka.apache.org/) na HDInsight. Také jste se naučili ukládat data do úložiště kompatibilního s [Apache Hadoop HDFS,](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html) které používá HDInsight.
+V tomto kurzu jste zjistili, jak používat topologii [Apache Storm](https://storm.apache.org/) k zápisu do [Apache Kafka](https://kafka.apache.org/) ve službě HDInsight a čtení z nich. Zjistili jste také, jak ukládat data do úložiště kompatibilního s [Apache HADOOP HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html) používaného službou HDInsight.
 
 > [!div class="nextstepaction"]
 > [Použití rozhraní Apache Kafka Producer and Consumer API](kafka/apache-kafka-producer-consumer-api.md)

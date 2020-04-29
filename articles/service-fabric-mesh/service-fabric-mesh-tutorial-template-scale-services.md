@@ -1,5 +1,5 @@
 ---
-title: Výuka – škálování aplikace spuštěné v síti Azure Service Fabric Mesh
+title: Kurz – škálování aplikace běžící v Azure Service Fabric sítě
 description: V tomto kurzu se naučíte škálovat služby v aplikaci spuštěné ve službě Service Fabric Mesh.
 author: dkkapur
 ms.topic: tutorial
@@ -7,10 +7,10 @@ ms.date: 01/11/2019
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: 1b9070e826c30bbeafdee4185ea45cfb53d9efd2
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75351820"
 ---
 # <a name="tutorial-scale-an-application-running-in-service-fabric-mesh"></a>Kurz: Škálování aplikace spuštěné ve službě Service Fabric Mesh
@@ -36,13 +36,13 @@ V této sérii kurzů se naučíte:
 
 Než začnete s tímto kurzem:
 
-* Pokud nemáte předplatné Azure, můžete [si vytvořit bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
+* Pokud nemáte předplatné Azure, můžete si [vytvořit bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 * [Nainstalujte si místně Azure CLI a Service Fabric Mesh CLI.](service-fabric-mesh-howto-setup-cli.md#install-the-azure-service-fabric-mesh-cli)
 
 ## <a name="manually-scale-your-services-in-or-out"></a>Ruční horizontální snížení nebo navýšení kapacity služeb
 
-Jednou z hlavních výhod nasazení aplikací do sítě Service Fabric mesh je možnost snadnéškálování služeb v aplikaci nebo venku. To by mělo být použito pro zpracování různé množství zatížení vašich služeb nebo zlepšení dostupnosti.
+Jednou z hlavních výhod nasazení aplikací do Service Fabric sítě je možnost snadného škálování služeb v systému nebo. Tato služba by se měla používat ke zpracování proměnlivých objemů zatížení vašich služeb nebo ke zlepšení dostupnosti.
 
 Tento kurz jako příklad používá ukázku Seznam úkolů, která se [nasadila dříve](service-fabric-mesh-tutorial-template-deploy-app.md) a teď by měla být spuštěná. Aplikace obsahuje dvě služby: WebFrontEnd a ToDoService. Každá z těchto služeb byla původně nasazena s jednou replikou.  Pokud chcete zobrazit počet spuštěných replik pro službu WebFrontEnd, spusťte následující příkaz:
 

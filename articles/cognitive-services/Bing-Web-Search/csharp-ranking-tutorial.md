@@ -1,7 +1,7 @@
 ---
-title: Zobrazení výsledků hledání pomocí pořadí
+title: Použití pořadí k zobrazení výsledků hledání
 titleSuffix: Azure Cognitive Services
-description: Ukazuje, jak použít odpověď Bing RankingResponse k zobrazení výsledků hledání v pořadí.
+description: Ukazuje, jak použít odpověď RankingResponse Bingu k zobrazení výsledků hledání v pořadí řazení.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -12,56 +12,56 @@ ms.topic: tutorial
 ms.date: 12/19/2019
 ms.author: aahi
 ms.openlocfilehash: 1c8e0bb136fddeb84dc991e63a761378b38cc470
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75382323"
 ---
-# <a name="build-a-console-app-search-client-in-c"></a>Vytvoření klienta pro vyhledávání konzolových aplikací v C #
+# <a name="build-a-console-app-search-client-in-c"></a>Sestavení klienta hledání konzolové aplikace v C #
 
-Tento kurz ukazuje, jak vytvořit jednoduchou konzolovou aplikaci .NET Core, která uživatelům umožňuje dotazovat se na rozhraní API pro vyhledávání na webu Bing a zobrazit seřazené výsledky.
+V tomto kurzu se dozvíte, jak vytvořit jednoduchou konzolovou aplikaci .NET Core, která umožňuje uživatelům dotazovat se na rozhraní API Bingu pro vyhledávání na webu a zobrazovat seřazené výsledky.
 
-Tento výukový program ukazuje, jak:
+V tomto kurzu se dozvíte, jak:
 
-- Vytvoření jednoduchého dotazu do rozhraní API pro vyhledávání na webu Bingu
-- Zobrazit výsledky dotazu v seřazeném pořadí
+- Vytvoření jednoduchého dotazu na rozhraní API Bingu pro vyhledávání na webu
+- Zobrazit výsledky dotazu v pořadí podle pořadí
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li sledovat spolu s tutoriálu, musíte:
+Abyste mohli postupovat podle tohoto kurzu, budete potřebovat:
 
-- Visual Studio. Pokud ji nemáte, [stáhněte si a nainstalujte bezplatnou verzi Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/).
-- Klíč předplatného rozhraní API pro vyhledávání na webu Bingu. Pokud ho nemáte, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api).
+- Visual Studio. Pokud ho nemáte, [Stáhněte si a nainstalujte bezplatnou edici Visual Studio 2017 Community](https://www.visualstudio.com/downloads/).
+- Klíč předplatného pro rozhraní API Bingu pro vyhledávání na webu. Pokud ho nemáte, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api).
 
-## <a name="create-a-new-console-app-project"></a>Vytvoření nového projektu konzolové aplikace
+## <a name="create-a-new-console-app-project"></a>Vytvořit nový projekt konzolové aplikace
 
 V sadě Visual Studio vytvořte projekt pomocí `Ctrl`+`Shift`+`N`.
 
-V dialogovém okně **Nový projekt** klepněte na **položku Visual C# > aplikace Windows Classic Desktop > Console (.NET Framework).**
+V dialogovém okně **Nový projekt** klikněte na **Visual C# > Windows Classic Desktop > Konzolová aplikace (.NET Framework)**.
 
-Pojmenujte aplikaci **MyConsoleSearchApp**a klepněte na tlačítko **OK**.
+Pojmenujte aplikaci **MyConsoleSearchApp**a pak klikněte na **OK**.
 
-## <a name="add-the-jsonnet-nuget-package-to-the-project"></a>Přidání balíčku JSON.net Nuget do projektu
+## <a name="add-the-jsonnet-nuget-package-to-the-project"></a>Přidat do projektu balíček NuGet JSON.net
 
-JSON.net umožňuje pracovat s odpověďmi JSON vrácenými rozhraním API. Přidejte jeho balíček NuGet do projektu:
+JSON.net umožňuje pracovat se odpověďmi JSON vrácenými rozhraním API. Přidejte svůj balíček NuGet do projektu:
 
-- V **Průzkumníku řešení** klikněte pravým tlačítkem myši na projekt a vyberte **spravovat balíčky NuGet...**.
-- Na kartě **Procházet** vyhledejte . `Newtonsoft.Json` Vyberte nejnovější verzi a klepněte na tlačítko **Instalovat**.
-- Klepněte na tlačítko **OK** v okně **Zkontrolovat změny.**
-- Zavřete kartu Visual Studio s názvem **NuGet: MyConsoleSearchApp**.
+- V **Průzkumník řešení** klikněte pravým tlačítkem na projekt a vyberte **Spravovat balíčky NuGet...**.
+- Na kartě **Procházet** vyhledejte `Newtonsoft.Json`. Vyberte nejnovější verzi a pak klikněte na **nainstalovat**.
+- V okně **Zkontrolovat změny** klikněte na tlačítko **OK** .
+- Zavřete kartu sady Visual Studio s názvem **NuGet: MyConsoleSearchApp**.
 
-## <a name="add-a-reference-to-systemweb"></a>Přidání odkazu na soubor System.Web
+## <a name="add-a-reference-to-systemweb"></a>Přidat odkaz na System. Web
 
-Tento kurz závisí `System.Web` na sestavení. Přidejte odkaz na toto sestavení do projektu:
+Tento kurz spoléhá na `System.Web` sestavení. Přidejte do projektu odkaz na toto sestavení:
 
-- V **Průzkumníku řešení**klikněte pravým tlačítkem myši na **Reference** a vyberte **Přidat odkaz...**
-- Vyberte **sestavení > frameworku**, potom posuňte dolů a zkontrolujte **Soubor System.Web.**
+- V **Průzkumník řešení**klikněte pravým tlačítkem na **odkazy** a vyberte **Přidat odkaz...**
+- Vyberte **sestavení > Framework**a pak se posuňte dolů a zkontrolujte **System. Web.**
 - Vybrat **OK**
 
 ## <a name="add-some-necessary-using-statements"></a>Přidat některé nezbytné příkazy using
 
-Kód v tomto kurzu vyžaduje tři další using příkazy. Přidejte tyto příkazy pod existující `using` příkazy v horní části **Program.cs**:
+Kód v tomto kurzu vyžaduje tři další příkazy using. Přidejte tyto příkazy pod stávající `using` příkazy v horní části **program.cs**:
 
 ```csharp
 using System.Web;
@@ -70,7 +70,7 @@ using System.Net.Http;
 
 ## <a name="ask-the-user-for-a-query"></a>Požádat uživatele o dotaz
 
-V **Průzkumníku řešení**otevřete **Program.cs**. Aktualizujte `Main()` metodu:
+V **Průzkumník řešení**otevřete **program.cs**. Aktualizujte `Main()` metodu:
 
 ```csharp
 static void Main()
@@ -91,13 +91,13 @@ static void Main()
 
 Tato metoda:
 
-- Požádá uživatele o dotaz
-- Volání `RunQueryAndDisplayResults(userQuery)` k provedení dotazu a zobrazení výsledků
-- Čeká na vstup uživatele, aby se zabránilo okamžitému zavření okna konzoly.
+- Vyzve uživatele k zadání dotazu.
+- Volání `RunQueryAndDisplayResults(userQuery)` pro spuštění dotazu a zobrazení výsledků
+- Čeká na vstup uživatele, aby nedocházelo k okamžitému zavření okna konzoly.
 
-## <a name="search-for-query-results-using-the-bing-web-search-api"></a>Hledání výsledků dotazu pomocí rozhraní API pro vyhledávání na webu Bingu
+## <a name="search-for-query-results-using-the-bing-web-search-api"></a>Hledání výsledků dotazu pomocí rozhraní API Bingu pro vyhledávání na webu
 
-Dále přidejte metodu, která se dotazuje na rozhraní API a zobrazí výsledky:
+Dále přidejte metodu, která bude dotazovat rozhraní API a zobrazí výsledky:
 
 ```csharp
 static void RunQueryAndDisplayResults(string userQuery)
@@ -137,16 +137,16 @@ static void RunQueryAndDisplayResults(string userQuery)
 
 Tato metoda:
 
-- Vytvoří `HttpClient` dotaz na rozhraní API pro vyhledávání na webu.
-- Nastaví `Ocp-Apim-Subscription-Key` hlavičku HTTP, kterou Bing používá k ověření požadavku.
-- Provede požadavek a použije JSON.net k rekonstrukci výsledků.
-- Volání `DisplayAllRankedResults(responseObjects)` pro zobrazení všech výsledků v seřazeném pořadí
+- Vytvoří dotaz `HttpClient` na rozhraní vyhledávání na webu API.
+- Nastaví hlavičku `Ocp-Apim-Subscription-Key` protokolu HTTP, kterou Bing používá k ověření žádosti.
+- Provede požadavek a použije JSON.net k deserializaci výsledků.
+- Volání `DisplayAllRankedResults(responseObjects)` pro zobrazení všech výsledků v pořadí podle pořadí
 
-Nezapomeňte nastavit hodnotu `Ocp-Apim-Subscription-Key` klíče předplatného.
+Ujistěte se, že jste nastavili hodnotu `Ocp-Apim-Subscription-Key` na klíč předplatného.
 
 ## <a name="display-ranked-results"></a>Zobrazit seřazené výsledky
 
-Než se ukáže, jak zobrazit výsledky v seřazeném pořadí, podívejte se na ukázkovou odpověď vyhledávání na webu:
+Než se pustíte do zobrazení výsledků v pořadí podle pořadí, podívejte se na ukázkovou odpověď na vyhledávání na webu:
 
 ```json
 {
@@ -221,15 +221,15 @@ Než se ukáže, jak zobrazit výsledky v seřazeném pořadí, podívejte se na
 }
 ```
 
-Objekt `rankingResponse` JSON ([dokumentace](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse)) popisuje příslušné pořadí zobrazení pro výsledky hledání. Obsahuje jednu nebo více z následujících skupin s prioritou:
+Objekt `rankingResponse` JSON ([dokumentace](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse)) popisuje odpovídající pořadí zobrazení výsledků hledání. Zahrnuje jednu nebo více následujících možností s určením prioritních skupin:
 
-- `pole`: Výsledky hledání pro získání nejviditelnější léčby (například zobrazené nad hlavní čárou a postranním panelem).
-- `mainline`: Výsledky hledání, které se zobrazí na hlavní spojce.
-- `sidebar`: Výsledky hledání, které se zobrazí na postranním panelu. Pokud není k dispozici postranní panel, zobrazte výsledky pod hlavní čárou.
+- `pole`: Výsledky hledání pro získání nejužitečnějších úprav (například zobrazené nad hlavní a postranní panel).
+- `mainline`: Výsledky hledání, které se mají zobrazit v hlavní
+- `sidebar`: Výsledky hledání, které se mají zobrazit na bočním panelu. Pokud není k dispozici žádný postranní panel, zobrazte výsledky pod hlavní.
 
-Odpověď hodnocení JSON může zahrnovat jednu nebo více skupin.
+JSON odpovědi na řazení může zahrnovat jednu nebo více skupin.
 
-V **Program.cs**přidejte následující metodu, která zobrazí výsledky ve správně seřazeném pořadí:
+V **program.cs**přidejte následující metodu pro zobrazení výsledků v pořadí podle správné klasifikace:
 
 ```csharp
 static void DisplayAllRankedResults(Newtonsoft.Json.Linq.JObject responseObjects)
@@ -273,10 +273,10 @@ static void DisplayAllRankedResults(Newtonsoft.Json.Linq.JObject responseObjects
 
 Tato metoda:
 
-- Smyčky přes `rankingResponse` skupiny, které odpověď obsahuje
+- Projde mezi `rankingResponse` skupinami, které odpověď obsahuje.
 - Zobrazí položky v každé skupině voláním`DisplaySpecificResults(...)`
 
-V **Program.cs**přidejte následující dvě metody:
+Do **program.cs**přidejte následující dvě metody:
 
 ```csharp
 static void DisplaySpecificResults(Newtonsoft.Json.Linq.JToken resultIndex, Newtonsoft.Json.Linq.JToken items, string title, params string[] fields)

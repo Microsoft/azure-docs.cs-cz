@@ -1,7 +1,7 @@
 ---
-title: 'Úvodní příručka: Získání přehledů obrázků pomocí rozhraní REST API a jazyka C# – vizuální vyhledávání Bingu'
+title: 'Rychlý Start: Získání přehledů obrázků pomocí REST API a C# – Vizuální vyhledávání Bingu'
 titleSuffix: Azure Cognitive Services
-description: Přečtěte si, jak nahrát obrázek do rozhraní API pro vizuální vyhledávání Bingu a získat o něm přehledy.
+description: Přečtěte si, jak nahrát obrázek do rozhraní API pro vizuální vyhledávání Bingu a získat přehled o něm.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -11,27 +11,27 @@ ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: scottwhi
 ms.openlocfilehash: 07ecac46ab13058d308c17c5747701ee5ed577fc
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75446673"
 ---
-# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-c"></a>Úvodní příručka: Získejte přehledy obrázků pomocí rozhraní API REST api vizuálního vyhledávání Bingu a jazyka C. #
+# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-c"></a>Rychlý Start: Získání přehledů obrázků pomocí Vizuální vyhledávání Bingu REST API a C #
 
-Tento rychlý start ukazuje, jak nahrát obrázek do rozhraní API vizuálního vyhledávání Bingu a zobrazit přehledy, které vrátí.
+Tento rychlý Start ukazuje, jak nahrát obrázek do rozhraní API pro vizuální vyhledávání Bingu a zobrazit přehledy, které vrátí.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Libovolné vydání [Visual Studia 2019](https://www.visualstudio.com/downloads/).
-* Rozhraní [Json.NET](https://www.newtonsoft.com/json), k dispozici jako balíček NuGet.
-* Pokud používáte Linux/MacOS, můžete tuto aplikaci spustit pomocí [Mono](https://www.mono-project.com/).
+* Všechny edice sady [Visual Studio 2019](https://www.visualstudio.com/downloads/).
+* [Rozhraní JSON.NET](https://www.newtonsoft.com/json), které je k dispozici jako balíček NuGet.
+* Pokud používáte Linux/MacOS, můžete tuto aplikaci spustit pomocí [mono](https://www.mono-project.com/).
 
 [!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-a-project"></a>Vytvoření a inicializace projektu
 
-1. V sadě Visual Studio vytvořte nové konzolové řešení s názvem BingSearchApisQuickStart. Do hlavního souboru kódu přidejte následující obory názvů:
+1. V aplikaci Visual Studio vytvořte nové řešení konzoly s názvem BingSearchApisQuickStart. Do hlavního souboru kódu přidejte následující obory názvů:
 
     ```csharp
     using System;
@@ -41,7 +41,7 @@ Tento rychlý start ukazuje, jak nahrát obrázek do rozhraní API vizuálního 
     using System.Collections.Generic;
     ```
 
-2. Přidejte proměnné pro klíč předplatného, koncový bod a cestu k obrázku, který chcete nahrát. `uriBase`může být globální koncový bod níže nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený na webu Azure Portal pro váš prostředek:
+2. Přidejte proměnné pro klíč předplatného, koncový bod a cestu k imagi, kterou chcete nahrát. `uriBase`může to být globální koncový bod nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek:
 
     ```csharp
         const string accessKey = "<my_subscription_key>";
@@ -49,7 +49,7 @@ Tento rychlý start ukazuje, jak nahrát obrázek do rozhraní API vizuálního 
         static string imagePath = @"<path_to_image>";
     ```
 
-3. Vytvořte metodu s názvem `GetImageFileName()` pro získání cesty k obrázku:
+3. Vytvořte metodu s názvem `GetImageFileName()` pro získání cesty k imagi:
     
     ```csharp
     static string GetImageFileName(string path)
@@ -58,7 +58,7 @@ Tento rychlý start ukazuje, jak nahrát obrázek do rozhraní API vizuálního 
             }
     ```
 
-4. Vytvořte metodu pro získání binárních dat obrazu:
+4. Vytvořte metodu pro získání binárních dat obrázku:
 
     ```csharp
     static byte[] GetImageBinary(string path)
@@ -67,9 +67,9 @@ Tento rychlý start ukazuje, jak nahrát obrázek do rozhraní API vizuálního 
     }
     ```
 
-## <a name="build-the-form-data"></a>Vytvoření dat formuláře
+## <a name="build-the-form-data"></a>Sestavení dat formuláře
 
-Chcete-li nahrát místní bitovou kopii, nejprve vytvořte data formuláře, která chcete odeslat do rozhraní API. Data formuláře musí `Content-Disposition` obsahovat `name` záhlaví, jeho parametr musí být `filename` nastaven na "image" a parametr lze nastavit na libovolný řetězec. Obsah formuláře obsahuje binární data obrazu. Maximální velikost obrázku, kterou můžete nahrát, je 1 MB.
+Chcete-li nahrát místní obrázek, nejprve Sestavte data formuláře k odeslání do rozhraní API. Data formuláře musí obsahovat `Content-Disposition` hlavičku, její `name` parametr musí být nastaven na hodnotu "image" a `filename` parametr lze nastavit na libovolný řetězec. Obsah formuláře obsahuje binární data obrázku. Maximální velikost obrázku, kterou můžete nahrát, je 1 MB.
 
     ```
     --boundary_1234-abcd
@@ -80,7 +80,7 @@ Chcete-li nahrát místní bitovou kopii, nejprve vytvořte data formuláře, kt
     --boundary_1234-abcd--
     ```
 
-1. Přidejte hraniční řetězce pro formátování dat formuláře POST. Hraniční řetězce určují znaky začátku, konce a nového řádku pro data:
+1. Přidejte řetězce hranice pro formátování dat formuláře POST. Řetězce hranice určují znaky začátku, konce a nového řádku pro data:
 
     ```csharp
     // Boundary strings for form data in body of POST.
@@ -97,7 +97,7 @@ Chcete-li nahrát místní bitovou kopii, nejprve vytvořte data formuláře, kt
     const string POST_BODY_DISPOSITION_HEADER = "Content-Disposition: form-data; name=\"image\"; filename=\"{0}\"" + CRLF +CRLF;
     ```
 
-3. Vytvořte funkci `BuildFormDataStart()` s názvem pro vytvoření začátku dat formuláře pomocí hraničních řetězců a cesty obrázku:
+3. Vytvořte funkci nazvanou `BuildFormDataStart()` , která vytvoří začátek dat formuláře pomocí řetězců hranic a cesty k obrázku:
     
     ```csharp
         static string BuildFormDataStart(string boundary, string filename)
@@ -111,7 +111,7 @@ Chcete-li nahrát místní bitovou kopii, nejprve vytvořte data formuláře, kt
         }
     ```
 
-4. Vytvořte funkci `BuildFormDataEnd()` s názvem pro vytvoření konce dat formuláře pomocí hraničních řetězců:
+4. Vytvořte funkci nazvanou `BuildFormDataEnd()` pro vytvoření konce dat formuláře pomocí řetězců hranic:
     
     ```csharp
         static string BuildFormDataEnd(string boundary)
@@ -122,11 +122,11 @@ Chcete-li nahrát místní bitovou kopii, nejprve vytvořte data formuláře, kt
 
 ## <a name="call-the-bing-visual-search-api"></a>Volání rozhraní API pro vizuální vyhledávání Bingu
 
-1. Vytvořte funkci pro volání koncového bodu vizuálního vyhledávání Bingu a vraťte odpověď JSON. Funkce přebírá začátek a konec dat formuláře, bajtové pole obsahující `contentType` obrazová data a hodnotu.
+1. Vytvořte funkci pro volání koncového bodu Vizuální vyhledávání Bingu a vraťte odpověď JSON. Funkce bere na začátku a na konci data formuláře, bajtové pole obsahující data obrázku a `contentType` hodnotu.
 
-2. Použijte `WebRequest` a uložte identifikátor URI, hodnotu contentType a záhlaví.  
+2. Použijte `WebRequest` k uložení identifikátoru URI, hodnoty ContentType a záhlaví.  
 
-3. Slouží `request.GetRequestStream()` k zápisu formulářových a obrazových dat a následnému získání odpovědi. Vaše funkce by měla být podobná té, která je uvedená níže:
+3. Použijte `request.GetRequestStream()` k zápisu dat formuláře a obrázku a pak Získejte odpověď. Vaše funkce by měla být podobná té následující:
         
     ```csharp
         static string BingImageSearch(string startFormData, string endFormData, byte[] image, string contentTypeValue)
@@ -156,16 +156,16 @@ Chcete-li nahrát místní bitovou kopii, nejprve vytvořte data formuláře, kt
         }
     ```
 
-## <a name="create-the-main-method"></a>Vytvořit hlavní metodu
+## <a name="create-the-main-method"></a>Vytvoření metody Main
 
-1. V `Main` metodě aplikace, získat název souboru a binární data vašeho obrazu:
+1. V `Main` metodě vaší aplikace Získejte název souboru a binární data vaší image:
 
     ```csharp
     var filename = GetImageFileName(imagePath);
     var imageBinary = GetImageBinary(imagePath);
     ```
 
-2. Nastavte tělo POST formátováním hranice pro něj. Potom `startFormData()` volání `endFormData` a vytvoření dat formuláře:
+2. Nastavte tělo příspěvku tak, že naformátujete jeho hranici. Pak zavolejte `startFormData()` a `endFormData` vytvořte data formuláře:
 
     ```csharp
     // Set up POST body.
@@ -180,7 +180,7 @@ Chcete-li nahrát místní bitovou kopii, nejprve vytvořte data formuláře, kt
     var contentTypeHdrValue = string.Format(CONTENT_TYPE_HEADER_PARAMS, boundary);
     ```
 
-4. Získejte odpověď rozhraní `BingImageSearch()` API voláním a vytiskněte odpověď:
+4. Získání odpovědi rozhraní API voláním `BingImageSearch()` a vytištěním odpovědi:
 
     ```csharp
     var json = BingImageSearch(startFormData, endFormData, imageBinary, contentTypeHdrValue);
@@ -191,9 +191,9 @@ Chcete-li nahrát místní bitovou kopii, nejprve vytvořte data formuláře, kt
 
 ## <a name="using-httpclient"></a>Jak použít HTTPClient
 
-Pokud používáte `HttpClient`, můžete `MultipartFormDataContent` použít třídu k vytvoření dat formuláře. Stačí použít následující části kódu nahradit odpovídající metody v předchozím příkladu.
+Pokud používáte `HttpClient`, můžete použít `MultipartFormDataContent` třídu k sestavení dat formuláře. Pouze pomocí následujících sekcí kódu nahraďte odpovídající metody v předchozím příkladu.
 
-Nahraďte metodu `Main` tímto kódem:
+Nahraďte `Main` metodu tímto kódem:
 
 ```csharp
         static void Main()
@@ -233,7 +233,7 @@ Nahraďte metodu `Main` tímto kódem:
         }
 ```
 
-Nahraďte metodu `BingImageSearch` tímto kódem:
+Nahraďte `BingImageSearch` metodu tímto kódem:
 
 ```csharp
         /// <summary>
@@ -270,4 +270,4 @@ Nahraďte metodu `BingImageSearch` tímto kódem:
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Vytvoření jednostránkové webové aplikace vizuálního vyhledávání](../tutorial-bing-visual-search-single-page-app.md)
+> [Vytvoření webové aplikace Vizuální vyhledávání jednostránkového stránkování](../tutorial-bing-visual-search-single-page-app.md)

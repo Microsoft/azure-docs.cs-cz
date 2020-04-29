@@ -1,7 +1,7 @@
 ---
-title: 'Úvodní příručka: Nastavení platformy Speech SDK C++ (macOS) – služba Řeč'
+title: 'Rychlý Start: sada Speech SDK C++ (macOS) Platform Setup – služba pro rozpoznávání řeči'
 titleSuffix: Azure Cognitive Services
-description: Tato příručka slouží k nastavení platformy pro C++ v macOS pomocí sady SDK služby Řeč.
+description: Pomocí tohoto průvodce můžete nastavit platformu pro C++ v macOS se sadou Speech Service SDK.
 services: cognitive-services
 author: markamos
 manager: nitinme
@@ -11,19 +11,19 @@ ms.topic: include
 ms.date: 10/14/2019
 ms.author: erhopf
 ms.openlocfilehash: d0f9bc44145f75d7c3b503fffe43042c650025f1
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75469500"
 ---
-Tato příručka ukazuje, jak nainstalovat [sadu Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) pro C++ v systému macOS 10.13 a vyšší.
+V této příručce se dozvíte, jak nainstalovat [sadu Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) pro C++ na MacOS 10,13 a novějších verzích.
 
 [!INCLUDE [License Notice](~/includes/cognitive-services-speech-service-license-notice.md)]
 
 ## <a name="system-requirements"></a>Požadavky na systém
 
-macOS 10.13 a vyšší
+macOS 10,13 a novější
 
 ## <a name="install-speech-sdk"></a>Instalace sady Speech SDK
 
@@ -39,7 +39,7 @@ macOS 10.13 a vyšší
    mkdir -p "$SPEECHSDK_ROOT"
    ```
 
-1. Stáhněte a `.zip` extrahujte archiv obsahující rámec sady Speech SDK:
+1. Stažení a extrahování `.zip` archivu obsahujícího rozhraní sady Speech SDK:
 
    ```sh
    wget -O SpeechSDK-macOS.zip https://aka.ms/csspeech/macosbinary
@@ -52,9 +52,9 @@ macOS 10.13 a vyšší
    ls -l "$SPEECHSDK_ROOT"
    ```
 
-   Výpis adresáře by měl obsahovat oznámení a licenční `MicrosoftCognitiveServicesSpeech.framework` soubory třetích stran, stejně jako adresář.
+   Výpis adresáře by měl obsahovat soubory oznámení a licencí třetích stran, jakož i `MicrosoftCognitiveServicesSpeech.framework` adresář.
 
-Nyní můžete přejít na [další kroky](#next-steps) níže.
+Nyní můžete přejít na [Další kroky](#next-steps) níže.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,5 +1,5 @@
 ---
-title: 'Úvodní příručka: Překlad řeči do více jazyků – služba Speech Service'
+title: 'Rychlý Start: Převod řeči na více jazyků – Speech Service'
 titleSuffix: Azure Cognitive Services
 description: Bude doplněno
 services: cognitive-services
@@ -11,17 +11,17 @@ ms.topic: include
 ms.date: 12/09/2019
 ms.author: yulili
 ms.openlocfilehash: 8c8cbc4e4f531d7a06ae3a33c33df9264c2cc6f2
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74981551"
 ---
-V tomto rychlém startu použijete [sadu Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) k interaktivnímu překladu řeči z jednoho jazyka do řeči v jiném jazyce. Po splnění několika předpokladů trvá překlad řeči na text ve více jazycích pouze šest kroků:
+V tomto rychlém startu použijete [sadu Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) pro interaktivní převod řeči z jednoho jazyka na řeč v jiném jazyce. Po splnění několika požadavků se převod řeči na text v několika jazycích provede jenom šest kroků:
 > [!div class="checklist"]
-> * Vytvořte ````SpeechTranslationConfig```` objekt z klíče předplatného a oblasti.
+> * Vytvořte ````SpeechTranslationConfig```` objekt z klíče a oblasti předplatného.
 > * Aktualizujte ````SpeechTranslationConfig```` objekt a určete zdrojový jazyk rozpoznávání řeči.
-> * Aktualizujte ````SpeechTranslationConfig```` objekt a určete více cílových jazyků překladu.
-> * Vytvořte ````TranslationRecognizer```` objekt ````SpeechTranslationConfig```` pomocí objektu shora.
+> * Aktualizujte ````SpeechTranslationConfig```` objekt tak, aby určoval více cílových jazyků překladu.
+> * Vytvořte ````TranslationRecognizer```` objekt pomocí výše uvedeného ````SpeechTranslationConfig```` objektu.
 > * Pomocí ````TranslationRecognizer```` objektu spusťte proces rozpoznávání pro jeden utterance.
-> * Zkontrolujte ````TranslationRecognitionResult```` vrácené.
+> * Zkontrolujte ````TranslationRecognitionResult```` vrácenou.

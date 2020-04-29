@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 06/10/2019
 ms.author: jeedes
 ms.openlocfilehash: 663958ae367162eaeb336c819d1d219dc74a2cbe
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74233281"
 ---
 # <a name="tutorial-integrate-syncplicity-with-azure-active-directory"></a>Kurz: integrace syncplicity s Azure Active Directory
@@ -47,7 +47,7 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 
 Pokud chcete nakonfigurovat integraci syncplicity do služby Azure AD, musíte přidat syncplicity z Galerie do svého seznamu spravovaných aplikací SaaS.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
 1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
@@ -67,7 +67,7 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
 5. **[Vytvořte syncplicity Test User](#create-syncplicity-test-user)** -to, abyste měli protějšek B. Simon v syncplicity, která je propojená s reprezentací uživatele v Azure AD.
 6. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
+### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
@@ -79,16 +79,16 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Na stránce **základní konfigurace SAML** zadejte hodnoty pro následující pole:
 
-    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<companyname>.syncplicity.com`
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<companyname>.syncplicity.com`
 
-    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru: `https://<companyname>.syncplicity.com/sp`
+    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru:`https://<companyname>.syncplicity.com/sp`
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným přihlašovacím jménem a identifikátorem URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta syncplicity](https://www.syncplicity.com/contact-us) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
 
-   ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
+   ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
 1. V části **Nastavení syncplicity** zkopírujte na základě vašeho požadavku příslušné adresy URL.
 
@@ -104,7 +104,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Na stránce **jednotného přihlašování (SSO)** proveďte následující kroky:
 
-    ![Jednotné přihlašování \(jednotné přihlašování\)](./media/syncplicity-tutorial/ic769550.png "Single Sign-On \\\(SSO\\\)")
+    ![\(Jednotné přihlašování jednotného přihlašování\)](./media/syncplicity-tutorial/ic769550.png "Single Sign-On \\\(SSO\\\)")
 
     a. Do textového pole **vlastní doména** zadejte název vaší domény.
   
@@ -120,7 +120,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     g. Klikněte na **Uložit změny**.
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
@@ -132,7 +132,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k syncplicity.
 
@@ -140,7 +140,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 1. V seznamu aplikace vyberte **syncplicity**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
-   ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+   ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
 1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
@@ -156,7 +156,7 @@ Aby se uživatelé Azure AD mohli přihlásit, musí se zřídit pro syncplicity
 
 **Pokud chcete zřídit uživatelský účet syncplicity, proveďte následující kroky:**
 
-1. Přihlaste se ke svému tenantovi **syncplicity** (například: `https://company.Syncplicity.com`).
+1. Přihlaste se ke svému tenantovi **syncplicity** (například `https://company.Syncplicity.com`:).
 
 1. Klikněte na **správce** a vyberte **uživatelské účty** a pak klikněte na **Přidat uživatele**.
 
@@ -164,7 +164,7 @@ Aby se uživatelé Azure AD mohli přihlásit, musí se zřídit pro syncplicity
 
 1. Zadejte **e-mailové adresy** účtu Azure AD, které chcete zřídit, vyberte **uživatele** jako **roli**a pak klikněte na **Další**.
 
-    ![Informace o účtu](./media/syncplicity-tutorial/ic769765.png "Informace o účtu")
+    ![Informace o účtu](./media/syncplicity-tutorial/ic769765.png "Informace o účtu")
 
     > [!NOTE]
     > Držitel účtu Azure AD získá e-mail, včetně odkazu na potvrzení a aktivaci účtu.
@@ -187,7 +187,7 @@ Aby se uživatelé Azure AD mohli přihlásit, musí se zřídit pro syncplicity
 
 Když na přístupovém panelu vyberete dlaždici syncplicity, měli byste se automaticky přihlásit k syncplicity, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další zdroje
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

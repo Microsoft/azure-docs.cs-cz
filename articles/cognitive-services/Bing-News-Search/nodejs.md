@@ -1,7 +1,7 @@
 ---
-title: 'Úvodní příručka: Provedení vyhledávání zpráv pomocí souboru Node.js – rozhraní REST API pro vyhledávání zpráv Bing'
+title: 'Rychlý Start: provedení hledání zpráv pomocí Node. js – Vyhledávání zpráv Bingu REST API'
 titleSuffix: Azure Cognitive Services
-description: Tento rychlý start slouží k odeslání požadavku do rozhraní REST API hledání zpráv bingu pomocí souboru Node.js a obdržíte odpověď JSON.
+description: Pomocí tohoto rychlého startu můžete odeslat žádost do Vyhledávání zpráv Bingu REST API pomocí Node. js a přijmout odpověď JSON.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -12,13 +12,13 @@ ms.date: 12/12/2019
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: 42ac6cac972374dbd1db42b75742212046d2ce3e
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75383128"
 ---
-# <a name="quickstart-perform-a-news-search-using-nodejs-and-the-bing-news-search-rest-api"></a>Úvodní příručka: Provedení vyhledávání zpráv pomocí souboru Node.js a rozhraní REST API pro vyhledávání zpráv Bingu
+# <a name="quickstart-perform-a-news-search-using-nodejs-and-the-bing-news-search-rest-api"></a>Rychlý Start: Proveďte hledání zpráv pomocí Node. js a Vyhledávání zpráv Bingu REST API
 
 V tomto rychlém startu poprvé zavoláte rozhraní API Bingu pro vyhledávání obrázků a dostanete odpověď ve formátu JSON. Tato jednoduchá aplikace JavaScriptu odesílá vyhledávací dotaz do rozhraní API a zobrazuje nezpracované výsledky.
 
@@ -43,7 +43,7 @@ Zdrojový kód pro tuto ukázku je k dispozici na [GitHubu](https://github.com/A
     let https = require('https');
     ```
 
-2. Vytvořte proměnné pro koncový bod rozhraní API, cestu k rozhraní API pro vyhledávání obrázků, klíč předplatného a hledaný výraz. Můžete použít globální koncový bod níže nebo vlastní koncový bod [subdomény](../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený na portálu Azure pro váš prostředek. 
+2. Vytvořte proměnné pro koncový bod rozhraní API, cestu k rozhraní API pro vyhledávání obrázků, klíč předplatného a hledaný výraz. Můžete použít globální koncový bod nebo vlastní koncový bod [subdomény](../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek. 
 
     ```javascript
     let subscriptionKey = 'enter key here';
@@ -70,7 +70,7 @@ Zdrojový kód pro tuto ukázku je k dispozici na [GitHubu](https://github.com/A
         });
         ```
 
-    3. Když je signalizován příznak **konce,** JSON a záhlaví lze zobrazit.
+    3. Při signalizaci **koncového** příznaku se dají zobrazit JSON a hlavičky.
 
         ```javascript
         response.on('end', function () {

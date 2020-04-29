@@ -1,7 +1,7 @@
 ---
-title: 'Úvodní příručka: Proveďte vyhledávání zpráv pomocí PHP a rozhraní REST API pro vyhledávání zpráv Bing'
+title: 'Rychlý Start: provedení hledání zpráv pomocí PHP a Vyhledávání zpráv Bingu REST API'
 titleSuffix: Azure Cognitive Services
-description: Tento rychlý start slouží k odeslání požadavku do rozhraní REST API vyhledávání zpráv Bingu pomocí PHP a obdržíte odpověď JSON.
+description: Pomocí tohoto rychlého startu můžete odeslat požadavek do Vyhledávání zpráv Bingu REST API pomocí PHP a přijmout odpověď JSON.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -12,25 +12,25 @@ ms.date: 12/12/2019
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: 79f00e4138d0fecdc7320235dd9c496033693d2b
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75383081"
 ---
-# <a name="quickstart-perform-a-news-search-using-php-and-the-bing-news-search-rest-api"></a>Úvodní příručka: Proveďte vyhledávání zpráv pomocí PHP a rozhraní REST API pro vyhledávání zpráv Bingu
+# <a name="quickstart-perform-a-news-search-using-php-and-the-bing-news-search-rest-api"></a>Rychlý Start: provedení hledání zpráv pomocí PHP a Vyhledávání zpráv Bingu REST API
 
 V tomto rychlém startu poprvé zavoláte rozhraní API Bingu pro vyhledávání obrázků a dostanete odpověď ve formátu JSON. Tato jednoduchá aplikace JavaScriptu odesílá vyhledávací dotaz do rozhraní API a zobrazuje nezpracované výsledky.
 
-Zatímco tato aplikace je napsána v PHP, API je RESTful webová služba kompatibilní s většinou programovacích jazyků.
+I když je tato aplikace napsaná v PHP, je rozhraní API webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* PHP 5.6 nebo novější
+* PHP 5,6 nebo novější
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
-Viz také [Cognitive Services Pricing - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+Viz také [Cognitive Services vyhledávání BINGU API pro ceny](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 ## <a name="run-the-application"></a>Spuštění aplikace
 
@@ -40,7 +40,7 @@ Viz také [Cognitive Services Pricing - Bing Search API](https://azure.microsoft
 2. V oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový projekt PHP.
 3. Přidejte níže uvedený kód.
 4. Hodnotu `accessKey` nahraďte přístupovým klíčem platným pro vaše předplatné.
-5. Můžete použít globální koncový bod níže nebo vlastní koncový bod [subdomény](../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený na portálu Azure pro váš prostředek.
+5. Můžete použít globální koncový bod nebo vlastní koncový bod [subdomény](../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
 5. Spusťte program.
 
 ```php
@@ -103,7 +103,7 @@ echo json_encode(json_decode($json), JSON_PRETTY_PRINT);
 ?>
 ```
 
-**Reakce**
+**Základě**
 
 Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu: 
 

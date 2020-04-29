@@ -1,19 +1,19 @@
 ---
-title: 'Kurz: Monitorování a ladění – Databáze Azure pro PostgreSQL – jeden server'
-description: Tento kurz vás provede monitorováním a laděním v Azure Database for PostgreSQL – single server.
+title: 'Kurz: monitorování a ladění – Azure Database for PostgreSQL – jeden server'
+description: Tento kurz vás provede monitorováním a optimalizací na Azure Database for PostgreSQL jednom serveru.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: tutorial
 ms.date: 5/6/2019
 ms.openlocfilehash: d1958c6ef0f7ed52e939967b5e82886fe1373ed8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74774733"
 ---
-# <a name="tutorial-monitor-and-tune-azure-database-for-postgresql---single-server"></a>Kurz: Sledování a ladění databáze Azure pro PostgreSQL – jeden server
+# <a name="tutorial-monitor-and-tune-azure-database-for-postgresql---single-server"></a>Kurz: monitorování a ladění Azure Database for PostgreSQL – jeden server
 
 Azure Database for PostgreSQL obsahuje funkce, které vám pomohou pochopit a zlepši výkon vašeho serveru. V tomto kurzu se naučíte, jak:
 > [!div class="checklist"]
@@ -23,7 +23,7 @@ Azure Database for PostgreSQL obsahuje funkce, které vám pomohou pochopit a zl
 > * Analýza databáze a získání doporučení k výkonu
 > * Použití doporučení k výkonu
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 Musíte mít server Azure Database for PostgreSQL s PostgreSQL verze 9.6 nebo 10. Chcete-li vytvořit server, můžete sledovat postup v části [Vytvořit kurz](tutorial-design-database-using-azure-portal.md).
 
 > [!IMPORTANT]

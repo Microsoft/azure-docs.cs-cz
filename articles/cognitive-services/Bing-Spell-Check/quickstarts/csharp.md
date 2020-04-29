@@ -1,7 +1,7 @@
 ---
-title: 'Úvodní příručka: Kontrola pravopisu pomocí rozhraní REST API a jazyka C# – kontrola pravopisu bingu'
+title: 'Rychlý Start: Kontrola pravopisu pomocí REST API a C# – Kontrola pravopisu Bingu'
 titleSuffix: Azure Cognitive Services
-description: Můžete začít používat rozhraní REST API kontroly pravopisu Bingu ke kontrole pravopisu a gramatiky.
+description: Začněte používat REST API Kontrola pravopisu Bingu pro kontrolu pravopisu a gramatiky.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,30 +11,30 @@ ms.topic: quickstart
 ms.date: 12/16/2019
 ms.author: aahi
 ms.openlocfilehash: 036ea00362b604957a1887127fca0b8d775d4e7b
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75382944"
 ---
-# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-c"></a>Úvodní příručka: Kontrola pravopisu pomocí rozhraní REST API pro kontrolu pravopisu Bingu a c #
+# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-c"></a>Rychlý Start: Kontrola pravopisu pomocí Kontrola pravopisu Bingu REST API a C #
 
-Pomocí tohoto rychlého startu můžete provést první volání do rozhraní REST API kontroly pravopisu Bingu. Tato jednoduchá aplikace jazyka C# odešle požadavek do rozhraní API a vrátí seznam navrhovaných oprav. Aplikace je sice napsaná v C#, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků. Zdrojový kód pro tuto aplikaci je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingAutosuggestv7.cs).
+V tomto rychlém startu můžete provést první volání REST API Kontrola pravopisu Bingu. Tato jednoduchá aplikace v jazyce C# pošle požadavek do rozhraní API a vrátí seznam navrhovaných oprav. Aplikace je sice napsaná v C#, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků. Zdrojový kód této aplikace je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingAutosuggestv7.cs).
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Libovolná edice [Visual Studia 2017 nebo novější](https://www.visualstudio.com/downloads/).
-* Instalace `Newtonsoft.Json` jako balíček NuGet v sadě Visual Studio:
-    1. V **Průzkumníku řešení**klepněte pravým tlačítkem myši na soubor řešení.
-    1. Vyberte **spravovat balíčky NuGet pro řešení**.
+* Libovolná edice sady [Visual Studio 2017 nebo novější](https://www.visualstudio.com/downloads/).
+* Instalace `Newtonsoft.Json` jako balíčku NuGet v aplikaci Visual Studio:
+    1. V **Průzkumník řešení**klikněte pravým tlačítkem myši na soubor řešení.
+    1. Vyberte **Spravovat balíčky NuGet pro řešení**.
     1. Vyhledejte `Newtonsoft.Json` a nainstalujte balíček.
-* Pokud používáte Linux/MacOS, lze tuto aplikaci spustit pomocí [Mono](https://www.mono-project.com/).
+* Pokud používáte Linux/MacOS, můžete tuto aplikaci spustit pomocí [mono](https://www.mono-project.com/).
 
 [!INCLUDE [cognitive-services-bing-spell-check-signup-requirements](../../../../includes/cognitive-services-bing-spell-check-signup-requirements.md)]
 
 ## <a name="create-and-initialize-a-project"></a>Vytvoření a inicializace projektu
 
-1. Vytvořte nové řešení `SpellCheckSample` konzoly s názvem v sadě Visual Studio. Pak přidejte následující obory názvů do souboru hlavního kódu.
+1. Vytvořte nové řešení konzoly s názvem `SpellCheckSample` v aplikaci Visual Studio. Pak přidejte následující obory názvů do souboru hlavního kódu.
     
     ```csharp
     using System;
@@ -46,7 +46,7 @@ Pomocí tohoto rychlého startu můžete provést první volání do rozhraní R
     using Newtonsoft.Json;
     ```
 
-2. Vytvořte proměnné pro koncový bod rozhraní API, klíč předplatného a text, který má být kontrolován. Můžete použít globální koncový bod níže nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený na portálu Azure pro váš prostředek.
+2. Vytvořte proměnné pro koncový bod rozhraní API, klíč předplatného a text, který se má zkontrolovat pravopis. Můžete použít globální koncový bod nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
 
     ```csharp
     namespace SpellCheckSample
@@ -62,7 +62,7 @@ Pomocí tohoto rychlého startu můžete provést první volání do rozhraní R
     }
     ```
 
-3. Vytvořte proměnnou pro parametry vyhledávání. Připojit kód trhu `mkt=`za . Kód trhu je země, ze které podáváte žádost. Také připojit režim kontroly pravopisu po `&mode=`. Režim je `proof` buď (zachytí většinu `spell` pravopisných/gramatických chyb) nebo (zachytí většinu pravopisu, ale ne tolik gramatické chyby).
+3. Vytvořte proměnnou pro parametry hledání. Přidejte svůj kód na trhu `mkt=`po. Kód na trhu je země, ze které provedete požadavek. Také přidejte svůj režim kontroly pravopisu po `&mode=`. Režim je buď `proof` (catch nejvíc pravopisné/gramatické chyby `spell` ), nebo (catch nejvíc pravopisu, ale ne tolik gramatických chyb).
     
     ```csharp
     static string params_ = "mkt=en-US&mode=proof";
@@ -70,7 +70,7 @@ Pomocí tohoto rychlého startu můžete provést první volání do rozhraní R
 
 ## <a name="create-and-send-a-spell-check-request"></a>Vytvoření a odeslání žádosti o kontrolu pravopisu
 
-1. Vytvořte asynchronní funkci `SpellCheck()` volanou k odeslání požadavku do rozhraní API. Vytvořte `HttpClient`a přidejte klíč `Ocp-Apim-Subscription-Key` předplatného do záhlaví. Potom proveďte následující kroky v rámci funkce.
+1. Vytvořte asynchronní funkci volanou `SpellCheck()` k odeslání žádosti do rozhraní API. `HttpClient`Vytvořte a přidejte do `Ocp-Apim-Subscription-Key` záhlaví klíč předplatného. Pak proveďte následující kroky v rámci této funkce.
 
     ```csharp
     async static void SpellCheck()
@@ -83,13 +83,13 @@ Pomocí tohoto rychlého startu můžete provést první volání do rozhraní R
     }
     ```
 
-2. Vytvořte identifikátor URI pro váš požadavek připojením hostitele, cesty a parametrů.
+2. Vytvořte identifikátor URI pro vaši žádost připojením hostitele, cesty a parametrů.
     
     ```csharp
     string uri = host + path + params_;
     ```
 
-3. Vytvořte seznam `KeyValuePair` s objektem obsahujícím text a `FormUrlEncodedContent` použijte ho k vytvoření objektu. Nastavte informace záhlaví a `PostAsync()` použijte k odeslání požadavku.
+3. Vytvoří seznam s `KeyValuePair` objektem, který obsahuje váš text, a použije ho k vytvoření `FormUrlEncodedContent` objektu. Nastavte informace záhlaví a použijte `PostAsync()` k odeslání žádosti.
 
     ```csharp
     var values = new Dictionary<string, string>();
@@ -99,11 +99,11 @@ Pomocí tohoto rychlého startu můžete provést první volání do rozhraní R
     response = await client.PostAsync(uri, new FormUrlEncodedContent(values));
     ```
 
-## <a name="get-and-print-the-api-response"></a>Získání a tisk odpovědi rozhraní API
+## <a name="get-and-print-the-api-response"></a>Načtení a tisk odpovědi rozhraní API
 
-### <a name="get-the-client-id-header"></a>Získání záhlaví ID klienta
+### <a name="get-the-client-id-header"></a>Získat hlavičku ID klienta
 
-Pokud odpověď obsahuje `X-MSEdge-ClientID` záhlaví, získejte hodnotu a vytiskněte ji.
+Pokud odpověď obsahuje `X-MSEdge-ClientID` hlavičku, získá hodnotu a vytiskne ji.
 
 ``` csharp
 string client_id;
@@ -114,9 +114,9 @@ if (response.Headers.TryGetValues("X-MSEdge-ClientID", out IEnumerable<string> h
 }
 ```
 
-### <a name="get-the-response"></a>Získejte odpověď
+### <a name="get-the-response"></a>Získat odpověď
 
-Získejte odpověď z rozhraní API. Deserializujte objekt JSON a vytiskněte jej do konzoly.
+Získejte odpověď z rozhraní API. Deserializace objektu JSON a jeho tisk do konzoly.
 
 ```csharp
 string contentString = await response.Content.ReadAsStringAsync();
@@ -139,7 +139,7 @@ static void Main(string[] args)
 
 ## <a name="run-the-application"></a>Spuštění aplikace
 
-Sestavení a spuštění projektu. Pokud používáte Visual Studio, ladíte soubor stisknutím **klávesy F5.**
+Sestavte a spusťte projekt. Pokud používáte Visual Studio, můžete soubor ladit stisknutím klávesy **F5** .
 
 ## <a name="example-json-response"></a>Příklad odpovědi JSON
 

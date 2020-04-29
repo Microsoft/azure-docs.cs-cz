@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Aktualizace sortimentu maloobchodního inventáře pomocí kanálů publikování a odběru a filtrů témat pomocí azure CLI'
-description: 'Kurz: V tomto kurzu se dozvíte, jak odesílat a přijímat zprávy z tématu a předplatného a jak přidat a používat pravidla filtru pomocí azure CLI'
+title: 'Kurz: aktualizace sortimentu inventáře v maloobchodu pomocí kanálů publikování/odběru a filtrů témat pomocí Azure CLI'
+description: 'Kurz: v tomto kurzu se naučíte odesílat a přijímat zprávy z tématu a předplatného a postup přidávání a používání pravidel filtru pomocí Azure CLI.'
 services: service-bus-messaging
 author: spelluru
 manager: timlt
@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
 ms.openlocfilehash: 0bd0d8eb8abe6f320f73e35b1e3b08e1d8dc1de3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73718921"
 ---
 # <a name="tutorial-update-inventory-using-cli-and-topicssubscriptions"></a>Kurz: Aktualizace zásob pomocí rozhraní CLI a témat/odběrů
@@ -40,7 +40,7 @@ K vývoji aplikace funkcí Service Bus pomocí Javy potřebujete mít nainstalov
 
 - Nejnovější verzi sady [Java Development Kit](https://aka.ms/azure-jdks)
 - [Azure CLI](https://docs.microsoft.com/cli/azure)
-- [Apache Maven](https://maven.apache.org), verze 3.0 nebo vyšší.
+- [Apache Maven](https://maven.apache.org)verze 3,0 nebo vyšší.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -326,7 +326,7 @@ public CompletableFuture<Void> receiveAllMessageFromSubscription(String subscrip
 ```
 
 > [!NOTE]
-> Prostředky služby Service Bus můžete spravovat pomocí [aplikace Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/). Průzkumník služby Service Bus umožňuje uživatelům připojit se k oboru názvů service bus a snadno spravovat entity zasílání zpráv. Nástroj poskytuje pokročilé funkce, jako je funkce importu a exportu nebo možnost testovat téma, fronty, předplatná, přenosové služby, centra oznámení a centra událostí. 
+> Prostředky Service Bus můžete spravovat pomocí [Service Bus Exploreru](https://github.com/paolosalvatori/ServiceBusExplorer/). Service Bus Explorer umožňuje uživatelům připojit se k oboru názvů Service Bus a snadno spravovat entity zasílání zpráv. Tento nástroj poskytuje pokročilé funkce, jako jsou funkce importu a exportu, nebo možnost testovat témata, fronty, odběry, služby Relay, centra oznámení a centra událostí. 
 
 ## <a name="next-steps"></a>Další kroky
 

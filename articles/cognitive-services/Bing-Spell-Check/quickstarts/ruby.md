@@ -1,7 +1,7 @@
 ---
-title: 'Úvodní příručka: Kontrola pravopisu pomocí rozhraní REST API a Ruby – kontrola pravopisu bingu'
+title: 'Rychlý Start: Kontrola pravopisu pomocí REST API a Ruby-Kontrola pravopisu Bingu'
 titleSuffix: Azure Cognitive Services
-description: Začněte používat rozhraní REST API kontroly pravopisu Bingu ke kontrole pravopisu a gramatiky pomocí tohoto rychlého startu.
+description: Začněte používat REST API Kontrola pravopisu Bingu pro kontrolu pravopisu a gramatiky pomocí tohoto rychlého startu.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,26 +11,26 @@ ms.topic: quickstart
 ms.date: 12/16/2019
 ms.author: aahi
 ms.openlocfilehash: 89a2a345e2a4e3ca1be31297e614e86f800e6316
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75448421"
 ---
-# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-ruby"></a>Úvodní příručka: Kontrola pravopisu pomocí rozhraní REST API pro kontrolu pravopisu Bingu a ruby
+# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-ruby"></a>Rychlý Start: Kontrola pravopisu pomocí Kontrola pravopisu Bingu REST API a Ruby
 
-Pomocí tohoto rychlého startu můžete provést první volání do rozhraní API REST PRO KONTROLU pravopisu Bingu pomocí ruby. Tato jednoduchá aplikace odešle požadavek do rozhraní API a vrátí seznam slov, která nepoznala, následovaná navrhovanými opravami. Aplikace je sice napsaná v Ruby, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků. Zdrojový kód pro tuto aplikaci je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingSpellCheckv7.rb)
+Pomocí tohoto rychlého startu můžete provést vaše první volání Kontrola pravopisu Bingu REST API pomocí Ruby. Tato jednoduchá aplikace pošle požadavek do rozhraní API a vrátí seznam slov, která nebyla rozpoznána, a za ním Doporučené opravy. Aplikace je sice napsaná v Ruby, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků. Zdrojový kód této aplikace je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingSpellCheckv7.rb) .
 
 ## <a name="prerequisites"></a>Požadavky
 
-* [Ruby 2.4](https://www.ruby-lang.org/en/downloads/) nebo novější.
+* [Ruby 2,4](https://www.ruby-lang.org/en/downloads/) nebo novější.
 
 [!INCLUDE [cognitive-services-bing-spell-check-signup-requirements](../../../../includes/cognitive-services-bing-spell-check-signup-requirements.md)]
 
 
 ## <a name="create-and-initialize-the-application"></a>Vytvoření a inicializace aplikace
 
-1. Vytvořte nový soubor Ruby ve svém oblíbeném editoru nebo prostředí IDE a přidejte následující požadavky. 
+1. V oblíbených editorech nebo v integrovaném vývojovém prostředí vytvořte nový soubor Ruby a přidejte následující požadavky. 
 
     ```ruby
     require 'net/http'
@@ -38,7 +38,7 @@ Pomocí tohoto rychlého startu můžete provést první volání do rozhraní A
     require 'json'
     ```
 
-2. Vytvořte proměnné pro klíč předplatného, identifikátor URI koncového bodu a cestu. Vytvořte parametry požadavku připojením parametru k vašemu `mkt=` trhu a `&mode` do režimu důkazu. `proof` Můžete použít globální koncový bod níže nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený na portálu Azure pro váš prostředek.
+2. Vytvořte proměnné pro klíč předplatného, identifikátor URI a cestu koncového bodu. Vytvořte parametry žádosti připojením `mkt=` parametru k vašemu trhu a `&mode` režimu `proof` kontroly pravopisu. Můžete použít globální koncový bod nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
 
     ```ruby
     key = 'ENTER YOUR KEY HERE'
@@ -47,9 +47,9 @@ Pomocí tohoto rychlého startu můžete provést první volání do rozhraní A
     params = 'mkt=en-us&mode=proof'
     ```
 
-## <a name="send-a-spell-check-request"></a>Odeslání žádosti o kontrolu pravopisu
+## <a name="send-a-spell-check-request"></a>Odeslat žádost o kontrolu pravopisu
 
-1. Vytvořte identifikátor URI z řetězce uri hostitele, cesty a parametrů. Nastavte jeho dotaz tak, aby obsahoval text, který chcete zkontrolovat pravopisem.
+1. Vytvořte identifikátor URI z identifikátoru URI hostitele, cesty a řetězce parametrů. Nastavte dotaz tak, aby obsahoval text, který chcete kontrolovat pravopis.
 
    ```ruby
    uri = URI(uri + path + params)
@@ -59,7 +59,7 @@ Pomocí tohoto rychlého startu můžete provést první volání do rozhraní A
    })
    ```
 
-2. Vytvořte požadavek pomocí identifikátoru URI vytvořeného výše. Přidejte klíč `Ocp-Apim-Subscription-Key` do záhlaví.
+2. Vytvořte žádost pomocí identifikátoru URI sestaveného výše. Přidejte svůj klíč do `Ocp-Apim-Subscription-Key` záhlaví.
 
     ```ruby
     request = Net::HTTP::Post.new(uri)
@@ -75,7 +75,7 @@ Pomocí tohoto rychlého startu můžete provést první volání do rozhraní A
     end
     ```
 
-4. Získejte odpověď JSON a vytiskněte ji do konzole. 
+4. Získejte odpověď JSON a vytiskněte ji do konzoly. 
 
     ```ruby
     result = JSON.pretty_generate(JSON.parse(response.body))
@@ -84,7 +84,7 @@ Pomocí tohoto rychlého startu můžete provést první volání do rozhraní A
 
 ## <a name="run-the-application"></a>Spuštění aplikace
 
-Sestavení a spuštění projektu.
+Sestavte a spusťte projekt.
 
 Pokud používáte příkazový řádek, spusťte aplikaci pomocí následujícího příkazu.
 

@@ -1,7 +1,7 @@
 ---
-title: Úvodní příručka – Odeslání dotazu do rozhraní API pomocí javy – vyhledávání místních společností Bing
+title: Rychlý Start – odeslání dotazu do rozhraní API pomocí jazyka Java – vyhledávání místních obchodních obchodů
 titleSuffix: Azure Cognitive Services
-description: Tento rychlý start můžete začít odesílat požadavky do rozhraní API pro vyhledávání místních společností Bingu, což je služba Azure Cognitive Service.
+description: Tento rychlý Start vám umožní začít odesílat požadavky do rozhraní API Bingu pro vyhledávání v místním obchodu, což je služba pro rozpoznávání Azure.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,29 +11,29 @@ ms.topic: quickstart
 ms.date: 11/29/2019
 ms.author: aahi
 ms.openlocfilehash: 8ff70bea8d0e4810b6d5a0d35853077ed0a630cd
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74665181"
 ---
-# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-java"></a>Úvodní příručka: Odeslání dotazu do rozhraní API pro vyhledávání místních společností Bingu pomocí Javy
+# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-java"></a>Rychlý Start: odeslání dotazu do rozhraní API Bingu pro vyhledávání místních obchodních aplikací pomocí jazyka Java
 
-Tento rychlý start můžete začít odesílat požadavky do rozhraní API pro vyhledávání místních společností Bingu, což je služba Azure Cognitive Service. Zatímco tato jednoduchá aplikace je napsána v Jazyce Java, API je RESTful webová služba kompatibilní s libovolným programovacím jazykem schopným provádět požadavky HTTP a analyzovat JSON.
+Tento rychlý Start vám umožní začít odesílat požadavky do rozhraní API Bingu pro vyhledávání v místním obchodu, což je služba pro rozpoznávání Azure. I když je tato jednoduchá aplikace napsaná v jazyce Java, rozhraní API je webová služba RESTful, která je kompatibilní s libovolným programovacím jazykem schopným vytvářet požadavky HTTP a analyzovat JSON.
 
-Tato ukázková aplikace získá data místní odpovědi `hotel in Bellevue`z rozhraní API pro vyhledávací dotaz .
+Tato ukázková aplikace získá data místní odpovědi z rozhraní API vyhledávacího dotazu `hotel in Bellevue`.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
+* [Sada Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 
-Musíte mít [účet rozhraní API služby Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s rozhraními API pro vyhledávání Bing. Pro účely tohoto rychlého startu vám bude stačit [bezplatná zkušební verze](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api). Při aktivaci bezplatné zkušební verze budete potřebovat přístupový klíč.  Viz také [Cognitive Services Pricing - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+Musíte mít [Cognitive Services účet rozhraní API](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s rozhraní API pro vyhledávání Bingu. Pro účely tohoto rychlého startu vám bude stačit [bezplatná zkušební verze](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api). Pokud aktivujete bezplatnou zkušební verzi, budete potřebovat přístupový klíč.  Viz také [Cognitive Services vyhledávání BINGU API pro ceny](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
-Tento příklad aplikace získá místní data odpovědi z dotazu na *hotel v Bellevue*.
+Tato ukázková aplikace získá data místních odpovědí z dotazu na *Hotel v Bellevue*.
 
-## <a name="create-the-request"></a>Vytvořit požadavek 
+## <a name="create-the-request"></a>Vytvoření žádosti 
 
-Následující kód vytvoří `WebRequest`, nastaví hlavičku přístupového klíče a přidá řetězec dotazu pro "hotel v Bellevue".  Potom požadavek odešle a přiřadí odpověď k řetězci obsahujícímu text JSON.
+Následující kód vytvoří `WebRequest`, nastaví hlavičku přístupového klíče a přidá řetězec dotazu pro "Hotel v Bellevue".  Potom požadavek odešle a přiřadí odpověď k řetězci obsahujícímu text JSON.
 
 ```java
     // construct URL of search request (endpoint + query string)
@@ -51,7 +51,7 @@ Následující kód vytvoří `WebRequest`, nastaví hlavičku přístupového k
 
 ## <a name="run-the-complete-application"></a>Spuštění úplné aplikace
 
-Rozhraní API pro vyhledávání místních společností Bingvrací výsledky z vyhledávače Bing.
+Rozhraní API služby Bing pro hledání v místním obchodu vrátí výsledky z vyhledávacího stroje Bingu.
 1. Stáhněte nebo nainstalujte knihovnu gson.
 2. Ve svém oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový projekt Javy.
 3. Přidejte níže uvedený kód.
@@ -165,6 +165,6 @@ public class LocalSearchCls {
 ```
 
 ## <a name="next-steps"></a>Další kroky
-- [Rychlý start hledání místní firmy](local-quickstart.md)
-- [Rychlý start uzlu místního obchodního hledání](local-search-node-quickstart.md)
-- [Rychlý start pythonu pro místní obchodní vyhledávání](local-search-python-quickstart.md)
+- [Rychlý start hledání místních obchodních obchodů](local-quickstart.md)
+- [Rychlý Start uzlu místního hledání firmy](local-search-node-quickstart.md)
+- [Rychlý Start pro místní vyhledávání v Pythonu](local-search-python-quickstart.md)

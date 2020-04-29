@@ -6,20 +6,20 @@ ms.topic: include
 ms.date: 11/14/2019
 ms.author: pafarley
 ms.openlocfilehash: 3c6059e131eadf1144fd189c47691b2352176745
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75446419"
 ---
-## <a name="analyze-forms-for-key-value-pairs-and-tables"></a>Analýza formulářů pro dvojice a tabulky klíč-hodnota
+## <a name="analyze-forms-for-key-value-pairs-and-tables"></a>Analýza formulářů pro páry klíč-hodnota a tabulky
 
-Dále budete používat nově trénovaný model k analýze dokumentu a extrahování párů klíč-hodnota a tabulek z něj. Volání **[rozhraní Analyzovat rozhraní API formuláře](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)** spuštěním následujícího kódu v novém skriptu Pythonu. Před spuštěním skriptu proveďte tyto změny:
+V dalším kroku použijete svůj nově vyškolený model k analýze dokumentu a extrakci párů klíč-hodnota a tabulek z něj. Volejte rozhraní API pro **[analýzu formuláře](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)** spuštěním následujícího kódu v novém skriptu Pythonu. Před spuštěním skriptu proveďte tyto změny:
 
-1. Nahraďte `<file path>` cestou k souboru formuláře (například C:\temp\file.pdf). Může se také jedná o adresu URL vzdáleného souboru. Pro tento rychlý start můžete použít soubory ve složce **Test** [ukázkové datové sady](https://go.microsoft.com/fwlink/?linkid=2090451).
-1. Nahraďte `<model_id>` id modelu, které jste obdrželi v předchozí části.
-1. Nahraďte `<endpoint>` koncovýbod, který jste získali pomocí klíče předplatného nástroje pro rozpoznávání formulářů. Najdete ji na kartě **Přehled** prostředků nástroje pro rozpoznávání formulářů.
-1. Nahraďte `<file type>` typ souboru. Podporované `application/pdf`typy: `image/jpeg` `image/png`, `image/tiff`, , .
+1. Nahraďte `<file path>` cestou k souboru vašeho formuláře (například C:\temp\file.PDF). Může to být také adresa URL vzdáleného souboru. Pro účely tohoto rychlého startu můžete použít soubory ve složce **test** sady [ukázkových dat](https://go.microsoft.com/fwlink/?linkid=2090451).
+1. Nahraďte `<model_id>` ID modelu, které jste obdrželi v předchozí části.
+1. Nahraďte `<endpoint>` koncovým bodem, který jste získali pomocí klíče předplatného pro rozpoznávání formulářů. Můžete ji najít na kartě **Přehled** prostředků nástroje pro rozpoznávání formulářů.
+1. Nahraďte `<file type>` typem souboru. Podporované typy: `application/pdf`, `image/jpeg`, `image/png`, `image/tiff`.
 1. Místo `<subscription key>` použijte váš klíč předplatného.
 
     ```python
@@ -58,15 +58,15 @@ Dále budete používat nově trénovaný model k analýze dokumentu a extrahov�
         quit() 
     ```
 
-1. Uložte kód do souboru s příponou Py. Například *form-recognizer-analyze.py*.
+1. Uložte kód do souboru s příponou. py. Například *Form-Recognizer-Analyze.py*.
 1. Otevřete okno příkazového řádku.
 1. Ke spuštění ukázky na příkazovém řádku použijte příkaz `python`. Například, `python form-recognizer-analyze.py`.
 
-Když zavoláte rozhraní ANALYZOVAT rozhraní API `201 (Success)` **formuláře,** obdržíte odpověď s hlavičkou **Operation-Location.** Hodnota tohoto záhlaví je ID, které použijete ke sledování výsledků operace Analyzovat. Výše uvedený skript vytiskne hodnotu této hlavičky do konzoly.
+Při volání rozhraní API pro **analýzu formuláře** obdržíte `201 (Success)` odpověď s hlavičkou **umístění operace** . Hodnota tohoto záhlaví je ID, které použijete ke sledování výsledků operace analyzovat. Skript výše vytiskne hodnotu této hlavičky do konzoly.
 
-## <a name="get-the-analyze-results"></a>Získejte výsledky analýzy
+## <a name="get-the-analyze-results"></a>Získat výsledky analýzy
 
-Přidejte následující kód do dolní části skriptu Pythonu. To používá hodnotu ID z předchozího volání v nové volání rozhraní API k načtení výsledků analýzy. Operace **Analyzovat formulář** je asynchronní, takže tento skript volá rozhraní API v pravidelných intervalech, dokud nejsou k dispozici výsledky. Doporučujeme interval jedné sekundy nebo více.
+Do dolní části skriptu Pythonu přidejte následující kód. Tato hodnota používá hodnotu ID z předchozího volání v novém volání rozhraní API k načtení výsledků analýzy. Operace **formuláře analýzy** je asynchronní, takže tento skript volá rozhraní API v pravidelných intervalech, dokud nebudou k dispozici výsledky. Doporučujeme interval jednoho sekundy nebo více.
 
 ```python 
 n_tries = 15

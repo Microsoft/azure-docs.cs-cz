@@ -1,7 +1,7 @@
 ---
 title: 'Kurz: Integrace Power BI do Analýzy textu službou Cognitive Service'
 titleSuffix: Azure Cognitive Services
-description: Přečtěte si, jak pomocí rozhraní API pro analýzu textu extrahovat klíčové fráze z textu uloženého v Power BI.
+description: Naučte se používat rozhraní API pro analýzu textu k extrakci klíčových frází z textu uloženého v Power BI.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 12/19/2019
 ms.author: aahi
 ms.openlocfilehash: 2398bfa2ce828e716831cc7ce438bd1c241ca5f8
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75378530"
 ---
 # <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>Kurz: Integrace Power BI do Analýzy textu službou Cognitive Service
@@ -94,7 +94,7 @@ Můžete také vyfiltrovat prázdné zprávy filtrem Odebrat prázdné nebo odeb
 | | |
 | - | - |
 | `id`  | Jedinečný identifikátor tohoto dokumentu v rámci požadavku. Odpověď také obsahuje toto pole. Tímto způsobem můžete v případě zpracování více dokumentů snadno přidružit extrahované klíčové fráze k dokumentu, ze kterého pocházejí. V tomto kurzu zpracováváte pro každou žádost jenom jeden dokument. Proto můžete hodnotu `id` pevně zadat, aby byla pro všechny požadavky stejná.|
-| `text`  | Text, který se má zpracovat. Hodnota tohoto pole pochází ze sloupce `Merged` vytvořeného v [předchozím oddílu](#PreparingData). V tomto sloupci je sloučený řádek předmětu s textem komentáře. Rozhraní API klíčových frází vyžaduje, aby tato data nebyla delší než přibližně 5 120 znaků.|
+| `text`  | Text, který se má zpracovat. Hodnota tohoto pole pochází ze sloupce `Merged` vytvořeného v [předchozím oddílu](#PreparingData). V tomto sloupci je sloučený řádek předmětu s textem komentáře. Rozhraní API pro klíčové fráze vyžaduje, aby tato data nebyla delší než 5 120 znaků.|
 | `language` | Kód pro přirozený jazyk, ve kterém je dokument napsaný. Všechny zprávy v ukázkových datech jsou v angličtině, takže do tohoto pole můžete pevně zadat hodnotu `en`.|
 
 ## <a name="create-a-custom-function"></a>Vytvoření vlastní funkce
@@ -114,7 +114,7 @@ V seznamu dotazů se zobrazí nový dotaz s počátečním názvem `Query1`. Dva
 Na pásu karet **Domů** ve skupině **Dotaz** klikněte na **Rozšířený editor**. Otevře se okno rozšířeného editoru. Odstraňte kód, který okno už obsahuje, a vložte následující kód. 
 
 > [!NOTE]
-> Nahraďte následující příklad koncového bodu (obsahujícího) `<your-custom-subdomain>`koncovým bodem generovaným pro prostředek Analýzy textu. Tento koncový bod najdete tak, že se přihlásíte k [portálu](https://azure.microsoft.com/features/azure-portal/)Azure `Quick start`, vyberete předplatné Textové analýzy a vyberete .
+> Nahraďte níže uvedený ukázkový koncový bod `<your-custom-subdomain>`(obsahující) koncovým bodem vygenerovaným pro váš analýza textu prostředek. Tento koncový bod můžete najít tak, že se přihlásíte k [Azure Portal](https://azure.microsoft.com/features/azure-portal/), vyberete předplatné analýza textu a `Quick start`vyberete.
 
 
 ```fsharp
@@ -145,7 +145,7 @@ V Power BI Desktopu se v okně Editoru dotazů vraťte zpět k dotazu `FabrikamC
 
 Zobrazí se dialogové okno Vyvolat vlastní funkci. Do pole **Nový název sloupce** zadejte `keyphrases`. V poli **Dotaz na funkci** vyberte vlastní funkci `KeyPhrases`, kterou jste vytvořili.
 
-V dialogovém okně se zobrazí nové pole **text (volitelné)**. Toto pole se ptá, jaký sloupec chcete použít k zadání hodnot parametru `text` rozhraní API pro klíčové fráze (Nezapomeňte, že jste již pevně zakódovali hodnoty parametrů `language` a.) `id` V `Merged` rozevírací nabídce vyberte (sloupec, který jste [vytvořili dříve](#PreparingData) sloučením polí předmětu a zprávy).
+V dialogovém okně se zobrazí nové pole **text (volitelné)**. Toto pole se ptá, jaký sloupec chcete použít k zadání hodnot parametru `text` rozhraní API pro klíčové fráze (Nezapomeňte, že již pevně zakódujete hodnoty pro parametry `language` a `id` .) Vyberte `Merged` (sloupec, který jste [předtím](#PreparingData) vytvořili, sloučením polí předmět a zpráva) z rozevírací nabídky.
 
 ![[Vyvolání vlastní funkce]](../media/tutorials/power-bi/invoke-custom-function.png)
 
@@ -217,7 +217,7 @@ Kliknutím na nástroj Detailní režim v sestavě získáte lepší zobrazení 
 
 Služba Analýza textu, což je jedna ze služeb Cognitive Services, které Microsoft Azure nabízí, poskytuje také analýzu mínění a rozpoznávání jazyka. Rozpoznávání jazyka je užitečné hlavně v případě, že zpětná vazba od vašich zákazníků není vždy v angličtině.
 
-Obě tato rozhraní API jsou podobná rozhraní API pro klíčové fráze. To znamená, že je můžete integrovat do Power BI Desktopu pomocí vlastních funkcí, které jsou skoro stejné jako funkce vytvořená v tomto kurzu. Stačí vytvořit prázdný dotaz a stejně jako předtím do Rozšířeného editoru vložit odpovídající kód uvedený níže. (Nezapomeňte přístupový klíč!) Potom, stejně jako dříve, použijte funkci k přidání nového sloupce do tabulky.
+Obě tato rozhraní API jsou podobná rozhraní API pro klíčové fráze. To znamená, že je můžete integrovat do Power BI Desktopu pomocí vlastních funkcí, které jsou skoro stejné jako funkce vytvořená v tomto kurzu. Stačí vytvořit prázdný dotaz a stejně jako předtím do Rozšířeného editoru vložit odpovídající kód uvedený níže. (Nezapomeňte použít přístupový klíč!) Stejně jako dřív použijte funkci k přidání nového sloupce do tabulky.
 
 Následující funkce Analýzy mínění vrátí skóre značící, jak pozitivní je mínění vyjádřené v textu.
 
@@ -296,7 +296,7 @@ Přečtěte si další informace o službě Analýza textu, jazyce vzorců Power
 > [Referenční informace k rozhraní API pro analýzu textu](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c6)
 
 > [!div class="nextstepaction"]
-> [Odkaz na Power Query M](https://docs.microsoft.com/powerquery-m/power-query-m-reference)
+> [Power Query M – referenční informace](https://docs.microsoft.com/powerquery-m/power-query-m-reference)
 
 > [!div class="nextstepaction"]
 > [Dokumentace k Power BI](https://powerbi.microsoft.com/documentation/powerbi-landing-page/)

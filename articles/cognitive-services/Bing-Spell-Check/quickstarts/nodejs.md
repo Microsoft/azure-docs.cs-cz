@@ -1,7 +1,7 @@
 ---
-title: 'Úvodní příručka: Kontrola pravopisu pomocí rozhraní REST API a node.js – kontrola pravopisu bingu'
+title: 'Rychlý Start: Kontrola pravopisu pomocí REST API a Node. js – Kontrola pravopisu Bingu'
 titleSuffix: Azure Cognitive Services
-description: Začněte používat rozhraní REST API kontroly pravopisu Bingu ke kontrole pravopisu a gramatiky pomocí tohoto rychlého startu.
+description: Začněte používat REST API Kontrola pravopisu Bingu pro kontrolu pravopisu a gramatiky pomocí tohoto rychlého startu.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,26 +11,26 @@ ms.topic: quickstart
 ms.date: 12/16/2019
 ms.author: aahi
 ms.openlocfilehash: 69c391e6c3f93a998ade7c5721a528d895f8df76
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75382846"
 ---
-# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-nodejs"></a>Úvodní příručka: Kontrola pravopisu pomocí rozhraní REST API pro kontrolu pravopisu Bingu a souboru Node.js
+# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-nodejs"></a>Rychlý Start: Kontrola pravopisu pomocí Kontrola pravopisu Bingu REST API a Node. js
 
-Pomocí tohoto rychlého startu můžete provést první volání do rozhraní REST API kontroly pravopisu Bingu. Tato jednoduchá aplikace uzlu odešle požadavek do rozhraní API a vrátí seznam slov, která nepoznala, následovaná navrhovanými opravami. Zatímco tato aplikace je napsána v Node.js, rozhraní API je restful webová služba kompatibilní s většinou programovacích jazyků. Zdrojový kód pro tuto aplikaci je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingSpellCheckv7.js).
+V tomto rychlém startu můžete provést první volání REST API Kontrola pravopisu Bingu. Tato jednoduchá aplikace uzlů pošle požadavek do rozhraní API a vrátí seznam slov, která nerozpoznala, a potom doporučované opravy. I když je tato aplikace napsaná v Node. js, je rozhraní API webová služba RESTful kompatibilní s většinou programovacích jazyků. Zdrojový kód této aplikace je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingSpellCheckv7.js).
 
 ## <a name="prerequisites"></a>Požadavky
 
-* [Node.js 6](https://nodejs.org/en/download/) nebo novější.
+* [Node. js 6](https://nodejs.org/en/download/) nebo novější.
 
 [!INCLUDE [cognitive-services-bing-spell-check-signup-requirements](../../../../includes/cognitive-services-bing-spell-check-signup-requirements.md)]
 
 
 ## <a name="create-and-initialize-a-project"></a>Vytvoření a inicializace projektu
 
-1. Vytvořte nový soubor JavaScript u svého oblíbeného ide nebo editoru. Nastavte přísnost a `https`vyžadovat . Pak vytvořte proměnné pro hostitele, cestu a klíč předplatného koncového bodu rozhraní API. Můžete použít globální koncový bod níže nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený na portálu Azure pro váš prostředek.
+1. Vytvořte nový soubor JavaScriptu v oblíbeném integrovaném vývojovém prostředí (IDE) nebo editoru. Nastavte striktní a vyžadovat `https`. Pak vytvořte proměnné pro hostitele, cestu a klíč předplatného koncového bodu rozhraní API. Můžete použít globální koncový bod nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
 
     ```javascript
     'use strict';
@@ -41,7 +41,7 @@ Pomocí tohoto rychlého startu můžete provést první volání do rozhraní R
     let key = '<ENTER-KEY-HERE>';
     ```
 
-2. Vytvořte proměnné pro parametry vyhledávání a text, který chcete zkontrolovat. Připojit kód trhu `mkt=`za . Kód trhu je země, ze které podáváte žádost. Také připojit režim kontroly pravopisu po `&mode=`. Režim je `proof` buď (zachytí většinu `spell` pravopisných/gramatických chyb) nebo (zachytí většinu pravopisu, ale ne tolik gramatické chyby).
+2. Vytvořte proměnné pro parametry vyhledávání a text, který chcete kontrolovat. Přidejte svůj kód na trhu `mkt=`po. Kód na trhu je země, ze které provedete požadavek. Také přidejte svůj režim kontroly pravopisu po `&mode=`. Režim je buď `proof` (catch nejvíc pravopisné/gramatické chyby `spell` ), nebo (catch nejvíc pravopisu, ale ne tolik gramatických chyb).
 
     ```javascript
     let mkt = "en-US";
@@ -50,9 +50,9 @@ Pomocí tohoto rychlého startu můžete provést první volání do rozhraní R
     let query_string = "?mkt=" + mkt + "&mode=" + mode;
     ```
 
-## <a name="create-the-request-parameters"></a>Vytvoření parametrů požadavku
+## <a name="create-the-request-parameters"></a>Vytvoření parametrů žádosti
 
-Vytvořte parametry požadavku vytvořením nového objektu `POST` pomocí metody. Přidejte cestu připojením cesty koncového bodu a řetězce dotazu. Přidejte klíč předplatného `Ocp-Apim-Subscription-Key` do záhlaví.
+Vytvořte parametry žádosti vytvořením nového objektu s `POST` metodou. Přidejte cestu tak, že připojíte cestu ke koncovému bodu a řetězec dotazu. Přidejte do `Ocp-Apim-Subscription-Key` záhlaví klíč předplatného.
 
 ```javascript
 let request_params = {
@@ -69,7 +69,7 @@ let request_params = {
 
 ## <a name="create-a-response-handler"></a>Vytvoření obslužné rutiny odpovědi
 
-Vytvořte funkci `response_handler` volanou tak, aby převzala odpověď JSON z rozhraní API a vytiskla ji. Vytvořte proměnnou pro tělo odezvy. Připojit odpověď při `data` přijetí příznaku `response.on()`pomocí . Po `end` přijetí příznaku vytiskněte tělo JSON do konzoly.
+Vytvořte funkci volanou `response_handler` k přijetí odpovědi JSON z rozhraní API a vytiskněte ji. Vytvořte proměnnou pro tělo odpovědi. Připojit odpověď, když je `data` přijat příznak, pomocí `response.on()`. Když se `end` přijme příznak, vytiskněte tělo JSON do konzoly.
 
 ```javascript
 let response_handler = function (response) {
@@ -89,7 +89,7 @@ let response_handler = function (response) {
 
 ## <a name="send-the-request"></a>Odeslat žádost
 
-Volání rozhraní `https.request()` API pomocí parametrů požadavku a obslužné rutiny odpovědi. Napište text do rozhraní API a žádost ukončit později.
+Zavolejte rozhraní API pomocí `https.request()` parametrů s parametry žádosti a obslužnou rutinou odpovědi. Napište svůj text do rozhraní API a potom tento požadavek ukončete.
 
 ```javascript
 let req = https.request (request_params, response_handler);
@@ -100,9 +100,9 @@ req.end ();
 
 ## <a name="run-the-application"></a>Spuštění aplikace
 
-Sestavení a spuštění projektu.
+Sestavte a spusťte projekt.
 
-Pokud používáte příkazový řádek, vytvořte a spusťte aplikaci pomocí následujících příkazů.
+Pokud používáte příkazový řádek, pomocí následujících příkazů Sestavte a spusťte aplikaci.
 
 ```bash
 node <FILE_NAME>.js

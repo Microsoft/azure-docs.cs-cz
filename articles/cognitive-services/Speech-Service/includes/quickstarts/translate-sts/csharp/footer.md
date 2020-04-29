@@ -1,5 +1,5 @@
 ---
-title: 'Úvodní příručka: Překlad řeči na řeč, C# (.NET Framework Windows) - služba řeči'
+title: 'Rychlý Start: Převod řeči na řeč, C# (.NET Framework Windows) – služba Speech'
 titleSuffix: Azure Cognitive Services
 description: Bude doplněno
 services: cognitive-services
@@ -11,11 +11,11 @@ ms.topic: include
 ms.date: 12/09/2019
 ms.author: erhopf
 ms.openlocfilehash: 4919ab7a8f95ddf251e184be846ccb95d0dfc661
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75466755"
 ---
 > [!div class="nextstepaction"]
-> [Prozkoumejte ukázky jazyka C# na GitHubu](https://aka.ms/speech/github-csharp)
+> [Prozkoumejte ukázky C# na GitHubu](https://aka.ms/speech/github-csharp)

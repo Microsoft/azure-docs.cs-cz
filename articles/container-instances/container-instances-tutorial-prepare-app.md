@@ -1,17 +1,17 @@
 ---
-title: Kurz – příprava bitové kopie kontejneru pro nasazení
-description: Kurz instance Azure Container 1 z 3 – příprava aplikace v image kontejneru pro nasazení do instancí kontejneru Azure
+title: Kurz – Příprava image kontejneru pro nasazení
+description: Azure Container Instances kurzu – část 1 ze 3 – Příprava aplikace v imagi kontejneru pro nasazení do Azure Container Instances
 ms.topic: tutorial
 ms.date: 03/21/2018
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 487dca97dc47bf214bedf38f44b2d29a71567cbb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74533342"
 ---
-# <a name="tutorial-create-a-container-image-for-deployment-to-azure-container-instances"></a>Kurz: Vytvoření image kontejneru pro nasazení do instancí kontejneru Azure
+# <a name="tutorial-create-a-container-image-for-deployment-to-azure-container-instances"></a>Kurz: vytvoření image kontejneru pro nasazení do Azure Container Instances
 
 Azure Container Instances umožňuje nasazení kontejnerů Dockeru na infrastrukturu Azure bez zřizování virtuálních počítačů nebo využívání služby vyšší úrovně. V tomto kurzu zabalíte malou webovou aplikaci Node.js do image kontejneru, kterou bude možné spustit pomocí služby Azure Container Instances.
 
@@ -24,7 +24,7 @@ V tomto článku, který je první částí série, se naučíte:
 
 V druhé a třetím kurzu nahrajete svou image do služby Azure Container Registry a potom ji nasadíte do služby Azure Container Instances.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 [!INCLUDE [container-instances-tutorial-prerequisites](../../includes/container-instances-tutorial-prerequisites.md)]
 

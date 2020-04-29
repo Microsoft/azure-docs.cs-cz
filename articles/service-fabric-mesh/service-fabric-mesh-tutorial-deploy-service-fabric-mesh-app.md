@@ -1,5 +1,5 @@
 ---
-title: Kurz – nasazení aplikace service fabric mesh
+title: Kurz – nasazení aplikace Service Fabric sítě
 description: Zjistěte, jak pomocí sady Visual Studio publikovat aplikaci Azure Service Fabric Mesh složenou z webu ASP.NET Core, který komunikuje s back-endovou webovou službou.
 author: dkkapur
 ms.topic: tutorial
@@ -7,10 +7,10 @@ ms.date: 09/18/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: d2bb37252bc93c982dbc090a0c3f20aef842325f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75351847"
 ---
 # <a name="tutorial-deploy-a-service-fabric-mesh-application"></a>Kurz: Nasazení aplikace Service Fabric Mesh
@@ -37,7 +37,7 @@ V této sérii kurzů se naučíte:
 
 Než začnete s tímto kurzem:
 
-* Pokud nemáte předplatné Azure, můžete [si vytvořit bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
+* Pokud nemáte předplatné Azure, můžete si [vytvořit bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 * Ujistěte se, že jste [nastavili vývojové prostředí](service-fabric-mesh-howto-setup-developer-environment-sdk.md), což zahrnuje instalaci modulu runtime Service Fabric, sady SDK, Dockeru a sady Visual Studio 2017.
 
@@ -111,9 +111,9 @@ Název aplikace pro účely tohoto kurzu je `todolistapp`. Podrobnosti o aplikac
 az mesh app show --resource-group $rg --name todolistapp
 ```
 
-## <a name="get-the-ip-address-of-your-deployment"></a>Získání IP adresy vašeho nasazení
+## <a name="get-the-ip-address-of-your-deployment"></a>Získat IP adresu vašeho nasazení
 
-Pokud chcete získat IP adresu pro vaši aplikaci, použijte následující příkaz:
+Pokud chcete získat IP adresu pro aplikaci, použijte následující příkaz:
   
 ```azurecli-interactive
 az mesh gateway show --resource-group myResourceGroup --name todolistappGateway

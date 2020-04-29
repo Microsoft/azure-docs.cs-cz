@@ -1,5 +1,5 @@
 ---
-title: 'Úvodní příručka: Syntetizovat řeč, C++ - Služba řeči'
+title: 'Rychlý Start: syntetizace řeči, C++-Speech Service'
 titleSuffix: Azure Cognitive Services
 description: Bude doplněno
 services: cognitive-services
@@ -11,13 +11,13 @@ ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
 ms.openlocfilehash: afbebdb77c59c8e525c5e92af1179541727035ab
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74818122"
 ---
-**Vyberte si cílové prostředí**
+**Volba cílového prostředí**
 
 #### <a name="linux"></a>[Linux](#tab/linux)
 [!INCLUDE [linux](./linux.md)]

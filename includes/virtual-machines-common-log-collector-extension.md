@@ -5,23 +5,23 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 09c4420647043fccc408631fec75854667923721
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74085231"
 ---
-Diagnostika problémů s cloudovou službou Microsoft Azure vyžaduje shromažďování souborů protokolu služby na virtuálních počítačích, jakmile nastanou problémy. Rozšíření AzureLogCollector na vyžádání můžete použít k provádění jednorázové kolekce protokolů z jednoho nebo více virtuálních účtů cloudové služby (z webových rolí i rolí pracovních procesů) a přenosu shromážděných souborů do účtu úložiště Azure – to vše bez vzdáleného přihlášení k libovolnému virtuálních měn.
+Diagnostikování problémů s Microsoft Azure cloudovou službou vyžaduje shromažďování souborů protokolu služby na virtuálních počítačích, když dojde k těmto potížím. Rozšíření AzureLogCollector můžete použít na vyžádání a provádět jednorázovou kolekci protokolů z jednoho nebo více virtuálních počítačů cloudových služeb (z webových rolí a rolí pracovních procesů) a přenést shromážděné soubory do účtu služby Azure Storage – to vše bez vzdáleného přihlášení k žádnému virtuálnímu počítači.
 
 > [!NOTE]
-> Popisy většiny přihlášených informací naleznete na adresehttps://blogs.msdn.microsoft.com/kwill/2013/08/09/windows-azure-paas-compute-diagnostics-data/
+> Popisy pro většinu protokolovaných informací najdete na adresehttps://blogs.msdn.microsoft.com/kwill/2013/08/09/windows-azure-paas-compute-diagnostics-data/
 > 
 > 
 
-Existují dva režimy kolekce v závislosti na typech souborů, které mají být shromažďovány.
+Existují dva režimy shromažďování závislé na typech souborů, které mají být shromážděny.
 
-* **Azure Host Agent protokoly pouze (GA)**. Tento režim kolekce zahrnuje všechny protokoly související s agenty hosta Azure a další součásti Azure.
-* **Všechny protokoly (úplné)**. Tento režim kolekce shromažďuje všechny soubory v režimu GA plus:
+* **Jenom protokoly agenta hosta Azure (GA)**. Tento režim sběru zahrnuje všechny protokoly týkající se agentů hosta Azure a dalších komponent Azure.
+* **Všechny protokoly (úplné)**. Tento režim shromažďování dat shromažďuje všechny soubory v režimu GA plus:
   
   * protokoly událostí systému a aplikace
   * Protokoly chyb protokolu HTTP
@@ -29,30 +29,30 @@ Existují dva režimy kolekce v závislosti na typech souborů, které mají bý
   * Instalační protokoly
   * jiné systémové protokoly
 
-V obou režimech kolekce další složky kolekce dat lze zadat pomocí kolekce následující struktury:
+V obou režimech kolekce lze zadat další složky shromažďování dat pomocí kolekce následující struktury:
 
-* **Název**: Název kolekce, který se používá jako název podsložky uvnitř souboru zip se shromážděnými soubory.
-* **Umístění**: Cesta ke složce ve virtuálním počítači, kde jsou umístěny soubory, které mají být shromažďovány.
-* **SearchPattern**: Vzor názvy souborů, které mají být shromažďovány. Výchozí hodnota\*je " "
-* **Rekurzivní**: pokud jsou soubory, které mají být shromažďovány, umístěny rekurzivně pod zadaným umístěním.
+* **Name (název**): název kolekce, který se používá jako název podsložky v souboru zip s shromážděnými soubory.
+* **Location (umístění**): cesta ke složce ve virtuálním počítači, kde jsou umístěny soubory, které mají být shromažďovány.
+* **SearchPattern**: vzor názvů souborů, které mají být shromážděny. Výchozí hodnota je\*""
+* **Rekurzivní**: Pokud se soubory, které se mají shromažďovat, rekurzivně nacházejí v zadaném umístění.
 
 ## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [updated-for-az](./updated-for-az.md)]
 
-* Mít účet úložiště pro rozšíření pro uložení generovaných souborů ZIP.
-* Azure Powershell Pokyny [k instalaci najdete v tématu Instalace Azure PowerShellu](/powershell/azure/install-az-ps)] .
+* Má účet úložiště pro rozšíření k ukládání vygenerovaných souborů zip.
+* Azure Powershell Pokyny k instalaci naleznete v tématu [install Azure PowerShell](/powershell/azure/install-az-ps)].
 
 ## <a name="add-the-extension"></a>Přidání rozšíření
-K přidání rozšíření AzureLogCollector můžete použít rutiny [prostředí Microsoft Azure PowerShell](https://msdn.microsoft.com/library/dn495240.aspx) nebo [rozhraní REST pro správu služeb.](https://msdn.microsoft.com/library/ee460799.aspx)
+K přidání rozšíření AzureLogCollector můžete použít rutiny [Microsoft Azure PowerShell](https://msdn.microsoft.com/library/dn495240.aspx) nebo [rozhraní REST API pro správu služeb](https://msdn.microsoft.com/library/ee460799.aspx) .
 
-Pro cloudové služby lze existující rutinu Azure Powershell, **Set-AzureServiceExtension**, použít k povolení rozšíření v instancích role cloudové služby. Pokaždé, když je toto rozšíření povoleno prostřednictvím této rutiny, kolekce protokolů se aktivuje na vybrané instance rolí vybraných rolí.
+Pro Cloud Services je možné pomocí existující rutiny Azure PowerShellu **set-AzureServiceExtension**povolit rozšíření pro instance rolí cloudové služby. Pokaždé, když je toto rozšíření povoleno prostřednictvím této rutiny, je kolekce protokolů aktivována u vybraných instancí rolí vybraných rolí.
 
-Pro virtuální počítače existující rutina Azure Powershell, **Set-AzureVMExtension**, lze použít k povolení rozšíření na virtuálních počítačích. Pokaždé, když je toto rozšíření povoleno prostřednictvím rutin, kolekce protokolu se aktivuje v každé instanci.
+Pro Virtual Machines je možné pomocí existující rutiny Azure PowerShellu **set-AzureVMExtension**povolit rozšíření na Virtual Machines. Pokaždé, když je toto rozšíření povoleno prostřednictvím rutin, je shromažďování protokolů aktivováno u každé instance.
 
-Interně toto rozšíření používá PublicConfiguration založené na JSON a PrivateConfiguration. Následuje rozložení ukázkové jednotky JSON pro veřejnou a soukromou konfiguraci.
+Interně toto rozšíření používá PublicConfiguration a PrivateConfiguration založené na formátu JSON. Následuje rozložení ukázkového formátu JSON pro veřejnou a soukromou konfiguraci.
 
-### <a name="publicconfiguration"></a>Veřejná konfigurace
+### <a name="publicconfiguration"></a>PublicConfiguration
 
 ```json
 {
@@ -77,7 +77,7 @@ Interně toto rozšíření používá PublicConfiguration založené na JSON a 
 }
 ```
 
-### <a name="privateconfiguration"></a>Privátní konfigurace
+### <a name="privateconfiguration"></a>PrivateConfiguration
 
 ```json
 {
@@ -86,15 +86,15 @@ Interně toto rozšíření používá PublicConfiguration založené na JSON a 
 ```
 
 > [!NOTE]
-> Toto rozšíření nepotřebuje **privateConfiguration**. Můžete pouze poskytnout prázdnou strukturu pro argument **-PrivateConfiguration.**
+> Toto rozšíření nepotřebuje **privateConfiguration**. Pouze můžete zadat prázdnou strukturu argumentu **– PrivateConfiguration** .
 > 
 > 
 
-Můžete postupovat podle jednoho ze dvou následujících kroků k přidání AzureLogCollector do jedné nebo více instancí cloudové služby nebo virtuálního počítače vybraných rolí, který aktivuje kolekce na každém virtuálním počítači ke spuštění a odeslání shromážděných souborů na účet Azure zadané.
+Pomocí jednoho ze dvou následujících kroků můžete přidat AzureLogCollector do jedné nebo víc instancí cloudové služby nebo virtuálního počítače vybraných rolí, které aktivují kolekce na každém virtuálním počítači, které se mají spustit, a odeslat shromážděné soubory do zadaného účtu Azure.
 
-## <a name="adding-as-a-service-extension"></a>Přidání jako rozšíření služby
-1. Podle pokynů připojte Azure PowerShell k předplatnému.
-2. Zadejte název služby, patici, role a instance rolí, do kterých chcete přidat a povolit rozšíření AzureLogCollector.
+## <a name="adding-as-a-service-extension"></a>Přidání rozšíření služby
+1. Podle pokynů připojte Azure PowerShell k vašemu předplatnému.
+2. Zadejte název služby, slot, role a instance rolí, do kterých chcete přidat a povolit rozšíření AzureLogCollector.
 
    ```powershell
    #Specify your cloud service name
@@ -113,7 +113,7 @@ Můžete postupovat podle jednoho ze dvou následujících kroků k přidání A
    $mode = "GA"
    ```
 
-3. Zadejte další složku dat, pro kterou budou soubory shromažďovány (tento krok je volitelný).
+3. Zadejte další složku dat, pro kterou se budou shromažďovat soubory (Tento krok je nepovinný).
 
    ```powershell
    #add one location
@@ -129,23 +129,23 @@ Můžete postupovat podle jednoho ze dvou následujících kroků k přidání A
    ```
 
    > [!NOTE]
-   > Token `%roleroot%` můžete použít k určení kořenové jednotky role, protože nepoužívá pevnou jednotku.
+   > Pomocí tokenu `%roleroot%` můžete zadat kořenovou jednotku role, protože nepoužívá pevnou jednotku.
    > 
    > 
-4. Zadejte název účtu úložiště Azure a klíč, do kterého se budou nahrávat shromážděné soubory.
+4. Zadejte název a klíč účtu úložiště Azure, do kterého se nahrají shromážděné soubory.
 
    ```powershell
    $StorageAccountName = 'YourStorageAccountName'
    $StorageAccountKey  = 'YourStorageAccountKey'
    ```
 
-5. Volání SetAzureServiceLogCollector.ps1 (zahrnuty na konci článku) takto povolit rozšíření AzureLogCollector pro cloudovou službu. Po dokončení provádění najdete nahraný soubor pod`https://YourStorageAccountName.blob.core.windows.net/vmlogs`
+5. Následujícím způsobem zavolejte SetAzureServiceLogCollector. ps1 (na konci článku) a povolte rozšíření AzureLogCollector pro cloudovou službu. Po dokončení spuštění můžete nahraného souboru najít v části`https://YourStorageAccountName.blob.core.windows.net/vmlogs`
 
    ```powershell
    .\SetAzureServiceLogCollector.ps1 -ServiceName YourCloudServiceName  -Roles $roles  -Instances $instances –Mode $mode -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey -AdditionDataLocationList $AdditionalDataList
    ```
 
-Následuje definice parametrů předaných skriptu. (To je zkopírován níže také.)
+Níže je definice parametrů předaných skriptu. (Tato kopie je také zkopírovaná.)
 
 ```powershell
 [CmdletBinding(SupportsShouldProcess = $true)]
@@ -177,14 +177,14 @@ param (
 )
 ```
 
-* **ServiceName**: Název cloudové služby.
-* **Role**: Seznam rolí, například "WebRole1" nebo "WorkerRole1".
-* **Instance**: Seznam názvů instancí rolí oddělených čárkou -- použijte zástupný řetězec ("*") pro všechny instance role.
-* **Slot**: Název slotu. "Výroba" nebo "Inscenace".
-* **Režim**: Režim sběru. "Úplné" nebo "GA".
-* **StorageAccountName**: Název účtu úložiště Azure pro ukládání shromážděných dat.
-* **StorageAccountKey**: Název klíče účtu úložiště Azure.
-* **AdditionalDataLocationList**: Seznam následující struktury:
+* **ServiceName**: název cloudové služby.
+* **Role**: seznam rolí, například "WebRole1" nebo "WorkerRole1".
+* **Instance**: seznam názvů instancí rolí oddělených čárkou – pro všechny instance rolí použijte zástupný řetězec (*).
+* **Slot**: název slotu. "Produkční" nebo "fázování".
+* **Režim**: režim kolekce. "Full" nebo "GA".
+* **StorageAccountName**: název účtu úložiště Azure pro ukládání shromážděných dat.
+* **StorageAccountKey**: název klíče účtu úložiště Azure.
+* **AdditionalDataLocationList**: seznam následující struktury:
 
   ```powershell
   {
@@ -195,10 +195,10 @@ param (
   }
   ```
 
-## <a name="adding-as-a-vm-extension"></a>Přidání jako rozšíření virtuálního virtuálního mě
-Podle pokynů připojte Azure PowerShell k předplatnému.
+## <a name="adding-as-a-vm-extension"></a>Přidání jako rozšíření virtuálního počítače
+Podle pokynů připojte Azure PowerShell k vašemu předplatnému.
 
-1. Zadejte název služby, virtuální ho dispozičního systému a režim kolekce.
+1. Zadejte název služby, virtuální počítač a režim kolekce.
 
    ```powershell
    #Specify your cloud service name
@@ -224,16 +224,16 @@ Podle pokynů připojte Azure PowerShell k předplatnému.
         #more locations can be added....
    ```
   
-2. Zadejte název účtu úložiště Azure a klíč, do kterého se budou nahrávat shromážděné soubory.
+2. Zadejte název a klíč účtu úložiště Azure, do kterého se nahrají shromážděné soubory.
 
    ```powershell
    $StorageAccountName = 'YourStorageAccountName'
    $StorageAccountKey  = 'YourStorageAccountKey'
    ```
 
-3. Volání SetAzureVMLogCollector.ps1 (zahrnuty na konci článku) takto povolit rozšíření AzureLogCollector pro cloudovou službu. Po dokončení provádění najdete nahraný soubor pod`https://YourStorageAccountName.blob.core.windows.net/vmlogs`
+3. Následujícím způsobem zavolejte SetAzureVMLogCollector. ps1 (na konci článku) a povolte rozšíření AzureLogCollector pro cloudovou službu. Po dokončení spuštění můžete nahraného souboru najít v části`https://YourStorageAccountName.blob.core.windows.net/vmlogs`
 
-Následuje definice parametrů předaných skriptu. (To je zkopírován níže také.)
+Níže je definice parametrů předaných skriptu. (Tato kopie je také zkopírovaná.)
 
 ```powershell
 [CmdletBinding(SupportsShouldProcess = $true)]
@@ -259,12 +259,12 @@ param (
 )
 ```
 
-* **ServiceName**: Název cloudové služby.
-* **VMName**: Název virtuálního soudu.
-* **Režim**: Režim sběru. "Úplné" nebo "GA".
-* **StorageAccountName**: Název účtu úložiště Azure pro ukládání shromážděných dat.
-* **StorageAccountKey**: Název klíče účtu úložiště Azure.
-* **AdditionalDataLocationList**: Seznam následující struktury:
+* **ServiceName**: název cloudové služby.
+* **VMName**: název virtuálního počítače.
+* **Režim**: režim kolekce. "Full" nebo "GA".
+* **StorageAccountName**: název účtu úložiště Azure pro ukládání shromážděných dat.
+* **StorageAccountKey**: název klíče účtu úložiště Azure.
+* **AdditionalDataLocationList**: seznam následující struktury:
 
   ```
   {
@@ -275,8 +275,8 @@ param (
   }
   ```
 
-## <a name="extention-powershell-script-files"></a>Soubory skriptu prostředí PowerShell
-### <a name="setazureservicelogcollectorps1"></a>SetAzureServiceLogCollector.ps1
+## <a name="extention-powershell-script-files"></a>Rozsah souborů skriptu PowerShellu
+### <a name="setazureservicelogcollectorps1"></a>SetAzureServiceLogCollector. ps1
 
 ```powershell
 [CmdletBinding(SupportsShouldProcess = $true)]
@@ -385,7 +385,7 @@ $SasUri = $SasUri + "&restype=container&comp=list"
 Write-Output "The container for uploaded file can be accessed using this link:`r`n$sasuri"
 ```
 
-### <a name="setazurevmlogcollectorps1"></a>Soubor SetAzureVMLogCollector.ps1
+### <a name="setazurevmlogcollectorps1"></a>SetAzureVMLogCollector. ps1
 
 ```powershell
 [CmdletBinding(SupportsShouldProcess = $true)]
@@ -527,5 +527,5 @@ else
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Nyní můžete zkontrolovat nebo zkopírovat protokoly z jednoho jednoduchého umístění.
+Nyní můžete protokoly kontrolovat nebo kopírovat z jednoho jednoduchého umístění.
 

@@ -1,21 +1,21 @@
 ---
-title: Úvodní příručka – vytvoření registru – azure cli
+title: Rychlý Start – vytvoření registru – rozhraní příkazového řádku Azure
 description: Rychle se naučíte, jak vytvořit privátní registr Dockeru pomocí Azure CLI.
 ms.topic: quickstart
 ms.date: 01/22/2019
 ms.custom: seodec18, H1Hack27Feb2017, mvc
 ms.openlocfilehash: 551a3659feb39943c9f794484abb6f2da4367f39
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74455166"
 ---
-# <a name="quickstart-create-a-private-container-registry-using-the-azure-cli"></a>Úvodní příručka: Vytvoření registru privátního kontejneru pomocí azure cli
+# <a name="quickstart-create-a-private-container-registry-using-the-azure-cli"></a>Rychlý Start: Vytvoření privátního registru kontejnerů pomocí Azure CLI
 
-Azure Container Registry je spravovaná služba registru kontejnerů Dockeru sloužící k ukládání privátních imagí kontejnerů Dockeru. Tato příručka podrobně popisuje vytvoření instance služby Azure Container Registry pomocí Azure CLI. Potom pomocí příkazů Dockeru vysuňte bitovou kopii kontejneru do registru a nakonec ji vyprovokejte a spusťte z registru.
+Azure Container Registry je spravovaná služba registru kontejnerů Dockeru sloužící k ukládání privátních imagí kontejnerů Dockeru. Tato příručka podrobně popisuje vytvoření instance služby Azure Container Registry pomocí Azure CLI. Pak pomocí příkazů Docker nahrajte image kontejneru do registru a nakonec si vydejte a spusťte image z registru.
 
-Tento rychlý start vyžaduje, abyste spustili azure CLI (verze 2.0.55 nebo novější doporučeno). Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli].
+Tento rychlý Start vyžaduje, abyste spustili Azure CLI (doporučuje se verze 2.0.55 nebo novější). Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli].
 
 Je také nutné mít Docker nainstalovaný místně. Docker nabízí balíčky pro snadnou konfiguraci Dockeru v libovolném systému [macOS][docker-mac], [Windows][docker-windows] nebo [Linux][docker-linux].
 
@@ -33,7 +33,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-container-registry"></a>Vytvoření registru kontejnerů
 
-V tomto rychlém startu vytvoříte *základní* registr, což je nákladově optimalizovaná možnost pro vývojáře, kteří se učí o registru kontejnerů Azure. Podrobnosti o dostupných úrovních služeb naleznete [v tématu Kontejner registru SKU][container-registry-skus].
+V tomto rychlém startu vytvoříte *základní* registr, což je výhodná možnost pro vývojáře, kteří se naučí o Azure Container Registry. Podrobnosti k dostupným úrovním služeb najdete v tématu [SKU služby Container Registry][container-registry-skus].
 
 Pomocí příkazu [az acr create][az-acr-create] vytvořte instanci služby ACR. Název registru musí být jedinečný v rámci Azure a musí obsahovat 5 až 50 alfanumerických znaků. V následujícím příkladu se používá *myContainerRegistry007*. Aktualizujte název na jedinečnou hodnotu.
 
@@ -64,11 +64,11 @@ Po vytvoření registru je výstup podobný tomuto:
 }
 ```
 
-Poznamenejte si `loginServer` ve výstupu, což je plně kvalifikovaný název registru (všechna malá písmena). V celé zbývající části tohoto rychlého startu se položka `<acrName>` používá jako zástupný symbol pro název registru kontejneru.
+Poznamenejte si `loginServer` výstup, který je plně kvalifikovaný název registru (malými písmeny). V celé zbývající části tohoto rychlého startu se položka `<acrName>` používá jako zástupný symbol pro název registru kontejneru.
 
 ## <a name="log-in-to-registry"></a>Přihlášení k registru
 
-Před odesláním a vytažením bitové kopie kontejneru, musíte se přihlásit do registru. K tomu použijte příkaz [az acr login][az-acr-login].
+Před vložením a stažením imagí kontejneru se musíte přihlásit k registru. K tomu použijte příkaz [az acr login][az-acr-login].
 
 ```azurecli
 az acr login --name <acrName>
@@ -80,7 +80,7 @@ Příkaz po dokončení vrátí zprávu `Login Succeeded` (Přihlášení bylo �
 
 ## <a name="list-container-images"></a>Výpis imagí kontejnerů
 
-V následujícím příkladu jsou uvedena úložiště v registru:
+Následující příklad vypíše úložiště v registru:
 
 ```azurecli
 az acr repository list --name <acrName> --output table
@@ -94,7 +94,7 @@ Result
 hello-world
 ```
 
-V následujícím příkladu jsou uvedeny značky v úložišti **hello-world.**
+Následující příklad vypíše značky v úložišti **Hello-World** .
 
 ```azurecli
 az acr repository show-tags --name <acrName> --repository hello-world --output table
@@ -112,7 +112,7 @@ v1
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud již není potřeba, můžete použít příkaz [odstranění skupiny az][az-group-delete] k odebrání skupiny prostředků, registru kontejneru a bitových kopií kontejneru, které jsou v něm uloženy.
+Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků, registru kontejneru a uložených imagí kontejneru použít příkaz [AZ Group Delete][az-group-delete] .
 
 ```azurecli
 az group delete --name myResourceGroup
@@ -120,10 +120,10 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili registr kontejnerů Azure s Azure CLI, zasunul i image kontejneru do registru a stáhli a spustili image z registru. Pokračujte do kurzů Azure Container Registry pro hlubší pohled na ACR.
+V tomto rychlém startu jste vytvořili Azure Container Registry pomocí Azure CLI, nahráli jste image kontejneru do registru a z registru jste vyžádali a spustili image. Pokračujte Azure Container Registry výukové kurzy, kde najdete hlubší přehled na ACR.
 
 > [!div class="nextstepaction"]
-> [Kurzy registru kontejnerů Azure][container-registry-tutorial-quick-task]
+> [Kurzy Azure Container Registry][container-registry-tutorial-quick-task]
 
 <!-- LINKS - external -->
 [docker-linux]: https://docs.docker.com/engine/installation/#supported-platforms

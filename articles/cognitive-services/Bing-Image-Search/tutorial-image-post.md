@@ -1,7 +1,7 @@
 ---
-title: 'Kurz: Extrahujte podrobnosti o obrázku pomocí rozhraní REST API a jazyka C# – vyhledávání obrázků Bingem'
+title: 'Kurz: extrakce podrobností obrázku pomocí REST API a C# – Vyhledávání obrázků Bingu'
 titleSuffix: Azure Cognitive Services
-description: Tento kurz slouží k vytvoření aplikace Jazyka C#, která extrahuje podrobnosti o obrázku pomocí rozhraní API pro vyhledávání obrázků Bingu.
+description: Pomocí tohoto kurzu můžete vytvořit aplikaci v jazyce C#, která extrahuje podrobnosti obrázku pomocí rozhraní API Bingu pro vyhledávání obrázků.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 12/06/2019
 ms.author: aahi
 ms.openlocfilehash: 69c5fc9805bed8fdfde3dd208e7fb66254e82c3c
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75383871"
 ---
 # <a name="tutorial-extract-image-details-using-the-bing-image-search-api-and-c"></a>Kurz: Extrahování podrobností pomocí rozhraní API Bingu pro vyhledávání obrázků a C#
@@ -36,13 +36,13 @@ Zdrojový kód pro tuto ukázku je k dispozici na [GitHubu](https://github.com/A
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Libovolné vydání [Visual studia 2017 nebo novější](https://visualstudio.microsoft.com/downloads/).
+* Libovolná edice sady [Visual studio 2017 nebo novější](https://visualstudio.microsoft.com/downloads/).
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
 ## <a name="construct-an-image-details-search-request"></a>Vytvoření žádosti o vyhledávání podrobností o snímku
 
-Níže je uvedený koncový bod `/details`, který přijímá požadavky POST s údaji o obrázku v těle požadavku. Můžete použít globální koncový bod níže nebo vlastní koncový bod [subdomény](../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený na portálu Azure pro váš prostředek.
+Níže je uvedený koncový bod `/details`, který přijímá požadavky POST s údaji o obrázku v těle požadavku. Můžete použít globální koncový bod nebo vlastní koncový bod [subdomény](../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/images/details
 ```
@@ -98,7 +98,7 @@ Tato odpověď JSON pak může být vytištěna v konzole.
 
 ## <a name="use-an-image-insights-token-in-a-request"></a>Použití tokenu přehledu obrázků v požadavku
 
-Pokud chcete použít token `ImageInsightsToken` vrácený s výsledky požadavku `POST`, můžete ho přidat do požadavku `GET`. Například:
+Pokud chcete použít token `ImageInsightsToken` vrácený s výsledky požadavku `POST`, můžete ho přidat do požadavku `GET`. Příklad:
 
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/images/details?InsightsToken="bcid_A2C4BB81AA2C9EF8E049C5933C546449*ccid_osS7gaos*mid_BF7CC4FC4A882A3C3D56E644685BFF7B8BACEAF2

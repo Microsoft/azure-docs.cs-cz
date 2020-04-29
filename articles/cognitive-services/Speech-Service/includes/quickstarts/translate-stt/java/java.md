@@ -1,5 +1,5 @@
 ---
-title: 'Úvodní příručka: Překlad řeči na text, Java - služba Řeči'
+title: 'Rychlý Start: Převod řeči na text, Java-Speech Service'
 titleSuffix: Azure Cognitive Services
 description: Bude doplněno
 services: cognitive-services
@@ -11,10 +11,10 @@ ms.topic: include
 ms.date: 12/09/2019
 ms.author: erhopf
 ms.openlocfilehash: afbff818ae40eafa8fdb7f0f3225b7a04bdaeb77
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74980953"
 ---
 [!INCLUDE [jre](./jre.md)]

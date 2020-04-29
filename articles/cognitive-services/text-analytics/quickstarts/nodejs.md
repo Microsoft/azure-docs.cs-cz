@@ -1,7 +1,7 @@
 ---
-title: 'Úvodní příručka: Pomocí souboru Node.js můžete volat rozhraní REST API pro analýzu textu.'
+title: 'Rychlý Start: použití Node. js k volání Analýza textu REST API'
 titleSuffix: Azure Cognitive Services
-description: Tento rychlý start ukazuje, jak získat informace a ukázky kódu, které vám pomůžou rychle začít používat rozhraní API pro analýzu textu ve službách Azure Cognitive Services.
+description: V tomto rychlém startu se dozvíte, jak získat informace a ukázky kódu, které vám pomůžou rychle začít používat rozhraní API pro analýzu textu ve službě Azure Cognitive Services.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -12,16 +12,16 @@ ms.date: 12/17/2019
 ms.author: aahi
 ms.custom: seo-javascript-september2019
 ms.openlocfilehash: c111937dbbea5e588e82bc9753a71d1d597ca767
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75378785"
 ---
-# <a name="quickstart-use-nodejs-to-call-the-text-analytics-cognitive-service"></a>Úvodní příručka: Pomocí souboru Node.js volejte službu Text Analytics Cognitive Service  
+# <a name="quickstart-use-nodejs-to-call-the-text-analytics-cognitive-service"></a>Rychlý Start: použití Node. js k volání služby Analýza textu pro rozpoznávání  
 <a name="HOLTop"></a>
 
-Tento článek ukazuje, jak [zjistit jazyk](#Detect), [analyzovat mínění](#SentimentAnalysis), [extrahovat klíčové fráze](#KeyPhraseExtraction)a identifikovat propojené [entity](#Entities) pomocí rozhraní API [pro analýzu textu](//go.microsoft.com/fwlink/?LinkID=759711) pomocí node.JS.
+V tomto článku se dozvíte, jak [detekovat jazyk](#Detect), [analyzovat mínění](#SentimentAnalysis), [extrahovat klíčové fráze](#KeyPhraseExtraction)a [identifikovat propojené entity](#Entities) pomocí [rozhraní API](//go.microsoft.com/fwlink/?LinkID=759711) analýza textu v Node. js.
 
 [!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
@@ -35,10 +35,10 @@ Tento článek ukazuje, jak [zjistit jazyk](#Detect), [analyzovat mínění](#Se
 
 Rozhraní API pro rozpoznávání jazyka rozpozná jazyk textového dokumentu pomocí [metody Detect Language](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7).
 
-1. Vytvořte nový projekt Node.JS ve vašem oblíbeném prostředí IDE nebo ve složce na ploše.
-1. Přidejte níže uvedený kód `.js` do nového souboru.
+1. Vytvořte nový projekt Node. JS na svém oblíbeném integrovaném vývojovém prostředí (IDE) nebo ve složce na ploše.
+1. Přidejte níže uvedený kód do nového `.js` souboru.
 1. Zkopírujte klíč a koncový bod do kódu. 
-1. Spusťte program z ide nebo `npm start` příkazového řádku, například nebo `node detect.js`.
+1. Spusťte program z integrovaného vývojového prostředí (IDE) nebo `npm start` z `node detect.js`příkazového řádku, například nebo.
 
 ```javascript
 'use strict';
@@ -142,12 +142,12 @@ get_language(documents);
 
 ## <a name="analyze-sentiment"></a>Analýza mínění
 
-Rozhraní API pro analýzu mínění rozpozná mínění sady textových záznamů pomocí [metody Sentiment](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9). Analýzu mínění lze použít k tomu, abychom zjistili, co si zákazníci myslí o vaší značce nebo tématu, a to analýzou nezpracovaného textu, který obsahuje vodítka o pozitivním nebo negativním sentimentu. Následující příklad obsahuje skóre pro dva dokumenty, jeden v angličtině a druhý ve španělštině.
+Rozhraní API pro analýzu mínění rozpozná mínění sady textových záznamů pomocí [metody Sentiment](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9). Analýza mínění se dá použít k zjištění toho, co si zákazníci myslí o vaší značce nebo tématu, analýzou nezpracovaného textu o značkách pozitivních nebo negativních mínění. Následující příklad uvádí skóre pro dva dokumenty, jednu v angličtině a jinou v španělštině.
 
-1. Vytvořte nový projekt Node.JS ve vašem oblíbeném prostředí IDE nebo ve složce na ploše.
-1. Přidejte níže uvedený kód `.js` do nového souboru.
-1. Zkopírujte klíč a koncový bod Analýzy textu do kódu. 
-1. Spusťte program z ide nebo `npm start` příkazového řádku, například nebo `node sentiment.js`.
+1. Vytvořte nový projekt Node. JS na svém oblíbeném integrovaném vývojovém prostředí (IDE) nebo ve složce na ploše.
+1. Přidejte níže uvedený kód do nového `.js` souboru.
+1. Zkopírujte klíč Analýza textu a koncový bod do kódu. 
+1. Spusťte program z integrovaného vývojového prostředí (IDE) nebo `npm start` z `node sentiment.js`příkazového řádku, například nebo.
 
 ```javascript
 'use strict';
@@ -203,7 +203,7 @@ get_sentiments(documents);
 
 **Odpověď na analýzu mínění**
 
-Výsledek se měří jako kladný, pokud je skórován blíže k hodnotě 1,0 a záporný, pokud je skórován blíže k 0,0.
+Výsledek je měřen jako kladný, pokud je skóre zaokrouhleno na 1,0 a záporné, pokud se skóre přiblíží ke 0,0.
 Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu:
 
 ```json
@@ -226,12 +226,12 @@ Výsledek se měří jako kladný, pokud je skórován blíže k hodnotě 1,0 a 
 
 ## <a name="extract-key-phrases"></a>Extrakce klíčových frází
 
-Rozhraní API pro extrakci klíčových frází extrahuje klíčové fráze z textového dokumentu pomocí [metody Key Phrases](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6). Extrakce klíčových frází se používá k rychlé identifikaci hlavních bodů dokumentu nebo textu. Následující příklad extrahuje klíčové fráze z anglického i španělského dokumentu.
+Rozhraní API pro extrakci klíčových frází extrahuje klíčové fráze z textového dokumentu pomocí [metody Key Phrases](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6). Extrakce klíčových frází slouží k rychlé identifikaci hlavních bodů dokumentu nebo textu. Následující příklad extrahuje klíčové fráze z anglického i španělského dokumentu.
 
-1. Vytvořte nový projekt Node.JS ve vašem oblíbeném prostředí IDE nebo ve složce na ploše.
-1. Přidejte níže uvedený kód `.js` do nového souboru.
-1. Zkopírujte klíč a koncový bod Analýzy textu do kódu. 
-1. Spusťte program z ide nebo `npm start` příkazového řádku, například nebo `node key-phrases.js`.
+1. Vytvořte nový projekt Node. JS na svém oblíbeném integrovaném vývojovém prostředí (IDE) nebo ve složce na ploše.
+1. Přidejte níže uvedený kód do nového `.js` souboru.
+1. Zkopírujte klíč Analýza textu a koncový bod do kódu. 
+1. Spusťte program z integrovaného vývojového prostředí (IDE) nebo `npm start` z `node key-phrases.js`příkazového řádku, například nebo.
 
 ```javascript
 'use strict';
@@ -330,12 +330,12 @@ get_key_phrases(documents);
 
 ## <a name="identify-linked-entities"></a>Identifikace propojených entit
 
-Rozhraní API pro entity identifikuje dobře známé entity v textovém dokumentu pomocí [metody Entities](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634). [Entity](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) extrahují slova z textu, například "Spojené státy", a pak vám poskytnou odkaz typu a/nebo wikipedie pro toto slovo(y). Typ pro "Spojené státy" je `location`, zatímco `https://en.wikipedia.org/wiki/United_States`odkaz na Wikipedii je .  Následující příklad identifikuje entity pro anglické dokumenty.
+Rozhraní API pro entity identifikuje dobře známé entity v textovém dokumentu pomocí [metody Entities](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634). [Entity](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) extrahují slova z textu, jako je například "USA", a potom vám poskytne typ a/nebo Wikipedii odkaz na toto slovo (y). Typ pro "USA" je `location`, zatímco odkaz na Wikipedii je. `https://en.wikipedia.org/wiki/United_States`  Následující příklad identifikuje entity pro anglické dokumenty.
 
-1. Vytvořte nový projekt Node.JS ve vašem oblíbeném prostředí IDE nebo ve složce na ploše.
-1. Přidejte níže uvedený kód `.js` do nového souboru.
-1. Zkopírujte klíč a koncový bod analýzy textu do kódu
-1. Spusťte program z ide nebo `npm start` příkazového řádku, například nebo `node entities.js`.
+1. Vytvořte nový projekt Node. JS na svém oblíbeném integrovaném vývojovém prostředí (IDE) nebo ve složce na ploše.
+1. Přidejte níže uvedený kód do nového `.js` souboru.
+1. Zkopírování klíče a koncového bodu služby Text Analytics do kódu
+1. Spusťte program z integrovaného vývojového prostředí (IDE) nebo `npm start` z `node entities.js`příkazového řádku, například nebo.
 
 ```javascript
 'use strict';
@@ -446,5 +446,5 @@ get_entities(documents);
 
 ## <a name="see-also"></a>Viz také 
 
- [Přehled analýzy textu](../overview.md)  
- [Nejčastější dotazy (FAQ)](../text-analytics-resource-faq.md)
+ [Přehled Analýza textu](../overview.md)  
+ [Nejčastější dotazy](../text-analytics-resource-faq.md)

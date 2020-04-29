@@ -1,5 +1,5 @@
 ---
-title: 'Úvodní příručka: Překlad řeči na řeč - služba řeči'
+title: 'Rychlý Start: Převod řeči na řeč – služba Speech'
 titleSuffix: Azure Cognitive Services
 description: Bude doplněno
 services: cognitive-services
@@ -11,17 +11,17 @@ ms.topic: include
 ms.date: 12/09/2019
 ms.author: yulili
 ms.openlocfilehash: c5f0a0fe032d18cd4f01aebe9a5c736d6d511a74
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74981459"
 ---
-V tomto rychlém startu použijete [sadu Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) k interaktivnímu překladu řeči z jednoho jazyka do řeči v jiném jazyce. Po splnění několika předpokladů trvá překlad řeči na řeč pouze šest kroků:
+V tomto rychlém startu použijete [sadu Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) pro interaktivní převod řeči z jednoho jazyka na řeč v jiném jazyce. Po splnění několika požadavků se převod řeči na řeč provede jenom šest kroků:
 > [!div class="checklist"]
-> * Vytvořte ````SpeechTranslationConfig```` objekt z klíče předplatného a oblasti.
+> * Vytvořte ````SpeechTranslationConfig```` objekt z klíče a oblasti předplatného.
 > * Aktualizujte ````SpeechTranslationConfig```` objekt a určete zdrojové a cílové jazyky.
-> * Aktualizujte ````SpeechTranslationConfig```` objekt a určete název hlasu výstupu řeči.
-> * Vytvořte ````TranslationRecognizer```` objekt ````SpeechTranslationConfig```` pomocí objektu shora.
+> * Aktualizujte ````SpeechTranslationConfig```` objekt zadáním hlasového názvu výstupu řeči.
+> * Vytvořte ````TranslationRecognizer```` objekt pomocí výše uvedeného ````SpeechTranslationConfig```` objektu.
 > * Pomocí ````TranslationRecognizer```` objektu spusťte proces rozpoznávání pro jeden utterance.
-> * Zkontrolujte ````TranslationRecognitionResult```` vrácené.
+> * Zkontrolujte ````TranslationRecognitionResult```` vrácenou.

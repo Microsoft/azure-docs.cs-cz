@@ -1,7 +1,7 @@
 ---
-title: 'Úvodní příručka: Kontrola pravopisu pomocí rozhraní REST API a PHP – kontrola pravopisu bingu'
+title: 'Rychlý Start: Kontrola pravopisu pomocí REST API a PHP-Kontrola pravopisu Bingu'
 titleSuffix: Azure Cognitive Services
-description: Tento rychlý start ukazuje, jak jednoduchá aplikace PHP odešle požadavek do rozhraní API pro kontrolu pravopisu Bingu a vrátí seznam navrhovaných oprav.
+description: V tomto rychlém startu se dozvíte, jak jednoduchá aplikace PHP pošle požadavek na rozhraní API Bingu pro kontrolu pravopisu a vrátí seznam navrhovaných oprav.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,19 +11,19 @@ ms.topic: quickstart
 ms.date: 12/16/2019
 ms.author: aahi
 ms.openlocfilehash: 816f2692a71d5d4281248405cc84102cfa881f66
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75382876"
 ---
-# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-php"></a>Úvodní příručka: Kontrola pravopisu pomocí rozhraní API PRO KONTROLU PRAVOPISU Bingu REST API a PHP
+# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-php"></a>Rychlý Start: Kontrola pravopisu pomocí Kontrola pravopisu Bingu REST API a PHP
 
-Pomocí tohoto rychlého startu můžete provést první volání do rozhraní REST API kontroly pravopisu Bingu. Tato jednoduchá php aplikace odešle požadavek na API a vrátí seznam navrhovaných oprav. Zatímco tato aplikace je napsána v PHP, API je RESTful webová služba kompatibilní s většinou programovacích jazyků.
+V tomto rychlém startu můžete provést první volání REST API Kontrola pravopisu Bingu. Tato jednoduchá aplikace PHP pošle požadavek do rozhraní API a vrátí seznam navrhovaných oprav. I když je tato aplikace napsaná v PHP, je rozhraní API webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* [PHP 5.6.x](https://php.net/downloads.php)
+* [PHP 5.6. x](https://php.net/downloads.php)
 
 [!INCLUDE [cognitive-services-bing-spell-check-signup-requirements](../../../../includes/cognitive-services-bing-spell-check-signup-requirements.md)]
 
@@ -33,7 +33,7 @@ Pomocí tohoto rychlého startu můžete provést první volání do rozhraní R
 1. Ve svém oblíbeném integrovaném vývojovém prostředí vytvořte nový projekt PHP.
 2. Přidejte níže uvedený kód.
 3. Hodnotu `subscriptionKey` nahraďte přístupovým klíčem platným pro vaše předplatné.
-4. Můžete použít globální koncový bod níže nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený na portálu Azure pro váš prostředek.
+4. Můžete použít globální koncový bod nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
 5. Spusťte program.
     
     ```php
@@ -94,7 +94,7 @@ Pomocí tohoto rychlého startu můžete provést první volání do rozhraní R
 
 ## <a name="run-the-application"></a>Spuštění aplikace
 
-Spusťte aplikaci spuštěním webového serveru a přechodem k souboru.
+Spusťte aplikaci spuštěním webového serveru a přechodem do souboru.
 
 ## <a name="example-json-response"></a>Příklad odpovědi JSON
 

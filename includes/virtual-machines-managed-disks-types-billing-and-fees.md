@@ -9,27 +9,27 @@ ms.date: 01/22/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 2303d36e93cecfca03894a8b0e55458c03b13d78
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73412954"
 ---
-**Odchozí datové přenosy:** [Odchozí datové přenosy](https://azure.microsoft.com/pricing/details/bandwidth/) (data z datových center Azure) se účtují z využití šířky pásma.
+**Přenosy odchozích dat**: [odchozí přenosy dat](https://azure.microsoft.com/pricing/details/bandwidth/) (data odcházející z datových center Azure) se účtují podle využití šířky pásma.
 
-**Transakce**: Bude se vám účtovat počet transakcí, které provádíte na standardním spravovaném disku. Pro standardní SSD je každá vstupně-vaoperace menší nebo rovna 256 KiB propustností považována za jednu vstupně-va. Vstupně-v operace větší než 256 KiB propustnost jsou považovány za více V/O velikosti 256 KiB. U standardních pevných disků je každá operace vstupně-operace považována za jednu transakci bez ohledu na velikost vstupně-va.
+**Transakce**: účtuje se počet transakcí, které provedete na standardním spravovaném disku. U standardních SSD se za jednu vstupně-výstupní operaci považuje každá vstupně-výstupní operace menší nebo rovna 256 KiB propustnosti. Vstupně-výstupní operace větší než 256 KiB propustnosti se považují za více než více vstupně-výstupních operací o velikosti 256 KiB. U standardních HDD se každá vstupně-výstupní operace považuje za jedinou transakci, a to bez ohledu na velikost I/O.
 
-Podrobné informace o cenách pro spravované disky, včetně transakčních nákladů, naleznete v [tématu Ceny spravovaných disků](https://azure.microsoft.com/pricing/details/managed-disks).
+Podrobné informace o cenách pro Managed Disks, včetně nákladů na transakce, najdete v článku [Managed disks ceny](https://azure.microsoft.com/pricing/details/managed-disks).
 
-### <a name="ultra-disk-vm-reservation-fee"></a>Poplatek za rezervaci virtuálního počítače ultra disku
+### <a name="ultra-disk-vm-reservation-fee"></a>Poplatek za rezervaci virtuálních počítačů Ultra disk
 
-Virtuální počítače Azure mají možnost označit, pokud jsou kompatibilní s ultra disky. Virtuální počítač kompatibilní s ultra diskem přiděluje vyhrazenou kapacitu šířky pásma mezi výpočetní instanci virtuálního počítače a jednotkou škálování blokového úložiště, aby optimalizoval výkon a snížil latenci. Přidání této funkce na virtuální ms má za následek poplatek za rezervaci, který je pouze vynucený, pokud jste povolili funkci ultra disku na virtuálním počítači bez připojení ultra disk k němu. Pokud je ultra disk připojen k virtuálnímu počítači kompatibilnímu s ultra diskem, nebude tento poplatek použit. Tento poplatek se účtuje za virtuální procesor zřízený na virtuálním počítači. 
+Virtuální počítače Azure mají schopnost určit, jestli jsou kompatibilní s disky Ultra. Virtuální počítač kompatibilní s Ultra disk přiděluje vyhrazenou kapacitu šířky pásma mezi instancemi výpočetního virtuálního počítače a jednotkou škálování úložiště bloku, aby se optimalizoval výkon a snížila latence. Výsledkem přidání této možnosti na virtuální počítač je poplatek za rezervaci, který je uložený jenom v případě, že jste na virtuálním počítači povolili funkci Ultra disk, aniž byste k ní připojili disk Ultra. Pokud je Ultra disk připojený k virtuálnímu počítači kompatibilnímu s Ultra diskem, tento poplatek se nepoužije. Tento poplatek je vázaný na vCPU zřízený na virtuálním počítači. 
 
 > [!Note]
-> U [omezených velikostí virtuálních virtuálních počítačů jádra](../articles/virtual-machines/linux/constrained-vcpu.md)je rezervační poplatek založen na skutečném počtu virtuálních procesorů a nikoli na omezených jádrech. Za Standard_E32-8s_v3 bude rezervační poplatek založen na 32 jádrech. 
+> Pro [omezené velikosti virtuálních počítačů](../articles/virtual-machines/linux/constrained-vcpu.md)je poplatek za rezervaci založen na skutečném počtu vCPU, nikoli na omezeních jader. U Standard_E32-8s_v3 bude poplatek za rezervaci vycházet z 32 jader. 
 
-Podrobnosti o cenách ultra disků najdete na [stránce s cenami azure disků.](https://azure.microsoft.com/pricing/details/managed-disks/)
+Podrobnosti o cenách za Ultra disk najdete na [stránce s cenami za disky Azure](https://azure.microsoft.com/pricing/details/managed-disks/) .
 
 ### <a name="azure-disk-reservation"></a>Rezervace disku Azure
 
-Rezervace disku je možnost zakoupit jeden rok diskového úložiště předem se slevou, což snižuje celkové náklady. Při nákupu rezervace disku vyberete konkrétní skladovou položku disku v cílové oblasti, například 10 disků SSD P30 (1TiB) v oblasti Východní USA 2 po dobu jednoho roku. Prostředí rezervace je podobné jako instance rezervovaného virtuálního počítače (VM). Můžete svázat rezervace virtuálních počítačů a disků a maximalizovat tak své úspory. Prozatím nabízí rezervace disků Azure plán ročního závazku pro prémiové ssd skutážky od P30 (1TiB) do P80 (32 TiB) ve všech produkčních oblastech. Další podrobnosti o cenách vyhrazených disků najdete na [stránce s cenami disků Azure Disks](https://azure.microsoft.com/pricing/details/managed-disks/).
+Rezervace disku je možnost koupit jeden rok diskového úložiště předem při slevě a snížit tak celkové náklady. Při nákupu rezervovaného disku vyberete určitou SKU disku v cílové oblasti, například 10 P30 (1TiB) Premium SSD v oblasti Východní USA 2 oblast po dobu jednoho roku. Prostředí rezervace se podobá rezervovaným instancím virtuálních počítačů. Můžete začlenit rezervace virtuálních počítačů a disků a maximalizovat tak úspory. V současné době rezervace Azure disks nabízí plán závazku pro SKU úrovně Premium SSD z P30 (1TiB) na P80 (32 TiB) ve všech produkčních oblastech. Další podrobnosti o cenách rezervovaných disků najdete na [stránce s cenami za Azure disks](https://azure.microsoft.com/pricing/details/managed-disks/).

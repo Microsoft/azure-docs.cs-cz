@@ -1,7 +1,7 @@
 ---
-title: 'Úvodní příručka: Získání přehledů obrázků pomocí rozhraní REST API a node.js – vizuální vyhledávání Bingu'
+title: 'Rychlý Start: Získání přehledů obrázků pomocí REST API a Node. js – Vizuální vyhledávání Bingu'
 titleSuffix: Azure Cognitive Services
-description: Přečtěte si, jak nahrát obrázek do rozhraní API pro vizuální vyhledávání Bingu a získat o něm přehledy.
+description: Přečtěte si, jak nahrát obrázek do rozhraní API pro vizuální vyhledávání Bingu a získat přehled o něm.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -11,27 +11,27 @@ ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: scottwhi
 ms.openlocfilehash: 373d6fa5402ba703cbebe88ad562974ba97f3391
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75379704"
 ---
-# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-nodejs"></a>Úvodní příručka: Získejte přehledy obrázků pomocí rozhraní REST API pro vizuální vyhledávání Bingu a souboru Node.js
+# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-nodejs"></a>Rychlý Start: Získání přehledů imagí pomocí Vizuální vyhledávání Bingu REST API a Node. js
 
-Pomocí tohoto rychlého startu můžete provést první volání do rozhraní API pro vizuální vyhledávání Bingu a zobrazit výsledky hledání. Tato jednoduchá javascriptová aplikace nahraje obrázek do rozhraní API a zobrazí informace, které o něm byly vráceny. Zatímco tato aplikace je napsána v JavaScriptu, API je RESTful webová služba kompatibilní s většinou programovacích jazyků.
+V tomto rychlém startu můžete provést první volání rozhraní API pro vizuální vyhledávání Bingu a zobrazit výsledky hledání. Tato jednoduchá aplikace JavaScriptu nahraje obrázek do rozhraní API a zobrazí vrácené informace. I když je tato aplikace napsaná v JavaScriptu, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
 ## <a name="prerequisites"></a>Požadavky
 
 * [Node.js](https://nodejs.org/en/download/)
-* Modul Požadavku pro JavaScript. K instalaci `npm install request` modulu můžete použít příkaz.
-* Modul formuláře a dat. Modul můžete `npm install form-data` nainstalovat pomocí příkazu. 
+* Modul žádosti pro JavaScript K instalaci modulu `npm install request` můžete použít příkaz.
+* Modul dat formuláře. K instalaci modulu můžete `npm install form-data` použít příkaz. 
 
 [!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
-## <a name="initialize-the-application"></a>Inicializovat aplikaci
+## <a name="initialize-the-application"></a>Inicializace aplikace
 
-1. Vytvořte soubor JavaScriptu ve svém oblíbeném rozhraní IDE nebo editoru a nastavte následující požadavky:
+1. V oblíbených IDE nebo editoru vytvořte soubor JavaScriptu a nastavte následující požadavky:
 
     ```javascript
     var request = require('request');
@@ -39,7 +39,7 @@ Pomocí tohoto rychlého startu můžete provést první volání do rozhraní A
     var fs = require('fs');
     ```
 
-2. Vytvořte proměnné pro koncový bod rozhraní API, klíč předplatného a cestu k bitové kopii. `baseUri`může být globální koncový bod níže nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený na webu Azure Portal pro váš prostředek:
+2. Vytvořte proměnné pro svůj koncový bod rozhraní API, klíč předplatného a cestu k vašemu obrázku. `baseUri`může to být globální koncový bod nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek:
 
     ```javascript
     var baseUri = 'https://api.cognitive.microsoft.com/bing/v7.0/images/visualsearch';
@@ -47,7 +47,7 @@ Pomocí tohoto rychlého startu můžete provést první volání do rozhraní A
     var imagePath = "path-to-your-image";
     ```
 
-3. Vytvořte funkci `requestCallback()` s názvem pro tisk odpovědi z rozhraní API:
+3. Vytvořte funkci nazvanou `requestCallback()` pro tisk odpovědi z rozhraní API:
 
     ```javascript
     function requestCallback(err, res, body) {
@@ -55,9 +55,9 @@ Pomocí tohoto rychlého startu můžete provést první volání do rozhraní A
     }
     ```
 
-## <a name="construct-and-send-the-search-request"></a>Vytvoření a odeslání požadavku na vyhledávání
+## <a name="construct-and-send-the-search-request"></a>Sestavit a odeslat požadavek hledání
 
-Při nahrávání místního obrázku musí data `Content-Disposition` formuláře obsahovat záhlaví. Je nutné `name` nastavit jeho parametr na `filename` "image" a parametr lze nastavit na libovolný řetězec. Obsah formuláře obsahuje binární data obrazu. Maximální velikost obrázku, kterou můžete nahrát, je 1 MB.
+Při nahrávání místní image musí data formuláře obsahovat `Content-Disposition` hlavičku. Je nutné nastavit jeho `name` parametr na hodnotu "image" a `filename` parametr lze nastavit na libovolný řetězec. Obsah formuláře zahrnuje binární data obrázku. Maximální velikost obrázku, kterou můžete nahrát, je 1 MB.
 
 ```
 --boundary_1234-abcd
@@ -68,14 +68,14 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
 --boundary_1234-abcd--
 ```
 
-1. Vytvořte nový objekt `FormData()` **FormData** pomocí aplikace a přidejte `fs.createReadStream()`k němu cestu k obrázku pomocí :
+1. Vytvořte nový objekt **FormData** pomocí `FormData()`a přidejte do něj cestu k imagi pomocí `fs.createReadStream()`:
     
     ```javascript
     var form = new FormData();
     form.append("image", fs.createReadStream(imagePath));
     ```
 
-2. Pomocí knihovny požadavků nahrajte obrázek a voláním `requestCallback()` otiskněte odpověď. Nezapomeňte přidat klíč předplatného do hlavičky požadavku:
+2. Použijte knihovnu požadavků k nahrání obrázku a zavolejte `requestCallback()` k vytištění odpovědi. Nezapomeňte do hlavičky žádosti přidat svůj klíč předplatného:
 
     ```javascript
     form.getLength(function(err, length){
@@ -91,4 +91,4 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Vytvoření jednostránkové webové aplikace vizuálního vyhledávání](../tutorial-bing-visual-search-single-page-app.md)
+> [Vytvoření webové aplikace Vizuální vyhledávání jednostránkového stránkování](../tutorial-bing-visual-search-single-page-app.md)
