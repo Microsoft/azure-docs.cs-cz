@@ -1,6 +1,6 @@
 ---
-title: Vytvoření ase v1
-description: Popis toku vytvoření pro prostředí služby aplikace v1. Tento dokument je k dispozici pouze pro zákazníky, kteří používají starší verze v1 ASE.
+title: Vytvoření namocného mechanismu v1
+description: Popis toku vytváření pro službu App Service Environment v1. Tento dokument je k dispozici pouze pro zákazníky, kteří používají starší pomocného uživatele v1.
 author: ccompy
 ms.assetid: 81bd32cf-7ae5-454b-a0d2-23b57b51af47
 ms.topic: article
@@ -8,23 +8,23 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 89dc96370f65ff20d7f8be38ff78d6c1664305d3
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80477791"
 ---
-# <a name="how-to-create-an-app-service-environment-v1"></a>Jak vytvořit prostředí služby App Service v1 
+# <a name="how-to-create-an-app-service-environment-v1"></a>Vytvoření App Service Environment v1 
 
 > [!NOTE]
-> Tento článek je o prostředí služby App Service v1. K dispozici je novější verze prostředí služby App Service, která se snadněji používá a běží na výkonnější infrastruktuře. Další informace o nové verzi začněte [s úvodem do prostředí služby App Service](intro.md).
+> Tento článek se týká App Service Environment v1. Existuje novější verze App Service Environment, kterou je snazší použít a která je spuštěná na výkonnější infrastruktuře. Další informace o nové verzi začíná [úvodem do App Service Environment](intro.md).
 > 
 
 ### <a name="overview"></a>Přehled
-Prostředí služby App Service Environment (ASE) je možnost služby Premium služby Azure App Service, která poskytuje rozšířené možnosti konfigurace, která není k dispozici ve víceklientských razítkách. Funkce služby ASE v podstatě nasazuje službu Azure App Service do virtuální sítě zákazníka. Chcete-li získat větší přehled o možnostech nabízených prostředí služby App Service, přečtěte si dokumentaci [What is a App Service Environment.][WhatisASE]
+App Service Environment (pomocným mechanismem) je možnost služby Premium v Azure App Service, která poskytuje rozšířenou možnost konfigurace, která není k dispozici v razítkech s více klienty. Funkce pomocného uživatele v podstatě nasadí Azure App Service do virtuální sítě zákazníka. Pokud chcete získat větší přehled o funkcích, které nabízí App Service prostředí, přečtěte si článek [co je App Service Environment][WhatisASE] dokumentace.
 
-### <a name="before-you-create-your-ase"></a>Před vytvořením ase
-Je důležité být si vědom toho, co nemůžete změnit. Tyto aspekty, které nelze změnit o vaší ase po jeho vytvoření jsou:
+### <a name="before-you-create-your-ase"></a>Před vytvořením pomocného mechanismu
+Je důležité vědět, co nemůžete změnit. Tyto aspekty nemůžete po vytvoření pomocného mechanismu změnit:
 
 * Umístění
 * Předplatné
@@ -33,41 +33,41 @@ Je důležité být si vědom toho, co nemůžete změnit. Tyto aspekty, které 
 * Použitá podsíť 
 * Velikost podsítě
 
-Při výběru virtuální sítě a určení podsítě se ujistěte, že je dostatečně velký, aby vyhovoval y budoucí růst. 
+Když vybíráte virtuální síť a zadáváte podsíť, ujistěte se, že je dostatečně velká, aby vyhovovala budoucímu růstu. 
 
-### <a name="creating-an-app-service-environment-v1"></a>Vytvoření prostředí služby App Service v1
-Pokud chcete vytvořit prostředí služby App Service v1, můžete prohledat prostředí Azure Marketplace for ***App Service Environment v1***nebo projít **vytvoření prostředí** -> **webových a mobilních** -> **aplikací**. Vytvoření ASEv1:
+### <a name="creating-an-app-service-environment-v1"></a>Vytvoření App Service Environment v1
+Pokud chcete vytvořit App Service Environment V1, můžete vyhledat Azure Marketplace ***App Service Environment v1***nebo si projít **vytvořením prostředku** -> **web a mobilní zařízení** -> **App Service Environment**. Vytvoření ASEv1:
 
-1. Zadejte název své ase. Název, který zadáte pro službu ASE, bude použit pro aplikace vytvořené v systému ASE. Pokud je název služby ASE appsvcenvdemo, název subdomény bude: *appsvcenvdemo.p.azurewebsites.net*. Pokud jste tak vytvořili aplikaci s názvem *mytestapp*, bylo by adresovatelné na *mytestapp.appsvcenvdemo.p.azurewebsites.net*. V názvu aplikace ASE nelze použít prázdné znaky. Pokud v názvu použijete velká písmena, bude název domény celkově malá verze tohoto názvu. Pokud používáte ILB, název služby ASE se nepoužívá ve vaší subdoméně, ale je místo toho explicitně uvedeno během vytváření služby ASE.
+1. Zadejte název vašeho pomocného programu. Název, který zadáte pro pomocného nástroje, se použije pro aplikace vytvořené v pomocném mechanismu. Pokud je název pomocného mechanismu appsvcenvdemo, název subdomény by byl: *appsvcenvdemo.p.azurewebsites.NET*. Pokud tedy vytvoříte aplikaci s názvem *MyTestApp*, bude se adresovat na *MyTestApp.appsvcenvdemo.p.azurewebsites.NET*. V názvu vašeho pomocného mechanismu se nedá použít prázdné znaky. Použijete-li velká písmena v názvu, bude název domény celková verze tohoto názvu. Pokud použijete interního nástroje, vaše jméno pomocného mechanismu se nepoužije v subdoméně, ale místo toho je explicitně uvedeno během vytváření pomocného mechanismu.
    
     ![][1]
-2. Vyberte své předplatné. Předplatné, které používáte pro službu ASE, se bude vztahovat také na všechny aplikace, které v této službě ASE vytvoříte. Nelze umístit službu ASE do virtuální sítě, která je v jiném předplatném.
-3. Vyberte nebo zadejte novou skupinu prostředků. Skupina prostředků používaná pro vaši sestavu se musí stejnou, která se používá pro virtuální síť. Pokud vyberete již existující virtuální síť, výběr skupiny prostředků pro vaši ase se aktualizuje tak, aby odrážela výběr vaší virtuální sítě.
+2. Vyberte své předplatné. Předplatné, které používáte pro pomocného správce, se použije i pro všechny aplikace, které v tomto pomocném panelu vytvoříte. Do virtuální sítě, která je v jiném předplatném, nemůžete umístit svůj pomocného správce.
+3. Vyberte nebo zadejte novou skupinu prostředků. Skupina prostředků použitá pro váš správce přidaných mechanismů musí být stejná jako ta, která se používá ve vaší virtuální síti. Pokud vyberete existující virtuální síť, bude se výběr skupiny prostředků pro váš ovládací objekt pro pořízení aktualizovat tak, aby odrážel virtuální síť.
    
     ![][2]
-4. Proveďte virtuální síť a umístění výběry. Můžete vytvořit novou virtuální síť nebo vybrat již existující virtuální síť. Pokud vyberete novou virtuální síť, můžete zadat název a umístění. Nová virtuální síť bude mít rozsah adres 192.168.250.0/23 a podsíť s názvem **default,** která je definována jako 192.168.250.0/24. Můžete také jednoduše vybrat již existující virtuální síť Classic nebo Resource Manager. Výběr typu VIP určuje, zda je vaše ase přímo přístupná z internetu (externí) nebo zda používá interní nástroj pro vyrovnávání zatížení (ILB). Další informace o nich najdete [v tématu Použití interního vytápěče zatížení v prostředí služby App Service][ILBASE]. Pokud vyberete typ VIP externí pak můžete vybrat, kolik externích IP adres systém je vytvořen s pro účely IP SSL. Pokud vyberete interní, budete muset zadat subdoménu, kterou bude vaše služba ASE používat. Ases lze nasadit do virtuálních sítí, které používají *rozsahy* veřejných adres *nebo* adresní prostory RFC1918 (tj. soukromé adresy). Chcete-li používat virtuální síť s rozsahem veřejných adres, budete muset vytvořit virtuální síť předem. Když vyberete již existující virtuální síť, budete muset vytvořit novou podsíť během vytváření ase. **Na portálu nelze použít předem vytvořenou podsíť. Pokud službu ASE vytvoříte pomocí šablony správce prostředků, můžete vytvořit službu ASE s již existující podsítí.** Chcete-li vytvořit službu ASE ze šablony, použijte informace zde, [vytvoření prostředí služby App Service ze šablony][ILBAseTemplate] a zde vytvoření prostředí [služby ILB App Service ze šablony][ASEfromTemplate].
+4. Proveďte Virtual Network a výběr umístění. Můžete si vytvořit novou virtuální síť nebo vybrat již existující virtuální síť. Pokud vyberete novou virtuální síť, můžete zadat její název a umístění. Nová virtuální síť bude mít rozsah adres 192.168.250.0/23 a podsíť s názvem **Default** , která je definovaná jako 192.168.250.0/24. Můžete také jednoduše vybrat stávající virtuální síť typu Classic nebo Správce prostředků. Výběr typu VIP určuje, jestli k vašemu přimocnému objektu se dá získat přímý pøístup z Internetu (externí) nebo jestli používá interní Load Balancer (interního nástroje). Další informace o nich najdete v tématu [použití interní Load Balancer s App Service Environment][ILBASE]. Pokud vyberete externí typ VIP, můžete vybrat, kolik externích IP adres se má systém vytvořit, pro účely IP SSL. Vyberete-li možnost interní, je třeba zadat subdoménu, kterou bude používat váš správce přidaných mechanismů. Služby ASE je možné nasadit do virtuálních sítí, které používají *buď* rozsahy veřejných adres, *nebo* RFC1918 adresní prostory (tj. soukromé adresy). Aby bylo možné používat virtuální síť s rozsahem veřejných adres, bude nutné vytvořit virtuální síť předem. Když vyberete existující virtuální síť, budete muset během vytváření pomocného mechanismu vytvořit novou podsíť. **Na portálu nemůžete použít předem vytvořenou podsíť. Pokud vytváříte pomocného správce prostředků pomocí šablony Resource Manageru, můžete vytvořit pomocného programu s již existující podsítí.** Pokud chcete vytvořit pomocného objektu ze šablony, použijte zde tyto informace, vytvořte [App Service Environment ze šablony][ILBAseTemplate] a tady a vytvořte [App Service Environment interního nástroje ze šablony][ASEfromTemplate].
 
 ### <a name="details"></a>Podrobnosti
-ASE je vytvořen s 2 front-endy a 2 pracovníky. Front-endy fungují jako koncové body HTTP/HTTPS a odesílají provoz pracovníkům, což jsou role, které hostují vaše aplikace. Můžete upravit množství po vytvoření ase a dokonce můžete nastavit pravidla automatického škálování na těchto fondech prostředků. Další podrobnosti o ručníškálování, správu a monitorování prostředí služby App Service naleznete zde: [Jak nakonfigurovat prostředí služby App Service][ASEConfig] 
+Přístupový objekt pro vytváření se vytvoří se dvěma front-endy a 2 pracovními procesy. Front-endy slouží jako koncové body HTTP/HTTPS a odesílají přenosy do pracovních procesů, které jsou hostiteli vašich aplikací. Po vytvoření pomocného mechanismu můžete upravit množství a můžete dokonce nastavit pravidla automatického škálování na těchto fondech zdrojů. Další informace o ručním škálování, správě a monitorování App Service Environment najdete tady: [jak nakonfigurovat App Service Environment][ASEConfig] 
 
-Pouze jeden Způsob ovou ase může existovat v podsíti používané ase. Podsíť nelze použít pro nic jiného než aSE
+V podsíti, kterou používá pomocný modul pro pořízení, může existovat jenom jeden přihlášený. Podsíť se nedá použít pro žádnou jinou než pomocného mechanismu.
 
-### <a name="after-app-service-environment-v1-creation"></a>Po vytvoření prostředí služby App Service v1
-Po vytvoření ase můžete upravit:
+### <a name="after-app-service-environment-v1-creation"></a>Po vytvoření App Service Environment v1
+Po vytvoření pomocného mechanismu můžete upravit:
 
-* Množství front-endů (minimálně: 2)
-* Počet pracovníků (minimálně: 2)
-* Množství IP adres dostupných pro protokol IP SSL
-* Vypočítat velikosti prostředků používané front-endy nebo pracovníky (minimální velikost front-endu je P2)
+* Množství front-endy (minimálně: 2)
+* Množství pracovních procesů (minimálně: 2)
+* Množství IP adres, které jsou k dispozici pro IP SSL
+* Velikosti výpočetních prostředků používané předními konci nebo pracovními procesy (minimální velikost front-endu je P2)
 
-Další podrobnosti o ručníškálování, správu a monitorování prostředí služby App Service zde: [Jak nakonfigurovat prostředí služby App Service][ASEConfig] 
+V této části najdete další podrobnosti o ručním škálování, správě a monitorování App Servicech prostředí: [jak nakonfigurovat App Service Environment][ASEConfig] 
 
-Informace o automatickém škálování zde například: [Konfigurace automatického škálování pro prostředí služby App Service][ASEAutoscale]
+Informace o automatickém škálování tady je příručka: [jak nakonfigurovat automatické škálování pro App Service Environment][ASEAutoscale]
 
-Existují další závislosti, které nejsou k dispozici pro vlastní nastavení, jako je například databáze a úložiště. Ty jsou zpracovány Azure a jsou dodávány se systémem. Systémové úložiště podporuje až 500 GB pro celé prostředí služby App Service a databáze je upravena Azure podle potřeby podle škálování systému.
+Existují další závislosti, které nejsou k dispozici pro vlastní nastavení, jako je databáze a úložiště. Tyto služby jsou zpracovávány v Azure a dodávány se systémem. Systémové úložiště podporuje pro celou App Service Environment až 500 GB a databáze se podle potřeby škáluje podle Azure.
 
 ## <a name="getting-started"></a>Začínáme
-Pokud chcete začít s prostředím Služby aplikací v1, [přečtěte si informace o úvodu do prostředí služby App Service v1.][WhatisASE]
+Pokud chcete začít s App Service Environment V1, přečtěte si téma [Úvod do App Service Environment v1][WhatisASE] .
 
 [!INCLUDE [app-service-web-try-app-service](../../../includes/app-service-web-try-app-service.md)]
 

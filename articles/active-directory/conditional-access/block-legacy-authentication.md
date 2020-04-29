@@ -1,6 +1,6 @@
 ---
-title: Blokovat starší verze ověřování – Služba Azure Active Directory
-description: Zjistěte, jak zlepšit stav zabezpečení blokováním starších ověřování pomocí podmíněného přístupu Azure AD.
+title: Blokovat starší verze ověřování – Azure Active Directory
+description: Přečtěte si, jak vylepšit stav zabezpečení blokováním staršího ověřování pomocí podmíněného přístupu Azure AD.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -12,97 +12,97 @@ manager: daveba
 ms.reviewer: calebb, dawoo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 957aa77e18ea8f910f258d1dc59de0d093b0eab6
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80476651"
 ---
-# <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Postup: Blokování staršího ověřování ve službě Azure AD pomocí podmíněného přístupu   
+# <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Postupy: blokování staršího ověřování ve službě Azure AD pomocí podmíněného přístupu   
 
-Aby měli uživatelé snadný přístup k vašim cloudovým aplikacím, azure active directory (Azure AD) podporuje širokou škálu ověřovacích protokolů včetně starších verzí ověřování. Starší protokoly však nepodporují vícefaktorové ověřování (MFA). Vícefaktorové finanční autority je v mnoha prostředích běžným požadavkem na řešení krádeže identity. 
+Aby měli uživatelé snadný přístup k vašim cloudovým aplikacím, Azure Active Directory (Azure AD) podporuje širokou škálu ověřovacích protokolů, včetně starších verzí ověřování. Starší protokoly ale nepodporují službu Multi-Factor Authentication (MFA). Vícefaktorové ověřování je v mnoha prostředích běžným požadavkem na krádež identity. 
 
-Alex Weinert, ředitel zabezpečení identity společnosti Microsoft, ve svém [blogu](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/new-tools-to-block-legacy-authentication-in-your-organization/ba-p/1225302#) z 12.
+Alex Weinert, ředitel pro zabezpečení identity v Microsoftu, v jeho 12. března 2020 blogové příspěvky [nové nástroje, které zablokují starší verze ověřování ve vaší organizaci](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/new-tools-to-block-legacy-authentication-in-your-organization/ba-p/1225302#) , zdůrazňují, proč by organizace měli blokovat starší verze ověřování a jaké další nástroje Microsoftu pro splnění této úlohy poskytují:
 
-> Aby bylo vícefaktorové ověřování efektivní, musíte také blokovat starší verze ověřování. Důvodem je, že starší ověřovací protokoly jako POP, SMTP, IMAP a MAPI nemohou vynutit vícefaktorové ověřování, což z nich činí upřednostňované vstupní body pro protivníky útočící na vaši organizaci...
+> Aby MFA bylo účinné, musíte také blokovat starší verze ověřování. Důvodem je to, že starší protokoly ověřování, jako jsou POP, SMTP, IMAP a MAPI, nemůžou vymáhat MFA, takže jim preferované vstupní body pro nežádoucí osoby útočí vaší organizaci...
 > 
->... Čísla na starší verze ověřování z analýzy provozu Azure Active Directory (Azure AD) jsou neúprosná:
+>... Čísla pro ověřování starší verze z analýzy provozu služby Azure Active Directory (Azure AD) jsou naprostém:
 > 
-> - Více než 99 procent útoků sprejem heslem používá starší ověřovací protokoly
-> - Více než 97 procent útoků na vycpávání přihlašovacích údajů používá starší verze ověřování
-> - Účty Azure AD v organizacích, které zakázaly starší verze ověřování, jsou o 67 procent méně kompromisů než ty, kde je povoleno starší verze ověřování
+> - Více než 99 procent útoků na postřik hesla používá starší protokoly ověřování.
+> - Více než 97 procent útoků s přihlašovacími údaji používá starší verze ověřování.
+> - Účty Azure AD v organizacích, které mají zakázané starší verze ověřování 67% méně ohrožení než u těch, kde je povolené starší verze ověřování
 >
 
-Pokud je vaše prostředí připravené blokovat starší verze ověřování, aby se zlepšila ochrana vašeho tenanta, můžete tohoto cíle dosáhnout pomocí podmíněného přístupu. Tento článek vysvětluje, jak můžete nakonfigurovat zásady podmíněného přístupu, které blokují starší verze ověřování pro vašeho klienta.
+Pokud je vaše prostředí připravené k blokování starší verze ověřování, aby se zlepšila ochrana vašeho tenanta, můžete tento cíl dosáhnout pomocí podmíněného přístupu. Tento článek vysvětluje, jak můžete nakonfigurovat zásady podmíněného přístupu, které blokují ověřování starší verze pro vašeho tenanta.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Tento článek předpokládá, že jste obeznámeni s: 
+V tomto článku se předpokládá, že máte zkušenosti s nástrojem: 
 
 - [Základní koncepty](overview.md) podmíněného přístupu Azure AD 
-- [Doporučené postupy](best-practices.md) pro konfiguraci zásad podmíněného přístupu na webu Azure Portal
+- [Osvědčené postupy](best-practices.md) pro konfiguraci zásad podmíněného přístupu v Azure Portal
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-Azure AD podporuje několik nejpoužívanějších ověřovacích a autorizačních protokolů, včetně staršíverze ověřování. Starší verze ověřování odkazuje na protokoly, které používají základní ověřování. Tyto protokoly obvykle nelze vynutit jakýkoli typ ověřování druhého faktoru. Příklady aplikací založených na starším ověřování jsou:
+Azure AD podporuje několik nejčastěji používaných ověřovacích a autorizačních protokolů, včetně starších verzí ověřování. Starší verze ověřování odkazuje na protokoly, které používají základní ověřování. Obvykle tyto protokoly nemůžou vyhovět žádnému typu druhého faktoru ověřování. Příklady pro aplikace, které jsou založené na starších verzích ověřování:
 
-- Starší aplikace Microsoft Office
+- Starší aplikace systém Microsoft Office
 - Aplikace používající poštovní protokoly jako POP, IMAP a SMTP
 
-Jednofaktorové ověřování (například uživatelské jméno a heslo) nestačí v těchto dnech. Hesla jsou špatné, protože jsou snadno uhodnout a my (lidé) jsou špatné při výběru dobrých hesel. Hesla jsou také zranitelná vůči různým útokům, jako je phishing a sprej s hesly. Jednou z nejjednodušších věcí, které můžete udělat pro ochranu před hrozbami hesla, je implementace vícefaktorového ověřování. S MFA, i v případě, že útočník získá v držení hesla uživatele, samotné heslo nestačí k úspěšnému ověření a přístup u dat.
+Jeden faktor ověřování (například uživatelské jméno a heslo) není dostatečný počet dnů. Hesla jsou chybná, protože je lze snadno uhodnout a my (lidi) jsou při volbě dobrých hesel špatná. Hesla jsou taky zranitelná u různých útoků, jako je phishing a sprej hesla. Jedním z nejjednodušších věcí, které můžete chránit před hrozbami s heslem, je implementace MFA. V případě vícefaktorového ověřování, a to i v případě, že útočník získá heslo uživatele, nestačí k úspěšnému ověření a přístupu k datům použít heslo samotné.
 
-Jak můžete zabránit aplikacím používajícím starší verze ověřování v přístupu k prostředkům vašeho tenanta? Doporučujeme je pouze zablokovat pomocí zásad podmíněného přístupu. V případě potřeby povolíte pouze určitým uživatelům a určitým síťovým umístěním používat aplikace založené na starším ověřování.
+Jak můžete zabránit tomu, aby aplikace používaly starší ověřování pro přístup k prostředkům vašeho tenanta? Doporučení je jednoduše zablokované zásadou podmíněného přístupu. V případě potřeby povolujete použití aplikací, které jsou založené na starších verzích ověřování, jenom určitým uživatelům a konkrétním síťovým umístěním.
 
-Zásady podmíněného přístupu jsou vynuceny po dokončení ověřování prvního faktoru. Podmíněný přístup proto není určen jako obrana první linie pro scénáře, jako je odmítnutí služby (DoS), ale může využít signály z těchto událostí (například úroveň rizika přihlášení, umístění požadavku a tak dále) k určení přístupu.
+Zásady podmíněného přístupu se vynutily po dokončení prvního faktoru ověřování. Proto podmíněný přístup není určený jako ochrana prvního řádku pro scénáře, jako jsou útoky DoS (Denial-of-Service), ale může využít signály z těchto událostí (například úroveň rizika přihlašování, umístění žádosti atd.) a určit tak přístup.
 
 ## <a name="implementation"></a>Implementace
 
-Tato část vysvětluje, jak nakonfigurovat zásady podmíněného přístupu pro blokování staršíverze ověřování. 
+V této části se dozvíte, jak nakonfigurovat zásady podmíněného přístupu pro blokování starších verzí ověřování. 
 
-### <a name="legacy-authentication-protocols"></a>Starší ověřovací protokoly
+### <a name="legacy-authentication-protocols"></a>Starší protokoly pro ověřování
 
-Následující možnosti jsou považovány za starší ověřovací protokoly
+Následující možnosti jsou považovány za starší protokoly ověřování.
 
-- Ověřený protokol SMTP – používá klient POP a IMAP k odesílání e-mailových zpráv.
-- Automatická konfigurace – klienti Outlooku a EAS používají k vyhledání poštovních schránek exchange online a připojení k ní.
-- Exchange Online PowerShell – používá se k připojení k Exchange Online pomocí vzdáleného Prostředí PowerShell. Pokud zablokujete základní ověřování pro Exchange Online PowerShell, budete muset použít Exchange Online PowerShell modul pro připojení. Pokyny najdete v [tématu Připojení k Exchange Online PowerShellpomocí vícefaktorového ověřování](/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell).
-- Exchange Web Services (EWS) – programovací rozhraní, které používá Outlook, Outlook pro Mac a aplikace třetích stran.
-- IMAP4 - Používá e-mailové klienty IMAP.
-- MAPI přes HTTP (MAPI/HTTP) – používá aplikace Outlook 2010 a novější.
-- Offline adresář (OAB) – kopie kolekcí seznamů adres, které jsou staženy a používány aplikací Outlook.
-- Outlook Anywhere (RPC přes HTTP) – používá outlook 2016 a starší.
-- Outlook Service – používá aplikace Pošta a Kalendář pro Windows 10.
-- POP3 - Používá se e-mailovými klienty POP.
-- Reporting Web Services – používá se k načtení dat sestavy v Exchange Online.
-- Ostatní klienti – jiné protokoly identifikované jako starší verze ověřování.
+- Ověřený protokol SMTP, pomocí kterého klient POP a IMAP odesílá e-mailové zprávy.
+- Automatická konfigurace – používá klienti Outlooku a EAS k vyhledání a připojení k poštovním schránkám v Exchangi Online.
+- Exchange Online PowerShell – slouží k připojení k Exchangi Online pomocí vzdáleného prostředí PowerShell. Pokud zablokujete základní ověřování pro prostředí Exchange Online PowerShell, musíte k připojení použít modul prostředí Exchange Online PowerShell. Pokyny najdete v tématu [připojení k prostředí PowerShell pro Exchange Online pomocí služby Multi-Factor Authentication](/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell).
+- Webové služby Exchange (EWS) – programovací rozhraní, které používá Outlook, Outlook pro Mac a aplikace třetích stran.
+- IMAP4 – používá e-mailové klienty IMAP.
+- Rozhraní MAPI přes protokol HTTP (MAPI/HTTP) – používá Outlook 2010 a novější.
+- Adresář v režimu offline (OAB) – kopii kolekcí seznamu adres, které jsou staženy a používány aplikací Outlook.
+- Outlook odkudkoli (RPC over HTTP) – používá Outlook 2016 a starší.
+- Služba Outlook – používaná aplikací pro poštu a kalendář pro Windows 10
+- POP3 – používá e-mailové klienty POP.
+- Webové služby vytváření sestav – slouží k načtení dat sestavy v Exchangi Online.
+- Ostatní klienti – jiné protokoly identifikované jako s využitím starší verze ověřování.
 
-Další informace o těchto ověřovacích protokolech a službách najdete [v tématu Sestavy aktivit přihlášení na portálu Azure Active Directory](../reports-monitoring/concept-sign-ins.md#filter-sign-in-activities).
+Další informace o těchto ověřovacích protokolech a službách najdete v tématu [sestavy aktivit přihlašování na portálu Azure Active Directory](../reports-monitoring/concept-sign-ins.md#filter-sign-in-activities).
 
-### <a name="identify-legacy-authentication-use"></a>Identifikace staršího použití ověřování
+### <a name="identify-legacy-authentication-use"></a>Identifikovat použití starší verze ověřování
 
-Než budete moci blokovat starší verze ověřování ve vašem adresáři, musíte nejprve pochopit, zda vaši uživatelé mají aplikace, které používají starší verze ověřování a jak ovlivňuje celkový adresář. Protokoly přihlášení Azure AD lze použít k pochopení, pokud používáte starší verze ověřování.
+Než budete moct v adresáři zablokovat starší verze ověřování, musíte nejdřív pochopit, jestli mají vaši uživatelé aplikace, které používají starší verze ověřování a jak ovlivňují celkový adresář. Protokoly přihlášení k Azure AD se dají použít k pochopení, jestli používáte starší verze ověřování.
 
-1. Přejděte na **portál Azure** > **Azure Active Directory** > **Přihlášení**.
-1. Přidejte sloupec Klientská aplikace, pokud se nezobrazuje kliknutím na **sloupce** > **klientské aplikace**.
-1. **Přidejte filtry** > **Klientská aplikace** > vybrat všechny starší ověřovací protokoly a klepněte na tlačítko **Použít**.
+1. Přejděte do **Azure Portal** > **Azure Active Directory** > **přihlášení**.
+1. Pokud není zobrazený, klikněte na **sloupce** > **klientská aplikace**a přidejte sloupec aplikace klienta.
+1. **Přidejte** > **klientskou aplikaci** filtry > vyberte všechny starší protokoly pro ověřování a klikněte na **použít**.
 
-Filtrování zobrazí pouze pokusy o přihlášení, které byly provedeny staršími ověřovacími protokoly. Kliknutím na každý jednotlivý pokus o přihlášení se zobrazí další podrobnosti. Pole **Klientská aplikace** na kartě **Základní informace** bude označovat, který starší ověřovací protokol byl použit.
+Filtrování zobrazí jenom ty pokusy o přihlášení, které udělaly starší protokoly ověřování. Kliknutím na každý jednotlivý pokus o přihlášení zobrazíte další podrobnosti. V poli **klientská aplikace** na kartě **základní informace** se určí, který starší verze ověřovacího protokolu se použil.
 
-Tyto protokoly budou označovat, kteří uživatelé jsou stále závislé na starší verze ověřování a které aplikace používají starší protokoly k požadavkům na ověření. Pro uživatele, kteří se nezobrazují v těchto protokolech a je potvrzeno, že nepoužívají starší verze ověřování, implementujte zásady podmíněného přístupu pouze pro tyto uživatele.
+Tyto protokoly určují, kteří uživatelé pořád závisejí na starší verzi ověřování a které aplikace používají starší protokoly k provádění požadavků na ověření. Pro uživatele, kteří se v těchto protokolech nezobrazují a které se potvrzují, že nepoužívají starší verze ověřování, implementujte zásady podmíněného přístupu jenom pro tyto uživatele.
 
 ### <a name="block-legacy-authentication"></a>Blokování starší verze ověřování 
 
-V zásadách podmíněného přístupu můžete nastavit podmínku, která je vázána na klientské aplikace, které se používají pro přístup k prostředkům. Podmínka klientských aplikací umožňuje zúžit rozsah na aplikace pomocí staršího ověřování výběrem **klientů Exchange ActiveSync** a **ostatních klientů** v části Mobilní aplikace a **desktopové klienty**.
+V zásadách podmíněného přístupu můžete nastavit podmínky, které jsou svázané s klientskými aplikacemi, které se používají pro přístup k prostředkům. Podmínka klientské aplikace umožňuje zúžit rozsah aplikací na aplikace pomocí starší verze ověřování výběrem **klientů Exchange ActiveSync** a **dalších klientů** v části **mobilní aplikace a klienti klasické pracovní plochy**.
 
 ![Ostatní klienti](./media/block-legacy-authentication/01.png)
 
-Chcete-li blokovat přístup k těmto aplikacím, musíte vybrat **možnost Blokovat přístup**.
+Pokud chcete pro tyto aplikace blokovat přístup, musíte vybrat možnost **blokovat přístup**.
 
 ![Blokování přístupu](./media/block-legacy-authentication/02.png)
 
 ### <a name="select-users-and-cloud-apps"></a>Výběr uživatelů a cloudových aplikací
 
-Pokud chcete blokovat starší verze ověřování pro vaši organizaci, pravděpodobně si myslíte, že toho můžete dosáhnout výběrem:
+Pokud chcete pro vaši organizaci zablokovat starší verze ověřování, pravděpodobně si myslíte, že to můžete provést výběrem možnosti:
 
 - Všichni uživatelé
 - Všechny cloudové aplikace
@@ -110,47 +110,47 @@ Pokud chcete blokovat starší verze ověřování pro vaši organizaci, pravdě
 
 ![Přiřazení](./media/block-legacy-authentication/03.png)
 
-Azure má bezpečnostní funkci, která vám brání ve vytváření zásad, jako je tento, protože tato konfigurace porušuje [osvědčené postupy](best-practices.md) pro zásady podmíněného přístupu.
+Azure má funkci zabezpečení, která vám brání v vytváření zásad, protože tato konfigurace je v rozporu s [osvědčenými postupy](best-practices.md) pro zásady podmíněného přístupu.
  
-![Konfigurace zásad není podporována.](./media/block-legacy-authentication/04.png)
+![Konfigurace zásad není podporovaná.](./media/block-legacy-authentication/04.png)
 
-Bezpečnostní funkce je nezbytná, protože *blokovat všechny uživatele a všechny cloudové aplikace* má potenciál blokovat celou organizaci z přihlášení k tenantovi. Je nutné vyloučit alespoň jednoho uživatele, aby byl splněn požadavek na minimální osvědčené postupy. Můžete také vyloučit roli adresáře.
+Funkce zabezpečení je nezbytná, protože *zablokuje všem uživatelům a všem cloudovým aplikacím* možnost blokovat vaší celé organizaci přihlášení k vašemu tenantovi. Musíte vyloučit alespoň jednoho uživatele, aby splňoval požadavek minimálního osvědčeného postupu. Můžete také vyloučit roli adresáře.
 
-![Konfigurace zásad není podporována.](./media/block-legacy-authentication/05.png)
+![Konfigurace zásad není podporovaná.](./media/block-legacy-authentication/05.png)
 
-Tuto bezpečnostní funkci můžete splnit vyloučením jednoho uživatele ze zásad. V ideálním případě byste měli definovat několik [účtů pro správu nouzového přístupu ve službě Azure AD](../users-groups-roles/directory-emergency-access.md) a vyloučit je z vašich zásad.
+Tuto bezpečnostní funkci můžete vyhovět vyloučením jednoho uživatele ze zásad. V ideálním případě byste měli [v Azure AD definovat několik účtů pro správu pro nouzový přístup](../users-groups-roles/directory-emergency-access.md) a vyloučit je ze zásad.
 
-Použití [režimu pouze pro sestavu](concept-conditional-access-report-only.md) při povolení zásad y blokovat starší verze ověřování poskytuje vaší organizaci příležitost sledovat, jaký dopad bude mít zásada.
+Použití [režimu pouze pro sestavy](concept-conditional-access-report-only.md) při povolování zásad pro blokování starších verzí ověřování poskytuje vaší organizaci možnost sledovat, jaký bude mít dopad na zásadu.
 
 ## <a name="policy-deployment"></a>Nasazení zásad
 
-Než vložíte svou politiku do výroby, postarejte se o:
+Před umístěním zásad do produkčního prostředí se postará:
  
-- **Účty služeb** – Identifikujte uživatelské účty, které se používají jako účty služeb nebo zařízení, jako jsou telefony v konferenční místnosti. Ujistěte se, že tyto účty mají silná hesla a přidejte je do vyloučené skupiny.
-- **Sestavy přihlášení** – zkontrolujte sestavu přihlášení a vyhledejte další provoz **klienta.** Identifikujte nejvyšší využití a zjistěte, proč se používá. Přenos je obvykle generován staršími klienty Office, kteří nepoužívají moderní ověřování, nebo některými poštovními aplikacemi jiných výrobců. Vytvořte plán, jak přesunout využití od těchto aplikací, nebo pokud je dopad nízký, upozorněte uživatele, že už tyto aplikace nemohou používat.
+- **Účty služeb** – Identifikujte uživatelské účty používané jako účty služeb nebo zařízení, jako jsou telefony konferenční místnosti. Ujistěte se, že tyto účty mají silná hesla a přidejte je do Vyloučené skupiny.
+- **Sestavy přihlášení** – zkontrolujte sestavu přihlášení a vyhledejte **Další přenosy klientů** . Identifikujte nejdůležitější využití a zjistěte, proč se používá. Obvykle se provoz generuje pomocí starších klientů Office, kteří nepoužívají moderní ověřování ani některé e-mailové aplikace třetích stran. Vytvořte plán pro přesun využití těchto aplikací, nebo pokud je tento dopad nízký, upozorněte uživatele, že už tyto aplikace nemůžou používat.
  
-Další informace naleznete v tématu [Jak nasadit novou zásadu?](best-practices.md#how-should-you-deploy-a-new-policy).
+Další informace najdete v tématu [Jak byste měli nasadit novou zásadu?](best-practices.md#how-should-you-deploy-a-new-policy).
 
 ## <a name="what-you-should-know"></a>Co byste měli vědět
 
-Blokování přístupu pomocí **ostatních klientů** také blokuje Exchange Online PowerShell a Dynamics 365 pomocí základní houštiny.
+Blokování přístupu pomocí **jiných klientů** také blokuje Exchange Online PowerShell a Dynamics 365 pomocí základního ověřování.
 
-Konfigurace zásad pro **ostatní klienty** blokuje celou organizaci od určitých klientů, jako je SPConnect. Tento blok se stane, protože starší klienti ověřit neočekávaným způsobem. Problém se nevztahuje na hlavní aplikace Office, jako jsou starší klienti Office.
+Konfigurace zásad pro **ostatní klienty** zablokuje celou organizaci od určitých klientů, jako je SPConnect. K tomuto bloku dochází, protože se starší klienti Ověřují neočekávaným způsobem. Tento problém se nevztahuje na hlavní aplikace Office, jako jsou starší klienti Office.
 
-Může trvat až 24 hodin, než zásady vstoupí v platnost.
+Může trvat až 24 hodin, než se zásada dostanou platit.
 
-Můžete vybrat všechny dostupné ovládací prvky grantu pro podmínku **Ostatní klienti.** prostředí pro koncové uživatele je však vždy stejné - blokovaný přístup.
+Pro podmínky **ostatních klientů** můžete vybrat všechny dostupné ovládací prvky pro udělení oprávnění. činnost koncového uživatele je ale vždycky zablokovaný přístup.
 
-Pokud zablokujete starší verze ověřování pomocí podmínky **Ostatní klienti,** můžete také nastavit platformu zařízení a podmínku umístění. Pokud například chcete blokovat pouze starší verze ověřování pro mobilní zařízení, nastavte podmínku **platforem zařízení** tak, že vyberete:
+Pokud zablokujete starší ověřování pomocí podmínky **ostatních klientů** , můžete také nastavit platformu zařízení a podmínku umístění. Pokud třeba chcete pro mobilní zařízení blokovat jenom starší verze ověřování, nastavte podmínku pro **platformy zařízení** tak, že vyberete:
 
 - Android
 - iOS
 - telefon se systémem Windows
 
-![Konfigurace zásad není podporována.](./media/block-legacy-authentication/06.png)
+![Konfigurace zásad není podporovaná.](./media/block-legacy-authentication/06.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Určení dopadu pomocí režimu pouze pro sestavu podmíněného přístupu](howto-conditional-access-report-only.md)
-- Pokud ještě nejste obeznámeni s konfigurací zásad podmíněného přístupu, například [najdete v tématu vyžadovat vícefaktorové informace pro konkrétní aplikace s podmíněným přístupem Služby Azure Active Directory.](app-based-mfa.md)
-- Další informace o moderní podpoře ověřování najdete v tématu [Jak funguje moderní ověřování pro klientské aplikace Office 2013 a Office 2016.](/office365/enterprise/modern-auth-for-office-2013-and-2016) 
+- [Určení dopadu pomocí režimu pouze sestavy podmíněného přístupu](howto-conditional-access-report-only.md)
+- Pokud ještě nejste obeznámeni s konfigurací zásad podmíněného přístupu, přečtěte si téma [vyžádání MFA pro konkrétní aplikace s Azure Active Directory podmíněný přístup](app-based-mfa.md) pro příklad.
+- Další informace o podpoře moderního ověřování najdete v článku [jak moderní ověřování funguje pro klientské aplikace office 2013 a office 2016](/office365/enterprise/modern-auth-for-office-2013-and-2016) . 

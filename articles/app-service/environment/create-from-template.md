@@ -1,6 +1,6 @@
 ---
-title: Vytvoření ase s ARM
-description: Zjistěte, jak vytvořit externí prostředí služby ILB App Service pomocí šablony Azure Resource Manager.
+title: Vytvoření pomocného mechanismu pro ARM
+description: Naučte se vytvářet externí nebo interního nástroje App Service prostředí pomocí Azure Resource Manager šablony.
 author: ccompy
 ms.assetid: 6eb7d43d-e820-4a47-818c-80ff7d3b6f8e
 ms.topic: article
@@ -8,49 +8,49 @@ ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: e06fcdbac097e85c039e34274c61cb51ee06bcd6
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80478318"
 ---
-# <a name="create-an-ase-by-using-an-azure-resource-manager-template"></a>Vytvoření služby ASE pomocí šablony Azure Resource Manager
+# <a name="create-an-ase-by-using-an-azure-resource-manager-template"></a>Vytvoření pomocného objektu pomocí šablony Azure Resource Manager
 
 ## <a name="overview"></a>Přehled
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Prostředí služby Azure App Service (ASEs) lze vytvořit pomocí koncového bodu přístupného k internetu nebo koncového bodu na interní adrese ve virtuální síti Azure (VNet). Při vytvoření s interníkoncový bod, tento koncový bod je k dispozici součást Azure s názvem interní vyrovnávání zatížení (ILB). ASE na interní IP adresu se nazývá ASE ILB. ASE s veřejný koncový bod se nazývá externí ase. 
+Prostředí Azure App Service (služby ASE) se dají vytvořit s koncovým bodem přístupným z Internetu nebo koncovým bodem na interní adrese ve službě Azure Virtual Network (VNet). Při vytvoření pomocí interního koncového bodu je tento koncový bod poskytovaný součástí Azure s názvem interní nástroj pro vyrovnávání zatížení (interního nástroje). K pomocnému objektu pro interní IP adresu se říká interního nástroje pomocného mechanismu. Pomocného bodu s veřejným koncovým bodem se nazývá externí pomocného mechanismu. 
 
-Službu ASE lze vytvořit pomocí portálu Azure nebo šablony Azure Resource Manager. Tento článek vás provede kroky a syntaxe, které potřebujete k vytvoření externí služby ASE nebo Služby ASE Služby ILB se šablonami Správce prostředků. Informace o tom, jak vytvořit službu ASE na webu Azure portal, najdete v [tématu Vytvoření externí služby ASE][MakeExternalASE] nebo [Vytvoření služby ASE ILB][MakeILBASE].
+Pomocného programu se dá vytvořit pomocí Azure Portal nebo šablony Azure Resource Manager. Tento článek vás provede jednotlivými kroky a syntaxí, které potřebujete k vytvoření externího pomocného mechanismu pro vytváření nebo interního nástroje pomocného programu pomocí šablon Správce prostředků. Informace o tom, jak vytvořit pomocného mechanismu řízení v Azure Portal, najdete v tématu [Vytvoření externího POmocného][MakeExternalASE] panelu nebo [Vytvoření interního nástroje][MakeILBASE].
 
-Když vytvoříte službu ASE na webu Azure Portal, můžete vytvořit virtuální síť současně nebo zvolit již existující virtuální síť, do které se chcete nasadit. Při vytváření ase ze šablony, musíte začít s: 
+Při vytváření pomocného mechanismu pro Azure Portal můžete vytvořit virtuální síť ve stejnou dobu nebo zvolit stávající virtuální síť, do které se mají nasadit. Při vytváření pomocného mechanismu ze šablony musíte začít s: 
 
 * Virtuální síť Správce prostředků.
-* Podsíť v této virtuální síti. Doporučujeme velikost podsítě ase `/24` s 256 adresami, aby vyhovovala budoucím potřebám růstu a škálování. Po vytvoření ase nelze změnit velikost.
-* ID prostředku z vaší virtuální sítě. Tyto informace můžete získat z portálu Azure pod vlastnostmi virtuální sítě.
-* Předplatné, do kterého se chcete nasadit.
+* Podsíť v této virtuální síti. Pro účely `/24` budoucího růstu a škálování doporučujeme velikost podsítě pro pomocného mechanismu řízení s 256 adresami. Po vytvoření pomocného mechanismu se velikost nedá změnit.
+* ID prostředku z vaší virtuální sítě. Tyto informace můžete získat z Azure Portal ve vlastnostech virtuální sítě.
+* Předplatné, do kterého chcete nasadit.
 * Umístění, do kterého chcete nasadit.
 
-Automatizace vytváření ase:
+Automatizace vytváření pomocného mechanismu:
 
-1. Vytvořte ase ze šablony. Pokud vytvoříte externí sek, jste hotovi po tomto kroku. Pokud vytvoříte službu ASE ilb, je třeba provést několik dalších věcí.
+1. Vytvořte si pomocného mechanismu ze šablony. Pokud vytvoříte externí pomocného bodu služby, budete po tomto kroku hotovi. Pokud vytvoříte interního nástroje pomocného mechanismu, budete mít několik dalších věcí.
 
-2. Po vytvoření služby ASE ilb se nahraje certifikát TLS/SSL, který odpovídá vaší doméně služby ASE ILB.
+2. Po vytvoření pomocného mechanismu interního nástroje se nahraje certifikát TLS/SSL, který odpovídá vaší doméně pomocného mechanismu pro interního nástroje.
 
-3. Nahraný certifikát TLS/SSL je přiřazen ase ILB Jako jeho "výchozí" certifikát TLS/SSL.  Tento certifikát se používá pro přenos tls/ssl do aplikací ve službě ILB ASE při použití společné `https://someapp.mycustomrootdomain.com`kořenové domény, která je přiřazena službě ASE (například).
+3. Nahraný certifikát TLS/SSL se přiřadí k interního nástroje pomocnému modulu pro zápis prostřednictvím výchozího certifikátu TLS/SSL.  Tento certifikát se používá pro přenos TLS/SSL do aplikací v interního nástroje pomocném modulu pro zápis, když používají společnou kořenovou doménu, která je přiřazená k `https://someapp.mycustomrootdomain.com`pomocnému mechanismu řízení (například).
 
 
-## <a name="create-the-ase"></a>Vytvoření ase
-Šablona Správce prostředků, která vytvoří službu ASE a její přidružené parametry souboru je k dispozici [v příkladu][quickstartasev2create] na GitHub.
+## <a name="create-the-ase"></a>Vytvoření pomocného mechanismu
+[V příkladu][quickstartasev2create] na GitHubu je k dispozici šablona správce prostředků, která vytvoří pomocného průvodce a soubor přidružených parametrů.
 
-Chcete-li vytvořit službu ASE ILB, použijte tyto [příklady][quickstartilbasecreate]šablon Správce prostředků . Obstarávají se tím případem použití. Většina parametrů v souboru *azuredeploy.parameters.json* je společná pro vytváření ILB ASEs a externích ASE. Následující seznam volá parametry zvláštní poznámky nebo které jsou jedinečné při vytváření služby ASE ILB:
+Chcete-li vytvořit interního nástroje pomocného mechanismu pro vytváření, použijte tyto [Příklady][quickstartilbasecreate]šablon Správce prostředků. Využívají k tomuto případu použití. Většina parametrů v souboru *azuredeploy. Parameters. JSON* je společná pro vytváření interního nástroje služby ASE a externí služby ase. Následující seznam volá parametry zvláštní poznámky, nebo které jsou jedinečné, když vytvoříte interního nástroje pomocného programu pro vytváření:
 
-* *internalLoadBalancingMode*: Ve většině případů nastavte tuto možnost na 3, což znamená, že přenosy HTTP/HTTPS na portech 80/443 a porty řídicího/datového kanálu naslouchané službou FTP ve službě ASE budou vázány na interní adresu virtuální sítě přidělenou službou ILB. Pokud je tato vlastnost nastavena na 2, jsou na adresu ILB vázány pouze porty související se službou FTP (řídicí i datové kanály). Provoz HTTP/HTTPS zůstává ve veřejné virtuální ip.
-* *dnsSuffix*: Tento parametr definuje výchozí kořenovou doménu, která je přiřazena službě ASE. Ve veřejné variantě služby Azure App Service je výchozí kořenová doména pro všechny webové aplikace *azurewebsites.net*. Vzhledem k tomu, že služba ASE Služby ILB je interní ve virtuální síti zákazníka, nemá smysl používat výchozí kořenovou doménu veřejné služby. Místo toho by služba ASE ILB měla mít výchozí kořenovou doménu, která má smysl pro použití v interní virtuální síti společnosti. Společnost Contoso Corporation může například používat výchozí kořenovou doménu *internal-contoso.com* pro aplikace, které jsou určeny k řešení a přístupným pouze ve virtuální síti společnosti Contoso. 
-* *ipSslAddressCount*: Tento parametr automaticky výchozí hodnotu 0 v souboru *azuredeploy.json,* protože ILB ASEs mají pouze jednu adresu ILB. Neexistují žádné explicitní adresy IP-SSL pro službu ASE ILB. Proto musí být fond adres IP-SSL pro službu ASE ILB nastaven na nulu. V opačném případě dojde k chybě zřizování. 
+* *internalLoadBalancingMode*: ve většině případů nastavte tuto hodnotu na 3, což znamená, že přenos HTTP/HTTPS na portech 80/443 a porty ovládacího prvku/datového kanálu, na které naslouchá služba FTP v pomocném mechanismu řízení, bude vázán na interní adresu přidělené virtuální sítě. Pokud je tato vlastnost nastavená na hodnotu 2, budou se na interního nástroje adrese svázat jenom porty související se službou FTP (ovládací prvky a kanály dat). Přenosy HTTP/HTTPS zůstávají ve veřejné virtuální IP adrese.
+* *dnsSuffix*: Tento parametr definuje výchozí kořenovou doménu, která je přiřazená k pomocnému objektu pro řízení. Ve veřejné variaci Azure App Service je výchozí kořenová doména pro všechny webové aplikace *azurewebsites.NET*. Vzhledem k tomu, že interního nástroje pomocného uživatele je interní pro virtuální síť zákazníka, nemá smysl používat výchozí kořenovou doménu veřejné služby. Místo toho by měl mít interního nástroje pomocného programu k dispozici výchozí kořenovou doménu, která dává smysl pro použití v interní virtuální síti společnosti. Společnost Contoso může například používat výchozí kořenovou doménu *internal-contoso.com* pro aplikace, které mají být přeložitelný a přístupné pouze v rámci virtuální sítě společnosti Contoso. 
+* *ipSslAddressCount*: Tento parametr se automaticky nastaví na hodnotu 0 v souboru *azuredeploy. JSON* , protože interního nástroje služby ASE má jenom jednu adresu interního nástroje. Pro interního nástroje pomocného mechanismu zabezpečení nejsou k dispozici žádné explicitní adresy IP-SSL. Proto fond adres IP-SSL pro interního nástroje pomocného modulu musí být nastaven na hodnotu nula. V opačném případě dojde k chybě zřizování. 
 
-Po vyplnění souboru *azuredeploy.parameters.json* vytvořte službu ASE pomocí fragmentu kódu Prostředí PowerShell. Změňte cesty k souborům tak, aby odpovídaly umístění souborů šablon Správce prostředků v počítači. Nezapomeňte zadat vlastní hodnoty pro název nasazení Správce prostředků a název skupiny prostředků:
+Po vyplnění souboru *azuredeploy. Parameters. JSON* vytvořte pomocí fragmentu kódu PowerShellu pomocného programu. Změňte cestu k souboru tak, aby odpovídala umístěním souborů šablony Správce prostředků na vašem počítači. Nezapomeňte zadejte vlastní hodnoty pro název nasazení Správce prostředků a název skupiny prostředků:
 
 ```powershell
 $templatePath="PATH\azuredeploy.json"
@@ -59,28 +59,28 @@ $parameterPath="PATH\azuredeploy.parameters.json"
 New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
 ```
 
-To trvá asi hodinu pro vytvoření ase. Potom se služba ASE zobrazí na portálu v seznamu ases pro předplatné, které spustilo nasazení.
+Vytvoření pomocného mechanismu trvá přibližně hodinu. Potom se v seznamu služby ASE pro předplatné, které spustilo nasazení, zobrazí na portálu.
 
-## <a name="upload-and-configure-the-default-tlsssl-certificate"></a>Nahrání a konfigurace "výchozího" certifikátu TLS/SSL
-Certifikát TLS/SSL musí být přidružen ke službě ASE jako "výchozí" certifikát TLS/SSL, který se používá k navázání připojení TLS k aplikacím. Pokud je *internal-contoso.com*výchozí přípona DNS služby `https://some-random-app.internal-contoso.com` ASE , vyžaduje připojení k certifikátu TLS/SSL platný pro **.internal-contoso.com*. 
+## <a name="upload-and-configure-the-default-tlsssl-certificate"></a>Nahrajte a nakonfigurujte výchozí certifikát TLS/SSL.
+Certifikát TLS/SSL musí být přidružený k tomuto pomocnému programu jako výchozí certifikát TLS/SSL, který se používá k navázání připojení TLS k aplikacím. Pokud je výchozí příponou DNS *internal-contoso.com*, připojení k `https://some-random-app.internal-contoso.com` vyžaduje certifikát TLS/SSL, který je platný pro **. Internal-contoso.com*. 
 
-Získejte platný certifikát TLS/SSL pomocí interních certifikačních úřadů, zakoupením certifikátu od externího vystavittele nebo pomocí certifikátu podepsaného svým držitelem. Bez ohledu na zdroj certifikátu TLS/SSL musí být správně nakonfigurovány následující atributy certifikátu:
+Získejte platný certifikát TLS/SSL pomocí interních certifikačních autorit, zakoupením certifikátu od externího vystavitele nebo pomocí certifikátu podepsaného svým držitelem. Bez ohledu na zdroj certifikátu TLS/SSL musí být správně nakonfigurované následující atributy certifikátu:
 
-* **Předmět**: Tento atribut musí být nastaven na **.your-root-domain-here.com*.
-* **Alternativní název předmětu**: Tento atribut musí obsahovat **.your-root-domain-here.com* a *.scm.your-root-domain-here.com*. Připojení TLS k webu SCM/Kudu přidruženému ke každé aplikaci používají adresu formuláře *your-app-name.scm.your-root-domain-here.com*.
+* **Subject**: Tento atribut musí být nastaven na hodnotu **. your-root-Domain-here.com*.
+* **Alternativní název subjektu**: Tento atribut musí zahrnovat buď **. your-root-Domain-here.com* , nebo **. SCM.your-root-Domain-here.com*. Připojení TLS k webu SCM/Kudu přidruženému ke každé aplikaci používají adresu formuláře *Your-App-Name.SCM.your-root-Domain-here.com*.
 
-S platným certifikátem TLS/SSL v ruce jsou zapotřebí další dva přípravné kroky. Převod/uložení certifikátu TLS/SSL jako souboru .pfx. Nezapomeňte, že soubor .pfx musí obsahovat všechny zprostředkující a kořenové certifikáty. Zabezpečte ho pomocí hesla.
+S platným certifikátem TLS/SSL jsou potřeba dva další přípravné kroky. Převeďte nebo uložte certifikát TLS/SSL jako soubor. pfx. Mějte na paměti, že soubor. pfx musí zahrnovat všechny zprostředkující a kořenové certifikáty. Zabezpečte ho pomocí hesla.
 
-Soubor .pfx musí být převeden na řetězec base64, protože certifikát TLS/SSL je odeslán pomocí šablony Správce prostředků. Vzhledem k tomu, že šablony Správce prostředků jsou textové soubory, musí být soubor .pfx převeden na řetězec base64. Tímto způsobem může být zahrnuta jako parametr šablony.
+Soubor. pfx se musí převést na řetězec Base64, protože certifikát TLS/SSL se nahrává pomocí šablony Správce prostředků. Vzhledem k tomu, že šablony Správce prostředků jsou textové soubory, musí být soubor. pfx převeden na řetězec base64. Tímto způsobem je možné jej zahrnout jako parametr šablony.
 
-Pomocí následujícího fragmentu kódu Prostředí PowerShellu:
+Následující fragment kódu prostředí PowerShell použijte k těmto akcím:
 
-* Vygenerujte certifikát podepsaný svým držitelem.
-* Exportujte certifikát jako soubor .pfx.
-* Převeďte soubor .pfx na řetězec kódovaný base64.
-* Uložte řetězec kódovaný base64 do samostatného souboru. 
+* Vygeneruje certifikát podepsaný svým držitelem.
+* Exportujte certifikát jako soubor. pfx.
+* Převeďte soubor. pfx na řetězec kódovaný v kódování Base64.
+* Uložte řetězec s kódováním base64 do samostatného souboru. 
 
-Tento kód prostředí PowerShell pro kódování base64 byl upraven z [blogu skriptů prostředí PowerShell][examplebase64encoding]:
+Tento kód PowerShellu pro kódování Base64 byl přizpůsoben na [blogu PowerShell Scripts][examplebase64encoding]:
 
 ```powershell
 $certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com"
@@ -96,18 +96,18 @@ $fileContentEncoded = [System.Convert]::ToBase64String($fileContentBytes)
 $fileContentEncoded | set-content ($fileName + ".b64")
 ```
 
-Po úspěšném vygenerování a převodu certifikátu TLS/SSL na řetězec kódovaný base64 použijte ukázkovou šablonu Správce prostředků [Nakonfigurujte výchozí certifikát SSL][quickstartconfiguressl] na GitHubu. 
+Po úspěšném vygenerování certifikátu TLS/SSL a jeho převedení na řetězec kódovaný v kódování Base64 použijte šablonu ukázka Správce prostředků a [nakonfigurujte výchozí certifikát SSL][quickstartconfiguressl] na GitHubu. 
 
-Parametry v souboru *azuredeploy.parameters.json* jsou uvedeny zde:
+Parametry v souboru *azuredeploy. Parameters. JSON* jsou uvedeny zde:
 
-* *appServiceEnvironmentName*: Název nakonfigurované služby ASE ILB.
-* *existingAseLocation*: Textový řetězec obsahující oblast Azure, kde byla nasazena služba ASE ILB.  Například: "Jižní střed USA".
-* *pfxBlobString*: Reprezentace řetězce kódu 64 na základě .pfx. Použijte dříve zobrazený fragment kódu a zkopírujte řetězec obsažený v souboru "exportedcert.pfx.b64". Vložte jej jako hodnotu atributu *pfxBlobString.*
-* *heslo*: Heslo používané k zabezpečení souboru .pfx.
-* *certificateThumbprint*: Kryptografický otisk certifikátu. Pokud tuto hodnotu načtete z prostředí PowerShell (například *$certificate. Kryptografický otisk* z předchozího fragmentu kódu) můžete použít hodnotu tak, jak je. Pokud zkopírujete hodnotu z dialogového okna Certifikát systému Windows, nezapomeňte odstranit cizí mezery. *CertifikátOtisk palce* by měl vypadat podobně jako AF3143EB61D43F6727842115BB7F17BBCECAECAE.
-* *název certifikátu*: Popisný identifikátor řetězce, který si vlastní zvolíte k identifikaci certifikátu. Název se používá jako součást jedinečného identifikátoru Správce prostředků entity *Microsoft.Web/certificates,* která představuje certifikát TLS/SSL. Název *musí* končit následující příponou: \_yourASENameHere_InternalLoadBalancingASE. Portál Azure používá tuto příponu jako indikátor, že certifikát se používá k zabezpečení služby ASE s povolenou službou ILB.
+* *appServiceEnvironmentName*: Název konfigurovaného pomocného programu interního nástroje.
+* *existingAseLocation*: textový řetězec obsahující oblast Azure, ve které byl nasazený pomocný modul interního nástroje.  Například: "Střed USA – jih".
+* *pfxBlobString*: řetězcová reprezentace souboru. pfx zakódovaná based64. Použijte dříve zobrazený fragment kódu a zkopírujte řetězec obsažený v souboru "exportedcert. pfx. B64". Vložte ho jako hodnotu atributu *pfxBlobString* .
+* *heslo*: heslo použité k zabezpečení souboru. pfx.
+* *certificateThumbprint*: kryptografický otisk certifikátu. Pokud tuto hodnotu načtete z PowerShellu (například *$Certificate. Kryptografický otisk* z dřívějšího fragmentu kódu) můžete použít hodnotu jako. Pokud zkopírujete hodnotu z dialogového okna certifikát systému Windows, nezapomeňte oddělit nadbytečné mezery. *CertificateThumbprint* by měl vypadat nějak takto: AF3143EB61D43F6727842115BB7F17BBCECAECAE.
+* identifikátor *certifikátu*: popisný identifikátor řetězce, který se používá k identifikaci certifikátu. Název se používá jako součást jedinečného identifikátoru Správce prostředků pro entitu *Microsoft. Web/Certificates* , která představuje certifikát TLS/SSL. Název *musí* končit následující příponou: \_yourASENameHere_InternalLoadBalancingASE. Azure Portal používá tuto příponu jako indikátor, který certifikát používá k zabezpečení interního NÁSTROJEho přihlašování s povoleným protokolem.
 
-Zkrácený příklad *azuredeploy.parameters.json* je uveden zde:
+Zde je zobrazen zkrácený příklad *azuredeploy. Parameters. JSON* :
 
 ```json
 {
@@ -136,7 +136,7 @@ Zkrácený příklad *azuredeploy.parameters.json* je uveden zde:
 }
 ```
 
-Po vyplnění souboru *azuredeploy.parameters.json* nakonfigurujte výchozí certifikát TLS/SSL pomocí fragmentu kódu Prostředí PowerShell. Změňte cesty k souborům tak, aby odpovídaly místu, kde jsou v počítači umístěny soubory šablon Správce prostředků. Nezapomeňte zadat vlastní hodnoty pro název nasazení Správce prostředků a název skupiny prostředků:
+Po vyplnění souboru *azuredeploy. Parameters. JSON* nakonfigurujte výchozí certifikát TLS/SSL pomocí fragmentu kódu prostředí PowerShell. Změňte cesty k souboru tak, aby odpovídaly, kde jsou soubory šablon Správce prostředků umístěny na vašem počítači. Nezapomeňte zadejte vlastní hodnoty pro název nasazení Správce prostředků a název skupiny prostředků:
 
 ```powershell
 $templatePath="PATH\azuredeploy.json"
@@ -145,20 +145,20 @@ $parameterPath="PATH\azuredeploy.parameters.json"
 New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
 ```
 
-Trvá zhruba 40 minut na front-end ase použít změnu. Například pro výchozí velikosti ase, který používá dva front-endy, šablona trvá přibližně jednu hodinu a 20 minut na dokončení. V době, kdy je šablona spuštěna, nelze škálovat.  
+Změny se projeví přibližně 40 minut na front-endu. Například pro pomocného objekt pro pořízení velikosti, který používá dva front-end, bude šablona trvat přibližně jednu hodinu a 20 minut. Když je šablona spuštěná, nemůže se pomocného mechanismu škálovat.  
 
-Po dokončení šablony aplikace na ASE ILB lze přistupovat přes HTTPS. Připojení jsou zabezpečena pomocí výchozího certifikátu TLS/SSL. Výchozí certifikát TLS/SSL se používá, když jsou aplikace ve službě ILB ASE adresovány pomocí kombinace názvu aplikace a výchozího názvu hostitele. Používá například `https://mycustomapp.internal-contoso.com` výchozí certifikát TLS/SSL pro **.internal-contoso.com*.
+Po dokončení šablony se k aplikacím na interního nástroje přihlašování pomocí protokolu HTTPS dostanete. Připojení jsou zabezpečená pomocí výchozího certifikátu TLS/SSL. Výchozí certifikát TLS/SSL se používá v případě, že aplikace na pomocném programu interního nástroje jsou řešeny pomocí kombinace názvu aplikace a výchozího názvu hostitele. Například `https://mycustomapp.internal-contoso.com` používá výchozí certifikát TLS/SSL pro **. Internal-contoso.com*.
 
-Stejně jako aplikace, které běží ve veřejné víceklientské službě, však vývojáři mohou konfigurovat vlastní názvy hostitelů pro jednotlivé aplikace. Mohou také nakonfigurovat jedinečné vazby certifikátů SNI TLS/SSL pro jednotlivé aplikace.
+Nicméně stejně jako aplikace, které běží na veřejné víceklientské službě, můžou vývojáři nakonfigurovat vlastní názvy hostitelů pro jednotlivé aplikace. Můžou taky nakonfigurovat jedinečné vazby certifikátu TLS/SSL SNI pro jednotlivé aplikace.
 
 ## <a name="app-service-environment-v1"></a>App Service Environment v1 ##
 Služba App Service Environment má dvě verze: ASEv1 a ASEv2. Předchozí informace se týkaly verze ASEv2. V této části jsou uvedené rozdíly mezi verzemi ASEv1 a ASEv2.
 
-V ASEv1 spravovat všechny prostředky ručně. To se týká front-endů, pracovních procesů a IP adres používaných pro zabezpečení SSL na základě protokolu IP. Než budete moci škálovat plán služby App Service, musíte horizontální navýšení kapacity fondu pracovních procesů, který chcete hostovat.
+V ASEv1 můžete všechny prostředky spravovat ručně. To se týká front-endů, pracovních procesů a IP adres používaných pro zabezpečení SSL na základě protokolu IP. Než budete moct plán App Service škálovat, musíte škálovat fond pracovních procesů, který chcete hostovat.
 
-Verze ASEv1 používá jiný cenový model než verze ASEv2. Ve verzi ASEv1 se platí za každý přidělený virtuální procesor. To zahrnuje virtuální procesory, které se používají pro front-endy nebo pracovníky, kteří nejsou hostování žádné úlohy. Ve verzi ASEv1 je výchozí maximální velikost služby ASE celkem 55 hostitelů. To zahrnuje pracovní procesy i front-endy. Jedna z výhod verze ASEv1 spočívá v tom, že se dá nasadit do klasické virtuální sítě i do virtuální sítě Resource Manager. Další informace o verzi ASEv1 najdete v článku [Úvod do služby App Service Environment verze 1][ASEv1Intro].
+Verze ASEv1 používá jiný cenový model než verze ASEv2. Ve verzi ASEv1 se platí za každý přidělený virtuální procesor. To zahrnuje vCPU, které se používají pro front-endy nebo pracovní procesy, které nehostují žádné úlohy. Ve verzi ASEv1 je výchozí maximální velikost služby ASE celkem 55 hostitelů. To zahrnuje pracovní procesy i front-endy. Jedna z výhod verze ASEv1 spočívá v tom, že se dá nasadit do klasické virtuální sítě i do virtuální sítě Resource Manager. Další informace o verzi ASEv1 najdete v článku [Úvod do služby App Service Environment verze 1][ASEv1Intro].
 
-Pokud chcete vytvořit ASEv1 pomocí šablony Správce prostředků, přečtěte si informace [o vytvoření služby ASE Služby ILB v1 se šablonou Správce prostředků][ILBASEv1Template].
+Chcete-li vytvořit ASEv1 pomocí šablony Správce prostředků, přečtěte si téma [Vytvoření interního nástroje s POmocným mechanismem V1 se šablonou správce prostředků][ILBASEv1Template].
 
 
 <!--Links-->

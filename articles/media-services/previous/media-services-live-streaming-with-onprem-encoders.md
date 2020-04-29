@@ -1,6 +1,6 @@
 ---
-title: Streamujte živě s místními kodéry, které vytvářejí datové proudy s více přenosovými rychlostmi – Azure | Dokumenty společnosti Microsoft
-description: Toto téma popisuje, jak nastavit kanál, který přijímá živý datový proud s více přenosovým poměrem z místního kodéru.
+title: Živé streamování pomocí místních kodérů, které vytvářejí datové proudy s více přenosovými rychlostmi – Azure | Microsoft Docs
+description: Toto téma popisuje, jak nastavit kanál, který přijímá živý datový proud s více přenosovými rychlostmi z místního kodéru.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,212 +15,212 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: c0d19d68d016a47762fb5d2646ea6ccf74d3ef75
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80476551"
 ---
-# <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders"></a>Práce s kanály, které přijímají vícepřenosový živý přenos z místních kodérů
+# <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders"></a>Práce s kanály, které přijímají živý datový proud s více přenosovými rychlostmi z místních kodérů
 
 > [!NOTE]
-> května 2018 již živé kanály nebudou podporovat protokol ingestestování datového proudu rtp/MPEG-2. Migrujte z protokolů s ingestováním RTP/MPEG-2 do RTMP nebo fragmentovaných protokolů s ingestováním MP4 (Smooth Streaming).
+> Od 12. května 2018 už živé kanály nebudou podporovat protokol ingestování přenosového streamu RTP/MPEG-2. Migrujte prosím z protokolu RTP/MPEG-2 na RTMP nebo fragmentujte protokoly ingesta MP4 (Smooth Streaming).
 
 ## <a name="overview"></a>Přehled
-Ve službě Azure Media Services *kanál* představuje kanál pro zpracování obsahu živého streamování. Kanál přijímá živé vstupní proudy jedním ze dvou způsobů:
+V Azure Media Services *kanál* představuje kanál pro zpracování obsahu živého streamování. Kanál přijímá živé vstupní proudy jedním ze dvou způsobů:
 
-* Místní živý kodér odesílá vícebitový datový proud RTMP nebo plynulého streamování (fragmentovaný protokol MP4) do kanálu, který není povolen pro živé kódování pomocí služby Media Services. Pozůstalé datové proudy procházejí kanály bez dalšího zpracování. Tato metoda se nazývá *předávací*. Živý kodér může také odeslat datový proud s jedním přenosovým tokem do kanálu, který není povolen pro živé kódování, ale nedoporučujeme to. Služba Media Services poskytuje datový proud zákazníkům, kteří o něj požádají.
+* On-premises Live Encoder odesílá datový proud s více přenosovými rychlostmi nebo Smooth Streaming (fragmentovaný MP4) do kanálu, který není povolen k provádění kódování v reálném čase pomocí Media Services. Ingestované datové proudy procházejí kanálem bez dalšího zpracování. Tato metoda se nazývá *předávací*. Živý kodér může také odeslat datový proud s jednou přenosovou rychlostí do kanálu, který nemá povolené kódování v reálném čase, ale nedoporučujeme to. Media Services dodává datový proud zákazníkům, kteří si je vyžádají.
 
   > [!NOTE]
-  > Použití metody průchozí je nejekonomičtější způsob, jak provést živé vysílání.
+  > Použití předávací metody je nejúčinnější způsob, jak provádět živé streamování.
 
 
-* Místní živý kodér odešle datový proud s jedním datovým proudem do kanálu, který je povolen k provádění živého kódování se službou Media Services v jednom z následujících formátů: RTMP nebo Plynulé streamování (fragmentované MP4). Kanál pak provádí živé kódování příchozího datového proudu s jedním přenosovým tokem do datového proudu videa s více přenosovou rychlostí (adaptivní). Služba Media Services poskytuje datový proud zákazníkům, kteří o něj požádají.
+* On-premises Live Encoder odesílá datový proud s jednou přenosovou rychlostí do kanálu, který má povolené kódování v reálném čase, pomocí Media Services v jednom z následujících formátů: RTMP nebo Smooth Streaming (fragmentovaný MP4). Kanál pak provede živé kódování příchozího datového proudu s jednou přenosovou rychlostí do datového proudu s více přenosovými rychlostmi (adaptivní). Media Services dodává datový proud zákazníkům, kteří si je vyžádají.
 
-Počínaje vydáním služby Media Services 2.10 můžete při vytváření kanálu určit, jak má kanál přijímat vstupní datový proud. Můžete také určit, zda má kanál provádět živé kódování datového proudu. Máte dvě možnosti:
+Počínaje verzí Media Services 2,10 můžete při vytváření kanálu určit, jak chcete, aby kanál přijímal vstupní datový proud. Můžete také určit, jestli chcete, aby kanál prováděl živé kódování vašeho streamu. Máte dvě možnosti:
 
-* **Předat**: Zadejte tuto hodnotu, pokud plánujete použít místní živý kodér, který má datový proud s více přenosovými rychlostmi (předávací datový proud) jako výstup. V tomto případě příchozí datový proud prochází do výstupu bez kódování. Toto je chování kanálu před vydáním 2.10. Tento článek obsahuje podrobnosti o práci s kanály tohoto typu.
-* **Živé kódování**: Tuto hodnotu zvolte, pokud chcete pomocí mediálních služeb kódovat živý datový proud s jedním přenosovým tokem do datového proudu s více přenosovou rychlostí. Za ponechání kanálu živého kódování ve **spuštěném** stavu se účtují poplatky za fakturaci. Doporučujeme, abyste po dokončení živého streamování okamžitě zastavili spuštěné kanály, abyste se vyhnuli dalším hodinovým poplatkům. Služba Media Services poskytuje datový proud zákazníkům, kteří o něj požádají.
+* **Předat**po: tuto hodnotu zadejte, pokud plánujete použít místní kodér Live, který má datový proud s více přenosovými rychlostmi (předávací proud) jako výstup. V tomto případě příchozí datový proud projde do výstupu bez kódování. Toto je chování kanálu před vydáním verze 2,10. Tento článek obsahuje podrobné informace o práci s kanály tohoto typu.
+* **Live Encoding**: tuto hodnotu vyberte, pokud plánujete používat Media Services ke kódování živého datového proudu s jednou přenosovou rychlostí do datového proudu s více přenosovými rychlostmi. Když necháte živý kanál kódování ve **spuštěném** stavu, účtují se poplatky za účtování. Doporučujeme, abyste okamžitě zastavili spuštěné kanály po dokončení události živého streamování, abyste se vyhnuli dodatečným hodinovým poplatkům. Media Services dodává datový proud zákazníkům, kteří si je vyžádají.
 
 > [!NOTE]
-> Tento článek popisuje atributy kanálů, které nejsou povoleny k provádění živého kódování. Informace o práci s kanály, které jsou povolené k provádění živého kódování, najdete v tématu [Živé streamování pomocí Služby Azure Media Services k vytvoření datových proudů s více přenosovými rychlostmi](media-services-manage-live-encoder-enabled-channels.md).
+> Tento článek pojednává o atributech kanálů, u kterých není povoleno provádět kódování v reálném čase. Informace o práci s kanály, které mají povolené kódování v reálném čase, najdete v tématu [živé streamování pomocí Azure Media Services k vytváření datových proudů s více přenosovými rychlostmi](media-services-manage-live-encoder-enabled-channels.md).
 >
->Informace o doporučených místních kodéry naleznete [v tématu Doporučeno v místním kodérech](media-services-recommended-encoders.md).
+>Informace o doporučených místních kodérech najdete v tématu [Doporučené místní kodéry](media-services-recommended-encoders.md).
 
-Následující diagram představuje pracovní postup živého streamování, který používá místní živý kodér k tomu, aby jako výstup měl datové proudy RTMP s více přenosovými rychlostmi nebo fragmentace mp4 (plynulý datový proud).
+Následující diagram představuje pracovní postup živého streamování, který používá místní živý kodér ke streamování s více přenosovými rychlostmi nebo fragmenty souborů MP4 (Smooth Streaming) jako výstup.
 
 ![Živý pracovní postup][live-overview]
 
-## <a name="common-live-streaming-scenario"></a><a id="scenario"></a>Běžný scénář živého vysílání
-Následující kroky popisují úlohy spojené s vytvářením běžných aplikací živého streamování.
+## <a name="common-live-streaming-scenario"></a><a id="scenario"></a>Běžný scénář živého streamování
+Následující kroky popisují úlohy, které se podílejí na vytváření běžných aplikací pro živé streamování.
 
-1. Připojte k počítači videokameru. Spusťte a nakonfigurujte místní živý kodér, který má jako výstup datový proud RTMP nebo fragmentovaného mp4 (Plynulé streamování). Další informace najdete v článku [Podpora RTMP ve službě Azure Media Services a kodéry pro kódování v reálném čase](https://go.microsoft.com/fwlink/?LinkId=532824).
+1. Připojte k počítači videokameru. Spusťte a nakonfigurujte místní kodér Live Encoder, který má RTMP s více přenosovými rychlostmi, nebo fragmentový datový proud MP4 (Smooth Streaming) jako výstup. Další informace najdete v článku [Podpora RTMP ve službě Azure Media Services a kodéry pro kódování v reálném čase](https://go.microsoft.com/fwlink/?LinkId=532824).
 
-    Tento krok můžete provést také po vytvoření kanálu.
+    Tento krok můžete provést i po vytvoření kanálu.
 2. Vytvoření a spuštění kanálu.
 
-3. Načíst adresu URL ingestování kanálu.
+3. Načtěte adresu URL pro ingestování kanálu.
 
-    Živý kodér používá ingestující adresu URL k odeslání datového proudu do kanálu.
-4. Načtěte adresu URL náhledu kanálu.
+    Live Encoder používá k odeslání datového proudu do kanálu adresu URL pro příjem.
+4. Načte adresu URL náhledu kanálu.
 
     Tuto adresu URL můžete použít, když chcete ověřit, jestli kanál správně přijímá proud živého vysílání.
 5. Vytvořte program.
 
-    Při použití portálu Azure, vytvoření programu také vytvoří prostředek.
+    Při použití Azure Portal vytvoří program také Asset.
 
-    Při použití sady .NET SDK nebo REST je třeba vytvořit datový zdroj a určit, zda chcete tento datový zdroj použít při vytváření programu.
-6. Publikujte datový zdroj, který je přidružen k programu.   
+    Pokud používáte sadu .NET SDK nebo REST, je nutné vytvořit Asset a při vytváření programu určit, že se má tento Asset použít.
+6. Publikujte Asset, který je přidružený k programu.   
 
     >[!NOTE]
-    >Při vytvoření účtu Azure Media Services se do vašeho účtu ve stavu **Zastaveno** přidá výchozí koncový bod **streamování.** Koncový bod streamování, ze kterého chcete streamovat obsah, musí být ve stavu **Spuštěno**.
+    >Po vytvoření účtu Azure Media Services se do vašeho účtu přidá **výchozí** koncový bod streamování ve stavu **Zastaveno** . Koncový bod streamování, ze kterého chcete streamovat obsah, musí být ve stavu **Spuštěno**.
 
-7. Až budete připraveni začít streamovat a archivovat, spusťte program.
+7. Spusťte program, až budete připraveni začít streamovat a archivovat.
 
 8. Volitelně můžete dát kodéru pro kódování v reálném čase signál, aby spustil reklamu. Reklama bude vložena do výstupního proudu.
 
 9. Kdykoli budete chtít zastavit streamování a archivaci události, zastavte program.
 
-10. Odstraňte program (a volitelně odstraňte datový zdroj).     
+10. Odstraňte program (a volitelně odstraňte Asset).     
 
-## <a name="description-of-a-channel-and-its-related-components"></a><a id="channel"></a>Popis kanálu a jeho souvisejících součástí
-### <a name="channel-input-ingest-configurations"></a><a id="channel_input"></a>Konfigurace vstupu kanálu (ingestování)
-#### <a name="ingest-streaming-protocol"></a><a id="ingest_protocols"></a>Ingestování protokolu streamování
-Služba Media Services podporuje ingestování živých informačních kanálů pomocí fragmentovaných mp4 s více přenosovými rychlostmi a vícebitového protokolu RTMP jako protokolů streamování. Když je vybrán protokol streamování instika RTMP, vytvoří se pro kanál dva koncové body ingestování (vstup):
+## <a name="description-of-a-channel-and-its-related-components"></a><a id="channel"></a>Popis kanálu a jeho souvisejících komponent
+### <a name="channel-input-ingest-configurations"></a><a id="channel_input"></a>Konfigurace vstupu kanálů (ingestování)
+#### <a name="ingest-streaming-protocol"></a><a id="ingest_protocols"></a>Protokol instreamování
+Media Services podporuje ingestování živých kanálů pomocí přenosu dat s více přenosovými rychlostmi a RTMP s více přenosovými rychlostmi jako protokoly streamování. Pokud je vybrán protokol RTMP invysílání datového proudu, vytvoří se pro kanál dva koncové body ingestování (vstupní):
 
-* **Primární adresa URL**: Určuje plně kvalifikovanou adresu URL primárního koncového bodu ingestování RTMP kanálu.
-* **Sekundární adresa URL** (volitelné): Určuje plně kvalifikovanou adresu URL sekundárního koncového bodu ingestování RTMP kanálu.
+* **Primární adresa URL**: Určuje plně KVALIFIKOVANOU adresu URL primárního koncového bodu RTMP pro kanál.
+* **Sekundární adresa URL** (volitelné): Určuje plně KVALIFIKOVANOU adresu URL sekundárního koncového bodu RTMP ingesta kanálu.
 
-Sekundární adresu URL použijte, pokud chcete zlepšit odolnost a odolnost proti chybám datového proudu ingestování (stejně jako převzetí služeb při selhání kodéru a odolnost proti chybám), zejména pro následující scénáře:
+Sekundární adresu URL použijte v případě, že chcete zlepšit odolnost a odolnost proti chybám pro váš datový proud ingestu (a také převzetí služeb při selhání a odolnost proti chybám), zejména v následujících situacích:
 
-- Dvojité zatlačení jednoho kodéru na primární i sekundární adresy URL:
+- Jeden kodér dvakrát nanáší na primární i sekundární adresu URL:
 
-    Hlavním účelem tohoto scénáře je poskytnout větší odolnost proti kolísání sítě a nervozita. Některé rtmp kodéry nezvládnou síťové odpojení dobře. Dojde-li k odpojení sítě, může kodér zastavit kódování a potom neodesílat data ve vyrovnávací paměti, když dojde k opětovnému připojení. To způsobí nespojitosti a ztrátu dat. K odpojení sítě může dojít z důvodu chybné sítě nebo údržby na straně Azure. Primární/sekundární adresy URL snižují problémy se sítí a poskytují řízený proces upgradu. Pokaždé, když dojde k plánovanému odpojení sítě, spravuje služba Media Services primární a sekundární odpojení a poskytuje zpožděné odpojení mezi těmito dvěma. Kodéry pak mají čas, aby odesílání dat a znovu připojit. Pořadí odpojení může být náhodné, ale vždy bude existovat zpoždění mezi primárními / sekundárními nebo sekundárními / primárními adresami URL. V tomto scénáři kodér je stále jediný bod selhání.
+    Hlavním účelem tohoto scénáře je zajistit větší odolnost proti výkyvům sítě a kolísání. Některé kodéry RTMP nezpracovávají správně síťové odpojení. Když dojde k odpojení od sítě, může kodér zastavit kódování a pak při opětovném připojení Neodesílat data uložená do vyrovnávací paměti. To způsobuje výpadky a ztráty dat. K odpojení sítě může dojít z důvodu špatné sítě nebo údržby na straně Azure. Primární a sekundární adresy URL snižují problémy se sítí a poskytují řízený proces upgradu. Pokaždé, když dojde k zaplánovanému odpojení sítě, Media Services spravuje primární a sekundární odpojení a poskytuje zpožděné odpojení mezi nimi. Kodéry pak budou mít čas na uchovávání dat a znovu se znovu připojí. Pořadí odpojení může být náhodné, ale mezi primárními a sekundárními nebo sekundárními a primárními adresami URL bude vždycky zpoždění. V tomto scénáři je kodér stále jediným bodem selhání.
 
-- Více kodéry, přičemž každý kodér tlačí na vyhrazený bod:
+- Více kodérů, přičemž každý kodér přenáší do vyhrazeného bodu:
 
-    Tento scénář poskytuje kodér a ingestuce redundance. V tomto scénáři kodér1 odešle na primární adresu URL a kodér2 odešle na sekundární adresu URL. Když kodér selže, druhý kodér může pokračovat v odesílání dat. Redundanci dat lze zachovat, protože služba Media Services současně neodpojuje primární a sekundární adresy URL. Tento scénář předpokládá, že kodéry jsou časově synchronizovány a poskytují přesně stejná data.  
+    Tento scénář poskytuje jak kodér, tak i ingestuje redundanci. V tomto scénáři encoder1 přenáší na primární adresu URL a encoder2 nabízená oznámení na sekundární adresu URL. V případě, že kodér selhává, může ostatní kodér uchovávat data. Redundanci dat je možné zachovat, protože Media Services neprovádí odpojení primárních a sekundárních adres URL ve stejnou dobu. V tomto scénáři se předpokládá, že kodéry jsou synchronizované s časem a poskytují přesně stejná data.  
 
-- Více kodéry double-tlačí na primární i sekundární adresy URL:
+- Více kodérů dvakrát přenáší do primární i sekundární adresy URL:
 
-    V tomto scénáři oba kodéry nabízená data na primární a sekundární adresy URL. To poskytuje nejlepší spolehlivost a odolnost proti chybám, stejně jako redundanci dat. Tento scénář může tolerovat selhání kodéru i odpojení, i když jeden kodér přestane fungovat. Předpokládá, že kodéry jsou časově synchronizovány a poskytují přesně stejná data.  
+    V tomto scénáři obě kodéru zadávají data do primární i sekundární adresy URL. To zajišťuje nejlepší spolehlivost a odolnost proti chybám a také redundanci dat. Tento scénář může tolerovat chyby a odpojení kodéru, i když jeden kodér přestane fungovat. Předpokládá, že kodéry jsou v čase synchronizovány a poskytují přesně stejná data.  
 
-Informace o živých kodérech RTMP najdete v [tématu Podpora RTMP služby Azure Media Services a Živé kodéry](https://go.microsoft.com/fwlink/?LinkId=532824).
+Informace o živých kodérech RTMP najdete v tématu [Azure Media Services podpoře RTMP a živých kodérů](https://go.microsoft.com/fwlink/?LinkId=532824).
 
-#### <a name="ingest-urls-endpoints"></a>Ingestování adres URL (koncové body)
-Kanál poskytuje vstupní koncový bod (ingestovat URL), který zadáte v živém kodéru, takže kodér může tlačit datové proudy do vašich kanálů.   
+#### <a name="ingest-urls-endpoints"></a>Adresy URL ingestování (koncové body)
+Kanál poskytuje vstupní koncový bod (adresa URL pro příjem), který zadáte v živém kodéru, takže kodér může do kanálů vložit streamy.   
 
-Při vytváření kanálu můžete získat ingestující adresy URL. Chcete-li získat tyto adresy URL, kanál nemusí být ve **stavu Spuštěno.** Až budete připraveni začít s odesíláním dat do kanálu, kanál musí být ve **stavu Spuštěno.** Po zahájení příjem dat kanálu můžete zobrazit náhled datového proudu prostřednictvím adresy URL náhledu.
+Při vytváření kanálu můžete získat adresy URL pro příjem. Aby se tyto adresy URL dostaly, kanál se nemusí nacházet ve stavu **spuštěno** . Až budete připraveni začít s vložením dat do kanálu, kanál musí být ve stavu **spuštěno** . Až kanál začne ingestovat data, můžete zobrazit náhled datového proudu prostřednictvím adresy URL náhledu.
 
-Máte možnost ingestování fragmentovaného živého datového proudu MP4 (Smooth Streaming) přes připojení TLS. Chcete-li ingestovat přes TLS, nezapomeňte aktualizovat ingestující adresu URL na HTTPS. V současné době nelze ingestovat RTMP přes TLS.
+Máte možnost ingestovat fragmentované živé streamy MP4 (Smooth Streaming) přes připojení TLS. Pokud chcete ingestovat přes TLS, nezapomeňte aktualizovat adresu URL ingestování na HTTPS. V současné době nemůžete ingestovat RTMP přes TLS.
 
-#### <a name="keyframe-interval"></a><a id="keyframe_interval"></a>Interval klíčových snímků
-Pokud používáte místní živý kodér ke generování datového proudu s více přenosovými rychlostmi, interval klíčových snímků určuje dobu trvání skupiny obrázků (GOP), jak ji používá tento externí kodér. Poté, co kanál obdrží tento příchozí datový proud, můžete dodávat živý přenos do aplikací pro přehrávání klientů v některém z následujících formátů: Plynulé streamování, dynamické adaptivní streamování přes HTTP (DASH) a živé streamování HTTP (HLS). Když provádíte živé vysílání, HLS je vždy dynamicky zabaleno. Ve výchozím nastavení media services automaticky vypočítá poměr balení segmentu HLS (fragmenty na segment) na základě intervalu klíčových snímků, který je přijat z živého kodéru.
+#### <a name="keyframe-interval"></a><a id="keyframe_interval"></a>Interval klíčového snímku
+Pokud k vygenerování datového proudu s více přenosovými rychlostmi používáte místní živý kodér, interval klíčového snímku určuje dobu trvání skupiny obrázků (skupinu GOP), jak ji používá daný externí kodér. Až kanál přijme tento příchozí datový proud, můžete živý datový proud doručovat do aplikací pro přehrávání klienta v libovolném z následujících formátů: Smooth Streaming, dynamické adaptivní streamování přes HTTP (POMLČKa) a HTTP Live Streaming (HLS). Když provádíte živé streamování, HLS se vždy dynamicky zabalí. Ve výchozím nastavení Media Services automaticky vypočítá poměr HLS segmentu (fragmenty na segment) na základě intervalu klíčových snímků, který je obdržen z kodéru Live.
 
-V následující tabulce je uvedeno, jak se počítá doba trvání segmentu:
+Následující tabulka ukazuje, jakým způsobem je vypočítána doba trvání segmentu:
 
-| Interval klíčových snímků | Poměr balení segmentu HLS (FragmentsPerSegment) | Příklad |
+| Interval klíčového snímku | Poměr obalů segmentů HLS (FragmentsPerSegment) | Příklad |
 | --- | --- | --- |
-| Méně než nebo rovno 3 sekundy |3:1 |Pokud keyframeinterval (nebo GOP) je 2 sekundy, výchozí segment HLS obalový poměr je 3 až 1. Tím se vytvoří 6sekundový segment HLS. |
-| 3 až 5 sekund |2:1 |Pokud keyframeinterval (nebo GOP) je 4 sekundy, výchozí segment HLS obalový poměr je 2 až 1. Tím se vytvoří 8sekundový segment HLS. |
-| Větší než 5 sekund |1:1 |Pokud keyframeinterval (nebo GOP) je 6 sekund, výchozí poměr balení segmentu HLS je 1 až 1. Tím se vytvoří 6sekundový segment HLS. |
+| Menší než nebo rovno 3 sekundy |3:1 |Pokud je KeyFrameInterval (nebo skupinu GOP) 2 sekundy, výchozí Poměrový podíl segmentu HLS je 3 – 1. Tím se vytvoří segment HLS o 6 sekund. |
+| 3 až 5 sekund |2:1 |Pokud je KeyFrameInterval (nebo skupinu GOP) 4 sekundy, výchozí Poměrový podíl segmentu HLS je 2 – 1. Tím se vytvoří HLS segment o 8 sekund. |
+| Více než 5 sekund |1:1 |Pokud je KeyFrameInterval (nebo skupinu GOP) 6 sekund, je výchozí Poměrový podíl segmentu HLS 1 – 1. Tím se vytvoří segment HLS o 6 sekund. |
 
-Poměr fragmentů za segment můžete změnit konfigurací výstupu kanálu a nastavením FragmentsPerSegment na ChannelOutputHls.
+Poměr fragmentů jednotlivých segmentů můžete změnit konfigurací výstupu kanálu a nastavením FragmentsPerSegment na ChannelOutputHls.
 
-Hodnotu intervalu klíčových snímků můžete také změnit nastavením vlastnosti KeyFrameInterval na channelinput. Pokud explicitně nastavíte KeyFrameInterval, poměr balení segmentu HLS FragmentsPerSegment se vypočítá pomocí pravidel popsaných výše.  
+Hodnotu intervalu klíčového snímku můžete také změnit nastavením vlastnosti KeyFrameInterval v ChannelInput. Pokud jste explicitně nastavili KeyFrameInterval, vypočítá se poměrný podíl HLS segmentu FragmentsPerSegment prostřednictvím dříve popsaných pravidel.  
 
-Pokud explicitně nastavíte keyframeinterval a fragmentyPerSegment, media services používá hodnoty, které jste nastavili.
+Pokud jste explicitně nastavili KeyFrameInterval i FragmentsPerSegment, používá Media Services hodnoty, které jste nastavili.
 
 #### <a name="allowed-ip-addresses"></a>Povolené IP adresy
-Můžete definovat IP adresy, které mohou publikovat video na tomto kanálu. Povolenou adresu IP lze zadat jako jednu z následujících adres:
+Můžete definovat IP adresy, které můžou publikovat video na tento kanál. Povolená IP adresa může být zadaná jako jedna z následujících:
 
 * Jedna IP adresa (například 10.0.0.1)
-* Oblast IP adres, která používá adresu IP a masku podsítě CIDR (například 10.0.0.1/22)
-* Oblast IP, která používá adresu IP a tečkovanou masku desítkové podsítě (například 10.0.0.1(255.255.252.0))
+* Rozsah IP adres, který používá IP adresu a masku podsítě CIDR (například 10.0.0.1/22)
+* Rozsah IP adres, který používá IP adresu a masku podsítě s tečkami (například 10.0.0.1 (255.255.252.0)).
 
-Pokud nejsou zadány žádné adresy IP a neexistuje žádná definice pravidla, není povolena žádná adresa IP. Pokud chcete povolit libovolnou IP adresy, vytvořte pravidlo a nastavte 0.0.0.0/0.
+Pokud nejsou zadané žádné IP adresy a není k dispozici žádná definice pravidla, není povolená žádná IP adresa. Pokud chcete povolit libovolnou IP adresy, vytvořte pravidlo a nastavte 0.0.0.0/0.
 
 ### <a name="channel-preview"></a>Náhled kanálu
-#### <a name="preview-urls"></a>Náhled adres URL
-Kanály poskytují koncový bod náhledu (adresu URL náhledu), který používáte k zobrazení náhledu a ověření datového proudu před dalším zpracováním a doručením.
+#### <a name="preview-urls"></a>Adresy URL náhledu
+Kanály poskytují koncový bod verze Preview (adresa URL náhledu), který používáte k zobrazení náhledu a ověření datového proudu před dalším zpracováním a doručením.
 
-Při vytváření kanálu můžete získat adresu URL náhledu. Chcete-li získat adresu URL, kanál nemusí být ve **stavu Spuštěno.** Po spuštění kanálu můžete zobrazit náhled datového proudu.
+Adresu URL náhledu můžete získat při vytváření kanálu. Pokud chcete získat adresu URL, kanál nemusí být ve stavu **spuštěno** . Až kanál začne přijímat data, můžete zobrazit náhled streamu.
 
-V současné době může být stream náhledu dodáván pouze ve fragmentovaném formátu MP4 (Smooth Streaming), bez ohledu na zadaný typ vstupu. K testování plynulého datového proudu můžete použít přehrávač [Sledování stavu vyhlazení datových](https://playready.directtaps.net/smoothstreaming/) proudů. K zobrazení streamu můžete taky použít přehrávač, který je hostovaný na webu Azure Portal.
+V současné době se Stream Preview dá doručit jenom ve formátu fragmentů MP4 (Smooth Streaming), bez ohledu na zadaný vstupní typ. K otestování hladkého streamu můžete použít přehrávač [monitorování stavu Smooth Streaming](https://playready.directtaps.net/smoothstreaming/) . K zobrazení datového proudu můžete použít také přehrávač, který je hostovaný v Azure Portal.
 
 #### <a name="allowed-ip-addresses"></a>Povolené IP adresy
-Můžete definovat IP adresy, které se mohou připojit ke koncovému bodu náhledu. Pokud nejsou zadány žádné adresy IP, je povolena libovolná adresa IP. Povolenou adresu IP lze zadat jako jednu z následujících adres:
+Můžete definovat IP adresy, které mají povolené připojení ke koncovému bodu Preview. Nejsou-li zadány žádné IP adresy, je povolena jakákoli IP adresa. Povolená IP adresa může být zadaná jako jedna z následujících:
 
 * Jedna IP adresa (například 10.0.0.1)
-* Oblast IP adres, která používá adresu IP a masku podsítě CIDR (například 10.0.0.1/22)
-* Oblast IP, která používá adresu IP a tečkovanou masku desítkové podsítě (například 10.0.0.1(255.255.252.0))
+* Rozsah IP adres, který používá IP adresu a masku podsítě CIDR (například 10.0.0.1/22)
+* Rozsah IP adres, který používá IP adresu a masku podsítě s tečkami (například 10.0.0.1 (255.255.252.0)).
 
 ### <a name="channel-output"></a>Výstup kanálu
-Informace o výstupu kanálu naleznete v části [Interval klíčových snímků.](#keyframe_interval)
+Informace o výstupu kanálu naleznete v části [interval klíčového snímku](#keyframe_interval) .
 
 ### <a name="channel-managed-programs"></a>Programy spravované kanálem
-Kanál je přidružen k programům, které můžete použít k řízení publikování a ukládání segmentů v živém přenosu. Kanály spravují programy. Vztah kanálu a programu je podobný tradičním médiím, kde kanál má konstantní proud obsahu a program je vymezen na určitou časovou událost v tomto kanálu.
+Kanál je přidružen k programům, které lze použít k řízení publikování a ukládání segmentů v živém datovém proudu. Kanály spravují programy. Vztah kanálu a programu je podobný tradičnímu médiu, kde kanál obsahuje konstantní datový proud s obsahem a program je vymezen na nějaké časované události v tomto kanálu.
 
-Nastavením délky **archivačního okna** můžete určit počet hodin, po které chcete uchovávat zaznamenaný obsah programu. Tuto hodnotu můžete nastavit v rozmezí od 5 minut po 25 hodin. Délka archivačního okna také určuje maximální počet času, po který mohou klienti hledat zpět v čase z aktuální živé pozice. Programy můžou běžet po určenou dobu a obsah, který se do délky okna nevejde, bude vždy zahozen. Hodnota této vlastnosti také určuje, jak dlouho můžou růst manifesty klientů.
+Nastavením délky **archivačního okna** můžete určit počet hodin, po které chcete uchovávat zaznamenaný obsah programu. Tuto hodnotu můžete nastavit v rozmezí od 5 minut po 25 hodin. Délka okna archivu také určuje maximální počet časových limitů, které mohou klienti vyhledávat v čase z aktuální živé pozice. Programy můžou běžet po určenou dobu a obsah, který se do délky okna nevejde, bude vždy zahozen. Hodnota této vlastnosti také určuje, jak dlouho můžou růst manifesty klientů.
 
-Každý program je přidružen k datovému zdroji, který ukládá streamovaný obsah. Prostředek je mapován na kontejner blob bloku v účtu úložiště Azure a soubory v datovém zdroji jsou uloženy jako objekty BLOB v tomto kontejneru. Chcete-li publikovat program tak, aby zákazníci mohli zobrazit datový proud, musíte vytvořit lokátor OnDemand pro přidružený datový zdroj. Tento lokátor můžete použít k vytvoření adresy URL streamování, kterou můžete poskytnout svým klientům.
+Každý program je přidružen k assetu, který ukládá obsah streamu. Asset je namapovaný na kontejner objektů blob bloku v účtu úložiště Azure a soubory v prostředku se ukládají jako objekty BLOB v tomto kontejneru. Chcete-li publikovat program, aby mohli vaši zákazníci zobrazit datový proud, je nutné pro přidružený prostředek vytvořit Lokátor OnDemand. Pomocí tohoto lokátoru můžete vytvořit adresu URL streamování, kterou můžete poskytnout svým klientům.
 
-Kanál podporuje až tři souběžně spuštěné programy, takže můžete vytvořit více archivů stejného příchozího datového proudu. Podle potřeby můžete publikovat a archivovat různé části události. Představte si například, že vaším obchodním požadavkem je archivovat 6 hodin programu, ale vysílat pouze posledních 10 minut. K tomu potřebujete vytvořit dva současně spuštěné programy. Jeden program je nastaven na archivaci šesti hodin události, ale program není publikován. Druhý program je nastaven na archivaci po dobu 10 minut a tento program je publikován.
+Kanál podporuje až tři současně spuštěné programy, takže můžete vytvořit několik archivů stejného příchozího datového proudu. Podle potřeby můžete publikovat a archivovat různé části události. Představte si například, že váš požadavek vaší firmy je archivovat 6 hodin programu, ale vysílat pouze posledních 10 minut. K tomu potřebujete vytvořit dva současně spuštěné programy. Jeden program je nastavený tak, aby archivoval šest hodin události, ale program není publikovaný. Druhý program je nastaven na archivaci po dobu 10 minut a tento program je publikován.
 
-Existující programy nepoužívejte znovu pro nové události. Místo toho vytvořte nový program pro každou událost. Až budete připraveni začít streamovat a archivovat, spusťte program. Kdykoli budete chtít zastavit streamování a archivaci události, zastavte program.
+Existující programy nepoužívejte znovu pro nové události. Místo toho vytvořte nový program pro každou událost. Spusťte program, až budete připraveni začít streamovat a archivovat. Kdykoli budete chtít zastavit streamování a archivaci události, zastavte program.
 
-Chcete-li odstranit archivovaný obsah, zastavte a odstraňte program a odstraňte přidružený datový zdroj. Datový zdroj nelze odstranit, pokud jej program používá. Program musí být nejprve odstraněn.
+Chcete-li odstranit archivovaný obsah, zastavte a odstraňte program a potom odstraňte přidružený Asset. Prostředek se nedá odstranit, pokud ho program používá. Nejdříve je nutné odstranit program.
 
-I po zastavení a odstranění programu mohou uživatelé streamovat archivovaný obsah jako video na vyžádání, dokud datový zdroj neodstraníte. Pokud chcete archivovaný obsah zachovat, ale nemáte ho k dispozici pro streamování, odstraňte lokátor streamování.
+I po zastavení a odstranění programu můžou uživatelé streamovat archivovaný obsah jako video na vyžádání, dokud Asset neodstraníte. Pokud chcete zachovat archivovaný obsah, ale nemáte ho k dispozici pro streamování, odstraňte Lokátor streamování.
 
-## <a name="channel-states-and-billing"></a><a id="states"></a>Stavy kanálů a fakturace
-Možné hodnoty pro aktuální stav kanálu zahrnují:
+## <a name="channel-states-and-billing"></a><a id="states"></a>Stavy kanálu a fakturace
+K dispozici jsou možné hodnoty pro aktuální stav kanálu:
 
-* **Zastaveno**: Toto je počáteční stav kanálu po jeho vytvoření. V tomto stavu lze aktualizovat vlastnosti kanálu, ale streamování není povoleno.
-* **Spuštění**: Kanál se spouští. Během tohoto stavu nejsou povoleny žádné aktualizace ani streamování. Pokud dojde k chybě, kanál se vrátí do stavu **Zastaveno.**
-* **Spuštění**: Kanál může zpracovávat živé přenosy.
-* **Zastavení**: Kanál je zastaven. Během tohoto stavu nejsou povoleny žádné aktualizace ani streamování.
-* **Odstraňování**: Kanál se odstraňuje. Během tohoto stavu nejsou povoleny žádné aktualizace ani streamování.
+* **Zastaveno**: Jedná se o počáteční stav kanálu po jeho vytvoření. V tomto stavu je možné aktualizovat vlastnosti kanálu, ale streamování není povoleno.
+* **Začíná**: kanál se spouští. V tomto stavu nejsou povolené žádné aktualizace ani streamování. Pokud dojde k chybě, kanál se vrátí do stavu **Zastaveno** .
+* **Spuštěno**: kanál dokáže zpracovávat živé streamy.
+* **Zastavování**: kanál je ukončován. V tomto stavu nejsou povolené žádné aktualizace ani streamování.
+* **Odstraňování**: kanál se odstraňuje. V tomto stavu nejsou povolené žádné aktualizace ani streamování.
 
-Následující tabulka ukazuje, jak se stavy kanálů mapují do fakturačního režimu.
+Následující tabulka ukazuje, jak se stavy kanálu mapují na režim fakturace.
 
-| Stav kanálu | Indikátory portálového uj., | Účtovány? |
+| Stav kanálu | Indikátory uživatelského rozhraní portálu | Účtuje? |
 | --- | --- | --- |
-| **Spuštění** |**Spuštění** |Ne (přechodný stav) |
-| **Spuštěno** |**Připraveno** (bez spuštěné programy)<p><p>– nebo –<p>**Streamování** (alespoň jeden spuštěný program) |Ano |
+| **Začátek** |**Začátek** |Ne (přechodný stav) |
+| **Spuštěno** |**Připraveno** (žádné spuštěné programy)<p><p>– nebo –<p>**Streamování** (aspoň jeden spuštěný program) |Ano |
 | **Zastavování** |**Zastavování** |Ne (přechodný stav) |
 | **Zastaveno** |**Zastaveno** |Ne |
 
 ## <a name="closed-captioning-and-ad-insertion"></a><a id="cc_and_ads"></a>Skryté titulky a vkládání reklam
-V následující tabulce jsou uvedeny podporované standardy pro skryté titulky a vkládání reklam.
+Následující tabulka ukazuje podporované standardy pro uzavřené titulky a vkládání reklam.
 
 | Standard | Poznámky |
 | --- | --- |
-| CEA-708 a EIA-608 (708/608) |CEA-708 a EIA-608 jsou standardy s uzavřenými titulky pro Spojené státy a Kanadu.<p><p>V současné době titulky je podporována pouze v případě, že provádí v kódované vstupní datový proud. Musíte použít kodér živých médií, který může vložit titulky 608 nebo 708 do kódovaného datového proudu odeslaného do služby Media Services. Mediální služby doručují obsah s vloženými titulky divákům. |
-| TTML uvnitř .ismt (Plynulé streamování textových stop) |Dynamické balení mediálních služeb umožňuje klientům streamovat obsah v libovolném z následujících formátů: DASH, HLS nebo Smooth Streaming. Pokud však ingestujete fragmentované MP4 (Plynulé streamování) s titulky uvnitř .ismt (Stopy textu plynulé streamování), můžete datový proud doručit pouze klientům plynulého streamování. |
-| SCTE-35 |SCTE-35 je digitální signalizační systém, který se používá k cue reklamní vložení. Downstream přijímače používají signál splice reklamy do proudu pro přidělený čas. SCTE-35 musí být odeslán jako řídká stopa ve vstupním proudu.<p><p>V současné době je jediným podporovaným formátem vstupního datového proudu, který přenáší signály reklam, fragmentovaný formát MP4 (Plynulé streamování). Jediným podporovaným výstupním formátem je také plynulé streamování. |
+| CEA-708 a EIA-608 (708/608) |CEA-708 a EIA-608 jsou standardy titulků pro USA a Kanadu.<p><p>V současné době se titulky podporují jenom v případě, že se přenesou do kódovaného vstupního streamu. Potřebujete použít živý kodér médií, který může vkládat popisky 608 nebo 708 do kódovaného datového proudu, který je odeslán do Media Services. Media Services doručuje obsah pomocí vložených titulků vašim uživatelům. |
+| TTML uvnitř. ismt (textové stopy Smooth Streaming) |Media Services dynamické balení umožňuje klientům streamovat obsah v libovolném z následujících formátů: POMLČKy, HLS nebo Smooth Streaming. Pokud však ingestují fragmenty MP4 (Smooth Streaming) s titulky uvnitř. ismt (Smooth Streaming textové stopy), můžete datový proud doručovat pouze do Smooth Streaming klientů. |
+| SCTE-35 |SCTE-35 je systém digitálního signálu, který se používá k oznámení vkládání inzerce. Přijímač pro příjem dat používají signál k spojení inzerce do datového proudu za přidělený čas. SCTE-35 musí být odesláno jako zhuštěné stopa ve vstupním datovém proudu.<p><p>V současné době je jediným podporovaným formátem vstupního datového proudu, který přenáší signály AD, fragmentem MP4 (Smooth Streaming). Jediným podporovaným formátem výstupu je také Smooth Streaming. |
 
 ## <a name="considerations"></a><a id="considerations"></a>Požadavky
 Pokud k odeslání datového proudu s více přenosovými rychlostmi do kanálu používáte místní živý kodér, platí následující omezení:
 
-* Ujistěte se, že máte dostatek volného připojení k Internetu k odesílání dat do ingestujících bodů.
-* Použití sekundární ingestující adresy URL vyžaduje další šířku pásma.
-* Příchozí datový proud s více přenosovou rychlostí může mít maximálně 10 úrovní kvality videa (vrstev) a maximálně 5 zvukových stop.
-* Nejvyšší průměrný přenosový tok pro libovolnou úroveň kvality videa by měl být nižší než 10 Mb/s.
-* Agregát průměrných přenosových rychlostí pro všechny video a audio streamy by měl být nižší než 25 Mb/s.
-* Vstupní protokol nelze změnit, pokud je spuštěn kanál nebo přidružené programy. Pokud požadujete různé protokoly, vytvořte samostatné kanály pro každý vstupní protokol.
-* V kanálu můžete ingestovat jeden přenosový tok. Ale protože kanál nezpracovává datový proud, klientské aplikace také obdrží jeden datový proud datového toku. (Tuto možnost nedoporučujeme.)
+* Ujistěte se, že máte dostatečné bezplatné připojení k Internetu, aby bylo možné odesílat data do bodů příjmu.
+* Použití sekundární adresy URL pro přijímání vyžaduje větší šířku pásma.
+* Příchozí datový proud s více přenosovými rychlostmi může mít maximálně 10 úrovní kvality videa (vrstvy) a maximálně 5 zvukových stop.
+* Nejvyšší Průměrná přenosová rychlost pro libovolnou úroveň kvality videa by měla být nižší než 10 MB/s.
+* Agregace průměrných přenosů pro všechna videa a zvukové streamy by měla být nižší než 25 MB/s.
+* Vstupní protokol nemůžete změnit, pokud je spuštěný kanál nebo jeho přidružené programy. Pokud požadujete různé protokoly, vytvořte samostatné kanály pro každý vstupní protokol.
+* V kanálu můžete přijmout jednu přenosovou rychlost. Vzhledem k tomu, že kanál nezpracovává datový proud, budou klientské aplikace také přijímat datový proud s jednou přenosovou rychlostí. (Tuto možnost nedoporučujeme.)
 
-Zde jsou další aspekty týkající se práce s kanály a souvisejícími součástmi:
+Tady jsou další otázky týkající se práce s kanály a souvisejícími součástmi:
 
-* Pokaždé, když překonfigurujete živý kodér, zavolejte metodu **Reset** v kanálu. Před resetováním kanálu je třeba program zastavit. Po obnovení kanálu restartujte program.
+* Pokaždé, když znovu nakonfigurujete živý kodér, zavolejte na kanálu metodu **resetování** . Před resetováním kanálu musíte program zastavit. Po resetování kanálu restartujte program.
 
   > [!NOTE]
-  > Po restartování programu je třeba jej přidružit k novému datovému zdroji a vytvořit nový lokátor. 
+  > Po restartování programu je třeba ho přidružit k novému assetu a vytvořit nový lokátor. 
   
-* Kanál lze zastavit pouze v případě, že je ve stavu **Spuštěno** a všechny programy v kanálu byly zastaveny.
-* Ve výchozím nastavení můžete do účtu Mediálních služeb přidat pouze pět kanálů. Další informace naleznete v [tématu Kvóty a omezení](media-services-quotas-and-limitations.md).
-* Bude se vám účtovat pouze v případě, že je kanál ve stavu **Spuštěno.** Další informace najdete v části [Stavy kanálu a fakturace.](media-services-live-streaming-with-onprem-encoders.md#states)
+* Kanál lze zastavit pouze v případě, že je ve stavu **spuštěno** a všechny programy v kanálu byly zastaveny.
+* Ve výchozím nastavení můžete k účtu Media Services přidat jenom pět kanálů. Další informace najdete v tématu [kvóty a omezení](media-services-quotas-and-limitations.md).
+* Fakturuje se vám jenom v případě, že je váš kanál ve stavu **spuštěno** . Další informace najdete v části [stavy kanálu a fakturace](media-services-live-streaming-with-onprem-encoders.md#states) .
 
 ## <a name="media-services-learning-paths"></a>Mapy kurzů k Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
@@ -229,12 +229,12 @@ Zde jsou další aspekty týkající se práce s kanály a souvisejícími souč
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-topics"></a>Související témata
-[Doporučujese na místních kodéry](media-services-recommended-encoders.md)
+[Doporučené na místních kodérech](media-services-recommended-encoders.md)
 
-[Azure Media Services fragmentované MP4 žije ingestestovat specifikace](../media-services-fmp4-live-ingest-overview.md)
+[Azure Media Services fragmentované specifikace ingestování MP4](../media-services-fmp4-live-ingest-overview.md)
 
 [Přehled a běžné scénáře Azure Media Services](media-services-overview.md)
 
-[Koncepty mediálních služeb](media-services-concepts.md)
+[Media Services koncepty](media-services-concepts.md)
 
 [live-overview]: ./media/media-services-manage-channels-overview/media-services-live-streaming-current.png
