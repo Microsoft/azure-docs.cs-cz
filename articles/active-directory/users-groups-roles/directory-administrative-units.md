@@ -1,6 +1,6 @@
 ---
-title: Správa administrativních jednotek (preview) – Azure AD | Dokumenty společnosti Microsoft
-description: Použití jednotek pro správu pro podrobnější delegování oprávnění ve službě Azure Active Directory
+title: Správa administrativních jednotek (Preview) – Azure AD | Microsoft Docs
+description: Použití jednotek pro správu k podrobnějšímu delegování oprávnění v Azure Active Directory
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -15,95 +15,95 @@ ms.reviewer: elkuzmen
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 12101b170066bc52e75f4aa281c6f1c21283c004
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81406473"
 ---
-# <a name="administrative-units-management-in-azure-active-directory-preview"></a>Správa administrativních jednotek ve službě Azure Active Directory (preview)
+# <a name="administrative-units-management-in-azure-active-directory-preview"></a>Správa administrativních jednotek v Azure Active Directory (Preview)
 
-Tento článek popisuje jednotky pro správu ve službě Azure Active Directory (Azure AD). Jednotka pro správu je prostředek Azure AD, který může být kontejner pro jiné prostředky Azure AD. V této verzi preview může administrativní jednotka obsahovat pouze uživatele a skupiny.
+Tento článek popisuje jednotky pro správu v Azure Active Directory (Azure AD). Jednotka pro správu je prostředek služby Azure AD, který může být kontejnerem pro jiné prostředky Azure AD. V této verzi Preview může jednotka pro správu obsahovat jenom uživatele a skupiny.
 
-Jednotky pro správu umožňují udělit oprávnění správce, která jsou omezena na oddělení, oblast nebo jiný segment organizace, který definujete. Pomocí jednotek pro správu můžete delegovat oprávnění na místní správce nebo nastavit zásady na podrobné úrovni. Správce uživatelského účtu může například aktualizovat informace o profilu, resetovat hesla a přiřazovat licence uživatelům pouze v jejich administrativní jednotce.
+Jednotky pro správu umožňují udělit oprávnění správce, která jsou omezená na oddělení, oblast nebo jiný segment vaší organizace, kterou definujete. Jednotky pro správu můžete použít k delegování oprávnění pro místní správce nebo k nastavení zásad na podrobné úrovni. Správce uživatelských účtů může například aktualizovat informace o profilu, resetovat hesla a přiřazovat licence uživatelům pouze ve své jednotce pro správu.
 
- Například delegování na regionální specialisty podpory role [správce helpdesku](directory-assign-admin-roles.md#helpdesk-administrator) omezena na správu pouze uživatelé v oblasti, kterou podporují.
+ Například delegování na oblastní specialisty podpory: role [správce helpdesku](directory-assign-admin-roles.md#helpdesk-administrator) omezená na správu pouze uživatelů v oblasti, které podporují.
 
 ## <a name="deployment-scenario"></a>Scénář nasazení
 
-Omezení oboru správy pomocí administrativních jednotek může být užitečné v organizacích, které se sřučí z nezávislých divizí jakéhokoli druhu. Vezměme si příklad velké univerzity, která se skládá z mnoha autonomních škol (School of Business, School of Engineering, a tak dále), že každý má tým it administrátorů, kteří řídí přístup, spravovat uživatele a nastavit zásady pro jejich školy. Ústřední správce by mohl:
+Omezení rozsahu správy pomocí jednotek pro správu může být užitečné v organizacích, které jsou tvořeny nezávislými divizemi jakéhokoli druhu. Vezměte v úvahu příklad velké školy, který se skládá z mnoha autonomních škol (školy firmy, školy a tak dále), že každý má tým správců IT, kteří řídí přístup, spravují uživatele a nastavují zásady pro své školy. Centrální správce může:
 
-- Vytvoření role s oprávněními správce pouze před uživateli Služby Azure AD v jednotce pro správu podnikové školy
-- Vytvoření administrativní jednotky pro obchodní školu
-- Naplňte administrativní jednotku pouze studenty a zaměstnanci obchodní školy
-- Přidání IT týmu obchodní školy do role s jejich rozsahem
+- Vytvoření role s oprávněními správce jenom pro uživatele Azure AD v jednotce pro správu Business School
+- Vytvoření jednotky pro správu pro školu firmy
+- Naplnit jednotku pro správu jenom s studenty a zaměstnanci společnosti Business School
+- Přidejte do role IT tým obchodní školy s jejich oborem.
 
 ## <a name="license-requirements"></a>Licenční požadavky
 
-Použití jednotek pro správu vyžaduje licenci Azure Active Directory Premium pro každého správce jednotky pro správu a licence Azure Active Directory Free pro členy jednotky pro správu. Další informace najdete [v tématu Začínáme s Azure AD Premium](../fundamentals/active-directory-get-started-premium.md).
+Použití jednotek pro správu vyžaduje licenci Azure Active Directory Premium pro každého správce jednotky správy a Azure Active Directory Free licence pro členy jednotek pro správu. Další informace najdete v tématu [Začínáme s Azure AD Premium](../fundamentals/active-directory-get-started-premium.md).
 
-## <a name="manage-administrative-units"></a>Správa administrativních jednotek
+## <a name="manage-administrative-units"></a>Spravovat jednotky pro správu
 
-V této verzi preview můžete spravovat jednotky pro správu pomocí portálu Azure, rutin a skriptů prostředí PowerShell nebo Microsoft Graphu. Podrobnosti naleznete v naší dokumentaci:
+V této verzi Preview můžete spravovat jednotky pro správu pomocí Azure Portal, rutin prostředí PowerShell a skriptů nebo Microsoft Graph. Podrobnosti najdete v naší dokumentaci:
 
-- [Vytvoření, odebrání, vyplnění a přidání rolí do administrativních jednotek](roles-admin-units-manage.md): Dokončení postupů s postupy
-- [Práce s jednotkami pro správu:](https://docs.microsoft.com/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0)Jak pracovat s jednotkami pro správu pomocí Prostředí PowerShell
-- [Podpora grafu administrativní jednotky](https://docs.microsoft.com/graph/api/resources/administrativeunit?view=graph-rest-beta): Podrobná dokumentace k aplikaci Microsoft Graph pro administrativní jednotky.
+- [Vytváření, odebírání, naplnění a přidávání rolí do jednotek pro správu](roles-admin-units-manage.md): kompletní postupy postupů
+- [Práce s jednotkami](https://docs.microsoft.com/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0)pro správu: jak pracovat s jednotkami pro správu pomocí PowerShellu
+- [Podpora grafu jednotek pro správu](https://docs.microsoft.com/graph/api/resources/administrativeunit?view=graph-rest-beta): podrobná dokumentace k Microsoft Graph pro jednotky pro správu.
 
-### <a name="planning-your-administrative-units"></a>Plánování administrativních jednotek
+### <a name="planning-your-administrative-units"></a>Plánování jednotek pro správu
 
-Jednotky pro správu lze logicky seskupit prostředky Azure AD. Například pro organizaci, jejíž oddělení IT je rozptýleno globálně, může mít smysl vytvořit administrativní jednotky, které definují tyto zeměpisné hranice. V jiném scénáři, kdy nadnárodní organizace má různé "podorganizace", které jsou semi-autonomní v provozu, každá podorganizace může být zastoupena správní jednotkou.
+Jednotky pro správu lze použít k logickému seskupení prostředků služby Azure AD. Například pro organizaci, jejíž oddělení IT je celkově rozptýlené, může být vhodné vytvořit administrativní jednotky, které definují tyto geografické hranice. V jiném scénáři, kde má více národních organizací odlišnou "podkategorie", které jsou částečně nezávislé na operacích, může být každá dílčí organizace reprezentována jednotkou správy.
 
-Kritéria, na kterých jsou vytvořeny administrativní jednotky, se budou řídit jedinečnými požadavky organizace. Administrativní jednotky jsou běžným způsobem definování struktury napříč službami M365. Doporučujeme připravit administrativní jednotky s ohledem na jejich využití v rámci služeb M365. Maximální hodnotu můžete získat z administrativních jednotek, pokud můžete přidružit společné prostředky v rámci m365 pod administrativní jednotkou.
+Kritéria, na kterých se vytvářejí jednotky pro správu, budou provádět jedinečné požadavky organizace. Jednotky pro správu představují běžný způsob, jak definovat strukturu napříč M365 službami. Doporučujeme, abyste připravili jednotky pro správu s využitím napříč M365 službami. Můžete získat maximální hodnotu z jednotek pro správu, když můžete přidružit běžné prostředky mezi M365 v rámci jednotky pro správu.
 
-Můžete očekávat, že vytvoření administrativních jednotek v organizaci projít následující fáze:
+Můžete očekávat, že vytváření jednotek pro správu v organizaci projdete v následujících fázích:
 
-1. Počáteční přijetí: Vaše organizace začne vytvářet administrativní jednotky na základě počátečních kritérií a počet jednotek pro správu se bude zvyšovat s upřesněním kritérií.
-1. Prořezávání: Jakmile jsou kritéria dobře definována, budou odstraněny administrativní jednotky, které již nejsou vyžadovány.
-1. Stabilizace: Organizační struktura je dobře definována a počet administrativních jednotek se během krátké doby výrazně nezmění.
+1. Počáteční přijetí: vaše organizace začne vytvářet jednotky pro správu na základě počátečních kritérií a počet jednotek pro správu se zvýší, protože jsou tato kritéria upřesněna.
+1. Vyřazení: Jakmile jsou kritéria dobře definovaná, odeberou se jednotky pro správu, které už nejsou potřeba.
+1. Stabilizace: vaše organizační struktura je dobře definovaná a počet administrativních jednotek se nemění významně po krátkou dobu.
 
 ## <a name="currently-supported-scenarios"></a>Aktuálně podporované scénáře
 
-Globální správci nebo správci privilegovaných rolí můžou pomocí portálu Azure AD vytvářet jednotky pro správu, přidávat uživatele jako členy jednotek pro správu a pak přiřazovat pracovníky IT k rolím správce s rozsahem správy. Správci s rozsahem správy pak můžou používat portál Office 365 pro základní správu uživatelů v jejich administrativních jednotkách.
+Globální správci nebo správci privilegovaných rolí můžou pomocí portálu Azure AD vytvořit jednotky pro správu, přidat uživatele jako členy jednotek pro správu a pak přiřadit IT oddělení k rolím správců vymezeným jednotce správy. Správci s rozsahem administrativní jednotky mohou potom použít portál Office 365 pro základní správu uživatelů v jejich jednotkách správy.
 
-Kromě toho skupiny mohou být přidány jako členové administrativní jednotky a správce skupiny správce jednotky správce je můžete spravovat pomocí PowerShell, Microsoft Graph a portál Azure AD.
+Kromě toho je možné přidat skupiny jako členy jednotky pro správu a správce skupin s oborem správy, který je může spravovat pomocí PowerShellu, Microsoft Graph a portálu Azure AD.
 
-Níže uvedená tabulka popisuje aktuální podporu pro scénáře správních jednotek.
+Následující tabulka popisuje aktuální podporu scénářů pro správu jednotek.
 
-### <a name="administrative-unit-management"></a>Vedení správní jednotky
+### <a name="administrative-unit-management"></a>Správa jednotek pro správu
 
-Oprávnění |   MS Graf/PowerShell   | Portál Azure AD | Centrum pro správu Microsoftu 365
+Oprávnění |   MS Graph/PowerShell   | Portál Azure AD | Centrum pro správu Microsoftu 365
 ----------- | ----------------------- | --------------- | -----------------
-Vytváření a mazání administrativních jednotek   |    Podporuje se    |   Podporuje se   |    Nepodporuje se
-Individuální přidávání a odebírání členů správní jednotky    |   Podporuje se    |   Podporuje se   |    Nepodporuje se
-Hromadné přidávání a odebírání členů správní jednotky pomocí souboru CSV   |    Nepodporuje se     |  Podporuje se   |    Žádný plán na podporu
-Přiřazení správců masu s rozsahem správní jednotky  |     Podporuje se    |   Podporuje se    |   Nepodporuje se
+Vytváření a odstraňování jednotek pro správu   |    Podporuje se    |   Podporuje se   |    Nepodporuje se
+Přidávání a odebírání členů administrativní jednotky jednotlivě    |   Podporuje se    |   Podporuje se   |    Nepodporuje se
+Hromadné přidávání a odebírání členů jednotek pro správu pomocí souboru. csv   |    Nepodporuje se     |  Podporuje se   |    Žádný plán k podpoře
+Přiřazování správců v rámci jednotky pro správu  |     Podporuje se    |   Podporuje se    |   Nepodporuje se
 Dynamické přidávání a odebírání členů AU na základě atributů | Nepodporuje se | Nepodporuje se | Nepodporuje se
 
 ### <a name="user-management"></a>Správa uživatelů
 
-Oprávnění |   MS Graf/PowerShell   | Portál Azure AD | Centrum pro správu Microsoftu 365
+Oprávnění |   MS Graph/PowerShell   | Portál Azure AD | Centrum pro správu Microsoftu 365
 ----------- | ----------------------- | --------------- | -----------------
-správa uživatelských vlastností, hesel, licencí s rozsahem administrativní jednotky   |    Podporuje se     |  Podporuje se   |   Podporuje se
-blokování a odblokování přihlášení uživatele s rozsahem jednotky    |   Podporuje se   |    Podporuje se   |    Podporuje se
-správa pověření vícefaktorové ověřování uživatelů s rozsahem správy   |    Podporuje se   |   Podporuje se   |   Nepodporuje se
+Správa vlastností uživatele, hesel a licencí s rozsahem administrativní jednotky   |    Podporuje se     |  Podporuje se   |   Podporuje se
+blokující a odblokování přihlášení uživatelů v oboru jednotky pro správu    |   Podporuje se   |    Podporuje se   |    Podporuje se
+Správa přihlašovacích údajů uživatelského ověřování s rozsahem jednotky pro správu   |    Podporuje se   |   Podporuje se   |   Nepodporuje se
 
 ### <a name="group-management"></a>Správa skupin
 
-Oprávnění |   MS Graf/PowerShell   | Portál Azure AD | Centrum pro správu Microsoftu 365
+Oprávnění |   MS Graph/PowerShell   | Portál Azure AD | Centrum pro správu Microsoftu 365
 ----------- | ----------------------- | --------------- | -----------------
-správa vlastností a členů s oborem správní jednotky     |  Podporuje se   |    Podporuje se    |  Nepodporuje se
-správa skupinových licencí s rozsahem správní jednotky   |    Podporuje se  |    Podporuje se   |   Nepodporuje se
+Správa vlastností skupin a členů s rozsahem jednotky pro správu     |  Podporuje se   |    Podporuje se    |  Nepodporuje se
+Správa licencování skupin pro správu s rozsahem jednotky   |    Podporuje se  |    Podporuje se   |   Nepodporuje se
 
 > [!NOTE]
 >
-> Správci s oborem správy nemohou spravovat pravidla dynamického členství ve skupinách.
+> Správci s oborem jednotky pro správu nemůžou spravovat pravidla členství v dynamické skupině.
 
-Jednotky pro správu používají obor pouze pro oprávnění správce. Nezabrání členům nebo správcům v používání [výchozích uživatelských oprávnění](../fundamentals/users-default-permissions.md) k procházení jiných uživatelů, skupin nebo prostředků mimo jednotku pro správu. Na portálu Office 365 jsou odfiltrováni uživatelé mimo administrativní jednotky správce s rozsahem, ale ostatní uživatele můžete procházet na portálu Azure AD, PowerShellu a dalších službách Microsoftu.
+Jednotky pro správu se vztahují pouze na oprávnění pro správu. Nebrání členům ani správcům používat [výchozí uživatelská oprávnění](../fundamentals/users-default-permissions.md) k procházení jiných uživatelů, skupin nebo prostředků mimo jednotky pro správu. Na portálu Office 365 se odfiltrují uživatelé mimo jednotky pro správu s vymezeným oborem správy, ale můžete procházet jiné uživatele na portálu Azure AD, PowerShellu a dalších službách Microsoftu.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Správa AUs](roles-admin-units-manage.md)
-- [Správa uživatelů v au](roles-admin-units-add-manage-users.md)
-- [Správa skupin v au](roles-admin-units-add-manage-groups.md)
-- [Přiřazení rolí s vymezeným oborem k AU](roles-admin-units-assign-roles.md)
+- [Správa jednotek Austrálie](roles-admin-units-manage.md)
+- [Správa uživatelů v nástroji Austrálie](roles-admin-units-add-manage-users.md)
+- [Správa skupin v nástroji Austrálie](roles-admin-units-add-manage-groups.md)
+- [Přiřazení vymezených rolí k jednotce AU](roles-admin-units-assign-roles.md)

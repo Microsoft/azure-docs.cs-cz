@@ -1,5 +1,5 @@
 ---
-title: Rychlý start klientské knihovny Java ve vyhledávání zpráv Bingu
+title: Rychlý Start klientské knihovny s Vyhledávání zpráv Bingu Java
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,17 +9,17 @@ ms.topic: include
 ms.date: 03/12/2020
 ms.author: aahi
 ms.openlocfilehash: 76a752bc108158c998d13a548da535d5fb1d5ee2
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79503871"
 ---
-Pomocí tohoto rychlého startu můžete začít vyhledávat novinky v klientské knihovně Služby Hledání zpráv Bingu pro Jazyk Java. Zatímco hledání zpráv Bing u měn rozhraní REST API kompatibilní s většinou programovacích jazyků, klientská knihovna poskytuje snadný způsob integrace služby do vašich aplikací. Zdrojový kód pro tuto ukázku lze nalézt na [GitHubu](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingNewsSearch).
+V tomto rychlém startu můžete začít vyhledávat zprávy pomocí Vyhledávání zpráv Bingu klientské knihovny pro Java. I když Vyhledávání zpráv Bingu má REST API kompatibilní s většinou programovacích jazyků, Klientská knihovna poskytuje snadný způsob, jak integrovat službu do vašich aplikací. Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingNewsSearch).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Nainstalujte závislosti klientské knihovny služby Hledání zpráv Bingu pomocí programů Maven, Gradle nebo jiného systému správy závislostí. Soubor POM Mavenu vyžaduje následující deklaraci:
+Nainstalujte závislosti Vyhledávání zpráv Bingu klientské knihovny pomocí nástroje Maven, Gradle nebo jiného systému pro správu závislostí. Soubor POM Mavenu vyžaduje následující deklaraci:
 
 ```xml
     <dependencies>
@@ -50,9 +50,9 @@ import okhttp3.Response;
 import java.io.IOException;
 ```
 
-## <a name="create-a-search-client-and-store-credentials"></a>Vytvoření vyhledávacího klienta a uložení přihlašovacích údajů
+## <a name="create-a-search-client-and-store-credentials"></a>Vytvoření vyhledávacího klienta a přihlašovacích údajů pro Store
 
-1. Vytvořte metodu s `getClient()` `NewsSearchAPIImpl` názvem, která vrací nového vyhledávacího klienta. Přidejte koncový bod jako první`NewsSearchAPIImpl` parametr pro nový `ServiceClientCredentials` objekt a nový objekt pro uložení pověření. 
+1. Vytvořte metodu s názvem `getClient()` , která vrátí nového `NewsSearchAPIImpl` klienta vyhledávání. Přidejte svůj koncový bod jako první parametr nového`NewsSearchAPIImpl` objektu a nový `ServiceClientCredentials` objekt pro uložení vašich přihlašovacích údajů. 
 
     ```java
     public static NewsSearchAPIImpl getClient(final String subscriptionKey) {
@@ -62,7 +62,7 @@ import java.io.IOException;
     }
     ```
 
-2. Chcete-li `ServiceClientCredentials` vytvořit objekt, `applyCredentialsFilter()` přepište funkci. `OkHttpClient.Builder` Předejte metodě a a pomocí `addNetworkInterceptor()` metody tvůrce vytvořte pověření pro volání klientské knihovny.
+2. Chcete-li `ServiceClientCredentials` vytvořit objekt, přepište `applyCredentialsFilter()` funkci. `OkHttpClient.Builder` Předat metodě a použít `addNetworkInterceptor()` metodu Tvůrce k vytvoření přihlašovacích údajů pro volání klientské knihovny.
 
     ```java
     new ServiceClientCredentials() {
@@ -85,9 +85,9 @@ import java.io.IOException;
     });
     ```
 
-## <a name="send-and-receive-a-search-request"></a>Odeslání a přijetí požadavku na vyhledávání
+## <a name="send-and-receive-a-search-request"></a>Odeslání a přijetí žádosti o vyhledávání
 
-1. Vytvořte metodu, která volá `getClient()` a odešle požadavek na vyhledávání do služby Vyhledávání zpráv Bing. Vyfiltrujte vyhledávání podle parametrů *trhu* a *počtu* a poté vytiskněte informace o prvním výsledku zpráv: jméno, adresu URL, datum publikace, popis, název poskytovatele a celkový počet odhadovaných shod pro vyhledávání.
+1. Vytvořte metodu, která volá `getClient()` a odešle požadavek na hledání službě vyhledávání zpráv Bingu. Vyfiltrujte hledání pomocí parametrů *trhu* a *počtu* a pak si vytiskněte informace o prvním výsledku zprávy: jméno, URL, datum publikování, popis, název zprostředkovatele a celkový počet odhadovaných shod pro vaše hledání.
 
     ```java
     public static void newsSearch(String subscriptionKey)
@@ -121,7 +121,7 @@ import java.io.IOException;
     
     ```
 
-2. Přidejte metodu `main()` hledání do metody pro spuštění kódu.
+2. Přidejte metodu hledání do `main()` metody pro spuštění kódu.
 
     ```java 
     public static void main(String[] args) {

@@ -9,37 +9,37 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: e50f53c65c330265d3d9ec1b1804a7910b632b1d
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81678821"
 ---
-1. Přejděte do **skupin prostředků**a vyberte skupinu prostředků, kterou jste vybrali při vytváření prostředku **partnerského vztahu.** Pokud máte příliš mnoho skupin prostředků, použijte pole **Filtr.**
+1. V části **skupiny prostředků**vyberte skupinu prostředků, kterou jste vybrali při vytváření prostředku **partnerského vztahu** . Pokud máte příliš mnoho skupin prostředků, použijte pole **filtru** .
 
     > [!div class="mx-imgBorder"]
     > ![Skupiny prostředků](../media/setup-direct-get-resourcegroup.png)
 
-1. Vyberte prostředek **partnerského vztahu,** který jste vytvořili.
+1. Vyberte prostředek **partnerského vztahu** , který jste vytvořili.
 
     > [!div class="mx-imgBorder"]
-    > ![Zobrazení prostředku partnerského vztahu](../media/setup-direct-get-open.png)
+    > ![Zobrazení prostředků partnerského vztahu](../media/setup-direct-get-open.png)
 
-1. Stránka **Přehled** zobrazuje informace na vysoké úrovni, jak je znázorněno zde.
-
-    > [!div class="mx-imgBorder"]
-    > ![Podokno Přehled zdrojů partnerského vztahu](../media/setup-direct-get-overview.png)
-
-1. Vlevo vyberte **informace ASN,** chcete-li zobrazit informace odeslané při vytvoření peerasn.
+1. Stránka **Přehled** zobrazuje informace vysoké úrovně, jak je znázorněno zde.
 
     > [!div class="mx-imgBorder"]
-    > ![Informace asn zdroje partnerského vztahu](../media/setup-direct-get-asninfo.png)
+    > ![Podokno s přehledem partnerského vztahu prostředků](../media/setup-direct-get-overview.png)
 
-1. Vlevo vyberte **Možnost Připojení**. V horní části obrazovky se zobrazí souhrn partnerských připojení mezi asn a microsoft, v různých zařízeních v rámci metra. K souhrnu připojení můžete přistupovat také ze stránky **Přehled** tak, že vyberete **připojení** uprostřed podokna, jak je znázorněno.
+1. Na levé straně vyberte **informace o ASN** pro zobrazení informací, které jste odeslali při vytváření PeerAsn.
+
+    > [!div class="mx-imgBorder"]
+    > ![Informace o partnerském vztahu prostředků ASN](../media/setup-direct-get-asninfo.png)
+
+1. Na levé straně vyberte **připojení**. V horní části obrazovky se zobrazí souhrn partnerských připojení mezi číslem ASN a společností Microsoft v různých zařízeních ve službě Metro. K souhrnu připojení můžete také získat přístup ze stránky **Přehled** výběrem možnosti **připojení** ve středovém podokně, jak je znázorněno na obrázku.
 
     > [!div class="mx-imgBorder"]
     > ![Připojení prostředků partnerského vztahu](../media/setup-direct-get-connectionssummary.png)
 
-    * **Stav připojení** odpovídá stavu nastavení připojení partnerského vztahu. Stavy zobrazené v tomto poli postupujte podle diagramu stavu zobrazeného v [návodu k přímému partnerského vztahu](../walkthrough-direct-all.md).
-    * **Stav relace Protokolu IPv4** a **Stav relace IPv6** odpovídají stavům relace Protokolu BGP protokolu IPv4 a IPv6. 
-    * Když vyberete řádek v horní části obrazovky, v části **Připojení** v dolní části se zobrazí podrobnosti pro každé připojení. Výběrem šipek rozbalte **položku Konfigurace**, **Adresa IPv4**a **Adresa IPv6**.
+    * **Stav připojení** odpovídá stavu nastavení připojení partnerských vztahů. Stavy zobrazené v tomto poli následují po diagramu stavu zobrazeném v [Průvodci přímým partnerským vztahem](../walkthrough-direct-all.md).
+    * Stav **relace protokolu IPv4** a **stav relace protokolu IPv6** odpovídají stavům relace protokolu BGP IPv4 a IPv6 (v uvedeném pořadí). 
+    * Když vyberete řádek v horní části obrazovky, v části **připojení** v dolní části se zobrazí podrobnosti o každém připojení. Vyberte šipky a rozbalte položku **Konfigurace**, **adresa IPv4**a **adresa IPv6**.

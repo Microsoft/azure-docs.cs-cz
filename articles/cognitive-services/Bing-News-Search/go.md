@@ -1,7 +1,7 @@
 ---
-title: 'Úvodní příručka: Získejte novinky pomocí rozhraní REST API a Go pro vyhledávání zpráv bingu'
+title: 'Rychlý Start: získání zpráv pomocí Vyhledávání zpráv Bingu REST API a přejít'
 titleSuffix: Azure Cognitive Services
-description: Tento rychlý start používá jazyk Go k volání rozhraní API pro vyhledávání zpráv Bingu. Výsledky zahrnují názvy a adresy URL zpravodajských zdrojů identifikovaných řetězcem dotazu.
+description: V tomto rychlém startu se k volání rozhraní API Bingu pro vyhledávání zpráv používá jazyk přejít. Výsledky zahrnují názvy a adresy URL zdrojů zpráv identifikovaných řetězcem dotazu.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,26 +11,26 @@ ms.topic: quickstart
 ms.date: 12/16/2019
 ms.author: aahi
 ms.openlocfilehash: aaeb905c9cdc1e7b74e21d3c191f6a24a94fcd7d
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80053810"
 ---
-# <a name="quickstart-get-news-results-using-the-bing-news-search-rest-api-and-go"></a>Úvodní příručka: Získejte výsledky zpráv pomocí rozhraní REST API a Go pro vyhledávání zpráv bingu
+# <a name="quickstart-get-news-results-using-the-bing-news-search-rest-api-and-go"></a>Rychlý Start: získání výsledků zpráv pomocí Vyhledávání zpráv Bingu REST API a přejít
 
-Tento rychlý start používá jazyk Go k volání rozhraní API pro vyhledávání zpráv Bingu. Výsledky zahrnují názvy a adresy URL zpravodajských zdrojů identifikovaných řetězcem dotazu.
+V tomto rychlém startu se k volání rozhraní API Bingu pro vyhledávání zpráv používá jazyk přejít. Výsledky zahrnují názvy a adresy URL zdrojů zpráv identifikovaných řetězcem dotazu.
 
 ## <a name="prerequisites"></a>Požadavky
-* Instalace [binárních souborů Go](https://golang.org/dl/)
-* Nainstalujte go-chrlí knihovnu pro to hezká tiskárna pro zobrazení výsledků
+* Instalace [binárních souborů přejít](https://golang.org/dl/)
+* Pokud chcete zobrazit výsledky, nainstalujte knihovnu Spew pro IT, která je v podstatě.
     * Nainstalujte tuto knihovnu:`$ go get -u https://github.com/davecgh/go-spew`
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
 ## <a name="create-a-project-and-import-libraries"></a>Vytvoření projektu a import knihoven
 
-Vytvořte nový projekt Go ve vašem IDE nebo editoru. Potom `net/http` importpro požadavky, `ioutil` číst odpověď `encoding/json` a zpracovat text JSON výsledků. Go-chrlí knihovna je potřeba analyzovat JSON. 
+Vytvořte nový projekt přejít v integrovaném vývojovém prostředí nebo editoru. Pak importujte `net/http` požadavky, `ioutil` Přečtěte si odpověď a `encoding/json` zpracujte text JSON výsledků. Knihovna Spew je nutná k analýze formátu JSON. 
 
 ```go
 package main
@@ -47,7 +47,7 @@ import (
 
 ## <a name="create-a-struct-to-format-the-news-search-results"></a>Vytvoření struktury pro formátování výsledků hledání zpráv
 
-Struktura `NewsAnswer` naformátuje data poskytnutá v odpovědi. Odpověď JSON je víceúrovňová a poměrně složitá.  Následující implementace zahrnuje základy.
+Struktura `NewsAnswer` naformátuje data poskytnutá v odpovědi. Odpověď JSON je víceúrovňové a poměrně složitá.  Následující implementace pokrývá základy.
 
 ```go
 // This struct formats the answer provided by the Bing News Search API.
@@ -87,7 +87,7 @@ type NewsAnswer struct {
 
 ## <a name="declare-the-main-function-and-define-variables"></a>Deklarace hlavní funkce a definování proměnných  
 
-Následující kód deklaruje hlavní funkci a přiřazuje požadované proměnné. Ověřte správnost koncového bodu a nahraďte hodnotu `token` platným klíčem předplatného ze svého účtu Azure. Můžete použít globální koncový bod níže nebo vlastní koncový bod [subdomény](../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený na portálu Azure pro váš prostředek.
+Následující kód deklaruje funkci main a přiřadí požadované proměnné. Ověřte správnost koncového bodu a nahraďte hodnotu `token` platným klíčem předplatného ze svého účtu Azure. Můžete použít globální koncový bod nebo vlastní koncový bod [subdomény](../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
 
 ```go
 func main() {
@@ -108,7 +108,7 @@ func main() {
 
 ## <a name="query-and-header"></a>Dotaz a záhlaví
 
-Přidání řetězce dotazu a záhlaví přístupového klíče
+Přidat řetězec dotazu a přístup k záhlaví klíče
 
 ```go
 // Add the query to the request.  
@@ -123,7 +123,7 @@ req.Header.Add("Ocp-Apim-Subscription-Key", token)
 
 ## <a name="get-request"></a>Získat žádost
 
-Vytvořte klienta a odešlete požadavek Get. 
+Vytvořte klienta a odešlete žádost o získání. 
 
 ```go
 // Instantiate a client.  
@@ -139,7 +139,7 @@ if err != nil {
 
 ## <a name="send-the-request"></a>Odeslat žádost
 
-Odešlete požadavek `ioutil`a přečtěte si výsledky pomocí aplikace .
+Odešlete žádost a čtěte výsledky pomocí `ioutil`.
 
 ```go
 resp, err := client.Do(req)
@@ -160,7 +160,7 @@ if err != nil {
 
 ## <a name="handle-the-response"></a>Zpracování odpovědi
 
-Funkce `Unmarshall` extrahuje informace z textu JSON vráceného rozhraním API pro vyhledávání zpráv.  Pak můžete zobrazit uzly z `go-spew` výsledků pomocí hezké tiskárny.
+`Unmarshall` Funkce extrahuje informace z textu JSON VRÁCENého rozhraním vyhledávání zpráv API.  Pak můžete zobrazit uzly z výsledků pomocí tiskárny v `go-spew` podstatě.
 
 ```go
 // Create a new answer object 
@@ -206,4 +206,4 @@ Výsledky obsahují název a adresu URL každého výsledku.
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Co je vyhledávání zpráv Bing](search-the-web.md)
+> [Co je Vyhledávání zpráv Bingu](search-the-web.md)

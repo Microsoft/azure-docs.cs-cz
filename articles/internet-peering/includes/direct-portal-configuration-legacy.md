@@ -9,45 +9,45 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 632490498b8dd13414657edb9518cd543ac07af6
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81678830"
 ---
-1. Na stránce **Vytvořit partnerský vztah vyplňte** na kartě **Konfigurace** pole, jak je znázorněno zde.
+1. Na stránce **vytvořit partnerský vztah** na kartě **Konfigurace** vyplňte pole, jak je znázorněno zde.
 
     > [!div class="mx-imgBorder"]
-    > ![Vytvoření karty Konfigurace stránky partnerského vztahu](../media/setup-direct-conf-tab.png)
+    > ![Vytvořit partnerský vztah na stránce konfigurace](../media/setup-direct-conf-tab.png)
 
-    * V **pole Typ partnerského vztahu**vyberte možnost **Přímé**.
-    * V **síti Microsoft**vyberte možnost **AS8075**. Nevybírejte ASN 8069. Je vyhrazenpro speciální aplikace a používá jej pouze [partnerský vztah microsoftu](mailto:peering@microsoft.com).
-    * Vyberte **skladovou položku** jako **základní volnou položku**. Nevybírejte Premium Free, protože je vyhrazenpro speciální aplikace.
-    * Vyberte umístění **Metro,** kde chcete převést partnerský vztah na prostředek Azure. Pokud máte partnerské vztahy s Microsoftem ve vybraném umístění **Metro,** které nejsou převedeny na prostředek Azure, tato připojení budou uvedeny v části **připojení partnerského vztahu,** jak je znázorněno. Teď můžete převést tato připojení partnerského vztahu na prostředek Azure.
+    * V případě **typu partnerského vztahu**vyberte možnost **Direct**.
+    * V případě **sítě Microsoft**vyberte **AS8075**. Nevybírejte číslo ASN 8069. Je vyhrazený pro speciální aplikace a používá se jenom pro [partnerské vztahy Microsoftu](mailto:peering@microsoft.com).
+    * Vyberte **SKU** jako **základní zdarma**. Nevybírejte možnost Premium zdarma, protože je vyhrazená pro speciální aplikace.
+    * Vyberte umístění **Metro** , kde chcete převést partnerský vztah na prostředek Azure. Pokud máte připojení s partnerským vztahem k Microsoftu ve vybraném umístění **Metro** , které se nepřevede na prostředek Azure, budou tato připojení uvedená v části **připojení partnerských vztahů** , jak je znázorněno na obrázku. Nyní můžete tato připojení partnerských vztahů převést na prostředek Azure.
 
         > [!div class="mx-imgBorder"]
-        > ![Seznam připojení partnerského vztahu](../media/setup-directlegacy-conf-tab.png)
+        > ![Seznam připojení partnerských vztahů](../media/setup-directlegacy-conf-tab.png)
 
-1. Pokud potřebujete aktualizovat šířku pásma, vyberte tlačítko upravit pro řádek a upravte nastavení připojení.
+1. Pokud potřebujete šířku pásma aktualizovat, vyberte tlačítko Upravit pro řádek, abyste mohli upravit nastavení připojení.
 
     > [!div class="mx-imgBorder"]
     > ![Tlačítko Upravit](../media/setup-directlegacy-conf-tab-edit.png)
 
     > [!NOTE]
-    > Pokud chcete přidat další připojení partnerského vztahu se společností Microsoft ve vybraném umístění **Metro,** vyberte **Vytvořit nový**. Další informace naleznete v [tématu Vytvoření nebo úprava přímého partnerského vztahu pomocí portálu](../howto-direct-portal.md).
+    > Pokud chcete přidat další připojení partnerského vztahu se společností Microsoft ve vybraném umístění **Metro** , vyberte **vytvořit novou**. Další informace najdete v tématu [Vytvoření nebo úprava přímého partnerského vztahu pomocí portálu](../howto-direct-portal.md).
     >
 
-1. Vyberte **Zkontrolovat a vytvořit**. Všimněte si, že portál spustí základní ověření zadaných informací. Pás karet v horní části zobrazuje zprávu *Spuštění konečného ověření...*.
+1. Vyberte **Zkontrolovat a vytvořit**. Všimněte si, že portál spouští základní ověření informací, které jste zadali. Pás karet v horní části zobrazuje zprávu *s finálním ověřením...*.
 
     > [!div class="mx-imgBorder"]
-    > ![Karta Ověření partnerského vztahu](../media/setup-direct-review-tab-validation.png)
+    > ![Karta ověření partnerského vztahu](../media/setup-direct-review-tab-validation.png)
 
-1. Po schválení zprávy na *ověření*ověřte své informace. Odešlete žádost výběrem **možnosti Vytvořit**. Chcete-li upravit požadavek, vyberte **Předchozí** a opakujte kroky.
-
-    > [!div class="mx-imgBorder"]
-    > ![Odeslání partnerského vztahu](../media/setup-direct-review-tab-submit.png)
-
-1. Po odeslání požadavku počkejte na dokončení nasazení. Pokud se nasazení nezdaří, obraťte se na [partnerský vztah společnosti Microsoft](mailto:peering@microsoft.com). Úspěšné nasazení se zobrazí, jak je znázorněno zde.
+1. Po změně zprávy na *prošlé ověření*ověřte své informace. Žádost odešlete tak, že vyberete **vytvořit**. Pokud chcete žádost upravit, vyberte **Předchozí** a opakujte postup.
 
     > [!div class="mx-imgBorder"]
-    > ![Úspěch peeringu](../media/setup-direct-success.png)
+    > ![Odesílání partnerských vztahů](../media/setup-direct-review-tab-submit.png)
+
+1. Po odeslání žádosti počkejte, než se nasazení dokončí. Pokud nasazení neproběhne úspěšně, kontaktujte [partnerský vztah Microsoftu](mailto:peering@microsoft.com). Úspěšné nasazení se zobrazí, jak je znázorněno zde.
+
+    > [!div class="mx-imgBorder"]
+    > ![Úspěšné vytvoření partnerského vztahu](../media/setup-direct-success.png)

@@ -1,190 +1,190 @@
 ---
-title: Poradce při potížích s nasazením a zjišťováním zařízení Azure Migrate
-description: Získejte pomoc s nasazením zařízení Azure Migrate a zjišťováním počítačů.
+title: Řešení potíží s nasazením a zjišťováním Azure Migrate zařízení
+description: Získejte pomoc s nasazením Azure Migrate zařízení a zjišťováním počítačů.
 author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
 ms.openlocfilehash: 6cb83a87f2e96eb62696e5d92095ef2b8d7c7def
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81677330"
 ---
-# <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Poradce při potížích s zařízením a zjišťováním migrace Azure
+# <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Řešení potíží s Azure Migrate zařízením a zjišťováním
 
-Tento článek vám pomůže vyřešit problémy při nasazování zařízení [Azure Migrate](migrate-services-overview.md) a pomocí zařízení ke zjišťování místních počítačů.
+Tento článek vám pomůže při řešení potíží při nasazování zařízení [Azure Migrate](migrate-services-overview.md) a používání zařízení ke zjišťování místních počítačů.
 
 
 ## <a name="whats-supported"></a>Co je podporováno?
 
-[Zkontrolujte](migrate-appliance.md) požadavky na podporu spotřebiče.
+[Zkontrolujte](migrate-appliance.md) požadavky na podporu zařízení.
 
 
-## <a name="invalid-ovf-manifest-entry"></a>"Neplatná položka manifestu OVF"
+## <a name="invalid-ovf-manifest-entry"></a>Neplatný záznam manifestu OVF
 
-Pokud se zobrazí chyba "Poskytnutý soubor manifestu je neplatný: Neplatná položka manifestu OVF", postupujte takto:
+Pokud se zobrazí chyba "zadaný soubor manifestu je neplatný: Neplatná položka manifestu OVF", udělejte toto:
 
-1. Zkontrolujte, zda je soubor zařízení Azure Migrate AZDU správně stažen, a to tak, že zkontrolujete jeho hodnotu hash. [Další informace](https://docs.microsoft.com/azure/migrate/tutorial-assessment-vmware). Pokud se hodnota hash neshoduje, stáhněte soubor OVA znovu a opakujte nasazení.
-2. Pokud nasazení stále selže a používáte klienta VMware vSphere k nasazení souboru OVF, zkuste ho nasadit prostřednictvím webového klienta vSphere. Pokud nasazení stále selže, zkuste použít jiný webový prohlížeč.
-3. Pokud používáte webového klienta vSphere a pokoušíte se ho nasadit na vCenter Server 6.5 nebo 6.7, zkuste nasadit OVA přímo na hostitele ESXi:
-   - Připojte se k hostiteli ESXi přímo (namísto vCenter Serveru) pomocí webového klienta (https://<*ip adresa hostitele*>/ui).
-   - V **části Domácí** > **inventář**vyberte**šablonu OVF nasazení** **souborů** > . Přejděte na OVA a dokončete nasazení.
-4. Pokud se nasazení stále nezdaří, obraťte se na podporu Migrace Azure.
+1. Zkontrolujte jeho hodnotu hash tak, že zkontrolujete, jestli se soubor vajíček Azure Migrate zařízení správně stáhl. [Další informace](https://docs.microsoft.com/azure/migrate/tutorial-assessment-vmware). Pokud hodnota hash neodpovídá, Stáhněte si znovu soubor vajíček a spusťte nasazení znovu.
+2. Pokud se nasazení stále nedaří a k nasazení souboru OVF používáte klienta VMware vSphere, zkuste ho nasadit prostřednictvím webového klienta vSphere. Pokud nasazení ještě neproběhne úspěšně, zkuste použít jiný webový prohlížeč.
+3. Pokud používáte webového klienta vSphere a pokusíte se ho nasadit na vCenter Server 6,5 nebo 6,7, zkuste nasadit VAJÍČKu přímo na hostiteli ESXi:
+   - Připojte se k hostiteli ESXi přímo (místo vCenter Server) s webovým klientem ( *IP adresa hostitele* https://<>/UI).
+   - V **domovském** > **inventáři**vyberte **soubor** > **nasadit šablonu OVF**. Přejděte k VAJÍČKám a dokončete nasazení.
+4. Pokud se nasazení stále nedaří, obraťte se na podporu Azure Migrate.
 
-## <a name="cant-connect-to-the-internet"></a>Nelze se připojit k internetu
+## <a name="cant-connect-to-the-internet"></a>Nejde se připojit k Internetu.
 
-K tomu může dojít, pokud je zařízení za proxy serverem.
+K tomu může dojít, pokud je počítač zařízení za proxy serverem.
 
-- Ujistěte se, že jste zadali autorizační pověření, pokud je proxy server potřebuje.
-- Pokud k řízení odchozího připojení používáte proxy firewall založený na adrese URL, přidejte tyto adresy URL do seznamu [povolených](migrate-appliance.md#url-access) adres.
-- Pokud používáte zachycující proxy pro připojení k Internetu, importujte proxy certifikát na virtuální počítač zařízení pomocí [těchto kroků](https://docs.microsoft.com/azure/migrate/concepts-collector).
+- Ujistěte se, že přihlašovací údaje pro autorizaci zadáte, pokud je proxy vyžaduje.
+- Pokud k řízení odchozího připojení používáte proxy server brány firewall založený na adrese URL, přidejte [tyto adresy URL](migrate-appliance.md#url-access) do seznamu povolených.
+- Pokud pro připojení k Internetu používáte zachycení proxy serveru, importujte certifikát proxy serveru do virtuálního počítače zařízení pomocí [těchto kroků](https://docs.microsoft.com/azure/migrate/concepts-collector).
 
-## <a name="cant-sign-into-azure-from-the-appliance-web-app"></a>Z webové aplikace zařízení se nelze přihlásit do Azure
+## <a name="cant-sign-into-azure-from-the-appliance-web-app"></a>Z webové aplikace zařízení se nejde přihlásit k Azure.
 
-Pokud k přihlášení do Azure používáte nesprávný účet Azure, zobrazí se chyba "Omlouváme se, ale máme potíže s přihlášením". K této chybě dochází z několika důvodů:
+Pokud k přihlášení do Azure používáte nesprávný účet Azure, zobrazí se chyba "je nám líto, ale došlo k potížím s přihlášením". K této chybě dochází z několika důvodů:
 
-- Pokud se přihlásíte do webové aplikace zařízení pro veřejný cloud, pomocí přihlašovacích údajů uživatelského účtu pro portál cloud vlády.
-- Pokud se přihlásíte do webové aplikace zařízení pro vládní cloud pomocí přihlašovacích údajů uživatelského účtu pro portál privátního cloudu.
+- Pokud se přihlásíte k webové aplikaci zařízení pro veřejný cloud, použijte přihlašovací údaje uživatelského účtu pro cloudový portál pro státní správu.
+- Pokud se přihlásíte k webové aplikaci zařízení pro oficiální Cloud pomocí přihlašovacích údajů uživatelského účtu pro portál privátního cloudu.
 
-Ujistěte se, že používáte správná pověření.
+Ujistěte se, že používáte správné přihlašovací údaje.
 
 ##  <a name="datetime-synchronization-error"></a>Chyba synchronizace data a času
 
-Chyba o synchronizaci data a času (802) označuje, že hodiny serveru mohou být mimo synchronizaci s aktuálním časem o více než pět minut. Změňte čas hodin na virtuálním počítači kolektoru tak, aby odpovídal aktuálnímu času:
+Chyba synchronizace data a času (802) znamená, že hodiny serveru pravděpodobně nejsou synchronizovány s aktuálním časem více než pěti minutami. Změňte čas hodin na virtuálním počítači kolektoru tak, aby odpovídal aktuálnímu času:
 
 1. Otevřete příkazový řádek správce na virtuálním počítači.
-2. Chcete-li zkontrolovat časové pásmo, spusťte **w32tm /tz**.
-3. Chcete-li synchronizovat čas, spusťte **w32tm /resync**.
+2. Chcete-li kontrolovat časové pásmo, spusťte příkaz **W32tm/TZ**.
+3. Chcete-li synchronizovat čas, spusťte příkaz **W32tm/Resync**.
 
 
-## <a name="unabletoconnecttoserver"></a>"Nelze připojit k serveru"
+## <a name="unabletoconnecttoserver"></a>"UnableToConnectToServer"
 
-Pokud se zobrazí tato chyba připojení, může se stát, že se nebudete moci připojit k názvu serveru vCenter Server .com:9443. *Servername* Podrobnosti o chybě označují, že neexistuje `https://\*servername*.com:9443/sdk` žádný koncový bod naslouchání, které můžete přijmout zprávu.
+Pokud se zobrazí tato chyba připojení, možná se nebudete moci připojit k vCenter Server *servername*. com: 9443. Podrobnosti o chybě označují, že se na `https://\*servername*.com:9443/sdk` něj nenaslouchá žádný koncový bod, který by mohl zprávu přijmout.
 
-- Zkontrolujte, zda používáte nejnovější verzi zařízení. Pokud nejste, upgradujte zařízení na [nejnovější verzi](https://docs.microsoft.com/azure/migrate/concepts-collector).
-- Pokud k problému stále dochází v nejnovější verzi, zařízení pravděpodobně nebude možné přeložit zadaný název serveru vCenter nebo zadaný port může být chybný. Ve výchozím nastavení, pokud není zadán port, kolektor se pokusí připojit k portu číslo 443.
+- Ověřte, zda používáte nejnovější verzi zařízení. Pokud nejste, upgradujte zařízení na [nejnovější verzi](https://docs.microsoft.com/azure/migrate/concepts-collector).
+- Pokud problém pořád proběhne v nejnovější verzi, zařízení nemusí být schopné přeložit zadaný vCenter Server název, nebo je možné, že je zadaný port nesprávný. Ve výchozím nastavení se kolektor pokusí připojit k portu číslo 443, pokud není zadaný port.
 
-    1. Ping *Název serveru*.com ze zařízení.
-    2. Pokud se krok 1 nezdaří, zkuste se připojit k serveru vCenter pomocí adresy IP.
-    3. Určete správné číslo portu pro připojení k serveru vCenter.
-    4. Ověřte, zda je server vCenter v provozu.
+    1. Ověřte z zařízení parametr *servername*. com.
+    2. Pokud se krok 1 nezdařil, zkuste se připojit k serveru vCenter pomocí IP adresy.
+    3. Identifikujte správné číslo portu pro připojení k vCenter Server.
+    4. Ověřte, že je vCenter Server v provozu.
 
 
-## <a name="error-6005260039-appliance-might-not-be-registered"></a>Chyba 60052/60039: Zařízení nemusí být zaregistrováno
+## <a name="error-6005260039-appliance-might-not-be-registered"></a>Chyba 60052/60039: zařízení pravděpodobně není zaregistrováno.
 
-- Chyba 60052 " Zařízení nemusí být úspěšně zaregistrováno do projektu Azure Migrate" dojde, pokud účet Azure slouží k registraci zařízení nemá dostatečná oprávnění.
-    - Ujistěte se, že uživatelský účet Azure používaný k registraci zařízení má alespoň oprávnění přispěvatele k předplatnému.
+- Chyba 60052: Pokud účet Azure, který se používá k registraci zařízení, nemá dostatečná oprávnění, "zařízení se nemusí úspěšně zaregistrovat do Azure Migrate projektu".
+    - Ujistěte se, že uživatelský účet Azure použitý k registraci zařízení má alespoň oprávnění přispěvatele k tomuto předplatnému.
     - [Přečtěte si další informace](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance---vmware) o požadovaných rolích a oprávněních Azure.
-- Chyba 60039, "Zařízení nemusí být úspěšně zaregistrováno do projektu Migrace Azure" může dojít, pokud se nezdaří registrace, protože projekt Migrace Azure používá ke žurnálu zařízení nelze najít.
-    - Na webu Azure portal a zkontrolujte, zda projekt existuje ve skupině prostředků.
-    - Pokud projekt neexistuje, vytvořte nový projekt Azure Migrate ve skupině prostředků a znovu zaregistrujte zařízení. [Přečtěte si, jak](https://docs.microsoft.com/azure/migrate/how-to-add-tool-first-time#create-a-project-and-add-a-tool) vytvořit nový projekt.
+- Chyba 60039, "zařízení se nemusí úspěšně zaregistrovat do Azure Migrate projektu" může dojít v případě, že se registrace nezdaří, protože Azure Migrate projekt, který se použil k registraci zařízení, se nepovedlo najít.
+    - V Azure Portal a ověřte, zda projekt existuje ve skupině prostředků.
+    - Pokud projekt neexistuje, vytvořte ve skupině prostředků nový Azure Migrate projekt a znovu zaregistrujte zařízení. [Přečtěte si, jak](https://docs.microsoft.com/azure/migrate/how-to-add-tool-first-time#create-a-project-and-add-a-tool) vytvořit nový projekt.
 
-## <a name="error-6003060031-key-vault-management-operation-failed"></a>Chyba 60030/60031: Operace správy trezoru klíčů se nezdařila.
+## <a name="error-6003060031-key-vault-management-operation-failed"></a>Chyba 60030/60031: operace správy Key Vault nebyla úspěšná.
 
-Pokud se zobrazí chyba 60030 nebo 60031, "Operace správy úložiště klíčů Azure se nezdařilo", postupujte takto:
-- Ujistěte se, že uživatelský účet Azure používaný k registraci zařízení má alespoň oprávnění přispěvatele k předplatnému.
-- Ujistěte se, že účet má přístup k trezoru klíčů zadanému v chybové zprávě a opakujte operaci.
+Pokud se zobrazí chyba 60030 nebo 60031, "operace správy Azure Key Vault nebyla úspěšná", udělejte toto:
+- Ujistěte se, že uživatelský účet Azure použitý k registraci zařízení má alespoň oprávnění přispěvatele k tomuto předplatnému.
+- Ujistěte se, že má účet přístup k trezoru klíčů, který je zadaný v chybové zprávě, a pak zkuste operaci zopakovat.
 - Pokud potíže trvají, obraťte se na podporu Microsoftu.
 - [Přečtěte si další informace](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance---vmware) o požadovaných rolích a oprávněních Azure.
 
-## <a name="error-60028-discovery-couldnt-be-initiated"></a>Chyba 60028: Zjišťování nelze spustit
+## <a name="error-60028-discovery-couldnt-be-initiated"></a>Chyba 60028: zjišťování se nepovedlo inicializovat.
 
-Chyba 60028: "Zjišťování nelze spustit z důvodu chyby. Operace se nezdařila pro zadaný seznam hostitelů nebo clusterů" označuje, že zjišťování nelze spustit na hostitelích uvedených v chybě z důvodu problému s přístupem nebo načítáním informací o virtuálním počítači. Ostatní hostitelé byli úspěšně přidáni.
+Chyba 60028: zjišťování nelze iniciovat z důvodu chyby. Operace se pro zadaný seznam hostitelů nebo clusterů nezdařila. znamená to, že zjišťování nebylo možné spustit na hostitelích uvedených v této chybě z důvodu problému s přístupem nebo načítáním informací o virtuálním počítači. Zbytek hostitelů byl úspěšně přidán.
 
-- Přidejte hostitele uvedené v chybě znovu pomocí možnosti **Přidat hostitele.**
-- Pokud se chyba ověření zobrazí, přečtěte si pokyny k nápravě, abyste je opravili, a zkuste znovu **uložit a spustit zjišťování.**
+- Přidejte hostitele uvedené v této chybě znovu pomocí možnosti **Přidat hostitele** .
+- Pokud dojde k chybě ověřování, přečtěte si pokyny k nápravě a opravte chyby a potom zkuste znovu **spustit možnost Uložit a spustit zjišťování** .
 
-## <a name="error-60025-azure-ad-operation-failed"></a>Chyba 60025: Operace Azure AD se nezdařila. 
-Chyba 60025: "Operace služby Azure AD se nezdařila. K chybě došlo při vytváření nebo aktualizaci aplikace Azure AD" dojde, když uživatelský účet Azure slouží k zahájení zjišťování se liší od účtu slouží k registraci zařízení. Proveďte jednu z těchto akcí:
+## <a name="error-60025-azure-ad-operation-failed"></a>Chyba 60025: operace Azure AD selhala 
+Chyba 60025: operace Azure AD se nezdařila. K chybě při vytváření nebo aktualizaci aplikace Azure AD dojde v případě, že se uživatelský účet Azure, který se používá k zahájení zjišťování, liší od účtu použitého k registraci zařízení. Proveďte jednu z těchto akcí:
 
-- Ujistěte se, že uživatelský účet iniciující zjišťování je stejný jako účet používaný k registraci zařízení.
-- Poskytněte přístupkovým oprávněním aplikací služby Azure Active Directory k uživatelskému účtu, u kterého se nedaří operace zjišťování.
-- Odstraňte skupinu prostředků, která byla dříve vytvořena pro projekt Migrace Azure. Vytvořte další skupinu prostředků a začněte znovu.
-- [Přečtěte si další informace](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance---vmware) o oprávněních aplikací Azure Active Directory.
+- Ujistěte se, že uživatelský účet, který spouští zjišťování, je stejný jako ten, který se používá k registraci zařízení.
+- Zadejte Azure Active Directory oprávnění k přístupu k aplikacím pro uživatelský účet, pro který se operace zjišťování nedaří.
+- Odstraňte skupinu prostředků vytvořenou dříve pro Azure Migrate projekt. Vytvořte novou skupinu prostředků a začněte znovu.
+- [Přečtěte si další informace](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance---vmware) o Azure Active Directory oprávnění aplikace.
 
 
 ## <a name="error-50004-cant-connect-to-host-or-cluster"></a>Chyba 50004: Nelze se připojit k hostiteli nebo clusteru
 
-Chyba 50004: "Nelze se připojit k hostiteli nebo clusteru, protože název serveru nelze přeložit. Kód chyby WinRM: 0x803381B9" může dojít, pokud služba Azure DNS pro zařízení nelze přeložit clusteru nebo názvu hostitele, které jste zadali.
+Chyba 50004: Nelze se připojit k hostiteli nebo clusteru, protože název serveru nelze přeložit. Kód chyby WinRM: 0x803381B9 se může vyskytnout, pokud služba Azure DNS pro zařízení nemůže vyřešit zadaný název clusteru nebo hostitele.
 
-- Pokud se tato chyba zobrazí v clusteru, v clusteru FQDN clusteru.
-- Tato chyba se může zobrazit také pro hostitele v clusteru. To znamená, že se zařízení může připojit ke clusteru, ale cluster vrátí názvy hostitelů, které nejsou sítěmi pro co dokovatcí domén. Chcete-li tuto chybu vyřešit, aktualizujte soubor hosts v zařízení přidáním mapování adresy IP a názvů hostitelů:
+- Pokud se tato chyba zobrazuje v clusteru, plně kvalifikovaný název domény clusteru.
+- Tato chyba se může zobrazit také pro hostitele v clusteru. To znamená, že zařízení se může připojit ke clusteru, ale cluster vrátí názvy hostitelů, které nejsou plně kvalifikované názvy domén. Chcete-li tuto chybu vyřešit, aktualizujte soubor hostitelů na zařízení přidáním mapování IP adresy a názvů hostitelů:
     1. Otevřete Poznámkový blok jako správce.
     2. Otevřete soubor C:\Windows\System32\Drivers\etc\hosts.
-    3. Přidejte adresu IP a název hostitele do řádku. Tento postup opakujte pro každého hostitele nebo clusteru, kde se zobrazí tato chyba.
+    3. Přidejte IP adresu a název hostitele do řádku. Opakujte pro každého hostitele nebo cluster, kde se zobrazí tato chyba.
     4. Uložte a zavřete soubor hostitelů.
-    5. Pomocí aplikace pro správu zařízení zkontrolujte, zda se zařízení může připojit k hostitelům. Po 30 minutách byste měli vidět nejnovější informace o těchto hostitelích na webu Azure Portal.
+    5. Ověřte, jestli se zařízení může připojit k hostitelům pomocí aplikace pro správu zařízení. Po 30 minutách byste měli vidět nejnovější informace pro tyto hostitele v Azure Portal.
 
-## <a name="discovered-vms-not-in-portal"></a>Zjištěné virtuální chody nejsou na portálu
+## <a name="discovered-vms-not-in-portal"></a>Zjištěné virtuální počítače, které nejsou na portálu
 
-Pokud je stav zjišťování "Zjišťování probíhá", ale ještě nevidíte virtuální chody na portálu, počkejte několik minut:
-- Virtuální měna VMware trvá přibližně 15 minut.
-- Trvá přibližně dvě minuty pro každý přidaný hostitel pro zjišťování virtuálních výchv hyper-V.
+Pokud je stav zjišťování "Probíhá zjišťování", ale tyto virtuální počítače ještě nejsou na portálu zobrazeny, počkejte několik minut:
+- Virtuální počítače VMware trvá přibližně 15 minut.
+- U každého přidaného hostitele pro zjišťování virtuálních počítačů Hyper-V trvá přibližně dvě minuty.
 
-Pokud počkáte a stav se nezmění, vyberte na kartě **Servery** **možnost Aktualizovat.** To by mělo zobrazit počet zjištěných serverů v Azure Migrate: Vyhodnocení serveru a Migrace Azure: Migrace serveru.
+Pokud počkáte a stav se nezmění, vyberte **aktualizovat** na kartě **servery** . Mělo by se zobrazit počet zjištěných serverů v Azure Migrate: vyhodnocení serveru a Azure Migrate: Migrace serveru.
 
-Pokud to nefunguje a objevujete servery VMware:
+Pokud to nefunguje a chystáte se zjišťovat servery VMware:
 
-- Ověřte, zda zadaný účet vCentra má správně nastavená oprávnění s přístupem alespoň k jednomu virtuálnímu virtuálnímu účtu.
-- Azure Migrate nemůže zjistit virtuální počítače VMware, pokud má účet vCenter přístup udělený na úrovni složky virtuálních počítačích vCenter. [Další informace](set-discovery-scope.md) o zjišťování oborů.
+- Ověřte, že zadaný účet vCenter má správně nastavená oprávnění, a to s přístupem k aspoň jednomu virtuálnímu počítači.
+- Azure Migrate nemůžou zjistit virtuální počítače VMware, pokud má účet vCenter udělený přístup na úrovni složky virtuálních počítačů vCenter. [Přečtěte si další informace](set-discovery-scope.md) o zjišťování rozsahu.
 
-## <a name="vm-data-not-in-portal"></a>Data virtuálního aplikace, která nejsou na portálu
+## <a name="vm-data-not-in-portal"></a>Data virtuálních počítačů nejsou na portálu
 
-Pokud zjištěné virtuální chodů nezobrazí na portálu nebo pokud jsou data virtuálního aplikace zastaralá, počkejte několik minut. Trvá až 30 minut, než se změny v zjištěných konfiguračních datech virtuálního počítače zobrazí na portálu. Může trvat několik hodin, než se změny v datech aplikace zobrazí. Pokud po této době nejsou k dispozici žádná data, zkuste aktualizovat následujícím způsobem
+Pokud se zjištěné virtuální počítače nezobrazí na portálu nebo pokud jsou data virtuálního počítače zastaralá, počkejte několik minut. Na portálu trvá až 30 minut, než se změny zjištěných konfiguračních dat virtuálního počítače zobrazí na portálu. Může trvat několik hodin, než se změny dat aplikace zobrazí. Pokud po této době žádná data neexistují, zkuste aktualizovat následujícím způsobem.
 
-1. V **části Servery** > **Azure Migrate Server Assessment**vyberte **Přehled**.
-2. V části **Manage**vyberte **položku Stav agenta**.
-3. Vyberte **možnost Aktualizovat agenta**.
+1. V Azure Migrate **servery** > **vyhodnocování serveru**vyberte **Přehled**.
+2. V části **Spravovat**vyberte **Agent Health**.
+3. Vyberte **aktualizovat agenta**.
 4. Počkejte na dokončení operace aktualizace. Nyní byste měli vidět aktuální informace.
 
-## <a name="deleted-vms-appear-in-portal"></a>Odstraněné virtuální ms se zobrazují na portálu
+## <a name="deleted-vms-appear-in-portal"></a>Odstraněné virtuální počítače se zobrazí na portálu.
 
-Pokud odstraníte virtuální aplikace a stále se zobrazí na portálu, počkejte 30 minut. Pokud se stále zobrazují, aktualizujte, jak je popsáno výše.
+Pokud virtuální počítače odstraníte a pořád se zobrazí na portálu, počkejte 30 minut. Pokud se pořád zobrazují, aktualizujte je tak, jak je popsáno výše.
 
 ## <a name="common-app-discovery-errors"></a>Běžné chyby zjišťování aplikací
 
-Azure Migrate podporuje zjišťování aplikací, rolí a funkcí pomocí Azure Migrate: Server Assessment. Zjišťování aplikací je v současné době podporováno pouze pro společnost VMware. [Přečtěte si další informace](how-to-discover-applications.md) o požadavcích a krocích pro nastavení zjišťování aplikací.
+Azure Migrate podporuje zjišťování aplikací, rolí a funkcí pomocí Azure Migrate: posouzení serveru. Zjišťování aplikací se v současné době podporuje jenom pro VMware. [Přečtěte si další informace](how-to-discover-applications.md) o požadavcích a krocích pro nastavení zjišťování aplikací.
 
-Typické chyby zjišťování aplikací jsou shrnuty v tabulce. 
+Typické chyby zjišťování aplikací jsou shrnuté v tabulce. 
 
 **Chyba** | **Příčina** | **Akce**
 --- | --- | --- | ---
-10000: "Nelze zjistit aplikace nainstalované na serveru". | Tato situace může nastat, pokud operační systém počítače není Windows nebo Linux. | Zjišťování aplikací používejte jenom pro Windows/Linux.
-10001: "Nelze načíst aplikace nainstalované server". | Vnitřní chyba - některé chybějící soubory v zařízení. | Obraťte se na podporu Microsoftu.
-10002: "Nelze načíst aplikace nainstalované server". | Je možné, že agent zjišťování na zařízení nepracuje správně. | Pokud se problém nevyřeší do 24 hodin, obraťte se na podporu.
-10003 "Nelze načíst nainstalované aplikace serveru". | Je možné, že agent zjišťování na zařízení nepracuje správně. | Pokud se problém nevyřeší do 24 hodin, obraťte se na podporu.
-10004: "Nelze zjistit nainstalované aplikace pro <windows/linux> počítače." |  V zařízení nebyla k dispozici pověření pro přístup <počítače se systémem Windows/Linux>.| Přidejte pověření do zařízení, které má přístup k <> počítačů m windows/linux.
-10005: "Nelze získat přístup k místnímu serveru". | Přístupová pověření mohou být chybná. | Aktualizujte přihlašovací údaje zařízení a ujistěte se, že s nimi máte přístup k příslušnému počítači. 
-10006: "Nelze získat přístup k místnímu serveru". | Tato situace může nastat, pokud operační systém počítače není Windows nebo Linux.|  Zjišťování aplikací používejte jenom pro Windows/Linux.
-10007: "Nelze zpracovat načtená metadata" | Při pokusu o rekonstrukci funkce JSON došlo k této vnitřní chybě. | Obraťte se na podporu společnosti Microsoft pro řešení
-9000/9001/9002: "Nelze zjistit aplikace nainstalované na serveru". | Nástroje vmware nemusí být nainstalovány nebo jsou poškozeny. | Nainstalujte/přeinstalujte nástroje VMware na příslušném počítači a zkontrolujte, zda je spuštěn.
-9003: Nelze zjistit aplikace nainstalované na serveru". | Tato situace může nastat, pokud operační systém počítače není Windows nebo Linux. | Zjišťování aplikací používejte jenom pro Windows/Linux.
-9004: "Nelze zjistit aplikace nainstalované na serveru". | K tomu může dojít, pokud je virtuální virtuální měnový virtuální motor zapnutý. | Pro zjišťování, ujistěte se, že virtuální počítač je zapnutý.
-9005: "Nelze zjistit aplikace nainstalované ve virtuálním počítači. | Tato situace může nastat, pokud operační systém počítače není Windows nebo Linux. | Zjišťování aplikací používejte jenom pro Windows/Linux.
-9006/9007: "Nelze načíst nainstalované aplikace server". | Je možné, že agent zjišťování na zařízení nepracuje správně. | Pokud se problém nevyřeší do 24 hodin, obraťte se na podporu.
-9008: "Nelze načíst nainstalované aplikace serveru". | Může to být vnitřní chyba.  | Tf problém nevyřeší sám do 24 hodin, kontaktujte podporu.
-9009: "Nelze načíst nainstalované aplikace serveru". | Může dojít, pokud nastavení řízení uživatelských účtů systému Windows (UAC) na serveru jsou omezující a zabránit zjišťování nainstalovaných aplikací. | Vyhledejte nastavení Řízení uživatelských účtů na serveru a nakonfigurujte nastavení řízení uživatelských účtů na serveru na jednu z nižších dvou úrovní.
-9010: "Nelze načíst nainstalované aplikace serveru". | Může to být vnitřní chyba.  | Tf problém nevyřeší sám do 24 hodin, kontaktujte podporu.
-9011: "Soubor ke stažení z hosta nebyl nalezen na hostu virtuálního počítači" | K problému může dojít z důvodu vnitřní chyby. | Problém by měl být automaticky vyřešen do 24 hodin. Pokud problém přetrvává, obraťte se na podporu společnosti Microsoft.
-9012: "Obsah výsledku souboru jsou prázdné." | K problému může dojít z důvodu vnitřní chyby. | Problém by měl být automaticky vyřešen do 24 hodin. Pokud problém přetrvává, obraťte se na podporu společnosti Microsoft.
-9013: "Nový dočasný profil je vytvořen pro každé přihlášení do virtuálního mísu VMware" | Pro každé přihlášení do virtuálního mísa se vytvoří nový dočasný profil. | Ujistěte se, že uživatelské jméno uvedené v pověřeních hostovaného virtuálního uživatele je ve formátu UPN.
-9015: "Nelze se připojit k virtuálním počítačům VMware z důvodu nedostatečných oprávnění v centru vcenter" | V uživatelském účtu vcenter není povolena role Operace hosta. | Ujistěte se, že je v uživatelském účtu vCenter povolena role Operace hosta.
-9016: "Nelze se připojit k virtuálním virtuálním mům VMware, protože provozní agent hosta je bez dat" | Nástroje vmware nejsou správně nainstalovány nebo nejsou aktuální. | Ujistěte se, že jsou nástroje VMware správně nainstalovány a aktuální.
-9017: "Soubor s zjištěná metadata se nenachází na virtuálním počítači." | K problému může dojít z důvodu vnitřní chyby. | Obraťte se na podporu společnosti Microsoft pro řešení.
-9018: "Prostředí PowerShell není nainstalované ve virtuálních virtuálních měn hosta." | Prostředí PowerShell není k dispozici ve virtuálním virtuálním ms hosta. | Nainstalujte PowerShell do hostovaného virtuálního soudu.
-9019: "Nelze zjistit z důvodu selhání operace virtuálního virtuálního provozu hosta" | Operace hosta vmware se nezdařila na virtuálním počítači. | Ujistěte se, že pověření virtuálního uživatele jsou platná a uživatelské jméno uvedené v pověření hostovaného virtuálního uživatele je ve formátu UPN.
-9020: "Oprávnění k vytvoření souboru je odepřeno." | Role přidružená k uživateli nebo zásadám skupiny omezuje uživatele k vytvoření souboru ve složce | Zkontrolujte, zda daný uživatel typu Host nemá oprávnění k vytvoření souboru ve složce. Název složky naleznete v **části Oznámení** v posouzení serveru.
-9021: "Oprávnění k vytvoření souboru je odepřeno ve složce System Temp Path." | Verze nástroje VMware na virtuálním počítači není podporovaná | Inovujte verzi nástroje VMware nad 10.2.0.
-9022: "Získat přístup k objektům wmi je odepřen." | Role přidružená k uživateli nebo zásadám skupiny omezuje uživatele pro přístup k objektu služby WMI. | Obraťte se na podporu společnosti Microsoft.
-9023: "Hodnota proměnné prostředí SystemRoot je prázdná." | Není známo | Obraťte se na podporu společnosti Microsoft.
-9024: "Hodnota proměnné prostředí TEMP je prázdná." | Není známo | Obraťte se na podporu společnosti Microsoft.
-9025: "Prostředí PowerShell je poškozen ve virtuálních virtuálních měničících." | Není známo | Přeinstalujte PowerShell v hostovaném virtuálním počítači a zkontrolujte, jestli powershell udávaný na hostovaném virtuálním počítači.
-8084: "Nelze zjistit aplikace z důvodu <Exception from VMware>chyby VMware: " | Zařízení Migrace Azure používá k zjišťování aplikací api VMware. K tomuto problému může dojít, pokud je vyvolána výjimka vCenter Server při pokusu o zjišťování aplikací. Chybová zpráva od společnosti VMware se zobrazí v chybové zprávě zobrazené na portálu. | Vyhledejte zprávu v dokumentaci společnosti [VMware](https://pubs.vmware.com/vsphere-51/topic/com.vmware.wssdk.apiref.doc/index-faults.html)a postupujte podle pokynů k opravě. Pokud se vám nepodaří opravit, obraťte se na podporu společnosti Microsoft.
+10000: "nelze zjistit aplikace nainstalované na serveru". | K tomu může dojít, pokud operační systém počítače není Windows nebo Linux. | Používejte jenom zjišťování aplikací pro Windows/Linux.
+10001: nelze načíst aplikace nainstalované serverem. | Vnitřní chyba – některé chybějící soubory v zařízení. | Obraťte se na podporu Microsoftu.
+10002: nelze načíst aplikace nainstalované serverem. | Agent zjišťování na zařízení nemusí správně fungovat. | Pokud se problém nepodaří vyřešit během 24 hodin, obraťte se na podporu.
+10003 "nelze načíst aplikace nainstalovaná na serveru". | Agent zjišťování na zařízení nemusí správně fungovat. | Pokud se problém nepodaří vyřešit během 24 hodin, obraťte se na podporu.
+10004: "nepovedlo se zjistit nainstalované aplikace pro <počítače> Windows/Linux." |  Přihlašovací údaje pro přístup k <počítačům> systému Windows/Linux nejsou v zařízení k dispozici.| Přidejte přihlašovací údaje k zařízení, které má přístup k <počítačům> Windows/Linux.
+10005: "nepovedlo se získat přístup k místnímu serveru". | Přístup k přihlašovacím údajům může být chybný. | Aktualizujte přihlašovací údaje zařízení a ujistěte se, že k příslušnému počítači máte přístup. 
+10006: "nepovedlo se získat přístup k místnímu serveru". | K tomu může dojít, pokud operační systém počítače není Windows nebo Linux.|  Používejte jenom zjišťování aplikací pro Windows/Linux.
+10007: Nepodařilo se zpracovat načtená metadata. | K této vnitřní chybě došlo při pokusu o deserializaci JSON. | Kontaktování podpora Microsoftu pro řešení
+9000/9001/9002: "nelze zjistit aplikace nainstalované na serveru". | Nástroje VMware pravděpodobně nejsou nainstalovány nebo jsou poškozeny. | Na příslušný počítač nainstalujte nebo přeinstalujte nástroje VMware a ověřte, že je spuštěný.
+9003: nelze zjistit aplikace nainstalované na serveru. | K tomu může dojít, pokud operační systém počítače není Windows nebo Linux. | Používejte jenom zjišťování aplikací pro Windows/Linux.
+9004: "nelze zjistit aplikace nainstalované na serveru". | K tomu může dojít v případě, že je virtuální počítač vypnutý. | Pro zjišťování se ujistěte, že je virtuální počítač zapnutý.
+9005: nepovedlo se zjistit aplikace nainstalované na virtuálním počítači. | K tomu může dojít, pokud operační systém počítače není Windows nebo Linux. | Používejte jenom zjišťování aplikací pro Windows/Linux.
+9006/9007: nelze načíst aplikace nainstalované serverem. | Agent zjišťování na zařízení nemusí správně fungovat. | Pokud se problém nepodaří vyřešit během 24 hodin, obraťte se na podporu.
+9008: nelze načíst aplikace nainstalované serverem. | Může se jednat o vnitřní chybu.  | TF problém se nedokáže vyřešit během 24 hodin, obraťte se na podporu.
+9009: nelze načíst aplikace nainstalované serverem. | Může dojít v případě, že nastavení řízení uživatelských účtů (UAC) systému Windows na serveru jsou omezující a znemožňuje zjišťování nainstalovaných aplikací. | Vyhledejte nastavení řízení uživatelských účtů na serveru a nakonfigurujte nastavení nástroje řízení uživatelských účtů na serveru na jednu z nižších dvou úrovní.
+9010: nelze načíst aplikace nainstalované serverem. | Může se jednat o vnitřní chybu.  | TF problém se nedokáže vyřešit během 24 hodin, obraťte se na podporu.
+9011: soubor ke stažení z hosta se nenašel na virtuálním počítači hosta. | K tomuto problému může dojít z důvodu vnitřní chyby. | Problém by se měl automaticky vyřešit během 24 hodin. Pokud problém přetrvává, kontaktujte prosím podpora Microsoftu.
+9012: obsah souboru výsledků je prázdný. | K tomuto problému může dojít z důvodu vnitřní chyby. | Problém by se měl automaticky vyřešit během 24 hodin. Pokud problém přetrvává, kontaktujte prosím podpora Microsoftu.
+9013: "pro každé přihlášení k virtuálnímu počítači VMware je vytvořen nový dočasný profil" | Pro každé přihlášení k virtuálnímu počítači se vytvoří nový dočasný profil. | Ujistěte se, že uživatelské jméno zadané v přihlašovacích údajích k hostovanému virtuálnímu počítači je ve formátu UPN.
+9015: Nelze se připojit k virtuálním počítačům VMware z důvodu nedostatečných oprávnění na vCenter. | Role operace hosta není v uživatelském účtu vCenter povolena. | Zajistěte, aby byla na uživatelském účtu vCenter povolená role operace hosta.
+9016: nejde se připojit k virtuálním počítačům VMware, protože agent operací hosta je mimo data. | Nástroje VMware nejsou správně nainstalované nebo nejsou aktuální. | Ujistěte se, že jsou nástroje VMware správně nainstalované a aktuální.
+9017: na virtuálním počítači se nenašel soubor se zjištěnými metadaty. | K tomuto problému může dojít z důvodu vnitřní chyby. | Pro řešení kontaktujte podpora Microsoftu.
+9018: na virtuálních počítačích hosta není nainstalovaný PowerShell. | Prostředí PowerShell není v hostovaném virtuálním počítači k dispozici. | Nainstalujte PowerShell do virtuálního počítače hosta.
+9019: "nelze zjistit z důvodu selhání operací virtuálních počítačů hosta" | Operace hosta VMware se na virtuálním počítači nezdařila. | Ujistěte se, že přihlašovací údaje virtuálního počítače jsou platné a že uživatelské jméno zadané v přihlašovacích údajích k hostovanému virtuálnímu počítači má formát UPN.
+9020: oprávnění k vytvoření souboru bylo odepřeno. | Role přidružená k uživateli nebo zásadám skupiny omezuje uživatele na vytvoření souboru ve složce. | Zkontroluje, jestli zadaný uživatel typu host má oprávnění k vytvoření souboru ve složce. Viz **oznámení** v tématu vyhodnocování serveru pro název složky.
+9021: v dočasné cestě systému složek se zamítlo oprávnění k vytvoření souboru. | Verze nástroje VMware na virtuálním počítači není podporovaná. | Upgradujte si verzi nástroje VMware nad 10.2.0.
+9022: "získání přístupu k objektům WMI bylo odepřeno." | Role přidružená k uživateli nebo zásadám skupiny omezuje uživatele na přístup k objektu rozhraní WMI. | Kontaktujte prosím podpora Microsoftu.
+9023: hodnota proměnné prostředí SystemRoot je prázdná. | Neznámo | Kontaktujte prosím podpora Microsoftu.
+9024: hodnota proměnné prostředí TEMP je prázdná. | Neznámo | Kontaktujte prosím podpora Microsoftu.
+9025: "prostředí PowerShell je poškozeno na virtuálních počítačích hosta". | Neznámo | Přeinstalujte PowerShell v hostovaném virtuálním počítači a ověřte, jestli je možné spustit PowerShell na virtuálním počítači hosta.
+8084: nepovedlo se zjistit aplikace z důvodu chyby VMware <Exception from VMware>: | Zařízení Azure Migrate používá rozhraní API VMware ke zjišťování aplikací. K tomuto problému může dojít, pokud se při pokusu o zjištění aplikací vyvolá výjimka vCenter Server. Zpráva o chybě z VMware se zobrazí v chybové zprávě zobrazené na portálu. | Vyhledejte zprávu v [dokumentaci k VMware](https://pubs.vmware.com/vsphere-51/topic/com.vmware.wssdk.apiref.doc/index-faults.html)a proveďte opravu pomocí těchto kroků. Pokud nemůžete opravit, obraťte se na podporu Microsoftu.
 
 
 
 ## <a name="next-steps"></a>Další kroky
-Nastavte zařízení pro servery [VMware](how-to-set-up-appliance-vmware.md), [Hyper-V](how-to-set-up-appliance-hyper-v.md)nebo [fyzické servery](how-to-set-up-appliance-physical.md).
+Nastavte zařízení pro [VMware](how-to-set-up-appliance-vmware.md), [Hyper-V](how-to-set-up-appliance-hyper-v.md)nebo [fyzické servery](how-to-set-up-appliance-physical.md).

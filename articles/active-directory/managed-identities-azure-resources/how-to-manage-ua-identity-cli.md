@@ -1,6 +1,6 @@
 ---
-title: Správa uživatelem přiřazené spravované identity – Azure CLI - Azure AD
-description: Krok za krokem pokyny, jak vytvořit, seznam a odstranit uživatelem přiřazenou spravovanou identitu pomocí rozhraní příkazového příkazu Azure.
+title: Správa uživatelsky přiřazené spravované identity – Azure CLI – Azure AD
+description: Podrobné pokyny, jak vytvořit, vypsat a odstranit spravovanou identitu přiřazenou uživatelem pomocí Azure CLI.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -16,31 +16,31 @@ ms.date: 04/17/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: be5defb85547e8750dea9ceaa481217aa40a004e
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81639760"
 ---
-# <a name="create-list-or-delete-a-user-assigned-managed-identity-using-the-azure-cli"></a>Vytvoření, vypsat nebo odstranit spravovanou identitu přiřazenou uživatelem pomocí rozhraní příkazového příkazu Azure
+# <a name="create-list-or-delete-a-user-assigned-managed-identity-using-the-azure-cli"></a>Vytvoření, vypsání nebo odstranění spravované identity přiřazené uživatelem pomocí Azure CLI
 
 
-Spravované identity pro prostředky Azure poskytují služby Azure se spravovanou identitou ve službě Azure Active Directory. Tuto identitu můžete použít k ověření služeb, které podporují ověřování Azure AD, bez nutnosti pověření ve vašem kódu. 
+Spravované identity pro prostředky Azure poskytují služby Azure se spravovanou identitou v Azure Active Directory. Tuto identitu můžete použít k ověření pro služby, které podporují ověřování Azure AD, a to bez nutnosti přihlašovacích údajů ve vašem kódu. 
 
-V tomto článku se dozvíte, jak vytvořit, seznam a odstranit uživatelem přiřazenou spravovanou identitu pomocí rozhraní příkazového příkazu Azure.
+V tomto článku se dozvíte, jak pomocí Azure CLI vytvořit, vypsat a odstranit spravovanou identitu přiřazenou uživatelem.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Pokud nejste obeznámeni se spravovanými identitami pro prostředky Azure, podívejte se na [část s přehledem](overview.md). **Zkontrolujte rozdíl [mezi systémem přiřazenou a uživatelem přiřazenou spravovanou identitou](overview.md#how-does-the-managed-identities-for-azure-resources-work)**.
+- Pokud neznáte spravované identity prostředků Azure, přečtěte si [část přehled](overview.md). **Nezapomeňte si projít [rozdíl mezi spravovanou identitou přiřazenou systémem a uživatelem](overview.md#how-does-the-managed-identities-for-azure-resources-work)**.
 - Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
-- Chcete-li spustit příklady skriptu vykreslování jízdou po nesek, máte tři možnosti:
-    - Azure [Cloud Shell](../../cloud-shell/overview.md) použijte z webu Azure Portal (viz další část).
-    - Pomocí vloženého prostředí Azure Cloud Shell použijte pomocí tlačítka "Try It", které se nachází v pravém horním rohu každého bloku kódu.
-    - [Nainstalujte nejnovější verzi Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.13 nebo novější), pokud dáváte přednost použití místní konzoly příkazového příkazu. Přihlaste se `az login`k Azure pomocí účtu, který je přidružený k předplatnému Azure, pod kterým chcete nasadit spravovanou identitu přiřazenou uživatelem.
+- Chcete-li spustit příklady skriptu rozhraní příkazového řádku, máte tři možnosti:
+    - Použijte [Azure Cloud Shell](../../cloud-shell/overview.md) z Azure Portal (viz další oddíl).
+    - Použijte vložený Azure Cloud Shell pomocí tlačítka "vyzkoušet", které je umístěné v pravém horním rohu každého bloku kódu.
+    - Pokud upřednostňujete použití místní konzoly CLI, [nainstalujte nejnovější verzi Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.13 nebo novější). Přihlaste se k `az login`Azure pomocí účtu, který je přidružený k předplatnému Azure, pod kterým chcete nasadit uživatelsky přiřazenou spravovanou identitu.
 
 
 > [!NOTE]
-> Chcete-li změnit uživatelská oprávnění při použití hlavního povinného použití hlavního nastavení příkazu k obsluze aplikace pomocí rozhraní příkazového příkazu, musíte poskytnout další oprávnění instančního objektu v rozhraní API grafu Azure AD, protože části rozhraní příkazového příkazu provádějí požadavky GET proti rozhraní API grafu. V opačném případě může dojít k přijetí zprávy "Nedostatečná oprávnění k dokončení operace". K tomu budete muset přejít do registrace aplikace ve službě Azure Active Directory, vyberte aplikaci, klikněte na oprávnění rozhraní API, přejděte dolů a vyberte Azure Active Directory Graph. Odtud vyberte oprávnění aplikace a přidejte příslušná oprávnění. 
+> Pokud chcete změnit uživatelská oprávnění při použití rozhraní příkazového řádku servivce App (CLI), musíte instanční objekt ve službě Azure Graph API AD poskytnout další oprávnění, protože části CLI provádějí požadavky GET na Graph API. V opačném případě může dodržet zprávu "nedostatečná oprávnění k dokončení operace". Pokud to chcete provést, budete muset přejít do registrace aplikace v Azure Active Directory, vybrat aplikaci, kliknout na oprávnění rozhraní API, přejít dolů a vybrat Azure Active Directory Graph. Z výběru oprávnění aplikace a pak přidejte příslušná oprávnění. 
 
 
 
@@ -48,45 +48,45 @@ V tomto článku se dozvíte, jak vytvořit, seznam a odstranit uživatelem při
 
 ## <a name="create-a-user-assigned-managed-identity"></a>Vytvoření spravované identity přiřazené uživatelem 
 
-Chcete-li vytvořit spravovanou identitu přiřazenou uživateli, potřebuje váš účet přiřazení role [Přispěvatel spravované identity.](/azure/role-based-access-control/built-in-roles#managed-identity-contributor)
+K vytvoření spravované identity přiřazené uživatelem potřebuje váš účet přiřazení role [Přispěvatel spravované identity](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) .
 
-Pomocí příkazu [az identity create](/cli/azure/identity#az-identity-create) vytvořte spravovanou identitu přiřazenou uživatelem. Parametr `-g` určuje skupinu prostředků, kde má být vytvořit spravovanou identitu `-n` přiřazenou uživateli, a parametr určuje její název. Nahraďte hodnoty parametrů `<RESOURCE GROUP>` a `<USER ASSIGNED IDENTITY NAME>` vlastními hodnotami:
+Pomocí příkazu [AZ identity Create](/cli/azure/identity#az-identity-create) vytvořte spravovanou identitu přiřazenou uživatelem. `-g` Parametr určuje skupinu prostředků, ve které se má vytvořit spravovaná identita přiřazená uživateli, a `-n` parametr určuje jeho název. Nahraďte `<RESOURCE GROUP>` hodnoty `<USER ASSIGNED IDENTITY NAME>` parametrů a vlastními hodnotami:
 
 [!INCLUDE [ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
  ```azurecli-interactive
 az identity create -g <RESOURCE GROUP> -n <USER ASSIGNED IDENTITY NAME>
 ```
-## <a name="list-user-assigned-managed-identities"></a>Seznam spravovaných identit přiřazených uživatelem
+## <a name="list-user-assigned-managed-identities"></a>Výpis spravovaných identit přiřazených uživatelem
 
-Chcete-li vypsat/přečíst spravovanou identitu přiřazenou uživatelem, potřebuje váš účet přiřazení role [Operátor spravované identity](/azure/role-based-access-control/built-in-roles#managed-identity-operator) nebo [Přiřazení přispěvatele spravované identity.](/azure/role-based-access-control/built-in-roles#managed-identity-contributor)
+K vypsání nebo načtení spravované identity přiřazené uživatelem vyžaduje váš účet [spravovaný operátor identity](/azure/role-based-access-control/built-in-roles#managed-identity-operator) nebo přiřazení role [Přispěvatel spravované identity](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) .
 
-Chcete-li vypsat spravované identity přiřazené uživatelem, použijte příkaz [az seznam identit.](/cli/azure/identity#az-identity-list) `<RESOURCE GROUP>` Nahraďte jej vlastní hodnotou:
+Pokud chcete zobrazit seznam spravovaných identit přiřazených uživateli, použijte příkaz [AZ identity list](/cli/azure/identity#az-identity-list) . `<RESOURCE GROUP>` Nahraďte vlastní hodnotou:
 
 ```azurecli-interactive
 az identity list -g <RESOURCE GROUP>
 ```
-V odpovědi json mají `"Microsoft.ManagedIdentity/userAssignedIdentities"` uživatelem přiřazené spravované identity vrácenou hodnotu pro klíč . `type`
+V odpovědi JSON má `"Microsoft.ManagedIdentity/userAssignedIdentities"` uživatelem přiřazené spravované identity hodnotu vrácenou pro klíč,. `type`
 
 `"type": "Microsoft.ManagedIdentity/userAssignedIdentities"`
 
-## <a name="delete-a-user-assigned-managed-identity"></a>Odstranění spravované identity přiřazené uživateli
+## <a name="delete-a-user-assigned-managed-identity"></a>Odstranění spravované identity přiřazené uživatelem
 
-Chcete-li odstranit spravovanou identitu přiřazenou uživatelem, potřebuje váš účet přiřazení role [Přispěvatel spravované identity.](/azure/role-based-access-control/built-in-roles#managed-identity-contributor)
+Pokud chcete odstranit spravovanou identitu přiřazenou uživatelem, váš účet potřebuje přiřazení role [Přispěvatel spravované identity](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) .
 
-Chcete-li odstranit spravovanou identitu přiřazenou uživatelem, použijte příkaz [az identity delete.](/cli/azure/identity#az-identity-delete)  Parametr -n určuje jeho název a parametr -g určuje skupinu prostředků, ve které byla vytvořena spravovaná identita přiřazená uživatelem. Nahraďte hodnoty parametrů `<USER ASSIGNED IDENTITY NAME>` a `<RESOURCE GROUP>` vlastními hodnotami:
+Pokud chcete odstranit spravovanou identitu přiřazenou uživatelem, použijte příkaz [AZ identity Delete](/cli/azure/identity#az-identity-delete) .  Parametr-n určuje jeho název a parametr-g určuje skupinu prostředků, ve které se vytvořila spravovaná identita přiřazená uživatelem. Nahraďte `<USER ASSIGNED IDENTITY NAME>` hodnoty `<RESOURCE GROUP>` parametrů a vlastními hodnotami:
 
  ```azurecli-interactive
 az identity delete -n <USER ASSIGNED IDENTITY NAME> -g <RESOURCE GROUP>
 ```
 > [!NOTE]
-> Odstraněním spravované identity přiřazené uživateli neodeberete odkaz z prostředků, ke kterým byl přiřazen. Odeberte je z Virtuálního mě/VMSS pomocí příkazu `az vm/vmss identity remove`
+> Odstraněním spravované identity přiřazené uživatelem se neodebere odkaz z libovolného prostředku, ke kterému byl přiřazen. Odeberte je `az vm/vmss identity remove` prosím z VM/VMSS pomocí příkazu.
 
 ## <a name="next-steps"></a>Další kroky
 
-Úplný seznam příkazů identity Azure CLI najdete [v tématu az identity](/cli/azure/identity).
+Úplný seznam příkazů Azure CLI identity najdete v tématu [AZ identity](/cli/azure/identity).
 
-Informace o tom, jak přiřadit uživatelem přiřazenou spravovanou identitu k virtuálnímu počítači Azure, [najdete v tématu Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí rozhraní příkazového příkazu Azure](qs-configure-cli-windows-vm.md#user-assigned-managed-identity)
+Informace o přiřazení spravované identity přiřazené uživatelem k virtuálnímu počítači Azure najdete v tématu [Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí Azure CLI](qs-configure-cli-windows-vm.md#user-assigned-managed-identity) .
 
 
  

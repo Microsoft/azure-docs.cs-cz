@@ -1,6 +1,6 @@
 ---
-title: Přidání, odebrání a zařazení uživatelů do administrativní jednotky (preview) – Azure Active Directory | Dokumenty společnosti Microsoft
-description: Správa uživatelů a jejich oprávnění k rolím v administrativní jednotce ve službě Azure Active Directory
+title: Přidání, odebrání a výpis uživatelů v jednotce pro správu (Preview) – Azure Active Directory | Microsoft Docs
+description: Správa uživatelů a jejich oprávnění role v jednotce pro správu v Azure Active Directory
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -15,39 +15,39 @@ ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9c2c5c083115440e1e4da203f39f2b32734458c3
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81684962"
 ---
-# <a name="add-and-manage-users-in-an-administrative-unit-in-azure-active-directory"></a>Přidání a správa uživatelů v administrativní jednotce ve službě Azure Active Directory
+# <a name="add-and-manage-users-in-an-administrative-unit-in-azure-active-directory"></a>Přidat a spravovat uživatele v jednotce pro správu v Azure Active Directory
 
-Ve službě Azure Active Directory (Azure AD) můžete přidat uživatele do jednotky pro správu (AU) pro podrobnější rozsah správy řízení.
+V Azure Active Directory (Azure AD) můžete přidat uživatele do jednotky pro správu (AU) pro přesnější administrativní rozsah řízení.
 
-Postup přípravy na použití powershellu a microsoft graphu pro správu administrativních jednotek naleznete [v tématu Začínáme](roles-admin-units-manage.md#get-started).
+Postup přípravy na používání PowerShellu a Microsoft Graph pro správu jednotek správy najdete v tématu [Začínáme](roles-admin-units-manage.md#get-started).
 
-## <a name="add-users-to-an-au"></a>Přidání uživatelů do AU
+## <a name="add-users-to-an-au"></a>Přidat uživatele do AU
 
 ### <a name="azure-portal"></a>portál Azure
 
-Uživatelům můžete přiřadit administrativní jednotky dvěma způsoby.
+Uživatelům můžete přiřadit jednotky pro správu dvěma způsoby.
 
-1. Individuální zadání
+1. Individuální přiřazení
 
-    1. Můžete přejít na Azure AD na portálu a vyberte uživatel a vyberte uživatele, který má být přiřazen k administrativní jednotce. V levém panelu pak můžete vybrat administrativní jednotky. Uživateli lze přiřadit jednu nebo více administrativních jednotek kliknutím na Přiřadit k administrativní jednotce a výběrem administrativních jednotek, kam má být uživatel přiřazen.
+    1. Na portálu můžete přejít na Azure AD a vybrat uživatele a vybrat uživatele, který se má přiřadit jednotce pro správu. Na levém panelu pak můžete vybrat jednotky pro správu. Uživatel může být přiřazen k jedné nebo více jednotkám správy kliknutím na položku přiřadit jednotce pro správu a výběrem jednotek pro správu, ke kterým má být uživatel přiřazen.
 
-       ![Vyberte Přidat a zadejte název pro správní jednotku.](./media/roles-admin-units-add-manage-users/assign-users-individually.png)
+       ![Vyberte Přidat a potom zadejte název jednotky pro správu.](./media/roles-admin-units-add-manage-users/assign-users-individually.png)
 
-    1. Můžete přejít na Azure AD na portálu a vybrat administrativní jednotky v levém podokně a pak vybrat administrativní jednotku, kde mají být uživatelé přiřazeni. V levém podokně vyberte Všichni uživatelé a pak vyberte Přidat člena. Potom můžete pokračovat a vybrat jednoho nebo více uživatelů, kteří mají být přiřazeni k administrativní jednotce z pravého podokna.
+    1. Na portálu můžete přejít na Azure AD a v levém podokně vybrat jednotky pro správu a pak vybrat jednotku správy, ke které se mají uživatelé přiřazovat. V levém podokně vyberte všichni uživatelé a pak vyberte Přidat člena. Pak můžete pokračovat a vybrat jednoho nebo více uživatelů, kteří mají být přiřazeni k jednotce pro správu v pravém podokně.
 
-        ![vyberte administrativní jednotku a pak vyberte Přidat člena](./media/roles-admin-units-add-manage-users/assign-to-admin-unit.png)
+        ![Vyberte jednotku pro správu a pak vyberte Přidat člena.](./media/roles-admin-units-add-manage-users/assign-to-admin-unit.png)
 
 1. Hromadné přiřazení
 
-    Přejděte na Azure AD na portálu a vyberte jednotky pro správu. Vyberte administrativní jednotku, do které mají být uživatelé přidáni. Pokračujte kliknutím na všechny uživatele -> Přidat členy ze souboru .csv. Poté si můžete stáhnout šablonu CSV a upravit soubor. Formát je jednoduchý a potřebuje jeden hlavní název on-line, které mají být přidány do každého řádku. Jakmile je soubor připraven, uložte jej na vhodné místo a nahrajte jej v kroku 3, jak je zvýrazněno ve snímku.
+    Na portálu klikněte na Azure AD a vyberte jednotky pro správu. Vyberte jednotku pro správu, do které chcete přidat uživatele. Pokračujte kliknutím na všichni uživatelé – > přidat členy ze souboru. csv. Pak můžete stáhnout šablonu sdíleného svazku clusteru a upravit soubor. Formát je jednoduchý a vyžaduje, aby byl do každého řádku přidán jeden hlavní název uživatele (UPN). Jakmile je soubor připravený, uložte ho na vhodné místo a pak ho nahrajte v kroku 3 jako zvýrazněný ve snímku.
 
-    ![hromadné přiřazení uživatelů k administrativní jednotce](./media/roles-admin-units-add-manage-users/bulk-assign-to-admin-unit.png)
+    ![hromadně přiřazovat uživatele k jednotce pro správu](./media/roles-admin-units-add-manage-users/bulk-assign-to-admin-unit.png)
 
 ### <a name="powershell"></a>PowerShell
 
@@ -55,7 +55,7 @@ Uživatelům můžete přiřadit administrativní jednotky dvěma způsoby.
     $UserObj = Get-AzureADUser -Filter "UserPrincipalName eq 'billjohn@fabidentity.onmicrosoft.com'"
     Add-AzureADAdministrativeUnitMember -ObjectId $administrativeunitObj.ObjectId -RefObjectId $UserObj.ObjectId
 
-Ve výše uvedeném příkladu rutina Add-AzureADAdministrativeUnitMember se používá k přidání uživatele do jednotky pro správu. ID objektu správní jednotky, kde má být uživatel přidán, a ID objektu uživatele, který má být přidán, jsou považovány za argument. Zvýrazněná část může být změněna podle potřeby pro konkrétní prostředí.
+V předchozím příkladu rutina Add-AzureADAdministrativeUnitMember slouží k přidání uživatele do jednotky pro správu. ID objektu jednotky pro správu, do které se má přidat uživatel a ID objektu uživatele, který se má přidat, se považuje za argument. Zvýrazněný oddíl se může změnit podle potřeby pro konkrétní prostředí.
 
 ### <a name="microsoft-graph"></a>Microsoft Graph
 
@@ -76,11 +76,11 @@ Příklad:
 
 ### <a name="azure-portal"></a>portál Azure
 
-Na webu Azure Portal můžete otevřít profil uživatele tak, že přejdete na Azure AD > uživatelé. Kliknutím na uživatele otevřete profil uživatele.
+V Azure Portal můžete otevřít profil uživatele tak, že kliknete na uživatele Azure AD >. Kliknutím na uživatele otevřete profil uživatele.
 
-![Otevření profilu uživatele ve službě Azure Active Directory](./media/roles-admin-units-add-manage-users/user-profile-admin-units.png)
+![Otevřete profil uživatele v Azure Active Directory](./media/roles-admin-units-add-manage-users/user-profile-admin-units.png)
 
-Výběrem **položky Administrativní jednotky** na levém panelu zobrazíte seznam jednotek pro správu, kterým byl uživatel přiřazen.
+Vyberte **jednotky pro správu** na levém panelu, abyste zobrazili seznam jednotek pro správu, ke kterým byl uživatel přiřazen.
 
 ![Seznam jednotek pro správu pro uživatele](./media/roles-admin-units-add-manage-users/list-user-admin-units.png)
 
@@ -96,13 +96,13 @@ Výběrem **položky Administrativní jednotky** na levém panelu zobrazíte sez
 
 ### <a name="azure-portal"></a>portál Azure
 
-Uživatele můžete odebrat z administrativní jednotky dvěma způsoby. Na webu Azure Portal můžete otevřít profil uživatele tak, že přejdete na Azure **AD** > **Users**. Vyberte uživatele, chcete-li otevřít profil uživatele. Vyberte administrativní jednotku, ze které má být uživatel odebrán, a vyberte **odebrat z administrativní jednotky**.
+Existují dva způsoby, jak můžete odebrat uživatele z jednotky pro správu. V Azure Portal můžete otevřít profil uživatele tak, že kliknete na uživatelé **Azure AD** > **Users**. Výběrem uživatele otevřete profil uživatele. Vyberte jednotku pro správu, ze které chcete uživatele odebrat, a vyberte možnost **Odebrat z jednotky pro správu**.
 
-![Odebrání uživatele z administrativní jednotky z profilu uživatele](./media/roles-admin-units-add-manage-users/user-remove-admin-units.png)
+![Odebrání uživatele z jednotky pro správu z profilu uživatele](./media/roles-admin-units-add-manage-users/user-remove-admin-units.png)
 
-Uživatele v**jednotkách pro správu Služby** **Azure AD** > můžete také odebrat výběrem administrativní jednotky, ze které chcete uživatele odebrat. Vyberte uživatele a vyberte **Odebrat člena**.
+Uživatele můžete také odebrat v části**jednotky pro správu** **Azure AD** > tak, že vyberete jednotku správy, ze které chcete odebrat uživatele. Vyberte uživatele a vyberte **odebrat člena**.
   
-![Odebrání uživatele na úrovni správní jednotky](./media/roles-admin-units-add-manage-users/admin-units-remove-user.png)
+![Odebrání uživatele na úrovni jednotky pro správu](./media/roles-admin-units-add-manage-users/admin-units-remove-user.png)
 
 ### <a name="powershell"></a>PowerShell
 
@@ -114,17 +114,17 @@ Uživatele v**jednotkách pro správu Služby** **Azure AD** > můžete také od
 
 ## <a name="bulk-remove-more-than-one-user"></a>Hromadné odebrání více než jednoho uživatele
 
-Můžete přejít na Azure AD > jednotky pro správu a vybrat administrativní jednotku, ze které chcete odebrat uživatele. Klikněte na Hromadné odebrat člena. Stáhněte si šablonu CSV pro poskytnutí seznamu uživatelů, kteří mají být odebráni.
+Můžete přejít na jednotky pro správu služby Azure AD > a vybrat jednotku správy, ze které chcete uživatele odebrat. Klikněte na hromadné odebrání člena. Stáhněte si šablonu CSV pro poskytnutí seznamu uživatelů, kteří mají být odebráni.
 
-Upravte staženou šablonu CSV s příslušnými uživatelskými položkami. Neodstraňujte první dva řádky šablony. Do každého řádku přidejte jeden uživatelský upn.
+Upravte staženou šablonu sdíleného svazku clusteru pomocí příslušných uživatelských záznamů. Neodstraňujte první dva řádky šablony. Přidejte do každého řádku jeden hlavní název uživatele (UPN).
 
-![Úprava souboru CSV pro hromadné odebrání uživatele z jednotek pro správu](./media/roles-admin-units-add-manage-users/bulk-user-entries.png)
+![Úprava souboru CSV pro odebrání hromadného uživatele z jednotek pro správu](./media/roles-admin-units-add-manage-users/bulk-user-entries.png)
 
-Po uložení položek v souboru nahrajte soubor a vyberte **Odeslat**.
+Po uložení záznamů do souboru nahrajte soubor a vyberte **Odeslat**.
 
-![Odeslání souboru hromadného nahrání](./media/roles-admin-units-add-manage-users/bulk-user-remove.png)
+![Odeslat soubor hromadného nahrání](./media/roles-admin-units-add-manage-users/bulk-user-remove.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Přiřazení role správní jednotce](roles-admin-units-assign-roles.md)
-- [Přidání skupin do administrativní jednotky](roles-admin-units-add-manage-groups.md)
+- [Přiřazení role k jednotce pro správu](roles-admin-units-assign-roles.md)
+- [Přidání skupin do jednotky pro správu](roles-admin-units-add-manage-groups.md)

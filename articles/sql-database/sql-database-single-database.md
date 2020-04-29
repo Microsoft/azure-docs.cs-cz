@@ -1,6 +1,6 @@
 ---
-title: Co je jedna databáze
-description: Informace o jedné databázi v Azure SQL Database
+title: Co je jediná databáze
+description: Další informace o izolovaných databázích v Azure SQL Database
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
@@ -12,53 +12,53 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 04/08/2019
 ms.openlocfilehash: fc63de4057def632d3ac1980e8cb3eaedbff2175
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79500761"
 ---
-# <a name="what-is-a-single-database-in-azure-sql-database"></a>Co je jedna databáze v Azure SQL Database
+# <a name="what-is-a-single-database-in-azure-sql-database"></a>Co je jediná databáze v Azure SQL Database
 
-Možnost nasazení jedné databáze vytvoří databázi v Azure SQL Database s vlastní sadou prostředků a spravuje se přes databázový server SQL. S jednou databází je každá databáze izolovaná od sebe navzájem a přenosná, každá s vlastní úrovní služeb v rámci [nákupního modelu založeného na DTU](sql-database-service-tiers-dtu.md) nebo [nákupního modelu založeného na virtuálních jádrech](sql-database-service-tiers-vcore.md) a zaručené výpočetní velikosti.
+Možnost nasazení jedné databáze vytvoří databázi v Azure SQL Database s vlastní sadou prostředků a je spravovaná pomocí SQL Databaseho serveru. V případě izolované databáze je každá databáze izolovaná od ostatních a přenosných počítačů, z nichž každá má svou vlastní úroveň služby v rámci [nákupního modelu založeného na DTU](sql-database-service-tiers-dtu.md) nebo v [nákupním modelu založeném na Vcore](sql-database-service-tiers-vcore.md) a zaručené výpočetní velikosti.
 
 > [!IMPORTANT]
-> Jedna databáze je jednou ze tří možností nasazení pro Azure SQL Database. Další dva jsou [elastické fondy](sql-database-elastic-pool.md) a [spravované instance](sql-database-managed-instance.md).
+> Jedna databáze je jednou ze tří možností nasazení Azure SQL Database. Další dvě jsou [elastické fondy](sql-database-elastic-pool.md) a [spravovaná instance](sql-database-managed-instance.md).
 > [!NOTE]
-> Glosář termínů v Azure SQL Database najdete v tématu [Glosář termínů databáze SQL.](sql-database-glossary-terms.md)
+> Glosář termínů v Azure SQL Database naleznete v tématu [SQL Database terms Glosář](sql-database-glossary-terms.md)
 
 ## <a name="dynamic-scalability"></a>Dynamická škálovatelnost
 
-První aplikaci můžete vytvořit na malé, jediné databázi s nízkými náklady na výpočetní úrovni bez serveru nebo malé výpočetní velikosti v zřízené výpočetní vrstvě. Výpočetní [nebo servisní vrstvu](sql-database-single-database-scale.md) můžete kdykoli změnit ručně nebo programově, aby vyhovovaly potřebám vašeho řešení. Můžete upravit úroveň výkonu bez přerušení provozu aplikace a bez dopadu na vaše zákazníky. Dynamická škálovatelnost umožňuje databázím transparentně reagovat na rychle se měnící požadavky na prostředky a vy díky tomu platíte pouze za prostředky, které potřebujete, když je potřebujete.
+V rámci výpočetní úrovně bez serveru nebo malé výpočetní velikosti v zřízené výpočetní úrovni můžete vytvořit svou první aplikaci s malou jedinou databází za nízkou cenu. [Výpočetní kapacitu nebo úroveň služby](sql-database-single-database-scale.md) můžete změnit ručně nebo programově, aby vyhovovaly potřebám vašeho řešení. Můžete upravit úroveň výkonu bez přerušení provozu aplikace a bez dopadu na vaše zákazníky. Dynamická škálovatelnost umožňuje databázím transparentně reagovat na rychle se měnící požadavky na prostředky a vy díky tomu platíte pouze za prostředky, které potřebujete, když je potřebujete.
 
 ## <a name="single-databases-and-elastic-pools"></a>Izolované databáze a elastické fondy
 
-Jednu databázi lze přesunout do nebo z [elastického fondu](sql-database-elastic-pool.md) pro sdílení prostředků. Řadě firem a aplikací stačí, že může vytvářet izolované databáze a nastavovat větší nebo menší výkon na vyžádání, zejména při relativně předvídatelném způsobu používání. Ale pokud vaše vzorce používání předvídatelné nejsou, může být správa nákladů a údržba obchodního modelu velmi těžká. Elastické fondy jsou navržené k řešení tohoto problému. Princip je jednoduchý. Prostředky výkonu přidělujete do fondu, nikoli do jednotlivé databáze, a platíte za prostředky kolektivního výkonu fondu, nikoli za výkon jedné databáze.
+Pro sdílení prostředků lze přesunout jednu databázi do [elastického fondu](sql-database-elastic-pool.md) nebo z něj. Řadě firem a aplikací stačí, že může vytvářet izolované databáze a nastavovat větší nebo menší výkon na vyžádání, zejména při relativně předvídatelném způsobu používání. Ale pokud vaše vzorce používání předvídatelné nejsou, může být správa nákladů a údržba obchodního modelu velmi těžká. Elastické fondy jsou navržené k řešení tohoto problému. Princip je jednoduchý. Prostředky výkonu přidělíte místo individuální databáze a platíte za celkový výkon fondu, nikoli pro jednotlivé databáze.
 
 ## <a name="monitoring-and-alerting"></a>Monitorování a upozorňování
 
-Používáte integrované nástroje [pro sledování výkonu](sql-database-performance-guidance.md) a [upozorňování](sql-database-insights-alerts-portal.md)v kombinaci s hodnocením výkonu. Pomocí těchto nástrojů můžete rychle posoudit dopad vertikálního navýšení nebo snížení kapacity v závislosti na stávajících nebo předpokládaných požadavcích. Kromě toho SQL Database můžete [vyzařovat metriky a protokoly prostředků](sql-database-metrics-diag-logging.md) pro snadnější monitorování.
+V kombinaci s hodnocením výkonu použijete integrované nástroje pro [monitorování výkonu](sql-database-performance-guidance.md) a [upozorňování](sql-database-insights-alerts-portal.md). Pomocí těchto nástrojů můžete rychle posoudit dopad vertikálního navýšení nebo snížení kapacity v závislosti na stávajících nebo předpokládaných požadavcích. Kromě toho SQL Database možné [vygenerovat metriky a protokoly prostředků](sql-database-metrics-diag-logging.md) pro snazší monitorování.
 
 ## <a name="availability-capabilities"></a>Možnosti dostupnosti
 
-Jediné databáze, elastické fondy a spravované instance poskytují mnoho charakteristik dostupnosti. Další informace naleznete v [tématu Charakteristiky dostupnosti](sql-database-technical-overview.md#availability-capabilities).
+Jednotlivé databáze, elastické fondy a spravované instance poskytují mnoho vlastností dostupnosti. Informace najdete v tématu věnovaném [vlastnostem dostupnosti](sql-database-technical-overview.md#availability-capabilities).
 
-## <a name="transact-sql-differences"></a>Rozdíly v transakt-SQL
+## <a name="transact-sql-differences"></a>Rozdíly v Transact-SQL
 
-Většina funkcí Transact-SQL, které aplikace používají, je plně podporována v Microsoft SQL Serveru i Azure SQL Database. Například základní součásti SQL, jako jsou datové typy, operátory, řetězec, aritmetické, logické a kurzorové funkce, fungují stejně v SQL Serveru a databázi SQL. Existuje však několik T-SQL rozdíly v DDL (jazyk definice dat) a DML (jazyk pro manipulaci s daty) prvky, které mají za následek T-SQL příkazy a dotazy, které jsou podporovány pouze částečně (které budeme diskutovat dále v tomto článku).
-Kromě toho existují některé funkce a syntaxe, která není podporována vůbec, protože Azure SQL Database je navržen tak, aby izolovat funkce od závislostí na hlavní databázi a operační systém. Jako takové většina aktivit na úrovni serveru jsou nevhodné pro sql database. Příkazy a možnosti T-SQL nejsou k dispozici, pokud konfigurují možnosti na úrovni serveru, součásti operačního systému nebo určují konfiguraci systému souborů. Pokud jsou takové funkce požadovány, je vhodná alternativa často dostupná jiným způsobem z databáze SQL nebo z jiné funkce nebo služby Azure.
+Většina funkcí Transact-SQL, které aplikace používá, je plně podporovaná v Microsoft SQL Server i Azure SQL Database. Například základní komponenty SQL, jako jsou datové typy, operátory, řetězce, aritmetické funkce, logické a kurzorové funkce, fungují stejně v SQL Server a SQL Database. Existuje však několik rozdílů v jazyce T-SQL v prvcích DDL (Data-Definition Language) a DML (data pro manipulaci s daty), které jsou výsledkem příkazů T-SQL a dotazů, které jsou pouze částečně podporovány (což se zabývá dále v tomto článku).
+Kromě toho existují některé funkce a syntaxe, které nejsou vůbec podporovány, protože Azure SQL Database slouží k izolaci funkcí ze závislostí v hlavní databázi a v operačním systému. Proto většina aktivit na úrovni serveru není pro SQL Database vhodná. Příkazy T-SQL a možnosti nejsou k dispozici, pokud konfigurují možnosti na úrovni serveru, součásti operačního systému nebo určují konfiguraci systému souborů. Pokud jsou tyto možnosti požadovány, je vhodná alternativa často k dispozici jiným způsobem než SQL Database nebo z jiné funkce nebo služby Azure.
 
-Další informace naleznete [v tématu Řešení rozdílů transakt-SQL během migrace do databáze SQL](sql-database-transact-sql-information.md).
+Další informace najdete v tématu [řešení rozdílů v jazyce Transact-SQL během migrace na SQL Database](sql-database-transact-sql-information.md).
 
 ## <a name="security"></a>Zabezpečení
 
-SQL Database poskytuje řadu integrovaných funkcí [zabezpečení a dodržování předpisů,](sql-database-security-overview.md) které vaší aplikaci pomáhají splnit různé požadavky na zabezpečení a dodržování předpisů.
+SQL Database poskytuje řadu [integrovaných funkcí zabezpečení a dodržování předpisů](sql-database-security-overview.md) , které vaší aplikaci pomůžou splnit různé požadavky na zabezpečení a dodržování předpisů.
 
 > [!IMPORTANT]
-> Azure SQL Database (všechny možnosti nasazení) byla certifikována podle řady standardů dodržování předpisů. Další informace najdete v [Centru zabezpečení Microsoft Azure,](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) kde najdete nejnovější seznam certifikací dodržování předpisů databáze SQL Database.
+> Azure SQL Database (všechny možnosti nasazení) byly certifikovány na základě řady standardů dodržování předpisů. Další informace najdete v [Centru zabezpečení Microsoft Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) , kde můžete najít nejaktuálnější seznam SQL Database certifikace dodržování předpisů.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Chcete-li rychle začít s jednou databází, začněte pomocí [průvodce rychlým startem databáze .](sql-database-single-database-quickstart-guide.md)
-- Další informace o migraci databáze SQL Serveru do Azure najdete v tématu [Migrace do Azure SQL Database](sql-database-single-database-migrate.md).
+- Pokud chcete rychle začít pracovat s izolovanou databází, začněte s [jednou příručkou pro rychlý Start databáze](sql-database-single-database-quickstart-guide.md).
+- Další informace o migraci databáze SQL Server do Azure najdete v tématu [migrace na Azure SQL Database](sql-database-single-database-migrate.md).
 - Informace o podporovaných funkcích najdete v tématu [Funkce](sql-database-features.md).
