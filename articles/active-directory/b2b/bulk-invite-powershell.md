@@ -1,6 +1,6 @@
 ---
-title: Kurz hromadného pozvání uživatelů spolupráce B2B – Azure Active Directory | Dokumenty společnosti Microsoft
-description: V tomto kurzu se dozvíte, jak pomocí PowerShellu a souboru CSV odesílat hromadné pozvánky externím uživatelům spolupráce Azure AD B2B pro spolupráci.
+title: Kurz pro hromadné pozvání uživatelů pro spolupráci B2B – Azure Active Directory | Microsoft Docs
+description: V tomto kurzu se dozvíte, jak pomocí PowerShellu a souboru CSV posílat hromadné pozvánky externím uživatelům typu Host spolupráce Azure AD B2B.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -12,13 +12,13 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 89e24d9ff76184c36aee5c14f15f9713b30f6f1d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77172657"
 ---
-# <a name="tutorial-use-powershell-to-bulk-invite-azure-ad-b2b-collaboration-users"></a>Kurz: Použití PowerShellu k hromadnému pozvání uživatelů spolupráce Azure AD B2B
+# <a name="tutorial-use-powershell-to-bulk-invite-azure-ad-b2b-collaboration-users"></a>Kurz: použití PowerShellu k hromadnému pozvání uživatelů spolupráce Azure AD B2B
 
 Pokud k práci se svými externími partnery používáte spolupráci B2B služby Azure Active Directory (Azure AD), můžete do organizace pozvat více uživatelů typu host najednou. V tomto kurzu se dozvíte, jak použít PowerShell k hromadnému rozeslání pozvánek externím uživatelům. Konkrétně provedete následující:
 
@@ -27,7 +27,7 @@ Pokud k práci se svými externími partnery používáte spolupráci B2B služb
 > * Spustíte skript PowerShellu pro odeslání pozvánek.
 > * Ověříte, že jsou uživatelé v adresáři přidaní.
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete. 
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -126,7 +126,7 @@ Pokud chcete ověřit, zda se uživatelé do Azure AD přidali, spusťte násled
  Get-AzureADUser -Filter "UserType eq 'Guest'"
 ```
 
-Měli byste vidět uživatele, které jste pozvali uvedené, s hlavním jménem uživatele\@(UPN) ve formátu *e-mailové adresy*#EXT#*domény*. Například *lstokes_fabrikam.com#EXT#\@contoso.onmicrosoft.com*, kde contoso.onmicrosoft.com je organizace, ze které jste odeslali pozvánky.
+Měli byste vidět uživatele, které jste pozvali v seznamu, s hlavním názvem uživatele (UPN) ve formátu *EmailAddress*#EXT #\@*Domain*. Například *lstokes_fabrikam. com # ext #\@contoso.onmicrosoft.com*, kde contoso.onmicrosoft.com je organizace, ze které jste pozvánky odeslali.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
