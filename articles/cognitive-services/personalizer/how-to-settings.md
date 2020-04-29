@@ -1,82 +1,82 @@
 ---
 title: Konfigurace služby Personalizace
-description: Konfigurace služby zahrnuje, jak služba zachází s odměnami, jak často služba zkoumá, jak často je model přeškolen a kolik dat je uloženo.
+description: Konfigurace služby zahrnuje způsob, jakým služba zpracovává ceny, jak často se služba zkoumá, jak často se model překládá a kolik dat se ukládá.
 ms.topic: conceptual
 ms.date: 02/19/2020
 ms.openlocfilehash: ac31a9f907defeb44dbd4748a4395d3aec34d30c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79219354"
 ---
-# <a name="configure-personalizer-learning-loop"></a>Konfigurace výukové smyčky personalizátorů
+# <a name="configure-personalizer-learning-loop"></a>Konfigurovat smyčku učení pro přizpůsobení
 
-Konfigurace služby zahrnuje, jak služba zachází s odměnami, jak často služba zkoumá, jak často je model přeškolen a kolik dat je uloženo.
+Konfigurace služby zahrnuje způsob, jakým služba zpracovává ceny, jak často se služba zkoumá, jak často se model překládá a kolik dat se ukládá.
 
-Nakonfigurujte výukové smyčky na stránce **Konfigurace** na portálu Azure pro tento prostředek personalikátor.
+Nakonfigurujte smyčku učení na stránce **Konfigurace** v Azure Portal pro daný prostředek přizpůsobení.
 
 <a name="configure-service-settings-in-the-azure-portal"></a>
 <a name="configure-reward-settings-for-the-feedback-loop-based-on-use-case"></a>
 
-## <a name="configure-rewards-for-the-feedback-loop"></a>Konfigurace odměn pro zpětnou vazbu
+## <a name="configure-rewards-for-the-feedback-loop"></a>Konfigurace neprospěchu pro smyčku zpětné vazby
 
-Nakonfigurujte službu pro využití odměn ve vzdělávací smyčce. Změny následujících hodnot obnoví aktuální model personalisty a přeškolí jej pomocí dat za poslední dva dny.
+Nakonfigurujte službu pro využívání výukových smyček. Změny následujících hodnot obnoví aktuální model přizpůsobeného přizpůsobování a znovu ho provede za poslední 2 dny v datech.
 
 > [!div class="mx-imgBorder"]
-> ![Konfigurace hodnot odměn pro zpětnou vazbu](media/settings/configure-model-reward-settings.png)
+> ![Konfigurovat hodnoty odměňování pro smyčku zpětné vazby](media/settings/configure-model-reward-settings.png)
 
 |Hodnota|Účel|
 |--|--|
-|Doba čekání na odměnu|Nastavuje dobu, po kterou bude personalizátor shromažďovat hodnoty odměn za volání hodnosti, a to od okamžiku, kdy dojde k volání hodnosti. Tato hodnota je nastavena dotazem: "Jak dlouho by měl personalista čekat na volání odměn?" Každá odměna, která dorazí po tomto okně, bude zaznamenána, ale nebude použita k učení.|
-|Výchozí odměna|Pokud personalista během okna Čekací doby odměny přidruženého k hovoru hodnosti nepřijme žádný bonusový hovor, přiřadí mu výchozí odměnu. Ve výchozím nastavení a ve většině scénářů je výchozí odměna nulová (0).|
-|Agregace odměn|Pokud je pro stejné volání rozhraní API hodnocení přijato více odměn, použije se tato metoda agregace: **sum** or **earliest**. Nejdříve vybere nejbližší přijaté skóre a zbytek zahodí. To je užitečné, pokud chcete jedinečnou odměnu mezi případně duplicitní hovory. |
+|Doba čekání na odměnu|Nastaví dobu, během které bude přizpůsobené aplikace shromažďovat hodnoty pro volání pořadí od okamžiku, kdy dojde k volání pořadí. Tato hodnota je nastavená dotazem: jak dlouho by měl přizpůsobený systém čekat na neprospěch volání? Jakékoli odměny, které přicházejí do tohoto okna, se budou protokolovat, ale nepoužijí se ke učení.|
+|Výchozí odměna|Pokud přizpůsobené není žádné volání na základě odměny během časového intervalu čekání na odměnu přidruženého k volání pořadí, přizpůsobování přiřadí výchozí odměnu. Ve výchozím nastavení a ve většině scénářů je výchozí odměna nula (0).|
+|Agregace odměňování|Pokud se pro stejné volání rozhraní API pořadí přijímá více než jeden případ, použije se tato agregační metoda: **Sum** nebo **nejstarší**. Nejstarší vybere nejstarší skóre, které zbytek přijal a zahodí. To je užitečné, pokud chcete jedinečnou měnu mezi potenciálně duplicitními voláními. |
 
-Po změně těchto hodnot nezapomeňte vybrat **uložit**.
+Po změně těchto hodnot nezapomeňte vybrat **Save (Uložit**).
 
-## <a name="configure-exploration-to-allow-the-learning-loop-to-adapt"></a>Konfigurace průzkumu tak, aby se učení mohlo přizpůsobit
+## <a name="configure-exploration-to-allow-the-learning-loop-to-adapt"></a>Nakonfigurovat průzkum, aby se umožnilo přizpůsobení výukového cyklu
 
-Personalizace je schopen objevovat nové vzory a přizpůsobit se změnám chování uživatelů v průběhu času zkoumáním alternativy namísto použití trénovaného modelu předpověď. Hodnota **Průzkum** určuje, jaké procento volání hodnosti je zodpovězeno průzkumem.
+Přizpůsobení je schopné zjistit nové vzory a přizpůsobit se změnám chování uživatelů v průběhu času tím, že prozkoumá alternativy namísto použití předpovědi vyškolených modelů. Hodnota **průzkumu** určuje, jaké procento volání klasifikace je zodpovězeno s průzkumem.
 
-Změny této hodnoty obnoví aktuální model personalisty a přeškolí jej pomocí dat za poslední 2 dny.
+Změny této hodnoty obnoví aktuální model přizpůsobeného přizpůsobování a znovu ho přeškolí za poslední 2 dny dat.
 
-![Hodnota průzkumu určuje, jaké procento rank volání jsou zodpovězeny s průzkumem](media/settings/configure-exploration-setting.png)
+![Hodnota průzkumu určuje, jaké procento volání klasifikace je zodpovězeno s průzkumem.](media/settings/configure-exploration-setting.png)
 
-Po změně této hodnoty nezapomeňte vybrat **uložit**.
+Po změně této hodnoty nezapomeňte vybrat **Save (Uložit**).
 
 <a name="model-update-frequency"></a>
 
-## <a name="configure-model-update-frequency-for-model-training"></a>Konfigurace četnosti aktualizací modelu pro trénování modelu
+## <a name="configure-model-update-frequency-for-model-training"></a>Konfigurace frekvence aktualizace modelu pro školení modelů
 
-**Frekvence aktualizace modelu** určuje, jak často je model trénovaný.
+**Frekvence aktualizace modelu** nastavuje, jak často se model vyškole.
 
-|Nastavení frekvence|Účel|
+|Nastavení četnosti|Účel|
 |--|--|
-|1 minuta|Frekvence aktualizace v jedné minutě jsou užitečné při **ladění** kódu aplikace pomocí personalikátu, provádění ukázek nebo interaktivního testování aspektů strojového učení.|
-|15 minut|Vysoké frekvence aktualizace modelu jsou užitečné pro situace, kdy chcete **pozorně sledovat změny** v chování uživatelů. Mezi příklady patří weby, které běží na živé zprávy, virální obsah, nebo živé nabídky produktů. V těchto scénářích můžete použít 15minutovou frekvenci. |
-|1 hodina|U většiny případů použití je efektivní nižší četnost aktualizací.|
+|1 minuta|Jednorázová frekvence aktualizace je užitečná při **ladění** kódu aplikace pomocí přizpůsobeného, provádění demo ukázek nebo interaktivního testování aspektů strojového učení.|
+|15 minut|Vysoké frekvence aktualizací modelu jsou užitečné v situacích, kdy chcete **pozorně sledovat změny** chování uživatelů. Mezi příklady patří weby, které běží na aktivních novinkách, Virovém obsahu nebo živých nabídkách produktů. V těchto scénářích můžete použít frekvenci na 15 minut. |
+|1 hodina|Pro většinu případů použití je nižší frekvence aktualizace platná.|
 
-![Frekvence aktualizace modelu určuje, jak často je nový model personalisty přetrénovaný.](media/settings/configure-model-update-frequency-settings-15-minutes.png)
+![Frekvence aktualizace modelu nastavuje, jak často se nový model přizpůsobování přeučení.](media/settings/configure-model-update-frequency-settings-15-minutes.png)
 
-Po změně této hodnoty nezapomeňte vybrat **uložit**.
+Po změně této hodnoty nezapomeňte vybrat **Save (Uložit**).
 
 ## <a name="data-retention"></a>Uchovávání dat
 
-**Doba uchovávání dat** určuje, kolik dní personalizace uchovává datové protokoly. Minulé datové protokoly jsou nutné k provádění [offline hodnocení](concepts-offline-evaluation.md), které se používají k měření účinnosti personalista a optimalizaci zásad učení.
+**Doba uchovávání dat** určuje, kolik dnů přizpůsobování udržuje protokoly dat. Minulé datové protokoly se vyžadují k provedení [hodnocení offline](concepts-offline-evaluation.md), které slouží k měření efektivity přizpůsobování a optimalizace výukových zásad.
 
-Po změně této hodnoty nezapomeňte vybrat **uložit**.
+Po změně této hodnoty nezapomeňte vybrat **Save (Uložit**).
 
 <a name="clear-data-for-your-learning-loop"></a>
 
-## <a name="settings-that-include-resetting-the-model"></a>Nastavení, která zahrnují obnovení modelu
+## <a name="settings-that-include-resetting-the-model"></a>Nastavení, která zahrnují Resetování modelu
 
-Následující akce zahrnují okamžité přeškolení modelu s daty za poslední 2 dny.
+Následující akce zahrnují okamžité přeškolení modelu za poslední 2 dny dat.
 
-* Odměna
+* Oceňujte
 * Průzkum
 
-Chcete-li [vymazat](how-to-manage-model.md) všechna data, použijte stránku **Model a nastavení učení **.
+Pokud chcete [Vymazat](how-to-manage-model.md) všechna vaše data, použijte stránku * * nastavení modelu a učení * *.
 
 ## <a name="next-steps"></a>Další kroky
 
-[Přečtěte si, jak spravovat model](how-to-manage-model.md)
+[Naučte se spravovat model](how-to-manage-model.md)

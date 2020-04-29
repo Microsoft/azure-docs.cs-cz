@@ -1,7 +1,7 @@
 ---
-title: Otočení přístupových klíčů účtu úložiště pomocí PowerShellu
+title: Otočení přístupových klíčů k účtu úložiště pomocí PowerShellu
 titleSuffix: Azure Storage
-description: Vytvořte účet Azure Storage a pak načtěte a otočte jeden z jeho přístupových klíčů účtu.
+description: Vytvořte účet Azure Storage a pak načtěte a otáčejte jeden z jeho přístupových klíčů k účtu.
 services: storage
 author: tamram
 ms.service: storage
@@ -11,15 +11,15 @@ ms.topic: sample
 ms.date: 12/04/2019
 ms.author: tamram
 ms.openlocfilehash: 52ebed3de093f15d8188ee5fec49d75d5a4a206d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80060810"
 ---
-# <a name="rotate-storage-account-access-keys-with-powershell"></a>Otočení přístupových klíčů účtu úložiště pomocí PowerShellu
+# <a name="rotate-storage-account-access-keys-with-powershell"></a>Otočení přístupových klíčů k účtu úložiště pomocí PowerShellu
 
-Tento skript vytvoří účet Azure Storage, zobrazí primární přístupový klíč nového účtu úložiště a pak klíč obnoví (otočí).
+Tento skript vytvoří účet Azure Storage, zobrazí primární přístupový klíč nového účtu úložiště a pak ho znovu nanews (otočí).
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
@@ -39,15 +39,15 @@ Remove-AzResourceGroup -Name rotatekeystestrg
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 
-Tento skript používá následující příkazy k vytvoření účtu úložiště a načtení a otočení jednoho z jeho přístupových klíčů. Každá položka v tabulce odkazuje na příslušnou část dokumentace.
+Tento skript pomocí následujících příkazů vytvoří účet úložiště a načte a natočí jeden z jeho přístupových klíčů. Každá položka v tabulce odkazuje na příslušnou část dokumentace.
 
 | Příkaz | Poznámky |
 |---|---|
-| [Get-AzUmístění](/powershell/module/az.resources/get-azlocation) | Získá všechna umístění a podporované zprostředkovatele prostředků pro každé umístění. |
+| [Get-AzLocation](/powershell/module/az.resources/get-azlocation) | Načte všechna umístění a podporované poskytovatele prostředků pro každé umístění. |
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Vytvoří skupinu prostředků Azure. |
 | [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) | Vytvoří účet úložiště. |
 | [Get-AzStorageAccountKey](/powershell/module/az.storage/get-azstorageaccountkey) | Získá seznam přístupových klíčů pro účet služby Azure Storage. |
-| [Nový azstorageaccountklíč](/powershell/module/az.storage/new-azstorageaccountkey) | Znovu vygeneruje přístupový klíč pro účet Azure Storage. |
+| [New-AzStorageAccountKey](/powershell/module/az.storage/new-azstorageaccountkey) | Znovu vygeneruje přístupový klíč pro účet Azure Storage. |
 
 ## <a name="next-steps"></a>Další kroky
 

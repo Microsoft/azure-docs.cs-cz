@@ -1,6 +1,6 @@
 ---
 title: 'CLI: Vytvoření aplikace ASP.NET Core z ACR'
-description: Zjistěte, jak pomocí azure cli automatizovat nasazení a správu aplikace App Service. Tato ukázka ukazuje, jak vytvořit linuxovou aplikaci ASP.NET Core z ACR.
+description: Naučte se používat rozhraní příkazového řádku Azure k automatizaci nasazení a správy aplikace App Service. V této ukázce se dozvíte, jak vytvořit aplikaci ASP.NET Core pro Linux z ACR.
 author: msangapu-msft
 tags: azure-service-management
 ms.assetid: 3a2d1983-ff7b-476a-ac44-49ec2aabb31a
@@ -10,15 +10,15 @@ ms.date: 12/13/2018
 ms.author: msangapu
 ms.custom: mvc, seodec18
 ms.openlocfilehash: 64177d00b302f9df8a0b28067031bd7cc1b3a156
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80057771"
 ---
-# <a name="create-an-aspnet-core-app-in-a-docker-container-in-app-service-from-azure-container-registry"></a>Vytvoření aplikace ASP.NET Core v kontejneru Dockeru ve službě App Service z registru kontejnerů Azure
+# <a name="create-an-aspnet-core-app-in-a-docker-container-in-app-service-from-azure-container-registry"></a>Vytvoření aplikace ASP.NET Core v kontejneru Docker v App Service z Azure Container Registry
 
-Tento ukázkový skript vytvoří skupinu prostředků, plán linuxové služby App Service a aplikaci. Pak pomocí kontejneru Dockeru nasadí aplikaci ASP.NET Core ze služby Azure Container Registry.
+Tento ukázkový skript vytvoří skupinu prostředků, plán App Service pro Linux a aplikaci. Pak pomocí kontejneru Dockeru nasadí aplikaci ASP.NET Core ze služby Azure Container Registry.
 
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
@@ -33,14 +33,14 @@ Potřebujete Azure CLI verze 2.0.52 nebo novější. Verzi zjistíte spuštění
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 
-Tento skript používá následující příkazy k vytvoření skupiny prostředků, aplikace App Service a všech souvisejících prostředků. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
+Tento skript k vytvoření skupiny prostředků, App Service aplikace a všech souvisejících prostředků používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
 | Příkaz | Poznámky |
 |---|---|
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | Vytvoří plán služby App Service. |
-| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Vytvoří aplikaci služby App Service. |
-| [`az webapp config container set`](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set) | Nastaví kontejner Dockeru pro aplikaci App Service. |
+| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Vytvoří aplikaci App Service. |
+| [`az webapp config container set`](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set) | Nastaví kontejner Docker pro aplikaci App Service. |
 
 ## <a name="next-steps"></a>Další kroky
 

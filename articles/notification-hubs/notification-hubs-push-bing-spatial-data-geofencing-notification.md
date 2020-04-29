@@ -1,9 +1,9 @@
 ---
-title: Odesílání nabízených oznámení pomocí center oznámení Azure a prostorových dat Bingu | Dokumenty společnosti Microsoft
+title: Posílání nabízených oznámení pomocí Azure Notification Hubs a prostorových dat Bingu | Microsoft Docs
 description: V tomto kurzu se dozvíte, jak pomocí Azure Notification Hubs a Bing Spatial Data doručovat nabízená oznámení na základě polohy.
 services: notification-hubs
 documentationcenter: windows
-keywords: nabízená oznámení,nabízená oznámení
+keywords: nabízená oznámení, nabízená oznámení
 author: sethmanheim
 manager: femila
 editor: jwargo
@@ -19,13 +19,13 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 9f8697332d34fc044c805db6c6595fdf067ed054
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80127192"
 ---
-# <a name="tutorial-send-location-based-push-notifications-with-notification-hubs-and-bing-spatial-data"></a>Kurz: Odesílání nabízených oznámení založených na poloze pomocí center oznámení a prostorových dat Bingu
+# <a name="tutorial-send-location-based-push-notifications-with-notification-hubs-and-bing-spatial-data"></a>Kurz: odeslání nabízených oznámení na základě polohy pomocí Notification Hubs a prostorových dat Bingu
 
 V tomto kurzu se dozvíte, jak pomocí Azure Notification Hubs a Bing Spatial Data doručovat nabízená oznámení na základě polohy.
 
@@ -39,7 +39,7 @@ V tomto kurzu provedete následující kroky:
 
 ## <a name="prerequisites"></a>Požadavky
 
-* **Předplatné Azure**. Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet Azure,](https://azure.microsoft.com/free/) než začnete.
+* **Předplatné Azure**. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 * [Visual Studio 2015 Update 1](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx) nebo novější ([Community Edition](https://go.microsoft.com/fwlink/?LinkId=691978&clcid=0x409))
 * Nejnovější verze [Azure SDK](https://azure.microsoft.com/downloads/)
 * [Účet na webu Dev Center pro Mapy Bing](https://www.bingmapsportal.com/) (Je možné si jej vytvořit zdarma a přidružit si ho k účtu Microsoft.)
@@ -50,10 +50,10 @@ V tomto kurzu provedete následující kroky:
 2. V horním navigačním panelu vyberte **Zdroje dat** a vyberte **Spravovat zdroje dat**.
 
     ![](./media/notification-hubs-geofence/bing-maps-manage-data.png)
-3. Pokud nemáte žádný zdroj dat, zobrazí se odkaz na jeho vytvoření. Vyberte **Nahrát data jako zdroj dat**. Můžete také použít **nabídku Zdroje** > dat**Nahrát data.**
+3. Pokud nemáte žádný zdroj dat, zobrazí se odkaz na jeho vytvoření. Vyberte **Nahrát data jako zdroj dat**. Můžete také použít nabídku **zdroje** > dat**Odeslat data** .
 
     ![](./media/notification-hubs-geofence/bing-maps-create-data.png)
-4. Vytvořte `NotificationHubsGeofence.pipe` soubor na pevném disku s následujícím obsahem: V tomto kurzu použijete ukázkový soubor založený na potrubí, který rámuje oblast nábřeží San Francisco:
+4. Na pevném disku `NotificationHubsGeofence.pipe` vytvořte soubor s následujícím obsahem: v tomto kurzu použijete ukázkový soubor založený na kanálu, který je v oblasti sítě San Francisco Waterfront:
 
     ```text
     Bing Spatial Data Services, 1.0, TestBoundaries
@@ -66,12 +66,12 @@ V tomto kurzu provedete následující kroky:
     ![](./media/notification-hubs-geofence/bing-maps-geofence.png)
 5. Na stránce **Nahrát zdroj dat** proveďte následující akce:
    1. Jako **Formát dat** vyberte **kanál**.
-   2. Procházejte a `NotificationHubGeofence.pipe` vyberte soubor, který jste vytvořili v předchozím kroku.
+   2. Procházejte a vyberte `NotificationHubGeofence.pipe` soubor, který jste vytvořili v předchozím kroku.
    3. Vyberte tlačítko **Nahrát**.
 
       > [!NOTE]
       > Může se zobrazit výzva k zadání nového klíče jako **hlavního klíče**, který se bude lišit od **klíče dotazu**. Nový klíč jednoduše vytvořte přes řídicí panel a aktualizujte stránku pro nahrání zdroje dat.
-6. Jakmile nahrajete datový soubor, bude nezbytné publikovat zdroj dat. Vyberte **Zdroje** -> dat**Správa zdrojů dat** jako předtím.
+6. Jakmile nahrajete datový soubor, bude nezbytné publikovat zdroj dat. Vyberte **zdroje** -> dat**Správa zdrojů dat** , jako jste to předtím.
 7. V seznamu vyberte váš zdroj dat a ve sloupci **Akce** zvolte **Publikovat**.
 
     ![](./media/notification-hubs-geofence/publish-button.png)
@@ -107,7 +107,7 @@ V tomto kurzu provedete následující kroky:
 
     ![](./media/notification-hubs-geofence/notification-hubs-create-blank-app.png)
 
-    Jakmile se vytváření projektu dokončí, měli byste mít základ samotné aplikace. Nyní nastavíme vše pro geo-oplocení infrastruktury. Vzhledem k tomu, že pro toto řešení využijete služby Bing, je k dispozici veřejný koncový bod rozhraní REST API, který umožňuje dotazovat se na konkrétní oblasti lokality:
+    Jakmile se vytváření projektu dokončí, měli byste mít základ samotné aplikace. Teď nastavili všechno pro infrastrukturu geografické oplocení. Vzhledem k tomu, že pro toto řešení využijete služby Bing, je k dispozici veřejný koncový bod rozhraní REST API, který umožňuje dotazovat se na konkrétní oblasti lokality:
 
     ```text
     http://spatial.virtualearth.net/REST/v1/data/
@@ -164,7 +164,7 @@ V tomto kurzu provedete následující kroky:
     }
     ```
 
-    Další informace o získání polohy uživatele v aplikacích UPW najdete v[tématu Získání polohy uživatele](https://msdn.microsoft.com/library/windows/apps/mt219698.aspx).
+    Další informace o tom, jak získat umístění uživatele v aplikacích pro UWP, najdete v tématu[získání umístění uživatele](https://msdn.microsoft.com/library/windows/apps/mt219698.aspx).
 5. Pokud chcete zkontrolovat, že získávání polohy skutečně funguje, otevřete kód hlavní stránky (`MainPage.xaml.cs`). Vytvořte novou obslužnou rutinu události pro událost `Loaded` v konstruktoru `MainPage`.
 
     ```csharp
@@ -196,7 +196,7 @@ V tomto kurzu provedete následující kroky:
 
     ![](./media/notification-hubs-geofence/notification-hubs-location-output.png)
 
-    Nyní víte, že akvizice umístění funguje, můžete odebrat obslužnou rutinu události Loaded, pokud se vám líbí, protože ji již nebudete používat.
+    Nyní víte, že získání umístění funguje, a pokud chcete, můžete načtenou obslužnou rutinu události odebrat, protože ji už nebudete používat.
 8. Dalším krokem je zachycení změň v poloze. Do třídy `LocationHelper` přidejte obslužnou rutinu události pro `PositionChanged`:
 
     ```csharp
@@ -226,7 +226,7 @@ V tomto kurzu provedete následující kroky:
     Projekt je již nakonfigurovaný tak, aby do cílových zařízení odesílal nabízená oznámení, proto bude potřeba udělat jen dvě věci – zadat správný připojovací řetězec centra oznámení a přidat identifikaci hranice, aby se oznámení odesílalo jenom v případě, že se uživatel nachází uvnitř monitorové geografické zóny.
 
 4. Pro konfiguraci připojovacího řetězce otevřete ve složce `Models` soubor `Notifications.cs`. Funkce `NotificationHubClient.CreateClientFromConnectionString` by měla obsahovat informace o centru oznámení, které můžete získat na webu [Azure Portal](https://portal.azure.com) (podívejte se na stránku **Zásady přístupu** v **Nastavení**). Uložte aktualizovaný konfigurační soubor.
-5. Vytvořte model pro výsledek rozhraní API Map Bing. Nejjednodušší způsob, jak to udělat, `Models` je otevřít složku a zvolte **Přidat** > **třídu**. Pojmenujte ji `GeofenceBoundary.cs`. Pak zkopírujte JSON z odpovědi rozhraní API, kterou jste obdrželi v první části. V sadě Visual Studio použijte **jako třídy použít funkci Upravit** > **vložit zvláštní** > **vložit json**.
+5. Vytvořte model pro výsledek rozhraní API Map Bing. Nejjednodušší způsob `Models` , jak to provést, je otevřít složku a zvolit **Přidat** > **třídu**. Pojmenujte ji `GeofenceBoundary.cs`. Pak zkopírujte JSON z odpovědi rozhraní API, kterou jste obdrželi v první části. V aplikaci Visual Studio použijte příkaz **Upravit** > **vložení speciální** > **vložení JSON jako třídy**.
 
     Tímto způsobem zajistíte, že se objekt deserializuje přesně podle očekávání. Výsledná sada tříd by měla vypadat přibližně jako následující třída:
 
@@ -348,18 +348,18 @@ V tomto kurzu provedete následující kroky:
     ```
 
     > [!NOTE]
-    > Nastavte `POST_URL` na umístění vaší nasazené webové aplikace. Pro tuto chvíli je v pořádku spustit místně, ale při práci na nasazení veřejné verze, je třeba hostovat s externím poskytovatelem.
-2. Zaregistrujte aplikaci pro UPW k nabízeným oznámením. Ve Visual Studiu zvolte **Aplikace Project** > **Store** > **Přidružit k obchodu**.
+    > Nastavte `POST_URL` na umístění vaší nasazené webové aplikace. Prozatím ji můžete spustit místně, ale při práci na nasazení veřejné verze ho musíte hostovat s externím poskytovatelem.
+2. Zaregistrujte aplikaci pro UPW k nabízeným oznámením. V aplikaci Visual Studio vyberte možnost **Project** > **Store** > **přidružit aplikaci ke Storu**.
 
     ![](./media/notification-hubs-geofence/vs-associate-with-store.png)
 3. Jakmile se přihlásíte ke svému účtu vývojáře, ujistěte se, že jste vybrali existující aplikaci, nebo vyberte novou a přidružte k ní balíček.
-4. Přejděte na Dev Center a otevřete aplikaci, kterou jste vytvořili. Zvolte **web služby** > **Nabízená oznámení** > **Live**.
+4. Přejděte na Dev Center a otevřete aplikaci, kterou jste vytvořili. Vyberte **služby** > **nabízená oznámení** > **Web služeb Live Services**.
 
     ![](./media/notification-hubs-geofence/ms-live-services.png)
-5. Na webu si poznamenejte **Tajný klíč aplikace** a **SID balíčku**. Potřebujete oba na webu Azure Portal – otevřete centrum oznámení, zvolte **Nastavení** > **oznamovací služby** > **Windows (WNS)** a zadejte informace do požadovaných polí.
+5. Na webu si poznamenejte **Tajný klíč aplikace** a **SID balíčku**. Potřebujete oba Azure Portal – otevřete Centrum oznámení, vyberte **Nastavení** > **Notification Services** > **Windows (WNS)** a zadejte informace do požadovaných polí.
 
     ![](./media/notification-hubs-geofence/notification-hubs-wns.png)
-6. Zvolte **Uložit**.
+6. Klikněte na tlačítko **Uložit**.
 7. V **Průzkumníku řešení** otevřete **Odkazy** a vyberte **Spravovat balíčky NuGet**. Přidejte odkaz na **spravovanou knihovnu Microsoft Azure Service Bus** – jednoduše vyhledejte balíček `WindowsAzure.Messaging.Managed` a přidejte ho do projektu.
 
     ![](./media/notification-hubs-geofence/vs-nuget.png)

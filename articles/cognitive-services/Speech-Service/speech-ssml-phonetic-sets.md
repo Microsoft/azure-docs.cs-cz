@@ -1,7 +1,7 @@
 ---
-title: Fotici řeči - Služba řeči
+title: Řeč, foneticky – služba pro rozpoznávání řeči
 titleSuffix: Azure Cognitive Services
-description: Přečtěte si, jak se foetická abeceda služby Speech mapuje na mezinárodní fonetickou abecedu (IPA) a kdy použít nastavenou sadu.
+description: Naučte se, jak je fonetická abeceda pro rozpoznávání řeči namapována na mezinárodní fonetickou abecedu (IPA) a kdy použít tuto sadu.
 services: cognitive-services
 author: zhaoyunED
 manager: junwg
@@ -11,394 +11,394 @@ ms.topic: conceptual
 ms.date: 03/04/2020
 ms.author: jiajzhan
 ms.openlocfilehash: 770e97ad126f66efb43bf8cf7eb12f7510858192
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78675331"
 ---
-# <a name="speech-service-phonetic-sets"></a>Fonetické sady služby rozpoznávání řeči
+# <a name="speech-service-phonetic-sets"></a>Fonetické sady pro hlasové služby
 
-Služba Řeč definuje fonetickou abecedu (zkráceně "telefonní sady", které se skládají ze sedmi jazyků; `en-US`, `fr-FR` `de-DE`, `es-ES` `ja-JP`, `zh-CN`, `zh-TW`, a . Telefonní sada služby Speech obvykle mapuje na <a href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet" target="_blank">mezinárodní <span class="docon docon-navigate-external x-hidden-focus"> </span>fonetickou abecedu (IPA). </a> Sady telefonních služeb pro rozpoznávání řeči se používají ve spojení s [jazykem s označením syntézy řeči (SSML)](speech-synthesis-markup.md)jako součást nabídky služby převodu textu na řeč. V tomto článku se dozvíte, jak jsou tyto sady telefonů mapovány a kdy použít kterou sadu telefonů.
+Služba Speech definuje fonetické abecedy ("telefonní sady" pro krátké), které se skládají z sedmi jazyků; `en-US`, `fr-FR`, `de-DE`, `es-ES`, `ja-JP`, `zh-CN`a `zh-TW`. Telefonní sady pro hlasové služby se obvykle mapují na <a href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet" target="_blank">mezinárodní foneticky abecedy ( <span class="docon docon-navigate-external x-hidden-focus"> </span>IPA) </a>. Telefonní sady pro hlasové služby se používají ve spojení s [jazykem SSML (Speech syntézy)](speech-synthesis-markup.md)jako součást nabídky služeb převodu textu na řeč. V tomto článku se dozvíte, jak jsou tyto telefonní sady namapované a kdy použít telefonní sadu.
 
-# <a name="en-us"></a>[en-US](#tab/en-US)
+# <a name="en-us"></a>[EN-US](#tab/en-US)
 
-### <a name="english-suprasegmentals"></a>Anglické suprasegmenty
+### <a name="english-suprasegmentals"></a>Suprasegmentals v angličtině
 
-| Příklad 1 (Nástup souhly, počáteční slovo pro samohlásek) | Příklad 2 (Intervocalic pro souhle, slovo mediální jádro pro samohlásku) | Příklad 3 (Coda pro souhrádku, slovo konečné pro samohlásku) | Komentáře |
+| Příklad 1 (Úvod k souhláskě, slovo počáteční pro samohlásku) | Příklad 2 (pro souhlásky, wordové nucleusy pro samohlásku) | Příklad 3 (Coda pro souhlásku, slovo konečný pro samohlásku) | Komentáře |
 |--|--|--|--|
-| burger /b er **1** r - g ax r/ | falafel /f sekera - l aa **1** - f ax l/ | kytara /g ih - t aa **1** r/ | Řeč služby telefonní sada dát stres po samohláze stresové slabiky |
-| invahodná /ih **2** - n aa - p ax r - t uw 1 n/ | odlišnost /d ih - s ih **2**- m ax - l eh 1 - r ax - t iy/ | pracovní síla /w er 1 r k - f ao **2** r s/ | Řeč oválná telefonní sada kladla důraz po samoobsluze slabiky podnapětí |
+| Burger/b ER **1** r-g AX r/ | Falafel/f AX-l AA **1** -f AX l/ | baskytaru/g IH-t AA **1** r/ | Telefonická sada hlasových služeb – telefon po samohláskě s napětím |
+| nevhodné/IH **2** – n AA-p AX r-t UW 1 n/ | podobnost/d/d IH-s IH **2**-m AX-l eh 1-r AX-t iy/ | pracovní síly/w ER 1 r k-f Ao **2** r s/ | Telefonická sada hlasových služeb: po samohláskě slabiky se nastaví zátěž. |
 
 ### <a name="english-vowels"></a>Anglické samohlásky
 
 | `sapi` | `ipa` | Příklad 1     | Příklad 2 | Příklad 3                   |
 |--------|-------|---------------|-----------|-----------------------------|
-| Iy     | `i`   | **ea**t       | f**ee**l  | vall**ey**                  |
-| Ih     | `ɪ`   | **i**f        | f**i**ll  |                             |
-| Ey     | `eɪ`  | **a**te       | g**a**te  | d**ay**                     |
-| Co     | `ɛ`   | **e**velmi     | p**e**t   | m**eh** (vzácné slovo konečně) |
-| Ae     | `æ`   | **ctive**    | c**a**t   | n**ah** (vzácné slovo konečně) |
-| aa     | `ɑ`   | **o**bstinate | p**o**ppy | r**ah** (vzácné slovo konečně) |
-| Ao     | `ɔ`   | **o**rozsah    | c**au**se | Ut**ah**                    |
-| Uh     | `ʊ`   | b**oo**k      |           |                             |
-| Ow     | `oʊ`  | **o**ld       | cl**o**ne | g**o**                      |
-| Uw     | `u`   | **U**ber      | b**oo**st | t**oo**                     |
-| Ah     | `ʌ`   | **u**ncle     | c**u t**   |                             |
-| Ay     | `aɪ`  | **i**ce       | b**i**te  | fl**y**                     |
-| Aw     | `aʊ`  | **ou**t       | s**ou**th | c**ow**                     |
-| Oy     | `ɔɪ`  | **oi**l       | j**oi**n  | t**oy**                     |
-| y uw   | `ju`  | **Yu**ma      | h**u**muž | f**ew**                     |
-| Ax     | `ə`   | **jít**       | wom**a**n | jsou**a**                    |
+| iy     | `i`   | **EA**t       | f**EE**l  | Vall**enalezen**                  |
+| ih     | `ɪ`   | **i**f        | f**vše**  |                             |
+| enalezen     | `eɪ`  | **te**       | g**a**te  | d**Ay**                     |
+| Uh     | `ɛ`   | **e**     | p**e**t   | m**eh** (výjimečné slovo finally) |
+| ä     | `æ`   | **ktivní**    | c**a**t   | n**Ah** (výjimečné slovo finally) |
+| aa     | `ɑ`   | **o**bstinate | p**o**PPY | r**Ah** (výjimečné slovo finally) |
+| po     | `ɔ`   | Rozsah **o**    | c**au**se | UT**Ah**                    |
+| Uh     | `ʊ`   | b**Nún**k      |           |                             |
+| Jak     | `oʊ`  | **o**ld       | CL**o**ne | g**o**                      |
+| UW     | `u`   | **U**ber      | b**ó**St | t**ó**                     |
+| protokol     | `ʌ`   | **u**ncle     | c**u**t   |                             |
+| ay     | `aɪ`  | **i**CE       | b**i**te  | FL**y**                     |
+| AW     | `aʊ`  | **organizační jednotka**t       | s**ou**tou | navýšení**c**                     |
+| Oy     | `ɔɪ`  | **Oi**l       | j**Oi**n  | t**Oy**                     |
+| UW y   | `ju`  | **Yu**mA      | h**u**člověka | f**ový**                     |
+| AX     | `ə`   | **a**přejít       | WOM**a**n | jsou**a**                    |
 
-### <a name="english-r-colored-vowels"></a>Anglické r-barevné samowels
+### <a name="english-r-colored-vowels"></a>Angličtina R – barevné samohlásky
 
 | `sapi` | `ipa` | Příklad 1    | Příklad 2      | Příklad 3  |
 |--------|-------|--------------|----------------|------------|
-| ih r   | `ɪɹ`  | **ucho**s     | t**ir**amisu   | n**ucho**   |
-| eh r   | `ɛɹ`  | **vzduchová**rovina | aplikace**ar**ently | sc**ar**e  |
-| uh r r   | `ʊɹ`  |              |                | c**vaše**e   |
-| ay r   | `aɪɹ` | **Ire**země  | f**ir**místo  | ch**oir**  |
-| aw r   | `aʊɹ` | **hodina**s    | p**ower**ful   | je**to naše**   |
-| ao r   | `ɔɹ`  | **nebo**ange   | m**nebo**al      | s**veslo**   |
-| aa r   | `ɑɹ`  | **ar**tist   | st**ar**t      | c**ar**    |
-| er r   | `ɝ`   | **ucho**th    | b**ir**d       | f**vaše**    |
-| sekera r   | `ɚ`   |              | všechny**er**gy    | supp**er** |
+| IH r   | `ɪɹ`  | **ušní**prvky     | t**IR**AMISU   | n**ušní**   |
+| Eh r   | `ɛɹ`  | **vzduchová**rovina | aplikace**ar**ently | SC**ar**e  |
+| Uh r   | `ʊɹ`  |              |                | c**vaše**e   |
+| Ay r   | `aɪɹ` | **Vyžadovat**půda  | ahradit f**IR**  | ch**OIR**  |
+| AW r   | `aʊɹ` | **hodina**s    | p**malá**Vytvářejte   | s**naším**   |
+| Ao r   | `ɔɹ`  | **nebo**AD   | m**nebo**Al      | s**OAR**   |
+| AA r   | `ɑɹ`  | tist **ar**   | St**ar**t      | c**ar**    |
+| ER r   | `ɝ`   | **ušní**th    | b**IR**d       | f**ur**    |
+| AX r   | `ɚ`   |              | všechny Gy**ER**    | Po**ER** |
 
-### <a name="english-semivowels"></a>Anglické semivowels
+### <a name="english-semivowels"></a>Semivowels v angličtině
 
 | `sapi` | `ipa` | Příklad 1           | Příklad 2  | Příklad 3 |
 |--------|-------|---------------------|------------|-----------|
-| w      | `w`   | **w**ith, s**ue**de | al**w**ays |           |
-| y      | `j`   | **y**ard, f**e**w   | na**i**na  |           |
+| w      | `w`   | **w t**, s**UE**de | Al**w**AYS |           |
+| y      | `j`   | **y**ARD, f**e**w   | **zapnuto**  |           |
 
-### <a name="english-aspirated-oral-stops"></a>Angličtina aspirované ústní zastávky
+### <a name="english-aspirated-oral-stops"></a>Ústní zastavení s latinkou vysáváním
 
 | `sapi` | `ipa` | Příklad 1 | Příklad 2   | Příklad 3  |
 |--------|-------|-----------|-------------|------------|
-| p      | `p`   | **p**ut   | ha**pp**en  | fla**p**   |
-| b      | `b`   | **b**ig   | num**b**er  | cra**b**   |
-| t      | `t`   | **t**alk  | capi**t**al | sough**t** |
-| d      | `d`   | **d**ig   | běžel**d**om  | ro**d**    |
-| k      | `k`   | **c**ut   | sla**ck**er | Ira**q**   |
-| g      | `g`   | **g**o    | a**g**o     | dra**g**   |
+| p      | `p`   | **p**UT   | ha**PP**– cs  | FLA**p**   |
+| b      | `b`   | IG **b**   | číslo**b**ER  | CRA**b**   |
+| t      | `t`   | **t**ALK  | CAPI**t**Al | sough**t** |
+| d      | `d`   | **d**IG   | spuštěný**d**OM  | ro**d**    |
+| k      | `k`   | **c**UT   | SLA**CK**ER | Ira**q**   |
+| g      | `g`   | **g**o    | a**g**o     | DRA**g**   |
 
-### <a name="english-nasal-stops"></a>Angličtina Nosní zastávky
+### <a name="english-nasal-stops"></a>Nasaly anglické verze
 
 | `sapi` | `ipa` | Příklad 1        | Příklad 2  | Příklad 3   |
 |--------|-------|------------------|------------|-------------|
-| m      | `m`   | **m**na, rozbít   | **ca m**éra | roo**m**    |
-| n      | `n`   | **n**o, s**n**ow | te**n**t   | chicke**n** |
-| Ng     | `ŋ`   |                  | li**n**k   | s**ing**    |
+| m      | `m`   | **m**na, Smash   | období**certifikační**autority | Roo**m**    |
+| n      | `n`   | **n**o, s**n**oddálení | te**n**t   | kuřata**n** |
+| plyn     | `ŋ`   |                  | li**n**k   | s**ing**    |
 
-### <a name="english-fricatives"></a>Anglické fricatives
+### <a name="english-fricatives"></a>Fricatives v angličtině
 
 | `sapi` | `ipa` | Příklad 1   | Příklad 2        | Příklad 3  |
 |--------|-------|-------------|------------------|------------|
-| f      | `f`   | **f**ork    | le**f**t         | hal**f**   |
-| v      | `v`   | **v**alue   | e**v**ent        | lo**v**e   |
-| Th     | `θ`   | **th**v    | empa**th y**      | po**čt**  |
-| Dh     | `ð`   | **th**en    | **mo th er**       | smoo**th** |
-| s      | `s`   | **je**to     | ri**s**k         | fakt**s**  |
-| z      | `z`   | **z**ap     | bu**s**y         | dítě**s**   |
-| Sh     | `ʃ`   | **sh** e    | zkráceně**ti**na | ru**sh**   |
-| Zh     | `ʒ`   | **J**acques | důvod**s**ure     | gara**g**e |
-| h      | `h`   | **h**elp    | en**h**ance      | a-**h**a!  |
+| f      | `f`   | síť **f**    | Le**f**t         | vrstva HAL**f**   |
+| v      | `v`   | **v**alue   | Elektronický**v**        | Lo**v**e   |
+| Kolik     | `θ`   | **tou**v    | EMPA**y**      | Mon**th**  |
+| algoritm     | `ð`   | **th**EN    | mo**th**       | smoo**th** |
+| s      | `s`   | **s**IT     | rezervované instance**s**         | fakt**s**  |
+| z      | `z`   | bod **z**     | bu**s**y         | děti**s**   |
+| SH     | `ʃ`   | **SH** e    | abbrevia**ČŘ** | ru**SH**   |
+| ZH     | `ʒ`   | **J**acques | Plea**s**urovat     | Gara**g**e |
+| h      | `h`   | **h**ELP    | průvo EN**h**      | a-**h**a!  |
 
-### <a name="english-affricates"></a>Anglické affricates
+### <a name="english-affricates"></a>Affricates v angličtině
 
 | `sapi` | `ipa` | Příklad 1 | Příklad 2    | Příklad 3  |
 |--------|-------|-----------|--------------|------------|
-| ch     | `tʃ`  | **ch**v  | fu**t**ure   | atta**ch** |
-| Jh     | `dʒ`  | **j**oy   | ori**g**inální | oran**g**e |
+| ch     | `tʃ`  | **ch**v  | Fu**t**urovat   | Atta**ch** |
+| jh     | `dʒ`  | **j**Oy   | Ori**g**inal | Oran**g**e |
 
-### <a name="english-approximants"></a>Anglické aproximanty
+### <a name="english-approximants"></a>Approximants v angličtině
 
 | `sapi` | `ipa` | Příklad 1          | Příklad 2  | Příklad 3 |
 |--------|-------|--------------------|------------|-----------|
-| l      | `l`   | **l**id, g**l**ad  | pa**l**eso | chi**ll** |
-| r      | `ɹ`   | **r**ed, b**r**ing | bo**rr**ow | ta**r**   |
+| l      | `l`   | **l**ID, g**l**AD  | PA –**t**– ACE | chí**vše** |
+| r      | `ɹ`   | **r**Ed, b**r**z | Bo**RR** | **r** ta   |
 
 # <a name="fr-fr"></a>[fr-FR](#tab/fr-FR)
 
-### <a name="french-suprasegmentals"></a>Francouzské suprasegmenty
+### <a name="french-suprasegmentals"></a>Francouzština suprasegmentals
 
-Sada telefonních služeb Speech však klade důraz na samohlásek stresované slabiky; telefonní `fr-FR` sada služby Speech nepodporuje podpěru IPA "中". Pokud je podpíra NPP potřeba, měli byste jej použít přímo.
+Telefonická sada pro hlasové služby přináší zátěž po samohláskě zatížené slabiky, ale telefonní `fr-FR` sada hlasové služby nepodporuje IPA ˌ. Pokud je požadováno IPA, měli byste použít IPA přímo.
 
 ### <a name="french-vowels"></a>Francouzské samohlásky
 
 | `sapi` | `ipa` | Příklad 1     | Příklad 2       | Příklad 3 |
 |--------|-------|---------------|-----------------|-----------|
-| a      | `a`   | **a**rbre     | p**a**tte       | ir**a**   |
-| aa     | `ɑ`   |               | p**â**te        | p**a**s   |
-| aa ~   | `ɑ̃`  | **en**fant    | enf**en**t      | t**em**ps |
-| Ax     | `ə`   |               | p**e**tite      | l**e**    |
-| Co     | `ɛ`   | **e**lle      | p**e**rdu       | ét**ai**t |
-| Eu     | `ø`   | **œu**fs      | cr**eu**ser     | qu**eu**  |
-| Ey     | `e`   | ému           | crétin          | ôté       |
-| eh ~   | `ɛ̃`  | **im**portant | p**ein**ture    | rohož**v** |
-| Iy     | `i`   | **i**dée      | pet**i**te      | jsem**i**   |
-| Oe     | `œ`   | **œu**f       | p**eu**r        |           |
-| Oh     | `ɔ`   | **o**bstakl  | c**o**rps       |           |
-| ach ~   | `ɔ̃`  | **na**ze      | r**na**deur     | b**na**   |
-| Ow     | `o`   | **au**diteur  | b**eau**převrat    | p**ô**    |
-| oe ~   | `œ̃ ` | **Osn**        | l**un**di       | br**un**  |
-| Uw     | `u`   | **ou**trage   | ink**ou**vable | **Ou**    |
-| Uy     | `y`   | **u**ne       | p**u**nir       | él**u**   |
+| a      | `a`   | **rbre**     | p**a**TTE       | IR**a**   |
+| aa     | `ɑ`   |               | p **–**– te        | p**a**s   |
+| AA ~   | `ɑ̃`  | **EN**fant    | ENF**EN**t      | t**em**PS |
+| AX     | `ə`   |               | p**e**Tite      | l**e**    |
+| Uh     | `ɛ`   | **e**lle      | p**e**RDU       | ét**AI**t |
+| Balijšitna     | `ø`   | **œu**FS      | CR **–** ta – ser     | qu**EU**  |
+| enalezen     | `e`   | ému           | crétin          | ôté       |
+| Eh   | `ɛ̃`  | port **im** | p**Ein**telů    | rohože**v** |
+| iy     | `i`   | **dée**      | PET**i**te      | jsem**já**   |
+| OE     | `œ`   | **œu**f       | p**EU**r        |           |
+| Oh     | `ɔ`   | **o**bstacle  | c**o**RPS       |           |
+| Ne. ~   | `ɔ̃`  | **na ze systému**      | r**v**deur     | b**zapnuto**   |
+| Jak     | `o`   | **au**diteur  | b**Eau**Coup    | p**ô**    |
+| OE ~   | `œ̃ ` | **instalován**        | l**un**di       | BR**un**  |
+| UW     | `u`   | trage **organizační jednotky**   | Vable**organizační jednotky**intr | **jednotky**    |
+| uy     | `y`   | **u**ne       | p**u**Jmenuji Nir a       | él**u**   |
 
 ### <a name="french-consonants"></a>Francouzské souhlásky
 
 | `sapi` | `ipa` | Příklad 1   | Příklad 2     | Příklad 3                        |
 |--------|-------|-------------|---------------|----------------------------------|
-| b      | `b`   | **b**êe    | ha**b**ille   | ro**b**e                         |
-| d      | `d`   | **d**ire    | ron**d**eur   | chau**d**e                       |
-| f      | `f`   | **f**emme   | su**ff**ixe   | bo**f**                          |
-| g      | `g`   | **g**auche  | é**g**ale     | ba**gu**e                        |
-| Ng     | `ŋ`   |             |               | [<sup>1</sup>](#fr-1)**parking** |
-| Hy     | `ɥ`   | h**u**ile   | n**u**ire     |                                  |
-| k      | `k`   | **c**arte   | é**c**aille   | být**c**                          |
-| l      | `l`   | **l**ong    | é**l**ire     | ba**l**                          |
-| m      | `m`   | **m**adame  | ai**er**     | po**mm**e                        |
-| n      | `n`   | **n**ous    | te**n**ir     | bo**nn**e                        |
-| Nj     | `ɲ`   |             |               | pei**gn**e                       |
-| p      | `p`   | **p**atte   | re**p**jako     | ca**p**                          |
-| r      | `ʁ`   | **r**při     | cha**r**iot   | senti**r**                       |
-| s      | `s`   | **s**ourir  | a**ss**ez     | pa**ss**e                        |
-| Sh     | `ʃ`   | **ch**anter | ma**ch**ine   | po**ch**e                        |
-| t      | `t`   | **t**ête    | ô**t**er      | ne**t**                          |
-| v      | `v`   | **v**ent    | v**v zadejte**  | rê**v**e                         |
-| w      | `w`   | **ou**i     | f**ou**ine    |                                  |
-| y      | `j`   | **y**od     | p**i**étiner  | Marse**ille**                    |
-| z      | `z`   | **z **éro   | rai**s**onner | ro**s**e                         |
-| Zh     | `ʒ`   | **j**ardin  | muž**g**er    | piè**g**e                        |
-|        | `n‿`  |             |               | u**n** arbre                     |
-|        | `t‿`  |             |               | quan**d**                        |
+| b      | `b`   | ête **b**    | ha**b**Ille   | ro**b**e                         |
+| d      | `d`   | **d**vyžadovat    | Ron**d**EUR   | Chau**d**e                       |
+| f      | `f`   | Emme **f**   | Su**FF**IXE   | Bo**f**                          |
+| g      | `g`   | auche **g**  | é**g**rahy     | ba –**Gu**e                        |
+| plyn     | `ŋ`   |             |               | [<sup>1</sup>](#fr-1)**parky** |
+| hy     | `ɥ`   | h**u**   | n**u**vyžadovat     |                                  |
+| k      | `k`   | Arte **jazyka c**   | é**c**aille   | být**c**                          |
+| l      | `l`   | **l**Ong    | é**l**vyžadovat     | ba**l**                          |
+| m      | `m`   | **m**Adam  | AI**m**ER     | Po**mm**e                        |
+| n      | `n`   | **n**OJ    | te**n**IR     | Bo**NN**e                        |
+| Newarku     | `ɲ`   |             |               | Pei**GN**e                       |
+| p      | `p`   | **p**Atte   | znovu**p**jako     | CA**p**                          |
+| r      | `ʁ`   | **r**v     | Ča**r**IoT   | odesílá se**r**                       |
+| s      | `s`   | **s**ourir  | **SS**EZ     | PA**SS**e                        |
+| SH     | `ʃ`   | **ch**– ante | Ma**ch**DEK   | Po**ch**e                        |
+| t      | `t`   | **t**ête    | ô**t**ER      | Ne**t**                          |
+| v      | `v`   | **v-v**    | v**ENTER v**zadejte  | rê**v**e                         |
+| w      | `w`   | **organizační jednotka**i     | dek**organizační jednotky**    |                                  |
+| y      | `j`   | **a**od     | étiner p**i**  | Mars**Ille**                    |
+| z      | `z`   | * * z * * éro   | Rai**s**onner | ro**s**e                         |
+| ZH     | `ʒ`   | **j**ardin  | muž**g**ER    | piè**g**e                        |
+|        | `n‿`  |             |               | u**n** Arbre                     |
+|        | `t‿`  |             |               | Quan**d**                        |
 |        | `z‿`  |             |               | di**x**                          |
 
 <a id="fr-1"></a>
-**1** *Pouze pro některá cizí slova*
+**1** *pouze pro některá cizí slova.*
 
 > [!TIP]
-> Telefonní `fr-FR` sada služby Speech nepodporuje následující francouzské `n‿`limuzíny `t‿`, `z‿`, a . Pokud jsou potřeba, měli byste zvážit použití IPA přímo.
+> Telefonní `fr-FR` sada hlasové služby nepodporuje následující francouzské liasions, `n‿`, `t‿`a. `z‿` Pokud jsou potřeba, měli byste zvážit přímé použití IPA.
 
 # <a name="de-de"></a>[de-DE](#tab/de-DE)
 
-### <a name="german-suprasegmentals"></a>Německé suprasegmenty
+### <a name="german-suprasegmentals"></a>Německé suprasegmentals
 
-| Příklad 1 (Nástup souhly, počáteční slovo pro samohlásek) | Příklad 2 (Intervocalic pro souhle, slovo mediální jádro pro samohlásku) | Příklad 3 (Coda pro souhrádku, slovo konečné pro samohlásku) | Komentáře |
+| Příklad 1 (Úvod k souhláskě, slovo počáteční pro samohlásku) | Příklad 2 (pro souhlásky, wordové nucleusy pro samohlásku) | Příklad 3 (Coda pro souhlásku, slovo konečný pro samohlásku) | Komentáře |
 |--|--|--|--|
-| anders /a **1** n - d ax r s/ | Multiplikationszeichen /m uh l - t iy - p l iy - k a - ts y ow **1** n s - ts ay - c n/ | Biologie /b iy - ow - l ow - g iy **1**/ | Řeč služby telefonní sada dát stres po samohláze stresové slabiky |
-| Allgemeinwissen /a **2** l - g ax - m ay 1 n - v ih - s n/ | Abfallentsorgungsfirma /a 1 p - f a l - ^ eh n t - z oh **2** ax r - g uh ng s - f ih ax r - m a/ | Computertomographie /k oh m - p y uw 1 - t ax r - t ow - m ow - g r a - f iy **2**/ | Řeč oválná telefonní sada kladla důraz po samoobsluze slabiky podnapětí |
+| Anders/a **1** n-d AX r s/ | Multiplikationszeichen/m uh l-t iy-p l iy-k a-TS y navýšení na **1** n s-TS Ay-c n/ | Biologie/b iy – přečtení z-l v-g iy **1**/ | Telefonická sada hlasových služeb – telefon po samohláskě s napětím |
+| Allgemeinwissen/a **2** l-g AX-m Ay 1 n-v IH-s n/ | Abfallentsorgungsfirma/a 1 p-f a l-^ eh n t-z Oh **2** AX r-g uh ng s-f IH AX r-m a/ | Computertomographie/k Oh m-p y UW 1-t AX r-t – Čt-m-g r a-f iy **2**/ | Telefonická sada hlasových služeb: po samohláskě slabiky se nastaví zátěž. |
 
 ### <a name="german-vowels"></a>Německé samohlásky
 
 | `sapi` | `ipa`     | Příklad 1                             | Příklad 2     | Příklad 3                          |
 |--------|-----------|---------------------------------------|---------------|------------------------------------|
-| A:     | `aː`      | **Ber**                              | Maßst**a**b   | Schéma**a**                         |
-| a      | `a`       | **Bpád**                            | B**a**ch      | Agath**a**                         |
-| Oh     | `ɔ`       | **O**sten                             | Pf**o**sten   |                                    |
-| Co:    | `ɛː`      | **Ä**hnlichkeit                       | B**ä**r       | [<sup>1.</sup>](#de-v-1) Fasci**ee** |
-| Co     | `ɛ`       | **ä**ndern                            | Proz**e**nt   | Amygdal**ae**                      |
-| Ax     | `ə`       | [<sup>2</sup>](#de-v-2)'v**e**rstauen | Aach**e**n    | Frag**e**                          |
-| Iy     | `iː`      | Běžel **jsem**                              | abb**ie**gt   | Relativitätstheor**tj.**            |
-| Ih     | `ɪ`       | **I**nnung                            | s**i**ngen    | Dřevo**y**                          |
-| Eu     | `øː`      | **Ö**sen                              | abl**ö**sten  | Malm**ö**                          |
-| Ow     | `o`, `oː` | **o**hne                              | Balk**o**n    | Trept**ow**                        |
-| Oe     | `œ`       | **Ö**ffnung                           | bef**ö**rdern |                                    |
-| Ey     | `e`, `eː` | **E**berhard                          | abf**e**gt    | b                                  |
-| Uw     | `uː`      | **U**dělat                               | H**u**t       | Akk**u**                           |
-| Uh     | `ʊ`       | **U**nterschiedes                     | b**u**nt      |                                    |
-| Ue     | `yː`      | **Ü**bermut                           | pfl**ü**gt    | Muži**ü**                           |
-| Uy     | `ʏ`       | **ü**ppig                             | S**y**stopka    |                                    |
+| určitého     | `aː`      | **Ber**                              | Maßst**a**b   | Schem**a**                         |
+| a      | `a`       | **Bfall**                            | B**a**ch      | Agath**a**                         |
+| Oh     | `ɔ`       | **O**sten                             | PF**o**sten   |                                    |
+| Uh    | `ɛː`      | **Ä**hnlichkeit                       | B**ä**r       | [<sup>1</sup>](#de-v-1) Fasci**AE** |
+| Uh     | `ɛ`       | **ä**ndern                            | ProZ**e**NT   | Amygdal**AE**                      |
+| AX     | `ə`       | [<sup>2</sup>](#de-v-2)' v**e**rstauen | Aach**e**n    | Frag**e**                          |
+| iy     | `iː`      | Spustil (a) **jsem**                              | ABB**IE**gt   | Relativitätstheor**IE**            |
+| ih     | `ɪ`       | **Nnung**                            | s **–** Ngen    | Dřevo**y**                          |
+| Balijšitna     | `øː`      | **Ö**                              | ABL**ö**sten  | MALM**ö**                          |
+| Jak     | `o`, `oː` | **o**hne                              | Balk**o**n    | Trept**ow**                        |
+| OE     | `œ`       | **Ö**ffnung                           | BEF**ö**rdern |                                    |
+| enalezen     | `e`, `eː` | **E**berhard                          | ABF**e**gt    | b                                  |
+| UW     | `uː`      | **U**                               | H**u**t       | AKK**u**                           |
+| Uh     | `ʊ`       | **U**nterschiedes                     | b**u**NT      |                                    |
+| UE     | `yː`      | **Ü**bermut                           | PFL**ü**gt    | Muži**ü**                           |
+| uy     | `ʏ`       | **ü**PPIG                             | Kmen S**y**    |                                    |
 
 <a id="de-v-1"></a>
-**1** *Pouze ve slovech cizího původu, jako jsou: Fasci**ae**.*<br>
+**1** *pouze ve slovech cizího původu, například: fasci**AE**.*<br>
 <a id="de-v-2"></a>
-**2** *Word-intially pouze ve slovech cizího původu, jako je **ppointment.** Slabika-zpočátku v: 'v**e**rstauen.*
+**2** *Word – intially jenom ve slovech cizího původu, jako **je**třeba ppointment. Slabiky na začátku v: ' v**e**rstauen.*
 
-### <a name="german-diphthong"></a>Německý diphtang
+### <a name="german-diphthong"></a>Německé diphthong
 
 | `sapi` | `ipa`       | Příklad 1    | Příklad 2          | Příklad 3 |
 |--------|-------------|--------------|--------------------|-----------|
-| Ay     | `ai`        | **ei**nsam   | Unabhängigk**ei**t | Abt**ei** |
-| Aw     | `au`        | **au**ßen    | abb**au**st        | Ulice**au**  |
-| Oy     | `ɔy`, `ɔʏ̯` | **Eu**phorie | tr**äu**mt         | sch**eu** |
+| ay     | `ai`        | **EI**nsam   | Unabhängigk**EI**t | ABT**EI** |
+| AW     | `au`        | **au**ßen    | ABB**au**St        | St**au**  |
+| Oy     | `ɔy`, `ɔʏ̯` | Phorie **EU** | TR**äu**MT         | SCH**EU** |
 
 ### <a name="german-semivowels"></a>Německé semivowels
 
 | `sapi` | `ipa` | Příklad 1 | Příklad 2    | Příklad 3  |
 |--------|-------|-----------|--------------|------------|
-| sekera r   | `ɐ`   |           | abänd**er**n | zámek**er** |
+| AX r   | `ɐ`   |           | abänd**ER**n | zámek**ER** |
 
 ### <a name="german-consonants"></a>Německé souhlásky
 
 | `sapi` | `ipa` | Příklad 1 | Příklad 2 | Příklad 3 |
 |--|--|--|--|--|
-| b | `b` | **B**ank |  | [<sup>1.</sup>](#de-c-1) Pu**b** |  |
-| c | `ç` | **Ch**emie | mögli**ch**st | [<sup>2</sup>](#de-c-2)i**ch** |
-| d | `d` | **d**anken | [<sup>3.</sup>](#de-c-3) Len**d**l | [<sup>4.</sup>](#de-c-4) Clau**d**e |  |
-| Jh | `ʤ` | **J**eff | gemana**g**t | [<sup>5.</sup>](#de-c-5) Chan**g**e e |
-| f | `f` | **F**ahrtdauer | angri**ff**slustig | abbruchrei**f** |  |
-| g | `g` | **g**ut |  | [<sup>6.</sup>](#de-c-6) Gre**g** |  |
+| b | `b` | ANK **B** |  | [<sup>1</sup>](#de-c-1) PU**b** |  |
+| c | `ç` | **Ch**Emie | mögli**ch**St | [<sup>2</sup>](#de-c-2)i**ch** |
+| d | `d` | **d**anken | [<sup>3</sup>](#de-c-3) . Len**d**l | [<sup>4</sup>](#de-c-4) . Clau**d**e |  |
+| jh | `ʤ` | **J**EFF | gemana**g**t | [<sup>5</sup>](#de-c-5) . Kanál**g**e |
+| f | `f` | Ahrtdauer **F** | angri**FF**slustig | abbruchrei**f** |  |
+| g | `g` | **g**UT |  | [<sup>6</sup>](#de-c-6) GRE**g** |  |
 | h | `h` | **H**ausanbau |  |  |  |
-| y | `j` | **J**od | Reakt**i**na | hu**i** |  |
-| k | `k` | **K**oma | Aspe**k**t | Flec**k** |  |
+| y | `j` | **J**od | Reakt**i**on | hu**i** |  |
+| k | `k` | **K**OMA | Aspe**k**t | Flec**k** |  |
 | l | `l` | **l**au | ähne**l**n | zuvie**l** |  |
-| m | `m` | **M**ut | A**m**t | Leh**m** |  |
+| m | `m` | **M**UT | A**m**t | Leh**m** |  |
 | n | `n` | **n**un | u**n**d | Huh**n** |  |
-| Ng | `ŋ` | [<sup>7</sup>](#de-c-7)**Ng**uyen | Schwa**nk** | R**ing** |  |
-| p | `p` | **P**artner | abru**p**t | Ti**p** |  |
-| Pf | `pf` | **Pf**erd | přehrada**pf**t | Chcete-li**pf** |  |
-| r | `ʀ`, `r`, `ʁ` | **R**eise | knu**rr**t | Haa**r** |  |
-| s | `s` | [<sup>8</sup>](#de-c-8)**S**taccato | bi**s**t | mie**s** |  |
-| Sh | `ʃ` | **Sch**ule | mi**sch**t | lappi**sch** |  |
-| t | `t` | **T**raum | S**t**raße | Mu**t** |  |
-| Ts | `ts` | **Z**ug | Ar**z**t | Vtip**z** |  |
+| plyn | `ŋ` | [<sup>7</sup>](#de-c-7)**NG**Uyen | Šva**NK** | R**z** |  |
+| p | `p` | **P**Artner | abru**p**t | Ča**p** |  |
+| stránkovací | `pf` | Záchranná disketa **PF** | přehradit**PF**t | Do**BF** |  |
+| r | `ʀ`, `r`, `ʁ` | Eise jazyka **R** | KNU**RR**t | Há**r** |  |
+| s | `s` | taccato [<sup>8</sup>](#de-c-8)**S** | BI**s**t | Mie**s** |  |
+| SH | `ʃ` | **SCH**ravidlo | mi**SCH**t | Lappi**SCH** |  |
+| t | `t` | **T**Raum | S**t**raße | Mu**t** |  |
+| licence | `ts` | **Z**g | Ar**z**t | WIT**z** |  |
 | ch | `tʃ` | **Tsch**echien | aufgepu**tsch**t | bundesdeu**tsch** |  |
-| v | `v` | **w**inken | Q**u**alle | [<sup>9.</sup>](#de-c-9) Gr**oo**ve |  |
-| x | [<sup>10</sup>](#de-c-10)`x`,[<sup>11.</sup>](#de-c-11)`ç` | [<sup>12.</sup>](#de-c-12) Ba**ch**erach | Ma**ch**t mögli**ch**st | Schma**ch** 'i**ch** |
+| v | `v` | **w**inken | Q**u**Alle | [<sup>9</sup>](#de-c-9) GR**ó**ve |  |
+| x | [<sup>10</sup>](#de-c-10)`x`,[<sup>11</sup>](#de-c-11)`ç` | [<sup>12</sup>](#de-c-12) . Ba**ch**erach | Ma**ch**t mögli**ch**St | Schma**ch** ' i**ch** ' |
 | z | `z` | **s**uper |  |  |  |
-| Zh | `ʒ` | **G**enre | B**re**ezinski | Edvi**g**e |
+| ZH | `ʒ` | Enre **G** | B**znovu**ezinski | EDVI**g**e |
 
 <a id="de-c-1"></a>
-**1** *Pouze slovy cizího původu, jako jsou: Pu**b**.*<br>
+**1** *pouze ve slovech cizího původu, například: PU**b**.*<br>
 <a id="de-c-2"></a>
-**2** *Měkké "ch" po "e" a "i"*<br>
+**2** *měkké "ch" po "e" a "i"*<br>
 <a id="de-c-3"></a>
-**3** *Pouze slovy cizího původu, jako jsou: Len**d**l.*<br>
+**3** *jenom ve slovech cizího původu, například: len**d**l.*<br>
 <a id="de-c-4"></a>
-**4** *Pouze slovy cizího původu, jako jsou: Clau**d**e.*<br>
+**4** *pouze ve slovech cizího původu, například: Clau**d**e.*<br>
 <a id="de-c-5"></a>
-**5** *Pouze slovy cizího původu, jako jsou: Chan**g**e.*<br>
+**5** *pouze ve slovech cizího původu, například: kanál**g**e.*<br>
 <a id="de-c-6"></a>
-**6** *Word-terminálně pouze ve slovech cizího původu, jako je Gre**g**.*<br>
+**6** *slov – jenom v případě cizího původu, jako je GRE**g***<br>
 <a id="de-c-7"></a>
-**7** *Pouze slovy cizího původu, jako jsou: **Ng**uyen.*<br>
+**7** *pouze ve slovech cizího původu, jako je: **NG**Uyen.*<br>
 <a id="de-c-8"></a>
-**8** *Pouze slovy cizího původu, jako jsou: **S**taccato.*<br>
+**8** *pouze ve slovech cizího původu, jako je například: **S**taccato.*<br>
 <a id="de-c-9"></a>
-**9** *Pouze slovy cizího původu, jako jsou: Gr**oo**ve.*<br>
+**9** *pouze v slovech cizího původu, například: gr**ó**v.*<br>
 <a id="de-c-10"></a>
-**10** *IPA `x` je tvrdý "ch" po všech non-přední samohlásky (a, aa, oh, ow, uh, uw a diphthong aw).*<br>
+**10** *IPA `x` je pevně "ch" po všech nepředních samohláskách (a, AA, Oh, uh, uh, UW a diphthong AW).*<br>
 <a id="de-c-11"></a>
-**11** *IPA `ç` je měkký 'ch' po přední samohlásek (ih, iy, eh, ae, uy, ue, oe, eu také v dvojhlásky ay, oy) a souhlásky*<br>
+**11** *IPA `ç` je měkký "ch" za předními samohláskami (IH, IY, eh, AE, UY, UE, OE, EU také v diphthongs Ay, Oy) a souhlásky*<br>
 <a id="de-c-12"></a>
-**12** *Word-zpočátku pouze ve slovech cizího původu, jako například: **J**uan. Slabika - zpočátku také ve slovech jako: Ba**ch**erach.*<br>
+**12** *slov – zpočátku jenom v slovech cizího původu, například: **J**močovina Slabiky – zpočátku také ve slově jako: ba**ch**erach.*<br>
 
 ### <a name="german-oral-consonants"></a>Německé orální souhlásky
 
 | `sapi` | `ipa` | Příklad 1                                  |
 |--------|-------|--------------------------------------------|
-| ^      | `ʔ`   | beachtlich /b sekera - ^ a 1 x t - l ih c/ |
+| ^      | `ʔ`   | beachtlich/b AX – ^ a 1 x t-l IH c/ |
 
 > [!NOTE]
-> Musíme přidat [gs\] telefon mezi dvě odlišné samohlásky, s výjimkou dvou samohlásek jsou skutečné dvojhlásky. Tato orální souhráda je glotální stopa, <a href="http://en.wikipedia.org/wiki/Glottal_stop" target="_blank">pro více <span class="docon docon-navigate-external x-hidden-focus"> </a> </a>informací viz glottal stop .
+> Musíme přidat [GS\] telefon mezi dvě odlišná samohlásky, s výjimkou těchto dvou samohlásek je pravý diphthong. <a href="http://en.wikipedia.org/wiki/Glottal_stop" target="_blank">Tato orální souhláska je ráz, další informace najdete v části ráz a stop <span class="docon docon-navigate-external x-hidden-focus"> </a> </a>.
 
 # <a name="es-es"></a>[es-ES](#tab/es-ES)
 
-### <a name="spanish-vowels"></a>Španělské samohlásky
+### <a name="spanish-vowels"></a>Španělština – samohlásky
 
 | `sapi` | `ipa` | Příklad 1    | Příklad 2     | Příklad 3    |
 |--------|-------|--------------|---------------|--------------|
-| a      | `a`   | **a**lto     | c**a**ntar    | cas**a**     |
-| Mohu      | `i`   | **i**bérica  | av**i**lázně    | daň**i**     |
-| e      | `e`   | **e**lefante | ve společnosti**e**nto    | elefant**e** |
+| a      | `a`   | **LTO**     | c**a**ntar    | CAS**a**     |
+| Mohu      | `i`   | **bérica**  | AV**i**Spa    | daň**i**     |
+| e      | `e`   | **e**LeFante | v**e**nChcete-li    | Elefant**e** |
 | o      | `o`   | **o**caso    | enc**o**ntrar | ocasenc**o** |
-| u      | `u`   | **u**sted    | p**u**nta     | Juanl**u**   |
+| u      | `u`   | **u**STED    | p**u**NTA     | Juanl**u**   |
 
 ### <a name="spanish-consonants"></a>Španělské souhlásky
 
 | `sapi` | `ipa`      | Příklad 1  | Příklad 2      | Příklad 3      |
 |--------|------------|------------|----------------|----------------|
-| b      | `b`        | **b**aobab |                | am**b**        |
-|        | `β`        |            | bao**b**ab     | baoba**b**     |
-| ch     | `tʃ`       | **ch**eque | co**ch**e      | Marraque**ch** |
-| d      | `d`        | **d**edo   |                | portlan**d**   |
-|        | `ð`        |            | de**d o**       | verda**d**     |
-| f      | `f`        | **f**ácil  | ele**f**ante   | pu**f**        |
-| g      | `g`        | **g**anga  |                | dópin**g**     |
-|        | `ɣ`        |            | **a g**ua       | tuare**g**     |
-| J      | `j`        | **i**odo   | cal**i**ente   | re**y**        |
-| Jj     | `j.j` `jj` |            | vi**ll**a      |                |
-| k      | `k`        | **c**oche  | bo**c**a       | titáni**c**    |
-| l      | `l`        | l ápiz **(l**ápiz)  | a**l**a        | corde**l**     |
-| Ll     | `ʎ`        | **ll**ave  | desarro**ll**o |                |
-| m      | `m`        | **m**pořadí | a**m**ar       | álbu**m**      |
-| n      | `n`        | **n**ada   | ce**n**a       | rató**n**      |
-| Nj     | `ɲ`        | **ñ**aña   | ara**ñ**azo    |                |
-| p      | `p`        | **p**oca   | až**p**o       | sto**p**       |
-| r      | `ɾ`        |            | ca**r**a       | abri**r**      |
-| Rr     | `r`        | **r**adio  | co**rr**e      | pu**rr**       |
-| s      | `s`        | **s**aco   | va**s o**o       | pelo**s**      |
-| t      | `t`        | **t**oldo  | a**t**ar       | disque**t**    |
-| Th     | `θ`        | **z**ebra  | a**z**ul       | lápi**z**      |
-| w      | `w`        | h**u**eso  | ag**u**a       | gua**u**       |
-| x      | `x`        | **j**ota   | a**j**o        | relo**j**      |
+| b      | `b`        | aobab **b** |                | am**b**        |
+|        | `β`        |            | Bao**b**AB     | Baoba**b**     |
+| ch     | `tʃ`       | **ch**eque | Co**ch**e      | Marraque**ch** |
+| d      | `d`        | **d**Edo   |                | portLAN**d**   |
+|        | `ð`        |            | de**d**o       | Verda**d**     |
+| f      | `f`        | ácil **f**  | ele**f**ante   | PU**f**        |
+| g      | `g`        | anga **g**  |                | dópin**g**     |
+|        | `ɣ`        |            | **g**UA       | tuare**g**     |
+| j      | `j`        | **Odo**   | seznam**CAL**   | znovu**y**        |
+| JJ     | `j.j` `jj` |            | VI**vše**a      |                |
+| k      | `k`        | Oche **jazyka c**  | Bo**c**a       | Titáni**c**    |
+| l      | `l`        | **l**ápiz  | a**l**        | šňůra**l**     |
+| vše     | `ʎ`        | **šechny**Ave  | desarro**vše**o |                |
+| m      | `m`        | pořadí **m** | a**m**ar       | álbu**m**      |
+| n      | `n`        | **n**Ada   | CE**n**a       | rató**n**      |
+| Newarku     | `ɲ`        | **ñ**aña   | Ara**ñ**azo    |                |
+| p      | `p`        | **p**OCA   | do**p**o       | ši**p**       |
+| r      | `ɾ`        |            | CA**r**a       | Abri**r**      |
+| názv     | `r`        | ADIO jazyka **r**  | Co**RR**e      | PU**RR**       |
+| s      | `s`        | **s**Accountable Care Organization   | VA**s**– o       | pelo**s**      |
+| t      | `t`        | **t**oldo  | a**t**ar       | Disque**t**    |
+| Kolik     | `θ`        | **z**Ebra  | **z z**ul       | lápi**z**      |
+| w      | `w`        | h**u**eso  | AG**u**a       | Gua**u**       |
+| x      | `x`        | **j**OTA   | a**j**o        | relo**j**      |
 
 > [!TIP]
-> Telefonní `es-ES` sada služby Speech nepodporuje následující španělské `β` `ð`IPA, , a `ɣ`. Pokud jsou potřeba, měli byste zvážit použití IPA přímo.
+> Telefonní `es-ES` sada hlasové služby nepodporuje následující španělský IPA, `β`, `ð`a. `ɣ` Pokud jsou potřeba, měli byste zvážit přímé použití IPA.
 
 # <a name="zh-cn"></a>[zh-CN](#tab/zh-CN)
 
-Sada telefonu služby `zh-CN` Speech je založena na nativní sadě <a href="https://en.wikipedia.org/wiki/Pinyin" target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> pinyinů.</a>
+Telefonická sada pro hlasové služby `zh-CN` je založena na nativní sadě <a href="https://en.wikipedia.org/wiki/Pinyin" target="_blank">pchin- <span class="docon docon-navigate-external x-hidden-focus"></span> Jin</a> pro telefony.
 
 ### <a name="tone"></a>Styl podání
 
-| Pinyin tón | `sapi` | Příklad znaku |
+| Tón pchin-jin | `sapi` | Příklad znaku |
 |-------------|--------|-------------------|
-| mā          | ma 1  | V roce 201                 |
-| má          | ma 2  | V.                 |
-| mthe          | ma 3  | V roce 201                 |
-| mà          | ma 4  | V roce 201                 |
-| Ma          | ma 5  | V roce 201                 |
+| mā          | ma 1  | 妈                 |
+| má          | ma 2  | 麻                 |
+| mǎ          | ma 3  | 马                 |
+| mà          | mA 4  | 骂                 |
+| Vy          | ma 5  | 嘛                 |
 
 #### <a name="example"></a>Příklad
 
 | Znak | Služba Speech                |
 |-----------|-------------------------------|
-| V ěn      | zu 3 - zhi 1 - guan 1 - xi 5 |
-| V ěn        | lei 3 -jin 4                 |
-| 中中中中       | xi 1 - zhai 2 - xiang 4      |
+| 组织关系      | zu 3 – Zhi 1 – Guan 1 – XI 5 |
+| 累进        | Lei 3 – Jin 4                 |
+| 西宅巷       | XI 1 – Zhai 2 – Xiang 4      |
 
 # <a name="zh-tw"></a>[zh-TW](#tab/zh-TW)
 
-Sada telefonu služby `zh-TW` Speech je založena na nativní sadě <a href="https://en.wikipedia.org/wiki/Bopomofo" target="_blank">Bopomofo <span class="docon docon-navigate-external x-hidden-focus"></span> </a> telefonu.
+Telefonická sada pro `zh-TW` hlasové služby je založená na nativním <a href="https://en.wikipedia.org/wiki/Bopomofo" target="_blank">začu <span class="docon docon-navigate-external x-hidden-focus"></span> </a> s telefonní sadou.
 
 ### <a name="tone"></a>Styl podání
 
-| Tón služby řeči | Bopomofo tón | Příklad (slovo) | Hlasové služby telefony | Bopomofo | Pinyin (Švýc.) |
+| Tón služby Speech | Tón Ču-jin | Příklad (Word) | Telefony hlasové služby | Vai | Pchin-jin (拼音) |
 |---------------------|---------------|----------------|-----------------------|----------|-------------|
-| V ěn                   | empty         | V roce 201              | V otomse,                   | V ěn       | zhēn        |
-| V oku                   | V oku             | V roce 201              | V ěn                   | V ěn      | chá         |
-| ne,                   | ne,             | 中 (200              | V ěn                   | V ěn      | dět          |
-| V ěn                   | V ěn             | V roce 201              | V ěn                   | V ěn      | wàng (Wàng)        |
-| ˙                   | ˙             | V ěn             | V sfáchách               | V sfáchách  | y    |
+| ˉ                   | empty         | 偵              | ㄓㄣˉ                   | ㄓㄣ       | zhēn        |
+| ˊ                   | ˊ             | 察              | ㄔㄚˊ                   | ㄔㄚˊ      | chá         |
+| ˇ                   | ˇ             | 打              | ㄉㄚˇ                   | ㄉㄚˇ      | dǎ          |
+| ˋ                   | ˋ             | 望              | ㄨㄤˋ                   | ㄨㄤˋ      | wàng        |
+| ˙                   | ˙             | 影子             | 一ㄥˇ ㄗ˙               | 一ㄥˇ ㄗ˙  | yǐng Zi    |
 
 #### <a name="example"></a>Příklad
 
 | Znak | `sapi`   |
 |-----------|----------|
-| V roce 201         | V ěn      |
-| V ěn        | V ěl   |
-| V ěn        | V oku |
+| 狗         | ㄍㄡˇ      |
+| 然后        | ㄖㄢˊㄏㄡˋ   |
+| 剪掉        | ㄐㄧㄢˇㄉㄧㄠˋ |
 
 # <a name="ja-jp"></a>[ja-JP](#tab/ja-JP)
 
-Sada telefonu služby `ja-JP` Speech je založena na nativním telefonu <a href="https://en.wikipedia.org/wiki/Kana" target="_blank">Kana <span class="docon docon-navigate-external x-hidden-focus"></span> </a> set.
+Telefonická sada pro `ja-JP` hlasové služby je založená na nativním nastavení telefonu <a href="https://en.wikipedia.org/wiki/Kana" target="_blank">Kana <span class="docon docon-navigate-external x-hidden-focus"></span> </a> .
 
-### <a name="stress"></a>Stres
+### <a name="stress"></a>Zdůrazňuje
 
 | `sapi` | `ipa`          |
 |--------|----------------|
-| `ˈ`    | `ˈ`hlavní |
-| `+`    | `ˌ`podpěr  |
+| `ˈ`    | `ˈ`mainstress |
+| `+`    | `ˌ`zátěžový  |
 
 #### <a name="example"></a>Příklad
 
 | Znak | `sapi`  | `ipa`       |
 |-----------|---------|-------------|
-| V ěn        | 中'中中    | go中中seji   |
-| 中中中中       | Věrný???? | V l. |
-| V ěn       | V pojetí  | sajitecika |
+| 合成        | ゴ'ウセ    | Přejít na ˈ wɯseji   |
+| 所有者       | ショュ'ウ?ャ | ɕjojɯˈwɯɕja |
+| 最適化       | サィテキカ +  | sajitecikaˌ |
 
 ***

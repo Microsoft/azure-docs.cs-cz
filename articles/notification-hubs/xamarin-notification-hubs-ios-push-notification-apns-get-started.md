@@ -1,5 +1,5 @@
 ---
-title: Odesílání nabízených oznámení xamarinu pomocí Center oznámení Azure | Dokumenty společnosti Microsoft
+title: Posílání nabízených oznámení do Xamarin pomocí Azure Notification Hubs | Microsoft Docs
 description: V tomto kurzu zjistíte, jak pomocí služby Azure Notification Hubs odesílat nabízená oznámení do aplikace Xamarin.iOS.
 services: notification-hubs
 keywords: nabízená oznámení ios,nabízení zpráv,nabízená oznámení,nabízená zpráva
@@ -19,19 +19,19 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 05/23/2019
 ms.openlocfilehash: 07417427385806e61db0d7d83624d923e92eb693
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80127015"
 ---
-# <a name="tutorial-send-push-notifications-to-xamarinios-apps-using-azure-notification-hubs"></a>Kurz: Odesílání nabízených oznámení do aplikací Xamarin.iOS pomocí center oznámení Azure
+# <a name="tutorial-send-push-notifications-to-xamarinios-apps-using-azure-notification-hubs"></a>Kurz: odesílání nabízených oznámení do aplikací pro Xamarin. iOS pomocí Azure Notification Hubs
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
 ## <a name="overview"></a>Přehled
 
-V tomto kurzu zjistíte, jak používat Azure Notification Hubs k odesílání nabízených oznámení do aplikace systému iOS. Vytvoříte prázdnou aplikaci Xamarin.iOS, která přijímá nabízená oznámení pomocí [služby Nabízených oznámení Apple (APNs).](https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html)
+V tomto kurzu zjistíte, jak používat Azure Notification Hubs k odesílání nabízených oznámení do aplikace systému iOS. Vytvoříte prázdnou aplikaci Xamarin. iOS, která přijímá nabízená oznámení pomocí [služby APNs (Apple Push Notification Service)](https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html).
 
 Jakmile budete hotovi, budete moct používat vaše centrum oznámení k všesměrovému vysílání nabízených oznámení pro všechna zařízení používající vaši aplikaci. Dokončený kód je k dispozici v ukázce [aplikace NotificationHubs][GitHub].
 
@@ -46,7 +46,7 @@ V tomto kurzu vytvoříte nebo aktualizujete kód tak, aby prováděl následuj�
 
 ## <a name="prerequisites"></a>Požadavky
 
-* **Předplatné Azure**. Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet Azure,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
+* **Předplatné Azure**. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 * Poslední verze jazyka [Xcode][Install Xcode]
 * Zařízení kompatibilní s iOS 10 (nebo novější verzí)
 * Členství v [programu pro vývojáře Apple](https://developer.apple.com/programs/).
@@ -67,19 +67,19 @@ Dokončení tohoto kurzu je předpokladem pro všechny ostatní kurzy služby No
 
      ![Visual Studio – Výběr typu aplikace][31]
 
-2. Zadejte název aplikace a identifikátor organizace a klikněte na **Další**a potom **na Vytvořit.**
+2. Zadejte název aplikace a identifikátor organizace, klikněte na **Další**a pak na **vytvořit** .
 
 3. V zobrazení Řešení dvakrát klikněte na soubor *Info.plist* a v části **Identita** se ujistěte, že identifikátor sady odpovídá identifikátoru použitému při vytváření profilu zřizování. V části **Podepisování** zkontrolujte, že v části **Tým** je vybraný váš vývojářský účet, možnost Automatically manage signing (Automaticky se starat o podepisování) je vybraná a váš podpisový certifikát a profil zřizování jsou automaticky vybrané.
 
     ![Visual Studio – Konfigurace aplikace pro iOS][32]
 
-4. V zobrazení Řešení poklikejte `Entitlements.plist` na tlačítko a zkontrolujte, zda je zaškrtnuto **políčko Povolit nabízená oznámení.**
+4. V zobrazení řešení poklikejte na `Entitlements.plist` a ujistěte se, že je zaškrtnuté políčko **Povolit nabízená oznámení** .
 
     ![Visual Studio – konfigurace oprávnění iOS][33]
 
-5. Přidejte balíček zasílání zpráv Azure. V zobrazení Řešení klepněte pravým tlačítkem myši na projekt a vyberte **přidat** > **balíčky NuGet**. Vyhledejte balíček **Xamarin.Azure.NotificationHubs.iOS** a přidejte ho do svého projektu.
+5. Přidejte balíček zasílání zpráv Azure. V zobrazení řešení klikněte pravým tlačítkem myši na projekt a vyberte **Přidat** > **Přidat balíčky NuGet**. Vyhledejte balíček **Xamarin.Azure.NotificationHubs.iOS** a přidejte ho do svého projektu.
 
-6. Přidejte do třídy nový `Constants.cs` soubor, pojmenujte jej a přidejte následující `hubname` proměnné `DefaultListenSharedAccessSignature` a nahraďte zástupné symboly literálu řetězce a dříve uvedené.
+6. Přidejte do své třídy nový soubor, pojmenujte `Constants.cs` jej a přidejte následující proměnné a nahraďte zástupné symboly řetězcového `hubname` literálu `DefaultListenSharedAccessSignature` pomocí a dříve uvedeného.
 
     ```csharp
     // Azure app-specific connection string and hub path
@@ -87,20 +87,20 @@ Dokončení tohoto kurzu je předpokladem pro všechny ostatní kurzy služby No
     public const string NotificationHubName = "<Azure Notification Hub Name>";
     ```
 
-7. V `AppDelegate.cs`aplikace přidejte následující příkaz using:
+7. Do `AppDelegate.cs`přidejte následující příkaz using:
 
     ```csharp
     using WindowsAzure.Messaging;
     using UserNotifications
     ```
 
-8. Deklarovat `SBNotificationHub`instanci :
+8. Deklarovat instanci `SBNotificationHub`:
 
     ```csharp
     private SBNotificationHub Hub { get; set; }
     ```
 
-9. V `AppDelegate.cs`aplikaci aktualizujte `FinishedLaunching()` tak, aby odpovídala následujícímu kódu:
+9. V `AppDelegate.cs`nástroji aktualizujte `FinishedLaunching()` tak, aby odpovídaly následujícímu kódu:
 
     ```csharp
     public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
@@ -129,7 +129,7 @@ Dokončení tohoto kurzu je předpokladem pro všechny ostatní kurzy služby No
     }
     ```
 
-10. V `AppDelegate.cs`, přepsat `RegisteredForRemoteNotifications()` metodu:
+10. V `AppDelegate.cs`, přepište `RegisteredForRemoteNotifications()` metodu:
 
     ```csharp
     public override void RegisteredForRemoteNotifications(UIApplication application, NSData deviceToken)
@@ -152,7 +152,7 @@ Dokončení tohoto kurzu je předpokladem pro všechny ostatní kurzy služby No
     }
     ```
 
-11. V `AppDelegate.cs`, přepsat `ReceivedRemoteNotification()` metodu:
+11. V `AppDelegate.cs`, přepište `ReceivedRemoteNotification()` metodu:
 
     ```csharp
     public override void ReceivedRemoteNotification(UIApplication application, NSDictionary userInfo)
@@ -161,7 +161,7 @@ Dokončení tohoto kurzu je předpokladem pro všechny ostatní kurzy služby No
     }
     ```
 
-12. V `AppDelegate.cs`, `ProcessNotification()` vytvořte metodu:
+12. V `AppDelegate.cs`nástroji vytvořte `ProcessNotification()` metodu:
 
     ```csharp
     void ProcessNotification(NSDictionary options, bool fromFinishedLaunching)
@@ -200,7 +200,7 @@ Dokončení tohoto kurzu je předpokladem pro všechny ostatní kurzy služby No
     ```
 
     > [!NOTE]
-    > Můžete se rozhodnout `FailedToRegisterForRemoteNotifications()` přepsat pro zpracování situací, jako je například žádné síťové připojení. To je obzvláště důležité, když by uživatel mohl spustit aplikaci v režimu offline (například letadlo) a vy chcete zpracovávat scénáře zpráv oznámení specifické pro vaši aplikaci.
+    > Můžete si vybrat, že `FailedToRegisterForRemoteNotifications()` se má potlačit zpracování situací, jako je například žádné síťové připojení. To je obzvláště důležité, když by uživatel mohl spustit aplikaci v režimu offline (například letadlo) a vy chcete zpracovávat scénáře zpráv oznámení specifické pro vaši aplikaci.
 
 13. Spusťte aplikaci v zařízení.
 

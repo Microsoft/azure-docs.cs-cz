@@ -1,6 +1,6 @@
 ---
-title: 'ROZHRANÍ SEKATELA: Mapování vlastní domény na aplikaci'
-description: Zjistěte, jak pomocí azure cli automatizovat nasazení a správu aplikace App Service. Tato ukázka ukazuje, jak mapovat vlastní doménu na aplikaci.
+title: 'CLI: mapování vlastní domény na aplikaci'
+description: Naučte se používat rozhraní příkazového řádku Azure k automatizaci nasazení a správy aplikace App Service. V této ukázce se dozvíte, jak namapovat vlastní doménu na aplikaci.
 tags: azure-service-management
 ms.assetid: 5ac4a680-cc73-4578-bcd6-8668c08802c2
 ms.devlang: azurecli
@@ -8,15 +8,15 @@ ms.topic: sample
 ms.date: 12/11/2017
 ms.custom: mvc, seodec18
 ms.openlocfilehash: 888e0e66c4dafbe7d2613a4b92b1f7b0dfd55eab
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80058607"
 ---
-# <a name="map-a-custom-domain-to-an-app-service-app-using-cli"></a>Mapování vlastní domény na aplikaci služby App Service pomocí rozhraní se konzumují
+# <a name="map-a-custom-domain-to-an-app-service-app-using-cli"></a>Mapování vlastní domény na aplikaci App Service pomocí rozhraní příkazového řádku
 
-Tento ukázkový skript vytvoří aplikaci ve službě App `www.<yourdomain>` Service se souvisejícími prostředky a pak se na ni namapuje.
+Tento ukázkový skript vytvoří v App Service aplikaci se souvisejícími prostředky a pak na ni namapuje `www.<yourdomain>` .
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -38,8 +38,8 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 |---|---|
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | Vytvoří plán služby App Service. |
-| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Vytvoří aplikaci služby App Service. |
-| [`az webapp config hostname add`](/cli/azure/webapp/config/hostname?view=azure-cli-latest#az-webapp-config-hostname-add) | Mapuje vlastní doménu na aplikaci App Service. |
+| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Vytvoří aplikaci App Service. |
+| [`az webapp config hostname add`](/cli/azure/webapp/config/hostname?view=azure-cli-latest#az-webapp-config-hostname-add) | Namapuje vlastní doménu na App Service aplikaci. |
 
 ## <a name="next-steps"></a>Další kroky
 

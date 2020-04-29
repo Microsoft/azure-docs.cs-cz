@@ -1,7 +1,7 @@
 ---
-title: QnA Maker šifrování dat v klidovém stavu
+title: QnA Maker šifrování dat v klidovém umístění
 titleSuffix: Azure Cognitive Services
-description: QnA Maker šifrování dat v klidovém stavu .
+description: QnA Maker šifrování dat v klidovém umístění.
 author: erindormier
 manager: venkyv
 ms.service: cognitive-services
@@ -10,51 +10,51 @@ ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: egeaney
 ms.openlocfilehash: bd64321a6a7afbac61a63365c77a75120f837e83
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79372092"
 ---
-# <a name="qna-maker-encryption-of-data-at-rest"></a>QnA Maker šifrování dat v klidovém stavu
+# <a name="qna-maker-encryption-of-data-at-rest"></a>QnA Maker šifrování dat v klidovém umístění
 
-QnA Maker automaticky šifruje vaše data, když jsou v cloudu trvalá, což pomáhá splnit cíle vaší organizace v oblasti zabezpečení a dodržování předpisů.
+QnA Maker automaticky šifruje vaše data, když se trvale uloží do cloudu, což pomáhá splnit cíle vaší organizace na zabezpečení a dodržování předpisů.
 
 ## <a name="about-encryption-key-management"></a>O správě šifrovacích klíčů
 
-Ve výchozím nastavení vaše předplatné používá šifrovací klíče spravované společností Microsoft. K dispozici je také možnost spravovat předplatné pomocí vlastních klíčů. Klíče spravované zákazníkem (CMK) nabízejí větší flexibilitu při vytváření, otáčení, zakázání a odvolání ovládacích prvků přístupu. Můžete také auditovat šifrovací klíče používané k ochraně dat.
+Ve výchozím nastavení používá vaše předplatné šifrovací klíče spravované Microsoftem. K dispozici je také možnost Spravovat předplatné s vlastními klíči. Klíče spravované zákazníkem (CMK) nabízejí větší flexibilitu při vytváření, střídání, zakázání a odvolávání řízení přístupu. Můžete také auditovat šifrovací klíče používané k ochraně vašich dat.
 
-QnA Maker používá podporu CMK z Azure search. Potřebujete vytvořit [CMK ve službě Azure Search pomocí azure key vault](https://docs.microsoft.com/azure/search/search-security-manage-encryption-keys). Tato instance Azure by měla být přidružena ke službě QnA Maker, aby byla povolena CMK.
+QnA Maker používá podporu CMK z Azure Search. V Azure Search je potřeba vytvořit [CMK pomocí Azure Key Vault](https://docs.microsoft.com/azure/search/search-security-manage-encryption-keys). Tato instance Azure by měla být přidružená k QnA Maker službě, aby byla povolená CMK.
 
 > [!IMPORTANT]
-> Prostředek služby Azure Search musí být vytvořen po lednu 2019 a nemůže být na bezplatné (sdílené) úrovni. Neexistuje žádná podpora konfigurace klíčů spravovaných zákazníky na webu Azure Portal.
+> Prostředek služby Azure Search se musí vytvořit po lednu 2019 a nemůže být ve volné (sdílené) úrovni. V Azure Portal neexistuje žádná podpora pro konfiguraci klíčů spravovaných zákazníkem.
 
-## <a name="enable-customer-managed-keys"></a>Povolení klíčů spravovaných zákazníkem
+## <a name="enable-customer-managed-keys"></a>Povolit klíče spravované zákazníkem
 
-Služba QnA Maker používá CMK ze služby Azure Search. Chcete-li povolit sady CMK, postupujte takto:
+Služba QnA Maker používá CMK ze služby Azure Search. Pomocí těchto kroků povolíte CMKs:
 
-1. Vytvořte novou instanci Azure Search a povolte požadavky uvedené v [požadavcích klíče spravovanézákazníkem pro Azure Cognitive Search](https://docs.microsoft.com/azure/search/search-security-manage-encryption-keys#prerequisites).
+1. Vytvořte novou instanci Azure Search a povolte požadavky uvedené v [požadavcích na klíč spravovaný zákazníkem pro Azure kognitivní hledání](https://docs.microsoft.com/azure/search/search-security-manage-encryption-keys#prerequisites).
 
    ![Zobrazit nastavení šifrování](../media/cognitive-services-encryption/qna-encryption-1.png)
 
-2. Když vytvoříte prostředek QnA Maker, je automaticky přidružen k instanci Azure Search. To nelze použít s CMK. Chcete-li použít CMK, budete muset přidružit nově vytvořenou instanci Azure Search, která byla vytvořena v kroku 1. Konkrétně budete muset aktualizovat `AzureSearchAdminKey` a `AzureSearchName` ve vašem prostředku QnA Maker.
+2. Když vytvoříte prostředek QnA Maker, je automaticky přidružen k instanci Azure Search. Toto nelze použít s CMK. Chcete-li použít CMK, je třeba přidružit nově vytvořenou instanci Azure Search vytvořenou v kroku 1. Konkrétně je potřeba aktualizovat `AzureSearchAdminKey` a `AzureSearchName` v prostředku QnA maker.
 
    ![Zobrazit nastavení šifrování](../media/cognitive-services-encryption/qna-encryption-2.png)
 
 3. Dále vytvořte nové nastavení aplikace:
-   * **Název**: Nastavte tuto`CustomerManagedEncryptionKeyUrl`
-   * **Hodnota:** Toto je hodnota, kterou jste získali v kroku 1 při vytváření instance Azure Search.
+   * **Název**: nastavte tuto hodnotu na`CustomerManagedEncryptionKeyUrl`
+   * **Hodnota**: Jedná se o hodnotu, kterou jste získali v kroku 1 při vytváření instance Azure Search.
 
    ![Zobrazit nastavení šifrování](../media/cognitive-services-encryption/qna-encryption-3.png)
 
-4. Po dokončení restartujte za běhu. Nyní je vaše služba QnA Maker povolena cmk.
+4. Až se dokončí, restartujte modul runtime. Služba QnA Maker je teď povolená CMK.
 
 ## <a name="regional-availability"></a>Regionální dostupnost
 
-Klíče spravované zákazníkem jsou dostupné ve všech oblastech Azure Search.
+Klíče spravované zákazníkem jsou k dispozici ve všech oblastech Azure Search.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Šifrování ve službě Azure Search pomocí cmk v azure key vaultu](https://docs.microsoft.com/azure/search/search-security-manage-encryption-keys)
+* [Šifrování v Azure Search pomocí CMKs v Azure Key Vault](https://docs.microsoft.com/azure/search/search-security-manage-encryption-keys)
 * [Šifrování dat v klidovém stavu](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)
 * [Další informace o Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)

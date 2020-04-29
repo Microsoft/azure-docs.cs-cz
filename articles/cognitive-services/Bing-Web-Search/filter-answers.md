@@ -1,7 +1,7 @@
 ---
-title: Jak filtrovat výsledky hledání – rozhraní API pro vyhledávání na webu Bingu
+title: Postup filtrování výsledků hledání – rozhraní API Bingu pro vyhledávání na webu
 titleSuffix: Azure Cognitive Services
-description: Můžete filtrovat typy odpovědí, které Bing obsahuje v odpovědi (například obrázky, videa a zprávy) pomocí parametru dotazu responseFilter.
+description: Můžete filtrovat typy odpovědí, které Bing obsahuje v odpovědi (například obrázky, videa a novinky) pomocí parametru dotazu ' responseFilter '.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -12,15 +12,15 @@ ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: scottwhi
 ms.openlocfilehash: 6fa022f181e2061c6a7f3e08d1f2f501ddd9cac3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79220267"
 ---
-# <a name="filtering-the-answers-that-the-search-response-includes"></a>Filtrování odpovědí, které odpověď na vyhledávání obsahuje  
+# <a name="filtering-the-answers-that-the-search-response-includes"></a>Filtrování odpovědí, které odpověď na hledání zahrnuje  
 
-Při dotazování na web vrátí Bing veškerý relevantní obsah, který vyhledá pro hledání. Pokud je například vyhledávací dotaz "sailing+dinghies", odpověď může obsahovat následující odpovědi:
+Při dotazování na web Bing vrátí veškerý relevantní obsah, který najde pro hledání. Například pokud je vyhledávací dotaz "" přidinghiesm + ", odpověď může obsahovat následující odpovědi:
 
 ```json
 {
@@ -47,19 +47,19 @@ Při dotazování na web vrátí Bing veškerý relevantní obsah, který vyhled
 
 ## <a name="query-parameters"></a>Parametry dotazu
 
-Chcete-li filtrovat odpovědi vrácené bingem, použijte při volání rozhraní API níže uvedené parametry dotazu.  
+Pokud chcete filtrovat odpovědi vrácené bingem, použijte při volání rozhraní API níže uvedené parametry dotazu.  
 
 ### <a name="responsefilter"></a>ResponseFilter
 
-Můžete filtrovat typy odpovědí, které Bing obsahuje v odpovědi (například obrázky, videa a zprávy) pomocí parametru dotazu [responseFilter,](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#responsefilter) který je čárkou oddělený seznam odpovědí. Odpověď bude zahrnuta v odpovědi, pokud Bing najde relevantní obsah pro něj. 
+Můžete filtrovat typy odpovědí, které Bing obsahuje v odpovědi (například obrázky, videa a novinky) pomocí parametru dotazu [responseFilter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#responsefilter) , který je seznam odpovědí oddělených čárkami. Odpověď bude obsahovat odpověď v případě, že Bing najde relevantní obsah. 
 
-Chcete-li vyloučit konkrétní odpovědi z odpovědi, `-` jako jsou obrázky, předřávat znak typu odpovědi. Například:
+Pokud chcete vyloučit konkrétní odpovědi z odpovědi, jako jsou obrázky, přiřaďte k typu odpovědi `-` znak. Příklad:
 
 ```
 &responseFilter=-images,-videos
 ```
 
-Následující ukazuje, jak `responseFilter` používat k vyžádání obrázků, videí a novinek o plachtění člunů. Když zakódujete řetězec dotazu, čárky se změní na %2C.  
+Následující příklad ukazuje, jak používat `responseFilter` k vyžádání obrázků, videí a zpráv o proplutí dinghies. Při kódování řetězce dotazu se čárky změní na% 2C.  
 
 ```  
 GET https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+dinghies&responseFilter=images%2Cvideos%2Cnews&mkt=en-us HTTP/1.1  
@@ -71,7 +71,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com  
 ```  
 
-Následující příklad ukazuje odpověď na předchozí dotaz. Vzhledem k tomu, že Bing nenalezl relevantní výsledky videa a zpráv, odpověď je nezahrnuje.
+Následující příklad ukazuje odpověď na předchozí dotaz. Vzhledem k tomu, že Bing nenalezl relevantní výsledky videa a zpráv, odpověď je nezahrne.
 
 ```json
 {
@@ -96,42 +96,42 @@ Následující příklad ukazuje odpověď na předchozí dotaz. Vzhledem k tomu
 }
 ```
 
-Přestože Bing nevrátil video a novinky výsledky v předchozí odpovědi, neznamená to, že video a zpravodajský obsah neexistuje. Jednoduše to znamená, že je stránka neobsahovala. Pokud však [projdete dalšími](./paging-webpages.md) výsledky, budou je následující stránky pravděpodobně obsahovat. Také pokud zavoláte rozhraní [API pro vyhledávání videa](../bing-video-search/search-the-web.md) a news [search API](../bing-news-search/search-the-web.md) koncové body přímo, odpověď by pravděpodobně obsahovat výsledky.
+I když Bing nevrátil do předchozí odpovědi výsledky videa a zpráv, neznamená to, že obsah videa a zpráv neexistují. Prostě to znamená, že stránka je neobsahovala. Pokud však [stránku](./paging-webpages.md) provedete více výsledky, následné stránky je pravděpodobně budou zahrnovat. Také Pokud voláte rozhraní [vyhledávání videí API](../bing-video-search/search-the-web.md) a vyhledávání zpráv koncové body [rozhraní API](../bing-news-search/search-the-web.md) , odpověď pravděpodobně obsahuje výsledky.
 
-Nedoporučujeme používat `responseFilter` k získání výsledků z jednoho rozhraní API. Pokud chcete obsah z jednoho rozhraní API Bingu, zavolejte toto rozhraní API přímo. Chcete-li například přijímat pouze obrázky, odešlete `https://api.cognitive.microsoft.com/bing/v7.0/images/search` požadavek do koncového bodu rozhraní API pro vyhledávání obrázků nebo do jednoho z dalších koncových bodů [image.](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#endpoints) Volání jednotného rozhraní API je důležité nejen z důvodů výkonu, ale protože rozhraní API specifická pro obsah nabízejí bohatší výsledky. K filtrování výsledků můžete například použít filtry, které nejsou k dispozici pro rozhraní API pro vyhledávání na webu.  
+Nedoporučujeme používat `responseFilter` k získání výsledků z jediného rozhraní API. Pokud chcete obsah z jednoho rozhraní API Bingu, zavolejte toto rozhraní API přímo. Například pro příjem pouze imagí, odeslání žádosti do koncového bodu rozhraní Vyhledávání obrázků API `https://api.cognitive.microsoft.com/bing/v7.0/images/search` nebo do některého z dalších koncových bodů [imagí](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#endpoints) . Volání jediného rozhraní API je důležité nejen z důvodů výkonu, ale vzhledem k tomu, že rozhraní API pro konkrétní obsah nabízejí rozsáhlejší výsledky. Například můžete použít filtry, které nejsou k dispozici pro rozhraní Vyhledávání na webu API k filtrování výsledků.  
 
 ### <a name="site"></a>Web
 
-Chcete-li získat výsledky hledání z `site:` určité domény, zahrňte parametr dotazu do řetězce dotazu.  
+Chcete-li získat výsledky hledání z konkrétní domény, zahrňte parametr `site:` dotazu do řetězce dotazu.  
 
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+dinghies+site:contososailing.com&mkt=en-us
 ```
 
 > [!NOTE]
-> V závislosti na dotazu, `site:` pokud použijete operátor dotazu, je pravděpodobné, že odpověď může obsahovat obsah pouze pro dospělé bez ohledu na nastavení [bezpečného vyhledávání.](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#safesearch) Operátor `site:` byste měli používat, pouze pokud znáte obsah příslušného webu a váš scénář podporuje možnost zobrazení obsahu pro dospělé.
+> V závislosti na dotazu, pokud použijete operátor `site:` dotazu, existuje možnost, že odpověď může obsahovat obsah pro dospělé bez ohledu na nastavení [bezpečné hledání](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#safesearch) . Operátor `site:` byste měli používat, pouze pokud znáte obsah příslušného webu a váš scénář podporuje možnost zobrazení obsahu pro dospělé.
 
 ### <a name="freshness"></a>Freshness
 
-Chcete-li omezit výsledky webových odpovědí na webové stránky, které bing objevil během určitého období, nastavte parametr [dotazu na čerstvost](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#freshness) na jednu z následujících hodnot bez rozlišování velkých a malých písmen:
+Chcete-li omezit výsledky webové odpovědi na webové stránky, které Bing zjistil během konkrétního období, nastavte parametr dotazu [aktuálnosti](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#freshness) na jednu z následujících hodnot bez rozlišení velkých a malých písmen:
 
-* `Day`— Vrácení webových stránek, které Bing objevil během posledních 24 hodin.
-* `Week`— Vrácení webových stránek, které Bing objevil během posledních 7 dnů
-* `Month`— Vrácení webových stránek, které byly objeveny během posledních 30 dnů.
+* `Day`– Vrátí webové stránky, které Bing zjistil během posledních 24 hodin.
+* `Week`– Vrátí webové stránky, které Bing zjistil během posledních 7 dnů.
+* `Month`– Vrátí webové stránky, které se zjistily během posledních 30 dnů.
 
-Tento parametr můžete také nastavit na vlastní rozsah `YYYY-MM-DD..YYYY-MM-DD`dat ve formuláři . 
+Můžete také nastavit tento parametr na vlastní rozsah kalendářních dat ve formuláři `YYYY-MM-DD..YYYY-MM-DD`. 
 
 `https://<host>/bing/v7.0/search?q=ipad+updates&freshness=2019-02-01..2019-05-30`
 
-Chcete-li výsledky omezit na jedno datum, nastavte parametr čerstvosti na určité datum:
+Pokud chcete výsledky omezit na jedno datum, nastavte parametr aktuálnost na konkrétní datum:
 
 `https://<host>/bing/v7.0/search?q=ipad+updates&freshness=2019-02-04`
 
-Výsledky mohou zahrnovat webové stránky, které nespadají do zadaného období, pokud je počet webových stránek, které bing odpovídá vašim kritériím filtru, menší než počet požadovaných webových stránek (nebo výchozí číslo, které bing vrací).
+Výsledky můžou zahrnovat webové stránky, které spadají mimo zadané období, pokud počet webových stránek, které Bing odpovídá kritériím filtru, je menší než počet požadovaných webových stránek (nebo výchozí číslo, které Bing vrátí).
 
 ## <a name="limiting-the-number-of-answers-in-the-response"></a>Omezení počtu odpovědí v odpovědi
 
-Bing může vrátit více typů odpovědí v odpovědi JSON. Pokud se například dotazujete *na sailing+dinghies*, `webpages`může bing vrátit , `images`, `videos`a `relatedSearches`.
+Bing může v odpovědi JSON vracet několik typů odpovědí. Například pokud se dotazuje na *dinghies +* aplikace, Bing může vracet `webpages`, `images`, `videos`a `relatedSearches`.
 
 ```json
 {
@@ -147,7 +147,7 @@ Bing může vrátit více typů odpovědí v odpovědi JSON. Pokud se napříkla
 }
 ```
 
-Chcete-li omezit počet odpovědí, které bing vrátí na horní dvě odpovědi (webové stránky a obrázky), nastavte parametr dotazu [answerCount](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#answercount) na 2.
+Pokud chcete omezit počet odpovědí, které Bing vrátí na horní dvě odpovědi (webové stránky a image), nastavte parametr dotazu [answerCount](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#answercount) na hodnotu 2.
 
 ```  
 GET https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+dinghies&answerCount=2&mkt=en-us HTTP/1.1  
@@ -159,7 +159,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com  
 ```  
 
-Odpověď zahrnuje `webPages` pouze `images`a .
+Odpověď obsahuje pouze `webPages` a `images`.
 
 ```json
 {
@@ -173,7 +173,7 @@ Odpověď zahrnuje `webPages` pouze `images`a .
 }
 ```
 
-Pokud přidáte `responseFilter` parametr dotazu do předchozího dotazu a nastavíte jej na webové stránky a zprávy, odpověď obsahuje pouze webové stránky, protože zprávy nejsou seřazeny.
+Pokud přidáte parametr `responseFilter` dotazu k předchozímu dotazu a nastavíte ho na webové stránky a novinky, odpověď obsahuje jenom webové stránky, protože novinky nejsou seřazené.
 
 ```json
 {
@@ -186,9 +186,9 @@ Pokud přidáte `responseFilter` parametr dotazu do předchozího dotazu a nasta
 }
 ```
 
-## <a name="promoting-answers-that-are-not-ranked"></a>Propagace odpovědí, které nejsou hodnoceny
+## <a name="promoting-answers-that-are-not-ranked"></a>Zvýšení úrovně odpovědí, které nejsou seřazené
 
-Pokud se nejlépe seřazené odpovědi, které Bing vrátí pro dotaz, jsou webové stránky, obrázky, videa a souvisejícíVyhledávání, odpověď by tyto odpovědi zahrnovala. Pokud nastavíte [answerCount](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#answercount) na dva (2), Bing vrátí první dvě seřazené odpovědi: webové stránky a obrázky. Pokud chcete, aby Bing do odpovědi zahrnul obrázky a videa, zadejte parametr [propojovacího](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#promote) dotazu a nastavte ho na obrázky a videa.
+Pokud se v horním pořadí odpovědí, které Bing vrátí pro dotaz, nacházejí webové stránky, obrázky, videa a relatedSearches, odpovědi by tyto odpovědi zahrnovaly. Pokud nastavíte [answerCount](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#answercount) na dvě (2), Bing vrátí první dvě seřazené odpovědi: webové stránky a image. Pokud chcete, aby Bing zahrnoval obrázky a videa v odpovědi, zadejte parametr [povýšit](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#promote) dotaz a nastavte ho na obrázky a videa.
 
 ```  
 GET https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+dinghies&answerCount=2&promote=images%2Cvideos&mkt=en-us HTTP/1.1  
@@ -200,7 +200,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com  
 ```  
 
-Následuje odpověď na výše uvedený požadavek. Bing vrátí dvě nejlepší odpovědi, webové stránky a obrázky a propaguje videa do odpovědi.
+Následuje odpověď na výše uvedený požadavek. Bing vrátí horní dvě odpovědi, webové stránky a obrázky a povýší videa na odpověď.
 
 ```json
 {
@@ -215,8 +215,8 @@ Následuje odpověď na výše uvedený požadavek. Bing vrátí dvě nejlepší
 }
 ```
 
-Pokud nastavíte `promote` na novinky, odpověď neobsahuje odpověď na zprávy,&mdash;protože se nejedná o hodnocenou odpověď, můžete propagovat pouze hodnocené odpovědi.
+Pokud jste nastavili `promote` novinky, odpověď neobsahuje odpověď na zprávy, protože se nejedná o pokladnou&mdash;odpověď, můžete povýšit pouze seřazené odpovědi.
 
-Odpovědi, které chcete propagovat, se `answerCount` do limitu nezapočítávají. Pokud jsou například seřazené odpovědi zprávy, `answerCount` obrázky `promote` a videa a nastaveno na 1 a na zprávy, odpověď obsahuje zprávy a obrázky. Nebo pokud jsou seřazené odpovědi videa, obrázky a zprávy, odpověď obsahuje videa a zprávy.
+Odpovědi, které chcete zvýšit, se nepočítají na `answerCount` základě limitu. Například pokud jsou seřazené odpovědi zprávy, obrázky a videa a nastavíte hodnotu `answerCount` 1 a `promote` na zprávy, odpověď obsahuje zprávy a obrázky. Nebo, pokud jsou seřazené odpovědi videa, obrázky a novinky, odpověď obsahuje videa a novinky.
 
 Můžete použít `promote` pouze v `answerCount` případě, že zadáte parametr dotazu.

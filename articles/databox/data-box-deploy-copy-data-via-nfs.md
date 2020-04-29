@@ -1,6 +1,6 @@
 ---
-title: Kurz kopírování dat do datové schránky Azure přes nfs| Dokumenty společnosti Microsoft
-description: Přečtěte si, jak kopírovat data do datové schránky Azure prostřednictvím služby NFS
+title: Kurz kopírování dat do Azure Data Box přes systém souborů NFS | Microsoft Docs
+description: Informace o tom, jak kopírovat data do svého Azure Data Box přes systém souborů NFS
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.date: 06/25/2019
 ms.author: alkohli
 ms.openlocfilehash: f0a4bb23d8a868e7c11153748259eba23a0cca38
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79501820"
 ---
-# <a name="tutorial-copy-data-to-azure-data-box-via-nfs"></a>Kurz: Kopírování dat do datové schránky Azure přes nfs
+# <a name="tutorial-copy-data-to-azure-data-box-via-nfs"></a>Kurz: kopírování dat do Azure Data Box přes systém souborů NFS
 
 Tento kurz popisuje, jak se pomocí místního webového uživatelského rozhraní připojit k hostitelskému počítači a zkopírovat z něj data.
 
@@ -35,7 +35,7 @@ Než začnete, ujistěte se, že:
 2. Obdrželi jste Data Box a stav objednávky na portálu je **Doručeno**.
 3. Máte hostitelský počítač, který obsahuje data, která chcete zkopírovat do Data Boxu. Hostitelský počítač musí splňovat tyto požadavky:
     - Spusťte [podporovaný operační systém](data-box-system-requirements.md).
-    - Musí být připojený k vysokorychlostní síti. Důrazně doporučujeme, abyste měli připojení minimálně 10 GbE. Pokud připojení 10 GbE není k dispozici, lze použít datové spojení 1 GbE, ale rychlost kopírování bude ovlivněna. 
+    - Musí být připojený k vysokorychlostní síti. Důrazně doporučujeme, abyste měli připojení minimálně 10 GbE. Pokud není připojení k dispozici, je možné použít datové propojení s 1 GbEí, ale bude to mít vliv na rychlost kopírování. 
 
 ## <a name="connect-to-data-box"></a>Připojení k Data Boxu
 
@@ -74,7 +74,7 @@ Pokud používáte hostitelský počítač s Linuxem, pomocí následujícího p
 
     `sudo mount -t nfs 10.161.23.130:/Mystoracct_Blob /home/databoxubuntuhost/databox`
     
-    Pro klienty Mac budete muset přidat další možnost takto: 
+    U klientů se systémem Mac budete muset přidat další možnost následujícím způsobem: 
     
     `sudo mount -t nfs -o sec=sys,resvport 10.161.23.130:/Mystoracct_Blob /home/databoxubuntuhost/databox`
 
@@ -84,17 +84,17 @@ Pokud používáte hostitelský počítač s Linuxem, pomocí následujícího p
 
 Po připojení ke sdíleným složkám Data Boxu je dalším krokem zkopírování dat. Než začnete s kopírováním dat, projděte si následující důležité informace:
 
-* Ujistěte se, že data kopírujete do sdílených složek odpovídajících příslušnému formátu dat. Data objektů blob bloku je například potřeba zkopírovat do sdílené složky určené pro objekty blob bloku. Zkopírujte virtuální depozita do objektů BLOB stránky. Pokud formát dat neodpovídá příslušnému typu sdílené složky, nahrávání dat do Azure v pozdějším kroku selže.
+* Ujistěte se, že data kopírujete do sdílených složek odpovídajících příslušnému formátu dat. Data objektů blob bloku je například potřeba zkopírovat do sdílené složky určené pro objekty blob bloku. Kopírovat virtuální pevné disky do objektů blob stránky. Pokud formát dat neodpovídá příslušnému typu sdílené složky, nahrávání dat do Azure v pozdějším kroku selže.
 *  Při kopírování dat se ujistěte, že velikost dat odpovídá omezením velikosti popsaným v článku [Omezení úložiště Azure a Data Boxu](data-box-limits.md). 
 * Pokud data nahrávaná Data Boxem zároveň nahrávají jiné aplikace mimo Data Box, může to způsobit selhání úlohy nahrávání a poškození dat.
 * Doporučujeme, abyste nepoužívali protokol SMB a systém souborů NFS současně a abyste nekopírovali stejná data do stejného cíle v Azure. V takových případech není možné určit konečný výsledek.
 * **Vždy vytvořte složku pro soubory, které chcete kopírovat, v rámci sdílené složky a potom je zkopírujte do této složky**. Složky vytvořené ve sdílených složkách objektů blob bloku a objektů blob stránky představují kontejnery, do kterých se data nahrávají jako objekty blob. Soubory nemůžete kopírovat přímo do složky *root* v účtu úložiště.
-* Pokud ingestujete názvy adresářů a souborů rozlišující malá a velká písmena ze sdílené složky systému souborů NFS do systému souborů NFS v datové schránce:
-  * Případ je zachován v názvu.
-  * Soubory nerozlišují malá a velká písmena.
+* Pokud se potýkají ingestování názvů adresářů a souborů ze sdílené složky NFS do systému souborů NFS v Data Box:
+  * V názvu se zachová velká a malá písmena.
+  * V souborech se nerozlišují malá a velká písmena.
 
-    Například pokud kopírování `SampleFile.txt` `Samplefile.Txt`a , případ bude zachován v názvu při kopírování do datové schránky, ale druhý soubor přepíše první, protože tyto jsou považovány za stejný soubor.
-* Ujistěte se, že udržujete kopii zdrojových dat, dokud nepotvrdíte, že datová schránka přenesla vaše data do Služby Azure Storage.
+    Například při kopírování `SampleFile.txt` a `Samplefile.Txt`zachová se v názvu při zkopírování do data box, ale druhý soubor přepíše první soubor, který se považuje za stejný soubor.
+* Zajistěte, abyste zachovali kopii zdrojových dat, dokud nebudete moci potvrdit, že Data Box přenesla vaše data do Azure Storage.
 
 Pokud používáte hostitelský počítač s Linuxem, použijte podobný nástroj pro kopírování jako Robocopy. Mezi dostupné alternativy v Linuxu patří [rsync](https://rsync.samba.org/), [FreeFileSync](https://www.freefilesync.org/), [Unison](https://www.cis.upenn.edu/~bcpierce/unison/) nebo [Ultracopier](https://ultracopier.first-world.info/).  
 
@@ -135,7 +135,7 @@ Pokud používáte možnost rsync ke kopírování s více vlákny, postupujte p
      Doporučujeme začít s 16 paralelními kopiemi a zvyšovat počet vláken v závislosti na dostupnosti prostředků.
 
 > [!IMPORTANT]
-> Následující typy souborů Linux nejsou podporovány: symbolické odkazy, soubory znaků, blokové soubory, sokety a potrubí. Tyto typy souborů bude mít za následek selhání během **připravit k odeslání** kroku.
+> Následující typy souborů systému Linux nejsou podporovány: symbolické odkazy, soubory znaků, blokovat soubory, sokety a kanály. Tyto typy souborů budou mít za následek chyby během **Příprava k odeslání** kroku.
 
 Otevřete cílovou složku, zobrazte zkopírované soubory a ověřte je. Pokud během procesu kopírování dojde k nějakým chybám, stáhněte si soubory s chybami, abyste mohli vyřešit případné potíže. Další informace najdete v tématu věnovaném [zobrazení protokolů chyb při kopírování dat do Data Boxu](data-box-logs.md#view-error-log-during-data-copy). Podrobný seznam chyb při kopírování dat najdete v tématu [Řešení potíží s Data Boxem](data-box-troubleshoot.md).
 

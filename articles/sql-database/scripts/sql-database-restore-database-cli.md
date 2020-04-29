@@ -1,6 +1,6 @@
 ---
-title: Databáze SQL rozhraní příkazového řádku
-description: Ukázkový skript Azure CLI pro obnovení jediné databáze Azure SQL do dřívějšího bodu v čase z automatického zálohování
+title: Příklad rozhraní příkazového řádku – obnovení zálohy – Azure SQL Database
+description: Ukázkový skript Azure CLI pro obnovení izolované databáze SQL Azure do dřívějšího bodu v čase z automatického zálohování
 services: sql-database
 ms.service: sql-database
 ms.subservice: backup-restore
@@ -12,15 +12,15 @@ ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 03/27/2019
 ms.openlocfilehash: 36c565837b95ce2f391d38b9934b7cf19c613897
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80067382"
 ---
-# <a name="use-cli-to-restore-an-azure-sql-single-database-to-an-earlier-point-in-time"></a>Použití příkazového příkazového příkazu k obnovení jediné databáze Azure SQL do dřívějšího bodu v čase
+# <a name="use-cli-to-restore-an-azure-sql-single-database-to-an-earlier-point-in-time"></a>Obnovení izolované databáze SQL Azure do dřívějšího bodu v čase pomocí rozhraní příkazového řádku
 
-Tento příklad nastavení nastavení příkazu k onomu Azure obnoví databázi Azure SQL do určitého bodu v čase.  
+Tento příklad Azure CLI obnoví databázi SQL Azure do konkrétního bodu v čase.  
 
 Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (CLI) místně, musíte mít spuštěnou verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI]( /cli/azure/install-azure-cli).
 
@@ -42,19 +42,19 @@ az account set -s $subscription # ...or use 'az login'
 
 ### <a name="clean-up-deployment"></a>Vyčištění nasazení
 
-Pomocí následujícího příkazu odeberte skupinu prostředků a všechny k ní spojené prostředky.
+Pomocí následujícího příkazu odeberte skupinu prostředků a všechny k ní přidružené prostředky.
 
 ```azurecli-interactive
 az group delete --name $resource
 ```
 
-## <a name="sample-reference"></a>Odkaz na vzorek
+## <a name="sample-reference"></a>Vzorový odkaz
 
 Tento skript používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
 | | |
 |---|---|
-| [az sql db obnovení](/cli/azure/sql/db#az-sql-db-restore) | Obnovit příkaz databáze. |
+| [AZ SQL DB Restore](/cli/azure/sql/db#az-sql-db-restore) | Příkaz Restore Database |
 
 ## <a name="next-steps"></a>Další kroky
 

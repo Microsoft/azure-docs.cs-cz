@@ -1,7 +1,7 @@
 ---
-title: Konfigurace nepřetržitého uživatelského tunelu VPN
+title: Konfigurace tunelového propojení uživatelů při trvalém připojení
 titleSuffix: Azure VPN Gateway
-description: Tento článek popisuje, jak nakonfigurovat tunelový propojení uživatelů sítě VPN always on pro bránu VPN.
+description: Tento článek popisuje, jak pro vaši bránu VPN nakonfigurovat uživatelské tunelové propojení VPN typu Always On.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/12/2020
 ms.author: cherylmc
 ms.openlocfilehash: 56934dd13661d8f623e673e2817e87618675c7ed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79502273"
 ---
 # <a name="configure-an-always-on-vpn-user-tunnel"></a>Konfigurace tunelu uživatele VPN AlwaysOn
@@ -21,15 +21,15 @@ ms.locfileid: "79502273"
 
 ## <a name="configure-the-gateway"></a>Konfigurace brány
 
- Pomocí pokynů v článku [Konfigurace připojení VPN typu Point-to-Site](vpn-gateway-howto-point-to-site-resource-manager-portal.md) nakonfigurujte bránu VPN tak, aby používala protokol IKEv2 a ověřování založené na certifikátech.
+ Podle pokynů v článku [Konfigurace připojení VPN typu Point-to-site](vpn-gateway-howto-point-to-site-resource-manager-portal.md) nakonfigurujte bránu VPN tak, aby používala protokol IKEv2 a ověřování na základě certifikátů.
 
-## <a name="configure-a-user-tunnel"></a>Konfigurace uživatelského tunelu
+## <a name="configure-a-user-tunnel"></a>Konfigurace tunelového propojení uživatele
 
 [!INCLUDE [user configuration](../../includes/vpn-gateway-vwan-always-on-user.md)]
 
-## <a name="to-remove-a-profile"></a>Odebrání profilu
+## <a name="to-remove-a-profile"></a>Postup odebrání profilu
 
-Chcete-li profil odebrat, postupujte takto:
+Chcete-li odebrat profil, použijte následující postup:
 
 1. Spusťte následující příkaz:
 
@@ -37,10 +37,10 @@ Chcete-li profil odebrat, postupujte takto:
    C:\> Remove-VpnConnection UserTest  
    ```
 
-1. Odpojte připojení a zrušte zaškrtnutí políčka **Připojit automaticky.**
+1. Odpojte připojení a zrušte zaškrtnutí políčka **Připojit automaticky** .
 
    ![Vyčištění](./media/vpn-gateway-howto-always-on-user-tunnel/disconnect.jpg)
 
 ## <a name="next-steps"></a>Další kroky
 
-Informace o řešení problémů s připojením naleznete v [tématu Problémy s připojením z bodu na pracoviště Azure](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md).
+Pokud chcete řešit problémy s připojením, ke kterým může dojít, přečtěte si téma [problémy s připojením Point-to-site v Azure](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md).

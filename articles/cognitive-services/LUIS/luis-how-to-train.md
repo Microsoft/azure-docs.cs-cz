@@ -1,7 +1,7 @@
 ---
-title: Vlaková aplikace – LUIS
+title: Výuka aplikace – LUIS
 titleSuffix: Azure Cognitive Services
-description: Školení je proces výuky verze aplikace pro porozumění jazykům (LUIS) ke zlepšení jejího porozumění přirozenému jazyku. Trénování aplikace LUIS po aktualizacích modelu, jako je například přidávání, úpravy, popisování nebo odstranění entit, záměrů nebo projevy.
+description: Školení je proces výuky vaší verze aplikace Language Understanding (LUIS), která vylepšuje svůj přirozený jazyk. LUIS aplikaci po aktualizacích modelu, jako je přidání, úpravy, označení nebo odstranění entit, záměrů nebo projevy.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,51 +12,51 @@ ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: diberry
 ms.openlocfilehash: 1da8ab3015730c6b3e1962301a34b1ad43b1aad6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79219860"
 ---
-# <a name="train-your-active-version-of-the-luis-app"></a>Trénování aktivní verze aplikace LUIS 
+# <a name="train-your-active-version-of-the-luis-app"></a>Výuka aktivní verze aplikace LUIS 
 
-Školení je proces výuky aplikace Luis (Language Understanding) ke zlepšení jejího porozumění přirozenému jazyku. Trénování aplikace LUIS po aktualizacích modelu, jako je například přidávání, úpravy, popisování nebo odstranění entit, záměrů nebo projevy. 
+Školení je proces výuky vaší aplikace Language Understanding (LUIS), která vylepšuje svůj přirozený jazyk. LUIS aplikaci po aktualizacích modelu, jako je přidání, úpravy, označení nebo odstranění entit, záměrů nebo projevy. 
 
-Školení a [testování](luis-concept-test.md) aplikace je iterativní proces. Po trénování aplikace LUIS, otestovat s ukázkové projevy, abyste zjistili, zda záměry a entity jsou rozpoznány správně. Pokud nejsou, proveďte aktualizace aplikace LUIS, trénování a testování znovu. 
+Školení a [testování](luis-concept-test.md) aplikace je iterativní proces. Po prostudování aplikace LUIS ji otestujete pomocí ukázkového projevy, abyste viděli, jestli jsou záměry a entity správně rozpoznané. Pokud nejsou, proveďte aktualizace aplikace LUIS, školení a testování znovu. 
 
-Školení se použije na aktivní verzi na portálu LUIS. 
+Školení se aplikuje na aktivní verzi na portálu LUIS. 
 
-## <a name="how-to-train-interactively"></a>Jak interaktivně trénovat
+## <a name="how-to-train-interactively"></a>Jak interaktivně proškolit
 
-Chcete-li spustit iterativní proces na [portálu LUIS](https://www.luis.ai), musíte nejprve trénovat aplikaci LUIS alespoň jednou. Ujistěte se, že každý záměr má alespoň jeden utterance před školení.
+Chcete-li spustit iterativní proces na [portálu Luis](https://www.luis.ai), musíte nejprve vytvořit aplikaci Luis alespoň jednou. Ujistěte se, že každý záměr má před školením aspoň jeden utterance.
 
-1. Přístup k aplikaci vyberete její název na stránce **Moje aplikace.** 
+1. Přístup k aplikaci získáte tak, že na stránce **Moje aplikace** vyberete její název. 
 
-1. V aplikaci vhorní části panelu vyberte **Trénovat.** 
+1. V aplikaci vyberte v horním panelu možnost **vlak** . 
 
 1. Po dokončení školení se v horní části prohlížeče zobrazí oznámení.
 
 ## <a name="training-date-and-time"></a>Datum a čas školení
 
-Datum a čas tréninku jsou GMT + 2. 
+Datum a čas školení jsou GMT + 2. 
 
-## <a name="train-with-all-data"></a>Vlak se všemi daty
+## <a name="train-with-all-data"></a>Naučit se všemi daty
 
-Školení používá malé procento negativního odběru vzorků. Pokud chcete použít všechna data namísto malé negativní vzorkování, použijte [rozhraní API](#version-settings-api-use-of-usealltrainingdata).
+Školení používá malé procento negativního vzorkování. Pokud chcete použít všechna data namísto malého negativního vzorkování, použijte [rozhraní API](#version-settings-api-use-of-usealltrainingdata).
 
-### <a name="version-settings-api-use-of-usealltrainingdata"></a>Použití rozhraní API pro nastavení verze useAllTrainingData
+### <a name="version-settings-api-use-of-usealltrainingdata"></a>Nastavení verze API použití UseAllTrainingData
 
-Chcete-li tuto funkci `UseAllTrainingData` vypnout, použijte rozhraní API pro nastavení [verze](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) s nastavenou na hodnotu true. 
+Tuto funkci můžete vypnout pomocí [rozhraní API pro nastavení verze](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) s `UseAllTrainingData` nastavením na hodnotu true. 
 
 ## <a name="unnecessary-training"></a>Zbytečné školení
 
-Nemusíte trénovat po každé změně. Školení by mělo být provedeno po skupině změn, které jsou použity na model a dalším krokem, který chcete udělat, je otestovat nebo publikovat. Pokud nepotřebujete testovat nebo publikovat, školení není nutné. 
+Nemusíte vlakovat po každé jedné změně. Školení je potřeba provést po použití skupiny změn v modelu a dalšího kroku, který chcete udělat, je otestovat nebo publikovat. Pokud nepotřebujete testovat nebo publikovat, školení není nutné. 
 
-## <a name="training-with-the-rest-apis"></a>Školení s REST API
+## <a name="training-with-the-rest-apis"></a>Školení s rozhraními REST API
 
-Školení na portálu LUIS je jedním krokem stisknutí tlačítka **Vlak.** Školení s REST API je dvoustupňový proces. Prvním z toho je [požádat o školení](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c45) s HTTP POST. Pak požádejte o [stav školení](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c46) pomocí http get. 
+Školení na portálu LUIS je jedním krokem při stisknutí tlačítka **vlak** . Školení s rozhraními REST API je proces se dvěma kroky. První je požadavek na [školení](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c45) pomocí HTTP POST. Pak vyžádejte [stav školení](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c46) pomocí HTTP GET. 
 
-Chcete-li vědět, kdy je školení dokončeno, musíte dotazovat stav, dokud nebudou všechny modely úspěšně vyškoleny. 
+Aby bylo možné zjistit, kdy školení bylo dokončeno, musíte se dotazovat na stav, dokud nebudou všechny modely úspěšně vyškolené. 
 
 ## <a name="next-steps"></a>Další kroky
 

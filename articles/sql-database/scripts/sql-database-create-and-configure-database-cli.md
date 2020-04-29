@@ -1,5 +1,5 @@
 ---
-title: Příklad příkazového příkazového příkazu – vytvoření databáze Azure SQL
+title: Příklad rozhraní příkazového řádku – vytvoření databáze SQL Azure
 description: Pomocí tohoto ukázkového skriptu Azure CLI vytvoříte databázi SQL.
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/25/2019
 ms.openlocfilehash: ecfa61f0680e20dd37a1fedc988664afa6e2a83b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80067458"
 ---
 # <a name="use-cli-to-create-a-single-azure-sql-database-and-configure-a-firewall-rule"></a>Použití rozhraní příkazového řádku k vytvoření jedné databáze Azure SQL a konfiguraci pravidla brány firewall
@@ -36,21 +36,21 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (
 
 ### <a name="clean-up-deployment"></a>Vyčištění nasazení
 
-Pomocí následujícího příkazu odeberte skupinu prostředků a všechny k ní spojené prostředky.
+Pomocí následujícího příkazu odeberte skupinu prostředků a všechny k ní přidružené prostředky.
 
 ```azurecli-interactive
 az group delete --name $resource
 ```
 
-## <a name="sample-reference"></a>Odkaz na vzorek
+## <a name="sample-reference"></a>Vzorový odkaz
 
 Tento skript používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
 | | |
 |---|---|
-| [az sql server](/cli/azure/sql/server#az-sql-server-create) | Serverové příkazy |
-| [az brána firewall serveru SQL Server](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create) | Serverové brány firewall. |
-| [az SQL DB](/cli/azure/sql/db#az-sql-db-create) | Příkazy databáze. |
+| [az sql server](/cli/azure/sql/server#az-sql-server-create) | Příkazy serveru |
+| [AZ SQL Server Firewall](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create) | Příkazy brány firewall serveru. |
+| [AZ SQL DB](/cli/azure/sql/db#az-sql-db-create) | Příkazy databáze. |
 
 ## <a name="next-steps"></a>Další kroky
 

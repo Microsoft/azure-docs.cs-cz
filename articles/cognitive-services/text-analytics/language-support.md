@@ -1,7 +1,7 @@
 ---
 title: Jazyková podpora – rozhraní API pro analýzu textu
 titleSuffix: Azure Cognitive Services
-description: 'Seznam přirozených jazyků podporovaných rozhraním API pro analýzu textu. Tento článek vysvětluje, které jazyky jsou podporovány pro každou operaci: analýza mínění, extrakce klíčových frází, detekce jazyka a rozpoznávání entit.'
+description: 'Seznam přirozených jazyků, které rozhraní API pro analýzu textu podporuje. V tomto článku se dozvíte, které jazyky jsou pro každou operaci podporované: analýza mínění, extrakce klíčových frází, rozpoznávání jazyka a rozpoznávání entit.'
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,47 +11,47 @@ ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: aahi
 ms.openlocfilehash: c5a413a4fe8d9ac9b7aac59ca78cedc6d5a7a313
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79219277"
 ---
-# <a name="language-and-region-support-for-the-text-analytics-api"></a>Jazyková a regionální podpora rozhraní API pro analýzu textu
+# <a name="language-and-region-support-for-the-text-analytics-api"></a>Podpora jazyků a oblastí pro rozhraní API pro analýzu textu
 
-Tento článek vysvětluje, které jazyky jsou podporovány pro každou operaci: analýza mínění, extrakce klíčových frází, detekce jazyka a rozpoznávání pojmenovaných entit.
+V tomto článku se dozvíte, které jazyky jsou pro každou operaci podporované: analýza mínění, extrakce klíčových frází, detekce jazyka a rozpoznávání pojmenovaných entit.
 
 ## <a name="language-detection"></a>Rozpoznávání jazyka
 
-Rozhraní API pro analýzu textu dokáže rozpoznat širokou škálu jazyků, variant, dialektů a některých regionálních/kulturních jazyků.  Funkce Rozpoznávání jazyka vrátí "skript" jazyka. Například pro frázi "Mám psa" se `en` vrátí `en-US`místo . Jediným zvláštním případem je čínština, kde `zh_CHS` `zh_CHT` se vrátí funkce detekce jazyka nebo pokud může určit skript daný text. V situacích, kdy nelze pro čínský dokument identifikovat `zh`konkrétní skript, se vrátí jednoduše .
+Rozhraní API pro analýzu textu může detekovat široké spektrum jazyků, variant, dialektů a některých regionálních/kulturních jazyků.  Rozpoznávání jazyka vrátí "skript" jazyka. Například pro frázi "Mám k dispozici pes" se vrátí `en` místo. `en-US` Jediným zvláštním případem je čínština, kde se vrátí `zh_CHS` funkce pro detekci jazyka `zh_CHT` , nebo pokud se může určit skript, který daný text zadal. V situacích, kdy se konkrétní skript nedá identifikovat pro čínský dokument, vrátí se jednoduše `zh`.
 
-Nezveřejňujeme přesný seznam jazyků pro tuto funkci, ale dokáže detekovat širokou škálu jazyků, variant, dialektů a některých regionálních/kulturních jazyků. 
+Nezveřejňujeme vám přesný seznam jazyků pro tuto funkci, ale dokáže detekovat široké spektrum jazyků, variant, dialektů a některých regionálních/kulturních jazyků. 
 
-Pokud máte obsah vyjádřený v méně často používaném jazyce, můžete zkusit detekci jazyka a zjistit, zda vrátí kód. Odpověď pro jazyky, které `unknown`nelze zjistit, je .
+Pokud máte obsah vyjádřený v méně často používaném jazyce, můžete zkusit Rozpoznávání jazyka, abyste viděli, jestli vrátí kód. Odpověď pro jazyky, které nelze zjistit, je `unknown`.
 
-## <a name="sentiment-analysis-key-phrase-extraction-and-named-entity-recognition"></a>Analýza mínění, extrakce klíčových frází a rozpoznávání pojmenovaných entit
+## <a name="sentiment-analysis-key-phrase-extraction-and-named-entity-recognition"></a>Analýza mínění, Extrakce klíčových frází a rozpoznávání pojmenovaných entit
 
-Pro analýzu mínění, extrakci klíčových frází a rozpoznávání entit je seznam podporovaných jazyků selektivnější, protože analyzátory jsou upřesněny tak, aby vyhovovaly jazykovým pravidlům dalších jazyků. V pojmenované matné entity v2 je podpora pro úplnou sadu [typů entit](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) aktuálně omezena na následující jazyky: 
+V případě analýzy mínění, extrakce klíčových frází a rozpoznávání entit je seznam podporovaných jazyků pokročilejší, protože analyzátory jsou upřesněny tak, aby vyhovovaly jazykovým pravidlům dalších jazyků. V případě rozpoznávání pojmenovaných entit v2 je podpora pro úplnou sadu [typů entit](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) aktuálně omezena na následující jazyky: 
 * Angličtina
 * Čínština (zjednodušená)
 * Francouzština
 * Němčina
 * Španělština
 
-Pro ostatní `Organization` jazyky jsou vráceny pouze a pojmenované entity. `Person` `Location`
+Pro ostatní jazyky `Location` jsou vraceny pouze entity s názvem a `Organization` `Person`
 
-## <a name="language-list-and-status"></a>Jazykový seznam a stav
+## <a name="language-list-and-status"></a>Seznam a stav jazyka
 
-Jazyková podpora je zpočátku zavedena ve verzi preview, což znamená, že se jedná o obecně dostupný stav (GA), nezávisle na sobě a na službě Text Analytics celkově. Jazyky mohou zůstat ve verzi Preview, i když rozhraní API pro analýzu textu přechází na obecně dostupné.
+Jazyková podpora je zpočátku zavedená ve verzi Preview a je nezávislá na stavu (GA), nezávisle na sobě navzájem a na celkové dostupnosti služby Analýza textu. Je možné, že jazyky zůstanou ve verzi Preview, i když rozhraní API pro analýzu textu přechody na všeobecně dostupné.
 
 > [!NOTE]
-> Podrobná jazyková podpora pro verzi Public Preview (Rozpoznávání pojmenovaných entit) v3 naleznete [v tématu Pojmenované typy entit](named-entity-types.md).
+> Podrobnou jazykovou podporu pro funkci rozpoznávání pojmenovaných entit (NER) v3 Public Preview najdete v tématu [typy pojmenovaných entit](named-entity-types.md).
 
 | Jazyk              | Kód jazyka | Mínění | Klíčové fráze | Rozpoznávání pojmenovaných entit | Propojení entit |       Poznámky        |
 |:----------------------|:-------------:|:---------:|:-----------:|:------------------------:|:--------------:|:------------------:|
 | Arabština                |     `ar`      |           |             |           ✔\*           |                |                    |
 | Čeština                 |     `cs`      |           |             |           ✔\*           |                |                    |
-| Čínština (zjednodušená)    |   `zh-hans`   |  ✔\*\*   |             |            ✔             |                | `zh`také přijal                   |
+| Čínština (zjednodušená)    |   `zh-hans`   |  ✔\*\*   |             |            ✔             |                | `zh`také přijato                   |
 | Čínština (tradiční)   |   `zh-hant`   |  ✔\*\*   |             |                          |                |                    |
 | Dánština                |     `da`      |   ✔\*    |      ✔      |           ✔\*           |                |                    |
 | Nizozemština                 |     `nl`      |   ✔\**   |      ✔      |           ✔\*           |                |                    |
@@ -64,20 +64,20 @@ Jazyková podpora je zpočátku zavedena ve verzi preview, což znamená, že se
 | Italština               |     `it`      |   ✔\**   |      ✔      |           ✔\*           |                |                    |
 | Japonština              |     `ja`      |   ✔\**   |      ✔      |           ✔\*           |                |                    |
 | Korejština                |     `ko`      |   ✔\*\*  |      ✔      |           ✔\*           |                |                    |
-| Norština (Bokmål)   |     `no`      |   ✔\*    |      ✔      |           ✔\*           |                | `nb`také přijal                   |
+| Norština (Bokmål)   |     `no`      |   ✔\*    |      ✔      |           ✔\*           |                | `nb`také přijato                   |
 | Polština                |     `pl`      |   ✔\*    |      ✔      |           ✔\*           |                |                    |
-| portugalština (Portugalsko) |    `pt-PT`    |   ✔\**    |      ✔      |           ✔\*           |                | `pt`také přijal |
+| portugalština (Portugalsko) |    `pt-PT`    |   ✔\**    |      ✔      |           ✔\*           |                | `pt`také přijato |
 | Portugalština (Brazílie)   |    `pt-BR`    |           |      ✔      |           ✔\*           |                |                    |
 | Ruština               |     `ru`      |   ✔\*    |      ✔      |           ✔\*           |                |                    |
 | Španělština               |     `es`      |   ✔\**    |      ✔      |           ✔\*           |     ✔\**      |                    |
 | Švédština               |     `sv`      |   ✔\*    |      ✔      |           ✔\*           |                |                    |
 | Turečtina               |     `tr`      |   ✔\*    |             |           ✔\*           |                |                    |
 
-\*Jazyková podpora je ve verzi Preview
+\*Podpora jazyků je ve verzi Preview.
 
-\** K dispozici také v [analýze mínění v3](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis#sentiment-analysis-versions-and-features) a/nebo [rozpoznávání pojmenovaných entit v3](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) veřejných náhledů.
+\** K dispozici také v [Analýza mínění V3](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis#sentiment-analysis-versions-and-features) a/nebo ve verzi Public Preview pro [rozpoznávání entit V3](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) .
 
 ## <a name="see-also"></a>Viz také
 
-[Stránka dokumentace služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/)   
+[Stránka dokumentace Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/)   
 [Produktová stránka služeb Cognitive Services](https://azure.microsoft.com/services/cognitive-services/)

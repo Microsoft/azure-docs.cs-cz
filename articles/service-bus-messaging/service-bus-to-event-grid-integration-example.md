@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Příklady integrace Azure Service Bus do gridu událostí'
-description: 'Kurz: Tento článek obsahuje příklady zasílání zpráv service bus a integrace gridu událostí.'
+title: 'Kurz: Azure Service Bus pro Event Grid příklady integrace'
+description: 'Kurz: Tento článek popisuje příklady Service Bus zasílání zpráv a Event Grid integraci.'
 services: service-bus-messaging
 documentationcenter: .net
 author: spelluru
@@ -15,14 +15,14 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: spelluru
 ms.openlocfilehash: fef325b67c38eda09a05dac9d74bd5b97df164cc
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80067770"
 ---
-# <a name="tutorial-respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-functions-and-azure-logic-apps"></a>Kurz: Reagujte na události Azure Service Bus přijaté prostřednictvím Azure Event Grid pomocí Azure Functions a Azure Logic Apps
-V tomto kurzu se dozvíte, jak reagovat na události Azure Service Bus, které jsou přijímány prostřednictvím Azure Event Grid pomocí Azure Functions a Azure Logic Apps. 
+# <a name="tutorial-respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-functions-and-azure-logic-apps"></a>Kurz: reakce na události Azure Service Bus přijatých prostřednictvím Azure Event Grid pomocí Azure Functions a Azure Logic Apps
+V tomto kurzu se naučíte reagovat na události Azure Service Bus přijímané prostřednictvím Azure Event Grid pomocí Azure Functions a Azure Logic Apps. 
 
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
@@ -30,7 +30,7 @@ V tomto kurzu se naučíte:
 > * Příprava ukázkové aplikace pro odesílání zpráv
 > * Nastavení testovací funkce v Azure
 > * Propojení funkce a oboru názvů přes službu Event Grid
-> * Odeslání zpráv tématu Service Bus
+> * Odeslání zprávy do tématu Service Bus
 > * Příjem zpráv pomocí služby Azure Functions
 > * Příjem zpráv pomocí Logic Apps
 
@@ -42,37 +42,37 @@ Před tímto kurzem se ujistěte, že máte nainstalované tyto položky:
 - [NET Core SDK](https://www.microsoft.com/net/download/windows) verze 2.0 nebo novější.
 
 ## <a name="create-a-service-bus-namespace"></a>Vytvoření oboru názvů Service Bus
-Postupujte podle pokynů v tomto kurzu: [Úvodní příručka: Pomocí portálu Azure vytvořte téma služby Service Bus a odběry tématu](service-bus-quickstart-topics-subscriptions-portal.md) k provedení následujících úkolů:
+Postupujte podle pokynů v tomto kurzu: [rychlý Start: pomocí Azure Portal vytvořte Service Bus téma a odběry k tématu](service-bus-quickstart-topics-subscriptions-portal.md) , abyste mohli provádět následující úlohy:
 
 - Vytvořte obor názvů **premium** Service Bus. 
-- Získejte připojovací řetězec. 
-- Vytvořte téma služby Service Bus.
-- Vytvořte dvě odběry tématu. 
+- Získá připojovací řetězec. 
+- Vytvoří Service Bus téma.
+- Vytvořte dvě předplatná pro téma. 
 
 ## <a name="prepare-a-sample-application-to-send-messages"></a>Příprava ukázkové aplikace pro odesílání zpráv
-Do tématu služby Service Bus můžete odeslat zprávu libovolnou metodou. Ukázkový kód na konci tohoto postupu předpokládá, že používáte Visual Studio 2017.
+Do tématu služby Service Bus můžete odeslat zprávu libovolnou metodou. Vzorový kód na konci tohoto postupu předpokládá, že používáte sadu Visual Studio 2017.
 
 1. Naklonujte [úložiště GitHub azure-service-bus](https://github.com/Azure/azure-service-bus/).
 2. V sadě Visual Studio přejděte do složky *\samples\DotNet\Microsoft.ServiceBus.Messaging\ServiceBusEventGridIntegration* a otevřete soubor *SBEventGridIntegration.sln*.
 3. Přejděte do projektu **MessageSender** a vyberte soubor **Program.cs**.
-4. Vyplňte název tématu služby Service Bus a připojovací řetězec, který jste získali z předchozího kroku:
+4. Zadejte Service Bus název tématu a připojovací řetězec, který jste získali z předchozího kroku:
 
     ```csharp
     const string ServiceBusConnectionString = "YOUR CONNECTION STRING";
     const string TopicName = "YOUR TOPIC NAME";
     ```
-5. Vytvořte a spusťte program a odesílejte testovací zprávy do tématu Service Bus. 
+5. Sestavte a spusťte program pro odeslání zkušebních zpráv do tématu Service Bus. 
 
 ## <a name="set-up-a-test-function-on-azure"></a>Nastavení testovací funkce v Azure 
-Před zahájením práce přes celý scénář, nastavte alespoň malou testovací funkci, kterou můžete použít k ladění a sledování události, které jsou tekoucí. Postupujte podle pokynů v článku Vytvořit první funkci v článku [na webu Azure Portal](../azure-functions/functions-create-first-azure-function.md) a proveďte následující úkoly: 
+Než začnete pracovat v celém scénáři, nastavte alespoň malou testovací funkci, kterou můžete použít k ladění a sledování událostí, které jsou předávány. Postupujte podle pokynů v části [Vytvoření první funkce v Azure Portal](../azure-functions/functions-create-first-azure-function.md) článku a proveďte následující úlohy: 
 
-1. Vytvořte aplikaci funkcí.
-2. Vytvořte funkci aktivovanou protokolem HTTP. 
+1. Vytvořte aplikaci Function App.
+2. Vytvoření funkce aktivované protokolem HTTP 
 
-Potom proveďte následující kroky: 
+Pak proveďte následující kroky: 
 
 
-# <a name="azure-functions-v2"></a>[Funkce Azure V2](#tab/v2)
+# <a name="azure-functions-v2"></a>[Azure Functions v2](#tab/v2)
 
 1. Rozbalte **funkce** ve stromovém zobrazení a vyberte svou funkci. Nahraďte kód funkce následujícím kódem: 
 
@@ -124,18 +124,18 @@ Potom proveďte následující kroky:
     ```
 2. Vyberte **Uložit a spustit**.
 
-    ![Výstup aplikace funkce](./media/service-bus-to-event-grid-integration-example/function-run-output.png)
-3. Vyberte **Získat adresu URL funkce** a poznamenejte si adresu URL. 
+    ![Výstup aplikace Function App](./media/service-bus-to-event-grid-integration-example/function-run-output.png)
+3. Vyberte **získat adresu URL funkce** a poznamenejte si adresu URL. 
 
     ![Získat adresu URL funkce](./media/service-bus-to-event-grid-integration-example/get-function-url.png)
 
-# <a name="azure-functions-v1"></a>[Funkce Azure V1](#tab/v1)
+# <a name="azure-functions-v1"></a>[Azure Functions v1](#tab/v1)
 
-1. Nakonfigurujte funkci pro použití verze **V1:** 
-    1. Ve stromovém zobrazení vyberte aplikaci funkce a vyberte **Nastavení aplikace Funkce**. 
+1. Nakonfigurujte funkci pro použití verze **v1** : 
+    1. Ve stromovém zobrazení vyberte aplikaci Function App a vyberte možnost **nastavení aplikace Function App**. 
 
         ![Nastavení aplikace funkcí]()./media/service-bus-to-event-grid-integration-example/function-app-settings.png)
-    2. Vyberte **~1** pro **verzi runtime**. 
+    2. Pro **verzi modulu runtime**vyberte **~ 1** . 
 2. Rozbalte **funkce** ve stromovém zobrazení a vyberte svou funkci. Nahraďte kód funkce následujícím kódem: 
 
     ```csharp
@@ -183,141 +183,141 @@ Potom proveďte následující kroky:
     ```
 4. Vyberte **Uložit a spustit**.
 
-    ![Výstup aplikace funkce](./media/service-bus-to-event-grid-integration-example/function-run-output.png)
-4. Vyberte **Získat adresu URL funkce** a poznamenejte si adresu URL. 
+    ![Výstup aplikace Function App](./media/service-bus-to-event-grid-integration-example/function-run-output.png)
+4. Vyberte **získat adresu URL funkce** a poznamenejte si adresu URL. 
 
     ![Získat adresu URL funkce](./media/service-bus-to-event-grid-integration-example/get-function-url.png)
 
 ---
 
 ## <a name="connect-the-function-and-namespace-via-event-grid"></a>Propojení funkce a oboru názvů přes službu Event Grid
-V této části můžete spojit dohromady funkci a obor názvů Service Bus pomocí portálu Azure. 
+V této části spojíte funkci a obor názvů Service Bus pomocí Azure Portal. 
 
-Pokud chcete vytvořit předplatné Azure Event Grid, postupujte takto:
+K vytvoření předplatného Azure Event Grid použijte následující postup:
 
-1. Na webu Azure Portal přejděte do oboru názvů a v levém podokně vyberte **Události**. V pravém podokně se otevře okno vašeho oboru názvů, ve kterém se zobrazí dva odběry služby Event Grid. 
+1. V Azure Portal přejdete do svého oboru názvů a potom v levém podokně vyberete možnost **události**. V pravém podokně se otevře okno vašeho oboru názvů, ve kterém se zobrazí dva odběry služby Event Grid. 
     
-    ![Service Bus - stránka událostí](./media/service-bus-to-event-grid-integration-example/service-bus-events-page.png)
-2. Na panelu nástrojů vyberte **+ Odběr událostí.** 
-3. Na stránce **Vytvořit odběr událostí** postupujte takto:
+    ![Stránka Service Bus – události](./media/service-bus-to-event-grid-integration-example/service-bus-events-page.png)
+2. Na panelu nástrojů vyberte **+ odběr události** . 
+3. Na stránce **vytvořit odběr události** proveďte následující kroky:
     1. Zadejte **název** předplatného. 
-    2. Vyberte **webový hák** pro **typ koncového bodu**. 
+    2. Vyberte **webový Hook** pro **Typ koncového bodu**. 
 
-        ![Service Bus – předplatné Event Grid](./media/service-bus-to-event-grid-integration-example/event-grid-subscription-page.png)
-    3. Vyberte **Vybrat koncový bod**, vložte adresu URL funkce a pak vyberte Potvrdit **výběr**. 
+        ![Předplatné Service Bus-Event Grid](./media/service-bus-to-event-grid-integration-example/event-grid-subscription-page.png)
+    3. Zvolte **Vybrat koncový bod**, vložte adresu URL funkce a pak vyberte **potvrdit výběr**. 
 
-        ![Funkce - výběr koncového bodu](./media/service-bus-to-event-grid-integration-example/function-select-endpoint.png)
-    4. Přepněte na kartu **Filtry,** zadejte název **prvního předplatného** k tématu Service Bus, které jste vytvořili dříve, a pak vyberte tlačítko **Vytvořit.** 
+        ![Funkce – Výběr koncového bodu](./media/service-bus-to-event-grid-integration-example/function-select-endpoint.png)
+    4. Přepněte na kartu **filtry** , zadejte název **prvního odběru** do Service Busho tématu, které jste vytvořili dříve, a pak vyberte tlačítko **vytvořit** . 
 
-        ![Filtr odběru událostí](./media/service-bus-to-event-grid-integration-example/event-subscription-filter.png)
-4. Potvrďte, že se v seznamu zobrazuje odběr událostí.
+        ![Filtr odběrů událostí](./media/service-bus-to-event-grid-integration-example/event-subscription-filter.png)
+4. Potvrďte, že se v seznamu zobrazí odběr událostí.
 
     ![Odběr událostí v seznamu](./media/service-bus-to-event-grid-integration-example/event-subscription-in-list.png)
 
-## <a name="send-messages-to-the-service-bus-topic"></a>Odeslání zpráv tématu Service Bus
-1. Spusťte aplikaci .NET C#, která odesílá zprávy do tématu Service Bus. 
+## <a name="send-messages-to-the-service-bus-topic"></a>Odeslání zprávy do tématu Service Bus
+1. Spusťte aplikaci .NET C#, která odešle zprávy do tématu Service Bus. 
 
-    ![Výstup konzolové aplikace](./media/service-bus-to-event-grid-integration-example/console-app-output.png)
-1. Na stránce aplikace Azure function rozbalte **funkce**, rozbalte **svou funkci**a vyberte **Monitor**. 
+    ![Výstup aplikace konzoly](./media/service-bus-to-event-grid-integration-example/console-app-output.png)
+1. Na stránce aplikace Function App rozbalte **funkce**, rozbalte svou **funkci**a vyberte **monitor**. 
 
-    ![Funkce monitoru](./media/service-bus-to-event-grid-integration-example/function-monitor.png)
+    ![Monitor – funkce](./media/service-bus-to-event-grid-integration-example/function-monitor.png)
 
 ## <a name="receive-messages-by-using-azure-functions"></a>Příjem zpráv pomocí služby Azure Functions
 V předchozí části jste viděli jednoduchý scénář testování a ladění a ověřili jste tok událostí. 
 
 V této části zjistíte, jak po přijetí události přijímat a zpracovávat zprávy.
 
-### <a name="publish-a-function-from-visual-studio"></a>Publikování funkce z Visual Studia
-1. Ve stejném řešení Visual Studio (**SBEventGridIntegration),** které jste otevřeli, vyberte **ReceiveMessagesOnEvent.cs** v projektu **SBEventGridIntegration.** 
-2. Zadejte připojovací řetězec service bus v následujícím kódu:
+### <a name="publish-a-function-from-visual-studio"></a>Publikování funkce ze sady Visual Studio
+1. Ve stejném řešení sady Visual Studio (**SBEventGridIntegration**), které jste otevřeli, vyberte v projektu **SBEventGridIntegration** možnost **ReceiveMessagesOnEvent.cs** . 
+2. Zadejte připojovací řetězec Service Bus v následujícím kódu:
 
     ```Csharp
     const string ServiceBusConnectionString = "YOUR CONNECTION STRING";
     ```
-3. Stáhněte si **profil publikování** funkce:
+3. Stáhněte si **profil publikování** pro funkci:
     1. Vyberte svou aplikaci funkcí. 
-    2. Vyberte kartu **Přehled,** pokud ještě není vybraná. 
-    3. Na panelu nástrojů vyberte **Získat profil publikování.** 
+    2. Vyberte kartu **Přehled** , pokud už není vybraná. 
+    3. Na panelu nástrojů vyberte **získat profil publikování** . 
 
-        ![Získání profilu publikování pro funkci](./media/service-bus-to-event-grid-integration-example/function-download-publish-profile.png)
-    4. Uložte soubor do složky projektu. 
+        ![Získat profil publikování pro funkci](./media/service-bus-to-event-grid-integration-example/function-download-publish-profile.png)
+    4. Uložte soubor do složky vašeho projektu. 
 4. V sadě Visual Studio klikněte pravým tlačítkem na **SBEventGridIntegration** a vyberte **Publikovat**. 
-5. Na stránce **Publikovat** vyberte **Začít.** 
-6. Na stránce **Vyberte cílovou** publikování postupujte takto a vyberte **importovat profil**. 
+5. Na stránce **publikovat** vyberte **Spustit** . 
+6. Na stránce **Vyberte cíl publikování** proveďte následující kroky a vyberte **Importovat profil**. 
 
     ![Visual Studio – tlačítko Importovat profil](./media/service-bus-to-event-grid-integration-example/visual-studio-import-profile-button.png)
-7. Vyberte **dříve stažený soubor profilu publikování.** 
-8. Na stránce **Publikovat** vyberte **Publikovat.** 
+7. Vyberte **soubor publikačního profilu** , který jste předtím stáhli. 
+8. Na stránce **publikovat** vyberte **publikovat** . 
 
-    ![Visual Studio - publikovat](./media/service-bus-to-event-grid-integration-example/select-publish.png)
-9. Potvrďte, že se zobrazí nová funkce Azure **ReceiveMessagesOnEvent**. V případě potřeby stránku aktualizujte. 
+    ![Visual Studio – publikování](./media/service-bus-to-event-grid-integration-example/select-publish.png)
+9. Potvrďte, že se zobrazí nová funkce Azure Function **ReceiveMessagesOnEvent**. V případě potřeby aktualizujte stránku. 
 
-    ![Potvrzení vytvoření nové funkce](./media/service-bus-to-event-grid-integration-example/function-receive-messages.png)
+    ![Potvrďte, že je nová funkce vytvořená.](./media/service-bus-to-event-grid-integration-example/function-receive-messages.png)
 10. Získejte adresu URL nové funkce a poznamenejte si ji. 
 
-### <a name="event-grid-subscription"></a>Předplatné event gridu
+### <a name="event-grid-subscription"></a>Předplatné Event Grid
 
-1. Odstraňte existující předplatné služby Event Grid:
-    1. Na stránce **Obor názvů služby Service Bus** vyberte **události** v levé nabídce. 
-    2. Vyberte existující odběr událostí. 
-    3. Na stránce **Odběr událostí** vyberte **Odstranit**.
-2. Podle pokynů v části [Připojit funkci a obor názvů prostřednictvím](#connect-the-function-and-namespace-via-event-grid) programu Event Grid vytvořte odběr služby Event Grid pomocí nové adresy URL funkce.
-3. Postupujte podle pokynů v části [Odeslat zprávy do tématu služby Service Bus,](#send-messages-to-the-service-bus-topic) abyste odeslali zprávy do tématu a sledovali funkci. 
+1. Odstranit stávající předplatné Event Grid:
+    1. Na stránce **Service Bus obor názvů** vyberte v nabídce vlevo možnost **události** . 
+    2. Vyberte existující odběr události. 
+    3. Na stránce **odběr události** vyberte **Odstranit**.
+2. Postupujte podle pokynů v části [připojení funkce a oboru názvů prostřednictvím Event Grid](#connect-the-function-and-namespace-via-event-grid) oddílu a vytvořte Event Grid předplatné pomocí nové adresy URL funkce.
+3. Postupujte podle pokynů v části [posílání zpráv do tématu Service Bus](#send-messages-to-the-service-bus-topic) a odešlete zprávy do tématu a sledujte funkci. 
 
 ## <a name="receive-messages-by-using-logic-apps"></a>Příjem zpráv pomocí Logic Apps
-Připojte aplikaci logiky s Azure Service Bus a Azure Event Grid podle následujících kroků:
+Pomocí následujících kroků Připojte aplikaci logiky pomocí Azure Service Bus a Azure Event Grid:
 
-1. Vytvořte aplikaci logiky na webu Azure Portal.
-    1. Vyberte **+ Vytvořit prostředek**, vyberte **Integrace**a pak vyberte **Aplikace logiky**. 
-    2. Na **stránce Logika – vytvořit** zadejte **název** aplikace logiky.
-    3. Vyberte **předplatné**Azure . 
-    4. Vyberte **Použít existující** pro **skupinu prostředků**a vyberte skupinu prostředků, kterou jste použili pro jiné prostředky (například funkce Azure, obor názvů Service Bus), které jste vytvořili dříve. 
+1. Vytvoření aplikace logiky v Azure Portal.
+    1. Vyberte **+ vytvořit prostředek**, vyberte **integrace**a pak vyberte **Aplikace logiky**. 
+    2. Na stránce **Logic App-Create (vytvořit aplikaci logiky** ) zadejte **název** aplikace logiky.
+    3. Vyberte své **předplatné**Azure. 
+    4. Vyberte pro **skupinu prostředků**možnost **použít existující** a vyberte skupinu prostředků, kterou jste použili pro jiné prostředky (třeba funkci Azure Functions Service Bus obor názvů), kterou jste vytvořili dříve. 
     5. Vyberte **umístění** aplikace logiky. 
-    6. Chcete-li vytvořit aplikaci logiky, vyberte **vytvořit.** 
-2. Na stránce **Návrhář aplikací logiky** vyberte v části Šablony **možnost Prázdná aplikace** **logiky**. 
-3. V návrháři proveďte následující kroky:
-    1. Vyhledejte **mřížku událostí**. 
-    2. **Vyberte, když dojde k události prostředku (preview) - Azure Event Grid**. 
+    6. Vyberte **vytvořit** a vytvořte aplikaci logiky. 
+2. Na stránce **návrháře Logic Apps** v části **šablony**vyberte **prázdná aplikace logiky** . 
+3. V Návrháři proveďte následující kroky:
+    1. Vyhledejte **Event Grid**. 
+    2. Vyberte, **kdy dojde k události prostředku (Preview)-Azure Event Grid**. 
 
-        ![Návrhář aplikací logiky – vyberte aktivační událost mřížky událostí](./media/service-bus-to-event-grid-integration-example/logic-apps-event-grid-trigger.png)
-4. Vyberte **Přihlásit**se , zadejte svoje přihlašovací údaje azure a vyberte **Povolit přístup**. 
-5. Na stránce **Když dojde k události prostředku,** proveďte následující kroky:
+        ![Návrhář Logic Apps – výběr Event Grid triggeru](./media/service-bus-to-event-grid-integration-example/logic-apps-event-grid-trigger.png)
+4. Vyberte **Přihlásit**, zadejte svoje přihlašovací údaje Azure a vyberte možnost **Povolení přístupu**. 
+5. Na stránce **když dojde k události prostředku** , proveďte následující kroky:
     1. Vyberte své předplatné Azure. 
-    2. V **pole Typ prostředku**vyberte položku **Microsoft.ServiceBus.Namespaces**. 
-    3. V **popřípadě Název prostředku**vyberte obor názvů Service Bus. 
-    4. Vyberte **Přidat nový parametr**a vyberte Filtr **přípony**. 
-    5. Do **pole Filtr přípony**zadejte název druhého temanového předplatného služby Service Bus. 
-        ![Návrhář aplikací logiky – konfigurace události](./media/service-bus-to-event-grid-integration-example/logic-app-configure-event.png)
+    2. Jako **typ prostředku**vyberte **Microsoft. ServiceBus. Namespaces**. 
+    3. Jako **název prostředku**vyberte obor názvů Service Bus. 
+    4. Vyberte **Přidat nový parametr**a vyberte **filtr přípon**. 
+    5. Jako **filtr přípon**zadejte název druhého předplatného Service Bus tématu. 
+        ![Návrhář Logic Apps – konfigurace události](./media/service-bus-to-event-grid-integration-example/logic-app-configure-event.png)
 6. V návrháři vyberte **+ Nový krok** a proveďte následující kroky:
-    1. Vyhledejte **službu Service Bus**.
-    2. V seznamu vyberte **Service Bus.** 
-    3. Vyberte možnost **Získat zprávy** v seznamu **Akce.** 
-    4. Vyberte **Získat zprávy z tematického předplatného (peek-lock)**. 
+    1. Vyhledejte **Service Bus**.
+    2. V seznamu vyberte **Service Bus** . 
+    3. V seznamu **akcí** vyberte možnost **získat zprávy** . 
+    4. Vyberte možnost **získat zprávy z odběru tématu (náhled – zámek)**. 
 
-        ![Návrhář aplikací logiky – akce získání zpráv](./media/service-bus-to-event-grid-integration-example/service-bus-get-messages-step.png)
-    5. Zadejte **název připojení**. Příklad: **Získejte zprávy z odběru tématu**a vyberte obor názvů Service Bus. 
+        ![Návrhář Logic Apps – akce získat zprávy](./media/service-bus-to-event-grid-integration-example/service-bus-get-messages-step.png)
+    5. Zadejte **název připojení**. Například: **získat zprávy z odběru tématu**a vybrat Service Bus obor názvů. 
 
-        ![Návrhář aplikací logiky – vyberte obor názvů Service Bus](./media/service-bus-to-event-grid-integration-example/logic-apps-select-namespace.png) 
-    6. Vyberte **rootmanagesharedaccesskey**.
+        ![Logic Apps Designer – výběr oboru názvů Service Bus](./media/service-bus-to-event-grid-integration-example/logic-apps-select-namespace.png) 
+    6. Vyberte **RootManageSharedAccessKey**.
 
-        ![Návrhář aplikací logiky – výběr sdíleného přístupového klíče](./media/service-bus-to-event-grid-integration-example/logic-app-shared-access-key.png) 
+        ![Návrhář Logic Apps – výběr sdíleného přístupového klíče](./media/service-bus-to-event-grid-integration-example/logic-app-shared-access-key.png) 
     7. Vyberte **Vytvořit**. 
-    8. Vyberte téma a předplatné. 
+    8. Vyberte své téma a předplatné. 
     
-        ![Návrhář aplikací logiky – vyberte téma a předplatné služby Service Bus](./media/service-bus-to-event-grid-integration-example/logic-app-select-topic-subscription.png)
+        ![Logic Apps Designer – výběr Service Busho tématu a předplatného](./media/service-bus-to-event-grid-integration-example/logic-app-select-topic-subscription.png)
 7. Vyberte **+ Nový krok**a proveďte následující kroky: 
-    1. Vyberte **položku Servisní sběrnice**.
-    2. Ze seznamu akcí **vyberte Dokončit zprávu v odběru tématu.** 
-    3. Vyberte **téma**služby Service Bus .
+    1. Vyberte **Service Bus**.
+    2. V seznamu akcí vyberte **Dokončit zprávu v odběru tématu** . 
+    3. Vyberte Service Bus **téma**.
     4. Vyberte druhé **předplatné** tématu.
-    5. Pro **token zámku zprávy**vyberte **zamknout token** z **dynamického obsahu**. 
+    5. Pro **token zámku zprávy**vyberte možnost **Uzamknout token** z **dynamického obsahu**. 
 
-        ![Návrhář aplikací logiky – vyberte téma a předplatné služby Service Bus](./media/service-bus-to-event-grid-integration-example/logic-app-complete-message.png)
-8. Vyberte **Uložit** na panelu nástrojů v Návrháři aplikací logiky, abyste uložili aplikaci logiky. 
-9. Postupujte podle pokynů v části [Odeslat zprávy do tématu služby Service Bus](#send-messages-to-the-service-bus-topic) a odesílat zprávy tématu. 
-10. Přepněte na stránku **Přehled** aplikace logiky. Uvidíte, že aplikace logiky běží v **historii spuštění** pro odeslané zprávy.
+        ![Logic Apps Designer – výběr Service Busho tématu a předplatného](./media/service-bus-to-event-grid-integration-example/logic-app-complete-message.png)
+8. Pokud chcete aplikaci logiky uložit, vyberte **Uložit** na panelu nástrojů v Návrháři Logic Apps. 
+9. Postupujte podle pokynů v části [posílání zpráv do tématu Service Bus](#send-messages-to-the-service-bus-topic) a odešlete zprávy do tématu. 
+10. Přepněte na stránku **Přehled** vaší aplikace logiky. Zobrazí se aplikace logiky spuštěné v **historii spuštění** odesílaných zpráv.
 
-    ![Návrhář aplikací logiky – spustí se aplikace logiky](./media/service-bus-to-event-grid-integration-example/logic-app-runs.png)
+    ![Návrhář Logic Apps – spuštění aplikace logiky](./media/service-bus-to-event-grid-integration-example/logic-app-runs.png)
 
 ## <a name="next-steps"></a>Další kroky
 

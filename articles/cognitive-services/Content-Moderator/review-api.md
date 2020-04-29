@@ -1,7 +1,7 @@
 ---
-title: Recenze, pracovní postupy a koncepty úloh – Moderátor obsahu
+title: Přehledy, pracovní postupy a koncepty úloh – Content Moderator
 titleSuffix: Azure Cognitive Services
-description: V tomto článku se dozvíte o základních konceptech nástroje revize; hodnocení, pracovních postupů a pracovních míst.
+description: V tomto článku se dozvíte o základních konceptech nástroje pro kontrolu. Recenze, pracovní postupy a úlohy.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,35 +11,35 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: pafarley
 ms.openlocfilehash: 1aba86efb9ea76fbf060e80b47f9f2f6cdf8ee71
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79221147"
 ---
-# <a name="content-moderation-reviews-workflows-and-jobs"></a>Recenze moderování obsahu, pracovní postupy a úlohy
+# <a name="content-moderation-reviews-workflows-and-jobs"></a>Recenze, pracovní postupy a úlohy pro moderování obsahu
 
-Content Moderator kombinuje moderování s pomocí počítače s funkcemi typu human-in-the-loop a vytváří tak optimální proces moderování pro reálné scénáře. Je to prostřednictvím cloudového [nástroje Review](https://contentmoderator.cognitive.microsoft.com). V této příručce se dozvíte o základních konceptech nástroje Revize: recenze, pracovní postupy a úlohy.
+Content Moderator kombinuje moderování počítačů s využitím možností funkce Real-in-loop a vytvoří tak optimální proces moderování pro scénáře reálného světa. Provede to pomocí cloudového [Nástroje pro kontrolu](https://contentmoderator.cognitive.microsoft.com). V této příručce se dozvíte o základních konceptech nástroje pro kontrolu: Recenze, pracovní postupy a úlohy.
 
 ## <a name="reviews"></a>Recenze
 
-V recenzi se obsah nahraje do nástroje Revize a zobrazí se na kartě **Revize.** Zde mohou uživatelé změnit použité značky a podle potřeby použít vlastní značky. Když uživatel odešle recenzi, výsledky jsou odeslány do zadaného koncového bodu zpětného volání a obsah je odebrán z webu.
+V recenzi se obsah nahraje do nástroje pro revize a zobrazí se na kartě **Revize** . Z tohoto místa mohou uživatelé měnit použité značky a podle potřeby používat vlastní značky. Když uživatel kontrolu odešle, výsledky se odešlou do zadaného koncového bodu zpětného volání a obsah se odebere z webu.
 
-![Stránka nástroje pro kontrolu se otevře v prohlížeči na kartě Revize](./Review-Tool-user-Guide/images/image-workflow-review.png)
+![Kontrola webu nástroje otevřeného v prohlížeči, na kartě kontrola](./Review-Tool-user-Guide/images/image-workflow-review.png)
 
-Podívejte se na [nástroj revize průvodce,](./review-tool-user-guide/review-moderated-images.md) jak začít vytvářet recenze, nebo se podívejte na [rest api průvodce](./try-review-api-review.md) se dozvíte, jak to udělat programově.
+Další informace o tom, jak to provést prostřednictvím kódu programu, najdete v [Průvodci pro kontrolu](./review-tool-user-guide/review-moderated-images.md) a Naučte se vytvářet recenze nebo si přečtěte [Průvodce REST API](./try-review-api-review.md) .
 
 ## <a name="workflows"></a>Pracovní postupy
 
-Pracovní postup je cloudový přizpůsobený filtr obsahu. Pracovní postupy se mohou připojit k různým službám, aby filtrovaly obsah různými způsoby a pak podnikají příslušnou akci. Pomocí konektoru Moderátor obsahu může pracovní postup automaticky použít značky moderování a vytvářet recenze s odeslaným obsahem.
+Pracovní postup je cloudově přizpůsobený filtr pro obsah. Pracovní postupy se můžou připojit k nejrůznějším službám a filtrovat obsah různými způsoby a pak provést příslušné akce. Pomocí konektoru Content Moderator může pracovní postup automaticky použít značky moderování a vytvářet recenze s odeslaným obsahem.
 
 ### <a name="view-workflows"></a>Zobrazit pracovní postupy
 
-Chcete-li zobrazit existující pracovní postupy, přejděte do [nástroje Revize](https://contentmoderator.cognitive.microsoft.com/) a vyberte **Nastavení** > **pracovních postupů**.
+Pokud chcete zobrazit stávající pracovní postupy, použijte [Nástroj pro revizi](https://contentmoderator.cognitive.microsoft.com/) a vyberte **Nastavení** > **pracovní postupy**.
 
 ![Výchozí pracovní postup](images/default-workflow-listed.PNG)
 
-Pracovní postupy lze zcela popsat jako řetězce JSON, což je činí programově přístupnými. Pokud vyberete možnost **Upravit** pro pracovní postup a pak vyberete kartu **JSON,** zobrazí se výraz JSON takto:
+Pracovní postupy mohou být zcela popsány jako řetězce JSON, díky kterým jsou přístupné programově. Pokud pro svůj pracovní postup vyberete možnost **Upravit** a pak vyberete kartu **JSON** , zobrazí se výraz JSON podobný následujícímu:
 
 ```json
 {
@@ -64,16 +64,16 @@ Pracovní postupy lze zcela popsat jako řetězce JSON, což je činí programov
 }
 ```
 
-V [průvodci nástrojem revize](./review-tool-user-guide/workflows.md) můžete začít vytvářet a používat pracovní postupy nebo se [dozvíte,](./try-review-api-workflow.md) jak to udělat programově.
+V [Průvodci pro kontrolu](./review-tool-user-guide/workflows.md) můžete začít vytvářet a používat pracovní postupy, případně si přečtěte [Průvodce REST API](./try-review-api-workflow.md) , kde se dozvíte, jak to provést programově.
 
 ## <a name="jobs"></a>Úlohy
 
-Moderování úloha slouží jako druh obálky pro funkce moderování obsahu, pracovnípostupy a recenze. Úloha prohledá váš obsah pomocí rozhraní API pro moderování obrázků Moderátor obsahu nebo rozhraní API pro moderování textu a poté jej zkontroluje podle určeného pracovního postupu. Na základě výsledků pracovního postupu může nebo nemusí vytvořit recenzi obsahu v [nástroji revize](./review-tool-user-guide/human-in-the-loop.md). Zatímco recenze a pracovní postupy lze vytvořit a nakonfigurovat pomocí příslušných rozhraní API, rozhraní API úlohy umožňuje získat podrobnou zprávu o celém procesu (který lze odeslat do zadaného koncového bodu zpětného volání).
+Úloha moderování slouží jako typ obálky pro funkčnost Moderování obsahu, pracovních postupů a revizí. Úloha prohledá obsah pomocí rozhraní API pro moderování imagí Content Moderator nebo rozhraní API pro moderování textu a pak ho zkontroluje oproti určenému pracovnímu postupu. Na základě výsledků pracovního postupu může nebo nemusí v [nástroji pro revize](./review-tool-user-guide/human-in-the-loop.md)vytvořit recenzi obsahu. I když lze vytvořit a nakonfigurovat jak recenze, tak pracovní postupy s odpovídajícími rozhraními API, vám rozhraní API úlohy umožní získat podrobnou sestavu celého procesu (který lze odeslat do zadaného koncového bodu zpětného volání).
 
-Podívejte se na [průvodce rozhraním REST API,](./try-review-api-job.md) kde můžete začít používat úlohy.
+Pokud chcete začít používat úlohy, přečtěte si [příručku pro REST API](./try-review-api-job.md) .
 
 ## <a name="next-steps"></a>Další kroky
 
-* Otestujte úlohu [konzoly rozhraní API](try-review-api-job.md)úlohy a použijte ukázky kódu rozhraní REST API. Pokud jste obeznámeni s Visual Studio a C#, podívejte se také na [úlohy .NET rychlý start](moderation-jobs-quickstart-dotnet.md). 
-* Pro recenze, začít s [konzolou rozhraní API revize](try-review-api-review.md)a použít ukázky kódu rozhraní REST API. Potom naleznete v části recenze [v rychlém startu rozhraní .NET](dotnet-sdk-quickstart.md).
-* Pro recenze videa použijte [rychlý start recenze videa](video-reviews-quickstart-dotnet.md)a zjistěte, jak [do recenze videa přidat přepisy](video-transcript-reviews-quickstart-dotnet.md).
+* Otestujte [konzolu rozhraní API úlohy](try-review-api-job.md)a použijte ukázky kódu REST API. Pokud jste obeznámeni se sadou Visual Studio a jazykem C#, podívejte se také na průvodce [rychlým startem pro úlohy .NET](moderation-jobs-quickstart-dotnet.md). 
+* V části recenze začněte s [konzolou recenze rozhraní API](try-review-api-review.md)a použijte ukázky kódu REST API. Pak se podívejte na část recenze v [rychlém startu .NET](dotnet-sdk-quickstart.md).
+* V případě recenze videí použijte [rychlý Start pro kontrolu videa](video-reviews-quickstart-dotnet.md)a Naučte se, jak do [recenze videa přidat přepisy](video-transcript-reviews-quickstart-dotnet.md).

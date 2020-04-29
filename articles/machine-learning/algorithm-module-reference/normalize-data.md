@@ -1,7 +1,7 @@
 ---
-title: 'Normalizovat data: Odkaz na modul'
+title: 'Normalizovat data: odkaz na modul'
 titleSuffix: Azure Machine Learning
-description: Zjistěte, jak pomocí modulu Normalizovat data v Azure Machine Learning transformovat datovou sadu prostřednictvím *normalizace*..
+description: Naučte se používat modul Normalized data v Azure Machine Learning k transformaci datové sady prostřednictvím *normalizace*.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,101 +10,101 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
 ms.openlocfilehash: a740c81aa165e221bca19987c7b3c62da56b0402
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79477523"
 ---
 # <a name="normalize-data-module"></a>Normalizovat datový modul
 
-Tento článek popisuje modul v návrháři Azure Machine Learning (preview).
+Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
 
-Tento modul slouží k transformaci datové sady prostřednictvím *normalizace*.
+Tento modul použijte k transformaci datové sady prostřednictvím *normalizace*.
 
-Normalizace je technika často používaná jako součást přípravy dat pro strojové učení. Cílem normalizace je změnit hodnoty číselných sloupců v datové sadě tak, aby používaly společné měřítko, aniž by došlo k narušení rozdílů v rozsahu hodnot nebo ztrátě informací. Normalizace je také vyžadována pro některé algoritmy správně modelovat data.
+Normalizace je technika, která se často používá jako součást přípravy dat pro strojové učení. Cílem normalizace je změnit hodnoty číselného sloupce v datové sadě tak, aby používaly společný rozsah, aniž by došlo k narušení rozdílů v rozsahu hodnot nebo ztrátě informací. Normalizace je také nutná pro některé algoritmy pro správné modelování dat.
 
-Předpokládejme například, že vstupní datová sada obsahuje jeden sloupec s hodnotami v rozsahu od 0 do 1 a jiný sloupec s hodnotami v rozsahu od 10 000 do 100 000. Velký rozdíl v *měřítku* čísel může způsobit problémy při pokusu o kombinování hodnot jako prvků během modelování.
+Předpokládejme například, že vaše vstupní datová sada obsahuje jeden sloupec s hodnotami od 0 do 1 a další sloupec s hodnotami od 10 000 do 100 000. Velký rozdíl v *rozsahu* čísel může způsobit problémy při pokusu o kombinování hodnot jako funkcí během modelování.
 
-*Normalizace* se těmto problémům vyhýbá vytvořením nových hodnot, které udržují obecné rozdělení a poměry ve zdrojových datech, při zachování hodnot v měřítku použitém ve všech číselných sloupcích použitých v modelu.
+*Normalizace* zabraňuje těmto problémům vytvořením nových hodnot, které udržují obecnou distribuci a poměry ve zdrojových datech, a přitom udržuje hodnoty v rámci měřítka aplikované napříč všemi číselnými sloupci používanými v modelu.
 
 Tento modul nabízí několik možností transformace číselných dat:
 
-- Můžete změnit všechny hodnoty na měřítko 0-1 nebo transformovat hodnoty tak, že je budete reprezentovat jako percentilové, nikoli jako absolutní hodnoty.
-- Normalizaci můžete použít na jeden sloupec nebo na více sloupců ve stejné datové sadě.
-- Pokud potřebujete opakovat kanál nebo použít stejné kroky normalizace na jiná data, můžete kroky uložit jako normalizační transformaci a použít je na jiné datové sady, které mají stejné schéma.
+- Můžete změnit všechny hodnoty na 0-1ový rozsah nebo transformovat hodnoty tak, že je zastupuje jako percentil, nikoli jako absolutní hodnoty.
+- Normalizaci můžete aplikovat na jeden sloupec nebo na více sloupců ve stejné datové sadě.
+- Pokud potřebujete kanál opakovat nebo použít stejný postup normalizace na jiná data, můžete tyto kroky Uložit jako transformaci normalizace a použít ji pro jiné datové sady, které mají stejné schéma.
 
 > [!WARNING]
-> Některé algoritmy vyžadují, aby data normalizována před trénování modelu. Jiné algoritmy provádět vlastní škálování dat nebo normalizace. Proto při výběru algoritmu strojového učení pro použití při vytváření prediktivní model, ujistěte se, že zkontrolujte požadavky na data algoritmu před použitím normalizace na trénovací data.
+> Některé algoritmy vyžadují, aby byla data normalizována před školením modelu. Jiné algoritmy provádějí vlastní škálování dat nebo normalizaci. Proto když zvolíte algoritmus strojového učení, který se použije při vytváření prediktivního modelu, nezapomeňte si projít požadavky na data algoritmu před použitím normalizace na školicí data.
 
-##  <a name="configure-normalize-data"></a>Konfigurace normalizovat data
+##  <a name="configure-normalize-data"></a>Konfigurace normalizování dat
 
-Pomocí tohoto modulu můžete použít pouze jednu metodu normalizace najednou. Proto je stejná metoda normalizace použita pro všechny sloupce, které vyberete. Chcete-li použít různé metody normalizace, použijte druhou instanci **Normalize Data**.
+Pomocí tohoto modulu můžete najednou použít jenom jednu metodu normalizace. Proto se stejná metoda normalizace použije na všechny sloupce, které vyberete. Chcete-li použít jiné metody normalizace, použijte druhou instanci **normalizovaná data**.
 
-1. Přidejte modul **Normalizovat data** do kanálu. Modul najdete v Azure Machine Learning v části **Transformace dat**v kategorii **Škálování a Snížit.**
+1. Přidejte modul **dat Normalize** do vašeho kanálu. Modul můžete najít v Azure Machine Learning v části **transformace dat**v kategorii **škálování a snížení** .
 
-2. Připojte datovou sadu, která obsahuje alespoň jeden sloupec všech čísel.
+2. Připojte datovou sadu, která obsahuje alespoň jeden sloupec se všemi čísly.
 
-3. Pomocí voliče sloupců zvolte číselné sloupce, které chcete normalizovat. Pokud nezvolíte jednotlivé sloupce, jsou ve výchozím nastavení zahrnuty **všechny** sloupce číselného typu ve vstupu a stejný proces normalizace se použije na všechny vybrané sloupce. 
+3. Pomocí voliče sloupců vyberte číselné sloupce, které se mají normalizovat. Pokud si nejste zvolili jednotlivé sloupce, jsou ve výchozím nastavení zahrnuty **všechny** sloupce číselného typu ve vstupu a stejný proces normalizace se použije na všechny vybrané sloupce. 
 
-    To může vést k podivné výsledky, pokud zahrnete číselné sloupce, které by neměly být normalizovány! Vždy pečlivě zkontrolujte sloupce.
+    Pokud zahrnete číselné sloupce, které by neměly být normalizovány, může to vést k neobvyklým výsledkům. Vždy pečlivě zkontrolujte sloupce.
 
-    Pokud nejsou zjištěny žádné číselné sloupce, zkontrolujte metadata sloupce a ověřte, zda datový typ sloupce je podporovaný číselný typ.
+    Pokud nejsou zjištěny žádné číselné sloupce, zkontrolujte metadata sloupce a ověřte, zda je datovým typem sloupce podporovaný numerický typ.
 
     > [!TIP]
-    > Chcete-li zajistit, aby sloupce určitého typu byly k dispozici jako vstup, zkuste použít modul [Vybrat sloupce v datové sadě](./select-columns-in-dataset.md) před **normalizací dat**.
+    > Chcete-li zajistit, aby jako vstup byly zadány sloupce určitého typu, zkuste použít modul [Výběr sloupců v datové sadě](./select-columns-in-dataset.md) a teprve potom **normalizovat data**.
 
-4. **Použít 0 pro konstantní sloupce při zaškrtnutí**: Tuto možnost vyberte, pokud libovolný číselný sloupec obsahuje jednu neměnnou hodnotu. Tím je zajištěno, že tyto sloupce nejsou použity v normalizačních operacích.
+4. **Při zaškrtnutí použít 0 pro konstantní sloupce**: tuto možnost vyberte, pokud libovolný číselný sloupec obsahuje jedinou nezměněnou hodnotu. Tím se zajistí, že se tyto sloupce nepoužijí v normalizaci operací.
 
-5. V rozevíracím seznamu **Metoda transformace** zvolte jednu matematickou funkci, která se použije na všechny vybrané sloupce. 
+5. V rozevíracím seznamu **Metoda transformace** vyberte jednu matematickou funkci, která se použije pro všechny vybrané sloupce. 
   
-    - **Zscore**: Převede všechny hodnoty na z-skóre.
+    - **Zscore**: převede všechny hodnoty na z-skóre.
     
       Hodnoty ve sloupci jsou transformovány pomocí následujícího vzorce:  
   
-      ![normalizace pomocí z&#45;skóre](media/module/aml-normalization-z-score.png)
+      ![normalizace s využitím skóre z&#45;](media/module/aml-normalization-z-score.png)
   
-      Střední hodnota a směrodatná odchylka se vypočítají pro každý sloupec zvlášť. Použije se směrodatná odchylka populace.
+      Střední a směrodatná odchylka se počítá pro každý sloupec samostatně. Použije se standardní odchylka populace.
   
-    - **MinMax**: Min-max normalizátor lineárně změní měřítko každého prvku do intervalu [0,1].
+    - **MinMax**: normalizace min-max lineárně mění škálu každé funkce na interval [0, 1].
     
-      Změna měřítka na interval [0,1] se provádí posunutím hodnot každého prvku tak, aby minimální hodnota byla 0, a poté vydělením novou maximální hodnotou (což je rozdíl mezi původními maximálními a minimálními hodnotami).
+      Změna měřítka intervalu [0, 1] se provádí posunutím hodnot každé funkce tak, aby minimální hodnota byla 0 a pak se vydělí novou maximální hodnotou (což je rozdíl mezi původní maximální a minimální hodnotou).
       
       Hodnoty ve sloupci jsou transformovány pomocí následujícího vzorce:  
   
-      ![normalizace pomocí funkce min&#45;max](media/module/aml-normalization-minmax.png "AML_normalization-minmax")  
+      ![normalizace pomocí funkce min&#45;max](media/module/aml-normalization-minmax.png "AML_normalization – minmax")  
   
-    - **Logistika**: Hodnoty ve sloupci jsou transformovány podle následujícího vzorce:
+    - **Logistické**: hodnoty ve sloupci se transformují pomocí následujícího vzorce:
 
-      ![vzorec pro normalizaci logistickou funkcí](media/module/aml-normalization-logistic.png "AML_normalization-logistická")  
+      ![vzorec pro normalizaci pomocí logistické funkce](media/module/aml-normalization-logistic.png "AML_normalization – logistické")  
   
-    - **LogNormal**: Tato možnost převede všechny hodnoty na logaritmicko-normální měřítko.
+    - **Normální**: Tato možnost převede všechny hodnoty na logaritmicko-normální škálování.
   
       Hodnoty ve sloupci jsou transformovány pomocí následujícího vzorce:
   
-      ![protokol vzorců&#45;normální distribuci](media/module/aml-normalization-lognormal.png "AML_normalization-logaritmicko-normální")
+      ![protokol vzorců&#45;normální distribuce](media/module/aml-normalization-lognormal.png "AML_normalization – normální")
     
-      Zde jsou parametry rozdělení, vypočtené empiricky z dat jako odhady maximální pravděpodobnosti, pro každý sloupec zvlášť.  
+      V této části jsou parametry distribuce vypočítané z dat jako maximální pravděpodobnost odhadu pro každý sloupec samostatně.  
   
-    - **TanH**: Všechny hodnoty jsou převedeny na hyperbolickou tečnu.
+    - **Tanh –**: všechny hodnoty jsou převedeny na hyperbolický tangens.
     
       Hodnoty ve sloupci jsou transformovány pomocí následujícího vzorce:
     
-      ![normalizace pomocí funkce tanh](media/module/aml-normalization-tanh.png "AML_normalization-tanh")
+      ![normalizace pomocí funkce tanh –](media/module/aml-normalization-tanh.png "AML_normalization – tanh –")
 
-6. Odešlete kanál nebo poklepejte na modul **Normalizovat data** a vyberte **Spustit vybrané**. 
+6. Odešlete kanál, nebo poklikejte na modul **Normalized data** a vyberte **Spustit vybrané**. 
 
 ## <a name="results"></a>Výsledky
 
-Modul **Normalize Data** generuje dva výstupy:
+Modul **Normalize data** generuje dva výstupy:
 
-- Transformované hodnoty zobrazíte pravým tlačítkem myši na modul a vyberte možnost **Vizualizovat**.
+- Chcete-li zobrazit transformované hodnoty, klikněte pravým tlačítkem na modul a vyberte **vizualizovat**.
 
-    Ve výchozím nastavení jsou hodnoty transformovány na místě. Pokud chcete porovnat transformované hodnoty s původními hodnotami, použijte modul [Přidat sloupce](./add-columns.md) k opětovnému sloučení datových sad a zobrazení sloupců vedle sebe.
+    Ve výchozím nastavení se hodnoty transformují na místě. Chcete-li porovnat transformované hodnoty s původními hodnotami, použijte modul [Přidat sloupce](./add-columns.md) pro rekombinaci datových sad a zobrazení sloupců vedle sebe.
 
-- Chcete-li uložit transformaci, abyste mohli použít stejnou metodu normalizace na jinou datovou sadu, vyberte modul a vyberte **Registrovat datovou sadu** na kartě **Výstupy** v pravém panelu.
+- Chcete-li transformaci uložit, abyste mohli použít stejnou metodu normalizace na jinou datovou sadu, vyberte modul a na kartě **výstup** v pravém panelu vyberte možnost **Registrovat datovou sadu** .
 
-    Potom můžete načíst uložené transformace ze **skupiny Transformace** levého navigačního podokna a použít je na datovou sadu se stejným schématem pomocí [použít transformaci](apply-transformation.md).  
+    Uloženou transformaci pak můžete načíst ze skupiny **transformes** v levém navigačním podokně a použít ji pro datovou sadu se stejným schématem pomocí [transformace použít](apply-transformation.md).  
 
 
 ## <a name="next-steps"></a>Další kroky

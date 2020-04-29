@@ -1,41 +1,41 @@
 ---
-title: Statická ADRESA IP pro skupinu kontejnerů
-description: Vytvoření skupiny kontejnerů ve virtuální síti a použití aplikační brány Azure k vystavení statické ip adresy front-endu do kontejnerizované webové aplikace
+title: Statická IP adresa pro skupinu kontejnerů
+description: Vytvoření skupiny kontejnerů ve virtuální síti a použití služby Azure Application Gateway k vystavení statické IP adresy front-endu pro kontejnerové webové aplikace
 ms.topic: article
 ms.date: 03/16/2020
 ms.openlocfilehash: 5c3a14f93af3ecc614dc296f0a4d2815d7a64a66
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79481785"
 ---
-# <a name="expose-a-static-ip-address-for-a-container-group"></a>Vystavit statickou adresu IP pro skupinu kontejnerů
+# <a name="expose-a-static-ip-address-for-a-container-group"></a>Zveřejňuje statickou IP adresu pro skupinu kontejnerů.
 
-Tento článek ukazuje jeden způsob, jak vystavit statickou, veřejnou IP adresu pro [skupinu kontejnerů](container-instances-container-groups.md) pomocí [aplikační brány](../application-gateway/overview.md)Azure . Postupujte podle těchto kroků, když potřebujete statický vstupní bod pro externí kontejnerizované aplikace, která běží v Azure Container Instances. 
+Tento článek ukazuje jeden ze způsobů, jak zveřejnit statickou veřejnou IP adresu pro [skupinu kontejnerů](container-instances-container-groups.md) pomocí [služby Azure Application Gateway](../application-gateway/overview.md). Pokud potřebujete statický vstupní bod pro externě orientovanou aplikaci, která běží v Azure Container Instances, postupujte podle těchto kroků. 
 
-V tomto článku pomocí azure cli k vytvoření prostředků pro tento scénář:
+V tomto článku vytvoříte pomocí rozhraní příkazového řádku Azure CLI prostředky pro tento scénář:
 
 * Virtuální síť Azure
-* Skupina kontejnerů nasazená [ve virtuální síti (preview),](container-instances-vnet.md) která je hostitelem malé webové aplikace
-* Aplikační brána s veřejnou ip adresou front-endu, naslouchací proces pro hostování webu na bráně a trasa do skupiny back-endových kontejnerů
+* Skupina kontejnerů nasazená [ve virtuální síti (Preview)](container-instances-vnet.md) , která hostuje malou webovou aplikaci
+* Aplikační brána s veřejnou IP adresou front-end, naslouchací proces pro hostování webu v bráně a směrování do back-endové skupiny kontejnerů.
 
-Dokud je spuštěna aplikační brána a skupina kontejnerů zpřístupňuje stabilní privátní IP adresu v delegované podsíti sítě, skupina kontejnerů je přístupná na této veřejné IP adrese.
+Pokud je Aplikační brána spuštěná a skupina kontejnerů zpřístupňuje stabilní privátní IP adresu v delegované podsíti sítě, je tato skupina kontejnerů přístupná na této veřejné IP adrese.
 
 > [!NOTE]
-> Poplatky za aplikační bránu Azure na základě doby, po kterou je brána zřízená a dostupná, a také na množství dat, která zpracovává. Viz [ceny](https://azure.microsoft.com/pricing/details/application-gateway/).
+> Za Azure se účtují poplatky za Aplikační bránu na základě doby, po kterou je brána zřízená a dostupná, a také na množství dat, která zpracovává. Podívejte se na [ceny](https://azure.microsoft.com/pricing/details/application-gateway/).
 
 ## <a name="create-virtual-network"></a>Vytvoření virtuální sítě
 
-V typickém případě už možná máte virtuální síť Azure. Pokud ho nemáte, vytvořte ho tak, jak je znázorněno na následujících ukázkových příkazech. Virtuální síť potřebuje samostatné podsítě pro aplikační bránu a skupinu kontejnerů.
+V typickém případě už můžete mít virtuální síť Azure. Pokud ho ještě nemáte, vytvořte ho tak, jak je znázorněno v následujících ukázkových příkazech. Virtuální síť potřebuje samostatné podsítě pro aplikační bránu a skupinu kontejnerů.
 
-Pokud ji potřebujete, vytvořte skupinu prostředků Azure. Například:
+Pokud ho potřebujete, vytvořte skupinu prostředků Azure. Příklad:
 
 ```azureci
 az group create --name myResourceGroup --location eastus
 ```
 
-Vytvořte virtuální síť pomocí příkazu [vytvořit virtuální síť az.][az-network-vnet-create] Tento příkaz vytvoří podsíť *myAGSubnet* v síti.
+Vytvořte virtuální síť pomocí příkazu [AZ Network VNet Create][az-network-vnet-create] . Tento příkaz vytvoří podsíť *myAGSubnet* v síti.
 
 ```azurecli
 az network vnet create \
@@ -47,7 +47,7 @@ az network vnet create \
   --subnet-prefix 10.0.1.0/24
 ```
 
-Pomocí příkazu [vytvořit podsíť sítě AZ][az-network-vnet-subnet-create] síť vytvořte podsíť pro skupinu back-endových kontejnerů. Zde je *pojmenována myACISubnet*.
+Pomocí příkazu [AZ Network VNet Subnet Create][az-network-vnet-subnet-create] vytvořte podsíť pro back-end skupinu kontejnerů. Tady je název *myACISubnet*.
 
 ```azurecli
 az network vnet subnet create \
@@ -57,7 +57,7 @@ az network vnet subnet create \
   --address-prefix 10.0.2.0/24
 ```
 
-Pomocí příkazu [az network public-ip create][az-network-public-ip-create] vytvořte statický veřejný prostředek IP. V pozdějším kroku je tato adresa nakonfigurována jako front-end aplikační brány.
+Pomocí příkazu [AZ Network Public-IP Create][az-network-public-ip-create] vytvořte prostředek statické veřejné IP adresy. V pozdějším kroku je tato adresa nakonfigurovaná jako front-end aplikační brány.
 
 ```azurecli
 az network public-ip create \
@@ -69,9 +69,9 @@ az network public-ip create \
 
 ## <a name="create-container-group"></a>Vytvoření skupiny kontejnerů
 
-Spusťte následující [vytvoření kontejneru az][az-container-create] a vytvořte skupinu kontejnerů ve virtuální síti, kterou jste nakonfigurovali v předchozím kroku. 
+Spusťte následující příkaz [AZ Container Create][az-container-create] a vytvořte skupinu kontejnerů ve virtuální síti, kterou jste nakonfigurovali v předchozím kroku. 
 
-Skupina je nasazena v podsíti *myACISubnet* a obsahuje jednu instanci s názvem *appcontainer,* která vytáhne bitovou `aci-helloworld` kopii. Jak je znázorněno v jiných článcích v dokumentaci, tento obrázek zabalí malou webovou aplikaci napsanou v souboru Node.js, která slouží statické stránce HTML. 
+Skupina je nasazená v podsíti *myACISubnet* a obsahuje jednu instanci s názvem *kontejneru AppContainer* , která načte `aci-helloworld` image. Jak je vidět v dalších článcích v dokumentaci, tento obrázek zabalí malou webovou aplikaci napsanou v Node. js, která slouží ke statické stránce HTML. 
 
 ```azurecli
 az container create \
@@ -82,7 +82,7 @@ az container create \
   --subnet myACISubnet
 ```
 
-Při úspěšném nasazení je skupině kontejnerů přiřazena privátní IP adresa ve virtuální síti. Chcete-li například načíst IP adresu skupiny, spusťte následující příkaz [az container show:][az-container-show]
+Po úspěšném nasazení se skupině kontejnerů přiřadí privátní IP adresa ve virtuální síti. Pokud například chcete načíst IP adresu skupiny, spusťte následující příkaz [AZ Container show][az-container-show] :
 
 ```azurecli
 az container show \
@@ -92,7 +92,7 @@ az container show \
 
 Výstup je podobný tomuto: `10.0.2.4`.
 
-Pro pozdější použití uložte ip adresu do proměnné prostředí:
+Pro použití v pozdějším kroku uložte IP adresu do proměnné prostředí:
 
 ```azurecli
 ACI_IP=$(az container show \
@@ -103,7 +103,7 @@ ACI_IP=$(az container show \
 
 ## <a name="create-application-gateway"></a>Vytvoření služby Application Gateway
 
-Vytvořte aplikační bránu ve virtuální síti podle kroků v [rychlém startu aplikační brány](../application-gateway/quick-create-cli.md). Následující příkaz [vytvoření síťové aplikační brány az][az-network-application-gateway-create] vytvoří bránu s veřejnou front-endovou IP adresou a trasou do skupiny back-endových kontejnerů. Podrobnosti o nastavení brány najdete v dokumentaci k [aplikační bráně.](/azure/application-gateway/)
+Vytvořte Aplikační bránu ve virtuální síti podle kroků v [rychlém startu služby Application Gateway](../application-gateway/quick-create-cli.md). Následující příkaz [AZ Network Application-Gateway Create][az-network-application-gateway-create] vytvoří bránu s veřejnou IP adresou front-endu a trasou do back-endové skupiny kontejnerů. Podrobnosti o nastavení brány najdete v [dokumentaci k Application Gateway](/azure/application-gateway/) .
 
 ```azurecli
 az network application-gateway create \
@@ -120,13 +120,13 @@ az network application-gateway create \
 ```
 
 
-Vytvoření aplikační brány může azure trvat až 15 minut. 
+Může trvat až 15 minut, než Azure vytvoří Aplikační bránu. 
 
-## <a name="test-public-ip-address"></a>Otestovat veřejnou IP adresu
+## <a name="test-public-ip-address"></a>Test veřejné IP adresy
   
-Teď můžete otestovat přístup k webové aplikaci spuštěné ve skupině kontejnerů za aplikační bránou.
+Nyní můžete testovat přístup k webové aplikaci běžící ve skupině kontejnerů za službou Application Gateway.
 
-Spusťte příkaz [az network public-ip show][az-network-public-ip-show] a načtěte front-endovou veřejnou IP adresu brány:
+Spuštěním příkazu [AZ Network Public-IP show][az-network-public-ip-show] načtěte veřejnou IP adresu front-endu brány:
 
 ```azurecli
 az network public-ip show \
@@ -136,17 +136,17 @@ az network public-ip show \
 --output tsv
 ```
 
-Výstup emituje veřejnou `52.142.18.133`IP adresu, podobnou: .
+Výstupem je veřejná IP adresa, která se podobá: `52.142.18.133`.
 
-Chcete-li zobrazit spuštěnou webovou aplikaci při úspěšné konfiguraci, přejděte v prohlížeči na veřejnou IP adresu brány. Úspěšný přístup je podobný:
+Pokud chcete po úspěšné konfiguraci běžící webové aplikace zobrazit, přejděte v prohlížeči do veřejné IP adresy brány. Úspěšný přístup je podobný následujícímu:
 
 ![Snímek obrazovky prohlížeče ukazující aplikaci spuštěnou v instanci kontejneru Azure](./media/container-instances-application-gateway/aci-app-app-gateway.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-* Podívejte se na [šablonu rychlého startu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-wordpress-vnet) a vytvořte skupinu kontejnerů s instancí kontejneru WordPress jako back-endový server za aplikační bránou.
-* Můžete také nakonfigurovat aplikační bránu s certifikátem pro ukončení SSL. Podívejte se na [přehled](../application-gateway/ssl-overview.md) a [výukový program](../application-gateway/create-ssl-portal.md).
-* V závislosti na scénáři zvažte použití jiných řešení azure vyrovnávání zatížení s instancemi kontejnerů Azure. Pomocí Azure [Traffic Manageru](../traffic-manager/traffic-manager-overview.md) můžete například distribuovat provoz mezi více instancí kontejnerů a do více oblastí. Podívejte se na tento [blogový příspěvek](https://aaronmsft.com/posts/azure-container-instances/).
+* Pokud chcete vytvořit skupinu kontejnerů s instancí kontejneru WordPress jako back-end serverem za aplikační bránou, podívejte se na [šablonu pro rychlý Start](https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-wordpress-vnet) .
+* Můžete také nakonfigurovat aplikační bránu s certifikátem pro ukončení protokolu SSL. Podívejte se na [Přehled](../application-gateway/ssl-overview.md) a [kurz](../application-gateway/create-ssl-portal.md).
+* V závislosti na vašem scénáři zvažte použití dalších řešení vyrovnávání zatížení Azure s Azure Container Instances. Můžete například použít [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) k distribuci provozu napříč několika instancemi kontejnerů a napříč několika oblastmi. Podívejte se na tento [Blogový příspěvek](https://aaronmsft.com/posts/azure-container-instances/).
 
 [az-network-vnet-create]:  /cli/azure/network/vnet#az-network-vnet-create
 [az-network-vnet-subnet-create]: /cli/azure/network/vnet/subnet#az-network-vnet-subnet-create

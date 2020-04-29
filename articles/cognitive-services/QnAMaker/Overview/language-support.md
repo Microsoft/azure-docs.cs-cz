@@ -1,7 +1,7 @@
 ---
-title: Jazyková podpora - QnA Maker
+title: Jazyková podpora – QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Seznam jazykových verzí, přirozených jazyků podporovaných qnA makerem pro vaši znalostní bázi. Nemíchejte jazyky ve stejné znalostní bázi.
+description: Seznam jazykové verze, přirozené jazyky, které QnA Maker podporuje ve znalostní bázi. Nemíchejte jazyky ve stejné znalostní bázi.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,23 +11,23 @@ ms.topic: reference
 ms.date: 09/24/2019
 ms.author: diberry
 ms.openlocfilehash: 96440bf0e9c26e6f222f3bc94c8fabb0bc8f488d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79220553"
 ---
-# <a name="language-support-for-a-qna-maker-resource-and-knowledge-bases"></a>Jazyková podpora zdrojů a znalostních báze QnA Maker
+# <a name="language-support-for-a-qna-maker-resource-and-knowledge-bases"></a>Jazyková podpora pro QnA Maker prostředky a základy znalostní báze
 
-Jazyk služby je vybrán při vytváření první znalostní báze v prostředku. Všechny další znalostní báze v prostředku musí být ve stejném jazyce. 
+Při vytváření první znalostní báze v prostředku je vybraný jazyk pro službu. Všechny další databáze znalostí v prostředku musí být ve stejném jazyce. 
 
-Jazyk určuje relevanci výsledků QnA Maker poskytuje v reakci na dotazy uživatelů.
+Jazyk určuje relevanci výsledků QnA Maker poskytuje odpověď na dotazy uživatelů.
 
-Přečtěte si další informace [o dopadu výběru jazyka](../how-to/language-knowledge-base.md).
+Přečtěte si další informace o [dopadu výběru jazyka](../how-to/language-knowledge-base.md).
 
 ## <a name="languages-supported"></a>Podporované jazyky
 
-Následující seznam obsahuje jazyky podporované pro prostředek QnA Maker. 
+Následující seznam obsahuje jazyky podporované QnA Makerm prostředkem. 
 
 |Jazyk|
 |--|

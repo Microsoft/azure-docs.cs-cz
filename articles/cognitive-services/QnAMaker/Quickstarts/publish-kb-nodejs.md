@@ -1,63 +1,63 @@
 ---
-title: 'Úvodní příručka: QnA Maker s rest API pro Node.js'
-description: Tento rychlý start ukazuje, jak začít s QnA Maker REST API pro Node.js. Následujícím postupem nainstalujte balíček a vyzkoušejte ukázkový kód pro základní úkoly.  QnA Maker umožňuje provozovat službu otázek a odpovědí na základě částečně strukturovaného obsahu, jako jsou dokumenty s nejčastějšími dotazy, adresy URL a příručky k produktům.
+title: 'Rychlý Start: QnA Maker s rozhraním REST API pro Node. js'
+description: V tomto rychlém startu se dozvíte, jak začít s rozhraními REST API QnA Maker pro Node. js. Pomocí těchto kroků nainstalujete balíček a vyzkoušíte ukázkový kód pro základní úlohy.  QnA Maker umožňuje provozovat službu otázek a odpovědí na základě částečně strukturovaného obsahu, jako jsou dokumenty s nejčastějšími dotazy, adresy URL a příručky k produktům.
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
 ms.topic: conceptual
 ms.openlocfilehash: ecc3fb144fb4b4e27182567925199f841b1c4357
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78851671"
 ---
-# <a name="quickstart-qna-maker-rest-apis-for-nodejs"></a>Úvodní příručka: QnA Maker REST API pro Node.js
+# <a name="quickstart-qna-maker-rest-apis-for-nodejs"></a>Rychlý Start: QnA Maker rozhraní REST API pro Node. js
 
-Začínáme s rened.js makeru QnA Maker. Chcete-li vyzkoušet ukázkový kód pro základní úkoly, postupujte takto.  QnA Maker umožňuje provozovat službu otázek a odpovědí na základě částečně strukturovaného obsahu, jako jsou dokumenty s nejčastějšími dotazy, adresy URL a příručky k produktům.
+Začínáme s rozhraními REST API QnA Maker pro Node. js. Pomocí těchto kroků můžete vyzkoušet ukázkový kód pro základní úlohy.  QnA Maker umožňuje provozovat službu otázek a odpovědí na základě částečně strukturovaného obsahu, jako jsou dokumenty s nejčastějšími dotazy, adresy URL a příručky k produktům.
 
-Pomocí api REST qnA makeru pro soubor Node.js můžete:
+Pro Node. js použijte QnA Maker rozhraní REST API pro:
 
 * Vytvoření znalostní báze
-* Nahrazení znalostní báze
+* Výměna znalostní báze
 * Publikování znalostní báze
 * Odstranění znalostní báze
-* Stažení znalostní báze
-* Získání stavu operace
+* Stáhnout znalostní bázi
+* Získat stav operace
 
-[Ukázky referenční dokumentace](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase) | [Node.js](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/tree/master/documentation-samples/quickstarts/rest-api)
+[Referenční dokumentace](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase) | –[ukázky Node. js](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/tree/master/documentation-samples/quickstarts/rest-api)
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure – [vytvořte si ho zdarma](https://azure.microsoft.com/free/)
-* Aktuální verze [souboru Node.js](https://nodejs.org).
-* Musíte mít [službu QnA Maker](../How-To/set-up-qnamaker-service-azure.md). Pokud chcete načíst klíč a koncový bod (který obsahuje název prostředku), vyberte **Rychlý start** pro váš prostředek na webu Azure Portal.
+* Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
+* Aktuální verze [Node. js](https://nodejs.org).
+* Musíte mít [službu QnA Maker](../How-To/set-up-qnamaker-service-azure.md). Pokud chcete načíst svůj klíč a koncový bod (včetně názvu prostředku), vyberte pro prostředek v Azure Portal **rychlý Start** .
 
 ## <a name="setting-up"></a>Nastavení
 
-### <a name="create-a-qna-maker-azure-resource"></a>Vytvoření prostředku Azure pro QnA Maker
+### <a name="create-a-qna-maker-azure-resource"></a>Vytvoření prostředku Azure QnA Maker
 
-Azure Cognitive Services jsou reprezentované prostředky Azure, které si předplatíte. Vytvořte prostředek pro QnA Maker pomocí [portálu Azure](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) nebo [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) na místním počítači.
+Azure Cognitive Services jsou představovány prostředky Azure, ke kterým jste se přihlásili. Vytvořte prostředek pro QnA Maker pomocí [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) nebo rozhraní příkazového [řádku Azure](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) na vašem místním počítači.
 
-Po získání klíče z prostředku [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) `QNAMAKER_RESOURCE_KEY` pro `QNAMAKER_AUTHORING_ENDPOINT`prostředek s názvem a . Použijte hodnoty klíče a koncového bodu, které se nacházejí na stránce **Rychléspuštění** prostředku na webu Azure Portal.
+Po získání klíče z prostředku [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro prostředek s názvem `QNAMAKER_RESOURCE_KEY` a. `QNAMAKER_AUTHORING_ENDPOINT` Použijte hodnoty klíč a koncový bod, které najdete na stránce **rychlý Start** prostředku v Azure Portal.
 
 ### <a name="create-a-new-nodejs-application"></a>Vytvoření nové aplikace Node.js
 
-V okně konzoly (například cmd, PowerShell nebo Bash) vytvořte nový adresář pro vaši aplikaci a přejděte na něj.
+V okně konzoly (například cmd, PowerShell nebo bash) vytvořte nový adresář pro vaši aplikaci a přejděte na něj.
 
 ```console
 mkdir myapp && cd myapp
 ```
 
-Spusťte `npm init -y` příkaz a `package.json` vytvořte soubor uzlu.
+Spuštěním `npm init -y` příkazu vytvořte soubor uzlu `package.json` .
 
 ```console
 npm init -y
 ```
 
-Přidejte `reqeuestretry` `request` balíčky a balíčky NPM:
+Přidejte balíčky `reqeuestretry` a `request` npm:
 
 ```console
 npm install requestretry request --save
@@ -65,80 +65,80 @@ npm install requestretry request --save
 
 ## <a name="code-examples"></a>Příklady kódu
 
-Tyto fragmenty kódu ukazují, jak provést následující akce pomocí řešení REST API QnA Maker pro soubor Node.js:
+Tyto fragmenty kódu ukazují, jak provést následující s QnA Maker rozhraní REST API pro Node. js:
 
 * [Vytvoření znalostní báze](#create-a-knowledge-base)
-* [Nahrazení znalostní báze](#replace-a-knowledge-base)
+* [Výměna znalostní báze](#replace-a-knowledge-base)
 * [Publikování znalostní báze](#publish-a-knowledge-base)
 * [Odstranění znalostní báze](#delete-a-knowledge-base)
-* [Stažení znalostní báze](#download-the-knowledge-base)
-* [Získání stavu operace](#get-status-of-an-operation)
+* [Stáhnout znalostní bázi](#download-the-knowledge-base)
+* [Získat stav operace](#get-status-of-an-operation)
 
-## <a name="add-the-dependencies"></a>Přidání závislostí
+## <a name="add-the-dependencies"></a>Přidat závislosti
 
-Vytvořte soubor `rest-apis.js` s názvem a přidejte následující _příkaz vyžaduje,_ aby požadavky HTTP.
+Vytvořte soubor s názvem `rest-apis.js` a přidejte následující příkaz _vyžaduje_ , aby bylo možné provést požadavky HTTP.
 
 ```javascript
 const request = require("requestretry");
 ```
 
-## <a name="add-azure-resource-information"></a>Přidání informací o prostředcích Azure
+## <a name="add-azure-resource-information"></a>Přidat informace o prostředcích Azure
 
-Vytvořte proměnné pro koncový bod a klíč Azure vašeho prostředku. Pokud jste vytvořili proměnnou prostředí po spuštění aplikace, budete muset zavřít a znovu otevřít editor, IDE nebo prostředí, které ji spustilo, abyste měli přístup k proměnné.
+Vytvořte proměnné pro koncový bod a klíč Azure prostředku. Pokud jste po spuštění aplikace vytvořili proměnnou prostředí, budete muset zavřít a znovu otevřít Editor, rozhraní IDE nebo prostředí, na kterém je spuštěný, abyste měli přístup k této proměnné.
 
 Nastavte následující hodnoty prostředí:
 
-* `QNAMAKER_RESOURCE_KEY`- **Klíč** je řetězec 32 znaků a je k dispozici na portálu Azure, na prostředek QnA Maker, na stránce **rychlý start.** To není stejné jako klíč koncového bodu předpověď.
-* `QNAMAKER_AUTHORING_ENDPOINT`- Váš koncový bod pro vytváření `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com`ve formátu , obsahuje **název zdroje**. Toto není stejná adresa URL, která se používá k dotazování koncového bodu předpověď.
+* `QNAMAKER_RESOURCE_KEY`- **Klíč** je řetězec znaků 32 a je k dispozici v Azure Portal na prostředku QnA maker na stránce **rychlý Start** . To není totéž jako klíč koncového bodu předpovědi.
+* `QNAMAKER_AUTHORING_ENDPOINT`– Váš koncový bod pro vytváření obsahu ve formátu `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com`obsahuje název vašeho **prostředku**. Nejedná se o stejnou adresu URL, která se používá k dotazování koncového bodu předpovědi.
 
 [!code-javascript[Add Azure resources from environment variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/rest-api/rest-api.js?name=authorization)]
 
 ## <a name="create-a-knowledge-base"></a>Vytvoření znalostní báze
 
-Znalostní báze ukládá dvojice otázek a odpovědí vytvořené z objektu JSON:
+Znalostní báze ukládá páry dotazů a odpovědí, které byly vytvořeny z objektu JSON:
 
 * **Redakční obsah**.
-* **Soubory** - místní soubory, které nevyžadují žádná oprávnění.
-* **Adresy URL** – veřejně dostupné adresy URL.
+* **Soubory** – místní soubory, které nevyžadují žádná oprávnění.
+* **Adresy URL** – veřejně dostupné adresy URL
 
-Pomocí [rozhraní REST API vytvořte znalostní bázi](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create).
+[K vytvoření znalostní báze použijte REST API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create).
 
 [!code-javascript[Add Azure resources from environment variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/rest-api/rest-api.js?name=createKb)]
 
-## <a name="replace-a-knowledge-base"></a>Nahrazení znalostní báze
+## <a name="replace-a-knowledge-base"></a>Výměna znalostní báze
 
-Pomocí [rozhraní REST API nahraďte znalostní bázi](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/replace).
+[K nahrazení znalostní báze použijte REST API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/replace).
 
 [!code-javascript[Add Azure resources from environment variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/rest-api/rest-api.js?name=replaceKb)]
 
 ## <a name="publish-a-knowledge-base"></a>Publikování znalostní báze
 
-Publikujte znalostní bázi. Tento proces zpřístupní znalostní bázi z koncového bodu předpovědi dotazu HTTP.
+Publikujte znalostní bázi. Díky tomuto procesu je znalostní báze dostupný z koncového bodu předpovědi dotazu HTTP.
 
-Pomocí [rozhraní REST API publikujte znalostní bázi](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish).
+[K publikování znalostní báze použijte REST API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish).
 
 
 [!code-javascript[Add Azure resources from environment variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/rest-api/rest-api.js?name=publish)]
 
-## <a name="download-the-knowledge-base"></a>Stažení znalostní báze
+## <a name="download-the-knowledge-base"></a>Stáhnout znalostní bázi Knowledge Base
 
-Ke [stažení znalostní báze](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/download)použijte rozhraní REST API .
+Ke [stažení znalostní báze použijte REST API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/download).
 
 [!code-javascript[Add Azure resources from environment variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/rest-api/rest-api.js?name=download)]
 
 ## <a name="delete-a-knowledge-base"></a>Odstranění znalostní báze
 
-Po dokončení používání znalostní báze ji odstraňte.
+Po dokončení používání znalostní báze ho odstraňte.
 
-Pomocí [rozhraní REST API odstraňte znalostní bázi](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/delete).
+[K odstranění znalostní báze použijte REST API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/delete).
 
 [!code-javascript[Add Azure resources from environment variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/rest-api/rest-api.js?name=deleteKb)]
 
-## <a name="get-status-of-an-operation"></a>Získání stavu operace
+## <a name="get-status-of-an-operation"></a>Získat stav operace
 
-Dlouho běžící procesy, jako je například proces vytváření vrátí ID operace, které je třeba zkontrolovat pomocí samostatného volání rozhraní REST API. Tato funkce přebírá tělo vytvořit odpověď. Důležitým klíčem je `operationState`, který určuje, zda je třeba pokračovat dotazování.
+Dlouhotrvající procesy, jako je například proces vytváření, vrací ID operace, které je nutné zkontrolovat pomocí samostatného REST API volání. Tato funkce přijímá tělo odpovědi Create. Důležitý klíč je, který `operationState`určuje, jestli je potřeba pokračovat v dotazování.
 
-Pomocí [rozhraní REST API můžete sledovat operace ve znalostní bázi](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails).
+Pomocí [REST API můžete monitorovat operace ve znalostní bázi](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails).
 
 
 [!code-javascript[Add Azure resources from environment variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/rest-api/rest-api.js?name=operationDetails)]
@@ -146,7 +146,7 @@ Pomocí [rozhraní REST API můžete sledovat operace ve znalostní bázi](https
 
 ## <a name="run-the-application"></a>Spuštění aplikace
 
-Spusťte `node rest-apis.js` aplikaci s příkazem z adresáře aplikace.
+Spusťte aplikaci pomocí `node rest-apis.js` příkazu z adresáře aplikace.
 
 ```console
 node rest-apis.js
@@ -154,7 +154,7 @@ node rest-apis.js
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud chcete vyčistit a odebrat předplatné služeb Cognitive Services, můžete odstranit prostředek nebo skupinu prostředků. Odstraněním skupiny prostředků také odstraníte všechny další prostředky, které jsou s ní spojené.
+Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prostředek nebo skupinu prostředků odstranit. Odstraněním skupiny prostředků se odstraní také všechny další prostředky, které jsou k ní přidružené.
 
 * [Portál](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
@@ -162,9 +162,9 @@ Pokud chcete vyčistit a odebrat předplatné služeb Cognitive Services, může
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
->[Kurz: Vytvoření a odpověď KB](../tutorials/create-publish-query-in-portal.md)
+>[Kurz: vytvoření a odpověď na databázi znalostí](../tutorials/create-publish-query-in-portal.md)
 
-* [Co je rozhraní API qnA makeru?](../Overview/overview.md)
+* [Co je rozhraní API služby QnA Maker?](../Overview/overview.md)
 * [Úprava znalostní báze](../how-to/edit-knowledge-base.md)
-* [Získejte analýzy využití](../how-to/get-analytics-knowledge-base.md)
-* Zdrojový kód pro tuto ukázku lze nalézt na [GitHubu](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/blob/master/documentation-samples/quickstarts/rest-api/rest-api.js).
+* [Získat analýzu využití](../how-to/get-analytics-knowledge-base.md)
+* Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/blob/master/documentation-samples/quickstarts/rest-api/rest-api.js).

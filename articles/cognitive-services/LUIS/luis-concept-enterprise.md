@@ -1,7 +1,7 @@
 ---
-title: Podnikové koncepty - LUIS
+title: Podnikové koncepce – LUIS
 titleSuffix: Azure Cognitive Services
-description: Seznamte se s koncepty návrhu pro velké aplikace LUIS nebo více aplikací, včetně LUIS a QnA Maker společně.
+description: Seznamte se s koncepty návrhu pro rozsáhlé aplikace LUIS nebo více aplikacemi, včetně LUIS a QnA Maker dohromady.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,73 +12,73 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: diberry
 ms.openlocfilehash: efef3faf3cc4ff04235254f0ff6538d92a831196
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79221059"
 ---
-# <a name="enterprise-strategies-for-a-luis-app"></a>Podnikové strategie pro aplikaci LUIS
+# <a name="enterprise-strategies-for-a-luis-app"></a>Podnikové strategie pro aplikaci pro LUIS
 Projděte si tyto strategie návrhu pro podnikovou aplikaci.
 
-## <a name="when-you-expect-luis-requests-beyond-the-quota"></a>Očekáváte-li požadavky služby LUIS nad rámec kvóty
+## <a name="when-you-expect-luis-requests-beyond-the-quota"></a>Pokud očekáváte, že žádosti LUIS přesahují kvótu
 
-Služba LUIS má měsíční kvótu a kvótu za sekundu na základě cenové úrovně prostředku Azure. 
+LUIS má měsíční kvótu a kvótu za sekundu, a to na základě cenové úrovně prostředku Azure. 
 
-Pokud míra požadavků na aplikace LUIS překročí povolenou [kvótu](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/), můžete:
+Pokud vaše rychlost požadavků aplikace LUIS překračuje povolenou [kvótu](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/), můžete:
 
-* Rozprostřete zatížení do více aplikací LUIS se [stejnou definicí aplikace](#use-multiple-apps-with-same-app-definition). To zahrnuje, volitelně spuštění LUIS z [kontejneru](luis-container-howto.md). 
-* Vytvořte a [přiřaďte](#assign-multiple-luis-keys-to-same-app) aplikaci více klíčů. 
+* Rozprostře zatížení do více aplikací LUIS se [stejnou definicí aplikace](#use-multiple-apps-with-same-app-definition). To zahrnuje volitelně i spuštění LUIS z [kontejneru](luis-container-howto.md). 
+* Vytvořte a [přiřaďte aplikaci více klíčů](#assign-multiple-luis-keys-to-same-app) . 
 
 ### <a name="use-multiple-apps-with-same-app-definition"></a>Použití více aplikací se stejnou definicí aplikace
-Exportujte původní aplikaci LUIS a pak ji importujte zpět do samostatných aplikací. Každá aplikace má své vlastní ID aplikace. Když publikujete, místo použití stejného klíče ve všech aplikacích vytvořte pro každou aplikaci samostatný klíč. Vyvažte zatížení všech aplikací tak, aby žádná aplikace nebyla zahlcena. Přidejte [přehledy aplikací](luis-tutorial-bot-csharp-appinsights.md) pro sledování využití. 
+Exportujte původní aplikaci LUIS a pak aplikaci importujte zpátky do samostatných aplikací. Každá aplikace má své vlastní ID aplikace. Když publikujete místo použití stejného klíče napříč všemi aplikacemi, vytvořte pro každou aplikaci samostatný klíč. Vyvážení zátěže napříč všemi aplikacemi, aby nedošlo k zahlcení žádné jedné aplikace. Přidejte [Application Insights](luis-tutorial-bot-csharp-appinsights.md) k monitorování využití. 
 
-Chcete-li získat stejný hlavní záměr mezi všemi aplikacemi, ujistěte se, že záměr předpověď mezi první a druhý záměr je dostatečně široká, že LUIS není zaměňována, poskytuje různé výsledky mezi aplikacemi pro drobné změny v projevy. 
+Aby bylo možné získat stejný nejvyšší záměr mezi všemi aplikacemi, ujistěte se, že předpověď záměrů mezi prvním a druhým záměrem je dostatečně rozsáhlá, že LUIS není zmatený a poskytuje různé výsledky mezi aplikacemi pro drobné variace v projevy. 
 
-Při trénování těchto sourozeneckých aplikací nezapomeňte trénovat se [všemi daty](luis-how-to-train.md#train-with-all-data).
+Při školení těchto aplikací na stejné úrovni se ujistěte, že jste provedli [výuku všech dat](luis-how-to-train.md#train-with-all-data).
 
-Určete jednu aplikaci jako hlavní. Všechny projevy, které jsou navrženy pro kontrolu by měly být přidány do hlavní aplikace a pak přesunuty zpět do všech ostatních aplikací. Toto je buď úplný export aplikace nebo načítání popisné projevy z hlavního serveru na podřízené. Načítání lze provést z webu [LUIS](luis-reference-regions.md) nebo vytváření rozhraní API pro [jeden utterance](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c08) nebo pro [dávku](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c09). 
+Určete jednu aplikaci jako hlavní. Všechny projevy navržené pro kontrolu by se měly přidat do hlavní aplikace a pak se přesunout zpátky do všech ostatních aplikací. Toto je buď úplný export aplikace, nebo načtení popisku projevy z hlavní větve do podřízených objektů. Načítání se dá provést buď z webu [Luis](luis-reference-regions.md) , nebo z rozhraní API pro vytváření obsahu pro [jeden utterance](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c08) nebo pro [dávku](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c09). 
 
-Naplánujte pravidelné kontroly, například každé dva týdny, [projevy koncového bodu](luis-how-to-review-endpoint-utterances.md) pro aktivní učení, pak přeškolit a znovu publikovat. 
+Naplánujte pravidelnou kontrolu, třeba každé dva týdny, [koncového bodu projevy](luis-how-to-review-endpoint-utterances.md) pro aktivní učení a pak znovu prostudujte a znovu publikujte. 
 
 ### <a name="assign-multiple-luis-keys-to-same-app"></a>Přiřazení více klíčů LUIS ke stejné aplikaci
-Pokud vaše aplikace LUIS obdrží více přístupů koncovýbod, než umožňuje kvóta vašeho jediného klíče, vytvořte a přiřaďte další klíče k aplikaci LUIS. Vytvořte správce provozu nebo nástroje pro vyrovnávání zatížení pro správu dotazů koncového bodu napříč klíči koncového bodu. 
+Pokud vaše aplikace LUIS přijímá více přístupů do koncového bodu, než povoluje kvóta s jedním klíčem, vytvoří a přiřadí k aplikaci LUIS další klíče. Vytvořte Traffic Manager nebo nástroj pro vyrovnávání zatížení, abyste mohli spravovat dotazy koncových bodů napříč klíči koncových bodů. 
 
-## <a name="when-your-monolithic-app-returns-wrong-intent"></a>Když vaše monolitická aplikace vrátí špatný záměr
-Pokud vaše aplikace je určen k předpovědět širokou škálu projevy uživatelů, zvažte implementaci [modelu odeslání](#dispatch-tool-and-model). Rozdělení monolitické aplikace umožňuje LUIS zaměřit detekci mezi záměry úspěšně namísto získání zmatený mezi záměry v rámci nadřazené aplikace a podřízené aplikace. 
+## <a name="when-your-monolithic-app-returns-wrong-intent"></a>Když aplikace monolitické vrátí nesprávný záměr
+Pokud má vaše aplikace předpověď široké škály uživatelských projevy, zvažte implementaci [modelu odeslání](#dispatch-tool-and-model). Rozdělení aplikace monolitické umožňuje LUIS soustředit detekci mezi záměry a nemuseli se zaměňovat mezi záměry napříč nadřazenou aplikací a podřízenými aplikacemi. 
 
-Naplánujte pravidelné [kontroly projevy koncového bodu](luis-how-to-review-endpoint-utterances.md) pro aktivní učení, například každé dva týdny, pak přeškolit a znovu publikovat. 
+Naplánujte pravidelnou [kontrolu koncového bodu projevy](luis-how-to-review-endpoint-utterances.md) pro aktivní učení, třeba každé dva týdny, a pak znovu Projděte a znovu publikujte. 
 
-## <a name="when-you-need-to-have-more-than-500-intents"></a>Když potřebujete mít více než 500 záměrů
-Předpokládejme, že vyvíjíte kancelářského asistenta, který má více než 500 záměrů. Pokud 200 záměrů souvisí s plánováním schůzek, 200 se týká připomenutí, 200 je o získání informací o kolezích a 200 pro odesílání e-mailů, záměry skupin tak, aby každá skupina byla v jedné aplikaci, a pak vytvořte aplikaci nejvyšší úrovně obsahující každý záměr. Použijte [model odeslání](#dispatch-tool-and-model) k vytvoření aplikace nejvyšší úrovně. Pak změňte bot a použijte kaskádové volání, jak je znázorněno v [kurzu modelu odeslání](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&branch=master&tabs=cs). 
+## <a name="when-you-need-to-have-more-than-500-intents"></a>Pokud potřebujete mít více než 500 záměrů
+Předpokládejme, že vyvíjíte pomocníka Office, který má více než 500 záměrů. Pokud se 200 záměrů vztahujících se na schůzky plánování, 200 se o připomenutích, 200 se dozvíte o získání informací o kolegech a 200 jsou pro posílání e-mailů, záměrů skupin tak, aby každá skupina byla v jedné aplikaci, a pak vytvořila aplikaci nejvyšší úrovně obsahující jednotlivé záměry. Použijte [model odeslání](#dispatch-tool-and-model) k sestavení aplikace nejvyšší úrovně. Pak změňte robota na použití kaskádového volání, jak je znázorněno v [kurzu modelu odeslání](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&branch=master&tabs=cs). 
 
-## <a name="when-you-need-to-combine-several-luis-and-qna-maker-apps"></a>Když potřebujete zkombinovat několik aplikací LUIS a QnA maker
-Pokud máte několik luis a QnA maker aplikace, které potřebují reagovat na robota, použijte [model odeslání](#dispatch-tool-and-model) k vytvoření aplikace nejvyšší úrovně.  Pak změňte bot a použijte kaskádové volání, jak je znázorněno v [kurzu modelu odeslání](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&branch=master&tabs=cs). 
+## <a name="when-you-need-to-combine-several-luis-and-qna-maker-apps"></a>Pokud potřebujete zkombinovat několik aplikací LUIS a QnA maker
+Pokud máte několik aplikací LUIS a QnA maker, které potřebují reagovat na robota, použijte [model odeslání](#dispatch-tool-and-model) k sestavení aplikace nejvyšší úrovně.  Pak změňte robota na použití kaskádového volání, jak je znázorněno v [kurzu modelu odeslání](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&branch=master&tabs=cs). 
 
-## <a name="dispatch-tool-and-model"></a>Expediční nástroj a model
-Pomocí nástroje příkazového řádku [Odeslání,][dispatch-tool] který se nachází v [nástrojích BotBuilder,](https://github.com/Microsoft/botbuilder-tools) můžete kombinovat více aplikací LUIS nebo QnA Maker do nadřazené aplikace LUIS. Tento přístup umožňuje mít nadřazenou doménu včetně všech předmětů a různých podřízených oborových domén v samostatných aplikacích. 
+## <a name="dispatch-tool-and-model"></a>Nástroj pro expedici a model
+Použijte nástroj příkazového řádku [Dispatch][dispatch-tool] , který se nachází v [BotBuilder-Tools](https://github.com/Microsoft/botbuilder-tools) pro kombinování více LUIS a/nebo QnA maker aplikací do nadřazené aplikace Luis. Tento přístup umožňuje mít nadřazenou doménu včetně všech předmětů a různých podřízených domén subjektu v samostatných aplikacích. 
 
-![Koncepční obraz dispečerské architektury](./media/luis-concept-enterprise/dispatch-architecture.png)
+![Koncepční obrázek architektury odesílání](./media/luis-concept-enterprise/dispatch-architecture.png)
 
-Nadřazená doména je `Dispatch` zaznamenána v LUIS s verzí pojmenovanou v seznamu aplikací. 
+Nadřazená doména je zaznamenána v LUIS s verzí pojmenovanou `Dispatch` v seznamu aplikace. 
 
-Chatovací robot obdrží utterance, pak odešle do nadřazené aplikace LUIS pro předpověď. Nejvyšší předpovídaný záměr z nadřazené aplikace určuje, která podřízená aplikace LUIS se nazývá další. Chat bot odešle utterance do podřízené aplikace pro konkrétnější předpověď.
+Robot pro chat obdrží utterance a pak pošle nadřazené aplikaci v LUIS k předpovědi. Nejvyšší předpovězený záměr z nadřazené aplikace určuje, která podřízená aplikace LUIS se nazývá Next. Robot pro chat pošle utterance do podřízené aplikace a podrobnější předpověď.
 
-Pochopit, jak se tato hierarchie volání provádí z Bot Builder v4 [dispečer-aplikace-tutorial](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&branch=master&tabs=cs).  
+Pochopte, jak se tato hierarchie volání provádí z [dispečera bot Builder v4 – Application-tutorial](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&branch=master&tabs=cs).  
 
-### <a name="intent-limits-in-dispatch-model"></a>Omezení záměru v modelu odeslání
-Odeslání aplikace má 500 zdrojů odeslání, což odpovídá 500 záměry, jako maximum. 
+### <a name="intent-limits-in-dispatch-model"></a>Omezení záměrů v modelu odeslání
+Expediční aplikace má 500 zdrojů odeslání, které odpovídají 500 záměrů. 
 
 ## <a name="more-information"></a>Další informace
 
-* [Sada SDK framework botů](https://github.com/Microsoft/botframework)
-* [Kurz expedičního modelu](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&branch=master&tabs=cs)
-* [Odeslání CLI](https://github.com/Microsoft/botbuilder-tools)
-* Ukázka modelu odeslání - [.NET](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/14.nlp-with-dispatch), [Node.js](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/14.nlp-with-dispatch)
+* [Sada robot Framework SDK](https://github.com/Microsoft/botframework)
+* [Kurz pro model odeslání](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&branch=master&tabs=cs)
+* [Rozhraní příkazového řádku pro odesílání](https://github.com/Microsoft/botbuilder-tools)
+* Ukázka robota modelu odeslání – [.NET](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/14.nlp-with-dispatch), [Node. js](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/14.nlp-with-dispatch)
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si, jak [otestovat dávku](luis-how-to-batch-test.md)
+* Postup [testování dávky](luis-how-to-batch-test.md)
 
 [dispatcher-application-tutorial]: https://aka.ms/bot-dispatch
 [dispatch-tool]: https://aka.ms/dispatch-tool

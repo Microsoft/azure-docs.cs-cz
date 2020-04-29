@@ -1,7 +1,7 @@
 ---
-title: Šifrování dat v klidovém stavu služby Language Understanding
+title: Šifrování neaktivních dat Language Understanding služby
 titleSuffix: Azure Cognitive Services
-description: Šifrování dat v klidovém stavu služby Language Understanding
+description: Šifrování neaktivních dat Language Understanding služby.
 author: erindormier
 manager: venkyv
 ms.service: cognitive-services
@@ -10,86 +10,86 @@ ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: egeaney
 ms.openlocfilehash: 59e066974f690bda2384504cc27af5aa94b7b75b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79372334"
 ---
-# <a name="language-understanding-service-encryption-of-data-at-rest"></a>Šifrování dat v klidovém stavu služby Language Understanding
+# <a name="language-understanding-service-encryption-of-data-at-rest"></a>Šifrování neaktivních dat Language Understanding služby
 
-Služba Language Understanding automaticky šifruje vaše data, když jsou v cloudu trvalá. Šifrování služby Language Understanding service chrání vaše data a pomáhá vám plnit závazky organizace v oblasti zabezpečení a dodržování předpisů.
+Služba Language Understanding automaticky šifruje vaše data při trvalém ukládání do cloudu. Šifrování služby Language Understanding chrání vaše data a pomáhá splnit závazky zabezpečení a dodržování předpisů v organizaci.
 
-## <a name="about-cognitive-services-encryption"></a>Šifrování služeb Cognitive Services
+## <a name="about-cognitive-services-encryption"></a>O šifrování Cognitive Services
 
-Data jsou šifrována a dešifrována pomocí [256bitového](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) šifrování AES kompatibilního se [standardem FIPS 140-2.](https://en.wikipedia.org/wiki/FIPS_140-2) Šifrování a dešifrování jsou transparentní, což znamená, že šifrování a přístup jsou spravovány za vás. Vaše data jsou ve výchozím nastavení zabezpečená a nemusíte upravovat kód nebo aplikace, abyste využili výhod šifrování.
+Data se šifrují a dešifrují s využitím [256 šifrování AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) kompatibilního se [standardem FIPS 140-2](https://en.wikipedia.org/wiki/FIPS_140-2) . Šifrování a dešifrování je transparentní, což znamená, že se pro vás spravuje šifrování a přístup. Vaše data jsou ve výchozím nastavení zabezpečená a nemusíte upravovat kód ani aplikace, abyste mohli využívat šifrování.
 
 ## <a name="about-encryption-key-management"></a>O správě šifrovacích klíčů
 
-Ve výchozím nastavení vaše předplatné používá šifrovací klíče spravované společností Microsoft. K dispozici je také možnost spravovat předplatné pomocí vlastních klíčů. Klíče spravované zákazníkem (CMK) nabízejí větší flexibilitu při vytváření, otáčení, zakázání a odvolání ovládacích prvků přístupu. Můžete také auditovat šifrovací klíče používané k ochraně dat.
+Ve výchozím nastavení používá vaše předplatné šifrovací klíče spravované Microsoftem. K dispozici je také možnost Spravovat předplatné s vlastními klíči. Klíče spravované zákazníkem (CMK) nabízejí větší flexibilitu při vytváření, střídání, zakázání a odvolávání řízení přístupu. Můžete také auditovat šifrovací klíče používané k ochraně vašich dat.
 
-## <a name="customer-managed-keys-with-azure-key-vault"></a>Klíče spravované zákazníkem s trezorem klíčů Azure
+## <a name="customer-managed-keys-with-azure-key-vault"></a>Klíče spravované zákazníkem s využitím Azure Key Vaultu
 
-K dispozici je také možnost spravovat předplatné pomocí vlastních klíčů. Klíče spravované zákazníkem (CMK), označované také jako Přineste si vlastní klíč (BYOK), nabízejí větší flexibilitu při vytváření, otáčení, zakázání a odvolání ovládacích prvků přístupu. Můžete také auditovat šifrovací klíče používané k ochraně dat.
+K dispozici je také možnost Spravovat předplatné s vlastními klíči. Klíče spravované zákazníkem (CMK), označované také jako Přineste si vlastní klíč (BYOK), nabízejí větší flexibilitu při vytváření, střídání, zakázání a odvolávání řízení přístupu. Můžete také auditovat šifrovací klíče používané k ochraně vašich dat.
 
-K ukládání klíčů spravovaných zákazníky je nutné použít azure key vault. Můžete buď vytvořit vlastní klíče a uložit je do trezoru klíčů, nebo můžete použít Azure Key Vault API ke generování klíčů. Prostředek služeb Cognitive Services a trezor klíčů musí být ve stejné oblasti a ve stejném tenantovi Služby Azure Active Directory (Azure AD), ale mohou být v různých předplatných. Další informace o Azure Key Vault najdete v tématu [Co je Azure Key Vault?](https://docs.microsoft.com/azure/key-vault/key-vault-overview).
+K ukládání klíčů spravovaných zákazníkem je nutné použít Azure Key Vault. Můžete buď vytvořit vlastní klíče a uložit je do trezoru klíčů, nebo můžete použít rozhraní API Azure Key Vault k vygenerování klíčů. Prostředek Cognitive Services a trezor klíčů musí být ve stejné oblasti a v rámci stejného tenanta Azure Active Directory (Azure AD), ale můžou být v různých předplatných. Další informace o Azure Key Vault najdete v tématu [co je Azure Key Vault?](https://docs.microsoft.com/azure/key-vault/key-vault-overview).
 
-### <a name="customer-managed-keys-for-language-understanding"></a>Klíče spravované zákazníkem pro porozumění jazykům
+### <a name="customer-managed-keys-for-language-understanding"></a>Klíče spravované zákazníkem pro Language Understanding
 
-Chcete-li požádat o možnost používat klíče spravované zákazníkem, vyplňte a odešlete [formulář žádosti o klíč spravované službou LUIS Service](https://aka.ms/cogsvc-cmk). Bude trvat přibližně 3-5 pracovních dnů, než se dozvíte o stavu vaší žádosti. V závislosti na poptávce můžete být umístěni do fronty a schváleni, jakmile bude k dispozici místo. Po schválení pro použití CMK s LUIS, budete muset vytvořit nový prostředek language understanding z portálu Azure a vyberte E0 jako cenovou úroveň. Nová skladová položka bude fungovat stejně jako skladová položka F0, která je již k dispozici s výjimkou cmk. Uživatelé nebudou moci upgradovat z F0 na novou sku E0.
+Chcete-li požádat o možnost použití klíčů spravovaných zákazníkem, vyplňte a odešlete [formulář žádosti o klíč spravovaný zákazníkem služby Luis](https://aka.ms/cogsvc-cmk). Bude to trvat přibližně 3-5 pracovních dnů, než se vrátí na stav vaší žádosti. V závislosti na poptávce můžete být do fronty zařazené a schválené, protože místo bude k dispozici. Po schválení pro použití CMK s LUIS budete muset vytvořit nový prostředek Language Understanding z Azure Portal a vybrat E0 jako cenovou úroveň. Nová SKU bude fungovat stejně jako SKU F0, která je již k dispozici, s výjimkou CMK. Uživatelé nebudou moct upgradovat z F0 na novou SKLADOVOU položku E0.
 
-E0 prostředky jsou k dispozici pouze pro vytváření služby a že úroveň E0 bude zpočátku podporována pouze v oblasti západní USA.
+Prostředky E0 jsou dostupné jenom pro vytváření služeb a tato úroveň E0 se zpočátku podporuje jenom v Západní USA oblasti.
 
 ![Obrázek předplatného LUIS](../media/cognitive-services-encryption/luis-subscription.png)
 
 ### <a name="regional-availability"></a>Regionální dostupnost
 
-Klíče spravované zákazníkem jsou v současné době k dispozici v oblasti **USA – západ.**
+Klíče spravované zákazníkem jsou aktuálně k dispozici v **západní USA** oblasti.
 
 ### <a name="limitations"></a>Omezení
 
-Existují určitá omezení při použití vrstvy E0 s existujícími nebo dříve vytvořenými aplikacemi:
+Při použití vrstvy E0 s existujícími nebo dříve vytvořenými aplikacemi platí určitá omezení:
 
-* Migrace na prostředek E0 bude blokována. Uživatelé budou moci migrovat své aplikace pouze do prostředků F0. Po migraci existujícího prostředku do F0 můžete vytvořit nový prostředek ve vrstvě E0. Další informace o [migraci](https://docs.microsoft.com/azure/cognitive-services/luis/luis-migration-authoring)naleznete zde .  
-* Přesunutí aplikací do nebo z prostředku E0 bude blokováno. Řešení tohoto omezení je exportovat existující aplikaci a importovat ji jako prostředek E0.
-* Funkce kontrola pravopisu Bingu není podporována.
-* Protokolování přenosů koncových uživatelů je zakázáno, pokud je vaše aplikace E0.
-* Funkce priming řeči ze služby Azure Bot není podporována pro aplikace na úrovni E0. Tato funkce je dostupná prostřednictvím služby Azure Bot Service, která cmk nepodporuje.
-* Funkce naplnění řeči z portálu vyžaduje Azure Blob Storage. Další informace naleznete v [tématu přineste si vlastní úložiště](../Speech-Service/speech-encryption-of-data-at-rest.md#bring-your-own-storage-byos-for-customization-and-logging).
+* Migrace do prostředku E0 se zablokuje. Uživatelé budou moct migrovat své aplikace jenom na F0 prostředky. Po dokončení migrace existujícího prostředku na F0 můžete vytvořit nový prostředek ve vrstvě E0. Další informace o [migraci najdete tady](https://docs.microsoft.com/azure/cognitive-services/luis/luis-migration-authoring).  
+* Přesun aplikací do nebo z prostředku E0 se zablokuje. Řešením tohoto omezení je exportovat existující aplikaci a importovat ji jako prostředek E0.
+* Funkce kontroly pravopisu Bingu není podporovaná.
+* Protokolování provozu koncových uživatelů je zakázané, pokud je vaše aplikace E0.
+* Funkce pro dopřední řeči z Azure bot Service není podporovaná pro aplikace ve vrstvě E0. Tato funkce je k dispozici prostřednictvím Azure Bot Service, která nepodporuje CMK.
+* Funkce pro dopřední řeči z portálu vyžaduje Azure Blob Storage. Další informace najdete v tématu [Přineste si vlastní úložiště](../Speech-Service/speech-encryption-of-data-at-rest.md#bring-your-own-storage-byos-for-customization-and-logging).
 
-### <a name="enable-customer-managed-keys"></a>Povolení klíčů spravovaných zákazníkem
+### <a name="enable-customer-managed-keys"></a>Povolit klíče spravované zákazníkem
 
-Nový prostředek služeb Cognitive Services je vždy šifrován pomocí klíčů spravovaných společností Microsoft. Není možné povolit klíče spravované zákazníkem v době vytvoření prostředku. Klíče spravované zákazníkem jsou uloženy v trezoru klíčů Azure a trezor klíčů musí být zřízen zásadami přístupu, které udělují oprávnění klíče spravované identitě, která je přidružena k prostředku služeb Cognitive Services. Spravovaná identita je k dispozici pouze po vytvoření prostředku pomocí cenové úrovně pro CMK.
+Nový prostředek Cognitive Services je vždycky zašifrovaný pomocí klíčů spravovaných Microsoftem. Klíče spravované zákazníkem není možné povolit v době, kdy se prostředek vytvořil. Klíče spravované zákazníkem jsou uloženy v Azure Key Vault a trezor klíčů musí být zřízen pomocí zásad přístupu, které udělují klíčová oprávnění ke spravované identitě, která je přidružena k prostředku Cognitive Services. Spravovaná identita je k dispozici až po vytvoření prostředku pomocí cenové úrovně pro CMK.
 
-Informace o tom, jak používat klíče spravované zákazníky pomocí šifrování Azure Key Vault for Cognitive Services, najdete v tématu:
+Informace o použití klíčů spravovaných zákazníkem s Azure Key Vault pro šifrování Cognitive Services najdete v těchto tématech:
 
-- [Konfigurace klíčů spravovaných zákazníkem pomocí trezoru klíčů pro kognitivní služby šifrování z portálu Azure](../Encryption/cognitive-services-encryption-keys-portal.md)
+- [Konfigurace klíčů spravovaných zákazníkem pomocí Key Vault pro Cognitive Services šifrování z Azure Portal](../Encryption/cognitive-services-encryption-keys-portal.md)
 
-Povolení klíčů spravovaných zákazníky také umožní systém přiřazenou spravovanou identitu, což je funkce Azure AD. Po povolení systému přiřazené spravované identity bude tento prostředek zaregistrován ve službě Azure Active Directory. Po registraci bude spravovaná identita mít přístup k trezoru klíčů vybranému během nastavení klíče spravovaného zákazníkem. Další informace o [spravovaných identitách](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
-
-> [!IMPORTANT]
-> Pokud zakážete systém přiřazené spravované identity, bude přístup k trezoru klíčů odebrán a všechna data zašifrovaná pomocí klíčů zákazníků již nebudou přístupná. Všechny funkce závislé na těchto datech přestanou fungovat.
+Povolením zákaznických klíčů taky povolíte spravovanou identitu přiřazenou systémem, což je funkce Azure AD. Po povolení spravované identity přiřazené systémem se tento prostředek zaregistruje ve službě Azure Active Directory. Po registraci bude spravované identitě udělen přístup k Key Vault vybranému během nastavení spravovaného klíče zákazníka. Další informace o [spravovaných identitách](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)najdete v.
 
 > [!IMPORTANT]
-> Spravované identity aktuálně nepodporují scénáře mezi adresáři. Když nakonfigurujete klíče spravované zákazníky na webu Azure Portal, spravovaná identita se automaticky přiřadí pod kryty. Pokud následně přesunete předplatné, skupinu prostředků nebo prostředek z jednoho adresáře Azure AD do jiného, spravovaná identita přidružená k prostředku se nepřenese do nového klienta, takže klíče spravované zákazníkem už nemusí fungovat. Další informace najdete **v tématu Přenos předplatného mezi adresáři Azure AD** v [častých dotazech a známými problémy se spravovanými identitami pro prostředky Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/known-issues#transferring-a-subscription-between-azure-ad-directories).  
+> Pokud zakážete spravované identity přiřazené systémem, odeberou se přístup k trezoru klíčů a veškerá data zašifrovaná pomocí klíčů zákazníka už nebudou dostupná. Jakékoli funkce závislé na těchto datech přestanou fungovat.
 
-### <a name="store-customer-managed-keys-in-azure-key-vault"></a>Ukládání klíčů spravovaných zákazníky v trezoru klíčů Azure
+> [!IMPORTANT]
+> Spravované identity v současné době nepodporují scénáře pro více adresářů. Při konfiguraci klíčů spravovaných zákazníkem v Azure Portal se spravovaná identita automaticky přiřadí v rámci pokrývání. Pokud později přesunete předplatné, skupinu prostředků nebo prostředek z jednoho adresáře služby Azure AD do jiného, spravovaná identita přidružená k prostředku se nepřenáší do nového tenanta, takže klíče spravované zákazníkem už možná nebudou fungovat. Další informace najdete v tématu **přenos předplatného mezi adresáři služby Azure AD** v [nejčastějších dotazech a známých potížích se spravovanými identitami pro prostředky Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/known-issues#transferring-a-subscription-between-azure-ad-directories).  
 
-Chcete-li povolit klíče spravované zákazníkem, musíte k uložení klíčů použít trezor klíčů Azure. Je nutné povolit vlastnosti **Obnovitelné odstranění** a **Nevyčistit** v trezoru klíčů.
+### <a name="store-customer-managed-keys-in-azure-key-vault"></a>Ukládání klíčů spravovaných zákazníkem v Azure Key Vault
 
-Šifrováním služeb Cognitive Services jsou podporovány pouze klíče RSA velikosti 2048. Další informace o klíčích najdete v **tématu Klíče trezoru klíčů** v [tématu O klíčích, tajných klíčích a certifikátech trezoru klíčů Azure](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-keys).
+Pokud chcete povolit klíče spravované zákazníkem, musíte použít Azure Key Vault k uložení klíčů. V trezoru klíčů musíte povolit jak **obnovitelné odstranění** , tak i **Nemazat** vlastnosti.
 
-### <a name="rotate-customer-managed-keys"></a>Otočení klíčů spravovaných zákazníkem
+Cognitive Services šifrování podporují pouze klíče RSA o velikosti 2048. Další informace o klíčích najdete v tématu **Key Vault Keys** v tématu [informace o Azure Key Vaultch klíčích, tajných klíčích a certifikátech](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-keys).
 
-Klíč spravovaný zákazníkem můžete v trezoru klíčů Azure v souladu s vašimi zásadami dodržování předpisů otočit. Při otočení klíče je nutné aktualizovat prostředek služeb Cognitive Services, aby bylo nutné použít nový identifikátor URI klíče. Informace o tom, jak aktualizovat prostředek tak, aby používal novou verzi klíče na webu Azure Portal, najdete v části **Aktualizace verze klíče** v [tématu Konfigurace klíčů spravovaných zákazníky pro služby Cognitive Services pomocí portálu Azure](../Encryption/cognitive-services-encryption-keys-portal.md).
+### <a name="rotate-customer-managed-keys"></a>Otočit klíče spravované zákazníkem
 
-Otočením klíče neaktivujete opětovné šifrování dat v prostředku. Neexistuje žádná další akce vyžaduje od uživatele.
+Klíč spravovaný zákazníkem můžete v Azure Key Vault otočit podle vašich zásad dodržování předpisů. Když je klíč otočen, je nutné aktualizovat prostředek Cognitive Services, aby používal nový identifikátor URI klíče. Informace o tom, jak aktualizovat prostředek tak, aby používal novou verzi klíče v Azure Portal, najdete v části s názvem **aktualizace verze klíče** v tématu [konfigurace klíčů spravovaných zákazníkem pro Cognitive Services pomocí Azure Portal](../Encryption/cognitive-services-encryption-keys-portal.md).
 
-### <a name="revoke-access-to-customer-managed-keys"></a>Odvolání přístupu ke klíčům spravovaným zákazníkem
+Otočení klíče neaktivuje opětovné šifrování dat v prostředku. Od uživatele není vyžadována žádná další akce.
 
-Pokud chcete odvolat přístup ke klíčům spravovaným zákazníkem, použijte PowerShell nebo Azure CLI. Další informace najdete [v tématu Azure Key Vault PowerShell](https://docs.microsoft.com/powershell/module/az.keyvault//) nebo [Azure Key Vault CLI](https://docs.microsoft.com/cli/azure/keyvault). Zrušení přístupu účinně blokuje přístup ke všem datům v prostředku služeb Cognitive Services, protože šifrovací klíč není pro služby Cognitive Services přístupný.
+### <a name="revoke-access-to-customer-managed-keys"></a>Odvolat přístup k klíčům spravovaným zákazníkem
+
+K odvolání přístupu ke klíčům spravovaným zákazníkem použijte PowerShell nebo Azure CLI. Další informace najdete v tématu [Azure Key Vault PowerShellu](https://docs.microsoft.com/powershell/module/az.keyvault//) nebo rozhraní příkazového [řádku Azure Key Vault](https://docs.microsoft.com/cli/azure/keyvault). Odvolání přístupu efektivně zablokuje přístup ke všem datům v prostředku Cognitive Services, protože šifrovací klíč není přístupný Cognitive Services.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Formulář žádosti o klíč spravované zákazníkem služby LUIS](https://aka.ms/cogsvc-cmk)
+* [Formulář žádosti o klíč spravovaný zákazníkem služby LUIS](https://aka.ms/cogsvc-cmk)
 * [Další informace o Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)

@@ -1,5 +1,5 @@
 ---
-title: Odesílání oznámení konkrétním zařízením s Androidem pomocí center Oznámení Azure a zasílání zpráv Google Cloud Messaging | Dokumenty společnosti Microsoft
+title: Posílání oznámení na konkrétní zařízení s Androidem pomocí Azure Notification Hubs a Google Cloud Messaging | Microsoft Docs
 description: Přečtěte si, jak používat Notification Hubs k zasílání nabízených oznámení určitým zařízením s Androidem službami Azure Notification Hubs a Google Cloud Messaging.
 services: notification-hubs
 documentationcenter: android
@@ -18,16 +18,16 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 57a11eac47baace0ad9fa7dcae82dca6eeee0988
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80127291"
 ---
-# <a name="tutorial-send-push-notifications-to-specific-android-devices-using-google-cloud-messaging-deprecated"></a>Kurz: Odesílání nabízených oznámení konkrétním zařízením Android pomocí služby Google Cloud Messaging (zastaralé)
+# <a name="tutorial-send-push-notifications-to-specific-android-devices-using-google-cloud-messaging-deprecated"></a>Kurz: odeslání nabízených oznámení na konkrétní zařízení s Androidem pomocí Google Cloud Messaging (zastaralé)
 
 > [!WARNING]
-> dubna 2018 společnost Google zastarala služby Google Cloud Messaging (GCM). Gcm server a klientská api jsou zastaralé a budou odebrány, jakmile 29 května 2019. Další informace naleznete v [tématech NEJČASTĚJŠÍ DOTAZY GCM a FCM](https://developers.google.com/cloud-messaging/faq).
+> Od 10. dubna 2018 má Google zastaralé Google Cloud Messaging (GCM). GCM Server a klientská rozhraní API jsou zastaralá a budou se odebírat hned jako 29. května 2019. Další informace najdete v článku [Nejčastější dotazy k GCM a FCM](https://developers.google.com/cloud-messaging/faq).
 
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
 
@@ -41,7 +41,7 @@ V tomto kurzu provedete následující akce:
 
 > [!div class="checklist"]
 > * Přidáte do mobilní aplikace výběr kategorií.
-> * Registrováno pro oznámení se značkami.
+> * Registrováno pro oznámení pomocí značek.
 > * Odešlete označená oznámení.
 > * Otestování aplikace
 
@@ -53,7 +53,7 @@ Tento kurz vychází z aplikace, kterou jste vytvořili v [kurzu Zasílání nab
 
 První krok spočívá v přidání prvků uživatelského rozhraní do stávající třídy MainActivity, aby si uživatel mohl vybrat kategorie, které si zaregistruje. Kategorie, které uživatel vybere, jsou uložené v zařízení. Při spuštění aplikace se v centru oznámení provede registrace zařízení s vybranými kategoriemi ve formě značek.
 
-1. Otevřete `res/layout/activity_main.xml file`a nahraďte obsah následujícím:
+1. `res/layout/activity_main.xml file`Otevřete a nahraďte obsah následujícím:
 
     ```xml
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -118,10 +118,10 @@ První krok spočívá v přidání prvků uživatelského rozhraní do stávaj�
     <string name="label_sports">Sports</string>
     ```
 
-    Grafické `main_activity.xml` rozložení by mělo vypadat takto na následujícím obrázku:
+    Vaše `main_activity.xml` grafické rozložení by mělo vypadat jako na následujícím obrázku:
 
     ![][A1]
-3. Vytvořte `Notifications` třídu ve stejném `MainActivity` balíčku jako vaše třída.
+3. Vytvořte třídu `Notifications` ve stejném balíčku jako svou `MainActivity` třídu.
 
     ```java
     import java.util.HashSet;
@@ -196,14 +196,14 @@ První krok spočívá v přidání prvků uživatelského rozhraní do stávaj�
     ```
 
     Tato třída uloží kategorie novinek, které bude zařízení dostávat, do místního úložiště. Obsahuje také metody registrace kategorií.
-4. Ve `MainActivity` třídě odeberte `NotificationHub` svá `GoogleCloudMessaging`soukromá pole `Notifications`pro a a přidejte pole pro :
+4. Ve `MainActivity` třídě odeberte soukromá pole pro `NotificationHub` a `GoogleCloudMessaging`a přidejte pole pro: `Notifications`
 
     ```java
     // private GoogleCloudMessaging gcm;
     // private NotificationHub hub;
     private Notifications notifications;
     ```
-5. Potom v `onCreate` metodě odeberte `hub` inicializaci `registerWithNotificationHubs` pole a metody. Pak přidejte následující řádky, které inicializují instanci třídy. `Notifications`
+5. Pak v `onCreate` metodě odstraňte inicializaci `hub` pole a `registerWithNotificationHubs` metody. Pak přidejte následující řádky, které inicializují instanci `Notifications` třídy.
 
     ```java
     protected void onCreate(Bundle savedInstanceState) {
@@ -261,7 +261,7 @@ První krok spočívá v přidání prvků uživatelského rozhraní do stávaj�
     }
     ```
 
-    Tato metoda vytvoří seznam kategorií `Notifications` a používá třídu k uložení seznamu v místním úložišti a zaregistrovat odpovídající značky s centrem oznámení. Při změně kategorií se vytvoří registrace s novými kategoriemi.
+    Tato metoda vytvoří seznam kategorií a pomocí `Notifications` třídy uloží seznam do místního úložiště a zaregistruje odpovídající značky do vašeho centra oznámení. Při změně kategorií se vytvoří registrace s novými kategoriemi.
 
 Aplikace teď dokáže do místního úložiště v zařízení uložit sadu kategorií a zaregistrovat ji v centru oznámení pokaždé, když uživatel změní vybrané kategorie.
 
@@ -272,7 +272,7 @@ Tento postup provede při spuštění registraci v centru oznámení. Použije k
 > [!NOTE]
 > Hodnota registraionId přiřazená službou GCM (Google Cloud Messaging) se může kdykoli změnit, a proto byste měli oznámení často registrovat, abyste se vyhnuli chybám. V tomto příkladu se oznámení registrují při každém spuštění aplikace. Pokud se aplikace spouštějí často, třeba častěji než jednou denně, pravděpodobně můžete registraci přeskočit kvůli úspoře šířky pásma, protože od předchozí registrace neuplynul ani den.
 
-1. Na konec metody ve `onCreate` `MainActivity` třídě přidejte následující kód:
+1. Na konec `onCreate` metody ve `MainActivity` třídě přidejte následující kód:
 
     ```java
     notifications.subscribeToCategories(notifications.retrieveCategories());

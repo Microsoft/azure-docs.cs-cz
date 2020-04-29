@@ -1,7 +1,7 @@
 ---
-title: Řečová zařízení SDK - Služba řeči
+title: Sada Speech zařízení SDK – Speech Service
 titleSuffix: Azure Cognitive Services
-description: Začínáme se sadou SDK pro řečová zařízení. Služba Řeč funguje s širokou škálou zařízení a zdrojů zvuku. Sada Speech Devices SDK je předem vyladěná knihovna, která je spárována s účelovými sadami pro vývoj mikrofonního pole.
+description: Začněte se sadou Speech SDK pro zařízení. Služba Speech funguje se širokou škálou zařízení a zdrojů zvuku. Sada Speech Devices SDK je předem vyladěná knihovna, která se spáruje s účelově postavenými vývojovými sadami pro vytváření mikrofonů.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,49 +11,49 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: erhopf
 ms.openlocfilehash: add0d27ae6a612fed0320b5329d19236b7bbbd01
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79370640"
 ---
-# <a name="what-is-the-speech-devices-sdk"></a>Co je sada SDK pro řečová zařízení?
+# <a name="what-is-the-speech-devices-sdk"></a>Co je sada Speech Devices SDK?
 
-[Služba Řeč](overview.md) funguje s širokou škálou zařízení a zdrojů zvuku. Nyní můžete své řečové aplikace posuzovat na další úroveň pomocí odpovídajícího hardwaru a softwaru. Sada Speech Devices SDK je předem vyladěná knihovna, která je spárována s účelovými sadami pro vývoj mikrofonního pole.
+[Služba Speech](overview.md) funguje se širokou škálou zařízení a zdrojů zvuku. Nyní můžete své aplikace pro rozpoznávání řeči přenést na další úroveň se shodným hardwarem a softwarem. Sada Speech Devices SDK je předem vyladěná knihovna, která se spáruje s účelově postavenými vývojovými sadami pro vytváření mikrofonů.
 
-Sada SDK pro řečová zařízení vám může pomoci:
+Sada Speech Devices SDK vám může pomáhat:
 
-- Rychle otestujte nové hlasové scénáře.
-- Snadněji integrujte cloudovou službu Speech do vašeho zařízení.
-- Vytvořte pro své zákazníky výjimečné uživatelské prostředí.
+- Rychlé testování nových hlasových scénářů.
+- Snadněji Integrujte cloudovou službu hlasové řeči do svého zařízení.
+- Vytvořte výjimečné uživatelské prostředí pro vaše zákazníky.
 
-Sada SDK s potřebou řeči spotřebovává [sadu Speech SDK](speech-sdk.md). Pomocí našich pokročilých algoritmů zpracování zvuku s mikrofonním polem zařízení k odeslání zvuku do [služby Speech](overview.md). Poskytuje přesné rozpoznávání [řeči](speech-to-text.md) na dálku prostřednictvím potlačení šumu, potlačení ozvěny, tvarování paprsku a dereverberace.
+SADA Speech SDK pro zařízení spotřebovává [sadu Speech](speech-sdk.md). Použití našich pokročilých algoritmů pro zpracování zvuku s polem mikrofonu zařízení k odeslání zvuku do [služby pro rozpoznávání řeči](overview.md). Poskytuje přesné [rozpoznávání řeči](speech-to-text.md) se špičkovým potlačením hluku, ozvěnou zrušení, beamforming a dereverberation.
 
-Sadou SDK pro řečová zařízení můžete také použít k vytvoření okolních zařízení, která mají vlastní [vlastní klíčové slovo](speech-devices-sdk-create-kws.md). Vlastní klíčové slovo poskytuje podnět, který spustí interakci uživatele, která je jedinečná pro vaši značku.
+Můžete také použít sadu Speech SDK pro zařízení k vytváření okolních zařízení, která mají vlastní [přizpůsobené klíčové slovo](speech-devices-sdk-create-kws.md). Vlastní klíčové slovo poskytuje hromádku, která spouští interakci uživatele, která je pro vaši značku jedinečná.
 
-Sada SDK pro řečová zařízení umožňuje různé scénáře s podporou hlasu, například [hlasové asistenty](https://aka.ms/bots/speech/va), systémy řazení přes jednotku, [přepis konverzace](conversation-transcription-service.md)a chytré reproduktory. Můžete reagovat na uživatele textem, mluvit jim ve výchozím nebo [vlastním hlasu](how-to-customize-voice-font.md), poskytovat výsledky hledání, [překládat](speech-translation.md) do jiných jazyků a další. Těšíme se na to, co stavíte!
+Sada Speech Devices SDK umožňuje celou řadu scénářů s podporou hlasu, jako jsou například [hlasové asistenty](https://aka.ms/bots/speech/va), systémy řazení, [přepisy konverzací](conversation-transcription-service.md)a inteligentní reproduktory. Můžete reagovat na uživatele s textem, mluvit zpátky do nich ve výchozím nebo [vlastním hlasu](how-to-customize-voice-font.md), poskytovat výsledky hledání, [překládat](speech-translation.md) je na jiné jazyky a další. Těšíme se, abychom viděli, co sestavíte!
 
 ## <a name="get-the-speech-devices-sdk"></a>Získání sady Speech Devices SDK
 
 ### <a name="android"></a>Android
 
-Pro Android zařízení stáhnout nejnovější verzi [Android řeči zařízení SDK](https://aka.ms/sdsdk-download-android).
+V případě Androidu si zařízení stáhnou nejnovější verzi [sady SDK pro zařízení s Androidem pro rozpoznávání řeči](https://aka.ms/sdsdk-download-android).
 
 ### <a name="windows"></a>Windows
 
-Pro Windows ukázkové aplikace je k dispozici jako aplikace java pro více platforem. Stáhněte si nejnovější verzi sady [JRE Speech Devices SDK](https://aka.ms/sdsdk-download-JRE).
-Aplikace je vytvořena s balíčkem Speech SDK a Eclipse Java IDE (v4) na 64bitovém systému Windows. Běží na 64bitovém prostředí Java 8 Runtime Environment (JRE).
+V případě systému Windows je ukázková aplikace poskytována jako aplikace Java pro různé platformy. Stáhněte si nejnovější verzi [sady JRE Speech pro zařízení](https://aka.ms/sdsdk-download-JRE).
+Aplikace je sestavená pomocí balíčku sady Speech SDK a Java IDE v 64 (v4) na Windows. Běží na 64bitovém prostředí Java 8 Runtime Environment (JRE).
 
 ### <a name="linux"></a>Linux
 
-Pro Linux je ukázková aplikace poskytována jako aplikace Java pro různé platformy. Stáhněte si nejnovější verzi sady [JRE Speech Devices SDK](https://aka.ms/sdsdk-download-JRE).
-Aplikace je postavena s balíčkem Speech SDK a Eclipse Java IDE (v4) na 64bitovém Linuxu (Ubuntu 16.04, Ubuntu 18.04, Debian 9, RHEL 8, CentOS 8). Běží na 64bitovém prostředí Java 8 Runtime Environment (JRE).
+Pro Linux je ukázková aplikace poskytována jako aplikace Java pro různé platformy. Stáhněte si nejnovější verzi [sady JRE Speech pro zařízení](https://aka.ms/sdsdk-download-JRE).
+Aplikace je sestavená pomocí balíčku sady Speech SDK a Java IDE na 64 (v4) na. Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9, RHEL 8, CentOS 8). Běží na 64bitovém prostředí Java 8 Runtime Environment (JRE).
 
-Další binární soubory jsou k dispozici pro podporu nadcházejících zařízení, [Roobo v2 DDK](https://aka.ms/sdsdk-download-roobov2), [Urbetter DDK](https://aka.ms/sdsdk-download-urbetter)a [GGEC Speaker](https://aka.ms/sdsdk-download-speaker).
+Další binární soubory jsou k dispozici pro podporu nadcházejících zařízení, [Roobo v2 DDK](https://aka.ms/sdsdk-download-roobov2), [Urbetter DDK](https://aka.ms/sdsdk-download-urbetter)a [mluvčího GGEC](https://aka.ms/sdsdk-download-speaker).
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Výběr řečového zařízení](get-speech-devices-sdk.md)
+> [Volba zařízení pro rozpoznávání řeči](get-speech-devices-sdk.md)
 > [!div class="nextstepaction"]
 > [Získejte zdarma klíč předplatného služby Speech](get-started.md)

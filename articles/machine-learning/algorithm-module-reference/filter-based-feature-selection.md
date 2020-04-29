@@ -1,7 +1,7 @@
 ---
-title: 'Výběr funkce založený na filtru: Odkaz na modul'
+title: 'Výběr funkcí založených na filtrech: odkaz na modul'
 titleSuffix: Azure Machine Learning
-description: Zjistěte, jak pomocí modulu výběru funkcí založených na filtru v Azure Machine Learning identifikovat funkce v datové sadě s největším prediktivním výkonem.
+description: Naučte se používat modul výběru funkcí založený na filtrech v Azure Machine Learning k identifikaci funkcí v datové sadě s největším prediktivním výkonem.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,127 +10,127 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
 ms.openlocfilehash: c009a98931240e92527035e51fdce3f1c92f5212
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79477591"
 ---
 # <a name="filter-based-feature-selection"></a>Výběr funkcí na základě filtrů
 
-Tento článek popisuje, jak používat modul výběru funkcí založených na filtru v návrháři Azure Machine Learning (preview). Tento modul vám pomůže identifikovat sloupce ve vstupní datové sadě, které mají největší prediktivní výkon. 
+Tento článek popisuje, jak použít modul výběru funkce založený na filtrech v Návrháři Azure Machine Learning (Preview). Tento modul vám pomůže identifikovat sloupce ve vstupní datové sadě, které mají největší prediktivní výkon. 
 
-Obecně se *výběr funkcí* vztahuje k procesu aplikace statistických testů na vstupy zadaný výstup. Cílem je určit, které sloupce jsou prediktivnější výstupu. Modul Výběr funkcí založený na filtru poskytuje více algoritmů výběru funkcí, ze kterých si můžete vybrat. Modul obsahuje korelační metody, jako je například Pearsonova korelace a hodnoty chí-kvadrát. 
+Obecně platí, že *Výběr funkcí* odkazuje na proces použití statistických testů na vstupy v zadaném výstupu. Cílem je určit, které sloupce mají více prediktivní výstup. Modul výběru funkcí založený na filtrech poskytuje několik algoritmů výběru funkcí, ze kterých si můžete vybrat. Modul zahrnuje metody korelace, jako je korelace Pearsonova a hodnoty chí-kvadrát. 
 
-Při použití modulu výběr funkce založené na filtru zadáte datovou sadu a identifikujete sloupec, který obsahuje popisek nebo závislou proměnnou. Potom zadáte jedinou metodu, která se použije při měření důležitosti funkce.
+Když použijete modul výběru funkce založený na filtrech, poskytnete datovou sadu a určíte sloupec, který obsahuje popisek nebo závislou proměnnou. Pak můžete zadat jedinou metodu, která se má použít při měření důležitosti funkce.
 
-Modul vyveze datovou sadu, která obsahuje sloupce nejlepších funkcí, seřazené podle prediktivního výkonu. Také výstupy názvy funkcí a jejich skóre z vybrané metriky.  
+Modul výstupuje datovou sadu, která obsahuje nejlepší sloupce funkce seřazené podle prediktivního výkonu. Také Vypíše názvy funkcí a jejich skóre z vybrané metriky.  
 
-## <a name="what-filter-based-feature-selection-is"></a>Jaký výběr funkcí založených na filtru je  
+## <a name="what-filter-based-feature-selection-is"></a>Výběr funkcí založených na filtrech  
 
-Tento modul pro výběr funkcí se nazývá "na základě filtru", protože pomocí vybrané metriky najdete irelevantní atributy. Potom odfiltrovat redundantní sloupce z modelu. Zvolíte jednu statistickou míru, která vyhovuje vašim datům, a modul vypočítá skóre pro každý sloupec funkce. Sloupce jsou vráceny seřazené podle jejich skóre funkcí. 
+Tento modul pro výběr funkcí se nazývá "založený na filtrech", protože vybraná metrika se používá k vyhledání nerelevantních atributů. Pak vyfiltrujete redundantní sloupce z modelu. Zvolíte jednu statistickou míru, která bude vyhovovat vašim datům, a modul vypočítá skóre pro každý sloupec funkce. Sloupce se vrátí podle skóre jejich funkcí. 
 
 Výběrem správných funkcí můžete potenciálně zlepšit přesnost a efektivitu klasifikace. 
 
-Obvykle používáte pouze sloupce s nejlepší skóre k vytvoření prediktivní model. Sloupce se špatným skóre výběru funkcí mohou být ponechány v datové sadě a ignorovány při vytváření modelu.  
+Obvykle používáte pouze sloupce s nejlepším skóre k sestavení prediktivního modelu. Sloupce s nedostatečným skóre výběru funkcí mohou být ponechány v datové sadě a při sestavování modelu ignorovány.  
 
-## <a name="how-to-choose-a-feature-selection-metric"></a>Jak vybrat metriku výběru funkce
+## <a name="how-to-choose-a-feature-selection-metric"></a>Volba metriky výběru funkcí
 
-Modul Výběr funkcí založených na filtru poskytuje řadu metrik pro posouzení informační hodnoty v každém sloupci. Tato část obsahuje obecný popis jednotlivých metrik a způsob jeho použití. Další požadavky na použití jednotlivých metrik naleznete v [technických poznámkách](#technical-notes) a v [pokynech](#how-to-configure-filter-based-feature-selection) pro konfiguraci jednotlivých modulů.
+Modul výběru funkcí založený na filtrech poskytuje celou řadu metrik pro vyhodnocení hodnoty informací v jednotlivých sloupcích. V této části najdete obecný popis jednotlivých metrik a jejich použití. Další požadavky na používání každé metriky najdete v [technických poznámkách](#technical-notes) a v [pokynech](#how-to-configure-filter-based-feature-selection) ke konfiguraci jednotlivých modulů.
 
--   **Pearsonova korelace**  
+-   **Korelace Pearsonova**  
 
-    Pearsonova korelační statistika neboli Pearsonův korelační koeficient je `r` také známá ve statistických modelech jako hodnota. Pro všechny dvě proměnné vrátí hodnotu, která označuje sílu korelace.
+    Korelační korelace Pearsonova nebo korelačního koeficientu Pearsonova je také známo ve statistických modelech jako `r` hodnota. U všech dvou proměnných vrátí hodnotu, která označuje sílu korelace.
 
-    Pearsonův korelační koeficient se vypočítá tak, že se vezme kovariance dvou proměnných a vydělí se součinem jejich směrodatných odchylek. Změny měřítka ve dvou proměnných nemají vliv na koeficient.  
+    Korelační koeficient Pearsonova je vypočítán tím, že přijímá koodchylku dvou proměnných a vydělí součin jejich směrodatných odchylek. Změny měřítka ve dvou proměnných neovlivňují koeficient.  
 
--   **Chi na druhou**  
+-   **Chí na druhou**  
 
-    Obousměrný test chí-squared je statistická metoda, která měří, jak blízko jsou očekávané hodnoty skutečným výsledkům. Metoda předpokládá, že proměnné jsou náhodné a jsou čerpány z odpovídajícího vzorku nezávislých proměnných. Výsledná statistika chí-kvadrát označuje, jak daleko jsou výsledky od očekávaného (náhodného) výsledku.  
+    Obousměrný test chí-kvadrát je statistická metoda, která měří způsob, jakým se očekává, že se očekávané hodnoty blíží skutečným výsledkům. Metoda předpokládá, že proměnné jsou náhodné a vykresleny z adekvátního vzorku nezávislých proměnných. Výsledné statistiky chí-kvadrát ukazují, jak daleko jsou výsledky z očekávaného (náhodného) výsledku.  
 
 
 > [!TIP]
-> Pokud potřebujete jinou možnost pro vlastní metodu výběru funkce, použijte modul [Spustit skript R.](execute-r-script.md) 
+> Pokud pro metodu výběru vlastní funkce potřebujete jinou možnost, použijte modul [spuštění skriptu jazyka R](execute-r-script.md) . 
 
-## <a name="how-to-configure-filter-based-feature-selection"></a>Konfigurace výběru funkcí založených na filtru
+## <a name="how-to-configure-filter-based-feature-selection"></a>Postup konfigurace výběru funkcí založených na filtrech
 
-Zvolíte standardní statistickou metriku. Modul vypočítá korelaci mezi dvojicí sloupců: sloupec popisku a sloupec prvku.
+Zvolíte standardní statistickou metriku. Modul vypočítá korelaci mezi dvojicí sloupců: sloupec popisku a sloupec funkce.
 
-1.  Přidejte do kanálu modul výběru funkcí založených na filtru. Najdete ji v kategorii **Výběr funkcí** v návrháři.
+1.  Přidejte do svého kanálu modul výběru funkcí založený na filtrech. Můžete ji najít v kategorii **výběru funkcí** v návrháři.
 
 2. Připojte vstupní datovou sadu, která obsahuje alespoň dva sloupce, které jsou potenciálními funkcemi.  
 
-    Chcete-li zajistit, aby byl sloupec analyzován a generováno skóre prvku, nastavte atribut **IsFeature** pomocí modulu [Upravit metadata.](edit-metadata.md) 
+    Chcete-li zajistit, aby byl sloupec analyzován, a je vygenerováno skóre funkce, použijte modul [Upravit metadata](edit-metadata.md) a **nastavte atribut vlastnost** is. 
 
     > [!IMPORTANT]
-    > Ujistěte se, že sloupce, které poskytujete jako vstup, jsou potenciální funkce. Například sloupec, který obsahuje jednu hodnotu, nemá žádnou informační hodnotu.
+    > Ujistěte se, že sloupce, které poskytujete jako vstup, jsou potenciální funkce. Například sloupec, který obsahuje jednu hodnotu, nemá žádnou hodnotu informace.
     >
-    > Pokud víte, že některé sloupce by vytvořily špatné funkce, můžete je odebrat z výběru sloupců. Pomocí modulu [Upravit metadata](edit-metadata.md) můžete také označit jako **kategorické**. 
-3.  V **části Metoda hodnocení funkcí**zvolte jednu z následujících zavedených statistických metod, které se mají použít při výpočtu skóre.  
+    > Pokud víte, že některé sloupce by měly špatné funkce, můžete je z výběru sloupce odebrat. Můžete také použít modul [Upravit metadata](edit-metadata.md) a označit ho jako **kategorií**. 
+3.  V případě **metody bodování funkcí**vyberte jednu z následujících vytvořených statistických metod, které se použijí při výpočtu skóre.  
 
     | Metoda              | Požadavky                             |
     | ------------------- | ---------------------------------------- |
-    | Pearsonova korelace | Popisek může být textový nebo číselný. Funkce musí být číselné. |
-    Chi na druhou| Popisky a funkce mohou být textové nebo číselné. Tuto metodu použijte pro výpočet důležitosti funkce pro dva kategorické sloupce.|
+    | Korelace Pearsonova | Popisek může být text nebo číslo. Funkce musí být číselné. |
+    Chí na druhou| Popisky a funkce mohou být textové nebo číselné. Tuto metodu použijte pro výpočet důležitosti funkcí pro dva kategorií sloupce.|
 
     > [!TIP]
-    > Pokud vybranou metriku změníte, všechny ostatní výběry se vynulují. Takže se ujistěte, že tuto možnost nejprve.
-4.  Vyberte možnost **Pracovat pouze se sloupci prvku,** chcete-li generovat skóre pouze pro sloupce, které byly dříve označeny jako prvky. 
+    > Pokud změníte vybranou metriku, všechny ostatní výběry se resetují. Nezapomeňte nejdřív tuto možnost nastavit.
+4.  Vyberte možnost **pracovat se sloupci funkce pouze** k vygenerování skóre pouze pro sloupce, které byly dříve označeny jako funkce. 
 
-    Pokud tuto možnost vymažete, modul vytvoří skóre pro libovolný sloupec, který jinak splňuje kritéria, až do počtu sloupců zadaných v **poli Počet požadovaných funkcí**.  
+    Pokud zrušíte zaškrtnutí tohoto políčka, modul vytvoří skóre pro libovolný sloupec, který jinak splňuje kritéria, až do počtu sloupců zadaných v **počtu požadovaných funkcí**.  
 
-5.  Ve **sloupci Cíl**vyberte **volič sloupce Spuštění,** chcete-li vybrat sloupec popisku podle názvu nebo podle indexu. (Indexy jsou založeny na jednom.)  
-    Sloupec popisku je vyžadován pro všechny metody, které zahrnují statistickou korelaci. Modul vrátí chybu návrhu, pokud zvolíte žádný sloupec popisku nebo více sloupců popisku. 
+5.  V poli **cílový sloupec**vyberte možnost **Spustit selektor sloupců** a vyberte sloupec popisku buď podle názvu, nebo podle jeho indexu. (Indexy jsou založené na jednom.)  
+    Pro všechny metody, které zahrnují statistickou korelaci, je vyžadován sloupec popisku. Modul vrátí chybu v době návrhu, pokud jste zvolili možnost žádný sloupec popisku nebo více sloupců popisku. 
 
-6.  Do **pole Počet požadovaných funkcí**zadejte počet sloupců prvků, které chcete vrátit jako výsledek:  
+6.  V poli **počet požadovaných funkcí**zadejte počet sloupců funkce, které chcete vrátit, jako výsledek:  
 
-    - Minimální počet funkcí, které můžete zadat, je jeden, ale doporučujeme zvýšit tuto hodnotu.  
+    - Minimální počet funkcí, které můžete zadat, je jeden, ale doporučujeme tuto hodnotu zvýšit.  
 
-    - Pokud je zadaný počet požadovaných prvků větší než počet sloupců v datové sadě, jsou vráceny všechny funkce. Dokonce i funkce s nulovým skóre jsou vráceny.  
+    - Pokud je zadaný počet požadovaných funkcí větší než počet sloupců v datové sadě, vrátí se všechny funkce. Vrátí se i funkce s nulovým skóre.  
 
-    - Pokud zadáte méně sloupců výsledků, než jsou sloupce prvků, budou prvky seřazeny podle sestupné hodu. Jsou vráceny pouze horní funkce. 
+    - Pokud zadáte méně sloupců výsledků, než jsou sloupce funkce, jsou tyto funkce seřazené podle sestupného skóre. Vrátí se jenom ty hlavní funkce. 
 
-7.  Odešlete kanál nebo vyberte modul výběr u stavů založený na filtru a pak vyberte **Spustit vybranou položku**.
+7.  Odešlete kanál nebo vyberte modul Výběr funkce založený na filtrech a pak vyberte **Spustit vybrané**.
 
 
 ## <a name="results"></a>Výsledky
 
 Po dokončení zpracování:
 
-+ Chcete-li zobrazit úplný seznam analyzovaných sloupců prvků a jejich skóre, klepněte pravým tlačítkem myši na modul a vyberte možnost **Vizualizovat**.  
++ Pokud chcete zobrazit úplný seznam sloupců analyzovaných funkcí a jejich skóre, klikněte pravým tlačítkem na modul a vyberte **vizualizovat**.  
 
-+ Chcete-li zobrazit datovou sadu na základě kritérií výběru funkcí, klepněte pravým tlačítkem myši na modul a vyberte možnost **Vizualizovat**. 
++ Pokud chcete zobrazit datovou sadu na základě kritérií výběru vaší funkce, klikněte pravým tlačítkem na modul a vyberte **vizualizovat**. 
 
-Pokud datová sada obsahuje méně sloupců, než jste očekávali, zkontrolujte nastavení modulu. Zkontrolujte také datové typy sloupců, které jsou k dispozici jako vstup. Pokud například nastavíte **počet požadovaných prvků** na 1, výstupní datová sada obsahuje pouze dva sloupce: sloupec popisku a sloupec s nejvíce vysoce hodnocenými funkcemi.
+Pokud datová sada obsahuje méně sloupců, než jste očekávali, podívejte se do nastavení modulu. Také ověřte datové typy sloupců, které jsou zadány jako vstup. Například pokud nastavíte **počet požadovaných funkcí** na 1, výstupní datová sada obsahuje pouze dva sloupce: sloupec popisek a nejmnohem vysoce seřazený sloupec funkce.
 
 
 ##  <a name="technical-notes"></a>Technické poznámky  
 
 ### <a name="implementation-details"></a>Podrobnosti implementace
 
-Pokud použijete Pearsonovu korelaci na číselný prvek a kategorický popisek, skóre funkce se vypočítá takto:  
+Pokud používáte korelaci Pearsonova s numerickou funkcí a popiskem kategorií, skóre funkce se vypočítá takto:  
 
-1.  Pro každou úroveň v kategorickém sloupci vypočítejte podmíněný průměr číselného sloupce.  
+1.  Pro každou úroveň ve sloupci kategorií vypočítá podmíněný průměr číselného sloupce.  
 
-2.  Korelujte sloupec podmíněných prostředků s číselným sloupcem.  
+2.  Korelace sloupce podmíněného znamená s číselným sloupcem.  
 
 ### <a name="requirements"></a>Požadavky  
 
--   Skóre výběru funkcí nelze vygenerovat pro žádný sloupec, který je označen jako sloupec **Popisek** nebo **Skóre.**  
+-   Skóre výběru funkce nelze vygenerovat pro žádný sloupec, který je určen jako sloupec **popisku** nebo **skóre** .  
 
--   Pokud se pokusíte použít metodu vyhodnocování se sloupcem datového typu, který metoda nepodporuje, modul vyvolá chybu. Nebo bude sloupci přiřazeno nulové skóre.  
+-   Pokusíte-li se použít metodu bodování se sloupcem datového typu, který metoda nepodporuje, modul vyvolá chybu. Do sloupce se ale přiřadí nula skóre.  
 
--   Pokud sloupec obsahuje logické (true/false) hodnoty, jsou `True = 1` `False = 0`zpracovány jako a .  
+-   Pokud sloupec obsahuje logickou hodnotu (true/false), zpracuje se jako `True = 1` a. `False = 0`  
 
--   Sloupec nemůže být funkcí, pokud byl označen jako **Popisek** nebo **Skóre**.  
+-   Sloupec nemůže být funkcí, pokud byl označený jako **popisek** nebo **skóre**.  
 
-### <a name="how-missing-values-are-handled"></a>Jak jsou zpracovány chybějící hodnoty  
+### <a name="how-missing-values-are-handled"></a>Jak se zpracovávají chybějící hodnoty  
 
--   Jako cílový sloupec (popisek) nelze zadat žádný sloupec, ve kterých chybí všechny hodnoty.  
+-   Nemůžete zadat sloupec Target (Label), který obsahuje všechny chybějící hodnoty.  
 
--   Pokud sloupec obsahuje chybějící hodnoty, modul je ignoruje při výpočtu skóre pro sloupec.  
+-   Pokud sloupec obsahuje chybějící hodnoty, modul je při výpočtu skóre sloupce ignoruje.  
 
--   Pokud sloupec označený jako sloupec prvku obsahuje všechny chybějící hodnoty, modul přiřadí nulové skóre.   
+-   Pokud sloupec označený jako sloupec funkce obsahuje všechny chybějící hodnoty, modul přiřadí nula skóre.   
 
 
 ## <a name="next-steps"></a>Další kroky

@@ -1,7 +1,7 @@
 ---
-title: Přidání entit – LUIS
+title: Přidat entity – LUIS
 titleSuffix: Azure Cognitive Services
-description: Vytvořte entity pro extrahování klíčových dat z projevy uživatelů v aplikacích language understanding (LUIS). Extrahovaná data entity používá klientská aplikace k požadavkům zákazníků fullfil.
+description: Vytvořte entity pro extrakci klíčových dat z uživatelských projevy v aplikacích Language Understanding (LUIS). Extrahovaná data entity používá klientská aplikace pro moje požadavky zákazníků.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,168 +12,168 @@ ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: diberry
 ms.openlocfilehash: 1f2b293acdc77e25e6b932c47d466cc28a04a2b6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79220905"
 ---
-# <a name="add-entities-to-extract-data"></a>Přidání entit pro extrahování dat 
+# <a name="add-entities-to-extract-data"></a>Přidat entity pro extrakci dat 
 
-Vytvořte entity pro extrahování klíčových dat z projevy uživatelů v aplikacích language understanding (LUIS). Extrahovaná data entit jsou používána klientskou aplikací k požadavkům zákazníků fullfil.
+Vytvořte entity pro extrakci klíčových dat z uživatelských projevy v aplikacích Language Understanding (LUIS). Extrahovaná data entity používá vaše klientská aplikace pro moje požadavky zákazníků.
 
-Entita představuje slovo nebo frázi uvnitř utterance, které chcete extrahovat. Entity popisují informace relevantní pro záměr a někdy jsou nezbytné pro to, aby vaše aplikace prováděla svůj úkol. Můžete vytvořit entity při přidání příklad utterance k záměru nebo na rozdíl od (před nebo po) přidání příklad utterance k záměru.
+Entita představuje slovo nebo frázi uvnitř utterance, který chcete extrahovat. Entity popisují informace týkající se záměru a někdy jsou nezbytné, aby vaše aplikace mohla provádět její úkoly. Můžete vytvořit entity, když přidáte příklad utterance k záměru nebo od (před nebo po) přidání příkladu utterance k záměru.
 
 [!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
-## <a name="plan-entities-then-create-and-label"></a>Plánování entit a vytvoření a označení popisku
+## <a name="plan-entities-then-create-and-label"></a>Plánování entit a pak vytvoření a označení
 
-Entity získané počítačem lze vytvořit z ukázkových projevů nebo vytvořit ze stránky **Entity.** 
+Entity, které se naučily počítačem, se dají vytvořit z příkladu projevy nebo vytvořit ze stránky **entity** . 
 
-Obecně je osvědčeným postupem trávit čas plánováním entit před vytvořením entity navoděné počítačem na portálu. Potom vytvořte entitu získanou počítačem z promluvy příkladu s tolika podrobnostmi v dílčích součástech a popisovačech a omezeních, kolik znáte v té době. Kurz [rozložitelné entity](tutorial-machine-learned-entity.md) ukazuje, jak používat tuto metodu. 
+Obecně platí, že je potřeba věnovat čas plánování entit předtím, než na portálu vytvoříte entitu získanou počítačem. Pak vytvořte entitu získanou počítačem z příkladu utterance s toliki podrobnostmi dílčích komponent a popisovačů a omezení v době, kdy víte v čase. Tento [kurz](tutorial-machine-learned-entity.md) ukazuje, jak použít tuto metodu. 
 
-V rámci plánování entit můžete vědět, že potřebujete entity odpovídající textu (například předem vytvořené entity, entity regulárních výrazů nebo entity seznamu). Můžete je vytvořit ze stránky **Entity** předtím, než jsou označeny v příkladech projevy. 
+V rámci plánování entit můžete znát, že budete potřebovat entity vyhovující textu (například předem připravené entity, entity regulárních výrazů nebo seznam entit). Můžete je vytvořit ze stránky **entity** předtím, než jsou označeny jako projevy. 
 
-Při popisování můžete buď označit jednotlivé entity a pak vytvořit na nadřazenou entitu naučnou počítačem. Nebo můžete začít s nadřazenou entitou naučenou počítačem a rozložit se na podřízené entity. 
+Při označování můžete jednotlivé entity označit popiskem a pak sestavit až na nadřazenou entitu počítačového učení. Nebo můžete začít s entitou získanou nadřazeným počítačem a rozložit ji na podřízené entity. 
 
 > [!TIP] 
->Označte všechna slova, která mohou označovat entitu, i v případě, že slova nejsou použita při extrahování v klientské aplikaci. 
+>Označte všechna slova, která mohou označovat entitu, a to i v případě, že se slova při extrakci v klientské aplikaci nepoužívají. 
 
-## <a name="creating-an-entity-before-or-with-labeling"></a>Vytvoření entity před nebo s popiskem
+## <a name="creating-an-entity-before-or-with-labeling"></a>Vytvoření entity před nebo s popisky
 
-V následující tabulce zjistíte, které entity, kde chcete vytvořit nebo přidat jednotlivé entity do aplikace. 
+Následující tabulka vám pomůže pochopit, které entity chcete do aplikace vytvořit nebo přidat jednotlivé entity. 
 
 |Typ entity|Kde vytvořit entitu na portálu LUIS|
 |--|--|
-|Strojově naučená entita|Entity nebo podrobnosti záměru|
-|Entita seznamu|Entity nebo podrobnosti záměru|
+|Strojově naučená entita|Podrobnosti o entitách nebo záměrech|
+|Entita seznamu|Podrobnosti o entitách nebo záměrech|
 |Entiay regulárního výrazu|Entity|
 |Entita Pattern.any|Entity|
-|Předem sestavená entita|Entity|
-|Předem vytvořená entita domény|Entity|
+|Předem vytvořená entita|Entity|
+|Předem sestavená doménová entita|Entity|
 
-Můžete vytvořit všechny entity ze stránky **Entity** nebo můžete vytvořit několik entit jako součást označení entity v příkladu utterance na stránce **podrobností záměru.** Entitu můžete _označit_ pouze v příkladu utterance ze stránky **podrobností záměru.** 
+Můžete vytvořit všechny entity ze stránky **entity** , nebo můžete vytvořit několik entit jako součást popisu entity v příkladu utterance na stránce s **podrobnostmi o záměru** . Entitu můžete _Označit_ jenom na příkladu utterance ze stránky s **podrobnostmi záměru** . 
 
-## <a name="create-a-machine-learned-entity"></a>Vytvoření entity naváděné strojem
+## <a name="create-a-machine-learned-entity"></a>Vytvořit entitu získanou počítačem
 
 [!INCLUDE [Create and label entities in machine-learned tutorial](includes/decomposable-tutorial-links.md)]
 
-## <a name="create-a-text-matching-entity"></a>Vytvoření entity odpovídající textu
+## <a name="create-a-text-matching-entity"></a>Vytvoření entity, která odpovídá textu
 
-Pomocí entit odpovídajících textu poskytujete několik způsobů extrahování dat:
+Použití entit pro porovnání textu nabízí několik způsobů, jak extrahovat data:
 
-|Entity odpovídající textu|Účel|
+|Entity, které se shodují s textem|Účel|
 |--|--|
-|[Entita seznamu](#add-list-entities-for-exact-matches)|seznam kanonických jmen spolu se synonymy jako alternativní formy|
-|Entiay regulárního výrazu|shoda textu pomocí entity regulárního výrazu|
-|[Předem sestavená entita](tutorial-machine-learned-entity.md#add-prebuilt-number-to-help-extract-data)|odpovídají běžným datovým typům, jako je číslo, e-mail, datum|
-|Předem vytvořená entita domény|shody pomocí vybraných domén předmětů|
-|[Pattern.any](#add-a-patternany-entity)| tak, aby odpovídaly entitám, které lze snadno zaměnit s okolním textem|  
+|[Entita seznamu](#add-list-entities-for-exact-matches)|seznam kanonických názvů spolu s synonymy jako s použitím alternativních forem|
+|Entiay regulárního výrazu|porovnat text s použitím entity regulárního výrazu|
+|[Předem vytvořená entita](tutorial-machine-learned-entity.md#add-prebuilt-number-to-help-extract-data)|odpovídají běžným datovým typům, jako je číslo, e-mail, datum|
+|Předem sestavená doménová entita|shoda s použitím vybraných domén předmětu|
+|[Vzor. any](#add-a-patternany-entity)| aby odpovídaly entitám, které mohou být snadno zaměňovány s okolním textem|  
 
-Předem sestavené entity fungují bez poskytnutí vlastních trénovacích dat. Ostatní entity potřebují poskytnout data školení zákazníků (například položky entity Seznam) nebo výraz (například regulární výraz nebo pattern.any).
+Předem připravené entity fungují bez poskytování vlastních školicích dat. Ostatní entity potřebují zadat data školení zákazníka (například položky seznamu entit) nebo výraz (například regulární výraz nebo vzor. any).
 
 <a name="add-list-entities"></a>
 
 ### <a name="how-to-create-a-new-custom-entity"></a>Jak vytvořit novou vlastní entitu
 
-1. Na portálu LUIS přejděte do části **Spravovat** a potom na stránku **Entity.** 
-1. Vyberte **+ Vytvořit**, pak vyberte typ entity. 
-1. Pokračujte v konfiguraci entity a po dokončení vyberte **Vytvořit.** 
+1. Na portálu LUIS přejděte do části **Správa** a pak na stránku **entity** . 
+1. Vyberte **+ vytvořit**a pak vyberte typ entity. 
+1. Pokračujte v konfiguraci entity a potom po dokončení vyberte **vytvořit** . 
 
-### <a name="add-list-entities-for-exact-matches"></a>Přidání entit seznamu pro přesné shody
+### <a name="add-list-entities-for-exact-matches"></a>Přidat seznam entit pro přesné shody
 
-Entity seznamu představují pevnou uzavřenou sadu souvisejících slov. Zatímco vy, jako autor, můžete změnit seznam, LUIS nebude zvětšit nebo zmenšit seznam. Můžete také importovat do existující entity seznamu pomocí formátu [list entity .json(reference-entity-list.md#example-json-to-import-into-list-entity). 
+Seznam entit představuje pevně uzavřenou sadu příbuzných slov. I když jako autor může seznam změnit, LUIS nebude zvětšovat nebo zmenšovat seznam. Můžete také importovat do existující entity seznamu pomocí formátu [list entity. JSON (Reference-entity-list. MD # example-JSON-to-list-into-import-entita). 
 
-Následující seznam ukazuje kanonický název a synonyma. 
+Následující seznam znázorňuje kanonický název a synonyma. 
 
-|Barva - název položky seznamu|Barva - synonyma|
+|Název položky seznamu barev|Barva – synonyma|
 |--|--|
-|Červený|karmínový, krev, jablko, hasičský vůz|
-|Blue|nebe, azurová, kobalt|
-|Green|kelly, vápno|
+|Červený|Crimson, krev, Apple, hasicí stroj|
+|Blue|nebe, Azure, kobalt|
+|Green|Kelly, vápno|
 
-Postup slouží k vytvoření entity seznamu. Po vytvoření entity seznamu není nutné označovat příklad projevy v záměru. Položky seznamu a synonyma jsou spárovány pomocí přesného textu. 
+Pomocí postupu vytvořte entitu seznamu. Po vytvoření entity seznamu nemusíte v záměru popsat vzorový projevy. Položky seznamu a synonyma se shodují pomocí přesného textu. 
 
-1. V části **Sestavení** vyberte **Entity** v levém panelu a pak vyberte **+ Vytvořit**.
+1. V části **sestavení** vyberte **entity** na levém panelu a potom vyberte **+ vytvořit**.
 
-1. V **dialogovém** okně Vytvořit typ entity zadejte název `Colors` entity, například a vyberte **List**.
-1. V **dialogovém okně Vytvořit entitu seznamu** zadejte do **podseznamu Přidat nový....** název položky seznamu, například `Green`, a přidejte synonyma.
+1. V dialogovém okně **vytvořit typ entity** zadejte název entity, například `Colors` a vyberte **seznam**.
+1. V dialogovém okně **vytvořit entitu** vyberte v **podseznamu přidat nový**, zadejte název položky seznamu, například `Green`a pak přidejte synonyma.
 
     > [!div class="mx-imgBorder"]
-    > ![Vytvořte seznam barev jako entitu seznamu na stránce podrobností entity.](media/how-to-add-entities/create-list-entity-of-colors.png) 
+    > ![Na stránce podrobností entity vytvořte seznam barev jako entitu seznamu.](media/how-to-add-entities/create-list-entity-of-colors.png) 
 
-1. Po přidání položek seznamu a synonym vyberte **Vytvořit**.
+1. Až skončíte s přidáváním položek seznamu a synonym, vyberte **vytvořit**.
 
-    Až budete hotovi se skupinou změn v aplikaci, nezapomeňte **trénovat** aplikaci. Netrénujte aplikaci po jedné změně. 
+    Až budete hotovi se skupinou změn v aplikaci, nezapomeňte aplikaci **naučit** . Neprovádějte výuku aplikace po jedné změně. 
 
     > [!NOTE]
-    > Tento postup ukazuje vytvoření a označení entity seznamu z příkladu utterance na stránce **podrobností záměru.** Můžete také vytvořit stejnou entitu ze stránky **Entity.**
+    > Tento postup ukazuje vytvoření a označení entity seznamu z příkladu utterance na stránce s **podrobnostmi o záměru** . Stejnou entitu můžete také vytvořit ze stránky **entity** .
 
 ## <a name="add-a-role-for-an-entity"></a>Přidání role pro entitu
 
-Role je pojmenovaná podtyp entity založená na kontextu. 
+Role je pojmenovaný podtyp entity na základě kontextu. 
 
-### <a name="add-a-role-to-distinguish-different-contexts"></a>Přidání role k rozlišení různých kontextů
+### <a name="add-a-role-to-distinguish-different-contexts"></a>Přidání role pro odlišení různých kontextů
 
-V následujícím utterance existují dvě umístění a každý je specifikován sémanticky slova kolem něj, jako `to` je například a `from`: 
+V následujících utterance jsou dvě umístění, přičemž každý z nich je sémanticky určenými slovy, například `to` a: `from` 
 
 `Pick up the package from Seattle and deliver to New York City.`
 
-V tomto postupu `origin` `destination` přidejte a role předem sestavené geographyV2 entity.
+V tomto postupu přidáte `origin` k předem `destination` sestavené entitě geographyV2 a role.
 
-1. V části **Sestavení** vyberte **Entity** v levém panelu.
+1. V části **Build (sestavení** ) vyberte **entity** na levém panelu.
 
-1. Vyberte **+ Přidat předem vytvořenou entitu**. Vyberte **geographyV2** a pak vyberte **Hotovo**. Tím přidáte předem sestavenou entitu do aplikace.
+1. Vyberte **+ Přidat předem vytvořenou entitu**. Vyberte **geographyV2** a potom vyberte **Hotovo**. Tím se do aplikace přidá předem sestavená entita.
     
     Pokud zjistíte, že váš vzor zahrnující entitu Pattern.any neextrahuje entity správně, můžete tento problém opravit pomocí [explicitního seznamu](reference-pattern-syntax.md#explicit-lists). 
 
-1. Vyberte nově přidanou předem vytvořenou entitu geographyV2 ze seznamu entit na stránce **Entity.** 
-1. Chcete-li přidat novou **+** roli, vyberte možnost **Žádné přidané role**.
-1. Do textového pole **Typ role...** zadejte `Origin` název role a zadejte ji. Přidejte druhý název `Destination` role a zadejte jej. 
+1. Vyberte nově přidanou předem vytvořenou entitu geographyV2 ze seznamu entit na stránce **entity** . 
+1. Chcete-li přidat novou roli, **+** vyberte možnost Další **bez přidaných rolí**.
+1. Do textového pole **typ role...** zadejte název role `Origin` a potom zadejte. Přidejte název druhé role a `Destination` potom zadejte. 
 
     > [!div class="mx-imgBorder"]
-    > ![Snímek obrazovky s přidáním role Origin u entity Umístění](media/how-to-add-entities//add-role-to-prebuilt-geographyv2-entity.png)
+    > ![Snímek obrazovky s přidáním role původu do entity umístění](media/how-to-add-entities//add-role-to-prebuilt-geographyv2-entity.png)
 
-    Role je přidána do předem sestavené entity, ale není přidána do žádné projevy pomocí této entity. 
+    Role se přidá k předem připravené entitě, ale nepřidá se do žádné projevy pomocí této entity. 
 
-### <a name="label-text-with-a-role-in-an-example-utterance"></a>Popisek textu s rolí v ukázkové utterance
+### <a name="label-text-with-a-role-in-an-example-utterance"></a>Popisek textu s rolí v příkladu utterance
 
-1. Přejděte na stránku podrobnosti záměru, která obsahuje příklad projevy, které používají roli. 
-1. Chcete-li označit rolí popisek, vyberte popisek entity (plná čára pod textem) v příkladové utterance a pak v rozevíracím seznamu vyberte **Zobrazit v paletě entit.** 
+1. Přejít na stránku s podrobnostmi záměru, která obsahuje příklad projevy, který používá roli. 
+1. Pokud chcete s rolí označit popisek, vyberte v příkladu utterance popisek entity (plná čára pod textem) a pak v rozevíracím seznamu vyberte **Zobrazit v paletě entit** . 
 
     > [!div class="mx-imgBorder"]
     > ![Snímek obrazovky s výběrem zobrazení v paletě entit](media/how-to-add-entities/select-text-label-with-entity-palette-for-role.png)   
 
-    Paleta entit se otevře vpravo. 
+    Na pravé straně se otevře paleta entit. 
 
-1. Vyberte entitu, přejděte do dolní části palety a vyberte roli. 
+1. Vyberte entitu, potom klikněte na dolní část palety a vyberte roli. 
 
     > [!div class="mx-imgBorder"]
     > ![Snímek obrazovky s výběrem zobrazení v paletě entit](media/how-to-add-entities/select-role-from-entity-palette-entity-inspector.png)
 
 <a name="add-pattern-any-entities"></a>
 
-## <a name="add-a-patternany-entity"></a>Přidání entity pattern.any
+## <a name="add-a-patternany-entity"></a>Přidejte vzor. libovolnou entitu
 
-[Pattern.any](luis-concept-entity-types.md) entity jsou platné pouze ve [vzorcích](luis-how-to-model-intent-pattern.md), nikoli záměry příklad projevy. Tento typ entity pomáhá luis najít konec entit různé délky a výběru slova. Vzhledem k tomu, že tato entita se používá ve vzoru, LUIS ví, kde je konec entity v šabloně utterance.
+[Vzor. všechny](luis-concept-entity-types.md) entity jsou platné jenom v [vzorcích](luis-how-to-model-intent-pattern.md), ne záměrech, jako je například projevy. Tento typ entity pomáhá LUIS najít konec entit s různou délkou a volbou Wordu. Vzhledem k tomu, že tato entita se používá ve vzoru, LUIS ví, kde je konec entity v šabloně utterance.
 
-### <a name="steps-to-create-a-patternany-entity"></a>Kroky k vytvoření entity pattern.any
+### <a name="steps-to-create-a-patternany-entity"></a>Postup vytvoření vzoru. kterákoli entita
 
-1. V části **Sestavení** vyberte **Entity** v levém panelu a pak vyberte **+ Vytvořit**.
+1. V části **sestavení** vyberte **entity** na levém panelu a potom vyberte **+ vytvořit**.
 
-1. V **dialogovém** okně Vybrat typ entity zadejte název entity do pole **Název** a vyberte **Pattern.Any** jako **Typ** a pak vyberte **Vytvořit**.
+1. V dialogovém okně **Zvolte typ entity** zadejte název entity do pole **název** a jako **typ** vyberte **vzor. any** a pak vyberte **vytvořit**.
 
-    Jakmile [vytvoříte vzor utterance](luis-how-to-model-intent-pattern.md) pomocí této entity, entita je extrahována s kombinovaným algoritmus učení počítače a text odpovídající. 
+    Jakmile [vytvoříte vzor utterance](luis-how-to-model-intent-pattern.md) pomocí této entity, bude se tato entita extrahovat pomocí kombinovaného algoritmu pro porovnávání počítačů a textu. 
 
-### <a name="create-a-pattern-template-utterance-to-use-patternany-entity"></a>Vytvoření utterance šablony vzoru pro použití entity pattern.any
+### <a name="create-a-pattern-template-utterance-to-use-patternany-entity"></a>Vytvořte šablonu vzoru utterance pro použití vzoru. libovolnou entitu
 
-Chcete-li použít entitu pattern.any, přidejte vzorek na stránku **Vzorky** v části Zlepšit `Where is **{HumanResourcesFormTitle}** on the server?`výkon **aplikace** se správnou syntaxí složené závorky, například .
+Chcete-li použít vzor. jakékoli entity, přidejte vzor na stránce **vzory** v části **zlepšení výkonu aplikace** se správnou syntaxí složených závorek, například `Where is **{HumanResourcesFormTitle}** on the server?`.
 
 Pokud zjistíte, že váš vzor zahrnující entitu Pattern.any neextrahuje entity správně, můžete tento problém opravit pomocí [explicitního seznamu](reference-pattern-syntax.md#explicit-lists). 
 
 ## <a name="do-not-change-entity-type"></a>Neměnit typ entity
 
-Služba LUIS neumožňuje změnit typ entity, protože neví, co přidat nebo odebrat k vytvoření této entity. Chcete-li změnit typ, je lepší vytvořit novou entitu správného typu s mírně odlišným názvem. Po vytvoření entity odeberte v každé utterance starý název entity s popiskem a přidejte nový název entity. Jakmile jsou všechny projevy byly přeznačeny, odstraňte starou entitu. 
+LUIS neumožňuje změnit typ entity, protože nevíte, co přidat nebo odebrat k vytvoření této entity. Aby bylo možné typ změnit, je vhodnější vytvořit novou entitu správného typu s trochu odlišným názvem. Po vytvoření entity odstraňte v každém utterance starý název entity a přidejte nový název entity. Po přeznačení všech projevy se odstraní stará entita. 
 
 <a name="create-a-pattern-from-an-utterance"></a>
 
@@ -183,14 +183,14 @@ Služba LUIS neumožňuje změnit typ entity, protože neví, co přidat nebo od
 > [Použití předem připravených modelů](howto-add-prebuilt-models.md) 
 
 Další informace:
-* Jak [trénovat](luis-how-to-train.md)
+* Postup [výuky](luis-how-to-train.md)
 * Jak [testovat](luis-interactive-test.md)
 * Jak [publikovat](luis-how-to-publish-app.md)
-* Vzory:
+* Charakteristiky
     * [Koncepty](luis-concept-patterns.md)
-    * [Syntaxe](reference-pattern-syntax.md)
-* [Předem vytvořené entity úložiště GitHub](https://github.com/Microsoft/Recognizers-Text)
-* [Koncepty extrakce dat](luis-concept-data-extraction.md)
+    * [Syntaktick](reference-pattern-syntax.md)
+* [Úložiště GitHub předem připravené entity](https://github.com/Microsoft/Recognizers-Text)
+* [Koncepce extrakce dat](luis-concept-data-extraction.md)
 
 
  

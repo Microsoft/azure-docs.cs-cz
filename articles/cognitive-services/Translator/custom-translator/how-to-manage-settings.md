@@ -1,7 +1,7 @@
 ---
-title: Jak spravovat nastavení? - Vlastní Překladatel
+title: Jak spravovat nastavení? – Vlastní Překladatel
 titleSuffix: Azure Cognitive Services
-description: Jak spravovat nastavení, vytvářet pracovní prostor, sdílet pracovní prostor a spravovat klíč předplatného v překladači vlastních.
+description: Jak spravovat nastavení, vytvářet pracovní prostory, sdílet pracovní prostor a spravovat klíč předplatného ve vlastním překladateli.
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
@@ -10,41 +10,41 @@ ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
 ms.openlocfilehash: f90ada6b6cd1760b3b779010625f252533fa611d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79219508"
 ---
-# <a name="how-to-manage-settings"></a>Jak spravovat nastavení
+# <a name="how-to-manage-settings"></a>Správa nastavení
 
-Na stránce Nastavení vlastního překladače můžete vytvořit nový pracovní prostor, sdílet pracovní prostor a přidat nebo upravit klíč předplatného microsoft translation.
+Na stránce vlastní nastavení překladatele můžete vytvořit nový pracovní prostor, sdílet svůj pracovní prostor a přidat nebo upravit klíč předplatného služby Microsoft Translation.
 
-Přístup ke stránce nastavení:
+Přístup k stránce nastavení:
 
-1. Přihlaste se k portálu [Vlastní překladač.](https://portal.customtranslator.azure.ai/)
-2. Na portálu Custom Translator klikněte na ikonu ozubeného kola v postranním panelu.
+1. Přihlaste se k portálu [vlastního překladatele](https://portal.customtranslator.azure.ai/) .
+2. Na portálu Custom Translator klikněte na ikonu ozubeného kolečka na bočním panelu.
 
     ![Nastavení odkazu](media/how-to/how-to-settings.png)
 
-## <a name="associating-microsoft-translator-subscription"></a>Připojení předplatného microsoft translatoru
+## <a name="associating-microsoft-translator-subscription"></a>Přidružuje se předplatné Microsoft translatoru.
 
-Chcete-li trénovat nebo nasazovat modely, musíte mít klíč předplatného rozhraní Microsoft Translator Text API přidružený k vašemu pracovnímu prostoru.
+Musíte mít k vašemu pracovnímu prostoru přiřazený klíč předplatného Microsoft Translator Text API, který můžete použít ke školení nebo nasazení modelů.
 
-Pokud nemáte předplatné, postupujte podle následujících kroků:
+Pokud předplatné nemáte, postupujte podle následujících kroků:
 
-1. Přihlaste se k odběru textového rozhraní Microsoft Translator API. Tento článek ukazuje, jak se přihlásit k odběru rozhraní Microsoft Translator Text API.
-2. Poznámka: klíč pro předplatné překladatele. Key1 nebo Key2 jsou přijatelné.
-3. Přejděte zpět na portál Vlastní překladač.
+1. Přihlaste se k odběru Microsoft Translator Text API. V tomto článku se dozvíte, jak se přihlásit k odběru Translator Text API Microsoftu.
+2. Poznamenejte si klíč k vašemu předplatnému překladatele. Obě Klíč1 nebo key2 jsou přijatelné.
+3. Přejděte zpátky na vlastní portál překladatelů.
 
-### <a name="add-existing-key"></a>Přidání existujícího klíče
+### <a name="add-existing-key"></a>Přidat existující klíč
 
-1.  Přejděte na stránku Nastavení pracovního prostoru.
+1.  Přejděte na stránku nastavení pro váš pracovní prostor.
 2.  Klikněte na Přidat klíč.
 
     ![Jak přidat klíč předplatného](media/how-to/how-to-add-subscription-key.png)
 
-3. V dialogovém okně zadejte klíč pro předplatné překladatele a klikněte na tlačítko "Přidat".
+3. V dialogovém okně zadejte klíč pro vaše předplatné překladatele a potom klikněte na tlačítko Přidat.
 
     ![Jak přidat klíč předplatného](media/how-to/how-to-add-subscription-key-dialog.png)
 4.  Po přidání klíče můžete klíč kdykoli upravit nebo odstranit.
@@ -53,54 +53,54 @@ Pokud nemáte předplatné, postupujte podle následujících kroků:
 
 ## <a name="manage-your-workspace"></a>Správa pracovního prostoru
 
-Pracovní prostor je pracovní plocha pro vytváření a vytváření vlastního překladatelského systému. Pracovní prostor může obsahovat více projektů, modelů a dokumentů.
+Pracovní prostor je pracovní oblast pro vytváření a vytváření vlastního systému překladu. Pracovní prostor může obsahovat více projektů, modelů a dokumentů.
 
-Pokud je potřeba sdílet jinou část vaší práce s různými lidmi, může být užitečné vytvořit více pracovních prostorů.
+Pokud je třeba jinou část práce sdílet s různými lidmi, může být užitečné vytvořit několik pracovních prostorů.
 
 ## <a name="create-a-new-workspace"></a>Vytvoření nového pracovního prostoru
 
-1.  Přejděte na stránku Nastavení pracovního prostoru.
-2.  Klikněte na tlačítko "Nový pracovní prostor" v části "Vytvořit nový pracovní prostor".
+1.  Přejděte na stránku nastavení pracovního prostoru.
+2.  V části vytvořit nový pracovní prostor klikněte na tlačítko Nový pracovní prostor.
 
-    ![Vytvoření nového pracovního prostoru](media/how-to/create-new-workspace.png)
+    ![Vytvořit nový pracovní prostor](media/how-to/create-new-workspace.png)
 
 4.  V dialogovém okně zadejte název nového pracovního prostoru.
-5.  Klikněte na tlačítko "Vytvořit".
+5.  Klikněte na vytvořit.
 
-    ![Dialogové okno Vytvořit nový pracovní prostor](media/how-to/create-new-workspace-dialog.png)
+    ![Dialog vytvořit nový pracovní prostor](media/how-to/create-new-workspace-dialog.png)
 
 ## <a name="share-your-workspace"></a>Sdílení pracovního prostoru
 
-V aplikaci Custom Translator můžete sdílet svůj pracovní prostor s ostatními, pokud je třeba sdílet jinou část vaší práce s různými lidmi.
+Ve vlastním překladateli můžete sdílet svůj pracovní prostor s ostatními, pokud je potřeba sdílet jinou část vaší práce s různými lidmi.
 
-1.  Přejděte na stránku Nastavení pracovního prostoru.
-2.  Klikněte na tlačítko "Sdílet" v části "Nastavení sdílení".
+1.  Přejděte na stránku nastavení pracovního prostoru.
+2.  V části nastavení sdílení klikněte na tlačítko sdílet.
 
-    ![Sdílení pracovního prostoru](media/how-to/share-workspace.png)
+    ![Sdílet pracovní prostor](media/how-to/share-workspace.png)
 
-3.  V dialogovém okně zadejte seznam e-mailových adres oddělených čárkami, se kterými má tento pracovní prostor sdílet. Ujistěte se, že sdílíte s e-mailovou adresu, kterou tato osoba používá k přihlášení k vlastní překladač s. Potom vyberte příslušnou úroveň oprávnění ke sdílení.
+3.  V dialogovém okně Zadejte čárkami oddělený seznam e-mailových adres, které chcete sdílet s tímto pracovním prostorem. Ujistěte se, že sdílíte s e-mailovou adresou, kterou osoba používá pro přihlášení k vlastnímu překladateli. Pak vyberte odpovídající úroveň oprávnění ke sdílení.
 
-4.  Pokud váš pracovní prostor stále obsahuje výchozí název "Můj pracovní prostor", budete muset před sdílením pracovního prostoru jej změnit.
-5.  Klikněte na tlačítko "Uložit".
+4.  Pokud má váš pracovní prostor stále výchozí název "pracovní prostor", budete ho muset před sdílením pracovního prostoru změnit.
+5.  Klikněte na Uložit.
 
 ## <a name="sharing-permissions"></a>Oprávnění ke sdílení
 
-1.  **Čtečka:** Čtenář v pracovním prostoru bude moci zobrazit všechny informace v pracovním prostoru.
+1.  **Čtecí modul:** Čtenář v pracovním prostoru bude moci zobrazit všechny informace v pracovním prostoru.
 
-2.  **Editor:** Editor v pracovním prostoru bude moci přidávat dokumenty, trénování modelů a odstraňovat dokumenty a projekty. Mohou přidat klíč předplatného, ale nemohou změnit, s kým je pracovní prostor sdílen, odstranit pracovní prostor nebo změnit název pracovního prostoru.
+2.  **Editor:** Editor v pracovním prostoru bude moci přidávat dokumenty, naučit modely a odstraňovat dokumenty a projekty. Můžou přidat klíč předplatného, ale nemůžou upravovat, na koho se pracovní prostor sdílí, odstranit pracovní prostor nebo změnit název pracovního prostoru.
 
-3.  **Vlastník:** Vlastník má úplná oprávnění k pracovnímu prostoru.
+3.  **Vlastník:** Vlastník má k pracovnímu prostoru úplná oprávnění.
 
-## <a name="change-sharing-permission"></a>Změna oprávnění ke sdílení
+## <a name="change-sharing-permission"></a>Změnit oprávnění ke sdílení
 
-Při sdílení pracovního prostoru se v části Nastavení sdílení zobrazují všechny e-mailové adresy, se kterými je tento pracovní prostor sdílen. Pokud máte přístup vlastníka k pracovnímu prostoru, můžete změnit stávající oprávnění ke sdílení pro každou e-mailovou adresu.
+Když se pracovní prostor sdílí, v části nastavení sdílení se zobrazí všechny e-mailové adresy, se kterými se tento pracovní prostor sdílí. Pokud máte přístup vlastníka k pracovnímu prostoru, můžete změnit stávající oprávnění ke sdílení pro každou e-mailovou adresu.
 
-1.  V části "Nastavení sdílení" pro každý e-mail se v rozevírací nabídce zobrazí aktuální úroveň oprávnění.
+1.  V části nastavení sdílení pro každý e-mail zobrazuje rozevírací nabídka aktuální úroveň oprávnění.
 
-2.  Klikněte na rozevírací nabídku a vyberte novou úroveň oprávnění, kterou chcete této e-mailové adrese přiřadit.
+2.  Klikněte na rozevírací nabídku a vyberte novou úroveň oprávnění, kterou chcete přiřadit k této e-mailové adrese.
 
-    ![Nastavení oprávnění ke sdílení](media/how-to/sharing-permission-settings.png)
+    ![Sdílení nastavení oprávnění](media/how-to/sharing-permission-settings.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Zjistěte, jak migrovat pracovní prostor a projekt](how-to-migrate.md) z centra Microsoft Translator [Hub](https://hub.microsofttranslator.com)
+- Naučte [se migrovat pracovní prostor a projekt](how-to-migrate.md) z [centra Microsoft Translator](https://hub.microsofttranslator.com) .

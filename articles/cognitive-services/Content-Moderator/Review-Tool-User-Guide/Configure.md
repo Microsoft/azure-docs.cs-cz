@@ -1,7 +1,7 @@
 ---
-title: Konfigurace nastavení nástroje revize – Moderátor obsahu
+title: Konfigurovat nastavení nástroje pro kontrolu – Content Moderator
 titleSuffix: Azure Cognitive Services
-description: Pomocí nástroje Revize můžete nakonfigurovat nebo načíst tým, značky, konektory, pracovní postupy a přihlašovací údaje pro moderátora obsahu.
+description: Pomocí nástroje pro revize můžete nakonfigurovat nebo načíst svůj tým, značky, konektory, pracovní postupy a přihlašovací údaje pro Content Moderator.
 services: cognitive-services
 author: PatrickFarley
 manager: mikemcca
@@ -11,133 +11,133 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: pafarley
 ms.openlocfilehash: 2d685683bdc359b31a5a6c550c19e8c0d858f12a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79220124"
 ---
 # <a name="configure-the-review-tool"></a>Konfigurace nástroje pro recenze
 
-[Nástroj Revize](https://contentmoderator.cognitive.microsoft.com) obsahuje několik důležitých funkcí, ke kterým máte přístup prostřednictvím nabídky **Nastavení** na řídicím panelu.
+[Nástroj pro kontrolu](https://contentmoderator.cognitive.microsoft.com) obsahuje několik důležitých funkcí, ke kterým můžete přistupovat prostřednictvím nabídky **Nastavení** na řídicím panelu.
 
-![Nabídka Přejděte na revizi přehoz obsahu](images/settings-1.png)
+![Nabídka pro moc nastavení Content Moderator prostudovat](images/settings-1.png)
 
-## <a name="manage-team-and-subteams"></a>Správa týmů a podtýmů
+## <a name="manage-team-and-subteams"></a>Spravovat tým a subtýmy
 
-Karta **Tým** umožňuje spravovat týmové a&mdash;podpárové skupiny uživatelů, kteří mohou být upozorněni při spuštění určitých [lidských recenzí.](../review-api.md#reviews) Můžete mít pouze jeden tým (který vytvoříte při registraci pomocí nástroje revize), ale můžete vytvořit více podtýmů. Správce týmu může pozvat členy, nastavit jejich oprávnění a přiřadit je k různým podtýmům.
+Karta **tým** umožňuje spravovat&mdash;skupiny uživatelů a subtýmů, kteří mohou být upozorněni při zahájení určitých [lidských](../review-api.md#reviews) kontrol. Můžete mít pouze jeden tým (který vytvoříte při registraci pomocí nástroje pro revizi), ale můžete vytvořit více subtýmů. Správce týmu může pozvat členy, nastavit jejich oprávnění a přiřadit je různým subtýmům.
 
-![Zkontrolovat nastavení týmu nástroje](images/settings-2-team.png)
+![Kontrola nastavení týmu nástroje](images/settings-2-team.png)
 
-Dílčí týmy jsou užitečné pro vytváření týmů pro eskalaci nebo týmů určených k kontrole konkrétních kategorií obsahu. Můžete například odeslat obsah pro dospělé do samostatného týmu k dalšímu prohledání.
+Subtýmy jsou užitečné pro vytváření týmů eskalace nebo týmů vyhrazených pro kontrolu konkrétních kategorií obsahu. Můžete například odeslat obsah pro dospělé do samostatného týmu za účelem další kontroly.
 
-Tato část vysvětluje, jak vytvořit podpáry a rychle přiřadit recenze za chodu. [Pracovní postupy](workflows.md) však můžete použít k přiřazení recenzí na základě konkrétních kritérií.
+V této části se dozvíte, jak vytvářet dílčí týmy a rychle přiřazovat recenze za běhu. [Pracovní postupy](workflows.md) ale můžete použít k přiřazení recenzí na základě určitých kritérií.
 
-### <a name="create-a-subteam"></a>Vytvoření podtýmu
+### <a name="create-a-subteam"></a>Vytvořit subtým
 
-Přejděte do části **Podtýmy** a klikněte na **Přidat podtýmový tým**. Do dialogového okna zadejte název podtýmu a klepněte na **tlačítko Uložit**.
+Přejděte do části **subtýmy** a klikněte na **Přidat dílčí tým**. Do dialogového okna zadejte název svého subtýmu a klikněte na **Uložit**.
 
-![Název podtýmu](images/1-Teams-2.PNG)
+![Název subtýmu](images/1-Teams-2.PNG)
 
-#### <a name="invite-teammates"></a>Pozvání spoluhráčů
+#### <a name="invite-teammates"></a>Pozvat ostatními týmu
 
-Pokud ještě není členem výchozího týmu, nemůžete někoho přiřadit k podtýmu, takže nejprve musíte přidat recenzenty do výchozího týmu. Na kartě **Tým** klikněte na **Pozvat.**
+Nemůžete přiřadit někoho do subtýmu, pokud už nejsou členem výchozího týmu, takže musíte nejdřív přidat kontrolory k výchozímu týmu. Na kartě **tým** klikněte na **pozvat** .
 
 ![Pozvání uživatelů](images/invite-users.png)
 
-#### <a name="assign-teammates-to-subteam"></a>Přiřazení spoluhráčů k podtýmu
+#### <a name="assign-teammates-to-subteam"></a>Přiřadit ostatními týmu k subtýmu
 
-Kliknutím na tlačítko **Přidat člena** přiřadíte členy z výchozího týmu do jednoho nebo více podtýmů. Stávající uživatele můžete přidat pouze do podtýmu. Pokud přidáte nové uživatele, kteří nejsou v nástroji pro kontrolu, pozvěte je pomocí tlačítka "Pozvat" na stránce Nastavení týmu.
+Kliknutím na tlačítko **Přidat člena** můžete přiřadit členy z výchozího týmu k jednomu nebo více podtýmům. Do subtýmu můžete přidat pouze existující uživatele. Chcete-li přidat nové uživatele, kteří nejsou v nástroji pro revizi, pozvěte je pomocí tlačítka "pozvat" na stránce Nastavení týmu.
 
-![Přiřazení členů podtýmu](images/1-Teams-3.PNG)
+![Přiřazení členů subtýmu](images/1-Teams-3.PNG)
 
-### <a name="assign-reviews-to-subteams"></a>Přiřazení recenzí podtýmům
+### <a name="assign-reviews-to-subteams"></a>Přiřadit recenze k podtýmům
 
-Po vytvoření podtýmů a přiřazených členů můžete začít těmto podtýmům přiřazovat [recenze](../review-api.md#reviews) obsahu. To se provádí z karty **Revize** webu.
-Chcete-li přiřadit obsah podtýmu, klepněte na tři tečky v pravém horním rohu, vyberte **Přesunout do**a vyberte podtým.
+Po vytvoření svých subtýmů a přiřazených členů můžete pro tyto subtými začít přiřazovat [Revize](../review-api.md#reviews) obsahu. To se provádí na kartě **Revize** webu.
+Chcete-li přiřadit obsah dílčímu týmu, klikněte na tlačítko se třemi tečkami v pravém horním rohu, vyberte možnost **přesunout do**a vyberte dílčí tým.
 
-![Přiřazení kontroly obrázků podtýmu](images/3-review-image-subteam-1.png)
+![Přiřadit k subtýmu kontrolu obrázků](images/3-review-image-subteam-1.png)
 
-### <a name="switch-between-subteams"></a>Přepínání mezi podtými
+### <a name="switch-between-subteams"></a>Přepínání mezi subskupinami
 
-Pokud jste členem více než jednoho podtýmu, můžete mezi těmito podtýmy přepínat a změnit, které recenze obsahu se zobrazí za vás. Na kartě **Revize** vyberte rozevírací nabídku s názvem **Výchozí** a vyberte **Zvolit podtýmový .** Můžete zobrazit recenze obsahu pro různé podpáry, ale pouze ty, jejichž jste členem.
+Pokud jste členem více než jednoho subtýmu, můžete mezi těmito seskupeními přepínat a změnit, které recenze obsahu se vám budou zobrazovat. Na kartě **Revize** vyberte rozevírací nabídku s názvem **výchozí** a vyberte **možnost dílčí tým**. Můžete zobrazit revize obsahu pro různé subtýmy, ale pouze ty, které jsou členy.
 
-![Přepínání mezi podtými](images/3-review-image-subteam-2.png)
+![Přepínání mezi subskupinami](images/3-review-image-subteam-2.png)
 
 ## <a name="tags"></a>Značky
 
-Karta **Tagy** umožňuje definovat vlastní značky moderování kromě&mdash;dvou výchozích značek moderování**isadult** **(** a ) a **isracy** (**r**). Když vytvoříte vlastní značku, bude dostupná v recenzích vedle výchozích značek. Značky, které se zobrazují v recenzích, můžete změnit přepnutím jejich nastavení viditelnosti.
+Karta **značky** vám umožňuje definovat&mdash;**vlastní značky** moderování kromě dvou výchozích značek moderování (**a**) a **isracy** (**r**). Když vytvoříte vlastní značku, bude k dispozici v recenzích vedle výchozích značek. To, které značky se zobrazí v recenzích, můžete změnit přepnutím jejich nastavení viditelnosti.
 
-![Zobrazení značek, včetně zaškrtávacích políček "Je viditelné".](images/tags-4-disable.png)
+![Zobrazení značek, včetně zaškrtávacích políček "je viditelné"](images/tags-4-disable.png)
 
-### <a name="create-custom-tags"></a>Vytvoření vlastních značek
+### <a name="create-custom-tags"></a>Vytváření vlastních značek
 
-Chcete-li vytvořit novou značku, musíte do příslušných polí zadat krátký kód, název a popis.
+Chcete-li vytvořit novou značku, je nutné do příslušných polí zadat krátký kód, název a popis.
 
-- **Krátký kód**: Zadejte dvoupísmenný kód značky. Příklad: **cb**
-- **Název**: Zadejte krátký a popisný název značky v malých písmenech bez mezer. Příklad: **isbullying**.
-- **Popis**: (nepovinné) Zadejte popis druhu obsahu, na který vaše značka cílí. Příklad: **Vyobrazení nebo případy kybernetické šikany**.
+- **Krátký kód**: zadejte pro značku kód se dvěma písmeny. Příklad: **cb**
+- **Název**: zadejte krátký a popisný název značky malými písmeny bez mezer. Příklad: **isbullying**.
+- **Popis**: (volitelné) zadejte popis druhu obsahu, který vaše značka cílí. Příklad: **znázornění nebo instance počítačové bullyingy**.
 
-Kliknutím na **Přidat** přidejte značku a po dokončení vytváření značek klikněte na **Uložit.**
+Kliknutím na **Přidat** přidejte značku a po dokončení vytváření značek klikněte na **Uložit** .
 
-![Nástroj revize vytvořit dialogové okno vytvořit nový tag](images/settings-3-tags.png)
+![Dialogové okno pro vytvoření nového tagu nástroje pro kontrolu](images/settings-3-tags.png)
 
 ### <a name="delete-tags"></a>Odstranit značky
 
-Vlastní značky můžete odstranit výběrem ikony koše vedle jejich položek v seznamu Značky, ale výchozí značky nemůžete odstranit.
+Vlastní značky můžete odstranit tak, že v seznamu značek vyberete ikonu odpadkového koše vedle jejich položek, ale nemůžete odstranit výchozí značky.
 
 ## <a name="connectors"></a>Konektory
 
-Karta **Konektory** umožňuje spravovat konektory, což jsou moduly plug-in specifické pro služby, které mohou zpracovávat obsah různými způsoby jako součást [pracovních postupů](../review-api.md#workflows)obsahu .
+Karta **konektory** vám umožní spravovat vaše konektory, které jsou moduly plug-in pro konkrétní služby, které mohou zpracovávat obsah různými způsoby jako součást [pracovních postupů](../review-api.md#workflows)obsahu.
 
-Výchozí spojnicí při vytváření pracovního postupu je konektor Content Moderator, který může označit obsah jako **dospělý** nebo **pikantní**, najít vulgární výrazy a tak dále. Můžete však použít jiné konektory, které jsou zde uvedeny, pokud máte pověření pro příslušné služby (chcete-li například použít konektor face, budete muset získat klíč předplatného [Face).](https://docs.microsoft.com/azure/cognitive-services/face/overview)
+Výchozí konektor při vytváření pracovního postupu je konektor Content Moderator, který může označovat obsah jako **dospělý** nebo **pikantní**, Hledat vulgární výrazy atd. Můžete ale použít i jiné konektory, které jsou tady uvedené, pokud máte přihlašovací údaje pro příslušné služby (například pro použití konektoru obličeje, budete potřebovat klíč předplatného pro [obličej](https://docs.microsoft.com/azure/cognitive-services/face/overview) ).
 
-[Nástroj revize](./human-in-the-loop.md) obsahuje následující konektory:
+[Nástroj pro kontrolu](./human-in-the-loop.md) zahrnuje následující konektory:
 
 - Emoce
 - Tvář
 - Cloudová služba PhotoDNA
 - Analýza textu
 
-### <a name="add-a-connector"></a>Přidání spojnice
+### <a name="add-a-connector"></a>Přidání konektoru
 
-Chcete-li přidat spojnici (a zpřístupnit ji pro použití v [pracovních postupech](../review-api.md#workflows)obsahu ), vyberte příslušné tlačítko **Připojit.** V dalším dialogu zadejte klíč předplatného pro tuto službu. Po dokončení by se nový spojnice měl zobrazit v horní části stránky.
+Pokud chcete přidat konektor (a zpřístupnit ho pro použití v [pracovních postupech](../review-api.md#workflows)obsahu), vyberte příslušné tlačítko **připojit** . V dalším dialogovém okně zadejte svůj klíč předplatného pro danou službu. Až skončíte, váš nový konektor by se měl zobrazit v horní části stránky.
 
-![Nastavení konektorů moderátora obsahu](images/settings-4-connectors.png)
+![Nastavení konektorů Content Moderator](images/settings-4-connectors.png)
 
 ## <a name="workflows"></a>Pracovní postupy
 
-Karta **Pracovní postupy** umožňuje spravovat pracovní [postupy](../review-api.md#workflows). Pracovní postupy jsou cloudové filtry pro obsah a pracují s konektory pro řazení obsahu různými způsoby a příslušné akce. Zde můžete definovat, upravovat a testovat pracovní postupy. Pokyny k tomu, jak to provést, najdete v tématu [Definování a používání pracovních postupů.](Workflows.md)
+Karta **pracovní postupy** vám umožní spravovat [pracovní postupy](../review-api.md#workflows). Pracovní postupy jsou cloudové filtry pro obsah a pracují s konektory k řazení obsahu různými způsoby a provádějí příslušné akce. Tady můžete definovat, upravovat a testovat pracovní postupy. Pokyny k tomu, jak to udělat, najdete v tématu [Definování a použití pracovních postupů](Workflows.md) .
 
-![Nastavení pracovního postupu moderátora obsahu](images/settings-5-workflows.png)
+![Nastavení pracovního postupu Content Moderator](images/settings-5-workflows.png)
 
 ## <a name="credentials"></a>Přihlašovací údaje
 
-Karta **Přihlašovací údaje** poskytuje rychlý přístup ke klíči předplatného Moderátor obsahu, který budete potřebovat pro přístup ke všem službám moderování z volání REST nebo sady SDK klienta.
+Karta **pověření** poskytuje rychlý přístup k vašemu Content moderator klíč předplatného, který budete potřebovat k přístupu ke všem službám pro moderování z volání REST nebo klientské sady SDK.
 
-![Pověření moderátora obsahu](images/settings-6-credentials.png)
+![Content Moderator přihlašovací údaje](images/settings-6-credentials.png)
 
-### <a name="use-external-credentials-for-workflows"></a>Použití externích pověření pro pracovní postupy
+### <a name="use-external-credentials-for-workflows"></a>Použití externích přihlašovacích údajů pro pracovní postupy
 
-[Nástroj revize](https://contentmoderator.cognitive.microsoft.com) generuje bezplatný zkušební klíč pro služby Azure Content Moderator při registraci, ale můžete ho také nakonfigurovat tak, aby používal existující klíč z vašeho účtu Azure. To se doporučuje pro rozsáhlé scénáře, protože bezplatné zkušební klíče mají přísné limity využití[(Ceny a limity).](https://azure.microsoft.com/pricing/details/cognitive-services/content-moderator/)
+[Nástroj pro revize](https://contentmoderator.cognitive.microsoft.com) vygeneruje bezplatný zkušební klíč pro služby Azure Content moderator Services při registraci, ale můžete ho také nakonfigurovat tak, aby používal existující klíč z účtu Azure. Tento postup se doporučuje u rozsáhlých scénářů, protože bezplatné zkušební klíče mají striktní omezení využití ([ceny a omezení](https://azure.microsoft.com/pricing/details/cognitive-services/content-moderator/)).
 
-Pokud jste v Azure vytvořili [prostředek Content Moderator,](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator) přejděte na něj na webu Azure portal a vyberte okno **Klíče.** Zkopírujte jeden z vašich klíčů.
+Pokud jste vytvořili [prostředek Content moderator](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator) v Azure, přejděte k němu v Azure Portal a vyberte okno **klíče** . Zkopírujte jeden z vašich klíčů.
 
-![Klíče Moderátor obsahu na webu Azure Portal](images/credentials-azure-portal-keys.PNG)
+![Content Moderator klíče v Azure Portal](images/credentials-azure-portal-keys.PNG)
 
-Na kartě **Pověření** [nástroje revize](https://contentmoderator.cognitive.microsoft.com)přejděte do podokna **Nastavení pracovního postupu,** vyberte **Upravit**a vložte klíč do pole **Ocp-Apim-Subscription-Key.** Pracovní postupy, které volají nastavení API pro moderování, teď budou používat vaše přihlašovací údaje Azure.
+Na kartě [Kontrola](https://contentmoderator.cognitive.microsoft.com) **přihlašovacích údajů** nástroje otevřete podokno **Nastavení pracovního postupu** , vyberte **Upravit**a vložte svůj klíč do pole **OCP-APIM-Subscription-Key** . Nyní budou pracovní postupy, které volají rozhraní API pro moderování, používat vaše přihlašovací údaje Azure.
 
 > [!NOTE]
-> Další dvě pole v podokně **Nastavení pracovního postupu** jsou pro vlastní seznamy termínů a obrázků. Informace o [těchto podmínkách](../try-terms-list-api.md) nebo [v návodu k vlastním obrázkům](../try-image-list-api.md) najdete v návodu k vlastním upočtením.
+> Další dvě pole v podokně **Nastavení pracovního postupu** slouží pro vlastní seznamy termínů a obrázků. Další informace o těchto tématech najdete v příručkách [vlastní podmínka](../try-terms-list-api.md) nebo [vlastní obrázky](../try-image-list-api.md) .
 
-### <a name="use-your-azure-account-with-the-review-apis"></a>Použití účtu Azure s revizními api
+### <a name="use-your-azure-account-with-the-review-apis"></a>Použití účtu Azure s rozhraními API pro revize
 
-Chcete-li použít klíč Azure s recenzovat API, musíte načíst ID prostředku. Přejděte na svůj prostředek Content Moderator na webu Azure portal a vyberte okno **Vlastnosti.** Zkopírujte hodnotu ID prostředku a vložte ji do pole **Id prostředku uvedeného na seznamu povolených** na kartě **Pověření** nástroje revize.
+Pokud chcete používat klíč Azure s rozhraními API recenze, musíte načíst ID prostředku. V Azure Portal otevřete prostředek Content Moderator a vyberte okno **vlastnosti** . Zkopírujte hodnotu ID prostředku a vložte ji do pole **ID prostředku (s)** na kartě **pověření** nástroje pro kontrolu.
 
-![ID prostředku moderátora obsahu na webu Azure Portal](images/credentials-azure-portal-resourceid.PNG)
+![ID prostředku Content Moderator v Azure Portal](images/credentials-azure-portal-resourceid.PNG)
 
-Pokud jste klíč předplatného zadali na obou místech, zkušební klíč, který je dodáván s účtem nástroje revize, nebude použit, ale zůstane k dispozici.
+Pokud jste zadali klíč předplatného na obou místech, nebude se používat zkušební klíč, který je součástí vašeho účtu nástroje pro kontrolu, ale zůstane k dispozici.
 
 ## <a name="next-steps"></a>Další kroky
 
-Chcete-li začít používat nástroj Revize ve scénářích moderování obsahu, postupujte podle [rychlého startu nástroje Revize.](../quick-start.md)
+Postupujte podle pokynů k [rychlému zprovoznění nástrojů pro kontrolu](../quick-start.md) a začněte používat nástroj pro kontrolu ve scénářích Moderování obsahu.

@@ -1,244 +1,244 @@
 ---
-title: Kurz – zálohování databází SAP HANA ve virtuálních počítačích Azure
-description: V tomto kurzu se dozvíte, jak zálohovat databáze SAP HANA spuštěné na virtuálním počítači Azure do trezoru služby Obnovení zálohování Azure.
+title: Kurz – zálohování SAP HANA databází na virtuálních počítačích Azure
+description: V tomto kurzu se naučíte zálohovat SAP HANA databáze běžící na virtuálním počítači Azure do trezoru služby Azure Backup Recovery Services.
 ms.topic: tutorial
 ms.date: 02/24/2020
 ms.openlocfilehash: f64dd74ad0e038c5cad152e20ae2255de03114e3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79501450"
 ---
-# <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>Kurz: Zálohování databází SAP HANA ve virtuálním počítači Azure
+# <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>Kurz: zálohování SAP HANA databází ve virtuálním počítači Azure
 
-Tento kurz ukazuje, jak zálohovat databáze SAP HANA spuštěné na virtuálních počítačích Azure do trezoru služby Azure Backup Recovery Services. V tomto článku se dozvíte, jak:
+V tomto kurzu se dozvíte, jak zálohovat SAP HANA databáze běžící na virtuálních počítačích Azure do trezoru služby Azure Backup Recovery Services. V tomto článku se dozvíte, jak:
 
 > [!div class="checklist"]
 >
 > * Vytvoření a konfigurace trezoru
-> * Zjišťování databází
+> * Vyhledat databáze
 > * Konfigurace zálohování
 
-[Zde](sap-hana-backup-support-matrix.md#scenario-support) jsou všechny scénáře, které v současné době podporujeme.
+[Tady](sap-hana-backup-support-matrix.md#scenario-support) jsou všechny scénáře, které momentálně podporujeme.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Před konfigurací záloh postupujte takto:
+Před konfigurací zálohování se ujistěte, že jste provedli následující kroky:
 
-* Povolte připojení z virtuálního počítače k internetu, aby mohl dosáhnout Azure, jak je popsáno v postupu [nastavení připojení k síti](#set-up-network-connectivity) níže.
-* Klíč by měl existovat v **úložišti hdbuserstore,** který splňuje následující kritéria:
-  * Měl by být přítomen ve výchozím **hdbuserstore**
-  * Pro MDC by měl klíč přejděte na port SQL **NAMESERVER**. V případě SDC by měl poukázat na SQL port **INDEXSERVER**
-  * Měl by mít pověření pro přidání a odstranění uživatelů
-* Spusťte skript konfigurace zálohování SAP HANA (skript předběžné registrace) ve virtuálním počítači, ve kterém je nainstalován hana, jako kořenový uživatel. [Tento skript](https://aka.ms/scriptforpermsonhana) získá systém HANA připraven k zálohování. Informace o skriptu předběžné registrace naleznete v části [Co skript předběžné registrace obsahuje.](#what-the-pre-registration-script-does)
+* Umožněte připojení z virtuálního počítače k Internetu, aby bylo možné získat přístup k Azure, jak je popsáno níže v postupu [Nastavení síťového připojení](#set-up-network-connectivity) .
+* Klíč by měl existovat v **hdbuserstore** , který splňuje následující kritéria:
+  * Měl by se nacházet ve výchozím **hdbuserstore**
+  * V případě MDC by měl klíč ukazovat na port SQL **názvový server**. V případě SDC by měl odkazovat na port SQL **INDEXSERVER**
+  * Měl by obsahovat přihlašovací údaje k přidávání a odstraňování uživatelů.
+* Spusťte skript konfigurace zálohování SAP HANA (předregistrující skript) ve virtuálním počítači, kde je nainstalovaná verze HANA, jako uživatel root. [Tento skript](https://aka.ms/scriptforpermsonhana) NAČTE systém Hana, který je připravený k zálohování. Další informace o skriptu před registrací najdete v části [co je to skript](#what-the-pre-registration-script-does) pro předběžnou registraci.
 
 ## <a name="set-up-network-connectivity"></a>Nastavení připojení k síti
 
-Pro všechny operace vyžaduje virtuální počítač SAP HANA připojení k veřejným IP adresám Azure. Operace virtuálních počítačů (zjišťování databáze, konfigurace zálohování, plánování zálohování, body obnovení a tak dále) se nezdaří bez připojení k veřejným IP adresám Azure.
+U všech operací vyžaduje virtuální počítač SAP HANA připojení k veřejným IP adresám Azure. Operace virtuálních počítačů (zjišťování databáze, konfigurace záloh, plánování záloh, obnovení bodů obnovení atd.) bez připojení k veřejným IP adresám Azure.
 
-Navázání připojení pomocí jedné z následujících možností:
+Navažte připojení pomocí jedné z následujících možností:
 
-### <a name="allow-the-azure-datacenter-ip-ranges"></a>Povolení rozsahů IP adres datového centra Azure
+### <a name="allow-the-azure-datacenter-ip-ranges"></a>Povoluje rozsahy IP adres datacentra Azure.
 
-Tato možnost umožňuje [rozsahy IP adres](https://www.microsoft.com/download/details.aspx?id=41653) ve staženém souboru. Chcete-li získat přístup ke skupině zabezpečení sítě (NSG), použijte rutinu Set-AzureNetworkSecurityRule. Pokud seznam bezpečných příjemců obsahuje jenom IP adresy specifické pro oblast, budete muset aktualizovat seznam bezpečných příjemců, značku služby Azure Active Directory (Azure AD), abyste povolili ověřování.
+Tato možnost povoluje [rozsahy IP adres](https://www.microsoft.com/download/details.aspx?id=41653) ve staženém souboru. Pro přístup ke skupině zabezpečení sítě (NSG) použijte rutinu Set-AzureNetworkSecurityRule. Pokud váš seznam bezpečných příjemců obsahuje jenom IP adresy specifické pro oblast, budete taky muset aktualizovat seznam bezpečných příjemců, aby se povolilo ověřování v seznamu služby Azure Active Directory (Azure AD).
 
-### <a name="allow-access-using-nsg-tags"></a>Povolit přístup pomocí značek NSG
+### <a name="allow-access-using-nsg-tags"></a>Povolení přístupu pomocí značek NSG
 
-Pokud používáte nsg k omezení připojení, pak byste měli použít azurebackup značku služby umožňuje odchozí přístup k Azure Backup. Kromě toho byste měli také povolit připojení pro ověřování a přenos dat pomocí [pravidel](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) pro Azure AD a Azure Storage. To lze provést z portálu Azure nebo přes PowerShell.
+Pokud k omezení připojení používáte NSG, měli byste pomocí značky služby AzureBackup povolit odchozí přístup k Azure Backup. Kromě toho byste měli také umožňovat připojení pro ověřování a přenos dat pomocí [pravidel](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) pro Azure AD a Azure Storage. To se dá udělat z Azure Portal nebo přes PowerShell.
 
 Vytvoření pravidla pomocí portálu:
 
-  1. Ve **všech službách**přejděte na **skupiny zabezpečení sítě** a vyberte skupinu zabezpečení sítě.
+  1. Ve **všech službách**klikněte na **skupiny zabezpečení sítě** a vyberte skupinu zabezpečení sítě.
   2. V části **Nastavení**vyberte **odchozí pravidla zabezpečení** .
-  3. Vyberte **Přidat**. Zadejte všechny požadované podrobnosti pro vytvoření nového pravidla, jak je popsáno v [nastavení pravidel zabezpečení](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings). Ujistěte se, že možnost **Cíl** je nastavena na **výrobní číslo** a **cílová značka je** nastavena na **AzureBackup**.
-  4. Klepnutím na tlačítko **Přidat**uložte nově vytvořené pravidlo odchozího zabezpečení.
+  3. Vyberte **Přidat**. Zadejte všechny požadované podrobnosti pro vytvoření nového pravidla, jak je popsáno v [Nastavení pravidla zabezpečení](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings). Ujistěte se, že možnost **cíl** je nastavená na **příznak služby** a **cílová značka služby** je nastavená na **AzureBackup**.
+  4. Klikněte na tlačítko **Přidat**a uložte nově vytvořené odchozí pravidlo zabezpečení.
 
-Vytvoření pravidla pomocí PowerShellu:
+Vytvoření pravidla pomocí prostředí PowerShell:
 
  1. Přidání přihlašovacích údajů k účtu Azure a aktualizace národních cloudů<br/>
       `Add-AzureRmAccount`<br/>
 
- 2. Vyberte předplatné nsg<br/>
+ 2. Výběr předplatného NSG<br/>
       `Select-AzureRmSubscription "<Subscription Id>"`
 
- 3. Vyberte skupina o národní nenasytní.<br/>
+ 3. Vybrat NSG<br/>
     `$nsg = Get-AzureRmNetworkSecurityGroup -Name "<NSG name>" -ResourceGroupName "<NSG resource group name>"`
 
- 4. Přidání pravidla povolení odchozího pro značku služby Azure Backup<br/>
+ 4. Přidat odchozí pravidlo pro Azure Backup tag služby<br/>
     `Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name "AzureBackupAllowOutbound" -Access Allow -Protocol * -Direction Outbound -Priority <priority> -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix "AzureBackup" -DestinationPortRange 443 -Description "Allow outbound traffic to Azure Backup service"`
 
- 5. Přidání pravidla povolení pro značku služby Úložiště<br/>
+ 5. Přidat odchozí pravidlo pro značku služby úložiště<br/>
     `Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name "StorageAllowOutbound" -Access Allow -Protocol * -Direction Outbound -Priority <priority> -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix "Storage" -DestinationPortRange 443 -Description "Allow outbound traffic to Azure Backup service"`
 
- 6. Přidání pravidla povolení odchozího pro značku služby AzureActiveDirectory<br/>
+ 6. Přidat odchozí pravidlo pro značku služby Azureactivedirectory selhala<br/>
     `Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name "AzureActiveDirectoryAllowOutbound" -Access Allow -Protocol * -Direction Outbound -Priority <priority> -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix "AzureActiveDirectory" -DestinationPortRange 443 -Description "Allow outbound traffic to AzureActiveDirectory service"`
 
- 7. Uložit nsg<br/>
+ 7. Uložit NSG<br/>
     `Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg`
 
-**Povolit přístup pomocí značek Azure Firewall**. Pokud používáte Azure Firewall, vytvořte pravidlo aplikace pomocí značky AzureBackup [FQDN](https://docs.microsoft.com/azure/firewall/fqdn-tags). To umožňuje odchozí přístup k Azure Backup.
+**Povolí přístup pomocí značek Azure firewall**. Pokud používáte Azure Firewall, vytvořte pravidlo aplikace pomocí [značky plně kvalifikovaného názvu domény](https://docs.microsoft.com/azure/firewall/fqdn-tags)AzureBackup. To umožňuje odchozí přístup k Azure Backup.
 
-**Nasazení serveru proxy HTTP pro směrování provozu**. Když zálohujete databázi SAP HANA na virtuálním počítači Azure, rozšíření zálohy na virtuálním počítači používá rozhraní API HTTPS k odesílání příkazů pro správu do Azure Backup a dat do Azure Storage. Rozšíření zálohování také používá Azure AD pro ověřování. Směrovat provoz rozšíření zálohy pro tyto tři služby prostřednictvím proxy serveru HTTP. Rozšíření jsou jedinou součástí, která je nakonfigurována pro přístup k veřejnému internetu.
+**Nasaďte proxy server HTTP pro směrování provozu**. Při zálohování databáze SAP HANA na virtuálním počítači Azure používá rozšíření zálohování na virtuálním počítači rozhraní API HTTPS k posílání příkazů pro správu do Azure Backup a dat do Azure Storage. Rozšíření zálohování používá pro ověřování taky službu Azure AD. Přesměrujte provoz rozšíření zálohování pro tyto tři služby prostřednictvím proxy serveru HTTP. Rozšíření jsou jedinou komponentou, která je nakonfigurovaná pro přístup k veřejnému Internetu.
 
 Možnosti připojení zahrnují následující výhody a nevýhody:
 
 **Možnost** | **Výhody** | **Nevýhody**
 --- | --- | ---
-Povolit rozsahy IP adres | Žádné další náklady | Komplexní správa, protože rozsahy IP adres se v průběhu času mění <br/><br/> Poskytuje přístup k celému Azure, nejen k Úložišti Azure.
-Použití značek služby NSG | Snadnější správa při automatickém sloučení změn rozsahu <br/><br/> Žádné další náklady <br/><br/> | Lze použít pouze s nsgs <br/><br/> Poskytuje přístup k celé službě
-Použití značek FQDN brány Azure Firewall | Snadnější správa při automatické správě požadovaných souborů FQDN | Lze použít pouze s Azure Firewall
-Použití proxy serveru HTTP | Podrobné ovládání v proxy serveru přes adresy URL úložiště je povoleno <br/><br/> Jednotný bod přístupu k internetu k virtuálním operátorům <br/><br/> Nepodléhá změnám IP adres Azure | Dodatečné náklady na spuštění virtuálního počítače se softwarem proxy
+Povoluje rozsahy IP adres. | Žádné další náklady | Složitá Správa, protože se rozsahy IP adres v průběhu času mění <br/><br/> Poskytuje přístup k celé službě Azure, ne jen Azure Storage
+Použití značek služby NSG | Jednodušší Správa jako změny rozsahu se sloučí automaticky. <br/><br/> Žádné další náklady <br/><br/> | Dá se použít jenom s skupin zabezpečení sítě <br/><br/> Poskytuje přístup k celé službě.
+Použití Azure Firewall značek plně kvalifikovaného názvu domény | Jednodušší Správa, protože jsou automaticky spravovány požadované plně kvalifikované názvy domén | Dá se použít jenom s Azure Firewall.
+Použití proxy serveru HTTP | Podrobné řízení v proxy serveru přes adresy URL úložiště je povolené. <br/><br/> Přístup k virtuálním počítačům jediným bodem z Internetu <br/><br/> Nepodléhá změnám IP adresy Azure | Další náklady na spuštění virtuálního počítače s využitím softwaru proxy
 
-## <a name="what-the-pre-registration-script-does"></a>Co dělá skript pro předběžnou registraci
+## <a name="what-the-pre-registration-script-does"></a>Co skript pro předběžnou registraci dělá
 
-Spuštění skriptu předběžné registrace provádí následující funkce:
+Spuštění předregistračního skriptu provede následující funkce:
 
-* Nainstaluje nebo aktualizuje všechny potřebné balíčky vyžadované agentem Azure Backup na vaší distribuci.
-* Provádí kontroly odchozího připojení k síti pomocí serverů Azure Backup a závislých služeb, jako je Azure Active Directory a Azure Storage.
-* Přihlásí se do vašeho systému HANA pomocí uživatelského klíče uvedeného jako součást [předpokladů](#prerequisites). Uživatelský klíč se používá k vytvoření záložního uživatele (AZUREWLBACKUPHANAUSER) v systému HANA a uživatelský klíč lze odstranit po úspěšném spuštění skriptu předběžné registrace.
-* AzurewlBACKUPHANAUSER je přiřazeny tyto požadované role a oprávnění:
-  * DATABASE ADMIN (v případě MDC) a BACKUP ADMIN (v případě SDC): vytvořit nové databáze během obnovení.
-  * KATALOG READ: chcete-li číst katalog záloh.
-  * SAP_INTERNAL_HANA_SUPPORT: pro přístup k několika soukromým stolům.
-* Skript přidá klíč k **hdbuserstore** pro AZUREWLBACKUPHANAUSER pro modul plug-in zálohy HANA pro zpracování všech operací (databázové dotazy, operace obnovení, konfigurace a spuštění zálohování).
+* Nainstaluje nebo aktualizuje všechny potřebné balíčky, které vyžaduje agent Azure Backup pro vaši distribuci.
+* Provádí odchozí kontroly připojení k síti pomocí Azure Backup serverů a závislých služeb, jako je Azure Active Directory a Azure Storage.
+* Přihlásí se do systému HANA pomocí klíče uživatele uvedeného v rámci [požadavků](#prerequisites). Uživatelský klíč se používá k vytvoření zálohovacího uživatele (AZUREWLBACKUPHANAUSER) v systému HANA a klíč uživatele lze odstranit po úspěšném spuštění skriptu před registrací.
+* K AZUREWLBACKUPHANAUSER se přiřazují tyto požadované role a oprávnění:
+  * Správce databáze (v případě MDC) a správce zálohování (v případě SDC): k vytvoření nových databází během obnovování.
+  * ČTENÍ katalogu: pro čtení katalogu záloh.
+  * SAP_INTERNAL_HANA_SUPPORT: pro přístup k několika soukromým tabulkám.
+* Skript přidá klíč do **hdbuserstore** pro AZUREWLBACKUPHANAUSER pro modul plug-in pro zálohování Hana pro zpracování všech operací (databázové dotazy, operace obnovení, konfigurace a spuštění zálohování).
 
 >[!NOTE]
-> Můžete explicitně předat uživatelský klíč uvedený jako součást [předpokladů](#prerequisites) jako parametr do skriptu předběžné registrace:`-sk SYSTEM_KEY_NAME, --system-key SYSTEM_KEY_NAME` <br><br>
->Chcete-li zjistit, jaké další parametry skript přijímá, použijte příkaz`bash msawb-plugin-config-com-sap-hana.sh --help`
+> Klíč uživatele, který je uveden jako součást [požadavků](#prerequisites) , můžete explicitně předat jako parametr do skriptu před registrací:`-sk SYSTEM_KEY_NAME, --system-key SYSTEM_KEY_NAME` <br><br>
+>Pokud chcete zjistit, jaké další parametry skript akceptuje, použijte příkaz.`bash msawb-plugin-config-com-sap-hana.sh --help`
 
-Chcete-li potvrdit vytvoření klíče, spusťte příkaz HDBSQL na počítači HANA s pověřeními SIDADM:
+Pro potvrzení vytvoření klíče spusťte na počítači HANA příkaz HDBSQL s přihlašovacími údaji SIDADM:
 
 ```hdbsql
 hdbuserstore list
 ```
 
-Výstup příkazu by měl zobrazit klíč {SID}{DBNAME} s uživatelem zobrazeným jako AZUREWLBACKUPHANAUSER.
+Výstup příkazu by měl zobrazovat klíč {SID} {DBNAME} s uživatelem zobrazeným jako AZUREWLBACKUPHANAUSER.
 
 >[!NOTE]
-> Ujistěte se, že máte jedinečnou sadu `/usr/sap/{SID}/home/.hdb/`souborů SSFS v části . V této cestě by měla být pouze jedna složka.
+> Ujistěte se, že je v `/usr/sap/{SID}/home/.hdb/`systému k dispozici jedinečná sada souborů SSFS. V této cestě by měla být jenom jedna složka.
 
-## <a name="create-a-recovery-service-vault"></a>Vytvoření trezoru služby obnovení
+## <a name="create-a-recovery-service-vault"></a>Vytvoření trezoru služby Recovery Services
 
-Trezor služby Recovery Services je entita, která ukládá zálohy a body obnovení vytvořené v průběhu času. Trezor služby Recovery Services také obsahuje zásady zálohování, které jsou přidruženy k chráněným virtuálním počítačům.
+Recovery Services trezor je entita, která ukládá zálohy a body obnovení vytvořené v průběhu času. Trezor Recovery Services obsahuje také zásady zálohování, které jsou přidruženy k chráněným virtuálním počítačům.
 
 Chcete-li vytvořit trezor Služeb zotavení:
 
-1. Přihlaste se ke svému předplatnému na [webu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k předplatnému v [Azure Portal](https://portal.azure.com/).
 
-2. V levé nabídce vyberte **Všechny služby**
+2. V nabídce vlevo vyberte **všechny služby** .
 
    ![Vybrat všechny služby](./media/tutorial-backup-sap-hana-db/all-services.png)
 
-3. V dialogovém okně **Všechny služby** zadejte **služby obnovení**. Seznam zdrojů filtruje podle vašeho vstupu. V seznamu zdrojů vyberte **trezory služby Recovery Services**.
+3. V dialogovém okně **všechny služby** zadejte **Recovery Services**. Seznam prostředků se filtruje podle vašeho zadání. V seznamu prostředků vyberte **Recovery Services trezory**.
 
-   ![Vybrat trezory služby Recovery Services](./media/tutorial-backup-sap-hana-db/recovery-services-vaults.png)
+   ![Vybrat Recovery Services trezory](./media/tutorial-backup-sap-hana-db/recovery-services-vaults.png)
 
-4. Na řídicím panelu trezorů **služby Recovery Services** vyberte **Přidat**.
+4. Na řídicím panelu trezorů **Recovery Services** vyberte **Přidat**.
 
-   ![Přidat trezor služby Recovery Services](./media/tutorial-backup-sap-hana-db/add-vault.png)
+   ![Přidat Recovery Services trezor](./media/tutorial-backup-sap-hana-db/add-vault.png)
 
-   Otevře se dialogové okno **trezoru služby Recovery Services.** Zadejte hodnoty pro **název, odběr, skupinu prostředků** a **umístění**
+   Otevře se dialogové okno **Recovery Services trezor** . Zadejte hodnoty pro **název, předplatné, skupinu prostředků** a **umístění** .
 
    ![Vytvoření trezoru služby Recovery Services](./media/tutorial-backup-sap-hana-db/create-vault.png)
 
-   * **Název**: Název se používá k identifikaci trezoru služeb pro obnovení a musí být jedinečný pro předplatné Azure. Zadejte název, který má alespoň dva, ale ne více než 50 znaků. Název musí začínat písmenem a skládat pouze z písmen, čísel a spojovníků. Pro účely tohoto kurzu jsme použili název **SAPHanaVault**.
-   * **Předplatné**: Zvolte předplatné, které chcete použít. Pokud jste členem pouze jednoho předplatného, uvidíte toto jméno. Pokud si nejste jistí, které předplatné použít, použijte výchozí (navrhované) předplatné. Existuje několik možností pouze v případě, že váš pracovní nebo školní účet je přidružený k více než jednomu předplatnému Azure. Zde jsme použili předplatné **testovacího prostředí řešení SAP HANA.**
-   * **Skupina prostředků**: Použijte existující skupinu prostředků nebo vytvořte novou. Zde jsme použili **SAPHANADemo**.<br>
-   Pokud chcete zobrazit seznam dostupných skupin prostředků v předplatném, vyberte **Použít existující**a v rozevíracím seznamu vyberte prostředek. Chcete-li vytvořit novou skupinu prostředků, vyberte **Vytvořit nový** a zadejte název. Úplné informace o skupinách prostředků najdete v [tématu Přehled Správce prostředků Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
-   * **Umístění**: Vyberte zeměpisnou oblast pro úschovnu. Úschovna musí být ve stejné oblasti jako virtuální počítač se systémem SAP HANA. Použili jsme **východní USA 2**.
+   * **Název**: název slouží k identifikaci trezoru služby Recovery Services a musí být jedinečný pro předplatné Azure. Zadejte název, který obsahuje alespoň 2 znaky, ale ne více než 50 znaků. Název musí začínat písmenem a obsahovat jenom písmena, číslice a spojovníky. Pro tento kurz jsme použili název **SAPHanaVault**.
+   * **Předplatné**: vyberte předplatné, které chcete použít. Pokud jste členem jenom jednoho předplatného, uvidíte tento název. Pokud si nejste jistí, které předplatné se má použít, použijte výchozí (navrhované) předplatné. K dispozici je více možností pouze v případě, že je váš pracovní nebo školní účet spojen s více než jedním předplatným Azure. V tomto příkladu jsme použili předplatné předplatného **řešení SAP HANA Solution Lab** .
+   * **Skupina prostředků**: použijte existující skupinu prostředků nebo vytvořte novou. Tady jsme použili **SAPHANADemo**.<br>
+   Pokud chcete zobrazit seznam dostupných skupin prostředků ve vašem předplatném, vyberte **použít existující**a pak v rozevíracím seznamu vyberte prostředek. Pokud chcete vytvořit novou skupinu prostředků, vyberte **vytvořit novou** a zadejte název. Úplné informace o skupinách prostředků najdete v tématu [přehled Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
+   * **Umístění**: vyberte zeměpisnou oblast trezoru. Trezor musí být ve stejné oblasti jako virtuální počítač se spuštěným SAP HANA. Použili jsme **východní USA 2**.
 
 5. Vyberte **zkontrolovat + vytvořit**.
 
-   ![Vybrat zkontrolovat & vytvořit.](./media/tutorial-backup-sap-hana-db/review-create.png)
+   ![Vyberte zkontrolovat & vytvořit.](./media/tutorial-backup-sap-hana-db/review-create.png)
 
-Trezor služeb obnovení je nyní vytvořen.
+Trezor služby Recovery Services je nyní vytvořen.
 
-## <a name="discover-the-databases"></a>Seznamte se s databázemi
+## <a name="discover-the-databases"></a>Zjištění databází
 
-1. V trezoru klikněte v **části Začínáme**na **položku Zálohování**. V **yberte Kde běží vaše úloha?**, vyberte SAP **HANA v virtuálním počítači Azure**.
-2. Klepněte na tlačítko **Spustit zjišťování**. To iniciuje zjišťování nechráněných virtuálních počítačích SIP v oblasti úschovny. Uvidíte virtuální počítač Azure, který chcete chránit.
-3. V **části Vybrat virtuální počítače**klikněte na odkaz a stáhněte si skript, který poskytuje oprávnění pro službu Azure Backup pro přístup k virtuálním počítačům SAP HANA pro zjišťování databáze.
-4. Spusťte skript na virtuálním počítači hostující databáze SAP HANA, které chcete zálohovat.
-5. Po spuštění skriptu na virtuálním počítači vyberte v **nabídce Vybrat virtuální počítače**virtuální počítač. Potom klepněte na tlačítko **Objevit centrální soubory**.
-6. Azure Backup zjišťuje všechny databáze SAP HANA na virtuálním počítači. Během zjišťování Azure Backup zaregistruje virtuální počítač s trezorem a nainstaluje rozšíření na virtuální počítač. V databázi není nainstalován žádný agent.
+1. V trezoru v **Začínáme**klikněte na **zálohovat**. V aplikaci **kde je spuštěná vaše úloha?** vyberte **na virtuálním počítači Azure SAP HANA**.
+2. Klikněte na **Spustit zjišťování**. Tím se iniciuje zjišťování nechráněných virtuálních počítačů se systémem Linux v oblasti trezoru. Zobrazí se virtuální počítač Azure, který chcete chránit.
+3. V části **vybrat Virtual Machines**klikněte na odkaz pro stažení skriptu, který poskytuje oprávnění pro službu Azure Backup pro přístup k SAP HANA virtuálním počítačům pro zjištění databáze.
+4. Spusťte skript na virtuálním počítači hostujícím SAP HANA databázi, kterou chcete zálohovat.
+5. Po spuštění skriptu na virtuálním počítači vyberte v části **vybrat Virtual Machines**virtuální počítač. Pak klikněte na **Vyhledat databáze**.
+6. Azure Backup zjistí všechny databáze SAP HANA na virtuálním počítači. Během zjišťování Azure Backup registruje virtuální počítač s trezorem a na virtuálním počítači nainstaluje rozšíření. V databázi není nainstalován žádný agent.
 
-   ![Seznamte se s databázemi](./media/tutorial-backup-sap-hana-db/database-discovery.png)
+   ![Zjištění databází](./media/tutorial-backup-sap-hana-db/database-discovery.png)
 
 ## <a name="configure-backup"></a>Konfigurace zálohování
 
-Nyní, když jsou databáze, které chceme zálohovat, objeveny, povolte zálohování.
+Teď, když se hledají databáze, které chceme zálohovat, pojďme povolit zálohování.
 
-1. Klepněte na **tlačítko Konfigurovat zálohování**.
+1. Klikněte na **Konfigurovat zálohu**.
 
    ![Konfigurace zálohování](./media/tutorial-backup-sap-hana-db/configure-backup.png)
 
-2. V **části Vybrat položky, které chcete zálohovat**, vyberte jednu nebo více databází, které chcete chránit, a klepněte na tlačítko **OK**.
+2. V nabídce **Vyberte položky, které chcete zálohovat**vyberte jednu nebo více databází, které chcete chránit, a poté klikněte na tlačítko **OK**.
 
-   ![Výběr položek, které chcete zálohovat](./media/tutorial-backup-sap-hana-db/select-items-to-backup.png)
+   ![Vyberte položky, které chcete zálohovat.](./media/tutorial-backup-sap-hana-db/select-items-to-backup.png)
 
-3. V **části Zásady zálohování > Zvolte zásady zálohování**, vytvořte nové zásady zálohování pro databáze v souladu s pokyny v další části.
+3. V části **zásady zálohování > vyberte zásady zálohování**, vytvořte nové zásady zálohování pro databáze, a to v souladu s pokyny v následující části.
 
-   ![Zvolte zásady zálohování](./media/tutorial-backup-sap-hana-db/backup-policy.png)
+   ![Zvolit zásady zálohování](./media/tutorial-backup-sap-hana-db/backup-policy.png)
 
-4. Po vytvoření zásady klepněte v **nabídce Zálohování**na **položku Povolit zálohování**.
+4. Po vytvoření zásady klikněte v **nabídce zálohování**na **Povolit zálohování**.
 
-   ![Klikněte na Povolit zálohování.](./media/tutorial-backup-sap-hana-db/enable-backup.png)
+   ![Klikněte na povolit zálohování.](./media/tutorial-backup-sap-hana-db/enable-backup.png)
 
-5. Sledujte průběh konfigurace zálohování v oblasti **Oznámení** na portálu.
+5. Sledujte průběh konfigurace zálohování v oblasti **oznámení** na portálu.
 
 ## <a name="creating-a-backup-policy"></a>Vytvoření zásady zálohování
 
-Zásady zálohování definují, kdy jsou zálohy prováděny a jak dlouho jsou zachovány.
+Zásady zálohování definují, kdy se zálohují zálohy a jak dlouho se uchovávají.
 
-* Zásada je vytvořena na úrovni úschovny.
-* Více trezorů může používat stejné zásady zálohování, ale zásady zálohování je nutné použít pro každý trezor.
+* Zásada se vytvoří na úrovni trezoru.
+* Několik trezorů může používat stejné zásady zálohování, ale je nutné použít zásady zálohování pro každý trezor.
 
-Nastavení zásad zadejte následujícím způsobem:
+Nastavení zásad určete následujícím způsobem:
 
-1. V **části Název zásad**zadejte název nové zásady. V tomto případě zadejte **SAPHANA**.
+1. Do pole **název zásady**zadejte název nové zásady. V takovém případě zadejte **SAPHANA**.
 
-   ![Zadejte název nové zásady.](./media/tutorial-backup-sap-hana-db/new-policy.png)
+   ![Zadat název pro nové zásady](./media/tutorial-backup-sap-hana-db/new-policy.png)
 
-2. V **zásadách úplného zálohování**vyberte **frekvenci zálohování**. Můžete si vybrat **denní** nebo **týdenní**. Pro tento kurz jsme zvolili **denní** zálohu.
+2. V **zásadách úplného zálohování**vyberte **četnost zálohování**. Můžete zvolit **každý den** nebo **každý týden**. Pro tento kurz jsme zvolili **denní** zálohování.
 
-   ![Výběr frekvence zálohování](./media/tutorial-backup-sap-hana-db/backup-frequency.png)
+   ![Výběr četnosti zálohování](./media/tutorial-backup-sap-hana-db/backup-frequency.png)
 
-3. V **rozsahu uchování**nakonfigurujte nastavení uchovávání informací pro úplnou zálohu.
-   * Ve výchozím nastavení jsou vybrány všechny možnosti. Zrušte všechny limity rozsahu uchování, které nechcete používat, a nastavte ty, které nechcete používat.
-   * Minimální doba uchování pro jakýkoli typ zálohy (full/differential/log) je sedm dní.
-   * Body obnovení jsou označeny pro uchovávání na základě jejich rozsah uchování. Pokud například vyberete denní úplnou zálohu, bude každý den spuštěna pouze jedna úplná záloha.
-   * Záloha pro konkrétní den je označena a zachována na základě týdenního rozsahu uchovávání a nastavení.
-   * Měsíční a roční retenční rozsahy se chovají podobně.
-4. V nabídce **zásad úplného zálohování** klepněte na tlačítko **OK,** abyste přijali nastavení.
-5. Pak vyberte **rozdílové zálohování** přidat rozdílové zásady.
-6. V **zásadách rozdílového zálohování**vyberte **Povolit,** chcete-li otevřít ovládací prvky četnosti a uchovávání informací. Povolili jsme rozdílovou zálohu každou **neděli** ve **2:00**, která je zachována po dobu **30 dnů**.
+3. V části **Rozsah uchování**nakonfigurujte nastavení uchovávání pro úplnou zálohu.
+   * Ve výchozím nastavení jsou vybrány všechny možnosti. Vymažte všechny limity rozsahu uchování, které nechcete používat, a nastavte ty, které chcete provést.
+   * Minimální doba uchování pro jakýkoli typ zálohy (úplný/rozdíl/protokol) je sedm dní.
+   * Body obnovení jsou označeny pro uchování na základě jejich rozsahu uchovávání. Pokud například vyberete denní úplnou zálohu, spustí se každý den jenom jedno úplné zálohování.
+   * Záloha pro určitý den je označená a zachovaná na základě rozsahu a nastavení týdenního uchování.
+   * Měsíční a roční rozsah uchování se chová podobným způsobem.
+4. V nabídce **zásady úplného zálohování** klikněte na **OK** , aby se nastavení přijímalo.
+5. Pak vyberte **rozdílové zálohování** a přidejte rozdílovou zásadu.
+6. V části **rozdílová zásada zálohování**vyberte **Povolit** a otevřete tak ovládací prvky četnost a uchování. Povolili jsme rozdílovou zálohu každé **neděle** v **2:00**. ta se uchovává po dobu **30 dnů**.
 
    ![Zásady rozdílového zálohování](./media/tutorial-backup-sap-hana-db/differential-backup-policy.png)
 
    >[!NOTE]
-   >Přírůstkové zálohy nejsou aktuálně podporovány.
+   >Přírůstkové zálohování není aktuálně podporováno.
    >
 
-7. Klepnutím na **tlačítko OK** uložte zásadu a vraťte se do hlavní nabídky **zásad zálohování.**
-8. Chcete-li přidat zásady zálohování transakčních protokolů, vyberte **možnost Záloha protokolů.**
-   * **Program Zálohování protokolu** je ve výchozím nastavení nastaven na **povolit**. To nelze zakázat, protože SAP HANA spravuje všechny zálohy protokolů.
-   * Nastavili jsme **2 hodiny** jako plán zálohování a **15 dní** retenční ho období.
+7. Kliknutím na **OK** zásadu uložte a vraťte se do nabídky hlavní **zásady zálohování** .
+8. Vyberte **zálohování protokolu** a přidejte zásady zálohování transakčního protokolu.
+   * **Zálohování protokolu** je ve výchozím nastavení nastaveno na hodnotu **Povolit**. Toto nejde zakázat, protože SAP HANA spravuje všechny zálohy protokolů.
+   * Nastavili jsme **2 hodiny** jako plán zálohování a **15 dní** doby uchování.
 
-    ![Protokolovat zásady zálohování](./media/tutorial-backup-sap-hana-db/log-backup-policy.png)
+    ![Zásady zálohování protokolů](./media/tutorial-backup-sap-hana-db/log-backup-policy.png)
 
    >[!NOTE]
-   > Zálohy protokolů začnou tok až po dokončení jedné úspěšné úplné zálohy.
+   > Zálohování protokolů začíná proudem až po úspěšném úplném úplném zálohování.
    >
 
-9. Klepnutím na **tlačítko OK** uložte zásadu a vraťte se do hlavní nabídky **zásad zálohování.**
-10. Po dokončení definování zásad zálohování klepněte na tlačítko **OK**.
+9. Kliknutím na **OK** zásadu uložte a vraťte se do nabídky hlavní **zásady zálohování** .
+10. Až dokončíte definování zásad zálohování, klikněte na **OK**.
 
-Nyní jste úspěšně nakonfigurovali zálohy pro databáze SAP HANA.
+Nyní jste úspěšně nakonfigurovali zálohy pro vaše SAP HANA databáze.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Zjistěte, jak [spouštět zálohy na vyžádání v databázích SAP HANA spuštěných na virtuálních počítačích Azure](backup-azure-sap-hana-database.md#run-an-on-demand-backup)
-* Zjistěte, jak [obnovit databáze SAP HANA spuštěné na virtuálních počítačích Azure](sap-hana-db-restore.md)
-* Zjistěte, jak [spravovat databáze SAP HANA, které jsou zálohované pomocí azure backupu](sap-hana-db-manage.md)
-* Informace o [řešení běžných problémů při zálohování databází SAP HANA](backup-azure-sap-hana-database-troubleshoot.md)
+* Naučte se [spouštět zálohy na vyžádání v SAP HANA databázích běžících na virtuálních počítačích Azure](backup-azure-sap-hana-database.md#run-an-on-demand-backup) .
+* Informace o tom, jak [obnovit SAP HANA databáze běžící na virtuálních počítačích Azure](sap-hana-db-restore.md)
+* Naučte se [spravovat SAP HANA databází zálohovaných pomocí Azure Backup](sap-hana-db-manage.md)
+* Naučte se [řešit běžné problémy při zálohování SAP HANA databází](backup-azure-sap-hana-database-troubleshoot.md) .

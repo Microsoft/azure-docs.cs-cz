@@ -1,7 +1,7 @@
 ---
-title: Design s modely - LUIS
+title: Návrh s modely – LUIS
 titleSuffix: Azure Cognitive Services
-description: Jazykové porozumění poskytuje několik typů modelů. Některé modely lze použít více než jedním způsobem.
+description: Jazyk porozumění nabízí několik typů modelů. Některé modely lze použít více než jedním způsobem.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,149 +12,149 @@ ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: diberry
 ms.openlocfilehash: d721ceb25b3ce2408563a0bed16457d05affe7b4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79219992"
 ---
-# <a name="design-with-intent-and-entity-models"></a>Návrh s modely záměru a entit 
+# <a name="design-with-intent-and-entity-models"></a>Návrh s využitím a modelů entit 
 
-Jazykové porozumění poskytuje několik typů modelů. Některé modely lze použít více než jedním způsobem. 
+Jazyk porozumění nabízí několik typů modelů. Některé modely lze použít více než jedním způsobem. 
 
-## <a name="v3-authoring-uses-machine-teaching"></a>V3 Authoring používá strojové učení
+## <a name="v3-authoring-uses-machine-teaching"></a>Vytváření obsahu V3 používá učebnu počítače
 
-Služba LUIS umožňuje uživatelům snadno učit koncepty do počítače. Stroj pak může vytvářet modely (funkční aproximace konceptů, jako jsou klasifikátory a extraktory), které lze použít k napájení inteligentních aplikací. Zatímco služba LUIS je poháněna strojovým učením, pochopení strojového učení není nutné k jeho použití. Místo toho učitelé strojů komunikovat koncepty LUIS zobrazením pozitivní a negativní příklady konceptu a vysvětluje, jak by měl být modelován koncept pomocí jiných souvisejících konceptů. Učitelé mohou také interaktivně vylepšit model služby LUIS tím, že identifikují a opravují chyby předpovědi. 
+LUIS umožňuje lidem snadno naučit koncepty pro počítač. Počítač pak může sestavit modely (funkce odhadu konceptů, jako jsou klasifikátory a extraktory), které se dají použít k napájení inteligentních aplikací. I když je Služba LUIS založená na strojovém učení, není nutné pochopit službu Machine Learning. Místo toho Machine učitelé sdělují koncepty LUIS zobrazením pozitivních a negativních příkladů konceptu a vysvětlením, jak by měl být koncept modelován pomocí dalších souvisejících konceptů. Učitelé můžou také interaktivně zlepšit LUIS model tím, že identifikují a opravují chyby předpovědi. 
 
-## <a name="v3-authoring-model-decomposition"></a>Rozklad vývojového modelu V3
+## <a name="v3-authoring-model-decomposition"></a>Rekompozice modelu vytváření modelů V3
 
-Služba LUIS podporuje _rozklad modelu_ pomocí vytváření v3 API, rozdělení modelu na menší části. To vám umožní vytvářet modely s důvěrou v tom, jak jsou jednotlivé části konstruovány a předpovězeny.
+LUIS podporuje _rozložení modelu_ s rozhraními API pro vytváření obsahu v3 a rozdělí model na menší části. To vám umožní sestavovat modely s jistotou v tom, jak jsou jednotlivé části sestavené a předpovídané.
 
-Rozklad modelu má následující části:
+Dekompozice modelu má následující části:
 
-* [Záměry](#intents-classify-utterances)
+* [záměry](#intents-classify-utterances)
     * [popisovače](#descriptors-are-features) poskytované funkcemi
-* [strojově naučené entity](#machine-learned-entities)
-    * [dílčí součásti](#entity-subcomponents-help-extract-data) (také strojově učené entity)
+* [entity rozpoznané počítačem](#machine-learned-entities)
+    * dílčí [součásti](#entity-subcomponents-help-extract-data) (také přeučené entity počítače)
         * [popisovače](#descriptors-are-features) poskytované funkcemi 
-        * [omezení](#constraints-are-text-rules) poskytovaná nestrojově získanými entitami, jako jsou regulární výrazy a seznamy
+        * [omezení](#constraints-are-text-rules) poskytovaná entitami, které nejsou učené počítačem, jako jsou regulární výrazy a seznamy
 
-## <a name="v2-authoring-models"></a>Vývojové modely V2
+## <a name="v2-authoring-models"></a>Modely vytváření sestav v2
 
-Služba LUIS podporuje složené entity pomocí vytváření v2 API. To poskytuje podobný rozklad modelu, ale není stejný jako rozklad modelu V3. Doporučená architektura modelu je přesunout na rozložení modelu v V3 vytváření API. 
+LUIS podporuje složené entity s rozhraními API pro vytváření obsahu V2. To poskytuje podobné rozložení modelu, ale není stejné jako dekompozice modelu v3. Doporučovanou architekturou modelů je přesun do rozloženého modelu v rozhraních API pro vytváření obsahu v3. 
 
-## <a name="intents-classify-utterances"></a>Záměry klasifikují projevy
+## <a name="intents-classify-utterances"></a>Záměry klasifikovat projevy
 
-Záměr klasifikuje příklad projevy učit LUIS o záměru. Příklad projevy v rámci záměru se používají jako kladné příklady utterance. Tyto stejné projevy se používají jako negativní příklady ve všech ostatních záměrech.
+Záměr klasifikuje příklad projevy na učení LUIS o záměru. Příklad projevy v rámci záměru slouží jako pozitivní příklady utterance. Stejné projevy se používají jako negativní příklady ve všech dalších záměrech.
 
-Zvažte aplikaci, která potřebuje určit záměr uživatele objednat knihu a aplikaci, která potřebuje dodací adresu pro zákazníka. Tato aplikace má dva `OrderBook` `ShippingLocation`záměry: a .
+Vezměte v úvahu aplikaci, která potřebuje určit záměr uživatele pro seřazení knihy a aplikace, které potřebují dodací adresu pro zákazníka. Tato aplikace má dva záměry: `OrderBook` a `ShippingLocation`.
 
-Následující utterance je **pozitivní** příklad `OrderBook` pro záměr a `ShippingLocation` negativní `None` **příklad** pro a záměry: 
+Následující utterance je **kladný příklad** pro `OrderBook` záměr a **negativní příklad** pro záměr `ShippingLocation` a: `None` 
 
 `Buy the top-rated book on bot architecture.`
 
-Výsledkem dobře navržené záměry, s jejich příklad projevy, je vysoký záměr předpověď. 
+Výsledek dobře navržených záměrů, s jejich příkladem projevy, je předpověď vysokého záměru. 
 
 ## <a name="entities-extract-data"></a>Entity extrahují data
 
-Entita představuje jednotku dat, kterou chcete extrahovat z utterance. 
+Entita představuje jednotku dat, která se má extrahovat z utterance. 
 
-### <a name="machine-learned-entities"></a>Strojově naučené entity
+### <a name="machine-learned-entities"></a>Entity rozpoznané počítačem
 
-Entita načený počítačem je entita nejvyšší úrovně obsahující dílčí součásti, které jsou také entity získané počítačem. 
+Entita získaná počítačem je entita nejvyšší úrovně obsahující dílčí komponenty, které jsou také entitami, které se naučily strojově. 
 
-**Použijte entitu naučenou strojem**:
+**Použijte počítačově získanou entitu**:
 
-* pokud klientská aplikace potřebuje dílčí součásti
-* pomoci algoritmu strojového učení rozložit entity
+* Pokud jsou dílčí součásti vyžadovány klientskou aplikací
+* informace o tom, jak algoritmus strojového učení rozloží entity
 
-Každá dílčí součást může mít:
+Každá dílčí komponenta může mít:
 
-* Podsoučásti
+* dílčí součásti
 * omezení (entita regulárního výrazu nebo entita seznamu)
-* popisovače (funkce, jako je seznam frází) 
+* popisovače (funkce jako seznam frází) 
 
-Příkladem entity získané strojem je objednávka letenky. Koncepčně se jedná o jednu transakci s mnoha menšími jednotkami dat, jako je datum, čas, množství sedadel, typ sedadla, jako je první třída nebo trenér, místo původu, místo určení a výběr jídla.
+Příkladem uživatelsky řízené entity je objednávka pro lístek roviny. V koncepčním případě je to jediná transakce s mnoha menšími jednotkami dat, jako je datum, čas, množství sedadel, typ sedadla, jako je například první třída nebo autokar, umístění původu, cílové umístění a volba krupice.
 
 
-### <a name="entity-subcomponents-help-extract-data"></a>Dílčí součásti entit pomáhají extrahovat data
+### <a name="entity-subcomponents-help-extract-data"></a>Dílčí komponenty entity – pomůžou extrahovat data
 
-Dílčí součást je podřízená entita naučná počítačem v rámci nadřazené entity naučené počítačem. 
+Dílčí komponenta je podřízená entita získaná počítačem v rámci nadřazené entity, kterou se naučila počítač. 
 
-**Pomocí dílčí součásti můžete:**
+**Podsoučást použijte k**těmto akcím:
 
-* rozkládají části strojově učené entity (nadřazené entity).
+* rozloží části uživatelsky rozpoznané entity (nadřazená entita).
 
-Následující představuje strojově načený entitu se všemi těmito samostatnými částmi dat:
+Následující představuje entitu získanou počítačem, která obsahuje všechny tyto samostatné části dat:
 
-* TravelOrder (strojově naučená entita)
+* TravelOrder (entita se naučila počítač)
     * DateTime (předem sestavené datetimeV2)
-    * Umístění (entita naučená strojem)
-        * Původ (role nalezená `from`v kontextu, například )
-        * Cíl (role nalezená `to`v kontextu, například )
-    * Sezení (strojově učená entita)
+    * Umístění (entita poučená počítač)
+        * Počátek (role byla nalezena prostřednictvím kontextu jako `from`)
+        * Cíl (role byla nalezena prostřednictvím kontextu jako `to`)
+    * Pracovní stanice (entita s učením počítače)
         * Množství (předem sestavené číslo)
-        * Kvalita (strojově naučená entita s deskriptorem seznamu frází)
-    * Stravování (strojově naučená entita s omezením subjektu seznamu jako výběru potravin)
+        * Kvalita (entita poučená počítačem s popisovačem seznamu frází)
+    * Jídla (entita poučená počítačem s omezením entity seznam jako potravinové volby)
 
-Některé z těchto údajů, jako je například umístění původu a cílové umístění, by měly `from` `to`být poučeny z kontextu utterance, možná s takovou formulací jako a . Ostatní části dat lze extrahovat s`Vegan`přesnými řetězcovými shodami ( `Seattle` ) `Cairo`nebo předem vytvořenými entitami (geographyV2 of a). 
+Některá z těchto dat, jako je zdrojové umístění a cílové umístění, by se měla považovat z kontextu utterance, třeba s takovým slovem jako `from` a. `to` Ostatní části dat lze extrahovat pomocí přesně odpovídajících řetězců (`Vegan`) nebo předem sestavených entit (geographyV2 of `Seattle` a `Cairo`). 
 
-Navrhnout, jak jsou data spárována a extrahována podle modelů, které zvolíte a jak je nakonfigurujete.
+Navrhujete, jak jsou data shodná a extrahována podle modelů, které zvolíte, a jak je nakonfigurujete.
 
-### <a name="constraints-are-text-rules"></a>Omezení jsou pravidla textu
+### <a name="constraints-are-text-rules"></a>Omezení jsou textová pravidla
 
-Omezení je pravidlo pro porovnávání textu poskytované entitou, která není naučená počítačem, například entita regulárního výrazu nebo entita seznamu. Omezení se použije v době předpovědi k omezení předpovědi a poskytnutí řešení entity potřebné pro klientskou aplikaci. Tato pravidla definujete při vytváření dílčí součásti. 
+Omezení je pravidlo pro porovnání textu, které poskytuje entita získaná mimo počítač, jako je například entita regulárního výrazu nebo seznam entit. Omezení je použito v době předpovědi k omezení předpovědi a k poskytnutí řešení entity, které vyžaduje klientská aplikace. Tato pravidla definujete při vytváření dílčí součásti. 
 
 **Použít omezení**:
-* když znáte přesný text k extrahování.
+* Pokud znáte přesný text k extrakci.
 
 Omezení zahrnují:
 
-* entity [regulárního výrazu](reference-entity-regular-expression.md)
+* entity [regulárních výrazů](reference-entity-regular-expression.md)
 * [seznam](reference-entity-list.md) entit 
-* [předem sestavené](luis-reference-prebuilt-entities.md) entity
+* [předem připravené](luis-reference-prebuilt-entities.md) entity
 
-V příkladu letenky mohou být kódy letiště v entitě Seznam pro přesné textové shody. 
+V případě, že budete pokračovat v příkladu lístku roviny, mohou být kódy letiště v entitě seznamu pro přesné shody textu. 
 
-Pro seznam letišť, položka seznamu pro Seattle `Seattle` je název města, a synonyma pro Seattle patří kód letiště pro Seattle spolu s okolními městy:
+V seznamu letišť je položka seznamu pro Seattle název města `Seattle` a synonyma pro Seattle zahrnuje kód letiště pro Seattle spolu s okolními městy a městy:
 
-|`Seattle`Seznam synonym entity|
+|`Seattle`Seznam synonym entit|
 |--|
 |`Sea`|
 |`seatac`|
 |`Bellevue`|
 
-Chcete-li rozpoznat pouze kódy se 3 písmeny pro kódy letišť, použijte jako omezení regulární výraz. 
+Pokud chcete rozpoznávat pouze 3 kódy pro letištní kódy, použijte jako omezení regulární výraz. 
 
 `/^[A-Z]{3}$/`
 
 ## <a name="intents-versus-entities"></a>Záměry versus entity
 
-Záměr je požadovaný výsledek _celé_ utterance zatímco entity jsou kusy dat extrahované z utterance. Záměry jsou obvykle vázány na akce, které by měla klientská aplikace provést, a entity jsou informace potřebné k provedení této akce. Z hlediska programování záměr by aktivovat volání metody a entity by být použity jako parametry pro volání této metody.
+Záměrem je požadovaný výsledek _celého_ utterance, zatímco entity jsou částí dat extrahovaných z utterance. Obvykle jsou záměry svázány s akcemi, které by měla klientská aplikace brát v úvahu, a entity jsou informace potřebné k provedení této akce. Z hlediska programování by záměr aktivoval volání metody a entity budou použity jako parametry pro volání metody.
 
 Tento utterance _musí_ mít záměr a _může_ mít entity:
 
 `Buy an airline ticket from Seattle to Cairo`
 
-Tento utterance má jediný záměr:
+Tento utterance má jeden záměr:
 
-* Nákup letenky
+* Nákup lístku roviny
 
 Tento utterance _může_ mít několik entit:
 
-* Umístění Seattlu (původ) a Káhira (cíl)
-* Množství jedné jízdenky
+* Umístění Seattle (Origin) a Cairo (cíl)
+* Množství jediného lístku
 
-## <a name="descriptors-are-features"></a>Deskriptory jsou funkce
+## <a name="descriptors-are-features"></a>Popisovače jsou funkce
 
-Deskriptor je funkce aplikovaná na model v době školení, včetně seznamů frází a entit. 
+Popisovač je funkce použitá pro model v době školení, včetně seznamů frází a entit. 
 
-**Popis použijte, pokud chcete**:
+**Použijte popisovač, pokud chcete**:
 
-* význam slov a frází identifikovaných deskriptorem
-* doporučovali luis nový text nebo fráze pro popisovač
-* oprava chyby na trénovacích datech
+* Zvyšte význam slov a frází identifikovaných popisovačem.
+* LUIS doporučit nový text nebo frázi, které se doporučují pro popisovač
+* Oprava chyby v školicích datech
 
 ## <a name="next-steps"></a>Další kroky
 
-* Pochopit [záměry](luis-concept-intent.md) a [entity](luis-concept-entity-types.md). 
+* Pochopení [záměrů](luis-concept-intent.md) a [entit](luis-concept-entity-types.md). 

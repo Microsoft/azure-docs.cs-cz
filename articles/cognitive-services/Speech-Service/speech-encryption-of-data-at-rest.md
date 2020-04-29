@@ -1,7 +1,7 @@
 ---
-title: Šifrování dat v klidovém stavu služby Řeči
+title: Šifrování neaktivních dat ve službě Speech Service
 titleSuffix: Azure Cognitive Services
-description: Šifrování dat v klidovém stavu služby řeči.
+description: Šifrování neaktivních dat ve službě Speech Service.
 author: erindormier
 manager: venkyv
 ms.service: cognitive-services
@@ -10,41 +10,41 @@ ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: egeaney
 ms.openlocfilehash: 3ccc9820f38a8c32d0b390663eb6b4430b42e8f0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79372356"
 ---
-# <a name="speech-service-encryption-of-data-at-rest"></a>Šifrování dat v klidovém stavu služby Řeči
+# <a name="speech-service-encryption-of-data-at-rest"></a>Šifrování neaktivních dat ve službě Speech Service
 
-Služba Speech Service automaticky šifruje vaše data, když je trvala do cloudu. Šifrování služby Speech Service chrání vaše data a pomáhá vám plnit závazky organizace v oblasti zabezpečení a dodržování předpisů.
+Služba Speech Service automaticky šifruje vaše data při jejich trvalém uložení do cloudu. Šifrování služby Speech chrání vaše data a usnadňuje splnění závazků týkajících se zabezpečení a dodržování předpisů v organizaci.
 
-## <a name="about-cognitive-services-encryption"></a>Šifrování služeb Cognitive Services
+## <a name="about-cognitive-services-encryption"></a>O šifrování Cognitive Services
 
-Data jsou šifrována a dešifrována pomocí [256bitového](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) šifrování AES kompatibilního se [standardem FIPS 140-2.](https://en.wikipedia.org/wiki/FIPS_140-2) Šifrování a dešifrování jsou transparentní, což znamená, že šifrování a přístup jsou spravovány za vás. Vaše data jsou ve výchozím nastavení zabezpečená a nemusíte upravovat kód nebo aplikace, abyste využili výhod šifrování.
+Data se šifrují a dešifrují s využitím [256 šifrování AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) kompatibilního se [standardem FIPS 140-2](https://en.wikipedia.org/wiki/FIPS_140-2) . Šifrování a dešifrování je transparentní, což znamená, že se pro vás spravuje šifrování a přístup. Vaše data jsou ve výchozím nastavení zabezpečená a nemusíte upravovat kód ani aplikace, abyste mohli využívat šifrování.
 
 ## <a name="about-encryption-key-management"></a>O správě šifrovacích klíčů
 
-Při použití vlastní řeči a vlastní hlas, řeči služba může ukládat následující data v cloudu:  
+Když použijete Custom Speech a vlastní hlas, služba Speech Service může ukládat následující data v cloudu:  
 
-* Data trasování řeči – pouze v případě, že trasování zapnete pro vlastní koncový bod
-* Nahraná data školení a testů
+* Data trasování řeči – pouze pokud vaše trasování zapnete pro vlastní koncový bod
+* Nahraná školení a testovací data
 
-Ve výchozím nastavení jsou vaše data uložena v úložišti společnosti Microsoft a vaše předplatné používá šifrovací klíče spravované společností Microsoft. Máte také možnost připravit si vlastní účet úložiště. Přístup k úložišti spravuje spravovaná identita a služba Rozpoznávání řeči nemůže mít přímý přístup k vašim vlastním datům, jako jsou data trasování řeči, trénovací data vlastního nastavení a vlastní modely.
+Ve výchozím nastavení jsou vaše data uložená v úložišti Microsoftu a vaše předplatné používá šifrovací klíče spravované Microsoftem. Máte také možnost připravit si vlastní účet úložiště. Přístup ke Storu spravuje spravovaná identita a služba pro rozpoznávání řeči nemá přímý přístup k vašim datům, jako jsou data trasování řeči, přizpůsobení školicích dat a vlastní modely.
 
-Další informace o spravované identitě naleznete v tématu [Co jsou spravované identity](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
+Další informace o spravované identitě najdete v tématu [co jsou spravované identity](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
 
 ## <a name="bring-your-own-storage-byos-for-customization-and-logging"></a>Přineste si vlastní úložiště (BYOS) pro přizpůsobení a protokolování
 
-Chcete-li požádat o přístup k vlastnímu úložišti, vyplňte a [odešlete službu Speech - přineste si vlastní formulář žádosti o úložiště (BYOS).](https://aka.ms/cogsvc-cmk) Po schválení si budete muset vytvořit vlastní účet úložiště, abyste ukládali data potřebná pro přizpůsobení a protokolování. Při přidávání účtu úložiště prostředek služby Rozpoznávání řeči povolí systém přiřazenou spravovanou identitu. Po povolení systému přiřazené spravované identity bude tento prostředek zaregistrován ve službě Azure Active Directory (AAD). Po registraci bude spravovaná identita mít přístup k účtu úložiště. Další informace o spravovaných identitách najdete tady. Další informace o spravované identitě naleznete v tématu [Co jsou spravované identity](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
+Pokud chcete požádat o přístup k získání vlastního úložiště, vyplňte a odešlete [formulář žádosti služby Speech – Přineste si vlastní úložiště (BYOS)](https://aka.ms/cogsvc-cmk). Po schválení budete muset vytvořit vlastní účet úložiště, abyste mohli ukládat data požadovaná pro přizpůsobení a protokolování. Při přidávání účtu úložiště umožní prostředek služby řeči spravovanou identitu přiřazenou systémem. Po povolení spravované identity přiřazené systémem se tento prostředek zaregistruje ve službě Azure Active Directory (AAD). Po registraci bude spravované identitě udělen přístup k účtu úložiště. Další informace o spravovaných identitách najdete tady. Další informace o spravované identitě najdete v tématu [co jsou spravované identity](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
 
 > [!IMPORTANT]
-> Pokud zakážete systém přiřazené spravované identity, přístup k účtu úložiště bude odebrán. To způsobí, že části služby Řeči, které vyžadují přístup k účtu úložiště přestat fungovat.  
+> Pokud zakážete spravované identity přiřazené systémem, odebere se přístup k účtu úložiště. Tím dojde k tomu, že části služby pro rozpoznávání řeči, které budou vyžadovat přístup k účtu úložiště, přestanou fungovat.  
 
 ## <a name="regional-availability"></a>Regionální dostupnost
 
-BYOS je v současné době k dispozici v těchto oblastech:
+BYOS je v tuto chvíli k dispozici v těchto oblastech:
 
 * USA (střed) – jih
 * USA – západ 2
@@ -52,5 +52,5 @@ BYOS je v současné době k dispozici v těchto oblastech:
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Služba řeči - přineste si vlastní formulář žádosti o úložiště (BYOS)](https://aka.ms/cogsvc-cmk)
+* [Služba Speech Service – Přineste si vlastní úložiště (BYOS) – formulář žádosti](https://aka.ms/cogsvc-cmk)
 * [Co jsou spravované identity](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).

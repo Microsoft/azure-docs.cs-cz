@@ -1,5 +1,5 @@
 ---
-title: Kurz – použití vlastní image virtuálního počítače ve škálovací sadě s azure CLI
+title: Kurz – použití vlastní image virtuálního počítače ve škálované sadě pomocí Azure CLI
 description: Zjistěte, jak pomocí Azure CLI vytvořit vlastní image virtuálního počítače, kterou můžete použít k nasazení škálovací sady virtuálních počítačů.
 author: cynthn
 tags: azure-resource-manager
@@ -9,10 +9,10 @@ ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 6d9f625bf425a33b690fd303a4f13d032bd59fa0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80062720"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-the-azure-cli"></a>Kurz: Vytvoření a použití vlastní image pro škálovací sady virtuálních počítačů pomocí Azure CLI
@@ -24,7 +24,7 @@ Při vytváření škálovací sady zadáte image, která se použije při nasaz
 > * Vytvoření vlastní image virtuálního počítače
 > * Nasazení škálovací sady využívající vlastní image virtuálního počítače
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -91,7 +91,7 @@ Uvolnění a generalizace virtuálního počítače může několik minut trvat.
 
 Teď vytvořte image virtuálního počítače pomocí příkazu [az image create](/cli//azure/image). Následující příklad z vašeho virtuálního počítače vytvoří image *myImage*:
 
-> [POZNÁMKA] Pokud se skupina prostředků a umístění virtuálního `--location` počítače liší, můžete přidat parametr do níže uvedených příkazů do specifického umístění zdrojového virtuálního počítače použitého k vytvoření bitové kopie. 
+> ZNAČTE Pokud se skupina prostředků a umístění virtuálního počítače liší, můžete do následujících příkazů přidat `--location` parametr pro konkrétní umístění zdrojového virtuálního počítače použitého k vytvoření image. 
 
 ```azurecli-interactive
 az image create \
@@ -147,7 +147,7 @@ Zadejte veřejnou IP adresu do svého webového prohlížeče. Zobrazí se vých
 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Chcete-li odebrat škálovací sadu a další prostředky, odstraňte skupinu prostředků a všechny její prostředky [odstraněním skupiny AZ](/cli/azure/group). Parametr `--no-wait` vrátí řízení na příkazový řádek bez čekání na dokončení operace. Parametr `--yes` potvrdí, že chcete prostředky odstranit, aniž by se na to zobrazoval další dotaz.
+Pokud chcete odebrat sadu škálování a další prostředky, odstraňte skupinu prostředků a všechny její prostředky pomocí [AZ Group Delete](/cli/azure/group). Parametr `--no-wait` vrátí řízení na příkazový řádek bez čekání na dokončení operace. Parametr `--yes` potvrdí, že chcete prostředky odstranit, aniž by se na to zobrazoval další dotaz.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --no-wait --yes
