@@ -1,6 +1,6 @@
 ---
-title: Poradce při potížích s připojením služby Windows Virtual Desktop – Azure
-description: Jak vyřešit problémy při nastavení připojení klientů v prostředí klienta Virtuální plocha systému Windows.
+title: Poradce při potížích s virtuálním počítačem s Windows s připojením služby – Azure
+description: Řešení problémů při nastavování připojení klienta v prostředí klienta virtuální plochy Windows
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -9,45 +9,45 @@ ms.date: 12/13/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 57d5198cb54dc096fb09bb52d76539b1e4bbc1f2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79127460"
 ---
-# <a name="windows-virtual-desktop-service-connections"></a>Připojení služby Virtuální desktop systému Windows
+# <a name="windows-virtual-desktop-service-connections"></a>Připojení ke službě virtuální plochy Windows
 
-Tento článek slouží k řešení problémů s připojením klienta Virtuální plocha systému Windows.
+Pomocí tohoto článku můžete vyřešit problémy s připojením klienta k virtuální ploše Windows.
 
 ## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 
-Můžete nám poskytnout zpětnou vazbu a diskutovat o službě Windows Virtual Desktop Service s produktovým týmem a dalšími aktivními členy komunity v [komunitě Windows Virtual Desktop Tech Community](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop).
+Můžete nám sdělit svůj názor a diskutovat o službě Virtual Desktop Windows s produktovým týmem a dalšími aktivními členy komunity na [technické komunitě pro virtuální počítače s Windows](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop).
 
-## <a name="user-connects-but-nothing-is-displayed-no-feed"></a>Uživatel se připojí, ale nic se nezobrazí (bez zdroje)
+## <a name="user-connects-but-nothing-is-displayed-no-feed"></a>Uživatel se připojuje, ale nic se nezobrazuje (bez kanálu).
 
-Uživatel může spustit klienty vzdálené plochy a je schopen ověřit, ale uživatel nevidí žádné ikony ve zdroji zjišťování webu.
+Uživatel může spustit klienty vzdálené plochy a je schopen ho ověřit, ale uživatel nevidí žádné ikony v informačním kanálu webového zjišťování.
 
-Pomocí tohoto příkazového řádku zkontrolujte, zda byl uživatel, který oznamoval problémy, přiřazen skupinám aplikací:
+Pomocí tohoto příkazového řádku zkontrolujte, jestli se uživateli, který nahlásí problémy, přiřadí ke skupinám aplikací:
 
 ```PowerShell
 Get-RdsAppGroupUser <tenantname> <hostpoolname> <appgroupname>
 ```
 
-Zkontrolujte, zda se uživatel přihlašuje se správnými přihlašovacími údaji.
+Potvrďte, že se uživatel přihlašuje se správnými přihlašovacími údaji.
 
-Pokud je webový klient používán, zkontrolujte, zda neexistují žádné problémy s pověřeními uložená v mezipaměti.
+Pokud je webový klient používán, zkontrolujte, zda nejsou k dispozici žádné problémy s přihlašovacími údaji v mezipaměti.
 
 ## <a name="windows-10-enterprise-multi-session-virtual-machines-dont-respond"></a>Virtuální počítače s Windows 10 Enterprise s více relacemi nereagují
 
-Pokud virtuální počítač nereaguje a nemáte k němu přístup prostřednictvím rdp, budete ho muset vyřešit pomocí funkce diagnostiky kontrolou stavu hostitele.
+Pokud virtuální počítač neodpovídá a nemůžete k němu přistupovat prostřednictvím protokolu RDP, budete ho muset vyřešit pomocí diagnostické funkce zkontrolováním stavu hostitele.
 
-Chcete-li zkontrolovat stav hostitele, spusťte tuto rutinu:
+Chcete-li zjistit stav hostitele, spusťte tuto rutinu:
 
 ```powershell
 Get-RdsSessionHost -TenantName $TenantName -HostPoolName $HostPool | ft SessionHostName, LastHeartBeat, AllowNewSession, Status
 ```
 
-Pokud je `NoHeartBeat`stav hostitele , znamená to, že virtuální počítač neodpovídá a agent nemůže komunikovat se službou Windows Virtual Desktop.
+Pokud je `NoHeartBeat`stav hostitele, znamená to, že virtuální počítač neodpovídá a Agent nemůže komunikovat se službou Virtual Desktop systému Windows.
 
 ```powershell
 SessionHostName          LastHeartBeat     AllowNewSession    Status 
@@ -59,17 +59,17 @@ WVDHost4.contoso.com     21-Nov-19 5:21:35            True     NoHeartBeat
 WVDHost5.contoso.com     21-Nov-19 5:21:35            True     NoHeartBeat 
 ```
 
-Existuje několik věcí, které můžete udělat pro opravu stavu NoHeartBeat.
+Existuje několik věcí, pomocí kterých můžete opravit stav prezenčního signálu.
 
-### <a name="update-fslogix"></a>Aktualizace FSLogix
+### <a name="update-fslogix"></a>Aktualizovat FSLogix
 
-Pokud váš FSLogix není aktuální, zejména pokud je to verze 2.9.7205.27375 frxdrvvt.sys, může to způsobit zablokování. Nezapomeňte [aktualizovat FSLogix na nejnovější verzi](https://go.microsoft.com/fwlink/?linkid=2084562).
+Pokud vaše FSLogix není aktuální, obzvláště pokud je to verze 2.9.7205.27375 of frxdrvvt. sys, může to způsobit zablokování. Nezapomeňte [aktualizovat FSLogix na nejnovější verzi](https://go.microsoft.com/fwlink/?linkid=2084562).
 
-### <a name="disable-bgtaskregistrationmaintenancetask"></a>Zakázat bgtaskregistraceúdržbaúkol
+### <a name="disable-bgtaskregistrationmaintenancetask"></a>Zakázat BgTaskRegistrationMaintenanceTask
 
-Pokud aktualizace FSLogix nefunguje, problém může být, že komponenta BiSrv je vyčerpání systémových prostředků během týdenní úlohy údržby. Dočasně zakázat úlohu údržby zakázáním BgTaskRegistrationMaintenanceTask s jedním z těchto dvou metod:
+Pokud aktualizace FSLogix nefunguje, může to být tím, že BiSrv komponenta vyčerpá systémové prostředky během týdenní úlohy údržby. Dočasně zakažte úlohu údržby tím, že zakážete BgTaskRegistrationMaintenanceTask pomocí jedné z těchto dvou metod:
 
-- Přejděte do nabídky Start a vyhledejte **Plánovač úloh**. Přejděte do **knihovny plánovače** > úloh**Microsoft** > **Windows** > **BrokerInfrastructure**. Vyhledejte úkol s názvem **BgTaskRegistrationMaintenanceTask**. Až ho najdete, klikněte na něj pravým tlačítkem myši a v rozevírací nabídce vyberte **Zakázat.**
+- Přejděte do nabídky Start a vyhledejte **Plánovač úloh**. Přejděte do **knihovny** > **Plánovač úloh Microsoft** > **Windows** > **BrokerInfrastructure**. Vyhledejte úlohu s názvem **BgTaskRegistrationMaintenanceTask**. Když ho najdete, klikněte na něj pravým tlačítkem a v rozevírací nabídce vyberte **Zakázat** .
 - Otevřete nabídku příkazového řádku jako správce a spusťte následující příkaz:
     
     ```cmd
@@ -78,8 +78,8 @@ Pokud aktualizace FSLogix nefunguje, problém může být, že komponenta BiSrv 
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přehled řešení potíží s virtuální plochou Windows a traseskalace najdete [v tématu Přehled řešení potíží, zpětná vazba a podpora](troubleshoot-set-up-overview.md).
-- Informace o řešení problémů při vytváření fondu klientů a hostitelů v prostředí Virtuální plochy systému Windows najdete v [tématu Vytvoření klientského a hostitelského fondu](troubleshoot-set-up-issues.md).
-- Informace o řešení problémů při konfiguraci virtuálního počítače (VM) ve Windows Virtual Desktop najdete v [tématu Konfigurace virtuálního počítače hostitele relací](troubleshoot-vm-configuration.md).
-- Informace o řešení problémů při používání PowerShellu s Windows Virtual Desktop najdete v [tématu Windows Virtual Desktop PowerShell](troubleshoot-powershell.md).
-- Chcete-li projít kurz řešení potíží, [přečtěte si článek Návod k řešení potíží s nasazením šablon Správce prostředků](../azure-resource-manager/templates/template-tutorial-troubleshoot.md).
+- Přehled řešení potíží s virtuálním počítačem s Windows a cvičeními eskalace najdete v tématu [věnovaném řešení potíží s přehledem, zpětnou vazbou a podporou](troubleshoot-set-up-overview.md).
+- Pokud chcete řešit problémy při vytváření tenanta a fondu hostitelů v prostředí virtuálních počítačů s Windows, přečtěte si téma [vytváření fondů klientů a hostitelů](troubleshoot-set-up-issues.md).
+- Informace o řešení problémů při konfiguraci virtuálního počítače na virtuálním počítači s Windows najdete v tématu [Konfigurace virtuálního počítače hostitele relace](troubleshoot-vm-configuration.md).
+- Pokud chcete řešit problémy při používání PowerShellu s virtuálním počítačem s Windows, přečtěte si téma [virtuální plocha Windows PowerShell](troubleshoot-powershell.md).
+- Kurz řešení potíží najdete v tématu [kurz: řešení potíží s nasazením správce prostředků šablon](../azure-resource-manager/templates/template-tutorial-troubleshoot.md).

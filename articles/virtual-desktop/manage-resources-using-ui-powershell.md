@@ -1,6 +1,6 @@
 ---
-title: Nasazení nástroje pro správu pro Virtuální plochu Windows pomocí instančního objektu – Azure
-description: Jak nasadit nástroj pro správu pro virtuální plochu Windows pomocí PowerShellu.
+title: Nasazení nástroje pro správu pro virtuální plochu Windows pomocí instančního objektu – Azure
+description: Postup nasazení nástroje pro správu pro virtuální plochu Windows pomocí prostředí PowerShell.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -9,67 +9,67 @@ ms.date: 01/10/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 0838edb03c4868548f3d09f14d71ec7016e670a4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79127791"
 ---
 # <a name="deploy-a-management-tool-with-powershell"></a>Nasazení nástroje pro správu pomocí PowerShellu
 
-Tento článek vám ukáže, jak nasadit nástroj pro správu pomocí prostředí PowerShell.
+Tento článek vám ukáže, jak nasadit nástroj pro správu pomocí PowerShellu.
 
 ## <a name="important-considerations"></a>Důležité informace
 
-Každé předplatné klienta Azure Active Directory (Azure AD) potřebuje vlastní samostatné nasazení nástroje pro správu. Tento nástroj nepodporuje scénáře Azure AD Business-to-Business (B2B). 
+Každé předplatné tenanta Azure Active Directory (Azure AD) vyžaduje vlastní samostatné nasazení nástroje pro správu. Tento nástroj nepodporuje scénáře B2B (Business-to-Business) pro Azure AD. 
 
-Tento nástroj pro správu je ukázka. Společnost Microsoft bude poskytovat důležité aktualizace zabezpečení a kvality. [Zdrojový kód je k dispozici v GitHubu](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy). Ať už jste zákazník nebo partner, doporučujeme vám přizpůsobit nástroj tak, aby uspokojil vaše obchodní potřeby.
+Tento nástroj pro správu je ukázka. Microsoft bude poskytovat důležité aktualizace zabezpečení a kvality. [Zdrojový kód je k dispozici na GitHubu](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy). Bez ohledu na to, jestli jste zákazník nebo partner, doporučujeme, abyste nástroj přizpůsobili, aby vyhovoval vašim obchodním potřebám.
 
 Následující prohlížeče jsou kompatibilní s nástrojem pro správu:
 
 - Google Chrome 68 nebo novější
-- Microsoft Edge 40.15063 nebo novější
-- Mozilla Firefox 52.0 nebo novější
-- Safari 10 nebo novější (pouze macOS)
+- Microsoft Edge 40,15063 nebo novější
+- Mozilla Firefox 52,0 nebo novější
+- Safari 10 nebo novější (jenom macOS)
 
 ## <a name="what-you-need-to-deploy-the-management-tool"></a>Co potřebujete k nasazení nástroje pro správu
 
-Před nasazením nástroje pro správu budete potřebovat uživatele služby Azure Active Directory (Azure AD), který vytvoří registraci aplikace a nasadí uživatelské rozhraní pro správu. Tento uživatel musí:
+Před nasazením nástroje pro správu budete potřebovat uživatele Azure Active Directory (Azure AD) k vytvoření registrace aplikace a nasazení uživatelského rozhraní pro správu. Tento uživatel musí:
 
-- Máte oprávnění k vytváření prostředků ve vašem předplatném Azure
-- Máte oprávnění k vytvoření aplikace Azure AD. Podle těchto kroků zkontrolujte, zda má uživatel požadovaná oprávnění podle pokynů v [části Požadovaná oprávnění](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions).
+- Mít oprávnění k vytváření prostředků ve vašem předplatném Azure
+- Mít oprávnění k vytvoření aplikace služby Azure AD. Pomocí těchto kroků zkontrolujete, jestli má uživatel požadovaná oprávnění, podle pokynů v tématu [požadovaná oprávnění](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions).
 
-Chcete-li úspěšně nasadit a nakonfigurovat nástroj pro správu, musíte nejprve stáhnout následující skripty prostředí PowerShell z [úložiště GitHub v rds-templates](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy/scripts) a uložit je do stejné složky v místním počítači.
+Aby bylo možné úspěšně nasadit a nakonfigurovat nástroj pro správu, musíte nejprve stáhnout následující skripty PowerShellu z [úložiště GitHub šablon RDS](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy/scripts) a uložit je do stejné složky na místním počítači.
 
-  - createWvdMgmtUxAppRegistration.ps1
-  - aktualizaceWvdMgmtUxApiUrl.ps1
+  - createWvdMgmtUxAppRegistration. ps1
+  - updateWvdMgmtUxApiUrl. ps1
 
-Po nasazení a konfiguraci nástroje pro správu doporučujeme požádat uživatele o spuštění uživatelského rozhraní pro správu, abyste se ujistili, že vše funguje. Uživatel, který spustí uživatelské rozhraní pro správu, musí mít přiřazení role, které mu umožní zobrazit nebo upravit klienta virtuální plochy Windows.
+Po nasazení a konfiguraci nástroje pro správu doporučujeme, abyste požádali uživatele, aby spustil uživatelské rozhraní pro správu, aby se zajistilo, že všechno funguje. Uživatel, který spouští uživatelské rozhraní pro správu, musí mít přiřazení role, které jim umožní zobrazit nebo upravit klienta virtuální plochy Windows.
 
 ## <a name="set-up-powershell"></a>Nastavení PowerShellu
 
-Můžete začít přihlášením k modulům Az i Azure AD PowerShell. Tady je postup, jak se přihlásit:
+Začněte tím, že se přihlásíte k modulům AZ a Azure AD PowerShell. Tady je postup, jak se přihlásit:
 
-1. Otevřete PowerShell jako správce a přejděte do adresáře, do kterého jste uložili skripty PowerShellu.
-2. Přihlaste se k Azure pomocí účtu, který má oprávnění vlastníka nebo přispěvatele k předplatnému Azure, které chcete použít k vytvoření nástroje pro správu spuštěním následující rutiny:
+1. Otevřete PowerShell jako správce a přejděte do adresáře, kam jste uložili skripty PowerShellu.
+2. Přihlaste se k Azure pomocí účtu, který má oprávnění vlastníka nebo přispěvatele v předplatném Azure, které plánujete použít k vytvoření nástroje pro správu, spuštěním následující rutiny:
 
     ```powershell
     Login-AzAccount
     ```
 
-3. Spusťte následující rutinu pro přihlášení k Azure AD se stejným účtem, který jste použili pro modul Az PowerShell:
+3. Spuštěním následující rutiny se přihlaste ke službě Azure AD pomocí stejného účtu, který jste použili pro modul AZ PowerShell:
 
     ```powershell
     Connect-AzureAD
     ```
 
-4. Poté přejděte do složky, do které jste uložili dva skripty prostředí PowerShell z úložiště GitHub v rds-templates.
+4. Potom přejděte do složky, kam jste uložili dva skripty PowerShellu z úložiště GitHub šablon RDS.
 
-Ponechte okno Prostředí PowerShell, které jste použili k přihlášení, otevřené, abyste spouštěli další rutiny Prostředí PowerShell při přihlášení.
+Nechejte okno prostředí PowerShell, které jste použili k přihlášení, a spusťte další rutiny prostředí PowerShell, které se přihlásí.
 
 ## <a name="create-an-azure-active-directory-app-registration"></a>Vytvoření registrace aplikace Azure Active Directory
 
-Chcete-li vytvořit registraci aplikace s požadovanými oprávněními rozhraní API, spusťte následující příkazy:
+Spuštěním následujících příkazů vytvořte registraci aplikace s požadovanými oprávněními API:
 
 ```powershell
 $appName = Read-Host -Prompt "Enter a unique name for the management tool's app registration. The name can't contain spaces or special characters."
@@ -78,11 +78,11 @@ $subscriptionId = Read-Host -Prompt "Enter the Azure subscription ID where you w
 .\createWvdMgmtUxAppRegistration.ps1 -AppName $appName -SubscriptionId $subscriptionId
 ```
 
-Teď, když jste dokončili registraci aplikace Azure AD, můžete nasadit nástroj pro správu.
+Teď, když jste dokončili registraci aplikace služby Azure AD, můžete nasadit nástroj pro správu.
 
 ## <a name="deploy-the-management-tool"></a>Nasazení nástroje pro správu
 
-Spusťte následující příkazy prostředí PowerShell k nasazení nástroje pro správu a přidružte ho k instančnímu objektu, který jste právě vytvořili:
+Spuštěním následujících příkazů PowerShellu nasaďte Nástroj pro správu a přidružte ho k objektu služby, který jste právě vytvořili:
      
 ```powershell
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -101,11 +101,11 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
     -Verbose
 ```
 
-Po vytvoření webové aplikace je nutné přidat identifikátor URI přesměrování do aplikace Azure AD, abyste úspěšně přihlašovali uživatele.
+Po vytvoření webové aplikace je nutné přidat identifikátor URI přesměrování do aplikace Azure AD, aby bylo možné uživatele úspěšně přihlašovat.
 
-## <a name="set-the-redirect-uri"></a>Nastavení identifikátoru URI přesměrování
+## <a name="set-the-redirect-uri"></a>Nastavit identifikátor URI pro přesměrování
 
-Spuštěním následujících příkazů Prostředí PowerShell načtěte adresu URL webové aplikace a nastavte ji jako identifikátor URI přesměrování ověřování (označovaný také jako adresa URL odpovědi):
+Spuštěním následujících příkazů PowerShellu načtěte adresu URL webové aplikace a nastavte ji jako identifikátor URI pro přesměrování ověřování (označuje se taky jako adresa URL odpovědi):
 
 ```powershell
 $webApp = Get-AzWebApp -ResourceGroupName $resourceGroupName -Name $appName
@@ -113,55 +113,55 @@ $redirectUri = "https://" + $webApp.DefaultHostName + "/"
 Get-AzureADApplication -All $true | where { $_.AppId -match $servicePrincipalCredentials.UserName } | Set-AzureADApplication -ReplyUrls $redirectUri  
 ```
 
-Teď, když jste přidali identifikátor URI přesměrování, budete dále muset aktualizovat adresu URL rozhraní API, aby nástroj pro správu mohl pracovat se službou back-end rozhraní API.
+Teď, když jste přidali identifikátor URI pro přesměrování, budete dál muset aktualizovat adresu URL rozhraní API, aby mohl nástroj pro správu komunikovat se službou back-endu API.
 
 ## <a name="update-the-api-url-for-the-web-application"></a>Aktualizace adresy URL rozhraní API pro webovou aplikaci
 
-Spusťte následující skript pro aktualizaci konfigurace adresy URL rozhraní API v front-endu webové aplikace:
+Spuštěním následujícího skriptu aktualizujte konfiguraci adresy URL rozhraní API v front-endu webové aplikace:
 
 ```powershell
 .\updateWvdMgmtUxApiUrl.ps1 -AppName $appName -SubscriptionId $subscriptionId
 ```
 
-Teď, když jste plně nakonfigurovali webovou aplikaci nástroje pro správu, je čas ověřit aplikaci Azure AD a poskytnout souhlas.
+Teď, když máte plně nakonfigurovanou webovou aplikaci nástroje pro správu, je čas ověřit aplikaci Azure AD a vyjádřit souhlas.
 
 ## <a name="verify-the-azure-ad-application-and-provide-consent"></a>Ověření aplikace Azure AD a poskytnutí souhlasu
 
 Ověření konfigurace aplikace Azure AD a poskytnutí souhlasu:
 
-1. Otevřete svůj internetový prohlížeč a přihlaste se k [portálu Azure](https://portal.azure.com/) pomocí svého účtu pro správu.
-2. Na vyhledávacím panelu v horní části portálu Azure vyhledejte **registrace aplikací** a vyberte položku v části **Služby**.
-3. Vyberte **Všechny aplikace** a vyhledejte jedinečný název aplikace, který jste zadali pro skript Prostředí PowerShell, v [části Vytvoření registrace aplikace Azure Active Directory](#create-an-azure-active-directory-app-registration).
-4. V panelu na levé straně prohlížeče vyberte **Ověřování** a ujistěte se, že identifikátor URI přesměrování je stejný jako adresa URL webové aplikace pro nástroj pro správu, jak je znázorněno na následujícím obrázku.
+1. Otevřete internetový prohlížeč a přihlaste se k [Azure Portal](https://portal.azure.com/) pomocí účtu správce.
+2. Na panelu hledání v horní části Azure Portal vyhledejte **Registrace aplikací** a vyberte položku v části **služby**.
+3. Vyberte **všechny aplikace** a vyhledejte jedinečný název aplikace, který jste zadali pro skript prostředí PowerShell v části [vytvoření registrace aplikace Azure Active Directory](#create-an-azure-active-directory-app-registration).
+4. V panelu na levé straně prohlížeče vyberte **ověřování** a ujistěte se, že identifikátor URI přesměrování je stejný jako adresa URL webové aplikace pro nástroj pro správu, jak je znázorněno na následujícím obrázku.
    
-   [![Stránka ověřování se zadaným](media/management-ui-redirect-uri-inline.png) identifikátorem URI přesměrování](media/management-ui-redirect-uri-expanded.png#lightbox)
+   [![Ověřovací stránka se zadaným identifikátorem URI](media/management-ui-redirect-uri-inline.png) pro přesměrování](media/management-ui-redirect-uri-expanded.png#lightbox)
 
-5. V levém panelu vyberte **oprávnění rozhraní API,** abyste potvrdili, že byla přidána oprávnění. Pokud jste globální správce, vyberte tlačítko **Udělit souhlas `tenantname` správce** a postupujte podle pokynů v dialogovém okně, abyste vaší organizaci poskytli souhlas správce.
+5. Na levém panelu vyberte **oprávnění rozhraní API** a potvrďte, že se přidaná oprávnění přidala. Pokud jste globální správce, klikněte na tlačítko **udělit souhlas `tenantname` správce** a postupujte podle pokynů k zadání souhlasu správce pro vaši organizaci.
     
-    [![Stránka](media/management-ui-permissions-inline.png) oprávnění rozhraní API](media/management-ui-permissions-expanded.png#lightbox)
+    [![Stránka](media/management-ui-permissions-inline.png) oprávnění API](media/management-ui-permissions-expanded.png#lightbox)
 
 Nyní můžete začít používat nástroj pro správu.
 
 ## <a name="use-the-management-tool"></a>Použití nástroje pro správu
 
-Nyní, když jste nástroj pro správu nastavili kdykoli, můžete jej spustit kdykoli a kdekoli. Zde je návod, jak spustit nástroj:
+Teď, když jste nastavili nástroj pro správu kdykoli, můžete ho spustit kdykoli a kdekoli. Tady je postup, jak tento nástroj spustit:
 
-1. Otevřete adresu URL webové aplikace ve webovém prohlížeči. Pokud si nepamatujete adresu URL, můžete se přihlásit do Azure, najít službu aplikace, kterou jste nasadili pro nástroj pro správu, a pak vyberte adresu URL.
-2. Přihlaste se pomocí přihlašovacích údajů k virtuální ploše Windows.
+1. Otevřete adresu URL webové aplikace ve webovém prohlížeči. Pokud si adresu URL nepamatujete, můžete se přihlásit k Azure, najít službu App Service, kterou jste nasadili pro nástroj pro správu, a pak vybrat adresu URL.
+2. Přihlaste se pomocí svých přihlašovacích údajů k virtuálnímu počítači s Windows.
    
    > [!NOTE]
-   > Pokud jste při konfiguraci nástroje pro správu neudělili souhlas správce, každý uživatel, který se přihlásí, bude muset poskytnout svůj vlastní souhlas uživatele, aby mohl nástroj používat.
+   > Pokud jste neudělili souhlas správce při konfiguraci nástroje pro správu, každý uživatel, který se přihlásí, bude muset poskytnout vlastní souhlas uživatele, aby mohl nástroj použít.
 
-3. Po zobrazení výzvy k výběru skupiny klientů vyberte v rozevíracím seznamu **výchozí skupinu klientů.**
-4. Vyberete-li **výchozí skupinu klientů**, měla by se na levé straně okna zobrazit nabídka. V této nabídce najděte název skupiny klientů a vyberte ji.
+3. Po zobrazení výzvy k výběru skupiny tenantů vyberte v rozevíracím seznamu **výchozí skupinu tenantů** .
+4. Když vyberete **výchozí skupinu tenantů**, měla by se zobrazit nabídka na levé straně okna. V této nabídce najděte název skupiny tenantů a vyberte ji.
    
    > [!NOTE]
-   > Pokud máte vlastní skupinu klientů, zadejte název ručně namísto výběru z rozevíracího seznamu.
+   > Pokud máte vlastní skupinu tenantů, zadejte název ručně místo volby v rozevíracím seznamu.
 
 ## <a name="report-issues"></a>Nahlášení potíží
 
-Pokud narazíte na nějaké problémy s nástrojem pro správu nebo jinými nástroji virtuální plochy Windows, postupujte podle pokynů v [šablonách Azure Resource Manager pro vzdálenou plochu a](https://github.com/Azure/RDS-Templates/blob/master/README.md) oznamte je na GitHubu.
+Pokud jste nahlásili mezi problémy s nástrojem pro správu nebo jinými nástroji pro virtuální počítače s Windows, postupujte podle pokynů v části [šablony Azure Resource Manager pro vzdálenou plochu](https://github.com/Azure/RDS-Templates/blob/master/README.md) , které jim podávají oznámení na GitHubu.
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste se naučili, jak nasadit a připojit se k nástroji pro správu, můžete se naučit používat Azure Service Health ke sledování problémů se službami a doporučení stavu. Další informace najdete v našem [kurzu Nastavení upozornění služby](./set-up-service-alerts.md).
+Teď, když jste se naučili, jak nasadit nástroj pro správu a připojit se k němu, se dozvíte, jak pomocí Azure Service Health monitorovat problémy se službami a Poradce pro stav. Další informace najdete v našem [kurzu nastavení výstrah služby](./set-up-service-alerts.md).

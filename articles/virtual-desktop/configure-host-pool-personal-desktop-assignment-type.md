@@ -1,6 +1,6 @@
 ---
-title: Typ přiřazení osobní plochy pro Virtuální plochu Windows – Azure
-description: Jak nakonfigurovat typ přiřazení pro osobní fond hostitelů plochy Virtuální plochy windows.
+title: Typ přiřazení na osobním počítači s Windows Virtual Desktop – Azure
+description: Postup konfigurace typu přiřazení pro fond hostitelů na osobním počítači s Windows VM
 services: virtual-desktop
 author: HeidiLohr
 ms.service: virtual-desktop
@@ -9,43 +9,43 @@ ms.date: 12/10/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 41b24a94d36b21fe5d5f539e056abb535bda433a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79128283"
 ---
-# <a name="configure-the-personal-desktop-host-pool-assignment-type"></a>Konfigurace typu přiřazení osobního fondu hostitelů plochy
+# <a name="configure-the-personal-desktop-host-pool-assignment-type"></a>Konfigurace typu přiřazení fondu hostitelů osobní plochy
 
-Můžete nakonfigurovat typ přiřazení vašeho osobního fondu hostitelů plochy tak, aby upravoval prostředí Virtuální plochy systému Windows tak, aby lépe vyhovovalo vašim potřebám. V tomto tématu vám ukážeme, jak nakonfigurovat automatické nebo přímé přiřazení pro uživatele.
+Typ přiřazení fondu hostitelů osobní plochy můžete nakonfigurovat tak, aby se upravilo prostředí virtuálních počítačů s Windows, aby lépe vyhovovalo vašim potřebám. V tomto tématu vám ukážeme, jak nakonfigurovat automatické nebo přímé přiřazení pro vaše uživatele.
 
 >[!NOTE]
-> Pokyny v tomto článku platí pouze pro osobní fondy hostitelů plochy, nikoli ve fondech hostitelů ve fondu sdružených hostitelů, protože uživatelé ve fondech hostitelů ve fondu s draženou fondy nejsou přiřazeni k konkrétním hostitelům relací.
+> Pokyny v tomto článku se vztahují pouze na fondy hostitelů osobních ploch, nikoli pro fondy hostitelů ve fondu, protože uživatelé ve fondech hostitelů fondu nejsou přiřazeni ke konkrétním hostitelům relace.
 
 ## <a name="configure-automatic-assignment"></a>Konfigurace automatického přiřazení
 
-Automatické přiřazení je výchozí typ přiřazení pro nové fondy osobních hostitelů plochy vytvořené v prostředí Virtuální plochy systému Windows. Automatické přiřazování uživatelů nevyžaduje konkrétního hostitele relace.
+Automatické přiřazování je výchozí typ přiřazení pro nové fondy hostitelů osobní plochy vytvořené ve vašem prostředí virtuálních počítačů s Windows. Automatické přiřazování uživatelů nevyžaduje konkrétního hostitele relace.
 
-Chcete-li uživatele automaticky přiřadit, přiřaďte je nejprve do fondu osobního hostitele plochy, aby mohli zobrazit plochu ve zdroji. Když přiřazený uživatel spustí plochu ve svém zdroji, bude nárokovat hostitele relace k dispozici, pokud se ještě nepřipojil k fondu hostitelů, který dokončí proces přiřazení.
+Pokud chcete automaticky přiřazovat uživatele, nejdřív je přiřaďte do fondu hostitelů osobní plochy, aby viděli plochu v informačním kanálu. Když přiřazený uživatel spustí plochu v informačním kanálu, vyžádá dostupného hostitele relace, pokud ještě nejsou připojeni ke fondu hostitelů, který dokončí proces přiřazení.
 
-Než začnete, [stáhněte a importujte modul Windows Virtual Desktop PowerShell,](/powershell/windows-virtual-desktop/overview/) pokud jste tak ještě neučinili. 
+Než začnete, [Stáhněte a importujte modul PowerShell virtuálního klienta Windows](/powershell/windows-virtual-desktop/overview/) , pokud jste to ještě neudělali. 
 
 > [!NOTE]
-> Než budete podle těchto pokynů dodržovat tyto pokyny, ujistěte se, že jste nainstalovali modul Windows Virtual Desktop PowerShell verze 1.0.1534.2001 nebo novější.
+> Než budete postupovat podle těchto pokynů, ujistěte se, že jste nainstalovali modul PowerShellu pro virtuální počítače s Windows verze 1.0.1534.2001 nebo novější.
 
-Poté spusťte následující rutinu a přihlaste se ke svému účtu:
+Potom spuštěním následující rutiny se přihlaste ke svému účtu:
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 ```
 
-Chcete-li nakonfigurovat fond hostitelů tak, aby automaticky přiřazoval uživatele k virtuálním počítačům, spusťte následující rutinu prostředí PowerShell:
+Pokud chcete nakonfigurovat fond hostitelů pro automatické přiřazování uživatelů k virtuálním počítačům, spusťte následující rutinu PowerShellu:
 
 ```powershell
 Set-RdsHostPool <tenantname> <hostpoolname> -AssignmentType Automatic
 ```
 
-Chcete-li přiřadit uživatele k osobnímu fondu hostitelů plochy, spusťte následující rutinu prostředí PowerShell:
+Pokud chcete přiřadit uživatele k fondu hostitelů osobní plochy, spusťte následující rutinu PowerShellu:
 
 ```powershell
 Add-RdsAppGroupUser <tenantname> <hostpoolname> "Desktop Application Group" -UserPrincipalName <userupn>
@@ -53,21 +53,21 @@ Add-RdsAppGroupUser <tenantname> <hostpoolname> "Desktop Application Group" -Use
 
 ## <a name="configure-direct-assignment"></a>Konfigurace přímého přiřazení
 
-Na rozdíl od automatického přiřazení je při použití přímého přiřazení nutné přiřadit uživatele k osobnímu fondu hostitelů plochy i k určitému hostiteli relací, aby se mohl připojit ke své osobní ploše. Pokud je uživatel přiřazen pouze k fondu hostitelů bez přiřazení hostitele relace, nebude mít přístup k prostředkům.
+Na rozdíl od automatického přiřazení, pokud použijete přímé přiřazení, musíte uživatele přiřadit ke fondu hostitelů osobní plochy i konkrétnímu hostiteli relace, aby se mohli připojit k osobní ploše. Pokud je uživatel přiřazen pouze do fondu hostitelů bez přiřazení hostitele relace, nebude mít přístup k prostředkům.
 
-Chcete-li nakonfigurovat fond hostitelů tak, aby vyžadoval přímé přiřazení uživatelů k hostitelům relací, spusťte následující rutinu prostředí PowerShell:
+Pokud chcete nakonfigurovat fond hostitelů tak, aby vyžadoval přímé přiřazování uživatelů na hostitele relací, spusťte následující rutinu prostředí PowerShell:
 
 ```powershell
 Set-RdsHostPool <tenantname> <hostpoolname> -AssignmentType Direct
 ```
 
-Chcete-li přiřadit uživatele k osobnímu fondu hostitelů plochy, spusťte následující rutinu prostředí PowerShell:
+Pokud chcete přiřadit uživatele k fondu hostitelů osobní plochy, spusťte následující rutinu PowerShellu:
 
 ```powershell
 Add-RdsAppGroupUser <tenantname> <hostpoolname> "Desktop Application Group" -UserPrincipalName <userupn>
 ```
 
-Chcete-li přiřadit uživatele k určitému hostiteli relace, spusťte následující rutinu prostředí PowerShell:
+Pokud chcete přiřadit uživatele ke konkrétnímu hostiteli relace, spusťte následující rutinu PowerShellu:
 
 ```powershell
 Set-RdsSessionHost <tenantname> <hostpoolname> -Name <sessionhostname> -AssignedUser <userupn>
@@ -75,7 +75,7 @@ Set-RdsSessionHost <tenantname> <hostpoolname> -Name <sessionhostname> -Assigned
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste nakonfigurovali typ přiřazení osobní plochy, můžete se přihlásit ke klientovi virtuální plochy systému Windows a otestovat jej jako součást relace uživatele. Tyto další dva způsoby vám řeknou, jak se připojit k relaci pomocí klienta podle vašeho výběru:
+Teď, když jste nakonfigurovali typ přiřazení osobní plocha, se můžete přihlásit k klientovi virtuální plochy Windows a otestovat ho v rámci uživatelské relace. Tyto další dva postupy se dozvíte, jak se připojit k relaci pomocí klienta podle vašeho výběru:
 
 - [Připojení s desktopovým klientem Windows](connect-windows-7-and-10.md)
 - [Připojení k webovému klientovi](connect-web.md)

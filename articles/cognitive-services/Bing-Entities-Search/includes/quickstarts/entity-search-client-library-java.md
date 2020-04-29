@@ -1,5 +1,5 @@
 ---
-title: Rychlý start klientské knihovny Java pro vyhledávání entit Bingu
+title: Rychlý Start klientské knihovny s Vyhledávání entit Bingu Java
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,21 +9,21 @@ ms.topic: include
 ms.date: 03/06/2020
 ms.author: aahi
 ms.openlocfilehash: 8c987aa14e922573d01aa35fab609edf01e109b4
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79136771"
 ---
-Pomocí tohoto rychlého startu můžete začít hledat entity pomocí klientské knihovny Hledání entit Bingu pro Jazyk Java. Zatímco hledání entit Bingu má rozhraní REST API kompatibilní s většinou programovacích jazyků, klientská knihovna poskytuje snadný způsob integrace služby do vašich aplikací. Zdrojový kód pro tuto ukázku lze nalézt na [GitHubu](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingEntitySearch).
+Pomocí tohoto rychlého startu můžete začít vyhledávat entity pomocí Vyhledávání entit Bingu klientské knihovny pro Java. I když Vyhledávání entit Bingu má REST API kompatibilní s většinou programovacích jazyků, Klientská knihovna poskytuje snadný způsob, jak integrovat službu do vašich aplikací. Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingEntitySearch).
 
 ## <a name="prerequisites"></a>Požadavky
 
-* [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/)
+* [Sada Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/)
 
-* Klientská knihovna Hledání entit Bingu pro Jazyk Java
+* Klientská knihovna Vyhledávání entit Bingu pro Java
 
-Nainstalujte závislosti klientské knihovny hledání entit Bingu pomocí maven, gradle nebo jiného systému správy závislostí. Soubor POM Mavenu vyžaduje deklaraci:
+Nainstalujte závislosti Vyhledávání entit Bingu klientské knihovny pomocí nástroje Maven, Gradle nebo jiného systému pro správu závislostí. Soubor POM Mavenu vyžaduje deklaraci:
 
 ```xml
 <dependency>
@@ -63,7 +63,7 @@ Nainstalujte závislosti klientské knihovny hledání entit Bingu pomocí maven
 
 ## <a name="create-a-search-client"></a>Vytvoření vyhledávacího klienta
 
-1. Implementujte `dominantEntityLookup` klienta, který vyžaduje koncový bod rozhraní `ServiceClientCredentials` API a instanci třídy. Můžete použít globální koncový bod níže nebo vlastní koncový bod [subdomény](../../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený na portálu Azure pro váš prostředek.
+1. Implementujte `dominantEntityLookup` klienta, který vyžaduje koncový bod rozhraní API, a instanci `ServiceClientCredentials` třídy. Můžete použít globální koncový bod nebo vlastní koncový bod [subdomény](../../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
 
     ```java
     public static EntitySearchAPIImpl getClient(final String subscriptionKey) {
@@ -74,9 +74,9 @@ Nainstalujte závislosti klientské knihovny hledání entit Bingu pomocí maven
     )};
     ```
 
-    Chcete-li `ServiceClientCredentials`implementovat , postupujte takto:
+    K implementaci rozhraní `ServiceClientCredentials`použijte následující postup:
 
-   1. přepsat `applyCredentialsFilter()` funkci s objektem `OkHttpClient.Builder` jako parametrem. 
+   1. potlačí `applyCredentialsFilter()` funkci s `OkHttpClient.Builder` objektem jako parametr. 
         
        ```java
        //...
@@ -88,7 +88,7 @@ Nainstalujte závislosti klientské knihovny hledání entit Bingu pomocí maven
        //...
        ```
     
-   2. Uvnitř `applyCredentialsFilter()`, `builder.addNetworkInterceptor()`volejte . Vytvořte `Interceptor` nový objekt a `intercept()` přepište jeho `Chain` metodu tak, aby pořazovací objekt.
+   2. V `applyCredentialsFilter()`rámci volejte `builder.addNetworkInterceptor()`. Vytvořte nový `Interceptor` objekt a přepište jeho `intercept()` metodu pro převzetí objektu `Chain` zachytávací.
 
        ```java
        //...
@@ -102,7 +102,7 @@ Nainstalujte závislosti klientské knihovny hledání entit Bingu pomocí maven
        ///...
        ```
 
-   3. V `intercept` rámci funkce vytvořte proměnné pro váš požadavek. Slouží `Request.Builder()` k sestavení vašeho požadavku. Přidejte klíč předplatného `Ocp-Apim-Subscription-Key` do záhlaví `chain.proceed()` a vraťte objekt požadavku.
+   3. V rámci `intercept` funkce vytvořte proměnné pro svůj požadavek. Použijte `Request.Builder()` k sestavení vaší žádosti. Přidejte do `Ocp-Apim-Subscription-Key` záhlaví klíč předplatného a vraťte `chain.proceed()` se k objektu Request.
             
        ```java
        //...
@@ -116,9 +116,9 @@ Nainstalujte závislosti klientské knihovny hledání entit Bingu pomocí maven
        }
        //...
        ```
-## <a name="send-a-request-and-receive-a-response"></a>Odeslání žádosti a přijetí odpovědi
+## <a name="send-a-request-and-receive-a-response"></a>Odeslat žádost a přijmout odpověď
 
-1. Vytvořte novou instanci vyhledávacího klienta pomocí klíče předplatného. slouží `client.entities().search()` k odeslání požadavku na `satya nadella`vyhledávání pro vyhledávací dotaz a získání odpovědi. 
+1. Vytvořte novou instanci klienta Search s vaším klíčem předplatného. slouží `client.entities().search()` k odeslání žádosti o vyhledávání vyhledávacího dotazu `satya nadella`a získání odpovědi. 
     
     ```java
     EntitySearchAPIImpl client = getClient(subscriptionKey);
@@ -126,7 +126,7 @@ Nainstalujte závislosti klientské knihovny hledání entit Bingu pomocí maven
             "satya nadella", null, null, null, null, null, null, "en-us", null, null, SafeSearch.STRICT, null);
     ```
 
-1. Pokud byly vráceny některé entity, převeďte je do seznamu. Iterate přes ně, a vytisknout dominantní entitu.
+1. Pokud byly vráceny nějaké entity, převeďte je na seznam. Iterujte je prostřednictvím nich a vytiskněte dominantní entitu.
 
     ```java
     if (entityData.entities().value().size() > 0){
@@ -146,6 +146,6 @@ Nainstalujte závislosti klientské knihovny hledání entit Bingu pomocí maven
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Vytvoření jednostránkové webové aplikace](../../tutorial-bing-entities-search-single-page-app.md)
+> [Sestavení jednostránkové webové aplikace](../../tutorial-bing-entities-search-single-page-app.md)
 
-* [Co je rozhraní API pro vyhledávání entit Bingu?](../../overview.md)
+* [Co je rozhraní API Bingu pro vyhledávání entit?](../../overview.md)
