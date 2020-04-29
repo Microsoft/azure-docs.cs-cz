@@ -1,34 +1,34 @@
 ---
-title: Automatická oprava uzlů služby Azure Kubernetes Service (AKS)
-description: Přečtěte si o funkcích automatické opravy uzlů a o tom, jak AKS opravuje poškozené pracovní uzly.
+title: Automatické opravy uzlů AKS (Azure Kubernetes Service)
+description: Přečtěte si o funkcích automatických oprav uzlů a o tom, jak AKS opravuje poškozené pracovní uzly.
 services: container-service
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.openlocfilehash: 9bf9df69a0a6bfa4d9f4029278d2a146811980c8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80284836"
 ---
-# <a name="azure-kubernetes-service-aks-node-auto-repair"></a>Automatická oprava uzlu Azure Kubernetes Service (AKS)
+# <a name="azure-kubernetes-service-aks-node-auto-repair"></a>Automatická oprava uzlu služby Azure Kubernetes Service (AKS)
 
-AKS průběžně kontroluje stav pracovních uzlů a provádí automatickou opravu uzlů, pokud se stanou nefunkční. Tato dokumentace popisuje, jak služba Azure Kubernetes Service (AKS) monitoruje pracovní uzly a opravuje nefunkční pracovní uzly.  V dokumentaci je informovat operátory AKS o chování funkce opravy uzlu. Je také důležité si uvědomit, že platforma Azure [provádí údržbu na virtuálních počítačích,][vm-updates] které mají problémy. AKS a Azure spolupracují na minimalizaci přerušení služeb pro vaše clustery.
+AKS nepřetržitě kontroluje stav pracovních uzlů a provádí automatickou opravu uzlů, pokud se stanou stavem není v pořádku. Tato dokumentace popisuje, jak služba Azure Kubernetes Service (AKS) monitoruje pracovní uzly a opravuje poškozené pracovní uzly.  V dokumentaci je potřeba informovat AKS operátory pro chování funkce oprav uzlů. Je také důležité si uvědomit, že platforma Azure [provádí údržbu Virtual Machines, u][vm-updates] kterých dochází k problémům. AKS a Azure spolupracují na minimalizaci výpadků služeb pro vaše clustery.
 
 > [!Important]
-> Funkce automatické opravy uzlů není aktuálně podporována pro fondy uzlů systému Windows Server.
+> Funkce Automatické opravy uzlů se v současné době pro fondy uzlů Windows serveru nepodporují.
 
-## <a name="how-aks-checks-for-unhealthy-nodes"></a>Jak AKS kontroluje uzly není v pořádku
+## <a name="how-aks-checks-for-unhealthy-nodes"></a>Jak AKS kontroluje uzly, které nejsou v pořádku
 
 > [!Note]
-> AKS provede opravu na uzlech s **uživatelským účtem aks-remediator**.
+> AKS provádí opravnou akci na uzlech s uživatelským účtem **AKS-** re.
 
-AKS používá pravidla k určení, pokud uzel je stav není v pořádku a potřebuje opravu. AKS používá následující pravidla k určení, zda je potřeba automatickou opravu.
+AKS používá pravidla k určení, jestli je uzel ve stavu není v pořádku a potřebuje opravit. AKS používá následující pravidla k určení, jestli je potřeba Automatická oprava.
 
-* Uzel hlásí stav **NotReady** při po sobě jdoucích kontrolách v časovém rámci 10 minut
-* Uzel nehlásí stav do 10 minut
+* Uzel hlásí stav při následné kontrole po sobě jdoucích **kontrol v rámci** období 10 minut.
+* Uzel nehlásí stav do 10 minut.
 
-Můžete ručně zkontrolovat stav uzlů s kubectl. 
+Pomocí kubectl můžete ručně kontrolovat stav svých uzlů. 
 
 ```
 kubectl get nodes
@@ -37,20 +37,20 @@ kubectl get nodes
 ## <a name="how-automatic-repair-works"></a>Jak funguje automatická oprava
 
 > [!Note]
-> AKS provede opravu na uzlech s **uživatelským účtem aks-remediator**.
+> AKS provádí opravnou akci na uzlech s uživatelským účtem **AKS-** re.
 
-Toto chování je pro **škálovací sady virtuálních strojů**.  Automatická oprava trvá několik kroků k opravě poškozeného uzlu.  Pokud je uzel určen jako nefunkční, AKS se pokusí několik kroků nápravy.  Kroky jsou prováděny v tomto pořadí:
+Toto chování je pro **Virtual Machine Scale Sets**.  Automatická oprava provede několik kroků k opravě poškozeného uzlu.  Pokud je zjištěno, že uzel není v pořádku, AKS pokusy o několik nápravných kroků.  Kroky se provádějí v tomto pořadí:
 
-1. Po kontejneru runtime přestane reagovat po dobu 10 minut, selhání runtime služby jsou restartovány na uzlu.
-2. Pokud uzel není připraven do 10 minut, uzel je restartován.
-3. Pokud uzel není připraven do 30 minut, uzel je znovu zobrazen.
+1. Jakmile modul runtime kontejneru přestane reagovat po dobu 10 minut, na uzlu se restartuje neúspěšné služby modulu runtime.
+2. Pokud uzel není připravený do 10 minut, uzel se restartuje.
+3. Pokud uzel není připravený do 30 minut, uzel se znovu naobrázkí.
 
 > [!Note]
-> Pokud více uzlů není v pořádku, jsou opraveny jeden po druhém
+> Pokud je více uzlů ve špatném stavu, jsou opraveny po jednom.
 
 ## <a name="next-steps"></a>Další kroky
 
-Pomocí [zón dostupnosti][availability-zones] můžete zvýšit vysokou dostupnost s úlohami clusteru AKS.
+Pomocí [zóny dostupnosti][availability-zones] můžete zvýšit vysokou dostupnost úloh clusteru AKS.
 
 <!-- LINKS - External -->
 

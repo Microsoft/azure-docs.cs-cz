@@ -1,7 +1,7 @@
 ---
-title: Nástroje strojového učení a datové vědy
+title: Machine Learning a nástroje pro datové vědy
 titleSuffix: Azure Data Science Virtual Machine
-description: Seznamte se s nástroji a architekturami strojového učení, které jsou předinstalovány ve virtuálním počítači pro datové vědy.
+description: Seznamte se s nástroji pro strojové učení a architekturami, které jsou předinstalované na Data Science Virtual Machine.
 keywords: nástroje pro datové vědy, virtuální počítač pro datové vědy, datové vědy pro linux
 services: machine-learning
 ms.service: machine-learning
@@ -11,107 +11,107 @@ ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.openlocfilehash: c414087270558e21340e50114c0563ff7e50064c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80282303"
 ---
-# <a name="machine-learning-and-data-science-tools-on-azure-data-science-virtual-machines"></a>Nástroje strojového učení a datové vědy na virtuálních počítačích Azure Data Science
-Virtuální počítače Azure Data Science (DSVM) mají bohatou sadu nástrojů a knihoven pro strojové učení dostupné v oblíbených jazycích, jako je Python, R a Julia.
+# <a name="machine-learning-and-data-science-tools-on-azure-data-science-virtual-machines"></a>Machine Learning a nástroje pro datové vědy na Azure Data věda Virtual Machines
+Azure Data věda Virtual Machines (DSVMs) mají bohatou sadu nástrojů a knihoven pro strojové učení, které jsou dostupné v oblíbených jazycích, jako je Python, R nebo Helena.
 
-Tady jsou některé nástroje a knihovny strojového učení na dsvm.
+Tady jsou některé z nástrojů pro strojové učení a knihovny v DSVMs.
 
 ## <a name="azure-machine-learning-sdk-for-python"></a>Sada Azure Machine Learning SDK pro Python
 
-Podívejte se na úplný odkaz na [Azure Machine Learning SDK pro Python](https://docs.microsoft.com/azure/machine-learning/overview-what-is-azure-ml).
+Podívejte se na kompletní odkaz na [sadu SDK Azure Machine Learning pro Python](https://docs.microsoft.com/azure/machine-learning/overview-what-is-azure-ml).
 
 |    |           |
 | ------------- | ------------- |
-| Co je to?   |   Azure Machine Learning je cloudová služba, kterou můžete použít k vývoji a nasazení modelů strojového učení. Modely můžete sledovat při jejich vytváření, trénování, škálování a správě pomocí sady Python SDK. Nasazujte modely jako kontejnery a spouštějte je v cloudu, místně nebo na Azure IoT Edge.   |
-| Podporované edice     | Windows (prostředí conda: AzureML), Linux (conda prostředí: py36)    |
-| Typická použití      | Obecná platforma strojového učení      |
-| Jak je nakonfigurován nebo nainstalován?      |  Nainstalováno s podporou GPU   |
-| Jak ji používat nebo spouštět      | Jako sada Python SDK a v azure cli. Aktivujte do prostředí `AzureML` conda v edici Windows *nebo* `py36` na linuxové edici.      |
-| Odkaz na ukázky      | Ukázkové poznámkové bloky Jupyter jsou zahrnuty v adresáři `AzureML` pod poznámkovými bloky.  |
-| Související nástroje      | Visual Studio Kód, Jupyter   |
+| Co je to?   |   Azure Machine Learning je cloudová služba, kterou můžete použít k vývoji a nasazení modelů strojového učení. Modely můžete sledovat při sestavování, školení, škálování a správě pomocí sady Python SDK. Nasaďte modely jako kontejnery a spouštějte je v cloudu, v místním prostředí nebo na Azure IoT Edge.   |
+| Podporované edice     | Windows (prostředí conda: AzureML), Linux (prostředí conda: py36)    |
+| Typická použití      | Obecná platforma pro strojové učení      |
+| Jak je nakonfigurovaná nebo nainstalovaná?      |  Instalace s podporou GPU   |
+| Jak ji použít nebo spustit      | Jako SDK Pythonu a v Azure CLI. Aktivujte prostředí `AzureML` conda v edici Windows *nebo* `py36` na edici Linux.      |
+| Odkaz na ukázky      | Ukázky Jupyter poznámkových bloků jsou součástí `AzureML` adresáře v poznámkových blocích.  |
+| Související nástroje      | Visual Studio Code, Jupyter   |
 
 ## <a name="h2o"></a>H2O
 
 |    |           |
 | ------------- | ------------- |
-| Co je to?   | Open source platforma AI, která podporuje v paměti, distribuované, rychlé a škálovatelné strojové učení.  |
+| Co je to?   | Open Source platforma AI podporující v paměti, distribuované, rychlé a škálovatelné strojové učení.  |
 | Podporované verze      | Linux   |
-| Typická použití      | Všeobecné distribuované a škálovatelné strojové učení   |
-| Jak je nakonfigurován nebo nainstalován?      | H2O je `/dsvm/tools/h2o`nainstalován v aplikaci .      |
-| Jak ji používat nebo spouštět      | Připojte se k virtuálnímu virtuálnímu zařízení pomocí X2Go. Spusťte nový terminál `java -jar /dsvm/tools/h2o/current/h2o.jar`a spusťte . Potom spusťte webový `http://localhost:54321`prohlížeč a připojte se k aplikaci .      |
-| Odkaz na ukázky      | Ukázky jsou k dispozici na virtuálním `h2o` počítači v Jupyter pod adresářem.      |
-| Související nástroje      | Apache Spark, MXNet, XGBoost, Perlivá voda, Hluboká Voda    |
+| Typická použití      | Distribuované a škálovatelné strojové učení pro obecné účely   |
+| Jak je nakonfigurovaná nebo nainstalovaná?      | V `/dsvm/tools/h2o`nástroji je nainstalováno.      |
+| Jak ji použít nebo spustit      | Připojte se k virtuálnímu počítači pomocí X2Go. Spusťte nový terminál a spusťte příkaz `java -jar /dsvm/tools/h2o/current/h2o.jar`. Pak spusťte webový prohlížeč a připojte se k `http://localhost:54321`.      |
+| Odkaz na ukázky      | Ukázky jsou k dispozici na virtuálním počítači v `h2o` Jupyter v adresáři.      |
+| Související nástroje      | Apache Spark, MXNet, XGBoost, Sparková voda, hluboká voda    |
 
-Existuje několik dalších knihoven strojového učení na DSVMs, jako je například populární `scikit-learn` balíček, který je součástí distribuce Anaconda Python pro DSVMs. Chcete-li se podívat na seznam balíčků dostupných v Pythonu, R a Julii, spusťte příslušné správce balíčků.
+K dispozici je několik dalších knihoven strojového učení v DSVMs, jako je `scikit-learn` oblíbený balíček, který je součástí distribuce Pythonu Anaconda pro DSVMs. Pokud chcete zjistit seznam balíčků dostupných v Pythonu, R a Helena, spusťte příslušné správce balíčků.
 
 ## <a name="lightgbm"></a>LightGBM
 
 |    |           |
 | ------------- | ------------- |
-| Co je to?   | Rychlé, distribuované, vysoce výkonné zvýšení přechodu (GBDT, GBRT, GBM nebo MART) framework založený na algoritmech rozhodovacího stromu. Používá se pro hodnocení, klasifikaci a mnoho dalších úloh strojového učení.    |
+| Co je to?   | Rychlé a distribuované prostředí s vysokým výkonem (GBDT, GBRT, GBM nebo TRŽIŠTě) založené na algoritmech rozhodovacího stromu. Používá se pro hodnocení, klasifikaci a mnoho dalších úloh strojového učení.    |
 | Podporované verze      | Windows, Linux    |
-| Typická použití      | Univerzální rámec pro podporu přechodu      |
-| Jak je nakonfigurován nebo nainstalován?      | V systému Windows je lightgbm nainstalován jako balíček Pythonu. V Linuxu je spustitelný soubor `/opt/LightGBM/lightgbm`příkazového řádku v aplikaci , je nainstalován balíček R a nainstalovány balíčky Pythonu.     |
+| Typická použití      | Architektura pro posilování přechodu na obecné účely      |
+| Jak je nakonfigurovaná nebo nainstalovaná?      | Ve Windows se LightGBM nainstaluje jako balíček Pythonu. V systému Linux je spustitelný soubor příkazového řádku v `/opt/LightGBM/lightgbm`systému, je nainstalován balíček R a jsou nainstalovány balíčky python.     |
 | Odkaz na ukázky      | [Průvodce LightGBM](https://github.com/Microsoft/LightGBM/tree/master/examples/python-guide)   |
 | Související nástroje      | MXNet, XgBoost  |
 
 ## <a name="rattle"></a>Rattle
 |    |           |
 | ------------- | ------------- |
-| Co je to?   |   Grafické uživatelské rozhraní pro dolování dat pomocí R.   |
+| Co je to?   |   Grafické uživatelské rozhraní pro dolování dat pomocí jazyka R.   |
 | Podporované edice     | Windows, Linux     |
-| Typická použití      | Obecný nástroj pro dolování dat ui pro R    |
-| Jak ji používat nebo spouštět      | Jako nástroj pro ui. V systému Windows spusťte příkazový řádek, `rattle()`spusťte R a potom v klávese R spusťte program . Na Linuxu se spojte s X2Go, spusťte terminál, spusťte R a pak uvnitř R, spusťte `rattle()`. |
+| Typická použití      | Obecná data uživatelského rozhraní – nástroj dolování pro R    |
+| Jak ji použít nebo spustit      | Jako nástroj uživatelského rozhraní. V systému Windows spusťte příkazový řádek, spusťte R a potom v jazyce R spusťte `rattle()`příkaz. V systému Linux se připojte pomocí X2Go, spusťte terminál, spusťte R a potom v jazyce R spusťte příkaz `rattle()`. |
 | Odkaz na ukázky      | [Rattle](https://togaware.com/onepager/) |
 | Související nástroje      |LightGBM, Weka, XGBoost   |
 
 ## <a name="vowpal-wabbit"></a>Vowpal Wabbit
 |    |           |
 | ------------- | ------------- |
-| Co je to?   |   Rychlá, open-source, out-of-core výukové ho systému knihovny    |
+| Co je to?   |   Rychlá a open source knihovna výukového systému, která je mimo jádro    |
 | Podporované edice     | Windows, Linux     |
 | Typická použití      | Obecná knihovna strojového učení      |
-| Jak je nakonfigurován nebo nainstalován?      |  Windows: instalační program msi<br/>Linux: apt-get |
-| Jak ji používat nebo spouštět      | Jako nástroj příkazového řádku na`C:\Program Files\VowpalWabbit\vw.exe` cestě `/usr/bin/vw` (v systému Windows, na Linuxu)    |
-| Odkaz na ukázky      | [VowPal Wabbit vzorky](https://github.com/JohnLangford/vowpal_wabbit/wiki/Examples) |
+| Jak je nakonfigurovaná nebo nainstalovaná?      |  Windows: Instalační program MSI<br/>Linux: apt-get |
+| Jak ji použít nebo spustit      | Jako nástroj příkazového řádku on-Path (`C:\Program Files\VowpalWabbit\vw.exe` ve Windows, `/usr/bin/vw` na Linux)    |
+| Odkaz na ukázky      | [Ukázky pro dostupné](https://github.com/JohnLangford/vowpal_wabbit/wiki/Examples) |
 | Související nástroje      |LightGBM, MXNet, XGBoost   |
 
 
 ## <a name="weka"></a>Weka
 |    |           |
 | ------------- | ------------- |
-| Co je to?   |  Kolekce algoritmů strojového učení pro úlohy dolování dat. Algoritmy lze použít buď přímo na datovou sadu, nebo volat z vlastního java kódu. Weka obsahuje nástroje pro předběžné zpracování dat, klasifikaci, regresi, clustering, pravidla přidružení a vizualizaci. |
+| Co je to?   |  Kolekce algoritmů strojového učení pro úlohy dolování dat. Algoritmy mohou být buď aplikovány přímo na sadu dat, nebo volány z vlastního kódu Java. Weka obsahuje nástroje pro předběžné zpracování dat, klasifikaci, regresi, clusteringu, pravidla přidružení a vizualizaci. |
 | Podporované edice     | Windows, Linux     |
-| Typická použití      | Obecný nástroj strojového učení     |
-| Jak ji používat nebo spouštět      | V systému Windows vyhledejte weka v nabídce **Start.** Na Linuxu se přihlaste pomocí X2Go a pak přejděte na **Applications** > **Development** > **Weka**. |
-| Odkaz na ukázky      | [Weka vzorky](https://www.cs.waikato.ac.nz/ml/weka/documentation.html) |
-| Související nástroje      |LightGBM, Chrastítko, XGBoost   |
+| Typická použití      | Obecný nástroj pro strojové učení     |
+| Jak ji použít nebo spustit      | Ve Windows vyhledejte weka v nabídce **Start** . V systému Linux se přihlaste pomocí X2Go a pak navštivte **aplikace** > **vývoj** > aplikací**weka**. |
+| Odkaz na ukázky      | [Ukázky weka](https://www.cs.waikato.ac.nz/ml/weka/documentation.html) |
+| Související nástroje      |LightGBM, Rattle, XGBoost   |
 
 ## <a name="xgboost"></a>XGBoost 
 |    |           |
 | ------------- | ------------- |
-| Co je to?   |   Rychlá, přenosná a distribuovaná knihovna pro podporu přechodu (GBDT, GBRT nebo GBM) pro Python, R, Java, Scala, C++ a další. Běží na jednom stroji a na Apache Hadoop a Spark.    |
+| Co je to?   |   Rychlá, přenosná a distribuovaná knihovna pro posilování barev (GBDT, GBRT nebo GBM) pro Python, R, Java, Scala, C++ a další. Spouští se na jednom počítači a na Apache Hadoop a Sparku.    |
 | Podporované edice     | Windows, Linux     |
 | Typická použití      | Obecná knihovna strojového učení      |
-| Jak je nakonfigurován nebo nainstalován?      |  Nainstalováno s podporou GPU   |
-| Jak ji používat nebo spouštět      | Jako knihovna Pythonu (2.7 a 3.5), balíček R`C:\dsvm\tools\xgboost\bin\xgboost.exe` a nástroj `/dsvm/tools/xgboost/xgboost` příkazového řádku na cestě (pro Windows a pro Linux)    |
-| Odkazy na ukázky      | Ukázky jsou součástí virtuálního `/dsvm/tools/xgboost/demo` počítače, `C:\dsvm\tools\xgboost\demo` v Linuxu a v systému Windows.   |
+| Jak je nakonfigurovaná nebo nainstalovaná?      |  Instalace s podporou GPU   |
+| Jak ji použít nebo spustit      | Jako knihovna Pythonu (2,7 a 3,5), balíček R a nástroj příkazového řádku na cestě (`C:\dsvm\tools\xgboost\bin\xgboost.exe` pro Windows a `/dsvm/tools/xgboost/xgboost` pro Linux)    |
+| Odkazy na ukázky      | Ukázky jsou součástí virtuálních počítačů, v `/dsvm/tools/xgboost/demo` systémech Linux a `C:\dsvm\tools\xgboost\demo` Windows.   |
 | Související nástroje      | LightGBM, MXNet   |
 
 ## <a name="apache-drill"></a>Apache Drill
 |    |           |
 | ------------- | ------------- |
-| Co je to?   | Open-source SQL dotazovací stroj na velké objemy dat    |
+| Co je to?   | Open Source dotazovací modul SQL pro velké objemy dat    |
 | Podporované verze DSVM      | Windows 2019, Linux  |
-| Jak je konfigurován a nainstalován na DSVM?      |  Nainstalováno `/dsvm/tools/drill*` pouze ve vloženém režimu   |
-| Typická použití      |  Pro zkoumání dat na místě bez nutnosti extrahování, transformace, zatížení (ETL). Dotazujte se na různé zdroje a formáty dat, včetně CSV, JSON, relačních tabulek a Hadoopu.     |
-| Jak ji používat a spouštět      | Zástupce na ploše  <br/> [Začínáme s cvičením Drill za 10 minut](https://drill.apache.org/docs/drill-in-10-minutes/)  |
-| Související nástroje na DSVM      |   Chrastítko, Weka, SQL Server Management Studio      |
+| Jak je nakonfigurovaná a nainstalovaná na DSVM?      |  Nainstalováno `/dsvm/tools/drill*` v pouze v integrovaném režimu   |
+| Typická použití      |  Pro průzkum místních dat bez nutnosti extrakce, transformace, načítání (ETL). Dotazování různých zdrojů dat a formátů, včetně sdílených svazků clusteru, formátu JSON, relačních tabulek a Hadoop.     |
+| Jak použít a spustit      | Zástupce na ploše  <br/> [Začínáme s procházením za 10 minut](https://drill.apache.org/docs/drill-in-10-minutes/)  |
+| Související nástroje na DSVM      |   Rattle, weka, SQL Server Management Studio      |
 
 

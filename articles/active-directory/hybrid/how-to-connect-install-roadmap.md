@@ -14,10 +14,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f9ed613972f166f1f9955fc34e9bb640d87da6b5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80331427"
 ---
 # <a name="azure-ad-connect-and-azure-ad-connect-health-installation-roadmap"></a>Plán instalace Azure AD Connect a Azure AD Connect Health
@@ -25,7 +25,7 @@ ms.locfileid: "80331427"
 ## <a name="install-azure-ad-connect"></a>Instalace služby Azure AD Connect
 
 > [!IMPORTANT]
-> Microsoft nepodporuje úpravy ani provoz synchronizace služby Azure AD Connect mimo formálně zdokumentované akce. Každá z těchto akcí může mít za následek nekonzistentní nebo nepodporovaný stav synchronizace Azure AD Connect. V důsledku toho společnost Microsoft nemůže poskytovat technickou podporu pro tato nasazení.
+> Microsoft nepodporuje úpravy ani provoz synchronizace služby Azure AD Connect mimo formálně zdokumentované akce. Některé z těchto akcí můžou mít za následek nekonzistentní nebo nepodporovaný stav Azure AD Connect synchronizace. V důsledku toho společnost Microsoft nemůže poskytnout technickou podporu pro taková nasazení.
 
 Azure AD Connect si můžete stáhnout ze stránek [Stažení softwaru](https://go.microsoft.com/fwlink/?LinkId=615771).
 
@@ -57,7 +57,7 @@ Také asi bude chtít připravit na problematiku [provozu](how-to-connect-sync-o
 |Koncepty návrhu | [Koncepty návrhu Azure AD Connect](plan-connect-design-concepts.md)|
 |Účty použité k instalaci | [Další informace o účtech a oprávněních služby Azure AD Connect](reference-connect-accounts-permissions.md)|
 |Provozní plánování | [Synchronizace Azure AD Connect: Provozní úlohy a požadavky](how-to-connect-sync-operations.md)|
-|Možnosti přihlášení uživatele | [Možnosti přihlášení uživatele služby Azure AD Connect](plan-connect-user-signin.md)|
+|Možnosti přihlášení uživatele | [Azure AD Connect možností přihlášení uživatele](plan-connect-user-signin.md)|
 
 ## <a name="configure-sync-features"></a>Konfigurace synchronizačních funkcí
 Azure AD Connect obsahuje několik funkcí, které můžete volitelně zapnout nebo které jsou ve výchozím nastavení povolené. Některé funkce mohou v rámci určitých scénářů a topologií vyžadovat další konfiguraci.
@@ -68,7 +68,7 @@ Azure AD Connect obsahuje několik funkcí, které můžete volitelně zapnout n
 
 [Zpětný zápis hesel](../authentication/quickstart-sspr.md) umožňuje uživatelům měnit a resetovat vlastní hesla v cloudu a používat přitom vaše místní zásady hesel.
 
-[Zpětný zápis zařízení](how-to-connect-device-writeback.md) umožní zařízení registrované ve službě Azure AD, které má být zapsáno zpět do místní služby Active Directory, aby ho bylo možné použít pro podmíněný přístup.
+[Zpětný zápis zařízení](how-to-connect-device-writeback.md) umožní, aby se zařízení zaregistrované ve službě Azure AD zapsalo zpátky do místní služby Active Directory, aby se mohlo použít pro podmíněný přístup.
 
 Funkce pro [prevenci náhodného odstranění](how-to-connect-sync-feature-prevent-accidental-deletes.md) je ve výchozím nastavení zapnutá a chrání cloudový adresář před příliš mnoha odstraněními najednou. Na jedno spuštění implicitně povoluje 500 odstranění. Toto nastavení se dá změnit v závislosti na velikosti vaší organizace.
 
@@ -97,8 +97,8 @@ Model konfigurace v synchronizaci se označuje [deklarativní zřizování](conc
 ### <a name="next-steps-to-customize-azure-ad-connect-sync"></a>Další kroky k přizpůsobení synchronizace služby Azure AD Connect
 |Téma |Odkaz|  
 | --- | --- |
-|Všechny články o synchronizaci služby Azure AD Connect | [Synchronizace Azure AD Connect](how-to-connect-sync-whatis.md)|
-|Technické koncepty | [Synchronizace služby Azure AD Connect: Technické koncepty](how-to-connect-sync-technical-concepts.md)|
+|Všechny články o synchronizaci služby Azure AD Connect | [Azure AD Connect synchronizace](how-to-connect-sync-whatis.md)|
+|Technické koncepty | [Azure AD Connect synchronizace: technické koncepty](how-to-connect-sync-technical-concepts.md)|
 |Principy výchozí konfigurace | [Synchronizace služby Azure AD Connect: Principy výchozí konfigurace](concept-azure-ad-connect-sync-default-configuration.md)|
 |Principy uživatelů a kontaktů | [Synchronizace služby Azure AD Connect: Principy uživatelů a kontaktů](concept-azure-ad-connect-sync-user-and-contacts.md)|
 |Deklarativní zřizování | [Synchronizace služby Azure AD Connect: Principy výrazů deklarativního zřizování](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)|
@@ -108,7 +108,7 @@ Model konfigurace v synchronizaci se označuje [deklarativní zřizování](conc
 
 Azure AD Connect poskytuje několik funkcí, které zjednodušují federaci se službou Azure AD pomocí AD FS a správu důvěryhodnosti federace. Azure AD Connect podporuje AD FS na Windows Serveru 2012R2 nebo novějším.
 
-[Aktualizujte certifikát TLS/SSL farmy služby AD FS,](how-to-connect-fed-ssl-update.md) i když ke správě federačnídůvěryhodnosti nepoužíváte Azure AD Connect.
+[Aktualizujte certifikát TLS/SSL AD FS farmy](how-to-connect-fed-ssl-update.md) i v případě, že nepoužíváte Azure AD Connect ke správě důvěryhodnosti federace.
 
 Podle potřeby můžete svou farmu rozšířit [přidáním serveru AD FS](how-to-connect-fed-management.md#addadfsserver).
 
@@ -132,7 +132,7 @@ Pokud chcete začít se službou Azure AD Connect Health, použijte následujíc
 
 1. [Získejte předplatné služby Azure AD Premium](../fundamentals/active-directory-get-started-premium.md) nebo [začněte se zkušební verzí](https://azure.microsoft.com/trial/get-started-active-directory/).
 2. [Stáhněte a nainstalujte agenty služby Azure AD Connect Health](#download-and-install-azure-ad-connect-health-agent) na servery identity.
-3. Zobrazit řídicí panel Azure AD Connect stavu na adrese [https://aka.ms/aadconnecthealth](https://aka.ms/aadconnecthealth).
+3. Zobrazte řídicí panel Azure AD Connect Health na [https://aka.ms/aadconnecthealth](https://aka.ms/aadconnecthealth)adrese.
 
 > [!NOTE]
 > Nezapomeňte, že než na řídicím panelu služby Azure AD Connect Health uvidíte nějaká data, je třeba na cílové servery nainstalovat agenty služby Azure AD Connect Health.
@@ -147,7 +147,7 @@ Pokud chcete začít se službou Azure AD Connect Health, použijte následujíc
 * Začínáme s využitím Azure AD Connect Health pro synchronizaci
     * [Stažení a instalace nejnovější verze služby Azure AD Connect](https://go.microsoft.com/fwlink/?linkid=615771) Agent služby Health pro synchronizaci se nainstaluje jako součást instalace služby Azure AD Connect (verze 1.0.9125.0 nebo vyšší).
 * Začínáme s využitím Azure AD Connect Health pro službu AD DS
-    * [Stáhněte si agenta stavu Azure AD Connect pro službu AD DS](https://go.microsoft.com/fwlink/?LinkID=820540).
+    * [Stáhnout agenta Azure AD Connect Health pro služba AD DS](https://go.microsoft.com/fwlink/?LinkID=820540).
     * [Pokyny k instalaci](how-to-connect-health-agent-install.md#installing-the-azure-ad-connect-health-agent-for-ad-ds)
 
 
@@ -165,8 +165,8 @@ Portál služby Azure AD Connect Health umožňuje zobrazovat upozornění, moni
 * **Active Directory Domain Services:** Tato možnost ukazuje všechny doménové struktury AD DS, které služba Azure AD Connect Health aktuálně monitoruje. Po výběru některé doménové struktury se otevře okno s informacemi o příslušné doménové struktuře. Tyto informace zahrnují přehled základních informací, řídicí panel Řadiče domény, řídicí panel Stav replikace, upozornění a monitorování. Další informace o těchto možnostech najdete v tématu [Používání služby Azure AD Connect Health se službou AD DS](how-to-connect-health-adds.md).
 * **Konfigurace:** Tato část umožňuje zapnout nebo vypnout následující možnosti:
 
-   - **Automatická aktualizace** agenta Azure AD Connect Health na nejnovější verzi: agent azure ad připojení stavu se automaticky aktualizuje, kdykoli jsou k dispozici nové verze. Tato možnost je ve výchozím nastavení povolená.
-   - **Přístup k datům** z integrity adresáře Azure AD společností Microsoft pouze pro účely řešení potíží: pokud je tato možnost povolena, microsoft může přistupovat ke stejným datům zobrazeným uživatelem. Tyto informace mohou být užitečné pro řešení potíží a poskytnutí potřebné pomoci. Tato možnost je ve výchozím nastavení zakázána.
+   - **Automatická aktualizace** agenta Azure AD Connect Health na nejnovější verzi: Agent Azure AD Connect Health se automaticky aktualizuje vždy, když jsou k dispozici nové verze. Tato možnost je ve výchozím nastavení povolená.
+   - **Přístup k datům** z integrity adresáře Azure AD jenom pro účely řešení potíží: Pokud je tato možnost povolená, může Microsoft získat přístup ke stejným datům, které uživatel uvidí. Tyto informace mohou být užitečné při řešení potíží a poskytování potřebné pomoci. Tato možnost je ve výchozím nastavení zakázaná.
 * **Řízení přístupu na základě role (IAM):** V této části se spravuje přístup k datům služby Connect Health na základě role. 
 
 ## <a name="next-steps"></a>Další kroky
@@ -178,4 +178,4 @@ Portál služby Azure AD Connect Health umožňuje zobrazovat upozornění, moni
 - [Předávací ověřování](how-to-connect-pta.md)
 - [Azure AD Connect a federace](how-to-connect-fed-whatis.md)
 - [Instalace agentů Azure AD Connect Health](how-to-connect-health-agent-install.md) 
-- [Synchronizace Azure AD Connect](how-to-connect-sync-whatis.md)
+- [Azure AD Connect synchronizace](how-to-connect-sync-whatis.md)

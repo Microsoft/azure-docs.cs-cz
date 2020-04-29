@@ -1,6 +1,6 @@
 ---
-title: Plánovač nasazení pro zotavení po havárii technologie Hyper-V s azure site recovery
-description: Přečtěte si o řešení informací o řešení zabezpečení nasazení webu Azure V azure.
+title: Plánovač nasazení pro zotavení po havárii technologie Hyper-V s využitím Azure Site Recovery
+description: Přečtěte si o Plánovač nasazení služby Azure Site Recovery zotavení po havárii Hyper-V do Azure.
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: mayg
 ms.openlocfilehash: 07c1f7f258dbea7bcf7a6e7ea51fdcfdfaa006aa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79368719"
 ---
-# <a name="about-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>O plánovači nasazení webu Azure pro zotavení po havárii technologie Hyper-V do Azure
+# <a name="about-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>Informace o Plánovač nasazení služby Azure Site Recovery zotavení po havárii technologie Hyper-V do Azure
 
 Tento článek představuje uživatelskou příručku k Plánovači nasazení služby Azure Site Recovery pro produkční nasazení Hyper-V do Azure.
 
@@ -84,7 +84,7 @@ Nástroj má pro Hyper-V tři hlavní fáze: získání seznamu virtuálních po
 
 | Požadavek na server | Popis |
 |---|---|
-|Získání seznamu virtuálních počítačů, profilace a měření propustnosti |<ul><li>Operační systém: Microsoft Windows Server 2016 nebo Microsoft Windows Server 2012 R2 </li><li>Konfigurace počítače: 8 virtuálních CPU, 16 GB paměti RAM, 300 GB HDD</li><li>[Microsoft .NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[Microsoft Visual C++ Redistributable for Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>Přístup k internetu do Azure (*.blob.core.windows.net) z tohoto serveru, port 443<br>[Toto je volitelné. Během generování sestavy můžete poskytnout dostupnou šířku pásma ručně.]</li><li>Účet služby Azure Storage</li><li>Přístup správce na server</li><li>Volné místo na disku alespoň 100 GB (za předpokladu 1 000 virtuálních počítačů, každý průměrně se 3 disky a profilovaný po dobu 30 dnů)</li><li>Virtuální počítač, ze kterého spouštíte nástroj Plánovač nasazení služby Azure Site Recovery, musí být přidaný do seznamu TrustedHosts všech serverů Hyper-V.</li><li>Všechny servery Hyper-V, které mají být profilovány, musí být přidány do seznamu TrustedHosts klientského virtuálního virtuálního zařízení, ze kterého je nástroj spuštěn. [Další informace o přidání serverů do seznamu TrustedHosts](#steps-to-add-servers-into-trustedhosts-list) </li><li> Nástroj by měl být spuštěný pomocí oprávnění pro správu z PowerShellu nebo konzoly příkazového řádku na klientovi.</ul></ul>|
+|Získání seznamu virtuálních počítačů, profilace a měření propustnosti |<ul><li>Operační systém: Microsoft Windows Server 2016 nebo Microsoft Windows Server 2012 R2 </li><li>Konfigurace počítače: 8 virtuálních CPU, 16 GB paměti RAM, 300 GB HDD</li><li>[Microsoft .NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[Microsoft Visual C++ Redistributable for Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>Internetový přístup k Azure (*. blob.core.windows.net) z tohoto serveru, port 443<br>[Toto je volitelné. K dispozici je možnost zadat dostupnou šířku pásma během generování sestavy ručně.]</li><li>Účet služby Azure Storage</li><li>Přístup správce na server</li><li>Volné místo na disku alespoň 100 GB (za předpokladu 1 000 virtuálních počítačů, každý průměrně se 3 disky a profilovaný po dobu 30 dnů)</li><li>Virtuální počítač, ze kterého spouštíte nástroj Plánovač nasazení služby Azure Site Recovery, musí být přidaný do seznamu TrustedHosts všech serverů Hyper-V.</li><li>Všechny servery Hyper-V, které mají být profilování, musí být přidány do seznamu TrustedHosts virtuálního počítače klienta, ze kterého se nástroj spouští. [Další informace o přidání serverů do seznamu TrustedHosts](#steps-to-add-servers-into-trustedhosts-list) </li><li> Nástroj by měl být spuštěný pomocí oprávnění pro správu z PowerShellu nebo konzoly příkazového řádku na klientovi.</ul></ul>|
 | Generování sestav | Počítač s Windows nebo Windows Server s aplikací Microsoft Excel 2013 nebo novější |
 | Uživatelská oprávnění | Účet správce pro přístup ke clusteru Hyper-V / hostiteli Hyper-V během operací získání seznamu virtuálních počítačů a profilace<br>Všichni hostitelé, pro které je potřeba provést profilaci, by měli mít účet správce domény se stejnými přihlašovacími údaji, tj. uživatelským jménem a heslem.
  |
@@ -115,13 +115,13 @@ Doporučená konfigurace virtuálního počítače: 8 virtuálních CPU, 16 GB p
 1.  Rozbalte složku .zip.
 Složka obsahuje několik souborů a podsložek. Spustitelný soubor je ASRDeploymentPlanner.exe v nadřazené složce.
 
-Příklad: Zkopírujte soubor .zip na jednotku E:\ a rozbalte jej. E:\ASR nasazení Planner_v2.3.zip
+Příklad: Zkopírujte soubor .zip na jednotku E:\ a rozbalte jej. Nasazení E:\ASR Planner_v2.3. zip
 
-E:\ASR Nasazení Planner_v2.3\ASRDeploymentPlanner.exe
+Nasazení E:\ASR Planner_v2.3 \ ASRDeploymentPlanner. exe
 
 ### <a name="updating-to-the-latest-version-of-deployment-planner"></a>Aktualizace na nejnovější verzi plánovače nasazení
 
-Nejnovější aktualizace jsou shrnuty v [historii verzí](site-recovery-deployment-planner-history.md)Plánovače nasazení .
+Nejnovější aktualizace jsou shrnuté v [historii Plánovač nasazení verzí](site-recovery-deployment-planner-history.md).
 
 Pokud máte předchozí verzi plánovače nasazení, proveďte jednu z následujících akcí:
  * Pokud nejnovější verze neobsahuje opravu profilace a ve vaší stávající verzi Deployment Planneru již profilace probíhá, pokračujte v ní.
@@ -135,9 +135,9 @@ Pokud máte předchozí verzi plánovače nasazení, proveďte jednu z následuj
   >Každý nový Deployment Planner je kumulativní aktualizací souboru .zip. Nemusíte kopírovat nejnovější soubory do předchozí složky. Můžete vytvořit a použít novou složku.
 
 ## <a name="version-history"></a>Historie verzí
-Nejnovější verze nástroje Plánovač nasazení webu Azure je 2.5.
-Opravy, které se přidávají do každé aktualizace, najdete na stránce [Historie verzí plánovače nasazení webu Azure.](https://social.technet.microsoft.com/wiki/contents/articles/51049.asr-deployment-planner-version-history.aspx)
+Nejnovější verze nástroje Plánovač nasazení služby Azure Site Recovery je 2,5.
+Opravy přidané v jednotlivých aktualizacích najdete na stránce [Historie verzí Plánovač nasazení služby Azure Site Recovery](https://social.technet.microsoft.com/wiki/contents/articles/51049.asr-deployment-planner-version-history.aspx) .
 
 
 ## <a name="next-steps"></a>Další kroky
-* [Spusťte plánovač nasazení](site-recovery-hyper-v-deployment-planner-run.md).
+* [Spusťte Plánovač nasazení](site-recovery-hyper-v-deployment-planner-run.md).

@@ -1,7 +1,7 @@
 ---
-title: Konfigurace komplexního šifrování TLS pomocí portálu
+title: Konfigurace kompletního šifrování TLS pomocí portálu
 titleSuffix: Azure Application Gateway
-description: Zjistěte, jak pomocí portálu Azure vytvořit aplikační bránu s komplexním šifrováním TLS.
+description: Naučte se, jak pomocí Azure Portal vytvořit Aplikační bránu s koncovým šifrováním TLS.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -10,114 +10,114 @@ ms.date: 11/14/2019
 ms.author: absha
 ms.custom: mvc
 ms.openlocfilehash: 6f86f32e64bbbe79ea5a403d04f7d6c29ee6b980
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80133015"
 ---
-# <a name="configure-end-to-end-tls-by-using-application-gateway-with-the-portal"></a>Konfigurace komplexního protokolu TLS pomocí aplikační brány s portálem
+# <a name="configure-end-to-end-tls-by-using-application-gateway-with-the-portal"></a>Konfigurace kompletního TLS pomocí Application Gateway s portálem
 
-Tento článek popisuje, jak pomocí portálu Azure ke konfiguraci šifrování TLS (End-to-end Transport Layer Security), dříve známéjako šifrování SSL (Secure Sockets Layer), prostřednictvím Azure Application Gateway v1 SKU.
+Tento článek popisuje, jak pomocí Azure Portal nakonfigurovat komplexní šifrování TLS (Transport Layer Security), dříve označované jako šifrování SSL (Secure Sockets Layer) (SSL), prostřednictvím SKU Azure Application Gateway v1.
 
 > [!NOTE]
-> SKU aplikace v2 vyžaduje důvěryhodné kořenové certifikáty pro povolení konfigurace od konce.
+> SKU Application Gateway v2 vyžaduje důvěryhodné kořenové certifikáty pro povolení ucelené konfigurace.
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
-Chcete-li nakonfigurovat komplexní protokol TLS s aplikační bránou, potřebujete pro bránu certifikát. Certifikáty jsou vyžadovány také pro servery back-end. Certifikát brány se používá k odvození symetrického klíče v souladu se specifikací protokolu TLS. Symetrický klíč se pak používá k šifrování a dešifrování přenosů odeslaných do brány. 
+Pro konfiguraci kompletního protokolu TLS s aplikační bránou potřebujete certifikát pro bránu. Pro back-endové servery jsou také vyžadovány certifikáty. Certifikát brány se používá k odvození symetrického klíče v souladu se specifikací protokolu TLS. Symetrický klíč se pak použije k šifrování a dešifrování provozu odeslaného do brány. 
 
-Pro šifrování TLS od konce musí být v bráně aplikace povoleny pravé servery back-end. Chcete-li tento přístup povolit, nahrajte do aplikační brány veřejný certifikát serverů back-end, označovaných také jako ověřovací certifikáty (v1) nebo důvěryhodné kořenové certifikáty (v2). Přidání certifikátu zajistí, že aplikační brána komunikuje pouze se známými back-endovými instancemi. Tato konfigurace dále zabezpečuje komunikaci mezi koncovými soubory.
+U komplexního šifrování TLS musí být ve službě Application Gateway povolený správný back-end Server. Pro povolení tohoto přístupu nahrajte do aplikační brány veřejný certifikát back-end serverů, označovaný také jako certifikáty pro ověřování (V1) nebo důvěryhodné kořenové certifikáty (v2). Přidáním certifikátu zajistíte, aby brána Application Gateway komunikovala pouze se známými back-end instancemi. Tato konfigurace dále zabezpečuje ucelenou komunikaci.
 
-Další informace najdete v [tématu Přehled ukončení TLS a ukončení tls s aplikační bránou](https://docs.microsoft.com/azure/application-gateway/ssl-overview).
+Další informace najdete v tématu [Přehled ukončení protokolu TLS a koncového šifrování TLS s Application Gateway](https://docs.microsoft.com/azure/application-gateway/ssl-overview).
 
-## <a name="create-a-new-application-gateway-with-end-to-end-tls"></a>Vytvoření nové aplikační brány s komplexním tls
+## <a name="create-a-new-application-gateway-with-end-to-end-tls"></a>Vytvoření nové aplikační brány s komplexním protokolem TLS
 
-Chcete-li vytvořit novou aplikační bránu s komplexním šifrováním TLS, musíte nejprve povolit ukončení TLS při vytváření nové aplikační brány. Tato akce umožňuje šifrování TLS pro komunikaci mezi klientem a aplikační bránou. Potom budete muset dát na seznam bezpečných příjemců certifikáty pro back-end servery v nastavení HTTP. Tato konfigurace umožňuje šifrování TLS pro komunikaci mezi aplikační bránou a servery back-end. To dosahuje end-to-end šifrování TLS.
+Pokud chcete vytvořit novou aplikační bránu s koncovým šifrováním TLS, musíte nejdřív povolit ukončení protokolu TLS při vytváření nové aplikační brány. Tato akce povolí šifrování TLS pro komunikaci mezi klientem a aplikační bránou. Potom budete muset v nastavení protokolu HTTP umístit na seznam Bezpeční příjemci certifikáty pro back-endové servery. Tato konfigurace umožňuje šifrování TLS pro komunikaci mezi aplikační bránou a back-end servery. Který provádí komplexní šifrování TLS.
 
-### <a name="enable-tls-termination-while-creating-a-new-application-gateway"></a>Povolení ukončení TLS při vytváření nové aplikační brány
+### <a name="enable-tls-termination-while-creating-a-new-application-gateway"></a>Povolit ukončení protokolu TLS při vytváření nové aplikační brány
 
-Další informace najdete v [tématu povolení ukončení TLS při vytváření nové brány aplikace](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal).
+Další informace najdete v tématu [Povolení ukončení protokolu TLS při vytváření nové aplikační brány](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal).
 
-### <a name="add-authenticationroot-certificates-of-back-end-servers"></a>Přidání ověřovacích/kořenových certifikátů serverů back-end
+### <a name="add-authenticationroot-certificates-of-back-end-servers"></a>Přidání ověřování/kořenových certifikátů back-endové serverů
 
-1. Vyberte **Všechny prostředky**a pak **vyberte myAppGateway**.
+1. Vyberte **všechny prostředky**a pak vyberte **myAppGateway**.
 
-2. V nabídce na levé straně vyberte **nastavení protokolu HTTP.** Azure při vytvoření aplikační brány automaticky vytvořil výchozí nastavení **HTTP, appGatewayBackendHttpSettings**. 
+2. V nabídce na levé straně vyberte **Nastavení http** . Při vytváření služby Application Gateway Azure automaticky vytvořil výchozí nastavení HTTP, **appGatewayBackendHttpSettings**. 
 
 3. Vyberte **appGatewayBackendHttpSettings**.
 
-4. V části **Protokol**vyberte **možnost HTTPS**. Zobrazí se podokno pro **ověřovací certifikáty Back-end nebo Důvěryhodné kořenové certifikáty.**
+4. V části **protokol**vyberte **https**. Zobrazí se podokno pro **certifikáty pro ověřování back-end nebo důvěryhodné kořenové certifikáty** .
 
 5. Vyberte, že chcete **vytvořit novou** IP adresu.
 
-6. Do pole **Název** zadejte vhodný název.
+6. Do pole **název** zadejte vhodný název.
 
-7. V poli **Nahrát certifikát CER** vyberte soubor certifikátu.
+7. V poli **Odeslat certifikát CER** vyberte soubor certifikátu.
 
-   Pro standardní a WAF (v1) aplikační brány, měli byste nahrát veřejný klíč vašeho back-end certifikátu serveru ve formátu CER.
+   Pro aplikační brány Standard a WAF (V1) byste měli odeslat veřejný klíč certifikátu back-end serveru ve formátu. cer.
 
    ![Přidání certifikátu](./media/end-to-end-ssl-portal/addcert.png)
 
-   Pro Standard_v2 a WAF_v2 aplikačníbrány byste měli nahrát kořenový certifikát certifikátu serveru back-end ve formátu CER. Pokud je back-endový certifikát vydán známou certifikační autoritou( CA), můžete zaškrtnout políčko **Použít známý certifikát certifikační autority** a potom certifikát nemusíte nahrát.
+   Pro Standard_v2 a WAF_v2 aplikační brány byste měli do formátu. cer nahrát kořenový certifikát serveru back-end. Pokud je back-end certifikát vydaný dobře známou certifikační autoritou (CA), můžete zaškrtnout políčko **použít dobře známý certifikát certifikační autority** a pak nemusíte nahrávat certifikát.
 
-   ![Přidání důvěryhodného kořenového certifikátu](./media/end-to-end-ssl-portal/trustedrootcert-portal.png)
+   ![Přidat důvěryhodný kořenový certifikát](./media/end-to-end-ssl-portal/trustedrootcert-portal.png)
 
    ![Kořenový certifikát](./media/end-to-end-ssl-portal/trustedrootcert.png)
 
 8. Vyberte **Uložit**.
 
-## <a name="enable-end-to-end-tls-for-an-existing-application-gateway"></a>Povolení komplexního tls pro existující aplikační bránu
+## <a name="enable-end-to-end-tls-for-an-existing-application-gateway"></a>Povolení kompletního TLS pro existující Aplikační bránu
 
-Chcete-li nakonfigurovat existující aplikační bránu s komplexním šifrováním TLS, musíte nejprve povolit ukončení Protokolu TLS v naslouchací proces. Tato akce umožňuje šifrování TLS pro komunikaci mezi klientem a aplikační bránou. Potom tyto certifikáty pro servery back-end vložte do nastavení protokolu HTTP v seznamu Bezpečných příjemců. Tato konfigurace umožňuje šifrování TLS pro komunikaci mezi aplikační bránou a servery back-end. To dosahuje end-to-end šifrování TLS.
+Pokud chcete nakonfigurovat existující Aplikační bránu s komplexním šifrováním TLS, musíte nejdřív v naslouchací službě povolit ukončení protokolu TLS. Tato akce povolí šifrování TLS pro komunikaci mezi klientem a aplikační bránou. Pak vložte tyto certifikáty pro back-endové servery do nastavení HTTP v seznamu bezpečných příjemců. Tato konfigurace umožňuje šifrování TLS pro komunikaci mezi aplikační bránou a back-end servery. Který provádí komplexní šifrování TLS.
 
-Budete muset použít naslouchací proces s protokolem HTTPS a certifikát pro povolení ukončení TLS. Můžete použít existující naslouchací proces, který splňuje tyto podmínky nebo vytvořit nový naslouchací proces. Pokud zvolíte první možnost, můžete ignorovat následující část "Povolit ukončení TLS v existující aplikační bráně" a přejít přímo do části "Přidat ověřovací/důvěryhodné kořenové certifikáty pro back-endové servery".
+K povolení ukončení protokolu TLS budete muset použít naslouchací proces s protokolem HTTPS a certifikátem. Můžete použít buď existující naslouchací proces, který splňuje tyto podmínky, nebo vytvořit nový naslouchací proces. Pokud zvolíte možnost předchozí, můžete ignorovat následující část povolení ukončení protokolu TLS v existující bráně Application Gateway a přejít přímo na oddíl přidat ověřování/důvěryhodné kořenové certifikáty pro back-end servery.
 
-Pokud zvolíte druhou možnost, použijte kroky v následujícím postupu.
-### <a name="enable-tls-termination-in-an-existing-application-gateway"></a>Povolení ukončení TLS v existující aplikační bráně
+Pokud zvolíte druhou možnost, použijte postup uvedený v následujícím postupu.
+### <a name="enable-tls-termination-in-an-existing-application-gateway"></a>Povolení ukončení protokolu TLS v existující aplikační bráně
 
-1. Vyberte **Všechny prostředky**a pak **vyberte myAppGateway**.
+1. Vyberte **všechny prostředky**a pak vyberte **myAppGateway**.
 
-2. V nabídce na levé straně vyberte **Posluchači.**
+2. V nabídce na levé straně vyberte **naslouchací procesy** .
 
-3. V yberte **základní** nebo **vícewebový** naslouchací proces v závislosti na vašich požadavcích.
+3. V závislosti na vašich požadavcích vyberte buď službu Listener **Basic** , nebo naslouchací proces **více webů** .
 
-4. V části **Protokol**vyberte **možnost HTTPS**. Zobrazí se podokno **certifikátu.**
+4. V části **protokol**vyberte **https**. Zobrazí se podokno pro **certifikát** .
 
-5. Nahrajte certifikát PFX, který chcete použít pro ukončení TLS mezi klientem a aplikační bránou.
+5. Nahrajte certifikát PFX, který hodláte použít pro ukončení TLS mezi klientem a aplikační bránou.
 
    > [!NOTE]
-   > Pro účely testování můžete použít certifikát podepsaný svým držitelem. To se však nedoporučuje pro produkční úlohy, protože je těžší je spravovat a nejsou zcela bezpečné. Další informace naleznete [v tématu vytvoření certifikátu podepsaného svým držitelem](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal#create-a-self-signed-certificate).
+   > Pro účely testování můžete použít certifikát podepsaný svým držitelem. Nedoporučuje se ale pro produkční úlohy, protože jsou těžší je spravovat a nejsou úplně zabezpečené. Další informace najdete v tématu [Vytvoření certifikátu podepsaného svým držitelem](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal#create-a-self-signed-certificate).
 
-6. V závislosti na požadavcích přidejte další požadovaná nastavení pro **posluchače**.
+6. V závislosti na vašich požadavcích přidejte další požadovaná nastavení pro **naslouchací proces**.
 
 7. Výběrem **OK** konfiguraci uložte.
 
-### <a name="add-authenticationtrusted-root-certificates-of-back-end-servers"></a>Přidání ověřovacích/důvěryhodných kořenových certifikátů serverů back-end
+### <a name="add-authenticationtrusted-root-certificates-of-back-end-servers"></a>Přidání ověřování/důvěryhodných kořenových certifikátů back-endové servery
 
-1. Vyberte **Všechny prostředky**a pak **vyberte myAppGateway**.
+1. Vyberte **všechny prostředky**a pak vyberte **myAppGateway**.
 
-2. V nabídce na levé straně vyberte **nastavení protokolu HTTP.** Certifikáty můžete umístit do existujícího nastavení http back-end u seznamu Bezpečných příjemců nebo vytvořit nové nastavení HTTP. (V dalším kroku je certifikát pro výchozí nastavení **HTTP, appGatewayBackendHttpSettings**, přidán do seznamu Bezpečných příjemců.)
+2. V nabídce na levé straně vyberte **Nastavení http** . Můžete buď umístit certifikáty do stávajícího nastavení back-endu HTTP na seznamu bezpečných příjemců, nebo vytvořit nové nastavení HTTP. (V dalším kroku se do seznamu bezpečných příjemců přidá certifikát pro výchozí nastavení HTTP **appGatewayBackendHttpSettings**.)
 
 3. Vyberte **appGatewayBackendHttpSettings**.
 
-4. V části **Protokol**vyberte **možnost HTTPS**. Zobrazí se podokno pro **ověřovací certifikáty Back-end nebo Důvěryhodné kořenové certifikáty.** 
+4. V části **protokol**vyberte **https**. Zobrazí se podokno pro **certifikáty pro ověřování back-end nebo důvěryhodné kořenové certifikáty** . 
 
 5. Vyberte, že chcete **vytvořit novou** IP adresu.
 
-6. Do pole **Název** zadejte vhodný název.
+6. Do pole **název** zadejte vhodný název.
 
-7. V poli **Nahrát certifikát CER** vyberte soubor certifikátu.
+7. V poli **Odeslat certifikát CER** vyberte soubor certifikátu.
 
-   Pro standardní a WAF (v1) aplikační brány, měli byste nahrát veřejný klíč vašeho back-end certifikátu serveru ve formátu CER.
+   Pro aplikační brány Standard a WAF (V1) byste měli odeslat veřejný klíč certifikátu back-end serveru ve formátu. cer.
 
    ![Přidání certifikátu](./media/end-to-end-ssl-portal/addcert.png)
 
-   Pro Standard_v2 a WAF_v2 aplikačníbrány byste měli nahrát kořenový certifikát certifikátu serveru back-end ve formátu CER. Pokud je back-endový certifikát vydán známou certifikační autoritou, můžete zaškrtnout políčko **Použít známý certifikát certifikační autority** a pak certifikát nemusíte nahrát.
+   Pro Standard_v2 a WAF_v2 aplikační brány byste měli do formátu. cer nahrát kořenový certifikát serveru back-end. Pokud je back-end certifikát vydaný dobře známou certifikační autoritou, můžete zaškrtnout políčko **použít dobře známý certifikát certifikační autority** a pak nemusíte nahrávat certifikát.
 
-   ![Přidání důvěryhodného kořenového certifikátu](./media/end-to-end-ssl-portal/trustedrootcert-portal.png)
+   ![Přidat důvěryhodný kořenový certifikát](./media/end-to-end-ssl-portal/trustedrootcert-portal.png)
 
 8. Vyberte **Uložit**.
 

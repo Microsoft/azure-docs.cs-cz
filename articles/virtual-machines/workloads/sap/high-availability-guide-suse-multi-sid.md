@@ -1,6 +1,6 @@
 ---
-title: Vysoká dostupnost virtuálních počítačích Azure pro SAP NetWeaver v průvodci více SID sles | Dokumenty společnosti Microsoft
-description: Průvodce vysokou dostupností multi-SID pro SAP NetWeaver na SUSE Linux Enterprise Server pro aplikace SAP
+title: Virtuální počítače Azure s vysokou dostupností pro SAP NetWeaver v SLES – příručka pro více SID | Microsoft Docs
+description: Průvodce vysokou dostupností s více SID pro SAP NetWeaver v SUSE Linux Enterprise Server pro aplikace SAP
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: rdeltcheva
@@ -16,13 +16,13 @@ ms.workload: infrastructure-services
 ms.date: 03/26/2020
 ms.author: radeltch
 ms.openlocfilehash: 793851780e1154b6b6a21c88ea8cae063a277790
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80350062"
 ---
-# <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications-multi-sid-guide"></a>Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure na SUSE Linux Enterprise Server pro SAP aplikace multi-SID průvodce
+# <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications-multi-sid-guide"></a>Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure v SUSE Linux Enterprise Server pro Průvodce pro aplikace SAP s více SID
 
 [dbms-guide]:dbms-guide.md
 [deployment-guide]:deployment-guide.md
@@ -54,144 +54,144 @@ ms.locfileid: "80350062"
 [sap-hana-ha]:sap-hana-high-availability.md
 [nfs-ha]:high-availability-guide-suse-nfs.md
 
-Tento článek popisuje, jak nasadit více SAP NetWeaver nebo S4HANA vysoce dostupné systémy (to znamená, multi-SID) ve dvouuzlůclusteru na virtuálních počítačích Azure s SUSE Linux Enterprise Server pro aplikace SAP.  
+Tento článek popisuje, jak nasadit více systémů SAP NetWeaver nebo S4HANA s vysokou dostupností (to znamená více SID) v clusteru se dvěma uzly na virtuálních počítačích Azure s SUSE Linux Enterprise Server pro aplikace SAP.  
 
-V ukázkových konfiguracích, příkazech instalace atd. SID systémů SAP jsou:
-* **NW1**: Číslo instance ASCS **00** a název virtuálního hostitele **msnw1ascs**; ERS instance číslo **02** a název virtuálního hostitele **msnw1ers**.  
-* **NW2**: Instance ASCS číslo **10** a virtuální název hostitele **msnw2ascs**; ERS instance číslo **12** a název virtuálního hostitele **msnw2ers**.  
-* **NW3**: Instance ASCS číslo **20** a virtuální název hostitele **msnw3ascs**; ERS instance číslo **22** a název virtuálního hostitele **msnw3ers**.  
+V ukázkových konfiguracích jsou instalační příkazy atd. tři systémy SAP NetWeaver 7,50 jsou nasazeny v jednom clusteru s vysokou dostupností se dvěma uzly. Identifikátory SID systémů SAP jsou:
+* **NW1**: ASCS instance číslo **00** a název virtuálního hostitele **msnw1ascs**; OLAJÍCÍCH instance číslo **02** a název virtuálního hostitele **msnw1ers**.  
+* **NW2**: ASCS instance číslo **10** a virtuální název hostitele **msnw2ascs**; OLAJÍCÍCH instance číslo **12** a název virtuálního hostitele **msnw2ers**.  
+* **NW3**: ASCS instance číslo **20** a virtuální název hostitele **msnw3ascs**; OLAJÍCÍCH instance číslo **22** a název virtuálního hostitele **msnw3ers**.  
 
-Článek nezahrnuje databázovou vrstvu a nasazení sdílených složek SAP NFS. V příkladech v tomto článku používáme virtuální názvy nw2-nfs pro sdílené složky NW2 NFS a nw3-nfs pro sdílené složky nfs NW3, za předpokladu, že byl nasazen cluster souborů NFS.  
+Článek nepokrývá databázovou vrstvu a nasazení sdílených složek SAP NFS. V příkladech v tomto článku používáme virtuální názvy NW2-NFS pro sdílené složky NFS NW2 a NW3-NFS pro sdílené složky NFS pro NW3 NFS za předpokladu, že byl nasazený cluster systému souborů NFS.  
 
-Než začnete, podívejte se nejprve na následující poznámky a dokumenty SAP:
+Než začnete, přečtěte si následující poznámky a dokumenty SAP jako první:
 
-* SAP Poznámka [1928533][1928533], která má:
+* Poznámka [1928533][1928533]pro SAP obsahuje:
   * Seznam velikostí virtuálních počítačů Azure, které jsou podporované pro nasazení softwaru SAP
   * Důležité informace o kapacitě pro velikosti virtuálních počítačů Azure
-  * Podporovaný software SAP a kombinace operačních systémů (OS) a databází
+  * Podporovaný software SAP a kombinace operačního systému (OS) a databáze
   * Požadovaná verze jádra SAP pro Windows a Linux v Microsoft Azure
 
-* SAP Note [2015553][2015553] uvádí předpoklady pro nasazení softwaru SAP v Azure podporované sapem.
-* SAP Note [2205917][2205917] doporučil nastavení operačního systému pro SUSE Linux Enterprise Server pro aplikace SAP
-* SAP Note [1944799][1944799] má SAP HANA pokyny pro SUSE Linux Enterprise Server pro aplikace SAP
-* SAP Note [2178632][2178632] má podrobné informace o všech metrikách monitorování hlášených pro SAP v Azure.
-* SAP Note [2191498][2191498] má požadovanou verzi SAP Host Agent pro Linux v Azure.
-* SAP Note [2243692][2243692] má informace o licencování SAP na Linuxu v Azure.
-* SAP Note [1984787][1984787] má obecné informace o SUSE Linux Enterprise Server 12.
-* SAP Note [1999351][1999351] má další informace o řešení potíží pro rozšíření Azure Enhanced Monitoring Extension pro SAP.
-* [SAP Community WIKI](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) má všechny požadované SAP Notes pro Linux.
-* [Plánování a implementace virtuálních počítačů Azure pro SAP na Linuxu][planning-guide]
-* [Nasazení virtuálních počítačů Azure pro SAP na Linuxu][deployment-guide]
-* [Nasazení DBMS virtuálních počítačů Azure pro SAP na Linuxu][dbms-guide]
-* [SUSE SAP HA Průvodce osvědčenými postupy][suse-ha-guide] Vodítka obsahují všechny požadované informace pro místní nastavení aplikace Netweaver HA a SAP HANA System Replication. Tato vodítka použijte jako obecný směrný plán. Poskytují mnohem podrobnější informace.
-* [SUSE Rozšíření o vysokou dostupnost 12 SP3 Poznámky k verzi][suse-ha-12sp3-relnotes]
-* [Průvodce clusterem SUSE s více SID pro SLES 12 a SLES 15](https://documentation.suse.com/sbp/all/html/SBP-SAP-MULTI-SID/index.html)
-* [Aplikace NetApp SAP v Microsoft Azure pomocí souborů Azure NetApp][anf-sap-applications-azure]
+* SAP Note [2015553][2015553] uvádí požadavky na nasazení softwaru SAP podporovaná službou SAP v Azure.
+* Pro aplikace SAP Poznámka [2205917][2205917] se doporučuje nastavení operačního systému pro SUSE Linux Enterprise Server pro aplikace SAP.
+* Poznámka SAP Poznámka [1944799][1944799] obsahuje pokyny pro SAP HANA SUSE Linux Enterprise Server pro aplikace SAP.
+* Pro SAP Note [2178632][2178632] najdete podrobné informace o všech metrikách monitorování hlášených pro SAP v Azure.
+* V případě SAP Poznámka [2191498][2191498] je požadovaná verze agenta hostitele SAP pro Linux v Azure.
+* Poznámka SAP Poznámka [2243692][2243692] obsahuje informace o LICENCOVÁNí SAP v systému Linux v Azure.
+* Poznámka SAP poznámky [1984787][1984787] obsahuje obecné informace o SUSE Linux Enterprise Server 12.
+* V části SAP Note [1999351][1999351] najdete další informace o odstraňování potíží pro rozšíření Azure Enhanced Monitoring pro SAP.
+* [Komunitní komunita SAP](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) má všechny požadované poznámky SAP pro Linux.
+* [Plánování a implementace služby Azure Virtual Machines pro SAP v systému Linux][planning-guide]
+* [Nasazení Azure Virtual Machines pro SAP v systému Linux][deployment-guide]
+* [Nasazení Azure Virtual Machines DBMS pro SAP v systému Linux][dbms-guide]
+* [Průvodce osvědčenými postupy pro SUSE SAP ha][suse-ha-guide] Příručky obsahují všechny požadované informace pro nastavení NetWeaver HA a SAP HANA místní replikace systému. Použijte tyto příručky jako obecné standardní hodnoty. Poskytují mnohem podrobnější informace.
+* [Zpráva k vydání verze SUSE High Availability Extension 12 SP3][suse-ha-12sp3-relnotes]
+* [SUSE průvodce clusterem s více SID pro SLES 12 a SLES 15](https://documentation.suse.com/sbp/all/html/SBP-SAP-MULTI-SID/index.html)
+* [NetApp aplikace SAP na Microsoft Azure pomocí Azure NetApp Files][anf-sap-applications-azure]
 ## <a name="overview"></a>Přehled
 
-Virtuální počítače, které se účastní v clusteru musí být dimenzována, aby bylo možné spustit všechny prostředky, v případě převzetí služeb při selhání dojde. Každý SAP SID může převzetí služeb při selhání nezávisle na sobě v clusteru s vysokou dostupností více SID.  Pokud používáte oplocení SBD, zařízení SBD lze sdílet mezi více clustery.  
+Pro virtuální počítače, které jsou součástí clusteru, musí být velikost, aby bylo možné spouštět všechny prostředky, pokud dojde k převzetí služeb při selhání. Každé rozhraní SAP SID může převzít služby při selhání nezávisle na sobě v clusteru s vysokou dostupností více identifikátorů SID.  Pokud používáte SBD oplocení, můžou být zařízení SBD sdílená mezi několika clustery.  
 
-Pro dosažení vysoké dostupnosti vyžaduje SAP NetWeaver vysoce dostupné sdílené složky systému nfs. V tomto příkladu předpokládáme, že sdílené složky SAP NFS jsou hostovány na vysoce [dostupném souborovém serveru systému Souborů NFS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs), který může používat více systémů SAP. Nebo sdílené složky se nasazují na [svazcích souborů NFS Azure NetApp](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes).  
+Pro zajištění vysoké dostupnosti vyžaduje SAP NetWeaver sdílené složky systému souborů NFS s vysokou dostupností. V tomto příkladu předpokládáme, že sdílené složky SAP NFS se buď hostují na [souborovém serveru NFS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)s vysokou dostupností, který můžou používat víc systémů SAP. Nebo jsou sdílené složky nasazené na [Azure NetApp Files SVAZCÍCH NFS](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes).  
 
-![Přehled vysoké dostupnosti sap netweaveru](./media/high-availability-guide-suse/ha-suse-multi-sid.png)
+![Přehled vysoké dostupnosti SAP NetWeaver](./media/high-availability-guide-suse/ha-suse-multi-sid.png)
 
 > [!IMPORTANT]
-> Podpora clusteringu SAP ASCS/ERS s Operačním systémem Azure VS SUSE Linux jako hostem ve virtuálních počítačích Azure je omezená na **pět** SAP SID ve stejném clusteru. Každý nový SID zvyšuje složitost. Není **podporována**kombinace serveru SAP Enqueue Replication Server 1 a Enqueue Replication Server 2 ve stejném clusteru . Clustering s více SID popisuje instalaci více instancí SAP ASCS/ERS s různými SID v jednom clusteru Pacemaker. V současné době je clustering s více SID podporován pouze pro ASCS/ERS.  
+> Podpora clusteringu s ASCS/olajících pro SAP/s SUSE Linux jako hostovaný operační systém na virtuálních počítačích Azure je omezená na **pět** identifikátorů SID SAP na stejném clusteru. Každé nové SID zvyšuje složitost. Kombinace replikačního serveru fronty SAP 1 a fronty replikačního serveru 2 ve stejném clusteru není **podporována**. Clustering s více SID popisuje instalaci více instancí SAP ASCS/OLAJÍCÍCH s různými identifikátory SID v jednom clusteru Pacemaker. Clustering s vícenásobnými identifikátory SID se aktuálně podporuje jenom pro ASCS/OLAJÍCÍCH.  
 
 > [!TIP]
-> Clustering sap ASCS/ERS s více SID je řešení s vyšší složitostí. Je složitější implementovat. Zahrnuje také vyšší administrativní úsilí při provádění činností údržby (jako je oprava operačního systému). Než začnete s vlastní implementací, věnujte čas pečlivému plánování nasazení a všech zapojených součástí, jako jsou virtuální počítače, připojení systému NFS, virtuální ip adresy, konfigurace nástroje pro vyrovnávání zatížení a tak dále.  
+> Clustering s více identifikátory SID pro SAP ASCS/OLAJÍCÍCH je řešení s vyšší složitou složitostí. Implementaci je složitější. Zahrnuje také vyšší administrativní úsilí při provádění aktivit údržby (například opravy operačního systému). Než začnete se skutečnou implementací, věnujte přitom pečlivé plánování nasazení a všech zúčastněných komponent, jako jsou virtuální počítače, připojení NFS, VIP, konfigurace nástroje pro vyrovnávání zatížení atd.  
 
-Server NFS, SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ERS a databáze SAP HANA používají virtuální název hostitele a virtuální IP adresy. V Azure je nástroj pro vyrovnávání zatížení nutný k použití virtuální IP adresy. Doporučujeme používat [standardní vyvažovač zatížení](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal).  
+Server NFS, SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver OLAJÍCÍCH a databáze SAP HANA používají virtuální název hostitele a virtuální IP adresy. V Azure se nástroj pro vyrovnávání zatížení vyžaduje k použití virtuální IP adresy. Doporučujeme použít službu [Load Balancer úrovně Standard](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal).  
 
-V následujícím seznamu je uvedena konfigurace nástroje pro vyrovnávání zatížení (A)SCS a ERS pro tento příklad clusteru s více SID se třemi systémy SAP. Budete potřebovat samostatné frontendOVÉ IP adresy, sondy stavu a pravidla vyrovnávání zatížení pro každou instanci ASCS a ERS pro každou z sidů. Přiřaďte všechny virtuální počítače, které jsou součástí clusteru ASCS/ASCS, do jednoho back-endového fondu.  
+Následující seznam obsahuje konfiguraci nástroje pro vyrovnávání zatížení (A) SCS a OLAJÍCÍCH pro tento příklad clusteru s více identifikátory SID se třemi systémy SAP. Pro každou z těchto identifikátorů SID budete potřebovat samostatné IP adresy front-endu, sondy stavu a pravidla vyrovnávání zatížení pro každou instanci ASCS a OLAJÍCÍCH. Přiřaďte všechny virtuální počítače, které jsou součástí clusteru ASCS/ASCS, do jednoho back-end fondu.  
 
-### <a name="ascs"></a>(A) Scs
+### <a name="ascs"></a>Určitého SCS
 
-* Front-endová konfigurace
-  * IP adresa pro NW1: 10.3.1.14
-  * IP adresa pro NW2: 10.3.1.16
-  * IP adresa pro NW3: 10.3.1.13
-* Porty sondy
-  * Port 620<strong>&lt;&gt;nr</strong>, tedy pro sondové porty NW1, NW2 a NW3 620**00**, 620**10** a 620**20**
-* Pravidla vyrovnávání zatížení - 
-* vytvořit jeden pro každou instanci, to znamená, že NW1/ASCS, NW2/ASCS a NW3/ASCS.
-  * Pokud používáte standardní vykladač zatížení, vyberte **porty HA**
-  * Pokud používáte základní vytápěč zatížení, vytvořte pravidla vyrovnávání zatížení pro následující porty
-    * 32<strong>&lt;&gt; nr</strong> TCP
-    * 36<strong>&lt;&gt; nr</strong> TCP
-    * 39<strong>&lt;&gt; nr</strong> TCP
-    * 81<strong>&lt;&gt; nr</strong> TCP
-    * 5<strong>&lt;&gt;nr</strong>13 TCP
-    * 5<strong>&lt;&gt;nr</strong>14 TCP
-    * 5<strong>&lt;&gt;nr</strong>16 TCP
+* Konfigurace front-endu
+  * IP adresa pro NW1:10.3.1.14
+  * IP adresa pro NW2:10.3.1.16
+  * IP adresa pro NW3:10.3.1.13
+* Porty testu paměti
+  * Port 620<strong>&lt;Nr&gt;</strong>, tedy pro NW1, NW2 a porty sondy NW3 620**00**, 620**10** a 620**20**
+* Pravidla vyrovnávání zatížení – 
+* Vytvořte jednu pro každou instanci, tj. NW1/ASCS, NW2/ASCS a NW3/ASCS.
+  * Pokud používáte Standard Load Balancer, vyberte **porty ha** .
+  * Pokud používáte základní Load Balancer, vytvořte pravidla vyrovnávání zatížení pro následující porty.
+    * 32<strong>&lt;Nr&gt; </strong> TCP
+    * 36<strong>&lt;Nr&gt; </strong> TCP
+    * 39<strong>&lt;Nr&gt; </strong> TCP
+    * 81<strong>&lt;Nr&gt; </strong> TCP
+    * 5<strong>&lt;Nr&gt;</strong>13 TCP
+    * 5<strong>&lt;Nr&gt;</strong>14 TCP
+    * 5.16 TCP<strong>&lt;&gt;</strong>
 
-### <a name="ers"></a>Ers
+### <a name="ers"></a>OLAJÍCÍCH
 
-* Front-endová konfigurace
+* Konfigurace front-endu
   * IP adresa pro NW1 10.3.1.15
   * IP adresa pro NW2 10.3.1.17
   * IP adresa pro NW3 10.3.1.19
-* Port sondy
-  * Port 621<strong>&lt;&gt;nr</strong>, tedy pro porty sondy NW1, NW2 a N# 621**02**, 621**12** a 621**22**
-* Pravidla vyrovnávání zatížení - vytvořte jednu pro každou instanci, tedy NW1/ERS, NW2/ERS a NW3/ERS.
-  * Pokud používáte standardní vykladač zatížení, vyberte **porty HA**
-  * Pokud používáte základní vytápěč zatížení, vytvořte pravidla vyrovnávání zatížení pro následující porty
-    * 32<strong>&lt;&gt; nr</strong> TCP
-    * 33<strong>&lt;&gt; nr</strong> TCP
-    * 5<strong>&lt;&gt;nr</strong>13 TCP
-    * 5<strong>&lt;&gt;nr</strong>14 TCP
-    * 5<strong>&lt;&gt;nr</strong>16 TCP
+* Port testu paměti
+  * Port 621<strong>&lt;Nr&gt;</strong>, tedy pro NW1, NW2 a N # porty sondy 621**02**, 621**12** a 621**22**
+* Pravidla vyrovnávání zatížení – pro každou instanci vytvořte jednu z těchto instancí: NW1/OLAJÍCÍCH, NW2/OLAJÍCÍCH a NW3/OLAJÍCÍCH.
+  * Pokud používáte Standard Load Balancer, vyberte **porty ha** .
+  * Pokud používáte základní Load Balancer, vytvořte pravidla vyrovnávání zatížení pro následující porty.
+    * 32<strong>&lt;Nr&gt; </strong> TCP
+    * 33<strong>&lt;Nr&gt; </strong> TCP
+    * 5<strong>&lt;Nr&gt;</strong>13 TCP
+    * 5<strong>&lt;Nr&gt;</strong>14 TCP
+    * 5.16 TCP<strong>&lt;&gt;</strong>
 
-* Back-endová konfigurace
-  * Připojeno k primárním síťovým rozhraním všech virtuálních počítačů, které by měly být součástí clusteru (A)SCS/ERS
+* Konfigurace back-endu
+  * Připojeno k primárním síťovým rozhraním všech virtuálních počítačů, které by měly být součástí clusteru (A) SCS/OLAJÍCÍCH
 
 
 > [!Note]
-> Když virtuální počítače bez veřejných IP adres jsou umístěny v back-endovém fondu interní (žádná veřejná IP adresa) standardní azure vyrovnávání zatížení, bude existovat žádné odchozí připojení k internetu, pokud se provádí další konfigurace umožňující směrování do veřejných koncových bodů. Podrobnosti o tom, jak dosáhnout odchozí připojení viz [veřejné připojení koncového bodu pro virtuální počítače pomocí Nástroje pro vyrovnávání zatížení Azure Standard ve scénářích sap vysoké dostupnosti](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections).  
+> Pokud se virtuální počítače bez veřejných IP adres nacházejí v back-end fondu interní služby pro vyrovnávání zatížení (bez veřejné IP adresy), nebude žádné odchozí připojení k Internetu, pokud se neprovede další konfigurace, která umožní směrování na veřejné koncové body. Podrobnosti o tom, jak dosáhnout odchozího připojení, najdete v tématu [připojení k veřejnému koncovému bodu pro Virtual Machines používání Azure Standard Load Balancer ve scénářích s vysokou dostupností SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)  
 
 > [!IMPORTANT]
-> Nepovolujte časová razítka TCP na virtuálních počítačích Azure umístěných za Nástroj pro vyrovnávání zatížení Azure. Povolení časových razítek TCP způsobí selhání sond y stavu. Nastavte parametr **net.ipv4.tcp_timestamps** na **0**. Podrobnosti viz [Sondy stavu vykladače zatížení](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview).
+> Nepovolujte časová razítka TCP na virtuálních počítačích Azure umístěných za Azure Load Balancer. Povolení časových razítek TCP způsobí selhání sond stavu. Nastavte parametr **net. IPv4. tcp_timestamps** na **hodnotu 0**. Podrobnosti najdete v tématu [Load Balancer sondy stavu](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview).
 
-## <a name="sap-nfs-shares"></a>Akcie SAP NFS
+## <a name="sap-nfs-shares"></a>Sdílené složky SAP NFS
 
-SAP NetWeaver vyžaduje sdílené úložiště pro přenos, profil adresáře a tak dále. Pro vysoce dostupný systém SAP je důležité mít vysoce dostupné sdílené složky NFS. Budete se muset rozhodnout o architektuře pro vaše sdílené složky SAP NFS. Jednou z možností je vytvoření [vysoce dostupného clusteru systému zabezpečení sítě na virtuálních počítačích Azure na SUSE Linux Enterprise Server][nfs-ha], který lze sdílet mezi více systémy SAP. 
+SAP NetWeaver vyžaduje sdílené úložiště pro přenos, adresář profilů a tak dále. Pro vysoce dostupný systém SAP je důležité mít vysoce dostupné sdílené složky NFS. Budete se muset rozhodnout pro architekturu pro sdílené složky SAP NFS. Jednou z možností je vytvořit [vysoce dostupný cluster systému souborů NFS na virtuálních počítačích Azure na SUSE Linux Enterprise Server][nfs-ha], který se dá sdílet mezi několika systémy SAP. 
 
-Další možností je nasazení sdílených složek na [svazcích souborů NFS Azure NetApp](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes).  Se soubory Azure NetApp získáte integrovanou vysokou dostupnost pro sdílené složky SAP NFS.
+Další možností je nasadit sdílené složky na [Azure NetApp Files SVAZCÍCH NFS](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes).  Díky Azure NetApp Files získáte integrovanou vysokou dostupnost pro sdílené složky SAP NFS.
 
 ## <a name="deploy-the-first-sap-system-in-the-cluster"></a>Nasazení prvního systému SAP v clusteru
 
-Nyní, když jste se rozhodli pro architekturu pro sdílené složky SAP NFS, nasaďte první systém SAP v clusteru podle odpovídající dokumentace.
+Teď, když jste se rozhodli o architekturu pro sdílené složky SAP NFS, nasaďte v clusteru první systém SAP, a to podle příslušné dokumentace.
 
-* Pokud používáte vysoce dostupný server nfs, postupujte [podle vysoké dostupnosti pro SAP NetWeaver na virtuálních počítačích Azure na SUSE Linux Enterprise Server pro aplikace SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse).  
-* Pokud používáte svazky souborů NFS Azure NetApp, sledujte [vysokou dostupnost pro SAP NetWeaver na virtuálních počítačích Azure na SUSE Linux Enterprise Server se soubory Azure NetApp pro aplikace SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files)
+* Pokud používáte server systému souborů NFS s vysokou [dostupností, postupujte podle vysoké dostupnosti pro SAP NetWeaver na virtuálních počítačích Azure v SUSE Linux Enterprise Server pro aplikace SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse).  
+* Pokud používáte Azure NetApp Files svazky NFS, dodržujte [vysokou dostupnost pro SAP NetWeaver na virtuálních počítačích Azure na SUSE Linux Enterprise Server s Azure NetApp Files pro aplikace SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files) .
 
-Výše uvedené dokumenty vás provedou kroky k přípravě potřebných infrastruktur, sestavení clusteru, přípravě operačního systému pro spuštění aplikace SAP.  
+Výše uvedené dokumenty vás provede kroky pro přípravu potřebných infrastruktur, sestavení clusteru a příprava operačního systému na spuštění aplikace SAP.  
 
 > [!TIP]
-> Vždy otestujte funkce převzetí služeb při selhání clusteru po nasazení prvního systému před přidáním dalších sap sidů do clusteru. Tímto způsobem budete vědět, že funkce clusteru funguje, před přidáním složitosti dalších systémů SAP do clusteru.   
+> Před přidáním dalších identifikátorů zabezpečení SAP do clusteru vždy testujte funkce převzetí služeb při selhání clusteru po nasazení prvního systému. Tímto způsobem zjistíte, že fungování clusteru funguje ještě před tím, než do clusteru přidáte složitost dalších systémů SAP.   
 
 ## <a name="deploy-additional-sap-systems-in-the-cluster"></a>Nasazení dalších systémů SAP v clusteru
 
-V tomto příkladu předpokládáme, že systém **NW1** byl již nasazen v clusteru. Ukážeme nám, jak nasadit v clusteru SAP systémy **NW2** a **NW3**. 
+V tomto příkladu předpokládáme, že systém **NW1** už je v clusteru nasazený. Ukážeme, jak nasadit v clusterech SAP Systems **NW2** a **NW3**. 
 
-Následující položky jsou předponou **buď [A]** - použitelné pro všechny uzly, **[1]** - platí pouze pro uzel 1 nebo **[2]** - platí pouze pro uzel 2.
+Následující položky jsou předpony buď **[A]** – platí pro všechny uzly, **[1]** – platí pouze pro uzel 1 nebo **[2]** – platí pouze pro uzel 2.
 
 ### <a name="prerequisites"></a>Požadavky 
 
 > [!IMPORTANT]
-> Než se budeš řídit pokyny k nasazení dalších systémů SAP v clusteru, postupujte podle pokynů k nasazení prvního systému SAP v clusteru, protože existují kroky, které jsou nezbytné pouze při prvním nasazení systému.  
+> Než budete postupovat podle pokynů k nasazení dalších systémů SAP v clusteru, postupujte podle pokynů pro nasazení prvního systému SAP v clusteru, protože existují kroky, které jsou nezbytné pouze při prvním nasazení systému.  
 
 Tato dokumentace předpokládá, že:
-* Cluster Pacemaker je již nakonfigurován a spuštěn.  
-* Alespoň jeden systém SAP (instance ASCS / ERS) je již nasazen a běží v clusteru.  
+* Cluster Pacemaker je už nakonfigurovaný a spuštěný.  
+* Nejméně jeden systém SAP (instance ASCS/OLAJÍCÍCH) je již nasazen a spuštěn v clusteru.  
 * Byla testována funkce převzetí služeb při selhání clusteru.  
-* Jsou nasazeny sdílené složky systému NFS pro všechny systémy SAP.  
+* Sdílené složky NFS pro všechny systémy SAP jsou nasazené.  
 
-### <a name="prepare-for-sap-netweaver-installation"></a>Příprava na instalaci sap netweaveru
+### <a name="prepare-for-sap-netweaver-installation"></a>Příprava na instalaci SAP NetWeaver
 
-1. Přidejte konfiguraci pro nově nasazený systém (tj. **NW2**, **NW3**) do stávajícího nástroje pro vyrovnávání zatížení Azure podle pokynů [Nasadit nástroj pro vyrovnávání zatížení Azure ručně prostřednictvím portálu Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files#deploy-azure-load-balancer-manually-via-azure-portal). Upravte IP adresy, porty sondy stavu, pravidla vyrovnávání zatížení pro vaši konfiguraci.  
+1. Přidejte konfiguraci pro nově nasazený systém (to znamená, **NW2**, **NW3**) do existujícího Azure Load Balancer podle pokynů k [nasazení Azure Load Balancer ručně prostřednictvím Azure Portal](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files#deploy-azure-load-balancer-manually-via-azure-portal). Upravte IP adresy, porty sondy stavu, pravidla vyrovnávání zatížení pro vaši konfiguraci.  
 
-2. **[A]** Nastavte překlad názvů pro další systémy SAP. Můžete použít server DNS `/etc/hosts` nebo upravit na všech uzlech. Tento příklad ukazuje, `/etc/hosts` jak použít soubor.  Přizpůsobte adresy IP a názvy hostitelů prostředí. 
+2. **[A]** nastavte překlad názvů pro další systémy SAP. Můžete buď použít server DNS, nebo upravit `/etc/hosts` na všech uzlech. Tento příklad ukazuje, jak použít `/etc/hosts` soubor.  Přizpůsobte IP adresy a názvy hostitelů vašemu prostředí. 
 
     ```
     sudo vi /etc/hosts
@@ -209,7 +209,7 @@ Tato dokumentace předpokládá, že:
     10.3.1.32 nw3-nfs
    ```
 
-3. **[A]** Vytvořte sdílené adresáře pro další systémy **NW2** a **NW3** SAP, které nasazujete do clusteru. 
+3. **[A]** vytvořte sdílené adresáře pro další systémy SAP **NW2** a **NW3** , které nasazujete do clusteru. 
 
     ```
     sudo mkdir -p /sapmnt/NW2
@@ -232,27 +232,27 @@ Tato dokumentace předpokládá, že:
     sudo chattr +i /usr/sap/NW3/ERS22
    ```
 
-4. **[A]** `autofs` Nakonfigurujte připojení souborů /sapmnt/SID a /usr/sap/SID/SYS pro další systémy SAP, které nasazujete do clusteru. V tomto příkladu **NW2** a **NW3**.  
+4. **[A]** nakonfigurujte `autofs` pro připojení systémů souborů/sapmnt/SID a/usr/SAP/SID/sys pro další systémy SAP, které nasazujete do clusteru. V tomto příkladu **NW2** a **NW3**.  
 
    Aktualizujte `/etc/auto.direct` soubor pomocí systémů souborů pro další systémy SAP, které nasazujete do clusteru.  
 
-   * Používáte-li souborový server systému Souborů NFS, postupujte podle [pokynů zde](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse#prepare-for-sap-netweaver-installation)
-   * Pokud používáte soubory Azure NetApp, postupujte podle [pokynů zde](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files#prepare-for-sap-netweaver-installation) 
+   * Pokud používáte souborový server NFS, postupujte [podle pokynů.](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse#prepare-for-sap-netweaver-installation)
+   * Pokud používáte Azure NetApp Files, postupujte podle pokynů uvedených [tady](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files#prepare-for-sap-netweaver-installation) . 
 
-   Budete muset restartovat `autofs` službu připojit nově přidané sdílené složky.  
+   Aby bylo možné nově přidané sdílené `autofs` složky připojit, budete muset službu restartovat.  
 
-### <a name="install-ascs--ers"></a>Instalace ASCS / ERS
+### <a name="install-ascs--ers"></a>Nainstalovat ASCS/OLAJÍCÍCH
 
-1. Vytvořte prostředky clusteru virtuální IP a sondy stavu pro instanci ASCS dalšího systému SAP, který nasazujete do clusteru. Zde uvedený příklad je pro **NW2** a **NW3** ASCS, pomocí vysoce dostupné nfs server.  
+1. Vytvořte prostředky clusteru virtuální IP a stavové sondy pro instanci ASCS dalšího systému SAP, který nasazujete do clusteru. Příklad zobrazený tady je pro **NW2** a **NW3** ASCS pomocí serveru NFS s vysokou dostupností.  
 
    > [!IMPORTANT]
-   > Nedávné testování odhalilo situace, kdy netcat přestane reagovat na požadavky z důvodu nevyřízených položek a jeho omezení zpracování pouze jednoho připojení. Prostředek netcat přestane naslouchat požadavkům azure balancer a plovoucí IP přestane být k dispozici.  
-   > Pro stávající pacemaker clustery, doporučujeme v minulosti nahradit netcat socat. V současné době doporučujeme používat agenta prostředků azure-lb, který je součástí agenty prostředků balíčku, s následujícími požadavky na verzi balíčku:
-   > - Pro SLES 12 SP4/SP5 verze musí být alespoň agenty prostředků-4.3.018.a7fb5035-3.30.1.  
-   > - Pro SLES 15/15 SP1 verze musí být alespoň agenty prostředků-4.3.0184.6ee15eb2-4.13.1.  
+   > Nedávné testování odhalilo situace, kde NetCat přestane reagovat na požadavky z důvodu nevyřízených položek a omezení zpracování pouze jednoho připojení. Prostředek NetCat přestane naslouchat požadavkům nástroje pro vyrovnávání zatížení Azure a plovoucí IP adresa přestane být k dispozici.  
+   > Pro existující clustery Pacemaker doporučujeme v minulosti nahradit NetCat pomocí Socat. V současné době doporučujeme použít agenta prostředků Azure-, který je součástí prostředků balíčku – agenti s následujícími požadavky na verzi balíčku:
+   > - Pro SLES 12 SP4/SP5 musí být ve verzi aspoň Resource-Agents-4.3.018. a7fb5035-3.30.1.  
+   > - Pro SLES 15/15 SP1 musí být verze aspoň Resource-Agents-4.3.0184.6 ee15eb2-4.13.1.  
    >
-   > Všimněte si, že změna bude vyžadovat krátké prostoje.  
-   > Pro existující clustery Pacemaker, pokud konfigurace již byla změněna na použití socat, jak je popsáno v [Azure Load Balancer detekce posílení ,](https://www.suse.com/support/kb/doc/?id=7024128)není nutné okamžitě přepnout na agenta prostředků azure-lb.
+   > Všimněte si, že tato změna bude vyžadovat krátké výpadky.  
+   > V případě existujících clusterů Pacemaker se v případě, že konfigurace již změnila tak, aby používala socat, jak je popsáno v tématu [posílení zabezpečení zjišťování služby Azure Load Balancer](https://www.suse.com/support/kb/doc/?id=7024128), není nutné okamžitě přepínat na agenta prostředků Azure-9,1.
 
     ```
       sudo crm configure primitive fs_NW2_ASCS Filesystem device='nw2-nfs:/NW2/ASCS' directory='/usr/sap/NW2/ASCS10' fstype='nfs4' \
@@ -284,21 +284,21 @@ Tato dokumentace předpokládá, že:
         meta resource-stickiness=3000
     ```
 
-   Při vytváření prostředků mohou být přiřazeny k různým prostředkům clusteru. Když je seskupíte, budou migrovat do jednoho z uzlů clusteru. Ujistěte se, že stav clusteru je v pořádku a že jsou spuštěny všechny prostředky. Není důležité, na kterém uzlu jsou spuštěny prostředky.
+   Při vytváření prostředků, které můžou být přiřazené k různým prostředkům clusteru. Když je rozřadíte do skupin, migrují se na jeden z uzlů clusteru. Ujistěte se, že stav clusteru je OK a že jsou spuštěné všechny prostředky. Není důležité, na kterém uzlu jsou prostředky spuštěné.
 
-2. **[1]** Instalace systému ASCS aplikace SAP NetWeaver  
+2. **[1]** instalace SAP NetWeaver ASCS  
 
-   Nainstalujte SAP NetWeaver ASCS jako root pomocí virtuálního názvu hostitele, který se mapuje na IP adresu front-endové konfigurace nástroje pro nástroj pro vyrovnávání zatížení pro ASCS. Například pro systém **NW2**, virtuální název hostitele je <b>msnw2ascs</b>, <b>10.3.1.16</b> a číslo instance, které jste použili pro sondu nástroje pro vyrovnávání zatížení, například <b>10</b>. pro systém **NW3**je název virtuálního hostitele <b>msnw3ascs</b>, <b>10.3.1.13</b> a číslo instance, které jste použili pro sondu nástroje pro vyrovnávání zatížení, například <b>20</b>.
+   Nainstalujte SAP NetWeaver ASCS jako kořenový adresář pomocí virtuálního hostitele, který se mapuje na IP adresu konfigurace front-endu nástroje pro vyrovnávání zatížení pro ASCS. Například pro System **NW2**je virtuální název hostitele <b>msnw2ascs</b>, <b>10.3.1.16</b> a číslo instance, které jste použili pro sondu nástroje pro vyrovnávání zatížení, například <b>10</b>. pro System **NW3**je virtuální název hostitele <b>msnw3ascs</b>, <b>10.3.1.13</b> a číslo instance, které jste použili pro sondu nástroje pro vyrovnávání zatížení, například <b>20</b>.
 
-   Můžete použít sapinst parametr SAPINST_REMOTE_ACCESS_USER povolit nekořenového uživatele pro připojení k sapinst. Parametr SAPINST_USE_HOSTNAME můžete použít k instalaci SAP pomocí názvu virtuálního hostitele.  
+   Pomocí parametru sapinst SAPINST_REMOTE_ACCESS_USER můžete pro uživatele, který není rootem, připojovat se k sapinst. Pomocí parametru SAPINST_USE_HOSTNAME můžete nainstalovat SAP s použitím názvu virtuálního hostitele.  
 
      ```
       sudo swpm/sapinst SAPINST_REMOTE_ACCESS_USER=sapadmin SAPINST_USE_HOSTNAME=virtual_hostname
      ```
 
-   Pokud se instalaci nepodaří vytvořit podsložku v /usr/sap/**SID**/ASCS**Instance#**, zkuste nastavit vlastníka **sid**adm a group na sapsys**ascs instance#** a opakujte.
+   Pokud se při instalaci nepovede vytvořit podsložku v/usr/SAP/**SID**/ASCS**instance #**, zkuste nastavit vlastníka na **hodnotu ADM a skupinu na sapsys****instance** ASCS a zkuste to znovu.
 
-3. **[1]** Vytvořte prostředky clusteru virtuální IP a sondy stavu pro instanci ERS dalšího systému SAP, který nasazujete do clusteru. Zde uvedený příklad je pro **NW2** a **NW3** ERS, pomocí vysoce dostupné nfs server. 
+3. **[1]** vytvořte prostředky clusteru virtuální IP adresy a stavu testu pro instanci olajících dalšího systému SAP, který nasazujete do clusteru. Příklad zobrazený tady je pro **NW2** a **NW3** olajících pomocí serveru NFS s vysokou dostupností. 
 
    ```
     sudo crm configure primitive fs_NW2_ERS Filesystem device='nw2-nfs:/NW2/ASCSERS' directory='/usr/sap/NW2/ERS12' fstype='nfs4' \
@@ -328,37 +328,37 @@ Tato dokumentace předpokládá, že:
     sudo crm configure group g-NW3_ERS fs_NW3_ERS nc_NW3_ERS vip_NW3_ERS
    ```
 
-   Při vytváření prostředků mohou být přiřazeny k různým uzlům clusteru. Když je seskupíte, budou migrovat do jednoho z uzlů clusteru. Ujistěte se, že stav clusteru je v pořádku a že jsou spuštěny všechny prostředky.  
+   Při vytváření prostředků, které můžou být přiřazené k různým uzlům clusteru. Když je rozřadíte do skupin, migrují se na jeden z uzlů clusteru. Ujistěte se, že stav clusteru je OK a že jsou spuštěné všechny prostředky.  
 
-   Dále se ujistěte, že prostředky nově vytvořené skupiny ERS jsou spuštěny v uzlu clusteru, naproti uzlu clusteru, kde byla nainstalována instance ASCS pro stejný systém SAP.  Pokud byl například `slesmsscl1`nainstalován systém NW2 ASCS , zkontrolujte, `slesmsscl2`zda je skupina NW2 ERS spuštěna na .  Skupinu NW2 ERS můžete `slesmsscl2` migrovat spuštěním následujícího příkazu: 
+   V dalším kroku se ujistěte, že jsou na uzlu clusteru spuštěné prostředky nově vytvořené skupiny OLAJÍCÍCH, a to proti uzlu clusteru, ve kterém je nainstalovaná instance ASCS pro stejný systém SAP.  Pokud jste například nainstalovali NW2 ASCS `slesmsscl1`, ujistěte se, že je skupina NW2 olajících spuštěná. `slesmsscl2`  Skupinu NW2 OLAJÍCÍCH můžete migrovat tak `slesmsscl2` , že spustíte následující příkaz: 
 
     ```
       crm resource migrate g-NW2_ERS slesmsscl2 force
     ```
 
-4. **[2]** Instalace SAP NetWeaver ERS
+4. **[2]** instalace SAP NetWeaver olajících
 
-   Nainstalujte SAP NetWeaver ERS jako root na druhý uzel pomocí virtuálního názvu hostitele, který se mapuje na IP adresu front-endkonfigurace nástroje pro vyrovnávání zatížení pro ERS. Například pro systém **NW2**bude název virtuálního hostitele <b>msnw2ers</b>, <b>10.3.1.17</b> a číslo instance, které jste použili pro sondu nástroje pro vyrovnávání zatížení, například <b>12</b>. Pro systém **NW3**, název virtuálního hostitele <b>msnw3ers</b>, <b>10.3.1.19</b> a číslo instance, které jste použili pro sondu nástroje pro vyrovnávání zatížení, například <b>22</b>. 
+   Nainstalujte SAP NetWeaver OLAJÍCÍCH jako root na druhém uzlu pomocí virtuálního hostitele, který se mapuje na IP adresu konfigurace front-endu nástroje pro vyrovnávání zatížení pro OLAJÍCÍCH. Například pro System **NW2**bude název virtuálního hostitele <b>msnw2ers</b>, <b>10.3.1.17</b> a číslo instance, které jste použili pro sondu nástroje pro vyrovnávání zatížení, například <b>12</b>. Pro System **NW3**se jedná o název virtuálního hostitele <b>msnw3ers</b>, <b>10.3.1.19</b> a číslo instance, které jste použili pro sondu nástroje pro vyrovnávání zatížení, například <b>22</b>. 
 
-   Můžete použít sapinst parametr SAPINST_REMOTE_ACCESS_USER povolit nekořenového uživatele pro připojení k sapinst. Parametr SAPINST_USE_HOSTNAME můžete použít k instalaci SAP pomocí názvu virtuálního hostitele.  
+   Pomocí parametru sapinst SAPINST_REMOTE_ACCESS_USER můžete pro uživatele, který není rootem, připojovat se k sapinst. Pomocí parametru SAPINST_USE_HOSTNAME můžete nainstalovat SAP s použitím názvu virtuálního hostitele.  
 
     ```
      sudo swpm/sapinst SAPINST_REMOTE_ACCESS_USER=sapadmin SAPINST_USE_HOSTNAME=virtual_hostname
     ```
 
    > [!NOTE]
-   > Použijte SWPM SP 20 PL 05 nebo vyšší. Nižší verze nenastavují oprávnění správně a instalace se nezdaří.
+   > Použijte SWPM SP 20 PL 05 nebo vyšší. Nižší verze nenastaví správně oprávnění a instalace se nezdaří.
 
-   Pokud se instalaci nepodaří vytvořit podsložku v /usr/sap/**NW2**/ERS**Instance#**, zkuste nastavit vlastníka **na sid**adm a skupiny sapsys složky ERS**Instance#** a opakujte.
+   Pokud se při instalaci nepovede vytvořit podsložku ve složce/usr/SAP/**NW2**/ERS**instance #**, zkuste nastavit vlastníka na hodnotu ADM **SID**a skupinu na sapsys ze složky olajících**instance** a zkuste to znovu.
 
-   Pokud bylo nutné migrovat skupinu ERS nově nasazeného systému SAP do jiného uzlu clusteru, nezapomeňte odebrat omezení umístění pro skupinu ERS. Omezení můžete odstranit spuštěním následujícího příkazu (příklad je uveden pro systémy SAP **NW2** a **NW3**).  
+   Pokud bylo nutné migrovat skupinu OLAJÍCÍCH nově nasazeného systému SAP na jiný uzel clusteru, nezapomeňte odebrat omezení umístění pro skupinu OLAJÍCÍCH. Omezení můžete odebrat spuštěním následujícího příkazu (příklad je uveden pro SAP Systems **NW2** a **NW3**).  
 
     ```
       crm resource unmigrate g-NW2_ERS
       crm resource unmigrate g-NW3_ERS
     ```
 
-5. **[1]** Upravte profily instancí ASCS/SCS a ERS pro nově nainstalovaný systém (systémy) SAP. Příklad uvedený níže je pro NW2. Budete muset upravit profily ASCS/SCS a ERS pro všechny instance SAP přidané do clusteru.  
+5. **[1]** Přizpůsobte profily instancí ASCS/SCS a olajících pro nově nainstalované systémy SAP. Níže zobrazený příklad je určen pro NW2. Pro všechny instance SAP přidané do clusteru budete muset upravit profily ASCS/SCS a OLAJÍCÍCH.  
  
  * Profil ASCS/SCS
 
@@ -377,7 +377,7 @@ Tato dokumentace předpokládá, že:
    enque/encni/set_so_keepalive = true
    ```
 
- * PROFIL ERS
+ * Profil OLAJÍCÍCH
 
    ```
    sudo vi /sapmnt/NW2/profile/NW2_ERS12_msnw2ers
@@ -394,7 +394,7 @@ Tato dokumentace předpokládá, že:
    # Autostart = 1
    ```
 
-6. **[A]** Konfigurace uživatelů SAP pro nově nasazený systém SAP v tomto příkladu **NW2** a **NW3**. 
+6. **[A]** NAKONFIGURUJTE uživatele SAP pro nově nasazený systém SAP, v tomto příkladu **NW2** a **NW3**. 
 
    ```
    # Add sidadm to the haclient group
@@ -402,9 +402,9 @@ Tato dokumentace předpokládá, že:
    sudo usermod -aG haclient nw3adm
    ```
 
-7. Přidejte do `sapservice` souboru služby ASCS a ERS SAP pro nově nainstalovaný systém SAP. Příklad uvedený níže je pro systémy SAP **NW2** a **NW3**.  
+7. Přidejte služby SAP ASCS a OLAJÍCÍCH pro nově instalovaný systém SAP do `sapservice` souboru. Níže zobrazený příklad slouží pro systémy SAP **NW2** a **NW3**.  
 
-   Přidejte položku služby ASCS do druhého uzlu a zkopírujte položku služby ERS do prvního uzlu. Spusťte příkazy pro každý systém SAP v uzlu, kde byla nainstalována instance ASCS pro systém SAP.  
+   Přidejte položku služby ASCS do druhého uzlu a zkopírujte položku služby OLAJÍCÍCH do prvního uzlu. Spusťte příkazy pro každý systém SAP na uzlu, kde byla nainstalována instance ASCS pro systém SAP.  
 
     ```
      # Execute the following commands on slesmsscl1,assuming the NW2 ASCS instance was installed on slesmsscl1
@@ -415,9 +415,9 @@ Tato dokumentace předpokládá, že:
      sudo ssh slesmsscl1 "cat /usr/sap/sapservices" | grep ERS22 | sudo tee -a /usr/sap/sapservices
     ```
 
-8. **[1]** Vytvořte prostředky clusteru SAP pro nově nainstalovaný systém SAP. 
+8. **[1]** vytvořte prostředky clusteru SAP pro nově instalovaný systém SAP. 
 
-   Pokud používáte architekturu enqueue server 1 (ENSA1), definujte prostředky pro systémy SAP **NW2** a **NW3** takto:
+   Pokud používáte architekturu serveru front Server 1 (ENSA1), definujte prostředky pro systémy SAP **NW2** a **NW3** následujícím způsobem:
 
     ```
      sudo crm configure property maintenance-mode="true"
@@ -464,8 +464,8 @@ Tato dokumentace předpokládá, že:
      sudo crm configure property maintenance-mode="false"
     ```
 
-   SAP zavedl podporu pro enqueue server 2, včetně replikace, od SAP NW 7.52. Počínaje platformou ABAP 1809 je ve výchozím nastavení nainstalován server 2 fronty. Viz SAP poznámka [2630416](https://launchpad.support.sap.com/#/notes/2630416) pro zařazení do fronty server 2 podporu.
-   Pokud používáte architekturu enqueue server 2 ([ENSA2](https://help.sap.com/viewer/cff8531bc1d9416d91bb6781e628d4e0/1709%20001/en-US/6d655c383abf4c129b0e5c8683e7ecd8.html)), definujte prostředky pro systémy SAP **NW2** a **NW3** takto:
+   SAP představilo podporu pro front-Server 2, včetně replikace, od SAP NW 7,52. Počínaje platformou ABAP 1809 se ve výchozím nastavení nainstaluje služba fronty serveru 2. Podporu služby zařazení serveru 2 pro frontu najdete v tématu SAP Note [2630416](https://launchpad.support.sap.com/#/notes/2630416) .
+   Pokud používáte architekturu serveru fronty 2 ([ENSA2](https://help.sap.com/viewer/cff8531bc1d9416d91bb6781e628d4e0/1709%20001/en-US/6d655c383abf4c129b0e5c8683e7ecd8.html)), definujte prostředky pro systémy SAP **NW2** a **NW3** následujícím způsobem:
 
     ```
      sudo crm configure property maintenance-mode="true"
@@ -508,10 +508,10 @@ Tato dokumentace předpokládá, že:
      sudo crm configure property maintenance-mode="false"
     ```
 
-   Pokud upgradujete ze starší verze a přepájíte na server fronty 2, přečtěte si poznámku SAP [2641019](https://launchpad.support.sap.com/#/notes/2641019). 
+   Pokud provádíte upgrade ze starší verze a přejdete na server fronty 2, přečtěte si článek SAP Note [2641019](https://launchpad.support.sap.com/#/notes/2641019). 
 
-   Ujistěte se, že stav clusteru je v pořádku a že jsou spuštěny všechny prostředky. Není důležité, na kterém uzlu jsou spuštěny prostředky.
-   Následující příklad ukazuje stav prostředků clusteru po sap systémy **NW2** a **NW3** byly přidány do clusteru. 
+   Ujistěte se, že stav clusteru je OK a že všechny prostředky jsou spuštěné. Není důležité, na kterém uzlu jsou prostředky spuštěné.
+   Následující příklad ukazuje stav prostředků clusteru, poté, co byly do clusteru přidány systémy SAP **NW2** a **NW3** . 
 
     ```
      sudo crm_mon -r
@@ -553,32 +553,32 @@ Tato dokumentace předpokládá, že:
     #     rsc_sap_NW3_ERS22  (ocf::heartbeat:SAPInstance):   Started slesmsscl2
     ```
 
-   Následující obrázek ukazuje, jak by zdroje vypadaly v HA Web Konsole(Hawk), se zdroji pro systém SAP **NW2.**  
+   Následující obrázek ukazuje, jak by prostředky vypadaly jako ve webovém Konsoleu HA (Hawk) s rozšířenými prostředky pro SAP System **NW2** Expanded.  
 
-   [![Přehled vysoké dostupnosti sap netweaveru](./media/high-availability-guide-suse/ha-suse-multi-sid-hawk.png)](./media/high-availability-guide-suse/ha-suse-multi-sid-hawk-detail.png#lightbox)
+   [![Přehled vysoké dostupnosti SAP NetWeaver](./media/high-availability-guide-suse/ha-suse-multi-sid-hawk.png)](./media/high-availability-guide-suse/ha-suse-multi-sid-hawk-detail.png#lightbox)
 
-### <a name="proceed-with-the-sap-installation"></a>Pokračujte v instalaci SAP 
+### <a name="proceed-with-the-sap-installation"></a>Pokračování v instalaci SAP 
 
-Dokončete instalaci SAP takto:
+Dokončete instalaci SAP pomocí:
 
 * [Příprava aplikačních serverů SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse#2d6008b0-685d-426c-b59e-6cd281fd45d7)
-* [Instalace instance DBMS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse#install-database)
+* [Instalace instance systému DBMS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse#install-database)
 * [Instalace primárního aplikačního serveru SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse#sap-netweaver-application-server-installation)
-* Instalace jedné nebo více dalších instancí aplikací SAP
+* Instalace jedné nebo více dalších instancí aplikace SAP
 
-## <a name="test-the-multi-sid-cluster-setup"></a>Otestujte nastavení clusteru s více SID
+## <a name="test-the-multi-sid-cluster-setup"></a>Testování nastavení clusteru s více SID
 
-Následující testy jsou podmnožinou testovacích případů v doporučených postupech příručky SUSE. Jsou zahrnuty pro vaše pohodlí. Úplný seznam testů clusteru naleznete v následující dokumentaci:
+Následující testy jsou podmnožinou testovacích případů v průvodcích osvědčenými postupy SUSE. Jsou zahrnuty pro usnadnění práce. Úplný seznam testů clusteru najdete v následující dokumentaci:
 
-* Pokud používáte vysoce dostupný server nfs, postupujte [podle vysoké dostupnosti pro SAP NetWeaver na virtuálních počítačích Azure na SUSE Linux Enterprise Server pro aplikace SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse).  
-* Pokud používáte svazky souborů NFS Azure NetApp, sledujte [vysokou dostupnost pro SAP NetWeaver na virtuálních počítačích Azure na SUSE Linux Enterprise Server se soubory Azure NetApp pro aplikace SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files)
+* Pokud používáte server systému souborů NFS s vysokou [dostupností, postupujte podle vysoké dostupnosti pro SAP NetWeaver na virtuálních počítačích Azure v SUSE Linux Enterprise Server pro aplikace SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse).  
+* Pokud používáte Azure NetApp Files svazky NFS, dodržujte [vysokou dostupnost pro SAP NetWeaver na virtuálních počítačích Azure na SUSE Linux Enterprise Server s Azure NetApp Files pro aplikace SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files) .
 
-Vždy si přečtěte příručky osvědčených postupů SUSE a proveďte všechny další testy, které mohly být přidány.  
-Testy, které jsou prezentovány jsou ve dvou uzlů, multi-SID clusteru se třemi systémy SAP nainstalovány.  
+Vždy si přečtěte Příručky k osvědčeným postupům SUSE a proveďte všechny další testy, které mohou být přidány.  
+Zobrazené testy jsou ve dvou uzlech, cluster s více identifikátory SID se třemi nainstalovanými systémy SAP.  
 
 1. Test HAGetFailoverConfig a HACheckFailoverConfig
 
-   Spusťte následující <sapsid>příkazy jako adm na uzlu, kde je aktuálně spuštěna instance ASCS. Pokud příkazy nezdaří s FAIL: Nedostatek paměti, může být způsobeno pomlčky v názvu hostitele. Jedná se o známý problém a bude opraven suse v sap-suse-cluster-connector balíčku.
+   Na uzlu, kde je <sapsid>aktuálně spuštěná instance ASCS, spusťte následující příkazy jako ADM. Pokud se příkazy nezdaří s CHYBou: nedostatek paměti, může to být způsobeno pomlčkami ve vašem názvu hostitele. Jedná se o známý problém, který bude opraven nástrojem SUSE v balíčku SAP-SUSE-cluster-Connector.
 
    ```
     slesmsscl1:nw1adm 57> sapcontrol -nr 00 -function HAGetFailoverConfig
@@ -642,8 +642,8 @@ Testy, které jsou prezentovány jsou ve dvou uzlů, multi-SID clusteru se třem
     # SUCCESS, SAP CONFIGURATION, SAPInstance RA sufficient version, SAPInstance includes is-ers patch
    ```
 
-2. Ručně migrovat instanci ASCS. Příklad ukazuje migraci instance ASCS pro systém SAP NW2.  
-   Stav prostředku před zahájením testu:
+2. Ručně migrujte instanci ASCS. Tento příklad ukazuje migraci instance ASCS pro SAP System NW2.  
+   Stav prostředku před spuštěním testu:
    ```
     Full list of resources:
     stonith-sbd     (stonith:external/sbd): Started slesmsscl1
@@ -679,7 +679,7 @@ Testy, které jsou prezentovány jsou ve dvou uzlů, multi-SID clusteru se třem
          rsc_sap_NW3_ERS22  (ocf::heartbeat:SAPInstance):   Started slesmsscl1
    ```
 
-   Spusťte následující příkazy jako root pro migraci instance NW2 ASCS.
+   Spusťte následující příkazy jako kořen pro migraci instance NW2 ASCS.
 
    ```
     crm resource migrate rsc_sap_NW2_ASCS10 force
@@ -692,7 +692,7 @@ Testy, které jsou prezentovány jsou ve dvou uzlů, multi-SID clusteru se třem
     crm resource cleanup rsc_sap_NW2_ERS12
    ```
 
-   Stav zdroje po zkoušce:
+   Stav prostředku po testu:
 
    ```
     Full list of resources:
@@ -729,9 +729,9 @@ Testy, které jsou prezentovány jsou ve dvou uzlů, multi-SID clusteru se třem
          rsc_sap_NW3_ERS22  (ocf::heartbeat:SAPInstance):   Started slesmsscl1
    ```
 
-1. Test HAFailoverToNode. Zde prezentovaný test ukazuje migraci instance ASCS pro systém SAP NW2.  
+1. HAFailoverToNode testu. Zde uvedený test ukazuje migraci instance ASCS pro SAP System NW2.  
 
-   Stav prostředku před zahájením testu:
+   Stav prostředku před spuštěním testu:
 
    ```
     Full list of resources:
@@ -768,7 +768,7 @@ Testy, které jsou prezentovány jsou ve dvou uzlů, multi-SID clusteru se třem
          rsc_sap_NW3_ERS22  (ocf::heartbeat:SAPInstance):   Started slesmsscl1
    ```
 
-   Spusťte následující příkazy jako **nw2**adm pro migraci instance NW2 ASCS.
+   Spusťte následující příkazy jako **NW2**ADM pro migraci instance NW2 ASCS.
 
    ```
     slesmsscl2:nw2adm 53> sapcontrol -nr 10 -host msnw2ascs -user nw2adm password -function HAFailoverToNode ""
@@ -781,7 +781,7 @@ Testy, které jsou prezentovány jsou ve dvou uzlů, multi-SID clusteru se třem
    #INFO: Removed migration constraints for rsc_sap_NW2_ASCS10
    ```
 
-   Stav zdroje po zkoušce:
+   Stav prostředku po testu:
 
    ```
     Full list of resources:
@@ -818,9 +818,9 @@ Testy, které jsou prezentovány jsou ve dvou uzlů, multi-SID clusteru se třem
          rsc_sap_NW3_ERS22  (ocf::heartbeat:SAPInstance):   Started slesmsscl1
    ```
 
-1. Simulovat selhání uzlu
+1. Simulace havárie uzlu
 
-   Stav prostředku před zahájením testu:
+   Stav prostředku před spuštěním testu:
 
    ```
     Full list of resources:
@@ -857,13 +857,13 @@ Testy, které jsou prezentovány jsou ve dvou uzlů, multi-SID clusteru se třem
          rsc_sap_NW3_ERS22  (ocf::heartbeat:SAPInstance):   Started slesmsscl1
    ```
 
-   Spusťte následující příkaz jako root v uzlu, kde je spuštěna alespoň jedna instance ASCS. V tomto příkladu jsme provedli příkaz na `slesmsscl2`, kde jsou spuštěny instance ASCS pro NW1 a NW3.  
+   Spusťte následující příkaz jako kořen v uzlu, ve kterém je spuštěná aspoň jedna instance ASCS. V tomto příkladu jsme provedli příkaz na `slesmsscl2`, kde jsou spuštěné instance ASCS pro NW1 a NW3.  
 
    ```
     slesmsscl2:~ # echo b > /proc/sysrq-trigger
    ```
 
-   Pokud používáte SBD, kardiostimulátor by neměl automaticky spustit na uzlu usmrcené. Stav po spuštění uzlu by měl vypadat takto.
+   Pokud používáte SBD, Pacemaker by se neměl automaticky spustit na ukončeném uzlu. Stav po spuštění uzlu by měl vypadat takto.
 
    ```
     Online: [ slesmsscl1 ]
@@ -911,7 +911,7 @@ Testy, které jsou prezentovány jsou ve dvou uzlů, multi-SID clusteru se třem
         last-rc-change='Fri Dec 13 19:32:10 2019', queued=0ms, exec=0ms
    ```
 
-   Pomocí následujících příkazů můžete spustit kardiostimulátor na uzlu usmrcené, vyčistit zprávy SBD a vyčistit neúspěšné prostředky.
+   Pomocí následujících příkazů spusťte Pacemaker na ukončeném uzlu, vyčistěte zprávy SBD a vyčistěte prostředky, které selhaly.
 
    ```# run as root
    # list the SBD device(s)
@@ -926,7 +926,7 @@ Testy, které jsou prezentovány jsou ve dvou uzlů, multi-SID clusteru se třem
    slesmsscl2:~ # crm resource cleanup rsc_sap_NW3_ERS22
    ```
 
-   Stav zdroje po zkoušce:
+   Stav prostředku po testu:
 
    ```
     Full list of resources:
@@ -965,7 +965,7 @@ Testy, které jsou prezentovány jsou ve dvou uzlů, multi-SID clusteru se třem
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Plánování a implementace virtuálních počítačů Azure pro SAP][planning-guide]
-* [Nasazení virtuálních počítačů Azure pro SAP][deployment-guide]
-* [Nasazení DBMS virtuálních počítačů Azure pro SAP][dbms-guide]
-* Informace o tom, jak vytvořit vysokou dostupnost a plán pro zotavení po havárii SAP HANA na virtuálních počítačích Azure, najdete v [tématu vysoká dostupnost SAP HANA na virtuálních počítačích Azure.][sap-hana-ha]
+* [Plánování a implementace Azure Virtual Machines pro SAP][planning-guide]
+* [Nasazení Azure Virtual Machines pro SAP][deployment-guide]
+* [Nasazení Azure Virtual Machines DBMS pro SAP][dbms-guide]
+* Další informace o tom, jak vytvořit vysokou dostupnost a naplánovat zotavení po havárii SAP HANA na virtuálních počítačích Azure, najdete v tématu [Vysoká dostupnost SAP HANA na azure Virtual Machines (virtuální počítače)][sap-hana-ha] .

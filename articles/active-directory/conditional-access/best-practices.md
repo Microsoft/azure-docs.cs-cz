@@ -1,6 +1,6 @@
 ---
-title: Doporučené postupy pro podmíněný přístup ve službě Azure Active Directory | Dokumenty společnosti Microsoft
-description: Přečtěte si o věcech, které byste měli vědět, a co byste se měli vyhnout při konfiguraci zásad podmíněného přístupu.
+title: Osvědčené postupy pro podmíněný přístup v Azure Active Directory | Microsoft Docs
+description: Seznamte se s informacemi, které byste měli vědět, a k čemu byste se měli vyhnout při konfiguraci zásad podmíněného přístupu.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -12,140 +12,140 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f4560a514ddb9949c8cc07864b2319a5878b245e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80295363"
 ---
-# <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Doporučené postupy pro podmíněný přístup ve službě Azure Active Directory
+# <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Osvědčené postupy pro podmíněný přístup v Azure Active Directory
 
-S [podmíněným přístupem Azure Active Directory (Azure AD)](../active-directory-conditional-access-azure-portal.md)můžete řídit, jak oprávnění uživatelé přistupují k vašim cloudovým aplikacím. Tento článek obsahuje informace o:
+Pomocí [podmíněného přístupu Azure Active Directory (Azure AD)](../active-directory-conditional-access-azure-portal.md)můžete řídit, jak autorizovaným uživatelům přistupují k vašim cloudovým aplikacím. V tomto článku najdete informace o:
 
-- Věci, které byste měli vědět 
-- Co je třeba se vyhnout při konfiguraci zásad podmíněného přístupu. 
+- Co byste měli znát 
+- K tomu byste se měli vyhnout při konfiguraci zásad podmíněného přístupu. 
 
-Tento článek předpokládá, že jste obeznámeni s koncepty a terminologií uvedenou v části [Co je podmíněný přístup ve službě Azure Active Directory?](../active-directory-conditional-access-azure-portal.md)
+V tomto článku se předpokládá, že máte zkušenosti s koncepty a terminologie, která je popsaný v tématu [co je podmíněný přístup v Azure Active Directory?](../active-directory-conditional-access-azure-portal.md)
 
-## <a name="whats-required-to-make-a-policy-work"></a>Co je potřeba k tomu, aby politika fungovala?
+## <a name="whats-required-to-make-a-policy-work"></a>Co je potřeba k práci se zásadami?
 
-Když vytvoříte novou zásadu, nebudou vybráni žádní uživatelé, skupiny, aplikace ani ovládací prvky přístupu.
+Když vytvoříte novou zásadu, neexistují žádní uživatelé, skupiny, aplikace nebo ovládací prvky přístupu.
 
 ![Cloudové aplikace](./media/best-practices/02.png)
 
-Chcete-li, aby vaše zásady fungovaly, je nutné nakonfigurovat:
+Pokud chcete, aby vaše zásady fungovaly, musíte nakonfigurovat:
 
 | Co           | Postup                                  | Proč |
 | :--            | :--                                  | :-- |
-| **Cloudové aplikace** |Vyberte jednu nebo více aplikací.  | Cílem zásad podmíněného přístupu je umožnit vám řídit, jak mohou oprávnění uživatelé přistupovat ke cloudovým aplikacím.|
-| **Uživatelé a skupiny** | Vyberte alespoň jednoho uživatele nebo skupinu, která má oprávnění k přístupu k vybraným cloudovým aplikacím. | Zásada podmíněného přístupu, která nemá přiřazeny žádné uživatele a skupiny, se nikdy neaktivuje. |
-| **Řízení přístupu** | Vyberte alespoň jeden ovládací prvek přístupu. | Pokud jsou vaše podmínky splněny, procesor zásad musí vědět, co dělat. |
+| **Cloudové aplikace** |Vyberte jednu nebo více aplikací.  | Cílem zásad podmíněného přístupu je umožnit vám řídit, jak můžou autorizovaní uživatelé přistupovat ke cloudovým aplikacím.|
+| **Uživatelé a skupiny** | Vyberte aspoň jednoho uživatele nebo skupinu, kteří mají oprávnění pro přístup k vybraným cloudovým aplikacím. | Neaktivují se zásady podmíněného přístupu, které nemají přiřazené žádné uživatele a skupiny. |
+| **Řízení přístupu** | Vyberte alespoň jeden ovládací prvek přístupu. | Pokud jsou vaše podmínky splněné, musí procesor zásad zjistit, co dělat. |
 
 ## <a name="what-you-should-know"></a>Co byste měli vědět
 
-### <a name="how-are-conditional-access-policies-applied"></a>Jak se zásady podmíněného přístupu používají?
+### <a name="how-are-conditional-access-policies-applied"></a>Jak se používají zásady podmíněného přístupu?
 
-Při přístupu ke cloudové aplikaci se může použít více zásad podmíněného přístupu. V takovém případě musí být splněny všechny zásady, které platí. Například pokud jedna zásada vyžaduje vícefaktorové ověřování (MFA) a jiné vyžaduje kompatibilní zařízení, musíte dokončit vícefaktorové ověřování a používat kompatibilní zařízení. 
+Při přístupu ke cloudové aplikaci se můžou použít víc než jedna zásada podmíněného přístupu. V takovém případě musí být splněné všechny zásady, které platí. Pokud například jedna zásada vyžaduje vícefaktorové ověřování (MFA) a jiná vyžaduje vyhovující zařízení, je nutné provést ověřování MFA a použít vyhovující zařízení. 
 
-Všechny zásady jsou vynuceny ve dvou fázích:
+Všechny zásady se vynutily ve dvou fázích:
 
 - Fáze 1: 
-   - Kolekce podrobností: Shromážděte podrobnosti k identifikaci zásad, které by již byly splněny.
-   - Během této fáze se uživatelům může zobrazit výzva k certifikátu, pokud je dodržování předpisů zařízení součástí zásad podmíněného přístupu. Tato výzva může nastat pro aplikace prohlížeče, pokud operační systém zařízení není Windows 10.
-   - Fáze 1 vyhodnocení zásad probíhá pro všechny povolené zásady a zásady v [režimu pouze pro sestavu](concept-conditional-access-report-only.md).
+   - Kolekce podrobností: Shromážděte podrobnosti k identifikaci zásad, které by už byly splněné.
+   - V průběhu této fáze se uživatelům může zobrazit výzva k zadání certifikátu, pokud je dodržování předpisů zařízením součástí zásad podmíněného přístupu. Tato výzva se může vyskytnout pro aplikace prohlížeče, pokud operační systém zařízení není Windows 10.
+   - Fáze 1 vyhodnocení zásad probíhá u všech povolených zásad a zásad v [režimu pouze sestavy](concept-conditional-access-report-only.md).
 - Fáze 2:
-   - Vynucení: S přihlédnutím k údajům shromážděným ve fázi 1 požádejte uživatele, aby splnil všechny další požadavky, které nebyly splněny.
-   - Použít výsledky relace. 
-   - Fáze 2 vyhodnocení zásad probíhá pro všechny povolené zásady.
+   - Vynucování: Přihlaste se k podrobnostem shromážděným ve fázi 1 a vyžádejte uživatele, aby splnili jakékoli další požadavky, které nebyly splněny.
+   - Použijte výsledky pro relaci. 
+   - Fáze 2 vyhodnocení zásad probíhá u všech povolených zásad.
 
-### <a name="how-are-assignments-evaluated"></a>Jak se vyhodnocují přiřazení?
+### <a name="how-are-assignments-evaluated"></a>Jak se vyhodnocuje přiřazení?
 
-Všechna přiřazení jsou logicky **anded**. Pokud máte nakonfigurováno více než jedno přiřazení, musí být všechna přiřazení splněna, aby byla zásada nastavena.  
+Všechna přiřazení jsou logicky **ANDed**. Pokud máte nakonfigurované více než jedno přiřazení, musí být pro aktivaci zásady splněné všechna přiřazení.  
 
-Pokud potřebujete nakonfigurovat podmínku umístění, která se vztahuje na všechna připojení z mimo síť vaší organizace:
+Pokud potřebujete nakonfigurovat podmínku umístění, která bude platit pro všechna připojení vytvořená mimo síť vaší organizace:
 
-- Zahrnout **všechna místa**
+- Zahrnout **všechna umístění**
 - Vyloučit **všechny důvěryhodné IP adresy**
 
-### <a name="what-to-do-if-you-are-locked-out-of-the-azure-ad-admin-portal"></a>Co dělat, když jste uzamčeni z portálu pro správu Azure AD?
+### <a name="what-to-do-if-you-are-locked-out-of-the-azure-ad-admin-portal"></a>Co dělat, když jste na portálu pro správu Azure AD uzamčeni?
 
-Pokud jste uzamčeni z portálu Azure AD z důvodu nesprávné nastavení v zásadách podmíněného přístupu:
+Pokud se z portálu Azure AD zamknete z důvodu nesprávného nastavení v zásadách podmíněného přístupu:
 
-- Zkontrolujte, zda jsou ve vaší organizaci další správci, kteří ještě nejsou blokováni. Správce s přístupem k portálu Azure můžete zakázat zásady, které má vliv na vaše přihlášení. 
-- Pokud žádný ze správců ve vaší organizaci nemůže zásadu aktualizovat, je třeba odeslat žádost o podporu. Podpora společnosti Microsoft může kontrolovat a aktualizovat zásady podmíněného přístupu, které brání přístupu.
+- Ověřte, že ve vaší organizaci jsou jiní správci, kteří nejsou ještě blokovaný. Správce s přístupem k Azure Portal může zakázat zásadu, která má vliv na vaše přihlášení. 
+- Pokud žádné z správců ve vaší organizaci nemůžou zásady aktualizovat, musíte odeslat žádost o podporu. Podpora Microsoftu může zkontrolovat a aktualizovat zásady podmíněného přístupu, které zabraňují přístupu.
 
-### <a name="what-happens-if-you-have-policies-in-the-azure-classic-portal-and-azure-portal-configured"></a>Co se stane, když máte nakonfigurované zásady na klasickém portálu Azure a na webu Azure?  
+### <a name="what-happens-if-you-have-policies-in-the-azure-classic-portal-and-azure-portal-configured"></a>Co se stane, když máte zásady na portálu Azure Classic a Azure Portal nakonfigurovaná?  
 
-Obě zásady jsou vynuceny službou Azure Active Directory a uživatel získá přístup pouze v případě, že jsou splněny všechny požadavky.
+Obě zásady se vynutily Azure Active Directory a uživatel získá přístup jenom v případě, že jsou splněné všechny požadavky.
 
-### <a name="what-happens-if-you-have-policies-in-the-intune-silverlight-portal-and-the-azure-portal"></a>Co se stane, když máte zásady na portálu Intune Silverlight a na portálu Azure?
+### <a name="what-happens-if-you-have-policies-in-the-intune-silverlight-portal-and-the-azure-portal"></a>Co se stane, když máte zásady na portálu Silverlight pro Intune a Azure Portal?
 
-Obě zásady jsou vynuceny službou Azure Active Directory a uživatel získá přístup pouze v případě, že jsou splněny všechny požadavky.
+Obě zásady se vynutily Azure Active Directory a uživatel získá přístup jenom v případě, že jsou splněné všechny požadavky.
 
-### <a name="what-happens-if-i-have-multiple-policies-for-the-same-user-configured"></a>Co se stane, když mám nakonfigurované více zásad pro stejného uživatele?  
+### <a name="what-happens-if-i-have-multiple-policies-for-the-same-user-configured"></a>Co se stane, když mám nakonfigurovaná víc zásad pro stejného uživatele?  
 
-Pro každé přihlášení služba Azure Active Directory vyhodnotí všechny zásady a zajistí, že všechny požadavky budou splněny před udělením přístupu k uživateli. Blokový přístup trumfne všechna ostatní nastavení konfigurace. 
+Pro každé přihlášení Azure Active Directory vyhodnotí všechny zásady a zajistí splnění všech požadavků před udělením přístupu uživateli. Zablokovat přístup trumfy všechna ostatní nastavení konfigurace. 
 
-### <a name="does-conditional-access-work-with-exchange-activesync"></a>Funguje podmíněný přístup se službou Exchange ActiveSync?
+### <a name="does-conditional-access-work-with-exchange-activesync"></a>Pracuje podmíněný přístup s Exchange ActiveSync?
 
-Ano, Exchange ActiveSync můžete použít v zásadách podmíněného přístupu.
+Ano, v zásadách podmíněného přístupu můžete použít Exchange ActiveSync.
 
-Některé cloudové aplikace, jako je SharePoint Online a Exchange Online, taky podporují starší ověřovací protokoly. Když klientská aplikace může používat starší ověřovací protokol pro přístup ke cloudové aplikaci, Azure AD nemůže vynutit zásady podmíněného přístupu na tento pokus o přístup. Chcete-li zabránit klientské aplikaci v vynechání vynucení zásad, měli byste zkontrolovat, zda je možné povolit pouze moderní ověřování v ohrožených cloudových aplikacích.
+Některé cloudové aplikace, jako je SharePoint Online a Exchange Online, podporují i starší verze ověřovacích protokolů. Když klientská aplikace může pro přístup ke cloudové aplikaci použít starší verzi ověřovacího protokolu, Azure AD nemůže vynutilit zásady podmíněného přístupu u tohoto pokusu o přístup. Pokud chcete, aby klientská aplikace nemohly obejít vynucování zásad, měli byste ověřit, jestli je možné povolit jenom moderní ověřování u ovlivněných cloudových aplikací.
 
-### <a name="how-should-you-configure-conditional-access-with-office-365-apps"></a>Jak byste měli nakonfigurovat podmíněný přístup pomocí aplikací Office 365?
+### <a name="how-should-you-configure-conditional-access-with-office-365-apps"></a>Jak byste měli nakonfigurovat podmíněný přístup s aplikacemi Office 365?
 
-Vzhledem k tomu, že aplikace Office 365 jsou propojené, doporučujeme při vytváření zásad přiřazovat běžně používané aplikace společně.
+Vzhledem k tomu, že jsou aplikace Office 365 propojené, doporučujeme při vytváření zásad přiřazovat běžně používané aplikace.
 
-Mezi běžné propojené aplikace patří Microsoft Flow, Microsoft Planner, Microsoft Teams, Office 365 Exchange Online, Office 365 SharePoint Online a Office 365 Yammer.
+Mezi běžné propojené aplikace patří Microsoft Flow, Microsoft Planner, Microsoft teams, Office 365 Exchange Online, Office 365 SharePoint Online a Office 365 Yammer.
 
-Je důležité pro zásady, které vyžadují interakce uživatele, jako je vícefaktorové ověřování, při řízení přístupu na začátku relace nebo úkolu. Pokud tak nechcete, uživatelé nebudou moci v aplikaci dokončit některé úkoly. Pokud například pro přístup ke SharePointu vyžadujete vícefaktorové ověřování na nespravovaných zařízeních, ale ne k e-mailu, uživatelé pracující v e-mailu nebudou moct ke zprávě připojit soubory SharePointu. Další informace najdete v článku [Co jsou závislosti služeb v podmíněném přístupu služby Azure Active Directory?](service-dependencies.md).
+Je důležité pro zásady, které vyžadují interakci s uživatelem, jako je Multi-Factor Authentication, když se přístup řídí na začátku relace nebo úlohy. Pokud to neuděláte, uživatelé nebudou moci dokončit některé úkoly v rámci aplikace. Například pokud požadujete službu Multi-Factor Authentication na nespravovaných zařízeních pro přístup k SharePointu, ale ne k e-mailu, uživatelé, kteří pracují s e-maily, nebudou moci připojit soubory SharePoint ke zprávě. Další informace najdete v článku [co jsou závislosti služby v Azure Active Directory podmíněný přístup?](service-dependencies.md).
 
-## <a name="what-you-should-avoid-doing"></a>Co byste se měli vyhnout dělat
+## <a name="what-you-should-avoid-doing"></a>K čemu byste se měli vyhnout
 
-Rozhraní podmíněného přístupu poskytuje velkou flexibilitu konfigurace. Velká flexibilita však také znamená, že byste měli pečlivě zkontrolovat každou zásadu konfigurace před uvolněním, abyste se vyhnuli nežádoucím výsledkům. V této souvislosti byste měli věnovat zvláštní pozornost přiřazením, která ovlivňují kompletní sady, jako jsou **všichni uživatelé / skupiny / cloudové aplikace**.
+Rozhraní podmíněného přístupu poskytuje skvělou flexibilitu konfigurace. Ale skvělá flexibilita také znamená, že před vydáním byste měli pečlivě zkontrolovat všechny zásady konfigurace, aby nedocházelo k nežádoucím výsledkům. V tomto kontextu byste měli věnovat zvláštní pozornost přiřazením, které mají vliv na kompletní sady, například na **všechny uživatele/skupiny/cloudové aplikace**.
 
 Ve vašem prostředí byste se měli vyhnout následujícím konfiguracím:
 
-**Pro všechny uživatele všechny cloudové aplikace:**
+**Pro všechny uživatele Cloud Apps:**
 
-- **Blokovat přístup** – tato konfigurace blokuje celou organizaci, což rozhodně není dobrý nápad.
-- **Vyžadovat kompatibilní zařízení** – pro uživatele, kteří ještě nezaregistrovali svá zařízení, tato zásada blokuje veškerý přístup včetně přístupu k portálu Intune. Pokud jste správce bez zaregistrovaného zařízení, tato zásada vám zablokuje návrat na portál Azure a zásady změníte.
-- **Vyžadovat připojení k doméně** – Tento přístup k blokování zásad má také potenciál blokovat přístup pro všechny uživatele ve vaší organizaci, pokud ještě nemáte zařízení spojené s doménou.
-- **Vyžadovat zásady ochrany aplikací** – Tento přístup k blokování zásad má také potenciál blokovat přístup pro všechny uživatele ve vaší organizaci, pokud nemáte zásady Intune. Pokud jste správce bez klientské aplikace, která má zásady ochrany aplikací Intune, tato zásada vám zabrání dostat se zpět na portály, jako je Intune a Azure.
+- **Blokovat přístup** – Tato konfigurace blokuje celou organizaci, což znamená, že nebudete mít dobrou představu.
+- **Vyžadovat vyhovující zařízení** – pro uživatele, kteří ještě nezaregistrovali svá zařízení, tato zásada blokuje veškerý přístup, včetně přístupu k portálu Intune. Pokud jste správcem bez zaregistrovaného zařízení, tato zásada vás zablokuje, abyste se znovu přihlásili k Azure Portal ke změně zásad.
+- **Vyžadovat připojení k doméně** – tato zásada blokuje přístup také k blokování přístupu pro všechny uživatele ve vaší organizaci, pokud ještě nemáte zařízení připojené k doméně.
+- **Vyžadovat zásady ochrany aplikací** – tato zásada blokuje přístup i pro všechny uživatele ve vaší organizaci, pokud nemáte zásady Intune. Pokud jste správce bez klientské aplikace, která má zásady ochrany aplikací Intune, bude vám tato zásada Blokovat návrat do portálů, jako je Intune a Azure.
 
 **Pro všechny uživatele, všechny cloudové aplikace, všechny platformy zařízení:**
 
-- **Blokovat přístup** – tato konfigurace blokuje celou organizaci, což rozhodně není dobrý nápad.
+- **Blokovat přístup** – Tato konfigurace blokuje celou organizaci, což znamená, že nebudete mít dobrou představu.
 
 ## <a name="how-should-you-deploy-a-new-policy"></a>Jak byste měli nasadit novou zásadu?
 
-Jako první krok byste měli vyhodnotit zásady pomocí [nástroje co když](what-if-tool.md).
+Jako první krok byste měli vyhodnotit zásady pomocí [nástroje co if](what-if-tool.md).
 
-Když jsou nové zásady připraveny pro vaše prostředí, nasazujte je ve fázích:
+Až budou nové zásady připravené pro vaše prostředí, nasaďte je do fází:
 
-1. Použijte zásadu pro malou sadu uživatelů a ověřte, že se chová podle očekávání. 
-1. Když rozbalíte zásadu tak, aby zahrnovala více uživatelů. Pokračujte v vyloučení všech správců ze zásady, abyste zajistili, že budou mít stále přístup, a v případě potřeby můžete zásadu aktualizovat.
-1. Zásadu použijte pro všechny uživatele pouze v případě potřeby. 
+1. Použijte zásadu na malou skupinu uživatelů a ověřte, že se chová podle očekávání. 
+1. Když rozbalíte zásadu, aby zahrnovala více uživatelů. Pokračujte v vyloučení všech správců ze zásad, abyste měli jistotu, že mají stále přístup, a pokud je potřeba změnit, můžete zásady aktualizovat.
+1. Zásadu použijte pro všechny uživatele, pouze pokud je to nutné. 
 
 Osvědčeným postupem je vytvořit uživatelský účet, který je:
 
-- Věnováno správě politik 
-- Vyloučeno ze všech vašich zásad
+- Vyhrazeno pro správu zásad 
+- Vyloučené ze všech vašich zásad
 
 ## <a name="policy-migration"></a>Migrace zásad
 
-Zvažte migraci zásad, které jste na webu Azure Portal nevytvořili, protože:
+Zvažte možnost Migrace zásad, které jste nevytvořili v Azure Portal z těchto důvodů:
 
-- Nyní můžete řešit scénáře, které jste dříve nemohli zpracovat.
-- Můžete snížit počet zásad, které je třeba spravovat jejich sloučením.   
+- Nyní můžete řešit scénáře, které jste předtím nemohli zpracovat.
+- Počet zásad, které budete muset spravovat, můžete snížit tak, že je konsolidujete.   
 - Všechny zásady podmíněného přístupu můžete spravovat v jednom centrálním umístění.
-- Klasický portál Azure byl vyřazen.   
+- Portál Azure Classic byl vyřazený.   
 
 Další informace najdete v článku [Migrace zásad z portálu Classic na portálu Azure Portal](policy-migration.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud chcete vědět:
+Chcete-li znát:
 
-- Jak nakonfigurovat zásady podmíněného přístupu, najdete [v tématu Vyžadovat vícefaktorové informace pro konkrétní aplikace s podmíněným přístupem Služby Azure Active Directory](app-based-mfa.md).
-- Jak naplánovat zásady podmíněného přístupu, najdete v [tématu Jak naplánovat nasazení podmíněného přístupu ve službě Azure Active Directory](plan-conditional-access.md).
+- Postup konfigurace zásad podmíněného přístupu najdete v tématu [vyžádání MFA pro konkrétní aplikace s Azure Active Directorym podmíněným přístupem](app-based-mfa.md).
+- Postup plánování zásad podmíněného přístupu najdete v tématu [postup plánování nasazení podmíněného přístupu v Azure Active Directory](plan-conditional-access.md).

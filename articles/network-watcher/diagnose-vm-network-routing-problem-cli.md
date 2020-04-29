@@ -1,7 +1,7 @@
 ---
-title: Diagnostika problému se směrováním v síti virtuálních počítači – Azure CLI
+title: Diagnostika problému se směrováním sítě virtuálních počítačů – Azure CLI
 titleSuffix: Azure Network Watcher
-description: V tomto článku se dozvíte, jak diagnostikovat problém směrování sítě virtuálních strojů pomocí další možnosti směrování služby Azure Network Watcher.
+description: V tomto článku se dozvíte, jak diagnostikovat potíže se síťovým směrováním virtuálního počítače pomocí funkce dalšího směrování Azure Network Watcher.
 services: network-watcher
 documentationcenter: network-watcher
 author: damendo
@@ -18,25 +18,25 @@ ms.date: 04/20/2018
 ms.author: damendo
 ms.custom: ''
 ms.openlocfilehash: ae139ea7aca7c3896fcd7b0acf2bf6673490a2f4
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80382898"
 ---
-# <a name="diagnose-a-virtual-machine-network-routing-problem---azure-cli"></a>Diagnostika problému směrování sítě virtuálních strojů – Azure CLI
+# <a name="diagnose-a-virtual-machine-network-routing-problem---azure-cli"></a>Diagnostika potíží se síťovým směrováním virtuálního počítače – Azure CLI
 
-V tomto článku nasadíte virtuální počítač (VM) a potom zkontrolujte komunikaci s IP adresou a adresou URL. Určíte příčinu selhání komunikace a najdete jeho řešení.
+V tomto článku nasadíte virtuální počítač (VM) a pak zkontrolujete komunikaci s IP adresou a adresou URL. Určíte příčinu selhání komunikace a najdete jeho řešení.
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat Azure CLI místně, tento článek vyžaduje, abyste spouštěli Azure CLI verze 2.0.28 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli). Po ověření verze rozhraní příkazového `az login` příkazu Azure spusťte a vytvořte připojení k Azure. Příkazy Azure CLI v tomto článku jsou formátovány tak, aby se spouštěli v prostředí Bash.
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku Azure CLI místně, musíte mít spuštěnou verzi Azure CLI 2.0.28 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli). Po ověření verze Azure CLI spusťte příkaz `az login` a vytvořte připojení k Azure. Příkazy Azure CLI v tomto článku jsou formátované tak, aby se spouštěly v prostředí bash.
 
 ## <a name="create-a-vm"></a>Vytvoření virtuálního počítače
 
-Než vytvoříte virtuální počítač, musíte vytvořit skupinu prostředků, která bude virtuální počítač obsahovat. Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az-group-create). Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v umístění *eastus:*
+Než vytvoříte virtuální počítač, musíte vytvořit skupinu prostředků, která bude virtuální počítač obsahovat. Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az-group-create). Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v umístění *eastus* :
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -52,15 +52,15 @@ az vm create \
   --generate-ssh-keys
 ```
 
-Vytvoření virtuálního počítače trvá několik minut. Nepokračujte se zbývajícími kroky, dokud se nevytvoří virtuální počítač a azure CLI vrátí výstup.
+Vytvoření virtuálního počítače trvá několik minut. Dokud se virtuální počítač nevytvoří a Azure CLI vrátí výstup, nepokračujte podle zbývajících kroků.
 
 ## <a name="test-network-communication"></a>Test síťové komunikace
 
-Chcete-li otestovat síťovou komunikaci s sledovacím procesem sítě, musíte nejprve povolit sledovací proces sítě v oblasti, ve které je virtuální modul, ve kterém chcete testovat, a potom k testování komunikace použít další schopnost směrování sledovacího programu sítě.
+Chcete-li otestovat síťovou komunikaci s Network Watcher, je třeba nejprve povolit sledovací proces sítě v oblasti, ve které je virtuální počítač, který chcete testovat, a poté použít možnost Network Watcher dalšího směrování k otestování komunikace.
 
 ### <a name="enable-network-watcher"></a>Povolení Network Watcheru
 
-Pokud již máte v oblasti USA –, přejděte na [Použít další směrování](#use-next-hop). Pomocí příkazu [konfigurace sledování sítě az vytvořte](/cli/azure/network/watcher#az-network-watcher-configure) sledovací proces sítě v oblasti USA – východ:
+Pokud už máte sledovací proces sítě povolený v oblasti Východní USA, přeskočte na [použít další segment směrování](#use-next-hop). Pomocí příkazu [AZ Network Watch-Configure](/cli/azure/network/watcher#az-network-watcher-configure) vytvořte sledovací proces sítě v oblasti východní USA:
 
 ```azurecli-interactive
 az network watcher configure \
@@ -71,7 +71,7 @@ az network watcher configure \
 
 ### <a name="use-next-hop"></a>Použití dalšího směrování
 
-Azure automaticky vytváří trasy pro výchozí cíle. Můžete vytvořit vlastní trasy, které přepíšou ty výchozí. Někdy můžou vlastní trasy způsobit selhání komunikace. Chcete-li otestovat směrování z virtuálního pracovního procesu, použijte [az network watcher show-next-hop](/cli/azure/network/watcher?view=azure-cli-latest#az-network-watcher-show-next-hop) k určení dalšího směrování směrování, když je provoz určen pro určitou adresu.
+Azure automaticky vytváří trasy pro výchozí cíle. Můžete vytvořit vlastní trasy, které přepíšou ty výchozí. Někdy můžou vlastní trasy způsobit selhání komunikace. Pokud chcete testovat směrování z virtuálního počítače, použijte [příkaz AZ Network sledovacího procesu show-Next-Hop](/cli/azure/network/watcher?view=azure-cli-latest#az-network-watcher-show-next-hop) a určete další směrování směrování, když je provoz určený pro konkrétní adresu.
 
 Otestujte odchozí komunikaci z virtuálního počítače na jednu z IP adres stránky www.bing.com:
 
@@ -85,7 +85,7 @@ az network watcher show-next-hop \
   --out table
 ```
 
-Po několika sekundách výstup informuje, že **další HopType** je **Internet**a že **routeTableId** je **systémová trasa**. Tento výsledek vám umožní vědět, že existuje platná trasa k cíli.
+Po několika sekundách vám výstup informuje o tom, že je **typem** **Internet**a že **routeTableId** je **systémovou trasou**. Tento výsledek vám umožní zjistit, zda existuje platná trasa k cíli.
 
 Otestujte odchozí komunikaci z virtuálního počítače na IP adresu 172.31.0.100:
 
@@ -99,11 +99,11 @@ az network watcher show-next-hop \
   --out table
 ```
 
-Vrácený výstup vás informuje, že **None** je **další HopType**a že **routeTableId** je také **systémová trasa**. Tento výsledek říká, že i když existuje trasa systému do cíle, neexistuje žádné další směrování, které by do cíle směrovalo provoz.
+Vrácený výstup vás informuje o tom, že **žádný** je **typem**a že **RouteTableId** je také **systémovou trasou**. Tento výsledek říká, že i když existuje trasa systému do cíle, neexistuje žádné další směrování, které by do cíle směrovalo provoz.
 
 ## <a name="view-details-of-a-route"></a>Zobrazení podrobností o trase
 
-Chcete-li dále analyzovat směrování, zkontrolujte efektivní trasy pro síťové rozhraní pomocí [příkazu az network nic show-effective-route-table:](/cli/azure/network/nic#az-network-nic-show-effective-route-table)
+Pokud chcete dál analyzovat směrování, Projděte si efektivní trasy pro síťové rozhraní pomocí příkazu [AZ Network nic show--Route-Table](/cli/azure/network/nic#az-network-nic-show-effective-route-table) :
 
 ```azurecli-interactive
 az network nic show-effective-route-table \
@@ -111,7 +111,7 @@ az network nic show-effective-route-table \
   --name myVmVMNic
 ```
 
-Následující text je součástí vrácené výstupu:
+Vrácený výstup obsahuje následující text:
 
 ```
 {
@@ -129,9 +129,9 @@ Následující text je součástí vrácené výstupu:
 },
 ```
 
-Při použití `az network watcher show-next-hop` příkazu k testování odchozí komunikace na 13.107.21.200 v [použití dalšího směrování](#use-next-hop)byla k směrování provozu na adresu použita trasa s **adresouPrefix** 0.0.0.0/0**, protože žádná jiná trasa ve výstupu neobsahuje adresu. Standardně se všechny adresy, které se nezadaly v předponě adresy jiné trasy, směrují do internetu.
+Když jste pomocí `az network watcher show-next-hop` příkazu otestovali odchozí komunikaci s 13.107.21.200 při [použití dalšího směrování](#use-next-hop), použila se trasa s **addressPrefix** 0.0.0.0/0 * * ke směrování provozu na adresu, protože žádná jiná trasa ve výstupu neobsahuje adresu. Standardně se všechny adresy, které se nezadaly v předponě adresy jiné trasy, směrují do internetu.
 
-Při použití `az network watcher show-next-hop` příkazu k testování odchozí komunikace na 172.31.0.100 však výsledek informoval, že neexistuje žádný další typ směrování. Ve vráceném výstupu vidíte také následující text:
+Při použití `az network watcher show-next-hop` příkazu k otestování odchozí komunikace k 172.31.0.100 ale výsledek oznamuje, že neexistuje typ dalšího segmentu směrování. V vráceném výstupu se zobrazí také následující text:
 
 ```
 {
@@ -149,7 +149,7 @@ Při použití `az network watcher show-next-hop` příkazu k testování odchoz
 },
 ```
 
-Jak můžete vidět ve výstupu `az network watcher nic show-effective-route-table` z příkazu, i když je výchozí trasa k 172.16.0.0/12 předpona, která obsahuje adresu 172.31.0.100, **nextHopType** je **None**. Azure vytváří výchozí trasu do 172.16.0.0/12, ale neurčuje typ dalšího směrování, dokud k tomu není důvod. Pokud jste například přidali rozsah adres 172.16.0.0/12 do adresního prostoru virtuální sítě, Azure změní **další HopType** na **virtuální síť** pro trasu. Kontrola by pak zobrazit **virtuální síť** jako **další HopType**.
+Jak vidíte ve výstupu `az network watcher nic show-effective-route-table` příkazu, i když je výchozí trasa k předponě 172.16.0.0/12, která zahrnuje adresu 172.31.0.100, **typem** je **none**. Azure vytváří výchozí trasu do 172.16.0.0/12, ale neurčuje typ dalšího směrování, dokud k tomu není důvod. Pokud jste například přidali rozsah adres 172.16.0.0/12 do adresního prostoru virtuální sítě, Azure změní **typem** na **virtuální síť** pro trasu. Při kontrole se pak jako **typem**zobrazí **virtuální síť** .
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -161,6 +161,6 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste vytvořili virtuální ho a diagnostikovali síťové směrování z virtuálního soudu. Dozvěděli jste se, že Azure vytváří několik výchozích tras, a otestovali jste směrování na dva různé cíle. Přečtěte si i další informace o [směrování v Azure](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) a o tom, jak [vytvářet vlastní trasy](../virtual-network/manage-route-table.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-route).
+V tomto článku jste vytvořili virtuální počítač a diagnostikovat síťové směrování z virtuálního počítače. Dozvěděli jste se, že Azure vytváří několik výchozích tras, a otestovali jste směrování na dva různé cíle. Přečtěte si i další informace o [směrování v Azure](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) a o tom, jak [vytvářet vlastní trasy](../virtual-network/manage-route-table.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-route).
 
-U odchozích připojení virtuálních zařízení můžete také určit latenci a povolený a odepřený síťový provoz mezi virtuálním serverem a koncovým bodem pomocí funkce [řešení potíží s připojením](network-watcher-connectivity-cli.md) sledování sítě. Můžete sledovat komunikaci mezi virtuálním počítačům a koncovým bodem, jako je například IP adresa nebo adresa URL, v průběhu času pomocí funkce sledování připojení sledování sítě. Informace o tom naleznete [v tématu Sledování síťového připojení](connection-monitor.md).
+U odchozích připojení virtuálních počítačů můžete také určit latenci a povolený a zakázaný síťový provoz mezi virtuálním počítačem a koncovým bodem pomocí funkce [řešení potíží s připojením](network-watcher-connectivity-cli.md) Network Watcher. Komunikaci mezi virtuálním počítačem a koncovým bodem, jako je IP adresa nebo adresa URL, můžete v průběhu času sledovat pomocí možnosti monitorování připojení Network Watcher. Informace o postupu najdete v tématu [monitorování síťového připojení](connection-monitor.md).

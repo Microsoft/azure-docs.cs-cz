@@ -1,5 +1,5 @@
 ---
-title: Podporované mapové styly | Mapy Microsoft Azure
+title: Podporované styly mapy | Mapy Microsoft Azure
 description: V tomto článku se dozvíte o různých stylech vykreslování map podporovaných Microsoft Azure Maps.
 author: philmea
 ms.author: philmea
@@ -9,95 +9,95 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: 2eafe3c16a89723d55ec52fde785e9ec69e45e0c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80334039"
 ---
-# <a name="azure-maps-supported-map-styles"></a>Podporované styly map Azure Maps
-Azure Maps podporuje několik různých předdefinovaných stylů map, jak je popsáno níže.
+# <a name="azure-maps-supported-map-styles"></a>Azure Maps podporované styly mapy
+Azure Maps podporuje několik různých vestavěných stylů mapy, jak je popsáno níže.
 
-## <a name="road"></a>Silnici
-**Cestovní** mapa je standardní mapa, která zobrazuje silnice, přírodní a umělé prvky spolu s popisky těchto funkcí.
+## <a name="road"></a>silniční
+Mapa **cest** je standardní mapa, která zobrazuje cesty, přirozené a umělé funkce spolu s popisky pro tyto funkce.
 
-![styl silniční mapy](./media/supported-map-styles/road.png)
+![typ mapy cest](./media/supported-map-styles/road.png)
 
-**Příslušná přístupová pravidla:**
+**Platná rozhraní API:**
 * [Obrázek mapy](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
 * [Dlaždice mapy](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
-* Ovládací prvek mapy sady Web SDK
-* Ovládání mapy Android
+* Mapový ovládací prvek sady web SDK
+* Ovládací prvek mapy pro Android
 
 ## <a name="blank-and-blank_accessible"></a>prázdné a blank_accessible
 
-**Prázdné** a **blank_accessible** styly mapy poskytují prázdné plátno, na kterém můžete vizualizovat data. Styl **blank_accessible** bude i nadále poskytovat aktualizace čtečky obrazovky s podrobnostmi o poloze mapy, i když se základní mapa nezobrazí.
+**Prázdné** a **blank_accessible** styly mapy poskytují prázdné plátno, na kterém se data vizualizují. Styl **blank_accessible** bude dál poskytovat aktualizace čtečky obrazovky s podrobnostmi o umístění mapy, i když základní mapa není zobrazená.
 
 > [!Note]
-> Ve webové sdk můžete změnit barvu pozadí mapy nastavením `background-color` CSS styl mapy DIV element.
+> V sadě web SDK můžete změnit barvu pozadí mapy nastavením stylu CSS `background-color` prvku div mapy.
 
-**Příslušná přístupová pravidla:**
-* Ovládací prvek mapy sady Web SDK
+**Platná rozhraní API:**
+* Mapový ovládací prvek sady web SDK
 
 ## <a name="satellite"></a>satellite 
 **Satelitní** styl je kombinací satelitních a leteckých snímků.
 
-![styl mapy satelitních dlaždic](./media/supported-map-styles/satellite.png)
+![styl mapy dlaždice satelitu](./media/supported-map-styles/satellite.png)
 
-**Příslušná přístupová pravidla:**
+**Platná rozhraní API:**
 * [Satelitní dlaždice](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytilepreview)
-* Ovládací prvek mapy sady Web SDK
-* Ovládání mapy Android
+* Mapový ovládací prvek sady web SDK
+* Ovládací prvek mapy pro Android
 
 ## <a name="satellite_road_labels"></a>satellite_road_labels
-Tento styl mapy je hybridem silnic a štítků překrytých na satelitních a leteckých snímcích.
+Tento styl mapy je hybridem cest a popisků, které se překrývají na družicovém a leteckém mikrosnímků.
 
 ![satellite_road_labels styl mapy](./media/supported-map-styles/satellite-road-labels.png)
 
-**Příslušná přístupová pravidla:**
-* Ovládací prvek mapy sady Web SDK
-* Ovládání mapy Android
+**Platná rozhraní API:**
+* Mapový ovládací prvek sady web SDK
+* Ovládací prvek mapy pro Android
 
 ## <a name="grayscale_dark"></a>grayscale_dark
-**odstíny šedi tmavé** je tmavá verze stylu silniční mapy.
+**tmavě šedá** je tmavá verze stylu mapy cest.
 
 ![gray_scale styl mapy](./media/supported-map-styles/grayscale-dark.png)
 
-**Příslušná přístupová pravidla:**
+**Platná rozhraní API:**
 * [Obrázek mapy](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
 * [Dlaždice mapy](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
-* Ovládací prvek mapy sady Web SDK 
-* Ovládání mapy Android
+* Mapový ovládací prvek sady web SDK 
+* Ovládací prvek mapy pro Android
 
 
 ## <a name="grayscale_light"></a>grayscale_light
-**stupně šedi je** světlá verze stylu silniční mapy.
+**šedé světlo** je světlá verze stylu mapy cest.
 
-![styl světelné mapy ve stupních šedi](./media/supported-map-styles/grayscale-light.png)
+![světlý styl mapy ve stupních šedi](./media/supported-map-styles/grayscale-light.png)
 
-**Příslušná přístupová pravidla:**
-* Ovládací prvek mapy sady Web SDK
-* Ovládání mapy Android
+**Platná rozhraní API:**
+* Mapový ovládací prvek sady web SDK
+* Ovládací prvek mapy pro Android
 
 
-## <a name="night"></a>Noc
-**noc** je tmavá verze stylu silniční mapy s barevnými silnicemi a symboly.
+## <a name="night"></a>veletrh
+**noční** je tmavá verze stylu mapy cest s barevnými cestami a symboly.
 
 ![styl noční mapy](./media/supported-map-styles/night.png)
 
-**Příslušná přístupová pravidla:**
-* Ovládací prvek mapy sady Web SDK
-* Ovládání mapy Android
+**Platná rozhraní API:**
+* Mapový ovládací prvek sady web SDK
+* Ovládací prvek mapy pro Android
 
 ## <a name="road_shaded_relief"></a>road_shaded_relief
-**silniční stínovaný reliéf** je hlavní styl Azure Maps doplněný o kontury Země.
+**odlehčené vybarvené z provozu** je Azure Maps hlavní styl dokončený pomocí kokolace země.
 
-![stínovaný reliéfní styl mapy](./media/supported-map-styles/shaded-relief.png)
+![styl mapy reliéfu ve stínovém tvaru](./media/supported-map-styles/shaded-relief.png)
 
-**Příslušná přístupová pravidla:**
+**Platná rozhraní API:**
 * [Dlaždice mapy](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
-* Ovládací prvek mapy sady Web SDK
-* Ovládání mapy Android
+* Mapový ovládací prvek sady web SDK
+* Ovládací prvek mapy pro Android
 
 ## <a name="high_contrast_dark"></a>high_contrast_dark
 
@@ -105,8 +105,8 @@ Tento styl mapy je hybridem silnic a štítků překrytých na satelitních a le
 
 ![styl tmavé mapy s vysokým kontrastem](./media/supported-map-styles/high-contrast-dark.png)
 
-**Příslušná přístupová pravidla:**
-* Ovládací prvek mapy sady Web SDK
+**Platná rozhraní API:**
+* Mapový ovládací prvek sady web SDK
 
 ## <a name="next-steps"></a>Další kroky
 

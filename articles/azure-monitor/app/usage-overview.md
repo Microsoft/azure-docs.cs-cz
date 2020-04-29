@@ -1,28 +1,28 @@
 ---
-title: Analýza využití pomocí přehledů aplikací Azure | Dokumenty Microsoftu
-description: Seznamte se s uživateli a s tím, co s vaší aplikací dělají.
+title: Analýza využití pomocí Azure Application Insights | Dokumentace Microsoftu
+description: Pochopte uživatele a to, co dělají s vaší aplikací.
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.openlocfilehash: e964b1b5b9d5500f2d9f24ed765299389e6dbbb9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80283952"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Analýzy používání pomocí nástroje Application Insights
 
-Které funkce vašeho webu nebo mobilní aplikace jsou nejoblíbenější? Dosahují vaši uživatelé pomocí aplikace svých cílů? Mají vypadnout na konkrétních místech, a oni se vrátí později?  [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) vám pomůže získat výkonné přehledy o tom, jak lidé používají vaši aplikaci. Pokaždé, když aktualizujete aplikaci, můžete posoudit, jak dobře to funguje pro uživatele. S těmito znalostmi můžete provádět rozhodnutí založená na datech o dalších vývojových cyklech.
+Které funkce vaší webové nebo mobilní aplikace jsou nejoblíbenější? Dosáhnou vaši uživatelé své cíle s vaší aplikací? Vynechává se konkrétní body a později se vrátí?  [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) pomáhá získat výkonné přehledy o tom, jak uživatelé vaši aplikaci používají. Pokaždé, když aktualizujete aplikaci, můžete posoudit, jak dobře funguje pro uživatele. V tomto článku se seznámíte s tím, jak můžete provádět rozhodování o dalších cyklech vývoje na základě dat.
 
-## <a name="send-telemetry-from-your-app"></a>Odeslání telemetrie z aplikace
+## <a name="send-telemetry-from-your-app"></a>Poslat telemetrii z vaší aplikace
 
-Nejlepší prostředí se získá instalací Application Insights do kódu aplikačního serveru i do webových stránek. Klientské a serverové součásti vaší aplikace odesílají telemetrická data zpět na portál Azure k analýze.
+Nejlepší prostředí získáte instalací Application Insights jak v kódu aplikačního serveru, tak i na webových stránkách. Klientské a serverové součásti vaší aplikace odesílají telemetrii zpátky do Azure Portal k analýze.
 
-1. **Kód serveru:** Nainstalujte příslušný modul pro [ASP.NET](../../azure-monitor/app/asp-net.md), [Azure](../../azure-monitor/app/app-insights-overview.md), [Java](../../azure-monitor/app/java-get-started.md), [Node.js](../../azure-monitor/app/nodejs.md)nebo [jiné](../../azure-monitor/app/platforms.md) aplikace.
+1. **Serverový kód:** Nainstalujte příslušný modul pro [ASP.NET](../../azure-monitor/app/asp-net.md), [Azure](../../azure-monitor/app/app-insights-overview.md), [Java](../../azure-monitor/app/java-get-started.md), [Node. js](../../azure-monitor/app/nodejs.md)nebo [jinou](../../azure-monitor/app/platforms.md) aplikaci.
 
-    * *Nechcete nainstalovat kód serveru? Stačí [vytvořit prostředek Azure Application Insights](../../azure-monitor/app/create-new-resource.md ).*
+    * *Nechcete instalovat kód serveru? Stačí [vytvořit prostředek služby Azure Application Insights](../../azure-monitor/app/create-new-resource.md ).*
 
-2. **Kód webové stránky:** Před uzávěrkou ``</head>``přidejte na webovou stránku následující skript . Nahraďte klíč instrumentace příslušnou hodnotou pro váš prostředek Application Insights:
+2. **Kód webové stránky:** Před zavřením ``</head>``přidejte na svou webovou stránku následující skript. Nahraďte klíč instrumentace příslušnou hodnotou pro váš Application Insights prostředek:
     
     ```html
     <script type="text/javascript">
@@ -34,63 +34,63 @@ Nejlepší prostředí se získá instalací Application Insights do kódu aplik
     </script>
     ```
 
-    Chcete-li se dozvědět pokročilejší konfigurace pro sledování webových stránek, podívejte se na [referenční článek sady JavaScript SDK](https://docs.microsoft.com/azure/azure-monitor/app/javascript).
+    Další informace o pokročilejších konfiguracích pro monitorování webů najdete v [referenčním článku o sadě JavaScript SDK](https://docs.microsoft.com/azure/azure-monitor/app/javascript).
 
-3. **Kód mobilní aplikace:** Pomocí sady App Center SDK můžete shromažďovat události z vaší aplikace a pak odeslat kopie těchto událostí do Application Insights k analýze [podle tohoto průvodce](../../azure-monitor/learn/mobile-center-quickstart.md).
+3. **Kód mobilní aplikace:** Pomocí sady App Center SDK můžete shromažďovat události z vaší aplikace a pak tyto události poslat do Application Insights pro účely analýzy pomocí [této příručky](../../azure-monitor/learn/mobile-center-quickstart.md).
 
-4. **Získejte telemetrii:** Spusťte projekt v režimu ladění po dobu několika minut a pak vyhledejte výsledky v okně Přehled v Application Insights.
+4. **Získat telemetrii:** Spusťte projekt v režimu ladění po dobu několika minut a potom vyhledejte výsledky v okně Přehled v Application Insights.
 
-    Publikujte aplikaci, abyste sledovali výkon aplikace a zjistili, co uživatelé s vaší aplikací dělají.
+    Publikováním aplikace můžete monitorovat výkon vaší aplikace a zjistit, co uživatelé s vaší aplikací dělají.
 
 ## <a name="include-user-and-session-id-in-your-telemetry"></a>Zahrnutí ID uživatele a relace do telemetrie
-Ke sledování uživatelů v průběhu času, Application Insights vyžaduje způsob, jak je identifikovat. Nástroj Události je jediným nástrojem použití, který nevyžaduje ID uživatele nebo ID relace.
+Aby bylo možné sledovat uživatele v průběhu času, Application Insights vyžaduje způsob jejich identifikace. Jediným nástrojem pro použití, který nevyžaduje ID uživatele nebo ID relace, je nástroj Events.
 
-Začněte odesílat ID uživatelů a relací pomocí [tohoto procesu](https://docs.microsoft.com/azure/application-insights/app-insights-usage-send-user-context).
+Zahajte odesílání ID uživatelů a relací pomocí [tohoto procesu](https://docs.microsoft.com/azure/application-insights/app-insights-usage-send-user-context).
 
-## <a name="explore-usage-demographics-and-statistics"></a>Prozkoumejte demografické údaje a statistiky využití
-Zjistěte, kdy lidé používají vaši aplikaci, jaké stránky je nejvíce zajímají, kde se uživatelé nacházejí, jaké prohlížeče a operační systémy používají. 
+## <a name="explore-usage-demographics-and-statistics"></a>Prozkoumat demografické údaje o využití a statistiky
+Zjistěte, kdy lidé používají vaši aplikaci, jaké stránky mají nejvíc zajímat, kde se nacházejí vaši uživatelé, jaké prohlížeče a operační systémy používají. 
 
-Sestavy Uživatelé a relace filtrují data podle stránek nebo vlastních událostí a segmentují je podle vlastností, jako je umístění, prostředí a stránka. Můžete také přidat vlastní filtry.
+Sestavy uživatelé a relace filtrují data podle stránek nebo vlastních událostí a segmentují je podle vlastností, jako je umístění, prostředí a stránka. Můžete také přidat vlastní filtry.
 
 ![Uživatelé](./media/usage-overview/users.png)  
 
-Přehledy na správné poukazují na zajímavé vzory v sadě dat.  
+Přehledy o tom, jaké jsou zajímavé vzory v sadě dat, najdete na pravé straně.  
 
-* Sestava **Uživatelé** počítá počet jedinečných uživatelů, kteří přistupují k vašim stránkám ve zvolených časových obdobích. U webových aplikací se uživatelé počítají pomocí souborů cookie. Pokud někdo přistupuje k vašemu webu pomocí různých prohlížečů nebo klientských počítačů nebo vymaže soubory cookie, bude započítán více než jednou.
-* Sestava **Relace** spočítá počet uživatelských relací, které přistupují k vašemu webu. Relace je období aktivity uživatele, ukončené obdobím nečinnosti delší než půl hodiny.
+* Sestava **Uživatelé** vypočítává počet jedinečných uživatelů, kteří přistupují k vašim stránkám v rámci zvolených časových období. U webových aplikací se uživatelé počítají pomocí souborů cookie. Pokud někdo přistupuje k webu pomocí různých prohlížečů nebo klientských počítačů nebo vymaže své soubory cookie, bude se počítat více než jednou.
+* Sestava **relace** spočítá počet uživatelských relací, které přistupují k vašemu webu. Relace je doba aktivity uživatele, která se ukončila po dobu nečinnosti delší než půl hodiny.
 
-[Další informace o nástrojích Uživatelé, Relace a Události](usage-segmentation.md)  
+[Další informace o nástrojích uživatelé, relace a události](usage-segmentation.md)  
 
-## <a name="retention---how-many-users-come-back"></a>Retence - kolik uživatelů se vrátí?
+## <a name="retention---how-many-users-come-back"></a>Uchování – kolik uživatelů se vrátí?
 
-Uchovávání informací vám pomůže pochopit, jak často se uživatelé vracejí k používání své aplikace na základě kohort uživatelů, kteří během určitého časového intervalu provedli nějakou obchodní akci. 
+Uchovávání vám pomůže pochopit, jak často se uživatelé budou vracet k používání své aplikace, na základě kohorty uživatelů, kteří provedli některé obchodní akce během určitého časového intervalu. 
 
-- Zjistěte, jaké konkrétní funkce způsobují, že se uživatelé mohou vrátit více než ostatní 
-- Formuláře hypotéz y založené na skutečných uživatelských datech 
-- Zjištění, zda je uchovávání informací v produktu problémem 
+- Informace o tom, jaké konkrétní funkce způsobí, že se uživatelé budou moci vrátit více než jiné 
+- Forma hypotézy založená na datech reálného uživatele 
+- Zjistěte, jestli je uchovávání problému v produktu. 
 
 ![Uchovávání](./media/usage-overview/retention.png) 
 
-Ovládací prvky uchovávání informací v horní části umožňují definovat konkrétní události a časový rozsah pro výpočet uchovávání informací. Graf uprostřed poskytuje vizuální znázornění celkového procenta uchování podle zadaného časového rozsahu. Graf v dolní části představuje individuální retenci v daném časovém období. Tato úroveň podrobností umožňuje pochopit, co vaši uživatelé dělají a co může ovlivnit vracející se uživatelé na podrobnější rozlišovací schopnost.  
+Ovládací prvky uchování v horní části umožňují definovat konkrétní události a časový rozsah pro výpočet uchovávání. Graf uprostřed poskytuje vizuální znázornění celkového procenta uchování v zadaném časovém rozsahu. Graf v dolní části představuje individuální uchování v daném časovém období. Tato úroveň podrobností vám umožní pochopit, co dělají vaši uživatelé a co může ovlivnit vracení uživatelů na podrobnější členitost.  
 
 [Další informace o nástroji pro uchovávání informací](usage-retention.md)
 
 ## <a name="custom-business-events"></a>Vlastní obchodní události
 
-Chcete-li získat jasnou představu o tom, co uživatelé dělají s vaší aplikací, je užitečné vložit řádky kódu pro protokolování vlastních událostí. Tyto události mohou sledovat cokoli od podrobných uživatelských akcí, jako je kliknutí na konkrétní tlačítka, až po významnější obchodní události, jako je nákup nebo výhra ve hře. 
+Chcete-li získat jasné informace o tom, co uživatelé s vaší aplikací dělají, je vhodné vložit řádky kódu do protokolu pro vlastní události. Tyto události mohou sledovat cokoli od podrobných uživatelských akcí, jako je například kliknutí na určitá tlačítka, na důležitější obchodní události, jako je například vytvoření nákupu nebo získání hry. 
 
-Ačkoli v některých případech mohou zobrazení stránek představovat užitečné události, obecně se to neplatí. Uživatel může otevřít stránku produktu bez zakoupení produktu. 
+I když v některých případech mohou zobrazení stránky představovat užitečné události, neplatí obecně. Uživatel může otevřít stránku produktu bez nákupu produktu. 
 
-Pomocí konkrétních obchodních událostí můžete na webu zmapovat postup uživatelů. Můžete zjistit jejich preference pro různé možnosti, a kde vypadnou nebo mají potíže. S těmito znalostmi můžete činit informovaná rozhodnutí o prioritách ve vašem nevyřízeném položkách vývoje.
+S konkrétními obchodními událostmi můžete pomocí webu sestavovat průběh vašich uživatelů. Můžete si najít své předvolby pro různé možnosti a místo jejich vyřazení nebo potíží. S tímto vědomím se můžete rozhodnout o prioritách v nevyřízených položkách vývoje.
 
-Události lze protokolovat z klientské strany aplikace:
+Události se dají protokolovat ze strany klienta aplikace:
 
 ```JavaScript
 
     appInsights.trackEvent("ExpandDetailTab", {DetailTab: tabName});
 ```
 
-Nebo ze strany serveru:
+Nebo na straně serveru:
 
 ```csharp
     var tc = new Microsoft.ApplicationInsights.TelemetryClient();
@@ -101,27 +101,27 @@ Nebo ze strany serveru:
     tc.TrackEvent("CompletedPurchase");
 ```
 
-K těmto událostem můžete připojit hodnoty vlastností, abyste je mohli filtrovat nebo rozdělit při jejich kontrole na portálu. Kromě toho je ke každé události připojena standardní sada vlastností, například anonymní ID uživatele, které umožňuje sledovat posloupnost aktivit jednotlivých uživatelů.
+K těmto událostem můžete přiřadit hodnoty vlastností, abyste mohli události filtrovat nebo rozdělit při jejich kontrole na portálu. Kromě toho je ke každé události připojená standardní sada vlastností, jako je například anonymní ID uživatele, což vám umožňuje sledovat posloupnost aktivit jednotlivých uživatelů.
 
-Další informace o [vlastních událostech](../../azure-monitor/app/api-custom-events-metrics.md#trackevent) a [vlastnostech](../../azure-monitor/app/api-custom-events-metrics.md#properties).
+Přečtěte si další informace o [vlastních událostech](../../azure-monitor/app/api-custom-events-metrics.md#trackevent) a [vlastnostech](../../azure-monitor/app/api-custom-events-metrics.md#properties).
 
-### <a name="slice-and-dice-events"></a>Události řezu a kostky
+### <a name="slice-and-dice-events"></a>Události řezů a kostek
 
-V nástrojích Uživatelé, Relace a Události můžete vlastní události řezat a odřezávat podle uživatele, názvu události a vlastností.
+V nástrojích uživatelé, relace a události můžete rozřezat a indexovat vlastní události podle uživatele, názvu události a vlastností.
 ![Uživatelé](./media/usage-overview/users.png)  
   
-## <a name="design-the-telemetry-with-the-app"></a>Návrh telemetrie pomocí aplikace
+## <a name="design-the-telemetry-with-the-app"></a>Návrh telemetrie s aplikací
 
-Při navrhování jednotlivých funkcí aplikace zvažte, jak budete měřit její úspěch s uživateli. Rozhodněte se, jaké obchodní události potřebujete zaznamenat, a od začátku zakódujte sledování těchto událostí do aplikace.
+Když navrhujete jednotlivé funkce aplikace, zvažte, jak budete měřit úspěch s vašimi uživateli. Rozhodněte, jaké obchodní události potřebujete zaznamenat, a zaznamenejte volání sledování těchto událostí do vaší aplikace od začátku.
 
-## <a name="a--b-testing"></a>A | B Testování
-Pokud nevíte, která varianta funkce bude úspěšnější, uvolněte obě, zpřístupníte je různým uživatelům. Změřte úspěch každého z nich a pak přejděte na jednotnou verzi.
+## <a name="a--b-testing"></a>A | B testování
+Pokud si nejste jisti, kterou variantu funkce bude možné považovat za úspěšnou, vyžádejte si obě z nich, aby každý z nich měl přístup k různým uživatelům. Změřte úspěšnost jednotlivých a potom přejděte na sjednocenou verzi.
 
-Pro tuto techniku připojit odlišné hodnoty vlastností pro všechny telemetrie, která je odeslána každou verzi aplikace. Můžete to udělat definováním vlastností v aktivní mašitce TelemetryContext. Tyto výchozí vlastnosti jsou přidány do každé telemetrické zprávy, které aplikace odešle – nejen vlastní zprávy, ale také standardní telemetrie.
+Pro tuto techniku připojíte jedinečné hodnoty vlastností ke všem telemetriem, které jsou odesílány každou verzí vaší aplikace. To lze provést definováním vlastností v aktivním TelemetryContext. Tyto výchozí vlastnosti jsou přidány do každé zprávy telemetrie, kterou aplikace odesílá – ne pouze vlastní zprávy, ale také standardní telemetrii.
 
-Na portálu Application Insights můžete data filtrovat a rozdělit na hodnoty vlastností, aby bylo účelem porovnání různých verzí.
+Na portálu Application Insights vyfiltrujte a rozdělte data podle hodnot vlastností, aby bylo možné porovnat různé verze.
 
-Chcete-li to provést, [nastavte inicializátor telemetrie](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer):
+K tomu je potřeba [nastavit inicializátor telemetrie](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer):
 
 **Aplikace v ASP.NET**
 
@@ -140,7 +140,7 @@ Chcete-li to provést, [nastavte inicializátor telemetrie](../../azure-monitor/
     }
 ```
 
-Ve inicializátoru webové aplikace, například Global.asax.cs:
+V inicializátoru webové aplikace, jako je například Global.asax.cs:
 
 ```csharp
 
@@ -155,9 +155,9 @@ Ve inicializátoru webové aplikace, například Global.asax.cs:
 **Aplikace ASP.NET Core**
 
 > [!NOTE]
-> Přidání inicializéru pomocí `ApplicationInsights.config` nebo použití `TelemetryConfiguration.Active` není platné pro ASP.NET základní aplikace. 
+> Přidání inicializátoru `ApplicationInsights.config` pomocí nebo `TelemetryConfiguration.Active` použití není pro ASP.NET Core aplikace platné. 
 
-Pro [ASP.NET základní](asp-net-core.md#adding-telemetryinitializers) aplikace, `TelemetryInitializer` přidání nového se provádí přidáním do kontejneru vkládání závislostí, jak je znázorněno níže. To se `ConfigureServices` provádí metodou `Startup.cs` vaší třídy.
+U [ASP.NET Corech](asp-net-core.md#adding-telemetryinitializers) aplikací je přidání nového `TelemetryInitializer` provedeno přidáním do kontejneru vkládání závislostí, jak je znázorněno níže. To se provádí v `ConfigureServices` metodě vaší `Startup.cs` třídy.
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;
@@ -168,7 +168,7 @@ Pro [ASP.NET základní](asp-net-core.md#adding-telemetryinitializers) aplikace,
 }
 ```
 
-Všechny nové TelemetryClients automaticky přidat hodnotu vlastnosti, kterou zadáte. Jednotlivé události telemetrie můžete přepsat výchozí hodnoty.
+Všechny nové TelemetryClients automaticky přidají hodnotu vlastnosti, kterou zadáte. Jednotlivé události telemetrie můžou přepsat výchozí hodnoty.
 
 ## <a name="next-steps"></a>Další kroky
    - [Uživatelé, relace, události](usage-segmentation.md)
@@ -176,4 +176,4 @@ Všechny nové TelemetryClients automaticky přidat hodnotu vlastnosti, kterou z
    - [Uchovávání](usage-retention.md)
    - [Toky uživatele](usage-flows.md)
    - [Workbooks](../../azure-monitor/app/usage-workbooks.md)
-   - [Přidání kontextu uživatele](usage-send-user-context.md)
+   - [Přidat kontext uživatele](usage-send-user-context.md)

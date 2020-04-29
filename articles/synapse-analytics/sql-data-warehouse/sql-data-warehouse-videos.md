@@ -1,6 +1,6 @@
 ---
 title: Videa
-description: Odkazy na různé seznamy videí pro Azure Synapse Analytics.
+description: Odkazuje na různé seznamy stop videa pro Azure synapse Analytics.
 services: synapse-analytics
 author: anumjs
 manager: craigg
@@ -12,17 +12,17 @@ ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 0ac17579a1afedc3391b20f336ea9563b1c2d8f9
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80350134"
 ---
-# <a name="azure-synapse-analytics---sql-pool-videos"></a>Azure Synapse Analytics - Videa z fondu SQL
+# <a name="azure-synapse-analytics---sql-pool-videos"></a>Azure synapse Analytics – videa o fondech SQL
 
-Podívejte se na nejnovější videa fondu Azure Synapse SQL a získejte informace o nových funkcích a vylepšeních výkonu. 
+Podívejte se na nejnovější videa ke fondu SQL Azure synapse a seznamte se s novými funkcemi a vylepšeními výkonu. 
 
-Chcete-li začít, vyberte přehled videa níže se dozvíte o nové aktualizace fondu SQL Azure Synapse. Také se dozvíte, jak lze moderní vzorce datového skladu použít k řešení reálných scénářů, jako je kyberkriminalita.
+Pokud chcete začít, podívejte se na následující video s přehledem, kde se dozvíte o nových aktualizacích fondu SQL Azure synapse. Seznamte se také s tím, jak se dají vzory moderních datových skladů použít k řešení reálných scénářů, jako je kybernetická.
 </br>
 
 <a href="https://www.youtube.com/watch?v=7MDCWgxPnVY&list=PLXtHYVsvn_b_v4EKljH6dGo9qJ7JjItWL&index=2">
@@ -31,8 +31,8 @@ Chcete-li začít, vyberte přehled videa níže se dozvíte o nové aktualizace
   </div>
 </a>
 
-Další videa popisující konkrétní funkce si můžete prohlédnout na: 
-- [YouTube: Pokročilá analýza s Azure](https://www.youtube.com/playlist?list=PLLasX02E8BPClOvjNV9bXk3LUuf3nQiS2)
-- [Videa Azure](https://azure.microsoft.com/resources/videos/index/?services=sql-data-warehouse)
+Další videa popisující konkrétní funkce lze zobrazit na: 
+- [YouTube: Pokročilá analýza pomocí Azure](https://www.youtube.com/playlist?list=PLLasX02E8BPClOvjNV9bXk3LUuf3nQiS2)
+- [Videa k Azure](https://azure.microsoft.com/resources/videos/index/?services=sql-data-warehouse)
 
 

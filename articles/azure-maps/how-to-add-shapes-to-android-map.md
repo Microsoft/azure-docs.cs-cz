@@ -1,6 +1,6 @@
 ---
-title: Přidání obrazců do map Android | Mapy Microsoft Azure
-description: V tomto článku se dozvíte, jak vykreslit různé obrazce na mapě pomocí sady Microsoft Azure Maps Android SDK.
+title: Přidat obrazce do map pro Android | Mapy Microsoft Azure
+description: V tomto článku se naučíte, jak vykreslovat různé obrazce na mapě pomocí Android SDK Microsoft Azure Maps.
 author: philmea
 ms.author: philmea
 ms.date: 04/26/2019
@@ -9,26 +9,26 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 7a793ff35675c876dc429976ebee96887b12735a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80335592"
 ---
-# <a name="add-a-shape-to-a-map-using-azure-maps-android-sdk"></a>Přidání obrazce do mapy pomocí sady Azure Maps Android SDK
+# <a name="add-a-shape-to-a-map-using-azure-maps-android-sdk"></a>Přidání obrazce na mapu pomocí Azure Maps Android SDK
 
-Tento článek ukazuje, jak vykreslit obrazce na mapě pomocí Azure Maps Android SDK.
+V tomto článku se dozvíte, jak vykreslit obrazce na mapě pomocí Azure Maps Android SDK.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li dokončit proces v tomto článku, je třeba nainstalovat [Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) načíst mapu.
+Chcete-li dokončit proces v tomto článku, je nutné nainstalovat [Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) , aby se načetla mapa.
 
 
-## <a name="add-a-line-to-the-map"></a>Přidání čáry do mapy
+## <a name="add-a-line-to-the-map"></a>Přidat čáru k mapě
 
-Řádek můžete do mapy přidat pomocí **řádkové vrstvy**, podle následujících kroků přidejte čáru na mapu.
+K mapě můžete přidat čáru pomocí **spojnicové vrstvy**, podle následujících kroků přidejte čáru na mapě.
 
-1. Upravit **res > rozložení > activity_main.xml** tak, aby to vypadalo jako ten níže:
+1. Upravte **> layout > activity_main. XML** , aby vypadal takto:
 
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -51,7 +51,7 @@ Chcete-li dokončit proces v tomto článku, je třeba nainstalovat [Azure Maps 
     </FrameLayout>
     ```
 
-2. Zkopírujte následující fragment kódu níže do metody **onCreate()** vaší `MainActivity.java` třídy.
+2. Zkopírujte následující fragment kódu níže do metody **Create ()** vaší `MainActivity.java` třídy.
 
     ```Java
     mapControl.onReady(map -> {
@@ -76,9 +76,9 @@ Chcete-li dokončit proces v tomto článku, je třeba nainstalovat [Azure Maps 
 
     ```
     
-    Fragment kódu výše výše získá instanci řízení mapy Azure Maps pomocí metody zpětného volání **onReady().** Potom vytvoří objekt zdroje dat pomocí **DataSource** třídy a přidá ji do mapy. Pak vytvoří seznam **Point** objektů. **LineString** je vytvořen ze seznamu bodů a přidán do zdroje dat. **Řádková vrstva** vykresluje čárové objekty zabalené ve zdroji dat na mapě. Poté se vytvoří řádková vrstva a přidá se do ní zdroj dat.
+    Výše uvedený fragment kódu získá Azure Maps instanci ovládacího prvku mapy pomocí zpětného volání metody **Reada ()** . Potom vytvoří objekt zdroje dat pomocí třídy **DataSource** a přidá jej do mapy. Pak vytvoří seznam objektů **Point** . **LineString** se vytvoří ze seznamu bodů a přidají se do zdroje dat. **Spojnicová vrstva** vykresluje objekty čáry zabalené ve zdroji dat na mapě. Pak se vytvoří Spojnicová vrstva a do ní se přidá zdroj dat.
 
-    Po přidání fragmentu kódu výše, `MainActivity.java` by měl vypadat jako ten níže:
+    Po přidání výše uvedeného fragmentu kódu `MainActivity.java` by měl vypadat takto:
     
     ```Java
     package com.example.myapplication;
@@ -174,18 +174,18 @@ Chcete-li dokončit proces v tomto článku, je třeba nainstalovat [Azure Maps 
     }
     ```
 
-Pokud aplikaci spustíte nyní, měli byste vidět řádek na mapě, jak je vidět níže:
+Pokud teď svou aplikaci spustíte, měli byste vidět čáru na mapě, jak vidíte níže:
 
 <center>
 
-![Čára vykreslená na mapě Android](./media/how-to-add-shapes-to-android-map/android-map-line.png)</center>
+![Čára vykreslená na mapě pro Android](./media/how-to-add-shapes-to-android-map/android-map-line.png)</center>
 
 
-## <a name="add-a-polygon-to-the-map"></a>Přidání polygonu do mapy
+## <a name="add-a-polygon-to-the-map"></a>Přidat mnohoúhelník k mapě
 
-**Vrstva polygonu** umožňuje vykreslit oblast polygonu na mapu. Podle následujících kroků přidejte na mapu polygon.
+**Mnohoúhelníková vrstva** umožňuje vykreslit oblast mnohoúhelníku na mapu. Pomocí následujících kroků přidejte mnohoúhelník na mapě.
 
-1. Upravit **res > rozložení > activity_main.xml** tak, aby to vypadalo jako ten níže:
+1. Upravte **> layout > activity_main. XML** , aby vypadal takto:
 
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -208,7 +208,7 @@ Pokud aplikaci spustíte nyní, měli byste vidět řádek na mapě, jak je vid�
     </FrameLayout>
     ```
 
-2. Zkopírujte následující fragment kódu do metody **onCreate()** vaší `MainActivity.java` třídy.
+2. Zkopírujte následující fragment kódu do metody **Create ()** vaší `MainActivity.java` třídy.
 
     ```Java
     mapControl.onReady(map -> {
@@ -238,9 +238,9 @@ Pokud aplikaci spustíte nyní, měli byste vidět řádek na mapě, jak je vid�
     });
     ```
 
-    Fragment kódu výše výše získá instanci řízení mapy Azure Maps pomocí metody zpětného volání **onReady().** Potom vytvoří objekt zdroje dat pomocí **DataSource** třídy a přidá ji do mapy. Objekt **Polygon** je pak vytvořen ze seznamu **point** objektů a je přidán do zdroje dat. Vrstva **polygonu** vykreslí data zabalená ve zdroji dat na mapě. Potom vytvoří vrstvu polygonu, která vykreslí oblast polygonu a přidá do ní zdroj dat. Čárová **vrstva** vykreslí čárové objekty zabalené ve zdroji dat. Poslední část fragmentu kódu vytvoří řádkovou vrstvu, která vykreslí obrys polygonu a přidá do ní zdroj dat.
+    Výše uvedený fragment kódu získá Azure Maps instanci ovládacího prvku mapy pomocí zpětného volání metody **Reada ()** . Potom vytvoří objekt zdroje dat pomocí třídy **DataSource** a přidá jej do mapy. Objekt **mnohoúhelníku** se pak vytvoří ze seznamu objektů **Point** a přidá se do zdroje dat. **Mnohoúhelníková vrstva** vykresluje data zabalená ve zdroji dat na mapě. Potom vytvoří mnohoúhelníkovou vrstvu pro vykreslení oblasti mnohoúhelníku a přidá do ní zdroj dat. **Spojnicová vrstva** vykresluje objekty čáry zabalené ve zdroji dat. Poslední část fragmentu kódu vytvoří řádkovou vrstvu, která vykreslí obrys mnohoúhelníku a přidá do něj zdroj dat.
 
-    Po přidání fragmentu kódu výše, `MainActivity.java` by měl vypadat jako ten níže:
+    Po přidání výše uvedeného fragmentu kódu `MainActivity.java` by měl vypadat takto:
 
     ```Java
     package com.example.myapplication;
@@ -346,11 +346,11 @@ Pokud aplikaci spustíte nyní, měli byste vidět řádek na mapě, jak je vid�
     }
     ```
 
-Pokud aplikaci spustíte nyní, měli byste na mapě vidět polygon, jak je vidět níže:
+Pokud teď aplikaci spustíte, měli byste vidět mnohoúhelník na mapě, jak vidíte níže:
 
 <center>
 
-![Polygon vykreslený na mapě Android](./media/how-to-add-shapes-to-android-map/android-map-polygon.png)</center>
+![Mnohoúhelník vykreslený na mapě pro Android](./media/how-to-add-shapes-to-android-map/android-map-polygon.png)</center>
 
 
 ## <a name="next-steps"></a>Další kroky

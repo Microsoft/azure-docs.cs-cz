@@ -4,15 +4,15 @@ description: Popisuje, jak definovat výstupní hodnoty v šabloně Azure Resour
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.openlocfilehash: 203bfc66e9515ef14a5fe1315ef5b9ee07075041
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79460020"
 ---
 # <a name="outputs-in-azure-resource-manager-template"></a>Výstupy v šabloně Azure Resource Manager
 
-Tento článek popisuje, jak definovat výstupní hodnoty v šabloně Azure Resource Manager. Výstupy se používají, když potřebujete vrátit hodnoty z nasazených prostředků.
+Tento článek popisuje, jak definovat výstupní hodnoty v šabloně Azure Resource Manager. Výstupy použijete, když potřebujete vrátit hodnoty z nasazených prostředků.
 
 ## <a name="define-output-values"></a>Definovat výstupní hodnoty
 
@@ -29,7 +29,7 @@ Následující příklad ukazuje, jak vrátit ID prostředku pro veřejnou IP ad
 
 ## <a name="conditional-output"></a>Podmíněný výstup
 
-V části výstupy můžete podmíněně vrátit hodnotu. Obvykle se používá podmínka ve výstupech, když jste [podmíněně nasadili](conditional-resource-deployment.md) prostředek. Následující příklad ukazuje, jak podmíněně vrátit ID prostředku pro veřejnou IP adresu na základě toho, zda byla nasazena nová adresa:
+V části výstupy můžete podmíněně vracet hodnotu. V případě [podmíněného nasazení](conditional-resource-deployment.md) prostředku se obvykle používá podmínka ve výstupech. Následující příklad ukazuje, jak podmíněně vracet ID prostředku pro veřejnou IP adresu na základě toho, zda byla nasazena nová:
 
 ```json
 "outputs": {
@@ -41,11 +41,11 @@ V části výstupy můžete podmíněně vrátit hodnotu. Obvykle se používá 
 }
 ```
 
-Jednoduchý příklad podmíněného výstupu naleznete v [tématu podmíněná výstupní šablona](https://github.com/bmoore-msft/AzureRM-Samples/blob/master/conditional-output/azuredeploy.json).
+Jednoduchý příklad podmíněného výstupu naleznete v tématu [podmíněná výstupní šablona](https://github.com/bmoore-msft/AzureRM-Samples/blob/master/conditional-output/azuredeploy.json).
 
 ## <a name="dynamic-number-of-outputs"></a>Dynamický počet výstupů
 
-V některých scénářích neznáte počet instancí hodnoty, které je třeba vrátit při vytváření šablony. Proměnný počet hodnot můžete vrátit pomocí elementu **copy.**
+V některých scénářích neznáte počet instancí hodnoty, které potřebujete vrátit při vytváření šablony. Můžete vrátit proměnný počet hodnot pomocí elementu **copy** .
 
 ```json
 "outputs": {
@@ -59,19 +59,19 @@ V některých scénářích neznáte počet instancí hodnoty, které je třeba 
 }
 ```
 
-Další informace najdete [v tématu Iterace výstupů v šablonách Azure Resource Manager .](copy-outputs.md)
+Další informace najdete v tématu [výstup iterace v šablonách Azure Resource Manager](copy-outputs.md).
 
 ## <a name="linked-templates"></a>Propojené šablony
 
-Chcete-li načíst výstupní hodnotu z propojené šablony, použijte [referenční](template-functions-resource.md#reference) funkci v nadřazené šabloně. Syntaxe v nadřazené šabloně je:
+K načtení výstupní hodnoty z propojené šablony použijte [odkazovou](template-functions-resource.md#reference) funkci v nadřazené šabloně. Syntaxe v nadřazené šabloně je:
 
 ```json
 "[reference('<deploymentName>').outputs.<propertyName>.value]"
 ```
 
-Při získávání výstupní vlastnosti z propojené šablony nemůže název vlastnosti obsahovat pomlčku.
+Při získávání výstupní vlastnosti z propojené šablony název vlastnosti nemůže obsahovat pomlčku.
 
-Následující příklad ukazuje, jak nastavit adresu IP v systému vyrovnávání zatížení načtením hodnoty z propojené šablony.
+Následující příklad ukazuje, jak nastavit IP adresu v nástroji pro vyrovnávání zatížení načtením hodnoty z propojené šablony.
 
 ```json
 "publicIPAddress": {
@@ -79,15 +79,15 @@ Následující příklad ukazuje, jak nastavit adresu IP v systému vyrovnáván
 }
 ```
 
-`reference` Funkci nelze použít v části výstupy [vnořené šablony](linked-templates.md#nested-template). Chcete-li vrátit hodnoty pro nasazený prostředek ve vnořené šabloně, převeďte vnořenou šablonu na propojenou šablonu.
+`reference` Funkci nelze použít v části výstupy [vnořené šablony](linked-templates.md#nested-template). Chcete-li vrátit hodnoty nasazeného prostředku ve vnořené šabloně, převeďte vnořenou šablonu na propojenou šablonu.
 
 ## <a name="get-output-values"></a>Získat výstupní hodnoty
 
-Po úspěšném nasazení jsou výstupní hodnoty automaticky vráceny ve výsledcích nasazení.
+Po úspěšném nasazení se výstupní hodnoty automaticky vrátí do výsledků nasazení.
 
 Chcete-li získat výstupní hodnoty z historie nasazení, můžete použít skript.
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Prostředí](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 (Get-AzResourceGroupDeployment `
@@ -106,16 +106,16 @@ az deployment group show \
 
 ---
 
-## <a name="example-templates"></a>Ukázkové šablony
+## <a name="example-templates"></a>Příklady šablon
 
-Následující příklady ukazují scénáře pro použití výstupů.
+Následující příklady ukazují scénáře použití výstupů.
 
 |Šablona  |Popis  |
 |---------|---------|
-|[Kopírování proměnných](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) | Vytvoří složité proměnné a výstupy těchto hodnot. Nenasazuje žádné prostředky. |
-|[Veřejná IP adresa](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) | Vytvoří veřejnou IP adresu a vyvede ID prostředku. |
-|[Vyrovnávání zatížení](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) | Odkazy na předchozí šablonu. Při vytváření správce zatížení použije ID prostředku ve výstupu. |
+|[Kopírovat proměnné](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) | Vytvoří komplexní proměnné a vypíše tyto hodnoty. Neimplementuje žádné prostředky. |
+|[Veřejná IP adresa](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) | Vytvoří veřejnou IP adresu a vypíše ID prostředku. |
+|[Load Balancer](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) | Odkazuje na předchozí šablonu. Při vytváření nástroje pro vyrovnávání zatížení používá ID prostředku ve výstupu. |
 
 ## <a name="next-steps"></a>Další kroky
 
-* Informace o dostupných vlastnostech pro výstupy najdete [v tématu Principy struktury a syntaxe šablon Azure Resource Manageru](template-syntax.md).
+* Další informace o dostupných vlastnostech výstupů naleznete v tématu [pochopení struktury a syntaxe šablon Azure Resource Manager](template-syntax.md).

@@ -1,6 +1,6 @@
 ---
-title: Změna stylu mapy v Azure Mapách | Mapy Microsoft Azure
-description: V tomto článku se dozvíte o funkcích souvisejících se stylem, které jsou k dispozici ve webové sadě Microsoft Azure Maps SDK.
+title: Změnit styl mapy v Azure Maps | Mapy Microsoft Azure
+description: V tomto článku se seznámíte s funkcemi, které jsou k dispozici v sadě Microsoft Azure Maps Web SDK.
 author: philmea
 ms.author: philmea
 ms.date: 07/29/2019
@@ -9,19 +9,19 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: b1c5d9b5cd2b6b9bfecf8a0af79699061003eec1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80335691"
 ---
 # <a name="change-the-style-of-the-map"></a>Změna stylu mapy
 
-Mapa podporuje několik různých [možností stylu,](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.styleoptions) které lze nastavit při inicializování mapy nebo později pomocí funkce mapy. `setStyle` Tento článek ukazuje, jak pomocí těchto možností stylu přizpůsobit vzhled mapy. Naučte se nastavit styl při načítání mapy a naučte se nastavit nový styl mapy pomocí ovládacího prvku výběr stylu.
+Mapa podporuje několik různých [možností stylu](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.styleoptions) , které lze nastavit při inicializaci mapy nebo později pomocí funkce Maps `setStyle` . V tomto článku se dozvíte, jak tyto možnosti stylu použít k přizpůsobení vzhledu map. Naučte se nastavit styl při načítání mapy a Naučte se nastavit nový styl mapy pomocí ovládacího prvku Výběr stylu.
 
-## <a name="set-the-style-options"></a>Nastavení voleb stylu 
+## <a name="set-the-style-options"></a>Nastavení možností stylu 
 
-Možnosti stylu mohou být předány do mapy, když `setStyle` je inicializována nebo aktualizována později pomocí funkce mapy.
+Možnosti stylu lze předat do mapy, pokud jsou inicializovány nebo aktualizovány později pomocí funkce Maps `setStyle` .
 
 ```javascript
 //Set the style options when creating the map.
@@ -39,22 +39,22 @@ map.setStyle({
 });
 ```
 
-Následující nástroj ukazuje, jak různé možnosti stylu mění způsob vykreslení mapy. Chcete-li vidět 3D budovy, přibližte se v blízkosti hlavního města. 
+Následující nástroj ukazuje, jak různé možnosti stylu mění způsob, jakým se mapa vykresluje. Pokud chcete zobrazit prostorové budovy, přiblížte se k hlavnímu městu. 
 
 <br/>
 
 <iframe height="700" style="width: 100%;" scrolling="no" title="Možnosti stylu mapy" src="https://codepen.io/azuremaps/embed/eYNMjPb?height=700&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Podívejte se na <a href='https://codepen.io/azuremaps/pen/eYNMjPb'>možnosti</a> stylu<a href='https://codepen.io/azuremaps'>@azuremaps</a>mapy pera podle Azure Maps ( ) na <a href='https://codepen.io'>CodePen</a>.
+Podívejte se na <a href='https://codepen.io/azuremaps/pen/eYNMjPb'>Možnosti stylu mapy</a> pera podle Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-## <a name="choose-a-base-map-style"></a>Volba stylu základní mapy
+## <a name="choose-a-base-map-style"></a>Zvolit základní styl mapy
 
-Jedna z nejběžnějších možností stylu mapy se používá ke změně stylu základní mapy, která je stylizovaná. Mnoho [podporovaných stylů map v Mapách Azure](supported-map-styles.md) je k dispozici ve webové sdk. 
+Jedna z nejběžnějších možností stylu mapy se používá ke změně stylu základní mapy, která je ve stylu. Mnohé z [podporovaných stylů mapy v Azure Maps](supported-map-styles.md) jsou dostupné v sadě web SDK. 
 
-### <a name="set-base-map-style-on-map-load"></a>Nastavení stylu základní mapy na zatížení mapy
+### <a name="set-base-map-style-on-map-load"></a>Nastavit styl základní mapy při načítání mapy
 
 
-Styl mapy lze zadat při inicializaci `style` mapy nastavením volby. V následujícím kódu `style` je možnost mapy nastavena `grayscale_dark` na při inicializaci.
+Styl mapy lze zadat při inicializaci mapy nastavením `style` možnosti. V následujícím kódu je `style` možnost mapy nastavena na hodnotu `grayscale_dark` při inicializaci.
 
 ```javascript
 var map = new atlas.Map('map', {
@@ -66,40 +66,40 @@ var map = new atlas.Map('map', {
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Nastavení stylu při načtení mapy' src='//codepen.io/azuremaps/embed/WKOQRq/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na nastavení stylu pera<a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io/azuremaps/pen/WKOQRq/'>na načtení mapy</a> pomocí Azure Maps ( ) na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Nastavení stylu při načítání map' src='//codepen.io/azuremaps/embed/WKOQRq/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na pero <a href='https://codepen.io/azuremaps/pen/WKOQRq/'>Nastavení stylu při načtení mapy</a> pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-### <a name="update-the-base-map-style"></a>Aktualizace stylu základní mapy
+### <a name="update-the-base-map-style"></a>Aktualizuje základní styl mapy.
 
- Styl mapy lze aktualizovat `setStyle` pomocí funkce `style` a nastavení matné volby na požadovaný styl mapy.
+ Styl mapy lze aktualizovat pomocí `setStyle` funkce a nastavením `style` možnosti na požadovaný styl mapy.
 
 ```javascript
 map.setStyle({ style: 'satellite' });
 ```
 
-V následujícím kódu se po načtení instance mapy styl `road` `satellite` mapy aktualizuje z na funkci [setStyle.](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-maps-typescript-latest#setstyle-styleoptions-)
+V následujícím kódu po načtení instance mapy je styl mapy aktualizován z `road` na k `satellite` použití funkce [setStyle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-maps-typescript-latest#setstyle-styleoptions-) .
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Aktualizace stylu' src='//codepen.io/azuremaps/embed/yqXYzY/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na pero Aktualizace<a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io/azuremaps/pen/yqXYzY/'>stylu</a> podle Azure Maps ( ) na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Aktualizace stylu' src='//codepen.io/azuremaps/embed/yqXYzY/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se, jak pero <a href='https://codepen.io/azuremaps/pen/yqXYzY/'>aktualizuje styl</a> o Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-### <a name="add-the-style-picker"></a>Přidání výběru stylu
+### <a name="add-the-style-picker"></a>Přidat výběr stylu
 
-Ovládací prvek výběr stylu poskytuje snadno použitelné tlačítko s informačním panelem, které může koncový uživatel použít ke změně stylu mapy. Výběr stylu má dvě různé možnosti rozložení. Ve výchozím nastavení výběr `icons` stylu používá rozložení a zobrazuje celý styl mapy jako vodorovný řádek ikon. 
+Ovládací prvek pro výběr stylu poskytuje snadné použití tlačítka s panelem s plovoucím panelem, který lze použít pro koncového uživatele ke změně stylu mapy. Výběr stylu má dvě různé možnosti rozložení. Ve výchozím nastavení používá výběr stylu `icons` rozložení a zobrazuje celý styl mapy jako vodorovný řádek ikon. 
 
 <center>
 
 ![Rozložení ikony výběru stylu](media/choose-map-style/style-picker-icon-layout.png)</center>
 
-Druhá možnost rozložení `list` se nazývá a zobrazí posuvný seznam stylů mapy.  
+Je volána `list` druhá možnost rozložení a zobrazí seznam stylů mapy.  
 
 <center>
 
-![Rozložení seznamu výběru stylů](media/choose-map-style/style-picker-list-layout.png)</center>
+![Rozložení seznamu výběru stylu](media/choose-map-style/style-picker-list-layout.png)</center>
 
 
-Následující kód ukazuje, jak vytvořit instanci ovládacího prvku výběr stylu a přidat ji do pravého horního rohu mapy. Výběr stylu je nastaven tak, aby měl tmavý styl a zobrazoval několik vybraných stylů mapy pomocí vrstvy seznamu.
+Následující kód ukazuje, jak vytvořit instanci ovládacího prvku pro výběr stylu a přidat ho do pravého horního rohu mapy. Výběr stylu je nastaven tak, aby měl tmavý styl a zobrazila vybraná několik stylů mapy pomocí vrstvy seznamu.
 
 ```javascript
 map.controls.add(new atlas.control.StyleControl({
@@ -111,25 +111,25 @@ map.controls.add(new atlas.control.StyleControl({
 }); 
 ```
 
-Následující kód přidá ovládací prvek výběrstylu s výchozím nastavením na mapě, takže uživatel může snadno přepínat mezi různými styly mapy. Přepínejte styl mapy pomocí ovládacího prvku styl mapy v pravém horním rohu.
+Následující kód přidá ovládací prvek pro výběr stylu s výchozím nastavením na mapu, aby uživatel mohl snadno přepínat mezi různými styly mapy. Přepněte styl mapy pomocí ovládacího prvku styl mapy v pravém horním rohu.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Přidání výběru stylu' src='//codepen.io/azuremaps/embed/OwgyvG/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na pero přidání výběr<a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io/azuremaps/pen/OwgyvG/'>stylu</a> pomocí Azure Maps ( ) na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Přidání výběru stylu' src='//codepen.io/azuremaps/embed/OwgyvG/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na pero <a href='https://codepen.io/azuremaps/pen/OwgyvG/'>Přidání výběru stylu</a> pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 > [!TIP]
-> Ve výchozím nastavení při použití cenové úrovně S0 v Azure Maps ovládací prvek výběr stylu uvádí všechny dostupné styly. Chcete-li snížit počet stylů v tomto seznamu, přejděte do `mapStyle` volby výběru stylů pole stylů, které se mají zobrazit v seznamu. Pokud používáte S1 a chcete zobrazit všechny dostupné `mapStyles` styly, nastavte `"all"`volbu výběru stylů na .
+> Ve výchozím nastavení, při použití cenové úrovně S0 Azure Maps, ovládací prvek pro výběr stylu vypíše všechny dostupné styly. Pokud chcete snížit počet stylů v tomto seznamu, předejte pole stylů, které chcete zobrazit v seznamu, do `mapStyle` možnosti výběru stylu. Pokud používáte S1 a chcete zobrazit všechny dostupné styly, nastavte `mapStyles` možnost výběru stylu na. `"all"`
 
 ## <a name="next-steps"></a>Další kroky
 
-Chcete-li se dozvědět více o třídách a metodách použitých v tomto článku:
+Další informace o třídách a metodách, které se používají v tomto článku:
 
 > [!div class="nextstepaction"]
 > [Mapa](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
 
 > [!div class="nextstepaction"]
-> [Možnosti stylu](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.styleoptions)
+> [StyleOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.styleoptions)
 
 > [!div class="nextstepaction"]
 > [StyleControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.control.stylecontrol)
@@ -137,7 +137,7 @@ Chcete-li se dozvědět více o třídách a metodách použitých v tomto člá
 > [!div class="nextstepaction"]
 > [StyleControlOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.stylecontroloptions)
 
-Přidání ovládacích prvků do map:
+Přidejte ovládací prvky do svých map:
 
 > [!div class="nextstepaction"]
 > [Přidání mapových ovládacích prvků](map-add-controls.md)

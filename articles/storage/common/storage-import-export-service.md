@@ -1,6 +1,6 @@
 ---
-title: Použití importu a exportu Azure k přenosu dat do a z Azure Storage | Dokumenty společnosti Microsoft
-description: Zjistěte, jak na webu Azure Portal vytvářet úlohy importu a exportu pro přenos dat do a z Azure Storage.
+title: Použití Azure import/export k přenosu dat do a z Azure Storage | Microsoft Docs
+description: Naučte se vytvářet úlohy importu a exportu v Azure Portal pro přenos dat do a z Azure Storage.
 author: alkohli
 services: storage
 ms.service: storage
@@ -9,114 +9,114 @@ ms.date: 03/15/2020
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: eee0fc2797fbe0666a6b848fde574c7807f47cc9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80282439"
 ---
-# <a name="what-is-azure-importexport-service"></a>Co je služba Import a export Azure?
+# <a name="what-is-azure-importexport-service"></a>Co je služba Azure import/export?
 
-Služba Azure Import/Export se používá k bezpečnému importu velkého množství dat do úložiště objektů Blob Azure a souborů Azure prostřednictvím odesílání diskových jednotek do datového centra Azure. Tuto službu lze také použít k přenosu dat z úložiště objektů Blob Azure na diskové jednotky a dodávat do místních webů. Data z jedné nebo více diskových jednotek se dá importovat do úložiště objektů Blob Azure nebo do souborů Azure.
+Služba import/export Azure slouží k bezpečnému importu velkých objemů dat do služby Azure Blob Storage a souborů Azure prostřednictvím přenosu diskových jednotek do datacentra Azure. Tato služba se dá také použít k přenosu dat z úložiště objektů BLOB v Azure na diskové jednotky a k odeslání do vašich místních webů. Data z jedné nebo více diskových jednotek můžete importovat buď do služby Azure Blob Storage, nebo do souborů Azure.
 
-Zadejte vlastní diskové jednotky a přenášejte data pomocí služby Azure Import/Export. Můžete také použít diskové jednotky dodané společností Microsoft.
+Zadejte vlastní diskové jednotky a přeneste data pomocí služby Azure import/export. Můžete také použít diskové jednotky dodávané společností Microsoft.
 
-Pokud chcete přenášet data pomocí diskových jednotek dodaných společností Microsoft, můžete k importu dat do Azure použít [disk Azure Data Box.](../../databox/data-box-disk-overview.md) Společnost Microsoft dodává do vašeho datového centra prostřednictvím regionálního operátora až 5 šifrovaných diskových jednotek SSD s celkovou kapacitou 40 TB na objednávku. Můžete rychle nakonfigurovat diskové jednotky, kopírovat data na diskové jednotky přes připojení USB 3.0 a doručovat diskové jednotky zpět do Azure. Další informace najdete v přehledu [disku datové schránky Azure](../../databox/data-box-disk-overview.md).
+Pokud chcete přenášet data pomocí diskových jednotek poskytovaných Microsoftem, můžete k importu dat do Azure použít [Azure Data box disk](../../databox/data-box-disk-overview.md) . Společnost Microsoft dodává až 5 šifrovaných diskových jednotek SSD (SSD) s celkovou kapacitou 40 TB na objednávku do vašeho datacentra prostřednictvím regionálního dopravce. Můžete rychle konfigurovat diskové jednotky, kopírovat data na diskové jednotky prostřednictvím připojení USB 3,0 a diskové jednotky dodávat zpátky do Azure. Další informace najdete v článku [přehled Azure Data box disk](../../databox/data-box-disk-overview.md).
 
-## <a name="azure-importexport-use-cases"></a>Případy použití azure importu a exportu
+## <a name="azure-importexport-use-cases"></a>Případy použití importu a exportu v Azure
 
-Zvažte použití služby Azure Import/Export při nahrávání nebo stahování dat v síti je příliš pomalé, nebo získání další šířky pásma sítě je nákladově neúnosné. Tuto službu použijte v následujících scénářích:
+Zvažte použití služby importu a exportu v Azure, pokud je nahrávání nebo stahování dat v síti příliš pomalé, nebo pokud je větší šířka pásma sítě zakazují náklady. Tuto službu použijte v následujících případech:
 
-* **Migrace dat do cloudu**: Přesuňte velké množství dat do Azure rychle a nákladově efektivně.
-* **Distribuce obsahu**: Rychle odesílejte data na weby zákazníků.
-* **Zálohování**: Zálohy místních dat můžete ukládat do Azure Storage.
-* **Obnova dat**: Obnovte velké množství dat uložených v úložišti a doručujte je do místního umístění.
+* **Migrace dat do cloudu**: rychlé a nákladové přesunutí velkých objemů dat do Azure.
+* **Distribuce obsahu**: umožňuje rychle odesílat data na zákaznické weby.
+* **Zálohování**: pořídit zálohy místních dat, aby se ukládaly v Azure Storage.
+* **Obnovení dat**: Obnova velkého množství dat uložených v úložišti a jejich doručování do místního umístění.
 
-## <a name="importexport-components"></a>Import/export součástí
+## <a name="importexport-components"></a>Komponenty pro import/export
 
-Služba importu a exportu používá následující součásti:
+Služba import/export používá následující komponenty:
 
-* **Služba Import/export**: Tato služba dostupná na webu Azure Portal pomáhá uživateli vytvářet a sledovat import dat (nahrávání) a exportovat (stahovat) úlohy.  
+* **Služba import/export**: Tato služba je dostupná v Azure Portal pomáhá uživateli vytvářet a sledovat úlohy importu a exportu dat (nahrávání) a exportovat (Stáhnout) úlohy.  
 
-* **WAImportExport nástroj**: Toto je nástroj příkazového řádku, který provádí následující:
+* **Nástroj WAImportExport**: Jedná se o nástroj příkazového řádku, který provede následující akce:
   * Připraví diskové jednotky, které jsou dodávány pro import.
   * Usnadňuje kopírování dat na jednotku.
-  * Šifruje data na jednotce pomocí 128bitového nástroje BitLocker aes. K ochraně klíče nástroje BitLocker můžete použít externí ochranu klíčů.
-  * Generuje soubory deníku jednotek použité při vytváření importu.
+  * Šifruje data na jednotce pomocí AES 128-bit BitLockeru. K ochraně klíče BitLockeru můžete použít ochranu pomocí externího klíče.
+  * Vygeneruje soubory deníku jednotky používané při vytváření importu.
   * Pomáhá identifikovat počet jednotek potřebných pro úlohy exportu.
 
 > [!NOTE]
-> Nástroj WAImportExport je k dispozici ve dvou verzích, verze 1 a 2. Doporučujeme použít:
+> Nástroj WAImportExport je k dispozici ve dvou verzích verze 1 a 2. Doporučujeme, abyste používali:
 >
-> * Verze 1 pro import a export do úložiště objektů blob Azure.
+> * Verze 1 pro import/export do úložiště objektů BLOB v Azure
 > * Verze 2 pro import dat do souborů Azure.
 >
-> Nástroj WAImportExport je kompatibilní pouze s 64bitovým operačním systémem Windows. U konkrétních podporovaných verzí operačního systému přejděte na požadavky na [import a export Azure](storage-import-export-requirements.md#supported-operating-systems).
+> Nástroj WAImportExport je kompatibilní pouze s 64bitovým operačním systémem Windows. Konkrétní verze operačních systémů najdete v požadavcích na [Import/export do Azure](storage-import-export-requirements.md#supported-operating-systems).
 
-* **Diskové jednotky**: Do datového centra Azure můžete dodatového centra Azure doručovat jednotky SSD nebo Pevné disky(HDD). Při vytváření úlohy importu dodáte diskové jednotky obsahující data. Při vytváření úlohy exportu odesíláte prázdné jednotky do datového centra Azure. Konkrétní typy disků naleznete v části [Podporované typy disků](storage-import-export-requirements.md#supported-hardware).
+* **Diskové jednotky**: jednotky SSD (Solid-State Drive) a jednotky pevného disku (HDD) můžete dodávat do datacentra Azure. Při vytváření úlohy importu dodáváte diskové jednotky obsahující vaše data. Při vytváření úlohy exportu dodáváte prázdné jednotky do datacentra Azure. U určitých typů disků přejít na [podporované typy disků](storage-import-export-requirements.md#supported-hardware).
 
 ## <a name="how-does-importexport-work"></a>Jak funguje služba Import/Export?
 
-Služba Azure Import/Export umožňuje přenos dat do objektů BLOB Azure a souborů Azure vytvářením úloh. K vytváření úloh použijte portál Azure nebo rozhraní REST Azure Resource Manager. Každá úloha je přidružena k jednomu účtu úložiště.
+Služba import/export Azure umožňuje přenos dat do objektů blob Azure a souborů Azure vytvořením úloh. K vytvoření úloh použijte Azure Portal nebo Azure Resource Manager REST API. Každá úloha je přidružená k jednomu účtu úložiště.
 
-Úlohy mohou být importované nebo exportované úlohy. Úloha importu umožňuje importovat data do objektů Blob Azure nebo souborů Azure, zatímco úloha exportu umožňuje exportovat data z objektů Blob Azure. Pro úlohu importu odesíláte jednotky obsahující data. Když vytvoříte úlohu exportu, dodáte prázdné jednotky do datového centra Azure. V každém případě můžete dobýt až 10 diskových jednotek na úlohu.
+Úlohy mohou být importovány nebo exportovány. Úloha importu umožňuje importovat data do objektů blob Azure nebo souborů Azure, zatímco úloha exportu umožňuje export dat z objektů blob Azure. Pro úlohu importu dodáte jednotky, které obsahují vaše data. Když vytvoříte úlohu exportu, dodáte prázdné jednotky do datacentra Azure. V každém případě můžete odeslat až 10 diskových jednotek na jednu úlohu.
 
-### <a name="inside-an-import-job"></a>Uvnitř úlohy importu
+### <a name="inside-an-import-job"></a>V rámci úlohy importu
 
-Na vysoké úrovni úloha importu zahrnuje následující kroky:
+V rámci vysoké úrovně úloha importu zahrnuje následující kroky:
 
-1. Určete data, která mají být importována, počet jednotek, které potřebujete, umístění cílového objektu blob pro vaše data v úložišti Azure.
-2. Pomocí nástroje WAImportExport zkopírujte data na diskové jednotky. Zašifrujte diskové jednotky nástrojem BitLocker.
-3. Vytvořte úlohu importu v cílovém účtu úložiště na webu Azure Portal. Nahrajte soubory deníku jednotek.
-4. Zadejte zpáteční adresu a číslo účtu dopravce pro odeslání jednotek zpět k vám.
-5. Diskové jednotky zasávat na dodací adresu poskytnutou při vytváření úloh.
-6. Aktualizujte sledovací číslo dodávky v podrobnostech úlohy importu a odešlete úlohu importu.
+1. Určete data, která se mají importovat, počet jednotek, které potřebujete, cílové umístění objektu BLOB pro vaše data ve službě Azure Storage.
+2. K kopírování dat na diskové jednotky použijte nástroj WAImportExport. Zašifrujte diskové jednotky pomocí nástroje BitLocker.
+3. V Azure Portal vytvořte úlohu importu do svého cílového účtu úložiště. Nahrajte soubory deníku jednotek.
+4. Zadejte zpáteční adresu a číslo účtu dopravce pro odeslání jednotek zpět.
+5. Jednotky disku dodejte na doručovací adresu zadanou během vytváření úlohy.
+6. Aktualizujte číslo sledování doručení v podrobnostech úlohy import a odešlete úlohu importu.
 7. Jednotky jsou přijímány a zpracovávány v datovém centru Azure.
-8. Jednotky jsou dodávány pomocí účtu dopravce na zpáteční adresu uvedenou v úloze importu.
+8. Jednotky se dodávají pomocí vašeho účtu dopravce na zpáteční adresu poskytnutou v úloze importu.
 
 > [!NOTE]
-> U místních zásilek (v rámci země/oblasti datového centra) sdílejte účet domácího dopravce.
+> V případě dodávek místních (v rámci země nebo oblasti datového centra) prosím nasdílejte účet domácího dopravce.
 >
-> U zásilek v zahraničí (mimo zemi/oblast datového centra) sdílejte účet mezinárodního operátora.
+> Pro zahraniční dodávky (mimo země/oblast datového centra) prosím nasdílejte mezinárodní účet dopravce.
 
- ![Obrázek 1:Importovat tok úlohy](./media/storage-import-export-service/importjob.png)
+ ![Obrázek 1: import toku úloh](./media/storage-import-export-service/importjob.png)
 
-Podrobné pokyny k importu dat naleznete na adrese:
+Podrobné pokyny k importu dat najdete tady:
 
-* [Import dat do objektů Blob Azure](storage-import-export-data-to-blobs.md)
+* [Import dat do objektů blob Azure](storage-import-export-data-to-blobs.md)
 * [Import dat do souborů Azure](storage-import-export-data-to-files.md)
 
-### <a name="inside-an-export-job"></a>Uvnitř úlohy exportu
+### <a name="inside-an-export-job"></a>V rámci úlohy exportu
 
 > [!IMPORTANT]
-> Služba podporuje pouze export objektů BLOB Azure. Export souborů Azure není podporován.
+> Služba podporuje jenom export objektů blob Azure. Export souborů Azure se nepodporuje.
 
-Na vysoké úrovni úloha exportu zahrnuje následující kroky:
+V nejvyšší úrovni úloha exportu zahrnuje následující kroky:
 
-1. Určete data, která mají být exportována, počet jednotek, které potřebujete, zdrojové objekty BLOB nebo cesty kontejnerů dat v úložišti objektů Blob.
-2. Vytvořte úlohu exportu ve svém účtu zdrojového úložiště na webu Azure Portal.
-3. Určete zdrojové objekty BLOB nebo cesty kontejneru pro export dat.
-4. Zadejte zpáteční adresu a číslo účtu dopravce pro odeslání jednotek zpět k vám.
-5. Diskové jednotky zasávat na dodací adresu poskytnutou při vytváření úloh.
-6. Aktualizujte sledovací číslo dodávky v podrobnostech úlohy exportu a odešlete úlohu exportu.
+1. Určete, jaká data se mají exportovat, kolik jednotek budete potřebovat, zdrojové objekty blob nebo cesty kontejnerů vašich dat v úložišti objektů BLOB.
+2. Vytvořte ve svém účtu zdrojového úložiště úlohu exportu v Azure Portal.
+3. Zadejte zdrojové objekty blob nebo cesty kontejneru pro data, která chcete exportovat.
+4. Zadejte zpáteční adresu a číslo účtu dopravce pro odeslání jednotek zpět.
+5. Jednotky disku dodejte na doručovací adresu zadanou během vytváření úlohy.
+6. Aktualizujte číslo sledování doručení v podrobnostech úlohy Export a odešlete úlohu exportu.
 7. Jednotky jsou přijímány a zpracovávány v datovém centru Azure.
-8. Jednotky jsou šifrované pomocí nástroje BitLocker a klíče jsou k dispozici prostřednictvím portálu Azure.  
-9. Jednotky jsou dodávány pomocí účtu dopravce na zpáteční adresu uvedenou v úloze importu.
+8. Jednotky jsou šifrovány pomocí nástroje BitLocker a klíče jsou k dispozici prostřednictvím Azure Portal.  
+9. Jednotky se dodávají pomocí vašeho účtu dopravce na zpáteční adresu poskytnutou v úloze importu.
 
 > [!NOTE]
-> U místních zásilek (v rámci země/oblasti datového centra) sdílejte účet domácího dopravce.
+> V případě dodávek místních (v rámci země nebo oblasti datového centra) prosím nasdílejte účet domácího dopravce.
 >
-> U zásilek v zahraničí (mimo zemi/oblast datového centra) sdílejte účet mezinárodního operátora.
+> Pro zahraniční dodávky (mimo země/oblast datového centra) prosím nasdílejte mezinárodní účet dopravce.
   
- ![Obrázek 2:Exportovat tok úlohy](./media/storage-import-export-service/exportjob.png)
+ ![Obrázek 2: Export toku úloh](./media/storage-import-export-service/exportjob.png)
 
-Podrobné pokyny k exportu dat najdete v [oblasti Export dat z objektů BLOB Azure](storage-import-export-data-from-blobs.md).
+Podrobné pokyny k exportu dat najdete v tématu [Export dat z objektů blob Azure](storage-import-export-data-from-blobs.md).
 
 ## <a name="region-availability"></a>Dostupnost v oblastech
 
-Služba Import a export Azure podporuje kopírování dat do a ze všech účtů úložiště Azure. Diskové jednotky můžete dovést do jednoho z uvedených umístění. Pokud je váš účet úložiště v umístění Azure, který není zadán zde, alternativní umístění expedice je k dispozici při vytváření úlohy.
+Služba Azure import/export podporuje kopírování dat do a ze všech účtů úložiště Azure. Diskové jednotky můžete dodávat do jednoho z uvedených umístění. Pokud je váš účet úložiště v umístění Azure, které zde není zadáno, je při vytváření úlohy k dispozici alternativní umístění expedice.
 
-### <a name="supported-shipping-locations"></a>Podporovaná místa expedice
+### <a name="supported-shipping-locations"></a>Podporovaná umístění expedice
 
 |Země/region  |Země/region  |Země/region  |Země/region  |
 |---------|---------|---------|---------|
@@ -131,36 +131,36 @@ Služba Import a export Azure podporuje kopírování dat do a ze všech účtů
 
 ## <a name="security-considerations"></a>Důležité informace o zabezpečení
 
-Data na jednotce jsou šifrována pomocí 128bitového šifrování bitlockeru nástrojem AES. Toto šifrování chrání vaše data během přenosu.
+Data na jednotce jsou šifrovaná pomocí šifrování AES 128-bit nástroj BitLocker Drive Encryption. Toto šifrování chrání vaše data během přenosu.
 
-U úloh importu jsou jednotky šifrovány dvěma způsoby.  
+Pro úlohy importu se jednotky šifrují dvěma způsoby.  
 
-* Zadejte volbu při použití souboru *dataset.csv* při spuštění nástroje WAImportExport během přípravy jednotky.
+* Při přípravě jednotky zadejte možnost při použití souboru *DataSet. csv* při spuštění nástroje WAImportExport.
 
-* Povolte šifrování nástroje BitLocker ručně na jednotce. Při spuštění příkazového řádku nástroje WAImportExport při přípravě jednotky zadejte šifrovací klíč v souboru *driveset.csv.* Šifrovací klíč nástroje BitLocker lze dále chránit pomocí externího nástroje ochrany klíčů (označované také jako klíč spravovaný společností Microsoft) nebo pomocí klíče spravovaného zákazníkem. Další informace naleznete v [tématu Použití klíče spravovaného zákazníkem k ochraně klíče nástroje BitLocker](storage-import-export-encryption-key-portal.md).
+* Ručně povolte šifrování BitLockeru na jednotce. Při přípravě jednotky zadejte šifrovací klíč v *souboru driveset. csv* při spuštění příkazového řádku nástroje WAImportExport. Šifrovací klíč BitLockeru se dá dále chránit pomocí ochrany externích klíčů (označované taky jako spravovaný klíč Microsoftu) nebo podle zákaznického klíče spravovaného zákazníkem. Další informace najdete v tématu [použití spravovaného klíče zákazníka k ochraně klíče nástroje BitLocker](storage-import-export-encryption-key-portal.md).
 
-U úloh exportu služba po zkopírování dat na jednotky zašifruje jednotku pomocí nástroje BitLocker před jejich odesláním zpět. Šifrovací klíč se vám poskytuje prostřednictvím portálu Azure. Jednotku je třeba odemknout pomocí nástroje WAImporExport pomocí klíče.
+Pro úlohy exportu se po zkopírování dat na jednotky tato služba před odesláním zpět do vaší jednotky zašifruje pomocí nástroje BitLocker. Šifrovací klíč vám poskytnete prostřednictvím Azure Portal. Jednotku je potřeba odemknout pomocí nástroje WAImporExport pomocí klíče.
 
 [!INCLUDE [storage-import-export-delete-personal-info.md](../../../includes/storage-import-export-delete-personal-info.md)]
 
 ### <a name="pricing"></a>Ceny
 
-**Poplatek za manipulaci s pohonem**
+**Poplatek za manipulační disk**
 
-Pro každou jednotku zpracovávanou jako součást importu nebo exportní úlohy se účtuje manipulační poplatek jednotky. Podívejte se na podrobnosti o [cenách Azure importu a exportu](https://azure.microsoft.com/pricing/details/storage-import-export/).
+Pro každou jednotku zpracovánou jako součást úlohy importu nebo exportu existuje poplatek za zpracování jednotky. Podívejte se na podrobnosti o [cenách za import/export Azure](https://azure.microsoft.com/pricing/details/storage-import-export/).
 
-**Náklady na dopravu**
+**Náklady na expedici**
 
-Když odesíláte disky do Azure, zaplatíte náklady na dopravu dopravci. Když vám společnost Microsoft vrátí jednotky, náklady na dopravu se účtují na účet dopravce, který jste zadali v době vytváření úloh.
+Při dodávání jednotek do Azure platíte náklady na expedici do přepravce. Jakmile Microsoft vrátí jednotky, účtují se náklady na expedici za účet dopravce, který jste zadali v době vytváření úlohy.
 
 **Cena za transakce**
 
-[Standardní poplatek za transakci úložiště](https://azure.microsoft.com/pricing/details/storage/) platí během importu a exportu dat. Standardní odchozí poplatky se taky platí spolu s poplatky za transakce úložiště při exportu dat z Azure Storage. Další informace o nákladech na odchozí přenos najdete v [tématu Ceny za přenos dat.](https://azure.microsoft.com/pricing/details/data-transfers/).
+[Standardní poplatek za transakci úložiště](https://azure.microsoft.com/pricing/details/storage/) se používá během importu a také při exportu dat. Při exportu dat z Azure Storage se použijí i poplatky za standardní výstup za transakce služby Storage. Další informace o nákladech na výstup najdete v tématu [ceny za přenos dat.](https://azure.microsoft.com/pricing/details/data-transfers/)
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si, jak používat službu Import/Export k:
+Naučte se používat službu import/export k těmto akcím:
 
-* [Import dat do objektů Blob Azure](storage-import-export-data-to-blobs.md)
-* [Export dat z objektů BLOB Azure](storage-import-export-data-from-blobs.md)
+* [Import dat do objektů blob Azure](storage-import-export-data-to-blobs.md)
+* [Export dat z objektů blob Azure](storage-import-export-data-from-blobs.md)
 * [Import dat do souborů Azure](storage-import-export-data-to-files.md)

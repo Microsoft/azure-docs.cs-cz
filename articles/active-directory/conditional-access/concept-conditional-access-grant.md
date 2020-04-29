@@ -1,6 +1,6 @@
 ---
 title: Udělení ovládacích prvků v zásadách podmíněného přístupu – Azure Active Directory
-description: Co jsou grantové ovládací prvky v zásadách podmíněného přístupu Azure AD
+description: Co poskytuje řízení v zásadách podmíněného přístupu Azure AD
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -12,78 +12,78 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 02ec8dace971cd4dc1407c9e8d20839504c9ecc3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80331843"
 ---
-# <a name="conditional-access-grant"></a>Podmíněný přístup: Udělení
+# <a name="conditional-access-grant"></a>Podmíněný přístup: udělení
 
-V rámci zásad podmíněného přístupu může správce využít ovládací prvky přístupu k udělení nebo zablokování přístupu k prostředkům.
+V rámci zásad podmíněného přístupu může správce využít řízení přístupu k udělení nebo blokování přístupu k prostředkům.
 
-![Zásady podmíněného přístupu s ovládacím prvkem udělení, který vyžaduje vícefaktorové ověřování](./media/concept-conditional-access-grant/conditional-access-grant.png)
+![Zásada podmíněného přístupu s uděleným ovládacím prvkem, který vyžaduje vícefaktorové ověřování](./media/concept-conditional-access-grant/conditional-access-grant.png)
 
-## <a name="block-access"></a>Blokovat přístup
+## <a name="block-access"></a>Blokování přístupu
 
-Blok bere v úvahu všechna přiřazení a zabraňuje přístupu na základě konfigurace zásad podmíněného přístupu.
+Blok vezme v úvahu všechna přiřazení a zabraňuje přístupu na základě konfigurace zásad podmíněného přístupu.
 
-Blok je silný ovládací prvek, který by měl být ovládán s odpovídajícími znalostmi. Je to něco, co správci by měli použít [režim pouze pro sestavu](concept-conditional-access-report-only.md) k testování před povolením.
+Blok je výkonný ovládací prvek, který by měl být wielded s odpovídajícím vědomím. Správce by měl použít [režim pouze pro sestavy](concept-conditional-access-report-only.md) k otestování před povolením.
 
 ## <a name="grant-access"></a>Udělení přístupu
 
-Správci se mohou rozhodnout vynutit jeden nebo více ovládacích prvků při udělování přístupu. Mezi tyto ovládací prvky patří následující možnosti: 
+Správci se můžou rozhodnout vyhovět jednomu nebo více ovládacím prvkům při udělení přístupu. Tyto ovládací prvky zahrnují následující možnosti: 
 
-- [Vyžadovat vícefaktorové ověřování (Azure Multi-Factor Authentication)](../authentication/concept-mfa-howitworks.md)
-- [Vyžadovat, aby zařízení bylo označeno jako vyhovující (Microsoft Intune)](/intune/protect/device-compliance-get-started)
-- [Vyžadovat hybridní zařízení spojené s Azure AD](../devices/concept-azure-ad-join-hybrid.md)
-- [Vyžadovat schválenou klientskou aplikaci](app-based-conditional-access.md)
+- [Vyžadovat Multi-Factor Authentication (Azure Multi-Factor Authentication)](../authentication/concept-mfa-howitworks.md)
+- [Vyžadovat, aby zařízení bylo označené jako vyhovující (Microsoft Intune)](/intune/protect/device-compliance-get-started)
+- [Vyžadovat zařízení připojené k hybridní službě Azure AD](../devices/concept-azure-ad-join-hybrid.md)
+- [Vyžadovat klientskou aplikaci schválenou](app-based-conditional-access.md)
 - [Vyžadování zásad ochrany aplikací](app-protection-based-conditional-access.md)
 
-Pokud se správci rozhodnou tyto možnosti kombinovat, mohou zvolit následující metody:
+Když se správci rozhodnou tyto možnosti kombinovat, můžou zvolit následující metody:
 
-- Vyžadovat všechny vybrané ovládací prvky (řízení **a** řízení)
-- Vyžadovat jeden z vybraných ovládacích prvků (ovládací prvek **OR)**
+- Vyžadovat všechny vybrané ovládací prvky (ovládací prvek **a** ovládací prvek)
+- Vyžadovat jeden z vybraných ovládacích prvků (ovládací prvek **nebo** ovládací prvek)
 
-Ve výchozím nastavení vyžaduje podmíněný přístup všechny vybrané ovládací prvky.
+Ve výchozím nastavení podmíněný přístup vyžaduje všechny vybrané ovládací prvky.
 
-### <a name="require-multi-factor-authentication"></a>Vyžadovat vícefaktorové ověřování
+### <a name="require-multi-factor-authentication"></a>Vyžadovat Multi-Factor Authentication
 
-Zaškrtnutítohoto políčka bude vyžadovat, aby uživatelé provedli azure multifaktorové ověřování. Další informace o nasazení azure multifaktorové ověřování najdete v článku [Plánování cloudového nasazení Azure Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md).
+Zaškrtnutí tohoto políčka bude vyžadovat, aby uživatelé prováděli Multi-Factor Authentication Azure. Další informace o nasazení služby Azure Multi-Factor Authentication najdete v článku [plánování cloudového nasazení azure Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md).
 
-### <a name="require-device-to-be-marked-as-compliant"></a>Vyžadovat, aby zařízení bylo označeno jako vyhovující
+### <a name="require-device-to-be-marked-as-compliant"></a>Vyžadovat, aby zařízení bylo označené jako vyhovující
 
-Organizace, které nasadily Microsoft Intune, můžou informace vrácené ze svých zařízení použít k identifikaci zařízení, která splňují specifické požadavky na dodržování předpisů. Tyto informace o dodržování zásad se předávají z Intune do Azure AD, kde podmíněný přístup může rozhodovat o udělení nebo zablokování přístupu k prostředkům. Další informace o zásadách dodržování předpisů najdete v článku [Nastavení pravidel pro zařízení, která umožňují přístup k prostředkům ve vaší organizaci pomocí Intune](/intune/protect/device-compliance-get-started).
+Organizace, které nasadily Microsoft Intune, můžou použít informace vrácené ze svých zařízení k identifikaci zařízení, která splňují konkrétní požadavky na dodržování předpisů. Tyto informace o dodržování zásad se předávají z Intune do Azure AD, kde podmíněný přístup může učinit rozhodnutí udělit nebo blokovat přístup k prostředkům. Další informace o zásadách dodržování předpisů najdete v článku [Nastavení pravidel pro zařízení, která umožňují přístup k prostředkům ve vaší organizaci pomocí Intune](/intune/protect/device-compliance-get-started).
 
-Zařízení může být označeno jako vyhovující intune (pro libovolné operační systémy zařízení) nebo systémem MDM jiného výrobce pro zařízení s Windows 10. Jamf pro je jediný podporovaný mdm systém třetí strany. Další informace o integraci najdete v článku [Integrace Jamf Pro s Intune pro dodržování předpisů](/intune/protect/conditional-access-integrate-jamf).
+Zařízení může být označeno jako kompatibilní s Intune (pro libovolný operační systém zařízení) nebo systémem MDM jiného výrobce pro zařízení s Windows 10. Jamf pro je jediný podporovaný systém MDM třetí strany. Další informace o integraci najdete v článku integrace [Jamf pro s Intune pro dodržování předpisů](/intune/protect/conditional-access-integrate-jamf).
 
-Zařízení musí být registrovaná ve službě Azure AD, aby je bylo možné označit jako kompatibilní. Další informace o registraci zařízení naleznete v článku [Co je identita zařízení](../devices/overview.md).
+Zařízení musí být zaregistrovaná ve službě Azure AD, aby je bylo možné označit jako vyhovující. Další informace o registraci zařízení najdete v článku [co je identita zařízení](../devices/overview.md).
 
-### <a name="require-hybrid-azure-ad-joined-device"></a>Vyžadovat hybridní zařízení spojené s Azure AD
+### <a name="require-hybrid-azure-ad-joined-device"></a>Vyžadovat zařízení připojené k hybridní službě Azure AD
 
-Organizace se mohou rozhodnout používat identitu zařízení jako součást zásad podmíněného přístupu. Organizace mohou vyžadovat, aby zařízení byla hybridní Azure AD připojena pomocí tohoto políčka. Další informace o identitách zařízení najdete v článku [Co je identita zařízení?](../devices/overview.md).
+Organizace se můžou rozhodnout používat identitu zařízení jako součást zásad podmíněného přístupu. Organizace můžou vyžadovat, aby se zařízení připojila k hybridní službě Azure AD pomocí tohoto zaškrtávacího políčka. Další informace o identitách zařízení najdete v článku [co je identita zařízení?](../devices/overview.md).
 
-### <a name="require-approved-client-app"></a>Vyžadovat schválenou klientskou aplikaci
+### <a name="require-approved-client-app"></a>Vyžadovat klientskou aplikaci schválenou
 
-Organizace mohou vyžadovat, aby se pokus o přístup k vybraným cloudovým aplikacím uskutečnil ze schválené klientské aplikace. Tyto schválené klientské aplikace podporují [zásady ochrany aplikací Intune](/intune/app-protection-policy) nezávisle na jakémkoli řešení pro správu mobilních zařízení (MDM).
+Organizace můžou vyžadovat, aby se pokus o přístup k vybraným cloudovým aplikacím nastavil ze schválené klientské aplikace. Tyto schválené klientské aplikace podporují [Zásady ochrany aplikací Intune](/intune/app-protection-policy) nezávisle na řešení správy mobilních zařízení (MDM).
 
-Aby bylo možné využít tento grant řízení podmíněného přístupu vyžaduje, aby zařízení se zaregistrovali ve službě Azure Active Directory, která vyžaduje použití aplikace broker. Zprostředkující aplikací může být buď Microsoft Authenticator pro zařízení s iOSem, nebo Portál společnosti Microsoft pro zařízení s Androidem. Pokud aplikace broker není nainstalována na zařízení, když se uživatel pokusí o ověření, uživatel získá přesměrovándo obchodu s aplikacemi k instalaci aplikace broker.
+Aby bylo možné tento ovládací prvek udělit, podmíněný přístup vyžaduje, aby zařízení bylo zaregistrované v Azure Active Directory, které vyžaduje použití aplikace zprostředkovatele. Zprostředkující aplikací může být buď Microsoft Authenticator pro zařízení s iOSem, nebo Portál společnosti Microsoft pro zařízení s Androidem. Pokud při pokusu uživatele o ověření není v zařízení nainstalovaná aplikace zprostředkovatele, uživatel se přesměruje do obchodu s aplikacemi a nainstaluje aplikaci zprostředkovatele.
 
 Toto nastavení platí pro následující aplikace pro iOS a Android:
 
-- Ochrana informací Microsoft Azure
-- Rezervace společnosti Microsoft
+- Microsoft Azure Information Protection
+- Rezervace Microsoftu
 - Microsoft Cortana
 - Microsoft Dynamics 365
 - Microsoft Edge
 - Microsoft Excel
 - Microsoft Flow
 - Microsoft Intune Managed Browser
-- Fakturace společnosti Microsoft
+- Fakturace Microsoftu
 - Microsoft Kaizala
 - Spouštěč Microsoftu
 - Microsoft Office
-- Microsoft Office Hub
+- Centrum systém Microsoft Office
 - Microsoft OneDrive
 - Microsoft OneNote
 - Microsoft Outlook
@@ -97,26 +97,26 @@ Toto nastavení platí pro následující aplikace pro iOS a Android:
 - Microsoft Stream
 - Microsoft Teams
 - Microsoft To-Do
-- Microsoft Visio
+- Aplikace Microsoft Visio
 - Microsoft Word
-- Microsoft Yammer
-- Microsoft Whiteboard
+- Yammer Microsoftu
+- Microsoft tabule
 
 **Poznámky**
 
 - Schválené klientské aplikace podporují funkci správy mobilních aplikací Intune.
-- **Požadavek na schválenou klientskou aplikaci:**
-   - Podporuje pouze iOS a Android pro stav platformy zařízení.
-   - K registraci zařízení je vyžadována aplikace zprostředkovatele. V systému iOS je makléřská aplikace Microsoft Authenticator a v systému Android je aplikace Intune Company Portal.
-- Podmíněný přístup nemůže považovat Microsoft Edge v režimu InPrivate za schválenou klientskou aplikaci.
+- Požadavek na **vyžadování schválené aplikace klienta** :
+   - Podporuje jenom podmínku platformy iOS a Android pro zařízení.
+   - K registraci zařízení se vyžaduje aplikace zprostředkovatele. V systému iOS je aplikace zprostředkovatele Microsoft Authenticator a v Androidu je Portál společnosti Intune aplikace.
+- Podmíněný přístup nemůže vzít v úvahu schválenou klientskou aplikaci Microsoft Edge v režimu InPrivate.
 
-Příklady konfigurace najdete v článku [Postup: Vyžadovat schválené klientské aplikace pro přístup ke cloudovým aplikacím s podmíněným přístupem.](app-based-conditional-access.md)
+Informace najdete v článku [How to: vyžadovat schválené klientské aplikace pro přístup k cloudovým aplikacím s podmíněným přístupem](app-based-conditional-access.md) pro příklady konfigurace.
 
 ### <a name="require-app-protection-policy"></a>Vyžadování zásad ochrany aplikací
 
-V zásadách podmíněného přístupu můžete vyžadovat, aby v klientské aplikaci byly k dispozici [zásady ochrany aplikací Intune,](/intune/app-protection-policy) než bude k dispozici přístup k vybraným cloudovým aplikacím. 
+V rámci zásad podmíněného přístupu můžete vyžadovat, aby v klientské aplikaci existovaly [Zásady ochrany aplikací Intune](/intune/app-protection-policy) , aby byl přístup k vybraným cloudovým aplikacím dostupný. 
 
-Aby bylo možné využít tento grant řízení podmíněného přístupu vyžaduje, aby zařízení se zaregistrovali ve službě Azure Active Directory, která vyžaduje použití aplikace broker. Zprostředkující aplikací může být buď Microsoft Authenticator pro zařízení s iOSem, nebo Portál společnosti Microsoft pro zařízení s Androidem. Pokud aplikace broker není nainstalována na zařízení, když se uživatel pokusí o ověření, uživatel získá přesměrovándo obchodu s aplikacemi k instalaci aplikace broker.
+Aby bylo možné tento ovládací prvek udělit, podmíněný přístup vyžaduje, aby zařízení bylo zaregistrované v Azure Active Directory, které vyžaduje použití aplikace zprostředkovatele. Zprostředkující aplikací může být buď Microsoft Authenticator pro zařízení s iOSem, nebo Portál společnosti Microsoft pro zařízení s Androidem. Pokud při pokusu uživatele o ověření není v zařízení nainstalovaná aplikace zprostředkovatele, uživatel se přesměruje do obchodu s aplikacemi a nainstaluje aplikaci zprostředkovatele.
 
 Toto nastavení platí pro následující klientské aplikace:
 
@@ -127,21 +127,21 @@ Toto nastavení platí pro následující klientské aplikace:
 
 **Poznámky**
 
-- Zásady ochrany aplikací aplikace podporují funkci správy mobilních aplikací Intune s ochranou zásad.
-- **Požadavky na zásady ochrany aplikace Vyžadovat:**
-    - Podporuje pouze iOS a Android pro stav platformy zařízení.
-    - K registraci zařízení je vyžadována aplikace zprostředkovatele. V systému iOS je makléřská aplikace Microsoft Authenticator a v systému Android je aplikace Intune Company Portal.
+- Aplikace pro zásady ochrany aplikací podporují funkci správy mobilních aplikací Intune s ochranou zásad.
+- Požadavky na **zásady pro vyžadování zásad ochrany aplikací** :
+    - Podporuje jenom podmínku platformy iOS a Android pro zařízení.
+    - K registraci zařízení se vyžaduje aplikace zprostředkovatele. V systému iOS je aplikace zprostředkovatele Microsoft Authenticator a v Androidu je Portál společnosti Intune aplikace.
 
-Příklady konfigurace najdete v článku [Postup: Vyžadovat zásady ochrany aplikací a schválenou klientskou aplikaci pro přístup ke cloudovým aplikacím s podmíněným přístupem.](app-protection-based-conditional-access.md)
+Informace najdete v článku [Postupy: vyžadování zásad ochrany aplikací a schválené klientské aplikace pro přístup k cloudovým aplikacím pomocí podmíněného přístupu](app-protection-based-conditional-access.md) pro příklady konfigurace.
 
 ### <a name="terms-of-use"></a>Podmínky použití
 
-Pokud vaše organizace vytvořila podmínky použití, mohou být v rámci ovládacích prvků grantu viditelné další možnosti. Tyto možnosti umožňují správcům vyžadovat potvrzení podmínek použití jako podmínku přístupu k prostředkům chráněným zásadami. Další informace o podmínkách použití najdete v článku [Podmínky použití služby Azure Active Directory](terms-of-use.md).
+Pokud vaše organizace vytvořila podmínek použití, můžou být v rámci grant Controls viditelné další možnosti. Tyto možnosti umožňují správcům vyžadovat potvrzení podmínek použití jako podmínku přístupu k prostředkům chráněným pomocí zásad. Další informace o podmínek použití najdete v článku [Azure Active Directory podmínkami použití](terms-of-use.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Podmíněný přístup: Ovládací prvky relace](concept-conditional-access-session.md)
+- [Podmíněný přístup: ovládací prvky relace](concept-conditional-access-session.md)
 
-- [Podmíněné přístupové běžné zásady](concept-conditional-access-policy-common.md)
+- [Společné zásady podmíněného přístupu](concept-conditional-access-policy-common.md)
 
 - [Režim pouze sestav](concept-conditional-access-report-only.md)

@@ -8,121 +8,121 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: lcozzens
 ms.openlocfilehash: 25187fd055f40e8b32d840ead2a9c54882446b88
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80348791"
 ---
 # <a name="azure-app-configuration-faq"></a>Nejčastější dotazy ke konfiguraci aplikací Azure
 
-Tento článek odpovídá na nejčastější dotazy týkající se konfigurace aplikací Azure.
+Tento článek obsahuje odpovědi na nejčastější dotazy týkající se konfigurace aplikací Azure.
 
-## <a name="how-is-app-configuration-different-from-azure-key-vault"></a>Jak se konfigurace aplikací liší od Azure Key Vault?
+## <a name="how-is-app-configuration-different-from-azure-key-vault"></a>Jak se liší konfigurace aplikace od Azure Key Vault?
 
-Konfigurace aplikace pomáhá vývojářům spravovat nastavení aplikací a řídit dostupnost funkcí. Jeho cílem je zjednodušit mnoho úkolů práce se složitými konfiguračními daty.
+Konfigurace aplikací pomáhá vývojářům spravovat nastavení aplikace a dostupnost funkcí řízení. Cílem je zjednodušit mnoho úloh práce se složitými konfiguračními daty.
 
-Konfigurace aplikace podporuje:
+Konfigurace aplikací podporuje:
 
 - Hierarchické obory názvů
 - Označování
 - Rozsáhlé dotazy
 - Dávkové načítání
-- Specializované manažerské operace
+- Specializované operace správy
 - Uživatelské rozhraní pro správu funkcí
 
-Konfigurace aplikace doplňuje trezor klíčů a tyto dvě by měly být používány vedle sebe ve většině nasazení aplikací.
+Doplňková konfigurace aplikace Key Vault a obě by se měly používat vedle sebe ve většině nasazení aplikací.
 
-## <a name="should-i-store-secrets-in-app-configuration"></a>Mám ukládat tajné klíče v konfiguraci aplikace?
+## <a name="should-i-store-secrets-in-app-configuration"></a>Mám tajné klíče ukládat do konfigurace aplikace?
 
-Přestože konfigurace aplikace poskytuje posílené zabezpečení, trezor klíčů je stále nejlepším místem pro ukládání tajných kódů aplikací. Trezor klíčů poskytuje šifrování na úrovni hardwaru, zásady podrobného přístupu a operace správy, jako je například střídání certifikátů.
+I když konfigurace aplikace poskytuje zesílené zabezpečení, Key Vault je stále nejlepším místem pro ukládání tajných klíčů aplikací. Key Vault poskytuje šifrování na úrovni hardwaru, podrobné zásady přístupu a operace správy, jako je například rotace certifikátu.
 
-Můžete vytvořit hodnoty konfigurace aplikace, které odkazují na tajné klíče uložené v trezoru klíčů. Další informace najdete [v tématu Použití odkazů na trezor klíčů v aplikaci ASP.NET Core](./use-key-vault-references-dotnet-core.md).
+Můžete vytvořit konfigurační hodnoty aplikace, které odkazují na tajné kódy uložené v Key Vault. Další informace najdete v tématu [použití Key Vault odkazů v aplikaci ASP.NET Core](./use-key-vault-references-dotnet-core.md).
 
 ## <a name="does-app-configuration-encrypt-my-data"></a>Šifruje konfigurace aplikace moje data?
 
-Ano. Konfigurace aplikace šifruje všechny hodnoty klíče, které obsahuje, a šifruje síťovou komunikaci. Názvy klíčů a popisky se používají jako indexy pro načítání konfiguračních dat a nejsou šifrovány.
+Ano. Konfigurace aplikace šifruje všechny hodnoty klíčů, které obsahuje, a šifruje síťovou komunikaci. Názvy klíčů a popisky se používají jako indexy pro načítání konfiguračních dat a nejsou zašifrované.
 
-## <a name="how-is-app-configuration-different-from-azure-app-service-settings"></a>Jak se konfigurace aplikací liší od nastavení služby Azure App Service?
+## <a name="how-is-app-configuration-different-from-azure-app-service-settings"></a>Jak se liší konfigurace aplikace od nastavení Azure App Service?
 
-Azure App Service umožňuje definovat nastavení aplikace pro každou instanci služby App Service. Tato nastavení jsou předány jako proměnné prostředí do kódu aplikace. Pokud chcete, můžete přidružit nastavení ke konkrétnímu slotu nasazení. Další informace naleznete v [tématu Konfigurace nastavení aplikace](/azure/app-service/configure-common#configure-app-settings).
+Azure App Service umožňuje definovat nastavení aplikace pro každou instanci App Service. Tato nastavení jsou předána jako proměnné prostředí do kódu aplikace. Pokud chcete, můžete přiřadit nastavení k určitému slotu nasazení. Další informace najdete v tématu [Konfigurace nastavení aplikace](/azure/app-service/configure-common#configure-app-settings).
 
-Naproti tomu Azure App Configuration umožňuje definovat nastavení, která lze sdílet mezi více aplikací. To zahrnuje aplikace spuštěné ve službě App Service a další platformy. Kód aplikace přistupuje k těmto nastavením prostřednictvím zprostředkovatelů konfigurace pro rozhraní .NET a Java, prostřednictvím sady Azure SDK nebo přímo prostřednictvím rozhraní REST API.
+Naproti tomu konfigurace aplikací Azure umožňuje definovat nastavení, která se dají sdílet mezi více aplikacemi. To zahrnuje aplikace běžící v App Service i jiné platformy. Kód aplikace přistupuje k těmto nastavením prostřednictvím zprostředkovatelů konfigurace pro .NET a Java, prostřednictvím sady Azure SDK nebo přímo přes rozhraní REST API.
 
-Můžete také importovat a exportovat nastavení mezi službou App Service a Konfigurací aplikace. Tato funkce umožňuje rychle nastavit nový obchod konfigurace aplikací na základě stávajících nastavení služby App Service. Můžete také sdílet konfiguraci s existující aplikací, která závisí na nastavení služby App Service.
+Můžete také importovat a exportovat nastavení mezi App Service a konfigurací aplikace. Tato možnost umožňuje rychle nastavit nové úložiště konfigurace aplikace na základě stávajících nastavení App Service. Konfiguraci můžete sdílet taky s existující aplikací, která spoléhá na nastavení App Service.
 
 ## <a name="are-there-any-size-limitations-on-keys-and-values-stored-in-app-configuration"></a>Existují nějaká omezení velikosti klíčů a hodnot uložených v konfiguraci aplikace?
 
-Pro jednu položku s hodnotou klíče je limit 10 KB.
+Pro jednu položku klíč-hodnota je povolený limit 10 KB.
 
-## <a name="how-should-i-store-configurations-for-multiple-environments-test-staging-production-and-so-on"></a>Jak mám ukládat konfigurace pro více prostředí (test, pracovní, produkční a tak dále)?
+## <a name="how-should-i-store-configurations-for-multiple-environments-test-staging-production-and-so-on"></a>Jak mám ukládat konfigurace pro více prostředí (test, fázování, produkce atd.)?
 
-Můžete určit, kdo má přístup ke konfiguraci aplikace na úrovni pro každý obchod. Pro každé prostředí, které vyžaduje různá oprávnění, použijte samostatné úložiště. Tento přístup poskytuje nejlepší izolaci zabezpečení.
+Řídíte, kdo má přístup ke konfiguraci aplikace na úrovni na úrovni úložiště. Pro každé prostředí, které vyžaduje různá oprávnění, použijte samostatné úložiště. Tento přístup poskytuje nejlepší bezpečnostní izolaci.
 
-Pokud nepotřebujete izolaci zabezpečení mezi prostředími, můžete použít popisky k rozlišení mezi hodnotami konfigurace. [Pomocí popisků povolit různé konfigurace pro různá prostředí](./howto-labels-aspnet-core.md) poskytuje úplný příklad.
+Pokud nepotřebujete izolaci zabezpečení mezi prostředími, můžete použít popisky k odlišení hodnot konfigurace. [Použití popisků k povolení různých konfigurací pro různá prostředí](./howto-labels-aspnet-core.md) poskytuje kompletní příklad.
 
 ## <a name="what-are-the-recommended-ways-to-use-app-configuration"></a>Jaké jsou doporučené způsoby použití konfigurace aplikace?
 
-Podívejte se na [osvědčené postupy](./howto-best-practices.md).
+Viz [osvědčené postupy](./howto-best-practices.md).
 
 ## <a name="how-much-does-app-configuration-cost"></a>Kolik stojí konfigurace aplikace?
 
 Existují dvě cenové úrovně:
 
 - Úroveň Free
-- Standardní úroveň.
+- Úroveň Standard.
 
-Pokud jste vytvořili úložiště před zavedením úrovně Standard, automaticky se přesune do úrovně Free při obecné dostupnosti. Můžete si vybrat upgrade na úroveň Standard nebo zůstat na úrovni Free.
+Pokud jste úložiště vytvořili před zavedením úrovně Standard, při obecné dostupnosti se automaticky přesune na úroveň Free. Můžete zvolit upgrade na úroveň Standard nebo zůstat na úrovni Free.
 
-Úložiště nelze snížit na úroveň Standard na úroveň Free. Můžete vytvořit nové úložiště ve vrstvě Free a pak importovat konfigurační data do tohoto úložiště.
+Nemůžete downgradovat úložiště z úrovně Standard na úroveň Free. Můžete vytvořit nové úložiště na úrovni Free a pak importovat konfigurační data do tohoto úložiště.
 
-## <a name="which-app-configuration-tier-should-i-use"></a>Kterou úroveň konfigurace aplikace mám použít?
+## <a name="which-app-configuration-tier-should-i-use"></a>Jakou úroveň konfigurace aplikace mám použít?
 
-Obě úrovně konfigurace aplikace nabízejí základní funkce, včetně nastavení konfigurace, příznaků funkcí, odkazů trezoru klíčů, základních operací správy, metrik a protokolů.
+Obě úrovně konfigurace aplikací nabízejí základní funkce, včetně nastavení konfigurace, příznaků funkcí, Key Vault odkazů, základních operací správy, metrik a protokolů.
 
-Níže jsou uvedeny důležité informace pro výběr úrovně.
+Níže jsou uvedeny požadavky pro výběr vrstvy.
 
-- **Prostředky na odběr**: Prostředek se skládá z jednoho úložiště konfigurace. Každé předplatné je omezeno na jedno úložiště konfigurace v bezplatné vrstvě. Předplatná může mít neomezený počet úložišť konfigurace ve standardní vrstvě.
-- **Úložiště na prostředek**: V bezplatné vrstvě je každé úložiště konfigurace omezeno na 10 MB úložiště. Ve standardní vrstvě může každé úložiště konfigurace používat až 1 GB úložiště.
-- **Historie klíčů**: Konfigurace aplikace ukládá historii všech změn provedených v klíčích. Ve volné vrstvě je tato historie uložena po dobu sedmi dnů. Ve standardní úrovni je tato historie uložena po dobu 30 dnů.
-- **Požadavky na den:** Obchody s bezplatnými úrovněmi jsou omezeny na 1 000 požadavků za den. Jakmile úložiště dosáhne 1 000 požadavků, vrátí stavový kód HTTP 429 pro všechny požadavky až do půlnoci UTC.
+- **Prostředky na předplatné**: prostředek se skládá z jednoho úložiště konfigurace. Každé předplatné je omezené na jedno úložiště konfigurace v bezplatné úrovni. Předplatná můžou mít neomezený počet úložišť konfigurace na úrovni Standard.
+- **Úložiště na prostředek**: na úrovni Free je každé úložiště konfigurace omezené na 10 MB úložiště. Na úrovni Standard může každé úložiště konfigurace využívat až 1 GB úložiště.
+- **Historie klíčů**: Konfigurace aplikace ukládá historii všech změn provedených v klíčích. Na úrovni Free je tato historie uložená po dobu sedmi dní. Na úrovni Standard se tato historie ukládá po dobu 30 dnů.
+- **Požadavky za den**: úložiště úrovně Free se omezuje na 1 000 požadavků za den. Jakmile obchod dosáhne 1 000 požadavků, vrátí stavový kód HTTP 429 pro všechny požadavky do půlnoci UTC.
 
-    U obchodů se standardní úrovní je v denním poplatku zahrnuto prvních 200 000 požadavků každý den. Další požadavky se účtují jako nadbytku.
+    V případě obchodů úrovně Standard jsou první 200 000 žádosti každý den zahrnuté do denního poplatku. Další požadavky se účtují jako nadlimitní využití.
 
-- **Smlouva o úrovni služeb**: Standardní úroveň má smlouvu SLA s 99,9% dostupností. Úroveň free nemá sla.
-- **Funkce zabezpečení**: Obě vrstvy zahrnují základní funkce zabezpečení, včetně šifrování pomocí klíčů spravovaných microsoftem, ověřování pomocí HMAC nebo Azure Active Directory, podporu RBAC a spravovanou identitu. Úroveň Standard nabízí pokročilejší funkce zabezpečení, včetně podpory privátního spojení a šifrování pomocí klíčů spravovaných zákazníkem.
-- **Cena:** Obchody se standardní úrovní mají poplatek za denní využití. Za žádosti po denním přidělování se účtuje také poplatek za nadbytk. Použití bezplatného obchodu úrovní není zdarma.
+- **Smlouva o úrovni služeb**: úroveň Standard má smlouvu SLA s 99,9% dostupností. Úroveň Free nemá smlouvu SLA.
+- **Funkce zabezpečení**: obě úrovně zahrnují základní funkce zabezpečení, včetně šifrování pomocí klíčů spravovaných Microsoftem, ověřování pomocí HMAC nebo Azure Active Directory, podpora RBAC a spravované identity. Úroveň Standard nabízí pokročilejší funkce zabezpečení, včetně podpory a šifrování privátních odkazů pomocí klíčů spravovaných zákazníkem.
+- **Náklady**: obchody úrovně Standard mají denní poplatek za využití. Pro žádosti po denním přidělení se taky účtuje poplatky za nadlimitní využití. K používání úložiště úrovně Free se neúčtují žádné náklady.
 
-## <a name="can-i-upgrade-a-store-from-the-free-tier-to-the-standard-tier-can-i-downgrade-a-store-from-the-standard-tier-to-the-free-tier"></a>Můžu upgradovat úložiště z úrovně Free na úroveň Standard? Můžu snížit úroveň Standard z úrovně Standard na úroveň Free?
+## <a name="can-i-upgrade-a-store-from-the-free-tier-to-the-standard-tier-can-i-downgrade-a-store-from-the-standard-tier-to-the-free-tier"></a>Můžu upgradovat obchod z úrovně Free na úroveň Standard? Můžu z úrovně Standard snížit obchod na úroveň Free?
 
-Z úrovně Free můžete kdykoli upgradovat na úroveň Standard.
+Můžete kdykoli upgradovat z úrovně Free na úroveň Standard.
 
-Úložiště nelze snížit na úroveň Standard na úroveň Free. Můžete vytvořit nové úložiště ve vrstvě Free a pak [importovat konfigurační data do tohoto úložiště](howto-import-export-data.md).
+Nemůžete downgradovat úložiště z úrovně Standard na úroveň Free. Můžete vytvořit nové úložiště na úrovni Free a pak [importovat konfigurační data do tohoto úložiště](howto-import-export-data.md).
 
 ## <a name="are-there-any-limits-on-the-number-of-requests-made-to-app-configuration"></a>Existují nějaká omezení počtu požadavků na konfiguraci aplikace?
 
-Konfigurační obchody na úrovni Free jsou omezeny na 1 000 požadavků za den. Úložiště konfigurace na úrovni Standard může dojít k dočasné omezení při požadavek sazba překročí 20 000 požadavků za hodinu.
+Úložiště konfigurací v bezplatné úrovni jsou omezená na 1 000 požadavků za den. V úložištích konfigurace na úrovni Standard se může vyskytnout dočasné omezení, pokud rychlost požadavků překročí 20 000 požadavků za hodinu.
 
-Když úložiště dosáhne svého limitu, vrátí stavový kód HTTP 429 pro všechny požadavky provedené do vypršení časového období. Záhlaví `retry-after-ms` v odpovědi poskytuje doporučenou čekací dobu (v milisekundách) před opakováním požadavku.
+Když obchod dosáhne svého limitu, vrátí stavový kód HTTP 429 pro všechny požadavky provedené do vypršení časového období. `retry-after-ms` Hlavička v odpovědi poskytuje navrhovanou čekací dobu (v milisekundách) před opakováním žádosti.
 
-Pokud vaše aplikace pravidelně dochází http stavový kód 429 odpovědi, zvažte jeho přepracování snížit počet požadavků. Další informace naleznete v tématu [Reduce requests made to App Configuration](./howto-best-practices.md#reduce-requests-made-to-app-configuration)
+Pokud vaše aplikace pravidelně pracuje na odpovědích na stavový kód HTTP 429, zvažte jejich změnu návrhu, aby se snížil počet podaných požadavků. Další informace najdete v tématu [snížení požadavků provedených na konfiguraci aplikace](./howto-best-practices.md#reduce-requests-made-to-app-configuration) .
 
-## <a name="my-application-receives-http-status-code-429-responses-why"></a>Aplikace obdrží stavový kód HTTP 429 odpovědí. Proč?
+## <a name="my-application-receives-http-status-code-429-responses-why"></a>Moje aplikace přijímá odpovědi na stavový kód HTTP 429. Proč?
 
-Za těchto okolností obdržíte odpověď na stavový kód HTTP 429:
+Za těchto okolností obdržíte odpověď stavového kódu HTTP 429:
 
-* Překročení denního limitu požadavků pro obchod na úrovni Free.
-* Dočasné omezení z důvodu vysoké míry požadavků pro úložiště ve vrstvě Standard.
+* Překročení denního limitu žádostí pro obchod na úrovni Free.
+* Dočasné omezení kvůli vysoké sazbě požadavků pro obchod na úrovni Standard.
 * Nadměrné využití šířky pásma.
-* Pokus o vytvoření nebo úpravu klíče při překročení nabídky úložiště.
+* Pokus o vytvoření nebo změnu klíče při překročení nabídky úložiště.
 
-Zkontrolujte tělo 429 odpověď z konkrétního důvodu, proč se požadavek nezdařil.
+Ověřte tělo odpovědi 429 z konkrétního důvodu, proč se žádost nezdařila.
 
-## <a name="how-can-i-receive-announcements-on-new-releases-and-other-information-related-to-app-configuration"></a>Jak mohu dostávat oznámení o nových verzích a dalších informacích souvisejících s konfigurací aplikací?
+## <a name="how-can-i-receive-announcements-on-new-releases-and-other-information-related-to-app-configuration"></a>Jak mohu dostávat oznámení o nových verzích a dalších informacích souvisejících s konfigurací aplikace?
 
-Přihlaste se k odběru našeho [úložiště oznámení GitHub](https://github.com/Azure/AppConfiguration-Announcements).
+Přihlaste se k odběru našeho [úložiště oznámení GitHubu](https://github.com/Azure/AppConfiguration-Announcements).
 
-## <a name="how-can-i-report-an-issue-or-give-a-suggestion"></a>Jak mohu nahlásit problém nebo podat návrh?
+## <a name="how-can-i-report-an-issue-or-give-a-suggestion"></a>Jak mohu ohlásit problém nebo podat návrh?
 
 Můžete nás kontaktovat přímo na [GitHubu](https://github.com/Azure/AppConfiguration/issues).
 

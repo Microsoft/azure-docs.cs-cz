@@ -1,6 +1,6 @@
 ---
-title: Pokrytí geokódováním | Mapy Microsoft Azure
-description: Proces převodu adresy umístění na souřadnice zeměpisné šířky a délky se nazývá geokódování. V tomto článku se dozvíte o oblastech s geografickým kódováním pokrytí v Mapách Microsoft Azure.
+title: Pokrytí geografického kódování | Mapy Microsoft Azure
+description: Proces převodu adresy umístění na zeměpisnou šířku a délky souřadnic se označuje jako geografické kódování. V tomto článku se dozvíte o oblastech s pokrytím geografického kódování v Microsoft Azure Maps.
 author: philmea
 ms.author: philmea
 ms.date: 12/31/2019
@@ -9,25 +9,25 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: 9836bd35b16c4c308b7c9d096b104c0cec68a34c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80335654"
 ---
-# <a name="azure-maps-geocoding-coverage"></a>Pokrytí geokódování Azure Maps
+# <a name="azure-maps-geocoding-coverage"></a>Azure Maps pokrytí geografické kódování
 
-Při hledání umístění pomocí Azure Maps, vyhledávací služba, například [získat vyhledávací adresu](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress), převezme hledané termíny a vrátí souřadnice zeměpisné šířky a délky. Tento proces se nazývá geokódování. Azure Maps však nemá stejnou úroveň informací a přesnosti pro všechny oblasti a země. Tento článek slouží k určení, jaký druh umístění můžete spolehlivě vyhledat v každé oblasti. 
+Když vyhledáte umístění pomocí Azure Maps, vyhledávací služba, například [získat adresu hledání](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress), převezme hledané výrazy a vrátí souřadnice zeměpisné šířky a délky. Tento proces se nazývá geografické kódování. Azure Maps ale nemá stejnou úroveň informací a přesnost pro všechny oblasti a země. V tomto článku zjistíte, jaký druh umístění můžete spolehlivě Hledat v každé oblasti. 
 
-Schopnost geokódu v zemi nebo oblasti závisí na pokrytí silničních dat a přesnosti geokódování služby geokódování. Následující kategorizace se používají určit úroveň podpory geokódování v každé zemi nebo oblasti.
-* **Adresní body** - Data adres lze přeložit na souřadnici zeměpisné šířky a délky v rámci parcely adresy (hranice vlastnosti). Někdy označované jako "Střecha" přesné. Toto je nejvyšší úroveň přesnosti, která je k dispozici pro adresy. 
-* **Čísla domů** - Adresy jsou interpolovány na souřadnici zeměpisné šířky a délky na ulici.
-* **Úroveň ulice** - Adresy jsou přeloženy na souřadnici zeměpisné šířky a délky ulice, která adresu obsahuje. Číslo domu nesmí být zpracováno.
-* **Úroveň města** – názvy míst ve městě jsou podporovány.
+Schopnost geografického kódu v zemi nebo oblasti je závislá na pokrytí dat a přesnosti geografického kódování ve službě geografické kódování. Následující kategorizace se používají k určení úrovně podpory geografického kódování v každé zemi nebo oblasti.
+* **Adresované body** – data adres se dají přeložit na souřadnici zeměpisné šířky a délky v rámci adresního pozemku (hranice vlastnosti). Někdy označované jako "Rooftop". Toto je nejvyšší úroveň přesnosti, která je k dispozici pro adresy. 
+* **Čísla domů** – adresy se interpolují na ulici a zeměpisnou délku.
+* Adresa na **úrovni ulice** se přeloží na souřadnici zeměpisné šířky a délky ulice, která obsahuje adresu. Číslo domu nesmí být zpracováno.
+* **Úroveň města** – názvy míst měst jsou podporovány.
 
 ## <a name="americas"></a>Amerika
 
-| Země/region                                       | Adresní body | Čísla domů | Úroveň ulice | Úroveň města | Body zájmu |
+| Země/region                                       | Adresní body | Čísla domu | Úroveň ulice | Úroveň města | Body zájmu |
 |-----------------------------------------------------|:---------------:|:--------------:|:------------:|:----------:|:------------------:|
 | Anguilla                                            |                 |                |              |      ✓     |          ✓         |
 | Antarktida                                          |                 |                |              |      ✓     |          ✓         |
@@ -39,7 +39,7 @@ Schopnost geokódu v zemi nebo oblasti závisí na pokrytí silničních dat a p
 | Belize                                              |                 |                |              |      ✓     |          ✓         |
 | Bermudy                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | Bolívie                                             |                 |                |       ✓      |      ✓     |          ✓         |
-| Bonaire, Sint Eustatius a Saba                   |                 |                |              |      ✓     |          ✓         |
+| Bonaire, Sint Eustach a Saba                   |                 |                |              |      ✓     |          ✓         |
 | Brazílie                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Kanada                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Kajmanské ostrovy                                      |                 |                |       ✓      |      ✓     |          ✓         |
@@ -48,7 +48,7 @@ Schopnost geokódu v zemi nebo oblasti závisí na pokrytí silničních dat a p
 | Kostarika                                          |                 |                |       ✓      |      ✓     |          ✓         |
 | Kuba                                                |                 |                |       ✓      |      ✓     |          ✓         |
 | Dominika                                            |                 |                |       ✓      |      ✓     |          ✓         |
-| Dominika                                          |                 |                |       ✓      |      ✓     |          ✓         |
+| Dominikánská                                          |                 |                |       ✓      |      ✓     |          ✓         |
 | Ekvádor                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | Salvador                                         |                 |                |       ✓      |      ✓     |          ✓         |
 | Falklandské ostrovy                                    |                 |                |              |      ✓     |          ✓         |
@@ -69,18 +69,18 @@ Schopnost geokódu v zemi nebo oblasti závisí na pokrytí silničních dat a p
 | Paraguay                                            |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Peru                                                |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Portoriko                                         |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| Svatý Barthélemy                                    |                 |                |       ✓      |      ✓     |          ✓         |
+| Svatý Bartoloměj                                    |                 |                |       ✓      |      ✓     |          ✓         |
 | Svatý Kryštof a Nevis                               |                 |                |       ✓      |      ✓     |          ✓         |
 | Svatá Lucie                                         |                 |                |              |      ✓     |          ✓         |
 | Svatý Martin (Francie)                                        |                 |                |       ✓      |      ✓     |          ✓         |
-| Svatý Pierre a Miquelon                           |                 |                |       ✓      |      ✓     |          ✓         |
+| Saint-Pierre a Miquelon                           |                 |                |       ✓      |      ✓     |          ✓         |
 | Svatý Vincenc a Grenadiny                    |                 |                |              |      ✓     |          ✓         |
 | Svatý Martin (Nizozemsko)                                        |                 |                |       ✓      |      ✓     |          ✓         |
 | Jižní Georgie a Jižní Sandwichovy ostrovy        |                 |                |              |      ✓     |          ✓         |
 | Surinam                                            |                 |                |              |      ✓     |          ✓         |
 | Trinidad a Tobago                                 |                 |                |       ✓      |      ✓     |          ✓         |
-| Spojené státy menší odlehlé ostrovy                |                 |                |              |      ✓     |          ✓         |
-| Spojené státy                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| USA menší odlehlé ostrovy                |                 |                |              |      ✓     |          ✓         |
+| USA Amerika                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Uruguay                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Venezuela                                           |                 |                |       ✓      |      ✓     |          ✓         |
 | Britské Panenské ostrovy                              |                 |                |              |      ✓     |          ✓         |
@@ -88,7 +88,7 @@ Schopnost geokódu v zemi nebo oblasti závisí na pokrytí silničních dat a p
 
 ## <a name="asia-pacific"></a>Asie a Tichomoří
 
-| Země/region                                      | Adresní body |Čísla domů | Úroveň ulice | Úroveň města | Body zájmu |
+| Země/region                                      | Adresní body |Čísla domu | Úroveň ulice | Úroveň města | Body zájmu |
 |-----------------------------------------------------|:---------------:|:--------------:|:------------:|:----------:|:------------------:|
 | Americká Samoa                                      |                 |                |       ✓      |      ✓     |          ✓         |
 | Austrálie                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
@@ -104,7 +104,7 @@ Schopnost geokódu v zemi nebo oblasti závisí na pokrytí silničních dat a p
 | Cookovy ostrovy                                        |                 |                |              |      ✓     |          ✓         |
 | Fidži                                                |                  |                |              |      ✓     |          ✓        |
 | Francouzská Polynésie                                    |                 |                |              |      ✓     |          ✓         |
-| Heardův ostrov a McDonaldovy ostrovy                   |                 |                |              |      ✓     |          ✓         |
+| Heardův ostrov a MacDonaldovy ostrovy                   |                 |                |              |      ✓     |          ✓         |
 | Hongkong – zvláštní správní oblast                                       |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Indonésie                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Indie                                               |        ✓        |        ✓       |       ✓      |      ✓     |                   |
@@ -130,10 +130,10 @@ Schopnost geokódu v zemi nebo oblasti závisí na pokrytí silničních dat a p
 | Filipíny                                         |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Pitcairn                                            |                 |                |              |      ✓     |          ✓         |
 | Samoa                                               |                 |                |              |      ✓     |          ✓         |
-| Ostrovy Senkaku                                     |        ✓        |                |              |      ✓     |          ✓         |
+| Senkaku ostrovy                                     |        ✓        |                |              |      ✓     |          ✓         |
 | Singapur                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Šalamounovy ostrovy                                     |                 |                |              |      ✓     |          ✓         |
-| Jižní Kurila                                     |        ✓        |                |              |      ✓     |          ✓         |
+| Jižní Kurils                                     |        ✓        |                |              |      ✓     |          ✓         |
 | Srí Lanka                                           |                 |                |              |      ✓     |          ✓         |
 | Tchaj-wan                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Thajsko                                            |        ✓        |                |       ✓      |      ✓     |          ✓         |
@@ -147,7 +147,7 @@ Schopnost geokódu v zemi nebo oblasti závisí na pokrytí silničních dat a p
 
 ## <a name="europe"></a>Evropa
 
-| Země/region                                      | Adresní body |Čísla domů | Úroveň ulice | Úroveň města | Body zájmu |
+| Země/region                                      | Adresní body |Čísla domu | Úroveň ulice | Úroveň města | Body zájmu |
 |-----------------------------------------------------|:---------------:|:--------------:|:------------:|:----------:|:------------------:|
 | Albánie                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | Andorra                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
@@ -195,7 +195,7 @@ Schopnost geokódu v zemi nebo oblasti závisí na pokrytí silničních dat a p
 | Norsko                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Polsko                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Portugalsko                                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| +Azory a Madeira                                 |                 |                |       ✓      |      ✓     |          ✓         |
+| + Azory a Madeira                                 |                 |                |       ✓      |      ✓     |          ✓         |
 | Rumunsko                                             |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Ruská federace                                  |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | San Marino                                          |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
@@ -212,12 +212,12 @@ Schopnost geokódu v zemi nebo oblasti závisí na pokrytí silničních dat a p
 | Ukrajina                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Spojené království                                      |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Uzbekistán                                          |                 |                |              |      ✓     |          ✓         |
-| Vatikánu                                        |                 |                |       ✓      |      ✓     |          ✓         |
+| Vatikán                                        |                 |                |       ✓      |      ✓     |          ✓         |
 
 
 ## <a name="middle-east-and-africa"></a>Střední východ a Afrika
 
-| Země/region                                      | Adresní body |Čísla domů | Úroveň ulice | Úroveň města | Body zájmu |
+| Země/region                                      | Adresní body |Čísla domu | Úroveň ulice | Úroveň města | Body zájmu |
 |-----------------------------------------------------|:---------------:|:--------------:|:------------:|:----------:|:------------------:|
 | Afghánistán                                         |                 |                |              |      ✓     |          ✓         |
 | Alžírsko                                             |                 |                |       ✓      |      ✓     |          ✓         |
@@ -237,7 +237,7 @@ Schopnost geokódu v zemi nebo oblasti závisí na pokrytí silničních dat a p
 | Konžská demokratická republika                    |                 |                |       ✓      |      ✓     |          ✓         |
 | Džibutsko                                            |                 |                |       ✓      |      ✓     |          ✓         |
 | Egypt                                               |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| Rovníková Guinea, Republika                      |                 |                |       ✓      |      ✓     |          ✓         |
+| Rovníková Guinea, republika                      |                 |                |       ✓      |      ✓     |          ✓         |
 | Eritrea                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | Etiopie                                            |                 |                |       ✓      |      ✓     |          ✓         |
 | Francouzská jižní území|                        |                |              |      ✓     |          ✓         |
@@ -299,7 +299,7 @@ Schopnost geokódu v zemi nebo oblasti závisí na pokrytí silničních dat a p
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o geokódování Map Azure najdete na stránkách s odkazy [na vyhledávání.](https://docs.microsoft.com/rest/api/maps/search)
+Další informace o Azure Maps geografické kódování naleznete na referenčních stránkách [hledání](https://docs.microsoft.com/rest/api/maps/search) .
 
-Přečtěte si o [oblastech pokrytí dopravní služby Mapy](traffic-coverage.md). 
+Přečtěte si o [oblastech pokrytí pro službu Maps (Maps) Service](traffic-coverage.md). 
 

@@ -1,6 +1,6 @@
 ---
-title: Chyba při spuštění – "toto není spouštěcí disk"
-description: Tento článek obsahuje postup řešení problémů, kdy se disk nezavádí ve virtuálním počítači Azure
+title: Chyba spuštění – "Toto není spustitelný disk"
+description: Tento článek popisuje kroky pro řešení problémů, které neběží na virtuálním počítači Azure na disku.
 services: virtual-machines-windows
 documentationcenter: ''
 author: v-miegge
@@ -15,118 +15,118 @@ ms.topic: troubleshooting
 ms.date: 03/25/2020
 ms.author: v-mibufo
 ms.openlocfilehash: 9f0c6350b89dcfecefcadcc166f7af35abc4b128
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80300976"
 ---
-# <a name="boot-error--this-is-not-a-bootable-disk"></a>Chyba při spuštění – toto není spouštěcí disk
+# <a name="boot-error--this-is-not-a-bootable-disk"></a>Chyba spuštění – toto není spouštěcí disk.
 
-Tento článek obsahuje postup k vyřešení problémů, kdy disk není zaváděcí ve virtuálním počítači (VM) Azure.
+Tento článek popisuje kroky pro řešení problémů, které neběží na virtuálním počítači Azure (VM).
 
 ## <a name="symptoms"></a>Příznaky
 
-Při použití [boot diagnostiky](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) k zobrazení snímku virtuálního počítače, uvidíte, že snímek obrazovky zobrazí výzvu se zprávou "Toto není spouštěcí disk. Vložte spouštěcí disketu a stisknutím libovolné klávesy akci opakujte.'.
+Když pomocí [diagnostiky spouštění](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) zobrazíte snímek obrazovky virtuálního počítače, uvidíte, že snímek obrazovky zobrazuje výzvu se zprávou ' Toto není spouštěcí disk. Vložte prosím spouštěcí disketu a stiskněte libovolnou klávesu a zkuste to znovu...
 
    Obrázek 1
 
-   ![Obrázek 1 znázorňuje zprávu *"Toto není spouštěcí disk. Vložte spouštěcí disketu a stisknutím libovolné klávesy akci opakujte."*](media/troubleshoot-guide-not-bootable-disk/1.jpg)
+   ![Obrázek 1 ukazuje zprávu * "Toto není spustitelný disk. Vložte prosím spouštěcí disketu a stiskněte libovolnou klávesu a zkuste to znovu... "*](media/troubleshoot-guide-not-bootable-disk/1.jpg)
 
 ## <a name="cause"></a>Příčina
 
-Tato chybová zpráva znamená, že spouštěcí proces operačního systému nemohl najít aktivní systémový oddíl. Tato chyba může také znamenat, že je chybějící odkaz v úložišti schránkovací data (BCD), brání v ylokací oddíl systému Windows.
+Tato chybová zpráva znamená, že proces spouštění operačního systému nemohl najít aktivní systémový oddíl. Tato chyba by mohla také znamenat, že v úložišti konfigurační data spouštění (BCD) chybí odkaz a brání tak tomu, aby vyhledá oddíl Windows.
 
 ## <a name="solution"></a>Řešení
 
-### <a name="process-overview"></a>Přehled procesů
+### <a name="process-overview"></a>Přehled procesu
 
-1. Vytvoření a přístup k virtuálnímu virtuálnímu mísu opravy.
+1. Vytvořte a získejte přístup k opravnému virtuálnímu počítači.
 2. Nastavte stav oddílu na aktivní.
 3. Opravte diskový oddíl.
-4. **Doporučeno**: Před sestavením virtuálního virtuálního zařízení povolte sériovou konzolu a kolekci výpisu stavu paměti.
-5. Znovu vytvořit původní virtuální hod.
+4. **Doporučené**: před opětovným SESTAVENÍM virtuálního počítače povolte kolekci sériové konzoly a výpisu paměti.
+5. Znovu sestavte původní virtuální počítač.
 
    > [!NOTE]
-   > Při výskytu této chyby při spuštění není hostovaný operační systém funkční. Budete řešit problémy v režimu offline k vyřešení tohoto problému.
+   > Při výskytu této chyby spuštění není hostovaný operační systém funkční. Tento problém vyřešíte tak, že budete řešit potíže v offline režimu.
 
-### <a name="create-and-access-a-repair-vm"></a>Vytvoření a přístup k virtuálnímu virtuálnímu virtuálnímu mněmu pro opravy
+### <a name="create-and-access-a-repair-vm"></a>Vytvoření a přístup k opravnému virtuálnímu počítači
 
-1. Pomocí kroků 1-3 [příkazů pro opravu virtuálních počítačů](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) připravte virtuální počítač.
-2. Pomocí připojení ke vzdálené ploše se připojte k virtuálnímu počítači pro opravu.
+1. Pomocí kroků 1-3 příkazů pro [opravu virtuálního počítače](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) Připravte opravný virtuální počítač.
+2. Pomocí Připojení ke vzdálené ploše připojit k opravnému virtuálnímu počítači.
 
-### <a name="set-partition-status-to-active"></a>Nastavení stavu oddílu na aktivní
+### <a name="set-partition-status-to-active"></a>Nastavit stav oddílu na aktivní
 
-Virtuální klíče generace 1 by měly nejprve ověřit, zda je oddíl operačního systému, který obsahuje úložiště BCD, označen jako *aktivní*. Pokud máte virtuální modul generace 2, přeskočte dopředu na [opravu oddílu disku](#fix-the-disk-partition), protože příznak *Stav* byl v pozdější generaci zastaral.
+Virtuální počítače 1. generace by měly nejdřív ověřit, že oddíl s operačním systémem, který obsahuje úložiště BCD, je označený jako *aktivní*. Pokud máte virtuální počítač 2. generace, přeskočte před [opravou diskového oddílu](#fix-the-disk-partition), protože příznak *stavu* byl v pozdější generaci zastaralý.
 
-1. Otevřete příkazový řádek se zvýšenými oprávněními *(cmd.exe).*
-2. Zadejte *diskpart* a spusťte nástroj DISKPART.
-3. Zadáním *seznamu disků* zobrazíte seznam disků v systému a identifikujete připojený virtuální pevný disk operačního systému.
-4. Po umístění připojeného virtuálního pevného disku operačního systému vyberte disk zadáním *sel disku #* .  Viz obrázek 2, kde disk 1 je připojený virtuální disk operačního systému.
+1. Otevřete příkazový řádek se zvýšenými oprávněními *(cmd. exe)*.
+2. Zadáním příkazu *DiskPart* spusťte nástroj Diskpart.
+3. Zadejte *disk se seznamem* pro výpis disků v systému a identifikaci připojeného virtuálního pevného disku s operačním systémem.
+4. Po umístění připojeného virtuálního pevného disku s operačním systémem zadejte k výběru disku položku *sel disk #* .  Viz obrázek 2, kde disk 1 je připojený virtuální pevný disk s operačním systémem.
 
    Obrázek 2
 
-   ![Obrázek 2 znázorňuje okno *DISKPART*, které zobrazuje výstup příkazu diskového listu, disk0 a disk 1 zobrazený v tabulce.  Také zobrazuje výstup příkazu sel disk 1, disk 1 je vybraný disk](media/troubleshoot-guide-not-bootable-disk/2.jpg)
+   ![Obrázek 2 ukazuje okno * DISKPART * znázorňující výstup příkazu výpis disku, disk 0 a disk 1 zobrazené v tabulce.  Zobrazuje také výstup příkazu sel disk 1, disk 1 je vybraný disk.](media/troubleshoot-guide-not-bootable-disk/2.jpg)
 
-5. Po výběru disku zadejte *oddíl seznamu* a uveďte oddíly vybraného disku.
-6. Jakmile je spouštěcí oddíl identifikován, vyberte oddíl *sel oddíl #* .  Obvykle zaváděcí oddíl bude mít velikost kolem 350 MB.  Viz obrázek 3, kde oddíl 1 je spouštěcí oddíl.
+5. Po výběru disku zadejte *seznam* oddílů pro vypsání oddílů vybraného disku.
+6. Po zjištění spouštěcího oddílu zadejte k výběru oddílu *SEL partition #* .  Velikost spouštěcího oddílu obvykle bude přibližně 350 MB.  Viz obrázek 3, kde oddíl 1 je spouštěcí oddíl.
 
    Obrázek 3
 
-   ![Obrázek 3 znázorňuje okno *DISKPART* s výstupem příkazu *list partition*. Oddíl 1 a oddíl 2 jsou zobrazeny v tabulce. Zobrazuje také výstup příkazu *sel partition 1*, když je vybraný disk oddíl 1.](media/troubleshoot-guide-not-bootable-disk/3.jpg)
+   ![Na obrázku 3 se zobrazuje okno * DISKPART * s výstupem příkazu * list partition *. V tabulce se zobrazí oddíl 1 a oddíl 2. Zobrazuje také výstup příkazu * sel partition 1 *, pokud je oddíl 1 vybraným diskem.](media/troubleshoot-guide-not-bootable-disk/3.jpg)
 
-7. Zadejte 'detail oddíl' zkontrolovat stav oddílu. Viz obrázek 4, kde je oddíl *aktivní: Ne*nebo Obrázek 5, kde je oddíl "Aktivní: Ano".
+7. Pokud chcete zjistit stav oddílu, zadejte "detail partition". Viz obrázek 4, kde je oddíl *aktivní: ne*, nebo obrázek 5, kde oddíl je aktivní: Ano.
 
    Obrázek 4
 
-   ![Obrázek 4 znázorňuje okno *DISKPART* s výstupem příkazu *detail partition* při nastavení oddílu 1 na *Active: Ne*](media/troubleshoot-guide-not-bootable-disk/4.jpg)
+   ![Obrázek 4 znázorňuje okno * DISKPART * s výstupem příkazu * detail partition *, pokud je oddíl 1 nastavený na * aktivní: No *](media/troubleshoot-guide-not-bootable-disk/4.jpg)
 
    Obrázek 5
 
-   ![Obrázek 5 znázorňuje okno *DISKPART* s výstupem příkazu *detail partition* při nastavení oddílu 1 na *Active: Ano*.](media/troubleshoot-guide-not-bootable-disk/5.jpg)
+   ![Obrázek 5 znázorňuje okno * DISKPART * s výstupem příkazu * detail partition *, pokud je oddíl 1 nastavený na * aktivní: Ano *.](media/troubleshoot-guide-not-bootable-disk/5.jpg)
 
-8. Pokud oddíl **není aktivní**, zadejte *aktivní* a změňte příznak *Aktivní.*
-9. Zkontrolujte, zda byla změna stavu provedena správně zadáním *oddílu podrobností*.
+8. Pokud oddíl není **aktivní**, zadejte *aktivní* , aby se změnil *aktivní* příznak.
+9. Zadáním *oddílu podrobností*ověřte, zda byla změna stavu provedena správně.
 
    Obrázek 6
 
-   ![Obrázek 6 znázorňuje okno diskpart s výstupem příkazu *detail partition* při nastavení oddílu 1 na *Active: Ano*](media/troubleshoot-guide-not-bootable-disk/6.jpg)
+   ![Obrázek 6 znázorňuje okno nástroje DiskPart s výstupem příkazu * detail partition *, pokud je oddíl 1 nastaven na hodnotu * aktivní: Ano *](media/troubleshoot-guide-not-bootable-disk/6.jpg)
 
-10. Zadáním *příkazu exit* zavřete nástroj DISKPART a uložte změny konfigurace.
+10. Pokud chcete nástroj DISKPART zavřít a uložit změny konfigurace, zadejte *Exit* .
 
-### <a name="fix-the-disk-partition"></a>Oprava oddílu disku
+### <a name="fix-the-disk-partition"></a>Opravit diskový oddíl
 
-1. Otevřete příkazový řádek se zvýšenými oprávněními (cmd.exe).
-2. Pomocí následujícího příkazu spusťte *nástroj CHKDSK* na disky a opravte chyby:
+1. Otevřete příkazový řádek se zvýšenými oprávněními (cmd. exe).
+2. Pomocí následujícího příkazu spusťte na discích *příkaz Chkdsk* a opravte chyby:
 
    `chkdsk <DRIVE LETTER>: /f`
 
-   Přidáním možnosti příkazu '/f' opravíte všechny chyby na disku. Ujistěte se, že nahradit <DRIVE LETTER> písmenem připojeného operačního virtuálního pevného disku.
+   Přidání možnosti příkazu/f vyřeší všechny chyby na disku. Nezapomeňte nahradit <DRIVE LETTER> písmeno připojeného virtuálního pevného disku s operačním systémem.
 
-### <a name="recommended-before-you-rebuild-the-vm-enable-serial-console-and-memory-dump-collection"></a>Doporučené: Před sestavením virtuálního virtuálního montovace povolte kolekci sériové konzole a výpisu stavu paměti
+### <a name="recommended-before-you-rebuild-the-vm-enable-serial-console-and-memory-dump-collection"></a>Doporučené: před opětovným sestavením virtuálního počítače povolte kolekci sériové konzoly a výpisu paměti.
 
-Chcete-li povolit kolekci výpisů stavu paměti a konzolu Serial Console, spusťte následující skript:
+Pokud chcete povolit shromažďování výpisů paměti a sériovou konzolu, spusťte následující skript:
 
 1. Otevřete relaci příkazového řádku se zvýšenými oprávněními (Spustit jako správce).
 2. Spusťte následující příkazy:
 
-   Povolení sériové konzoly
+   Povolit sériovou konzolu
 
    `bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /ems {<BOOT LOADER IDENTIFIER>} ON`
 
    `bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /emssettings EMSPORT:1 EMSBAUDRATE:115200`
 
-3. Ověřte, že volné místo na disku operačního systému je stejně jako velikost paměti (RAM) na virtuálním počítači.
+3. Ověřte, že volné místo na disku s operačním systémem je ve virtuálním počítači ve velikosti paměti (RAM).
 
-   Pokud není dostatek místa na disku operačního systému, měli byste změnit umístění, kde bude vytvořen soubor výpisu stavu paměti a odkazovat, že na všechny datové disky připojené k virtuálnímu počítači, který má dostatek volného místa. Chcete-li změnit umístění, nahraďte "%SystemRoot%" písmenem jednotky (například "F:") datového disku v níže uvedených příkazech.
+   Pokud na disku operačního systému není dostatek místa, měli byste změnit umístění, kde se vytvoří soubor s výpisem paměti, a odkazovat na libovolný datový disk připojený k virtuálnímu počítači, který má dostatek volného místa. Chcete-li změnit umístění, nahraďte "% SystemRoot%" písmenem jednotky (například "F:") datového disku v následujících příkazech.
 
 #### <a name="suggested-configuration-to-enable-os-dump"></a>Navrhovaná konfigurace pro povolení výpisu operačního systému
 
-**Načíst poškozený disk operačního systému**:
+**Načíst poškozený disk s operačním systémem**:
 
 `REG LOAD HKLM\BROKENSYSTEM <VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config\SYSTEM`
 
-**Povolit na Ovládacích sadach001:**
+**Povolit na ControlSet001:**
 
 `REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f`
 
@@ -134,7 +134,7 @@ Chcete-li povolit kolekci výpisů stavu paměti a konzolu Serial Console, spus�
 
 `REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f`
 
-**Povolit na Ovládacím prvkuSet002:**
+**Povolit na ControlSet002:**
 
 `REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f`
 
@@ -142,10 +142,10 @@ Chcete-li povolit kolekci výpisů stavu paměti a konzolu Serial Console, spus�
 
 `REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f`
 
-**Uvolnit přerušený disk operačního systému:**
+**Uvolnit poškozený disk s operačním systémem:**
 
 `REG UNLOAD HKLM\BROKENSYSTEM`
 
-### <a name="rebuild-the-original-vm"></a>Znovu sestavit původní virtuální ms
+### <a name="rebuild-the-original-vm"></a>Znovu sestavte původní virtuální počítač.
 
-Pomocí [kroku 5 příkazů pro opravu virtuálních vod](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) znovu sestavte virtuální ho.
+Pomocí [kroku 5 příkazů pro opravu virtuálního počítače](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) znovu sestavte virtuální počítač.

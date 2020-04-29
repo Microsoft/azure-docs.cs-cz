@@ -1,6 +1,6 @@
 ---
-title: Seznam přiřazení rolí pomocí Azure RBAC a rozhraní REST API
-description: Zjistěte, jak určit, k jakým prostředkům mají uživatelé, skupiny, instanční objekty nebo spravované identity přístup pomocí řízení přístupu azure založené na rolích (RBAC) a rozhraní REST API.
+title: Seznam přiřazení rolí pomocí Azure RBAC a REST API
+description: Naučte se, jak určit, které prostředky uživatelé, skupiny, instanční objekty nebo spravované identity mají přístup k používání řízení přístupu na základě role (RBAC) Azure a REST API.
 services: active-directory
 documentationcenter: na
 author: rolyon
@@ -16,22 +16,22 @@ ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: a494e7fd4c9fb79faa6a1d8cb2c3c871796ccdc5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80062160"
 ---
-# <a name="list-role-assignments-using-azure-rbac-and-the-rest-api"></a>Seznam přiřazení rolí pomocí Azure RBAC a rozhraní REST API
+# <a name="list-role-assignments-using-azure-rbac-and-the-rest-api"></a>Seznam přiřazení rolí pomocí Azure RBAC a REST API
 
-[!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)]Tento článek popisuje, jak seznam přiřazení rolí pomocí rozhraní REST API.
+[!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)]Tento článek popisuje, jak zobrazit seznam přiřazení rolí pomocí REST API.
 
 > [!NOTE]
-> Pokud vaše organizace zadala funkce správy poskytovateli služeb, který používá [azure delegovanou správu prostředků](../lighthouse/concepts/azure-delegated-resource-management.md), přiřazení rolí autorizovaná tímto poskytovatelem služeb se zde nezobrazí.
+> Pokud má vaše organizace samoobslužné funkce správy pro poskytovatele služeb, který používá [správu delegovaných prostředků Azure](../lighthouse/concepts/azure-delegated-resource-management.md), tady se nezobrazí přiřazení rolí autorizovaných tímto poskytovatelem služeb.
 
 ## <a name="list-role-assignments"></a>Zobrazení seznamu přiřazení rolí
 
-V RBAC, chcete-li seznam přístupu, seznam přiřazení rolí. Chcete-li vypsat přiřazení rolí, použijte jedno z [úloh přiřazení - seznam](/rest/api/authorization/roleassignments/list) rest API. Chcete-li upřesnit výsledky, zadejte obor a volitelný filtr.
+V části RBAC pro vypsání přístupu k seznamu se zobrazí seznam přiřazení rolí. K vypsání přiřazení rolí použijte jedno ze [seznamu přiřazení rolí – seznam](/rest/api/authorization/roleassignments/list) rozhraní REST API. K upřesnění výsledků zadáte obor a volitelný filtr.
 
 1. Začněte s následujícím požadavkem:
 
@@ -39,7 +39,7 @@ V RBAC, chcete-li seznam přístupu, seznam přiřazení rolí. Chcete-li vypsat
     GET https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter={filter}
     ```
 
-1. V rámci identifikátoru URI nahraďte *{scope}* oborem, pro který chcete uvést přiřazení rolí.
+1. V rámci identifikátoru URI nahraďte *{Scope}* oborem, pro který chcete zobrazit seznam přiřazení rolí.
 
     > [!div class="mx-tableFixed"]
     > | Rozsah | Typ |
@@ -49,19 +49,19 @@ V RBAC, chcete-li seznam přístupu, seznam přiřazení rolí. Chcete-li vypsat
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | Skupina prostředků |
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1` | Prostředek |
 
-    V předchozím příkladu microsoft.web je poskytovatel prostředků, který odkazuje na instanci služby App Service. Podobně můžete použít jiné zprostředkovatele prostředků a určit obor. Další informace najdete [v tématu Zprostředkovatelé a typy prostředků Azure](../azure-resource-manager/management/resource-providers-and-types.md) a podporované operace [zprostředkovatele prostředků Azure Resource Manager](resource-provider-operations.md).  
+    V předchozím příkladu je Microsoft. Web poskytovatelem prostředků, který odkazuje na instanci App Service. Podobně můžete použít jiné poskytovatele prostředků a zadat obor. Další informace najdete v tématech [poskytovatelé a typy prostředků Azure](../azure-resource-manager/management/resource-providers-and-types.md) a podporované [Azure Resource Manager operace poskytovatele prostředků](resource-provider-operations.md).  
      
-1. Nahraďte *{filter}* podmínkou, kterou chcete použít k filtrování seznamu přiřazení rolí.
+1. Nahraďte *{Filter}* podmínkou, kterou chcete použít k filtrování seznamu přiřazení role.
 
     > [!div class="mx-tableFixed"]
     > | Filtr | Popis |
     > | --- | --- |
-    > | `$filter=atScope()` | Uvádí přiřazení rolí pouze pro zadaný obor, bez přiřazení rolí v podoborech. |
-    > | `$filter=assignedTo('{objectId}')` | Zobrazí seznam přiřazení rolí pro zadaný uživatel nebo instanční objekt.<br/>Pokud je uživatel členem skupiny, která má přiřazení role, je toto přiřazení role také uvedeno. Tento filtr je přenositý pro skupiny, což znamená, že pokud je uživatel členem skupiny a tato skupina je členem jiné skupiny, která má přiřazení role, je toto přiřazení role také uvedeno.<br/>Tento filtr přijímá pouze ID objektu pro uživatele nebo instanční objekt. ID objektu nelze předat pro skupinu. |
-    > | `$filter=atScope()+and+assignedTo('{objectId}')` | Uvádí přiřazení rolí pro zadaný uživatel nebo instanční objekt a v zadaném oboru. |
-    > | `$filter=principalId+eq+'{objectId}'` | Zobrazí seznam přiřazení rolí pro zadaného uživatele, skupinu nebo instanční objekt. |
+    > | `$filter=atScope()` | Vypíše přiřazení rolí jenom pro zadaný obor, včetně přiřazení rolí v podoborech. |
+    > | `$filter=assignedTo('{objectId}')` | Vypisuje přiřazení rolí pro zadaného uživatele nebo instanční objekt.<br/>Pokud je uživatel členem skupiny, která má přiřazení role, zobrazí se také toto přiřazení role. Tento filtr je přenosný pro skupiny, což znamená, že pokud je uživatel členem skupiny a tato skupina je členem jiné skupiny, která má přiřazení role, bude toto přiřazení role také uvedené.<br/>Tento filtr přijímá pouze ID objektu uživatele nebo instančního objektu. Nelze předat ID objektu pro skupinu. |
+    > | `$filter=atScope()+and+assignedTo('{objectId}')` | Zobrazuje přiřazení rolí pro zadaného uživatele nebo instanční objekt a v zadaném oboru. |
+    > | `$filter=principalId+eq+'{objectId}'` | Vypisuje přiřazení rolí pro zadaného uživatele, skupinu nebo instanční objekt. |
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Přidání nebo odebrání přiřazení rolí pomocí Azure RBAC a rozhraní REST API](role-assignments-rest.md)
-- [Odkaz na rozhraní API Azure REST](/rest/api/azure/)
+- [Přidání nebo odebrání přiřazení rolí pomocí Azure RBAC a REST API](role-assignments-rest.md)
+- [Reference k Azure REST API](/rest/api/azure/)

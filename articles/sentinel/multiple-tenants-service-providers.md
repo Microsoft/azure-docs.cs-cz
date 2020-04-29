@@ -1,6 +1,6 @@
 ---
-title: Práce s více klienty na Azure Sentinel pro poskytovatele služeb MSSP| Dokumenty společnosti Microsoft
-description: Jak pracovat s více klienty azure sentinelu pro poskytovatele služeb MSSP.
+title: Práce s více klienty v Azure Sentinel pro poskytovatele služeb MSSP | Microsoft Docs
+description: Jak v Azure Sentinel pro poskytovatele služeb MSSP pracovat s více klienty.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,36 +15,36 @@ ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
 ms.openlocfilehash: fdb58686fcdd18a8e2861aab533717dbc91e8893
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79476011"
 ---
-# <a name="work-with-multiple-tenants-in-azure-sentinel"></a>Práce s více klienty v Azure Sentinelu 
+# <a name="work-with-multiple-tenants-in-azure-sentinel"></a>Práce s více klienty v Azure Sentinel 
 
-Pokud jste poskytovatel služeb spravovaného zabezpečení (MSSP) a používáte [Azure Lighthouse](../lighthouse/overview.md) ke správě operačních center zabezpečení vašich zákazníků (SOC), budete moct spravovat prostředky Azure Sentinelu vašich zákazníků, aniž byste se připojili přímo k tenantovi zákazníka, od vašeho vlastního tenanta Azure. 
+Pokud jste spravovaným poskytovatelem zabezpečení (MSSP) a používáte [Azure Lighthouse](../lighthouse/overview.md) ke správě služeb provozu Security Center (SOC) vašich zákazníků, budete moct spravovat prostředky Sentinel Azure pro vaše zákazníky bez přímého připojení k tenantovi zákazníka, a to z vlastního tenanta Azure. 
 
 ## <a name="prerequisites"></a>Požadavky
-- [Palubní maják Azure](../lighthouse/how-to/onboard-customer.md)
-- Aby to fungovalo správně, musí být váš tenant registrovaný u zprostředkovatele prostředků Azure Sentinel u alespoň jednoho předplatného. Pokud máte registrované Azure Sentinel ve vašem tenantovi, jste připraveni začít. Pokud ne, vyberte **Předplatná** z webu Azure Portal, následovaný **zprostředkovateli prostředků**.  Potom na obrazovce **SOC - Resource Providers** `Microsoft.OperationalInsights` vyhledejte a vyberte a `Microsoft.SecurityInsights`vyberte a vyberte **registrovat**.
-   ![Kontrola poskytovatelů prostředků](media/multiple-tenants-service-providers/check-resource-provider.png)
-## <a name="how-to-access-azure-sentinel-from-other-tenants"></a>Jak získat přístup k Azure Sentinelu od jiných klientů
-1. V části **Directory + subscription**vyberte delegované adresáře a předplatná, kde jsou umístěny pracovní prostory Azure Sentinel u zákazníka.
+- [Zprovoznění Azure Lighthouse](../lighthouse/how-to/onboard-customer.md)
+- Aby to fungovalo správně, musí být váš tenant zaregistrován pro poskytovatele prostředků Azure Sentinel aspoň na jednom předplatném. Pokud máte ve svém tenantovi registrovanou ověřovací službu Azure, budete připraveni začít. V takovém případě vyberte **odběry** ze Azure Portal a potom jako **poskytovatelé prostředků**.  Pak na obrazovce **SOC-Resource Providers (poskytovatelé prostředků** ) vyhledejte `Microsoft.OperationalInsights` a `Microsoft.SecurityInsights`vyberte a vyberte **zaregistrovat**.
+   ![Kontrolovat poskytovatele prostředků](media/multiple-tenants-service-providers/check-resource-provider.png)
+## <a name="how-to-access-azure-sentinel-from-other-tenants"></a>Přístup k Azure Sentinel z jiných tenantů
+1. V části **adresář + předplatné**vyberte delegované adresáře a předplatné, kde se nacházejí pracovní prostory Azure Sentinel zákazníka.
 
-   ![Generovat bezpečnostní incidenty](media/multiple-tenants-service-providers/directory-subscription.png)
+   ![Generovat incidenty zabezpečení](media/multiple-tenants-service-providers/directory-subscription.png)
 
-1. Otevřete Azure Sentinel. Zobrazí se všechny pracovní prostory ve vybraných předplatných a budete s nimi moci bez problémů pracovat, jako každý pracovní prostor ve vašem vlastním tenantovi.
+1. Otevřete Azure Sentinel. Ve vybraných předplatných se zobrazí všechny pracovní prostory a budete s nimi moct pracovat hladce, stejně jako libovolný pracovní prostor ve vašem tenantovi.
 
 > [!NOTE]
-> Nebude možné nasadit konektory v Azure Sentinelu z v rámci spravovaného pracovního prostoru. Chcete-li nasadit konektor, musíte se přímo přihlásit do tenanta, ve kterém chcete nasadit konektor a ověřit se tam s požadovanými oprávněními.
+> V rámci spravovaného pracovního prostoru nebudete moct nasazovat konektory v Azure Sentinel. Chcete-li nasadit konektor, je nutné, abyste se přihlásili přímo do tenanta, na kterém chcete nasadit konektor, a ověřit je s požadovanými oprávněními.
 
 
 
 
 
 ## <a name="next-steps"></a>Další kroky
-V tomto dokumentu jste se naučili, jak bez problémů spravovat více klientů Azure Sentinelu. Další informace o Azure Sentinelu najdete v následujících článcích:
-- Přečtěte [si, jak získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
-- Začínáme [s detekcí hrozeb pomocí Azure Sentinelu](tutorial-detect-threats-built-in.md).
+V tomto dokumentu jste zjistili, jak hladce spravovat více tenantů Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:
+- Naučte se [, jak získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
+- Začněte [s detekcí hrozeb pomocí služby Azure Sentinel](tutorial-detect-threats-built-in.md).
 

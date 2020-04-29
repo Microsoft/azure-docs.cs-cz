@@ -1,6 +1,6 @@
 ---
-title: Pokrytí počasí | Mapy Microsoft Azure
-description: V tomto článku se dozvíte o pokrytí počasí v Mapách Microsoft Azure.
+title: Povětrnostní pokrytí | Mapy Microsoft Azure
+description: V tomto článku se dozvíte o počasí v Microsoft Azure Maps.
 author: philmea
 ms.author: philmea
 ms.date: 11/20/2019
@@ -9,28 +9,28 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 60761f7641d8cf87121992fce9050aea0f0b434b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80333573"
 ---
-# <a name="azure-maps-weather-coverage"></a>Pokrytí počasí v Azure Maps
+# <a name="azure-maps-weather-coverage"></a>Azure Maps povětrnostní pokrytí
 
-Tento článek obsahuje informace o pokrytí pro [služby Počasí](https://aka.ms/AzureMapsWeatherService)Azure Maps . Azure Maps Datové služby počasí vrátí podrobnosti, jako jsou radarové dlaždice, aktuální povětrnostní podmínky, předpovědi počasí a počasí na trase.
+Tento článek poskytuje informace o pokrytí Azure Maps [povětrnostní služby](https://aka.ms/AzureMapsWeatherService). Azure Maps datové služby počasí vrací podrobné informace, jako jsou například paprskové dlaždice, aktuální povětrnostní podmínky, předpovědi počasí a počasí na trase.
 
-Azure Maps nemá stejnou úroveň informací a přesnosti pro všechny země a oblasti.
+Azure Maps nemá stejnou úroveň informací a přesnost pro všechny země a oblasti.
 
-V následující tabulce jsou uvedeny informace o tom, jaký druh informací o počasí můžete požadovat od jednotlivých zemí nebo oblastí.
+Následující tabulka poskytuje informace o tom, jaký druh informací o počasí si můžete vyžádat od každé země nebo oblasti.
 
 | Symbol | Význam |
 |--------|---------|
-|*       |Zahrnuje počasí na trase, aktuální podmínky, hodinovou předpověď, čtvrtdenní předpověď a data denní hospo- |
+|*       |Pokrývá počasí v rámci trasy, aktuální podmínky, hodinovou prognózu, předpovědi čtvrtletních dnů a rozhraní API pro denní prognózy. |
 
 
 ## <a name="americas"></a>Amerika
 
-| Země              |  Satelitní dlaždice | Minutová předpověď, radarové dlaždice | Ostatní* | 
+| Země              |  Satelitní dlaždice | Minutová prognóza, paprskové dlaždice | Jiná | 
 |-----------------------------|:----------------:|:-----------------:|:--------:|  
 | Anguilla                                 | ✓ |   |  ✓| 
 | Antarktida                               | ✓ |   |  ✓|
@@ -74,19 +74,19 @@ V následující tabulce jsou uvedeny informace o tom, jaký druh informací o p
 | Paraguay                                 | ✓ |   |  ✓| 
 | Peru                                     | ✓ |   |  ✓| 
 | Portoriko                              | ✓ |   |  ✓| 
-| Svatý Barthélemy                         | ✓ |   |  ✓| 
+| Svatý Bartoloměj                         | ✓ |   |  ✓| 
 | Svatý Kryštof a Nevis                    | ✓ |   |  ✓| 
 | Svatá Lucie                              | ✓ |   |  ✓| 
 | Svatý Martin (Francie)                             | ✓ |   |  ✓| 
-| Svatý Pierre a Miquelon                | ✓ |   |  ✓| 
+| Saint-Pierre a Miquelon                | ✓ |   |  ✓| 
 | Svatý Vincenc a Grenadiny         | ✓ |   |  ✓| 
-| Sint Eustatius                           | ✓ |   |  ✓|  
+| Svatý Eustach                           | ✓ |   |  ✓|  
 | Svatý Martin (Nizozemsko)                             | ✓ |   |  ✓| 
 | Jižní Georgie a Jižní Sandwichovy ostrovy | ✓ |   |  ✓| 
 | Surinam                                 | ✓ |   |  ✓| 
 | Trinidad a Tobago                      | ✓ |   |  ✓| 
 | Turks a Caicos                 | ✓ |   |  ✓| 
-| Americké odlehlé ostrovy                    | ✓ |   |  ✓| 
+| Odlehlé ostrovy USA                    | ✓ |   |  ✓| 
 | Americké Panenské ostrovy                      | ✓ |   |  ✓| 
 | Spojené státy                            | ✓ | ✓ |  ✓| 
 | Uruguay                                  | ✓ |   |  ✓| 
@@ -95,7 +95,7 @@ V následující tabulce jsou uvedeny informace o tom, jaký druh informací o p
 
 ## <a name="middle-east-and-africa"></a>Střední východ a Afrika
 
-| Země              |  Satelitní dlaždice | Minutová předpověď, radarové dlaždice | Ostatní* | 
+| Země              |  Satelitní dlaždice | Minutová prognóza, paprskové dlaždice | Jiná | 
 |-----------------------------|:----------------:|:-----------------:|:--------:|  
 | Alžírsko                     | ✓               |                              |        ✓| 
 | Angola                      | ✓               |                              |        ✓| 
@@ -111,12 +111,12 @@ V následující tabulce jsou uvedeny informace o tom, jaký druh informací o p
 | Čad                        | ✓               |                              |        ✓| 
 | Komory                     | ✓               |                              |        ✓| 
 | Konžská demokratická republika                 | ✓               |                              |        ✓|
-| Slonoviny               | ✓               |                              |        ✓| 
+| Pobřeží slonoviny               | ✓               |                              |        ✓| 
 | Džibutsko                    | ✓               |                              |        ✓| 
 | Egypt                       | ✓               |                              |        ✓| 
 | Rovníková Guinea           | ✓               |                              |        ✓| 
 | Eritrea                     | ✓               |                              |        ✓| 
-| eSwatini řekl:                    | ✓               |                              |        ✓| 
+| eSwatini                    | ✓               |                              |        ✓| 
 | Etiopie                    | ✓               |                              |        ✓| 
 | Francouzská jižní území | ✓               |                              |        ✓| 
 | Gabon                       | ✓               |                              |        ✓| 
@@ -150,7 +150,7 @@ V následující tabulce jsou uvedeny informace o tom, jaký druh informací o p
 | Katar                       | ✓               |                              |        ✓| 
 | Réunion                     | ✓               |                              |        ✓| 
 | Rwanda                      | ✓               |                              |        ✓| 
-| Svatá Helena, Nanebevstoupení, Tristan da Cunha        | ✓               |                              |        ✓| 
+| Svatá Helena, Ascension a Tristan da Cunha        | ✓               |                              |        ✓| 
 | Svatý Tomáš a Princův ostrov       | ✓               |                              |        ✓| 
 | Saúdská Arábie                | ✓               |                              |        ✓| 
 | Senegal                     | ✓               |                              |        ✓| 
@@ -174,7 +174,7 @@ V následující tabulce jsou uvedeny informace o tom, jaký druh informací o p
 
 ## <a name="asia-pacific"></a>Asie a Tichomoří
 
-| Země              |  Satelitní dlaždice | Minutová předpověď, radarové dlaždice | Ostatní* | 
+| Země              |  Satelitní dlaždice | Minutová prognóza, paprskové dlaždice | Jiná | 
 |-----------------------------|:----------------:|:-----------------:|:--------:|  
 | Afghánistán                       | ✓ |   |  ✓| 
 | Americká Samoa                    | ✓ |   |  ✓| 
@@ -191,7 +191,7 @@ V následující tabulce jsou uvedeny informace o tom, jaký druh informací o p
 | Fidži                              | ✓ |   |  ✓| 
 | Francouzská Polynésie                  | ✓ |   |  ✓| 
 | Guam                              | ✓ |   |  ✓| 
-| Heardův ostrov a McDonaldovy ostrovy | ✓ |   |  ✓| 
+| Heardův ostrov a MacDonaldovy ostrovy | ✓ |   |  ✓| 
 | Hongkong – zvláštní správní oblast                     | ✓ |   |  ✓| 
 | Indie                             | ✓ |   |  ✓| 
 | Indonésie                         | ✓ |   |  ✓| 
@@ -241,7 +241,7 @@ V následující tabulce jsou uvedeny informace o tom, jaký druh informací o p
 
 ## <a name="europe"></a>Evropa
 
-| Země              |  Satelitní dlaždice | Minutová předpověď, radarové dlaždice | Ostatní* | 
+| Země              |  Satelitní dlaždice | Minutová prognóza, paprskové dlaždice | Jiná | 
 |-----------------------------|:----------------:|:-----------------:|:--------:|
 | Albánie                | ✓ |   |  ✓| 
 | Andorra                | ✓ |   |  ✓| 
@@ -254,7 +254,7 @@ V následující tabulce jsou uvedeny informace o tom, jaký druh informací o p
 | Bulharsko               | ✓ |   |  ✓| 
 | Chorvatsko                | ✓ | ✓ |  ✓| 
 | Kypr                 | ✓ |   |  ✓| 
-| Česko                | ✓ | ✓ |  ✓| 
+| Czechia                | ✓ | ✓ |  ✓| 
 | Dánsko                | ✓ | ✓ |  ✓| 
 | Estonsko                | ✓ | ✓ |  ✓| 
 | Faerské ostrovy          | ✓ |   |  ✓| 
@@ -299,4 +299,4 @@ V následující tabulce jsou uvedeny informace o tom, jaký druh informací o p
 | Turecko                 | ✓ |   |  ✓| 
 | Ukrajina                | ✓ |   |  ✓| 
 | Spojené království         | ✓ | ✓ |  ✓| 
-| Vatikánu           | ✓ |   |  ✓| 
+| Vatikán           | ✓ |   |  ✓| 

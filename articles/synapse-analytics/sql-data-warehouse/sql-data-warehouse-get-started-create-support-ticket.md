@@ -1,6 +1,6 @@
 ---
-title: Požádat o zvýšení kvóty a získat podporu
-description: Jak vytvořit žádost o podporu na webu Azure Portal pro Azure Synapse Analytics. Požadavek na zvýšení kvóty nebo získání podpory řešení problémů.
+title: Zvýšení kvóty požadavků a získání podpory
+description: Postup vytvoření žádosti o podporu v Azure Portal pro Azure synapse Analytics Požadavek zvyšuje kvótu nebo získá podporu pro řešení problémů.
 services: synapse-analytics
 ms.service: synapse-analytics
 ms.topic: conceptual
@@ -11,101 +11,101 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: eaa6ceded9893b278b28d517cbddb303f8469e10
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80350898"
 ---
-# <a name="request-quota-increases-and-get-support-for-azure-synapse-analytics"></a>Žádost o zvýšení kvóty a získání podpory pro Azure Synapse Analytics
+# <a name="request-quota-increases-and-get-support-for-azure-synapse-analytics"></a>Zvýšení kvóty žádostí a získání podpory pro Azure synapse Analytics
 
-Tento článek popisuje, jak odeslat lístek podpory na webu Azure Portal pro Azure Synapse Analytics. Tento proces umožňuje požádat o zvýšení kvóty nebo odeslat žádost o technickou podporu pro tým technické podpory.
+Tento článek popisuje, jak odeslat lístek podpory v Azure Portal pro Azure synapse Analytics. Tento proces vám umožní požádat o zvýšení kvóty nebo odeslat žádost o technickou podporu pro tým technické podpory.
 
 ## <a name="create-a-support-ticket"></a>Vytvoření lístku podpory
 
-Pomocí následujících kroků vytvořte novou žádost o podporu z portálu Azure pro Azure Synapse Analytics.
+Pomocí následujících kroků můžete vytvořit novou žádost o podporu z Azure Portal pro Azure synapse Analytics.
 
-1. V nabídce [Portál Azure](https://portal.azure.com) vyberte **Nápověda + podpora**.
+1. V nabídce [Azure Portal](https://portal.azure.com) vyberte možnost **help + podpora**.
 
-   ![Odkaz Nápověda + podpora](./media/sql-data-warehouse-get-started-create-support-ticket/help-plus-support.png)
+   ![Odkaz Help + support](./media/sql-data-warehouse-get-started-create-support-ticket/help-plus-support.png)
 
 
-1. V **nápovědě + podpoře**vyberte Nový **požadavek na podporu**.
+1. V **okně pomoc a podpora**vyberte **Nová žádost o podporu**.
 
-    ![Vytvoření nové žádosti o podporu](./media/sql-data-warehouse-get-started-create-support-ticket/new-support-request.png)
+    ![Vytvořit novou žádost o podporu](./media/sql-data-warehouse-get-started-create-support-ticket/new-support-request.png)
 
-1. Zkontrolujte [plán podpory Azure](https://azure.microsoft.com/support/plans/?WT.mc_id=Support_Plan_510979/).
+1. Zkontrolujte svůj [plán podpory Azure](https://azure.microsoft.com/support/plans/?WT.mc_id=Support_Plan_510979/).
 
    * **Podpora k fakturaci, správě kvót a předplatného** je k dispozici na všech úrovních podpory.
-   * **Podpora break-fix** je poskytována prostřednictvím [podpory Developer](https://azure.microsoft.com/support/plans/developer/), [Standard](https://azure.microsoft.com/support/plans/standard/), [Professional Direct](https://azure.microsoft.com/support/plans/prodirect/)nebo [Premier.](https://azure.microsoft.com/support/plans/premier/) Problémy vyžadující opravu jsou problémy, které mají zákazníci při používání Azure a u kterých se dá předpokládat, že je způsobila společnosti Microsoft.
+   * Podpora **přerušení oprav** je poskytována prostřednictvím [podpory Developer](https://azure.microsoft.com/support/plans/developer/), [Standard](https://azure.microsoft.com/support/plans/standard/), [Professional Direct](https://azure.microsoft.com/support/plans/prodirect/)nebo [Premier](https://azure.microsoft.com/support/plans/premier/) . Problémy vyžadující opravu jsou problémy, které mají zákazníci při používání Azure a u kterých se dá předpokládat, že je způsobila společnosti Microsoft.
    * V rámci podpory na úrovni [Professional Direct](https://azure.microsoft.com/support/plans/prodirect/) a [Premier](https://azure.microsoft.com/support/plans/premier/) jsou k dispozici služby **mentorování vývojářů** a **poradenské služby**.
 
-   Pokud máte plán podpory Premier, můžete také nahlásit problémy azure synapse analytics na [online portálu Microsoft Premier](https://premier.microsoft.com/). Další informace o různých [plánech](https://azure.microsoft.com/support/plans/?WT.mc_id=Support_Plan_510979/) podpory, včetně oboru, doby odezvy, cen atd.  Nejčastější dotazy týkající se podpory Azure najdete v [tématu Nejčastější dotazy k podpoře Azure](https://azure.microsoft.com/support/faq/).
+   Pokud máte plán podpory Premier Support, můžete také ohlásit problémy Azure synapse Analytics na [portálu Microsoft Premier Online](https://premier.microsoft.com/). Další informace o různých plánech podpory, včetně rozsahu, doby odezvy, cen atd. najdete v tématu věnovaném [plánům podpory Azure](https://azure.microsoft.com/support/plans/?WT.mc_id=Support_Plan_510979/) .  Nejčastější dotazy týkající se podpory Azure najdete v [nejčastějších](https://azure.microsoft.com/support/faq/)dotazech k podpoře Azure.
 
-1. V **yberte pro typ problému**příslušný typ problému. Problémy s opravami přerušení vyberte **možnost Technické**. Pro žádosti o zvýšení kvótvyberte **omezení služeb a předplatného (kvóty).**
+1. Jako **typ problému**vyberte příslušný typ problému. V případě problémů s opravou chyby vyberte možnost **Technical**. U žádostí o zvýšení kvóty vyberte **omezení služby a předplatné (kvóty)**.
 
-   ![Výběr typu problému](./media/sql-data-warehouse-get-started-create-support-ticket/select-quota-issue-type.png)  
+   ![Vyberte typ problému.](./media/sql-data-warehouse-get-started-create-support-ticket/select-quota-issue-type.png)  
 
    > [!NOTE]
-   > Tento zbývající část tohoto článku se zaměřuje na žádosti o zvýšení kvóty. Ale můžete také vybrat **technické** zde pro žádosti o podporu řešení problémů. Pokud vyberete **možnost Technické**, budete vyzváni k zadání souhrnu a následné identifikaci typu problému výběrem **možnosti Vybrat typ problému**. Mohou se zobrazit řešení, která vám pomohou problém vyřešit. Pokud prezentovaná řešení problém nevyřeší, vyberte **další:Podrobnosti** a vyplňte formulář pro odeslání lístku podpory.
+   > Tento zbytek tohoto článku zaměřen o požadavcích na zvýšení kvóty. V případě žádostí o podporu pro řešení problémů ale můžete také vybrat **technickou** podporu. Pokud vyberete možnost **Technical**, budete požádáni o zadání souhrnu a poté určení typu problému výběrem možnosti **Vybrat typ problému**. Můžou se zobrazit řešení, která vám pomůžou problém vyřešit. Pokud řešení uvedená řešení nevyřeší váš problém, vyberte **Další: podrobnosti** a vyplňte formulář pro odeslání lístku podpory.
 
-1. Pro požadavky na zvýšení kvóty vyberte **Azure Synapse Analytics** pro **typ kvóty**. Pak vyberte **Další: Řešení >>**.
+1. V případě požadavků na zvýšení kvóty vyberte **Azure synapse Analytics** pro **typ kvóty**. Pak vyberte **Další: řešení >>**.
 
-   ![Výběr typu kvóty](./media/sql-data-warehouse-get-started-create-support-ticket/select-quota-type.png)
+   ![Vyberte typ kvóty.](./media/sql-data-warehouse-get-started-create-support-ticket/select-quota-type.png)
 
-1. V okně **Podrobnosti** vyberte **Zadat podrobnosti** a zadejte další informace.
+1. V okně **podrobností** vyberte **zadat podrobnosti** a zadejte další informace.
 
-   ![Odkaz "Poskytnout podrobnosti"](./media/sql-data-warehouse-get-started-create-support-ticket/provide-details-link.png)
+   ![Odkaz "poskytnout podrobnosti"](./media/sql-data-warehouse-get-started-create-support-ticket/provide-details-link.png)
 
-## <a name="quota-request-types"></a>Typy požadavků na kvótu
+## <a name="quota-request-types"></a>Typy žádostí o kvótu
 
-Kliknutím **na tlačítko Poskytnout podrobnosti** se zobrazí okno **Podrobnosti o kvótě,** které umožňuje přidat další informace. Následující části popisují různé požadavky na kvóty, které jsou k dispozici pro Azure Synapse Analytics.
+Kliknutím na Zobrazit **Podrobnosti** zobrazíte okno **Podrobnosti o kvótě** , které vám umožní přidat další informace. V následujících částech najdete popis různých požadavků na kvóty dostupných pro Azure synapse Analytics.
 
-### <a name="data-warehouse-units-dwus-per-server"></a>Jednotky datového skladu (DWUs) na server
+### <a name="data-warehouse-units-dwus-per-server"></a>Jednotky datového skladu (DWU) na server
 
-Pomocí následujících kroků můžete požádat o zvýšení jednotky DWNa na server.
+Pomocí následujících kroků můžete požádat o zvýšení DWU na server.
 
-1. Vyberte **jednotky datového skladu (DTU) pro jeden typ kvóty serveru.**
+1. Vyberte typ kvóty **jednotky datového skladu (DTU) na jeden server** .
 
-1. V seznamu **Zdroje** vyberte zdroj, na který chcete cílit.
+1. V seznamu **prostředků** vyberte prostředek, který chcete cílit.
 
-1. Do pole Požádat o **kvótu** zadejte nový limit DWU, který požadujete.
+1. Do pole **kvóta žádosti** zadejte nový DWU limit, který požadujete.
 
    ![Podrobnosti o kvótě DWU](./media/sql-data-warehouse-get-started-create-support-ticket/quota-details-dwus.png)
 
 ### <a name="servers-per-subscription"></a>Servery na předplatné
 
-Pomocí následujících kroků můžete požádat o zvýšení počtu serverů na odběr.
+Pomocí následujících kroků můžete požádat o zvýšení počtu serverů na předplatné.
 
-1. Vyberte typ **kvóty Servery podle předplatného.**
+1. Vyberte typ kvóty **servery podle předplatného** .
 
-1. V seznamu **Umístění** vyberte oblast Azure, kterou chcete použít. Kvóta je na předplatné v každé oblasti.
+1. V seznamu **umístění** vyberte oblast Azure, kterou chcete použít. Kvóta je vázaná na předplatné v každé oblasti.
 
-1. Do pole **Nová kvóta** zadejte požadavek na maximální počet serverů v této oblasti.
+1. Do pole **Nová kvóta** zadejte žádost o maximální počet serverů v této oblasti.
 
    ![Podrobnosti o kvótě serverů](./media/sql-data-warehouse-get-started-create-support-ticket/quota-details-servers.png)
 
-### <a name="enable-subscription-access-to-a-region"></a>Povolení přístupu předplatného do oblasti
+### <a name="enable-subscription-access-to-a-region"></a>Povolit přístup k předplatnému pro oblast
 
-Některé typy nabídek nejsou k dispozici ve všech oblastech. Může se zobrazit chyba, například následující:
+Některé typy nabídek nejsou k dispozici v každé oblasti. Může se zobrazit chyba, například následující:
 
 `This location is not available for subscription`
 
-Pokud vaše předplatné potřebuje přístup v určité oblasti, použijte možnost **Žádost o další kvótu** a požádejte o přístup. V žádosti zadejte nabídku a podrobnosti skladové položky, které chcete povolit pro oblast. Informace o nabídce a možnostech skladové položky najdete v [tématu Azure Synapse Analytics pricing](https://azure.microsoft.com/pricing/details/synapse-analytics/).
+Pokud vaše předplatné potřebuje přístup v konkrétní oblasti, požádejte prosím o přístup **jinou možnost žádosti o kvótu** . V žádosti zadejte podrobnosti nabídky a skladové položky, které chcete pro oblast povolit. Pokud chcete prozkoumat možnosti nabídky a SKU, přečtěte si téma [ceny Azure synapse Analytics](https://azure.microsoft.com/pricing/details/synapse-analytics/).
 
-![Další podrobnosti o kvótách](./media/sql-data-warehouse-get-started-create-support-ticket/quota-details-whitelisting.png)
+![Podrobnosti o jiné kvótě](./media/sql-data-warehouse-get-started-create-support-ticket/quota-details-whitelisting.png)
 
-## <a name="submit-your-request"></a>Odešlete svůj požadavek
+## <a name="submit-your-request"></a>Odeslat žádost
 
-Posledním krokem je vyplnění zbývajících podrobností žádosti o podporu databáze SQL. Pak vyberte **Další: Kontrola + vytvoření>>** a po kontrole podrobností žádosti klikněte na **Vytvořit** a odešlete žádost.
+Posledním krokem je vyplnit zbývající podrobnosti žádosti o podporu SQL Database. Pak vyberte **Další: zkontrolovat + vytvořit>>** a po kontrole podrobností žádosti klikněte na **vytvořit** , aby se žádost odeslala.
 
 ## <a name="monitor-a-support-ticket"></a>Monitorování lístku podpory
 
-Po odeslání žádosti o podporu vás bude kontaktovat tým podpory Azure. Pokud chcete zkontrolovat stav a podrobnosti žádosti, klikněte na řídicím panelu na **Všechny žádosti o podporu**.
+Po odeslání žádosti o podporu vás tým podpory Azure vás bude kontaktovat. Pokud chcete zkontrolovat stav a podrobnosti žádosti, klikněte na řídicím panelu na **Všechny žádosti o podporu**.
 
 ![Zkontrolování stavu](./media/sql-data-warehouse-get-started-create-support-ticket/monitor-ticket.png)
 
 ## <a name="other-resources"></a>Další prostředky
 
-Můžete se také spojit s komunitou Azure Synapse Analytics v [přetečení zásobníku](https://stackoverflow.com/questions/tagged/azure-synapse+or+azure-sql-data-warehouse) nebo prostřednictvím [fóra MSDN azure SQL data warehouse](https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse/).
+Můžete se také připojit k komunitě Azure synapse Analytics na [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-synapse+or+azure-sql-data-warehouse) nebo prostřednictvím [Azure SQL Data Warehouse fóra MSDN](https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse/).
 

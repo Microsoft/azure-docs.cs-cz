@@ -1,142 +1,142 @@
 ---
-title: Konsorcium Hyperledger Fabric ve službě Azure Kubernetes Service (AKS)
-description: Jak nasadit a nakonfigurovat síť konsorcia Hyperledger Fabric ve službě Azure Kubernetes Service
+title: Hlavní kniha prostředků infrastruktury pro službu Azure Kubernetes (AKS)
+description: Jak nasadit a nakonfigurovat síť sdružení prostředků infrastruktury pro hlavní knihu ve službě Azure Kubernetes
 ms.date: 01/08/2020
 ms.topic: article
 ms.reviewer: v-umha
 ms.openlocfilehash: 2312c002e5c2e0b813f8acbdc3e3bff597f204d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79476436"
 ---
-# <a name="hyperledger-fabric-consortium-on-azure-kubernetes-service-aks"></a>Konsorcium Hyperledger Fabric ve službě Azure Kubernetes Service (AKS)
+# <a name="hyperledger-fabric-consortium-on-azure-kubernetes-service-aks"></a>Hlavní kniha prostředků infrastruktury pro službu Azure Kubernetes (AKS)
 
-K nasazení a konfiguraci sítě konsorcia Hyperledger Fabric v Azure můžete použít šablonu Hyperledger Fabric (HLF) ve službě Azure Kubernetes Service (AKS).
+K nasazení a konfiguraci sítě konsorcia prostředků infrastruktury v Azure můžete použít šablonu HLF (hlavní kniha prostředků infrastruktury) na šabloně Azure Kubernetes Service (AKS).
 
 Po přečtení tohoto článku:
 
-- Získejte pracovní znalosti o Hyperledger Fabric a různých komponentách, které tvoří stavební kameny blockchainové sítě Hyperledger Fabric.
-- Zjistěte, jak nasadit a nakonfigurovat konsorcium Hyperledger Fabric ve službě Azure Kubernetes pro vaše produkční scénáře.
+- Získejte pracovní znalosti prostředků infrastruktury hlavní knihy a různých komponent, které tvoří stavební kameny blockchain sítě hlavní knihy.
+- Naučte se, jak nasadit a nakonfigurovat konsorcium prostředků infrastruktury hlavní knihy ve službě Azure Kubernetes pro produkční scénáře.
 
-## <a name="hyperledger-fabric-consortium-architecture"></a>Architektura konsorcia Hyperledger Fabric
+## <a name="hyperledger-fabric-consortium-architecture"></a>Architektura konsorcia infrastruktury pro hlavní kniha
 
-Chcete-li vytvořit síť Hyperledger Fabric v Azure, musíte nasadit službu objednávání a organizaci s uzly rovnocenných trhů. Různé základní součásti, které jsou vytvořeny jako součást nasazení šablony jsou:
+Pokud chcete vytvořit síť prostředků infrastruktury hlavní knihy v Azure, je potřeba nasadit službu řazení a organizaci s partnerskými uzly. Různé základní komponenty, které jsou vytvořeny jako součást nasazení šablony, jsou:
 
-- **Uzly objednatele**: Uzel, který je zodpovědný za objednávání transakcí v hlavní knize. Spolu s dalšími uzly tvoří objednané uzly objednávkovou službu sítě Hyperledger Fabric.
+- **Uzly**: uzel, který je zodpovědný za řazení transakce v hlavní knize. Společně s ostatními uzly tvoří seřazené uzly službu řazení pro síť prostředků infrastruktury hlavní knihy.
 
-- **Partnerské uzly**: Uzel, který primárně hostuje hlavní knihy a inteligentní smlouvy, tyto základní prvky sítě.
+- **Partnerské uzly**: uzel, který primárně hostuje hlavní knihy a inteligentní kontrakty, tyto základní prvky sítě.
 
-- **Fabric CA**: Fabric CA je certifikační autorita (CA) pro hyperledger fabric. Certifikační autorita fabric umožňuje inicializovat a spustit serverový proces, který je hostitelem certifikační autority. Umožňuje spravovat identity a certifikáty. Každý cluster AKS nasazený jako součást šablony bude mít ve výchozím nastavení pod certifikační autority fabric.
+- **CA Fabric**: Fabric je certifikační autorita (CA) pro prostředky infrastruktury hlavní knihy. Certifikační autorita prostředků infrastruktury umožňuje inicializovat a spustit proces serveru, který je hostitelem certifikační autority. Umožňuje správu identit a certifikátů. Každý cluster AKS nasazený jako součást šablony bude mít ve výchozím nastavení certifikační autoritu infrastruktury pod.
 
-- **CouchDB nebo LevelDB**: Světová stavová databáze pro partnerské uzly mohou být uloženy buď v LevelDB nebo CouchDB. LevelDB je výchozí stav databáze vložené do uzlu partnera a ukládá data kódu řetězce jako jednoduché dvojice klíč-hodnota a podporuje pouze klíčové, klíčové rozsah a složené klíčové dotazy. CouchDB je volitelná databáze alternativního stavu, která podporuje bohaté dotazy při datech chaincode jsou modelovány jako JSON.
+- **CouchDB nebo LevelDB**: databáze státních stavů pro rovnocenné uzly může být uložena v LevelDB nebo CouchDB. LevelDB je výchozí databáze stavu vložená v partnerském uzlu a ukládá data chaincode jako jednoduché páry klíč-hodnota a podporuje jenom klíč, rozsah klíčů a dotazy složeného klíče. CouchDB je volitelná alternativní databáze stavu, která podporuje formátované dotazy, když jsou datové hodnoty chaincode modelované jako JSON.
 
-Šablona na nasazení stočí různé prostředky Azure ve vašem předplatném. Různé nasazené prostředky Azure jsou:
+Šablona v nasazení roztočí různé prostředky Azure v rámci vašeho předplatného. Mezi nasazené různé prostředky Azure patří:
 
-- **Cluster AKS**: Cluster Azure Kubernetes, který je nakonfigurován podle vstupních parametrů poskytnutých zákazníkem. Cluster AKS má různé pody nakonfigurované pro spuštění síťových komponent Hyperledger Fabric. Různé vytvořené pody jsou:
+- **Cluster AKS**: cluster Azure Kubernetes, který je nakonfigurovaný podle vstupních parametrů poskytovaných zákazníkem. Cluster AKS má různé lusky nakonfigurované pro spouštění síťových komponent prostředků infrastruktury hlavní knihy. Vytvoří se různé lusky:
 
-  - **Nástroje pro textilie**: Nástroj fabric je zodpovědný za konfiguraci součástí Hyperledger Fabric.
-  - **Moduly Pro objednavatelé/peerové moduly**: Uzly sítě HLF.
-  - **Proxy**server : Proxy pod NGNIX, jehož prostřednictvím mohou klientské aplikace komunikovat s clusterem AKS.
-  - **Fabric CA**: Pod, který spouští fabric CA.
-- **PostgreSQL**: Instance PostgreSQL je nasazena k udržování identit y FABRIC CA.
+  - **Fabric Tools**: nástroj Fabric zodpovídá za konfiguraci komponent prostředků infrastruktury hlavní knihy.
+  - **Lusky/protějšky**: uzly sítě HLF.
+  - **Proxy**: proxy server ngnix pod tím, přes který mohou klientské aplikace používat rozhraní s clusterem AKS.
+  - **CA infrastruktury Fabric**: na pod, kde je SPUŠTĚNÁ certifikační autorita infrastruktury.
+- **PostgreSQL**: instance PostgreSQL je nasazená za účelem zachování identit certifikační autority infrastruktury.
 
-- **Trezor klíčů Azure**: Instance trezoru klíčů se nasadí k uložení přihlašovacích údajů certifikační autority fabric a kořenových certifikátů poskytnutých zákazníkem, který se používá v případě opakování nasazení šablony, to je pro zpracování mechaniky šablony.
-- **Disk Azure Managed**: Disk Azure Managed je pro trvalé úložiště pro databázi stavu hlavního počítače a peerového uzlu.
-- **Veřejná IP adresa**: Veřejný koncový bod IP clusteru AKS nasazený pro propojení s clusterem.
+- **Azure Key trezor**: instance trezoru klíčů je nasazená za účelem uložení přihlašovacích údajů certifikační autority infrastruktury a kořenových certifikátů poskytovaných zákazníkem, který se používá v případě opakování nasazení šablony. je to zpracování mechanismu šablony.
+- **Spravovaný disk Azure**: Azure Managed disk pro hlavní knihu a databázi státních stavů partnerského uzlu jsou pro trvalé úložiště.
+- **Veřejná IP adresa**: koncový bod veřejné IP adresy clusteru AKS nasazený pro propojení s clusterem.
 
-## <a name="hyperledger-fabric-blockchain-network-setup"></a>Nastavení sítě Hyperledger Fabric Blockchain
+## <a name="hyperledger-fabric-blockchain-network-setup"></a>Nastavení sítě blockchain infrastruktury pro hlavní knihu
 
-Chcete-li začít, budete potřebovat předplatné Azure, které podporuje nasazení několika virtuálních počítačů a standardní účty úložiště. Pokud nemáte předplatné Azure, můžete [si vytvořit bezplatný účet Azure](https://azure.microsoft.com/free/).
+Začněte tím, že budete potřebovat předplatné Azure, které může podporovat nasazení několika virtuálních počítačů a standardních účtů úložiště. Pokud nemáte předplatné Azure, můžete si [vytvořit bezplatný účet Azure](https://azure.microsoft.com/free/).
 
-Nastavení sítě Hyperledger Fabric Blockchain pomocí následujících kroků:
+Nastavte blockchain síť prostředků infrastruktury hlavní knihy pomocí následujících kroků:
 
-- [Nasazení organizace objednateč/druhá strana](#deploy-the-ordererpeer-organization)
+- [Nasazení organizace v řádu nebo v partnerském vztahu](#deploy-the-ordererpeer-organization)
 - [Sestavení konsorcia](#build-the-consortium)
-- [Spustit nativní operace HLF](#run-native-hlf-operations)
+- [Spouštění nativních operací HLF](#run-native-hlf-operations)
 
-## <a name="deploy-the-ordererpeer-organization"></a>Nasazení organizace objednateč/druhá strana
+## <a name="deploy-the-ordererpeer-organization"></a>Nasazení organizace v řádu nebo v partnerském vztahu
 
-Pokud chcete začít s nasazením síťových komponent HLF, přejděte na [portál Azure](https://portal.azure.com). Vyberte **vytvořit prostředek > blockchain** > hledání **hyperledger fabric na Azure Kubernetes Service**.
+Pokud chcete začít s nasazením síťových součástí HLF, přejděte na [Azure Portal](https://portal.azure.com). Vyberte **vytvořit prostředek > Blockchain** > Hledat v prostředcích **infrastruktury hlavní knihy ve službě Azure Kubernetes**.
 
-1. Výběrem **možnosti vytvořit** spustíte nasazení šablony. **Zobrazí se vytvoření struktury Hyperledger Fabric ve službě Azure Kubernetes.**
+1. Vyberte **vytvořit** a spusťte tak nasazení šablony. Zobrazí se zobrazení **vytvoření prostředků infrastruktury hlavní knihy ve službě Azure Kubernetes** .
 
-    ![Infrastruktura Hyperledger u šablony služby Azure Kubernetes](./media/hyperledger-fabric-consortium-azure-kubernetes-service/hyperledger-fabric-aks.png)
+    ![Šablona prostředků infrastruktury hlavní knihy v Azure Kubernetes Service](./media/hyperledger-fabric-consortium-azure-kubernetes-service/hyperledger-fabric-aks.png)
 
-2. Zadejte podrobnosti o projektu na stránce **Základy.**
+2. Na stránce **základy** zadejte podrobnosti projektu.
 
-    ![Infrastruktura Hyperledger u šablony služby Azure Kubernetes](./media/hyperledger-fabric-consortium-azure-kubernetes-service/create-for-hyperledger-fabric-basics.png)
+    ![Šablona prostředků infrastruktury hlavní knihy v Azure Kubernetes Service](./media/hyperledger-fabric-consortium-azure-kubernetes-service/create-for-hyperledger-fabric-basics.png)
 
 3. Zadejte následující podrobnosti:
-    - **Předplatné**: Zvolte název předplatného, do kterého chcete nasadit síťové součásti HLF.
-    - **Skupina prostředků**: Buď vytvořte novou skupinu prostředků, nebo zvolte existující prázdnou skupinu prostředků, skupina prostředků bude obsahovat všechny prostředky nasazené jako součást šablony.
-    - **Oblast**: Zvolte oblast Azure, kde chcete nasadit cluster Azure Kubernetes pro součásti HLF. Šablona je k dispozici ve všech oblastech, kde je k dispozici AKS: Ujistěte se, že zvolte oblast, kde vaše předplatné nedosahuje limitu kvóty virtuálního počítače.
-    - **Předpona prostředků**: Předpona pro pojmenování prostředků, které jsou nasazeny. Předpona zdroje musí být kratší než šest znaků a kombinace znaků musí obsahovat čísla i písmena.
-4. Vyberte kartu **Nastavení prostředků infrastruktury** a definujte síťové součásti HLF, které budou nasazeny.
+    - **Předplatné**: vyberte název předplatného, ve kterém chcete nasadit součásti sítě HLF.
+    - **Skupina prostředků**: buď vytvořte novou skupinu prostředků, nebo vyberte existující prázdnou skupinu prostředků, skupina prostředků bude obsahovat všechny prostředky nasazené v rámci šablony.
+    - **Oblast**: Vyberte oblast Azure, ve které chcete nasadit cluster Azure Kubernetes pro součásti HLF. Tato šablona je dostupná ve všech oblastech, kde je AKS k dispozici, zajistěte si výběr oblasti, ve které vaše předplatné nedosahuje limitu kvóty virtuálních počítačů.
+    - **Předpona prostředku**: předpona pro pojmenování nasazených prostředků. Předpona prostředku musí být kratší než šest znaků a kombinace znaků musí zahrnovat číslice i písmena.
+4. Vyberte kartu **nastavení prostředků infrastruktury** a definujte součásti sítě HLF, které budou nasazeny.
 
-    ![Infrastruktura Hyperledger u šablony služby Azure Kubernetes](./media/hyperledger-fabric-consortium-azure-kubernetes-service/create-for-hyperledger-fabric-settings.png)
+    ![Šablona prostředků infrastruktury hlavní knihy v Azure Kubernetes Service](./media/hyperledger-fabric-consortium-azure-kubernetes-service/create-for-hyperledger-fabric-settings.png)
 
 5. Zadejte následující podrobnosti:
-    - **Název organizace**: Název organizace Fabric, který je vyžadován pro různé operace roviny dat. Název organizace musí být jedinečný pro nasazení. 
-    - **Síťová komponenta Fabric**: Zvolte buď objednávací službu nebo uzly peer na základě síťové součásti Blockchain, kterou chcete nastavit.
-    - **Počet uzlů** – následující jsou dva typy uzlů:
-        - Objednaná služba - vyberte počet uzlů, které mají být zajištěny odolností proti chybám v síti. Pouze 3,5 a 7 jsou podporované pořadí uzlu počet.
-        - Partnerské uzly - můžete si vybrat 1-10 uzlů na základě vašeho požadavku.
-    - **Peer uzel světové databáze stavu**: Vyberte si mezi LevelDB a CoucbDB. Toto pole se zobrazí, když uživatel zvolí uzel partnerské sítě v rozevíracím seznamu síťové součásti prostředků infrastruktury.
-    - **Uživatelské jméno prostředků infrastruktury**: Zadejte uživatelské jméno, které se používá pro ověřování certifikační autority prostředků infrastruktury.
-    - **Heslo certifikační autority prostředků infrastruktury**: Zadejte heslo pro ověřování certifikační autority prostředků infrastruktury.
-    - **Potvrdit heslo**: Potvrďte heslo certifikační autority prostředků infrastruktury.
-    - **Certifikáty**: Pokud chcete k inicializaci certifikačního systému fabrice použít vlastní kořenové certifikáty, zvolte Možnost Odeslat kořenový certifikát pro certifikační autoritu prostředků fabric, jinak certifikační autorita aplikace Fabric vytvoří certifikáty podepsané svým držitelem.
-    - **Kořenový certifikát**: Nahrajte kořenový certifikát (veřejný klíč), se kterým je třeba inicializovat certifikační autoritu prostředků infrastruktury. Certifikáty formátu .pem jsou podporovány, certifikáty by měly být platné v časovém pásmu UTC.
-    - **Soukromý klíč kořenového certifikátu**: Nahrajte soukromý klíč kořenového certifikátu. Pokud máte certifikát .pem, který má veřejný i soukromý klíč v kombinaci, nahrajte jej i zde.
+    - **Název organizace**: název organizace prostředků infrastruktury, která se vyžaduje pro různé operace roviny dat. Název organizace musí být pro každé nasazení jedinečný. 
+    - **Součást sítě prostředků infrastruktury**: vyberte buď řazení služby nebo partnerské uzly na základě součásti sítě blockchain, kterou chcete nastavit.
+    - **Počet uzlů** – následující dva typy uzlů:
+        - Služba objednávání – vyberte počet uzlů pro zajištění odolnosti proti chybám v síti. Podporovaným počtem uzlů pro pořadí je jenom 3, 5 a 7.
+        - Partnerské uzly – na základě vašeho požadavku můžete vybrat 1-10 uzlů.
+    - **Databáze stavu partnerského uzlu na světě**: Vyberte mezi LevelDB a CoucbDB. Toto pole se zobrazí, když uživatel zvolí uzel peer v rozevíracím seznamu součást sítě Fabric.
+    - **Uživatelské jméno prostředků infrastruktury**: zadejte uživatelské jméno, které se používá pro ověřování certifikační autority infrastruktury.
+    - **Heslo certifikační autority prostředků infrastruktury**: zadejte heslo pro ověřování certifikační autority infrastruktury.
+    - **Potvrzení hesla**: potvrďte heslo certifikační autority infrastruktury.
+    - **Certifikáty**: Pokud chcete k inicializaci CA prostředků infrastruktury použít vlastní kořenové certifikáty, pak zvolte možnost nahrát kořenový certifikát pro certifikační autoritu infrastruktury, jinak ve výchozím nastavení certifikační autorita infrastruktury vytvoří certifikáty podepsané svým držitelem.
+    - **Kořenový certifikát**: Nahrajte kořenový certifikát (veřejný klíč), ve kterém se musí inicializovat certifikační autorita infrastruktury. Certifikáty ve formátu. pem jsou podporovány, certifikáty by měly být platné v časovém pásmu UTC.
+    - **Privátní klíč kořenového certifikátu**: Nahrajte privátní klíč kořenového certifikátu. Pokud máte certifikát. pem, který má kombinaci veřejného i privátního klíče, nahrajte ho i tady.
 
 
-6. Vyberte kartu **Nastavení clusteru AKS** a definujte konfiguraci clusteru Azure Kubernetes, která je základní infrastrukturou, na které se budou nastavovat síťové součásti Fabric.
+6. Výběrem karty **Nastavení clusteru AKS** definujte konfiguraci clusteru Azure Kubernetes, která je základní infrastrukturou, na které se budou nastavovat síťové součásti prostředků infrastruktury.
 
-    ![Infrastruktura Hyperledger u šablony služby Azure Kubernetes](./media/hyperledger-fabric-consortium-azure-kubernetes-service/create-for-hyperledger-fabric-aks-cluster-settings-1.png)
+    ![Šablona prostředků infrastruktury hlavní knihy v Azure Kubernetes Service](./media/hyperledger-fabric-consortium-azure-kubernetes-service/create-for-hyperledger-fabric-aks-cluster-settings-1.png)
 
 7. Zadejte následující podrobnosti:
-    - **Název clusteru Kubernetes**: Název vytvořeného clusteru AKS. Toto pole je předem vyplněno na základě poskytnuté předpony zdroje, můžete ji v případě potřeby změnit.
-    - **Kubernetes verze**: Verze Kubernetes, které budou nasazeny v clusteru. Na základě oblasti vybrané na kartě **Základy** se podporované verze, které jsou k dispozici, mohou změnit.
-    - **Předpona DNS**: Předpona názvu DNS (Domain Name System) pro cluster AKS. Dns se při správě kontejnerů po vytvoření clusteru připojíte k rozhraní API Kubernetes.
-    - **Velikost uzlu**: Velikost uzlu Kubernetes, můžete si vybrat ze seznamu skladové jednotky virtuálních her (SKU) dostupné v Azure. Pro optimální výkon doporučujeme Standard DS3 v2.
-    - **Počet uzlů**: Počet počet uzlů Kubernetes, které mají být nasazeny v clusteru. Doporučujeme zachovat počet uzlů alespoň stejné nebo větší než počet uzlů HLF zadaný v nastavení prostředků prostředků.
-    - **ID instančního objektu**služby : Zadejte ID klienta existujícího instančního objektu nebo vytvořte nový, který je vyžadován pro ověřování AKS. Postup vytvoření [instančního objektu .](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps?view=azps-3.2.0#create-a-service-principal)
-    - **Tajný klíč klienta instančního objektu**: Zadejte tajný klíč klienta instančního objektu uvedeného v ID instančního objektu klienta.
-    - **Potvrdit tajný klíč klienta**: Potvrďte tajný klíč klienta poskytnutý v tajném klíči klienta hlavního klienta služby.
-    - **Povolit monitorování kontejnerů**: Zvolte povolení monitorování AKS, které umožňuje protokolům AKS nabízení do zadaného pracovního prostoru Log Analytics.
-    - **Pracovní prostor Log Analytics**: Pracovní prostor analýzy protokolů bude naplněn výchozím pracovním prostorem, který se vytvoří, pokud je monitorování povoleno.
+    - **Kubernetes clusteru název**: název clusteru AKS, který se vytvoří. Toto pole je předem vyplněné na základě zadané předpony prostředku, můžete v případě potřeby změnit.
+    - **Verze Kubernetes**: verze Kubernetes, která bude nasazena v clusteru. V závislosti na oblasti vybrané na kartě **základy** se můžou dostupné podporované verze změnit.
+    - **Předpona DNS**: Předpona názvu DNS (Domain Name System) pro cluster AKS. Pomocí DNS se připojíte k rozhraní Kubernetes API při správě kontejnerů po vytvoření clusteru.
+    - **Velikost uzlu**: velikost uzlu Kubernetes můžete vybrat ze seznamu skladových jednotek virtuálních počítačů (SKU) dostupných v Azure. Pro zajištění optimálního výkonu doporučujeme standardní DS3 v2.
+    - **Počet uzlů**: počet uzlů Kubernetes, které mají být nasazeny v clusteru. Doporučujeme, aby byl tento počet uzlů minimálně rovný nebo větší než počet uzlů HLF zadaných v nastavení prostředků infrastruktury.
+    - **ID klienta instančního objektu**: Zadejte ID klienta existujícího instančního objektu nebo vytvořte nový, který se vyžaduje pro ověřování AKS. Další informace najdete v tématu Postup [Vytvoření instančního objektu](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps?view=azps-3.2.0#create-a-service-principal).
+    - **Tajný kód klienta instančního objektu**: zadejte tajný klíč klienta instančního objektu, který je k dispozici v ID klienta instančního objektu.
+    - **Potvrzení tajného klíče klienta**: potvrďte tajný klíč klienta, který je k dispozici v tajnosti klienta instančního objektu
+    - **Povolit monitorování kontejnerů**: tuto možnost vyberte, pokud chcete povolit monitorování AKS, což umožňuje, aby protokoly AKS předalo do zadaného pracovního prostoru Log Analytics.
+    - **Log Analytics pracovní prostor**: pracovní prostor Log Analytics se naplní výchozím pracovním prostorem, který se vytvoří, pokud je povolené monitorování.
 
-8. Po zadání všech výše uvedených podrobností vyberte **Zkontrolovat a vytvořit** kartu. Kontrola a vytvoření aktivuje ověření pro hodnoty, které jste zadali.
-9. Jakmile ověření projde, můžete vybrat **vytvořit**.
-Nasazení obvykle trvá 10-12 minut, se může lišit v závislosti na velikosti a počtu uzlů AKS zadaných.
-10. Po úspěšném nasazení budete upozorněni prostřednictvím oznámení Azure v pravém horním rohu.
-11. Vyberte **Přejít do skupiny prostředků** a zkontrolujte všechny prostředky vytvořené jako součást nasazení šablony. Všechny názvy prostředků budou začínat předponou uvedenou v nastavení **Základy.**
+8. Po zadání všech výše uvedených podrobností vyberte možnost **zkontrolovat a vytvořit** kartu. Kontrola a vytvoření aktivuje ověření pro hodnoty, které jste zadali.
+9. Po úspěšném ověření můžete vybrat **vytvořit**.
+Nasazení obvykle trvá 10-12 minut, se může lišit v závislosti na velikosti a počtu zadaných uzlů AKS.
+10. Po úspěšném nasazení budete upozorňováni prostřednictvím oznámení Azure v pravém horním rohu.
+11. Vyberte **Přejít do skupiny prostředků** a ověřte, jestli se všechny prostředky vytvořily v rámci nasazení šablony. Všechny názvy prostředků budou začínat předponou poskytnutou v nastavení **základů** .
 
 ## <a name="build-the-consortium"></a>Sestavení konsorcia
 
-Chcete-li vytvořit příspěvek blockchainového konsorcia, který nasazuje službu řazení a uzly, musíte provést níže uvedené kroky v pořadí. **Vytvořte síťový** skript (byn.sh), který vám pomůže s nastavením konsorcia, vytvořením kanálu a instalací chaincode.
+Chcete-li vytvořit blockchain Consortium po nasazení služby řazení a partnerských uzlů, je nutné provést následující kroky v pořadí. **Sestavte síťový** skript (Byn.sh), který vám pomůže nastavit konsorcium, vytvořit kanál a nainstalovat chaincode.
 
 > [!NOTE]
-> Sestavení sítě (byn) skript za předpokladu, je výhradně pro použití pro demo/devtest scénáře. Pro nastavení výrobní třídy doporučujeme použít nativní HLF API.
+> Sestavování vašeho síťového skriptu (Byn) je výhradně k použití pro scénáře demo/DevTest. Pro nastavení produkčních stupňů doporučujeme používat nativní rozhraní HLF API.
 
-Všechny příkazy ke spuštění byn skript lze provést prostřednictvím Azure Bash rozhraní příkazového řádku (CLI). Do webové verze Azure shellu se můžete přihlásit prostřednictvím ![Infrastruktura Hyperledger u šablony služby Azure Kubernetes](./media/hyperledger-fabric-consortium-azure-kubernetes-service/arrow.png) v pravém horním rohu portálu Azure. Na příkazovém řádku zadejte bash a zadejte přepnout na bash CLI.
+Všechny příkazy ke spuštění skriptu Byn můžete provádět prostřednictvím rozhraní příkazového řádku (CLI) Azure bash. K webové verzi prostředí Azure Shell se můžete přihlásit prostřednictvím ![Šablona prostředků infrastruktury hlavní knihy v Azure Kubernetes Service](./media/hyperledger-fabric-consortium-azure-kubernetes-service/arrow.png) možnost v pravém horním rohu Azure Portal. Do příkazového řádku zadejte bash a přejděte do bash CLI.
 
-Další informace najdete v [tématu Prostředí Azure.](https://docs.microsoft.com/azure/cloud-shell/overview)
+Další informace najdete v tématu [Azure Shell](https://docs.microsoft.com/azure/cloud-shell/overview) .
 
-![Infrastruktura Hyperledger u šablony služby Azure Kubernetes](./media/hyperledger-fabric-consortium-azure-kubernetes-service/hyperledger-powershell.png)
+![Šablona prostředků infrastruktury hlavní knihy v Azure Kubernetes Service](./media/hyperledger-fabric-consortium-azure-kubernetes-service/hyperledger-powershell.png)
 
 
-Stáhněte si soubor byn.sh a fabric-admin.yaml.
+Stáhněte si soubor byn.sh a Fabric-admin. yaml.
 
 ```bash-interactive
 curl https://raw.githubusercontent.com/Azure/Hyperledger-Fabric-on-Azure-Kubernetes-Service/master/consortiumScripts/byn.sh -o byn.sh; chmod 777 byn.sh
 curl https://raw.githubusercontent.com/Azure/Hyperledger-Fabric-on-Azure-Kubernetes-Service/master/consortiumScripts/fabric-admin.yaml -o fabric-admin.yaml
 ```
-**Nastavte níže proměnné prostředí v prostředí Azure CLI Bash**:
+**V prostředí Azure CLI bash shell nastavte níže uvedené proměnné prostředí**:
 
-Nastavení informací o kanálech a organizačních informací objednate
+Nastavení informací o kanálu a informací o organizaci v pořadí
 
 ```bash
 SWITCH_TO_AKS_CLUSTER() { az aks get-credentials --resource-group $1 --name $2 --subscription $3; }
@@ -147,7 +147,7 @@ ORDERER_DNS_ZONE=$(az aks show --resource-group $ORDERER_AKS_RESOURCE_GROUP --na
 ORDERER_END_POINT="orderer1.$ORDERER_DNS_ZONE:443"
 CHANNEL_NAME=<channelName>
 ```
-Nastavení informací o partnerské organizaci
+Nastavit informace o partnerské organizaci
 
 ```bash
 PEER_AKS_RESOURCE_GROUP=<peerAKSClusterResourceGroup>
@@ -157,7 +157,7 @@ PEER_AKS_SUBSCRIPTION=<peerAKSClusterSubscriptionID>
 PEER_ORG_NAME=<peerOrganizationName>
 ```
 
-Vytvořte jednu sdílenou složku Azure a sdílejte různé veřejné certifikáty mezi partnerskými a objednatevanými organizacemi.
+Vytvořte jednu sdílenou složku Azure pro sdílení různých veřejných certifikátů mezi partnerskými organizacemi a mezi nimi.
 
 ```bash
 STORAGE_SUBSCRIPTION=<subscriptionId>
@@ -174,27 +174,27 @@ az storage share create  --account-name $STORAGE_ACCOUNT  --account-key $STORAGE
 SAS_TOKEN=$(az storage account generate-sas --account-key $STORAGE_KEY --account-name $STORAGE_ACCOUNT --expiry `date -u -d "1 day" '+%Y-%m-%dT%H:%MZ'` --https-only --permissions lruwd --resource-types sco --services f | tr -d '"')
 AZURE_FILE_CONNECTION_STRING="https://$STORAGE_ACCOUNT.file.core.windows.net/$STORAGE_FILE_SHARE?$SAS_TOKEN"
 ```
-**Příkazy pro správu kanálů**
+**Příkazy správy kanálů**
 
-Přejít na řádovou organizaci Cluster AKS a příkaz vydání pro vytvoření nového kanálu
+Pokud chcete vytvořit nový kanál, přejít na AKS cluster a příkaz pro změnu pořadí organizace
 
 ```bash
 SWITCH_TO_AKS_CLUSTER $ORDERER_AKS_RESOURCE_GROUP $ORDERER_AKS_NAME $ORDERER_AKS_SUBSCRIPTION
 ./byn.sh createChannel "$CHANNEL_NAME"
 ```
 
-**Příkazy pro správu konsorcia**
+**Příkazy správy konsorcia**
 
-Spusťte níže uvedené příkazy v daném pořadí přidat peer organizace v kanálu a konsorciu.
+V uvedeném pořadí proveďte níže uvedené příkazy pro přidání partnerské organizace do kanálu a konsorcia.
 
-1. Přejděte do clusteru AKS peer organizace a nahrajte jeho poskytování služeb členů (MSP) na úložiště souborů Azure.
+1. Přejít na cluster AKS peer Organization a nahrajte jeho poskytování členské služby (MSP) na File Storage Azure.
 
     ```bash
     SWITCH_TO_AKS_CLUSTER $PEER_AKS_RESOURCE_GROUP $PEER_AKS_NAME $PEER_AKS_SUBSCRIPTION
     ./byn.sh uploadOrgMSP "$AZURE_FILE_CONNECTION_STRING"
     ```
 
-2. Přejděte do clusteru AKS organizace a přidejte partnerskou organizaci v kanálu a konsorciu.
+2. Přejít na cluster AKS organizace pro objednávky a přidat partnerské organizace v kanálu a v konsorciu
 
     ```bash
     SWITCH_TO_AKS_CLUSTER $ORDERER_AKS_RESOURCE_GROUP $ORDERER_AKS_NAME $ORDERER_AKS_SUBSCRIPTION
@@ -204,26 +204,26 @@ Spusťte níže uvedené příkazy v daném pořadí přidat peer organizace v k
     ./byn.sh addPeerInChannel "$PEER_ORG_NAME" "$CHANNEL_NAME" "$AZURE_FILE_CONNECTION_STRING"
     ```
 
-3. Vraťte se do peer organizace a vydat příkaz pro připojení partnerských uzlů v kanálu.
+3. Pokud se chcete připojit k uzlům rovnocenného uzlu v kanálu, vraťte se k partnerské organizaci a vydání příkazu.
 
     ```bash
     SWITCH_TO_AKS_CLUSTER $PEER_AKS_RESOURCE_GROUP $PEER_AKS_NAME $PEER_AKS_SUBSCRIPTION
     ./byn.sh joinNodesInChannel "$CHANNEL_NAME" "$ORDERER_END_POINT" "$AZURE_FILE_CONNECTION_STRING"
     ```
 
-Podobně chcete-li přidat další partnerské organizace v kanálu, aktualizujte peer aks proměnné prostředí podle požadované partnerské organizace a proveďte kroky 1 až 3.
+Podobně pro přidání dalších partnerských organizací do kanálu aktualizujte proměnné prostředí peer AKS podle požadované partnerské organizace a proveďte kroky 1 až 3.
 
-**Příkazy pro správu kódu řetězce**
+**Příkazy správy Chaincode**
 
-Proveďte níže uvedený příkaz k provedení operace související s řetězovým kódem. Tyto příkazy provádět všechny operace na demo chaincode. Tento demo chaincode má dvě proměnné "a" a "b". Při inkonkresi chaincode je "a" inicializováno s 1000 a "b" inicializováno s 2000. Při každém vyvolání kódu řetězu se 10 jednotek přenese z "a" na "b". Operace dotazu na chaincode zobrazuje světstav proměnné "a".
+Spusťte následující příkaz, který provede operaci související s chaincode. Tyto příkazy provádějí všechny operace v ukázce chaincode. Tato ukázková chaincode má dvě proměnné "a" a "b". Při vytváření instance chaincode je "a" inicializována s 1000 a "b" je inicializována s 2000. Při každém vyvolání chaincode je 10 jednotek převedeno z "a" na "b". Operace dotazu na chaincode zobrazuje světový stav proměnné "a".
 
-Proveďte následující příkazy spuštěné v clusteru AKS partnerské organizace.
+Spusťte následující příkazy spuštěné v clusteru AKS organizace partnera.
 
 ```bash
 # switch to peer organization AKS cluster. Skip this command if already connected to the required Peer AKS Cluster
 SWITCH_TO_AKS_CLUSTER $PEER_AKS_RESOURCE_GROUP $PEER_AKS_NAME $PEER_AKS_SUBSCRIPTION
 ```
-**Příkazy operace chaincode**
+**Příkazy operace Chaincode**
 
 ```bash
 PEER_NODE_NAME="peer<peer#>"
@@ -233,51 +233,51 @@ PEER_NODE_NAME="peer<peer#>"
 ./byn.sh queryDemoChaincode "$PEER_NODE_NAME" "$CHANNEL_NAME"
 ```
 
-## <a name="run-native-hlf-operations"></a>Spustit nativní operace HLF
+## <a name="run-native-hlf-operations"></a>Spouštění nativních operací HLF
 
-Chcete-li zákazníkům pomoci začít s prováděním nativních příkazů Hyperledger v síti HLF v AKS. Ukázková aplikace je k dispozici, který používá fabric NodeJS SDK k provedení operací HLF. Příkazy jsou k dispozici k vytvoření nové identity uživatele a instalaci vlastního řetězového kódu.
+Abychom zákazníkům pomohla začít s prováděním nativních příkazů hlavní knihy v HLF síti v AKS. Ukázková aplikace je k dispozici, aby k provádění operací HLF používala NodeJS SDK pro Fabric. K dispozici jsou tyto příkazy pro vytvoření nové identity uživatele a instalaci vlastních chaincode.
 
-### <a name="before-you-begin"></a>Než začnete
+### <a name="before-you-begin"></a>Před zahájením
 
-Postupujte podle následujících příkazů pro počáteční nastavení aplikace:
+Při počátečním nastavení aplikace postupujte podle následujících příkazů:
 
-- Stažení souborů aplikací
-- Generování profilu připojení a profilu správce
-- Importovat identitu správce uživatele
+- Stažení souborů aplikace
+- Vygenerovat profil připojení a profil správce
+- Importovat identitu uživatele správce
 
 Po dokončení počátečního nastavení můžete pomocí sady SDK dosáhnout níže uvedených operací:
 
 - Generování identity uživatele
-- Operace chaincode
+- Operace Chaincode
 
-Výše uvedené příkazy lze provést z Azure Cloud Shell.
+Výše uvedené příkazy lze spustit z Azure Cloud Shell.
 
-### <a name="download-application-files"></a>Stažení souborů aplikací
+### <a name="download-application-files"></a>Stažení souborů aplikace
 
-První nastavení pro spuštění aplikace je stáhnout všechny soubory aplikace ve složce.
+Prvním nastavením pro spuštěnou aplikaci je stažení všech souborů aplikace do složky.
 
-**Vytvořte složku aplikace a zadejte do ní**:
+**Vytvořte složku aplikace a zadejte ji do složky**:
 
 ```bash
 mkdir app
 cd app
 ```
-Spustit níže příkaz ke stažení všech požadovaných souborů a balíčků:
+Spuštěním následujícího příkazu stáhnete všechny požadované soubory a balíčky:
 
 ```bash-interactive
 curl https://raw.githubusercontent.com/Azure/Hyperledger-Fabric-on-Azure-Kubernetes-Service/master/application/setup.sh | bash
 ```
-Tento příkaz trvá nějakou dobu načíst všechny balíčky. Po úspěšném spuštění příkazu `node_modules` můžete zobrazit složku v aktuálním adresáři. Všechny požadované balíčky jsou `node_modules` načteny ve složce.
+Načtení všech balíčků v tomto příkazu trvá déle. Po úspěšném provedení příkazu uvidíte `node_modules` složku v aktuálním adresáři. Do `node_modules` složky se načtou všechny požadované balíčky.
 
-### <a name="generate-connection-profile-and-admin-profile"></a>Generování profilu připojení a profilu správce
+### <a name="generate-connection-profile-and-admin-profile"></a>Vygenerovat profil připojení a profil správce
 
-Vytvoření `profile` adresáře `app` uvnitř složky
+Vytvořit `profile` adresář uvnitř `app` složky
 
 ```bash
 cd app
 mkdir ./profile
 ```
-Nastavení těchto proměnných prostředí v cloudovém prostředí Azure
+Nastavení těchto proměnných prostředí ve službě Azure Cloud Shell
 
 ```bash
 # Organization name whose connection profile is to be generated
@@ -286,33 +286,33 @@ ORGNAME=<orgname>
 AKS_RESOURCE_GROUP=<resourceGroup>
 ```
 
-Spustit pod příkazem pro generování profilu připojení a profilu správce organizace
+Spustit níže uvedeným příkazem vygenerujete profil připojení a profil správce organizace.
 
 ```bash
 ./getConnector.sh $AKS_RESOURCE_GROUP | sed -e "s/{action}/gateway/g"| xargs curl > ./profile/$ORGNAME-ccp.json
 ./getConnector.sh $AKS_RESOURCE_GROUP | sed -e "s/{action}/admin/g"| xargs curl > ./profile/$ORGNAME-admin.json
 ```
 
-Vytvoří profil připojení a `profile` správce organizace ve složce `<orgname>-ccp.json` `<orgname>-admin.json` profilu s názvem a příslušně.
+Vytvoří profil připojení a správce `profile` organizace ve složce profilu s názvem `<orgname>-ccp.json` a `<orgname>-admin.json` v uvedeném pořadí.
 
-Podobně vygenerujte profil připojení a profil správce pro každou organizaci objednatela a partnera.
+Podobně vygenerujte profil připojení a profil správce pro každého z objednávek a partnerských organizací.
 
 
-### <a name="import-admin-user-identity"></a>Importovat identitu správce uživatele
+### <a name="import-admin-user-identity"></a>Importovat identitu uživatele správce
 
-Posledním krokem je import identity správce organizace v peněžence.
+Posledním krokem je naimportování identity uživatele správce organizace do peněženky.
 
 ```bash
 npm run importAdmin -- -o <orgName>
 
 ```
-Výše uvedený příkaz provede importAdmin.js importovat identitu uživatele správce do peněženky. Skript čte identitu správce z `<orgname>-admin.json` profilu správce a importuje ji do peněženky pro provádění operací HLF.
+Výše uvedený příkaz spustí importAdmin. js k importu identity uživatele správce do peněženky. Skript přečte identitu správce z profilu `<orgname>-admin.json` správce a naimportuje je do peněženky pro provádění operací HLF.
 
-Skripty používají k ukládání identit peněženku systému souborů. Vytvoří peněženku podle cesty určené v poli ".wallet" v profilu připojení. Ve výchozím nastavení je pole ".wallet" inicializováno pomocí `<orgname>`, což znamená, že složka s názvem `<orgname>` je vytvořena v aktuálním adresáři pro uložení identit. Pokud chcete vytvořit peněženku na jiné cestě, upravte pole ".wallet" v profilu připojení před spuštěním zaregistrovat správce a další operace HLF.
+Skripty používají k ukládání identit kapesní systém souborů. V profilu připojení se vytvoří kapesní na základě cesty zadané v poli ". peněženka". Ve výchozím nastavení je pole ". peněženka" inicializováno s `<orgname>`", což znamená `<orgname>` , že se v aktuálním adresáři vytvoří složka s názvem, do které budou uloženy identity. Pokud chcete vytvořit peněženku na nějaké jiné cestě, před spuštěním možnosti registrovat uživatele správce a jakékoli jiné operace HLF upravte v profilu připojení pole "kapesní".
 
 Podobně importujte identitu uživatele správce pro každou organizaci.
 
-Další podrobnosti o argumentech předanejch v příkazu naleznete v nápovědě příkazu.
+Další informace o argumentech předaných v příkazu najdete v nápovědě k příkazům.
 
 ```bash
 npm run importAdmin -- -h
@@ -321,12 +321,12 @@ npm run importAdmin -- -h
 
 ### <a name="user-identity-generation"></a>Generování identity uživatele
 
-Spouštějte níže uvedené příkazy v daném pořadí pro generování nových uživatelských identit pro organizaci HLF.
+Vygenerujte nové identity uživatelů pro HLF organizaci pod příkazy provedenými níže v daném pořadí.
 
 > [!NOTE]
-> Před zahájením s kroky generování identity uživatele, ujistěte se, že počáteční nastavení aplikace je hotovo.
+> Než začnete s kroky generování identity uživatele, zajistěte, aby se počáteční nastavení aplikace dokončilo.
 
-Nastavení pod proměnnými prostředí v prostředí Azure Cloud Shell
+Nastavení níže uvedených proměnných prostředí ve službě Azure Cloud Shell
 
 ```bash
 # Organization name for which user identity is to be generated
@@ -338,7 +338,7 @@ USER_IDENTITY=<username>
 
 Registrace a registrace nového uživatele
 
-Chcete-li zaregistrovat a zaregistrovat nového uživatele, proveďte níže uvedený příkaz, který provede registerUser.js. To šetří generované identity uživatele v peněžence.
+Chcete-li zaregistrovat a zapsat nového uživatele, spusťte následující příkaz, který spustí registerUser. js. Uloží vygenerovanou identitu uživatele v kapesním okně.
 
 ```bash
 npm run registerUser -- -o $ORGNAME -u $USER_IDENTITY
@@ -346,22 +346,22 @@ npm run registerUser -- -o $ORGNAME -u $USER_IDENTITY
 ```
 
 > [!NOTE]
-> Identita uživatele správce se používá k vydání příkazu registrace pro nového uživatele. Proto je povinné mít identitu správce uživatele v peněžence před provedením tohoto příkazu. V opačném případě se tento příkaz nezdaří.
+> Identita uživatele správce se používá k vydání příkazu Register pro nového uživatele. Proto je před provedením tohoto příkazu nutné mít identitu uživatele správce v kapesním prostředí. V opačném případě se tento příkaz nezdaří.
 
-Další podrobnosti o argumentech předaná příkazem naleznete v nápovědě příkazu
+Další podrobnosti o argumentech předaných příkazem najdete v nápovědě k příkazům.
 
 ```bash
 npm run registerUser -- -h
 
 ```
 
-### <a name="chaincode-operations"></a>Operace chaincode
+### <a name="chaincode-operations"></a>Operace Chaincode
 
 
 > [!NOTE]
-> Před zahájením jakékoli operace chaincode se ujistěte, že je provedeno počáteční nastavení aplikace.
+> Před zahájením jakékoli operace chaincode zajistěte, aby se počáteční nastavení aplikace dokončilo.
 
-Nastavte níže proměnné prostředí specifické pro chaincode v prostředí Azure Cloud:
+V Azure Cloud shellu nastavte pod chaincode konkrétní proměnné prostředí:
 
 ```bash
 # peer organization name where chaincode is to be installed
@@ -383,52 +383,52 @@ CHANNEL=<channelName>
 
 ````
 
-Níže uvedené operace řetězového kódu lze provádět:
+Níže uvedené operace chaincode lze provést:
 
-- Instalace kódu řetězu
-- Vytvoření instance řetězového kódu
+- Nainstalovat chaincode
+- Vytvoření instance chaincode
 - Vyvolat chaincode
-- Kód řetězce dotazu
+- Chaincode dotazu
 
-### <a name="install-chaincode"></a>Instalace kódu řetězu
+### <a name="install-chaincode"></a>Nainstalovat chaincode
 
-Spusťte pod příkazem pro instalaci chaincode na peer organizace.
+Spusťte následující příkaz pro instalaci chaincode v partnerské organizaci.
 
 ```bash
 npm run installCC -- -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -p $CC_PATH -l $CC_LANG -v $CC_VERSION
 
 ```
-Nainstaluje chaincode na všechny partnerské uzly `ORGNAME` organizace nastavené v proměnné prostředí. Pokud jsou ve vašem kanálu dvě nebo více partnerských organizací a chcete nainstalovat kód řetězu na všechny z nich, spouštějte příkazy samostatně pro každou partnerskou organizaci.
+Nainstaluje chaincode ve všech partnerských uzlech sady organizace v `ORGNAME` sadě proměnných prostředí. Pokud máte ve vašem kanálu dvě nebo více partnerských organizací a chcete na všechny z nich nainstalovat chaincode, spusťte příkazy samostatně pro každou organizaci v partnerském vztahu.
 
-Postupujte podle pokynů:
+Postupujte podle následujících kroků:
 
-- Nastavit `ORGNAME` `<peerOrg1Name>` a `installCC` vydat příkaz.
-- Nastavit `ORGNAME` `<peerOrg2Name>` a `installCC` vydat příkaz.
+- Nastavte `ORGNAME` příkaz `<peerOrg1Name>` a vystavení `installCC` .
+- Nastavte `ORGNAME` příkaz `<peerOrg2Name>` a vystavení `installCC` .
 
-  Spusťte jej pro každou partnerskou organizaci.
+  Proveďte pro každou z partnerských organizací.
 
-Další podrobnosti o argumentech předanejch v příkazu naleznete v nápovědě příkazu.
+Další informace o argumentech předaných v příkazu najdete v nápovědě k příkazům.
 
 ```bash
 npm run installCC -- -h
 
 ```
 
-### <a name="instantiate-chaincode"></a>Vytvoření instance řetězového kódu
+### <a name="instantiate-chaincode"></a>Vytvoření instance chaincode
 
-Spusťte pod příkazem k vytvoření instance chaincode na druhé straně.
+Spuštěním následujícího příkazu vytvořte instanci chaincode na partnerském uzlu.
 
 ```bash
 npm run instantiateCC -- -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -p $CC_PATH -v $CC_VERSION -l $CC_LANG -c $CHANNEL -f <instantiateFunc> -a <instantiateFuncArgs>
 
 ```
-Předat název funkce instance a čárka oddělený `<instantiateFunc>` seznam `<instantiateFuncArgs>` argumentů v a příslušně. Například v [fabrcar chaincode](https://github.com/hyperledger/fabric-samples/blob/release/chaincode/fabcar/fabcar.go), chcete-li vytvořit `<instantiateFunc>` `"Init"` instanci kódu chaincode nastaveného na a `<instantiateFuncArgs>` prázdný řetězec `""`.
+Dodejte název funkce vytvoření instance a seznam argumentů oddělených `<instantiateFunc>` čárkou `<instantiateFuncArgs>` v uvedeném pořadí. Například v [fabrcar chaincode](https://github.com/hyperledger/fabric-samples/blob/release/chaincode/fabcar/fabcar.go)pro vytvoření instance chaincode `<instantiateFunc>` sady na `"Init"` a `<instantiateFuncArgs>` na prázdný řetězec. `""`
 
 > [!NOTE]
-> Spusťte příkaz pro jednou z jedné partnerské organizace v kanálu.
-> Jakmile je transakce úspěšně odeslána objednatli, objednatce distribuuje tuto transakci všem partnerským organizacím v kanálu. Proto chaincode je vytvořena instance na všech uzlech peer na všech partnerských organizací v kanálu.
+> Spusťte příkaz pro jednu z libovolných partnerských organizací v kanálu.
+> Po úspěšném odeslání transakce do objednávky bude objednávka distribuovat tuto transakci do všech partnerských organizací v kanálu. Proto je instance chaincode vytvořena na všech partnerských uzlech všech partnerských organizací v kanálu.
 
-Další podrobnosti o argumentech předaná příkazem naleznete v nápovědě příkazu
+Další podrobnosti o argumentech předaných příkazem najdete v nápovědě k příkazům.
 
 ```bash
 npm run instantiateCC -- -h
@@ -437,37 +437,37 @@ npm run instantiateCC -- -h
 
 ### <a name="invoke-chaincode"></a>Vyvolat chaincode
 
-Spusťte příkaz níže a vyvoláte funkci chaincode:
+Spusťte následující příkaz, který vyvolá funkci chaincode:
 
 ```bash
 npm run invokeCC -- -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL -f <invokeFunc> -a <invokeFuncArgs>
 
 ```
-Pass invoke název funkce a čárka `<invokeFunction>` oddělený `<invokeFuncArgs>` seznam argumentů v a příslušně. Pokračování s fabcar chaincode příklad, vyvolat initLedger `"initLedger"` `<invokeFuncArgs>` funkce `""`nastavena `<invokeFunction>` na a na .
+Předejte vyvolat název funkce a seznam argumentů oddělených čárkou `<invokeFuncArgs>` v a v `<invokeFunction>` uvedeném pořadí. Pokračováním v příkladu fabcar chaincode můžete vyvolat funkci initLedger nastavenou `<invokeFunction>` na `"initLedger"` a `<invokeFuncArgs>` na `""`.
 
 > [!NOTE]
-> Spusťte příkaz pro jednou z jedné partnerské organizace v kanálu.
-> Jakmile je transakce úspěšně odeslána objednatli, objednatce distribuuje tuto transakci všem partnerským organizacím v kanálu. Proto je světový stav aktualizován na všech uzlech peer všech partnerských organizací v kanálu.
+> Spusťte příkaz pro jednu z libovolných partnerských organizací v kanálu.
+> Po úspěšném odeslání transakce do objednávky bude objednávka distribuovat tuto transakci do všech partnerských organizací v kanálu. Proto je celosvětový stav aktualizován na všech partnerských uzlech všech partnerských organizací v kanálu.
 
-Další podrobnosti o argumentech předaná příkazem naleznete v nápovědě příkazu
+Další podrobnosti o argumentech předaných příkazem najdete v nápovědě k příkazům.
 
 ```bash
 npm run invokeCC -- -h
 
 ```
 
-### <a name="query-chaincode"></a>Kód řetězce dotazu
+### <a name="query-chaincode"></a>Chaincode dotazu
 
-Spustit pod příkazem pro dotaz chaincode:
+Příkaz spustit pod příkazem pro dotaz na chaincode:
 
 ```bash
 npm run queryCC -- -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL -f <queryFunction> -a <queryFuncArgs>
 
 ```
 
-Pass název funkce dotazu a čárka `<queryFunction>` `<queryFuncArgs>` oddělený seznam argumentů v a příslušně. Opět `fabcar` platí, že s chaincode jako odkaz, dotaz `<queryFunction>` `"queryAllCars"` na `<queryArgs>` `""`všechny vozy ve světě stavu nastavena na a .
+Předejte název funkce dotazu a seznam argumentů oddělených `<queryFunction>` čárkou `<queryFuncArgs>` v uvedeném pořadí. `fabcar` Znovu se chaincode jako reference pro dotazování všech automobilů v celém světě nastaveném `<queryFunction>` na `"queryAllCars"` a `<queryArgs>` na. `""`
 
-Další podrobnosti o argumentech předaná příkazem naleznete v nápovědě příkazu
+Další podrobnosti o argumentech předaných příkazem najdete v nápovědě k příkazům.
 
 ```bash
 npm run queryCC -- -h

@@ -1,6 +1,6 @@
 ---
-title: Kontrolní seznam pro vytváření nabídek SaaS – Komerční tržiště pro Azure
-description: Podrobnosti, které můžete poskytnout v procesu vytváření nabídky SaaS. - Komerční tržiště pro Azure
+title: Kontrolní seznam pro vytváření nabídky SaaS – komerční tržiště pro Azure
+description: Podrobnosti, které můžete poskytnout v procesu vytváření nabídky SaaS. – Komerční tržiště pro Azure
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
@@ -8,153 +8,153 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/14/2019
 ms.openlocfilehash: 60111b6a23c76314383c5f95be3eb4b38f90d3e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80281336"
 ---
 # <a name="saas-offer-creation-checklist"></a>Kontrolní seznam k vytváření nabídek SaaS
 
-Proces vytváření nabídky SaaS vás provede několika stránkami. Zde jsou podrobnosti, které můžete poskytnout na každé stránce, s odkazy na další informace o každé položce.
+Proces vytvoření nabídky SaaS vás provede několika stránkami. Tady jsou podrobné informace, které můžete zadat na každé stránce s odkazy na Další informace o jednotlivých položkách.
 
-Položky, které jsou povinny poskytnout nebo zadat, jsou uvedeny níže. Některé oblasti jsou volitelné nebo mají k dispozici výchozí hodnoty, které můžete změnit podle potřeby. Na těchto oddílech nemusíte pracovat v uvedeném pořadí.
+Položky, které je nutné zadat nebo zadat, jsou uvedeny níže. Některé oblasti jsou volitelné nebo mají zadané výchozí hodnoty, které můžete podle potřeby změnit. Nemusíte pracovat na těchto oddílech v uvedeném pořadí.
 
 | **Položka**    | **Účel**  |
 | :---------- | :-------------------|
-| [**Nová nabídka Modální**](#new-offer-modal) | Shromažďuje informace o identitě nabídky.  |
-| [Stránka nastavení nabídky](#offer-setup-page) | Umožňuje přihlásit se k používání klíčových funkcí a zvolit, jak prodávat svou nabídku prostřednictvím společnosti Microsoft.  |
-| [Stránka Vlastnosti](#properties-page) | Definujte kategorie a odvětví používaná k seskupení vaší nabídky na tržištích, právní smlouvy podporující vaši nabídku a verzi aplikace. |
-| [Stránka nabídky](#offer-listing-page) | Definujte podrobnosti nabídky, které se mají zobrazit na trhu, včetně popisů vašich nabídek a marketingových aktiv. |
-| [Náhled stránky](#preview-page) | Definujte omezený okruh uživatelů ve verzi Preview pro uvolnění nabídky před publikováním nabídky živě širšímu publiku na marketplace. |
-| [Nabídka stránky technické konfigurace](#technical-configuration-page)  | K dispozici pouze v případě, že se rozhodnete nabídku prodat prostřednictvím společnosti Microsoft. Definujte technické podrobnosti (cesta url, webhook, ID klienta a ID aplikace), které se používají k připojení k vaší nabídce. |
-| [**Nový plán Modální**](#plan-identity-modal) | Shromažďuje informace o identitě plánu.  |
-| [Stránka s výpoušem plánu](#plan-listing-page)  | K dispozici pouze v případě, že se rozhodnete nabídku prodat prostřednictvím společnosti Microsoft. Definujte podrobnosti použité k uvádění plánu na trhu.  |
-| [Stránka dostupnosti & ceny plánu](#plan-pricing--availability-page)  | K dispozici pouze v případě, že se rozhodnete nabídku prodat prostřednictvím společnosti Microsoft.  Shromažďuje obchodní charakteristiky (cenový model), publikum a dostupnost trhu pro každý plán (verzi) vaší nabídky.  |
-| [Stránka výpisu testovací jednotky](#test-drive-listing-page)  | K dispozici pouze v případě, že se rozhodnete nabídnout zkušební jízdu pro vaši nabídku. Definujte podrobnosti použité k uzení testovací jednotky na trhu.  |
-| Stránka technické konfigurace testovací jednotky  | K dispozici pouze v případě, že se rozhodnete nabídnout zkušební jízdu pro vaši nabídku. Definujte technické podrobnosti pro ukázku (nebo "zkušební jízdu"), které zákazníkům umožní vyzkoušet si vaši nabídku před potvrzením nákupu.  |
-| [Stránka Recenze a publikování](#review-and-publish-page)  | Vyberte změny, které chcete publikovat, podívejte se na stav každé stránky a poskytněte poznámky certifikačnímu týmu.  |
+| [**Nová nabídka – modální**](#new-offer-modal) | Shromažďuje informace o identitě nabídky.  |
+| [Stránka nastavení nabídky](#offer-setup-page) | Umožňuje výslovný souhlas s používáním klíčových funkcí a výběr způsobu prodeje vaší nabídky prostřednictvím Microsoftu.  |
+| [Stránka vlastností](#properties-page) | Definujte kategorie a odvětví používané k seskupení vaší nabídky na tržištích, právní smlouvy podporující vaši nabídku a verzi vaší aplikace. |
+| [Stránka se seznamem nabídek](#offer-listing-page) | Zadejte podrobnosti nabídky, které se budou zobrazovat na webu Marketplace, včetně popisů vaší nabídky a marketingových prostředků. |
+| [Stránka náhledu](#preview-page) | Definujte skupinu omezené verze Preview pro uvolnění vaší nabídky před publikováním vaší nabídky do širších cílových skupin Marketplace. |
+| [Stránka technické konfigurace nabídky](#technical-configuration-page)  | K dispozici pouze v případě, že vyberete možnost prodávat nabídku prostřednictvím společnosti Microsoft. Definujte technické podrobnosti (cestu URL, Webhook, ID tenanta a ID aplikace), které se používají pro připojení k vaší nabídce. |
+| [**Nový plán – modální**](#plan-identity-modal) | Shromažďuje informace o identitě plánu.  |
+| [Stránka se seznamem plánů](#plan-listing-page)  | K dispozici pouze v případě, že vyberete možnost prodávat nabídku prostřednictvím společnosti Microsoft. Definujte podrobnosti, které se použijí k vypsání plánu na webu Marketplace.  |
+| [Stránka dostupnost & dostupnosti pro ceny plánu](#plan-pricing--availability-page)  | K dispozici pouze v případě, že vyberete možnost prodávat nabídku prostřednictvím společnosti Microsoft.  Shromažďuje obchodní charakteristiky (cenový model), cílovou skupinu a dostupnost trhu pro jednotlivé plány (verze) vaší nabídky.  |
+| [Stránka se seznamem testovacích jednotek](#test-drive-listing-page)  | K dispozici pouze v případě, že jste vybrali možnost nabídnout si pro vaši nabídku testovací jednotku. Zadejte podrobnosti, které se použijí k vypsání testovacích jednotek na webu Marketplace.  |
+| Stránka technické konfigurace testovacích jednotek  | K dispozici pouze v případě, že jste vybrali možnost nabídnout si pro vaši nabídku testovací jednotku. Definujte technické podrobnosti pro ukázku (nebo "testovací jednotku"), které umožní zákazníkům vyzkoušet si vaši nabídku před tím, než se ji zakoupí.  |
+| [Stránka pro kontrolu a publikování](#review-and-publish-page)  | Vyberte změny, které chcete publikovat, zobrazte stav jednotlivých stránek a poskytněte jim poznámky certifikačnímu týmu.  |
 
 
-## <a name="new-offer-modal"></a>Nová nabídka modální 
+## <a name="new-offer-modal"></a>Nová nabídka – modální 
 
-První informace, které budete požádáni o poskytnutí, jsou ID a alias pro vaši nabídku. 
+První část informací, které budete požádáni, získáte jako ID a alias pro vaši nabídku. 
 
 | **Název pole**    | **Poznámky**   |  
 | :---------------- | :-----------| 
-| ID nabídky  | Povinné, nelze změnit po vytvoření. Maximálně 50 znaků a musí se skládat pouze z číselných, alfanumerických znaků, pomlček nebo podtržítek. |
+| ID nabídky  | Požadováno, po vytvoření nelze změnit. Maximálně 50 znaků a musí obsahovat jenom malá písmena, alfanumerické znaky, pomlčky nebo podtržítka. |
 | Alias nabídky  | Povinná hodnota. |
 
 ## <a name="offer-setup-page"></a>Stránka nastavení nabídky
 
-Stránka nastavení nabídky je místo, kde se můžete přihlásit do různých kanálů a prodejních pohybů, stejně jako deklarovat použití klíčových funkcí, jako je testovací jízda a zákazník vede. 
+Stránka pro nastavení nabídek je místo, kde se můžete přihlásit k různým kanálům a prodávat pohyby, a také deklarovat používání klíčových funkcí, jako je například Test Drive nebo potenciální zákazníci. 
 
 | **Název pole**    | **Poznámky**   | 
 | :---------------- | :-----------|  
-| Chcete prodávat prostřednictvím společnosti Microsoft?  | Povinná hodnota. Výchozí: Ano |
-| Jak chcete, aby potenciální zákazníci komunikovali se seznamem nabídek? (Výzva k akci)  | Povinné, pokud se neprodává prostřednictvím společnosti Microsoft. Výchozí: Bezplatná zkušební verze, možnosti: "Get it now", "Bezplatná zkušební verze", "Kontaktujte mě." |
-| Adresa URL zkušební verze  | Povinné, pokud je vybrána možnost "Bezplatná zkušební verze", jako způsob, jakým by zákazníci měli komunikovat se seznamem nabídek. |
-| Adresa URL nabídky  | Povinné, pokud je vybrána možnost "Získat nyní", protože způsob, jakým by zákazníci měli komunikovat se seznamem nabídek |
-| Kanály  | Nepovinný parametr. Výchozí: Není přihlášen do kanálu CSP (prodejce).  |
-| Testovací verze | Nepovinný parametr. Výchozí: Není povolena žádná testovací jednotka.  |
-| Typ zkušební jízdy | Povinné, pokud je povolena zkušební jednotka. Výchozí: Není vybráno žádné. Možnosti: Azure Resource Manager, Dynamics 365 pro Business Central, Dynamics 365 pro customer engagement, Dynamics 365 pro operace, aplikace Logika, Power BI.  |
-| Vedení Management - připojení k CRM systému | Povinné při prodeji prostřednictvím společnosti Microsoft nebo pokud výpis nabízí jako "Kontaktujte mě". Výchozí: není připojen žádný CRM systém. Možnosti CRM: Tabulka Azure, Objekt blob Azure, Dynamics CRM online, Koncový bod httpů, Marketo, Salesforce  |
+| Chtěli byste prodávat přes Microsoft?  | Povinná hodnota. Výchozí: Ano |
+| Jak chcete potenciálním zákazníkům pracovat se seznamem nabídek? (Volání akce)  | Vyžaduje se, pokud nechcete prodávat prostřednictvím Microsoftu. Výchozí: bezplatná zkušební verze, možnosti: "načíst hned", "bezplatné zkušební verze", "kontaktujte mě". |
+| Adresa URL zkušební verze  | Vyžaduje se, pokud je vybrána možnost "bezplatná zkušební verze", jak by zákazníci měli pracovat se seznamem nabídek. |
+| Adresa URL nabídky  | Vyžaduje se, pokud je vybraná možnost Get to Now (načíst), jak by zákazníci měli pracovat se seznamem nabídek. |
+| Kanály  | Nepovinný parametr. Výchozí: nesouhlasí se do kanálu CSP (prodejce).  |
+| Testovací verze | Nepovinný parametr. Výchozí: není povolená žádná testovací jednotka.  |
+| Typ testovací jednotky | Vyžaduje se, pokud je povolená testovací jednotka. Výchozí: není vybráno. Možnosti: Azure Resource Manager, Dynamics 365 pro firmy Business Central, Dynamics 365 for Customer Engagement, Dynamics 365 for Operations, Logic App, Power BI.  |
+| Správa potenciálních zákazníků – připojení k systému CRM | Požaduje se při prodeji prostřednictvím Microsoftu nebo při výpisu nabídek "kontaktujte mě". Výchozí: není připojený žádný systém CRM. Možnosti CRM: tabulka Azure, Azure Blob, Dynamics CRM Online, HTTPs ' Endpoint, Marketo, Salesforce  |
 
 ## <a name="properties-page"></a>Stránka Vlastnosti
 
-Stránka vlastností je místo, kde definujete kategorie a odvětví používaná k seskupení nabídky na tržištích, právní smlouvy podporující vaši nabídku a verzi aplikace. Nezapomeňte na této stránce uvést úplné a přesné podrobnosti o vaší nabídce, aby byla vhodně zobrazena a nabízena správné sadě zákazníků. 
+Stránka vlastnosti je místo, kde můžete definovat kategorie a obory používané k seskupení vaší nabídky na tržištích, právní smlouvy podporující vaši nabídku a verzi aplikace. Ujistěte se, že jste na této stránce zadali úplné a přesné podrobnosti o vaší nabídce, aby se zobrazovaly správně a nabízely správné sadě zákazníků. 
 
 | **Název pole**    | **Poznámky**   | 
 | :---------------- | :-----------|  
-| Kategorie a podkategorie | Povinné 1 a max 3. Výchozí: Není vybráno žádné. |
-| Průmyslová odvětví a pododvětví | Nepovinný parametr. max 2 L1 Industries a max 2 subindustries v rámci každého odvětví L1, Výchozí: Žádný |
-| verze aplikace  | Nepovinný parametr. Výchozí: Žádné. |
-| Použít standardní smlouvu  | Nepovinný parametr. Výchozí: není vybráno.  | |
+| Kategorie a podkategorie | Požadováno 1 a max 3. Výchozí: není vybráno. |
+| Odvětví a subodvětví | Nepovinný parametr. maximum 2 L1 Industry a maximum 2 subodvětví v rámci každého oboru L1, výchozí: žádné vybrané |
+| verze aplikace  | Nepovinný parametr. Výchozí: žádné. |
+| Použití standardní smlouvy  | Nepovinný parametr. Výchozí: není vybráno.  | |
 | Podmínky použití  | Povinné, pokud není vybrána standardní smlouva.  |
 
-## <a name="offer-listing-page"></a>Stránka nabídky
+## <a name="offer-listing-page"></a>Stránka se seznamem nabídek
 
-Na stránce nabídky můžete zadat text a obrázky, které zákazníci uvidí při prohlížení nabídky na trhu. 
+Stránka výpisu je místo, kde můžete zadat text a obrázky, které se zákazníkům zobrazí při zobrazení seznamu vaší nabídky na webu Marketplace. 
 
 | **Název pole**    | **Poznámky**   |
 | :---------------- | :-----------| 
-| Name (Název)  | Povinné, max 50 znaků. |
-| Souhrn  | Povinné, max 100 znaků. | 
-| Popis  | Povinné, maximálně 3000 znaků. |
-| Pokyny začínáme  | Povinné, maximálně 3000 znaků. |
-| Pokyny začínáme  | Povinné, maximálně 3000 znaků. |
-| Hledat klíčová slova  | Volitelná, doporučená, max 3 klíčová slova. |
+| Název  | Požadováno, max. 50 znaků. |
+| Souhrn  | Požadováno, max. 100 znaků. | 
+| Popis  | Požadováno, max. 3000 znaků. |
+| Pokyny pro Začínáme  | Požadováno, max. 3000 znaků. |
+| Pokyny pro Začínáme  | Požadováno, max. 3000 znaků. |
+| Hledaná klíčová slova  | Volitelné, doporučené, max 3 klíčová slova. |
 | Adresa URL zásad ochrany osobních údajů  | Povinná hodnota. |
 | Adresa URL marketingových materiálů programu CSP  | Nepovinný parametr. |
-| Užitečné odkazy Název + URL  | Nepovinný parametr. |
-| Název podpůrných dokumentů + soubor  | Povinné, min 1 a max 3. Musí být formát souboru PDF. |
-| Snímky obrazovek  | Povinné, min 1 screenshot a max 5; čtyři nebo více doporučených. Musí být 1280 X 720 ve formátu PNG. |
-| Loga obchodu (malá, střední, velká, široká, hero)  | Je vyžadovánmalý (48 X 48) a velký (216 X 216); jiné velikosti volitelné, ale doporučené: Střední (90 x 90), Široký (255 x 115), Hero (815 x 290). Musí být ve formátu PNG. |
-| Název videa + URL + miniatura  | Volitelné, doporučené, max 4 videa. Miniatura musí být 1280 x 720 ve formátu PNG. Video musí být hostováno na YouTube nebo Vimeo. |
-| Kontakty (program CSP, inženýrství, podpora)  | Vyžadován kontakt na inženýrskou a podporu (jméno, e-mail a telefonní číslo); CSP Program kontakt volitelné, ale doporučeno. |
+| Název užitečného odkazu + adresa URL  | Nepovinný parametr. |
+| Název doprovodnéch dokumentů + soubor  | Požadováno, minimum 1 a max 3. Musí se jednat o formát souboru PDF. |
+| Snímky obrazovek  | Požadováno, minimální počet 1 snímek obrazovky a maximální 5; doporučuje se čtyři nebo více. Ve formátu PNG musí být 1280 X 720. |
+| Ukládat loga (malá, střední, Velká, rozsáhlá, Hero)  | Malá (48 × 48) a velká (216 × 216); jiné velikosti volitelné, ale doporučené: střední (90 x 90), roztažitelné (255 x 115), Hero (815 x 290). Musí být ve formátu PNG. |
+| Název videa + adresa URL + Miniatura  | Volitelné, doporučené, maximální 4 videa. Miniatura musí být ve formátu PNG 1280 x 720. Video musí být hostované na YouTube nebo Vimeo. |
+| Kontakty (program CSP, strojírenství, podpora)  | Technické a podpůrné kontaktní požadavky (jméno, e-mail a telefonní číslo); Program CSP kontaktuje volitelnou, ale doporučuje se. |
 | Adresa URL podpory  | Povinná hodnota. |
 
 ## <a name="preview-page"></a>Stránka náhledu
 
-Na stránce náhledu zadáte cílovou skupinu, která má přístup k náhledu nabídky, a ověříte, zda nabídka splňuje všechny vaše požadavky před tím, než začne být uvedena do provozu. 
+Stránka verze Preview je místo, kde můžete určit cílovou skupinu pro přístup k vaší nabídce Preview, abyste ověřili, že nabídka splňuje všechny vaše požadavky, než bude živá. 
 
 | **Název pole**    | **Poznámky**   | 
 | :---------------- | :-----------| 
-| AAD/MSA e-mail + popis | Povinné, min 1 a max 10, pokud je zadán ručně, nebo až 20 při nahrávání souboru CSV. |
+| AAD/MSA e-mail + popis | Požadováno, min 1 a Max 10 při zadání ručně nebo až 20 při nahrávání souboru CSV. |
 
 ## <a name="technical-configuration-page"></a>Stránka technické konfigurace 
 
-Na stránce technické konfigurace zadáte technické podrobnosti, které společnost Microsoft používá k připojení k vaší nabídce. Tato stránka není viditelná pro vás, pokud jste se rozhodli neprodávat prostřednictvím společnosti Microsoft.
+Stránka technická konfigurace je místo, kde zadáte technické podrobnosti, které Microsoft používá pro připojení k vaší nabídce. Pokud se rozhodnete neprodávat přes Microsoft, Tato stránka není viditelná.
 
 | **Název pole**    | **Poznámky**   |  
 | :---------------- | :-----------| 
-| Adresa URL vstupní stránky | Povinné při prodeji prostřednictvím společnosti Microsoft. |
-| Připojení webhooku | Povinné při prodeji prostřednictvím společnosti Microsoft. |
-| ID tenanta Azure AD | Povinné při prodeji prostřednictvím společnosti Microsoft. |
-| ID aplikace Azure AD | Povinné při prodeji prostřednictvím společnosti Microsoft. |
+| Adresa URL cílové stránky | Vyžaduje se při prodeji prostřednictvím Microsoftu. |
+| Webhook připojení | Vyžaduje se při prodeji prostřednictvím Microsoftu. |
+| ID tenanta Azure AD | Vyžaduje se při prodeji prostřednictvím Microsoftu. |
+| ID aplikace Azure AD | Vyžaduje se při prodeji prostřednictvím Microsoftu. |
 
-## <a name="plan-identity-modal"></a>Plánování identity modální
+## <a name="plan-identity-modal"></a>Naplánování identity modálního
 
-První informace, které budete požádáni o poskytnutí, jsou název a ID plánu. Tato stránka není viditelná pro vás, pokud jste se rozhodli neprodávat prostřednictvím společnosti Microsoft.
-
-| **Název pole**    | **Poznámky**   |  
-| :---------------- | :-----------| 
-| ID plánu  | Povinné při prodeji prostřednictvím společnosti Microsoft. Po stvoření se to nedá změnit. Maximálně 50 znaků a musí se skládat pouze z číselných, alfanumerických znaků, pomlček nebo podtržítek. |
-| Název plánu  | Povinné při prodeji prostřednictvím společnosti Microsoft. Musí být jedinečný ve všech plánech v nabídce. Maximálně 50 znaků. |
-
-## <a name="plan-listing-page"></a>Stránka nabídky plánu
-
-Stránka s výpisem plánu je místo, kde zadáte text, který mohou zákazníci zobrazit při prohlížení plánu na trhu. Tato stránka není viditelná pro vás, pokud jste se rozhodli neprodávat prostřednictvím společnosti Microsoft.
+První část informací, které jste požádali, je název a ID vašeho plánu. Pokud se rozhodnete neprodávat prostřednictvím Microsoftu, Tato stránka není viditelná.
 
 | **Název pole**    | **Poznámky**   |  
 | :---------------- | :-----------| 
-| Popis plánu   | Povinné při prodeji prostřednictvím společnosti Microsoft. Maximálně 500 znaků. | |
+| ID plánu  | Vyžaduje se při prodeji prostřednictvím Microsoftu. Po vytvoření se nedá změnit. Maximálně 50 znaků a musí obsahovat jenom malá písmena, alfanumerické znaky, pomlčky nebo podtržítka. |
+| Název plánu  | Vyžaduje se při prodeji prostřednictvím Microsoftu. Musí být jedinečný ve všech plánech nabídky. Maximálně 50 znaků. |
 
-## <a name="plan-pricing--availability-page"></a>Stránka & dostupnosti tarifů
+## <a name="plan-listing-page"></a>Stránka se seznamem plánů
 
-Stránka ceny a dostupnost plánu je místo, kde definujete obchodní charakteristiky, publikum a dostupnost trhu pro každý plán (verzi) vaší nabídky. Tato stránka není viditelná pro vás, pokud jste se rozhodli neprodávat prostřednictvím společnosti Microsoft.
+Na stránce seznam plánů můžete zadat text, který se zákazníkům zobrazí při prohlížení plánu na webu Marketplace. Pokud se rozhodnete neprodávat přes Microsoft, Tato stránka není viditelná.
+
+| **Název pole**    | **Poznámky**   |  
+| :---------------- | :-----------| 
+| Popis plánu   | Vyžaduje se při prodeji prostřednictvím Microsoftu. Maximálně 500 znaků. | |
+
+## <a name="plan-pricing--availability-page"></a>Stránka dostupnost & dostupnosti pro ceny plánu
+
+Stránka plánování cen a dostupnosti vám umožní definovat obchodní charakteristiky, cílovou skupinu a dostupnost trhu pro jednotlivé plány (verze) vaší nabídky. Pokud se rozhodnete neprodávat přes Microsoft, Tato stránka není viditelná.
 
 | **Název pole**    | **Poznámky**   | 
 | :---------------- | :-----------| 
-| Dostupnost na trhu  | Povinné, min 1 a max 141. |
-| Cenový model  | Povinná hodnota. Výchozí: Paušální sazba. Možnosti: Paušální sazba, na uživatele. |
-| Minimální a maximální počet sedadel  | Volitelné, k dispozici pouze v případě, že je vybrán cenový model založený na sedadle. |
-| Fakturační období  | Povinná hodnota. Výchozí: Měsíčně. Možnosti: Měsíční, Roční. |
-| Price  | Povinné USD za měsíc, pokud je vybráno měsíční fakturační období; nebo USD za rok, pokud je zvolena roční fakturační doba. |
-| Plánování publika  | Nepovinný parametr. Výchozí: Veřejný plán. Možnosti: Veřejné, Soukromé podle ID klienta |
-| Cílová skupina s omezeným plánem (ID klienta + popis)  | Povinné, pokud je vybrán soukromý plán. Min 1 a max 10 ID klienta při ručním zadání. Max 20000, pokud csv import souboru. |
+| Dostupnost trhu  | Požadováno, minimum 1 a Max 141. |
+| Cenový model  | Povinná hodnota. Výchozí: paušální sazba. Možnosti: paušální sazba, na uživatele. |
+| Minimální a maximální počet sedadel  | Volitelné, dostupné jenom v případě, že je vybraný cenový model založený na pracovních stanicích. |
+| Fakturační období  | Povinná hodnota. Výchozí: měsíčně. Možnosti: měsíčně, ročně. |
+| Price  | Požaduje se USD za měsíc, pokud je vybraný měsíční fakturační termín; nebo USD za rok, pokud je vybraný roční fakturační termín. |
+| Cílová skupina plánu  | Nepovinný parametr. Výchozí: veřejný plán. Možnosti: Public, Private podle ID tenanta |
+| Skupina omezeného plánu (ID tenanta + popis)  | Vyžaduje se, pokud je vybraný privátní plán. Minimální 1 a maximum 10 ID klientů, pokud jsou zadány ručně. Max 20000 při importu souboru CSV |
 
-## <a name="test-drive-listing-page"></a>Stránka výpisu testovací jednotky
+## <a name="test-drive-listing-page"></a>Stránka se seznamem testovacích jednotek
 
-K dispozici pouze v případě, že se rozhodnete nabídnout zkušební jízdu pro vaši nabídku. Definujte podrobnosti použité k uzení testovací jednotky na trhu.
+K dispozici pouze v případě, že jste vybrali možnost nabídnout si pro vaši nabídku testovací jednotku. Zadejte podrobnosti, které se použijí k vypsání testovacích jednotek na webu Marketplace.
 
 | **Název pole**    | **Poznámky**   | 
 | :---------------- | :-----------| 
 | Popis  | Povinná hodnota. |
-| Název uživatelské příručky + soubor  | Povinné, max 1 doc. Musí být ve formátu PDF. |
-| Název videa, URL + miniatura  | Nepovinné, doporučené. Miniatura musí být 533 x 324 ve formátu JPGP nebo PNG. Video musí být hostováno na YouTube nebo Vimeo. |
+| Uživatelské jméno a soubor ručně  | Required, max 1 doc. musí být ve formátu PDF. |
+| Název videa, adresa URL + Miniatura  | Volitelné, doporučené. Miniatura musí být 533 × 324 ve formátu JPGP nebo PNG. Video musí být hostované na YouTube nebo Vimeo. |
 
-## <a name="review-and-publish-page"></a>Zkontrolovat a publikovat stránku
+## <a name="review-and-publish-page"></a>Stránka pro kontrolu a publikování
 
 | **Název pole**    | **Poznámky**   | 
 | :---------------- | :-----------| 

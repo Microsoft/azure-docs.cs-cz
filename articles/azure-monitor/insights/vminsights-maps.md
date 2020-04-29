@@ -1,137 +1,137 @@
 ---
-title: Zobrazení závislostí aplikací pomocí Azure Monitoru pro virtuální počítače
-description: Mapa je funkce Azure Monitor u virtuálních počítačů. Automaticky zjišťuje součásti aplikací v systémech Windows a Linux a mapuje komunikaci mezi službami. Tento článek obsahuje podrobnosti o použití funkce Mapa v různých scénářích.
+title: Zobrazení závislostí aplikace pomocí Azure Monitor pro virtuální počítače
+description: Mapa je funkce Azure Monitor pro virtuální počítače. Automaticky zjišťuje komponenty aplikací v systémech Windows a Linux a mapuje komunikaci mezi službami. Tento článek poskytuje podrobné informace o tom, jak používat funkci map v různých scénářích.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/20/2020
 ms.openlocfilehash: acb96984a49e4ad8535f87a41da11b3b63ae207b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80283850"
 ---
-# <a name="use-the-map-feature-of-azure-monitor-for-vms-to-understand-application-components"></a>Použití funkce Map azure monitoru pro virtuální počítače k pochopení součástí aplikací
-V Azure Monitor pro virtuální počítače můžete zobrazit zjištěné součásti aplikací na virtuálních počítačích (VM) Windows a Linuxu, které běží v Azure nebo ve vašem prostředí. Virtuální chod můžete sledovat dvěma způsoby. Zobrazení mapy přímo z virtuálního počítače nebo zobrazení mapy z Azure Monitor uvidíte komponenty napříč skupinami virtuálních počítačích. Tento článek vám pomůže pochopit tyto dvě metody zobrazení a jak používat funkci Mapa. 
+# <a name="use-the-map-feature-of-azure-monitor-for-vms-to-understand-application-components"></a>Použití funkce map Azure Monitor pro virtuální počítače k porozumění součástem aplikace
+V Azure Monitor pro virtuální počítače můžete zobrazit zjištěné součásti aplikace na virtuálních počítačích s Windows a Linux, které běží v Azure nebo ve vašem prostředí. Virtuální počítače můžete sledovat dvěma způsoby. Zobrazit mapu přímo z virtuálního počítače nebo zobrazit mapu z Azure Monitor, abyste viděli komponenty napříč skupinami virtuálních počítačů. Tento článek vám pomůže pochopit tyto dvě metody zobrazení a způsob použití funkce map. 
 
-Informace o konfiguraci Azure Monitoru pro virtuální počítače najdete [v tématu Povolení Azure Monitoru pro virtuální počítače](vminsights-enable-overview.md).
+Informace o konfiguraci Azure Monitor pro virtuální počítače najdete v tématu [povolení Azure monitor pro virtuální počítače](vminsights-enable-overview.md).
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
-Přihlaste se k [portálu Azure](https://portal.azure.com).
+Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
-## <a name="introduction-to-the-map-experience"></a>Úvod do prostředí mapy
-Než se ponoříte do prostředí mapy, měli byste pochopit, jak prezentuje a vizualizuje informace. Ať už vyberete funkci Map přímo z virtuálního počítače nebo z Azure Monitor, funkce Map představuje konzistentní prostředí. Jediným rozdílem je, že z Azure Monitoru, jedna mapa zobrazuje všechny členy vícevrstvé aplikace nebo clusteru.
+## <a name="introduction-to-the-map-experience"></a>Seznámení s mapovým prostředím
+Předtím, než se začnete na mapové prostředí, byste měli pochopit, jak prezentuje a vizualizují informace. Bez ohledu na to, jestli vyberete funkci mapa přímo z virtuálního počítače nebo z Azure Monitor, funkce mapa prezentuje konzistentní prostředí. Jediným rozdílem je, že od Azure Monitor jedna mapa zobrazuje všechny členy více aplikací nebo clusterů s více vrstvami.
 
-Funkce Map vizualizuje závislosti virtuálních zařízení zjišťováním spuštěných procesů, které mají: 
+Funkce map vizualizuje závislosti virtuálních počítačů pomocí zjišťování spuštěných procesů, které mají: 
 
 - Aktivní síťová připojení mezi servery.
 - Latence příchozího a odchozího připojení.
 - Porty napříč libovolnou architekturou připojenou k protokolu TCP v zadaném časovém rozsahu.  
  
-Rozbalte virtuální hosti a zobrazte podrobnosti procesu a jenom ty procesy, které komunikují s virtuálním ms. Skupina klientů zobrazuje počet front-endových klientů, kteří se připojují k virtuálnímu virtuálnímu virtuálnímu mísu. Skupiny portů serveru zobrazují počet serverů back-end, ke serverům, ke kterých se virtuální server připojuje. Rozbalte skupinu portů serveru a zobcete podrobný seznam serverů, které se přes tento port připojují.  
+Rozbalte virtuální počítač pro zobrazení podrobností o procesu a jenom těch procesů, které komunikují s virtuálním počítačem. Skupina klientů zobrazuje počet front-end klientů, kteří se připojují k virtuálnímu počítači. Skupiny portů serveru zobrazují počet back-endové serverů, ke kterým se virtuální počítač připojuje. Rozbalte skupinu server-port, abyste viděli podrobný seznam serverů, které se připojují přes tento port.  
 
-Když vyberete virtuální počítač, podokno **Vlastnosti** vpravo zobrazuje vlastnosti virtuálního počítače. Vlastnosti zahrnují systémové informace hlášené operačním systémem, vlastnosti virtuálního počítače Azure a prstencový graf, který shrnuje zjištěná připojení. 
+Po výběru virtuálního počítače se v podokně **vlastností** vpravo zobrazí vlastnosti virtuálního počítače. Mezi vlastnosti patří systémové informace hlášené operačním systémem, vlastnosti virtuálního počítače Azure a prstencový graf, který shrnuje zjištěná připojení. 
 
 ![Podokno Vlastnosti](./media/vminsights-maps/properties-pane-01.png)
 
-Na pravé straně podokna vyberte **Události protokolu,** chcete-li zobrazit seznam dat, která virtuální počítač odeslal do Azure Monitoru. Tato data jsou k dispozici pro dotazování.  Vyberte libovolný typ záznamu, chcete-li otevřít stránku **Protokoly,** kde se zobrazí výsledky pro tento typ záznamu. Zobrazí se také předkonfigurovaný dotaz, který je filtrovaný proti virtuálnímu počítače.  
+Na pravé straně podokna vyberte **události protokolu** , abyste zobrazili seznam dat, která se do virtuálního počítače poslala Azure monitor. Tato data jsou k dispozici pro dotazování.  Výběrem libovolného typu záznamu otevřete stránku **protokoly** , kde vidíte výsledky pro daný typ záznamu. Zobrazí se také předkonfigurovaný dotaz, který je filtrovaný proti virtuálnímu počítači.  
 
-![Podokno Události protokolu](./media/vminsights-maps/properties-pane-logs-01.png)
+![Podokno události protokolu](./media/vminsights-maps/properties-pane-logs-01.png)
 
-Zavřete stránku **Protokoly** a vraťte se do **podokna Vlastnosti.** Tady vyberte **Výstrahy,** chcete-li zobrazit výstrahy kritérií stavu virtuálního počítače. Funkce Map se integruje s výstrahami Azure a zobrazuje výstrahy pro vybraný server ve vybraném časovém rozsahu. Na serveru se zobrazí ikona aktuálních výstrah a podokno **Výstrahy počítače** zobrazí seznam výstrah. 
+Zavřete stránku **protokoly** a vraťte se do podokna **vlastnosti** . V takovém případě vyberte **výstrahy** pro zobrazení stavu virtuálního počítače výstrahy. Funkce map se integruje s výstrahami Azure, aby zobrazovala výstrahy pro vybraný server ve vybraném časovém rozsahu. Server zobrazuje ikonu pro aktuální výstrahy a v podokně **výstrahy počítače** se zobrazují výstrahy. 
 
-![Podokno Upozornění](./media/vminsights-maps/properties-pane-alerts-01.png)
+![Podokno výstrahy](./media/vminsights-maps/properties-pane-alerts-01.png)
 
-Chcete-li, aby funkce Map zobrazovala relevantní výstrahy, vytvořte pravidlo výstrahy, které se vztahuje na konkrétní počítač:
+Chcete-li, aby funkce map zobrazovala relevantní výstrahy, vytvořte pravidlo upozornění, které bude platit pro konkrétní počítač:
 
-- Zahrňte klauzuli pro seskupení výstrah podle počítače (například **podle intervalu počítače 1 minuta).**
-- Založte výstrahu na metrice.
+- Přidejte klauzuli pro seskupení výstrah podle počítače (například **podle intervalu počítače 1 minute**).
+- Založte upozornění na metriku.
 
-Další informace o azure výstrahy a vytváření pravidel výstrah, najdete [v tématu jednotné výstrahy v Azure Monitor](../../azure-monitor/platform/alerts-overview.md).
+Další informace o výstrahách Azure a vytváření pravidel výstrah najdete v tématu [sjednocené výstrahy v Azure monitor](../../azure-monitor/platform/alerts-overview.md).
 
-V pravém horním rohu **legenda** volba popisuje symboly a role na mapě. Chcete-li se blíže podívat na mapu a přesunout ji, použijte ovládací prvky lupy v pravém dolním rohu. Můžete nastavit úroveň zvětšení a přizpůsobit mapu velikosti stránky.  
+V pravém horním rohu možnost **Legenda** popisuje symboly a role na mapě. Pro bližší zobrazení mapy a jejich přesunu použijte ovládací prvky přiblížení v pravém dolním rohu. Můžete nastavit úroveň přiblížení a přizpůsobit mapu velikosti stránky.  
 
 ## <a name="connection-metrics"></a>Metriky připojení
-Podokno **Připojení** zobrazuje standardní metriky pro vybrané připojení z virtuálního virtuálního virtuálního serveru přes port TCP. Metriky zahrnují dobu odezvy, požadavky za minutu, propustnost provozu a odkazy.  
+V podokně **připojení** se zobrazí standardní metriky pro vybrané připojení z virtuálního počítače přes port TCP. Metriky zahrnují dobu odezvy, požadavky za minutu, propustnost provozu a odkazy.  
 
-![Grafy připojení k síti v podokně Připojení](./media/vminsights-maps/map-group-network-conn-pane-01.png)  
+![Grafy připojení k síti v podokně připojení](./media/vminsights-maps/map-group-network-conn-pane-01.png)  
 
 ### <a name="failed-connections"></a>Neúspěšná připojení
-Mapa zobrazuje neúspěšná připojení procesů a počítačů. Přerušovaná červená čára označuje, že klientský systém nedosahuje procesu nebo portu. Pro systémy, které používají agentzávislost, agent hlásí neúspěšné pokusy o připojení. Funkce Map monitoruje proces sledováním soketů TCP, které nenavazují navázat připojení. Tato chyba může být důsledkem brány firewall, chybné konfigurace klienta nebo serveru nebo nedostupné vzdálené služby.
+Mapa zobrazuje neúspěšná připojení pro procesy a počítače. Přerušovaná červená čára indikuje, že se klientský systém nedaří připojit k procesu nebo portu. Pro systémy, které používají agenta závislostí, agent hlásí neúspěšné pokusy o připojení. Funkce map monitoruje proces tím, že sleduje sokety TCP, které selhaly při navázání spojení. K této chybě mohlo dojít z brány firewall, chybné konfigurace v klientovi nebo serveru nebo v nedostupné vzdálené službě.
 
 ![Neúspěšné připojení na mapě](./media/vminsights-maps/map-group-failed-connection-01.png)
 
-Principy neúspěšných připojení vám mohou pomoci řešit potíže s migrací, ověřit migraci, analyzovat zabezpečení a porozumět celkové architektuře služby. Neúspěšná připojení jsou někdy neškodná, ale často poukazují na problém. Připojení může selhat, například když prostředí s podporou převzetí služeb při selhání náhle stane nedostupnýnebo když dvě vrstvy aplikace nemůže komunikovat mezi sebou po migraci do cloudu.
+Porozumění neúspěšným připojením vám pomůže při odstraňování potíží, ověřování migrace, analýze zabezpečení a pochopení celkové architektury služby. Neúspěšná připojení jsou někdy neškodná, ale často ukazují na problém. Připojení se nemusí zdařit, například když dojde k náhlému výpadku prostředí převzetí služeb při selhání nebo když dvě aplikační vrstvy nemůžou vzájemně komunikovat po migraci do cloudu.
 
 ### <a name="client-groups"></a>Skupiny klientů
-Na mapě představují skupiny klientů klientské počítače, které se připojují k mapovanému počítači. Jedna skupina klientů představuje klienty pro jednotlivé procesy nebo počítače.
+Na mapě budou skupiny klientů představovat klientské počítače, které se připojují k mapovanému počítači. Jedna skupina klientů představuje klienty pro jednotlivý proces nebo počítač.
 
 ![Skupina klientů na mapě](./media/vminsights-maps/map-group-client-groups-01.png)
 
-Chcete-li zobrazit monitorované klienty a adresy IP systémů ve skupině klientů, vyberte skupinu. Obsah skupiny se zobrazí níže.  
+Chcete-li zobrazit monitorované klienty a IP adresy systémů ve skupině klientů, vyberte skupinu. Níže se zobrazí obsah skupiny.  
 
-![Seznam IP adres skupiny klientů na mapě](./media/vminsights-maps/map-group-client-group-iplist-01.png)
+![Seznam IP adres na mapě pro skupinu klientů](./media/vminsights-maps/map-group-client-group-iplist-01.png)
 
-Pokud skupina obsahuje monitorované a nemonitorované klienty, můžete vybrat příslušnou část prstencového grafu skupiny a filtrovat je.
+Pokud skupina obsahuje monitorované a nemonitorované klienty, můžete vybrat příslušnou část prstencového grafu skupiny a filtrovat tak klienty.
 
-### <a name="server-port-groups"></a>Skupiny portů serveru
-Skupiny portů serveru představují porty na serverech, které mají příchozí připojení z mapovaného počítače. Skupina obsahuje port serveru a počet serverů, které mají připojení k tomuto portu. Výběrem skupiny zobrazíte jednotlivé servery a připojení. 
+### <a name="server-port-groups"></a>Servery – skupiny portů
+Skupiny portů serveru reprezentují porty na serverech, které mají příchozí připojení z namapovaného počítače. Tato skupina obsahuje port serveru a počet serverů, které mají připojení k tomuto portu. Výběrem skupiny zobrazíte jednotlivé servery a připojení. 
 
-![Skupina portů serveru na mapě](./media/vminsights-maps/map-group-server-port-groups-01.png)  
+![Server – Skupina portů na mapě](./media/vminsights-maps/map-group-server-port-groups-01.png)  
 
 Pokud skupina obsahuje monitorované a nemonitorované servery, můžete vybrat příslušnou část prstencového grafu skupiny a filtrovat servery.
 
-## <a name="view-a-map-from-a-vm"></a>Zobrazení mapy z virtuálního virtuálního mě 
+## <a name="view-a-map-from-a-vm"></a>Zobrazení mapy z virtuálního počítače 
 
 Přístup k Azure Monitor pro virtuální počítače přímo z virtuálního počítače:
 
-1. Na webu Azure Portal vyberte **Virtuální počítače**. 
-2. V seznamu zvolte virtuální hod. V části **Monitorování** zvolte **Přehledy**.  
-3. Vyberte kartu **Mapa.**
+1. V Azure Portal vyberte **Virtual Machines**. 
+2. V seznamu vyberte virtuální počítač. V části **monitorování** vyberte **přehledy**.  
+3. Vyberte kartu **Mapa** .
 
-Mapa vizualizuje závislosti virtuálního uživatele zjišťováním spuštěných skupin procesů a procesů, které mají aktivní síťová připojení v zadaném časovém rozsahu.  
+Mapa vizualizuje závislosti virtuálních počítačů pomocí zjišťování spuštěných skupin procesů a procesů, které mají aktivní síťová připojení v zadaném časovém rozsahu.  
 
-Ve výchozím nastavení se na mapě zobrazuje posledních 30 minut. Pokud chcete vidět, jak vypadaly závislosti v minulosti, můžete dotazovat na historické časové rozsahy až jednu hodinu. Chcete-li spustit dotaz, použijte volič **TimeRange** v levém horním rohu. Můžete spustit dotaz, například během incidentu nebo zobrazit stav před změnou.  
+Ve výchozím nastavení Mapa zobrazuje posledních 30 minut. Pokud chcete vidět, jak se závislosti prohlédly v minulosti, můžete se dotázat na historické časové rozsahy až na jednu hodinu. Chcete-li spustit dotaz, použijte selektor **TimeRange** v levém horním rohu. Můžete spustit dotaz, například během incidentu nebo zobrazit stav před změnou.  
 
-![Přehled mapy přímého virtuálního zařízení](./media/vminsights-maps/map-direct-vm-01.png)
+![Přehled mapování přímých virtuálních počítačů](./media/vminsights-maps/map-direct-vm-01.png)
 
-## <a name="view-a-map-from-a-virtual-machine-scale-set"></a>Zobrazení mapy ze škálovací sady virtuálních strojů
+## <a name="view-a-map-from-a-virtual-machine-scale-set"></a>Zobrazení mapy ze sady škálování virtuálních počítačů
 
-Přístup k Azure Monitoru pro virtuální počítače přímo ze škálovací sady virtuálních strojů:
+Přístup k Azure Monitor pro virtuální počítače přímo ze sady škálování virtuálních počítačů:
 
-1. Na webu Azure Portal vyberte **škálovací sady virtuálních strojů**.
-2. V seznamu zvolte virtuální hod. Potom v části **Monitorování** zvolte **Přehledy**.  
-3. Vyberte kartu **Mapa.**
+1. V Azure Portal vyberte **Virtual Machine Scale Sets**.
+2. V seznamu vyberte virtuální počítač. Pak v části **monitorování** zvolte **přehledy**.  
+3. Vyberte kartu **Mapa** .
 
-Mapa vizualizuje všechny instance v škálovací sadě jako uzel skupiny spolu se závislostmi skupiny. V rozšířeném uzlu jsou uvedeny instance v škálovací sadě. Tyto instance můžete posouvat současně po 10. 
+Mapa vizualizuje všechny instance v sadě škálování jako uzel skupiny spolu se závislostmi skupiny. Rozbalený uzel obsahuje seznam instancí v sadě škálování. V tuto chvíli můžete procházet pomocí těchto instancí: 10. 
 
-Chcete-li načíst mapu pro určitou instanci, nejprve vyberte tuto instanci na mapě. Pak vyberte tlačítko **se třemi tečkami** (...) vpravo a zvolte **Načíst mapu serveru**. Na mapě, která se zobrazí, se zobrazí skupiny procesů a procesy, které mají aktivní síťová připojení v zadaném časovém rozsahu. 
+Pokud chcete načíst mapu pro určitou instanci, nejdřív vyberte tuto instanci na mapě. Pak vyberte tlačítko se **třemi tečkami** (...) napravo a zvolte **načíst Server mapa**. Na zobrazené mapě vidíte skupiny procesů a procesy, které mají aktivní síťová připojení v zadaném časovém rozsahu. 
 
-Ve výchozím nastavení se na mapě zobrazuje posledních 30 minut. Pokud chcete vidět, jak vypadaly závislosti v minulosti, můžete dotazovat na historické časové rozsahy až jednu hodinu. Chcete-li spustit dotaz, použijte volič **TimeRange.** Můžete spustit dotaz, například během incidentu nebo zobrazit stav před změnou.
+Ve výchozím nastavení Mapa zobrazuje posledních 30 minut. Pokud chcete vidět, jak se závislosti prohlédly v minulosti, můžete se dotázat na historické časové rozsahy až na jednu hodinu. Chcete-li spustit dotaz, použijte selektor **TimeRange** . Můžete spustit dotaz, například během incidentu nebo zobrazit stav před změnou.
 
-![Přehled mapy přímého virtuálního zařízení](./media/vminsights-maps/map-direct-vmss-01.png)
+![Přehled mapování přímých virtuálních počítačů](./media/vminsights-maps/map-direct-vmss-01.png)
 
 >[!NOTE]
->Můžete také přistupovat k mapě pro konkrétní **instanci** ze zobrazení instance pro škálovací sadu virtuálních strojů. V části **Nastavení** přejděte na **Přehledy instancí** > **Insights**.
+>Přístup k mapě konkrétní instance můžete získat také ze zobrazení **instance** pro sadu škálování virtuálního počítače. V části **Nastavení** přejdete na **instance** > **přehledy**.
 
-## <a name="view-a-map-from-azure-monitor"></a>Zobrazení mapy z Azure Monitoru
+## <a name="view-a-map-from-azure-monitor"></a>Zobrazit mapu z Azure Monitor
 
-Ve službě Azure Monitor poskytuje funkce Map globální zobrazení virtuálních počítačích a jejich závislostí. Přístup k funkci Map ve službě Azure Monitor:
+V Azure Monitor funkce mapa poskytuje globální pohled na vaše virtuální počítače a jejich závislosti. Přístup k funkci mapa v Azure Monitor:
 
-1. Na webu Azure Portal vyberte **Monitor**. 
-2. V části **Přehledy** zvolte **Virtuální počítače**.
-3. Vyberte kartu **Mapa.**
+1. V Azure Portal vyberte **monitorovat**. 
+2. V části **přehledy** vyberte **Virtual Machines**.
+3. Vyberte kartu **Mapa** .
 
-   ![Mapa přehledu Azure Monitoru pro více virtuálních počítačů](./media/vminsights-maps/map-multivm-azure-monitor-01.png)
+   ![Azure Monitor – přehled mapy více virtuálních počítačů](./media/vminsights-maps/map-multivm-azure-monitor-01.png)
 
-Zvolte pracovní prostor pomocí voliče **pracovního prostoru** v horní části stránky. Pokud máte více než jeden pracovní prostor Log Analytics, zvolte pracovní prostor, který je povolený s řešením a který má virtuální chod, které se do něj hlásí. 
+Pomocí selektoru **pracovního prostoru** v horní části stránky vyberte pracovní prostor. Pokud máte více než jeden Log Analytics pracovní prostor, vyberte pracovní prostor, který je povolený pro řešení a který obsahuje virtuální počítače, které se k němu nahlásí. 
 
-Volič **skupiny** vrátí odběry, skupiny prostředků, [skupiny počítačů](../../azure-monitor/platform/computer-groups.md)a škálovací sady virtuálních počítačů, které souvisejí s vybraným pracovním prostorem. Váš výběr se vztahuje pouze na funkci Mapa a nepřenáší se na výkon nebo stav.
+Selektor **skupin** vrátí předplatná, skupiny prostředků, [skupiny počítačů](../../azure-monitor/platform/computer-groups.md)a sady škálování virtuálních počítačů pro počítače, které se vztahují k vybranému pracovnímu prostoru. Váš výběr se vztahuje pouze na funkci mapy a neprovádí se nad výkonem nebo stavem.
 
-Ve výchozím nastavení se na mapě zobrazuje posledních 30 minut. Pokud chcete vidět, jak vypadaly závislosti v minulosti, můžete dotazovat na historické časové rozsahy až jednu hodinu. Chcete-li spustit dotaz, použijte volič **TimeRange.** Můžete spustit dotaz, například během incidentu nebo zobrazit stav před změnou.  
+Ve výchozím nastavení Mapa zobrazuje posledních 30 minut. Pokud chcete vidět, jak se závislosti prohlédly v minulosti, můžete se dotázat na historické časové rozsahy až na jednu hodinu. Chcete-li spustit dotaz, použijte selektor **TimeRange** . Můžete spustit dotaz, například během incidentu nebo zobrazit stav před změnou.  
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud chcete identifikovat kritická místa, zkontrolovat výkon a pochopit celkové využití virtuálních počítačů, přečtěte si část [Zobrazení stavu výkonu pro Azure Monitor pro virtuální počítače](vminsights-performance.md). 
+K identifikaci kritických bodů, kontrole výkonu a pochopení celkového využití virtuálních počítačů, najdete informace v tématu [zobrazení stavu výkonu pro Azure monitor pro virtuální počítače](vminsights-performance.md). 

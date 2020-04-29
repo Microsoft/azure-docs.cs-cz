@@ -1,58 +1,58 @@
 ---
-title: Konfigurace clusteru Azure Dev Spaces tak, aby používal Helm 3 (preview)
+title: Konfigurace clusteru Azure Dev Spaces pro použití Helmu 3 (Preview)
 services: azure-dev-spaces
 ms.date: 02/28/2020
 ms.topic: conceptual
-description: Přečtěte si, jak nakonfigurovat cluster Dev Spaces tak, aby používal Helm 3
-keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
+description: Zjistěte, jak nakonfigurovat cluster prostředí pro vývoj a používání Helm 3.
+keywords: Azure Dev Spaces, vývojářské prostory, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
 ms.openlocfilehash: dbccb2618fd5a27805261d60e7891d920e0bc372
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79454291"
 ---
-# <a name="configure-your-azure-dev-spaces-cluster-to-use-helm-3-preview"></a>Konfigurace clusteru Azure Dev Spaces tak, aby používal Helm 3 (preview)
+# <a name="configure-your-azure-dev-spaces-cluster-to-use-helm-3-preview"></a>Konfigurace clusteru Azure Dev Spaces pro použití Helmu 3 (Preview)
 
-Azure Dev Spaces používá Helm 2 ve výchozím nastavení k instalaci uživatelských služeb v dev prostorech v clusteru AKS. Azure Dev Spaces můžete povolit použití Helm 3 namísto Helm 2 instalace uživatelských služeb v dev prostorech. Bez ohledu na verzi Helm Azure Dev Spaces používá k instalaci uživatelských služeb, můžete pokračovat v použití Helm 2 nebo 3 klienta ke správě vlastní verze ve stejném clusteru.
+Azure Dev Spaces používá standardně Helm 2 k instalaci služeb uživatele do vývojových prostorů v clusteru AKS. Můžete povolit, aby Azure Dev Spaces používat Helm 3 místo Helm 2 instalace uživatelských služeb ve vývojových prostorech. Bez ohledu na to, jakou verzi Helm Azure Dev Spaces používá k instalaci služeb uživatele, můžete i nadále používat klienta Helm 2 nebo 3 ke správě vlastních verzí ve stejném clusteru.
 
-Když povolíte Helm 3, Azure Dev Spaces se při instalaci uživatelských služeb v prostorách pro aplikace Dev chová jinak následujícími způsoby:
+Pokud povolíte Helm 3, Azure Dev Spaces se při instalaci služeb uživatele ve vývojových prostorech liší v následujících ohledech:
 
-* Tiller se již nenasazuje do clusteru v oboru názvů *AZDS.*
-* Helm ukládá informace o uvolnění v oboru názvů, kde je služba nainstalována namísto oboru názvů *AZDS.*
-* Informace o verzi helmu 3 zůstávají v oboru názvů, kde je služba nainstalována po odstranění řadiče.
-* Můžete přímo pracovat s jakoukoli verzí spravovanou Azure Dev Spaces ve vašem clusteru pomocí helm3 klienta.
+* Do vašeho clusteru již není v oboru názvů *azds* nasazen.
+* Helm ukládá informace o vydaných verzích do oboru názvů, kde je nainstalována služba místo oboru názvů *azds* .
+* Helm 3 informace o vydání zůstanou v oboru názvů, kde se služba nainstaluje po odstranění kontroleru.
+* Pomocí klienta Helm 3 můžete přímo komunikovat s libovolnou verzí spravovanou pomocí Azure Dev Spaces v clusteru.
 
-V této příručce se dozvíte, jak povolit Helm 3 pro Azure Dev Spaces k instalaci uživatelských služeb v dev prostorech.
+V této příručce se dozvíte, jak povolit Helm 3 Azure Dev Spaces pro instalaci služeb uživatele ve vývojových prostorech.
 
 > [!IMPORTANT]
 > Tato funkce je aktuálně ve verzi Preview. Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Některé aspekty této funkce se můžou před zveřejněním změnit.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 ### <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/free).
 * [Nainstalované rozhraní Azure CLI][azure-cli]
 
-### <a name="register-the-helm3preview-preview-feature"></a>Registrace funkce náhledu Helm3Preview
+### <a name="register-the-helm3preview-preview-feature"></a>Registrace funkce Helm3Preview ve verzi Preview
 
-Chcete-li povolit Azure Dev Spaces používat Helm 3 pro instalaci uživatelských služeb v prostorech pro zpracování, nejprve povolte příznak funkce *Helm3Preview* ve vašem předplatném pomocí příkazu *az feature register:*
+Pokud chcete povolit, aby Azure Dev Spaces Helm 3 pro instalaci služeb uživatele ve vývojových prostorech, nejdřív u svého předplatného povolte příznak funkce *Helm3Preview* pomocí příkazu *AZ Feature Register* :
 
 > [!WARNING]
-> Všechny clustery AKS, které povolíte azure dev spaces pomocí příznaku funkce *Helm3Preview,* budou používat toto prostředí preview. Chcete-li i nadále povolit plně podporované Azure Dev Spaces na clusterech AKS, nepovolujte funkce náhledu v produkčních předplatných. Pro testování funkcí preview použijte samostatné testovací nebo vývojové předplatné Azure.
+> Toto prostředí verze Preview bude používat libovolný cluster AKS, který povolíte Azure Dev Spaces s příznakem funkce *Helm3Preview* . Pokud chcete dál povolit plně podporovaná Azure Dev Spaces v clusterech AKS, nepovolujte funkce Preview na produkčních předplatných. Pro testování funkcí ve verzi Preview použijte samostatný test nebo vývojové předplatné Azure.
 
 ```azure-cli
 az feature register --namespace Microsoft.DevSpaces --name Helm3Preview
 ```
 
-Trvá několik minut, než se registrace dokončí. Zkontrolujte stav registrace pomocí příkazu *az feature show:*
+Dokončení registrace trvá několik minut. Pomocí příkazu *AZ Feature show* ověřte stav registrace.
 
 ```azure-cli
 az feature show --namespace Microsoft.DevSpaces --name Helm3Preview
 ```
 
-Když je *stav* *Registrováno*, aktualizujte registraci *Microsoft.DevSpaces* pomocí *registru zprostředkovatele az*:
+Když je *stav* *zaregistrován*, obnovte registraci *Microsoft. DevSpaces* pomocí *AZ Provider Register*:
 
 ```azure-cli
 az provider register --namespace Microsoft.DevSpaces
@@ -60,36 +60,36 @@ az provider register --namespace Microsoft.DevSpaces
 
 ### <a name="limitations"></a>Omezení
 
-Následující omezení platí, když je tato funkce ve verzi Preview:
+Pokud je tato funkce ve verzi Preview, platí následující omezení:
 
-* Tuto funkci nelze použít v clusterech AKS s existujícími úlohami. Je nutné vytvořit nový cluster AKS.
+* Tato funkce se nedá použít u clusterů AKS se stávajícími úlohami. Musíte vytvořit nový cluster AKS.
 
 ## <a name="create-your-cluster"></a>Vytvoření clusteru
 
-Vytvořte nový cluster AKS v oblasti, která má tuto funkci náhledu. Níže uvedené příkazy vytvoří skupinu prostředků s názvem *MyResourceGroup* a nový cluster AKS s názvem *MyAKS*:
+Vytvořte nový cluster AKS v oblasti, která má tuto funkci ve verzi Preview. Níže uvedené příkazy vytvoří skupinu prostředků s názvem *MyResourceGroup* a nový cluster AKS s názvem *MyAKS*:
 
 ```azure-cli
 az group create --name MyResourceGroup --location eastus
 az aks create -g MyResourceGroup -n MyAKS --location eastus --generate-ssh-keys
 ```
 
-## <a name="enable-azure-dev-spaces"></a>Povolení azure dev spaces
+## <a name="enable-azure-dev-spaces"></a>Povolit Azure Dev Spaces
 
-Pomocí příkazu *use-dev-spaces* povolte v clusteru AKS funkce Dev Spaces a postupujte podle pokynů. Níže uvedený příkaz povolí dev spaces v clusteru *MyAKS* ve skupině *MyResourceGroup* a vytvoří výchozí dev prostor.
+Pomocí příkazu *použít-dev-Spaces* povolte v clusteru AKS vývojářské prostory a postupujte podle pokynů. Následující příkaz povolí v *MyAKS* ve skupině *MyResourceGroup* vývojářské prostory a vytvoří výchozí místo pro vývoj.
 
 ```cmd
 az aks use-dev-spaces -g MyResourceGroup -n MyAKS
 ```
 
-## <a name="verify-dev-spaces-is-running-helm-3"></a>Ověření, že dev Spaces běží helm3
+## <a name="verify-dev-spaces-is-running-helm-3"></a>Ověřte, že se na vývojových prostorech běží Helm 3.
 
-Ověřte, zda kultivátor není spuštěn, a to tak, že vyhotovujete nasazení v oboru názvů *AZDS:*
+Pomocí výpisu nasazení v oboru názvů *azds* ověřte, že není spuštěný.
 
 ```cmd
 kubectl get deployment -n azds
 ```
 
-Potvrďte, *že* v oboru názvů AZDS není spuštěna. Například:
+Potvrzení *, že nástroj není* spuštěný v oboru názvů azds. Příklad:
 
 ```console
 $ kubectl get deployments -n azds
@@ -100,10 +100,10 @@ traefik                   1/1     1            1           39m
 
 ## <a name="next-steps"></a>Další kroky
 
-Zjistěte, jak Azure Dev Spaces pomáhá vyvíjet složitější aplikace napříč více kontejnery a jak můžete zjednodušit vývoj spolupráce pomocí práce s různými verzemi nebo větvemi kódu v různých prostorech.
+Přečtěte si, jak Azure Dev Spaces pomáhá vyvíjet složitější aplikace napříč více kontejnery a jak zjednodušit vývoj díky práci s různými verzemi nebo větvemi kódu v různých prostorech.
 
 > [!div class="nextstepaction"]
-> [Vývoj týmu v Azure Dev Spaces][team-quickstart]
+> [Vývoj pro tým v Azure Dev Spaces][team-quickstart]
 
 
 [azure-cli]: /cli/azure/install-azure-cli?view=azure-cli-latest

@@ -1,6 +1,6 @@
 ---
-title: Soukromé skutkové prodejné a plané plány | Azure Marketplace
-description: Jak používat soukromé skum pro správu dostupnosti nabídky.
+title: Soukromé SKU a plány | Azure Marketplace
+description: Jak používat soukromé SKU ke správě dostupnosti nabídky
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,139 +8,139 @@ ms.topic: conceptual
 ms.date: 08/15/2019
 ms.author: dsindona
 ms.openlocfilehash: ee3ab7be4d15b13a3c0bb014a3ca4d4096299b4c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80280384"
 ---
-<a name="private-skus-and-plans"></a>Soukromé skum a plány
+<a name="private-skus-and-plans"></a>Soukromé SKU a plány
 ============
 
-Soukromé skum umožňují omezit dostupnost skum pro konkrétní zákazníky. Když je skladová položka označena jako soukromá, není dostupná v žádném veřejném katalogu, včetně [Azure Marketplace](https://azuremarketplace.microsoft.com) a [portálu Azure](https://portal.azure.com). Na webu Azure Portal ho můžou vidět jenom zákazníci s přístupem ke skladové jednotce. Kromě toho by také byli vyzváni, aby měli přístup k soukromým nabídkám.
+Soukromé SKU umožňují omezit dostupnost SKU na konkrétní zákazníky. Pokud je SKU označená jako soukromá, není k dispozici v žádném veřejném katalogu, včetně [Azure Marketplace](https://azuremarketplace.microsoft.com) a [Azure Portal](https://portal.azure.com). Na Azure Portal uvidí jenom zákazníci, kteří mají přístup k této SKU. Kromě toho by se také zobrazila výzva k tomu, že mají přístup k soukromým nabídkám.
 
 >[!NOTE]
->Soukromé skladové položky musí mít nové jedinečné skladové položky nebo id plánu, aby se zabránilo konfliktu s veřejnými skladovými položkami.
+>Aby nedocházelo ke konfliktu s vašimi veřejnými SKU, musí mít privátní skladové položky nové jedinečné ID SKU nebo plánu.
 
-Soukromé skum můžete použít ke zpracování následujících scénářů:
+Soukromé SKU můžete použít k obsluze následujících scénářů:
 
-1.  Publikujte software, který chcete veřejně zpřístupnit pouze konkrétním zákazníkům a nikoli veřejně dostupný.
-2.  Publikujte varianty veřejného softwaru za přizpůsobenou cenu pro konkrétní zákazníky.
-3.  Publikujte varianty veřejného softwaru s přizpůsobeným popisem a podmínkami (prostřednictvím nové nabídky).
+1.  Publikování softwaru, který má být k dispozici pouze pro konkrétní zákazníky a není veřejně dostupný.
+2.  Publikování variací veřejného softwaru za účelem vlastní ceny pro konkrétní zákazníky
+3.  Publikujte variace veřejného softwaru s přizpůsobeným popisem a podmínkami (prostřednictvím nové nabídky).
 
-Pokud chcete pouze změnit cenu, můžete znovu použít disky z jiné skladové položky ve stejné nabídce. U soukromých sku, není třeba znovu odesílat disky napříč sku.
+Pokud chcete změnit jenom cenu, můžete znovu použít disky z jiné SKU ve stejné nabídce. U soukromých SKU nemusíte znovu odesílat disky mezi SKU.
 
-<a name="mark-a-sku-private"></a>Označit skladovou položku jako soukromou
+<a name="mark-a-sku-private"></a>Označit jako soukromou SKLADOVOU položku
 ---------------------
 
-Chcete-li označit skladovou položku jako soukromou, přepněte možnost s dotazem, zda je skladová položka soukromá:
+Chcete-li označit SKU jako soukromou, přepněte možnost s dotazem, zda je SKU soukromá:
 
-![Označení skladové položky jako soukromé](./media/cloud-partner-portal-publish-virtual-machine/markingskuprivate.png)
+![Označení SKU jako soukromého](./media/cloud-partner-portal-publish-virtual-machine/markingskuprivate.png)
 
-Disky můžete znovu použít v jiné skladové jednotce a upravit ceny nebo popis. Chcete-li disky znovu použít, vyberte **možnost Ano** jako odpověď na výzvu "Má tato skladová položka znovu použít bitové kopie z veřejné skladové položky".
+Můžete znovu použít disky v jiné SKU a změnit ceny nebo popis. Chcete-li znovu použít disky, vyberte možnost **Ano** jako odpověď na příkaz "provede tuto položku k opakovanému použití imagí z veřejné SKU".
 
-Pokud je skladová položka označena jako soukromá a nabídka má další skladové položky s opakovaně použitelnými disky, je nutné označit, že skladová položka opakovaně používá disky z jiné skladové položky. Je také nutné zadat cílovou skupinu pro privátní skladovou položku.
+Pokud je SKU označená jako soukromá a nabídka má jiné SKU s opakovaně použitelnými disky, je nutné určit, že SKU znovu používá disky z jiné SKU. Je také nutné zadat cílovou cílovou skupinu pro soukromou SKU.
 
 >[!NOTE]
->Po publikování nelze veřejnou skladovou položku vytvořit jako soukromou.
+>Po publikování se veřejná SKU nedá nastavit jako soukromá.
 
-<a name="select-an-image"></a>Výběr obrázku
+<a name="select-an-image"></a>Vybrat obrázek
 ------------------
 
-Můžete zadat nové disky pro soukromou skladovou položku nebo znovu použít stejné disky, které již byly k dispozici v jiné skladové jednotce, a pouze upravit ceny nebo popis. Chcete-li disky znovu použít, vyberte **možnost Ano** jako odpověď na výzvu "Má tato skladová položka znovu použít bitovou kopii z veřejné skladové položky".
+Můžete zadat nové disky pro soukromou SKU nebo znovu použít stejné disky, které už jsou v jiné SKU, a to jenom změnou cen nebo popisu. Chcete-li znovu použít disky, vyberte možnost **Ano** jako odpověď na příkaz "provede tento obrázek opakovaného použití SKU z veřejné SKU".
 
-![Označení opakovaného použití obrázku](./media/cloud-partner-portal-publish-virtual-machine/selectimage1.png)
+![Indikovat opakované použití obrázku](./media/cloud-partner-portal-publish-virtual-machine/selectimage1.png)
 
-Po potvrzení, že skladová položka opakovaně používá obrazy, vyberte zdrojnebo *základní* skladovou položku pro obrazy:
+Po potvrzení, že SKU znovu používá Image, vyberte zdrojovou nebo *základní* SKU pro Image:
 
-![Výběr obrázku](./media/cloud-partner-portal-publish-virtual-machine/selectimage2.png)
+![Vybrat obrázek](./media/cloud-partner-portal-publish-virtual-machine/selectimage2.png)
 
-Při publikování nabídky by byly obrázky z vybrané skladové položky zpřístupněny pod privátním ID skladové položky s vlastními sazbami/podmínkami. Soukromá skladová položka by byla viditelná pouze cílovému publiku.
+Při publikování této nabídky by se image z vybrané SKU nastavily v rámci ID privátní SKU s vlastními sazbami/podmínkami. Soukromá SKU by byla viditelná jenom pro cílovou cílovou skupinu.
 
-Pro aktualizace bitových obrázků budete muset pouze aktualizovat základní sku image. Na pozadí bude automaticky aktualizován také obrázek soukromé skladové položky. Podobně pokud odstraníte obrázek ze základní skladové položky, obraz bude také odebrán ze soukromé skladové položky.
+V případě aktualizací imagí budete potřebovat jenom aktualizaci image původní SKU. Obrázek pro soukromou SKU se na pozadí aktualizuje také automaticky. Podobně platí, že pokud odstraníte bitovou kopii z podkladové SKU, bitová kopie bude také odebrána z privátní SKU.
 
-<a name="restricting-the-audience"></a>Omezení publika
+<a name="restricting-the-audience"></a>Omezení cílové skupiny
 ------------------------
 
-Soukromé nabídky mohou najít a nasadit pouze cíloví uživatelé.
-V současné době podporujeme cílení na uživatele pomocí ID předplatného.
+Soukromé nabídky lze najít a nasadit pouze cílené uživatele.
+V současné době podporujeme cílení uživatelů pomocí ID předplatných.
 
-Tato předplatná lze zadat prostřednictvím manuálového vstupního formuláře **až pro 10 odběrů**nebo nahráním souboru CSV, který umožňuje **až 20 000 předplatných**.
+Tyto odběry je možné zadat prostřednictvím ručního vstupního formuláře **až po 10 předplatných**nebo nahráním souboru CSV, který umožňuje **až 20 000 předplatných**.
 
-Ruční vstup pro omezené publikum:
+Ruční zadání pro skupinu s omezeným přístupem:
 
-![Ruční omezení cílové skupiny](./media/cloud-partner-portal-publish-virtual-machine/restrictaudience1.png)
+![Ručně omezit cílovou skupinu](./media/cloud-partner-portal-publish-virtual-machine/restrictaudience1.png)
 
-Nahrávání csv pro omezené publikum:
+Nahrání sdíleného svazku clusteru pro skupinu s omezeným přístupem:
 
-![Omezení publika pomocí csv](./media/cloud-partner-portal-publish-virtual-machine/restrictaudience2.png)
+![Omezení cílové skupiny pomocí CSV](./media/cloud-partner-portal-publish-virtual-machine/restrictaudience2.png)
 
 Ukázkový obsah souboru CSV:
 
             Type,Id,Description
             SubscriptionId,7738d703-3135-4e8d-8b81-1e70379abd9d,Private Customer
 
-Když přepnete z ručního vstupu na zobrazení nahrávání CSV nebo z CSV na ruční zadávání, starý seznam ID předplatného s přístupem k skladové jednotce není zachován. Zobrazí se upozornění a seznam je přepsán pouze při uložení nabídky.
+Když přepnete z ručního zadání do zobrazení pro odeslání souboru CSV nebo ze sdíleného svazku clusteru do ručního zadání, starý seznam ID předplatných s přístupem k SKU se nezachová. Zobrazí se upozornění a seznam bude po uložení nabídky přepsán.
 
-<a name="managing-private-audiences"></a>Správa soukromých publik
+<a name="managing-private-audiences"></a>Správa privátních cílových skupin
 -------------------------
 
-**Chcete-li aktualizovat okruh uživatelů bez opětovného publikování celé nabídky, provedete požadované změny publika (pomocí rozhraní uI nebo rozhraní API) a poté zahájíte akci Synchronizovat soukromé okruhy uživatelů.**
+**Aby bylo možné cílovou skupinu aktualizovat bez nutnosti opětovného publikování celé nabídky, kterou požadujete, pomocí uživatelského rozhraní nebo rozhraní API, a potom spusťte akci synchronizace privátních cílových skupin.**
 
-Pokud je váš okruh uživatelů 10 nebo méně předplatných, můžete ho spravovat zcela pomocí ui CPP.
+Pokud je vaše cílová skupina 10 nebo méně předplatných, můžete ji spravovat výhradně pomocí uživatelského rozhraní CPP.
 
-Pokud je váš okruh uživatelů více než 10 předplatných, můžete ho spravovat pomocí souboru CSV, který můžete buď nahrát do rozhraní CPP, nebo pomocí rozhraní API.
+Pokud je vaše cílová skupina více než 10 předplatných, můžete ji spravovat pomocí souboru CSV, který můžete buď nahrát do uživatelského rozhraní CPP, nebo pomocí rozhraní API.
 
-Pokud používáte rozhraní API a nechcete udržovat soubor CSV, můžete spravovat okruh uživatelů přímo pomocí rozhraní API podle níže uvedených pokynů.
+Pokud používáte rozhraní API a nechcete spravovat soubor CSV, můžete spravovat cílovou skupinu přímo pomocí rozhraní API podle níže uvedených pokynů.
 
 > [!NOTE]
-> K přidání cílové skupiny do soukromé nabídky použijte ID předplatného Azure (plány a sloky) nebo ID klienta (jenom plány).
+> Pomocí ID předplatného Azure (plány a SKU) nebo ID tenanta (jenom plány) přidejte cílovou skupinu do vaší soukromé nabídky.
 
 ###  <a name="managing-subscriptions-with-the-api"></a>Správa předplatných pomocí rozhraní API
 
-Pomocí rozhraní API můžete buď nahrát csv nebo spravovat okruh uživatelů přímo (bez použití CSV). Obecně platí, že stačí načíst nabídku, `restrictedAudience` aktualizovat objekt a poté odeslat tyto změny zpět do nabídky, abyste mohli přidat nebo odebrat členy publika.
+Rozhraní API můžete použít buď k nahrání sdíleného svazku clusteru, nebo k přímé správě cílové skupiny (bez použití sdíleného svazku clusteru). Obecně stačí jednoduše načíst nabídku, aktualizovat `restrictedAudience` objekt a následně tyto změny odeslat zpět do vaší nabídky, aby bylo možné přidat nebo odebrat členy cílové skupiny.
 
-Seznam publika můžete programově aktualizovat takto:
+Tady je postup, jak programově aktualizovat seznam cílových skupin:
 
-1. Načtení údajů o [nabídce:](cloud-partner-portal-api-retrieve-specific-offer.md)
+1. [Načíst data nabídky](cloud-partner-portal-api-retrieve-specific-offer.md) :
 
     ```
     GET https://cloudpartner.azure.com/api/publishers//offers/?api-version=2017-10-31&includeAllPricing=true
     ```
 
-2. Pomocí tohoto dotazu JPath vyhledejte objekty cílové skupiny s omezeným přístupem v každé skladové jednotce nabídky:
+2. V každé SKU nabídky Najděte objekty s omezeným přístupem pomocí tohoto dotazu JPath:
 
     ```
     $.definition.plans[*].restrictedAudience
     ```
-3. Aktualizujte objekty omezeného okruhu uživatelů pro vaši nabídku.
+3. Aktualizujte objekty skupiny s omezeným přístupem pro vaši nabídku.
 
-    **Pokud jste původně nahráli seznam odběrů pro svou soukromou nabídku ze souboru CSV:**
+    **Pokud jste původně nahráli seznam předplatných pro soukromou nabídku ze souboru CSV:**
 
-    Objekty *s omezeným přístupem bude* vypadat takto.
+    Vaše objekty *restrictedAudience* budou vypadat takto.
     ```
     "restrictedAudience": {
                   "uploadedCsvUri": "{SasUrl}"
     }
     ```
 
-    Pro každý objekt s omezeným přístupem:
+    Pro každý objekt skupiny s omezeným přístupem:
 
-    a. Stáhněte si `restrictedAudience.uploadedCsvUri`obsah . Obsah je jednoduše soubor CSV se záhlavími. Například:
+    a. Stáhněte si obsah `restrictedAudience.uploadedCsvUri`. Obsah je jednoduše souborem CSV se záhlavími. Příklad:
 
         type,id,description
         subscriptionId,541a269f-3df2-486e-8fe3-c8f9dcf28205,sub1
         subscriptionId,c0da499c-25ec-4e4b-a42a-6e75635253b9,sub2
 
-    b. Podle potřeby přidejte nebo odstraňte odběry ve staženém souboru CSV.
+    b. Podle potřeby přidejte nebo odstraňte odběry v staženém souboru CSV.
 
-    c. Nahrajte aktualizovaný soubor CSV do umístění, jako je [azure blob storage](../../storage/blobs/storage-blobs-overview.md) nebo [OneDrive](https://onedrive.live.com), a vytvořte odkaz jen pro čtení k souboru. To to bude váš nový *SasUrl*.
+    c. Nahrajte aktualizovaný soubor CSV do umístění, jako je [Azure Blob Storage](../../storage/blobs/storage-blobs-overview.md) nebo [OneDrive](https://onedrive.live.com), a vytvořte odkaz na soubor určený jen pro čtení. Toto bude váš nový *SasUrl*.
 
-    d. Aktualizujte `restrictedAudience.uploadedCsvUri` klíč pomocí nového *sasurl*.
+    d. Aktualizujte `restrictedAudience.uploadedCsvUri` klíč pomocí nového *SasUrl*.
 
-    **Pokud jste ručně zadali původní seznam předplatných pro svou soukromou nabídku z portálu partnerů cloudu:**
+    **Pokud jste ručně zadali původní seznam předplatných pro Vaši soukromou nabídku z portál partnerů cloudu:**
 
-    Objekty *restrictedAudience* budou vypadat nějak takto:
+    Vaše objekty *restrictedAudience* budou vypadat přibližně takto:
 
     ```
     "restrictedAudience": {
@@ -156,25 +156,25 @@ Seznam publika můžete programově aktualizovat takto:
         ]}
     ```
 
-    a. Pro každý objekt cílové skupiny s `restrictedAudience.manualEntries` omezeným přístupem přidejte nebo odstraňte položky v seznamu podle potřeby.
+    a. Pro každý objekt skupiny s omezeným přístupem přidejte nebo odstraňte položky `restrictedAudience.manualEntries` v seznamu podle potřeby.
 
-4. Po dokončení aktualizace všech *objektů restrictedAudience* pro každou skladovou položku vaší soukromé nabídky [aktualizujte nabídku](cloud-partner-portal-api-creating-offer.md):
+4. Až se dokončí aktualizace všech *restrictedAudience* objektů pro každou SKU vaší soukromé nabídky, [aktualizujte nabídku](cloud-partner-portal-api-creating-offer.md):
 
     ```
     PUT https://cloudpartner.azure.com/api/publishers/<publisherId>/offers/<offerId>?api-version=2017-10-31
     ```
-    Díky tomu je nyní v platnosti váš aktualizovaný seznam publika.
+    V takovém případě je seznam aktualizovaných cílových skupin nyní aktivní.
 
-<a name="previewing-private-offers"></a>Náhled soukromých nabídek
+<a name="previewing-private-offers"></a>Zobrazení náhledu soukromých nabídek
 -------------------------
 
-Během kroku náhledu nebo přípravy budou mít přístup k skladové jednotce pouze předplatná na úrovni nabídky. V této fázi testování můžete zobrazit náhled nabídky tak, jak by se zdálo vašim cílovým zákazníkům.
+Během kroku Preview/přípravy budou mít přístup k této SKU pouze předplatná úrovně nabídky Preview. V této fázi testování můžete zobrazit náhled nabídky tak, jak by se zobrazily cílovým zákazníkům.
 
-Předplatná náhledu na úrovni nabídky pro přístup k fázovaným nabídkám:
+Předplatná Preview úrovně nabídky pro přístup k připraveným nabídkám:
 
-![Náhled ID předplatného](./media/cloud-partner-portal-publish-virtual-machine/previewoffer1.png)
+![Náhled ID předplatných](./media/cloud-partner-portal-publish-virtual-machine/previewoffer1.png)
 
-Po živé nabídce budou moci zobrazit a nasadit soukromou skladovou položku pouze předplatná s omezeným přístupem (zadaná ručním zadáváním nebo csv). Doporučujeme **vždy zahrnout vlastní předplatná v omezeném okruhu uživatelů** pro soukromé skladové položky pro účely ověření.
+Po skončení nabídky bude možné zobrazit a nasadit soukromou SKU pouze omezený počet předplatných cílových skupin (zadaných prostřednictvím ručního vstupu nebo sdíleného svazku clusteru). Doporučujeme, abyste **vždycky zahrnuli vlastní odběry do skupiny omezeného** přístupu pro SOUKROMou skladovou položku pro účely ověření.
 
 >[!NOTE]
->Pro účely ladění budou mít k těmto soukromým nabídkám také přístup k těmto soukromým nabídkám týmy podpory a inženýrských sítí společnosti Microsoft.
+>Pro účely ladění budou mít přístup k těmto soukromým nabídkám také přístup a technické týmy společnosti Microsoft.

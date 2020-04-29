@@ -1,6 +1,6 @@
 ---
-title: Fond hostitelů Virtuální plochy Windows Azure – Azure
-description: Jak vytvořit fond hostitelů ve Virtuální desktopu Windows pomocí šablony Azure Resource Manager.
+title: Azure Resource Manager fondu hostitelů virtuálních počítačů s Windows – Azure
+description: Postup vytvoření fondu hostitelů na virtuálním počítači s Windows pomocí šablony Azure Resource Manager.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -9,67 +9,67 @@ ms.date: 08/29/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 9ce6440989cbf962c474de2a6c90db4c485bf4a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80292329"
 ---
 # <a name="create-a-host-pool-with-an-azure-resource-manager-template"></a>Vytvoření fondu hostitelů pomocí šablony Azure Resource Manageru
 
-Fondy hostitelů jsou kolekce jednoho nebo více identických virtuálních počítačů v prostředích klienta Windows Virtual Desktop. Každý fond hostitelů může obsahovat skupinu aplikací, se kterou mohou uživatelé pracovat stejně jako na fyzické ploše.
+Fondy hostitelů jsou kolekce jednoho nebo více identických virtuálních počítačů v prostředích klienta virtuálních počítačů s Windows. Každý fond hostitelů může obsahovat skupinu aplikací, se kterou můžou uživatelé interaktivně pracovat, jako by na fyzickém počítači.
 
-Podle pokynů v této části vytvořte fond hostitelů pro klienta Virtuální plochy Windows se šablonou Azure Resource Manager, kterou poskytuje Microsoft. V tomto článku se vám bude říkat, jak vytvořit fond hostitelů ve Windows Virtual Desktop, vytvořit skupinu prostředků s virtuálními počítači v předplatném Azure, připojit tyto virtuální počítače k doméně Služby AD a zaregistrovat virtuální počítače s Windows Virtual Desktop.
+Postupujte podle pokynů v této části a vytvořte fond hostitelů pro tenanta virtuálních klientů Windows se šablonou Azure Resource Manager poskytnutou Microsoftem. V tomto článku se dozvíte, jak vytvořit fond hostitelů na virtuálním počítači s Windows, vytvořit skupinu prostředků s virtuálními počítači v předplatném Azure, připojit tyto virtuální počítače k doméně AD a zaregistrovat virtuální počítače s využitím virtuálního klienta Windows.
 
 ## <a name="what-you-need-to-run-the-azure-resource-manager-template"></a>Co potřebujete ke spuštění šablony Azure Resource Manager
 
-Před spuštěním šablony Azure Resource Manager uděláte následující:
+Před spuštěním šablony Azure Resource Manager se ujistěte, že znáte následující věci:
 
-- Kde je zdroj obrázku, který chcete použít. Je to z Galerie Azure nebo je to vlastní?
-- Přihlašovací údaje pro připojení k doméně.
-- Pověření pro virtuální plochu systému Windows.
+- Kde je zdroj obrázku, který chcete použít. Je to z Galerie Azure nebo je vlastní?
+- Vaše přihlašovací údaje k doméně
+- Přihlašovací údaje k virtuálnímu počítači s Windows
 
-Když vytvoříte fond hostitelů Virtuální plochy Windows pomocí šablony Azure Resource Manager, můžete vytvořit virtuální počítač z galerie Azure, spravované image nebo nespravované image. Další informace o tom, jak vytvářet image virtuálních počítačů, najdete [v tématu Příprava virtuálního pevného disku nebo virtuálního počítače s Windows k nahrání do Azure](../virtual-machines/windows/prepare-for-upload-vhd-image.md) a vytvoření spravované [bitové kopie zobecněného virtuálního počítače v Azure](../virtual-machines/windows/capture-image-resource.md).
+Když vytvoříte fond hostitelů virtuálních počítačů s Windows pomocí šablony Azure Resource Manager, můžete vytvořit virtuální počítač z Galerie Azure, spravované bitové kopie nebo nespravované image. Další informace o tom, jak vytvořit image virtuálních počítačů, najdete v tématu [Příprava virtuálního pevného disku (VHD) Windows nebo VHDX pro nahrání do Azure](../virtual-machines/windows/prepare-for-upload-vhd-image.md) a [Vytvoření spravované image zobecněného virtuálního počítače v Azure](../virtual-machines/windows/capture-image-resource.md).
 
-## <a name="run-the-azure-resource-manager-template-for-provisioning-a-new-host-pool"></a>Spuštění šablony Azure Resource Manager pro zřizování nového fondu hostitelů
+## <a name="run-the-azure-resource-manager-template-for-provisioning-a-new-host-pool"></a>Spusťte šablonu Azure Resource Manager pro zřízení nového fondu hostitelů.
 
-Chcete-li začít, přejděte na [tuto adresu URL GitHubu](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/Create%20and%20provision%20WVD%20host%20pool).
+Začněte tím, že přejdete na [tuto adresu URL GitHubu](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/Create%20and%20provision%20WVD%20host%20pool).
 
 ### <a name="deploy-the-template-to-azure"></a>Nasazení šablony do Azure
 
-Pokud nasazujete v předplatném Enterprise, posuňte se dolů a vyberte **Nasazení do Azure**a pak přeskočte dopředu vyplňte parametry na základě zdroje bitové kopie.
+Pokud nasazujete v rámci podnikového předplatného, posuňte se dolů a vyberte **nasadit do Azure**a pak přeskočte před vyplněním parametrů na základě vašeho zdroje imagí.
 
-Pokud nasazujete v předplatném poskytovatele cloudových řešení, nasaďte se do Azure takto:
+Pokud nasazujete v rámci předplatného poskytovatele Cloud Solution Provider, proveďte následující postup nasazení do Azure:
 
-1. Posuňte se dolů a klikněte pravým tlačítkem myši **na Nasazení do Azure**a vyberte kopírovat umístění **odkazu**.
-2. Otevřete textový editor, jako je Poznámkový blok, a vložte odkaz tam.
-3. Hned zahttps://portal.azure.com/" " a před hashtag (#) zadejte na znaménko (@) následovaný název domény klienta. Zde je příklad formátu, který byste `https://portal.azure.com/@Contoso.onmicrosoft.com#create/`měli použít: .
-4. Přihlaste se k portálu Azure jako uživatel s oprávněními správce/přispěvatele k předplatnému poskytovatele cloudových řešení.
+1. Posuňte se dolů a klikněte pravým tlačítkem myši na **nasadit do Azure**a pak vyberte **Kopírovat umístění odkazu**.
+2. Otevřete textový editor, jako je Poznámkový blok, a vložte odkaz sem.
+3. Hned za znakem "https://portal.azure.com/" a před hashtagem (#) zadejte znak po znaku (@) následovaný názvem domény klienta. Tady je příklad formátu, který byste měli použít: `https://portal.azure.com/@Contoso.onmicrosoft.com#create/`.
+4. Přihlaste se k Azure Portal jako uživatel s oprávněním správce/Přispěvatel k předplatnému poskytovatele Cloud Solution Provider.
 5. Vložte odkaz, který jste zkopírovali do textového editoru, do adresního řádku.
 
-Pokyny k tomu, které parametry byste měli zadat pro svůj scénář, naleznete v [souboru Readme](https://github.com/Azure/RDS-Templates/blob/master/wvd-templates/Create%20and%20provision%20WVD%20host%20pool/README.md)virtuální plochy systému Windows . Readme je vždy aktualizován s nejnovějšími změnami.
+Pokyny týkající se parametrů, které byste měli zadat pro váš scénář, najdete v [souboru Readme](https://github.com/Azure/RDS-Templates/blob/master/wvd-templates/Create%20and%20provision%20WVD%20host%20pool/README.md)pro virtuální počítače s Windows. Soubor Readme se vždycky aktualizuje o nejnovější změny.
 
-## <a name="assign-users-to-the-desktop-application-group"></a>Přiřazení uživatelů ke skupině aplikací klasické pracovní plochy
+## <a name="assign-users-to-the-desktop-application-group"></a>Přiřazení uživatelů ke skupině desktopových aplikací
 
-Po dokončení šablony GitHub Azure Resource Manager, přiřaďte přístup uživatele před zahájením testování celé relace plochy na virtuálních počítačích.
+Po dokončení šablony Azure Resource Manager GitHubu přiřaďte uživatelský přístup před zahájením testování klientů s úplnými relacemi na virtuálních počítačích.
 
-Nejprve [si stáhněte a importujte modul Windows Virtual Desktop PowerShell,](/powershell/windows-virtual-desktop/overview/) který se použije v relaci PowerShellu, pokud jste tak ještě neučinili.
+Nejdřív [Stáhněte a importujte modul PowerShellu virtuálního počítače s Windows](/powershell/windows-virtual-desktop/overview/) , který chcete použít v relaci PowerShellu, pokud jste to ještě neudělali.
 
-Chcete-li přiřadit uživatele ke skupině aplikací klasické pracovní plochy, otevřete okno prostředí PowerShell a spusťte tuto rutinu pro přihlášení do prostředí Virtuální plochy systému Windows:
+Pokud chcete přiřadit uživatele do skupiny desktopové aplikace, otevřete okno PowerShellu a spuštěním této rutiny se přihlaste k prostředí virtuálních počítačů s Windows:
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 ```
 
-Poté přidejte uživatele do skupiny aplikací pro stolní počítače pomocí této rutiny:
+Pak přidejte uživatele do skupiny desktopových aplikací pomocí této rutiny:
 
 ```powershell
 Add-RdsAppGroupUser <tenantname> <hostpoolname> "Desktop Application Group" -UserPrincipalName <userupn>
 ```
 
-Hlavní název uživatele by měl odpovídat identitě uživatele ve službě user1@contoso.comAzure Active Directory (například). Pokud chcete přidat více uživatelů, musíte spustit tuto rutinu pro každého uživatele.
+Hlavní název uživatele (UPN user1@contoso.com) by měl odpovídat identitě uživatele v Azure Active Directory (například). Pokud chcete přidat více uživatelů, musíte tuto rutinu spustit pro každého uživatele.
 
-Po dokončení těchto kroků se uživatelé připřidáví do skupiny aplikací plochy mohou přihlásit k virtuální ploše systému Windows s podporovanými klienty vzdálené plochy a zobrazit prostředek pro plochu relace.
+Po dokončení těchto kroků se uživatelé přidaní do skupiny desktopových aplikací můžou přihlásit k virtuální ploše Windows pomocí podporovaných klientů vzdálené plochy a zobrazit prostředek pro plochu relace.
 
 >[!IMPORTANT]
->Chcete-li zabezpečit prostředí Virtuální desktopwindows v Azure, doporučujeme neotevírat příchozí port 3389 na virtuálních počítačích. Virtuální plocha Windows nevyžaduje otevřený vstupní port 3389 pro přístup uživatelů k virtuálním počítačům hostitelského fondu. Pokud musíte otevřít port 3389 pro účely řešení potíží, doporučujeme použít [přístup k virtuálním ms just-in-time](../security-center/security-center-just-in-time.md).
+>Pro lepší zabezpečení prostředí virtuálních počítačů s Windows v Azure doporučujeme na svých virtuálních počítačích neotevírat port 3389 pro příchozí spojení. Virtuální počítač s Windows nevyžaduje pro přístup k virtuálním počítačům fondu hostitelů otevřený příchozí port 3389. Pokud musíte pro účely řešení potíží otevřít port 3389, doporučujeme použít [přístup k virtuálnímu počítači za běhu](../security-center/security-center-just-in-time.md).

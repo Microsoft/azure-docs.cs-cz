@@ -1,27 +1,27 @@
 ---
-title: Konfigurace škálovací sady virtuálních strojů pomocí existujícího nástroje pro vyrovnávání zatížení Azure – Azure PowerShell
-description: Zjistěte, jak nakonfigurovat škálovací sadu virtuálních strojů pomocí existujícího nástroje pro vyrovnávání zatížení Azure.
+title: Konfigurace sady škálování virtuálních počítačů pomocí existující Azure Load Balancer-Azure PowerShell
+description: Naučte se konfigurovat sadu škálování virtuálního počítače s existujícím Azure Load Balancer.
 author: asudbring
 ms.author: allensu
 ms.service: load-balancer
 ms.topic: article
 ms.date: 03/26/2020
 ms.openlocfilehash: 0db09083a2197ce72e6d6eed2381b0308239586e
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80349993"
 ---
-# <a name="configure-a-virtual-machine-scale-set-with-an-existing-azure-load-balancer-using-azure-powershell"></a>Konfigurace škálovací sady virtuálních strojů pomocí existujícího nástroje Pro vyrovnávání zatížení Azure pomocí Azure PowerShellu
+# <a name="configure-a-virtual-machine-scale-set-with-an-existing-azure-load-balancer-using-azure-powershell"></a>Konfigurace sady škálování virtuálních počítačů s existujícím Azure Load Balancer pomocí Azure PowerShell
 
-V tomto článku se dozvíte, jak nakonfigurovat škálovací sadu virtuálních strojů s existujícím nástrojem Pro vyrovnávání zatížení Azure. 
+V tomto článku se dozvíte, jak nakonfigurovat sadu škálování virtuálních počítačů s existujícím Azure Load Balancer. 
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure.
-- Existující standardní nástroj pro vyrovnávání zatížení sku v předplatném, kde se nasadí škálovací sada virtuálního počítače.
-- Virtuální síť Azure pro škálovací sadu virtuálních strojů.
+- Existující Nástroj pro vyrovnávání zatížení Standard SKU v předplatném, kde se bude nasazovat sada škálování virtuálního počítače.
+- Virtual Network Azure pro sadu škálování virtuálního počítače.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
 
@@ -29,15 +29,15 @@ V tomto článku se dozvíte, jak nakonfigurovat škálovací sadu virtuálních
 
 ## <a name="sign-in-to-azure-cli"></a>Přihlášení k Azure CLI
 
-Přihlaste se do Azure.
+Přihlaste se k Azure.
 
 ```azurepowershell-interactive
 Connect-AzAccount
 ```
 
-## <a name="deploy-a-virtual-machine-scale-set-with-existing-load-balancer"></a>Nasazení škálovací sady virtuálních strojů s existujícím nástrojem pro vyrovnávání zatížení
+## <a name="deploy-a-virtual-machine-scale-set-with-existing-load-balancer"></a>Nasazení sady škálování virtuálních počítačů s existujícím nástrojem pro vyrovnávání zatížení
 
-Nahraďte hodnoty v závorkách názvy prostředků v konfiguraci.
+Hodnoty v závorkách nahraďte názvy prostředků v konfiguraci.
 
 ```azurepowershell-interactive
 
@@ -55,12 +55,12 @@ New-AzVmss -ResourceGroupName $rsg -Location $loc -VMScaleSetName $vms -VirtualN
 
 ```
 
-Níže uvedený příklad nasazuje škálovací sadu virtuálních strojů s:
+Následující příklad nasadí sadu škálování virtuálního počítače pomocí:
 
-- Škálovací sada virtuálních strojů s názvem **myVMSS**
+- Sada škálování virtuálních počítačů s názvem **myVMSS**
 - Azure Load Balancer s názvem **myLoadBalancer**
-- Back-endový fond vyrovnávání zatížení s názvem **myBackendPool**
-- Virtuální síť Azure s názvem **myVnet**
+- Back-end fond nástroje pro vyrovnávání zatížení s názvem **myBackendPool**
+- Azure Virtual Network s názvem **myVnet**
 - Podsíť s názvem **mySubnet**
 - Skupina prostředků s názvem **myResourceGroup**
 
@@ -79,11 +79,11 @@ $lb = Get-AzLoadBalancer -ResourceGroupName $rsg -Name $lbn
 New-AzVmss -ResourceGroupName $rsg -Location $loc -VMScaleSetName $vms -VirtualNetworkName $vnt -SubnetName $sub -LoadBalancerName $lb -UpgradePolicyMode $pol
 ```
 > [!NOTE]
-> Po vytvoření škálovací sady nelze port back-endu změnit pro pravidlo vyrovnávání zatížení používané sondou stavu systému vyrovnávání zatížení. Chcete-li změnit port, můžete odebrat sondu stavu aktualizací škálovací sady virtuálního počítače Azure, aktualizovat port a pak znovu nakonfigurovat sondu stavu.
+> Po vytvoření sady škálování se port back-endu nedá změnit pro pravidlo vyrovnávání zatížení používané sondou stavu nástroje pro vyrovnávání zatížení. Pokud chcete změnit port, můžete odstranit sondu stavu tak, že aktualizujete sadu škálování virtuálního počítače Azure, aktualizujete port a pak znovu nakonfigurujete test stavu.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste nasadili škálovací sadu virtuálních strojů s existujícím nástrojem Pro vyrovnávání zatížení Azure.  Další informace o škálovacích sadách virtuálních strojů a nástroj pro vyrovnávání zatížení najdete v tématu:
+V tomto článku jste nasadili sadu škálování virtuálního počítače s existujícím Azure Load Balancer.  Další informace o službě Virtual Machine Scale Sets a nástroji pro vyrovnávání zatížení najdete v těchto tématech:
 
 - [Co je Azure Load Balancer?](load-balancer-overview.md)
 - [Co jsou škálovací sady virtuálních počítačů?](../virtual-machine-scale-sets/overview.md)

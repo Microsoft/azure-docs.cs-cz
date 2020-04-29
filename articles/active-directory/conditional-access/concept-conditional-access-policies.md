@@ -1,6 +1,6 @@
 ---
-title: Vytváření zásad podmíněného přístupu – Služba Azure Active Directory
-description: Jaké jsou všechny možnosti, které jsou k dispozici pro vytvoření zásad podmíněného přístupu a co znamenají?
+title: Vytvoření zásady podmíněného přístupu – Azure Active Directory
+description: Jaké jsou všechny možnosti k dispozici pro vytvoření zásad podmíněného přístupu a co znamenají?
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -12,31 +12,31 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 907ad8705742e4b2e38b13c3c675ebd333bd27d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80295329"
 ---
-# <a name="building-a-conditional-access-policy"></a>Vytváření zásad podmíněného přístupu
+# <a name="building-a-conditional-access-policy"></a>Vytvoření zásady podmíněného přístupu
 
-Jak je vysvětleno v článku [Co je podmíněný přístup](overview.md), zásada podmíněného přístupu je příkaz if-then ovládacích prvků **přiřazení** a **přístupu**. Zásady podmíněného přístupu spojuje signály, činí rozhodnutí a vynucují zásady organizace.
+Jak je vysvětleno v článku [co je podmíněný přístup](overview.md), zásada podmíněného přístupu je příkaz if-then, který slouží k **přiřazování** a **řízení přístupu**. Zásada podmíněného přístupu přináší signály dohromady, provede rozhodnutí a vynutila zásady organizace.
 
-Jak organizace tyto zásady vytváří? Co je požadováno?
+Jak organizace vytváří tyto zásady? Co je potřeba?
 
-![Podmíněný přístup (signály + rozhodnutí + prosazování = zásady)](./media/concept-conditional-access-policies/conditional-access-signal-decision-enforcement.png)
+![Podmíněný přístup (signály + rozhodnutí + vynucení = zásady)](./media/concept-conditional-access-policies/conditional-access-signal-decision-enforcement.png)
 
 ## <a name="assignments"></a>Přiřazení
 
-Část přiřazení určuje, kdo, co a kde zásady podmíněného přístupu.
+Část přiřazení řídí, kdo, co a kde je zásada podmíněného přístupu.
 
 ### <a name="users-and-groups"></a>Uživatelé a skupiny
 
-[Uživatelé a skupiny](concept-conditional-access-users-groups.md) přiřazují, koho bude zásada obsahovat nebo vyloučit. Toto přiřazení může zahrnovat všechny uživatele, určité skupiny uživatelů, role adresáře nebo externí uživatele typu Host. 
+[Uživatelé a skupiny](concept-conditional-access-users-groups.md) přiřadí, kdo bude zásada zahrnovat nebo vyloučit. Toto přiřazení může zahrnovat všechny uživatele, konkrétní skupiny uživatelů, role adresáře nebo externí uživatele typu Host. 
 
 ### <a name="cloud-apps-or-actions"></a>Cloudové aplikace nebo akce
 
-[Cloudové aplikace nebo akce](concept-conditional-access-cloud-apps.md) mohou zahrnovat nebo vyloučit cloudové aplikace nebo akce uživatelů, které budou podléhat zásadám.
+[Cloudové aplikace nebo akce](concept-conditional-access-cloud-apps.md) můžou zahrnovat nebo vyloučit cloudové aplikace nebo uživatelské akce, které budou platit pro tyto zásady.
 
 ### <a name="conditions"></a>Podmínky
 
@@ -44,93 +44,93 @@ Zásada může obsahovat více [podmínek](concept-conditional-access-conditions
 
 #### <a name="sign-in-risk"></a>Riziko přihlášení
 
-Pro organizace s [Azure AD Identity Protection](../identity-protection/overview.md), detekce rizik generované tam může ovlivnit zásady podmíněného přístupu.
+Pro organizace, které mají [Azure AD Identity Protection](../identity-protection/overview.md), může detekce rizik ovlivnit vaše zásady podmíněného přístupu.
 
 #### <a name="device-platforms"></a>Platformy zařízení
 
-Organizace s více platformami operačního systému zařízení mohou chtít vynutit konkrétní zásady na různých platformách. 
+Organizace s více platformami operačních systémů na zařízeních si můžou vymáhat konkrétní zásady na různých platformách. 
 
-Informace použité k výpočtu platformy zařízení pochází z neověřených zdrojů, jako jsou řetězce uživatelského agenta, které lze změnit.
+Informace, které se používají k výpočtu platformy zařízení, pocházejí z neověřených zdrojů, například řetězců uživatelských agentů, které je možné změnit.
 
 #### <a name="locations"></a>Umístění
 
-Údaje o poloze jsou poskytovány geolokačními údaji IP. Správci se mohou rozhodnout definovat umístění a označit některá jako důvěryhodná, jako jsou místa v síti jejich organizace.
+Data o poloze jsou poskytována daty geografického umístění IP. Správci se můžou rozhodnout definovat umístění a označit některé jako důvěryhodné pro síťová umístění organizace.
 
 #### <a name="client-apps"></a>Klientské aplikace
 
-Ve výchozím nastavení se zásady podmíněného přístupu vztahují na aplikace prohlížeče, mobilní aplikace a klienty klasické pracovní plochy, které podporují moderní ověřování. 
+Ve výchozím nastavení se zásady podmíněného přístupu vztahují na aplikace prohlížeče, mobilní aplikace a desktopové klienty, které podporují moderní ověřování. 
 
-Tato podmínka přiřazení umožňuje zásadám podmíněného přístupu cílit na konkrétní klientské aplikace, které nepoužívají moderní ověřování. Mezi tyto aplikace patří klienti Exchange ActiveSync, starší aplikace Office, které nepoužívají moderní ověřování, a poštovní protokoly, jako je IMAP, MAPI, POP a SMTP.
+Tato podmínka přiřazení umožňuje zásadám podmíněného přístupu cílit na konkrétní klientské aplikace, které nepoužívají moderní ověřování. Mezi tyto aplikace patří klienti Exchange ActiveSync, starší aplikace Office, které nepoužívají moderní ověřování, a poštovní protokoly jako IMAP, MAPI, POP a SMTP.
 
 #### <a name="device-state"></a>Stav zařízení
 
-Tento ovládací prvek se používá k vyloučení zařízení, která jsou hybridní Azure AD připojen nebo označené kompatibilní v Intune. Toto vyloučení lze provést k zablokování nespravovaných zařízení. 
+Tento ovládací prvek slouží k vyloučení zařízení, která jsou připojená k hybridní službě Azure AD, nebo označení kompatibilního v Intune. Toto vyloučení se dá udělat pro blokování nespravovaných zařízení. 
 
 ## <a name="access-controls"></a>Řízení přístupu
 
-Přístup řídí část zásad podmíněného přístupu řídí, jak je zásada vynucena.
+Část řízení přístupu v zásadách podmíněného přístupu řídí způsob, jakým se zásady vynutily.
 
 ### <a name="grant"></a>Oprávnění
 
-[Grant](concept-conditional-access-grant.md) poskytuje správcům prostředky pro vynucení zásad, kde mohou blokovat nebo udělit přístup.
+[Udělení oprávnění](concept-conditional-access-grant.md) správcům poskytuje prostředky pro vynucení zásad, kde můžou zablokovat nebo udělit přístup.
 
-#### <a name="block-access"></a>Blokovat přístup
+#### <a name="block-access"></a>Blokování přístupu
 
-Blokový přístup dělá právě to, že bude blokovat přístup v rámci zadaných přiřazení. Řízení bloku je silné a mělo by být ovládáno odpovídajícími znalostmi.
+Blok přístupu zablokuje přístup pouze v rámci zadaných přiřazení. Ovládací prvek blokování je výkonný a měl by být wielded s příslušným vědomím.
 
 #### <a name="grant-access"></a>Udělení přístupu
 
-Grantový ovládací prvek může aktivovat vynucení jednoho nebo více ovládacích prvků. 
+Řízení grant může aktivovat vynucení jednoho nebo více ovládacích prvků. 
 
-- Vyžadovat vícefaktorové ověřování (Azure Multi-Factor Authentication)
-- Vyžadovat, aby zařízení bylo označeno jako vyhovující (Intune)
-- Vyžadovat hybridní zařízení azure ad připojeno
-- Vyžadovat schválenou klientskou aplikaci
+- Vyžadovat Multi-Factor Authentication (Azure Multi-Factor Authentication)
+- Vyžadovat, aby zařízení byla označená jako vyhovující (Intune)
+- Vyžadovat zařízení připojené k hybridní službě Azure AD
+- Vyžadovat klientskou aplikaci schválenou
 - Vyžadování zásad ochrany aplikací
 
-Správci se mohou rozhodnout vyžadovat jeden z předchozích nebo všech vybraných ovládacích prvků pomocí následujících možností. Výchozí hodnota pro více ovládacích prvků je vyžadovat všechny.
+Správci se mohou rozhodnout, že budou vyžadovat jeden z předchozích ovládacích prvků nebo všechny vybrané ovládací prvky pomocí následujících možností. Výchozí nastavení pro více ovládacích prvků vyžaduje všechny.
 
-- Vyžadovat všechny vybrané ovládací prvky (řízení a řízení)
+- Vyžadovat všechny vybrané ovládací prvky (ovládací prvek a ovládací prvek)
 - Vyžadovat jeden z vybraných ovládacích prvků (ovládací prvek nebo ovládací prvek)
 
 ### <a name="session"></a>Relace
 
-[Ovládací prvky relace](concept-conditional-access-session.md) mohou omezit prostředí 
+[Řízení relací](concept-conditional-access-session.md) může omezit prostředí 
 
-- Použití omezení vynucených aplikací
-   - Momentálně funguje jen se Exchangem Online a SharePointem Online.
-      - Předává informace o zařízení, které umožňují řídit prostředí udělující úplný nebo omezený přístup.
-- Použití řízení aplikací podmíněného přístupu
-   - Používá signály z Microsoft Cloud App Security k například k: 
-      - Blokovat stahování, vyjmutí, kopírování a tisk citlivých dokumentů.
-      - Sledujte rizikové chování relace.
-      - Vyžadovat označování citlivých souborů.
+- Použít omezení pro uplatnění aplikace
+   - V současné době funguje pouze s Exchange Online a SharePoint Online.
+      - Předá informace o zařízení, aby bylo umožněno řízení přístupu na základě úplného nebo omezeného přístupu.
+- Použít Řízení podmíněného přístupu k aplikacím
+   - Používá signály z Microsoft Cloud App Security k provádění akcí jako: 
+      - Blokuje stahování, vyjmutí, kopírování a tisk citlivých dokumentů.
+      - Monitorovat nebezpečné chování relace.
+      - Vyžaduje označení citlivých souborů.
 - Frekvence přihlášení
-   - Možnost změnit výchozí frekvenci přihlášení pro moderní ověřování.
+   - Možnost změnit výchozí frekvenci přihlašování pro moderní ověřování.
 - Trvalá relace prohlížeče
-   - Umožňuje uživatelům zůstat přihlášeni po zavření a znovuotevření okna prohlížeče.
+   - Umožňuje uživatelům zůstat přihlášení po zavření a opětovném otevření okna prohlížeče.
 
 ## <a name="simple-policies"></a>Jednoduché zásady
 
-Zásady podmíněného přístupu musí obsahovat minimálně následující, aby byly vynuceny:
+Zásada podmíněného přístupu musí obsahovat minimálně následující podmínky, které se mají vyhovět:
 
-- **Název** zásady.
+- **Název** zásady
 - **Přiřazení**
-   - **Uživatelé nebo skupiny,** na které se mají zásady použít.
-   - **Cloudové aplikace nebo akce,** na které se mají zásady uplatňovat.
+   - **Uživatelé a skupiny** , u kterých se má zásada použít.
+   - **Cloudové aplikace nebo akce** , na které se má zásada uplatnit
 - **Řízení přístupu**
    - **Udělit** nebo **blokovat** ovládací prvky
 
-![Zásady prázdného podmíněného přístupu](./media/concept-conditional-access-policies/conditional-access-blank-policy.png)
+![Prázdné zásady podmíněného přístupu](./media/concept-conditional-access-policies/conditional-access-blank-policy.png)
 
-Článek [Zásady společného podmíněného přístupu](concept-conditional-access-policy-common.md) obsahují některé zásady, o kterých si myslíme, že by byly užitečné pro většinu organizací.
+V článku [společné zásady podmíněného přístupu](concept-conditional-access-policy-common.md) jsou některé zásady, které považujeme za užitečné pro většinu organizací.
 
 ## <a name="next-steps"></a>Další kroky
 
-[Simulovat chování přihlášení pomocí nástroje Co-li podmíněného přístupu](troubleshoot-conditional-access-what-if.md)
+[Simulace chování při přihlašování pomocí nástroje pro What If podmíněného přístupu](troubleshoot-conditional-access-what-if.md)
 
 [Plánování cloudového nasazení Azure Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)
 
-[Správa kompatibility zařízení s Intune](/intune/device-compliance-get-started)
+[Správa dodržování předpisů zařízením pomocí Intune](/intune/device-compliance-get-started)
 
-[Zabezpečení aplikací microsoftu a podmíněný přístup](/cloud-app-security/proxy-intro-aad)
+[Microsoft Cloud App Security a podmíněný přístup](/cloud-app-security/proxy-intro-aad)

@@ -1,69 +1,69 @@
 ---
-title: Přehled vývoje služby Azure Blockchain
-description: Úvod k vývoji řešení ve službě Azure Blockchain Service.
+title: Přehled vývoje služeb Azure blockchain
+description: Úvod k vývoji řešení ve službě Azure blockchain.
 ms.date: 03/26/2020
 ms.topic: conceptual
 ms.reviewer: janders
 ms.openlocfilehash: 4a98e5ea025894303bc5c77bba0c6154a08315f2
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80348386"
 ---
-# <a name="azure-blockchain-service-development-overview"></a>Přehled vývoje služby Azure Blockchain
+# <a name="azure-blockchain-service-development-overview"></a>Přehled vývoje služeb Azure blockchain
 
-Se službou Azure Blockchain Service můžete vytvořit blockchainové sítě konsorcia, které umožní podnikové scénáře, jako je sledování majetku, digitální tokeny, loajalita a odměna, finanční dodavatelský řetězec a provenience. V následujících částech se zavádí vývoj služby Azure Blockchain Service pro implementaci podnikových blockchainových řešení.
+Pomocí služby Azure blockchain můžete vytvářet sítě konsorcia blockchain, které umožní podnikovým scénářům, jako je sledování prostředků, digitální tokeny, věrnostní funkce, finanční a prokázané dodavatelského řetězce. V následujících částech se zavádí vývoj služeb Azure blockchain pro implementaci podnikových řešení blockchain.
 
-## <a name="connecting-to-azure-blockchain-service"></a>Připojení ke službě Azure Blockchain
+## <a name="connecting-to-azure-blockchain-service"></a>Připojování ke službě Azure blockchain
 
-Existují různé typy klientů pro blockchainové sítě, včetně plných uzlů, lehkých uzlů a vzdálených klientů. Služba Azure Blockchain vytvoří blockchainovou síť, která obsahuje uzly. Jako bránu ke službě Azure Blockchain Service můžete používat různé klienty pro vývoj blockchainu. Služba Azure Blockchain service nabízí základní ověřovací nebo přístupový klíč jako koncový bod vývoje. Níže jsou uvedeny populární klienty, které můžete použít připojit.
+Existují různé typy klientů pro blockchain sítě, včetně úplných uzlů, lehkých uzlů a vzdálených klientů. Služba Azure blockchain vytvoří síť blockchain, která obsahuje uzly. Pro vývoj blockchain můžete použít různé klienty jako bránu ke službě Azure blockchain. Služba Azure blockchain nabízí základní ověřování nebo přístupový klíč jako koncový bod vývoje. Níže jsou populární klienti, kteří můžete použít k připojení.
 
 ### <a name="visual-studio-code"></a>Visual Studio Code
 
-Ke členům konsorcia se můžete připojit pomocí rozšíření Azure Blockchain Development Kit Visual Studio Code. Po připojení ke konsorciu můžete kompilovat, vytvářet a nasazovat inteligentní kontrakty do člena konsorcia Azure Blockchain Service.
+K členům konsorcia se můžete připojit pomocí rozšíření Visual Studio Code Azure blockchain Development Kit. Po připojení k konsorciu můžete kompilovat, sestavovat a nasazovat inteligentní kontrakty na člena konsorcia služeb Azure blockchain.
 
-K vývoji sofistikovaných podnikových blockchainových řešení je zapotřebí vývojový rámec pro připojení k různým blockchainovým sítím a správu životního cyklu inteligentních smluv. Většina projektů interaguje s alespoň dvěma uzly blockchainu. Vývojáři používají během vývoje místní blockchain. Když je aplikace připravená k testování nebo vydání, vývojář se nasadí do blockchainové sítě. Například hlavní veřejná síť Ethereum nebo služba Azure Blockchain. Azure Blockchain Development Kit pro rozšíření Ethereum v visual studio kódu používá lanýže. Lanýž je populární blockchainový vývojový rámec pro psaní, kompilaci, nasazování a testování decentralizovaných aplikací na blockchainech Ethereum. Můžete si také myslet, že Lanýže je rámec, který se pokouší bezproblémově integrovat inteligentní vývoj smluv a tradiční vývoj webových aplikací.
+Aby bylo možné vyvíjet sofistikovaná podniková řešení blockchain, je potřeba pro připojení k různým sítím blockchain a správě životního cyklu inteligentních kontraktů vývojové rozhraní. Většina projektů pracuje s alespoň dvěma blockchain uzly. Vývojáři používají během vývoje místní blockchain. Když je aplikace připravená k testování nebo vydání, vývojář se nasadí do blockchain sítě. Například hlavní veřejná Ethereem síť nebo služba Azure blockchain. Azure blockchain Development Kit pro rozšíření Ethereem v Visual Studio Code používá Truffle. Truffle je oblíbená blockchain vývojová platforma pro psaní, kompilování, nasazování a testování decentralizovaných aplikací na Ethereem blockchainy. Můžete si také představit Truffle jako rozhraní, které se pokusí hladkou integraci vývoje inteligentních smluv a tradičního vývoje webů.
 
-Další informace najdete [v tématu Úvodní příručka: Pomocí kódu Visual Studia se můžete připojit k síti konsorcia Azure Blockchain Service](connect-vscode.md).
+Další informace najdete v tématu [rychlý Start: použití Visual Studio Code k připojení k síti konsorcia služeb Azure blockchain](connect-vscode.md).
 
-### <a name="metamask"></a>Metamaska
+### <a name="metamask"></a>MetaMask
 
-MetaMask je peněženka založená na prohlížeči (vzdálený klient), rpc klient a základní průzkumník smluv. Na rozdíl od jiných prohlížečových peněženek, MetaMask vstřikuje instanci web3 do kontextu prohlížeče JavaScript, který funguje jako rpc klient, který se připojuje k různým blockchainům Ethereum *(mainnet*, *Ropsten testnet*, *Kovan testnet*, místní uzel RPC atd.). Můžete nastavit vlastní Vzdálené volání procedur snadno se připojit ke službě Azure Blockchain Service a zahájit vývoj blockchainu pomocí Remixu.
+MetaMask je peněženka založená na prohlížeči (vzdálený klient), klient RPC a základní Průzkumník kontraktů. Na rozdíl od jiných kapesních prohlížečů MetaMask vloží instanci web3 do kontextu JavaScript v prohlížeči, který funguje jako klient RPC, který se připojuje k nejrůznějším Ethereem blockchainy (*mainnet*, *Ropsten testnet*, *Kovan*testnet, místnímu uzlu RPC atd.). Můžete snadno nastavit vlastní RPC pro připojení ke službě Azure blockchain a zahájit vývoj blockchain pomocí Remix.
 
-Další informace naleznete [v tématu Úvodní příručka: Připojení a nasazení inteligentní smlouvy pomocí metamasku](connect-metamask.md)
+Další informace najdete v tématu [rychlý Start: použití MetaMask k připojení a nasazení inteligentní smlouvy.](connect-metamask.md)
 
-### <a name="geth"></a>Geth (Š.)
+### <a name="geth"></a>Geth
 
-Geth je rozhraní příkazového řádku pro spuštění úplného uzlu Ethereum implementovaného v Go. Nemusíte spouštět celý uzel, ale můžete spustit jeho interaktivní konzoli, která poskytuje prostředí javascriptového runtime, které vystavuje rozhraní JAVAScript API pro interakci se službou Azure Blockchain Service.
+Geth je rozhraní příkazového řádku pro spuštění úplného uzlu Ethereem implementovaného v příkazu Přejít. Nemusíte spouštět úplný uzel, ale můžete spustit jeho interaktivní konzolu, která poskytuje běhové prostředí JavaScriptu, které zpřístupňuje rozhraní API jazyka JavaScript pro interakci se službou Azure blockchain.
 
-Další informace najdete [v tématu Úvodní příručka: Připojení k transakčnímu uzlu služby Azure Blockchain Service pomocí gethu.](connect-geth.md)
+Další informace najdete v tématu [rychlý Start: použití Geth k připojení k uzlu transakce služby Azure blockchain](connect-geth.md).
 
-## <a name="ethereum-quorum-private-transactions"></a>Soukromé transakce ethereum Quorum
+## <a name="ethereum-quorum-private-transactions"></a>Privátní transakce kvora ethereem
 
-Kvorum je protokol distribuované hlavní knihy založený na Ethereu s transakcí a ochranou osobních údajů a novými mechanismy konsensu. Mezi klíčová vylepšení go-etherea patří:
+Kvorum je protokol distribuované hlavní knihy založený na Ethereem s transakcí a ochranou osobních údajů smluv a novými mechanismy konsensu. Mezi klíčová vylepšení v cestách Ethereem patří:
 
-* **Ochrana osobních údajů** – kvorum podporuje soukromé transakce a soukromé smlouvy prostřednictvím oddělení veřejného a soukromého státu a využívá výměny šifrovaných zpráv typu peer-to-peer pro řízený přenos soukromých dat účastníkům sítě.
-* **Alternativní mechanismy konsensu** - pro povolení sítě není zapotřebí prokontovaný konsensus nebo shoda s protekcí sisu. Kvorum nabízí několik mechanismů konsensu, které jsou určeny pro řetězce konsorcia, jako jsou RAFT a IBFT.Služba Azure Blockchain používá konsenzuální mechanismus IBFT.
-* **Peer oprávnění** - uzel a peer oprávnění pomocí inteligentní smlouvy zajišťuje pouze známé strany mohou připojit k síti.
-* **Vyšší výkon** - Kvorum nabízí vyšší výkon než veřejné Geth.
+* **Soukromí** – kvorum podporuje privátní transakce a soukromé kontrakty prostřednictvím oddělení veřejných a soukromých stavů a využívá zašifrované zprávy typu peer-to-peer, které slouží k přímému přenosu privátních dat do účastníků sítě.
+* **Alternativní** požadavky na konsensu – ověření platnosti nebo ověření příložení není pro udělenou síť nutné. Kvorum nabízí více mechanismů konsensu, které jsou navrženy pro konsorcia, jako jsou například vory a IBFT.Služba Azure blockchain používá mechanismus IBFT konsensu.
+* Oprávnění **peer-to** -node a peer s oprávněními pomocí inteligentních kontraktů zajišťuje, že se k síti budou moci připojit pouze známí oprávnění.
+* **Vyšší výkon** – kvorum nabízí vyšší výkon než veřejný Geth.
 
-## <a name="block-explorers"></a>Blokovat průzkumníky
+## <a name="block-explorers"></a>Blokovat Průzkumníka
 
-Blokové průzkumníky jsou online blockchainové prohlížeče, které zobrazují individuální blokový obsah, data transakční adresy a historii. Základní informace o blocích jsou dostupné prostřednictvím Azure Monitoru ve službě Azure Blockchain Service. Pokud však potřebujete podrobnější informace během vývoje, mohou být užitečné průzkumníky bloků.  Následující průzkumníky bloků pracují se službou Azure Blockchain Service:
+Blokování Průzkumníkovi jsou online prohlížeče blockchain, které zobrazují jednotlivé blokované obsahy, data adres transakcí a historii. Základní informace o bloku jsou k dispozici prostřednictvím Azure Monitor ve službě Azure blockchain. Pokud ale během vývoje potřebujete podrobnější informace, můžou být užitečné Průzkumníka bloků.  Následující blokové Průzkumníka pracují se službou Azure blockchain:
 
-* [Průzkumník blockchainových služeb Epirus Azure](https://azuremarketplace.microsoft.com/marketplace/apps/blk-technologies.azure-blockchain-explorer-template?tab=Overview) z laboratoří Web3 Labs
+* [Epirus Azure blockchain Service Explorer](https://azuremarketplace.microsoft.com/marketplace/apps/blk-technologies.azure-blockchain-explorer-template?tab=Overview) z Web3 Labs
 * [BlockScout](https://github.com/Azure-Samples/blockchain/blob/master/ledger/template/ethereum-on-azure/technology-samples/blockscout/README.md)
 
-Můžete si taky vytvořit vlastní průzkumník bloků pomocí Blockchain Data Manager a Azure Cosmos DB, [najdete v tématu Kurz: Použití Správce dat blockchainu k odesílání dat do Azure Cosmos DB](data-manager-cosmosdb.md).
+Můžete také vytvořit vlastní blokování Průzkumníka pomocí Data Manager blockchain a Azure Cosmos DB najdete v tématu [kurz: použití data Manager blockchain k odesílání dat do Azure Cosmos DB](data-manager-cosmosdb.md).
 
-## <a name="tps-measurement"></a>Měření TPS
+## <a name="tps-measurement"></a>TPS měření
 
-Vzhledem k tomu, že se blockchain používá ve více podnikových scénářích, je důležitá rychlost transakcí za sekundu (TPS), aby se zabránilo úzkým místům a neefektivitě systému. Vysoké transakční sazby mohou být obtížné udržet v rámci decentralizovaného blockchainu. Přesné měření TPS může být ovlivněno různými faktory, jako je vlákno serveru, velikost transakční fronty, latence sítě a zabezpečení. Pokud potřebujete měřit rychlost TPS během vývoje, populární open-source nástroj je [ChainHammer](https://github.com/drandreaskrueger/chainhammer).
+Protože blockchain se používá ve více podnikových scénářích, rychlost transakcí za sekundu (TPS) je důležitá, aby nedocházelo k kritickým bodům a neefektivitě systému. Vysoké sazby za transakce můžou být obtížné udržovat v rámci decentralizovaného blockchain. Přesné měření TPS může být ovlivněno různými faktory, jako je například vlákno serveru, velikost fronty transakcí, latence sítě a zabezpečení. Pokud během vývoje potřebujete změřit rychlost TPS, je oblíbený open source nástroj [ChainHammer](https://github.com/drandreaskrueger/chainhammer).
 
 ## <a name="next-steps"></a>Další kroky
 
-Zkuste rychle začít používat Azure Blockchain Development Kit pro Ethereum připojit konsorcium na Azure Blockchain Service.
+Vyzkoušejte si rychlý Start pomocí Azure blockchain Development Kit pro Ethereem, který se připojí k konsorciu ve službě Azure blockchain.
 
 > [!div class="nextstepaction"]
-> [Připojení ke službě Azure Blockchain Service pomocí kódu Visual Studia](connect-vscode.md)
+> [Použití Visual Studio Code k připojení ke službě Azure blockchain](connect-vscode.md)

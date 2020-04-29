@@ -1,6 +1,6 @@
 ---
 title: Podpora lokalizace | Mapy Microsoft Azure
-description: V tomto článku se dozvíte o podporovaných jazycích pro služby v Mapách Microsoft Azure.
+description: V tomto článku se dozvíte o podporovaných jazycích pro služby v Microsoft Azure Maps.
 author: philmea
 ms.author: philmea
 ms.date: 11/20/2019
@@ -9,161 +9,161 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 3b3733dfc32dae21ddcf4c5f73cddf9ad6b7fc59
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80334074"
 ---
-# <a name="localization-support-in-azure-maps"></a>Podpora lokalizace v Mapách Azure
+# <a name="localization-support-in-azure-maps"></a>Podpora lokalizace v Azure Maps
 
-Azure Maps podporuje různé jazyky a zobrazení na základě země nebo oblasti. Tento článek obsahuje podporované jazyky a zobrazení, které vám pomohou řídit implementaci Azure Maps.
+Azure Maps podporuje různé jazyky a zobrazení založené na zemi nebo oblasti. Tento článek poskytuje podporované jazyky a zobrazení, které vám pomůžou s implementací Azure Maps.
 
 
-## <a name="azure-maps-supported-languages"></a>Podporované jazyky Azure Maps
+## <a name="azure-maps-supported-languages"></a>Azure Maps podporované jazyky
 
-Azure Maps byly lokalizovány v různých jazycích napříč svými službami. V následující tabulce jsou uvedeny kódy podporovaných jazyků pro každou službu.  
+Azure Maps byly lokalizovány do různých jazyků v rámci svých služeb. Následující tabulka uvádí podporované kódy jazyků pro každou službu.  
   
 
-| ID         | Name (Název)                   |  Maps | Search | Směrování | Weather | Dopravní nehody | Ovládací prvek mapy JS |
+| ID         | Název                   |  Maps | Search | Směrování | Weather | Incidenty provozu | JS – ovládací prvek mapy |
 |------------|------------------------|:-----:|:------:|:-------:|:--------:|:-----------------:|:--------------:|
-| af-ZA      | Afrikánština              |       |    ✓   |    ✓    |         |                   |                |
+| AF-ZA      | Afrikánština              |       |    ✓   |    ✓    |         |                   |                |
 | ar-SA      | Arabština                 |   ✓   |    ✓   |    ✓    |    ✓      |         ✓         |        ✓       |
-| bn-BD      | Bangla (Bangladéš)    |       |       |         |     ✓    |                   |                |
-| mld-IN      | Bangla (Indie)         |       |       |         |     ✓    |                   |                |
-| bs-BA      | Bosenština                 |       |       |         |     ✓    |                   |                |
-| eu-ES      | Baskičtina                 |       |    ✓   |         |         |                   |                |
+| BN-BD      | Bengálština (Bangladéš)    |       |       |         |     ✓    |                   |                |
+| BN-IN      | Bengálština (Indie)         |       |       |         |     ✓    |                   |                |
+| BS – BA      | Bosenština                 |       |       |         |     ✓    |                   |                |
+| EU – ES      | Baskičtina                 |       |    ✓   |         |         |                   |                |
 | bg-BG      | Bulharština              |   ✓   |    ✓   |    ✓    |     ✓     |                   |        ✓       |
 | ca-ES      | Katalánština                |       |    ✓   |         |    ✓      |                   |                |
-| zh-HanS    | Čínština (zjednodušená)   |       |  zh-CN |         |     zh-CN   |                   |                |
-| zh-HanT    | Čínština (Hongkong – zvláštní správní oblast ČLR)  |  |   |    |    zh-HK   |                   |           |
-| zh-HanT    | Čínština (Tchaj-wan)  | zh-TW |  zh-TW |  zh-TW  |    zh-TW   |                   |      zh-TW     |
+| ZH – HanS    | Čínština (zjednodušená)   |       |  zh-CN |         |     zh-CN   |                   |                |
+| ZH – HanT    | Čínština (Hongkong – zvláštní administrativní oblast)  |  |   |    |    zh – HK   |                   |           |
+| ZH – HanT    | Čínština (Tchaj-wan)  | zh-TW |  zh-TW |  zh-TW  |    zh-TW   |                   |      zh-TW     |
 | hr-HR      | Chorvatština               |       |    ✓   |         |    ✓      |                   |                |
 | cs-CZ      | Čeština                  |   ✓   |    ✓   |    ✓    |    ✓      |         ✓         |        ✓       |
 | da-DK      | Dánština                 |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
-| nl-BE      | Nizozemština (Belgie)        |       |    ✓   |         |      ✓    |                   |                |
+| NL      | Nizozemština (Belgie)        |       |    ✓   |         |      ✓    |                   |                |
 | nl-NL      | nizozemština (Nizozemsko)    |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
-| en-AU      | Angličtina (Austrálie)    |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
-| en-NZ      | Angličtina (Nový Zéland)  |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
-| en-CZ      | Angličtina (Velká Británie) |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
+| EN-AU      | Angličtina (Austrálie)    |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
+| EN-NZ      | Angličtina (Nový Zéland)  |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
+| en-GB      | Angličtina (Velká Británie) |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
 | cs-CZ      | Angličtina (USA)          |   ✓   |    ✓   |    ✓    |      ✓    |         ✓         |        ✓       |
 | et-EE      | Estonština               |       |    ✓   |         |      ✓    |         ✓         |                |
-| fil-PH     | Filipino               |       |       |         |     ✓    |                   |                |
+| náhl-PH     | Filipino               |       |       |         |     ✓    |                   |                |
 | fi-FI      | Finština                |   ✓   |    ✓   |    ✓    |      ✓    |         ✓         |        ✓       |
 | fr-FR      | Francouzština                 |   ✓   |    ✓   |    ✓    |      ✓    |         ✓         |        ✓       |
-| fr-CA      | Francouzština (Kanada)      |       |    ✓   |         |     ✓     |                   |                |
+| fr – CA      | Francouzština (Kanada)      |       |    ✓   |         |     ✓     |                   |                |
 | gl-ES      | Galicijština               |       |    ✓   |         |         |                   |                |
 | de-DE      | Němčina                 |   ✓   |    ✓   |    ✓    |   ✓      |         ✓         |        ✓       |
 | el-GR      | Řečtina                  |   ✓   |    ✓   |    ✓    |    ✓     |         ✓         |        ✓       |
-| gu-IN      | Gudžarátština                |       |       |         |     ✓    |                   |                |
+| Gu – IN      | Gudžarátština                |       |       |         |     ✓    |                   |                |
 | he-IL      | Hebrejština                 |       |    ✓   |         |     ✓    |         ✓         |                |
 | hi-IN      | Hindština                  |       |        |         |     ✓    |                   |                |
 | hu-HU      | Maďarština              |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
-| is-IS      | Islandština              |       |       |         |     ✓    |                   |                |
+| je-IS      | Islandština              |       |       |         |     ✓    |                   |                |
 | id-ID      | Indonéština             |   ✓   |    ✓    |    ✓    |     ✓    |         ✓         |        ✓       |
 | it-IT      | Italština                |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
 | ja-JP      | Japonština               |       |        |         |     ✓    |                   |                |
-| kn-IN      | Kannadština                |       |       |         |     ✓    |                   |                |
+| KN-IN      | Kannadština                |       |       |         |     ✓    |                   |                |
 | kk-KZ      | Kazaština                 |       |    ✓   |         |     ✓    |                   |                |
 | ko-KR      | Korejština                 |   ✓   |        |    ✓    |     ✓    |                   |        ✓       |
-| es-419 (es-419)     | Latinskoamerická španělština |       |    ✓   |         |         |                   |                |
+| ES-419     | Latinskoamerická španělština |       |    ✓   |         |         |                   |                |
 | lv-LV      | Lotyština                |       |    ✓   |         |     ✓    |         ✓         |                |
 | lt-LT      | Litevština             |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
-| mk-MK      | Makedonština             |       |       |         |     ✓    |                   |                |
+| MK-MK      | Makedonie             |       |       |         |     ✓    |                   |                |
 | ms-MY      | Malajština (latinka)          |   ✓   |    ✓   |    ✓    |    ✓   |                   |        ✓       |
-| mr-IN      | Maráthština                 |       |       |         |     ✓    |                   |                |
+| Mr      | Maráthština                 |       |       |         |     ✓    |                   |                |
 | nb-NO      | Norština bokmål       |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
-| NGT        | Neutrální pozemní pravda - Úřední jazyky pro všechny regiony v místních skriptech, pokud jsou k dispozici |   ✓     |        |         |       |        |      ✓          |
-| NGT-Latn   | Neutrální pozemní pravda - latinské exonyms. Latinka bude použita, pokud je k dispozici |   ✓     |        |         |         |                |        ✓         |
+| NGT        | Neutrální uzemněné – úřední jazyky pro všechny oblasti v místních skriptech, pokud jsou k dispozici |   ✓     |        |         |       |        |      ✓          |
+| NGT – Latn   | Neutrální uzemnění – Latinská exonyms Pokud je k dispozici skript latinky, bude použit |   ✓     |        |         |         |                |        ✓         |
 | pl-PL      | Polština                 |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
 | pt-BR      | Portugalština (Brazílie)    |   ✓   |    ✓   |    ✓    |      ✓   |                   |        ✓       |
 | pt-PT      | portugalština (Portugalsko)  |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
-| pa-IN      | Paňdžábština                 |       |       |         |     ✓    |                   |                |
+| PA – v      | Paňdžábština                 |       |       |         |     ✓    |                   |                |
 | ro-RO      | Rumunština               |       |    ✓    |         |     ✓    |         ✓         |                |
 | ru-RU      | Ruština                |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
-| sr-Cyrl-RS | Srbština (cyrilice)     |       |   sr-RS  |         |    sr-RS     |                   |                |
-| sr-Latn-RS | Srbština (latinka)        |       |       |         |     sr-latn    |                   |                |
+| sr-Cyrl-RS | Srbština (cyrilice)     |       |   SR-RS  |         |    SR-RS     |                   |                |
+| sr-Latn-RS | Srbština (latinka)        |       |       |         |     SR-Latn    |                   |                |
 | sk-SK      | Slovenština             |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
-| sl-SL      | Slovinština              |   ✓   |    ✓   |    ✓    |     ✓    |                   |        ✓       |
+| SL-SL      | Slovinština              |   ✓   |    ✓   |    ✓    |     ✓    |                   |        ✓       |
 | es-ES      | Španělština                |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
-| es-MX      | Španělština (Mexiko)       |   ✓   |        |    ✓    |     ✓    |                   |        ✓       |
+| ES – MX      | Španělština (Mexiko)       |   ✓   |        |    ✓    |     ✓    |                   |        ✓       |
 | sv-SE      | Švédština                |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
-| ta-IN      | Tamil (Indie)                 |       |       |         |     ✓    |                   |                |
-| te-IN      | Telugu (Indie)                 |       |       |         |     ✓    |                   |                |
+| Ta – IN      | Tamilština (Indie)                 |       |       |         |     ✓    |                   |                |
+| te-IN      | Telugština (Indie)                 |       |       |         |     ✓    |                   |                |
 | th-TH      | Thajština                   |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
 | tr-TR      | Turečtina                |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
 | uk-UA      | Ukrajinština               |       |    ✓   |         |     ✓    |                   |                |
-| vaše-PK      | Urdština                 |       |       |         |     ✓    |                   |                |
+| Vaše PK      | Urdština                 |       |       |         |     ✓    |                   |                |
 | uz-Latn-UZ | Uzbečtina                 |       |       |         |     ✓    |                   |                |
 | vi-VN      | Vietnamština             |       |    ✓   |         |      ✓    |                  |                |
 
 
-## <a name="azure-maps-supported-views"></a>Podporovaná zobrazení Azure Maps
+## <a name="azure-maps-supported-views"></a>Azure Maps podporovaná zobrazení
 
 > [!Note]
-> 1. srpna 2019 byla vydána služba Azure Maps v následujících zemích nebo oblastech:
+> Od 1. srpna 2019 byl Azure Maps vydán v následujících zemích nebo oblastech:
 >  * Argentina
 >  * Indie
 >  * Maroko
 >  * Pákistán
 >
-> srpna 2019 parametr **View** definuje vrácený obsah mapy pro výše uvedené nové oblasti nebo země. Parametr Azure Maps **View** (označovaný také jako "parametr oblasti uživatele") je dvoupísmenný kód země ISO-3166, který zobrazí správné mapy pro danou zemi nebo oblast určující, která sada geopoliticky sporného obsahu se vrátí prostřednictvím služeb Azure Maps, včetně ohraničení a popisků zobrazených na mapě. 
+> Od 1. srpna 2019 bude parametr **zobrazení** definovat vrácený obsah mapy pro nové oblasti nebo země uvedené výše. Azure Maps parametr **zobrazení** (také označovaný jako "parametr oblasti uživatele") je dvě číslice země ISO-3166, která zobrazí správná mapování pro danou zemi nebo oblast, která určuje, která sada geopoliticky sporného obsahu se vrátí prostřednictvím služby Azure Maps, včetně ohraničení a popisků zobrazených na mapě. 
 
-Ujistěte se, že jste nastavili **parametr View** podle potřeby pro rozhraní REST API a sady SDK, které vaše služby používají.
+Ujistěte se, že jste nastavili parametr **zobrazení** požadovaný pro rozhraní REST API a sady SDK, které vaše služby používají.
 >  
 >
->  **Zbytek API:**
+>  **Rozhraní REST API:**
 >  
->  Ujistěte se, že jste nastavili parametr View podle potřeby. Parametr View určuje, která sada geopoliticky sporného obsahu se vrací prostřednictvím služeb Azure Maps. 
+>  Ujistěte se, že jste nastavili parametr zobrazení podle potřeby. Parametr zobrazení určuje, která sada geopolitického obsahu je vrácena prostřednictvím služby Azure Maps Services. 
 >
 >  Ovlivněné služby Azure Maps REST:
 >    
 >    * Získat dlaždici mapy
 >    * Získat obrázek mapy 
->    * Získat přibližné vyhledávání
->    * Získat Poi.
->    * Kategorie Vyhledávání po zem
->    * Získat vyhledávání v okolí
->    * Získat vyhledávací adresu
->    * Získat strukturovanou adresu vyhledávání
->    * Získat adresu vyhledávání zpět
->    * Získat vyhledávací adresu Reverse Cross Street
->    * Post Search Uvnitř geometrie
->    * Náhled dávky zaúčtovat vyhledávací adresu
->    * Náhled zpětné dávky zaúčtovat adresu s obrácenou adresou
->    * Po hledání podél trasy
->    * Náhled přibližné dávky při hledání příspěvku
+>    * Získat hledání přibližné
+>    * Získat POI hledání
+>    * Získat kategorii hledání POI
+>    * Získat hledání v okolí
+>    * Získat adresu pro hledání
+>    * Získat strukturované adresy hledání
+>    * Získat reverzní adresu pro hledání
+>    * Získat opačnou ulici v adrese hledání
+>    * Po vyhledání v geometrii
+>    * Adresa pro vystavení dávky ve verzi Preview
+>    * Adresa pro zpětný náhled dávky
+>    * Vyhledávejte po trase
+>    * Vyúčtování přibližné dávky ve verzi Preview
 >
 >    
->  **Sady sdk:**
+>  **Sady SDK**
 >
->  Ujistěte se, že jste nastavili **view** parametr podle potřeby a máte nejnovější verzi sady Web SDK a Android SDK. Ovlivněné sady SDK:
+>  Ujistěte se, že jste nastavili parametr **zobrazení** podle potřeby a máte nejnovější verzi sady web SDK a Android SDK. Ovlivněné sady SDK:
 >
->    * Web Ovádk Azure Maps
+>    * Azure Maps Web SDK
 >    * Azure Maps Android SDK
 
-Ve výchozím nastavení je parametr View nastaven na **hodnotu Sjednoceno**, i když jste jej v požadavku nedefinovali. Určete umístění uživatelů. Potom nastavte **správně Zobrazit** parametr pro toto umístění. Případně můžete nastavit "View=Auto", které vrátí mapová data na základě IP adresy požadavku.  Parametr **View** v Mapách Azure se musí používat v souladu s platnými zákony, včetně zákonů o mapování země, kde jsou mapy, obrázky a další data a obsah třetích stran, ke kterým máte oprávnění, zpřístupnit.
+Ve výchozím nastavení je parametr zobrazení nastavený na **sjednocené**, i když jste ho v žádosti nedefinovali. Určete umístění vašich uživatelů. Potom nastavte pro toto umístění parametr **zobrazení** správně. Případně můžete nastavit možnost zobrazit = automaticky, která vrátí data mapy na základě IP adresy žádosti.  Parametr **zobrazení** v Azure Maps musí být použit v souladu s platnými zákony, včetně zákonů o mapování země, kde jsou k dispozici mapy, obrázky a další data a obsah třetích stran, ke kterým máte oprávnění pro přístup prostřednictvím Azure Maps.
 
 
-Následující tabulka obsahuje podporovaná zobrazení.
+Následující tabulka poskytuje podporovaná zobrazení.
 
-| Zobrazení         | Popis                            |  Maps | Search | Ovládací prvek mapy JS |
+| Zobrazit         | Popis                            |  Maps | Search | Ovládací prvek Mapa JS |
 |--------------|----------------------------------------|:-----:|:------:|:--------------:|
-| AE           | Spojené arabské emiráty (arabský pohled)    |   ✓   |        |     ✓          |
-| AR           | Argentina (argentinský pohled)           |   ✓   |    ✓   |     ✓          |
-| BH           | Bahrajn (arabský pohled)                 |   ✓   |        |     ✓          |
-| IN           | Indie (indický pohled)                    |   ✓   |   ✓     |     ✓          |
-| IQ           | Irák (arabský pohled)                    |   ✓   |        |     ✓          |
-| JO           | Jordánsko (arabský pohled)                  |   ✓   |        |     ✓          |
-| KW           | Kuvajt (arabský pohled)                  |   ✓   |        |     ✓          |
-| LB           | Libanon (arabský pohled)                 |   ✓   |        |     ✓          |
-| MA           | Maroko (marocký pohled)                |   ✓   |   ✓     |     ✓          |
-| OM           | Omán (arabský pohled)                    |   ✓   |        |     ✓          |
-| PK           | Pákistán (pákistánský pohled)              |   ✓   |    ✓    |     ✓          |
-| PS           | Palestinská samospráva (arabský pohled)    |   ✓   |        |     ✓          |
-| QA           | Katar (arabský pohled)                   |   ✓   |        |     ✓          |
-| SA           | Saúdská Arábie (arabský pohled)            |   ✓   |        |     ✓          |
-| SY           | Sýrie (arabský pohled)                   |   ✓   |        |     ✓          |
-| VY           | Jemen (arabský pohled)                   |   ✓   |        |     ✓          |
-| Auto         | Vraťte mapová data na základě IP adresy požadavku.|   ✓   |    ✓   |     ✓          |
-| Jednotný      | Jednotné zobrazení (ostatní)                  |   ✓   |   ✓     |     ✓          |
+| AE           | Spojené arabské emiráty (pohled na arabské písmo)    |   ✓   |        |     ✓          |
+| AR           | Argentina (pohled z argentinského)           |   ✓   |    ✓   |     ✓          |
+| BH           | Bahrajn (zobrazení arabštiny)                 |   ✓   |        |     ✓          |
+| IN           | Indie (pohled z Indie)                    |   ✓   |   ✓     |     ✓          |
+| IQ           | Irák (zobrazení arabštiny)                    |   ✓   |        |     ✓          |
+| JO           | Jordánsko (zobrazení arabštiny)                  |   ✓   |        |     ✓          |
+| KW           | Kuvajt (zobrazení arabštiny)                  |   ✓   |        |     ✓          |
+| LB           | Libanon (zobrazení arabštiny)                 |   ✓   |        |     ✓          |
+| MA           | Maroko (pohled na marocký)                |   ✓   |   ✓     |     ✓          |
+| OM           | Omán (zobrazení arabštiny)                    |   ✓   |        |     ✓          |
+| PK           | Pákistán (zobrazení pákistánského Pákistánu)              |   ✓   |    ✓    |     ✓          |
+| PS           | Palestinská samospráva (zobrazení arabštiny)    |   ✓   |        |     ✓          |
+| QA           | Katar (zobrazení arabštiny)                   |   ✓   |        |     ✓          |
+| SA           | Saúdská Arábie (zobrazení arabštiny)            |   ✓   |        |     ✓          |
+| SY           | Sýrie (zobrazení arabštiny)                   |   ✓   |        |     ✓          |
+| JE           | Jemen (zobrazení arabštiny)                   |   ✓   |        |     ✓          |
+| Auto         | Vraťte data mapy na základě IP adresy žádosti.|   ✓   |    ✓   |     ✓          |
+| Sjednocen      | Sjednocené zobrazení (ostatní)                  |   ✓   |   ✓     |     ✓          |

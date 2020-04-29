@@ -1,6 +1,6 @@
 ---
-title: Správa uživatelů na portálu pro partnery cloudu | Azure Marketplace
-description: Správa uživatelů na portálu pro partnery cloudu
+title: Správa uživatelů na portálu partnerů cloudu | Azure Marketplace
+description: Správa uživatelů na portálu partnerů cloudu
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,23 +8,23 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: dsindona
 ms.openlocfilehash: 441f466fcbeb05d06d565dbe1af237d01554d844
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80280214"
 ---
-<a name="managing-users-on-cloud-partner-portal"></a>Správa uživatelů na portálu pro partnery cloudu
+<a name="managing-users-on-cloud-partner-portal"></a>Správa uživatelů na portálu partnerů cloudu
 ======================================
 
-Portál partnerů cloudu umožňuje přidávat uživatele s přístupem založeným na rolích k nabídkám virtuálních počítačů. Pomáhá spravovat přístup a oprávnění, zatímco více lidí pracuje na nabídkách.
+Portál partnerů cloudu umožňuje přidávat uživatele s přístupem na základě role k virtuálním počítačům. Pomáhá spravovat přístup a oprávnění, když více lidí pracuje na nabídkách.
 
-Chcete-li **přidat uživatele a přiřadit role** pro publikování nabídek, postupujte podle následujících kroků:
+Pokud chcete **Přidat uživatele a přiřadit role** pro publikování nabídek, postupujte podle následujících kroků:
 
-<a name="step-1-to-add-users-and-assign-roles-click-the-users-tab-on-the-left-side-navigation-pane"></a>Krok 1. Pokud chcete přidat uživatele a přiřadit role, klikněte v navigačním podokně na levé straně na kartu Uživatelé.
+<a name="step-1-to-add-users-and-assign-roles-click-the-users-tab-on-the-left-side-navigation-pane"></a>Krok 1. Chcete-li přidat uživatele a přiřadit role, klikněte na kartu Uživatelé v levém navigačním podokně.
 --------------------------------------------------------------------------------------------
 
-![Karta Uživatelé](./media/cloud-partner-portal-how-to-manage-users/userstab.png)
+![Karta uživatelé](./media/cloud-partner-portal-how-to-manage-users/userstab.png)
 
 <a name="step-2-click-add-user"></a>Krok 2. Klikněte na Add User (Přidat uživatele).
 -----------------------
@@ -36,25 +36,25 @@ Chcete-li **přidat uživatele a přiřadit role** pro publikování nabídek, p
 
 Nového uživatele můžete přidat jako vlastníka nebo přispěvatele.
 
-**E-mail**: Přidejte e-mailové adresy spoluhráčů, kteří budou pracovat na publikování nabídky. Účty Microsoft (Outlook, Hotmail a Live) a ID organizace jsou podporovány.
+**E-mail**: přidejte e-mailové adresy ostatními týmu, které budou při publikování této nabídky fungovat. Podporují se účty Microsoft (Outlook, Hotmail a Live) a ID organizace.
 
-o Přidejte 'tým / skupina e-mail alias / bezpečnostní skupiny' v případě, že jednotlivec pracuje na nabídce opustí organizaci.
+o přidání aliasu e-mailu týmu/skupiny nebo skupiny zabezpečení pro případ, že jednotlivec na této nabídce opustí organizaci.
 
-o Ujistěte se, že e-mailová ID poskytovaná na portálu partnerů cloudu jsou monitorována z důvodu jakékoli komunikace od společnosti Microsoft.
+o zajistěte, aby se pro každou komunikaci od Microsoftu kontrolovala ID e-mailu v portál partnerů cloudu.
 
-**Role**: V následující tabulce naleznete příslušný typ role uživatele.
+**Role**: pro identifikaci vhodného typu role uživatele použijte následující tabulku.
 
-![Přiřadit](./media/cloud-partner-portal-how-to-manage-users/assignrole.png)
-![úroveň rolí rolí](./media/cloud-partner-portal-how-to-manage-users/roleaccesslevel.png)
+![](./media/cloud-partner-portal-how-to-manage-users/assignrole.png)
+![Přiřadit úroveň rolí rolí](./media/cloud-partner-portal-how-to-manage-users/roleaccesslevel.png)
 
-V současné době mají přístup k platebním hávům Azure payouts a k zákaznickým kartám Azure v přehledech.
+V současné době mají přístup k výběrům Azure a zákaznickým kartám Azure v přehledech jenom vlastníci.
 
-<a name="step-4-select-the-publisher-name-you-want-to-add-to-the-new-user-then-click-add-to-complete-user-addition"></a>Krok 4. Vyberte název vydavatele, který chcete přidat novému uživateli, a pak klikněte na Přidat a doplnit přidání uživatele.
+<a name="step-4-select-the-publisher-name-you-want-to-add-to-the-new-user-then-click-add-to-complete-user-addition"></a>Krok 4. Vyberte název vydavatele, který chcete přidat k novému uživateli, a kliknutím na tlačítko Přidat dokončete přidání uživatele.
 ----------------------------------------------------------------------------------------------------------------------------
 
 > [!NOTE]
-> Jména majitelů stránek, pro která je váš e-mail přidán jako vlastník nebo přispěvatel, se zobrazí v rozevíracím seznamu aplikace Publisher pro výběr."
+> V rozevíracím seznamu vydavatele pro výběr se zobrazí pole názvy vydavatelů, pro které se Váš e-mail přidá jako vlastník nebo Přispěvatel.
 
-![Přiřadit roli - vybrat vydavatele](./media/cloud-partner-portal-how-to-manage-users/assignselectpublisher.png)
+![Přiřazení role – výběr vydavatele](./media/cloud-partner-portal-how-to-manage-users/assignselectpublisher.png)
 
-Pokud potřebujete odebrat uživatele, který byl přidán, vše, co musíte udělat, je vyhledat jeho e-mail na kartě Uživatelé a pak stiskněte tlačítko odstranit na pravé straně.
+Pokud potřebujete odebrat uživatele, který byl přidaný, stačí na kartě Uživatelé vyhledat svůj e-mail a pak na pravé straně stisknout tlačítko Odstranit.

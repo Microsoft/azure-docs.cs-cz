@@ -1,7 +1,7 @@
 ---
 title: Ladění hyperparametrů modelů
 titleSuffix: Azure Machine Learning
-description: Zjistěte, jak pomocí modulu Tune Model Hyperparameters v Azure Machine Learning provést parametr sweep na modelu k určení optimální nastavení parametrů.
+description: Naučte se používat modul předparametrů ladění modelu v Azure Machine Learning k provedení parametru pro čištění parametrů v modelu, abyste zjistili optimální nastavení parametrů.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,141 +10,141 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
 ms.openlocfilehash: ff0ccbf201f2b83dd446859d8054d115a70f402e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80064164"
 ---
 # <a name="tune-model-hyperparameters"></a>Ladění hyperparametrů modelů
 
-Tento článek popisuje, jak používat modul Tune Model Hyperparameters v návrháři Azure Machine Learning (preview). Cílem je určit optimální hyperparametry pro model strojového učení. Modul vytvoří a testuje více modelů pomocí různých kombinací nastavení. Porovnává metriky ve všech modelech, aby získal kombinace nastavení. 
+Tento článek popisuje, jak v Návrháři Azure Machine Learning použít modul předparametrů ladit model (Preview). Cílem je určit optimální parametry pro model strojového učení. Modul vytváří a testuje více modelů pomocí různých kombinací nastavení. Porovnává metriky pro všechny modely a získá kombinace nastavení. 
 
-Termíny *parametr* a *hyperparametr* může být matoucí. *Parametry* modelu jsou to, co nastavíte v pravém podokně modulu. V podstatě tento modul provádí *zatažení parametrů* přes zadané nastavení parametrů. Učí optimální sadu _hyperparameters_, které se mohou lišit pro každý konkrétní rozhodovací strom, datovou sadu nebo regresní metodu. Proces hledání optimální konfigurace se někdy nazývá *ladění*. 
+*Parametr* terms a *parametr* může být matoucí. *Parametry* modelu jsou ty, které jste nastavili v pravém podokně modulu. V podstatě tento modul provádí v rámci zadaného nastavení parametrů *parametr Sweep* . Učí optimální sadu _parametrů_, které se mohou lišit pro každý konkrétní rozhodovací strom, datovou sadu nebo regresi. Proces vyhledávání optimální konfigurace se někdy označuje jako *ladění*. 
 
-Modul podporuje následující metodu pro nalezení optimálního nastavení pro model: *integrovaný vlak a ladění.* V této metodě nakonfigurujete sadu parametrů, které chcete použít. Potom nechte modul iterate přes více kombinací. Modul měří přesnost, dokud nenajde "nejlepší" model. U většiny modulů studujících si můžete vybrat, které parametry by měly být během tréninkového procesu změněny a které by měly zůstat pevné.
+Modul podporuje následující metodu pro nalezení optimálního nastavení modelu: *integrovaný vlak a ladění.* V této metodě nakonfigurujete sadu parametrů, které se mají použít. Pak se modul umožní iterovat více kombinacemi. Modul měří přesnost, dokud nenajde "nejlepší" model. U většiny modulů učí se můžete rozhodnout, jaké parametry se mají změnit během procesu školení a které by měly zůstat pevné.
 
-V závislosti na tom, jak dlouho má být proces ladění spuštěn, se můžete rozhodnout vyčerpávajícím způsobem otestovat všechny kombinace. Nebo můžete zkrátit proces vytvořením mřížky kombinací parametrů a testováním randomizované podmnožiny mřížky parametrů.
+V závislosti na tom, jak dlouho chcete proces ladění spustit, se můžete rozhodnout, že všechny kombinace vyzkoušíte. Nebo můžete proces zkrátit tak, že vytvoříte mřížku kombinací parametrů a otestujete náhodnou podmnožinu pro mřížku parametrů.
 
-Tato metoda generuje trénovaný model, který můžete uložit pro opakované použití.  
+Tato metoda generuje školený model, který lze uložit pro opakované použití.  
 
 > [!TIP] 
-> Můžete provést související úkol. Než začnete ladit, použijte výběr prvků k určení sloupců nebo proměnných, které mají nejvyšší informační hodnotu.
+> Můžete provést související úlohu. Než začnete s laděním, použijte výběr funkcí a určete sloupce nebo proměnné, které mají nejvyšší hodnotu informace.
 
-## <a name="how-to-configure-tune-model-hyperparameters"></a>Jak nakonfigurovat Hyperparametry tune modelu  
+## <a name="how-to-configure-tune-model-hyperparameters"></a>Jak nakonfigurovat parametry modelu ladění  
 
-Učení optimální hyperparametry pro model strojového učení vyžaduje značné využití kanálů.
+Výuka optimálních parametrů pro model strojového učení vyžaduje výrazné použití kanálů.
 
-### <a name="train-a-model-by-using-a-parameter-sweep"></a>Trénování modelu pomocí tažení parametrů  
+### <a name="train-a-model-by-using-a-parameter-sweep"></a>Výuka modelu pomocí úklidu parametrů  
 
-Tato část popisuje, jak provést základní parametr sweep, který trénuje model pomocí tune model hyperparameters modulu.
+Tato část popisuje, jak provést základní úklid parametrů, který navlakuje model pomocí modulu ladění modelu předparametrů.
 
-1.  Přidejte modul Tune Model Hyperparameters do kanálu v návrháři.
+1.  Do kanálu v Návrháři přidejte modul parametry modelu ladění.
 
-2.  Připojte netrénovaný model k vstupu zcela vlevo. 
+2.  Připojit nevlakový model ke vstupu vlevo. 
 
 
 
-4.  Přidejte datovou sadu, kterou chcete použít pro trénování, a připojte ji k prostřednímu vstupu hyperparametrů tune modelu.  
+4.  Přidejte datovou sadu, kterou chcete použít pro školení, a připojte ji ke střednímu vstupu parametrů modelu ladění.  
 
-    Volitelně, pokud máte tagovanou datovou sadu, můžete ji připojit k vstupnímu portu zcela vpravo (**Volitelná ověřovací datová sada**). To vám umožní měřit přesnost při tréninku a ladění.
+    Pokud máte označenou datovou sadu, můžete ji připojit ke vstupnímu portu vpravo od sebe (**volitelná datová sada ověření**). To vám umožní měřit přesnost při výuce a ladění.
 
-5.  V pravém panelu technologie Naladit model hyperparametrů zvolte hodnotu pro **režim zametací parametry**. Tato možnost určuje způsob výběru parametrů.
+5.  V pravém panelu modelových parametrů ladění vyberte hodnotu pro **režim mazání parametrů**. Tato možnost určuje, jak jsou vybrány parametry.
 
-    - **Celá mřížka**: Když vyberete tuto možnost, modul se smyčkouje přes mřížku předdefinovanou systémem, aby vyzkoušel různé kombinace a identifikoval nejlepšího studenta. Tato možnost je užitečná, pokud nevíte, jaké by mohlo být nejlepší nastavení parametrů, a chcete vyzkoušet všechny možné kombinace hodnot.
+    - **Celá mřížka**: Když vyberete tuto možnost, modul se cyklicky přeskočí do mřížky předdefinovaných systémem, aby vyzkoušel různé kombinace a identifikovala nejlepší informace. Tato možnost je užitečná v případě, že nevíte, co nejlepší nastavení parametrů může být a chcete vyzkoušet všechny možné kombinace hodnot.
 
-    - **Náhodné tažení**: Když vyberete tuto možnost, modul náhodně vybere hodnoty parametrů v rozsahu definovaném systémem. Je nutné zadat maximální počet spuštění, které má modul provést. Tato možnost je užitečná, pokud chcete zvýšit výkon modelu pomocí metriky podle vašeho výběru, ale stále šetřit výpočetní prostředky.    
+    - **Náhodné čištění**: Když vyberete tuto možnost, modul náhodně vybere hodnoty parametrů v rozsahu definovaném systémem. Je nutné zadat maximální počet spuštění, které má modul spustit. Tato možnost je užitečná, když chcete zvýšit výkon modelu pomocí metrik dle vašeho výběru, ale přesto šetřit výpočetní prostředky.    
 
-6.  Ve **sloupci Popisek**otevřete volič sloupců a zvolte sloupec s jedním popiskem.
+6.  V případě **sloupce popisek**Otevřete selektor sloupců a vyberte sloupec s jedním popiskem.
 
-7.  Zvolte počet spuštění:
+7.  Vyberte počet spuštění:
 
-    1. **Maximální počet spuštění při náhodném tažení**: Pokud zvolíte náhodné tažení, můžete určit, kolikrát má být model trénován, pomocí náhodné kombinace hodnot parametrů.
+    1. **Maximální počet spuštění na náhodném čištění**: Pokud zvolíte náhodné rozčištění, můžete určit, kolikrát by měl být model vyškolený, pomocí náhodné kombinace hodnot parametrů.
 
-8.  V **části Pořadí**zvolte jednu metriku, která se použije pro hodnocení modelů.
+8.  Pro **hodnocení**vyberte jednu metriku, která se má použít pro řazení modelů.
 
-    Když spustíte tažení parametrů, modul vypočítá všechny použitelné metriky pro typ modelu a vrátí je v **sestavě výsledků tažení.** Modul používá samostatné metriky pro regresní a klasifikační modely.
+    Když spustíte parametr Sweep, modul vypočítá všechny použitelné metriky pro typ modelu a vrátí je do sestavy **výsledků pro Shrnutí** . Modul používá pro regresní a klasifikační modely samostatné metriky.
 
-    Vybraná metrika však určuje, jak budou modely seřazeny. Pouze top model, podle pořadí podle zvolené metriky, je výstup jako trénovaný model pro vyhodnocování.
+    Metrika, kterou zvolíte, však Určuje, jak jsou modely seřazeny. Pouze model nejvyšší úrovně, jak je zvolená metrika, je výstupem jako trained model, který se má použít pro bodování.
 
-9.  Do **režimu Náhodné osiva**zadejte číslo, které se má použít pro spuštění tažení parametru. 
+9.  V případě **náhodného osazení**zadejte číslo, které se má použít ke spuštění čištění parametru. 
 
-10. Odešlete potrubí.
+10. Odešlete kanál.
 
-## <a name="results-of-hyperparameter-tuning"></a>Výsledky hyperparametrikala
+## <a name="results-of-hyperparameter-tuning"></a>Výsledky ladění parametrů
 
 Po dokončení školení:
 
-+ Chcete-li zobrazit sadu metrik přesnosti pro nejlepší model, klepněte pravým tlačítkem myši na modul a vyberte příkaz **Visualize**.
++ Pokud chcete zobrazit sadu metrik přesnosti pro nejlepší model, klikněte pravým tlačítkem na modul a vyberte **vizualizovat**.
 
-    Výstup zahrnuje všechny metriky přesnosti, které se vztahují k typu modelu, ale metrika, kterou jste vybrali pro hodnocení určuje, který model je považován za "nejlepší".
+    Výstup obsahuje všechny metriky přesnosti, které platí pro typ modelu, ale metrika, kterou jste vybrali pro řazení, určuje, který model se považuje za "nejlepší".
 
-+ Chcete-li uložit snímek trénovaného modelu, vyberte kartu **Výstupy** v pravém panelu modulu **modelu Vlak.** Vyberte ikonu **Registrovat datovou sadu,** chcete-li model uložit jako opakovaně použitelný modul.
++ Pokud chcete uložit snímek výukového modelu, vyberte kartu **výstupy** na pravém panelu modulu **výuka modelu** . Výběrem ikony **Registrovat datovou sadu** uložte model jako opakovaně použitelný modul.
 
 
 ## <a name="technical-notes"></a>Technické poznámky
 
-Tato část obsahuje podrobnosti implementace a tipy.
+Tato část obsahuje podrobné informace o implementaci a tipy.
 
-### <a name="how-a-parameter-sweep-works"></a>Jak funguje tažení parametrů
+### <a name="how-a-parameter-sweep-works"></a>Jak funguje úklid parametrů
 
-Při nastavování tažení parametrů definujete rozsah hledání. Při hledání může být náhodně vybrán konečný počet parametrů. Nebo to může být vyčerpávající vyhledávání přes prostor parametrů, který definujete.
+Při nastavování parametru Sweep můžete definovat rozsah hledání. Hledání může používat konečný počet parametrů náhodně. Nebo se může jednat o důkladné vyhledávání v rámci definovaného prostoru parametru.
 
-+ **Náhodné tažení**: Tato možnost trénuje model pomocí nastaveného počtu iterací. 
++ **Náhodné čištění**: Tato možnost nastavila model pomocí nastaveného počtu iterací. 
 
-  Zadáte rozsah hodnot, které chcete iterat, a modul použije náhodně vybranou podmnožinu těchto hodnot. Hodnoty jsou vybrány s náhradou, což znamená, že čísla dříve zvolená náhodně nejsou odebrána z fondu dostupných čísel. Takže šance na výběr jakékoli hodnoty zůstává stejná ve všech průchodech.  
+  Zadáte rozsah hodnot, které se mají iterovat, a modul používá náhodně vybranou podmnožinu těchto hodnot. Hodnoty se volí s náhradou, což znamená, že čísla dříve vybraná náhodně nejsou odebrána z fondu dostupných čísel. Takže možnost výběru jakékoli hodnoty zůstane v rámci všech průchodů stejná.  
 
-+ **Celá mřížka**: Možnost použít celou mřížku znamená, že každá kombinace je testována. Tato možnost je nejdůkladnější, ale vyžaduje nejvíce času. 
++ **Celá mřížka**: možnost použití celé mřížky znamená, že každá kombinace je testována. Tato možnost je nejdůkladnější, ale vyžaduje nejvíce času. 
 
 ### <a name="controlling-the-length-and-complexity-of-training"></a>Řízení délky a složitosti školení
 
-Iterace v mnoha kombinacích nastavení může být časově náročná, takže modul poskytuje několik způsobů, jak omezit proces:
+Iterace nad mnoha kombinacemi nastavení může být časově náročná, takže modul nabízí několik způsobů, jak omezit proces:
 
-+ Omezte počet iterací použitých k testování modelu.
++ Omezte počet iterací použitých k otestování modelu.
 + Omezte prostor parametru.
 + Omezte počet iterací i prostor parametru.
 
-Doporučujeme, abyste s nastavením určili nejefektivnější metodu trénování na konkrétní datové sadě a modelu.
+Doporučujeme vytvořit kanál s nastavením, abyste zjistili nejúčinnější způsob školení konkrétní datové sady a modelu.
 
-### <a name="choosing-an-evaluation-metric"></a>Výběr metriky hodnocení
+### <a name="choosing-an-evaluation-metric"></a>Výběr metriky vyhodnocení
 
-Na konci testování model zobrazí sestavu, která obsahuje přesnost pro každý model, takže si můžete prohlédnout výsledky metriky:
+Na konci testování model prezentuje sestavu, která obsahuje přesnost pro každý model, abyste mohli zkontrolovat výsledky metrik:
 
-- Jednotná sada metrik se používá pro všechny binární klasifikační modely.
-- Přesnost se používá pro všechny vícetřídní klasifikační modely.
+- Pro všechny binární klasifikace modelů se používá jednotná sada metrik.
+- Pro všechny modely klasifikace s více třídami se používá přesnost.
 - Pro regresní modely se používá jiná sada metrik. 
 
-Během školení však musíte zvolit *jednu* metriku, která se použije při hodnocení modelů, které jsou generovány během procesu ladění. Možná zjistíte, že nejlepší metrika se liší v závislosti na vašem obchodním problému a ceně falešných poplachů a falešných negativů.
+Během školení ale musíte zvolit *jednu* metriku, která se použije v seřazení modelů generovaných během procesu optimalizace. Může se stát, že se nejlepší metrika liší v závislosti na vašem obchodním problému a na náklady na falešně pozitivní a falešně negativní.
 
 #### <a name="metrics-used-for-binary-classification"></a>Metriky používané pro binární klasifikaci
 
--   **Přesnost** je podíl skutečných výsledků na celkových případech.  
+-   **Přesnost** je poměr skutečných výsledků do celkového počtu případů.  
 
--   **Přesnost** je podíl skutečných výsledků na pozitivních výsledcích.  
+-   **Přesnost** je poměr skutečných výsledků k pozitivním výsledkům.  
 
--   **Odvolání** je zlomek všech správných výsledků nad všemi výsledky.  
+-   **Odvolání** je zlomek všech správných výsledků pro všechny výsledky.  
 
--   **F-skóre** je míra, která vyvažuje přesnost a odvolání.  
+-   **F-skore** je míra, která vyvažuje přesnost a odvolání.  
 
--   **AUC** je hodnota, která představuje oblast pod křivkou, když jsou falešně pozitivní výsledky vykresleny na ose x a skutečné pozitivy jsou vykresleny na ose y.  
+-   **AUC** je hodnota, která představuje oblast pod křivkou, pokud jsou na ose x vykresleny falešně pozitivní hodnoty a na ose y jsou zobrazeny kladné hodnoty.  
 
--   **Průměrná ztráta protokolu** je rozdíl mezi dvěma rozděleními pravděpodobnosti: true one a jeden v modelu.  
+-   **Průměrná ztráta protokolu** je rozdíl mezi dvěma distribucí pravděpodobnosti: hodnota true a ta v modelu.  
 
 #### <a name="metrics-used-for-regression"></a>Metriky používané pro regresi
 
--   **Průměrná absolutní chyba** zprůměruje všechny chyby v modelu, kde *chyba* znamená vzdálenost předpokládané hodnoty od skutečné hodnoty. Často se zkracuje jako *MAE*.  
+-   **Střední absolutní chyba** vypočítá průměr všech chyb v modelu, kde *Chyba* znamená vzdálenost předpovězené hodnoty od hodnoty true. Často se zkracuje jako *Mae*.  
 
--   **Kořen střední kvadratických chyb** měří průměr druhých mocnin chyb a pak převezme kořen této hodnoty. To je často zkráceně *RMSE*.  
+-   **Kořen průměrného čtvercového chyb** měří průměr čtverců chyb a pak získá kořen této hodnoty. Často se zkracuje jako *RMSE*.  
 
--   **Relativní absolutní chyba** představuje chybu jako procento skutečné hodnoty.  
+-   **Relativní absolutní chyba** představuje chybu jako procento hodnoty true.  
 
--   **Relativní kvadratická chyba** normalizuje celkovou kvadračnou chybu vydělením celkovou kvadratou chybou předpovídaných hodnot.  
+-   **Relativní kvadratická chyba** normalizuje celkový počet kvadratických chyb tak, že se vydělí celkovými čtvercovými chybami předpokládaných hodnot.  
 
--   **Koeficient stanovení** je jediné číslo, které označuje, jak dobře data odpovídají modelu. Hodnota jednoho znamená, že model přesně odpovídá datům. Nulová hodnota znamená, že data jsou náhodná nebo jinak nemohou být vhodná pro model. To je často *nazýváno r<sup>2</sup>*, *R<sup>2</sup>*, nebo *r-squared*.  
+-   **Koeficientem stanovitelnosti** je jedno číslo, které určuje, jak dobře data vyhovují modelu. Hodnota One znamená, že model přesně odpovídá datům. Hodnota nula znamená, že data jsou náhodná nebo jinak nelze přizpůsobit modelu. Často se označuje jako *r<sup>2</sup>*, *r<sup>2</sup>* nebo *r-kvadrát*.  
 
-### <a name="modules-that-dont-support-a-parameter-sweep"></a>Moduly, které nepodporují zametat parametr
+### <a name="modules-that-dont-support-a-parameter-sweep"></a>Moduly, které nepodporují Sweep parametrů
 
-Téměř všichni studenti v Azure Machine Learning podporují křížové ověřování pomocí integrovaného zametání parametrů, které vám umožní vybrat parametry, se kterými se chcete s nimi datovat. Pokud žák nepodporuje nastavení rozsahu hodnot, můžete jej stále používat při křížovém ověřování. V tomto případě je pro tažení vybrán rozsah povolených hodnot. 
+Téměř všichni učí v Azure Machine Learning podporují křížové ověřování s integrovaným vyčištěním parametrů, které vám umožní vybrat parametry pro kanál s. Pokud se naučíte nastavit rozsah hodnot, můžete ho i nadále používat při křížovém ověřování. V tomto případě je pro oblast oblouku vybraná Rozsah povolených hodnot. 
 
 
 ## <a name="next-steps"></a>Další kroky

@@ -1,6 +1,6 @@
 ---
-title: Aktualizace nabídky tržiště | Azure Marketplace
-description: Aktualizace nabídek na tržištích Azure a AppSource pomocí portálu partnerů cloudu
+title: Aktualizace nabídek Marketplace | Azure Marketplace
+description: Aktualizace nabídek na tržištích Azure a AppSource pomocí portál partnerů cloudu
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,122 +8,122 @@ ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: dsindona
 ms.openlocfilehash: 101369a050770be3acd9534cef6229037fe1c366
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80288508"
 ---
-# <a name="update-azure-marketplace-and-appsource-offers"></a>Aktualizace nabídek Azure Marketplace a AppSource
+# <a name="update-azure-marketplace-and-appsource-offers"></a>Aktualizace Azure Marketplace a nabídek AppSource
 
-Existují různé druhy aktualizací, které můžete použít na nabídku po publikování.  [Portál partnerů cloudu](https://cloudpartner.azure.com/) vám pomůže správně upravit atributy nabídky, včetně:
+Existují různé druhy aktualizací, které můžete po publikování použít pro vaši nabídku.  [Portál partnerů cloudu](https://cloudpartner.azure.com/) vám pomůže se správnými úpravami atributů nabídky, včetně:
 
--  Přidání nové image virtuálního počítače nebo verze balíčku do existující skladové položky
--  Změna oblastí, ve kterých je skladová položka k dispozici
--  Přidání nových sous
--  Aktualizace metadat marketplace pro nabídky nebo sku 
--  Aktualizace cen v nabídkách průběžných plateb
+-  Přidání nové image virtuálního počítače (VM) nebo verze balíčku do existující SKU
+-  Změna oblastí, ve kterých je SKU k dispozici
+-  Přidávání nových SKU
+-  Aktualizace metadat Marketplace pro nabídky nebo SKU 
+-  Aktualizace cen pro nabídky s průběžnými platbami
 
-Portál má také funkce, jako je možnost porovnat funkce a zobrazit historii funkcí pro nabídku, které vám pomohou při správě změn.  Po úpravě nabídky nebo skladové položky musí být znovu publikována před změnou přejít "live".  Tento článek vás provede různými aspekty aktualizace nabídky marketplace.
+Portál také obsahuje funkce, jako je například možnost porovnat funkce a zobrazit historii funkcí pro nabídku, která vám pomůže při správě změn.  Po úpravě nabídky nebo skladové položky je nutné ji znovu publikovat, aby se změny projevily jako "živé".  Tento článek vás provede různými aspekty aktualizace nabídky na webu Marketplace.
 
-## <a name="unpermitted-changes-to-an-offersku"></a>Nepovolené změny nabídky/skladové položky
+## <a name="unpermitted-changes-to-an-offersku"></a>Nepovolené změny nabídky/SKU
 
-Existují některé atributy nabídky nebo skladové položky, které nelze změnit, jakmile byla publikována na trhu.  Odpovídající pole jsou zakázána na kartě **Editor** na portálu, například:  
+Existují některé atributy nabídky nebo SKU, které po publikování na webu Marketplace nelze upravovat.  Odpovídající pole jsou na kartě **Editor** na portálu zakázána, například:  
 
 - ID nabídky a ID vydavatele
-- ID skladové položky 
-- Počet datových disků existujících sku
-- Změny fakturačního/licenčního modelu stávajících sku
-- Značky verzí, například:`1.0.1`
+- ID SKU 
+- Počet stávajících SKU dat pro datový disk
+- Fakturační a licenční modelové změny stávajících SKU
+- Značky verze, například:`1.0.1`
 
 
 ## <a name="common-update-operations"></a>Běžné operace aktualizace
 
-V následujících částech je vysvětleno, jak provádět některé z nejvíce operací aktualizace.  Tyto operace nejsou k dispozici pro všechny typy nabídek.  Chcete-li spustit některou z těchto operací, musíte se přihlásit k portálu partnerů cloudu.
+Následující části vysvětlují, jak provést většinu operací aktualizace.  Tyto operace nejsou k dispozici pro všechny typy nabídek.  Aby bylo možné spustit některou z těchto operací, je nutné se přihlásit k portál partnerů cloudu.
 
 
 ### <a name="update-offer-contacts"></a>Aktualizovat kontakty nabídky
 
 Pomocí následujících kroků aktualizujte kontakty podpory pro vaši nabídku.
-1. Na stránce **Všechny nabídky** vyberte nabídku.
-2. Vyberte kartu **Kontakty.** Aktualizujte kontakty.
+1. Na stránce **všechny nabídky** vyberte nabídku.
+2. Vyberte kartu **Kontakty** . aktualizujte své kontakty.
 3. Vyberte tlačítko **Uložit**.
-4. Chcete-li zahájit proces publikování, vyberte **publikovat.**
+4. Vyberte **publikovat** a spusťte proces publikování.
 
 
-### <a name="change-regions-an-offer-or-sku-is-available-in"></a>Změnit oblasti, v kterých je nabídka nebo skladová položka k dispozici
+### <a name="change-regions-an-offer-or-sku-is-available-in"></a>Změna oblastí nabídka nebo SKU jsou k dispozici v
 
-V průběhu času můžete chtít, aby vaše nabídka nebo skladová položka k dispozici ve více oblastech.
-Případně můžete chtít přestat podporovat nabídku nebo skladovou položku v dané oblasti.
+V průběhu času možná budete chtít, aby vaše nabídka/SKU byla dostupná ve více oblastech.
+Alternativně můžete chtít zastavit podporu nabídky/SKU v dané oblasti.
 Chcete-li tyto změny implementovat, postupujte podle následujících kroků.
 
-1. Na stránce **Všechny nabídky** najděte nabídku, kterou chcete aktualizovat.
+1. Na stránce **všechny nabídky** Vyhledejte nabídku, kterou chcete aktualizovat.
 
-Pro nabídky Azure Marketplace:
+Pro Azure Marketplace nabídky:
 
-1. Vyberte kartu **SKU.**  Vyberte skladovou položku, kterou chcete upravit.
-1. Klikněte na tlačítko **Vybrat země** v poli Dostupnost země **nebo oblasti.**
-1. V dialogovém okně dostupnost oblasti přidejte nebo odeberte oblasti pro tuto skladovou položku.
+1. Vyberte kartu **SKU** .  Vyberte skladovou jednotku, kterou chcete upravit.
+1. Klikněte na tlačítko **Vybrat země** v poli **dostupnost země/oblasti** .
+1. V dialogovém okně dostupnost oblasti přidejte nebo odeberte oblasti této SKU.
 
-Pro nabídky AppSource:
+Pro AppSource nabídky:
 
-1. Vyberte kartu **Podrobnosti na výloze.**
-1. Vedle popisku **Podporované země nebo oblasti** klikněte na Podporované země nebo **oblasti**. 
-1. V dialogovém okně Podporované země nebo oblasti přidejte nebo odeberte oblasti pro tuto nabídku.
+1. Vyberte kartu **Podrobnosti prezentace** .
+1. Vedle popisku **Podporované země/oblasti** klikněte na možnost **Podporované země/oblasti**. 
+1. V dialogovém okně podporované země nebo oblasti přidejte nebo odeberte oblasti pro tuto nabídku.
 
-Pro oba tržiště:
+Pro obě Marketplace:
 
-1. Chcete-li zahájit proces publikování, klepněte na tlačítko **Publikovat.** 
+1. Kliknutím na **publikovat** spusťte proces publikování. 
 
-Pokud je skladová položka k dispozici v nové oblasti, máte možnost zadat ceny pro tuto konkrétní oblast prostřednictvím funkce **Exportovat data ocenění.** Pokud přidáváte oblast zpět, která byla dříve k dispozici, nelze aktualizovat její ceny, protože změny cen nejsou povoleny.
-
-
-### <a name="add-a-new-sku"></a>Přidání nové skladové položky 
-
-Chcete-li zpřístupnit novou skladovou položku pro existující nabídku, postupujte takto:
-
-1. Na stránce **Všechny nabídky** najděte nabídku.
-3. Ve formuláři **Skladové položky** klikněte na **Přidat novou skladovou položku** a ve automaticky otevíraném tlačítku zadejte **ID skladové** položky.
-4. Postupujte podle zbývajících kroků popsaných v [části Publikovat nabídku virtuálního počítače](../virtual-machine/cpp-publish-offer.md).
-5. Chcete-li zahájit proces publikování, klepněte na tlačítko **Publikovat.**
+Pokud je SKU dostupná v nové oblasti, máte možnost zadat pro tuto konkrétní oblast ceny pomocí funkce **exportovat cenové údaje** . Pokud přidáváte oblast zpátky, která byla dříve k dispozici, nemůžete její ceny aktualizovat, protože cenové změny nejsou povoleny.
 
 
-### <a name="update-offer-marketplace-assets"></a>Aktualizovat prostředky tržiště nabídky
+### <a name="add-a-new-sku"></a>Přidat novou SKLADOVOU položku 
 
-Můžete mít scénáře, kde je třeba aktualizovat marketplace text-založené a image aktiv, jako jsou vaše společnost loga, popis nabídky, atd. Pomocí následujících kroků aktualizujte tyto datové zdroje.
+Chcete-li zpřístupnit novou SKLADOVOU položku pro existující nabídku, použijte následující postup:
 
-1. Na stránce **Všechny nabídky** najděte svou nabídku. 
-2. Vyberte kartu **Marketplace** a postupujte podle pokynů v tématu karty Marketplace v *nabídce.*
-3. Chcete-li zahájit proces publikování, klepněte na tlačítko **Publikovat.**
+1. Na stránce **všechny nabídky** Najděte nabídku.
+3. Ve formuláři **SKU** klikněte na **Přidat novou skladovou** položku a v automaticky otevíraném okně zadejte **ID SKU** .
+4. Postupujte podle zbývajících kroků uvedených v části [publikování nabídky virtuálního počítače](../virtual-machine/cpp-publish-offer.md).
+5. Kliknutím na **publikovat** spusťte proces publikování.
 
 
-### <a name="update-pricing-on-published-offers"></a>Aktualizovat ceny publikovaných nabídek
+### <a name="update-offer-marketplace-assets"></a>Aktualizace assetů nabídky Marketplace
 
-Jakmile je vaše průběžná nabídka zveřejněna, nemůžete zvýšit cenu stávající skladové položky.  Místo toho vytvořte skladovou položku v rámci stejné nabídky, odstraňte starou skladovou položku a pak nabídku znovu publikujte. U dříve publikovaných nabídek můžete snížit cenu. Chcete-li snížit nabídkovou cenu:
+Můžete mít scénáře, kdy potřebujete aktualizovat textový a obrázkové materiály na webu Marketplace, jako jsou například loga společnosti, popis nabídky atd. K aktualizaci těchto prostředků použijte následující postup.
 
-1. Vyberte skladovou položku, pro kterou chcete snížit ceny.
-2. Nižší cenu je nutné nastavit stejným mechanismem, který jste původně použili: buď přímo v unovém portálu, nebo v tabulce importu a exportu.
+1. Na stránce **všechny nabídky** Najděte svoji nabídku. 
+2. Vyberte kartu **Marketplace** a postupujte podle pokynů v tématu na *kartě Marketplace* vaší nabídky.
+3. Kliknutím na **publikovat** spusťte proces publikování.
+
+
+### <a name="update-pricing-on-published-offers"></a>Aktualizace cen u publikovaných nabídek
+
+Po publikování vaší nabídky s průběžnými platbami nelze zvýšit cenu existující SKU.  Místo toho vytvořte SKU v rámci stejné nabídky, odstraňte původní SKU a pak znovu publikujte vaši nabídku. Můžete snížit cenu z dříve publikovaných nabídek. Snížení ceny vaší nabídky:
+
+1. Vyberte skladovou jednotku, pro kterou chcete snížit ceny.
+2. Nižší cena se musí nastavit stejným mechanismem, jaký jste původně použili: buď přímo v uživatelském rozhraní portálu, nebo v tabulce import/export.
 3. Klikněte na **Uložit**.
-4. Chcete-li zahájit proces publikování, klepněte na tlačítko **Publikovat.**
+4. Kliknutím na **publikovat** spusťte proces publikování.
 
-Ceny jsou viditelné pro nové zákazníky, jakmile je žít na trhu, a všichni noví zákazníci pak zaplatí novou sníženou cenu.  U stávajících zákazníků se pokles ceny odráží zpětně na začátku fakturačního cyklu, během něhož pokles ceny nabyl účinnosti.  Pokud již byly fakturovány za cyklus, během kterého došlo ke snížení ceny, obdrží refundaci během dalšího fakturačního cyklu, aby pokryli sníženou cenu.
-
-
-## <a name="compare-feature"></a>Funkce Porovnat
-
-Když provedete změny v publikované nabídce, můžete ke auditování změn použít funkci *Porovnat.* Využití této funkce:
-
-1. Kdykoli v procesu úprav můžete kliknout na tlačítko **Porovnat** na kartě **Editor** pro vaši nabídku.
-2. Srovnávací okno zobrazuje souběžné verze uložených změn této nabídky ve srovnání s nabídkou marketplace. 
-
-![Tlačítko Porovnat nabídku na kartě editoru](./media/offer-compare-button.png)
+Ceny se pro nové zákazníky zobrazují hned po jeho živém pobytu a všichni noví zákazníci pak budou za novou sníženou cenu platit.  U stávajících zákazníků se snížení ceny odrazí zpětně na začátek fakturačního cyklu, během kterého se snížení ceny projeví.  Pokud již byly za cyklus, během kterých došlo k poklesu cen, účtovány, obdrží během příštího fakturačního cyklu refundaci, aby se pokryla snížená cena.
 
 
-## <a name="history-of-publishing-actions"></a>Historie publikování akcí
+## <a name="compare-feature"></a>Compare – funkce
 
-Chcete-li zobrazit historickou publikační aktivitu, vyberte kartu **Historie** v levém svislém panelu nabídek portálu partnerů cloudu.  Historie stránka poskytuje flexibilní filtrování podle několika charakteristik a podporuje řazení sloupců.  Každá událost publikování je označena časovým razítkem.  Další informace naleznete na [stránce Historie auditu](../portal-tour/cpp-history-page.md).
+Když provedete změny v publikované nabídce, můžete pomocí funkce *Compare* auditovat změny. K využití této funkce:
+
+1. V jakémkoli okamžiku v procesu úprav můžete kliknout na tlačítko **Porovnat** na kartě **Editor** pro vaši nabídku.
+2. Okno porovnání zobrazuje souběžné verze uložených změn této nabídky ve srovnání s nabídkou na webu Marketplace. 
+
+![Tlačítko nabídky porovnat na kartě editoru](./media/offer-compare-button.png)
+
+
+## <a name="history-of-publishing-actions"></a>Historie akcí publikování
+
+Chcete-li zobrazit historické aktivity publikování, vyberte kartu **Historie** v levém svislém řádku portál partnerů cloudu.  Stránka Historie poskytuje flexibilní filtrování podle několika vlastností a podporuje řazení sloupců.  Každé události publikování je časové razítko.  Další informace najdete na [stránce Historie auditu](../portal-tour/cpp-history-page.md).
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Pomocí portálu cloudových partnerů můžete také [odstranit publikovanou skladovou položku nebo nabídku](./cpp-delete-offer.md).
+Můžete také použít portál partnerů cloudu k [odstranění publikované SKU nebo nabídky](./cpp-delete-offer.md).

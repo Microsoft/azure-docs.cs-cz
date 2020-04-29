@@ -1,7 +1,7 @@
 ---
-title: 'Model skóre: Odkaz na modul'
+title: 'Model skóre: odkaz na modul'
 titleSuffix: Azure Machine Learning
-description: Zjistěte, jak pomocí modulu Model skóre v Azure Machine Learning generovat předpovědi pomocí trénované klasifikace nebo regresní model.
+description: Naučte se používat modul určení skóre modelu v Azure Machine Learning k vygenerování předpovědi pomocí vyškoleného modelu klasifikace nebo regrese.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,45 +10,45 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
 ms.openlocfilehash: 56d8cad05a42da8de680ade487dddee9a97aab3a
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80364187"
 ---
 # <a name="score-model-module"></a>Modul Určení skóre modelu
 
-Tento článek popisuje modul v návrháři Azure Machine Learning (preview).
+Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
 
-Tento modul slouží ke generování předpovědi pomocí trénované klasifikace nebo regresní model.
+Pomocí tohoto modulu můžete vygenerovat předpovědi s využitím trained nebo regresního modelu.
 
 ## <a name="how-to-use"></a>Způsob použití
 
-1. Přidejte modul **Model skóre** do kanálu.
+1. Přidejte modul určení **skóre modelu** do kanálu.
 
-2. Připojte trénovaný model a datovou sadu obsahující nová vstupní data. 
+2. Připojte školený model a datovou sadu obsahující nová vstupní data. 
 
-    Data by měla být ve formátu kompatibilním s typem trénovaného modelu, který používáte. Schéma vstupní datové sady by také obecně mělo odpovídat schématu dat použitých k trénování modelu.
+    Data by měla být ve formátu kompatibilním s typem vyškolený model, který používáte. Schéma vstupní datové sady by mělo také obecně odpovídat schématu dat použitých pro výuku modelu.
 
-3. Odešlete potrubí.
+3. Odešlete kanál.
 
 ## <a name="results"></a>Výsledky
 
-Poté, co jste vygenerovali sadu skóre pomocí [score model](./score-model.md):
+Po vygenerování sady skóre pomocí [modelu skóre](./score-model.md):
 
-+ Chcete-li generovat sadu metrik používaných pro hodnocení přesnosti (výkonu) modelu, můžete připojit datovou sadu s hodnocením k [vyhodnocení modelu](./evaluate-model.md), 
-+ Klikněte pravým tlačítkem myši na modul a výběrem **možnosti Visualize** zobrazte ukázku výsledků.
++ Chcete-li vygenerovat sadu metrik používaných pro vyhodnocení přesnosti modelu (výkon), můžete k [vyhodnocení modelu](./evaluate-model.md)použít datovou sadu, 
++ Klikněte pravým tlačítkem na modul a vyberte **vizualizovat** a zobrazí se ukázka výsledků.
 <!-- + To Save the results to a dataset. -->
 
 Skóre nebo předpokládaná hodnota může být v mnoha různých formátech v závislosti na modelu a vstupních datech:
 
-- Pro klasifikační modely [model skóre](./score-model.md) výstupy předpovídané hodnoty pro třídu, jakož i pravděpodobnost předpovídané hodnoty.
-- Pro regresní modely [score model](./score-model.md) generuje pouze předpokládanou číselnou hodnotu.
+- U modelů klasifikace [model skóre](./score-model.md) zapisuje předpokládanou hodnotu pro třídu a také pravděpodobnost předpovězené hodnoty.
+- Pro regresní modely generuje [model skóre](./score-model.md) pouze předpovězenou číselnou hodnotu.
 
 
 ## <a name="publish-scores-as-a-web-service"></a>Publikování skóre jako webové služby
 
-Běžné použití vyhodnocování je vrátit výstup jako součást prediktivní webové služby. Další informace najdete [v tomto kurzu](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-deploy) o tom, jak nasadit koncový bod v reálném čase na základě kanálu v návrháři Azure Machine Learning.
+Běžné použití bodování je vrácení výstupu v rámci prediktivní webové služby. Další informace najdete v [tomto kurzu](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-deploy) o nasazení koncového bodu v reálném čase na základě kanálu v Návrháři Azure Machine Learning.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,6 +1,6 @@
 ---
-title: Stránka Historie auditu pro Azure Marketplace
-description: Přehled stránky Historie auditu na portálu cloudových partnerů pro Azure Marketplace.
+title: Stránka historie auditu pro Azure Marketplace
+description: Přehled stránky Historie auditu v portál partnerů cloudu pro Azure Marketplace.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,24 +8,24 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: dsindona
 ms.openlocfilehash: cd9577a4bcdb1914ac0a7a23e4a98c31f6e43030
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80288899"
 ---
 # <a name="audit-history-page"></a>Stránka Historie auditu
 
-Na stránce [**Historie auditu**](https://cloudpartner.azure.com/#history) se zobrazí seznam událostí publikování pro všechny nabídky marketplace.  Sloupce zahrnují typ události, datum výskytu, název nabídky, vydavatele a uživatele, který akci inicioval.  Výsledky lze seřadit podle sloupce nebo filtrovat na zadaný řetězec.  Tato stránka také umožňuje uživateli stáhnout soubor hodnot oddělených čárkami (.csv) aktuálního výpisu auditu.
+Na stránce [**Historie auditu**](https://cloudpartner.azure.com/#history) se zobrazí seznam událostí publikování pro všechny nabídky Marketplace.  Mezi sloupce patří typ události, datum a čas výskytu, název nabídky, Vydavatel a uživatel, který akci inicioval.  Výsledky lze seřadit podle sloupce nebo filtrovat podle zadaného řetězce.  Tato stránka také umožňuje uživateli stáhnout soubor hodnot oddělených čárkami (. csv) aktuálního seznamu auditu.
 
 
 ## <a name="example-page"></a>Příklad stránky
 
-Následující obrázek znázorňuje stránku Historie `contoso` **auditu** filtrovanou na řetězci .
+Následující obrázek ukazuje stránku **Historie auditu** filtrovanou na řetězci `contoso`.
 
-![Stránka Historie auditu](./media/audit-history-page1.png)
+![Stránka historie auditu](./media/audit-history-page1.png)
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Další položka navigačního panelu nabídek přistupuje k možnosti [Seller Insights](./cpp-insights-page.md) na portálu partnerů cloudu, který poskytuje sady přizpůsobitelných řídicích panelů do nabídek marketplace.
+Další navigační položka MenuBar přistupuje k funkcím [prodávajícího přehledů](./cpp-insights-page.md) portál partnerů cloudu, která poskytuje sady přizpůsobitelných řídicích panelů pro nabídky na webu Marketplace.
