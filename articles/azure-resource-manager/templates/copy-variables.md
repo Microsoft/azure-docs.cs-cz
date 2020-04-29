@@ -1,24 +1,24 @@
 ---
 title: Definování více instancí proměnné
-description: Při vytváření proměnné použijte operaci kopírování v šabloně Správce prostředků Azure k větší iterátování.
+description: Použijte operaci kopírování v šabloně Azure Resource Manager k iterování několikrát při vytváření proměnné.
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.openlocfilehash: ed0c2d87c48a18b0a065f6c76e1e69142a9df048
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80153297"
 ---
 # <a name="variable-iteration-in-arm-templates"></a>Iterace proměnných v šablonách ARM
 
-Tento článek ukazuje, jak vytvořit více než jednu hodnotu pro proměnnou v šabloně Správce prostředků Azure (ARM). Přidáním elementu **kopírování** do části proměnných šablony můžete dynamicky nastavit počet položek proměnné během nasazení. Také se vyhnete nutnosti opakovat syntaxi šablony.
+V tomto článku se dozvíte, jak vytvořit více než jednu hodnotu pro proměnnou v šabloně Azure Resource Manager (ARM). Přidáním prvku **kopírování** do oddílu proměnné vaší šablony můžete dynamicky nastavit počet položek pro proměnnou během nasazování. Nemusíte se také vyhnout opakování syntaxe šablony.
 
-Můžete také použít kopii s [prostředky](copy-resources.md), [vlastnostmi v prostředku](copy-properties.md)a [výstupy](copy-outputs.md).
+Můžete také použít kopírování s [prostředky](copy-resources.md), [vlastnosti v prostředku](copy-properties.md)a [výstupy](copy-outputs.md).
 
-## <a name="variable-iteration"></a>Iterace proměnných
+## <a name="variable-iteration"></a>Iterace proměnné
 
-Prvek kopírování má následující obecný formát:
+Element Copy má následující obecný formát:
 
 ```json
 "copy": [
@@ -30,9 +30,9 @@ Prvek kopírování má následující obecný formát:
 ]
 ```
 
-Vlastnost **name** je libovolná hodnota, která identifikuje smyčku. Vlastnost **count** určuje počet iterací, které chcete pro proměnnou.
+Vlastnost **Name** je libovolná hodnota, která identifikuje smyčku. Vlastnost **Count** určuje počet iterací, které chcete pro proměnnou.
 
-Vlastnost **input** určuje vlastnosti, které chcete opakovat. Vytvoříte pole prvků vytvořených z hodnoty ve **vstupní** vlastnosti. Může se jedná o jednu vlastnost (například řetězec) nebo objekt s několika vlastnostmi.
+Vlastnost **input** určuje vlastnosti, které chcete opakovat. Vytvoříte pole prvků vytvořené z hodnoty vlastnosti **input** . Může se jednat o jedinou vlastnost (například řetězec) nebo o objekt s několika vlastnostmi.
 
 Následující příklad ukazuje, jak vytvořit pole řetězcových hodnot:
 
@@ -77,7 +77,7 @@ Předchozí šablona vrátí pole s následujícími hodnotami:
 ]
 ```
 
-Následující příklad ukazuje, jak vytvořit pole objektů se třemi vlastnostmi - název, diskSizeGB a diskIndex.
+Další příklad ukazuje, jak vytvořit pole objektů se třemi vlastnostmi-Name, diskSizeGB a diskIndex.
 
 ```json
 {
@@ -145,10 +145,10 @@ Předchozí příklad vrátí pole s následujícími hodnotami:
 ```
 
 > [!NOTE]
-> Iterace proměnných podporuje argument posunu. Posun musí přijít za názvem iterace, například copyIndex('diskNames', 1). Pokud nezadáte hodnotu posunu, výchozí hodnota 0 pro první instanci.
+> Proměnná iterace podporuje argument posunu. Posun musí být zadán za názvem iterace, například copyIndex (' diskNames ', 1). Pokud nezadáte hodnotu posunu, výchozí hodnota je 0 pro první instanci.
 >
 
-Můžete také použít prvek kopírování v rámci proměnné. Následující příklad vytvoří objekt, který má pole jako jednu z jeho hodnot.
+Můžete také použít element Copy v rámci proměnné. Následující příklad vytvoří objekt, který má pole jako jednu z jeho hodnot.
 
 ```json
 {
@@ -221,7 +221,7 @@ Předchozí příklad vrátí objekt s následujícími hodnotami:
 }
 ```
 
-Následující příklad ukazuje různé způsoby použití kopírování s proměnnými.
+Následující příklad ukazuje různé způsoby, jak můžete použít kopírování s proměnnými.
 
 ```json
 {
@@ -295,28 +295,28 @@ Následující příklad ukazuje různé způsoby použití kopírování s prom
 }
 ```
 
-## <a name="copy-limits"></a>Kopírovat limity
+## <a name="copy-limits"></a>Omezení kopírování
 
-Počet nesmí překročit 800.
+Počet nemůže být větší než 800.
 
-Počet nemůže být záporné číslo. Pokud nasadíte šablonu s Azure PowerShell 2.6 nebo novější, Azure CLI 2.0.74 nebo novější, nebo REST API verze **2019-05-10** nebo novější, můžete nastavit počet na nulu. Dřívější verze PowerShellu, ROZHRANÍ CLI a rozhraní REST API nepodporují nulu pro počet.
+Počet nemůže být záporné číslo. Pokud nasadíte šablonu s Azure PowerShell 2,6 nebo novějším, Azure CLI 2.0.74 nebo novějším nebo REST API verze **2019-05-10** nebo novější, můžete nastavit počet na nula. Starší verze prostředí PowerShell, rozhraní příkazového řádku a REST API pro počet nepodporují nulu.
 
-## <a name="example-templates"></a>Ukázkové šablony
+## <a name="example-templates"></a>Příklady šablon
 
-Následující příklady ukazují běžné scénáře pro vytvoření více než jednu hodnotu pro proměnnou.
+Následující příklady znázorňují běžné scénáře pro vytvoření více než jedné hodnoty pro proměnnou.
 
 |Šablona  |Popis  |
 |---------|---------|
-|[Kopírování proměnných](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) |Ukazuje různé způsoby iterace na proměnné. |
-|[Více bezpečnostních pravidel](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) |Nasadí několik pravidel zabezpečení do skupiny zabezpečení sítě. Vytvoří pravidla zabezpečení z parametru. Parametr naleznete v [tématu více souboru parametrů nsg](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json). |
+|[Kopírovat proměnné](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) |Ukazuje různé způsoby, jak iterace proměnných vymezit. |
+|[Více pravidel zabezpečení](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) |Nasadí několik pravidel zabezpečení do skupiny zabezpečení sítě. Vytvoří pravidla zabezpečení z parametru. Pro parametr viz [více souborů parametrů NSG](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json). |
 
 ## <a name="next-steps"></a>Další kroky
 
-* Chcete-li projít kurz, [najdete v tématu Kurz: vytvoření více instancí prostředků pomocí ARM šablony](template-tutorial-create-multiple-instances.md).
-* Další použití prvku kopírování naleznete v následujících tématech:
+* Pokud chcete projít kurz, přečtěte si [kurz: vytvoření více instancí prostředků pomocí šablon ARM](template-tutorial-create-multiple-instances.md).
+* Pro jiné použití kopie elementu viz:
   * [Iterace prostředků v šablonách ARM](copy-resources.md)
-  * [Iterace vlastností v šablonách ARM](copy-properties.md)
+  * [Iterace vlastnosti v šablonách ARM](copy-properties.md)
   * [Výstupní iterace v šablonách ARM](copy-outputs.md)
-* Pokud se chcete dozvědět o částech šablony, [přečtěte si](template-syntax.md)část Vytváření šablon ARM .
-* Informace o nasazení šablony najdete [v tématu Nasazení aplikace pomocí šablony ARM](deploy-powershell.md).
+* Pokud se chcete dozvědět o oddílech šablony, přečtěte si téma [vytváření šablon ARM](template-syntax.md).
+* Informace o tom, jak šablonu nasadit, najdete v tématu [nasazení aplikace se šablonou ARM](deploy-powershell.md).
 

@@ -1,30 +1,30 @@
 ---
-title: Šablony odkazů pro nasazení
-description: Popisuje, jak používat propojené šablony v šabloně Azure Resource Manager k vytvoření modulárního řešení šablon. Ukazuje, jak předat hodnoty parametrů, zadat soubor parametrů a dynamicky vytvořené adresy URL.
+title: Propojení šablon pro nasazení
+description: Popisuje způsob použití propojených šablon v šabloně Azure Resource Manager k vytvoření modulárního řešení šablon. Ukazuje, jak předat hodnoty parametrů, určit soubor parametrů a dynamicky vytvořené adresy URL.
 ms.topic: conceptual
 ms.date: 12/11/2019
 ms.openlocfilehash: 322797383ee865ceb66c44793387da827aeb8879
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80131928"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Použití propojené a vnořené šablony při nasazování prostředků Azure
 
-Chcete-li nasadit komplexní řešení, můžete šablonu rozdělit na mnoho souvisejících šablon a pak je nasadit společně prostřednictvím hlavní šablony. Související šablony mohou být samostatné soubory nebo syntaxe šablony, která je vložena do hlavní šablony. Tento článek používá termín **propojené šablony** odkazovat na samostatný soubor šablony, který je odkazován pomocí odkazu z hlavní šablony. Používá termín **vnořené šablony** odkazovat na vložené šablony syntaxe v rámci hlavní šablony.
+K nasazení složitých řešení můžete rozdělit šablonu na mnoho souvisejících šablon a pak je nasadit společně prostřednictvím hlavní šablony. Související šablony mohou být samostatné soubory nebo syntaxe šablony, která je vložena do hlavní šablony. V tomto článku se používá pojem **propojená šablona** pro odkazování na samostatný soubor šablony, na který se odkazuje pomocí odkazu z hlavní šablony. Používá termín **vnořená šablona** pro odkazování na vloženou syntaxi šablony v rámci hlavní šablony.
 
-U malých a středních řešení je jedna šablona srozumitelnější a snadněji pochopitelná a udržovatelná. Všechny prostředky a hodnoty můžete zobrazit v jednom souboru. U pokročilých scénářů umožňují propojené šablony rozdělit řešení na cílové součásti. Tyto šablony můžete snadno znovu použít pro jiné scénáře.
+Pro malá až středně střední řešení je jedinou šablonou snazší pochopení a udržování. Všechny prostředky a hodnoty můžete zobrazit v jednom souboru. V případě pokročilých scénářů umožňují propojené šablony rozdělit řešení na cílené součásti. Tyto šablony můžete snadno opakovaně použít pro jiné scénáře.
 
-Kurz najdete v [tématu Kurz: vytvoření propojených šablon Azure Resource Manageru](template-tutorial-create-linked-templates.md).
+Kurz najdete v tématu [kurz: Vytvoření propojených Azure Resource Manager šablon](template-tutorial-create-linked-templates.md).
 
 > [!NOTE]
-> Pro propojené nebo vnořené šablony můžete použít pouze režim [přírůstkového](deployment-modes.md) nasazení.
+> U propojených nebo vnořených šablon můžete použít pouze režim [přírůstkového](deployment-modes.md) nasazení.
 >
 
 ## <a name="nested-template"></a>Vnořená šablona
 
-Chcete-li šablonu vnořit, přidejte do hlavní šablony [prostředek nasazení.](/azure/templates/microsoft.resources/deployments) Ve vlastnosti **šablony** zadejte syntaxi šablony.
+Chcete-li vnořit šablonu, přidejte do hlavní šablony [prostředek nasazení](/azure/templates/microsoft.resources/deployments) . Do vlastnosti **Template (šablona** ) zadejte syntaxi šablony.
 
 ```json
 {
@@ -50,7 +50,7 @@ Chcete-li šablonu vnořit, přidejte do hlavní šablony [prostředek nasazení
 }
 ```
 
-Následující příklad nasazuje účet úložiště prostřednictvím vnořené šablony.
+Následující příklad nasadí účet úložiště prostřednictvím vnořené šablony.
 
 ```json
 {
@@ -92,11 +92,11 @@ Následující příklad nasazuje účet úložiště prostřednictvím vnořen�
 }
 ```
 
-### <a name="expression-evaluation-scope-in-nested-templates"></a>Obor vyhodnocení výrazu v vnořených šablonách
+### <a name="expression-evaluation-scope-in-nested-templates"></a>Rozsah vyhodnocení výrazu ve vnořených šablonách
 
-Při použití vnořené šablony můžete určit, zda budou výrazy šablony vyhodnocovány v rámci oboru nadřazené šablony nebo vnořené šablony. Obor určuje, jak jsou vyřešeny parametry, proměnné a funkce, jako [je resourceGroup](template-functions-resource.md#resourcegroup) a [subscription.](template-functions-resource.md#subscription)
+Při použití vnořené šablony můžete určit, zda jsou výrazy šablony vyhodnocovány v rámci rozsahu nadřazené šablony nebo vnořené šablony. Rozsah určuje, jak jsou řešeny parametry, proměnné a funkce jako [zdrojová](template-functions-resource.md#resourcegroup) a [odběrová](template-functions-resource.md#subscription) pole.
 
-Můžete nastavit obor `expressionEvaluationOptions` prostřednictvím vlastnosti. Ve výchozím `expressionEvaluationOptions` nastavení je `outer`vlastnost nastavena na , což znamená, že používá obor nadřazené šablony. Nastavte hodnotu `inner` tak, aby výrazy byly vyhodnoceny v rámci oboru vnořené šablony.
+Rozsah můžete nastavit pomocí `expressionEvaluationOptions` vlastnosti. Ve výchozím nastavení je `expressionEvaluationOptions` vlastnost nastavena na `outer`hodnotu, což znamená, že používá nadřazený obor šablony. Nastavte hodnotu `inner` na, aby byly výrazy vyhodnoceny v rámci rozsahu vnořené šablony.
 
 ```json
 {
@@ -110,7 +110,7 @@ Můžete nastavit obor `expressionEvaluationOptions` prostřednictvím vlastnost
   ...
 ```
 
-Následující šablona ukazuje, jak jsou výrazy šablony vyřešeny podle oboru. Obsahuje proměnnou `exampleVar` s názvem, která je definována v nadřazené šabloně i vnořené šabloně. Vrátí hodnotu proměnné.
+Následující šablona ukazuje, jak jsou řešeny výrazy šablony podle oboru. Obsahuje proměnnou s názvem `exampleVar` , která je definována v nadřazené šabloně i ve vnořené šabloně. Vrátí hodnotu proměnné.
 
 ```json
 {
@@ -158,14 +158,14 @@ Následující šablona ukazuje, jak jsou výrazy šablony vyřešeny podle obor
 }
 ```
 
-Hodnota `exampleVar` se změní v závislosti `scope` na `expressionEvaluationOptions`hodnotě vlastnosti v . V následující tabulce jsou uvedeny výsledky pro oba obory.
+Hodnota `exampleVar` změny závisí na hodnotě `scope` vlastnosti v. `expressionEvaluationOptions` V následující tabulce jsou uvedeny výsledky pro oba obory.
 
 | `expressionEvaluationOptions` `scope` | Výstup |
 | ----- | ------ |
-| Vnitřní | z vnořené šablony |
+| vnořen | z vnořené šablony |
 | vnější (nebo výchozí) | z nadřazené šablony |
 
-Následující příklad nasadí server SQL a načte tajný klíč trezoru klíčů, který se použije pro heslo. Obor je nastaven `inner` tak, že dynamicky vytvoří ID trezoru klíčů (viz `adminPassword.reference.keyVault` vnější `parameters`šablony) a předá jej jako parametr vnořené šabloně.
+Následující příklad nasadí SQL Server a načte tajný klíč trezoru klíčů, který se použije pro heslo. Rozsah je nastaven na `inner` , protože dynamicky vytváří ID trezoru klíčů (viz `adminPassword.reference.keyVault` v vnějších šablonách `parameters`) a předává je do vnořené šablony jako parametr.
 
 ```json
 {
@@ -277,11 +277,11 @@ Následující příklad nasadí server SQL a načte tajný klíč trezoru klí�
 
 > [!NOTE]
 >
-> Pokud je obor `outer`nastaven na , `reference` nelze použít funkci v části výstupy vnořené šablony pro prostředek, který jste nasadili v vnořené šabloně. Chcete-li vrátit hodnoty pro nasazený prostředek ve vnořené šabloně, použijte `inner` obor nebo převeďte vnořenou šablonu na propojenou šablonu.
+> Pokud je obor nastaven na `outer`hodnotu, nemůžete `reference` použít funkci v části výstupy vnořené šablony pro prostředek, který jste nasadili ve vnořené šabloně. Chcete-li vrátit hodnoty nasazeného prostředku ve vnořené šabloně, buď použijte `inner` rozsah, nebo převeďte vnořenou šablonu na propojenou šablonu.
 
-## <a name="linked-template"></a>Propojená šablona
+## <a name="linked-template"></a>Odkazovaná šablona
 
-Chcete-li vytvořit propojení šablony, přidejte do hlavní šablony [prostředek nasazení.](/azure/templates/microsoft.resources/deployments) Ve vlastnosti **templateLink** zadejte identifikátor URI šablony, který má být zahrnut. Následující příklad odkazuje na šablonu, která nasazuje nový účet úložiště.
+Pokud chcete propojit šablonu, přidejte do hlavní šablony [prostředek nasazení](/azure/templates/microsoft.resources/deployments) . Do vlastnosti **templateLink** zadejte identifikátor URI šablony, která se má zahrnout. Následující příklad odkazuje na šablonu, která nasadí nový účet úložiště.
 
 ```json
 {
@@ -308,19 +308,19 @@ Chcete-li vytvořit propojení šablony, přidejte do hlavní šablony [prostře
 }
 ```
 
-Při odkazování na propojenou `uri` šablonu nesmí být hodnota místního souboru nebo souboru, který je k dispozici pouze v místní síti. Je nutné zadat hodnotu URI, kterou lze stáhnout jako **http** nebo **https**. 
+Při odkazování na propojenou šablonu nemůže být hodnota `uri` nesmí být místním souborem nebo souborem, který je k dispozici pouze v místní síti. Je nutné zadat hodnotu identifikátoru URI, která se bude stahovat jako **http** nebo **https**. 
 
 > [!NOTE]
 >
-> Můžete odkazovat šablony pomocí parametrů, které nakonec vyřešit na něco, co `_artifactsLocation` používá **http** nebo **https**, například pomocí parametru, jako je takto:`"uri": "[concat(parameters('_artifactsLocation'), '/shared/os-disk-parts-md.json', parameters('_artifactsLocationSasToken'))]",`
+> Můžete odkazovat na šablony pomocí parametrů, které jsou nakonec vyřešeny na něco, co používá **protokol HTTP** nebo **https**, `_artifactsLocation` například pomocí parametru, například:`"uri": "[concat(parameters('_artifactsLocation'), '/shared/os-disk-parts-md.json', parameters('_artifactsLocationSasToken'))]",`
 
 
 
-Správce prostředků musí mít přístup k šabloně. Jednou z možností je umístit propojenou šablonu do účtu úložiště a použít identifikátor URI pro tuto položku.
+Správce prostředků musí být schopné získat přístup k šabloně. Jednou z možností je umístit propojenou šablonu do účtu úložiště a použít identifikátor URI pro tuto položku.
 
 ### <a name="parameters-for-linked-template"></a>Parametry pro propojenou šablonu
 
-Parametry propojené šablony můžete zadat buď v externím souboru, nebo v roce. Při poskytování souboru externích parametrů použijte vlastnost **parametersLink:**
+Parametry pro propojenou šablonu můžete zadat buď v externím souboru, nebo do vloženého. Při poskytování externího souboru parametrů použijte vlastnost **parametersLink** :
 
 ```json
 "resources": [
@@ -343,7 +343,7 @@ Parametry propojené šablony můžete zadat buď v externím souboru, nebo v ro
 ]
 ```
 
-Chcete-li předat hodnoty parametrů v řádku, použijte **vlastnost parameters.**
+K předání hodnot parametrů do inline použijte vlastnost **Parameters** .
 
 ```json
 "resources": [
@@ -365,17 +365,17 @@ Chcete-li předat hodnoty parametrů v řádku, použijte **vlastnost parameters
 ]
 ```
 
-Nelze použít jak vložky parametry a odkaz na soubor parametrů. Nasazení se nezdaří s `parametersLink` `parameters` chybou, pokud jsou zadány oba a jsou zadány.
+Nemůžete použít vložené parametry ani odkaz na soubor parametrů. Nasazení se nepovede s chybou `parametersLink` , když `parameters` je zadán parametr a.
 
 ## `contentVersion`
 
-Nemusíte poskytovat `contentVersion` vlastnost pro nebo `templateLink` `parametersLink` majetek. Pokud nezadáte `contentVersion`, aktuální verze šablony se nasadí. Pokud zadáte hodnotu pro verzi obsahu, musí odpovídat verzi v propojené šabloně; v opačném případě se nasazení nezdaří s chybou.
+Nemusíte zadávat `contentVersion` vlastnost pro vlastnost `templateLink` nebo. `parametersLink` Pokud neposkytnete `contentVersion`, je nasazena aktuální verze šablony. Pokud zadáte hodnotu verze obsahu, musí odpovídat verzi v propojené šabloně. v opačném případě se nasazení nepovede a dojde k chybě.
 
 ## <a name="using-variables-to-link-templates"></a>Použití proměnných k propojení šablon
 
-V předchozích příkladech byly zobrazeny pevně zakódované hodnoty adres URL pro odkazy na šablony. Tento přístup může fungovat pro jednoduchou šablonu, ale nefunguje dobře pro velkou sadu modulárních šablon. Místo toho můžete vytvořit statickou proměnnou, která ukládá základní adresu URL pro hlavní šablonu, a pak dynamicky vytvářet adresy URL pro propojené šablony z této základní adresy URL. Výhodou tohoto přístupu je, že můžete snadno přesunout nebo rozvrstvit šablonu, protože je třeba změnit pouze statickou proměnnou v hlavní šabloně. Hlavní šablona předává správné identifikátory URI v rozložené šabloně.
+Předchozí příklady ukázaly pevně kódované hodnoty adresy URL pro odkazy šablony. Tento přístup může fungovat pro jednoduchou šablonu, ale nefunguje dobře pro velkou sadu modulárních šablon. Místo toho můžete vytvořit statickou proměnnou, která bude ukládat základní adresu URL pro hlavní šablonu a pak dynamicky vytvořit adresy URL pro propojené šablony z této základní adresy URL. Výhodou tohoto přístupu je, že šablonu můžete snadno přesunout nebo rozvětvit, protože v hlavní šabloně potřebujete změnit jenom statickou proměnnou. Hlavní šablona projde správné identifikátory URI v rámci rozložené šablony.
 
-Následující příklad ukazuje, jak použít základní adresu URL k vytvoření dvou adres URL pro propojené šablony **(sharedTemplateUrl** a **vmTemplate).**
+Následující příklad ukazuje, jak použít základní adresu URL pro vytvoření dvou adres URL pro propojené šablony (**sharedTemplateUrl** a **vmTemplate**).
 
 ```json
 "variables": {
@@ -385,7 +385,7 @@ Následující příklad ukazuje, jak použít základní adresu URL k vytvořen
 }
 ```
 
-Můžete také použít [deployment()](template-functions-deployment.md#deployment) získat základní adresu URL pro aktuální šablonu a použít ji k získání adresy URL pro jiné šablony ve stejném umístění. Tento přístup je užitečný, pokud se změní umístění šablony nebo se chcete vyhnout pevným kódovacím adresám URL v souboru šablony. Vlastnost templateLink je vrácena pouze při propojení se vzdálenou šablonou s adresou URL. Pokud používáte místní šablonu, tato vlastnost není k dispozici.
+Můžete také použít [Deployment ()](template-functions-deployment.md#deployment) pro získání základní adresy URL pro aktuální šablonu a použít ji k získání adresy URL pro jiné šablony ve stejném umístění. Tento přístup je užitečný v případě, že se změní umístění šablony nebo chcete v souboru šablony vyhnout adresám URL pevného kódování. Vlastnost templateLink je vrácena pouze při odkazování na vzdálenou šablonu s adresou URL. Pokud používáte místní šablonu, tato vlastnost není k dispozici.
 
 ```json
 "variables": {
@@ -393,7 +393,7 @@ Můžete také použít [deployment()](template-functions-deployment.md#deployme
 }
 ```
 
-Nakonec byste použít proměnnou ve `uri` vlastnosti. `templateLink`
+Nakonec byste použili proměnnou ve `uri` vlastnosti `templateLink` vlastnosti.
 
 ```json
 "templateLink": {
@@ -402,11 +402,11 @@ Nakonec byste použít proměnnou ve `uri` vlastnosti. `templateLink`
 }
 ```
 
-## <a name="using-copy"></a>Použití kopie
+## <a name="using-copy"></a>Pomocí kopírování
 
-Chcete-li vytvořit více instancí prostředku s vnořenou šablonou, přidejte prvek kopírování na úrovni prostředku **Microsoft.Resources/deployments.** Nebo pokud je obor vnitřní, můžete přidat kopii do vnořené šablony.
+Chcete-li vytvořit více instancí prostředku s vnořenou šablonou, přidejte element Copy na úrovni prostředku **Microsoft. Resources/Deployments** . Nebo, pokud je oborem vnitřní, můžete přidat kopii v rámci vnořené šablony.
 
-Následující ukázková šablona ukazuje, jak používat kopii s vnořenou šablonou.
+Následující příklad šablony ukazuje, jak použít kopírování s vnořenou šablonou.
 
 ```json
 "resources": [
@@ -453,11 +453,11 @@ Následující ukázková šablona ukazuje, jak používat kopii s vnořenou ša
 
 ## <a name="get-values-from-linked-template"></a>Získání hodnot z propojené šablony
 
-Chcete-li získat výstupní hodnotu z propojené šablony, `"[reference('deploymentName').outputs.propertyName.value]"`načtěte hodnotu vlastnosti syntaxí jako: .
+Chcete-li získat výstupní hodnotu z propojené šablony, načtěte hodnotu vlastnosti s syntaxí, `"[reference('deploymentName').outputs.propertyName.value]"`jako je:.
 
 Při získávání výstupní vlastnosti z propojené šablony nesmí název vlastnosti obsahovat pomlčku.
 
-Následující příklady ukazují, jak odkazovat na propojenou šablonu a načíst výstupní hodnotu. Propojená šablona vrátí jednoduchou zprávu.  Za prvé, propojená šablona:
+Následující příklady ukazují, jak odkazovat na propojenou šablonu a načíst výstupní hodnotu. Odkazovaná šablona vrátí jednoduchou zprávu.  Nejprve odkazovaná Šablona:
 
 ```json
 {
@@ -475,7 +475,7 @@ Následující příklady ukazují, jak odkazovat na propojenou šablonu a nač�
 }
 ```
 
-Hlavní šablona nasadí propojenou šablonu a získá vrácenou hodnotu. Všimněte si, že odkazuje na prostředek nasazení podle názvu a používá název vlastnosti vrácené propojené šablony.
+Hlavní šablona nasadí propojenou šablonu a získá vrácenou hodnotu. Všimněte si, že odkazuje na prostředek nasazení podle názvu a používá název vlastnosti vrácenou propojenou šablonou.
 
 ```json
 {
@@ -506,9 +506,9 @@ Hlavní šablona nasadí propojenou šablonu a získá vrácenou hodnotu. Všimn
 }
 ```
 
-Stejně jako u jiných typů prostředků můžete nastavit závislosti mezi propojenou šablonou a dalšími prostředky. Pokud jiné prostředky vyžadují výstupní hodnotu z propojené šablony, ujistěte se, že propojená šablona je nasazena před nimi. Nebo když propojená šablona závisí na jiných prostředcích, ujistěte se, že ostatní prostředky jsou nasazeny před propojenou šablonou.
+Stejně jako u jiných typů prostředků můžete nastavit závislosti mezi propojenou šablonou a dalšími prostředky. Pokud jiné zdroje vyžadují výstupní hodnotu z propojené šablony, zajistěte, aby byla propojená šablona nasazena před nimi. Nebo, pokud propojená šablona spoléhá na jiné prostředky, zajistěte, aby byly nasazeny další prostředky před propojenou šablonou.
 
-Následující příklad ukazuje šablonu, která nasazuje veřejnou IP adresu a vrací ID prostředku Azure pro tuto veřejnou IP adresu:
+Následující příklad ukazuje šablonu, která nasadí veřejnou IP adresu a vrátí ID prostředku prostředku Azure pro tuto veřejnou IP adresu:
 
 ```json
 {
@@ -543,7 +543,7 @@ Následující příklad ukazuje šablonu, která nasazuje veřejnou IP adresu a
 }
 ```
 
-Chcete-li použít veřejnou IP adresu z předchozí šablony při nasazování správce zatížení, `Microsoft.Resources/deployments` propojte ji se šablonou a deklarujte závislost na prostředku. Veřejná IP adresa v zařízení pro vyrovnávání zatížení je nastavena na výstupní hodnotu z propojené šablony.
+Chcete-li při nasazování nástroje pro vyrovnávání zatížení použít veřejnou IP adresu z předchozí šablony, připojte se k šabloně a deklarujte `Microsoft.Resources/deployments` závislost na prostředku. Veřejná IP adresa v nástroji pro vyrovnávání zatížení je nastavená na výstupní hodnotu z propojené šablony.
 
 ```json
 {
@@ -612,11 +612,11 @@ Chcete-li použít veřejnou IP adresu z předchozí šablony při nasazování 
 
 ## <a name="deployment-history"></a>Historie nasazení
 
-Správce prostředků zpracovává každou šablonu jako samostatné nasazení v historii nasazení. Hlavní šablona se třemi propojenými nebo vnořenými šablonami se v historii nasazení zobrazí takto:
+Správce prostředků zpracuje každou šablonu jako samostatné nasazení v historii nasazení. V historii nasazení se zobrazí hlavní šablona se třemi propojenými nebo vnořenými šablonami jako:
 
 ![Historie nasazení](./media/linked-templates/deployment-history.png)
 
-Tyto samostatné položky v historii můžete použít k načtení výstupních hodnot po nasazení. Následující šablona vytvoří veřejnou IP adresu a vyvede ip adresu:
+Tyto samostatné položky v historii můžete použít k načtení výstupních hodnot po nasazení. Následující šablona vytvoří veřejnou IP adresu a vytvoří výstup IP adresy:
 
 ```json
 {
@@ -699,7 +699,7 @@ for ($i = 0; $i -lt $loopCount; $i++)
 }
 ```
 
-Nebo skript Azure CLI v prostředí Bash:
+Nebo skript Azure CLI v prostředí bash:
 
 ```azurecli-interactive
 #!/bin/bash
@@ -715,13 +715,13 @@ done
 
 ## <a name="securing-an-external-template"></a>Zabezpečení externí šablony
 
-Přestože propojená šablona musí být externě dostupná, nemusí být obecně dostupná veřejnosti. Šablonu můžete přidat do účtu soukromého úložiště, který je přístupný jenom pro vlastníka účtu úložiště. Potom vytvoříte token sdíleného přístupového podpisu (SAS), který umožní přístup během nasazení. Přidáte token SAS do identifikátoru URI pro propojenou šablonu. I když je token předán jako zabezpečený řetězec, identifikátor URI propojené šablony, včetně tokenu SAS, je zaznamenán v operacích nasazení. Chcete-li omezit expozici, nastavte vypršení platnosti tokenu.
+I když je propojená šablona musí být externě dostupná, nemusí být všeobecně dostupná veřejnosti. Šablonu můžete přidat do účtu privátního úložiště, který je přístupný jenom pro vlastníka účtu úložiště. Pak vytvoříte token sdíleného přístupového podpisu (SAS) pro povolení přístupu během nasazení. Tento token SAS přidáte k identifikátoru URI pro propojenou šablonu. I když je token předán jako zabezpečený řetězec, do operací nasazení se zaprotokoluje identifikátor URI propojené šablony, včetně tokenu SAS. Chcete-li omezit vystavení, nastavte vypršení platnosti tokenu.
 
-Soubor parametrů může být také omezen na přístup prostřednictvím tokenu SAS.
+Soubor parametrů může být také omezený pro přístup prostřednictvím tokenu SAS.
 
-V současné době nelze propojit šablonu v účtu úložiště, který je za [bránou firewall služby Azure Storage](../../storage/common/storage-network-security.md).
+V současné době nemůžete propojit šablonu v účtu úložiště, který je za [Azure Storage bránou firewall](../../storage/common/storage-network-security.md).
 
-Následující příklad ukazuje, jak předat token SAS při propojení se šablonou:
+Následující příklad ukazuje, jak předat token SAS při odkazování na šablonu:
 
 ```json
 {
@@ -749,7 +749,7 @@ Následující příklad ukazuje, jak předat token SAS při propojení se šabl
 }
 ```
 
-V PowerShellu získáte token pro kontejner a nasadit šablony s následujícími příkazy. Všimněte si, že **parametr containerSasToken** je definován v šabloně. Není parametr v **new-azResourceGroupDeployment příkazu.**
+V PowerShellu získáte token pro kontejner a nasadíte šablony pomocí následujících příkazů. Všimněte si, že parametr **containerSasToken** je definován v šabloně. Nejedná se o parametr v příkazu **New-AzResourceGroupDeployment** .
 
 ```azurepowershell-interactive
 Set-AzCurrentStorageAccount -ResourceGroupName ManageGroup -Name storagecontosotemplates
@@ -758,7 +758,7 @@ $url = (Get-AzStorageBlob -Container templates -Blob parent.json).ICloudBlob.uri
 New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateUri ($url + $token) -containerSasToken $token
 ```
 
-Pro Azure CLI v prostředí Bash získáte token pro kontejner a nasadíte šablony s následujícím kódem:
+Pro Azure CLI v prostředí bash získáte token pro kontejner a nasadíte šablony s následujícím kódem:
 
 ```azurecli-interactive
 #!/bin/bash
@@ -783,19 +783,19 @@ parameter='{"containerSasToken":{"value":"?'$token'"}}'
 az deployment group create --resource-group ExampleGroup --template-uri $url?$token --parameters $parameter
 ```
 
-## <a name="example-templates"></a>Ukázkové šablony
+## <a name="example-templates"></a>Příklady šablon
 
-Následující příklady ukazují běžné použití propojených šablon.
+Následující příklady znázorňují běžné použití propojených šablon.
 
-|Hlavní šablona  |Propojená šablona |Popis  |
+|Hlavní šablona  |Odkazovaná šablona |Popis  |
 |---------|---------| ---------|
-|[Ahoj světe](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworldparent.json) |[propojená šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworld.json) | Vrátí řetězec z propojené šablony. |
-|[Vyrovnávání zatížení s veřejnou IP adresou](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) |[propojená šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) |Vrátí veřejnou IP adresu z propojené šablony a nastaví tuto hodnotu v zátěžovém záložně. |
-|[Několik IP adres](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/static-public-ip-parent.json) | [propojená šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/static-public-ip.json) |Vytvoří několik veřejných IP adres v propojené šabloně.  |
+|[Hello World](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworldparent.json) |[odkazovaná šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworld.json) | Vrátí řetězec z propojené šablony. |
+|[Load Balancer s veřejnou IP adresou](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) |[odkazovaná šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) |Vrátí veřejnou IP adresu z propojené šablony a nastaví tuto hodnotu v nástroji pro vyrovnávání zatížení. |
+|[Několik IP adres](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/static-public-ip-parent.json) | [odkazovaná šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/static-public-ip.json) |Vytvoří v propojené šabloně několik veřejných IP adres.  |
 
 ## <a name="next-steps"></a>Další kroky
 
-* Pokud jde o kurz, přečtěte si [informace o tématu: vytvoření propojených šablon Azure Resource Manageru](template-tutorial-create-linked-templates.md).
-* Další informace o definování pořadí nasazení pro vaše prostředky, najdete [v tématu Definování závislostí v šablonách Azure Resource Manager .](define-resource-dependency.md)
-* Informace o tom, jak definovat jeden prostředek, ale vytvořit mnoho instancí, najdete v tématu [vytvoření více instancí prostředků ve Správci prostředků Azure](copy-resources.md).
-* Postup nastavení šablony v účtu úložiště a generování tokenu SAS najdete v tématu [Nasazení prostředků pomocí šablon Správce prostředků a Azure PowerShellu](deploy-powershell.md) nebo Nasazení prostředků pomocí šablon Správce prostředků a Azure [CLI](deploy-cli.md).
+* Kurz najdete v tématu [kurz: Vytvoření propojených Azure Resource Manager šablon](template-tutorial-create-linked-templates.md).
+* Další informace o definování pořadí nasazení pro vaše prostředky najdete v tématu [Definování závislostí v šablonách Azure Resource Manager](define-resource-dependency.md).
+* Informace o tom, jak definovat jeden prostředek, ale vytvořit mnoho instancí, najdete [v tématu Vytvoření více instancí prostředků v Azure Resource Manager](copy-resources.md).
+* Postup při nastavení šablony v účtu úložiště a vygenerování tokenu SAS najdete v tématu [nasazení prostředků pomocí šablon Správce prostředků a Azure PowerShell](deploy-powershell.md) nebo [nasazení prostředků pomocí šablon Správce prostředků a Azure CLI](deploy-cli.md).

@@ -1,6 +1,6 @@
 ---
-title: Testovací cesta Správce prostředků Azure | Azure Marketplace
-description: Vytvoření testovací jednotky Marketplace pomocí Správce prostředků Azure
+title: Azure Resource Manager testovacích jednotek | Azure Marketplace
+description: Sestavení testovací jednotky Marketplace pomocí Azure Resource Manager
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,61 +8,61 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: dsindona
 ms.openlocfilehash: 6125aa010d8676518b84f866343b01f95246160f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80275930"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Testovací verze Azure Resource Manageru
 
-Tento článek je pro vydavatele, kteří mají svou nabídku na Azure Marketplace nebo kteří jsou na AppSource, ale chtějí vytvořit svou testovací disku s jenom prostředky Azure.
+Tento článek je určen vydavatelům, kteří mají svou nabídku na Azure Marketplace nebo kteří jsou na AppSource, ale chtějí sestavit testovací jednotku pouze s prostředky Azure.
 
-Šablona Azure Resource Manager (Resource Manager) je kódovaný kontejner prostředků Azure, které navrhujete tak, aby co nejlépe reprezentovaly vaše řešení. Pokud nejste obeznámeni s tím, co je šablona Správce prostředků, přečtěte si informace o [porozumění šablonám Správce prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) a vytváření šablon Správce [prostředků,](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates) abyste měli jistotu, že víte, jak vytvářet a testovat vlastní šablony.
+Šablona Azure Resource Manager (Správce prostředků) je kódovaný kontejner prostředků Azure, který navrhujete, aby nejlépe představoval vaše řešení. Pokud si nejste obeznámeni s tím, co je šablona Správce prostředků, přečtěte si článek [principy správce prostředků šablon](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) a [vytváření správce prostředků šablon](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates) , abyste se ujistili, jak vytvářet a testovat vlastní šablony.
 
-Testovací jednotka provádí, že přebírá zajišťovnou šablonu Správce prostředků a provádí nasazení všech prostředků požadovaných z této šablony Správce prostředků do skupiny prostředků.
+V jakém testovacím disku se převezme poskytnutá šablona Správce prostředků a provede nasazení všech prostředků vyžadovaných z této Správce prostředků šablony do skupiny prostředků.
 
-Pokud se rozhodnete vytvořit testovací jednotku Azure Resource Manager, požadavky jsou pro vás:
+Pokud se rozhodnete vytvořit Azure Resource Manager testovací jednotku, požadavky vám umožní:
 
-- Vytvořte, otestujte a nahrajte šablonu Správce prostředků testovací jednotky.
-- Nakonfigurujte všechna požadovaná metadata a nastavení tak, aby byla testovací verze povolena.
-- Znovu publikujte svou nabídku s povolenou testovací jízdou.
+- Sestavte, testujte a nahrajte svou testovací jednotku Správce prostředků šablonu.
+- Nakonfigurujte všechna požadovaná metadata a nastavení, aby se aktivovala testovací jednotka.
+- Znovu publikujte nabídku se zapnutou testovací jednotkou.
 
-## <a name="how-to-build-an-azure-resource-manager-test-drive"></a>Jak vytvořit testovací jednotku Azure Resource Manager
+## <a name="how-to-build-an-azure-resource-manager-test-drive"></a>Postup sestavení testovací jednotky Azure Resource Manager
 
-Tady je proces vytváření testovací jednotky Azure Resource Manager:
+Tady je postup pro vytvoření Azure Resource Manager testovacích jednotek:
 
-1. Navrhněte, co mají vaši zákazníci dělat v vývojovém diagramu.
-1. Definujte, jaké prostředí mají zákazníci vytvářet.
-1. Na základě výše uvedených definic se rozhodněte, jaké části a zdroje jsou potřebné k tomu, aby zákazníci dosáhli takového prostředí: například instance D365 nebo web s databází.
-1. Vytvořte návrh místně a otestujte prostředí.
-1. Balíček zkušenosti v nasazení šablony ARM a odtud:
-    1. Definujte, které části prostředků jsou vstupní parametry;
+1. Navrhněte, co mají vaši zákazníci dělat v diagramu toku.
+1. Definujte, co byste chtěli, aby si vaši zákazníci mohli sestavit.
+1. Na základě výše uvedených definic rozhodněte, které součásti a prostředky jsou nutné pro zákazníky k tomu, aby mohli provádět tyto zkušenosti: například instance D365 nebo web s databází.
+1. Sestavte návrh místně a otestujte prostředí.
+1. Zabalit prostředí v nasazení šablony ARM a odtud:
+    1. Určete, jaké části prostředků jsou vstupní parametry;
     1. Jaké proměnné jsou;
-    1. Jaké výstupy jsou dány zkušenosti zákazníků.
-1. Publikujte, otestujte a přejděte do provozu.
+    1. Jaké jsou výstupy daného zákazníka.
+1. Publikujte, testujte a jděte do provozu.
 
-Nejdůležitější část o vytváření Azure Resource Manager Test Drive je definovat, jaké scénáře, které chcete, aby vaši zákazníci nazkušenosti. Jste firewall produkt a chcete demo, jak dobře zvládnout skript injekce útoky? Jste úložný produkt a chcete demo, jak rychle a snadno vaše řešení komprimuje soubory?
+Nejdůležitější součástí vytváření Azure Resource Manager testovacích jednotek je definování scénářů, ve kterých mají vaši zákazníci zkušenosti. Jste produkt brány firewall a chcete si vyzkoušet, jak dobře zpracovávat útoky s injektážemi skriptu? Jste produkt úložiště a chcete si vyzkoušet, jak rychlé a snadné řešení komprimuje soubory?
 
-Ujistěte se, že trávíte dostatečné množství času hodnocením toho, jaké jsou nejlepší způsoby, jak předvést svůj produkt. Konkrétně kolem všech požadovaných prostředků, které byste potřebovali, protože balení šablony Resource Manager je dostatečně jednodušší.
+Nezapomeňte strávit dostatečný čas hodnocením, jaké jsou nejlepší způsoby, jak se má váš produkt zobrazit. Konkrétně pro všechny požadované prostředky, které byste potřebovali, protože balíček Správce prostředků šablonu dostatečně jednodušší.
 
-Chcete-li pokračovat v našem příkladu brány firewall, architektura může být, že potřebujete veřejnou ADRESU IP pro vaši službu a další veřejnou adresu IP adresu URL pro web, který chrání brána firewall. Každá IP adresa je nasazená ve virtuálním počítači a propojena se skupinou zabezpečení sítě + síťovým rozhraním.
+Aby bylo možné pokračovat v našem příkladu brány firewall, může to být tím, že budete potřebovat veřejnou IP adresu URL pro vaši službu a jinou veřejnou IP adresu URL pro web, který brána firewall chrání. Každá IP adresa je nasazená na virtuálním počítači a připojená společně se skupinou zabezpečení sítě + síťovým rozhraním.
 
-Jakmile jste navrhli požadovaný balíček prostředků, nyní přichází psaní a vytváření šablony Test Drive Resource Manager.
+Po navržení požadovaného balíčku prostředků teď dovedeme k vytváření a sestavování testovacích jednotek Správce prostředků šablony.
 
-## <a name="writing-test-drive-resource-manager-templates"></a>Psaní šablon Správce prostředků testovací jednotky
+## <a name="writing-test-drive-resource-manager-templates"></a>Zápis šablon testovacích jednotek Správce prostředků
 
-Test Drive spustí nasazení v plně automatizovaném režimu a z tohoto důvodu mají šablony testovací jednotky některá omezení popsaná níže.
+Test Drive spouští nasazení v plně automatizovaném režimu a z toho důvodu mají šablony testovacích jednotek některá omezení popsaná níže.
 
 ### <a name="parameters"></a>Parametry
 
-Většina šablon má sadu parametrů. Parametry definují názvy prostředků, velikosti prostředků (například typy účtů úložiště nebo velikosti virtuálních počítačů), uživatelská jména a hesla, názvy DNS a tak dále. Když nasadíte řešení pomocí portálu Azure Portal, můžete ručně naplnit všechny tyto parametry, vybrat dostupné názvy DNS nebo názvy účtů úložiště a tak dále.
+Většina šablon má sadu parametrů. Parametry definují názvy prostředků, velikosti prostředků (například typy účtů úložiště nebo velikosti virtuálních počítačů), uživatelská jména a hesla, názvy DNS atd. Když nasadíte řešení pomocí Azure Portal, můžete ručně naplnit všechny tyto parametry, vybrat dostupné názvy DNS nebo názvy účtů úložiště a tak dále.
 
-![Seznam parametrů ve Správci prostředků Azure](./media/azure-resource-manager-test-drive/param1.png)
+![Seznam parametrů v Azure Resource Manager](./media/azure-resource-manager-test-drive/param1.png)
 
-Test Drive však funguje v plně automatickém režimu bez lidské interakce, takže podporuje pouze omezenou sadu kategorií parametrů. Pokud parametr v šabloně Správce prostředků testovací jednotky nespadá do jedné z podporovaných kategorií, je nutné **tento parametr nahradit proměnnou nebo konstantní hodnotou.**
+Testovací jednotka ale funguje v plně automatickém režimu bez lidské interakce, takže podporuje jenom omezenou sadu kategorií parametrů. Pokud parametr v šabloně Test Drive Správce prostředků nepatří do jedné z podporovaných kategorií, je nutné **nahradit tento parametr proměnnou nebo konstantní hodnotou.**
 
-Můžete použít libovolný platný název pro vaše parametry, Test Drive rozpoznává kategorii parametrů pomocí hodnoty typu metadat. Pro **každý parametr šablony je nutné zadat typ metadat**, jinak šablona neprojde ověřením:
+Pro parametry můžete použít libovolný platný název. Test Drive rozpoznává kategorii parametru pomocí hodnoty typu metadata. Je **nutné zadat metadata-Type pro každý parametr šablony**, jinak vaše šablona neprojde ověřením:
 
 ```json
 "parameters": {
@@ -77,20 +77,20 @@ Můžete použít libovolný platný název pro vaše parametry, Test Drive rozp
 }
 ```
 
-Je také důležité si uvědomit, že **všechny parametry jsou volitelné**, takže pokud\'nechcete používat žádné, nemusíte.\'
+Je také důležité si uvědomit, že **všechny parametry jsou volitelné**, takže pokud\'nechcete použít žádné, nebudete\'potřebovat.
 
-### <a name="accepted-parameter-metadata-types"></a>Typy metadat přijatých parametrů
+### <a name="accepted-parameter-metadata-types"></a>Přijaté typy metadat parametrů
 
-| Typ metadat   | Typ parametru  | Popis     | Vzorová hodnota    |
+| Typ metadat   | Typ parametru  | Popis     | Ukázková hodnota    |
 |---|---|---|---|
-| **Baseuri**     | řetězec          | Základní identifikátor URI balíčku nasazení| \//\<https:\.. \>.blob.core.windows.net/\<\..\> |
-| **Username**    | řetězec          | Nové náhodné uživatelské jméno.| admin68876      |
-| **heslo**    | zabezpečený řetězec    | Nové náhodné heslo | Lp!ACS\^2kh     |
-| **id relace**   | řetězec          | Jedinečné ID relace testovací jednotky (GUID)    | b8c8693e-5673-449c-badd-257a405a6dee |
+| **identifikátor**     | řetězec          | Základní identifikátor URI balíčku pro nasazení| https:\//\<.\. \>. blob.Core.Windows.NET/\<\..\> |
+| **jmen**    | řetězec          | Nové náhodné uživatelské jméno.| admin68876      |
+| **heslo**    | zabezpečený řetězec    | Nové náhodné heslo | LP! ACS\^2kH     |
+| **ID relace**   | řetězec          | Jedinečný identifikátor relace testovacích jednotek (GUID)    | b8c8693e-5673-449c-badd-257a405a6dee |
 
-#### <a name="baseuri"></a>Baseuri
+#### <a name="baseuri"></a>identifikátor
 
-Test Drive inicializuje tento parametr s **Base Uri** balíčku nasazení, takže můžete použít tento parametr k vytvoření Uri libovolného souboru zahrnutého do balíčku.
+Test Drive Inicializuje tento parametr se **základním identifikátorem URI** balíčku pro nasazení, takže tento parametr můžete použít k vytvoření identifikátoru URI všech souborů zahrnutých do balíčku.
 
 ```json
 "parameters": {
@@ -106,7 +106,7 @@ Test Drive inicializuje tento parametr s **Base Uri** balíčku nasazení, takž
 }
 ```
 
-Uvnitř šablony můžete tento parametr použít k vytvoření Uri libovolného souboru z balíčku nasazení testovací jednotky. Následující příklad ukazuje, jak vytvořit uri propojené šablony:
+V rámci šablony můžete pomocí tohoto parametru vytvořit identifikátor URI libovolného souboru z balíčku pro nasazení testovacích jednotek. Následující příklad ukazuje, jak vytvořit identifikátor URI propojené šablony:
 
 ```json
 "templateLink": {
@@ -117,7 +117,7 @@ Uvnitř šablony můžete tento parametr použít k vytvoření Uri libovolného
 
 #### <a name="username"></a>uživatelské jméno
 
-Test Drive inicializuje tento parametr s novým náhodným uživatelským jménem:
+Test Drive Inicializuje tento parametr pomocí nového náhodného uživatelského jména:
 
 ```json
 "parameters": {
@@ -133,15 +133,15 @@ Test Drive inicializuje tento parametr s novým náhodným uživatelským jméne
 }
 ```
 
-Hodnota vzorku:
+Ukázková hodnota:
 
     admin68876
 
-Pro vaše řešení můžete použít náhodná nebo konstantní uživatelská jména.
+Pro vaše řešení můžete použít buď náhodná, nebo trvalá uživatelská jména.
 
 #### <a name="password"></a>heslo
 
-Test Drive inicializuje tento parametr novým náhodným heslem:
+Test Drive Inicializuje tento parametr pomocí nového náhodného hesla:
 
 ```json
 "parameters": {
@@ -157,15 +157,15 @@ Test Drive inicializuje tento parametr novým náhodným heslem:
 }
 ```
 
-Hodnota vzorku:
+Ukázková hodnota:
 
     Lp!ACS^2kh
 
-Pro vaše řešení můžete použít náhodná nebo konstantní hesla.
+Pro vaše řešení můžete použít náhodná nebo trvalá hesla.
 
 #### <a name="session-id"></a>ID relace
 
-Test Drive inicializovat tento parametr s jedinečným identifikátorem GUID představující md relace testovací jednotky:
+Otestujte tento parametr pomocí jedinečného identifikátoru GUID, který představuje ID relace testovací jednotky:
 
 ```json
 "parameters": {
@@ -181,17 +181,17 @@ Test Drive inicializovat tento parametr s jedinečným identifikátorem GUID př
 }
 ```
 
-Hodnota vzorku:
+Ukázková hodnota:
 
     b8c8693e-5673-449c-badd-257a405a6dee
 
-Tento parametr můžete použít k jednoznačné identifikaci relace testová jednotka, pokud je to nutné.
+Tento parametr můžete použít k jednoznačné identifikaci relace testovacích jednotek, pokud je to nezbytné.
 
 ### <a name="unique-names"></a>Jedinečné názvy
 
 Některé prostředky Azure, jako jsou účty úložiště nebo názvy DNS, vyžadují globálně jedinečné názvy.
 
-To znamená, že pokaždé, když testdrive nasadí šablonu Správce prostředků,\' vytvoří **novou skupinu prostředků s jedinečným názvem** pro všechny své prostředky. Proto je nutné použít [funkci uniquestring](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-functions#uniquestring) zřetězenou s názvy proměnných na ID skupiny prostředků ke generování náhodných jedinečných hodnot:
+To znamená, že pokaždé, když testovací jednotka nasadí šablonu Správce prostředků, vytvoří **novou skupinu prostředků s jedinečným názvem** pro všechny její\' prostředky. Proto je nutné použít funkci [uniquestring](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-functions#uniquestring) zřetězenou s názvy proměnných v ID skupiny prostředků pro generování náhodných jedinečných hodnot:
 
 ```json
 "variables": {
@@ -202,17 +202,17 @@ To znamená, že pokaždé, když testdrive nasadí šablonu Správce prostředk
 }
 ```
 
-Ujistěte se, že zřetězíte řetězce\'parametrů/proměnných\'(contosovm) s jedinečným\'řetězcovým výstupem (resourceGroup().id\'), protože to zaručuje jedinečnost a spolehlivost každé proměnné.
+Ujistěte se, že jste zřetězené řetězce parametrů nebo proměnných\'(\'contosovm) s jedinečným výstupem\'řetězce (resourceName (). ID\'), protože to zaručuje jedinečnost a spolehlivost každé proměnné.
 
-Většina názvů prostředků například nemůže začínat číslicí, ale jedinečná funkce řetězce může vrátit řetězec, který začíná číslicí. Pokud tedy použijete nezpracovaný výstup jedinečného řetězce, vaše nasazení se nezdaří. 
+Například většina názvů prostředků nemůže začínat číslicí, ale funkce Unique String může vracet řetězec, který začíná číslicí. Takže pokud použijete nezpracovaný jedinečný výstup řetězce, vaše nasazení se nezdaří. 
 
-Další informace o pravidlech a omezeních pro pojmenování prostředků naleznete v [tomto článku](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging).
+Další informace o pravidlech a omezeních názvů prostředků najdete v [tomto článku](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging).
 
 ### <a name="deployment-location"></a>Umístění nasazení
 
-Test Drive můžete zpřístupnit v různých oblastech Azure. Cílem je umožnit uživateli vybrat nejbližší oblast, poskytnout s beast uživatelské zkušenosti.
+K dispozici je možnost testovat jednotku v různých oblastech Azure. Cílem je umožnit uživateli vybrat nejbližší oblast, která bude poskytovat touchdown uživatelské prostředí.
 
-Když Test Drive vytvoří instanci testovacího prostředí, vždy vytvoří skupinu prostředků v oblasti vybrané uživatelem a potom provede šablonu nasazení v tomto kontextu skupiny. Šablona by tedy měla vybrat umístění nasazení ze skupiny prostředků:
+Když testovací jednotka vytvoří instanci testovacího prostředí, vždy vytvoří skupinu prostředků v oblasti, kterou vybere uživatel, a pak v tomto kontextu skupiny spustí šablonu nasazení. Proto by šablona měla vybrat umístění nasazení ze skupiny prostředků:
 
 ```json
 "variables": {
@@ -222,7 +222,7 @@ Když Test Drive vytvoří instanci testovacího prostředí, vždy vytvoří sk
 }
 ```
 
-A pak použijte toto umístění pro každý prostředek pro konkrétní instanci Lab:
+A pak použijte toto umístění pro všechny prostředky konkrétní instance testovacího prostředí:
 
 ```json
 "resources": [
@@ -254,15 +254,15 @@ A pak použijte toto umístění pro každý prostředek pro konkrétní instanc
 ]
 ```
 
-Musíte se ujistit, že vaše předplatné je povoleno nasadit všechny prostředky, které chcete nasadit v každé oblasti, kterou vybíráte. Také je třeba se ujistit, že vaše image virtuálních strojů jsou k dispozici ve všech oblastech, které se chystáte povolit, jinak vaše šablona nasazení nebude fungovat pro některé oblasti.
+Musíte zajistit, aby vaše předplatné mělo povoleno nasazení všech prostředků, které chcete nasadit, do všech oblastí, které vyberete. Také je potřeba zajistit, aby image virtuálních počítačů byly dostupné ve všech oblastech, které chcete povolit, jinak nebude šablona nasazení fungovat pro některé oblasti.
 
 ### <a name="outputs"></a>Výstupy
 
-Normálně se šablonami Správce prostředků můžete nasadit bez vytváření jakéhokoli výstupu. Důvodem je, že znáte všechny hodnoty, které používáte k naplnění parametrů šablony a můžete vždy ručně zkontrolovat vlastnosti libovolného prostředku.
+Normálně se šablonami Správce prostředků můžete nasadit bez nutnosti vytvářet výstup. Je to proto, že znáte všechny hodnoty, které použijete k naplnění parametrů šablony, a můžete vždy ručně zkontrolovat vlastnosti libovolného prostředku.
 
-Pro šablony Správce prostředků testovací\'jednotky je však důležité vrátit se na test, aby se všechny informace, které jsou nutné k získání přístupu k testovacímu prostředí (identifikátory URI webu, názvy hostitelů virtuálních počítačů, uživatelská jména a hesla). Ujistěte se, že všechny vaše výstupní názvy jsou čitelné, protože tyto proměnné jsou prezentovány zákazníkovi.
+U testovacích jednotek Správce prostředků šablon ale\'je důležité vrátit se k testovacím jednotkám všechny informace, které jsou nutné k získání přístupu k testovacímu prostředí (identifikátory URI webů, názvy hostitelů virtuálních počítačů, uživatelská jména a hesla). Ujistěte se, že jsou všechny vaše výstupní názvy čitelné, protože se tyto proměnné prezentují zákazníkovi.
 
-Neexistují žádná omezení týkající se výstupů šablony. Jen nezapomeňte, Test Drive převádí všechny výstupní hodnoty na **řetězce**, takže pokud odešlete objekt do výstupu, uživatel uvidí řetězec JSON.
+Neexistují žádná omezení související s výstupem šablony. Stačí si pamatovat, testovací jednotka převede všechny výstupní hodnoty na **řetězce**, takže pokud odešlete objekt do výstupu, uživatel uvidí řetězec JSON.
 
 Příklad:
 
@@ -283,145 +283,145 @@ Příklad:
 }
 ```
 
-### <a name="subscription-limits"></a>Limity předplatného
+### <a name="subscription-limits"></a>Omezení předplatného
 
-Ještě jedna věc, kterou byste měli vzít v úvahu, je předplatné a limity služeb. Například pokud chcete nasadit až deset 4jádrových virtuálních počítačů, musíte se ujistit, že předplatné, které používáte pro vaši laboratoř, umožňuje používat 40 jader.
+Další věcí, které byste měli vzít v úvahu, je předplatné a omezení služeb. Pokud například chcete nasadit až deset virtuálních počítačů se 4 jádry, musíte se ujistit, že předplatné, které používáte pro testovací prostředí, vám umožní používat 40 jader.
 
-Další informace o limitech předplatného Azure a služeb najdete v [tomto článku](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits). Jako více testovacích jednotek lze přijmout současně, ověřte, že vaše předplatné může zpracovat \# jader vynásobené celkový počet souběžných testovacích jednotek, které lze přijmout.
+Další informace o omezeních předplatného a služeb Azure najdete v [tomto článku](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits). Když lze současně provést více testovacích jednotek, ověřte, že vaše předplatné může zpracovávat \# jader vynásobené celkovým počtem souběžných testovacích jednotek, které lze provést.
 
 ### <a name="what-to-upload"></a>Co nahrát
 
-Šablona Správce prostředků testovací jednotky je odeslána jako soubor ZIP, který může obsahovat různé artefakty nasazení, ale musí mít jeden soubor s názvem **main-template.json**. Tento soubor je šablona nasazení Azure Resource Manager a Test Drive používá k vytvoření instance Lab.
+Testovací jednotka Správce prostředků šablona se nahraje jako soubor zip, který může obsahovat různé artefakty nasazení, ale musí mít jeden soubor s názvem **Main-Template. JSON**. Tento soubor je Azure Resource Manager šablonou nasazení a testovací jednotka ho používá k vytvoření instance testovacího prostředí.
 
-Pokud máte další prostředky nad rámec tohoto souboru, můžete odkazovat jako externí prostředek uvnitř šablony, nebo můžete zahrnout prostředek do souboru zip.
+Pokud máte další prostředky za tento soubor, můžete na něj odkazovat jako na externí prostředek uvnitř šablony, nebo můžete prostředek zahrnout do souboru ZIP.
 
-Během certifikace publikování Test Drive rozbalí balíček nasazení a vloží jeho obsah do interního kontejneru objektů blob testovací jednotky. Struktura kontejneru odráží strukturu balíčku nasazení:
+Během certifikace publikování testovací jednotka rozbalí balíček pro nasazení a vloží jeho obsah do kontejneru objektů BLOB interního testovacího disku. Struktura kontejneru odráží strukturu balíčku pro nasazení:
 
-| package.zip                       | Kontejner objektů blob testovací jednotky         |
+| Package. zip                       | Kontejner objektů BLOB testovací jednotky         |
 |---|---|
-| main-template.json                | \//\<https:\... \>.blob.core.windows.net/\<\... \>/main-template.json  |
-| šablony/řešení.json           | \//\<https:\... \>.blob.core.windows.net/\<\... \>/templates/solution.json |
-| skripty/warmup.ps1                | \//\<https:\... \>.blob.core.windows.net/\<\... \>/skripty/warmup.ps1  |
+| hlavní šablona. JSON                | \//\<https:\... \>. blob.Core.Windows.NET/\<\... \>/Main-Template.JSON  |
+| šablony/řešení. JSON           | \//\<https:\... \>. blob.Core.Windows.NET/\<\... \>/Templates/Solution.JSON |
+| skripty/zahřívání. ps1                | \//\<https:\... \>. blob.Core.Windows.NET/\<\... \>/Scripts/warmup.ps1  |
 
 
-Nazýváme Uri tohoto kontejneru blob Base Uri. Každá revize vaší testovacího prostředí má svůj vlastní kontejner objektů blob, a proto každá revize vaší testovací hodu má vlastní základní identifikátor Uri. Testovací jednotka může předat základní uri rozbaleného balíčku nasazení do šablony prostřednictvím parametrů šablony.
+Voláme identifikátor URI tohoto základního identifikátoru URI kontejneru objektů BLOB. Každá revize vašeho testovacího prostředí má vlastní kontejner objektů blob, a proto každá revize vašeho testovacího prostředí má svůj vlastní základní identifikátor URI. Testovací jednotka může předat základní identifikátor URI vašeho balíčku pro nasazení unzip do šablony prostřednictvím parametrů šablony.
 
-## <a name="transforming-template-examples-for-test-drive"></a>Příklady transformace šablon pro testovací disku
+## <a name="transforming-template-examples-for-test-drive"></a>Transformují se příklady šablon pro Test Drive.
 
-Proces přeměny architektury prostředků na šablonu Správce prostředků testovací jednotky může být skličující. Abychom tento proces usnadnili,\'udělali jsme zde příklady, jak nejlépe [transformovat aktuální šablony nasazení](./transforming-examples-for-test-drive.md).
+Proces od zapnutí architektury prostředků do testovací jednotky Správce prostředků šablona může být těžké. Abychom vám usnadnili tento proces, jsme\'udělali příklady, jak nejlépe [transformovat aktuální šablony nasazení](./transforming-examples-for-test-drive.md).
 
-## <a name="how-to-publish-a-test-drive"></a>Jak publikovat testovací jízdu
+## <a name="how-to-publish-a-test-drive"></a>Postup publikování testovacího disku
 
-Teď, když máte vytvořenou testovací jízdu, tato část provede každé z polí, které jsou pro úspěšné publikování testovací jednotky nutné.
+Teď, když máte vytvořenou testovací jednotku, Tato část vás provede všemi poli potřebnými k úspěšnému publikování testovacích jednotek.
 
-![Povolení testovací jízdy v uživatelském rozhraní](./media/azure-resource-manager-test-drive/howtopub1.png)
+![Povolení testovací jednotky v uživatelském rozhraní](./media/azure-resource-manager-test-drive/howtopub1.png)
 
-První a nejdůležitější pole je přepnout, zda chcete Test Drive povoleno pro vaši nabídku, nebo ne. Vyberete-li **možnost Ano,** zobrazí se zbývající část formuláře se všemi požadovanými poli, která můžete vyplnit. Když vyberete **Ne,** formulář se zakáže a pokud znovu publikujete se zakázanou testovací jednotkou, testovací jednotka se odebere z produkčního prostředí.
+Prvním a nejnejdůležitějším polem je přepínat, jestli chcete, aby se pro vaši nabídku povolila testovací jednotka, nebo ne. Když vyberete **Ano,** zobrazí se zbytek formuláře se všemi požadovanými poli, abyste mohli vyplnit. Když vyberete **Ne,** formulář se deaktivuje a pokud znovu publikujete s neaktivovanou testovací jednotkou, bude testovací jednotka z produkčního prostředí odebrána.
 
-Poznámka: Pokud existují nějaké testy jednotky aktivně používané uživateli, tyto testovací jednotky budou nadále spouštět, dokud jejich relace vyprší.
+Poznámka: Pokud jsou k dispozici nějaké jednotky testů, budou tyto testovací jednotky nadále běžet až do vypršení platnosti jejich relace.
 
 ### <a name="details"></a>Podrobnosti
 
-Další část, kterou chcete vyplnit, jsou podrobnosti o nabídce testovací houšti.
+Další část, která se má vyplnit, jsou podrobnosti o nabídce testovacích jednotek.
 
-![Podrobné informace o testovací mase](./media/azure-resource-manager-test-drive/howtopub2.png)
+![Podrobné informace o testovacích jednotkách](./media/azure-resource-manager-test-drive/howtopub2.png)
 
-**Popis -** *Povinné* Toto je místo, kde píšete hlavní popis o tom, co je na testovací jízdě. Zákazník si sem přijde přečíst, jaké scénáře bude vaše testovací jízda o vašem produktu zahrnovat. 
+**Popis –** *požaduje* se, když zapíšete hlavní popis toho, co je na testovací jednotce. Zde se zobrazí zákazník, který si přečte scénáře, na které se vaše testovací jednotka vztahuje na váš produkt. 
 
-**Uživatelská příručka –** *povinné* Toto je podrobný návod k testovací jízdě. Zákazník to otevře a může projít přesně to, co chcete, aby dělali po celou dobu jejich testovací jízdy. Je důležité, aby tento obsah byl snadno pochopitelný a sledovat! (Musí se jednat o soubor PDF)
+**Ruční – vyžadováno uživatelem –** *Required* Toto je podrobný návod k vašemu prostředí Test Drive. Zákazník ho otevře a bude moct procházet přesně to, co chcete dělat v rámci své testovací jednotky. Je důležité, abyste tento obsah snadno pochopili a následovali! (Musí se jednat o soubor. PDF)
 
-**Test Drive Demo Video -** *Doporučeno* Podobně jako v uživatelské příručce, je nejlepší zahrnout instruktážní video o vašem zážitku z testovací jízdy. Zákazník bude sledovat to před nebo během jejich Zkušební jízdy a může projít přesně to, co chcete, aby dělali v průběhu jejich Zkušební jízdy. Je důležité, aby tento obsah byl snadno pochopitelný a sledovat!
+**Ukázkové video na testovacím disku –** *Doporučené* pro použití jako ruční příručka pro uživatele, je nejlepší zahrnout video kurz prostředí Test Drive. Zákazník si tento postup předá nebo během testovacích jednotek dokončí a může procházet přesně to, co chcete v rámci své zkušební jednotky provádět. Je důležité, abyste tento obsah snadno pochopili a následovali!
 
 - **Název** – název videa
-- **Odkaz** - Musí být vložené URL z trubice nebo videa. Příklad, jak získat vloženou adresu URL, je následující:
-- **Miniatura** – musí se jednat o obraz ve vysoké kvalitě (533 × 324) pixelů. Doporučujeme, abyste zde pořídili snímek obrazovky s některými částmi prostředí testování.
+- **Odkaz** – musí se jednat o VLOŽENOU adresu URL z vaší trubice nebo videa. Příklad toho, jak získat vloženou adresu URL, je níže:
+- **Miniatura** – musí to být obrázek s vysokou kvalitou (533x324) pixelů. Doporučujeme udělat snímek obrazovky některé z možností testování testovacích jednotek.
 
-Níže je uvedeno, jak se tato pole zobrazí pro zákazníka během jeho zkušeností s testovací mitou.
+Níže je uveden způsob, jakým se tato pole zobrazí pro zákazníka během používání testovacích jednotek.
 
-![Umístění polí testovací jednotky v nabídce Marketplace](./media/azure-resource-manager-test-drive/howtopub4.png)
+![Umístění polí testovacích jednotek v nabídce Marketplace](./media/azure-resource-manager-test-drive/howtopub4.png)
 
 ### <a name="technical-configuration"></a>Technická konfigurace
 
-Další část, kterou chcete vyplnit, je, kde nahrajete šablonu Správce prostředků testovací jednotky a definujete, jak konkrétně vaše instance testovací jednotky fungují.
+Další část, která se má vyplnit, je místo, kam nahrajete šablonu Test Drive Správce prostředků a definujte, jak konkrétně vaše instance testovacích jednotek fungují.
 
 ![](./media/azure-resource-manager-test-drive/howtopub5.png)
 
-**Instance –** *povinné:* Toto je místo, kde nakonfigurujete, kolik instancí chcete, v jaké oblasti a jak rychle mohou zákazníci získat testovací jednotku.
+**Instance –** to je *nutné* v případě, že nakonfigurujete, kolik instancí chcete, v jaké oblasti a jak rychle můžou zákazníci získat testovací jednotku.
 
-- **Instance** – Oblasti Select je místo, kde si vyberete, kde se nasadí vaše šablona Správce prostředků testovací jednotky. Doporučujeme vybrat si jednu oblast, kde nejvíce očekáváte, že vaši zákazníci budou umístěni.
-- **Hot** - počet instancí testovací jednotky, které jsou již nasazeny a čekají na přístup na vybranou oblast. Zákazníci mohou okamžitě přistupovat k této testovací jednotky, spíše než muset čekat na nasazení. Kompromis emituje, že tyto instance jsou vždy spuštěné ve vašem předplatném Azure, takže jim vzniknou vyšší náklady na provozuna. Důrazně doporučujeme mít **alespoň jednu instanci Hot**, protože většina vašich zákazníků nechce čekat na dokončení úplného nasazení, a proto dochází k poklesu v používání zákazníků.
-- **Teplý** – počet instancí testovací jednotky na oblast, které byly nasazeny a pak virtuální počítač byl zastaven a uložen v úložišti Azure. Čekací doba pro instance Warm je pomalejší než hot instance, ale náklady na dobu uptime úložiště je také levnější.
-- **Studená** – počet instancí testovací jednotky na oblast, které lze případně nasadit. Studené instance vyžadují, aby celá šablona Správce prostředků testovací jednotky prošla nasazením v době, kdy zákazník požaduje testovací jednotku, takže je pomalejší než instance Hot nebo Warm. Kompromis emituje však, že musíte platit pouze po dobu trvání testovací jízdy.
+- **Instance** – výběrové oblasti je místo, kde můžete vybrat, kde je vaše testovací jednotka správce prostředků šablona nasazena. Doporučuje se jen vybrat jednu oblast, kde očekáváte, že se zákazníci nacházejí v.
+- **Hot** -počet instancí testovacích jednotek, které jsou už nasazené a čekají na přístup pro vybranou oblast. Zákazníci můžou k těmto testovacím jednotkám okamžitě přistupovat, ale nemusíte čekat na nasazení. Kompromisem je, že tyto instance jsou vždycky spuštěné v předplatném Azure, takže budou mít větší náklady na dobu provozu. Důrazně doporučujeme mít **aspoň jednu aktivní instanci**, protože většina vašich zákazníků nechce čekat na dokončení kompletních nasazení, a proto je v zákaznickém využívání k dispozici rozevírací seznam.
+- **Zahřívání** – počet instancí testovacích jednotek na oblast, které byly nasazeny, a potom byl virtuální počítač zastaven a uložen ve službě Azure Storage. Čekací doba pro teplé instance je pomalejší než v Hot instance, ale náklady na úložiště jsou také levnější.
+- **Studená** řada instancí testovacích jednotek na oblast, která může být nasazena. Studené instance vyžadují celou Správce prostředků šablonu testovacích jednotek, aby procházela nasazením v okamžiku, kdy zákazník požaduje testovací verzi, takže je pomalejší než horká nebo Teplová instance. Kompromisy ale platí jenom za dobu trvání testovacích jednotek.
 
-V tomto okamžiku vypočítá celkový počet potenciálních souběžných testovacích jednotek, které budete zpřístupnit, a ověří, zda limit kvóty pro vaše předplatné zvládne tuto souběžnou částku:
+V tuto chvíli vypočítá celkový počet potenciálních souběžných testovacích jednotek, které budete mít k dispozici, a ověřte, že vaše omezení kvóty pro vaše předplatné může zvládnout tuto souběžnou částku:
 
-**(Počet vybraných oblastí x aktivních instancí) + (Počet vybraných oblastí x teplých instancí) + (Počet vybraných oblastí x studených instancí)**
+**(Počet oblastí vybraných v × Hot instance) + (počet oblastí vybraných × teplé instance) + (počet oblastí vybraných x studených instancí)**
 
-**Doba trvání testovací jednotky (hodiny) –** *požadovaná* doba trvání, po kterou bude testovací jízda aktivní, během \# několika hodin. Testovací cesta se automaticky ukončí po uplynutí tohoto časového období.
+**Doba trvání testovacího prostředí (v hodinách) –** *požadovaná* doba, po kterou testovací jednotka zůstane aktivní, \# v hodinách. Testovací jednotka se po skončení tohoto časového období ukončí automaticky.
 
-**Šablona Správce prostředků testovací jednotky –** *povinné* nahrát šablonu Správce prostředků sem. Jedná se o soubor, který jste vytvořili v předchozí části výše. Pojmenujte hlavní soubor šablony: "main-template.json" a ujistěte se, že šablona Správce prostředků obsahuje výstupní parametry pro klíčové proměnné, které jsou potřebné. (Musí se jednat o soubor ZIP)
+**Test Drive správce prostředků šablona –** zde můžete nahrát šablonu správce prostředků, která je *povinná* . Jedná se o soubor, který jste vytvořili v předchozí části výše. Pojmenujte hlavní soubor šablony: "Main-Template. JSON" a ujistěte se, že šablona Správce prostředků obsahuje výstupní parametry pro klíčové proměnné, které jsou potřeba. (Musí se jednat o soubor. zip)
 
-**Přístup k informacím –** *požadováno* Poté, co zákazník získá testovací jízdu, jsou jim předloženy přístupové informace. Tyto pokyny jsou určeny ke sdílení užitečných výstupních parametrů ze šablony Správce prostředků testovací jednotky. Chcete-li zahrnout výstupní parametry, použijte dvojité složené závorky (například **{{outputname}}** a budou vloženy správně do umístění. (Zde se doporučuje formátování řetězce HTML, které se vykresluje v přední části).
+**Přístup k informacím –** *povinné* , když zákazník získá testovací verzi, zobrazí se jim informace o přístupu. Tyto pokyny jsou určeny pro sdílení užitečných výstupních parametrů z testovacích jednotek Správce prostředků šabloně. Chcete-li zahrnout výstupní parametry, použijte dvojité složené závorky (například **{{outputName}}**) a budou vloženy do umístění správně. (Pro vykreslení v front-endu se doporučuje formátování řetězce HTML.)
 
-### <a name="test-drive-deployment-subscription-details"></a>Podrobnosti o předplatném nasazení testovací jednotky
+### <a name="test-drive-deployment-subscription-details"></a>Podrobnosti o předplatném nasazení testovacích jednotek
 
-Poslední část, kterou chcete vyplnit, je možnost nasadit testovací jednotky automaticky připojením předplatného Azure a služby Azure Active Directory (AD).
+Poslední část, která se má vyplnit, je umožnit automatické nasazení testovacích jednotek tím, že se připojíte k předplatnému Azure a Azure Active Directory (AD).
 
-![Podrobnosti o předplatném nasazení testovací jednotky](./media/azure-resource-manager-test-drive/subdetails1.png)
+![Podrobnosti o předplatném nasazení testovacích jednotek](./media/azure-resource-manager-test-drive/subdetails1.png)
 
-**ID předplatného Azure –** *povinné* To uděluje přístup ke službám Azure a portálu Azure. Předplatné je místo, kde se účtuje využití prostředků a služby se účtují. Pokud ještě nemáte **samostatné** předplatné Azure pro testovací jednotky, pokračujte a vytvořte si jedno. Id předplatného Azure najdete tak, že se přihlásíte na portál Azure a přejdete na předplatná v nabídce na levé straně. (Příklad: "a83645ac-1234-5ab6-6789-1h234g764ghty")
+**ID předplatného Azure –** *vyžaduje* se k tomu přístup ke službám Azure a Azure Portal. Předplatné je místo, kde se oznamuje využití prostředků, a účtují se služby. Pokud ještě nemáte **samostatné** předplatné Azure pro testovací disky, pokračujte a udělejte si ho. ID předplatných Azure můžete najít tak, že se přihlásíte Azure Portal a v nabídce na levé straně přejdete k předplatným. (Příklad: "a83645ac-1234-5ab6-6789-1h234g764ghty")
 
 ![Předplatná Azure](./media/azure-resource-manager-test-drive/subdetails2.png)
 
-**ID klienta Azure AD –** *povinné,* pokud máte ID klienta,\> které je už k dispozici, najdete ho níže v id služby Vlastnosti – adresář.
+**ID tenanta Azure AD –** *povinné* Pokud máte ID tenanta, které je už dostupné, najdete ho níže v části vlastnosti –\> ID adresáře.
 
-![Vlastnosti služby Azure Active Directory](./media/azure-resource-manager-test-drive/subdetails3.png)
+![Vlastnosti Azure Active Directory](./media/azure-resource-manager-test-drive/subdetails3.png)
 
-V opačném případě vytvořte nového klienta ve službě Azure Active Directory.
+V opačném případě vytvořte nového tenanta v Azure Active Directory.
 
-![Seznam klientů služby Azure Active Directory](./media/azure-resource-manager-test-drive/subdetails4.png)
+![Seznam tenantů Azure Active Directory](./media/azure-resource-manager-test-drive/subdetails4.png)
 
-![Definování organizace, domény a země nebo oblasti pro klienta Azure AD](./media/azure-resource-manager-test-drive/subdetails5.png)
+![Definujte organizaci, doménu a zemi/oblast pro tenanta Azure AD.](./media/azure-resource-manager-test-drive/subdetails5.png)
 
-![Potvrzení výběru](./media/azure-resource-manager-test-drive/subdetails6.png)
+![Potvrdit výběr](./media/azure-resource-manager-test-drive/subdetails6.png)
 
-**ID aplikace Azure AD –** *povinný* další krok je vytvoření a registrace nové aplikace. Tuto aplikaci použijeme k provádění operací s instancí testovací jednotky.
+**Aplikace Azure AD ID –** *vyžadováno* dalším krokem je vytvoření a registrace nové aplikace. Tuto aplikaci použijeme k provádění operací s instancí testovacích jednotek.
 
-1. Přejděte do nově vytvořeného adresáře nebo již existujícího adresáře a v podokně filtrů vyberte adresář Azure Active Directory.
-2. Hledat "Registrace aplikací" a klikněte na "Přidat"
+1. Přejděte do nově vytvořeného adresáře nebo už existujícího adresáře a v podokně filtru vyberte Azure Active Directory.
+2. Vyhledejte "Registrace aplikací" a klikněte na Přidat.
 3. Zadejte název aplikace.
-4. Vyberte typ jako "Webová aplikace / ROZHRANÍ API"
-5. V přihlašovací adrese URL uveďte\'libovolnou hodnotu, toto pole nebudeme používat.
+4. Vyberte typ "webová aplikace/rozhraní API".
+5. Zadejte libovolnou hodnotu v přihlašovací adrese URL,\'kterou toto pole používáme.
 6. Klikněte na vytvořit.
-7. Po vytvoření aplikace přejděte na\> Vlastnosti – Nastavte aplikaci jako víceklientské a stiskněte tlačítko Uložit.
+7. Po vytvoření aplikace přejděte na vlastnosti –\> nastavte aplikaci jako více tenantů a klikněte na Uložit.
 
-Klikněte na Uložit. Posledním krokem je uchopit ID aplikace pro tuto registrovanou aplikaci a vložit ji do pole Test Drive zde.
+Klikněte na Uložit. Posledním krokem je vyvýšení ID aplikace pro tuto registrovanou aplikaci a její vložení do pole testovací jednotka.
 
-![Podrobnosti id aplikace Azure AD](./media/azure-resource-manager-test-drive/subdetails7.png)
+![Podrobnosti o ID aplikace Azure AD](./media/azure-resource-manager-test-drive/subdetails7.png)
 
-Vzhledem k tomu, že používáme aplikaci k nasazení do předplatného, musíme přidat aplikaci jako přispěvatele na předplatné. Pokyny pro tyto jsou následující:
+V případě, že aplikaci používáme k nasazení do předplatného, musíme aplikaci přidat jako přispěvatele v předplatném. Pokyny k těmto akcím jsou uvedené níže:
 
-1. Přejděte do okna Předplatná a vyberte příslušné předplatné, které používáte pouze pro testovací verzi.
+1. Přejděte do okna předplatná a vyberte příslušné předplatné, které používáte pouze pro testovací jednotku.
 1. Klikněte na **Řízení přístupu (IAM)**.
-1. Klikněte na kartu **Přiřazení rolí.**  ![Přidání nového objektu řízení přístupu](./media/azure-resource-manager-test-drive/SetupSub7_1.jpg)
-1. Klepněte na tlačítko **Přidat přiřazení role**.
-1. Nastavte roli **přispěvatele**.
-1. Zadejte název aplikace Azure AD a vyberte aplikaci, která roli přiřadí.
-    ![Přidání oprávnění](./media/azure-resource-manager-test-drive/SetupSub7_2.jpg)
+1. Klikněte na kartu **přiřazení rolí** .  ![Přidat nový objekt zabezpečení Access Control](./media/azure-resource-manager-test-drive/SetupSub7_1.jpg)
+1. Klikněte na **Přidat přiřazení role**.
+1. Nastavte roli jako **Přispěvatel**.
+1. Zadejte název aplikace Azure AD a vyberte aplikaci, pro kterou chcete roli přiřadit.
+    ![Přidat oprávnění](./media/azure-resource-manager-test-drive/SetupSub7_2.jpg)
 1. Klikněte na **Uložit**.
 
-**Klíč aplikace Azure AD –** *povinné* Konečné pole je generovat ověřovací klíč. V části klíče přidejte popis klíče, nastavte dobu trvání na nikdy nevyprší a vyberte uložit. Je **důležité,** aby se zabránilo mít vypršela klíč, který zlomí zkušební jízdu v produkčním prostředí. Zkopírujte tuto hodnotu a vložte ji do požadovaného pole Testovací jednotka.
+**Aplikace Azure AD klíč –** konečné pole *vyžaduje* , aby bylo vygenerován ověřovací klíč. V části klíče přidejte popis klíče, nastavte dobu trvání na bez vypršení platnosti a pak vyberte Uložit. Je **důležité** , abyste se vyhnuli vypršení platnosti klíče, což způsobí přerušení testovacích jednotek v produkčním prostředí. Zkopírujte tuto hodnotu a vložte ji do pole požadované testovací jednotky.
 
-![Zobrazuje klíče pro aplikaci Azure AD](./media/azure-resource-manager-test-drive/subdetails8.png)
+![Zobrazuje klíče pro aplikaci Azure AD.](./media/azure-resource-manager-test-drive/subdetails8.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když máte vyplněná všechna pole testovací jednotky, projděte a **znovu publikujte** svou nabídku. Jakmile vaše testovací verze projde certifikací, měli byste v **náhledu** vaší nabídky projít rozsáhlým testem zkušeností zákazníků. Spusťte testovací disk v unovém rozhraní a pak otevřete předplatné Azure na webu Azure Portal a ověřte, že vaše testovací jednotky jsou plně nasazeny správně.
+Teď, když máte vyplněná všechna pole testovacích jednotek, Projděte a **znovu publikujte** vaši nabídku. Po úspěšném dokončení testu byste si měli projít prostředí pro zákazníky ve **verzi Preview** vaší nabídky. Spusťte testovací jednotku v uživatelském rozhraní a pak otevřete své předplatné Azure v rámci Azure Portal a ověřte, jestli jsou vaše testovací jednotky správně nasazené.
 
 ![portál Azure](./media/azure-resource-manager-test-drive/subdetails9.png)
 
-Je důležité si uvědomit, že neodstraníte žádné instance testovací jednotky, protože jsou zřízeny pro vaše zákazníky, takže služba Test Drive tyto skupiny prostředků automaticky vyčistí po dokončení zákazníka.
+Je důležité si uvědomit, že neodstraňujete žádné instance testovacích jednotek, protože jsou zřízené pro vaše zákazníky, takže služba testovacích jednotek tyto skupiny prostředků po dokončení zákazníka automaticky vyčistí.
 
-Jakmile se budete cítit pohodlně s nabídkou Náhled, nyní je čas **jít žít!** Po publikování nabídky je proveden proces závěrečné kontroly od společnosti Microsoft, aby bylo možné zkontrolovat celou dobu od začátku do konce. Pokud z nějakého důvodu bude nabídka odmítnuta, zašleme technickému kontaktu pro vaši nabídku oznámení, ve kterém vysvětlíme, co bude třeba opravit.
+Jakmile budete mít v nabídce Preview pohodlí, teď je to čas do **Live**! Po publikování nabídky od Microsoftu probíhá finální proces kontroly, který vám umožní dvakrát zkontrolovat celý konečný zážitek. Pokud z nějakého důvodu se nabídka odmítne, pošleme oznámení technickému kontaktu pro vaši nabídku, která vysvětluje, co je potřeba k tomu, abychom mohli opravit.
 
-Máte-li další dotazy, hledáte rady pro řešení potíží nebo chcete, aby byla vaše testovací jízda úspěšnější, přejděte na [nejčastější dotazy, řešení potíží & doporučené postupy](./marketing-and-best-practices.md).
+Pokud máte více otázek, hledáte Rady pro řešení potíží nebo chcete, aby testovací verze byla více úspěšná, přejděte na [Nejčastější dotazy, řešení potíží & osvědčené postupy](./marketing-and-best-practices.md).

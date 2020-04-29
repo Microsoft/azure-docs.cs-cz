@@ -1,39 +1,39 @@
 ---
 title: Dotazování kontejnerů ve službě Azure Cosmos DB
-description: Zjistěte, jak dotazovat kontejnery v Azure Cosmos DB pomocí dotazů v oddílech a mezi oddíly
+description: Naučte se dotazovat kontejnery v Azure Cosmos DB pomocí dotazů v oddílu a mezi oddíly.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 3/18/2019
 ms.author: mjbrown
 ms.openlocfilehash: 299980b67caaea85fbfb40cb1a30ee50fa32d0f7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80131400"
 ---
-# <a name="query-an-azure-cosmos-container"></a>Dotaz na kontejner Azure Cosmos
+# <a name="query-an-azure-cosmos-container"></a>Dotazování kontejneru Azure Cosmos
 
-Tento článek vysvětluje, jak dotaz na kontejner (kolekce, graf nebo tabulka) v Azure Cosmos DB. Zejména zahrnuje, jak v oddílu a mezioddíly dotazy pracovat v Azure Cosmos DB.
+Tento článek vysvětluje, jak zadat dotaz na kontejner (kolekci, graf nebo tabulku) v Azure Cosmos DB. Konkrétně se zabývá tím, jak dotazy v oddílu a mezi oddíly fungují v Azure Cosmos DB.
 
 ## <a name="in-partition-query"></a>Dotaz v rámci oddílu
 
-Když dotazujete data z kontejnerů, pokud dotaz obsahuje zadaný filtr klíče oddílu, Azure Cosmos DB dotaz automaticky optimalizuje. Směruje dotaz na [fyzické oddíly](partition-data.md#physical-partitions) odpovídající hodnotám klíče oddílu zadaným ve filtru.
+Pokud má dotaz dotaz na data z kontejnerů, je-li v dotazu zadán filtr klíčů oddílu, Azure Cosmos DB automaticky optimalizuje dotaz. Směruje dotaz na [fyzické oddíly](partition-data.md#physical-partitions) , které odpovídají hodnotám klíče oddílu zadaným ve filtru.
 
-Zvažte například níže uvedený dotaz s `DeviceId`filtrem rovnosti na . Pokud spustíme tento dotaz v `DeviceId`kontejneru rozděleném na , bude tento dotaz filtrovat do jednoho fyzického oddílu.
+Například zvažte následující dotaz s filtrem rovnosti na `DeviceId`. Pokud tento dotaz spustíte na kontejneru rozděleném na `DeviceId`oddíly, tento dotaz se vyfiltruje na jeden fyzický oddíl.
 
 ```sql
     SELECT * FROM c WHERE c.DeviceId = 'XMS-0001'
 ```
 
-Stejně jako v předchozím příkladu bude tento dotaz také filtrovat do jednoho oddílu. Přidání majek/přidání mašitna `Location` se nezmění na tomto:
+Stejně jako v předchozím příkladu tento dotaz bude také filtrovat na jeden oddíl. Přidání dalšího filtru `Location` se nezmění:
 
 ```sql
     SELECT * FROM c WHERE c.DeviceId = 'XMS-0001' AND c.Location = 'Seattle'
 ```
 
-Zde je dotaz, který má filtr rozsahu na klíč oddílu a nebude vymezen na jeden fyzický oddíl. Chcete-li být v oddílu dotazu, dotaz musí mít filtr rovnosti, který obsahuje klíč oddílu:
+Tady je dotaz, který má pro klíč oddílu Filtr rozsahu a nebude vymezen na jeden fyzický oddíl. Aby byl dotaz v rámci oddílu, dotaz musí mít filtr rovnosti, který zahrnuje klíč oddílu:
 
 ```sql
     SELECT * FROM c WHERE c.DeviceId > 'XMS-0001'
@@ -41,67 +41,67 @@ Zde je dotaz, který má filtr rozsahu na klíč oddílu a nebude vymezen na jed
 
 ## <a name="cross-partition-query"></a>Dotazování napříč oddíly
 
-Následující dotaz nemá filtr na klíč oddílu`DeviceId`( ). Proto musí fan-out na všechny fyzické oddíly, kde je spuštěn proti indexu každého oddílu:
+Následující dotaz nemá filtr na klíč oddílu (`DeviceId`). Proto musí být ventilátor na všechny fyzické oddíly, kde se spouští s indexem každého oddílu:
 
 ```sql
     SELECT * FROM c WHERE c.Location = 'Seattle`
 ```
 
-Každý fyzický oddíl má svůj vlastní index. Proto při spuštění dotazu mezi oddíly v kontejneru, jsou efektivně spuštěnjeden dotaz *na* fyzický oddíl. Azure Cosmos DB automaticky agreguje výsledky napříč různými fyzickými oddíly.
+Každý fyzický oddíl má svůj vlastní index. Proto když v kontejneru spustíte dotaz na více oddílů, efektivně spustíte jeden dotaz *na* fyzický oddíl. Azure Cosmos DB budou automaticky agregovat výsledky napříč různými fyzickými oddíly.
 
-Indexy v různých fyzických oddílů jsou nezávislé na sobě navzájem. V Azure Cosmos DB neexistuje žádný globální index.
+Indexy v různých fyzických oddílech jsou od sebe nezávisle. V Azure Cosmos DB neexistuje žádný globální index.
 
 ## <a name="parallel-cross-partition-query"></a>Paralelní dotazování napříč oddíly
 
-Sady Azure Cosmos DB SDK 1.9.0 a novější podporují možnosti paralelního spuštění dotazu. Paralelní dotazy napříč oddíly umožňují provádět dotazy napříč oddíly s nízkou latencí.
+Sady Azure Cosmos DB SDK 1.9.0 a novější podporují možnosti paralelního provádění dotazů. Paralelní dotazy napříč oddíly umožňují provádět dotazy napříč oddíly s nízkou latencí.
 
 Paralelní provádění dotazů můžete spravovat laděním následujících parametrů:
 
-- **MaxConcurrency**: Nastaví maximální počet současných síťových připojení k oddílům kontejneru. Pokud nastavíte `-1`tuto vlastnost , sada SDK spravuje stupeň paralelismu. Pokud `MaxConcurrency` je `0`nastavena na , je jedno síťové připojení k oddíly kontejneru.
+- **MaxConcurrency**: nastaví maximální počet současných síťových připojení k oddílům kontejneru. Pokud nastavíte tuto vlastnost na `-1`, sada SDK bude spravovat stupeň paralelismu. Pokud je `MaxConcurrency` nastavena na `0`, je k oddílům kontejneru jediné síťové připojení.
 
-- **MaxBufferedItemCount:** Vyvažuje latenci dotazů a využití paměti na straně klienta. Pokud je tato možnost vynechána nebo nastavena na hodnotu -1, sada SDK spravuje počet položek, které jsou uloženy do vyrovnávací paměti během paralelního provádění dotazu.
+- **MaxBufferedItemCount:** Vyvažuje latenci dotazů a využití paměti na straně klienta. Pokud je tato možnost vynechána nebo chcete-li ji nastavit na hodnotu-1, sada SDK spravuje počet položek ukládaných do vyrovnávací paměti během paralelního provádění dotazů.
 
-Vzhledem k schopnosti Azure Cosmos DB paralelizovat dotazy mezi oddíly, latence dotazu se obecně škáluje stejně jako systém přidá [fyzické oddíly](partition-data.md#physical-partitions). Poplatek žP se však výrazně zvýší s tím, jak se zvyšuje celkový počet fyzických oddílů.
+Vzhledem k tomu, že Azure Cosmos DB je možné paralelizovatovat dotazy na více oddílů, bude latence dotazů obecně škálovatelná, protože systém přidává [fyzické oddíly](partition-data.md#physical-partitions). Poplatek za RU se ale výrazně zvýší, protože se zvýší celkový počet fyzických oddílů.
 
-Při spuštění dotazu mezi oddíly, v podstatě provádíte samostatný dotaz na jednotlivé fyzické oddíly. Zatímco dotazy mezi oddíly budou používat index, pokud jsou k dispozici, stále nejsou ani zdaleka tak efektivní jako dotazy v oddílu.
+Když spustíte dotaz pro různé oddíly, budete v podstatě provádět samostatný dotaz na jednotlivé fyzické oddíly. I když dotazy mezioddílu budou používat index, pokud je k dispozici, stále nejsou skoro stejně efektivní jako dotazy v rámci oddílu.
 
 ## <a name="useful-example"></a>Užitečný příklad
 
-Zde je analogie pro lepší pochopení dotazů mezi oddíly:
+Pro lepší pochopení dotazů mezi oddíly je tu analogický:
 
-Představme si, že jste řidič dodávky, který musí doručit balíčky do různých bytových komplexů. Každý bytový komplex má seznam v prostorách, který má všechna čísla jednotek rezidenta. Můžeme porovnat každý bytový komplex s fyzickým oddílem a každý seznam s indexem fyzického oddílu.
+Představte si, že jste ovladač pro doručování, který musí doručovat balíčky do různých typů Apartment. Každý model Apartment má seznam na místě, kde jsou všechna čísla jednotek rezidenta. Každý izolovaný model Apartment můžeme porovnat s fyzickým oddílem a každým seznamem s indexem fyzického oddílu.
 
-Můžeme porovnat in-partition a cross-partition dotazy pomocí tohoto příkladu:
+Pomocí tohoto příkladu můžeme porovnat dotazy v oddílu a mezi oddíly:
 
 ### <a name="in-partition-query"></a>Dotaz v rámci oddílu
 
-Pokud řidič dodávky zná správný bytový komplex (fyzický oddíl), může okamžitě jet do správné budovy. Řidič může zkontrolovat seznam bytových komplexů čísel jednotek rezidenta (index) a rychle doručit příslušné balíčky. V tomto případě řidič neztrácí čas ani úsilí jízdou do bytového komplexu, aby zkontroloval a zjistil, zda tam žijí příjemci balíčku.
+Pokud ovladač pro doručování zná správný komplexní model Apartment (fyzický oddíl), může ihned prosazovat správnou sestavování. Ovladač může kontrolovat seznam čísel jednotek rezidentního typu na izolovaném typu (index) a rychle doručovat příslušné balíčky. V takovém případě ovladač neodstraní žádné časy ani úsilí, aby se kontrolovaly s izolovaným prostorem, aby zkontroloval a viděli, jestli tam všichni příjemci balíčku žijí.
 
-### <a name="cross-partition-query-fan-out"></a>Dotaz napříč oddíly (fan-out)
+### <a name="cross-partition-query-fan-out"></a>Dotaz na více oddílů (ventilátor-out)
 
-Pokud řidič dodávky nezná správný bytový komplex (fyzický oddíl), bude muset jet do každého bytového domu a zkontrolovat seznam se všemi čísly jednotek rezidenta (index). Jakmile dorazí do každého bytového komplexu, budou stále moci používat seznam adres každého obyvatele. Budou však muset zkontrolovat seznam každého bytového komplexu, zda tam žijí příjemci balíčků nebo ne. To je, jak fungují dotazy mezi oddíly. Zatímco oni mohou použít index (není nutné klepat na každé jednotlivé dveře), musí samostatně zkontrolovat index pro každý fyzický oddíl.
+Pokud ovladač pro doručování nezná správný komplexní model Apartment (fyzický oddíl), bude nutné, aby provedl každou jednotlivou budova na izolovaném typu Apartment a zkontroloval seznam se všemi čísly jednotek rezidenta (index). Jakmile se dostanou do každého typu apartment, budou moci používat seznam adres každého rezidenta. Budou se ale muset podívat na všechny komplexní seznamy s izolovaným modelem, ať už v něm existují všichni příjemci balíčku. To je způsob fungování dotazů mezi oddíly. I když můžou použít index (nemusíte vykrojit na všech jednoduchých dveřích), musí samostatně kontrolovat index pro každý fyzický oddíl.
 
-### <a name="cross-partition-query-scoped-to-only-a-few-physical-partitions"></a>Dotaz mezi oddíly (s rozsahem pouze na několik fyzických oddílů)
+### <a name="cross-partition-query-scoped-to-only-a-few-physical-partitions"></a>Dotaz na více oddílů (omezený na několik fyzických oddílů)
 
-Pokud řidič dodávky ví, že všichni příjemci balíčků žijí v několika bytových komplexech, nebudou muset jet do každého. Při jízdě do několika bytových komplexů bude stále vyžadovat více práce než návštěva jen jedné budovy, řidič dodávky stále šetří značný čas a úsilí. Pokud dotaz má klíč oddílu ve `IN` svém filtru s klíčovým slovem, bude pouze kontrolovat příslušné fyzické oddíly indexy pro data.
+Pokud ovladač pro doručování ví, že všichni příjemci balíčku jsou v některém z několika složitých komplexních komplexních, nemusíte je nastavovat na každou jednu z nich. I když řízení na několika komplexních objektech Apartment bude stále vyžadovat více práce, než když navštívíte jenom jednu budovu, ovladač pro doručování pořád ukládá výrazný čas a úsilí. Pokud má dotaz klíč oddílu ve svém filtru s `IN` klíčovým slovem, zkontroluje pouze příslušné indexy fyzického oddílu pro data.
 
 ## <a name="avoiding-cross-partition-queries"></a>Předcházení dotazům mezi oddíly
 
-Pro většinu kontejnerů je nevyhnutelné, že budete mít některé dotazy mezi oddíly. S některými dotazy cross-partition je v pořádku! Téměř všechny operace dotazu jsou podporovány napříč oddíly (klíče logických oddílů i fyzické oddíly). Azure Cosmos DB má také mnoho optimalizací v dotazovacím stroji a klientských sadách SDK pro paralelizaci provádění dotazů napříč fyzickými oddíly.
+U většiny kontejnerů je nevyhnutelné, že budete mít několik dotazů mezi oddíly. Některé dotazy na více oddílů jsou v pořádku. Téměř všechny operace dotazů jsou podporovány napříč oddíly (klíče logického oddílu a fyzické oddíly). Azure Cosmos DB také obsahuje mnoho optimalizací v dotazovacím stroji a klientských sadách SDK pro paralelizovat provádění dotazů napříč fyzickými oddíly.
 
-Pro většinu scénářů náročné na čtení doporučujeme jednoduše vybrat nejběžnější vlastnosti ve filtrech dotazů. Měli byste se také ujistit, že klíč oddílu dodržuje osvědčené [postupy výběru jiného klíče oddílu](partitioning-overview.md#choose-partitionkey).
+U většiny scénářů pro čtení a čtení doporučujeme v filtrech dotazů jednoduše vybrat nejběžnější vlastnost. Ujistěte se také, že klíč oddílu dodržuje jiné [osvědčené postupy výběru klíče oddílu](partitioning-overview.md#choose-partitionkey).
 
-Vyhnout se dotazy mezi oddíly obvykle záleží pouze s velké kontejnery. Při každé kontrole indexu fyzického oddílu pro výsledky se účtuje minimálně přibližně 2,5 RU, a to i v případě, že žádné položky ve fyzickém oddílu neodpovídají filtru dotazu. Jako takové pokud máte pouze jeden (nebo jen několik) fyzické oddíly, dotazy mezi oddíly nebude spotřebovávat výrazně více RU než v oddílu dotazy.
+Vyloučení dotazů mezi oddíly obvykle většinou pouze s velkými kontejnery. Při každé kontrole indexu fyzického oddílu na výsledky se vám bude účtovat minimálně 2,5 RU, a to i v případě, že se filtr dotazu neshoduje s žádnými položkami ve fyzickém oddílu. Pokud máte jenom jeden (nebo jen několik) fyzických oddílů, dotazy na více oddílů nebudou spotřebovávat významně větší než dotazy na oddíly.
 
-Počet fyzických oddílů je vázánna na množství zřízených ŽP. Každý fyzický oddíl umožňuje až 10 000 zřízených RU a může ukládat až 50 GB dat. Azure Cosmos DB bude automaticky spravovat fyzické oddíly za vás. Počet fyzických oddílů v kontejneru závisí na zřízené propustnosta a spotřebované úložiště.
+Počet fyzických oddílů je vázaný na míru zřízeného RU. Každý fyzický oddíl umožňuje až 10 000 zřídit RU a může ukládat až 50 GB dat. Azure Cosmos DB bude pro vás automaticky spravovat fyzické oddíly. Počet fyzických oddílů ve vašem kontejneru závisí na zřízené propustnosti a spotřebovaném úložišti.
 
-Měli byste se pokusit vyhnout se dotazům mezi oddíly, pokud vaše úloha splňuje následující kritéria:
-- Plánujete mít více než 30 000 zřízených
-- Plánujete uložit více než 100 GB dat
+Měli byste se pokusit vyhnout se dotazům mezi oddíly, pokud vaše úlohy splňují následující kritéria:
+- Máte v plánu, aby bylo zajištěno více než 30 000 RU.
+- Máte v plánu ukládat více než 100 GB dat
 
 ## <a name="next-steps"></a>Další kroky
 
-V následujících článcích se dozvíte o dělení v Azure Cosmos DB:
+Informace o dělení v Azure Cosmos DB najdete v následujících článcích:
 
 - [Dělení ve službě Azure Cosmos DB](partitioning-overview.md)
 - [Syntetické klíče oddílů ve službě Azure Cosmos DB](synthetic-partition-keys.md)

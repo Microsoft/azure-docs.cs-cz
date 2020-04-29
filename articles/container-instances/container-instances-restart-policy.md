@@ -1,26 +1,26 @@
 ---
-title: Zásady restartování pro úlohy spouštění
-description: Zjistěte, jak používat instance kontejnerů Azure ke spouštění úloh, které se spouštějí do dokončení, jako jsou úlohy sestavení, testování nebo vykreslování obrázků.
+title: Zásady restartování pro úlohy běhu
+description: Naučte se používat Azure Container Instances k provádění úloh, které se spouštějí do dokončení, například v úlohách sestavení, testování nebo vykreslování imagí.
 ms.topic: article
 ms.date: 04/15/2019
 ms.openlocfilehash: 8ef4ef228038242f53abc8041470f7f596ab1157
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80131497"
 ---
-# <a name="run-containerized-tasks-with-restart-policies"></a>Spuštění kontejnerizovaných úloh se zásadami restartování
+# <a name="run-containerized-tasks-with-restart-policies"></a>Spuštění kontejnerových úloh pomocí zásad restartování
 
 Nasazení kontejnerů ve službě Azure Container Instances je jednoduché a rychlé. Proto je tato platforma vhodná pro úkoly, které se spouští jen jednou, jako je sestavení, testování nebo vykreslení image v instanci kontejneru.
 
 Konfigurovatelné zásady restartování umožňují nastavit, aby se kontejnery po dokončení procesů zastavily. Instance kontejnerů se účtují po sekundách. Proto se vám účtují jenom výpočetní prostředky používané po dobu spuštění kontejneru, když plní vaši úlohu.
 
-Příklady uvedené v tomto článku použít azure cli. Musíte mít Azure CLI verze 2.0.21 nebo vyšší [nainstalované místně][azure-cli-install], nebo použít cli v [Azure Cloud Shell](../cloud-shell/overview.md).
+Příklady uvedené v tomto článku používají rozhraní příkazového řádku Azure CLI. Musíte mít [místně nainstalovanou][azure-cli-install]verzi Azure CLI 2.0.21 nebo novější, nebo můžete použít rozhraní příkazového řádku v [Azure Cloud Shell](../cloud-shell/overview.md).
 
 ## <a name="container-restart-policy"></a>Zásady restartování kontejneru
 
-Když vytvoříte [skupinu kontejnerů](container-instances-container-groups.md) v Azure Container Instances, můžete zadat jedno ze tří nastavení zásad restartování.
+Při vytváření [skupiny kontejnerů](container-instances-container-groups.md) v Azure Container Instances můžete zadat jedno ze tří nastavení zásad restartování.
 
 | Zásady restartování   | Popis |
 | ---------------- | :---------- |
@@ -28,9 +28,9 @@ Když vytvoříte [skupinu kontejnerů](container-instances-container-groups.md)
 | `Never` | Kontejnery ve skupině kontejnerů se nerestartují nikdy. Kontejnery se spouštějí nejvýše jednou. |
 | `OnFailure` | Kontejnery ve skupině se restartují jen v případě, že proces spuštěný v kontejneru nebude úspěšný (když skončí nenulovým ukončovacím kódem). Kontejnery se spouštějí aspoň jednou. |
 
-## <a name="specify-a-restart-policy"></a>Určení zásad restartování
+## <a name="specify-a-restart-policy"></a>Zadat zásady restartování
 
-Způsob, jakým zadáte zásady restartování, závisí na tom, jak vytvoříte instance kontejneru, například pomocí azure cli, rutin Azure PowerShell nebo na webu Azure Portal. V rozhraní příkazového řádku `--restart-policy` Azure zadejte parametr při volání [az kontejner create][az-container-create].
+Způsob, jakým určíte zásady restartování, závisí na tom, jak vytváříte instance kontejnerů, například pomocí rutin Azure CLI, Azure PowerShell rutin nebo v Azure Portal. V Azure CLI zadejte `--restart-policy` parametr při volání [AZ Container Create][az-container-create].
 
 ```azurecli-interactive
 az container create \
@@ -40,11 +40,11 @@ az container create \
     --restart-policy OnFailure
 ```
 
-## <a name="run-to-completion-example"></a>Příklad spuštění dokončení
+## <a name="run-to-completion-example"></a>Příklad spuštění do dokončení
 
-Chcete-li zobrazit zásady restartování v akci, vytvořte instanci kontejneru `OnFailure` z image [microsoft aci-wordcount][aci-wordcount-image] a zadejte zásadu restartování. Tento příklad kontejneru spustí skript Pythonu, který ve výchozím nastavení analyzuje text Shakespearova [Hamleta](http://shakespeare.mit.edu/hamlet/full.html), zapíše 10 nejběžnějších slov do STDOUT a potom ukončí.
+Chcete-li zobrazit zásady restartování v akci, vytvořte instanci kontejneru z image Microsoft [ACI-WORDCOUNT][aci-wordcount-image] a určete zásady `OnFailure` restartování. V tomto ukázkovém kontejneru se spustí skript Pythonu, který ve výchozím nastavení analyzuje text [Hamletu](http://shakespeare.mit.edu/hamlet/full.html)Shakespeare, zapisuje 10 nejčastějších slov do stdout a pak se ukončí.
 
-Spusťte ukázkový kontejner s následujícím [příkazem az container create:][az-container-create]
+Spusťte vzorový kontejner pomocí následujícího příkazu [AZ Container Create][az-container-create] :
 
 ```azurecli-interactive
 az container create \
@@ -54,7 +54,7 @@ az container create \
     --restart-policy OnFailure
 ```
 
-Azure Container Instances spustí kontejner a po skončení aplikace (v tomto případě skriptu) ho zastaví. Když Instance kontejneru Azure zastaví kontejner, jehož zásady restartování je `Never` nebo `OnFailure`, stav kontejneru je nastavena na **Ukončeno**. Stav kontejneru můžete zkontrolovat pomocí příkazu [az container show:][az-container-show]
+Azure Container Instances spustí kontejner a po skončení aplikace (v tomto případě skriptu) ho zastaví. Když Azure Container Instances zastaví kontejner, jehož zásada restartování je `Never` nebo `OnFailure`, stav kontejneru je nastaven na **ukončeno**. Stav kontejneru můžete zjistit pomocí příkazu [AZ Container show][az-container-show] :
 
 ```azurecli-interactive
 az container show \
@@ -69,7 +69,7 @@ Příklad výstupu:
 "Terminated"
 ```
 
-Jakmile se zobrazí stav kontejneru v příkladu *Ukončeno*, zobrazí se výstup jeho úlohy zobrazením protokolů kontejnerů. Spuštěním příkazu [az container logs][az-container-logs] zobrazte výstup skriptu:
+Jakmile se stav ukázkového kontejneru zobrazí jako *ukončeno*, můžete zobrazit jeho výstup jeho úkolů zobrazením protokolů kontejnerů. Spuštěním příkazu [AZ Container logs][az-container-logs] zobrazíte výstup skriptu:
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name mycontainer
@@ -90,13 +90,13 @@ Výstup:
  ('HAMLET', 386)]
 ```
 
-Tento příklad ukazuje výstup, který skript odeslaný stdout. Kontejnerizované úkoly však místo toho může zapsat jejich výstup do trvalého úložiště pro pozdější načtení. Například do [sdílené složky Azure](container-instances-mounting-azure-files-volume.md).
+Tento příklad ukazuje výstup, který skript odeslal do STDOUT. Vaše kontejnerové úlohy však mohou místo toho zapsat výstup do trvalého úložiště pro pozdější načtení. Například do [sdílené složky Azure](container-instances-mounting-azure-files-volume.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Scénáře založené na úlohách, jako je například dávkové zpracování velké datové sady s několika kontejnery, můžete využít vlastní [proměnné prostředí](container-instances-environment-variables.md) nebo [příkazové řádky](container-instances-start-command.md) za běhu.
+Scénáře založené na úlohách, například dávkové zpracování velké datové sady s několika kontejnery, mohou využívat vlastní [proměnné prostředí](container-instances-environment-variables.md) nebo [příkazové řádky](container-instances-start-command.md) za běhu.
 
-Podrobnosti o tom, jak zachovat výstup kontejnerů, které běží na dokončení, najdete [v tématu připojení sdílené složky Azure s instancemi kontejneru Azure](container-instances-mounting-azure-files-volume.md).
+Podrobnosti o tom, jak zachovat výstup kontejnerů, které se spouští k dokončení, najdete v tématu [připojení sdílené složky Azure pomocí Azure Container Instances](container-instances-mounting-azure-files-volume.md).
 
 <!-- LINKS - External -->
 [aci-wordcount-image]: https://hub.docker.com/_/microsoft-azuredocs-aci-wordcount

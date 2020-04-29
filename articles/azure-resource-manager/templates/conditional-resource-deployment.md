@@ -1,22 +1,22 @@
 ---
 title: Podmíněné nasazení se šablonami
-description: Popisuje, jak podmíněně nasadit prostředek v šabloně Azure Resource Manager.
+description: Popisuje postup podmíněného nasazení prostředku v šabloně Azure Resource Manager.
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.openlocfilehash: f170710118c0e3de6f3643b6216ed55b83b5c7df
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80153416"
 ---
 # <a name="conditional-deployment-in-arm-templates"></a>Podmíněné nasazení v šablonách ARM
 
-Někdy je potřeba volitelně nasadit prostředek v šabloně Azure Resource Manager (ARM). Pomocí `condition` prvku určete, zda je prostředek nasazen. Hodnota pro tento prvek překládá na true nebo false. Pokud je hodnota true, je vytvořen prostředek. Pokud je hodnota false, prostředek není vytvořen. Hodnotu lze použít pouze pro celý zdroj.
+Někdy potřebujete volitelně nasadit prostředek v šabloně Azure Resource Manager (ARM). Použijte `condition` element k určení, zda je prostředek nasazen. Hodnota pro tento prvek je přeložena na hodnotu true nebo false. Pokud je hodnota true, je prostředek vytvořen. Pokud je hodnota false, prostředek se nevytvoří. Hodnota se dá použít jenom u celého prostředku.
 
-## <a name="new-or-existing-resource"></a>Nový nebo existující zdroj
+## <a name="new-or-existing-resource"></a>Nový nebo existující prostředek
 
-Podmíněné nasazení můžete použít k vytvoření nového prostředku nebo použít existující prostředek. Následující příklad ukazuje, jak použít podmínku k nasazení nového účtu úložiště nebo použít existující účet úložiště.
+Pomocí podmíněného nasazení můžete vytvořit nový prostředek nebo použít existující. Následující příklad ukazuje, jak použít podmínku k nasazení nového účtu úložiště nebo k použití existujícího účtu úložiště.
 
 ```json
 {
@@ -33,13 +33,13 @@ Podmíněné nasazení můžete použít k vytvoření nového prostředku nebo 
 }
 ```
 
-Když je parametr **newOrExisting** nastaven na **hodnotu new**, podmínka se vyhodnotí jako true. Účet úložiště se nasadí. Však když **newOrExisting** je nastavena na **existující**, podmínka vyhodnotí false a účet úložiště není nasazen.
+Pokud je parametr **newOrExisting** nastaven na **New**, podmínka se vyhodnotí jako true. Účet úložiště je nasazený. Pokud je však vlastnost **newOrExisting** nastavena na hodnotu **stávající**, bude podmínka vyhodnocena jako NEPRAVDA a účet úložiště nebude nasazen.
 
-Kompletní ukázková šablona, `condition` která používá prvek, najdete [v tématu Virtuální počítač s novou nebo existující virtuální sítí, úložištěm a veřejnou IP adresou](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-new-or-existing-conditions).
+Kompletní příklad šablony, která používá `condition` element, najdete v tématu [virtuální počítač s novým nebo existujícím Virtual Network, úložištěm a veřejnou IP adresou](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-new-or-existing-conditions).
 
-## <a name="allow-condition"></a>Povolit podmínku
+## <a name="allow-condition"></a>Podmínka povolení
 
-Můžete předat hodnotu parametru, která označuje, zda je podmínka povolena. Následující příklad nasazuje sql server a volitelně umožňuje IP adresy Azure.
+Můžete předat hodnotu parametru, která označuje, zda je podmínka povolena. V následujícím příkladu je nasazený SQL Server a volitelně povoluje IP adresy Azure.
 
 ```json
 {
@@ -71,21 +71,21 @@ Můžete předat hodnotu parametru, která označuje, zda je podmínka povolena.
 }
 ```
 
-Kompletní šablonu najdete v tématu [Logický server Azure SQL](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-logical-server).
+Úplnou šablonu najdete v tématu [logický Server Azure SQL](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-logical-server).
 
-## <a name="runtime-functions"></a>Runtime funkce
+## <a name="runtime-functions"></a>Běhové funkce
 
-Pokud používáte [odkaz](template-functions-resource.md#reference) nebo [seznam](template-functions-resource.md#list) funkce s prostředek, který je podmíněně nasazen, funkce se vyhodnotí i v případě, že prostředek není nasazen. Zobrazí se chyba, pokud funkce odkazuje na prostředek, který neexistuje.
+Použijete-li funkci [reference](template-functions-resource.md#reference) nebo [list](template-functions-resource.md#list) s prostředkem, který je podmíněně nasazen, je funkce vyhodnocena i v případě, že prostředek není nasazen. Pokud funkce odkazuje na prostředek, který neexistuje, zobrazí se chyba.
 
-Pomocí funkce [if](template-functions-logical.md#if) se ujistěte, že je funkce vyhodnocena pouze pro podmínky nasazení prostředku. Podívejte se na [funkci if](template-functions-logical.md#if) pro ukázkovou šablonu, která používá if a odkaz s podmíněně nasazeným prostředkem.
+Použijte funkci [if](template-functions-logical.md#if) a ujistěte se, že je funkce vyhodnocena pouze pro podmínky při nasazení prostředku. Podívejte se na [funkci IF](template-functions-logical.md#if) pro ukázkovou šablonu, která používá if a odkaz s podmíněně nasazeným prostředkem.
 
-Prostředek nastavíte [jako závislý](define-resource-dependency.md) na podmíněném prostředku přesně tak, jako byste nastavili jakýkoli jiný prostředek. Když se podmíněný prostředek nenasadí, Azure Resource Manager ho automaticky odebere z požadovaných závislostí.
+Prostředek můžete nastavit [tak,](define-resource-dependency.md) aby byl závislý na podmíněném prostředku přesně stejně jako jakýkoliv jiný prostředek. Pokud není podmíněný prostředek nasazený, Azure Resource Manager ho automaticky odebere z požadovaných závislostí.
 
-## <a name="condition-with-complete-mode"></a>Stav s kompletním režimem
+## <a name="condition-with-complete-mode"></a>Podmínka s režimem úplného zobrazení
 
-Pokud nasadíte šablonu s [režimem dokončení](deployment-modes.md) a prostředek není nasazen, protože podmínka vyhodnotí na false, výsledek závisí na verzi rozhraní REST API, kterou používáte k nasazení šablony. Pokud používáte verzi starší než 2019-05-10, prostředek **se neodstraní**. S 2019-05-10 nebo novější, prostředek **je odstraněn**. Nejnovější verze Azure PowerShell a Azure CLI odstranit prostředek, pokud je podmínka false.
+Pokud nasadíte šablonu s [režimem úplného](deployment-modes.md) nasazení a prostředek není nasazen, protože podmínka je vyhodnocena jako NEPRAVDA, výsledek závisí na tom, která REST API verze, kterou použijete k nasazení šablony. Pokud používáte verzi starší než 2019-05-10, prostředek se **neodstraní**. Při 2019-05-10 nebo novějším se prostředek **odstraní**. Nejnovější verze Azure PowerShell a Azure CLI odstraní prostředek, pokud je podmínka nepravdivá.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Doporučení týkající se vytváření šablon naleznete v doporučených [postupech pro šablony ARM](template-best-practices.md).
-* Chcete-li vytvořit více instancí prostředku, [přečtěte si informace o iteraci prostředků v šablonách ARM](copy-resources.md).
+* Doporučení k vytváření šablon najdete v tématu [osvědčené postupy pro šablonu ARM](template-best-practices.md).
+* Pokud chcete vytvořit víc instancí prostředku, přečtěte si téma [iterace prostředků v šablonách ARM](copy-resources.md).

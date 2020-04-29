@@ -1,81 +1,81 @@
 ---
-title: Azure Monitor pro monitorování stavu kontejnerů konfigurace | Dokumenty společnosti Microsoft
-description: Tento článek obsahuje obsah popisující podrobnou konfiguraci monitorování stavu v Azure Monitor u kontejnerů.
+title: Azure Monitor pro konfiguraci monitorování stavu kontejnerů | Microsoft Docs
+description: Tento článek poskytuje obsah popisující podrobnou konfiguraci monitorování stavu v Azure Monitor pro kontejnery.
 ms.topic: conceptual
 ms.date: 12/01/2019
 ms.openlocfilehash: 99ea6e96f5a8a486784cb3d633a6e031b60eaad7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80055703"
 ---
-# <a name="azure-monitor-for-containers-health-monitor-configuration-guide"></a>Azure Monitor pro monitorování kontejnerů průvodce konfigurací konfigurace monitoru
+# <a name="azure-monitor-for-containers-health-monitor-configuration-guide"></a>Průvodce konfigurací monitorování stavu kontejnerů Azure Monitor
 
-Monitory jsou primárním prvkem pro měření stavu a zjišťování chyb v Azure Monitor u kontejnerů. Tento článek vám pomůže pochopit koncepty, jak se měří stav a prvky, které tvoří model stavu sledovat a sestavy o stavu clusteru Kubernetes s funkcí [Stav (náhled).](container-insights-health.md)
+Monitory jsou primárním prvkem pro měření stavu a zjišťování chyb v Azure Monitor pro kontejnery. Tento článek vám pomůže porozumět konceptům, jak se měří stav, a prvků, které tvoří model stavu pro monitorování a hlášení stavu clusteru Kubernetes s funkcí [stavu (Preview)](container-insights-health.md) .
 
 >[!NOTE]
->Funkce Stav je v tuto chvíli ve verzi Public Preview.
+>Funkce Health je v tuto chvíli ve verzi Public Preview.
 >
 
 ## <a name="monitors"></a>Monitory
 
-Monitor měří stav některých aspektů spravovaného objektu. Monitory každý mají dva nebo tři stavy. Monitor bude v jednom a pouze v jednom z jeho potenciálních stavů v daném okamžiku. Když je monitor načten kontejnerizovaným agentem inicializován do stavu v pořádku. Stav se změní pouze v případě, že jsou zjištěny zadané podmínky pro jiný stav.
+Monitorování měří stav nějakého aspektu spravovaného objektu. Jednotlivé monitory mají buď dva, nebo tři stavové stavy. Monitorování bude v jednom okamžiku pouze v jednom z jeho možných stavů. Když je monitor načtený agentem kontejneru, je inicializován do stavu v pořádku. Stav se změní pouze v případě, že jsou zjištěny zadané podmínky pro jiný stav.
 
-Celkový stav určitého objektu je určen ze stavu každého z jeho monitorů. Tato hierarchie je znázorněno v podokně hierarchie stavu v Azure Monitor pro kontejnery. Zásady pro zahrnutí stavu je součástí konfigurace agregační monitory.
+Celkový stav konkrétního objektu je určen z hlediska stavu každého z jeho monitorů. Tato hierarchie je znázorněna v podokně hierarchie stavu v Azure Monitor pro kontejnery. Zásady pro zahrnutí stavu jsou součástí konfigurace agregovaných monitorování.
 
-## <a name="types-of-monitors"></a>Typy monitorů
+## <a name="types-of-monitors"></a>Typy monitorování
 
 |Monitorování | Popis | 
 |--------|-------------|
-| Monitor jednotky |Monitorování jednotky měří některé aspekty prostředku nebo aplikace. To může být kontrola čítače výkonu k určení výkonu prostředku nebo jeho dostupnosti. |
-|Agregační monitor | Agregované monitory seskupí více monitorů a poskytují jeden agregovaný stav stavu. Monitorování jednotek jsou obvykle konfigurovány pod konkrétním agregačním monitorem. Například agregační monitorování uzlu shrnuje stav využití procesoru uzlu, využití paměti a stavu uzlu.
+| Monitorování jednotky |Monitorování jednotek měří určitý aspekt prostředku nebo aplikace. To může být zkontrolováno čítače výkonu k určení výkonu prostředku nebo jeho dostupnosti. |
+|Agregované monitorování | Agregované monitory seskupují více monitorování, aby poskytovaly jediný stav agregovaného stavu. Monitory jednotek se obvykle konfigurují v rámci konkrétního agregovaného monitorování. Například monitorování agregované pro uzel shrnuje stav využití CPU uzlu, využití paměti a stav uzlu.
  |
 
-### <a name="aggregate-monitor-health-rollup-policy"></a>Agregovat zásady souhrnu stavu monitorování
+### <a name="aggregate-monitor-health-rollup-policy"></a>Souhrnná zásada Shrnutí stavu monitorování
 
-Každý agregační monitorování definuje zásady souhrnu stavu, což je logika, která se používá k určení stavu agregované monitorování na základě stavu monitorů pod ním. Možné zásady souhrnu stavu pro agregované monitorování jsou následující:
+Každé agregované monitorování definuje zásady souhrnu stavu, což je logika, která se používá k určení stavu agregovaného monitorování na základě stavu monitorování. Možné souhrnné zásady stavu pro agregované monitorování jsou následující:
 
-#### <a name="worst-state-policy"></a>Nejhorší státní politika
+#### <a name="worst-state-policy"></a>Zásada nejhorší stav
 
-Stav agregovaného monitorování odpovídá stavu podřízeného monitoru s nejhorším stavem. Toto je nejběžnější zásada používaná agregovanými monitory.
+Stav agregovaného monitorování odpovídá stavu podřízeného monitorování s nejhorším stavem. Toto jsou nejběžnější zásady používané agregovanými monitory.
 
-![Příklad nejhoršího stavu souhrnu souhrnného souhrnného souhrnného souhrnného souhrnného souhrnného ukazatele](./media/container-insights-health-monitoring-cfg/aggregate-monitor-rollup-worstof.png)
+![Příklad souhrnného stavu souhrnu agregovaného monitorování](./media/container-insights-health-monitoring-cfg/aggregate-monitor-rollup-worstof.png)
 
-### <a name="percentage-policy"></a>Procentuální politika
+### <a name="percentage-policy"></a>Procentuální zásady
 
-Zdrojový objekt odpovídá nejhoršímu stavu jednoho člena zadaného procenta cílových objektů v nejlepším stavu. Tato zásada se používá v případě, že určité procento cílových objektů musí být v pořádku, aby cílový objekt byl považován za zdravý. Procento zásadseřadí monitory v sestupném pořadí podle závažnosti stavu a agregační monitor je vypočítán jako nejhorší stav N% (N je diktováno parametrem konfigurace *StateThresholdPercentage*).
+Zdrojový objekt se shoduje s nejhorším stavem jednoho člena zadaného procenta cílových objektů v nejlepším stavu. Tato zásada se používá v případě, že určité procento cílových objektů musí být v pořádku, aby cílový objekt byl považován za v pořádku. Procentní zásady řadí monitory v sestupném pořadí podle závažnosti a agregovaný stav monitorování je vypočítán jako nejhorší stav N% (N je určen parametrem konfigurace *StateThresholdPercentage*).
 
-Předpokládejme například, že existuje pět instancí kontejneru image kontejneru a jejich jednotlivé stavy jsou **kritické**, **Upozornění**, **V pořádku,** **V pořádku**, **V pořádku**.  Stav monitorování využití procesoru kontejneru bude **kritický**, protože nejhorší stav 90 % kontejnerů je **kritický** při řazení v sestupném pořadí podle závažnosti.
+Předpokládejme například, že existuje pět instancí kontejneru image kontejneru a jejich jednotlivé stavy jsou **kritická**, **upozorňující**, **v**dobrém stavu **v** **dobrém stavu.**  Stav monitorování využití CPU kontejneru bude **kritický**, protože nejhorší stav 90% kontejnerů je při seřazení v sestupném pořadí závažnosti **kritický** .
 
-## <a name="understand-the-monitoring-configuration"></a>Principy konfigurace monitorování
+## <a name="understand-the-monitoring-configuration"></a>Pochopení konfigurace monitorování
 
-Azure Monitor pro kontejnery obsahuje řadu klíčových scénářů monitorování, které jsou nakonfigurované následujícím způsobem.
+Azure Monitor for Containers zahrnuje řadu klíčových scénářů monitorování, které jsou nakonfigurované následujícím způsobem.
 
-### <a name="unit-monitors"></a>Jednotkové monitory
+### <a name="unit-monitors"></a>Monitory jednotek
 
-|**Název monitoru** | Typ monitoru | **Popis** | **Parametr** | **Hodnotu** |
+|**Název monitorování** | Typ monitorování | **Popis** | **Ukazatele** | **Osa** |
 |-----------------|--------------|-----------------|---------------|-----------|
-|Využití paměti uzlu |Monitor jednotky |Tento monitor vyhodnocuje využití paměti uzlu každou minutu pomocí cadvisor hlášeny data. |ConsecutiveSamplesForStateTransition<br> FailifGreaterThanPercentage<br> WarnifGreaterThanPercentage | 3<br> 90<br> 80  ||
-|Využití procesoru uzlu |Monitor jednotky |Tento monitor kontroluje využití procesoru uzlu každou minutu pomocí cadvisor vykázaných dat. | ConsecutiveSamplesForStateTransition<br> FailifGreaterThanPercentage<br> WarnifGreaterThanPercentage | 3<br> 90<br> 80  ||
-|Stav uzlu |Monitor jednotky |Tento monitor kontroluje stavuzlu hlášený kubernetes.<br> V současné době jsou kontrolovány následující podmínky uzlu: Disk tlak, tlak paměti, TLAK PID, Mimo disk, Síť není k dispozici, Připraveno stav pro uzel.<br> Pokud je mimo výše uvedené podmínky **splněny** *podmínky není k* *dispozici* , monitor se změní na **kritický** stav.<br> Pokud se jiné podmínky rovnají **true**, kromě stavu **Připraveno,** monitor se změní na stav **Upozornění.** | NodeConditionTypeForFailedState | outofdisk,síť není k dispozici ||
-|Využití paměti kontejneru |Monitor jednotky |Toto monitorování hlásí kombinovaný stav využití paměti (RSS) instancí kontejneru.<br> Provádí jednoduché porovnání, které porovnává každý vzorek na jednu prahovou hodnotu a zadaný konfiguračníparametr **ConsecutiveSamplesForStateTransition**.<br> Jeho stav se vypočítá jako nejhorší stav 90 % instancí kontejneru (StateThresholdPercentage), seřazený v sestupném pořadí podle závažnosti stavu kontejneru (tj. kritický, upozornění, v pořádku).<br> Pokud není přijat žádný záznam z instance kontejneru, je stav instance kontejneru hlášen jako **Neznámý**a má vyšší prioritu v pořadí řazení nad **kritickým** stavem.<br> Stav každé instance kontejneru se vypočítá pomocí prahových hodnot určených v konfiguraci. Pokud je použití nad kritickou prahovou hodnotou (90 %), pak je instance v **kritickém** stavu, pokud je menší než kritická prahová hodnota (90 %) ale větší než prahová hodnota upozornění (80 %), pak je instance ve stavu **Upozornění.** V opačném případě je ve stavu **V pořádku.** |ConsecutiveSamplesForStateTransition<br> FailIflessThanPercentage<br> Procento státní hranice<br> WarnifGreaterThanPercentage| 3<br> 90<br> 90<br> 80 ||
-|Využití procesoru kontejneru |Monitor jednotky |Toto monitorování hlásí kombinovaný stav využití procesoru instancí kontejneru.<br> Provádí jednoduché porovnání, které porovnává každý vzorek na jednu prahovou hodnotu a zadaný konfiguračníparametr **ConsecutiveSamplesForStateTransition**.<br> Jeho stav se vypočítá jako nejhorší stav 90 % instancí kontejneru (StateThresholdPercentage), seřazený v sestupném pořadí podle závažnosti stavu kontejneru (tj. kritický, upozornění, v pořádku).<br> Pokud není přijat žádný záznam z instance kontejneru, je stav instance kontejneru hlášen jako **Neznámý**a má vyšší prioritu v pořadí řazení nad **kritickým** stavem.<br> Stav každé instance kontejneru se vypočítá pomocí prahových hodnot určených v konfiguraci. Pokud je použití nad kritickou prahovou hodnotou (90 %), pak je instance v **kritickém** stavu, pokud je menší než kritická prahová hodnota (90 %) ale větší než prahová hodnota upozornění (80 %), pak je instance ve stavu **Upozornění.** V opačném případě je ve stavu **V pořádku.** |ConsecutiveSamplesForStateTransition<br> FailIflessThanPercentage<br> Procento státní hranice<br> WarnifGreaterThanPercentage| 3<br> 90<br> 90<br> 80 ||
-|Systémové pracovní pody připraveny |Monitor jednotky |Toto monitorování hlásí stav na základě procenta podů ve stavu připraven v daném pracovním vytížení. Jeho stav je nastaven na **kritický,** pokud méně než 100% lusků je ve **stavu Zdraví** |ConsecutiveSamplesForStateTransition<br> FailIflessThanPercentage |2<br> 100 ||
-|Stav Kube API |Monitor jednotky |Tento monitor hlásí stav služby Kube API. Monitor je v kritickém stavu v případě, že koncový bod Kube API není k dispozici. Pro tento konkrétní monitor je stav určen vytvořením dotazu na koncový bod uzlů pro server kube-api. Cokoli jiného než kód odezvy OK změní monitor na **kritický** stav. | Žádné vlastnosti konfigurace |||
+|Využití paměti uzlu |Monitorování jednotky |Toto monitorování vyhodnocuje využití paměti uzlu každou minutu pomocí cadvisor nahlášených dat. |ConsecutiveSamplesForStateTransition<br> FailIfGreaterThanPercentage<br> WarnIfGreaterThanPercentage | 3<br> 90<br> 80  ||
+|Využití procesoru uzlů |Monitorování jednotky |Toto monitorování zkontroluje využití CPU v uzlu každou minutu pomocí cadvisor nahlášených dat. | ConsecutiveSamplesForStateTransition<br> FailIfGreaterThanPercentage<br> WarnIfGreaterThanPercentage | 3<br> 90<br> 80  ||
+|Stav uzlu |Monitorování jednotky |Toto monitorování ověří podmínky uzlu hlášené nástrojem Kubernetes.<br> V současné době jsou zkontrolovány následující podmínky uzlu: tlak na disk, tlak, tlak PID, nedostatek disku, nedostupná síť, stav připraveno pro uzel.<br> Pokud má *nedostatek místa na disku* nebo v síti **hodnotu true**, monitorování se změní na **kritický** stav, pokud není *k dispozici* žádný z výše uvedených podmínek.<br> Pokud se jakékoli jiné podmínky rovnají hodnotě **true**, kromě stavu **připraveno** , monitorování se změní na stav **Upozornění** . | NodeConditionTypeForFailedState | outofdisk,networkunavailable ||
+|Využití paměti kontejneru |Monitorování jednotky |Toto monitorování hlásí kombinovaný stav využití paměti (RSS) instancí kontejneru.<br> Provádí jednoduché porovnání, které porovnává jednotlivé vzorky s jedinou prahovou hodnotou, kterou určuje parametr konfigurace **ConsecutiveSamplesForStateTransition**.<br> Jeho stav je počítáno jako nejhorší stav 90% instancí kontejneru (StateThresholdPercentage) seřazený v sestupném pořadí podle závažnosti stavu kontejneru (tj. kritická, varovná, v pořádku).<br> Pokud z instance kontejneru není přijat žádný záznam, je stav instance kontejneru hlášen jako **Neznámý**a má vyšší prioritu v pořadí řazení v **kritickém** stavu.<br> Každý jednotlivý stav instance kontejneru se počítá pomocí prahových hodnot uvedených v konfiguraci. Pokud je využití nad kritickou prahovou hodnotou (90%), pak je instance v **kritickém** stavu, pokud je menší než kritická prahová hodnota (90%). ale větší než prahová hodnota pro upozornění (80%), instance je ve stavu **Upozornění** . V opačném případě je v **dobrém** stavu. |ConsecutiveSamplesForStateTransition<br> FailIfLessThanPercentage<br> StateThresholdPercentage<br> WarnIfGreaterThanPercentage| 3<br> 90<br> 90<br> 80 ||
+|Využití CPU kontejneru |Monitorování jednotky |Toto monitorování hlásí kombinovaný stav využití procesoru instancí kontejneru.<br> Provádí jednoduché porovnání, které porovnává jednotlivé vzorky s jedinou prahovou hodnotou, kterou určuje parametr konfigurace **ConsecutiveSamplesForStateTransition**.<br> Jeho stav je počítáno jako nejhorší stav 90% instancí kontejneru (StateThresholdPercentage) seřazený v sestupném pořadí podle závažnosti stavu kontejneru (tj. kritická, varovná, v pořádku).<br> Pokud z instance kontejneru není přijat žádný záznam, je stav instance kontejneru hlášen jako **Neznámý**a má vyšší prioritu v pořadí řazení v **kritickém** stavu.<br> Každý jednotlivý stav instance kontejneru se počítá pomocí prahových hodnot uvedených v konfiguraci. Pokud je využití nad kritickou prahovou hodnotou (90%), pak je instance v **kritickém** stavu, pokud je menší než kritická prahová hodnota (90%). ale větší než prahová hodnota pro upozornění (80%), instance je ve stavu **Upozornění** . V opačném případě je v **dobrém** stavu. |ConsecutiveSamplesForStateTransition<br> FailIfLessThanPercentage<br> StateThresholdPercentage<br> WarnIfGreaterThanPercentage| 3<br> 90<br> 90<br> 80 ||
+|Systémová úloha – Příprava na přípravu |Monitorování jednotky |Toto monitorování hlásí stav na základě procenta lusků ve stavu připraveno v daném zatížení. Stav je nastaven na **kritickou** , pokud je méně než 100% lusků v **dobrém** stavu. |ConsecutiveSamplesForStateTransition<br> FailIfLessThanPercentage |2<br> 100 ||
+|Stav rozhraní API pro Kube |Monitorování jednotky |Toto monitorování hlásí stav služby Kube API. Monitorování je v kritickém stavu v případě, že koncový bod rozhraní API Kube není k dispozici. U tohoto konkrétního monitorování je stav určen vytvořením dotazu na koncový bod Nodes pro server Kube-API. Cokoli jiného než kód odpovědi OK změní monitor na **kritický** stav. | Žádné vlastnosti konfigurace |||
 
 ### <a name="aggregate-monitors"></a>Agregované monitory
 
-|**Název monitoru** | **Popis** | **Algoritmus** |
+|**Název monitorování** | **Popis** | **Algoritmus** |
 |-----------------|-----------------|---------------|
-|Node |Tento monitor je agregací všech monitorů uzlů. Odpovídá stavu dětského monitoru s nejhorším zdravotním stavem:<br> Využití procesoru uzlu<br> Využití paměti uzlu<br> Stav uzlu | Nejhorší|
-|Fond uzlů |Toto monitorování hlásí kombinovaný stav všech uzlů ve *fondu agentů*fondu uzlů . Toto je monitorování tří stavů, jehož stav je založen na nejhorším stavu 80 % uzlů ve fondu uzlů seřazených v sestupném pořadí podle závažnosti stavů uzlů (tj. kritický, upozornění, v pořádku).|Procento |
-|Uzly (nadřazený fond uzlů) |Toto je souhrnné monitorování všech fondů uzlů. Jeho stav je založen na nejhorším stavu jeho podřízených monitorů (to znamená, že fondy uzlů v clusteru). |Nejhorší |
-|Cluster (nadřazená uzly/<br> Kubernetesova infrastruktura) |Toto je nadřazený monitor, který odpovídá stavu podřízeného monitoru s nejhorším stavem, což je infrastruktura kubernetes a uzly. |Nejhorší |
-|Kubernetes infrastruktura |Toto monitorování hlásí kombinovaný stav součástí spravované infrastruktury clusteru. jeho stav se počítá jako "nejhorší z" stavů podřízeného monitoru, tj. |Nejhorší|
-|Zatížení systému |Tento monitor hlásí stav zatížení kube systému. Tento monitor odpovídá stavu podřízeného monitoru s nejhorším stavem, tedy **pody v pohotovostním stavu** (monitorování a kontejnery v pracovní zátěži). |Nejhorší |
-|Kontejner |Toto monitorování hlásí celkový stav kontejneru v daném pracovním vytížení. Tento monitor odpovídá stavu podřízeného monitoru s nejhorším stavem, tedy **monitorováním využití procesoru** a **využití paměti.** |Nejhorší |
+|Node |Toto monitorování je souhrnem všech monitorů uzlů. Odpovídá stavu podřízeného monitorování s nejhorším stavem:<br> Využití procesoru uzlů<br> Využití paměti uzlu<br> Stav uzlu | Nejhorší část|
+|Fond uzlů |Toto monitorování hlásí kombinovaný stav všech uzlů ve fondu uzlů *neznámá*. Toto je tři monitorování stavu, jejichž stav je založen na nejhorším stavu 80% uzlů v rámci fondu uzlů seřazený v sestupném pořadí závažností stavů uzlů (tzn. kritická, varovná, v pořádku).|Procento |
+|Uzly (nadřazený uzel fondu uzlů) |Toto je agregované monitorování všech fondů uzlů. Jeho stav vychází z nejhoršího stavu svých podřízených monitorování (to znamená fondů uzlů přítomných v clusteru). |Nejhorší část |
+|Cluster (nadřazený uzel uzlů/<br> Infrastruktura Kubernetes) |Toto je nadřazené monitorování, které odpovídá stavu podřízeného monitorování s nejhorším stavem, který je Kubernetes infrastrukturou a uzly. |Nejhorší část |
+|Infrastruktura Kubernetes |Toto monitorování hlásí kombinovaný stav komponent spravované infrastruktury clusteru. jeho stav je vypočítán jako nejhorší z těchto stavů monitorování, tj. Kube – systémové úlohy a stav serveru rozhraní API. |Nejhorší část|
+|Systémová úloha |Toto monitorování hlásí stav úlohy Kube-System. Toto monitorování odpovídá stavu podřízeného monitorování s nejhorším stavem, který je **ve stavu připraveno** (monitorování a kontejnery v rámci úlohy). |Nejhorší část |
+|Kontejner |Toto monitorování hlásí celkový stav kontejneru v daném zatížení. Toto monitorování odpovídá stavu podřízeného monitorování s nejhorším stavem, který je **využití procesoru** a monitorování **využití paměti** . |Nejhorší část |
 
 ## <a name="next-steps"></a>Další kroky
 
-Zobrazit [stav clusteru monitoru](container-insights-health.md) se dozvíte o zobrazení stavu clusteru Kubernetes.
+Seznamte se s [monitorováním stavu clusteru](container-insights-health.md) , abyste se seznámili se zobrazením stavu clusteru Kubernetes.

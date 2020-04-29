@@ -1,6 +1,6 @@
 ---
-title: Marketplace měření služby API | Azure Marketplace
-description: Událost využití nabídek SaaS na Azure Marketplace.
+title: Rozhraní API služby měření softwaru Marketplace | Azure Marketplace
+description: Událost použití pro nabídky SaaS v Azure Marketplace.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
@@ -8,35 +8,35 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/11/2019
 ms.openlocfilehash: 315f36e5aed9dee0a89e1f9f504b18a6bed806e0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80275743"
 ---
 # <a name="marketplace-metering-service-apis"></a>Rozhraní API služeb měření na marketplace
 
-Rozhraní API události využití umožňuje vyzařovat události využití pro konkrétní zakoupenou entitu. Požadavek na událost použití odkazuje na dimenzi služeb měření definovanou vydavatelem při publikování nabídky.
+Rozhraní API události využití umožňuje generovat události využití pro konkrétní zakoupenou entitu. Požadavek na událost využití odkazuje na dimenzi služby měření, kterou definoval Vydavatel při publikování nabídky.
 
 ## <a name="usage-event"></a>Událost použití
 
-**PŘÍSPĚVEK**:`https://marketplaceapi.microsoft.com/api/usageEvent?api-version=<ApiVersion>`
+**Příspěvek**:`https://marketplaceapi.microsoft.com/api/usageEvent?api-version=<ApiVersion>`
 
 *Parametry dotazu:*
 
 |            |          |
 | ---------- | ---------------------- |
-| `ApiVersion` | Verze operace, která má být pro tento požadavek používána. Nejnovější verze ROZHRANÍ API je 2018-08-31. |
+| `ApiVersion` | Verze operace, která se má použít pro tento požadavek. Nejnovější verze rozhraní API je 2018-08-31. |
 
-*Hlavičky požadavku:*
+*Hlavičky žádosti:*
 
 | Typ obsahu       | `application/json`    |
 | ------------------ | ---------------------------- |
-| `x-ms-requestid`     | Jedinečná hodnota řetězce pro sledování požadavku od klienta, nejlépe identifikátor GUID. Pokud tato hodnota není k dispozici, jeden bude generována a poskytnuta v hlavičce odpovědi. |
-| `x-ms-correlationid` | Jedinečná hodnota řetězce pro operaci na straně klienta. Tento parametr koreluje všechny události z operace klienta s událostmi na straně serveru. Pokud tato hodnota není k dispozici, jeden bude generována a poskytnuta v hlavičkách odpovědi. |
-| `authorization`   | [Získejte JSON webový token (JWT) nosné token.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) Poznámka: Při vytváření požadavku HTTP `Bearer` předpona tokenu získaného z odkazovaného odkazu. |
+| `x-ms-requestid`     | Jedinečná řetězcová hodnota pro sledování požadavku z klienta, nejlépe pro identifikátor GUID. Pokud tato hodnota není zadána, bude vygenerována a uvedena v hlavičkách odpovědi. |
+| `x-ms-correlationid` | Jedinečná řetězcová hodnota pro operaci na klientovi. Tento parametr koreluje všechny události z klientské operace s událostmi na straně serveru. Pokud tato hodnota není k dispozici, bude vygenerována a uvedena v hlavičkách odpovědi. |
+| `authorization`   | [Získat token nosiče webového tokenu JSON (JWT).](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) Poznámka: při vytváření požadavku HTTP se předpona `Bearer` tokenu získá z odkazovaného odkazu. |
 
-*Požadavek:*
+*Request*
 
 ```json
 {
@@ -67,7 +67,7 @@ OK
 ```
 
 Kód: 400 <br>
-Chybný požadavek, chybějící nebo neplatná data poskytnutá nebo vypršela jeho platnost
+Chybný požadavek, chybí nebo jsou zadána neplatná data nebo vypršela jejich platnost.
 
 ```json
 {
@@ -85,7 +85,7 @@ Chybný požadavek, chybějící nebo neplatná data poskytnutá nebo vypršela 
 ```
 
 Kód: 403<br>
-Chybný požadavek, chybějící nebo neplatná data poskytnutá nebo vypršela jeho platnost
+Chybný požadavek, chybí nebo jsou zadána neplatná data nebo vypršela jejich platnost.
 
 ```json
 {
@@ -95,7 +95,7 @@ Chybný požadavek, chybějící nebo neplatná data poskytnutá nebo vypršela 
 ```
 
 Kód: 409<br>
-Konflikt, když obdržíme volání využití pro ID prostředku využití a efektivní využití, které již existuje. Odpověď bude `additionalInfo` obsahovat pole obsahující informace o přijaté zprávě.
+Konflikt, když obdržením volání použití pro ID prostředku využití a efektivní využití, které již existuje. Odpověď bude obsahovat `additionalInfo` pole, které obsahuje informace o přijaté zprávě.
 
 ```json
 {
@@ -113,30 +113,30 @@ Konflikt, když obdržíme volání využití pro ID prostředku využití a efe
 }
 ```
 
-## <a name="batch-usage-event"></a>Událost dávkového využití
+## <a name="batch-usage-event"></a>Událost použití dávky
 
-Rozhraní API událostí dávkového využití umožňuje vyzařovat události využití pro více než jednu zakoupenou entitu najednou. Požadavek na událost dávkového využití odkazuje na dimenzi služeb měření definovanou vydavatelem při publikování nabídky.
+Rozhraní API události využití dávky umožňuje generovat události využití pro více než jednu zakoupenou entitu najednou. Požadavek na událost využití dávky se odkazuje na dimenzi služby měření, kterou definoval Vydavatel při publikování nabídky.
 
 >[!Note]
->Můžete zaregistrovat více nabídek SaaS na komerčním trhu společnosti Microsoft. Každá registrovaná nabídka SaaS má jedinečnou aplikaci Azure AD, která je registrovaná pro účely ověřování a autorizace. Události vyzařované v dávce by měly patřit do nabídek se stejnou aplikací Azure AD v době registrace nabídky.
+>V komerčním tržišti společnosti Microsoft můžete zaregistrovat několik nabídek SaaS. Každá registrovaná nabídka SaaS má jedinečnou aplikaci Azure AD, která je zaregistrovaná pro účely ověřování a autorizace. Události emitované v dávce by měly patřit do nabídek se stejnou aplikací Azure AD v době registrace této nabídky.
 
-**PŘÍSPĚVEK:**`https://marketplaceapi.microsoft.com/api/batchUsageEvent?api-version=<ApiVersion>`
+**Příspěvek:**`https://marketplaceapi.microsoft.com/api/batchUsageEvent?api-version=<ApiVersion>`
 
 *Parametry dotazu:*
 
 |            |     |
 | ---------- | -------------------- |
-| `ApiVersion` | Verze operace, která má být pro tento požadavek používána. Nejnovější verze ROZHRANÍ API je 2018-08-31. |
+| `ApiVersion` | Verze operace, která se má použít pro tento požadavek. Nejnovější verze rozhraní API je 2018-08-31. |
 
-*Hlavičky požadavku:*
+*Hlavičky žádosti:*
 
 | Typ obsahu       | `application/json`       |
 | ------------------ | ------ |
-| `x-ms-requestid`     | Jedinečná hodnota řetězce pro sledování požadavku od klienta, nejlépe identifikátor GUID. Pokud tato hodnota není k dispozici, jeden bude generována a za předpokladu, v hlavičce odpovědi. |
-| `x-ms-correlationid` | Jedinečná hodnota řetězce pro operaci na straně klienta. Tento parametr koreluje všechny události z operace klienta s událostmi na straně serveru. Pokud tato hodnota není k dispozici, jeden bude generována a za předpokladu, v záhlaví odpovědi. |
-| `authorization`      | [Získejte JSON webový token (JWT) nosné token.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) Poznámka: Při vytváření požadavku HTTP `Bearer` předpona tokenu získaného z odkazovaného odkazu.  |
+| `x-ms-requestid`     | Jedinečná řetězcová hodnota pro sledování požadavku z klienta, nejlépe pro identifikátor GUID. Pokud tato hodnota není zadána, bude vygenerována a uvedena v hlavičkách odpovědi. |
+| `x-ms-correlationid` | Jedinečná řetězcová hodnota pro operaci na klientovi. Tento parametr koreluje všechny události z klientské operace s událostmi na straně serveru. Pokud tato hodnota není k dispozici, bude vygenerována a uvedena v hlavičkách odpovědi. |
+| `authorization`      | [Získat token nosiče webového tokenu JSON (JWT).](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) Poznámka: při vytváření požadavku HTTP se předpona `Bearer` tokenu získá z odkazovaného odkazu.  |
 
-*Požadavek:*
+*Request*
 ```json
 {
   "request": [
@@ -192,22 +192,22 @@ OK
 }
 ```
 
-Popis stavového kódu, `BatchUsageEvent` na který se odkazuje v odpovědi rozhraní API:
+Popis stavového kódu odkazovaného `BatchUsageEvent` v odpovědi rozhraní API:
 
 | Kód stavu  | Popis |
 | ---------- | -------------------- |
 | `Accepted` | Přijatý kód. |
-| `Expired` | Vypršela platnost použití. |
-| `Duplicate` | Duplikát využití k dispozici. |
+| `Expired` | Použití vypršelo. |
+| `Duplicate` | Bylo zadáno duplicitní použití. |
 | `Error` | Kód chyby |
 | `ResourceNotFound` | Poskytnutý prostředek využití je neplatný. |
-| `ResourceNotAuthorized` | Nejste oprávněni poskytovat využití tohoto prostředku. |
-| `InvalidDimension` | Dimenze, pro kterou je použití předáno, je pro tuto nabídku/plán neplatná. |
-| `InvalidQuantity` | Uplynulé množství je < 0. |
+| `ResourceNotAuthorized` | Nemáte oprávnění k zajištění využití tohoto prostředku. |
+| `InvalidDimension` | Dimenze, pro kterou je toto použití předáno, není pro tuto nabídku nebo plán platná. |
+| `InvalidQuantity` | Předané množství je < 0. |
 | `BadArgument` | Vstup chybí nebo je poškozený. |
 
 Kód: 400<br>
-Chybný požadavek, chybějící nebo neplatná data poskytnutá nebo vypršela jeho platnost
+Chybný požadavek, chybí nebo jsou zadána neplatná data nebo vypršela jejich platnost.
 
 ```json
 {
@@ -224,7 +224,7 @@ Chybný požadavek, chybějící nebo neplatná data poskytnutá nebo vypršela 
 }
 ```
 Kód: 403<br>
-Uživatel není oprávněn provést tento hovor.
+Uživatel není autorizovaný k provedení tohoto volání.
 
 ```json
 {
@@ -235,4 +235,4 @@ Uživatel není oprávněn provést tento hovor.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace naleznete v [tématu SaaS měřené fakturace](./saas-metered-billing.md).
+Další informace najdete v tématu [SaaS (účtované podle objemu](./saas-metered-billing.md)).

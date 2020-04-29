@@ -1,24 +1,24 @@
 ---
-title: Umístění zdroje šablony
+title: Umístění prostředku šablony
 description: Popisuje, jak nastavit umístění prostředků v šabloně Azure Resource Manager.
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.openlocfilehash: a8324dac1232eecd5624e5f1dc0e6656295c0a10
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80156425"
 ---
-# <a name="set-resource-location-in-arm-template"></a>Nastavení umístění prostředků v šabloně ARM
+# <a name="set-resource-location-in-arm-template"></a>Nastavení umístění prostředku v šabloně ARM
 
-Při nasazování šablony Správce prostředků Azure (ARM) je nutné zadat umístění pro každý prostředek. Umístění nemusí být ve stejném umístění jako umístění skupiny prostředků.
+Při nasazování šablony Azure Resource Manager (ARM) je nutné zadat umístění každého prostředku. Toto umístění nemusí být stejné jako umístění skupiny prostředků.
 
-## <a name="get-available-locations"></a>Získat dostupná místa
+## <a name="get-available-locations"></a>Získat dostupná umístění
 
-Různé typy prostředků jsou podporovány v různých umístěních. Pokud chcete získat podporovaná umístění pro typ prostředku, použijte Azure PowerShell nebo Azure CLI.
+Různé typy prostředků jsou podporovány v různých umístěních. Pro získání podporovaných umístění pro typ prostředku použijte Azure PowerShell nebo Azure CLI.
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Prostředí](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 ((Get-AzResourceProvider -ProviderNamespace Microsoft.Batch).ResourceTypes `
@@ -38,9 +38,9 @@ az provider show \
 
 ## <a name="use-location-parameter"></a>Použít parametr umístění
 
-Chcete-li umožnit flexibilitu při nasazování šablony, použijte parametr k určení umístění prostředků. Nastavte výchozí hodnotu parametru na `resourceGroup().location`.
+K zajištění flexibility při nasazování šablony použijte parametr k určení umístění pro prostředky. Nastavte výchozí hodnotu parametru na `resourceGroup().location`.
 
-Následující příklad ukazuje účet úložiště, který je nasazen do umístění určeného jako parametr:
+Následující příklad ukazuje účet úložiště, který je nasazený do umístění zadaného jako parametr:
 
 ```json
 {
@@ -95,5 +95,5 @@ Následující příklad ukazuje účet úložiště, který je nasazen do umís
 
 ## <a name="next-steps"></a>Další kroky
 
-* Úplný seznam funkcí šablony najdete v tématu [Funkce šablony Správce prostředků Azure](template-functions.md).
-* Další informace o souborech šablon naleznete [v tématu Principy struktury a syntaxe šablon ARM](template-syntax.md).
+* Úplný seznam funkcí šablon naleznete v tématu [Azure Resource Manager Functions Template](template-functions.md).
+* Další informace o souborech šablon naleznete v tématu [pochopení struktury a syntaxe šablon ARM](template-syntax.md).

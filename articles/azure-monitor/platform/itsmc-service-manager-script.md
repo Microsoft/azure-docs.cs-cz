@@ -1,41 +1,41 @@
 ---
 title: Vytvoření webové aplikace pro konektor pro správu služeb
-description: Vytvořte webovou aplikaci Správce služeb pomocí automatického skriptu pro připojení s IT Service Management Connector v Azure a centrálně monitorujte a spravujte pracovní položky ITSM.
+description: Pomocí automatizovaného skriptu pro připojení ke konektoru pro správu služeb IT v Azure můžete vytvořit webovou aplikaci Service Manager a centrálně monitorovat a spravovat pracovní položky ITSM.
 ms.subservice: logs
 ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 01/23/2018
 ms.openlocfilehash: decb674c2b55b93a81169c540ee04713bdf2799e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80054860"
 ---
-# <a name="create-service-manager-web-app-using-the-automated-script"></a>Vytvoření webové aplikace Správce služeb pomocí automatického skriptu
+# <a name="create-service-manager-web-app-using-the-automated-script"></a>Vytvoření Service Manager webové aplikace pomocí automatizovaného skriptu
 
-Pomocí následujícího skriptu vytvořte webovou aplikaci pro instanci Správce služeb. Další informace o připojení správce služeb jsou zde: [Webová aplikace Správce služeb](../../azure-monitor/platform/itsmc-connections.md#create-and-deploy-service-manager-web-app-service)
+K vytvoření webové aplikace pro instanci Service Manager použijte následující skript. Další informace o Service Manager připojení najdete tady: [Service Manager Web App](../../azure-monitor/platform/itsmc-connections.md#create-and-deploy-service-manager-web-app-service)
 
 Spusťte skript zadáním následujících požadovaných podrobností:
 
 - Podrobnosti o předplatném Azure
 - Název skupiny prostředků
 - Umístění
-- Podrobnosti o serveru Správce služeb (název serveru, doména, uživatelské jméno a heslo)
-- Předpona názvu webu pro webovou aplikaci
-- Obor názvů servicebusu.
+- Podrobnosti Service Manager serveru (název serveru, doména, uživatelské jméno a heslo)
+- Předpona názvu webu pro vaši webovou aplikaci
+- Obor názvů ServiceBus
 
-Skript vytvoří webovou aplikaci pomocí zadaného názvu (spolu s několika dalšími řetězci, aby byla jedinečná). Generuje adresu **URL webové aplikace**, **ID klienta**a **tajný klíč klienta**.
+Skript vytvoří webovou aplikaci s názvem, který jste zadali (spolu s několika dalšími řetězci pro její jedinečné nastavení). Vygeneruje **adresu URL webové aplikace**, **ID klienta**a **tajný klíč klienta**.
 
-Uložte tyto hodnoty, budete potřebovat tyto hodnoty při vytváření připojení s IT Service Management Connector.
+Tyto hodnoty uložte, budete je potřebovat při vytváření připojení ke konektoru pro správu služby IT.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
- Rozhraní Windows Management Framework 5.0 nebo vyšší.
-Windows 10 má ve výchozím nastavení 5.1. Zde si můžete stáhnout rámec [zde](https://www.microsoft.com/download/details.aspx?id=50395):
+ Windows Management Framework 5,0 nebo vyšší.
+Windows 10 má ve výchozím nastavení 5,1. Rozhraní si můžete stáhnout [tady](https://www.microsoft.com/download/details.aspx?id=50395):
 
 Použijte následující skript:
 

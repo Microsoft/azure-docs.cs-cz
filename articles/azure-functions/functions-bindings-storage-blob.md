@@ -1,53 +1,53 @@
 ---
-title: Aktivační událost úložiště objektů blob Azure a vazby pro funkce Azure
-description: Naučte se používat aktivační událost úložiště objektů blob Azure a vazby v Azure Functions.
+title: Aktivační událost a vazby služby Azure Blob Storage pro Azure Functions
+description: Naučte se používat v Azure Functions Trigger a vazby služby Azure Blob Storage.
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.openlocfilehash: 6950f1dd81ef2c70f2c45fb4c547ed7676067790
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79277229"
 ---
-# <a name="azure-blob-storage-bindings-for-azure-functions-overview"></a>Azure Blob storage vazby pro Azure Functions přehled
+# <a name="azure-blob-storage-bindings-for-azure-functions-overview"></a>Přehled vazeb Azure Blob Storage pro Azure Functions
 
-Azure Functions se integruje s [Azure Storage](https://docs.microsoft.com/azure/storage/) prostřednictvím [aktivačních událostí a vazeb](./functions-triggers-bindings.md). Integrace s úložištěm objektů blob umožňuje vytvářet funkce, které reagují na změny v datech objektů blob, stejně jako čtení a zápis hodnoty.
+Azure Functions se integruje s [Azure Storage](https://docs.microsoft.com/azure/storage/) prostřednictvím [triggerů a vazeb](./functions-triggers-bindings.md). Integrace s úložištěm objektů BLOB umožňuje vytvářet funkce, které reagují na změny v datech objektů blob, i na hodnoty pro čtení a zápis.
 
 | Akce | Typ |
 |---------|---------|
-| Spuštění funkce při změnách dat úložiště objektů blob | [Trigger](./functions-bindings-storage-blob-trigger.md) |
-| Čtení dat úložiště objektů blob ve funkci | [Vstupní vazba](./functions-bindings-storage-blob-input.md) |
-| Povolení zápisu dat úložiště objektů blob |[Výstupní vazba](./functions-bindings-storage-blob-output.md) |
+| Spustit funkci jako změny dat v úložišti objektů BLOB | [Trigger](./functions-bindings-storage-blob-trigger.md) |
+| Čtení dat služby Blob Storage ve funkci | [Vstupní vazba](./functions-bindings-storage-blob-input.md) |
+| Povolení funkce pro zápis dat služby Blob Storage |[Výstupní vazba](./functions-bindings-storage-blob-output.md) |
 
-## <a name="add-to-your-functions-app"></a>Přidání do aplikace Funkce
+## <a name="add-to-your-functions-app"></a>Přidat do aplikace Functions
 
-### <a name="functions-2x-and-higher"></a>Funkce 2.x a vyšší
+### <a name="functions-2x-and-higher"></a>Functions 2. x a vyšší
 
-Práce s aktivační událost a vazby vyžaduje, abyste odkazovat na příslušný balíček. Balíček NuGet se používá pro knihovny tříd .NET, zatímco rozšíření svazku se používá pro všechny ostatní typy aplikací.
+Práce s triggerem a vazbami vyžaduje, abyste odkazovali na příslušný balíček. Balíček NuGet se používá pro knihovny tříd .NET, pokud se sada rozšíření používá pro všechny ostatní typy aplikací.
 
-| Jazyk                                        | Přidat podle...                                   | Poznámky 
+| Jazyk                                        | Přidat do...                                   | Poznámky 
 |-------------------------------------------------|---------------------------------------------|-------------|
-| C#                                              | Instalace [balíčku NuGet], verze 3.x | |
-| C# Script, Java, JavaScript, Python, PowerShell | Registrace [rozšíření balíčku]          | Rozšíření [Nástroje Azure](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack) se doporučuje používat s Visual Studio Code. |
-| Skript C# (jenom online na webu Azure Portal)         | Přidání vazby                            | Pokud chcete aktualizovat existující rozšíření o vazby, aniž byste museli znovu publikovat aplikaci funkcí, přečtěte si informace [o aktualizaci rozšíření]. |
+| C#                                              | Instalace [balíčku NuGet]verze 3. x | |
+| Skript C#, Java, JavaScript, Python, PowerShell | Registrace [balíčku rozšíření]          | [Rozšíření Azure Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack) se doporučuje používat s Visual Studio Code. |
+| Skript jazyka C# (pouze online v Azure Portal)         | Přidání vazby                            | Pokud chcete aktualizovat existující rozšíření vazby bez nutnosti opětovného publikování aplikace Function App, přečtěte si téma [aktualizace rozšíření]. |
 
 [core tools]: ./functions-run-local.md
-[rozšiřující balíček]: ./functions-bindings-register.md#extension-bundles
+[Sada rozšíření]: ./functions-bindings-register.md#extension-bundles
 [Balíček NuGet]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage
 [Aktualizace rozšíření]: ./install-update-binding-extensions-manual.md
 [Azure Tools extension]: https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack
 
 ### <a name="functions-1x"></a>Functions 1.x
 
-Aplikace functions 1.x mají automaticky odkaz na balíček [Microsoft.Azure.WebJobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet verze 2.x.
+Aplikace Functions 1. x mají automaticky odkaz na balíček NuGet [Microsoft. Azure. WebJobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) , verze 2. x.
 
 [!INCLUDE [functions-storage-sdk-version](../../includes/functions-storage-sdk-version.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Spuštění funkce při změně dat úložiště objektů blob](./functions-bindings-storage-blob-trigger.md)
-- [Čtení dat úložiště objektů blob při spuštění funkce](./functions-bindings-storage-blob-input.md)
-- [Zápis dat úložiště objektů blob z funkce](./functions-bindings-storage-blob-output.md)
+- [Spustit funkci při změně dat služby Blob Storage](./functions-bindings-storage-blob-trigger.md)
+- [Při spuštění funkce číst data služby Blob Storage](./functions-bindings-storage-blob-input.md)
+- [Zápis dat služby Blob Storage z funkce](./functions-bindings-storage-blob-output.md)
