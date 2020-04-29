@@ -1,5 +1,5 @@
 ---
-title: Vyzkoušejte cloudové řešení vzdáleného monitorování IoT – Azure | Dokumenty společnosti Microsoft
+title: Vyzkoušejte cloudové řešení IoT pro vzdálené monitorování – Azure | Microsoft Docs
 description: V tomto rychlém startu nasadíte akcelerátor řešení vzdáleného monitorování Azure IoT, přihlásíte se k řídicímu panelu řešení a budete s ním pracovat.
 author: dominicbetts
 manager: timlt
@@ -10,10 +10,10 @@ ms.custom: mvc
 ms.date: 03/25/2019
 ms.author: dobett
 ms.openlocfilehash: 32e2d3f9e8bbd63944188355774558ca5ea7bd9d
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60889976"
 ---
 # <a name="quickstart-try-a-cloud-based-remote-monitoring-solution"></a>Rychlý start: Vyzkoušení cloudového řešení pro vzdálené monitorování
@@ -22,11 +22,11 @@ V tomto rychlém startu se dozvíte, jak nasadit akcelerátor řešení pro vzd�
 
 V počátečním nasazení se akcelerátor řešení nakonfiguruje pro společnost Contoso. Jako operátor ve společnosti Contoso spravujete výběr různých typů zařízení, například chladiče, nasazených v různých fyzických prostředích. Chladící zařízení do akcelerátoru řešení pro vzdálené monitorování odesílá telemetrická data o teplotě, vlhkosti a tlaku.
 
-Tento rychlý start nasazuje **základní** verzi akcelerátoru řešení pro testovací a demonstrační účely, které minimalizují náklady. Další informace o různých verzích, které můžete nasadit, naleznete v [tématu Základní a standardní nasazení](iot-accelerators-remote-monitoring-deploy-cli.md#basic-and-standard-deployments).
+V tomto rychlém startu se nasadí **základní** verze akcelerátoru řešení pro testovací a demonstrační účely, které minimalizují náklady. Další informace o různých verzích, které můžete nasadit, najdete v tématu [základní a standardní nasazení](iot-accelerators-remote-monitoring-deploy-cli.md#basic-and-standard-deployments).
 
 K dokončení tohoto rychlého startu potřebujete aktivní předplatné Azure.
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="deploy-the-solution"></a>Nasazení řešení
 
@@ -34,18 +34,18 @@ Při nasazování akcelerátoru řešení do předplatného Azure je potřeba na
 
 Přihlaste se k webu [azureiotsolutions.com](https://www.azureiotsolutions.com/Accelerators) pomocí přihlašovacích údajů svého účtu Azure.
 
-Klikněte na dlaždici **Vzdálené monitorování.** Na stránce **Vzdálené monitorování** klikněte na **Vyzkoušet :**
+Klikněte na dlaždici **vzdálené monitorování** . Na stránce **vzdálené monitorování** klikněte na možnost **vyzkoušet nyní**:
 
 ![Výběr vzdáleného monitorování](./media/quickstart-remote-monitoring-deploy/remotemonitoring.png)
 
-Zvolte **C# Microservices** jako **možnosti nasazení**. Implementace Java a C# mají stejné funkce.
+Jako **Možnosti nasazení**vyberte **mikroslužby C#** . Implementace Java a C# mají stejné funkce.
 
-Zadejte jedinečný **Název řešení** pro váš akcelerátor řešení pro vzdálené monitorování. Pro tento rychlý start, voláme naše **contoso-rm**.
+Zadejte jedinečný **Název řešení** pro váš akcelerátor řešení pro vzdálené monitorování. Pro tento rychlý Start voláme náš **Contoso-RM**.
 
-Vyberte **Předplatné** a **Oblast**, které chcete při nasazování akcelerátoru řešení použít. Obvykle byste měli zvolit oblast, která je vám nejblíže. Pro tento rychlý start, používáme **východní USA**.
-Můžete zvolit **Visual Studio Enterprise**, ale musíte být globální správce nebo [uživatel,](iot-accelerators-permissions.md) aby tak učinily.
+Vyberte **Předplatné** a **Oblast**, které chcete při nasazování akcelerátoru řešení použít. Obvykle byste měli zvolit oblast, která je vám nejblíže. V tomto rychlém startu používáme **východní USA**.
+Můžete vybrat **Visual Studio Enterprise**, ale musíte být [globálním správcem nebo uživatelem](iot-accelerators-permissions.md) .
 
-Chcete-li zahájit nasazení, klepněte na tlačítko **Vytvořit**. Dokončení tohoto procesu trvá minimálně pět minut:
+Chcete-li zahájit nasazení, klikněte na tlačítko **vytvořit**. Dokončení tohoto procesu trvá minimálně pět minut:
 
 ![Podrobnosti řešení pro vzdálené monitorování](./media/quickstart-remote-monitoring-deploy/createform.png)
 
@@ -57,7 +57,7 @@ Na stránce **Zřízená řešení** klikněte na nový akcelerátor řešení p
 
 ![Výběr nového řešení](./media/quickstart-remote-monitoring-deploy/choosenew.png)
 
-Na panelu, který se zobrazí, si můžete prohlédnout informace o akcelerátoru řešení pro vzdálené monitorování. Chcete-li zobrazit akcelerátor řešení vzdáleného monitorování, zvolte **Přejít na akcelerátor** řešení vzdáleného monitorování:
+Na panelu, který se zobrazí, si můžete prohlédnout informace o akcelerátoru řešení pro vzdálené monitorování. Zvolením možnosti **Přejít do akcelerátoru řešení** můžete zobrazit akcelerátor řešení vzdáleného monitorování:
 
 ![Panel řešení](./media/quickstart-remote-monitoring-deploy/solutionpanel.png)
 
@@ -87,13 +87,13 @@ Jako operátor ve společnosti Contoso můžete z řídicího panelu řešení m
 
 Na stránce **Řídicí panel** na panelu **Upozornění** si můžete všimnout upozornění **Příliš vysoký tlak chladiče**. Chladič má na mapě červený připínáček (možná budete muset mapu posunout a přiblížit):
 
-[![Řídicí panel zobrazuje upozornění na tlak a zařízení na mapě](./media/quickstart-remote-monitoring-deploy/dashboardalarm-inline.png)](./media/quickstart-remote-monitoring-deploy/dashboardalarm-expanded.png#lightbox)
+[![Řídicí panel zobrazuje tlakové upozornění a zařízení na mapě.](./media/quickstart-remote-monitoring-deploy/dashboardalarm-inline.png)](./media/quickstart-remote-monitoring-deploy/dashboardalarm-expanded.png#lightbox)
 
 Na panelu **Upozornění** klikněte ve sloupci **Prozkoumat** na **...** vedle pravidla **Příliš vysoký tlak chladiče**. Tato akce vás přesměruje na stránku **Údržba**, kde si můžete prohlédnout podrobnosti o pravidle, které upozornění aktivovalo.
 
 Na stránce údržby **Příliš vysoký tlak chladiče** se zobrazí podrobnosti o pravidle, které aktivovalo upozornění. Stránka také uvádí, kdy k upozorněním došlo a které zařízení je aktivovalo:
 
-[![Stránka údržby zobrazuje seznam výstrah, které byly spuštěny](./media/quickstart-remote-monitoring-deploy/maintenancealarmlist-inline.png)](./media/quickstart-remote-monitoring-deploy/maintenancealarmlist-expanded.png#lightbox)
+[![Stránka údržba zobrazuje seznam výstrah, které se aktivovaly.](./media/quickstart-remote-monitoring-deploy/maintenancealarmlist-inline.png)](./media/quickstart-remote-monitoring-deploy/maintenancealarmlist-expanded.png#lightbox)
 
 Právě jste identifikovali problém, který upozornění aktivoval, a přidružené zařízení. Jako operátor byste dále měli upozornění vzít na vědomí a opravit problém.
 
@@ -101,29 +101,29 @@ Právě jste identifikovali problém, který upozornění aktivoval, a přidruž
 
 Abyste ostatním operátorům dali najevo, že na upozornění pracujete, vyberte ho a změňte **Stav upozornění** na **Potvrzeno**:
 
-[![Výběr a potvrzení výstrahy](./media/quickstart-remote-monitoring-deploy/maintenanceacknowledge-inline.png)](./media/quickstart-remote-monitoring-deploy/maintenanceacknowledge-expanded.png#lightbox)
+[![Vyberte a potvrďte upozornění.](./media/quickstart-remote-monitoring-deploy/maintenanceacknowledge-inline.png)](./media/quickstart-remote-monitoring-deploy/maintenanceacknowledge-expanded.png#lightbox)
 
 Hodnota ve sloupci stavu se změní na **Potvrzeno**.
 
 Pokud chcete pracovat na chladiči, posuňte se dolů do části **Související informace**, v seznamu **Zařízení s oznámeními** vyberte chladící zařízení a pak zvolte **Úlohy**:
 
-[![Výběr zařízení a naplánování akce](./media/quickstart-remote-monitoring-deploy/maintenanceschedule-inline.png)](./media/quickstart-remote-monitoring-deploy/maintenanceschedule-expanded.png#lightbox)
+[![Vyberte zařízení a Naplánujte akci.](./media/quickstart-remote-monitoring-deploy/maintenanceschedule-inline.png)](./media/quickstart-remote-monitoring-deploy/maintenanceschedule-expanded.png#lightbox)
 
 Na panelu **Úlohy** vyberte **Spustit metodu** a pak metodu **EmergencyValveRelease**. Přidejte název úlohy **ChillerPressureRelease** a klikněte na **Použít**. Tato nastavení pro vás vytvoří úlohu, která se okamžitě spustí.
 
-Pokud chcete zobrazit stav úlohy, vraťte se na stránku **Údržba** a prohlédněte si seznam úloh v zobrazení **Úlohy**. Možná budete muset počkat několik sekund, než uvidíte, že úloha byla spuštěna:
+Pokud chcete zobrazit stav úlohy, vraťte se na stránku **Údržba** a prohlédněte si seznam úloh v zobrazení **Úlohy**. Možná budete muset počkat několik sekund, než uvidíte, že se úloha spustila:
 
-[![Stav úloh v zobrazení Úlohy](./media/quickstart-remote-monitoring-deploy/maintenancerunningjob-inline.png)](./media/quickstart-remote-monitoring-deploy/maintenancerunningjob-expanded.png#lightbox)
+[![Stav úloh v zobrazení úloh](./media/quickstart-remote-monitoring-deploy/maintenancerunningjob-inline.png)](./media/quickstart-remote-monitoring-deploy/maintenancerunningjob-expanded.png#lightbox)
 
 ### <a name="check-the-pressure-is-back-to-normal"></a>Kontrola návratu tlaku do normálního stavu
 
 Pokud chcete zobrazit telemetrická data o tlaku v chladiči, přejděte na stránku **Řídicí panel**, na panelu telemetrie vyberte **Tlak** a zkontrolujte, že je tlak v zařízení **chiller-02.0** opět v normálu:
 
-[![Tlak zpět do normálu](./media/quickstart-remote-monitoring-deploy/pressurenormal-inline.png)](./media/quickstart-remote-monitoring-deploy/pressurenormal-expanded.png#lightbox)
+[![Zpět do normálního zatížení](./media/quickstart-remote-monitoring-deploy/pressurenormal-inline.png)](./media/quickstart-remote-monitoring-deploy/pressurenormal-expanded.png#lightbox)
 
 Pokud chcete incident uzavřít, přejděte na stránku **Údržba**, vyberte upozornění a nastavte jeho stav na **Uzavřeno**:
 
-[![Výběr a zavření výstrahy](./media/quickstart-remote-monitoring-deploy/maintenanceclose-inline.png)](./media/quickstart-remote-monitoring-deploy/maintenanceclose-expanded.png#lightbox)
+[![Vybrat a Zavřít výstrahu](./media/quickstart-remote-monitoring-deploy/maintenanceclose-inline.png)](./media/quickstart-remote-monitoring-deploy/maintenanceclose-expanded.png#lightbox)
 
 Hodnota ve sloupci stavu se změní na **Uzavřeno**.
 
@@ -131,7 +131,7 @@ Hodnota ve sloupci stavu se změní na **Uzavřeno**.
 
 Pokud se budete chtít přesunout ke kurzům, ponechte akcelerátor řešení pro vzdálené monitorování nasazený.
 
-Pokud už akcelerátor řešení nepotřebujete, odstraňte ho ze stránky [Zřízená řešení](https://www.azureiotsolutions.com/Accelerators#dashboard) tak, že ho vyberete a kliknete na **Odstranit řešení**:
+Pokud už akcelerátor řešení nepotřebujete, odstraňte ho ze stránky [zřízené řešení](https://www.azureiotsolutions.com/Accelerators#dashboard) , a to tak, že ho vyberete a pak kliknete na **Odstranit řešení**:
 
 ![Odstranění řešení](media/quickstart-remote-monitoring-deploy/deletesolution.png)
 

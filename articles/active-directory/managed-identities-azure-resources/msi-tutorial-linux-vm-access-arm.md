@@ -17,10 +17,10 @@ ms.author: markvi
 ROBOTS: NOINDEX,NOFOLLOW
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 57b68ebb21c0c10c3fbe3fd77d11785d16a10053
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60443462"
 ---
 # <a name="tutorial-use-a-user-assigned-managed-identity-on-a-linux-vm-to-access-azure-resource-manager"></a>Kurz: Použití spravované identity přiřazené uživatelem na virtuálním počítači s Linuxem pro přístup k Azure Resource Manageru
@@ -41,7 +41,7 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
-- [Přihlášení na Portál Azure](https://portal.azure.com)
+- [Přihlášení k Azure Portal](https://portal.azure.com)
 
 - [Vytvoření virtuálního počítače s Linuxem](/azure/virtual-machines/linux/quick-create-portal)
 
@@ -85,7 +85,7 @@ Odpověď bude obsahovat podrobnosti o vytvořené spravované identitě přiřa
 
 Klienti můžou spravovanou identitu přiřazenou uživatelem používat pro několik prostředků Azure. Pomocí následujících příkazů přiřaďte spravovanou identitu přiřazenou uživatelem k jednomu virtuálnímu počítači. Jako hodnotu parametru `-IdentityID` použijte vlastnost `Id` vrácenou v předchozím kroku.
 
-Přiřaďte uživatelem přiřazenou spravovanou identitu k virtuálnímu počítači SiŠ pomocí [přiřazení identity vz](/cli/azure/vm). Nezapomeňte nahradit hodnoty parametrů `<RESOURCE GROUP>` a `<VM NAME>` vlastními hodnotami. Jako hodnotu parametru `--identities` použijte vlastnost `id` vrácenou v předchozím kroku.
+Přiřaďte uživatelem přiřazenou spravovanou identitu k VIRTUÁLNÍmu počítači se systémem Linux pomocí příkaz [AZ VM identity Assign](/cli/azure/vm). Nezapomeňte nahradit hodnoty parametrů `<RESOURCE GROUP>` a `<VM NAME>` vlastními hodnotami. Jako hodnotu parametru `--identities` použijte vlastnost `id` vrácenou v předchozím kroku.
 
 ```azurecli-interactive
 az vm identity assign -g <RESOURCE GROUP> -n <VM NAME> --identities "/subscriptions/<SUBSCRIPTION ID>/resourcegroups/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<UAMI NAME>"
@@ -124,7 +124,7 @@ Ve zbývající části kurzu použijeme k práci dříve vytvořený virtuáln�
 
 K dokončení tohoto postupu potřebujete klienta SSH. Pokud používáte Windows, můžete použít klienta SSH v [subsystému Windows pro Linux](https://msdn.microsoft.com/commandline/wsl/about). 
 
-1. Přihlaste se k [portálu](https://portal.azure.com)Azure .
+1. Přihlaste se k webu Azure [Portal](https://portal.azure.com).
 2. Na portálu přejděte na **Virtuální počítače**, přejděte ke svému virtuálnímu počítači s Linuxem a v části **Přehled** klikněte na **Připojit**. Zkopírujte řetězec pro připojení k vašemu virtuálnímu počítači.
 3. Připojte se vybraným klientem SSH k virtuálnímu počítači. Pokud používáte Windows, můžete použít klienta SSH v [subsystému Windows pro Linux](https://msdn.microsoft.com/commandline/wsl/about). Pokud potřebujete pomoc při konfiguraci klíčů klienta SSH, přečtěte si, [jak na počítači s Windows v Azure používat klíče SSH](~/articles/virtual-machines/linux/ssh-from-windows.md) nebo [jak na linuxových virtuálních počítačích v Azure vytvářet a používat pár veřejného a privátního klíče SSH](~/articles/virtual-machines/linux/mac-create-ssh-keys.md).
 4. V okně terminálu pomocí nástroje CURL odešlete do koncového bodu identity služby Azure Instance Metadata Service (IMDS) žádost o přístupový token Azure Resource Manageru.  

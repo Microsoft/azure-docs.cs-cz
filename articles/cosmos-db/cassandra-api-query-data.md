@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Dotazujte se na data z účtu cassandrova rozhraní API v Azure Cosmos DB'
-description: Tento kurz ukazuje, jak dotazovat uživatelská data z účtu rozhraní API Azure Cosmos DB Cassandra pomocí aplikace Java.
+title: 'Kurz: dotazování dat z rozhraní API Cassandra účtu v Azure Cosmos DB'
+description: V tomto kurzu se dozvíte, jak zadávat dotazy na data uživatelů z Azure Cosmos DB rozhraní API Cassandra účet pomocí aplikace Java.
 ms.service: cosmos-db
 author: kanshiG
 ms.author: govindk
@@ -10,27 +10,27 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 Customer intent: As a developer, I want to build a Java application to query data stored in a Cassandra API account of Azure Cosmos DB so that customers can manage the key/value data and utilize the global distribution, elastic scaling, multi-master, and other capabilities offered by Azure Cosmos DB.
 ms.openlocfilehash: 69a9bc912f2cd52e52ca6403187f993413539ecd
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60899895"
 ---
-# <a name="tutorial-query-data-from-a-cassandra-api-account-in-azure-cosmos-db"></a>Kurz: Dotazujte se na data z účtu cassandrova rozhraní API v Azure Cosmos DB
+# <a name="tutorial-query-data-from-a-cassandra-api-account-in-azure-cosmos-db"></a>Kurz: dotazování dat z rozhraní API Cassandra účtu v Azure Cosmos DB
 
-Jako vývojář můžete mít aplikace, které používají páry klíč/hodnota. Účet rozhraní API Cassandra v Azure Cosmos DB můžete použít k ukládání a dotazování na data klíče a hodnoty. Tento kurz ukazuje, jak dotazovat uživatelská data z účtu rozhraní CASSAndRo API v Azure Cosmos DB pomocí aplikace Java. Aplikace Java používá [ovladač Java](https://github.com/datastax/java-driver) a dotazuje se na uživatelská data, jako je ID uživatele, uživatelské jméno a uživatelské město. 
+Jako vývojář můžete mít aplikace, které používají páry klíč/hodnota. K ukládání a dotazování dat o klíčích a hodnotách můžete použít účet rozhraní API Cassandra v Azure Cosmos DB. V tomto kurzu se dozvíte, jak zadávat dotazy na data uživatelů z rozhraní API Cassandra účtu v Azure Cosmos DB pomocí aplikace Java. Aplikace Java používá [ovladač Java](https://github.com/datastax/java-driver) a dotazuje se na uživatelská data, jako je ID uživatele, jméno uživatele a město uživatele. 
 
 Tento kurz se zabývá následujícími úkony:
 
 > [!div class="checklist"]
-> * Dotaz na data z tabulky Cassandra
+> * Dotazování dat z tabulky Cassandra
 > * Spuštění aplikace
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Tento článek patří do vícedílného kurzu. Než začnete, nezapomeňte dokončit předchozí kroky k vytvoření účtu rozhraní CASSAndSRo API, keyspace, tabulky a [načtení ukázkových dat do tabulky](cassandra-api-load-data.md). 
+* Tento článek patří do vícedílného kurzu. Než začnete, ujistěte se, že jste dokončili předchozí kroky, abyste vytvořili rozhraní API Cassandra účet, místo, tabulku a [načetli ukázková data do tabulky](cassandra-api-load-data.md). 
 
 ## <a name="query-data"></a>Dotazování dat
 
@@ -93,7 +93,7 @@ Pomocí následujícího postupu můžete dotazovat data z účtu rozhraní API 
 ## <a name="run-the-java-app"></a>Spuštění aplikace v Javě
 1. Otevřete příkazový řádek nebo okno terminálu. Vložte následující blok kódu. 
 
-   Tento kód změní adresář (cd) na cestu ke složce, kde jste projekt vytvořili. Pak spustí příkaz `mvn clean install`, který v cílové složce vygeneruje soubor `cosmosdb-cassandra-examples.jar`. A nakonec spustí aplikaci v Javě.
+   Tento kód změní adresář (CD) na cestu ke složce, ve které jste projekt vytvořili. Pak spustí příkaz `mvn clean install`, který v cílové složce vygeneruje soubor `cosmosdb-cassandra-examples.jar`. A nakonec spustí aplikaci v Javě.
 
    ```bash
    cd "cassandra-demo"
@@ -107,11 +107,11 @@ Pomocí následujícího postupu můžete dotazovat data z účtu rozhraní API 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Když už nejsou potřeba, můžete odstranit skupinu prostředků, účet Azure Cosmos a všechny související prostředky. Chcete-li tak učinit, vyberte skupinu prostředků pro virtuální počítač, vyberte **Odstranit**a potvrďte název skupiny prostředků, kterou chcete odstranit.
+Když už je nepotřebujete, můžete odstranit skupinu prostředků, účet Azure Cosmos a všechny související prostředky. Pokud to chcete udělat, vyberte skupinu prostředků pro virtuální počítač, vyberte **Odstranit**a pak potvrďte název skupiny prostředků, která se má odstranit.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste se naučili, jak dotazovat data z účtu rozhraní API Cassandra v Azure Cosmos DB. Teď můžete přejít k dalšímu článku:
+V tomto kurzu jste se naučili, jak zadávat dotazy na data z rozhraní API Cassandra účtu v Azure Cosmos DB. Teď můžete přejít k dalšímu článku:
 
 > [!div class="nextstepaction"]
 > [Migrace dat do účtu rozhraní API Cassandra](cassandra-import-data.md)

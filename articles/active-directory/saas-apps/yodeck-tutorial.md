@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace služby Azure Active Directory s Yodeckem | Dokumenty společnosti Microsoft'
-description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Službou Azure Active Directory a Yodeckem.
+title: 'Kurz: Azure Active Directory integrace s Yodeck | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Yodeck.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,218 +16,218 @@ ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
 ms.openlocfilehash: af0748f36e8d2299921f987c517f7a4923bd0d55
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67086479"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-yodeck"></a>Kurz: Integrace Služby Azure Active Directory s Yodeckem
+# <a name="tutorial-azure-active-directory-integration-with-yodeck"></a>Kurz: Azure Active Directory integrace s Yodeck
 
 V tomto kurzu se dozvíte, jak integrovat Yodeck s Azure Active Directory (Azure AD).
-Integrace Yodecku s Azure AD vám poskytuje následující výhody:
+Integrace Yodeck s Azure AD poskytuje následující výhody:
 
-* Můžete řídit ve službě Azure AD, který má přístup k Yodeck.
-* Můžete povolit, aby se uživatelé automaticky přihlašovali k Yodecku (jednotné přihlašování) pomocí svých účtů Azure AD.
-* Své účty můžete spravovat v jednom centrálním umístění – na portálu Azure.
+* Můžete kontrolovat v Azure AD, kteří mají přístup k Yodeck.
+* Můžete povolit, aby se vaši uživatelé automaticky přihlásili k Yodeck (jednotné přihlašování) pomocí svých účtů Azure AD.
+* Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
-Pokud se chcete dozvědět více podrobností o integraci aplikací SaaS s Azure AD, přečtěte [si, co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li nakonfigurovat integraci Azure AD s Yodeck, budete potřebovat následující položky:
+Ke konfiguraci integrace služby Azure AD s Yodeck potřebujete následující položky:
 
-* Předplatné Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
-* Předplatné s povoleným jedním přihlášením yodeck
+* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
+* Předplatné s povoleným Yodeckm jednotným přihlašováním
 
 ## <a name="scenario-description"></a>Popis scénáře
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Yodeck podporuje **SP** a **IDP** inicioval sso
+* Yodeck podporuje **jednotné** přihlašování (SSO) a **IDP** .
 
-## <a name="adding-yodeck-from-the-gallery"></a>Přidání Yodeck z galerie
+## <a name="adding-yodeck-from-the-gallery"></a>Přidání Yodeck z Galerie
 
-Pokud chcete nakonfigurovat integraci Yodecku do Azure AD, musíte yodeck přidat z galerie do seznamu spravovaných aplikací SaaS.
+Pokud chcete nakonfigurovat integraci Yodeck do služby Azure AD, musíte přidat Yodeck z Galerie do svého seznamu spravovaných aplikací SaaS.
 
-**Chcete-li přidat Yodeck z galerie, proveďte následující kroky:**
+**Pokud chcete přidat Yodeck z Galerie, proveďte následující kroky:**
 
-1. Na **[portálu Azure](https://portal.azure.com)** klikněte na levém navigačním panelu na ikonu **Služby Azure Active Directory.**
+1. V **[Azure Portal](https://portal.azure.com)** na levém navigačním panelu klikněte na ikonu **Azure Active Directory** .
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte do **podnikových aplikací** a pak vyberte možnost **Všechny aplikace.**
+2. Přejděte na **podnikové aplikace** a vyberte možnost **všechny aplikace** .
 
-    ![Okno Aplikace Enterprise](common/enterprise-applications.png)
+    ![Okno podnikové aplikace](common/enterprise-applications.png)
 
-3. Chcete-li přidat novou aplikaci, klepněte na tlačítko **Nová aplikace** v horní části dialogového okna.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **Nová aplikace** v horní části dialogového okna.
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Yodeck**, z panelu výsledků vyberte **Yodeck** a pak klepněte na tlačítko **Přidat** a přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **Yodeck**, vyberte **Yodeck** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
      ![Yodeck v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí Yodecku na základě testovacího uživatele s názvem **Britta Simon**.
-Aby jednotné přihlašování fungovalo, musí být vytvořen vztah propojení mezi uživatelem Azure AD a souvisejícím uživatelem v Yodecku.
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí Yodeck na základě testovacího uživatele s názvem **Britta Simon**.
+Aby jednotné přihlašování fungovalo, musí se zřídit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Yodeck.
 
-Chcete-li nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Yodecku, musíte dokončit následující stavební bloky:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Yodeck, musíte dokončit tyto stavební bloky:
 
-1. **[Nakonfigurujte azure ad jednotné přihlašování](#configure-azure-ad-single-sign-on)** – aby vaši uživatelé mohli používat tuto funkci.
-2. **[Konfigurace jednotného přihlašování Yodeck](#configure-yodeck-single-sign-on)** - konfigurace nastavení jednotného přihlášení na straně aplikace.
-3. **[Vytvořte uživatele testu Azure AD](#create-an-azure-ad-test-user)** – k testování jednotného přihlášení Azure AD s Brittou Simonovou.
-4. **[Přiřaďte testovacímu uživateli Azure AD](#assign-the-azure-ad-test-user)** – chcete-li Britta Simon ové povolit použití jednotného přihlášení azure ad.
-5. **[Vytvořte uživatele testu Yodeck](#create-yodeck-test-user)** – chcete-li mít protějšek Britta Simon v Yodeck, který je propojený s reprezentací Azure AD uživatele.
-6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** - chcete-li ověřit, zda konfigurace funguje.
+1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
+2. **[Nakonfigurujte jednotné přihlašování Yodeck](#configure-yodeck-single-sign-on)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
+4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
+5. **[Vytvoření Yodeck Test User](#create-yodeck-test-user)** – pro Britta Simon v Yodeck, který je propojený s reprezentací uživatele Azure AD.
+6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** – ověřte, jestli konfigurace funguje.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
 
-V této části povolíte jednotné přihlašování Azure AD na webu Azure Portal.
+V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
 
-Chcete-li nakonfigurovat jednotné přihlašování Azure AD pomocí Yodecku, proveďte následující kroky:
+Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Yodeck, proveďte následující kroky:
 
-1. Na [webu Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **Yodeck** vyberte **Jednotné přihlašování**.
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **Yodeck** vyberte **jednotné přihlašování**.
 
-    ![Konfigurace odkazu pro jednotné přihlášení](common/select-sso.png)
+    ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
 
-2. V **dialogovém okně Vybrat metodu jednotného přihlašování** vyberte režim **SAML/WS-Fed,** abyste povolili jednotné přihlašování.
+2. V dialogovém okně **Vyberte metodu jednotného přihlašování** vyberte možnost režim **SAML/WS** , čímž povolíte jednotné přihlašování.
 
-    ![Režim výběru jednotného přihlášení](common/select-saml-option.png)
+    ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na stránce **Nastavit jednotné přihlašování pomocí saml** kliknutím na ikonu **Upravit** otevřete dialogové okno Základní **konfigurace SAML.**
+3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-4. V části **Základní konfigurace SAML,** pokud chcete nakonfigurovat aplikaci v režimu iniciovaného **protokolem IDP,** proveďte následující krok:
+4. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , proveďte v **základní části Konfigurace SAML** následující krok:
 
-    ![Yodeck Domény a adresy URL jednotné přihlašovací informace](common/idp-identifier.png)
+    ![Informace o jednotném přihlašování v doméně Yodeck a adresách URL](common/idp-identifier.png)
 
-    Do textového pole **Identifikátor** zadejte adresu URL:`https://app.yodeck.com/api/v1/account/metadata/`
+    Do textového pole **identifikátor** zadejte adresu URL:`https://app.yodeck.com/api/v1/account/metadata/`
 
-5. Klepněte na tlačítko **Nastavit další adresy URL** a proveďte následující krok, pokud chcete aplikaci nakonfigurovat v režimu iniciovaném **službou SP:**
+5. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
     ![image](common/both-preintegrated-signon.png)
 
-    Do textového pole **Přihlašovací adresa URL** zadejte adresu URL:`https://app.yodeck.com/login`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL:`https://app.yodeck.com/login`
 
-6. Na stránce **Nastavit jednotné přihlašování pomocí saml** klikněte v části **Podpisový certifikát SAML** na tlačítko Kopírovat, chcete-li zkopírovat **adresu URL metadat federace aplikací** a uložit ji do počítače.
+6. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** kliknutím na tlačítko Kopírovat zkopírujte **adresu URL federačních metadat aplikace** a uložte ji do svého počítače.
 
-    ![Odkaz ke stažení certifikátu](common/copy-metadataurl.png)
+    ![Odkaz na stažení certifikátu](common/copy-metadataurl.png)
 
-### <a name="configure-yodeck-single-sign-on"></a>Konfigurace jednotného přihlášení yodecku
+### <a name="configure-yodeck-single-sign-on"></a>Konfigurace jednotného přihlašování Yodeck
 
-1. V jiném okně webového prohlížeče se přihlaste na web společnosti Yodeck jako správce.
+1. V jiném okně webového prohlížeče se přihlaste k webu Yodeck společnosti jako správce.
 
-2. Klikněte na možnost **Nastavení uživatele,** vytvořte v pravém horním rohu stránky a vyberte **Nastavení účtu**.
+2. Klikněte na možnost **uživatelská nastavení** . v pravém horním rohu stránky vyberte **Nastavení účtu**.
 
     ![Konfigurace Yodeck](./media/yodeck-tutorial/configure1.png)
 
-3. Vyberte **saml** a proveďte následující kroky:
+3. Vyberte **SAML** a proveďte následující kroky:
 
     ![Konfigurace Yodeck](./media/yodeck-tutorial/configure2.png)
 
-    a. Vyberte **Importovat z adresy URL**.
+    a. Vyberte **importovat z adresy URL**.
 
-    b. Do textového pole **URL** vložte hodnotu **URL metadat federace aplikací,** kterou jste zkopírovali z portálu Azure, a klikněte na **Importovat**.
+    b. Do textového pole **Adresa URL** vložte hodnotu **adresy URL federačních metadat aplikace** , kterou jste zkopírovali z Azure Portal a klikněte na **importovat**.
     
-    c. Po importu **adresy URL metadat federace aplikací**se zbývající pole automaticky naplní.
+    c. Po importu **adresy URL federačních metadat aplikace**se zbývající pole naplní automaticky.
 
     d. Klikněte na **Uložit**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
 
-Cílem této části je vytvořit testovacího uživatele na webu Azure portal s názvem Britta Simon.
+Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. Na webu Azure Portal v levém podokně vyberte **Azure Active Directory**, vyberte **Uživatelé**a pak vyberte **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
 
-    ![Odkazy "Uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
+    ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
-2. V horní části obrazovky vyberte **Nový uživatel.**
+2. V horní části obrazovky vyberte **Nový uživatel** .
 
-    ![Tlačítko nového uživatele](common/new-user.png)
+    ![Tlačítko pro nového uživatele](common/new-user.png)
 
-3. Ve vlastnostech User proveďte následující kroky.
+3. Ve vlastnostech uživatele proveďte následující kroky.
 
-    ![Dialogové okno Uživatel](common/user-properties.png)
+    ![Uživatelský dialog](common/user-properties.png)
 
-    a. Do pole **Název** zadejte **BrittaSimon**.
+    a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. V poli **Uživatelské** brittasimon@yourcompanydomain.extensionjméno typ pole . Například BrittaSimon@contoso.com.
+    b. Do pole **uživatelské jméno** zadejte brittasimon@yourcompanydomain.extension. Například BrittaSimon@contoso.com.
 
-    c. Zaškrtněte **políčko Zobrazit heslo** a poznamenejte si hodnotu, která se zobrazí v poli Heslo.
+    c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
     d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon používat Azure jednotné přihlašování udělením přístupu yodeck.
+V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k Yodeck.
 
-1. Na portálu Azure vyberte **Podnikové aplikace**, vyberte **Všechny aplikace**a pak vyberte **Yodeck**.
+1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **Yodeck**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikací vyberte **Yodeck**.
+2. V seznamu aplikace vyberte **Yodeck**.
 
-    ![Odkaz Yodeck v seznamu Aplikace](common/all-applications.png)
+    ![Odkaz Yodeck v seznamu aplikací](common/all-applications.png)
 
-3. V nabídce vlevo vyberte **Možnost Uživatelé a skupiny**.
+3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
 
-    ![Odkaz "Uživatelé a skupiny"](common/users-groups-blade.png)
+    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-4. Klikněte na tlačítko **Přidat uživatele** a v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny.**
+4. Klikněte na tlačítko **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
-    ![Podokno Přidat přiřazení](common/add-assign-user.png)
+    ![Podokno přidat přiřazení](common/add-assign-user.png)
 
-5. V dialogovém okně **Uživatelé a skupiny** vyberte **brittu Simonovou** v seznamu Uživatelé a klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+5. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **Britta Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-6. Pokud očekáváte libovolnou hodnotu role v kontrolním výrazu SAML, vyberte v dialogovém okně **Vybrat roli** příslušnou roli pro uživatele ze seznamu a klepněte na tlačítko **Vybrat** v dolní části obrazovky.
+6. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, pak v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-7. V dialogovém okně **Přidat přiřazení** klepněte na tlačítko **Přiřadit.**
+7. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-### <a name="create-yodeck-test-user"></a>Vytvořit uživatele testu Yodeck
+### <a name="create-yodeck-test-user"></a>Vytvořit testovacího uživatele Yodeck
 
-Chcete-li povolit uživatelům Azure AD k přihlášení k Yodeck, musí být zřízena do Yodeck. V případě Yodeck zřizování je ruční úlohy.
+Aby se uživatelé Azure AD mohli přihlašovat k Yodeck, musí se zřídit v Yodeck. V případě Yodeck je zřizování ručním úkolem.
 
 **Chcete-li zřídit uživatelský účet, proveďte následující kroky:**
 
-1. Přihlaste se na web společnosti Yodeck jako správce.
+1. Přihlaste se k webu Yodeck společnosti jako správce.
 
-2. Klikněte na možnost **Nastavení uživatele,** vytvořte v pravém horním rohu stránky a vyberte **možnost Uživatelé**.
+2. V pravém horním rohu stránky klikněte na možnost **uživatelská nastavení** a vyberte **Uživatelé**.
 
     ![Přidat zaměstnance](./media/yodeck-tutorial/user1.png)
 
-3. Kliknutím na **+Uživatel** otevřete kartu **Podrobnosti o uživateli.**
+3. Kliknutím na **+ uživatel** otevřete kartu **Podrobnosti o uživateli** .
 
     ![Přidat zaměstnance](./media/yodeck-tutorial/user2.png)
 
-4. Na stránce Dialogové **okno Podrobnosti o uživateli** proveďte následující kroky:
+4. Na stránce **Podrobnosti o uživateli** proveďte následující kroky:
 
     ![Přidat zaměstnance](./media/yodeck-tutorial/user3.png)
 
-    a. Do textového pole **Křestní jméno** zadejte křestní jméno uživatele, jako je **Britta**.
+    a. Do textového pole **jméno a příjmení** zadejte jméno uživatele, jako je **Britta**.
 
-    b. Do textového pole **Příjmení** zadejte příjmení uživatele, jako je **Simon**.
+    b. Do textového pole **příjmení** zadejte jméno uživatele jako **Simon**.
 
-    c. Do textového pole **E-mail** zadejte brittasimon@contoso.come-mailovou adresu uživatele, který se líbí .
+    c. Do textového pole **e-mail** zadejte e-mailovou adresu uživatele brittasimon@contoso.com.
 
-    d. Vyberte příslušnou možnost **Oprávnění účtu** podle požadavků organizace.
+    d. Vyberte odpovídající možnost **oprávnění účtu** podle požadavků vaší organizace.
     
     e. Klikněte na **Uložit**.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
-V této části otestujete konfiguraci jednotného přihlášení Azure AD pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Po kliknutí na dlaždici Yodeck na přístupovém panelu, můžete by měl být automaticky přihlášeni k Yodeck, u kterého nastavíte přistupující. Další informace o přístupovém panelu naleznete [v tématu Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici Yodeck, měli byste se automaticky přihlásit k Yodeck, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam výukových programů o integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co je podmíněný přístup ve službě Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

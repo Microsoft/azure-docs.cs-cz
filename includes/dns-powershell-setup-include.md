@@ -9,15 +9,15 @@ ms.date: 03/21/2018
 ms.author: subsarma
 ms.custom: include file for PowerShell for Azure DNS
 ms.openlocfilehash: 32c516ccee3a9f4f7604a3e330285703a776b47d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "67133326"
 ---
 ## <a name="set-up-azure-powershell-for-azure-dns"></a>Nastavení Azure PowerShellu pro Azure DNS
 
-### <a name="before-you-begin"></a>Než začnete
+### <a name="before-you-begin"></a>Před zahájením
 
 [!INCLUDE [requires-azurerm](requires-azurerm.md)]
 
@@ -38,7 +38,7 @@ Find-Module -Name AzureRM.Dns
 Find-Module -Name AzureRM.Network 
 ``` 
  
-Výstup z výše uvedených příkazů musí ukázat, že verze AzureRM.Dns je verze 4.1.0 nebo vyšší a pro AzureRM.Network je verze 5.4.0 nebo vyšší.  
+Výstup výše uvedených příkazů musí ukázat, že verze AzureRM. DNS je 4.1.0 nebo vyšší verze, a pro AzureRM. Network je 5.4.0 nebo vyšší verze.  
 
 V případě, že váš systém obsahuje starší verze, můžete nainstalovat nejnovější verzi Azure PowerShellu nebo stáhnout a nainstalovat výše uvedené moduly z Galerie prostředí PowerShell přes odkazy uvedené výše vedle verzí modulů. Pak je můžete nainstalovat pomocí níže uvedených příkazů. Vyžadují se oba moduly a oba jsou plně zpětně kompatibilní. 
 
@@ -52,7 +52,7 @@ Install-Module -Name AzureRM.Network -Force
 
 ### <a name="sign-in-to-your-azure-account"></a>Přihlášení k účtu Azure
 
-Otevřete konzolu prostředí PowerShell a připojte se ke svému účtu. Další informace najdete [v tématu Přihlášení pomocí AzureRM](/powershell/azure/azurerm/authenticate-azureps).
+Otevřete konzolu prostředí PowerShell a připojte se ke svému účtu. Další informace najdete v tématu věnovaném [přihlášení pomocí AzureRM](/powershell/azure/azurerm/authenticate-azureps).
 
 ```powershell
 Connect-AzureRmAccount

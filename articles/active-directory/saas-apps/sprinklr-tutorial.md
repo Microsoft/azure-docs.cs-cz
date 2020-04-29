@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace služby Azure Active Directory se sprinklr | Dokumenty společnosti Microsoft'
-description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Službou Azure Active Directory a sprinklr.
+title: 'Kurz: Azure Active Directory Integration with autopostřikovače | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a postřikovače.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,153 +16,153 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 9e4025d040783bff1cd85fb46d571e3a89967892
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67089646"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-sprinklr"></a>Kurz: Integrace služby Azure Active Directory se sprinklrem
+# <a name="tutorial-azure-active-directory-integration-with-sprinklr"></a>Kurz: Azure Active Directory Integration with autopostřikovače
 
-V tomto kurzu se dozvíte, jak integrovat Sprinklr s Azure Active Directory (Azure AD).
-Integrace Sprinklr s Azure AD poskytuje následující výhody:
+V tomto kurzu se naučíte integrovat automatický postřikovací program s Azure Active Directory (Azure AD).
+Integrování programu pro automatických přihlášení do Azure AD poskytuje následující výhody:
 
-* Můžete řídit ve službě Azure AD, který má přístup k Sprinklr.
-* Můžete povolit, aby se uživatelé automaticky přihlašovali ke sprinklr (jednotné přihlášení) pomocí svých účtů Azure AD.
-* Své účty můžete spravovat v jednom centrálním umístění – na portálu Azure.
+* Můžete kontrolovat v Azure AD, kteří mají přístup k automatickému postřikovači.
+* Uživatelům můžete povolit, aby se automaticky přihlásili k programu pro automatické přihlašování (jednotné přihlašování) s účty Azure AD.
+* Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
-Pokud se chcete dozvědět více podrobností o integraci aplikací SaaS s Azure AD, přečtěte [si, co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li nakonfigurovat integraci Azure AD pomocí sprinklr, potřebujete následující položky:
+Ke konfiguraci integrace služby Azure AD pomocí programu pro automatické nastavování potřebujete následující položky:
 
-* Předplatné Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební [verzi zde](https://azure.microsoft.com/pricing/free-trial/)
-* Předplatné s povoleným jedním přihlášením Sprinklr
+* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verzi [tady](https://azure.microsoft.com/pricing/free-trial/) .
+* Odběr povoleného jednotného přihlašování automatickým přihlašováním
 
 ## <a name="scenario-description"></a>Popis scénáře
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Sprinklr podporuje **SP** inicioval SSO
+* Automatický postřikovací systém podporuje jednotné přihlašování spouštěné v **SP**
 
-## <a name="adding-sprinklr-from-the-gallery"></a>Přidání Sprinklr z galerie
+## <a name="adding-sprinklr-from-the-gallery"></a>Přidání automatického postřikovače z Galerie
 
-Chcete-li nakonfigurovat integraci Sprinklr do Azure AD, musíte přidat Sprinklr z galerie do seznamu spravovaných aplikací SaaS.
+Pokud chcete nakonfigurovat integraci programu pro automatické nastavování do služby Azure AD, musíte přidat automatický postřikovací z Galerie do svého seznamu spravovaných aplikací SaaS.
 
-**Chcete-li přidat sprinklr z galerie, proveďte následující kroky:**
+**Chcete-li přidat automatický postřikovací z Galerie, proveďte následující kroky:**
 
-1. Na **[portálu Azure](https://portal.azure.com)** klikněte na levém navigačním panelu na ikonu **Služby Azure Active Directory.**
+1. V **[Azure Portal](https://portal.azure.com)** na levém navigačním panelu klikněte na ikonu **Azure Active Directory** .
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte do **podnikových aplikací** a pak vyberte možnost **Všechny aplikace.**
+2. Přejděte na **podnikové aplikace** a vyberte možnost **všechny aplikace** .
 
-    ![Okno Aplikace Enterprise](common/enterprise-applications.png)
+    ![Okno podnikové aplikace](common/enterprise-applications.png)
 
-3. Chcete-li přidat novou aplikaci, klepněte na tlačítko **Nová aplikace** v horní části dialogového okna.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **Nová aplikace** v horní části dialogového okna.
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Sprinklr**, z panelu výsledků vyberte **Příkazka lr** a pak klepněte na **tlačítko Přidat** a přidejte aplikaci.
+4. Do vyhledávacího **pole zadejte program**pro automatické navýšení a pak klikněte na tlačítko **Sprinklr** **Přidat** , aby se aplikace přidala.
 
-     ![Sprinklr v seznamu výsledků](common/search-new-app.png)
+     ![Automatický postřikovač v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí sprinklr na základě testovacího uživatele s názvem **Britta Simon**.
-Aby jednotné přihlašování fungovalo, musí být vytvořen vztah propojení mezi uživatelem Azure AD a souvisejícím uživatelem v Sprinklr.
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí programu pro automatické přihlašování na základě testovacího uživatele s názvem **Britta Simon**.
+Aby bylo možné jednotné přihlašování pracovat, je nutné zřídit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v postřikovači.
 
-Chcete-li nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí sprinklr, musíte dokončit následující stavební bloky:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování pomocí programu pro automatické přihlášení, musíte dokončit tyto stavební bloky:
 
-1. **[Nakonfigurujte azure ad jednotné přihlašování](#configure-azure-ad-single-sign-on)** – aby vaši uživatelé mohli používat tuto funkci.
-2. **[Konfigurace jednotného přihlašování Sprinklr](#configure-sprinklr-single-sign-on)** – konfigurace nastavení jednotného přihlášení na straně aplikace.
-3. **[Vytvořte uživatele testu Azure AD](#create-an-azure-ad-test-user)** – k testování jednotného přihlášení Azure AD s Brittou Simonovou.
-4. **[Přiřaďte testovacímu uživateli Azure AD](#assign-the-azure-ad-test-user)** – chcete-li Britta Simon ové povolit použití jednotného přihlášení azure ad.
-5. **[Vytvořte sprinklr test uživatele](#create-sprinklr-test-user)** – mít protějšek Britta Simon v Sprinklr, který je propojen s reprezentací Azure AD uživatele.
-6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** - chcete-li ověřit, zda konfigurace funguje.
+1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
+2. **[Konfigurace jednotného přihlašování pro automatické přihlašování](#configure-sprinklr-single-sign-on)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace
+3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
+4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
+5. **[Vytvořte testovacího uživatele](#create-sprinklr-test-user)** pro automatické přihlašování, abyste měli protějšek Britta Simon v autopostřikovače, který je propojený s reprezentací uživatele v Azure AD.
+6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** – ověřte, jestli konfigurace funguje.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
 
-V této části povolíte jednotné přihlašování Azure AD na webu Azure Portal.
+V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
 
-Chcete-li nakonfigurovat jednotné přihlašování Azure AD pomocí sprinklr, proveďte následující kroky:
+Pokud chcete nakonfigurovat jednotné přihlašování pomocí programu pro automatické přihlášení, proveďte následující kroky:
 
-1. Na [webu Azure Portal](https://portal.azure.com/)vyberte na stránce integrace aplikací **Sprinklr** **možnost Jednotné přihlašování**.
+1. V [Azure Portal](https://portal.azure.com/)na stránce **integrace aplikace pro** automatické **přihlašování vyberte jednotné přihlašování**.
 
-    ![Konfigurace odkazu pro jednotné přihlášení](common/select-sso.png)
+    ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
 
-2. V **dialogovém okně Vybrat metodu jednotného přihlašování** vyberte režim **SAML/WS-Fed,** abyste povolili jednotné přihlašování.
+2. V dialogovém okně **Vyberte metodu jednotného přihlašování** vyberte možnost režim **SAML/WS** , čímž povolíte jednotné přihlašování.
 
-    ![Režim výběru jednotného přihlášení](common/select-saml-option.png)
+    ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na stránce **Nastavit jednotné přihlašování pomocí saml** kliknutím na ikonu **Upravit** otevřete dialogové okno Základní **konfigurace SAML.**
+3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-4. V části **Základní konfigurace SAML** proveďte následující kroky:
+4. V části **základní konfigurace SAML** proveďte následující kroky:
 
-    ![Sprinklr Doména a adresy URL jednotné přihlašovací informace](common/sp-identifier.png)
+    ![Informace o jednotném přihlašování pro doménu a adresy URL automatického přihlašování](common/sp-identifier.png)
 
-    a. Do textového pole **Adresa URL přihlášení** zadejte adresu URL pomocí následujícího vzoru:`https://<subdomain>.sprinklr.com`
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<subdomain>.sprinklr.com`
 
-    b. Do textového pole **Identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru:`https://<subdomain>.sprinklr.com`
+    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru:`https://<subdomain>.sprinklr.com`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou skutečné. Aktualizujte tyto hodnoty skutečnou přihlašovací adresou URL a identifikátorem. Obraťte se na [tým podpory klienta Sprinklr,](https://www.sprinklr.com/contact-us/) abyste získali tyto hodnoty. Můžete také odkazovat na vzory uvedené v části **Základní konfigurace SAML** na webu Azure Portal.
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným přihlašovacím jménem a identifikátorem URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory pro klienta pro automatické postřikovače](https://www.sprinklr.com/contact-us/) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-5. Na stránce **Nastavit jednotné přihlašování pomocí saml** klikněte v části **Podpisový certifikát SAML** na **Stáhnout** a stáhněte si **certifikát (Base64)** z daných možností podle vašeho požadavku a uložte jej do počítače.
+5. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
-    ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
+    ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
-6. V části **Nastavit Sprinklr** zkopírujte příslušnou adresu URL podle vašeho požadavku.
+6. V části **nastavit postřikovače** zkopírujte příslušné adresy URL podle vašeho požadavku.
 
-    ![Kopírování konfiguračních adres URL](common/copy-configuration-urls.png)
+    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
     a. Přihlašovací adresa URL
 
-    b. Identifikátor azure reklamy
+    b. Identifikátor Azure AD
 
-    c. Adresa URL odhlášení
+    c. Odhlašovací adresa URL
 
-### <a name="configure-sprinklr-single-sign-on"></a>Konfigurace jednotného přihlašování sprinklr
+### <a name="configure-sprinklr-single-sign-on"></a>Konfigurace jednotného přihlašování k automatickým přihlášením
 
-1. V jiném okně webového prohlížeče se přihlaste na web společnosti Sprinklr jako správce.
+1. V jiném okně webového prohlížeče se přihlaste k vaší společnosti automatického přihlašování jako správce.
 
-1. Přejděte do **části Nastavení správy \> **.
+1. Přejít na **nastavení \> správy**.
 
     ![Správa](./media/sprinklr-tutorial/ic782907.png "Správa")
 
-1. V levém podokně přejděte na **Spravovat \> jednotné přihlášení partnera.**
+1. V levém podokně můžete **Spravovat jednotné přihlašování partnerů \> ** .
 
-    ![Správa partnera](./media/sprinklr-tutorial/ic782908.png "Správa partnera")
+    ![Spravovat partnera](./media/sprinklr-tutorial/ic782908.png "Spravovat partnera")
 
-1. Klikněte **na +Přidat jednotné přihlášení**.
+1. Klikněte na **+ Přidat jednotné přihlašování**.
 
     ![Jednotné přihlašování](./media/sprinklr-tutorial/ic782909.png "Jednotné přihlašování")
 
-1. Na stránce **Jednotné přihlášení** proveďte následující kroky:
+1. Na stránce **jednotného přihlašování** proveďte následující kroky:
 
     ![Jednotné přihlašování](./media/sprinklr-tutorial/ic782910.png "Jednotné přihlašování")
 
-    a. Do textového pole **Název** zadejte název konfigurace (například *WAADSSOTest*).
+    a. Do textového pole **název** zadejte název vaší konfigurace (například: *WAADSSOTest*).
 
     b. Vyberte **Povoleno**.
 
-    c. Vyberte **Použít nový certifikát služby SSO**.
+    c. Vyberte **použít nový certifikát jednotného přihlašování**.
 
-    d. Otevřete svůj certifikát kódovaný base-64 v poznámkovém bloku, zkopírujte jeho obsah do schránky a vložte jej do textového pole **Certifikát u poskytovatele identity.**
+    d. Otevřete v programu Poznámkový blok certifikát s kódováním Base-64, zkopírujte jeho obsah do schránky a vložte ho do textového pole **certifikát poskytovatele identity** .
 
-    e. Vložte hodnotu **identifikátoru Azure AD,** kterou jste zkopírovali z portálu Azure Portal, do textového pole **Id entity.**
+    e. Do textového pole **ID entity** vložte hodnotu **IDENTIFIKÁTORu Azure AD** , kterou jste zkopírovali z webu Azure Portal.
 
-    f. Vložte hodnotu **přihlašovací adresy URL,** kterou jste zkopírovali z portálu Azure Portal, do textového pole **přihlašovací adresy URL zprostředkovatele identity.**
+    f. Vložte hodnotu **URL pro přihlášení** , kterou jste zkopírovali z webu Azure Portal, do textového pole **Adresa URL pro přihlášení zprostředkovatele identity** .
 
-    g. Vložte hodnotu **adresy URL odhlášení,** kterou jste zkopírovali z portálu Azure Portal, do textového pole **URL odhlášení zprostředkovatele identity.**
+    g. Do textového pole **Adresa URL pro odhlášení zprostředkovatele identity** vložte hodnotu **URL pro odhlášení** , kterou jste zkopírovali z webu Azure Portal.
 
-    h. Jako **typ id uživatele SAML**vyberte **položku Assertion obsahuje uživatelské jméno sprinklr.com uživatele**.
+    h. Jako **Typ ID uživatele SAML**vyberte **kontrolní výraz obsahuje uživatelské jméno uživatele Sprinklr.com**.
 
-    i. Jako **umístění ID uživatele SAML**je vyberte **ID uživatele v prvku Identifikátor názvu příkazu Subject**.
+    i. Jako **umístění ID uživatele SAML**vyberte **ID uživatele v prvku identifikátor názvu v příkazu Subject**.
 
     j. Klikněte na **Uložit**.
 
@@ -170,64 +170,64 @@ Chcete-li nakonfigurovat jednotné přihlašování Azure AD pomocí sprinklr, p
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
-Cílem této části je vytvořit testovacího uživatele na webu Azure portal s názvem Britta Simon.
+Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. Na webu Azure Portal v levém podokně vyberte **Azure Active Directory**, vyberte **Uživatelé**a pak vyberte **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
 
-    ![Odkazy "Uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
+    ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
-2. V horní části obrazovky vyberte **Nový uživatel.**
+2. V horní části obrazovky vyberte **Nový uživatel** .
 
-    ![Tlačítko nového uživatele](common/new-user.png)
+    ![Tlačítko pro nového uživatele](common/new-user.png)
 
-3. Ve vlastnostech User proveďte následující kroky.
+3. Ve vlastnostech uživatele proveďte následující kroky.
 
-    ![Dialogové okno Uživatel](common/user-properties.png)
+    ![Uživatelský dialog](common/user-properties.png)
 
-    a. Do pole **Název** zadejte **BrittaSimon**.
+    a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. V poli **Uživatelské jméno** typ pole**brittasimon@yourcompanydomain.extension**  
+    b. Do pole typ **uživatelského jména****brittasimon@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
-    c. Zaškrtněte **políčko Zobrazit heslo** a poznamenejte si hodnotu, která se zobrazí v poli Heslo.
+    c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
     d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon používat Azure jednotné přihlašování udělením přístupu sprinklr.
+V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k automatickému postřikovači.
 
-1. Na portálu Azure vyberte **Podnikové aplikace**, vyberte **Všechny aplikace**a pak vyberte **Sprinklr**.
+1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte možnost **automatických**přihlášení.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikací vyberte **příkaz Sprinklr**.
+2. V seznamu aplikace vyberte možnost **Autopostřikovače**.
 
-    ![Odkaz Sprinklr v seznamu Aplikace](common/all-applications.png)
+    ![Odkaz na postřikovače v seznamu aplikací](common/all-applications.png)
 
-3. V nabídce vlevo vyberte **Možnost Uživatelé a skupiny**.
+3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
 
-    ![Odkaz "Uživatelé a skupiny"](common/users-groups-blade.png)
+    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-4. Klikněte na tlačítko **Přidat uživatele** a v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny.**
+4. Klikněte na tlačítko **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
-    ![Podokno Přidat přiřazení](common/add-assign-user.png)
+    ![Podokno přidat přiřazení](common/add-assign-user.png)
 
-5. V dialogovém okně **Uživatelé a skupiny** vyberte **brittu Simonovou** v seznamu Uživatelé a klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+5. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **Britta Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-6. Pokud očekáváte libovolnou hodnotu role v kontrolním výrazu SAML, vyberte v dialogovém okně **Vybrat roli** příslušnou roli pro uživatele ze seznamu a klepněte na tlačítko **Vybrat** v dolní části obrazovky.
+6. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, pak v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-7. V dialogovém okně **Přidat přiřazení** klepněte na tlačítko **Přiřadit.**
+7. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-### <a name="create-sprinklr-test-user"></a>Vytvořit testovacího uživatele Sprinklr
+### <a name="create-sprinklr-test-user"></a>Vytvořit testovacího uživatele pro automatické postřikovače
 
-1. Přihlaste se k webu společnosti Sprinklr jako správce.
+1. Přihlaste se k webu společnosti pro automatické přihlášení jako správce.
 
-1. Přejděte do **části Nastavení správy \> **.
+1. Přejít na **nastavení \> správy**.
 
     ![Správa](./media/sprinklr-tutorial/ic782907.png "Správa")
 
-1. V levém podokně přejděte na **Spravovat \> klientské uživatele.**
+1. V levém podokně přejdete na **Spravovat uživatele klienta \> ** .
 
     ![Nastavení](./media/sprinklr-tutorial/ic782914.png "Nastavení")
 
@@ -239,9 +239,9 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
 
     ![Upravit uživatele](./media/sprinklr-tutorial/ic782916.png "Upravit uživatele")
 
-    a. Do textových polí **E-mail**, **Jméno** a **Příjmení** zadejte informace o uživatelském účtu Azure AD, který chcete zřídit.
+    a. Do textového pole **e-mail**, **jméno** a **příjmení** a textová pole zadejte informace o účtu uživatele Azure AD, který chcete zřídit.
 
-    b. Vyberte **příkaz Zakázáno heslo**.
+    b. Vyberte **heslo je zakázané**.
 
     c. Vyberte **jazyk**.
 
@@ -250,29 +250,29 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
     e. Klikněte na **Aktualizovat**.
 
     > [!IMPORTANT]
-    > **Heslo zakázáno** musí být vybráno, aby se uživatel mohl přihlásit prostřednictvím zprostředkovatele identity. 
+    > Je nutné vybrat **heslo zakázané** , aby se uživatel mohl přihlásit prostřednictvím poskytovatele identity. 
 
-1. Přejděte do **role**a proveďte následující kroky:
+1. Přejít na **roli**a pak proveďte následující kroky:
 
     ![Role partnerů](./media/sprinklr-tutorial/ic782917.png "Role partnerů")
 
-    a. V **globálním** seznamu vyberte **ALL_Permissions**.  
+    a. V seznamu **globální** vyberte možnost **ALL_Permissions**.  
 
     b. Klikněte na **Aktualizovat**.
 
 > [!NOTE]
-> Můžete použít jakékoli jiné sprinklr nástroje pro vytváření uživatelských účtů nebo rozhraní API poskytované Sprinklr zřídit uživatelské účty Azure AD.
+> K zřizování uživatelských účtů Azure AD můžete použít jakékoli jiné nástroje pro vytváření uživatelských účtů nebo rozhraní API pro automatické postřikovače, které poskytuje postřikovače.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
-V této části otestujete konfiguraci jednotného přihlášení Azure AD pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Po kliknutí na dlaždici Sprinklr na přístupovém panelu, můžete by měl být automaticky přihlášeni k Sprinklr, pro které nastavíte přistupující spo. Další informace o přístupovém panelu naleznete [v tématu Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když kliknete na dlaždici automatických přihlášení na přístupovém panelu, měli byste se automaticky přihlásit do automatického přihlašování, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam výukových programů o integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co je podmíněný přístup ve službě Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

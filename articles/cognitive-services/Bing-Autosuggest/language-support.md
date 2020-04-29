@@ -1,7 +1,7 @@
 ---
-title: Jazyková podpora – rozhraní API automatického návrhu bingu
+title: Jazyková podpora – rozhraní API pro automatické návrhy Bingu
 titleSuffix: Azure Cognitive Services
-description: Seznam podporovaných jazyků a oblastí pro rozhraní API automatického návrhu Bingu.
+description: Seznam podporovaných jazyků a oblastí pro rozhraní API pro automatické návrhy Bingu.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -11,21 +11,21 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: scottwhi
 ms.openlocfilehash: 6fe2e78501024983544b399762fb936d86e5c9d5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60547332"
 ---
-# <a name="language-and-region-support-for-the-bing-autosuggest-api"></a>Jazyková a oblastová podpora rozhraní API automatického návrhu Bingu
+# <a name="language-and-region-support-for-the-bing-autosuggest-api"></a>Podpora jazyků a oblastí pro rozhraní API pro automatické návrhy Bingu
 
-V následujícím seznamu jsou uvedeny jazyky podporované rozhraním API Automatické ho snávrhu Bingu.
+Následující seznam obsahuje jazyky podporované nástrojem rozhraní API pro automatické návrhy Bingu.
 
 | Jazyk    | Kód jazyka |
 |:----------- |:-------------:|
 | Arabština      | `ar`          |
 | Čínština (Čínská lidová republika)     | `zh-CN`          |
-| Čínština (Hongkong – zvláštní správní oblast ČLR)    | `zh-HK`          |
+| Čínština (Hongkong – zvláštní administrativní oblast)    | `zh-HK`          |
 | Čínština (Tchaj-wan)     | `zh-TW`          |
 | Dánština      | `da`          |
 | Nizozemština (Belgie)       | `nl-BE`          |
@@ -60,11 +60,11 @@ V následujícím seznamu jsou uvedeny jazyky podporované rozhraním API Automa
 | Španělština (Chile)     | `es-CL`          |
 | Španělština (Mexiko)    | `es-MX`          |
 | Španělština (Španělsko)    | `es-ES`          |
-| Španělština (Spojené státy)    | `es-US`          |
+| Španělština (USA)    | `es-US`          |
 | Švédština     | `sv`          |
 | Turečtina     | `tr`          |
 
 ## <a name="see-also"></a>Viz také
 
-- [Stránka dokumentace služby Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/)
+- [Stránka dokumentace k Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/)
 - [Stránka produktu Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/)

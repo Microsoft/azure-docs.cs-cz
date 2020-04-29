@@ -9,10 +9,10 @@ ms.topic: sample
 ms.custom: mvc
 ms.date: 02/28/2018
 ms.openlocfilehash: 107c844051ab396fe467a1a629883746b2903125
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "66154509"
 ---
 # <a name="enable-and-download-server-slow-query-logs-of-an-azure-database-for-postgresql-server-using-azure-cli"></a>Povolení a stažení protokolů pomalých dotazů serveru Azure Database for PostgreSQL pomocí Azure CLI
@@ -23,7 +23,7 @@ Tento ukázkový skript rozhraní příkazového řádku povolí a stáhne proto
 Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít verzi Azure CLI 2.0 nebo novější. Zkontrolujte verzi spuštěním příkazu `az --version`. Informace o instalaci nebo upgradu verze Azure CLI najdete v tématu [Instalace Azure CLI]( /cli/azure/install-azure-cli).
 
 ## <a name="sample-script"></a>Ukázkový skript
-V tomto ukázkovém skriptu upravte zvýrazněné řádky a aktualizujte uživatelské jméno a heslo správce na své vlastní. &lt;Nahraďte&gt; log_file_name `az monitor` v příkazech vlastním názvem souboru protokolu serveru.
+V tomto ukázkovém skriptu upravte zvýrazněné řádky a aktualizujte uživatelské jméno a heslo správce na své vlastní. V `az monitor` příkazech&gt; nahraďte &lt;Log_file_name vlastním názvem souboru protokolu serveru.
 [!code-azurecli-interactive[main](../../../cli_scripts/postgresql/server-logs/server-logs.sh?highlight=15-16 "Manipulate with server logs.")]
 
 ## <a name="clean-up-deployment"></a>Vyčištění nasazení
@@ -44,6 +44,6 @@ Tento skript používá příkazy uvedené v následující tabulce:
 | [az group delete](/cli/azure/group) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
 ## <a name="next-steps"></a>Další kroky
-- Přečtěte si další informace o azure cli: [dokumentace KONTo IO Azure](/cli/azure).
+- Další informace najdete v dokumentaci Azure CLI: [dokumentace k Azure CLI](/cli/azure).
 - Vyzkoušejte i další skripty: [Ukázky v Azure CLI pro službu Azure Database for PostgreSQL](../sample-scripts-azure-cli.md).
 - [Konfigurace protokolů serveru a přístup k nim na webu Azure Portal](../howto-configure-server-logs-in-portal.md)

@@ -9,17 +9,17 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 85992224edd10c0a0f233de9f6274cc77e109b22
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60757555"
 ---
-# <a name="tutorial-provision-azure-data-box-gateway-in-vmware"></a>Kurz: Zřízení brány azure datových schronů ve VMware
+# <a name="tutorial-provision-azure-data-box-gateway-in-vmware"></a>Kurz: zřízení Azure Data Box Gateway ve VMware
 
 ## <a name="overview"></a>Přehled
 
-Tento kurz popisuje, jak zřídit bránu datové schránky v hostitelském systému se systémem VMware ESXi 6.0, 6.5 nebo 6.7. 
+V tomto kurzu se dozvíte, jak zřídit Data Box Gateway v hostitelském systému, na kterém běží VMware ESXi 6,0, 6,5 nebo 6,7. 
 
 Ke zřízení virtuálního zařízení a připojení k němu potřebujete oprávnění správce. Dokončení zřizování a počátečního nastavení může trvat přibližně 10 minut.
 
@@ -30,12 +30,12 @@ V tomto kurzu se naučíte:
 > * Zřízení virtuálního zařízení ve VMware
 > * Spuštění virtuálního zařízení a získání IP adresy
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Předpoklady pro zřízení virtuálního zařízení v hostitelském systému se systémem VMware ESXi 6.0, 6.5 nebo 6.7 jsou následující.
+Níže jsou uvedené požadavky na zřízení virtuálního zařízení v hostitelském systému, na kterém běží VMware ESXi 6,0, 6,5 nebo 6,7.
 
 ### <a name="for-the-data-box-gateway-resource"></a>Prostředek Data Box Gateway
 
@@ -51,7 +51,7 @@ Než začnete, ujistěte se, že:
 
 Před nasazením virtuálního zařízení se ujistěte, že:
 
-* Máte přístup k hostitelskému systému se systémem VMware (ESXi 6.0, 6.5 nebo 6.7), který lze použít k zřízení zařízení.
+* Máte přístup k hostitelskému systému, na kterém běží VMware (ESXi 6,0, 6,5 nebo 6,7), který se dá použít k zřízení zařízení.
 * Hostitelský systém může pro zřízení virtuálního zařízení vyhradit následující prostředky:
 
   * Minimálně 4 jádra
@@ -71,7 +71,7 @@ Než začnete:
 
 K vytvoření virtuálního zařízení potřebujete:
 
-* Přístup k hostitelskému systému se systémem VMware ESXi Server 6.0, 6.5 nebo 6.7. Hostitelský systém může pro virtuální zařízení vyhradit následující prostředky:
+* Přístup k hostitelskému systému se systémem VMware ESXi Server 6,0, 6,5 nebo 6,7. Hostitelský systém může pro virtuální zařízení vyhradit následující prostředky:
  
   * Minimálně 4 virtuální procesory.
   * Minimálně 8 GB paměti RAM 
@@ -87,7 +87,7 @@ Pomocí následujících kroků ve svém hypervisoru zřiďte virtuální zaří
 
 1. Zkopírujte do svého systému image virtuálního zařízení. Tuto virtuální image (dva soubory) jste si stáhli přes Azure Portal. Poznamenejte si umístění, do kterého jste image zkopírovali, protože tuto image použijete v pozdější části tohoto postupu.
 
-2. Přihlaste se k serveru ESXi prostřednictvím prohlížeče na této adrese URL: `https://<IP address of the ESXi server>`. K vytvoření virtuálního počítače potřebujete mít oprávnění správce.
+2. Přihlaste se k serveru ESXi prostřednictvím prohlížeče na této adrese URL `https://<IP address of the ESXi server>`:. K vytvoření virtuálního počítače potřebujete mít oprávnění správce.
 
    ![Přihlašovací stránka](./media/data-box-gateway-deploy-provision-vmware/image1.png)
   
@@ -118,53 +118,53 @@ Pomocí následujících kroků ve svém hypervisoru zřiďte virtuální zaří
 
 9. Přejděte k souborům VMDK, které jste si stáhli. Zobrazí se dva soubory. Vyberte soubor k nahrání.
 
-    ![Vyberte soubor, který chcete nahrát.](./media/data-box-gateway-deploy-provision-vmware/image7.png)
+    ![Vyberte soubor, který se má nahrát.](./media/data-box-gateway-deploy-provision-vmware/image7.png)
 
 10. Klikněte na **Otevřít**. Spustí se nahrávání souboru VMDK do zadaného úložiště dat. Nahrání souboru může několik minut trvat.
 11. Po dokončení nahrávání se soubor zobrazí v úložišti dat ve složce, kterou jste vytvořili. Teď do stejného úložiště dat nahrajte druhý soubor VMDK. Po nahrání obou souborů se oba sloučí do jednoho souboru. V adresáři se pak zobrazí jeden soubor.
 
-    ![Dva soubory VMDK jsou sloučeny do jednoho souboru](./media/data-box-gateway-deploy-provision-vmware/image8.png)
+    ![Dva soubory VMDK jsou sloučeny do jednoho souboru.](./media/data-box-gateway-deploy-provision-vmware/image8.png)
 
 12. Vraťte se do okna klienta vSphere. V podokně Navigátor vyberte **Virtuální počítače**. V pravém podokně klikněte na **Vytvořit/zaregistrovat virtuální počítač**.
 
-    ![Vytvoření nebo registrace virtuálního montovana](./media/data-box-gateway-deploy-provision-vmware/image9.png)
+    ![Vytvoření nebo registrace virtuálního počítače](./media/data-box-gateway-deploy-provision-vmware/image9.png)
 
 13. Zobrazí se okno **Nový virtuální počítač**. V části Vyberte typ vytvoření zvolte **Vytvořit nový virtuální počítač** a klikněte na **Další**.
-    ![Vybrat stránku typu vytvoření](./media/data-box-gateway-deploy-provision-vmware/image10.png)
+    ![Stránka pro výběr typu vytvoření](./media/data-box-gateway-deploy-provision-vmware/image10.png)
 
-14. Na stránce **Vyberte název, název operačního systému a umístění** zadejte **Název** vašeho virtuálního počítače. Tento název by se měl shodovat s názvem složky, který jste zadali dříve v kroku 7 (doporučený osvědčený postup). Jako **Řada hostovaného operačního systému** zvolte Windows a jako **Verze hostovaného operačního systému** zvolte Microsoft Windows Server 2016 (64bitová verze). Klikněte na **Další**.
+14. Na stránce **Vyberte název, název operačního systému a umístění** zadejte **Název** vašeho virtuálního počítače. Tento název by se měl shodovat s názvem složky, který jste zadali dříve v kroku 7 (doporučený osvědčený postup). Jako **Řada hostovaného operačního systému** zvolte Windows a jako **Verze hostovaného operačního systému** zvolte Microsoft Windows Server 2016 (64bitová verze). Klikněte na **Další**.
 
-    ![Výběr stránky Název a Název operačního serveru a umístění](./media/data-box-gateway-deploy-provision-vmware/image11.png)
+    ![Vyberte název a název operačního systému a stránku umístění.](./media/data-box-gateway-deploy-provision-vmware/image11.png)
 
-15. Na stránce **Vyberte úložiště** vyberte úložiště dat, které chcete ke zřízení virtuálního počítače použít. Klikněte na **Další**.
+15. Na stránce **Vyberte úložiště** vyberte úložiště dat, které chcete ke zřízení virtuálního počítače použít. Klikněte na **Další**.
 
-    ![Vybrat stránku úložiště](./media/data-box-gateway-deploy-provision-vmware/image12.png)
-16. Na stránce **Přizpůsobit nastavení** nastavte počet **CPU** na 4, velikost **paměti** na 8 192 MB (nebo více) a velikost **pevného disku 1** na 2 TB (nebo více). Zvolte **pevný disk SCSI**, který chcete přidat. V tomto případě to byl typ LSI Logic SAS. **Statické disky IDE se nepodporují.** **Pevný disk 1** je virtuální pevný disk. Mějte na paměti, že disk po zřízení už není možné zmenšit. Pokus o zmenšení disku má za následek ztrátu všech místních dat v zařízení. 
+    ![Stránka pro výběr úložiště](./media/data-box-gateway-deploy-provision-vmware/image12.png)
+16. Na stránce **Přizpůsobit nastavení** nastavte počet **CPU** na 4, velikost **paměti** na 8 192 MB (nebo více) a velikost **pevného disku 1** na 2 TB (nebo více). Zvolte **pevný disk SCSI**, který chcete přidat. V tomto případě to byl typ LSI Logic SAS. **Statické disky IDE se nepodporují.** **Pevný disk 1** je virtuální pevný disk. Mějte na paměti, že disk po zřízení už není možné zmenšit. Při pokusu o zmenšení disku dojde ke ztrátě všech místních dat v zařízení. 
 
-    ![Stránka Přizpůsobení nastavení](./media/data-box-gateway-deploy-provision-vmware/image13.png)
+    ![Stránka pro přizpůsobení nastavení](./media/data-box-gateway-deploy-provision-vmware/image13.png)
 
     Na stejné stránce klikněte na **Přidat pevný disk** a vyberte **Existující pevný disk**. V úložišti dat vyberte soubor VMDK. Tím přidáte disk s operačním systémem. 
 
-     ! Stránka Přizpůsobení nastavení[](./media/data-box-gateway-deploy-provision-vmware/image14.png)
+     ! Stránka pro přizpůsobení nastavení[](./media/data-box-gateway-deploy-provision-vmware/image14.png)
 
     Posuňte se dolů, dokud se nezobrazí **Nový pevný disk**, a rozbalte ho, aby se zobrazilo nastavení. Nastavte **Uzel virtuálního zařízení** na **Kontroler IDE 0**.
 
-     ![Stránka Přizpůsobení nastavení](./media/data-box-gateway-deploy-provision-vmware/image15.png)
+     ![Stránka pro přizpůsobení nastavení](./media/data-box-gateway-deploy-provision-vmware/image15.png)
 
-17. (Nepovinné) *Tento krok proveďte pouze v případě, že používáte server VMware ESXi Server 6.7*. Na stránce **Přizpůsobit nastavení** klikněte na **Možnosti virtuálního počítače**. Přejděte na **možnosti spuštění > firmwaru** a změňte jej na **bios**. Ve výchozím nastavení je hodnota nastavena na EFI. Klikněte na **Další**.
+17. Volitelné *Tento krok proveďte jenom v případě, že používáte VMware ESXi Server 6,7*. Na stránce **přizpůsobit nastavení** klikněte na **Možnosti virtuálního počítače**. Přejděte na **Možnosti spuštění > firmware** a změňte ho na **BIOS**. Ve výchozím nastavení je hodnota nastavena na EFI. Klikněte na **Další**.
 
-    ![Přizpůsobení stránky nastavení při spuštění serveru VMware ESXi Server 6.7](./media/data-box-gateway-deploy-provision-vmware/image15a.png)
+    ![Stránka Přizpůsobení nastavení, pokud je spuštěný VMware ESXi Server 6,7](./media/data-box-gateway-deploy-provision-vmware/image15a.png)
 
 18. Na stránce **Připraveno k dokončení** zkontrolujte všechna nastavení přidružená k novému virtuálnímu počítači. Ověřte, že počet CPU je 4, paměť má velikost 8 192 MB, počet síťových rozhraní je 1 a Pevný disk 2 má kontroler IDE 0. Klikněte na **Finish** (Dokončit).
    
-    ![Stránka Připraveno](./media/data-box-gateway-deploy-provision-vmware/image16.png)
-    ![k dokončení připravena k dokončení](./media/data-box-gateway-deploy-provision-vmware/image17.png)
+    ![](./media/data-box-gateway-deploy-provision-vmware/image16.png)
+    ![dokončení stránky](./media/data-box-gateway-deploy-provision-vmware/image17.png)
 
 Váš virtuální počítač je teď zřízený. Zobrazí se o tom oznámení a nový virtuální počítač se přidá do seznamu virtuálních počítačů.
 
 ![Nový virtuální počítač přidaný do seznamu virtuálních počítačů](./media/data-box-gateway-deploy-provision-vmware/image17.png)
 
-Dalším krokem je zapnutí tohoto virtuálního počítači a získání IP adresy.
+Dalším krokem je zapnutí tohoto virtuálního počítače a získání IP adresy.
 
 > [!NOTE]
 > Doporučujeme, abyste na virtuální zařízení (zřízené výše) neinstalovali nástroje VMware. Instalace nástrojů VMware bude mít za následek nepodporovanou konfiguraci.
@@ -176,23 +176,23 @@ Pomocí následujících kroků spusťte své virtuální zařízení a připojt
 #### <a name="to-start-the-virtual-device"></a>Spuštění virtuálního zařízení
 1. Spusťte virtuální zařízení. V pravém podokně vyberte v seznamu virtuálních počítačů vaše zařízení a klikněte na něj pravým tlačítkem, aby se zobrazila místní nabídka. Vyberte **Napájení** a pak vyberte **Zapnout**. Tím by se měl virtuální počítač zapnout. Stav můžete zobrazit v dolním podokně webového klienta.
 
-    ![Zapnutí virtuálního zařízení](./media/data-box-gateway-deploy-provision-vmware/image19.png)
+    ![Zapnout virtuální zařízení](./media/data-box-gateway-deploy-provision-vmware/image19.png)
 
 2. Znovu vyberte virtuální počítač. Klikněte pravým tlačítkem, vyberte **Konzola** a pak vyberte **Otevřít v novém okně**.
 
-    ![Otevření virtuální konzoly zařízení](./media/data-box-gateway-deploy-provision-vmware/image20.png)
+    ![Otevřete konzolu virtuálních zařízení](./media/data-box-gateway-deploy-provision-vmware/image20.png)
 
 3. V novém okně se otevře konzola virtuálního počítače. 
 
-    ![Virtuální konzola zařízení](./media/data-box-gateway-deploy-provision-vmware/image21.png)
+    ![Konzola virtuálních zařízení](./media/data-box-gateway-deploy-provision-vmware/image21.png)
 
 4. Jakmile bude zařízení spuštěné, umístěte kurzor na kartu uprostřed v horní části okna konzoly a klikněte na ni. Vyberte **Hostovaný operační systém > Odeslat klíče > Ctrl + Alt + Delete**. Tím se virtuální počítač odemkne.
 
    ![Odemknutí virtuálního zařízení](./media/data-box-gateway-deploy-provision-vmware/image22.png)
 
-5. Zadejte heslo a přihlaste se k počítači. Výchozí heslo je *Password1*.
+5. Zadejte heslo a přihlaste se k počítači. Výchozí heslo je *Heslo1*.
 
-   ![Zadání hesla virtuálního zařízení](./media/data-box-gateway-deploy-provision-vmware/image23.png)
+   ![Zadejte heslo virtuálního zařízení.](./media/data-box-gateway-deploy-provision-vmware/image23.png)
 
 6. Kroky 5 až 7 proveďte pouze v případě, že zařízení spouštíte v jiném prostředí než DHCP. Pokud jste v prostředí DHCP, přeskočte tyto kroky a přejděte ke kroku 8. Pokud jste zařízení spustili v jiném prostředí než DHCP, zobrazí se o tom zpráva: **Pomocí rutiny Set-HcsIPAddress nakonfigurujte síť**. 
    
@@ -204,14 +204,14 @@ Pomocí následujících kroků spusťte své virtuální zařízení a připojt
 
 9. Po dokončení počátečního nastavení a spuštění zařízení se zobrazí text banneru zařízení. Poznamenejte si IP adresu a adresu URL pro správu zařízení, které se zobrazí v textu banneru. Pomocí této IP adresy se připojíte k webovému uživatelskému rozhraní vašeho virtuálního zařízení a dokončíte místní nastavení a aktivaci.
 
-   ![Bannerová adresa URL a adresa URL připojení pro virtuální zařízení](./media/data-box-gateway-deploy-provision-vmware/image24.png)
+   ![Text banneru a adresa URL pro připojení k virtuálnímu zařízení](./media/data-box-gateway-deploy-provision-vmware/image24.png)
 
 Pokud vaše zařízení nesplňuje minimální požadavky na konfiguraci, zobrazí se v textu banneru chyba (viz níže). Budete muset upravit konfiguraci zařízení tak, aby mělo dostatečné prostředky ke splnění minimálních požadavků. Pak můžete zařízení restartovat a připojit se k němu. Projděte si minimální požadavky na konfiguraci v části věnované [kontrole, jestli hostitelský systém splňuje minimální požadavky na virtuální zařízení](#check-the-host-system).
 
-Pokud se během počáteční konfigurace pomocí místního webového uživatelského rozhraní zobrazí jiná chyba, podívejte se na následující pracovní postupy:
+Pokud se při počáteční konfiguraci s použitím místního webového uživatelského rozhraní zobrazí nějaká chyba, přečtěte si následující pracovní postupy:
 
-- [Spusťte diagnostické testy k řešení potíží s nastavením webového uživatelského rozhraní](data-box-gateway-troubleshoot.md#run-diagnostics).
-- [Generovat balíček protokolu a zobrazit soubory protokolu](data-box-gateway-troubleshoot.md#collect-support-package).
+- [Spusťte diagnostické testy pro řešení potíží s instalací webového uživatelského rozhraní](data-box-gateway-troubleshoot.md#run-diagnostics).
+- [Generování souboru protokolu a zobrazení souborů protokolu](data-box-gateway-troubleshoot.md#collect-support-package).
 
 ## <a name="next-steps"></a>Další kroky
 

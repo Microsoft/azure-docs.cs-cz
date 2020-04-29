@@ -15,10 +15,10 @@ ms.date: 04/12/2018
 ms.author: spelluru
 ms.custom: mvc
 ms.openlocfilehash: 2159e594f0cc6a43905f3562c0ad6f3e3c9984fe
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "61084464"
 ---
 # <a name="use-azure-cli-to-start-a-virtual-machine-in-a-lab-in-azure-devtest-labs"></a>Skript Azure CLI slouží ke spuštění virtuálního počítače v laboratorním prostředí v Azure DevTest Labs.
@@ -40,7 +40,7 @@ Tento skript používá následující příkazy:
 
 | Příkaz | Poznámky |
 |---|---|
-| [az lab vm start](/cli/azure/lab/vm?view=azure-cli-latest#az-lab-vm-start) | Spustí virtuální počítač v laboratorním prostředí. Tato operace může chvíli trvat. |
+| [AZ Lab VM Start](/cli/azure/lab/vm?view=azure-cli-latest#az-lab-vm-start) | Spustí virtuální počítač v laboratorním prostředí. Tato operace může chvíli trvat. |
 
 ## <a name="next-steps"></a>Další kroky
 

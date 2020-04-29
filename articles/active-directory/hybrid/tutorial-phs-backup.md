@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Nastavení PHS jako zálohy pro službu AD FS ve službě Azure AD Connect | Dokumenty společnosti Microsoft'
-description: Ukazuje, jak zapnout synchronizaci hash hesel jako zálohu a pro službu AD FS.
+title: 'Kurz: nastavení KOSMETICE jako zálohy pro AD FS v Azure AD Connect | Microsoft Docs'
+description: Ukazuje, jak zapnout synchronizaci hodnot hash hesel jako zálohu a pro AD FS.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -13,106 +13,106 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3e5ad7badfa44a006fd7e71d3b0e42ee95ac698d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "64919012"
 ---
-# <a name="tutorial--setting-up-phs-as-backup-for-ad-fs-in-azure-ad-connect"></a>Kurz: Nastavení PHS jako zálohy pro službu AD FS ve službě Azure AD Connect
+# <a name="tutorial--setting-up-phs-as-backup-for-ad-fs-in-azure-ad-connect"></a>Kurz: nastavení KOSMETICE jako zálohy pro AD FS v Azure AD Connect
 
-Následující kurz vás provede nastavením synchronizace hash hesel jako zálohy a převzetí služeb při selhání pro službu AD FS.  Tento dokument také ukáže, jak povolit synchronizaci hash hesel jako primární metodu ověřování, pokud služby AD FS selhaly nebo se staly nedostupnými.
+Následující kurz vás provede nastavením synchronizace hodnot hash hesel jako zálohy a převzetí služeb při selhání pro AD FS.  Tento dokument také demonstruje, jak povolit synchronizaci hodnot hash hesel jako primární metodu ověřování, pokud se AD FS nezdařila nebo není k dispozici.
 
 >[!NOTE] 
->Přestože tyto kroky jsou obvykle prováděny v nouzových nebo výpadek situace, je doporučeno otestovat tyto kroky a ověřit postupy před výpadku dojde.
+>I když se tyto kroky obvykle provádějí při mimořádných událostech nebo při výpadkech, doporučujeme, abyste tyto kroky otestovali a ověřili své procedury před výpadkem.
 
 >[!NOTE]
->V případě, že nemáte přístup k serveru Azure AD Connect nebo server nemá přístup k internetu, můžete kontaktovat [podporu Microsoftu](https://support.microsoft.com/en-us/contactus/) a pomoci se změnami na straně Azure AD.
+>V případě, že nemáte přístup k serveru Azure AD Connect nebo server nemá přístup k Internetu, můžete kontaktovat [Podpora Microsoftu](https://support.microsoft.com/en-us/contactus/) a pomoct se změnami na straně Azure AD.
 
 ## <a name="prerequisites"></a>Požadavky
-Tento kurz vychází z [kurzu: Federate jeden prostředí doménové struktury služby AD do cloudu](tutorial-federation.md) a je pro každý-požadovaný před pokusem o tento kurz.  Pokud jste tento kurz nedokončili, proveďte to před pokusem o kroky v tomto dokumentu.
+Tento kurz sestaví na tomto [kurzu: federovat jedno prostředí doménové struktury AD do cloudu](tutorial-federation.md) a před pokusem o provedení tohoto kurzu je v jednotlivých požadavcích.  Pokud jste tento kurz nedokončili, udělejte to ještě před provedením kroků v tomto dokumentu.
 
 >[!IMPORTANT]
->Před přechodem na PHS byste měli vytvořit zálohu prostředí AD FS.  To lze provést pomocí [nástroje rychlého obnovení služby AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/ad-fs-rapid-restore-tool#how-to-use-the-tool).
+>Před přechodem na KOSMETICE byste měli vytvořit zálohu AD FSho prostředí.  To lze provést pomocí [nástroje AD FS Rapid Restore Tool](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/ad-fs-rapid-restore-tool#how-to-use-the-tool).
 
-## <a name="enable-phs-in-azure-ad-connect"></a>Povolení phs ve službě Azure AD Connect
-Prvním krokem, teď, když máme prostředí Azure AD Connect, které používá federaci, je zapnout synchronizaci hash hesel a povolit Azure AD Connect synchronizovat hash.
+## <a name="enable-phs-in-azure-ad-connect"></a>Povolit KOSMETICE v Azure AD Connect
+První krok, teď když máme Azure AD Connect prostředí, které používá federaci, je zapnout synchronizaci hodnot hash hesel a povolit Azure AD Connect synchronizaci hodnot hash.
 
 Udělejte toto:
 
-1.  Poklepejte na ikonu Azure AD Connect, která byla vytvořena na ploše
+1.  Poklikejte na ikonu Azure AD Connect, která se vytvořila na ploše.
 2.  Klikněte na **Konfigurovat**.
-3.  Na stránce Další úkoly vyberte **Možnosti synchronizace a** klepněte na tlačítko **Další**.
-4.  Zadejte uživatelské jméno a heslo globálního správce.  Tento účet byl vytvořen [zde](tutorial-federation.md#create-a-global-administrator-in-azure-ad) v předchozím kurzu.
-5.  Na obrazovce **Připojit adresáře** klikněte na **další**.
-6.  Na obrazovce **filtrování domény a ou položky** klepněte na tlačítko **Další**.
-7.  Na obrazovce **Volitelné funkce** zaškrtněte **políčko Synchronizace hodnot hash hesla** a klepněte na tlačítko **Další**.
+3.  Na stránce další úlohy vyberte možnost **přizpůsobit možnosti synchronizace** a klikněte na tlačítko **Další**.
+4.  Zadejte uživatelské jméno a heslo pro globálního správce.  Tento účet [se vytvořil v](tutorial-federation.md#create-a-global-administrator-in-azure-ad) předchozím kurzu.
+5.  Na obrazovce **připojit adresáře** klikněte na **Další**.
+6.  Na obrazovce **filtrování domény a organizační jednotky** klikněte na **Další**.
+7.  Na obrazovce **volitelné funkce** ověřte **synchronizaci hodnot hash hesel** a klikněte na **Další**.
 ![Výběr](media/tutorial-phs-backup/backup1.png)</br>
-8.  Na obrazovce **Připraveno ke konfiguraci** klepněte na **tlačítko Konfigurovat**.
-9.  Po dokončení konfigurace klepněte na tlačítko **Ukončit**.
-10. A to je vše!  Skončil jsi.  Synchronizace hodnot hash hesla nyní proběhne a může být použita jako záloha, pokud službu AD FS přestane být k dispozici.
+8.  Na obrazovce **připraveno ke konfiguraci** klikněte na **Konfigurovat**.
+9.  Po dokončení konfigurace klikněte na **ukončit**.
+10. A to je vše!  Jste hotovi.  Synchronizace hodnot hash hesel se teď projeví a dá se použít jako záloha, pokud AD FS nebude k dispozici.
 
-## <a name="switch-to-password-hash-synchronization"></a>Přepnutí na synchronizaci hodnot hash hesel
-Nyní vám ukážeme, jak přejít na synchronizaci hodnot hash hesel. Než začnete, zvažte, za jakých podmínek byste měli provést výměnu. Neprovávejte přepínač z dočasných důvodů, jako je výpadek sítě, menší problém služby AD FS nebo problém, který se týká podmnožiny uživatelů. Pokud se rozhodnete provést přepínač, protože oprava problému bude trvat příliš dlouho, postupujte takto:
+## <a name="switch-to-password-hash-synchronization"></a>Přepnout na synchronizaci hodnot hash hesel
+Teď vám ukážeme, jak přepnout na synchronizaci hodnot hash hesel. Než začnete, zvažte, za jakých podmínek byste měli přepínač udělat. Neprovádějte přepínač pro dočasné důvody, jako je výpadek sítě, menší problém AD FS, nebo problém, který má vliv na podmnožinu vašich uživatelů. Pokud se rozhodnete tento přepínač provést, protože oprava problému bude trvat moc dlouho, udělejte toto:
 
 > [!IMPORTANT]
-> Uvědomte si, že bude nějakou dobu trvat, než se synchronizace hesel do služby Azure AD synchronizuje.  To znamená, že dokončení synchronizace může trvat až 3 hodiny a před zahájením ověřování pomocí hodnot hash hesel.
+> Počítejte s tím, že pro synchronizaci hodnot hash hesel do služby Azure AD bude trvat nějakou dobu.  To znamená, že může trvat až 3 hodiny, než se synchronizace dokončí, a předtím, než budete moct začít s ověřováním pomocí hodnot hash hesel.
 
-1. Poklepejte na ikonu Azure AD Connect, která byla vytvořena na ploše
+1. Poklikejte na ikonu Azure AD Connect, která se vytvořila na ploše.
 2.  Klikněte na **Konfigurovat**.
-3.  Vyberte **Změnit přihlášení uživatele** a klepněte na tlačítko **Další**.
+3.  Vyberte možnost **změnit přihlášení uživatele** a klikněte na tlačítko **Další**.
 ![Změnit](media/tutorial-phs-backup/backup2.png)</br>
-4.  Zadejte uživatelské jméno a heslo globálního správce.  Tento účet byl vytvořen [zde](tutorial-federation.md#create-a-global-administrator-in-azure-ad) v předchozím kurzu.
-5.  Na přihlašovací obrazovce **uživatele** vyberte **synchronizace hodnot hash hesla** a zadejte zaškrtnutí do pole **Nepřevádět uživatelské účty.**  
-6.  Ponechte výchozí **možnost Povolit jednotné přihlašování** vybranou a klepněte na tlačítko **Další**.
-7.  Na obrazovce **Povolit jednotné přihlašování** klikněte na **další**.
-8.  Na obrazovce **Připraveno ke konfiguraci** klepněte na tlačítko **Konfigurovat**.
-9.  Po dokončení konfigurace klepněte na tlačítko **Ukončit**.
-10. Uživatelé teď můžou používat svá hesla k přihlášení ke službám Azure a Azure.
+4.  Zadejte uživatelské jméno a heslo pro globálního správce.  Tento účet [se vytvořil v](tutorial-federation.md#create-a-global-administrator-in-azure-ad) předchozím kurzu.
+5.  Na obrazovce **přihlášení uživatele** vyberte **synchronizace hodnot hash hesel** a zaškrtněte políčko **nepřevádět uživatelské účty** .  
+6.  Ponechte vybrané políčko **Povolit jednotné přihlašování** a klikněte na **Další**.
+7.  Na obrazovce **Povolit jednotné přihlašování** klikněte na **Další**.
+8.  Na obrazovce **připraveno ke konfiguraci** klikněte na **Konfigurovat**.
+9.  Po dokončení konfigurace klikněte na **ukončit**.
+10. Uživatelé teď můžou používat svá hesla pro přihlášení k Azure a službám Azure.
 
-## <a name="test-signing-in-with-one-of-our-users"></a>Otestujte přihlášení s jedním z našich uživatelů
+## <a name="test-signing-in-with-one-of-our-users"></a>Vyzkoušejte si přihlašování jedním z našich uživatelů
 
 1. Přejít na[https://myapps.microsoft.com](https://myapps.microsoft.com)
-2. Přihlaste se pomocí uživatelského účtu, který byl vytvořen v našem novém tenantovi.  Budete se muset přihlásit v následujícímuser@domain.onmicrosoft.comformátu: ( ). Použijte stejné heslo, které uživatel používá k místnímu přihlášení.</br>
+2. Přihlaste se pomocí uživatelského účtu vytvořeného v našem novém tenantovi.  Budete se muset přihlásit pomocí následujícího formátu: (user@domain.onmicrosoft.com). Použijte stejné heslo, které uživatel používá k místnímu přihlášení.</br>
    ![Ověřit](media/tutorial-password-hash-sync/verify1.png)</br>
 
-## <a name="switch-back-to-federation"></a>Přepnout zpět do federace
-Teď vám ukážeme, jak přejít zpět na Federaci.  Chcete-li to provést, postupujte takto:
+## <a name="switch-back-to-federation"></a>Přepnout zpátky na federaci
+Teď vám ukážeme, jak přejít zpátky k Federaci.  Uděláte to takto:
 
-1.  Poklepejte na ikonu Azure AD Connect, která byla vytvořena na ploše
+1.  Poklikejte na ikonu Azure AD Connect, která se vytvořila na ploše.
 2.  Klikněte na **Konfigurovat**.
-3.  Vyberte **Změnit přihlášení uživatele** a klepněte na tlačítko **Další**.
-4.  Zadejte uživatelské jméno a heslo globálního správce.  Toto je účet, který byl vytvořen [zde](tutorial-federation.md#create-a-global-administrator-in-azure-ad) v předchozím kurzu.
-5.  Na přihlašovací obrazovce **uživatele** vyberte **Možnost Federace se službě AD FS** a klepněte na tlačítko **Další**.  
-6. Na stránce pověření správce domény zadejte uživatelské jméno a heslo contoso\Administrator a klepněte na tlačítko **Další.**
-7. Na obrazovce farmy ad FS klepněte na tlačítko **Další**.
-8. Na obrazovce **domény Azure AD** vyberte doménu z rozevíracího souboru a klikněte na **Další**.
-9. Na obrazovce **Připraveno ke konfiguraci** klepněte na tlačítko **Konfigurovat**.
-10. Po dokončení konfigurace klepněte na tlačítko **Další**.
+3.  Vyberte možnost **změnit přihlášení uživatele** a klikněte na tlačítko **Další**.
+4.  Zadejte uživatelské jméno a heslo pro globálního správce.  Jedná se o účet, který jste [vytvořili v](tutorial-federation.md#create-a-global-administrator-in-azure-ad) předchozím kurzu.
+5.  Na obrazovce **přihlášení uživatele** vyberte možnost **federace s AD FS** a klikněte na tlačítko **Další**.  
+6. Na stránce pověření správce domény zadejte uživatelské jméno a heslo contoso\Administrator a klikněte na **Další.**
+7. Na obrazovce AD FS farmy klikněte na **Další**.
+8. Na obrazovce **doména Azure AD** vyberte v rozevíracím seznamu doménu a klikněte na **Další**.
+9. Na obrazovce **připraveno ke konfiguraci** klikněte na **Konfigurovat**.
+10. Po dokončení konfigurace klikněte na **Další**.
 ![Konfigurace](media/tutorial-phs-backup/backup4.png)</br>
-11. Na obrazovce **Ověřit připojení federace** klepněte na tlačítko **Ověřit**.  Možná budete muset nakonfigurovat záznamy DNS (přidat záznamy A a AAAA), aby to bylo úspěšně dokončeno.
+11. Na obrazovce **ověřit připojení federace** klikněte na **ověřit**.  Možná budete muset nakonfigurovat záznamy DNS (přidat záznamy a a AAAA), aby se tato konfigurace úspěšně dokončila.
 ![Ověřit](media/tutorial-phs-backup/backup5.png)</br>
-12. Klepněte na tlačítko **Ukončit**.
+12. Klikněte na tlačítko **konec**.
 
-## <a name="reset-the-ad-fs-and-azure-trust"></a>Obnovení vztahu důvěryhodnosti služby AD FS a Azure
-Teď musíme obnovit vztah důvěryhodnosti mezi službou AD FS a Azure.
+## <a name="reset-the-ad-fs-and-azure-trust"></a>Resetování AD FS a vztahu důvěryhodnosti Azure
+Teď je potřeba resetovat vztah důvěryhodnosti mezi AD FS a Azure.
 
-1.  Poklepejte na ikonu Azure AD Connect, která byla vytvořena na ploše
+1.  Poklikejte na ikonu Azure AD Connect, která se vytvořila na ploše.
 2.  Klikněte na **Konfigurovat**.
-3.  Vyberte **Spravovat federaci** a klepněte na tlačítko **Další**.
-4.  Vyberte **Obnovit vztah důvěryhodnosti Azure AD** a klepněte na tlačítko **Další**.
+3.  Vyberte **Spravovat federaci** a klikněte na **Další**.
+4.  Vyberte **resetovat vztah důvěryhodnosti služby Azure AD** a klikněte na **Další**.
 ![Reset](media/tutorial-phs-backup/backup6.png)</br>
-5.  Na obrazovce **Připojit k Azure AD** zadejte uživatelské jméno a heslo pro globálního správce.
-6.  Na obrazovce **Připojit ke službě AD FS** zadejte uživatelské jméno a heslo contoso\Administrator a klepněte na tlačítko **Další.**
-7.  Na obrazovce **Certifikáty** klepněte na tlačítko **Další**.
+5.  Na obrazovce **připojení ke službě Azure AD** zadejte uživatelské jméno a heslo pro globálního správce.
+6.  Na obrazovce **připojit k AD FS** zadejte uživatelské jméno a heslo CONTOSO\Administrator a klikněte na **Další.**
+7.  Na obrazovce **certifikáty** klikněte na **Další**.
 
-## <a name="test-signing-in-with-one-of-our-users"></a>Otestujte přihlášení s jedním z našich uživatelů
+## <a name="test-signing-in-with-one-of-our-users"></a>Vyzkoušejte si přihlašování jedním z našich uživatelů
 
 1.  Přejít na[https://myapps.microsoft.com](https://myapps.microsoft.com)
-2. Přihlaste se pomocí uživatelského účtu, který byl vytvořen v našem novém tenantovi.  Budete se muset přihlásit v následujícímuser@domain.onmicrosoft.comformátu: ( ). Použijte stejné heslo, které uživatel používá k místnímu přihlášení.
+2. Přihlaste se pomocí uživatelského účtu vytvořeného v našem novém tenantovi.  Budete se muset přihlásit pomocí následujícího formátu: (user@domain.onmicrosoft.com). Použijte stejné heslo, které uživatel používá k místnímu přihlášení.
 ![Ověřit](media/tutorial-password-hash-sync/verify1.png)
 
-Nyní jste úspěšně nastavili prostředí hybridní identity, které můžete použít k testování a seznámení s tím, co Azure nabízí.
+Nyní jste úspěšně nastavili hybridní prostředí identity, které můžete použít k otestování a seznámení s tím, co Azure nabízí.
 
 ## <a name="next-steps"></a>Další kroky
 

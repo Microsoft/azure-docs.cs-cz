@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
 ms.openlocfilehash: 3d1e1491ad045eba88ca7bbe54a1acb38199f7d7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "65987917"
 ---
 # <a name="tutorial-update-inventory-using-powershell-and-topicssubscriptions"></a>Kurz: Aktualizace zásob pomocí prostředí PowerShell a témat/odběrů
@@ -46,7 +46,7 @@ Před tímto kurzem se ujistěte, že máte nainstalované tyto položky:
 1. [Visual Studio 2017 s aktualizací Update 3 (verze 15.3, 26730.01)](https://www.visualstudio.com/vs) nebo novější.
 2. [NET Core SDK](https://www.microsoft.com/net/download/windows) verze 2.0 nebo novější.
 
-Tento kurz vyžaduje použití nejnovější verze Azure PowerShellu. Pokud potřebujete nainstalovat nebo upgradovat, přečtěte si informace [o instalaci a konfiguraci Azure PowerShellu][].
+Tento kurz vyžaduje použití nejnovější verze Azure PowerShellu. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace a konfigurace Azure PowerShell][].
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -271,7 +271,7 @@ static async Task ProcessMessagesAsync(Message message, CancellationToken token)
 ```
 
 > [!NOTE]
-> Prostředky služby Service Bus můžete spravovat pomocí [aplikace Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/). Průzkumník služby Service Bus umožňuje uživatelům připojit se k oboru názvů service bus a snadno spravovat entity zasílání zpráv. Nástroj poskytuje pokročilé funkce, jako je funkce importu a exportu nebo možnost testovat téma, fronty, předplatná, přenosové služby, centra oznámení a centra událostí. 
+> Prostředky Service Bus můžete spravovat pomocí [Service Bus Exploreru](https://github.com/paolosalvatori/ServiceBusExplorer/). Service Bus Explorer umožňuje uživatelům připojit se k oboru názvů Service Bus a snadno spravovat entity zasílání zpráv. Tento nástroj poskytuje pokročilé funkce, jako jsou funkce importu a exportu, nebo možnost testovat témata, fronty, odběry, služby Relay, centra oznámení a centra událostí. 
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,5 +1,5 @@
 ---
-title: (ZASTARALÉ) Sdílená složka pro cluster Azure DC/OS
+title: ZASTARALÉ Sdílená složka pro cluster DC/OS Azure
 description: Vytvoření sdílené složky a její připojení ke clusteru DC/OS ve službě Azure Container Service
 services: container-service
 author: julienstroheker
@@ -10,13 +10,13 @@ ms.date: 06/07/2017
 ms.author: juliens
 ms.custom: mvc
 ms.openlocfilehash: e6651fc5988a1e1830807219cda02ab057db9a4f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60480380"
 ---
-# <a name="deprecated-create-and-mount-a-file-share-to-a-dcos-cluster"></a>(ZASTARALÉ) Vytvoření a připojení sdílené složky do clusteru řadiče domény/operačního systému
+# <a name="deprecated-create-and-mount-a-file-share-to-a-dcos-cluster"></a>ZASTARALÉ Vytvoření sdílené složky a připojení ke clusteru DC/OS
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
@@ -35,7 +35,7 @@ Tento kurz vyžaduje Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spu�
 
 ## <a name="create-a-file-share-on-microsoft-azure"></a>Vytvoření sdílené složky v Microsoft Azure
 
-Než začnete používat sdílenou složku Azure s clusterem ACS DC/OS, je potřeba vytvořit účet úložiště a sdílenou složku. Spuštěním následujícího skriptu vytvořte úložiště a sdílenou složku. Aktualizujte parametry s těmi z vašeho prostředí.
+Než začnete používat sdílenou složku Azure s clusterem ACS DC/OS, je potřeba vytvořit účet úložiště a sdílenou složku. Spuštěním následujícího skriptu vytvořte úložiště a sdílenou složku. Aktualizujte parametry pomocí těch z vašeho prostředí.
 
 ```azurecli-interactive
 # Change these four parameters

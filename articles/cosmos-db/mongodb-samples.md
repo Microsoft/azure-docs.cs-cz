@@ -1,5 +1,5 @@
 ---
-title: Použití rozhraní API Azure Cosmos DB pro MongoDB k vytvoření aplikace Node.js
+title: Použití rozhraní API Azure Cosmos DB pro MongoDB k vytvoření aplikace v Node. js
 description: Kurz, který vytvoří online databázi pomocí rozhraní API Azure Cosmos DB pro MongoDB.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
@@ -9,13 +9,13 @@ ms.date: 12/26/2018
 author: sivethe
 ms.author: sivethe
 ms.openlocfilehash: 28ee64f70cd281a2563a855fb1fca91f229ec7bd
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "61330594"
 ---
-# <a name="build-an-app-using-nodejs-and-azure-cosmos-dbs-api-for-mongodb"></a>Vytvoření aplikace pomocí node.js a rozhraní API Azure Cosmos DB pro MongoDB 
+# <a name="build-an-app-using-nodejs-and-azure-cosmos-dbs-api-for-mongodb"></a>Sestavení aplikace s využitím Node. js a rozhraní Azure Cosmos DB API pro MongoDB 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
 > * [.NET Core](sql-api-dotnetcore-get-started.md)
@@ -24,12 +24,12 @@ ms.locfileid: "61330594"
 > * [Node.js](sql-api-nodejs-get-started.md)
 >
 
-Tento příklad ukazuje, jak vytvořit konzolovou aplikaci pomocí Node.js a rozhraní API Azure Cosmos DB pro MongoDB.
+Tento příklad ukazuje, jak vytvořit konzolovou aplikaci pomocí Node. js a rozhraní Azure Cosmos DB API pro MongoDB.
 
 Chcete-li použít tento příklad, musíte:
 
-* [Vytvořte](create-mongodb-dotnet.md#create-account) účet Cosmos nakonfigurovaný pro použití rozhraní API Azure Cosmos DB pro MongoDB.
-* Načtěte informace o [připojovacím řetězci.](connect-mongodb-account.md)
+* [Vytvořte](create-mongodb-dotnet.md#create-account) účet Cosmos nakonfigurovaný tak, aby používal rozhraní API Azure Cosmos DB pro MongoDB.
+* Načtěte informace o [připojovacím řetězci](connect-mongodb-account.md) .
 
 ## <a name="create-the-app"></a>Vytvoření aplikace
 
@@ -171,6 +171,6 @@ Chcete-li použít tento příklad, musíte:
 
 ## <a name="next-steps"></a>Další kroky
 
-- Zjistěte, jak [používat Studio 3T](mongodb-mongochef.md) s rozhraním API Azure Cosmos DB pro MongoDB.
-- Zjistěte, jak [používat Robo 3T](mongodb-robomongo.md) s rozhraním API Azure Cosmos DB pro MongoDB.
-- Prozkoumejte [ukázky](mongodb-samples.md) MongoDB pomocí rozhraní API Azure Cosmos DB pro MongoDB.
+- Naučte se [používat Studio 3T](mongodb-mongochef.md) s rozhraním API Azure Cosmos DB pro MongoDB.
+- Naučte se [používat Robo 3T](mongodb-robomongo.md) s rozhraním API Azure Cosmos DB pro MongoDB.
+- Prozkoumejte [ukázky](mongodb-samples.md) MONGODB s rozhraním API Azure Cosmos DB pro MongoDB.
