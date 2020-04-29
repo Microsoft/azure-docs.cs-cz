@@ -1,5 +1,5 @@
 ---
-title: Rychlý start klientské knihovny JavaScript pro vizuální vyhledávání Bingu
+title: Rychlý Start knihovny klienta Vizuální vyhledávání Bingu JavaScript
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,19 +9,19 @@ ms.topic: include
 ms.date: 03/26/2020
 ms.author: aahi
 ms.openlocfilehash: 404529bf269f899603b92c6c23b0d95cd2749ee5
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80550020"
 ---
-Pomocí tohoto rychlého startu můžete začít dostávat přehledy obrázků ze služby Vizuální vyhledávání Bing pomocí klientské knihovny JavaScriptu. Zatímco vizuální vyhledávání Bing udává rozhraní REST API kompatibilní s většinou programovacích jazyků, klientská knihovna poskytuje snadný způsob integrace služby do vašich aplikací. Zdrojový kód pro tuto ukázku lze nalézt na [GitHubu](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/visualSearch.js). 
+Pomocí tohoto rychlého startu můžete začít získávat přehledy imagí z Vizuální vyhledávání Bingu služby pomocí klientské knihovny JavaScriptu. I když Vizuální vyhledávání Bingu má REST API kompatibilní s většinou programovacích jazyků, Klientská knihovna poskytuje snadný způsob, jak integrovat službu do vašich aplikací. Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/visualSearch.js). 
 
-[Referenční dokumentace](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-visualsearch/?view=azure-node-latest) | [Ukázky zdrojového kódu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-visualsearch) | [knihovny](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/) [(NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-visualsearch) | 
+[Reference documentation](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-visualsearch/?view=azure-node-latest) | [Ukázky](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/) balíčku[zdrojového kódu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-visualsearch) | knihovny Referenční dokumentace[(npm)](https://www.npmjs.com/package/@azure/cognitiveservices-visualsearch) | 
 
 ## <a name="prerequisites"></a>Požadavky
 * [Node.js](https://www.nodejs.org/)
-* Klientská knihovna Vizuálního vyhledávání Bingu pro JavaScript
+* Klientská knihovna Vizuální vyhledávání Bingu pro JavaScript
     * Chcete-li nastavit konzolovou aplikaci pomocí klientské knihovny Vizuální vyhledávání Bingu, spusťte následující příkazy:
         1. `npm install ms-rest-azure`
         2. `npm install azure-cognitiveservices-visualsearch`.
@@ -33,7 +33,7 @@ Pomocí tohoto rychlého startu můžete začít dostávat přehledy obrázků z
 
 ## <a name="create-and-initialize-the-application"></a>Vytvoření a inicializace aplikace
 
-1. Vytvořte nový soubor JavaScriptu ve svém oblíbeném rozhraní IDE nebo editoru a přidejte následující požadavky. Pak vytvořte proměnné pro klíč předplatného, Vlastní ID konfigurace a cestu k obrázku, který chcete nahrát. 
+1. V oblíbených IDE nebo editoru vytvořte nový soubor JavaScriptu a přidejte následující požadavky. Pak vytvořte proměnné pro svůj klíč předplatného, ID vlastní konfigurace a cestu k souboru k imagi, kterou chcete nahrát. 
 
     ```javascript
     const os = require("os");
@@ -47,15 +47,15 @@ Pomocí tohoto rychlého startu můžete začít dostávat přehledy obrázků z
     let filePath = "../Data/image.jpg";
     ```
 
-2. Vytvořte kvit, aby klient.
+2. Vytvořte instanci klienta.
 
     ```javascript
     let visualSearchClient = new Search.VisualSearchClient(credentials);
     ```
 
-## <a name="search-for-images"></a>Hledání obrázků
+## <a name="search-for-images"></a>Hledání imagí
 
-1. Slouží `fs.createReadStream()` ke čtení v souboru obrázku a vytváření proměnných pro požadavek hledání a výsledky. Pak použijte klienta k vyhledávání obrázků.
+1. Použijte `fs.createReadStream()` ke čtení v souboru obrázku a k vytvoření proměnných pro svůj požadavek a výsledky hledání. Pak použijte klienta k hledání imagí.
 
     ```javascript
     let fileStream = fs.createReadStream(filePath);

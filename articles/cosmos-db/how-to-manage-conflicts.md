@@ -1,27 +1,27 @@
 ---
 title: Správa konfliktů mezi oblastmi v Azure Cosmos DB
-description: Zjistěte, jak spravovat konflikty v Azure Cosmos DB vytvořením poslední hozanec-wins nebo vlastní zásady řešení konfliktů
+description: Přečtěte si, jak spravovat konflikty v Azure Cosmos DB vytvořením zásad pro službu WINS pro poslední zápis nebo vlastní řešení konfliktů.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: mjbrown
 ms.openlocfilehash: 6d364f1a9974d6d638bb0f824e88ed3866644c15
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79247407"
 ---
 # <a name="manage-conflict-resolution-policies-in-azure-cosmos-db"></a>Správa zásad řešení konfliktů v Azure Cosmos DB
 
-Při zápisu s více oblastmi, když více klientů zapisuje do stejné položky, může dojít ke konfliktům. Dojde-li ke konfliktu, můžete konflikt vyřešit pomocí různých zásad řešení konfliktů. Tento článek popisuje, jak spravovat zásady řešení konfliktů.
+V případě zápisů ve více oblastech může dojít ke konfliktům, pokud více klientů zapisuje ke stejné položce. Pokud dojde ke konfliktu, můžete konflikt vyřešit pomocí různých zásad řešení konfliktů. Tento článek popisuje, jak spravovat zásady řešení konfliktů.
 
-## <a name="create-a-last-writer-wins-conflict-resolution-policy"></a>Vytvoření zásady řešení konfliktů last-writer-wins
+## <a name="create-a-last-writer-wins-conflict-resolution-policy"></a>Vytvoření zásad řešení konfliktů pro poslední zápis a službu WINS
 
-Tyto ukázky ukazují, jak nastavit kontejner s poslední writer-wins zásady řešení konfliktů. Výchozí cesta pro poslední zapisovač-wins je `_ts` pole časového razítka nebo vlastnost. Pro rozhraní SQL API to může být také nastavena na uživatelem definovanou cestu s číselným typem. V konfliktu vyhrává nejvyšší hodnota. Pokud cesta není nastavená nebo je neplatná, `_ts`bude výchozí . Konflikty vyřešené touto zásadou se nezobrazují v kanálu konfliktů. Tuto zásadu lze použít pro všechna pravidla API.
+V těchto ukázkách se dozvíte, jak nastavit kontejner pomocí zásad řešení konfliktů pro poslední zápis a službu WINS. Výchozí cesta pro poslední zapisovač – WINS je pole časového razítka nebo `_ts` vlastnost. Pro rozhraní SQL API to může být také nastaveno na uživatelsky definovanou cestu s číselným typem. V konfliktu je nejvyšší hodnota služba WINS. Pokud cesta není nastavena nebo je neplatná, nastaví se jako výchozí `_ts`. Konflikty vyřešené s touto zásadou se v informačním kanálu konfliktu nezobrazují. Tuto zásadu můžou používat všechna rozhraní API.
 
-### <a name="net-sdk-v2"></a><a id="create-custom-conflict-resolution-policy-lww-dotnet"></a>Sada .NET SDK V2
+### <a name="net-sdk-v2"></a><a id="create-custom-conflict-resolution-policy-lww-dotnet"></a>.NET SDK V2
 
 ```csharp
 DocumentCollection lwwCollection = await createClient.CreateDocumentCollectionIfNotExistsAsync(
@@ -36,7 +36,7 @@ DocumentCollection lwwCollection = await createClient.CreateDocumentCollectionIf
   });
 ```
 
-### <a name="net-sdk-v3"></a><a id="create-custom-conflict-resolution-policy-lww-dotnet-v3"></a>Sada .NET SDK V3
+### <a name="net-sdk-v3"></a><a id="create-custom-conflict-resolution-policy-lww-dotnet-v3"></a>.NET SDK V3
 
 ```csharp
 Container container = await createClient.GetDatabase(this.databaseName)
@@ -99,23 +99,23 @@ udp_collection = self.try_create_document_collection(
     create_client, database, udp_collection)
 ```
 
-## <a name="create-a-custom-conflict-resolution-policy-using-a-stored-procedure"></a>Vytvoření vlastní zásady řešení konfliktů pomocí uložené procedury
+## <a name="create-a-custom-conflict-resolution-policy-using-a-stored-procedure"></a>Vytvoření vlastních zásad řešení konfliktů pomocí uložené procedury
 
-Tyto ukázky předvádějí, jak nastavit kontejner s vlastní zásadou řešení konfliktů s využitím uložené procedury, která konflikt vyřeší. Tyto konflikty se nezobrazují v kanálu konfliktů, pokud není chyba v uložené proceduře. Po vytvoření zásady s kontejnerem je třeba vytvořit uloženou proceduru. Ukázka sady .NET SDK níže ukazuje příklad. Tato zásada je podporována pouze v rozhraní API core (SQL).
+Tyto ukázky předvádějí, jak nastavit kontejner s vlastní zásadou řešení konfliktů s využitím uložené procedury, která konflikt vyřeší. Tyto konflikty se v informačním kanálu neprojeví, pokud se v uložené proceduře neobjeví chyba. Po vytvoření zásady s kontejnerem je potřeba vytvořit uloženou proceduru. Příklad obsahuje ukázku sady .NET SDK. Tato zásada se podporuje jenom v rozhraních API Core (SQL).
 
-### <a name="sample-custom-conflict-resolution-stored-procedure"></a>Ukázka vlastní konfliktřešení uložené procedury
+### <a name="sample-custom-conflict-resolution-stored-procedure"></a>Ukázka uložené procedury vlastního řešení konfliktů
 
-Vlastní konfliktřešení uložené procedury musí být implementovány pomocí podpisu funkce je uvedeno níže. Název funkce nemusí odpovídat názvu použitému při registraci uložené procedury s kontejnerem, ale zjednodušuje pojmenování. Zde je popis parametrů, které musí být implementovány pro tuto uloženou proceduru.
+Uložené procedury řešení Custom konfliktů by se měly implementovat pomocí signatury funkce uvedené níže. Název funkce se nemusí shodovat s názvem použitým při registraci uložené procedury s kontejnerem, ale zjednodušuje pojmenování. Zde je popis parametrů, které musí být pro tuto uloženou proceduru implementovány.
 
-- **incomingItem**: Položka, která je vložena nebo aktualizována v potvrzení, které generuje konflikty. Je null pro operace odstranění.
-- **existingItem**: Aktuálně potvrzená položka. Tato hodnota je non-null v aktualizaci a null pro vložení nebo odstraní.
-- **isTombstone**: Logická hodnota označující, zda je příchozí položka v konfliktu s dříve odstraněnou položkou. Pokud true, existingItem je také null.
-- **conflictingItems**: Pole potvrzené verze všech položek v kontejneru, které jsou v konfliktu s incomingItem na ID nebo jiné jedinečné vlastnosti indexu.
+- **incomingItem**: položka, která je vložena nebo aktualizována v potvrzení, které generuje konflikty. Má hodnotu null pro operace odstranění.
+- **existingItem**: aktuálně potvrzená položka. Tato hodnota je v aktualizaci jiná než null a pro vložení nebo odstranění je null.
+- neoznačovatelné **položky: logická**hodnota označující, jestli je incomingItem v konfliktu s dříve odstraněnou položkou. V případě hodnoty true je existingItem také null.
+- **conflictingItems**: pole zapsané verze všech položek v kontejneru, které jsou v konfliktu s INCOMINGITEM na ID nebo jakékoli jiné jedinečné vlastnosti indexu.
 
 > [!IMPORTANT]
-> Stejně jako u jakékoli uložené procedury, vlastní procedury řešení konfliktů můžete přistupovat k všechna data se stejným klíčem oddílu a můžete provést jakékoli vložení, aktualizace nebo odstranění operace k vyřešení konfliktů.
+> Stejně jako u jakékoli uložené procedury má vlastní procedura řešení konfliktů přístup k jakýmkoli datům se stejným klíčem oddílu a může provést jakoukoli operaci vložení, aktualizace nebo odstranění pro vyřešení konfliktů.
 
-Tato ukázková uložená procedura řeší konflikty `/myCustomId` výběrem nejnižší hodnoty z cesty.
+Tato ukázková uložená procedura vyřeší konflikty výběrem nejnižší hodnoty z `/myCustomId` cesty.
 
 ```javascript
 function resolver(incomingItem, existingItem, isTombstone, conflictingItems) {
@@ -171,7 +171,7 @@ function resolver(incomingItem, existingItem, isTombstone, conflictingItems) {
 }
 ```
 
-### <a name="net-sdk-v2"></a><a id="create-custom-conflict-resolution-policy-stored-proc-dotnet"></a>Sada .NET SDK V2
+### <a name="net-sdk-v2"></a><a id="create-custom-conflict-resolution-policy-stored-proc-dotnet"></a>.NET SDK V2
 
 ```csharp
 DocumentCollection udpCollection = await createClient.CreateDocumentCollectionIfNotExistsAsync(
@@ -194,7 +194,7 @@ UriFactory.CreateStoredProcedureUri(this.databaseName, this.udpCollectionName, "
 });
 ```
 
-### <a name="net-sdk-v3"></a><a id="create-custom-conflict-resolution-policy-stored-proc-dotnet-v3"></a>Sada .NET SDK V3
+### <a name="net-sdk-v3"></a><a id="create-custom-conflict-resolution-policy-stored-proc-dotnet-v3"></a>.NET SDK V3
 
 ```csharp
 Container container = await createClient.GetDatabase(this.databaseName)
@@ -222,7 +222,7 @@ collection.setConflictResolutionPolicy(policy);
 DocumentCollection createdCollection = client.createCollection(databaseUri, collection, null).toBlocking().value();
 ```
 
-Po vytvoření kontejneru je nutné `resolver` vytvořit uloženou proceduru.
+Po vytvoření kontejneru je nutné vytvořit `resolver` uloženou proceduru.
 
 ### <a name="java-sync-sdk"></a><a id="create-custom-conflict-resolution-policy-stored-proc-java-sync"></a>Java Sync SDK
 
@@ -235,7 +235,7 @@ udpCollection.setConflictResolutionPolicy(udpPolicy);
 DocumentCollection createdCollection = this.tryCreateDocumentCollection(createClient, database, udpCollection);
 ```
 
-Po vytvoření kontejneru je nutné `resolver` vytvořit uloženou proceduru.
+Po vytvoření kontejneru je nutné vytvořit `resolver` uloženou proceduru.
 
 ### <a name="nodejsjavascripttypescript-sdk"></a><a id="create-custom-conflict-resolution-policy-stored-proc-javascript"></a>Node.js/JavaScript/TypeScript SDK
 
@@ -254,7 +254,7 @@ const { container: udpContainer } = await database.containers.createIfNotExists(
 );
 ```
 
-Po vytvoření kontejneru je nutné `resolver` vytvořit uloženou proceduru.
+Po vytvoření kontejneru je nutné vytvořit `resolver` uloženou proceduru.
 
 ### <a name="python-sdk"></a><a id="create-custom-conflict-resolution-policy-stored-proc-python"></a>Python SDK
 
@@ -270,13 +270,13 @@ udp_collection = self.try_create_document_collection(
     create_client, database, udp_collection)
 ```
 
-Po vytvoření kontejneru je nutné `resolver` vytvořit uloženou proceduru.
+Po vytvoření kontejneru je nutné vytvořit `resolver` uloženou proceduru.
 
 ## <a name="create-a-custom-conflict-resolution-policy"></a>Vytvoření vlastní zásady řešení konfliktů
 
-Tyto ukázky předvádějí, jak nastavit kontejner s vlastní zásadou řešení konfliktů. Tyto konflikty se zobrazí v kanálu konfliktů.
+Tyto ukázky předvádějí, jak nastavit kontejner s vlastní zásadou řešení konfliktů. Tyto konflikty se zobrazí v informačním kanálu o konfliktech.
 
-### <a name="net-sdk-v2"></a><a id="create-custom-conflict-resolution-policy-dotnet"></a>Sada .NET SDK V2
+### <a name="net-sdk-v2"></a><a id="create-custom-conflict-resolution-policy-dotnet"></a>.NET SDK V2
 
 ```csharp
 DocumentCollection manualCollection = await createClient.CreateDocumentCollectionIfNotExistsAsync(
@@ -290,7 +290,7 @@ DocumentCollection manualCollection = await createClient.CreateDocumentCollectio
   });
 ```
 
-### <a name="net-sdk-v3"></a><a id="create-custom-conflict-resolution-policy-dotnet-v3"></a>Sada .NET SDK V3
+### <a name="net-sdk-v3"></a><a id="create-custom-conflict-resolution-policy-dotnet-v3"></a>.NET SDK V3
 
 ```csharp
 Container container = await createClient.GetDatabase(this.databaseName)
@@ -352,15 +352,15 @@ manual_collection = client.CreateContainer(database['_self'], collection)
 
 ## <a name="read-from-conflict-feed"></a>Čtení z informačního kanálu konfliktů
 
-Tyto ukázky předvádějí, jak číst z informačního kanálu konfliktů kontejneru. Konflikty se v kanálu konfliktů zobrazují pouze v případě, že nebyly vyřešeny automaticky nebo pokud používáte vlastní zásady konfliktů.
+Tyto ukázky předvádějí, jak číst z informačního kanálu konfliktů kontejneru. Konflikty se v informačním kanálu zobrazí jenom v případě, že se nevyřešily automaticky nebo pokud používáte zásady vlastního konfliktu.
 
-### <a name="net-sdk-v2"></a><a id="read-from-conflict-feed-dotnet"></a>Sada .NET SDK V2
+### <a name="net-sdk-v2"></a><a id="read-from-conflict-feed-dotnet"></a>.NET SDK V2
 
 ```csharp
 FeedResponse<Conflict> conflicts = await delClient.ReadConflictFeedAsync(this.collectionUri);
 ```
 
-### <a name="net-sdk-v3"></a><a id="read-from-conflict-feed-dotnet-v3"></a>Sada .NET SDK V3
+### <a name="net-sdk-v3"></a><a id="read-from-conflict-feed-dotnet-v3"></a>.NET SDK V3
 
 ```csharp
 FeedIterator<ConflictProperties> conflictFeed = container.Conflicts.GetConflictQueryIterator();
@@ -424,12 +424,12 @@ while conflict:
 
 ## <a name="next-steps"></a>Další kroky
 
-Seznamte se s následujícími koncepty Azure Cosmos DB:
+Přečtěte si o následujících konceptech Azure Cosmos DB:
 
 - [Globální distribuce – pod pokličkou](global-dist-under-the-hood.md)
-- [Jak nakonfigurovat multimaster ve vašich aplikacích](how-to-multi-master.md)
-- [Konfigurace klientů pro multihoming](how-to-manage-database-account.md#configure-multiple-write-regions)
-- [Přidání nebo odebrání oblastí z účtu Azure Cosmos DB](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
-- [Jak nakonfigurovat vícehlavních serverů v aplikacích](how-to-multi-master.md).
+- [Jak v aplikacích nakonfigurovat více hlavních serverů](how-to-multi-master.md)
+- [Konfigurace klientů pro vícedomé služby](how-to-manage-database-account.md#configure-multiple-write-regions)
+- [Přidat nebo odebrat oblasti z Azure Cosmos DB účtu](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
+- [Jak v aplikacích nakonfigurovat více hlavních serverů](how-to-multi-master.md).
 - [Dělení a distribuce dat](partition-data.md)
 - [Indexování ve službě Azure Cosmos DB](indexing-policies.md)

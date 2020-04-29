@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 06/13/2018
 ms.author: brjohnst
 ms.openlocfilehash: 998d0f1a84dc9cb2a07fb55286c1089787a263e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80272759"
 ---
 | Datový typ | Funkce povolené ve výrazech lambda s`any` | Funkce povolené ve výrazech lambda s`all` |
 |---|---|---|
-| `Collection(Edm.ComplexType)` | Všechno `search.ismatch` kromě a`search.ismatchscoring` | Stejné |
-| `Collection(Edm.String)` | Srovnání s `eq` nebo`search.in` <br/><br/> Kombinace dílčích výrazů`or` | Srovnání s `ne` nebo`not search.in()` <br/><br/> Kombinace dílčích výrazů`and` |
-| `Collection(Edm.Boolean)` | Srovnání s `eq` nebo`ne` | Stejné |
-| `Collection(Edm.GeographyPoint)` | Použití `geo.distance` `lt` s nebo`le` <br/><br/> `geo.intersects` <br/><br/> Kombinace dílčích výrazů`or` | Použití `geo.distance` `gt` s nebo`ge` <br/><br/> `not geo.intersects(...)` <br/><br/> Kombinace dílčích výrazů`and` |
-| `Collection(Edm.DateTimeOffset)`, `Collection(Edm.Double)`, `Collection(Edm.Int32)`, `Collection(Edm.Int64)` | Porovnání pomocí `eq` `ne`, `lt` `gt`, `le`, , nebo`ge` <br/><br/> Kombinace porovnání s jinými dílčími výrazy pomocí`or` <br/><br/> Kombinace porovnání s `ne` výjimkou jiných podvýrazů pomocí`and` <br/><br/> Výrazy používající `and` kombinace `or` a [disjunktivní normální formu (DNF)](https://en.wikipedia.org/wiki/Disjunctive_normal_form) | Porovnání pomocí `eq` `ne`, `lt` `gt`, `le`, , nebo`ge` <br/><br/> Kombinace porovnání s jinými dílčími výrazy pomocí`and` <br/><br/> Kombinace porovnání s `eq` výjimkou jiných podvýrazů pomocí`or` <br/><br/> Výrazy používající `and` kombinace `or` a v [konjunktivní normální formě (CNF)](https://en.wikipedia.org/wiki/Conjunctive_normal_form) |
+| `Collection(Edm.ComplexType)` | Vše kromě `search.ismatch` a`search.ismatchscoring` | Stejné |
+| `Collection(Edm.String)` | Porovnání s `eq` nebo`search.in` <br/><br/> Kombinování dílčích výrazů s`or` | Porovnání s `ne` nebo`not search.in()` <br/><br/> Kombinování dílčích výrazů s`and` |
+| `Collection(Edm.Boolean)` | Porovnání s `eq` nebo`ne` | Stejné |
+| `Collection(Edm.GeographyPoint)` | Použití `geo.distance` s `lt` nebo`le` <br/><br/> `geo.intersects` <br/><br/> Kombinování dílčích výrazů s`or` | Použití `geo.distance` s `gt` nebo`ge` <br/><br/> `not geo.intersects(...)` <br/><br/> Kombinování dílčích výrazů s`and` |
+| `Collection(Edm.DateTimeOffset)`, `Collection(Edm.Double)`, `Collection(Edm.Int32)`, `Collection(Edm.Int64)` | Porovnávání pomocí `eq`, `ne`, `lt`, `gt`, `le`nebo`ge` <br/><br/> Kombinování porovnání s ostatními podvýrazy pomocí`or` <br/><br/> Kombinování porovnání `ne` s výjimkou ostatních dílčích výrazů using`and` <br/><br/> Výrazy používající kombinace `and` a `or` v [normálním formátu Disjunctive (DNF)](https://en.wikipedia.org/wiki/Disjunctive_normal_form) | Porovnávání pomocí `eq`, `ne`, `lt`, `gt`, `le`nebo`ge` <br/><br/> Kombinování porovnání s ostatními podvýrazy pomocí`and` <br/><br/> Kombinování porovnání `eq` s výjimkou ostatních dílčích výrazů using`or` <br/><br/> Výrazy používající kombinace `and` a `or` v [normálním formátu conjunctive (CNF)](https://en.wikipedia.org/wiki/Conjunctive_normal_form) |

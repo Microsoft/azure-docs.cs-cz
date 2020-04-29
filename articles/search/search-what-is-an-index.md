@@ -1,7 +1,7 @@
 ---
 title: Vytvoření definice indexu a konceptů
 titleSuffix: Azure Cognitive Search
-description: Úvod k indexovým termínům a konceptům v Azure Cognitive Search, včetně součástí a fyzické struktury.
+description: Úvod k indexům a konceptům v Azure Kognitivní hledání, včetně součástí komponent a fyzické struktury.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
@@ -9,51 +9,51 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.openlocfilehash: d2b8b2fecbf85e6590294f1fbd7ff2a4453b9e87
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79282780"
 ---
-# <a name="create-a-basic-index-in-azure-cognitive-search"></a>Vytvoření základního indexu v Azure Cognitive Search
+# <a name="create-a-basic-index-in-azure-cognitive-search"></a>Vytvoření základního indexu v Azure Kognitivní hledání
 
-V Azure Cognitive Search *je index* trvalým úložištěm *dokumentů* a dalších konstrukcí používaných pro filtrované a fulltextové vyhledávání ve službě Azure Cognitive Search. Koncepčně je dokument jedinou jednotkou prohledávatelných dat v indexu. Například internetový prodejce může mít dokument pro každou prodanou položku, zatímco tisková agentura může mít dokument pro každý článek atd. Mapování těchto položek do známějších databázových ekvivalentů: *indexů* se koncepčně podobá *tabulce*, kdy *dokumenty* přibližně odpovídají *řádkům* tabulky.
+V Azure Kognitivní hledání je *index* trvalé úložiště *dokumentů* a dalších konstrukcí používaných pro filtrované a fulltextové vyhledávání ve službě Azure kognitivní hledání. V koncepčním dokumentu je dokument jediná jednotka prohledávatelných dat v indexu. Například internetový prodejce může mít dokument pro každou prodanou položku, zatímco tisková agentura může mít dokument pro každý článek atd. Mapování těchto položek do známějších databázových ekvivalentů: *indexů* se koncepčně podobá *tabulce*, kdy *dokumenty* přibližně odpovídají *řádkům* tabulky.
 
-Když přidáte nebo nahrajete index, Azure Cognitive Search vytvoří fyzické struktury založené na schématu, které zadáte. Pokud je například pole v indexu označeno jako prohledávatelné, vytvoří se pro toto pole obrácený index. Později při přidání nebo nahrání dokumentů nebo odeslání vyhledávacích dotazů do Azure Cognitive Search odesíláte požadavky na konkrétní index ve vyhledávací službě. Načítání polí s hodnotami dokumentu se nazývá *indexování* nebo přijímání dat.
+Když přidáte nebo nahrajete index, Azure Kognitivní hledání vytvoří fyzické struktury založené na schématu, které zadáte. Pokud je například pole v indexu označené jako prohledávatelné, vytvoří se pro toto pole obrácený index. Když později přidáte nebo odešlete dokumenty nebo odešlete vyhledávací dotazy do služby Azure Kognitivní hledání, posíláte požadavky do konkrétního indexu ve vyhledávací službě. Načítání polí s hodnotami dokumentu se nazývá *indexování* nebo ingestování dat.
 
-Index můžete vytvořit na portálu, [rozhraní REST API](search-create-index-rest-api.md)nebo [.NET SDK](search-create-index-dotnet.md).
+Index můžete vytvořit na portálu, [REST API](search-create-index-rest-api.md)nebo [.NET SDK](search-create-index-dotnet.md).
 
 ## <a name="recommended-workflow"></a>Doporučený pracovní postup
 
-Příchod na správný návrh indexu je obvykle dosaženo prostřednictvím více iterací. Použití kombinace nástrojů a rozhraní API vám pomůže rychle dokončit návrh.
+Doručení do správného návrhu indexu se obvykle dosahuje pomocí několika iterací. Použití kombinace nástrojů a rozhraní API vám pomůže rychle dokončit návrh.
 
-1. Určete, zda lze použít [indexer](search-indexer-overview.md#supported-data-sources). Pokud jsou externí data jedním z podporovaných zdrojů dat, můžete pomocí Průvodce [**importem dat**](search-import-data-portal.md) použít prototyp a načíst index.
+1. Určete, zda můžete použít [indexer](search-indexer-overview.md#supported-data-sources). Pokud jsou externí data jedním z podporovaných zdrojů dat, můžete prototypovat a načíst index pomocí průvodce [**importem dat**](search-import-data-portal.md) .
 
-2. Pokud nemůžete použít **import dat**, můžete na [portálu vytvořit počáteční index](search-create-index-portal.md), přidávat pole, datové typy a přiřazovat atributy pomocí ovládacích prvků na stránce Přidat **index.** Portál ukazuje, které atributy jsou k dispozici pro různé datové typy. Pokud s návrhem indexu tečujete, je to užitečné.
+2. Pokud nemůžete použít **importovaná data**, můžete na [portálu vytvořit počáteční index](search-create-index-portal.md), přidat pole, datové typy a přiřadit atributy pomocí ovládacích prvků na stránce **Přidat index** . Portál zobrazuje, které atributy jsou k dispozici pro různé datové typy. Pokud s návrhem indexu začínáte, je to užitečné.
 
-   ![Přidat stránku rejstříku zobrazující atributy podle typu dat](media/search-create-index-portal/field-attributes.png "Přidat stránku rejstříku zobrazující atributy podle typu dat")
+   ![Přidat stránku indexu zobrazující atributy podle datového typu](media/search-create-index-portal/field-attributes.png "Přidat stránku indexu zobrazující atributy podle datového typu")
   
-   Po klepnutí na tlačítko **Vytvořit**se ve vyhledávací službě vytvoří všechny fyzické struktury podporující index.
+   Po kliknutí na **vytvořit**se ve vyhledávací službě vytvoří všechny fyzické struktury, které podporují váš index.
 
-3. Stáhněte si schéma indexu pomocí [rozhraní Get Index REST API](https://docs.microsoft.com/rest/api/searchservice/get-index) a webového testovacího nástroje, jako je [Postman](search-get-started-postman.md). Nyní máte json reprezentace indexu, který jste vytvořili na portálu. 
+3. Stáhněte schéma indexu pomocí [REST API získat index](https://docs.microsoft.com/rest/api/searchservice/get-index) a nástroj pro testování webu, jako je například [post](search-get-started-postman.md). Nyní máte reprezentaci JSON indexu, který jste vytvořili na portálu. 
 
-   V tomto okamžiku přecházíte na přístup založený na kódu. Portál není vhodný pro iteraci, protože nelze upravit index, který je již vytvořen. Ale můžete použít Postman a REST pro zbývající úkoly.
+   V tuto chvíli přecházíte na přístup založený na kódu. Portál není vhodný pro iteraci, protože nemůžete upravit index, který už je vytvořený. Pro zbývající úkoly ale můžete použít možnost post a REST.
 
-4. [Načtěte index s daty](search-what-is-data-import.md). Azure Cognitive Search přijímá dokumenty JSON. Chcete-li data načíst programově, můžete použít Postman s dokumenty JSON v datové části požadavku. Pokud vaše data nejsou snadno vyjádřit jako JSON, tento krok bude nejvíce náročné na práci.
+4. [Načtěte index s daty](search-what-is-data-import.md). Azure Kognitivní hledání přijímá dokumenty JSON. Chcete-li načíst data prostřednictvím kódu programu, můžete použít příkaz post s dokumenty JSON v datové části požadavku. Pokud vaše data nejsou snadno vyjádřena jako JSON, bude tento krok nejvíce náročný na práci.
 
-5. Dotaz indexu, zkontrolujte výsledky a dále iterate na schéma indexu, dokud nezačnete vidět výsledky, které očekáváte. K [**dotazování**](search-explorer.md) indexu můžete použít Průzkumník vyhledávání nebo Pošťák.
+5. Dotazujte svůj index, Prohlédněte si výsledky a další iteraci schématu indexu, dokud nezačnete zobrazovat očekávané výsledky. K dotazování indexu můžete použít [**Průzkumníka služby Search**](search-explorer.md) nebo metodu post.
 
-6. Pokračujte v používání kódu k itetování nad návrhem.  
+6. Pokračujte v používání kódu k iterování návrhu.  
 
-Vzhledem k tomu, že fyzické struktury jsou vytvořeny ve službě, [uvolněním a opětovné vytvoření indexy](search-howto-reindex.md) je nezbytné vždy, když provedete změny materiálu na existující definice pole. To znamená, že během vývoje byste měli plánovat časté obnovy. Můžete zvážit práci s podmnožinou dat, aby se obnovení urychlilo. 
+Vzhledem k tomu, že se ve službě vytvářejí fyzické struktury, je potřeba vyřadit [a znovu vytvořit indexy](search-howto-reindex.md) , když provedete změny v existující definici pole. To znamená, že během vývoje byste měli naplánovat časté časté sestavování. Můžete uvažovat o práci s podmnožinou vašich dat, aby bylo možné znovu sestavit nové sestavení. 
 
-Pro iterativní návrh se doporučuje kód, nikoli přístup portálu. Pokud se spoléháte na portál pro definici indexu, budete muset vyplnit definici indexu při každém opětovném sestavení. Alternativně nástroje jako [Postman a rozhraní REST API](search-get-started-postman.md) jsou užitečné pro testování proof-of-concept, když jsou projekty vývoje stále v počátečních fázích. Můžete provést přírůstkové změny definice indexu v těle požadavku a potom odeslat požadavek na službu znovu vytvořit index pomocí aktualizovaného schématu.
+Pro iterativní návrh se doporučuje kód spíše než přístup k portálu. Pokud na definici indexu spoléháte na portál, budete muset při každém opětovném sestavení vyplnit definici indexu. Jako alternativu jsou nástroje, jako je například [post a REST API](search-get-started-postman.md) , užitečné pro testování zkušebního prostředí, když jsou vývojové projekty stále v rané fázi. V těle žádosti můžete provádět přírůstkové změny definice indexu a potom odeslat požadavek službě, aby se index znovu vytvořil pomocí aktualizovaného schématu.
 
 ## <a name="components-of-an-index"></a>Součásti indexu
 
-Schematicky index Azure Cognitive Search se skládá z následujících prvků. 
+Schématem Azure Kognitivní hledání index se skládá z následujících prvků. 
 
-[*Kolekce polí*](#fields-collection) je obvykle největší část indexu, kde každé pole je pojmenováno, zadáno a přiřazeno s povoleným chováním, které určuje způsob jeho použití. Mezi další prvky patří [návrhy](#suggesters), [profily hodnocení](#scoring-profiles), [analyzátory](#analyzers) s komponentami pro podporu přizpůsobení, [CORS](#cors) a možnosti [šifrovacího klíče.](#encryption-key)
+[*Kolekce polí*](#fields-collection) je obvykle největší částí indexu, kde jsou pojmenovány, zadány a označeny s povoleným chováním, které určují, jak se používají. Mezi další prvky patří [návrhy](#suggesters), [profily vyhodnocování](#scoring-profiles), [analyzátory](#analyzers) s součástmi komponent pro podporu přizpůsobení, [CORS](#cors) a možnosti [šifrovacího klíče](#encryption-key) .
 
 ```json
 {
@@ -147,24 +147,24 @@ Při definování schématu musíte zadat název, typ a atributy každého pole 
 ### <a name="data-types"></a>Typy dat
 | Typ | Popis |
 | --- | --- |
-| *Edm.String* |Text, který může být volitelně tokenizován pro fulltextové vyhledávání (rozdělení slov, vyplývající a tak dále). |
+| *Edm.String* |Text, který lze volitelně použít pro fulltextové vyhledávání (dělení slov, odvozování a tak dále). |
 | *Collection(Edm.String)* |Seznam řetězců, které jde volitelně tokenizovat k fulltextovému hledání. Ačkoli neexistuje žádné teoretické omezení počtu položek v kolekci, na kolekce se vztahuje 16MB omezení velikosti datové části. |
 | *Edm.Boolean* |Obsahuje hodnoty true nebo false. |
 | *Edm.Int32* |32bitové celočíselné hodnoty. |
 | *Edm.Int64* |64bitové celočíselné hodnoty. |
 | *Edm.Double* |Číselné údaje s dvojitou přesností. |
-| *Edm.DateTimeOffset* |Hodnoty data času reprezentované ve formátu `yyyy-MM-ddTHH:mm:ss.fffZ` `yyyy-MM-ddTHH:mm:ss.fff[+/-]HH:mm`OData V4 (například nebo ). |
+| *Edm.DateTimeOffset* |Hodnoty data a času reprezentované ve formátu OData v4 (například `yyyy-MM-ddTHH:mm:ss.fffZ` nebo `yyyy-MM-ddTHH:mm:ss.fff[+/-]HH:mm`). |
 | *Edm.GeographyPoint* |Bod představující geografické umístění na zeměkouli. |
 
-Podrobnější informace o [podporovaných datových typech](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types)Azure Cognitive Search najdete zde .
+Podrobnější informace o [datových typech podporovaných](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types)službou Azure kognitivní hledání najdete tady.
 
 ### <a name="index-attributes"></a>Atributy indexu
 
-Přesně jedno pole v indexu musí být označeno jako **klíčové** pole, které jednoznačně identifikuje každý dokument.
+Právě jedno pole v indexu musí být určené jako **klíčové** pole, které jedinečným způsobem identifikuje každý dokument.
 
-Jiné atributy určují, jak se pole používá v aplikaci. Například **prohledávatelný** atribut je přiřazen ke každému poli, které by mělo být zahrnuto do fulltextového vyhledávání. 
+Jiné atributy určují, jak se pole používá v aplikaci. Například atribut s **možností vyhledávání** je přiřazen každému poli, které by mělo být zahrnuto do fulltextového vyhledávání. 
 
-Api, která používáte k vytvoření indexu, mají různé výchozí chování. Pro [rozhraní REST API](https://docs.microsoft.com/rest/api/searchservice/Create-Index), většina atributů jsou povoleny ve výchozím nastavení (například **prohledávatelné** a **retrievable** jsou pravdivé pro řetězcová pole) a často stačí je nastavit, pokud je chcete vypnout. Pro .NET SDK opak je pravdou. U všech vlastností, které explicitně nenastavíte, je ve výchozím nastavení zakázáno odpovídající chování hledání, pokud jej výslovně nepovolíte.
+Rozhraní API, která použijete k vytvoření indexu, mají proměnlivé výchozí chování. Pro [rozhraní REST API](https://docs.microsoft.com/rest/api/searchservice/Create-Index)je ve výchozím nastavení povolená většina atributů (například možnost **prohledávatelné** a **retrievable** získatelné hodnoty jsou pro řetězcová pole pravdivá) a často je stačí nastavit, pokud je chcete vypnout. Pro sadu .NET SDK má opak hodnotu true. U jakékoli vlastnosti, kterou explicitně nenastavíte, je ve výchozím nastavení zakázáno odpovídající chování hledání, pokud ho výslovně nepovolíte.
 
 | Atribut | Popis |
 | --- | --- |
@@ -177,53 +177,53 @@ Api, která používáte k vytvoření indexu, mají různé výchozí chování
 
 ## <a name="index-size"></a>Velikost indexu
 
-Velikost indexu je určena velikostí dokumentů, které nahrajete, a konfigurací indexu, například zda zahrnete návrhy a jak nastavíte atributy pro jednotlivá pole. Následující snímek obrazovky ilustruje vzory úložiště indexu vyplývající z různých kombinací atributů.
+Velikost indexu je určena velikostí dokumentů, které nahráváte, a konfigurací indexu, například bez ohledu na to, zda jste zahrnuli moduly pro návrhy, a jak nastavíte atributy na jednotlivá pole. Následující snímek obrazovky znázorňuje vzory úložiště indexů, které jsou výsledkem různých kombinací atributů.
 
-Index je založen na [vestavěném zdroji dat ukázkového zdroje nemovitostí,](search-get-started-portal.md) který můžete indexovat a dotazovat na portálu. Přestože schémata indexu nejsou zobrazeny, můžete odvodit atributy na základě názvu indexu. Například index *s možností vyhledávání v reálném provozu* má vybraný atribut pro **vyhledávání** a nic jiného, index s možností *vyhledávání nemovitostí* má vybraný atribut **retrievable** a nic jiného a tak dále.
+Index je založený na [integrovaném zdroji ukázkových dat z reálného majetku](search-get-started-portal.md) , který můžete indexovat a dotazovat na portálu. I když nejsou uvedena schémata indexu, můžete odvodit atributy na základě názvu indexu. Index s možností vyhledávání *realestate* má například vybraný atribut, který není k dispozici, a není k dispozici žádný jiný index s *realestate* , který **je v indexu** s **možností** získat a tak dále.
 
 ![Velikost indexu na základě výběru atributu](./media/search-what-is-an-index/realestate-index-size.png "Velikost indexu na základě výběru atributu")
 
-I když jsou tyto varianty indexu umělé, můžeme na ně odkazovat pro široké porovnání toho, jak atributy ovlivňují úložiště. Zvyšuje nastavení **načtení** velikostindexu? Ne. Zvyšuje přidání polí do **sunatoru** velikost indexu? Ano.
+I když jsou tyto varianty indexu umělé, můžeme na ně odkazovat, aby bylo možné využít široké porovnání atributů úložiště. Má nastavení **retrievable** načístelné zvýšení velikosti indexu? Ne. Přidávají se pole do **přizpůsobitelné** velikosti indexu? Ano.
 
-Indexy, které podporují filtrování a řazení jsou proporcionálně větší než indexy podporující pouze fulltextové vyhledávání. Filtrování a řazení operací hledat přesné shody, které vyžadují přítomnost neporušené dokumenty. Naproti tomu prohledávatelná pole podporující fulltextové a přibližné hledání používají invertované indexy, které jsou naplněny tokenizovanými termíny, které spotřebovávají méně místa než celé dokumenty. 
+Indexy, které podporují filtrování a řazení, jsou proporcionálně větší než ty podporující pouze fulltextové vyhledávání. Filtrování a řazení operací vyhledávání přesných shod, které vyžadují přítomnost nepoškozených dokumentů. Naproti tomu prohledávatelné pole podporující fulltextové a přibližné vyhledávání používá obrácené indexy, které jsou vyplněny pomocí tokenů, které spotřebovávají méně místa než celé dokumenty. 
 
 > [!Note]
-> Architektura úložiště je považována za podrobnosti implementace Azure Cognitive Search a může změnit bez předchozího upozornění. Neexistuje žádná záruka, že současné chování bude přetrvávat i v budoucnu.
+> Architektura úložiště se považuje za podrobné informace o implementaci Azure Kognitivní hledání a může se změnit bez předchozího upozornění. V budoucnu není zaručeno, že aktuální chování bude zachováno.
 
 ## <a name="suggesters"></a>Moduly pro návrhy
-Návrhovač je část schématu, která definuje, která pole v indexu se používají pro podporu automatického dokončování nebo dotazů typu dopředu při vyhledávání. Obvykle částečné vyhledávací řetězce jsou odesílány [návrhy (ROZHRANÍ REST API),](https://docs.microsoft.com/rest/api/searchservice/suggestions) zatímco uživatel zadává vyhledávací dotaz a rozhraní API vrátí sadu navržených dokumentů nebo frází. 
+Modul pro návrhy je oddíl schématu, který definuje, která pole v indexu se používají k podpoře automatického dokončování nebo dotazování typu dopředu v hledáních. V případě, že uživatel zadává vyhledávací dotaz a rozhraní API vrací sadu navrhovaných dokumentů nebo frází, jsou obvykle odesílány do [návrhů (REST API)](https://docs.microsoft.com/rest/api/searchservice/suggestions) částečné vyhledávací řetězce. 
 
-Pole přidaná do návrhu se používají k vytváření hledaných výrazů typu dopředu. Všechny hledané termíny jsou vytvořeny během indexování a uloženy samostatně. Další informace o vytvoření struktury návrhu naleznete v tématu [Přidání návrhovek](index-add-suggesters.md).
+Pole přidaná do modulu pro návrhy se používají k sestavení podmínek vyhledávání typu dopředu. Všechny hledané výrazy se vytvoří při indexování a ukládají se samostatně. Další informace o vytváření struktury návrhů najdete v tématu [Přidání návrhů](index-add-suggesters.md).
 
 ## <a name="scoring-profiles"></a>Profily skórování
 
-[Profil hodnocení](index-add-scoring-profiles.md) je část schématu, která definuje vlastní chování hodnocení, které umožňuje ovlivnit, které položky se zobrazí vyšší ve výsledcích hledání. Profily hodnocení se shodnou z polí závaží a funkcí. Chcete-li je použít, zadejte profil podle názvu v řetězci dotazu.
+[Profil vyhodnocování](index-add-scoring-profiles.md) je oddíl schématu, který definuje vlastní bodování chování, které vám umožní ovlivnit, které položky se ve výsledcích hledání objeví výše. Profily vyhodnocování se skládají z vah a funkcí polí. Pokud je chcete použít, zadejte v řetězci dotazu profil podle názvu.
 
-Výchozí profil hodnocení pracuje na pozadí vypočítat skóre hledání pro každou položku v sadě výsledků. Můžete použít interní, nepojmenovaný profil hodnocení. Případně nastavte **defaultScoringProfile** použít vlastní profil jako výchozí, vyvolána vždy, když vlastní profil není zadán na řetězec dotazu.
+Výchozí profil vyhodnocování funguje na pozadí a vypočítá skóre vyhledávání pro každou položku v sadě výsledků dotazu. Můžete použít interní a nepojmenovaný profil vyhodnocování. Případně můžete nastavit **defaultScoringProfile** na použití vlastního profilu jako výchozí, vyvoláno pokaždé, když se v řetězci dotazu nezadá vlastní profil.
 
 ## <a name="analyzers"></a>Analyzátory
 
-Prvek analyzátory nastaví název analyzátoru jazyka pro pole. Další informace o rozsahu analyzátorů, které máte k dispozici, naleznete [v tématu Přidání analyzátorů do indexu Azure Cognitive Search](search-analyzers.md). Analyzátory lze použít pouze s prohledávatelnými poli. Jakmile je analyzátor přiřazen k poli, nelze jej změnit, dokud index neobnovíte.
+Element analyzers nastaví název analyzátoru jazyka, který se má použít pro pole. Další informace o rozsahu analyzátorů, které máte k dispozici, najdete v tématu [Přidání analyzátorů do indexu služby Azure kognitivní hledání](search-analyzers.md). Analyzátory lze použít pouze s prohledávatelnými poli. Jakmile je analyzátor přiřazen k poli, nedá se změnit, dokud index znovu sestavíte.
 
 ## <a name="cors"></a>CORS
 
-JavaScript na straně klienta nemůže ve výchozím nastavení volat žádná připojení k souboru API, protože prohlížeč zabrání všem požadavkům napříč původem. Chcete-li povolit dotazy křížového původu do indexu, povolte CORS (Cross-Origin Resource Sharing) nastavením atributu **corsOptions.** Z bezpečnostních důvodů podporují cors pouze api dotazu. 
+JavaScript na straně klienta nemůže ve výchozím nastavení volat žádná rozhraní API, protože v prohlížeči se zabrání všechny požadavky mezi zdroji. Pokud chcete pro svůj index povolit dotazy mezi zdroji, povolte CORS (sdílení prostředků mezi zdroji) nastavením atributu **corsOptions** . Z bezpečnostních důvodů podporují CORS jenom rozhraní API pro dotazy. 
 
-Pro CORS lze nastavit následující možnosti:
+Pro CORS se dají nastavit tyto možnosti:
 
-+ **allowedOrigins** (povinné): Toto je seznam původů, které budou uděleny přístup k indexu. To znamená, že jakýkoli kód JavaScript obsluhovaný z těchto původů bude mít možnost dotazovat se na váš index (za předpokladu, že poskytuje správný klíč api). Každý původ je obvykle `protocol://<fully-qualified-domain-name>:<port>` formuláře, i když `<port>` je často vynechán. Další podrobnosti najdete [v článku Sdílení zdrojů mezi zdroji (Wikipedie).](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)
++ **allowedOrigins** (povinné): Jedná se o seznam původních zdrojů, kterým bude udělen přístup k vašemu indexu. To znamená, že jakýkoli JavaScriptový kód, který je obsluhován z těchto původu, bude moci dotazovat váš index (za předpokladu, že poskytuje správný klíč rozhraní API). Každý původ má obvykle tvar `protocol://<fully-qualified-domain-name>:<port>` , i když `<port>` je často vynechán. Další podrobnosti najdete v tématu [sdílení prostředků mezi zdroji (Wikipedii)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) .
 
-  Pokud chcete povolit přístup ke všem `*` původům, zahrnout jako jednu položku v **allowedOrigins** pole. *To není doporučená praxe pro produkční vyhledávací služby,* ale je často užitečné pro vývoj a ladění.
+  Pokud chcete povolený přístup ke všem počátkům, zahrňte `*` do pole **allowedOrigins** jako jednu položku. *Toto není doporučený postup pro služby vyhledávání v provozu* , ale je často užitečný pro vývoj a ladění.
 
-+ **maxAgeInSeconds** (volitelné): Prohlížeče používají tuto hodnotu k určení doby trvání (v sekundách) do mezipaměti odpovědí kontroly před výstupem CORS. Musí se jednat o nezáporné celé číslo. Čím větší je tato hodnota, tím lepší výkon bude, ale čím déle bude trvat, než se změny zásad CORS projeví. Pokud není nastavena, bude použita výchozí doba trvání 5 minut.
++ **maxAgeInSeconds** (volitelné): v prohlížečích se tato hodnota používá k určení doby (v sekundách), po kterou se budou odpovědi na kontrolu mezipaměti CORS ukládat do mezipaměti. Toto musí být nezáporné celé číslo. Čím větší je tato hodnota, tím vyšší bude výkon, tím déle bude trvat, než se změny zásad CORS projeví. Pokud není nastavená, použije se výchozí doba trvání 5 minut.
 
 ## <a name="encryption-key"></a>Šifrovací klíč
 
-Zatímco všechny indexy Azure Cognitive Search jsou ve výchozím nastavení šifrovány pomocí klíčů spravovaných společností Microsoft, indexy lze nakonfigurovat tak, aby byly šifrovány pomocí **klíčů spravovaných zákazníky** v trezoru klíčů. Další informace najdete [v tématu Správa šifrovacích klíčů v Azure Cognitive Search](search-security-manage-encryption-keys.md).
+I když jsou všechny indexy Azure Kognitivní hledání ve výchozím nastavení šifrované pomocí klíčů spravovaných Microsoftem, můžou být indexy nakonfigurované tak, aby se pomocí **klíčů spravovaných zákazníky** v Key Vault šifroval. Další informace najdete v tématu [Správa šifrovacích klíčů v Azure kognitivní hledání](search-security-manage-encryption-keys.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-S pochopení složení indexu, můžete pokračovat v portálu k vytvoření prvníindex.
+S porozuměním sestavování indexu můžete na portálu pokračovat a vytvořit svůj první index.
 
 > [!div class="nextstepaction"]
-> [Přidání indexu (portál)](search-create-index-portal.md)
+> [Přidat index (portál)](search-create-index-portal.md)

@@ -9,20 +9,20 @@ ms.date: 03/12/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 4ea97e2dbee87f7ab129c4295276c9024c0212c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80116922"
 ---
-Novou funkcí klienta Windows 10 VPN, Always On, je schopnost udržovat připojení VPN. Pomocí funkce Always On se aktivní profil VPN může automaticky připojit a zůstat připojený na základě aktivačních událostí, jako je přihlášení uživatele, změna stavu sítě nebo aktivní obrazovka zařízení.
+Novou funkcí klienta sítě VPN s Windows 10, která je vždycky zapnutá, je možnost udržovat připojení VPN. Díky službě Always On se aktivní profil sítě VPN může připojit automaticky a zůstat připojený na triggerech, jako jsou přihlášení uživatele, změna stavu sítě nebo obrazovka zařízení aktivní.
 
-Brány s Windows 10 Always On můžete použít k vytvoření trvalých uživatelských tunelových propojení a tunelových propojení zařízení do Azure. Tento článek vám pomůže nakonfigurovat vždy na vpn uživatelského tunelu.
+Brány se systémem Windows 10, které mají trvalé tunelové propojení a tunely zařízení v Azure, můžete používat vždycky. Tento článek vám pomůže nakonfigurovat tunelové propojení uživatelů VPN typu Always On.
 
-Vždy na VPN připojení zahrnují jeden ze dvou typů tunelů:
+Připojení k síti VPN Always On zahrnuje jeden ze dvou typů tunelů:
 
-* **Tunelové propojení zařízení**: Připojí se k určeným serverům VPN před přihlášením uživatelů k zařízení. Scénáře připojení před přihlášením a správa zařízení používají tunelové propojení zařízení.
+* **Tunelové propojení zařízení**: připojí se k zadaným serverům sítě VPN, než se uživatelé přihlásí k zařízení. Scénáře připojení před přihlášením a Správa zařízení používají tunelové zařízení.
 
-* **Uživatelský tunelový propojení**: Připojí se až po přihlášení uživatelů k zařízení. Pomocí uživatelských tunelových propojení můžete přistupovat k prostředkům organizace prostřednictvím serverů VPN.
+* **Tunelové propojení uživatelů**: připojuje se až po přihlášení uživatelů k zařízení. Pomocí tunelů uživatelů můžete získat přístup k prostředkům organizace prostřednictvím serverů VPN.
 
-Tunelové propojení zařízení a tunelové propojení uživatelů pracují nezávisle na jejich profilech VPN. Mohou být připojeny současně a mohou podle potřeby používat různé metody ověřování a další nastavení konfigurace VPN.
+Tunely zařízení a tunely uživatelů fungují nezávisle na jejich profilech sítě VPN. Můžou být připojené ve stejnou dobu a můžou podle potřeby používat jiné metody ověřování a další nastavení konfigurace VPN.

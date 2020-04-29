@@ -1,37 +1,37 @@
 ---
 title: Správa skupin prostředků – Azure CLI
-description: Pomocí azure cli můžete spravovat své skupiny prostředků prostřednictvím Správce prostředků Azure. Ukazuje, jak vytvořit, vypsat a odstranit skupiny prostředků.
+description: Pomocí Azure CLI můžete spravovat skupiny prostředků prostřednictvím Azure Resource Manager. Ukazuje, jak vytvořit, vypsat a odstranit skupiny prostředků.
 author: mumian
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
 ms.openlocfilehash: 7face572f545153ea92efbdb345bbaabda5dd126
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79248330"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-cli"></a>Správa skupin prostředků Azure Resource Manager pomocí Azure CLI
 
-Zjistěte, jak používat Azure CLI s [Azure Resource Manager](overview.md) ke správě skupin prostředků Azure. Správa prostředků Azure najdete v [tématu Správa prostředků Azure pomocí Azure CLI](manage-resources-cli.md).
+Naučte se používat Azure CLI s [Azure Resource Manager](overview.md) ke správě skupin prostředků Azure. Informace o správě prostředků Azure najdete v tématu [Správa prostředků Azure pomocí Azure CLI](manage-resources-cli.md).
 
-Další články o správě skupin zdrojů:
+Další články o správě skupin prostředků:
 
-- [Správa skupin prostředků Azure pomocí portálu Azure](manage-resources-portal.md)
-- [Správa skupin prostředků Azure pomocí Azure PowerShellu](manage-resources-powershell.md)
+- [Správa skupin prostředků Azure pomocí Azure Portal](manage-resources-portal.md)
+- [Správa skupin prostředků Azure pomocí Azure PowerShell](manage-resources-powershell.md)
 
 ## <a name="what-is-a-resource-group"></a>Co je skupina prostředků
 
-Skupina prostředků je kontejner, který obsahuje související prostředky pro řešení Azure. Skupina prostředků může zahrnovat všechny prostředky pro řešení nebo pouze ty prostředky, které chcete spravovat jako skupinu. Na základě toho, co je pro vaši organizaci nejvhodnější, rozhodnete, jakým způsobem se mají prostředky přidělovat do skupin prostředků. Obecně přidejte prostředky, které sdílejí stejný životní cyklus, do stejné skupiny prostředků, abyste je mohli snadno nasadit, aktualizovat a odstranit jako skupinu.
+Skupina prostředků je kontejner, který obsahuje související prostředky pro řešení Azure. Skupina prostředků může zahrnovat všechny prostředky pro řešení nebo pouze ty prostředky, které chcete spravovat jako skupinu. Na základě toho, co je pro vaši organizaci nejvhodnější, rozhodnete, jakým způsobem se mají prostředky přidělovat do skupin prostředků. Obecně můžete přidat prostředky, které sdílejí stejný životní cyklus do stejné skupiny prostředků, abyste je mohli snadno nasadit, aktualizovat a odstranit jako skupinu.
 
 Skupina prostředků ukládá metadata o prostředcích. Při zadávání umístění skupiny prostředků tedy určujete, kde se tato metadata ukládají. Z důvodu dodržování předpisů může být nutné zajistit, aby se data ukládala v určité oblasti.
 
-Skupina prostředků ukládá metadata o prostředcích. Když zadáte umístění pro skupinu prostředků, určujete, kde jsou tato metadata uložena.
+Skupina prostředků ukládá metadata o prostředcích. Když zadáte umístění pro skupinu prostředků, určíte, kde jsou tato metadata uložená.
 
-## <a name="create-resource-groups"></a>Vytvořit skupiny prostředků
+## <a name="create-resource-groups"></a>Vytvoření skupin prostředků
 
-Následující skript příkazového příkazu vytvoří skupinu prostředků a zobrazí skupinu prostředků.
+Následující skript rozhraní příkazového řádku vytvoří skupinu prostředků a pak zobrazí skupinu prostředků.
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
@@ -43,13 +43,13 @@ az group create --name $resourceGroupName --location $location
 
 ## <a name="list-resource-groups"></a>Seznam skupin prostředků
 
-V následujícím skriptu příkazového příkazu jsou uvedeny skupiny prostředků v rámci vašeho předplatného.
+Následující skript rozhraní příkazového řádku vypíše skupiny prostředků v rámci vašeho předplatného.
 
 ```azurecli-interactive
 az group list
 ```
 
-Chcete-li získat jednu skupinu prostředků:
+Jak získat jednu skupinu prostředků:
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
@@ -59,7 +59,7 @@ az group show --name $resourceGroupName
 
 ## <a name="delete-resource-groups"></a>Odstranění skupin prostředků
 
-Následující skript příkazového příkazového příkazu odstraní skupinu prostředků:
+Následující skript rozhraní příkazového řádku odstraní skupinu prostředků:
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
@@ -67,29 +67,29 @@ read resourceGroupName &&
 az group delete --name $resourceGroupName
 ```
 
-Další informace o tom, jak Azure Resource Manager objednávky odstranění prostředků, najdete v [tématu Odstranění skupiny prostředků Azure Resource Manager](delete-resource-group.md).
+Další informace o tom, jak Azure Resource Manager objednává odstranění prostředků, najdete v tématu [Azure Resource Manager odstranění skupiny prostředků](delete-resource-group.md).
 
 ## <a name="deploy-resources-to-an-existing-resource-group"></a>Nasazení prostředků do existující skupiny prostředků
 
-Viz [Nasazení prostředků do existující skupiny prostředků](manage-resources-cli.md#deploy-resources-to-an-existing-resource-group).
+Viz [nasazení prostředků do existující skupiny prostředků](manage-resources-cli.md#deploy-resources-to-an-existing-resource-group).
 
 ## <a name="deploy-a-resource-group-and-resources"></a>Nasazení skupiny prostředků a prostředků
 
-Skupinu prostředků můžete vytvořit a nasadit prostředky do skupiny pomocí šablony Správce prostředků. Další informace naleznete v [tématu Vytvoření skupiny prostředků a nasazení prostředků](../templates/deploy-to-subscription.md#resource-group-and-resources).
+Můžete vytvořit skupinu prostředků a nasadit prostředky do skupiny pomocí šablony Správce prostředků. Další informace najdete v tématu [Vytvoření skupiny prostředků a nasazení prostředků](../templates/deploy-to-subscription.md#resource-group-and-resources).
 
-## <a name="redeploy-when-deployment-fails"></a>Opětovné nasazení při selhání nasazení
+## <a name="redeploy-when-deployment-fails"></a>Znovu nasadit v případě neúspěchu nasazení
 
-Tato funkce je také známá jako *vrácení zpět při chybě*. Další informace naleznete [v tématu Znovu nasadit při selhání nasazení](../templates/rollback-on-error.md).
+Tato funkce se také označuje jako *vrácení zpět s chybou*. Další informace najdete v tématu [opětovné nasazení v případě neúspěchu nasazení](../templates/rollback-on-error.md).
 
-## <a name="move-to-another-resource-group-or-subscription"></a>Přechod na jinou skupinu prostředků nebo předplatné
+## <a name="move-to-another-resource-group-or-subscription"></a>Přesunout do jiné skupiny prostředků nebo předplatného
 
-Prostředky ve skupině můžete přesunout do jiné skupiny prostředků. Další informace naleznete v tématu [Přesunutí prostředků](manage-resources-cli.md#move-resources).
+Prostředky ve skupině můžete přesunout do jiné skupiny prostředků. Další informace najdete v tématu [Přesunutí prostředků](manage-resources-cli.md#move-resources).
 
 ## <a name="lock-resource-groups"></a>Uzamčení skupin prostředků
 
-Uzamčení zabrání ostatním uživatelům ve vaší organizaci v náhodném odstranění nebo úpravě kritických prostředků, jako je předplatné Azure, skupina prostředků nebo prostředek. 
+Uzamykání brání jiným uživatelům ve vaší organizaci v neúmyslném odstranění nebo úpravě důležitých prostředků, jako je například předplatné Azure, skupina prostředků nebo prostředek. 
 
-Následující skript uzamkne skupinu prostředků, takže skupinu prostředků nelze odstranit.
+Následující skript zamkne skupinu prostředků, takže skupinu prostředků nejde odstranit.
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
@@ -117,16 +117,16 @@ az lock delete --name $lockName --resource-group $resourceGroupName
 
 Další informace najdete v tématu [Zamknutí prostředků pomocí Azure Resource Manageru](lock-resources.md).
 
-## <a name="tag-resource-groups"></a>Označit skupiny prostředků
+## <a name="tag-resource-groups"></a>Označení skupin prostředků
 
-Značky můžete použít na skupiny prostředků a prostředky, které logicky uspořádají prostředky. Další informace najdete [v tématu Použití značek k uspořádání prostředků Azure](tag-resources.md#azure-cli).
+Můžete použít značky pro skupiny prostředků a prostředky k logické organizaci vašich assetů. Informace najdete v tématu [použití značek k uspořádání prostředků Azure](tag-resources.md#azure-cli).
 
 ## <a name="export-resource-groups-to-templates"></a>Export skupin prostředků do šablon
 
-Po úspěšném nastavení skupiny prostředků můžete chtít zobrazit šablonu Správce prostředků pro skupinu prostředků. Export šablony nabízí dvě výhody:
+Po úspěšném nastavení skupiny prostředků možná budete chtít zobrazit šablonu Správce prostředků pro skupinu prostředků. Export šablony nabízí dvě výhody:
 
-- Automatizujte budoucí nasazení řešení, protože šablona obsahuje veškerou úplnou infrastrukturu.
-- Naučte se syntaxi šablony tak, že se podíváte na JavaScript Object Notation (JSON), který představuje vaše řešení.
+- Automatizujte budoucí nasazení řešení, protože šablona obsahuje veškerou kompletní infrastrukturu.
+- Podívejte se na JavaScript Object Notation (JSON), která představuje vaše řešení, a Naučte se syntaxí šablony.
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
@@ -134,21 +134,21 @@ read resourceGroupName &&
 az group export --name $resourceGroupName  
 ```
 
-Skript zobrazí šablonu na konzoli.  Zkopírujte JSON a uložte jej jako soubor.
+Skript zobrazí šablonu v konzole nástroje.  Zkopírujte kód JSON a uložte ho jako soubor.
 
-Funkce šablony exportu nepodporuje export prostředků Azure Data Factory. Informace o tom, jak exportovat prostředky Data Factory, najdete v [tématu Kopírování nebo klonování datové továrny v Azure Data Factory](https://aka.ms/exportTemplateViaAdf).
+Funkce Exportovat šablonu nepodporuje export Azure Data Factorych prostředků. Další informace o tom, jak můžete exportovat Data Factory prostředky, najdete [v tématu kopírování nebo klonování datové továrny v Azure Data Factory](https://aka.ms/exportTemplateViaAdf).
 
-Chcete-li exportovat prostředky vytvořené prostřednictvím klasického modelu nasazení, musíte [je migrovat do modelu nasazení Správce prostředků](https://aka.ms/migrateclassicresourcetoarm).
+Chcete-li exportovat prostředky vytvořené prostřednictvím modelu nasazení Classic, je nutné [je migrovat do modelu nasazení Správce prostředků](https://aka.ms/migrateclassicresourcetoarm).
 
-Další informace najdete [v tématu Export jednoho a více prostředků do šablony na webu Azure Portal](../templates/export-template-portal.md).
+Další informace najdete v tématu [Export jednoho a více prostředků do šablony v Azure Portal](../templates/export-template-portal.md).
 
 ## <a name="manage-access-to-resource-groups"></a>Správa přístupu ke skupinám prostředků
 
-[Řízení přístupu na základě rolí (RBAC)](../../role-based-access-control/overview.md) je způsob, jakým spravujete přístup k prostředkům v Azure. Další informace naleznete [v tématu Správa přístupu pomocí RBAC a Azure CLI](../../role-based-access-control/role-assignments-cli.md).
+[Řízení přístupu na základě role (RBAC)](../../role-based-access-control/overview.md) je způsob, jakým můžete spravovat přístup k prostředkům v Azure. Další informace najdete v tématu [Správa přístupu pomocí RBAC a Azure CLI](../../role-based-access-control/role-assignments-cli.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-- Pokud se chcete naučit Správce prostředků Azure, přečtěte si [přehled správce prostředků Azure](overview.md).
-- Syntaxe syntaxe šablony Správce prostředků najdete [v tématu Principy struktury a syntaxe šablon Azure Resource Manageru](../templates/template-syntax.md).
-- Chcete-li se dozvědět, jak vyvíjet šablony, podívejte se na [podrobné výukové programy](/azure/azure-resource-manager/).
-- Pokud chcete zobrazit schémata šablon Azure Resource Manager, přečtěte si [odkaz na šablonu](/azure/templates/).
+- Informace o Azure Resource Manager najdete v tématu [Azure Resource Manager Overview](overview.md).
+- Další informace o syntaxi šablon Správce prostředků naleznete v tématu [pochopení struktury a syntaxe šablon Azure Resource Manager](../templates/template-syntax.md).
+- Další informace o vývoji šablon najdete v [podrobných kurzech](/azure/azure-resource-manager/).
+- Chcete-li zobrazit schémata šablon Azure Resource Manager, přečtěte si téma [reference šablony](/azure/templates/).

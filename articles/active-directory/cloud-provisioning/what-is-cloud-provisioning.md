@@ -1,6 +1,6 @@
 ---
 title: Co je zřizování cloudu Azure AD Connect. | Dokumentace Microsoftu
-description: Popisuje zřizování cloudu Azure AD Connect.
+description: Popisuje Azure AD Connect zřízení cloudu.
 services: active-directory
 author: billmath
 manager: daveba
@@ -12,58 +12,58 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a86d34fca9a88b0df601533a0f3de1cc97ad1a2f
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80050602"
 ---
 # <a name="what-is-azure-ad-connect-cloud-provisioning"></a>Co je zřízení cloudu Azure AD Connect?
-Azure AD Connect cloud zřizování je nový agent Microsoft usplnění a dosažení vašich cílů hybridní identity pro synchronizaci uživatelů, skupin a kontaktů do Azure AD.  Lze jej použít společně se synchronizací Azure AD Connect a poskytuje následující výhody:
+Zřizování cloudu Azure AD Connect je nový agent Microsoftu navržený tak, aby splnil a splnil vaše hybridní cíle identity pro synchronizaci uživatelů, skupin a kontaktů do Azure AD.  Dá se použít společně Azure AD Connect synchronizaci a nabízí následující výhody:
     
-- Podpora pro synchronizaci s tenantem Azure AD z vícedoménového prostředí doménové struktury služby Active Directory: Mezi běžné scénáře patří fúze & akvizice, kde jsou doménové struktury služby AD získané společnosti izolovány od doménových struktur služby AD nadřazené společnosti a společností, které měly v minulosti více doménových struktur služby AD.
-- Zjednodušená instalace s agenty pro zřizování s lehkou hmotností: Agenti fungují jako most ze služby AD do služby Azure AD se všemi konfiguracemi synchronizace spravovanými v cloudu. 
-- Více zřizovacích agentů lze použít ke zjednodušení nasazení s vysokou dostupností, zvláště důležité pro organizace, které spoléhají na synchronizaci hodnot hash hesla ze služby AD do služby Azure AD.
+- Podpora synchronizace s klientem služby Azure AD z prostředí s odpojenou doménovou strukturou služby Active Directory s více doménovými strukturami: mezi běžné scénáře patří & akvizice, kde jsou izolované doménové struktury služby AD získanou firmou a společnosti, které mají historicky více doménových struktur služby AD.
+- Zjednodušená instalace s lehkými zřizovacími agenty: agenti působí jako most ze služby AD do služby Azure AD a všechny konfigurace synchronizace spravované v cloudu. 
+- K zjednodušení nasazení s vysokou dostupností je možné použít víc agentů zřizování, zvláště důležité pro organizace, které se spoléhají na synchronizaci hodnot hash hesel ze služby AD do Azure AD.
 
 
 ![Co je služba Azure AD Connect](media/what-is-cloud-provisioning/architecture.png)
 
-## <a name="how-is-azure-ad-connect-cloud-provisioning-different-from-azure-ad-connect-sync"></a>Jak se zřizování cloudu Azure AD Connect liší od synchronizace Azure AD Connect?
-Díky zřizování cloudu Azure AD Connect se zřizování ze služby AD do Azure AD řídí ve službách Microsoft Online Services. Organizace potřebuje pouze nasadit, v jejich místní a IaaS hostované prostředí, lehký agent, který funguje jako most mezi Azure AD a AD. Konfigurace zřizování je uložená ve službě Azure AD a spravována jako součást služby.
+## <a name="how-is-azure-ad-connect-cloud-provisioning-different-from-azure-ad-connect-sync"></a>Jak se Azure AD Connect cloudové zřizování liší od Azure AD Connect synchronizace?
+Při zřizování cloudu Azure AD Connect se zřizování ze služby AD do služby Azure AD orchestruje v online službách Microsoftu. Organizace potřebuje nasadit, ve svém místním a IaaS prostředí, což je jednoduchý agent, který funguje jako most mezi Azure AD a AD. Konfigurace zřizování je uložená v Azure AD a spravovaná jako součást služby.
 
-Následující tabulka obsahuje porovnání mezi Azure AD Connect a Azure AD Connect zřizování cloudu:
+Následující tabulka poskytuje srovnání mezi Azure AD Connect a Azure AD Connectm zřizováním cloudu:
 
-| Funkce | Synchronizace služby Azure Active Directory Connect| Zřizování cloudu služby Azure Active Directory Connect |
+| Funkce | Azure Active Directory Connect synchronizace| Zřizování cloudu Azure Active Directory Connect |
 |:--- |:---:|:---:|
 |Připojení k jedné místní doménové struktuře AD|● |● |
 | Připojení k několika místním doménovým strukturám AD |● |● |
-| Připojení k více odpojeným místním doménovým strukturám služby AD | |● |
-| Model instalace s lehkým agentem | |● |
-| Více aktivních agentů pro vysokou dostupnost | |● |
-| Připojení k adresářům LDAP|●| | 
+| Připojení k několika odpojeným místním doménovým strukturám AD | |● |
+| Model instalace pro odlehčené agenty | |● |
+| Víc aktivních agentů pro vysokou dostupnost | |● |
+| Připojit k adresářům LDAP|●| | 
 | Podpora uživatelských objektů |● |● |
-| Podpora skupinových objektů |● |● |
-| Podpora kontaktních objektů |● |● |
-| Podpora objektů zařízení |● | |
-| Povolit základní přizpůsobení pro toky atributů |● |● |
-| Sychronize Exchange online atributy |● |● |
+| Podpora pro objekty skupiny |● |● |
+| Podpora pro objekty kontaktů |● |● |
+| Podpora pro objekty zařízení |● | |
+| Umožňuje základní přizpůsobení toků atributů. |● |● |
+| Sychronize atributy Exchange Online |● |● |
 | Synchronizovat atributy rozšíření 1-15 |● |● |
-| Synchronizace atributů AD definovaných zákazníkem (rozšíření adresářů) |● | |
-| Podpora synchronizace hash hesel |●|●|
-| Podpora předcházejícího ověřování |●||
-| Podpora federace |●|●|
+| Synchronizace atributů AD definovaných zákazníkem (rozšíření adresáře) |● | |
+| Podpora synchronizace hodnot hash hesel |●|●|
+| Podpora předávacího ověřování |●||
+| Podpora pro federaci |●|●|
 | Bezproblémové jednotné přihlašování|● |●|
 | Podporuje instalaci na řadič domény |● |● |
 | Podpora pro Windows Server 2012 a Windows Server 2012 R2 |● |● |
-| Filtrování domén/vu/skupin |● |● |
-| Filtrování hodnot atributů objektů |● | |
+| Filtrování domén/organizačních jednotek/skupin |● |● |
+| Filtrovat hodnoty atributů objektů |● | |
 | Povolení minimální sady atributů, které mají být synchronizovány (MinSync) |● |● |
 | Povolení odebrání atributů z toku ze služby AD do služby Azure AD |● |● |
 | Povolení upřesňujících úprav pro toky atributů |● | |
 | Podpora zpětného zápisu (hesla, zařízení, skupiny) |● | |
-| Podpora doménových služeb Azure AD|● | |
-| [Exchange hybridní zpětný zápis](../hybrid/reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback) |● | |
-| Podpora více než 50 000 objektů na doménu služby AD |● | |
+| Podpora Azure AD Domain Services|● | |
+| [Hybridní zpětný zápis systému Exchange](../hybrid/reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback) |● | |
+| Podpora více než 50 000 objektů na doménu AD |● | |
 
 ## <a name="next-steps"></a>Další kroky 
 

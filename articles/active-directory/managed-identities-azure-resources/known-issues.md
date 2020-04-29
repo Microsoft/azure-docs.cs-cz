@@ -1,5 +1,5 @@
 ---
-title: Časté otázky a známé problémy se spravovanými identitami – Azure AD
+title: Nejčastější dotazy a známé problémy se spravovanými identitami – Azure AD
 description: Známé problémy se spravovanými identitami pro prostředky Azure.
 services: active-directory
 documentationcenter: ''
@@ -17,106 +17,106 @@ ms.date: 12/12/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f0f0c678f2426d9de58d2ab337c56243394b4d0f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79266530"
 ---
-# <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Časté otázky a známé problémy se spravovanými identitami pro prostředky Azure
+# <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Nejčastější dotazy a známé problémy se spravovanými identitami pro prostředky Azure
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-## <a name="frequently-asked-questions-faqs"></a>Nejčastější dotazy (ČASTÉ OTÁZKY)
+## <a name="frequently-asked-questions-faqs"></a>Nejčastější dotazy
 
 > [!NOTE]
 > Spravované identity prostředků Azure jsou novým názvem služby, která se dříve jmenovala Identita spravované služby (MSI).
 
-### <a name="does-managed-identities-for-azure-resources-work-with-azure-cloud-services"></a>Fungují spravované identity pro prostředky Azure s Cloudovými službami Azure?
+### <a name="does-managed-identities-for-azure-resources-work-with-azure-cloud-services"></a>Pracují spravované identity prostředků Azure se službou Azure Cloud Services?
 
-Ne, neexistují žádné plány na podporu spravovaných identit pro prostředky Azure v Cloudservices Azure.
+Ne, neexistují žádné plány na podporu spravovaných identit pro prostředky Azure v Azure Cloud Services.
 
-### <a name="does-managed-identities-for-azure-resources-work-with-the-active-directory-authentication-library-adal-or-the-microsoft-authentication-library-msal"></a>Fungují spravované identity pro prostředky Azure s knihovnou ověřování služby Active Directory (ADAL) nebo s knihovnou Ověřování Microsoft (MSAL)?
+### <a name="does-managed-identities-for-azure-resources-work-with-the-active-directory-authentication-library-adal-or-the-microsoft-authentication-library-msal"></a>Pracují spravované identity prostředků Azure pomocí Active Directory Authentication Library (ADAL) nebo knihovny Microsoft Authentication Library (MSAL)?
 
 Ne, spravované identity pro prostředky Azure ještě nejsou integrované s ADAL nebo MSAL. Podrobnosti o získání tokenu pro spravované identity pro prostředky Azure pomocí koncového bodu REST najdete v tématu [Jak používat spravované identity pro prostředky Azure na virtuálním počítači Azure k získání přístupového tokenu](how-to-use-vm-token.md).
 
 ### <a name="what-is-the-security-boundary-of-managed-identities-for-azure-resources"></a>Jaká je hranice zabezpečení spravovaných identit pro prostředky Azure?
 
-Hranice zabezpečení identity je prostředek, ke kterému je připojen. Například hranice zabezpečení pro virtuální počítač s povolenými spravovanými identitami pro prostředky Azure je virtuální počítač. Jakýkoli kód spuštěný na tomto virtuálním počítači, je možné volat spravované identity pro koncový bod prostředků Azure a požadavky na tokeny. Je to podobné prostředí s jinými prostředky, které podporují spravované identity pro prostředky Azure.
+Hranice zabezpečení identity je prostředek, ke kterému je připojen. Například hranice zabezpečení pro virtuální počítač se spravovanými identitami pro prostředky Azure je virtuální počítač. Jakýkoli kód běžící na tomto virtuálním počítači může volat spravované identity pro koncový bod prostředků Azure a žádat tokeny. Podobně jako u jiných prostředků, které podporují spravované identity prostředků Azure, se jedná o podobné prostředí.
 
-### <a name="what-identity-will-imds-default-to-if-dont-specify-the-identity-in-the-request"></a>Jakou identitu bude imds výchozí, pokud nezadá identitu v požadavku?
+### <a name="what-identity-will-imds-default-to-if-dont-specify-the-identity-in-the-request"></a>Jakou identitu bude IMDS výchozí, pokud nezadáte identitu v žádosti?
 
-- Pokud je povolena spravovaná identita přiřazená systémem a v požadavku není zadána žádná identita, služba IMDS bude ve výchozím nastavení nastavena na systém přiřazenou spravovanou identitu.
-- Pokud systém přiřazená spravovaná identita není povolena a existuje pouze jeden uživatel přiřazený spravovanou identitu, služba IMDS bude ve výchozím nastavení nastavena na tuto spravovanou identitu přiřazenou jedním uživatelem. 
-- Pokud systém přiřazená spravovaná identita není povolena a existuje více uživatelů přiřazených spravovaných identit, je vyžadováno zadání spravované identity v požadavku.
+- Pokud je povolená spravovaná identita přiřazená systémem a v požadavku není zadaná žádná identita, IMDS se použije jako výchozí pro spravovanou identitu přiřazenou systémem.
+- Pokud není povolená spravovaná identita přiřazená systémem a existuje jenom jedna spravovaná identita přiřazená uživatelem, IMDS se použije jako výchozí pro tento jediný uživatel přiřazenou spravovanou identitu. 
+- Pokud není povolená spravovaná identita přiřazená systémem a existuje víc spravovaných identit přiřazených uživateli, pak se vyžaduje určení spravované identity v žádosti.
 
-### <a name="should-i-use-the-managed-identities-for-azure-resources-imds-endpoint-or-the-vm-extension-endpoint"></a>Mám použít spravované identity pro koncový bod IMDS prostředků Azure nebo koncový bod rozšíření virtuálního počítače?
+### <a name="should-i-use-the-managed-identities-for-azure-resources-imds-endpoint-or-the-vm-extension-endpoint"></a>Mám použít spravované identity pro Azure Resources IMDS nebo koncový bod rozšíření virtuálních počítačů?
 
-Když používáte spravované identity pro prostředky Azure s virtuálními počítači, doporučujeme použít koncový bod IMDS. Služba metadat instance Azure je koncový bod REST přístupný všem virtuálním počítačům IaaS vytvořeným prostřednictvím Správce prostředků Azure. 
+Pokud používáte spravované identity pro prostředky Azure s virtuálními počítači, doporučujeme použít koncový bod IMDS. Azure Instance Metadata Service je koncový bod REST dostupný všem virtuálním počítačům s IaaS vytvořeným prostřednictvím Azure Resource Manager. 
 
-Některé výhody používání spravovaných identit pro prostředky Azure přes IMDS jsou:
-- Všechny operační systémy podporované Azure IaaS můžou používat spravované identity pro prostředky Azure přes IMDS.
-- K povolení spravovaných identit pro prostředky Azure už není potřeba instalovat rozšíření na virtuální počítač. 
-- Certifikáty používané spravovanými identitami pro prostředky Azure už ve virtuálním počítači nejsou k dispozici.
-- Koncový bod IMDS je dobře známá nesměrovatelná IP adresa, která je dostupná pouze z virtuálního počítačů.
-- 1000 uživatelem přiřazené spravované identity lze přiřadit k jednomu virtuálnímu virtuálnímu jevu. 
+Mezi výhody použití spravovaných identit pro prostředky Azure přes IMDS patří:
+- Všechny podporované operační systémy Azure IaaS můžou používat spravované identity pro prostředky Azure prostřednictvím IMDS.
+- Už nemusíte instalovat rozšíření na VIRTUÁLNÍm počítači, aby se povolily spravované identity pro prostředky Azure. 
+- Certifikáty používané spravovanými identitami pro prostředky Azure už ve virtuálním počítači nejsou.
+- Koncový bod IMDS je dobře známá IP adresa, která není směrovatelný, dostupná jenom v rámci virtuálního počítače.
+- k jednomu virtuálnímu počítači se dají přiřadit 1000 uživatelsky přiřazených spravovaných identit. 
 
-Spravované identity pro rozšíření virtuálních zařízení Azure prostředky je stále k dispozici; však již nevyvíjíme nové funkce na něm. Doporučujeme přepnout na použití koncového bodu IMDS. 
+Rozšíření spravované identity pro prostředky Azure Resources je stále k dispozici; už ale nevyvíjíme nové funkce. Doporučujeme, abyste přepnuli na použití koncového bodu IMDS. 
 
-Některá omezení použití koncového bodu rozšíření virtuálního aplikace jsou:
-- Omezená podpora pro distribuce Linuxu: CoreOS Stable, CentOS 7.1, Red Hat 7.2, Ubuntu 15.04, Ubuntu 16.04
-- K virtuálnímu virtuálnímu soudu lze přiřadit jenom 32 spravovaných identit přiřazených uživatelům.
+Některá omezení používání koncového bodu rozšíření virtuálních počítačů jsou:
+- Omezená podpora pro distribuce Linux: CoreOS stabilní, CentOS 7,1, Red Hat 7,2, Ubuntu 15,04, Ubuntu 16,04
+- K virtuálnímu počítači se dají přiřadit jenom 32 spravované identity přiřazené uživateli.
 
 
-Poznámka: Spravované identity pro rozšíření virtuálních her azure prostředků bude mimo podporu v lednu 2019. 
+Poznámka: v lednu 2019 se rozšíření Managed identity for Azure Resources Extension nebude podporovat. 
 
-Další informace o službě metadat instanci Azure najdete v [dokumentaci k IMDS.](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)
+Další informace o Azure Instance Metadata Service najdete v [dokumentaci k IMDS](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service) .
 
-### <a name="will-managed-identities-be-recreated-automatically-if-i-move-a-subscription-to-another-directory"></a>Budou spravované identity automaticky znovu vytvořeny, pokud přesunem předplatné do jiného adresáře?
+### <a name="will-managed-identities-be-recreated-automatically-if-i-move-a-subscription-to-another-directory"></a>Budou spravované identity znovu automaticky vytvořeny při přesunu předplatného do jiného adresáře?
 
-Ne. Pokud přesunete předplatné do jiného adresáře, budete muset ručně znovu vytvořit a udělit přiřazení rolí Azure RBAC znovu.
-- Pro systém přiřazené spravované identity: zakázat a znovu povolit. 
-- Pro uživatele přiřazené spravované identity: odstranit, znovu vytvořit a znovu připojit k potřebným prostředkům (např. virtuální počítače)
+Ne. Pokud přesunete předplatné do jiného adresáře, budete ho muset ručně znovu vytvořit a znovu udělit přiřazení role Azure RBAC.
+- Pro spravované identity přiřazené systémem: zakažte a znovu povolte. 
+- Pro spravované identity přiřazené uživateli: Odstraňte, znovu ho vytvořte a znovu připojte k potřebným prostředkům (např. virtuální počítače).
 
-### <a name="can-i-use-a-managed-identity-to-access-a-resource-in-a-different-directorytenant"></a>Je možné použít spravovanou identitu pro přístup k prostředku v jiném adresáři/tenantovi?
+### <a name="can-i-use-a-managed-identity-to-access-a-resource-in-a-different-directorytenant"></a>Můžu použít spravovanou identitu pro přístup k prostředkům v jiném adresáři nebo tenantovi?
 
-Ne. Spravované identity aktuálně nepodporují scénáře mezi adresáři. 
+Ne. Spravované identity v současné době nepodporují scénáře pro více adresářů. 
 
-### <a name="what-azure-rbac-permissions-are-required-to-managed-identity-on-a-resource"></a>Jaká oprávnění Azure RBAC jsou vyžadována pro spravovanou identitu na prostředku? 
+### <a name="what-azure-rbac-permissions-are-required-to-managed-identity-on-a-resource"></a>Jaká oprávnění Azure RBAC jsou vyžadována pro spravovanou identitu prostředku? 
 
-- Spravovaná identita přiřazená systémem: Potřebujete oprávnění k zápisu přes prostředek. Například v případě virtuálních počítačů potřebujete oprávnění Microsoft.Compute/virtualMachines/write. Tato akce je součástí předdefinovaných rolí specifických pro prostředky, jako je [přispěvatel virtuálního počítače](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#virtual-machine-contributor).
-- Uživatelem přiřazená spravovaná identita: Potřebujete oprávnění k zápisu přes prostředek. Například v případě virtuálních počítačů potřebujete oprávnění Microsoft.Compute/virtualMachines/write. Kromě přiřazení role [spravovaného operátoru identity](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-operator) přes spravovanou identitu.
+- Spravovaná identita přiřazená systémem: ke zdroji potřebujete oprávnění k zápisu. Například v případě virtuálních počítačů potřebujete oprávnění Microsoft.Compute/virtualMachines/write. Tato akce je zahrnutá v předdefinovaných rolích specifických pro prostředky, jako je [Přispěvatel virtuálních počítačů](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#virtual-machine-contributor).
+- Spravovaná identita přiřazená uživatelem: k prostředku potřebujete oprávnění k zápisu. Například v případě virtuálních počítačů potřebujete oprávnění Microsoft.Compute/virtualMachines/write. Kromě spravované identity se přiřazení role [operátora identity](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-operator) .
 
 ### <a name="how-do-you-restart-the-managed-identities-for-azure-resources-extension"></a>Jak restartujete spravované identity pro rozšíření prostředků Azure?
-V systému Windows a některých verzích Linuxu, pokud se rozšíření zastaví, může být k ručnímu restartování použita následující rutina:
+Pokud se rozšíření zastaví na Windows a určitých verzích Linux, dá se k ručnímu restartování použít následující rutina:
 
 ```powershell
 Set-AzVMExtension -Name <extension name>  -Type <extension Type>  -Location <location> -Publisher Microsoft.ManagedIdentity -VMName <vm name> -ResourceGroupName <resource group name> -ForceRerun <Any string different from any last value used>
 ```
 
 Kde: 
-- Název a typ rozšíření systému Windows je: ManagedIdentityExtensionForWindows
+- Název a typ rozšíření pro Windows je: ManagedIdentityExtensionForWindows.
 - Název a typ rozšíření pro Linux je: ManagedIdentityExtensionForLinux
 
 ## <a name="known-issues"></a>Známé problémy
 
-### <a name="automation-script-fails-when-attempting-schema-export-for-managed-identities-for-azure-resources-extension"></a>"Automatizační skript" se nezdaří při pokusu o export schématu pro spravované identity pro rozšíření prostředků Azure
+### <a name="automation-script-fails-when-attempting-schema-export-for-managed-identities-for-azure-resources-extension"></a>Při pokusu o export schématu pro spravované identity pro rozšíření prostředků Azure dojde k chybě skriptu služby Automation.
 
-Když spravované identity pro prostředky Azure je povolena na virtuálním počítači, zobrazí se následující chyba při pokusu o použití funkce "Automatizační skript" pro virtuální počítač nebo jeho skupinu prostředků:
+Pokud jsou na virtuálním počítači povolené spravované identity prostředků Azure, při pokusu o použití funkce skript Automation pro virtuální počítač nebo jeho skupiny prostředků se zobrazí následující chyba:
 
-![Chyby exportu skriptu pro spravované identity pro automatizační skripty azure](./media/msi-known-issues/automation-script-export-error.png)
+![Spravované identity pro Azure Resources Automation – chyba exportu skriptu](./media/msi-known-issues/automation-script-export-error.png)
 
-Spravované identity pro rozšíření virtuálních zařízení azure prostředků (plánované pro vyřazení v lednu 2019) aktuálně nepodporuje možnost exportu jeho schéma do šablony skupiny prostředků. V důsledku toho vygenerovaná šablona nezobrazuje parametry konfigurace, které by umožnily spravované identity pro prostředky Azure v prostředku. Tyto oddíly lze přidat ručně podle příkladů v [konfigurovat spravované identity pro prostředky Azure na virtuálním počítači Azure pomocí šablon](qs-configure-template-windows-vm.md).
+Rozšíření virtuálních počítačů spravovaných identit pro prostředky Azure (naplánované pro vyřazení v lednu 2019) v současné době nepodporuje možnost exportu schématu do šablony skupiny prostředků. V důsledku toho vygenerovaná šablona nezobrazuje parametry konfigurace umožňující spravované identity prostředků Azure v prostředku. Tyto oddíly můžete přidat ručně podle příkladů v části [Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí šablon](qs-configure-template-windows-vm.md).
 
-Když bude funkce exportu schématu dostupná pro spravované identity pro rozšíření virtuálního počítače azure prostředků (plánované pro vyřazení v lednu 2019), bude uvedená v [exportu skupin prostředků, které obsahují rozšíření virtuálních účtů](../../virtual-machines/extensions/export-templates.md#supported-virtual-machine-extensions).
+Jakmile budou k dispozici funkce exportu schématu pro rozšíření spravované identity pro prostředky Azure Resources (plánováno pro vyřazení do ledna 2019), bude se zobrazovat v části [Export skupin prostředků, které obsahují rozšíření virtuálních počítačů](../../virtual-machines/extensions/export-templates.md#supported-virtual-machine-extensions).
 
-### <a name="vm-fails-to-start-after-being-moved-from-resource-group-or-subscription"></a>Virtuální ms se nepodařilo spustit po přesunutí ze skupiny prostředků nebo předplatného
+### <a name="vm-fails-to-start-after-being-moved-from-resource-group-or-subscription"></a>Spuštění virtuálního počítače po přesunutí ze skupiny prostředků nebo předplatného se nezdařilo.
 
-Pokud přesunete virtuální ho ve spuštěném stavu, bude nadále spouštět během přesunu. Však po přesunutí, pokud je virtuální hod zastavena a restartována, se nezdaří spustit. K tomuto problému dochází, protože virtuální počítač není aktualizace odkazu na spravované identity pro identitu prostředků Azure a nadále odkazovat na něj ve staré skupině prostředků.
+Pokud virtuální počítač přesunete do běžícího stavu, během přesunu se i nadále spustí. Pokud se ale virtuální počítač zastaví a restartuje, po přesunutí se jeho spuštění nezdaří. K tomuto problému dochází, protože virtuální počítač neaktualizuje odkaz na spravované identity pro prostředky prostředků Azure a i nadále odkazuje na něj ve staré skupině prostředků.
 
-**Řešení** 
+**Odstraníte** 
  
-Aktivuj te aktualizaci na virtuálním počítači, aby mohl získat správné hodnoty pro spravované identity pro prostředky Azure. Můžete provést změnu vlastnosti virtuálního počítače a aktualizovat odkaz na spravované identity pro identitu prostředků Azure. Můžete například nastavit novou hodnotu značky na virtuálním počítači pomocí následujícího příkazu:
+Aktivujte na virtuálním počítači aktualizaci, aby mohla získat správné hodnoty pro spravované identity prostředků Azure. Změnou vlastnosti virtuálního počítače můžete aktualizovat odkaz na spravované identity pro identitu prostředků Azure. Můžete například nastavit novou hodnotu značky na virtuálním počítači pomocí následujícího příkazu:
 
 ```azurecli-interactive
  az  vm update -n <VM Name> -g <Resource Group> --set tags.fixVM=1
@@ -124,30 +124,30 @@ Aktivuj te aktualizaci na virtuálním počítači, aby mohl získat správné h
  
 Tento příkaz nastaví novou značku "fixVM" s hodnotou 1 na virtuálním počítači. 
  
-Nastavením této vlastnosti se virtuální počítač aktualizuje se správnými spravovanými identitami pro identifikátor URI prostředků prostředků Azure a pak byste měli být schopni spustit virtuální počítač. 
+Nastavením této vlastnosti se virtuální počítač aktualizuje se správnými spravovanými identitami pro identifikátor URI prostředku prostředků Azure a pak byste měli být schopni virtuální počítač spustit. 
  
-Po spuštění virtuálního virtuálního aplikace lze značku odebrat pomocí následujícího příkazu:
+Po spuštění virtuálního počítače se dá značku odebrat pomocí následujícího příkazu:
 
 ```azurecli-interactive
 az vm update -n <VM Name> -g <Resource Group> --remove tags.fixVM
 ```
 
-### <a name="vm-extension-provisioning-fails"></a>Zřizování rozšíření virtuálního míse se nezdaří
+### <a name="vm-extension-provisioning-fails"></a>Zřizování rozšíření virtuálního počítače se nezdařilo
 
-Zřizování rozšíření virtuálního virtuálního serveru může selhat z důvodu selhání vyhledávání DNS. Restartujte virtuální počítač a akci opakujte.
+Zřizování rozšíření virtuálního počítače může selhat kvůli selhání vyhledávání DNS. Restartujte virtuální počítač a zkuste to znovu.
  
 > [!NOTE]
-> Rozšíření virtuálního provozu je plánováno na vyřazení do ledna 2019. Doporučujeme přejít k použití koncového bodu IMDS.
+> Rozšíření virtuálního počítače se plánuje pro vyřazení do ledna 2019. Doporučujeme, abyste se přesunuli na použití koncového bodu IMDS.
 
-### <a name="transferring-a-subscription-between-azure-ad-directories"></a>Přenos předplatného mezi adresáři Azure AD
+### <a name="transferring-a-subscription-between-azure-ad-directories"></a>Převod předplatného mezi adresáři služby Azure AD
 
-Spravované identity se neaktualizují při přesunutí nebo přenosu předplatného do jiného adresáře. V důsledku toho budou poškozeny všechny existující spravované identity přiřazené systémem nebo uživatelem. 
+Spravované identity se při přesunu nebo přenosu předplatného do jiného adresáře neaktualizují. V důsledku toho budou přerušeny všechny existující spravované identity přiřazené systémem nebo uživatelem. 
 
-Řešení pro spravované identity v předplatném, které bylo přesunuto do jiného adresáře:
+Alternativní řešení pro spravované identity v předplatném, které se přesunulo do jiného adresáře:
 
- - Pro systém přiřazené spravované identity: zakázat a znovu povolit. 
- - Pro uživatele přiřazené spravované identity: odstranit, znovu vytvořit a znovu připojit k potřebným prostředkům (např. virtuální počítače)
+ - Pro spravované identity přiřazené systémem: zakažte a znovu povolte. 
+ - Pro spravované identity přiřazené uživateli: Odstraňte, znovu ho vytvořte a znovu připojte k potřebným prostředkům (např. virtuální počítače).
 
-### <a name="moving-a-user-assigned-managed-identity-to-a-different-resource-groupsubscription"></a>Přesunutí spravované identity přiřazené uživateli do jiné skupiny prostředků/předplatného
+### <a name="moving-a-user-assigned-managed-identity-to-a-different-resource-groupsubscription"></a>Přesunutí spravované identity přiřazené uživatelem do jiné skupiny prostředků nebo předplatného
 
-Přesunutí spravované identity přiřazené uživateli do jiné skupiny prostředků způsobí, že se identita přeruší. V důsledku toho prostředky (např. virtuální ms) pomocí této identity nebude moci požadovat tokeny pro něj. 
+Přesunutím spravované identity přiřazené uživatelem do jiné skupiny prostředků dojde k přerušení identity. V důsledku toho prostředky (např. virtuální počítač) používající tuto identitu nebudou moci žádat o tokeny. 

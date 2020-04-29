@@ -1,6 +1,6 @@
 ---
-title: Správa Azure Data Box, Azure Data Box Heavy přes portál Azure | Dokumenty společnosti Microsoft
-description: Popisuje, jak používat portál Azure ke správě Azure Data Box a Azure Data Box Heavy.
+title: Správa Azure Data Box, Azure Data Box Heavy přes Azure Portal | Microsoft Docs
+description: Popisuje, jak použít Azure Portal ke správě Azure Data Box a Azure Data Box Heavy.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,22 +9,22 @@ ms.topic: article
 ms.date: 08/07/2019
 ms.author: alkohli
 ms.openlocfilehash: 581f95bd813445d2cc9bd83d91917ea83f0bf04f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79259991"
 ---
-# <a name="use-the-azure-portal-to-administer-your-azure-data-box-and-azure-data-box-heavy"></a>Správa Azure Data Box a Azure Data Box Heavy pomocí portálu Azure Portal
+# <a name="use-the-azure-portal-to-administer-your-azure-data-box-and-azure-data-box-heavy"></a>Pomocí Azure Portal můžete spravovat Azure Data Box a Azure Data Box Heavy
 
-Tento článek se vztahuje na Azure Data Box a Azure Data Box Heavy. Tento článek popisuje některé složité pracovní postupy a úlohy správy, které lze provádět na zařízení Azure Data Box. Zařízení Data Box můžete spravovat prostřednictvím portálu Azure nebo prostřednictvím místního webového uživatelského rozhraní.
+Tento článek se týká Azure Data Box i Azure Data Box Heavy. Tento článek popisuje některé komplexní pracovní postupy a úlohy správy, které je možné provádět na Azure Data Boxm zařízení. Zařízení Data Box můžete spravovat přes Azure Portal nebo prostřednictvím místního webového uživatelského rozhraní.
 
-Tento článek se zaměřuje na úlohy, které můžete provést pomocí webu Azure Portal. Na webu Azure Portal můžete spravovat objednávky, spravovat zařízení Data Box a sledovat stav objednávky podle toho, jak pokračuje po dokončení.
+Tento článek se zaměřuje na úlohy, které můžete provést pomocí webu Azure Portal. Pomocí Azure Portal můžete spravovat objednávky, spravovat Data Box zařízení a sledovat stav objednávky v průběhu jejich dokončení.
 
 
 ## <a name="cancel-an-order"></a>Zrušení objednávky
 
-Může se stát, že po zadání objednávky budete muset tuto objednávku z různých důvodů zrušit. Objednávku je možné zrušit jen do doby, než je zpracována. Jakmile je objednávka zpracována a zařízení Data Box připraveno, není možné objednávku zrušit.
+Může se stát, že po zadání objednávky budete muset tuto objednávku z různých důvodů zrušit. Objednávku je možné zrušit jen do doby, než je zpracována. Po zpracování objednávky a přípravné Data Box zařízení není možné objednávku zrušit.
 
 Když chcete zrušit objednávku, postupujte následovně.
 
@@ -40,7 +40,7 @@ Když chcete zrušit objednávku, postupujte následovně.
 
 ## <a name="clone-an-order"></a>Klonování objednávky
 
-V některých situacích může být užitečné klonování. Uživatel například používá Data Box k přenosu dat. Při generování dalších dat je potřeba pro přenos dat do Azure další zařízení Data Box. V takovém případě se dá stejná objednávka jednoduše naklonovat.
+V některých situacích může být užitečné klonování. Uživatel například používá Data Box k přenosu dat. Když se generují víc dat, potřebuje další Data Box zařízení pro přenos těchto dat do Azure. V takovém případě se dá stejná objednávka jednoduše naklonovat.
 
 Pokud chcete naklonovat objednávku, proveďte následující kroky.
 
@@ -65,11 +65,11 @@ Odstranit se dají jenom dokončené nebo zrušené objednávky. Pokud chcete od
 
     ![Odstranění první objednávky Data Boxu](media/data-box-portal-admin/delete-order1.png)
 
-3. Po zobrazení výzvy k potvrzení odstranění objednávky zadejte název objednávky. Klepněte na **tlačítko Odstranit**.
+3. Po zobrazení výzvy k potvrzení odstranění objednávky zadejte název objednávky. Klikněte na **Odstranit**.
 
 ## <a name="download-shipping-label"></a>Stažení expedičního štítku
 
-Pokud displej E-ink vašeho Data Boxu nefunguje a nezobrazuje zpětný expediční štítek, budete možná muset expediční štítek stáhnout. Na datové schránce Heavy není žádný displej e-inkoustu, a proto se tento pracovní postup nevztahuje na Data Box Heavy.
+Pokud displej E-ink vašeho Data Boxu nefunguje a nezobrazuje zpětný expediční štítek, budete možná muset expediční štítek stáhnout. Na Data Box Heavy se nezobrazuje žádný displej s tiskem, takže tento pracovní postup neplatí pro Data Box Heavy.
 
 Pokud chcete stáhnout expediční štítek, proveďte následující kroky.
 
@@ -77,7 +77,7 @@ Pokud chcete stáhnout expediční štítek, proveďte následující kroky.
 
     ![Stažení expedičního štítku](media/data-box-portal-admin/download-shipping-label.png)
 
-2.  Tato akce stáhne následující zpětný expediční štítek. Uložte štítek a vytiskněte jej. Sklopte a vložte štítek do čirého pouzdra na zařízení. Ujistěte se, že je štítek vidět. Odstraňte všechny nálepky, které jsou na zařízení z předchozí expedice.
+2.  Tato akce stáhne následující zpětný expediční štítek. Uložte popisek a vytiskněte ho. Skládání a vložení popisku do prostého rukávu na zařízení. Ujistěte se, že je štítek vidět. Odstraňte všechny nálepky, které jsou na zařízení z předchozí expedice.
 
     ![Ukázkový expediční štítek](media/data-box-portal-admin/example-shipping-label.png)
 
@@ -97,7 +97,7 @@ Pokud chcete upravit objednávku, proveďte následující kroky.
 
 ## <a name="edit-notification-details"></a>Úprava podrobností o oznámení
 
-Může být potřeba změnit uživatele, kteří mají dostávat e-maily se stavem objednávky. Některý uživatel například může potřebovat informaci o doručení nebo vyzvednutí zařízení. Jiný uživatel může být nutné, aby byl informován po dokončení kopírování dat, aby mohl ověřit, že data jsou v účtu úložiště Azure před jejich odstraněním ze zdroje. V takových případech můžete upravit podrobnosti o oznámení.
+Může být potřeba změnit uživatele, kteří mají dostávat e-maily se stavem objednávky. Některý uživatel například může potřebovat informaci o doručení nebo vyzvednutí zařízení. Po dokončení kopírování dat může být potřeba informovat jiného uživatele, aby před jeho odstraněním ze zdroje mohl ověřit data v účtu služby Azure Storage. V takových případech můžete upravit podrobnosti o oznámení.
 
 Pokud chcete upravit podrobnosti o oznámení, proveďte následující kroky.
 
@@ -120,10 +120,10 @@ Pokud si chcete stáhnout historii objednávky, proveďte následující kroky.
 
     ![Stažení historie objednávky](media/data-box-portal-admin/download-order-history-1.png)
 
-2. Klikněte na **Stáhnout historii objednávky**. Ve stažené historii uvidíte záznam protokolů dopravců o sledování zásilky. K dispozici budou dvě sady protokolu odpovídající dvěma uzlům na datové schránce Heavy. Pokud se posunete do dolní části tohoto protokolu, zobrazí se následující odkazy:
+2. Klikněte na **Stáhnout historii objednávky**. Ve stažené historii uvidíte záznam protokolů dopravců o sledování zásilky. Budou existovat dvě sady protokolů odpovídající dvěma uzlům na Data Box Heavy. Pokud se posunete do dolní části tohoto protokolu, zobrazí se následující odkazy:
     
    - **Copy logs** (Protokoly kopírování) – obsahují seznam souborů, u kterých během kopírování dat z Data Boxu do vašeho účtu úložiště Azure došlo k chybě.
-   - **Protokoly auditu** – obsahují informace o tom, jak zapnout a přistupovat ke sdíleným položkám v datové schránce, když je mimo datové centrum Azure.
+   - **Protokoly auditu** – obsahují informace o tom, jak zapnout a přistupovat ke sdíleným složkám na data box, pokud se nachází mimo datové centrum Azure.
    - **BOM files** (Soubory BOM) – obsahují seznam souborů (označovaný také jako soubor manifestu), které si můžete stáhnout během **přípravy k odeslání**, a zahrnují názvy, velikosti a kontrolní součty souborů.
 
        ```
@@ -207,8 +207,8 @@ Když se stav zařízení na portálu změní, dostanete upozornění prostředn
 |Přijato     | Zařízení bylo přijato a naskenováno v datovém centru Azure. <br> Po kontrole zásilky začne nahrávání dat ze zařízení.      |
 |Kopírování dat     | Probíhá kopírování dat. Sledujte průběh kopírování u vaší objednávky na portálu Azure Portal. <br> Počkejte, dokud se kopírování dat nedokončí. |
 |Dokončeno       |Objednávka se úspěšně dokončila.<br> Než odstraníte data z místních serverů, zkontrolujte, jestli se data objevila v Azure.         |
-|Dokončeno s chybami| Kopírování dat se dokončilo, ale během kopírování došlo k chybám. <br> Zkontrolujte protokoly kopírování pomocí cesty uvedené na portálu Azure Portal. Zobrazit [příklady protokolů kopírování po dokončení nahrávání s chybami](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-errors).   |
-|Doplněno varováním| Kopírování dat bylo dokončeno, ale vaše data byla změněna. Data měla nekritické chyby názvů objektů blob nebo názvů souborů, které byly opraveny změnou názvů souborů nebo objektů blob. <br> Zkontrolujte protokoly kopírování pomocí cesty uvedené na portálu Azure Portal. Poznamenejte si změny v datech. Podívejte se [na příklady protokolů kopírování po dokončení nahrávání s upozorněními](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-warnings).   |
+|Dokončeno s chybami| Kopírování dat se dokončilo, ale během kopírování došlo k chybám. <br> Zkontrolujte protokoly kopírování pomocí cesty uvedené na portálu Azure Portal. Podívejte [se na příklady kopírování protokolů po dokončení nahrávání s chybami](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-errors).   |
+|Dokončeno s upozorněními| Kopírování dat se dokončilo, ale data se změnila. Data obsahovala nekritické chyby objektů BLOB nebo souborů, které byly opraveny změnou názvu souboru nebo objektu BLOB. <br> Zkontrolujte protokoly kopírování pomocí cesty uvedené na portálu Azure Portal. Poznamenejte si úpravy vašich dat. Podívejte [se na příklady kopírování protokolů po dokončení nahrávání s upozorněními](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-warnings).   |
 |Zrušeno            |Došlo ke zrušení objednávky. <br> Buď jste objednávku zrušili, nebo došlo k chybě a objednávku zrušila služba. Pokud objednávku nelze vyřídit do 90 dnů, je objednávka také zrušena a budete upozorněni.     |
 |Vyčištění | Vymažou se data na discích zařízení. Vyčištění zařízení se považuje za dokončené, jakmile je na webu Azure Portal k dispozici ke stažení historie objednávky.|
 
@@ -216,4 +216,4 @@ Když se stav zařízení na portálu změní, dostanete upozornění prostředn
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte [si, jak řešit problémy s datovou schránkou a problémy s datovou schránkou](data-box-troubleshoot.md).
+- Přečtěte si, jak [řešit problémy s data box a data box Heavy](data-box-troubleshoot.md).

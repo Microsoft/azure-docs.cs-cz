@@ -1,6 +1,6 @@
 ---
-title: Řešení Azure VMware od CloudSimple – nastavení brány VPN
-description: Popisuje, jak nastavit bránu VPN z bodu na místo a bránu VPN site-to-site a vytvořit připojení mezi místní sítí a privátním cloudem CloudSimple.
+title: Řešení Azure VMware podle CloudSimple – nastavení brány VPN
+description: Popisuje, jak nastavit bránu VPN typu Point-to-site a bránu VPN typu Site-to-site a vytvořit připojení mezi místní sítí a privátním cloudem CloudSimple.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/14/2019
@@ -9,117 +9,117 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: a8b7e238333196381524d189904871fe5933c906
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79279491"
 ---
-# <a name="set-up-vpn-gateways-on-cloudsimple-network"></a>Nastavení bran VPN v síti CloudSimple
+# <a name="set-up-vpn-gateways-on-cloudsimple-network"></a>Nastavení bran sítě VPN v síti CloudSimple
 
-Brány VPN umožňují připojení k síti CloudSimple z místní sítě a z klientského počítače vzdáleně. Připojení VPN mezi místní sítí a sítí CloudSimple poskytuje přístup k virtuálnímu centru a úlohám ve vašem privátním cloudu. CloudSimple podporuje privátní sítě k webu a brány VPN point-to-site.
+Brány VPN vám umožňují připojit se k CloudSimple síti z místní sítě a z klientského počítače vzdáleně. Připojení VPN mezi vaší místní sítí a vaší sítí CloudSimple zajišťuje přístup k vCenter a úlohám ve vašem privátním cloudu. CloudSimple podporuje sítě VPN typu Site-to-site i brány VPN typu Point-to-site.
 
-## <a name="vpn-gateway-types"></a>Typy brány VPN
+## <a name="vpn-gateway-types"></a>Typy bran VPN
 
-* Připojení **VPN site-to-site** umožňuje nastavit úlohy privátního cloudu pro přístup k místním službám. Místní službu Active Directory můžete také použít jako zdroj identity pro ověřování v programu Private Cloud vCenter.  V současné době je podporován pouze typ **VPN založený na zásadách.**
-* Připojení **VPN z bodu na místo** je nejjednodušší způsob, jak se připojit k privátnímu cloudu z počítače. Připojení VPN z bodu na místo slouží ke vzdálenému připojení k privátnímu cloudu. Informace o instalaci klienta pro připojení VPN bodu na místo naleznete v [tématu Konfigurace připojení VPN k privátnímu cloudu](set-up-vpn.md).
+* Připojení **VPN typu Site-to-site** umožňuje nastavit vaše úlohy privátního cloudu pro přístup k místním službám. K ověřování do vašeho privátního cloudu vCenter můžete použít také místní službu Active Directory jako zdroj identity.  V současné době je podporován pouze typ **sítě VPN založený na zásadách** .
+* Připojení **VPN typu Point-to-site** je nejjednodušší způsob, jak se připojit k privátnímu cloudu z vašeho počítače. Pomocí připojení VPN typu Point-to-site se můžete vzdáleně připojit k privátnímu cloudu. Informace o instalaci klienta pro připojení VPN typu Point-to-site najdete v tématu [Konfigurace připojení VPN k privátnímu cloudu](set-up-vpn.md).
 
-V oblasti můžete vytvořit jednu bránu VPN point-to-site a jednu bránu VPN site-to-site.
+V oblasti můžete vytvořit jednu bránu VPN typu Point-to-site a jednu bránu VPN typu Site-to-site.
 
-## <a name="automatic-addition-of-vlansubnets"></a>Automatické přidávání Sítí VLAN/podsítí
+## <a name="automatic-addition-of-vlansubnets"></a>Automatické přidání VLAN/podsítí
 
-CloudSimple VPN brány poskytují zásady pro přidávání VLAN/podsítí do bran VPN.  Zásady umožňují zadat různá pravidla pro správu sítí VLAN/podsítí a uživatelem definovaných sítí VLAN/podsítí.  Pravidla pro správu vsítích VLAN/podsítí platí pro všechny nové privátní cloudy, které vytvoříte.  Pravidla pro uživatelem definované sítě VLAN/podsítě umožňují automaticky přidávat všechny nové sítě VLAN/podsítě do existujících nebo nových privátních cloudů Pro bránu VPN mezi lokalitami, definujete zásady pro každé připojení.
+Brány VPN CloudSimple poskytují zásady pro přidávání sítí VLAN a podsítí do bran VPN.  Zásady umožňují zadat různá pravidla pro VLAN/podsítě pro správu a uživatelem definované sítě VLAN/podsítě.  Pravidla pro síť VLAN pro správu/podsítě se vztahují na všechny nové privátní cloudy, které vytvoříte.  Pravidla pro uživatelem definované sítě VLAN/podsítě umožňují automaticky přidat všechny nové sítě VLAN nebo podsítě do stávajícího nebo nového privátního cloudu pro bránu VPN typu Site-to-site. Tyto zásady definujete pro každé připojení.
 
-Zásady přidávání sítí VLAN/podsítí do bran VPN se vztahují jak na brány VPN mezi lokalitami, tak na brány VPN z bodu na místo.
+Zásady pro přidávání sítí VLAN a podsítí do bran VPN se vztahují na VPN typu Site-to-site i na brány VPN typu Point-to-site.
 
 ## <a name="automatic-addition-of-users"></a>Automatické přidávání uživatelů
 
-Brána VPN point-to-site umožňuje definovat zásady automatického sčítání pro nové uživatele. Ve výchozím nastavení mají všichni vlastníci a přispěvatelé předplatného přístup k portálu CloudSimple.  Uživatelé jsou vytvořeny pouze při spuštění portálu CloudSimple poprvé.  Výběr automaticky **přidat** pravidla umožňuje každému novému uživateli přístup k síti CloudSimple pomocí připojení VPN bodu na místo.
+Brána sítě VPN typu Point-to-site umožňuje definovat zásady automatického přidávání pro nové uživatele. Ve výchozím nastavení mají všichni vlastníci a přispěvatelé předplatného přístup k portálu CloudSimple.  Uživatelé jsou vytvořeni pouze v případě, že je portál CloudSimple spuštěn poprvé.  Výběrem možnosti **automaticky přidat** pravidla umožníte každému novému uživateli přístup k síti CloudSimple pomocí připojení VPN typu Point-to-site.
 
-## <a name="set-up-a-site-to-site-vpn-gateway"></a>Nastavení brány VPN mezi lokalitami
+## <a name="set-up-a-site-to-site-vpn-gateway"></a>Nastavení brány VPN typu Site-to-site
 
-1. [Přístup k portálu CloudSimple](access-cloudsimple-portal.md) a vyberte **možnost Síť**.
-2. Vyberte **bránu VPN**.
-3. Klepněte na **položku Nová brána VPN**.
+1. [Přejděte na portál CloudSimple](access-cloudsimple-portal.md) a vyberte **síť**.
+2. Vyberte **VPN Gateway**.
+3. Klikněte na **nový VPN Gateway**.
 
     ![Vytvoření brány VPN](media/create-vpn-gateway.png)
 
-4. V **části Konfigurace brány**zadejte následující nastavení a klepněte na tlačítko **Další**.
+4. V části **Konfigurace brány**zadejte následující nastavení a klikněte na **Další**.
 
-    * Jako typ brány vyberte **SÍŤ VPN typu Site-to-Site.**
+    * Jako typ brány vyberte **VPN typu Site-to-site** .
     * Zadejte název pro identifikaci brány.
-    * Vyberte umístění Azure, kde se vaše služba CloudSimple nasazuje.
-    * Volitelně povolte vysokou dostupnost.
+    * Vyberte umístění Azure, kde je vaše služba CloudSimple nasazená.
+    * Volitelně můžete povolit vysokou dostupnost.
 
-    ![Vytvořit bránu VPN mezi lokalitami](media/create-vpn-gateway-s2s.png)
+    ![Vytvoření brány VPN typu Site-to-site](media/create-vpn-gateway-s2s.png)
 
     > [!WARNING]
-    > Povolení vysoké dostupnosti vyžaduje, aby vaše místní zařízení VPN podporovalo připojení ke dvěma IP adresám. Tuto možnost nelze po nasazení brány VPN zakázat.
+    > Povolení vysoké dostupnosti vyžaduje, aby vaše místní zařízení VPN podporovalo připojení ke dvěma IP adresám. Po nasazení služby VPN Gateway nelze tuto možnost zakázat.
 
-5. Vytvořte první připojení z místní sítě a klepněte na tlačítko **Další**.
+5. Vytvořte první připojení z místní sítě a klikněte na **Další**.
 
     * Zadejte název pro identifikaci připojení.
-    * Pro ip adresu druhé strany zadejte veřejnou IP adresu místní brány VPN.
-    * Zadejte identifikátor partnera místní brány VPN.  Identifikátor partnera je obvykle veřejná IP adresa místní brány VPN.  Pokud jste na bránu nakonfigurovali konkrétní identifikátor, zadejte jej.
-    * Zkopírujte sdílený klíč, který chcete použít pro připojení z místní brány VPN.  Chcete-li změnit výchozí sdílený klíč a zadat nový, klepněte na ikonu úprav.
-    * V **případě místních předpon**zadejte místní předpony CIDR, které budou přistupovat k síti CloudSimple.  Při vytváření připojení můžete přidat více předpon CIDR.
+    * V poli IP adresa partnerského uzlu zadejte veřejnou IP adresu místní brány VPN.
+    * Zadejte identifikátor partnerského vztahu místní brány VPN.  Identifikátor partnerského vztahu je obvykle veřejná IP adresa vaší místní brány VPN.  Pokud jste v bráně nakonfigurovali určitý identifikátor, zadejte identifikátor.
+    * Zkopírujte sdílený klíč, který se použije pro připojení z místní brány VPN.  Pokud chcete změnit výchozí sdílený klíč a zadat nový, klikněte na ikonu Upravit.
+    * **V části místní předpony**zadejte místní předpony CIDR, které budou přistupovat k CloudSimple síti.  Při vytváření připojení můžete přidat několik předpon CIDR.
 
-    ![Vytvořit připojení brány VPN mezi lokalitami](media/create-vpn-gateway-s2s-connection.png)
+    ![Vytvoření připojení brány VPN typu Site-to-site](media/create-vpn-gateway-s2s-connection.png)
 
-6. Povolte sítě VLAN/podsítě v privátní cloudové síti, ke které se bude přistupovat z místní sítě, a klepněte na tlačítko **Další**.
+6. Povolte síť VLAN nebo podsítě ve vaší síti privátního cloudu, ke kterým bude mít přistup z místní sítě, a klikněte na **Další**.
 
-    * Chcete-li přidat správu sítě VLAN/podsítě, povolte **možnost Přidat správu sítí VLAN/podsítí privátních cloudů**.  Podsíť pro správu je vyžadována pro podsítě vMotion a vSAN.
-    * Chcete-li přidat podsítě vMotion, povolte **možnost Přidat vPohybovou síť privátních cloudů**.
-    * Chcete-li přidat podsítě vSAN, povolte **přidat podsíť vSAN privátních cloudů**.
-    * Vyberte nebo zrušte výběr konkrétních vlano.
+    * Chcete-li přidat síť VLAN nebo podsíť pro správu, povolte možnost **Přidat sítě VLAN pro správu/podsítě privátních cloudů**.  Pro podsítě vMotion a síti vSAN se vyžaduje podsíť pro správu.
+    * Pokud chcete přidat podsítě vMotion, povolte možnost **Přidat vMotion síť privátních cloudů**.
+    * Pokud chcete přidat podsítě síti vSAN, povolte **Přidání podsítě síti vSAN privátních cloudů**.
+    * Vyberte nebo zrušte výběr konkrétních sítí VLAN.
 
     ![Vytvoření připojení](media/create-vpn-gateway-s2s-connection-vlans.png)
 
-7. Zkontrolujte nastavení a klepněte na tlačítko **Odeslat**.
+7. Zkontrolujte nastavení a klikněte na **Odeslat**.
 
-    ![Kontrola a vytvoření brány VPN site-to-Site](media/create-vpn-gateway-s2s-review.png)
+    ![Kontrola a vytvoření brány VPN typu Site-to-site](media/create-vpn-gateway-s2s-review.png)
 
-## <a name="create-point-to-site-vpn-gateway"></a>Vytvořit bránu VPN point-to-site
+## <a name="create-point-to-site-vpn-gateway"></a>Vytvoření brány VPN typu Point-to-site
 
-1. [Přístup k portálu CloudSimple](access-cloudsimple-portal.md) a vyberte **možnost Síť**.
-2. Vyberte **bránu VPN**.
-3. Klepněte na **položku Nová brána VPN**.
+1. [Přejděte na portál CloudSimple](access-cloudsimple-portal.md) a vyberte **síť**.
+2. Vyberte **VPN Gateway**.
+3. Klikněte na **nový VPN Gateway**.
 
     ![Vytvoření brány VPN](media/create-vpn-gateway.png)
 
-4. V **části Konfigurace brány**zadejte následující nastavení a klepněte na tlačítko **Další**.
+4. V části **Konfigurace brány**zadejte následující nastavení a klikněte na **Další**.
 
-    * Jako typ brány vyberte **bod na web VPN.**
+    * Jako typ brány vyberte **síť VPN typu Point-to-site** .
     * Zadejte název pro identifikaci brány.
-    * Vyberte umístění Azure, kde se vaše služba CloudSimple nasazuje.
-    * Zadejte podsíť klienta pro bránu typu Point-to-Site.  Při připojení budou z podsítě klienta uvedeny adresy DHCP.
+    * Vyberte umístění Azure, kde je vaše služba CloudSimple nasazená.
+    * Zadejte podsíť klienta pro bránu Point-to-site.  Adresy DHCP se budou předávat z klientské podsítě, když se připojíte.
 
-5. V **poli Připojení/Uživatel**zadejte následující nastavení a klepněte na tlačítko **Další**.
+5. V poli **připojení/uživatel**zadejte následující nastavení a klikněte na tlačítko **Další**.
 
-    * Chcete-li automaticky povolit všem současným i budoucím uživatelům přístup k privátnímu cloudu prostřednictvím brány Point-to-Site, vyberte **Automaticky přidat všechny uživatele**. Když vyberete tuto možnost, budou automaticky vybráni všichni uživatelé v seznamu uživatelů. Automatickou volbu můžete přepsat zrušením výběru jednotlivých uživatelů v seznamu.
+    * Pokud chcete všem současným a budoucím uživatelům automaticky dovolit přístup k privátnímu cloudu prostřednictvím brány Point-to-site, vyberte **automaticky přidat všechny uživatele**. Když vyberete tuto možnost, automaticky se vyberou všichni uživatelé v seznamu uživatelů. Automatickou možnost můžete přepsat tak, že zrušíte výběr jednotlivých uživatelů v seznamu.
     * Chcete-li vybrat jednotlivé uživatele, zaškrtněte políčka v seznamu uživatelů.
 
-6. Část Sítě VLAN/podsítě umožňuje určit správu a uživatelské sítě VLAN/podsítě pro bránu a připojení.
+6. V části sítě VLAN a podsítě můžete zadat správu a sítě VLAN a uživatele pro bránu a připojení.
 
-    * **Možnosti automatického přidání** nastavují globální zásady brány. Nastavení platí pro aktuální bránu. Nastavení lze přepsat v oblasti **Vybrat.**
-    * Vyberte **Přidat správu sítí VLAN/podsítí privátních cloudů**. 
-    * Chcete-li přidat všechny uživatelem definované sítě VLAN/podsítě, klepněte na tlačítko **Přidat uživatelem definované sítě VLAN/podsítě**.
-    * Nastavení **výběru** přepíše globální nastavení v části **Automaticky přidat**.
+    * Možnosti **automaticky přidat** můžete nastavit globální zásady pro bránu. Nastavení platí pro aktuální bránu. Nastavení lze přepsat v oblasti **výběru** .
+    * Vyberte **Přidat sítě VLAN pro správu/podsítě privátních cloudů**. 
+    * Pokud chcete přidat všechny sítě VLAN a podsítě definované uživatelem, klikněte na **Přidat uživatelsky definované sítě VLAN/podsítě**.
+    * Nastavení **Vybrat** přepíše globální nastavení v části **automaticky přidat**.
 
-7. Chcete-li zkontrolovat nastavení, klepněte na tlačítko **Další.** Kliknutím na ikony úprav proveďte změny.
-8. Kliknutím na **Vytvořit** vytvořte bránu VPN.
+7. Kliknutím na **Další** zkontrolujte nastavení. Kliknutím na ikony úprav proveďte požadované změny.
+8. Kliknutím na **vytvořit** vytvořte bránu VPN.
 
-### <a name="client-subnet-and-protocols-for-point-to-site-vpn-gateway"></a>Podsíť klienta a protokoly pro bránu VPN bodu na lokalitu
+### <a name="client-subnet-and-protocols-for-point-to-site-vpn-gateway"></a>Podsíť klienta a protokoly pro bránu VPN typu Point-to-site
 
-Brána VPN point-to-site umožňuje připojení TCP a UDP.  Vyberte protokol, který chcete použít při připojení z počítače, výběrem konfigurace Protokolu TCP nebo UDP.
+Brána VPN typu Point-to-site umožňuje připojení TCP a UDP.  Vyberte protokol, který se má použít, když se připojíte z počítače výběrem konfigurace TCP nebo UDP.
 
-Nakonfigurovaná podsíť klienta se používá pro klienty TCP i UDP.  Předpona CIDR je rozdělena do dvou podsítí, jedné pro TCP a jedné pro klienty UDP. Zvolte masku předpony na základě počtu uživatelů VPN, kteří se připojí souběžně.  
+Nakonfigurovaná podsíť klienta se používá pro klienty TCP i UDP.  Předpona CIDR je rozdělená na dvě podsítě, jednu pro TCP a jednu pro klienty UDP. Vyberte masku předpony na základě počtu uživatelů sítě VPN, kteří se budou připojovat souběžně.  
 
-V následující tabulce je uveden počet souběžných klientských připojení pro masku předpony.
+Následující tabulka uvádí počet souběžných připojení klientů pro masku předpony.
 
-| Maska předpony | /24 | /25 | /26 | /27 | /28 |
+| Maska předpony | za 24 | za 25 | za 26 | /27 | za 28 |
 |-------------|-----|-----|-----|-----|-----|
 | Počet souběžných připojení TCP | 124 | 60 | 28 | 12 | 4 |
 | Počet souběžných připojení UDP | 124 | 60 | 28 | 12 | 4 |
 
-Chcete-li se připojit pomocí technologie Point-to-Site VPN, přečtěte si informace [o připojení ke clouduJednoduché pomocí sítě POINT-to-Site VPN](set-up-vpn.md#connect-to-cloudsimple-using-point-to-site-vpn).
+Informace o připojení pomocí sítě VPN typu Point-to-site najdete v tématu [připojení k CloudSimple pomocí sítě VPN typu Point-to-site](set-up-vpn.md#connect-to-cloudsimple-using-point-to-site-vpn).

@@ -1,28 +1,28 @@
 ---
-title: Standardní vlastnosti v záznamech protokolu Azure Monitor | Dokumenty společnosti Microsoft
-description: Popisuje vlastnosti, které jsou společné pro více datových typů v protokolech Azure Monitor.
+title: Standardní vlastnosti v Azure Monitor záznamů protokolu | Microsoft Docs
+description: Popisuje vlastnosti, které jsou v protokolech Azure Monitor společné pro více datových typů.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/18/2019
 ms.openlocfilehash: 252ddeb372744986df0b8ba9b742d0462a4e8202
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79274473"
 ---
-# <a name="standard-properties-in-azure-monitor-logs"></a>Standardní vlastnosti v protokolech monitorování Azure
-Data v protokolech monitorování Azure se [ukládají jako sada záznamů v pracovním prostoru Analýzy protokolů nebo v aplikaci Application Insights](../log-query/logs-structure.md), z nichž každá má určitý datový typ, který má jedinečnou sadu vlastností. Mnoho datových typů bude mít standardní vlastnosti, které jsou společné pro více typů. Tento článek popisuje tyto vlastnosti a poskytuje příklady, jak je můžete použít v dotazech.
+# <a name="standard-properties-in-azure-monitor-logs"></a>Standardní vlastnosti v protokolech Azure Monitor
+Data v Azure Monitor protokoly se [ukládají jako sada záznamů v pracovním prostoru Log Analytics nebo v Application Insights aplikaci](../log-query/logs-structure.md), z nichž každý má konkrétní datový typ, který má jedinečnou sadu vlastností. Mnoho datových typů bude mít standardní vlastnosti, které jsou společné napříč různými typy. Tento článek popisuje tyto vlastnosti a poskytuje příklady, jak je můžete používat v dotazech.
 
 > [!NOTE]
-> Některé standardní vlastnosti se nezobrazí v zobrazení schématu nebo intellisense v Log Analytics a nebudou zobrazovat ve výsledcích dotazu, pokud explicitně nezadáte vlastnost ve výstupu.
+> Některé ze standardních vlastností se v zobrazení schématu nebo IntelliSense v Log Analytics nezobrazí a nebudou se zobrazovat ve výsledcích dotazu, pokud explicitně neurčíte vlastnost ve výstupu.
 
 ## <a name="timegenerated-and-timestamp"></a>TimeGenerated a časové razítko
-**Vlastnosti TimeGenerated** (Log Analytics) a **timestamp** (Application Insights application) obsahují datum a čas, kdy byl záznam vytvořen zdrojem dat. Další podrobnosti najdete [v tématu Doba přihlašování dat protokolu v Azure Monitoru.](data-ingestion-time.md)
+Vlastnosti **TimeGenerated** (Log Analytics pracovní prostor) a **časové razítko** (Application Insights aplikace) obsahují datum a čas vytvoření záznamu zdrojem dat. Další podrobnosti najdete [v tématu čas příjmu dat protokolu v Azure monitor](data-ingestion-time.md) .
 
-**TimeGenerated** a **časové razítko** poskytují společnou vlastnost, která se má použít pro filtrování nebo shrnutí podle času. Když vyberete časový rozsah pro zobrazení nebo řídicí panel na webu Azure Portal, použije TimeGenerated nebo časové razítko k filtrování výsledků. 
+**TimeGenerated** a **timestamp** poskytují společnou vlastnost, která se má použít pro filtrování nebo sumarizaci podle času. Když vyberete časový rozsah zobrazení nebo řídicího panelu v Azure Portal, použije se k filtrování výsledků TimeGenerated nebo časové razítko. 
 
 ### <a name="examples"></a>Příklady
 
@@ -45,10 +45,10 @@ exceptions
 | sort by timestamp asc 
 ```
 
-## <a name="_timereceived"></a>\_Časobí
-Vlastnost ** \_TimeReceived** obsahuje datum a čas, kdy byl záznam přijat bodem ingestování Azure Monitor v cloudu Azure. To může být užitečné pro identifikaci problémů s latencí mezi zdrojem dat a cloudem. Příkladem může být problém se sítí, který způsobuje zpoždění s daty odesílanými od agenta. Další podrobnosti najdete [v tématu Doba přihlašování dat protokolu v Azure Monitoru.](data-ingestion-time.md)
+## <a name="_timereceived"></a>\_TimeReceived
+Vlastnost ** \_TimeReceived** obsahuje datum a čas, kdy byl záznam přijat bodem příjmu Azure monitor v cloudu Azure. To může být užitečné k identifikaci potíží s latencí mezi zdrojem dat a cloudem. Příkladem může být problém se sítí, který způsobuje zpoždění přenášená daty z agenta. Další podrobnosti najdete [v tématu čas příjmu dat protokolu v Azure monitor](data-ingestion-time.md) .
 
-Následující dotaz poskytuje průměrnou latenci po hodině pro záznamy událostí od agenta. To zahrnuje čas od agenta do cloudu a celkový čas pro záznam, který má být k dispozici pro dotazy protokolu.
+Následující dotaz poskytuje průměrnou latenci za hodinu u záznamů událostí od agenta. Patří sem čas od agenta do cloudu a celková doba, po kterou bude záznam pro dotazy protokolu dostupný.
 
 ```Kusto
 Event
@@ -60,7 +60,7 @@ Event
 ``` 
 
 ## <a name="type-and-itemtype"></a>Typ a itemType
-**Vlastnosti Type** (Log Analytics workspace) a **itemType** (Application Insights application) mají název tabulky, ze které byl záznam načten, ze které lze také považovat za typ záznamu. Tato vlastnost je užitečná v dotazech, které kombinují `search` záznamy z více tabulek, jako jsou ty, které používají operátor, k rozlišení mezi záznamy různých typů. **$table** lze použít místo **typu** v některých místech.
+Vlastnosti **typ** (Log Analytics pracovní prostor) a **ItemType** (Application Insights aplikace) obsahují název tabulky, ze které byl záznam načten, a lze jej také představit jako typ záznamu. Tato vlastnost je užitečná v dotazech, které kombinují záznamy z více tabulek, například těch, které `search` používají operátor, k odlišení záznamů různých typů. **$Table** lze použít místo **typu** na některých místech.
 
 ### <a name="examples"></a>Příklady
 Následující dotaz vrátí počet záznamů podle typu shromážděných za poslední hodinu.
@@ -71,20 +71,20 @@ search *
 | summarize count() by Type
 
 ```
-## <a name="_itemid"></a>\_Itemid
+## <a name="_itemid"></a>\_ItemId
 Vlastnost ** \_ItemId** obsahuje jedinečný identifikátor záznamu.
 
 
 ## <a name="_resourceid"></a>\_ResourceId
-Vlastnost ** \_ResourceId** obsahuje jedinečný identifikátor prostředku, ke kterému je záznam přidružen. To vám poskytuje standardní vlastnost, která se používá k oboru dotazu pouze na záznamy z určitého prostředku nebo k připojení souvisejících dat mezi více tabulkami.
+Vlastnost ** \_ResourceID** obsahuje jedinečný identifikátor prostředku, ke kterému je přiřazen záznam. Získáte tak standardní vlastnost, která se má použít k určení oboru dotazu jenom na záznamy z konkrétního prostředku, nebo pro spojování souvisejících dat napříč více tabulkami.
 
-Pro prostředky Azure je hodnota **_ResourceId** [adresa URL ID prostředku Azure](../../azure-resource-manager/templates/template-functions-resource.md). Vlastnost je aktuálně omezená na prostředky Azure, ale bude rozšířena na prostředky mimo Azure, jako jsou místní počítače.
+U prostředků Azure je hodnotou **_ResourceId** [Adresa URL ID prostředku Azure](../../azure-resource-manager/templates/template-functions-resource.md). Tato vlastnost je aktuálně omezená na prostředky Azure, ale bude rozšířena na prostředky mimo Azure, jako jsou například místní počítače.
 
 > [!NOTE]
-> Některé datové typy už mají pole, která obsahují ID prostředků Azure nebo alespoň jeho části, jako je ID předplatného. Zatímco tato pole jsou uchovávány pro zpětnou kompatibilitu, je doporučeno použít _ResourceId k provedení křížové korelace, protože bude konzistentnější.
+> Některé typy dat už obsahují pole, která obsahují ID prostředku Azure nebo alespoň části, jako je ID předplatného. I když jsou tato pole zachovaná kvůli zpětné kompatibilitě, doporučuje se použít _ResourceId k provedení vzájemné korelace, protože bude lépe konzistentní.
 
 ### <a name="examples"></a>Příklady
-Následující dotaz spojuje data o výkonu a událostech pro každý počítač. Zobrazuje všechny události s ID _101_ a využití procesoru nad 50%.
+Následující dotaz propojuje data o výkonu a událostech pro každý počítač. Zobrazuje všechny události s ID _101_ a využitím procesoru nad 50%.
 
 ```Kusto
 Perf 
@@ -95,7 +95,7 @@ Perf
 ) on _ResourceId
 ```
 
-Následující dotaz spojuje záznamy _AzureActivity_ se záznamy _SecurityEvent._ Zobrazuje všechny operace aktivity s uživateli, kteří byli přihlášeni k těmto počítačům.
+Následující dotaz spojuje záznamy _AzureActivity_ se záznamy _SecurityEvent_ . Zobrazuje všechny operace aktivity s uživateli, kteří se k těmto počítačům přihlásili.
 
 ```Kusto
 AzureActivity 
@@ -109,7 +109,7 @@ AzureActivity
 ) on _ResourceId  
 ```
 
-Následující dotaz analyzuje **_ResourceId** a agreguje fakturované datové svazky na jedno předplatné Azure.
+Následující dotaz analyzuje **_ResourceId** a agreguje fakturované datové svazky na předplatné Azure.
 
 ```Kusto
 union withsource = tt * 
@@ -119,16 +119,16 @@ union withsource = tt *
 | summarize Bytes=sum(_BilledSize) by subscriptionId | sort by Bytes nulls last 
 ```
 
-Používejte `union withsource = tt *` tyto dotazy střídmě jako prohledávání napříč datovými typy jsou nákladné spustit.
+Tyto `union withsource = tt *` dotazy můžete použít zřídka, protože kontroly napříč datovými typy jsou náročné na spouštění.
 
-## <a name="_isbillable"></a>\_Je fakturovatelný
-** \_IsBillable** vlastnost určuje, zda jsou zúčtovatelná data. Data s ** \_isfakturovatelným** rovná _se false_ se shromažďují zdarma a nefakturují se na váš účet Azure.
+## <a name="_isbillable"></a>\_Fakturovatelnost
+Vlastnost disfakturovatelné určuje, zda jsou příjemovaná data fakturovatelná. ** \_** Data, která ** \_se rovnají hodnotě** _false_ , se shromažďují zdarma a neúčtují se za váš účet Azure.
 
 ### <a name="examples"></a>Příklady
-Chcete-li získat seznam počítačů odesílajících fakturované datové typy, použijte následující dotaz:
+Chcete-li získat seznam počítačů, které odesílají Fakturovatelné datové typy, použijte následující dotaz:
 
 > [!NOTE]
-> Používejte dotazy `union withsource = tt *` s střídmě jako prohledávání napříč datovými typy jsou nákladné spustit. 
+> Používejte dotazy s `union withsource = tt *` nenáročným způsobem, protože kontroly napříč datovými typy jsou náročné na spouštění. 
 
 ```Kusto
 union withsource = tt * 
@@ -138,7 +138,7 @@ union withsource = tt *
 | summarize TotalVolumeBytes=sum(_BilledSize) by computerName
 ```
 
-To lze rozšířit vrátit počet počítačů za hodinu, které jsou odesílání fakturovaných datových typů:
+To se dá rozšířit tak, aby vracelo počet počítačů za hodinu, které odesílají Fakturovatelné datové typy:
 
 ```Kusto
 union withsource = tt * 
@@ -148,12 +148,12 @@ union withsource = tt *
 | summarize dcount(computerName) by bin(TimeGenerated, 1h) | sort by TimeGenerated asc
 ```
 
-## <a name="_billedsize"></a>\_Fakturovaná velikost
-Vlastnost ** \_BilledSize** určuje velikost v bajtů dat, které se budou účtovat na váš účet Azure, pokud ** \_je true IsBillable.**
+## <a name="_billedsize"></a>\_BilledSize
+Vlastnost ** \_BilledSize** určuje velikost (v bajtech) dat, která se budou fakturovat vašemu účtu Azure, pokud ** \_je hodnota Fakturovatelné** .
 
 
 ### <a name="examples"></a>Příklady
-Chcete-li zobrazit velikost fakturovatelných událostí pozůstalých v počítači, použijte `_BilledSize` vlastnost, která poskytuje velikost v bajtů:
+Chcete-li zobrazit velikost fakturovaných událostí, které jsou v jednotlivých počítačích `_BilledSize` k dispozici, použijte vlastnost, která poskytuje velikost v bajtech:
 
 ```Kusto
 union withsource = tt * 
@@ -161,7 +161,7 @@ union withsource = tt *
 | summarize Bytes=sum(_BilledSize) by  Computer | sort by Bytes nulls last 
 ```
 
-Chcete-li zobrazit velikost fakturovatelných událostí poživaných na jedno předplatné, použijte následující dotaz:
+Pokud chcete zobrazit velikost fakturovaných událostí, které jsou v rámci jednoho předplatného, použijte následující dotaz:
 
 ```Kusto
 union withsource=table * 
@@ -170,7 +170,7 @@ union withsource=table *
 | summarize Bytes=sum(_BilledSize) by  SubscriptionId | sort by Bytes nulls last 
 ```
 
-Chcete-li zobrazit velikost fakturovatelných událostí polykaných podle skupiny prostředků, použijte následující dotaz:
+Pokud chcete zobrazit velikost fakturovaných událostí, které se na skupinu prostředků ingestují, použijte následující dotaz:
 
 ```Kusto
 union withsource=table * 
@@ -181,14 +181,14 @@ union withsource=table *
 ```
 
 
-Chcete-li zobrazit počet požitých událostí v počítači, použijte následující dotaz:
+Chcete-li zobrazit počet zpracovaných událostí na počítač, použijte následující dotaz:
 
 ```Kusto
 union withsource = tt *
 | summarize count() by Computer | sort by count_ nulls last
 ```
 
-Chcete-li zobrazit počet fakturovatelných událostí poživaných na počítači, použijte následující dotaz: 
+Chcete-li zobrazit počet fakturovaných událostí zpracovaných na počítač, použijte následující dotaz: 
 
 ```Kusto
 union withsource = tt * 
@@ -207,6 +207,6 @@ union withsource = tt *
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si další informace o tom, jak [se ukládají data protokolu Azure Monitor](../log-query/log-query-overview.md).
-- Získejte lekci o [psaní dotazů protokolu](../../azure-monitor/log-query/get-started-queries.md).
-- Získejte lekci [o spojování tabulek v dotazech protokolu](../../azure-monitor/log-query/joins.md).
+- Přečtěte si další informace o tom, jak [se ukládají data protokolu Azure monitor](../log-query/log-query-overview.md).
+- Získejte lekci k [zápisu dotazů protokolu](../../azure-monitor/log-query/get-started-queries.md).
+- Získejte lekci o [spojování tabulek v protokolových dotazech](../../azure-monitor/log-query/joins.md).

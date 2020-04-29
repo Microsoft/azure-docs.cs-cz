@@ -1,124 +1,124 @@
 ---
-title: Vytvoření šablon pomocí kódu Visual Studia
-description: Přečtěte si, jak nainstalovat a používat kód Visual Studia a rozšíření Nástroje Správce prostředků Azure.
+title: Vytváření šablon pomocí Visual Studio Code
+description: Naučte se instalovat a používat Visual Studio Code a rozšíření Azure Resource Manager Tools.
 author: mumian
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.author: jgao
 ms.openlocfilehash: 585e2773ea5d6af184f85e65b63d39b60d632146
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79273628"
 ---
-# <a name="use-visual-studio-code-to-create-azure-resource-manager-templates"></a>Vytvoření šablon Azure Resource Manageru pomocí kódu Visual Studia
+# <a name="use-visual-studio-code-to-create-azure-resource-manager-templates"></a>Vytvoření šablon Azure Resource Manager pomocí Visual Studio Code
 
-Visual Studio Code je lehký, multiplatformní editor s otevřeným zdrojovým kódem. Rozšíření Nástroje šablony Správce prostředků Azure je plugin pro vývoj šablon Správce prostředků. Rozšíření přidává jazykovou podporu pro šablony, které vám poskytnou intellisense, zvýraznění syntaxe, in-line nápovědu a mnoho dalších jazykových funkcí. Společně poskytují doporučené zkušenosti s vývojem šablon.
+Visual Studio Code je jednoduchý multiplatformní Editor open source. Rozšíření nástrojů pro šablony Azure Resource Manager je modul plug-in pro Správce prostředků vývoj šablon. Rozšíření přidává jazykovou podporu pro šablony, která poskytuje IntelliSense, zvýrazňování syntaxe, online nápovědu a mnoho dalších funkcí jazyka. Společně poskytují Doporučené vývojové prostředí pro šablony.
 
 ## <a name="install-visual-studio-code"></a>Instalace nástroje Visual Studio Code
 
-Visual studio Code podporuje MacOS, Windows a Linux.  Lze jej nainstalovat z [kódu sady Visual Studio](https://code.visualstudio.com/).
+Visual Studio Code podporuje MacOS, Windows a Linux.  Dá se nainstalovat z [Visual Studio Code](https://code.visualstudio.com/).
 
-## <a name="install-resource-manager-tools-extension"></a>Nainstalovat rozšíření Nástroje správce prostředků
+## <a name="install-resource-manager-tools-extension"></a>Rozšíření pro instalaci Správce prostředků nástrojů
 
 1. Otevřete Visual Studio Code.
-1. V levé nabídce vyberte **Rozšíření.** Nebo z nabídky **Zobrazení** vyberte **Rozšíření,** chcete-li otevřít podokno Rozšíření.
+1. V nabídce vlevo vyberte **rozšíření** . Nebo v nabídce **zobrazení** vyberte **rozšíření** a otevřete podokno rozšíření.
 
-    ![Instalace rozšíření Nástroje správce prostředků kódu sady Visual Studio](./media/use-vs-code-to-create-template/resource-manager-visual-studio-code-tools-extension.png)
+    ![Nainstalovat rozšíření Visual Studio Code Správce prostředků nástrojů](./media/use-vs-code-to-create-template/resource-manager-visual-studio-code-tools-extension.png)
 1. Vyhledejte **Správce prostředků**.
-1. V části **Nástroje Správce prostředků Azure**vyberte **Instalovat** .
+1. V části **Azure Resource Manager nástroje**vyberte **instalovat** .
 
 ## <a name="the-extension-features"></a>Funkce rozšíření
 
-### <a name="colorization-for-template-language-expressions"></a>Vybarvení výrazů jazyka šablony
+### <a name="colorization-for-template-language-expressions"></a>Zabarvení pro výrazy jazyka šablon
 
-Parametry, proměnné, funkce, názvy a výrazy jsou barevně odlišeny, jak je znázorněno na následujícím snímku obrazovky:
+Parametry, proměnné, funkce, názvy a výrazy jsou barevně kódované, jak je znázorněno na následujícím snímku obrazovky:
 
-![Rozšíření obarvách nástroje Správce prostředků kódu sady Visual Studio](./media/use-vs-code-to-create-template/resource-manager-tools-extension-colorization.png)
+![Barevné navýšení rozšíření Visual Studio Code Správce prostředků nástrojů](./media/use-vs-code-to-create-template/resource-manager-tools-extension-colorization.png)
 
-Zobrazení osnovy šablony usnadňuje navigaci mezi velkými šablonami.
+Zobrazení osnovy šablon usnadňuje procházení velkých šablon.
 
-### <a name="intellisense"></a>Intellisense
+### <a name="intellisense"></a>IntelliSense
 
-Rozšíření šablony Správce prostředků zná možné dokončení názvů funkcí, parametrů, proměnných a odkazů. Návrhy technologie IntelliSense se při psaní objevují. Pokud budete pokračovat v psaní znaků, seznam členů (proměnné, metody atd.) se vyfiltruje tak, aby zahrnoval pouze členy obsahující zadané znaky. Stisknutím **klávesy Tab** nebo **Enter** vložíte vybraný člen.
+Rozšíření šablony Správce prostředků ví možné dokončování názvů funkcí, parametrů, proměnných a odkazů. Při psaní se automaticky otevře návrh IntelliSense. Pokud budete pokračovat v zadávání znaků, seznam členů (proměnné, metody atd.) je filtrován tak, aby zahrnoval pouze členy, které obsahují zadané znaky. Stisknutím klávesy **TAB** nebo **ENTER** vložíte vybraného člena.
 
-- Názvy vestavěných funkcí
+- Názvy předdefinovaných funkcí
 
-    ![Visual Studio Code Resource Manager nástroje rozšíření intellisense funkce](./media/use-vs-code-to-create-template/resource-manager-tools-extension-intellisense-functions.png)
+    ![Rozšíření Visual Studio Code Správce prostředků nástrojů funkce IntelliSense](./media/use-vs-code-to-create-template/resource-manager-tools-extension-intellisense-functions.png)
 
 - Odkazy na parametry
 
-    ![Nástroje nástroje Správce kódů visual studia prodlužují parametry intellisense](./media/use-vs-code-to-create-template/resource-manager-tools-extension-intellisense-parameters.png)
+    ![Rozšíření Visual Studio Codech nástrojů Správce prostředků Tools – parametry IntelliSense](./media/use-vs-code-to-create-template/resource-manager-tools-extension-intellisense-parameters.png)
 
 - Odkazy na proměnné
 
-    ![Visual Studio Code Resource Manager nástroje rozšíření intellisense proměnné](./media/use-vs-code-to-create-template/resource-manager-tools-extension-intellisense-variables.png)
+    ![Visual Studio Code Správce prostředků nástrojů rozšíření – proměnné technologie IntelliSense](./media/use-vs-code-to-create-template/resource-manager-tools-extension-intellisense-variables.png)
 
-- vlastnosti skupiny().
+- vlastnosti Resource ()
 
-    ![Visual Studio Code Resource Manager nástroje rozšíření intellisense funkce](./media/use-vs-code-to-create-template/resource-manager-tools-extension-intellisense-resourcegroup.png)
+    ![Rozšíření Visual Studio Code Správce prostředků nástrojů funkce IntelliSense](./media/use-vs-code-to-create-template/resource-manager-tools-extension-intellisense-resourcegroup.png)
 
-Kromě toho intellisense také pracuje s subscription() vlastnosti a vlastnosti odkazy na proměnné, které jsou objekty.
+Kromě toho technologie IntelliSense funguje také s vlastnostmi předplatného () a vlastnostmi odkazů na proměnné, které jsou objekty.
 
-### <a name="signature-help-for-function-parameters"></a>Nápověda k podpisu pro parametry funkce
+### <a name="signature-help-for-function-parameters"></a>Nápovědu k podpisu pro parametry funkce
 
-Při najetí na názvy funkcí rozšíření zobrazí nápovědu k podpisu pro parametry funkce.
+Při najetí myší na názvy funkcí rozšíření zobrazuje nápovědu k podpisu pro parametry funkce.
 
-![Funkce podpisu rozšíření nástrojů správce prostředků kódu sady Visual Studio](./media/use-vs-code-to-create-template/resource-manager-tools-extension-signature-function.png)
+![Funkce signatury rozšíření Visual Studio Code Správce prostředků nástrojů](./media/use-vs-code-to-create-template/resource-manager-tools-extension-signature-function.png)
 
-### <a name="go-to-definition-for-variable-and-parameter-references"></a>Přejít na definici pro odkazy na proměnné a parametry
+### <a name="go-to-definition-for-variable-and-parameter-references"></a>Přejít k definici pro proměnné a odkazy na parametry
 
-Na definici můžete přejít pomocí **kombinace kláves Ctrl+Click**nebo pomocí ![kontextové nabídky, jak je znázorněno na snímku obrazovky: Rozšíření nástrojů Nástroje správce kódů sady Visual Studio přejdou na definici](./media/use-vs-code-to-create-template/resource-manager-tools-extension-context-menu.png)
+Můžete přejít k definici pomocí **kombinace kláves Ctrl + kliknutí**nebo pomocí kontextové nabídky, jak je znázorněno na snímku obrazovky: ![Visual Studio Code správce prostředků nástrojů rozšíření přejít k definici](./media/use-vs-code-to-create-template/resource-manager-tools-extension-context-menu.png)
 
-Definici můžete otevřít na stranu pomocí **kombinace kláves Ctrl+Alt+Click**.
+Definici můžete otevřít na stranu **stisknutím kombinace kláves Ctrl + Alt + kliknutí**.
 
 ### <a name="peek-for-variable-and-parameter-definitions"></a>Náhled pro definice proměnných a parametrů
 
-Chcete-li otevřít editor náhledu, použijte kontextovou nabídku, jak je znázorněno na předchozím snímku obrazovky.
+Chcete-li otevřít prohlížený editor, použijte kontextovou nabídku, jak je znázorněno na předchozím snímku obrazovky.
 
-Následující snímek obrazovky ukazuje editor náhledu:
+Následující snímek obrazovky ukazuje Editor náhledu:
 
-![Editor náhledu rozšíření nástrojů nástroje správce kódu sady Visual Studio](./media/use-vs-code-to-create-template/resource-manager-tools-extension-peek-editor.png)
+![Editor náhledu rozšíření Visual Studio Code Správce prostředků nástrojů](./media/use-vs-code-to-create-template/resource-manager-tools-extension-peek-editor.png)
 
 ### <a name="find-all-references-for-variables-and-parameters"></a>Najít všechny odkazy na proměnné a parametry
 
 Chcete-li najít všechny odkazy, použijte kontextovou nabídku, jak je znázorněno na předchozím snímku obrazovky.
 
-Následující snímek obrazovky ukazuje, jak jsou odkazy zvýrazněny:
+Následující snímek obrazovky ukazuje, jak jsou zvýrazněny odkazy:
 
-![Rozšíření nástrojů správce prostředků kódu sady Visual Studio najdete všechny odkazy](./media/use-vs-code-to-create-template/resource-manager-tools-extension-find-all-references.png)
+![Rozšíření Visual Studio Code Správce prostředků nástrojů najít všechny odkazy](./media/use-vs-code-to-create-template/resource-manager-tools-extension-find-all-references.png)
 
-### <a name="rename-all-references-for-variables-and-parameters"></a>Přejmenovat všechny odkazy pro proměnné a parametry
+### <a name="rename-all-references-for-variables-and-parameters"></a>Přejmenovat všechny odkazy na proměnné a parametry
 
 Chcete-li přejmenovat všechny odkazy na proměnné a parametry, použijte kontextovou nabídku, jak je znázorněno na předchozím snímku obrazovky.
 
-### <a name="hover-for-parameter-description"></a>Najetí na další položku pro popis parametru
+### <a name="hover-for-parameter-description"></a>Najeďte myší na popis parametru
 
-![Rozšíření nástrojů správce prostředků kódu sady Visual Studio](./media/use-vs-code-to-create-template/resource-manager-tools-extension-hover-parameters.png)
+![Definice ponechání rozšíření Visual Studio Code Správce prostředků nástrojů](./media/use-vs-code-to-create-template/resource-manager-tools-extension-hover-parameters.png)
 
-### <a name="brace-matching"></a>Shoda složených závorek
+### <a name="brace-matching"></a>Spárování složených závorek
 
-Odpovídající závorky se zvýrazní, jakmile je kurzor blízko jednoho z nich. Po klepnutí na složenou závorku se zvýrazní také odpovídající složená závorka, jak je znázorněno na následujícím snímku obrazovky:
+Párové závorky se zvýrazní, jakmile se ukazatel myši poblíž jednoho z nich. Když kliknete na složenou závorku, zvýrazní se i dvojice závorek, jak je znázorněno na následujícím snímku obrazovky:
 
-![Porovnání složených příporačních zařízení nástroje nástroje nástroje visual studio code správce](./media/use-vs-code-to-create-template/resource-manager-tools-extension-brace-matching.png)
+![Visual Studio Code Správce prostředků nástrojů rozšíření – shoda závorek](./media/use-vs-code-to-create-template/resource-manager-tools-extension-brace-matching.png)
 
 ### <a name="show-errors-and-warnings"></a>Zobrazit chyby a upozornění
 
-Mezi chyby zjištěné rozšířením patří:
+Mezi chyby identifikované rozšířením patří:
 
 - Nedefinované odkazy na parametry
 - Nedefinované odkazy na proměnné
 - Nerozpoznané názvy funkcí
-- reference() použití funkce v definici proměnné
+- použití funkce reference () v definici proměnné
 - Nesprávný počet argumentů ve funkcích
 
-Varování zahrnují:
+Mezi upozornění patří:
 
-- Nevyužité parametry
-- Nevyužité proměnné
+- Nepoužité parametry
+- Nepoužité proměnné
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o vytváření šablon Azure Resource Manageru najdete [v tématu Kurz: Vytvoření a nasazení první šablony Azure Resource Manageru](template-tutorial-create-first-template.md).
-- Pokud chcete projít rychlý start pomocí kódu Sady Visual Studio, přečtěte si [panel Rychlý start: Vytvoření šablon Azure Resource Manageru pomocí kódu Sady Visual Studio](quickstart-create-templates-use-visual-studio-code.md)
+- Další informace o vytváření šablon Azure Resource Manager najdete v tématu [kurz: vytvoření a nasazení první šablony Azure Resource Manager](template-tutorial-create-first-template.md).
+- Postup rychlý Start pomocí Visual Studio Code najdete v tématu [rychlý Start: vytvoření Azure Resource Manager šablon pomocí Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md)

@@ -1,5 +1,5 @@
 ---
-title: Rychlý start klientské knihovny V Pythonu pro vyhledávání zpráv Bing
+title: Rychlý Start klientské knihovny Vyhledávání zpráv Bingu Pythonu
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,25 +9,25 @@ ms.topic: include
 ms.date: 03/12/2020
 ms.author: aahi
 ms.openlocfilehash: c1bd0d86a3fd9d19d67d84b9b05955421373e01e
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79503878"
 ---
-Pomocí tohoto rychlého startu můžete začít hledat novinky v klientské knihovně Služby Hledání zpráv Bingu pro Python. Zatímco hledání zpráv Bing u měn rozhraní REST API kompatibilní s většinou programovacích jazyků, klientská knihovna poskytuje snadný způsob integrace služby do vašich aplikací. Zdrojový kód pro tuto ukázku lze nalézt na [GitHubu](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/news_search_samples.py).
+V tomto rychlém startu můžete začít hledat zprávy pomocí klientské knihovny Vyhledávání zpráv Bingu pro Python. I když Vyhledávání zpráv Bingu má REST API kompatibilní s většinou programovacích jazyků, Klientská knihovna poskytuje snadný způsob, jak integrovat službu do vašich aplikací. Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/news_search_samples.py).
 
 ## <a name="prerequisites"></a>Požadavky
 
-* [Python](https://www.python.org/) 2.x nebo 3.x
+* [Python](https://www.python.org/) 2. x nebo 3. x
 
-Doporučujeme použít [virtuální prostředí](https://docs.python.org/3/tutorial/venv.html) pro vývoj pythonu. Virtuální prostředí můžete nainstalovat a inicializovat pomocí [modulu venv](https://pypi.python.org/pypi/virtualenv). Je nutné nainstalovat virtualenv pro Python 2.7. Virtuální prostředí můžete vytvořit pomocí:
+Doporučuje se použít [virtuální prostředí](https://docs.python.org/3/tutorial/venv.html) pro vývoj v Pythonu. Virtuální prostředí můžete nainstalovat a inicializovat pomocí [modulu venv](https://pypi.python.org/pypi/virtualenv). Je nutné nainstalovat virtualenv pro Python 2,7. Virtuální prostředí můžete vytvořit pomocí:
 
 ```console
 python -m venv mytestenv
 ```
 
-Pomocí tohoto příkazu můžete nainstalovat závislosti klientské knihovny Hledání zpráv Bingu:
+Pomocí tohoto příkazu můžete nainstalovat Vyhledávání zpráv Bingu závislostí klientské knihovny:
     
 ```console
 python -m pip install azure-cognitiveservices-search-newssearch
@@ -37,7 +37,7 @@ python -m pip install azure-cognitiveservices-search-newssearch
 
 ## <a name="create-and-initialize-the-application"></a>Vytvoření a inicializace aplikace
 
-1. Vytvořte nový soubor Pythonu ve svém oblíbeném rozhraní IDE nebo editoru a importujte následující knihovny. Vytvořte proměnnou pro klíč předplatného a hledaný výraz.
+1. V oblíbených IDE nebo editoru vytvořte nový soubor Pythonu a naimportujte následující knihovny. Vytvořte proměnnou pro svůj klíč předplatného a hledaný výraz.
 
     ```python
     from azure.cognitiveservices.search.newssearch import NewsSearchClient
@@ -47,7 +47,7 @@ python -m pip install azure-cognitiveservices-search-newssearch
     search_term = "Quantum Computing"
     ```
 
-## <a name="initialize-the-client-and-send-a-request"></a>Inicializovat klienta a odeslat požadavek
+## <a name="initialize-the-client-and-send-a-request"></a>Inicializace klienta a odeslání žádosti
 
 1. Vytvořte instanci `CognitiveServicesCredentials`.
     
@@ -55,7 +55,7 @@ python -m pip install azure-cognitiveservices-search-newssearch
     client = NewsSearchClient(endpoint=endpoint, credentials=CognitiveServicesCredentials(subscription_key))
     ```
 
-2. Odešlete vyhledávací dotaz do rozhraní API pro vyhledávání zpráv, uložte odpověď.
+2. Odešlete vyhledávací dotaz do rozhraní Vyhledávání zpráv API, uložte odpověď.
 
     ```python
     news_result = client.news.search(query=search_term, market="en-us", count=10)
@@ -63,7 +63,7 @@ python -m pip install azure-cognitiveservices-search-newssearch
 
 ## <a name="parse-the-response"></a>Parsování odpovědi
 
-Pokud jsou nalezeny nějaké výsledky hledání, vytiskněte první výsledek webové stránky:
+Pokud se najde nějaké výsledky hledání, vytiskněte první výsledek webové stránky:
 
 ```python
 if news_result.value:

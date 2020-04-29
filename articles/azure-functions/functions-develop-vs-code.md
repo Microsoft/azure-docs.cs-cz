@@ -1,106 +1,106 @@
 ---
-title: Vývoj funkcí Azure pomocí kódu Visual Studia
-description: Zjistěte, jak vyvíjet a testovat funkce Azure pomocí rozšíření Azure Functions pro visual studio kód.
+title: Vývoj Azure Functions pomocí Visual Studio Code
+description: Naučte se vyvíjet a testovat Azure Functions pomocí rozšíření Azure Functions pro Visual Studio Code.
 ms.topic: conceptual
 ms.date: 08/21/2019
 ms.openlocfilehash: 2d33b7dddf29d37d174bdb7734e9048bc1658840
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79277164"
 ---
-# <a name="develop-azure-functions-by-using-visual-studio-code"></a>Vývoj funkcí Azure pomocí kódu Visual Studia
+# <a name="develop-azure-functions-by-using-visual-studio-code"></a>Vývoj Azure Functions pomocí Visual Studio Code
 
-[Rozšíření Azure Functions pro kód Visual Studia] umožňuje místně vyvíjet funkce a nasazovat je do Azure. Pokud toto prostředí je vaše první s Funkcemi Azure, můžete se [dozvědět](functions-overview.md)více na úvod do Funkce Azure .
+[Azure Functions rozšíření pro Visual Studio Code] umožňuje místní vývoj funkcí a jejich nasazování do Azure. Pokud je to vaše první prostředí s Azure Functions, můžete získat další informace v [úvodu k Azure Functions](functions-overview.md).
 
 Rozšíření Azure Functions poskytuje tyto výhody:
 
-* Upravujte, vytvářejte a spouštějte funkce v místním vývojovém počítači.
-* Publikujte svůj projekt Azure Functions přímo do Azure.
-* Napište své funkce v různých jazycích a využijte výhod kódu sady Visual Studio.
+* Upravovat, sestavovat a spouštět funkce na místním počítači pro vývoj.
+* Publikujte projekt Azure Functions přímo do Azure.
+* Využijte výhod Visual Studio Code k psaní vašich funkcí v různých jazycích.
 
-Rozšíření lze použít s následujícími jazyky, které jsou podporovány modulem runtime Azure Functions začínajícím verzí 2.x:
+Rozšíření lze použít s následujícími jazyky, které jsou podporovány modulem runtime Azure Functions od verze 2. x:
 
-* [C# zkompilován](functions-dotnet-class-library.md)
-* [Skript Jazyka C#](functions-reference-csharp.md)<sup>*</sup>
-* [Javascript](functions-reference-node.md)
+* [C# kompilováno](functions-dotnet-class-library.md)
+* [Skript jazyka C#](functions-reference-csharp.md)<sup>*</sup>
+* [JavaScript](functions-reference-node.md)
 * [Java](functions-reference-java.md)
 * [PowerShell](functions-reference-powershell.md)
 * [Python](functions-reference-python.md)
 
-<sup>*</sup>Vyžaduje, abyste [nastavili skript Jazyka C# jako výchozí jazyk projektu](#c-script-projects).
+<sup>*</sup>Vyžaduje, abyste [nastavili skript C# jako výchozí jazyk projektu](#c-script-projects).
 
-V tomto článku jsou příklady aktuálně k dispozici pouze pro funkce knihovny tříd JavaScript (Node.js) a C#.  
+V tomto článku jsou příklady aktuálně k dispozici pouze pro funkce knihovny JavaScript (Node. js) a jazyka C#.  
 
-Tento článek obsahuje podrobnosti o tom, jak používat rozšíření Azure Functions k vývoji funkcí a jejich publikování do Azure. Než si přečtete tento článek, měli byste [vytvořit první funkci pomocí kódu sady Visual Studio](functions-create-first-function-vs-code.md).
+Tento článek poskytuje podrobné informace o tom, jak používat rozšíření Azure Functions k vývoji funkcí a jejich publikování v Azure. Před čtením tohoto článku byste měli [vytvořit svoji první funkci pomocí Visual Studio Code](functions-create-first-function-vs-code.md).
 
 > [!IMPORTANT]
-> Nekombinujte místní vývoj a vývoj portálu pro aplikaci s jednou funkcí. Při publikování z místního projektu do aplikace funkce proces nasazení přepíše všechny funkce, které jste vyvinuli na portálu.
+> Nekombinujte vývoj místních vývojových a portálů pro jednu aplikaci Function App. Při publikování z místního projektu do aplikace Function App proces nasazení přepíše všechny funkce, které jste vytvořili na portálu.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Před instalací a spuštěním rozšíření [Azure Functions Azure][Functions pro kód Visual Studio]musíte splňovat tyto požadavky:
+Než nainstalujete a spustíte rozšíření [Azure Functions rozšíření][Azure Functions pro Visual Studio Code], musíte splnit tyto požadavky:
 
-* [Visual Studio Code](https://code.visualstudio.com/) nainstalován na jedné z [podporovaných platforem](https://code.visualstudio.com/docs/supporting/requirements#_platforms).
+* [Visual Studio Code](https://code.visualstudio.com/) nainstalovat na jednu z [podporovaných platforem](https://code.visualstudio.com/docs/supporting/requirements#_platforms).
 
 * Aktivní předplatné Azure.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-Další prostředky, které potřebujete, jako je účet úložiště Azure, se vytvoří ve vašem předplatném při [publikování pomocí kódu Visual Studia](#publish-to-azure).
+Pokud [publikujete pomocí Visual Studio Code](#publish-to-azure), v předplatném se vytvoří další prostředky, které potřebujete, třeba účet služby Azure Storage.
 
 > [!IMPORTANT]
-> Funkce můžete vyvíjet místně a publikovat je do Azure, aniž byste je museli spouštět a spouštět místně. Chcete-li spouštět funkce místně, budete muset splnit některé další požadavky, včetně automatického stažení nástrojů Azure Functions Core Tools. Další informace naleznete v tématu [Další požadavky pro místní spuštění projektu](#additional-requirements-for-running-a-project-locally).
+> Můžete vyvíjet funkce místně a publikovat je v Azure, aniž byste je museli spouštět a spouštět místně. Chcete-li spustit funkce místně, je nutné splnit některé další požadavky, včetně automatického stažení Azure Functions Core Tools. Další informace najdete v tématu [Další požadavky pro místní spuštění projektu](#additional-requirements-for-running-a-project-locally).
 
 [!INCLUDE [functions-install-vs-code-extension](../../includes/functions-install-vs-code-extension.md)]
 
 ## <a name="create-an-azure-functions-project"></a>Vytvoření projektu Azure Functions
 
-Rozšíření Funkce umožňuje vytvořit projekt aplikace funkce spolu s vaší první funkcí. Následující kroky ukazují, jak vytvořit funkci aktivovanou protokolem HTTP v novém projektu Functions. [Aktivační událost PROTOKOLU HTTP](functions-bindings-http-webhook.md) je nejjednodušší šablona aktivační události, kterou je třeba demonstrovat.
+Rozšíření Functions umožňuje vytvořit projekt Function App spolu s první funkcí. Následující kroky ukazují, jak vytvořit funkci aktivovanou protokolem HTTP v novém projektu Functions. [Aktivační procedura http](functions-bindings-http-webhook.md) je nejjednodušší šablona triggeru funkce.
 
-1. Z **Azure: Funkce**vyberte ikonu **Vytvořit funkci:**
+1. V **Azure: funkce**vyberte ikonu **vytvořit funkci** :
 
     ![Vytvoření funkce](./media/functions-develop-vs-code/create-function.png)
 
-1. Vyberte složku projektu aplikace funkce a **vyberte jazyk pro projekt funkce**.
+1. Vyberte složku pro projekt Function App a pak **Vyberte jazyk pro projekt funkce**.
 
-1. Pokud jste základní nástroje ještě nenainstalovali, budete vyzváni k **výběru verze** základních nástrojů k instalaci. Zvolte verzi 2.x nebo novější verzi. 
+1. Pokud jste ještě nenainstalovali základní nástroje, zobrazí se výzva k **výběru verze** základních nástrojů, které se mají nainstalovat. Vyberte verzi 2. x nebo novější. 
 
-1. Vyberte šablonu **aktivační funkce protokolu HTTP,** nebo můžete vybrat **Přeskočit pro tuto chvíli** a vytvořit projekt bez funkce. Funkci můžete [do projektu přidat](#add-a-function-to-your-project) vždy později.
+1. Vyberte šablonu funkce **triggeru protokolu HTTP** , nebo můžete vybrat **Přeskočit nyní** , chcete-li vytvořit projekt bez funkce. [Funkci můžete do projektu kdykoli přidat](#add-a-function-to-your-project) později.
 
     ![Volba šablony triggeru HTTP](./media/functions-develop-vs-code/create-function-choose-template.png)
 
-1. Zadejte **HttpExample** pro název funkce a vyberte Enter a pak vyberte **autorizace funkce.** Tato úroveň autorizace vyžaduje, abyste při volání koncového bodu funkce poskytli [funkční klávesu.](functions-bindings-http-webhook-trigger.md#authorization-keys)
+1. Jako název funkce zadejte **HttpExample** a vyberte Enter a pak vyberte Authorization – **funkce** . Tato úroveň autorizace vyžaduje zadání [klíče funkce](functions-bindings-http-webhook-trigger.md#authorization-keys) při volání koncového bodu funkce.
 
     ![Vybrat autorizaci funkce](./media/functions-develop-vs-code/create-function-auth.png)
 
-    Funkce je vytvořena ve zvoleném jazyce a v šabloně pro funkci spouštěnou http.
+    Funkce se vytvoří ve zvoleném jazyce a v šabloně funkce aktivované protokolem HTTP.
 
-    ![Šablona funkce spouštěná http v kódu Sady Visual Studio](./media/functions-develop-vs-code/new-function-full.png)
+    ![Šablona funkce aktivovaná protokolem HTTP v Visual Studio Code](./media/functions-develop-vs-code/new-function-full.png)
 
 ### <a name="generated-project-files"></a>Generované soubory projektu
 
 Šablona projektu vytvoří projekt ve zvoleném jazyce a nainstaluje požadované závislosti. Pro libovolný jazyk má nový projekt tyto soubory:
 
-* **host.json**: Umožňuje konfigurovat hostitele Functions. Tato nastavení platí, když spouštěte funkce místně a když je spouštěte v Azure. Další informace naleznete v [tématu host.json reference](functions-host-json.md).
+* **Host. JSON**: umožňuje konfigurovat hostitele funkcí. Tato nastavení platí v případě, že používáte funkce místně a když je spouštíte v Azure. Další informace naleznete v tématu [reference Host. JSON](functions-host-json.md).
 
-* **local.settings.json**: Udržuje nastavení používaná při místním spuštění funkcí. Tato nastavení se používají pouze v případě, že používáte funkce místně. Další informace naleznete v [tématu Local settings file](#local-settings-file).
+* **Local. Settings. JSON**: uchovává nastavení, která se používají, když pracujete s místními funkcemi. Tato nastavení se používají jenom v případě, že používáte funkce místně. Další informace najdete v tématu [místní nastavení souboru](#local-settings-file).
 
     >[!IMPORTANT]
-    >Vzhledem k tomu, že soubor local.settings.json může obsahovat tajné klíče, je třeba jej vyloučit ze správy zdrojového kódu projektu.
+    >Vzhledem k tomu, že soubor Local. Settings. JSON může obsahovat tajné kódy, je nutné jej vyloučit ze správy zdrojového kódu projektu.
 
-V závislosti na vašem jazyce jsou vytvořeny tyto další soubory:
+V závislosti na jazyku jsou tyto další soubory vytvořeny:
 
-# <a name="c"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[R\#](#tab/csharp)
 
-* [HttpExample.cs soubor knihovny tříd,](functions-dotnet-class-library.md#functions-class-library-project) který implementuje funkci.
+* [HttpExample.cs soubor knihovny tříd](functions-dotnet-class-library.md#functions-class-library-project) , který implementuje funkci.
 
-# <a name="javascript"></a>[Javascript](#tab/nodejs)
+# <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
-* Soubor package.json v kořenové složce.
+* Soubor Package. JSON v kořenové složce.
 
-* Složka HttpExample, která obsahuje [definiční soubor function.json](functions-reference-node.md#folder-structure) a [soubor index.js](functions-reference-node.md#exporting-a-function), soubor Node.js obsahující kód funkce.
+* Složka HttpExample, která obsahuje [soubor definice Function. JSON](functions-reference-node.md#folder-structure) a [soubor index. js](functions-reference-node.md#exporting-a-function), soubor Node. js, který obsahuje kód funkce.
 
 <!-- # [PowerShell](#tab/powershell)
 
@@ -114,23 +114,23 @@ V závislosti na vašem jazyce jsou vytvořeny tyto další soubory:
      -->
 ---
 
-V tomto okamžiku můžete přidat vstupní a výstupní vazby do funkce [úpravou souboru function.json](#add-a-function-to-your-project) nebo [přidáním parametru do funkce knihovny tříd jazyka C#](#add-a-function-to-your-project).
+V tomto okamžiku můžete přidat vstupní a výstupní vazby do funkce [úpravou souboru Function. JSON](#add-a-function-to-your-project) nebo [přidáním parametru do funkce knihovny tříd jazyka C#](#add-a-function-to-your-project).
 
-Do projektu můžete také [přidat novou funkci](#add-a-function-to-your-project).
+[Do projektu můžete také přidat novou funkci](#add-a-function-to-your-project).
 
 ## <a name="install-binding-extensions"></a>Instalace rozšíření vazby
 
-S výjimkou aktivačních událostí protokolu HTTP a časovače jsou vazby implementovány v rozšiřujících balíčcích. Je nutné nainstalovat balíčky rozšíření pro aktivační události a vazby, které je potřebují. Proces instalace rozšíření vazby závisí na jazyku projektu.
+S výjimkou triggerů HTTP a Timer jsou vazby implementovány v balíčcích rozšíření. Je nutné nainstalovat balíčky rozšíření pro aktivační události a vazby, které je potřebují. Proces pro instalaci rozšíření vazby závisí na jazyku vašeho projektu.
 
-# <a name="c"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[R\#](#tab/csharp)
 
-Spusťte příkaz [dotnet add package](/dotnet/core/tools/dotnet-add-package) v okně Terminálu a nainstalujte balíčky rozšíření, které potřebujete v projektu. Následující příkaz nainstaluje rozšíření Azure Storage, které implementuje vazby pro úložiště objektů Blob, Fronta a tabulka.
+Spuštěním příkazu [dotnet Add Package](/dotnet/core/tools/dotnet-add-package) v okně terminálu nainstalujete balíčky rozšíření, které v projektu potřebujete. Následující příkaz nainstaluje rozšíření Azure Storage, které implementuje vazby pro úložiště objektů blob, front a tabulek.
 
 ```bash
 dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/nodejs)
+# <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
@@ -138,61 +138,61 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 
 ## <a name="add-a-function-to-your-project"></a>Přidání funkce do projektu
 
-Novou funkci můžete přidat do existujícího projektu pomocí jedné z předdefinovaných šablon aktivačních událostí. Chcete-li přidat novou aktivační událost funkce, vyberte Klávesu F1, chcete-li otevřít paletu příkazů, a pak vyhledejte a spusťte příkaz **Funkce Azure: Vytvořit funkci**. Podle pokynů zvolte typ aktivační události a definujte požadované atributy aktivační události. Pokud aktivační událost vyžaduje přístupový klíč nebo připojovací řetězec pro připojení ke službě, připravte si ji před vytvořením aktivační události funkce.
+Novou funkci můžete přidat do existujícího projektu pomocí jedné z předdefinovaných šablon triggeru Functions. Chcete-li přidat novou aktivační proceduru funkce, vyberte F1 pro otevření palety příkazů a pak vyhledejte a spusťte příkaz **Azure Functions: Create Function**. Podle zobrazených výzev vyberte typ triggeru a definujte požadované atributy triggeru. Pokud aktivační událost vyžaduje přístupový klíč nebo připojovací řetězec pro připojení ke službě, připravte ji ještě před vytvořením triggeru funkce.
 
-Výsledky této akce závisí na jazyku projektu:
+Výsledky této akce závisí na jazyku vašeho projektu:
 
-# <a name="c"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[R\#](#tab/csharp)
 
-Do projektu je přidán nový soubor knihovny tříd jazyka C#.
+Do projektu se přidá nový soubor knihovny tříd C# (. cs).
 
-# <a name="javascript"></a>[Javascript](#tab/nodejs)
+# <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
-V projektu je vytvořena nová složka. Složka obsahuje nový soubor function.json a nový soubor kódu JavaScript.
+V projektu se vytvoří nová složka. Složka obsahuje nový soubor Functions. JSON a nový soubor kódu JavaScriptu.
 
 ---
 
-## <a name="add-input-and-output-bindings"></a>Přidání vstupních a výstupních vazeb
+## <a name="add-input-and-output-bindings"></a>Přidat vstupní a výstupní vazby
 
-Funkci můžete rozšířit přidáním vstupních a výstupních vazeb. Proces přidávání vazeb závisí na jazyku projektu. Další informace o vazbách najdete v [tématu Azure Functions triggers and bindings concepts](functions-triggers-bindings.md).
+Funkci můžete rozšířit přidáním vstupních a výstupních vazeb. Proces přidávání vazeb závisí na jazyku vašeho projektu. Další informace o vazbách naleznete v tématu [Azure Functions triggery a koncepty vazeb](functions-triggers-bindings.md).
 
-Následující příklady se připojují k frontě úložiště s názvem `outqueue` `MyStorageConnection` , kde je připojovací řetězec pro účet úložiště nastaven v nastavení aplikace v local.settings.json.
+Následující příklady se připojují k frontě úložiště `outqueue`s názvem, kde je připojovací řetězec pro účet úložiště nastavený v nastavení `MyStorageConnection` aplikace v souboru Local. Settings. JSON.
 
-# <a name="c"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[R\#](#tab/csharp)
 
-Aktualizujte metodu funkce a přidejte do definice `Run` metody následující parametr:
+Aktualizujte metodu funkce tak, aby do definice `Run` metody přidal následující parametr:
 
 ```cs
 [Queue("outqueue"),StorageAccount("MyStorageConnection")] ICollector<string> msg
 ```
 
-Tento kód vyžaduje, abyste `using` přidali následující příkaz:
+Tento kód vyžaduje přidání následujícího `using` příkazu:
 
 ```cs
 using Microsoft.Azure.WebJobs.Extensions.Storage;
 ```
 
-Parametr `msg` je `ICollector<T>` typ, který představuje kolekci zpráv, které jsou zapsány do výstupní vazby po dokončení funkce. Přidáte jednu nebo více zpráv do kolekce. Tyto zprávy jsou odesílány do fronty po dokončení funkce.
+`msg` Parametr je `ICollector<T>` typ, který představuje kolekci zpráv zapsaných do výstupní vazby po dokončení funkce. Do kolekce přidáte jednu nebo více zpráv. Tyto zprávy se po dokončení funkce odesílají do fronty.
 
-Další informace naleznete v dokumentaci [k vazbě výstupu úložiště fronty.](functions-bindings-storage-queue-output.md)
+Další informace najdete v dokumentaci [výstupní vazby úložiště ve frontě](functions-bindings-storage-queue-output.md) .
 
-# <a name="javascript"></a>[Javascript](#tab/nodejs)
+# <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
-Visual Studio Code umožňuje přidat vazby do souboru function.json pomocí pohodlné sady výzev. Chcete-li vytvořit vazbu, klepněte pravým tlačítkem myši (Ctrl+klikněte na macOS) na soubor **function.json** ve složce funkce a vyberte **Přidat vazbu**:
+Visual Studio Code umožňuje přidat do souboru Function. JSON vazby pomocí praktické sady výzev. Vazbu vytvoříte tak, že kliknete pravým tlačítkem (CTRL + kliknete na macOS **) do složky** funkce a vyberete **Přidat vazbu**:
 
 ![Přidání vazby k existující funkci JavaScriptu ](media/functions-develop-vs-code/function-add-binding.png)
 
-Následují příklady výzev k definování nové vazby výstupu úložiště:
+V následujícím příkladu se zobrazí výzva k definování nové výstupní vazby úložiště:
 
 | Výzva | Hodnota | Popis |
 | -------- | ----- | ----------- |
 | **Vybrat směr vazby** | `out` | Vazba je výstupní vazba. |
-| **Výběr vazby se směrem** | `Azure Queue Storage` | Vazba je vazby fronty Azure Storage. |
-| **Název použitý k identifikaci této vazby v kódu** | `msg` | Název, který identifikuje parametr vazby odkazovaný ve vašem kódu. |
-| **Fronta, do které bude zpráva odeslána** | `outqueue` | Název fronty, do které vazba zapisuje. Pokud *queueName* neexistuje, vazba vytvoří při prvním použití. |
-| **Vybrat nastavení z "local.settings.json"** | `MyStorageConnection` | Název nastavení aplikace, která obsahuje připojovací řetězec pro účet úložiště. Toto `AzureWebJobsStorage` nastavení obsahuje připojovací řetězec pro účet úložiště, který jste vytvořili pomocí aplikace funkce. |
+| **Výběr vazby se směrováním** | `Azure Queue Storage` | Vazba je vazba fronty Azure Storage. |
+| **Název, který slouží k identifikaci této vazby v kódu** | `msg` | Název, který identifikuje parametr vazby, na který se odkazuje v kódu. |
+| **Fronta, do které bude odeslána zpráva** | `outqueue` | Název fronty, do které vazba zapisuje. Pokud pole *Queue* neexistuje, vytvoří ho při prvním použití. |
+| **Vyberte nastavení z Local. Settings. JSON.** | `MyStorageConnection` | Název nastavení aplikace, které obsahuje připojovací řetězec pro účet úložiště. Toto `AzureWebJobsStorage` nastavení obsahuje připojovací řetězec pro účet úložiště, který jste vytvořili pomocí aplikace Function App. |
 
-V tomto příkladu je do `bindings` pole v souboru function.json přidána následující vazba:
+V tomto příkladu je do `bindings` pole v souboru Function. JSON přidána následující vazba:
 
 ```javascript
 {
@@ -204,15 +204,15 @@ V tomto příkladu je do `bindings` pole v souboru function.json přidána násl
 }
 ```
 
-Můžete také přidat stejnou definici vazby přímo do souboru function.json.
+Můžete také přidat stejnou definici vazby přímo do funkce Function. JSON.
 
-V kódu funkce `msg` je vazba přístupná z `context`, jako v tomto příkladu:
+V kódu funkce je `msg` vazba k dispozici z rozhraní `context`, jako v tomto příkladu:
 
 ```javascript
 context.bindings.msg = "Name passed to the function: " req.query.name;
 ```
 
-Další informace naleznete v odkazu [na vazbu výstupu úložiště fronty.](functions-bindings-storage-queue-output.md)
+Další informace najdete v referenčních odkazech na [výstupní vazbu úložiště fronty](functions-bindings-storage-queue-output.md) .
 
 ---
 
@@ -222,235 +222,235 @@ Další informace naleznete v odkazu [na vazbu výstupu úložiště fronty.](fu
 
 ## <a name="publish-to-azure"></a>Publikování aplikací do Azure
 
-Visual Studio Code umožňuje publikovat projekt functions přímo do Azure. Během postupu vytvoříte aplikaci funkcí a související prostředky ve vašem předplatném Azure. Aplikace funkcí poskytuje kontext spuštění pro vaše funkce. Projekt se zabalí a nasadí do nové aplikace funkcí ve vašem předplatném Azure.
+Visual Studio Code umožňuje publikovat projekt funkcí přímo do Azure. Během postupu vytvoříte aplikaci funkcí a související prostředky ve vašem předplatném Azure. Aplikace funkcí poskytuje kontext spuštění pro vaše funkce. Projekt se zabalí a nasadí do nové aplikace funkcí ve vašem předplatném Azure.
 
-Když publikujete z Visual Studio Code do nové aplikace funkcí v Azure, je vám nabídnuta cesta k vytvoření aplikace s rychlou funkcí a pokročilá cesta. 
+Když publikujete z Visual Studio Code do nové aplikace Function App v Azure, budete mít k dispozici jak rychlou aplikaci funkcí vytvořit cestu, tak i pokročilou cestu. 
 
-Při publikování z Visual Studio Code, můžete využít technologie [nasazení ZIP.](functions-deployment-technologies.md#zip-deploy) 
+Při publikování z Visual Studio Code můžete využít technologii [nasazení zip](functions-deployment-technologies.md#zip-deploy) . 
 
-### <a name="quick-function-app-create"></a>Rychlé vytvoření aplikace pro rychlé funkce
+### <a name="quick-function-app-create"></a>Rychlé vytvoření aplikace Function App
 
-Když zvolíte **+ Vytvořit novou aplikaci funkcí v Azure...**, rozšíření automaticky generuje hodnoty pro prostředky Azure, které vaše aplikace funkce potřebuje. Tyto hodnoty jsou založeny na názvu aplikace funkce, kterou zvolíte. Příklad použití výchozích hodnot k publikování projektu do nové aplikace funkcí v Azure najdete v [článku rychlého startu kódu visual studia](functions-create-first-function-vs-code.md#publish-the-project-to-azure).
+Když zvolíte **+ vytvořit novou aplikaci Function App v Azure**, rozšíření automaticky vygeneruje hodnoty prostředků Azure, které potřebuje vaše aplikace Function App. Tyto hodnoty jsou založené na zvoleném názvu aplikace Function App. Příklad použití výchozích hodnot pro publikování projektu do nové aplikace Function App v Azure najdete v [článku rychlý Start pro Visual Studio Code](functions-create-first-function-vs-code.md#publish-the-project-to-azure).
 
-Pokud chcete zadat explicitní názvy vytvořených prostředků, musíte zvolit cestu rozšířeného vytvoření.
+Pokud chcete pro vytvořené prostředky zadat explicitní názvy, musíte zvolit cestu pro rozšířené vytvoření.
 
-### <a name="publish-a-project-to-a-new-function-app-in-azure-by-using-advanced-options"></a><a name="enable-publishing-with-advanced-create-options"></a>Publikování projektu do nové aplikace funkcí v Azure pomocí pokročilých možností
+### <a name="publish-a-project-to-a-new-function-app-in-azure-by-using-advanced-options"></a><a name="enable-publishing-with-advanced-create-options"></a>Publikování projektu do nové aplikace Function App v Azure s využitím pokročilých možností
 
-Následující kroky publikují projekt do nové aplikace pro funkce vytvořené pomocí rozšířených možností vytváření:
+Následující kroky publikují projekt na novou aplikaci funkcí vytvořenou s možnostmi Upřesnit vytváření:
 
-1. V oblasti **Azure: Funkce** vyberte ikonu **Nasadit do funkce aplikace.**
+1. V oblasti **Azure: Functions** vyberte ikonu **nasadit do Function App** .
 
     ![Nastavení aplikace funkcí](./media/functions-develop-vs-code/function-app-publish-project.png)
 
-1. Pokud nejste přihlášení, budete vyzváni k **přihlášení do Azure**. Můžete si taky **vytvořit bezplatný účet Azure**. Po přihlášení z prohlížeče se vraťte ke kódu sady Visual Studio.
+1. Pokud nejste přihlášení, budete vyzváni k **přihlášení k Azure**. Můžete si také **vytvořit bezplatný účet Azure**. Po přihlášení z prohlížeče se vraťte na Visual Studio Code.
 
-1. Pokud máte více předplatných, **vyberte předplatné** pro aplikaci funkce a pak vyberte **+ Vytvořit novou aplikaci funkce v Azure... _Pokročilé_**. Tato _možnost Upřesnit_ poskytuje větší kontrolu nad prostředky, které vytvoříte v Azure. 
+1. Pokud máte více předplatných, **Vyberte předplatné** pro aplikaci Function App a potom vyberte **+ vytvořit novou Function App v Azure... _Upřesnit_**. Tato _Pokročilá_ možnost nabízí větší kontrolu nad prostředky, které vytvoříte v Azure. 
 
-1. V následujících výzvách zadejte tyto informace:
+1. Podle pokynů zadejte tyto informace:
 
     | Výzva | Hodnota | Popis |
     | ------ | ----- | ----------- |
-    | Výběr aplikace funkcí v Azure | Vytvoření aplikace nové funkce v Azure | Na další výzvu zadejte globálně jedinečný název, který identifikuje vaši novou aplikaci funkcí, a pak vyberte Enter. Platné znaky pro název aplikace funkcí jsou `a-z`, `0-9` a `-`. |
-    | Výběr operačního příkazu | Windows | Aplikace funkce běží ve Windows. |
-    | Vyberte hostingový plán | Plán Consumption | Používá se [hosting plánu spotřeby](functions-scale.md#consumption-plan) bez serveru. |
-    | Výběr runtime pro novou aplikaci | Váš jazyk projektu | Za běhu musí odpovídat projektu, který publikujete. |
-    | Výběr skupiny prostředků pro nové zdroje | Vytvořit novou skupinu prostředků | Na další výzvu zadejte název `myResourceGroup`skupiny prostředků, třeba , a pak vyberte enter. Můžete také vybrat existující skupinu prostředků. |
-    | Výběr účtu úložiště | Vytvoření nového účtu úložiště | Na další výzvu zadejte globálně jedinečný název nového účtu úložiště, který používá vaše aplikace pro funkce, a pak vyberte Enter. Názvy účtů úložiště musí mít dlouhou 3 až 24 znaků a mohou obsahovat pouze čísla a malá písmena. Můžete také vybrat existující účet. |
-    | Výběr umístění pro nové zdroje | oblast | Vyberte umístění v [oblasti](https://azure.microsoft.com/regions/) ve vašem okolí nebo v blízkosti jiných služeb, ke kterým vaše funkce přistupují. |
+    | Výběr aplikace Function App v Azure | Vytvoření nových Function App v Azure | Do dalšího řádku zadejte globálně jedinečný název, který identifikuje vaši novou aplikaci Function App, a pak vyberte Enter. Platné znaky pro název aplikace funkcí jsou `a-z`, `0-9` a `-`. |
+    | Vybrat operační systém | Windows | Aplikace Function App běží ve Windows. |
+    | Vybrat plán hostování | Plán Consumption | Používá se [hostování plánu spotřeby](functions-scale.md#consumption-plan) bez serveru. |
+    | Vyberte modul runtime pro novou aplikaci. | Jazyk projektu | Modul runtime musí odpovídat projektu, který publikujete. |
+    | Vyberte skupinu prostředků pro nové prostředky. | Vytvořit novou skupinu prostředků | Do dalšího řádku zadejte název skupiny prostředků, jako `myResourceGroup`je, a pak vyberte zadat. Můžete také vybrat existující skupinu prostředků. |
+    | Vyberte účet úložiště. | Vytvoření nového účtu úložiště | Do dalšího řádku zadejte globálně jedinečný název nového účtu úložiště používaného aplikací Function App a pak vyberte Enter. Názvy účtů úložiště musí mít délku 3 až 24 znaků a můžou obsahovat jenom číslice a malá písmena. Můžete také vybrat existující účet. |
+    | Vyberte umístění pro nové prostředky. | oblast | Vyberte umístění v [oblasti](https://azure.microsoft.com/regions/) poblíž nebo v blízkosti jiných služeb, ke kterým mají přístup vaše funkce. |
 
-    Po vytvoření aplikace funkce a použití balíčku nasazení se zobrazí oznámení. Vyberte **Zobrazit výstup** v tomto oznámení zobrazíte výsledky vytváření a nasazení, včetně prostředků Azure, které jste vytvořili.
+    Po vytvoření aplikace Function App se zobrazí oznámení a použije se balíček pro nasazení. Pokud chcete zobrazit výsledky vytvoření a nasazení, včetně prostředků Azure, které jste vytvořili, vyberte **Zobrazit výstup** v tomto oznámení.
 
-## <a name="republish-project-files"></a>Opětovné publikování souborů projektu
+## <a name="republish-project-files"></a>Znovu publikovat soubory projektu
 
-Když nastavíte [průběžné nasazování](functions-continuous-deployment.md), vaše aplikace funkcí v Azure se aktualizuje při každé aktualizaci zdrojových souborů v připojeném zdrojovém umístění. Doporučujeme průběžné nasazení, ale můžete také znovu publikovat aktualizace souboru projektu z Visual Studio Code.
+Při nastavování [průběžného nasazování](functions-continuous-deployment.md)se vaše aplikace Function App v Azure aktualizuje při každé aktualizaci zdrojových souborů v připojeném zdrojovém umístění. Doporučujeme průběžné nasazování, ale aktualizace souborů projektu můžete také znovu publikovat z Visual Studio Code.
 
 > [!IMPORTANT]
 > Publikování do existující aplikace funkcí přepíše obsah této aplikace v Azure.
 
-1. V kódu visual ateliéru otevřete paletu příkazů vyberte F1. V paletě příkazů vyhledejte a vyberte **Azure Functions: Deploy to function app**.
+1. V Visual Studio Code vyberte F1 a otevřete tak paletu příkazů. V paletě příkazů vyhledejte a vyberte **Azure Functions: nasadit do aplikace Function App**.
 
-1. Pokud nejste přihlášení, budete vyzváni k **přihlášení do Azure**. Po přihlášení z prohlížeče se vraťte na Visual Studio Code. Pokud máte více předplatných, **vyberte předplatné,** které obsahuje vaši aplikaci funkce.
+1. Pokud nejste přihlášení, budete vyzváni k **přihlášení k Azure**. Po přihlášení z prohlížeče se vraťte na Visual Studio Code. Pokud máte více předplatných, **Vyberte předplatné** , které obsahuje vaši aplikaci Function App.
 
-1. VYberte stávající aplikaci funkcí v Azure. Když budete upozorněni na přepsání všech souborů v aplikaci funkce, vyberte **Nasadit,** abyste potvrdili upozornění a pokračovali.
+1. Vyberte svou stávající aplikaci Function App v Azure. Když se zobrazí upozornění na přepsání všech souborů v aplikaci Function App, vyberte **nasadit** a potvrďte upozornění a pokračujte.
 
-Projekt se znovu sestaví, přebalí a nahraje do Azure. Stávající projekt je nahrazen nový balíček a aplikace funkce restartuje.
+Projekt se znovu sestaví, znovu zabalí a nahraje do Azure. Existující projekt je nahrazen novým balíčkem a aplikace Function App se restartuje.
 
-## <a name="get-the-url-of-the-deployed-function"></a>Získání adresy URL nasazené funkce
+## <a name="get-the-url-of-the-deployed-function"></a>Získat adresu URL nasazené funkce
 
-Chcete-li volat funkci aktivovanou protokolem HTTP, potřebujete adresu URL funkce, když se nasadí do aplikace funkce. Tato adresa URL obsahuje všechny požadované [funkční klávesy](functions-bindings-http-webhook-trigger.md#authorization-keys). Pomocí rozšíření můžete získat tyto adresy URL pro nasazené funkce.
+Pro volání funkce aktivované protokolem HTTP potřebujete při nasazení do aplikace Function App adresu URL funkce. Tato adresa URL zahrnuje všechny požadované [funkční klávesy](functions-bindings-http-webhook-trigger.md#authorization-keys). K získání těchto adres URL pro nasazené funkce můžete použít rozšíření.
 
-1. Výběrem klávesy F1 otevřete paletu příkazů a pak vyhledejte a spusťte příkaz **Azure Functions: Copy Function URL**.
+1. Výběrem klávesy F1 otevřete paletu příkazů a potom vyhledejte a spusťte příkaz **Azure Functions: Kopírovat adresu URL funkce**.
 
-1. Podle pokynů vyberte aplikaci funkce v Azure a potom konkrétní aktivační událost HTTP, kterou chcete vyvolat.
+1. Podle pokynů vyberte aplikaci Function App v Azure a pak konkrétní Trigger HTTP, který chcete vyvolat.
 
-Adresa URL funkce je zkopírována do schránky spolu `code` se všemi požadovanými klíči předanými parametrem dotazu. Pomocí nástroje HTTP odesílejte požadavky POST nebo prohlížeč pro požadavky GET do vzdálené funkce.  
+Adresa URL funkce se zkopíruje do schránky spolu s případnými povinnými klíči předanými parametrem `code` dotazu. Pomocí nástroje HTTP odešlete žádosti POST nebo prohlížeč pro požadavky GET na vzdálenou funkci.  
 
-## <a name="run-functions-locally"></a>Spouštět funkce místně
+## <a name="run-functions-locally"></a>Místní spuštění funkcí
 
-Rozšíření Azure Functions umožňuje spustit projekt Functions v místním vývojovém počítači. Místní runtime je stejný runtime, který hostuje vaši funkční aplikaci v Azure. Místní nastavení jsou čtena ze [souboru local.settings.json](#local-settings-file).
+Rozšíření Azure Functions umožňuje spustit projekt funkcí na místním vývojovém počítači. Místní modul runtime je stejný modul runtime, který hostuje vaši aplikaci Function App v Azure. Místní nastavení jsou načítána ze [souboru Local. Settings. JSON](#local-settings-file).
 
 ### <a name="additional-requirements-for-running-a-project-locally"></a>Další požadavky na místní spuštění projektu
 
-Chcete-li spustit projekt Functions místně, musíte splnit tyto další požadavky:
+Chcete-li spustit projekt Functions v místním prostředí, je nutné splnit tyto další požadavky:
 
-* Nainstalujte verzi 2.x nebo novější z [nástrojů Azure Functions Core Tools](functions-run-local.md#v2). Balíček Nástroje jádra se stáhne a nainstaluje automaticky při spuštění projektu místně. Základní nástroje zahrnují celou dobu runtime Funkce Azure, takže stahování a instalace může nějakou dobu trvat.
+* Nainstalujte verzi 2. x nebo novější z [Azure Functions Core Tools](functions-run-local.md#v2). Balíček Core Tools se stáhne a nainstaluje automaticky při spuštění projektu místně. Základní nástroje zahrnují celý modul runtime Azure Functions, takže stažení a instalace můžou nějakou dobu trvat.
 
 * Nainstalujte konkrétní požadavky pro vámi zvolený jazyk:
 
     | Jazyk | Požadavek |
     | -------- | --------- |
-    | **C #** | [Rozšíření Jazyka C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)<br/>[Nástroje .NET Core CLI](https://docs.microsoft.com/dotnet/core/tools/?tabs=netcore2x)   |
-    | **Java** | [Ladicí program pro rozšíření Javy](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug)<br/>[Java 8](https://aka.ms/azure-jdks)<br/>[Maven 3 nebo novější](https://maven.apache.org/) |
-    | **Javascript** | [Node.js](https://nodejs.org/)<sup>*</sup> |  
-    | **Python** | [Rozšíření Pythonu](https://marketplace.visualstudio.com/items?itemName=ms-python.python)<br/>[Python 3.6.8](https://www.python.org/downloads/) doporučeno|
+    | **C#** | [Rozšíření C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)<br/>[Nástroje .NET Core CLI](https://docs.microsoft.com/dotnet/core/tools/?tabs=netcore2x)   |
+    | **Java** | [Ladicí program pro rozšíření Java](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug)<br/>[Java 8](https://aka.ms/azure-jdks)<br/>[Maven 3 nebo novější](https://maven.apache.org/) |
+    | **JavaScript** | [Node. js](https://nodejs.org/)<sup>*</sup> |  
+    | **Python** | [Rozšíření Pythonu](https://marketplace.visualstudio.com/items?itemName=ms-python.python)<br/>Doporučuje se [Python 3.6.8](https://www.python.org/downloads/)|
 
-    <sup>*</sup>Aktivní LTS a údržba LTS (8.11.1 a 10.14.1 doporučeno).
+    <sup>*</sup>Aktivní LTS a verze LTS údržby (Doporučené 8.11.1 a 10.14.1).
 
-### <a name="configure-the-project-to-run-locally"></a>Konfigurace projektu pro místní spuštění
+### <a name="configure-the-project-to-run-locally"></a>Nakonfigurujte projekt tak, aby běžel místně.
 
-Za běhu Functions používá účet Úložiště Azure interně pro všechny typy aktivačních událostí než HTTP a webhooky. Takže je potřeba nastavit klíč **Values.AzureWebJobsStorage** na platný připojovací řetězec účtu Azure Storage.
+Modul runtime Functions používá účet Azure Storage interně pro všechny typy triggerů kromě HTTP a webhooků. Proto je potřeba nastavit klíč **Values. AzureWebJobsStorage** na platný připojovací řetězec účtu Azure Storage.
 
-Tato část používá [rozšíření úložiště Azure pro kód Visual Studia](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurestorage) s [Průzkumníkem úložiště Azure](https://storageexplorer.com/) pro připojení a načtení připojovacího řetězce úložiště.
+Tato část používá [rozšíření Azure Storage pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurestorage) se [Průzkumník služby Azure Storage](https://storageexplorer.com/) pro připojení k a načtení připojovacího řetězce úložiště.
 
 Nastavení připojovacího řetězce účtu úložiště:
 
-1. V Sadě Visual Studio **otevřete Průzkumníka Cloud**, > **rozbalte účet úložiště, váš účet úložiště**, a pak vyberte **Vlastnosti** a zkopírujte hodnotu **Primární připojovací řetězec.** **Storage Account**
+1. V aplikaci Visual Studio otevřete **Průzkumník cloudu** > **, rozbalte** **účet úložiště**a pak vyberte **vlastnosti** a zkopírujte hodnotu **primárního připojovacího řetězce** .
 
-2. V projektu otevřete soubor local.settings.json a nastavte hodnotu klíče **AzureWebJobsStorage** na zkopírovaný připojovací řetězec.
+2. V projektu otevřete soubor Local. Settings. JSON a nastavte hodnotu klíče **AzureWebJobsStorage** na připojovací řetězec, který jste zkopírovali.
 
-3. Opakováním předchozího kroku přidejte do pole **Hodnoty** jedinečné klíče pro všechna ostatní připojení vyžadovaná vašimi funkcemi.
+3. Opakujte předchozí krok a přidejte jedinečné klíče do pole **hodnoty** pro všechna ostatní připojení požadovaná funkcemi.
 
-Další informace naleznete v [tématu Local settings file](#local-settings-file).
+Další informace najdete v tématu [místní nastavení souboru](#local-settings-file).
 
-### <a name="debugging-functions-locally"></a>Ladění funkcí místně  
+### <a name="debugging-functions-locally"></a>Místní ladění funkcí  
 
-Chcete-li ladit funkce, vyberte možnost F5. Pokud jste ještě nestáhli [základní nástroje][nástroje Azure Functions Core Tools ,]budete vyzváni k tomu. Když je nainstalována a spuštěna základní nástroje, výstup se zobrazí v terminálu. To je stejné jako `func host start` spuštění příkazu Základní nástroje z terminálu, ale s dalšími úlohami sestavení a připojeným ladicím programem.  
+Chcete-li ladit své funkce, vyberte F5. Pokud jste ještě nestáhli [základní nástroje][Azure Functions Core Tools], budete vyzváni k tomu. Když jsou nainstalované a běžící základní nástroje, zobrazí se výstup v terminálu. To je stejné jako spuštění příkazu `func host start` Core Tools z terminálu, ale s dalšími úlohami sestavení a připojeným ladicím programem.  
 
-Když je projekt spuštěn, můžete aktivovat vaše funkce, jako při nasazení projektu do Azure. Při spuštění projektu v režimu ladění, zarážky jsou přístupů v kódu sady Visual Studio, podle očekávání.
+Když je projekt spuštěný, můžete aktivovat své funkce stejně, jako byste při nasazení projektu do Azure. Když je projekt spuštěn v režimu ladění, zarážky jsou dosaženy v Visual Studio Code, podle očekávání.
 
-Adresa URL požadavku na aktivační události HTTP se zobrazí ve výstupu v terminálu. Funkční klávesy pro aktivační události HTTP se nepoužívají, pokud je projekt spuštěn místně. Další informace najdete [v tématu Strategies for testing your code in Azure Functions](functions-test-a-function.md).  
+Adresa URL požadavku pro aktivační události HTTP se zobrazí ve výstupu v terminálu. Funkční klávesy pro aktivační události HTTP se nepoužívají, pokud je projekt spuštěn místně. Další informace najdete v tématu [strategie pro testování kódu v Azure Functions](functions-test-a-function.md).  
 
-Další informace najdete v [tématu Práce s nástroji Azure Functions]Core Nástroje Azure Základní[nástroje].
+Další informace najdete v tématu věnovaném [práci s Azure Functions Core Tools][Azure Functions Core Tools].
 
 [!INCLUDE [functions-local-settings-file](../../includes/functions-local-settings-file.md)]
 
-Ve výchozím nastavení se tato nastavení při publikování projektu do Azure nemigrují automaticky. Po dokončení publikování máte možnost publikovat nastavení z local.settings.json do aplikace funkce v Azure. Další informace najdete v [tématu Publikování nastavení aplikace](#publish-application-settings).
+Ve výchozím nastavení se tato nastavení nemigrují automaticky, když je projekt publikován do Azure. Po dokončení publikování máte možnost publikovat nastavení z Local. Settings. JSON do aplikace Function App v Azure. Další informace najdete v tématu [publikování nastavení aplikace](#publish-application-settings).
 
-Hodnoty v **připojovacích řetězcích** nejsou nikdy publikovány.
+Hodnoty v **connectionStrings** se nikdy nepublikují.
 
-Hodnoty nastavení aplikace funkce lze také číst v kódu jako proměnné prostředí. Další informace naleznete v části Proměnné prostředí v těchto referenčních článcích specifických pro daný jazyk:
+Hodnoty nastavení aplikace Functions lze v kódu přečíst také jako proměnné prostředí. Další informace najdete v oddílech s proměnnými prostředí těchto referenčních článků specifických pro konkrétní jazyk:
 
-* [Předkompilováno.](functions-dotnet-class-library.md#environment-variables)
+* [Předkompilovaná C#](functions-dotnet-class-library.md#environment-variables)
 * [Skript jazyka C# (.csx)](functions-reference-csharp.md#environment-variables)
 * [Java](functions-reference-java.md#environment-variables)
-* [Javascript](functions-reference-node.md#environment-variables)
+* [JavaScript](functions-reference-node.md#environment-variables)
 
-## <a name="application-settings-in-azure"></a>Nastavení aplikací v Azure
+## <a name="application-settings-in-azure"></a>Nastavení aplikace v Azure
 
-Nastavení v souboru local.settings.json v projektu by mělo být stejné jako nastavení aplikace v aplikaci funkce v Azure. Všechna nastavení, která přidáte do local.settings.json, musí být také přidána do aplikace funkce v Azure. Tato nastavení se při publikování projektu nenahrají automaticky. Stejně tak všechna nastavení, která vytvoříte v aplikaci funkce [na portálu,](functions-how-to-use-azure-function-app-settings.md#settings) musí být stažena do místního projektu.
+Nastavení v souboru Local. Settings. JSON v projektu by mělo být stejné jako nastavení aplikace v aplikaci Function App v Azure. Všechna nastavení, která přidáte do Local. Settings. JSON, se musí taky přidat do aplikace Function App v Azure. Tato nastavení nejsou nahrána automaticky při publikování projektu. Podobně se všechna nastavení, která vytvoříte ve vaší aplikaci Function App na [portálu](functions-how-to-use-azure-function-app-settings.md#settings) , musí stáhnout do vašeho místního projektu.
 
-### <a name="publish-application-settings"></a>Publikovat nastavení aplikace
+### <a name="publish-application-settings"></a>Publikování nastavení aplikace
 
-Nejjednodušší způsob, jak publikovat požadovaná nastavení do aplikace funkce v Azure, je použít odkaz **Nastavení nahrávání,** který se zobrazí po publikování projektu:
+Nejjednodušší způsob, jak publikovat požadovaná nastavení do aplikace Function App v Azure, je použít odkaz **nastavení nahrávání** , který se zobrazí po publikování projektu:
 
 ![Nahrát nastavení aplikace](./media/functions-develop-vs-code/upload-app-settings.png)
 
-Nastavení můžete také publikovat pomocí příkazu **Azure Functions: Upload Local Setting** v paletě příkazů. Jednotlivá nastavení nastavení aplikací v Azure můžete přidat pomocí příkazu **Azure Functions: Add New Setting** .
+Nastavení můžete také publikovat pomocí příkazu **Azure Functions: nahrání místního nastavení** v paletě příkazů. Do nastavení aplikace v Azure můžete přidat jednotlivá nastavení pomocí příkazu **Azure Functions: přidat nové nastavení** .
 
 > [!TIP]
-> Před publikováním soubor local.settings.json nezapomeňte uložit.
+> Nezapomeňte uložit soubor Local. Settings. JSON předtím, než ho publikujete.
 
-Pokud je místní soubor zašifrován, dešifrován, publikován a znovu zašifrován. Pokud existují nastavení, která mají konfliktní hodnoty ve dvou umístěních, budete vyzváni k výběru, jak postupovat.
+Pokud je místní soubor zašifrovaný, dešifruje, publikuje a znovu zašifruje. Pokud v obou umístěních existují nastavení, která mají konfliktní hodnoty, zobrazí se výzva, abyste si zvolili, jak pokračovat.
 
-Zobrazení existujících nastavení aplikace v oblasti **Azure: Funkce** rozšířením předplatného, aplikace funkcí a **nastavení aplikace**.
+Seznamte se s existujícími nastaveními aplikací v oblasti **Azure: Functions** rozbalením předplatného, aplikace Function App a **nastavení aplikace**.
 
-![Zobrazení nastavení aplikace funkcí v kódu Visual Studia](./media/functions-develop-vs-code/view-app-settings.png)
+![Zobrazit nastavení aplikace Function App v Visual Studio Code](./media/functions-develop-vs-code/view-app-settings.png)
 
-### <a name="download-settings-from-azure"></a>Nastavení stahování z Azure
+### <a name="download-settings-from-azure"></a>Stažení nastavení z Azure
 
-Pokud jste v Azure vytvořili nastavení aplikací, můžete si je stáhnout do souboru local.settings.json pomocí příkazu **Azure Functions: Download Remote Settings** .
+Pokud jste v Azure vytvořili nastavení aplikace, můžete je stáhnout do souboru Local. Settings. JSON pomocí příkazu **Azure Functions: Stáhnout Vzdálená nastavení** .
 
-Stejně jako při nahrávání, pokud je místní soubor zašifrován, dešifrován, aktualizován a znovu zašifrován. Pokud existují nastavení, která mají konfliktní hodnoty ve dvou umístěních, budete vyzváni k výběru, jak postupovat.
+Pokud je místní soubor zašifrovaný, je stejně jako u nahrávání šifrovaný, aktualizovaný a šifrovaný znovu. Pokud v obou umístěních existují nastavení, která mají konfliktní hodnoty, zobrazí se výzva, abyste si zvolili, jak pokračovat.
 
-## <a name="monitoring-functions"></a>Monitorovací funkce
+## <a name="monitoring-functions"></a>Funkce monitorování
 
-Při [místním spuštění funkcí](#run-functions-locally)jsou data protokolu přenášena do terminálové konzole. Můžete také získat data protokolu, když váš projekt functions běží v aplikaci funkce v Azure. Můžete se buď připojit k protokolům streamování v Azure, abyste viděli data protokolu téměř v reálném čase, nebo můžete povolit Application Insights pro úplnější pochopení toho, jak se vaše aplikace funkce chová.
+Když [spouštíte funkce místně](#run-functions-locally), data protokolu se streamují do konzoly terminálu. Data protokolu můžete získat také v případě, že projekt Functions běží v aplikaci Function App v Azure. Můžete se buď připojit k protokolům streamování v Azure, abyste viděli data protokolu téměř v reálném čase, nebo můžete povolit Application Insights pro úplnější porozumění tomu, jak se aplikace Function app chová.
 
-### <a name="streaming-logs"></a>Streamovací protokoly
+### <a name="streaming-logs"></a>Protokoly streamování
 
-Při vývoji aplikace je často užitečné zobrazit informace o protokolování v téměř reálném čase. Můžete zobrazit datový proud souborů protokolu generovaných funkcemi. Tento výstup je příkladem datových proudů protokolů pro požadavek na funkci spouštěnou protokolem HTTP:
+Při vývoji aplikace je často užitečné zobrazit informace o protokolování téměř v reálném čase. Můžete zobrazit datový proud souborů protokolu generovaných vašimi funkcemi. Tento výstup je příkladem protokolů streamování pro požadavek na funkci spuštěnou protokolem HTTP:
 
-![Výstup datových protokolů pro aktivační událost PROTOKOLU HTTP](media/functions-develop-vs-code/streaming-logs-vscode-console.png)
+![Výstup protokolů streamování pro Trigger HTTP](media/functions-develop-vs-code/streaming-logs-vscode-console.png)
 
-Další informace naleznete v [tématu Streamování protokolů](functions-monitoring.md#streaming-logs).
+Další informace najdete v tématu [streamování protokolů](functions-monitoring.md#streaming-logs).
 
 [!INCLUDE [functions-enable-log-stream-vs-code](../../includes/functions-enable-log-stream-vs-code.md)]
 
 > [!NOTE]
-> Protokoly streamování podporují pouze jednu instanci hostitele Functions. Při škálování funkce na více instancí se v datovém proudu protokolu nezobrazí data z jiných instancí. [Živé metriky Stream](../azure-monitor/app/live-stream.md) v Application Insights podporuje více instancí. Zatímco také v téměř reálném čase, streamování analýzy je založena na [vzorkovaných dat](functions-monitoring.md#configure-sampling).
+> Protokoly streamování podporují jenom jednu instanci hostitele Functions. Pokud je vaše funkce škálovaná na více instancí, data z jiných instancí se v datovém proudu protokolu nezobrazují. [Live Metrics Stream](../azure-monitor/app/live-stream.md) v Application Insights podporuje více instancí. I když téměř v reálném čase je analýza streamování založená na [ukázkových datech](functions-monitoring.md#configure-sampling).
 
 ### <a name="application-insights"></a>Application Insights
 
-Doporučujeme sledovat provádění funkcí integrací aplikace funkcí s Application Insights. Když na webu Azure Portal vytvoříte aplikaci funkcí, k této integraci ve výchozím nastavení dojde. Když vytvoříte aplikaci funkcí během publikování v Sadě Visual Studio, musíte sami integrovat Application Insights.
+Doporučujeme vám monitorovat provádění vašich funkcí integrací aplikace Function App s Application Insights. Při vytváření aplikace Function App v Azure Portal k této integraci dojde ve výchozím nastavení. Při vytváření aplikace Function App během publikování sady Visual Studio je nutné integrovat Application Insights sami.
 
 [!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
 
-Další informace najdete [v tématu Monitorování funkcí Azure](functions-monitoring.md).
+Další informace najdete v tématu [monitorování Azure Functions](functions-monitoring.md).
 
-## <a name="c-script-projects"></a>C\# skript projekty
+## <a name="c-script-projects"></a>Projekty\# skriptu jazyka C
 
-Ve výchozím nastavení jsou všechny projekty jazyka C# vytvořeny jako [projekty zkompilované knihovny tříd jazyka C#](functions-dotnet-class-library.md). Pokud místo toho dáváte přednost práci s projekty skriptů jazyka C#, musíte v nastavení rozšíření Azure Functions vybrat skript C#jako výchozí jazyk:
+Ve výchozím nastavení jsou všechny projekty C# vytvořeny jako [projekty knihovny kompilovaných tříd jazyka c#](functions-dotnet-class-library.md). Pokud raději chcete pracovat s projekty skriptů v jazyce C#, je nutné vybrat skript jazyka C# jako výchozí jazyk v nastavení rozšíření Azure Functions:
 
-1. Vyberte**Nastavení****předvoleb** >  **souborů** > .
+1. Vyberte **File** > **Preferences** > **Nastavení**předvoleb souboru.
 
-1. Přejděte na**Rozšíření uživatelských** >  **nastavení** > **Azure Functions**.
+1. Přejít na**rozšíření** >  **uživatelských nastavení** > **Azure Functions**.
 
-1. Vyberte **C#Script** z **Funkce Azure: Jazyk projektu**.
+1. V Azure Functions vyberte **skript C #** **: jazyk projektu**.
 
-Po dokončení těchto kroků volání základní nástroje zahrnují `--csx` možnost, která generuje a publikuje c# skript (.csx) soubory projektu. Pokud máte tento výchozí jazyk zadán, všechny projekty, které vytvoříte výchozí c# skript projekty. Při nastavení výchozího nastavení nebudete vyzváni k výběru jazyka projektu. Chcete-li vytvořit projekty v jiných jazycích, je nutné toto nastavení změnit nebo odebrat ze souboru user settings.json. Po odebrání tohoto nastavení budete při vytváření projektu znovu vyzváni k výběru jazyka.
+Po dokončení tohoto postupu budou volání do základních základních nástrojů zahrnovat `--csx` možnost, která generuje a publikuje soubory projektu skriptu C# (. csx). Pokud máte zadaný výchozí jazyk, všechny projekty, které vytvoříte ve výchozím nastavení pro projekty skriptu C#. Nejste vyzváni k výběru jazyka projektu, pokud je nastavena výchozí hodnota. Chcete-li vytvořit projekty v jiných jazycích, je nutné toto nastavení změnit, nebo jej odebrat ze souboru User settings. JSON. Po odebrání tohoto nastavení budete znovu vyzváni k výběru jazyka při vytváření projektu.
 
-## <a name="command-palette-reference"></a>Odkaz na paletu příkazů
+## <a name="command-palette-reference"></a>Reference k paletě příkazů
 
-Rozšíření Funkce Azure poskytuje užitečné grafické rozhraní v oblasti pro interakci s aplikacemi funkce v Azure. Stejné funkce jsou k dispozici také jako příkazy v paletě příkazů (F1). Tyto příkazy Azure Functions jsou k dispozici:
+Rozšíření Azure Functions poskytuje užitečné grafické rozhraní v oblasti pro interakci s aplikacemi Function App v Azure. Stejné funkce jsou také k dispozici jako příkazy v paletě příkazů (F1). K dispozici jsou tyto příkazy Azure Functions:
 
-|Azure Functions, příkaz  | Popis  |
+|Azure Functions – příkaz  | Popis  |
 |---------|---------|
-|**Přidat nové nastavení**  |  Vytvoří nové nastavení aplikace v Azure. Další informace najdete v [tématu Publikování nastavení aplikace](#publish-application-settings). Toto nastavení může být nutné [stáhnout také do místního nastavení](#download-settings-from-azure). |
-| **Konfigurace zdroje nasazení** | Připojí vaši funkční aplikaci v Azure k místnímu úložišti Git. Další informace najdete [v tématu Průběžné nasazení pro funkce Azure](functions-continuous-deployment.md). |
-| **Připojení k úložišti GitHub** | Připojí vaši funkční aplikaci k úložišti GitHub. |
-| **Kopírovat adresu URL funkce** | Získá vzdálenou adresu URL funkce aktivované HTTP, která běží v Azure. Další informace najdete [v tématu Získání adresy URL nasazené funkce](#get-the-url-of-the-deployed-function). |
-| **Vytvoření aplikace funkcí v Azure** | Vytvoří novou aplikaci funkcí ve vašem předplatném v Azure. Další informace najdete v části o [tom,](#publish-to-azure)jak publikovat do nové aplikace funkcí v Azure .        |
-| **Dešifrování nastavení** | Dešifruje [místní nastavení,](#local-settings-file) která byla zašifrována pomocí **Azure Functions: Encrypt Settings**.  |
-| **Odstranit aplikaci funkce** | Odebere aplikaci funkce z předplatného v Azure. Pokud v plánu služby App Service nejsou žádné jiné aplikace, máte možnost ji také odstranit. Ostatní prostředky, jako jsou účty úložiště a skupiny prostředků, se neodstraní. Chcete-li odebrat všechny prostředky, měli byste místo toho [odstranit skupinu prostředků](functions-add-output-binding-storage-queue-vs-code.md#clean-up-resources). Váš místní projekt není ovlivněn. |
-|**Funkce Odstranit**  | Odebere existující funkci z aplikace funkce v Azure. Vzhledem k tomu, že toto odstranění nemá vliv na místní projekt, zvažte místo toho odebrání funkce místně a [opětovné publikování projektu](#republish-project-files). |
-| **Odstranit proxy server** | Odebere proxy server Azure Functions z vaší aplikace funkce v Azure. Další informace o proxy serverech najdete v [tématu Práce s azure functions proxy servery](functions-proxies.md). |
-| **Nastavení odstranit** | Odstraní nastavení aplikace funkce v Azure. Toto odstranění nemá vliv na nastavení v souboru local.settings.json. |
-| **Odpojit od repo**  | Odebere [nepřetržité připojení k nasazení](functions-continuous-deployment.md) mezi aplikací funkce v Azure a úložištěm správy zdrojového kódu. |
-| **Stáhnout vzdálená nastavení** | Stáhne nastavení z vybrané aplikace funkce v Azure do souboru local.settings.json. Pokud je místní soubor zašifrován, dešifrován, aktualizován a znovu zašifrován. Pokud existují nastavení, která mají konfliktní hodnoty ve dvou umístěních, budete vyzváni k výběru, jak postupovat. Před spuštěním tohoto příkazu nezapomeňte uložit změny do souboru local.settings.json. |
-| **Upravit nastavení** | Změní hodnotu existujícího nastavení aplikace funkce v Azure. Tento příkaz nemá vliv na nastavení v souboru local.settings.json.  |
-| **Šifrovat nastavení** | Šifruje jednotlivé `Values` položky v poli v [místním nastavení](#local-settings-file). V tomto `IsEncrypted` souboru je `true`také nastavena na , která určuje, že místní runtime bude dešifrovat nastavení před jejich použitím. Šifrujte místní nastavení, abyste snížili riziko úniku cenných informací. V Azure se nastavení aplikací vždy ukládá zašifrovaná. |
-| **Spustit funkci nyní** | Ručně spustí [funkci aktivovanou časovačem](functions-bindings-timer.md) v Azure. Tento příkaz se používá pro testování. Další informace o spouštění funkcí bez protokolu HTTP v Azure najdete v [tématu Ruční spuštění funkce aktivované protokolem HTTP](functions-manually-run-non-http.md). |
-| **Inicializovat projekt pro použití s kódem VS** | Přidá požadované soubory projektu Visual Studio Code do existujícího projektu Functions. Tento příkaz slouží k práci s projektem, který jste vytvořili pomocí základních nástrojů. |
-| **Instalace nebo aktualizace základních nástrojů funkcí Azure** | Nainstaluje nebo aktualizuje [nástroje Azure Functions Core Tools], které se používají ke spuštění funkcí místně. |
-| **Opětovné nasazení**  | Umožňuje znovu nasadit soubory projektu z připojeného úložiště Git do konkrétního nasazení v Azure. Chcete-li znovu publikovat místní aktualizace z kódu sady Visual Studio, [znovu publikujte projekt](#republish-project-files). |
-| **Přejmenovat nastavení** | Změní název klíče existující funkce nastavení aplikace v Azure. Tento příkaz nemá vliv na nastavení v souboru local.settings.json. Po přejmenování nastavení v Azure, měli byste [stáhnout tyto změny do místního projektu](#download-settings-from-azure). |
-| **Restartování** | Restartuje aplikaci funkce v Azure. Nasazení aktualizací také restartuje aplikaci funkce. |
-| **Nastavení azurewebjobs**| Nastaví hodnotu `AzureWebJobsStorage` nastavení aplikace. Toto nastavení je vyžadováno funkcemi Azure. Nastaví se, když se v Azure vytvoří aplikace pro funkce. |
-| **Zahájení** | Spustí aplikaci zastavené funkce v Azure. |
-| **Spustit protokoly datových proudů** | Spustí protokoly streamování pro aplikaci funkce v Azure. Protokoly datových proudů používejte během vzdáleného řešení potíží v Azure, pokud potřebujete zobrazit informace o protokolování v téměř reálném čase. Další informace naleznete v [tématu Streamování protokolů](#streaming-logs). |
-| **Zastavit** | Zastaví aplikaci funkcí, která běží v Azure. |
-| **Zastavit protokoly datových proudů** | Zastaví protokoly streamování pro aplikaci funkce v Azure. |
-| **Přepnout jako nastavení slotu** | Pokud je povoleno, zajišťuje, že nastavení aplikace přetrvává pro daný slot nasazení. |
-| **Odinstalace základních nástrojů Azure Functions** | Odebere základní nástroje Azure Functions, které je vyžadováno rozšířením. |
-| **Nahrát místní nastavení** | Nahraje nastavení ze souboru local.settings.json do vybrané aplikace funkce v Azure. Pokud je místní soubor zašifrován, dešifrován, nahrán a znovu zašifrován. Pokud existují nastavení, která mají konfliktní hodnoty ve dvou umístěních, budete vyzváni k výběru, jak postupovat. Před spuštěním tohoto příkazu nezapomeňte uložit změny do souboru local.settings.json. |
-| **Zobrazit potvrzení na GitHubu** | Zobrazuje nejnovější potvrzení v konkrétním nasazení, když je vaše aplikace funkcí připojena k úložišti. |
-| **Zobrazit protokoly nasazení** | Zobrazuje protokoly pro konkrétní nasazení do aplikace funkce v Azure. |
+|**Přidat nová nastavení**  |  Vytvoří nové nastavení aplikace v Azure. Další informace najdete v tématu [publikování nastavení aplikace](#publish-application-settings). Může být také nutné [Stáhnout toto nastavení do místního nastavení](#download-settings-from-azure). |
+| **Konfigurovat zdroj nasazení** | Připojí aplikaci funkcí v Azure k místnímu úložišti Git. Další informace najdete v tématu [průběžné nasazování pro Azure Functions](functions-continuous-deployment.md). |
+| **Připojit k úložišti GitHub** | Připojí aplikaci funkcí k úložišti GitHub. |
+| **Kopírovat adresu URL funkce** | Získá vzdálenou adresu URL funkce aktivované protokolem HTTP, která běží v Azure. Další informace najdete v tématu [získání adresy URL nasazené funkce](#get-the-url-of-the-deployed-function). |
+| **Vytvoření aplikace Function App v Azure** | Vytvoří ve svém předplatném Azure novou aplikaci Function App. Další informace najdete v části o tom, jak [publikovat do nové aplikace Function App v Azure](#publish-to-azure).        |
+| **Nastavení dešifrování** | Dešifruje [místní nastavení](#local-settings-file) , která byla zašifrovaná pomocí **Azure Functions: nastavení šifrování**.  |
+| **Odstranit Function App** | Odebere aplikaci funkcí z vašeho předplatného v Azure. Pokud v plánu App Service neexistují žádné jiné aplikace, máte možnost je také odstranit. Další prostředky, jako jsou účty úložiště a skupiny prostředků, se neodstraňují. Pokud chcete odebrat všechny prostředky, měli byste místo toho [Odstranit skupinu prostředků](functions-add-output-binding-storage-queue-vs-code.md#clean-up-resources). Váš místní projekt to neovlivní. |
+|**Odstranit funkci**  | Odebere existující funkci z aplikace Function App v Azure. Vzhledem k tomu, že odstranění nemá vliv na váš místní projekt, zvažte místo toho odebrání funkce místně a opětovné [publikování projektu](#republish-project-files). |
+| **Odstranit proxy** | Odebere Azure Functions proxy z aplikace Function App v Azure. Další informace o proxy serverech najdete v tématu věnovaném [práci s proxy služby Azure Functions](functions-proxies.md). |
+| **Odstranit nastavení** | Odstraní nastavení aplikace Function App v Azure. Toto odstranění nemá vliv na nastavení v souboru Local. Settings. JSON. |
+| **Odpojit od úložiště**  | Odebere připojení [průběžného nasazování](functions-continuous-deployment.md) mezi aplikací funkcí v Azure a úložištěm správy zdrojového kódu. |
+| **Stáhnout Vzdálená nastavení** | Stáhne nastavení z vybrané aplikace Function App do Azure do souboru Local. Settings. JSON. Pokud je místní soubor zašifrovaný, dešifruje se, aktualizuje a zašifruje znovu. Pokud v obou umístěních existují nastavení, která mají konfliktní hodnoty, zobrazí se výzva, abyste si zvolili, jak pokračovat. Nezapomeňte před spuštěním tohoto příkazu Uložit změny v souboru Local. Settings. JSON. |
+| **Upravit nastavení** | Změní hodnotu existujícího nastavení aplikace Function App v Azure. Tento příkaz nemá vliv na nastavení v souboru Local. Settings. JSON.  |
+| **Nastavení šifrování** | Šifruje jednotlivé položky v `Values` poli v [místním nastavení](#local-settings-file). V tomto souboru `IsEncrypted` je také nastaveno na `true`, který určuje, že místní modul runtime bude před použitím dešifrovat nastavení. Zašifrujte místní nastavení, abyste snížili riziko nevracení cenných informací. V Azure jsou nastavení aplikace vždycky uložená zašifrovaná. |
+| **Spustit funkci hned** | Ručně spustí funkci aktivovanou [časovačem](functions-bindings-timer.md) v Azure. Tento příkaz se používá pro testování. Další informace o aktivaci funkcí nevyužívajících protokol HTTP v Azure najdete v tématu [Ruční spuštění funkce neaktivované protokolem HTTP](functions-manually-run-non-http.md). |
+| **Inicializovat projekt pro použití s VS Code** | Přidá požadované soubory projektu Visual Studio Code do existujícího projektu Functions. Tento příkaz použijte pro práci s projektem, který jste vytvořili pomocí základních nástrojů. |
+| **Nainstalovat nebo aktualizovat Azure Functions Core Tools** | Nainstaluje nebo aktualizuje [Azure Functions Core Tools], která se používá ke spouštění funkcí místně. |
+| **Opětovné nasazení**  | Umožňuje znovu nasadit soubory projektu z připojeného úložiště Git do konkrétního nasazení v Azure. Chcete-li znovu publikovat místní aktualizace z Visual Studio Code, [projekt znovu publikujte](#republish-project-files). |
+| **Přejmenovat nastavení** | Změní název klíče stávajícího nastavení aplikace Function App v Azure. Tento příkaz nemá vliv na nastavení v souboru Local. Settings. JSON. Po přejmenování nastavení v Azure byste [tyto změny měli stáhnout do místního projektu](#download-settings-from-azure). |
+| **Restartování** | Restartuje aplikaci Function App v Azure. Nasazení aktualizací také restartuje funkci aplikace Function App. |
+| **Nastavení AzureWebJobsStorage**| Nastaví hodnotu nastavení `AzureWebJobsStorage` aplikace. Toto nastavení vyžaduje Azure Functions. Nastavuje se při vytváření aplikace funkcí v Azure. |
+| **Zahájení** | Spustí zastavenou aplikaci Function App v Azure. |
+| **Spustit streamování protokolů** | Spustí protokoly streamování aplikace Function App v Azure. Při řešení potíží se vzdáleným zpracováním v Azure použijte protokoly streamování, pokud potřebujete zobrazit informace o protokolování téměř v reálném čase. Další informace najdete v tématu [streamování protokolů](#streaming-logs). |
+| **Zastavit** | Zastaví aplikaci Function App, která běží v Azure. |
+| **Zastavit streamování protokolů** | Zastaví protokoly streamování aplikace Function App v Azure. |
+| **Přepnout jako nastavení slotu** | Pokud je tato možnost povolená, zajistí, že nastavení aplikace pro danou slot nasazení přetrvává. |
+| **Odinstalace Azure Functions Core Tools** | Odebere Azure Functions Core Tools, který je vyžadován rozšířením. |
+| **Odeslat místní nastavení** | Nahraje nastavení ze souboru Local. Settings. JSON do vybrané aplikace Function App v Azure. Pokud je místní soubor zašifrovaný, dešifruje se, nahraje a zašifruje znovu. Pokud v obou umístěních existují nastavení, která mají konfliktní hodnoty, zobrazí se výzva, abyste si zvolili, jak pokračovat. Nezapomeňte před spuštěním tohoto příkazu Uložit změny v souboru Local. Settings. JSON. |
+| **Zobrazit potvrzení na GitHubu** | Pokud je vaše aplikace Function App připojena k úložišti, zobrazí se nejnovější potvrzení v konkrétním nasazení. |
+| **Zobrazit protokoly nasazení** | Zobrazuje protokoly pro konkrétní nasazení aplikace Function App v Azure. |
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o základních nástrojích Azure Functions najdete v [tématu Práce s nástroji Core functions Azure](functions-run-local.md).
+Další informace o Azure Functions Core Tools najdete v tématu věnovaném [práci s Azure Functions Core Tools](functions-run-local.md).
 
-Další informace o vývoji funkcí jako knihoven tříd .NET najdete v [tématu Azure Functions C# odkaz na vývojáře](functions-dotnet-class-library.md). Tento článek také obsahuje odkazy na příklady, jak používat atributy deklarovat různé typy vazeb podporovaných funkcemi Azure.
+Další informace o vývoji funkcí jako knihoven tříd .NET naleznete v tématu [Azure Functions C# Reference pro vývojáře](functions-dotnet-class-library.md). Tento článek také obsahuje odkazy na příklady použití atributů k deklaraci různých typů vazeb, které jsou podporovány nástrojem Azure Functions.
 
 [Rozšíření Azure Functions pro Visual Studio Code]: https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions
-[Základní nástroje Azure Functions]: functions-run-local.md
+[Azure Functions Core Tools]: functions-run-local.md

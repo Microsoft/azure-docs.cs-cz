@@ -1,6 +1,6 @@
 ---
 title: Hostování statického webu ve službě Azure Storage
-description: Azure Storage statické webhosting, poskytuje nákladově efektivní, škálovatelné řešení pro hostování moderních webových aplikací.
+description: Azure Storage statické hostování webů a poskytuje nákladově efektivní a škálovatelné řešení pro hostování moderních webových aplikací.
 author: normesta
 ms.service: storage
 ms.topic: conceptual
@@ -9,112 +9,112 @@ ms.reviewer: dineshm
 ms.date: 05/29/2019
 ms.subservice: blobs
 ms.openlocfilehash: 848fd89444281d82d6d0d1bfc4df15d499c09ee0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79370487"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Hostování statického webu ve službě Azure Storage
 
-Statický obsah (HTML, CSS, JavaScript a obrazové soubory) můžete poskytovat přímo z kontejneru úložiště s názvem *$web*. Hostování obsahu ve službě Azure Storage umožňuje používat architektury bez serveru, které zahrnují [funkce Azure](/azure/azure-functions/functions-overview) a další služby Platform as a service (PaaS).
+Statický obsah (HTML, CSS, JavaScript a soubory obrázků) můžete obsluhovat přímo z kontejneru úložiště s názvem *$Web*. Hostování obsahu v Azure Storage umožňuje používat architektury bez serveru, které zahrnují [Azure Functions](/azure/azure-functions/functions-overview) a jiné služby PaaS (Platform as a Service).
 
 [!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
 
 > [!NOTE]
-> Pokud váš web závisí na kódu na straně serveru, použijte místo toho [službu Azure App Service.](/azure/app-service/overview)
+> Pokud vaše lokalita závisí na kódu na straně serveru, použijte místo toho [Azure App Service](/azure/app-service/overview) .
 
 ## <a name="setting-up-a-static-website"></a>Nastavení statického webu
 
-Statický hosting webových stránek je funkce, kterou musíte povolit na účtu úložiště.
+Hostování statického webu je funkce, kterou musíte povolit v účtu úložiště.
 
-Chcete-li povolit statický web hosting, vyberte název výchozího souboru a volitelně zadejte cestu k vlastní stránce 404. Pokud kontejner úložiště objektů blob s názvem **$web** v účtu ještě neexistuje, vytvoří se pro vás. Přidejte soubory webu do tohoto kontejneru.
+Pokud chcete povolit hostování statických webů, vyberte název výchozího souboru a pak zadejte cestu k vlastní stránce 404. Pokud kontejner úložiště objektů BLOB s názvem **$Web** v účtu ještě neexistuje, vytvoří se pro vás jeden. Přidejte soubory vašeho webu do tohoto kontejneru.
 
-Podrobné pokyny najdete v [tématu Hostování statického webu ve službě Azure Storage](storage-blob-static-website-how-to.md).
+Podrobné pokyny najdete [v tématu hostování statického webu v Azure Storage](storage-blob-static-website-how-to.md).
 
-![Metrika metriky statických webů Azure Storage](./media/storage-blob-static-website/storage-blob-static-website-blob-container.png)
+![Metrika metriky Azure Storage statických webů](./media/storage-blob-static-website/storage-blob-static-website-blob-container.png)
 
-Soubory v **kontejneru $web** rozlišují malá a velká písmena, jsou obsluhovány prostřednictvím anonymních žádostí o přístup a jsou k dispozici pouze prostřednictvím operací čtení.
+Soubory v kontejneru **$Web** rozlišují velká a malá písmena, obsluhovány prostřednictvím požadavků anonymního přístupu a jsou k dispozici pouze prostřednictvím operací čtení.
 
-## <a name="uploading-content"></a>Nahrávání obsahu
+## <a name="uploading-content"></a>Nahrává se obsah
 
-K nahrání obsahu do kontejneru **$web** můžete použít některý z těchto nástrojů:
+Pomocí kteréhokoli z těchto nástrojů můžete nahrát obsah do kontejneru **$Web** :
 
 > [!div class="checklist"]
 > * [Azure CLI](storage-blob-static-website-how-to.md#cli)
 > * [Modul Azure PowerShellu](storage-blob-static-website-how-to.md#powershell)
 > * [AzCopy](../common/storage-use-azcopy-v10.md)
-> * [Průzkumník úložišť Azure](https://azure.microsoft.com/features/storage-explorer/)
-> * [Kanály Azure](https://azure.microsoft.com/services/devops/pipelines/)
+> * [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)
+> * [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/)
 > * [Rozšíření editoru Visual Studio Code](/azure/javascript/tutorial-vscode-static-website-node-01)
 
 ## <a name="viewing-content"></a>Zobrazení obsahu
 
-Uživatelé mohou zobrazit obsah webu z prohlížeče pomocí veřejné adresy URL webu. Adresu URL najdete pomocí portálu Azure, Azure CLI nebo PowerShellu. Tuto tabulku použijte jako vodítko.
+Uživatelé mohou zobrazit obsah webu z prohlížeče pomocí veřejné adresy URL webu. Adresu URL můžete najít pomocí Azure Portal, Azure CLI nebo PowerShellu. Tuto tabulku použijte jako vodítko.
 
 |Nástroj| Doprovodné materiály |
 |----|----|
-|**Portál Azure** | [Vyhledání adresy URL webu pomocí portálu Azure](storage-blob-static-website-how-to.md#portal-find-url) |
-|**Azure CLI** | [Vyhledání adresy URL webu pomocí příkazového příkazového příkazu Azure](storage-blob-static-website-how-to.md#cli-find-url) |
+|**portál Azure** | [Vyhledejte adresu URL webu pomocí Azure Portal](storage-blob-static-website-how-to.md#portal-find-url) |
+|**Azure CLI** | [Vyhledání adresy URL webu pomocí rozhraní příkazového řádku Azure](storage-blob-static-website-how-to.md#cli-find-url) |
 |**Modul Azure PowerShellu** | [Vyhledání adresy URL webu pomocí PowerShellu](storage-blob-static-website-how-to.md#powershell-find-url) |
 
-Adresa URL vašeho webu obsahuje regionální kód. Například adresa `https://contosoblobaccount.z22.web.core.windows.net/` URL `z22`obsahuje místní kód .
+Adresa URL vašeho webu obsahuje regionální kód. Například adresa URL `https://contosoblobaccount.z22.web.core.windows.net/` obsahuje regionální kód `z22`.
 
-Zatímco tento kód musí zůstat v adrese URL, je pouze pro interní použití a nebudete muset použít tento kód jiným způsobem.
+I když tento kód musí zůstat v adrese URL, je k dispozici pouze pro interní použití a tento kód nebude nutné používat žádným jiným způsobem.
 
-Dokument indexu, který zadáte při povolení statického hostingu webu, se zobrazí, když uživatelé `https://contosoblobaccount.z22.web.core.windows.net`otevřou web a nezadají konkrétní soubor (například: ).  
+Indexový dokument, který zadáte při povolování hostování statických webů, se zobrazí, když uživatelé otevřou web a nezadáte konkrétní soubor (například `https://contosoblobaccount.z22.web.core.windows.net`:).  
 
-Pokud server vrátí chybu 404 a při povolení webu jste nezadali chybový dokument, vrátí se uživateli výchozí stránka 404.
+Pokud server vrátí chybu 404 a nezadali jste dokument s chybou, když jste web povolili, bude uživateli vrácena výchozí stránka 404.
 
 > [!NOTE]
-> [CORS](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) není podporován statickým webem.
+> Pro statický web není podporována [CORS](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) .
 
 ## <a name="impact-of-the-setting-the-public-access-level-of-the-web-container"></a>Dopad nastavení úrovně veřejného přístupu webového kontejneru
 
-Můžete upravit úroveň veřejného přístupu **kontejneru $web,** ale to nemá žádný vliv na primární statický koncový bod webu, protože tyto soubory jsou obsluhovány prostřednictvím anonymních žádostí o přístup. To znamená veřejný (jen pro čtení) přístup ke všem souborům.
+Můžete upravit úroveň veřejného přístupu kontejneru **$Web** , ale nemá žádný vliv na primární koncový bod statického webu, protože tyto soubory jsou obsluhovány prostřednictvím požadavků anonymního přístupu. To znamená, že veřejný přístup ke všem souborům (jen pro čtení).
 
-Následující snímek obrazovky ukazuje nastavení úrovně veřejného přístupu na webu Azure Portal:
+Následující snímek obrazovky ukazuje nastavení úrovně veřejného přístupu v Azure Portal:
 
-![Snímek obrazovky znázorňující nastavení úrovně veřejného přístupu na portálu](./media/storage-manage-access-to-resources/storage-manage-access-to-resources-0.png)
+![Snímek obrazovky ukazující, jak nastavit úroveň veřejného přístupu na portálu](./media/storage-manage-access-to-resources/storage-manage-access-to-resources-0.png)
 
-Zatímco primární statický koncový bod webu není ovlivněn, změna úrovně veřejného přístupu nemá vliv na koncový bod primární služby objektů blob.
+I když primární koncový bod statického webu není ovlivněný, změna úrovně veřejného přístupu ovlivní primární koncový bod služby BLOB Service.
 
-Pokud například změníte úroveň veřejného přístupu **kontejneru $web** z **private (bez anonymního přístupu)** na **objekt Blob (anonymní přístup pro čtení pouze pro objekty BLOB)**, úroveň veřejného přístupu k primárnímu statickému koncovému bodu `https://contosoblobaccount.z22.web.core.windows.net/index.html` webu se nezmění.
+Pokud například změníte úroveň veřejného přístupu kontejneru **$Web** z **privátního (bez anonymního přístupu)** do **objektu BLOB (anonymní přístup pro čtení jenom pro objekty BLOB)**, pak se úroveň veřejného přístupu k primárnímu koncovému bodu `https://contosoblobaccount.z22.web.core.windows.net/index.html` statického webu nezmění.
 
-Veřejný přístup ke koncovému bodu `https://contosoblobaccount.blob.core.windows.net/$web/index.html` primární služby objektů blob se však změní ze soukromého na veřejný. Nyní mohou uživatelé tento soubor otevřít pomocí některého z těchto dvou koncových bodů.
+Veřejný přístup k primárnímu koncovému bodu `https://contosoblobaccount.blob.core.windows.net/$web/index.html` služby BLOB Service se ale změní z Private na Public. Nyní mohou uživatelé tento soubor otevřít pomocí některého z těchto dvou koncových bodů.
 
 ## <a name="mapping-a-custom-domain-to-a-static-website-url"></a>Mapování vlastní domény na statickou adresu URL webu
 
-Statické webové stránky můžete zpřístupnit prostřednictvím vlastní domény. 
+Svůj statický Web můžete zpřístupnit prostřednictvím vlastní domény. 
 
-Je jednodušší povolit přístup HTTP pro vaši vlastní doménu, protože Azure Storage ji nativně podporuje. Chcete-li povolit protokol HTTPS, budete muset použít Azure CDN, protože Azure Storage ještě nativně nepodporuje protokol HTTPS s vlastními doménami. podrobné pokyny najdete [v tématu Mapování vlastní domény na koncový bod úložiště objektů blob Azure.](storage-custom-domain-name.md)
+Pro vlastní doménu je snazší povolit přístup HTTP, protože je Azure Storage nativně podporuje. Pokud chcete povolit protokol HTTPS, musíte použít Azure CDN, protože Azure Storage ještě nativně nepodporuje protokol HTTPS s vlastními doménami. Podrobné pokyny najdete v tématu [Mapování vlastní domény na koncový bod Azure Blob Storage](storage-custom-domain-name.md) .
 
-Pokud je účet úložiště nakonfigurován tak, aby [vyžadoval zabezpečený přenos](../common/storage-require-secure-transfer.md) přes protokol HTTPS, musí uživatelé použít koncový bod HTTPS. 
+Pokud je účet úložiště nakonfigurovaný tak, aby [vyžadoval zabezpečený přenos](../common/storage-require-secure-transfer.md) přes protokol HTTPS, musí uživatelé použít koncový bod HTTPS. 
 
 > [!TIP]
-> Zvažte hostování domény v Azure. Další informace najdete [v tématu Hostování domény v Azure DNS](../../dns/dns-delegate-domain-azure-dns.md).
+> Zvažte hostování vaší domény v Azure. Další informace najdete v tématu [hostování vaší domény v Azure DNS](../../dns/dns-delegate-domain-azure-dns.md).
 
-## <a name="adding-http-headers"></a>Přidání záhlaví protokolu HTTP
+## <a name="adding-http-headers"></a>Přidávání hlaviček protokolu HTTP
 
-Neexistuje žádný způsob, jak nakonfigurovat záhlaví jako součást statické funkce webu. Azure CDN však můžete použít k přidání záhlaví a připojit (nebo přepsat) hodnoty záhlaví. Viz [Odkaz na modul standardních pravidel pro Azure CDN](https://docs.microsoft.com/azure/cdn/cdn-standard-rules-engine-reference).
+V rámci funkce statického webu neexistuje žádný způsob, jak konfigurovat hlavičky. Můžete však použít Azure CDN k přidání hlaviček a k přidávání (nebo přepisování) hodnot hlaviček. Přečtěte si [referenční informace k modulu Standard rules pro Azure CDN](https://docs.microsoft.com/azure/cdn/cdn-standard-rules-engine-reference).
 
-Pokud chcete k řízení ukládání do mezipaměti použít záhlaví, přečtěte si informace o [řízení chování mezipaměti Azure CDN pomocí pravidel ukládání do mezipaměti](https://docs.microsoft.com/azure/cdn/cdn-caching-rules).
+Pokud chcete použít hlavičky k řízení ukládání do mezipaměti, přečtěte si téma [řízení Azure CDN chování při ukládání do mezipaměti s pravidly pro ukládání do](https://docs.microsoft.com/azure/cdn/cdn-caching-rules)mezipaměti.
 
 ## <a name="pricing"></a>Ceny
 
-Můžete povolit statické webové stránky hosting zdarma. Fakturuje se vám jenom úložiště objektů blob, které váš web využívá, a provozní náklady. Další podrobnosti o cenách pro Azure Blob Storage najdete na [stránce s cenami úložiště objektů blob Azure](https://azure.microsoft.com/pricing/details/storage/blobs/).
+Můžete povolit hostování statických webů zdarma. Účtuje se vám jenom úložiště objektů blob, které vaše lokalita využívá, a provozní náklady. Další podrobnosti o cenách pro Azure Blob Storage najdete na [stránce s cenami azure BLOB Storage](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
 ## <a name="metrics"></a>Metriky
 
-Metriky můžete povolit na statických webových stránkách. Jakmile aktivujete metriky, statistiky návštěvnosti souborů v **kontejneru $web** se vykazují na řídicím panelu metrik.
+Metriky můžete povolit na statických stránkách webu. Po povolení metrik se na řídicím panelu metriky nahlásí Statistiky provozu souborů v kontejneru **$Web** .
 
-Informace o povolení metrik na statických stránkách webu najdete v tématu [Povolení metrik na statických stránkách webu](storage-blob-static-website-how-to.md#metrics).
+Pokud chcete povolit metriky na stránkách statického webu, přečtěte si téma [Povolení metrik na statických stránkách webu](storage-blob-static-website-how-to.md#metrics).
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Hostování statického webu ve službě Azure Storage](storage-blob-static-website-how-to.md)
-* [Mapování vlastní domény na koncový bod úložiště objektů blob Azure](storage-custom-domain-name.md)
+* [Hostování statického webu v Azure Storage](storage-blob-static-website-how-to.md)
+* [Mapování vlastní domény na koncový bod Azure Blob Storage](storage-custom-domain-name.md)
 * [Azure Functions](/azure/azure-functions/functions-overview)
 * [Azure App Service](/azure/app-service/overview)
-* [Vytvoření první webové aplikace bez serveru](https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database)
+* [Sestavení první webové aplikace bez serveru](https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database)
 * [Kurz: Hostování vaší domény v Azure DNS](../../dns/dns-delegate-domain-azure-dns.md)

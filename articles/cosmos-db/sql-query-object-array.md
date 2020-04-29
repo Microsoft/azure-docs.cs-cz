@@ -1,21 +1,21 @@
 ---
 title: Práce s poli a objekty v Azure Cosmos DB
-description: Naučte se syntaxi SQL k vytvoření polí a objektů v Azure Cosmos DB. Tento článek také obsahuje některé příklady pro provádění operací s objekty pole
+description: Naučte se syntaxi SQL pro vytváření polí a objektů v Azure Cosmos DB. Tento článek také poskytuje některé příklady pro provádění operací s objekty pole.
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
 ms.openlocfilehash: 5b2801b0a71f04803955e9d8bc18a97133019996
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79246549"
 ---
 # <a name="working-with-arrays-and-objects-in-azure-cosmos-db"></a>Práce s poli a objekty v Azure Cosmos DB
 
-Klíčovou funkcí rozhraní SQL API Azure Cosmos DB je vytváření polí a objektů.
+Klíčovou funkcí rozhraní API pro Azure Cosmos DB SQL je vytvoření pole a objektu.
 
 ## <a name="arrays"></a>Pole
 
@@ -45,7 +45,7 @@ Výsledky jsou následující:
     ]
 ```
 
-Výraz [ARRAY](sql-query-subquery.md#array-expression) můžete také použít k vytvoření pole z výsledků [poddotazu.](sql-query-subquery.md) Tento dotaz získá všechny odlišné křestní názvy podřízených v poli.
+[Výraz Array](sql-query-subquery.md#array-expression) můžete také použít k vytvoření pole z výsledků [poddotazu](sql-query-subquery.md) . Tento dotaz získá všechny jednotlivé názvy jednotlivých podřízených objektů v poli.
 
 ```sql
 SELECT f.id, ARRAY(SELECT DISTINCT VALUE c.givenName FROM c IN f.children) as ChildNames
@@ -54,7 +54,7 @@ FROM f
 
 ## <a name="iteration"></a><a id="Iteration"></a>Iterace
 
-Rozhraní SQL API poskytuje podporu pro iterace přes pole JSON, s novou konstrukci přidánprostřednictvím [klíčového slova IN](sql-query-keywords.md#in) ve zdroji FROM. V následujícím příkladu:
+Rozhraní SQL API poskytuje podporu pro iteraci přes pole JSON s novou konstrukcí přidanou prostřednictvím [klíčového slova in](sql-query-keywords.md#in) ve zdroji from. V následujícím příkladu:
 
 ```sql
     SELECT *
@@ -90,7 +90,7 @@ Výsledky jsou následující:
     ]
 ```
 
-Další dotaz provede `children` iteraci v kontejneru. `Families` Výstupní pole se liší od předchozího dotazu. Tento příklad `children`rozdělí a sloučí výsledky do jednoho pole:  
+Další dotaz provede iteraci `children` v `Families` kontejneru. Výstupní pole se liší od předchozího dotazu. Tento příklad rozdělí `children`a sloučí výsledky do jednoho pole:  
 
 ```sql
     SELECT *
@@ -122,7 +122,7 @@ Výsledky jsou následující:
     ]
 ```
 
-Můžete filtrovat dále na každé jednotlivé položky pole, jak je znázorněno v následujícím příkladu:
+Můžete filtrovat dále pro každou jednotlivou položku pole, jak je znázorněno v následujícím příkladu:
 
 ```sql
     SELECT c.givenName
@@ -138,7 +138,7 @@ Výsledky jsou následující:
     }]
 ```
 
-Můžete také agregovat přes výsledek iterace pole. Například následující dotaz počítá počet dětí ze všech rodin:
+Můžete také agregovat výsledek iterace pole. Například následující dotaz počítá počet podřízených objektů mezi všemi rodinami:
 
 ```sql
     SELECT COUNT(child)
@@ -158,5 +158,5 @@ Výsledky jsou následující:
 ## <a name="next-steps"></a>Další kroky
 
 - [Začínáme](sql-query-getting-started.md)
-- [Ukázky služby Azure Cosmos DB .NET](https://github.com/Azure/azure-cosmos-dotnet-v3)
+- [Ukázky Azure Cosmos DB .NET](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [Spojení](sql-query-join.md)

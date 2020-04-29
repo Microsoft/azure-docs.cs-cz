@@ -19,14 +19,14 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bbd1ad6178e0120bf8414fc424b79254e306d2c2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79261564"
 ---
 # <a name="monitor-ad-fs-using-azure-ad-connect-health"></a>Sledování služby AD FS pomocí služby Azure AD Connect Health
-Následující dokumentace se věnuje sledování infrastruktury služby AD FS ve službě Azure AD Connect Health. Informace o monitorování Azure AD Connect (Sync) s Azure AD Connect Health najdete v článku [použití azure ad připojení stavu pro synchronizaci](how-to-connect-health-sync.md). Informace o monitorování služby Active Directory Domain Services pomocí služby Azure AD Connect Health naleznete v tématu [Using Azure AD Connect Health with AD DS](how-to-connect-health-adds.md).
+Následující dokumentace se věnuje sledování infrastruktury služby AD FS ve službě Azure AD Connect Health. Informace o monitorování Azure AD Connect (synchronizace) s Azure AD Connect Health najdete v tématu [použití Azure AD Connect Health ke synchronizaci](how-to-connect-health-sync.md). Další informace o sledování Active Directory Domain Services pomocí Azure AD Connect Health najdete v tématu [použití Azure AD Connect Health s služba AD DS](how-to-connect-health-adds.md).
 
 ## <a name="alerts-for-ad-fs"></a>Upozornění služby AD FS
 Část pojednávající o upozorněních služby Azure AD Connect Health uvádí seznam aktivních upozornění. Každé upozornění obsahuje důležité informace, postup řešení a odkazy na související dokumentaci.
@@ -120,6 +120,6 @@ Sestava obsahuje následující informace:
 
 ## <a name="related-links"></a>Související odkazy
 * [Azure AD Connect Health](whatis-hybrid-identity-health.md)
-* [Instalace agenta stavu Azure AD Connect](how-to-connect-health-agent-install.md)
-* [Sestava rizikové ip adresy](how-to-connect-health-adfs-risky-ip.md)
+* [Instalace agenta Azure AD Connect Health](how-to-connect-health-agent-install.md)
+* [Sestava rizikových IP adres](how-to-connect-health-adfs-risky-ip.md)
 

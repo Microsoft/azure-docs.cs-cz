@@ -1,132 +1,132 @@
 ---
-title: Principy metrik pro Azure Spring Cloud
-description: Přečtěte si, jak zkontrolovat metriky v Azure Spring Cloudu
+title: Principy metrik pro jarní cloud Azure
+description: Naučte se kontrolovat metriky v Azure jaře cloudu.
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.author: brendm
 ms.openlocfilehash: bb23afff2b4b449897d8e420934d038938d20205
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79256754"
 ---
-# <a name="understand-metrics-for-azure-spring-cloud"></a>Principy metrik pro Azure Spring Cloud
+# <a name="understand-metrics-for-azure-spring-cloud"></a>Principy metrik pro jarní cloud Azure
 
-Průzkumník Metrik Azure je součástí portálu Microsoft Azure, který umožňuje vykreslovat grafy, vizuálně korelovat trendy a zkoumat špičky a poklesy metrik. Pomocí průzkumníka metrik prozkoumejte stav a využití vašich prostředků. 
+Průzkumník metrik Azure je součást portál Microsoft Azure, která umožňuje vykreslovat grafy, vizuálně korelovat trendy a prozkoumat špičky a rozmítají v metrikách. Pomocí Průzkumníka metrik můžete prozkoumat stav a využití vašich prostředků. 
 
-V Azure Spring Cloud existují dva body zobrazení pro metriky.
-* Grafy na každé stránce s přehledem aplikací
-* Stránka běžných metrik
+V Azure jaře cloudu existují dva body zobrazení pro metriky.
+* Grafy na jednotlivých stránkách s přehledem aplikace
+* Stránka běžné metriky
 
  ![Grafy metrik](media/metrics/metrics-1.png)
 
-Grafy v aplikaci **Přehled** poskytují rychlé kontroly stavu pro každou aplikaci. Stránka **Společné metriky** obsahuje všechny metriky, které jsou k dispozici pro referenci. Na stránce běžných metrik si můžete vytvořit vlastní grafy a připnout je na řídicí panel.
+Grafy v **přehledu** aplikace poskytují rychlé kontroly stavu pro každou aplikaci. Stránka společná **metrika** obsahuje všechny metriky, které jsou k dispozici pro referenci. Na stránce běžné metriky můžete vytvořit vlastní grafy a připnout je na řídicí panel.
 
-## <a name="application-overview-page"></a>Stránka přehledu aplikace
-Vyberte aplikaci ve **Správě aplikací** a najděte grafy na stránce s přehledem.  
+## <a name="application-overview-page"></a>Stránka s přehledem aplikace
+V části **Správa aplikací** vyberte aplikaci pro hledání grafů na stránce Přehled.  
 
- ![Správa metrik aplikací](media/metrics/metrics-2.png)
+ ![Správa metrik aplikace](media/metrics/metrics-2.png)
 
-Každá aplikace **přehled aplikací** stránka představuje metriky graf, který umožňuje provádět rychlou kontrolu stavu vaší aplikace.  
+Na stránce **Přehled aplikací** každé aplikace se zobrazuje graf metrik, který vám umožní provést rychlou kontrolu stavu aplikace.  
 
- ![Přehled metrik aplikací](media/metrics/metrics-3.png)
+ ![Přehled metrik aplikace](media/metrics/metrics-3.png)
 
-Azure Spring Cloud poskytuje těchto pět grafů s metrikami, které se aktualizují každou minutu:
+Azure jaře Cloud nabízí tyto pět grafů s metrikami, které se aktualizují každou minutu:
 
-* **Chyby serveru Http**: Počet chyb u požadavků HTTP do vaší aplikace
-* **Data v:** Bajty přijaté vaší aplikací
-* **Data Out**: Bajty odeslané vaší aplikací
-* **Žádosti**: Žádosti přijaté vaší aplikací
-* **Průměrná doba odezvy**: Průměrná doba odezvy z aplikace
+* **Chyby serveru http**: počet chyb pro požadavky HTTP na aplikaci
+* **Data v**: bajtů přijatých vaší aplikací
+* **Výstupní data**: počet bajtů odeslaných aplikací
+* **Požadavky**: žádosti přijaté vaší aplikací
+* **Průměrná doba odezvy**: Průměrná doba odezvy z vaší aplikace
 
-V grafu můžete vybrat časový rozsah od jedné hodiny do sedmi dnů.
+U grafu můžete vybrat časový rozsah od jedné hodiny do sedmi dnů.
 
-## <a name="common-metrics-page"></a>Stránka běžných metrik
+## <a name="common-metrics-page"></a>Stránka běžné metriky
 
-**Metriky** v levém navigačním podokně odkazují na stránku běžných metrik.
+**Metriky** v levém navigačním podokně odkazují na stránku běžné metriky.
 
-Nejprve vyberte metriky, které chcete zobrazit:
+Nejdřív vyberte metriky, které chcete zobrazit:
 
 ![Vybrat zobrazení metriky](media/metrics/metrics-4.png)
 
-Podrobnosti o všech metrikách naleznete v [části](#user-metrics-options) níže.
+Podrobnosti o možnosti všechny metriky najdete v níže uvedené [části](#user-metrics-options) .
 
-Dále vyberte typ agregace pro každou metriku:
+V dalším kroku vyberte typ agregace pro každou metriku:
 
 ![Agregace metrik](media/metrics/metrics-5.png)
 
-Typ agregace označuje, jak agregovat metrické body v grafu podle času. Existuje jeden hrubý bod metriky každou minutu a typ předběžné agregace během jedné minuty je předem definován typem metriky.
-* Součet: Součet všech hodnot jako cílový výstup.
-* Průměr: Jako cílový výstup použijte průměrnou hodnotu v období.
-* Max/Min: Použijte hodnotu Max/Min v období jako cílový výstup.
+Typ agregace označuje, jak se mají v grafu agregovat body metriky podle času. Každá minuta obsahuje jeden nezpracovaný metrikový bod a typ předagregace v minutách je předem definovaný typem metriky.
+* Sum: sečte všechny hodnoty jako cílový výstup.
+* Average: jako cílový výstup použijte průměrnou hodnotu v periodě.
+* Max/min: jako cílový výstup použijte hodnotu Max/min v periodě.
 
-Časový rozsah, který se má zobrazit, lze také upravit. Časový rozsah lze zvolit od posledních 30 minut do posledních 30 dnů nebo vlastní časový rozsah.
+Lze také upravit časový rozsah, který se má zobrazit. Časový rozsah můžete vybrat z posledních 30 minut do posledních 30 dní nebo z vlastního časového rozsahu.
 
-![Modifikace metriky](media/metrics/metrics-6.png)
+![Úprava metriky](media/metrics/metrics-6.png)
 
-Výchozí zobrazení zahrnuje všechny metriky aplikace služby Azure Spring Cloud společně. Metriky jedné aplikace nebo instance lze filtrovat na displeji.  Klikněte na **Přidat filtr**, nastavte vlastnost na **Aplikaci**a v textovém poli **Hodnoty** vyberte cílovou aplikaci, kterou chcete sledovat. 
+Výchozí zobrazení zahrnuje všechny metriky application's ve službě Azure jarní Cloud Service společně. Metriky jedné aplikace nebo instance je možné filtrovat v zobrazení.  Klikněte na **Přidat filtr**, nastavte vlastnost na **aplikace**a v textovém poli **hodnoty** vyberte cílovou aplikaci, kterou chcete monitorovat. 
 
 Můžete použít dva druhy filtrů (vlastnosti):
-* Aplikace: filtrování podle názvu aplikace
-* Instance: filtrování podle instance aplikace
+* Aplikace: filtrovat podle názvu aplikace
+* Instance: filtrovat podle instance aplikace
 
 ![Filtry metrik](media/metrics/metrics-7.png)
 
-Můžete také použít možnost **Použít rozdělení,** která nakreslí více čar pro jednu aplikaci:
+Můžete také použít možnost **použít rozdělení** , která nakreslí více řádků pro jednu aplikaci:
 
-![Rozdělení metrik](media/metrics/metrics-8.png)
+![Rozdělení metriky](media/metrics/metrics-8.png)
 
 >[!TIP]
-> Můžete vytvořit vlastní grafy na stránce metrika a připnout je na **řídicí panel**. Začněte pojmenováním grafu.  Dále vyberte **Připnout na řídicí panel v pravém horním rohu**. Nyní můžete zkontrolovat svou aplikaci na **řídicím panelu portálu**.
+> Na stránce metriky můžete vytvořit vlastní grafy a připnout je na **řídicí panel**. Začněte pojmenováním grafu.  Potom **v pravém horním rohu vyberte Připnout na řídicí panel**. Nyní se můžete podívat na svou aplikaci na **řídicím panelu**portálu.
 
-## <a name="user-metrics-options"></a>Možnosti uživatelských metrik
+## <a name="user-metrics-options"></a>Možnosti metrik uživatelů
 
 V následujících tabulkách jsou uvedeny dostupné metriky a podrobnosti.
 
 ### <a name="error"></a>Chyba
 >[!div class="mx-tdCol2BreakAll"]
->| Name (Název) | Metrický název pružiny pohonu | Jednotka | Podrobnosti |
+>| Název | Název metriky pružinového válce | Jednotka | Podrobnosti |
 >|----|----|----|------------|
->| Globální chyba Společnosti Tomcat | tomcat.global.error | Počet | Počet chyb dojde u zpracovaných požadavků |
+>| Globální chyba Tomcat | Tomcat. Global. Error | Počet | Počet chyb, které se vyskytují u zpracovaných požadavků |
 
 ### <a name="performance"></a>Výkon
 >[!div class="mx-tdCol2BreakAll"]
->| Name (Název) | Metrický název pružiny pohonu | Jednotka | Podrobnosti |
+>| Název | Název metriky pružinového válce | Jednotka | Podrobnosti |
 >|----|----|----|------------|
->|Procento využití procesoru systému | system.cpu.usage | Procento | Nedávné využití procesoru pro celý systém. Tato hodnota je double v intervalu [0.0,1.0]. Hodnota 0,0 znamená, že všechny procesory byly nečinné během nedávného období pozorovány, zatímco hodnota 1,0 znamená, že všechny procesory byly aktivně spuštěny 100 % času během nedávného období bylo pozorováno.|
->| Procento využití procesoru aplikace | Procento využití procesoru aplikace | Procento | Nedávné využití procesoru pro proces virtuálního počítače Java. Tato hodnota je double v intervalu [0.0,1.0]. Hodnota 0,0 znamená, že žádný z procesorů byly spuštěny vlákna z procesu JVM během nedávné hoobdobí pozorováno, zatímco hodnota 1,0 znamená, že všechny procesory byly aktivně spuštěny podprocesy z JVM 100 % času během nedávné období bylo pozorováno. Vlákna z JVM zahrnují vlákna aplikace, stejně jako interní vlákna JVM.|
->| Přiřazená paměť aplikace | soubor jvm.memory.committed | Bajty | Představuje množství paměti, která je zaručena k dispozici pro použití JVM. JVM může uvolnit paměť do systému a potvrzena může být menší než init. potvrzena bude vždy větší nebo rovna použité. |
->| Použitá paměť aplikace | jvm.memory.used | Bajty | Představuje velikost paměti aktuálně používané v bajtů. |
->| Paměť aplikace Max | jvm.memory.max | Bajty | Představuje maximální množství paměti, které lze použít pro správu paměti. Pokud je definována hodnota max, bude vždy menší nebo rovna maximální velikosti využité a potvrzené paměti. Přidělení paměti může selhat, pokud se pokusí zvýšit využité paměti tak, že používá > potvrzena i v případě, že používá <= max by stále true (například při nedostatku systému virtuální paměti). |
->| Maximální dostupná velikost dat staré generace | jvm.gc.max.data.size | Bajty | Využití paměti ve špičce fondu paměti staré generace od spuštění virtuálního počítače Java. |
->| Velikost dat staré generace | jvm.gc.live.data.size | Bajty | Velikost fondu paměti staré generace po úplné gc. |
->| Zvýšit velikost dat staré generace | jvm.gc.memory.promoted | Bajty | Počet kladných zvýšení velikosti fondu paměti staré generace před GC po GC. |
->| Povýšení na velikost dat mladé generace | jvm.gc.memory.allocated | Bajty | Zvýšení velikosti fondu paměti mladé generace po jednom GC na před další. |
->| Počet pozastavení GC | jvm.gc.pause (celkový počet) | Počet | Celkový počet GC po zahájení tohoto JMV, včetně young a old gc. |
->| Celkový čas pozastavení GC | jvm.gc.pause (celkový čas) | Milisekund | Celkový čas GC spotřebovaný po spuštění tohoto JMV, včetně young a old gc. |
+>|Procento využití procesoru v systému | System. CPU. Usage | Procento | Poslední využití procesoru pro celý systém. Tato hodnota je v intervalu [0,0, 1.0] dvojitá. Hodnota 0,0 znamená, že všechny procesory byly během neaktivního časového období nečinné, zatímco hodnota 1,0 znamená, že všechny procesory aktivně 100 běžely v nedávných obdobích během nedodržení% času.|
+>| Procento využití procesoru aplikací | Procento využití procesoru aplikací | Procento | Poslední využití procesoru pro proces prostředí Java Virtual Machine. Tato hodnota je v intervalu [0,0, 1.0] dvojitá. Hodnota 0,0 znamená, že žádný z procesorů neběžel v nedávných časových obdobích vlákna z procesu JVM, zatímco hodnota 1,0 znamená, že všechny procesory aktivně spouštějí vlákna z JVM 100% času během nedávných období. Vlákna z JVM zahrnují vlákna aplikace a také interní vlákna JVM.|
+>| Přiřazená paměť aplikace | JVM. Memory. potvrzený | Bajty | Představuje velikost paměti, která je zaručena k dispozici pro použití v JVM. JVM může uvolnit paměť do systému a potvrzení může být menší než init. potvrzená bude vždycky větší nebo rovna hodnotě použité. |
+>| Využitá paměť aplikace | JVM. Memory .Ed – použito | Bajty | Představuje velikost aktuálně využité paměti v bajtech. |
+>| Maximální velikost paměti aplikace | JVM. Memory. max | Bajty | Představuje maximální velikost paměti, kterou lze použít pro správu paměti. Velikost využité a potvrzené paměti bude vždy menší než nebo rovna hodnotě Max, pokud je definována hodnota max. Přidělení paměti může selhat, pokud se pokusí zvětšit využitou paměť tak, aby se použila > potvrzená i v případě, že použitá <= Max by byla pravdivá (například když je systém ve virtuální paměti nedostatek). |
+>| Maximální velikost dostupných starých dat generace | JVM. GC. max. data. Size | Bajty | Využití paměti ve špičce starého fondu paměti generace od spuštění virtuálního počítače Java. |
+>| Stará velikost dat generace | JVM. GC. Live. data. Size | Bajty | Velikost staré generace fondu paměti po úplném GC. |
+>| Zvýšit úroveň na starou velikost dat generace | JVM. GC. Memory. propagovaný | Bajty | Počet kladných zvýšení velikosti staré paměti generace před GC na po GC. |
+>| Zvýšení úrovně na velikost dat malé generace | JVM. GC. Memory. alokovaný | Bajty | Zvýšeno na zvýšení velikosti fondu paměti pro mladé generaci po jednom GC do dalšího. |
+>| Počet pozastavení GC | JVM. GC. Pause (celkový počet) | Počet | Celkový počet GC po zahájení této JMV, včetně mladého a starého GC. |
+>| Celkový čas pozastavení GC | JVM. GC. Pause (celkem-Time) | Milisekund | Celkový čas GC spotřebovaný po spuštění tohoto JMVu, včetně mladého a starého GC. |
 
-### <a name="request"></a>Žádost
+### <a name="request"></a>Request
 >[!div class="mx-tdCol2BreakAll"]
->| Name (Název) | Metrický název pružiny pohonu | Jednotka | Podrobnosti |
+>| Název | Název metriky pružinového válce | Jednotka | Podrobnosti |
 >|----|----|----|------------|
->| Celkový počet odeslaných bajtů kotomak | tomcat.global.odeslán | Bajty | Množství dat, které byl webový server Tomcat odeslán |
->| Tomcat Celkem přijatých bajtů | tomcat.global.přijato | Bajty | Množství přijatých dat, které byl server Tomcat přijat |
->| Celkový čas požadavku Tomcat | tomcat.global.request (celkový čas) | Milisekund | Celkový čas webového serveru Tomcat pro zpracování požadavků |
->| Celkový počet požadavků na kotomcat | tomcat.global.request (celkový počet) | Počet | Celkový počet zpracovaných požadavků na webový server Tomcat |
->| Maximální čas požadavku Tomcat | tomcat.global.request.max | Milisekund | Maximální doba zpracování požadavku webovým serverem Tomcat |
+>| Celkový počet odeslaných bajtů Tomcat | Tomcat. Global. odesláno | Bajty | Množství odeslaného webového serveru datového Tomcat |
+>| Celkový počet přijatých bajtů Tomcat | Tomcat. Global. Received | Bajty | Množství přijatého webového serveru datového Tomcat |
+>| Celkový čas žádosti Tomcat | Tomcat. Global. Request (celkem-Time) | Milisekund | Celková doba, jakou Tomcat webový server zpracovává žádosti |
+>| Celkový počet žádostí Tomcat | Tomcat. Global. Request (celkový počet) | Počet | Celkový počet zpracovaných požadavků Tomcat webového serveru |
+>| Maximální čas požadavku Tomcat | Tomcat. Global. Request. max | Milisekund | Maximální doba, po kterou webový server Tomcat zpracuje požadavek |
 
 ### <a name="session"></a>Relace
 >[!div class="mx-tdCol2BreakAll"]
->| Name (Název) | Metrický název pružiny pohonu | Jednotka | Podrobnosti |
+>| Název | Název metriky pružinového válce | Jednotka | Podrobnosti |
 >|----|----|----|------------|
->| Počet aktivních aktivit relace Kotomcat | tomcat.sessions.active.max | Počet | Maximální počet relací, které byly aktivní současně |
->| Tomcat Session Max Alive Čas | tomcat.sessions.alive.max | Milisekund | Nejdelší doba (v sekundách), po kterou byla relace s ukončenou platností aktivní |
->| Počet vytvořených relací Tomcat | tomcat.sessions.vytvořeno | Počet | Počet vytvořených relací |
->| Počet prošlých platností relace Tomcat | tomcat.sessions.expired | Počet | Počet relací, jejichž platnost vypršela |
->| Počet odmítnutých relace Tomcat | tomcat.sessions.odmítnuto | Počet | Počet relací, které nebyly vytvořeny, protože byl dosažen maximální počet aktivních relací. |
+>| Maximální počet aktivních relací Tomcat | Tomcat. Sessions. Active. max | Počet | Maximální počet relací, které byly aktivní ve stejnou dobu |
+>| Maximální doba běhu relace Tomcat | Tomcat. Sessions. Alive. max | Milisekund | Nejdelší čas (v sekundách), po který vypršela relace s vypršenou platností |
+>| Počet vytvořených relací Tomcat | Tomcat. Sessions. Created | Počet | Počet relací, které byly vytvořeny |
+>| Počet vypršení relace Tomcat | Tomcat. Sessions. vypršela platnost | Počet | Počet relací, jejichž platnost vypršela |
+>| Počet odmítnutých relací Tomcat | Tomcat. Sessions. odmítnuto | Počet | Počet relací, které nebyly vytvořeny, protože bylo dosaženo maximálního počtu aktivních relací. |
 
 ## <a name="see-also"></a>Viz také
 * [Začínáme s Průzkumníkem metrik Azure](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started)
@@ -134,7 +134,7 @@ V následujících tabulkách jsou uvedeny dostupné metriky a podrobnosti.
 * [Analýza protokolů a metrik pomocí nastavení diagnostiky](https://docs.microsoft.com/azure/spring-cloud/diagnostic-services)
 
 ## <a name="next-steps"></a>Další kroky
-* [Kurz: Sledování prostředků spring cloudu pomocí výstrah a skupin akcí](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-alerts-action-groups)
+* [Kurz: monitorování jarních cloudových prostředků pomocí výstrah a skupin akcí](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-alerts-action-groups)
 
-* [Kvóty a plány služeb pro Azure Spring Cloud](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quotas)
+* [Kvóty a plány služeb pro jarní Cloud v Azure](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quotas)
 

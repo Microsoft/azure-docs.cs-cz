@@ -1,6 +1,6 @@
 ---
-title: Přidání nebo odebrání přiřazení rolí pomocí RBAC a portálu Azure
-description: Zjistěte, jak udělit přístup k prostředkům Azure pro uživatele, skupiny, instanční objekty nebo spravované identity pomocí řízení přístupu na základě rolí Azure (RBAC) a portálu Azure.
+title: Přidání nebo odebrání přiřazení rolí s RBAC a Azure Portal
+description: Naučte se, jak udělit přístup k prostředkům Azure pro uživatele, skupiny, instanční objekty nebo spravované identity pomocí řízení přístupu na základě role (RBAC) v Azure a Azure Portal.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,67 +15,67 @@ ms.date: 01/25/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: e2458b07602bca3b6f12b2f486b509c11d705461
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79246354"
 ---
-# <a name="add-or-remove-role-assignments-using-azure-rbac-and-the-azure-portal"></a>Přidání nebo odebrání přiřazení rolí pomocí Azure RBAC a portálu Azure
+# <a name="add-or-remove-role-assignments-using-azure-rbac-and-the-azure-portal"></a>Přidání nebo odebrání přiřazení rolí pomocí Azure RBAC a Azure Portal
 
-[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)]Tento článek popisuje, jak přiřadit role pomocí portálu Azure.
+[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)]Tento článek popisuje, jak přiřadit role pomocí Azure Portal.
 
-Pokud potřebujete přiřadit role správce ve službě Azure Active Directory, přečtěte si část [Zobrazení a přiřazení rolí správce ve službě Azure Active Directory](../active-directory/users-groups-roles/directory-manage-roles-portal.md).
+Pokud potřebujete přiřadit role správce v Azure Active Directory, přečtěte si téma [zobrazení a přiřazení rolí správce v Azure Active Directory](../active-directory/users-groups-roles/directory-manage-roles-portal.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li přidat nebo odebrat přiřazení rolí, musíte mít:
+Chcete-li přidat nebo odebrat přiřazení rolí, je nutné mít následující:
 
-- `Microsoft.Authorization/roleAssignments/write`a `Microsoft.Authorization/roleAssignments/delete` oprávnění, například [Správce přístupu uživatelů](built-in-roles.md#user-access-administrator) nebo [Vlastník](built-in-roles.md#owner)
+- `Microsoft.Authorization/roleAssignments/write`a `Microsoft.Authorization/roleAssignments/delete` oprávnění, jako je například správce nebo [vlastník](built-in-roles.md#owner) [přístupu uživatele](built-in-roles.md#user-access-administrator)
 
 ## <a name="access-control-iam"></a>Řízení přístupu (IAM)
 
-**Řízení přístupu (IAM)** je okno, které slouží k přiřazení rolí k udělení přístupu k prostředkům Azure. Je také označován jako správa identit a přístupu a zobrazí se na několika místech na webu Azure Portal. Následující ukazuje příklad okna řízení přístupu (IAM) pro předplatné.
+**Řízení přístupu (IAM)** je okno, pomocí kterého přiřadíte role pro udělení přístupu k prostředkům Azure. Označuje se taky jako Správa identit a přístupu a zobrazuje se v několika umístěních v Azure Portal. V následujícím příkladu vidíte okno řízení přístupu (IAM) pro předplatné.
 
 ![Okno řízení přístupu (IAM) pro předplatné](./media/role-assignments-portal/access-control-subscription.png)
 
-Chcete-li být nejúčinnější s okno řízení přístupu (IAM), pomáhá, pokud můžete odpovědět na následující tři otázky, když se pokoušíte přiřadit roli:
+Aby bylo v okně řízení přístupu (IAM) nejúčinnější, pomůže vám při pokusu o přiřazení role odpovědět na následující tři otázky:
 
 1. **Kdo potřebuje přístup?**
 
-    Kdo odkazuje na uživatele, skupinu, instanční objekt nebo spravovanou identitu. To se také nazývá *zaregistrovaný objekt zabezpečení*.
+    Kdo odkazuje na uživatele, skupinu, instanční objekt nebo spravovanou identitu. Označuje se taky jako *objekt zabezpečení*.
 
 1. **Jakou roli potřebují?**
 
-    Oprávnění jsou seskupena do rolí. Můžete si vybrat ze seznamu několika [předdefinovaných rolí](built-in-roles.md) nebo můžete použít vlastní role.
+    Oprávnění se seskupují do rolí. Můžete vybrat ze seznamu několika [předdefinovaných rolí](built-in-roles.md) nebo můžete použít vlastní role.
 
 1. **Kde potřebují přístup?**
 
-    Kde odkazuje na sadu prostředků, které se vztahuje na přístup. Kde může být skupina pro správu, předplatné, skupina prostředků nebo jeden prostředek, jako je například účet úložiště. Tento obor se nazývá *obor*.
+    Kde se odkazuje na sadu prostředků, na které se vztahuje přístup. Kde může být skupina pro správu, předplatné, skupina prostředků nebo jeden prostředek, jako je například účet úložiště. To se označuje jako *obor*.
 
 ## <a name="add-a-role-assignment"></a>Přidat přiřazení role
 
-V Azure RBAC, chcete-li udělit přístup k prostředku Azure, přidáte přiřazení role. Chcete-li přiřadit roli, postupujte takto.
+Když ve službě Azure RBAC udělíte přístup k prostředku Azure, přidáte přiřazení role. Pomocí těchto kroků přiřaďte roli.
 
-1. Na webu Azure Portal klikněte na **Všechny služby** a vyberte obor, ke kterému chcete udělit přístup. Můžete například vybrat **skupiny pro správu**, **Odběry**, **Skupiny prostředků**nebo prostředek.
+1. V Azure Portal klikněte na **všechny služby** a pak vyberte obor, pro který chcete udělit přístup. Můžete například vybrat **skupiny pro správu**, **předplatná**, **skupiny prostředků**nebo prostředek.
 
 1. Klikněte na konkrétní prostředek pro daný obor.
 
 1. Klikněte na **Řízení přístupu (IAM)**.
 
-1. Kliknutím na kartu **Přiřazení rolí** zobrazíte přiřazení rolí v tomto oboru.
+1. Kliknutím na kartu **přiřazení rolí** zobrazíte přiřazení rolí v tomto oboru.
 
-    ![Karta Řízení přístupu (IAM) a přiřazení rolí](./media/role-assignments-portal/role-assignments.png)
+    ![Karta pro řízení přístupu (IAM) a přiřazení rolí](./media/role-assignments-portal/role-assignments.png)
 
-1. Klikněte na **Přidat** > **přiřazení role**.
+1. Klikněte na **Přidat** > **přiřazení role přidat**.
 
-   Pokud nemáte oprávnění k přiřazování rolí, bude možnost Přidat přiřazení role zakázána.
+   Pokud nemáte oprávnění k přiřazování rolí, bude možnost přidat přiřazení role zakázaná.
 
-   ![Nabídka Přidat](./media/role-assignments-portal/add-menu.png)
+   ![Přidat nabídku](./media/role-assignments-portal/add-menu.png)
 
     Otevře se podokno Přidat přiřazení role.
 
-   ![Podokno přiřazení role](./media/role-assignments-portal/add-role-assignment.png)
+   ![Přidat podokno přiřazení role](./media/role-assignments-portal/add-role-assignment.png)
 
 1. V rozevíracím seznamu **Role** vyberte roli, například **Přispěvatel virtuálních počítačů**.
 
@@ -83,33 +83,33 @@ V Azure RBAC, chcete-li udělit přístup k prostředku Azure, přidáte přiřa
 
 1. Kliknutím na **Uložit** roli přiřaďte.
 
-   Po několika okamžicích je objektu zabezpečení přiřazena role ve vybraném oboru.
+   Po chvíli se objektu zabezpečení přiřadí role ve vybraném oboru.
 
-    ![Přidání uloženého přiřazení role](./media/role-assignments-portal/add-role-assignment-save.png)
+    ![Přidání přiřazení role se uložilo.](./media/role-assignments-portal/add-role-assignment-save.png)
 
 ## <a name="assign-a-user-as-an-administrator-of-a-subscription"></a>Přiřazení uživatele jako správce předplatného
 
-Chcete-li z uživatele udělat správce předplatného Azure, přiřaďte mu roli [vlastníka](built-in-roles.md#owner) v oboru předplatného. Role Vlastník poskytuje uživateli úplný přístup ke všem prostředkům v předplatném, včetně oprávnění udělit přístup ostatním. Tento postup je stejný jako u jakéhokoli jiného přiřazení role.
+Pokud chcete, aby uživatel měl správce předplatného Azure, přiřaďte mu roli [vlastníka](built-in-roles.md#owner) v oboru předplatného. Role vlastníka přidělí uživateli úplný přístup ke všem prostředkům v rámci předplatného, včetně oprávnění pro udělení přístupu jiným uživatelům. Tento postup je stejný jako u jakéhokoli jiného přiřazení role.
 
-1. Na webu Azure Portal klikněte na **Všechny služby** a potom na **Předplatná**.
+1. V Azure Portal klikněte na **všechny služby** a pak na **předplatná**.
 
 1. Klikněte na předplatné, ke kterému chcete udělit přístup.
 
 1. Klikněte na **Řízení přístupu (IAM)**.
 
-1. Kliknutím na kartu **Přiřazení rolí** zobrazíte přiřazení rolí pro toto předplatné.
+1. Kliknutím na kartu **přiřazení rolí** zobrazíte přiřazení rolí pro toto předplatné.
 
-    ![Karta Řízení přístupu (IAM) a přiřazení rolí](./media/role-assignments-portal/role-assignments.png)
+    ![Karta pro řízení přístupu (IAM) a přiřazení rolí](./media/role-assignments-portal/role-assignments.png)
 
-1. Klikněte na **Přidat** > **přiřazení role**.
+1. Klikněte na **Přidat** > **přiřazení role přidat**.
 
-   Pokud nemáte oprávnění k přiřazování rolí, bude možnost Přidat přiřazení role zakázána.
+   Pokud nemáte oprávnění k přiřazování rolí, bude možnost přidat přiřazení role zakázaná.
 
-   ![Nabídka Přidat](./media/role-assignments-portal/add-menu.png)
+   ![Přidat nabídku](./media/role-assignments-portal/add-menu.png)
 
     Otevře se podokno Přidat přiřazení role.
 
-   ![Podokno přiřazení role](./media/role-assignments-portal/add-role-assignment.png)
+   ![Přidat podokno přiřazení role](./media/role-assignments-portal/add-role-assignment.png)
 
 1. V rozevíracím seznamu **Role** vyberte roli **Vlastník**.
 
@@ -121,9 +121,9 @@ Chcete-li z uživatele udělat správce předplatného Azure, přiřaďte mu rol
 
 ## <a name="remove-a-role-assignment"></a>Odebrání přiřazení role
 
-V Azure RBAC, chcete-li odebrat přístup z prostředku Azure, odeberete přiřazení role. Chcete-li odebrat přiřazení role, postupujte takto.
+Pokud v Azure RBAC odeberete přístup z prostředku Azure, odeberete přiřazení role. Pomocí těchto kroků odeberte přiřazení role.
 
-1. Otevřít **řízení přístupu (IAM)** v oboru, jako je například skupina pro správu, předplatné, skupina prostředků nebo prostředek, kde chcete odebrat přístup.
+1. Otevřete **řízení přístupu (IAM)** v oboru, jako je například skupina pro správu, předplatné, skupina prostředků nebo prostředek, kde chcete odebrat přístup.
 
 1. Kliknutím na kartu **Přiřazení rolí** zobrazte všechna přiřazení rolí pro toto předplatné.
 
@@ -135,15 +135,15 @@ V Azure RBAC, chcete-li odebrat přístup z prostředku Azure, odeberete přiřa
 
    ![Zpráva Odebrání přiřazení role](./media/role-assignments-portal/remove-role-assignment.png)
 
-1. Ve zprávě odebrat přiřazení role, která se zobrazí, klepněte na tlačítko **Ano**.
+1. Ve zprávě odebrat přiřazení role, která se zobrazí, klikněte na **Ano**.
 
-    Pokud se zobrazí zpráva, že zděděná přiřazení rolí nelze odebrat, pokoušíte se odebrat přiřazení role v podřízeném oboru. Ovládací prvek přístupu (IAM) byste měli otevřít v oboru, kde byla role přiřazena, a akci opakujte. Rychlý způsob, jak otevřít řízení přístupu (IAM) ve správném oboru, je podívat se na sloupec **Obor** a kliknout na odkaz vedle **(Zděděné)**.
+    Pokud se zobrazí zpráva, že se zděděná přiřazení rolí nedají odebrat, pokoušíte se odebrat přiřazení role v podřízeném oboru. Měli byste otevřít řízení přístupu (IAM) v oboru, kde byla role přiřazena, a akci opakovat. Rychlý způsob, jak otevřít řízení přístupu (IAM) ve správném oboru, je podívat se na sloupec **Rozsah** a kliknout na odkaz vedle **(Zděděno)**.
 
    ![Zpráva Odebrání přiřazení role](./media/role-assignments-portal/remove-role-assignment-inherited.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Seznam přiřazení rolí pomocí Azure RBAC a portálu Azure](role-assignments-list-portal.md)
-- [Kurz: Udělení přístupu uživateli k prostředkům Azure pomocí RBAC a portálu Azure](quickstart-assign-role-user-portal.md)
-- [Poradce při potížích s RBAC pro prostředky Azure](troubleshooting.md)
+- [Seznam přiřazení rolí pomocí Azure RBAC a Azure Portal](role-assignments-list-portal.md)
+- [Kurz: udělení přístupu uživatele k prostředkům Azure pomocí RBAC a Azure Portal](quickstart-assign-role-user-portal.md)
+- [Řešení potíží s RBAC pro prostředky Azure](troubleshooting.md)
 - [Uspořádání prostředků pomocí skupin pro správu Azure](../governance/management-groups/overview.md)

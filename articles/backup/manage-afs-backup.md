@@ -1,72 +1,72 @@
 ---
 title: Správa záloh sdílených složek Azure
-description: Tento článek popisuje běžné úkoly pro správu a monitorování sdílených složek Azure, které jsou zálohovány službou Azure Backup.
+description: Tento článek popisuje běžné úlohy správy a monitorování sdílených složek Azure, které jsou zálohované pomocí Azure Backup.
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.openlocfilehash: cb764fa441c063328dc350cf26f42c5bc7a0ca99
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79247654"
 ---
 # <a name="manage-azure-file-share-backups"></a>Správa záloh sdílených složek Azure
 
-Tento článek popisuje běžné úkoly pro správu a monitorování sdílených složek Azure, které jsou zálohovány [službou Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview). V trezoru služby Recovery Services se dozvíte, jak provést úkoly správy.
+Tento článek popisuje běžné úlohy správy a monitorování sdílených složek Azure, které jsou zálohované pomocí [Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview). Naučíte se, jak provádět úlohy správy v trezoru Recovery Services.
 
 ## <a name="monitor-jobs"></a>Monitorování úloh
 
-Když spustíte operaci zálohování nebo obnovení, služba zálohování vytvoří úlohu pro sledování. Průběh všech úloh můžete sledovat na stránce **Úlohy zálohování**.
+Při aktivaci operace zálohování nebo obnovení vytvoří služba zálohování úlohu pro sledování. Průběh všech úloh můžete sledovat na stránce **Úlohy zálohování**.
 
 Otevření stránky **Úlohy zálohování**:
 
-1. Otevřete trezor služby Recovery Services, který jste použili ke konfiguraci zálohování sdílených složek. V podokně **Přehled** vyberte v části **Monitorování** **položku Zálohování úloh.**
+1. Otevřete Recovery Services trezor, který jste použili ke konfiguraci zálohování sdílených složek. V podokně **Přehled** vyberte **úlohy zálohování** v části **monitorování** .
 
-   ![Zálohování úloh v části Monitorování](./media/manage-afs-backup/backup-jobs.png)
+   ![Úlohy zálohování v části monitorování](./media/manage-afs-backup/backup-jobs.png)
 
-1. Po výběru **možnosti OK**zobrazí podokno **Úlohy zálohování** stav všech úloh. Vyberte název pracovního vytížení, který odpovídá sdílené složce, kterou chcete sledovat.
+1. Po výběru **OK**se v podokně **úlohy zálohování** zobrazí stav všech úloh. Vyberte název úlohy, který odpovídá sdílené složce, kterou chcete monitorovat.
 
-   ![Název pracovního vytížení](./media/manage-afs-backup/workload-name.png)
+   ![Název úlohy](./media/manage-afs-backup/workload-name.png)
 
 ## <a name="create-a-new-policy"></a>Vytvoření nové zásady
 
-Můžete vytvořit novou zásadu pro zálohování sdílených složek Azure z části **Zásady zálohování** v trezoru služby Recovery Services. Všechny zásady vytvořené při konfiguraci zálohování sdílených složek se zobrazí s **typem zásad jako** **Azure File Share**.
+Novou zásadu pro zálohování sdílených složek Azure můžete vytvořit v části **zásady zálohování** trezoru Recovery Services. Všechny zásady vytvořené při konfiguraci zálohování sdílených složek se zobrazí s **typem zásady** jako **sdílená složka Azure**.
 
-Zobrazení existujících zásad zálohování:
+Chcete-li zobrazit existující zásady zálohování:
 
-1. Otevřete trezor služby Recovery Services, který jste použili ke konfiguraci zálohy pro sdílenou složku. V nabídce trezoru služby Recovery Services vyberte v části **Správa** **možnost Zásady zálohování.** Zobrazí se všechny zásady zálohování nakonfigurované v úschovně.
+1. Otevřete Recovery Services trezor, který jste použili ke konfiguraci zálohování sdílené složky. V nabídce trezoru Recovery Services v části **Spravovat** vyberte **zásady zálohování** . Zobrazí se všechny zásady zálohování nakonfigurované v trezoru.
 
    ![Všechny zásady zálohování](./media/manage-afs-backup/all-backup-policies.png)
 
-1. Pokud chcete zobrazit zásady specifické pro **Azure File Share**, vyberte Azure File **Share** z rozevíracího seznamu v pravém horním části.
+1. Pokud chcete zobrazit zásady specifické pro **sdílenou složku Azure**, vyberte v rozevíracím seznamu v pravém horním rohu položku **Azure File Share** .
 
-   ![Výběr sdílené složky Azure](./media/manage-afs-backup/azure-file-share.png)
+   ![Vybrat sdílenou složku Azure](./media/manage-afs-backup/azure-file-share.png)
 
 Vytvoření nové zásady zálohování:
 
-1. V podokně **Zásady zálohování** vyberte **+ Přidat**.
+1. V podokně **zásady zálohování** vyberte **+ Přidat**.
 
    ![Nové zásady zálohování](./media/manage-afs-backup/new-backup-policy.png)
 
-1. V podokně **Přidat** vyberte jako **typ zásadu** **Sdílení souborů Azure** . Otevře se podokno **zásad zálohování** pro sdílení **souborů Azure.** Zadejte název zásady, frekvenci zálohování a rozsah uchování bodů obnovení. Po definování zásady vyberte **ok**.
+1. V podokně **Přidat** jako **Typ zásady**vyberte **sdílená složka Azure** . Otevře se podokno **zásady zálohování** pro **sdílenou složku Azure** . Zadejte název zásady, četnost zálohování a rozsah uchování bodů obnovení. Po definování zásady vyberte **OK**.
 
    ![Definování zásad zálohování](./media/manage-afs-backup/define-backup-policy.png)
 
-## <a name="modify-policy"></a>Změnit zásadu
+## <a name="modify-policy"></a>Upravit zásadu
 
-Můžete upravit zásady zálohování změnit frekvenci zálohování nebo rozsah uchování.
+Chcete-li změnit četnost zálohování nebo rozsah uchování, můžete upravit zásady zálohování.
 
-Změna zásady:
+Postup úpravy zásady:
 
-1. Otevřete trezor služby Recovery Services, který jste použili ke konfiguraci zálohy pro sdílenou složku. V nabídce trezoru služby Recovery Services vyberte v části **Správa** **možnost Zásady zálohování.** Zobrazí se všechny zásady zálohování nakonfigurované v úschovně.
+1. Otevřete Recovery Services trezor, který jste použili ke konfiguraci zálohování sdílené složky. V nabídce trezoru Recovery Services v části **Spravovat** vyberte **zásady zálohování** . Zobrazí se všechny zásady zálohování nakonfigurované v trezoru.
 
    ![Všechny zásady zálohování v trezoru](./media/manage-afs-backup/all-backup-policies-modify.png)
 
-1. Pokud chcete zobrazit zásady specifické pro sdílenou složku Azure, vyberte **Azure File Share** z rozevíracího seznamu v pravém horním části. Vyberte zásadu zálohování, kterou chcete upravit.
+1. Pokud chcete zobrazit zásady specifické pro sdílenou složku Azure, v pravém horním rohu vyberte **Azure File Share** v rozevíracím seznamu. Vyberte zásadu zálohování, kterou chcete upravit.
 
-   ![Sdílení souborů Azure k úpravám](./media/manage-afs-backup/azure-file-share-modify.png)
+   ![Sdílená složka Azure, kterou chcete upravit](./media/manage-afs-backup/azure-file-share-modify.png)
 
-1. Otevře se podokno **Plán.** Podle potřeby upravte **plán zálohování** a **rozsah uchovávání** a vyberte **Uložit**. V podokně se zobrazí zpráva "Aktualizace probíhá". Po úspěšné aktualizaci zásad se zobrazí zpráva "Úspěšně aktualizována zásady zálohování.".
+1. Otevře se podokno **plán** . Podle potřeby upravte **plán zálohování** a **Rozsah uchování** a vyberte **Uložit**. V podokně se zobrazí zpráva "Probíhá aktualizace". Po úspěšném dokončení aktualizace zásad se zobrazí zpráva "úspěšně se aktualizovala zásada zálohování".
 
    ![Uložit upravenou zásadu](./media/manage-afs-backup/save-policy.png)
 
@@ -75,94 +75,94 @@ Změna zásady:
 Ochranu sdílených složek Azure můžete zastavit dvěma způsoby:
 
 * Zastavte všechny budoucí úlohy zálohování a *odstraňte všechny body obnovení*.
-* Zastavte všechny budoucí úlohy zálohování, ale *ponechte body obnovení*.
+* Zastavte všechny budoucí úlohy zálohování, ale *ponechejte body obnovení*.
 
-Může být náklady spojené s opuštěním body obnovení v úložišti, protože základní snímky vytvořené službou Azure Backup zůstanou zachovány. Výhodou opuštění bodů obnovení je, že můžete obnovit sdílenou složku později. Informace o nákladech na opuštění bodů obnovení naleznete v [podrobnostech o cenách](https://azure.microsoft.com/pricing/details/backup/). Pokud se rozhodnete odstranit všechny body obnovení, nelze sdílenou složku obnovit.
+Je možné, že jsou k dispozici náklady spojené s ponecháním bodů obnovení v úložišti, protože se zachovají základní snímky vytvořené pomocí Azure Backup. Výhodou při ponechání bodů obnovení je, že později můžete sdílenou složku obnovit. Informace o nákladech na ponechávání bodů obnovení najdete v [podrobnostech o cenách](https://azure.microsoft.com/pricing/details/backup/). Pokud se rozhodnete odstranit všechny body obnovení, sdílenou složku nemůžete obnovit.
 
 Zastavení ochrany sdílené složky Azure:
 
-1. Otevřete trezor služby Recovery Services, který obsahuje body obnovení sdílené složky. V části **Chráněné položky** vyberte **Položky zálohování.** Zobrazí se seznam typů položek zálohy.
+1. Otevřete trezor Recovery Services, který obsahuje body obnovení sdílené složky. V části **chráněné položky** vyberte **zálohované položky** . Zobrazí se seznam typů záložních položek.
 
-   ![Položky zálohování](./media/manage-afs-backup/backup-items.png)
+   ![Zálohované položky](./media/manage-afs-backup/backup-items.png)
 
-1. V seznamu **Typ správy záloh** vyberte **Azure Storage (Soubory Azure)**. Zobrazí se seznam **Položky zálohování (Azure Storage (Soubory Azure)).**
+1. V seznamu **Typ správy záloh** vyberte **Azure Storage (Soubory Azure)**. Zobrazí se seznam **zálohované položky (soubory Azure Storage (soubory Azure))** .
 
-   ![Vyberte Azure Storage (soubory Azure)](./media/manage-afs-backup/azure-storage-azure-files.png)
+   ![Vybrat Azure Storage (soubory Azure)](./media/manage-afs-backup/azure-storage-azure-files.png)
 
-1. V seznamu **Položky zálohování (Azure Storage (Soubory Azure))** vyberte položku zálohování, pro kterou chcete ochranu zastavit.
+1. V seznamu **zálohované položky Azure Storage (soubory Azure)** vyberte zálohovanou položku, pro kterou chcete zastavit ochranu.
 
-1. Vyberte možnost **Zastavit zálohování.**
+1. Vyberte možnost **Zastavit zálohování** .
 
-   ![Vybrat možnost Zastavit zálohování.](./media/manage-afs-backup/stop-backup.png)
+   ![Vyberte Zastavit zálohování.](./media/manage-afs-backup/stop-backup.png)
 
-1. V podokně **Zastavit zálohování** vyberte Zachovat **záložní data** nebo Odstranit **záložní data**. Pak vyberte **Zastavit zálohování**.
+1. V podokně **Zastavit zálohování** vyberte **zachovat zálohovaná data** nebo **odstraňte zálohovaná data**. Pak vyberte **Zastavit zálohování**.
 
-    ![Vyberte Zachovat záložní data nebo Odstranit záložní data.](./media/manage-afs-backup/retain-or-delete-backup-data.png)
+    ![Vybrat zachovat zálohovaná data nebo odstranit data zálohy](./media/manage-afs-backup/retain-or-delete-backup-data.png)
 
 ## <a name="resume-protection-on-a-file-share"></a>Obnovení ochrany sdílené složky
 
-Pokud byla při zastavení ochrany sdílené složky vybrána možnost **Zachovat záložní data,** je možné ochranu obnovit. Pokud byla vybrána možnost **Odstranit záložní data,** ochrana sdílené složky nemůže pokračovat.
+Pokud byla při zastavení ochrany sdílené složky vybraná možnost **zachovat data záloh** , je možné obnovit ochranu. Pokud jste vybrali možnost **Odstranit data záloh** , ochrana sdílené složky se nemůže obnovit.
 
 Obnovení ochrany sdílené složky Azure:
 
-1. Otevřete trezor služby Recovery Services, který obsahuje body obnovení sdílené složky. V části **Chráněné položky** vyberte **Položky zálohování.** Zobrazí se seznam typů položek zálohy.
+1. Otevřete trezor Recovery Services, který obsahuje body obnovení sdílené složky. V části **chráněné položky** vyberte **zálohované položky** . Zobrazí se seznam typů záložních položek.
 
-   ![Položky zálohování pro životopis](./media/manage-afs-backup/backup-items-resume.png)
+   ![Zálohované položky pro pokračování](./media/manage-afs-backup/backup-items-resume.png)
 
-1. V seznamu **Typ správy záloh** vyberte **Azure Storage (Soubory Azure)**. Zobrazí se seznam **Položky zálohování (Azure Storage (Soubory Azure)).**
+1. V seznamu **Typ správy záloh** vyberte **Azure Storage (Soubory Azure)**. Zobrazí se seznam **zálohované položky (soubory Azure Storage (soubory Azure))** .
 
    ![Seznam Azure Storage (soubory Azure)](./media/manage-afs-backup/azure-storage-azure-files.png)
 
-1. V seznamu **Položky zálohování (Azure Storage (Soubory Azure))** vyberte položku zálohování, pro kterou chcete obnovit ochranu.
+1. V seznamu **zálohované položky Azure Storage (soubory Azure)** vyberte zálohovanou položku, pro kterou chcete obnovit ochranu.
 
-1. Vyberte možnost **Pokračovat v zálohování.**
+1. Vyberte možnost **obnovit zálohu** .
 
    ![Vybrat pokračovat v zálohování](./media/manage-afs-backup/resume-backup.png)
 
-1. Otevře se podokno **Zásadzálohování.** Vyberte zásadu podle svého výběru, chcete-li pokračovat v zálohování.
+1. Otevře se podokno **zásady zálohování** . Vyberte zásadu, kterou zvolíte pro obnovení zálohování.
 
-1. Po výběru zásady zálohování vyberte **uložit**. Na portálu se zobrazí zpráva "Aktualizace probíhá". Po úspěšném obnovení zálohování se zobrazí zpráva "Úspěšně aktualizované zásady zálohování pro chráněnou sdílenou složku Azure".
+1. Po výběru zásady zálohování vyberte **Uložit**. Na portálu se zobrazí zpráva o tom, že probíhá aktualizace. Po úspěšném dokončení zálohování se zobrazí zpráva "úspěšně se aktualizovaly zásady zálohování pro chráněnou sdílenou složku Azure".
 
-   ![Zásady zálohování byly úspěšně aktualizovány](./media/manage-afs-backup/successfully-updated.png)
+   ![Zásada zálohování se úspěšně aktualizovala.](./media/manage-afs-backup/successfully-updated.png)
 
 ## <a name="delete-backup-data"></a>Odstranění zálohovaných dat
 
-Zálohu sdílené složky můžete odstranit během **úlohy Zastavit zálohování** nebo kdykoli po ukončení ochrany. Může být výhodné čekat dny nebo dokonce týdny, než odstraníte body obnovení. Když odstraníte zálohovaná data, nemůžete vybrat konkrétní body obnovení, které chcete odstranit. Pokud se rozhodnete zálohovat data, odstraníte všechny body obnovení přidružené ke sdílené složce.
+Zálohu sdílené složky můžete odstranit během úlohy **zastavení zálohování** nebo kdykoli po zastavení ochrany. Před odstraněním bodů obnovení může být výhodné počkat dny nebo dokonce týdny. Při odstraňování zálohovaných dat nemůžete zvolit konkrétní body obnovení, které se mají odstranit. Pokud se rozhodnete odstranit zálohovaná data, odstraníte všechny body obnovení spojené se sdílenou složkou souborů.
 
-Následující postup předpokládá, že ochrana byla zastavena pro sdílenou složku.
+Následující postup předpokládá, že ochrana pro sdílenou složku byla zastavena.
 
-Odstranění záložních dat pro sdílenou složku Azure:
+Odstranění zálohovaných dat pro sdílenou složku Azure:
 
-1. Po zastavení úlohy zálohování jsou v řídicím panelu **Položky zálohování** k dispozici možnosti **Obnovit zálohování** a Odstranit **data zálohování.** Vyberte možnost **Odstranit záložní data.**
+1. Po zastavení úlohy zálohování jsou v řídicím panelu **zálohovaná položka** k dispozici možnosti **obnovit zálohu** a **odstranit záložní data** . Vyberte možnost **Odstranit data záloh** .
 
    ![Odstranění zálohovaných dat](./media/manage-afs-backup/delete-backup-data.png)
 
-1. Otevře se podokno **Odstranit záložní data.** Zadejte název sdílené složky pro potvrzení odstranění. Volitelně můžete zadat další informace v polích **Důvod** nebo **Komentáře.** Až budete si jistí, že chcete zálohovat data, vyberte **Odstranit**.
+1. Otevře se podokno **Odstranit zálohovaná data** . Zadáním názvu sdílené složky potvrďte odstranění. Volitelně můžete zadat další informace v polích **důvod** nebo **Komentáře** . Až si budete jisti, že se data záloh odstraňují, vyberte **Odstranit**.
 
    ![Potvrdit odstranění dat](./media/manage-afs-backup/confirm-delete-data.png)
 
 ## <a name="unregister-a-storage-account"></a>Zrušení registrace účtu úložiště
 
-Chcete-li chránit sdílené složky souborů v určitém účtu úložiště pomocí jiného trezoru služeb pro obnovení, [nejprve zastavte ochranu všech sdílených složek](#stop-protection-on-a-file-share) v tomto účtu úložiště. Potom zrušit registraci účtu z aktuálního trezoru služeb obnovení, který slouží k ochraně.
+Chcete-li chránit sdílené složky v konkrétním účtu úložiště pomocí jiného trezoru služby Recovery Services, nejprve [Zastavte ochranu pro všechny sdílené složky](#stop-protection-on-a-file-share) v tomto účtu úložiště. Pak zrušte registraci účtu z aktuálního trezoru služby Recovery Services, který se používá k ochraně.
 
-Následující postup předpokládá, že ochrana byla zastavena pro všechny sdílené složky v účtu úložiště, který chcete zrušit registraci.
+Následující postup předpokládá, že se ochrana zastavila pro všechny sdílené složky v účtu úložiště, který chcete zrušit.
 
 Zrušení registrace účtu úložiště:
 
-1. Otevřete trezor služby Recovery Services, kde je váš účet úložiště registrován.
-1. V podokně **Přehled** vyberte možnost **Infrastruktura zálohování** v části **Správa.**
+1. Otevřete Recovery Services trezor, ve kterém je váš účet úložiště zaregistrovaný.
+1. V podokně **Přehled** vyberte v části **Spravovat** možnost **infrastruktura zálohování** .
 
-   ![Vybrat infrastrukturu zálohování](./media/manage-afs-backup/backup-infrastructure.png)
+   ![Výběr infrastruktury zálohování](./media/manage-afs-backup/backup-infrastructure.png)
 
-1. Otevře se podokno **Infrastruktura zálohování.** V části Účty úložiště Azure vyberte **Účty** **úložiště.**
+1. Otevře se podokno **infrastruktura zálohování** . V části **Azure Storage účty** vyberte **účty úložiště** .
 
    ![Vybrat účty úložiště](./media/manage-afs-backup/storage-accounts.png)
 
-1. Po výběru **účtů úložiště**se zobrazí seznam účtů úložiště registrovaných v úschovně.
-1. Klikněte pravým tlačítkem myši na účet úložiště, který chcete zrušit, a vyberte **zrušit registraci**.
+1. Po výběru **účtů úložiště**se zobrazí seznam účtů úložiště zaregistrovaných v trezoru.
+1. Klikněte pravým tlačítkem na účet úložiště, který chcete zrušit, a vyberte zrušit **registraci**.
 
    ![Vybrat zrušit registraci](./media/manage-afs-backup/select-unregister.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace najdete [v tématu Poradce při potížích se zálohováním sdílených složek Azure](https://docs.microsoft.com/azure/backup/troubleshoot-azure-files).
+Další informace najdete v tématu [řešení potíží se zálohováním sdílených složek Azure](https://docs.microsoft.com/azure/backup/troubleshoot-azure-files).

@@ -1,7 +1,7 @@
 ---
-title: 'Úvodní příručka: Navrhněte vyhledávací dotazy pomocí rozhraní API PRO AUTOMATICKÉ NÁVRHY Bingu a Pythonu'
+title: 'Rychlý Start: návrh vyhledávacích dotazů pomocí Automatické návrhy Bingu REST API a Pythonu'
 titleSuffix: Azure Cognitive Services
-description: Přečtěte si, jak rychle začít navrhovat hledané termíny v reálném čase pomocí rozhraní API automatického návrhu Bingu.
+description: Naučte se, jak rychle začít navrhovat hledané výrazy v reálném čase pomocí rozhraní API pro automatické návrhy Bingu.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,15 +11,15 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: aahi
 ms.openlocfilehash: 582e298bb291a66a6ec6b7300dffaa0fc18af4e0
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80238921"
 ---
-# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-python"></a>Úvodní příručka: Navrhněte vyhledávací dotazy pomocí rozhraní API PRO AUTOMATICKÉ NÁVRHY Bingu a Pythonu
+# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-python"></a>Rychlý Start: návrh vyhledávacích dotazů pomocí Automatické návrhy Bingu REST API a Pythonu
 
-Pomocí tohoto rychlého startu můžete začít volat do rozhraní API automatického návrhu Bingu a získat odpověď JSON. Tato jednoduchá aplikace Pythonu odešle do rozhraní API částečný vyhledávací dotaz a vrátí návrhy pro vyhledávání. Aplikace je sice napsaná v Pythonu, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků. Zdrojový kód pro tuto ukázku je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingAutosuggestv7.py)
+Pomocí tohoto rychlého startu můžete začít volat rozhraní API pro automatické návrhy Bingu a získat odpověď JSON. Tato jednoduchá aplikace v Pythonu pošle do rozhraní API částečný vyhledávací dotaz a vrátí návrhy pro hledání. Aplikace je sice napsaná v Pythonu, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků. Zdrojový kód pro tuto ukázku je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingAutosuggestv7.py) .
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -29,13 +29,13 @@ Pomocí tohoto rychlého startu můžete začít volat do rozhraní API automati
 
 ## <a name="create-a-new-application"></a>Vytvoření nové aplikace
 
-1. Vytvořte nový soubor Pythonu ve svém oblíbeném ide nebo editoru. Přidejte následující importy:
+1. Vytvořte nový soubor Pythonu v oblíbených IDE nebo editoru. Přidejte následující importy:
 
     ```python
     import http.client, urllib.parse, json
     ```
 
-2. Vytvořte proměnné pro hostitele rozhraní API a cestu, [kód trhu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)a částečný vyhledávací dotaz. Můžete použít globální koncový bod níže nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený na portálu Azure pro váš prostředek.
+2. Vytvořte proměnné pro hostitele rozhraní API a cestu, [kód trhu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)a částečný vyhledávací dotaz. Můžete použít globální koncový bod nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
 
     ```python
     subscriptionKey = 'enter key here'
@@ -45,21 +45,21 @@ Pomocí tohoto rychlého startu můžete začít volat do rozhraní API automati
     query = 'sail'
     ```
 
-3. Vytvořte řetězec parametrů připojením kódu trhu `?mkt=` k parametru a připojením dotazu k parametru. `&q=`
+3. Vytvořte řetězec parametrů připojením kódu na trhu k `?mkt=` parametru a připojením dotazu k `&q=` parametru.
 
     ```python
     params = '?mkt=' + mkt + '&q=' + query
     ```
 
-## <a name="create-and-send-an-api-request"></a>Vytvoření a odeslání požadavku rozhraní API
+## <a name="create-and-send-an-api-request"></a>Vytvoření a odeslání žádosti rozhraní API
 
-1. Přidejte klíč předplatného `Ocp-Apim-Subscription-Key` do záhlaví.
+1. Přidejte klíč předplatného do `Ocp-Apim-Subscription-Key` záhlaví.
     
     ```python
     headers = {'Ocp-Apim-Subscription-Key': subscriptionKey}
     ```
 
-2. Připojte se k `HTTPSConnection()`rozhraní API `GET` pomocí aplikace a odešlete požadavek obsahující parametry požadavku.
+2. Připojte se k rozhraní API `HTTPSConnection()`pomocí a odešlete `GET` požadavek obsahující vaše parametry žádosti.
     
     ```python
     conn = http.client.HTTPSConnection(host)
@@ -68,7 +68,7 @@ Pomocí tohoto rychlého startu můžete začít volat do rozhraní API automati
     return response.read ()
     ```
 
-3. Získejte a vytiskněte odpověď JSON.
+3. Načte a vytiskne odpověď JSON.
 
     ```python
     result = get_suggestions ()
