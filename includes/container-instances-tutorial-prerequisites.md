@@ -9,10 +9,10 @@ ms.date: 03/20/2018
 ms.author: danlep
 ms.custom: include file
 ms.openlocfilehash: 10fb9e8169b7f4159ccbf4a0ff36021f6033f811
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75552409"
 ---
 Abyste mohli absolvovat tento kurz, musíte splňovat následující požadavky:
@@ -21,7 +21,7 @@ Abyste mohli absolvovat tento kurz, musíte splňovat následující požadavky:
 
 **Docker:** V tomto kurzu se předpokládá základní znalost klíčových konceptů Dockeru, jako jsou kontejnery, image kontejnerů a základní příkazy `docker`. Základní informace o Dockeru a kontejnerech najdete v článku [Docker Overview][docker-get-started] (Přehled Dockeru).
 
-**Docker**: Chcete-li dokončit tento kurz, musíte Docker nainstalovat místně. Docker poskytuje balíčky, které nakonfigurují prostředí Dockeru v systému [macOS][docker-mac], [Windows][docker-windows] a [Linux][docker-linux].
+**Docker**: k dokončení tohoto kurzu potřebujete Docker nainstalovaný místně. Docker poskytuje balíčky, které nakonfigurují prostředí Dockeru v systému [macOS][docker-mac], [Windows][docker-windows] a [Linux][docker-linux].
 
 > [!IMPORTANT]
 > Vzhledem k tomu, že Azure Cloud Shell neobsahuje démona Dockeru, k dokončení tohoto kurzu *musíte* nainstalovat Azure CLI i modul Docker na svůj *místní počítač*. Pro účely tohoto kurzu není možné použít Azure Cloud Shell.

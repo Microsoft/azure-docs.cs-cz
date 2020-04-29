@@ -1,6 +1,6 @@
 ---
-title: Interakce se zařízením IoT Plug and Play Preview připojeným k vašemu řešení Azure IoT | Dokumenty společnosti Microsoft
-description: Node.js slouží k připojení a interakci se zařízením IoT Plug and Play Preview, které je připojené k vašemu řešení Azure IoT.
+title: Interakce se zařízením IoT technologie Plug and Play Preview připojeným k řešení Azure IoT | Microsoft Docs
+description: Pomocí Node. js se můžete připojit k zařízení IoT technologie Plug and Play Preview, které je připojené k řešení Azure IoT, a pracovat s nimi.
 author: miagdp
 ms.author: miag
 ms.date: 12/27/2019
@@ -9,21 +9,21 @@ ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
 ms.openlocfilehash: 9962763e647faddc5a2179f304aeb3fa8ca256e8
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75550736"
 ---
-# <a name="quickstart-interact-with-an-iot-plug-and-play-preview-device-thats-connected-to-your-solution-nodejs"></a>Úvodní příručka: Interakce se zařízením IoT Plug and Play Preview, které je připojené k vašemu řešení (Node.js)
+# <a name="quickstart-interact-with-an-iot-plug-and-play-preview-device-thats-connected-to-your-solution-nodejs"></a>Rychlý Start: interakce se zařízením IoT technologie Plug and Play ve verzi Preview, které je připojené k vašemu řešení (Node. js)
 
 [!INCLUDE [iot-pnp-quickstarts-3-selector.md](../../includes/iot-pnp-quickstarts-3-selector.md)]
 
-IoT Plug and Play Preview zjednodušuje IoT tím, že umožňuje interakci s funkcemi zařízení bez znalosti základní implementace zařízení. Tento rychlý start ukazuje, jak používat Node.js pro připojení a ovládání zařízení IoT Plug and Play, které je připojené k vašemu řešení.
+IoT technologie Plug and Play Preview zjednodušuje IoT tím, že vám umožní pracovat s funkcemi zařízení bez znalosti základní implementace zařízení. V tomto rychlém startu se dozvíte, jak pomocí Node. js připojit a řídit zařízení IoT technologie Plug and Play, které je připojené k vašemu řešení.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li dokončit tento rychlý start, potřebujete node.js ve vývojovém počítači. Nejnovější doporučenou verzi pro více platforem si můžete stáhnout z [nodejs.org](https://nodejs.org).
+K dokončení tohoto rychlého startu potřebujete Node. js na svém vývojovém počítači. Nejnovější doporučenou verzi si můžete stáhnout z [NodeJS.org](https://nodejs.org)na víc platforem.
 
 Aktuální verzi Node.js na počítači používaném pro vývoj můžete ověřit pomocí následujícího příkazu:
 
@@ -35,7 +35,7 @@ node --version
 
 [!INCLUDE [iot-pnp-prepare-iot-hub.md](../../includes/iot-pnp-prepare-iot-hub.md)]
 
-Spusťte následující příkaz, abyste získali _připojovací řetězec centra IoT hub_ pro vaše centrum (poznámka pro pozdější použití):
+Spuštěním následujícího příkazu Získejte _připojovací řetězec služby IoT Hub_ pro vaše centrum (Poznámka pro pozdější použití):
 
 ```azurecli-interactive
 az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
@@ -43,15 +43,15 @@ az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
 
 ## <a name="run-the-sample-device"></a>Spuštění ukázkového zařízení
 
-V tomto rychlém startu použijete ukázkový senzor prostředí, který je napsán v souboru Node.js jako zařízení IoT Plug and Play. Následující pokyny ukazují, jak nainstalovat a spustit zařízení:
+V tomto rychlém startu použijete vzorový senzor prostředí, který je napsaný v Node. js jako zařízení IoT technologie Plug and Play. Následující pokyny ukazují, jak nainstalovat a spustit zařízení:
 
-1. Otevřete okno terminálu v adresáři, který si vyberete. Spusťte následující příkaz pro klonování [ukázek Azure IoT pro úložiště Node.js](https://github.com/azure-samples/azure-iot-samples-node) GitHub do tohoto umístění:
+1. Otevřete okno terminálu v adresáři dle vašeho výběru. Spuštěním následujícího příkazu naklonujte [ukázky Azure IoT pro úložiště GitHub Node. js](https://github.com/azure-samples/azure-iot-samples-node) do tohoto umístění:
 
     ```cmd/sh
     git clone https://github.com/azure-samples/azure-iot-samples-node
     ```
 
-1. Toto okno terminálu bude nyní použito jako terminál _vašeho zařízení._ Přejděte do složky vašeho klonovaného úložiště a přejděte do složky **/azure-iot-samples-node/digital-twins/Quickstarts/Device.** Nainstalujte všechny závislosti spuštěním následujícího příkazu:
+1. Toto okno terminálu se teď použije jako terminál _zařízení_ . Přejděte do složky naklonovaného úložiště a přejděte do složky **/Azure-IoT-Samples-Node/Digital-Twins/QuickStarts/Device** . Všechny závislosti Nainstalujte spuštěním následujícího příkazu:
 
     ```cmd/sh
     npm install
@@ -69,41 +69,41 @@ V tomto rychlém startu použijete ukázkový senzor prostředí, který je naps
     node sample_device.js
     ```
 
-1. Zobrazí se zprávy, že zařízení odeslalo některé informace a nahlásilo se online. To znamená, že zařízení začalo odesílat telemetrická data do centra a je nyní připraveno přijímat příkazy a aktualizace vlastností. Nezavírejte tento terminál, budete ho později potřebovat k potvrzení, že vzorky služeb také fungovaly.
+1. Zobrazí se zpráva oznamující, že zařízení odeslalo nějaké informace a nahlásilo je jako online. To znamená, že zařízení začalo posílat data telemetrie do centra a teď je připravené přijímat příkazy a aktualizace vlastností. Nezavírejte tohoto terminálu, budete ho potřebovat později, abyste ověřili, že se ukázky služby také osvědčily.
 
-## <a name="run-the-sample-solution"></a>Spuštění ukázkového roztoku
+## <a name="run-the-sample-solution"></a>Spuštění ukázkového řešení
 
-V tomto rychlém startu použijete ukázkové řešení IoT v souboru Node.js k interakci se ukázkovým zařízením.
+V tomto rychlém startu použijete k interakci s ukázkovým zařízením ukázkové řešení IoT v Node. js.
 
-1. Otevřete další okno terminálu (toto bude váš _servisní_ terminál). Přejděte do složky vašeho klonovaného úložiště a přejděte do složky **/azure-iot-samples-node/digital-twins/Quickstarts/Service.** Nainstalujte všechny závislosti spuštěním následujícího příkazu:
+1. Otevřete další okno terminálu (bude to váš terminál _služby_ ). Přejděte do složky naklonovaného úložiště a přejděte do složky **/Azure-IoT-Samples-Node/Digital-Twins/QuickStarts/Service** . Všechny závislosti Nainstalujte spuštěním následujícího příkazu:
 
     ```cmd/sh
     npm install
     ```
 
-1. Nakonfigurujte _připojovací řetězec služby IoT hub_ tak, aby se k němu služba mohla připojit:
+1. Konfigurace _připojovacího řetězce služby IoT Hub_ , aby se služba mohla připojit k tomuto:
 
     ```cmd/sh
     set IOTHUB_CONNECTION_STRING=<YourIoTHubConnectionString>
     ```
 
-### <a name="read-a-property"></a>Čtení vlastnosti
+### <a name="read-a-property"></a>Číst vlastnost
 
-1. Když jste _zařízení_ připojili k jeho terminálu, zosakli jste následující zprávu s uvedením jeho stavu online:
+1. Po připojení _zařízení_ v terminálu se zobrazí následující zpráva s informacemi o stavu online:
 
     ```cmd/sh
     reported state property as online
     ```
 
-1. Ve složce **/azure-iot-samples-node/digital-twins/Quickstarts/Service** otevřete soubor **get_digital_twin.js**. Nahraďte `<DEVICE_ID_GOES_HERE>` zástupný symbol ID zařízení a soubor uložte.
+1. Ve složce **/Azure-IoT-Samples-Node/Digital-Twins/QuickStarts/Service** otevřete soubor **get_digital_twin. js**. `<DEVICE_ID_GOES_HERE>` Zástupný symbol nahraďte ID zařízení a uložte soubor.
 
-1. Přejděte na _servisní_ terminál a pomocí následujícího příkazu spusťte ukázku pro čtení informací o zařízení:
+1. Přejděte do terminálu _služby_ a pomocí následujícího příkazu spusťte ukázku pro čtení informací o zařízení:
 
     ```cmd/sh
     node get_digital_twin.js
     ```
 
-1. Ve výstupu _terminálu služby_ přejděte na komponentu. `environmentalSensor` Vidíte, že `state` vlastnost byla hlášena jako _online_:
+1. Ve výstupu terminálu _služby_ se posuňte k `environmentalSensor` součásti. Vidíte, že `state` vlastnost byla hlášena jako _online_:
 
     ```JSON
     "environmentalSensor": {
@@ -118,11 +118,11 @@ V tomto rychlém startu použijete ukázkové řešení IoT v souboru Node.js k 
     }
     ```
 
-### <a name="update-a-writable-property"></a>Aktualizace zapisovatelné vlastnosti
+### <a name="update-a-writable-property"></a>Aktualizovat vlastnost s možností zápisu
 
-1. Otevřete soubor **update_digital_twin_property.js**.
+1. Otevřete soubor **update_digital_twin_property. js**.
 
-1. Na začátku souboru je sada konstant definované s velkými zástupnými symboly. Nahraďte `<DEVICE_ID_GOES_HERE>` zástupný symbol skutečným ID zařízení, aktualizujte zbývající konstanty následujícími hodnotami a soubor uložte:
+1. Na začátku souboru je k dispozici sada konstant definovaných pomocí zástupných symbolů velkých písmen. Nahraďte `<DEVICE_ID_GOES_HERE>` zástupný text skutečným ID zařízení, aktualizujte zbývající konstanty následujícími hodnotami a uložte soubor:
 
     ```javascript
     const interfaceInstanceName = 'environmentalSensor';
@@ -130,13 +130,13 @@ V tomto rychlém startu použijete ukázkové řešení IoT v souboru Node.js k 
     const propertyValue = 42;
     ```
 
-1. Přejděte na _terminál služby_ a pomocí následujícího příkazu spusťte ukázku pro aktualizaci vlastnosti:
+1. Přejděte do terminálu _služby_ a pomocí následujícího příkazu spusťte ukázku pro aktualizaci vlastnosti:
 
     ```cmd/sh
     node update_digital_twin_property.js
     ```
 
-1. Výstup _terminálu služby_ zobrazuje aktualizované informace o zařízení. Přejděte `environmentalSensor` na komponentu a zobcete novou hodnotu jasu 42.
+1. Výstup terminálu _služby_ zobrazuje aktualizované informace o zařízení. Posuňte se `environmentalSensor` na součást, abyste viděli novou hodnotu jasu 42.
 
     ```json
     "environmentalSensor": {
@@ -156,19 +156,19 @@ V tomto rychlém startu použijete ukázkové řešení IoT v souboru Node.js k 
     }
     ```
 
-1. Přejděte na terminál _zařízení,_ uvidíte, že zařízení obdrželo aktualizaci:
+1. Přejděte do terminálu _zařízení_ , vidíte, že zařízení obdrželo aktualizaci:
 
     ```cmd/sh
     Received an update for brightness: 42
     updated the property
     ```
-2. Vraťte se do _svého servisního_ terminálu a spusťte níže uvedený příkaz, abyste znovu získali informace o zařízení, abyste potvrdili, že vlastnost byla aktualizována.
+2. Vraťte se do terminálu _služby_ a spuštěním následujícího příkazu znovu Získejte informace o zařízení, aby se ověřilo, že se vlastnost aktualizovala.
     
     ```cmd/sh
     node get_digital_twin.js
     ```
 
-3. Ve výstupu _terminálu služby,_ pod komponentou, `environmentalSensor` uvidíte, že byla hlášena aktualizovaná hodnota jasu. Poznámka: Dokončení aktualizace může chvíli trvat, než zařízení dokončí. Tento krok můžete opakovat, dokud zařízení skutečně nezpracuje aktualizaci vlastnosti.
+3. V výstupu terminálu _služby_ se pod `environmentalSensor` komponentou zobrazí aktualizovaná hodnota jasu. Poznámka: může chvíli trvat, než zařízení dokončí aktualizaci. Tento krok můžete opakovat, dokud zařízení nezpracovává aktualizaci vlastností.
     
     ```json
     "environmentalSensor": {
@@ -198,9 +198,9 @@ V tomto rychlém startu použijete ukázkové řešení IoT v souboru Node.js k 
 
 ### <a name="invoke-a-command"></a>Vyvolání příkazu
 
-1. Otevřete soubor **invoke_command.js**.
+1. Otevřete soubor **invoke_command. js**.
 
-1. Na začátku souboru nahraďte `<DEVICE_ID_GOES_HERE>` zástupný symbol skutečným ID zařízení. Aktualizujte zbývající konstanty následujícími hodnotami a pak soubor uložte:
+1. Na začátku souboru nahraďte `<DEVICE_ID_GOES_HERE>` zástupný text skutečným ID zařízení. Aktualizujte zbývající konstanty následujícími hodnotami a pak soubor uložte:
 
     ```javascript
     const interfaceInstanceName = 'environmentalSensor';
@@ -208,13 +208,13 @@ V tomto rychlém startu použijete ukázkové řešení IoT v souboru Node.js k 
     const commandArgument = '<For the environmental sensor, this value does not matter. Any string will do.>'; 
     ```
 
-1. Přejděte na _servisní_ terminál. Ke spuštění ukázky pro vyvolání příkazu použijte následující příkaz:
+1. Přejděte do terminálu _služby_ . Pomocí následujícího příkazu spusťte ukázku pro vyvolání příkazu:
 
     ```cmd/sh
     node invoke_command.js
     ```
 
-1. Výstup v _servisním_ terminálu by měl být potvrzen následujícím potvrzením:
+1. Výstup v terminálu _služby_ by měl zobrazovat následující potvrzení:
 
     ```cmd/sh
     invoking command blink on interface instanceenvironmentalSensor for device <device ID>...
@@ -226,7 +226,7 @@ V tomto rychlém startu použijete ukázkové řešení IoT v souboru Node.js k 
     }
     ```
 
-1. Přejděte na terminál _zařízení,_ uvidíte, že příkaz byl potvrzen:
+1. Přejděte do terminálu _zařízení_ , uvidíte, že byl příkaz potvrzen:
 
     ```cmd/sh
     received command: blink for interfaceInstance: environmentalSensor
@@ -237,7 +237,7 @@ V tomto rychlém startu použijete ukázkové řešení IoT v souboru Node.js k 
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste se naučili, jak připojit zařízení IoT Plug and Play k řešení IoT. Další informace o tom, jak vytvořit řešení, které spolupracuje s vašimi zařízeními IoT Plug and Play, najdete v tématu:
+V tomto rychlém startu jste zjistili, jak připojit zařízení IoT technologie Plug and Play k řešení IoT. Další informace o tom, jak vytvořit řešení, které komunikuje s technologie Plug and Play vašich zařízení IoT, najdete tady:
 
 > [!div class="nextstepaction"]
-> [Postup: Připojení k zařízení a interakce se zařízením](howto-develop-solution.md)
+> [Postupy: připojení k zařízení a práce s nimi](howto-develop-solution.md)

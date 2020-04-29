@@ -9,20 +9,20 @@ author: sgilley
 ms.author: sgilley
 ms.date: 11/06/2019
 ms.openlocfilehash: 754c9799ed4c2fd90cbcf1e9717b0be21edd54cb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75659864"
 ---
 >[!IMPORTANT]
->Můžete použít prostředky, které jste vytvořili jako předpoklady pro další kurzy Azure Machine Learning a články s postupy.
+>Prostředky, které jste vytvořili jako předpoklady, můžete použít pro jiné kurzy Azure Machine Learning a články s postupy.
 
 ### <a name="delete-everything"></a>Odstranit vše
 
-Pokud neplánujete použít nic, co jste vytvořili, odstraňte celou skupinu prostředků, abyste vám nevznikly žádné poplatky.
+Pokud neplánujete použít nic, co jste vytvořili, odstraňte celou skupinu prostředků, aby se vám neúčtovaly žádné poplatky.
 
-1. Na webu Azure Portal vyberte **skupiny prostředků** na levé straně okna.
+1. V Azure Portal na levé straně okna vyberte **skupiny prostředků** .
  
    ![Odstranění skupiny prostředků na webu Azure Portal](./media/aml-ui-cleanup/delete-resources.png)
 
@@ -30,20 +30,20 @@ Pokud neplánujete použít nic, co jste vytvořili, odstraňte celou skupinu pr
 
 1. Vyberte **Odstranit skupinu prostředků**.
 
-Odstraněním skupiny prostředků také odstraníte všechny prostředky, které jste vytvořili v návrháři. 
+Odstraněním skupiny prostředků se odstraní také všechny prostředky, které jste vytvořili v návrháři. 
 
-### <a name="delete-individual-assets"></a>Odstranění jednotlivých datových zdrojů
+### <a name="delete-individual-assets"></a>Odstranění jednotlivých assetů
 
-V návrháři, kde jste experiment vytvořili, odstraňte jednotlivé datové zdroje tak, že je vyberete a pak vyberete tlačítko **Odstranit.**
+V návrháři, kde jste vytvořili experiment, odstraňte jednotlivé prostředky tak, že je vyberete a pak vyberete tlačítko **Odstranit** .
 
-Výpočetní cíl, který jste zde *vytvořili, se automaticky automaticky škáluje* na nulové uzly, když se nepoužívá. Tato akce je provedena za účelem minimalizace poplatků.Pokud chcete odstranit cíl výpočtu, postupujte takto:
+Cíl výpočtů, který jste zde vytvořili, *automaticky automaticky škáluje* na nula uzlů, pokud se nepoužívá. Tato akce se provádí kvůli minimalizaci nákladů.Pokud chcete odstranit cíl výpočtů, proveďte tyto kroky:
 
-![Odstranění datových zdrojů](./media/aml-ui-cleanup/delete-asset.png)
+![Odstranit prostředky](./media/aml-ui-cleanup/delete-asset.png)
 
-Můžete zrušit registraci datových sad z pracovního prostoru výběrem jednotlivých datových sad a výběrem **možnosti Zrušit registraci**.
+Můžete zrušit registraci datových sad z pracovního prostoru tak, že vyberete každou datovou sadu a vyberete **zrušit registraci**.
 
-![Zrušení registrace datové sady](./media/aml-ui-cleanup/unregister-dataset1225.png)
+![Zrušit registraci datové sady](./media/aml-ui-cleanup/unregister-dataset1225.png)
 
-Pokud chcete datovou sadu odstranit, přejděte na účet úložiště pomocí portálu Azure nebo Průzkumníka úložiště Azure a ručně odstraňte tyto prostředky.
+Datovou sadu odstraníte tak, že přejdete do účtu úložiště pomocí Azure Portal nebo Průzkumník služby Azure Storage a ručně odstraníte tyto prostředky.
 
 

@@ -1,7 +1,7 @@
 ---
-title: 'Úvodní příručka: Kontrola pravopisu pomocí rozhraní REST API a Pythonu – kontrola pravopisu bingu'
+title: 'Rychlý Start: Kontrola pravopisu pomocí REST API a Pythonu – Kontrola pravopisu Bingu'
 titleSuffix: Azure Cognitive Services
-description: Začněte používat rozhraní REST API kontroly pravopisu Bingu ke kontrole pravopisu a gramatiky pomocí tohoto rychlého startu.
+description: Začněte používat REST API Kontrola pravopisu Bingu pro kontrolu pravopisu a gramatiky pomocí tohoto rychlého startu.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,32 +11,32 @@ ms.topic: quickstart
 ms.date: 12/16/2019
 ms.author: aahi
 ms.openlocfilehash: 6b0977628f7c3d971804d8597f42425608028081
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75448453"
 ---
-# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-python"></a>Úvodní příručka: Kontrola pravopisu pomocí rozhraní API PRO KONTROLU pravopisu Bingu REST API a Pythonu
+# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-python"></a>Rychlý Start: Kontrola pravopisu pomocí Kontrola pravopisu Bingu REST API a Pythonu
 
-Pomocí tohoto rychlého startu můžete provést první volání do rozhraní REST API kontroly pravopisu Bingu. Tato jednoduchá aplikace Pythonu odešle požadavek do rozhraní API a vrátí seznam navrhovaných oprav. Aplikace je sice napsaná v Pythonu, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků. Zdrojový kód pro tuto aplikaci je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingEntitySearchv7.py)
+V tomto rychlém startu můžete provést první volání REST API Kontrola pravopisu Bingu. Tato jednoduchá aplikace v Pythonu pošle požadavek do rozhraní API a vrátí seznam navrhovaných oprav. Aplikace je sice napsaná v Pythonu, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků. Zdrojový kód této aplikace je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingEntitySearchv7.py) .
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Python [3.x](https://www.python.org)
+* Python [3. x](https://www.python.org)
 
 [!INCLUDE [cognitive-services-bing-spell-check-signup-requirements](../../../../includes/cognitive-services-bing-spell-check-signup-requirements.md)]
 
-## <a name="initialize-the-application"></a>Inicializovat aplikaci
+## <a name="initialize-the-application"></a>Inicializace aplikace
 
-1. Vytvořte nový soubor Pythonu ve svém oblíbeném rozhraní IDE nebo editoru a přidejte následující příkaz importu.
+1. Vytvořte nový soubor Pythonu v oblíbeném prostředí IDE nebo editoru a přidejte následující příkaz import.
 
    ```python
    import requests
    import json
    ```
 
-2. Vytvořte proměnné pro text, který chcete zkontrolovat pravopisem, klíč předplatného a koncový bod kontroly pravopisu Bingu. Můžete použít globální koncový bod níže nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený na portálu Azure pro váš prostředek.
+2. Vytvořte proměnné pro text, který chcete kontrolovat pravopis, klíč předplatného a váš koncový bod Kontrola pravopisu Bingu. Můžete použít globální koncový bod nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
 
     ```python
     api_key = "<ENTER-KEY-HERE>"
@@ -44,15 +44,15 @@ Pomocí tohoto rychlého startu můžete provést první volání do rozhraní R
     endpoint = "https://api.cognitive.microsoft.com/bing/v7.0/SpellCheck"
     ```
 
-## <a name="create-the-parameters-for-the-request"></a>Vytvořit parametry pro požadavek
+## <a name="create-the-parameters-for-the-request"></a>Vytvoření parametrů pro požadavek
 
-1. Vytvořte nový slovník `text` s jako klíč a text jako hodnotu.
+1. Vytvořte nový slovník s `text` jako klíč a text jako hodnotu.
 
     ```python
     data = {'text': example_text}
     ```
 
-2. Přidejte parametry pro váš požadavek. Připojit kód trhu `mkt=`za . Kód trhu je země, ze které podáváte žádost. Také připojit režim kontroly pravopisu po `&mode=`. Režim je `proof` buď (zachytí většinu `spell` pravopisných/gramatických chyb) nebo (zachytí většinu pravopisu, ale ne tolik gramatické chyby).
+2. Přidejte parametry pro vaši žádost. Přidejte svůj kód na trhu `mkt=`po. Kód na trhu je země, ze které provedete požadavek. Také přidejte svůj režim kontroly pravopisu po `&mode=`. Režim je buď `proof` (catch nejvíc pravopisné/gramatické chyby `spell` ), nebo (catch nejvíc pravopisu, ale ne tolik gramatických chyb).
 
     ```python
     params = {
@@ -61,7 +61,7 @@ Pomocí tohoto rychlého startu můžete provést první volání do rozhraní R
         }
     ```
 
-3. Přidejte `Content-Type` záhlaví a klíč předplatného `Ocp-Apim-Subscription-Key` do záhlaví.
+3. Přidejte do `Content-Type` `Ocp-Apim-Subscription-Key` záhlaví hlavičku a klíč předplatného.
 
     ```python
     headers = {
@@ -70,7 +70,7 @@ Pomocí tohoto rychlého startu můžete provést první volání do rozhraní R
         }
     ```
 
-## <a name="send-the-request-and-read-the-response"></a>Odeslat žádost a přečíst odpověď
+## <a name="send-the-request-and-read-the-response"></a>Odeslat požadavek a přečíst odpověď
 
 1. Odešlete požadavek POST pomocí knihovny požadavků.
 

@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Návrh databáze Azure pro PostgreSQL – jeden server – rozhraní příkazového příkazu Azure'
-description: Tento kurz ukazuje, jak vytvořit, nakonfigurovat a dotazovat se na první azure databázi pro PostgreSQL – jeden server pomocí rozhraní příkazového příkazového příkazu Azure.
+title: 'Kurz: návrh Azure Database for PostgreSQL-Single server – Azure CLI'
+description: V tomto kurzu se dozvíte, jak pomocí Azure CLI vytvořit, nakonfigurovat a dotazovat svůj první Azure Database for PostgreSQL – samostatný server.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
@@ -9,13 +9,13 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 06/25/2019
 ms.openlocfilehash: c79e64fddaf404b459dd2215e4a2e9236f1bc221
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75460001"
 ---
-# <a name="tutorial-design-an-azure-database-for-postgresql---single-server-using-azure-cli"></a>Kurz: Návrh databáze Azure pro PostgreSQL – jeden server pomocí rozhraní příkazového příkazového příkazu Azure 
+# <a name="tutorial-design-an-azure-database-for-postgresql---single-server-using-azure-cli"></a>Kurz: návrh Azure Database for PostgreSQLho samostatného serveru pomocí Azure CLI 
 V tomto kurzu použijete Azure CLI (rozhraní příkazového řádku) a další nástroje k získání informací o těchto tématech:
 > [!div class="checklist"]
 > * Vytvoření serveru Azure Database for PostgreSQL
@@ -46,12 +46,12 @@ az group create --name myresourcegroup --location westus
 ## <a name="create-an-azure-database-for-postgresql-server"></a>Vytvoření serveru Azure Database for PostgreSQL
 Vytvořte [server Azure Database for PostgreSQL](overview.md) pomocí příkazu [az postgres server create](/cli/azure/postgres/server). Server obsahuje soubor databází spravovaných jako skupina. 
 
-Následující příklad vytvoří ve skupině prostředků `myresourcegroup` server s názvem `mydemoserver` a přihlašovacím jménem správce serveru `myadmin`. Název serveru se mapuje na název DNS, a proto musí být v rámci Azure globálně jedinečný. Nahraďte položku `<server_admin_password>` vlastní hodnotou. Jedná se o obecný účel, Gen 5 server s 2 virtuálními jádry.
+Následující příklad vytvoří ve skupině prostředků `myresourcegroup` server s názvem `mydemoserver` a přihlašovacím jménem správce serveru `myadmin`. Název serveru se mapuje na název DNS, a proto musí být v rámci Azure globálně jedinečný. Nahraďte položku `<server_admin_password>` vlastní hodnotou. Je to Pro obecné účelyý Server Gen 5 se 2 virtuální jádra.
 ```azurecli-interactive
 az postgres server create --resource-group myresourcegroup --name mydemoserver --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen5_2 --version 9.6
 ```
 Hodnota parametru sku-name má formát {cenová_úroveň}\_{výpočetní_generace}\_{počet_virtuálních_jader} jako v následujících příkladech:
-+ `--sku-name B_Gen5_2`mapy na základní, Gen 5 a 2 virtuální jádra.
++ `--sku-name B_Gen5_2`mapuje se na Basic, Gen 5 a 2 virtuální jádra.
 + `--sku-name GP_Gen5_32` se mapuje na úroveň pro obecné účely 5. generace se 32 virtuálními jádry.
 + `--sku-name MO_Gen5_2` se mapuje na úroveň optimalizovanou pro paměť 5. generace se 2 virtuálními jádry.
 
@@ -132,7 +132,7 @@ Pokud má klientský počítač nainstalovaný systém PostgreSQL, můžete se p
    ```
 
    > [!TIP]
-   > Pokud dáváte přednost použití url cestu pro připojení k Postgres, URL `%40`kódovat @ podepsat v uživatelské jméno s . Například připojovací řetězec pro psql by bylo,
+   > Pokud upřednostňujete použití cesty URL pro připojení k Postgres, adresa URL kódování @ uživatelského jména pomocí `%40`. Například připojovací řetězec pro psql by byl,
    > ```
    > psql postgresql://myadmin%40mydemoserver@mydemoserver.postgres.database.azure.com:5432/postgres
    > ```

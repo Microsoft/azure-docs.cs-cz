@@ -1,16 +1,16 @@
 ---
-title: Úvodní příručka – nasazení webové aplikace do sítě Azure Service Fabric Mesh
-description: Tento rychlý start ukazuje, jak vytvořit web ASP.NET Core a publikovat ho do sítě Azure Service Fabric mesh pomocí sady Visual Studio.
+title: Rychlý Start – nasazení webové aplikace do Azure Service Fabric sítě
+description: V tomto rychlém startu se dozvíte, jak vytvořit web ASP.NET Core a jak ho publikovat do Azure Service Fabric sítě pomocí sady Visual Studio.
 author: dkkapur
 ms.topic: quickstart
 ms.date: 07/17/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: 276f8860f407693a7ff08048399fa6edf16aaf0a
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75459063"
 ---
 # <a name="quickstart-create-and-deploy-a-web-app-to-azure-service-fabric-mesh"></a>Rychlý start: Vytvoření webové aplikace a její nasazení do služby Azure Service Fabric Mesh
@@ -25,7 +25,7 @@ Budete potřebovat předplatné Azure. Pokud ho ještě nemáte, můžete si sna
 
 ## <a name="create-a-service-fabric-mesh-project"></a>Vytvoření projektu Service Fabric Mesh
 
-Otevřete Visual Studio a vyberte **Soubor** > **nový** > **projekt...**
+Otevřete Visual Studio a vyberte **soubor** > **Nový** > **projekt...**
 
 Do pole **Hledat** v dialogovém okně **Nový projekt** v horní části zadejte `mesh`. Vyberte šablonu **Service Fabric Mesh Application** (Aplikace Service Fabric Mesh). (Pokud tuto šablonu nevidíte, ujistěte se, že jste nainstalovali sadu SDK Mesh a verzi Preview sady VS Tools podle popisu v části [Nastavení vývojového prostředí](service-fabric-mesh-howto-setup-developer-environment-sdk.md). 
 
