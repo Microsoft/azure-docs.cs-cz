@@ -1,5 +1,5 @@
 ---
-title: Chyba zastavení systému Windows -
+title: Chyba stop systému Windows –
 description: ''
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,98 +15,98 @@ ms.topic: troubleshooting
 ms.date: 03/26/2020
 ms.author: v-mibufo
 ms.openlocfilehash: 9e4c4b9c809a626c71b4a7e9235d917b442be160
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80373359"
 ---
-# <a name="windows-stop-error---0x000000ef-critical-process-died"></a>Chyba zastavení systému Windows - #0x000000EF "Kritický proces zemřel"
+# <a name="windows-stop-error---0x000000ef-critical-process-died"></a>Chyba stop systému Windows – #0x000000EF "nepostradatelný proces zemřel"
 
-Tento článek obsahuje kroky k vyřešení problémů, kdy kritický proces zemře při spuštění ve virtuálním počítači Azure.
+Tento článek popisuje kroky pro řešení problémů, při kterých během spouštění na virtuálním počítači Azure zemře nepostradatelný proces.
 
 ## <a name="symptom"></a>Příznak
 
-Při použití [boot diagnostiky](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) k zobrazení snímku z virtuálního aplikace, uvidíte, že snímek obrazovky zobrazí chybu *#0x000000EF* se zprávou kritický *proces zemřel*.
+Když pomocí [diagnostiky spouštění](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) zobrazíte snímek obrazovky virtuálního počítače, uvidíte, že snímek obrazovky zobrazuje chybu *#0x000000EF* se *nezpracovaným nepostradatelným procesem*zprávy.
 
-!["Váš počítač narazil na problém a je třeba restartovat. Právě shromažďujeme nějaké informace o chybách a pak můžete restartovat. (##% dokončeno) Pokud byste chtěli vědět více, můžete hledat on-line později pro tuto chybu: 0x000000EF"](media/troubleshoot-guide-critical-process-died/1.jpg)
+!["Váš počítač byl příčinou problému a je nutné ho restartovat. Jenom shromažďujeme nějaké informace o chybách a pak se můžete restartovat. (# #% dokončeno) Pokud se chcete dozvědět víc, můžete k této chybě vyhledat online v online režimu: 0x000000EF "](media/troubleshoot-guide-critical-process-died/1.jpg)
 
 ## <a name="cause"></a>Příčina
 
-Obvykle je to způsobeno selháním kritického systémového procesu během spuštění. Další informace o kritických problémech s procesem naleznete na adrese "[Kontrola chyb 0xEF: CRITICAL_PROCESS_DIED](https://docs.microsoft.com/windows-hardware/drivers/debugger/bug-check-0xef--critical-process-died)".
+Obvykle je to kvůli selhání kritického systémového procesu během spouštění. Další informace o problémech s kritickými procesy najdete v tématu "[kontroly chyb 0xEF: CRITICAL_PROCESS_DIED](https://docs.microsoft.com/windows-hardware/drivers/debugger/bug-check-0xef--critical-process-died)".
 
 ## <a name="solution"></a>Řešení
 
 ### <a name="process-overview"></a>Přehled procesu:
 
-1. Vytvoření a přístup k virtuálnímu virtuálnímu mísu opravy.
-2. Opravte jakékoli poškození operačního spo.
-3. **Doporučeno**: Před sestavením virtuálního virtuálního zařízení povolte sériovou konzolu a kolekci výpisu stavu paměti.
-4. Znovu sestavit virtuální ho dispozice.
+1. Vytvořte a získejte přístup k opravnému virtuálnímu počítači.
+2. Opravte poškození operačního systému.
+3. **Doporučené**: před opětovným SESTAVENÍM virtuálního počítače povolte kolekci sériové konzoly a výpisu paměti.
+4. Znovu sestavte virtuální počítač.
 
 > [!NOTE]
-> Při výskytu této chyby při spuštění není hostovaný operační systém funkční. Tento problém vyřešíte v režimu offline.
+> Při výskytu této chyby spuštění není hostovaný operační systém funkční. Tento problém vyřešíte tak, že budete řešit potíže v offline režimu.
 
-### <a name="create-and-access-a-repair-vm"></a>Vytvoření a přístup k virtuálnímu virtuálnímu virtuálnímu mněmu pro opravy
+### <a name="create-and-access-a-repair-vm"></a>Vytvoření a přístup k opravnému virtuálnímu počítači
 
-1. Pomocí [kroků 1-3 příkazů pro opravu virtuálních počítačů](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) připravte virtuální počítač.
-2. Pomocí připojení ke vzdálené ploše se připojte k virtuálnímu počítači pro opravu.
+1. Pomocí [kroků 1-3 příkazů pro opravu virtuálního počítače](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) Připravte opravný virtuální počítač.
+2. Pomocí Připojení ke vzdálené ploše připojit k opravnému virtuálnímu počítači.
 
-### <a name="fix-any-os-corruption"></a>Oprava poškození operačního spoje
+### <a name="fix-any-os-corruption"></a>Oprava poškození operačního systému
 
 1. Otevřete příkazový řádek se zvýšenými oprávněními.
-2. Spusťte následující příkaz Kontrola systémových souborů (SFC):
+2. Spusťte následující příkaz pro kontrolu systémových souborů (SFC):
 
    `sfc /scannow /offbootdir=<BOOT DISK DRIVE>:\ /offwindir=<BROKEN DISK DRIVE>:\windows`
 
-   * Ve < boot diskové jednotky > je spouštěcí svazek operačního systému Opravy (obvykle "C:") a < BROKEN DISK DRIVE > bude písmeno jednotky pro připojený disk z poškozeného virtuálního počítače. Nahraďte symboly větší než / méně, stejně jako text, který je v nich obsažen, například "< text zde >", příslušným písmenem.
+   * Kde < spouštěcí DISKová jednotka > je spouštěcím svazkem opravného virtuálního počítače (obvykle "C:") a <m >m disku, bude k připojenému disku z poškozeného virtuálního počítače písmeno jednotky. Nahraďte symboly větší než/menší než a text obsažený v nich, například "< text >" s příslušným písmenem.
 
-3. Dále použijte [krok 5 příkazů pro opravu virtuálního počítače](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) k opětovnému sestavení virtuálního počítače a uvidíme, jestli se spustí.
-4. Pokud virtuální hod stále není bootování, pak nadále shromažďovat soubor s výpisem stavu paměti.
+3. V dalším [kroku pomocí příkazu pro opravu virtuálního počítače](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) znovu sestavte virtuální počítač a zjistěte, jestli se spustí.
+4. Pokud se virtuální počítač stále nespouští, pokračujte ve shromažďování souboru s výpisem paměti.
 
-### <a name="collect-the-memory-dump-file"></a>Shromáždění souboru s výpisem stavu paměti
+### <a name="collect-the-memory-dump-file"></a>Shromáždit soubor výpisu paměti
 
-Pokud problém přetrvává po spuštění SFC, bude nutné analýzu souboru výpisu stavu paměti k určení příčiny problému. Chcete-li shromáždit soubor s výpisem stavu paměti, postupujte takto:
+Pokud potíže potrvají po spuštění nástroje SFC, bude nutné provést analýzu souboru s výpisem paměti, aby bylo možné určit příčinu problému. Chcete-li shromáždit soubor s výpisem paměti, postupujte podle následujících kroků:
 
-### <a name="attach-the-os-disk-to-a-new-repair-vm"></a>Připojení disku operačního systému k novému virtuálnímu virtuálnímu počítače pro opravu
+### <a name="attach-the-os-disk-to-a-new-repair-vm"></a>Připojit disk s operačním systémem k nové opravě virtuálního počítače
 
-1. Pomocí [kroků 1-3 příkazů pro opravu virtuálních počítačů](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) připravte nový virtuální počítač.
-2. Pomocí připojení ke vzdálené ploše se připojte k virtuálnímu počítači pro opravu.
+1. K přípravě nového opravného virtuálního počítače použijte [kroky 1-3 příkazů pro opravu virtuálního počítače](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) .
+2. Pomocí Připojení ke vzdálené ploše připojit k opravnému virtuálnímu počítači.
 
-### <a name="locate-the-dump-file-and-submit-a-support-ticket"></a>Vyhledejte soubor s výpisem stavu paměti a odešlete lístek podpory
+### <a name="locate-the-dump-file-and-submit-a-support-ticket"></a>Vyhledejte soubor s výpisem paměti a odešlete lístek podpory.
 
-3. Na virtuálním počítači opravy přejděte do složky Windows na připojeném disku operačního systému. Pokud je písmeno ovladače přiřazené k připojenému disku operačního systému *F*, je třeba přejít na *f:\Windows*.
-4. Vyhledejte soubor *memory.dmp* a [odešlete lístek podpory](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) se souborem s výpisem stavu paměti.
+3. V části opravit virtuální počítač otevřete složku Windows na připojeném disku s operačním systémem. Pokud je písmeno přiřazené k připojenému disku s operačním systémem *F*, musíte přejít na *F:\Windows*.
+4. Vyhledejte soubor *Memory. dmp* a pak [odešlete lístek podpory](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) se souborem s výpisem paměti.
 
    > [!NOTE]
-   > Pokud nemůžete najít soubor s výpisem stavu paměti, proveďte níže uvedené kroky a povolte kolekci výpisu stavu paměti a konzolu Serial Console, vraťte se do této části a opakujte kroky ve výše uvedené úloze a shromážděte soubor s výpisem stavu paměti.
+   > Pokud soubor výpisu paměti nemůžete najít, dokončete následující kroky, abyste povolili shromažďování výpisu paměti a sériovou konzolu, pak se vrátíte do této části a zopakujete postup uvedený výše v úloze, abyste mohli shromáždit soubor výpisu paměti.
 
-### <a name="recommended-before-you-rebuild-the-vm-enable-serial-console-and-memory-dump-collection"></a>Doporučené: Před sestavením virtuálního virtuálního montovace povolte kolekci sériové konzole a výpisu stavu paměti
+### <a name="recommended-before-you-rebuild-the-vm-enable-serial-console-and-memory-dump-collection"></a>Doporučené: před opětovným sestavením virtuálního počítače povolte kolekci sériové konzoly a výpisu paměti.
 
-Chcete-li povolit kolekci výpisů stavu paměti a konzolu Serial Console, spusťte následující skript:
+Pokud chcete povolit shromažďování výpisů paměti a sériovou konzolu, spusťte následující skript:
 
 1. Otevřete relaci příkazového řádku se zvýšenými oprávněními (Spustit jako správce).
 2. Spusťte následující příkazy:
 
-   Povolení sériové konzoly
+   Povolit sériovou konzolu
 
    `bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /ems {<BOOT LOADER IDENTIFIER>} ON`
 
    `bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /emssettings EMSPORT:1 EMSBAUDRATE:115200`
 
-   Nahraďte větší nebo menší než symboly, stejně jako text v nich, např > <.
+   Nahraďte symboly větší než nebo menší než a text v nich, třeba text < sem >.
 
-3. Ověřte, že volné místo na disku operačního systému je stejně jako velikost paměti (RAM) na virtuálním počítači.
+3. Ověřte, že volné místo na disku s operačním systémem je ve virtuálním počítači ve velikosti paměti (RAM).
 
-Pokud není dostatek místa na disku operačního systému, měli byste změnit umístění, kde bude vytvořen soubor výpisu stavu paměti a odkazovat, že na všechny datové disky připojené k virtuálnímu počítači, který má dostatek volného místa. Chcete-li změnit umístění, nahraďte "%SystemRoot%" písmenem jednotky (například "F:") datového disku v níže uvedených příkazech.
+Pokud na disku operačního systému není dostatek místa, měli byste změnit umístění, kde se vytvoří soubor s výpisem paměti, a odkazovat na libovolný datový disk připojený k virtuálnímu počítači, který má dostatek volného místa. Chcete-li změnit umístění, nahraďte "% SystemRoot%" písmenem jednotky (například "F:") datového disku v následujících příkazech.
 
 #### <a name="suggested-configuration-to-enable-os-dump"></a>Navrhovaná konfigurace pro povolení výpisu operačního systému
 
-**Načíst poškozený disk operačního systému**:
+**Načíst poškozený disk s operačním systémem**:
 
 `REG LOAD HKLM\BROKENSYSTEM <VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config\SYSTEM`
 
-**Povolit na Ovládacích sadach001:**
+**Povolit na ControlSet001:**
 
 `REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f`
 
@@ -114,7 +114,7 @@ Pokud není dostatek místa na disku operačního systému, měli byste změnit 
 
 `REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f`
 
-**Povolit na Ovládacím prvkuSet002:**
+**Povolit na ControlSet002:**
 
 `REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f`
 
@@ -122,10 +122,10 @@ Pokud není dostatek místa na disku operačního systému, měli byste změnit 
 
 `REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f`
 
-**Uvolnit přerušený disk operačního systému:**
+**Uvolnit poškozený disk s operačním systémem:**
 
 `REG UNLOAD HKLM\BROKENSYSTEM`
 
-### <a name="rebuild-the-original-vm"></a>Znovu sestavit původní virtuální ms
+### <a name="rebuild-the-original-vm"></a>Znovu sestavte původní virtuální počítač.
 
-Pomocí [kroku 5 příkazů pro opravu virtuálních vod](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) znovu sestavte virtuální ho.
+Pomocí [kroku 5 příkazů pro opravu virtuálního počítače](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) znovu sestavte virtuální počítač.

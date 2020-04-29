@@ -1,6 +1,6 @@
 ---
-title: Omezení a kvóty IoT Plug and Play Preview | Dokumenty společnosti Microsoft
-description: Seznamte se s omezeními, kvótami a omezeními, které platí při použití náhledu IoT Plug and Play.
+title: Omezení a kvóty IoT technologie Plug and Play Preview | Microsoft Docs
+description: Seznamte se s limity, kvótami a omezeními, které platí při použití IoT technologie Plug and Play ve verzi Preview.
 author: miagdp
 ms.author: miag
 ms.date: 04/01/2020
@@ -8,55 +8,55 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.openlocfilehash: cce99b7d9de09134fd01afb36c41bce3966e8536
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80518173"
 ---
-# <a name="iot-plug-and-play-preview-limits-quotas-and-throttles"></a>Limity, kvóty a omezení náhledu ioT Plug and Play
+# <a name="iot-plug-and-play-preview-limits-quotas-and-throttles"></a>Limity, kvóty a omezení pro IoT technologie Plug and Play Preview
 
-Tento článek vysvětluje omezení specifické pro ioT plug and play, kvóty a omezení, které platí ve verzi Public Preview. Existují existující [kvóty ioT hub a omezení,](../iot-hub/iot-hub-devguide-quotas-throttling.md) které také platí.
+V tomto článku se dozvíte o omezeních, kvótách a omezeních specifických pro IoT technologie Plug and Play, která se vztahují ve verzi Public Preview. Existují stávající [kvóty IoT Hub a omezení](../iot-hub/iot-hub-devguide-quotas-throttling.md) , které platí i pro ně.
 
 ## <a name="iot-hub"></a>IoT Hub
 
-Pro verzi Public Preview platí pro centrum IoT následující omezení a kvóty:
+Ve verzi Public Preview platí následující omezení a kvóty pro Centrum IoT:
 
-| Limity, omezení a omezení | Hodnota | Poznámky |
+| Omezení, omezení a omezení | Hodnota | Poznámky |
 |-----|-----|-----|
-| Počet modelů schopností zařízení (DCM) nebo rozhraní, která lze zaregistrovat na rozbočovač | 1 500 ||
-| Maximální počet rozhraní, která lze zaregistrovat na zařízení | 40 ||
-| Maximální počet DCM, které lze zaregistrovat na zařízení | 1 ||
-| Maximální velikost souboru rozhraní/DCM | 512 kB ||
+| Počet modelů schopností zařízení (DCMs) nebo rozhraní, která se dají zaregistrovat pro jednotlivé rozbočovače | 1 500 ||
+| Maximální počet rozhraní, která se dají zaregistrovat na zařízení | 40 ||
+| Maximální počet DCMs, které se můžou registrovat na zařízení | 1 ||
+| Maximální velikost rozhraní/souboru DCM | 512 kB ||
 | Maximální velikost názvu rozhraní | 256 znaků ||
-| Maximální velikost názvu vlastnosti  | 64 bajtů, 7 úrovní do hloubky (a první úroveň je vyhrazena pro) `$iotin` | Povolené znaky: a-z, A-Z, 0-9 (ne jako první znak) a podtržítko. |
+| Maximální velikost názvu vlastnosti  | 64 bajtů, 7 úrovní hloubky (a první úroveň je vyhrazena pro `$iotin`) | Povolené znaky: a-z, A-Z, 0-9 (nikoli jako první znak) a podtržítko. |
 | Maximální velikost hodnoty vlastnosti | 512 bajtů ||
 | Maximální velikost názvu příkazu | 100 bajtů ||
-| Velikost dvojčete zařízení | Stejné jako [limity ioT hubu](../iot-hub/iot-hub-devguide-device-twins.md#device-twin-size) ||
-| Volání rozhraní API řešení napříč skladovou položkou (bez ohledu na jednotky) | 100 žádostí za sekundu ||
+| Velikost vlákna zařízení | Stejné jako [omezení IoT Hub](../iot-hub/iot-hub-devguide-device-twins.md#device-twin-size) ||
+| Rozlišení volání rozhraní API napříč SKU (bez ohledu na jednotky) | 100 požadavků za sekundu ||
 
-## <a name="model-repository"></a>Úložiště modelů
+## <a name="model-repository"></a>Úložiště modelu
 
-Pro verzi Public Preview platí pro úložiště modelu následující omezení a kvóty:
+Ve verzi Public Preview platí následující omezení a kvóty pro úložiště modelů:
 
-| Limity, omezení a omezení | Hodnota |
+| Omezení, omezení a omezení | Hodnota |
 |-----|-----|
-| Počet úložišť firemních modelů na klienta Služby Azure Active Directory | 1 |
+| Počet úložišť modelů společnosti na tenanta Azure Active Directory | 1 |
 | Počet autorizačních klíčů na úložiště modelu | 10  |
-| Počet modelů (DCM nebo rozhraní) podle úložiště modelů společnosti| 1 500  |
-| Počet modelů (DCM nebo rozhraní) v úložišti veřejných modelů na klienta Služby Azure Active Directory| 1 500  |
-| Počet odstraněných modulů DCM nebo rozhraní v úložišti modelu společnosti | 10 dotazů za sekundu (QPS)|
-| Počet úložišť modelů, které vytváří nebo aktualizuje klient| 1 QPS |
-| Počet vytvářených/aktualizovaných/odstraněných autorizačních klíčů v úložišti modelů | 1 QPS|
-| Počet dcmů vytvořených v úložišti modelu společnosti | 10 QPS |
-| Počet rozhraní vytvořených v úložišti modelu společnosti | 10 QPS|
-| Počet dcmů vytvořených v úložišti veřejných modelů | 10 QPS|
-| Počet rozhraní vytvářených v úložišti veřejných modelů | 10 QPS|
+| Počet modelů (DCMs nebo rozhraní) na úložiště modelů společnosti| 1 500  |
+| Počet modelů (DCMs nebo rozhraní) ve veřejném úložišti modelu na tenanta Azure Active Directory| 1 500  |
+| Počet DCMs nebo rozhraní, která se odstraňují v úložišti podnikového modelu | 10 dotazů za sekundu (QPS)|
+| Počet úložišť modelů, které vytváří nebo aktualizuje tenant| 1 QPS |
+| Počet autorizačních klíčů, které se vytváří, aktualizují nebo odstraňují v úložišti modelu | 1 QPS|
+| Počet DCMs, které se vytváří v úložišti podnikového modelu | 10 QPS |
+| Počet rozhraní, která se vytvářejí v úložišti podnikového modelu | 10 QPS|
+| Počet DCMs, které se vytváří v úložišti veřejného modelu | 10 QPS|
+| Počet rozhraní, která se vytvářejí v úložišti veřejného modelu | 10 QPS|
 
-## <a name="parser-library"></a>Knihovna analyzátorů
+## <a name="parser-library"></a>Knihovna analyzátoru
 
-Knihovna analyzátoru dodržuje omezení, která platí pro [jazyk digital twin definition .](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL)
+Knihovna analyzátoru se řídí omezeními, která se vztahují na [Jazyk digitálního zdvojeného definování](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL).
 
 ## <a name="next-steps"></a>Další kroky
 
-Dalším doporučeným krokem je naučit se [připojit k zařízení IoT Plug and Play a pracovat s ním](./howto-develop-solution.md).
+Doporučený další krok se dozvíte, jak se [připojit k zařízení IoT technologie Plug and Play a pracovat s nimi](./howto-develop-solution.md).

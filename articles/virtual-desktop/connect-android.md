@@ -1,6 +1,6 @@
 ---
-title: Připojení k virtuální ploše Windows z Androidu – Azure
-description: Jak se připojit k virtuální ploše systému Windows pomocí klienta Android.
+title: Připojení k virtuálnímu počítači s Windows z Androidu – Azure
+description: Jak se připojit k virtuálnímu počítači s Windows pomocí klienta pro Android.
 services: virtual-desktop
 author: heidilohr
 ms.service: virtual-desktop
@@ -9,45 +9,45 @@ ms.date: 03/25/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: d2990c82efbcdac7d453f920301787b8c83db1e9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80295366"
 ---
 # <a name="connect-with-the-android-client"></a>Práce s klientem Android
 
-> Platí pro: Android 4.1 a novější, Chromebooky s ChromeOS 53 a novějším.
+> Platí pro: Android 4,1 a novější, Chromebooks s ChromeOS 53 a novějším.
 
 >[!NOTE]
-> Možnost přístupu k prostředkům virtuální plochy systému Windows z klienta Android je v současné době k dispozici ve verzi Preview.
+> Možnost přístupu k prostředkům virtuálního počítače s Windows z klienta pro Android je aktuálně dostupná ve verzi Preview.
 
-K prostředkům Windows Virtual Desktop můžete přistupovat ze zařízení Android pomocí našeho klienta ke stažení. Klient android můžete také použít na zařízeních Chromebook, která podporují Obchod Google Play. Tato příručka vám řekne, jak nastavit klienta Android.
+Pomocí našeho klienta ke stažení můžete získat přístup k prostředkům virtuálních klientů Windows ze zařízení s Androidem. Můžete také použít klienta Android na zařízeních Chromebook, která podporují Obchod Google Play. V této příručce se dozvíte, jak nastavit klienta pro Android.
 
-## <a name="install-the-android-client"></a>Instalace klienta Android
+## <a name="install-the-android-client"></a>Instalace klienta pro Android
 
-Chcete-li začít, [stáhněte](https://play.google.com/store/apps/details?id=com.microsoft.rdc.androidx) a nainstalujte klienta do zařízení Android.
+Začněte tím, že [si stáhnete](https://play.google.com/store/apps/details?id=com.microsoft.rdc.androidx) a nainstalujete klienta na zařízení s Androidem.
 
-## <a name="subscribe-to-a-feed"></a>Přihlásit se k odběru informačního kanálu
+## <a name="subscribe-to-a-feed"></a>Přihlášení k odběru informačního kanálu
 
-Přihlaste se k odběru informačního kanálu poskytnutého správcem a získejte seznam spravovaných prostředků, ke kterým máte přístup na svém zařízení Android.
+Přihlaste se k odběru informačního kanálu, který poskytuje správce, aby získal seznam spravovaných prostředků, ke kterým máte přístup na zařízení s Androidem.
 
 Přihlášení k odběru informačního kanálu:
 
-1. V Centru připojení **+** klepněte na tlačítko a potom klepněte na **Kanál vzdáleného zdrojů**.
-2. Do pole URL zdroje zadejte adresu URL informačního **kanálu.** Adresa URL zdroje může být adresa URL nebo e-mailová adresa.
-   - Pokud používáte adresu URL, použijte adresu, <https://rdweb.wvd.microsoft.com>kterou vám dal správce, obvykle .
-   - Chcete-li používat e-mail, zadejte svou e-mailovou adresu. Pokud správce server tímto způsobem nakonfiguroval, bude klient hledat adresu URL přidruženou k vaší e-mailové adrese.
-3. Klepněte na **DALŠÍ**.
-4. Po zobrazení výzvy zadejte pověření.
-   - V **části Uživatelské jméno**zadejte uživatelské jméno s oprávněním k přístupu k prostředkům.
-   - V **části Heslo**zadejte heslo přidružené k uživatelskému jménu.
-   - Pokud správce nakonfiguroval ověřování tímto způsobem, můžete být také vyzváni k zadání dalších faktorů.
+1. V centru připojení klepněte **+** na a pak klepněte na **kanál vzdáleného prostředku**.
+2. Do pole **Adresa URL informačního kanálu** zadejte adresu URL informačního kanálu. Adresa URL informačního kanálu může být buď adresa URL, nebo e-mailová adresa.
+   - Pokud použijete adresu URL, použijte tu, kterou vám správce poskytl, normálně <https://rdweb.wvd.microsoft.com>.
+   - Pokud chcete používat e-mail, zadejte svou e-mailovou adresu. Pokud váš správce nakonfiguroval server tímto způsobem, bude klient hledat adresu URL přidruženou k vaší e-mailové adrese.
+3. Klepněte na **Další**.
+4. Po zobrazení výzvy zadejte své přihlašovací údaje.
+   - V poli **uživatelské jméno**zadejte uživatelské jméno s oprávněním pro přístup k prostředkům.
+   - Pro **heslo**zadejte heslo přidružené k uživatelskému jménu.
+   - Může se také zobrazit výzva k poskytnutí dalších faktorů, pokud váš správce nakonfiguroval ověřování tímto způsobem.
 
-Po přihlášení k odběru by centrum připojení mělo zobrazit vzdálené prostředky.
+Po přihlášení k odběru by centrum připojení mělo zobrazovat vzdálené prostředky.
 
-Jakmile se obsah zdroje přihlásí k odběru, bude se obsah zdroje pravidelně automaticky aktualizovat. Prostředky mohou být přidány, změněny nebo odebrány na základě změn provedených správcem.
+Po přihlášení k odběru informačního kanálu se obsah informačního kanálu pravidelně aktualizuje automaticky. Prostředky je možné přidat, změnit nebo odebrat na základě změn provedených správcem.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o tom, jak používat klienta Android, najdete v části [Začínáme s klientem Android](/windows-server/remote/remote-desktop-services/clients/remote-desktop-android/).
+Další informace o tom, jak používat klienta pro Android, najdete v tématu [Začínáme s klientem pro Android](/windows-server/remote/remote-desktop-services/clients/remote-desktop-android/).

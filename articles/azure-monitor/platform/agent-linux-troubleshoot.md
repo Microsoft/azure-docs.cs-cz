@@ -1,97 +1,97 @@
 ---
-title: Poradce při potížích s agentem Azure Log Analytics Linux | Dokumenty společnosti Microsoft
-description: Popište příznaky, příčiny a řešení nejčastějších problémů s agentem Log Analytics pro Linux v Azure Monitoru.
+title: Řešení potíží s agentem Azure Log Analytics Linux | Microsoft Docs
+description: Popište příznaky, příčiny a řešení nejběžnějších problémů s agentem Log Analytics pro Linux v Azure Monitor.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
 ms.openlocfilehash: 2343de97d06abdefed2c2977a7341aa411429319
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80520745"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Řešení potíží s agentem Log Analytics pro Linux 
 
-Tento článek poskytuje pomoc při řešení chyb, ke kterým může dojít s agentem Log Analytics pro Linux v Azure Monitoru a navrhuje možná řešení k jejich vyřešení.
+Tento článek poskytuje nápovědu k řešení chyb, se kterými se můžete setkat s agentem Log Analytics pro Linux v Azure Monitor a navrhuje možná řešení k jejich řešení.
 
-Pokud žádný z těchto kroků nefunguje, jsou k dispozici také následující kanály podpory:
+Pokud žádný z těchto kroků nefunguje za vás, jsou k dispozici i tyto kanály podpory:
 
-* Zákazníci s výhodami podpory Premier mohou otevřít žádost o podporu pomocí [služby Premier](https://premier.microsoft.com/).
-* Zákazníci se smlouvami o podpoře Azure můžou otevřít žádost o podporu [na webu Azure Portal](https://manage.windowsazure.com/?getsupport=true).
-* Diagnostikujte problémy OMI s [příručkou pro řešení potíží s OMI](https://github.com/Microsoft/omi/blob/master/Unix/doc/diagnose-omi-problems.md).
-* Soubor [GitHub problém](https://github.com/Microsoft/OMS-Agent-for-Linux/issues).
-* Navštivte stránku Senáčse Log Analytics a prohlédněte si odeslané nápady a chyby [https://aka.ms/opinsightsfeedback](https://aka.ms/opinsightsfeedback) nebo ponořte nové.  
+* Zákazníci s výhodami Premier Support můžou otevřít žádost o podporu pomocí [Premier](https://premier.microsoft.com/).
+* Zákazníci se smlouvou o podpoře Azure můžou na [Azure Portal](https://manage.windowsazure.com/?getsupport=true)otevřít žádost o podporu.
+* Diagnostikujte problémy OMI pomocí [Průvodce odstraňováním potíží OMI](https://github.com/Microsoft/omi/blob/master/Unix/doc/diagnose-omi-problems.md).
+* Zapište [problém GitHubu](https://github.com/Microsoft/OMS-Agent-for-Linux/issues).
+* Navštivte stránku Log Analytics zpětnou vazbu pro kontrolu odeslaných nápadů a chyb [https://aka.ms/opinsightsfeedback](https://aka.ms/opinsightsfeedback) nebo pro nové soubory.  
 
-## <a name="important-log-locations-and-log-collector-tool"></a>Důležitá umístění protokolů a nástroj kolekcí protokolů
+## <a name="important-log-locations-and-log-collector-tool"></a>Důležitá umístění protokolů a nástroj kolektoru protokolů
 
  File | Cesta
  ---- | -----
- Agent log Analytics pro soubor protokolu Linuxu | `/var/opt/microsoft/omsagent/<workspace id>/log/omsagent.log`
- Soubor protokolu Analytics konfigurace agenta | `/var/opt/microsoft/omsconfig/omsconfig.log`
+ Soubor protokolu Log Analytics agenta pro Linux | `/var/opt/microsoft/omsagent/<workspace id>/log/omsagent.log`
+ Soubor protokolu konfigurace agenta Log Analytics | `/var/opt/microsoft/omsconfig/omsconfig.log`
 
- Doporučujeme použít náš nástroj pro sběr protokolů k načtení důležitých protokolů pro řešení potíží nebo před odesláním problému githubu. Můžete si přečíst více o nástroji a jak jej spustit [zde](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/tools/LogCollector/OMS_Linux_Agent_Log_Collector.md).
+ Doporučujeme použít náš nástroj kolektoru protokolů k načtení důležitých protokolů pro řešení potíží nebo před odesláním problému GitHubu. Můžete si přečíst další informace o nástroji a o tom, jak ho spustit [tady](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/tools/LogCollector/OMS_Linux_Agent_Log_Collector.md).
 
 ## <a name="important-configuration-files"></a>Důležité konfigurační soubory
 
  Kategorie | Umístění souboru
  ----- | -----
  Syslog | `/etc/syslog-ng/syslog-ng.conf`nebo `/etc/rsyslog.conf` nebo`/etc/rsyslog.d/95-omsagent.conf`
- Výkon, Nagios, Zabbix, Log Analytics výstup a generální agent | `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf`
+ Výkon, Nagios, Zabbix, výstup Log Analytics a generální agent | `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf`
  Další konfigurace | `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/*.conf`
 
  >[!NOTE]
- >Úpravy konfiguračních souborů pro čítače výkonu a Syslog se přepíše, pokud je kolekce nakonfigurována z [nabídky Data Log Analytics Advanced Settings](../../azure-monitor/platform/agent-data-sources.md#configuring-data-sources) na portálu Azure pro váš pracovní prostor. Chcete-li zakázat konfiguraci pro všechny agenty, zakažte kolekci z **rozšířeného nastavení** analýzy protokolů nebo pro jednoho agenta spusťte následující:  
+ >Pokud je kolekce nakonfigurovaná z [nabídky data Log Analytics Upřesnit nastavení](../../azure-monitor/platform/agent-data-sources.md#configuring-data-sources) v Azure Portal pro váš pracovní prostor, upraví se konfigurační soubory pro čítače výkonu a syslog se přepíše. Chcete-li zakázat konfiguraci pro všechny agenty, zakažte shromažďování z Log Analytics **Upřesnit nastavení** nebo pro jednoho agenta spusťte následující příkaz:  
 > `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py --disable'`
 
 ## <a name="installation-error-codes"></a>Kódy chyb instalace
 
 | Kód chyby | Význam |
 | --- | --- |
-| NOT_DEFINED | Vzhledem k tomu, že nejsou nainstalovány potřebné závislosti, nebude modul plug-in auoms auditovaný nainstalován | Instalace auoms se nezdařila, instalační balíček auditován. |
-| 2 | Neplatná možnost poskytnutá do balíčku prostředí. Spustit `sudo sh ./omsagent-*.universal*.sh --help` pro použití |
-| 3 | Pro balíček skořepiny není k dispozici žádná možnost. Spustit `sudo sh ./omsagent-*.universal*.sh --help` pro použití. |
-| 4 | Neplatný typ balíčku NEBO neplatná nastavení proxy serveru; omsagent-*rpm*.sh balíčky mohou být instalovány pouze na rpm-založené systémy, a omsagent-*deb*.sh balíčky mohou být instalovány pouze na Debian-založené systémy. Doporučujeme použít univerzální instalační program z [nejnovější verze](../../azure-monitor/learn/quick-collect-linux-computer.md#install-the-agent-for-linux). Zkontrolujte také ověření nastavení proxy serveru. |
-| 5 | Balíček prostředí musí být proveden jako root NEBO během registrace byla vrácena chyba 403. Spusťte `sudo`příkaz pomocí aplikace . |
-| 6 | Neplatná architektura balíčku nebo došlo k chybě 200 chyba vrácena během registrace; balíčky x64.sh mohou*být instalovány pouze na 64bitových systémech a balíčky x86.sh omsagent*lze instalovat pouze na 32bitové systémy. Stáhněte si správný balíček pro vaši architekturu z [nejnovější verze](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/latest). |
-| 17 | Instalace balíčku OMS se nezdařila. Prohlédněte si výstup příkazu pro selhání kořenového adresáře. |
-| 19 | Instalace balíčku OMI se nezdařila. Prohlédněte si výstup příkazu pro selhání kořenového adresáře. |
-| 20 | Instalace balíčku SCX se nezdařila. Prohlédněte si výstup příkazu pro selhání kořenového adresáře. |
-| 21 | Instalace sad zprostředkovatele se nezdařila. Prohlédněte si výstup příkazu pro selhání kořenového adresáře. |
-| 22 | Instalace balíčku se nezdařila. Prohlédněte si výstup příkazu pro selhání kořenového adresáře |
-| 23 | Balíček SCX nebo OMI již nainstalován. Místo `--upgrade` instalace `--install` balíčku skořepiny použijte. |
-| 30 | Vnitřní chyba svazku. Soubor [GitHub problém](https://github.com/Microsoft/OMS-Agent-for-Linux/issues) s podrobnostmi z výstupu. |
-| 55 | Nepodporovaná verze openssl or Nelze se připojit k Programu Azure Monitor nebo dpkg je uzamčen nebo chybí curl program. |
-| 61 | Chybí knihovna ctypes pythonu. Nainstalujte knihovnu nebo balíček pythonctypů (python-ctypes). |
-| 62 | Chybějící dehtový program, nainstalujte dehet. |
-| 63 | Chybějící sed program, nainstalujte sed. |
-| 64 | Chybějící curl program, nainstalujte curl. |
-| 65 | Chybějící gpg program, nainstalujte gpg. |
+| NOT_DEFINED | Vzhledem k tomu, že nezbytné závislosti nejsou nainstalovány, modul plug-in auoms audit nebude nainstalován. | Instalace auoms selhala, nainstalujte balíček audited. |
+| 2 | Pro sadu prostředí se dala zadat neplatná možnost. Spustit `sudo sh ./omsagent-*.universal*.sh --help` pro použití |
+| 3 | Sada Shell neposkytla žádnou možnost. Spustit `sudo sh ./omsagent-*.universal*.sh --help` pro použití. |
+| 4 | Neplatný typ balíčku nebo neplatné nastavení proxy serveru; balíčky omsagent-*ot*. sh lze instalovat pouze na systémy na bázi ot./min. a balíčky omsagent-*deb*. sh lze instalovat pouze v systémech založených na Debian. Doporučuje se použít univerzální instalační program z [nejnovější verze](../../azure-monitor/learn/quick-collect-linux-computer.md#install-the-agent-for-linux). Přečtěte si také téma ověření nastavení proxy serveru. |
+| 5 | Sada prostředí musí být spuštěná jako kořenová nebo během připojování se vrátila 403 chyba. Spusťte příkaz pomocí `sudo`příkazu. |
+| 6 | Během připojování se vrátila Neplatná architektura balíčku nebo došlo k chybě 200. balíčky omsagent-*x64.sh lze instalovat pouze v systémech 64 a balíčky omsagent-* x86.sh lze instalovat pouze na 32 systémy. Stáhněte si správný balíček pro vaši architekturu z [nejnovější verze](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/latest). |
+| 17 | Instalace balíčku OMS se nezdařila. Prohlédněte si výstup příkazu pro kořenovou chybu. |
+| 19 | Instalace balíčku OMI se nezdařila. Prohlédněte si výstup příkazu pro kořenovou chybu. |
+| 20 | Instalace balíčku SCX se nezdařila. Prohlédněte si výstup příkazu pro kořenovou chybu. |
+| 21 | Instalace sad poskytovatele se nezdařila. Prohlédněte si výstup příkazu pro kořenovou chybu. |
+| 22 | Nepovedlo se nainstalovat balíček balíčku. Prohlédněte si výstup příkazu pro kořenovou chybu. |
+| 23 | Balíček SCX nebo OMI je již nainstalován. Použijte `--upgrade` místo toho `--install` k instalaci sady prostředků prostředí. |
+| 30 | Vnitřní chyba sady prostředků Zapište [problém GitHubu](https://github.com/Microsoft/OMS-Agent-for-Linux/issues) s podrobnostmi z výstupu. |
+| 55 | Nepodporovaná verze OpenSSL nebo se nemůže připojit k Azure Monitor nebo bázi dpkg je uzamčený nebo chybí ve složeném programu. |
+| 61 | Chybí knihovna ctypes Pythonu. Nainstalujte knihovnu nebo balíček python ctypes (Python-ctypes). |
+| 62 | Chybí program TAR, nainstalujte tar. |
+| 63 | Chybí program sed, nainstalujte SED. |
+| 64 | Chybí kudrlinkou program, nainstalujte kudrlinkou. |
+| 65 | Chybějící program gpg, nainstalujte GPG. |
 
-## <a name="onboarding-error-codes"></a>Kódy chyb při zapisování
+## <a name="onboarding-error-codes"></a>Chybové kódy při připojování
 
 | Kód chyby | Význam |
 | --- | --- |
-| 2 | Pro skript omsadmin je k dispozici neplatná možnost. Spustit `sudo sh /opt/microsoft/omsagent/bin/omsadmin.sh -h` pro použití. |
-| 3 | Neplatná konfigurace poskytnutá skriptu omsadmin. Spustit `sudo sh /opt/microsoft/omsagent/bin/omsadmin.sh -h` pro použití. |
-| 4 | Pro skript omsadmin je k dispozici neplatný proxy server. Ověřte proxy server a podívejte se na naši [dokumentaci pro použití http proxy](log-analytics-agent.md#firewall-requirements). |
-| 5 | 403 CHYBA HTTP přijatá z Azure Monitoru. Podrobnosti najdete v úplném výstupu skriptu omsadmin. |
-| 6 | Z Azure Monitoru byla přijata chyba HTTP, která nebyla 200. Podrobnosti najdete v úplném výstupu skriptu omsadmin. |
-| 7 | Nelze se připojit k Azure Monitoru. Podrobnosti najdete v úplném výstupu skriptu omsadmin. |
-| 8 | Při přihlašování do pracovního prostoru Log Analytics došlo k chybě. Podrobnosti najdete v úplném výstupu skriptu omsadmin. |
-| 30 | Vnitřní chyba skriptu. Soubor [GitHub problém](https://github.com/Microsoft/OMS-Agent-for-Linux/issues) s podrobnostmi z výstupu. |
-| 31 | ID agenta pro generování chyb. Soubor [GitHub problém](https://github.com/Microsoft/OMS-Agent-for-Linux/issues) s podrobnostmi z výstupu. |
+| 2 | Skriptu omsadmin je zadaná neplatná možnost. Spustit `sudo sh /opt/microsoft/omsagent/bin/omsadmin.sh -h` pro použití. |
+| 3 | Skriptu omsadmin je zadaná neplatná konfigurace. Spustit `sudo sh /opt/microsoft/omsagent/bin/omsadmin.sh -h` pro použití. |
+| 4 | Skriptu omsadmin byl poskytnut neplatný proxy server. Ověřte proxy server a Prohlédněte si [dokumentaci k používání proxy serveru http](log-analytics-agent.md#firewall-requirements). |
+| 5 | z Azure Monitor byla přijata chyba HTTP 403. Podrobnosti najdete v úplném výstupu skriptu omsadmin. |
+| 6 | Od Azure Monitor přijata chyba HTTP, která není 200. Podrobnosti najdete v úplném výstupu skriptu omsadmin. |
+| 7 | Nepovedlo se připojit k Azure Monitor. Podrobnosti najdete v úplném výstupu skriptu omsadmin. |
+| 8 | Při připojování k pracovnímu prostoru Log Analytics došlo k chybě. Podrobnosti najdete v úplném výstupu skriptu omsadmin. |
+| 30 | Došlo k vnitřní chybě skriptu. Zapište [problém GitHubu](https://github.com/Microsoft/OMS-Agent-for-Linux/issues) s podrobnostmi z výstupu. |
+| 31 | Při generování ID agenta došlo k chybě. Zapište [problém GitHubu](https://github.com/Microsoft/OMS-Agent-for-Linux/issues) s podrobnostmi z výstupu. |
 | 32 | Při generování certifikátů došlo k chybě. Podrobnosti najdete v úplném výstupu skriptu omsadmin. |
-| 33 | Při generování metakonfigurace pro omsconfig došlo k chybě. Soubor [GitHub problém](https://github.com/Microsoft/OMS-Agent-for-Linux/issues) s podrobnostmi z výstupu. |
-| 34 | Skript generování metakonfigurace není k dispozici. Opakujte zaškolení `sudo sh /opt/microsoft/omsagent/bin/omsadmin.sh -w <Workspace ID> -s <Workspace Key>`pomocí . |
+| 33 | Při generování metaconfiguration pro omsconfig došlo k chybě. Zapište [problém GitHubu](https://github.com/Microsoft/OMS-Agent-for-Linux/issues) s podrobnostmi z výstupu. |
+| 34 | Skript generování Metaconfiguration není k dispozici. Opakujte registraci pomocí `sudo sh /opt/microsoft/omsagent/bin/omsadmin.sh -w <Workspace ID> -s <Workspace Key>`. |
 
 ## <a name="enable-debug-logging"></a>Povolit protokolování ladění
-### <a name="oms-output-plugin-debug"></a>Ladění výstupního pluginu OMS
- FluentD umožňuje úrovně protokolování specifické pro plugin, což umožňuje určit různé úrovně protokolu pro vstupy a výstupy. Chcete-li určit jinou úroveň protokolu pro výstup OMS, upravte konfiguraci obecného agenta na adrese `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf`.  
+### <a name="oms-output-plugin-debug"></a>Ladění v programu OMS výstup plug-in
+ Je náročné povolit úrovně protokolování specifické pro modul plug-in, které umožňují zadat různé úrovně protokolu pro vstupy a výstupy. Pokud chcete pro výstup OMS zadat jinou úroveň protokolu, upravte obecnou konfiguraci agenta na `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf`adrese.  
 
- Ve výstupním pluginu OMS před koncem konfiguračního souboru změňte `log_level` vlastnost z na `info` `debug`:
+ V modulu plug-in OMS výstupu nástroje změňte před koncem konfiguračního souboru `log_level` vlastnost `info` na: `debug`
 
  ```
  <match oms.** docker.**>
@@ -108,9 +108,9 @@ Pokud žádný z těchto kroků nefunguje, jsou k dispozici také následující
 </match>
  ```
 
-Protokolování ladění umožňuje zobrazit dávkové nahrávání do Azure Monitoru oddělené podle typu, počtu datových položek a času odeslání:
+Protokolování ladění umožňuje zobrazit dávková odeslání pro Azure Monitor oddělená typem, počet datových položek a dobu trvání odeslání:
 
-*Příklad protokolu povoleného ladění:*
+*Příklad protokolu s povoleným laděním:*
 
 ```
 Success sending oms.nagios x 1 in 0.14s
@@ -119,9 +119,9 @@ Success sending oms.syslog.authpriv.info x 1 in 0.91s
 ```
 
 ### <a name="verbose-output"></a>Podrobný výstup
-Namísto použití výstupního pluginu OMS můžete `stdout`také výstup datových položek přímo do , který je viditelný v agentovi Log Analytics pro soubor protokolu Linux.
+Místo používání výstupního modulu plug-in OMS můžete také výstupní datové položky přímo `stdout`do, který je viditelný v souboru protokolu Log Analytics Agent pro Linux.
 
-V konfiguračním souboru `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf`obecného agenta Log Analytics `#` na je třeba zakomentovat modul plug-in výstupu OMS přidáním a před každý řádek:
+V části Log Analytics obecný konfigurační soubor agenta na `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf`, přidejte `#` před každý řádek do výstupního modulu plug-in OMS.
 
 ```
 #<match oms.** docker.**>
@@ -138,7 +138,7 @@ V konfiguračním souboru `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsag
 #</match>
 ```
 
-Pod výstupní plugin, odkomentujte následující `#` část odstraněním v přední části každého řádku:
+Pod výstupním modulem plug-in odkomentujte následující oddíl `#` odebráním před každým řádkem:
 
 ```
 <match **>
@@ -146,102 +146,102 @@ Pod výstupní plugin, odkomentujte následující `#` část odstraněním v p�
 </match>
 ```
 
-## <a name="issue--unable-to-connect-through-proxy-to-azure-monitor"></a>Problém: Nelze se připojit prostřednictvím proxy serveru k Azure Monitoru.
+## <a name="issue--unable-to-connect-through-proxy-to-azure-monitor"></a>Problém: nejde se připojit přes proxy server k Azure Monitor
 
 ### <a name="probable-causes"></a>Pravděpodobné příčiny
-* Proxy server zadaný během registrace byl nesprávný.
-* Koncové body Azure Monitor a Azure Automation Service nejsou ve vašem datovém centru naseznamu povolených 
+* Proxy server zadaný během připojování byl nesprávný.
+* V datovém centru nejsou na seznamu povolených koncových bodů služby Azure Monitor a Azure Automation. 
 
 ### <a name="resolution"></a>Řešení
-1. Reonboard na Azure Monitor s agentem Log Analytics pro `-v` Linux pomocí následujícího příkazu s povolenou možností. Umožňuje podrobný výstup agenta připojení prostřednictvím proxy serveru azure monitoru. 
+1. Reonboard se Azure Monitor na Log Analytics agenta pro Linux pomocí následujícího příkazu s povolenou možností `-v` . Umožňuje podrobný výstup agenta připojujícího se prostřednictvím proxy serveru k Azure Monitor. 
 `/opt/microsoft/omsagent/bin/omsadmin.sh -w <Workspace ID> -s <Workspace Key> -p <Proxy Conf> -v`
 
-2. V části [Aktualizace nastavení proxy serveru](agent-manage.md#update-proxy-settings) ověřte, zda jste agenta správně nakonfigurovali ke komunikaci prostřednictvím proxy serveru.    
+2. Projděte si část [nastavení proxy serveru](agent-manage.md#update-proxy-settings) , abyste ověřili, že jste správně nakonfigurovali agenta pro komunikaci prostřednictvím proxy server.    
 
-3. Zkontrolujte, zda jsou koncové body popsané v seznamu [požadavků síťové brány firewall](log-analytics-agent.md#firewall-requirements) Azure Monitor správně přidány do seznamu povolených položek. Pokud používáte Azure Automation, jsou propojeny také nezbytné kroky konfigurace sítě výše.
+3. Ověřte, že koncové body, které jsou uvedené v seznamu [požadavků brány firewall Azure monitor sítě](log-analytics-agent.md#firewall-requirements) , se přidají do seznamu povolených hodnot správně. Pokud používáte Azure Automation, propojí se i nezbytné kroky konfigurace sítě.
 
-## <a name="issue-you-receive-a-403-error-when-trying-to-onboard"></a>Problém: Při pokusu o napalubě se zobrazí chyba 403
+## <a name="issue-you-receive-a-403-error-when-trying-to-onboard"></a>Problém: při pokusu o zprovoznění se zobrazí chyba 403.
 
 ### <a name="probable-causes"></a>Pravděpodobné příčiny
-* Datum a čas je na Linux Serveru nesprávné 
-* Použité ID pracovního prostoru a použitý klíč pracovního prostoru nejsou správné
+* Datum a čas není na serveru Linux správný. 
+* Použité ID pracovního prostoru a klíč pracovního prostoru nejsou správné.
 
 ### <a name="resolution"></a>Řešení
 
-1. Zkontrolujte čas na serveru Linux s datem příkazu. Pokud je čas +/- 15 minut od aktuálního času, pak onboarding selže. Chcete-li opravit tuto aktualizaci datum a / nebo časové pásmo serveru Linux. 
-2. Ověřte, zda jste nainstalovali nejnovější verzi agenta Log Analytics pro Linux.  Nejnovější verze vás nyní upozorní, pokud zkosení času způsobuje selhání registrace.
-3. Reonboard pomocí správné id pracovního prostoru a klíč pracovního prostoru podle pokynů k instalaci dříve v tomto článku.
+1. Ověřte čas na serveru Linux s datem příkazu. Pokud je čas +/-15 minut od aktuálního času, registrace se nezdařila. Chcete-li tuto aktualizaci opravit, datum nebo časové pásmo serveru Linux. 
+2. Ověřte, že máte nainstalovanou nejnovější verzi agenta Log Analytics pro Linux.  Nejnovější verze nyní upozorňuje na to, jestli časové zkosení způsobuje selhání připojování.
+3. Reonboard pomocí správného ID pracovního prostoru a klíče pracovního prostoru podle pokynů k instalaci uvedených výše v tomto článku.
 
-## <a name="issue-you-see-a-500-and-404-error-in-the-log-file-right-after-onboarding"></a>Problém: Zobrazí se chyba 500 a 404 v souboru protokolu hned po zapnutí
-Toto je známý problém, ke kterému dochází při prvním nahrání dat Linuxu do pracovního prostoru Log Analytics. To nemá vliv na odesílané údaje nebo servisní prostředí.
+## <a name="issue-you-see-a-500-and-404-error-in-the-log-file-right-after-onboarding"></a>Problém: v souboru protokolu se zobrazí chyba 500 a 404, která se zobrazuje hned po registraci.
+Jedná se o známý problém, který nastane při prvním odeslání dat systému Linux do Log Analyticsho pracovního prostoru. To nemá vliv na přenášená data ani na provozní prostředí.
 
 
-## <a name="issue-you-see-omiagent-using-100-cpu"></a>Problém: Vidíte omiagent pomocí 100% CPU
+## <a name="issue-you-see-omiagent-using-100-cpu"></a>Problém: vidíte omiagent s využitím 100% CPU
 
 ### <a name="probable-causes"></a>Pravděpodobné příčiny
-Regrese v balíčku nss-pem [v1.0.3-5.el7](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3-7.el7.x86_64.rpm.html) způsobila závažný problém s výkonem, který jsme viděli hodně v distribucích Redhat / Centos 7.x. Další informace o tomto problému naleznete v následující dokumentaci: Chyba [1667121 Regrese výkonu v libcurl](https://bugzilla.redhat.com/show_bug.cgi?id=1667121).
+Regrese v NSS-PEM Package [v 1.0.3 -5. el7](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3-7.el7.x86_64.rpm.html) způsobila závažný problém s výkonem, takže jsme se seznámili s hodně v distribucích RedHat/CentOS 7. x. Další informace o tomto problému najdete v následující dokumentaci: Chyba [1667121 výkon regrese v libcurl](https://bugzilla.redhat.com/show_bug.cgi?id=1667121).
 
-Chyby související s výkonem se nedějí po celou dobu a je velmi obtížné je reprodukovat. Pokud narazíte na takový problém s omiagent, měli byste použít skript omiHighCPUDiagnostics.sh který bude shromažďovat stopy zásobníku omiagent při překročení určité prahové hodnoty.
+K chybám souvisejícím s výkonem nedojde po celou dobu a jejich reprodukování je velmi obtížné. Pokud se setkáte s tímto problémem s omiagent, měli byste použít skript omiHighCPUDiagnostics.sh, který bude shromažďovat trasování zásobníku omiagent, pokud překročení určité prahové hodnoty.
 
-1. Stáhněte si skript <br/>
+1. Stáhnout skript <br/>
 `wget https://raw.githubusercontent.com/microsoft/OMS-Agent-for-Linux/master/tools/LogCollector/source/omiHighCPUDiagnostics.sh`
 
-2. Spuštění diagnostiky po dobu 24 hodin s prahem procesoru 30% <br/>
+2. Spustit diagnostiku po dobu 24 hodin s 30% prahovou hodnotou procesoru <br/>
 `bash omiHighCPUDiagnostics.sh --runtime-in-min 1440 --cpu-threshold 30`
 
-3. Callstack bude uložen v omiagent_trace souboru, Pokud si všimnete mnoha volání funkce Curl a NSS, postupujte podle kroků řešení níže.
+3. Zásobník volání bude v souboru omiagent_trace dumpingové, pokud si všimnete mnoho volání funkcí NSS a, postupujte podle následujících kroků řešení.
 
-### <a name="resolution-step-by-step"></a>Rozlišení (krok za krokem)
+### <a name="resolution-step-by-step"></a>Řešení (krok za krokem)
 
-1. Upgradujte balíček nss-pem na [v1.0.3-5.el7_6.1](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3-7.el7.x86_64.rpm.html). <br/>
+1. Upgradujte balíček NSS-PEM na verzi [v 1.0.3-5. el7_6.1](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3-7.el7.x86_64.rpm.html). <br/>
 `sudo yum upgrade nss-pem`
 
-2. Pokud nss-pem není k dispozici pro upgrade (většinou se stane na Centos), pak downgrade curl na 7.29.0-46. Pokud omylem spustíte "yum update", pak curl bude upgradován na 7.29.0-51 a problém se stane znovu. <br/>
+2. Pokud NSS-PEM není k dispozici pro upgrade (většinou probíhá na CentOS), pak downgrade na 7.29.0-46. Pokud omylem spustíte "Yumu Update" (aktualizace), bude se tato možnost aktualizovat na 7.29.0-51 a k problému dojde znovu. <br/>
 `sudo yum downgrade curl libcurl`
 
 3. Restartovat OMI: <br/>
 `sudo scxadmin -restart`
 
-## <a name="issue-you-are-not-seeing-any-data-in-the-azure-portal"></a>Problém: Na webu Azure Portal se nezobrazují žádná data.
+## <a name="issue-you-are-not-seeing-any-data-in-the-azure-portal"></a>Problém: nevidíte žádná data v Azure Portal
 
 ### <a name="probable-causes"></a>Pravděpodobné příčiny
 
-- Registrace do Azure Monitoru se nezdařila.
-- Připojení k Azure Monitoru je blokované.
-- Agent Log Analytics pro data Linuxu je zálohován
+- Připojování k Azure Monitor se nezdařilo.
+- Připojení k Azure Monitor je blokované.
+- Zálohování dat Log Analytics agenta pro Linux
 
 ### <a name="resolution"></a>Řešení
-1. Zkontrolujte, jestli bylo připojení azure monitoru úspěšné, a zkontrolujte, jestli existuje následující soubor:`/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf`
-2. Reonboard pomocí `omsadmin.sh` pokynů příkazového řádku
-3. Pokud používáte proxy server, podívejte se na kroky řešení proxy uvedené dříve.
-4. V některých případech, když agent Analýzy protokolů pro Linux nemůže komunikovat se službou, data na agenta jsou zařazena do fronty na plnou velikost vyrovnávací paměti, což je 50 MB. Agent by měl být restartován `/opt/microsoft/omsagent/bin/service_control restart [<workspace id>]`spuštěním následujícího příkazu: . 
+1. Ověřte, jestli Azure Monitor Registrace proběhla úspěšně, a to tak, že zkontroluje, jestli tento soubor existuje:`/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf`
+2. Reonboard pomocí instrukcí `omsadmin.sh` příkazového řádku
+3. Pokud používáte proxy server, přečtěte si výše uvedené kroky k vyřešení serveru proxy.
+4. V některých případech platí, že pokud Agent Log Analytics pro Linux nemůže komunikovat se službou, data v agentovi jsou zařazená do fronty na celou velikost vyrovnávací paměti, což je 50 MB. Agenta byste měli restartovat spuštěním následujícího příkazu: `/opt/microsoft/omsagent/bin/service_control restart [<workspace id>]`. 
 
     >[!NOTE]
-    >Tento problém je vyřešen v agentverzi verze 1.1.0-28 a novější.
+    >Tento problém je opravený ve verzi agenta 1.1.0-28 a novější.
 
 
-## <a name="issue-you-are-not-seeing-forwarded-syslog-messages"></a>Problém: Nezobrazují se vám přeposílané zprávy Syslogu. 
+## <a name="issue-you-are-not-seeing-forwarded-syslog-messages"></a>Problém: nezobrazuje se předávané zprávy syslog 
 
 ### <a name="probable-causes"></a>Pravděpodobné příčiny
-* Konfigurace použitá pro server Linux neumožňuje shromažďování odeslaných zařízení a/nebo úrovní protokolu.
-* Syslog není správně předáván na server Linuxu
-* Počet zpráv předávaných za sekundu je příliš velký pro základní konfiguraci agenta Log Analytics pro Linux pro zpracování
+* Konfigurace použitá pro Linux Server nepovoluje shromažďování úrovní odeslaných zařízení a/nebo protokolů.
+* Protokol syslog není správně předáván na server Linux.
+* Počet zpráv předávaných za sekundu je moc velký, aby se základní konfigurace agenta Log Analytics pro systém Linux mohla zpracovat.
 
 ### <a name="resolution"></a>Řešení
-* Ověřte konfiguraci v pracovním prostoru Log Analytics pro Syslog má všechna zařízení a správné úrovně protokolu. Kontrola [konfigurace kolekce Syslog na webu Azure Portal](../../azure-monitor/platform/data-sources-syslog.md#configure-syslog-in-the-azure-portal)
-* Ověřte, zda nativní daemony`rsyslog` `syslog-ng`zasílání zpráv syslogu ( , ) mohou přijímat předané zprávy
-* Zkontrolujte nastavení brány firewall na serveru Syslog a ujistěte se, že zprávy nejsou blokovány.
-* Simulace zprávy Syslog do `logger` log Analytics pomocí příkazu
+* Ověřte, že konfigurace v pracovním prostoru Log Analytics pro syslog má všechna zařízení a správné úrovně protokolu. Přečtěte si téma [Konfigurace kolekce syslog v Azure Portal](../../azure-monitor/platform/data-sources-syslog.md#configure-syslog-in-the-azure-portal)
+* Ověřte, jestli se v nativním procesu`rsyslog`pro `syslog-ng`zasílání zpráv syslog (,) můžou přijímat předané zprávy.
+* Zkontrolujte nastavení brány firewall na serveru syslog, abyste zajistili, že se zprávy neblokují.
+* Simulace zprávy syslog pro Log Analytics pomocí `logger` příkazu
   * `logger -p local0.err "This is my test message"`
 
-## <a name="issue-you-are-receiving-errno-address-already-in-use-in-omsagent-log-file"></a>Problém: Přijímáte adresu Errno, která je již používána v souboru protokolu omsagent.
-Pokud vidíte `[error]: unexpected error error_class=Errno::EADDRINUSE error=#<Errno::EADDRINUSE: Address already in use - bind(2) for "127.0.0.1" port 25224>` v omsagent.log.
+## <a name="issue-you-are-receiving-errno-address-already-in-use-in-omsagent-log-file"></a>Problém: přijímáte errno adresu, která se už používá v souboru protokolu omsagent
+Pokud se zobrazí `[error]: unexpected error error_class=Errno::EADDRINUSE error=#<Errno::EADDRINUSE: Address already in use - bind(2) for "127.0.0.1" port 25224>` v omsagent. log.
 
 ### <a name="probable-causes"></a>Pravděpodobné příčiny
-Tato chyba označuje, že linuxové diagnostické rozšíření (LAD) je nainstalovánvedle log Analytics linuxové virtuální počítače rozšíření a používá stejný port pro shromažďování dat syslog jako omsagent.
+Tato chyba znamená, že diagnostické rozšíření Linux (LAD) je nainstalovaná souběžně s rozšířením virtuálního počítače s Log Analytics Linux a používá stejný port pro shromažďování dat syslog jako omsagent.
 
 ### <a name="resolution"></a>Řešení
-1. Jako root proveďte následující příkazy (všimněte si, že 25224 je příkladem a je možné, že ve vašem prostředí se zobrazí jiné číslo portu používané LAD):
+1. Jako kořen spusťte následující příkazy (Všimněte si, že 25224 je příklad a je možné, že ve vašem prostředí vidíte jiné číslo portu, které používá LAD):
 
     ```
     /opt/microsoft/omsagent/bin/configure_syslog.sh configure LAD 25229
@@ -249,32 +249,32 @@ Tato chyba označuje, že linuxové diagnostické rozšíření (LAD) je nainsta
     sed -i -e 's/25224/25229/' /etc/opt/microsoft/omsagent/LAD/conf/omsagent.d/syslog.conf
     ```
 
-    Potom je třeba upravit `rsyslogd` `syslog_ng` správný nebo konfigurační soubor a změnit konfiguraci související s ladem pro zápis na port 25229.
+    Pak je nutné upravit správný `rsyslogd` nebo `syslog_ng` konfigurační soubor a změnit konfiguraci související s lad na zápis na port 25229.
 
-2. Pokud je virtuální `rsyslogd`svět spuštěn , soubor, `/etc/rsyslog.d/95-omsagent.conf` který má být `/etc/rsyslog`změněn, je: (pokud existuje, jinak ). Pokud je virtuální `syslog_ng`virtuální svět spuštěný , `/etc/syslog-ng/syslog-ng.conf`soubor, který má být změněn, je: .
+2. Pokud je virtuální počítač spuštěný `rsyslogd`, soubor, který se má upravit `/etc/rsyslog.d/95-omsagent.conf` , je: (pokud existuje `/etc/rsyslog`, jinak). Pokud je virtuální počítač spuštěný `syslog_ng`, soubor, který se má upravit `/etc/syslog-ng/syslog-ng.conf`, je:.
 3. Restartujte omsagent `sudo /opt/microsoft/omsagent/bin/service_control restart`.
 4. Restartujte službu syslog.
 
-## <a name="issue-you-are-unable-to-uninstall-omsagent-using-purge-option"></a>Problém: Nelze odinstalovat omsagent pomocí možnosti vyčistit
+## <a name="issue-you-are-unable-to-uninstall-omsagent-using-purge-option"></a>Problém: nemůžete odinstalovat omsagent pomocí možnosti vyprázdnění.
 
 ### <a name="probable-causes"></a>Pravděpodobné příčiny
 
-* Je nainstalováno linuxové diagnostické rozšíření
-* Linux Diagnostic Extension byl nainstalován a odinstalován, ale stále se zobrazí chyba omsagent používá mdsd a nelze je odebrat.
+* Je nainstalované diagnostické rozšíření pro Linux.
+* Diagnostické rozšíření Linux bylo nainstalováno a odinstalováno, ale stále se zobrazuje chyba týkající se omsagent používaných nástrojem MDSD a nelze ji odebrat.
 
 ### <a name="resolution"></a>Řešení
-1. Odinstalujte linuxové diagnostické rozšíření (LAD).
-2. Odeberte soubory linuxové diagnostické přípony z počítače, pokud jsou přítomny v následujícím umístění: `/var/lib/waagent/Microsoft.Azure.Diagnostics.LinuxDiagnostic-<version>/` a `/var/opt/microsoft/omsagent/LAD/`.
+1. Odinstalujte diagnostické rozšíření pro Linux (LAD).
+2. Odeberte soubory diagnostických rozšíření pro Linux z počítače, pokud jsou k dispozici v následujícím `/var/lib/waagent/Microsoft.Azure.Diagnostics.LinuxDiagnostic-<version>/` umístění `/var/opt/microsoft/omsagent/LAD/`: a.
 
-## <a name="issue-you-cannot-see-data-any-nagios-data"></a>Problém: Nelze zobrazit data na nagios data 
+## <a name="issue-you-cannot-see-data-any-nagios-data"></a>Problém: nemůžete zobrazit žádná data Nagios. 
 
 ### <a name="probable-causes"></a>Pravděpodobné příčiny
-* Uživatel Omsagent nemá oprávnění ke čtení ze souboru protokolu Nagios
-* Nagios zdroj a filtr nebyly uncommented ze souboru omsagent.conf
+* Uživatel Omsagent nemá oprávnění ke čtení ze souboru protokolu Nagios.
+* Nagios zdroj a filtr se nepřidaly do souboru omsagent. conf.
 
 ### <a name="resolution"></a>Řešení
-1. Přidejte omsagent uživatele číst ze souboru Nagios podle následujících [pokynů](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md#nagios-alerts).
-2. V agenta Log Analytics pro `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf`linuxový obecný konfigurační soubor na na , ujistěte **se,** že zdroj Nagios a filtr jsou bez komentáře.
+1. Pomocí následujících [pokynů](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md#nagios-alerts)přidejte uživatele omsagent ke čtení ze souboru Nagios.
+2. V obecném konfiguračním souboru Log Analytics agenta pro Linux v `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf`zkontrolujte **, že se Nagios zdroj i filtr** odkomentovat.
 
     ```
     <source>
@@ -289,38 +289,38 @@ Tato chyba označuje, že linuxové diagnostické rozšíření (LAD) je nainsta
     </filter>
     ```
 
-## <a name="issue-you-are-not-seeing-any-linux-data"></a>Problém: Nevidíte žádná data Linuxu 
+## <a name="issue-you-are-not-seeing-any-linux-data"></a>Problém: nevidíte žádná data Linux 
 
 ### <a name="probable-causes"></a>Pravděpodobné příčiny
-* Registrace do Azure Monitoru se nezdařila.
-* Připojení k Azure Monitoru je blokované.
-* Virtuální počítač byl restartován
-* Balíček OMI byl ručně upgradován na novější verzi ve srovnání s tím, co bylo nainstalováno agentem Log Analytics pro balíček Linux
-* Třída protokolů prostředků DSC `omsconfig.log` *nebyla v* souboru protokolu nalezena chyba
-* Agent log Analytics pro data je zálohován
-* Protokoly DSC *Aktuální konfigurace neexistuje. Spusťte příkaz Start-DscConfiguration s parametrem -Path, abyste určili konfigurační soubor a nejprve vytvořili aktuální konfiguraci.* v `omsconfig.log` souboru protokolu, ale neexistuje `PerformRequiredConfigurationChecks` žádná zpráva protokolu o operacích.
+* Připojování k Azure Monitor se nezdařilo.
+* Připojení k Azure Monitor je blokované.
+* Virtuální počítač se restartoval.
+* Balíček OMI se ručně upgradoval na novější verzi ve srovnání s instalací balíčku Log Analytics Agent pro Linux.
+* V `omsconfig.log` souboru protokolu *se nenašla chyba třídy* prostředků DSC.
+* Zálohuje se Log Analytics agenta pro data
+* *Aktuální konfigurace protokolu DSC neexistuje. Spusťte příkaz Start-DscConfiguration s parametrem-Path pro určení konfiguračního souboru a nejprve vytvořte aktuální konfiguraci.* v `omsconfig.log` souboru protokolu neexistují žádná zpráva protokolu o `PerformRequiredConfigurationChecks` operacích.
 
 ### <a name="resolution"></a>Řešení
-1. Nainstalujte všechny závislosti, jako je auditovaný balíček.
-2. Zkontrolujte, jestli bylo přizapisování do Azure Monitoru úspěšné, a zkontrolujte, jestli existuje následující soubor: `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf`.  Pokud tomu tak nebylo, reonboard pomocí omsadmin.sh [pokyny](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md#onboarding-using-the-command-line)příkazového řádku .
-4. Pokud používáte proxy server, zkontrolujte výše uvedený postup řešení potíží s proxy serverem.
-5. V některých distribučních systémech Azure omid OMI server daemon nespustí po restartování virtuálního počítače. Výsledkem budou nezoaškovat data související s auditem, ChangeTracking nebo UpdateManagement. Řešení je ručně spustit omi server `sudo /opt/omi/bin/service_control restart`spuštěním .
-6. Po omi balíček je ručně upgradován na novější verzi, musí být ručně restartován pro agenta Log Analytics pokračovat v provozu. Tento krok je vyžadován pro některé distribuce, kde se omi server po upgradu automaticky nespustí. Spusťte `sudo /opt/omi/bin/service_control restart` restartování OMI.
-7. Pokud se v souboru omsconfig.log zobrazí chyba `sudo /opt/omi/bin/service_control restart` *třídy* prostředků DSC, spusťte .
-8. V některých případech, když agent Analýzy protokolů pro Linux nemůže mluvit s Azure Monitor, data na agenta se zálohuje na plnou velikost vyrovnávací paměti: 50 MB. Agent by měl být restartován `/opt/microsoft/omsagent/bin/service_control restart`spuštěním následujícího příkazu .
+1. Nainstalujte všechny závislosti jako auditované balíčky.
+2. Ověřte, jestli se připojování k Azure Monitor úspěšné, kontrolou, jestli existuje následující soubor: `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf`.  Pokud tomu tak není, reonboard pomocí [instrukcí](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md#onboarding-using-the-command-line)příkazového řádku omsadmin.sh.
+4. Pokud používáte proxy server, Projděte si výše uvedené kroky pro řešení potíží s proxy serverem.
+5. V některých distribučních systémech Azure se démon OMID OMI serveru nespustí po restartování virtuálního počítače. Výsledkem bude, že se nebudou zobrazovat data týkající se auditu, sledování změn ve nebo UpdateManagement řešení. Alternativním řešením je ruční spuštění serveru OMI spuštěním `sudo /opt/omi/bin/service_control restart`.
+6. Po manuální aktualizaci balíčku OMI na novější verzi se musí ručně restartovat, aby agent Log Analytics pokračovat v fungování. Tento krok je nutný pro některé distribuce, kde se OMI Server po upgradu nespustí automaticky. Spusťte `sudo /opt/omi/bin/service_control restart` příkaz k restartování OMI.
+7. Pokud se v omsconfig. log *objevila chyba třídy* prostředků DSC, spusťte `sudo /opt/omi/bin/service_control restart`příkaz.
+8. V některých případech platí, že když agent Log Analytics pro Linux nemůže komunikovat s Azure Monitor, data v agentovi se zálohují do plné velikosti vyrovnávací paměti: 50 MB. Agenta byste měli restartovat spuštěním následujícího příkazu `/opt/microsoft/omsagent/bin/service_control restart`.
 
     >[!NOTE]
-    >Tento problém je vyřešen v agentu verze 1.1.0-28 nebo novějším
+    >Tento problém je opravený ve verzi agenta 1.1.0-28 nebo novější.
     >
 
-* Pokud `omsconfig.log` soubor protokolu neznamená, že `PerformRequiredConfigurationChecks` operace jsou v systému pravidelně spuštěny, může být problém s úlohou cron/službou. Ujistěte se, že `/etc/cron.d/OMSConsistencyInvoker`cron úloha existuje pod . V případě potřeby spusťte následující příkazy k vytvoření úlohy cron:
+* Pokud `omsconfig.log` soubor protokolu neindikuje, že `PerformRequiredConfigurationChecks` operace pravidelně běží v systému, může se jednat o problém s úlohou nebo službou cron. Ujistěte se, že v části `/etc/cron.d/OMSConsistencyInvoker`existuje úloha cron. V případě potřeby spusťte následující příkazy k vytvoření úlohy cron:
 
     ```
     mkdir -p /etc/cron.d/
     echo "*/15 * * * * omsagent /opt/omi/bin/OMSConsistencyInvoker >/dev/null 2>&1" | sudo tee /etc/cron.d/OMSConsistencyInvoker
     ```
 
-    Také se ujistěte, že je spuštěna služba cron. Můžete použít `service cron status` s Debian, Ubuntu, `service crond status` SUSE, nebo s RHEL, CentOS, Oracle Linux zkontrolovat stav této služby. Pokud služba neexistuje, můžete nainstalovat binární soubory a spustit službu pomocí následujícího:
+    Také se ujistěte, že je služba cron spuštěná. Můžete použít `service cron status` s Debian, Ubuntu, SUSE nebo `service crond status` s RHEL, CentOS Oracle Linux ke kontrole stavu této služby. Pokud služba neexistuje, můžete nainstalovat binární soubory a službu spustit pomocí následujících možností:
 
     **Ubuntu/Debian**
 
@@ -359,48 +359,48 @@ Tato chyba označuje, že linuxové diagnostické rozšíření (LAD) je nainsta
     sudo service crond start
     ```
 
-## <a name="issue-when-configuring-collection-from-the-portal-for-syslog-or-linux-performance-counters-the-settings-are-not-applied"></a>Problém: Při konfiguraci kolekce z portálu pro čítače výkonu Syslog nebo Linux, nastavení nejsou použity
+## <a name="issue-when-configuring-collection-from-the-portal-for-syslog-or-linux-performance-counters-the-settings-are-not-applied"></a>Problém: když nakonfigurujete kolekci z portálu pro čítače výkonu syslog nebo Linux, nastavení se neaplikují.
 
 ### <a name="probable-causes"></a>Pravděpodobné příčiny
-* Agent Log Analytics pro Linux nezachytil nejnovější konfiguraci
-* Změněná nastavení na portálu nebyla použita.
+* Agent Log Analytics pro Linux nezískal nejnovější konfiguraci.
+* Změněné nastavení na portálu nebylo použito.
 
 ### <a name="resolution"></a>Řešení
-**Pozadí:** `omsconfig` je agent Log Analytics pro konfigurační agent Linuxu, který hledá novou konfiguraci na straně portálu každých pět minut. Tato konfigurace se pak použije pro agenta Log Analytics pro konfigurační soubory Linux umístěných na adrese /etc/opt/microsoft/omsagent/conf/omsagent.conf.
+**Pozadí:** `omsconfig` je agent pro konfiguraci Log Analytics agenta pro Linux, který každých pět minut vyhledává novou konfiguraci na straně portálu. Tato konfigurace se pak aplikuje na agenta Log Analytics pro konfigurační soubory pro Linux umístěné na adrese/etc/opt/Microsoft/omsagent/conf/omsagent.conf..
 
-* V některých případech agent log Analytics pro konfigurační agent Linuxu nemusí být schopen komunikovat se službou konfigurace portálu, což má za následek nejnovější konfiguraci, která není použita.
-  1. Zkontrolujte, `omsconfig` zda je `dpkg --list omsconfig` agent `rpm -qi omsconfig`nainstalován spuštěním nebo .  Pokud není nainstalován, přeinstalujte nejnovější verzi agenta Log Analytics pro Linux.
+* V některých případech nemusí být agent Log Analytics agenta pro Linux Configuration agent schopen komunikovat se službou konfigurace portálu, což má za následek nepoužití poslední konfigurace.
+  1. Ověřte, zda `omsconfig` je agent nainstalován pomocí systému `dpkg --list omsconfig` nebo `rpm -qi omsconfig`.  Pokud není nainstalován, přeinstalujte nejnovější verzi agenta Log Analytics pro Linux.
 
-  2. Zkontrolujte, `omsconfig` zda agent může komunikovat s `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/GetDscConfiguration.py'`Azure Monitor spuštěním následujícího příkazu . Tento příkaz vrátí konfiguraci, kterou agent obdrží ze služby, včetně nastavení Syslogu, čítačů výkonu Linuxu a vlastních protokolů. Pokud se tento příkaz nezdaří, spusťte následující příkaz `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/PerformRequiredConfigurationChecks.py'`. Tento příkaz vynutí agenta omsconfig mluvit s Azure Monitor a načíst nejnovější konfiguraci.
+  2. Spuštěním následujícího příkazu `omsconfig` `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/GetDscConfiguration.py'`ověřte, že agent může komunikovat s Azure monitor. Tento příkaz vrátí konfiguraci, kterou agent přijímá od služby, včetně nastavení syslog, čítačů výkonu pro Linux a vlastních protokolů. Pokud tento příkaz neproběhne úspěšně, spusťte následující `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/PerformRequiredConfigurationChecks.py'`příkaz. Tento příkaz vynutí, aby měl agent omsconfig komunikaci s Azure Monitor a načíst nejnovější konfiguraci.
 
-## <a name="issue-you-are-not-seeing-any-custom-log-data"></a>Problém: Nezobrazují se žádná vlastní data protokolu. 
+## <a name="issue-you-are-not-seeing-any-custom-log-data"></a>Problém: nezobrazuje se žádná data vlastního protokolu 
 
 ### <a name="probable-causes"></a>Pravděpodobné příčiny
-* Registrace do Azure Monitoru se nezdařila.
-* Nastavení **Použít následující konfiguraci na serverech Linux** nebylo vybráno.
-* omsconfig nezachytil nejnovější vlastní konfiguraci protokolu ze služby.
-* Agent Log Analytics `omsagent` pro uživatele Linuxu nemá přístup k vlastnímu protokolu z důvodu oprávnění nebo není nalezen.  Mohou se zobrazit následující chyby:
+* Připojování k Azure Monitor se nezdařilo.
+* Nastavení **použít následující konfiguraci pro servery Linux** nebylo vybráno.
+* omsconfig nezískala nejnovější konfiguraci vlastního protokolu ze služby.
+* Agent Log Analytics pro systém Linux `omsagent` nemůže získat přístup k vlastnímu protokolu z důvodu oprávnění nebo nenalezených.  Můžou se zobrazit následující chyby:
  * `[DATETIME] [warn]: file not found. Continuing without tailing it.`
  * `[DATETIME] [error]: file not accessible by omsagent.`
-* Známý problém s sporem byl opraven v agentovi Log Analytics pro Linux verze 1.1.0-217
+* Známý problém se stavem časování vyřešeným v Log Analytics Agent pro Linux verze 1.1.0 – 217
 
 ### <a name="resolution"></a>Řešení
-1. Ověření registrace na Azure Monitor bylo úspěšné kontrolou, pokud `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf`existuje následující soubor: . Pokud ne, buď:  
+1. Ověření připojení k Azure Monitor bylo úspěšné, když zkontrolujete, jestli tento soubor existuje: `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf`. Pokud ne, proveďte jednu z těchto akcí:  
 
-  1. Reonboard pomocí [pokynů](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md#onboarding-using-the-command-line)příkazového řádku omsadmin.sh .
-  2. V části **Upřesnit nastavení** na webu Azure Portal zkontrolujte, zda je povoleno nastavení **Použít následující konfiguraci na serverech Linux.**  
+  1. Reonboard pomocí [instrukcí](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md#onboarding-using-the-command-line)příkazového řádku omsadmin.sh.
+  2. V části **Upřesnit nastavení** v Azure Portal zajistěte, aby bylo povolené nastavení **použít následující konfiguraci na servery se systémem Linux** .  
 
-2. Zkontrolujte, `omsconfig` zda agent může komunikovat s `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/GetDscConfiguration.py'`Azure Monitor spuštěním následujícího příkazu .  Tento příkaz vrátí konfiguraci, kterou agent obdrží ze služby, včetně nastavení Syslogu, čítačů výkonu Linuxu a vlastních protokolů. Pokud se tento příkaz nezdaří, spusťte následující příkaz `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/PerformRequiredConfigurationChecks.py'`. Tento příkaz vynutí agenta omsconfig mluvit s Azure Monitor a načíst nejnovější konfiguraci.
+2. Spuštěním následujícího příkazu `omsconfig` `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/GetDscConfiguration.py'`ověřte, že agent může komunikovat s Azure monitor.  Tento příkaz vrátí konfiguraci, kterou agent přijímá od služby, včetně nastavení syslog, čítačů výkonu pro Linux a vlastních protokolů. Pokud tento příkaz neproběhne úspěšně, spusťte následující `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/PerformRequiredConfigurationChecks.py'`příkaz. Tento příkaz vynutí, aby měl agent omsconfig komunikaci s Azure Monitor a načíst nejnovější konfiguraci.
 
-**Souvislosti:** Místo agenta Log Analytics pro Linux, který `root`běží jako privilegovaný uživatel - , agent běží jako `omsagent` uživatel. Ve většině případů musí být tomuto uživateli udělena explicitní oprávnění, aby bylo možné číst určité soubory. Chcete-li `omsagent` uživateli udělit oprávnění, spusťte následující příkazy:
+**Pozadí:** Místo agenta Log Analytics pro Linux spuštěný jako privilegovaný uživatel – `root`Agent se spustí jako `omsagent` uživatel. Ve většině případů musí být pro tohoto uživatele udělené explicitní oprávnění, aby bylo možné některé soubory číst. Chcete-li udělit `omsagent` oprávnění uživateli, spusťte následující příkazy:
 
-1. Přidání `omsagent` uživatele do určité skupiny`sudo usermod -a -G <GROUPNAME> <USERNAME>`
-2. Udělit univerzální přístup pro čtení k požadovanému souboru`sudo chmod -R ugo+rx <FILE DIRECTORY>`
+1. Přidat `omsagent` uživatele do konkrétní skupiny`sudo usermod -a -G <GROUPNAME> <USERNAME>`
+2. Udělit k požadovanému souboru univerzální přístup pro čtení`sudo chmod -R ugo+rx <FILE DIRECTORY>`
 
-Existuje známý problém s spor s spor s agentem Log Analytics pro linuxovou verzi starší než 1.1.0-217. Po aktualizaci na nejnovějšího agenta, spusťte následující `sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.conf /etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf`příkaz získat nejnovější verzi výstupního pluginu .
+Došlo k známému problému se stavem časování u Log Analytics agenta pro Linux verze starší než 1.1.0-217. Po aktualizaci na nejnovějšího agenta spusťte následující příkaz, který načte nejnovější verzi výstupního modulu plug-in `sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.conf /etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf`.
 
-## <a name="issue-you-are-trying-to-reonboard-to-a-new-workspace"></a>Problém: Pokoušíte se znovu nastoupit do nového pracovního prostoru
-Při pokusu o reonboard agenta do nového pracovního prostoru, konfigurace agenta Log Analytics je třeba vyčistit před reonboarding. Chcete-li vyčistit starou konfiguraci od agenta, spusťte balíček skořepin`--purge`
+## <a name="issue-you-are-trying-to-reonboard-to-a-new-workspace"></a>Problém: Pokoušíte se reonboard k novému pracovnímu prostoru
+Když se pokusíte reonboard agenta do nového pracovního prostoru, je nutné před reonboarding vyčistit konfiguraci agenta Log Analytics. Pokud chcete vyčistit starou konfiguraci od agenta, spusťte sadu prostředků prostředí pomocí nástroje.`--purge`
 
 ```
 sudo sh ./omsagent-*.universal.x64.sh --purge
@@ -411,20 +411,20 @@ Nebo
 sudo sh ./onboard_agent.sh --purge
 ```
 
-Můžete pokračovat reonboard po `--purge` použití možnosti
+Po použití možnosti můžete pokračovat v `--purge` reonboard.
 
-## <a name="log-analytics-agent-extension-in-the-azure-portal-is-marked-with-a-failed-state-provisioning-failed"></a>Rozšíření agenta Analýzy protokolů na webu Azure Portal je označeno stavem selhání: Zřizování se nezdařilo
+## <a name="log-analytics-agent-extension-in-the-azure-portal-is-marked-with-a-failed-state-provisioning-failed"></a>Rozšíření agenta Log Analytics v Azure Portal je označeno stavem selhání: zřizování se nezdařilo.
 
 ### <a name="probable-causes"></a>Pravděpodobné příčiny
-* Agent log Analytics byl odebrán z operačního systému.
-* Služba agenta Log Analytics je vypnutá, zakázaná nebo není nakonfigurována.
+* Agent Log Analytics se odebral z operačního systému.
+* Služba agenta Log Analytics nefunguje, je vypnutá nebo není nakonfigurovaná.
 
 ### <a name="resolution"></a>Řešení 
-Chcete-li problém opravit, proveďte následující kroky.
-1. Odeberte rozšíření z webu Azure Portal.
+Problém vyřešíte provedením následujících kroků.
+1. Odebere rozšíření z Azure Portal.
 2. Nainstalujte agenta podle [pokynů](../../azure-monitor/learn/quick-collect-linux-computer.md).
-3. Restartujte agenta spuštěním `sudo /opt/microsoft/omsagent/bin/service_control restart`následujícího příkazu: .
-* Počkejte několik minut a změny stavu zřizování **zřizování byly úspěšné**.
+3. Restartujte agenta spuštěním následujícího příkazu: `sudo /opt/microsoft/omsagent/bin/service_control restart`.
+* Počkejte několik minut a stav zřizování se změní na **zřizování bylo úspěšné**.
 
 
 ## <a name="issue-the-log-analytics-agent-upgrade-on-demand"></a>Problém: Upgrade agenta Log Analytics na vyžádání
@@ -434,13 +434,13 @@ Chcete-li problém opravit, proveďte následující kroky.
 Balíčky agenta Log Analytics na hostiteli jsou zastaralé.
 
 ### <a name="resolution"></a>Řešení 
-Chcete-li problém opravit, proveďte následující kroky.
+Problém vyřešíte provedením následujících kroků.
 
-1. Zkontrolujte nejnovější verzi na [stránce](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/).
-2. Stáhnout instalační skript (1.4.2-124 jako příklad verze):
+1. Podívejte se na nejnovější verzi na [stránce](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/).
+2. Stáhnout instalační skript (1.4.2-124 jako ukázková verze):
 
     ```
     wget https://github.com/Microsoft/OMS-Agent-for-Linux/releases/download/OMSAgent_GA_v1.4.2-124/omsagent-1.4.2-124.universal.x64.sh
     ```
 
-3. Inovujte `sudo sh ./omsagent-*.universal.x64.sh --upgrade`balíčky spuštěním .
+3. Upgradujte balíčky spuštěním `sudo sh ./omsagent-*.universal.x64.sh --upgrade`příkazu.

@@ -1,6 +1,6 @@
 ---
 title: Autorizace přístupu ke službě Azure Event Hubs
-description: Tento článek obsahuje informace o různých možnostech autorizace přístupu k prostředkům Centra událostí Azure.
+description: Tento článek poskytuje informace o různých možnostech pro autorizaci přístupu k prostředkům Azure Event Hubs.
 services: event-hubs
 ms.service: event-hubs
 documentationcenter: ''
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: spelluru
 ms.openlocfilehash: f44be4e1d3d1186f0122bd4669ae800ab42e31d6
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80521296"
 ---
 # <a name="authorize-access-to-azure-event-hubs"></a>Autorizace přístupu ke službě Azure Event Hubs
-Pokaždé, když publikujete nebo spotřebováváte události/data z centra událostí, váš klient se pokouší získat přístup k prostředkům Centra událostí. Každý požadavek na zabezpečený prostředek musí být autorizován, aby služba mohla zajistit, že klient má požadovaná oprávnění k publikování nebo využití dat. 
+Pokaždé, když publikujete nebo spotřebujete události a data z centra událostí, se klient snaží získat přístup k prostředkům Event Hubs. Každý požadavek na zabezpečený prostředek musí být autorizovaný, aby služba mohla zajistit, aby měl klient potřebná oprávnění k publikování/využívání dat. 
 
 Azure Event Hubs nabízí následující možnosti pro autorizaci přístupu k zabezpečeným prostředkům:
 
@@ -24,31 +24,31 @@ Azure Event Hubs nabízí následující možnosti pro autorizaci přístupu k z
 - Sdílený přístupový podpis
 
 > [!NOTE]
-> Tento článek se vztahuje na scénáře Event Hubs a [Apache Kafka.](event-hubs-for-kafka-ecosystem-overview.md) 
+> Tento článek se týká Event Hubs i [Apache Kafkach](event-hubs-for-kafka-ecosystem-overview.md) scénářů. 
 
 ## <a name="azure-active-directory"></a>Azure Active Directory
-Integrace Azure Active Directory (Azure AD) pro prostředky centra událostí poskytuje řízení přístupu na základě rolí (RBAC) pro jemně odstupňovanou kontrolu nad přístupem klienta k prostředkům. Pomocí řízení přístupu na základě rolí (RBAC) můžete udělit oprávnění k zaregistrovaný objekt zabezpečení, který může být uživatel, skupina nebo instanční objekt služby aplikace. Objekt zabezpečení je ověřen službou Azure AD, aby vrátil token OAuth 2.0. Token lze použít k autorizaci požadavku na přístup k prostředku centra událostí.
+Integrace služby Azure Active Directory (Azure AD) pro prostředky Event Hubs poskytuje řízení přístupu na základě role (RBAC) pro jemně odstupňovanou kontrolu nad přístupem klienta k prostředkům. Řízení přístupu na základě role (RBAC) můžete použít k udělení oprávnění objektu zabezpečení, který může být uživatel, skupina nebo instanční objekt. Služba Azure AD ověřuje objekt zabezpečení, aby vrátil token OAuth 2,0. Token se dá použít k autorizaci žádosti o přístup k prostředku Event Hubs.
 
-Další informace o ověřování pomocí služby Azure AD najdete v následujících článcích:
+Další informace o ověřování ve službě Azure AD najdete v následujících článcích:
 
-- [Ověřování požadavků na Centra událostí Azure pomocí Služby Azure Active Directory](authenticate-application.md)
-- [Autorizujte přístup k prostředkům Centra událostí pomocí služby Azure Active Directory](authorize-access-azure-active-directory.md).
+- [Ověřování požadavků do Azure Event Hubs pomocí Azure Active Directory](authenticate-application.md)
+- [Autorizujte přístup k prostředkům Event Hubs pomocí Azure Active Directory](authorize-access-azure-active-directory.md).
 
 ## <a name="shared-access-signatures"></a>Sdílené přístupové podpisy 
-Sdílené přístupové podpisy (SAS) pro prostředky Centra událostí poskytují omezený delegovaný přístup k prostředkům Centra událostí. Přidání omezení časového intervalu, pro který je podpis platný, nebo oprávnění, která uděluje, poskytuje flexibilitu při správě prostředků. Další informace naleznete v [tématu Authenticate using shared access signatures (SAS)](authenticate-shared-access-signature.md). 
+Sdílené přístupové podpisy (SAS) pro prostředky Event Hubs poskytují omezený delegovaný přístup k prostředkům Event Hubs. Přidávání omezení v časovém intervalu, pro který je podpis platný, nebo na oprávnění, která uděluje, poskytují flexibilitu při správě prostředků. Další informace najdete v tématu [ověřování pomocí sdílených přístupových podpisů (SAS)](authenticate-shared-access-signature.md). 
 
-Autorizace uživatelů nebo aplikací pomocí tokenu OAuth 2.0 vráceného službou Azure AD poskytuje vynikající zabezpečení a snadné použití oproti sdíleným přístupovým podpisům (SAS). S Azure AD, není nutné ukládat přístupové tokeny s kódem a riskovat potenciální ohrožení zabezpečení. Zatímco můžete i nadále používat sdílené přístupové podpisy (SAS) k udělení jemně odstupňovaného přístupu k prostředkům Centra událostí, Azure AD nabízí podobné funkce bez nutnosti spravovat tokeny SAS nebo se obávat zrušení ohroženého SAS. 
+Autorizaci uživatelů nebo aplikací pomocí tokenu OAuth 2,0 vráceného službou Azure AD poskytuje prvotřídní zabezpečení a usnadňuje použití přes sdílené přístupové podpisy (SAS). S Azure AD není nutné ukládat přístupové tokeny s vaším kódem a rizikovým potenciálním ohrožením zabezpečení. I když můžete nadále používat sdílené přístupové podpisy (SAS) pro udělení jemně odstupňovaného přístupu k Event Hubs prostředkům, Azure AD nabízí podobné možnosti, aniž by bylo nutné spravovat tokeny SAS nebo se starat o odvolání ohroženého SAS. 
 
-Ve výchozím nastavení jsou všechny prostředky centra událostí zabezpečené a jsou k dispozici pouze pro vlastníka účtu. I když můžete použít některou z výše uvedených strategií autorizace k udělení přístupu klientům k prostředkům Centra událostí. Společnost Microsoft doporučuje používat Azure AD, pokud je to možné pro maximální zabezpečení a snadné použití.
+Ve výchozím nastavení jsou všechny prostředky Event Hubs zabezpečené a jsou k dispozici pouze vlastníkovi účtu. I když můžete použít kteroukoli strategii autorizace uvedenou výše a udělit klientům přístup k prostředkům centra událostí. Microsoft doporučuje používat Azure AD, pokud je to možné, pro zajištění maximálního zabezpečení a snadného použití.
 
-Další informace o autorizaci pomocí sas, naleznete [v tématu Autorizace přístupu k prostředkům centra událostí pomocí sdílených přístupových podpisů](authorize-access-shared-access-signature.md).
+Další informace o autorizaci pomocí SAS najdete v tématu [autorizace přístupu k prostředkům Event Hubs pomocí sdílených přístupových podpisů](authorize-access-shared-access-signature.md).
 
 ## <a name="next-steps"></a>Další kroky
-- Prohlédněte si [ukázky RBAC](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac) publikované v našem úložišti GitHub. 
+- Podívejte se na [ukázky RBAC](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac) publikované v našem úložišti GitHubu. 
 - Viz následující články:
-    - [Ověřování požadavků na Centra událostí Azure z aplikace pomocí Služby Azure Active Directory](authenticate-application.md)
-    - [Ověření spravované identity pomocí Služby Azure Active Directory pro přístup k prostředkům centra událostí](authenticate-managed-identity.md)
-    - [Ověřování požadavků na Centra událostí Azure pomocí sdílených přístupových podpisů](authenticate-shared-access-signature.md)
-    - [Autorizace přístupu k prostředkům Centra událostí pomocí Služby Azure Active Directory](authorize-access-azure-active-directory.md)
-    - [Autorizace přístupu k prostředkům Centra událostí pomocí sdílených přístupových podpisů](authorize-access-shared-access-signature.md)
+    - [Ověřování požadavků do Azure Event Hubs z aplikace pomocí Azure Active Directory](authenticate-application.md)
+    - [Ověření spravované identity pomocí Azure Active Directory pro přístup k prostředkům Event Hubs](authenticate-managed-identity.md)
+    - [Ověřování požadavků na Azure Event Hubs pomocí sdílených přístupových podpisů](authenticate-shared-access-signature.md)
+    - [Autorizace přístupu k prostředkům Event Hubs pomocí Azure Active Directory](authorize-access-azure-active-directory.md)
+    - [Autorizace přístupu k prostředkům Event Hubs pomocí sdílených přístupových podpisů](authorize-access-shared-access-signature.md)
 

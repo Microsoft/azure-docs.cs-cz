@@ -1,6 +1,6 @@
 ---
-title: Používání a správa prostředí služby App Service
-description: Zjistěte, jak vytvářet, publikovat a škálovat aplikace v prostředí služby App Service. Najděte všechny běžné úkoly v tomto článku.
+title: Použití a Správa App Service Environment
+description: Naučte se vytvářet, publikovat a škálovat aplikace v App Service Environment. Vyhledá všechny běžné úkoly v tomto článku.
 author: ccompy
 ms.assetid: a22450c4-9b8b-41d4-9568-c4646f4cf66b
 ms.topic: article
@@ -8,123 +8,123 @@ ms.date: 3/26/2020
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 4565580feeddc2df8f6ed3011302016bb39977b4
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80586121"
 ---
 # <a name="use-an-app-service-environment"></a>Použití prostředí App Service Environment
 
-Prostředí služby App Service (ASE) je nasazení služby Azure App Service do podsítě v instanci virtuální sítě Azure zákazníka. ASE se skládá z:
+App Service Environment (pomocným mechanismem) je nasazení Azure App Service do podsítě v instanci Azure Virtual Network zákazníka. Pomocného programu se skládá z těchto:
 
-- **Front-endy**: Kde http nebo HTTPS končí v prostředí služby App Service
-- **Pracovníci:** Prostředky, které hostují vaše aplikace
-- **Databáze**: Obsahuje informace, které definují prostředí
-- **Úložiště**: Používá se k hostování aplikací publikovaných zákazníkem.
+- **Front-endy**: kde se http nebo https ukončí v App Service Environment
+- **Pracovní procesy**: prostředky, které hostují vaše aplikace
+- **Databáze**: uchovává informace, které definují prostředí.
+- **Storage**: používá se k hostování aplikací publikovaných zákazníky.
 
-Službu ASE můžete nasadit s externí nebo interní virtuální IP (VIP) pro přístup k aplikacím. Nasazení s externí min. VIP se běžně nazývá *externí služba ASE*. Nasazení s interní min. VIRTUÁLNÍ IP se nazývá *služba ASE ILB,* protože používá interní systém vyrovnávání zatížení (ILB). Další informace o službě ILB ASE najdete v [tématu Vytvoření a použití služby ASE iLB][MakeILBASE].
+Pro přístup k aplikacím můžete nasadit pomocného programu s externí nebo interní virtuální IP adresou (VIP). Nasazení s externí virtuální IP adresou se běžně označuje jako *externí POmocného mechanismu*. Nasazení s interní VIP se nazývá *interního nástroje POmocného* programu pro vyrovnávání zatížení, protože používá interní nástroj pro vyrovnávání zatížení (interního nástroje). Další informace o pomocném mechanismu pro interního nástroje najdete v tématu [Vytvoření a použití POmocného mechanismu interního nástroje][MakeILBASE].
 
-## <a name="create-an-app-in-an-ase"></a>Vytvoření aplikace ve selsce ase
+## <a name="create-an-app-in-an-ase"></a>Vytvoření aplikace v pomocném mechanismu služby
 
-Chcete-li vytvořit aplikaci ve správě ase, použijte stejný proces, jako když normálně vytvořit aplikaci, ale s několika malými rozdíly. Když vytvoříte nový plán služby App Service:
+K vytvoření aplikace v pomocném mechanismu řízení použijte stejný postup jako při normálním vytváření aplikace, ale s malým rozdílem. Když vytváříte nový plán App Service:
 
-- Místo výběru geografické polohy, do které chcete aplikaci nasadit, zvolíte jako svou polohu službu ASE.
-- Všechny plány služby App Service vytvořené ve službě ASE mohou být pouze v izolované cenové úrovni.
+- Místo výběru geografického umístění, do kterého chcete aplikaci nasadit, si jako umístění zvolíte pomocného objekt pro vytváření.
+- Všechny plány App Service vytvořené v pomocném mechanismu řízení se můžou nacházet jenom v izolované cenové úrovni.
 
-Pokud službu ASE nemáte, můžete ji vytvořit podle pokynů v části [Vytvořit prostředí služby App Service][MakeExternalASE].
+Pokud nemáte pomocného mechanismu řízení, můžete ho vytvořit podle pokynů v části [vytvoření App Service Environment][MakeExternalASE].
 
-Vytvoření aplikace ve skutážní nespoje:
+Vytvoření aplikace v pomocném mechanismu řízení:
 
-1. Vyberte **možnost Vytvořit** > **web + mobilní** > **webovou aplikaci .**
+1. Vyberte **vytvořit prostředek** > **web a mobilní zařízení** > **webovou aplikaci**.
 
-1. Zadejte název aplikace. Pokud jste již ve službě ASE vybrali plán služby App Service, název domény aplikace odráží název domény služby ASE:
+1. Zadejte název aplikace. Pokud jste už v pomocném mechanismu řízení vybrali plán App Service, bude název domény pro aplikaci odpovídat názvu domény pomocného mechanismu řízení:
 
     ![Výběr názvu aplikace][1]
 
 1. Vyberte předplatné.
 
-1. Zadejte název nové skupiny prostředků nebo vyberte **Použít existující** a vyberte jeden z rozevíracího seznamu.
+1. Zadejte název nové skupiny prostředků nebo vyberte použít existující a v rozevíracím seznamu vyberte **použít existující** a vyberte jednu z nich.
 
 1. Vyberte váš operační systém.
 
-1. Vyberte existující plán služby App Service ve službě ASE nebo vytvořte nový následujícím postupem:
+1. Pomocí následujících kroků vyberte existující plán App Service, nebo vytvořte nový.
 
-    a. V nabídce na levé straně portálu Azure vyberte **Vytvořit prostředek > Web App**.
+    a. V nabídce Azure Portal levé straně vyberte **vytvořit prostředek > webovou aplikaci**.
 
     b. Vyberte předplatné.
 
     c. Vyberte nebo vytvořte skupinu prostředků.
 
-    d. Zadejte název webové aplikace.
+    d. Zadejte název vaší webové aplikace.
 
-    e. Vyberte **Kód** nebo **DockerContainer**.
+    e. Vyberte **kód** nebo **DockerContainer**.
 
-    f. Vyberte zásobník za běhu.
+    f. Vyberte zásobník modulu runtime.
 
     g. Vyberte **Linux** nebo **Windows**. 
 
-    h. V rozevíracím seznamu **Oblast** vyberte svou ase. 
+    h. V rozevíracím seznamu **oblast** vyberte svůj pomocný seznam. 
 
-    i. Vyberte nebo vytvořte nový plán služby App Service. Pokud vytváříte nový plán služby App Service, vyberte příslušnou **velikost izolované** skladové položky.
+    i. Vyberte nebo vytvořte nový plán App Service. Pokud vytváříte nový plán App Service, vyberte odpovídající velikost **izolované** SKU.
 
     ![Izolované cenové úrovně][2]
 
     > [!NOTE]
-    > Linuxové aplikace a aplikace pro Windows nemohou být ve stejném plánu služby App Service, ale mohou být ve stejném prostředí služby App Service.
+    > Aplikace pro Linux a aplikace pro Windows nemůžou být ve stejném plánu App Service, ale můžou být ve stejném App Service Environment.
     >
 
-1. Vyberte **Zkontrolovat + vytvořit**, zkontrolujte, zda jsou informace správné, a pak vyberte **Vytvořit**.
+1. Vyberte **zkontrolovat + vytvořit**, ujistěte se, že jsou informace správné, a pak vyberte **vytvořit**.
 
-## <a name="how-scale-works"></a>Jak měřítko funguje
+## <a name="how-scale-works"></a>Jak funguje škálování
 
-Každá aplikace Služby Aplikace běží v plánu služby App Service. Prostředí služby App Service mají plány služby App Service a plány služby App Service. Při škálování aplikace můžete také škálovat plán služby App Service a všechny aplikace ve stejném plánu.
+Každá aplikace App Service běží v plánu App Service. App Service prostředí uchovávají App Service plány a App Service plány uchovávají aplikace. Při škálování aplikace můžete také škálovat plán App Service a všechny aplikace v tomto plánu.
 
-Při škálování plánu služby App Service se automaticky přidá potřebná infrastruktura. Při přidávání infrastruktury dochází k časovému zpoždění operací. Pokud provádíte několik operací škálování v pořadí, první požadavek škálování infrastruktury je zpracována a ostatní jsou zařazeny do fronty. Po dokončení první operace škálování, všechny ostatní požadavky infrastruktury pracují společně. A když je přidána infrastruktura, plány služby App Service jsou přiřazeny podle potřeby. Vytvoření nového plánu služby App Service je samo o sobě operace škálování, protože požaduje další hardware.
+Při škálování plánu App Service se požadovaná infrastruktura automaticky přidá. Při přidávání infrastruktury je časová prodleva pro škálování operací. Pokud provedete několik operací škálování v pořadí, na první požadavek na škálování infrastruktury se bude zpracovávat a ostatní se zařadí do fronty. Až se první operace škálování dokončí, ostatní požadavky na infrastrukturu požádají o veškerou spolupráci. A při přidání infrastruktury se App Service plány přiřazují podle potřeby. Vytvoření nového plánu App Service je sám operace škálování, protože vyžaduje další hardware.
 
-Ve víceklientské službě App Service je škálování okamžité, protože fond prostředků je snadno dostupný pro jeho podporu. V ase neexistuje žádná taková vyrovnávací paměť a prostředky jsou přiděleny na základě potřeby.
+Ve víceklientské App Service je škálování okamžité, protože fond prostředků je snadno dostupný pro jeho podporu. V pomocném mechanismu služby neexistuje žádná taková vyrovnávací paměť a prostředky se přidělují podle potřeby.
 
-Ve službě ASE můžete škálovat plán služby App Service až na 100 instancí. Služba ASE může mít až 201 celkový počet instancí ve všech plánech služby App Service v této službě ASE.
+V pomocném mechanismu služby můžete škálovat App Service plánu až 100 instancí. Pomocného nástroje může mít až 201 celkových instancí napříč všemi App Service plány v tomto pomocném panelu.
 
 ## <a name="ip-addresses"></a>IP adresy
 
-Služba App Service může aplikaci přidělit vyhrazenou IP adresu. Tato funkce je k dispozici po konfiguraci protokolu SSL založeného na protokolu IP, jak je popsáno v [části Vazba na existující vlastní certifikát TLS/SSL na službu Azure App Service][ConfigureSSL]. Ve službách ASE ILB nelze přidat další IP adresy, které se použijí pro protokol SSL založený na protokolu IP.
+App Service může aplikaci přidělit vyhrazenou IP adresu. Tato funkce je k dispozici po konfiguraci protokolu SSL založeného na protokolu IP, jak je popsáno v tématu [vytvoření vazby existujícího vlastního certifikátu TLS/SSL na Azure App Service][ConfigureSSL]. V pomocném mechanismu interního nástroje nemůžete přidat další IP adresy, které se budou používat pro protokol SSL založený na protokolu IP.
 
-S externí službou ASE můžete pro vaši aplikaci nakonfigurovat protokol SSL založený na protokolu IP stejným způsobem jako ve víceklientské službě App Service. Ve snaze ase je vždy jedna náhradní adresa, až 30 IP adres. Pokaždé, když použijete jeden, další je přidán tak, aby adresa je vždy snadno dostupné. K přidělení jiné adresy IP je nutné časové zpoždění. Toto zpoždění zabraňuje přidávání IP adres v rychlém sledu.
+Pomocí externího pomocného mechanismu služby můžete nakonfigurovat protokol SSL založený na protokolu IP pro vaši aplikaci stejným způsobem jako ve víceklientské App Service. V pomocném uživatelském rozhraní je vždycky jedna volná adresa, až 30 IP adres. Pokaždé, když ho použijete, přidá se další, aby byla adresa vždycky k dispozici. K přidělení další IP adresy je nutná časová prodleva. Tato prodleva brání v rychlém úspěchu přidávání IP adres.
 
-## <a name="front-end-scaling"></a>Změna velikosti front-endu
+## <a name="front-end-scaling"></a>Škálování front-endu
 
-Když navštováte své plány služby App Service, pracovníci se automaticky přidají, aby je podporovali. Každá ase je vytvořena se dvěma front-endy. Front-endy se automaticky škálují rychlostí jednoho front-endu pro každou sadu 15 instancí plánu služby App Service. Například pokud máte tři plány služby App Service s pěti instancemi, měli byste celkem 15 instancí a tři front-endy. Pokud změníte měřítko na celkem 30 instancí, máte čtyři front-endy. Tento vzor pokračuje, jak horizontální navýšení kapacity.
+Při horizontálním navýšení kapacity App Service plány se pracovní procesy přidají automaticky pro jejich podporu. Všechny pomocné uživatelské rozhraní se vytvoří se dvěma front-endy. Front-endy automaticky naškáluje sazbu jednoho front-endu pro každou sadu 15 App Servicech plánů instancí. Například pokud máte tři App Service plány s pěti instancemi, měli byste mít celkem 15 instancí a tři front-endy. Pokud budete škálovat na celkem 30 instancí, budete mít čtyři front-endy. Tento model pokračuje při horizontálním navýšení kapacity.
 
-Počet front-endů, které jsou přiděleny ve výchozím nastavení je vhodné pro mírné zatížení. Poměr můžete snížit na jeden front-end pro každých pět instancí. Můžete také změnit velikost předních konců. Ve výchozím nastavení jsou jednojádrové. Na webu Azure Portal můžete místo toho změnit jejich velikost na dvě nebo čtyři jádra.
+Počet front-endu, které jsou přiděleny ve výchozím nastavení, je vhodný pro střední zatížení. Poměr můžete snížit na méně než jeden front-end pro každé pět instancí. Můžete také změnit velikost front-endy. Ve výchozím nastavení se jedná o jedno jádro. V Azure Portal můžete místo toho změnit jejich velikost na dvě nebo čtyři jádra.
 
-Za změnu poměru nebo velikosti front-endu se účtuje poplatek. Další informace najdete v [tématu Azure App Service pricing][Pricing]. Pokud chcete zlepšit únosnost vaší ase, budete mít další zlepšení tím, že nejprve škálování na dvoujádrové front-endy před úpravou poměru měřítka. Změna velikosti jádra předních konců způsobí upgrade vaší ase a měla by být provedena mimo běžnou pracovní dobu.
+Pro změnu poměru nebo front-endové velikosti se účtuje poplatek. Další informace najdete v tématu [Azure App Service ceny][Pricing]. Pokud chcete zlepšit kapacitu zatížení vašeho pomocného programu pro čtení, získáte lepší vylepšení při prvním škálování na front-endy se dvěma jádry před úpravou poměru stupnice. Změna základní velikosti front-endu způsobí upgrade pomocného mechanismu řízení a měla by se provádět mimo běžnou pracovní dobu.
 
-Prostředky front-endu jsou koncovým bodem HTTP/HTTPS pro ase. S výchozí front-end konfigurace využití paměti na front-end je konzistentně kolem 60 procent. Hlavním důvodem škálování front-endů je využití procesoru, které je primárně řízeno přenosem HTTPS.
+Prostředky front-endu jsou koncovým bodem HTTP/HTTPS pro pomocného bodu služby. S výchozí konfigurací front-endu je využití paměti na front-endu konzistentně v rozmezí od 60%. Hlavním důvodem pro horizontální navýšení kapacity front-endu je využití procesoru, které je primárně řízeno přenosy protokolu HTTPS.
 
 ## <a name="app-access"></a>Přístup k aplikacím
 
-V externí matné služby služby ASE je přípona domény použitá pro vytváření aplikací *.&lt; asename&gt;.p.azurewebsites.net*. Pokud se vaše ase jmenuje _external-ase_ a hostujete aplikaci nazvanou _contoso_ v této ase, dostanete se k ní na těchto adresách URL:
+V externím pomocném mechanismu pro vytváření aplikací je přípona domény používaná k vytvoření aplikace *.&lt; asename&gt;. p.azurewebsites.NET*. Pokud má váš pomocný přístup s názvem _External-_ pojmenování a Vy hostte aplikaci s názvem _Contoso_ v tomto pomocném mechanismu, dostanete se na tyto adresy URL:
 
 - contoso.external-ase.p.azurewebsites.net
 - contoso.scm.external-ase.p.azurewebsites.net
 
-Informace o tom, jak vytvořit externí službu ASE, naleznete [v tématu Vytvoření prostředí služby App Service][MakeExternalASE].
+Informace o tom, jak vytvořit externí pomocného mechanismu řízení, najdete v tématu [vytvoření App Service Environment][MakeExternalASE].
 
-V ase Služby ASE ILB je přípona domény použitá pro vytváření aplikací *.&lt; asename&gt;.appserviceenvironment.net*. Pokud se vaše ase jmenuje _ilb-ase_ a hostujete aplikaci nazvanou _contoso_ v této ase, dostanete se k ní na těchto adresách URL:
+V interního nástroje pomocném mechanismu pro vytváření aplikací je přípona domény používaná k vytvoření aplikace *.&lt; asename&gt;. appserviceenvironment.NET*. Pokud je váš správce _přihlášený jako interního nástroje-pomocného_ mechanismu a v tomto pomocném mechanismu je hostitelem aplikace s názvem _Contoso_ , dostanete se na tyto adresy URL:
 
 - contoso.ilb-ase.appserviceenvironment.net
 - contoso.scm.ilb-ase.appserviceenvironment.net
 
-Informace o vytvoření služby ASE ilb naleznete v [tématu Vytvoření a použití služby ASE služby ILB][MakeILBASE].
+Informace o tom, jak vytvořit interního nástroje pomocného mechanismu pro vytváření, najdete v tématu [Vytvoření a použití POmocného mechanismu interního nástroje][MakeILBASE].
 
-Adresa URL SCM se používá pro přístup ke konzoli Kudu nebo k publikování aplikace pomocí nasazení webu. Informace o konzoli Kudu najdete v [tématu Konzola Kudu pro službu Azure App Service][Kudu]. Konzole Kudu vám poskytuje webové uživatelské uživatelské tlačítko pro ladění, nahrávání souborů, úpravy souborů a mnoho dalšího.
+Adresa URL SCM se používá pro přístup ke konzole Kudu nebo k publikování vaší aplikace pomocí Nasazení webu. Informace o konzole Kudu naleznete v tématu [Konzola Kudu pro Azure App Service][Kudu]. Konzola Kudu poskytuje webové uživatelské rozhraní pro ladění, nahrávání souborů, úpravy souborů a mnoho dalšího.
 
 ### <a name="dns-configuration"></a>Konfigurace DNS 
 
-Při použití externí služby ASE, aplikace provedené ve vaší službě ASE jsou registrovány s Azure DNS. Se službou ASE ILB je nutné spravovat vlastní službu DNS. 
+Když použijete externí pomocného Správce služby, aplikace vytvořené ve vašem pomocném mechanismu se zaregistrují s Azure DNS. Pomocí pomocného mechanismu interního nástroje musíte spravovat vlastní DNS. 
 
-Postup konfigurace služby DNS se službou ILB ASE:
+Konfigurace DNS pomocí pomocného programu interního nástroje:
 
     create a zone for <ASE name>.appserviceenvironment.net
     create an A record in that zone that points * to the ILB IP address
@@ -132,116 +132,116 @@ Postup konfigurace služby DNS se službou ILB ASE:
     create a zone in <ASE name>.appserviceenvironment.net named scm
     create an A record in the scm zone that points * to the ILB IP address
 
-Nastavení DNS pro výchozí příponu domény služby ASE neomezuje vaše aplikace pouze na přístup ných názvů. Vlastní název domény můžete nastavit bez ověření v aplikacích ve službě ASE ILB. Pokud pak chcete vytvořit zónu s názvem *contoso.net*, můžete tak učinit a nasměrovat ji na ip adresu ILB. Vlastní název domény funguje pro žádosti o aplikace, ale ne pro web scm. Web scm je k dispozici pouze na * &lt;appname&gt;.scm.&lt; asename&gt;.appserviceenvironment.net*. 
+Nastavení DNS pro výchozí příponu vaší domény pro přístup k uživateli neomezuje vaše aplikace tak, aby byly dostupné jenom pro tyto názvy. V pomocném mechanismu interního nástroje můžete nastavit vlastní název domény bez ověřování v aplikacích. Pokud budete chtít vytvořit zónu s názvem *contoso.NET*, můžete to udělat a nasměrovat ji na interního nástroje IP adresu. Vlastní název domény funguje pro žádosti o aplikace, ale pro web SCM ne. Web SCM je k dispozici pouze na adrese * &lt;AppName&gt;.&lt; SCM. asename&gt;. appserviceenvironment.NET*. 
 
-Zóna s názvem *.&lt; asename&gt;.appserviceenvironment.net* je globálně jedinečný. Před květnem 2019 mohli zákazníci zadat příponu domény služby ASE ILB. Pokud jste chtěli použít *.contoso.com* pro příponu domény, byli jste schopni tak učinit, a to by zahrnovalo scm stránky. Tam byly problémy s tímto modelem, včetně; správa výchozího certifikátu SSL, nedostatek jednotného přihlášení k webu scm a požadavek na použití certifikátu se zástupnými symboly. Proces upgradu výchozího certifikátu služby ASE služby ILB byl také rušivý a způsobil restartování aplikace. Chcete-li tyto problémy vyřešit, chování služby ASE ILB bylo změněno tak, aby používalo příponu domény na základě názvu služby ASE a přípony vlastněné společností Microsoft. Změna chování služby ASE ILB ovlivňuje pouze služby ILB ASEs provedené po květnu 2019. Již existující služby ILB ASE musí stále spravovat výchozí certifikát služby ASE a jejich konfiguraci DNS.
+Zóna s názvem *.&lt; asename&gt;. appserviceenvironment.NET* je globálně jedinečný. Od května 2019 mohou zákazníci zadat příponu interního nástroje pomocného programu pro přístup k doméně. Pokud jste chtěli použít *. contoso.com* pro příponu domény, mohli byste tak učinit a zahrnovat web SCM. S tímto modelem byly problémy, včetně; Správa výchozího certifikátu SSL, nedostatečného jednotného přihlašování s webem SCM a požadavek na použití certifikátu se zástupnými znaky. Proces upgradu výchozího certifikátu interního nástroje pomocného programu pro pořízení byl také narušen a způsobil, že aplikace bude restartována. Aby bylo možné tyto problémy vyřešit, bylo chování pomocného programu interního nástroje změněno tak, aby používalo příponu domény na základě názvu pomocného programu a s příponou vlastněné společností Microsoft. Změna chování pomocného mechanismu interního nástroje má vliv pouze na interního nástroje služby ASE, které byly provedeny po 2019. května. Stávající interního nástroje služby ASE musí stále spravovat výchozí certifikát pro přihlašovací seznam a jejich konfiguraci DNS.
 
 ## <a name="publishing"></a>Publikování
 
-Ve službě ASE, stejně jako u víceklientské služby App Service, můžete publikovat pomocí těchto metod:
+V rámci služby řízení přihlašování jako u víceklientské App Service můžete publikovat pomocí těchto metod:
 
 - Nasazení webu
 - FTP
 - Průběžná integrace (CI)
 - Přetažení v konzole Kudu
-- IDE, jako je visual studio, eclipse nebo intelliJ IDEA
+- Integrované vývojové prostředí (IDE), jako je například Visual Studio, zatmění nebo IntelliJ nápad
 
-S externí ase, tyto možnosti publikování všechny fungují stejným způsobem. Další informace najdete [v tématu Nasazení ve službě Azure App Service][AppDeploy].
+S externím pomocným mechanismem budou tyto možnosti publikování fungovat stejným způsobem. Další informace najdete v tématu [nasazení v Azure App Service][AppDeploy].
 
-Se službou ASE ILB jsou koncové body publikování k dispozici pouze prostřednictvím služby ILB. ILB je na privátní IP v podsíti ASE ve virtuální síti. Pokud nemáte přístup k síti ILB, nemůžete publikovat žádné aplikace na této službě ASE. Jak je uvedeno v [části Vytvoření a použití služby ASE ILB][MakeILBASE], je nutné nakonfigurovat službu DNS pro aplikace v systému. Tento požadavek zahrnuje koncový bod SCM. Pokud koncové body nejsou definovány správně, nelze publikovat. Vaše IDC musí mít také přístup k síti ILB publikovat přímo do něj.
+Pomocí pomocného mechanismu pro interního nástroje jsou koncové body publikování dostupné jenom prostřednictvím interního nástroje. INTERNÍHO nástroje se nachází v privátní IP adrese v podsíti pro pomocné službě ve virtuální síti. Pokud nemáte přístup k síti interního nástroje, nemůžete v tomto pomocném panelu publikovat žádné aplikace. Jak je uvedeno v části [Vytvoření a použití POmocného mechanismu interního nástroje][MakeILBASE], musíte nakonfigurovat DNS pro aplikace v systému. Tento požadavek zahrnuje koncový bod SCM. Pokud koncové body nejsou správně definované, nemůžete publikovat. K tomu, aby bylo možné do interního nástroje Publikovat přímo, musí mít síťový přístup i vaše IDEs.
 
-Bez dalších změn nefungují internetové systémy CI, jako je GitHub a Azure DevOps, se službou ASE ILB, protože koncový bod publikování není přístupný z internetu. Publikování do služby ASE ILB ze služby Azure DevOps můžete povolit instalací agenta verze s vlastním hostitelem ve virtuální síti, která obsahuje službu ASE ILB. Případně můžete také použít systém CI, který používá model vyžádat, například Dropbox.
+Bez dalších změn nebudou internetové systémy CI, jako je GitHub a Azure DevOps, fungovat s pomocným mechanismem interního nástroje, protože koncový bod publikování není přístupný na internetu. Publikování na interního nástroje pomocného mechanismu pro Azure můžete povolit z Azure DevOps tím, že ve virtuální síti nainstalujete samoobslužného agenta pro vydanou verzi, který obsahuje ovládací prvek interního nástroje. Alternativně můžete také použít systém CI, který využívá model Pull, jako je třeba Dropbox.
 
-Koncové body pro publikování pro aplikace ve službě ASE s interním nástrojem pro vyrovnávání zatížení používají doménu, pomocí které byla služba ASE s interním nástrojem pro vyrovnávání zatížení vytvořená. Můžete ji vidět v profilu publikování aplikace a v podokně portálu aplikace (v **přehledu** > **Essentials** a také ve **vlastnostech).**
+Koncové body pro publikování pro aplikace ve službě ASE s interním nástrojem pro vyrovnávání zatížení používají doménu, pomocí které byla služba ASE s interním nástrojem pro vyrovnávání zatížení vytvořená. Můžete ji zobrazit v publikačním profilu aplikace a v podokně portálu aplikace (v části **Přehled** > **Essentials** a také ve **vlastnostech**).
 
 ## <a name="storage"></a>Storage
 
-Služba ASE má úložiště o velikosti 1 TB pro všechny aplikace v systému ASE. Plán služby App Service v izolované cenové skladové položky má limit 250 GB ve výchozím nastavení. Pokud máte pět nebo více plánů služby App Service, dávejte pozor, abyste nepřekročili limit 1 TB služby ASE. Pokud potřebujete více než limit 250 GB v jednom plánu služby App Service, obraťte se na podporu a upravte limit plánu služby App Service na maximálně 1 TB. Když je limit plánu upraven, stále existuje limit 1 TB ve všech plánech služby App Service v systému ASE.
+Pomocného programu má 1 TB úložiště pro všechny aplikace v pomocném formuláři. Plán App Service v izolovaném cenovém SKLADě s izolací má ve výchozím nastavení limit 250 GB. Pokud máte pět nebo víc App Service plánů, dejte pozor, abyste nepřekročili limit 1 TB pomocného mechanismu pro čtení. Pokud v jednom App Service plánu potřebujete vyšší limit 250 GB, obraťte se na podporu, aby se limit App Service plánu upravil na maximálně 1 TB. V případě, že se limit plánu upraví, ve všech plánech App Service v pomocném mechanismu řízení se stále omezuje 1 TB.
 
 ## <a name="logging"></a>protokolování
 
-Službu ASE můžete integrovat s Azure Monitorem a odesílat protokoly o službě ASE do Azure Storage, Azure Event Hubs nebo Log Analytics. Tyto položky jsou zaznamenány dnes:
+Pomocí Azure Monitor můžete integrovat své pomocného mechanismu pro odesílání protokolů o pomocném programu do Azure Storage, Azure Event Hubs nebo Log Analytics. Tyto položky jsou protokolovány Dnes:
 
-| Situaci | Zpráva |
+| Status | Zpráva |
 |---------|----------|
-| ASE není v pořádku | Zadaná služba ASE není v pořádku z důvodu neplatné konfigurace virtuální sítě. ASE bude pozastavena, pokud bude pokračovat stav není v pořádku. Ujistěte se, že https://docs.microsoft.com/azure/app-service/environment/network-infojsou dodržovány zde definované pokyny: . |
-| Podsíť ASE je téměř bez místa | Zadaná zpráva se slídí je v podsíti, která je téměř bez místa. Jsou {0} tu zbývající adresy. Jakmile jsou tyto adresy vyčerpány, nebude možné škálovat.  |
-| ASE se blíží limitu celkové instance | Zadaná zpráva služby ASE se blíží limitu celkové instance služby ASE. Aktuálně obsahuje {0} instance App Service Plan maximálně 201 instancí. |
-| ASE není schopna dosáhnout závislosti. | Zadaná zpráva se správou ASE není schopna dosáhnout {0}.  Ujistěte se, že https://docs.microsoft.com/azure/app-service/environment/network-infojsou dodržovány zde definované pokyny: . |
-| ASE je pozastavena | Zadaná funkce ASE je pozastavena. Pozastavení služby ASE může být způsobeno nedostatkem účtu nebo neplatnou konfigurací virtuální sítě. Vyřešte hlavní příčinu a pokračujte ve službě ASE, abyste pokračovali ve službě provozu. |
-| Upgrade ase byl zahájen | Byl zahájen upgrade platformy na zadanou možnost ISE. Očekávejte zpoždění v operacích škálování. |
-| Upgrade ase byl dokončen. | Byl dokončen upgrade platformy na zadanou možnost ISE. |
-| Operace škálování byly zahájeny | Plán služby{0}App Service ( ) začal škálovat. Požadovaný {1} stav:{2} I pracovníci.
-| Operace škálování byly dokončeny | Plán služby{0}App Service ( ) dokončil škálování. Současný {1} stav:{2} I pracovníci. |
-| Operace škálování selhaly. | Plán služby{0}App Service ( ) se nepodařilo škálovat. Současný {1} stav:{2} I pracovníci. |
+| Pomocného mechanismu není v pořádku. | Zadaný pomocného mechanismu není v pořádku kvůli neplatné konfiguraci virtuální sítě. Pozastavený pomocného mechanismu bude pozastaven, pokud stav není v pořádku. Ujistěte se, že jsou uvedené pokyny, https://docs.microsoft.com/azure/app-service/environment/network-infokteré jsou tady definované:. |
+| Podsíť pomocného mechanismu je skoro mimo prostor. | Zadaný přihlášený se nachází v podsíti, která nemá skoro dostatek místa. Existují {0} zbývající adresy. Po vyčerpání těchto adres se pomocného mechanismu nebude moct škálovat.  |
+| Pomocného mechanismu se blíží celkovému limitu instancí. | Zadaný pomocného mechanismu se blíží celkovému limitu instancí pomocného mechanismu. V současné době {0} obsahuje App Service instance plánů s maximálním počtem 201 instancí. |
+| Pomocného mechanismu se nemůže spojit se závislostí. | Zadaný přidaný přístup k tomuto mechanismu se {0}nemůže spojit.  Ujistěte se, že jsou uvedené pokyny, https://docs.microsoft.com/azure/app-service/environment/network-infokteré jsou tady definované:. |
+| Pozastavený pomocný | Zadaný pomocného mechanismu je pozastaven. Pozastavení pomocného mechanismu může být způsobené nedostatkem účtu nebo konfigurací neplatné virtuální sítě. Vyřešte hlavní příčinu a obnovte pomocného mechanismu řízení a pokračujte v obsluze provozu. |
+| Byl spuštěn upgrade pomocného mechanismu. | Začaly se upgradovat na zadanou pomocného objektem. Očekává zpoždění operací škálování. |
+| Upgrade pomocného mechanismu se dokončil. | Upgrade platformy na zadaný pomocného objektu se dokončil. |
+| Operace škálování se zahájily. | App Service plán ({0}) zahájil škálování. Požadovaný stav: {1} mám{2} pracovní procesy.
+| Operace škálování se dokončily. | Škálování plánu ({0}) App Service bylo dokončeno. Aktuální stav: {1} jsem{2} zaměstnanci. |
+| Operace škálování se nezdařily. | Škálování schématu App Service ({0}) se nezdařilo. Aktuální stav: {1} jsem{2} zaměstnanci. |
 
-Povolení přihlášení ke službě ASE:
+Postup povolení protokolování v přihlašovacím MECHANISMech:
 
-1. Na portálu přejděte na **Nastavení diagnostiky**.
-1. Vyberte **Přidat diagnostické nastavení**.
+1. Na portálu přejdete na **nastavení diagnostiky**.
+1. Vyberte **Přidat nastavení diagnostiky**.
 1. Zadejte název pro integraci protokolu.
-1. Vyberte a nakonfigurujte požadované cíle protokolu.
+1. Vyberte a nakonfigurujte umístění protokolu, které chcete.
 1. Vyberte **AppServiceEnvironmentPlatformLogs**.
 
-![Nastavení diagnostického protokolu služby ASE][4]
+![Nastavení diagnostického protokolu pomocného mechanismu][4]
 
-Pokud integrujete s Log Analytics, můžete zobrazit protokoly výběrem **protokoly** z portálu Služby ase a vytvoření dotazu proti **AppServiceEnvironmentPlatformLogs**. Protokoly jsou vydávány pouze v případě, že vaše ase má událost, která ji spustí. Pokud vaše ase nemá takovou událost, nebude žádné protokoly. Chcete-li rychle zobrazit příklad protokolů v pracovním prostoru Log Analytics, proveďte operaci škálování s jedním z plánů služby App Service ve službě ASE. Potom můžete spustit dotaz proti **AppServiceEnvironmentPlatformLogs** zobrazit tyto protokoly. 
+Pokud provádíte integraci s Log Analytics, můžete protokoly zobrazit tak, že vyberete **protokoly** z portálu pro pomocné služby a vytvoříte dotaz na **AppServiceEnvironmentPlatformLogs**. Protokoly se vysílají jenom v případě, že má váš správce událostí událost, která ho spustí. Pokud vaše pomocného mechanismu takovou událost neobsahuje, nebudou žádné protokoly. Pokud chcete rychle zobrazit příklad protokolů v pracovním prostoru Log Analytics, proveďte operaci škálování s jedním z plánů App Service ve vašem pomocném programu. Pak můžete spustit dotaz na **AppServiceEnvironmentPlatformLogs** a zobrazit tyto protokoly. 
 
 **Vytvoření výstrahy**
 
-Chcete-li vytvořit výstrahu proti protokolům, postupujte podle pokynů v části [Vytvoření, zobrazení a správa výstrah protokolu pomocí služby Azure Monitor][logalerts]. Stručně řečeno:
+Pokud chcete vytvořit výstrahu proti svým protokolům, postupujte podle pokynů v tématu [Vytvoření, zobrazení a správa výstrah protokolu pomocí Azure monitor][logalerts]. V krátkém případě:
 
-* Otevření stránky Upozornění na portálu ase
+* Otevřete stránku výstrahy na portálu pro pomocné služby.
 * Vybrat **nové pravidlo výstrahy**
-* Vyberte zdroj jako pracovní prostor Log Analytics.
-* Nastavte stav pomocí vlastního hledání protokolu tak, aby se používal dotaz jako AppServiceEnvironmentPlatformLogs | kde ResultDescription obsahuje "začala škálování" nebo co chcete. Podle potřeby nastavte prahovou hodnotu. 
-* Podle potřeby přidejte nebo vytvořte skupinu akcí. Skupina akcí je místo, kde definujete odpověď na výstrahu, jako je odeslání e-mailu nebo SMS zprávy
-* Pojmenujte výstrahu a uložte ji.
+* Vyberte prostředek, který bude vaším Log Analytics pracovním prostorem.
+* Nastavte podmínku pomocí vlastního prohledávání protokolu tak, aby používala dotaz, jako je například "AppServiceEnvironmentPlatformLogs | kde ResultDescription obsahuje "Začínáme s škálováním" nebo cokoli, co chcete. Nastavte prahovou hodnotu podle potřeby. 
+* Podle potřeby přidejte nebo vytvořte skupinu akcí. Skupina akcí je místo, kde můžete definovat odpověď na výstrahu, například odeslání e-mailu nebo zprávy SMS.
+* Pojmenujte upozornění a uložte je.
 
 ## <a name="upgrade-preference"></a>Předvolba upgradu
 
-Pokud máte více AsEs, můžete chtít některé AsEs, které mají být upgradovány před ostatními. V rámci ase **hostingenvironment resource manager** objektu můžete nastavit hodnotu pro **upgradePreference**. Nastavení **upgradePreference** lze nakonfigurovat pomocí šablony, KLIENTA ARM nebo https://resources.azure.com. Tři možné hodnoty jsou:
+Pokud máte více služby ASE, možná budete chtít, aby některé služby ASE byly upgradovány ještě před ostatními. V rámci objektu pomocného **třída hostingenvironment správce prostředků** objekt můžete nastavit hodnotu **upgradePreference**. Nastavení **upgradePreference** se dá nakonfigurovat pomocí šablony, ARMClient nebo https://resources.azure.com. Tři možné hodnoty jsou:
 
-- **Žádné**: Azure upgraduje vaši službu ASE v žádné konkrétní dávce. Tato hodnota je výchozí.
-- **Brzy**: Vaše služba ASE bude upgradována v první polovině upgradů služby App Service.
-- **Pozdě**: Vaše služba ASE bude upgradována v druhé polovině upgradů služby App Service.
+- **Žádné**: Azure provede upgrade pomocného mechanismu v žádné konkrétní dávce. Tato hodnota je výchozí.
+- **Brzy**: vaše pomocného programu bude upgradován v první polovině App Service upgradu.
+- **Pozdě**: vaše pomocného programu bude upgradován v druhé polovině App Service upgradu.
 
-Pokud používáte https://resources.azure.com, postupujte takto a nastavte hodnotu **priority:**
+Pokud používáte https://resources.azure.com, nastavte hodnotu **upgradePreferences** pomocí těchto kroků:
 
-1. Přejděte na resources.azure.com a přihlaste se pomocí svého účtu Azure.
-1. Projděte si prostředky\/\[k\]\/odběru\/\[název předplatného\]\/\/resourceGroups\/zprostředkovatele\/\[názvů skupin\]y microsoft.web hostingProstředís název služby ASE .
-1. Nahoře vyberte **Číst/psát.**
+1. Přejít na resources.azure.com a přihlaste se pomocí svého účtu Azure.
+1. Projděte\/\[si materiály k předplatným\]\/název\/\[předplatné resourceGroups název\]\/skupiny\/prostředků poskytovatelé\/název\/\[Microsoft.\]web hostingEnvironments pomocné jméno.
+1. V horní části vyberte **čtení i zápis** .
 1. Vyberte **Upravit**.
-1. Nastavte **upgradePreference** podle toho, která ze tří hodnot, které chcete.
-1. Vyberte **záplata**.
+1. Nastavte **upgradePreference** na jednu ze tří hodnot, které chcete.
+1. Vyberte možnost **opravit**.
 
-![zdroje azure com displej][5]
+![prostředky – zobrazení Azure com][5]
 
-Funkce **upgradePreferences** dává největší smysl, pokud máte více AsEs, protože vaše "Early" AsEs budou upgradovány před vaše "Pozdní" AsEs. Pokud máte více AsEs, měli byste nastavit vývoj a testování ASEs být "Brzy" a vaše výroba AsEs být "Pozdě".
+Funkce **upgradePreferences** je nejužitečnější, když máte více služby ASE, protože "předčasné" služby ASE bude upgradován před "pozdě" služby ase. Pokud máte více služby ASE, měli byste nastavit vývoj a testování služby ASE tak, aby byly "nejdříve" a v produkčním služby ASE být "pozdě".
 
 ## <a name="pricing"></a>Ceny
 
-Cenová skladová položka s názvem *Izolované* je určen pro použití pouze s ASEs. Všechny plány služby App Service, které jsou hostované ve službě ASE jsou v izolované ceny skladové položky. Izolované sazby pro plány služby App Service se mohou v jednotlivých oblastech lišit.
+SKU s cenami s názvem *Isolated* je určena pouze pro použití s služby ase. Všechny plány App Service hostované v pomocném formuláři jsou v izolované cenové SKU. Izolované sazby pro plány App Service se můžou v jednotlivých oblastech lišit.
 
-Kromě ceny plánů služby App Service existuje paušální sazba pro samotnou službu ASE. Paušální sazba se nemění s velikostí ase. Platí za infrastrukturu služby ASE s výchozí rychlostí škálování jednoho dalšího front-endu pro každých 15 instancí plánu služby App Service.
+Kromě ceny vašich App Servicech plánů existuje paušální sazba samotného mechanismu řízení. Paušální míra se nemění podle velikosti vašeho pomocného mechanismu. Platí pro infrastrukturu pomocného programu s výchozí mírou škálování jednoho dalšího front-endu pro každých 15 App Servicech plánů.
 
-Pokud výchozí rychlost škálování jednoho front-endu pro každých 15 instancí plánu služby App Service není dostatečně rychlá, můžete upravit poměr, při kterém jsou přidány fronty nebo velikost front-endů. Když upravíte poměr nebo velikost, zaplatíte za přední jádra, která by ve výchozím nastavení nebyla přidána.
+Pokud není výchozí míra škálování jednoho front-endu pro každých 15 App Servicech instancí plánu dostatečně rychlá, můžete upravit poměr, ve kterém jsou přidány přední konce nebo velikost front-endy. Při úpravách poměru nebo velikosti platíte za základní jádra, která se ve výchozím nastavení nepřidala.
 
-Pokud například upravíte poměr měřítka na 10, přidá se front-end pro každých 10 instancí v plánech služby App Service. Paušální poplatek pokrývá stupnici sazby jednoho front-endu na každých 15 instancí. S poměrem měřítka 10 zaplatíte poplatek za třetí front-end, který je přidán pro 10 instancí plánu služby App Service. Nemusíte platit za to, když se dostanete 15 instancí, protože byl přidán automaticky.
+Pokud například upravíte poměr stupnice na hodnotu 10, přidá se front-end pro každých 10 instancí ve vašich App Servicech plánech. Paušální poplatek pokrývá míru škálování jednoho front-endu pro každých 15 instancí. S poměrem stupnice 10 se platíte za třetí front-end, který je přidaný pro 10 App Servicech plánů. Nemusíte platit za to, když máte víc než 15 instancí, protože se přidalo automaticky.
 
-Pokud upravíte velikost předních konců na dvě jádra, ale neupravíte poměr, zaplatíte za další jádra. Služba ASE je vytvořena se dvěma předními konci, takže i pod prahovou hodnotou automatického škálování byste zaplatili za dvě další jádra, pokud byste zvětšili velikost na dvoujádrové přední konce.
+Pokud upravíte velikost front-endu na dvě jádra, ale neupravíte poměr, platíte za další jádra. Pomocného programu se vytvoří se dvěma front-endy, takže i pod prahovou hodnotou automatického škálování, která by platila pro dvě další jádra, pokud velikost zvýšíte na front-endové přední zakončení.
 
-Další informace najdete v [tématu Azure App Service pricing][Pricing].
+Další informace najdete v tématu [Azure App Service ceny][Pricing].
 
-## <a name="delete-an-ase"></a>Odstranění ase
+## <a name="delete-an-ase"></a>Odstranění pomocného mechanismu
 
-Odstranění ses:
+Postup odstranění pomocného mechanismu řízení:
 
-1. V horní části podokna **Prostředí služby App Service** vyberte **Odstranit.**
+1. V horní části podokna **App Service Environment** vyberte **Odstranit** .
 
-1. Zadejte název ase a potvrďte, že ji chcete odstranit. Když odstraníte službu ASE, odstraníte také veškerý obsah v ní.
+1. Zadejte název pomocného programu pro potvrzení, že ho chcete odstranit. Když odstraníte pomocného mechanismu řízení, odstraníte také veškerý obsah v něm.
 
-    ![Odstranění ase][3]
+    ![Odstranění pomocného mechanismu][3]
 
 1. Vyberte **OK**.
 

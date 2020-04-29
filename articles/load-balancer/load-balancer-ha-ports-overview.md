@@ -1,7 +1,7 @@
 ---
-title: Přehled portů s vysokou dostupností v Azure
+title: Přehled portů vysoké dostupnosti v Azure
 titleSuffix: Azure Load Balancer
-description: Seznamte se s vysokou dostupností portů vyrovnávání zatížení na interním vyrovnávání zatížení.
+description: Přečtěte si o vyrovnávání zatížení portů vysoké dostupnosti na interním nástroji pro vyrovnávání zatížení.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -14,93 +14,93 @@ ms.workload: infrastructure-services
 ms.date: 09/19/2019
 ms.author: allensu
 ms.openlocfilehash: d3bd1156de4aed7d1ea5c530605697f2dc80d63c
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80476977"
 ---
-# <a name="high-availability-ports-overview"></a>Přehled portů s vysokou dostupností
+# <a name="high-availability-ports-overview"></a>Přehled portů vysoké dostupnosti
 
-Azure Standard Balancer pomáhá vyrovnávání zatížení TCP a UDP toky na všech portech současně, když používáte interní vyrovnávání zatížení. 
+Azure Standard Load Balancer pomáhá vyrovnávat zatížení protokolů TCP a UDP na všech portech současně při použití interního nástroje pro vyrovnávání zatížení. 
 
-Pravidlo vyrovnávání zatížení portů s vysokou dostupností (HA) je variantou pravidla vyrovnávání zatížení, které je nakonfigurováno v interním standardním vyvažovači zatížení. Můžete zjednodušit použití vykladače zatížení tím, že poskytuje jediné pravidlo pro vyrovnávání zatížení všech toků TCP a UDP, které přicházejí na všechny porty interního standardního vyrovnávání zatížení. Rozhodnutí o vyrovnávání zatížení se provádí na tok. Tato akce je založena na následujícím připojení s pěti řazáky: zdrojová ADRESA IP, zdrojový port, cílová adresa IP, cílový port a protokol
+Pravidlo vyrovnávání zatížení portů vysoké dostupnosti (HA) je variantou pravidla vyrovnávání zatížení, které je nakonfigurováno na interní Standard Load Balancer. Můžete zjednodušit použití nástroje pro vyrovnávání zatížení tím, že poskytnete jediné pravidlo pro vyrovnávání zatížení všech toků TCP a UDP, které přicházejí na všechny porty interního Standard Load Balancer. Rozhodnutí o vyrovnávání zatížení se provádí na jeden tok. Tato akce je založena na následujících pěti připojeních řazené kolekce členů: zdrojová IP adresa, zdrojový port, cílová IP adresa, cílový port a protokol.
 
-Pravidla vyrovnávání zatížení portů HA vám pomohou s kritickými scénáři, jako je vysoká dostupnost a škálování síťových virtuálních zařízení (NVA) ve virtuálních sítích. Funkce může také pomoci, když velký počet portů musí být vyrovnávání zatížení. 
+Pravidla vyrovnávání zatížení portů HA vám pomůžou s kritickými scénáři, jako je vysoká dostupnost a škálování síťových virtuálních zařízení (síťová virtuální zařízení) uvnitř virtuálních sítí. Tato funkce může také pomáhat při vyrovnávání zatížení velkého počtu portů. 
 
-Pravidla vyrovnávání zatížení portů HA jsou konfigurována, když nastavíte porty front-end a back-end na **0** a protokol na **Všechny**. Interní prostředek pro vyrovnávání zatížení pak vyvažuje všechny toky TCP a UDP bez ohledu na číslo portu.
+Pravidla vyrovnávání zatížení portů HA jsou nakonfigurovaná při nastavení front-endu a back-endu portů na **hodnotu 0** a na protokol pro **všechny**. Prostředek interního nástroje pro vyrovnávání zatížení potom vyrovnává všechny toky TCP a UDP bez ohledu na číslo portu.
 
 ## <a name="why-use-ha-ports"></a>Proč používat porty HA?
 
 ### <a name="network-virtual-appliances"></a><a name="nva"></a>Síťová virtuální zařízení
 
-Pomocí virtuálních zařízení můžete zabezpečit úlohy Azure před různými typy bezpečnostních hrozeb. Při použití sítě pro připojení k síti v těchto scénářích musí být spolehlivé a vysoce dostupné a musí škálovat pro poptávku.
+Síťová virtuální zařízení můžete použít k zajištění zabezpečení úloh Azure před několika typy bezpečnostních hrozeb. Když v těchto scénářích použijete síťová virtuální zařízení, musí být spolehlivé a vysoce dostupné a musí se škálovat na vyžádání.
 
-Těchto cílů můžete dosáhnout jednoduše přidáním instancí NVA do back-endového fondu interního systému vyrovnávání zatížení a konfigurací pravidla vyrovnávání zatížení portů HA.
+Tyto cíle můžete jednoduše dosáhnout přidáním instancí síťové virtuální zařízení do fondu back-end interního nástroje pro vyrovnávání zatížení a konfigurací pravidla pro vyrovnávání zatížení portů HA.
 
-Pro scénáře NVA HA nabízejí porty HA následující výhody:
-- Poskytněte rychlé převzetí služeb při selhání zdravým instancím s prominci stavu pro instancí
-- Zajistěte vyšší výkon s horizontálním navýšením kapacity na *n*-active instancí
-- Poskytují *n*-aktivní a aktivní pasivní scénáře
-- Eliminujte potřebu složitých řešení, jako jsou uzly Apache ZooKeeper pro monitorování zařízení
+U scénářů s síťové virtuální zařízení HA nabízí porty HA následující výhody:
+- Zajištění rychlého převzetí služeb při selhání u instancí s testy stavu jednotlivých instancí
+- Zajištění vyššího výkonu při škálování na více instancí až na *n*-aktivních instancí
+- Zajištění scénářů *n*-aktivních a aktivních – pasivní
+- Eliminujte nutnost složitých řešení, jako jsou Apache ZooKeeper uzly pro monitorování zařízení.
 
-Následující diagram představuje nasazení virtuální sítě hub-and-spoke. Paprsky síla tunelovat jejich provoz do centrální virtuální sítě a přes NVA, před opuštěním důvěryhodného prostoru. Virtuální virtuální počítače jsou za interním standardním nástrojem pro vyrovnávání zatížení s konfigurací portů HA. Veškerý provoz lze odpovídajícím způsobem zpracovat a předat dál. Při konfiguraci jako zobrazit v následujícím diagramu, ha porty vyrovnávání zatížení pravidlo navíc poskytuje symetrii toku pro příchozí a odchozí přenosy.
+Následující diagram představuje nasazení virtuální sítě typu centrum a paprsek. Paprsky Vynutí tunelové propojení jejich provozu do virtuální sítě rozbočovače i přes síťové virtuální zařízení, než vynechají důvěryhodné místo. Síťová virtuální zařízení jsou za interní Standard Load Balancer s konfigurací portů HA. Veškerý provoz se dá zpracovat a přeslat odpovídajícím způsobem. Když se nakonfiguruje jako zobrazit v následujícím diagramu, pravidlo vyrovnávání zatížení portů HA navíc poskytuje symetrii Flow pro příchozí a odchozí provoz.
 
 <a node="diagram"></a>
-![Diagram virtuální sítě hub-and-spoke s síťovými virtuálními zařízeními nasazenými v režimu HA](./media/load-balancer-ha-ports-overview/nvaha.png)
+![Diagram virtuální sítě typu hub a paprsek s síťová virtuální zařízení nasazeným v režimu HA](./media/load-balancer-ha-ports-overview/nvaha.png)
 
 >[!NOTE]
-> Pokud používáte virtuální virtuální virtuální tok, potvrďte u svých poskytovatelů, jak nejlépe používat porty HA a zjistěte, které scénáře jsou podporovány.
+> Pokud používáte síťová virtuální zařízení, potvrďte jejich poskytovatele, jak nejlépe využít porty HA a zjistit, jaké jsou podporované scénáře.
 
-### <a name="load-balancing-large-numbers-of-ports"></a>Vyrovnávání zatížení velký počet portů
+### <a name="load-balancing-large-numbers-of-ports"></a>Vyrovnávání zatížení velkých čísel portů
 
-Porty HA můžete také použít pro aplikace, které vyžadují vyrovnávání zatížení velkého počtu portů. Tyto scénáře můžete zjednodušit pomocí interního [standardního vytápěče zatížení](load-balancer-standard-overview.md) s porty HA. Jediné pravidlo vyrovnávání zatížení nahrazuje více jednotlivých pravidel vyrovnávání zatížení, jedno pro každý port.
+Porty HA můžete použít také pro aplikace, které vyžadují vyrovnávání zatížení velkého počtu portů. Tyto scénáře můžete zjednodušit pomocí interní [Standard Load Balancer](load-balancer-standard-overview.md) s porty ha. Jedno pravidlo vyrovnávání zatížení nahrazuje několik individuálních pravidel vyrovnávání zatížení, jednu pro každý port.
 
 ## <a name="region-availability"></a>Dostupnost v oblastech
 
-Funkce portů HA je dostupná ve všech globálních oblastech Azure.
+Funkce porty vysoké dostupnosti je dostupná ve všech globálních oblastech Azure.
 
 ## <a name="supported-configurations"></a>Podporované konfigurace
 
-### <a name="a-single-non-floating-ip-non-direct-server-return-ha-ports-configuration-on-an-internal-standard-load-balancer"></a>Konfigurace portů HA s jedním neplovoucím protokolem IP (non-Direct Server Return) na interním standardním nástroji pro vyrovnávání zatížení
+### <a name="a-single-non-floating-ip-non-direct-server-return-ha-ports-configuration-on-an-internal-standard-load-balancer"></a>Jedna neodkazovaná konfigurace nepřímých IP adres (nepřímá návratová Server) na interní Standard Load Balancer
 
-Tato konfigurace je základní konfigurace portů HA. Pravidlo vyrovnávání zatížení portů HA můžete nakonfigurovat na jedné front-endové IP adrese následujícím způsobem:
-1. Při konfiguraci standardního nástroje pro vyrovnávání zatížení zaškrtněte políčko **Porty HA** v konfiguraci pravidla nástroje pro vyrovnávání zatížení.
-2. V **případě plovoucí IP**položky vyberte **zakázáno**.
+Tato konfigurace je základní konfigurace portů HA. Pomocí následujícího postupu můžete nakonfigurovat pravidlo vyrovnávání zatížení portů HA pro jednu front-end IP adresu:
+1. Při konfiguraci Standard Load Balancer zaškrtněte políčko **porty ha** v konfiguraci Load Balancer pravidla.
+2. V případě **plovoucí IP adresy**vyberte **zakázáno**.
 
-Tato konfigurace neumožňuje žádnou jinou konfiguraci pravidla vyrovnávání zatížení na aktuální prostředek nástroje pro vyrovnávání zatížení. Také neumožňuje žádnou jinou konfiguraci prostředků nástroje pro interní nástroj pro vyrovnávání zatížení pro danou sadu back-endových instancí.
+Tato konfigurace nepovoluje žádnou jinou konfiguraci pravidla vyrovnávání zatížení v aktuálním prostředku nástroje pro vyrovnávání zatížení. Pro danou sadu back-endové instance taky neumožňuje žádnou jinou konfiguraci prostředků interního nástroje pro vyrovnávání zatížení.
 
-Kromě tohoto pravidla portů HA však můžete nakonfigurovat veřejný standardní systém vyrovnávání zatížení pro back-endové instance.
+Kromě tohoto pravidla pro porty HA ale můžete nakonfigurovat veřejné Standard Load Balancer pro back-endové instance.
 
-### <a name="a-single-floating-ip-direct-server-return-ha-ports-configuration-on-an-internal-standard-load-balancer"></a>Konfigurace portů HA s jedním plovoucím protokolem IP (Direct Server Return) na interním standardním nástroji pro vyrovnávání zatížení
+### <a name="a-single-floating-ip-direct-server-return-ha-ports-configuration-on-an-internal-standard-load-balancer"></a>Jedna a plovoucí IP adresa (přímá návratová Server) s vysokou dostupností na interní Standard Load Balancer
 
-Podobně můžete nakonfigurovat zařízení pro vyrovnávání zatížení tak, aby používalo pravidlo vyrovnávání zatížení s **portem HA** s jedním front-endem nastavením **plovoucí IP** adresy na **povoleno**. 
+Podobně můžete nakonfigurovat nástroj pro vyrovnávání zatížení tak, aby používal pravidlo vyrovnávání zatížení s **portem ha** s jedním front-endu nastavením **plovoucí IP adresy** na **povoleno**. 
 
-Pomocí této konfigurace můžete přidat další plovoucí pravidla vyrovnávání zatížení IP nebo veřejný nástroj pro vyrovnávání zatížení. Však nelze použít neplovoucí IP, HA porty vyrovnávání zatížení konfigurace nad tuto konfiguraci.
+Pomocí této konfigurace můžete přidat další pravidla vyrovnávání zátěžového vyrovnávání zatížení sítě nebo veřejné nástroje pro vyrovnávání zatížení. V této konfiguraci ale nemůžete použít konfiguraci vyrovnávání zatížení HA s neplovoucími porty IP a vyšší úrovně.
 
-### <a name="multiple-ha-ports-configurations-on-an-internal-standard-load-balancer"></a>Více konfigurací portů HA na interním standardním nástroji pro vyrovnávání zatížení
+### <a name="multiple-ha-ports-configurations-on-an-internal-standard-load-balancer"></a>Více konfigurací HA-ports na interním Standard Load Balancer
 
-Pokud váš scénář vyžaduje, abyste nakonfigurovali více než jeden front-end portu HA pro stejný back-endový fond, můžete provést následující kroky: 
-- Nakonfigurujte více než jednu privátní IP adresu front-endu pro jeden interní prostředek standardního vyrovnávání zatížení.
-- Nakonfigurujte více pravidel vyrovnávání zatížení, kde každé pravidlo má jednu jedinečnou front-endovou IP adresu.
-- Vyberte možnost **porty HA** a nastavte **plovoucí IP** na **Povoleno** pro všechna pravidla vyrovnávání zatížení.
+Pokud váš scénář vyžaduje, abyste pro stejný záložní fond nakonfigurovali více než jeden front-end port vysoké dostupnosti, můžete postupovat takto: 
+- Nakonfigurujte více než jednu privátní IP adresu front-endu pro jeden interní prostředek Standard Load Balancer.
+- Nakonfigurujte více pravidel vyrovnávání zatížení, kde každé pravidlo má jednu jedinečnou IP adresu front-end.
+- Vyberte možnost **porty ha** a pak nastavte **plovoucí IP adresu** na **povoleno** pro všechna pravidla vyrovnávání zatížení.
 
-### <a name="an-internal-load-balancer-with-ha-ports-and-a-public-load-balancer-on-the-same-back-end-instance"></a>Interní správce zatížení s porty HA a veřejným vyvyčovávačem zatížení ve stejné back-endové instanci
+### <a name="an-internal-load-balancer-with-ha-ports-and-a-public-load-balancer-on-the-same-back-end-instance"></a>Interní nástroj pro vyrovnávání zatížení s porty HA a veřejným nástrojem pro vyrovnávání zatížení ve stejné back-endové instanci
 
-Můžete nakonfigurovat *jeden* veřejný prostředek standardního vyrovnávání zatížení pro back-endové prostředky spolu s jedním interním standardním standardním vyvažovačem zatížení s porty HA.
+Můžete nakonfigurovat *jeden* veřejný prostředek Standard Load Balancer pro prostředky back-endu spolu s jednou interní standard Load Balancer s porty ha.
 
 >[!NOTE]
->Tato funkce je momentálně dostupná prostřednictvím šablon Azure Resource Manager, ale není dostupná přes portál Azure.
+>Tato funkce je aktuálně k dispozici prostřednictvím šablon Azure Resource Manager, ale není k dispozici prostřednictvím Azure Portal.
 
 ## <a name="limitations"></a>Omezení
 
-- Pravidla vyrovnávání zatížení portů HA jsou k dispozici pouze pro interní standardní vytápěč zatížení.
-- Kombinace pravidla vyrovnávání zatížení portů HA a pravidla vyrovnávání zatížení portů než HA, které odkazují na stejné konfigurace ipkonfigurace back-endu, není podporováno.
-- Existující fragmenty PROTOKOLU IP budou předány pravidly vyrovnávání zatížení portů HA do stejného cíle jako první paket.  Fragmentace protokolu IP paketu UDP nebo TCP není podporována.
-- Symetrie toku (především pro scénáře nva) je podporována s back-endovou instancí a jednu nic (a jednu konfiguraci IP) pouze při použití, jak je znázorněno na obrázku výše a pomocí pravidel vyrovnávání zatížení portů HA. Není k dispozici v žádném jiném scénáři. To znamená, že dva nebo více prostředků vyrovnávání zatížení a jejich příslušná pravidla činí nezávislá rozhodnutí a nikdy nejsou koordinována. Viz popis a diagram [síťových virtuálních zařízení](#nva). Pokud používáte více nic nebo sendvičování síťového virtuálního počítače mezi veřejné a interní vyrovnávání zatížení, symetrie toku není k dispozici.  Je možné, že tento problém obejdete podle zdroje NAT'ing toku příchozího přenosu dat do IP adresy zařízení, aby odpovědi dorazí na stejné síťové virtuální zařízení.  Důrazně však doporučujeme použít jednu nic a pomocí referenční architektury uvedené v diagramu výše.
+- Pravidla vyrovnávání zatížení portů HA jsou k dispozici pouze pro interní Standard Load Balancer.
+- Kombinace pravidla vyrovnávání zatížení s porty HA a pravidlo vyrovnávání zatížení s porty bez vysoké dostupnosti, které odkazuje na stejný back-end IPConfiguration, nejsou podporovány.
+- Existující fragmenty IP adresy předají pravidla pro vyrovnávání zatížení s porty HA do stejného cíle jako první paket.  Fragmentace IP adres protokolu UDP nebo TCP není podporována.
+- Symetrie flow (primárně pro scénáře síťové virtuální zařízení) je podporována u back-endu instance a jediného síťového rozhraní (a jedné konfigurace protokolu IP) pouze v případě, že se používá, jak je znázorněno v diagramu výše a používá pravidla pro vyrovnávání zatížení portů Není k dispozici v žádném jiném scénáři. To znamená, že dva nebo více Load Balancerch prostředků a jejich příslušných pravidel nezávisle na rozhodnutích a nejsou nikdy koordinovány. Podívejte se na popis a diagram [síťových virtuálních zařízení](#nva). Pokud používáte více síťových adaptérů nebo chcete-li síťové virtuální zařízení mezi veřejným a interním Load Balancer, není k dispozici symetrie Flow.  Můžete to obejít tak, že zdroj NAT'ing příchozí přenos dat zařízení na IP adresu a umožníte doručení odpovědí na stejný síťové virtuální zařízení.  Důrazně však doporučujeme použít jeden síťový adaptér a použít referenční architekturu uvedenou v diagramu výše.
 
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Konfigurace portů HA v interním standardním systému vyrovnávání zatížení](load-balancer-configure-ha-ports.md)
-- [Další informace o standardním balanceru](load-balancer-standard-overview.md)
+- [Konfigurace portů HA na interní Standard Load Balancer](load-balancer-configure-ha-ports.md)
+- [Informace o Standard Load Balancer](load-balancer-standard-overview.md)

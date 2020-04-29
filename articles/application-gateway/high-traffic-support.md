@@ -1,6 +1,6 @@
 ---
-title: Podpora vysokého objemu provozu aplikační brány
-description: Tento článek obsahuje pokyny ke konfiguraci Brány aplikací Azure pro podporu scénářů s vysokým objemem síťového provozu.
+title: Podpora objemu Application Gateway vysokého provozu
+description: Tento článek poskytuje pokyny ke konfiguraci Azure Application Gateway v podpoře scénářů velkého objemu síťových přenosů.
 services: application-gateway
 author: caya
 ms.service: application-gateway
@@ -8,56 +8,56 @@ ms.topic: article
 ms.date: 03/24/2020
 ms.author: caya
 ms.openlocfilehash: 65f404b52a5fc06d8fa5bb5aad291e57fde8caba
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80617207"
 ---
 # <a name="application-gateway-high-traffic-support"></a>Podpora vysokého provozu služby Application Gateway
 
 >[!NOTE]
-> Tento článek popisuje několik doporučených pokynů, které vám pomohou nastavit aplikační bránu pro zpracování dalšího provozu kvůli vysokému objemu provozu, ke kterému může dojít v důsledku krize COVID-19.
+> Tento článek popisuje několik navrhovaných pokynů, které vám pomůžou nastavit Application Gateway pro zpracování dalšího provozu z důvodu vysokého objemu provozu, ke kterému může dojít v důsledku krize COVID-19.
 
-Pomocí brány aplikace s bránou webových aplikací (WEB Application Firewall) můžete škálovatelný a bezpečný způsob správy provozu webových aplikací.
+Pomocí Application Gateway s firewallem webových aplikací (WAF) můžete škálovatelný a zabezpečený způsob správy provozu do webových aplikací.
 
-Následující návrhy vám pomohou nastavit aplikační bránu s WAF pro zpracování dalšího provozu.
+Následující návrhy vám pomůžou nastavit Application Gateway s využitím WAF pro zpracování dalšího provozu.
 
-## <a name="use-the-v2-sku-over-v1-for-its-autoscaling-capabilities-and-performance-benefits"></a>Použití sku v2 přes v1 pro jeho možnosti automatického škálování a výhody výkonu
-Skladová položka v2 nabízí automatické škálování, aby bylo zajištěno, že vaše aplikační brána může vertikálně navýšit kapacitu s nárůstem provozu. Nabízí také další významné výhody výkonu, jako je například 5x lepší výkon tls snížení zátěže, rychlejší nasazení a aktualizace časy, redundance zóny a další ve srovnání s v1. Další informace naleznete v naší [dokumentaci v2](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant). 
+## <a name="use-the-v2-sku-over-v1-for-its-autoscaling-capabilities-and-performance-benefits"></a>Pro své možnosti automatického škálování a výhody výkonu použijte SKU verze V2 přes v1.
+SKU verze 2 nabízí automatické škálování, aby bylo zajištěno, že se vaše Application Gateway může vertikálně škálovat při zvyšování provozu. Nabízí taky další významné výkonnostní výhody, jako je pětinásobné lepší výkon při snižování zátěže TLS, rychlejší nasazení a časy aktualizace, redundance zóny a další v porovnání s v1. Další informace najdete v [dokumentaci ke v2](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant). 
 
-## <a name="set-maximum-instance-count-to-the-maximum-possible-125"></a>Nastavte maximální počet instancí na maximální možnou hodnotu (125)
+## <a name="set-maximum-instance-count-to-the-maximum-possible-125"></a>Nastavit maximální počet instancí na maximální možnou hodnotu (125)
  
-Za předpokladu, že máte aplikační bránu v2 skladovou položku, nastavení maximálnípočet instancí na maximální možnou hodnotu 125 umožňuje aplikační brány horizontální navýšení kapacity podle potřeby. To umožňuje zpracovat možný nárůst provozu na vaše aplikace. Bude vám účtována pouze kapacita jednotek (CU), které používáte.  
+Za předpokladu, že máte SKU Application Gateway v2, nastavení maximálního počtu instancí na maximální možnou hodnotu 125 umožňuje Application Gateway horizontální navýšení kapacity v případě potřeby. To umožňuje, aby mohla zpracovávat možné zvýšení provozu do vašich aplikací. Budou se vám účtovat jenom jednotky kapacity (kapacitní jednotky), které použijete.  
 
-## <a name="set-your-minimum-instance-count-based-on-your-average-cu-usage"></a>Nastavte minimální počet instancí na základě průměrného využití CU
+## <a name="set-your-minimum-instance-count-based-on-your-average-cu-usage"></a>Nastavte minimální počet instancí na základě průměrného využití v množství CU
 
-Za předpokladu, že máte aplikační bránu v2 Skladové položky, automatické škálování trvá šest až sedm minut horizontálního navýšení kapacity. S vyšší minimální počet instancí, aplikační brána může lépe zpracovat provoz při zvýšení zatížení, protože špička v provozu nevyžaduje operaci automatického škálování.  
+Za předpokladu, že máte SKU Application Gateway v2, bude automatické škálování trvat šest až sedm minut. S vyšším minimálním počtem instancí může Application Gateway lépe zpracovávat přenosy při zvýšení zatížení, protože špička v provozu nevyžaduje operaci automatického škálování.  
 
-## <a name="alert-if-a-certain-metric-surpasses-75-of-average-cu-utilization"></a>Výstraha, pokud určitá metrika překročí 75 % průměrného využití CU 
-Podrobné vysvětlení našich metrik a dalších návodů najdete v [dokumentaci k metrikám aplikační brány.](https://docs.microsoft.com/azure/application-gateway/application-gateway-metrics#metrics-visualization) 
+## <a name="alert-if-a-certain-metric-surpasses-75-of-average-cu-utilization"></a>Výstraha, pokud určitá metrika překročí 75% průměrného využití hodnoty CU 
+Podrobné vysvětlení našich metrik a dalších návodů najdete v [dokumentaci k Application Gatewaym metrikám](https://docs.microsoft.com/azure/application-gateway/application-gateway-metrics#metrics-visualization) . 
 
-### <a name="example-setting-up-an-alert-on-75-of-average-cu-usage"></a>Příklad: Nastavení výstrahy na 75 % průměrné hospo- využití CU
+### <a name="example-setting-up-an-alert-on-75-of-average-cu-usage"></a>Příklad: nastavení výstrahy na 75% průměrného množství CU využití
 
-Tento příklad ukazuje, jak pomocí portálu Azure nastavit výstrahu, když je dosaženo 75 % průměrného využití CU. 
-1. Přejděte do **brány aplikace**.
-2. Na levém panelu vyberte **metriky** na kartě **Monitorování.** 
+V tomto příkladu se dozvíte, jak použít Azure Portal k nastavení upozornění, když je dosaženo 75% průměrného využití. 
+1. Přejděte na **Application Gateway**.
+2. Na levém panelu vyberte na kartě **monitorování** možnost **metriky** . 
 3. Přidejte metriku pro **průměrné aktuální výpočetní jednotky**. 
 ![Nastavení metriky WAF](./media/application-gateway-covid-guidelines/waf-setup-metrics.png)
-4. Pokud jste nastavili minimální počet instancí jako průměrné využití CU, pokračujte a nastavte upozornění, když se používá 75 % minimálních instancí. Pokud je například průměrné využití 10 CU, nastavte výstrahu na 7,5 CU. To vás upozorní, pokud se zvyšuje využití a dává vám čas reagovat. Můžete zvýšit minimum, pokud si myslíte, že tento provoz bude udržován, aby vás upozornil, že provoz může být rostoucí. 
-![Nastavení výstrahy WAF](./media/application-gateway-covid-guidelines/waf-setup-monitoring-alert.png)
+4. Pokud jste nastavili minimální počet instancí, který bude odpovídat průměrnému využití, pokračujte a nastavte výstrahu, když se vaše minimální instance 75% využije. Pokud je například průměrné využití 10 kapacitní jednotky, nastavte upozornění na 7,5 kapacitní jednotky. Tato výstraha vás upozorní, pokud se využití zvyšuje a poskytuje čas na odpověď. Pokud si myslíte, že se tento provoz bude zabývat, budete moct upozornit na to, že se provoz může zvýšit. 
+![Nastavení upozornění WAF](./media/application-gateway-covid-guidelines/waf-setup-monitoring-alert.png)
 
 > [!NOTE]
-> Výstrahu můžete nastavit tak, aby se vyskytovala v nižším nebo vyšším procentu využití CU v závislosti na tom, jak citlivá má být na potenciální špičky provozu.
+> V závislosti na tom, jakým způsobem chcete mít k dispozici možnosti provozu, můžete nastavit, aby se tato výstraha nastavila na nižší nebo vyšší procento využití.
 
-## <a name="set-up-waf-with-geofiltering-and-bot-protection-to-stop-attacks"></a>Nastavení WAF s geofiltrováním a ochranou botů pro zastavení útoků
-Pokud chcete další vrstvu zabezpečení před vaší aplikací, použijte možnosti brány aplikace WAF_v2 pro waf. SKU v2 můžete nakonfigurovat tak, aby umožňovala přístup k vašim aplikacím pouze z dané země nebo zemí. Nastavíte vlastní pravidlo WAF explicitně povolit nebo blokovat provoz na základě geolokace. Další informace naleznete v [tématu vlastní pravidla filtrování geografické konfigurace](https://docs.microsoft.com/azure/web-application-firewall/ag/geomatch-custom-rules) a [jak nakonfigurovat vlastní pravidla na WAF_v2 skladové položky brány aplikace prostřednictvím prostředí PowerShell](https://docs.microsoft.com/azure/web-application-firewall/ag/configure-waf-custom-rules).
+## <a name="set-up-waf-with-geofiltering-and-bot-protection-to-stop-attacks"></a>Nastavení WAF s využitím pro infiltrování a ochranu robota k zastavení útoků
+Pokud chcete před aplikací použít další vrstvu zabezpečení, použijte Application Gateway WAF_v2 SKU pro funkce WAF. SKLADOVOU položku v2 můžete nakonfigurovat tak, aby povolovala přístup pouze k vašim aplikacím z dané země nebo země. Nastavili jste vlastní pravidlo WAF k explicitnímu povolení nebo blokování provozu na základě geografického umístění. Další informace najdete v tématu věnovaném [infiltrování vlastních pravidel](https://docs.microsoft.com/azure/web-application-firewall/ag/geomatch-custom-rules) a [způsobu konfigurace vlastních pravidel pro Application Gateway WAF_v2 SKU prostřednictvím PowerShellu](https://docs.microsoft.com/azure/web-application-firewall/ag/configure-waf-custom-rules).
 
-Povolte ochranu botů a blokujte známé špatné roboty. To by mělo snížit množství provozu dostat do aplikace. Další informace naleznete v [tématu ochrana bot s pokyny k nastavení](https://docs.microsoft.com/azure/web-application-firewall/ag/configure-waf-custom-rules).
+Povolí ochranu robotů blokující známé chybné roboty. To by mělo snížit objem provozu, který se bude připravovat do vaší aplikace. Další informace najdete v tématu [ochrana robota s pokyny k instalaci](https://docs.microsoft.com/azure/web-application-firewall/ag/configure-waf-custom-rules).
 
 ## <a name="turn-on-diagnostics-on-application-gateway-and-waf"></a>Zapnutí diagnostiky na Application Gateway a WAF
 
-Diagnostické protokoly umožňují zobrazit protokoly brány firewall, protokoly výkonu a protokoly přístupu. Tyto protokoly v Azure můžete použít ke správě a odstraňování problémů s aplikačními bránami. Další informace naleznete v naší [diagnostické dokumentaci](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics#diagnostic-logging). 
+Diagnostické protokoly umožňují zobrazit protokoly brány firewall, protokoly výkonu a protokoly přístupu. Pomocí těchto protokolů v Azure můžete spravovat a řešit potíže s aplikačními bránami. Další informace najdete v naší [dokumentaci k diagnostice](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics#diagnostic-logging). 
 
 ## <a name="set-up-an-tls-policy-for-extra-security"></a>Nastavení zásad TLS pro další zabezpečení
-Ujistěte se, že používáte nejnovější verzi zásad TLS[(AppGwSslPolicy20170401S).](https://docs.microsoft.com/azure/application-gateway/application-gateway-ssl-policy-overview#appgwsslpolicy20170401s) To vynucuje TLS 1.2 a silnější šifry. Další informace naleznete [v tématu konfigurace verzí zásad TLS a šifrovacích sad prostřednictvím prostředí PowerShell](https://docs.microsoft.com/azure/application-gateway/application-gateway-configure-ssl-policy-powershell).
+Ujistěte se, že používáte nejnovější verzi zásad TLS ([AppGwSslPolicy20170401S](https://docs.microsoft.com/azure/application-gateway/application-gateway-ssl-policy-overview#appgwsslpolicy20170401s)). Tím se vynutí TLS 1,2 a silnější šifry. Další informace najdete v tématu [Konfigurace verzí zásad TLS a šifrovacích sad přes PowerShell](https://docs.microsoft.com/azure/application-gateway/application-gateway-configure-ssl-policy-powershell).

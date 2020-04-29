@@ -1,6 +1,6 @@
 ---
-title: Monitorování a správa relací Azure Bastion | Dokumenty společnosti Microsoft
-description: V tomto článku se dozvíte, jak vybrat probíhající relaci a vynutit odpojení nebo odstranění.
+title: Monitorování a Správa relací Azure bastionu | Microsoft Docs
+description: V tomto článku se dozvíte, jak vybrat průběžnou relaci a vynutit – odpojit nebo odstranit.
 services: bastion
 author: charwen
 ms.service: bastion
@@ -8,49 +8,49 @@ ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: charwen
 ms.openlocfilehash: 6bf80be4868295145fa79ae29d5322181b6131d1
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80619180"
 ---
-# <a name="session-monitoring-and-management-for-azure-bastion"></a>Monitorování a správa relací pro Azure Bastion
+# <a name="session-monitoring-and-management-for-azure-bastion"></a>Monitorování a Správa relací pro Azure bastionu
 
-Jakmile se služba Bastion zřídí a nasadí ve vaší virtuální síti, můžete ji použít k bezproblémovému připojení k libovolnému virtuálnímu počítači v této virtuální síti. Když se uživatelé připojují k úlohám, Azure Bastion se dá použít ke sledování vzdálených relací a k rychlým akcím správy. Monitorování relací Azure Bastion umožňuje zobrazit, kteří uživatelé jsou připojeni ke kterým virtuálním počítačům. Zobrazuje IP adresu, ze které se uživatel připojil, jak dlouho byl připojen a kdy se připojil. Prostředí pro správu relací umožňuje vybrat probíhající relaci a vynutit odpojení nebo odstranění relace za účelem odpojení uživatele od probíhající relace.
+Jakmile se služba bastionu zřídí a nasadí ve vaší virtuální síti, můžete ji použít k bezproblémovému připojení k libovolnému virtuálnímu počítači v této virtuální síti. Uživatelům, kteří se připojují k úlohám, se dá Azure bastionu použít k monitorování vzdálených relací a k akcím v rychlé správě. Monitorování relací Azure bastionu umožňuje zobrazit, kteří uživatelé jsou připojení k virtuálním počítačům. Zobrazuje IP adresu, ze které se uživatel připojil, jak dlouho byla připojena a kdy se připojila. Prostředí pro správu relací umožňuje vybrat probíhající relaci a vynuceně odpojit nebo odstranit relaci, aby bylo možné odpojit uživatele od probíhající relace.
 
-## <a name="monitor-remote-sessions"></a><a name="monitor"></a>Sledování vzdálených relací
+## <a name="monitor-remote-sessions"></a><a name="monitor"></a>Monitorování vzdálených relací
 
-1. Na [webu Azure Portal](https://portal.azure.com)přejděte na prostředek Azure Bastion a na stránce Azure Bastion vyberte **Sessions.**
+1. V [Azure Portal](https://portal.azure.com)přejděte do svého prostředku Azure bastionu a vyberte **relace** na stránce Azure bastionu.
 
-   ![Relace](./media/session-monitoring/sessions.png)
-2. Na stránce **Relace** můžete zobrazit probíhající vzdálené relace na pravé straně.
+   ![rušování](./media/session-monitoring/sessions.png)
+2. Na stránce **relace** uvidíte na pravé straně průběžné vzdálené relace.
 
-   ![zobrazit relaci](./media/session-monitoring/view-session.png)
-3. Výběrem **možnosti Aktualizovat** zobrazíte aktualizovaný seznam vzdálených relací. Když vyberete Aktualizovat, Azure Bastion načte nejnovější informace o monitorování a aktualizuje je na portálu.
+   ![Zobrazit relaci](./media/session-monitoring/view-session.png)
+3. Kliknutím na **aktualizovat** zobrazíte aktualizovaný seznam vzdálených relací. Když vyberete možnost aktualizovat, Azure bastionu načte nejnovější informace o monitorování a aktualizuje ji na portálu.
 
    ![refresh](./media/session-monitoring/refresh.png)
 
 >[!IMPORTANT]
-> Povolte port 4443 pro příchozí provoz ze Správce brány pro monitorování relací pro práci.
+> Povolte port 4443 pro příchozí provoz z Správce brány, aby monitorování relace fungovalo.
 >
 
 ## <a name="delete-or-force-disconnect-an-ongoing-remote-session"></a><a name="view"></a>Odstranění nebo vynucení odpojení probíhající vzdálené relace
 
-Můžete vybrat sadu relací a násilím je odpojit. Následující kroky ukazují, jak odstranit vzdálené relace:
+Můžete vybrat sadu relací a vynutit jejich odpojení. Následující kroky ukazují, jak odstranit vzdálené relace:
 
-1. Přejděte na prostředek Azure Bastion a na stránce Azure Bastion vyberte **relace.**
+1. Přejděte do svého prostředku Azure bastionu a vyberte **relace** na stránce Azure bastionu.
 
    ![navigate](./media/session-monitoring/navigate.png)
-2. Po výběru možnosti Relace se zobrazí seznam vzdálených relací.
+2. Po výběru relací se zobrazí seznam vzdálených relací.
 
-   ![relace seznamu](./media/session-monitoring/list.png)
-3. Vyberte určitou vzdálenou relaci, potom vyberte tři elipsy na pravém konci řádku relace a pak vyberte **Odstranit**.
+   ![výpis relací](./media/session-monitoring/list.png)
+3. Vyberte konkrétní vzdálenou relaci, vyberte tři tečky na konci řádku relace na pravé straně a pak vyberte **Odstranit**.
 
    ![delete](./media/session-monitoring/delete.png)
-4. Vyberete-li možnost Odstranit, bude vzdálená relace odpojena a uživateli se ve vzdálené relaci zobrazí zpráva "Byli jste odpojeni".
+4. Když vyberete odstranit, Vzdálená relace se odpojí a uživateli se zobrazí zpráva, že jste byli odpojeni ve vzdálené relaci.
 
-   ![Odpojit](./media/session-monitoring/disconnect.png)
+   ![dobu](./media/session-monitoring/disconnect.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si nejčastější dotazy k [baště](bastion-faq.md).
+Přečtěte si [Nejčastější dotazy k bastionu](bastion-faq.md).

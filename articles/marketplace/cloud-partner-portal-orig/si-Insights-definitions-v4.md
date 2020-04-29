@@ -1,6 +1,6 @@
 ---
-title: Definice přehledů prodejců
-description: Poskytuje definice pro mnoho termínů, které najdete v Seller Insights
+title: Definice pro prodejce – přehledy
+description: Poskytuje definice pro spoustu podmínek, které najdete v části prodejce Insights.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,100 +8,100 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: dsindona
 ms.openlocfilehash: 082e5f13ae44a58088b7728103415dbfa5a969f1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80280129"
 ---
-<a name="seller-insights-definitions"></a>Definice přehledů prodejců
+<a name="seller-insights-definitions"></a>Definice pro prodejce – přehledy
 =======================
 
-Následující tabulka obsahuje definice pro mnoho termínů používaných v Přehledech prodejce.
+Následující tabulka poskytuje definice pro mnoho termínů používaných v programu prodejce Insights.
 
-|  **Termín**                 |  **Definice**                                                                                                                              |
+|  **Doby**                 |  **Definice**                                                                                                                              |
 |  --------------------------------------------    |  ---------------------------------------------------------------------------------------------------------------------------------           |
-| **Typ licence Azure**                               | Typ licenční smlouvy, kterou zákazníci používají k nákupu Azure.  Také známý jako Kanál.                                                  |
-| **Typ licence Azure: Poskytovatel cloudových řešení**      | Koncový zákazník pořizuje Azure a vaši nabídku marketplace prostřednictvím svého poskytovatele cloudových řešení, který jedná jako váš prodejce.                 |
-| **Typ licence Azure: Enterprise**                   | Koncový zákazník pořizuje Azure a vaši nabídku marketplace prostřednictvím smlouvy Enterprise, podepsané přímo se společností Microsoft.                  |
-| **Typ licence Azure: Enterprise prostřednictvím prodejce**  | Koncový zákazník pořizuje Azure a vaši nabídku marketplace prostřednictvím prodejce, který usnadňuje jejich smlouvu Enterprise s Microsoftem.     |
-| **Typ licence Azure: Plaťte průběžně**                | Koncový zákazník pořizuje Azure a vaši nabídku marketplace prostřednictvím smlouvy "Pay as You Go", podepsané přímo se společností Microsoft.                |
-| **Částka poplatku (CC)**                              | Částka účtovaná zákazníkovi v *měně zákazníka* (CC) pro fakturaci.                                                                 |
-| **Částka poplatku (PC)**                               | Částka účtovanou zákazníkovi v *měně výplaty* (PC).                                                                      |
-| **Datum nabíjení**                                      | Datum výpočtu poplatku zákazníka (obvykle bezprostředně po období používání).                                             |
-| **Název instance cloudu**                              | Microsoft Cloud, ve kterém došlo k nasazení virtuálního počítače.                                   |
-| **Název instance cloudu: Azure Global**                | Veřejný globální cloud Microsoftu.                           |
-| **Název instance cloudu: Azure Government**        | Microsoft pro jednu z následujících vlád: Čína, Německo nebo Spojené státy americké.                           |
-| **Stav kolekce**  | Pro konkrétní poplatek nejnovější stav životního cyklu fakturace a sbírky.  Stav může být například shromažďování probíhá, shromažďovány nebo refundace.                  |
-| **Velikost jádra**  | Počet virtuálních jader prezentovaných virtuálním počítačem, na kterých nabídka běží.               |
-| **Město zákazníka**  | Název města poskytnutý zákazníkem. To se může lišit od města v předplatném Azure zákazníka.  |
-| **Jazyk komunikace se zákazníky**        | Jazyk preferovaný zákazníkem pro komunikaci.                                  |
-| **Název společnosti odběratele**                  | Název společnosti poskytnutý zákazníkem. To se může lišit od města v předplatném Azure zákazníka.                                  |
-| **Země zákazníka**                       | Název země nebo oblasti poskytnutý zákazníkem.  To se může lišit od země nebo oblasti v předplatném Azure zákazníka.                               |
-| **Měna zákazníka (CC)**                 | Měna upřednostňovaná zákazníkem pro stanovení cen a fakturaci.                            |
-| **E-mail pro zákazníky**                         | E-mailová adresa poskytnutá koncovým zákazníkem.  To se může lišit od e-mailové adresy v předplatném Azure zákazníka.                   |
-| **Jméno zákazníka**                              | Křestní jméno poskytnuté zákazníkem.  To se může lišit od názvu uvedeného v předplatném Azure zákazníka.                    |
-| **Příjmení zákazníka**                               | Příjmení poskytnuté zákazníkem.  To se může lišit od názvu uvedeného v předplatném Azure zákazníka.                    |
-| **ID zákazníka**                               | Jedinečný identifikátor přiřazený zákazníkovi.  Zákazník může mít nula nebo více předplatných Azure Marketplace.                    |
-| **Typ platby odběratele**                            | Typ platebního prostředku používaného zákazníkem.  Může se například jedná o kartu, fakturu nebo elektronickou kontrolu.                             |
-| **PSČ zákazníka**                             | PSČ poskytnuté zákazníkem.  To se může lišit od PSČ poskytnutév předplatnéazure zákazníka.                                                                 |
-| **Stát zákazníka**                                   | Stát (adresa) poskytnutý zákazníkem.  To se může lišit od příjmení uvedeného v předplatném Azure zákazníka.                                                                 |
-| **Datum nabytí**                                    | První datum, kdy zákazník zakoupil jakoukoli vyznavatelku.                 |
-| **Datum ztráty**                                        | Poslední datum, kdy zákazník zrušil poslední ze všech dříve zakoupených nabídek.                                                         |
-| **Odhadované rozšířené nabití (CC)**                   | Odhadovaný rozšířený poplatek za množství jednotek použití pro danou skladovou položku (v měně zákazníka). Tato hodnota nemusí být přesná z důvodu chyb zaokrouhlení nebo zkrácení.                            |
-| **Odhadované rozšířené nabití (PC)**                   | Vypočítá se odhadovaný rozšířený poplatek za množství jednotek použití pro danou skladovou položku na základě převodu cizí měny k datu použití (v měně vydavatele). Tato hodnota nemusí být přesná z důvodu chyb zaokrouhlení nebo zkrácení.                  |
-| **Odhadovaná výplata (PC)**                            | Odhadovaná platba za množství jednotek použití pro danou skladovou položku na základě převodu cizí měny k datu výpočtu použití (v měně vydavatele). Tato hodnota nemusí být přesná z důvodu chyb zaokrouhlení nebo zkrácení.                        |
-| **Odhadovaná cena (PC)**                             | Vypočítá se odhadovaná cena za jednotku využití pro danou skladovou položku na základě převodu cizí měny k datu použití (v měně vydavatele). Tato hodnota nemusí být přesná z důvodu chyb zaokrouhlení nebo zkrácení.                                             |
-| **Je nový zákazník**                                  | Hodnota vás upozorní, pokud se jedná o nového zákazníka, který poprvé spotřebuje nebo zakoupí jednu nebo více nabídek marketplace (nebo ne).  Hodnota bude "Ano", pokud se jedná o stejný kalendářní měsíc pro "Datum získání".  Hodnota bude "Ne", pokud zákazník zakoupil některou z vašich nabídek před nahlášeným kalendářním měsícem.                                                       |
-| **Je náhled SKU**                                  | Hodnota vás upozorní, pokud jste označili skladovou položku jako "náhled". Hodnota bude "Ano", pokud skladová položka byla označena odpovídajícím způsobem a pouze předplatná Azure autorizované můžete nasadit a použít tuto bitovou kopii.  Hodnota bude "Ne", pokud skladová položka nebyla identifikována jako "náhled".                                          |
-| **Je propagační kontakt Opt In**                   | Hodnota vás upozorní, pokud se zákazník aktivně přihlásil k propagačnímu kontaktu od vydavatelů. V tuto chvíli nepředstavujeme možnost zákazníkům, takže jsme uvedli "ne" plošně. Po nasazení této funkce začneme odpovídajícím způsobem aktualizovat.                                          |
-| **Typ licence Marketplace**                         | Způsob fakturace nabídky Marketplace.                             |
-| **Typ licence Marketplace: Fakturovaný prostřednictvím Azure**   | Společnost Microsoft je vaším zástupcem pro tuto nabídku Marketplace a účtuje zákazníkům vaším jménem. (Platební karta PAYG nebo podniková faktura)       |
-| **Typ licence Marketplace: Přineste si vlastní licenci** | Virtuální ho virtuálního uživatele vyžaduje licenční klíč poskytnutý zákazníkem k nasazení. Společnost Microsoft neúčtuje zákazníkům za jejich použití těchto nabídek Marketplace. |
-| **Typ licence Marketplace: Zdarma**                   | Nabídka Marketplace je nakonfigurována tak, aby byla zdarma pro všechny uživatele. Společnost Microsoft neúčtuje zákazníkům za jejich použití této nabídky Marketplace.    |
-| **Typ licence Marketplace: Microsoft jako prodejce**  | Společnost Microsoft je vaším prodejcem pro tuto nabídku Marketplace.                               |
-| **Název společnosti předplatného Marketplace**  | Název společnosti poskytnutý zákazníkem v jejich předplatném Azure.                           |
-| **ID předplatného Marketplace**            | Jedinečný identifikátor přidružený k předplatnému Azure, které zákazník použil k nákupu vaší nabídky marketplace.  Dříve se jednalo o identifikátor GUID předplatného Azure.  V některých případech, jako je objednávka SAAS, není vyžadováno žádné předplatné.           |
-| **Poplatek společnosti Microsoft (CC)**                               | Poplatek společnosti Microsoft za transakci v měně zákazníka.                              |
+| **Typ licence Azure**                               | Typ licenční smlouvy používané zákazníky k nákupu Azure.  Označuje se také jako kanál.                                                  |
+| **Typ licence Azure: Cloud Solution Provider**      | Koncový zákazník si nabídne Azure a vaši nabídku na webu Marketplace prostřednictvím poskytovatele Cloud Solution Provider, který funguje jako váš prodejce.                 |
+| **Typ licence Azure: Enterprise**                   | Koncový zákazník získává Azure a nabídku na webu Marketplace prostřednictvím smlouva Enterprise podepsaného přímo s Microsoftem.                  |
+| **Typ licence Azure: Enterprise přes prodejce**  | Koncový zákazník si nabídne Azure a vaši nabídku na webu Marketplace prostřednictvím prodejce, který usnadní jejich smlouva Enterprise s Microsoftem.     |
+| **Typ licence Azure: průběžné platby**                | Koncový zákazník získává Azure a nabídku na webu Marketplace prostřednictvím smlouvy s průběžnými platbami, která se podepisuje přímo s Microsoftem.                |
+| **Částka poplatků (CC)**                              | Částka účtovaná zákazníkovi v *měně zákazníka* (CC) pro fakturaci.                                                                 |
+| **Částka poplatků (PC)**                               | Částka účtovaná zákazníkovi v *měně pro výběr* (PC).                                                                      |
+| **Datum účtování**                                      | Datum výpočtu poplatků zákazníka (obvykle za obdobím použití)                                             |
+| **Název cloudové instance**                              | Microsoft Cloud, ve kterém došlo k nasazení virtuálního počítače.                                   |
+| **Název instance cloudu: globální Azure**                | Veřejný globální Cloud Microsoftu.                           |
+| **Název instance cloudu: Azure Government**        | Cloudy Microsoftu pro konkrétní státní správu pro jednu z následujících vlád: Čína, Německo nebo USA v Americe.                           |
+| **Stav shromažďování**  | Pro konkrétní poplatek se jedná o poslední stav platebního cyklu a životního cyklu shromažďování.  Stav může být například probíhá shromažďování, shromažďování nebo refundace.                  |
+| **Základní velikost**  | Počet virtuálních jader prezentovaných virtuálním počítačem, na kterém je nabídka spuštěná.               |
+| **Město zákazníka**  | Název města, který zadal zákazník. To může být jiné než město v předplatném Azure zákazníka.  |
+| **Jazyk zákaznické komunikace**        | Jazyk upřednostňovaný zákazníkem pro komunikaci.                                  |
+| **Název společnosti zákazníka**                  | Název společnosti poskytnutý zákazníkem To může být jiné než město v předplatném Azure zákazníka.                                  |
+| **Země zákazníka**                       | Název země nebo oblasti, kterou zadal zákazník.  To může být jiné než země nebo oblast v předplatném Azure zákazníka.                               |
+| **Zákaznická měna (CC)**                 | Měna, kterou zákazník upřednostňuje pro ceny a fakturaci.                            |
+| **E-mail zákazníka**                         | E-mailová adresa poskytnutá koncovým zákazníkem  Může se lišit od e-mailové adresy v předplatném Azure zákazníka.                   |
+| **Křestní jméno zákazníka**                              | Křestní jméno zadané zákazníkem.  Může se lišit od názvu uvedeného v předplatném Azure zákazníka.                    |
+| **Příjmení zákazníka**                               | Příjmení zadané zákazníkem  Může se lišit od názvu uvedeného v předplatném Azure zákazníka.                    |
+| **ID zákazníka**                               | Jedinečný identifikátor přiřazený k zákazníkovi.  Zákazník může mít nula nebo více Azure Marketplace předplatných.                    |
+| **Typ platby zákazníka**                            | Typ platebního nástroje, který používá zákazník  Může to být například karta, faktura nebo elektronická kontroly.                             |
+| **Poštovní směrovací číslo zákazníka**                             | Poštovní směrovací číslo poskytnuté zákazníkem  To může být jiné než poštovní směrovací číslo poskytované v rámci předplatného Azure zákazníka.                                                                 |
+| **Stav zákazníka**                                   | Stav (adresa) poskytovaný zákazníkem.  To může být jiné než poslední jméno, které jste zadali v předplatném Azure zákazníka.                                                                 |
+| **Datum získání**                                    | První datum, kdy si zákazník koupil jakoukoli nabídku publikovanou vámi                 |
+| **Datum ztráty**                                        | Poslední datum, kdy zákazník zrušil poslední z předchozích nabídek, byl zakoupen.                                                         |
+| **Odhadované rozšířené poplatky (CC)**                   | Odhadované rozšířené náklady na množství jednotek využití pro danou skladovou jednotku (v měně zákazníka). Tato hodnota může být nepřesná, protože došlo k chybám zaokrouhlení nebo zkrácení.                            |
+| **Odhadované rozšířené poplatky (PC)**                   | Odhadované rozšířené náklady na množství jednotek využití pro danou skladovou jednotku na základě konverze cizího Exchange při použití data se vypočítávají (v měně vydavatele). Tato hodnota může být nepřesná, protože došlo k chybám zaokrouhlení nebo zkrácení.                  |
+| **Odhadovaný výběr (PC)**                            | Odhadovaná platba za množství jednotek využití pro danou skladovou jednotku na základě konverze cizí směny k datu, kdy se využití počítá (v měně vydavatele). Tato hodnota může být nepřesná, protože došlo k chybám zaokrouhlení nebo zkrácení.                        |
+| **Odhadovaná cena (PC)**                             | Odhadovaná cena jednotky využití pro danou SKLADOVOU položku, která je vypočítána na základě konverze cizího směnného data, se počítá (v měně vydavatele). Tato hodnota může být nepřesná, protože došlo k chybám zaokrouhlení nebo zkrácení.                                             |
+| **Je nový zákazník**                                  | Tato hodnota vám umožní zjistit, jestli se jedná o nového zákazníka, který spotřebovává nebo kupuje jednu nebo více nabídek na webu Marketplace poprvé (nebo ne).  Hodnota bude "Ano", pokud se jedná o stejný kalendářní měsíc pro "datum získání".  Tato hodnota bude "ne", pokud zákazník zakoupil některou z vašich nabídek před nahlášeným kalendářním měsícem.                                                       |
+| **Je verze Preview SKU**                                  | Tato hodnota vám umožní zjistit, jestli jste SKU označili jako "Preview". Tato hodnota bude "Ano", pokud je tato skladová položka označena příznakem a je možné ji nasadit a použít pouze k předplatným Azure autorizovaným službou.  Pokud nebyla položka SKU identifikována jako "Preview", bude hodnota "ne".                                          |
+| **Je propagační kontaktní osoba v**                   | Tato hodnota vám umožní zjistit, jestli se zákazník aktivně přihlásil k propagačnímu kontaktu od vydavatelů. V tuto chvíli Neprezentujeme možnost pro zákazníky, takže jsme na vývěsce uvedli "ne". Po nasazení této funkce se odpovídajícím způsobem spustí aktualizace.                                          |
+| **Typ licence Marketplace**                         | Způsob fakturace nabídky Marketplace                             |
+| **Typ licence Marketplace: účtuje se přes Azure.**   | Microsoft je vaším agentem pro tuto nabídku na webu Marketplace a účtuje zákazníky vaším jménem. (Buď platební karta PAYG, nebo faktura na podnikové straně)       |
+| **Typ licence Marketplace: Přineste si vlastní licenci** | Virtuální počítač vyžaduje k nasazení licenční klíč poskytnutý zákazníkem. Společnost Microsoft neúčtuje zákazníkům za využití této nabídky na webu Marketplace. |
+| **Typ licence Marketplace: Free**                   | Nabídka Marketplace je nakonfigurovaná tak, aby byla pro všechny uživatele volná. Společnost Microsoft neúčtuje zákazníkům za využití této nabídky na webu Marketplace.    |
+| **Typ licence Marketplace: Microsoft jako prodejce**  | Microsoft je prodejcem této nabídky na webu Marketplace.                               |
+| **Název společnosti pro předplatné Marketplace**  | Název společnosti, který zákazník zadal ve svém předplatném Azure.                           |
+| **ID předplatného Marketplace**            | Jedinečný identifikátor přidružený k předplatnému Azure, který zákazník použil k nákupu vaší nabídky na webu Marketplace.  Dřív byl identifikátor GUID předplatného Azure.  V některých případech jako SAAS objednávka není nutné žádné předplatné.           |
+| **Poplatek za společnost Microsoft (CC)**                               | Poplatek za Microsoft v transakci v měně zákazníka                              |
 | **Název nabídky**                                | Název nabídky Marketplace.                                                             |
-| **Typ nabídky**                                | Typ nabídky Microsoft Marketplace.  Může se například spravovanou aplikací, licencí virtuálních strojů nebo kontejneru.                           |
-| **Datum zrušení objednávky**                         | Datum zrušení objednávky marketplace.                                                       |
-| **ID objednávky**                                  | Jedinečný identifikátor objednávky zákazníka pro vaši službu Marketplace.  Nabídky založené na využití virtuálního počítače nejsou přidruženy k objednávce.                 |
-| **Datum nákupu objednávky**                       | Datum vytvoření marketplace objednávky.                                                        |
-| **Order Quantity**                       | Množství objednávek pro stejnou skladovou položku přidruženou k předplatnému Azure.  Pro objednávky SAAS představuje počet licencí přidružených k této instanci objednávky.                                            |
-| **Stav objednávky**                              | Stav objednávky Marketplace v době poslední aktualizace dat.  Objednávka může být například aktivní nebo zrušena.             |
-| **Stav objednávky: Aktivní**                           | Zákazník si objednávku zakoupil a nezrušil její objednávku.   |
-| **Stav objednávky: Zrušeno**                        | Zákazník již dříve zakoupil objednávku a následně její objednávku zrušil.        |
-| **Částka výplaty (PC)**                             | Částka, která vám byla vyplacena, ve vaší preferované výplatní měně (PC).                                       |
-| **Výplatní měna (PC)**                           | Měna použitá pro výplaty.                                                                |
-| **Datum výplaty**                                    | Datum odeslání žádosti o platbu od společnosti Microsoft vybrané finanční instituci.                                                                         |
-| **Stav výplaty**                                  | Stav výplaty v době poslední aktualizace dat.                                   |
-| **Stav výplaty: Probíhá**               | Transakce není připravena k výplatě. (Další informace naleznete v tématu Stav kolekce)                             |
-| **Stav výplaty: Vyplaceno**                          | Transakce byla zahrnuta do výpočtu minulé výplaty. Kladné hodnoty jsou placeny a záporné hodnoty jsou započteny proti celkové splatné částce. |
-| **Stav výplaty: Nadcházející výplata**                   | Transakce je připravena k výplatě a bude zahrnuta do dalšího dostupného výpočtu výplaty.                      |
-| **Cena (CC)**                                   | Cena za jednotku použití pro danou skladovou položku (v měně zákazníka).                                                                  |
-| **E-mail poskytovatele**                                 | E-mailová adresa poskytovatele zapojeného do vztahu mezi společností Microsoft a koncovým zákazníkem. Pokud je zákazníkem podnik prostřednictvím prodejce, bude to prodejce.  Pokud se jedná o poskytovatele cloudových řešení (CSP), bude to zprostředkovatel ověřny.                                                                 |
-| **Název zprostředkovatele**                                 | Název zprostředkovatele zapojeného do vztahu mezi společností Microsoft a koncovým zákazníkem. Pokud je zákazníkem podnik prostřednictvím prodejce, bude to prodejce.  Pokud se jedná o poskytovatele cloudových řešení (CSP), bude to zprostředkovatel ověřny.                                                                 |
-| **Identifikátor URI prostředku**                                  | Cesta, kde byl nasazen artefakt nasazení.                                            |
-| **Sku**                                           | Název skladové položky definovaný během publikování. Nabídka může mít mnoho skladových položk, ale skladová položka může být přidružena pouze k jedné nabídce.              |
-| **Typ fakturace skladové položky**                                 | Způsob fakturace skladové položky.                                                                                                             |
-| **Typ fakturace SKU: Přineste si vlastní licenci**         | Virtuální virtuální měna nebo služba vyžaduje licenční klíč poskytnutý zákazníkem k nasazení. Společnost Microsoft neúčtuje zákazníkům jejich použití těchto nabídek Marketplace.   |
-| **Typ fakturace sku: Microsoft jako prodejce**          | Společnost Microsoft je vaším prodejcem pro tuto skladovou položku.   |
-| **Typ fakturace SKU: Zdarma**                           | Skladová položka je nakonfigurována tak, aby byla zdarma pro všechny uživatele. Společnost Microsoft neúčtuje zákazníkům za jejich použití této skladové položky.                           |
-| **Typ fakturace skladové položky: Placený**                           | Společnost Microsoft je vaším zástupcem pro tuto skladovou položku a účtuje zákazníkům vaším jménem. (Platební karta PAYG nebo podniková faktura)                   |
-| **Typ fakturace skladové položky: zkušební verze**                          | Zákazník je ve zkušebním období a bude převeden na zaplaceno, pokud jej nezruší nebo neodstraní.                                         |
-| **Částka daně (KOPIE)**                                  | Částka daně použitá na účet odběratele v měně zákazníka (CC).                                                               |
-| **Datum transakce**                                 | Datum transakce zaznamenané ve vašem výplatním hlášení.                                                                           |
-| **Typ transakce**                               | Typ transakce, která je hlášena.  Může se například jedná o úpravu poplatku, refundace nebo výplaty.                                                                                        |
-| **Datum ukončení zkušební verze**                                 | Datum ukončení nebo ukončení zkušebního období pro tuto objednávku.                                                                           |
-| **Datum využití**                                       | Datum, kdy došlo k využití zákazníka.                                                                                                             |
-| **Množství využití**                                       | Hlášené využití zákazníka skladové položky. U bitových kopií virtuálních počítače představují záznamy o využití využití pro vykazované období pro tuto velikost virtuálního počítače a skladovou položku.                                               |
-| **Odkaz na použití**                                       | Identifikátor pro jeden nebo více dní využití zákazníka pro danou skladovou položku přidruženou k položce v sestavě výplaty.                                               |
-| **Typ použití**                                       | Popis měřeného použití. (Normalizované použití nebo nezpracované využití)                                                              |
-| **Typ použití: Normalizované použití**                | Doba používání normalizovaná tak, aby zohledňovala počet jader virtuálních počítače zapojených do použití: [Počet jader virtuálních počítače] x [Hodiny nezpracovaného využití]. Virtuální virtuální zařízení označená jako "SHAREDCORE" používají 1/6 (nebo 0,1666) jako multiplikátor [Počet jader virtuálních vod].                                        |
-| **Typ použití: Nezpracované využití**                        | Doba používání nabídky marketplace  Je prezentován a to v termínu "kalendářní" hodiny.  Jedná se o počet času, kdy byly spuštěny virtuální počítače.                           |
-| **Jednotky použití**                                   | Měrná jednotka pro uvedené použití. Virtuální virtuální zařízení se vždy měří s hodinovými měrnými jednotkami.                               |
-| **Velikost virtuálního počítače**                                       | Představuje velikost hardwaru virtuálního počítače zarovnanou s nabídkou Azure. Příklady `Basic_A0`zahrnují `Standard_A11` `Standard_D12`, `Standard_G4`, a .   |
+| **Typ nabídky**                                | Typ Microsoft Marketplace nabídky  Může se jednat například o spravované aplikace, licence virtuálních počítačů nebo kontejner.                           |
+| **Datum zrušení objednávky**                         | Datum, kdy se objednávka webu Marketplace zrušila                                                       |
+| **ID objednávky**                                  | Jedinečný identifikátor objednávky zákazníka pro vaši službu Marketplace  Nabídky založené na využití virtuálních počítačů nejsou přidruženy k objednávce.                 |
+| **Datum nákupu objednávky**                       | Datum vytvoření objednávky Marketplace.                                                        |
+| **Order Quantity**                       | Množství objednávek pro stejnou SKU přidružené k předplatnému Azure.  Pro SAAS objednávky představuje počet míst přidružených k této instanci objednávky.                                            |
+| **Stav objednávky**                              | Stav objednávky Marketplace v době poslední aktualizace dat.  Například objednávka může být aktivní nebo zrušená.             |
+| **Stav objednávky: aktivní**                           | Zákazník zakoupil objednávku a nezrušil jejich pořadí.   |
+| **Stav objednávky: zrušeno**                        | Zákazník si předtím koupil objednávku a následně zrušil jejich pořadí.        |
+| **Hodnota výběr (PC)**                             | Částka, kterou jste si vyplatili, v upřednostňovaném způsobu Vyměna (PC).                                       |
+| **Měna výběr (PC)**                           | Měna použitá pro vaše výběry.                                                                |
+| **Datum vyvýběru**                                    | Datum odeslání žádosti o platbu od Microsoftu k vaší zvolené finanční instituci.                                                                         |
+| **Stav výběr**                                  | Stav vstupu v době poslední aktualizace dat.                                   |
+| **Stav vyvýběru: probíhá**               | Transakce není připravená na výběr. (Další informace najdete v tématu stav shromažďování).                             |
+| **Stav výběr: placená platba**                          | Transakce byla zahrnutá do výpočtu za minulý výběr. Kladné hodnoty jsou placené a záporné hodnoty se účtují podle celkové dlužné částky. |
+| **Stav vyvýběru: nadcházející výběr**                   | Transakce je připravená na výběr a bude zahrnutá v dalším dostupném výpočtu.                      |
+| **Cena (CC)**                                   | Cena za jednotku využití pro danou SKLADOVOU položku (v měně zákazníka).                                                                  |
+| **E-mail poskytovatele**                                 | E-mailová adresa poskytovatele zapojená v relaci mezi společností Microsoft a koncovým zákazníkem. Pokud zákazník je podnikem prostřednictvím prodejce, bude to prodejce.  Pokud se jedná o poskytovatele Cloud Solution Provider (CSP), bude to CSP.                                                                 |
+| **Název zprostředkovatele**                                 | Název zprostředkovatele zapojeného v relaci mezi společností Microsoft a koncovým zákazníkem. Pokud zákazník je podnikem prostřednictvím prodejce, bude to prodejce.  Pokud se jedná o poskytovatele Cloud Solution Provider (CSP), bude to CSP.                                                                 |
+| **Identifikátor URI prostředku**                                  | Cesta, kam byl nasazen artefakt nasazení.                                            |
+| **SKLADOVÉ**                                           | Název SKU, jak je definovaný během publikování. Nabídka může mít mnoho SKU, ale SKU může být přidruženo pouze k jedné nabídce.              |
+| **Typ fakturace SKU**                                 | Způsob fakturace SKU.                                                                                                             |
+| **Typ fakturace SKU: Přineste si vlastní licenci**         | Virtuální počítač nebo služba vyžaduje licenční klíč poskytnutý zákazníkem k nasazení. Společnost Microsoft neúčtuje zákazníkům používání těchto nabídek na webu Marketplace.   |
+| **Typ fakturace SKU: Microsoft jako prodejce**          | Microsoft je váš prodejce pro tuto skladovou jednotku.   |
+| **Typ fakturace SKU: Free**                           | SKU je nakonfigurované tak, aby se pro všechny uživatele uvolnilo. Společnost Microsoft neúčtuje zákazníkům za využití této SKU.                           |
+| **Typ fakturace SKU: placeno**                           | Microsoft je vaším agentem této SKU a účtuje zákazníky vaším jménem. (Buď platební karta PAYG, nebo faktura na podnikové straně)                   |
+| **Typ fakturace SKU: zkušební verze**                          | Zákazník je ve zkušebním období a bude převeden na placené, pokud se nezruší ani neodstraní.                                         |
+| **Daňová částka (CC)**                                  | Částka daně použitá u faktury zákazníka v měně zákazníka (CC).                                                               |
+| **Datum transakce**                                 | Datum transakce zaznamenané ve vytváření sestav výběrů.                                                                           |
+| **Typ transakce**                               | Typ transakce, která je hlášena.  Může to být například cena, refundace nebo úprava výběr.                                                                                        |
+| **Datum ukončení zkušební verze**                                 | Datum ukončení zkušebního období pro tuto objednávku skončí nebo skončí.                                                                           |
+| **Datum využití**                                       | Datum, kdy došlo k datu používání zákazníka.                                                                                                             |
+| **Množství využití**                                       | Hlášené využití zákazníka SKU. V případě imagí virtuálních počítačů představuje záznam o využití využití pro hlášené období pro danou velikost a SKU virtuálního počítače.                                               |
+| **Odkaz na použití**                                       | Identifikátor jednoho nebo více dnů využití zákazníka pro danou skladovou jednotku přidruženou k položce v sestavě výběr.                                               |
+| **Typ použití**                                       | Popis použití, který se měří. (Normalizované využití nebo nezpracované využití)                                                              |
+| **Typ použití: normalizované využití**                | Hodiny využití normalizované na účet pro počet jader virtuálních počítačů, které se týkají využití: [počet jader virtuálních počítačů] x [hodiny nezpracovaného využití]. Virtuální počítače označené jako "SHAREDCORE" používají 1/6 (nebo 0,1666) jako násobitel [počet jader virtuálních počítačů].                                        |
+| **Typ použití: nezpracované využití**                        | Hodiny využití vaší nabídky na webu Marketplace.  Je prezentována ve smyslu kalendáře "hodiny".  Jedná se o počet spuštěných virtuálních počítačů.                           |
+| **Jednotky využití**                                   | Jednotka měření pro uvedené použití. Virtuální počítače se vždycky měří s hodinovou jednotkou měření.                               |
+| **Velikost virtuálního počítače**                                       | Představuje velikost hardwaru virtuálního počítače v souladu s nabídkou Azure. Mezi příklady `Basic_A0`patří `Standard_A11`, `Standard_D12`, a `Standard_G4`.   |
 |  |  |
 
 

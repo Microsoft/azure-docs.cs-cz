@@ -1,6 +1,6 @@
 ---
-title: Přidání instančního objektu do role správce služby Azure Analysis Services | Dokumenty společnosti Microsoft
-description: Přečtěte si, jak přidat instanční objekt služby automatizace do role správce serveru Služby Azure Analysis Services.
+title: Přidání instančního objektu do role správce Azure Analysis Services | Microsoft Docs
+description: Naučte se přidat instanční objekt služby Automation do role správce serveru Azure Analysis Services.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
@@ -9,44 +9,44 @@ ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 925fbbb51ac240b96486a2c0aa09c850a8d164bc
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80408647"
 ---
-# <a name="add-a-service-principal-to-the-server-administrator-role"></a>Přidání objektu zabezpečení služby do role správce serveru 
+# <a name="add-a-service-principal-to-the-server-administrator-role"></a>Přidání instančního objektu k roli správce serveru 
 
- Chcete-li automatizovat bezobslužné úlohy prostředí PowerShell, musí mít instanční objekt oprávnění **správce serveru** na spravovaném serveru Analysis Services. Tento článek popisuje, jak přidat instanční objekt do role správců serveru na serveru Azure AS. Můžete to provést pomocí SQL Server Management Studio nebo šablony Správce prostředků.
+ Aby bylo možné automatizovat bezobslužné úlohy PowerShellu, instanční objekt musí mít oprávnění **Správce serveru** na spravovaném serveru Analysis Services. Tento článek popisuje, jak přidat instanční objekt do role Správci serveru na serveru Azure jako. Můžete to provést pomocí SQL Server Management Studio nebo šablony Správce prostředků.
 
-## <a name="before-you-begin"></a>Než začnete
-Před dokončením tohoto úkolu musíte mít ve službě Azure Active Directory registrovaný objekt zabezpečení služby.
+## <a name="before-you-begin"></a>Před zahájením
+Před dokončením této úlohy musíte mít v Azure Active Directory zaregistrovaný instanční objekt.
 
-[Vytvoření instančního objektu – portál Azure](../active-directory/develop/howto-create-service-principal-portal.md)   
+[Vytvoření instančního objektu – Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md)   
 [Vytvoření instančního objektu – PowerShell](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
 
 ## <a name="using-sql-server-management-studio"></a>Používání aplikace SQL Server Management Studio
 
-Správce serveru můžete konfigurovat pomocí aplikace SQL Server Management Studio (SSMS). K dokončení tohoto úkolu musíte mít oprávnění [správce serveru](analysis-services-server-admins.md) na serveru Azure AS. 
+Správce serveru můžete nakonfigurovat pomocí SQL Server Management Studio (SSMS). K dokončení této úlohy musíte mít oprávnění [Správce serveru](analysis-services-server-admins.md) na serveru Azure as. 
 
-1. V SSMS se připojte k serveru Azure AS.
-2. V**okně Zabezpečení** **vlastností** > serveru klepněte na tlačítko **Přidat**.
-3. V **pole Vybrat uživatele nebo skupinu**vyhledejte registrovanou aplikaci podle názvu, vyberte a klikněte na **Přidat**.
+1. V SSMS se připojte k Azure AS serveru.
+2. V nabídce > **zabezpečení** **vlastností serveru**klikněte na **Přidat**.
+3. V nabídce **Vyberte uživatele nebo skupinu**vyhledejte registrovanou aplikaci podle názvu, vyberte a pak klikněte na **Přidat**.
 
-    ![Hledat účet instančního objektu](./media/analysis-services-addservprinc-admins/aas-add-sp-ssms-picker.png)
+    ![Hledat hlavní účet služby](./media/analysis-services-addservprinc-admins/aas-add-sp-ssms-picker.png)
 
-4. Ověřte ID účtu instančního objektu a klepněte na tlačítko **OK**.
+4. Ověřte ID účtu zabezpečení služby a pak klikněte na **OK**.
     
-    ![Hledat účet instančního objektu](./media/analysis-services-addservprinc-admins/aas-add-sp-ssms-add.png)
+    ![Hledat hlavní účet služby](./media/analysis-services-addservprinc-admins/aas-add-sp-ssms-add.png)
 
 ## <a name="using-a-resource-manager-template"></a>Použití šablony Resource Manageru
 
-Správce serveru můžete také nakonfigurovat nasazením serveru Analysis Services pomocí šablony Azure Resource Manager. Identita spuštěná v nasazení musí patřit do role **přispěvatele** pro prostředek v [řízení přístupu na základě rolí Azure (RBAC).](../role-based-access-control/overview.md)
+Správce serveru můžete také nakonfigurovat tak, že nasadíte Analysis Services Server pomocí šablony Azure Resource Manager. Identita, která spouští nasazení, musí patřit do role **přispěvatele** pro prostředek v [Access Control na základě rolí Azure (RBAC)](../role-based-access-control/overview.md).
 
 > [!IMPORTANT]
-> Instanční objekt musí být `app:{service-principal-client-id}@{azure-ad-tenant-id}`přidán pomocí formátu .
+> Instanční objekt se musí přidat pomocí formátu `app:{service-principal-client-id}@{azure-ad-tenant-id}`.
 
-Následující šablona Správce prostředků nasazuje server Služby analysis services se zadaným instančním objektem přidaným do role správce služby Analysis Services:
+Následující Správce prostředků šablona nasadí Server Analysis Services se zadaným objektem služby přidaným do role správce Analysis Services:
 
 ```json
 {
@@ -96,25 +96,25 @@ Následující šablona Správce prostředků nasazuje server Služby analysis s
 
 ## <a name="using-managed-identities"></a>Použití spravovaných identit
 
-Spravovanou identitu lze také přidat do seznamu správci služby Analysis Services. Můžete mít například [aplikaci logiky se systémem přiřazenou spravovanou identitou](../logic-apps/create-managed-service-identity.md)a chcete jí udělit možnost spravovat server služby Analysis Services.
+Spravovaná identita se dá přidat taky do seznamu Analysis Services Admins. Můžete mít například [aplikaci logiky se spravovanou identitou přiřazenou systémem](../logic-apps/create-managed-service-identity.md)a chcete dát IT možnost spravovat Server Analysis Services.
 
-Ve většině částí portálu Azure a api jsou spravované identity identifikovány pomocí ID objektu instančního objektu. Analysis Services však vyžaduje, aby byly identifikovány pomocí jejich ID klienta. Chcete-li získat ID klienta pro instanční objekt, můžete použít azure CLI:
+Ve většině částí Azure Portal a rozhraní API se spravované identity identifikují pomocí jejich ID instančního objektu. Analysis Services ale vyžaduje, aby se identifikovali pomocí svého ID klienta. Pokud chcete získat ID klienta pro instanční objekt, můžete použít rozhraní příkazového řádku Azure:
 
 ```bash
 az ad sp show --id <ManagedIdentityServicePrincipalObjectId> --query appId -o tsv
 ```
 
-Případně můžete použít Prostředí PowerShell:
+Případně můžete použít PowerShell:
 
 ```powershell
 (Get-AzureADServicePrincipal -ObjectId <ManagedIdentityServicePrincipalObjectId>).AppId
 ```
 
-Toto ID klienta pak můžete použít ve spojení s ID klienta k přidání spravované identity do seznamu Správci služby Analysis Services, jak je popsáno výše.
+Pak můžete pomocí tohoto ID klienta v kombinaci s ID tenanta přidat spravovanou identitu do seznamu Analysis Services Admins, jak je popsáno výše.
 
 ## <a name="related-information"></a>Související informace
 
-* [Stažení modulu powershellu serveru SQL Server](https://docs.microsoft.com/sql/ssms/download-sql-server-ps-module)   
+* [Stáhnout SQL Server modul PowerShellu](https://docs.microsoft.com/sql/ssms/download-sql-server-ps-module)   
 * [Stáhnout SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)   
 
 

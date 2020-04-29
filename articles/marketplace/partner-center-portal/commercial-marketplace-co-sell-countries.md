@@ -1,6 +1,6 @@
 ---
-title: Kódy zemí a regionů spoluprodej | Azure Marketplace
-description: Tyto dvoupísmenné kódy zemí/oblastí použijte při poskytování kontaktních údajů na stránce spoluprodeje nabídky.
+title: Kódy zemí a oblastí ve společném prodeji | Azure Marketplace
+description: Tyto dvoumístné kódy země nebo oblasti použijte při poskytování kontaktních informací na stránce pro spoluprodej vaší nabídky.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
@@ -8,37 +8,37 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/27/2019
 ms.openlocfilehash: 097fe2c394cb48a13fbc9cb253ef4df9c9959713
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80277052"
 ---
-# <a name="co-sell-country-and-region-codes"></a>Kódy zemí a oblastí spoluprodeje
+# <a name="co-sell-country-and-region-codes"></a>Kódy zemí a oblastí ve společném prodeji
 
-Tyto dvoupísmenné kódy zemí/oblastí použijte při [poskytování kontaktních údajů na stránce spoluprodeje nabídky](commercial-marketplace-co-sell.md).
+Tyto dvoumístné kódy země nebo oblasti použijte při [poskytování kontaktních informací na stránce pro spoluprodej vaší nabídky](commercial-marketplace-co-sell.md).
 
-Pokud se kontakt vztahuje na všechny země/oblasti, použijte třípísmenný kód "OOO".
+Pokud kontakt pokrývá všechny země nebo oblasti, použijte tři kódy "OOO".
 
-Pokud kontakt pokrývá více než jednu zemi nebo oblast, zadejte každý ze dvou kódů písmen oddělených čárkou (například zadejte "US, CA, FR" bez uvozovek).
+Pokud kontakt pokrývá více než jednu zemi nebo oblast, zadejte jednotlivé kódy obou písmen oddělené čárkou (například zadejte "US, CA, FR" bez uvozovek).
 
-## <a name="countryregion-table"></a>Tabulka Země/oblast
+## <a name="countryregion-table"></a>Tabulka země/oblasti
 
 |   Název země nebo oblasti               |   ISO-2   |
 |-------------------------------------|-----------|
-| Globální kontakty                     | Ooo       |
+| Globální kontakty                     | OOO       |
 | Afghánistán                         | AF        |
-| Ålandské ostrovy                       | Ax        |
+| Ostrovy Aland                       | AX        |
 | Albánie                             | AL        |
 | Alžírsko                             | DZ        |
 | Americká Samoa                      | AS        |
 | Andorra                             | AD        |
 | Angola                              | AO        |
-| Antarktida                          | Aq        |
+| Antarktida                          | AQ        |
 | Antigua a Barbuda                 | AG        |
 | Argentina                           | AR        |
 | Arménie                             | AM        |
-| Aruba                               | Aw        |
+| Aruba                               | AW        |
 | Austrálie                           | AU        |
 | Rakousko                             | AT        |
 | Ázerbájdžán                          | AZ        |
@@ -50,15 +50,15 @@ Pokud kontakt pokrývá více než jednu zemi nebo oblast, zadejte každý ze dv
 | Belgie                             | BE        |
 | Belize                              | BZ        |
 | Benin                               | BJ        |
-| Bermudy                             | Bm        |
+| Bermudy                             | BM        |
 | Bhútán                              | BT        |
 | Bolívie                             | BO        |
-| Bonaire                             | Bq        |
+| Bonaire                             | BQ –        |
 | Bosna a Hercegovina              | BA        |
 | Botswana                            | BW        |
-| Bouvetův ostrov                       | Bv        |
+| Bouvetův ostrov                       | BV        |
 | Brazílie                              | BR        |
-| Britské indickooceánské území      | Io        |
+| Britské indickooceánské území      | OPERACE        |
 | Britské Panenské ostrovy              | VG        |
 | Brunej                              | BN        |
 | Bulharsko                            | BG        |
@@ -71,33 +71,33 @@ Pokud kontakt pokrývá více než jednu zemi nebo oblast, zadejte každý ze dv
 | Kajmanské ostrovy                      | KY        |
 | Středoafrická republika            | CF        |
 | Čad                                | TD        |
-| Česko                             | CZ        |
+| Czechia                             | CZ        |
 | Chile                               | CL        |
 | Čína                               | CN        |
 | Vánoční ostrov                    | CX        |
 | Kokosové ostrovy             | CC        |
 | Kolumbie                            | CO        |
-| Komory                             | Km        |
-| Kongo                               | Cg        |
+| Komory                             | KLÍČŮ        |
+| Kongo                               | CG        |
 | Konžská demokratická republika                         | CD        |
-| Cookovy ostrovy                        | Ck        |
+| Cookovy ostrovy                        | CK        |
 | Kostarika                          | CR        |
 | Côte d’Ivoire (Pobřeží slonoviny)                       | CI        |
 | Chorvatsko                             | HR        |
 | Kuba                                | CU        |
-| Curaçao                             | Cw        |
+| Curaçao                             | Skupina        |
 | Kypr                              | CY        |
 | Dánsko                             | DK        |
-| Džibutsko                            | Dj        |
+| Džibutsko                            | PŘEHRÁVAČE        |
 | Dominika                            | DM        |
 | Dominikánská republika                  | DO        |
 | Ekvádor                             | EC        |
 | Egypt                               | EG        |
 | Salvador                         | SV        |
-| Rovníková Guinea                   | Gq        |
+| Rovníková Guinea                   | GQ        |
 | Eritrea                             | ER        |
 | Estonsko                             | EE        |
-| eSwatini řekl:                            | SZ        |
+| eSwatini                            | SZ        |
 | Etiopie                            | ET        |
 | Faerské ostrovy                       | FO        |
 | Fidži                                | FJ        |
@@ -105,25 +105,25 @@ Pokud kontakt pokrývá více než jednu zemi nebo oblast, zadejte každý ze dv
 | Francie                              | FR        |
 | Francouzská Guyana                       | GF        |
 | Francouzská Polynésie                    | PF        |
-| Francouzská jižní území         | Tf        |
+| Francouzská jižní území         | TF        |
 | Gabon                               | GA        |
 | Gambie                              | GM        |
 | Gruzie                             | GE        |
 | Německo                             | DE        |
 | Ghana                               | GH        |
-| Gibraltar                           | Gi        |
+| Gibraltar                           | DŽI        |
 | Řecko                              | GR        |
-| Grónsko                           | Gl        |
-| Grenada                             | Gd        |
+| Grónsko                           | GL        |
+| Grenada                             | GD        |
 | Guadeloupe                          | GP        |
 | Guam                                | GU        |
 | Guatemala                           | GT        |
-| Guernsey                            | Gg        |
+| Guernsey                            | GG        |
 | Guinea                              | GN        |
-| Guinea-Bissau                       | Gw        |
+| Guinea-Bissau                       | GW        |
 | Guyana                              | GY        |
 | Haiti                               | HT        |
-| Heardův ostrov a McDonaldovy ostrovy   | Hm        |
+| Heardův ostrov a MacDonaldovy ostrovy   | HM        |
 | Honduras                            | HN        |
 | Hongkong – zvláštní správní oblast                       | HK        |
 | Maďarsko                             | HU        |
@@ -138,7 +138,7 @@ Pokud kontakt pokrývá více než jednu zemi nebo oblast, zadejte každý ze dv
 | Itálie                               | IT        |
 | Jamajka                             | JM        |
 | Japonsko                               | JP        |
-| Jersey                              | JE        |
+| Jersey                              | VARIABILNÍ        |
 | Jordánsko                              | JO        |
 | Kazachstán                          | KZ        |
 | Keňa                               | KE        |
@@ -165,7 +165,7 @@ Pokud kontakt pokrývá více než jednu zemi nebo oblast, zadejte každý ze dv
 | Marshallovy ostrovy                    | MH        |
 | Martinik                          | MQ        |
 | Mauritánie                          | MR        |
-| Mauricius                           | MU        |
+| Mauricius                           | SAMOHLÁSK        |
 | Mayotte                             | YT        |
 | Mexiko                              | MX        |
 | Mikronésie                          | FM        |
@@ -187,7 +187,7 @@ Pokud kontakt pokrývá více než jednu zemi nebo oblast, zadejte každý ze dv
 | Niger                               | NE        |
 | Nigérie                             | NG        |
 | Niue                                | NU        |
-| Norfolk                      | Nf        |
+| Norfolk                      | NF        |
 | Severní Korea                         | KP        |
 | Severní Mariany            | MP        |
 | Severní Makedonie                     | MK        |
@@ -197,11 +197,11 @@ Pokud kontakt pokrývá více než jednu zemi nebo oblast, zadejte každý ze dv
 | Palau                               | PW        |
 | Palestinská samospráva               | PS        |
 | Panama                              | PA        |
-| Papua-Nová Guinea                    | Str        |
+| Papua-Nová Guinea                    | STRÁNKY        |
 | Paraguay                            | PY        |
 | Peru                                | PE        |
 | Filipíny                         | PH        |
-| Pitcairnovy ostrovy                    | Pn        |
+| Pitcairnovy ostrovy                    | PN        |
 | Polsko                              | PL        |
 | Portugalsko                            | PT        |
 | Portoriko                         | PR        |
@@ -210,14 +210,14 @@ Pokud kontakt pokrývá více než jednu zemi nebo oblast, zadejte každý ze dv
 | Rumunsko                             | RO        |
 | Rusko                              | RU        |
 | Rwanda                              | RW        |
-| Svatý Barthélemy                    | BL        |
+| Svatý Bartoloměj                    | BL        |
 | Svatý Kryštof a Nevis               | KN        |
-| Svatá Lucie                         | Lc        |
-| Svatý Martin (Francie)                        | Mf        |
-| Svatý Pierre a Miquelon           | PM        |
+| Svatá Lucie                         | LC        |
+| Svatý Martin (Francie)                        | MF        |
+| Saint-Pierre a Miquelon           | PM        |
 | Svatý Vincenc a Grenadiny    | VC        |
 | Samoa                               | WS        |
-| San Marino                          | Sm        |
+| San Marino                          | SM        |
 | Svatý Tomáš a Princův ostrov               | ST        |
 | Saúdská Arábie                        | SA        |
 | Senegal                             | SN        |
@@ -225,20 +225,20 @@ Pokud kontakt pokrývá více než jednu zemi nebo oblast, zadejte každý ze dv
 | Seychely                          | SC        |
 | Sierra Leone                        | SL        |
 | Singapur                           | SG        |
-| Svatý Martin (Nizozemsko)                        | Sx        |
+| Svatý Martin (Nizozemsko)                        | SX        |
 | Slovensko                            | SK        |
 | Slovinsko                            | SI        |
-| Šalamounovy ostrovy                     | Sb        |
+| Šalamounovy ostrovy                     | SB        |
 | Somálsko                             | SO        |
 | Jižní Afrika                        | ZA        |
-| Jižní Georgie a Jižní Sandwichovy ostrovy | Gs    |
+| Jižní Georgie a Jižní Sandwichovy ostrovy | GS    |
 | Jižní Súdán                         | SS        |
 | Španělsko                               | ES        |
 | Srí Lanka                           | LK        |
-| Svatá Helena, Nanebevstoupení, Tristan da Cunha | SH     |
+| Svatá Helena, Ascension a Tristan da Cunha | SH     |
 | Súdán                               | SD        |
 | Surinam                            | SR        |
-| Svalbard                            | Sj        |
+| Svalbard                            | SJ        |
 | Švédsko                              | SE        |
 | Švýcarsko                         | CH        |
 | Sýrie                               | SY        |
@@ -248,8 +248,8 @@ Pokud kontakt pokrývá více než jednu zemi nebo oblast, zadejte každý ze dv
 | Thajsko                            | TH        |
 | Timor Leste                         | TL        |
 | Togo                                | TG        |
-| Tokelau                             | Tk        |
-| Tonga                               | CHCETE-LI        |
+| Tokelau                             | TK        |
+| Tonga                               | SCHOPN        |
 | Trinidad a Tobago                 | TT        |
 | Tunisko                             | TN        |
 | Turecko                              | TR        |
@@ -262,19 +262,19 @@ Pokud kontakt pokrývá více než jednu zemi nebo oblast, zadejte každý ze dv
 | Spojené království                      | GB        |
 | Spojené státy                       | USA        |
 | Uruguay                             | UY        |
-| Americké odlehlé ostrovy               | UM        |
+| Odlehlé ostrovy USA               | UM        |
 | Americké Panenské ostrovy                 | VI        |
 | Uzbekistán                          | UZ        |
-| Vanuatu                             | Vu        |
-| Vatikánu                        | VA        |
+| Vanuatu                             | VU        |
+| Vatikán                        | VA        |
 | Venezuela                           | VE        |
 | Vietnam                             | VN        |
 | Wallis a Futuna                   | WF        |
-| Jemen                               | VY        |
+| Jemen                               | JE        |
 | Zambie                              | ZM        |
 | Zimbabwe                            | ZW        |
 |   |   |   |
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o [možnosti spoluprodeje v Partnerském centru](./commercial-marketplace-co-sell.md).
+- Přečtěte si informace o [možnosti společného prodeje v partnerském centru](./commercial-marketplace-co-sell.md).

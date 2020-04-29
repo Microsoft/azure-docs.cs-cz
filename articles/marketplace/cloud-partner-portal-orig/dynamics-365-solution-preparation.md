@@ -1,6 +1,6 @@
 ---
 title: Příprava řešení Dynamics 365
-description: Rámec pro balení, instalaci a odinstalování komponent
+description: Rozhraní pro balení, instalace a odinstalace součástí
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,27 +8,27 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: dsindona
 ms.openlocfilehash: ac1e4fa541e945f20904ced114a36b58d14585ba
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80278582"
 ---
 # <a name="dynamics-365-solution-preparation"></a>Příprava řešení Dynamics 365
 
-Systém řešení Dynamics 365 je rámec pro balení, instalaci a odinstalaci součástí, které poskytují specifické obchodní funkce. Řešení používají nemožní výrobci a nechybí ani k tomu, aby poskytovatelé služeb Microsoft Dynamics 365 distribuovali rozšíření, která vytvářejí.
+Systém řešení Dynamics 365 je rozhraní pro balení, instalaci a odinstalaci součástí, které poskytují konkrétní obchodní funkce. Řešení používají nezávislé výrobce softwaru a další partnery Microsoft Dynamics 365 k distribuci rozšíření, která vytvoří.
 
-Pokud jste existujícím neřízeným diskem Dynamics 365 (xRM), pravděpodobně jste již vytvořili spravované řešení a máte soubor solution.zip. Ve svém řešení se ujistěte, že pole "Zobrazovaný název" a "Popis" odrážejí to, co mají zákazníci vidět. Ty jsou zobrazeny v Centru pro správu online aplikace CRM.
+Pokud jste existující ISV 365 (xRM), pravděpodobně už jste vytvořili spravované řešení a máte soubor řešení. zip. V řešení se ujistěte, že pole zobrazované jméno a popis obsahují informace o tom, co chcete, aby zákazníci viděli. Ty se zobrazí v centru pro správu CRM Online.
 
-![CrmScreenShot1](media/CRMScreenShot1.png)
+![CRMScreenShot1](media/CRMScreenShot1.png)
 
-_**Poznámka:** V příkladu balíčku, který následuje budeme předpokládat, že název řešení je "SampleSolution.zip"_
+_**Poznámka:** V následujícím příkladu balíčku budeme předpokládat, že název řešení je "SampleSolution. zip"._
 
-Pokud jste nový isv, můžete získat další podrobnosti o vytvoření řešení zde:[https://msdn.microsoft.com/library/gg334530.aspx](https://msdn.microsoft.com/library/gg334530.aspx)
+Pokud jste novým nezávislým výrobcem softwaru, můžete získat další informace o vytváření řešení tady:[https://msdn.microsoft.com/library/gg334530.aspx](https://msdn.microsoft.com/library/gg334530.aspx)
 
-Pokud vaše řešení vyžaduje podporu dat:
+Pokud vaše řešení vyžaduje podpůrná data:
 
 * Vytvoření ukázkových dat v testovacím prostředí
-* Pomocí nástroje pro migraci konfigurace vytvořte schéma s pravidly porovnání dat.
-* Uložte schéma konfigurace se soubory projektu. Budete to potřebovat později, pokud aktualizujete konfigurační data.
-* Exportujte konfigurační data. Nezapomeňte dát souboru exportu název, který má smysl pro váš export.
+* Pomocí nástroje pro migraci konfigurace vytvořte schéma s pravidly porovnání pro vaše data.
+* Uložte konfigurační schéma se soubory projektu. To budete potřebovat později, když aktualizujete konfigurační data.
+* Exportujte konfigurační data. Nezapomeňte zadat název souboru pro export, který je smysluplný pro export.

@@ -1,5 +1,5 @@
 ---
-title: 'Azure ExpressRoute: Přesunutí klasických okruhů do Správce prostředků'
+title: 'Azure ExpressRoute: přesunutí klasických okruhů do Správce prostředků'
 description: Tato stránka popisuje, jak přesunout klasický okruh do modelu nasazení Správce prostředků pomocí prostředí PowerShell.
 services: expressroute
 author: charwen
@@ -8,31 +8,31 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: charwen
 ms.openlocfilehash: d3014aae44b8d63be67cd0d31f996470aeda40df
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80616278"
 ---
-# <a name="move-expressroute-circuits-from-classic-to-resource-manager-deployment-model-using-powershell"></a>Přesunutí okruhů ExpressRoute z klasického modelu nasazení správce prostředků do modelu nasazení Správce prostředků pomocí prostředí PowerShell
+# <a name="move-expressroute-circuits-from-classic-to-resource-manager-deployment-model-using-powershell"></a>Přesun okruhů ExpressRoute z modelu nasazení Classic do Správce prostředků pomocí prostředí PowerShell
 
-Chcete-li použít okruh ExpressRoute pro klasické modely nasazení i pro správce prostředků, musíte jej přesunout do modelu nasazení Správce prostředků. Následující části vám pomohou přesunout okruh pomocí prostředí PowerShell.
+Chcete-li použít okruh ExpressRoute pro model nasazení Classic i Správce prostředků, je nutné přesunout okruh do modelu nasazení Správce prostředků. Následující části vám pomůžou přesunout okruh pomocí PowerShellu.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 [!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
-* Ověřte, zda jste do počítače nainstalovali klasické moduly a moduly Az Azure PowerShell místně. Další informace najdete v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/overview).
-* Před zahájením konfigurace zkontrolujte [požadavky](expressroute-prerequisites.md), [požadavky na směrování](expressroute-routing.md)a pracovní [postupy.](expressroute-workflows.md)
-* Zkontrolujte informace, které jsou k dispozici v části [Přesunutí okruhu ExpressRoute z klasického do Správce prostředků](expressroute-move.md). Ujistěte se, že plně rozumíte limitům a omezením.
-* Ověřte, zda je okruh plně funkční v modelu klasického nasazení.
-* Ujistěte se, že máte skupinu prostředků, která byla vytvořena v modelu nasazení Resource Manager.
+* Ověřte, že jsou v počítači nainstalovány moduly Classic a AZ Azure PowerShell místně. Další informace najdete v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/overview).
+* Než začnete s [konfigurací, ujistěte](expressroute-prerequisites.md)se, že jste zkontrolovali požadavky, [požadavky na směrování](expressroute-routing.md)a [pracovní postupy](expressroute-workflows.md) .
+* Přečtěte si informace, které jsou k dispozici v části [přesunutí okruhu ExpressRoute z modelu Classic na správce prostředků](expressroute-move.md). Ujistěte se, že plně rozumíte omezením a omezením.
+* Ověřte, že okruh je plně funkční v modelu nasazení Classic.
+* Ujistěte se, že máte skupinu prostředků vytvořenou v modelu nasazení Správce prostředků.
 
 ## <a name="move-an-expressroute-circuit"></a>Přesunutí okruhu ExpressRoute
 
-### <a name="step-1-gather-circuit-details-from-the-classic-deployment-model"></a>Krok 1: Shromáždění podrobností o obvodu z klasického modelu nasazení
+### <a name="step-1-gather-circuit-details-from-the-classic-deployment-model"></a>Krok 1: shromáždění podrobností o obvodu z modelu nasazení Classic
 
-Přihlaste se ke klasickému prostředí Azure a shromážděte klíč služby.
+Přihlaste se k prostředí Azure Classic a Shromážděte klíč služby.
 
 1. Přihlaste se ke svému účtu Azure.
 
@@ -53,17 +53,17 @@ Přihlaste se ke klasickému prostředí Azure a shromážděte klíč služby.
    Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\ExpressRoute\ExpressRoute.psd1'
    ```
 
-4. Pomocí níže uvedené rutiny získáte servisní klíče pro všechny okruhy ExpressRoute. Po načtení klíčů zkopírujte **klíč služby** okruhu, který chcete přesunout do modelu nasazení Správce prostředků.
+4. K získání klíčů služby pro všechny okruhy ExpressRoute použijte následující rutinu. Po načtení klíčů zkopírujte **klíč služby** okruhu, který chcete přesunout do modelu nasazení Správce prostředků.
 
    ```powershell
    Get-AzureDedicatedCircuit
    ```
 
-### <a name="step-2-sign-in-and-create-a-resource-group"></a>Krok 2: Přihlášení a vytvoření skupiny prostředků
+### <a name="step-2-sign-in-and-create-a-resource-group"></a>Krok 2: přihlášení a vytvoření skupiny prostředků
 
-Přihlaste se do prostředí Správce prostředků a vytvořte novou skupinu prostředků.
+Přihlaste se k prostředí Správce prostředků a vytvořte novou skupinu prostředků.
 
-1. Přihlaste se do prostředí Azure Resource Manager.
+1. Přihlaste se ke svému Azure Resource Manager prostředí.
 
    ```powershell
    Connect-AzAccount
@@ -75,47 +75,47 @@ Přihlaste se do prostředí Správce prostředků a vytvořte novou skupinu pro
    Get-AzSubscription -SubscriptionName "<Enter Subscription Name here>" | Select-AzSubscription
    ```
 
-3. Upravte níže uvedený fragment a vytvořte novou skupinu prostředků, pokud ještě nemáte skupinu prostředků.
+3. Pokud ještě nemáte skupinu prostředků, upravte následující fragment kódu, aby se vytvořila nová skupina prostředků.
 
    ```powershell
    New-AzResourceGroup -Name "DemoRG" -Location "West US"
    ```
 
-### <a name="step-3-move-the-expressroute-circuit-to-the-resource-manager-deployment-model"></a>Krok 3: Přesunutí okruhu ExpressRoute do modelu nasazení Správce prostředků
+### <a name="step-3-move-the-expressroute-circuit-to-the-resource-manager-deployment-model"></a>Krok 3: přesunutí okruhu ExpressRoute do modelu nasazení Správce prostředků
 
-Nyní jste připraveni přesunout okruh ExpressRoute z klasického modelu nasazení do modelu nasazení Správce prostředků. Než budete pokračovat, zkontrolujte informace uvedené v [přesunutí okruhu ExpressRoute z klasického do modelu nasazení Resource Manageru](expressroute-move.md).
+Nyní jste připraveni přesunout okruh ExpressRoute z modelu nasazení Classic do modelu nasazení Správce prostředků. Než budete pokračovat, přečtěte si informace uvedené v části [přesunutí okruhu ExpressRoute z modelu nasazení Classic na model nasazení Správce prostředků](expressroute-move.md).
 
-Chcete-li okruh přesunout, upravte a spusťte následující úryvek:
+Chcete-li přesunout okruh, upravte a spusťte následující fragment kódu:
 
 ```powershell
 Move-AzExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "DemoRG" -Location "West US" -ServiceKey "<Service-key>"
 ```
 
-V klasickém režimu okruh ExpressRoute nemá koncept svázané s oblastí. Ve Správci prostředků však musí být každý prostředek mapován na oblast Azure. Oblast zadaná v rutině Move-AzExpressRouteCircuit může být technicky libovolná oblast. Pro organizační účely můžete zvolit oblast, která úzce představuje umístění partnerského vztahu.
+V klasickém režimu nemá okruh ExpressRoute žádný pojem spojený s oblastí. V Správce prostředků ale musí být každý prostředek namapovaný na oblast Azure. Oblast zadaná v rutině Move-AzExpressRouteCircuit může být technicky jakákoli oblast. Pro účely organizace můžete zvolit oblast, která bude úzce představovat vaše umístění partnerského vztahu.
 
 > [!NOTE]
-> Po dokončení přesunu bude nový název uvedený v předchozí rutině použit k adresování prostředku. Obvod bude v podstatě přejmenován.
+> Po dokončení přesunu se k řešení tohoto prostředku použije nový název, který je uvedený v předchozí rutině. Okruh bude v podstatě přejmenován.
 > 
 
-## <a name="modify-circuit-access"></a>Změnit přístup k okruhu
+## <a name="modify-circuit-access"></a>Upravit přístup okruhu
 
-### <a name="to-enable-expressroute-circuit-access-for-both-deployment-models"></a>Povolení přístupu k okruhům ExpressRoute pro oba modely nasazení
+### <a name="to-enable-expressroute-circuit-access-for-both-deployment-models"></a>Povolení přístupu okruhu ExpressRoute pro oba modely nasazení
 
-Po přesunutí klasického okruhu ExpressRoute do modelu nasazení Správce prostředků můžete povolit přístup k oběma modelům nasazení. Spusťte následující rutiny, abyste povolili přístup k oběma modelům nasazení:
+Po přesunu klasického okruhu ExpressRoute do modelu nasazení Správce prostředků můžete povolit přístup k oběma modelům nasazení. Spusťte následující rutiny pro povolení přístupu do obou modelů nasazení:
 
-1. Získejte detaily obvodu.
+1. Získat podrobnosti o okruhu.
 
    ```powershell
    $ckt = Get-AzExpressRouteCircuit -Name "DemoCkt" -ResourceGroupName "DemoRG"
    ```
 
-2. Nastavte hodnotu "Povolit klasické operace" na hodnotu TRUE.
+2. Nastavte hodnotu "povolení klasických operací" na hodnotu TRUE.
 
    ```powershell
    $ckt.AllowClassicOperations = $true
    ```
 
-3. Aktualizujte obvod. Po úspěšném dokončení této operace budete moci zobrazit okruh v modelu klasického nasazení.
+3. Aktualizujte okruh. Po úspěšném dokončení této operace budete moct zobrazit okruh v modelu nasazení Classic.
 
    ```powershell
    Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
@@ -127,14 +127,14 @@ Po přesunutí klasického okruhu ExpressRoute do modelu nasazení Správce pros
    get-azurededicatedcircuit
    ```
 
-5. Teď můžete spravovat odkazy na okruh ExpressRoute pomocí klasických příkazů modelu nasazení pro klasické virtuální sítě a příkazů Správce prostředků pro virtuální sítě Správce prostředků. Následující články vám pomohou spravovat odkazy na okruh ExpressRoute:
+5. Teď můžete spravovat odkazy na okruh ExpressRoute pomocí příkazů klasického modelu nasazení pro klasický virtuální sítě a příkazů Správce prostředků pro Správce prostředků virtuální sítě. Následující články vám pomůžou spravovat odkazy na okruh ExpressRoute:
 
     * [Propojení virtuální sítě s okruhem ExpressRoute v modelu nasazení Správce prostředků](expressroute-howto-linkvnet-arm.md)
-    * [Propojení virtuální sítě s okruhem ExpressRoute v klasickém modelu nasazení](expressroute-howto-linkvnet-classic.md)
+    * [Propojení virtuální sítě s okruhem ExpressRoute v modelu nasazení Classic](expressroute-howto-linkvnet-classic.md)
 
-### <a name="to-disable-expressroute-circuit-access-to-the-classic-deployment-model"></a>Zakázání přístupu okruhu ExpressRoute ke klasickému modelu nasazení
+### <a name="to-disable-expressroute-circuit-access-to-the-classic-deployment-model"></a>Zakázání přístupu okruhu ExpressRoute k modelu nasazení Classic
 
-Spusťte následující rutiny a zakažte přístup ke klasickému modelu nasazení.
+Pokud chcete zakázat přístup k modelu nasazení Classic, spusťte následující rutiny.
 
 1. Získejte podrobnosti o okruhu ExpressRoute.
 
@@ -142,13 +142,13 @@ Spusťte následující rutiny a zakažte přístup ke klasickému modelu nasaze
    $ckt = Get-AzExpressRouteCircuit -Name "DemoCkt" -ResourceGroupName "DemoRG"
    ```
 
-2. Nastavte "Povolit klasické operace" na HODNOTU NEPRAVDA.
+2. Nastavte hodnotu "Allow Classic Operations" na FALSE (NEPRAVDA).
 
    ```powershell
    $ckt.AllowClassicOperations = $false
    ```
 
-3. Aktualizujte obvod. Po úspěšném dokončení této operace nebude možné zobrazit okruh v modelu klasického nasazení.
+3. Aktualizujte okruh. Po úspěšném dokončení této operace nebudete moci zobrazit okruh v modelu nasazení Classic.
 
    ```powershell
    Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
@@ -156,5 +156,5 @@ Spusťte následující rutiny a zakažte přístup ke klasickému modelu nasaze
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Vytvoření a úprava směrování okruhu ExpressRoute](expressroute-howto-routing-arm.md)
+* [Vytvoření a úprava směrování pro okruh ExpressRoute](expressroute-howto-routing-arm.md)
 * [Propojení virtuální sítě s okruhem ExpressRoute](expressroute-howto-linkvnet-arm.md)

@@ -1,6 +1,6 @@
 ---
-title: Použití příkazového příkazového příkazu k škálování rezervovaných jednotek médií – Azure | Dokumenty společnosti Microsoft
-description: Toto téma ukazuje, jak pomocí příkazového příkazového příkazu škálovat zpracování médií pomocí Služby Azure Media Services.
+title: Použití rozhraní příkazového řádku pro škálování rezervovaných jednotek médií – Azure | Microsoft Docs
+description: V tomto tématu se dozvíte, jak pomocí rozhraní příkazového řádku škálovat zpracování médií pomocí Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,49 +15,49 @@ ms.date: 03/09/2020
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 79f2df0f94b212ea45c01c825b23f1dbb4cc40db
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80582291"
 ---
 # <a name="scaling-media-processing"></a>Škálování zpracování médií
 
-Služba Azure Media Services umožňuje škálovat zpracování médií ve vašem účtu správou rezervovaných jednotek médií (MRU). MrU určují rychlost zpracování úloh zpracování médií. Můžete si vybrat mezi následujícími typy rezervovaných jednotek: **S1**, **S2** nebo **S3**. Například stejná úloha kódování bude rychlejší, když použijete typ rezervované jednotky **S2**, než kdybyste použili typ **S1**. 
+Služba Azure Media Services umožňuje škálovat zpracování médií ve vašem účtu správou rezervovaných jednotek médií (MRU). MRUs určuje rychlost zpracování úloh zpracování médií. Můžete si vybrat mezi následujícími typy rezervovaných jednotek: **S1**, **S2** nebo **S3**. Například stejná úloha kódování bude rychlejší, když použijete typ rezervované jednotky **S2**, než kdybyste použili typ **S1**. 
 
-Kromě určení typu rezervované jednotky můžete zadat zřízení účtu s rezervovanými jednotkami. Počet zřízených rezervovaných jednotek určuje počet úloh médií, které je možné v daném účtu zpracovávat současně. Pokud má například váš účet pět rezervovaných jednotek, bude současně spuštěno pět úloh médií, pokud budou zpracovány úlohy. Zbývající úkoly budou čekat ve frontě a budou po dokončení spuštěné úlohy vyzvednuty pro zpracování postupně. Pokud účet nemá žádné rezervované jednotky zřízena, pak úkoly budou vyzvednuty postupně. V takovém případě bude čekací doba mezi dokončením jednoho úkolu a dalším zahájením záviset na dostupnosti prostředků v systému.
+Kromě určení typu rezervované jednotky můžete zadat, aby se účet zřídil rezervovanými jednotkami. Počet zřízených rezervovaných jednotek určuje počet úloh médií, které je možné v daném účtu zpracovávat současně. Pokud má váš účet například pět rezervovaných jednotek, pak pět mediálních úloh bude spuštěno souběžně, dokud budou zpracovány úkoly. Zbývající úlohy budou čekat ve frontě a budou vyzvednuty pro zpracování po dokončení běžící úlohy. Pokud účet nemá zřízeny žádné rezervované jednotky, budou úkoly postupně vyzvednuty. V tomto případě bude doba čekání mezi dokončením jednoho úkolu a dalším počátkem záviset na dostupnosti prostředků v systému.
 
-## <a name="choosing-between-different-reserved-unit-types"></a>Výběr mezi různými typy rezervovaných jednotek
+## <a name="choosing-between-different-reserved-unit-types"></a>Volba mezi různými typy rezervovaných jednotek
 
-Následující tabulka vám pomůže rozhodnout při výběru mezi různými rychlostmi kódování. Poskytuje také několik případů [benchmarku](https://nimbuspmteam.blob.core.windows.net/asset-46f1f723-5d76-477e-a153-3fd0f9f90f73/SeattlePikePlaceMarket_7min.ts?sv=2015-07-08&sr=c&si=013ab6a6-5ebf-431e-8243-9983a6b5b01c&sig=YCgEB8DxYKK%2B8W9LnBykzm1ZRUTwQAAH9QFUGw%2BIWuc%3D&se=2118-09-21T19%3A28%3A57Z) na videu, které si můžete stáhnout k provedení vlastních testů:
+Následující tabulka vám pomůže při rozhodování o tom, jak určit různé rychlosti kódování. Poskytuje také několik případů srovnávacích testů na [videu, které můžete stáhnout,](https://nimbuspmteam.blob.core.windows.net/asset-46f1f723-5d76-477e-a153-3fd0f9f90f73/SeattlePikePlaceMarket_7min.ts?sv=2015-07-08&sr=c&si=013ab6a6-5ebf-431e-8243-9983a6b5b01c&sig=YCgEB8DxYKK%2B8W9LnBykzm1ZRUTwQAAH9QFUGw%2BIWuc%3D&se=2118-09-21T19%3A28%3A57Z) abyste mohli provádět vlastní testy:
 
-|Typ ŽP|Scénář|Příklad y pro [video 7 min 1080p](https://nimbuspmteam.blob.core.windows.net/asset-46f1f723-5d76-477e-a153-3fd0f9f90f73/SeattlePikePlaceMarket_7min.ts?sv=2015-07-08&sr=c&si=013ab6a6-5ebf-431e-8243-9983a6b5b01c&sig=YCgEB8DxYKK%2B8W9LnBykzm1ZRUTwQAAH9QFUGw%2BIWuc%3D&se=2118-09-21T19%3A28%3A57Z)|
+|Typ RU|Scénář|Příklady výsledků pro [video o 7 min](https://nimbuspmteam.blob.core.windows.net/asset-46f1f723-5d76-477e-a153-3fd0f9f90f73/SeattlePikePlaceMarket_7min.ts?sv=2015-07-08&sr=c&si=013ab6a6-5ebf-431e-8243-9983a6b5b01c&sig=YCgEB8DxYKK%2B8W9LnBykzm1ZRUTwQAAH9QFUGw%2BIWuc%3D&se=2118-09-21T19%3A28%3A57Z) .|
 |---|---|---|
-| **S1**|Kódování jednoho přenosové rychlosti. <br/>Soubory na SD nebo pod rozlišení, není časově citlivé, nízké náklady.|Kódování do jednoho souboru MP4 s přenosovým tokem SD pomocí "H264 Single Bitrate SD 16x9" trvá přibližně 7 minut.|
-| **S2**|Kódování s jedním přenosovou rychlostí a vícenásobnou přenosovou rychlostí.<br/>Normální použití pro kódování SD i HD.|Kódování s přednastavením "H264 Single Bitrate 720p" trvá přibližně 6 minut.<br/><br/>Kódování s přednastavením "H264 Multiple Bitrate 720p" trvá přibližně 12 minut.|
-| **S3**|Kódování s jedním přenosovou rychlostí a vícenásobnou přenosovou rychlostí.<br/>Videa s rozlišením Full HD a 4K. Časově citlivé, rychlejší kódování obratu.|Kódování s přednastavením "H264 Single Bitrate 1080p" trvá přibližně 3 minuty.<br/><br/>Kódování s přednastavením "H264 Multiple Bitrate 1080p" trvá přibližně 8 minut.|
+| **S1**|Kódování s jednou přenosovou rychlostí. <br/>Soubory na SD nebo pod rozlišením, nezávislá na čase, nízké náklady.|Kódování souboru MP4 s jednou přenosovou rychlostí SD pomocí "H264 s jednou přenosovou rychlostí" 16x9 "trvá přibližně 7 minut.|
+| **S2**|Jedna přenosová rychlost a s více přenosovými rychlostmi.<br/>Normální použití pro kódování SD i HD.|Kódování s přednastavenou H264 Single přenosovou rychlostí 720p trvá přibližně 6 minut.<br/><br/>Kódování s přednastaveným H264 Multiple přenosovou rychlostí 720p trvá přibližně 12 minut.|
+| **S3**|Jedna přenosová rychlost a s více přenosovými rychlostmi.<br/>Kompletní videa o rozlišení HD a 4K. Kódování citlivé na čas, rychlejší zadoba vyřízení.|Kódování pomocí přednastavené H264 s jednou přenosovou rychlostí 1080p trvá přibližně 3 minuty.<br/><br/>Kódování s přednastavenou H264 s více přenosovými rychlostmi 1080p trvá přibližně 8 minut.|
 
 ## <a name="considerations"></a>Požadavky
 
-* Pro úlohy analýzy zvuku a analýzy videa, které jsou spuštěny službou Media Services v3 nebo Video Indexer, je typ jednotky S3 vysoce doporučeno.
-* Pokud používáte sdílený fond, to znamená bez rezervovaných jednotek, pak vaše úlohy kódování mají stejný výkon jako u jednotek Ru S1. Neexistuje však žádná horní mez času, který mohou úkoly strávit ve stavu ve frontě, a v daném okamžiku bude spuštěna maximálně jedna úloha.
+* Pro analýzy zvuku a úlohy analýzy videí, které se aktivují Media Services V3 nebo Video Indexer, se důrazně doporučuje typ jednotky S3.
+* Pokud používáte sdílený fond, to znamená, že bez rezervovaných jednotek, budou mít vaše úlohy kódování stejný výkon jako u ru S1. Není však k dispozici horní mez doby, kterou mohou úlohy ve stavu zařazeny do fronty, a v jednom okamžiku bude spuštěna pouze jedna úloha.
 
-Zbývající část článku ukazuje, jak používat [media services v3 CLI](https://aka.ms/ams-v3-cli-ref) pro škálování MRU.
+Ve zbývající části článku se dozvíte, jak pomocí [Media Services V3 CLI](https://aka.ms/ams-v3-cli-ref) škálovat MRUs.
 
 > [!NOTE]
-> Pro úlohy analýzy zvuku a analýzy videa, které jsou aktivované službou Media Services v3 nebo Video Indexerem, důrazně doporučujeme zřídit váš účet s 10 rezervovanými jednotkami S3. Pokud potřebujete více než 10 OBJEKTŮ MRU S3, otevřete lístek podpory pomocí [portálu Azure](https://portal.azure.com/).
+> Pro úlohy analýzy zvuku a analýzy videa, které jsou aktivované službou Media Services v3 nebo Video Indexerem, důrazně doporučujeme zřídit váš účet s 10 rezervovanými jednotkami S3. Pokud potřebujete více než 10 S3 MRUs, otevřete lístek podpory pomocí [Azure Portal](https://portal.azure.com/).
 
 ## <a name="prerequisites"></a>Požadavky 
 
-[Vytvořte účet mediálních služeb](create-account-cli-how-to.md).
+[Vytvořte účet Media Services](create-account-cli-how-to.md).
 
 [!INCLUDE [media-services-cli-instructions](../../../includes/media-services-cli-instructions.md)]
 
-## <a name="scale-media-reserved-units-with-cli"></a>Jednotky rezervovaných médií s vyvažovacím pravomocem
+## <a name="scale-media-reserved-units-with-cli"></a>Škálování rezervovaných jednotek médií pomocí rozhraní příkazového řádku
 
 Spusťte příkaz `mru`.
 
-Následující příkaz [mru účtu az ams](https://docs.microsoft.com/cli/azure/ams/account/mru?view=azure-cli-latest) nastaví rezervované jednotky médií na účtu "amsaccount" pomocí parametrů **count** a **type.**
+Následující příkaz [AZ AMS Account MRU](https://docs.microsoft.com/cli/azure/ams/account/mru?view=azure-cli-latest) nastaví rezervované jednotky médií na účtu amsaccount pomocí parametrů **Count** a **Type** .
 
 ```azurecli
 az ams account mru set -n amsaccount -g amsResourceGroup --count 10 --type S3
@@ -65,7 +65,7 @@ az ams account mru set -n amsaccount -g amsResourceGroup --count 10 --type S3
 
 ## <a name="billing"></a>Fakturace
 
-Poplatky vám budou účtovány na základě počtu minut, po které jsou rezervované jednotky médií zřízeny ve vašem účtu. K tomu dochází nezávisle na tom, zda jsou ve vašem účtu spuštěny nějaké úlohy. Podrobné vysvětlení naleznete v části Nejčastější dotazy na stránce [s cenami mediálních služeb.](https://azure.microsoft.com/pricing/details/media-services/)   
+Účtují se vám poplatky podle počtu minut, po které jsou rezervované jednotky médií zřízené ve vašem účtu. K tomu dochází nezávisle na tom, zda se ve vašem účtu spouštějí nějaké úlohy. Podrobné vysvětlení najdete v části Nejčastější dotazy stránky s [cenami Media Services](https://azure.microsoft.com/pricing/details/media-services/) .   
 
 ## <a name="next-step"></a>Další krok
 

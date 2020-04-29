@@ -1,5 +1,5 @@
 ---
-title: Ukázka skriptu Azure CLI – vytvoření sítě pro vícevrstvé aplikace
+title: Ukázkový skript Azure CLI – vytvoření sítě pro vícevrstvé aplikace
 description: Ukázkový skript Azure CLI – Vytvoření virtuální sítě pro vícevrstvé aplikace
 services: virtual-network
 documentationcenter: virtual-network
@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 07/07/2017
 ms.author: kumud
 ms.openlocfilehash: 97e26eaed72bc15ebc46a893d269b05484d8a064
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80521538"
 ---
 # <a name="create-a-network-for-multi-tier-applications"></a>Vytvoření sítě pro vícevrstvé aplikace
@@ -50,7 +50,7 @@ Tento skript k vytvoření skupiny prostředků, virtuální sítě a skupin zab
 | [az group create](/cli/azure/group) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [az network vnet create](/cli/azure/network/vnet) | Vytvoří virtuální síť Azure a front-endovou podsíť. |
 | [az network subnet create](/cli/azure/network/vnet/subnet) | Vytvoří back-endovou podsíť. |
-| [az network public-ip create](/cli/azure/network/public-ip) | Vytvoří veřejnou IP adresu pro přístup k virtuálnímu virtuálnímu počítačům z Internetu. |
+| [az network public-ip create](/cli/azure/network/public-ip) | Vytvoří veřejnou IP adresu pro přístup k virtuálnímu počítači z Internetu. |
 | [az network nic create](/cli/azure/network/nic) | Vytvoří virtuální síťová rozhraní a připojí je k front-endové a back-endové podsíti virtuální sítě. |
 | [az network nsg create](/cli/azure/network/nsg) | Vytvoří skupiny zabezpečení sítě (NSG), které se přidruží k front-endové a back-endové podsíti. |
 | [az network nsg rule create](/cli/azure/network/nsg/rule) |Vytvoří pravidla NSG, která povolí nebo zablokují konkrétní porty v konkrétních podsítích. |
@@ -61,4 +61,4 @@ Tento skript k vytvoření skupiny prostředků, virtuální sítě a skupin zab
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](/cli/azure).
 
-Další ukázky skriptů příkazového příkazu k síti najdete v [dokumentaci k přehledu sítí Azure](../cli-samples.md)
+Další informace o ukázkových skriptech rozhraní příkazového řádku najdete v [dokumentaci Přehled sítí Azure](../cli-samples.md) .

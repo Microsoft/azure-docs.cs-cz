@@ -1,6 +1,6 @@
 ---
-title: Automatizace pracovních postupů v Azure Security Center | Dokumenty společnosti Microsoft
-description: Zjistěte, jak vytvářet a automatizovat pracovní postupy v Azure Security Center
+title: Automatizace pracovního postupu v Azure Security Center | Microsoft Docs
+description: Naučte se vytvářet a automatizovat pracovní postupy v Azure Security Center
 services: security-center
 author: memildin
 manager: rkarlin
@@ -9,100 +9,100 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
 ms.openlocfilehash: 5d947cf41e13abdea9a2fd29f8a740d0c101dc6f
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80397914"
 ---
 # <a name="workflow-automation"></a>Automatizace pracovních postupů
 
-Každý bezpečnostní program obsahuje více pracovních postupů pro reakci na incidenty. Tyto procesy mohou zahrnovat oznámení příslušným zúčastněným stranám, spuštění procesu správy změn a použití konkrétních nápravných kroků. Odborníci na zabezpečení doporučují, abyste automatizovali co nejvíce kroků těchto postupů. Automatizace snižuje režii. Může také zlepšit zabezpečení tím, že zajistí, aby byly kroky procesu prováděny rychle, konzistentně a podle vašich předdefinovaných požadavků.
+Každý program zabezpečení zahrnuje několik pracovních postupů pro reakci na incidenty. Tyto procesy mohou zahrnovat oznamování relevantních účastníků, spuštění procesu správy změn a uplatnění specifických kroků k nápravě. Odborníci na zabezpečení doporučují automatizovat tolik kroků těchto postupů, jako je to možné. Automatizace snižuje režijní náklady. Může taky zlepšit zabezpečení tím, že zajistí rychlé, konzistentní a podle vašich předdefinovaných požadavků kroky procesu.
 
-Tento článek popisuje funkci automatizace pracovních postupů centra zabezpečení Azure. Tato funkce může aktivovat logic apps na výstrahy zabezpečení a doporučení. Můžete například chtít, aby centrum zabezpečení poslalo e-mail určitému uživateli, když dojde k upozornění. Dozvíte se také, jak vytvářet logicové aplikace pomocí [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview).
+Tento článek popisuje funkci automatizace pracovního postupu Azure Security Center. Tato funkce může aktivovat Logic Apps výstrah zabezpečení a doporučení. Můžete například chtít, aby Security Center při výskytu výstrahy poslat e-mailem konkrétního uživatele. Naučíte se také, jak vytvořit Logic Apps pomocí [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview).
 
 > [!NOTE]
-> Pokud jste dříve používali zobrazení Playbooky (Náhled) na postranním panelu, najdete stejné funkce spolu s rozšířenou funkcí na nové stránce automatizace pracovního postupu.
+> Pokud jste dříve použili zobrazení Playbooky (Preview) na bočním panelu, najdete stejné funkce společně s rozšířenými funkcemi na stránce Nová automatizace pracovního postupu.
 
 
 ## <a name="requirements"></a>Požadavky
 
-* Chcete-li pracovat s pracovními postupy Azure Logic Apps, musíte mít následující role nebo oprávnění logic apps:
+* Pokud chcete pracovat s Azure Logic Apps pracovními postupy, musíte mít následující Logic Apps role/oprávnění:
 
-    * [Oprávnění operátoru aplikace logiky](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-operator) jsou vyžadována nebo přístup aplikace logiky pro čtení a aktivaci (tato role nemůže vytvářet nebo upravovat aplikace logiky; *spouštět* pouze existující)
+    * Jsou vyžadována oprávnění [operátora aplikace logiky](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-operator) nebo přístup pro čtení/aktivaci aplikace logiky (Tato role nemůže vytvářet ani upravovat aplikace logiky. *spouštějte* pouze existující)
 
-    * Pro vytváření a úpravy aplikace logiky jsou vyžadována oprávnění [přispěvatele](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-contributor) aplikace Logika.
+    * Pro vytváření a úpravu aplikace logiky se vyžadují oprávnění [Přispěvatel aplikace logiky](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-contributor) .
 
-* Pokud chcete použít konektory aplikace Logika, budete pravděpodobně potřebovat další pověření pro přihlášení k jejich příslušné služby (například vaše outlook/týmy/slack instance)
+* Pokud chcete používat konektory aplikací logiky, budete možná potřebovat další přihlašovací údaje pro přihlášení ke svým příslušným službám (například k instancím aplikace Outlook/Teams nebo časové rezervy).
 
 
-## <a name="create-a-logic-app-and-define-when-it-should-automatically-run"></a>Vytvoření aplikace logiky a definování, kdy by měla být automaticky spuštěna 
+## <a name="create-a-logic-app-and-define-when-it-should-automatically-run"></a>Vytvoření aplikace logiky a definování jejího automatického spuštění 
 
-1. V postranním panelu Centra zabezpečení vyberte **automatizaci pracovního postupu**.
+1. Z bočního panelu Security Center vyberte **Automatizace pracovního postupu**.
 
-    [![Seznam automatizace pracovních postupů](media/workflow-automation/list-of-workflow-automations.png)](media/workflow-automation/list-of-workflow-automations.png#lightbox)
+    [![Seznam automatizovaných pracovních postupů](media/workflow-automation/list-of-workflow-automations.png)](media/workflow-automation/list-of-workflow-automations.png#lightbox)
 
-    Na této stránce můžete vytvořit nová pravidla automatizace a také povolit, zakázat nebo odstranit stávající.  
-1. Chcete-li definovat nový pracovní postup, klepněte na tlačítko **Přidat automatizaci pracovního postupu**. 
+    Na této stránce můžete vytvořit nová pravidla automatizace a zároveň povolit, zakázat nebo odstranit existující.  
+1. Pokud chcete definovat nový pracovní postup, klikněte na **Přidat automatizaci pracovního postupu**. 
 
-    Zobrazí se podokno s možnostmi nové automatizace. Zde můžete zadat:
-    1. Název a popis automatizace.
-    1. Aktivační události, které zahájí tento automatický pracovní postup. Můžete například chtít, aby se aplikace logiky spouštěla, když je generována výstraha zabezpečení, která obsahuje "SQL".
-    1. Aplikace logiky, která se spustí, když jsou splněny podmínky aktivační události. 
+    Zobrazí se podokno s možnostmi pro novou automatizaci. Tady můžete zadat:
+    1. Název a popis pro automatizaci.
+    1. Triggery, které spustí tento automatický pracovní postup. Můžete například chtít, aby se aplikace logiky spouštěla, když se vygeneruje výstraha zabezpečení, která obsahuje "SQL".
+    1. Aplikace logiky, která se spustí, když se splní podmínky triggeru 
 
-        [![Seznam automatizace pracovních postupů](media/workflow-automation/add-workflow.png)](media/workflow-automation/add-workflow.png#lightbox)
+        [![Seznam automatizovaných pracovních postupů](media/workflow-automation/add-workflow.png)](media/workflow-automation/add-workflow.png#lightbox)
 
-1. V části Akce klikněte na **Vytvořit nový** a zahajte proces vytváření aplikace logiky.
+1. V části Akce klikněte na **vytvořit nový** a začněte proces vytváření aplikace logiky.
 
-    Přejdou vás do Azure Logic Apps.
+    Budete muset Azure Logic Apps.
 
     [![Vytvoření nové aplikace logiky](media/workflow-automation/logic-apps-create-new.png)](media/workflow-automation/logic-apps-create-new.png#lightbox)
 
-1. Zadejte název, skupinu prostředků a umístění a klepněte na **tlačítko Vytvořit**.
+1. Zadejte název, skupinu prostředků a umístění a klikněte na **vytvořit**.
 
-1. V nové aplikaci logiky si můžete vybrat z předdefinovaných šablon z kategorie zabezpečení. Nebo můžete definovat vlastní tok událostí dojít při aktivaci tohoto procesu.
+1. V nové aplikaci logiky si můžete vybrat z předdefinovaných předdefinovaných šablon z kategorie zabezpečení. Případně můžete definovat vlastní tok událostí, které mají nastat při aktivaci tohoto procesu.
 
-    V návrháři aplikace logiky jsou podporovány následující aktivační události z konektorů Centra zabezpečení:
+    V návrháři aplikace logiky jsou podporovány následující aktivační události z konektorů Security Center:
 
-    * **Když se vytvoří nebo aktivuje doporučení Centra zabezpečení Azure**
-    * **Když se vytvoří nebo aktivuje výstraha Centra zabezpečení Azure** 
+    * **Když se vytvoří nebo spustí doporučení Azure Security Center**
+    * **Při vytvoření nebo spuštění výstrahy Azure Security Center** 
     
     > [!TIP]
-    > Aktivační událost můžete přizpůsobit tak, aby se vztahovala pouze na výstrahy s úrovněmi závažnosti, které vás zajímají.
+    > Trigger můžete přizpůsobit tak, aby se v něm zobrazovaly jenom výstrahy s úrovněmi závažnosti, které vás zajímají.
     
     > [!NOTE]
-    > Pokud používáte starší aktivační událost "Když se aktivuje odpověď na výstrahu Centra zabezpečení Azure", vaše logic Apps se nespustí funkce Automatizace pracovního postupu. Místo toho použijte některou z aktivačních událostí uvedených výše. 
+    > Pokud používáte starší verzi triggeru, když se aktivuje odpověď na Azure Security Center výstraha, Logic Apps se nespustí funkcí automatizace pracovního postupu. Místo toho použijte kteroukoli z výše uvedených triggerů. 
 
     [![Ukázková aplikace logiky](media/workflow-automation/sample-logic-app.png)](media/workflow-automation/sample-logic-app.png#lightbox)
 
-1. Po definování aplikace logiky se vraťte do podokna definice automatizace pracovního postupu ("Přidat automatizaci pracovního postupu"). Klikněte na **Aktualizovat** a ujistěte se, že nová aplikace logiky je k dispozici pro výběr.
+1. Po definování aplikace logiky se vraťte do podokna definice automatizace pracovního postupu (přidat automatizaci pracovního postupu). Kliknutím na **aktualizovat** zajistěte, aby byla nová aplikace logiky dostupná pro výběr.
 
     ![Obnovení](media/workflow-automation/refresh-the-list-of-logic-apps.png)
 
-1. Vyberte aplikaci logiky a uložte automatizaci. Všimněte si, že rozevírací informace aplikace logiky zobrazuje pouze aplikace logiky s podporou konektorů Security Center uvedených výše.
+1. Vyberte svou aplikaci logiky a uložte automatizaci. Všimněte si, že v rozevírací nabídce aplikace logiky se zobrazí pouze Logic Apps s podpůrnými Security Center konektory uvedenými výše.
 
 
-## <a name="manually-trigger-a-logic-app"></a>Ruční spuštění aplikace logiky
+## <a name="manually-trigger-a-logic-app"></a>Ruční aktivace aplikace logiky
 
-Aplikace Logic Apps můžete také spustit ručně při zobrazení výstrahy zabezpečení nebo doporučení, které nabízí [opravu rychlé opravy](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#quick-fix-remediation).
+Logic Apps můžete také spustit ručně při zobrazení výstrahy zabezpečení nebo jakékoli doporučení, které nabízí [rychlou opravu nápravy](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#quick-fix-remediation).
 
-Chcete-li aplikaci logiky spustit ručně, otevřete výstrahu nebo doporučení, které podporuje opravu rychlé opravy, a klepněte na tlačítko **Aktivovat aplikaci logiky**:
+Pokud chcete aplikaci logiky spustit ručně, otevřete výstrahu nebo doporučení, které podporuje nápravu rychlé opravy, a klikněte na **aktivovat aplikaci logiky**:
 
-[![Ruční spuštění aplikace logiky](media/workflow-automation/manually-trigger-logic-app.png)](media/workflow-automation/manually-trigger-logic-app.png#lightbox)
+[![Ruční aktivace aplikace logiky](media/workflow-automation/manually-trigger-logic-app.png)](media/workflow-automation/manually-trigger-logic-app.png#lightbox)
 
 ## <a name="data-types-schemas"></a>Schémata datových typů
 
-Chcete-li zobrazit nezpracovaná schémata událostí výstrah zabezpečení nebo událostí doporučení předaných instanci aplikace Logika, navštivte [schémata dat automatizace pracovního postupu](https://aka.ms/ASCAutomationSchemas). To může být užitečné v případech, kdy nepoužíváte konektory integrované aplikace logiky centra zabezpečení uvedené výše, ale místo toho používají obecný konektor HTTP aplikace Logika - můžete použít schéma události JSON ručně analyzovat, jak uznáte za vhodné.
+Chcete-li zobrazit nezpracované schéma událostí výstrah zabezpečení nebo událostí doporučení předaných do instance aplikace logiky, přejděte na [schéma typů dat automatizace pracovního postupu](https://aka.ms/ASCAutomationSchemas). To může být užitečné v případech, kdy neSecurity Center používáte Integrované konektory aplikace logiky, které jsou uvedené výše, ale místo toho se používá obecný konektor HTTP aplikace logiky – můžete použít schéma JSON události a ručně ho analyzovat podle potřeby.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste se dozvěděli o vytváření aplikací logiky, automatizaci jejich spuštění v Centru zabezpečení a jejich ručním spuštěním. 
+V tomto článku jste se dozvěděli o vytváření Logic Apps, automatizaci jejich spouštění v Security Center a jejich ručním spuštění. 
 
-Další související materiály jsou: 
+Další související materiály najdete v tématech: 
 
-- [Modul Microsoft Learn o použití automatizace pracovních postupů k automatizaci odezvy zabezpečení](https://docs.microsoft.com/learn/modules/resolve-threats-with-azure-security-center/)
+- [Modul Microsoft Learn, jak pomocí automatizace pracovních postupů automatizovat odpověď zabezpečení](https://docs.microsoft.com/learn/modules/resolve-threats-with-azure-security-center/)
 - [Doporučení zabezpečení v Azure Security Center](security-center-recommendations.md)
 - [Výstrahy zabezpečení ve službě Azure Security Center](security-center-alerts-overview.md)
 - [Informace o Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)
 - [Konektory Logic Apps](https://docs.microsoft.com/connectors/)
-- [Schémata dat automatizace pracovního postupu](https://aka.ms/ASCAutomationSchemas)
+- [Schémata datových typů automatizace pracovního postupu](https://aka.ms/ASCAutomationSchemas)

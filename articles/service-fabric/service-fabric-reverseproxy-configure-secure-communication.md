@@ -1,41 +1,41 @@
 ---
-title: Azure Service Fabric reverzní proxy zabezpečená komunikace
-description: Nakonfigurujte reverzní proxy server tak, aby umožňoval zabezpečenou komunikaci mezi koncovými místy v aplikaci Azure Service Fabric.
+title: Zabezpečená komunikace služby Azure Service Fabric reverzní proxy
+description: Nakonfigurujte reverzní proxy tak, aby umožňoval zabezpečenou koncovou komunikaci v aplikaci Azure Service Fabric.
 author: kavyako
 ms.topic: conceptual
 ms.date: 08/10/2017
 ms.author: kavyako
 ms.openlocfilehash: 61a8d1e766ea576f7d2984add239b0da7e2e8183
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80617116"
 ---
 # <a name="connect-to-a-secure-service-with-the-reverse-proxy"></a>Připojení k zabezpečené službě pomocí reverzního proxy serveru
 
-Tento článek vysvětluje, jak vytvořit zabezpečené připojení mezi reverzní proxy server a služby, což umožňuje ukončení zabezpečeného kanálu. Další informace o reverzním proxy serveru najdete [v tématu Reverzní proxy server ve službě Azure Service Fabric](service-fabric-reverseproxy.md)
+V tomto článku se dozvíte, jak vytvořit zabezpečené připojení mezi reverzním proxy serverem a službami a tím i koncovým zabezpečeným kanálem. Další informace o reverzním proxy serveru najdete [v tématu reverzní proxy v Azure Service Fabric](service-fabric-reverseproxy.md)
 
-Připojení k zabezpečeným službám je podporováno pouze v případě, že je reverzní proxy server nakonfigurován tak, aby naslouchal protokolu HTTPS. Tento článek předpokládá, že se jedná o tento případ.
-Chcete-li nakonfigurovat reverzní proxy server ve službě Service Fabric služby [Azure Fabric,](service-fabric-reverseproxy-setup.md) nawebute reverzní proxy server ve službě Service Fabric.
+Připojení k zabezpečeným službám se podporuje jenom v případě, že je reverzní proxy nakonfigurované pro naslouchání na HTTPS. V tomto článku se předpokládá, že se jedná o tento případ.
+Postup konfigurace reverzního proxy serveru v Service Fabric najdete v tématu [Nastavení reverzního proxy serveru v Azure Service Fabric](service-fabric-reverseproxy-setup.md) .
 
-## <a name="secure-connection-establishment-between-the-reverse-proxy-and-services"></a>Bezpečné navázání spojení mezi reverzním proxy serverem a službami 
+## <a name="secure-connection-establishment-between-the-reverse-proxy-and-services"></a>Zabezpečené vytváření připojení mezi reverzním proxy serverem a službami 
 
-### <a name="reverse-proxy-authenticating-to-services"></a>Ověření reverzního proxy serveru pro služby:
-Reverzní proxy server identifikuje sám služby pomocí svého certifikátu. Pro clustery Azure je certifikát určen vlastností ***reverseProxyCertificate*** v části [**Microsoft.ServiceFabric/clusters**](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters) [Typ prostředku](../azure-resource-manager/templates/template-syntax.md) šablony Správce prostředků. U samostatných clusterů je certifikát určen buď pomocí ***reverseproxycertificatecertificate,*** nebo vlastností ***ReverseProxyCertificateCommonNames*** v části **Zabezpečení** clusteru ClusterConfig.json. Další informace naleznete v [tématu Povolení reverzního proxy serveru v samostatných clusterech](service-fabric-reverseproxy-setup.md#enable-reverse-proxy-on-standalone-clusters). 
+### <a name="reverse-proxy-authenticating-to-services"></a>Reverzní proxy ověřování pro služby:
+Reverzní proxy server identifikuje sám sebe se službami pomocí jejího certifikátu. V případě clusterů Azure je certifikát zadaný pomocí vlastnosti ***reverseProxyCertificate*** v [části typ prostředku](../azure-resource-manager/templates/template-syntax.md) [**Microsoft. ServiceFabric/clustery**](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters) v šabloně správce prostředků. U samostatných clusterů se certifikát zadává buď pomocí ***ReverseProxyCertificate*** , nebo pomocí vlastnosti ***ReverseProxyCertificateCommonNames*** v oddílu **zabezpečení** ClusterConfig. JSON. Další informace najdete v tématu [Povolení reverzního proxy na samostatných clusterech](service-fabric-reverseproxy-setup.md#enable-reverse-proxy-on-standalone-clusters). 
 
-Služby mohou implementovat logiku k ověření certifikátu předloženého reverzní proxy server. Služby mohou určit podrobnosti o přijatém klientském certifikátu jako nastavení konfigurace v konfiguračním balíčku. To lze číst za běhu a slouží k ověření certifikátu předloženého reverzní proxy server. Chcete-li přidat nastavení konfigurace, přečtěte si odkaz [na spravovat parametry aplikace.](service-fabric-manage-multiple-environment-app-configuration.md) 
+Služby můžou implementovat logiku, která ověří certifikát prezentovaný reverzním proxy serverem. Služby můžou určit podrobnosti přijímaného klientského certifikátu jako konfigurační nastavení v konfiguračním balíčku. To je možné číst za běhu a použít k ověření certifikátu prezentovaného reverzním proxy serverem. Chcete-li přidat nastavení konfigurace, přečtěte si téma [Správa parametrů aplikace](service-fabric-manage-multiple-environment-app-configuration.md) . 
 
-### <a name="reverse-proxy-verifying-the-services-identity-via-the-certificate-presented-by-the-service"></a>Reverzní proxy server ověřující identitu služby prostřednictvím certifikátu předloženého službou:
-Reverzní proxy server podporuje následující zásady pro ověření certifikátů serveru certifikátů prezentovaných službami: None, ServiceCommonNameAndIssuer a ServiceCertificateThumbprints.
-Chcete-li vybrat zásadu pro reverzní proxy server, který chcete použít, zadejte **zásadu ApplicationCertificateValidationPolicy** v části **ApplicationGateway/Http** v části [fabricSettings](service-fabric-cluster-fabric-settings.md).
+### <a name="reverse-proxy-verifying-the-services-identity-via-the-certificate-presented-by-the-service"></a>Reverzní proxy server ověřuje identitu služby prostřednictvím certifikátu, který prezentuje služba:
+Reverzní proxy server podporuje následující zásady, které provádějí ověřování certifikátů serveru pro certifikáty prezentované službami: None, ServiceCommonNameAndIssuer a ServiceCertificateThumbprints.
+Chcete-li vybrat zásadu pro použití reverzního proxy serveru, zadejte **ApplicationCertificateValidationPolicy** do části **ApplicationGateway/http** v části [fabricSettings](service-fabric-cluster-fabric-settings.md).
 
-V další části jsou uvedeny podrobnosti konfigurace pro každou z těchto možností.
+V další části jsou uvedeny podrobnosti o konfiguraci pro každou z těchto možností.
 
-### <a name="service-certificate-validation-options"></a>Možnosti ověření certifikátu služby 
+### <a name="service-certificate-validation-options"></a>Možnosti ověřování certifikátu služby 
 
-- **Žádné**: Reverzní proxy přeskočí ověření certifikátu proxied služby a naváže zabezpečené připojení. Toto je výchozí chování.
-V části [**ApplicationGateway/Http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) zadejte **zásadu ApplicationCertificateValidationPolicy** s hodnotou **None.**
+- **Žádné**: reverzní proxy přeskočí ověření proxy serveru s proxy serverem a vytvoří zabezpečené připojení. Toto je výchozí chování.
+V části [**ApplicationGateway/http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) zadejte **ApplicationCertificateValidationPolicy** s hodnotou **none** .
 
    ```json
    {
@@ -55,7 +55,7 @@ V části [**ApplicationGateway/Http**](./service-fabric-cluster-fabric-settings
    }
    ```
 
-- **ServiceCommonNameAndIssuer**: Reverzní proxy ověří certifikát předložený službou na základě běžného názvu certifikátu a kryptografického náhledu okamžitého vystavitnamu: Zadejte **zásadu ApplicationCertificateValidationPolicy** s hodnotou **ServiceCommonNameAndIssuer** v části [**ApplicationGateway/Http.**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp)
+- **ServiceCommonNameAndIssuer**: reverzní proxy ověří certifikát prezentovaný službou na základě běžného názvu certifikátu a kryptografického otisku bezprostředního vystavitele: zadejte **ApplicationCertificateValidationPolicy** s hodnotou **ServiceCommonNameAndIssuer** v části [**ApplicationGateway/http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) .
 
    ```json
    {
@@ -75,10 +75,10 @@ V části [**ApplicationGateway/Http**](./service-fabric-cluster-fabric-settings
    }
    ```
 
-   Chcete-li zadat seznam běžnýnázev služby a vystavitel thumbprints, přidejte [**ApplicationGateway/Http/ServiceCommonNameAndIssuer**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttpservicecommonnameandissuer) části pod **fabricSettings**, jak je znázorněno níže. Do pole **parametrů** lze přidat více společných názvů certifikátů a dvojic kryptografickýotisk vystavithonu. 
+   Pokud chcete zadat seznam běžných názvů služeb a kryptografických otisků vystavitelů, přidejte v oblasti **fabricSettings**oddíl [**ApplicationGateway/http/ServiceCommonNameAndIssuer**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttpservicecommonnameandissuer) , jak je znázorněno níže. Do pole **Parameters** lze přidat více než jednou dvojici společného názvu certifikátu a otisků kryptografických otisků vystavitele. 
 
-   Pokud koncový bod reverzní proxy se připojuje k představuje certifikát, jehož běžný název a vystavitel kryptografický otisk odpovídá některé z hodnot uvedených zde, je vytvořen kanál TLS.
-   Po selhání odpovídající podrobnosti certifikátu reverzní proxy nezdaří požadavek klienta s 502 (Bad Gateway) stavový kód. Stavový řádek HTTP bude také obsahovat frázi "Neplatný certifikát SSL". 
+   Pokud se připojení ke koncovému bodu proxy serveru zaznamená, vytvoří se kanál protokolu TLS s certifikátem, který obsahuje běžný název a kryptografický otisk vystavitele.
+   Po neúspěšném přiřazení podrobností certifikátu selže reverzní proxy požadavek klienta se stavovým kódem 502 (špatným bránou). Stavový řádek protokolu HTTP bude obsahovat také frázi "Neplatný certifikát SSL". 
 
    ```json
    {
@@ -102,7 +102,7 @@ V části [**ApplicationGateway/Http**](./service-fabric-cluster-fabric-settings
    }
    ```
 
-- **ServiceCertificateThumbprints**: Reverzní proxy server ověří certifikát služby proxied na základě jeho kryptografického otisku. Tuto trasu můžete zvolit, pokud jsou služby konfigurovány s certifikáty podepsanými svým držitelem: Zadejte **zásadu ApplicationCertificateValidationPolicy** s hodnotou **ServiceCertificateThumbprints** v části [**ApplicationGateway/Http.**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp)
+- **ServiceCertificateThumbprints**: reverzní proxy ověří certifikát proxy služby na základě jeho kryptografického otisku. Tuto trasu můžete zvolit, pokud jsou služby nakonfigurované s certifikáty podepsanými svým vlastníkem: v části [**ApplicationGateway/http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) zadejte **ApplicationCertificateValidationPolicy** s hodnotou **ServiceCertificateThumbprints** .
 
    ```json
    {
@@ -122,7 +122,7 @@ V části [**ApplicationGateway/Http**](./service-fabric-cluster-fabric-settings
    }
    ```
 
-   Zadejte také kryptografické otisky s položkou **ServiceCertificateThumbprints** v části **ApplicationGateway/Http.** Více kryptografických otisků lze zadat jako seznam oddělený čárkami v poli hodnoty, jak je znázorněno níže:
+   Zadejte také kryptografické otisky pomocí položky **ServiceCertificateThumbprints** v části **ApplicationGateway/http** . V poli hodnota lze zadat více kryptografických otisků jako čárkami oddělený seznam, jak je vidět níže:
 
    ```json
    {
@@ -143,12 +143,12 @@ V části [**ApplicationGateway/Http**](./service-fabric-cluster-fabric-settings
    }
    ```
 
-   Pokud je kryptografický otisk certifikátu serveru uveden v této položce konfigurace, reverzní proxy server uspěje s připojením TLS. V opačném případě ukončí připojení a nezdaří požadavek klienta s 502 (Bad Gateway). Stavový řádek HTTP bude také obsahovat frázi "Neplatný certifikát SSL".
+   Pokud je kryptografický otisk certifikátu serveru uvedený v této položce konfigurace, reverzní proxy připojení TLS úspěšně. V opačném případě se připojení ukončí a požadavek klienta selže s 502 (chybnou bránou). Stavový řádek protokolu HTTP bude obsahovat také frázi "Neplatný certifikát SSL".
 
-## <a name="endpoint-selection-logic-when-services-expose-secure-as-well-as-unsecured-endpoints"></a>Logika výběru koncového bodu, když služby zveřejňují zabezpečené i nezabezpečené koncové body
-Infrastruktura služeb podporuje konfiguraci více koncových bodů pro službu. Další informace naleznete [v tématu Určení prostředků v manifestu služby](service-fabric-service-manifest-resources.md).
+## <a name="endpoint-selection-logic-when-services-expose-secure-as-well-as-unsecured-endpoints"></a>Logika výběru koncového bodu, když služby zveřejňují zabezpečení a také nezabezpečené koncové body
+Service Fabric podporuje konfiguraci více koncových bodů pro službu. Další informace najdete v tématu [určení prostředků v manifestu služby](service-fabric-service-manifest-resources.md).
 
-Reverzní proxy server vybere jeden z koncových bodů pro předání požadavku na základě parametru dotazu **ListenerName** v [identifikátoru URI služby](./service-fabric-reverseproxy.md#uri-format-for-addressing-services-by-using-the-reverse-proxy). Pokud není zadán parametr **ListenerName,** reverzní proxy server může vybrat libovolný koncový bod ze seznamu koncových bodů. V závislosti na koncových bodech nakonfigurovaných pro službu může být vybraným koncovým bodem koncový bod HTTP nebo HTTPS. Mohou existovat scénáře nebo požadavky, kde chcete, aby reverzní proxy pracovat v režimu pouze pro bezpečné; to znamená, že nechcete, aby zabezpečený reverzní proxy server přesměrovávat požadavky na nezabezpečené koncové body. Chcete-li nastavit reverzní proxy server do zabezpečeného režimu pouze pro zabezpečení, zadejte položku konfigurace **SecureOnlyMode** s hodnotou **true** v části [**ApplicationGateway/Http.**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp)   
+Reverzní proxy vybere jeden z koncových bodů, aby předal požadavek na základě parametru dotazu **naslouchacího procesu** v [identifikátoru URI služby](./service-fabric-reverseproxy.md#uri-format-for-addressing-services-by-using-the-reverse-proxy). Pokud není zadán parametr **naslouchacího** prvku, může reverzní proxy vybrat libovolný koncový bod ze seznamu koncových bodů. V závislosti na koncových bodech nakonfigurovaných pro službu může být vybraný koncový bod HTTP nebo HTTPS. Mohou nastat scénáře nebo požadavky, kde chcete, aby reverzní proxy pracoval v režimu pouze pro zabezpečení. To znamená, že nechcete, aby zabezpečený reverzní proxy přesměroval požadavky na nezabezpečené koncové body. Chcete-li nastavit reverzní proxy do režimu pouze pro zabezpečení, zadejte položku konfigurace **SecureOnlyMode** s hodnotou **true** v části [**ApplicationGateway/http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) .   
 
 ```json
 {
@@ -170,26 +170,26 @@ Reverzní proxy server vybere jeden z koncových bodů pro předání požadavku
 ```
 
 > [!NOTE]
-> Pokud klient při práci v **režimu SecureOnlyMode**zadal **název listenername** odpovídající koncovému bodu HTTP(nezabezpečené), reverzní proxy server neprojde požadavkem se stavovým kódem HTTP 404 (Nebyl nalezen).
+> Při provozu v **SecureOnlyMode**, pokud klient zadal parametr **naslouchacího procesu** odpovídající koncovému bodu http (nezabezpečeného), reverzní proxy server nevrátí požadavek se stavovým kódem HTTP 404 (Nenalezeno).
 
-## <a name="setting-up-client-certificate-authentication-through-the-reverse-proxy"></a>Nastavení ověřování klientského certifikátu prostřednictvím reverzního proxy serveru
-Ukončení Protokolu TLS proběhne na reverzním proxy serveru a dojde ke ztrátě všech dat klientského certifikátu. Chcete-li, aby služby prováděly ověřování klientského **certifikátu,** zadejte nastavení ForwardClientCertificate v části [**ApplicationGateway/Http.**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp)
+## <a name="setting-up-client-certificate-authentication-through-the-reverse-proxy"></a>Nastavení ověřování klientského certifikátu pomocí reverzního proxy serveru
+Ukončení protokolu TLS proběhne na reverzním proxy serveru a ztratí se všechna data certifikátu klienta. Aby služby prováděly ověřování klientským certifikátem, zadejte nastavení **ForwardClientCertificate** v části [**ApplicationGateway/http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) .
 
-1. Pokud je **forwardclientcertificate** nastaven na **hodnotu false**, reverzní proxy server nebude během handshake protokolu TLS s klientem požadovat klientský certifikát.
+1. Pokud je **ForwardClientCertificate** nastavené na **hodnotu false**, reverzní proxy nepožaduje klientský certifikát během své metody handshake TLS s klientem.
 Toto je výchozí chování.
 
-2. Pokud je **forwardclientcertificate** nastavenna **na hodnotu true**, reverzní proxy požaduje certifikát klienta během jeho tls handshake s klientem.
-Poté předá data klientského certifikátu ve vlastní hlavičce HTTP s názvem **X-Client-Certificate**. Hodnota záhlaví je řetězec formátu PEM kódu je base64 certifikátu klienta. Služba může úspěšně/nepodaří požadavek s příslušným stavovým kódem po kontrole dat certifikátu.
-Pokud klient nepředloží certifikát, obrátí proxy předává prázdnou hlavičku a nechá službu zpracovávat případ.
+2. Pokud je **ForwardClientCertificate** nastaveno na **hodnotu true**, reverzní proxy požádá o certifikát klienta během své metody handshake TLS s klientem.
+Pak přepošle data certifikátu klienta ve vlastní hlavičce HTTP s názvem **X-Client-Certificate**. Hodnota hlavičky je formátovací řetězec PEM kódovaný v kódování Base64 certifikátu klienta. Služba může po kontrole dat certifikátu úspěšně nebo neúspěšně požádat o příslušný stavový kód.
+Pokud klient neprezentuje certifikát, reverzní proxy přepošle prázdnou hlavičku a umožní, aby služba zavedla případ.
 
 > [!NOTE]
-> Reverzní proxy je pouhý server pro předávání. Neprovede žádné ověření certifikátu klienta.
+> Reverzní proxy je pouhým serverem pro přeposílání. Neprovede žádné ověření certifikátu klienta.
 
 
 ## <a name="next-steps"></a>Další kroky
-* [Nastavte a nakonfigurujte reverzní proxy server v clusteru](service-fabric-reverseproxy-setup.md).
-* Odkazovat na [Konfigurace reverzního proxy serveru pro připojení k zabezpečeným službám](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Reverse-Proxy-Sample#configure-reverse-proxy-to-connect-to-secure-services)
-* Podívejte se na příklad http komunikace mezi službami v [ukázkovém projektu na GitHubu](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started).
-* [Vzdálená volání procedur pomocí vzdálené komunikace spolehlivých služeb](service-fabric-reliable-services-communication-remoting.md)
-* [Webové rozhraní API, které používá OWIN ve spolehlivých službách](service-fabric-reliable-services-communication-webapi.md)
+* [Nastavení a konfigurace reverzního proxy serveru v clusteru](service-fabric-reverseproxy-setup.md).
+* Další informace o [konfiguraci reverzního proxy serveru pro připojení k zabezpečeným službám](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Reverse-Proxy-Sample#configure-reverse-proxy-to-connect-to-secure-services)
+* Podívejte se na příklad komunikace HTTP mezi službami ve [vzorovém projektu na GitHubu](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started).
+* [Vzdálená volání procedur s Reliable Services Vzdálená komunikace](service-fabric-reliable-services-communication-remoting.md)
+* [Webové rozhraní API, které používá OWIN v Reliable Services](service-fabric-reliable-services-communication-webapi.md)
 * [Správa certifikátů clusteru](service-fabric-cluster-security-update-certs-azure.md)

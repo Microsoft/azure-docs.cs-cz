@@ -1,6 +1,6 @@
 ---
-title: Virtuální počítač se systémem Windows nelze spustit z důvodu správce spouštění systému Windows
-description: Tento článek obsahuje postup k vyřešení problémů, kdy Správce spouštění systému Windows zabraňuje spuštění virtuálního počítače Azure.
+title: Virtuální počítač s Windows se nedá spustit kvůli Správci spouštění Windows.
+description: Tento článek popisuje kroky pro řešení problémů, kdy správce spouštění systému Windows zabraňuje spuštění virtuálního počítače Azure.
 services: virtual-machines-windows
 documentationcenter: ''
 author: v-miegge
@@ -15,124 +15,124 @@ ms.topic: troubleshooting
 ms.date: 03/26/2020
 ms.author: v-mibufo
 ms.openlocfilehash: 5d2fb62870e2c41af635627f5d692f08c67f8394
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80373346"
 ---
-# <a name="windows-vm-cannot-boot-due-to-windows-boot-manager"></a>Virtuální přístup systému Windows nelze spustit z důvodu Správce spouštění systému Windows
+# <a name="windows-vm-cannot-boot-due-to-windows-boot-manager"></a>Virtuální počítač s Windows se nedá spustit kvůli Správci spouštění Windows.
 
-Tento článek obsahuje postup k vyřešení problémů, kdy Správce spouštění systému Windows zabraňuje spuštění virtuálního počítače (VM) Azure.
+Tento článek popisuje kroky pro řešení problémů, při kterých správce spouštění systému Windows zabraňuje spuštění virtuálního počítače Azure (VM).
 
 ## <a name="symptom"></a>Příznak
 
-Virtuální ho virtuálního uživatele se zasekne čekání na výzvu uživatele a nespustí se, pokud ručně pokyn.
+Virtuální počítač se zablokuje při čekání na výzvu uživatele a nespustí se, pokud se nezadá ručně.
 
-Když pomocí [diagnostiky spouštění](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) zobrazíte snímek obrazovky virtuálního aplikace, uvidíte, že snímek obrazovky zobrazuje Správce spouštění Windows se *zprávou Zvolte operační systém ke spuštění, nebo stisknutím klávesy TAB vyberte nástroj:*.
+Když pomocí [diagnostiky spouštění](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) zobrazíte snímek obrazovky virtuálního počítače, uvidíte, že snímek obrazovky zobrazí správce spouštění systému Windows se zprávou *zvolit operační systém, který se má spustit, nebo stiskněte klávesu TAB a vyberte nástroj:*.
 
 Obrázek 1
  
-![Správce spouštění systému Windows s uvedením možnosti "Vyberte operační systém ke spuštění nebo stisknutím klávesy TAB vyberte nástroj:"](media/troubleshoot-guide-windows-boot-manager-menu/1.jpg)
+![Správce spouštění systému Windows s informací o tom, jak zvolit operační systém, který se má spustit, nebo stiskněte klávesu Tabulátor pro výběr nástroje:](media/troubleshoot-guide-windows-boot-manager-menu/1.jpg)
 
 ## <a name="cause"></a>Příčina
 
-Chyba je způsobena spouštěcí *nabídkou příznaku* BCD ve Správci spouštění systému Windows. Je-li příznak povolen, správce spouštění systému Windows vyzve uživatele během procesu spouštění k výběru zavaděče, který chce spustit, což způsobí zpoždění spuštění. V Azure může tato funkce přidat čas potřebný ke spuštění virtuálního počítače.
+K této chybě dochází z důvodu příznaku BCD *DISPLAYBOOTMENU* ve Správci spouštění systému Windows. Když je příznak povolený, správce spouštění systému Windows během procesu spouštění vyzve uživatele, aby vybral zavaděč, který chce spustit, což způsobí zpoždění při spuštění. V Azure může tato funkce přičíst k době potřebné ke spuštění virtuálního počítače.
 
 ## <a name="solution"></a>Řešení
 
 Přehled procesu:
 
-1. Nakonfigurujte rychlejší spouštění pomocí konzoly Serial Console.
-2. Vytvoření a přístup k virtuálnímu virtuálnímu mísu opravy.
-3. Konfigurace pro rychlejší spuštění na virtuálním počítači opravy.
-4. **Doporučeno**: Před sestavením virtuálního virtuálního zařízení povolte sériovou konzolu a kolekci výpisu stavu paměti.
-5. Znovu sestavit virtuální ho dispozice.
+1. Nakonfigurujte pro rychlejší spouštění pomocí sériové konzoly.
+2. Vytvořte a získejte přístup k opravnému virtuálnímu počítači.
+3. Nakonfigurujte pro rychlejší spouštění na opravném virtuálním počítači.
+4. **Doporučené**: před opětovným SESTAVENÍM virtuálního počítače povolte kolekci sériové konzoly a výpisu paměti.
+5. Znovu sestavte virtuální počítač.
 
-### <a name="configure-for-faster-boot-time-using-serial-console"></a>Konfigurace rychlejšího spuštění pomocí konzoly Serial Console
+### <a name="configure-for-faster-boot-time-using-serial-console"></a>Konfigurace pro rychlejší spouštění pomocí sériové konzoly
 
-Pokud máte přístup k sériové konzoli, existují dva způsoby, jak dosáhnout rychlejšího spuštění. Buď zkraťte dobu čekání *v nabídce displaybootmenu* nebo příznak úplně odeberte.
+Pokud máte přístup ke konzole sériového portu, existují dva způsoby, jak můžete dosáhnout rychlejšího spouštění. Buď snižte dobu čekání *DISPLAYBOOTMENU* , nebo příznak odeberte úplně.
 
-1. Postupujte podle pokynů pro přístup k [konzoli Azure Serial Console pro Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-windows) a získejte přístup k textové konzoli.
+1. Podle pokynů pro přístup ke [konzole Azure Serial Console pro Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-windows) získáte přístup k textové konzole.
 
    > [!NOTE]
-   > Pokud se vám nedaří získat přístup k sériové konzole, přeskočte na [vytvořit a získat přístup k virtuálnímu virtuálnímu virtuálnímu mandu opravy](#create-and-access-a-repair-vm).
+   > Pokud nemůžete získat přístup k sériové konzole, přeskočte před [vytvořením a přístupem k opravnému virtuálnímu počítači](#create-and-access-a-repair-vm).
 
-2. **Možnost A**: Zkrácení čekací doby
+2. **Možnost A**: Snižte čas čekání
 
-   a. Čekací doba je ve výchozím nastavení nastavena na 30 sekund, ale lze ji změnit na rychlejší čas (např. 5 sekund).
+   a. Doba čekání se ve výchozím nastavení 30 sekund nastaví, ale dá se změnit na kratší dobu (např. 5 sekund).
 
-   b. Pomocí následujícího příkazu v konzole sériového konzole nastavte hodnotu časového času:
+   b. Pomocí následujícího příkazu v sériové konzole upravte hodnotu timeout:
 
       `bcdedit /set {bootmgr} timeout 5`
 
-3. **Možnost B:** Odebrání příznaku BCD
+3. **Možnost B**: Odebrání příznaku BCD
 
-   a. Chcete-li zcela zabránit zobrazení výzvy spuštění nabídky, zadejte následující příkaz:
+   a. Pokud chcete zabránit tomu, aby se zobrazila výzva k zobrazení spouštěcí nabídky, zadejte následující příkaz:
 
       `bcdedit /deletevalue {bootmgr} displaybootmenu`
 
       > [!NOTE]
-      > Pokud se vám nepodařilo použít konzolu sériové ho spouštění ke konfiguraci rychlejšího spuštění ve výše uvedených krocích, můžete místo toho pokračovat následujícími kroky. Nyní budete řešit problémy v režimu offline k vyřešení tohoto problému.
+      > Pokud jste nedokázali použít sériovou konzolu pro konfiguraci rychlejšího spuštění v krocích výše, můžete místo toho pokračovat podle následujících kroků. Teď budete řešit tento problém v offline režimu.
 
-### <a name="create-and-access-a-repair-vm"></a>Vytvoření a přístup k virtuálnímu virtuálnímu virtuálnímu mněmu pro opravy
+### <a name="create-and-access-a-repair-vm"></a>Vytvoření a přístup k opravnému virtuálnímu počítači
 
-1. Pomocí [kroků 1-3 příkazů pro opravu virtuálních počítačů](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) připravte virtuální počítač.
-2. Použijte připojení ke vzdálené ploše k virtuálnímu počítači pro opravu.
+1. Pomocí [kroků 1-3 příkazů pro opravu virtuálního počítače](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) Připravte opravný virtuální počítač.
+2. Použijte Připojení ke vzdálené ploše Připojte se k opravnému virtuálnímu počítači.
 
-### <a name="configure-for-faster-boot-time-on-a-repair-vm"></a>Konfigurace rychlejšího spuštění na virtuálním počítači opravy
+### <a name="configure-for-faster-boot-time-on-a-repair-vm"></a>Konfigurace pro rychlejší spouštění na opravném virtuálním počítači
 
 1. Otevřete příkazový řádek se zvýšenými oprávněními.
-2. Chcete-li povolit displaybootmenu, zadejte následující:
+2. Pokud chcete povolit DisplayBootMenu, zadejte následující:
 
-   Tento příkaz použijte pro **virtuální chod generace 1**:
+   Tento příkaz použijte pro **virtuální počítače 1. generace**:
 
    `bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /set {bootmgr} displaybootmenu yes`
 
-   Tento příkaz použijte pro **virtuální chod generace 2**:
+   Tento příkaz použijte pro **virtuální počítače 2. generace**:
 
    `bcdedit /store <VOLUME LETTER OF EFI SYSTEM PARTITION>:EFI\Microsoft\boot\bcd /set {bootmgr} displaybootmenu yes`
 
-   Nahraďte větší nebo menší než symboly, stejně jako text v nich, např > <.
+   Nahraďte symboly větší než nebo menší než a text v nich, třeba text < sem >.
 
-3. Změňte hodnotu časového času na 5 sekund:
+3. Změňte hodnotu timeout na 5 sekund:
 
-   Tento příkaz použijte pro **virtuální chod generace 1**:
+   Tento příkaz použijte pro **virtuální počítače 1. generace**:
 
    `bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /set {bootmgr} timeout 5`
 
-   Tento příkaz použijte pro **virtuální chod generace 2**:
+   Tento příkaz použijte pro **virtuální počítače 2. generace**:
 
    `bcdedit /store <VOLUME LETTER OF EFI SYSTEM PARTITION>:EFI\Microsoft\boot\bcd /set {bootmgr} timeout 5`
 
-   Nahraďte větší nebo menší než symboly, stejně jako text v nich, např > <.
+   Nahraďte symboly větší než nebo menší než a text v nich, třeba text < sem >.
 
-### <a name="recommended-before-you-rebuild-the-vm-enable-serial-console-and-memory-dump-collection"></a>Doporučené: Před sestavením virtuálního virtuálního montovace povolte kolekci sériové konzole a výpisu stavu paměti
+### <a name="recommended-before-you-rebuild-the-vm-enable-serial-console-and-memory-dump-collection"></a>Doporučené: před opětovným sestavením virtuálního počítače povolte kolekci sériové konzoly a výpisu paměti.
 
-Chcete-li povolit kolekci výpisů stavu paměti a konzolu Serial Console, spusťte následující skript:
+Pokud chcete povolit shromažďování výpisů paměti a sériovou konzolu, spusťte následující skript:
 
 1. Otevřete relaci příkazového řádku se zvýšenými oprávněními (Spustit jako správce).
 2. Spusťte následující příkazy:
 
-   Povolení sériové konzoly
+   Povolit sériovou konzolu
 
    `bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /ems {<BOOT LOADER IDENTIFIER>} ON`
 
    `bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /emssettings EMSPORT:1 EMSBAUDRATE:115200`
 
-   Nahraďte větší nebo menší než symboly, stejně jako text v nich, např > <.
+   Nahraďte symboly větší než nebo menší než a text v nich, třeba text < sem >.
 
-3. Ověřte, že volné místo na disku operačního systému je stejně jako velikost paměti (RAM) na virtuálním počítači.
+3. Ověřte, že volné místo na disku s operačním systémem je ve virtuálním počítači ve velikosti paměti (RAM).
 
-   Pokud není dostatek místa na disku operačního systému, měli byste změnit umístění, kde bude vytvořen soubor výpisu stavu paměti a odkazovat, že na všechny datové disky připojené k virtuálnímu počítači, který má dostatek volného místa. Chcete-li změnit umístění, nahraďte "%SystemRoot%" písmenem jednotky (například "F:") datového disku v níže uvedených příkazech.
+   Pokud na disku operačního systému není dostatek místa, měli byste změnit umístění, kde se vytvoří soubor s výpisem paměti, a odkazovat na libovolný datový disk připojený k virtuálnímu počítači, který má dostatek volného místa. Chcete-li změnit umístění, nahraďte "% SystemRoot%" písmenem jednotky (například "F:") datového disku v následujících příkazech.
 
 #### <a name="suggested-configuration-to-enable-os-dump"></a>Navrhovaná konfigurace pro povolení výpisu operačního systému
 
-**Načíst poškozený disk operačního systému**:
+**Načíst poškozený disk s operačním systémem**:
 
 `REG LOAD HKLM\BROKENSYSTEM <VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config\SYSTEM`
 
-**Povolit na Ovládacích sadach001:**
+**Povolit na ControlSet001:**
 
 `REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f`
 
@@ -140,7 +140,7 @@ Chcete-li povolit kolekci výpisů stavu paměti a konzolu Serial Console, spus�
 
 `REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f`
 
-**Povolit na Ovládacím prvkuSet002:**
+**Povolit na ControlSet002:**
 
 `REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f`
 
@@ -148,10 +148,10 @@ Chcete-li povolit kolekci výpisů stavu paměti a konzolu Serial Console, spus�
 
 `REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f`
 
-**Uvolnit přerušený disk operačního systému:**
+**Uvolnit poškozený disk s operačním systémem:**
 
 `REG UNLOAD HKLM\BROKENSYSTEM`
 
-### <a name="rebuild-the-original-vm"></a>Znovu sestavit původní virtuální ms
+### <a name="rebuild-the-original-vm"></a>Znovu sestavte původní virtuální počítač.
 
-Pomocí [kroku 5 příkazů pro opravu virtuálních vod](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) znovu sestavte virtuální ho.
+Pomocí [kroku 5 příkazů pro opravu virtuálního počítače](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) znovu sestavte virtuální počítač.
