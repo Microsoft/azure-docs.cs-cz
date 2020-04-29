@@ -1,6 +1,6 @@
 ---
-title: Skript Prostředí PowerShell pro získání propustnosti (RU/s) pro rozhraní API tabulky DB Azure Cosmos
-description: Skript Azure PowerShell – propustnost Azure Cosmos DB get (RU/s) pro rozhraní TABLE API
+title: Skript PowerShellu pro získání propustnosti (RU/s) pro Azure Cosmos DB rozhraní API pro tabulky
+description: Azure PowerShell skript – Azure Cosmos DB získat propustnost (RU/s) pro rozhraní API pro tabulky
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
@@ -8,13 +8,13 @@ ms.topic: sample
 ms.date: 03/18/2020
 ms.author: mjbrown
 ms.openlocfilehash: 0129b03e578d00689f085281d0499830e6ba37c2
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80365570"
 ---
-# <a name="get-throughput-rus-for-a-table-for-azure-cosmos-db---table-api"></a>Získání propustnost (RU/s) pro tabulku pro Azure Cosmos DB – rozhraní TABLE API
+# <a name="get-throughput-rus-for-a-table-for-azure-cosmos-db---table-api"></a>Získat propustnost (RU/s) pro tabulku Azure Cosmos DB-rozhraní API pro tabulky
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -39,7 +39,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | Příkaz | Poznámky |
 |---|---|
 |**Azure Cosmos DB**| |
-| [Get-AzCosmosDBTablePrůchodput](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbtablethroughput) | Získá hodnotu propustnost zadané tabulky rozhraní API tabulka. |
+| [Get-AzCosmosDBTableThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbtablethroughput) | Získá hodnotu propustnosti zadané rozhraní API pro tabulky tabulky. |
 |**Skupiny prostředků Azure**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 |||

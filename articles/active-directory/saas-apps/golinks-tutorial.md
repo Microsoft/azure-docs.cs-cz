@@ -16,10 +16,10 @@ ms.date: 03/24/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f04ae6afc9eea94fb43a9b552c9f8c2e3aaaa9c9
-ms.sourcegitcommit: fab450a18a600d72b583ecfbe6c5e53afd43408c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80295756"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-golinks"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s GoLinks
@@ -32,7 +32,7 @@ V tomto kurzu se dozvíte, jak integrovat GoLinks s Azure Active Directory (Azur
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 

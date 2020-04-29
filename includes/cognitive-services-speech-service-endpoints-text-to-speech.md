@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: wolfma
 ms.openlocfilehash: a1de313245e826511a7e9c864165ac44bcb48530
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80234235"
 ---
-### <a name="standard-and-neural-voices"></a>Standardní a neurální hlasy
+### <a name="standard-and-neural-voices"></a>Hlasy Standard a neuronové
 
-Tato tabulka slouží k určení dostupnosti standardních a neurálních hlasů podle oblasti/koncového bodu:
+Pomocí této tabulky můžete určit dostupnost standardních a neuronové hlasů podle oblasti/koncového bodu:
 
-| Region (Oblast) | Koncový bod | Standardní hlasy | Nervové hlasy |
+| Oblast | Koncový bod | Standardní hlasy | Hlasy neuronové |
 |--------|----------|-----------------|---------------|
 | Austrálie – východ | `https://australiaeast.tts.speech.microsoft.com/cognitiveservices/v1` | Ano | Ano |
 | Brazílie – jih | `https://brazilsouth.tts.speech.microsoft.com/cognitiveservices/v1` | Ano | Ne |
@@ -40,9 +40,9 @@ Tato tabulka slouží k určení dostupnosti standardních a neurálních hlasů
 
 ### <a name="custom-voices"></a>Vlastní hlasy
 
-Pokud jste vytvořili vlastní hlasové písmo, použijte koncový bod, který jste vytvořili. Můžete také použít koncové body uvedené níže `{deploymentId}` a nahradit je ID nasazení pro váš hlasový model.
+Pokud jste vytvořili vlastní písmo hlasu, použijte koncový bod, který jste vytvořili. Můžete použít také níže uvedené koncové body a nahradit tak `{deploymentId}` ID nasazení pro váš hlasový model.
 
-| Region (Oblast) | Koncový bod |
+| Oblast | Koncový bod |
 |--------|----------|
 | Austrálie – východ | `https://australiaeast.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
 | Brazílie – jih | `https://brazilsouth.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |

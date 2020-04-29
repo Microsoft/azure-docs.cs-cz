@@ -1,6 +1,6 @@
 ---
-title: Skript Prostředí PowerShell pro získání propustnosti (RU/s) pro databázi nebo kontejner sql api Azure Cosmos DB
-description: Skript Azure PowerShell pro získání propustnosti (RU/s) pro databázi nebo kontejner SQL API Azure Cosmos DB
+title: Skript PowerShellu pro získání propustnosti (RU/s) pro Azure Cosmos DB databázi nebo kontejneru rozhraní SQL API
+description: Azure PowerShell skript pro získání propustnosti (RU/s) pro Azure Cosmos DB databázi nebo kontejner SQL API
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -8,13 +8,13 @@ ms.topic: sample
 ms.date: 03/17/2020
 ms.author: mjbrown
 ms.openlocfilehash: f471b1d41314728a6c6f0c5d2ab981891e2caa87
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80365627"
 ---
-# <a name="get-throughput-rus-for-azure-cosmos-db-sql-api-database-or-container"></a>Získání propustnost (RU/s) pro databázi nebo kontejner rozhraní SQL API Azure Cosmos DB
+# <a name="get-throughput-rus-for-azure-cosmos-db-sql-api-database-or-container"></a>Získat propustnost (RU/s) pro Azure Cosmos DB databázi nebo kontejner rozhraní SQL API
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -39,8 +39,8 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | Příkaz | Poznámky |
 |---|---|
 |**Azure Cosmos DB**| |
-| [Get-AzCosmosDBSqlProukum databáze](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqldatabasethroughput) | Získejte propustnost zbydnoucí v databázi SQL API Azure Cosmos DB. |
-| [Get-AzCosmosDBSqlContainerThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqlcontainerthroughput) | Získejte propustnost zbydnoucí na kontejneru SQL API Azure Cosmos DB. |
+| [Get-AzCosmosDBSqlDatabaseThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqldatabasethroughput) | Získání propustnosti zřízené v Azure Cosmos DB databázi rozhraní SQL API. |
+| [Get-AzCosmosDBSqlContainerThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqlcontainerthroughput) | Získání propustnosti zřízené na Azure Cosmos DB kontejneru rozhraní SQL API. |
 |**Skupiny prostředků Azure**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 |||

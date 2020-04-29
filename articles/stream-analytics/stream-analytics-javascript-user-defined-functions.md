@@ -1,6 +1,6 @@
 ---
-title: Uživatelem definované funkce JavaScriptu Azure Stream Analytics
-description: Tento článek je úvodem k uživatelem definovaným funkcím JavaScriptu v Stream Analytics.
+title: Azure Stream Analytics uživatelsky definovaných funkcí jazyka JavaScript
+description: Tento článek představuje úvod do uživatelem definovaných funkcí jazyka JavaScript v Stream Analytics.
 author: rodrigoaatmicrosoft
 ms.author: rodrigoa
 ms.service: stream-analytics
@@ -9,59 +9,59 @@ ms.reviewer: mamccrea
 ms.custom: mvc
 ms.date: 03/23/2020
 ms.openlocfilehash: 58d750b47f3f6a2bcfbf23399ca249131e7876ae
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80235393"
 ---
-# <a name="javascript-user-defined-functions-in-azure-stream-analytics"></a>Uživatelem definované funkce JavaScriptu v Azure Stream Analytics
+# <a name="javascript-user-defined-functions-in-azure-stream-analytics"></a>Uživatelem definované funkce jazyka JavaScript v Azure Stream Analytics
  
-Azure Stream Analytics podporuje uživatelem definované funkce, které jsou napsané v jazyce JavaScript. Díky bohaté sadě metod **String**, **RegExp**, **Math**, **Array**a **Date,** které JavaScript poskytuje, se usnadňují vytváření složitých transformací dat s úlohami Stream Analytics.
+Azure Stream Analytics podporuje uživatelem definované funkce, které jsou napsané v jazyce JavaScript. S bohatou sadou metod **řetězců**, **RegExp**, **Math**, **Array**a **Date** , které poskytuje jazyk JavaScript, je snazší vytvořit složitou transformaci dat s Stream Analytics úlohami.
 
 ## <a name="overview"></a>Přehled
 
-Uživatelem definované funkce JavaScriptu podporují bezstavové skalární funkce pouze pro výpočty, které nevyžadují externí připojení. Návratovou hodnotou funkce může být jenom skalární (jediná) hodnota. Po přidání uživatelem definované funkce jazyka JavaScript do úlohy lze danou funkci použít kdekoli v dotazu jako integrovanou skalární funkci.
+Uživatelsky definované funkce jazyka JavaScript podporují bezstavové, jenom výpočetní skalární funkce, které nevyžadují externí připojení. Návratovou hodnotou funkce může být jenom skalární (jediná) hodnota. Po přidání uživatelem definované funkce jazyka JavaScript do úlohy lze danou funkci použít kdekoli v dotazu jako integrovanou skalární funkci.
 
 Některé scénáře, ve kterých můžou být uživatelem definované funkce jazyka JavaScript užitečné:
 * Analýza a manipulace s řetězci, které obsahují funkce s regulárními výrazy, například **Regexp_Replace()** a **Regexp_Extract()**
 * Kódování a dekódování dat, například převod z binárního kódování na šestnáctkové kódování
-* Provádění matematických výpočtů s funkcemi JavaScript **Math**
-* Operace s polem, jako je řazení, spojení, hledání a vyplňování
+* Provádění matematickýchch výpočtů pomocí **matematických** funkcí JavaScriptu
+* Provádění operací pole jako řazení, spojení, hledání a vyplnění
 
-Tady je pár věcí, které s uživatelem definovanou funkcí JavaScriptu v Stream Analytics dělat nemůžete:
-* Volání externích koncových bodů REST, například zpětnévyhledávání IP nebo vytažení referenčních dat z externího zdroje
+Tady je několik věcí, které se uživatelsky definovanou funkcí jazyka JavaScript v Stream Analytics nedají provést:
+* Volání externích koncových bodů REST, například provádění reverzního vyhledávání IP nebo přijímání referenčních dat z externího zdroje
 * Provádění vlastní serializace nebo deserializace formátu událostí u vstupů nebo výstupů
 * Vytváření vlastních agregací
 
-Přestože funkce jako **Date.GetDate()** nebo **Math.random()** nejsou blokovány v definici funkcí, měli byste se vyhnout jejich použití. Tyto funkce **nevrátí** stejný výsledek pokaždé, když jim zavoláte a služba Azure Stream Analytics neuchovává deník vyvolání funkcí a vrácené výsledky. Pokud funkce vrátí jiný výsledek u stejných událostí, opakovatelnost není zaručena, když jste úlohu restartovali vy nebo služba Stream Analytics.
+I když funkce jako **Date. GETDATE ()** nebo **Math. Random ()** nejsou v definici Functions blokované, neměli byste je používat. Tyto funkce **don't** nevrátí stejný výsledek pokaždé, když je zavoláte, a služba Azure Stream Analytics neudržuje deník vyvolání funkcí a vrácené výsledky. Vrátí-li funkce jiný výsledek pro stejné události, není zaručena opakovatelnost při restartování úlohy vámi nebo službou Stream Analytics.
 
-## <a name="add-a-javascript-user-defined-function-to-your-job"></a>Přidání uživatelem definované funkce JavaScriptu do úlohy
+## <a name="add-a-javascript-user-defined-function-to-your-job"></a>Přidání uživatelem definované funkce jazyka JavaScript do úlohy
 
 > [!NOTE]
-> Tyto kroky fungují na úlohách Stream Analytics nakonfigurovaných pro spuštění v cloudu. Pokud je vaše úloha Stream Analytics nakonfigurovaná tak, aby se spouštěla na Azure IoT Edge, použijte místo toho Visual Studio a [napište uživatelem definovanou funkci pomocí jazyka C#](stream-analytics-edge-csharp-udf.md).
+> Tyto kroky fungují na úlohách Stream Analytics nakonfigurovaných pro spouštění v cloudu. Pokud je vaše úloha Stream Analytics nakonfigurovaná tak, aby běžela na Azure IoT Edge, místo toho použijte Visual Studio a [zapište uživatelsky definovanou funkci pomocí jazyka C#](stream-analytics-edge-csharp-udf.md).
 
-Chcete-li v úloze Stream Analytics vytvořit uživatelsky definovanou funkci JavaScriptu, vyberte v části **Topologie úlohy**možnost **Funkce** . Potom vrozené nabídce **+Přidat** vyberte **JavaScript UDF.** 
+Pokud chcete vytvořit uživatelsky definovanou funkci JavaScriptu v úloze Stream Analytics, vyberte v části **topologie úlohy**možnost **funkce** . Pak z rozevírací nabídky **+ Přidat** vyberte **JavaScript UDF** . 
 
 ![Přidat JavaScript UDF](./media/javascript/stream-analytics-jsudf-add.png)
 
-Poté je nutné zadat následující vlastnosti a vybrat **možnost Uložit**.
+Pak je nutné zadat následující vlastnosti a vybrat **Uložit**.
 
 |Vlastnost|Popis|
 |--------|-----------|
 |Alias funkce|Zadejte název pro vyvolání funkce v dotazu.|
-|Typ výstupu|Zadejte, který bude vrácen uživatelem definovanou funkcí JavaScriptu do vašeho dotazu Stream Analytics.|
-|Definice funkce|Implementace funkce JavaScriptu, která bude spuštěna při každém vyvolání udf z vašeho dotazu.|
+|Typ výstupu|Typ, který se vrátí uživatelem definovanou funkcí jazyka JavaScript do dotazu Stream Analytics.|
+|Definice funkce|Implementace funkce JavaScriptu, která se spustí pokaždé, když se vaše UDF vyvolá z dotazu.|
 
-## <a name="test-and-troubleshoot-javascript-udfs"></a>Testování a odstraňování potíží s jazykem JavaScript 
+## <a name="test-and-troubleshoot-javascript-udfs"></a>Testování a řešení potíží s JavaScript UDF 
 
-Logiku JavaScriptU UDF můžete testovat a ladit v libovolném prohlížeči. Ladění a testování logiky těchto uživatelem definovaných funkcí není aktuálně podporováno na portálu Stream Analytics. Jakmile funkce funguje podle očekávání, můžete ji přidat do úlohy Stream Analytics, jak je uvedeno výše, a pak ji vyvolat přímo z dotazu. Logiku dotazu můžete otestovat pomocí JavaScriptU UDF pomocí [nástrojů Stream Analytics pro Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-install).
+Logiku JavaScriptu pro systém souborů JavaScript můžete testovat a ladit v jakémkoli prohlížeči. Ladění a testování logiky těchto uživatelsky definovaných funkcí se v současnosti na portálu Stream Analytics nepodporuje. Jakmile funkce funguje podle očekávání, můžete ji přidat do Stream Analytics úlohy, jak je uvedeno výše, a pak ji vyvolat přímo z dotazu. Logiku dotazu můžete testovat pomocí JavaScriptu UDF pomocí [Stream Analyticsch nástrojů pro Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-install).
 
 Chyby jazyka JavaScript za běhu se považují za závažné a zobrazují se prostřednictvím protokolu aktivit. Pokud chcete protokol načíst, přejděte na portálu Azure Portal na příslušnou úlohu a vyberte **Protokol aktivit**.
 
 ## <a name="call-a-javascript-user-defined-function-in-a-query"></a>Volání uživatelem definované funkce jazyka JavaScript v dotazu
 
-Funkci JavaScript můžete ve svém dotazu snadno vyvolat pomocí aliasu funkce s předponou **udf**. Zde je příklad javascriptového udf, který převádí šestnáctkové hodnoty na celé číslo, které je vyvoláno v dotazu Stream Analytics.
+Funkci JavaScriptu můžete v dotazu snadno vyvolat pomocí aliasu funkce s předponou **UDF**. Tady je příklad JavaScriptu UDF, který převede hexadecimální hodnoty na celé číslo vyvolané v Stream Analytics dotazu.
 
 ```SQL
     SELECT
@@ -103,7 +103,7 @@ Pole | Pole
 Null, Nedefinováno | NULL
 Jakýkoli jiný typ (například funkce nebo chyba) | Nepodporuje se (výsledkem je chyba za běhu)
 
-Jazyk JavaScript rozlišuje malá a velká písmena a velká a malá písmena polí objektů v kódu JavaScriptu se musí shodovat s písmeny polí v příchozích datech. Úlohy s úrovní kompatibility 1.0 převedou pole z příkazu SQL SELECT na malá písmena. V rámci úrovně kompatibility 1.1 a vyšší pole z příkazu SELECT budou mít stejné písmeno, jak je uvedeno v dotazu SQL.
+Jazyk JavaScript rozlišuje velká a malá písmena a velká a malá písmena polí objektu v kódu JavaScriptu musí odpovídat velikosti písmen polí v příchozích datech. Úlohy s úrovní kompatibility 1,0 budou převádět pole z příkazu SQL SELECT na malá písmena. V části úroveň kompatibility 1,1 a vyšší budou mít pole z příkazu SELECT stejná velká písmena jako zadaná v dotazu SQL.
 
 ## <a name="other-javascript-user-defined-function-patterns"></a>Další vzory uživatelem definovaných funkcí jazyka JavaScript
 
@@ -119,7 +119,7 @@ return JSON.stringify(x);
 }
 ```
 
-**Ukázkový dotaz:**
+**Vzorový dotaz:**
 ```SQL
 SELECT
     DataString,
@@ -134,5 +134,5 @@ FROM
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Strojové učení UDF](https://docs.microsoft.com/azure/stream-analytics/machine-learning-udf)
-* [C# UDF](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-edge-csharp-udf-methods)
+* [Machine Learning UDF](https://docs.microsoft.com/azure/stream-analytics/machine-learning-udf)
+* [Uživatelsky definovaná funkce v C#](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-edge-csharp-udf-methods)

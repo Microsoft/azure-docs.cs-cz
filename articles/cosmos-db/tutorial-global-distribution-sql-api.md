@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Kurz globální distribuce Azure Cosmos DB pro rozhraní SQL API'
-description: 'Kurz: Naučte se nastavit globální distribuci Azure Cosmos DB pomocí rozhraní SQL API s .Net, Java, Pythonem a různými dalšími sadami SDK'
+title: 'Kurz: Azure Cosmos DB globální distribuční kurz pro rozhraní SQL API'
+description: 'Kurz: Naučte se, jak nastavit globální distribuci Azure Cosmos DB pomocí rozhraní SQL API s využitím .NET, Java, Pythonu a různých dalších sad SDK.'
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 177973cf766a6215453f3062c0fb206961649272
-ms.sourcegitcommit: fab450a18a600d72b583ecfbe6c5e53afd43408c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80295529"
 ---
-# <a name="tutorial-set-up-azure-cosmos-db-global-distribution-using-the-sql-api"></a>Kurz: Nastavení globální distribuce Azure Cosmos DB pomocí rozhraní SQL API
+# <a name="tutorial-set-up-azure-cosmos-db-global-distribution-using-the-sql-api"></a>Kurz: nastavení globální distribuce Azure Cosmos DB pomocí rozhraní SQL API
 
 V tomto článku si ukážeme, jak pomocí webu Azure Portal nastavit globální distribuci služby Azure Cosmos DB a pak se k ní připojit pomocí rozhraní SQL API.
 
@@ -22,7 +22,7 @@ Tento článek se zabývá následujícími úkony:
 
 > [!div class="checklist"]
 > * Konfigurace globální distribuce pomocí webu Azure Portal
-> * Konfigurace globální distribuce pomocí [rozhraní API SQL](sql-api-introduction.md)
+> * Konfigurace globální distribuce pomocí [rozhraní SQL API](sql-api-introduction.md)
 
 <a id="portal"></a>
 [!INCLUDE [cosmos-db-tutorial-global-distribution-portal](../../includes/cosmos-db-tutorial-global-distribution-portal.md)]
@@ -78,14 +78,14 @@ DocumentClient docClient = new DocumentClient(
 await docClient.OpenAsync().ConfigureAwait(false);
 ```
 
-## <a name="nodejsjavascript"></a>Soubor Node.js/JavaScript
+## <a name="nodejsjavascript"></a>Node. js/JavaScript
 
 > [!NOTE]
 > Adresy URL koncových bodů by se neměly považovat za dlouhodobé konstanty. Služba je může kdykoli aktualizovat. Sada SDK tuto změnu zpracuje automaticky.
 >
 >
 
-Níže je příklad kódu pro Node.js/Javascript.
+Níže je příklad kódu pro Node. js/JavaScript.
 
 ```JavaScript
 // Setting read region selection preference, in the following order -
@@ -100,7 +100,7 @@ const client = new CosmosClient{ endpoint, key, connectionPolicy: { preferredLoc
 
 ## <a name="python-sdk"></a>Python SDK
 
-Následující kód ukazuje, jak nastavit upřednostňovaná umístění pomocí sady Python SDK:
+Následující kód ukazuje, jak nastavit Upřednostňovaná umístění pomocí sady Python SDK:
 
 ```python
 
@@ -110,9 +110,9 @@ client = cosmos_client.CosmosClient(ENDPOINT, {'masterKey': MASTER_KEY}, connect
 
 ```
 
-## <a name="java-v2-sdk"></a>Java V2 SDK
+## <a name="java-v2-sdk"></a>Sada Java v2 SDK
 
-Následující kód ukazuje, jak nastavit upřednostňovaná umístění pomocí sady Java SDK:
+Následující kód ukazuje, jak nastavit Upřednostňovaná umístění pomocí sady Java SDK:
 
 ```java
 ConnectionPolicy policy = new ConnectionPolicy();
@@ -167,11 +167,11 @@ Příklad odpovědi
 
 
 * Všechny požadavky PUT,POST a DELETE musí směřovat na uvedený identifikátor URI pro zápis.
-* Všechny GET a další požadavky jen pro čtení (například dotazy) mohou přejít na libovolný koncový bod podle volby klienta
+* Všechny požadavky GET a další žádosti jen pro čtení (například dotazy) můžou přejít na libovolný koncový bod ve výběru klienta.
 
 Požadavky na zápis do oblastí jen pro čtení nebudou úspěšné. Zobrazí se kód chyby HTTP 403 (zakázáno).
 
-Pokud se oblast zápisu změní po počáteční fázi zjišťování klienta, následné zápisy do předchozí oblasti zápisu se nezdaří s kódem chyby HTTP 403 ("Zakázáno"). Klient pak musí pomocí požadavku GET znovu získat seznam oblastí, aby získal aktualizovanou oblast pro zápis.
+Pokud se po prvotní fázi zjišťování klienta změní oblast zápisu, následné zápisy do předchozí oblasti zápisu selžou s kódem chyby HTTP 403 ("zakázáno"). Klient pak musí pomocí požadavku GET znovu získat seznam oblastí, aby získal aktualizovanou oblast pro zápis.
 
 To je vše, tento kurz je u konce. Informace o správě konzistence vašeho globálně replikovaného účtu najdete v tématu [Úrovně konzistence ve službě Azure Cosmos DB](consistency-levels.md). Další informace o fungování globální replikace databází ve službě Azure Cosmos DB najdete v tématu [Globální distribuce dat pomocí služby Azure Cosmos DB](distribute-data-globally.md).
 
