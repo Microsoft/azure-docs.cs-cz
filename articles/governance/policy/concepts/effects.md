@@ -1,20 +1,20 @@
 ---
-title: Pochopte, jak efekty fungují
-description: Definice zásad Azure mají různé efekty, které určují, jak se řídí dodržování předpisů a jak se oznamuje.
+title: Vysvětlení fungování efektů
+description: Definice Azure Policy mají různé efekty, které určují, jak je dodržování předpisů spravované a nahlášené.
 ms.date: 03/23/2020
 ms.topic: conceptual
 ms.openlocfilehash: 0330cb5c732921efda3627dec92e486657097d82
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80422455"
 ---
-# <a name="understand-azure-policy-effects"></a>Principy efektů zásad Azure
+# <a name="understand-azure-policy-effects"></a>Pochopení Azure Policych efektů
 
-Každá definice zásady v Azure Policy má jediný účinek. Tento efekt určuje, co se stane, když je pravidlo zásad vyhodnoceno tak, aby odpovídalo. Efekty se chovají odlišně, pokud se jedná o nový prostředek, aktualizovaný prostředek nebo existující prostředek.
+Každá definice zásady v Azure Policy má jediný účinek. Tím se určuje, co se stane, když se pravidlo zásad vyhodnotí tak, aby odpovídalo. Efekty se chovají odlišně, pokud jsou pro nový prostředek, aktualizovaný prostředek nebo existující prostředek.
 
-Tyto účinky jsou v současné době podporovány v definici zásad:
+V definici zásad se v současné době podporují tyto efekty:
 
 - [Připojit](#append)
 - [Audit](#audit)
@@ -22,50 +22,50 @@ Tyto účinky jsou v současné době podporovány v definici zásad:
 - [Odepřít](#deny)
 - [DeployIfNotExists](#deployifnotexists)
 - [Disabled](#disabled) (Zakázáno)
-- [EnforceOPAConstraint](#enforceopaconstraint) (náhled)
-- [EnforceRegoPolicy](#enforceregopolicy) (náhled)
+- [EnforceOPAConstraint](#enforceopaconstraint) (Preview)
+- [EnforceRegoPolicy](#enforceregopolicy) (Preview)
 - [Úprava](#modify)
 
 ## <a name="order-of-evaluation"></a>Pořadí vyhodnocení
 
-Požadavky na vytvoření nebo aktualizaci prostředku prostřednictvím Azure Resource Manageru vyhodnotí nejprve služba Azure Policy. Azure Policy vytvoří seznam všech přiřazení, která se vztahují k prostředku a pak vyhodnotí prostředek proti každé definici. Zásady Azure zpracuje několik efektů před předáním požadavku příslušnému zprostředkovateli prostředků. Tím zabráníte zbytečnému zpracování zprostředkovatelem prostředků, když prostředek nesplňuje navržené ovládací prvky zásad správného řízení zásad Azure.
+Požadavky na vytvoření nebo aktualizaci prostředku prostřednictvím Azure Resource Manageru vyhodnotí nejprve služba Azure Policy. Azure Policy vytvoří seznam všech přiřazení, která platí pro daný prostředek, a pak vyhodnotí prostředek proti každé definici. Azure Policy zpracovává několik efektů před předáním požadavku příslušnému poskytovateli prostředků. Tím se zabrání zbytečnému zpracování poskytovatele prostředků, když prostředek nesplňuje navržené ovládací prvky zásad správného řízení Azure Policy.
 
-- **Zakázáno** je nejprve zkontrolováno, aby bylo možné určit, zda má být vyhodnoceno pravidlo zásad.
-- **Připojit** **a změnit** jsou pak vyhodnoceny. Vzhledem k tomu, že buď může změnit požadavek, provedená změna může zabránit aktivaci auditu nebo odepřít efekt.
-- **Deny** je pak vyhodnocena. Vyhodnocením odepřít před auditem, dvojité protokolování nežádoucí prostředek je zabráněno.
-- **Audit** je pak vyhodnocen před tím, než žádost přejde poskytovateli prostředků.
+- Políčko **zakázáno** je zaškrtnuté, abyste zjistili, jestli se má vyhodnotit pravidlo zásad.
+- Pak se vyhodnotí **připojení** a **Úpravy** . Vzhledem k tomu, že může žádost změnit, může dojít k tomu, že se projeví audit nebo odepření z aktivace.
+- Pak se vyhodnotí **zamítnutí** . Vyhodnocením Deny před auditem je znemožněno dvojí protokolování nepotřebného prostředku.
+- **Audit** se pak vyhodnotí předtím, než se požadavek navrátí do poskytovatele prostředků.
 
-Poté, co zprostředkovatel prostředků vrátí kód úspěchu, **AuditIfNotExists** a **DeployIfNotExists** vyhodnotit zjistit, zda je požadováno další dodržování předpisů protokolování nebo akce.
+Jakmile poskytovatel prostředků vrátí kód úspěšnosti, **AuditIfNotExists** a **DeployIfNotExists** se vyhodnotí a určí, jestli je potřeba další protokolování nebo akce dodržování předpisů.
 
-V současné době neexistuje žádné pořadí hodnocení pro **EnforceOPAConstraint** nebo **EnforceRegoPolicy** účinky.
+V současné době není k dispozici žádné pořadí vyhodnocení pro efekty **EnforceOPAConstraint** nebo **EnforceRegoPolicy** .
 
 ## <a name="disabled"></a>Zakázáno
 
-Tento efekt je užitečný pro testování situací nebo při definici zásady parametrizoval efekt. Tato flexibilita umožňuje zakázat jedno přiřazení namísto zakázání všech přiřazení této zásady.
+Tento efekt je vhodný pro situace při testování nebo v případě, že definice zásad má vliv na parametry. Díky této flexibilitě je možné zakázat jedno přiřazení místo zakázání všech těchto přiřazení zásad.
 
-Alternativou k disabled efekt je **enforcementMode,** který je nastaven na přiřazení zásad.
-Pokud je _zakázán_režim **vynucení** , prostředky jsou stále vyhodnocovány. Protokolování, jako jsou protokoly aktivit a efekt zásad nedochází. Další informace naleznete v [tématu přiřazení zásad - režim vynucení](./assignment-structure.md#enforcement-mode).
+Alternativa k zadanému efektu je **enforcementMode** , která je nastavená u přiřazení zásady.
+Když **enforcementMode** je enforcementMode _zakázaný_, prostředky se ještě vyhodnocují. Protokolování, jako jsou protokoly aktivit a vliv zásad, se neprojeví. Další informace najdete v tématu věnovaném [přiřazení zásad – režim vynucení](./assignment-structure.md#enforcement-mode).
 
 ## <a name="append"></a>Připojit
 
-Připojit se používá k přidání dalších polí k požadovanému prostředku během vytváření nebo aktualizace. Běžným příkladem je určení povolených IP adresy pro prostředek úložiště.
+Při vytváření nebo aktualizaci se k požadovanému prostředku přidají další pole. Běžným příkladem je zadání povolených IP adres pro prostředek úložiště.
 
 > [!IMPORTANT]
-> Připojit je určen pro použití s vlastnostmi bez značky. Zatímco připojit můžete přidat značky do prostředku během vytvoření nebo aktualizace požadavku, doporučuje se použít [upravit](#modify) efekt pro značky místo.
+> Příkaz append je určen pro použití bez značek. Během přidávání může přidat značky k prostředku během žádosti o vytvoření nebo aktualizaci. místo toho se doporučuje použít efekt [úprav](#modify) pro značky.
 
-### <a name="append-evaluation"></a>Hodnocení připojení
+### <a name="append-evaluation"></a>Připojit vyhodnocení
 
-Připojit vyhodnocuje před požadavek získá zpracovány zprostředkovatelem prostředků při vytváření nebo aktualizaci prostředku. Připojit přidá pole k prostředku při splnění podmínky **if** pravidla zásady. Pokud by efekt připojení přepsal hodnotu v původním požadavku jinou hodnotou, bude působit jako efekt odepření a požadavek odmítne. Chcete-li připojit novou hodnotu k existujícímu poli, použijte verzi **aliasu [\*].**
+Připojit vyhodnocuje vyhodnocené před tím, než požadavek zpracuje poskytovatel prostředků během vytváření nebo aktualizace prostředku. Pokud je splněna podmínka **if** pravidla zásad, přidá do prostředku pole přidat. Pokud by měl efekt připojení přepsat hodnotu v původním požadavku s jinou hodnotou, pak funguje jako nepřístupný efekt a žádost se odmítne. Chcete-li připojit novou hodnotu k existujícímu poli, použijte verzi alias **[\*]** .
 
-Pokud je definice zásad používající efekt připojení spuštěna jako součást cyklu hodnocení, neprovede změny prostředků, které již existují. Místo toho označí všechny prostředky, které splňuje **podmínka if** jako nekompatibilní.
+Když se v rámci zkušebního cyklu spustí definice zásady, která používá efekt připojení, neprovádí změny prostředků, které už existují. Místo toho označí všechny prostředky, které splňují podmínku **if** jako nevyhovující.
 
 ### <a name="append-properties"></a>Připojit vlastnosti
 
-Efekt připojení má pouze pole **podrobností,** které je povinné. Jako **podrobnosti** je pole, může trvat buď jeden **pár pole/hodnota** nebo násobky. Seznam přijatelných polí naleznete v [definiční struktuře.](definition-structure.md#fields)
+Efekt připojení má pouze pole **Details** , které je povinné. Vzhledem k tomu, že se jedná **o** pole, může mít jeden pár **pole/hodnota** nebo násobky. Seznam přijatelných polí naleznete v tématu [Struktura definice](definition-structure.md#fields) .
 
 ### <a name="append-examples"></a>Připojit příklady
 
-Příklad 1: **Jednopole/hodnota** dvojice pomocí non-**[\*]** [alias](definition-structure.md#aliases) s **hodnotou** pole nastavit pravidla IP na účet úložiště. Pokud je alias non-**[\*]** matice, efekt připojí **hodnotu** jako celé pole. Pokud pole již existuje, dojde k události odepřít z konfliktu.
+Příklad 1: dvojice s jedním **polem/hodnotou** pomocí [aliasu](definition-structure.md#aliases) bez **[\*]** s **hodnotou** pole pro nastavení pravidel protokolu IP v účtu úložiště. Když je alias mimo **[\*]** pole, efekt připojí **hodnotu** jako celé pole. Pokud pole již existuje, dojde ke konfliktu události odepřít.
 
 ```json
 "then": {
@@ -80,7 +80,7 @@ Příklad 1: **Jednopole/hodnota** dvojice pomocí non-**[\*]** [alias](definiti
 }
 ```
 
-Příklad 2: Jedno **pole/hodnota** dvojice pomocí **\*[ ]** [alias](definition-structure.md#aliases) s **hodnotou** pole nastavit pravidla IP na účet úložiště. Pomocí aliasu **[\*]** efekt připojí **hodnotu** k potenciálně již existujícímu poli. Pokud pole ještě neexistuje, bude vytvořeno.
+Příklad 2: dvojice s jedním **polem/hodnotou** pomocí [aliasu](definition-structure.md#aliases) **[\*]** s **hodnotou** pole pro nastavení pravidel protokolu IP v účtu úložiště. Pomocí aliasu **[\*]** tento efekt připojí **hodnotu** k potenciálně existujícímu poli. Pokud pole ještě neexistuje, vytvoří se.
 
 ```json
 "then": {
@@ -97,42 +97,42 @@ Příklad 2: Jedno **pole/hodnota** dvojice pomocí **\*[ ]** [alias](definition
 
 ## <a name="modify"></a>Modify
 
-Úpravy se používají k přidání, aktualizaci nebo odebrání značek na prostředku během vytváření nebo aktualizace. Běžným příkladem je aktualizace značek na prostředcích, jako je například costCenter. Zásada změny by `mode` měla mít vždy nastavena na _Indexováno,_ pokud cílový prostředek je skupina prostředků. Existující nekompatibilní prostředky lze napravit [nápravnou úlohou](../how-to/remediate-resources.md). Jedno pravidlo změnit může mít libovolný počet operací.
+Příkaz Upravit slouží k přidání, aktualizaci nebo odebrání značek prostředku během vytváření nebo aktualizace. Běžným příkladem je aktualizace značek na prostředky, jako je costCenter. Zásada úprav by měla být `mode` vždy nastavená na hodnotu _indexováno_ , pokud cílový prostředek není skupina prostředků. Stávající prostředky, které nedodržují předpisy, lze opravit pomocí [úlohy nápravy](../how-to/remediate-resources.md). Jediné pravidlo změny může mít libovolný počet operací.
 
 > [!IMPORTANT]
-> Změna je v současné době pouze pro použití se značkami. Pokud spravujete značky, doporučujeme použít použít změnit místo Připojit jako Změnit poskytuje další typy operací a možnost napravit existující prostředky. Append se však doporučuje, pokud nejste schopni vytvořit spravovanou identitu.
+> Upravit je aktuálně pouze pro použití s značkami. Pokud spravujete značky, doporučuje se místo možnosti připojit jako upravit zadat další typy operací a možnost opravit stávající prostředky. Pokud ale nemůžete vytvořit spravovanou identitu, doporučuje se připojení.
 
-### <a name="modify-evaluation"></a>Změnit vyhodnocení
+### <a name="modify-evaluation"></a>Upravit vyhodnocení
 
-Upravte vyhodnocování před tím, než bude požadavek zpracován poskytovatelem prostředků během vytváření nebo aktualizace prostředku. Úprava značek přidá nebo aktualizuje prostředek, pokud je splněna podmínka **if** pravidla zásady.
+Úprava je vyhodnocena před tím, než je žádost zpracována poskytovatelem prostředků během vytváření nebo aktualizace prostředku. Upravit přidá nebo aktualizuje značky prostředku, pokud je splněna podmínka **if** pravidla zásad.
 
-Pokud je definice zásad pomocí efektu Změnit spuštěna jako součást cyklu hodnocení, neprovede změny prostředků, které již existují. Místo toho označí všechny prostředky, které splňuje **podmínka if** jako nekompatibilní.
+Když se v rámci zkušebního cyklu spustí definice zásady pomocí efektu změny, neprovádí změny prostředků, které už existují. Místo toho označí všechny prostředky, které splňují podmínku **if** jako nevyhovující.
 
-### <a name="modify-properties"></a>Úprava vlastností
+### <a name="modify-properties"></a>Upravit vlastnosti
 
-Vlastnost **podrobností** efektu Změnit má všechny podvlastnosti, které definují oprávnění potřebná pro nápravu a **operace** použité k přidání, aktualizaci nebo odebrání hodnot značek.
+Vlastnost **Details** pro efekt úpravy obsahuje všechny podvlastnosti, které definují oprávnění potřebná k nápravě a **operace** používané k přidání, aktualizaci nebo odebrání hodnot značek.
 
 - **roleDefinitionIds** [povinné]
-  - Tato vlastnost musí obsahovat pole řetězců, které odpovídají ID role na základě role řízení přístupu přístupné odběr. Další informace naleznete v [tématu náprava - konfigurace definice zásad](../how-to/remediate-resources.md#configure-policy-definition).
-  - Definovaná role musí zahrnovat všechny operace udělené roli [přispěvatele.](../../../role-based-access-control/built-in-roles.md#contributor)
+  - Tato vlastnost musí zahrnovat pole řetězců, které odpovídají ID role řízení přístupu na základě rolí přístupné pro předplatné. Další informace najdete v tématu [náprava – konfigurace definice zásad](../how-to/remediate-resources.md#configure-policy-definition).
+  - Definovaná role musí zahrnovat všechny operace udělené roli [přispěvatele](../../../role-based-access-control/built-in-roles.md#contributor) .
 - **operace** [povinné]
-  - Pole všech operací značky, které mají být dokončeny na odpovídající prostředky.
+  - Pole všech operací značek, které mají být dokončeny na vyhovujících prostředcích.
   - Vlastnosti:
     - **operace** [povinné]
-      - Definuje, jakou akci provést s odpovídajícím zdrojem. Možnosti jsou: _addOrReplace_, _Přidat_, _Odebrat_. _Přidat_ se chová podobně jako efekt [Připojit.](#append)
+      - Definuje akci, která se má provést u odpovídajícího prostředku. Možnosti jsou: _addOrReplace_, _Add_, _Remove_. _Přidat_ se chová podobně jako v efektu [připojit](#append) .
     - **pole** [povinné]
-      - Značka, kterou chcete přidat, nahradit nebo odebrat. Názvy značek musí splňovat stejnou konvenci pojmenování pro jiná [pole](./definition-structure.md#fields).
-    - **hodnota** (nepovinné)
-      - Hodnota pro nastavení značky.
-      - Tato vlastnost je vyžadována, pokud je **operace** _addOrReplace_ nebo _Add_.
+      - Značka, která se má přidat, nahradit nebo odebrat. Názvy značek musí splňovat stejné zásady vytváření názvů pro ostatní [pole](./definition-structure.md#fields).
+    - **hodnota** (nepovinná)
+      - Hodnota, na kterou má být značka nastavena.
+      - Tato vlastnost je povinná, pokud je **operace** _addOrReplace_ nebo _Add_.
 
-### <a name="modify-operations"></a>Upravit operace
+### <a name="modify-operations"></a>Úpravy operací
 
-Pole **vlastností operations** umožňuje změnit několik značek různými způsoby z jedné definice zásad. Každá operace se skládá z **vlastností operace**, **pole**a **hodnoty.** Operace určuje, co nápravná úloha udělá se značkami, pole určuje, která značka je změněna, a hodnota definuje nové nastavení pro tuto značku. Následující příklad provádí následující změny značek:
+Pole vlastností **Operations** umožňuje změnit několik značek různými způsoby v rámci jedné definice zásady. Každá operace se skládá z vlastností **operace**, **pole**a **hodnoty** . Operace určuje, co je úloha nápravy pro značky, pole určuje, která značka se změní, a hodnota definuje nové nastavení pro tuto značku. Následující příklad provede následující změny značek:
 
-- Nastaví `environment` značku na "Test", i když již existuje s jinou hodnotou.
+- Nastaví `environment` značku na "test", a to i v případě, že již existuje s jinou hodnotou.
 - Odebere značku `TempResource`.
-- Nastaví `Dept` značku na parametr _zásady DeptName_ nakonfigurovaný v přiřazení zásad.
+- Nastaví `Dept` značku _na parametr zásad_ , který je nakonfigurovaný pro přiřazení zásady.
 
 ```json
 "details": {
@@ -156,17 +156,17 @@ Pole **vlastností operations** umožňuje změnit několik značek různými zp
 }
 ```
 
-Vlastnost **operation** má následující možnosti:
+Vlastnost **Operation** má následující možnosti:
 
 |Operace |Popis |
 |-|-|
-|addOrReplace |Přidá definovanou značku a hodnotu k prostředku, i když značka již existuje s jinou hodnotou. |
-|Přidat |Přidá definovanou značku a hodnotu k prostředku. |
-|Odebrat |Odebere definovanou značku ze zdroje. |
+|addOrReplace |Přidá do prostředku definovanou značku a hodnotu, i když značka již existuje s jinou hodnotou. |
+|Přidat |Přidá do prostředku definovanou značku a hodnotu. |
+|Odebrat |Odebere z prostředku definovanou značku. |
 
-### <a name="modify-examples"></a>Změnit příklady
+### <a name="modify-examples"></a>Upravit příklady
 
-Příklad 1: `environment` Přidejte značku `environment` a nahraďte existující značky "Test":
+Příklad 1: přidejte `environment` značku a nahraďte stávající `environment` značky "test":
 
 ```json
 "then": {
@@ -186,7 +186,7 @@ Příklad 1: `environment` Přidejte značku `environment` a nahraďte existují
 }
 ```
 
-Příklad 2: `env` Odeberte `environment` značku a `environment` přidejte značku nebo nahraďte existující značky parametrizovanou hodnotou:
+Příklad 2: odebrání `env` značky a přidání `environment` značky nebo náhrada stávajících `environment` značek s parametrizovanou hodnotou:
 
 ```json
 "then": {
@@ -212,21 +212,21 @@ Příklad 2: `env` Odeberte `environment` značku a `environment` přidejte zna�
 
 ## <a name="deny"></a>Odepřít
 
-Odepřít se používá k zabránění požadavku na prostředky, který neodpovídá definovaným standardům prostřednictvím definice zásadami a požadavek se nezdaří.
+Odepření se používá k tomu, aby se zabránilo požadavku na prostředek, který neodpovídá definovaným standardům prostřednictvím definice zásady, a požadavek se nezdařil.
 
-### <a name="deny-evaluation"></a>Odepřít hodnocení
+### <a name="deny-evaluation"></a>Odepřít vyhodnocení
 
-Při vytváření nebo aktualizaci odpovídajícího prostředku příkaz deny zabrání požadavku před odesláním poskytovateli prostředků. Požadavek je vrácen `403 (Forbidden)`jako . Na portálu zakázané lze zobrazit jako stav na nasazení, které bylo zabráněno přiřazení zásad.
+Při vytváření nebo aktualizaci odpovídajícího prostředku znemožní odepření žádosti, než se pošle poskytovateli prostředků. Požadavek se vrátí jako `403 (Forbidden)`. V portálu je zakázaný možné zobrazit jako stav nasazení, které bylo znemožněno přiřazením zásad.
 
-Během hodnocení existujících prostředků jsou prostředky, které odpovídají definici zásady odepření, označeny jako nekompatibilní.
+Během hodnocení stávajících prostředků se prostředky, které odpovídají definici zásad odepření, označí jako nedodržující předpisy.
 
-### <a name="deny-properties"></a>Odepřít vlastnosti
+### <a name="deny-properties"></a>Vlastnosti odepření
 
-Efekt odepřít nemá žádné další vlastnosti pro použití v **pak** podmínku definice zásady.
+Nepřístupný efekt nemá žádné další vlastnosti pro použití v **podmínce definice** zásady.
 
 ### <a name="deny-example"></a>Příklad zamítnutí
 
-Příklad: Použití efektu odepřít.
+Příklad: použití efektu odepřít.
 
 ```json
 "then": {
@@ -236,19 +236,19 @@ Příklad: Použití efektu odepřít.
 
 ## <a name="audit"></a>Auditování
 
-Audit se používá k vytvoření události upozornění v protokolu aktivit při vyhodnocování nekompatibilní prostředek, ale nezastaví požadavek.
+Audit se používá k vytvoření události upozornění v protokolu aktivit při vyhodnocování nekompatibilního prostředku, ale nezastaví požadavek.
 
-### <a name="audit-evaluation"></a>Hodnocení auditu
+### <a name="audit-evaluation"></a>Vyhodnocení auditu
 
-Auditování je poslední efekt kontrolovaný zásadou Azure během vytváření nebo aktualizace prostředku. Zásady Azure pak odešle prostředek zprostředkovateli prostředků. Audit funguje stejně pro požadavek na zdroj a cyklus hodnocení. Azure Policy `Microsoft.Authorization/policies/audit/action` přidá operaci do protokolu aktivit a označí prostředek jako nekompatibilní.
+Audit je poslední efekt, který při vytváření nebo aktualizaci prostředku kontrolovala Azure Policy. Azure Policy pak odešle prostředek poskytovateli prostředků. Audit funguje stejně jako požadavek prostředku a cyklus vyhodnocení. Azure Policy přidá `Microsoft.Authorization/policies/audit/action` operaci do protokolu aktivit a označí prostředek jako nevyhovující.
 
 ### <a name="audit-properties"></a>Vlastnosti auditu
 
-Efekt auditu nemá žádné další vlastnosti pro použití v **pak** podmínku definice zásady.
+V podmínce podmínky definice zásad neexistují žádné další vlastnosti, **které by bylo** potřeba použít.
 
 ### <a name="audit-example"></a>Příklad auditu
 
-Příklad: Použití efektu auditu.
+Příklad: použití efektu auditu.
 
 ```json
 "then": {
@@ -258,43 +258,43 @@ Příklad: Použití efektu auditu.
 
 ## <a name="auditifnotexists"></a>AuditIfNotExists
 
-AuditIfNotExists umožňuje auditování prostředků, které odpovídají **podmínce if,** ale nemá součásti zadané v **podrobnostech** **podmínky then.**
+AuditIfNotExists umožňuje auditování prostředků, které se shodují s podmínkou **if** , ale nemá součásti zadané v **podrobnostech** podmínky **then** .
 
-### <a name="auditifnotexists-evaluation"></a>AuditIfNotExists hodnocení
+### <a name="auditifnotexists-evaluation"></a>AuditIfNotExists vyhodnocování
 
-AuditIfNotExists se spustí poté, co zprostředkovatel prostředků zpracoval požadavek na vytvoření nebo aktualizaci prostředků a vrátil kód stavu úspěchu. Audit dochází, pokud neexistují žádné související prostředky nebo pokud prostředky definované **Existencí Nejsou** vyhodnoceny jako true. Azure Policy `Microsoft.Authorization/policies/audit/action` přidá operaci do protokolu aktivit stejným způsobem jako efekt auditu. Při aktivaci prostředek, který splnil **podmínka if,** je prostředek, který je označen jako nekompatibilní.
+AuditIfNotExists se spustí poté, co poskytovatel prostředků zpracuje požadavek na vytvoření nebo aktualizaci prostředku a vrátil kód stavu úspěch. K auditu dojde, pokud neexistují žádné související prostředky nebo pokud se prostředky definované pomocí **ExistenceCondition** nevyhodnotí jako true. Azure Policy do protokolu `Microsoft.Authorization/policies/audit/action` aktivit přidá operaci stejným způsobem jako v důsledku auditu. Když se aktivuje, prostředek, který splnil podmínku **if** , je prostředek, který je označený jako nevyhovující.
 
 ### <a name="auditifnotexists-properties"></a>Vlastnosti AuditIfNotExists
 
-**Vlastnost podrobnosti** AuditIfNotExists má všechny podvlastnosti, které definují související prostředky tak, aby odpovídaly.
+Vlastnost **Details** AuditIfNotExists efektů má všechny podvlastnosti, které definují související prostředky, které se shodují.
 
 - **Typ** [povinné]
   - Určuje typ souvisejícího prostředku, který se má shodovat.
-  - Pokud **details.type** je typ prostředku pod **if** podmínku prostředku, zásady dotazy pro prostředky tohoto **typu** v rámci rozsahu vyhodnocovaného prostředku. V opačném případě dotazy zásad v rámci stejné skupiny prostředků jako vyhodnocován prostředek.
-- **Jméno** (nepovinné)
-  - Určuje přesný název prostředku, který se má shodovat, a způsobí, že zásada načte jeden konkrétní prostředek namísto všech prostředků zadaného typu.
-  - Pokud se hodnoty podmínky pro **if.field.type** a **then.details.type** shodují, potom **Name** se stane _povinným_ a musí být `[field('name')]`. Místo toho by však měl být zvážen [auditní](#audit) efekt.
+  - Pokud **Details. Type** je typ prostředku pod prostředkem podmínky **if** , zásady se dotazují na prostředky tohoto **typu** v rámci oboru vyhodnoceného prostředku. V opačném případě se zásady dotazují ve stejné skupině prostředků jako vyhodnocený prostředek.
+- **Název** (volitelné)
+  - Určuje přesný název prostředku, který se má shodovat, a způsobí, že zásada načte jeden konkrétní prostředek místo všech prostředků zadaného typu.
+  - Pokud jsou hodnoty podmínky pro **if. Field. Type** a **then. details. Type** matched, pak se musí _zadat_ `[field('name')]` **název** . Místo toho by se ale měl zvážit efekt [auditu](#audit) .
 - **ResourceGroupName** (volitelné)
-  - Umožňuje, aby sladění souvisejícího prostředku pocházelo z jiné skupiny prostředků.
-  - Neplatí, pokud **je typ** prostředek, který by byl pod zdrojem podmínky **if.**
-  - Výchozí je skupina prostředků prostředku **podmínce if.**
-- **ExistenceScope** (nepovinné)
-  - Povolené hodnoty jsou _Odběr_ a _ResourceGroup_.
-  - Nastaví obor, odkud má být načíst související prostředek, ze kterého se má shodovat.
-  - Neplatí, pokud **je typ** prostředek, který by byl pod zdrojem podmínky **if.**
-  - V _poli Skupina zdrojů_by se omezila na skupinu prostředků prostředku **podpodmínku if** nebo na skupinu prostředků zadanou v poli **ResourceGroupName**.
-  - V _případě předplatného_se dotazuje celého předplatného pro související prostředek.
-  - Výchozí hodnota je _Skupina prostředků_.
-- **ExistencePodmínka** (nepovinné)
-  - Pokud není zadán, všechny související zdroj **typu** splňuje efekt a neaktivuje audit.
-  - Používá stejný jazyk jako pravidlo zásad pro podmínku **if,** ale je vyhodnocen a každý související prostředek jednotlivě.
-  - Pokud se jakýkoli odpovídající související prostředek vyhodnotí jako true, efekt je splněn a neaktivuje audit.
-  - Lze použít [field()] ke kontrole rovnocennosti s hodnotami v podmínce **if.**
-  - Lze například ověřit, zda je nadřazený prostředek (v podmínce **if)** ve stejném umístění prostředku jako odpovídající související prostředek.
+  - Umožňuje porovnání souvisejícího prostředku s jinou skupinou prostředků.
+  - Neplatí, pokud **typ** je prostředek, který by byl pod zdrojem podmínky **if** .
+  - Výchozím nastavením je skupina prostředků prostředku podmínky **if** .
+- **ExistenceScope** (volitelné)
+  - Povolené hodnoty jsou _předplatné_ a _zdroj_.
+  - Nastaví rozsah, ze kterého se má načíst související prostředek, ze kterého se má porovnat.
+  - Neplatí, pokud **typ** je prostředek, který by byl pod zdrojem podmínky **if** .
+  - V _případě skupiny prostředků by se_omezila na skupinu prostředků nebo skupinu **prostředků, která** je určená v **ResourceGroupName**.
+  - U _předplatného_se dotazuje na celé předplatné souvisejícího prostředku.
+  - Výchozí hodnota je _Resource_.
+- **ExistenceCondition** (volitelné)
+  - Pokud tento parametr nezadáte, všechny související prostředky **typu** vyhovují tomuto efektu a neaktivuje audit.
+  - Používá stejný jazyk jako pravidlo zásad pro podmínku **if** , ale je vyhodnocen proti každému souvisejícímu prostředku jednotlivě.
+  - Pokud se libovolný odpovídající související prostředek vyhodnotí jako true, projeví se to jako splněné a neaktivuje se audit.
+  - Lze použít [Field ()] ke kontrole rovnocennosti s hodnotami v podmínkách **if** .
+  - Například lze použít k ověření, zda je nadřazený prostředek (v podmínce **if** ) ve stejném umístění prostředku jako odpovídající související prostředek.
 
 ### <a name="auditifnotexists-example"></a>Příklad AuditIfNotExists
 
-Příklad: Vyhodnotí virtuální počítače, aby zjistil, zda existuje rozšíření antimalwaru, a pak audituje, když chybí.
+Příklad: vyhodnotí Virtual Machines a určí, jestli antimalwarové rozšíření existuje, a pak Audituje, když chybí.
 
 ```json
 {
@@ -324,62 +324,62 @@ Příklad: Vyhodnotí virtuální počítače, aby zjistil, zda existuje rozší
 
 ## <a name="deployifnotexists"></a>DeployIfNotExists
 
-Podobně jako AuditIfNotExists, deployIfNotExists definice zásad spustí nasazení šablony při splnění podmínky.
+Podobně jako AuditIfNotExists, definice zásad DeployIfNotExists provede nasazení šablony, když je splněna podmínka.
 
 > [!NOTE]
-> [Vnořené šablony](../../../azure-resource-manager/templates/linked-templates.md#nested-template) jsou podporovány **pomocí deployIfNotExists**, ale [propojené šablony](../../../azure-resource-manager/templates/linked-templates.md#linked-template) nejsou aktuálně podporovány.
+> [Vnořené šablony](../../../azure-resource-manager/templates/linked-templates.md#nested-template) jsou podporovány v **deployIfNotExists**, ale [propojené šablony](../../../azure-resource-manager/templates/linked-templates.md#linked-template) nejsou aktuálně podporovány.
 
-### <a name="deployifnotexists-evaluation"></a>DeployIfNotExists hodnocení
+### <a name="deployifnotexists-evaluation"></a>DeployIfNotExists vyhodnocování
 
-DeployIfNotExists se spustí přibližně 15 minut poté, co zprostředkovatel prostředků zpracoval požadavek na vytvoření nebo aktualizaci prostředků a vrátil stavový kód úspěchu. Nasazení šablony dojde, pokud neexistují žádné související prostředky nebo pokud prostředky definované **Existencí Není** vyhodnocena na hodnotu true.
-Doba trvání nasazení závisí na složitosti prostředků zahrnutých v šabloně.
+DeployIfNotExists spustí asi 15 minut poté, co poskytovatel prostředků zpracuje požadavek na vytvoření nebo aktualizaci prostředku a vrátil kód stavu úspěch. K nasazení šablony dojde, pokud neexistují žádné související prostředky nebo pokud prostředky definované pomocí **ExistenceCondition** nevyhodnotí hodnotu true.
+Doba nasazení závisí na složitosti prostředků obsažených v šabloně.
 
-Během cyklu hodnocení definice zásad s DeployIfNotExists efekt, který odpovídá prostředky jsou označeny jako nedodržující, ale žádná akce je provedena na tento prostředek. Existující nekompatibilní prostředky lze napravit [nápravnou úlohou](../how-to/remediate-resources.md).
+V průběhu zkušebního cyklu jsou definice zásad s DeployIfNotExists účinkem odpovídajícím prostředkům označeny jako nevyhovující, ale u tohoto prostředku se neprovádí žádná akce. Stávající prostředky, které nedodržují předpisy, lze opravit pomocí [úlohy nápravy](../how-to/remediate-resources.md).
 
 ### <a name="deployifnotexists-properties"></a>Vlastnosti DeployIfNotExists
 
-Vlastnost **details** efektu DeployIfNotExists má všechny podvlastnosti, které definují související prostředky, které se mají shodovat, a nasazení šablony ke spuštění.
+Vlastnost **Details** efektu DeployIfNotExists má všechny podvlastnosti definující související prostředky, které se shodují, a nasazení šablon, které se má spustit.
 
 - **Typ** [povinné]
   - Určuje typ souvisejícího prostředku, který se má shodovat.
-  - Začíná pokusem o načtení prostředku pod prostředek **podmínky if** a poté se dotazuje v rámci stejné skupiny prostředků jako prostředek podmínky **if.**
-- **Jméno** (nepovinné)
-  - Určuje přesný název prostředku, který se má shodovat, a způsobí, že zásada načte jeden konkrétní prostředek namísto všech prostředků zadaného typu.
-  - Pokud se hodnoty podmínky pro **if.field.type** a **then.details.type** shodují, potom **Name** se stane _povinným_ a musí být `[field('name')]`.
+  - Spustí se tak, že se pokusí načíst prostředek pod prostředkem podmínky **if** a pak se dotazuje ve stejné skupině prostředků jako prostředek podmínky **if** .
+- **Název** (volitelné)
+  - Určuje přesný název prostředku, který se má shodovat, a způsobí, že zásada načte jeden konkrétní prostředek místo všech prostředků zadaného typu.
+  - Pokud jsou hodnoty podmínky pro **if. Field. Type** a **then. details. Type** matched, pak se musí _zadat_ `[field('name')]` **název** .
 - **ResourceGroupName** (volitelné)
-  - Umožňuje, aby sladění souvisejícího prostředku pocházelo z jiné skupiny prostředků.
-  - Neplatí, pokud **je typ** prostředek, který by byl pod zdrojem podmínky **if.**
-  - Výchozí je skupina prostředků prostředku **podmínce if.**
-  - Pokud je nasazení šablony spuštěno, nasadí se ve skupině prostředků této hodnoty.
-- **ExistenceScope** (nepovinné)
-  - Povolené hodnoty jsou _Odběr_ a _ResourceGroup_.
-  - Nastaví obor, odkud má být načíst související prostředek, ze kterého se má shodovat.
-  - Neplatí, pokud **je typ** prostředek, který by byl pod zdrojem podmínky **if.**
-  - V _poli Skupina zdrojů_by se omezila na skupinu prostředků prostředku **podpodmínku if** nebo na skupinu prostředků zadanou v poli **ResourceGroupName**.
-  - V _případě předplatného_se dotazuje celého předplatného pro související prostředek.
-  - Výchozí hodnota je _Skupina prostředků_.
-- **ExistencePodmínka** (nepovinné)
-  - Pokud není zadán, všechny související prostředek **typu** splňuje efekt a neaktivuje nasazení.
-  - Používá stejný jazyk jako pravidlo zásad pro podmínku **if,** ale je vyhodnocen a každý související prostředek jednotlivě.
-  - Pokud všechny odpovídající související prostředek vyhodnotí na true, efekt je splněna a neaktivuje nasazení.
-  - Lze použít [field()] ke kontrole rovnocennosti s hodnotami v podmínce **if.**
-  - Lze například ověřit, zda je nadřazený prostředek (v podmínce **if)** ve stejném umístění prostředku jako odpovídající související prostředek.
+  - Umožňuje porovnání souvisejícího prostředku s jinou skupinou prostředků.
+  - Neplatí, pokud **typ** je prostředek, který by byl pod zdrojem podmínky **if** .
+  - Výchozím nastavením je skupina prostředků prostředku podmínky **if** .
+  - Pokud je provedeno nasazení šablony, je nasazeno ve skupině prostředků této hodnoty.
+- **ExistenceScope** (volitelné)
+  - Povolené hodnoty jsou _předplatné_ a _zdroj_.
+  - Nastaví rozsah, ze kterého se má načíst související prostředek, ze kterého se má porovnat.
+  - Neplatí, pokud **typ** je prostředek, který by byl pod zdrojem podmínky **if** .
+  - V _případě skupiny prostředků by se_omezila na skupinu prostředků nebo skupinu **prostředků, která** je určená v **ResourceGroupName**.
+  - U _předplatného_se dotazuje na celé předplatné souvisejícího prostředku.
+  - Výchozí hodnota je _Resource_.
+- **ExistenceCondition** (volitelné)
+  - Pokud tento parametr nezadáte, všechny související prostředky **typu** vyhovují tomuto efektu a neaktivuje nasazení.
+  - Používá stejný jazyk jako pravidlo zásad pro podmínku **if** , ale je vyhodnocen proti každému souvisejícímu prostředku jednotlivě.
+  - Pokud se některý odpovídající související prostředek vyhodnotí jako true, projeví se to jako splněné a neaktivuje se nasazení.
+  - Lze použít [Field ()] ke kontrole rovnocennosti s hodnotami v podmínkách **if** .
+  - Například lze použít k ověření, zda je nadřazený prostředek (v podmínce **if** ) ve stejném umístění prostředku jako odpovídající související prostředek.
 - **roleDefinitionIds** [povinné]
-  - Tato vlastnost musí obsahovat pole řetězců, které odpovídají ID role na základě role řízení přístupu přístupné odběr. Další informace naleznete v [tématu náprava - konfigurace definice zásad](../how-to/remediate-resources.md#configure-policy-definition).
+  - Tato vlastnost musí zahrnovat pole řetězců, které odpovídají ID role řízení přístupu na základě rolí přístupné pro předplatné. Další informace najdete v tématu [náprava – konfigurace definice zásad](../how-to/remediate-resources.md#configure-policy-definition).
 - **DeploymentScope** (volitelné)
-  - Povolené hodnoty jsou _Odběr_ a _ResourceGroup_.
-  - Nastaví typ nasazení, které má být spuštěno. _Předplatné_ označuje [nasazení na úrovni předplatného](../../../azure-resource-manager/templates/deploy-to-subscription.md), _ResourceGroup_ označuje nasazení do skupiny prostředků.
-  - Vlastnost _umístění_ musí být zadána v _nasazení_ při použití nasazení na úrovni předplatného.
-  - Výchozí hodnota je _Skupina prostředků_.
-- **Nasazení** [povinné]
-  - Tato vlastnost by měla obsahovat úplné nasazení `Microsoft.Resources/deployments` šablony, protože by byla předána rozhraní API PUT. Další informace naleznete v [tématu Nasazení rozhraní REST API](/rest/api/resources/deployments).
+  - Povolené hodnoty jsou _předplatné_ a _zdroj_.
+  - Nastaví typ nasazení, které se má aktivovat. _Předplatné_ indikuje [nasazení na úrovni předplatného](../../../azure-resource-manager/templates/deploy-to-subscription.md), skupina _Resource_ označuje nasazení do skupiny prostředků.
+  - Při použití nasazení na úrovni předplatného musí být v _nasazení_ zadaná vlastnost _umístění_ .
+  - Výchozí hodnota je _Resource_.
+- **Nasazení** [požadováno]
+  - Tato vlastnost by měla zahrnovat nasazení úplné šablony, protože by byla předána rozhraní `Microsoft.Resources/deployments` API pro vložení. Další informace najdete v tématu [nasazení REST API](/rest/api/resources/deployments).
 
   > [!NOTE]
-  > Všechny funkce uvnitř **Deployment** vlastnost jsou vyhodnocovány jako součásti šablony, nikoli zásady. Výjimkou je **vlastnost parameters,** která předává hodnoty ze zásady do šablony. **Hodnota** v této části pod názvem parametru šablony se používá k provedení této hodnoty předávání (viz _fullDbName_ v deployifnotexists příkladu).
+  > Všechny funkce uvnitř vlastnosti **nasazení** jsou vyhodnocovány jako komponenty šablony, nikoli zásady. Výjimkou je vlastnost **Parameters** , která předává hodnoty ze zásad do šablony. **Hodnota** v této části pod názvem parametru šablony se používá k provedení tohoto předávání hodnoty (viz _FullDbName_ v příkladu DeployIfNotExists).
 
 ### <a name="deployifnotexists-example"></a>Příklad DeployIfNotExists
 
-Příklad: Vyhodnocuje databáze serveru SQL Server k určení, zda je povoleno transparentní šifrování DatEncryption. Pokud ne, je spuštěno nasazení, které chcete povolit.
+Příklad: vyhodnotí SQL Server databáze a určí, jestli je povolený transparentDataEncryption. V takovém případě je prováděno nasazení, které se má povolit.
 
 ```json
 "if": {
@@ -430,32 +430,32 @@ Příklad: Vyhodnocuje databáze serveru SQL Server k určení, zda je povoleno 
 }
 ```
 
-## <a name="enforceopaconstraint"></a>EnforceOPAconstraint
+## <a name="enforceopaconstraint"></a>EnforceOPAConstraint
 
-Tento efekt se používá s `Microsoft.Kubernetes.Data` *režimem* definice zásad . Používá se k předání gatekeeper v3 pravidla kontroly přístupu definované s [OPA omezení rámce](https://github.com/open-policy-agent/frameworks/tree/master/constraint#opa-constraint-framework) [otevřít agenta zásad](https://www.openpolicyagent.org/) (OPA) na samořízené Clustery Kubernetes v Azure.
+Tento efekt se používá v *režimu* definice zásad `Microsoft.Kubernetes.Data`. Používá se k předávání pravidel řízení přístupu na serveru gatekeeper V3 definovaných pomocí [architektury omezení neprů](https://github.com/open-policy-agent/frameworks/tree/master/constraint#opa-constraint-framework) k [otevření agenta zásad](https://www.openpolicyagent.org/) (neprů) pro samoobslužně spravované clustery Kubernetes v Azure.
 
 > [!NOTE]
-> [Azure Policy for AKS Engine](aks-engine.md) je ve verzi Public Preview a podporuje jenom předdefinované definice zásad.
+> [Azure Policy pro modul AKS](aks-engine.md) je v Public Preview a podporuje pouze předdefinované definice zásad.
 
-### <a name="enforceopaconstraint-evaluation"></a>Vyhodnocení enforceOPAConstraint
+### <a name="enforceopaconstraint-evaluation"></a>EnforceOPAConstraint vyhodnocování
 
-Řadič přijetí agenta otevřené politiky vyhodnotí všechny nové požadavky v clusteru v reálném čase.
-Každých 5 minut je dokončena úplná prohledávací služba clusteru a výsledky nahlášené zásadám Azure.
+Otevřený řadič pro přístup agenta zásad vyhodnocuje všechny nové žádosti v clusteru v reálném čase.
+Každých 5 minut se dokončila úplná kontrola clusteru a výsledky nahlásily Azure Policy.
 
 ### <a name="enforceopaconstraint-properties"></a>Vlastnosti EnforceOPAConstraint
 
-**Podrobnosti** vlastnost EnforceOPAConstraint efekt má podvlastnosti, které popisují Gatekeeper v3 pravidlo kontroly přijetí.
+Vlastnost **Details** EnforceOPAConstraintového efektu má podvlastnosti, které popisují pravidlo pro Admission Control na serveru gatekeeper v3.
 
 - **constraintTemplate** [povinné]
-  - Šablona omezení CustomResourceDefinition (CRD), která definuje nová omezení. Šablona definuje logiku Rego, schéma omezení a parametry omezení, které jsou předávány prostřednictvím **hodnot** z Azure Policy.
+  - Šablona omezení CustomResourceDefinition (CRD), která definuje nová omezení. Šablona definuje logiku Rego, schéma omezení a parametry omezení, které jsou předány prostřednictvím **hodnot** z Azure Policy.
 - **omezení** [povinné]
-  - Implementace crd šablony omezení. Používá parametry **values** předané `{{ .Values.<valuename> }}`prostřednictvím hodnot jako . V níže uvedeném příkladu by to bylo `{{ .Values.cpuLimit }}` a `{{ .Values.memoryLimit }}`.
+  - Implementace šablony omezení CRD. Používá parametry předané **values** prostřednictvím hodnot `{{ .Values.<valuename> }}`jako. V následujícím příkladu by to byl `{{ .Values.cpuLimit }}` a. `{{ .Values.memoryLimit }}`
 - **hodnoty** [nepovinné]
-  - Definuje všechny parametry a hodnoty, které mají být předávány omezení. Každá hodnota musí existovat v šabloně omezení CRD.
+  - Definuje všechny parametry a hodnoty, které se mají předat omezení. Každá hodnota musí existovat v šabloně omezení CRD.
 
 ### <a name="enforceopaconstraint-example"></a>Příklad EnforceOPAConstraint
 
-Příklad: Gatekeeper v3 pravidlo kontroly přijetí nastavit omezení procesoru kontejneru a paměti v AKS Engine.
+Příklad: pravidlo pro Admission Control pro gatekeeper v3, které nastaví omezení prostředků procesoru a paměti v AKS Engine.
 
 ```json
 "if": {
@@ -486,32 +486,32 @@ Příklad: Gatekeeper v3 pravidlo kontroly přijetí nastavit omezení procesoru
 }
 ```
 
-## <a name="enforceregopolicy"></a>Zásady vynucení Rego
+## <a name="enforceregopolicy"></a>EnforceRegoPolicy
 
-Tento efekt se používá s `Microsoft.ContainerService.Data` *režimem* definice zásad . Používá se k předání pravidel kontroly přístupu Gatekeeper v2 definovaných pomocí [agenta zásad Rego](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego) to [Open (OPA)](https://www.openpolicyagent.org/) ve službě Azure [Kubernetes Service](../../../aks/intro-kubernetes.md).
+Tento efekt se používá v *režimu* definice zásad `Microsoft.ContainerService.Data`. Používá se k předávání pravidel řízení přístupu serveru gatekeeper v2 definovaných pomocí [Rego](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego) k [otevření agenta zásad](https://www.openpolicyagent.org/) (Neprů) ve [službě Azure Kubernetes Service](../../../aks/intro-kubernetes.md).
 
 > [!NOTE]
-> [Zásady Azure pro AKS](rego-for-aks.md) jsou v omezenéverzi Preview a podporují jenom integrované definice zásad.
+> [Azure Policy pro AKS](rego-for-aks.md) je ve verzi omezené verze Preview a podporuje jenom integrované definice zásad.
 
-### <a name="enforceregopolicy-evaluation"></a>VyhodnoceníRegoPolicy hodnocení
+### <a name="enforceregopolicy-evaluation"></a>EnforceRegoPolicy vyhodnocování
 
-Řadič přijetí agenta otevřené politiky vyhodnotí všechny nové požadavky v clusteru v reálném čase.
-Každých 5 minut je dokončena úplná prohledávací služba clusteru a výsledky nahlášené zásadám Azure.
+Otevřený řadič pro přístup agenta zásad vyhodnocuje všechny nové žádosti v clusteru v reálném čase.
+Každých 5 minut se dokončila úplná kontrola clusteru a výsledky nahlásily Azure Policy.
 
 ### <a name="enforceregopolicy-properties"></a>Vlastnosti EnforceRegoPolicy
 
-**Podrobnosti** vlastnost EnforceRegoPolicy efekt má podvlastnosti, které popisují Gatekeeper v2 pravidlo kontroly přijetí.
+Vlastnost **Details** EnforceRegoPolicy efektu má podvlastnosti, které popisují pravidlo pro Admission Control pro rozhraní gatekeeper v2.
 
 - **policyId** [povinné]
-  - Jedinečný název předaný jako parametr pravidlu řízení přijetí Rego.
-- **politika** [povinné]
-  - Určuje identifikátor URI pravidla řízení přijetí rego.
+  - K pravidlu Rego Admission Control se předal jedinečný název jako parametr.
+- **zásady** [povinné]
+  - Určuje identifikátor URI pravidla Rego Admission Control.
 - **policyParameters** [nepovinné]
-  - Definuje všechny parametry a hodnoty, které mají být předávány zásadě rego.
+  - Definuje všechny parametry a hodnoty, které se mají předat zásadám Rego.
 
 ### <a name="enforceregopolicy-example"></a>Příklad EnforceRegoPolicy
 
-Příklad: Gatekeeper v2 pravidlo kontroly přijetí povolit pouze zadané image kontejneru v AKS.
+Příklad: pravidlo pro Admission Control pro gatekeeper v2, které povoluje pouze zadané image kontejneru v AKS.
 
 ```json
 "if": {
@@ -540,38 +540,38 @@ Příklad: Gatekeeper v2 pravidlo kontroly přijetí povolit pouze zadané image
 
 ## <a name="layering-policies"></a>Zásady vrstvení
 
-Zdroj může být ovlivněn několika přiřazeními. Tato přiřazení mohou být ve stejném oboru nebo v různých oborech. Každé z těchto přiřazení je také pravděpodobné, že mají jiný účinek definován. Podmínka a účinek pro každou zásadu je nezávisle vyhodnocena. Například:
+Prostředek může být ovlivněn několika přiřazeními. Tato přiřazení můžou být ve stejném oboru nebo v různých oborech. U každého z těchto přiřazení je také pravděpodobně definován jiný efekt. Podmínka a účinek pro jednotlivé zásady jsou nezávisle vyhodnoceny. Příklad:
 
 - Zásady 1
-  - Omezuje umístění prostředků na westus.
+  - Omezí umístění prostředku na ' westus '.
   - Přiřazeno k předplatnému A
   - Odepřít efekt
-- Zásady 2
-  - Omezuje umístění prostředků na "eastus"
+- Zásada 2
+  - Omezí umístění prostředku na ' eastus '.
   - Přiřazeno ke skupině prostředků B v předplatném A
-  - Efekt auditu
+  - Auditovat efekt
   
-Toto nastavení by mělo za následek následující výsledek:
+Výsledkem tohoto nastavení je následující výsledek:
 
-- Všechny prostředky, které jsou již ve skupině prostředků B v "eastus", jsou v souladu se zásadou 2 a nedodržují zásady 1.
-- Všechny prostředky, které jsou již ve skupině prostředků B, které nejsou v "eastus", nejsou kompatibilní se zásadou 2 a nejsou v souladu se zásadami 1, pokud nejsou v "westus"
-- Všechny nové prostředky v předplatném A, které nejsou v "westus", jsou odmítnuty zásadami 1.
-- Všechny nové prostředky v předplatném A a skupině prostředků B v "westus" je vytvořen a nevyhovující zásadám 2
+- Všechny prostředky, které už jsou ve skupině prostředků B v eastus, jsou v souladu se zásadami 2 a nedodržují zásady 1.
+- Žádný prostředek, který už je ve skupině prostředků B not v ' eastus ', není kompatibilní se zásadou 2 a nedodržuje zásady 1, pokud není v ' westus '
+- Zásady 1 zakázaly všechny nové prostředky v předplatném A ne v ' westus '
+- Všechny nové prostředky v předplatném a a skupině prostředků B v ' westus ' se vytvoří a nedodržují předpisy v zásadách 2.
 
-Pokud politika 1 i politika 2 měly účinek odmítnutí, situace se změní na:
+Pokud zásada 1 a zásada 2 měla vliv na zamítnutí, změní se situace na:
 
-- Všechny prostředky, které jsou již ve skupině prostředků B, které nejsou v zásadě eastus, nejsou kompatibilní se zásadami 2.
-- Všechny prostředky, které jsou již ve skupině prostředků B, které nejsou v režimu westus, nejsou kompatibilní se zásadami 1.
-- Všechny nové prostředky v předplatném A, které nejsou v "westus", jsou odmítnuty zásadami 1.
-- Všechny nové prostředky ve skupině prostředků B předplatného A jsou odepřeny.
+- Žádný prostředek, který už ve skupině prostředků B není v ' eastus ', není kompatibilní se zásadou 2
+- Žádný prostředek, který už ve skupině prostředků B není v ' westus ', není kompatibilní se zásadou 1
+- Zásady 1 zakázaly všechny nové prostředky v předplatném A ne v ' westus '
+- Všechny nové prostředky ve skupině prostředků B předplatného A se zamítly.
 
-Každé přiřazení je vyhodnoceno individuálně. Jako takový, není příležitost pro zdroj proklouznout mezeru od rozdílů v rozsahu. Čistý výsledek zásad vrstvení nebo překrývání zásad je považován za **kumulativní nejvíce omezující**. Například pokud zásady 1 a 2 měl odepřít účinek, prostředek by blokován překrývající se a konfliktní zásady. Pokud stále potřebujete prostředek, který má být vytvořen v cílovém oboru, zkontrolujte vyloučení na každé přiřazení k ověření správné zásady mají vliv na správné obory.
+Každé přiřazení se vyhodnocuje jednotlivě. V takovém případě není k dispozici žádný prostředek, který by měl dodávat mezery z rozdílů v rozsahu. Čistý výsledek překrývání zásad nebo překrytí zásad se považuje za **kumulativní**. Pokud například zásada 1 a 2 měla odepřený efekt, prostředek by byl zablokován překrývajícími se a konfliktními zásadami. Pokud stále potřebujete vytvořit prostředek v cílovém oboru, Prohlédněte si vyloučení u každého přiřazení a ověřte, jestli mají správné zásady vliv na správné obory.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Projděte si příklady na [ukázkách zásad Azure](../samples/index.md).
+- Přečtěte si příklady na [Azure Policy Samples](../samples/index.md).
 - Projděte si [strukturu definic Azure Policy](definition-structure.md).
-- Pochopit, jak [programově vytvářet zásady](../how-to/programmatically-create.md).
+- Zjistěte, jak [programově vytvářet zásady](../how-to/programmatically-create.md).
 - Přečtěte si, jak [získat data o dodržování předpisů](../how-to/get-compliance-data.md).
-- Přečtěte si, jak [napravit nekompatibilní prostředky](../how-to/remediate-resources.md).
-- Zkontrolujte, co je skupina pro správu [pomocí organizace Uspořádat prostředky pomocí skupin pro správu Azure](../../management-groups/overview.md).
+- Přečtěte si, jak [opravit prostředky, které nedodržují předpisy](../how-to/remediate-resources.md).
+- Seznamte se s tím, co skupina pro správu [organizuje vaše prostředky pomocí skupin pro správu Azure](../../management-groups/overview.md).

@@ -1,6 +1,6 @@
 ---
-title: Nastavit virtuální pole StorSimple jako souborový server | Dokumenty společnosti Microsoft
-description: Tento třetí kurz v nasazení StorSimple Virtual Array vás instruuje k nastavení virtuálního zařízení jako souborového serveru.
+title: Nastavení virtuálního pole StorSimple jako souborového serveru | Microsoft Docs
+description: Tento třetí kurz v nasazení virtuálních polí StorSimple vám dává pokyn k nastavení virtuálního zařízení jako souborového serveru.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -16,178 +16,178 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 16a5e0bb3e50e3a90951572e8d2847d379c1b114
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80297650"
 ---
-# <a name="deploy-storsimple-virtual-array---set-up-as-file-server-via-azure-portal"></a>Nasazení virtuálního pole StorSimple – nastavení jako souborového serveru prostřednictvím portálu Azure
+# <a name="deploy-storsimple-virtual-array---set-up-as-file-server-via-azure-portal"></a>Nasazení virtuálního pole StorSimple – nastavení jako souborového serveru prostřednictvím Azure Portal
 ![](./media/storsimple-virtual-array-deploy3-fs-setup/fileserver4.png)
 
 ## <a name="introduction"></a>Úvod
 
 [!INCLUDE [storsimple-virtual-array-eol-banner](../../includes/storsimple-virtual-array-eol-banner.md)]
 
-Tento článek popisuje, jak provést počáteční nastavení, zaregistrovat souborový server StorSimple, dokončit nastavení zařízení a vytvořit sdílené složky SMB a připojit se k němu. Toto je poslední článek v sérii kurzů nasazení potřebných k úplnému nasazení virtuálního pole jako souborového serveru nebo serveru iSCSI.
+Tento článek popisuje, jak provést počáteční nastavení, zaregistrovat souborový server StorSimple, dokončit instalaci zařízení a vytvořit sdílené složky SMB a připojit se k nim. Toto je poslední článek v sérii kurzů pro nasazení požadovaných k úplnému nasazení virtuálního pole jako souborového serveru nebo serveru iSCSI.
 
-Proces instalace a konfigurace může trvat přibližně 10 minut. Informace v tomto článku platí pouze pro nasazení Virtuální pole StorSimple. Nasazení zařízení řady StorSimple 8000 naleznete na: [Nasazení zařízení řady StorSimple 8000 se spuštěnou aktualizací 2](storsimple-deployment-walkthrough-u2.md).
+Dokončení procesu instalace a konfigurace může trvat přibližně 10 minut. Informace v tomto článku se vztahují pouze k nasazení virtuálního pole StorSimple. Nasazení zařízení řady StorSimple 8000 najdete v části [nasazení zařízení StorSimple 8000 Series s aktualizací Update 2](storsimple-deployment-walkthrough-u2.md).
 
 ## <a name="setup-prerequisites"></a>Požadavky instalačního programu 
-Před konfigurací a nastavením virtuálního pole StorSimple zkontrolujte, zda:
+Před konfigurací a nastavením StorSimple virtuálního pole se ujistěte, že:
 
-* Zřídíte virtuální pole a připojíte k němu, jak je podrobně popsáno v [části Zřízení virtuálního pole StorSimple v technologii Hyper-V](storsimple-virtual-array-deploy2-provision-hyperv.md) nebo [Zřízení virtuálního pole StorSimple ve společnosti VMware](storsimple-virtual-array-deploy2-provision-vmware.md).
-* Máte registrační klíč služby ze služby StorSimple Device Manager, kterou jste vytvořili pro správu virtuálních polí StorSimple. Další informace naleznete [v tématu Krok 2: Získání registračního klíče služby](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key) pro virtuální pole StorSimple.
-* Pokud se jedná o druhé nebo následující virtuální pole, které registrujete u existující služby Správce zařízení StorSimple, měli byste mít šifrovací klíč dat služby. Tento klíč byl vygenerován při úspěšném zaregistrování prvního zařízení v této službě. Pokud jste ztratili tento klíč, přečtěte si téma [Získání šifrovacího klíče dat služby](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key) pro vaše virtuální pole StorSimple.
+* Zřídili jste virtuální pole a připojili se k němu, jak je popsáno v části [zřízení virtuálního pole StorSimple v Hyper-V](storsimple-virtual-array-deploy2-provision-hyperv.md) nebo [zřízení virtuálního pole StorSimple ve VMware](storsimple-virtual-array-deploy2-provision-vmware.md).
+* Máte registrační klíč služby ze služby StorSimple Device Manager, kterou jste vytvořili pro správu virtuálních polí StorSimple. Další informace najdete v části [Krok 2: získání registračního klíče služby](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key) pro virtuální pole StorSimple.
+* Pokud se jedná o druhé nebo následné virtuální pole, které zaregistrujete pomocí existující služby StorSimple Device Manager, měli byste mít šifrovací klíč dat služby. Tento klíč byl vygenerován při úspěšné registraci prvního zařízení s touto službou. Pokud jste tento klíč ztratili, přečtěte si téma [získání šifrovacího klíče dat služby](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key) pro virtuální pole StorSimple.
 
-## <a name="step-by-step-setup"></a>Podrobné nastavení
+## <a name="step-by-step-setup"></a>Podrobný postup instalace
 Pomocí následujících podrobných pokynů nastavte a nakonfigurujte virtuální pole StorSimple.
 
-## <a name="step-1-complete-the-local-web-ui-setup-and-register-your-device"></a>Krok 1: Dokončení nastavení místního webového uživatelského rozhraní a registrace zařízení
-#### <a name="to-complete-the-setup-and-register-the-device"></a>Chcete-li dokončit nastavení a zaregistrovat zařízení
-1. Otevřete okno prohlížeče a připojte se k místnímu webovému uživatelskému uživatelskému prostředí. Zadejte:
+## <a name="step-1-complete-the-local-web-ui-setup-and-register-your-device"></a>Krok 1: dokončení nastavení místního webového uživatelského rozhraní a registrace zařízení
+#### <a name="to-complete-the-setup-and-register-the-device"></a>Dokončení nastavení a registrace zařízení
+1. Otevřete okno prohlížeče a připojte se k místnímu webovému uživatelskému rozhraní. Zadejte:
    
    `https://<ip-address of network interface>`
    
-   Použijte adresu URL připojení uvedenou v předchozím kroku. Zobrazí se chyba označující, že došlo k potížím s certifikátem zabezpečení webu. Klepněte **na tlačítko Pokračovat na tuto webovou stránku**.
+   Použijte adresu URL připojení, kterou jste si poznamenali v předchozím kroku. Zobrazí se chyba oznamující, že došlo k potížím s certifikátem zabezpečení webu. Klikněte na **pokračovat na tuto webovou stránku**.
    
    ![](./media/storsimple-virtual-array-deploy3-fs-setup/image2.png)
-2. Přihlaste se k webovému uživatelskému rozhraní virtuálního pole jako **StorSimpleAdmin**. Zadejte heslo správce zařízení, které jste změnili v kroku 3: Spuštění virtuálního pole v [okně Provision a StorSimple Virtual Array v technologii Hyper-V](storsimple-virtual-array-deploy2-provision-hyperv.md) nebo [V provision a StorSimple Virtual Array in VMware](storsimple-virtual-array-deploy2-provision-vmware.md).
+2. Přihlaste se k webovému uživatelskému rozhraní vašeho virtuálního pole jako **StorSimpleAdmin**. Zadejte heslo správce zařízení, které jste změnili v kroku 3: spuštění virtuálního pole v části [zřízení virtuálního pole StorSimple v technologii Hyper-V](storsimple-virtual-array-deploy2-provision-hyperv.md) nebo [zřízení virtuálního pole StorSimple ve VMware](storsimple-virtual-array-deploy2-provision-vmware.md).
    
    ![](./media/storsimple-virtual-array-deploy3-fs-setup/image3.png)
-3. Přejdete na **domovskou** stránku. Tato stránka popisuje různá nastavení potřebná ke konfiguraci a registraci virtuálního pole pomocí služby StorSimple Device Manager. **Nastavení sítě**, **nastavení webového proxy serveru**a **času** jsou volitelné. Jedinými požadovanými nastaveními jsou **nastavení zařízení** a **nastavení cloudu**.
+3. Přejdete na **domovskou** stránku. Tato stránka popisuje různá nastavení potřebná ke konfiguraci a registraci virtuálního pole pomocí služby StorSimple Device Manager. Nastavení **sítě**, **nastavení webového proxy serveru**a **Nastavení času** jsou volitelné. Jediná požadovaná nastavení jsou **nastavení zařízení** a **Nastavení cloudu**.
    
    ![](./media/storsimple-virtual-array-deploy3-fs-setup/image4.png)
-4. Na stránce **Nastavení sítě** v části **Síťová rozhraní**bude data 0 automaticky konfigurována za vás. Každé síťové rozhraní je ve výchozím nastavení nastaveno tak, aby automaticky získalo adresu IP (DHCP). Proto jsou automaticky přiřazeny IP adresy, podsítě a brány (pro Protokol IPv4 i IPv6).
+4. Na stránce **nastavení sítě** v části **Síťová rozhraní**se pro vás automaticky nakonfigurují data 0. Každé síťové rozhraní je standardně nastavené tak, aby se automaticky získala IP adresa (DHCP). IP adresa, podsíť a brána se proto automaticky přiřazují (pro IPv4 a IPv6).
    
    ![](./media/storsimple-virtual-array-deploy3-fs-setup/image5.png)
    
-   Pokud jste přidali více než jedno síťové rozhraní během zřizování zařízení, můžete je nakonfigurovat zde. Poznámka: síťové rozhraní můžete nakonfigurovat pouze jako protokol IPv4 nebo jako protokol IPv4 i IPv6. Pouze konfigurace Protokolu IPv6 nejsou podporovány.
-5. Servery DNS jsou vyžadovány, protože se používají, když se vaše zařízení pokusí komunikovat s poskytovateli služeb cloudového úložiště nebo vyřešit zařízení podle názvu při konfiguraci jako souborový server. Na stránce **Nastavení sítě** pod **servery DNS**:
+   Pokud jste během zřizování zařízení přidali více než jedno síťové rozhraní, můžete je nakonfigurovat tady. Všimněte si, že vaše síťové rozhraní můžete nakonfigurovat jenom jako IPv4, nebo jako IPv4 i IPv6. Pouze konfigurace protokolu IPv6 nejsou podporovány.
+5. Servery DNS se vyžadují, protože se používají, když se vaše zařízení pokusí komunikovat s poskytovateli služeb cloudového úložiště nebo překládat vaše zařízení podle názvu, když je nakonfigurovaný jako souborový server. Na stránce **nastavení sítě** v části **servery DNS**:
    
-   1. Primární a sekundární server DNS je automaticky konfigurován. Pokud se rozhodnete konfigurovat statické adresy IP, můžete zadat servery DNS. Pro vysokou dostupnost doporučujeme nakonfigurovat primární a sekundární server DNS.
-   2. Klepnutím na tlačítko **Použít** použijte a ověřte nastavení sítě.
-6. Na stránce **Nastavení zařízení:**
+   1. Primární a sekundární server DNS se automaticky nakonfigurují. Pokud se rozhodnete nakonfigurovat statické IP adresy, můžete zadat servery DNS. Pro zajištění vysoké dostupnosti doporučujeme nakonfigurovat primární a sekundární server DNS.
+   2. Kliknutím na **použít** použijete a ověříte nastavení sítě.
+6. Na stránce **nastavení zařízení** :
    
-   1. **Přiřaďte** svému zařízení jedinečný název. Tento název může mít 1-15 znaků a může obsahovat písmeno, čísla a pomlčky.
-   2. Klepněte na ![](./media/storsimple-virtual-array-deploy3-fs-setup/image6.png) ikonu **Souborový server** pro **typ** zařízení, které vytváříte. Souborový server vám umožní vytvářet sdílené složky.
-   3. Vzhledem k tomu, že vaše zařízení je souborový server, budete muset připojit zařízení k doméně. Zadejte **název domény**.
+   1. Přiřaďte zařízení jedinečný **název** . Tento název může být 1-15 znaků a může obsahovat písmena, číslice a spojovníky.
+   2. Klikněte na ikonu ![](./media/storsimple-virtual-array-deploy3-fs-setup/image6.png) **souborového serveru** pro **typ** zařízení, které vytváříte. Souborový server vám umožní vytvořit sdílené složky.
+   3. Jelikož je vaše zařízení souborový server, budete ho muset připojit k doméně. Zadejte **název domény**.
    4. Klikněte na **Použít**.
-7. Zobrazí se dialogové okno. Zadejte pověření domény v určeném formátu. Klikněte na ikonu šeku. Pověření domény jsou ověřena. Pokud jsou pověření nesprávná, zobrazí se chybová zpráva.
+7. Zobrazí se dialogové okno. Zadejte svoje přihlašovací údaje do domény v zadaném formátu. Klikněte na ikonu zaškrtněte. Pověření domény jsou ověřena. Pokud jsou přihlašovací údaje nesprávné, zobrazí se chybová zpráva.
    
    ![](./media/storsimple-virtual-array-deploy3-fs-setup/image7.png)
-8. Klikněte na **Použít**. To platí a ověří nastavení zařízení.
+8. Klikněte na **Použít**. Tím se uplatní a ověří nastavení zařízení.
    
    ![](./media/storsimple-virtual-array-deploy3-fs-setup/image8.png)
    
    > [!NOTE]
-   > Ujistěte se, že vaše virtuální pole je ve své vlastní organizační jednotce (OU) pro službu Active Directory a žádné objekty zásad skupiny (GPO) jsou použity na něj nebo zděděné. Zásady skupiny mohou instalovat aplikace, jako je antivirový software, do virtuálního pole StorSimple. Instalace dalšího softwaru není podporována a může vést k poškození dat. 
+   > Ujistěte se, že vaše virtuální pole je ve své vlastní organizační jednotce pro službu Active Directory a že pro něj nejsou použité žádné objekty zásad skupiny (GPO) ani zděděné. Zásady skupiny mohou instalovat aplikace, jako je například antivirový software ve virtuálním poli StorSimple. Instalace dalšího softwaru není podporována a může vést k poškození dat. 
    > 
    > 
-9. (Volitelně) nakonfigurujte webový proxy server. Konfigurace proxy serveru je volitelná, ale můžete ji provést jenom v tomto kroku.
+9. (Volitelně) nakonfigurujte web proxy server. Konfigurace proxy serveru je volitelná, ale můžete ji provést jenom v tomto kroku.
    
    ![](./media/storsimple-virtual-array-deploy3-fs-setup/image9.png)
    
-   Na stránce **webového proxy** serveru:
+   Na stránce **webového proxy serveru** :
    
-   1. Zadej adresu **URL webového proxy serveru** v tomto formátu: http:// *&lt;adresu IP hostitele nebo&gt;:Pčísloort*. Všimněte si, že adresy URL HTTPS nejsou podporovány.
+   1. Zadejte **adresu URL webového proxy serveru** v tomto formátu *:&lt;http://hostitel-IP adresa nebo&gt;plně kvalifikovaný název domény:P číslo hodnoty*. Upozorňujeme, že adresy URL protokolu HTTPS nejsou podporovány.
    2. Zadejte **ověřování** jako **základní** nebo **žádné**.
    3. Pokud používáte ověřování, budete také muset zadat **uživatelské jméno** a **heslo**.
-   4. Klikněte na **Použít**. Tím ověříte a použijete nakonfigurované nastavení webového proxy serveru.
-10. (Volitelně) nakonfigurujte nastavení času pro vaše zařízení, například časové pásmo a primární a sekundární servery NTP. Servery NTP jsou vyžadovány, protože zařízení musí synchronizovat čas, aby se mohlo ověřit u poskytovatelů cloudových služeb.
+   4. Klikněte na **Použít**. Tím se ověří a použije nakonfigurovaná nastavení webového proxy serveru.
+10. (Volitelně) nakonfigurujte časová nastavení pro vaše zařízení, například časové pásmo a primární a sekundární servery NTP. Jsou vyžadovány servery NTP, protože vaše zařízení musí synchronizovat čas, aby se mohl ověřit u vašich poskytovatelů cloudových služeb.
     
     ![](./media/storsimple-virtual-array-deploy3-fs-setup/image10.png)
     
-    Na stránce **Nastavení času:**
+    Na stránce **Nastavení času** :
     
-    1. V rozevíracím seznamu vyberte **časové pásmo** na základě geografické polohy, ve které je zařízení nasazováno. Výchozí časové pásmo pro vaše zařízení je PST. Toto časové pásmo bude zařízení používat pro všechny naplánované operace.
-    2. Zadejte **primární server NTP** pro vaše zařízení nebo přijměte výchozí hodnotu time.windows.com. Ujistěte se, že vaše síť umožňuje přenos dat NTP z vašeho datového centra na internet.
-    3. Volitelně zadejte **sekundární ntp server** pro vaše zařízení.
-    4. Klikněte na **Použít**. Tím ověříte a použijete nakonfigurované nastavení času.
-11. Nakonfigurujte nastavení cloudu pro vaše zařízení. V tomto kroku dokončíte konfiguraci místního zařízení a poté zařízení zaregistrujete službou Správce zařízení StorSimple.
+    1. V rozevíracím seznamu vyberte **časové pásmo** na základě geografického umístění, ve kterém se zařízení nasazuje. Výchozím časovým pásmem pro vaše zařízení je PST. Toto časové pásmo bude zařízení používat pro všechny naplánované operace.
+    2. Zadejte **primární server NTP** pro vaše zařízení nebo přijměte výchozí hodnotu Time.Windows.com. Ujistěte se, že vaše síť umožňuje přenos dat NTP z vašeho datového centra na internet.
+    3. Volitelně můžete zadat **sekundární server NTP** pro vaše zařízení.
+    4. Klikněte na **Použít**. Tím se ověří a použije nakonfigurovaná nastavení času.
+11. Nakonfigurujte nastavení cloudu pro vaše zařízení. V tomto kroku dokončíte konfiguraci místních zařízení a pak zaregistrujete zařízení ve službě StorSimple Device Manager.
     
-    1. Zadejte **registrační klíč služby,** který jste dostali v [kroku 2: Získejte registrační klíč služby](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key) pro virtuální pole StorSimple.
-    2. Pokud se jedná o vaše první zařízení, které se registruje u této služby, zobrazí se vám **šifrovací klíč pro data služby**. Klíč zkopírujte a uložte na bezpečném místě. Tento klíč je vyžadován s registračním klíčem služby pro registraci dalších zařízení se službou StorSimple Device Manager. 
+    1. Zadejte **registrační klíč služby** , který jste získali v [kroku 2: získání registračního klíče služby](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key) pro virtuální pole StorSimple.
+    2. Pokud se jedná o první zařízení, které s touto službou zaregistrujete, zobrazí se vám **šifrovací klíč dat služby**. Klíč zkopírujte a uložte na bezpečném místě. Tento klíč je vyžadován s registračním klíčem služby k registraci dalších zařízení ve službě StorSimple Device Manager. 
        
-       Pokud se nejedná o první zařízení, které registrujete u této služby, budete muset poskytnout šifrovací klíč dat služby. Další informace naleznete v tématu získání [šifrovacího klíče dat služby](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key) v místním webovém uživatelském prostředí.
-    3. Klepněte na tlačítko **Registrovat**. Tím se zařízení restartuje. Možná budete muset počkat 2-3 minuty, než je zařízení úspěšně zaregistrováno. Po restartování zařízení budete převedena na přihlašovací stránku.
+       Pokud se nejedná o první zařízení, které zaregistrujete v rámci této služby, budete muset zadat šifrovací klíč dat služby. Další informace najdete v tématu Získání [šifrovacího klíče dat služby](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key) v místním webovém uživatelském rozhraní.
+    3. Klikněte na **zaregistrovat**. Tím se zařízení restartuje. Možná budete muset počkat na 2-3 minut, než se zařízení úspěšně zaregistruje. Jakmile se zařízení restartuje, přejdete na přihlašovací stránku.
        
        ![](./media/storsimple-virtual-array-deploy3-fs-setup/image13.png)
-12. Vraťte se na Azure Portal. Přejděte na **Všechny prostředky**, vyhledejte službu Správce zařízení StorSimple.
+12. Vraťte se na Azure Portal. Přejít na **všechny prostředky**, vyhledejte službu StorSimple Device Manager.
     
     ![](./media/storsimple-virtual-array-deploy3-fs-setup/searchdevicemanagerservice1.png) 
-13. Ve filtrovaném seznamu vyberte službu Správce zařízení StorSimple a přejděte na **položku Správa > zařízení**. V okně **Zařízení** ověřte, zda se zařízení úspěšně připojilo ke službě a zda má stav **Připraveno k nastavení**.
+13. V seznamu filtrovaný vyberte službu StorSimple Device Manager a potom přejděte na **> Správa zařízení**. V okně **zařízení** ověřte, že se zařízení úspěšně připojilo ke službě a má stav **připraveno k nastavení**.
     
     ![Konfigurace souborového serveru](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs2m.png)
 
-## <a name="step-2-configure-the-device-as-file-server"></a>Krok 2: Konfigurace zařízení jako souborového serveru
-Proveďte na [webu Azure Portal](https://portal.azure.com/) následující kroky a dokončete požadované nastavení zařízení.
+## <a name="step-2-configure-the-device-as-file-server"></a>Krok 2: konfigurace zařízení jako souborového serveru
+Provedením následujících kroků v [Azure Portal](https://portal.azure.com/) dokončete požadované nastavení zařízení.
 
 #### <a name="to-configure-the-device-as-file-server"></a>Konfigurace zařízení jako souborového serveru
-1. Přejděte do služby Správce zařízení StorSimple a přejděte na **způsob správy > zařízení**. V okně **Zařízení** vyberte zařízení, které jste právě vytvořili. Toto zařízení by se zobrazí jako **připraven o nastavení**.
+1. Přejít do služby StorSimple Device Manager a pak přejít na **> zařízení pro správu**. V okně **zařízení** vyberte zařízení, které jste právě vytvořili. Toto zařízení se zobrazí jako **připravené k nastavení**.
    
    ![Konfigurace souborového serveru](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs2m.png) 
-2. Klikněte na zařízení a zobrazí se bannerová zpráva oznamující, že zařízení je připraveno k nastavení.
+2. Klikněte na zařízení a zobrazí se informační zpráva oznamující, že zařízení je připravené k instalaci.
    
     ![Konfigurace souborového serveru](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs3m.png)
-3. Na panelu příkazů klikněte na **Konfigurovat.** Tím se otevře okno **Configure.** V okně **Konfigurovat** postupujte takto:
+3. Na panelu příkazů klikněte na **Konfigurovat** . Otevře se okno **Konfigurace** . V okně **Konfigurace** postupujte takto:
    
-   1. Název souborového serveru je automaticky naplněn.
+   1. Název souborového serveru se vyplní automaticky.
     
-   2. Ujistěte se, že šifrování cloudového úložiště je **nastaveno**na povoleno . Tím se zašifrují všechna data, která jsou odeslána do cloudu. 
+   2. Ujistěte se, že je šifrování cloudového úložiště nastavené na **povoleno**. Tím se zašifrují všechna data, která se odesílají do cloudu. 
     
-   3. 256bitový klíč AES se používá s uživatelem definovaným klíčem pro šifrování. Zadejte 32znakovou klávesu a pak ji znovu zadejte, abyste ji potvrdili. Zaznamenejte klíč v aplikaci pro správu klíčů pro budoucí použití.
+   3. Pro šifrování je použit klíč AES 256 s uživatelem definovaným klíčem. Zadejte znakový klíč 32 a pak znovu zadejte klíč pro potvrzení. Poznamenejte si klíč v aplikaci pro správu klíčů, abyste mohli budoucí reference.
     
-   4. Chcete-li zadat pověření účtu úložiště, která mají být použita se zařízením, klepněte na tlačítko **Konfigurovat požadovaná nastavení.** Pokud nejsou nakonfigurována žádná pověření účtu úložiště, klikněte na **Přidat nové.** **Ujistěte se, že účet úložiště, který používáte, podporuje objekty BLOB bloku. Objekty BLOB stránky nejsou podporovány.** Další informace o [blobch bloků a objektech BLOB stránky](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs).
+   4. Klikněte na **Konfigurovat požadované nastavení** a zadejte přihlašovací údaje účtu úložiště, které se mají používat s vaším zařízením. Pokud nejsou nakonfigurované žádné přihlašovací údaje účtu úložiště, klikněte na **Přidat nový** . **Ujistěte se, že používaný účet úložiště podporuje objekty blob bloku. Objekty blob stránky nejsou podporovány.** Další informace o objektech [BLOB bloků a objektech blob stránky](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)
    
       ![Konfigurace souborového serveru](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs6m.png) 
-4. V okně **Přidat přihlašovací údaje účtu úložiště** postupujte takto: 
+4. V okně **Přidat přihlašovací údaje účtu úložiště** udělejte toto: 
 
-    1. Zvolte aktuální předplatné, pokud je účet úložiště ve stejném předplatném jako služba. Zadejte další je účet úložiště je mimo předplatné služby. 
+    1. Pokud je účet úložiště ve stejném předplatném jako služba, vyberte aktuální předplatné. Zadejte jiný účet úložiště je mimo předplatné služby. 
     
-    2. V rozevíracím seznamu zvolte existující účet úložiště. 
+    2. V rozevíracím seznamu vyberte existující účet úložiště. 
     
-    3. Umístění bude automaticky vyplněno na základě zadaného účtu úložiště. 
+    3. Umístění se automaticky vyplní podle zadaného účtu úložiště. 
     
-    4. Povolte TLS a zajistěte zabezpečený síťový komunikační kanál mezi zařízením a cloudem.
+    4. Povolte TLS pro zajištění zabezpečeného síťového komunikačního kanálu mezi zařízením a cloudem.
     
-    5. Kliknutím na **Přidat** přidejte toto přihlašovací údaje účtu úložiště. 
+    5. Kliknutím na **Přidat** přidejte tyto přihlašovací údaje k účtu úložiště. 
    
         ![Konfigurace souborového serveru](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs8m.png)
 
-5. Po úspěšném vytvoření pověření účtu úložiště bude okno **Konfigurovat** aktualizováno tak, aby zobrazovala zadané přihlašovací údaje účtu úložiště. Klikněte na **Konfigurovat**.
+5. Po úspěšném vytvoření přihlašovacích údajů účtu úložiště se aktualizuje okno **Konfigurace** , aby se zobrazily zadané přihlašovací údaje účtu úložiště. Klikněte na **Konfigurovat**.
    
    ![Konfigurace souborového serveru](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs11m.png)
    
-   Uvidíte, že souborový server je vytvářen. Po úspěšném vytvoření souborového serveru budete upozorněni.
+   Zobrazí se soubor, který se vytváří na souborovém serveru. Po úspěšném vytvoření souborového serveru se zobrazí oznámení.
    
    ![Konfigurace souborového serveru](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs13m.png)
    
-   Stav zařízení se také změní na **Online**.
+   Stav zařízení se změní také na **online**.
    
    ![Konfigurace souborového serveru](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs14m.png)
    
-   Můžete pokračovat přidáním sdílené složky.
+   Můžete pokračovat a přidat sdílenou složku.
 
-## <a name="step-3-add-a-share"></a>Krok 3: Přidání sdílené položky
+## <a name="step-3-add-a-share"></a>Krok 3: přidání sdílené složky
 Provedením následujících kroků na webu [Azure Portal](https://portal.azure.com/) vytvořte sdílenou složku.
 
 #### <a name="to-create-a-share"></a>Vytvoření sdílené složky
-1. Vyberte zařízení souborového serveru, které jste nakonfigurovali v předchozím kroku, a klepněte na tlačítko **...** (nebo klepněte pravým tlačítkem myši). V místní nabídce vyberte **Přidat sdílenou složku**. Případně můžete na panelu příkazů zařízení kliknout na **+ Přidat sdílet.**
+1. Vyberte zařízení souborového serveru, které jste nakonfigurovali v předchozím kroku, a klikněte na **...** (nebo klikněte pravým tlačítkem myši). V místní nabídce vyberte **Přidat sdílenou složku**. Případně můžete kliknout na tlačítko **+ Přidat sdílenou složku** na panelu příkazů zařízení.
    
    ![Přidání sdílené složky](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs15m.png)
 2. Zadejte následující nastavení sdílení:
 
-   1. Jedinečný název pro váš podíl. Název musí být řetězec, který obsahuje 3 až 127 znaků.
+   1. Jedinečný název pro sdílenou složku. Název musí být řetězec, který obsahuje 3 až 127 znaků.
     
-   2. Volitelný **popis** sdílené složky. Popis pomůže identifikovat vlastníky akcií.
+   2. Volitelný **Popis** sdílené složky. Popis vám pomůže identifikovat vlastníky sdílené složky.
     
-   3. A **Type** pro sdílenou složku. Typ může být **vrstvené** nebo **místně připnuté**, s vrstvené je výchozí. Pro úlohy, které vyžadují místní záruky, nízkou latenci a vyšší výkon, vyberte **místně připnutou sdílenou** složku. Pro všechna ostatní data vyberte **vrstvenou sdílenou** složku.
-      Místně připnutá sdílená vrstva je silně zřízená a zajišťuje, že primární data ve sdílené složce zůstanou místní pro zařízení a nepřelije se do cloudu. Odstupňovaná sdílená akcie je na druhé straně tence zřízená. Když vytvoříte vrstvenou sdílenou složku, 10 % místa se zřídí na místní úrovni a 90 % místa se zřídí v cloudu. Například pokud jste zřídit svazek 1 TB, 100 GB by se nasytit v místním prostoru a 900 GB by se používá v cloudu, když datové vrstvy. To zase znamená, že pokud vám dojde všechny místní místo na zařízení, nelze zřídit vrstvené sdílené složky.
+   3. **Typ** pro sdílenou složku. Typ lze **Převrstvený** nebo **lokálně připnout**s vrstvou jako výchozí. Pro úlohy, které vyžadují místní záruky, nízkou latenci a vyšší výkon, vyberte **místně připojenou** sdílenou složku. U všech ostatních dat vyberte **vrstvenou** sdílenou složku.
+      Místně připnuté sdílení je silným způsobem zajišťováno a zajišťuje, aby primární data ve sdílené složce zůstala místní pro zařízení a nepřesahují se do cloudu. Vrstvená sdílená složka je na druhé straně dynamicky zřízená. Když vytvoříte vrstvenou sdílenou složku, na místní úrovni se zřídí 10% místa a 90% místa se zřídí v cloudu. Pokud jste například zřídili svazek o velikosti 1 TB, 100 GB by se nacházelo v místním prostoru a v cloudu se v případě datových vrstev používalo 900 GB. To znamená, že pokud vyčerpáte z místního prostoru na zařízení, nemůžete zřídit vrstvenou sdílenou složku.
    
-   4. V poli **Nastavit výchozí úplná oprávnění** přiřaďte oprávnění uživateli nebo skupině, která k této sdílené položce přistupuje. Zadejte jméno uživatele nebo skupiny uživatelů ve formátu *contoso.com.\@* Doporučujeme použít skupinu uživatelů (namísto jednoho uživatele) k povolení oprávnění správce pro přístup k těmto sdíleným položkám. Jakmile tady přiřadíte oprávnění, můžete pak tato oprávnění upravit pomocí Průzkumníka souborů.
+   4. V poli **nastavit výchozí všechna oprávnění na** pole přiřaďte uživateli nebo skupině, která přistupuje k této sdílené složce. Zadejte jméno uživatele nebo skupiny uživatelů ve formátu *jan\@contoso.com* . Pro povolení přístupu k těmto sdíleným složkám doporučujeme použít skupinu uživatelů (místo jednoho uživatele). Jakmile tady přiřadíte oprávnění, můžete pak tato oprávnění upravit pomocí Průzkumníka souborů.
    
-   5. Chcete-li vytvořit sdílenou složku, klepněte na tlačítko **Přidat.** 
+   5. Kliknutím na **Přidat** vytvořte sdílenou složku. 
     
        ![Přidání sdílené složky](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs18m.png)
    
@@ -195,22 +195,22 @@ Provedením následujících kroků na webu [Azure Portal](https://portal.azure.
    
        ![Přidání sdílené složky](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs19m.png)
    
-      Po vytvoření sdílené složky se vytvoří okno **Sdílené složky** tak, aby odráželo novou sdílenou složku. Ve výchozím nastavení je pro sdílenou složku povoleno monitorování a zálohování.
+      Po vytvoření sdílené složky se zadaným nastavením se okno **sdílené položky** aktualizuje a projeví se nová sdílená složka. Ve výchozím nastavení jsou pro sdílenou složku povolené monitorování a zálohování.
    
       ![Přidání sdílené složky](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs22m.png)
 
-## <a name="step-4-connect-to-the-share"></a>Krok 4: Připojení ke sdílené položce
-Nyní se budete muset připojit k jedné nebo více sdíleným položkám, které jste vytvořili v předchozím kroku. Tyto kroky proveďte u hostitele systému Windows Server připojeného k virtuálnímu poli StorSimple.
+## <a name="step-4-connect-to-the-share"></a>Krok 4: připojení ke sdílené složce
+Nyní se budete muset připojit k jedné nebo více sdíleným složkám, které jste vytvořili v předchozím kroku. Proveďte tyto kroky na hostiteli Windows serveru připojeném k vašemu virtuálnímu poli StorSimple.
 
-#### <a name="to-connect-to-the-share"></a>Připojení ke sdílené položce
-1. Stiskněte ![](./media/storsimple-virtual-array-deploy3-fs-setup/image22.png) klávesu + R. V okně Spustit zadejte jako cestu *název &lt;&gt; souborového serveru&#92;&#92;* a nahraďte název *souborového serveru* názvem zařízení, který jste přiřadili k souborovému serveru. Klikněte na tlačítko **OK**.
+#### <a name="to-connect-to-the-share"></a>Připojení ke sdílené složce
+1. Stiskněte ![](./media/storsimple-virtual-array-deploy3-fs-setup/image22.png) klávesu + R. V okně Spustit zadejte *&#92;&#92;&lt;název&gt; souborového serveru* jako cestu a nahraďte *název souborového serveru* názvem zařízení, který jste přiřadili k souborovému serveru. Klikněte na tlačítko **OK**.
    
    ![](./media/storsimple-virtual-array-deploy3-fs-setup/image23.png)
-2. Tím se otevře Průzkumník souborů. Sdílené složky, které jste vytvořili, by se teď měly zobrazit jako složky. Pokud chcete zobrazit obsah sdílené složky, vyberte příslušnou složku a dvakrát na ni klikněte.
+2. Otevře se Průzkumník souborů. Sdílené složky, které jste vytvořili, by se teď měly zobrazit jako složky. Pokud chcete zobrazit obsah sdílené složky, vyberte příslušnou složku a dvakrát na ni klikněte.
    
    ![](./media/storsimple-virtual-array-deploy3-fs-setup/image24.png)
-3. Nyní můžete do těchto sdílených složek přidávat soubory a provést zálohu.
+3. Nyní můžete do těchto sdílených složek přidat soubory a vytvořit zálohu.
 
 ## <a name="next-steps"></a>Další kroky
-Přečtěte si, jak používat místní webové uživatelské prostředí ke [správě virtuálního pole StorSimple](storsimple-ova-web-ui-admin.md).
+Přečtěte si, jak pomocí místního webového uživatelského rozhraní [spravovat virtuální pole StorSimple](storsimple-ova-web-ui-admin.md).
 

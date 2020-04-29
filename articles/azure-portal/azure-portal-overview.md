@@ -1,6 +1,6 @@
 ---
 title: Přehled webu Azure Portal | Dokumentace Microsoftu
-description: Portál Azure je grafické uživatelské rozhraní, které můžete použít ke správě služeb Azure. Zjistěte, jak navigovat a najít prostředky na webu Azure Portal.
+description: Azure Portal je grafické uživatelské rozhraní, které můžete použít ke správě služeb Azure. Naučte se procházet a hledat prostředky v Azure Portal.
 services: azure-portal
 keywords: portál
 author: mgblythe
@@ -10,92 +10,92 @@ ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
 ms.openlocfilehash: c5e02e791185db3713c67b8ff97b8f7eebe9da77
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76310726"
 ---
 # <a name="azure-portal-overview"></a>Přehled webu Azure Portal
 
-Tento článek představuje portál Azure, identifikuje prvky stránky portálu a pomůže vám seznámit se se zkušenostmi se správou portálu Azure.
+Tento článek zavádí Azure Portal, identifikuje prvky stránky portálu a pomůže vám seznámit se s prostředím pro Azure Portal správu.
 
 ## <a name="what-is-the-azure-portal"></a>Co je Azure Portal?
 
-Azure Portal je unifikovaná webová konzola, která poskytuje alternativu k nástrojům příkazového řádku. Na webu Azure Portal můžete spravovat předplatné Azure pomocí grafického uživatelského rozhraní. Můžete vytvářet, spravovat a monitorovat vše od jednoduchých webových aplikací až po komplexní nasazení cloudu. Vytvořte vlastní řídicí panely pro uspořádané zobrazení zdrojů. Nakonfigurujte možnosti usnadnění pro optimální prostředí.
+Azure Portal je unifikovaná webová konzola, která poskytuje alternativu k nástrojům příkazového řádku. Pomocí Azure Portal můžete spravovat své předplatné Azure pomocí grafického uživatelského rozhraní. Můžete vytvářet, spravovat a monitorovat všechno z jednoduchých webových aplikací až po složitá cloudová nasazení. Vytvořte si vlastní řídicí panely pro organizované zobrazení prostředků. Nakonfigurujte možnosti usnadnění pro optimální prostředí.
 
-Portál Azure je navržený pro odolnost proti chybám a nepřetržitou dostupnost. Má přítomnost v každém datovém centru Azure. Díky této konfiguraci je portál Azure odolný vůči jednotlivým selháním datových center a zabraňuje zpomalení sítě tím, že je blízko uživatelům. Portál Azure se průběžně aktualizuje a nevyžaduje žádné prostoje pro aktivity údržby.
+Azure Portal je navržená tak, aby byla odolná a nepřetržitá dostupnost. Má přítomnost v každém datovém centru Azure. Díky této konfiguraci se Azure Portal odolný proti selháním jednotlivých datových center a zabrání se zpomalení sítě tím, že se blíží uživatelům. Azure Portal průběžně aktualizuje a nevyžaduje pro aktivity údržby žádné výpadky.
 
-## <a name="azure-portal-menu"></a>Nabídka portálu Azure
+## <a name="azure-portal-menu"></a>Nabídka Azure Portal
 
-Můžete zvolit výchozí režim pro nabídku portálu. Může být ukotven nebo může fungovat jako informační panel.
+Můžete zvolit výchozí režim pro nabídku portálu. Může být ukotveno nebo může fungovat jako panel s plovoucím panelem.
 
-Když je nabídka portálu v režimu informačního rámečku, je skrytá, dokud ji nepotřebujete. Vyberte ikonu nabídky, kterou chcete otevřít nebo zavřít.
+Když je nabídka portálu v režimu plovoucí, je skrytá, dokud ji nepotřebujete. Výběrem ikony nabídky otevřete nebo zavřete nabídku.
 
-![Nabídka portálu Azure v režimu informačního rámečku](./media/azure-portal-overview/azure-portal-overview-portal-menu-flyout.png)
+![Nabídka Azure Portal v režimu plovoucího panelu](./media/azure-portal-overview/azure-portal-overview-portal-menu-flyout.png)
 
-Pokud pro nabídku portálu zvolíte ukotvený režim, bude vždy viditelný. Můžete sbalit nabídku a poskytnout tak více pracovního prostoru.
+Pokud zvolíte možnost ukotvený režim pro nabídku portálu, bude se vždycky zobrazovat. Nabídku můžete sbalit tak, aby poskytovala více pracovních prostorů.
 
-![Nabídka portálu Azure v ukotveném režimu](./media/azure-portal-overview/azure-portal-overview-portal-menu-expandcollapse.png)
+![Nabídka Azure Portal v docked Mode](./media/azure-portal-overview/azure-portal-overview-portal-menu-expandcollapse.png)
 
-## <a name="azure-home"></a>Azure Domů
+## <a name="azure-home"></a>Domovská stránka Azure
 
-Jako nový odběratel služeb Azure se první věc, kterou uvidíte po [přihlášení k portálu,](https://portal.azure.com) je **Azure Home**. Tato stránka zkompiluje prostředky, které vám pomůžou získat maximum z vašeho předplatného Azure. Zahrnuli jsme odkazy na bezplatné online kurzy, dokumentaci, základní služby a užitečné weby pro udržování aktuálních a správu změn pro vaši organizaci. Pro rychlý a snadný přístup k nedokončené práci zobrazíme také seznam naposledy navštívených zdrojů. Tuto stránku nelze přizpůsobit, ale můžete si vybrat, jestli se má jako výchozí zobrazení zobrazit **Azure Home** nebo **Azure Dashboard.** Při prvním přihlášení se v horní části stránky zobrazí výzva, ve které můžete uložit své předvolby.
+Jako noví předplatitelé služeb Azure se první věc, kterou vidíte po [přihlášení k portálu](https://portal.azure.com) , nachází na **domovské stránce Azure**. Tato stránka kompiluje prostředky, které vám pomůžou získat maximum z předplatného Azure. Zahrnuli jsme odkazy na bezplatné online kurzy, dokumentaci, základní služby a užitečné weby, které vám pozůstávají aktuální a spravovat změny vaší organizace. Pro rychlý a snadný přístup k probíhající práci se zobrazí také seznam naposledy navštívených prostředků. Tuto stránku nemůžete přizpůsobit, ale můžete zvolit, jestli se má jako výchozí zobrazení zobrazovat **řídicí panel** **Azure Home** nebo Azure. Při prvním přihlášení se zobrazí výzva v horní části stránky, kde můžete uložit preference.
 
-![Snímek obrazovky s výchozím voličem zobrazení](./media/azure-portal-overview/azure-portal-default-view.png)
+![Snímek obrazovky znázorňující selektor výchozích zobrazení](./media/azure-portal-overview/azure-portal-default-view.png)
 
-Nabídku portálu Azure i výchozí zobrazení Azure můžete změnit v **nastavení portálu**. Pokud změníte výběr, změna se okamžitě použije.
+V **nastavení portálu**se dá změnit jak v nabídce Azure Portal, tak ve výchozím zobrazení Azure. Pokud změníte svůj výběr, změna se projeví okamžitě.
 
-![Snímek obrazovky s výchozím voličem zobrazení](./media/azure-portal-overview/azure-portal-overview-portal-settings-menu-home.png)
+![Snímek obrazovky znázorňující selektor výchozích zobrazení](./media/azure-portal-overview/azure-portal-overview-portal-settings-menu-home.png)
 
 ## <a name="azure-dashboard"></a>Řídicí panel Azure
 
-Řídicí panely poskytují cílené zobrazení prostředků ve vašem předplatném, které jsou pro vás nejdůležitější. Dali jsme vám výchozí řídicí panel, abyste mohli začít. Tento řídicí panel můžete přizpůsobit tak, aby prostředky, které často používáte, přenesly do jednoho zobrazení. Všechny změny provedené ve výchozím zobrazení ovlivní pouze prostředí. Můžete však vytvořit další řídicí panely pro vlastní použití nebo publikovat vlastní řídicí panely a sdílet je s ostatními uživateli ve vaší organizaci. Další informace najdete [v tématu Vytváření a sdílení řídicích panelů na webu Azure Portal](../azure-portal/azure-portal-dashboards.md).
+Řídicí panely poskytují přehled o prostředcích v předplatném, které záleží na vás. Dostali jsme vám výchozí řídicí panel, který vám umožní začít. Tento řídicí panel můžete přizpůsobit tak, aby bylo možné často používané prostředky do jednoho zobrazení. Všechny změny, které provedete ve výchozím zobrazení, budou mít vliv pouze na vaše prostředí. Můžete ale vytvořit další řídicí panely pro vlastní použití nebo publikovat vlastní řídicí panely a sdílet je s ostatními uživateli ve vaší organizaci. Další informace najdete v tématu [Vytvoření a sdílení řídicích panelů v Azure Portal](../azure-portal/azure-portal-dashboards.md).
 
-## <a name="getting-around-the-portal"></a>Obcházet portál
+## <a name="getting-around-the-portal"></a>Seznámení s portálem
 
-Je užitečné pochopit základní rozložení portálu a jak s ním pracovat. Zde představíme součásti uživatelského rozhraní a některé terminologie, kterou používáme k tomu, abychom vám dali pokyny. Podrobnější prohlídku portálu najdete v lekci kurzu [Navigace na portálu](https://docs.microsoft.com/learn/modules/tour-azure-portal/3-navigate-the-portal).
+Je užitečné porozumět základnímu rozložení portálu a způsobu, jak s ním pracovat. Tady zavedeme komponenty uživatelského rozhraní a některá z terminologie, kterou použijeme k poskytnutí pokynů. Podrobnější přehled portálu najdete v lekci kurzu [Navigace na portálu](https://docs.microsoft.com/learn/modules/tour-azure-portal/3-navigate-the-portal).
 
-Nabídka portálu Azure a záhlaví stránky jsou globální prvky, které jsou vždy k dispozici. Tyto trvalé funkce jsou "prostředí" pro uživatelské rozhraní spojené s každou jednotlivou službu nebo funkce a záhlaví poskytuje přístup ke globálním ovládacím prvkům. Konfigurační stránka (někdy označovaná jako "okno") pro prostředek může mít také nabídku prostředků, která vám pomůže přecházet mezi funkcemi.
+Nabídka Azure Portal a záhlaví stránky jsou globální prvky, které jsou vždy přítomny. Tyto trvalé funkce jsou "prostředí" pro uživatelské rozhraní přidružené ke každé jednotlivé službě nebo funkci a záhlaví poskytuje přístup k globálním ovládacím prvkům. Stránka konfigurace (někdy označovaná jako "okno") pro prostředek může mít také nabídku prostředků, která vám umožní přesouvat se mezi funkcemi.
 
-Na obrázku níže popisky základní prvky portálu Azure, z nichž každý jsou popsány v následující tabulce.
+Obrázek níže popisuje základní prvky Azure Portal, z nichž každá je popsána v následující tabulce.
 
-![Snímek obrazovky zobrazující zobrazení portálu na celou obrazovku a klíč k prvkům uživatelského rozhraní](./media/azure-portal-overview/azure-portal-overview-portal-callouts.png)
+![Snímek obrazovky znázorňující zobrazení portálu na celé obrazovce a klíč k prvkům uživatelského rozhraní](./media/azure-portal-overview/azure-portal-overview-portal-callouts.png)
 
-![Snímek obrazovky s rozbalenou nabídkou portálu](./media/azure-portal-overview/azure-portal-overview-portal-menu-callouts.png)
+![Snímek obrazovky znázorňující nabídku rozbaleného portálu](./media/azure-portal-overview/azure-portal-overview-portal-menu-callouts.png)
 
-|Klíč|Popis
+|Key|Popis
 |:---:|---|
-|1|Záhlaví stránky. Zobrazí se v horní části každé stránky portálu a obsahuje globální prvky.|
-|2| Globální vyhledávání. Pomocí vyhledávacího panelu můžete rychle najít konkrétní prostředek, službu nebo dokumentaci.|
-|3|Globální kontroly. Stejně jako všechny globální prvky tyto funkce přetrvávají na celém portálu a zahrnují: Cloud Shell, filtr předplatného, oznámení, nastavení portálu, nápovědu a podporu a pošlete nám zpětnou vazbu.|
-|4|Tvůj účet. Zobrazení informací o vašem účtu, přepínání adresářů, odhlášení nebo přihlášení pomocí jiného účtu.|
-|5|Nabídka portálu. Nabídka portálu je globální prvek, který vám pomůže přejít mezi službami. Někdy označované jako postranní panel, režim nabídky portálu lze změnit v **nastavení portálu**.|
-|6|Nabídka Zdroje. Mnoho služeb obsahuje nabídku prostředků, která vám pomůže spravovat službu. Tento prvek se může zobrazit jako levé podokno.|
-|7|Panel příkazů. Ovládací prvky na panelu příkazů jsou kontextové k aktuálnímu fokusu.|
-|8|Pracovní podokno.  Zobrazí podrobnosti o zdroji, který je aktuálně v centru pozornosti.|
-|9|Breadcrumb. Pomocí odkazů s popisem cesty můžete přesunout zpět úroveň pracovního postupu.|
-|10|Hlavní ovládací prvek pro vytvoření nového prostředku v aktuálním předplatném. Rozbalte nebo otevřete nabídku portálu a **vyhledejte + Vytvoření prostředku**. Vyhledejte nebo vyhledejte azure marketplace pro typ prostředku, který chcete vytvořit.|
-|11|Váš seznam oblíbených položek. Informace o přizpůsobení seznamu naleznete v tématu [Přidání, odebrání a řazení oblíbených položek.](../azure-portal/azure-portal-add-remove-sort-favorites.md)|
+|1|Záhlaví stránky Zobrazuje se v horní části každé stránky portálu a obsahuje globální prvky.|
+|2| Globální vyhledávání. Panel hledání slouží k rychlému vyhledání konkrétního prostředku, služby nebo dokumentace.|
+|3|Globální ovládací prvky. Podobně jako u všech globálních prvků jsou tyto funkce na portálu trvalé a zahrnují: Cloud Shell, filtr předplatných, oznámení, nastavení portálu, pomoc a podpora a pošleme nám svůj názor.|
+|4|Váš účet. Zobrazte si informace o vašem účtu, přepněte si adresáře, odhlaste se nebo se přihlaste pomocí jiného účtu.|
+|5|Nabídka portál Nabídka portál je globální prvek, který vám pomůže s navigací mezi službami. V případě, že se někdy označuje jako postranní panel, lze režim nabídky portálu změnit v **nastavení portálu**.|
+|6|Nabídka prostředků Mnoho služeb zahrnuje nabídku prostředků, které vám pomůžou službu spravovat. Může se zobrazit tento element, na který se odkazuje jako v levém podokně.|
+|7|Panel příkazů. Ovládací prvky na panelu příkazů jsou kontextové na váš aktuální fokus.|
+|8|Pracovní podokno.  Zobrazí podrobnosti o prostředku, který je aktuálně aktivní.|
+|9|S popisem cesty. Pomocí odkazů s popisem cesty můžete v pracovním postupu přejít zpět na úroveň.|
+|10|Hlavní ovládací prvek pro vytvoření nového prostředku v aktuálním předplatném. Rozbalte nebo otevřete nabídku portál a vyhledejte **+ vytvořit prostředek**. Vyhledejte nebo vyhledejte Azure Marketplace pro typ prostředku, který chcete vytvořit.|
+|11|Seznam oblíbených položek. Informace o tom, jak seznam přizpůsobit, najdete v tématu [Přidání, odebrání a seřazení oblíbených položek](../azure-portal/azure-portal-add-remove-sort-favorites.md) .|
 
 ## <a name="get-started-with-services"></a>Začínáme se službami
 
-Pokud jste nový odběratel, budete muset vytvořit prostředek, než bude něco spravovat. Vyberte **+ Vytvořit prostředek** pro zobrazení služeb dostupných na Azure Marketplace. Najdete zde aplikace a služby od stovek poskytovatelů, všechny certifikované pro provoz v Azure.
+Pokud jste novým předplatitelem, budete muset vytvořit prostředek ještě předtím, než budete moct něco spravovat. Výběrem **+ vytvořit prostředek** zobrazíte služby, které jsou k dispozici v Azure Marketplace. Zde najdete aplikace a služby ze stovek poskytovatelů, které jsou certifikované pro spuštění v Azure.
 
-Vaše oblíbené položky jsme předem naplnili na postranním panelu odkazy na běžně používané služby.  Chcete-li zobrazit všechny dostupné služby, vyberte **všechny služby** z postranního panelu.
+Do bočního panelu jsme předem naplnili vaše oblíbené položky s odkazy na běžně používané služby.  Pokud chcete zobrazit všechny dostupné služby, vyberte **všechny služby** z tohoto bočního panelu.
 
 > [!TIP]
-> Nejrychlejší způsob, jak najít prostředek, službu nebo dokumentaci, je použít *hledat* v globální hlavičce. Pomocí odkazů s popisem cesty se vraťte na předchozí stránky.
+> Nejrychlejší způsob, jak najít prostředek, službu nebo dokumentaci, je použít *vyhledávání* v globálním záhlaví. Pomocí odkazů s popisem cesty se vraťte na předchozí stránky.
 >
-Podívejte se na toto video, kde na blogu Azure napíšete ukázku o tom, jak používat globální vyhledávání.
+Podívejte se na toto video, kde najdete ukázku použití globálního vyhledávání v Azure Portal.
 
 
 > [!VIDEO https://www.youtube.com/embed/nZ7WwTZcQbo]
 
-[Jak používat globální vyhledávání na webu Azure Portal](https://www.youtube.com/watch?v=nZ7WwTZcQbo)
+[Jak používat globální vyhledávání v Azure Portal](https://www.youtube.com/watch?v=nZ7WwTZcQbo)
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o tom, kde se dá na Azure Portal spouštět v [podporovaných prohlížečích a zařízeních](../azure-portal/azure-portal-supported-browsers-devices.md)
-* Zůstaňte ve spojení i na cestách s [mobilní aplikací Azure](https://azure.microsoft.com/features/azure-portal/mobile-app/)
-* Připojení a nastavení cloudového prostředí pomocí [centra Azure Quickstart Center](../azure-portal/azure-portal-quickstart-center.md)
+* Další informace o tom, kde spouštět Azure Portal v [podporovaných prohlížečích a zařízeních](../azure-portal/azure-portal-supported-browsers-devices.md)
+* Zůstaňte připojení na cestách pomocí [mobilní aplikace Azure](https://azure.microsoft.com/features/azure-portal/mobile-app/)
+* Zprovoznění a nastavení cloudového prostředí pomocí [centra rychlý Start Azure](../azure-portal/azure-portal-quickstart-center.md)

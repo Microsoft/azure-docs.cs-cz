@@ -1,47 +1,47 @@
 ---
-title: Přehled vlastních poskytovatelů
-description: Přečtěte si o vlastních zprostředkovatelích prostředků Azure a o tom, jak rozšířit rovinu rozhraní API Azure tak, aby vyhovovala vašim pracovním postupům.
+title: Přehled vlastních zprostředkovatelů
+description: Přečtěte si o vlastních poskytovatelích prostředků Azure a o tom, jak rozšiřuje plochu rozhraní API Azure tak, aby odpovídala pracovním postupům.
 author: jjbfour
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: jobreen
 ms.openlocfilehash: 68b8bd187d58cd71778b8a922684cc3817a0715d
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80398465"
 ---
-# <a name="azure-custom-resource-providers-overview"></a>Přehled poskytovatelů vlastních prostředků Azure
+# <a name="azure-custom-resource-providers-overview"></a>Vlastní poskytovatelé prostředků Azure – přehled
 
-Azure Vlastní zprostředkovatelé prostředků je rozšiřitelnost platformy pro Azure. Umožňuje definovat vlastní api, která lze použít k obohacení výchozího prostředí Azure. Tato dokumentace popisuje:
+Vlastní poskytovatelé prostředků Azure je rozšiřitelná platforma pro Azure. Umožňuje definovat vlastní rozhraní API, která se dají použít k rozšíření výchozích možností Azure. Tato dokumentace popisuje:
 
-- Jak vytvořit a nasadit zprostředkovatele vlastních prostředků Azure.
-- Jak využít Azure vlastní zprostředkovatelé prostředků rozšířit existující pracovní postupy.
-- Kde najít průvodce a ukázky kódu, abyste mohli začít.
+- Jak vytvořit a nasadit poskytovatele vlastního prostředku Azure
+- Jak využívat vlastní poskytovatele prostředků Azure pro rozšiřování stávajících pracovních postupů.
+- Kde najít příručky a ukázky kódu, které vám pomohou začít.
 
-![Přehled vlastního poskytovatele](./media/overview/overview.png)
+![Přehled vlastního zprostředkovatele](./media/overview/overview.png)
 
 > [!IMPORTANT]
-> Vlastní zprostředkovatelé jsou aktuálně ve verzi Public Preview.
+> Vlastní zprostředkovatelé jsou momentálně ve verzi Public Preview.
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="what-can-custom-resource-providers-do"></a>Co mohou vlastní poskytovatelé prostředků dělat
+## <a name="what-can-custom-resource-providers-do"></a>Co můžou vlastní poskytovatelé prostředků dělat
 
-Tady je několik příkladů toho, čeho můžete dosáhnout s vlastními poskytovateli prostředků Azure:
+Tady je několik příkladů toho, co můžete dosáhnout pomocí vlastních poskytovatelů prostředků Azure:
 
-- Rozšiřte rozhraní REST Správce prostředků Azure tak, aby zahrnovalo interní a externí služby.
-- Povolte vlastní scénáře nad existujícími pracovními postupy Azure.
-- Přizpůsobte si řízení a efekt šablon Azure Resource Manager.
+- Rozšíří Azure Resource Manager REST API tak, aby zahrnovalo interní a externí služby.
+- Povolte vlastní scénáře nad stávajícími pracovními postupy Azure.
+- Přizpůsobení ovládacího prvku a efektu šablon Azure Resource Manager.
 
 ## <a name="what-is-a-custom-resource-provider"></a>Co je vlastní poskytovatel prostředků
 
-Azure Vlastní zprostředkovatelé prostředků se vytvoří vytvořením smlouvy mezi Azure a koncovýbod. Tato smlouva definuje seznam nových prostředků a akcí prostřednictvím nového prostředku **Microsoft.CustomProviders/resourceProviders**. Vlastní poskytovatel prostředků pak zpřístupní tato nová řešení API v Azure. Zprostředkovatelé vlastních prostředků Azure se skládají ze tří částí: vlastní zprostředkovatel prostředků, **koncové body**a vlastní prostředky.
+Vlastní poskytovatelé prostředků Azure se vytvářejí vytvořením kontraktu mezi Azure a koncovým bodem. Tato Smlouva definuje seznam nových prostředků a akcí pomocí nového prostředku, **Microsoft. CustomProviders/resourceProviders**. Vlastní poskytovatel prostředků pak tato nová rozhraní API zveřejní v Azure. Vlastní poskytovatelé prostředků Azure se skládají ze tří částí: vlastní poskytovatel prostředků, **koncové body**a vlastní prostředky.
 
-## <a name="how-to-build-custom-resource-providers"></a>Jak vytvořit vlastní zprostředkovatele prostředků
+## <a name="how-to-build-custom-resource-providers"></a>Sestavování vlastních poskytovatelů prostředků
 
-Vlastní poskytovatelé prostředků jsou seznam smluv mezi Azure a koncovými body. Tato smlouva popisuje, jak by měl Azure pracovat s koncovým bodem. Poskytovatel prostředků se chová jako proxy server a předá požadavky a odpovědi do a ze zadaného **koncového bodu**. Zprostředkovatel prostředků může zadat dva typy smluv: [**resourceTypes**](./custom-providers-resources-endpoint-how-to.md) a [**actions**](./custom-providers-action-endpoint-how-to.md). Ty jsou povoleny prostřednictvím definice koncového bodu. Definice koncového bodu se skládá ze tří polí: **název**, **routingType**a **koncový bod**.
+Vlastní poskytovatelé prostředků jsou seznam smluv mezi Azure a koncovými body. Tato smlouva popisuje, jak by měl Azure spolupracovat s koncovým bodem. Poskytovatel prostředků funguje jako proxy a předává žádosti a odpovědi na zadaný **koncový bod**a. Poskytovatel prostředků může určit dva typy [**smluv: prostředky**](./custom-providers-resources-endpoint-how-to.md) a [**Akce**](./custom-providers-action-endpoint-how-to.md). Tyto jsou povolené prostřednictvím definic koncových bodů. Definice koncového bodu se skládá ze tří polí: **název**, **routingType**a **koncový bod**.
 
 Ukázkový koncový bod:
 
@@ -55,15 +55,15 @@ Ukázkový koncový bod:
 
 Vlastnost | Požaduje se | Popis
 ---|---|---
-jméno | *Ano* | Název definice koncového bodu. Azure tento název zobrazí prostřednictvím svého rozhraní API v části '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/<br>resourceProviders/{resourceProviderName}/{endpointDefinitionName}'
-typ směrování | *ne* | Určuje typ smlouvy s **koncovým bodem**. Pokud není zadán, bude výchozí "Proxy".
-endpoint | *Ano* | Koncový bod pro směrování požadavků. To bude zpracovávat odpověď, stejně jako všechny vedlejší účinky požadavku.
+jméno | *Ano* | Název definice koncového bodu. Azure zveřejní tento název prostřednictvím rozhraní API v části/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/<br>resourceProviders/{resourceProviderName}/{endpointDefinitionName}'
+routingType | *Ne* | Určuje typ kontraktu s **koncovým bodem**. Pokud není zadaný, použije se výchozí hodnota "proxy".
+endpoint | *Ano* | Koncový bod, do kterého mají být směrovány požadavky. Tím se zpracuje odpověď i všechny vedlejší účinky žádosti.
 
-### <a name="building-custom-resources"></a>Vytváření vlastních prostředků
+### <a name="building-custom-resources"></a>Sestavování vlastních prostředků
 
-**ResourceTypes** popisují nové vlastní prostředky, které se přidají do Azure. Tyto vystavit základní RESTful CRUD metody. Další informace [o vytváření vlastních zdrojů](./custom-providers-resources-endpoint-how-to.md)
+Resources **popisují nové** vlastní prostředky, které se přidají do Azure. Ty zveřejňují základní metody RESTful CRUD. [Další informace o vytváření vlastních prostředků](./custom-providers-resources-endpoint-how-to.md)
 
-Ukázkový vlastní zprostředkovatel prostředků s **resourceTypes**:
+Ukázkový vlastní poskytovatel prostředků s prostředky k **dissourcetype**:
 
 ```JSON
 {
@@ -80,20 +80,20 @@ Ukázkový vlastní zprostředkovatel prostředků s **resourceTypes**:
 }
 ```
 
-API přidaná do Azure pro výše uvedenou ukázku:
+Rozhraní API přidané do Azure pro výše uvedenou ukázku:
 
-Metoda http | Ukázkový identifikátor URI | Popis
+HttpMethod | Ukázkový identifikátor URI | Popis
 ---|---|---
-PUT | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomResources/{customResourceName}?api-version=2018-09-01-preview | Volání rozhraní API Azure REST k vytvoření nového prostředku.
-DELETE | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomResources/{customResourceName}?api-version=2018-09-01-preview | Volání rozhraní API Azure REST k odstranění existujícího prostředku.
-GET | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomResources/{customResourceName}?api-version=2018-09-01-preview | Volání rozhraní API Azure REST k načtení existujícího prostředku.
-GET | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomResources?api-version=2018-09-01-preview | Volání rozhraní API Azure REST k načtení seznamu existujících prostředků.
+PUT | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>Zprostředkovatelé/Microsoft. CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomResources/{customResourceName}? API-Version = 2018-09 -01-Preview | Azure REST API volání pro vytvoření nového prostředku.
+DELETE | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>Zprostředkovatelé/Microsoft. CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomResources/{customResourceName}? API-Version = 2018-09 -01-Preview | Volání Azure REST API k odstranění existujícího prostředku.
+GET | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>Zprostředkovatelé/Microsoft. CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomResources/{customResourceName}? API-Version = 2018-09 -01-Preview | Rozhraní Azure REST API volá načtení existujícího prostředku.
+GET | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>Zprostředkovatelé/Microsoft. CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomResources? API-Version = 2018-09 -01-Preview | Rozhraní Azure REST API volá načtení seznamu existujících prostředků.
 
-### <a name="building-custom-actions"></a>Vytváření vlastních akcí
+### <a name="building-custom-actions"></a>Sestavování vlastních akcí
 
-**Akce** popisují nové akce, které se přidají do Azure. Ty mohou být vystaveny nad zprostředkovatelem prostředků nebo vnořené pod **resourceType**. Další informace [o vytváření vlastních akcí](./custom-providers-action-endpoint-how-to.md)
+**Akce** popisují nové akce, které se přidají do Azure. Můžou být vystavené na poskytovateli prostředků nebo můžou být vnořené pod možností **ResourceType**. [Další informace o vytváření vlastních akcí](./custom-providers-action-endpoint-how-to.md)
 
-Ukázkový vlastní zprostředkovatel prostředků s **akcemi**:
+Ukázkový vlastní poskytovatel prostředků s **akcemi**:
 
 ```JSON
 {
@@ -110,21 +110,21 @@ Ukázkový vlastní zprostředkovatel prostředků s **akcemi**:
 }
 ```
 
-API přidaná do Azure pro výše uvedenou ukázku:
+Rozhraní API přidané do Azure pro výše uvedenou ukázku:
 
-Metoda http | Ukázkový identifikátor URI | Popis
+HttpMethod | Ukázkový identifikátor URI | Popis
 ---|---|---
-POST | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomAction?api-version=2018-09-01-preview | Volání rozhraní API Azure REST k aktivaci akce.
+POST | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>Zprostředkovatelé/Microsoft. CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomAction? API-Version = 2018-09 -01-Preview | Volání služby Azure REST API k aktivaci akce.
 
-## <a name="looking-for-help"></a>Hledání pomoci
+## <a name="looking-for-help"></a>Hledáte nápovědu
 
-Pokud máte otázky týkající se vývoje zprostředkovatele vlastních prostředků Azure, zkuste se zeptat na [přetečení zásobníku](https://stackoverflow.com/questions/tagged/azure-custom-providers). Podobná otázka již mohla být položena a zodpovězena, takže nejprve zkontrolujte před odesláním. Přidejte ```azure-custom-providers``` značku, abyste získali rychlou odpověď!
+Pokud máte dotazy pro vývoj vlastních poskytovatelů prostředků Azure, zkuste požádat o [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-custom-providers). Podobná otázka již mohla být požádána o zodpovězení a byla zodpovězena, proto nejprve před odesláním zaregistrujte. Přidejte značku ```azure-custom-providers``` , abyste získali rychlou odpověď.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste se dozvěděli o vlastní zprostředkovatelé. Chcete-li vytvořit vlastního zprostředkovatele, přejděte k dalšímu článku.
+V tomto článku jste se dozvěděli o vlastních poskytovatelích. Pokud chcete vytvořit vlastního poskytovatele, přečtěte si další článek.
 
-- [Úvodní příručka: Vytvoření vlastního zprostředkovatele prostředků Azure a nasazení vlastních prostředků](./create-custom-provider.md)
-- [Kurz: Vytváření vlastních akcí a prostředků v Azure](./tutorial-get-started-with-custom-providers.md)
-- [Postup: Přidání vlastních akcí do rozhraní API Azure REST](./custom-providers-action-endpoint-how-to.md)
-- [Postup: Přidání vlastních prostředků do rozhraní API Azure REST](./custom-providers-resources-endpoint-how-to.md)
+- [Rychlý Start: Vytvoření vlastního poskytovatele prostředků Azure a nasazení vlastních prostředků](./create-custom-provider.md)
+- [Kurz: vytvoření vlastních akcí a prostředků v Azure](./tutorial-get-started-with-custom-providers.md)
+- [Postupy: Přidání vlastních akcí do Azure REST API](./custom-providers-action-endpoint-how-to.md)
+- [Postupy: Přidání vlastních prostředků do Azure REST API](./custom-providers-resources-endpoint-how-to.md)

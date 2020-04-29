@@ -1,6 +1,6 @@
 ---
-title: Principy IP adresy vašeho centra IoT hub | Dokumenty společnosti Microsoft
-description: Zjistěte, jak se dotazovat na IP adresu služby IoT hub a její vlastnosti. IP adresa vašeho centra IoT hub se může změnit během určitých scénářů, jako je zotavení po havárii nebo místní převzetí služeb při selhání.
+title: Princip IP adresy vašeho centra IoT Hub | Microsoft Docs
+description: Zjistěte, jak zadat dotaz na IP adresu služby IoT Hub a její vlastnosti. IP adresa vašeho centra IoT se může změnit během určitých scénářů, jako je například zotavení po havárii nebo regionální převzetí služeb při selhání.
 author: philmea
 ms.author: philmea
 ms.service: iot-hub
@@ -8,49 +8,49 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.openlocfilehash: c609f2a3843481442e97061739a806de60a680b5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79367563"
 ---
-# <a name="iot-hub-ip-addresses"></a>IP adresy centra IoT
+# <a name="iot-hub-ip-addresses"></a>IoT Hub IP adresy
 
-Předpony IP adres veřejných koncových bodů služby IoT Hub se pravidelně publikují pod [značkou služby](../virtual-network/service-tags-overview.md) _AzureIoTHub_ .
+Předpony IP adres IoT Hub veřejných koncových bodů se pravidelně publikují v rámci [značky služby](../virtual-network/service-tags-overview.md) _AzureIoTHub_ .
 
 > [!NOTE]
-> Pro zařízení, která jsou nasazená v místních sítích, Azure IoT Hub podporuje integraci připojení virtuální sítě s privátními koncovými body. Další informace najdete [v tématu Podpora služby IoT Hub pro virtuální sítě.](./virtual-network-support.md#ingress-connectivity-to-iot-hub-using-private-endpoints)
+> Pro zařízení nasazená v místních sítích Azure IoT Hub podporuje integraci připojení virtuální sítě s privátními koncovými body. Další informace najdete v tématu věnovaném [podpoře sítě VNET IoT Hub](./virtual-network-support.md#ingress-connectivity-to-iot-hub-using-private-endpoints) .
 
 
-Tyto předpony IP adres můžete použít k řízení připojení mezi službou IoT Hub a vašimi zařízeními nebo síťovými prostředky za účelem implementace různých cílů izolace sítě:
+Tyto předpony IP adres můžete použít k řízení připojení mezi IoT Hub a zařízeními nebo síťovými prostředky za účelem implementace nejrůznějších cílů izolace sítě:
 
-| Cíl | Použitelné scénáře | Přístup |
+| Cíl | Příslušné scénáře | Přístup |
 |------|-----------|----------|
-| Zajistěte, aby vaše zařízení a služby komunikovaly jenom s koncovými body služby IoT Hub | [Zasílání zpráv mezi zařízeními](./iot-hub-devguide-messaging.md)a [cloud-to-device,](./iot-hub-devguide-messages-c2d.md) [přímé metody](./iot-hub-devguide-direct-methods.md), [dvojčata zařízení a modulů](./iot-hub-devguide-device-twins.md) a [datové proudy zařízení](./iot-hub-device-streams-overview.md) | Pomocí značek služeb _AzureIoTHub_ a _EventHub_ můžete zjistit ioT hub a předpony IP adres Centra událostí a odpovídajícím způsobem nakonfigurovat pravidla ALLOW na nastavení brány firewall vašich zařízení a služeb pro předpony IP adres; přetažením provozu na jiné cílové ADRESY IP, se kterými nechcete, aby zařízení nebo služby komunikovaly. |
-| Zajistěte, aby koncový bod zařízení služby IoT Hub přijímaný připojení pouze z vašich zařízení a síťových prostředků. | [Zasílání zpráv mezi zařízeními](./iot-hub-devguide-messaging.md)a [cloud-to-device,](./iot-hub-devguide-messages-c2d.md) [přímé metody](./iot-hub-devguide-direct-methods.md), [dvojčata zařízení a modulů](./iot-hub-devguide-device-twins.md) a [datové proudy zařízení](./iot-hub-device-streams-overview.md) | Pomocí [funkce filtru IP](iot-hub-ip-filtering.md) služby IoT Hub můžete povolit připojení ze zařízení a adres IP síťových prostředků (viz část [omezení).](#limitations-and-workarounds) | 
-| Zajistěte, aby byly vlastní prostředky koncových bodů vašich tras (účty úložiště, service bus a centra událostí) dostupné pouze z prostředků vaší sítě. | [Směrování zpráv](./iot-hub-devguide-messages-d2c.md) | Postupujte podle pokynů k omezení připojení (například prostřednictvím [pravidel brány firewall](../storage/common/storage-network-security.md), [privátních propojení](../private-link/private-endpoint-overview.md)nebo [koncových bodů služby);](../virtual-network/virtual-network-service-endpoints-overview.md) pomocí značek služby _AzureIoTHub_ zjišťujte předpony IP adres služby IoT Hub a přidejte pravidla PO PRO TYTO IP předpony v konfiguraci brány firewall vašeho prostředku (viz část [Omezení).](#limitations-and-workarounds) |
+| Zajistěte, aby zařízení a služby komunikovaly jenom s IoT Hubmi koncovými body | Zasílání zpráv ze [zařízení na Cloud](./iot-hub-devguide-messaging.md)a z [cloudu do zařízení](./iot-hub-devguide-messages-c2d.md) , [přímých metod](./iot-hub-devguide-direct-methods.md), [vláken zařízení a modulů](./iot-hub-devguide-device-twins.md) a [datových proudů zařízení](./iot-hub-device-streams-overview.md) | Pomocí značek služby _AzureIoTHub_ a _EventHub_ vyhledejte IoT Hub a předpony IP adres centra událostí a nakonfigurujte pro tyto předpony IP adres pravidla povolení pro tyto předpony IP adres. Zařaďte provoz do jiných cílových IP adres, se kterými nechcete, aby zařízení nebo služby komunikovaly. |
+| Ujistěte se, že koncový bod zařízení IoT Hub přijímá připojení jenom z vašich zařízení a síťových prostředků. | Zasílání zpráv ze [zařízení na Cloud](./iot-hub-devguide-messaging.md)a z [cloudu do zařízení](./iot-hub-devguide-messages-c2d.md) , [přímých metod](./iot-hub-devguide-direct-methods.md), [vláken zařízení a modulů](./iot-hub-devguide-device-twins.md) a [datových proudů zařízení](./iot-hub-device-streams-overview.md) | Pomocí IoT Hub [funkce filtru IP](iot-hub-ip-filtering.md) adres povolíte připojení z vašich zařízení a IP adres síťových prostředků (viz část [omezení](#limitations-and-workarounds) ). | 
+| Zajistěte, aby byly prostředky vlastních koncových bodů tras (účty úložiště, Service Bus a centra událostí) dostupné jenom ze síťových prostředků. | [Směrování zpráv](./iot-hub-devguide-messages-d2c.md) | Postupujte podle pokynů k prostředkům v omezení připojení (například prostřednictvím [pravidel brány firewall](../storage/common/storage-network-security.md), [privátních odkazů](../private-link/private-endpoint-overview.md)nebo [koncových bodů služby](../virtual-network/virtual-network-service-endpoints-overview.md)). pomocí značek služby _AzureIoTHub_ můžete zjistit IoT Hub předpony IP adres a přidat pravidla povolení pro tyto předpony IP adres v konfiguraci brány firewall prostředku (viz část [omezení](#limitations-and-workarounds) ). |
 
 
 
 ## <a name="best-practices"></a>Osvědčené postupy
 
-* Při přidávání pravidel ALLOW do konfigurace brány firewall zařízení je nejlepší poskytnout konkrétní [porty používané příslušnými protokoly](./iot-hub-devguide-protocols.md#port-numbers).
+* Při přidávání pravidel povolení v konfiguraci brány firewall zařízení je nejlepší poskytnout konkrétní [porty používané použitelnými protokoly](./iot-hub-devguide-protocols.md#port-numbers).
 
-* Předpony IP adres centra IoT hub se mohou změnit. Tyto změny jsou pravidelně zveřejňovány prostřednictvím značek služby, než se projeví. Je proto důležité, abyste vyvinuli procesy pro pravidelné načítání a používání nejnovějších značek služeb. Tento proces lze automatizovat prostřednictvím [rozhraní API pro zjišťování značek služeb](../virtual-network/service-tags-overview.md#service-tags-on-premises). Všimněte si, že rozhraní API pro zjišťování značek služby je stále ve verzi preview a v některých případech nemusí vytvořit úplný seznam značek a ADRES IP. Dokud nebude rozhraní API pro zjišťování obecně dostupné, zvažte použití [značek služeb ve formátu JSON ke stažení](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files). 
+* Předpony IP adres centra IoT Hub se mohou měnit. Tyto změny jsou pravidelně publikovány prostřednictvím značek služeb, než začne platit. Je proto důležité, abyste vytvořili procesy pro pravidelné načítání a používání nejnovějších značek služeb. Tento proces může být automatizovaný prostřednictvím [rozhraní API pro zjišťování značek služeb](../virtual-network/service-tags-overview.md#service-tags-on-premises). Všimněte si, že rozhraní API pro zjišťování značek služeb je stále ve verzi Preview, ale v některých případech nemusí mít úplný seznam značek a IP adres. Až bude rozhraní API pro zjišťování všeobecně dostupné, zvažte použití [značek služby ve formátu JSON ke stažení](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files). 
 
-* Použijte *AzureIoTHub.[ název oblasti]* k identifikaci předpon IP používaných koncovými body centra IoT v určité oblasti. Chcete-li účet pro zotavení po havárii datového centra nebo [místní převzetí služeb při selhání](iot-hub-ha-dr.md) zajistit připojení k IP předpony vaší oblasti geo-pair služby IoT Hub je také povolena.
+* Použijte *AzureIoTHub. [ název oblasti]* : Značka pro identifikaci předpon IP adres používaných koncovými body centra IoT Hub v konkrétní oblasti. Aby se mohlo přihlédnout k zotavení po havárii datacentra, nebo k [místnímu převzetí služeb při selhání](iot-hub-ha-dr.md) , je povolené taky připojení k PŘEDPONám IP v oblasti geografického páru IoT Hub.
 
-* Nastavení pravidel brány firewall v ioT hubu může blokovat připojení potřebné ke spuštění příkazů Azure CLI a PowerShell proti vašemu IoT Hubu. Chcete-li tomu zabránit, můžete přidat pravidla PO PRO IP adresy vašich klientů a znovu povolit klientům CLI nebo PowerShell ke komunikaci s vaším centrem IoT Hub.  
+* Nastavení pravidel firewallu v IoT Hub může blokovat připojení potřebné ke spouštění příkazů Azure CLI a PowerShellu na základě vašeho IoT Hub. Pokud se tomu chcete vyhnout, můžete přidat pravidla povolení pro předpony IP adres klientů pro opětovné povolení komunikace klientů CLI nebo PowerShell ke komunikaci s vaším IoT Hub.  
 
 
-## <a name="limitations-and-workarounds"></a>Omezení a řešení
+## <a name="limitations-and-workarounds"></a>Omezení a alternativní řešení
 
-* Funkce filtru IP centra IoT Hub má limit 10 pravidel. Tento limit a lze zvýšit prostřednictvím požadavků prostřednictvím zákaznické podpory Azure. 
+* Funkce filtru IP IoT Hub má omezení 10 pravidel. Tento limit je možné vydávat prostřednictvím požadavků Azure Customer Support. 
 
-* Nakonfigurovaná [pravidla filtrování IP](iot-hub-ip-filtering.md) adres se použijí jenom na koncových bodech IP centra IoT hubu a ne na integrovaném koncovém bodu centra událostí centra IoT hubu. Pokud také požadujete, aby se filtrování IP adres použilo v centru událostí, kde jsou vaše zprávy uloženy, můžete tak učinit, můžete tak učinit, abyste přinesli vlastní prostředek centra událostí, kde můžete přímo nakonfigurovat požadovaná pravidla filtrování IP adres. Chcete-li tak učinit, musíte zřídit vlastní prostředek Centra událostí a nastavit [směrování zpráv](./iot-hub-devguide-messages-d2c.md) pro odesílání zpráv do tohoto prostředku namísto integrovaného centra událostí služby IoT Hub. Nakonec, jak je popsáno v tabulce výše, chcete-li povolit funkce směrování zpráv, musíte také povolit připojení z předpony IP adresy služby IoT Hub k prostředku zřízeného centra událostí.
+* Nakonfigurovaná [pravidla filtrování IP adres](iot-hub-ip-filtering.md) se aplikují jenom na koncové body IP adres IoT Hub a ne na integrovaném koncovém bodu centra událostí služby IoT Hub. Pokud budete také vyžadovat, aby se filtry IP používaly v centru událostí, kde jsou uložené vaše zprávy, můžete tak učinit vlastní prostředek centra událostí, kde můžete nakonfigurovat požadovaná pravidla filtrování IP adres přímo. Pokud to chcete udělat, musíte zřídit vlastní prostředek centra událostí a nastavit [směrování zpráv](./iot-hub-devguide-messages-d2c.md) pro posílání zpráv k tomuto prostředku místo integrovaného centra událostí IoT Hub. A nakonec jak je popsáno v tabulce výše, aby bylo možné povolit funkci směrování zpráv, musíte také povolit připojení z předpon IP adres IoT Hub k vašemu zřízenému prostředku centra událostí.
 
-* Při směrování na účet úložiště je povolení provozu z předpon IP adres služby IoT Hub možné pouze v případě, že je účet úložiště v jiné oblasti jako vaše služba IoT Hub.
+* Při směrování na účet úložiště je možné povolit provoz z prefixů IP adres IoT Hub jenom v případě, že je účet úložiště v jiné oblasti jako váš IoT Hub.
 
-## <a name="support-for-ipv6"></a>Podpora pro IPv6 
+## <a name="support-for-ipv6"></a>Podpora protokolu IPv6 
 
-IPv6 není momentálně v centru IoT Hub podporován.
+Protokol IPv6 se v této IoT Hub v tuto chvíli nepodporuje.

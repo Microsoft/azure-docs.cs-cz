@@ -1,6 +1,6 @@
 ---
 title: 'Vytvoření a úprava okruhu ExpressRoute: Azure CLI'
-description: Tento článek ukazuje, jak vytvořit, zřídit, ověřit, aktualizovat, odstranit a zrušit zřízení okruhu ExpressRoute pomocí rozhraní příkazového příkazu.
+description: Tento článek popisuje, jak pomocí rozhraní příkazového řádku vytvořit, zřídit, ověřit, aktualizovat, odstranit a zrušit zřízení okruhu ExpressRoute.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -8,36 +8,36 @@ ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: cherylmc
 ms.openlocfilehash: b967e1d8751a9c6a5214fef5241d57e954ad9f17
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79476147"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-cli"></a>Vytvoření a úprava okruhu ExpressRoute pomocí rozhraní příkazového řádku
 
 
-Tento článek popisuje, jak vytvořit okruh Azure ExpressRoute pomocí rozhraní příkazového řádku (CLI). Tento článek také ukazuje, jak zkontrolovat stav, aktualizovat nebo odstranit a zrušit zřízení okruhu. Pokud chcete pro práci s okruhy ExpressRoute použít jinou metodu, můžete vybrat článek z následujícího seznamu:
+Tento článek popisuje, jak vytvořit okruh Azure ExpressRoute pomocí rozhraní příkazového řádku (CLI). Tento článek také ukazuje, jak kontrolovat stav, aktualizovat nebo odstranit a zrušit zřízení okruhu. Pokud chcete pro práci se okruhy ExpressRoute použít jinou metodu, můžete vybrat článek z následujícího seznamu:
 
 > [!div class="op_single_selector"]
-> * [Portál Azure](expressroute-howto-circuit-portal-resource-manager.md)
-> * [PowerShell](expressroute-howto-circuit-arm.md)
+> * [portál Azure](expressroute-howto-circuit-portal-resource-manager.md)
+> * [Prostředí](expressroute-howto-circuit-arm.md)
 > * [Azure CLI](howto-circuit-cli.md)
-> * [Šablona Azure Resource Manageru](expressroute-howto-circuit-resource-manager-template.md)
-> * [Video – portál Azure](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
+> * [Šablona Azure Resource Manager](expressroute-howto-circuit-resource-manager-template.md)
+> * [Video – Azure Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
 > * [PowerShell (Classic)](expressroute-howto-circuit-classic.md)
 >
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 * Než začnete, nainstalujte si nejnovější verzi příkazů rozhraní příkazového řádku (2.0 nebo novější). Informace o instalaci příkazů rozhraní příkazového řádku najdete v tématech [Instalace Azure CLI](/cli/azure/install-azure-cli) a [Začínáme s Azure CLI](/cli/azure/get-started-with-azure-cli).
-* Před zahájením konfigurace zkontrolujte [požadavky](expressroute-prerequisites.md) a [pracovní postupy.](expressroute-workflows.md)
+* Než začnete s konfigurací, Projděte si [požadavky](expressroute-prerequisites.md) a [pracovní postupy](expressroute-workflows.md) .
 
 ## <a name="create-and-provision-an-expressroute-circuit"></a><a name="create"></a>Vytvoření a zřízení okruhu ExpressRoute
 
-### <a name="1-sign-in-to-your-azure-account-and-select-your-subscription"></a>1. Přihlaste se ke svému účtu Azure a vyberte předplatné
+### <a name="1-sign-in-to-your-azure-account-and-select-your-subscription"></a>1. Přihlaste se ke svému účtu Azure a vyberte své předplatné.
 
-Chcete-li zahájit konfiguraci, přihlaste se ke svému účtu Azure. Pokud používáte CloudShell "Try It", jste přihlášeni automaticky. Pomocí následujících příkladů, které vám pomohou připojit se:
+Pokud chcete zahájit konfiguraci, přihlaste se ke svému účtu Azure. Pokud použijete Cloudshellu "vyzkoušet", jste přihlášeni automaticky. Následující příklady vám pomůžou s připojením:
 
 ```azurecli-interactive
 az login
@@ -55,9 +55,9 @@ Vyberte předplatné, pro které chcete vytvořit okruh ExpressRoute.
 az account set --subscription "<subscription ID>"
 ```
 
-### <a name="2-get-the-list-of-supported-providers-locations-and-bandwidths"></a>2. Získejte seznam podporovaných poskytovatelů, umístění a šířky pásma
+### <a name="2-get-the-list-of-supported-providers-locations-and-bandwidths"></a>2. Získejte seznam podporovaných zprostředkovatelů, umístění a šířky pásma.
 
-Před vytvořením okruhu ExpressRoute potřebujete seznam podporovaných poskytovatelů připojení, umístění a možností šířky pásma. Příkaz PŘÍKAZ `az network express-route list-service-providers` K PŘÍKAZOVÉ KONto vrátí tyto informace, které použijete v pozdějších krocích:
+Před vytvořením okruhu ExpressRoute potřebujete seznam podporovaných zprostředkovatelů připojení, umístění a možností šířky pásma. Příkaz `az network express-route list-service-providers` CLI vrátí tyto informace, které použijete v pozdějších krocích:
 
 ```azurecli-interactive
 az network express-route list-service-providers
@@ -116,36 +116,36 @@ Odpověď bude podobná jako v následujícím příkladu:
   },
 ```
 
-Zkontrolujte odpověď a zjistěte, zda je uveden váš poskytovatel připojení. Poznamenejte si následující informace, které budete potřebovat při vytváření okruhu:
+Pokud chcete zjistit, jestli je váš poskytovatel připojení uvedený, zkontrolujte odpověď. Poznamenejte si následující informace, které budete potřebovat při vytváření okruhu:
 
-* Name (Název)
-* PeeringUmístění
-* Nabízené šířky pásma
+* Název
+* PeeringLocations
+* BandwidthsOffered
 
 Nyní jste připraveni vytvořit okruh ExpressRoute.
 
-### <a name="3-create-an-expressroute-circuit"></a>3. Vytvoření okruhu ExpressRoute
+### <a name="3-create-an-expressroute-circuit"></a>3. vytvoření okruhu ExpressRoute
 
 > [!IMPORTANT]
-> Okruh ExpressRoute se účtuje od okamžiku, kdy je vydán servisní klíč. Tuto operaci proveďte, pokud je poskytovatel připojení připraven zřídit okruh.
+> Váš okruh ExpressRoute se účtuje okamžikem, kdy je vydaný klíč služby. Tuto operaci proveďte, když je poskytovatel připojení připravený k zřízení okruhu.
 >
 >
 
-Pokud ještě nemáte skupinu prostředků, musíte ji vytvořit před vytvořením okruhu ExpressRoute. Skupinu prostředků můžete vytvořit spuštěním následujícího příkazu:
+Pokud ještě nemáte skupinu prostředků, musíte ji před vytvořením okruhu ExpressRoute vytvořit. Skupinu prostředků můžete vytvořit spuštěním následujícího příkazu:
 
 ```azurecli-interactive
 az group create -n ExpressRouteResourceGroup -l "West US"
 ```
 
-Následující příklad ukazuje, jak vytvořit okruh ExpressRoute o rychlosti 200 Mb/s prostřednictvím equinixu v Silicon Valley. Pokud používáte jiného poskytovatele a různá nastavení, nahraďte tyto informace při žádosti.
+Následující příklad ukazuje, jak vytvořit okruh ExpressRoute 200 MB/s až Equinix v karbidu sedlu. Pokud používáte jiného poskytovatele a různá nastavení, nahraďte tyto informace při vytváření žádosti.
 
-Ujistěte se, že jste určili správnou úroveň skladové položky a rodinu skladových položk:
+Ujistěte se, že zadáte správnou úroveň SKU a řadu SKU:
 
-* Úroveň Skladové položky určuje, zda je okruh ExpressRoute [místní](expressroute-faqs.md#expressroute-local), standardní nebo [premium](expressroute-faqs.md#expressroute-premium). Můžete zadat *místní*, *standardní* nebo *premium*.
-* Skladová položka určuje typ fakturace. Můžete zadat *Metereddata* pro datový tarif účtovaný účtárna a *Unlimiteddata* pro neomezený datový tarif. Typ fakturace můžete změnit z *Metereddata* na *Unlimiteddata*, ale nemůžete změnit typ z *Unlimiteddata* na *Metereddata*. Místní *Local* okruh je pouze *Unlimiteddata.*
+* Úroveň SKU určuje, jestli okruh ExpressRoute je [místní](expressroute-faqs.md#expressroute-local), Standard nebo [Premium](expressroute-faqs.md#expressroute-premium). Můžete zadat *Local*, *Standard* nebo *Premium*.
+* Rodina SKU určuje typ fakturace. Můžete zadat *Metereddata* pro měřený datový tarif a *Unlimiteddata* pro neomezený datový tarif. Typ fakturace můžete změnit z *Metereddata* na *Unlimiteddata*, ale nemůžete změnit typ z *Unlimiteddata* na *Metereddata*. *Místní* okruh je jenom *Unlimiteddata* .
 
 
-Okruh ExpressRoute se účtuje od okamžiku, kdy je vydán servisní klíč. Následující příklad je požadavek na nový klíč služby:
+Váš okruh ExpressRoute se účtuje okamžikem, kdy je vydaný klíč služby. V následujícím příkladu je žádost o nový klíč služby:
 
 ```azurecli-interactive
 az network express-route create --bandwidth 200 -n MyCircuit --peering-location "Silicon Valley" -g ExpressRouteResourceGroup --provider "Equinix" -l "West US" --sku-family MeteredData --sku-tier Standard
@@ -153,15 +153,15 @@ az network express-route create --bandwidth 200 -n MyCircuit --peering-location 
 
 Odpověď obsahuje klíč služby.
 
-### <a name="4-list-all-expressroute-circuits"></a>4. Seznam všech okruhů ExpressRoute
+### <a name="4-list-all-expressroute-circuits"></a>4. vypíše všechny okruhy ExpressRoute.
 
-Chcete-li získat seznam všech okruhů ExpressRoute, `az network express-route list` které jste vytvořili, spusťte příkaz. Tyto informace můžete kdykoli načíst pomocí tohoto příkazu. Chcete-li vypsat všechny obvody, proveďte volání bez parametrů.
+Pokud chcete získat seznam všech okruhů ExpressRoute, které jste vytvořili, spusťte `az network express-route list` příkaz. Tyto informace můžete získat kdykoli pomocí tohoto příkazu. Chcete-li vypsat všechny okruhy, proveďte volání bez parametrů.
 
 ```azurecli-interactive
 az network express-route list
 ```
 
-Klíč služby je uveden v poli *ServiceKey* odpovědi.
+Váš klíč služby je uvedený v poli *serviceKey* odpovědi.
 
 ```output
 "allowClassicOperations": false,
@@ -192,40 +192,40 @@ Klíč služby je uveden v poli *ServiceKey* odpovědi.
 "type": "Microsoft.Network/expressRouteCircuits]
 ```
 
-Podrobný popis všech parametrů můžete získat spuštěním příkazu pomocí parametru '-h'.
+Podrobné popisy všech parametrů získáte spuštěním příkazu s použitím parametru-h.
 
 ```azurecli-interactive
 az network express-route list -h
 ```
 
-### <a name="5-send-the-service-key-to-your-connectivity-provider-for-provisioning"></a>5. Odešlete klíč služby svému poskytovateli připojení pro zřizování
+### <a name="5-send-the-service-key-to-your-connectivity-provider-for-provisioning"></a>5. zaslat klíč služby poskytovateli připojení pro zřizování
 
-"ServiceProviderProvisioningState" poskytuje informace o aktuálním stavu zřizování na straně poskytovatele služeb. Stav poskytuje stav na straně společnosti Microsoft. Další informace naleznete v [článku Pracovní postupy](expressroute-workflows.md#expressroute-circuit-provisioning-states).
+' ServiceProviderProvisioningState ' poskytuje informace o aktuálním stavu zřizování na straně poskytovatele služeb. Stav poskytuje stav na straně Microsoftu. Další informace najdete v [článku věnovaném pracovním](expressroute-workflows.md#expressroute-circuit-provisioning-states)postupům.
 
-Když vytvoříte nový okruh ExpressRoute, okruh je v následujícím stavu:
+Při vytváření nového okruhu ExpressRoute je okruh v následujícím stavu:
 
 ```output
 "serviceProviderProvisioningState": "NotProvisioned"
 "circuitProvisioningState": "Enabled"
 ```
 
-Okruh se změní na následující stav, když je poskytovatel připojení v procesu povolení pro vás:
+Když poskytovatel připojení v procesu zapíná za vás, změní se okruh na následující stav:
 
 ```output
 "serviceProviderProvisioningState": "Provisioning"
 "circuitProvisioningState": "Enabled"
 ```
 
-Abyste mohli použít okruh ExpressRoute, musí být v následujícím stavu:
+Aby bylo možné používat okruh ExpressRoute, musí být v následujícím stavu:
 
 ```output
 "serviceProviderProvisioningState": "Provisioned"
 "circuitProvisioningState": "Enabled
 ```
 
-### <a name="6-periodically-check-the-status-and-the-state-of-the-circuit-key"></a>6. Pravidelně kontrolujte stav a stav klíče obvodu
+### <a name="6-periodically-check-the-status-and-the-state-of-the-circuit-key"></a>6. pravidelně kontroluje stav a stav klíče okruhu.
 
-Kontrola stavu a stavu klíče obvodu vás dozví, kdy váš poskytovatel povolil okruh. Po nakonfigurování okruhu se "ServiceProviderProvisioningState" zobrazí jako "Provisioned", jak je znázorněno v následujícím příkladu:
+Kontrola stavu a stavu klíče okruhu vám umožní zjistit, jestli váš poskytovatel povolil váš okruh. Po nakonfigurování okruhu se jako "ServiceProviderProvisioningState" zobrazí jako "zřízený", jak je znázorněno v následujícím příkladu:
 
 ```azurecli-interactive
 az network express-route show --resource-group ExpressRouteResourceGroup --name MyCircuit
@@ -262,54 +262,54 @@ Odpověď bude podobná jako v následujícím příkladu:
 "type": "Microsoft.Network/expressRouteCircuits]
 ```
 
-### <a name="7-create-your-routing-configuration"></a>7. Vytvoření konfigurace směrování
+### <a name="7-create-your-routing-configuration"></a>7. Vytvořte konfiguraci směrování.
 
-Podrobné pokyny naleznete v článku konfigurace [směrování okruhů ExpressRoute](howto-routing-cli.md) a vytvoření a úprava partnerských stran okruhů.
+Podrobné pokyny najdete v článku věnovaném [konfiguraci směrování okruhu ExpressRoute](howto-routing-cli.md) k vytváření a úpravám partnerských vztahů okruhů.
 
 > [!IMPORTANT]
-> Tyto pokyny platí pouze pro okruhy, které jsou vytvořeny s poskytovateli služeb, které nabízejí služby připojení vrstvy 2. Pokud používáte poskytovatele služeb, který nabízí služby spravované vrstvy 3 (obvykle IP VPN, jako je MPLS), váš poskytovatel připojení konfiguruje a spravuje směrování za vás.
+> Tyto pokyny platí jenom pro okruhy vytvořené s poskytovateli služeb, kteří nabízejí služby pro připojení vrstvy 2. Pokud používáte poskytovatele služeb, který nabízí spravované služby vrstvy 3 (obvykle IP VPN, jako je MPLS), váš poskytovatel připojení nakonfiguruje a spravuje směrování za vás.
 >
 >
 
-### <a name="8-link-a-virtual-network-to-an-expressroute-circuit"></a>8. Propojení virtuální sítě s okruhem ExpressRoute
+### <a name="8-link-a-virtual-network-to-an-expressroute-circuit"></a>8. propojení virtuální sítě k okruhu ExpressRoute
 
-Dále propojte virtuální síť s okruhem ExpressRoute. Použijte článek [Propojení virtuálních sítí s okruhy ExpressRoute.](howto-linkvnet-cli.md)
+Potom propojte virtuální síť se svým okruhem ExpressRoute. Použijte [propojení virtuální sítě s okruhy ExpressRoute](howto-linkvnet-cli.md) .
 
 ## <a name="modifying-an-expressroute-circuit"></a><a name="modify"></a>Úprava okruhu ExpressRoute
 
-Můžete upravit určité vlastnosti okruhu ExpressRoute bez ovlivnění připojení. Můžete provést následující změny bez prostoje:
+Můžete upravit některé vlastnosti okruhu ExpressRoute, aniž by to mělo vliv na připojení. Můžete provést následující změny bez výpadku:
 
-* Můžete povolit nebo zakázat doplněk premium ExpressRoute pro okruh ExpressRoute.
-* Šířku pásma okruhu ExpressRoute můžete zvýšit za předpokladu, že je na portu k dispozici kapacita. Snížení šířky pásma okruhu však není podporováno.
-* Plán měření můžete změnit z měřených dat na neomezená data. Změna plánu měření z neomezených dat na data účtované podle objemu dat však není podporována.
-* Můžete povolit a zakázat *povolit klasické operace*.
+* Pro okruh ExpressRoute můžete povolit nebo zakázat doplněk ExpressRoute Premium.
+* Šířku pásma okruhu ExpressRoute můžete zvýšit, pokud je na portu k dispozici dostatek kapacity. Nicméně downgrading šířky pásma okruhu není podporován.
+* Plán měření z měřených dat můžete změnit na neomezená data. Nicméně Změna plánu měření z neomezených dat na měřená data není podporována.
+* Můžete povolit nebo zakázat *operace klasických operací*.
 
-Další informace o omezeních a omezeních naleznete v [nejčastějších dotazech k expresní trase](expressroute-faqs.md).
+Další informace o omezeních a omezeních najdete v tématu [ExpressRoute – Nejčastější dotazy](expressroute-faqs.md).
 
-### <a name="to-enable-the-expressroute-premium-add-on"></a>Povolení doplňku ExpressRoute premium
+### <a name="to-enable-the-expressroute-premium-add-on"></a>Povolení doplňku ExpressRoute Premium
 
-Doplněk Premium ExpressRoute pro existující okruh můžete povolit pomocí následujícího příkazu:
+Doplněk ExpressRoute Premium pro stávající okruh můžete povolit pomocí následujícího příkazu:
 
 ```azurecli-interactive
 az network express-route update -n MyCircuit -g ExpressRouteResourceGroup --sku-tier Premium
 ```
 
-Okruh má nyní povolené prémiové doplňkové funkce ExpressRoute. Jakmile příkaz úspěšně spustíte, začneme vám účtovat prémiovou doplňkovou funkci.
+Okruh teď má povolené funkce doplňku ExpressRoute Premium. Až se příkaz úspěšně spustí, začneme vám účtovat možnost doplňku Premium.
 
-### <a name="to-disable-the-expressroute-premium-add-on"></a>Zakázání doplňku premium ExpressRoute
+### <a name="to-disable-the-expressroute-premium-add-on"></a>Zakázání doplňku ExpressRoute Premium
 
 > [!IMPORTANT]
-> Tato operace může selhat, pokud používáte prostředky, které jsou větší než co je povoleno pro standardní okruh.
+> Tato operace může selhat, pokud používáte prostředky, které jsou větší, než je povoleno pro standardní okruh.
 >
 >
 
-Před zakázáním doplňku premium ExpressRoute pochopte následující kritéria:
+Než zakážete doplněk ExpressRoute Premium, pochopte následující kritéria:
 
-* Před přechodem z prémiového na standardní, musíte se ujistit, že máte méně než 10 virtuálních sítí propojených s okruhem. Pokud máte více než 10, vaše žádost o aktualizaci se nezdaří a my vám účtujeme prémiové sazby.
-* Je nutné odpojit všechny virtuální sítě v jiných geopolitických oblastech. Pokud neodpojíte všechny virtuální sítě, váš požadavek na aktualizaci se nezdaří a my vám účtujeme prémiové sazby.
-* Trasový tabulkový spojbyl menší než 4 000 tras pro soukromý partnerský vztah. Pokud je velikost směrovací tabulky větší než 4 000 tras, relace Protokolu BGP klesne. Relace nebude znovu povolena, dokud nebude počet inzerovaných předpon nižší než 4 000.
+* Než se pustíte do downgradu z úrovně Premium na standard, musíte zajistit, abyste měli méně než 10 virtuálních sítí propojených s okruhem. Pokud máte víc než 10, vaše žádost o aktualizaci se nezdařila a účtujeme vám sazby za Premium.
+* Je nutné odpojit všechny virtuální sítě v jiných geopolitických oblastech. Pokud nechcete odpojit všechny vaše virtuální sítě, vaše žádost o aktualizaci se nezdařila a účtujeme vám sazby za Premium.
+* Směrovací tabulka musí mít méně než 4 000 tras pro privátní partnerské vztahy. Pokud je velikost směrovací tabulky větší než 4 000 tras, relace protokolu BGP se uvolní. Relace nebude znovu povolena, dokud počet inzerovaných předpon nebude nižší než 4 000.
 
-Doplněk premium ExpressRoute pro existující okruh můžete zakázat pomocí následujícího příkladu:
+Doplněk ExpressRoute Premium pro stávající okruh můžete zakázat pomocí následujícího příkladu:
 
 ```azurecli-interactive
 az network express-route update -n MyCircuit -g ExpressRouteResourceGroup --sku-tier Standard
@@ -317,41 +317,41 @@ az network express-route update -n MyCircuit -g ExpressRouteResourceGroup --sku-
 
 ### <a name="to-update-the-expressroute-circuit-bandwidth"></a>Aktualizace šířky pásma okruhu ExpressRoute
 
-Podporované možnosti šířky pásma pro vašeho poskytovatele najdete v [nejčastějších dotazech k aplikaci ExpressRoute](expressroute-faqs.md). Můžete vybrat libovolnou velikost větší, než je velikost stávajícího obvodu.
+Možnosti podporované šířky pásma pro poskytovatele najdete v části [Nejčastější dotazy k ExpressRoute](expressroute-faqs.md). Můžete vybrat libovolnou velikost, která je větší než velikost stávajícího okruhu.
 
 > [!IMPORTANT]
-> Pokud je nedostatečná kapacita na existující port, bude pravděpodobně muset znovu vytvořit okruh ExpressRoute. Okruh nelze upgradovat, pokud v tomto umístění není k dispozici žádná další kapacita.
+> Pokud na stávajícím portu není dostatečná kapacita, bude pravděpodobně nutné znovu vytvořit okruh ExpressRoute. Pokud v daném umístění není k dispozici žádná další kapacita, nemůžete upgradovat okruh.
 >
-> Šířku pásma okruhu ExpressRoute nelze snížit bez přerušení. Snížení šířky pásma vyžaduje zrušení zřízení okruhu ExpressRoute a následné opětovné zřízení nového okruhu ExpressRoute.
+> Nemůžete snížit šířku pásma okruhu ExpressRoute bez přerušení. K downgradům šířky pásma je potřeba zrušit zřízení okruhu ExpressRoute a pak znovu zřídit nový okruh ExpressRoute.
 >
 
-Po rozhodnutí o velikosti, kterou potřebujete, použijte následující příkaz pro změna velikosti okruhu:
+Až se rozhodnete, jak velikost potřebujete, změňte velikost okruhu pomocí následujícího příkazu:
 
 ```azurecli-interactive
 az network express-route update -n MyCircuit -g ExpressRouteResourceGroup --bandwidth 1000
 ```
 
-Velikost obvodu na straně Microsoftu. Dále je nutné kontaktovat poskytovatele připojení aktualizovat konfigurace na jejich straně, aby odpovídaly této změny. Po tomto oznámení vám začneme účtovat aktualizovanou možnost šířky pásma.
+Váš okruh má velikost na straně Microsoftu. V dalším kroku se obraťte na svého poskytovatele připojení a aktualizujte konfiguraci na své straně tak, aby odpovídaly této změně. Po vytvoření tohoto oznámení začneme účtovat aktualizovanou možnost šířky pásma.
 
-### <a name="to-move-the-sku-from-metered-to-unlimited"></a>Přesunutí skladové položky z měřené na neomezenou
+### <a name="to-move-the-sku-from-metered-to-unlimited"></a>Přesun SKU z měření na neomezený
 
-Skladovou položku okruhu ExpressRoute můžete změnit pomocí následujícího příkladu:
+SKU okruhu ExpressRoute můžete změnit pomocí následujícího příkladu:
 
 ```azurecli-interactive
 az network express-route update -n MyCircuit -g ExpressRouteResourceGroup --sku-family UnlimitedData
 ```
 
-### <a name="to-control-access-to-the-classic-and-resource-manager-environments"></a>Řízení přístupu ke klasickému prostředí a prostředí Správce prostředků
+### <a name="to-control-access-to-the-classic-and-resource-manager-environments"></a>Řízení přístupu k prostředím Classic a Správce prostředků
 
-Projděte si pokyny v [okruhu Move ExpressRoute z klasického modelu nasazení Resource Manageru](expressroute-howto-move-arm.md).
+Přečtěte si pokyny v tématu [Přesun okruhů ExpressRoute z modelu nasazení Classic na model nasazení Správce prostředků](expressroute-howto-move-arm.md).
 
 ## <a name="deprovisioning-and-deleting-an-expressroute-circuit"></a><a name="delete"></a>Zrušení zřízení a odstranění okruhu ExpressRoute
 
-Chcete-li zrušit zřízení a odstranit okruh ExpressRoute, ujistěte se, že rozumíte následujícím kritériím:
+Pokud chcete zrušit zřízení a odstranit okruh ExpressRoute, ujistěte se, že rozumíte následujícím kritériím:
 
-* Od okruhu ExpressRoute je potřeba odpojit všechny virtuální sítě. Pokud se tato operace nezdaří, zkontrolujte, zda jsou nějaké virtuální sítě propojeny s okruhem.
-* Pokud je stav zřizování zprostředkovatele okruhů ExpressRoute **Provisioning** nebo **Provisioned**, musíte spolupracovat s poskytovatelem služeb, abyste zrušili zřízení okruhu na jejich straně. Budeme i nadále rezervovat zdroje a účtovat vám, dokud poskytovatel služeb dokončí zrušení zřízení okruhu a upozorní nás.
-* Okruh můžete odstranit, pokud poskytovatel služeb zrušil okruh. Když je zrušen okruh, stav zřizování poskytovatele služeb je nastaven na **Nezřízeno**. Tím se zastaví účtování okruhu.
+* Od okruhu ExpressRoute je potřeba odpojit všechny virtuální sítě. Pokud tato operace neproběhne úspěšně, zkontrolujte, zda jsou k okruhu připojeny nějaké virtuální sítě.
+* Pokud je stav zřizování poskytovatele služby okruhu ExpressRoute **zřizování** nebo **zřízení**, musíte se s vaším poskytovatelem služeb dopracovat a zrušit zřízení okruhu na jejich straně. I nadále vyhradíme prostředky a účtujeme vám, dokud poskytovatel služeb nedokončí zrušení zřízení okruhu a pošle nám upozornění.
+* Okruh můžete odstranit, pokud poskytovatel služby zrušil zřízení okruhu. Po zrušení zřízení okruhu je stav zřizování poskytovatele služeb nastavený na **není zřízený**. Tím se zastaví účtování okruhu.
 
 Okruh ExpressRoute můžete odstranit spuštěním následujícího příkazu:
 
@@ -361,7 +361,7 @@ az network express-route delete  -n MyCircuit -g ExpressRouteResourceGroup
 
 ## <a name="next-steps"></a>Další kroky
 
-Po vytvoření okruhu se ujistěte, že provedete následující úkoly:
+Po vytvoření okruhu se ujistěte, že provedete následující úlohy:
 
-* [Vytvoření a úprava směrování okruhu ExpressRoute](howto-routing-cli.md)
+* [Vytvoření a úprava směrování pro okruh ExpressRoute](howto-routing-cli.md)
 * [Propojení virtuální sítě s okruhem ExpressRoute](howto-linkvnet-cli.md)

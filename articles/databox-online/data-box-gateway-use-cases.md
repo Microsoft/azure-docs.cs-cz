@@ -1,6 +1,6 @@
 ---
-title: Případy použití služby Microsoft Azure Data Box Gateway | Dokumenty společnosti Microsoft
-description: Popisuje případy použití azure data box gateway, řešení úložiště virtuálních zařízení, které umožňuje přenos dat do Azure
+title: Microsoft Azure Data Box Gateway případy použití | Microsoft Docs
+description: Popisuje případy použití Azure Data Box Gateway, řešení úložiště virtuálního zařízení, které umožňuje přenos dat do Azure.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,89 +9,89 @@ ms.topic: article
 ms.date: 03/02/2019
 ms.author: alkohli
 ms.openlocfilehash: e72113313e27949819db567c550401b1f051473f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77022677"
 ---
-# <a name="use-cases-for-azure-data-box-gateway"></a>Případy použití brány datové schránky Azure
+# <a name="use-cases-for-azure-data-box-gateway"></a>Případy použití pro Azure Data Box Gateway
 
-Azure Data Box Gateway je zařízení brány cloudového úložiště, které se nachází ve vašich prostorách a odesílá vaše image, média a další data do Azure. Tato brána cloudového úložiště je virtuální počítač zřízený ve vašem hypervisoru. Data do tohoto virtuálního zařízení zapisujete pomocí protokolů NFS a SMB, které pak odešle do Azure. Tento článek obsahuje podrobný popis scénářů, kde můžete nasadit toto zařízení.
+Azure Data Box Gateway je zařízení brány cloudového úložiště, které se nachází ve vašich prostorách a odesílá vaše image, média a další data do Azure. Tato brána cloudového úložiště je virtuální počítač zřízený v hypervisoru. Do tohoto virtuálního zařízení zapisujete data pomocí NFS a protokolů SMB, které pak pošle do Azure. Tento článek poskytuje podrobný popis scénářů, ve kterých můžete nasadit toto zařízení.
 
-Bránu datového schránce použijte pro následující scénáře:
+Použijte Data Box Gateway pro následující scénáře:
 
-- Chcete-li nepřetržitě ingestovat obrovské množství dat.
-- Pro cloudovou archivaci dat bezpečným a efektivním způsobem.
-- Pro přírůstkový přenos dat po síti po počátečníhromadný přenos se provádí pomocí Data Box.
+- Pro nepřetržitou příjem obrovských objemů dat.
+- Pro cloudovou archivaci dat zabezpečeným a efektivním způsobem.
+- Pro přírůstkové přenosy dat přes síť po počátečním hromadném přenosu pomocí Data Box.
 
 Každý z těchto scénářů je podrobně popsán v následujících částech.
 
 
-## <a name="continuous-data-ingestion"></a>Nepřetržité přijímání dat
+## <a name="continuous-data-ingestion"></a>Průběžné přijímání dat
 
-Jednou z hlavních výhod brány datové schránky je možnost průběžně ingestovat data do zařízení ke kopírování do cloudu, bez ohledu na velikost dat.
+Jednou z hlavních výhod Data Box Gateway je schopnost nepřetržitě ingestovat data do zařízení ke zkopírování do cloudu bez ohledu na velikost dat.
 
-Když se data zapisují do zařízení brány, zařízení nahraje data do Azure Storage. Zařízení automaticky spravuje úložiště odebráním souborů místně při zachování metadat, když dosáhne určité prahové hodnoty. Zachování místní kopie metadat umožňuje zařízení brány nahrát změny pouze při aktualizaci souboru. Data nahraná do zařízení brány by měla být podle pokynů v [upozorněních na nahrání dat](data-box-gateway-limits.md#data-upload-caveats).
+Při zápisu dat do zařízení brány zařízení nahraje data do Azure Storage. Zařízení automaticky spravuje úložiště odstraněním souborů místně a při dosažení určité prahové hodnoty uchovávají metadata. Udržování místní kopie metadat umožňuje zařízení brány nahrávat změny pouze při aktualizaci souboru. Data nahraná do zařízení brány by měla být podle pokynů v části [Upozornění na nahrávání dat](data-box-gateway-limits.md#data-upload-caveats).
 
-Když se zařízení naplní daty, začne omezovat rychlost příchozího přenosu dat (podle potřeby), aby odpovídalo rychlosti, jakou se data nahrávají do cloudu. Chcete-li sledovat nepřetržité ingestování na zařízení, použijte výstrahy. Tyto výstrahy jsou vyvolány po omezení začíná a jsou vymazány po omezení bylo zastaveno.
+Když se zařízení vyplní daty, začne omezovat přenos dat (podle potřeby), aby odpovídala sazbě, s jakou se data nahrávají do cloudu. Pokud chcete monitorovat průběžné přijímání na zařízení, použijte výstrahy. Tyto výstrahy se aktivují, jakmile se omezování spustí a po zastavení omezení se vymažou.
 
-## <a name="cloud-archival-of-data"></a>Cloudová archivace dat
+## <a name="cloud-archival-of-data"></a>Archivace dat v cloudu
 
-Bránu datové schránky použijte, pokud chcete data dlouhodobě uchovávat v cloudu. Vrstvu **archivu** úložiště můžete použít pro dlouhodobé uchovávání.
+Použijte Data Box Gateway, pokud chcete uchovávat data dlouhodobě v cloudu. K dlouhodobému uchovávání můžete použít **archivní** vrstvu úložiště.
 
-Archivní vrstva je optimalizována pro ukládání zřídka přístupných dat po dobu nejméně 180 dnů. **Archivní** úroveň nabízí nejnižší náklady na úložiště, ale má nejvyšší náklady na přístup. Další informace naleznete na [úrovni přístupu archivu](/azure/storage/blobs/storage-blob-storage-tiers#archive-access-tier).
+Úroveň archivu je optimalizovaná pro ukládání zřídka používaných dat minimálně 180 dní. Úroveň **archivu** nabízí nejnižší náklady na úložiště, ale má nejvyšší náklady na přístup. Další informace najdete v postupném [přístupu do archivní úrovně](/azure/storage/blobs/storage-blob-storage-tiers#archive-access-tier).
 
-### <a name="move-data-to-archive-tier"></a>Přesunutí dat do úrovně Archivace
+### <a name="move-data-to-archive-tier"></a>Přesunout data do archivní úrovně
 
-Než začnete, ujistěte se, že máte spuštěné zařízení Brány datové schránky. Postupujte podle kroků popsaných v [kurzu: Připravte se na nasazení brány datové schránky Azure](data-box-gateway-deploy-prep.md) a pokračujte v postupu k dalšímu kurzu, dokud nebudete mít provozní zařízení.
+Než začnete, ujistěte se, že máte spuštěný Data Box Gateway zařízení. Postupujte podle kroků popsaných v tomto [kurzu: Příprava na nasazení Azure Data box Gateway](data-box-gateway-deploy-prep.md) a zachování dalšího kurzu, dokud nebudete mít provozní zařízení.
 
-- Pomocí zařízení Data Box Gateway můžete odesílat data do Azure obvyklým postupem přenosu, jak je popsáno v části [Přenos dat přes bránu datové schránky](data-box-gateway-deploy-add-shares.md).
-- Po nahrání dat je nutné je přesunout do úrovně Archiv. Vrstvu objektu blob můžete nastavit dvěma způsoby: skriptazure powershellu nebo zásady správy životního cyklu úložiště Azure.  
-    - Pokud používáte Azure PowerShell, postupujte [takto](/azure/databox/data-box-how-to-set-data-tier#use-azure-powershell-to-set-the-blob-tier) přesunout data do vrstvy Archive.
-    - Pokud používáte Azure Lifecycle Management, postupujte podle těchto kroků přesunout data do úrovně Archiv.
-        - [Zaregistrujte se](/azure/storage/common/storage-lifecycle-management-concepts) pro náhled služby správy životního cyklu objektu Blob a použijte úroveň Archiv.
-        - Následující zásady slouží k [archivaci dat při ingestování](/azure/storage/blobs/storage-lifecycle-management-concepts#archive-data-after-ingest).
-- Jakmile jsou objekty BLOB označeny jako Archiv, již je brána nemůže upravovat, pokud nejsou přesunuty do horké nebo studené vrstvy. Pokud je soubor v místním úložišti, nebudou všechny změny provedené v místní kopii (včetně odstranění) odeslány do archivní vrstvy.
-- Chcete-li číst data v úložišti archivu, musí být rehydratována změnou úrovně objektu blob na horkou nebo studenou. [Obnovení sdílené složky](data-box-gateway-manage-shares.md#refresh-shares) na bráně není rehydratovat objekt blob.
+- Pomocí zařízení Data Box Gateway můžete do Azure nahrávat data prostřednictvím běžného postupu přenosu, jak je popsáno v tématu [přenos dat prostřednictvím data box Gateway](data-box-gateway-deploy-add-shares.md).
+- Po nahrání dat je budete muset přesunout do archivní úrovně. Úroveň objektu blob můžete nastavit dvěma způsoby: Azure PowerShell skript nebo zásady správy životního cyklu Azure Storage.  
+    - Pokud používáte Azure PowerShell, přesuňte data do archivní úrovně podle těchto [kroků](/azure/databox/data-box-how-to-set-data-tier#use-azure-powershell-to-set-the-blob-tier) .
+    - Pokud používáte správu životního cyklu Azure, přesuňte data do archivní úrovně podle těchto kroků.
+        - [Zaregistrujte](/azure/storage/common/storage-lifecycle-management-concepts) se ve verzi Preview služby správy životního cyklu objektů blob na používání archivní úrovně.
+        - K [archivaci dat při](/azure/storage/blobs/storage-lifecycle-management-concepts#archive-data-after-ingest)ingestování použijte následující zásady.
+- Jakmile jsou objekty blob označeny jako archivní, nemůže je brána nadále měnit, pokud nejsou přesunuty na horkou nebo studenou úroveň. Pokud je soubor v místním úložišti, všechny změny provedené v místní kopii (včetně odstranění) se neodesílají do archivní úrovně.
+- Chcete-li číst data v archivním úložišti, je třeba je znovu vyměnit změnou úrovně objektu BLOB na horkou nebo studenou. [Obnovením sdílené složky](data-box-gateway-manage-shares.md#refresh-shares) v bráně nebude objekt BLOB znovu vysušen.
 
-Další informace najdete v dalších informacích o tom, jak [spravovat životní cyklus úložiště objektů blob Azure](/azure/storage/common/storage-lifecycle-management-concepts).
+Další informace najdete v tématu Jak [Spravovat životní cyklus Azure Blob Storage](/azure/storage/common/storage-lifecycle-management-concepts).
 
 ## <a name="initial-bulk-transfer-followed-by-incremental-transfer"></a>Počáteční hromadný přenos následovaný přírůstkovým přenosem
 
-Bránu data boxu a datové schránky použijte společně, pokud chcete provést hromadné nahrávání velkého množství dat následovaných přírůstkovými přenosy. Pro hromadný přenos v režimu offline (počáteční počáteční osivo) a bránu datové schránky použijte datovou schránku pro přírůstkové přenosy (průběžné přenosy) po síti.
+Data Box a Data Box Gateway používejte společně, pokud chcete provést hromadné nahrávání velkého množství dat, za kterými následují přírůstkové převody. Použijte Data Box pro hromadný přenos v režimu offline (počáteční počáteční hodnotu) a Data Box Gateway přírůstkových přenosů (pokračujících kanálů) po síti.
 
-### <a name="seed-the-data-with-data-box"></a>Osékací data s datovou schránkou
+### <a name="seed-the-data-with-data-box"></a>Dosazení dat pomocí Data Box
 
-Podle těchto kroků zkopírujte data do datové schránky a nahrajte je do Azure Storage.
+Pomocí těchto kroků zkopírujte data Data Box a nahrajte je do Azure Storage.
 
-1. [Objednejte si datovou schránku](/azure/databox/data-box-deploy-ordered).
-2. [Nastavte si datovou schránku](/azure/databox/data-box-deploy-set-up).
-3. [Kopírování dat do datové schránky přes SMB](/azure/databox/data-box-deploy-copy-data).
-4. [Vraťte datovou schránku a ověřte, zda se data nahrají do Azure](/azure/databox/data-box-deploy-picked-up).
-5. Po dokončení nahrávání dat do Azure by všechna data měla být v kontejnerech úložiště Azure. V účtu úložiště pro data box, přejděte na kontejner objektů blob (a soubor) a ujistěte se, že všechna data se zkopíruje. Poznamenejte si název kontejneru, protože tento název budete později používat. Například na následujícím snímku `databox` obrazovky bude kontejner použit pro přírůstkový přenos.
+1. [Seřazení data box](/azure/databox/data-box-deploy-ordered).
+2. [Nastavte data box](/azure/databox/data-box-deploy-set-up).
+3. [Kopírovat data do data box přes protokol SMB](/azure/databox/data-box-deploy-copy-data).
+4. [Vraťte data box a ověřte, že se data nahrávají do Azure](/azure/databox/data-box-deploy-picked-up).
+5. Po dokončení nahrávání dat do Azure se všechna data musí nacházet v kontejnerech úložiště Azure. V účtu úložiště pro Data Box otevřete kontejner objektů BLOB (a File), abyste se ujistili, že se zkopírují všechna data. Poznamenejte si název kontejneru, podle kterého budete tento název používat později. Například na následujícím snímku obrazovky se `databox` kontejner použije pro přírůstkové přenosy.
 
-    ![Kontejner s daty na datové schránce](media/data-box-gateway-use-cases/data-container1.png)
+    ![Kontejner s daty v Data Box](media/data-box-gateway-use-cases/data-container1.png)
 
-Tento hromadný přenos dokončí počáteční fázi výsevu.
+Tento hromadný přenos dokončí prvotní fázi osazení.
 
-### <a name="ongoing-feed-with-data-box-gateway"></a>Průběžný informační kanál s bránou datové schránky
+### <a name="ongoing-feed-with-data-box-gateway"></a>Průběžný informační kanál s Data Box Gateway
 
-Postupujte podle následujících kroků pro průběžné ingestování podle brány datové schránky.
+Pro průběžné přijímání Data Box Gateway použijte následující postup.
 
-1. Vytvořte sdílenou složku cloudu v bráně datové schránky. Tato sdílená sdílená složky automaticky nahraje všechna data do účtu Azure Storage. Přejděte na **Sdílené položky** v prostředku brány datové schránky a klikněte na **+ Přidat sdílenou složku**.
+1. Vytvořte cloudovou sdílenou složku na Data Box Gateway. Tato sdílená složka automaticky nahraje všechna data na účet Azure Storage. Přejděte na **sdílené složky** v prostředku data box Gateway a klikněte na **+ Přidat sdílenou složku**.
 
-    ![Klikněte na +Přidat sdílenou složku.](media/data-box-gateway-use-cases/add-share1.png)
+    ![Klikněte na + přidat sdílenou složku.](media/data-box-gateway-use-cases/add-share1.png)
 
-2. Ujistěte se, že tato sdílená analýza se mapuje na kontejner, který obsahuje semenná data. V **poli Vybrat kontejner objektů blob**zvolte Použít **existující** a přejděte do kontejneru, do kterého byla přenesena data z datové schránky.
+2. Ujistěte se, že se tato sdílená složka mapuje na kontejner obsahující dosazený data. V části **Vybrat kontejner objektů BLOB**zvolte **použít existující** a přejděte do kontejneru, ve kterém se přenesla data z data box.
 
-    ![Sdílení nastavení](media/data-box-gateway-use-cases/share-settings-select-existing-container1.png)
+    ![Nastavení sdílení](media/data-box-gateway-use-cases/share-settings-select-existing-container1.png)
 
-3. Po vytvoření sdílené složky aktualizujte sdílenou složku. Tato operace aktualizuje místní sdílení s obsahem z Azure.
+3. Po vytvoření sdílené složky aktualizujte sdílenou složku. Tato operace aktualizuje místní sdílenou složku s obsahem z Azure.
 
     ![Aktualizovat sdílenou složku](media/data-box-gateway-use-cases/refresh-share1.png)
 
-    Při synchronizaci sdílené složky brána datové schránky nahraje přírůstkové změny, pokud byly soubory změněny v klientovi.
+    Pokud je sdílená složka synchronizovaná, Data Box Gateway odešle přírůstkové změny, pokud byly soubory v klientovi změněny.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,6 +1,6 @@
 ---
-title: Autorizace přístupu k datům souborů přes SMB pomocí služby Azure AD Domain Services
-description: Zjistěte, jak povolit ověřování na základě identity přes blok zpráv serveru (SMB) pro soubory Azure prostřednictvím služby Azure Active Directory Domain Services. Virtuální počítače windows (VM) spojené s doménou pak můžou přistupovat ke sdíleným spodám Azure pomocí přihlašovacích údajů Azure AD.
+title: Použití Azure AD Domain Services k autorizaci přístupu k souborovým datům přes protokol SMB
+description: Naučte se povolit ověřování na základě identity přes protokol SMB (Server Message Block) pro soubory Azure prostřednictvím Azure Active Directory Domain Services. Virtuální počítače s Windows připojené k doméně potom můžou přistupovat ke sdíleným složkám Azure pomocí přihlašovacích údajů Azure AD.
 author: roygara
 ms.service: storage
 ms.topic: conceptual
@@ -8,92 +8,92 @@ ms.date: 02/21/2020
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: cb173bcbf7cd163dca16c211d45018e0fe056edd
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80666853"
 ---
-# <a name="enable-azure-active-directory-domain-services-authentication-on-azure-files"></a>Povolení ověřování služby Azure Active Directory Domain Services u souborů Azure
+# <a name="enable-azure-active-directory-domain-services-authentication-on-azure-files"></a>Povolení ověřování Azure Active Directory Domain Services u souborů Azure
 
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
 
-Přehled ověřování Azure AD přes SMB pro sdílené složky Azure najdete v [tématu Přehled ověřování Azure Active Directory přes SMB pro soubory Azure](storage-files-active-directory-overview.md). Tento článek se zaměřuje na povolení ověřování pomocí služby Azure Active Directory Domain Services (Azure AD DS) v souborech Azure.
+Přehled ověřování Azure AD pomocí protokolu SMB pro sdílené složky Azure najdete v tématu [přehled Azure Active Directory ověřování pomocí protokolu SMB pro soubory Azure](storage-files-active-directory-overview.md). Tento článek se zaměřuje na to, jak povolit ověřování pomocí Azure Active Directory Domain Services (Azure služba AD DS) v souborech Azure.
 
 > [!NOTE]
-> Azure Files podporuje ověřování kerberos pomocí Azure AD DS s rc4-HMAC šifrováním. Šifrování Protokolu AES Kerberos ještě není podporováno.
+> Soubory Azure podporují ověřování pomocí protokolu Kerberos s Azure služba AD DS s šifrováním RC4-HMAC. Šifrování AES Kerberos ještě není podporované.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Než povolíte Azure AD přes SMB pro sdílené složky Azure, ujistěte se, že jste dokončili následující požadavky:
 
-1.  **Vyberte nebo vytvořte klienta Azure AD.**
+1.  **Vyberte nebo vytvořte tenanta Azure AD.**
 
-    Můžete použít nového nebo stávajícího klienta pro ověřování Azure AD přes SMB. Tenant a sdílené složky, ke které chcete získat přístup, musí být přidruženy ke stejnému předplatnému.
+    Pro ověřování Azure AD prostřednictvím protokolu SMB můžete použít nového nebo stávajícího tenanta. Tenant a sdílená složka, ke kterým chcete získat přístup, musí být přidruženy ke stejnému předplatnému.
 
-    Pokud chcete vytvořit nového klienta Azure AD, můžete [přidat klienta Azure AD a předplatné Azure AD](https://docs.microsoft.com/windows/client-management/mdm/add-an-azure-ad-tenant-and-azure-ad-subscription). Pokud máte existujícího klienta Azure AD, ale chcete vytvořit nového klienta pro použití se sdílenými složkami Azure, přečtěte si informace [o vytvoření klienta Azure Active Directory](https://docs.microsoft.com/rest/api/datacatalog/create-an-azure-active-directory-tenant).
+    Pokud chcete vytvořit nového tenanta Azure AD, můžete [Přidat tenanta Azure AD a předplatné služby Azure AD](https://docs.microsoft.com/windows/client-management/mdm/add-an-azure-ad-tenant-and-azure-ad-subscription). Pokud máte existujícího tenanta Azure AD, ale chcete vytvořit nového tenanta pro použití se sdílenými složkami Azure, přečtěte si téma [Vytvoření klienta Azure Active Directory](https://docs.microsoft.com/rest/api/datacatalog/create-an-azure-active-directory-tenant).
 
-1.  **Povolte služby Domény Azure AD v tenantovi Azure AD.**
+1.  **Povolí Azure AD Domain Services v tenantovi Azure AD.**
 
-    Chcete-li podporovat ověřování pomocí přihlašovacích údajů Azure AD, musíte povolit služby Azure AD Domain Services pro vašeho klienta Azure AD. Pokud nejste správcem klienta Azure AD, obraťte se na správce a postupujte podle podrobných pokynů k [povolení služby Azure Active Directory Domain Services pomocí portálu Azure](../../active-directory-domain-services/tutorial-create-instance.md).
+    Aby bylo možné podporovat ověřování pomocí přihlašovacích údajů Azure AD, musíte Azure AD Domain Services pro vašeho tenanta Azure AD povolit. Pokud nejste správcem tenanta Azure AD, obraťte se na správce a postupujte podle podrobných pokynů, které vám [umožní Azure Active Directory Domain Services používání Azure Portal](../../active-directory-domain-services/tutorial-create-instance.md).
 
-    Obvykle trvá přibližně 15 minut pro nasazení Azure AD DS k dokončení. Před pokračováním dalšího kroku ověřte, zda stav služby Azure AD DS zobrazuje **spuštění**s povolenou synchronizací hodnot hash hesel.
+    Dokončení nasazení Azure služba AD DS obvykle trvá přibližně 15 minut. Než přejdete k dalšímu kroku, ověřte, že se stav služby Azure služba AD DS zobrazuje jako **spuštěný**a povolená synchronizace hodnot hash hesel.
 
-1.  **Připojení k virtuálnímu počítači Azure pomocí Azure AD DS.**
+1.  **Doména: připojení virtuálního počítače Azure s Azure služba AD DS.**
 
-    Chcete-li získat přístup ke sdílené složce pomocí přihlašovacích údajů Azure AD z virtuálního počítače, musí být váš virtuální počítač připojen k azure ad ds. Další informace o připojení k virtuálnímu počítači dodomén najdete v [tématu Připojení virtuálního počítače se systémem Windows Server ke spravované doméně](../../active-directory-domain-services/join-windows-vm.md).
+    Pro přístup ke sdílené složce pomocí přihlašovacích údajů Azure AD z virtuálního počítače musí být váš virtuální počítač připojený k doméně Azure služba AD DS. Další informace o tom, jak připojit virtuální počítač k doméně, najdete v tématu [připojení virtuálního počítače s Windows serverem ke spravované doméně](../../active-directory-domain-services/join-windows-vm.md).
 
     > [!NOTE]
-    > Azure AD DS ověřování přes SMB s sdílenými složkami azure souborů je podporované jenom na virtuálních počítačích Azure běží na verzích operačního systému nad Windows 7 nebo Windows Server 2008 R2.
+    > Ověřování pomocí Azure služba AD DS přes protokol SMB se sdílenými složkami Azure je podporované jenom na virtuálních počítačích Azure, na kterých běží verze operačního systému Windows 7 nebo Windows Server 2008 R2.
 
 1.  **Vyberte nebo vytvořte sdílenou složku Azure.**
 
-    Vyberte novou nebo existující sdílenou složku, která je přidružená ke stejnému předplatnému jako váš klient Azure AD. Informace o vytváření nové sdílené složky najdete [v tématu Vytvoření sdílené složky v Azure Files](storage-how-to-create-file-share.md).
-    Pro optimální výkon doporučujeme, aby vaše sdílení souborů bylo ve stejné oblasti jako virtuální počítač, ze kterého plánujete přístup ke sdílené položce.
+    Vyberte novou nebo existující sdílenou složku, která je přidružená ke stejnému předplatnému jako tenant služby Azure AD. Informace o vytvoření nové sdílené složky najdete v tématu [Vytvoření sdílené složky ve službě soubory Azure](storage-how-to-create-file-share.md).
+    Pro zajištění optimálního výkonu doporučujeme, aby byla sdílená složka ve stejné oblasti jako virtuální počítač, ze kterého plánujete přístup ke sdílené složce.
 
-1.  **Ověřte připojení souborů Azure připojením sdílených složek Azure pomocí klíče účtu úložiště.**
+1.  **Pomocí klíče účtu úložiště ověřte připojení ke službě soubory Azure pomocí připojení sdílených složek Azure.**
 
-    Chcete-li ověřit, zda je virtuální počítač a sdílená složka správně nakonfigurované, zkuste sdílet soubor pomocí klíče účtu úložiště. Další informace najdete [v tématu Připojení sdílené složky Azure a přístup ke sdílené složce ve Windows](storage-how-to-use-files-windows.md).
+    Pokud chcete ověřit, jestli je virtuální počítač a sdílená složka správně nakonfigurované, zkuste připojit sdílenou složku pomocí klíče účtu úložiště. Další informace najdete v tématu [připojení sdílené složky Azure a přístup ke sdílené složce v systému Windows](storage-how-to-use-files-windows.md).
 
 ## <a name="overview-of-the-workflow"></a>Přehled pracovního postupu
 
-Než povolíte ověřování azure ad ds přes SMB pro sdílené složky Azure, ověřte, že vaše prostředí Azure AD a Azure Storage jsou správně nakonfigurovaná. Doporučujeme, abyste si [prošli předpoklady](#prerequisites) a ujistili se, že jste dokončili všechny požadované kroky.
+Než povolíte Azure služba AD DS Authentication přes SMB pro sdílené složky Azure, ověřte, že jsou správně nakonfigurovaná vaše prostředí Azure AD a Azure Storage. Doporučujeme projít si [požadavky](#prerequisites) a ujistit se, že jste dokončili všechny požadované kroky.
 
-Dále udělte přístup k prostředkům Azure Files pomocí přihlašovacích údajů Azure AD následujícím postupem:
+V dalším kroku udělte přístup k prostředkům Azure Files pomocí přihlašovacích údajů Azure AD následující věci:
 
-1. Povolte ověřování Azure AD DS přes SMB pro váš účet úložiště k registraci účtu úložiště s přidruženým nasazením Azure AD DS.
-2. Přiřaďte přístupová oprávnění ke sdílené položce identitě Azure AD (uživateli, skupině nebo instančnímu objektu služby).
-3. Konfigurace oprávnění systému souborů NTFS přes Protokol SMB pro adresáře a soubory.
-4. Připojení sdílené složky Azure z virtuálního počítače přilehlého k doméně.
+1. Povolte Azure služba AD DS ověřování přes SMB pro váš účet úložiště pro registraci účtu úložiště s přidruženým nasazením Azure služba AD DS.
+2. Přiřazení oprávnění k přístupu ke sdílené složce identitě služby Azure AD (uživatel, skupina nebo instanční objekt).
+3. Konfigurace oprávnění NTFS pro adresáře a soubory protokolu SMB.
+4. Připojte sdílenou složku Azure z virtuálního počítače připojeného k doméně.
 
-Následující diagram znázorňuje pracovní postup od konce pro povolení ověřování Azure AD DS přes SMB pro soubory Azure.
+Následující diagram znázorňuje kompletní pracovní postup pro povolení ověřování Azure služba AD DS přes protokol SMB pro soubory Azure.
 
-![Diagram znázorňující pracovní postup Azure AD přes SMB pro soubory Azure](media/storage-files-active-directory-enable/azure-active-directory-over-smb-workflow.png)
+![Diagram znázorňující pracovní postup Azure AD pomocí protokolu SMB pro Azure Files](media/storage-files-active-directory-enable/azure-active-directory-over-smb-workflow.png)
 
-## <a name="1-enable-azure-ad-ds-authentication-for-your-account"></a>1. Povolení ověřování Azure AD DS pro váš účet
+## <a name="1-enable-azure-ad-ds-authentication-for-your-account"></a>1. povolení ověřování Azure služba AD DS pro váš účet
 
-Pokud chcete povolit ověřování Azure AD DS přes SMB pro soubory Azure, můžete nastavit vlastnost na účtech úložiště pomocí portálu Azure, Azure PowerShell nebo Azure CLI. Nastavení této vlastnosti implicitně "doména připojí" účet úložiště s přidružené nasazení Azure AD DS. Ověřování Azure AD DS přes SMB je pak povolena pro všechny nové a existující sdílené složky v účtu úložiště.
+Pokud chcete povolit službu Azure služba AD DS Authentication přes protokol SMB pro soubory Azure, můžete nastavit vlastnost na účtech úložiště pomocí rozhraní příkazového řádku Azure Portal, Azure PowerShell nebo Azure CLI. Nastavení této vlastnosti implicitně připojí k doméně účet úložiště s přidruženým nasazením služby Azure služba AD DS. Pro všechny nové a existující sdílené složky v účtu úložiště se pak povolí ověřování Azure služba AD DS přes protokol SMB.
 
-Nezapomeňte, že ověřování Azure AD DS přes SMB můžete povolit až po úspěšném nasazení služby Azure AD DS do klienta Azure AD. Další informace naleznete v [požadavcích](#prerequisites)na následující požadavky .
+Mějte na paměti, že můžete povolit ověřování Azure služba AD DS přes protokol SMB až po úspěšném nasazení služba AD DS Azure do tenanta Azure AD. Další informace najdete v části [požadavky](#prerequisites).
 
 ### <a name="azure-portal"></a>portál Azure
 
-Pokud chcete povolit ověřování Azure AD DS přes SMB s [portálem Azure](https://portal.azure.com), postupujte takto:
+Pokud chcete povolit ověřování pomocí služby Azure služba AD DS přes protokol SMB s [Azure Portal](https://portal.azure.com), postupujte podle následujících kroků:
 
-1. Na webu Azure Portal přejděte na svůj stávající účet úložiště nebo [si vytvořte účet úložiště](../common/storage-account-create.md).
+1. V Azure Portal navštivte svůj existující účet úložiště nebo [vytvořte účet úložiště](../common/storage-account-create.md).
 1. V části **Nastavení** vyberte **Konfigurace**.
-1. V části **Přístup ke sdíleným položkám založený na identitě** přepněte přepínač pro **službu Azure Active Directory Domain Service (AAD DS)** na **Povoleno**.
+1. V části **přístup založený na identitě pro sdílené složky** přepněte přepínač pro **službu Azure Active Directory Domain Service (AAD DS)** na **povolenou**.
 1. Vyberte **Uložit**.
 
-Následující obrázek ukazuje, jak povolit ověřování Azure AD DS přes SMB pro váš účet úložiště.
+Následující obrázek ukazuje, jak povolit Azure služba AD DS ověřování pomocí protokolu SMB pro váš účet úložiště.
 
-![Povolení ověřování Azure AD DS přes SMB na webu Azure Portal](media/storage-files-active-directory-enable/portal-enable-active-directory-over-smb.png)
+![Povolit ověřování Azure služba AD DS přes SMB v Azure Portal](media/storage-files-active-directory-enable/portal-enable-active-directory-over-smb.png)
 
 ### <a name="powershell"></a>PowerShell  
 
-Pokud chcete povolit ověřování Azure AD DS přes SMB pomocí Azure PowerShellu, nainstalujte nejnovější modul Az (2.4 nebo novější) nebo modul Az.Storage (1.5 nebo novější). Další informace o instalaci PowerShellu najdete [v tématu Instalace Azure PowerShellu v systému Windows pomocí PowerShellu](https://docs.microsoft.com/powershell/azure/install-Az-ps).
+Pokud chcete povolit ověřování Azure služba AD DS přes protokol SMB s Azure PowerShell, nainstalujte nejnovější modul AZ Module (2,4 nebo novější) nebo modul AZ. Storage (1,5 nebo novější). Další informace o instalaci PowerShellu najdete v tématu [instalace Azure PowerShell ve Windows pomocí PowerShellGet](https://docs.microsoft.com/powershell/azure/install-Az-ps).
 
-Chcete-li vytvořit nový účet úložiště, zavolejte [new-azstorageaccount](https://docs.microsoft.com/powershell/module/az.storage/New-azStorageAccount?view=azps-2.5.0)a nastavte parametr **EnableAzureActiveDirectoryDomainServicesForFile** na **hodnotu true**. V následujícím příkladu nezapomeňte nahradit zástupné hodnoty vlastními hodnotami. (Pokud jste používali předchozí modul náhledu, parametr pro povolení funkce je **EnableAzureFilesAadIntegrationForSMB**.)
+Pokud chcete vytvořit nový účet úložiště, zavolejte [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/New-azStorageAccount?view=azps-2.5.0)a pak nastavte parametr **EnableAzureActiveDirectoryDomainServicesForFile** na **true**. V následujícím příkladu Nezapomeňte nahradit hodnoty zástupných symbolů vlastními hodnotami. (Pokud jste používali předchozí modul Preview, je parametr pro povolení funkcí **EnableAzureFilesAadIntegrationForSMB**.)
 
 ```powershell
 # Create a new storage account
@@ -105,7 +105,7 @@ New-AzStorageAccount -ResourceGroupName "<resource-group-name>" `
     -EnableAzureActiveDirectoryDomainServicesForFile $true
 ```
 
-Chcete-li tuto funkci povolit na existujících účtech úložiště, použijte následující příkaz:
+Pokud chcete tuto funkci povolit u stávajících účtů úložiště, použijte následující příkaz:
 
 ```powershell
 # Update a storage account
@@ -117,16 +117,16 @@ Set-AzStorageAccount -ResourceGroupName "<resource-group-name>" `
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Pokud chcete povolit ověřování Azure AD přes SMB pomocí azure CLI, nainstalujte nejnovější verzi příkazového příkazového příkazu (verze 2.0.70 nebo novější). Další informace o instalaci azure cli najdete [v tématu instalace příkazového příkazového příkazu k webu Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+Pokud chcete povolit ověřování Azure AD přes protokol SMB pomocí Azure CLI, nainstalujte nejnovější verzi rozhraní příkazového řádku (verze 2.0.70 nebo novější). Další informace o instalaci rozhraní příkazového řádku Azure najdete v tématu [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-Chcete-li vytvořit nový účet úložiště, zavolejte[az úložiště vytvořit](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create)a nastavte `--enable-files-aadds` vlastnost na **true**. V následujícím příkladu nezapomeňte nahradit zástupné hodnoty vlastními hodnotami. (Pokud jste používali předchozí modul náhledu, parametr pro povolení funkce je **file-aad**.)
+Chcete-li vytvořit nový účet úložiště, zavolejte příkaz[AZ Storage Account Create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create)a nastavte `--enable-files-aadds` vlastnost na **hodnotu true**. V následujícím příkladu Nezapomeňte nahradit hodnoty zástupných symbolů vlastními hodnotami. (Pokud jste používali předchozí modul Preview, je parametr pro povolení funkce **File-AAD**.)
 
 ```azurecli-interactive
 # Create a new storage account
 az storage account create -n <storage-account-name> -g <resource-group-name> --enable-files-aadds $true
 ```
 
-Chcete-li tuto funkci povolit na existujících účtech úložiště, použijte následující příkaz:
+Pokud chcete tuto funkci povolit u stávajících účtů úložiště, použijte následující příkaz:
 
 ```azurecli-interactive
 # Update a new storage account
@@ -135,11 +135,11 @@ az storage account update -n <storage-account-name> -g <resource-group-name> --e
 
 [!INCLUDE [storage-files-aad-permissions-and-mounting](../../../includes/storage-files-aad-permissions-and-mounting.md)]
 
-Nyní jste úspěšně povolili ověřování Azure AD DS přes SMB a přiřadili vlastní roli, která poskytuje přístup ke sdílené složce Azure s identitou Azure AD. Chcete-li udělit přístup ke sdílené složce dalším uživatelům, postupujte podle pokynů v části [Přiřadit přístupová oprávnění](#2-assign-access-permissions-to-an-identity) k použití identity a [konfigurace oprávnění ntfs přes oddíly SMB](#3-configure-ntfs-permissions-over-smb).
+Nyní jste úspěšně povolili ověřování Azure služba AD DS přes protokol SMB a přiřadili jste vlastní roli, která poskytuje přístup ke sdílené složce Azure pomocí identity Azure AD. Pokud chcete ostatním uživatelům udělit přístup ke sdílené složce, postupujte podle pokynů v tématu [Přiřazení přístupových oprávnění](#2-assign-access-permissions-to-an-identity) k používání identity a [Konfigurace oprávnění NTFS v oddílech SMB](#3-configure-ntfs-permissions-over-smb).
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o souborech Azure a o tom, jak používat Azure AD přes SMB, najdete v těchto prostředcích:
+Další informace o službě soubory Azure a o tom, jak používat Azure AD přes SMB, najdete v těchto zdrojích:
 
-- [Přehled podpory ověřování na základě identity souborů Azure pro přístup SMB](storage-files-active-directory-overview.md)
+- [Přehled podpory ověřování na základě identity souborů Azure pro přístup přes protokol SMB](storage-files-active-directory-overview.md)
 - [Nejčastější dotazy](storage-files-faq.md)

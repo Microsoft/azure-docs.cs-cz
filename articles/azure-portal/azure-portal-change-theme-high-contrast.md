@@ -1,6 +1,6 @@
 ---
-title: Zapnutí vysokého kontrastu na webu Azure Portal | Dokumenty společnosti Microsoft
-description: Změňte motiv portálu Azure a zvolte zobrazené barvy pozadí a písma. Zapněte vysoký kontrast, aby byl portál Azure rychlejší a čitelnější.
+title: Zapnout vysoký kontrast v Azure Portal | Microsoft Docs
+description: Změňte motiv Azure Portal tak, aby se zobrazily zobrazené barvy pozadí a písma. Zapněte vysoký kontrast, aby bylo Azure Portal rychlejší a snazší si je přečíst.
 services: azure-portal
 keywords: ''
 author: mgblythe
@@ -11,46 +11,46 @@ ms.service: azure-portal
 ms.custom: accessibility
 manager: mtillman
 ms.openlocfilehash: ae135e0d7ac613d78b1c1f76e233503a60570f0f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76310760"
 ---
-# <a name="turn-on-high-contrast-or-change-the-theme-in-the-azure-portal"></a>Zapnutí vysokého kontrastu nebo změna motivu na webu Azure Portal
+# <a name="turn-on-high-contrast-or-change-the-theme-in-the-azure-portal"></a>Zapnutí vysokého kontrastu nebo změna motivu v Azure Portal
 
-Nastavení vysokého kontrastu usnadňují čtení portálu Azure. Můžete také zvolit motiv, který změní barvy pozadí portálu.
+Nastavení vysokého kontrastu usnadňuje čtení Azure Portal. Můžete také zvolit motiv, který změní barvy pozadí portálu.
 
-Pokud potřebujete větší kontrast nebo chcete změnit barevné schéma na webu Azure Portal, přejděte na nastavení portálu a proveďte změnu.
+Pokud potřebujete vyšší kontrast nebo chcete změnit barevné schéma v Azure Portal, přejděte na nastavení portálu, abyste provedli změnu.
 
 ## <a name="turn-on-high-contrast"></a>Zapnutí vysokého kontrastu
 
-1. V záhlaví [portálu Azure](https://portal.azure.com)vyberte **Nastavení**.
+1. V hlavičce [Azure Portal](https://portal.azure.com)vyberte **Nastavení**.
 
-    ![Snímek obrazovky, který zobrazuje ikonu ozubeného kola nastavení portálu na webu Azure Portal](./media/azure-portal-change-theme-high-contrast/azure-portal-settings-icon.png)
-1. Zvolte **Bílá** nebo **Černá**.
+    ![Snímek obrazovky, který zobrazuje ikonu ozubeného kolečka pro nastavení portálu v Azure Portal](./media/azure-portal-change-theme-high-contrast/azure-portal-settings-icon.png)
+1. Vyberte **bílou** nebo **černou**.
 
-    ![Snímek obrazovky s možnostmi vysokého kontrastu v nastavení portálu Azure](./media/azure-portal-change-theme-high-contrast/azure-portal-highcontrast-options.png)
+    ![Snímek obrazovky, který zobrazuje možnosti vysokého kontrastu v nastaveních Azure Portal](./media/azure-portal-change-theme-high-contrast/azure-portal-highcontrast-options.png)
 1. Vyberte **Použít**.
 
 > [!NOTE]
-> Pokud vyberete motiv s vysokým kontrastem, přepíše všechny ostatní výběry motivů.
+> Pokud vyberete motiv s vysokým kontrastem, přepíše se všechny ostatní výběry motivů.
 >
 >
 
-## <a name="change-theme"></a>Změna motivu
+## <a name="change-theme"></a>Změnit motiv
 
-1. V záhlaví [portálu Azure](https://portal.azure.com)vyberte **Nastavení**.
+1. V hlavičce [Azure Portal](https://portal.azure.com)vyberte **Nastavení**.
 
-    ![Snímek obrazovky, který zobrazuje ikonu ozubeného kola nastavení portálu na webu Azure Portal](./media/azure-portal-change-theme-high-contrast/azure-portal-settings-icon.png)
+    ![Snímek obrazovky, který zobrazuje ikonu ozubeného kolečka pro nastavení portálu v Azure Portal](./media/azure-portal-change-theme-high-contrast/azure-portal-settings-icon.png)
 
 1. Zvolte motiv.
 
-    ![Snímek obrazovky s možnostmi motivu v nastavení portálu Azure](./media/azure-portal-change-theme-high-contrast/azure-portal-theme-options.png)
+    ![Snímek obrazovky, který zobrazuje možnosti motivu v nastavení Azure Portal](./media/azure-portal-change-theme-high-contrast/azure-portal-theme-options.png)
 
 1. Vyberte **Použít**.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Klávesové zkratky na Azure Portal](azure-portal-keyboard-shortcuts.md)
+- [Klávesové zkratky v Azure Portal](azure-portal-keyboard-shortcuts.md)
 - [Podporované prohlížeče a zařízení](../azure-preview-portal-supported-browsers-devices.md)

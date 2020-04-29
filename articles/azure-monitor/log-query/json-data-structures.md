@@ -1,35 +1,35 @@
 ---
-title: Práce s řetězci v dotazech protokolu Azure Monitor | Dokumenty společnosti Microsoft
-description: Tento článek obsahuje kurz pro použití Azure Monitor Log Analytics na webu Azure Portal k dotazování a analýze dat protokolu v Azure Monitoru.
+title: Práce s řetězci v Azure Monitorch dotazech protokolu | Microsoft Docs
+description: Tento článek popisuje kurz použití Azure Monitor Log Analytics v Azure Portal k dotazování a analýze dat protokolu v Azure Monitor.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: f792820b7b0dff20e647031410ba87ac26c2495a
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80672977"
 ---
-# <a name="working-with-json-and-data-structures-in-azure-monitor-log-queries"></a>Práce s JSON a datovými strukturami v dotazech protokolu Azure Monitor
+# <a name="working-with-json-and-data-structures-in-azure-monitor-log-queries"></a>Práce s JSON a datovými strukturami v Azure Monitorch dotazech protokolu
 
 > [!NOTE]
-> Před dokončením této lekce byste měli dokončit [Začínáme s Azure Monitor Log Analytics](get-started-portal.md) a [Začínáme s dotazy protokolu Azure Monitor.](get-started-queries.md)
+> Před dokončením této lekce byste měli dokončit [Začínáme s Azure Monitor Log Analytics](get-started-portal.md) a [Začínáme s dotazy protokolu Azure monitor](get-started-queries.md) .
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-Vnořené objekty jsou objekty, které obsahují jiné objekty v poli nebo mapu párů klíč-hodnota. Tyto objekty jsou reprezentovány jako řetězce JSON. Tento článek popisuje, jak json se používá k načtení dat a analyzovat vnořené objekty.
+Vnořené objekty jsou objekty, které obsahují jiné objekty v poli nebo mapa párů klíč-hodnota. Tyto objekty jsou reprezentovány jako řetězce JSON. Tento článek popisuje, jak se pomocí formátu JSON načítají data a analyzují vnořené objekty.
 
 ## <a name="working-with-json-strings"></a>Práce s řetězci JSON
-Slouží `extractjson` k přístupu k určitému prvku JSON ve známé cestě. Tato funkce vyžaduje výraz cesty, který používá následující konvence.
+Použijte `extractjson` pro přístup k určitému prvku JSON ve známé cestě. Tato funkce vyžaduje výraz cesty, který používá následující konvence.
 
-- _$_ odkazovat na kořenovou složku
-- Pomocí zápisu závorky nebo tečky můžete odkazovat na indexy a prvky, jak je znázorněno v následujících příkladech.
+- _$_ Postup pro odkazování na kořenovou složku
+- Pomocí závorky nebo tečky můžete odkazovat na indexy a elementy, jak je znázorněno v následujících příkladech.
 
 
-Pomocí závorek pro indexy a tečky oddělte prvky:
+Rozdělte prvky pomocí hranatých závorek a teček:
 
 ```Kusto
 let hosts_report='{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}';
@@ -37,7 +37,7 @@ print hosts_report
 | extend status = extractjson("$.hosts[0].status", hosts_report)
 ```
 
-To je stejný výsledek pouze pomocí zápisu závorek:
+Jedná se o stejný výsledek s použitím pouze zápisu závorek:
 
 ```Kusto
 let hosts_report='{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}';
@@ -45,7 +45,7 @@ print hosts_report
 | extend status = extractjson("$['hosts'][0]['status']", hosts_report)
 ```
 
-Pokud existuje pouze jeden prvek, můžete použít pouze tečka zápis:
+Pokud je k dispozici pouze jeden prvek, lze použít pouze zápis tečky:
 
 ```Kusto
 let hosts_report=dynamic({"location":"North_DC", "status":"running", "rate":5});
@@ -57,7 +57,7 @@ print hosts_report
 ## <a name="working-with-objects"></a>Práce s objekty
 
 ### <a name="parsejson"></a>parsejson
-Přístup k více prvkům ve struktuře json je snadnější přístup jako dynamický objekt. Slouží `parsejson` k přetypovat textová data na dynamický objekt. Po převodu na dynamický typ lze k analýze dat použít další funkce.
+Chcete-li získat přístup k více prvkům ve struktuře JSON, je snazší k němu přistupovat jako dynamický objekt. Slouží `parsejson` k přetypování textových dat do dynamického objektu. Po převedení na dynamický typ lze pomocí dalších funkcí analyzovat data.
 
 ```Kusto
 let hosts_object = parsejson('{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}');
@@ -67,8 +67,8 @@ print hosts_object
 
 
 
-### <a name="arraylength"></a>délka pole
-Slouží `arraylength` ke spočítání počtu prvků v poli:
+### <a name="arraylength"></a>arraylength
+Slouží `arraylength` k počítání počtu prvků v poli:
 
 ```Kusto
 let hosts_object = parsejson('{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}');
@@ -77,7 +77,7 @@ print hosts_object
 ```
 
 ### <a name="mvexpand"></a>mvexpand
-Slouží `mvexpand` k rozdělení vlastností objektu do samostatných řádků.
+Slouží `mvexpand` k rozdělení vlastností objektu na samostatné řádky.
 
 ```Kusto
 let hosts_object = parsejson('{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}');
@@ -88,7 +88,7 @@ print hosts_object
 ![mvexpand](media/json-data-structures/mvexpand.png)
 
 ### <a name="buildschema"></a>buildschema
-Slouží `buildschema` k získání schématu, které přijímá všechny hodnoty objektu:
+Slouží `buildschema` k získání schématu, které připouštějí všechny hodnoty objektu:
 
 ```Kusto
 let hosts_object = parsejson('{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}');
@@ -96,7 +96,7 @@ print hosts_object
 | summarize buildschema(hosts_object)
 ```
 
-Výstupje schéma ve formátu JSON:
+Výstup je schéma ve formátu JSON:
 ```json
 {
     "hosts":
@@ -110,9 +110,9 @@ Výstupje schéma ve formátu JSON:
     }
 }
 ```
-Tento výstup popisuje názvy polí objektů a jejich odpovídající datové typy. 
+Tento výstup popisuje názvy polí objektů a jejich odpovídajících datových typů. 
 
-Vnořené objekty mohou mít různá schémata, například v následujícím příkladu:
+Vnořené objekty mohou mít různá schémata jako v následujícím příkladu:
 
 ```Kusto
 let hosts_object = parsejson('{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"status":"stopped", "rate":"3", "range":100}]}');
@@ -121,10 +121,10 @@ print hosts_object
 ```
 
 
-![Sestavení schématu](media/json-data-structures/buildschema.png)
+![Schéma sestavení](media/json-data-structures/buildschema.png)
 
 ## <a name="next-steps"></a>Další kroky
-Podívejte se na další lekce pro používání dotazů protokolu v Azure Monitoru:
+Další lekce k používání dotazů protokolu v Azure Monitor:
 
 - [Operace s řetězci](string-operations.md)
 - [Operace s datem a časem](datetime-operations.md)

@@ -1,6 +1,6 @@
 ---
 title: Vytvoření a správa veřejného partnerského vztahu Azure ExpressRoute
-description: Informace o veřejném partnerské vztahu Azure a správa
+description: Další informace o správě veřejných partnerských vztahů Azure
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -8,73 +8,73 @@ ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: cherylmc
 ms.openlocfilehash: 8c1afac834fb9abb2cbf82f16f046a1624b251f1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79481129"
 ---
 # <a name="create-and-manage-expressroute-public-peering"></a>Vytvoření a správa veřejného partnerského vztahu ExpressRoute
 
 > [!div class="op_single_selector"]
-> * [Článek - Veřejný peering](about-public-peering.md)
-> * [Video - Veřejný partnerský vztah](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit)
-> * [Článek - Partnerský vztah Microsoftu](expressroute-circuit-peerings.md#microsoftpeering)
+> * [Článek – veřejný partnerský vztah](about-public-peering.md)
+> * [Video – veřejný partnerský vztah](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit)
+> * [Článek – partnerský vztah Microsoftu](expressroute-circuit-peerings.md#microsoftpeering)
 >
 
-Tento článek vám pomůže vytvořit a spravovat konfiguraci směrování veřejného partnerského vztahu pro okruh ExpressRoute. Můžete také zkontrolovat stav, aktualizovat nebo odstranit a zrušit poskytování partnerských vztahů. Tento článek se vztahuje na okruhy Správce prostředků, které byly vytvořeny před zastaralou veřejnou partnerovou partnerkou. Pokud máte dříve existující okruh (vytvořený před zastaralou veřejnou partnerovou mocí), můžete spravovat nebo konfigurovat veřejný partnerský vztah pomocí [Azure PowerShellu](#powershell), [Azure CLI](#cli)a [portálu Azure](#portal).
+Tento článek vám pomůže vytvořit a spravovat konfiguraci směrování veřejných partnerských vztahů pro okruh ExpressRoute. Můžete také kontrolovat stav, aktualizovat nebo odstranit a zrušit zřízení partnerských vztahů. Tento článek se týká Správce prostředkůch okruhů, které byly vytvořené před veřejným partnerským vztahem, se zastaraly. Pokud máte dříve existující okruh (vytvořený před veřejným partnerským vztahem), můžete spravovat/konfigurovat veřejné partnerské vztahy pomocí [Azure PowerShell](#powershell), [Azure CLI](#cli)a [Azure Portal](#portal).
 
 >[!NOTE]
->Veřejný partnerský vztah je zastaralé. Veřejný partnerský vztah nelze vytvořit na nových obvodech ExpressRoute. Pokud máte nový okruh ExpressRoute, použijte místo toho [partnerský vztah Microsoftu](expressroute-circuit-peerings.md#microsoftpeering) pro vaše služby Azure.
+>Veřejný partnerský vztah je zastaralý. Pro nové okruhy ExpressRoute nemůžete vytvořit veřejný partnerský vztah. Pokud máte nový okruh ExpressRoute, místo toho použijte pro své služby Azure [partnerský vztah Microsoftu](expressroute-circuit-peerings.md#microsoftpeering) .
 >
 
 ## <a name="connectivity"></a>Připojení
 
-Připojení se vždy inicializuje ze služby WAN do služby Microsoft Azure. Služby Microsoft Azure nebudou moci inicializovat připojení do vaší sítě prostřednictvím této směrovací domény. Pokud je okruh ExpressRoute povolený pro veřejný partnerský vztah Azure, můžete získat přístup k [rozsahům veřejných IP adres používaných v Azure](../virtual-network/virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) přes okruh.
+Připojení se vždycky zahajuje z vaší sítě WAN až po Microsoft Azure služby. Služby Microsoft Azure Services nebudou moct iniciovat připojení k síti přes tuto doménu směrování. Pokud je pro veřejný partnerský vztah Azure povolen okruh ExpressRoute, můžete k [rozsahům veřejných IP adres, které se používají v Azure](../virtual-network/virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) , přistupovat přes okruh.
 
-Po povolení veřejného partnerského vztahu se můžete připojit k většině služeb Azure. Neumožňujeme vám selektivně vybírat služby, na které inzerujeme trasy.
+Po povolení veřejného partnerského vztahu se můžete připojit k většině služeb Azure. Neumožňujeme selektivně vybrat služby, pro které budeme inzerovat trasy.
 
-* Služby, jako je Azure Storage, SQL Databases a Weby, se nabízejí na veřejných IP adresách.
-* Prostřednictvím veřejné domény směrování partnerského vztahu se můžete soukromě připojit ke službám hostovaným na veřejných IP adresách, včetně virtuálních ip adres cloudových služeb.
-* Veřejnou doménu partnerského vztahu můžete připojit k vaší DMZ a připojit se ke všem službám Azure na jejich veřejných IP adresách z vaší sítě WAN, aniž byste se museli připojovat přes internet.
+* Služby, jako jsou Azure Storage, databáze SQL a weby, jsou nabízeny na veřejných IP adresách.
+* Prostřednictvím domény směrování veřejného partnerského vztahu se můžete soukromě připojit ke službám hostovaným na veřejných IP adresách, včetně VIP cloudových služeb.
+* Doménu veřejného partnerského vztahu můžete připojit k vašemu DMZ a připojit se ke všem službám Azure na svých veřejných IP adresách z vaší sítě WAN bez nutnosti připojení přes Internet.
 
 ## <a name="services"></a><a name="services"></a>Služby
 
-Tato část zobrazuje služby dostupné prostředpou veřejného partnerského vztahu. Vzhledem k tomu, že veřejný partnerský vztah je zastaralé, neexistuje žádný plán pro přidání nových nebo dalších služeb do veřejného partnerského vztahu. Pokud používáte veřejný partnerský vztah a služba, kterou chcete používat, je podporována pouze přes partnerský vztah Microsoftu, musíte přepnout do partnerského vztahu Microsoftu. Seznam podporovaných služeb najdete v [tématu Partnerský vztah Microsoftu.](expressroute-faqs.md#microsoft-peering)
+V této části jsou uvedené služby, které jsou dostupné přes veřejné partnerské vztahy. Vzhledem k tomu, že veřejný partnerský vztah je zastaralý, není k dispozici žádný plán pro přidání nových nebo dalších služeb do veřejného partnerského vztahu. Pokud používáte veřejný partnerský vztah a služba, kterou chcete použít, je podporovaná jenom přes partnerský vztah Microsoftu, musíte přepnout na partnerský vztah Microsoftu. Seznam podporovaných služeb najdete v tématu [partnerský vztah Microsoftu](expressroute-faqs.md#microsoft-peering) .
 
-**Podporovány:**
+**Doložen**
 
 * Power BI
-* Většina služeb Azure je podporovaná. Obraťte se přímo na službu, kterou chcete použít k ověření podpory.
+* Většina služeb Azure je podporovaná. Zkontrolujte přímo se službou, kterou chcete použít k ověření podpory.
 
-**Není podporováno:**
+**Nepodporováno:**
   * CDN
   * Azure Front Door
-  * Vícefaktorový ověřovací server (starší verze)
+  * Multi-Factor Authentication Server (starší verze)
   * Traffic Manager
 
-Chcete-li ověřit dostupnost pro konkrétní službu, můžete zkontrolovat dokumentaci pro tuto službu a zjistit, zda je pro tuto službu publikován vyhrazený rozsah. Pak můžete vyhledat rozsahy IP adres cílové služby a porovnat s rozsahy uvedenými v [azure IP rozsahy a značky služeb – veřejný cloud XML soubor](https://www.microsoft.com/download/details.aspx?id=56519). Případně můžete otevřít lístek podpory pro dotyčnou službu pro objasnění.
+Pokud chcete ověřit dostupnost konkrétní služby, můžete si prohlédnout dokumentaci k příslušné službě a zjistit, jestli je pro danou službu publikovaný rezervovaný rozsah. Pak můžete vyhledat rozsahy IP adres cílové služby a porovnat je s rozsahy uvedenými v části [rozsahy IP adres Azure a značky služby – Public Cloud. XML soubor](https://www.microsoft.com/download/details.aspx?id=56519). Případně můžete pro vyjasnění otevřít lístek podpory pro příslušnou službu.
 
-## <a name="peering-comparison"></a><a name="compare"></a>Porovnání partnerského vztahu
+## <a name="peering-comparison"></a><a name="compare"></a>Porovnání partnerských vztahů
 
 [!INCLUDE [peering comparison](../../includes/expressroute-peering-comparison.md)]
 
 > [!NOTE]
-> Veřejný partnerský vztah Azure má 1 IP adresu NAT přidruženou ke každé relaci Protokolu BGP. Pro více než 2 IP adresy NAT přejděte do partnerského vztahu Microsoftu. Partnerský vztah společnosti Microsoft umožňuje konfigurovat vlastní přidělení navádění na virtuální sítě a také použít filtry tras pro selektivní reklamy předponou. Další informace naleznete v tématu [Přesun do partnerského vztahu Microsoftu](https://docs.microsoft.com/azure/expressroute/how-to-move-peering).
+> Veřejný partnerský vztah Azure má 1 IP adresu NAT přidruženou ke každé relaci protokolu BGP. V případě více než 2 IP adres NAT přejděte na partnerský vztah Microsoftu. Partnerský vztah Microsoftu umožňuje nakonfigurovat vlastní přidělení NAT a také použít filtry tras pro inzerování selektivních předpon. Další informace najdete v tématu [Přesun na partnerský vztah Microsoftu](https://docs.microsoft.com/azure/expressroute/how-to-move-peering).
 >
 
 ## <a name="custom-route-filters"></a>Vlastní filtry tras
 
-Můžete definovat vlastní filtry tras v rámci sítě, aby spotřebovávaly pouze trasy, které potřebujete. Podrobné informace o konfiguraci směrování naleznete na stránce [Směrování.](expressroute-routing.md)
+V rámci sítě můžete definovat vlastní filtry tras, které budou využívat pouze trasy, které potřebujete. Podrobné informace o konfiguraci směrování najdete na stránce [Směrování](expressroute-routing.md) .
 
-## <a name="azure-powershell-steps"></a><a name="powershell"></a>Kroky Azure PowerShellu
+## <a name="azure-powershell-steps"></a><a name="powershell"></a>Azure PowerShell kroky
 
 
 [!INCLUDE [CloudShell](../../includes/expressroute-cloudshell-powershell-about.md)]
 
-Vzhledem k tomu, že veřejný partnerský vztah je zastaralé, nelze konfigurovat veřejný partnerský vztah na nový okruh ExpressRoute.
+Vzhledem k tomu, že veřejný partnerský vztah je zastaralý, nemůžete konfigurovat veřejný partnerský vztah na novém okruhu ExpressRoute.
 
-1. Ověřte, zda máte okruh ExpressRoute, který je zřízen a také povolen. Použijte následující příklad:
+1. Ověřte, že máte okruh ExpressRoute, který je zřízený a také povolený. Použijte následující příklad:
 
    ```azurepowershell-interactive
    Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
@@ -105,7 +105,7 @@ Vzhledem k tomu, že veřejný partnerský vztah je zastaralé, nelze konfigurov
    ServiceKey                       : **************************************
    Peerings                         : []
    ```
-2. Nakonfigurujte veřejný partnerský vztah Azure pro okruh. Než budete pokračovat dále, ujistěte se, že máte následující informace.
+2. Nakonfigurujte veřejný partnerský vztah Azure pro okruh. Než budete pokračovat, ujistěte se, že máte k dispozici následující informace.
 
    * Podsíť /30 pro primární propojení. Musí se jednat o platnou předponu veřejné IPv4 adresy.
    * Podsíť /30 pro sekundární propojení. Musí se jednat o platnou předponu veřejné IPv4 adresy.
@@ -114,7 +114,7 @@ Vzhledem k tomu, že veřejný partnerský vztah je zastaralé, nelze konfigurov
    * Volitelné:
    * Hodnota hash MD5, pokud se ji rozhodnete použít.
 
-   Spuštěním následujícího příkladu nakonfigurujte veřejný partnerský vztah Azure pro váš okruh
+   Spuštěním následujícího příkladu nakonfigurujte veřejný partnerský vztah Azure pro váš okruh.
 
    ```azurepowershell-interactive
    Add-AzExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -ExpressRouteCircuit $ckt -PeeringType AzurePublicPeering -PeerASN 100 -PrimaryPeerAddressPrefix "12.0.0.0/30" -SecondaryPeerAddressPrefix "12.0.0.4/30" -VlanId 100
@@ -122,7 +122,7 @@ Vzhledem k tomu, že veřejný partnerský vztah je zastaralé, nelze konfigurov
    Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
    ```
 
-   Pokud se rozhodnete použít hash MD5, použijte následující příklad:
+   Pokud se rozhodnete použít hodnotu hash MD5, použijte následující příklad:
 
    ```azurepowershell-interactive
    Add-AzExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -ExpressRouteCircuit $ckt -PeeringType AzurePublicPeering -PeerASN 100 -PrimaryPeerAddressPrefix "12.0.0.0/30" -SecondaryPeerAddressPrefix "12.0.0.4/30" -VlanId 100  -SharedKey "A1B2C3D4"
@@ -135,7 +135,7 @@ Vzhledem k tomu, že veřejný partnerský vztah je zastaralé, nelze konfigurov
    > 
    >
 
-### <a name="to-get-azure-public-peering-details"></a><a name="getpublic"></a>Získání podrobností o veřejném partnerského vztahu Azure
+### <a name="to-get-azure-public-peering-details"></a><a name="getpublic"></a>Získání podrobností veřejného partnerského vztahu Azure
 
 Podrobnosti o konfiguraci můžete získat pomocí následující rutiny:
 
@@ -147,7 +147,7 @@ Podrobnosti o konfiguraci můžete získat pomocí následující rutiny:
 
 ### <a name="to-update-azure-public-peering-configuration"></a><a name="updatepublic"></a>Aktualizace konfigurace veřejného partnerského vztahu Azure
 
-Libovolnou část konfigurace můžete aktualizovat v následujícím příkladu. V tomto příkladu je ID sítě VLAN okruhu aktualizováno z 200 na 600.
+Libovolnou část konfigurace můžete aktualizovat pomocí následujícího příkladu. V tomto příkladu je ID sítě VLAN okruhu Aktualizováno z 200 na 600.
 
 ```azurepowershell-interactive
 Set-AzExpressRouteCircuitPeeringConfig  -Name "AzurePublicPeering" -ExpressRouteCircuit $ckt -PeeringType AzurePublicPeering -PeerASN 100 -PrimaryPeerAddressPrefix "123.0.0.0/30" -SecondaryPeerAddressPrefix "123.0.0.4/30" -VlanId 600
@@ -164,12 +164,12 @@ Remove-AzExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -ExpressRou
 Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
-## <a name="azure-cli-steps"></a><a name="cli"></a>Kroky azure cli
+## <a name="azure-cli-steps"></a><a name="cli"></a>Kroky pro rozhraní příkazového řádku Azure
 
 
 [!INCLUDE [CloudShell](../../includes/expressroute-cloudshell-powershell-about.md)]
 
-1. Zkontrolujte okruh ExpressRoute a ujistěte se, že je zřízena a také povolena. Použijte následující příklad:
+1. Zkontrolujte okruh ExpressRoute a ujistěte se, že je zajištěný a také povolený. Použijte následující příklad:
 
    ```azurecli-interactive
    az network express-route list
@@ -206,21 +206,21 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
    "type": "Microsoft.Network/expressRouteCircuits]
    ```
 
-2. Nakonfigurujte veřejný partnerský vztah Azure pro okruh. Než budete pokračovat dále, ujistěte se, že máte následující informace.
+2. Nakonfigurujte veřejný partnerský vztah Azure pro okruh. Než budete pokračovat, ujistěte se, že máte k dispozici následující informace.
 
    * Podsíť /30 pro primární propojení. Musí se jednat o platnou předponu veřejné IPv4 adresy.
    * Podsíť /30 pro sekundární propojení. Musí se jednat o platnou předponu veřejné IPv4 adresy.
    * Platné ID sítě VLAN, na kterém se má partnerský vztah vytvořit. Zajistěte, aby žádný jiný partnerský vztah v okruhu nepoužíval stejné ID sítě VLAN.
    * Číslo AS pro partnerský vztah. Můžete použít 2bajtová i 4bajtová čísla AS.
-   * **Nepovinné -** Hash MD5, pokud se rozhodnete použít jeden.
+   * **Volitelné –** Hodnota hash MD5, pokud se rozhodnete ji použít.
 
-   Spusťte následující příklad konfigurace veřejného partnerského vztahu Azure pro váš okruh:
+   Spuštěním následujícího příkladu nakonfigurujte veřejný partnerský vztah Azure pro váš okruh:
 
    ```azurecli-interactive
    az network express-route peering create --circuit-name MyCircuit --peer-asn 100 --primary-peer-subnet 12.0.0.0/30 -g ExpressRouteResourceGroup --secondary-peer-subnet 12.0.0.4/30 --vlan-id 200 --peering-type AzurePublicPeering
    ```
 
-   Pokud se rozhodnete použít hash MD5, použijte následující příklad:
+   Pokud se rozhodnete použít hodnotu hash MD5, použijte následující příklad:
 
    ```azurecli-interactive
    az network express-route peering create --circuit-name MyCircuit --peer-asn 100 --primary-peer-subnet 12.0.0.0/30 -g ExpressRouteResourceGroup --secondary-peer-subnet 12.0.0.4/30 --vlan-id 200 --peering-type AzurePublicPeering --SharedKey "A1B2C3D4"
@@ -231,7 +231,7 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 
 ### <a name="to-view-azure-public-peering-details"></a><a name="getpublic"></a>Zobrazení podrobností veřejného partnerského vztahu Azure
 
-Podrobnosti o konfiguraci můžete získat v následujícím příkladu:
+Podrobnosti o konfiguraci můžete získat pomocí následujícího příkladu:
 
 ```azurecli
 az network express-route peering show -g ExpressRouteResourceGroup --circuit-name MyCircuit --name AzurePublicPeering
@@ -266,7 +266,7 @@ Výstup se podobá následujícímu příkladu:
 
 ### <a name="to-update-azure-public-peering-configuration"></a><a name="updatepublic"></a>Aktualizace konfigurace veřejného partnerského vztahu Azure
 
-Libovolnou část konfigurace můžete aktualizovat v následujícím příkladu. V tomto příkladu je ID sítě VLAN okruhu aktualizováno z 200 na 600.
+Libovolnou část konfigurace můžete aktualizovat pomocí následujícího příkladu. V tomto příkladu je ID sítě VLAN okruhu Aktualizováno z 200 na 600.
 
 ```azurecli-interactive
 az network express-route peering update --vlan-id 600 -g ExpressRouteResourceGroup --circuit-name MyCircuit --name AzurePublicPeering
@@ -280,25 +280,25 @@ Konfiguraci partnerského vztahu můžete odebrat spuštěním následujícího 
 az network express-route peering delete -g ExpressRouteResourceGroup --circuit-name MyCircuit --name AzurePublicPeering
 ```
 
-## <a name="azure-portal-steps"></a><a name="portal"></a>Kroky portálu Azure
+## <a name="azure-portal-steps"></a><a name="portal"></a>Azure Portal kroky
 
-Chcete-li nakonfigurovat partnerský vztah, použijte kroky PowerShellu nebo CLI obsažené v tomto článku. Chcete-li spravovat partnerský vztah, můžete použít následující části. Pro odkaz, tyto kroky vypadají podobně jako správa [partnerského vztahu Microsoftu na portálu](expressroute-howto-routing-portal-resource-manager.md#msft).
+Pro konfiguraci partnerského vztahu použijte kroky pro PowerShell nebo CLI obsažené v tomto článku. Pro správu partnerského vztahu můžete použít následující části. U těchto kroků se tyto kroky podobají tomu, jak spravovat [partnerský vztah Microsoftu na portálu](expressroute-howto-routing-portal-resource-manager.md#msft).
 
 ### <a name="to-view-azure-public-peering-details"></a><a name="get"></a>Zobrazení podrobností veřejného partnerského vztahu Azure
 
-Zobrazte vlastnosti veřejného partnerského vztahu Azure výběrem partnerského vztahu na portálu.
+Výběrem partnerského vztahu na portálu zobrazte vlastnosti veřejného partnerského vztahu Azure.
 
 ### <a name="to-update-azure-public-peering-configuration"></a><a name="update"></a>Aktualizace konfigurace veřejného partnerského vztahu Azure
 
-Vyberte řádek pro partnerský vztah a upravte vlastnosti partnerského vztahu.
+Vyberte řádek pro partnerský vztah a pak upravte vlastnosti partnerského vztahu.
 
 ### <a name="to-delete-azure-public-peering"></a><a name="delete"></a>Odstranění veřejného partnerského vztahu Azure
 
-Odeberte konfiguraci partnerského vztahu výběrem ikony odstranění.
+Odeberte konfiguraci partnerského vztahu tak, že vyberete ikonu Odstranit.
 
 ## <a name="next-steps"></a>Další kroky
 
-Dalším krokem [je propojení virtuální sítě s okruhem ExpressRoute](expressroute-howto-linkvnet-arm.md).
+Dalším krokem je [propojení virtuální sítě s okruhem ExpressRoute](expressroute-howto-linkvnet-arm.md).
 
 * Další informace o pracovních postupech ExpressRoute najdete v tématu [Pracovní postupy ExpressRoute](expressroute-workflows.md).
 * Další informace o partnerském vztahu okruhu najdete v tématu [Okruhy ExpressRoute a domény směrování](expressroute-circuit-peerings.md).

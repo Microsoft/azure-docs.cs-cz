@@ -1,6 +1,6 @@
 ---
 title: Konfigurace LVM a RAID na šifrovaných zařízeních – Azure Disk Encryption
-description: Tento článek obsahuje pokyny pro konfiguraci LVM a RAID na šifrovaných zařízeních pro virtuální počítače s Linuxem.
+description: Tento článek poskytuje pokyny pro konfiguraci LVM a RAID na šifrovaných zařízeních pro virtuální počítače se systémem Linux.
 author: jofrance
 ms.service: security
 ms.topic: article
@@ -8,60 +8,60 @@ ms.author: jofrance
 ms.date: 03/17/2020
 ms.custom: seodec18
 ms.openlocfilehash: 4e342ff44af38b8e79dc8695c1270b1f5c68e0a8
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80657448"
 ---
 # <a name="configure-lvm-and-raid-on-encrypted-devices"></a>Konfigurace LVM a RAID na šifrovaných zařízeních
 
-Tento článek je podrobný proces, jak provádět správu logických svazků (LVM) a RAID na šifrovaných zařízeních. Tento proces se vztahuje na následující prostředí:
+Tento článek popisuje podrobný postup, jak provádět správu logických svazků (LVM) a RAID v zašifrovaných zařízeních. Tento postup platí pro následující prostředí:
 
-- Linuxové distribuce
-    - RHEL 7,6+
-    - Ubuntu 18.04+
-    - SUSE 12+
-- Jednoprůchodové rozšíření azure diskového šifrování
-- Rozšíření o dvouprůchodové šifrování disku Azure
+- Distribuce systému Linux
+    - RHEL 7.6 +
+    - Ubuntu 18.04 +
+    - SUSE 12 +
+- Rozšíření pro jedno průchod Azure Disk Encryption
+- Azure Disk Encryption rozšíření pro duální průchod
 
 
 ## <a name="scenarios"></a>Scénáře
 
 Postupy v tomto článku podporují následující scénáře:  
 
-- Konfigurace LVM nad šifrovanými zařízeními (LVM-on-crypt)
-- Konfigurace raidu na šifrovaných zařízeních (RAID-on-crypt)
+- Konfigurace LVM na šifrovaných zařízeních (LVM-on-crypt)
+- Konfigurace RAID na zašifrovaných zařízeních (RAID-on-crypt)
 
-Po zašifrování podkladového zařízení nebo zařízení můžete vytvořit struktury LVM nebo RAID nad tuto šifrovanou vrstvou. 
+Až budou základní zařízení nebo zařízení zašifrovaná, můžete vytvořit struktury LVM nebo RAID nad touto šifrovanou vrstvou. 
 
-Fyzické svazky (PV) jsou vytvořeny nad šifrovanou vrstvou. Fyzické svazky se používají k vytvoření skupiny svazků. Vytvoříte svazky a přidáte požadované položky na /etc/fstab. 
+Fyzické svazky (PVs) se vytvoří v zašifrované vrstvě. Fyzické svazky slouží k vytvoření skupiny svazků. Vytvoříte svazky a přidáte požadované položky v adresáři/etc/fstab. 
 
 ![Diagram vrstev struktur LVM](./media/disk-encryption/lvm-raid-on-crypt/000-lvm-raid-crypt-diagram.png)
 
-Podobným způsobem je zařízení RAID vytvořeno nad šifrovanou vrstvou na discích. Souborový systém je vytvořen na vrcholu zařízení RAID a přidán do /etc/fstab jako běžné zařízení.
+Podobným způsobem se zařízení RAID vytvoří v horní části zašifrované vrstvy na discích. Na zařízení RAID se vytvoří systém souborů a jako běžné zařízení se přidají do/etc/fstab.
 
 ## <a name="considerations"></a>Požadavky
 
-Doporučujeme používat LVM-on-crypt. RAID je možnost, když LVM nelze použít z důvodu omezení konkrétní aplikace nebo prostředí.
+Doporučujeme použít LVM-on-crypt. RAID je možnost, když LVM nejde použít kvůli konkrétnímu omezení aplikace nebo prostředí.
 
-Budete používat možnost **EncryptFormatAll.** Další informace o této možnosti naleznete [v tématu Použití funkce EncryptFormatAll pro datové disky na virtuálních počítačích s Linuxem](https://docs.microsoft.com/azure/virtual-machines/linux/disk-encryption-linux#use-encryptformatall-feature-for-data-disks-on-linux-vms).
+Použijete možnost **EncryptFormatAll** . Další informace o této možnosti najdete v tématu [použití funkce EncryptFormatAll pro datové disky na virtuálních počítačích se systémem Linux](https://docs.microsoft.com/azure/virtual-machines/linux/disk-encryption-linux#use-encryptformatall-feature-for-data-disks-on-linux-vms).
 
-I když můžete použít tuto metodu, když jste také šifrování operačního systému, jsme jen šifrování datových jednotek zde.
+I když můžete použít tuto metodu, když šifrujete i operační systém, právě šifrujeme datové jednotky.
 
-Postupy předpokládají, že jste už zkontrolovali požadavky ve [scénářích Azure Disk Encryption na virtuálních počítačích s Linuxem](https://docs.microsoft.com/azure/virtual-machines/linux/disk-encryption-linux) a na [úvodním panelu: Vytvoření a šifrování virtuálního počítače s Linuxem pomocí azure cli](https://docs.microsoft.com/azure/virtual-machines/linux/disk-encryption-cli-quickstart).
+V těchto postupech se předpokládá, že už jste si přečetli požadavky v [Azure Disk Encryption scénářích na virtuálních počítačích s Linux](https://docs.microsoft.com/azure/virtual-machines/linux/disk-encryption-linux) a v [rychlém startu: vytvoření a šifrování virtuálního počítače se systémem Linux pomocí Azure CLI](https://docs.microsoft.com/azure/virtual-machines/linux/disk-encryption-cli-quickstart).
 
-Dvouprůchodová verze Azure Disk Encryption je na cestě vyřazení a už by se neměla používat na nových šifrováních.
+Verze Azure Disk Encryption s dvojím průchodem je na cestě pro vyřazení a neměla by se používat pro nová šifrování.
 
 ## <a name="general-steps"></a>Obecné kroky
 
 Pokud používáte konfigurace "on-crypt", použijte proces popsaný v následujících postupech.
 
 >[!NOTE] 
->V celém článku používáme proměnné. Odpovídajícím způsobem nahraďte hodnoty.
+>V celém článku používáme proměnné. Nahraďte hodnoty odpovídajícím způsobem.
 
 ### <a name="deploy-a-vm"></a>Nasazení virtuálního počítače 
-Následující příkazy jsou volitelné, ale doporučujeme je použít na nově nasazený virtuální počítač (VM).
+Následující příkazy jsou volitelné, ale doporučujeme je použít na nově nasazeném virtuálním počítači (VM).
 
 PowerShell:
 
@@ -74,7 +74,7 @@ New-AzVm -ResourceGroupName ${RGNAME} `
 -Credential ${creds} `
 -Verbose
 ```
-Cli Azure:
+Rozhraní příkazového řádku Azure:
 
 ```bash
 az vm create \
@@ -87,8 +87,8 @@ az vm create \
 --size ${VMSIZE} \
 -o table
 ```
-### <a name="attach-disks-to-the-vm"></a>Připojení disků k virtuálnímu počítače
-Opakujte následující příkazy pro `$N` počet nových disků, které chcete připojit k virtuálnímu počítače.
+### <a name="attach-disks-to-the-vm"></a>Připojit disky k virtuálnímu počítači
+Pro `$N` počet nových disků, které se mají připojit k virtuálnímu počítači, opakujte následující příkazy.
 
 PowerShell:
 
@@ -102,7 +102,7 @@ $vm = Add-AzVMDataDisk -VM $vm -Name $dataDiskName -CreateOption Attach -Managed
 Update-AzVM -VM ${VM} -ResourceGroupName ${RGNAME}
 ```
 
-Cli Azure:
+Rozhraní příkazového řádku Azure:
 
 ```bash
 az vm disk attach \
@@ -114,7 +114,7 @@ az vm disk attach \
 -o table
 ```
 
-### <a name="verify-that-the-disks-are-attached-to-the-vm"></a>Ověřte, že jsou disky připojené k virtuálnímu počítače
+### <a name="verify-that-the-disks-are-attached-to-the-vm"></a>Ověřte, že jsou disky připojené k virtuálnímu počítači.
 PowerShell:
 ```powershell
 $VM = Get-AzVM -ResourceGroupName ${RGNAME} -Name ${VMNAME}
@@ -122,12 +122,12 @@ $VM.StorageProfile.DataDisks | Select-Object Lun,Name,DiskSizeGB
 ```
 ![Seznam připojených disků v PowerShellu](./media/disk-encryption/lvm-raid-on-crypt/001-lvm-raid-check-disks-powershell.png)
 
-Cli Azure:
+Rozhraní příkazového řádku Azure:
 
 ```bash
 az vm show -g ${RGNAME} -n ${VMNAME} --query storageProfile.dataDisks -o table
 ```
-![Seznam připojených disků v příkazovém příkazu k azure](./media/disk-encryption/lvm-raid-on-crypt/002-lvm-raid-check-disks-cli.png)
+![Seznam připojených disků v Azure CLI](./media/disk-encryption/lvm-raid-on-crypt/002-lvm-raid-check-disks-cli.png)
 
 Portál:
 
@@ -138,33 +138,33 @@ Operační systém:
 ```bash
 lsblk 
 ```
-![Seznam připojených disků v os](./media/disk-encryption/lvm-raid-on-crypt/004-lvm-raid-check-disks-os.png)
+![Seznam připojených disků v operačním systému](./media/disk-encryption/lvm-raid-on-crypt/004-lvm-raid-check-disks-os.png)
 
-### <a name="configure-the-disks-to-be-encrypted"></a>Konfigurace zašifrovaných disků
-Tato konfigurace se provádí na úrovni operačního systému. Odpovídající disky jsou nakonfigurované pro tradiční šifrování prostřednictvím šifrování disku Azure:
+### <a name="configure-the-disks-to-be-encrypted"></a>Konfigurace disků, které mají být zašifrovány
+Tato konfigurace se provádí na úrovni operačního systému. Odpovídající disky jsou nakonfigurovány pro tradiční šifrování prostřednictvím Azure Disk Encryption:
 
-- Systémy souborů jsou vytvořeny na horní části disků.
+- Systémy souborů jsou vytvořeny na discích.
 - Pro připojení systémů souborů jsou vytvořeny dočasné přípojné body.
-- Souborové systémy jsou konfigurovány na /etc/fstab, které mají být namontovány při startu.
+- Systémy souborů jsou nakonfigurovány na/etc/fstab, aby byly připojeny při spuštění.
 
-Zkontrolujte písmeno zařízení přiřazené k novým diskům. V tomto příkladu používáme čtyři datové disky.
+Podívejte se na písmeno zařízení přiřazené novým diskům. V tomto příkladu používáme čtyři datové disky.
 
 ```bash
 lsblk 
 ```
-![Datové disky připojené k os](./media/disk-encryption/lvm-raid-on-crypt/004-lvm-raid-check-disks-os.png)
+![Datové disky připojené k operačnímu systému](./media/disk-encryption/lvm-raid-on-crypt/004-lvm-raid-check-disks-os.png)
 
-### <a name="create-a-file-system-on-top-of-each-disk"></a>Vytvoření systému souborů nad každým diskem
-Tento příkaz itetuje vytvoření systému souborů ext4 na každém disku definovaném v části "pro" cyklu.
+### <a name="create-a-file-system-on-top-of-each-disk"></a>Vytvoření systému souborů na každém disku
+Tento příkaz provede iteraci vytvoření systému souborů ext4 na všech discích definovaných v rámci cyklu for.
 
 ```bash
 for disk in c d e f; do echo mkfs.ext4 -F /dev/sd${disk}; done |bash
 ```
-![Vytvoření souborového systému ext4](./media/disk-encryption/lvm-raid-on-crypt/005-lvm-raid-create-temp-fs.png)
+![Vytvoření systému souborů ext4](./media/disk-encryption/lvm-raid-on-crypt/005-lvm-raid-create-temp-fs.png)
 
-Najděte univerzálně jedinečný identifikátor (UUID) systémů souborů, které jste nedávno vytvořili, vytvořte dočasnou složku, přidejte odpovídající položky na /etc/fstab a připojte všechny systémy souborů.
+Najděte univerzálně jedinečný identifikátor (UUID) systémů souborů, které jste nedávno vytvořili, vytvořte dočasnou složku, přidejte odpovídající položky v/etc/fstab a připojte všechny systémy souborů.
 
-Tento příkaz také iterates na každém disku definované na "in" část "pro" cyklu:
+Tento příkaz také prochází na všech discích definovaných v části "pro" cyklus:
 
 ```bash
 for disk in c d e f; do diskuuid="$(blkid -s UUID -o value /dev/sd${disk})"; \
@@ -174,21 +174,21 @@ mount -a; \
 done
 ``` 
 
-### <a name="verify-that-the-disks-are-mounted-properly"></a>Ověřte, zda jsou disky správně připojeny
+### <a name="verify-that-the-disks-are-mounted-properly"></a>Ověřte, zda jsou disky správně připojeny.
 ```bash
 lsblk
 ```
-![Seznam namontovaných dočasných souborových systémů](./media/disk-encryption/lvm-raid-on-crypt/006-lvm-raid-verify-temp-fs.png)
+![Seznam připojených dočasných systémů souborů](./media/disk-encryption/lvm-raid-on-crypt/006-lvm-raid-verify-temp-fs.png)
 
-Ověřte také, zda jsou disky nakonfigurovány:
+Ověřte také, zda jsou disky konfigurovány:
 
 ```bash
 cat /etc/fstab
 ```
-![Informace o konfiguraci prostřednictvím fstab](./media/disk-encryption/lvm-raid-on-crypt/007-lvm-raid-verify-temp-fstab.png)
+![Konfigurační informace prostřednictvím fstab](./media/disk-encryption/lvm-raid-on-crypt/007-lvm-raid-verify-temp-fstab.png)
 
 ### <a name="encrypt-the-data-disks"></a>Šifrování datových disků
-Prostředí PowerShell pomocí šifrovacího klíče (KEK):
+PowerShell s použitím klíčového šifrovacího klíče (KEK):
 
 ```powershell
 $sequenceVersion = [Guid]::NewGuid() 
@@ -204,7 +204,7 @@ Set-AzVMDiskEncryptionExtension -ResourceGroupName $RGNAME `
 -skipVmBackup;
 ```
 
-Azure CLI pomocí KEK:
+Rozhraní příkazového řádku Azure pomocí KEK:
 
 ```bash
 az vm encryption enable \
@@ -228,65 +228,65 @@ Get-AzVmDiskEncryptionStatus -ResourceGroupName ${RGNAME} -VMName ${VMNAME}
 ```
 ![Stav šifrování v PowerShellu](./media/disk-encryption/lvm-raid-on-crypt/008-lvm-raid-verify-encryption-status-ps.png)
 
-Cli Azure:
+Rozhraní příkazového řádku Azure:
 
 ```bash
 az vm encryption show -n ${VMNAME} -g ${RGNAME} -o table
 ```
-![Stav šifrování v nastavení nastavení nastavení příkazu Azure](./media/disk-encryption/lvm-raid-on-crypt/009-lvm-raid-verify-encryption-status-cli.png)
+![Stav šifrování v Azure CLI](./media/disk-encryption/lvm-raid-on-crypt/009-lvm-raid-verify-encryption-status-cli.png)
 
 Portál:
 
 ![Stav šifrování na portálu](./media/disk-encryption/lvm-raid-on-crypt/010-lvm-raid-verify-encryption-status-portal.png)
 
-Úroveň operačního es:
+Úroveň operačního systému:
 
 ```bash
 lsblk
 ```
-![Stav šifrování v os](./media/disk-encryption/lvm-raid-on-crypt/011-lvm-raid-verify-encryption-status-os.png)
+![Stav šifrování v operačním systému](./media/disk-encryption/lvm-raid-on-crypt/011-lvm-raid-verify-encryption-status-os.png)
 
-Přípona přidá souborové systémy do /var/lib/azure_disk_encryption_config/azure_crypt_mount (staré šifrování) nebo do /etc/crypttab (nová šifrování).
+Rozšíření přidá systémy souborů do/var/lib/azure_disk_encryption_config/azure_crypt_mount (staré šifrování) nebo/etc/crypttab (nové šifrování).
 
 >[!NOTE] 
->Neupravujte žádný z těchto souborů.
+>Neměňte žádné z těchto souborů.
 
-Tento soubor se postará o aktivaci těchto disků během procesu spouštění, aby je LVM nebo RAID mohly později použít. 
+Tento soubor se postará o aktivaci těchto disků během procesu spouštění, aby je LVM nebo RAID mohl použít později. 
 
-Nestarejte se o přípojné body v tomto souboru. Azure Disk Encryption ztratí možnost připojit disky jako normální systém souborů poté, co vytvoříme fyzický svazek nebo zařízení RAID nad těmito šifrovanými zařízeními. (Tím se odstraní formát systému souborů, který jsme použili během procesu přípravy.)
+Nedělejte si starosti s přípojnými body tohoto souboru. Po vytvoření fyzického svazku nebo zařízení RAID na těchto zašifrovaných zařízeních ztratí Azure Disk Encryption možnost získat disky připojené jako normální systém souborů. (Tato akce odebere formát systému souborů, který jsme použili během procesu přípravy.)
 
-### <a name="remove-the-temporary-folders-and-temporary-fstab-entries"></a>Odebrání dočasných složek a dočasných položek fstab
-Odpojit systémy souborů na discích, které budou použity jako součást LVM.
+### <a name="remove-the-temporary-folders-and-temporary-fstab-entries"></a>Odebrat dočasné složky a dočasné položky fstab
+Systémy souborů odpojíte na discích, které se budou používat jako součást LVM.
 
 ```bash
 for disk in c d e f; do unmount /tempdata${disk}; done
 ```
-A odstranit / etc / fstab položky:
+A odeberte položky/etc/fstab:
 
 ```bash
 vi /etc/fstab
 ```
-### <a name="verify-that-the-disks-are-not-mounted-and-that-the-entries-on-etcfstab-were-removed"></a>Ověřte, zda disky nejsou připojeny a zda byly odebrány položky na /etc/fstab
+### <a name="verify-that-the-disks-are-not-mounted-and-that-the-entries-on-etcfstab-were-removed"></a>Ověřte, že disky nejsou připojené a že se odstranily položky v/etc/fstab.
 
 ```bash
 lsblk
 ```
-![Ověření, že dočasné systémy souborů jsou odpojeny](./media/disk-encryption/lvm-raid-on-crypt/012-lvm-raid-verify-disks-not-mounted.png)
+![Ověření, že jsou dočasné systémy souborů odpojeny](./media/disk-encryption/lvm-raid-on-crypt/012-lvm-raid-verify-disks-not-mounted.png)
 
-A ověřte, zda jsou disky nakonfigurovány:
+A ověřte, zda jsou disky konfigurovány:
 ```bash
 cat /etc/fstab
 ```
-![Ověření, že dočasné fstab položky jsou odstraněny](./media/disk-encryption/lvm-raid-on-crypt/013-lvm-raid-verify-fstab-temp-removed.png)
+![Ověření, že se odstranily dočasné položky fstab](./media/disk-encryption/lvm-raid-on-crypt/013-lvm-raid-verify-fstab-temp-removed.png)
 
 ## <a name="steps-for-lvm-on-crypt"></a>Kroky pro LVM-on-crypt
-Nyní, když jsou podkladové disky zašifrovány, můžete vytvořit struktury LVM.
+Teď, když jsou základní disky šifrované, můžete vytvořit LVM struktury.
 
-Namísto použití názvu zařízení použijte cesty /dev/mapper pro každý z disků k vytvoření fyzického svazku (na vrstvě kryptopty v horní části disku, nikoli na samotném disku).
+Místo použití názvu zařízení použijte cesty/dev/Mapper pro jednotlivé disky k vytvoření fyzického svazku (na vrstvě Crypto nad diskem, ne na samotném disku).
 
 ### <a name="configure-lvm-on-top-of-the-encrypted-layers"></a>Konfigurace LVM nad šifrovanými vrstvami
 #### <a name="create-the-physical-volumes"></a>Vytvoření fyzických svazků
-Zobrazí se upozornění, které se zeptá, zda je v pořádku vymazat podpis systému souborů. Pokračujte zadáním **y**nebo použijte **echo "y",** jak je znázorněno na obrázku:
+Zobrazí se upozornění s dotazem, jestli chcete vymazat signaturu systému souborů. Pokračujte zadáním **y**, nebo použijte **echo "y"** , jak je znázorněno níže:
 
 ```bash
 echo "y" | pvcreate /dev/mapper/c49ff535-1df9-45ad-9dad-f0846509f052
@@ -297,23 +297,23 @@ echo "y" | pvcreate /dev/mapper/4159c60a-a546-455b-985f-92865d51158c
 ![Ověření, že byl vytvořen fyzický svazek](./media/disk-encryption/lvm-raid-on-crypt/014-lvm-raid-pvcreate.png)
 
 >[!NOTE] 
->Názvy /dev/mapper/device zde je třeba nahradit pro vaše skutečné hodnoty na základě výstupu **lsblk**.
+>Názvy/dev/Mapper/Device je třeba nahradit skutečnými hodnotami na základě výstupu **lsblk**.
 
-#### <a name="verify-the-information-for-physical-volumes"></a>Ověření informací o fyzických svazcích
+#### <a name="verify-the-information-for-physical-volumes"></a>Ověřte informace o fyzických svazcích.
 ```bash
 pvs
 ```
 
-![Informace pro fyzické svazky](./media/disk-encryption/lvm-raid-on-crypt/015-lvm-raid-pvs.png)
+![Informace o fyzických svazcích](./media/disk-encryption/lvm-raid-on-crypt/015-lvm-raid-pvs.png)
 
 #### <a name="create-the-volume-group"></a>Vytvoření skupiny svazků
-Vytvořte skupinu svazků pomocí stejných zařízení, která již byla inicializována:
+Vytvořte skupinu svazků pomocí stejných zařízení, která jsou už inicializovaná:
 
 ```bash
 vgcreate vgdata /dev/mapper/
 ```
 
-### <a name="check-the-information-for-the-volume-group"></a>Kontrola informací pro skupinu svazků
+### <a name="check-the-information-for-the-volume-group"></a>Ověřte informace o skupině svazků.
 
 ```bash
 vgdisplay -v vgdata
@@ -323,14 +323,14 @@ pvs
 ```
 ![Informace pro skupinu svazků](./media/disk-encryption/lvm-raid-on-crypt/016-lvm-raid-pvs-on-vg.png)
 
-#### <a name="create-logical-volumes"></a>Vytvoření logických svazků
+#### <a name="create-logical-volumes"></a>Vytváření logických svazků
 
 ```bash
 lvcreate -L 10G -n lvdata1 vgdata
 lvcreate -L 7G -n lvdata2 vgdata
 ``` 
 
-#### <a name="check-the-created-logical-volumes"></a>Kontrola vytvořených logických svazků
+#### <a name="check-the-created-logical-volumes"></a>Ověřte vytvořené logické svazky.
 
 ```bash
 lvdisplay
@@ -339,7 +339,7 @@ lvdisplay vgdata/lvdata2
 ```
 ![Informace pro logické svazky](./media/disk-encryption/lvm-raid-on-crypt/017-lvm-raid-lvs.png)
 
-#### <a name="create-file-systems-on-top-of-the-structures-for-logical-volumes"></a>Vytvoření systémů souborů nad strukturami logických svazků
+#### <a name="create-file-systems-on-top-of-the-structures-for-logical-volumes"></a>Vytváření systémů souborů nad strukturami pro logické svazky
 
 ```bash
 echo "yes" | mkfs.ext4 /dev/vgdata/lvdata1
@@ -353,7 +353,7 @@ mkdir /data0
 mkdir /data1
 ```
 
-#### <a name="add-the-new-file-systems-to-etcfstab-and-mount-them"></a>Přidejte nové systémy souborů do /etc/fstab a připojte je
+#### <a name="add-the-new-file-systems-to-etcfstab-and-mount-them"></a>Přidejte nové systémy souborů pro/etc/fstab a připojte je.
 
 ```bash
 echo "/dev/mapper/vgdata-lvdata1 /data0 ext4 defaults,nofail 0 0" >>/etc/fstab
@@ -361,26 +361,26 @@ echo "/dev/mapper/vgdata-lvdata2 /data1 ext4 defaults,nofail 0 0" >>/etc/fstab
 mount -a
 ```
 
-#### <a name="verify-that-the-new-file-systems-are-mounted"></a>Ověřte, zda jsou připojeny nové systémy souborů
+#### <a name="verify-that-the-new-file-systems-are-mounted"></a>Ověřte, že jsou připojené nové systémy souborů.
 
 ```bash
 lsblk -fs
 df -h
 ```
-![Informace pro připojené souborové systémy](./media/disk-encryption/lvm-raid-on-crypt/018-lvm-raid-lsblk-after-lvm.png)
+![Informace pro připojené systémy souborů](./media/disk-encryption/lvm-raid-on-crypt/018-lvm-raid-lsblk-after-lvm.png)
 
-Na této variantě **lsblk**, jsme seznam zařízení zobrazující závislosti v opačném pořadí. Tato možnost pomáhá identifikovat zařízení seskupená podle logického svazku namísto původních názvů zařízení /dev/sd[disk].
+V této variaci **lsblk**uvádíme zařízení, která zobrazují závislosti v obráceném pořadí. Tato možnost pomáhá identifikovat zařízení seskupená podle logického svazku místo původních názvů zařízení/dev/SD [disk].
 
-Je důležité se ujistit, že možnost **nofail** je přidána do možností přípojného bodu svazků LVM vytvořených nad zařízením šifrovaným prostřednictvím šifrování disku Azure. Zabraňuje tomu, aby se operační systém zasekl během procesu spouštění (nebo v režimu údržby).
+Je důležité zajistit, aby se možnost **neúspěšného** připojení přidala do možností přípojného bodu LVM svazků vytvořených na zařízení zašifrovaném pomocí Azure Disk Encryption. Zabrání operačnímu systému v zablokování během procesu spouštění (nebo v režimu údržby).
 
-Pokud nepoužijete možnost **nofail:**
+Pokud nepoužijete možnost **neúspěšné** :
 
-- Operační systém se nikdy nedostane do fáze, kdy je spuštěno azure disk encryption a datové disky jsou odemčené a připojené. 
-- Šifrované disky budou na konci zaváděcího procesu odemčeny. Svazky LVM a systémy souborů se automaticky připojí, dokud je Azure Disk Encryption neodemkne. 
+- Operační systém se nikdy neobjeví ve fázi, kde je spuštěný Azure Disk Encryption a datové disky jsou odemčené a připojené. 
+- Šifrované disky budou odemčeny na konci procesu spouštění. LVM svazky a systémy souborů budou automaticky připojeny, dokud je Azure Disk Encryption odemkne. 
 
-Můžete otestovat restartování virtuálního počítače a ověřit, že systémy souborů jsou také automaticky připojeny po spuštění. Tento proces může trvat několik minut, v závislosti na počtu a velikosti systémů souborů.
+Můžete otestovat restartování virtuálního počítače a ověřit, zda jsou systémy souborů také automaticky připojeny po čase spuštění. Tento proces může trvat několik minut v závislosti na počtu a velikosti systémů souborů.
 
-#### <a name="reboot-the-vm-and-verify-after-reboot"></a>Restartujte virtuální počítač a ověřte po restartování
+#### <a name="reboot-the-vm-and-verify-after-reboot"></a>Restartujte virtuální počítač a po restartování ověřte
 
 ```bash
 shutdown -r now
@@ -389,10 +389,10 @@ shutdown -r now
 lsblk
 df -h
 ```
-## <a name="steps-for-raid-on-crypt"></a>Kroky pro RAID-on-crypt
-Nyní, když jsou podkladové disky zašifrovány, můžete pokračovat ve vytváření struktur RAID. Proces je stejný jako pro LVM, ale místo použití názvu zařízení použijte /dev/mapper cesty pro každý disk.
+## <a name="steps-for-raid-on-crypt"></a>Postup pro RAID-on-crypt
+Teď, když jsou základní disky šifrované, můžete pokračovat v vytváření struktur RAID. Proces je stejný jako ten pro LVM, ale místo použití názvu zařízení použijte cestu/dev/Mapper pro každý disk.
 
-#### <a name="configure-raid-on-top-of-the-encrypted-layer-of-the-disks"></a>Konfigurace pole RAID v horní části šifrované vrstvy disků
+#### <a name="configure-raid-on-top-of-the-encrypted-layer-of-the-disks"></a>Konfigurace RAID v horní části zašifrované vrstvy disků
 ```bash
 mdadm --create /dev/md10 \
 --level 0 \
@@ -402,12 +402,12 @@ mdadm --create /dev/md10 \
 /dev/mapper/ea607dfd-c396-48d6-bc54-603cf741bc2a \
 /dev/mapper/4159c60a-a546-455b-985f-92865d51158c
 ```
-![Informace pro nakonfigurovaný příkaz RAID pomocí příkazu mdadm](./media/disk-encryption/lvm-raid-on-crypt/019-lvm-raid-md-creation.png)
+![Informace pro konfiguraci RAID pomocí příkazu mdadm](./media/disk-encryption/lvm-raid-on-crypt/019-lvm-raid-md-creation.png)
 
 >[!NOTE] 
->Názvy /dev/mapper/device zde musí být nahrazeny skutečnými hodnotami založenými na výstupu **lsblk**.
+>Názvy/dev/Mapper/Device je třeba nahradit skutečnými hodnotami, a to na základě výstupu **lsblk**.
 
-### <a name="checkmonitor-raid-creation"></a>Kontrola/monitorování vytvoření raidu
+### <a name="checkmonitor-raid-creation"></a>Kontrolovat a monitorovat vytváření polí RAID
 ```bash
 watch -n1 cat /proc/mdstat
 mdadm --examine /dev/mapper/[]
@@ -415,12 +415,12 @@ mdadm --detail /dev/md10
 ```
 ![Stav RAID](./media/disk-encryption/lvm-raid-on-crypt/020-lvm-raid-md-details.png)
 
-### <a name="create-a-file-system-on-top-of-the-new-raid-device"></a>Vytvoření souborového systému nad novým zařízením RAID
+### <a name="create-a-file-system-on-top-of-the-new-raid-device"></a>Vytvoření systému souborů nad novým zařízením RAID
 ```bash
 mkfs.ext4 /dev/md10
 ```
 
-Vytvořte nový přípojný bod pro systém souborů, přidejte nový systém souborů do /etc/fstab a připojte jej:
+Vytvořte nový přípojný bod pro systém souborů, přidejte nový systém souborů do/etc/fstab a připojte ho:
 
 ```bash
 for device in md10; do diskuuid="$(blkid -s UUID -o value /dev/${device})"; \
@@ -436,16 +436,16 @@ Ověřte, zda je nový systém souborů připojen:
 lsblk -fs
 df -h
 ```
-![Informace pro připojené souborové systémy](./media/disk-encryption/lvm-raid-on-crypt/021-lvm-raid-lsblk-md-details.png)
+![Informace pro připojené systémy souborů](./media/disk-encryption/lvm-raid-on-crypt/021-lvm-raid-lsblk-md-details.png)
 
-Je důležité se ujistit, že možnost **nofail** je přidána do možností přípojného bodu svazků RAID vytvořených nad zařízením šifrovaným prostřednictvím šifrování disku Azure. Zabraňuje tomu, aby se operační systém zasekl během procesu spouštění (nebo v režimu údržby).
+Je důležité zajistit, aby se možnost **neúspěšného** připojení přidala do možností přípojných bodů svazků RAID vytvořených na zařízení zašifrovaném pomocí Azure Disk Encryption. Zabrání operačnímu systému v zablokování během procesu spouštění (nebo v režimu údržby).
 
-Pokud nepoužijete možnost **nofail:**
+Pokud nepoužijete možnost **neúspěšné** :
 
-- Operační systém se nikdy nedostane do fáze, kdy je spuštěno azure disk encryption a datové disky jsou odemčené a připojené.
-- Šifrované disky budou na konci zaváděcího procesu odemčeny. Svazky raidů a souborové systémy se automaticky připojí, dokud je Azure Disk Encryption neodemkne.
+- Operační systém se nikdy neobjeví ve fázi, kde je spuštěný Azure Disk Encryption a datové disky jsou odemčené a připojené.
+- Šifrované disky budou odemčeny na konci procesu spouštění. Svazky a systémy souborů RAID budou automaticky připojeny, dokud je Azure Disk Encryption odemkne.
 
-Můžete otestovat restartování virtuálního počítače a ověřit, že systémy souborů jsou také automaticky připojeny po spuštění. Tento proces může trvat několik minut, v závislosti na počtu a velikosti systémů souborů.
+Můžete otestovat restartování virtuálního počítače a ověřit, zda jsou systémy souborů také automaticky připojeny po čase spuštění. Tento proces může trvat několik minut v závislosti na počtu a velikosti systémů souborů.
 
 ```bash
 shutdown -r now

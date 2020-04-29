@@ -1,5 +1,5 @@
 ---
-title: Nastavení konfiguračního serveru pro zotavení fyzických serverů po havárii do Azure pomocí Azure Site Recovery | Dokumenty společnosti Microsoft
+title: Nastavení konfiguračního serveru pro zotavení po havárii fyzických serverů do Azure pomocí Azure Site Recovery | Microsoft Docs
 description: Tento článek popisuje, jak nastavit místní konfigurační server pro zotavení po havárii místních fyzických serverů do Azure.
 services: site-recovery
 author: Rajeswari-Mamilla
@@ -9,56 +9,56 @@ ms.topic: conceptual
 ms.date: 07/03/2019
 ms.author: ramamill
 ms.openlocfilehash: 902c14211e91a1500c6b50cd790b347e337c4f70
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79257872"
 ---
-# <a name="set-up-the-configuration-server-for-disaster-recovery-of-physical-servers-to-azure"></a>Nastavení konfiguračního serveru pro zotavení fyzických serverů po havárii do Azure
+# <a name="set-up-the-configuration-server-for-disaster-recovery-of-physical-servers-to-azure"></a>Nastavení konfiguračního serveru pro zotavení po havárii fyzických serverů do Azure
 
 Tento článek popisuje, jak nastavit místní prostředí pro zahájení replikace fyzických serverů se systémem Windows nebo Linux do Azure.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Článek předpokládá, že již máte:
-- Trezor služby Recovery Services na [webu Azure Portal](https://portal.azure.com "portál Azure").
-- Fyzický počítač, do kterého se má nainstalovat konfigurační server.
-- Pokud jste zakázali protokol TLS 1.0 v počítači, do kterého instalujete konfigurační server, zkontrolujte, zda je povolena technologie TLs 1.2 a zda je v počítači nainstalována rozhraní .NET Framework verze 4.6 nebo novější (s povolenou silnou kryptografií). [Další informace](https://support.microsoft.com/help/4033999/how-to-resolve-azure-site-recovery-agent-issues-after-disabling-tls-1).
+Článek předpokládá, že už máte:
+- Recovery Services trezor v [Azure Portal](https://portal.azure.com "portál Azure").
+- Fyzický počítač, na který se má nainstalovat konfigurační server
+- Pokud jste na počítači, na který instalujete konfigurační server, zakázali protokol TLS 1,0, zkontrolujte, zda je povolena možnost TLs 1,2 a zda je na počítači nainstalovaná verze .NET Framework 4,6 nebo novější (se zapnutým silným šifrováním). [Další informace](https://support.microsoft.com/help/4033999/how-to-resolve-azure-site-recovery-agent-issues-after-disabling-tls-1).
 
-### <a name="configuration-server-minimum-requirements"></a>Minimální požadavky na konfigurační server
-V následující tabulce jsou uvedeny minimální požadavky na hardware, software a síť pro konfigurační server.
+### <a name="configuration-server-minimum-requirements"></a>Minimální požadavky konfiguračního serveru
+Následující tabulka uvádí minimální požadavky na hardware, software a síť pro konfigurační server.
 [!INCLUDE [site-recovery-configuration-server-requirements](../../includes/site-recovery-configuration-and-scaleout-process-server-requirements.md)]
 
 > [!NOTE]
-> Server proxy založený na protokolu HTTPS není konfiguračním serverem podporován.
+> Konfigurační server nepodporuje proxy servery založené na protokolu HTTPS.
 
-## <a name="choose-your-protection-goals"></a>Vyberte si cíle ochrany
+## <a name="choose-your-protection-goals"></a>Výběr cílů ochrany
 
-1. Na webu Azure Portal přejděte do okna trezorů **služby Recovery Services** a vyberte trezor.
-2. V nabídce **Zdroje** v úschovně klikněte na **Položku Začínáme** > s**obnovou** > webu**Step 1: Připravit** > **cíl ochrany**infrastruktury .
+1. V Azure Portal otevřete okno trezory **Recovery Services** a vyberte svůj trezor.
+2. V nabídce **prostředků** trezoru klikněte na **Začínáme** > **Site Recovery** > **Krok 1: Příprava** > na**cíl ochrany**infrastruktury.
 
     ![Zvolte cíle.](./media/physical-azure-set-up-source/choose-goals.png)
-3. V **cíli Ochrana**vyberte Možnost Do **Azure** a **Není virtualizovaná/Jiná**a klikněte na **OK**.
+3. V **cíli ochrany**vyberte **do Azure** a **nevirtualizovaný/jiný**a pak klikněte na **OK**.
 
     ![Zvolte cíle.](./media/physical-azure-set-up-source/physical-protection-goal.png)
 
 ## <a name="set-up-the-source-environment"></a>Nastavení zdrojového prostředí
 
-1. Pokud ve **zdroji Připravit**nemáte konfigurační server, přidejte ho klepnutím na **tlačítko +Konfigurační server.**
+1. Pokud v nabídce **Příprava zdroje**nemáte konfigurační server, přidejte ho kliknutím na **+ konfigurační server** .
 
    ![Nastavení zdroje](./media/physical-azure-set-up-source/plus-config-srv.png)
-2. V okně **Přidat server** zkontrolujte, zda se **konfigurační server** zobrazuje v části Server **typu**.
-4. Stáhněte instalační soubor sjednoceného instalačního programu pro obnovení webu.
-5. Stáhněte registrační klíč trezoru. Při spuštění sjednoceného nastavení potřebujete registrační klíč. Klíč je platný pět dní od jeho vygenerování.
+2. V okně **Přidat server** ověřte, že se **konfigurační server** zobrazuje v poli **Typ serveru**.
+4. Stáhněte instalační soubor sjednocené instalace Site Recovery.
+5. Stáhněte registrační klíč trezoru. Registrační klíč potřebujete při spuštění sjednocené instalace. Klíč je platný pět dní od jeho vygenerování.
 
     ![Nastavení zdroje](./media/physical-azure-set-up-source/set-source2.png)
-6. V počítači, který používáte jako konfigurační server, spusťte **sjednocené nastavení azure site recovery** a nainstalujte konfigurační server, procesní server a hlavní cílový server.
+6. Na počítači, který používáte jako konfigurační server, spusťte **Azure Site Recovery Unified Setup** a nainstalujte konfigurační server, procesový Server a hlavní cílový server.
 
-#### <a name="run-azure-site-recovery-unified-setup"></a>Spuštění sjednoceného nastavení obnovení webu Azure
+#### <a name="run-azure-site-recovery-unified-setup"></a>Spustit Azure Site Recovery Unified Setup
 
 > [!TIP]
-> Registrace konfiguračního serveru se nezdaří, pokud je čas v systémových hodinách počítače více než pět minut mimo místní čas. Před zahájením instalace synchronizujte systémové hodiny s [časovým serverem.](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service)
+> Registrace konfiguračního serveru se nezdařila, pokud je čas v systémových hodinách počítače více než pět minut mimo místní čas. Před zahájením instalace synchronizujte systémové hodiny s [časovým serverem](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service) .
 
 [!INCLUDE [site-recovery-add-configuration-server](../../includes/site-recovery-add-configuration-server.md)]
 
@@ -73,4 +73,4 @@ V následující tabulce jsou uvedeny minimální požadavky na hardware, softwa
 
 ## <a name="next-steps"></a>Další kroky
 
-Dalším krokem je [nastavení cílového prostředí](physical-azure-set-up-target.md) v Azure.
+Další krok zahrnuje [nastavení cílového prostředí](physical-azure-set-up-target.md) v Azure.

@@ -1,6 +1,6 @@
 ---
-title: 'Azure ExpressRoute: Konfigurace globálního dosahu'
-description: Tento článek vám pomůže propojit okruhy ExpressRoute dohromady a vytvořit privátní síť mezi místními sítěmi a povolit globální dosah.
+title: 'Azure ExpressRoute: Konfigurace Global Reach'
+description: Tento článek vám pomůže propojit okruhy ExpressRoute dohromady a vytvořit privátní síť mezi místními sítěmi a povolit Global Reach.
 services: expressroute
 author: jaredr80
 ms.service: expressroute
@@ -8,76 +8,76 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: jaredro
 ms.openlocfilehash: 587a17659a412d6f894faf5a744a7d9c444935c8
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80656743"
 ---
 # <a name="configure-expressroute-global-reach"></a>Konfigurace služby ExpressRoute Global Reach
 
-Tento článek vám pomůže nakonfigurovat globální dosah ExpressRoute pomocí prostředí PowerShell. Další informace naleznete v tématu [ExpressRouteRoute Global Reach](expressroute-global-reach.md).
+Tento článek vám pomůže nakonfigurovat Global Reach ExpressRoute pomocí prostředí PowerShell. Další informace najdete v tématu [ExpressRouteRoute Global REACH](expressroute-global-reach.md).
 
- ## <a name="before-you-begin"></a>Než začnete
+ ## <a name="before-you-begin"></a>Před zahájením
 
-Před zahájením konfigurace potvrďte následující:
+Než začnete s konfigurací, potvrďte následující:
 
-* Rozumíte [pracovním postupům](expressroute-workflows.md)zřizování okruhů ExpressRoute .
-* Okruhy ExpressRoute jsou v zřízeném stavu.
-* Privátní partnerský vztah Azure je nakonfigurovaný na vašich obvodech ExpressRoute.
-* Pokud chcete powershell spustit místně, ověřte, jestli je ve vašem počítači nainstalovaná nejnovější verze Prostředí Azure PowerShell.
+* Rozumíte [pracovním](expressroute-workflows.md)postupům zřizování okruhů ExpressRoute.
+* Vaše okruhy ExpressRoute jsou ve stavu zřizování.
+* Privátní partnerské vztahy Azure se konfigurují na okruhech ExpressRoute.
+* Pokud chcete spustit prostředí PowerShell místně, ověřte, zda je v počítači nainstalována nejnovější verze Azure PowerShell.
 
-### <a name="working-with-azure-powershell"></a>Práce s Azure PowerShellem
+### <a name="working-with-azure-powershell"></a>Práce s Azure PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
 [!INCLUDE [expressroute-cloudshell](../../includes/expressroute-cloudshell-powershell-about.md)]
 
-## <a name="identify-circuits"></a>Identifikovat obvody
+## <a name="identify-circuits"></a>Identifikace okruhů
 
 1. Pokud chcete spustit konfiguraci, přihlaste se ke svému účtu Azure a vyberte předplatné, které chcete použít.
 
    [!INCLUDE [sign in](../../includes/expressroute-cloud-shell-connect.md)]
-2. Identifikujte okruhy ExpressRoute, které chcete použít. Globální dosah ExpressRoute můžete povolit mezi privátním partnerským partnerem libovolných dvou okruhů ExpressRoute, pokud jsou umístěny v podporovaných zemích nebo oblastech a byly vytvořeny v různých partnerských umístěních. 
+2. Identifikujte okruhy ExpressRoute, které chcete použít. Můžete povolit ExpressRoute Global Reach mezi soukromým partnerským vztahem všech dvou okruhů ExpressRoute, pokud se nacházejí v podporovaných zemích nebo oblastech a vytvořily se v různých umístěních partnerských vztahů. 
 
-   * Pokud vaše předplatné vlastní oba okruhy, můžete zvolit jeden okruh pro spuštění konfigurace v následujících částech.
-   * Pokud jsou dva okruhy v různých předplatných Azure, budete potřebovat autorizaci z jednoho předplatného Azure. Pak předáte v autorizačním klíči při spuštění příkazu konfigurace v jiném předplatném Azure.
+   * Pokud vaše předplatné vlastní oba okruhy, můžete zvolit buď okruh, aby se konfigurace spustila v následujících oddílech.
+   * Pokud se dva okruhy nacházejí v různých předplatných Azure, budete potřebovat autorizaci z jednoho předplatného Azure. Pak předáte autorizační klíč při spuštění příkazu konfigurace v jiném předplatném Azure.
 
-## <a name="enable-connectivity"></a>Povolení připojení
+## <a name="enable-connectivity"></a>Povolit připojení
 
-Povolte připojení mezi místními sítěmi. Existují samostatné sady pokynů pro okruhy, které jsou ve stejném předplatném Azure a okruhy, které jsou různé předplatná.
+Povolte konektivitu mezi místními sítěmi. Existují samostatné sady instrukcí pro okruhy, které jsou ve stejném předplatném Azure, a okruhy, které jsou různými předplatnými.
 
 ### <a name="expressroute-circuits-in-the-same-azure-subscription"></a>Okruhy ExpressRoute ve stejném předplatném Azure
 
-1. Pomocí následujících příkazů získáte obvod 1 a okruh 2. Dva okruhy jsou ve stejném předplatném.
+1. Pomocí následujících příkazů můžete získat okruh 1 a okruh 2. Dva okruhy jsou ve stejném předplatném.
 
    ```azurepowershell-interactive
    $ckt_1 = Get-AzExpressRouteCircuit -Name "Your_circuit_1_name" -ResourceGroupName "Your_resource_group"
    $ckt_2 = Get-AzExpressRouteCircuit -Name "Your_circuit_2_name" -ResourceGroupName "Your_resource_group"
    ```
-2. Spusťte následující příkaz proti okruhu 1 a předavěte ID soukromého partnerského vztahu okruhu 2. Při spuštění příkazu si všimněte následujícího:
+2. Spusťte následující příkaz pro okruh 1 a předejte mu ID privátního partnerského vztahu okruhu 2. Při spuštění příkazu si všimněte následujícího:
 
-   * ID soukromého partnerského vztahu vypadá podobně jako v následujícím příkladu: 
+   * ID privátního partnerského vztahu vypadá podobně jako v následujícím příkladu: 
 
      ```
      /subscriptions/{your_subscription_id}/resourceGroups/{your_resource_group}/providers/Microsoft.Network/expressRouteCircuits/{your_circuit_name}/peerings/AzurePrivatePeering
      ```
-   * *-AddressPrefix* musí být podsíť /29 IPv4, například "10.0.0.0/29". Ip adresy v této podsíti používáme k navázání připojení mezi dvěma okruhy ExpressRoute. Adresy v této podsíti byste neměli používat ve virtuálních sítích Azure ani v místní síti.
+   * *-AddressPrefix* musí být podsíť IPv4 a/29, například "10.0.0.0/29". IP adresy v této podsíti používáme k navázání připojení mezi dvěma okruhy ExpressRoute. Adresy v této podsíti byste neměli používat ve virtuálních sítích Azure ani ve vaší místní síti.
 
      ```azurepowershell-interactive
      Add-AzExpressRouteCircuitConnectionConfig -Name 'Your_connection_name' -ExpressRouteCircuit $ckt_1 -PeerExpressRouteCircuitPeering $ckt_2.Peerings[0].Id -AddressPrefix '__.__.__.__/29'
      ```
-3. Uložte konfiguraci na okruhu 1 následujícím způsobem:
+3. Konfiguraci na okruhu 1 uložte následujícím způsobem:
 
    ```azurepowershell-interactive
    Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt_1
    ```
 
-Po dokončení předchozí operace budete mít připojení mezi místními sítěmi na obou stranách prostřednictvím dvou okruhů ExpressRoute.
+Po dokončení předchozí operace budete mít propojení mezi místními sítěmi na obou stranách prostřednictvím obou okruhů ExpressRoute.
 
 ### <a name="expressroute-circuits-in-different-azure-subscriptions"></a>Okruhy ExpressRoute v různých předplatných Azure
 
-Pokud dva okruhy nejsou ve stejném předplatném Azure, budete potřebovat autorizaci. V následující konfiguraci je autorizace generována v předplatném okruhu 2 a autorizační klíč je předán okruhu 1.
+Pokud tyto dva okruhy nejsou ve stejném předplatném Azure, budete potřebovat autorizaci. V následující konfiguraci se autorizace vygeneruje v rámci předplatného okruhu 2 a autorizační klíč se předává okruhu 1.
 
 1. Vygenerujte autorizační klíč.
 
@@ -87,32 +87,32 @@ Pokud dva okruhy nejsou ve stejném předplatném Azure, budete potřebovat auto
    Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt_2
    ```
 
-   Poznamenejte si ID soukromého partnerského vztahu okruhu 2 a také autorizační klíč.
-2. Spusťte následující příkaz proti okruhu 1. Projděte id soukromého partnerského vztahu okruhu 2 a autorizačního klíče.
+   Poznamenejte si ID privátního partnerského vztahu okruhu 2 a také autorizační klíč.
+2. Spusťte následující příkaz proti okruhu 1. Předejte ID privátního partnerského vztahu okruhu 2 a autorizační klíč.
 
    ```azurepowershell-interactive
    Add-AzExpressRouteCircuitConnectionConfig -Name 'Your_connection_name' -ExpressRouteCircuit $ckt_1 -PeerExpressRouteCircuitPeering "circuit_2_private_peering_id" -AddressPrefix '__.__.__.__/29' -AuthorizationKey '########-####-####-####-############'
    ```
-3. Uložte konfiguraci na okruhu 1.
+3. Uložte konfiguraci na okruh 1.
 
    ```azurepowershell-interactive
    Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt_1
    ```
 
-Po dokončení předchozí operace budete mít připojení mezi místními sítěmi na obou stranách prostřednictvím dvou okruhů ExpressRoute.
+Po dokončení předchozí operace budete mít propojení mezi místními sítěmi na obou stranách prostřednictvím obou okruhů ExpressRoute.
 
 ## <a name="verify-the-configuration"></a>Ověření konfigurace
 
-Pomocí následujícího příkazu ověřte konfiguraci na okruhu, ve kterém byla konfigurace provedena (například okruh 1 v předchozím příkladu).
+Pomocí následujícího příkazu Ověřte konfiguraci v okruhu, ve kterém byla provedena konfigurace (například okruh 1 v předchozím příkladu).
 ```azurepowershell-interactive
 $ckt1 = Get-AzExpressRouteCircuit -Name "Your_circuit_1_name" -ResourceGroupName "Your_resource_group"
 ```
 
-Pokud jednoduše spustit *$ckt1* v Prostředí PowerShell, uvidíte *CircuitConnectionStatus* ve výstupu. To vám řekne, zda je připojení navázáno, "Připojeno" nebo "Odpojeno". 
+Pokud v PowerShellu jednoduše spustíte *$CKT 1* , ve výstupu se zobrazí *CircuitConnectionStatus* . Dozvíte se, zda je připojení navázáno, připojeno nebo odpojeno. 
 
 ## <a name="disable-connectivity"></a>Zákaz připojení
 
-Chcete-li zakázat připojení mezi místními sítěmi, spusťte příkazy proti okruhu, ve kterém byla konfigurace provedena (například okruh 1 v předchozím příkladu).
+Pokud chcete zakázat připojení mezi místními sítěmi, spusťte příkazy proti okruhu, ve kterém byla provedena konfigurace (například okruh 1 v předchozím příkladu).
 
 ```azurepowershell-interactive
 $ckt1 = Get-AzExpressRouteCircuit -Name "Your_circuit_1_name" -ResourceGroupName "Your_resource_group"
@@ -120,11 +120,11 @@ Remove-AzExpressRouteCircuitConnectionConfig -Name "Your_connection_name" -Expre
 Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt_1
 ```
 
-Můžete spustit get operace k ověření stavu.
+Chcete-li ověřit stav, můžete spustit operaci načíst.
 
-Po dokončení předchozí operace již nemáte připojení mezi místní sítí prostřednictvím okruhů ExpressRoute.
+Po dokončení předchozí operace už nebudete mít připojení mezi vaší místní sítí přes okruhy ExpressRoute.
 
 ## <a name="next-steps"></a>Další kroky
-1. [Další informace o globálním dosahu ExpressRoute](expressroute-global-reach.md)
+1. [Další informace o ExpressRoute Global Reach](expressroute-global-reach.md)
 2. [Ověření připojení ExpressRoute](expressroute-troubleshooting-expressroute-overview.md)
-3. [Propojení okruhu ExpressRoute s virtuální sítí Azure](expressroute-howto-linkvnet-arm.md)
+3. [Propojení okruhu ExpressRoute k virtuální síti Azure](expressroute-howto-linkvnet-arm.md)

@@ -10,22 +10,22 @@ ms.reviewer: klam, estfan
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.openlocfilehash: e851da0013cf3a9ff6bb1a0fc1c073b5b796c54d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78898540"
 ---
 # <a name="what-is-azure-scheduler"></a>Co je Azure Scheduler?
 
 > [!IMPORTANT]
-> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) nahrazuje Azure Scheduler, který [je vyřazen .](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date) Pokud chcete pokračovat v práci s úlohami, které jste nastavili v Plánovači, [migrujte co](../scheduler/migrate-from-scheduler-to-logic-apps.md) nejdříve do Azure Logic Apps. 
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) nahrazuje [vyřazení](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)Azure Scheduleru. Pokud chcete pokračovat v práci s úlohami, které jste nastavili v plánovači, [migrujte prosím na Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) co nejdříve. 
 >
-> Plánovač už není k dispozici na webu Azure Portal, ale rutiny [ROZHRANÍ REST API](/rest/api/scheduler) a Azure [Scheduler PowerShell](scheduler-powershell-reference.md) zůstávají k dispozici v tuto chvíli, takže můžete spravovat své úlohy a kolekce úloh.
+> Plánovač již není v Azure Portal k dispozici, ale [rutiny prostředí PowerShell](scheduler-powershell-reference.md) [REST API](/rest/api/scheduler) a Azure Scheduler jsou v tuto chvíli dostupné, abyste mohli spravovat úlohy a kolekce úloh.
 
 [Azure Scheduler](https://azure.microsoft.com/services/scheduler/) pomáhá vytvářet [úlohy](../scheduler/scheduler-concepts-terms.md) spouštěné v cloudu tím, že umožňuje deklarativně popisovat akce. Služba pak tyto akce automaticky plánuje a spouští. Můžete například volat služby v i mimo Azure, například koncové body HTTP nebo HTTPS, a také odesílat zprávy do front služby Azure Storage a front nebo témat služby Azure Service Bus. Úlohy můžete spouštět okamžitě nebo později. Scheduler bez problémů podporuje [komplexní plánování a pokročilé opakování](../scheduler/scheduler-advanced-complexity.md). Scheduler určuje, kdy se mají úlohy spouštět, uchovává historii výsledků úloh, kterou můžete procházet, a pak předvídatelně a spolehlivě plánuje úlohy, které se mají spustit.
 
-Službu Scheduler používají na pozadí také další plánovací nástroje Azure, například [Azure WebJobs](../app-service/webjobs-create.md), což je funkce [Web Apps](https://azure.microsoft.com/services/app-service/web/) ve službě Azure App Service. Komunikaci pro tyto akce můžete spravovat pomocí [rozhraní REST API plánovače](https://docs.microsoft.com/rest/api/scheduler/), které vám pomůže spravovat komunikaci pro tyto akce.
+Službu Scheduler používají na pozadí také další plánovací nástroje Azure, například [Azure WebJobs](../app-service/webjobs-create.md), což je funkce [Web Apps](https://azure.microsoft.com/services/app-service/web/) ve službě Azure App Service. Komunikaci pro tyto akce můžete spravovat pomocí [REST API Scheduleru](https://docs.microsoft.com/rest/api/scheduler/), která vám pomůže se správou komunikace pro tyto akce.
 
 Tady je několik scénářů, ve kterých vám Scheduler může pomoct:
 
@@ -37,12 +37,12 @@ Tady je několik scénářů, ve kterých vám Scheduler může pomoct:
 
 I když můžete pomocí služby Scheduler vytvářet, spravovat a spouštět plánované úlohy, Scheduler úlohy nehostuje ani nespouští kód. Tato služba pouze *volá* služby nebo kód hostované jinde, například v Azure, v místním prostředí nebo u jiného poskytovatele. Scheduler může provádět volání přes HTTP, HTTPS, frontu úložiště, frontu služby Service Bus nebo téma služby Service Bus.
 
-Chcete-li vytvořit, naplánovat, spravovat, aktualizovat nebo odstranit [úlohy](../scheduler/scheduler-concepts-terms.md)a kolekce úloh , můžete použít kód, [rozhraní REST API plánovače](https://docs.microsoft.com/rest/api/scheduler/)nebo [rutiny Prostředí PowerShell plánovače](scheduler-powershell-reference.md).
+Pokud chcete vytvořit, naplánovat, spravovat, aktualizovat nebo odstranit úlohy a [kolekce úloh](../scheduler/scheduler-concepts-terms.md), můžete použít kód, [REST API plánovače](https://docs.microsoft.com/rest/api/scheduler/)nebo [rutiny PowerShellu pro Azure Scheduler](scheduler-powershell-reference.md).
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Koncepty, terminologie a hierarchie entit služby Azure Scheduler](scheduler-concepts-terms.md)
-* [Plány a fakturace pro Plánovač Azure](scheduler-plans-billing.md)
-* [Vytváření složitých plánů a pokročilé opakování pomocí Plánovače Azure](scheduler-advanced-complexity.md)
+* [Plány a fakturace pro Azure Scheduler](scheduler-plans-billing.md)
+* [Vytváření komplexních plánů a pokročilé opakování pomocí Azure Scheduleru](scheduler-advanced-complexity.md)
 * [REST API Azure Scheduleru – referenční informace](/rest/api/scheduler)
 * [Rutiny PowerShellu pro Azure Scheduler – referenční informace](scheduler-powershell-reference.md)

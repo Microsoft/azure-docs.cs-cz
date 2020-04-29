@@ -1,220 +1,220 @@
 ---
 title: Referenční materiály k nastavení aplikací pro Azure Functions
-description: Referenční dokumentace pro nastavení aplikace Azure Functions nebo proměnné prostředí.
+description: Referenční dokumentace k nastavení aplikace Azure Functions nebo k proměnným prostředí.
 ms.topic: conceptual
 ms.date: 09/22/2018
 ms.openlocfilehash: e2d168d8828d17e13f875e3b2555c7db0d4ba32d
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80656786"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Referenční materiály k nastavení aplikací pro Azure Functions
 
-Nastavení aplikace v aplikaci funkce obsahují možnosti globální konfigurace, které ovlivňují všechny funkce pro tuto aplikaci funkce. Při místním spuštění jsou tato nastavení přístupná jako [proměnné místního prostředí](functions-run-local.md#local-settings-file). V tomto článku jsou uvedena nastavení aplikací, která jsou k dispozici v aplikacích funkcí.
+Nastavení aplikace ve Function App obsahují globální možnosti konfigurace, které mají vliv na všechny funkce této aplikace Function App. Když spouštíte místně, tato nastavení jsou k dispozici jako [proměnné místního prostředí](functions-run-local.md#local-settings-file). Tento článek obsahuje seznam nastavení aplikace, která jsou k dispozici ve funkcích aplikace.
 
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
 
-V souboru [host.json](functions-host-json.md) a v souboru [local.settings.json](functions-run-local.md#local-settings-file) jsou další možnosti globální konfigurace.
+V souboru [Host. JSON](functions-host-json.md) a v souboru [Local. Settings. JSON](functions-run-local.md#local-settings-file) existují i další globální možnosti konfigurace.
 
 ## <a name="appinsights_instrumentationkey"></a>APPINSIGHTS_INSTRUMENTATIONKEY
 
-Klíč instrumentace pro Application Insights. Používejte pouze `APPINSIGHTS_INSTRUMENTATIONKEY` jeden `APPLICATIONINSIGHTS_CONNECTIONSTRING`z nebo . Další informace naleznete v [tématu Sledování funkcí Azure](functions-monitoring.md). 
+Klíč instrumentace pro Application Insights. Použijte pouze jeden z `APPINSIGHTS_INSTRUMENTATIONKEY` nebo `APPLICATIONINSIGHTS_CONNECTIONSTRING`. Další informace najdete v tématu [monitorování Azure Functions](functions-monitoring.md). 
 
-|Klíč|Ukázková hodnota|
+|Key|Ukázková hodnota|
 |---|------------|
 |APPINSIGHTS_INSTRUMENTATIONKEY|55555555-af77-484b-9032-64f83bb83bb|
 
 ## <a name="applicationinsights_connectionstring"></a>APPLICATIONINSIGHTS_CONNECTIONSTRING
 
-Připojovací řetězec pro Application Insights. Místo `APPLICATIONINSIGHTS_CONNECTIONSTRING` `APPINSIGHTS_INSTRUMENTATIONKEY` toho, když vaše aplikace funkce vyžaduje přidané vlastní nastavení podporované pomocí připojovacího řetězce. Další informace naleznete v tématu [Connection strings](../azure-monitor/app/sdk-connection-string.md). 
+Připojovací řetězec pro Application Insights. Použijte `APPLICATIONINSIGHTS_CONNECTIONSTRING` místo toho `APPINSIGHTS_INSTRUMENTATIONKEY` , aby vaše aplikace Function vyžadovala přidaná přizpůsobení podporovaná pomocí připojovacího řetězce. Další informace najdete v tématu [připojovací řetězce](../azure-monitor/app/sdk-connection-string.md). 
 
-|Klíč|Ukázková hodnota|
+|Key|Ukázková hodnota|
 |---|------------|
-|APPLICATIONINSIGHTS_CONNECTIONSTRING|InstrumentationKey=[klíč];IngestionEndpoint=[url]; LiveEndpoint=[url]; ProfilerEndpoint=[url]; SnapshotEndpoint=[url];|
+|APPLICATIONINSIGHTS_CONNECTIONSTRING|InstrumentationKey = [klíč]; IngestionEndpoint = [URL]; LiveEndpoint = [URL]; ProfilerEndpoint = [URL]; SnapshotEndpoint = [URL];|
 
 ## <a name="azure_functions_environment"></a>AZURE_FUNCTIONS_ENVIRONMENT
 
-Ve verzi 2.x a novějších verzích běhu Functions konfiguruje chování aplikací na základě prostředí runtime. Tato hodnota se [čte během inicializace](https://github.com/Azure/azure-functions-host/blob/dev/src/WebJobs.Script.WebHost/Program.cs#L43). Můžete nastavit `AZURE_FUNCTIONS_ENVIRONMENT` libovolnou hodnotu, ale jsou [podporovány tři hodnoty:](/dotnet/api/microsoft.aspnetcore.hosting.environmentname) [Vývoj](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.development), [Pracovní](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.staging)a [Produkční .](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.production) Když `AZURE_FUNCTIONS_ENVIRONMENT` není nastavená, ve `Development` výchozím nastavení se `Production` použije v místním prostředí a v Azure. Toto nastavení by `ASPNETCORE_ENVIRONMENT` mělo být použito místo k nastavení prostředí runtime. 
+Ve verzi 2. x a novějších verzích modulu runtime Functions konfiguruje chování aplikace na základě běhového prostředí. Tato hodnota je [čtena při inicializaci](https://github.com/Azure/azure-functions-host/blob/dev/src/WebJobs.Script.WebHost/Program.cs#L43). `AZURE_FUNCTIONS_ENVIRONMENT` Můžete nastavit na libovolnou hodnotu, ale podporují [se tři hodnoty](/dotnet/api/microsoft.aspnetcore.hosting.environmentname) : [vývoj](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.development), [Příprava](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.staging)a [produkce](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.production). Pokud `AZURE_FUNCTIONS_ENVIRONMENT` není nastavené, použije se `Development` výchozí nastavení v místním prostředí `Production` a v Azure. Toto nastavení by se mělo použít místo `ASPNETCORE_ENVIRONMENT` pro nastavení běhového prostředí. 
 
 ## <a name="azurewebjobsdashboard"></a>AzureWebJobsDashboard
 
-Volitelný připojovací řetězec účtu úložiště pro ukládání protokolů a jejich zobrazení na kartě **Monitorování** na portálu. Toto nastavení platí jenom pro aplikace, které cílí na verzi 1.x runtime Azure Functions. Účet úložiště musí být univerzální, který podporuje objekty BLOB, fronty a tabulky. Další informace najdete v [tématu Požadavky na účet úložiště](storage-considerations.md#storage-account-requirements).
+Volitelný připojovací řetězec účtu úložiště pro ukládání protokolů a jejich zobrazení na portálu na kartě **monitorování** . Toto nastavení je platné jenom pro aplikace, které cílí na verzi 1. x Azure Functions runtime. Účet úložiště musí být účet pro obecné účely, který podporuje objekty blob, fronty a tabulky. Další informace najdete v tématu [požadavky na účet úložiště](storage-considerations.md#storage-account-requirements).
 
-|Klíč|Ukázková hodnota|
+|Key|Ukázková hodnota|
 |---|------------|
-|AzureWebJobsDashboard|Výchozí EndpointsProtocol=https; AccountName=<name>; AccountKey=<key>|
+|AzureWebJobsDashboard|DefaultEndpointsProtocol = https; Účet Account =<name>; AccountKey =<key>|
 
 > [!NOTE]
-> Pro lepší výkon a zkušenosti, runtime verze 2.x a novější verze `AzureWebJobsDashboard`používají APPINSIGHTS_INSTRUMENTATIONKEY a App Insights pro monitorování namísto .
+> Pro lepší výkon a prostředí používá modul runtime verze 2. x a novější verze APPINSIGHTS_INSTRUMENTATIONKEY a App Insights pro monitorování místo `AzureWebJobsDashboard`.
 
-## <a name="azurewebjobsdisablehomepage"></a>AzureWebJobsDisableDomovpage
+## <a name="azurewebjobsdisablehomepage"></a>AzureWebJobsDisableHomepage
 
-`true`znamená zakázat výchozí vstupní stránku, která se zobrazí pro kořenovou adresu URL aplikace funkce. Výchozí je `false`.
+`true`znamená zakázat výchozí cílovou stránku, která se zobrazí pro kořenovou adresu URL aplikace Function App. Výchozí je `false`.
 
-|Klíč|Ukázková hodnota|
+|Key|Ukázková hodnota|
 |---|------------|
-|AzureWebJobsDisableDomovpage|true|
+|AzureWebJobsDisableHomepage|true|
 
-Pokud je toto nastavení aplikace `false`vynecháno nebo nastaveno na , zobrazí se `<functionappname>.azurewebsites.net`v reakci na adresu URL stránka podobná následujícímu příkladu .
+Pokud je toto nastavení aplikace vynecháno nebo nastaveno na `false`, zobrazí se na stránce odpověď na adresu URL `<functionappname>.azurewebsites.net`stránka podobná následujícímu příkladu.
 
-![Vstupní stránka aplikace function](media/functions-app-settings/function-app-landing-page.png)
+![Cílová stránka aplikace Function App](media/functions-app-settings/function-app-landing-page.png)
 
 ## <a name="azurewebjobsdotnetreleasecompilation"></a>AzureWebJobsDotNetReleaseCompilation
 
-`true`znamená použít režim uvolnění při kompilaci kódu .NET; `false` znamená použít režim ladění. Výchozí je `true`.
+`true`znamená použití režimu vydání při kompilování kódu .NET; `false` znamená použít režim ladění. Výchozí je `true`.
 
-|Klíč|Ukázková hodnota|
+|Key|Ukázková hodnota|
 |---|------------|
 |AzureWebJobsDotNetReleaseCompilation|true|
 
 ## <a name="azurewebjobsfeatureflags"></a>AzureWebJobsFeatureFlags
 
-Seznam funkcí beta verze oddělených čárkami, které chcete povolit. Funkce beta verze povolené těmito příznaky nejsou připraveny k výrobě, ale mohou být povoleny pro experimentální použití před jejich vysíláním.
+Seznam funkcí beta oddělených čárkami, které mají být povoleny. Funkce beta verze povolené těmito příznaky nejsou připravené pro produkční prostředí, ale je možné je povolit pro experimentální použití předtím, než budou živá.
 
-|Klíč|Ukázková hodnota|
+|Key|Ukázková hodnota|
 |---|------------|
 |AzureWebJobsFeatureFlags|feature1,feature2|
 
 ## <a name="azurewebjobssecretstoragetype"></a>AzureWebJobsSecretStorageType
 
-Určuje úložiště nebo zprostředkovatele, který má být používán pro úložiště klíčů. V současné době jsou podporované úložiště objektu blob úložiště ("Objekt blob") a místní systém souborů ("Soubory"). Výchozí hodnota je objekt blob ve verzi 2 a systém souborů ve verzi 1.
+Určuje úložiště nebo poskytovatele, které se použijí pro úložiště klíčů. V současné době jsou podporovaná úložiště BLOB Storage ("blob") a místní systém souborů ("soubory"). Výchozí hodnota je objekt BLOB ve verzi 2 a systém souborů ve verzi 1.
 
-|Klíč|Ukázková hodnota|
+|Key|Ukázková hodnota|
 |---|------------|
 |AzureWebJobsSecretStorageType|Soubory|
 
 ## <a name="azurewebjobsstorage"></a>AzureWebJobsStorage
 
-Runtime Azure Functions používá tento připojovací řetězec účtu úložiště pro všechny funkce s výjimkou funkcí aktivovaných protokolem HTTP. Účet úložiště musí být univerzální, který podporuje objekty BLOB, fronty a tabulky. Viz Požadavky [na](storage-considerations.md#storage-account-requirements)účet [úložiště](functions-infrastructure-as-code.md#storage-account) a účet úložiště .
+Modul runtime Azure Functions používá tento připojovací řetězec účtu úložiště pro všechny funkce s výjimkou funkcí aktivovaných protokolem HTTP. Účet úložiště musí být účet pro obecné účely, který podporuje objekty blob, fronty a tabulky. Viz požadavky na [účet úložiště](functions-infrastructure-as-code.md#storage-account) a [účet úložiště](storage-considerations.md#storage-account-requirements).
 
-|Klíč|Ukázková hodnota|
+|Key|Ukázková hodnota|
 |---|------------|
-|AzureWebJobsStorage|Výchozí EndpointsProtocol=https; AccountName=[název]; AccountKey=[klíč]|
+|AzureWebJobsStorage|DefaultEndpointsProtocol = https; Název účtu = [název]; AccountKey = [klíč]|
 
 ## <a name="azurewebjobs_typescriptpath"></a>AzureWebJobs_TypeScriptPath
 
-Cesta k kompilátoru použitému pro TypeScript. Umožňuje přepsat výchozí nastavení, pokud potřebujete.
+Cesta k kompilátoru, který se používá pro TypeScript Umožňuje přepsat výchozí, pokud potřebujete.
 
-|Klíč|Ukázková hodnota|
+|Key|Ukázková hodnota|
 |---|------------|
-|AzureWebJobs_TypeScriptPath|%HOME%\psací stroj|
+|AzureWebJobs_TypeScriptPath|%HOME%\typescript|
 
-## <a name="function_app_edit_mode"></a>REŽIM\_\_ÚPRAVY\_APLIKACE FUNKCE
+## <a name="function_app_edit_mode"></a>režim\_úprav\_\_aplikace Function App
 
-Určuje, jestli je povolené úpravy na webu Azure Portal. Platné hodnoty jsou "write" a "readonly".
+Určuje, zda jsou povoleny úpravy v Azure Portal. Platné hodnoty jsou "ReadOnly" a "ReadOnly".
 
-|Klíč|Ukázková hodnota|
+|Key|Ukázková hodnota|
 |---|------------|
-|REŽIM\_\_ÚPRAVY\_APLIKACE FUNKCE|readonly|
+|režim\_úprav\_\_aplikace Function App|readonly|
 
-## <a name="functions_extension_version"></a>VERZE\_\_ROZŠÍŘENÍ FUNKCÍ
+## <a name="functions_extension_version"></a>verze\_rozšíření\_Functions
 
-Verze functions runtime pro použití v této aplikaci funkce. Vlnovka s hlavní verzí znamená použít nejnovější verzi této hlavní verze (například "~2"). Pokud jsou k dispozici nové verze pro stejnou hlavní verzi, jsou automaticky nainstalovány v aplikaci funkce. Chcete-li aplikaci připnout na konkrétní verzi, použijte celé číslo verze (například "2.0.12345"). Výchozí hodnota je "~2". Hodnota `~1` připne vaši aplikaci na verzi 1.x běhu.
+Verze modulu runtime Functions, který má být použit v této aplikaci Function App. Vlnovka s hlavní verzí znamená použití nejnovější verze této hlavní verze (například ~ 2). Pokud jsou k dispozici nové verze pro stejnou hlavní verzi, automaticky se nainstalují do aplikace Function App. Pokud chcete aplikaci připnout na konkrétní verzi, použijte úplné číslo verze (například "2.0.12345"). Výchozí hodnota je "~ 2". Hodnota `~1` PIN vaší aplikace na verzi 1. x modulu runtime.
 
-|Klíč|Ukázková hodnota|
+|Key|Ukázková hodnota|
 |---|------------|
-|VERZE\_\_ROZŠÍŘENÍ FUNKCÍ|~2|
+|verze\_rozšíření\_Functions|~ 2|
 
-## <a name="functions_v2_compatibility_mode"></a>FUNKCE\_\_V2\_REŽIM KOMPATIBILITY
+## <a name="functions_v2_compatibility_mode"></a>Režim\_kompatibility\_\_Functions v2
 
-Toto nastavení umožňuje spuštění aplikace funkce v režimu kompatibilním s verzí 2.x v době runtime verze 3.x. Toto nastavení použijte pouze v případě, že při upgradu aplikace funkce dojde k problémům [z verze 2.x na 3.x běhu](functions-versions.md#migrating-from-2x-to-3x). 
+Toto nastavení umožňuje, aby aplikace Function App běžela v režimu kompatibilním s verzí 2. x v modulu runtime verze 3. x. Toto nastavení použijte jenom v případě, že při [upgradování aplikace Function App z verze 2. x na 3. x z modulu runtime dojde k](functions-versions.md#migrating-from-2x-to-3x)problémům. 
 
 >[!IMPORTANT]
-> Toto nastavení je určeno pouze jako krátkodobé řešení při aktualizaci aplikace tak, aby správně fungovala ve verzi 3.x. Toto nastavení je podporováno, pokud [je podporován modul runtime 2.x](functions-versions.md). Pokud narazíte na problémy, které brání spuštění aplikace ve verzi 3.x bez použití tohoto nastavení, [nahlaste svůj problém](https://github.com/Azure/azure-functions-host/issues/new?template=Bug_report.md).
+> Toto nastavení je určeno pouze krátkodobým alternativním řešením při aktualizaci aplikace tak, aby běžela správně ve verzi 3. x. Toto nastavení se podporuje, pokud [je podporovaný modul runtime 2. x](functions-versions.md). Pokud narazíte na problémy, které brání spuštění vaší aplikace ve verzi 3. x bez použití tohoto nastavení, [nahlaste prosím svůj problém](https://github.com/Azure/azure-functions-host/issues/new?template=Bug_report.md).
 
-Vyžaduje, aby [verze ROZŠÍŘENÍ\_\_FUNKCE](functions-app-settings.md#functions_extension_version) byla nastavena na `~3`.
+Vyžaduje, aby se [verze rozšíření\_\_Functions](functions-app-settings.md#functions_extension_version) nastavila na `~3`.
 
-|Klíč|Ukázková hodnota|
+|Key|Ukázková hodnota|
 |---|------------|
-|FUNKCE\_\_V2\_REŽIM KOMPATIBILITY|true|
+|Režim\_kompatibility\_\_Functions v2|true|
 
-## <a name="functions_worker_process_count"></a>POČET\_\_PRACOVNÍCH PROCESŮ\_FUNKCE
+## <a name="functions_worker_process_count"></a>počet\_pracovních\_procesů\_funkcí
 
-Určuje maximální počet pracovních procesů v jazyce `1`s výchozí hodnotou aplikace . Maximální povolená `10`hodnota je . Vyvolání funkcí jsou rovnoměrně rozdělena mezi procesy jazykového pracovního procesu. Jazykové pracovní procesy jsou zplozeny každých\_10 sekund, dokud není dosaženo počtu nastavených funkcemi POČET PRACOVNÍCH\_PROCESŮ.\_ Použití více jazykových pracovních procesů není stejné jako [škálování](functions-scale.md). Zvažte použití tohoto nastavení, pokud vaše úloha má kombinaci vyvolání vázaných na procesor a vstupně-výstupních vod. Toto nastavení platí pro všechny non-.NET jazyky.
+Určuje maximální počet pracovních procesů jazyka s výchozí hodnotou `1`. Maximální povolená hodnota je `10`. Volání funkcí jsou rovnoměrně rozdělena mezi pracovní procesy jazyka. Pracovní procesy jazyka se spouští každých 10 sekund, dokud se nedosáhne počtu zpracovaných\_pracovních\_procesů funkcí\_Count. Použití více pracovních procesů jazyka není stejné jako [škálování](functions-scale.md). Zvažte použití tohoto nastavení, pokud má vaše úloha kombinaci asynchronních volání vázaných na procesor a vstupně-výstupní operace. Toto nastavení platí pro všechny non-.NET jazyky.
 
-|Klíč|Ukázková hodnota|
+|Key|Ukázková hodnota|
 |---|------------|
-|POČET\_\_PRACOVNÍCH PROCESŮ\_FUNKCE|2|
+|počet\_pracovních\_procesů\_funkcí|2|
 
 
-## <a name="functions_worker_runtime"></a>FUNKCE\_\_PRACOVNÍHO BĚHU
+## <a name="functions_worker_runtime"></a>FUNKCE\_modulu\_runtime pracovního procesu
 
-Za běhu pracovního procesu jazyka, který se má načíst v aplikaci funkce.  To bude odpovídat jazyk u používaného ve vaší aplikaci (například "dotnet"). Pro funkce ve více jazycích je budete muset publikovat do více aplikací, z nichž každá má odpovídající hodnotu pracovního běhu.  Platné hodnoty `dotnet` `node` jsou (C#/F#), `java` (JavaScript/TypeScript), (Java), `python` `powershell` (PowerShell) a (Python).
+Běhový modul runtime jazyka, který se má načíst do aplikace Function App.  Bude odpovídat jazyku používanému ve vaší aplikaci (například "dotnet"). V případě funkcí v různých jazycích je budete muset publikovat do více aplikací, z nichž každá má odpovídající běhovou hodnotu pracovního procesu.  Platné hodnoty jsou `dotnet` (C#/f #), `node` (JavaScript/TypeScript), `java` (Java), `powershell` (PowerShell) a `python` (Python).
 
-|Klíč|Ukázková hodnota|
+|Key|Ukázková hodnota|
 |---|------------|
-|FUNKCE\_\_PRACOVNÍHO BĚHU|dotnet|
+|FUNKCE\_modulu\_runtime pracovního procesu|dotnet|
 
 ## <a name="website_contentazurefileconnectionstring"></a>WEBSITE_CONTENTAZUREFILECONNECTIONSTRING
 
-Pouze pro plány Spotřeba & Premium. Připojovací řetězec pro účet úložiště, kde jsou uloženy kód aplikace funkce a konfigurace. Viz [Vytvoření aplikace pro funkci](functions-infrastructure-as-code.md#create-a-function-app).
+Pro spotřebu & jenom plánů Premium. Připojovací řetězec pro účet úložiště, ve kterém je uložený kód a konfigurace aplikace Function App Viz [Vytvoření aplikace Function App](functions-infrastructure-as-code.md#create-a-function-app).
 
-|Klíč|Ukázková hodnota|
+|Key|Ukázková hodnota|
 |---|------------|
-|WEBSITE_CONTENTAZUREFILECONNECTIONSTRING|Výchozí EndpointsProtocol=https; AccountName=[název]; AccountKey=[klíč]|
+|WEBSITE_CONTENTAZUREFILECONNECTIONSTRING|DefaultEndpointsProtocol = https; Název účtu = [název]; AccountKey = [klíč]|
 
-## <a name="website_contentshare"></a>SDÍLENÍ\_OBSAHU WEBOVÝCH STRÁNEK
+## <a name="website_contentshare"></a>CONTENTSHARE\_webu
 
-Pouze pro plány Spotřeba & Premium. Cesta k kódu a konfiguraci aplikace funkce. Používá se s WEBSITE_CONTENTAZUREFILECONNECTIONSTRING. Výchozí je jedinečný řetězec, který začíná názvem aplikace funkce. Viz [Vytvoření aplikace pro funkci](functions-infrastructure-as-code.md#create-a-function-app).
+Pro spotřebu & jenom plánů Premium. Cesta k souboru s kódem a konfigurací aplikace Function App Používá se s WEBSITE_CONTENTAZUREFILECONNECTIONSTRING. Výchozí hodnota je jedinečný řetězec, který začíná názvem aplikace Function App. Viz [Vytvoření aplikace Function App](functions-infrastructure-as-code.md#create-a-function-app).
 
-|Klíč|Ukázková hodnota|
+|Key|Ukázková hodnota|
 |---|------------|
-|WEBSITE_CONTENTSHARE|funkceapp091999e2|
+|WEBSITE_CONTENTSHARE|functionapp091999e2|
 
-## <a name="website_max_dynamic_application_scale_out"></a>MAXIMÁLNÍ\_\_VYUŽITÍ\_\_DYNAMICKÉ\_APLIKACE WEBU
+## <a name="website_max_dynamic_application_scale_out"></a>maximální\_\_navýšení\_kapacity\_dynamické\_aplikace na webu
 
-Maximální počet instancí, které aplikace funkce můžete horizontální navýšení kapacity. Výchozí hodnota není omezena.
+Maximální počet instancí, na které může aplikace Function App navýšit horizontální navýšení kapacity. Výchozí hodnota není nijak omezena.
 
 > [!NOTE]
-> Toto nastavení je funkce náhledu - a pouze spolehlivé, pokud je nastaveno na hodnotu <= 5
+> Toto nastavení je funkce ve verzi Preview a je spolehlivá, jenom pokud je nastavená hodnota <= 5.
 
-|Klíč|Ukázková hodnota|
+|Key|Ukázková hodnota|
 |---|------------|
-|MAXIMÁLNÍ\_\_VYUŽITÍ\_\_DYNAMICKÉ\_APLIKACE WEBU|5|
+|maximální\_\_navýšení\_kapacity\_dynamické\_aplikace na webu|5|
 
-## <a name="website_node_default_version"></a>DEFAULT_VERSION\_NODE\_WEBOVÝCH STRÁNEK
+## <a name="website_node_default_version"></a>DEFAULT_VERSION\_uzlu\_webu
 
-_Pouze pro Windows._  
-Nastaví verzi souboru Node.js, která se použije při spuštění aplikace funkce ve Windows. Měli byste použít vlnovku (~) k tomu, aby za běhu používala nejnovější dostupnou verzi cílové hlavní verze. Pokud je například `~10`nastavena na , použije se nejnovější verze souboru Node.js 10. Pokud je hlavní verze cílená pomocí vlnovky, není nutné ji ručně aktualizovat. 
+_Pouze Windows._  
+Nastaví verzi Node. js, která se má použít při spuštění aplikace Function App ve Windows. Chcete-li, aby modul runtime používal nejnovější dostupnou verzi cílené hlavní verze, použijte vlnovku (~). Například při nastavení na `~10`je použita nejnovější verze Node. js 10. V případě, že je hlavní verze cílena na vlnovku, nemusíte ručně aktualizovat dílčí verzi. 
 
-|Klíč|Ukázková hodnota|
+|Key|Ukázková hodnota|
 |---|------------|
-|DEFAULT_VERSION\_NODE\_WEBOVÝCH STRÁNEK|~10|
+|DEFAULT_VERSION\_uzlu\_webu|~ 10|
 
-## <a name="website_run_from_package"></a>WEBOVÉ\_\_STRÁNKY\_SPUSTIT Z BALÍČKU
+## <a name="website_run_from_package"></a>Web\_\_spouštěný\_z balíčku
 
-Umožňuje spuštění aplikace funkce z připojeného souboru balíčku.
+Povolí spuštění aplikace Function App z připojeného souboru balíčku.
 
-|Klíč|Ukázková hodnota|
+|Key|Ukázková hodnota|
 |---|------------|
-|WEBOVÉ\_\_STRÁNKY\_SPUSTIT Z BALÍČKU|1|
+|Web\_\_spouštěný\_z balíčku|1|
 
-Platné hodnoty jsou adresa URL, která se překládá do `1`umístění souboru balíčku nasazení, nebo . Pokud je `1`nastavena na , `d:\home\data\SitePackages` balíček musí být ve složce. Při použití nasazení zip s tímto nastavením je balíček automaticky odeslán do tohoto umístění. Ve verzi Preview bylo `WEBSITE_RUN_FROM_ZIP`toto nastavení pojmenováno . Další informace naleznete v [tématu Spuštění funkcí ze souboru balíčku](run-functions-from-deployment-package.md).
+Platné hodnoty jsou buď adresy URL, které se překládá na umístění souboru balíčku pro nasazení, `1`nebo. Při nastavení na `1`se balíček musí nacházet ve `d:\home\data\SitePackages` složce. Při použití nasazení zip s tímto nastavením se balíček automaticky nahraje do tohoto umístění. Ve verzi Preview bylo toto nastavení pojmenováno `WEBSITE_RUN_FROM_ZIP`. Další informace najdete v tématu [spuštění funkcí ze souboru balíčku](run-functions-from-deployment-package.md).
 
 ## <a name="azure_function_proxy_disable_local_call"></a>AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL
 
-Ve výchozím nastavení funkce proxy bude používat zástupce pro odesílání volání rozhraní API z proxy přímo do funkcí ve stejné aplikaci funkce, spíše než vytvoření nového požadavku HTTP. Toto nastavení umožňuje zakázat toto chování.
+Ve výchozím nastavení budou proxy služby funkcí používat zástupce pro odesílání volání rozhraní API z proxy serverů přímo do funkcí ve stejné Function App namísto vytváření nového požadavku HTTP. Toto nastavení umožňuje toto chování zakázat.
 
-|Klíč|Hodnota|Popis|
+|Key|Hodnota|Popis|
 |-|-|-|
-|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|true|Volání s adresou URL back-endu ukazující na funkci v místní aplikaci funkce již nebudou odesílána přímo do funkce a místo toho budou směrována zpět na front-end HTTP pro aplikaci function App|
-|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|false (nepravda)|Toto je výchozí hodnota. Volání s adresou URL back-endu ukazující na funkci v místní aplikaci funkcí budou přeposílána přímo této funkci|
+|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|true|Volání s adresou URL back-endu ukazující na funkci v místním Function App již nebudou odesílána přímo do funkce a místo toho budou přesměrována zpět na front-end protokolu HTTP pro Function App|
+|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|false (nepravda)|Toto je výchozí hodnota. Volání s adresou URL back-endu ukazující na funkci v místním Function App budou předána přímo této funkci.|
 
 
 ## <a name="azure_function_proxy_backend_url_decode_slashes"></a>AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES
 
-Toto nastavení určuje, zda je %2F dekódováno jako lomítka v parametrech trasy, když jsou vložena do adresy URL back-endu. 
+Toto nastavení určuje, jestli se% 2F dekóduje jako lomítka v parametrech směrování při jejich vložení do adresy URL back-endu. 
 
-|Klíč|Hodnota|Popis|
+|Key|Hodnota|Popis|
 |-|-|-|
-|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|true|Parametry trasy s kódovanámi lomítky je dekódují. `example.com/api%2ftest`se stane`example.com/api/test`|
-|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|false (nepravda)|Toto je výchozí chování. Všechny parametry trasy budou předány beze změny.|
+|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|true|Parametry směrování s kódovanými lomítky budou mít dekódované. `example.com/api%2ftest`stane se`example.com/api/test`|
+|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|false (nepravda)|Toto je výchozí chování. Všechny parametry tras budou předány beze změny.|
 
 ### <a name="example"></a>Příklad
 
-Zde je příklad proxy.json ve funkci aplikace na adrese URL myfunction.com
+Tady je příklad proxy. JSON ve Function App na adrese URL myfunction.com
 
 ```JSON
 {
@@ -237,8 +237,8 @@ Zde je příklad proxy.json ve funkci aplikace na adrese URL myfunction.com
 
 ## <a name="next-steps"></a>Další kroky
 
-[Přečtěte si, jak aktualizovat nastavení aplikace.](functions-how-to-use-azure-function-app-settings.md#settings)
+[Informace o tom, jak aktualizovat nastavení aplikace](functions-how-to-use-azure-function-app-settings.md#settings)
 
-[Zobrazení globálního nastavení v souboru host.json](functions-host-json.md)
+[Viz globální nastavení v souboru Host. JSON.](functions-host-json.md)
 
-[Zobrazení dalších nastavení aplikací pro aplikace Služby App Service](https://github.com/projectkudu/kudu/wiki/Configurable-settings)
+[Zobrazit další nastavení aplikací pro App Service aplikace](https://github.com/projectkudu/kudu/wiki/Configurable-settings)

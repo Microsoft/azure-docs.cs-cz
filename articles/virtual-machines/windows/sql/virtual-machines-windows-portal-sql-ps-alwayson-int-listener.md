@@ -1,6 +1,6 @@
 ---
-title: Konfigurace naslouchacích procesů skupiny dostupnosti & vyrovnávání zatížení (PowerShell)
-description: Nakonfigurujte posluchače skupiny dostupnosti v modelu Azure Resource Manager pomocí interního nástroje pro vyrovnávání zatížení s jednou nebo více ADRESAMI IP.
+title: Konfigurace posluchačů skupiny dostupnosti & nástroje pro vyrovnávání zatížení (PowerShell)
+description: Nakonfigurujte naslouchací procesy skupiny dostupnosti u Azure Resource Manager modelu pomocí interního nástroje pro vyrovnávání zatížení s jednou nebo více IP adresami.
 services: virtual-machines
 documentationcenter: na
 author: MikeRayMSFT
@@ -15,75 +15,75 @@ ms.date: 02/06/2019
 ms.author: mikeray
 ms.custom: seo-lt-2019
 ms.openlocfilehash: cabfc84d2bc0c9d08a457e67c0182d7550f04ceb
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80668890"
 ---
-# <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>Konfigurace jednoho nebo více naslouchacích procesů skupiny dostupnosti always on – Správce prostředků
-Toto téma ukazuje, jak:
+# <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>Konfigurace jednoho nebo více naslouchacích skupin dostupnosti Always On – Správce prostředků
+V tomto tématu se dozvíte, jak:
 
-* Vytvořte interní nástroje pro vyrovnávání zatížení pro skupiny dostupnosti serveru SQL Server pomocí rutin prostředí PowerShell.
-* Přidejte další adresy IP do programu pro vyrovnávání zatížení pro více než jednu skupinu dostupnosti. 
+* Vytvořte interní nástroj pro vyrovnávání zatížení pro SQL Server skupiny dostupnosti pomocí rutin prostředí PowerShell.
+* Přidejte další IP adresy do nástroje pro vyrovnávání zatížení pro více než jednu skupinu dostupnosti. 
 
-Naslouchací proces skupiny dostupnosti je název virtuální sítě, ke kterému se klienti připojují pro přístup k databázi. Ve virtuálních počítačích Azure nástroj pro vyrovnávání zatížení obsahuje IP adresu pro naslouchací proces. Nástroje pro vyrovnávání zatížení směruje provoz na instanci SQL Server, který naslouchá na portu sondy. Skupina dostupnosti obvykle používá interní systém vyrovnávání zatížení. Interní správce zatížení Azure může hostovat jednu nebo více IP adres. Každá adresa IP používá konkrétní port sondy. Tento dokument ukazuje, jak pomocí prostředí PowerShell vytvořit nástroje pro vyrovnávání zatížení nebo přidat adresy IP do existujícího nástroje pro vyrovnávání zatížení pro skupiny dostupnosti serveru SQL Server. 
+Naslouchací proces skupiny dostupnosti je název virtuální sítě, ke které se klienti připojují pro přístup k databázi. Na virtuálních počítačích Azure obsahuje nástroj pro vyrovnávání zatížení IP adresu pro naslouchací proces. Nástroj pro vyrovnávání zatížení směruje provoz do instance SQL Server, která naslouchá na portu sondy. Skupina dostupnosti obvykle používá interní nástroj pro vyrovnávání zatížení. Interní nástroj pro vyrovnávání zatížení Azure může hostovat jednu nebo více IP adres. Každá IP adresa používá konkrétní port testu paměti. V tomto dokumentu se dozvíte, jak pomocí PowerShellu vytvořit nástroj pro vyrovnávání zatížení nebo přidat IP adresy do stávajícího nástroje pro vyrovnávání zatížení pro SQL Server skupiny dostupnosti. 
 
-Možnost přiřadit více IP adres internímu nástroje pro vyrovnávání zatížení je pro Azure nová a je dostupná jenom v modelu Resource Manageru. K dokončení tohoto úkolu, musíte mít sql server skupiny dostupnosti nasazené na virtuálních počítačích Azure v modelu Správce prostředků. Oba virtuální počítače SQL Server musí patřit do stejné skupiny dostupnosti. Pomocí šablony [Microsoftu](virtual-machines-windows-portal-sql-alwayson-availability-groups.md) můžete automaticky vytvořit skupinu dostupnosti ve Správci prostředků Azure. Tato šablona automaticky vytvoří skupinu dostupnosti, včetně interního systému vyrovnávání zatížení pro vás. Pokud chcete, můžete [ručně nakonfigurovat skupinu dostupnosti vždy zapnuto](virtual-machines-windows-portal-sql-availability-group-tutorial.md).
+Možnost přiřazení více IP adres k internímu nástroji pro vyrovnávání zatížení je pro Azure novinkou a je dostupná jenom v Správce prostředkům modelu. K dokončení této úlohy musíte mít na virtuálních počítačích Azure nasazenou skupinu dostupnosti SQL Server v modelu Správce prostředků. Oba SQL Server virtuální počítače musí patřit do stejné skupiny dostupnosti. K automatickému vytvoření skupiny dostupnosti v Azure Resource Manager můžete použít [šablonu společnosti Microsoft](virtual-machines-windows-portal-sql-alwayson-availability-groups.md) . Tato šablona automaticky vytvoří skupinu dostupnosti, včetně interního nástroje pro vyrovnávání zatížení. Pokud budete chtít, můžete [ručně nakonfigurovat skupinu dostupnosti Always On](virtual-machines-windows-portal-sql-availability-group-tutorial.md).
 
-Toto téma vyžaduje, aby vaše skupiny dostupnosti jsou již nakonfigurovány.  
+Toto téma vyžaduje, aby byly vaše skupiny dostupnosti již nakonfigurovány.  
 
 Mezi související témata patří:
 
-* [Konfigurace skupin dostupnosti AlwaysOn ve virtuálním počítači Azure (GUI)](virtual-machines-windows-portal-sql-availability-group-tutorial.md)   
+* [Konfigurace Skupiny dostupnosti AlwaysOn na virtuálním počítači Azure (GUI)](virtual-machines-windows-portal-sql-availability-group-tutorial.md)   
 * [Konfigurace propojení VNet-to-VNet s použitím Azure Resource Manageru a prostředí PowerShell](../../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)
 
 [!INCLUDE [updated-for-az.md](../../../../includes/updated-for-az.md)]
 
 [!INCLUDE [Start your PowerShell session](../../../../includes/sql-vm-powershell.md)]
 
-## <a name="verify-powershell-version"></a>Ověření verze PowerShellu
+## <a name="verify-powershell-version"></a>Ověřit verzi PowerShellu
 
-Příklady v tomto článku jsou testovány pomocí modulu Azure PowerShell verze 5.4.1.
+Příklady v tomto článku jsou testovány pomocí nástroje Azure PowerShell 5.4.1 verze modulu.
 
-Ověřte, zda je váš modul PowerShellu 5.4.1 nebo novější.
+Ověřte, že je modul prostředí PowerShell 5.4.1 nebo novější.
 
-Viz [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
+Přečtěte si téma [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
 
 ## <a name="configure-the-windows-firewall"></a>Konfigurace brány Windows Firewall
 
-Nakonfigurujte bránu Windows Firewall tak, aby umožňovala přístup k serveru SQL Server. Pravidla brány firewall umožňují připojení TCP k portům, které používá instance serveru SQL Server, a sonda naslouchací proces. Podrobné pokyny naleznete v [tématu Konfigurace brány Windows Firewall pro přístup k databázovému stroji](https://msdn.microsoft.com/library/ms175043.aspx#Anchor_1). Vytvořte příchozí pravidlo pro port serveru SQL Server a pro port sondy.
+Nakonfigurujte bránu Windows Firewall, aby povolovala přístup k SQL Server. Pravidla brány firewall umožňují připojení TCP k portům, které používá instance SQL Server, a sondu naslouchacího procesu. Podrobné pokyny najdete v tématu [Konfigurace brány Windows Firewall pro přístup k databázovému stroji](https://msdn.microsoft.com/library/ms175043.aspx#Anchor_1). Vytvořte příchozí pravidlo pro port SQL Server a pro port testu.
 
-Pokud omezujete přístup pomocí skupiny zabezpečení sítě Azure, ujistěte se, že pravidla povolení zahrnují ip adresy IP v back-endu SQL Server a plovoucí IP adresy nástroje pro vyrovnávání zatížení pro naslouchací proces AG a případně základní IP adresu clusteru.
+Pokud omezíte přístup ke skupině zabezpečení sítě Azure, zajistěte, aby pravidla povolení zahrnovala IP adresy back-endu SQL Server virtuálních počítačů, a v případě potřeby i IP adresy vyrovnávání zátěže pro naslouchací proces AG a základní IP adresu clusteru.
 
-## <a name="determine-the-load-balancer-sku-required"></a>Určení požadované skladové položky pro vyrovnávání zatížení
+## <a name="determine-the-load-balancer-sku-required"></a>Určení požadované SKU nástroje pro vyrovnávání zatížení
 
-[Azure vyrovnávání zatížení](../../../load-balancer/load-balancer-overview.md) je k dispozici ve 2 SKU: Základní & Standard. Doporučuje se standardní nástroje pro vyrovnávání zatížení. Pokud jsou virtuální počítače v sadě dostupnosti, je povolen základní nástroj pro vyrovnávání zatížení. Pokud jsou virtuální počítače v zóně dostupnosti, je vyžadován standardní nástroj pro vyrovnávání zatížení. Standardní vyrovnávání zatížení vyžaduje, aby všechny IP adresy virtuálního počítačů používaly standardní IP adresy.
+[Azure Load Balancer](../../../load-balancer/load-balancer-overview.md) je k dispozici ve 2 SKU: základní & Standard. Doporučuje se standardní nástroj pro vyrovnávání zatížení. Pokud jsou virtuální počítače ve skupině dostupnosti, je povolený nástroj Load Balancer úrovně Basic. Pokud jsou virtuální počítače v zóně dostupnosti, vyžaduje se standardní nástroj pro vyrovnávání zatížení. Load Balancer úrovně Standard vyžaduje, aby všechny IP adresy virtuálních počítačů používaly standardní IP adresy.
 
-Aktuální [šablona společnosti Microsoft](virtual-machines-windows-portal-sql-alwayson-availability-groups.md) pro skupinu dostupnosti používá základní vyrovnávání zatížení se základními adresami IP.
+Aktuální [Šablona společnosti Microsoft](virtual-machines-windows-portal-sql-alwayson-availability-groups.md) pro skupinu dostupnosti používá základní nástroj pro vyrovnávání zatížení se základními IP adresami.
 
    > [!NOTE]
-   > Koncový [bod služby](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network) budete muset nakonfigurovat, pokud používáte standardní vyrovnávání zatížení a Azure Storage pro cloud svědka. 
+   > Pokud použijete nástroj pro vyrovnávání zatížení a Azure Storage pro disk s kopií cloudu, budete muset nakonfigurovat [koncový bod služby](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network) . 
 
 
-Příklady v tomto článku určují standardní vyrovnávání zatížení. V příkladech skript obsahuje `-sku Standard`.
+Příklady v tomto článku určují standardní nástroj pro vyrovnávání zatížení. V příkladech obsahuje `-sku Standard`skript.
 
 ```powershell
 $ILB= New-AzLoadBalancer -Location $Location -Name $ILBName -ResourceGroupName $ResourceGroupName -FrontendIpConfiguration $FEConfig -BackendAddressPool $BEConfig -LoadBalancingRule $ILBRule -Probe $SQLHealthProbe -sku Standard
 ```
 
-Chcete-li vytvořit základní systém `-sku Standard` vyrovnávání zatížení, odeberte z řádku, který vytváří systém vyrovnávání zatížení. Například:
+Pokud chcete vytvořit nástroj pro vyrovnávání zatížení `-sku Standard` Basic, odeberte z řádku, který vytváří nástroj pro vyrovnávání zatížení. Příklad:
 
 ```powershell
 $ILB= New-AzLoadBalancer -Location $Location -Name $ILBName -ResourceGroupName $ResourceGroupName -FrontendIpConfiguration $FEConfig -BackendAddressPool $BEConfig -LoadBalancingRule $ILBRule -Probe $SQLHealthProbe
 ```
 
-## <a name="example-script-create-an-internal-load-balancer-with-powershell"></a>Příklad skriptu: Vytvoření interního systému vyrovnávání zatížení pomocí prostředí PowerShell
+## <a name="example-script-create-an-internal-load-balancer-with-powershell"></a>Ukázkový skript: vytvoření interního nástroje pro vyrovnávání zatížení pomocí PowerShellu
 
 > [!NOTE]
-> Pokud jste vytvořili skupinu dostupnosti pomocí [šablony společnosti Microsoft](virtual-machines-windows-portal-sql-alwayson-availability-groups.md), byl již vytvořen interní systém vyrovnávání zatížení.
+> Pokud jste vytvořili skupinu dostupnosti se [šablonou Microsoftu](virtual-machines-windows-portal-sql-alwayson-availability-groups.md), interní nástroj pro vyrovnávání zatížení už je vytvořený.
 
-Následující skript prostředí PowerShell vytvoří interní systém vyrovnávání zatížení, nakonfiguruje pravidla vyrovnávání zatížení a nastaví adresu IP pro systém vyrovnávání zatížení. Chcete-li skript spustit, otevřete prostředí Windows PowerShell ISE a vložte jej do podokna Skript. Slouží `Connect-AzAccount` k přihlášení k Prostředí PowerShell. Pokud máte více předplatných `Select-AzSubscription` Azure, použijte k nastavení předplatného. 
+Následující skript prostředí PowerShell vytvoří interní nástroj pro vyrovnávání zatížení, nakonfiguruje pravidla vyrovnávání zatížení a nastaví IP adresu nástroje pro vyrovnávání zatížení. Chcete-li spustit skript, otevřete Integrované skriptovací prostředí (ISE) v prostředí Windows PowerShell a vložte skript do podokna skript. Použijte `Connect-AzAccount` k přihlášení do PowerShellu. Pokud máte více předplatných Azure, `Select-AzSubscription` použijte k nastavení předplatného. 
 
 ```powershell
 # Connect-AzAccount
@@ -133,18 +133,18 @@ foreach($VMName in $VMNames)
     }
 ```
 
-## <a name="example-script-add-an-ip-address-to-an-existing-load-balancer-with-powershell"></a><a name="Add-IP"></a>Příklad skriptu: Přidání ADRESY IP do existujícího vykladače zatížení pomocí prostředí PowerShell
-Chcete-li použít více než jednu skupinu dostupnosti, přidejte do programu pro vyrovnávání zatížení další adresu IP. Každá adresa IP vyžaduje vlastní pravidlo vyrovnávání zatížení, port sondy a přední port.
+## <a name="example-script-add-an-ip-address-to-an-existing-load-balancer-with-powershell"></a><a name="Add-IP"></a>Ukázkový skript: Přidání IP adresy do existujícího nástroje pro vyrovnávání zatížení pomocí PowerShellu
+Chcete-li použít více než jednu skupinu dostupnosti, přidejte do nástroje pro vyrovnávání zatížení další IP adresu. Každá IP adresa vyžaduje vlastní pravidlo vyrovnávání zatížení, port testu a front-port.
 
-Front-end port je port, který aplikace používají pro připojení k instanci serveru SQL Server. Ip adresy pro různé skupiny dostupnosti mohou používat stejný front-end port.
+Front-end port je port, který aplikace používá pro připojení k instanci SQL Server. IP adresy pro různé skupiny dostupnosti můžou používat stejný front-end port.
 
 > [!NOTE]
-> Pro skupiny dostupnosti serveru SQL Server každá adresa IP vyžaduje konkrétní port sondy. Například pokud jedna adresa IP v provyčitadlo na zatížení používá port sondy 59999, žádné jiné IP adresy v tomto vykladače zatížení můžete použít probe port 59999.
+> U SQL Server skupin dostupnosti vyžaduje Každá IP adresa konkrétní port testu paměti. Například pokud jedna IP adresa v nástroji pro vyrovnávání zatížení používá testový port 59999, nemůžou žádné další IP adresy v tomto nástroji pro vyrovnávání zatížení používat port testu 59999.
 
-* Informace o limitech nástroje pro vyrovnávání zatížení najdete **v tématu Privátní front-end IP na nástroje pro vyrovnávání zatížení** v části [Limity sítě – Azure Resource Manager](../../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits).
-* Informace o omezeních skupin dostupnosti naleznete v [tématu Omezení (skupiny dostupnosti).](https://msdn.microsoft.com/library/ff878487.aspx#RestrictionsAG)
+* Informace o limitech pro vyrovnávání zatížení najdete v tématu **privátní IP adresa front-endu na Vyrovnávání zatížení** v části [omezení sítě – Azure Resource Manager](../../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits).
+* Informace o omezeních skupiny dostupnosti najdete v tématu [omezení (skupiny dostupnosti)](https://msdn.microsoft.com/library/ff878487.aspx#RestrictionsAG).
 
-Následující skript přidá novou adresu IP do existujícího vykladače zatížení. ILB používá port naslouchací proces pro front-end port vyrovnávání zatížení. Tento port může být port, který SQL Server naslouchá. Pro výchozí instance SQL Server port je 1433. Pravidlo vyrovnávání zatížení pro skupinu dostupnosti vyžaduje plovoucí IP (přímé vrácení serveru), takže port back-end je stejný jako port front-end. Aktualizujte proměnné pro vaše prostředí. 
+Následující skript přidá do stávajícího nástroje pro vyrovnávání zatížení novou IP adresu. INTERNÍHO nástroje používá port naslouchacího procesu pro front-end port pro vyrovnávání zatížení. Tento port může být port, na kterém SQL Server naslouchá. Pro výchozí instance SQL Server Port je 1433. Pravidlo vyrovnávání zatížení pro skupinu dostupnosti vyžaduje plovoucí IP adresu (přímou návratovou hodnotu serveru), aby byl back-end port stejný jako front-end port. Aktualizujte proměnné pro vaše prostředí. 
 
 ```powershell
 # Connect-AzAccount
@@ -189,59 +189,59 @@ $ILB | Add-AzLoadBalancerRuleConfig -Name $LBConfigRuleName -FrontendIpConfigura
 
 [!INCLUDE [ag-listener-configure](../../../../includes/virtual-machines-ag-listener-configure.md)]
 
-## <a name="set-the-listener-port-in-sql-server-management-studio"></a>Nastavení portu naslouchací procesu ve správě serveru SQL Server
+## <a name="set-the-listener-port-in-sql-server-management-studio"></a>Nastavte port naslouchacího procesu v SQL Server Management Studio
 
-1. Spusťte sql server management studio a připojte se k primární replice.
+1. Spusťte SQL Server Management Studio a připojte se k primární replice.
 
-1. Přejděte **na alwayson dostupnost** | **skupiny dostupnosti skupiny** | **naslouchací procesy**. 
+1. Přejděte na**naslouchací procesy****skupin dostupnosti** |  **AlwaysOn vysoké dostupnosti** | . 
 
-1. Nyní byste měli vidět název posluchače, který jste vytvořili ve Správci clusteru s podporou převzetí služeb při selhání. Klepněte pravým tlačítkem myši na název naslouchací procesu a klepněte na příkaz **Vlastnosti**.
+1. Nyní byste měli vidět název naslouchacího procesu, který jste vytvořili v Správce clusteru s podporou převzetí služeb při selhání. Klikněte pravým tlačítkem myši na název naslouchacího procesu a klikněte na **vlastnosti**.
 
-1. V poli **Port** zadejte číslo portu pro posluchače skupiny dostupnosti pomocí $EndpointPort, který jste použili dříve (1433 byl výchozí), pak klepněte na tlačítko **OK**.
+1. Do pole **port** zadejte číslo portu pro naslouchací proces skupiny dostupnosti pomocí $EndpointPort, který jste použili dříve (výchozí nastavení je 1433), a pak klikněte na **OK**.
 
-## <a name="test-the-connection-to-the-listener"></a>Otestovat připojení k naslouchací proces
+## <a name="test-the-connection-to-the-listener"></a>Otestování připojení k naslouchacímu procesu
 
-Chcete-li otestovat připojení:
+Otestování připojení:
 
-1. RDP na SQL Server, který je ve stejné virtuální síti, ale nevlastní repliku. Může se jedná o další server SQL V clusteru.
+1. Protokol RDP na SQL Server, který je ve stejné virtuální síti, ale nevlastní repliku. Může to být druhý SQL Server v clusteru.
 
-1. Pomocí nástroje **sqlcmd** otestujte připojení. Například následující skript vytvoří **sqlcmd** připojení k primární replice prostřednictvím naslouchacího procesu s ověřováním systému Windows:
+1. K otestování připojení použijte nástroj **Sqlcmd** . Například následující skript vytvoří připojení **Sqlcmd** k primární replice prostřednictvím naslouchacího procesu s ověřováním systému Windows:
    
     ```
     sqlcmd -S <listenerName> -E
     ```
    
-    Pokud naslouchací proces používá jiný port než výchozí port (1433), zadejte port v připojovacím řetězci. Například následující příkaz sqlcmd se připojí k naslouchací procesu na portu 1435: 
+    Pokud naslouchací proces používá jiný port než výchozí port (1433), zadejte port v připojovacím řetězci. Například následující příkaz Sqlcmd se připojí k naslouchacího procesu na portu 1435: 
    
     ```
     sqlcmd -S <listenerName>,1435 -E
     ```
 
-Připojení SQLCMD se automaticky připojí k kterékoli instanci serveru SQL Server, která je hostitelem primární repliky. 
+Připojení SQLCMD se automaticky připojí k jakékoli instanci SQL Server hostuje primární repliku. 
 
 > [!NOTE]
-> Ujistěte se, že zadaný port je otevřený na bráně firewall obou serverů SQL. Oba servery vyžadují příchozí pravidlo pro port TCP, který používáte. Další informace naleznete v tématu [Přidání nebo úprava pravidla brány firewall.](https://technet.microsoft.com/library/cc753558.aspx) 
+> Ujistěte se, že port, který zadáte, je otevřený v bráně firewall obou serverů SQL. Oba servery vyžadují příchozí pravidlo pro port TCP, který používáte. Další informace najdete v tématu [Přidání nebo úprava pravidla brány firewall](https://technet.microsoft.com/library/cc753558.aspx) . 
 > 
 > 
 
 ## <a name="guidelines-and-limitations"></a>Pokyny a omezení
-Všimněte si následujících pokynů pro naslouchací proces skupiny dostupnosti v Azure pomocí interního systému vyrovnávání zatížení:
+Všimněte si následujících pokynů pro naslouchací proces skupiny dostupnosti v Azure pomocí interního nástroje pro vyrovnávání zatížení:
 
-* S interní nástroj pro vyrovnávání zatížení, přístup k naslouchací proces pouze ze stejné virtuální sítě.
+* S interním nástrojem pro vyrovnávání zatížení získáte přístup pouze k naslouchacímu procesu ze stejné virtuální sítě.
 
-* Pokud omezujete přístup pomocí skupiny zabezpečení sítě Azure, ujistěte se, že pravidla povolení zahrnují ip adresy IP v back-endu SQL Server a plovoucí IP adresy nástroje pro vyrovnávání zatížení pro naslouchací proces AG a případně základní IP adresu clusteru.
+* Pokud omezíte přístup ke skupině zabezpečení sítě Azure, zajistěte, aby pravidla povolení zahrnovala IP adresy back-endu SQL Server virtuálních počítačů, a v případě potřeby i IP adresy vyrovnávání zátěže pro naslouchací proces AG a základní IP adresu clusteru.
 
-* Vytvořte koncový bod služby při použití standardního vykladače zatížení s Azure Storage pro cloud svědka. Další informace naleznete v [tématu Udělení přístupu z virtuální sítě](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network).
+* Pokud používáte standardní nástroj pro vyrovnávání zatížení s Azure Storage pro diskovou kopii cloudu, vytvořte koncový bod služby. Další informace najdete v tématu [udělení přístupu z virtuální sítě](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network).
 
 ## <a name="for-more-information"></a>Další informace
-Další informace najdete [v tématu Konfigurace skupiny dostupnosti vždy v aplikaci Azure v aplikaci Azure ručně](virtual-machines-windows-portal-sql-availability-group-tutorial.md).
+Další informace najdete v tématu [Konfigurace skupiny dostupnosti Always On na virtuálním počítači Azure ručně](virtual-machines-windows-portal-sql-availability-group-tutorial.md).
 
 ## <a name="powershell-cmdlets"></a>Rutiny prostředí PowerShell
-Pomocí následujících rutin Prostředí PowerShell vytvořte interní nástroj pro vyrovnávání zatížení pro virtuální počítače Azure.
+K vytvoření interního nástroje pro vyrovnávání zatížení pro virtuální počítače Azure použijte následující rutiny PowerShellu.
 
-* [New-AzLoadBalancer](https://msdn.microsoft.com/library/mt619450.aspx) vytvoří vyvažovač zatížení. 
-* [New-AzLoadBalancerFrontendIpConfig](https://msdn.microsoft.com/library/mt603510.aspx) vytvoří front-end konfiguraci IP pro nástroj pro vyrovnávání zatížení. 
+* [New-AzLoadBalancer](https://msdn.microsoft.com/library/mt619450.aspx) vytvoří nástroj pro vyrovnávání zatížení. 
+* [New-AzLoadBalancerFrontendIpConfig](https://msdn.microsoft.com/library/mt603510.aspx) vytvoří konfiguraci front-endové IP adresy pro nástroj pro vyrovnávání zatížení. 
 * [New-AzLoadBalancerRuleConfig](https://msdn.microsoft.com/library/mt619391.aspx) vytvoří konfiguraci pravidla pro nástroj pro vyrovnávání zatížení. 
-* [New-AzLoadBalancerBackendAddressComfig](https://msdn.microsoft.com/library/mt603791.aspx) vytvoří konfiguraci fondu back-endových adres pro nástroj pro vyrovnávání zatížení. 
-* [New-AzLoadBalancerProbeConfig](https://msdn.microsoft.com/library/mt603847.aspx) vytvoří konfiguraci sondy pro nástroj pro vyrovnávání zatížení.
-* [Odebrat AzLoadBalancer](https://msdn.microsoft.com/library/mt603862.aspx) odebere balancer zatížení ze skupiny prostředků Azure.
+* [New-AzLoadBalancerBackendAddressPoolConfig](https://msdn.microsoft.com/library/mt603791.aspx) vytvoří konfiguraci fondu adres back-endu pro nástroj pro vyrovnávání zatížení. 
+* [New-AzLoadBalancerProbeConfig](https://msdn.microsoft.com/library/mt603847.aspx) vytvoří konfiguraci testu paměti pro nástroj pro vyrovnávání zatížení.
+* [Příkaz Remove-AzLoadBalancer](https://msdn.microsoft.com/library/mt603862.aspx) odebere nástroj pro vyrovnávání zatížení ze skupiny prostředků Azure.

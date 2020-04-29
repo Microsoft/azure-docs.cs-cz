@@ -1,6 +1,6 @@
 ---
-title: Instalace agenta připojeného počítače pomocí prostředí Windows PowerShell DSC
-description: V tomto článku se dozvíte, jak připojit počítače k Azure pomocí Azure Arc pro servery (náhled) pomocí Windows PowerShell DSC.
+title: Instalace agenta připojeného počítače pomocí Windows PowerShell DSC
+description: V tomto článku se dozvíte, jak připojit počítače k Azure pomocí ARC Azure pro servery (Preview) pomocí Windows PowerShell DSC.
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-servers
@@ -9,88 +9,88 @@ ms.author: magoedte
 ms.date: 03/12/2020
 ms.topic: conceptual
 ms.openlocfilehash: 1fb64463b0372202adb04c2deb304c389c7773b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79164680"
 ---
-# <a name="how-to-install-the-connected-machine-agent-using-windows-powershell-dsc"></a>Instalace agenta připojeného počítače pomocí prostředí Windows PowerShell DSC
+# <a name="how-to-install-the-connected-machine-agent-using-windows-powershell-dsc"></a>Postup instalace agenta připojeného počítače pomocí Windows PowerShell DSC
 
-Pomocí [konfigurace požadovaného stavu prostředí Windows PowerShell](https://docs.microsoft.com/powershell/scripting/dsc/getting-started/winGettingStarted?view=powershell-7) (DSC) můžete automatizovat instalaci a konfiguraci softwaru pro počítač se systémem Windows. Tento článek popisuje, jak pomocí DSC nainstalovat Azure Arc pro servery connected machine agent na hybridních počítačích s Windows.
+Pomocí [Konfigurace požadovaného stavu Windows PowerShellu](https://docs.microsoft.com/powershell/scripting/dsc/getting-started/winGettingStarted?view=powershell-7) (DSC) můžete automatizovat instalaci a konfiguraci softwaru pro počítač se systémem Windows. Tento článek popisuje, jak použít DSC k instalaci agenta Azure ARC pro servery připojené Machine Agent na hybridních počítačích s Windows.
 
 ## <a name="requirements"></a>Požadavky
 
-- Prostředí Windows PowerShell verze 4.0 nebo vyšší
+- Windows PowerShell verze 4,0 nebo vyšší
 
-- Modul [DSC AzureConnectedMachineDsc](https://www.powershellgallery.com/packages/AzureConnectedMachineDsc/1.0.1.0)
+- Modul [AzureConnectedMachineDsc](https://www.powershellgallery.com/packages/AzureConnectedMachineDsc/1.0.1.0) DSC
 
-- Instanční objekt pro připojení počítačů k Azure Arc pro servery neinteraktivně. Postupujte podle kroků v části [Vytvoření instančního objektu pro přihlašování ve velkém měřítku,](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) pokud jste již nevytvořili instanční objekt pro Arc pro servery.
+- Instanční objekt pro připojení počítačů k Azure ARC pro servery, které nejsou interaktivně. Pokud jste ještě nevytvořili instanční objekt pro ARC pro servery, postupujte podle kroků v části [Vytvoření instančního objektu pro škálování ve velkém měřítku](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) .
 
 ## <a name="install-the-connectedmachine-dsc-module"></a>Instalace modulu ConnectedMachine DSC
 
-1. Chcete-li modul nainstalovat ručně, stáhněte zdrojový kód a rozbalte `$env:ProgramFiles\WindowsPowerShell\Modules folder`obsah adresáře projektu do . Nebo spusťte následující příkaz pro instalaci z galerie PowerShellpomocí PowerShellGet (v Prostředí PowerShell 5.0):
+1. Chcete-li ručně nainstalovat modul, Stáhněte zdrojový kód a rozbalte obsah adresáře projektu do `$env:ProgramFiles\WindowsPowerShell\Modules folder`. Nebo spusťte následující příkaz, který nainstalujete z Galerie prostředí PowerShell pomocí PowerShellGet (v PowerShellu 5,0):
 
     ```powershell
     Find-Module -Name AzureConnectedMachineDsc -Repository PSGallery | Install-Module
     ```
 
-2. Chcete-li potvrdit instalaci, spusťte následující příkaz a ujistěte se, že se zobrazí prostředky DSC připojeného počítače Azure, které jsou k dispozici.
+2. Pokud chcete potvrdit instalaci, spusťte následující příkaz a ujistěte se, že jsou dostupné prostředky DSC počítače připojené k Azure.
 
     ```powershell
     Get-DscResource -Module AzureConnectedMachineDsc
     ```
 
-   Ve výstupu byste měli vidět něco podobného následujícímu:
+   Ve výstupu by se mělo zobrazit něco podobného jako v následujícím příkladu:
 
-   ![Příklad instalace modulu Connected Machine DSC](./media/onboard-dsc/confirm-module-installation.png)
+   ![Příklad potvrzení instalace modulu připojení počítače DSC](./media/onboard-dsc/confirm-module-installation.png)
 
 ## <a name="install-the-agent-and-connect-to-azure"></a>Instalace agenta a připojení k Azure
 
-Prostředky v tomto modulu jsou navržené pro správu konfigurace Azure Connected Machine Agent. Součástí je také skript `AzureConnectedMachineAgent.ps1`prostředí PowerShell , který se nachází ve `AzureConnectedMachineDsc\examples` složce. Využívá komunitní prostředky k automatizaci stahování a instalace a navázání připojení k Azure Arc. Tento skript provádí podobné kroky popsané v připojení hybridních počítačů do Azure z článku [portálu Azure.](onboard-portal.md)
+Prostředky v tomto modulu jsou navržené tak, aby spravovaly konfiguraci agenta počítače připojeného k Azure. Součástí je také skript `AzureConnectedMachineAgent.ps1`prostředí PowerShell, který se nachází `AzureConnectedMachineDsc\examples` ve složce. Používá komunitní zdroje k automatizaci stahování a instalace a navázání připojení pomocí ARC Azure. Tento skript provádí podobné kroky popsané v tématu [připojení hybridních počítačů k Azure z Azure Portal](onboard-portal.md) .
 
-Pokud počítač potřebuje komunikovat prostřednictvím proxy serveru ke službě, po instalaci agenta je třeba spustit příkaz, který je popsán [zde](onboard-portal.md#configure-the-agent-proxy-setting). Tím nastavíte proměnnou `https_proxy`prostředí systému proxy serveru . Namísto ručního spuštění příkazu můžete tento krok provést pomocí dsc pomocí modulu [ComputeManagementDsc.](https://www.powershellgallery.com/packages/ComputerManagementDsc/6.0.0.0)
+Pokud počítač potřebuje komunikovat prostřednictvím proxy server ke službě, po instalaci agenta musíte spustit příkaz, který je [zde](onboard-portal.md#configure-the-agent-proxy-setting)popsán. Tím se nastaví proměnná `https_proxy`prostředí proxy server systému. Místo ručního spuštění příkazu můžete tento krok provést s DSC pomocí modulu [ComputeManagementDsc](https://www.powershellgallery.com/packages/ComputerManagementDsc/6.0.0.0) .
 
 >[!NOTE]
->Chcete-li povolit spuštění dsc, systém Windows musí být nakonfigurován pro příjem vzdálených příkazů prostředí PowerShell, i když používáte konfiguraci localhost. Chcete-li snadno správně nakonfigurovat prostředí, stačí spustit `Set-WsManQuickConfig -Force` v terminálu powershellu se zvýšenými oprávněními.
+>Aby bylo možné spustit DSC, musí být systém Windows nakonfigurovaný tak, aby přijímal vzdálené příkazy PowerShellu i v případě, že používáte konfiguraci localhost. Pokud chcete prostředí snadno nakonfigurovat správně, stačí spustit `Set-WsManQuickConfig -Force` v terminálu PowerShellu se zvýšenými oprávněními.
 >
 
-Konfigurační dokumenty (soubory MOF) lze `Start-DscConfiguration` použít na zařízení pomocí rutiny.
+Konfigurační dokumenty (soubory MOF) lze použít v počítači pomocí `Start-DscConfiguration` rutiny.
 
-Níže jsou uvedeny parametry, které předáte skriptu Prostředí PowerShell, který chcete použít.
+Níže jsou uvedené parametry, které předáte skriptu PowerShellu, který se má použít.
 
-- `TenantId`: Jedinečný identifikátor (GUID), který představuje vyhrazenou instanci Azure AD.
+- `TenantId`: Jedinečný identifikátor (GUID), který představuje vaši vyhrazenou instanci služby Azure AD.
 
-- `SubscriptionId`: ID předplatného (GUID) vašeho předplatného Azure, ve kterém chcete počítače.
+- `SubscriptionId`: ID předplatného vašeho předplatného Azure, ve kterém chcete počítače.
 
-- `ResourceGroup`: Název skupiny prostředků, do kterého chcete, aby připojené počítače patřily.
+- `ResourceGroup`: Název skupiny prostředků, do které chcete připojené počítače patřit.
 
 - `Location`: Viz [podporované oblasti Azure](overview.md#supported-regions). Toto umístění může být stejné nebo jiné jako umístění skupiny prostředků.
 
-- `Tags`: Pole řetězec značek, které by měly být použity na prostředek připojeného počítače.
+- `Tags`: Pole řetězců značek, které by měly být aplikovány na prostředek připojeného počítače.
 
-- `Credential`: Objekt pověření prostředí PowerShell s **Identifikátorem aplikace** a **heslem** používaným k registraci počítačů ve velkém měřítku pomocí [instančního objektu](onboard-service-principal.md). 
+- `Credential`: Objekt přihlašovacích údajů PowerShellu s **ApplicationId** a **heslem** , který se používá k registraci počítačů ve velkém rozsahu pomocí [instančního objektu](onboard-service-principal.md). 
 
-1. V konzole PowerShell přejděte do složky, do které jste soubor uložili. `.ps1`
+1. V konzole PowerShellu přejděte do složky, kam jste `.ps1` soubor uložili.
 
-2. Spusťte následující příkazy prostředí PowerShell pro kompilaci dokumentu MOF (informace o kompilaci konfigurací DSC naleznete v [tématu Konfigurace DSC](https://docs.microsoft.com/powershell/scripting/dsc/configurations/configurations?view=powershell-7):
+2. Spusťte následující příkazy PowerShellu pro zkompilování dokumentu MOF (informace o kompilaci konfigurací DSC najdete v tématu [Konfigurace DSC](https://docs.microsoft.com/powershell/scripting/dsc/configurations/configurations?view=powershell-7)):
 
     ```powershell
     .\`AzureConnectedMachineAgent.ps1 -TenantId <TenantId GUID> -SubscriptionId <SubscriptionId GUID> -ResourceGroup '<ResourceGroupName>' -Location '<LocationName>' -Tags '<Tag>' -Credential <psCredential>
     ```
 
-3. Tím se `localhost.mof file` vytvoří v nové `C:\dsc`složce s názvem .
+3. Tím se vytvoří `localhost.mof file` nová složka s názvem `C:\dsc`.
 
-Po instalaci agenta a nakonfigurajete ho pro připojení k Azure Arc pro servery (preview), přejděte na portál Azure a ověřte, že server byl úspěšně připojen. Zobrazení počítačů na [webu Azure Portal](https://aka.ms/hybridmachineportal).
+Po nainstalování agenta a jeho konfiguraci pro připojení k Azure ARC pro servery (Preview), navštivte Azure Portal a ověřte, že se server úspěšně připojil. Zobrazte počítače v [Azure Portal](https://aka.ms/hybridmachineportal).
 
-## <a name="adding-to-existing-configurations"></a>Přidání do existujících konfigurací
+## <a name="adding-to-existing-configurations"></a>Přidávání do stávajících konfigurací
 
-Tento prostředek lze přidat do existujícíkonfigurace DSC představují konfiguraci end-to-end pro počítač. Můžete například přidat tento prostředek do konfigurace, která nastaví nastavení zabezpečeného operačního systému.
+Tento prostředek se dá přidat do stávajících konfigurací DSC, které budou představovat ucelenou konfiguraci pro počítač. Můžete například chtít přidat tento prostředek do konfigurace, která nastaví zabezpečené nastavení operačního systému.
 
-Modul [CompsiteResource](https://www.powershellgallery.com/packages/compositeresource/0.4.0) z Galerie prostředí PowerShell lze použít k vytvoření [složeného prostředku](https://docs.microsoft.com/powershell/scripting/dsc/resources/authoringResourceComposite?view=powershell-7) ukázkové konfigurace, aby se dále zjednodušilo kombinování konfigurací.
+Modul [CompsiteResource](https://www.powershellgallery.com/packages/compositeresource/0.4.0) z Galerie prostředí PowerShell lze použít k vytvoření [složeného prostředku](https://docs.microsoft.com/powershell/scripting/dsc/resources/authoringResourceComposite?view=powershell-7) ukázkové konfigurace, aby bylo možné dále zjednodušit kombinování konfigurací.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Zjistěte, jak spravovat počítač pomocí [Zásad Azure](../../governance/policy/overview.md), pro takové věci, jako je [konfigurace hosta](../../governance/policy/concepts/guest-configuration.md)virtuálního počítače , ověření, že počítač hlásí očekávanému pracovnímu prostoru Log Analytics, povolit monitorování pomocí [Azure Monitoru pomocí virtuálních počítačů](../../azure-monitor/insights/vminsights-enable-at-scale-policy.md)a mnoho dalšího.
+- Naučte se, jak spravovat počítač pomocí [Azure Policy](../../governance/policy/overview.md), jako je [Konfigurace hosta](../../governance/policy/concepts/guest-configuration.md)virtuálního počítače, ověření, že se počítač hlásí k očekávanému log Analyticsmu pracovnímu prostoru, povolit monitorování pomocí [Azure monitor s virtuálními počítači](../../azure-monitor/insights/vminsights-enable-at-scale-policy.md)a mnohem víc.
 
-- Další informace o [agentovi Analýzy protokolů](../../azure-monitor/platform/log-analytics-agent.md). Agent Log Analytics pro Windows a Linux je vyžadován, pokud chcete proaktivně sledovat operační systém a úlohy spuštěné na počítači, spravovat jej pomocí runbooků automation nebo řešení, jako je správa aktualizací, nebo používat jiné služby Azure, jako je [Azure Security Center](../../security-center/security-center-intro.md).
+- Přečtěte si další informace o [agentovi Log Analytics](../../azure-monitor/platform/log-analytics-agent.md). Agent Log Analytics pro systém Windows a Linux je nutný, pokud chcete aktivně monitorovat operační systém a úlohy běžící v počítači, spravovat je pomocí runbooků nebo řešení automatizace, jako je Update Management, nebo použít jiné služby Azure, jako je [Azure Security Center](../../security-center/security-center-intro.md).

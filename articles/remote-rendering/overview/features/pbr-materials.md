@@ -1,88 +1,88 @@
 ---
-title: PBR materiály
+title: Materiály PBR
 description: Popisuje typ materiálu PBR.
 author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
 ms.openlocfilehash: 64553506f75451c50a87932904f00a7275ea9286
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80680255"
 ---
-# <a name="pbr-materials"></a>PBR materiály
+# <a name="pbr-materials"></a>Materiály PBR
 
-*PBR materiály* jsou jedním z podporovaných [typů materiálů](../../concepts/materials.md) v Azure Remote Rendering. Používají se pro [ok,](../../concepts/meshes.md) která by měla přijímat realistické osvětlení.
+*Materiály PBR* jsou jedním z podporovaných [typů materiálu](../../concepts/materials.md) ve vzdáleném vykreslování Azure. Používají se pro [sítě](../../concepts/meshes.md) , které by měly přijímat reálné osvětlení.
 
-PBR je zkratka pro **P**hysically **B**ased **R**endering a znamená, že materiál popisuje vizuální vlastnosti povrchu fyzicky přijatelným způsobem, takže realistické výsledky jsou možné za všech světelných podmínek. Většina moderních herních motorů a nástrojů pro tvorbu obsahu podporuje pbr materiály, protože jsou považovány za nejlepší aproximaci reálných scénářů pro vykreslování v reálném čase.
+PBR představuje pro **P**hysically **B**ased **R**endering a to znamená, že materiál popisuje vizuální vlastnosti povrchu fyzicky plausible, takže reálné výsledky jsou možné v rámci všech světelných podmínek. Většina moderních herních modulů a nástrojů pro vytváření obsahu podporují PBR materiály, protože se považují za nejlepší odhad scénářů reálného světa pro vykreslování v reálném čase.
 
-![Přilba glTF vzorový model poskytnuté ARR](media/helmet.png)
+![GlTF Vzorový model, který je vykreslený pomocí ARR](media/helmet.png)
 
-PBR materiály však nejsou univerzálním řešením. Existují materiály, které odrážejí barvu odlišně v závislosti na úhlu pohledu. Například některé látky nebo barvy do auta. Tyto druhy materiálů nejsou zpracovány standardní model PBR a nejsou aktuálně podporovány Azure Remote Rendering. To zahrnuje rozšíření PBR, jako je *thin-film* (vícevrstvé povrchy) a *Clear-Coat* (pro automobilové barvy).
+Materiály PBR nejsou univerzálním řešením, i když. V závislosti na úhlu zobrazení existují materiály, které odrážejí barvu odlišně. Například některé prostředky infrastruktury nebo nátěry automobilů. Tyto druhy materiálů nejsou zpracovávány standardním modelem PBR a aktuálně nejsou podporovány pomocí vzdáleného vykreslování Azure. To zahrnuje rozšíření PBR, jako jsou *tenké filmy* (vícevrstvé povrchy) a *clear-nátěr* (pro nátěry automobilů).
 
 ## <a name="common-material-properties"></a>Společné vlastnosti materiálu
 
 Tyto vlastnosti jsou společné pro všechny materiály:
 
-* **albedoColor:** Tato barva se násobí jinými barvami, například barvami *albedoMap* nebo *vertex*. Pokud je u materiálu povolena *průhlednost,* alfa kanál se `1` použije k `0` úpravě krytí, což znamená, že je zcela neprůhledné a znamená to zcela průhledné. Výchozí hodnota je bílá.
+* **albedoColor:** Tato barva se vynásobí ostatními barvami, jako jsou *albedoMap* nebo *vrcholy*. Pokud je pro materiál povolená *průhlednost* , alfa kanál se použije k úpravě krytí, což znamená, `1` že je plně neprůhledný a `0` má velmi transparentní význam. Výchozí hodnota je bílá.
 
   > [!NOTE]
-  > Když je materiál PBR zcela průhledný, jako dokonale čistý kus skla, stále odráží životní prostředí. Jasné skvrny, jako je slunce, jsou stále viditelné v odrazu. To je jiné pro [barevné materiály](color-materials.md).
+  > Když je materiál PBR plně transparentní, jako dokonale čistá část skla, stále odráží prostředí. Jasné skvrny, jako je slunce, jsou pořád viditelné v reflexi. To se pro [barevné materiály](color-materials.md)liší.
 
 * **albedoMap:** [2D textura](../../concepts/textures.md) pro hodnoty albedo na pixel.
 
-* **alphaClipEnabled** a **alphaClipThreshold:** Pokud je *alphaClipEnabled* true, nebudou vykresleny všechny obrazové body, kde je hodnota albedo alpha nižší než *alphaClipThreshold.* Alfa oříznutí lze použít i bez povolení průhlednosti a je mnohem rychlejší k vykreslení. Alfa oříznuté materiály jsou však stále pomalejší než plně neprůhledné materiály. Ve výchozím nastavení je alfa oříznutí zakázáno.
+* **alphaClipEnabled** a **alphaClipThreshold:** Pokud má *alphaClipEnabled* hodnotu true, všechny pixely, kde je hodnota albedo alfa nižší než *alphaClipThreshold* , se nevykreslí. Výstřižek alfa lze použít i bez nutnosti průhlednosti a je mnohem rychlejší pro vykreslování. Oříznuté materiály alfa jsou stále pomalejší pro vykreslování než plně neprůhledné materiály, ale. Ve výchozím nastavení je oříznutí alfa zakázané.
 
-* **textureCoordinateScale** a **textureCoordinateOffset:** Měřítko se vynásobí do souřadnic textury UV, posun se k němu přidá. Lze použít k roztažení a posunu textur. Výchozí měřítko je (1, 1) a posun je (0, 0).
+* **textureCoordinateScale** a **textureCoordinateOffset:** stupnice se vynásobí souřadnicemi textury UV, do které se přidá posun. Dá se použít k roztažení a posunutí textur. Výchozí měřítko je (1, 1) a posun je (0, 0).
 
-* **useVertexColor:** Pokud síť obsahuje barvy vrcholu a tato volba je povolena, barvy vrcholů sítí se vynásobí do *albedoColor* a *albedoMap*. Ve výchozím nastavení jsou barvy vrcholů zakázány.
+* **useVertexColor:** Pokud mřížka obsahuje barvy vrcholu a tato možnost je povolená, vynásobí se barvy vrcholů mřížek na *albedoColor* a *albedoMap*. Ve výchozím nastavení jsou barvy vrcholu zakázané.
 
-* **isDoubleSided:** Pokud je oboustrannost nastavena na hodnotu true, trojúhelníky s tímto materiálem jsou vykresleny i v případě, že se kamera dívá na jejich zadní tváře. Pro PBR materiály osvětlení je také správně vypočítáno pro zadní plochy. Ve výchozím nastavení je tato možnost zakázána. Viz také [Jednostranné vykreslování](single-sided-rendering.md).
+* **isDoubleSided:** Pokud je vlastnost sidedness nastavená na hodnotu true, budou se tyto trojúhelníky s tímto materiálem vykreslovat i v případě, že fotoaparát hledá své zadní plošky. Pro zadní plošky se také vypočítává osvětlení materiálů PBR. Ve výchozím nastavení je tato možnost zakázána. Viz také [vykreslování na jednom straně](single-sided-rendering.md).
 
 ## <a name="pbr-material-properties"></a>Vlastnosti materiálu PBR
 
-Základní myšlenkou fyzicky založené horečné interpretace je použití vlastností *BaseColor*, *Metalness*a *Roughness* k napodomelosti široké škály reálných materiálů. Podrobný popis PBR je nad rámec tohoto článku. Další informace o PBR naleznete v [jiných zdrojích](http://www.pbr-book.org). Následující vlastnosti jsou specifické pro materiály PBR:
+Základní nápad, který je fyzicky založený na *vykreslování, je*použití *BaseColor*, vlastností odolnosti a vlastností *hrubosti* k emulaci široké škály reálných materiálů. Podrobný popis PBR překračuje rozsah tohoto článku. Další informace o PBR najdete v tématu [Další zdroje](http://www.pbr-book.org). Následující vlastnosti jsou specifické pro materiály PBR:
 
-* **baseColor:** V materiálech PBR se *barva albedo* označuje jako *základní barva*. V Azure Remote Rendering *albedo color* vlastnost je již k dispozici prostřednictvím společné vlastnosti materiálu, takže neexistuje žádná další základní vlastnost barvy.
+* **baseColor:** V materiálech PBR se *Barva albedo* označuje jako *základní barva*. Ve vzdáleném vykreslování Azure je vlastnost *albedo Color* již přítomna prostřednictvím vlastností společných materiálů, takže neexistuje žádná další základní vlastnost Color.
 
-* **drsnost** a **drsnostMapa:** Drsnost definuje, jak drsný nebo hladký je povrch. Drsné povrchy rozptýlí světlo ve více směrech než hladké povrchy, díky nimž jsou odrazy rozmazané, nikoli ostré. Rozsah hodnot je `0.0` `1.0`od do . Když `roughness` se `0.0`rovná , odrazy budou ostré. Když `roughness` se `0.5`rovná , odrazy se rozmazají.
+* **hrubá** a **roughnessMapost:** hrubá rovina definuje, jak je povrch hrubá nebo hladec. Hrubá rovina rozrážejí světlo ve více směrech než hladké povrchy, což rozostří fuzzy, nikoli ostré. Rozsah hodnoty je od `0.0` do. `1.0` Pokud `roughness` se rovná `0.0`, odrazy budou ostré. Při `roughness` rovnosti `0.5`se odrazy stanou neostrými.
 
-  Pokud jsou zadány hodnoty drsnosti a mapy drsnosti, konečná hodnota bude součin obou.
+  Pokud je zadána hodnota hrubosti i mapa hrubosti, bude konečná hodnota součinem těchto dvou.
 
-* **metalness** a **metalnessMap:** Ve fyzice tato vlastnost odpovídá tomu, zda je povrch vodivý nebo dielektrický. Vodivé materiály mají různé reflexní vlastnosti a mají tendenci být reflexní bez albedo barvy. V materiálech PBR tato vlastnost ovlivňuje, jak velký povrch odráží okolní prostředí. Hodnoty se `0.0` `1.0`pohybují od . Když kovje `0.0`je , albedo barva je plně viditelná a materiál vypadá jako plast nebo keramika. Když kovje `0.5`je , vypadá to, že malovaný kov. Když je `1.0`metalness , povrch téměř úplně ztrácí barvu albedo a odráží pouze okolí. Například, `metalness` pokud `1.0` `roughness` je `0.0` a je pak povrch vypadá jako real-svět zrcadlo.
+* **kov** a **metalnessMap:** v fyzikě Tato vlastnost odpovídá tomu, zda je povrch v činnosti nebo dielectric. Tyto materiály mají různé reflektované vlastnosti a jsou obvykle odrážetelné bez albedo barvy. V materiálech PBR Tato vlastnost ovlivňuje, jak velký povrch odráží okolní prostředí. Rozsah hodnot od `0.0` do `1.0`. Když je `0.0`kov, barva albedo je plně viditelná a materiál vypadá jako plasty nebo keramické. V případě, že `0.5`je kov, vypadá to, že se jedná o namalované kovové. Když je `1.0`kov, povrch téměř zcela ztratí svoji albedo barvu a odráží jenom okolí. Například pokud `metalness` je `1.0` a `roughness` , `0.0` pak povrch vypadá jako skutečný zrcadlový svazek.
 
-  Pokud jsou dodány jak metalness hodnota a metalness mapa, konečná hodnota bude součin obou.
+  Pokud jsou dodána hodnota kovového a mapa kovu, bude konečná hodnota součinem těchto dvou.
 
-  ![metalness a drsnost](./media/metalness-roughness.png)
+  ![kovové a hrubosti](./media/metalness-roughness.png)
 
-  Na obrázku výše, koule v pravém dolním rohu vypadá jako skutečný kovový materiál, vlevo dole vypadá jako keramika nebo plast. Barva albedo se také mění podle fyzikálních vlastností. Při zvyšující se drsnosti materiál ztrácí ostrost odrazu.
+  Ve výše uvedeném obrázku vypadá koule v pravém dolním rohu jako materiál reálného materiálu, vlevo dole vypadá jako keramické nebo plast. Barva albedo se také mění podle fyzických vlastností. Díky zvýšení hrubé hodnoty materiál ztratí ostrost reflexe.
 
-* **normalMap:** Pro simulaci jemných odstupňovaných detailů lze poskytnout [normální mapu.](https://en.wikipedia.org/wiki/Normal_mapping)
+* **normalMap:** Pro simulaci jemně odstupňované podrobností lze zadat [normální mapu](https://en.wikipedia.org/wiki/Normal_mapping) .
 
-* **okluzeMap** a **aoScale:** [Okolní okluze](https://en.wikipedia.org/wiki/Ambient_occlusion) dělá objekty s štěrbinami vypadat realističtější přidáním stíny na uzavřené oblasti. Hodnota okluze se `0.0` `1.0`pohybuje `0.0` od do , kde se `1.0` rozumí tma (uzavřená) a neznamená žádné okluze. Pokud je 2D textura k dispozici jako mapa okluze, efekt je povolen a *aoScale* funguje jako multiplikátor.
+* **occlusionMap** a **aoScale:** [ambientní překrytí](https://en.wikipedia.org/wiki/Ambient_occlusion) zpřístupňuje objekty s crevicesmi mnohem realisticky přidáním stínů do zastíněna oblastí. Překrytí rozsah hodnot od `0.0` do `1.0`, kde `0.0` znamená tmavost (zastíněna) `1.0` a znamená, že Occlusions. Pokud je 2D textura k dispozici jako mapa překrytí, je efekt povolen a *aoScale* funguje jako násobitel.
 
-  ![Mapa okluze](./media/boom-box-ao2.gif)
+  ![Mapa překrytí](./media/boom-box-ao2.gif)
 
-* **transparentní:** U materiálů PBR existuje pouze jedno nastavení průhlednosti: je povoleno nebo není. Krytí je definováno alfa kanálem barvy albedo. Pokud je tato možnost povolena, je k nakreslení poloprůhledných povrchů vyvolán složitější kanál vykreslování. Azure Remote Rendering implementuje [skutečnou transparentnost](https://en.wikipedia.org/wiki/Order-independent_transparency) (OIT) nezávislé pořadí.
+* **transparentní:** U materiálů PBR existuje jenom jedno nastavení transparentnosti: je povolené nebo ne. Neprůhlednost je definována alfa kanálem albedo Color. Pokud je povoleno, je vyvolán složitější kanál vykreslování pro kreslení částečně průhledných ploch. Vzdálené vykreslování Azure implementuje true [transparentnost nezávislého řádu](https://en.wikipedia.org/wiki/Order-independent_transparency) (OIT).
 
-  Transparentní geometrie je nákladné vykreslit. Pokud potřebujete pouze díry v povrchu, například pro listy stromu, je lepší místo toho použít alfa oříznutí.
+  Transparentní geometrie je nákladné pro vykreslování. Pokud potřebujete pouze otvory na povrchu, například pro listy stromu, je vhodnější místo toho použít alfa ořez.
 
-  ![Oznámení](./media/transparency.png) o průhlednosti na obrázku výše, jak je koule zcela průhledná, ale odraz je stále viditelný.
+  ![Oznámení](./media/transparency.png) o transparentnosti na obrázku výše, jak je koule úplně průhledná, ale odraz je stále viditelný.
 
   > [!IMPORTANT]
-  > Pokud má být některý materiál za běhu přepnut z neprůhledného na průhledný, musí vykreslovací modul použít [režim vykreslení](../../concepts/rendering-modes.md) *TileBasedComposition* . Toto omezení se nevztahuje na materiály, které jsou převedeny jako průhledné materiály začít.
+  > Pokud by měl být nějaký materiál přepnut z neprůhledných na transparentní za běhu, zobrazovací jednotka musí používat [režim vykreslování](../../concepts/rendering-modes.md) *TileBasedComposition* . Toto omezení se nevztahuje na materiály, které jsou převáděny jako průhledné materiály na začátek.
 
 ## <a name="technical-details"></a>Technické podrobnosti
 
-Azure Remote Rendering používá Cook-Torrance mikro-faset BRDF s GGX NDF, Schlick Fresnel a GGX Smith koreluje viditelnost termín s lambert difuzní termín. Tento model je v současné době de facto průmyslovým standardem. Podrobnější informace naleznete v tomto článku: [Fyzicky založené renderování - Cook Torrance](http://www.codinglabs.net/article_physically_based_rendering_cook_torrance.aspx)
+Vzdálené vykreslování Azure používá Torrance mikroomezující BRDF s GGX NDF, Schlick Fresnelova poklesu a GGX Smith koreluje výrazem viditelnosti s výrazem Lambert difúze. Tento model je v současnosti ve standardním odvětví. Podrobnější informace najdete v tomto článku: [vykreslování fyzicky na bázi – Cook Torrance](http://www.codinglabs.net/article_physically_based_rendering_cook_torrance.aspx)
 
- Alternativou k modelu PBR *metalness-roughness* používanému v Azure Remote Rendering je model PBR *Zrcadlo lesku.* Tento model může představovat širší škálu materiálů. Nicméně, to je dražší, a obvykle nefunguje dobře pro případy v reálném čase.
-Není vždy možné převést z *Zrcadlo-leskna* *metalness-drsnost,* jak tam jsou *(Difúzní, zrcadlový)* dvojice hodnot, které nelze převést na *(BaseColor, Metalness)*. Převod v opačném směru je jednodušší a přesnější, protože všechny páry *(BaseColor, Metalness)* odpovídají dobře definovaným *(difúzním, zrcadlovým)* párům.
+ Alternativou k modelu *hrubých kovů* , který se používá při vzdáleném vykreslování Azure, je model *zrcadlové Glossiness* PBR. Tento model může představovat širší škálu materiálů. Je ale dražší a obvykle nefunguje dobře pro případy v reálném čase.
+Není vždy možné převést z *odlesk-Glossiness* na *kov –* protože existují páry hodnot *(difúze, odlesky)* , které se nedají převést na *(BaseColor, metaling)*. Převod v druhém směru je jednodušší a přesnější, protože všechny páry *(BaseColor, kov)* odpovídají dobře definovaným dvojicím *(difúzi, odleskům)* .
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Barevné materiály](color-materials.md)
 * [Textury](../../concepts/textures.md)
-* [Ok](../../concepts/meshes.md)
+* [Sítě](../../concepts/meshes.md)

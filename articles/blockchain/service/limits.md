@@ -1,70 +1,70 @@
 ---
-title: Limity služby Azure Blockchain
-description: Přehled limitů služeb a funkcí ve službě Azure Blockchain Service
+title: Omezení služby Azure blockchain
+description: Přehled služby a funkční omezení ve službě Azure blockchain
 ms.date: 04/02/2020
 ms.topic: conceptual
 ms.reviewer: ravastra
 ms.openlocfilehash: 71e1bebf10fa0142870d03977182472da1ad031f
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80676513"
 ---
-# <a name="limits-in-azure-blockchain-service"></a>Limity ve službě Azure Blockchain
+# <a name="limits-in-azure-blockchain-service"></a>Omezení ve službě Azure blockchain
 
-Služba Azure Blockchain Service má omezení služeb a funkcí, jako je počet uzlů, které může mít člen, omezení konsorcia a částky úložiště.
+Služba Azure blockchain má omezení služby a funkčnosti, jako je počet uzlů, které může mít člen, omezení konsorcia a množství úložiště.
 
 ## <a name="pricing-tier"></a>Cenová úroveň
 
-Maximální limity pro transakce a uzly validátoru závisí na tom, jestli zřazujete službu Azure Blockchain na základních nebo standardních cenových úrovních.
+Maximální limity pro transakce a uzly validátoru závisí na tom, jestli zřizujete službu Azure blockchain na úrovních Basic nebo Standard.
 
-| Cenová úroveň | Maximální počet uzly transakcí | Maximální validátoru uzly |
+| Cenová úroveň | Maximální počet uzlů transakcí | Maximální počet uzlů validátoru |
 |:---|:---:|:---:|
 | Základní | 10 | 1 |
 | Standard | 10 | 2 |
 
-Vaše síť konsorcia by měla mít alespoň dva uzly standardní úrovně služby Azure Blockchain Service. Standardní uzly úrovně zahrnují dva validátoru uzly. Čtyři validátoru uzly jsou povinny splnit [Istanbul byzantské odolnosti proti chybám konsensu](https://github.com/jpmorganchase/quorum/wiki/Quorum-Consensus).
+Vaše síť konsorcia musí mít alespoň dva uzly úrovně Standard služby Azure blockchain. Uzly úrovně Standard zahrnují dva uzly validátoru. Pro splnění [konsensu Byzantine odolnost proti chybám](https://github.com/jpmorganchase/quorum/wiki/Quorum-Consensus)se vyžadují čtyři uzly validátoru.
 
-Základní úroveň je určenpro vývoj, testování a testování konceptů. Použijte standardní úroveň pro nasazení produkční třídy. Úroveň *Standard* byste měli použít také v případě, že používáte Správce dat Blockchain nebo odesíláte velký objem soukromých transakcí.
+Úroveň Basic slouží k vývoji, testování a testování konceptů. Použijte úroveň Standard pro nasazení produkčních úrovní. Úroveň *Standard* byste měli použít také v případě, že používáte blockchain data Manager nebo odesíláte velký objem privátních transakcí.
 
-Změna cenové úrovně mezi základní a standardní po vytvoření člena není podporována.
+Změna cenové úrovně mezi základními a standardními po vytvoření členů není podporována.
 
 ## <a name="storage-capacity"></a>Kapacita úložiště
 
-Maximální velikost úložiště, které lze použít na uzel pro data hlavní knihy a protokoly je 1,8 terabajtů.
+Maximální velikost úložiště, které je možné použít pro jednotlivé uzly pro data a protokoly hlavní knihy, je 1,8 terabajtů.
 
-Snížení velikosti úložiště hlavní knihy a protokolu není podporováno.
-## <a name="consortium-limits"></a>Limity konsorcia
+Zmenšení hlavní knihy a velikosti úložiště protokolů se nepodporuje.
+## <a name="consortium-limits"></a>Omezení konsorcia
 
-* **Názvy konsorcií a členů musí být jedinečné** z jiných názvů konsorcií a členů ve službě Azure Blockchain.
+* **Názvy konsorcia a členů musí být** v rámci služby Azure blockchain jedinečné od ostatních názvů Consortium a member.
 
-* **Názvy členů a konsorcií nelze změnit.**
+* **Názvy členů a konsorcia se nedají změnit.**
 
-* **Všichni členové v konsorciu musí být ve stejné cenové úrovni.**
+* **Všichni členové konsorcia musí být ve stejné cenové úrovni.**
 
-* **Všichni členové, kteří se účastní konsorcia, musí pobývat ve stejném regionu.**
+* **Všichni členové, kteří se účastní konsorcium, se musí nacházet ve stejné oblasti.**
 
-    První člen vytvořený v konsorciu diktuje oblast. Pozvaní členové konsorcia musí mít bydliště ve stejné oblasti jako první člen. Omezení všech členů na stejnou oblast pomáhá zajistit, že konsensus sítě nebude negativně ovlivněn.
+    První člen vytvořený v konsorciu určuje oblast. Pozvaní členové do konsorcia musí být ve stejné oblasti jako první člen. Omezení všech členů na stejnou oblast vám pomůže zajistit, aby se v síti nepříznivě ovlivnila shoda.
 
-* **Konsorcium musí mít alespoň jednoho správce.**
+* **Konsorcium musí mít aspoň jednoho správce.**
 
-    Pokud je v konsorciu pouze jeden správce, nemohou se odebrat z konsorcia nebo odstranit svého člena, dokud nebude v konsorciu přidán nebo povýšen jiný správce.
+    Pokud má konsorcium pouze jednoho správce, nemůže z konsorcia odstranit ani odstranit jeho člena, dokud není do konsorcia přidán nebo povýšen jiný správce.
 
 * **Členy odebrané z konsorcia nelze znovu přidat.**
 
-    Spíše musí být znovu vyzváni, aby se připojili ke konsorciu a vytvořili nového člena. Jejich existující členské prostředky nejsou odstraněny zachovat historické transakce.
+    Místo toho je nutné je znovu pozvat, aby se připojili k konsorciu a vytvořil nový člen. Jejich existující členské prostředky nejsou odstraněny pro zachování historických transakcí.
 
-* **Všichni členové v konsorciu musí používat stejnou verzi hlavní knihy.**
+* **Všichni členové konsorcia musí používat stejnou verzi hlavní knihy.**
 
-    Další informace o opravách, aktualizacích a verzích hlavní knihy dostupných ve službě Azure Blockchain service najdete v [tématu Opravy, aktualizace a verze](ledger-versions.md).
+    Další informace o opravách, aktualizacích a verzích hlavní knihy dostupných ve službě Azure blockchain najdete v článku o [opravách, aktualizacích a verzích](ledger-versions.md).
 
 ## <a name="performance"></a>Výkon
 
-Nepoužívejte *funkci plynu eth.estimate* pro každé podání transakce. Funkce *eth.estimate* je náročná na paměť. Volání funkce vícekrát snižuje transakce za sekundu drasticky.
+Nepoužívejte funkci *ETH. odhad* plynu pro každé odeslání transakce. Funkce *ETH. odhad* je náročné na paměť. Vícenásobné volání funkce zkracuje transakce za sekundu drasticky.
 
-Pokud je to možné, použijte konzervativní hodnotu plynu pro předkládání transakcí a minimalizujte použití *eth.estimate*.
+Pokud je to možné, použijte hodnotu konzervativního plynu pro odeslání transakcí a minimalizujte použití *ETH. odhad*.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o zásadách týkajících se oprav a upgradů systémů – [Opravy, aktualizace a verze](ledger-versions.md).
+Přečtěte si další informace o zásadách pro opravy a upgrady systémů – [opravy, aktualizace a verze](ledger-versions.md).

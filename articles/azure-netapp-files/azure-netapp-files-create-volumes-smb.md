@@ -1,6 +1,6 @@
 ---
-title: Vytvoření svazku SMB pro soubory Azure NetApp | Dokumenty společnosti Microsoft
-description: Popisuje, jak vytvořit svazek SMB pro soubory Azure NetApp.
+title: Vytvoření svazku SMB pro Azure NetApp Files | Microsoft Docs
+description: Popisuje postup vytvoření svazku SMB pro Azure NetApp Files.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -15,37 +15,37 @@ ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: b-juche
 ms.openlocfilehash: c4e7566eeb28bc5709acd60ced9fcdffb7e8a725
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80668005"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Vytvoření svazku SMB pro Azure NetApp Files
 
-Azure NetApp Files podporuje svazky NFS a SMBv3. Spotřeba kapacity svazku se počítá proti zřízené kapacitě příslušného fondu. Tento článek ukazuje, jak vytvořit svazek SMBv3. Pokud chcete vytvořit svazek systému souborů NFS, přečtěte si informace [o vytvoření svazku systému souborů služby NFS pro soubory Azure NetApp](azure-netapp-files-create-volumes.md). 
+Azure NetApp Files podporuje svazky NFS a SMBv3. Spotřeba kapacity svazku se počítá proti zřízené kapacitě příslušného fondu. V tomto článku se dozvíte, jak vytvořit svazek SMBv3. Pokud chcete vytvořit svazek NFS, přečtěte si téma [vytvoření svazku NFS pro Azure NetApp Files](azure-netapp-files-create-volumes.md). 
 
-## <a name="before-you-begin"></a>Než začnete 
+## <a name="before-you-begin"></a>Před zahájením 
 Musíte mít už nastavený fond kapacity.   
-[Nastavení fondu kapacit](azure-netapp-files-set-up-capacity-pool.md)   
-Podsíť musí být delegována na soubory Azure NetApp.  
+[Nastavení fondu kapacity](azure-netapp-files-set-up-capacity-pool.md)   
+Podsíť musí být delegovaná na Azure NetApp Files.  
 [Delegování podsítě do Azure NetApp Files](azure-netapp-files-delegate-subnet.md)
 
 ## <a name="requirements-for-active-directory-connections"></a>Požadavky na připojení služby Active Directory
 
- Před vytvořením svazku SMB je třeba vytvořit připojení služby Active Directory. Požadavky na připojení služby Active Directory jsou následující: 
+ Před vytvořením svazku SMB musíte vytvořit připojení ke službě Active Directory. Požadavky na připojení služby Active Directory jsou následující: 
 
-* Účet správce, který používáte, musí mít možnost vytvářet účty počítačů v cestě organizační jednotky ,, kterou zadáte.  
+* Účet správce, který použijete, musí mít možnost vytvářet účty počítačů v cestě organizační jednotky (OU), kterou zadáte.  
 
-* Na příslušném serveru služby Windows Active Directory (AD) musí být otevřeny správné porty.  
+* V příslušném serveru služby Windows Active Directory (AD) musí být otevřeny správné porty.  
     Požadované porty jsou následující: 
 
     |     Služba           |     Port     |     Protocol (Protokol)     |
     |-----------------------|--------------|------------------|
-    |    Webové služby služby ad    |    9389      |    TCP           |
+    |    Webové služby AD    |    9389      |    TCP           |
     |    DNS                |    53        |    TCP           |
     |    DNS                |    53        |    UDP           |
-    |    ICMPv4             |    Není dostupné.       |    Odpověď ozvěny    |
+    |    ICMPv4             |    –       |    Odpověď na ozvěnu    |
     |    Kerberos           |    464       |    TCP           |
     |    Kerberos           |    464       |    UDP           |
     |    Kerberos           |    88        |    TCP           |
@@ -53,26 +53,26 @@ Podsíť musí být delegována na soubory Azure NetApp.
     |    LDAP               |    389       |    TCP           |
     |    LDAP               |    389       |    UDP           |
     |    LDAP               |    3268      |    TCP           |
-    |    Název rozhraní NetBIOS       |    138       |    UDP           |
+    |    Název pro rozhraní NetBIOS       |    138       |    UDP           |
     |    SAM/LSA            |    445       |    TCP           |
     |    SAM/LSA            |    445       |    UDP           |
-    |    w32čas            |    123       |    UDP           |
+    |    W32Time            |    123       |    UDP           |
 
-* Topologie webu pro cílovou službu Active Directory Domain Services musí dodržovat osvědčené postupy, zejména virtuální síť Azure, kde se nasazují soubory Azure NetApp.  
+* Topologie lokality pro cílovou Active Directory Domain Services musí splňovat osvědčené postupy, zejména v případě, že je nasazená síť Azure Azure NetApp Files.  
 
-    Adresní prostor pro virtuální síť, ve které se nasazují soubory Azure NetApp, musí být přidán do nové nebo existující lokality služby Active Directory (kde je řadič domény dosažitelný soubory Azure NetApp). 
+    Adresní prostor pro virtuální síť, ve které je nasazený Azure NetApp Files, musí být přidán do nové nebo existující lokality služby Active Directory (kde řadič domény dosažitelný pomocí Azure NetApp Files je). 
 
-* Zadané servery DNS musí být dosažitelné z [delegované podsítě](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet) souborů Azure NetApp.  
+* Zadané servery DNS musí být dosažitelné z [delegované podsítě](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet) Azure NetApp Files.  
 
-    Informace o plánování sítě Azure NetApp Files pro podporované topologie sítě najdete v tématu [Pokyny pro plánování sítě Souborů Azure NetApp.](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-network-topologies)
+    V tématu [pokyny pro Azure NetApp Files plánování sítě](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-network-topologies) pro podporované topologie sítě.
 
-    Skupiny zabezpečení sítě (NSG) a brány firewall musí mít vhodně nakonfigurovaná pravidla, která umožní požadavky na přenosy služby Active Directory a DNS. 
+    Skupiny zabezpečení sítě (skupin zabezpečení sítě) a brány firewall musí mít vhodně nakonfigurovaná pravidla umožňující požadavky na provoz služby Active Directory a DNS. 
 
-* Delegovaná podsíť Soubory Azure NetApp musí být schopná oslovit všechny řadiče domény služby Active Directory Domain Services (ADDS) v doméně, včetně všech místních a vzdálených řadičů domény. V opačném případě může dojít k přerušení služby.  
+* Azure NetApp Files delegovaná podsíť musí mít přístup ke všem řadičům domény Active Directory Domain Services (v doméně), včetně všech místních a vzdálených řadičů domény. V opačném případě může dojít k přerušení služeb.  
 
-    Pokud máte řadiče domény, které jsou nedostupné delegovanou podsítí Soubory Azure NetApp, můžete při vytváření připojení služby Active Directory určit web služby Active Directory.  Soubory Azure NetApp musí komunikovat pouze s řadiči domény v lokalitě, kde je adresní prostor delegované podsítě Azure NetApp.
+    Pokud máte řadiče domény, které jsou Azure NetApp Files delegovanou podsítí nedosažitelné, můžete během vytváření připojení Active Directory určit lokalitu služby Active Directory.  Azure NetApp Files musí komunikovat pouze s řadiči domény v lokalitě, kde je Azure NetApp Files delegovaný adresní prostor podsítě.
 
-    Viz [Návrh topologie webu](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology) o webech a službách AD. 
+    Viz [návrh topologie lokality](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology) o lokalitách a službách Active Directory. 
     
 <!--
 * Azure NetApp Files supports DES, Kerberos AES 128, and Kerberos AES 256 encryption types (from the least secure to the most secure). The user credentials used to join Active Directory must have the highest corresponding account option enabled that matches the capabilities enabled for your Active Directory.   
@@ -84,111 +84,111 @@ Podsíť musí být delegována na soubory Azure NetApp.
     ![Active Directory Users and Computers MMC](../media/azure-netapp-files/ad-users-computers-mmc.png)
 -->
 
-Přečtěte si, že se informace o dalších informacích služby AD vyjádřite k souborům [SMB](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#smb-faqs) azure netapp. 
+Další informace o službě AD najdete v tématu Azure NetApp Files [nejčastějších dotazů k protokolu SMB](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#smb-faqs) . 
 
-## <a name="decide-which-domain-services-to-use"></a>Rozhodněte se, které služby domény použít 
+## <a name="decide-which-domain-services-to-use"></a>Rozhodněte, které doménové služby se mají použít. 
 
-Soubory Azure NetApp podporují [služby Active Directory Domain Services](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/understanding-active-directory-site-topology) (ADDS) i služby Azure Active Directory Domain Services (AADDS) pro připojení služby AD.  Před vytvořením připojení ad, musíte se rozhodnout, zda chcete použít přidá nebo aadds.  
+Azure NetApp Files pro připojení AD podporuje [Active Directory Domain Services](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/understanding-active-directory-site-topology) (přidávání) i Azure Active Directory Domain Services (AADDS).  Před vytvořením připojení AD se musíte rozhodnout, jestli chcete použít příkaz Přidat nebo AADDS.  
 
-Další informace naleznete [v tématu Porovnání samoobslužných služeb Active Directory Domain Services, Služby Azure Active Directory a spravované služby Azure Active Directory Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/compare-identity-solutions). 
+Další informace najdete v tématu [porovnání samoobslužně spravovaných Active Directory Domain Services, Azure Active Directory a spravovaných Azure Active Directory Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/compare-identity-solutions). 
 
 ### <a name="active-directory-domain-services"></a>Active Directory Domain Services
 
-Pro soubory Azure NetApp můžete použít upřednostňovaný obor [lokalit a služeb Active Directory.](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/understanding-active-directory-site-topology) Tato možnost umožňuje čtení a zápisy do řadičů domény služby Active Directory Domain Services (ADDS), které jsou [přístupné soubory Azure NetApp](azure-netapp-files-network-topologies.md). Zabrání také službě v komunikaci s řadiči domény, které nejsou v zadané lokalitě a síti Služby Active Directory. 
+Pro Azure NetApp Files můžete použít preferované obory [lokality a služby Active Directory](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/understanding-active-directory-site-topology) . Tato možnost umožňuje čtení a zápisy do Active Directory Domain Services (přidá) řadiče domény, které jsou [přístupné Azure NetApp Files](azure-netapp-files-network-topologies.md). Zabrání taky službě v komunikaci s řadiči domény, které nejsou ve specifikovaných lokalitách a lokalitách služby Active Directory. 
 
-Chcete-li při použití funkce PŘIDÁ Vyhledat název webu, můžete se obrátit na skupinu pro správu ve vaší organizaci, která je zodpovědná za službu Active Directory Domain Services. Následující příklad ukazuje plugin pro sítě a služby Active Directory, ve kterém je zobrazen název webu: 
+Pokud chcete najít název vaší lokality, když použijete příkaz Přidat, můžete kontaktovat skupinu pro správu ve vaší organizaci, která je zodpovědná za Active Directory Domain Services. Následující příklad ukazuje modul plug-in lokality a služby Active Directory, kde se zobrazuje název lokality: 
 
 ![Lokality a služby Active Directory](../media/azure-netapp-files/azure-netapp-files-active-directory-sites-and-services.png)
 
-Při konfiguraci připojení služby AD pro soubory Azure NetApp zadáte název webu v oboru pro pole **Název webu služby AD.**
+Když nakonfigurujete připojení AD pro Azure NetApp Files, zadáte název lokality v oboru pro pole **název lokality služby Active Directory** .
 
 ### <a name="azure-active-directory-domain-services"></a>Azure Active Directory Domain Services 
 
-Konfigurace a pokyny služby Azure Active Directory Domain Services (AADDS) najdete [v dokumentaci ke službě Azure AD Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/).
+Informace o konfiguraci a pokyny pro Azure Active Directory Domain Services (AADDS) najdete v [dokumentaci k Azure AD Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/).
 
-Další aadds aspekty platí pro soubory Azure NetApp: 
+Pro Azure NetApp Files se vztahují další požadavky na AADDS: 
 
-* Ujistěte se, že virtuální síť nebo podsíť, kde se nasazuje AADDS, je ve stejné oblasti Azure jako nasazení souborů Azure NetApp.
-* Pokud používáte jinou virtuální síť v oblasti, kde se nasazují soubory Azure NetApp, měli byste vytvořit partnerský vztah mezi dvěma virtuálními sítěmi.
-* Azure NetApp `user` Files `resource forest` podporuje a typy.
-* Pro typ synchronizace můžete `All` `Scoped`vybrat nebo .   
-    Pokud vyberete `Scoped`, ujistěte se, že je vybrána správná skupina Azure AD pro přístup ke sdíleným položkám SMB.  Pokud si nejste jisti, `All` můžete použít typ synchronizace.
-* Je vyžadováno použití sku Enterprise nebo Premium. Standardní skladová položka není podporována.
+* Ujistěte se, že virtuální síť nebo podsíť, ve které je AADDS nasazená, jsou ve stejné oblasti Azure jako nasazení Azure NetApp Files.
+* Pokud použijete jinou virtuální síť v oblasti, ve které je nasazený Azure NetApp Files, měli byste vytvořit partnerský vztah mezi dvěma virtuální sítěy.
+* Azure NetApp Files podporuje `user` a `resource forest` typy.
+* Pro typ synchronizace můžete vybrat `All` nebo. `Scoped`   
+    Pokud vyberete `Scoped`, ujistěte se, že je pro přístup ke sdíleným složkám SMB vybraná správná skupina Azure AD.  Pokud si nejste jistí, můžete použít typ `All` synchronizace.
+* Je potřeba použít SKU Enterprise nebo Premium. Standardní SKU se nepodporuje.
 
-Při vytváření připojení služby Active Directory si poznamenejte následující specifika pro aadds:
+Při vytváření připojení ke službě Active Directory si všimněte následujících specifických možností pro AADDS:
 
-* Informace pro **primární DNS**, Sekundární DNS a Název domény DNS **služby** **AD** naleznete v nabídce AADDS.  
-Pro servery DNS budou ke konfiguraci připojení služby Active Directory použity dvě adresy IP. 
-* **Cesta organizační jednotky** `OU=AADDC Computers`je .  
-Toto nastavení je konfigurováno v **části Připojení služby Active Directory** v části Účet **NetApp**:
+* V nabídce AADDS najdete informace pro **primární DNS**, **sekundární DNS**a **název domény DNS služby AD** .  
+Pro servery DNS se ke konfiguraci připojení služby Active Directory použijí dvě IP adresy. 
+* **Cesta k organizační jednotce** je `OU=AADDC Computers`.  
+Toto nastavení se konfiguruje v **připojeních služby Active Directory** pod **účtem NetApp**:
 
   ![Cesta organizační jednotky](../media/azure-netapp-files/azure-netapp-files-org-unit-path.png)
 
-* **Uživatelské jméno** pověření může být libovolný uživatel, který je členem skupiny Azure AD **řadiče domény .**
+* Přihlašovací údaje pro **uživatelské jméno** může být libovolný uživatel, který je členem skupiny Azure **AD DC Administrators**.
 
 
-## <a name="create-an-active-directory-connection"></a>Vytvoření připojení služby Active Directory
+## <a name="create-an-active-directory-connection"></a>Vytvoření připojení ke službě Active Directory
 
-1. V účtu NetApp klepněte na **položku Připojení služby Active Directory**a potom klepněte na tlačítko **Připojit se**.  
+1. Z účtu NetApp klikněte na **připojení služby Active Directory**a pak klikněte na **připojit**.  
 
-    ![Připojení služby Active Directory](../media/azure-netapp-files/azure-netapp-files-active-directory-connections.png)
+    ![Připojení ke službě Active Directory](../media/azure-netapp-files/azure-netapp-files-active-directory-connections.png)
 
-2. V okně Připojit službu Active Directory zadejte následující informace založené na službě Domain Services, kterou chcete použít:  
+2. V okně připojit se ke službě Active Directory zadejte následující informace na základě doménových služeb, které chcete použít:  
 
-    Informace specifické pro služby domény, které používáte, naleznete [v tématu Rozhodnutí, které služby domény chcete používat](#decide-which-domain-services-to-use). 
+    Informace specifické pro používané doménové služby najdete v tématu určení, [které doménové služby se mají použít](#decide-which-domain-services-to-use). 
 
     * **Primární DNS**  
-        Jedná se o službu DNS, která je vyžadována pro operace připojení domény služby Active Directory a ověřování SMB. 
+        Toto je služba DNS potřebná pro operace připojení k doméně služby Active Directory a ověřování SMB. 
     * **Sekundární DNS**   
-        Toto je sekundární server DNS pro zajištění redundantních jmenných služeb. 
-    * **Název domény služby AD DNS**  
-        Toto je název domény služby Active Directory Domain Services, ke které se chcete připojit.
-    * **Název webu ad**  
-        Jedná se o název webu, na který bude zjišťování řadiče domény omezeno.
+        Toto je sekundární server DNS pro zajištění redundantních názvových služeb. 
+    * **Název domény DNS služby Active Directory**  
+        Toto je název domény vašeho Active Directory Domain Services, ke které se chcete připojit.
+    * **Název lokality služby Active Directory**  
+        Jedná se o název lokality, na kterou bude zjišťování řadiče domény omezeno.
     * **Předpona serveru SMB (účet počítače)**  
-        Toto je předpona pojmenování pro účet počítače ve službě Active Directory, kterou budou soubory Azure NetApp používat pro vytváření nových účtů.
+        Toto je předpona názvů pro účet počítače ve službě Active Directory, kterou Azure NetApp Files použít pro vytváření nových účtů.
 
-        Pokud je například standard pojmenování, který vaše organizace používá pro souborové servery, NAS-01, NAS-02..., NAS-045, zadejte pro předponu "NAS". 
+        Pokud například standardní názvový server, který vaše organizace používá pro souborové servery, je NAS-01, NAS-02..., NAS-045, zadejte jako předponu "NAS". 
 
-        Služba vytvoří další účty počítače ve službě Active Directory podle potřeby.
+        Služba vytvoří ve službě Active Directory další účty počítačů podle potřeby.
 
     * **Cesta organizační jednotky**  
-        Toto je cesta LDAP pro organizační jednotku (OU), kde budou vytvořeny účty serverového počítače SMB. To znamená OU = druhá úroveň, OU = první úroveň. 
+        Jedná se o cestu protokolu LDAP pro organizační jednotku (OU), kde budou vytvořeny účty počítačů serveru SMB. To znamená OU = druhá úroveň, OU = First Level. 
 
-        Pokud používáte soubory Azure NetApp se službou Azure Active `OU=AADDC Computers` Directory Domain Services, cesta organizační jednotky je při konfiguraci služby Active Directory pro váš účet NetApp.
+        Pokud používáte Azure NetApp Files s Azure Active Directory Domain Services, cesta k organizační jednotce je `OU=AADDC Computers` , když pro svůj účet NetApp nakonfigurujete službu Active Directory.
         
     * Přihlašovací údaje, včetně **uživatelského jména** a **hesla**
 
-    ![Připojení ke službě Active Directory](../media/azure-netapp-files/azure-netapp-files-join-active-directory.png)
+    ![Připojit ke službě Active Directory](../media/azure-netapp-files/azure-netapp-files-join-active-directory.png)
 
 3. Klikněte na **Připojit**.  
 
     Zobrazí se připojení služby Active Directory, které jste vytvořili.
 
-    ![Připojení služby Active Directory](../media/azure-netapp-files/azure-netapp-files-active-directory-connections-created.png)
+    ![Připojení ke službě Active Directory](../media/azure-netapp-files/azure-netapp-files-active-directory-connections-created.png)
 
 > [!NOTE] 
-> Po uložení připojení služby Active Directory můžete upravit pole uživatelského jména a hesla. Po uložení připojení nelze upravovat žádné další hodnoty. Pokud potřebujete změnit jiné hodnoty, musíte nejprve odstranit všechny nasazené svazky SMB a potom odstranit a znovu vytvořit připojení služby Active Directory.
+> Po uložení připojení služby Active Directory můžete upravit pole uživatelského jména a hesla. Po uložení připojení nelze upravovat žádné další hodnoty. Pokud potřebujete změnit jiné hodnoty, musíte nejdřív odstranit všechny nasazené svazky SMB a pak odstranit a znovu vytvořit připojení ke službě Active Directory.
 
-## <a name="add-an-smb-volume"></a>Přidání svazku SMB
+## <a name="add-an-smb-volume"></a>Přidat svazek SMB
 
-1. Klepněte na okno **Svazky** z okna Kapacitní fondy. 
+1. V okně fondy kapacit klikněte na okno **svazky** . 
 
-    ![Přechod na svazky](../media/azure-netapp-files/azure-netapp-files-navigate-to-volumes.png)
+    ![Přejít na svazky](../media/azure-netapp-files/azure-netapp-files-navigate-to-volumes.png)
 
 2. Kliknutím na **+ Přidat svazek** vytvořte svazek.  
-    Zobrazí se okno Vytvořit svazek.
+    Zobrazí se okno vytvořit svazek.
 
-3. V okně Vytvořit svazek klikněte na **Vytvořit** a poskytněte informace pro následující pole:   
+3. V okně vytvořit svazek klikněte na **vytvořit** a zadejte informace pro následující pole:   
     * **Název svazku**      
         Zadejte název svazku, který vytváříte.   
 
-        Název svazku musí být jedinečný v rámci každého fondu kapacity. Musí mít alespoň tři znaky dlouhé. Můžete použít libovolné alfanumerické znaky.   
+        Název svazku musí být v rámci každého fondu kapacity jedinečný. Musí mít aspoň tři znaky dlouhé. Můžete použít jakékoli alfanumerické znaky.   
 
-        Nelze použít `default` jako název svazku.
+        Nemůžete `default` použít jako název svazku.
 
-    * **Kapacitní fond**  
-        Určete fond kapacity, do kterého chcete svazek vytvořit.
+    * **Fond kapacit**  
+        Zadejte fond kapacit, ve kterém chcete vytvořit svazek.
 
     * **Kvóta**  
         Určuje velikost logického úložiště, které je přidělené svazku.  
@@ -196,37 +196,37 @@ Toto nastavení je konfigurováno v **části Připojení služby Active Directo
         Pole **Dostupná kvóta** zobrazuje množství nevyužitého místa ve zvoleném fondu kapacity, které můžete použít k vytvoření nového svazku. Velikost nového svazku nesmí překročit dostupnou kvótu.  
 
     * **Virtuální síť**  
-        Zadejte virtuální síť Azure (VNet), ze které chcete získat přístup ke svazku.  
+        Zadejte službu Azure Virtual Network (VNet), ze které chcete získat přístup ke svazku.  
 
-        Zadanou virtuální síť musí mít podsíť delegovanou na soubory Azure NetApp. Služba Azure NetApp Files je přístupná jenom ze stejné virtuální sítě nebo z virtuální sítě, která je ve stejné oblasti jako svazek prostřednictvím partnerského vztahu virtuální sítě. Ke svazku můžete přistupovat také z místní sítě prostřednictvím expresní trasy.   
+        Virtuální síť, kterou zadáte, musí mít přidělenou podsíť Azure NetApp Files. Služba Azure NetApp Files se dá použít jenom ze stejné virtuální sítě nebo z virtuální sítě, která se nachází ve stejné oblasti jako svazek prostřednictvím partnerského vztahu virtuálních sítí. Ke svazku z místní sítě se můžete dostat i přes Express Route.   
 
     * **Podsíť**  
-        Zadejte podsíť, kterou chcete pro svazek použít.  
-        Zadaná podsíť musí být delegována na soubory Azure NetApp. 
+        Zadejte podsíť, kterou chcete použít pro svazek.  
+        Podsíť, kterou zadáte, musí být delegovaná na Azure NetApp Files. 
         
-        Pokud jste nedelegovali podsíť, můžete na stránce Vytvořit svazek kliknout na **Vytvořit nový.** Potom na stránce Vytvořit podsíť zadejte informace o podsíti a vyberte **Microsoft.NetApp/svazky** delegovat podsíť pro soubory Azure NetApp. V každé virtuální síti lze delegovat jenom jednu podsíť na soubory Azure NetApp.   
+        Pokud jste nedelegovanou podsíť, můžete na stránce vytvořit svazek kliknout na **vytvořit novou** . Pak na stránce vytvořit podsíť zadejte informace o podsíti a vyberte možnost **Microsoft. NetApp/** Volumes pro delegování podsítě pro Azure NetApp Files. V každé virtuální síti je možné delegovat jenom jednu podsíť na Azure NetApp Files.   
  
         ![Vytvoření svazku](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
     
         ![Vytvoření podsítě](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
 
-4. Klepněte na tlačítko **Protokol** a vyplňte následující informace:  
-    * Jako **SMB** typ protokolu pro svazek vyberte smb. 
-    * V rozevíracím seznamu vyberte připojení **služby Active Directory.**
-    * Zadejte název sdíleného svazku v **názvu sdílené položky**.
+4. Klikněte na **protokol** a vyplňte následující informace:  
+    * Jako typ protokolu pro svazek vyberte **SMB** . 
+    * V rozevíracím seznamu vyberte připojení ke **službě Active Directory** .
+    * Zadejte název sdíleného svazku do pole **název sdílené složky**.
 
     ![Zadat protokol SMB](../media/azure-netapp-files/azure-netapp-files-protocol-smb.png)
 
-5. Kliknutím na **Zkontrolovat + Vytvořit** zkontrolujte podrobnosti svazku.  Pak kliknutím na **Vytvořit** vytvořte svazek SMB.
+5. Kliknutím na tlačítko **zkontrolovat + vytvořit** zkontrolujte podrobnosti o svazku.  Pak kliknutím na **vytvořit** vytvořte svazek SMB.
 
-    Vytvořený svazek se zobrazí na stránce Svazky. 
+    Svazek, který jste vytvořili, se zobrazí na stránce svazky. 
  
     Svazek dědí atributy předplatného, skupiny prostředků a umístění z fondu kapacity. Stav nasazení svazku můžete monitorovat na kartě Oznámení.
 
 ## <a name="next-steps"></a>Další kroky  
 
 * [Připojování nebo odpojování svazku pro virtuální počítače s Windows nebo Linuxem](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
-* [Omezení prostředků pro službu Azure NetApp Files](azure-netapp-files-resource-limits.md)
-* [Nejčastější dotazy k SMB](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#smb-faqs)
-* [Informace o integraci virtuálních sítí pro služby Azure](https://docs.microsoft.com/azure/virtual-network/virtual-network-for-azure-services)
-* [Instalace nové doménové struktury služby Active Directory pomocí rozhraní příkazového příkazu Azure](https://docs.microsoft.com/windows-server/identity/ad-ds/deploy/virtual-dc/adds-on-azure-vm)
+* [Omezení prostředků pro Azure NetApp Files](azure-netapp-files-resource-limits.md)
+* [Nejčastější dotazy k protokolu SMB](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#smb-faqs)
+* [Informace o integraci virtuální sítě pro služby Azure](https://docs.microsoft.com/azure/virtual-network/virtual-network-for-azure-services)
+* [Instalace nové doménové struktury služby Active Directory pomocí Azure CLI](https://docs.microsoft.com/windows-server/identity/ad-ds/deploy/virtual-dc/adds-on-azure-vm)

@@ -1,6 +1,6 @@
 ---
-title: Zabezpečení sítě pro prostředky Sítě událostí Azure
-description: Tento článek popisuje, jak nakonfigurovat přístup z privátní koncové body
+title: Zabezpečení sítě pro prostředky Azure Event Grid
+description: Tento článek popisuje, jak nakonfigurovat přístup z privátních koncových bodů.
 services: event-grid
 author: VidyaKukke
 ms.service: event-grid
@@ -8,96 +8,96 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: vkukke
 ms.openlocfilehash: ed3b70ad267252981110e7970bc5c5fad6cf4b4b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79300151"
 ---
-# <a name="network-security-for-azure-event-grid-resources"></a>Zabezpečení sítě pro prostředky Sítě událostí Azure
-Tento článek popisuje, jak používat následující funkce zabezpečení s Azure Event Grid: 
+# <a name="network-security-for-azure-event-grid-resources"></a>Zabezpečení sítě pro prostředky Azure Event Grid
+Tento článek popisuje, jak používat následující funkce zabezpečení pro Azure Event Grid: 
 
-- Značky služeb pro odchozí přenos (náhled)
-- Pravidla brány IP firewall pro příchozí přenos dat (náhled)
-- Privátní koncové body pro příchozí přenos dat (náhled)
+- Značky služby pro výstup (Preview)
+- Pravidla brány firewall protokolu IP pro příchozí přenosy (Preview)
+- Privátní koncové body pro příchozí přenos dat (Preview)
 
 
 ## <a name="service-tags"></a>Značky služeb
-Značka služby představuje skupinu předpon IP adres z dané služby Azure. Společnost Microsoft spravuje předpony adres zahrnuté v servisním štítku a automaticky aktualizuje výrobní číslo, jak se adresy mění, čímž minimalizuje složitost častých aktualizací pravidel zabezpečení sítě. Další informace o značkách služeb naleznete v tématu [Service tags overview](../virtual-network/service-tags-overview.md).
+Značka služby představuje skupinu předpon IP adres z dané služby Azure. Společnost Microsoft spravuje předpony adres, které jsou zahrnuté ve značce služby, a automaticky aktualizuje značku služby, protože se mění adresy. tím se minimalizuje složitost častých aktualizací pravidel zabezpečení sítě. Další informace o značkách služby najdete v tématu [Přehled značek služeb](../virtual-network/service-tags-overview.md).
 
-Pomocí značek služeb můžete definovat ovládací prvky přístupu k síti ve [skupinách](../virtual-network/security-overview.md#security-rules) zabezpečení sítě nebo [azure firewall](../firewall/service-tags.md). Při vytváření pravidel zabezpečení používejte značky služeb místo konkrétních adres IP. Zadáním názvu značky služby (například **AzureEventGrid**) v příslušném *zdrojovém* nebo *cílovém* poli pravidla můžete povolit nebo odepřít provoz pro odpovídající službu.
+Pomocí značek služeb můžete definovat řízení přístupu k síti pro  [skupiny zabezpečení sítě](../virtual-network/security-overview.md#security-rules)nebo [Azure firewall](../firewall/service-tags.md). Při vytváření pravidel zabezpečení používejte značky služby místo konkrétních IP adres. Zadáním názvu značky služby (například **AzureEventGrid**) v příslušném *zdrojovém* nebo *cílovém* poli pravidla můžete povolit nebo odepřít provoz pro příslušnou službu.
 
-| Značka služby | Účel | Můžete použít příchozí nebo odchozí? | Může být regionální? | Můžete použít s Azure Firewall? |
+| Značka služby | Účel | Dá se použít příchozí nebo odchozí? | Je možné je rozregionovat? | Lze použít s Azure Firewall? |
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| Síť AzureEventGrid | Azure Event Grid. <br/><br/>*Poznámka:* Tato značka zahrnuje koncové body Azure Event Grid pouze v USA – – – střed, USA – východ, USA – východ 2, USA – západ 2 a US Central. | Obojí | Ne | Ne |
+| AzureEventGrid | Azure Event Grid. <br/><br/>*Poznámka:* Tato značka se zabývá Azure Event Gridmi koncovými body v USA (střed) – jih, USA – východ, USA – východ 2, USA – západ 2 a USA – střed. | Obojí | Ne | Ne |
 
 
 ## <a name="ip-firewall"></a>Brána firewall protokolu IP 
-Azure Event Grid podporuje ovládací prvky přístupu založené na PROTOKOLU IP pro publikování na témata a domény. Pomocí ovládacích prvků založených na protokolu IP můžete omezit vydavatele na téma nebo doménu pouze na sadu schválených počítačů a cloudových služeb. Tato funkce doplňuje [mechanismy ověřování](security-authentication.md) podporované event grid.
+Azure Event Grid podporuje řízení přístupu na základě IP adres pro publikování do témat a domén. Pomocí ovládacích prvků založených na protokolu IP můžete omezit vydavatele na téma nebo doménu jenom na sadu schválených sad počítačů a cloudových služeb. Tato funkce doplňuje [mechanismy ověřování](security-authentication.md) podporované nástrojem Event Grid.
 
-Ve výchozím nastavení jsou téma a doména přístupné z internetu, pokud je požadavek dodáván s platným ověřováním a autorizací. S IP firewallem ji můžete dále omezit pouze na sadu IP adres nebo rozsahy IP adres v [zápisu CIDR (Classless Inter-Domain Routing).](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) Vydavatelé pocházející z jakékoli jiné IP adresy budou odmítnuti a obdrží odpověď 403 (Forbidden).
+Ve výchozím nastavení je k tématům a doménám přístup z Internetu, pokud požadavek přichází s platným ověřováním a autorizací. Pomocí brány firewall protokolu IP je můžete omezit na více než jenom sadu IP adres nebo rozsahů IP adres ve notaci [směrování mezi doménami CIDR (bez třídy)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) . Vydavatelé pocházející z jakékoli jiné IP adresy se odmítnou a obdrží odpověď 403 (zakázáno).
 
 
 ## <a name="private-endpoints"></a>Soukromé koncové body
-[Privátní koncové body](../private-link/private-endpoint-overview.md) můžete povolit příchozí události přímo z vaší virtuální sítě do témat a domén bezpečně přes [privátní odkaz](../private-link/private-link-overview.md) bez nutnosti prostřednictvím veřejného internetu. Privátní koncový bod je speciální síťové rozhraní pro službu Azure ve vaší virtuální síti. Když vytvoříte soukromý koncový bod pro vaše téma nebo doménu, poskytuje zabezpečené připojení mezi klienty ve vaší virtuální síti a prostředkem gridu událostí. Privátnímu koncovému bodu je přiřazena IP adresa z rozsahu IP adres vaší virtuální sítě. Připojení mezi privátním koncovým bodem a službou Event Grid používá zabezpečené soukromé propojení.
+Pomocí [privátních koncových bodů](../private-link/private-endpoint-overview.md) můžete v případě, že chcete přijímat události přímo z vaší virtuální sítě, zabezpečit vaše témata a domény přes [privátní propojení](../private-link/private-link-overview.md) , aniž byste museli procházet veřejným internetem. Privátní koncový bod je speciální síťové rozhraní pro službu Azure ve vaší virtuální síti. Když vytvoříte privátní koncový bod pro vaše téma nebo doménu, zajistíte zabezpečené připojení mezi klienty ve vaší virtuální síti a vaším prostředkem Event Grid. Privátnímu koncovému bodu je přiřazena IP adresa z rozsahu IP adres vaší virtuální sítě. Připojení mezi soukromým koncovým bodem a službou Event Grid používá zabezpečený privátní odkaz.
 
 ![Diagram architektury](./media/network-security/architecture-diagram.png)
 
-Použití soukromých koncových bodů pro prostředek event gridu umožňuje:
+Použití privátních koncových bodů pro váš prostředek Event Grid vám umožní:
 
-- Zabezpečte přístup k tématu nebo doméně z virtuální sítě přes páteřní síť Microsoftu na rozdíl od veřejného internetu.
-- Bezpečně se připojujte z místních sítí, které se připojují k virtuální síti pomocí VPN nebo ExpressRoutes s privátním partnerského vztahu.
+- Zabezpečený přístup k vašemu tématu nebo doméně ze sítě VNet přes páteřní síť Microsoftu na rozdíl od veřejného Internetu.
+- Připojte se bezpečně z místních sítí, které se připojují k virtuální síti pomocí sítě VPN nebo ExpressRoutes s privátním partnerským vztahem.
 
-Když vytvoříte soukromý koncový bod pro téma nebo doménu ve virtuální síti, žádost o souhlas se odešle ke schválení vlastníkovi prostředku. Pokud je uživatel požadující vytvoření privátního koncového bodu také vlastníkem prostředku, bude tato žádost o souhlas automaticky schválena. V opačném případě je připojení v **čekajícím** stavu, dokud nebude schváleno. Aplikace ve virtuální síti se mohou bez problémů připojit ke službě Event Grid přes privátní koncový bod pomocí stejných připojovacích řetězců a autorizačních mechanismů, které by jinak používaly. Vlastníci prostředků můžete spravovat žádosti o souhlas a soukromé koncové body, a to prostřednictvím karty **Soukromé koncové body** pro prostředek na webu Azure Portal.
+Když vytvoříte privátní koncový bod pro téma nebo doménu ve vaší virtuální síti, pošle se žádost o souhlas ke schválení vlastníkem prostředku. Pokud uživatel žádající o vytvoření privátního koncového bodu je zároveň vlastníkem prostředku, je tato žádost o souhlas automaticky schválena. V opačném případě je připojení v **nedokončeném** stavu, dokud není schváleno. Aplikace ve virtuální síti se můžou bez problémů připojit k Event Grid službě přes soukromý koncový bod pomocí stejných připojovacích řetězců a autorizačních mechanismů, které by jinak používaly. Vlastníci prostředků mohou spravovat žádosti o souhlas a soukromé koncové body prostřednictvím karty **privátní koncové body** pro prostředek v Azure Portal.
 
-### <a name="connect-to-private-endpoints"></a>Připojení k privátním koncovým bodům
-Vydavatelé ve virtuální síti používající privátní koncový bod by měli používat stejný připojovací řetězec pro téma nebo doménu jako klienti, kteří se připojují k veřejnému koncovému bodu. Překlad DNS automaticky směruje připojení z virtuální sítě k tématu nebo doméně přes privátní propojení. Event Grid vytvoří [soukromou zónu DNS](../dns/private-dns-overview.md) připojenou k virtuální síti s nezbytnou aktualizací pro soukromé koncové body, ve výchozím nastavení. Pokud však používáte vlastní server DNS, bude pravděpodobně nutné provést další změny konfigurace DNS.
+### <a name="connect-to-private-endpoints"></a>Připojit k privátním koncovým bodům
+Vydavatelé ve virtuální síti, které používají privátní koncový bod, by měli použít stejný připojovací řetězec pro téma nebo doménu jako klienti připojující se ke veřejnému koncovému bodu. Překlad názvů DNS automaticky směruje připojení z virtuální sítě k tématu nebo doméně prostřednictvím privátního propojení. Ve výchozím nastavení vytvoří služba Event Grid [privátní ZÓNU DNS](../dns/private-dns-overview.md) připojenou k virtuální síti s potřebnou aktualizací privátních koncových bodů. Pokud ale používáte vlastní server DNS, možná budete muset provést další změny v konfiguraci DNS.
 
-### <a name="dns-changes-for-private-endpoints"></a>Změny DNS pro soukromé koncové body
-Při vytváření soukromého koncového bodu se záznam Dns CNAME pro daný prostředek aktualizuje `privatelink`na alias v subdoméně s předponou . Ve výchozím nastavení je vytvořena soukromá zóna DNS, která odpovídá subdoméně privátního propojení. 
+### <a name="dns-changes-for-private-endpoints"></a>Změny DNS u privátních koncových bodů
+Při vytváření privátního koncového bodu se záznam CNAME DNS pro prostředek aktualizuje na alias v subdoméně s předponou `privatelink`. Ve výchozím nastavení se vytvoří privátní zóna DNS, která odpovídá subdoméně privátního odkazu. 
 
-Když vyřešíte adresu URL tématu nebo koncového bodu domény z mimo virtuální síť s privátním koncovým bodem, vyřeší se na veřejný koncový bod služby. Záznamy o prostředcích DNS pro 'topicA', když vyřešen z **mimo virtuální sítě** hostování privátní koncový bod, bude:
+Když vyřešíte adresu URL tématu nebo adresy URL koncového bodu domény mimo virtuální síť s privátním koncovým bodem, přeloží se na veřejný koncový bod služby. Záznamy o prostředcích DNS pro "téma", pokud jsou vyřešeny **mimo virtuální síť** hostující soukromý koncový bod, bude:
 
-| Name (Název)                                          | Typ      | Hodnota                                         |
+| Název                                          | Typ      | Hodnota                                         |
 | --------------------------------------------- | ----------| --------------------------------------------- |  
 | `topicA.westus.eventgrid.azure.net`             | CNAME     | `topicA.westus.privatelink.eventgrid.azure.net` |
-| `topicA.westus.privatelink.eventgrid.azure.net` | CNAME     | \<profil správce provozu azure\>
+| `topicA.westus.privatelink.eventgrid.azure.net` | CNAME     | \<Profil Azure Traffic Manageru\>
 
-Můžete odepřít nebo řídit přístup pro klienta mimo virtuální síť prostřednictvím veřejného koncového bodu pomocí [brány firewall IP](#ip-firewall). 
+Pomocí [brány firewall protokolu IP](#ip-firewall)můžete odepřít nebo řídit přístup pro klienta mimo virtuální síť prostřednictvím veřejného koncového bodu. 
 
-Když se vyřeší z virtuální sítě hostující privátní koncový bod, téma nebo doména koncového bodu URL překládá na ip adresu privátního koncového bodu. Záznamy o prostředcích DNS pro téma 'topicA', když vyřešen z **uvnitř virtuální sítě** hostování privátní koncový bod, bude:
+Při překladu z virtuální sítě hostující soukromý koncový bod se v tématu nebo adrese URL koncového bodu domény přeloží na IP adresu privátního koncového bodu. Záznamy o prostředcích DNS pro téma "kapitola", při jejich vyřešení z **virtuální** sítě, která je hostitelem privátního koncového bodu, bude:
 
-| Name (Název)                                          | Typ      | Hodnota                                         |
+| Název                                          | Typ      | Hodnota                                         |
 | --------------------------------------------- | ----------| --------------------------------------------- |  
 | `topicA.westus.eventgrid.azure.net`             | CNAME     | `topicA.westus.privatelink.eventgrid.azure.net` |
 | `topicA.westus.privatelink.eventgrid.azure.net` | A         | 10.0.0.5
 
-Tento přístup umožňuje přístup k tématu nebo doméně pomocí stejného připojovacího řetězce pro klienty na virtuální síti hostující privátní koncové body a klienty mimo virtuální síť.
+Tento přístup umožňuje přístup k tématu nebo doméně pomocí stejného připojovacího řetězce pro klienty ve virtuální síti, která je hostitelem privátních koncových bodů, a klientů mimo virtuální síť.
 
-Pokud v síti používáte vlastní server DNS, mohou klienti přeložit hlavní název domény pro koncový bod tématu nebo domény na privátní IP adresu koncového bodu. Nakonfigurujte server DNS tak, aby delegoval subdoménu privátního propojení do privátní zóny DNS pro virtuální síť, nebo nakonfigurujte záznamy A s `topicOrDomainName.regionName.privatelink.eventgrid.azure.net` privátní IP adresou koncového bodu.
+Pokud ve vaší síti používáte vlastní server DNS, klienti můžou přeložit plně kvalifikovaný název domény pro téma nebo koncový bod domény na IP adresu privátního koncového bodu. Nakonfigurujte server DNS tak, aby delegoval subdoménu privátního propojení s privátní zónou DNS pro virtuální síť, nebo nakonfigurujte záznamy A pro `topicOrDomainName.regionName.privatelink.eventgrid.azure.net` IP adresu privátního koncového bodu.
 
-Doporučený název zóny `privatelink.eventgrid.azure.net`DNS je .
+Doporučený název zóny DNS je `privatelink.eventgrid.azure.net`.
 
-### <a name="private-endpoints-and-publishing"></a>Privátní koncové body a publikování
+### <a name="private-endpoints-and-publishing"></a>Soukromé koncové body a publikování
 
-Následující tabulka popisuje různé stavy privátního koncového bodu připojení a účinky na publikování:
+Následující tabulka popisuje různé stavy připojení privátního koncového bodu a důsledky publikování:
 
-| Stav připojení   |  Úspěšně publikovat (Ano/Ne) |
+| Stav připojení   |  Úspěšné publikování (ano/ne) |
 | ------------------ | -------------------------------|
 | Schválené           | Ano                            |
 | Rejected           | Ne                             |
 | Čekající na vyřízení            | Ne                             |
-| Odpojen       | Ne                             |
+| Propojení       | Ne                             |
 
-Aby bylo publikování úspěšné, měl by být **schválen**stav připojení soukromého koncového bodu . Pokud je připojení odmítnuto, nelze ho schválit pomocí portálu Azure. Jedinou možností je odstranit připojení a místo toho vytvořit nové.
+Aby publikování bylo úspěšné, měla by být **schválen**stav připojení privátního koncového bodu. Pokud se připojení odmítne, nebude možné ho schválit pomocí Azure Portal. Jedinou možností je odstranit připojení a místo toho vytvořit nový.
 
 ## <a name="pricing-and-quotas"></a>Ceny a kvóty
-**Soukromé koncové body** jsou k dispozici pouze s tématy a doménami úrovně premium. Event Grid umožňuje vytvořit až 64 privátních koncových bodů pro jedno téma nebo doménu. Pokud chcete upgradovat ze základní úrovně na úroveň Premium, přečtěte si článek [Aktualizovat cenovou úroveň.](update-tier.md)
+**Soukromé koncové body** jsou k dispozici pouze s tématy a doménami úrovně Premium. Event Grid umožňuje vytvoření připojení privátního koncového bodu 64 pro každé téma nebo doménu. Pokud chcete upgradovat z úrovně Basic na úroveň Premium, přečtěte si článek o [cenové úrovni aktualizace](update-tier.md) .
 
-**Funkce IP Firewall** je k dispozici v základní i prémiové úrovni Event Grid. Umožňujeme vytvořit až 16 pravidel ip firewallu pro jedno téma nebo doménu.
+Funkce **brány firewall protokolu IP** je k dispozici v Event Grid úrovně Basic i Premium. Pro každé téma nebo doménu vám umožníme vytvořit až 16 pravidel brány firewall protokolu IP.
 
 
 ## <a name="next-steps"></a>Další kroky
-Bránu firewall IP pro prostředek služby Event Grid můžete nakonfigurovat tak, aby omezovala přístup přes veřejný Internet pouze z vybrané sady adres IP nebo rozsahů IP adres. Podrobné pokyny naleznete v tématu [Konfigurace brány firewall IP](configure-firewall.md).
+Můžete nakonfigurovat bránu firewall protokolu IP pro prostředek Event Grid, abyste omezili přístup přes veřejný Internet jenom z vybrané sady IP adres nebo rozsahů IP adres. Podrobné pokyny najdete v tématu [Konfigurace brány firewall protokolu IP](configure-firewall.md).
 
-Soukromé koncové body můžete nakonfigurovat tak, aby omezovaly přístup pouze z vybraných virtuálních sítí. Podrobné pokyny naleznete v tématu [Konfigurace soukromých koncových bodů](configure-private-endpoints.md).
+Privátní koncové body můžete nakonfigurovat tak, aby omezily přístup jenom z vybraných virtuálních sítí. Podrobné pokyny najdete v tématu [Konfigurace privátních koncových bodů](configure-private-endpoints.md).

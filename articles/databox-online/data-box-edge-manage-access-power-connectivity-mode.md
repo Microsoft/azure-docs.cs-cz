@@ -1,6 +1,6 @@
 ---
-title: Režim přístupu k zařízení Azure Data Box Edge, napájení a připojení | Dokumenty společnosti Microsoft
-description: Popisuje, jak spravovat režim přístupu, napájení a připojení pro zařízení Azure Data Box Edge, které pomáhá přenášet data do Azure.
+title: Azure Data Box Edge režimu přístupu, napájení a připojení zařízení | Microsoft Docs
+description: Popisuje, jak spravovat přístup, režim napájení a režim připojení pro zařízení Azure Data Box Edge, které pomáhá přenést data do Azure.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 06/24/2019
 ms.author: alkohli
 ms.openlocfilehash: be4b780161003470622cb367d78138cfeffe341b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79454328"
 ---
-# <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-edge"></a>Správa režimu přístupu, napájení a připojení pro azure data box edge
+# <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-edge"></a>Správa režimu přístupu, napájení a připojení pro Azure Data Box Edge
 
-Tento článek popisuje, jak spravovat režim přístupu, napájení a připojení pro azure data box edge. Tyto operace se provádějí prostřednictvím místního webového uživatelského prostředí nebo portálu Azure.
+Tento článek popisuje, jak spravovat režim přístupu, napájení a připojení k vašemu Azure Data Box Edge. Tyto operace se provádějí prostřednictvím místního webového uživatelského rozhraní nebo Azure Portal.
 
 V tomto článku získáte informace o těchto tématech:
 
@@ -29,109 +29,109 @@ V tomto článku získáte informace o těchto tématech:
 
 ## <a name="manage-device-access"></a>Správa přístupu k zařízení
 
-Přístup k zařízení Data Box Edge je řízen použitím hesla zařízení. Heslo můžete změnit prostřednictvím místního webového uživatelského prostředí. Heslo zařízení můžete také resetovat na webu Azure Portal.
+Přístup k vašemu Data Box Edge zařízení je řízen pomocí hesla zařízení. Heslo můžete změnit prostřednictvím místního webového uživatelského rozhraní. Můžete také resetovat heslo zařízení v Azure Portal.
 
 ### <a name="change-device-password"></a>Změna hesla zařízení
 
-Chcete-li změnit heslo zařízení, postupujte takto v místním ui.
+Pokud chcete změnit heslo zařízení, postupujte podle těchto kroků v místním uživatelském rozhraní.
 
-1. V místním webovém uživatelském okně přejděte na **změnit heslo údržby > .**
-2. Zadejte aktuální heslo a potom nové heslo. Zadané heslo musí mít 8 až 16 znaků. Heslo musí mít 3 následující znaky: velká, malá, číselná a speciální znatá. Potvrďte nové heslo.
+1. V místním webovém uživatelském rozhraní přejděte do části **údržba > Změna hesla**.
+2. Zadejte aktuální heslo a pak nové heslo. Zadané heslo musí mít 8 až 16 znaků. Heslo musí obsahovat 3 z následujících znaků: velká písmena, malá písmena, číslice a speciální znaky. Potvrďte nové heslo.
 
     ![Změna hesla](media/data-box-edge-manage-access-power-connectivity-mode/change-password-1.png)
 
-3. Vyberte **možnost Změnit heslo**.
+3. Vyberte **změnit heslo**.
  
-### <a name="reset-device-password"></a>Resetovat heslo zařízení
+### <a name="reset-device-password"></a>Resetování hesla zařízení
 
-Pracovní postup obnovení nevyžaduje, aby uživatel odvolal staré heslo, a je užitečný při ztrátě hesla. Tento pracovní postup se provádí na webu Azure Portal.
+Pracovní postup Resetování nevyžaduje, aby uživatel nahrál staré heslo a byl užitečný při ztrátě hesla. Tento pracovní postup se provádí v Azure Portal.
 
-1. Na webu Azure Portal přejděte na **Přehled > resetování hesla správce**.
+1. V Azure Portal najdete v části **přehled > resetování hesla správce**.
 
     ![Resetování hesla](media/data-box-edge-manage-access-power-connectivity-mode/reset-password-1.png)
 
 
-2. Zadejte nové heslo a potvrďte ho. Zadané heslo musí mít 8 až 16 znaků. Heslo musí mít 3 následující znaky: velká, malá, číselná a speciální znatá. Vyberte **Resetovat**.
+2. Zadejte nové heslo a potvrďte ho. Zadané heslo musí mít 8 až 16 znaků. Heslo musí obsahovat 3 z následujících znaků: velká písmena, malá písmena, číslice a speciální znaky. Vyberte **Resetovat**.
 
     ![Resetování hesla](media/data-box-edge-manage-access-power-connectivity-mode/reset-password-2.png)
 
 ## <a name="manage-resource-access"></a>Správa přístup k prostředků
 
-K vytvoření brány Edge/Data Box Gateway datové schránky, služby IoT Hub a prostředků úložiště Azure potřebujete oprávnění jako přispěvatel nebo vyšší na úrovni skupiny prostředků. Potřebujete také zaregistrovat odpovídající poskytovatele prostředků. Pro všechny operace, které zahrnují aktivační klíč a pověření, jsou také vyžadována oprávnění k rozhraní Microsoft Graph API. Ty jsou popsány v následujících částech.
+Pokud chcete vytvořit Data Box Edge/Data Box Gateway, IoT Hub a Azure Storage prostředků, potřebujete oprávnění jako přispěvatel nebo vyšší na úrovni skupiny prostředků. Budete také potřebovat registrovat odpovídající poskytovatele prostředků. Pro všechny operace, které zahrnují aktivační klíč a přihlašovací údaje, se taky vyžadují oprávnění k rozhraní Microsoft Graph API. Tyto oddíly jsou popsány v následujících částech.
 
-### <a name="manage-microsoft-graph-api-permissions"></a>Správa oprávnění rozhraní MICROSOFT Graph API
+### <a name="manage-microsoft-graph-api-permissions"></a>Správa oprávnění rozhraní API Microsoft Graph
 
-Při generování aktivačního klíče pro zařízení Data Box Edge nebo při provádění operací, které vyžadují pověření, potřebujete oprávnění k rozhraní Microsoft Graph API. Operace, které potřebují pověření může být:
+Při generování aktivačního klíče pro zařízení Data Box Edge nebo při provádění operací, které vyžadují přihlašovací údaje, potřebujete oprávnění Microsoft Graph API. Operace, které vyžadují přihlašovací údaje, můžou být:
 
--  Vytvoření sdílené složky s přidruženým účtem úložiště.
--  Vytvoření uživatele, který má přístup ke sdíleným položkym v zařízení.
+-  Vytváří se sdílená složka s přidruženým účtem úložiště.
+-  Vytváří se uživatel, který má přístup ke sdíleným složkám na zařízení.
 
-Měli byste `User` mít přístup k tenantovi služby `Read all directory objects`Active Directory, protože potřebujete mít přístup k aplikaci . Nemůžete být uživatelem typu Host, protože nemá `Read all directory objects`oprávnění k . Pokud jste hostem, pak operace, jako je generování aktivačního klíče, vytvoření sdílené složky na zařízení Data Box Edge, vytvoření uživatele, konfigurace výpočetní role Edge, resetování hesla zařízení, se nezdaří.
+Měli byste mít `User` přístup k Tenantovi služby Active Directory, jak potřebujete `Read all directory objects`. Nemůžete být uživatel typu Host, protože k `Read all directory objects`němu nemají oprávnění. Pokud jste Host, pak operace, jako je generace aktivačního klíče, vytvoření sdílené složky na zařízení Data Box Edge, vytvoření uživatele, konfigurace hraniční výpočetní role, resetování hesla zařízení selže.
 
-Další informace o tom, jak poskytnout uživatelům přístup k rozhraní Microsoft Graph API, naleznete v [tématu Odkaz na oprávnění aplikace Microsoft Graph](https://docs.microsoft.com/graph/permissions-reference).
+Další informace o tom, jak poskytnout uživatelům přístup k Microsoft Graph rozhraní API, najdete v tématu [Microsoft Graph oprávnění](https://docs.microsoft.com/graph/permissions-reference).
 
-### <a name="register-resource-providers"></a>Registrace poskytovatelů prostředků
+### <a name="register-resource-providers"></a>Registrovat poskytovatele prostředků
 
-Chcete-li zřídit prostředek v Azure (v modelu Azure Resource Manager), budete potřebovat poskytovatele prostředků, který podporuje vytváření tohoto prostředku. Chcete-li například zřídit virtuální počítač, měli byste mít v předplatném k dispozici zprostředkovatele prostředků Microsoft.Compute.
+Pokud chcete zřídit prostředek v Azure (v Azure Resource Manager modelu), potřebujete poskytovatele prostředků, který podporuje vytvoření tohoto prostředku. Pokud například chcete zřídit virtuální počítač, měli byste mít k dispozici poskytovatele prostředků Microsoft. COMPUTE v předplatném.
  
-Poskytovatelé prostředků se registrují na úrovni předplatného. Ve výchozím nastavení je ve všech nových předplatných Azure předem zaregistrovaný seznam běžně využívaných poskytovatelů prostředků. Zprostředkovatel prostředků pro 'Microsoft.DataBoxEdge' není zahrnuta v tomto seznamu.
+Poskytovatelé prostředků se registrují na úrovni předplatného. Ve výchozím nastavení je ve všech nových předplatných Azure předem zaregistrovaný seznam běžně využívaných poskytovatelů prostředků. Poskytovatel prostředků pro Microsoft. DataBoxEdge není zahrnutý v tomto seznamu.
 
-Není nutné udělit přístupová oprávnění k úrovni předplatného pro uživatele, aby mohli vytvářet prostředky, jako je Microsoft.DataBoxEdge v rámci svých skupin prostředků, které mají práva vlastníka, tak dlouho, dokud zprostředkovatelé prostředků pro tyto prostředky je již Registrované.
+Pro uživatele, kteří mají oprávnění k vytváření prostředků, jako je Microsoft. DataBoxEdge, nemusíte v rámci skupin prostředků, ke kterým mají oprávnění vlastníka, přidělovat oprávnění k přístupu, pokud už jsou poskytovatelé prostředků pro tyto prostředky zaregistrovaní.
 
-Než se pokusíte vytvořit libovolný prostředek, ujistěte se, že poskytovatel prostředků je registrován v předplatném. Pokud poskytovatel prostředků není registrován, budete se muset ujistit, že uživatel, který vytváří nový prostředek, má dostatečná práva k registraci požadovaného poskytovatele prostředků na úrovni předplatného. Pokud jste to také neudělali, uvidíte následující chybu:
+Než se pokusíte vytvořit nějaký prostředek, ujistěte se, že je v předplatném zaregistrován poskytovatel prostředků. Pokud poskytovatel prostředků není zaregistrovaný, musíte se ujistit, že uživatel vytvářející nový prostředek má dostatečná práva k registraci požadovaného poskytovatele prostředků na úrovni předplatného. Pokud jste to ještě neudělali, zobrazí se následující chyba:
 
-*Název \<předplatného předplatného> nemá oprávnění k registraci zprostředkovatele prostředků: Microsoft.DataBoxEdge.*
+*Název \<předplatného předplatného> nemá oprávnění registrovat poskytovatele prostředků: Microsoft. DataBoxEdge.*
 
 
-Chcete-li získat seznam registrovaných poskytovatelů prostředků v aktuálním předplatném, spusťte následující příkaz:
+Pokud chcete získat seznam registrovaných poskytovatelů prostředků v aktuálním předplatném, spusťte následující příkaz:
 
 ```PowerShell
 Get-AzResourceProvider -ListAvailable |where {$_.Registrationstate -eq "Registered"}
 ```
 
-Pro zařízení Data `Microsoft.DataBoxEdge` Box Edge by měla být registrována. Chcete-li se zaregistrovat `Microsoft.DataBoxEdge`, správce předplatného by měl spustit následující příkaz:
+Pro Data Box Edge zařízení `Microsoft.DataBoxEdge` by měla být zaregistrovaná. Pokud se `Microsoft.DataBoxEdge`chcete zaregistrovat, Správce předplatného by měl spustit tento příkaz:
 
 ```PowerShell
 Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge
 ```
 
-Další informace o registraci zprostředkovatele prostředků naleznete v tématu [Řešení chyb při registraci poskytovatele prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-register-provider-errors).
+Další informace o tom, jak zaregistrovat poskytovatele prostředků, najdete v tématu [řešení chyb pro registraci poskytovatele prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-register-provider-errors).
 
 ## <a name="manage-connectivity-mode"></a>Správa režimu připojení
 
-Kromě výchozího plně připojeného režimu může zařízení běžet také v částečně připojeném nebo plně odpojeném režimu. Každý z těchto režimů je popsán takto:
+Kromě výchozího režimu s plným připojením může být zařízení také spuštěné v částečně připojeném nebo plně odpojeném režimu. Každý z těchto režimů je popsaný níže:
 
-- **Plně připojeno** - Jedná se o normální výchozí režim, ve kterém zařízení pracuje. V tomto režimu je povoleno nahrávání a stahování dat v cloudu. Zařízení můžete spravovat pomocí portálu Azure nebo místního webového uživatelského rozhraní.
+- **Plně připojeno** – jedná se o normální výchozí režim, ve kterém zařízení funguje. V tomto režimu je povolené nahrávání do cloudu i stahování dat. Ke správě zařízení můžete použít Azure Portal nebo místní webové uživatelské rozhraní.
 
-- **Částečně odpojené** – V tomto režimu zařízení nemůže nahrát nebo stáhnout žádná data sdílení, ale lze spravovat prostřednictvím portálu Azure.
+- **Částečně odpojeno** – v tomto režimu nemůže zařízení nahrávat ani stahovat žádná sdílená data, ale dá se spravovat prostřednictvím Azure Portal.
 
-    Tento režim se obvykle používá v satelitní síti účtované podle objemu dat a cílem je minimalizovat spotřebu šířky pásma sítě. Pro operace monitorování zařízení může stále dojít k minimální spotřebě sítě.
+    Tento režim se obvykle používá, pokud je v měřené satelitní síti a cílem je minimalizovat spotřebu šířky pásma sítě. Minimální spotřeba sítě může stále nastat pro operace monitorování zařízení.
 
-- **Odpojeno** – V tomto režimu je zařízení plně odpojeno od cloudu a nahrávání a stahování v cloudu jsou zakázány. Zařízení lze spravovat pouze prostřednictvím místního webového uživatelského rozhraní.
+- **Odpojeno** – v tomto režimu je zařízení zcela odpojené od cloudu a jejich cloudové odesílání a stahování je zakázané. Zařízení je možné spravovat jenom prostřednictvím místního webového uživatelského rozhraní.
 
-    Tento režim se obvykle používá, když chcete zařízení převést do režimu offline.
+    Tento režim se obvykle používá, pokud chcete zařízení převést do režimu offline.
 
-Chcete-li změnit režim zařízení, postupujte takto:
+Chcete-li změnit režim zařízení, postupujte podle následujících kroků:
 
-1. V místním webovém uživatelském rozhraní vašeho zařízení přejděte na **nastavení konfigurace > cloudu**.
-2. V rozevíracím seznamu vyberte režim, ve kterém chcete zařízení ovládat. Můžete si vybrat z **plně připojené**, **částečně připojené**a **plně odpojené**. Chcete-li zařízení spustit v částečně odpojeném režimu, povolte **správu portálu Azure**.
+1. V místním webovém uživatelském rozhraní vašeho zařízení přejít na **konfigurace > nastavení cloudu**.
+2. V rozevíracím seznamu vyberte režim, ve kterém má být zařízení provozováno. Můžete vybrat z **úplně připojeného**, **částečně připojeného**a **úplného odpojení**. Pokud chcete zařízení spustit v režimu částečně odpojeno, povolte **správu Azure Portal**.
 
     ![Režim připojení](media/data-box-edge-manage-access-power-connectivity-mode/connectivity-mode.png)
  
 ## <a name="manage-power"></a>Správa napájení
 
-Fyzické zařízení můžete vypnout nebo restartovat pomocí místního webového uživatelského rozhraní. Doporučujeme, abyste před restartováním přepáčte sdílené složky do offline na datovém serveru a potom na zařízení. Tato akce minimalizuje možnost poškození dat.
+Můžete vypnout nebo restartovat fyzické zařízení pomocí místního webového uživatelského rozhraní. Doporučujeme, abyste před restartováním převedli sdílené složky na datovém serveru a pak na zařízení. Tato akce minimalizuje jakoukoli možnost poškození dat.
 
-1. V místním webovém uživatelském prostředí přejděte na **nastavení údržby > napájení**.
-2. V yberte **Vypnutí** nebo **Restartování** v závislosti na tom, co chcete udělat.
+1. V místním webovém uživatelském rozhraní přejdete do části **údržba > nastavení napájení**.
+2. V závislosti na tom, co máte v úmyslu udělat, vyberte **vypnout** nebo **restartovat** .
 
     ![Nastavení napájení](media/data-box-edge-manage-access-power-connectivity-mode/shut-down-restart-1.png)
 
-3. Po zobrazení výzvy k potvrzení pokračujte výběrem možnosti **Ano.**
+3. Po zobrazení výzvy k potvrzení vyberte **Ano** a pokračujte.
 
 > [!NOTE]
-> Pokud vypnete fyzické zařízení, budete muset stisknout tlačítko napájení na zařízení, abyste ho zapnuli.
+> Pokud vypnete fyzické zařízení, budete muset zapnout tlačítko napájení v zařízení, abyste ho zapnuli.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si, jak [spravovat sdílené složky](data-box-edge-manage-shares.md).
+- Naučte se [Spravovat sdílené složky](data-box-edge-manage-shares.md).

@@ -1,5 +1,5 @@
 ---
-title: Zabezpečení a ověřování služby Azure Event Grid
+title: Azure Event Grid zabezpečení a ověřování
 description: Popisuje Azure Event Grid a jeho koncepty.
 services: event-grid
 author: banisadr
@@ -9,35 +9,35 @@ ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: babanisa
 ms.openlocfilehash: 03bc2f9de6f50f08c9f62f86a3d1791a067cecd0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78899279"
 ---
-# <a name="authorizing-access-to-event-grid-resources"></a>Autorizace přístupu k prostředkům sítě událostí
-Azure Event Grid umožňuje řídit úroveň přístupu udělené různým uživatelům k různým operacím správy, jako je seznam odběrů událostí, vytváření nových a generování klíčů. Event Grid používá řízení přístupu na základě rolí Azure (RBAC).
+# <a name="authorizing-access-to-event-grid-resources"></a>Autorizace přístupu k prostředkům Event Grid
+Azure Event Grid umožňuje řídit úroveň přístupu daným různým uživatelům a provádět různé operace správy, jako jsou odběry událostí seznamu, vytváření nových a generování klíčů. Event Grid používá řízení přístupu na základě role (RBAC) Azure.
 
 ## <a name="operation-types"></a>Typy operací
 
 Event Grid podporuje následující akce:
 
-* Microsoft.EventGrid/*/čtení
-* Microsoft.EventGrid/*/zápis
-* Microsoft.EventGrid/*/delete
-* Microsoft.EventGrid/eventSubscriptions/getFullUrl/action
-* Microsoft.EventGrid/topics/listKeys/action
-* Microsoft.EventGrid/topics/regenerateKey/action
+* Microsoft. EventGrid/*/Read
+* Microsoft. EventGrid/*/Write
+* Microsoft. EventGrid/*/DELETE
+* Microsoft. EventGrid/eventSubscriptions/getFullUrl/Action
+* Microsoft. EventGrid/témata/klíče listkey/Action
+* Microsoft. EventGrid/témata/regenerateKey/Action
 
-Poslední tři operace vrátí potenciálně tajné informace, které získá odfiltrovány z normální operace čtení. Doporučujeme omezit přístup k těmto operacím. 
+Poslední tři operace vrátí potenciálně tajné informace, které se vyfiltrují z běžných operací čtení. Doporučuje se omezit přístup k těmto operacím. 
 
 ## <a name="built-in-roles"></a>Vestavěné role
 
-Event Grid poskytuje dvě předdefinované role pro správu odběrů událostí. Jsou důležité při implementaci [domén událostí,](event-domains.md) protože dávají uživatelům oprávnění, která potřebují k odběru témat ve vaší doméně událostí. Tyto role jsou zaměřeny na odběry událostí a neudělují přístup k akcím, jako je vytváření témat.
+Event Grid poskytuje dvě předdefinované role pro správu odběrů událostí. Jsou důležité při implementaci [domén událostí](event-domains.md) , protože uživatelům poskytují oprávnění, která potřebují k přihlášení k odběru témat v doméně události. Tyto role jsou zaměřené na odběry událostí a neudělují přístup k akcím, jako je vytváření témat.
 
-Tyto role můžete [přiřadit uživateli nebo skupině](../role-based-access-control/quickstart-assign-role-user-portal.md).
+[Tyto role můžete přiřadit uživateli nebo skupině](../role-based-access-control/quickstart-assign-role-user-portal.md).
 
-**Přispěvatel eventgrid eventsubscription:** správa operací předplatného event gridu
+**EventGrid EventSubscription Přispěvatel**: Správa operací předplatného Event Grid
 
 ```json
 [
@@ -73,7 +73,7 @@ Tyto role můžete [přiřadit uživateli nebo skupině](../role-based-access-co
 ]
 ```
 
-**EventGrid EventSubscription Reader**: přečtěte si odběry Event Grid
+**EventGrid EventSubscription Reader**: číst Event Grid předplatná
 
 ```json
 [
@@ -109,9 +109,9 @@ Tyto role můžete [přiřadit uživateli nebo skupině](../role-based-access-co
 
 Pokud potřebujete zadat oprávnění, která se liší od předdefinovaných rolí, můžete vytvořit vlastní role.
 
-Následují ukázkové definice rolí Event Grid, které uživatelům umožňují provést různé akce. Tyto vlastní role se liší od předdefinovaných rolí, protože poskytují širší přístup než pouze odběry událostí.
+Níže jsou uvedené ukázkové Event Grid definice rolí, které umožňují uživatelům provádět různé akce. Tyto vlastní role se liší od předdefinovaných rolí, protože udělují širší přístup než jenom odběry událostí.
 
-**EventGridReadOnlyRole.json**: Povolit pouze operace jen pro čtení.
+**EventGridReadOnlyRole. JSON**: povoluje jenom operace jen pro čtení.
 
 ```json
 {
@@ -130,7 +130,7 @@ Následují ukázkové definice rolí Event Grid, které uživatelům umožňuj�
 }
 ```
 
-**EventGridNoDeleteListKeysRole.json**: Povolit akce příspěvku s omezeným přístupem, ale zakázat akce odstranění.
+**EventGridNoDeleteListKeysRole. JSON**: povolí omezené akce příspěvku, ale zakáže akce odstranění.
 
 ```json
 {
@@ -153,7 +153,7 @@ Následují ukázkové definice rolí Event Grid, které uživatelům umožňuj�
 }
 ```
 
-**EventGridContributorRole.json**: Umožňuje všechny akce mřížky událostí.
+**EventGridContributorRole. JSON**: umožňuje všechny akce v mřížce událostí.
 
 ```json
 {
@@ -175,14 +175,14 @@ Následují ukázkové definice rolí Event Grid, které uživatelům umožňuj�
 }
 ```
 
-Vlastní role můžete vytvářet pomocí [PowerShellu](../role-based-access-control/custom-roles-powershell.md), [Rozhraní příkazového příkazu Kazíru Azure](../role-based-access-control/custom-roles-cli.md)a [REST](../role-based-access-control/custom-roles-rest.md).
+Můžete vytvářet vlastní role pomocí [PowerShellu](../role-based-access-control/custom-roles-powershell.md), [Azure CLI](../role-based-access-control/custom-roles-cli.md)a [REST](../role-based-access-control/custom-roles-rest.md).
 
 
 
 ### <a name="encryption-at-rest"></a>Šifrování v klidovém stavu
 
-Všechny události nebo data zapsaná na disk službou Event Grid jsou šifrována klíčem spravovaným společností Microsoft, který zajišťuje, že je šifrován v klidovém stavu. Maximální doba, po kterou jsou události nebo data uchována, je navíc 24 hodin v souladu se [zásadami opakování mřížky událostí](delivery-and-retry.md). Event Grid automaticky odstraní všechny události nebo data po 24 hodinách, nebo čas události-k-live, podle toho, co je méně.
+Všechny události nebo data zapsaná na disk službou Event Grid službou jsou šifrovány klíčem spravovaným společností Microsoft, který zajišťuje, aby byl zašifrovaný v klidovém stavu. Kromě toho maximální doba, po kterou jsou události nebo data uchovávány, je 24 hodin v dodržování [zásad Event Grid opakování](delivery-and-retry.md). Event Grid budou automaticky odstraňovat všechny události nebo data po 24 hodinách nebo na hodnotu TTL (Time to Live), podle toho, co je méně.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Úvod do mřížky událostí najdete v tématu [O mřížce událostí](overview.md)
+* Úvod do Event Grid najdete v tématu [o Event Grid](overview.md)
