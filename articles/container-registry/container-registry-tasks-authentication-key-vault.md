@@ -4,10 +4,10 @@ description: Nakonfigurujte úlohu Azure Container Registry (úkol ACR) pro čte
 ms.topic: article
 ms.date: 01/14/2020
 ms.openlocfilehash: 47d3d643ee1287ef4f444095a2c6cfe6dcab294b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76842516"
 ---
 # <a name="external-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>Externí ověřování v úloze ACR s využitím identity spravované službou Azure 
@@ -26,7 +26,7 @@ Tento příklad ukazuje kroky buď pomocí uživatelsky přiřazené nebo spravo
 
 Ve skutečném scénáři může společnost publikovat image do soukromého úložiště v Docker Hub jako součást procesu sestavení. 
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 Potřebujete službu Azure Container Registry, ve které úlohu spouštíte. V tomto článku má tento registr název *myregistry*. Nahraďte vlastním názvem registru v pozdějších krocích.
 

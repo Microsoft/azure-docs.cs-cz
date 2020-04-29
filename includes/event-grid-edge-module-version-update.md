@@ -9,11 +9,11 @@ ms.date: 01/16/2020
 ms.author: babanisa
 ms.custom: include file
 ms.openlocfilehash: cca628a54d9ac84fbb8a798168f72adbaa24aa48
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76844533"
 ---
 >[!NOTE]
-> Vždy zkontrolujte verzi obrázku, abyste se ujistili, že má ty, které požadujete. Pokud máte předchozí verzi image kontejneru, která již byla v počítači vytažena, budete muset zadat požadovanou `:latest` značku verze nebo odstranit existující bitovou kopii před znovu vytažením se značkou. Další informace o verzích obrázků a značkách naleznete v [poznámkách k verzi](../articles/event-grid/edge/release-notes.md).
+> Vždycky zkontrolujte verzi image, abyste měli jistotu, že bude mít feautures, které požadujete. Pokud už máte na svém počítači navytvořenou předchozí verzi image kontejneru, budete muset zadat požadovanou značku verze nebo odstranit existující image, abyste mohli znovu znovu načíst se `:latest` značkou. Další informace o verzích a značkách imagí najdete v [poznámkách k verzi](../articles/event-grid/edge/release-notes.md).

@@ -1,6 +1,6 @@
 ---
 title: Přehled integrace služby Azure Service Bus do služby Event Grid | Microsoft Docs
-description: Tento článek obsahuje popis toho, jak azure service bus zasílání zpráv integruje s Azure Event Grid.
+description: Tento článek poskytuje popis způsobu, jakým se Azure Service Bus zasílání zpráv integruje s Azure Event Grid.
 services: service-bus-messaging
 documentationcenter: .net
 author: axisc
@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 01/27/2020
 ms.author: aschhab
 ms.openlocfilehash: 1e514e2856afae4ff6f877bb193935da1bc5d623
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76773477"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Přehled integrace služby Azure Service Bus do služby Event Grid
@@ -38,7 +38,7 @@ K povolení této funkce potřebujete následující položky:
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ### <a name="verify-that-you-have-contributor-access"></a>Ověření, že máte přístup přispěvatele
-Přejděte do oboru názvů Service Bus a pak vyberte **ovládací prvek přístupu (IAM)** a vyberte kartu **Přiřazení rolí.** 
+Přejděte do oboru názvů Service Bus a pak vyberte možnost **řízení přístupu (IAM)** a vyberte kartu **přiřazení rolí** . Ověřte, zda máte přístup přispěvatele k oboru názvů. 
 
 ### <a name="events-and-event-schemas"></a>Události a schémata událostí
 
@@ -138,7 +138,7 @@ Nový odběr služby Event Grid vytvoříte následovně:
 
 ## <a name="azure-cli-instructions"></a>Pokyny pro Azure CLI
 
-Nejprve se ujistěte, že máte nainstalované Azure CLI verze 2.0 nebo novější. [Stáhněte instalační program](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Vyberte **Windows + X**a otevřete novou konzolu PowerShellu s oprávněními správce. Případně může použít příkazové prostředí na webu Azure Portal.
+Nejprve se ujistěte, že máte nainstalované Azure CLI verze 2.0 nebo novější. [Stáhněte instalační program](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Vyberte **Windows + X**a pak otevřete novou konzolu PowerShellu s oprávněními správce. Případně může použít příkazové prostředí na webu Azure Portal.
 
 Spusťte následující kód:
 

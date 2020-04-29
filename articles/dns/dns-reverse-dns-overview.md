@@ -1,6 +1,6 @@
 ---
-title: Přehled reverzních DNS v Azure – Azure DNS
-description: V tomto studijním programu se můžete začít učit, jak funguje reverzní DNS a jak ho lze použít v Azure.
+title: Přehled reverzního DNS v Azure – Azure DNS
+description: V tomto výukovém postupu se naučíte, jak reverzní služba DNS funguje a jak se dá používat v Azure.
 services: dns
 documentationcenter: na
 author: rohinkoul
@@ -13,54 +13,54 @@ ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: rohink
 ms.openlocfilehash: bf3da62e989f0e029efdc8e9c70f5f45e0ddd765
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76932301"
 ---
-# <a name="overview-of-reverse-dns-and-support-in-azure"></a>Přehled reverzního DNS a podpory v Azure
+# <a name="overview-of-reverse-dns-and-support-in-azure"></a>Přehled reverzních DNS a podpory v Azure
 
-Tento článek poskytuje přehled o tom, jak funguje reverzní DNS a reverzní scénáře DNS podporované v Azure.
+Tento článek poskytuje přehled o tom, jak reverzní DNS funguje, a scénáře reverzních DNS podporované v Azure.
 
 ## <a name="what-is-reverse-dns"></a>Co je reverzní DNS?
 
-Konvenční záznamy DNS umožňují mapování z názvu DNS (například "www.contoso.com") na ADRESU IP (například 64.4.6.100).  Reverzní DNS umožňuje překlad IP adresy (64.4.6.100) zpět na jméno ('www.contoso.com').
+Konvenční záznamy DNS umožňují mapování z názvu DNS (například ' www.contoso.com ') na IP adresu (třeba na 64.4.6.100).  Reverzní DNS umožňuje překlad IP adresy (64.4.6.100) zpět na název (' www.contoso.com ').
 
-Reverzní ZÁZNAMY DNS se používají v různých situacích. Například reverzní záznamy DNS jsou široce používány v boji proti nevyžádané poště e-mail ověřením odesílatele e-mailové zprávy.  Přijímající poštovní server načte reverzní záznam DNS adresy IP odesílajícího serveru a ověří, zda je tento hostitel oprávněn odesílat e-maily z původní domény. 
+Reverzní záznamy DNS se používají v různých situacích. Například reverzní záznamy DNS se často používají v boji proti nevyžádané poště tím, že ověřují odesílatele e-mailové zprávy.  Přijímající poštovní server načte reverzní záznam DNS IP adresy odesílajícího serveru a ověří, jestli je tento hostitel autorizovaný k odesílání e-mailů z původní domény. 
 
-## <a name="how-reverse-dns-works"></a>Jak funguje reverzní DNS
+## <a name="how-reverse-dns-works"></a>Jak reverzní služba DNS funguje
 
-Reverzní záznamy DNS jsou hostovány ve zvláštních zónách DNS, známých jako zóny ARPA.  Tyto zóny tvoří samostatnou hierarchii DNS paralelně s normální hierarchií hostitelských domén, jako je například "contoso.com".
+Reverzní záznamy DNS se hostují ve zvláštních zónách DNS, označovaných jako zóny "ARPA".  Tyto zóny tvoří samostatnou hierarchii DNS paralelně s normálními hostujícími doménami hierarchie, jako je například ' contoso.com '.
 
-Například záznam DNS "www.contoso.com" je implementován pomocí záznamu DNS "A" s názvem "www" v zóně "contoso.com".  Tento záznam A odkazuje na odpovídající IP adresu, v tomto případě 64.4.6.100.  Zpětné vyhledávání je implementováno samostatně pomocí záznamu PTR s názvem "100" v zóně "6.4.64.in-addr.arpa" (všimněte si, že IP adresy jsou obráceny v zónách ARPA.)  Tento záznam PTR, pokud byl správně nakonfigurován, odkazuje na název "www.contoso.com".
+Například záznam DNS ' www.contoso.com ' je implementován pomocí záznamu DNS ' A ' s názvem ' www ' v zóně ' contoso.com '.  Tento záznam odkazuje na odpovídající IP adresu v tomto případě 64.4.6.100.  Zpětné vyhledávání se implementuje samostatně pomocí záznamu PTR s názvem 100 v zóně 6.4.64.in-addr. arpa (Všimněte si, že IP adresy se přesměrují v zónách ARPA.)  Tento záznam PTR, pokud byl správně nakonfigurován, odkazuje na název ' www.contoso.com '.
 
-Když je organizaci přiřazen blok IP adres, získají také právo spravovat odpovídající zónu ARPA. Zóny ARPA odpovídající blokům IP adres používaným Azure hostuje a spravuje Microsoft. Poskytovatel služeb Služeb LŽmůže být hostitelem zóny ARPA pro vaše vlastní IP adresy nebo vám může umožnit hostovat zónu ARPA ve službě DNS podle vašeho výběru, jako je Azure DNS.
+Když je organizaci přiřazen blok IP adres, získá taky právo spravovat odpovídající zónu ARPA. Zóny ARPA odpovídající blokům IP adres používaným v Azure jsou hostované a spravované Microsoftem. Poskytovatel internetových služeb může hostovat zónu ARPA pro vaše vlastní IP adresy, nebo vám může umožnit hostovat zónu ARPA ve službě DNS podle vašeho výběru, například Azure DNS.
 
 > [!NOTE]
-> Dopředná vyhledávání DNS a reverzní vyhledávání DNS jsou implementována v samostatných paralelních hierarchiích DNS. Zpětné vyhledávání pro 'www.contoso.com' **není** hostováno v zóně "contoso.com", spíše je hostováno v zóně ARPA pro odpovídající blok IP adres. Samostatné zóny se používají pro bloky adres IPv4 a IPv6.
+> Dopředné vyhledávání DNS a reverzní vyhledávání DNS se implementují v samostatných paralelních hierarchiích DNS. Zpětné vyhledávání pro ' www.contoso.com ' není hostováno v zóně ' contoso.com ', spíše **je hostováno** v zóně arpa pro odpovídající blok IP adres. Pro bloky adres IPv4 a IPv6 se používají samostatné zóny.
 
 ### <a name="ipv4"></a>IPv4
 
-Název zóny zpětného vyhledávání IPv4 by měl být `<IPv4 network prefix in reverse order>.in-addr.arpa`v následujícím formátu: .
+Název zóny zpětného vyhledávání IPv4 by měl být v následujícím formátu: `<IPv4 network prefix in reverse order>.in-addr.arpa`.
 
-Například při vytváření reverzní zóny pro hostitele záznamů pro hostitele s IP adresami, které jsou v předponě 192.0.2.0/24, název zóny by byl vytvořen izolováním síťové předpony adresy (192.0.2) `.in-addr.arpa`a následným obrácením pořadí (2.0.192) a přidáním přípony .
+Například při vytváření reverzní zóny k záznamům hostitelů pro hostitele s IP adresami, které jsou v předponě 192.0.2.0/24, se název zóny vytvoří tak, že se zaizoluje síťová předpona adresy (192.0.2) a pak se přesměruje objednávka (2.0.192) a přidání `.in-addr.arpa`přípony.
 
-|Třída podsítě|Předpona sítě  |Obrácená předpona sítě  |Standardní přípona  |Název reverzní zóny |
+|Třída podsítě|Předpona sítě  |Předpona reverzní sítě  |Standardní přípona  |Název reverzní zóny |
 |-------|----------------|------------|-----------------|---------------------------|
-|Třída A|203.0.0.0/8     | 203        | .in-addr.arpa   | `203.in-addr.arpa`        |
-|Třída B|198.51.0.0/16   | 51.198     | .in-addr.arpa   | `51.198.in-addr.arpa`     |
-|Třída C|192.0.2.0/24    | 2.0.192    | .in-addr.arpa   | `2.0.192.in-addr.arpa`    |
+|Třída A|203.0.0.0/8     | 203        | . in-addr. arpa   | `203.in-addr.arpa`        |
+|Třída B|198.51.0.0/16   | 51,198     | . in-addr. arpa   | `51.198.in-addr.arpa`     |
+|Třída C|192.0.2.0/24    | 2.0.192    | . in-addr. arpa   | `2.0.192.in-addr.arpa`    |
 
-### <a name="classless-ipv4-delegation"></a>Beztřídní delegace IPv4
+### <a name="classless-ipv4-delegation"></a>Delegování beztřídou IPv4
 
-V některých případech je rozsah IP přidělený organizaci menší než rozsah třídy C (/24). V tomto případě rozsah IP nespadá na hranici `.in-addr.arpa` zóny v hierarchii zóny, a proto nemůže být delegována jako podřízená zóna.
+V některých případech je rozsah IP adres přidělený organizaci menší než rozsah třídy C (/24). V takovém případě rozsah IP adres nespadají do hranice zóny v rámci hierarchie `.in-addr.arpa` zóny, a proto nemůže být delegovaný jako podřízená zóna.
 
-Místo toho se používá jiný mechanismus k přenosu řízení jednotlivých záznamů zpětného vyhledávání (PTR) do vyhrazené zóny DNS. Tento mechanismus deleguje podřízenou zónu pro každý rozsah IP adres a pak mapuje každou ADRESU IP v rozsahu jednotlivě na tuto podřízenou zónu pomocí záznamů CNAME.
+Místo toho se k přenosu řízení jednotlivých záznamů zpětného vyhledávání (PTR) do vyhrazené zóny DNS používá jiný mechanismus. Tento mechanismus deleguje podřízenou zónu pro každý rozsah IP adres a pak mapuje každou IP adresu v rozsahu individuálně na tuto podřízenou zónu pomocí záznamů CNAME.
 
-Předpokládejme například, že organizaci je udělen rozsah IP adres 192.0.2.128/26 jejím isp. To představuje 64 IP adres, od 192.0.2.128 do 192.0.2.191. Reverzní DNS pro tento rozsah je implementována takto:
-- Organizace vytvoří zónu zpětného vyhledávání nazvanou 128-26.2.0.192.in-addr.arpa. Předpona "128-26" představuje síťový segment přiřazený organizaci v rozsahu třídy C (/24).
-- Isp vytvoří záznamy NS nastavit delegování DNS pro výše uvedenou zónu z nadřazené zóny třídy C. Vytvoří také záznamy CNAME v nadřazené zóně zpětného vyhledávání (třída C) a mapuje každou adresu IP v rozsahu IP na novou zónu vytvořenou organizací:
+Předpokládejme například, že organizace má přidělený poskytovatel internetových služeb rozsah IP adres 192.0.2.128/26. To představuje 64 IP adres, od 192.0.2.128 po 192.0.2.191. Reverzní DNS pro tento rozsah je implementován následujícím způsobem:
+- Organizace vytvoří zónu zpětného vyhledávání s názvem 128-26.2.0.192.in-addr. arpa. Předpona "128-26" představuje segment sítě přiřazený organizaci v rámci rozsahu třídy C (/24).
+- Poskytovatel internetových služeb vytvoří záznamy NS pro nastavení delegování DNS pro výše uvedenou zónu z nadřazené zóny třídy C. Vytvoří také záznamy CNAME v nadřazené zóně zpětného vyhledávání (třída C), přičemž mapování každé IP adresy v rozsahu IP adres na novou zónu vytvořenou organizací:
 
 ```
 $ORIGIN 2.0.192.in-addr.arpa
@@ -83,35 +83,35 @@ $ORIGIN 128-26.2.0.192.in-addr.arpa
 131      PTR    partners.contoso.com
 ; etc
 ```
-Zpětné vyhledávání dotazů ip adresy '192.0.2.129' pro záznam PTR s názvem "129.2.0.192.in-addr.arpa". Tento dotaz řeší prostřednictvím CNAME v nadřazené zóně na záznam PTR v podřízené zóně.
+Zpětné vyhledávání pro dotaz 192.0.2.129 IP adresy pro záznam PTR s názvem 129.2.0.192.in-addr. arpa. Tento dotaz překládá přes CNAME v nadřazené zóně na záznam PTR v podřízené zóně.
 
 ### <a name="ipv6"></a>IPv6
 
-Název zóny zpětného vyhledávání IPv6 by měl být v následujícím formuláři:`<IPv6 network prefix in reverse order>.ip6.arpa`
+Název zóny zpětného vyhledávání IPv6 by měl být v následujícím tvaru:`<IPv6 network prefix in reverse order>.ip6.arpa`
 
-Například,. Při vytváření reverzní zóny pro hostitele záznamů pro hostitele s IP adresami, které jsou v předponě 2001:db8:1000:abdc::/64, bude název zóny vytvořen izolováním síťové předpony adresy (2001:db8:abdc::). Dále rozbalte předponu sítě IPv6 a odeberte [nulovou kompresi](https://technet.microsoft.com/library/cc781672(v=ws.10).aspx), pokud byla použita ke zkrácení předpony adresy IPv6 (2001:0db8:abdc:0000::). Stornováním pořadí pomocí tečky jako oddělovače mezi jednotlivými šestnáctkovým číslem v předponě vytvořte obrácenou předponu sítě (`0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2`) a přidejte příponu `.ip6.arpa`.
+Například. Při vytváření reverzní zóny k záznamům hostitelů pro hostitele s IP adresami, které jsou v předponě 2001: db8:1000: ABDC::/64, se vytvoří název zóny tak, že izoluje předponu sítě adresy (2001: db8: ABDC::). Dále rozbalte předponu sítě IPv6 pro odebrání [nulové komprese](https://technet.microsoft.com/library/cc781672(v=ws.10).aspx), pokud se použila k zkrácení předpony adresy IPv6 (2001:0db8: ABDC: 0000::). Obrátí pořadí a pomocí tečky jako oddělovače mezi každým šestnáctkovým číslem v předponě vytvořte reverzní předponu sítě (`0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2`) a přidejte příponu. `.ip6.arpa`
 
 
 |Předpona sítě  |Rozšířená a obrácená předpona sítě |Standardní přípona |Název reverzní zóny  |
 |---------|---------|---------|---------|
-|2001:db8:abdc::/64    | 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2        | .ip6.arpa        | `0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa`       |
-|2001:db8:1000:9102::/64    | 2.0.1.9.0.0.0.1.8.b.d.0.1.0.0.2        | .ip6.arpa        | `2.0.1.9.0.0.0.1.8.b.d.0.1.0.0.2.ip6.arpa`        |
+|2001: db8: ABDC::/64    | 0.0.0.0. c. d. b. a. 8. b. d. 0.1.0.0.2        | . ip6. arpa        | `0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa`       |
+|2001: db8:1000:9102::/64    | 2.0.1.9.0.0.0.1.8. b. d. 0.1.0.0.2        | . ip6. arpa        | `2.0.1.9.0.0.0.1.8.b.d.0.1.0.0.2.ip6.arpa`        |
 
 
 ## <a name="azure-support-for-reverse-dns"></a>Podpora Azure pro reverzní DNS
 
-Azure podporuje dva samostatné scénáře týkající se reverznídns:
+Azure podporuje dva samostatné scénáře týkající se reverzních DNS:
 
-**Hostování zóny zpětného vyhledávání odpovídající bloku IP adresy.**
-Azure DNS lze použít k [hostování reverzní vyhledávací zóny a spravovat záznamy PTR pro každé zpětné vyhledávání DNS](dns-reverse-dns-hosting.md), pro IPv4 a IPv6.  Proces vytváření zóny zpětného vyhledávání (ARPA), nastavení delegování a konfigurace záznamů PTR je stejný jako u běžných zón DNS.  Jedinýmrozdílem je, že delegování musí být nakonfigurováno prostřednictvím poskytovatele služeb Internetu, nikoli prostřednictvím registrátora DNS, a měl by být použit pouze typ záznamu PTR.
+**Hostování zóny zpětného vyhledávání odpovídající vašemu bloku IP adres.**
+Azure DNS můžete použít k [hostování zón zpětného vyhledávání a spravovat záznamy PTR pro každé zpětné vyhledávání DNS](dns-reverse-dns-hosting.md)pro IPv4 i IPv6.  Proces vytvoření zóny zpětného vyhledávání (ARPA), nastavení delegování a konfigurace záznamů PTR je stejný jako u standardních zón DNS.  Jediným rozdílem je, že delegování musí být nakonfigurované přes poskytovatele internetových služeb, a ne jako registrátora DNS a mělo by se použít jenom záznam typu PTR.
 
-**Nakonfigurujte reverzní záznam DNS pro IP adresu přiřazenou vaší službě Azure.** Azure umožňuje [konfigurovat zpětné vyhledávání IP adres přidělených vaší službě Azure](dns-reverse-dns-for-azure-services.md).  Toto zpětné vyhledávání je konfigurováno azure jako záznam PTR v odpovídající zóně ARPA.  Tyto zóny ARPA, které odpovídají všem rozsahům IP adres používaných v Azure, jsou hostovány společností Microsoft
+**Nakonfigurujte reverzní záznam DNS pro IP adresu přiřazenou službě Azure.** Azure umožňuje [nakonfigurovat zpětné vyhledávání pro IP adresy přidělené vaší službě Azure](dns-reverse-dns-for-azure-services.md).  Toto zpětné vyhledávání konfiguruje Azure jako záznam PTR v odpovídající zóně ARPA.  Tyto zóny rozhraní ARPA odpovídající všem rozsahům IP, které Azure používá, jsou hostovány společností Microsoft.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o reverzním DNS naleznete v [tématu reverzní vyhledávání DNS na Wikipedii](https://en.wikipedia.org/wiki/Reverse_DNS_lookup).
+Další informace o reverzních DNS najdete v tématu [reverzní DNS Lookup v Wikipedii](https://en.wikipedia.org/wiki/Reverse_DNS_lookup).
 <br>
-Přečtěte si, jak [hostovat zónu zpětného vyhledávání pro rozsah IP adres přiřazený k isp v Azure DNS](dns-reverse-dns-for-azure-services.md).
+Naučte se [hostovat zónu zpětného vyhledávání pro rozsah IP adres přiřazený poskytovateli internetových služeb v Azure DNS](dns-reverse-dns-for-azure-services.md).
 <br>
-Přečtěte si, jak [spravovat reverzní záznamy DNS pro vaše služby Azure](dns-reverse-dns-for-azure-services.md).
+Naučte se [Spravovat reverzní záznamy DNS pro služby Azure](dns-reverse-dns-for-azure-services.md).
 
