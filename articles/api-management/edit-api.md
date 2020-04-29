@@ -13,10 +13,10 @@ ms.topic: tutorial
 ms.date: 11/08/2017
 ms.author: apimpm
 ms.openlocfilehash: 6be36493fabce07838991c789e111e918a9a826d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "70072157"
 ---
 # <a name="edit-an-api"></a>Úprava rozhraní API
@@ -64,5 +64,5 @@ Back-end rozhraní API můžete upravit na webu Azure Portal pomocí následují
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Ukázky](policy-samples.md)
-> zásad APIM[Transformace a ochrana publikovaného rozhraní API](transform-api.md)
+> [Ukázky zásad APIM](policy-samples.md)
+> [transformují a chrání publikované rozhraní API](transform-api.md)
