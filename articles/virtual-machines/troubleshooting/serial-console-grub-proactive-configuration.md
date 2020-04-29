@@ -1,6 +1,6 @@
 ---
-title: Proaktivní konfigurace GRUB konzoly Azure Serial Console| Dokumenty společnosti Microsoft
-description: Konfigurace GRUB napříč různými distribucemi, které umožňují přístup k režimu jednoho uživatele a režimu obnovení ve virtuálních počítačích Azure.
+title: Proaktivní GRUB konfigurace služby Azure Serial Console | Microsoft Docs
+description: Nakonfigurujte GRUB napříč různými distribucemi, které umožňují přístup k jednomu uživateli a režimu obnovení na virtuálních počítačích Azure.
 services: virtual-machines-linux
 documentationcenter: ''
 author: mimckitt
@@ -15,99 +15,99 @@ ms.workload: infrastructure-services
 ms.date: 07/10/2019
 ms.author: mimckitt
 ms.openlocfilehash: 573bd0797e63fc512e59b0e0882c718e4569111c
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81262889"
 ---
-# <a name="proactively-ensuring-you-have-access-to-grub-and-sysrq-could-save-you-lots-of-down-time"></a>Proaktivně zajištění přístupu k GRUB a sysrq vám může ušetřit spoustu prostojů
+# <a name="proactively-ensuring-you-have-access-to-grub-and-sysrq-could-save-you-lots-of-down-time"></a>Proaktivní zajištění přístupu k GRUB a SysRq vám může ušetřit spoustu času.
 
-Přístup k sériové konzoli a GRUB zlepší dobu obnovení vašeho virtuálního počítače IaaS Linux ve většině případů. GRUB nabízí možnosti obnovení, které by jinak trvalo déle obnovit virtuální počítač. 
+Když máte přístup ke konzole sériového prostředí a GRUB, ve většině případů se prodlouží doba obnovení virtuálního počítače s IaaS Linux. GRUB nabízí možnosti obnovení, které by jinak mohly obnovit virtuální počítač déle. 
 
 
-Důvody pro obnovení virtuálního mísy jsou mnohé a lze je připsat scénářům, jako jsou:
+Důvody pro provedení obnovení virtuálního počítače jsou mnoho a můžou se jim přizpůsobovat tyto scénáře:
 
-   - Poškozené souborové systémy/jádro/MBR (hlavní spouštěcí záznam)
+   - Poškozené systémy souborů/jádra/MBR (hlavní spouštěcí záznam)
    - Neúspěšné upgrady jádra
    - Nesprávné parametry jádra GRUB
-   - Nesprávné konfigurace fstab
+   - Nesprávná konfigurace fstab
    - Konfigurace brány firewall
    - Ztracené heslo
-   - Mangled sshd konfigurace soubory
+   - Soubory s pozměněnými sshd konfiguracemi
    - Síťové konfigurace
 
- Mnoho dalších scénářů, jak [je podrobně popsáno zde](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux#common-scenarios-for-accessing-the-serial-console)
+ Mnoho dalších scénářů, jak je popsáno [zde](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux#common-scenarios-for-accessing-the-serial-console)
 
-Ověřte, že máte přístup ke grubu a konzolové konzoli Serial na virtuálních počítačích nasazených v Azure. 
+Ověřte, že máte přístup k GRUB a Sériová konzola na virtuálních počítačích nasazených v Azure. 
 
-Pokud se konzolou Serial Console tečujete, přečtěte si [tento odkaz](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux/).
+Pokud s konzolou sériového portu začínáte, přečtěte si [Tento odkaz](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux/).
 
 > [!TIP]
-> Před provedením změn se ujistěte, že zálohujete soubory
+> Před provedením změn se ujistěte, že jste provedli zálohování souborů.
 
-Podívejte se na toto video níže a zjistěte, jak můžete rychle obnovit virtuální počítač s Linuxem, jakmile budete mít přístup k GRUB
+Podívejte se na následující video a zjistěte, jak můžete rychle obnovit virtuální počítač se systémem Linux, když máte přístup k GRUB.
 
-[Obnovení videa virtuálního počítače s Operačním systémem Linux](https://youtu.be/KevOc3d_SG4)
+[Video o obnovení virtuálního počítače se systémem Linux](https://youtu.be/KevOc3d_SG4)
 
-Existuje celá řada metod, které pomáhají obnovit virtuální počítače s Linuxem. V cloudovém prostředí byl tento proces náročný.
-Neustále dochází k pokroku v oblasti nástrojů a funkcí, které zajišťují rychlé obnovení služeb.
+K dispozici je několik metod, které vám pomůžou s obnovením virtuálních počítačů se systémem Linux. V cloudovém prostředí byl tento proces náročný.
+Probíhá nepřetržité provádění nástrojů a funkcí, které zajistí rychlé obnovení služeb.
 
-S Konzolou Azure Serial Console můžete pracovat s virtuálním počítačem s Linuxem, jako byste byli na konzoli systému.
+Pomocí konzole sériového prostředí Azure můžete s VIRTUÁLNÍm počítačem se systémem Linux pracovat, jako kdyby jste pracovali v konzole systému.
 
-Můžete manipulovat s mnoha konfiguračními soubory, včetně toho, jak se jádro spustí. 
+Můžete manipulovat s mnoha konfiguračními soubory, včetně způsobu, jakým se jádro spustí. 
 
-Zkušenější správci systému Linux/Unix ocení **režimy pro jednoho uživatele** a **nouzové režimy,** které jsou přístupné prostřednictvím konzoly Azure Serial Console, díky nimž je pro mnoho scénářů obnovení redundantní provýměnu a odstranění disku.
+Zkušení správci systému Linux/UNIX budou porušovat **jednotlivé uživatelské** a **nouzové režimy** , které jsou přístupné prostřednictvím konzoly Azure Serial, což provádí swap disku a odstraňování virtuálních počítačů pro mnoho scénářů obnovení.
 
-Metoda obnovení závisí na problému dochází, například ztracené nebo chybně umístěné heslo lze obnovit prostřednictvím možností portálu Azure -> **resetovat heslo**. Funkce **Resetovat heslo** se označuje jako rozšíření a komunikuje s agentem Host linuxu.
+Metoda obnovení závisí na problému, ke kterému došlo, například ztracené nebo nesprávně umístěné heslo je možné resetovat prostřednictvím Azure Portal možností – > **resetovat heslo**. Funkce **reset Password** se nazývá rozšíření a komunikuje s agentem hosta v systému Linux.
 
-Další rozšíření, jako je vlastní skript jsou k dispozici však tyto možnosti vyžadují, aby **linuxový waagent** být nahoru a ve zdravém stavu, který není vždy případ.
+K dispozici jsou i další rozšíření, jako je vlastní skript, ale tyto možnosti vyžadují, aby se Linux **waagent** v dobrém stavu, který není vždycky v případě případu.
 
-![stav agenta](./media/virtual-machines-serial-console/agent-status.png)
+![Stav agenta](./media/virtual-machines-serial-console/agent-status.png)
 
 
-Zajištění přístupu k službě Azure Serial Console a GRUB znamená, že změna hesla nebo nesprávná konfigurace lze opravit během několika minut namísto hodin. Můžete dokonce vynutit spuštění virtuálního počítače z alternativního jádra, pokud máte více jader na disku ve scénáři, kde dojde k poškození primárního jádra.
+Ujistěte se, že máte přístup ke konzole sériového rozhraní Azure a GRUB znamená, že se změna hesla nebo nesprávná konfigurace dá opravit v řádu minut, nikoli v hodinách. Můžete dokonce vynutit, aby se virtuální počítač spouštěl z alternativního jádra, pokud máte v situaci, kdy je vaše primární jádro poškozené, více jader na disku.
 
-![více jádra](./media/virtual-machines-serial-console/more-kernel.png)
+![více jader](./media/virtual-machines-serial-console/more-kernel.png)
 
 ## <a name="suggested-order-of-recovery-methods"></a>Navrhované pořadí metod obnovení:
 
-- Azure Serial Console
+- Sériová konzola Azure
 
-- Disk Swap – lze automatizovat pomocí:
+- Výměna disku – můžete automatizovat pomocí těchto akcí:
 
-   - [Skripty pro obnovení prostředí Power Shell](https://github.com/Azure/azure-support-scripts/tree/master/VMRecovery/ResourceManager)
-   - [bash Zotavení Skripty](https://github.com/sribs/azure-support-scripts)
+   - [Skripty pro obnovení Power Shell](https://github.com/Azure/azure-support-scripts/tree/master/VMRecovery/ResourceManager)
+   - [Skripty pro obnovení bash](https://github.com/sribs/azure-support-scripts)
 
-- Starší metoda
+- Legacy – metoda
 
-## <a name="disk-swap-video"></a>Video pro výměnu disku:
+## <a name="disk-swap-video"></a>Video o prohození disku:
 
-Pokud nemáte přístup k GRUB podívejte se na [toto](https://youtu.be/m5t0GZ5oGAc) video a uvidíte, jak můžete snadno automatizovat postup odkládání disků obnovit virtuální počítač
+Pokud nemáte přístup k GRUB, podívejte se na [Toto](https://youtu.be/m5t0GZ5oGAc) video a podívejte se, jak můžete snadno automatizovat postup odkládacího disku pro obnovení virtuálního počítače.
 
-## <a name="challenges"></a>Výzvy:
+## <a name="challenges"></a>Výzev
 
-Ne všechny virtuální počítače Linux Azure jsou ve výchozím nastavení nakonfigurované pro přístup ke GRUB a ani všechny nejsou nakonfigurovány tak, aby byly přerušeny pomocí příkazů sysrq. Některé starší distribuce, například SLES 11, nejsou nakonfigurovány tak, aby zobrazovaly výzvu Přihlášení v konzoli Azure Serial Console
+Ve výchozím nastavení nejsou všechny virtuální počítače Azure Linux nakonfigurované pro přístup GRUB a ani nejsou nakonfigurované tak, aby se přerušily pomocí příkazů SysRq. Některé starší distribuce, jako je SLES 11, nejsou nakonfigurované tak, aby zobrazovaly výzvu k přihlášení v konzole Azure Serial Console.
 
-V tomto článku zkontrolujeme různé distribuce Linuxu a konfigurace dokumentů o tom, jak zpřístupnit GRUB.
-
-
+V tomto článku si probereme různé distribuce systému Linux a konfigurace dokumentů, jak zpřístupnit GRUB k dispozici.
 
 
-## <a name="how-to-configure-linux-vm-to-accept-sysrq-keys"></a>Jak nakonfigurovat virtuální počítač s Linuxem pro přijímání klíčů SysRq
-Klíč sysrq je povolen na některých novějších distribucích Linuxu ve výchozím nastavení, i když v jiných může být nakonfigurován pro příjem hodnot pouze pro určité funkce SysRq.
-U starších distribucí může být zcela zakázán.
-
-Funkce SysRq je užitečná pro restartování havarovaného nebo zavěšeného virtuálního počítače přímo z konzoly Azure Serial Console, která je také užitečná při získání přístupu k nabídce GRUB, případně restartování virtuálního počítače z jiného okna portálu nebo relace ssh může vynechat aktuální připojení konzoly, což vyprší vypršení časového limitu GRUB, na které se slouží k zobrazení nabídky GRUB.
-Virtuální počítač musí být nakonfigurován tak, aby přijímal hodnotu 1 pro parametr jádra, který umožňuje všechny funkce sysrq nebo 128, což umožňuje restartování/vypnutí
 
 
-[Povolit video sysrq](https://youtu.be/0doqFRrHz_Mc)
+## <a name="how-to-configure-linux-vm-to-accept-sysrq-keys"></a>Postup konfigurace virtuálního počítače se systémem Linux pro příjem klíčů SysRq
+Klíč SysRq je ve výchozím nastavení povolený u některých novějších distribuce systému Linux, i když u jiných může být nakonfigurovaný pro přijímání hodnot jenom pro určité funkce SysRq.
+Na starším distribuce může být zcela zakázán.
+
+Funkce SysRq je užitečná pro restartování chybných nebo nereagujících virtuálních počítačů přímo z konzole Azure Serial Console, a to i v části získání přístupu k nabídce GRUB, případně restartování virtuálního počítače z jiného okna portálu nebo relace SSH může odpojit vaše aktuální připojení konzoly, takže vypršení časových limitů GRUB, které se použijí k zobrazení nabídky GRUB.
+Virtuální počítač musí být nakonfigurovaný tak, aby pro parametr jádra přijímal hodnotu 1, která umožňuje všechny funkce SysRq nebo 128, což umožňuje restart/stavu PowerOff.
 
 
-Chcete-li nakonfigurovat virtuální počítač tak, aby přijímal restartování pomocí příkazů SysRq na webu Azure Portal, budete muset nastavit hodnotu 1 pro parametr jádra kernel.sysrq
+[Povolit SysRq video](https://youtu.be/0doqFRrHz_Mc)
 
-Aby tato konfigurace trvala při restartování počítače, přidejte položku do souboru **sysctl.conf**
+
+Pokud chcete virtuální počítač nakonfigurovat tak, aby přijímal restart přes SysRq příkazy na Azure Portal, budete muset nastavit hodnotu 1 pro parametr jádra kernel. SysRq
+
+Aby tato konfigurace trvala restart, přidejte do souboru **sysctl. conf položku.**
 
 `echo kernel.sysrq = 1 >> /etc/sysctl.conf`
 
@@ -115,37 +115,37 @@ Dynamické konfigurace parametru jádra
 
 `sysctl -w kernel.sysrq=1`
 
-Pokud nemáte **root** přístup nebo sudo je přerušeno, nebude možné konfigurovat sysrq z řádku prostředí.
+Pokud nemáte **kořenový** přístup nebo je sudo, nebude možné konfigurovat SysRq z příkazového řádku prostředí.
 
-Sysrq můžete povolit v tomto scénáři pomocí portálu Azure. Tato metoda může být užitečná, pokud došlo k porušení nebo odstranění **souboru sudoers.d/waagent.**
+V tomto scénáři můžete povolit SysRq pomocí Azure Portal. Tato metoda může být výhodná, pokud byl soubor **sudoers. d/waagent** poškozen nebo byl odstraněn.
 
-Použití funkce Operace portálu Azure -> Spustit příkaz -> RunShellScript vyžaduje, aby byl proces waagent v pořádku, můžete tento příkaz vložit a povolit sysrq.
+Pomocí funkce Azure Portal Operations-> spustit příkaz > RunShellScript vyžaduje, aby byl proces waagent v pořádku, abyste mohli povolit SysRq, můžete tento příkaz Vložit.
 
 `sysctl -w kernel.sysrq=1 ; echo kernel.sysrq = 1 >> /etc/sysctl.conf`
 
-Jak je ![znázorněno zde: povolit sysrq2](./media/virtual-machines-serial-console/enabling-sysrq-2.png)
+Jak je znázorněno ![zde: povolení sysrq2](./media/virtual-machines-serial-console/enabling-sysrq-2.png)
 
-Po dokončení, pak můžete zkusit přístup k **sysrq** a měli byste vidět, že restartování je možné.
+Po dokončení se můžete pokusit o přístup k **SysRq** a měli byste vidět, že je možné restartovat počítač.
 
-![povolit sysrq3](./media/virtual-machines-serial-console/enabling-sysrq-3.png)
+![Povolit sysrq3](./media/virtual-machines-serial-console/enabling-sysrq-3.png)
 
-Vybrat **příkaz Restartovat** a **odeslat příkaz SysRq**
+Vyberte příkaz **restartovat** a **Odeslat SysRq** .
 
-![povolit sysrq4](./media/virtual-machines-serial-console/enabling-sysrq-4.png)
+![Povolit sysrq4](./media/virtual-machines-serial-console/enabling-sysrq-4.png)
 
-Systém by měl zaprotokolovat zprávu o obnovení, například tuto
+Systém by měl protokolovat resetující zprávu, například
 
-![povolit sysrq5](./media/virtual-machines-serial-console/enabling-sysrq-5.png)
+![Povolit sysrq5](./media/virtual-machines-serial-console/enabling-sysrq-5.png)
 
 
 ## <a name="ubuntu-grub-configuration"></a>Konfigurace Ubuntu GRUB
 
-Ve výchozím nastavení byste měli mít přístup ke grubu podržením **klávesy Esc** během spuštění virtuálního počítače, pokud není zobrazena nabídka GRUB, můžete vynutit a ponechat nabídku GRUB na obrazovce v konzoli Azure Serial Console pomocí jedné z těchto možností.
+Ve výchozím nastavení byste měli mít přístup k GRUB tím, že při spuštění virtuálního počítače podržíte klávesu **ESC** , pokud se nabídka grub nezobrazuje, můžete vynutit a ponechat nabídku grub na obrazovce v konzole sériového rozhraní Azure pomocí jedné z těchto možností.
 
-**Možnost 1** - Vynutí zobrazení GRUB na obrazovce 
+**Možnost 1** – vynutí zobrazení grub na obrazovce 
 
-Aktualizujte soubor /etc/default/grub.d/50-cloudimg-settings.cfg, aby nabídka GRUB byla na obrazovce pro zadaný časový limit.
-Nemusíte zasáhnout **Esc,** protože GRUB se zobrazí okamžitě
+Aktualizujte soubor/etc/default/grub.d/50-cloudimg-Settings.cfg tak, aby se pro zadaný časový limit zachovala nabídka GRUB na obrazovce.
+Není nutné, abyste provedli **klávesu ESC** , protože grub se zobrazí okamžitě.
 
 ```
 GRUB_TIMEOUT=0
@@ -155,12 +155,12 @@ change to
 GRUB_TIMEOUT=5
 ```
 
-**Možnost 2** - Umožňuje **esc,** které mají být stisknuty před spuštěním
+**Možnost 2** – umožní stisknutí **klávesy ESC** před spuštěním.
 
-Podobné chování může být provedeno provedením změn v souboru /etc/default/grub a dodržujte časový limit 3 sekundy, aby se dosáhlo **hodnoty Esc**
+K podobnému chování může dojít, když provedete změny v souboru/etc/default/grub a při stisknutí **klávesy ESC** sledovat 3 sekundy.
 
 
-Zakomentujte tyto dva řádky:
+Odkomentujte tyto dva řádky:
 
 ```
 #GRUB_HIDDEN_TIMEOUT=0
@@ -175,11 +175,11 @@ GRUB_TIMEOUT_STYLE=countdown
 
 ## <a name="ubuntu-1204"></a>Ubuntu 12\.04
 
-Ubuntu 12.04 umožní přístup k sériové konzoli, ale nenabízí schopnost komunikovat. **Přihlášení:** výzva není vidět
+Ubuntu 12,04 umožní přístup ke konzole sériového portu, ale nenabízí možnost pracovat. **Přihlášení:** výzva se nezobrazuje.
 
 
-Pro 12.04 získat **přihlášení:** výzva:
-1. Vytvořte soubor s názvem /etc/init/ttyS0.conf obsahující následující text:
+12,04 pro získání **přihlašovacích údajů:** výzva:
+1. Vytvořte soubor s názvem/etc/init/ttyS0.conf, který obsahuje následující text:
 
     ```
     # ttyS0 - getty
@@ -193,30 +193,30 @@ Pro 12.04 získat **přihlášení:** výzva:
     exec /sbin/getty -L 115200 ttyS0 vt102
     ```    
 
-2. Zeptejte se povýšence začít getty     
+2. Požádat o spuštění Getty     
     ```
     sudo start ttyS0
     ```
  
-Nastavení potřebná ke konfiguraci sériové konzole pro verze Ubuntu naleznete [zde](https://help.ubuntu.com/community/SerialConsoleHowto)
+Nastavení potřebná ke konfiguraci sériové konzoly pro verze Ubuntu najdete [tady](https://help.ubuntu.com/community/SerialConsoleHowto) .
 
-## <a name="ubuntu-recovery-mode"></a>Režim obnovy Ubuntu
+## <a name="ubuntu-recovery-mode"></a>Režim obnovení Ubuntu
 
-Další možnosti obnovy a vyčištění jsou k dispozici pro Ubuntu přes GRUB, ale tato nastavení jsou přístupná pouze tehdy, pokud odpovídajícím způsobem nakonfigurujete parametry jádra.
-Pokud se nepodaří nakonfigurovat tento zaváděcí parametr jádra, vynutíte, aby se nabídka Obnovení odeslala do diagnostiky Azure, a nikoli do konzoly Azure Serial Console.
-Přístup k nabídce obnovení Ubuntu můžete získat následujícím postupem:
+Další možnosti obnovení a vyčištění jsou dostupné pro Ubuntu prostřednictvím GRUB, ale tato nastavení jsou dostupná jenom v případě, že se odpovídajícím způsobem konfigurují parametry jádra.
+Při konfiguraci tohoto parametru spuštění jádra by se měla vynutit odeslání nabídky obnovení do Azure Diagnostics, a ne do konzole Azure Serial Console.
+Přístup k nabídce obnovení Ubuntu můžete získat pomocí následujících kroků:
 
-Přerušení procesu BOOT a přístup k nabídce GRUB
+Přerušení SPOUŠTĚCÍho procesu a přístup k GRUB nabídce
 
-Vyberte rozšířené možnosti pro Ubuntu a stiskněte klávesu ENTER
+Vyberte rozšířené možnosti pro Ubuntu a stiskněte ENTER.
 
 ![ubunturec1](./media/virtual-machines-serial-console/ubunturec1.png)
 
-Vyberte zobrazení čáry *(režim obnovení)* nestisknout enter, ale stiskněte tlačítko "e"
+Vyberte řádek se zobrazením *(režim obnovení)* nestiskněte klávesu ENTER, ale stiskněte klávesu "e".
 
 ![ubunturec2](./media/virtual-machines-serial-console/ubunturec2.png)
 
-Vyhledejte řádek, který načte jádro, a nahraďte poslední parametr **nomodeset** cílem jako **console=ttyS0**
+Vyhledejte řádek, který načte jádro, a nahraďte poslední parametr **nomodeset** jako cíl jako **Console = ttyS0** .
 
 ```
 linux /boot/vmlinuz-4.15.0-1023-azure root=UUID=21b294f1-25bd-4265-9c4e-d6e4aeb57e97 ro recovery nomodeset
@@ -228,16 +228,16 @@ linux /boot/vmlinuz-4.15.0-1023-azure root=UUID=21b294f1-25bd-4265-9c4e-d6e4aeb5
 
 ![ubunturec3](./media/virtual-machines-serial-console/ubunturec3.png)
 
-Stisknutím **klávesctrl-x** spusťte a načtěte jádro.
-Pokud vše půjde dobře, uvidíte tyto další možnosti, které mohou pomoci provést další možnosti obnovení
+Stisknutím **kombinace kláves CTRL + x** spusťte a načtěte jádro.
+Pokud vše proběhne správně, uvidíte tyto další možnosti, které vám můžou pomáhat s dalšími možnostmi obnovení.
 
 ![ubunturec4](./media/virtual-machines-serial-console/ubunturec4.png)
 
 
-## <a name="red-hat-grub-configuration"></a>Red Hat GRUB konfigurace
+## <a name="red-hat-grub-configuration"></a>Konfigurace Red Hat GRUB
 
-## <a name="red-hat-74-grub-configuration"></a>Red Hat\.\+ 7 4 GRUB konfigurace
-Výchozí konfigurace /etc/default/grub v těchto verzích je odpovídajícím způsobem nakonfigurována
+## <a name="red-hat-74-grub-configuration"></a>GRUB konfigurace Red\.Hat\+ 7 4
+Výchozí konfigurace/etc/default/grub na těchto verzích je vhodně nakonfigurovaná.
 
 ```
 GRUB_TIMEOUT=5
@@ -250,14 +250,14 @@ GRUB_CMDLINE_LINUX="console=tty1 console=ttyS0 earlyprintk=ttyS0 rootdelay=300"
 GRUB_DISABLE_RECOVERY="true"
 ```
 
-Povolení klíče SysRq
+Povolit klíč SysRq
 
 ```
 sysctl -w kernel.sysrq=1;echo kernel.sysrq = 1 >> /etc/sysctl.conf;sysctl -a | grep -i sysrq
 ```
 
-## <a name="red-hat-72-and-73-grub-configuration"></a>Red Hat\.7\.2 a 7 3 GRUB konfigurace
-Soubor, který chcete upravit, je /etc/default/grub – výchozí konfigurace vypadá jako tento příklad:
+## <a name="red-hat-72-and-73-grub-configuration"></a>GRUB konfigurace Red\.Hat 7 2\.a 7 3
+Soubor, který se má upravit, je/etc/default/grub – výchozí konfigurace vypadá jako v tomto příkladu:
 
 ```
 GRUB_TIMEOUT=1
@@ -269,7 +269,7 @@ GRUB_CMDLINE_LINUX="console=tty1 console=ttyS0 earlyprintk=ttyS0 rootdelay=300"
 GRUB_DISABLE_RECOVERY="true"
 ```
 
-Změna následujících řádků v /etc/default/grub
+Změnit následující řádky v/etc/default/grub
 
 ```
 GRUB_TIMEOUT=1 
@@ -294,7 +294,7 @@ Přidejte také tento řádek:
 GRUB_SERIAL_COMMAND=”serial –speed=115200 –unit=0 –word=8 –parity=no –stop=1″
 ```
 
-/etc/default/grub by nyní měl vypadat podobně jako v tomto příkladu:
+/etc/default/grub by teď měl vypadat podobně jako v tomto příkladu:
 
 ```
 GRUB_TIMEOUT=5
@@ -306,7 +306,7 @@ GRUB_CMDLINE_LINUX="console=tty1 console=ttyS0 earlyprintk=ttyS0 rootdelay=300"
 GRUB_DISABLE_RECOVERY="true"
 ```
  
-Kompletní a aktualizovat grub konfiguraci pomocí
+Dokončení a aktualizace konfigurace grub pomocí
 
 `grub2-mkconfig -o /boot/grub2/grub.cfg`
 
@@ -314,14 +314,14 @@ Nastavte parametr jádra SysRq:
 
 `sysctl -w kernel.sysrq = 1;echo kernel.sysrq = 1 >> /etc/sysctl.conf;sysctl -a | grep -i sysrq`
 
-Můžete alternativně nakonfigurovat GRUB a SysRq pomocí jednoho řádku buď v prostředí nebo pomocí příkazu Spustit. Před spuštěním tohoto příkazu zálohujte soubory:
+Případně můžete konfigurovat GRUB a SysRq pomocí jednoho řádku buď v prostředí shell, nebo pomocí příkazu run. Před spuštěním tohoto příkazu zálohujte soubory:
 
 
 `cp /etc/default/grub /etc/default/grub.bak; sed -i 's/GRUB_TIMEOUT=1/GRUB_TIMEOUT=5/g' /etc/default/grub; sed -i 's/GRUB_TERMINAL_OUTPUT="console"/GRUB_TERMINAL="serial console"/g' /etc/default/grub; echo "GRUB_SERIAL_COMMAND=\"serial --speed=115200 --unit=0 --word=8 --parity=no --stop=1\"" >> /etc/default/grub;grub2-mkconfig -o /boot/grub2/grub.cfg;sysctl -w kernel.sysrq=1;echo kernel.sysrq = 1 /etc/sysctl.conf;sysctl -a | grep -i sysrq`
 
 
-## <a name="red-hat-6x-grub-configuration"></a>Red Hat\.6 x GRUB konfigurace
-Soubor, který chcete upravit, je /boot/grub/grub.conf. Hodnota `timeout` určuje, jak dlouho je GRUB zobrazen.
+## <a name="red-hat-6x-grub-configuration"></a>Konfigurace Red Hat\.6 x grub
+Soubor, který se má upravit, je/boot/grub/grub.conf.. `timeout` Hodnota určuje, jak dlouho se má grub zobrazovat.
 
 ```
 #boot=/dev/vda
@@ -335,20 +335,20 @@ terminal --timeout=5 serial console
 ```
 
 
-Poslední řádek *terminálu --timeout =5 sériové konzole* bude dále zvyšovat **GRUB** timeout přidáním výzvu 5 sekund zobrazení **Stiskněte libovolnou klávesu pokračovat.**
+Poslední řádek *terminál –-timeout = 5 sériové konzole* zvýší časový limit **grub** přidáním výzvy k zadání 5 sekund a **pokračováním stisknutí libovolné klávesy.**
 
-![rh6-1](./media/virtual-machines-serial-console/rh6-1.png)
+![RH6-1](./media/virtual-machines-serial-console/rh6-1.png)
 
-GRUB menu by se mělo objevit na obrazovce pro nakonfigurovaný timeout = 15 bez nutnosti stisknout Esc. Ujistěte se, že klikněte v konzole v prohlížeči, aby se aktivní menu a vyberte požadované jádro
+Nabídka GRUB by se měla zobrazit na obrazovce pro nakonfigurovaný časový limit = 15, aniž by bylo nutné stisknout klávesu ESC. Nezapomeňte kliknout na konzolu v prohlížeči a aktivovat tak nabídku a vybrat požadované jádro.
 
-![rh6-2](./media/virtual-machines-serial-console/rh6-2.png)
+![RH6 – 2](./media/virtual-machines-serial-console/rh6-2.png)
 
-## <a name="suse"></a>Suse
+## <a name="suse"></a>SuSE
 
-## <a name="sles-12-sp1"></a>SLES 12 š1
-Buď použijte yast bootloader podle oficiálních [dokumentů](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-grub-single-user-mode#grub-access-in-suse-sles)
+## <a name="sles-12-sp1"></a>SLES 12 SP1
+Buď použijte program pro spouštění YaST jako oficiální [dokumentaci](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-grub-single-user-mode#grub-access-in-suse-sles)
 
-Nebo přidat/změnit /etc/default/grub následující parametry:
+Nebo přidejte nebo změňte/etc/default/grub následující parametry:
 
 ```
 GRUB_TERMINAL=serial
@@ -356,31 +356,31 @@ GRUB_TIMEOUT=5
 GRUB_SERIAL_COMMAND="serial --unit=0 --speed=9600 --parity=no"
 
 ```
-Ověřte, zda se v GRUB_CMDLINE_LINUX nebo GRUB_CMDLINE_LINUX_DEFAULT používá ttys0
+Ověřte, že se v GRUB_CMDLINE_LINUX používá ttyS0 nebo GRUB_CMDLINE_LINUX_DEFAULT
 
 ```
 GRUB_CMDLINE_LINUX_DEFAULT="console=ttyS0,9600n"
 ```
 
-Znovu grub.cfg
+Opětovné vytvoření grub. cfg
 
 `grub2-mkconfig -o /boot/grub2/grub.cfg`
 
 
 ## <a name="sles-11-sp4"></a>SLES 11 SP4 
-Zobrazí se sériová konzola, zobrazí spouštěcí zprávy, ale nezobrazí **se přihlašovací číslo:** výzva
+Zobrazí se konzola sériového portu a zobrazí se spouštěcí zprávy, ale nezobrazí se **přihlašovací jméno:** výzva
 
-Otevřete relaci ssh do virtuálního virtuálního účtu a aktualizujte soubor **/etc/inittab** zrušením komentáře k tomuto řádku:
+Otevřete na virtuálním počítači relaci SSH a aktualizujte soubor **/etc/inittab** tak, že Odkomentujete tento řádek:
 
 ```
 #S0:12345:respawn:/sbin/agetty -L 9600 ttyS0 vt102
 ```
 
-Další spuštění příkazu 
+Dále spusťte příkaz 
 
 `telinit q`
 
-Chcete-li povolit GRUB, je třeba provést následující změny na /boot/grub/menu.lst 
+Chcete-li povolit GRUB, je třeba provést následující změny/boot/grub/menu.lst 
 
 ```
 timeout 5
@@ -392,33 +392,33 @@ kernel /boot/vmlinuz-3.0.101-108.74-default root=/dev/disk/by-uuid/ab6b62bb--
 1a8c-45eb-96b1-1fbc535b9265 disk=/dev/sda  USE_BY_UUID_DEVICE_NAMES=1 earlyprinttk=ttyS0 console=ttyS0 rootdelay=300  showopts vga=0x314
 ```
 
- Tato konfigurace umožní, aby se zpráva **Stisknutím libovolné klávesy** zobrazovala na konzoli po dobu 5 sekund 
+ Tato konfigurace umožní, aby se zpráva po dobu 5 sekund zobrazovala v konzole, aby se zobrazila **Jakákoli klávesa** . 
 
-Poté se zobrazí menu GRUB na dalších 5 sekund - stisknutím šipky dolů přerušíte počítadlo a vyberete jádro, které chcete spustit, a to buď připojit **klíčové slovo pro** režim jednoho uživatele, který vyžaduje nastavení kořenového hesla.
+Pak se po stisknutí šipky dolů zobrazí nabídka GRUB (po dalších 5 sekundách) a vyberte jádro, které chcete spustit: buď přidejte klíčové slovo **Single** pro režim single user, který vyžaduje nastavení kořenového hesla.
 
-Připojení příkazu **init=/bin/bash** načte jádro, ale zajistí, že program init bude nahrazen bash shellem.
+Připojení příkazu **init =/bin/bash** načte jádro, ale zajistí, že je program init nahrazen prostředím bash shell.
 
-Získáte přístup k prostředí, aniž byste museli zadávat heslo. Potom můžete pokračovat v aktualizaci hesla pro účty Linux nebo provést jiné změny konfigurace.
+Budete mít přístup k prostředí bez nutnosti zadávat heslo. Pak můžete pokračovat v aktualizaci hesla pro účty systému Linux nebo provést jiné změny konfigurace.
 
 
-## <a name="force-the-kernel-to-a-bash-prompt"></a>Vynutit jádro na bash prompt
-Mít přístup k GRUB umožňuje přerušit proces inicializace tato interakce je užitečná pro mnoho postupů obnovení.
-Pokud nemáte root heslo a jeden uživatel vyžaduje, abyste měli root heslo, můžete zavést jádro nahrazující init program s bash prompt - toto přerušení lze dosáhnout připojením init = / bin / bash k zaváděcí lince jádra
+## <a name="force-the-kernel-to-a-bash-prompt"></a>Vynutit jádro na příkazovém řádku bash
+Přístup k GRUB vám umožňuje přerušit proces inicializace. Tato interakce je užitečná pro mnoho postupů obnovení.
+Pokud nemáte kořenové heslo a jeden uživatel vyžaduje, abyste měli kořenové heslo, můžete spustit jádro, které nahradí inicializační program pomocí bash výzvy – toto přerušení je možné dosáhnout připojením init =/bin/bash ke spouštěcímu řádku jádra.
 
 ![bash1](./media/virtual-machines-serial-console/bash1.png)
 
-Znovu namontovat / (kořenový) souborový systém RW pomocí příkazu
+Opětovně připojte soubor/(root) systém souborů RW pomocí příkazu.
 
 `mount -o remount,rw /`
 
 ![bash2](./media/virtual-machines-serial-console/bash2.png)
 
 
-Nyní můžete provést změnu hesla root nebo mnoho dalších změn konfigurace Linuxu
+Nyní můžete provést změnu kořenového hesla nebo mnoho dalších změn konfigurace systému Linux.
 
 ![bash3](./media/virtual-machines-serial-console/bash3.png)
 
-Restartujte virtuální počítač pomocí 
+Restartujte virtuální počítač s 
 
 `/sbin/reboot -f`
 
@@ -427,10 +427,10 @@ Restartujte virtuální počítač pomocí
 
 ## <a name="single-user-mode"></a>Režim jednoho uživatele
 
-Případně možná budete muset získat přístup k virtuálnímu virtuálnímu mněmu v režimu jednoho uživatele nebo nouzového režimu. Vyberte jádro, které chcete zavést nebo přerušit pomocí kláves se šipkami.
-Zadejte požadovaný režim připojením klíčového slova **single** nebo **1** k zaváděcí lince jádra. V systémech RHEL můžete také připojit **rd.break**.
+Případně je možné, že budete potřebovat přístup k virtuálnímu počítači v režimu jednoho uživatele nebo v nouzovém režimu. Vyberte jádro, které chcete spustit, nebo přerušit pomocí kláves se šipkami.
+Zadejte požadovaný režim připojením klíčového slova **Single** nebo **1** ke spouštěcímu řádku jádra. V systémech RHEL můžete také připojit **Rd. Break**.
 
-Další informace o přístupu k režimu jednoho uživatele naleznete v [tomto dokumentu](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-grub-single-user-mode#general-single-user-mode-access) 
+Další informace o tom, jak přistupovat k jednomu uživatelskému režimu, najdete v [tomto dokumentu](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-grub-single-user-mode#general-single-user-mode-access) . 
 
 
 ![single_user_ubuntu](./media/virtual-machines-serial-console/single-user-ubuntu.png)

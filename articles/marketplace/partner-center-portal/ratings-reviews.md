@@ -1,6 +1,6 @@
 ---
-title: Řídicí panel Hodnocení a recenze v analýze komerčního tržiště v Partnerském centru
-description: Přečtěte si, jak získat přístup ke konsolidovanému zobrazení zpětné vazby od zákazníků pro vaše nabídky na Azure Marketplace a AppSource.
+title: Řídicí panel hodnocení a přezkoumání v komerčních prostředcích Marketplace na partnerském centru
+description: Přečtěte si, jak získat přístup k konsolidovanému zobrazení zpětné vazby zákazníků pro vaše nabídky na Azure Marketplace a AppSource.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
@@ -8,59 +8,59 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
 ms.openlocfilehash: 405ba37fd10fa48bf45f1031d2e9b5b17620ea0a
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81262413"
 ---
-# <a name="ratings-and-reviews-dashboard-in-commercial-marketplace-analytics"></a>Řídicí panel hodnocení a recenzí v analýze komerčního tržiště
+# <a name="ratings-and-reviews-dashboard-in-commercial-marketplace-analytics"></a>Řídicí panel hodnocení a přezkoumání v komerčních obchodech na webu Marketplace
 
-Tento článek obsahuje informace o panelu Hodnocení & recenzí v Centru partnerů. Tento řídicí panel zobrazuje konsolidované zobrazení zpětné vazby od zákazníků pro nabídky na Azure Marketplace a AppSource.
+Tento článek poskytuje informace o hodnoceních řídicího panelu kontroly & v partnerském centru. Tento řídicí panel zobrazuje konsolidované zobrazení zpětné vazby od zákazníků pro nabídky na Azure Marketplace a AppSource.
 
-Chcete-li získat přístup k **řídicímu panelu Hodnocení & recenzí** v analytických nástrojích Partnerského centra, otevřete řídicí panel **[Analyzovat](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** v části Komerční tržiště.
+Pokud chcete získat přístup k **hodnocení & řídicím panelu** kontroly v Datacenter Datacenter Analytics, otevřete řídicí panel **[analyzovat](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** na komerčním webu Marketplace.
 
 >[!NOTE]
-> Podrobné definice terminologie analýzy naleznete [v tématu Nejčastější dotazy a terminologie pro analýzu komerčního trhu](./faq-terminology.md).
+> Podrobné definice terminologie analýz najdete v tématu [Nejčastější dotazy a terminologie pro komerční analýzy na webu Marketplace](./faq-terminology.md).
 
 ## <a name="ratings--reviews"></a>Hodnocení & recenze
 
-Když zákazníci procházejí, vyhledávají a nakupují nabídky na obou tržištích, mohou zanechat hodnocení a recenze pro nabídky, které získali.
+V případě, že zákazníci na webu Marketplace procházejí, hledají a kupují nabídky, můžou pro nabídky, které získali, vynechávat hodnocení a recenze.
 
-- Zákazníci mohou odeslat nové hodnocení nebo zkontrolovat a aktualizovat nebo odstranit stávající hodnocení nebo recenzi, kterou odeslali. Zákazníci mohou provádět změny pouze v hodnoceních a recenzích, které vlastní.  
-- Recenze se zobrazují na kartě Recenze na stránce zobrazení produktu nabídky na webu Azure Marketplace nebo AppSource. Zákazníci mohou uvést své jméno nebo příspěvek anonymně.  
+- Zákazníci mohou odeslat nové hodnocení nebo zkontrolovat a aktualizovat nebo odstranit existující hodnocení nebo ověřit, že byla odeslána. Zákazníci mohou měnit pouze hodnocení a recenze, které vlastní.  
+- Recenze se účtují na kartě recenze na stránce zobrazení produktu v nabídce na webu Azure Marketplace nebo v AppSource. Zákazníci můžou své jméno nebo příspěvek zadat anonymně.  
 
-**Řídicí panel Hodnocení & recenze** zobrazuje trendy a přehledy této aktivity ze strany zákazníků. Můžete zobrazit grafické znázornění následujících položek:
+**Hodnocení & kontrole řídicího panelu** zobrazuje trendy a přehledy této aktivity od zákazníků. Můžete zobrazit grafické znázornění následujících položek:
 
 - Hodnocení & recenze  
-- Zkontrolovat komentáře
+- Revidovat komentáře
 
-**Karty obchodu Marketplace** umožňují majitelům stránek zobrazit metriky nabídky samostatně na kartách AppSource & Azure Marketplace. Chcete-li zobrazit konkrétní metriky nabídky, vyberte nabídku z rozevíracího seznamu nabídek.
+**Karty prezentace na webu Marketplace** umožňují vydavatelům zobrazit své metriky nabídky samostatně na AppSource kartách & Azure Marketplace. Chcete-li zobrazit konkrétní metriky nabídky, vyberte nabídku v rozevíracím seznamu nabídky.
 
 
 ### <a name="ratings-and-reviews-summary"></a>Shrnutí hodnocení a recenzí
 
-Hodnocení & recenze souhrnný oddíl zobrazuje metriky níže pro vybrané časové období:
+V části hodnocení & Recenze – Souhrn zobrazuje níže uvedené metriky pro vybraný rozsah dat:
 
-- **Průměrné hodnocení:** Vážené průměrné hodnocení všech hodnocení odeslaných zákazníky pro vybranou nabídku.
-- **Členění podle hodnocení:** Rozdělení hodnocení hvězdičkami podle počtu zákazníků, kteří odeslali hodnocení. Pruhový graf je stohovat se skutečnými a revidovanými hodnoceními (aktualizovaný počet hodnocení).
-- **Celkové hodnocení:** Celkový počet předložených hodnocení. Tento počet zahrnuje také hodnocení s recenzemi i bez ní.
-- **Hodnocení s recenzemi:** Počet odeslaných recenzí.
+- **Průměrné hodnocení:** Vážené průměrné hodnocení hvězdiček všech hodnocení odeslaných zákazníky pro vybranou nabídku
+- **Rozpis hodnocení:** Rozpis hodnocení hvězdičkami podle počtu zákazníků, kteří poslali hodnocení. Pruhový graf je skládaný o skutečné a revidované hodnocení (aktualizovaný počet hodnocení).
+- **Celkem hodnocení:** Celkový počet odeslaných hodnocení Tento počet zahrnuje také hodnocení s recenzemi a bez nich.
+- **Hodnocení s recenzemi:** Počet odeslaných revizí.
 
-![Partnerské centrum analyzuje hodnocení a souhrn recenzí](./media/analyze-ratings-summary.png)
+![Shrnutí hodnocení a recenzí pro partnerský centrum](./media/analyze-ratings-summary.png)
 
-### <a name="review-comments"></a>Zkontrolovat komentáře
+### <a name="review-comments"></a>Revidovat komentáře
 
-Recenze jsou zobrazeny v chronologickém pořadí, kdy byly zveřejněny. Ve výchozím zobrazení se zobrazí všechny recenze a recenze můžete filtrovat podle hodnocení hvězdičkami pomocí **filtru Hodnocení** v rozevírací nabídce. Kromě toho můžete vyhledávat podle klíčových slov, která se zobrazí v recenzi.  
+Recenze se zobrazují v chronologickém pořadí při odeslání. Ve výchozím zobrazení se zobrazí všechny recenze a pomocí **filtru hodnocení** v rozevírací nabídce můžete filtrovat recenze pomocí hodnocení hvězdičkami. Kromě toho můžete hledat podle klíčových slov, která se zobrazí v revizi.  
 
-![Partnerské centrum analyzuje komentáře k recenzím](./media/analyze-reviews.png)
+![Analyzovat revizní komentáře partnerského centra](./media/analyze-reviews.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přehled analytických přehledů dostupných na komerčním trhu Partnerského centra najdete v [článku Analýza pro komerční tržiště v Centru partnerů](./analytics.md).
-- Grafy, trendy a hodnoty souhrnných dat, které shrnují aktivitu na marketplace pro vaši nabídku, najdete [v tématu Souhrnný řídicí panel v analýze komerčního tržiště](./summary-dashboard.md).
-- Informace o vašich objednávkách v grafickém formátu a formátu ke stažení najdete [v tématu Řídicí panel objednávek v analýze komerčního tržiště](./orders-dashboard.md).
-- Pro virtuální počítač (VM) nabízí využití a účtované metriky účtované podle objemu dat, najdete [v tématu Využití Řídicí panel v komerčním tržišti analýzy](./usage-dashboard.md).
-- Podrobné informace o zákaznících, včetně trendů růstu, najdete [v tématu Řídicí panel zákazníků v analýzách komerčního tržiště](./customer-dashboard.md).
-- Seznam žádostí o stažení za posledních 30 dní najdete [v tématu Řídicí panel ke stažení v analýze komerčního tržiště](./downloads-dashboard.md).
-- Nejčastější dotazy týkající se analýzy komerčního tržiště a komplexní slovník termínů pro data naleznete [v tématu Nejčastější dotazy a terminologie pro analýzu komerčního tržiště](./faq-terminology.md).
+- Přehled analytických sestav dostupných na obchodním tržišti partnerského centra najdete v tématu [analýzy pro komerční tržiště v partnerském centru](./analytics.md).
+- Grafy, trendy a hodnoty agregovaných dat, která shrnují aktivity Marketplace pro vaši nabídku, najdete v tématu [souhrnný řídicí panel v části komerční analýza na webu Marketplace](./summary-dashboard.md).
+- Informace o vašich objednávkách v grafickém formátu a ve formátu ke stažení najdete v tématu věnovaném [řídicímu panelu objednávky v rámci komerčních tržišť](./orders-dashboard.md).
+- U virtuálních počítačů nabízí metriky využití a měření fakturace, viz [řídicí panel využití v komerčních obchodech na webu Marketplace](./usage-dashboard.md).
+- Podrobné informace o vašich zákaznících, včetně trendů růstu, najdete [v tématu řídicí panel zákazníka v analytickém obchodě na komerčním webu](./customer-dashboard.md).
+- Seznam vašich žádostí o stažení za posledních 30 dní najdete [v tématu řídicí panel ke stažení v komerčních obchodech na webu Marketplace](./downloads-dashboard.md).
+- Nejčastější dotazy týkající se komerčních analýz na webu Marketplace a ucelený slovník datových podmínek najdete v tématu [Nejčastější dotazy a terminologie pro komerční analýzy na webu Marketplace](./faq-terminology.md).

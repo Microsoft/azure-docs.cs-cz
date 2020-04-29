@@ -1,25 +1,25 @@
 ---
-title: Klauzule GROUP BY v Db Služby Azure Cosmos
-description: Další informace o klauzuli GROUP BY pro Azure Cosmos DB.
+title: Klauzule GROUP BY v Azure Cosmos DB
+description: Seznamte se s klauzulí GROUP BY pro Azure Cosmos DB.
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: tisande
 ms.openlocfilehash: 8a3cbbafc066747b62f79934f2cd12301aa1ba17
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81261597"
 ---
-# <a name="group-by-clause-in-azure-cosmos-db"></a>Klauzule GROUP BY v Db Služby Azure Cosmos
+# <a name="group-by-clause-in-azure-cosmos-db"></a>Klauzule GROUP BY v Azure Cosmos DB
 
 Klauzule GROUP BY rozděluje výsledky dotazu podle hodnot jedné nebo více zadaných vlastností.
 
 > [!NOTE]
-> Azure Cosmos DB aktuálně podporuje GROUP BY v .NET SDK 3.3 a vyšší, stejně jako JavaScript SDK 3.4 a vyšší.
-> Podpora pro jiné jazyky sady SDK není v současné době k dispozici, ale je plánována.
+> Azure Cosmos DB aktuálně podporuje GROUP BY v sadě .NET SDK 3,3 a vyšší a také v sadě JavaScript SDK 3,4 a vyšší.
+> Podpora pro jinou jazykovou sadu SDK není aktuálně k dispozici, ale je plánována.
 
 ## <a name="syntax"></a>Syntaxe
 
@@ -39,21 +39,21 @@ Klauzule GROUP BY rozděluje výsledky dotazu podle hodnot jedné nebo více zad
 
 - `<scalar_expression>`
   
-   Každý skalární výraz je povolen s výjimkou skalárních poddotazů a skalárních agregací. Každý skalární výraz musí obsahovat alespoň jeden odkaz na vlastnost. Neexistuje žádné omezení počtu jednotlivých výrazů nebo mohutnost každého výrazu.
+   Jakýkoli skalární výraz je povolen s výjimkou skalárních poddotazů a skalárních agregací. Každý skalární výraz musí obsahovat alespoň jeden odkaz na vlastnost. Neexistuje žádné omezení počtu jednotlivých výrazů nebo mohutnosti každého výrazu.
 
 ## <a name="remarks"></a>Poznámky
   
-  Pokud dotaz používá klauzuli GROUP BY, klauzule SELECT může obsahovat pouze podmnožinu vlastností a systémových funkcí zahrnutých v klauzuli GROUP BY. Jednou výjimkou jsou [agregační systémové funkce](sql-query-aggregates.md), které se mohou objevit v klauzuli SELECT, aniž by byly zahrnuty do klauzule GROUP BY. Do klauzule SELECT můžete také vždy zahrnout hodnoty literálu.
+  Pokud dotaz používá klauzuli GROUP BY, klauzule SELECT může obsahovat pouze podmnožinu vlastností a systémových funkcí obsažených v klauzuli GROUP BY. Jedna výjimka je [agregovaná systémová funkce](sql-query-aggregates.md), která se může objevit v klauzuli SELECT bez zahrnutí v klauzuli Group by. Do klauzule SELECT můžete také vždy zahrnout hodnoty literálu.
 
-  Klauzule GROUP BY musí být za klauzulí SELECT, FROM a WHERE a před klauzulí OFFSET LIMIT. V současné době nelze použít GROUP BY s klauzulí ORDER BY, ale je plánováno.
+  Klauzule GROUP BY musí být za klauzulí SELECT, FROM a WHERE a před klauzulí LIMITu POSUNu. V tuto chvíli nemůžete použít klauzuli GROUP BY s klauzulí ORDER BY, ale to je plánováno.
 
-  Klauzule GROUP BY neumožňuje žádné z následujících položek:
+  Klauzule GROUP BY nepovoluje žádnou z následujících možností:
   
-- Vlastnosti aliasingu nebo systémové funkce aliasingu (aliasing je stále povolen v klauzuli SELECT)
-- Poddotazů
-- Agregační systémové funkce (ty jsou povoleny pouze v klauzuli SELECT)
+- Vlastnosti aliasů nebo funkce systému vytváření aliasů (aliasy jsou pořád povolené v rámci klauzule SELECT)
+- Poddotazy
+- Agregační systémové funkce (jsou povolené jenom v klauzuli SELECT)
 
-Dotazy s agregační systémovou funkcí `GROUP BY` a poddotazem s nejsou podporovány. Například následující dotaz není podporován:
+Dotazy s agregovanou systémovou funkcí a poddotazem `GROUP BY` s nejsou podporovány. Například následující dotaz není podporován:
 
 ```sql
 SELECT COUNT(UniqueLastNames) FROM (SELECT AVG(f.age) FROM f GROUP BY f.lastName) AS UniqueLastNames
@@ -61,9 +61,9 @@ SELECT COUNT(UniqueLastNames) FROM (SELECT AVG(f.age) FROM f GROUP BY f.lastName
 
 ## <a name="examples"></a>Příklady
 
-Tyto příklady používají sadu dat o výživě, která je k dispozici prostřednictvím [hřiště pro dotazy Azure Cosmos DB .](https://www.documentdb.com/sql/demo)
+Tyto příklady používají sadu nutričních dat, která je dostupná prostřednictvím [Azure Cosmos DB testovací prostředí dotazů](https://www.documentdb.com/sql/demo).
 
-Například zde je dotaz, který vrací celkový počet položek v každé foodGroup:
+Tady je například dotaz, který vrátí celkový počet položek v každé ze všech jídel:
 
 ```sql
 SELECT TOP 4 COUNT(1) AS foodGroupCount, f.foodGroup
@@ -71,7 +71,7 @@ FROM Food f
 GROUP BY f.foodGroup
 ```
 
-Některé výsledky jsou (TOP klíčové slovo se používá k omezení výsledků):
+Některé výsledky jsou (klíčové slovo TOP slouží k omezení výsledků):
 
 ```json
 [{
@@ -92,7 +92,7 @@ Některé výsledky jsou (TOP klíčové slovo se používá k omezení výsledk
 }]
 ```
 
-Tento dotaz má dva výrazy používané k rozdělení výsledků:
+Tento dotaz má dva výrazy, které slouží k rozdělení výsledků:
 
 ```sql
 SELECT TOP 4 COUNT(1) AS foodGroupCount, f.foodGroup, f.version
@@ -100,7 +100,7 @@ FROM Food f
 GROUP BY f.foodGroup, f.version
 ```
 
-Některé výsledky jsou:
+Mezi výsledky patří:
 
 ```json
 [{
@@ -125,7 +125,7 @@ Některé výsledky jsou:
 }]
 ```
 
-Tento dotaz má systémovou funkci v klauzuli GROUP BY:
+Tento dotaz obsahuje systémovou funkci v klauzuli GROUP BY:
 
 ```sql
 SELECT TOP 4 COUNT(1) AS foodGroupCount, UPPER(f.foodGroup) AS upperFoodGroup
@@ -133,7 +133,7 @@ FROM Food f
 GROUP BY UPPER(f.foodGroup)
 ```
 
-Některé výsledky jsou:
+Mezi výsledky patří:
 
 ```json
 [{
@@ -154,7 +154,7 @@ Některé výsledky jsou:
 }]
 ```
 
-Tento dotaz používá klíčová slova i systémové funkce ve výrazu vlastnosti položky:
+Tento dotaz ve výrazu vlastnosti Item používá jak klíčová slova, tak systémové funkce:
 
 ```sql
 SELECT COUNT(1) AS foodGroupCount, ARRAY_CONTAINS(f.tags, {name: 'orange'}) AS containsOrangeTag,  f.version BETWEEN 0 AND 2 AS correctVersion

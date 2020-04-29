@@ -1,6 +1,6 @@
 ---
-title: Analýza pro komerční tržiště v Partnerském centru
-description: Přehled přístupu k analytickým sestavám za účelem sledování prodeje, vyhodnocení výkonu a optimalizace nabídek marketplace.
+title: Analýzy pro komerční tržiště v partnerském centru
+description: Přehled o přístupu k analytickým sestavám za účelem monitorování prodeje, vyhodnocení výkonu a optimalizace nabídek na webu Marketplace.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
@@ -8,29 +8,29 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
 ms.openlocfilehash: 41b9c5244ce9d468d9bf0fb7bafa719b4e6f55ac
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81262277"
 ---
-# <a name="analytics-for-the-commercial-marketplace-in-partner-center"></a>Analýza pro komerční tržiště v Partnerském centru
+# <a name="analytics-for-the-commercial-marketplace-in-partner-center"></a>Analýzy pro komerční tržiště v partnerském centru
 
-Přečtěte si, jak získat přístup k analytickým sestavám v Centru Microsoft Partner Center za účelem sledování prodeje, vyhodnocení výkonu a optimalizace nabídek na trhu. Jako partner můžete sledovat nabídky pomocí vizualizace dat a grafů přehledů podporovaných Partnerským centrem a najít způsoby, jak maximalizovat prodeje. Vylepšené analytické nástroje vám umožní řídit se výsledky výkonu a udržovat lepší vztahy se zákazníky a prodejci.
+Naučte se, jak získat přístup k analytickým sestavám v partnerském centru Microsoftu, abyste mohli monitorovat prodej, hodnotit výkon a optimalizovat vaše nabídky na webu Marketplace. Jako partner můžete monitorovat své nabídky pomocí vizualizací dat a grafů, které podporuje partnerský partner, a najít způsoby, jak maximalizovat své tržby. Vylepšené analytické nástroje umožňují pracovat na výsledcích výkonu a udržovat lepší vztahy se zákazníky a prodejci.
 
-## <a name="partner-center-analytics-tools"></a>Analytické nástroje Partner Center
+## <a name="partner-center-analytics-tools"></a>Nástroje pro analýzu partnerského centra
 
-Chcete-li získat přístup k analytickým nástrojům Centra partnerů, otevřete řídicí panel **[Analyzovat](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** v části Komerční tržiště.
+Pokud chcete získat přístup k analytickým nástrojům partnerského centra, otevřete řídicí panel **[analyzovat](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** v oblasti komerčního tržiště.
 
 >[!NOTE]
-> Podrobné definice terminologie analýzy naleznete [v tématu Nejčastější dotazy a terminologie pro analýzu komerčního trhu](./faq-terminology.md).
+> Podrobné definice terminologie analýz najdete v tématu [Nejčastější dotazy a terminologie pro komerční analýzy na webu Marketplace](./faq-terminology.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-- Grafy, trendy a hodnoty souhrnných dat, které shrnují aktivitu na marketplace pro vaši nabídku, najdete [v tématu Souhrnný řídicí panel v analýze komerčního tržiště](./summary-dashboard.md).
-- Informace o vašich objednávkách v grafickém formátu a formátu ke stažení najdete [v tématu Řídicí panel objednávek v analýze komerčního tržiště](./orders-dashboard.md).
-- Pro virtuální počítač (VM) nabízí využití a účtované metriky účtované podle objemu dat, najdete [v tématu Využití Řídicí panel v komerčním tržišti analýzy](./usage-dashboard.md).
-- Podrobné informace o zákaznících, včetně trendů růstu, najdete [v tématu Řídicí panel zákazníků v analýzách komerčního tržiště](./customer-dashboard.md).
-- Seznam žádostí o stažení za posledních 30 dní najdete [v tématu Řídicí panel ke stažení v analýze komerčního tržiště](./downloads-dashboard.md).
-- Konsolidované zobrazení zpětné vazby od zákazníků u nabídek na Azure Marketplace a AppSource najdete [v tématu Hodnocení a recenze v analýze komerčního webu](./ratings-reviews.md).
-- Nejčastější dotazy týkající se analýzy komerčního tržiště a komplexní slovník termínů pro data naleznete [v tématu Nejčastější dotazy a terminologie pro analýzu komerčního tržiště](./faq-terminology.md).
+- Grafy, trendy a hodnoty agregovaných dat, která shrnují aktivity Marketplace pro vaši nabídku, najdete v tématu [souhrnný řídicí panel v části komerční analýza na webu Marketplace](./summary-dashboard.md).
+- Informace o vašich objednávkách v grafickém formátu a ve formátu ke stažení najdete v tématu věnovaném [řídicímu panelu objednávky v rámci komerčních tržišť](./orders-dashboard.md).
+- U virtuálních počítačů nabízí metriky využití a měření fakturace, viz [řídicí panel využití v komerčních obchodech na webu Marketplace](./usage-dashboard.md).
+- Podrobné informace o vašich zákaznících, včetně trendů růstu, najdete [v tématu řídicí panel zákazníka v analytickém obchodě na komerčním webu](./customer-dashboard.md).
+- Seznam vašich žádostí o stažení za posledních 30 dní najdete [v tématu řídicí panel ke stažení v komerčních obchodech na webu Marketplace](./downloads-dashboard.md).
+- Chcete-li zobrazit konsolidované zobrazení zpětné vazby od zákazníků pro nabídky Azure Marketplace a AppSource, přečtěte si téma [hodnocení a recenze řídicího panelu na komerčních analýzách na webu Marketplace](./ratings-reviews.md).
+- Nejčastější dotazy týkající se komerčních analýz na webu Marketplace a ucelený slovník datových podmínek najdete v tématu [Nejčastější dotazy a terminologie pro komerční analýzy na webu Marketplace](./faq-terminology.md).

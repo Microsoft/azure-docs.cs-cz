@@ -1,7 +1,7 @@
 ---
 title: Přehled skupin zabezpečení sítě Azure
 titlesuffix: Azure Virtual Network
-description: Další informace o skupinách zabezpečení sítě. Skupiny zabezpečení sítě pomáhají filtrovat síťový provoz mezi prostředky Azure.
+description: Seznamte se se skupinami zabezpečení sítě. Skupiny zabezpečení sítě vám pomůžou filtrovat síťový provoz mezi prostředky Azure.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -14,27 +14,27 @@ ms.date: 02/27/2020
 ms.author: kumud
 ms.reviewer: kumud
 ms.openlocfilehash: 968cc9ed9d938bb04d1243102855c134147ddf3b
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81269869"
 ---
 # <a name="network-security-groups"></a>Skupiny zabezpečení sítě
 <a name="network-security-groups"></a>
 
-Skupinu zabezpečení sítě Azure můžete použít k filtrování síťového provozu do a z prostředků Azure ve virtuální síti Azure. Skupina zabezpečení sítě obsahuje [pravidla zabezpečení,](#security-rules) která povolují nebo zapínají příchozí síťový provoz nebo odchozí síťový provoz z několika typů prostředků Azure. Pro každé pravidlo můžete určit zdroj a cíl, port a protokol.
-Tento článek popisuje vlastnosti pravidla skupiny zabezpečení sítě, [výchozí použitá pravidla zabezpečení](#default-security-rules) a vlastnosti pravidla, které můžete upravit a vytvořit rozšířené pravidlo [zabezpečení](#augmented-security-rules).
+Skupinu zabezpečení sítě Azure můžete použít k filtrování síťového provozu do a z prostředků Azure ve službě Azure Virtual Network. Skupina zabezpečení sítě obsahuje [pravidla zabezpečení](#security-rules) , která povolují nebo odmítají příchozí síťový provoz nebo odchozí síťový provoz z několika typů prostředků Azure. Pro každé pravidlo můžete určit zdroj a cíl, port a protokol.
+Tento článek popisuje vlastnosti pravidla skupiny zabezpečení sítě, použitých [výchozích pravidel zabezpečení](#default-security-rules) a vlastností pravidla, které můžete upravit a vytvořit tak [Rozšířená pravidla zabezpečení](#augmented-security-rules).
 
-## <a name="security-rules"></a><a name="security-rules"></a>Bezpečnostní pravidla
+## <a name="security-rules"></a><a name="security-rules"></a>Pravidla zabezpečení
 
 Skupina zabezpečení sítě nemusí obsahovat žádná pravidla nebo může podle potřeby obsahovat libovolný počet pravidel v rámci [omezení](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) předplatného Azure. Každé pravidlo určuje následující vlastnosti:
 
 |Vlastnost  |Vysvětlení  |
 |---------|---------|
-|Name (Název)|Jedinečný název v rámci skupiny zabezpečení sítě.|
+|Název|Jedinečný název v rámci skupiny zabezpečení sítě.|
 |Priorita | Číslo v rozsahu od 100 do 4096. Pravidla se zpracovávají v pořadí podle priority, přičemž nižší čísla, která mají vyšší prioritu, se zpracovávají před vyššími čísly. Jakmile provoz odpovídá pravidlu, zpracování se zastaví. V důsledku toho se nezpracují žádná existující pravidla s nižší prioritou (vyšší čísla), která mají stejné atributy jako pravidla s vyšší prioritou.|
-|Zdroj nebo cíl| Všechny nebo určitá IP adresa, blok CIDR (například 10.0.0.0/24), [značka služby](service-tags-overview.md) nebo [skupina zabezpečení aplikace](#application-security-groups). Pokud zadáváte adresu prostředku Azure, zadejte privátní IP adresu přiřazenou k tomuto prostředku. Skupiny zabezpečení sítě se zpracovávají poté, co Azure přeloží veřejnou IP adresu na privátní IP adresu pro příchozí provoz, a před tím, než Azure přeloží privátní IP adresu na veřejnou IP adresu pro odchozí provoz. Další informace o [IP adresách](virtual-network-ip-addresses-overview-arm.md) Azure. Zadání rozsahu, značky služby nebo skupiny zabezpečení aplikace umožňuje vytvářet méně pravidel zabezpečení. Možnost zadat více jednotlivých ADRES IP a rozsahů (nelze zadat více značek služeb nebo skupin aplikací) v pravidle se označuje jako [rozšířená pravidla zabezpečení](#augmented-security-rules). Rozšířená pravidla zabezpečení je možné vytvářet pouze ve skupinách zabezpečení sítě vytvořených prostřednictvím modelu nasazení Resource Manager. Ve skupinách zabezpečení sítě vytvořených prostřednictvím modelu nasazení Classic není možné zadat více IP adres ani rozsahů IP adres. Další informace o [modelech nasazení Azure](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json).|
+|Zdroj nebo cíl| Všechny nebo určitá IP adresa, blok CIDR (například 10.0.0.0/24), [značka služby](service-tags-overview.md) nebo [skupina zabezpečení aplikace](#application-security-groups). Pokud zadáváte adresu prostředku Azure, zadejte privátní IP adresu přiřazenou k tomuto prostředku. Skupiny zabezpečení sítě se zpracovávají poté, co Azure přeloží veřejnou IP adresu na privátní IP adresu pro příchozí provoz, a před tím, než Azure přeloží privátní IP adresu na veřejnou IP adresu pro odchozí provoz. Další informace o [IP adresách](virtual-network-ip-addresses-overview-arm.md) Azure. Zadání rozsahu, značky služby nebo skupiny zabezpečení aplikace umožňuje vytvářet méně pravidel zabezpečení. Možnost zadat několik jednotlivých IP adres a rozsahů (v pravidle nemůžete zadat více značek služeb ani skupin aplikací), které jsou označovány jako [Rozšířená pravidla zabezpečení](#augmented-security-rules). Rozšířená pravidla zabezpečení je možné vytvářet pouze ve skupinách zabezpečení sítě vytvořených prostřednictvím modelu nasazení Resource Manager. Ve skupinách zabezpečení sítě vytvořených prostřednictvím modelu nasazení Classic není možné zadat více IP adres ani rozsahů IP adres. Další informace o [modelech nasazení Azure](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json).|
 |Protocol (Protokol)     | TCP, UDP, ICMP nebo Any.|
 |Směr| Určuje, jestli se pravidlo vztahuje na příchozí nebo odchozí provoz.|
 |Rozsah portů     |Můžete zadat určitý port nebo rozsah portů. Můžete zadat například 80 nebo 10000-10005. Zadání rozsahů umožňuje vytvářet méně pravidel zabezpečení. Rozšířená pravidla zabezpečení je možné vytvářet pouze ve skupinách zabezpečení sítě vytvořených prostřednictvím modelu nasazení Resource Manager. Ve skupinách zabezpečení sítě vytvořených prostřednictvím modelu nasazení Classic není možné zadat několik portů ani rozsahů portů ve stejném pravidlu zabezpečení.   |
@@ -89,23 +89,23 @@ Azure v každé skupině zabezpečení sítě, kterou vytvoříte, vytvoří ná
 |---|---|---|---|---|---|---|
 | 65500 | 0.0.0.0/0 | 0-65535 | 0.0.0.0/0 | 0-65535 | Všechny | Odepřít |
 
-Ve sloupcích **Zdroj** a **Cíl** jsou hodnoty *VirtualNetwork*, *AzureLoadBalancer* a *Internet*[značky služeb](service-tags-overview.md), a nikoli IP adresy. Ve sloupci protokolu **Any** zahrnuje protokoly TCP, UDP a ICMP. Při vytváření pravidla můžete zadat TCP, UDP, ICMP nebo Any. Hodnota *0.0.0.0/0* ve sloupcích **Zdroj** a **Cíl** představuje všechny adresy. Klienti, jako je portál Azure, Azure CLI nebo PowerShell můžete použít * nebo jakýkoli pro tento výraz.
+Ve sloupcích **Zdroj** a **Cíl** jsou hodnoty *VirtualNetwork*, *AzureLoadBalancer* a *Internet*[značky služeb](service-tags-overview.md), a nikoli IP adresy. Ve sloupci Protocol zahrnuje **všechny** protokoly TCP, UDP a ICMP. Při vytváření pravidla můžete zadat TCP, UDP, ICMP nebo Any. Hodnota *0.0.0.0/0* ve sloupcích **Zdroj** a **Cíl** představuje všechny adresy. Klienti, jako je Azure Portal, Azure CLI nebo PowerShell, můžou pro tento výraz použít * nebo Any.
  
 Výchozí pravidla nemůžete odebrat, ale můžete je přepsat vytvořením pravidel s vyšší prioritou.
 
-### <a name="augmented-security-rules"></a><a name="augmented-security-rules"></a>Rozšířená bezpečnostní pravidla
+### <a name="augmented-security-rules"></a><a name="augmented-security-rules"></a>Rozšířená pravidla zabezpečení
 
-Rozšířená pravidla zabezpečení zjednodušují definici zabezpečení pro virtuální sítě tím, že umožňují definovat větší a složitější zásady zabezpečení sítě při použití menšího počtu pravidel. Můžete zkombinovat více portů a explicitních IP adres a rozsahů do jediného, snadno pochopitelného pravidla zabezpečení. Rozšířená pravidla používejte v polích pravidla pro zdroj, cíl a port. Chcete-li zjednodušit údržbu definice pravidel zabezpečení, zkombinujte rozšířená pravidla zabezpečení se [značkami služeb](service-tags-overview.md) nebo [skupinami zabezpečení aplikací](#application-security-groups). Počet adres, rozsahů a portů, které lze zadat v pravidle, je limitován. Podrobnosti najdete v tématu věnovaném [omezením Azure](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
+Rozšířená pravidla zabezpečení zjednodušují definici zabezpečení pro virtuální sítě tím, že umožňují definovat větší a složitější zásady zabezpečení sítě při použití menšího počtu pravidel. Můžete zkombinovat více portů a explicitních IP adres a rozsahů do jediného, snadno pochopitelného pravidla zabezpečení. Rozšířená pravidla používejte v polích pravidla pro zdroj, cíl a port. Chcete-li zjednodušit údržbu definice pravidla zabezpečení, zkombinujte Rozšířená pravidla zabezpečení s [značkami služby](service-tags-overview.md) nebo [skupinami zabezpečení aplikací](#application-security-groups). Existují omezení počtu adres, rozsahů a portů, které lze zadat v pravidle. Podrobnosti najdete v tématu věnovaném [omezením Azure](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 
 #### <a name="service-tags"></a>Značky služeb
 
 Značka služby představuje skupinu předpon IP adres z dané služby Azure. Pomáhá minimalizovat složitost častých aktualizací pravidel zabezpečení sítě.
 
-Další informace najdete v tématu [značky služeb Azure](service-tags-overview.md). Příklad použití značky služby Úložiště k omezení přístupu k síti naleznete v tématu [Omezení přístupu k síti k prostředkům PaaS](tutorial-restrict-network-access-to-resources.md).
+Další informace najdete v tématu [značky služeb Azure](service-tags-overview.md). Příklad použití značky služby úložiště k omezení přístupu k síti najdete v tématu [omezení síťového přístupu k prostředkům PaaS](tutorial-restrict-network-access-to-resources.md).
 
 #### <a name="application-security-groups"></a>Skupiny zabezpečení aplikací
 
-Skupiny zabezpečení aplikací umožňují konfigurovat zabezpečení sítě jako přirozené rozšíření struktury aplikace. Můžete seskupovat virtuální počítače a na základě těchto skupin definovat zásady zabezpečení sítě. Zásady zabezpečení můžete opakovaně používat ve velkém měřítku bez potřeby ruční údržby explicitních IP adres. Další informace naleznete v [tématu Skupiny zabezpečení aplikací](application-security-groups.md).
+Skupiny zabezpečení aplikací umožňují konfigurovat zabezpečení sítě jako přirozené rozšíření struktury aplikace. Můžete seskupovat virtuální počítače a na základě těchto skupin definovat zásady zabezpečení sítě. Zásady zabezpečení můžete opakovaně používat ve velkém měřítku bez potřeby ruční údržby explicitních IP adres. Další informace najdete v tématu [skupiny zabezpečení aplikací](application-security-groups.md).
 
 ## <a name="how-traffic-is-evaluated"></a>Způsob vyhodnocování provozu
 
@@ -136,23 +136,23 @@ V případě odchozího provozu zpracuje Azure nejprve pravidla ve skupině zabe
 - **VM4:** Veškerý odchozí provoz z virtuálního počítače *VM4* se povolí, protože k síťovému rozhraní připojenému k virtuálnímu počítači ani k podsíti *Subnet3* není přidružená žádná skupina zabezpečení sítě.
 
 
-### <a name="intra-subnet-traffic"></a>Provoz v rámci podsítě
+### <a name="intra-subnet-traffic"></a>Provoz uvnitř podsítě
 
-Je důležité si uvědomit, že pravidla zabezpečení v souboru zabezpečení přidružené k podsíti může ovlivnit připojení mezi virtuálními zařízeními v rámci. Například pokud je přidáno pravidlo *nsg1,* který odepře všechny příchozí a odchozí provoz, *VM1* a *VM2* již nebude moci komunikovat mezi sebou. Aby to bylo možné, bylo by třeba doplnovat další pravidlo. 
+Je důležité si uvědomit, že pravidla zabezpečení v NSG přidružené k podsíti můžou mít vliv na připojení mezi virtuálním počítačem v rámci tohoto virtuálního počítače. Například pokud je do *NSG1* přidáno pravidlo, které zakazuje veškerý příchozí a odchozí provoz, *VM1* a *VM2* už nebudou moct vzájemně komunikovat. Další pravidlo by se muselo přidat konkrétně, aby to bylo možné. 
 
 
 
 Agregovaná pravidla použitá na síťové rozhraní můžete snadno zobrazit v [platných pravidlech zabezpečení](virtual-network-network-interface.md#view-effective-security-rules) pro síťové rozhraní. Pomocí funkce [Ověření toku protokolu IP](../network-watcher/diagnose-vm-network-traffic-filtering-problem.md?toc=%2fazure%2fvirtual-network%2ftoc.json) v nástroji Azure Network Watcher můžete také určit, jestli je povolená komunikace směřující do síťového rozhraní nebo z něj. Ověření toku protokolu IP vám řekne, jestli je povolená nebo zakázaná komunikace, a které pravidlo zabezpečení sítě povoluje nebo odepírá provoz.
 
 > [!NOTE]
-> Skupiny zabezpečení sítě jsou přidruženy k podsítím nebo k virtuálním počítačům a cloudovým službám nasazeným v klasickém modelu nasazení a k podsítím nebo síťovým rozhraním v modelu nasazení Resource Manageru. Další informace o modelech nasazení Azure najdete v článku [Vysvětlení modelů nasazení Azure](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+> Skupiny zabezpečení sítě jsou přidruženy k podsítím nebo virtuálním počítačům a cloudovým službám nasazeným v modelu nasazení Classic a k podsítím nebo síťovým rozhraním v modelu nasazení Správce prostředků. Další informace o modelech nasazení Azure najdete v článku [Vysvětlení modelů nasazení Azure](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 > [!TIP]
 > Pokud k tomu nemáte konkrétní důvod, doporučujeme přidružit skupinu zabezpečení sítě k podsíti nebo k síťovému rozhraní, ale ne k oběma. Vzhledem k tomu, že může docházet ke konfliktům mezi pravidly ve skupině zabezpečení sítě přidružené k podsíti a pravidly ve skupině zabezpečení sítě přidružené k síťovému rozhraní, můžou nastat neočekávané problémy s komunikací vyžadující řešení.
 
 ## <a name="azure-platform-considerations"></a>Důležité informace o platformě Azure
 
-- **Virtuální IP adresa hostitelského uzlu**: Základní infrastrukturní služby jako DHCP, DNS, IMDS a monitorování stavu jsou poskytovány prostřednictvím virtualizovaných ip adres hostitele 168.63.129.16 a 169.254.169.254. Tyto IP adresy patří společnosti Microsoft a jsou jedinými virtualizovanými IP adresami používanými pro tento účel ve všech oblastech. Účinná bezpečnostní pravidla a efektivní trasy nebudou tato pravidla platformy zahrnovat. Chcete-li přepsat tuto základní infrastrukturu komunikace, můžete vytvořit pravidlo zabezpečení pro odepření provozu pomocí [následujících značek služeb](service-tags-overview.md) na pravidla skupiny zabezpečení sítě: AzurePlatformDNS, AzurePlatformIMDS, AzurePlatformLKM. Přečtěte si, jak [diagnostikovat filtrování síťového provozu](diagnose-network-traffic-filter-problem.md) a [diagnostikovat síťové směrování](diagnose-network-routing-problem.md).
+- **Virtuální IP adresa uzlu hostitele**: základní služby infrastruktury, jako jsou DHCP, DNS, IMDS a sledování stavu, se poskytují prostřednictvím virtualizované IP adresy hostitele 168.63.129.16 a 169.254.169.254. Tyto IP adresy patří společnosti Microsoft a jsou jediné virtualizované IP adresy, které se používají ve všech oblastech pro tento účel. Platná pravidla zabezpečení a efektivní trasy nebudou zahrnovat tato pravidla platformy. K přepsání této základní komunikace infrastruktury můžete vytvořit pravidlo zabezpečení pro odepření provozu pomocí následujících [značek služby](service-tags-overview.md) v pravidlech skupiny zabezpečení sítě: AzurePlatformDNS, AzurePlatformIMDS, AzurePlatformLKM. Naučte se [diagnostikovat filtrování síťového provozu](diagnose-network-traffic-filter-problem.md) a [diagnostikovat síťové směrování](diagnose-network-routing-problem.md).
 - **Licencování (Služba správy klíčů):** Image Windows spuštěné na virtuálních počítačích musí být licencované. Aby se zajistilo licencování, odesílají se žádosti o licenci na hostitelské servery Služby správy klíčů, které takové dotazy zpracovávají. Požadavek odchází přes port 1688. Pro nasazení využívající konfiguraci [výchozí trasy 0.0.0.0/0](virtual-networks-udr-overview.md#default-route) bude toto pravidlo platformy zakázané.
 - **Virtuální počítače ve fondech s vyrovnáváním zatížení:** Použitý zdrojový port a rozsah adres odpovídá zdrojovému počítači, a nikoli nástroji pro vyrovnávání zatížení. Cílový port a rozsah adres odpovídá cílovému počítači, a nikoli nástroji pro vyrovnávání zatížení.
 - **Instance služeb Azure:** V podsítích virtuální sítě jsou nasazené instance několika služeb Azure, například HDInsight, prostředí aplikačních služeb a škálovací sady virtuálních počítačů. Úplný seznam služeb, které můžete nasadit do virtuální sítě, najdete v tématu [Virtuální síť pro služby Azure](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network). Před použitím skupiny zabezpečení sítě na podsíť, ve které je nasazený prostředek, se ujistěte, že znáte požadavky jednotlivých služeb na porty. Pokud odepřete porty, které služba vyžaduje, nebude správně fungovat.
@@ -169,8 +169,8 @@ Agregovaná pravidla použitá na síťové rozhraní můžete snadno zobrazit v
 
 ## <a name="next-steps"></a>Další kroky
 
-* Informace o tom, které prostředky Azure se dá nasadit do virtuální sítě a které mají přidružené skupiny zabezpečení sítě, najdete v [tématu Integrace virtuální chod sítě pro služby Azure.](virtual-network-for-azure-services.md)
+* Další informace o tom, které prostředky Azure je možné nasadit do virtuální sítě a které mají přidružené skupiny zabezpečení sítě, najdete v tématu [Integrace virtuální sítě pro služby Azure](virtual-network-for-azure-services.md) .
 * Pokud jste ještě nikdy skupinu zabezpečení sítě nevytvářeli, můžete si projít rychlý [kurz](tutorial-filter-network-traffic.md), ve kterém se seznámíte s jejím vytvořením. 
 * Pokud už skupiny zabezpečení sítě znáte a potřebujete je spravovat, přečtěte si téma [Správa skupiny zabezpečení sítě](manage-network-security-group.md). 
 * Pokud máte problémy s komunikací a potřebujete řešit potíže se skupinami zabezpečení sítě, přečtěte si téma [Diagnostika potíží s filtrováním síťového provozu virtuálních počítačů](diagnose-network-traffic-filter-problem.md). 
-* Zjistěte, jak povolit [protokoly toku skupiny zabezpečení sítě](../network-watcher/network-watcher-nsg-flow-logging-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) k analýze síťového provozu do a z prostředků, které mají přidruženou skupinu zabezpečení sítě.
+* Naučte se, jak povolit [protokoly toku skupin zabezpečení sítě](../network-watcher/network-watcher-nsg-flow-logging-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) k analýze síťového provozu do a z prostředků, které mají přidruženou skupinu zabezpečení sítě.

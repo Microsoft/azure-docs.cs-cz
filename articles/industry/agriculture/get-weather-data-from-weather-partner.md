@@ -1,36 +1,36 @@
 ---
-title: Získejte údaje o počasí od partnerů pro počasí
-description: Tento článek popisuje, jak získat data o počasí od partnerů.
+title: Získat data o počasí od partnerů počasí
+description: Tento článek popisuje, jak z partnerů získat data o počasí.
 author: sunasing
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: sunasing
 ms.openlocfilehash: 66fa4e7d3edf839ab1e497e86362bcfc979dc279
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81266159"
 ---
-# <a name="get-weather-data-from-weather-partners"></a>Získejte údaje o počasí od partnerů pro počasí
+# <a name="get-weather-data-from-weather-partners"></a>Získat data o počasí od partnerů počasí
 
-Azure FarmBeats vám pomůže přenést data o počasí od vašeho poskytovatele dat o počasí pomocí rozhraní Konektor Framework založené na dockeru. Pomocí tohoto rozhraní poskytovatelé dat počasí implementovat docker, který lze integrovat s FarmBeats. V současné době jsou podporováni následující poskytovatelé dat o počasí:
+Azure FarmBeats pomáhá přenášet údaje o počasí ze zprostředkovatelů dat počasí pomocí rozhraní konektoru na bázi Docker. Pomocí tohoto rozhraní poskytovatelé dat počasí implementují Docker, který se dá integrovat s FarmBeats. V současné době jsou podporovány následující poskytovatelé dat počasí:
 
-[Data NOAA z otevřených datových sad Azure](https://azure.microsoft.com/services/open-datasets/)
+[NOAA dat z otevřených datových sad Azure](https://azure.microsoft.com/services/open-datasets/)
 
-Data o počasí lze použít ke generování užitečných přehledů a vytváření modelů AI/ML na FarmBeats.
+Data o počasí je možné využít ke generování přehledů s užitečnými informacemi a sestavení modelů AI/ML na FarmBeats.
 
 ## <a name="before-you-start"></a>Než začnete
 
-Chcete-li získat údaje o počasí, ujistěte se, že jste nainstalovali FarmBeats. **Integrace počasí je podporována ve verzi 1.2.11 nebo vyšší**. Informace o instalaci Azure FarmBeats najdete [v tématu Instalace FarmBeats](https://aka.ms/farmbeatsinstalldocumentation).
+Pokud chcete získat data o počasí, ujistěte se, že máte nainstalovanou FarmBeats. **Integrace počasí je podporovaná ve verzi 1.2.11 nebo vyšší**. Pokud chcete nainstalovat Azure FarmBeats, přečtěte si téma [install FarmBeats](https://aka.ms/farmbeatsinstalldocumentation).
 
 ## <a name="enable-weather-integration-with-farmbeats"></a>Povolit integraci počasí s FarmBeats
 
-Chcete-li začít dostávat data o počasí do datového centra FarmBeats, postupujte podle následujících kroků:
+Pokud chcete začít získávat data o počasí v datovém centru FarmBeats, postupujte podle následujících kroků:
 
-1. Přejděte do svého datového centra FarmBeats (https://yourdatahub.azurewebsites.net/swagger)
+1. Přejít do aplikace FarmBeats data hub Swagger (https://yourdatahub.azurewebsites.net/swagger)
 
-2. Přejděte do rozhraní /Partner API a vytvořte požadavek POST s následující vstupní datovou částí:
+2. Přejděte na/partner API a vytvořte žádost POST s následující vstupní datovou částí:
 
    ```json
    {  
@@ -59,7 +59,7 @@ Chcete-li začít dostávat data o počasí do datového centra FarmBeats, postu
    }  
    ```
 
-   Chcete-li například získat data o počasí z NOAA pomocí otevřených datových sad Azure, použijte datovou část níže. Název a popis můžete upravit podle svých preferencí.
+   Pokud například chcete získat data o počasí z NOAA pomocí Azure Open DataSets, použijte následující datovou část. Můžete upravit název a popis podle vaší předvolby.
 
    ```json
    {
@@ -80,26 +80,26 @@ Chcete-li začít dostávat data o počasí do datového centra FarmBeats, postu
    ```
 
    > [!NOTE]
-   > Další informace o objektu Partner naleznete v [dodatku](get-weather-data-from-weather-partner.md#appendix)
+   > Další informace o partnerském objektu najdete v [příloze](get-weather-data-from-weather-partner.md#appendix) .
 
-   Předchozí krok zřídí prostředky, které umožní spuštění dockeru v prostředí FarmBeats zákazníka.  
+   Předchozí krok zřídí prostředky pro povolení Docker pro spuštění v prostředí FarmBeats zákazníka.  
 
-   To trvá asi 10-15 minut na zřízení výše uvedených zdrojů.
+   Zřizování výše uvedených prostředků trvá přibližně 10-15 minut.
 
-3. Zkontrolujte stav objektu /Partner, který jste vytvořili v kroku 2. Chcete-li to provést, vytvořte požadavek GET na rozhraní /Partner API a zkontrolujte **stav** objektu partnera. Jakmile FarmBeats zřídí partnera úspěšně, stav je nastaven na **Aktivní**.
+3. Ověřte stav objektu/partner, který jste vytvořili v kroku 2. Provedete to tak, že vytvoříte požadavek GET na rozhraní/partner API a zkontrolujete **stav** objektu partnera. Jakmile FarmBeats zřídí partnera úspěšně, stav se nastaví na **aktivní**.
 
-4. Přejděte na /JobType API a provést požadavek GET na stejné. Zkontrolujte, zda úlohy počasí, které jsou vytvořeny jako součást procesu přidání partnera v kroku 2. Pole **pipelineName** v úlohách počasí bude mít následující formát: "partner-name_partner-type_job-name".
+4. Přejděte na/JobType API a vytvořte požadavek GET na stejnou hodnotu. Podívejte se na úlohy počasí vytvořené v rámci procesu přidávání partnerů v kroku 2. Pole název **kanálu** v úkolech počasí bude v následujícím formátu: "partner-name_partner-type_job-Name".
 
-5. Nyní má vaše instance FarmBeats aktivního partnera pro data počasí a můžete spouštět úlohy a požadovat data o počasí pro určité místo (zeměpisná šířka/délka) a časové období. JobType (y) bude mít podrobnosti o tom, jaké parametry jsou nutné ke spuštění úlohy počasí.
+5. Instance FarmBeats má teď aktivní datový partner s daty o počasí a můžete spouštět úlohy pro vyžádání dat o počasí pro konkrétní umístění (zeměpisná šířka/délka) a rozsah dat. JobType (y) bude obsahovat podrobnosti o tom, jaké parametry jsou potřeba ke spouštění úloh počasí.
 
-   Například pro data NOAA z otevřených datových sad Azure budou vytvořeny následující JobType(s):
+   Například pro NOAA data z otevřených datových sad Azure se vytvoří následující JobType (y):
 
-   - get_weather_data (Získat ISD/ historické údaje o počasí)
-   - get_weather_forecast_data (Získejte GFS/předpověď počasí)
+   - get_weather_data (získání ISD/historických dat o počasí)
+   - get_weather_forecast_data (získání dat počasí GFS/předpověď)
 
-6. Poznamenejte si **ID** a parametry JobType(s).
+6. Poznamenejte si **ID** a parametry JobType (y).
 
-7. Přejděte na /Jobs API a vytvořte požadavek POST na /Jobs s následující vstupní datovou částí:
+7. Přejděte na/Jobs API a v/Jobs vytvořte žádost POST s následující vstupní datovou částí:
 
    ```json
     {
@@ -115,7 +115,7 @@ Chcete-li začít dostávat data o počasí do datového centra FarmBeats, postu
        }
    ```
 
-   Chcete-li například spustit **get_weather_data**, použijte následující datovou část:
+   Pokud například chcete spustit **get_weather_data**, použijte následující datovou část:
 
    ```json
    {
@@ -133,22 +133,22 @@ Chcete-li začít dostávat data o počasí do datového centra FarmBeats, postu
    }
    ```
 
-8. Předchozí krok spustí úlohy počasí, jak je definováno v partnerském dockeru a ingestovat data počasí do FarmBeats. Můžete zkontrolovat stav úlohy tím, že get požadavek na /Jobs a vyhledejte **currentState** v odpovědi. Po dokončení currentState je **nastavena**na Succeeded .
+8. Předchozí krok spustí úlohy počasí podle definice v Docker partnera a ingestuje data o počasí do FarmBeats. Stav úlohy můžete zkontrolovat tak, že na/Jobs vytvoříte požadavek GET a v odpovědi vyhledáte **CurrentState** . Po dokončení bude currentState nastaven na hodnotu **úspěch**.
 
-## <a name="query-ingested-weather-data"></a>Dotaz na data o počasí s polykaná
+## <a name="query-ingested-weather-data"></a>Dotázat se na data ingestovaná počasí
 
-Po dokončení úloh y počasí můžete dotazovat na data o počasí a vytvářet modely nebo užitečné přehledy. Existují dva způsoby, jak přistupovat a dotazovat se na údaje o počasí z FarmBeats:
+Po dokončení úloh počasí můžete zadávat dotazy na ingestovaná data o počasí k sestavování modelů nebo užitečných přehledů. Existují dva způsoby, jak získat přístup k datům počasí z FarmBeats a dotazovat se na ně:
 
-- API a
-- Časové řady (TSI).
+- Rozhraní API a
+- Time Series Insights (TSI).
 
-### <a name="query-using-rest-api"></a>Dotaz pomocí rozhraní REST API
+### <a name="query-using-rest-api"></a>Dotaz pomocí REST API
 
-Chcete-li zadat dotaz na data o počasí pomocí rozhraní FarmBeats REST API, postupujte podle následujících kroků:
+Pokud chcete zadat dotaz na data o počasí pomocí REST API FarmBeats, postupujte podle následujících kroků:
 
-1. Ve vašem FarmBeats Data hubhttps://yourdatahub.azurewebsites.net/swagger)swagger ( , přejděte na /WeatherDataLocation API a podat požadavek GET. Odpověď bude mít /WeatherDataLocation objekt (y) vytvořené pro umístění (zeměpisná šířka/délka), která byla zadána jako součást spuštění úlohy. Poznamenejte si **ID** a **weatherDataModelId** objektu (objektů).
+1. V Swagger FarmBeats datacentra (https://yourdatahub.azurewebsites.net/swagger), přejděte na rozhraní/WeatherDataLocation API a vytvořte žádost o získání. Odpověď bude obsahovat objekty/WeatherDataLocation vytvořené pro umístění (zeměpisná šířka/délka), která byla zadána jako součást běhu úlohy. Poznamenejte si **ID** a **weatherDataModelId** objektu (y).
 
-2. Vytvořte GET/{id} na /WeatherDataModel API pro **weatherDataModelId** jak je uvedeno v kroku 1. "Model data počasí" má všechna metadata a podrobnosti o pozůstalých údajů o počasí. **Například měření počasí** v rámci modelu data počasí **objekt** uvede podrobnosti o tom, jaké informace o počasí je podporována a v jaké typy a jednotky. Například:
+2. Pro **weatherDataModelId** , jak je uvedeno v kroku 1, vytvořte/WEATHERDATAMODEL API Get/{ID}. "Datový model počasí" obsahuje veškerá metadata a podrobnosti o přijatých datech o počasí. Například **míra počasí** v objektu **datového modelu počasí** obsahuje podrobnosti o tom, jaké informace o počasí jsou podporovány a v jakých typech a jednotkách. Například:
 
    ```json
    {
@@ -161,9 +161,9 @@ Chcete-li zadat dotaz na data o počasí pomocí rozhraní FarmBeats REST API, p
    }
    ```
 
-   Poznamenejte si odpověď z volání GET/{id} pro model data počasí.
+   Poznamenejte si odpověď z volání metody GET/{ID} pro datový model počasí.
 
-3. Přejděte na **rozhraní API telemetrie** a vytvořte požadavek POST s následující vstupní datovou částí:
+3. Přejděte na rozhraní API **telemetrie** a vytvořte žádost post s následující vstupní datovou částí:
 
    ```json
    {
@@ -175,7 +175,7 @@ Chcete-li zadat dotaz na data o počasí pomocí rozhraní FarmBeats REST API, p
    }
    ```
 
-4. Odpověď obsahující data o počasí, která je k dispozici pro zadaný časový rozsah, bude vypadat takto:
+4. Odpověď obsahující data v počasí, která jsou k dispozici pro zadaný časový rozsah, budou vypadat takto:
 
    ```json
    {
@@ -204,37 +204,37 @@ Chcete-li zadat dotaz na data o počasí pomocí rozhraní FarmBeats REST API, p
    }
    ```
 
-V předchozím příkladu má odpověď data pro dvě časová razítka spolu s názvem míry ("Teplota") a hodnotami hlášených údajů o počasí ve dvou časových razítkách. Budete muset odkazovat na přidružený model dat o počasí (jak je popsáno v kroku 2 výše) interpretovat typ a jednotku vykázaných hodnot.
+V předchozím příkladu má odpověď data pro dvě časová razítka spolu s názvem míry ("teplota") a hodnotami hlášených povětrnostních dat ve dvou časových razítkech. Pro interpretaci typu a jednotky hlášených hodnot budete potřebovat odkaz na přidružený datový model počasí (jak je popsáno v kroku 2 výše).
 
 ### <a name="query-using-azure-time-series-insights-tsi"></a>Dotaz pomocí Azure Time Series Insights (TSI)
 
-FarmBeats používá [Azure Time Series Insights (TSI)](https://azure.microsoft.com/services/time-series-insights/) k ingestování, ukládání, dotazování a vizualizaci dat ve škále IoT – data, která jsou vysoce kontextualizovaná a optimalizovaná pro časové řady.
+FarmBeats používá [Azure Time Series Insights (TSI)](https://azure.microsoft.com/services/time-series-insights/) k ingestování, ukládání, dotazování a vizualizaci dat v IoT Scale – data, která jsou s vysokou mírou kontextu a optimalizovaná pro časové řady.
 
-Data o počasí jsou přijímána na EventHub a poté jsou posunuta do prostředí TSI v rámci skupiny prostředků FarmBeats. Data pak mohou být přímo dotazována z TSI. Další informace naleznete v [dokumentaci TSI](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-explorer).
+Data o počasí se přijímají na EventHub a pak se do prostředí TSI v rámci skupiny prostředků FarmBeats. Data pak mohou být přímo dotazována z TSI. Další informace najdete v [dokumentaci k TSI](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-explorer).
 
-Vizuací dat o TSI postupujte takto:
+Podle postupu Vizualizujte data v TSI:
 
-1. Přejděte na **skupinu** > prostředků Azure portal**FarmBeats DataHub** > vyberte prostředí **Time Series Insights** (tsi-xxxx) > **zásady přístupu k datům**. Přidejte uživatele pomocí přístupu ke čtečce nebo přispěvateli.
+1. Přejděte do **Azure portal** > **skupiny prostředků Azure Portal FarmBeats DataHub** > vyberte **Time Series Insights** prostředí (TSI-xxxx) > **zásady přístupu k datům**. Přidejte uživatele s přístupem Čtenář nebo Přispěvatel.
 
-2. Přejděte na stránku **Přehled** prostředí **Time Series Insights** (tsi-xxxx) a vyberte adresu URL **průzkumníka přehledů časové řady**. Nyní můžete vizualizovat data o požitém počasí.
+2. Přejít na stránku **Přehled** prostředí **Time Series Insights** (TSI-xxxx) a vyberte **adresu URL aplikace Time Series Insights Explorer**. Teď můžete vizualizovat data ingestovaná počasí.
 
-Kromě ukládání, dotazování a vizualizace dat o počasí umožňuje TSI také integraci do řídicího panelu Power BI. Další informace najdete [v tématu Vizualizace dat z přehledů časových řad v Power BI](https://docs.microsoft.com/azure/time-series-insights/how-to-connect-power-bi).
+Kromě ukládání, dotazování a vizualizace dat počasí, TSI taky umožňuje integraci do řídicího panelu Power BI. Další informace najdete v tématu [vizualizace dat z Time Series Insights v Power BI](https://docs.microsoft.com/azure/time-series-insights/how-to-connect-power-bi).
 
 ## <a name="appendix"></a>Příloha
 
 |        Partner   |  Podrobnosti   |
 | ------- | -------             |
-|     DockerDetails - imageName         |          Název obrázku Dockeru. Například docker.io/azurefarmbeats/farmbeats-noaa (image v hub.docker.com) NEBO myazureacr.azurecr.io/mydockerimage (image v Azure Container Registry) a tak dále. Pokud není k dispozici žádný registr, je výchozí hub.docker.com      |
-|          DockerDetails - imageTag             |         Název značky image dockeru. Výchozí hodnota je "nejnovější"     |
-|  DockerDetails - pověření      |  Pověření pro přístup k privátní docker. To bude poskytnuto partnerem zákazníkovi   |
-|  DockerDetails - azureBatchVMDetails - batchVMSKU     |    Azure dávkové virtuální virtuální ho virtuálního počítače. Podívejte se [zde](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) pro všechny virtuální počítače Linux k dispozici. Platné hodnoty jsou: "Malé", "ExtraLarge", "Velké", "A8", "A9", "Střední", "A5", "A6", "A7", "STANDARD_D1", "STANDARD_D2", "STANDARD_D3", "STANDARD_D4", "STANDARD_D11", "STANDARD_D12", "STANDARD_D13", "STANDARD_D14", "A10", "A11", "STANDARD_D1_V2", "STANDARD_D2_V2", "STANDARD_D3_V2", "STANDARD_D4_V2", "STANDARD_D11_V2", "STANDARD_D12_V2", "STANDARD_D13_V2", "STANDARD_D14_V2", "STANDARD_G1", "STANDARD_G2", "STANDARD_G3", "STANDARD_G3", "", "STANDARD_G4", "", "STANDARD_G4", "STANDARD_G2", "STANDARD_G3", "", "STANDARD_G2", "", "STANDARD_G2", "", "STANDARD_G2", "", "STANDARD_G3", "", "STANDARD_G2", "STANDARD_G2", "STANDARD_G3", "", "STANDARD_G2", "STANDARD_G3", "STANDARD_G2", "STANDARD_G2", "STANDARD_G3", "STANDARD_G2", "STANDARD_G3", "", "STANDARD_G3", "STANDARD_G2", "STANDARD_G3", "", "STANDARD_G3", "STANDARD_G2", "STANDARD_G3", "STANDARD_G2", "STANDARD_G3", "", "STANDARD_G3", "", "STANDARD_G2", "STANDARD_G3", "", "STANDARD_G2", "", "STANDARD_G3", "", "STANDARD_G2", "", "STANDARD_G3", "", "STANDARD_G3", "", "STANDARD_G3", "", "STANDARD_G2", "STANDARD_G3", "STANDARD_G3", "STANDARD_G3", , "STANDARD_G5", "STANDARD_D5_V2", "BASIC_A1", "BASIC_A2", "BASIC_A3", "BASIC_A4", "STANDARD_A1", "STANDARD_A2", "STANDARD_A3", "STANDARD_A4", "STANDARD_A5", "STANDARD_A6", "STANDARD_A7", "STANDARD_A8", "STANDARD_A9", "STANDARD_A10", "STANDARD_NC6 STANDARD_A11", "STANDARD_NC12 STANDARD_D15_V2", STANDARD_NV24 STANDARD_NV12 STANDARD_NV6 STANDARD_F16 STANDARD_F8 STANDARD_F2 STANDARD_F1 "STANDARD_NC24", "STANDARD_F4", "STANDARD_NC24r", "STANDARD_NC24r", , "STANDARD_H8", "STANDARD_H8m", "STANDARD_H16", "STANDARD_H16m STANDARD_H16mr", "STANDARD_H16r", "STANDARD_A1_V2", "STANDARD_A2_V2", "STANDARD_A4_V2", "STANDARD_A8_V2", "STANDARD_A2m_V2", "STANDARD_A4m_V2", "STANDARD_A8m_V2", "STANDARD_M64ms", "STANDARD_M128s", "STANDARD_D2_V3". **Výchozí hodnota je "standard_d2_v2"**  |
-|    DockerDetails - azureBatchVMDetails - vyhrazenéComputerNodes   |  Ne. vyhrazených počítačových uzlů pro dávkový fond. Výchozí hodnota je 1. |
-|    DockerDetails - azureBatchVMDetails - uzelAgentSKUID          |    ID zprostředkovatele zprostředkovatele zprostředkovatele zprostředkovatele zprostředkovatele uzlu Azure. V současné době je podporován pouze agent dávkového uzlu "batch.node.ubuntu 18.04".    |
-| DockerDetails - partnerPověření | přihlašovací údaje pro volání rozhraní API partnera v dockeru. Partner musí tyto informace poskytnout svým zákazníkům na základě mechanismu ověřování, který je podporován např. Uživatelské jméno/heslo nebo klíče API. |
-| partnerTyp | "Počasí" (Ostatní typy partnerů v FarmBeats jsou "Senzor" a "Snímky")  |
-|  jméno   |   Požadovaný název partnera v systému FarmBeats   |
+|     DockerDetails – imageName         |          Název bitové kopie Docker. Například docker.io/azurefarmbeats/farmbeats-noaa (Image v hub.docker.com) nebo myazureacr.azurecr.io/mydockerimage (obrázek v Azure Container Registry) a tak dále. Pokud není zadaný žádný registr, výchozí hodnota je hub.docker.com.      |
+|          DockerDetails - imageTag             |         Název značky obrázku Docker Výchozí hodnota je "nejnovější"     |
+|  DockerDetails – přihlašovací údaje      |  Přihlašovací údaje pro přístup k soukromému Docker. Tuto adresu poskytne partner pro zákazníka.   |
+|  DockerDetails - azureBatchVMDetails - batchVMSKU     |    Azure Batch SKU virtuálního počítače. Všechny dostupné virtuální počítače se systémem Linux najdete [tady](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) . Platné hodnoty jsou: "Small", "ExtraLarge", "Large", "A8", "Medium", "Medium", "A5", "A7", "STANDARD_D1", "STANDARD_D2", "STANDARD_D3", "STANDARD_D4 ', ' STANDARD_D11 ', ' STANDARD_D12 ', ' STANDARD_D13 ', ' STANDARD_D14 ', ' A10 ', ' A11 ', ' STANDARD_D1_V2 ', ' STANDARD_D2_V2 ', ' STANDARD_D3_V2 ', ' STANDARD_D4_V2 ', ' STANDARD_D11_V2 ', ' STANDARD_D12_V2 ', ' STANDARD_D13_V2 ', ' STANDARD_D14_V2 ', ' STANDARD_G1 '; ' STANDARD_G2 ' , ' STANDARD_G5 ', ' STANDARD_D5_V2 ', ' BASIC_A1 ', ' BASIC_A2 ', ' BASIC_A3 ', ' BASIC_A4 ', ' STANDARD_A1 ', ' STANDARD_A2 ', ' STANDARD_A3 ', ' STANDARD_A4 ', ' STANDARD_A5 ', ' STANDARD_A6 ', ' STANDARD_A7 ', ' STANDARD_A8 ', ' STANDARD_A9 ', ' STANDARD_A10 ', ' STANDARD_A11 ', ' STANDARD_D15_V2 ', ' STANDARD_F1 ', ' STANDARD_F2 ', ' STANDARD_F4 ', ' STANDARD_F8 ', ' STANDARD_F16 ', ' STANDARD_NV6 ', ' STANDARD_NV12 ', ' STANDARD_NV24 ', ' STANDARD_NC6 ', ' STANDARD_NC12 ', ' STANDARD_NC24 ', ' STANDARD_NC24r ', ' ' , ' STANDARD_H8 ', ' STANDARD_H8m ', ' STANDARD_H16 ', ' STANDARD_H16m ', ' STANDARD_H16mr ', ' STANDARD_H16r ', ' STANDARD_A1_V2 ', ' STANDARD_A2_V2 ', ' STANDARD_A4_V2 ', ' STANDARD_A8_V2 ', ' STANDARD_A2m_V2 ', ' STANDARD_A4m_V2 ', ' STANDARD_A8m_V2 ', ' STANDARD_M64ms ', ' STANDARD_M128s ', ' STANDARD_D2_V3 ', ' ', ' ', ' '. **Výchozí hodnota je "standard_d2_v2".**  |
+|    DockerDetails - azureBatchVMDetails - dedicatedComputerNodes   |  Ne. vyhrazené uzly počítače pro fond služby Batch. Výchozí hodnota je 1. |
+|    DockerDetails - azureBatchVMDetails - nodeAgentSKUID          |    ID SKU agenta uzlu Azure Batch. V současné době je podporován pouze agent uzlu Batch. Node. Ubuntu 18,04.    |
+| DockerDetails - partnerCredentials | přihlašovací údaje pro volání rozhraní API partnerského serveru v Docker Partner musí zákazníkům poskytnout tyto informace na základě ověřovacího mechanizmu, který je podporován například. Uživatelské jméno/heslo nebo klíče rozhraní API. |
+| partnerType | "Počasí" (jiné typy partnerů v FarmBeats jsou "senzor" a "satelitní")  |
+|  jméno   |   Požadovaný název partnera v FarmBeats systému   |
 |  description |  Popis   |
 
 ## <a name="next-steps"></a>Další kroky
 
-Nyní jste se dotazovali na data senzorů z instance Azure FarmBeats. Nyní se naučte vytvářet [mapy](generate-maps-in-azure-farmbeats.md#generate-maps) pro vaše farmy.
+Nyní máte dotazovaná data senzorů z vaší instance Azure FarmBeats. Nyní se dozvíte, jak [vygenerovat mapy](generate-maps-in-azure-farmbeats.md#generate-maps) pro vaše farmy.

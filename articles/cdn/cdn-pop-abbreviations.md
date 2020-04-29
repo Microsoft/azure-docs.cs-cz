@@ -1,6 +1,6 @@
 ---
-title: Azure CDN POP umístění zkratkou | Dokumenty společnosti Microsoft
-description: Tento článek uvádí azure cdn pop umístění, seřazené podle zkratky POP, pro Azure CDN od Verizonu.
+title: Azure CDN umístění pro POP podle zkratky | Microsoft Docs
+description: V tomto článku jsou uvedeny Azure CDN umístění, která jsou seřazená zkratkami POP, pro Azure CDN z Verizon.
 services: cdn
 documentationcenter: ''
 author: asudbring
@@ -15,144 +15,144 @@ ms.topic: article
 ms.date: 03/20/2018
 ms.author: allensu
 ms.openlocfilehash: a5f3f8dbb83b23fc16fd1225e5a9cbeab16b9576
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81260237"
 ---
-# <a name="azure-cdn-pop-locations-by-abbreviation"></a>Azure CDN POP umístění zkratkou
+# <a name="azure-cdn-pop-locations-by-abbreviation"></a>Azure CDN umístění POP podle zkratky
 > [!div class="op_single_selector"]
 > * [Lokality POP podle oblastí](cdn-pop-locations.md)
 > * [Lokality POP podle zkratek](cdn-pop-abbreviations.md)
 > 
 
 
-Tento článek obsahuje seznam umístění protokolu POP seřazených podle zkratky protokolu POP pro **Azure CDN od společnosti Verizon**.
+V tomto článku jsou uvedena umístění, která jsou seřazená podle zkratky POP, pro **Azure CDN z Verizon**.
 
-Zkratka | Umístění | Region (Oblast)
+Zkratka | Umístění | Oblast
 | --- | --- | --- |
-Aga | Atlanta, Gruzie, SPOJENÉ STÁTY AMERICKÉ | Severní Amerika: Východní pobřeží USA
-Agb | Atlanta, Gruzie, SPOJENÉ STÁTY AMERICKÉ | Severní Amerika: Východní pobřeží USA
-Akl | Auckland, Nový Zéland | Asie
-Ama | Amsterdam, Nizozemsko | Evropa
-Amb | Amsterdam, Nizozemsko | Evropa
+AGA | Brno, Gruzie, USA | Severní Amerika: východní pobřeží USA
+AGB | Brno, Gruzie, USA | Severní Amerika: východní pobřeží USA
+AKL | Auckland, Nový Zéland | Asie
+AMA | Amsterdam, Nizozemsko | Evropa
+AMB | Amsterdam, Nizozemsko | Evropa
 AMS | Amsterdam, Nizozemsko | Evropa
-Arn | Stockholm, Švédsko | Evropa
-ATL | Atlanta, Gruzie, SPOJENÉ STÁTY AMERICKÉ | Severní Amerika: Východní pobřeží USA
-Baq | Barranquilla, Kolumbie | Latinská Amerika
+ARN | Stockholm, Švédsko | Evropa
+ATL | Brno, Gruzie, USA | Severní Amerika: východní pobřeží USA
+BAQ | Barranquilla, Kolumbie | Latinská Amerika
 BLR | Bengaluru (Bangalore), Indie | Asie
-BNJ | Newark, New Jersey, Spojené státy americké | Severní Amerika: Východní pobřeží USA
-Bos | Boston, Massachusetts, Spojené státy americké | Severní Amerika: Východní pobřeží USA
+BNJ | Newyorském, New Jersey, USA | Severní Amerika: východní pobřeží USA
+BOS | Boston, Massachusetts, USA | Severní Amerika: východní pobřeží USA
 BTH | Batam, Indonésie | Asie
-Bue | Buenos Aires, Argentina | Latinská Amerika
-Bur | Los Angeles, Kalifornie, Spojené státy americké | Severní Amerika: Západní pobřeží USA
-Cdg | Paříž, Francie | Evropa
-Cgh | São Paulo, Brazílie | Latinská Amerika
-Cgk | Jakarta, Indonésie | Asie
-Cha | Chicago, Illinois, Spojené státy americké | Severní Amerika: Východní pobřeží USA
-ChB | Chicago, Illinois, Spojené státy americké | Severní Amerika: Východní pobřeží USA
-CNJ | Newark, New Jersey, Spojené státy americké | Severní Amerika: Východní pobřeží USA
-Cph | Kodaň, Dánsko | Evropa
-Cpm | Los Angeles, Kalifornie, Spojené státy americké | Severní Amerika: Západní pobřeží USA
-Cva | Ashburn, Virginie, Spojené státy americké | Severní Amerika: Východní pobřeží USA
-DAA | Dallas, Texas, Spojené státy americké | Severní Amerika: Centrální pobřeží USA
-Dab | Dallas, Texas, Spojené státy americké | Severní Amerika: Centrální pobřeží USA
-Dca | Ashburn, Virginie, Spojené státy americké | Severní Amerika: Východní pobřeží USA
-Dcb | Ashburn, Virginie, Spojené státy americké | Severní Amerika: Východní pobřeží USA
-Dcc | Ashburn, Virginie, Spojené státy americké | Severní Amerika: Východní pobřeží USA
+BUE | Buenos Aires, Argentina | Latinská Amerika
+BUR | Los Angeles, Kalifornie, USA | Severní Amerika: západní pobřeží USA
+CDG | Paříž, Francie | Evropa
+CGH | Svatý Paulo, Brazílie | Latinská Amerika
+CGK | Jakarta, Indonésie | Asie
+CHA | Chicago, Illinois, USA | Severní Amerika: východní pobřeží USA
+CHB | Chicago, Illinois, USA | Severní Amerika: východní pobřeží USA
+CNJ | Newyorském, New Jersey, USA | Severní Amerika: východní pobřeží USA
+CPH | Kodaň, Dánsko | Evropa
+CPM | Los Angeles, Kalifornie, USA | Severní Amerika: západní pobřeží USA
+CVA | Ashburn,) – Virginia, USA | Severní Amerika: východní pobřeží USA
+DAA | Praha, Texas, USA | Severní Amerika: centrální pobřeží USA
+DAB | Praha, Texas, USA | Severní Amerika: centrální pobřeží USA
+DCA | Ashburn,) – Virginia, USA | Severní Amerika: východní pobřeží USA
+DCB | Ashburn,) – Virginia, USA | Severní Amerika: východní pobřeží USA
+DCC | Ashburn,) – Virginia, USA | Severní Amerika: východní pobřeží USA
 DEL | Noida, Indie | Asie
-DEN | Denver, Colorado, Spojené státy americké | Severní Amerika: Střední USA
-Dfw | Dallas, Texas, Spojené státy americké | Severní Amerika: Střední USA
-Ewr | New York, New York Spojené státy americké | Severní Amerika: Východní pobřeží USA
-Eze | Buenos Aires, Argentina | Latinská Amerika
+LIB | Denver, Coloradu, USA | Severní Amerika: Střed USA
+DFW | Praha, Texas, USA | Severní Amerika: Střed USA
+EWR | New York, New York USA | Severní Amerika: východní pobřeží USA
+EZE | Buenos Aires, Argentina | Latinská Amerika
 FCN | Frankfurt, Německo | Evropa
-Fll | Miami, Florida, Spojené státy americké | Severní Amerika: Východní pobřeží USA
+FLL | Miami, Florida, USA | Severní Amerika: východní pobřeží USA
 FRA | Frankfurt, Německo | Evropa
-Frb | Frankfurt, Německo | Evropa
-Frc | Frankfurt, Německo | Evropa
-Frf | Frankfurt, Německo | Evropa
-Ftw | Dallas, Texas, Spojené státy americké | Severní Amerika: Střední USA
-FTY | Atlanta, Gruzie, SPOJENÉ STÁTY AMERICKÉ | Severní Amerika: Východní pobřeží USA
-Koncert | Rio de Janeiro, Brazílie | Latinská Amerika
-GRU | São Paulo, Brazílie | Latinská Amerika
-Hel | Helsinky, Finsko | Evropa
+FRB | Frankfurt, Německo | Evropa
+FRC | Frankfurt, Německo | Evropa
+FRF | Frankfurt, Německo | Evropa
+FTW | Praha, Texas, USA | Severní Amerika: Střed USA
+FTY | Brno, Gruzie, USA | Severní Amerika: východní pobřeží USA
+4GIGOVÝ | Rio de Janeiro, Brazílie | Latinská Amerika
+GRU | Svatý Paulo, Brazílie | Latinská Amerika
+HEL | Helsinky, Finsko | Evropa
 HHP | Hongkong – zvláštní správní oblast | Asie
 HKC | Hongkong – zvláštní správní oblast | Asie
-Hkg | Hongkong – zvláštní správní oblast | Asie
-HND | Tokyo, Japonsko | Asie
-Iad | Ashburn, Virginie, Spojené státy americké | Severní Amerika: Východní pobřeží USA
-Icn | Soul, Korea | Asie
-Itm | Osaka, Japonsko | Asie
-Jfk | New York, New York, Spojené státy americké | Severní Amerika: Východní pobřeží USA
-Jnb | Johannesburg, Jihoafrická republika | Evropa
-Khh | Kaohsiung, Tchaj-wan | Asie
-Kix | Osaka, Japonsko | Asie
-Laa | Los Angeles, Kalifornie, Spojené státy americké | Severní Amerika: Západní pobřeží USA
-LAB | Los Angeles, Kalifornie, Spojené státy americké | Severní Amerika: Západní pobřeží USA
-Lam | Los Angeles, Kalifornie, Spojené státy americké | Severní Amerika: Západní pobřeží USA
-LAN | Los Angeles, Kalifornie, Spojené státy americké | Severní Amerika: Západní pobřeží USA
-Lax | Los Angeles, Kalifornie, Spojené státy americké | Severní Amerika: Západní pobřeží USA
-Lm | Londýn, Velká Británie | Evropa
-Lga | New York, New York, Spojené státy americké | Severní Amerika: Východní pobřeží USA
-Lha | Londýn, Velká Británie | Evropa
+HKG | Hongkong – zvláštní správní oblast | Asie
+HND | Tokio, Japonsko | Asie
+IAD | Ashburn,) – Virginia, USA | Severní Amerika: východní pobřeží USA
+ICN | Soul, Korea | Asie
+ITM | Ósaka, Japonsko | Asie
+JFK | New York, New York, USA | Severní Amerika: východní pobřeží USA
+JNB | Johannesburg, Jihoafrická Afrika | Evropa
+KHH | Kao-siung, Tchaj-wan | Asie
+KIX | Ósaka, Japonsko | Asie
+LAA | Los Angeles, Kalifornie, USA | Severní Amerika: západní pobřeží USA
+LAB | Los Angeles, Kalifornie, USA | Severní Amerika: západní pobřeží USA
+ZPRÁVU | Los Angeles, Kalifornie, USA | Severní Amerika: západní pobřeží USA
+LAN | Los Angeles, Kalifornie, USA | Severní Amerika: západní pobřeží USA
+LAX | Los Angeles, Kalifornie, USA | Severní Amerika: západní pobřeží USA
+ROVNANÝ | Londýn, Velká Británie | Evropa
+LGA | New York, New York, USA | Severní Amerika: východní pobřeží USA
+. | Londýn, Velká Británie | Evropa
 LHB | Londýn, Velká Británie | Evropa
 LHM | Londýn, Velká Británie | Evropa
 LHN | Londýn, Velká Británie | Evropa
-Lhr | Londýn, Velká Británie | Evropa
-Lim | Lima, Peru | Latinská Amerika
-Maa | Chennai, Indie | Asie
-Šílený | Madrid, Španělsko | Evropa
+LHR | Londýn, Velká Británie | Evropa
+LIM | Lima, Peru | Latinská Amerika
+MAA | Čennaj, Indie | Asie
+Mad – | Madrid, Španělsko | Evropa
 MDE | Medellin, Kolumbie | Latinská Amerika
-Mdw | Chicago, Illinois, Spojené státy americké | Severní Amerika: Východní pobřeží USA
-Meb | Melbourne, Austrálie | Asie
-Mel | Melbourne, Austrálie | Asie
-Mex | Mexico City, Mexiko | Severní Amerika
-Mia | Miami, Florida, Spojené státy americké | Severní Amerika: Východní pobřeží USA
-Mib | Miami, Florida, Spojené státy americké | Severní Amerika: Východní pobřeží USA
-Mic | Miami, Florida, Spojené státy americké | Severní Amerika: Východní pobřeží USA
-Paní | Marseille, Francie | Evropa
-Mxp | Milan, Itálie | Evropa
-Kobylka | Mumbai, Indie | Asie
+NEBYLY | Chicago, Illinois, USA | Severní Amerika: východní pobřeží USA
+MEB | Melbourne, Austrálie | Asie
+MEL | Melbourne, Austrálie | Asie
+MEX | Mexico City, Mexiko | Severní Amerika
+MIA | Miami, Florida, USA | Severní Amerika: východní pobřeží USA
+IGMP | Miami, Florida, USA | Severní Amerika: východní pobřeží USA
+MIKROFON | Miami, Florida, USA | Severní Amerika: východní pobřeží USA
+DNI | Marseille, Francie | Evropa
+MXP | Milán, Itálie | Evropa
+NAG | Bombaj, Indie | Asie
 NDL | Dillí, Indie | Asie
-Nrt | Tokyo, Japonsko | Asie
-Nya | New York, New York, Spojené státy americké | Severní Amerika: Východní pobřeží USA
-NYB | New York, New York, Spojené státy americké | Severní Amerika: Východní pobřeží USA
-Omm | Muscat, Omán | Střední východ
-Obj | Chicago, Illinois, Spojené státy americké | Severní Amerika: Střední USA
-Ory | Paříž, Francie | Evropa
-OXR | Los Angeles, Kalifornie, Spojené státy americké | Severní Amerika: Západní pobřeží USA
-Pab | Paříž, Francie | Evropa
-Pae | Seattle, Washington, Spojené státy americké | Severní Amerika: Západní pobřeží USA
-Pbc | Puebla, Mexiko | Severní Amerika
-Phl | Filadelfie, Pensylvánie, USA | Severní Amerika: Východní pobřeží USA
-PNQ | Mumbai, Indie | Asie
-Neštovice | Paříž, Francie | Evropa
-QRO | Santiago de Querétaro, Mexiko | Severní Amerika
-RHV | San Jose, Kalifornie, Spojené státy americké | Severní Amerika: Západní pobřeží USA
-Žebra | Rio de Janeiro, Brazílie | Latinská Amerika
-Rix | Riga, Lotyšsko | Evropa
+NRT | Tokio, Japonsko | Asie
+ŇA | New York, New York, USA | Severní Amerika: východní pobřeží USA
+NYB | New York, New York, USA | Severní Amerika: východní pobřeží USA
+OMM | Muskat, Omán | Střední východ
+OBJEDNÁVKY | Chicago, Illinois, USA | Severní Amerika: Střed USA
+ORY | Paříž, Francie | Evropa
+OXR | Los Angeles, Kalifornie, USA | Severní Amerika: západní pobřeží USA
+HO | Paříž, Francie | Evropa
+FUNKCI | Praha, Washington, USA | Severní Amerika: západní pobřeží USA
+PBC | Puebla, Mexiko | Severní Amerika
+PHL | Philadelphia, Pennsylvania, USA | Severní Amerika: východní pobřeží USA
+PNQ | Bombaj, Indie | Asie
+POX | Paříž, Francie | Evropa
+QRO | Santiago de Chile de Querétaro, Mexiko | Severní Amerika
+RHV | San Jose, Kalifornie, USA | Severní Amerika: západní pobřeží USA
+ŽEBR | Rio de Janeiro, Brazílie | Latinská Amerika
+RIX | Riga, Lotyšsko | Evropa
 RTM | Amsterdam, Nizozemsko | Evropa
-Dsp | San Jose, Kalifornie, Spojené státy americké | Severní Amerika: Západní pobřeží USA
-Sab | San Jose, Kalifornie, Spojené státy americké | Severní Amerika: Západní pobřeží USA
-Scl | Valparaíso, Chile | Latinská Amerika
-Moře | Seattle, Washington, Spojené státy americké | Severní Amerika: Západní pobřeží USA
-Seb | Seattle, Washington, Spojené státy americké | Severní Amerika: Západní pobřeží USA
-Sec | Seattle, Washington, Spojené státy americké | Severní Amerika: Západní pobřeží USA
-Sgb | Singapur | Asie
+ORGÁNEM | San Jose, Kalifornie, USA | Severní Amerika: západní pobřeží USA
+SAB | San Jose, Kalifornie, USA | Severní Amerika: západní pobřeží USA
+SQL | Valparaíso, Chile | Latinská Amerika
+PLAVB | Praha, Washington, USA | Severní Amerika: západní pobřeží USA
+SEB | Praha, Washington, USA | Severní Amerika: západní pobřeží USA
+PŘIHRÁDKA | Praha, Washington, USA | Severní Amerika: západní pobřeží USA
+SGB | Singapur | Asie
 SIN | Singapur | Asie
-Sjc | San Jose, Kalifornie, Spojené státy americké | Severní Amerika: Západní pobřeží USA
-Sjo | San Jose, Kalifornie, Spojené státy americké | Severní Amerika: Západní pobřeží USA
-STO | Stockholm, Švédsko | Evropa
-Syd | Sydney, Austrálie | Asie
-Tir | Chennai, Indie | Asie
-TKA | Tokyo, Japonsko | Asie
-Tkb | Tokyo, Japonsko | Asie
-ToJ | Madrid, Španělsko | Evropa
+SJC | San Jose, Kalifornie, USA | Severní Amerika: západní pobřeží USA
+SJO | San Jose, Kalifornie, USA | Severní Amerika: západní pobřeží USA
+ŠI | Stockholm, Švédsko | Evropa
+ODPIS | Sydney, Austrálie | Asie
+TIR | Čennaj, Indie | Asie
+TKA | Tokio, Japonsko | Asie
+TKB | Tokio, Japonsko | Asie
+TOJ | Madrid, Španělsko | Evropa
 Spojené arabské emiráty | Fujairah, Spojené arabské emiráty | Evropa
-Uio | Quito, Ekvádor | Latinská Amerika
-Vie | Vídeň, Rakousko | Evropa
-VNY | Los Angeles, Kalifornie, Spojené státy americké | Severní Amerika: Západní pobřeží USA
-Waw | Varšava, Polsko | Evropa
+UIO | Quito, Ekvádor | Latinská Amerika
+Zo | Vídeň, Rakousko | Evropa
+VNY | Los Angeles, Kalifornie, USA | Severní Amerika: západní pobřeží USA
+WAW | Varšava, Polsko | Evropa
 
 

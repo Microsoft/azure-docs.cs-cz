@@ -1,6 +1,6 @@
 ---
-title: X-EC-Ladění http záhlaví pro azure cdn pravidla motoru | Dokumenty společnosti Microsoft
-description: Hlavička požadavku mezipaměti ladění Ladění x-EC-ladění poskytuje další informace o zásadách mezipaměti, která je použita pro požadovaný prostředek. Tato záhlaví jsou specifická pro společnost Verizon.
+title: X-EC – ladění hlaviček protokolu HTTP pro modul pravidel Azure CDN | Microsoft Docs
+description: V hlavičce žádosti o mezipaměť pro ladění X-EC jsou uvedeny další informace o zásadách mezipaměti, které se aplikují na požadovaný prostředek. Tato záhlaví jsou specifická pro Verizon.
 services: cdn
 documentationcenter: ''
 author: asudbring
@@ -15,51 +15,51 @@ ms.topic: article
 ms.date: 04/12/2018
 ms.author: allensu
 ms.openlocfilehash: 52aae3bdd2fe82eea6cbd500723192c88c293a1e
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81260492"
 ---
-# <a name="x-ec-debug-http-headers-for-azure-cdn-rules-engine"></a>Hlavičky HTTP X-EC-Debug pro modul pravidel Azure CDN
-Hlavička požadavku mezipaměti `X-EC-Debug`ladění , poskytuje další informace o zásadách mezipaměti, které jsou použity pro požadovaný prostředek. Tyto hlavičky jsou specifické pro **Azure CDN Premium od** produktů Verizon.
+# <a name="x-ec-debug-http-headers-for-azure-cdn-rules-engine"></a>X-EC – ladění hlaviček protokolu HTTP pro modul pravidel Azure CDN
+Hlavička `X-EC-Debug`žádosti mezipaměti ladění poskytuje další informace o zásadách mezipaměti, které se vztahují k požadovanému prostředku. Tato záhlaví jsou specifická pro **Azure CDN Premium z produktů Verizon** .
 
 ## <a name="usage"></a>Využití
-Odpověď odeslaná uživateli ze serverů `X-EC-Debug` POP uživateli obsahuje záhlaví pouze v případě, že jsou splněny následující podmínky:
+Odpověď odesílaná ze serverů POP uživateli zahrnuje hlavičku, `X-EC-Debug` pouze pokud jsou splněny následující podmínky:
 
-- [Funkce Hlavičky odpovědí ladicí mezipaměti](cdn-verizon-premium-rules-engine-reference-features.md#debug-cache-response-headers) byla povolena v modulu pravidel pro zadaný požadavek.
-- Zadaný požadavek definuje sadu ladicích hlaviček odpovědí mezipaměti, které budou zahrnuty do odpovědi.
+- V modulu pravidel pro zadaný požadavek byla povolena [funkce hlaviček odpovědí mezipaměti ladění](cdn-verizon-premium-rules-engine-reference-features.md#debug-cache-response-headers) .
+- Zadaný požadavek definuje sadu hlaviček odpovědí mezipaměti pro ladění, které budou zahrnuty do odpovědi.
 
-## <a name="requesting-debug-cache-information"></a>Vyžádání informací o ladicí mezipaměti
-Pomocí následujících směrnic v zadaném požadavku definujte informace o mezipaměti ladění, které budou zahrnuty do odpovědi:
+## <a name="requesting-debug-cache-information"></a>Vyžadování informací o mezipaměti ladění
+Pomocí následujících direktiv v zadaném požadavku definujte informace o mezipaměti ladění, které budou zahrnuty do odpovědi:
 
 Hlavička požadavku | Popis |
 ---------------|-------------|
-X-EC-Ladění: x-ec-cache | [Stavový kód mezipaměti](#cache-status-code-information)
-X-EC-Ladění: x-ec-cache-remote | [Stavový kód mezipaměti](#cache-status-code-information)
-X-EC-Debug: x-ec-check-cacheable | [Cacheable](#cacheable-response-header)
-X-EC-Ladění: x-ec-cache-key | [Klíč mezipaměti](#cache-key-response-header)
-X-EC-Ladění: x-ec-cache-state | [Stav mezipaměti](#cache-state-response-header)
+X-EC-ladění: x-EC – mezipaměť | [Stavový kód mezipaměti](#cache-status-code-information)
+X-EC-ladění: x-EC-cache-Remote | [Stavový kód mezipaměti](#cache-status-code-information)
+X-EC-ladění: x-EC-check-Cached | [Uložitelný](#cacheable-response-header)
+X-EC-ladění: x-EC-cache-Key | [Klíč mezipaměti](#cache-key-response-header)
+X-EC-ladění: x-EC-mezipaměť-State | [Stav mezipaměti](#cache-state-response-header)
 
 ### <a name="syntax"></a>Syntaxe
 
-Ladění hlavičky odpovědi mezipaměti může být požadováno zahrnutím následující hlavičky a zadané direktivy v požadavku:
+Hlavičky odpovědí mezipaměti ladění mohou být požadovány vložením následující hlavičky a zadaných direktiv v žádosti:
 
 `X-EC-Debug: Directive1,Directive2,DirectiveN`
 
-### <a name="sample-x-ec-debug-header"></a>Ukázka záhlaví X-EC-Debug
+### <a name="sample-x-ec-debug-header"></a>Ukázka záhlaví X-EC-ladění
 
 `X-EC-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state`
 
 ## <a name="cache-status-code-information"></a>Informace o stavovém kódu mezipaměti
-Hlavička odpovědi X-EC-Debug může identifikovat server a způsob, jakým zpracoval odpověď prostřednictvím následujících směrnic:
+Hlavička odpovědi X-EC-Debug může určit server a způsob, jakým zpracovává odpověď, prostřednictvím následujících direktiv:
 
 Hlavička | Popis
 -------|------------
-X-EC-Ladění: x-ec-cache | Toto záhlaví je hlášeno vždy, když je obsah směrován přes CDN. Identifikuje server POP, který požadavek splnil.
-X-EC-Ladění: x-ec-cache-remote | Tato hlavička je hlášena pouze v případě, že požadovaný obsah byl uložen do mezipaměti na serveru štítu původu nebo serveru brány ADN.
+X-EC-ladění: x-EC – mezipaměť | Tato hlavička se oznamuje při každém směrování obsahu přes CDN. Identifikuje server POP, který požadavek splnil.
+X-EC-ladění: x-EC-cache-Remote | Tato hlavička se oznamuje jenom v případě, že je požadovaný obsah uložený v mezipaměti na zdrojovém serveru ochrany nebo na serveru brány a.
 
-### <a name="response-header-format"></a>Formát záhlaví odpovědi
+### <a name="response-header-format"></a>Formát hlavičky odpovědi
 
 Hlavička X-EC-Debug hlásí informace o stavovém kódu mezipaměti v následujícím formátu:
 
@@ -67,107 +67,107 @@ Hlavička X-EC-Debug hlásí informace o stavovém kódu mezipaměti v následuj
 
 - `X-EC-Debug: x-ec-cache-remote: <StatusCode from Platform (POP/ID)>`
 
-Termíny použité ve výše uvedené syntaxi hlavičky odpovědi jsou definovány takto:
-- StatusCode: Označuje, jak byl požadovaný obsah zpracován CDN, který je reprezentován prostřednictvím stavového kódu mezipaměti.
+Výrazy použité ve výše uvedené syntaxi hlaviček odpovědí jsou definovány takto:
+- StatusCode: udává, jak byl požadovaný obsah zpracován přes CDN, který je reprezentován kódem stavu mezipaměti.
     
-    Stavový kód TCP_DENIED může být hlášena namísto NONE při neoprávněném požadavku je odepřen z důvodu ověřování na základě tokenu. Stavový kód NONE se však bude nadále používat při zobrazení sestav stavu mezipaměti nebo nezpracovaných dat protokolu.
+    Stavový kód TCP_DENIED může být hlášen jako žádný, pokud je neautorizovaný požadavek odepřen z důvodu ověřování založeného na tokenech. Stavový kód NONE se ale bude dál používat při prohlížení zpráv o stavu mezipaměti nebo nezpracovaná data protokolu.
 
-- Platforma: Označuje platformu, na které byl požadován obsah. Pro toto pole platí následující kódy:
+- Platforma: Určuje platformu, na které byl obsah požadován. Pro toto pole jsou platné následující kódy:
 
     kód  | Platforma
     ------| --------
-    ECAcc | HTTP velké
-    Ecs   | HTTP malé
-    Ecd   | Síť pro doručování aplikací (ADN)
+    ECAcc | Velký HTTP
+    ECS   | HTTP – malý
+    ECD   | Application Delivery Network (a)
 
-- POP: Označuje [protokol POP,](cdn-pop-abbreviations.md) který požadavek zpracoval. 
+- POP: označuje [bod POP](cdn-pop-abbreviations.md) , který zpracoval požadavek. 
 
 ### <a name="sample-response-headers"></a>Ukázkové hlavičky odpovědí
 
-Následující ukázkové hlavičky poskytují informace o kódu stavu mezipaměti pro požadavek:
+Následující ukázkové hlavičky obsahují informace o stavovém kódu mezipaměti pro požadavek:
 
 - `X-EC-Debug: x-ec-cache: TCP_HIT from ECD (lga/0FE8)`
 
 - `X-EC-Debug: x-ec-cache-remote: TCP_HIT from ECD (dca/EF00)`
 
-## <a name="cacheable-response-header"></a>Hlavička odpovědi s mezipamětí
-Hlavička `X-EC-Debug: x-ec-check-cacheable` odpovědi označuje, zda požadovaný obsah mohl být uložen do mezipaměti.
+## <a name="cacheable-response-header"></a>Hlavička odpovědi v mezipaměti
+Hlavička `X-EC-Debug: x-ec-check-cacheable` odpovědi indikuje, zda byl požadovaný obsah uložen do mezipaměti.
 
-Tato hlavička odpovědi neznamená, zda došlo k ukládání do mezipaměti. Spíše uvádí, zda byla žádost způsobilá pro ukládání do mezipaměti.
+Tato hlavička odpovědi neoznačuje, zda došlo k ukládání do mezipaměti. Místo toho indikuje, zda byl požadavek způsobilý pro ukládání do mezipaměti.
 
-### <a name="response-header-format"></a>Formát záhlaví odpovědi
+### <a name="response-header-format"></a>Formát hlavičky odpovědi
 
-Hlavička `X-EC-Debug` odpovědi, která hlásí, zda mohl být požadavek uložen do mezipaměti, je v následujícím formátu:
+Hlavička `X-EC-Debug` odpovědi, která oznamuje, zda může být požadavek uložen v mezipaměti, je v následujícím formátu:
 
 `X-EC-Debug: x-ec-check-cacheable: <cacheable status>`
 
-Termín použitý ve výše uvedené syntaxi hlavičky odpovědi je definován takto:
+Termín použitý ve výše uvedené syntaxi hlavičky odpovědi je definován následujícím způsobem:
 
 Hodnota  | Popis
 -------| --------
-ANO    | Označuje, že požadovaný obsah byl způsobilý pro ukládání do mezipaměti.
-NO     | Označuje, že požadovaný obsah nebyl způsobilý pro ukládání do mezipaměti. Tento stav může být způsoben jedním z následujících důvodů: <br /> - Konfigurace specifická pro zákazníka: Konfigurace specifická pro váš účet může zabránit popovým serverům v ukládání datového zdroje do mezipaměti. Modul pravidel může například zabránit ukládání datového prostředku do mezipaměti povolením funkce Obejít mezipaměť pro kvalifikační požadavky.<br /> - Hlavičky odpovědí mezipaměti: Hlavičky kontroly mezipaměti požadovaného datového zdroje a vypršení platnosti mohou zabránit tomu, aby je servery POP uvázly do mezipaměti.
-Neznámý | Označuje, že servery nebyly schopny posoudit, zda byl požadovaný datový zdroj uložit do mezipaměti. K tomuto stavu obvykle dochází, když je požadavek odepřen z důvodu ověřování na základě tokenu.
+ANO    | Indikuje, že požadovaný obsah byl způsobilý pro ukládání do mezipaměti.
+NO     | Indikuje, že požadovaný obsah nebyl pro ukládání do mezipaměti způsobilý. K tomuto stavu může dojít z některého z následujících důvodů: <br /> -Konfigurace specifická pro zákazníka: konfigurace specifická pro váš účet může zabránit ukládání assetu do mezipaměti u serverů POP. Například modul pravidel může zabránit ukládání prostředku do mezipaměti tím, že povolí funkci vynechat mezipaměť pro opravňující požadavky.<br /> – Hlavičky odpovědí mezipaměti: požadované hlavičky a hlavičky pro řízení mezipaměti a vypršení platnosti prostředku můžou zabránit tomu, aby ji servery POP mohli ukládat do mezipaměti.
+Neznámý | Indikuje, že servery nedokázaly vyhodnotit, jestli je požadovaný prostředek v mezipaměti. K tomuto stavu obvykle dochází v případě, že je žádost zamítnuta z důvodu ověřování založeného na tokenech.
 
-### <a name="sample-response-header"></a>Ukázková hlavička odpovědi
+### <a name="sample-response-header"></a>Hlavička ukázkové odpovědi
 
-Následující ukázková hlavička odpovědi označuje, zda požadovaný obsah mohl být uložen do mezipaměti:
+Následující hlavička odpovědi obsahuje informaci o tom, zda byl požadovaný obsah uložen do mezipaměti:
 
 `X-EC-Debug: x-ec-check-cacheable: YES`
 
-## <a name="cache-key-response-header"></a>Hlavička odpovědi cache-key
-Hlavička `X-EC-Debug: x-ec-cache-key` odpovědi označuje fyzický klíč mezipaměti přidružený k požadovanému obsahu. Fyzický klíč mezipaměti se skládá z cesty, která identifikuje prostředek pro účely ukládání do mezipaměti. Jinými slovy, servery zkontrolují verzi datového zdroje uloženou v mezipaměti podle jeho cesty, jak je definována jeho klíčem mezipaměti.
+## <a name="cache-key-response-header"></a>Hlavička odpovědi na klíč mezipaměti
+Hlavička `X-EC-Debug: x-ec-cache-key` odpovědi indikuje fyzický meziklíčovou mezipaměť přidruženou k požadovanému obsahu. Klíč fyzické mezipaměti se skládá z cesty, která identifikuje prostředek pro účely ukládání do mezipaměti. Jinými slovy, servery budou kontrolovat verzi assetu v mezipaměti podle jeho cesty, jak je definováno jeho meziklíčovou mezipamětí.
 
-Tento fyzický klíč mezipaměti začíná dvojitým lomítkem (//) následovaným protokolem používaným k vyžádání obsahu (HTTP nebo HTTPS). Za tímto protokolem následuje relativní cesta k požadovanému datovému zdroji, která začíná přístupovým bodem obsahu (například _/000001/_).
+Tento klíč fyzické mezipaměti začíná dvojitým lomítkem (//) následovaný protokolem, který se používá k vyžádání obsahu (HTTP nebo HTTPS). Tento protokol je následován relativní cestou k požadovanému prostředku, který začíná přístupovým bodem obsahu (například _/000001/_).
 
-Ve výchozím nastavení jsou platformy HTTP konfigurovány tak, aby používaly *standardní mezipaměť*, což znamená, že řetězce dotazů jsou mechanismem ukládání do mezipaměti ignorovány. Tento typ konfigurace zabraňuje klíči mezipaměti zahrnout data řetězce dotazu.
+Ve výchozím nastavení jsou platformy HTTP nakonfigurovány tak, aby používaly *standardní mezipaměť*, což znamená, že řetězce dotazů jsou ignorovány mechanismem ukládání do mezipaměti. Tento typ konfigurace brání tomu, aby klíč mezipaměti mohl zahrnovat data řetězce dotazu.
 
-Pokud je řetězec dotazu zaznamenán v klíči mezipaměti, je převeden na ekvivalent hodnoty hash a poté vložen mezi název&lt;požadovaného&gt;datového zdroje a jeho příponu souboru (například hodnota hash datového zdroje .html).
+Pokud je řetězec dotazu zaznamenán v mezipaměti, je převeden na jeho ekvivalent hodnoty hash a poté vložen mezi název požadovaného prostředku a jeho příponu souboru (například hodnota hash Asset&lt;Value&gt;. html).
 
-### <a name="response-header-format"></a>Formát záhlaví odpovědi
+### <a name="response-header-format"></a>Formát hlavičky odpovědi
 
-Hlavička `X-EC-Debug` odpovědi hlásí informace o fyzickém klíči mezipaměti v následujícím formátu:
+Hlavička `X-EC-Debug` odpovědi hlásí informace o fyzické mezipaměti-klíče v následujícím formátu:
 
 `X-EC-Debug: x-ec-cache-key: CacheKey`
 
-### <a name="sample-response-header"></a>Ukázková hlavička odpovědi
+### <a name="sample-response-header"></a>Hlavička ukázkové odpovědi
 
-Následující ukázková hlavička odpovědi označuje fyzický klíč mezipaměti pro požadovaný obsah:
+V následujícím ukázkovém záhlaví odpovědi se označuje klíč fyzické mezipaměti pro požadovaný obsah:
 
 `X-EC-Debug: x-ec-cache-key: //http/800001/origin/images/foo.jpg`
 
-## <a name="cache-state-response-header"></a>Hlavička odpovědi stavu mezipaměti
-Hlavička `X-EC-Debug: x-ec-cache-state` odpovědi označuje stav mezipaměti požadovaného obsahu v době, kdy byl požadován.
+## <a name="cache-state-response-header"></a>Hlavička odpovědi na stav mezipaměti
+Hlavička `X-EC-Debug: x-ec-cache-state` odpovědi indikuje stav mezipaměti požadovaného obsahu v době, kdy se požadoval.
 
-### <a name="response-header-format"></a>Formát záhlaví odpovědi
+### <a name="response-header-format"></a>Formát hlavičky odpovědi
 
 Hlavička `X-EC-Debug` odpovědi hlásí informace o stavu mezipaměti v následujícím formátu:
 
 `X-EC-Debug: x-ec-cache-state: max-age=MASeconds (MATimePeriod); cache-ts=UnixTime (ddd, dd MMM yyyy HH:mm:ss GMT); cache-age=CASeconds (CATimePeriod); remaining-ttl=RTSeconds (RTTimePeriod); expires-delta=ExpiresSeconds`
 
-Termíny použité ve výše uvedené syntaxi hlavičky odpovědi jsou definovány takto:
+Výrazy použité ve výše uvedené syntaxi hlaviček odpovědí jsou definovány takto:
 
-- MASeconds: Označuje maximální stáří (v sekundách), jak je definováno hlavičkami ovládacího prvku mezipaměti požadovaného obsahu.
+- MASeconds: Určuje maximální stáří (v sekundách), jak je definováno hlavičkou řízení mezipaměti pro ovládací prvky požadovaného obsahu.
 
-- MATimePeriod: Převede maximální stáří hodnoty (to znamená MASeconds) na přibližný ekvivalent větší jednotky (například dny). 
+- MATimePeriod: Převede hodnotu maximálního stáří (tj. MASeconds) na přibližný ekvivalent větší jednotky (například dny). 
 
-- UnixTime: Označuje časové razítko cache požadovaného obsahu v unixovém čase (známé také jako ČAS POSIX nebo Unixová epocha). Časové razítko mezipaměti označuje počáteční datum a čas, ze kterého bude vypočítána hodnota TTL datového zdroje. 
+- UnixTime: označuje časové razítko mezipaměti požadovaného obsahu v systému UNIX (označuje se také jako čas POSIX nebo UNIX epocha). Časové razítko mezipaměti indikuje počáteční datum a čas, ze kterého se bude počítat hodnota TTL prostředku. 
 
-    Pokud zdrojový server nevyužívá server http ukládání do mezipaměti jiného výrobce nebo pokud tento server nevrátí hlavičku odpovědi Stáří, bude časové razítko mezipaměti vždy datum a čas, kdy byl datový zdroj načten nebo znovu ověřen. V opačném případě budou servery POP používat pole Stáří k výpočtu ttl datového zdroje následujícím způsobem: Načítání/Opětovné ověřeníDateTime - Stáří.
+    Pokud zdrojový Server nevyužívá server mezipaměti protokolu HTTP třetí strany, nebo pokud tento server nevrací hlavičku stáří, pak bude časové razítko mezipaměti vždycky datum a čas, kdy se Asset získal nebo znovu ověřil. V opačném případě budou servery POP pomocí pole věk vypočítat hodnotu TTL prostředku následujícím způsobem: načítání/RevalidateDateTime-Age.
 
-- ddd, dd MMM yyyy HH:mm:ss GMT: Označuje časové razítko mezipaměti požadovaného obsahu. Další informace naleznete ve výše uvedeném termínu UnixTime.
+- DDD, dd MMM RRRR HH: mm: ss GMT: označuje časové razítko mezipaměti požadovaného obsahu. Další informace najdete výše v UnixTime období.
 
-- CASeconds: Označuje počet sekund, které uplynuly od časového razítka mezipaměti.
+- CASeconds: označuje počet sekund, které uplynuly od časového razítka mezipaměti.
 
-- RTSeconds: Označuje zbývající počet sekund, po které bude obsah uložený v mezipaměti považován za čerstvý. Tato hodnota se vypočítá takto: RTSeconds = maximální stáří - stáří mezipaměti.
+- RTSeconds: označuje počet zbývajících sekund, po které bude obsah uložený v mezipaměti považován za čerstvý. Tato hodnota se vypočítá takto: RTSeconds = Max – stáří mezipaměti.
 
-- RTTimePeriod: Převede zbývající hodnotu TTL (tj. RTSeconds) na přibližný ekvivalent větší jednotky (například dny).
+- RTTimePeriod: převede zbývající hodnotu TTL (tj. RTSeconds) na přibližný ekvivalent větší jednotky (například dny).
 
-- ExpiresSeconds: Označuje počet sekund zbývajících před datem `Expires` a časem určeným v hlavičce odpovědi. Pokud `Expires` hlavička odpovědi nebyla zahrnuta do odpovědi, pak hodnota tohoto termínu není *žádná*.
+- ExpiresSeconds: Určuje počet sekund zbývajících před datem a časem zadaným v hlavičce `Expires` odpovědi. Pokud hlavička `Expires` odpovědi nebyla v odpovědi obsažena, hodnota tohoto termínu je *none*.
 
-### <a name="sample-response-header"></a>Ukázková hlavička odpovědi
+### <a name="sample-response-header"></a>Hlavička ukázkové odpovědi
 
-Následující ukázková hlavička odpovědi označuje stav mezipaměti požadovaného obsahu v době, kdy byl požadován:
+V následujícím ukázkovém záhlaví odpovědi se uvádí stav mezipaměti požadovaného obsahu v době, kdy byl vyžádán:
 
 ```X-EC-Debug: x-ec-cache-state: max-age=604800 (7d); cache-ts=1341802519 (Mon, 09 Jul 2012 02:55:19 GMT); cache-age=0 (0s); remaining-ttl=604800 (7d); expires-delta=none```
 

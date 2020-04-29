@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace služby Azure Active Directory se sadou faktů | Dokumenty společnosti Microsoft'
-description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Službou Azure Active Directory a sadou faktů.
+title: 'Kurz: Azure Active Directory integrace s FactSet | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a FactSet.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -11,192 +11,144 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 02/07/2019
+ms.date: 04/06/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 414ccdfb497e8ef18833fadf8c0cd495583179ad
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d6b8664e7515de3037d33791f54c000a87b83635
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73156283"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "81261172"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-factset"></a>Kurz: Integrace služby Azure Active Directory se sadou faktů
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-factset"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s FactSet
 
-V tomto kurzu se dozvíte, jak integrovat FactSet s Azure Active Directory (Azure AD).
-Integrace Sady faktů s Azure AD poskytuje následující výhody:
+V tomto kurzu se dozvíte, jak integrovat FactSet s Azure Active Directory (Azure AD). Když integrujete FactSet s Azure AD, můžete:
 
-* Můžete řídit ve službě Azure AD, který má přístup k FactSet.
-* Můžete povolit uživatelům, aby se automaticky přihlásili k FactSet (jednotné přihlášení) s jejich účty Azure AD.
-* Své účty můžete spravovat v jednom centrálním umístění – na portálu Azure.
+* Řízení ve službě Azure AD, která má přístup k FactSet.
+* Umožněte, aby se vaši uživatelé automaticky přihlásili k FactSet svým účtům Azure AD.
+* Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Pokud se chcete dozvědět více podrobností o integraci aplikací SaaS s Azure AD, přečtěte [si, co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li nakonfigurovat integraci Azure AD s FactSet, budete potřebovat následující položky:
+Chcete-li začít, potřebujete následující položky:
 
-* Předplatné Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební [verzi zde](https://azure.microsoft.com/pricing/free-trial/)
-* FactSet předplatné s povoleným jedním přihlášením
+* Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
+* FactSet odběr s povoleným jednotným přihlašováním (SSO).
 
 ## <a name="scenario-description"></a>Popis scénáře
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* FactSet podporuje **sp** inicioval sso
+* FactSet podporuje jednotné přihlašování **IDP** .
+* Po nakonfigurování FactSet můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
-## <a name="adding-factset-from-the-gallery"></a>Přidání sady faktů z galerie
+## <a name="adding-factset-from-the-gallery"></a>Přidání FactSet z Galerie
 
-Chcete-li nakonfigurovat integraci FactSet do Azure AD, musíte přidat FactSet z galerie do seznamu spravovaných aplikací SaaS.
+Pokud chcete nakonfigurovat integraci FactSet do služby Azure AD, musíte přidat FactSet z Galerie do svého seznamu spravovaných aplikací SaaS.
 
-**Chcete-li přidat sadu faktů z galerie, proveďte následující kroky:**
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
+1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **FactSet** .
+1. Na panelu výsledků vyberte **FactSet** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-1. Na **[portálu Azure](https://portal.azure.com)** klikněte na levém navigačním panelu na ikonu **Služby Azure Active Directory.**
+## <a name="configure-and-test-azure-ad-single-sign-on-for-factset"></a>Konfigurace a testování jednotného přihlašování Azure AD pro FactSet
 
-    ![Tlačítko Azure Active Directory](common/select-azuread.png)
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí FactSet pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v FactSet.
 
-2. Přejděte do **podnikových aplikací** a pak vyberte možnost **Všechny aplikace.**
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí FactSet, dokončete následující stavební bloky:
 
-    ![Okno Aplikace Enterprise](common/enterprise-applications.png)
+1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
+    1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
+    1. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
+1. **[Nakonfigurujte FACTSET SSO](#configure-factset-sso)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace.
+    1. **[Vytvořte FactSet Test User](#create-factset-test-user)** -to, abyste měli protějšek B. Simon v FactSet, která je propojená s reprezentací uživatele v Azure AD.
+1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-3. Chcete-li přidat novou aplikaci, klepněte na tlačítko **Nová aplikace** v horní části dialogového okna.
+## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
 
-    ![Tlačítko Nová aplikace](common/add-new-app.png)
+Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-4. Do vyhledávacího pole zadejte **FactSet**, z panelu výsledků vyberte **FactSet** a pak klepněte na **tlačítko Přidat** a přidejte aplikaci.
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **FactSet** Najděte oddíl **Spravovat** a vyberte **jednotné přihlašování**.
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
-     ![FactSet v seznamu výsledků](common/search-new-app.png)
+   ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** zadejte hodnoty pro následující pole:
 
-V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí sady faktů na základě testovacího uživatele s názvem **Britta Simon**.
-Aby jednotné přihlašování fungovalo, musí být vytvořen vztah propojení mezi uživatelem Azure AD a souvisejícím uživatelem v sadě faktů.
+    a. Do textového pole **identifikátor** zadejte adresu URL:`https://login.factset.com`
 
-Chcete-li nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí sady faktů, je třeba provést následující stavební bloky:
+    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL:`https://login.factset.com/services/saml2/`
 
-1. **[Nakonfigurujte azure ad jednotné přihlašování](#configure-azure-ad-single-sign-on)** – aby vaši uživatelé mohli používat tuto funkci.
-2. **[Konfigurace sady factset jednotného přihlášení](#configure-factset-single-sign-on)** - konfigurace nastavení jednotného přihlášení na straně aplikace.
-3. **[Vytvořte uživatele testu Azure AD](#create-an-azure-ad-test-user)** – k testování jednotného přihlášení Azure AD s Brittou Simonovou.
-4. **[Přiřaďte testovacímu uživateli Azure AD](#assign-the-azure-ad-test-user)** – chcete-li Britta Simon ové povolit použití jednotného přihlášení azure ad.
-5. **[Vytvořit FactSet testovací ho uživatele](#create-factset-test-user)** – mít protějšek Britta Simon v FactSet, který je propojen s reprezentaci Azure AD uživatele.
-6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** - chcete-li ověřit, zda konfigurace funguje.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** Najděte **XML metadata federace** a vyberte **Stáhnout** a Stáhněte si soubor metadat a uložte ho do svého počítače.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
+    ![Odkaz na stažení certifikátu](common/metadataxml.png)
 
-V této části povolíte jednotné přihlašování Azure AD na webu Azure Portal.
+1. V části **Nastavení FactSet** zkopírujte na základě vašeho požadavku příslušné adresy URL.
 
-Chcete-li nakonfigurovat jednotné přihlašování Azure AD pomocí sady faktů, proveďte následující kroky:
+    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-1. Na [portálu Azure](https://portal.azure.com/)na stránce integrace aplikací **FactSet** vyberte **Jedno přihlášení**.
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
-    ![Konfigurace odkazu pro jednotné přihlášení](common/select-sso.png)
+V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-2. V **dialogovém okně Vybrat metodu jednotného přihlašování** vyberte režim **SAML/WS-Fed,** abyste povolili jednotné přihlašování.
-
-    ![Režim výběru jednotného přihlášení](common/select-saml-option.png)
-
-3. Na stránce **Nastavit jednotné přihlašování pomocí saml** kliknutím na ikonu **Upravit** otevřete dialogové okno Základní **konfigurace SAML.**
-
-    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
-
-4. V části **Základní konfigurace SAML** proveďte následující kroky:
-
-    ![Informace o jedné přihlašování doméně a adres URL fakta](common/sp-identifier.png)
-
-    a. Do textového pole **Adresa URL přihlášení** zadejte adresu URL pomocí následujícího vzoru:`https://<intendedDestinationURL>.factset.com?idpid=<GUID>`
-
-    b. Do textového pole **Identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru:`https://login.factset.com`
-
-    > [!NOTE]
-    > Tyto hodnoty nejsou skutečné. Aktualizujte tyto hodnoty skutečnou přihlašovací adresou URL a identifikátorem. Chcete-li získat tyto hodnoty, obraťte se na zástupce účtu FactSet. Pokud nevíte, kdo je vaším zástupcem FactSet, můžete najít nápovědu na [stránce Čísla podpory FactSet](https://www.factset.com/support-numbers). Můžete také odkazovat na vzory uvedené v části **Základní konfigurace SAML** na webu Azure Portal.
-
-5. Na stránce **Nastavit jednotné přihlašování pomocí saml** klikněte v části **Podpisový certifikát SAML** na **Stáhnout** a stáhněte si xml **metadat federace** z daných možností podle vašeho požadavku a uložte ho do počítače.
-
-    ![Odkaz ke stažení certifikátu](common/metadataxml.png)
-
-6. V části **Nastavit sadu faktů** zkopírujte příslušnou adresu URL podle vašeho požadavku.
-
-    ![Kopírování konfiguračních adres URL](common/copy-configuration-urls.png)
-
-    a. Přihlašovací adresa URL
-
-    b. Identifikátor azure reklamy
-
-    c. Adresa URL odhlášení
-
-### <a name="configure-factset-single-sign-on"></a>Konfigurace jednotného přihlašování sady faktů
-
-Chcete-li nakonfigurovat jednotné přihlašování na straně **FactSet,** musíte odeslat stažený **xml metadat federace** a příslušné zkopírované adresy URL z portálu Azure na osoby podpory FactSet, se kterými jste v kontaktu. Toto nastavení nastaví tak, aby bylo připojení s přizasazené k samovazbě SAML správně nastaveno na obou stranách.
-
-### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
-
-Cílem této části je vytvořit testovacího uživatele na webu Azure portal s názvem Britta Simon.
-
-1. Na webu Azure Portal v levém podokně vyberte **Azure Active Directory**, vyberte **Uživatelé**a pak vyberte **Všichni uživatelé**.
-
-    ![Odkazy "Uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
-
-2. V horní části obrazovky vyberte **Nový uživatel.**
-
-    ![Tlačítko nového uživatele](common/new-user.png)
-
-3. Ve vlastnostech User proveďte následující kroky.
-
-    ![Dialogové okno Uživatel](common/user-properties.png)
-
-    a. Do pole **Název** zadejte **BrittaSimon**.
-  
-    b. V poli **Uživatelské jméno** zadejte **\@brittasimon vašecompanydomain.extension**  
-    Například BrittaSimon@contoso.com.
-
-    c. Zaškrtněte **políčko Zobrazit heslo** a poznamenejte si hodnotu, která se zobrazí v poli Heslo.
-
-    d. Klikněte na **Vytvořit**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V horní části obrazovky vyberte **Nový uživatel** .
+1. Ve vlastnostech **uživatele** proveďte následující kroky:
+   1. Do pole **Název** zadejte `B.Simon`.  
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon používat Azure jednotné přihlašování udělením přístupu k FactSet.
+V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k FactSet.
 
-1. Na portálu Azure vyberte **Podnikové aplikace**, vyberte **Všechny aplikace**a pak vyberte **FactSet**.
+1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte **FactSet**.
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+   ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-2. V seznamu aplikací vyberte **FactSet**.
+1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
-    ![Odkaz FactSet v seznamu Aplikace](common/all-applications.png)
+    ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
-3. V nabídce vlevo vyberte **Možnost Uživatelé a skupiny**.
+1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-    ![Odkaz "Uživatelé a skupiny"](common/users-groups-blade.png)
+## <a name="configure-factset-sso"></a>Konfigurace jednotného přihlašování FactSet
 
-4. Klikněte na tlačítko **Přidat uživatele** a v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny.**
+Ke konfiguraci jednotného přihlašování na straně **FactSet** je potřeba odeslat stažený **soubor XML federačních metadat** a příslušné zkopírované adresy URL z Azure Portal na zástupce podpory FactSet účtu nebo na [tým podpory FactSet](https://www.factset.com/contact-us). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
 
-    ![Podokno Přidat přiřazení](common/add-assign-user.png)
+### <a name="create-factset-test-user"></a>Vytvořit testovacího uživatele FactSet
 
-5. V dialogovém okně **Uživatelé a skupiny** vyberte **brittu Simonovou** v seznamu Uživatelé a klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+V této části vytvoříte uživatele s názvem Britta Simon v FactSet. Spolupracujte se zástupci podpory účtu FactSet nebo kontaktujte [tým podpory FactSet](https://www.factset.com/contact-us) a přidejte uživatele na platformě FactSet. Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
-6. Pokud očekáváte libovolnou hodnotu role v kontrolním výrazu SAML, vyberte v dialogovém okně **Vybrat roli** příslušnou roli pro uživatele ze seznamu a klepněte na tlačítko **Vybrat** v dolní části obrazovky.
+## <a name="test-sso"></a>Test SSO 
 
-7. V dialogovém okně **Přidat přiřazení** klepněte na tlačítko **Přiřadit.**
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-### <a name="create-factset-test-user"></a>Vytvořit testovacího uživatele Sady faktů
+Když na přístupovém panelu kliknete na dlaždici FactSet, měli byste se automaticky přihlásit k FactSet, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-V této části vytvoříte uživatele s názvem Britta Simon v FactSet. Spolupracujte se zástupci podpory účtu FactSet a přidejte uživatele do platformy FactSet. Uživatelé musí být vytvořena a aktivována před použitím jednotného přihlášení.
+## <a name="additional-resources"></a>Další materiály a zdroje informací
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-V této části otestujete konfiguraci jednotného přihlášení Azure AD pomocí přístupového panelu.
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-Po kliknutí na dlaždici FactSet na přístupovém panelu, by měl být automaticky přihlášeni k FactSet, pro které nastavíte přiřazovat. Další informace o přístupovém panelu naleznete [v tématu Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-## <a name="additional-resources"></a>Další zdroje
+- [Vyzkoušejte si FactSet s Azure AD](https://aad.portal.azure.com/)
 
-- [Seznam výukových programů o integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-
-- [Co je podmíněný přístup ve službě Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Jak chránit FactSet pomocí pokročilých viditelností a ovládacích prvků](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 

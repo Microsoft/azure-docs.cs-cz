@@ -1,6 +1,6 @@
 ---
-title: Azure Data Lake Storage Gen2 Python SDK pro soubory & Seznamy ACL
-description: Pomocí správy adresářů a seznamů řízení přístupu k souborům a adresářům (ACL) v účtech úložiště, které mají povolený hierarchický obor názvů (HNS).
+title: Azure Data Lake Storage Gen2 Python SDK for Files & seznamy ACL
+description: Pomocí Pythonu spravujte adresáře a seznamy řízení přístupu k souborům a adresářům (ACL) v účtech úložiště, které mají povolený hierarchický obor názvů (HNS).
 author: normesta
 ms.service: storage
 ms.date: 04/10/2020
@@ -9,33 +9,33 @@ ms.topic: article
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.openlocfilehash: a79f3110206a01b9b974952f0ec0d299644be11f
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81262345"
 ---
 # <a name="use-python-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Použití Pythonu ke správě adresářů, souborů a seznamů ACL v Azure Data Lake Storage Gen2
 
-Tento článek ukazuje, jak pomocí Pythonu vytvářet a spravovat adresáře, soubory a oprávnění v účtech úložiště, které mají povolený hierarchický obor názvů (HNS). 
+V tomto článku se dozvíte, jak pomocí Pythonu vytvářet a spravovat adresáře, soubory a oprávnění v účtech úložiště, které mají povolený hierarchický obor názvů (HNS). 
 
-[Balíček (Python Package Package Index)](https://pypi.org/project/azure-storage-file-datalake/) | [Ukázky](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples) | [ROZHRANÍ API odkaz](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-storage-file-datalake/12.0.0/azure.storage.filedatalake.html) | [Gen1 na Gen2 mapování](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md) | [poskytnout zpětnou vazbu](https://github.com/Azure/azure-sdk-for-python/issues)
+[Package (index balíčku Python)](https://pypi.org/project/azure-storage-file-datalake/) | [ukázky](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples) | [rozhraní API](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-storage-file-datalake/12.0.0/azure.storage.filedatalake.html) | [pro Gen1 k mapování](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md) | Gen2 pro[poskytnutí zpětné vazby](https://github.com/Azure/azure-sdk-for-python/issues)
 
 ## <a name="prerequisites"></a>Požadavky
 
 > [!div class="checklist"]
 > * Předplatné Azure. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
-> * Účet úložiště, který má povolen hierarchický obor názvů (HNS). [Chcete-li](data-lake-storage-quickstart-create-account.md) jej vytvořit, postupujte podle těchto pokynů.
+> * Účet úložiště, který má povolený hierarchický obor názvů (HNS). Pokud ho chcete vytvořit, postupujte podle [těchto](data-lake-storage-quickstart-create-account.md) pokynů.
 
 ## <a name="set-up-your-project"></a>Nastavení projektu
 
-Nainstalujte klientskou knihovnu Azure Data Lake Storage pro Python pomocí [pipu](https://pypi.org/project/pip/).
+Nainstalujte klientskou knihovnu Azure Data Lake Storage pro Python pomocí [PIP](https://pypi.org/project/pip/).
 
 ```
 pip install azure-storage-file-datalake
 ```
 
-Přidejte tyto příkazy importu do horní části souboru kódu.
+Přidejte tyto příkazy pro import do horní části souboru kódu.
 
 ```python
 import os, uuid, sys
@@ -44,13 +44,13 @@ from azure.core._match_conditions import MatchConditions
 from azure.storage.filedatalake._models import ContentSettings
 ```
 
-## <a name="connect-to-the-account"></a>Připojení k účtu
+## <a name="connect-to-the-account"></a>Připojit k účtu
 
-Chcete-li použít výstřižky v tomto článku, budete muset vytvořit instanci **DataLakeServiceClient,** která představuje účet úložiště. 
+Pokud chcete používat fragmenty kódu v tomto článku, budete muset vytvořit instanci **DataLakeServiceClient** , která představuje účet úložiště. 
 
 ### <a name="connect-by-using-an-account-key"></a>Připojení pomocí klíče účtu
 
-Toto je nejjednodušší způsob připojení k účtu. 
+Toto je nejjednodušší způsob, jak se připojit k účtu. 
 
 Tento příklad vytvoří instanci **DataLakeServiceClient** pomocí klíče účtu.
 
@@ -65,15 +65,15 @@ except Exception as e:
     print(e)
 ```
  
-- `storage_account_name` Nahraďte zástupnou hodnotu názvem svého účtu úložiště.
+- Nahraďte `storage_account_name` hodnotu zástupného symbolu názvem vašeho účtu úložiště.
 
-- `storage_account_key` Nahraďte zástupnou hodnotu klíčem pro přístup k účtu úložiště.
+- Nahraďte `storage_account_key` hodnotu zástupného symbolu vaším klíčem pro přístup k účtu úložiště.
 
-### <a name="connect-by-using-azure-active-directory-ad"></a>Připojení pomocí služby Azure Active Directory (AD)
+### <a name="connect-by-using-azure-active-directory-ad"></a>Připojení pomocí Azure Active Directory (AD)
 
-Klientská [knihovna identity Azure pro Python](https://pypi.org/project/azure-identity/) můžete použít k ověření vaší aplikace pomocí Azure AD.
+K ověření vaší aplikace v Azure AD můžete použít [klientskou knihovnu Azure identity pro Python](https://pypi.org/project/azure-identity/) .
 
-Tento příklad vytvoří instanci **DataLakeServiceClient** pomocí ID klienta, tajný klíč klienta a ID klienta.  Pokud chcete získat tyto hodnoty, najdete v článku [Získání tokenu z Azure AD pro autorizaci požadavků z klientské aplikace](../common/storage-auth-aad-app.md).
+Tento příklad vytvoří instanci **DataLakeServiceClient** pomocí ID klienta, tajného klíče klienta a ID tenanta.  Pokud chcete získat tyto hodnoty, přečtěte si téma [získání tokenu z Azure AD pro autorizaci žádostí z klientské aplikace](../common/storage-auth-aad-app.md).
 
 ```python
 def initialize_storage_account_ad(storage_account_name, client_id, client_secret, tenant_id):
@@ -91,13 +91,13 @@ def initialize_storage_account_ad(storage_account_name, client_id, client_secret
 ```
 
 > [!NOTE]
-> Další příklady najdete v [knihovně klienta identity Azure pro](https://pypi.org/project/azure-identity/) dokumentaci pythonu.
+> Další příklady najdete v dokumentaci ke [klientské knihovně Azure identity pro Python](https://pypi.org/project/azure-identity/) .
 
 ## <a name="create-a-file-system"></a>Vytvoření systému souborů
 
-Systém souborů funguje jako kontejner pro vaše soubory. Můžete vytvořit pomocí metody **FileSystemDataLakeServiceClient.create_file_system.**
+Systém souborů funguje jako kontejner pro vaše soubory. Můžete jej vytvořit zavoláním metody **FileSystemDataLakeServiceClient. create_file_system** .
 
-Tento příklad vytvoří systém `my-file-system`souborů s názvem .
+Tento příklad vytvoří systém souborů s názvem `my-file-system`.
 
 ```python
 def create_file_system():
@@ -113,9 +113,9 @@ def create_file_system():
 
 ## <a name="create-a-directory"></a>Vytvoření adresáře
 
-Vytvořte odkaz na adresář voláním metody **FileSystemClient.create_directory.**
+Vytvořte odkaz na adresář voláním metody **FileSystemClient. create_directory** .
 
-Tento příklad přidá `my-directory` adresář s názvem do systému souborů. 
+Tento příklad přidá adresář s názvem `my-directory` do systému souborů. 
 
 ```python
 def create_directory():
@@ -128,9 +128,9 @@ def create_directory():
 
 ## <a name="rename-or-move-a-directory"></a>Přejmenování nebo přesunutí adresáře
 
-Přejmenujte nebo přesuňte adresář voláním metody **DataLakeDirectoryClient.rename_directory.** Předá cestu požadovaného adresáře parametr. 
+Přejmenujte nebo přesuňte adresář voláním metody **DataLakeDirectoryClient. rename_directory** . Předejte cestu k požadovanému adresáři do parametru. 
 
-Tento příklad přejmenuje podadresář na `my-subdirectory-renamed`název .
+Tento příklad přejmenuje podadresář na název `my-subdirectory-renamed`.
 
 ```python
 def rename_directory():
@@ -148,9 +148,9 @@ def rename_directory():
 
 ## <a name="delete-a-directory"></a>Odstranění adresáře
 
-Odstraňte adresář voláním metody **DataLakeDirectoryClient.delete_directory.**
+Odstraňte adresář voláním metody **DataLakeDirectoryClient. delete_directory** .
 
-Tento příklad odstraní adresář `my-directory`s názvem .  
+Tento příklad odstraní adresář s názvem `my-directory`.  
 
 ```python
 def delete_directory():
@@ -163,14 +163,14 @@ def delete_directory():
      print(e) 
 ```
 
-## <a name="manage-directory-permissions"></a>Správa oprávnění adresáře
+## <a name="manage-directory-permissions"></a>Spravovat oprávnění adresáře
 
-Získejte seznam řízení přístupu (ACL) adresáře voláním metody **DataLakeDirectoryClient.get_access_control** a nastavte seznam ACL voláním metody **DataLakeDirectoryClient.set_access_control.**
+Získejte seznam řízení přístupu (ACL) adresáře voláním metody **DataLakeDirectoryClient. get_access_control** a nastavte seznam řízení přístupu voláním metody **DataLakeDirectoryClient. set_access_control** .
 
 > [!NOTE]
-> Pokud vaše aplikace autorizuje přístup pomocí Služby Azure Active Directory (Azure AD), ujistěte se, že objekt zabezpečení, který vaše aplikace používá k autorizaci přístupu, byl přiřazen [roli vlastníka dat objektu blob úložiště](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner). Další informace o použití oprávnění seznamu ACL a jejich efektech najdete [v tématu Řízení přístupu v azure datovém úložišti.](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)
+> Pokud vaše aplikace autorizuje přístup pomocí Azure Active Directory (Azure AD), ujistěte se, že se k objektu zabezpečení, který vaše aplikace používá k autorizaci přístupu, přiřadila [role vlastníka dat objektu BLOB úložiště](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner). Pokud se chcete dozvědět víc o tom, jak se používají oprávnění seznamu ACL, a důsledky jejich změny, přečtěte si téma [řízení přístupu v Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control).
 
-Tento příklad získá a nastaví seznam `my-directory`ACL adresáře s názvem . Řetězec `rwxr-xrw-` poskytuje vlastnícímu uživateli oprávnění ke čtení, zápisu a spouštění, poskytuje vlastnící skupině pouze oprávnění ke čtení a spouštění a uděluje všem ostatním oprávnění ke čtení a zápisu.
+Tento příklad načte a nastaví seznam řízení přístupu k adresáři s `my-directory`názvem. Řetězec `rwxr-xrw-` přiřadí vlastnícímu uživateli oprávnění ke čtení, zápisu a spouštění, dává vlastnící skupině pouze oprávnění číst a spouštět a poskytuje všem ostatním oprávnění ke čtení a zápisu.
 
 ```python
 def manage_directory_permissions():
@@ -197,9 +197,9 @@ def manage_directory_permissions():
 
 ## <a name="upload-a-file-to-a-directory"></a>Nahrání souboru do adresáře 
 
-Nejprve vytvořte odkaz na soubor v cílovém adresáři vytvořením instance třídy **DataLakeFileClient.** Nahrajte soubor voláním metody **DataLakeFileClient.append_data.** Nezapomeňte dokončit nahrávání voláním **Metody DataLakeFileClient.flush_data.**
+Nejprve vytvořte odkaz na soubor v cílovém adresáři vytvořením instance třídy **DataLakeFileClient** . Nahrajte soubor voláním metody **DataLakeFileClient. append_data** . Ujistěte se, že jste dokončí nahrávání voláním metody **DataLakeFileClient. flush_data** .
 
-Tento příklad odešle textový soubor `my-directory`do adresáře s názvem .   
+Tento příklad nahraje textový soubor do adresáře s názvem `my-directory`.   
 
 ```python
 def upload_file_to_directory():
@@ -223,11 +223,11 @@ def upload_file_to_directory():
 ```
 
 > [!TIP]
-> Pokud je velikost souboru velká, bude váš kód muset provést více volání **metody DataLakeFileClient.append_data.** Zvažte použití metody **DataLakeFileClient.upload_data.** Tímto způsobem můžete nahrát celý soubor v jednom hovoru. 
+> Pokud je velikost souboru velká, váš kód bude muset provést více volání metody **DataLakeFileClient. append_data** . Místo toho zvažte použití metody **DataLakeFileClient. upload_data** . Tímto způsobem můžete nahrát celý soubor v jednom volání. 
 
 ## <a name="upload-a-large-file-to-a-directory"></a>Nahrání velkého souboru do adresáře
 
-Pomocí metody **DataLakeFileClient.upload_data** nahrát velké soubory bez nutnosti více volání **DataLakeFileClient.append_data** metoda.
+Pro nahrání velkých souborů použijte metodu **DataLakeFileClient. upload_data** , aniž byste museli provádět více volání metody **DataLakeFileClient. append_data** .
 
 ```python
 def upload_file_to_directory_bulk():
@@ -251,12 +251,12 @@ def upload_file_to_directory_bulk():
 
 ## <a name="manage-file-permissions"></a>Správa oprávnění k souborům
 
-Získejte seznam řízení přístupu (ACL) souboru voláním metody **DataLakeFileClient.get_access_control** a nastavte seznam ACL voláním metody **DataLakeFileClient.set_access_control.**
+Získání seznamu řízení přístupu (ACL) souboru voláním metody **DataLakeFileClient. get_access_control** a nastavením seznamu ACL voláním metody **DataLakeFileClient. set_access_control** .
 
 > [!NOTE]
-> Pokud vaše aplikace autorizuje přístup pomocí Služby Azure Active Directory (Azure AD), ujistěte se, že objekt zabezpečení, který vaše aplikace používá k autorizaci přístupu, byl přiřazen [roli vlastníka dat objektu blob úložiště](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner). Další informace o použití oprávnění seznamu ACL a jejich efektech najdete [v tématu Řízení přístupu v azure datovém úložišti.](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)
+> Pokud vaše aplikace autorizuje přístup pomocí Azure Active Directory (Azure AD), ujistěte se, že se k objektu zabezpečení, který vaše aplikace používá k autorizaci přístupu, přiřadila [role vlastníka dat objektu BLOB úložiště](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner). Pokud se chcete dozvědět víc o tom, jak se používají oprávnění seznamu ACL, a důsledky jejich změny, přečtěte si téma [řízení přístupu v Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control).
 
-Tento příklad získá a nastaví aCL souboru s názvem `my-file.txt`. Řetězec `rwxr-xrw-` poskytuje vlastnícímu uživateli oprávnění ke čtení, zápisu a spouštění, poskytuje vlastnící skupině pouze oprávnění ke čtení a spouštění a uděluje všem ostatním oprávnění ke čtení a zápisu.
+Tento příklad získá a nastaví seznam řízení přístupu k souboru s `my-file.txt`názvem. Řetězec `rwxr-xrw-` přiřadí vlastnícímu uživateli oprávnění ke čtení, zápisu a spouštění, dává vlastnící skupině pouze oprávnění číst a spouštět a poskytuje všem ostatním oprávnění ke čtení a zápisu.
 
 ```python
 def manage_file_permissions():
@@ -285,7 +285,7 @@ def manage_file_permissions():
 
 ## <a name="download-from-a-directory"></a>Stažení z adresáře 
 
-Otevřete místní soubor pro psaní. Potom vytvořte instanci **DataLakeFileClient,** která představuje soubor, který chcete stáhnout. Volání **DataLakeFileClient.read_file** číst bajty ze souboru a pak zapsat tyto bajty do místního souboru. 
+Otevřete místní soubor pro zápis. Pak vytvořte instanci **DataLakeFileClient** , která představuje soubor, který chcete stáhnout. Zavolejte **DataLakeFileClient. read_file** pro čtení bajtů ze souboru a pak zapište tyto bajty do místního souboru. 
 
 ```python
 def download_file_from_directory():
@@ -311,9 +311,9 @@ def download_file_from_directory():
 ```
 ## <a name="list-directory-contents"></a>Výpis obsahu adresáře
 
-Seznam obsahu adresáře voláním metody **FileSystemClient.get_paths** a následným výčetem výsledků.
+Výpis obsahu adresáře voláním metody **FileSystemClient. get_paths** a následným vytvořením výčtu výsledků.
 
-V tomto příkladu vytiskne cestu ke každému podadresáři a souboru, který je umístěn v adresáři s názvem `my-directory`.
+Tento příklad vytiskne cestu každého podadresáře a souboru, který se nachází v adresáři s názvem `my-directory`.
 
 ```python
 def list_directory_contents():
@@ -333,8 +333,8 @@ def list_directory_contents():
 ## <a name="see-also"></a>Viz také
 
 * [Referenční dokumentace k rozhraní API](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-storage-file-datalake/12.0.0b5/index.html)
-* [Balíček (index balíčků Pythonu)](https://pypi.org/project/azure-storage-file-datalake/)
+* [Balíček (index balíčku Pythonu)](https://pypi.org/project/azure-storage-file-datalake/)
 * [ukázky](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples)
-* [Mapování Gen1 až Gen2](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md)
+* [Mapování Gen1 na Gen2](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md)
 * [Známé problémy](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
-* [Poskytnout zpětnou vazbu](https://github.com/Azure/azure-sdk-for-python/issues)
+* [Sdělte nám svůj názor](https://github.com/Azure/azure-sdk-for-python/issues)

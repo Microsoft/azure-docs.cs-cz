@@ -1,7 +1,7 @@
 ---
-title: DatetimeV2 Předem sestavené entity – LUIS
+title: DatetimeV2 předem připravené entity – LUIS
 titleSuffix: Azure Cognitive Services
-description: Tento článek obsahuje informace o předem sestavené entitě datetimeV2 v jazyce Porozumění (LUIS).
+description: V tomto článku jsou datetimeV2 informace o předem sestavené entitě v Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,22 +12,22 @@ ms.topic: reference
 ms.date: 04/13/2020
 ms.author: diberry
 ms.openlocfilehash: 33f8b787119e1c5d6d1a1bb28c94d9791a1c048e
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81272606"
 ---
-# <a name="datetimev2-prebuilt-entity-for-a-luis-app"></a>DatetimeV2 předem sestavená entita pro aplikaci LUIS
+# <a name="datetimev2-prebuilt-entity-for-a-luis-app"></a>DatetimeV2 předem vytvořenou entitu pro aplikaci LUIS
 
-Předdefinovaná entita **datetimeV2** extrahuje hodnoty data a času. Tyto hodnoty vyřešit ve standardizovaném formátu pro klientské programy využívat. Pokud utterance má datum nebo čas, který není dokončen, LUIS zahrnuje _minulé i budoucí hodnoty_ v odpovědi koncového bodu. Vzhledem k tomu, že tato entita je již trénovaný, není nutné přidat příklad projevy obsahující datetimeV2 záměry aplikace.
+Předdefinované entity **datetimeV2** vyextrahují hodnoty data a času. Tyto hodnoty jsou vyřešeny ve standardizovaném formátu pro použití pro klientské programy. Pokud má utterance datum nebo čas, který není dokončený, LUIS zahrne do odpovědi koncového bodu _předchozí i budoucí hodnoty_ . Vzhledem k tomu, že je tato entita již vyškolená, nemusíte do záměrů aplikace přidat příklad projevy obsahující datetimeV2.
 
 ## <a name="types-of-datetimev2"></a>Typy datetimeV2
-DatetimeV2 se spravuje z úložiště GitHub [s textem pro rozpoznávání.](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-DateTime.yaml)
+DatetimeV2 se spravuje z úložiště GitHub [pro rozpoznávání textu](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-DateTime.yaml) .
 
-## <a name="example-json"></a>Příklad JSON
+## <a name="example-json"></a>Ukázkový kód JSON
 
-Následující utterance a jeho částečná odpověď JSON je uveden níže.
+Níže se zobrazí následující utterance a jeho částečná odpověď JSON.
 
 `8am on may 2nd 2019`
 
@@ -53,7 +53,7 @@ Následující utterance a jeho částečná odpověď JSON je uveden níže.
 }
 ```
 
-#### <a name="v3-verbose-response"></a>[V3 podrobná odpověď](#tab/1-2)
+#### <a name="v3-verbose-response"></a>[Podrobná odpověď V3](#tab/1-2)
 
 ```json
 
@@ -91,7 +91,7 @@ Následující utterance a jeho částečná odpověď JSON je uveden níže.
 }
 ```
 
-#### <a name="v2-response"></a>[Odpověď V2](#tab/1-3)
+#### <a name="v2-response"></a>[Odpověď v2](#tab/1-3)
 
 ```json
 "entities": [
@@ -115,18 +115,18 @@ Následující utterance a jeho částečná odpověď JSON je uveden níže.
 
 |Název vlastnosti |Typ a popis vlastnosti|
 |---|---|
-|Entita|**řetězec** - Text extrahovaný z utterance s typem data, času, časového rozsahu nebo časového rozsahu.|
-|type|**string** - Jeden [z podtypů datetimeV2](#subtypes-of-datetimev2)
-|Startindex|**int** - Index v utterance, ve kterém začíná entita.|
-|endIndex|**int** - Index v utterance, na kterém entita končí.|
-|řešení|Má `values` pole, které má [jednu,](#values-of-resolution)dvě nebo čtyři hodnoty rozlišení .|
-|end|Koncová hodnota času nebo časového období ve stejném `value`formátu jako . Používá se `type` `daterange`pouze `timerange`v případě, že je , , nebo`datetimerange`|
+|Entita|textový **řetězec** extrahovaný z utterance s typem data, času, rozsahem dat nebo časovým rozsahem.|
+|type|**String** – jeden z [podtypů datetimeV2](#subtypes-of-datetimev2)
+|Indexu|**int** – index v utterance, na kterém je entita začínat.|
+|Hodnota endIndex|**int** – index v utterance, na kterém končí entita.|
+|řešení|Má `values` pole, které má jednu, dvě nebo čtyři [hodnoty rozlišení](#values-of-resolution).|
+|end|Koncová hodnota času nebo rozsahu kalendářních dat ve stejném formátu jako `value`. Používá se pouze `type` `daterange`v případě `timerange`, nebo`datetimerange`|
 
 * * *
 
 ## <a name="subtypes-of-datetimev2"></a>Podtypy datetimeV2
 
-Předestavěná entita **datetimeV2** má následující podtypy a příklady každého z nich jsou uvedeny v následující tabulce:
+Předem sestavená entita **datetimeV2** má následující podtypy a příklady každé z nich jsou uvedeny v následující tabulce:
 * `date`
 * `time`
 * `daterange`
@@ -135,22 +135,22 @@ Předestavěná entita **datetimeV2** má následující podtypy a příklady ka
 
 
 ## <a name="values-of-resolution"></a>Hodnoty rozlišení
-* Pole má jeden prvek, pokud je datum nebo čas v utterance plně zadán a jednoznačný.
-* Pole má dva prvky, pokud datetimeV2 hodnota je nejednoznačná. Nejednoznačnost zahrnuje nedostatek konkrétního roku, času nebo časového rozsahu. Příklady viz [Nejednoznačná data.](#ambiguous-dates) Když je čas nejednoznačný pro A.M. nebo P.M., jsou zahrnuty obě hodnoty.
-* Pole má čtyři prvky, pokud utterance má dva prvky s nejednoznačností. Tato nejednoznačnost zahrnuje prvky, které mají:
+* Pole má jeden prvek, pokud je datum nebo čas v utterance plně zadaný a jednoznačně.
+* Pole má dva prvky, pokud je hodnota datetimeV2 dvojznačná. Nejednoznačnost zahrnuje chybějící konkrétní rok, čas nebo časový rozsah. Příklady naleznete v tématu [dvojznačná data](#ambiguous-dates) . Když je čas nejednoznačný pro dop. nebo odpoledne jsou zahrnuty obě hodnoty.
+* Pole má čtyři prvky, pokud má utterance dva prvky s nejednoznačnou. Tato nejednoznačnost zahrnuje prvky, které mají:
   * Datum nebo rozsah dat, který je nejednoznačný jako rok
-  * Časový nebo časový rozsah, který je nejednoznačný, pokud jde o dopoledne. nebo odp. Například 3:00 3.dubna.
+  * Časový nebo časový rozsah, který je nejednoznačný na dop. nebo odp. Například 3:00. dubna 3.
 
-Každý prvek `values` pole může mít následující pole:
+Každý prvek `values` pole může obsahovat následující pole:
 
 |Název vlastnosti|Popis vlastnosti|
 |--|--|
-|Timex|čas, datum nebo rozsah dat vyjádřený ve formátu TIMEX, který se řídí [standardem ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a atributy TIMEX3 pro poznámky pomocí jazyka TimeML.|
-|Mod|termín používaný k popisu, jak `before`používat `after`hodnotu, jako je , .|
-|type|Podtyp, který může být jednou z `datetime` `date`následujících položek: `duration` `set`, , `time`, `daterange` `timerange`, `datetimerange`, , .|
-|value|**Volitelné.** Objekt datetime v formátu yyyy-MM-dd (datum), HH:mm:ss (čas) yyyy-MM-dd HH:mm:ss (datetime). Pokud `type` `duration`je , hodnota je počet sekund (doba trvání) <br/> Používá se `type` `datetime` pouze `date` `time`v případě, že je nebo , nebo 'doba trvání.|
+|Timex|čas, datum nebo rozsah dat vyjádřený ve formátu TIMEX, který následuje po [standardu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) , a TIMEX3 atributů pro anotaci pomocí jazyka TimeML.|
+|střední|termín používaný k popisu způsobu použití hodnoty `before`, jako například,. `after`|
+|type|Podtyp, což může být jedna z následujících položek: `datetime`, `date`, `time`, `daterange`, `timerange`, `datetimerange`, `duration`,. `set`|
+|value|**Volitelné.** Objekt DateTime ve formátu RRRR-MM-DD (datum), HH: mm: SS (Time) RRRR-MM-DD HH: mm: SS (DateTime). Pokud `type` je `duration`, hodnota je počet sekund (trvání). <br/> Používá se pouze `type` v `datetime` případě `date`, `time`že je nebo, nebo ' Duration.|
 
-## <a name="valid-date-values"></a>Platné hodnoty kalendářních dat
+## <a name="valid-date-values"></a>Platné hodnoty data
 
 **DatetimeV2** podporuje data mezi následujícími rozsahy:
 
@@ -158,24 +158,24 @@ Každý prvek `values` pole může mít následující pole:
 |----------|-------------|
 | 1. ledna 1900   | 31. prosince 2099 |
 
-## <a name="ambiguous-dates"></a>Nejednoznačná data
+## <a name="ambiguous-dates"></a>Dvojznačná data
 
-Pokud datum může být v minulosti nebo budoucnosti, LUIS poskytuje obě hodnoty. Příkladem je utterance, která zahrnuje měsíc a datum bez roku.
+Pokud může být datum v minulosti nebo budoucnosti, LUIS poskytuje obě hodnoty. Příkladem je utterance, který obsahuje měsíc a datum bez roku.
 
-Například vzhledem k následující utterance:
+Například s ohledem na následující utterance:
 
 `May 2nd`
 
-* Pokud je dnešní datum 3.května 2017, LUIS poskytuje jako hodnoty "2017-05-02" a "2018-05-02".
-* Když je dnešní datum 1.května 2017, LUIS poskytuje jako hodnoty "2016-05-02" a "2017-05-02".
+* Pokud je dnešní datum třetí 2017, LUIS poskytuje hodnoty "2017-05-02" i "2018-05-02".
+* Pokud je dnešní datum 1. května 2017, LUIS poskytuje jako hodnoty hodnotu "2016-05-02" i "2017-05-02".
 
-Následující příklad ukazuje rozlišení entity "2.května". Toto usnesení předpokládá, že dnešní datum je datum mezi 2.5.2017 a 1.5.2018.
-Pole `X` s `timex` v poli jsou části data, které nejsou explicitně zadány v utterance.
+Následující příklad ukazuje řešení entity "Květen 2". Toto řešení předpokládá, že dnešní datum je v rozmezí od 2. května 2017 do 1. května 2018.
+Pole `X` v `timex` poli jsou části data, která nejsou explicitně určena v utterance.
 
-## <a name="date-resolution-example"></a>Příklad rozlišení data
+## <a name="date-resolution-example"></a>Příklad řešení data
 
 
-Následující utterance a jeho částečná odpověď JSON je uveden níže.
+Níže se zobrazí následující utterance a jeho částečná odpověď JSON.
 
 `May 2nd`
 
@@ -204,7 +204,7 @@ Následující utterance a jeho částečná odpověď JSON je uveden níže.
 }
 ```
 
-#### <a name="v3-verbose-response"></a>[V3 podrobná odpověď](#tab/2-2)
+#### <a name="v3-verbose-response"></a>[Podrobná odpověď V3](#tab/2-2)
 
 ```json
 "entities": {
@@ -244,7 +244,7 @@ Následující utterance a jeho částečná odpověď JSON je uveden níže.
 }
 ```
 
-#### <a name="v2-response"></a>[Odpověď V2](#tab/2-3)
+#### <a name="v2-response"></a>[Odpověď v2](#tab/2-3)
 
 ```json
   "entities": [
@@ -272,11 +272,11 @@ Následující utterance a jeho částečná odpověď JSON je uveden níže.
 ```
 * * *
 
-## <a name="date-range-resolution-examples-for-numeric-date"></a>Příklady rozlišení rozsahu kalendářních dat pro číselné datum
+## <a name="date-range-resolution-examples-for-numeric-date"></a>Příklady rozlišení rozsahu dat pro číselné datum
 
-Entita `datetimeV2` extrahuje rozsahy data a času. Pole `start` `end` a určují začátek a konec rozsahu. Pro utterance `May 2nd to May 5th`, LUIS poskytuje **daterange** hodnoty pro aktuální rok a další rok. V `timex` poli `XXXX` hodnoty označují nejednoznačnost roku. `P3D`označuje, že časové období je dlouhé tři dny.
+`datetimeV2` Entita extrahuje rozsahy data a času. Pole `start` a `end` určují začátek a konec rozsahu. Pro utterance `May 2nd to May 5th`poskytuje Luis hodnoty **DateRange** pro aktuální rok i pro příští rok. V `timex` poli `XXXX` hodnoty označují nejednoznačnost roku. `P3D`označuje, že časové období je dlouhé tři dny.
 
-Následující utterance a jeho částečná odpověď JSON je uveden níže.
+Níže se zobrazí následující utterance a jeho částečná odpověď JSON.
 
 `May 2nd to May 5th`
 
@@ -309,7 +309,7 @@ Následující utterance a jeho částečná odpověď JSON je uveden níže.
 ```
 
 
-#### <a name="v3-verbose-response"></a>[V3 podrobná odpověď](#tab/3-2)
+#### <a name="v3-verbose-response"></a>[Podrobná odpověď V3](#tab/3-2)
 
 ```json
 
@@ -352,7 +352,7 @@ Následující utterance a jeho částečná odpověď JSON je uveden níže.
 }
 ```
 
-#### <a name="v2-response"></a>[Odpověď V2](#tab/3-3)
+#### <a name="v2-response"></a>[Odpověď v2](#tab/3-3)
 
 ```json
 "entities": [
@@ -376,11 +376,11 @@ Následující utterance a jeho částečná odpověď JSON je uveden níže.
 ```
 * * *
 
-## <a name="date-range-resolution-examples-for-day-of-week"></a>Příklady rozlišení rozsahu kalendářních dat pro den v týdnu
+## <a name="date-range-resolution-examples-for-day-of-week"></a>Příklady rozlišení rozsahu dat pro den v týdnu
 
-Následující příklad ukazuje, jak LUIS používá **datetimeV2** k vyřešení utterance `Tuesday to Thursday`. V tomto příkladu je aktuální datum 19. Služba LUIS obsahuje hodnoty **rozsahu dat** pro obě období, která předcházejí aktuálnímu datu a následují je.
+Následující příklad ukazuje, jak LUIS používá **datetimeV2** k vyřešení utterance `Tuesday to Thursday`. V tomto příkladu je aktuální datum 19. června. LUIS zahrnuje **DateRange** hodnoty pro oba rozsahy dat, které předcházejí a sledují aktuální datum.
 
-Následující utterance a jeho částečná odpověď JSON je uveden níže.
+Níže se zobrazí následující utterance a jeho částečná odpověď JSON.
 
 `Tuesday to Thursday`
 
@@ -411,7 +411,7 @@ Následující utterance a jeho částečná odpověď JSON je uveden níže.
 }
 ```
 
-#### <a name="v3-verbose-response"></a>[V3 podrobná odpověď](#tab/4-2)
+#### <a name="v3-verbose-response"></a>[Podrobná odpověď V3](#tab/4-2)
 
 ```json
 "entities": {
@@ -453,7 +453,7 @@ Následující utterance a jeho částečná odpověď JSON je uveden níže.
 }
 ```
 
-#### <a name="v2-response"></a>[Odpověď V2](#tab/4-3)
+#### <a name="v2-response"></a>[Odpověď v2](#tab/4-3)
 
 ```json
   "entities": [
@@ -477,24 +477,24 @@ Následující utterance a jeho částečná odpověď JSON je uveden níže.
 ```
 * * *
 
-## <a name="ambiguous-time"></a>Nejednoznačný čas
-Pole hodnot má dva časové prvky, pokud je čas nebo časový rozsah nejednoznačný. Když je nejednoznačný čas, hodnoty mají oba AM. a P.M. Krát.
+## <a name="ambiguous-time"></a>Dvojznačný čas
+Pole hodnoty má dva prvky času, pokud je čas nebo časový rozsah nejednoznačný. Pokud je k dispozici dvojznačný čas, hodnoty mají jak dop. a odpoledne časový.
 
 ## <a name="time-range-resolution-example"></a>Příklad rozlišení časového rozsahu
 
-DatetimeV2 JSON odpověď byla změněna v rozhraní API V3. Následující příklad ukazuje, jak LUIS používá **datetimeV2** k vyřešení utterance, která má časový rozsah.
+V rozhraní API V3 se změnila odpověď DatetimeV2 JSON. Následující příklad ukazuje, jak LUIS používá **datetimeV2** k překladu utterance s časovým rozsahem.
 
-Změny z rozhraní API V2:
-* `datetimeV2.timex.type`vlastnost již není vrácena, `datetimev2.type`protože je vrácena na nadřazené úrovni .
-* Vlastnost `datetimeV2.value` byla přejmenována `datetimeV2.timex`na .
+Změny z rozhraní API v2:
+* `datetimeV2.timex.type`vlastnost již není vrácena, `datetimev2.type`protože je vrácena na nadřazené úrovni.
+* `datetimeV2.value` Vlastnost byla přejmenována na `datetimeV2.timex`.
 
-Následující utterance a jeho částečná odpověď JSON je uveden níže.
+Níže se zobrazí následující utterance a jeho částečná odpověď JSON.
 
 `from 6pm to 7pm`
 
 #### <a name="v3-response"></a>[Odpověď V3](#tab/5-1)
 
-Následující JSON je `verbose` s parametrem nastaveným na `false`:
+Následující kód JSON je s `verbose` parametrem nastaveným `false`na:
 
 ```JSON
 
@@ -517,9 +517,9 @@ Následující JSON je `verbose` s parametrem nastaveným na `false`:
     ]
 }
 ```
-#### <a name="v3-verbose-response"></a>[V3 podrobná odpověď](#tab/5-2)
+#### <a name="v3-verbose-response"></a>[Podrobná odpověď V3](#tab/5-2)
 
-Následující JSON je `verbose` s parametrem nastaveným na `true`:
+Následující kód JSON je s `verbose` parametrem nastaveným `true`na:
 
 ```json
 
@@ -557,7 +557,7 @@ Následující JSON je `verbose` s parametrem nastaveným na `true`:
     }
 }
 ```
-#### <a name="v2-response"></a>[Odpověď V2](#tab/5-3)
+#### <a name="v2-response"></a>[Odpověď v2](#tab/5-3)
 
 ```json
   "entities": [
@@ -582,9 +582,9 @@ Následující JSON je `verbose` s parametrem nastaveným na `true`:
 
 * * *
 
-## <a name="time-resolution-example"></a>Příklad rozlišení času
+## <a name="time-resolution-example"></a>Příklad časového rozlišení
 
-Následující utterance a jeho částečná odpověď JSON je uveden níže.
+Níže se zobrazí následující utterance a jeho částečná odpověď JSON.
 
 `8am`
 
@@ -609,7 +609,7 @@ Následující utterance a jeho částečná odpověď JSON je uveden níže.
     ]
 }
 ```
-#### <a name="v3-verbose-response"></a>[V3 podrobná odpověď](#tab/6-2)
+#### <a name="v3-verbose-response"></a>[Podrobná odpověď V3](#tab/6-2)
 
 ```json
 "entities": {
@@ -645,7 +645,7 @@ Následující utterance a jeho částečná odpověď JSON je uveden níže.
     }
 }
 ```
-#### <a name="v2-response"></a>[Odpověď V2](#tab/6-3)
+#### <a name="v2-response"></a>[Odpověď v2](#tab/6-3)
 
 ```json
 "entities": [
@@ -669,20 +669,20 @@ Následující utterance a jeho částečná odpověď JSON je uveden níže.
 
 * * *
 
-## <a name="deprecated-prebuilt-datetime"></a>Zastaralé předem sestavené datum
+## <a name="deprecated-prebuilt-datetime"></a>Zastaralá předdefinovaná hodnota DateTime
 
-Předem `datetime` sestavená entita je zastaralá a nahrazena **datetimeV2**.
+Předem vytvořená entita je zastaralá a nahrazuje ji **datetimeV2.** `datetime`
 
-Chcete-li nahradit `datetime` `datetimeV2` v aplikaci LUIS, proveďte následující kroky:
+Pokud ho `datetime` chcete `datetimeV2` nahradit v aplikaci Luis, proveďte následující kroky:
 
-1. Otevřete podokno **Entity** webového rozhraní LUIS.
-2. Odstraňte předem sestavenou entitu **datetime.**
-3. Klikněte na **Přidat předem vytvořenou entitu.**
-4. Vyberte **datetimeV2** a klepněte na tlačítko **Uložit**.
+1. Otevřete podokno **entity** webového rozhraní Luis.
+2. Odstraňte předem vytvořenou entitu **DateTime** .
+3. Klikněte na **Přidat předem vytvořenou entitu** .
+4. Vyberte **datetimeV2** a klikněte na **Uložit**.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o [koncovém bodu predikce V3](luis-migration-api-v3.md).
+Přečtěte si další informace o [koncovém bodu předpovědi V3](luis-migration-api-v3.md).
 
-Informace o [dimenzi](luis-reference-prebuilt-dimension.md), [e-mailových](luis-reference-prebuilt-email.md) entitách a [čísle](luis-reference-prebuilt-number.md).
+Přečtěte si informace o [dimenzích](luis-reference-prebuilt-dimension.md), [e-mailových](luis-reference-prebuilt-email.md) entitách a [číslech](luis-reference-prebuilt-number.md).
 

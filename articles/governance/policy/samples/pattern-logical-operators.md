@@ -1,55 +1,55 @@
 ---
-title: 'Vzor: Logické operátory v definici zásad'
-description: Tento vzor zásad Azure obsahuje příklady použití logických operátorů v definici zásad.
+title: 'Vzor: logické operátory v definici zásady'
+description: Tento vzor Azure Policy poskytuje příklady použití logických operátorů v definici zásady.
 ms.date: 04/15/2020
 ms.topic: sample
 ms.openlocfilehash: 691383b1f8ae34bbd51ce7f4f9310980e3c66537
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81272504"
 ---
-# <a name="azure-policy-pattern-logical-operators"></a>Vzor zásad Azure: logické operátory
+# <a name="azure-policy-pattern-logical-operators"></a>Azure Policy Pattern: logické operátory
 
-Definice zásady může obsahovat několik podmíněných příkazů. Můžete potřebovat, aby každé prohlášení bylo pravdivé, nebo potřebujete pouze některé z nich, aby byly pravdivé. Pro podporu těchto potřeb má jazyk [logické operátory](../concepts/definition-structure.md#logical-operators) pro **not**, **allOf**a **anyOf**. Jsou volitelné a mohou být vnořeny pro vytvoření složitých scénářů.
+Definice zásady může obsahovat několik podmíněných příkazů. Může být nutné, aby každý příkaz byl pravdivý, nebo jen některé z nich musí být pravdivé. Pro podporu těchto potřeb má jazyk [logické operátory](../concepts/definition-structure.md#logical-operators) pro **Not**, **allOf**a **anyOf**. Jsou volitelné a můžou být vnořené pro vytváření složitých scénářů.
 
-## <a name="sample-1-one-logical-operator"></a>Ukázka 1: Jeden logický operátor
+## <a name="sample-1-one-logical-operator"></a>Ukázka 1: jeden logický operátor
 
-Tato definice zásad vyhodnocuje účty CosmosDB a zjištová, zda jsou nakonfigurovány automatické převzetí služeb při selhání a více umístění zápisu. Pokud tomu tak není, [audit](../concepts/effects.md#audit) se aktivuje a vytvoří položku protokolu při vytvoření nebo aktualizaci nekompatibilního prostředku.
+Tato definice zásad vyhodnocuje účty CosmosDB, aby bylo možné zjistit, zda jsou konfigurovány automatické převzetí služeb při selhání a více umístění pro zápis. Pokud nejsou, [audit](../concepts/effects.md#audit) triggery a vytvoří položku protokolu, pokud je prostředek nedodržující předpisy vytvořen nebo aktualizován.
 
 :::code language="json" source="~/policy-templates/patterns/pattern-logical-operators-1.json":::
 
-### <a name="sample-1-explanation"></a>Ukázka 1: Vysvětlení
+### <a name="sample-1-explanation"></a>Ukázka 1: vysvětlení
 
 :::code language="json" source="~/policy-templates/patterns/pattern-logical-operators-1.json" range="6-22" highlight="3":::
 
-**PolicyRule.if** blok používá jeden **allOf** k zajištění, že jsou splněny všechny tři podmínky.
-Pouze v případě, že všechny tyto podmínky vyhodnotit na **hodnotu** true se aktivační událost auditu.
+**PolicyRule. if** blok používá jeden **allOf** k zajištění toho, aby všechny tři podmínky byly pravdivé.
+Aktivační událost pro **audit** se dá aktivovat jenom v případě, že se všechny tyto podmínky vyhodnotí jako true.
 
-## <a name="sample-2-multiple-logical-operators"></a>Ukázka 2: Více logických operátorů
+## <a name="sample-2-multiple-logical-operators"></a>Ukázka 2: více logických operátorů
 
-Tato definice zásad vyhodnocuje prostředky pro vzor pojmenování. Pokud se prostředek neshoduje, je [odmítnut](../concepts/effects.md#deny).
+Tato definice zásad vyhodnocuje prostředky pro vzor pojmenování. Pokud se prostředek neshoduje, je [odepřený](../concepts/effects.md#deny).
 
 :::code language="json" source="~/policy-templates/patterns/pattern-logical-operators-2.json":::
 
-### <a name="sample-2-explanation"></a>Ukázka 2: Vysvětlení
+### <a name="sample-2-explanation"></a>Ukázka 2: vysvětlení
 
 :::code language="json" source="~/policy-templates/patterns/pattern-logical-operators-2.json" range="7-21" highlight="2,3,9":::
 
-Tato **policyRule.if** blok také obsahuje jeden **allOf**, ale každá podmínka je zabalena **s není** logický operátor. Podmíněné uvnitř **ne** logické ho vyhodnotí nejprve a potom vyhodnotí **není** k určení, pokud celá klauzule je true nebo false. Pokud oba **nejsou** logické operátory vyhodnotit na true, efekt zásady aktivuje.
+Tento **policyRule. if** blok také obsahuje jeden **allOf**, ale každá podmínka je zabalena s nelogickým operátorem **Not** . Podmíněný v rámci logického operátoru **Not** vyhodnocuje jako první a pak vyhodnotí, aby se určilo **, jestli** je celá klauzule true nebo false. Pokud se **oba logické** operátory nevyhodnotí jako true, uplatní se u něj efekt zásad.
 
-## <a name="sample-3-combining-logical-operators"></a>Ukázka 3: Kombinování logických operátorů
+## <a name="sample-3-combining-logical-operators"></a>Ukázka 3: kombinování logických operátorů
 
-Tato definice zásad vyhodnocuje účty Java Spring, aby se zjistilo, jestli trasování není povoleno nebo jestli trasování není v úspěšném stavu.
+Tato definice zásad vyhodnocuje účty na jaře Java, aby bylo možné zjistit, zda není buď trasování zapnuto, nebo pokud trasování není v úspěšném stavu.
 
 :::code language="json" source="~/policy-templates/patterns/pattern-logical-operators-3.json":::
 
-### <a name="sample-3-explanation"></a>Ukázka 3: Vysvětlení
+### <a name="sample-3-explanation"></a>Ukázka 3: vysvětlení
 
 :::code language="json" source="~/policy-templates/patterns/pattern-logical-operators-3.json" range="6-28" highlight="3,8":::
 
-Tato **policyRule.if** blok obsahuje **allOf** a **anyOf** logické operátory. **AnyOf** logický operátor vyhodnotí true tak dlouho, dokud jedna zahrnuta podmínka je true. Jako _typ_ je jádrem **allOf**, musí vždy vyhodnotit true. Pokud _typ_ a jedna z podmínek v **anyOf** jsou true, aktivační událost efekt zásady.
+Tento **policyRule. if** blok zahrnuje logické operátory **allOf** a **anyOf** . Logický operátor **anyOf** vyhodnocuje hodnotu true, pokud je jedna zahrnutá podmínka pravdivá. Vzhledem k tomu, že _typ_ je v jádru **allOf**, musí vždy vyhodnotit hodnotu true. Pokud je _typ_ a jedna z podmínek v **anyOf** true, uplatní se vliv na zásady.
 
 ## <a name="next-steps"></a>Další kroky
 

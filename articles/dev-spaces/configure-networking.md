@@ -1,82 +1,82 @@
 ---
-title: Konfigurace sítě pro Azure Dev Spaces v různých síťových topologii
+title: Konfigurace sítě pro Azure Dev Spaces v různých topologiích sítě
 services: azure-dev-spaces
 ms.date: 03/17/2020
 ms.topic: conceptual
-description: Popisuje požadavky na sítě pro spuštění Azure Dev Spaces ve službách Azure Kubernetes Services
-keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery, CNI, kubenet, SDN, síť
+description: Popisuje požadavky na síť pro provozování Azure Dev Spaces ve službě Azure Kubernetes.
+keywords: Azure Dev Spaces, vývojářské prostory, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, CNI, kubenet, SDN, Network
 ms.openlocfilehash: 3e344576caf276ae7cb5fe00395c84810a4e7d32
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81262039"
 ---
-# <a name="configure-networking-for-azure-dev-spaces-in-different-network-topologies"></a>Konfigurace sítě pro Azure Dev Spaces v různých síťových topologii
+# <a name="configure-networking-for-azure-dev-spaces-in-different-network-topologies"></a>Konfigurace sítě pro Azure Dev Spaces v různých topologiích sítě
 
-Azure Dev Spaces běží na clusterech Služby Azure Kubernetes (AKS) s výchozí konfigurací sítě. Pokud chcete změnit konfiguraci sítě clusteru AKS, jako je například umístění clusteru za bránu firewall, použití skupin zabezpečení sítě nebo použití zásad sítě, je třeba zahrnout další důležité informace pro spuštění Azure Dev Spaces.
+Azure Dev Spaces běží na clusterech AKS (Azure Kubernetes Service) s výchozí konfigurací sítě. Pokud chcete změnit konfiguraci sítě pro cluster AKS, jako je například uvedení clusteru za bránou firewall, používání skupin zabezpečení sítě nebo použití zásad sítě, je nutné přidat další požadavky na spuštění Azure Dev Spaces.
 
 ![Konfigurace virtuální sítě](media/configure-networking/virtual-network-clusters.svg)
 
-## <a name="virtual-network-or-subnet-configurations"></a>Konfigurace virtuální sítě nebo podsítě
+## <a name="virtual-network-or-subnet-configurations"></a>Konfigurace virtuálních sítí nebo podsítí
 
-Cluster AKS může mít jinou konfiguraci virtuální sítě nebo podsítě, která omezuje příchozí nebo odchozí přenosy pro cluster AKS. Cluster může být například za bránou firewall, jako je například Brána Azure Firewall, nebo můžete použít skupiny zabezpečení sítě nebo vlastní role pro omezení síťového provozu. Ukázkovou konfiguraci sítě najdete v [ukázkovém úložišti Azure Dev Spaces na GitHubu][sample-repo].
+Cluster AKS může mít jinou konfiguraci virtuální sítě nebo podsítě pro omezení příchozího nebo odchozího provozu clusteru AKS. Cluster může být například za bránou firewall, například Azure Firewall, nebo můžete použít skupiny zabezpečení sítě nebo vlastní role pro omezení síťového provozu. Ukázkovou konfiguraci sítě najdete v [ukázkovém úložišti Azure dev Spaces na GitHubu][sample-repo].
 
-Azure Dev Spaces má určité požadavky pro *příchozí a odchozí síťový* provoz, jakož i příchozí přenos y *pouze* přenosy dat. Pokud používáte Azure Dev Spaces v clusteru AKS s virtuální sítí nebo konfigurací podsítě, která omezuje provoz pro váš cluster AKS, musíte postupovat pouze podle následujících požadavků na příchozí přenos y a odchozí přenosy, aby azure dev spaces správně fungovaly.
+Azure Dev Spaces má určité požadavky na příchozí *a odchozí* síťový provoz a také provoz *jenom* příchozí přenos dat. Pokud používáte Azure Dev Spaces v clusteru AKS s konfigurací virtuální sítě nebo podsítě, která omezuje provoz clusteru AKS, je nutné pro správné fungování Azure Dev Spaces postupovat podle následujících požadavků na příchozí a odchozí přenos dat.
 
-### <a name="ingress-and-egress-network-traffic-requirements"></a>Požadavky na přenos v síti příchozích a odchozích přenosů
+### <a name="ingress-and-egress-network-traffic-requirements"></a>Požadavky na příchozí a odchozí provoz sítě
 
-Azure Dev Spaces potřebuje příchozí a odchozí provoz pro následující sítě souborů FQDN:
+Azure Dev Spaces potřebuje příchozí a odchozí provoz pro tyto plně kvalifikované názvy domény:
 
 | FQDN                       | Port       | Použití      |
 |----------------------------|------------|----------|
-| cloudflare.docker.com      | HTTPS: 443 | Vyžádat impulzy dockeru pro Azure Dev Spaces |
-| gcr.io                     | HTTPS: 443 | Stažení imitace kormidel pro Azure Dev Spaces |
-| storage.googleapis.com     | HTTPS: 443 | Stažení imitace kormidel pro Azure Dev Spaces |
-| azds-*.azds.io             | HTTPS: 443 | Pokud můžete komunikovat s back-endovými službami Azure Dev Spaces pro řadič Azure Dev Spaces. Přesný úplně kvalifikovaný kvalifikovaný přístup k datům lze nalézt v *datovém letadleFqdn*`USERPROFILE\.azds\settings.json` |
+| cloudflare.docker.com      | HTTPS: 443 | Načtení imagí Docker pro Azure Dev Spaces |
+| gcr.io                     | HTTPS: 443 | Vyžádání imagí Helm pro Azure Dev Spaces |
+| storage.googleapis.com     | HTTPS: 443 | Vyžádání imagí Helm pro Azure Dev Spaces |
+| azds-*. azds. IO             | HTTPS: 443 | Pro komunikaci s Azure Dev Spaces back-end službami pro kontroler Azure Dev Spaces. Přesný plně kvalifikovaný název domény najdete v *dataplaneFqdn* v.`USERPROFILE\.azds\settings.json` |
 
-Aktualizujte bránu firewall nebo konfiguraci zabezpečení tak, aby síťový provoz umožňoval do a ze všech výše uvedených skupinových skupin ových kvantiten. Pokud například k zabezpečení sítě používáte bránu firewall, měly by být výše uvedené názvy domén přidány do pravidla aplikace brány firewall, aby byl povolen provoz do a z těchto domén.
+Aktualizujte bránu firewall nebo konfiguraci zabezpečení tak, aby povolovaly síťový provoz do a ze všech výše uvedených plně kvalifikovaných názvů domén. Pokud například používáte bránu firewall k zabezpečení sítě, je třeba přidat výše uvedené plně kvalifikované názvy domény do aplikačního pravidla brány firewall, aby se povolil přenos do a z těchto domén.
 
-### <a name="ingress-only-network-traffic-requirements"></a>Příchozí přenos pouze požadavky na provoz v síti
+### <a name="ingress-only-network-traffic-requirements"></a>Jenom příchozí požadavky na provoz v síti
 
-Azure Dev Spaces poskytuje směrování na úrovni oboru názvů Kubernetes a také veřejný přístup ke službám pomocí vlastního plně přístupného osobního názvu. Aby obě tyto funkce fungovaly, aktualizujte bránu firewall nebo konfiguraci sítě, abyste povolili veřejný příchozí přenos dat na externí IP adresu řadiče příchozího přenosu dat Azure Dev Spaces ve vašem clusteru. Případně můžete vytvořit [interní systém vyrovnávání zatížení][aks-internal-lb] a přidat pravidlo NAT do brány firewall a přeložit veřejnou IP adresu brány firewall do IP adresy interního systému vyrovnávání zatížení. Můžete také použít [traefik][traefik-ingress] nebo [NGINX][nginx-ingress] k vytvoření vlastního řadiče příchozího přenosu dat.
+Azure Dev Spaces poskytuje směrování na úrovni oboru názvů Kubernetes a také veřejný přístup ke službám pomocí vlastního plně kvalifikovaného názvu domény. Aby obě tyto funkce fungovaly, aktualizujte si bránu firewall nebo konfiguraci sítě, abyste umožnili veřejné příchozí přenosy na externí IP adresu řadiče pro Azure Dev Spaces příchozího přenosu v clusteru. Případně můžete vytvořit [interní nástroj pro vyrovnávání zatížení][aks-internal-lb] a přidat do brány firewall pravidlo překladu adres (NAT) k překladu veřejné IP adresy vaší brány firewall na IP adresu interního nástroje pro vyrovnávání zatížení. K vytvoření vlastního kontroleru příchozího přenosu dat můžete použít taky [traefik][traefik-ingress] nebo [Nginx][nginx-ingress] .
 
-## <a name="aks-cluster-network-requirements"></a>Požadavky na síť clusteru AKS
+## <a name="aks-cluster-network-requirements"></a>AKS požadavky na síť clusteru
 
-AKS umožňuje používat [zásady sítě][aks-network-policies] k řízení příchozího přenosu dat a odchozího přenosu mezi pody v clusteru, jakož i odchozí provoz z podu. Azure Dev Spaces má určité požadavky pro *příchozí a odchozí síťový* provoz, jakož i příchozí přenos y *pouze* přenosy dat. Pokud používáte Azure Dev Spaces v clusteru AKS se zásadami sítě AKS, musíte postupovat pouze podle následujících požadavků na příchozí přenosy a odchozí přenosy, aby azure dev spaces fungovalsprávně.
+AKS umožňuje používat [zásady sítě][aks-network-policies] k řízení příchozího a odchozího provozu mezi lusky v clusteru a také přenosem dat z pod. Azure Dev Spaces má určité požadavky na příchozí *a odchozí* síťový provoz a také provoz *jenom* příchozí přenos dat. Pokud používáte Azure Dev Spaces v clusteru AKS se zásadami sítě AKS, musíte pro správné fungování Azure Dev Spaces postupovat podle následujících požadavků na příchozí a odchozí přenos dat.
 
-### <a name="ingress-and-egress-network-traffic-requirements"></a>Požadavky na přenos v síti příchozích a odchozích přenosů
+### <a name="ingress-and-egress-network-traffic-requirements"></a>Požadavky na příchozí a odchozí provoz sítě
 
-Azure Dev Spaces umožňuje komunikovat přímo s podv dev prostoru ve vašem clusteru pro ladění. Aby tato funkce fungovala, přidejte zásady sítě, které umožňují příchozí a odchozí komunikaci s IP adresami infrastruktury Azure Dev Spaces, které [se liší podle oblasti][dev-spaces-ip-auth-range-regions].
+Azure Dev Spaces vám umožní komunikovat přímo s podmnožinou v prostoru pro vývoj v clusteru pro účely ladění. Aby tato funkce fungovala, přidejte zásadu sítě, která umožňuje příchozí a odchozí komunikaci s IP adresami infrastruktury Azure Dev Spaces, která se [liší podle oblasti][dev-spaces-ip-auth-range-regions].
 
-### <a name="ingress-only-network-traffic-requirements"></a>Příchozí přenos pouze požadavky na provoz v síti
+### <a name="ingress-only-network-traffic-requirements"></a>Jenom příchozí požadavky na provoz v síti
 
-Azure Dev Spaces poskytuje směrování mezi pody napříč obory názvů. Například obory názvů s povolenou funkcí Azure Dev Spaces mohou mít vztah nadřazený/podřízený, který umožňuje směrování síťového provozu mezi pody mezi nadřazenými a podřízenými obory názvů. Azure Dev Spaces také zveřejňuje koncové body služby pomocí vlastního vícenežového přístupu k souborům. Chcete-li nakonfigurovat různé způsoby vystavení služeb a vliv na směrování na úrovni oboru názvů, viz [Použití různých možností koncového bodu][endpoint-options].
+Azure Dev Spaces poskytuje směrování mezi lusky napříč obory názvů. Například obory názvů s povoleným Azure Dev Spaces mohou mít vztah nadřazenosti/podřízenosti, který umožňuje směrování síťového provozu mezi lusky napříč nadřazenými a podřízenými obory názvů. Azure Dev Spaces také zpřístupňuje koncové body služby pomocí vlastního plně kvalifikovaného názvu domény. Pro konfiguraci různých způsobů vystavování služeb a toho, jak má dopad na směrování na úrovni oboru názvů, viz [použití různých možností koncového bodu][endpoint-options].
 
-## <a name="using-azure-cni"></a>Použití Azure CNI
+## <a name="using-azure-cni"></a>Používání Azure CNI
 
-Ve výchozím nastavení jsou clustery AKS nakonfigurovány tak, aby používaly [kubenet][aks-kubenet] pro sítě, které fungují s Azure Dev Spaces. Cluster AKS můžete také nakonfigurovat tak, aby používal [rozhraní Azure Container Networking Interface (CNI).][aks-cni] Pokud chcete v clusteru AKS používat Azure Dev Spaces s Azure CNI, povolte virtuální síti a adresním prostorům podsítě až 10 privátních IP adres pro pody nasazené azure dev spaces. Další podrobnosti o povolení privátních IP adres jsou k dispozici v [dokumentaci AKS Azure CNI][aks-cni-ip-planning].
+Ve výchozím nastavení jsou clustery AKS nakonfigurované tak, aby používaly [kubenet][aks-kubenet] pro sítě, které fungují s Azure dev Spaces. Cluster AKS můžete také nakonfigurovat tak, aby používal [rozhraní CNI (Azure Container Networking Interface)][aks-cni]. Pokud chcete použít Azure Dev Spaces s Azure CNI v clusteru AKS, umožněte virtuální síti a adresní prostorům adresní prostory až 10 privátních IP adres pro lusky nasazené pomocí Azure Dev Spaces. Další podrobnosti o povolení privátních IP adres najdete v [dokumentaci k AKS Azure CNI][aks-cni-ip-planning].
 
-## <a name="using-api-server-authorized-ip-ranges"></a>Použití oblastí IP autorizovaných serveru API
+## <a name="using-api-server-authorized-ip-ranges"></a>Použití rozsahů povolených IP adres serveru API
 
-Clustery AKS umožňují konfigurovat další zabezpečení, které omezuje, která adresa IP může s vašimi clustery pracovat, například pomocí vlastních virtuálních sítí nebo [zabezpečení mnoství přístupk a zabezpečení serveru API pomocí autorizovaných rozsahů IP adres][aks-ip-auth-ranges]. Chcete-li při vytváření clusteru používat Azure Dev Spaces při [použití][aks-ip-auth-range-create] tohoto dalšího zabezpečení, musíte [povolit další rozsahy založené na vaší oblasti][dev-spaces-ip-auth-range-regions]. Můžete také [aktualizovat][aks-ip-auth-range-update] existující cluster, který umožní tyto další rozsahy. Je také nutné povolit IP adresu všech vývojových počítačů, které se připojují k clusteru AKS pro ladění pro připojení k serveru rozhraní API.
+Clustery AKS umožňují nakonfigurovat další zabezpečení, které omezuje, která IP adresa může komunikovat s clustery, například pomocí vlastních virtuálních sítí nebo [zabezpečení přístupu k serveru rozhraní API pomocí autorizovaných rozsahů IP][aks-ip-auth-ranges]adres. Pokud chcete použít Azure Dev Spaces při použití tohoto dalšího zabezpečení při [vytváření][aks-ip-auth-range-create] clusteru, musíte [v závislosti na vaší oblasti zapnout další rozsah][dev-spaces-ip-auth-range-regions]. Můžete také [aktualizovat][aks-ip-auth-range-update] existující cluster, aby bylo možné tyto další rozsahy. Pro připojení k vašemu serveru API musíte taky u všech vývojových počítačů, které se připojují ke clusteru AKS, použít IP adresu pro účely ladění.
 
-## <a name="using-aks-private-clusters"></a>Použití privátních clusterů AKS
+## <a name="using-aks-private-clusters"></a>Používání privátních clusterů AKS
 
-V současné době Azure Dev Spaces není podporována s [AKS privátní clustery][aks-private-clusters].
+V tuto chvíli se Azure Dev Spaces [privátním clusterům AKS][aks-private-clusters]nepodporuje.
 
-## <a name="using-different-endpoint-options"></a>Použití různých možností koncového bodu
+## <a name="using-different-endpoint-options"></a>Používání různých možností koncového bodu
 
-Azure Dev Spaces má možnost zpřístupnit koncové body pro vaše služby spuštěné na AKS. Při povolení Azure Dev Spaces v clusteru máte následující možnosti konfigurace typu koncového bodu pro váš cluster:
+Azure Dev Spaces má možnost vystavovat koncové body pro vaše služby běžící na AKS. Při povolování Azure Dev Spaces v clusteru máte k dispozici následující možnosti konfigurace typu koncového bodu pro váš cluster:
 
-* *Veřejný* koncový bod, který je výchozí, nasazuje řadič příchozího přenosu dat s veřejnou IP adresou. Veřejná IP adresa je registrována ve službě DNS clusteru, což umožňuje veřejný přístup k vašim službám pomocí adresy URL. Tuto adresu URL `azds list-uris`můžete zobrazit pomocí aplikace .
-* *Soukromý* koncový bod nasazuje řadič příchozího přenosu dat s privátní IP adresou. S privátní IP adresou je nástroj pro vyrovnávání zatížení vašeho clusteru přístupný pouze z virtuální sítě clusteru. Privátní IP adresa nástroje pro vyrovnávání zatížení je registrována na dns clusteru, takže služby uvnitř virtuální sítě clusteru jsou přístupné pomocí adresy URL. Tuto adresu URL `azds list-uris`můžete zobrazit pomocí aplikace .
-* Nastavení *žádné* pro možnost koncového bodu způsobí, že žádný řadič příchozího přenosu dat, které mají být nasazeny. Bez nasazeného řadiče příchozího přenosu dat nebudou [fungovat možnosti směrování Azure Dev Spaces.][dev-spaces-routing] Volitelně můžete implementovat vlastní řešení řadiče příchozího přenosu dat pomocí [traefik][traefik-ingress] nebo [NGINX][nginx-ingress], které umožní možnosti směrování znovu pracovat.
+* *Veřejný* koncový bod, který je výchozí, nasadí kontroler příchozího přenosu s veřejnou IP adresou. Veřejná IP adresa je registrovaná v DNS clusteru, což umožňuje veřejný přístup k vašim službám pomocí adresy URL. Tuto adresu URL můžete zobrazit pomocí `azds list-uris`.
+* *Privátní* koncový bod nasadí kontroler příchozího přenosu s privátní IP adresou. Pomocí privátní IP adresy je nástroj pro vyrovnávání zatížení pro váš cluster přístupný jenom v rámci virtuální sítě clusteru. Privátní IP adresa nástroje pro vyrovnávání zatížení je zaregistrovaná na DNS clusteru, aby bylo možné ke službám uvnitř virtuální sítě clusteru přistupovat pomocí adresy URL. Tuto adresu URL můžete zobrazit pomocí `azds list-uris`.
+* Nastavení *žádné* pro možnost koncový bod nezpůsobí nasazení žádného kontroleru příchozího přenosu dat. Bez nasazení adaptéru pro příchozí přenos dat nebudou [Možnosti směrování Azure dev Spaces][dev-spaces-routing] fungovat. Volitelně můžete implementovat vlastní řešení řadiče příchozího přenosu dat pomocí [traefik][traefik-ingress] nebo [Nginx][nginx-ingress]. Tím umožníte, aby funkce směrování znovu fungovaly.
 
-Chcete-li nakonfigurovat možnost koncového bodu, použijte *-e* nebo *--endpoint* při povolení Azure Dev Spaces ve vašem clusteru. Příklad:
+Pokud chcete nakonfigurovat možnost koncového bodu, použijte parametr *-e* nebo *--endpoint* při povolování Azure dev Spaces v clusteru. Příklad:
 
 > [!NOTE]
-> Možnost koncového bodu vyžaduje, abyste spouštěli Azure CLI verze 2.2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
+> Možnost Endpoint vyžaduje, abyste spustili Azure CLI verze 2.2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
 
 ```azurecli
 az aks use-dev-spaces -g MyResourceGroup -n MyAKS -e private
@@ -84,14 +84,14 @@ az aks use-dev-spaces -g MyResourceGroup -n MyAKS -e private
 
 ## <a name="client-requirements"></a>Požadavky na klienty
 
-Azure Dev Spaces používá nástroje na straně klienta, jako je například rozšíření Azure Dev Spaces CLI, rozšíření kódu Visual Studio a rozšíření Visual Studio, ke komunikaci s clusterem AKS pro ladění. Chcete-li použít nástroje Azure Dev Spaces na straně klienta, povolte provoz z vývojových počítačů do domény *AZDs-\*.azds.io.* Přesný hlavní přístupkovou `USERPROFILE\.azds\settings.json` dobu naleznete v *tématu dataplaneFqdn* in. Pokud používáte [rozsahy IP adres autorizované ho serveru API][auth-range-section], musíte také povolit IP adresu všech vývojových počítačů, které se připojují k vašemu clusteru AKS, pro ladění pro připojení k serveru rozhraní API.
+Azure Dev Spaces používá klientské nástroje, jako je rozšíření CLI Azure Dev Spaces, Visual Studio Code rozšíření a rozšíření sady Visual Studio, ke komunikaci s clusterem AKS pro ladění. Chcete-li použít Azure Dev Spaces nástrojů na straně klienta, povolte provoz z vývojových počítačů do domény *azds-\*. azds.IO* . Přesný *dataplaneFqdn* plně kvalifikovaný `USERPROFILE\.azds\settings.json` název domény najdete v tématu dataplaneFqdn v. Pokud používáte [rozsahy IP adres autorizovaných serverem API][auth-range-section], musíte taky povolit IP adresu všech vývojových počítačů, které se připojují ke clusteru AKS, aby se mohly připojit k vašemu serveru API.
 
 ## <a name="next-steps"></a>Další kroky
 
-Zjistěte, jak Azure Dev Spaces pomáhá vyvíjet složitější aplikace napříč více kontejnery a jak můžete zjednodušit vývoj spolupráce pomocí práce s různými verzemi nebo větvemi kódu v různých prostorech.
+Přečtěte si, jak Azure Dev Spaces pomáhá vyvíjet složitější aplikace napříč více kontejnery a jak zjednodušit vývoj díky práci s různými verzemi nebo větvemi kódu v různých prostorech.
 
 > [!div class="nextstepaction"]
-> [Vývoj týmu v Azure Dev Spaces][team-quickstart]
+> [Vývoj pro tým v Azure Dev Spaces][team-quickstart]
 
 [aks-cni]: ../aks/configure-azure-cni.md
 [aks-cni-ip-planning]: ../aks/configure-azure-cni.md#plan-ip-addressing-for-your-cluster

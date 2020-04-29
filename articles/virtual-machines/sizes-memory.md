@@ -1,13 +1,13 @@
 ---
-title: Velikosti virtuálních zařízení Azure – paměť | Dokumenty společnosti Microsoft
-description: Uvádí různé velikosti optimalizované pro paměť, které jsou k dispozici pro virtuální počítače v Azure. Obsahuje informace o počtu virtuálních procesorů, datových disků a síťových síťových karty, jakož i propustnost úložiště a šířku pásma sítě pro velikosti v této řadě.
+title: Velikosti virtuálních počítačů Azure – paměť | Microsoft Docs
+description: Obsahuje seznam různých velikostí optimalizovaných pro paměť, které jsou dostupné pro virtuální počítače v Azure. Uvádí informace o počtu vCPU, datových discích a síťových rozhraních a propustnosti úložiště a šířce pásma sítě pro velikosti v této sérii.
 services: virtual-machines
 documentationcenter: ''
 author: mimckitt
 manager: gwallace
 editor: ''
 tags: azure-resource-manager,azure-service-management
-keywords: Izolace virtuálních virtuálních bylv,izolovaný virtuální montovna,izolace,izolovaná
+keywords: Izolace virtuálních počítačů, izolovaný virtuální počítač, izolace, izolovaný režim
 ms.assetid: ''
 ms.service: virtual-machines
 ms.devlang: na
@@ -16,29 +16,29 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: mimckitt
 ms.openlocfilehash: 5a20e9c64b6ef948167333b54b16b34e84dc0e32
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81273575"
 ---
-# <a name="memory-optimized-virtual-machine-sizes"></a>Velikosti virtuálních strojů optimalizované pro paměť
+# <a name="memory-optimized-virtual-machine-sizes"></a>Paměťově optimalizované velikosti virtuálních počítačů
 
-Velikosti virtuálních počítače optimalizované pro paměť nabízejí vysoký poměr paměti k procesoru, který je skvělý pro relační databázové servery, střední až velké mezipaměti a analýzy v paměti. Tento článek obsahuje informace o počtu virtuálních procesorů, datových disků a síťových připojení, jakož i propustnost úložiště a šířku pásma sítě pro každou velikost v tomto seskupení.
+Paměťově optimalizované velikosti virtuálních počítačů nabízejí vysoký poměr paměti k procesoru, který je skvělý pro servery relačních databází, střední až velké mezipaměti a analýzu v paměti. Tento článek poskytuje informace o počtu vCPU, datových discích a síťových adaptérů i propustnosti úložiště a šířce pásma sítě pro každou velikost v tomto seskupení.
 
-- [Dv2 a DSv2-series](dv2-dsv2-series-memory.md), pokračování původní řady D, je vybaveno výkonnějším procesorem. Řada Dv2 je o 35 % rychlejší než řada D. Běží na Procesoru&reg; Intel&reg; Xeon 8171M 2.1 GHz&reg; (Skylake) nebo Intel Xeon&reg; E5-2673 v4&reg; 2.3 GHz (Broadwell) nebo Intel Xeon&reg; E5-2673 v3 2.4 GHz (Haswell) procesory, a s Intel Turbo Boost Technology 2.0. Řada Dv2-series má stejnou konfiguraci paměti a disku jako řada D.
+- [Dv2 a DSv2-Series](dv2-dsv2-series-memory.md), následné až do původní řady D-Series, nabízí výkonnější procesor. Dv2-Series má přibližně 35% rychlejší než řada D-Series. &reg; Běží na Intel xeon&reg; 8171M 2,1 GHz (Skylake) nebo Intel&reg; Xeon&reg; E5-2673 V4 2,3 GHz (Broadwell) nebo procesory Intel&reg; Xeon&reg; E5-2673 V3 2,4 GHz (Haswell) a s 2,0 technologií Intel Turbo zvyšovat. Řada Dv2-series má stejnou konfiguraci paměti a disku jako řada D.
 
-    Řady Dv2 a DSv2 jsou ideální pro aplikace, které vyžadují rychlejší virtuální procesory, lepší výkon dočasného úložiště nebo mají vyšší nároky na paměť. Nabízejí výkonnou kombinaci pro mnoho podnikových aplikací.
+    Dv2 a DSv2-Series jsou ideální pro aplikace, které vyžadují rychlejší vCPU, lepší dočasný výkon úložiště nebo mají vyšší nároky na paměť. Nabízejí výkonnou kombinaci pro mnoho podnikových aplikací.
 
-- [Řada Eav4 a Easv4](eav4-easv4-series.md) využívá procesor 2.35Ghz EPYC<sup>TM</sup> 7452 společnosti AMD v konfiguraci s více vlákny s mezipamětí L3 až 256 MB, což zvyšuje možnosti pro spuštění většiny úloh optimalizovaných pro paměť. Řady Eav4 a Easv4 mají stejnou konfiguraci paměti a disku jako řada Ev3 & Esv3.
+- [Eav4 a Easv4-Series](eav4-easv4-series.md) využívají procesor AMD 2.35 EPYC<sup>TM</sup> 7452 v konfiguraci s více VLÁKNy s až 256Mb mezipamětí L3 a zvyšují možnosti spouštění většiny paměťově optimalizovaných úloh. Řady Eav4-Series a Easv4-Series mají stejnou konfiguraci paměti a disku jako Ev3 & Esv3-Series.
 
-- Procesor Intel&reg; Xeon&reg; řady 8171M 8171M (Skylake) řady [Ev3 a Esv3](ev3-esv3-series.md) nebo procesor Intel&reg; Xeon&reg; E5-2673 v4 2.3 GHz (Broadwell) v konfiguraci s hypervlákny, poskytuje lepší hodnotu pro většinu úloh pro obecné účely a přináší Ev3 do souladu s virtuálními počítači pro obecné účely většiny ostatních cloudů. Paměť byla rozšířena (ze 7 GiB/vCPU na 8 GiB/vCPU), zatímco diskové a síťové limity byly upraveny na základě jádra tak, aby odpovídaly přechodu na hyper-threading. Ev3 je sledovat na velikosti virtuálních zařízení s vysokou pamětí rodiny D/Dv2.
+- [Ev3 a Esv3-Series](ev3-esv3-series.md) Intel&reg; &reg; Xeon 8171M 2,1 GHz (Skylake) nebo procesor Intel&reg; Xeon&reg; E5-2673 2,3 v4 (Broadwell) v konfiguraci s více vlákny, které poskytují lepší hodnotu pro většinu úloh pro obecné účely a přinášejí Ev3 do sblížení s virtuálními počítači pro obecné účely většiny ostatních cloudů. Paměť se rozšířila (od 7 GiB/vCPU do 8 GiB/vCPU), zatímco limity disku a sítě se přizpůsobily na základě počtu jader, které je možné přesunout do technologie Hyper-Threading. Ev3 je následná velikost virtuálních počítačů s vysokou pamětí pro řady D/Dv2.
 
-- [Řada M](m-series.md) nabízí vysoký počet virtuálních procesorů (až 128 virtuálních procesorů) a velké množství paměti (až 3,8 TiB). Je také ideální pro extrémně velké databáze nebo jiné aplikace, které těží z vysokého počtu virtuálních procesorů a velkého množství paměti.
+- [Řada M-Series](m-series.md) nabízí vysoký počet vCPU (až 128 vCPU) a velké množství paměti (až 3,8 TIB). Je to také ideální pro extrémně velké databáze nebo jiné aplikace, které využívají vysoké počty vCPU a velké množství paměti.
 
-- [Řada Mv2](mv2-series.md) nabízí nejvyšší počet virtuálních procesorů (až 416 virtuálních procesorů) a největší paměť (až 11,4 TiB) libovolného virtuálního počítače v cloudu. Je ideální pro extrémně velké databáze nebo jiné aplikace, které těží z vysokého počtu virtuálních procesorů a velkého množství paměti.
+- [Mv2-Series](mv2-series.md) nabízí nejvyšší počet vCPU (až 416 vCPU) a největší paměť (až 11,4 TIB) libovolného virtuálního počítače v cloudu. Je ideální pro extrémně velké databáze nebo jiné aplikace, které využívají výhody vysokého počtu vCPU a velké množství paměti.
 
-Azure Compute nabízí velikosti virtuálních počítačů, které jsou izolované pro konkrétní typ hardwaru a vyhrazené pro jednoho zákazníka. Tyto velikosti virtuálních počítačů jsou nejvhodnější pro úlohy, které vyžadují vysoký stupeň izolace od ostatních zákazníků pro úlohy zahrnující prvky, jako je dodržování předpisů a regulační požadavky. Zákazníci se taky můžou rozhodnout dále rozdělit prostředky těchto izolovaných virtuálních počítačů pomocí [podpory Azure pro vnořené virtuální počítače](https://azure.microsoft.com/blog/nested-virtualization-in-azure/). Podívejte se na stránky pro rodiny virtuálních strojů níže pro izolované možnosti virtuálních počítačů.
+Azure COMPUTE nabízí velikosti virtuálních počítačů, které jsou izolované na konkrétní typ hardwaru a vyhrazené pro jednoho zákazníka. Tyto velikosti virtuálních počítačů jsou nejvhodnější pro úlohy, které vyžadují vysokou úroveň izolace od jiných zákazníků pro úlohy zahrnující prvky, jako jsou dodržování předpisů a zákonné požadavky. Zákazníci si také můžou rozdělit prostředky těchto izolovaných virtuálních počítačů s využitím [podpory Azure pro vnořené virtuální počítače](https://azure.microsoft.com/blog/nested-virtualization-in-azure/). Další informace o možnostech izolovaného virtuálního počítače najdete na stránkách pro rodiny virtuálních počítačů.
 
 ## <a name="other-sizes"></a>Jiné velikosti
 
@@ -51,4 +51,4 @@ Azure Compute nabízí velikosti virtuálních počítačů, které jsou izolova
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o tom, jak [výpočetní jednotky Azure (ACU)](acu.md) vám můžou pomoct porovnat výpočetní výkon napříč virtuálními jednotkami Azure.
+Přečtěte si další informace o tom, jak [výpočetní jednotky Azure (ACU)](acu.md) vám pomůžou porovnat výpočetní výkon napříč SKU Azure.

@@ -1,6 +1,6 @@
 ---
-title: Souhrnný řídicí panel pro analýzu Partnerského centra na komerčním trhu
-description: Zjistěte, jak získat přístup k grafům, trendům a hodnotám agregovaných dat, které shrnují aktivitu na marketplace z řídicího panelu Souhrn v Centru partnerů.
+title: Souhrnný řídicí panel pro analýzy partnerského centra na komerčním webu Marketplace
+description: Naučte se, jak získat přístup k grafům, trendům a hodnotám agregovaných dat, která shrnují aktivity Marketplace z řídicího panelu souhrnu v partnerském centru.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
@@ -8,117 +8,117 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
 ms.openlocfilehash: 86bce85c6ec273b4ab5f9f00cbae68fc054f53f5
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81262396"
 ---
-# <a name="summary-dashboard-in-commercial-marketplace-analytics"></a>Souhrnný řídicí panel v analýze komerčního tržiště
+# <a name="summary-dashboard-in-commercial-marketplace-analytics"></a>Souhrnný řídicí panel v analytickém obchodě na komerčním webu
 
-Tento článek obsahuje informace na panelu Souhrn v Centru partnerů. Tento řídicí panel zobrazuje grafy, trendy a hodnoty agregovaných dat, které shrnují aktivitu na trhu pro vaše nabídky.
+Tento článek poskytuje informace o řídicím panelu souhrnu v partnerském centru. Tento řídicí panel zobrazuje grafy, trendy a hodnoty agregovaných dat, která shrnují aktivity Marketplace pro vaše nabídky.
 
-Chcete-li získat přístup k řídicímu panelu Souhrn, otevřete **[řídicí panel Analyzovat](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** v části Komerční tržiště.
+Pro přístup k řídicímu panelu souhrnu otevřete **[řídicí panel analyzovat](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** v rámci komerčního tržiště.
 
 >[!NOTE]
-> Podrobné definice terminologie analýzy naleznete [v tématu Nejčastější dotazy a terminologie pro analýzu komerčního trhu](./faq-terminology.md).
+> Podrobné definice terminologie analýz najdete v tématu [Nejčastější dotazy a terminologie pro komerční analýzy na webu Marketplace](./faq-terminology.md).
 
 ## <a name="summary-dashboard"></a>Souhrnný řídicí panel
 
-Panel **Souhrn** představuje přehled založený na jednotlivých typech nabídky. **Přehledy** zobrazují kritické informace na první pohled a poskytují široký přehled o prodejní aktivitě vašich nabídek. Tyto sestavy můžete vizualizovat pomocí řídicího panelu **Souhrn.** Tento článek se zabývá dalšími podrobnostmi o každém z následujících prvků:
+**Souhrnný** řídicí panel zobrazuje přehled na základě každého typu nabídky. **Přehledy** znázorňují nejdůležitější informace na první pohled a poskytují širokou škálu prodejních aktivit vašich nabídek. Tyto sestavy můžete vizualizovat pomocí řídicího panelu **souhrnu** . Tento článek se podrobněji popisuje u každého z následujících prvků:
 
 - [Rozsah dat](#date-range)
-- [Souhrnná sekce](#summary-section)
-- [Zákazníci podle zeměpisné polohy](#customers-by-geography)
-- [Grafy růstových trendů](#growth-trend-charts)
-- [Žebříček zákazníků](#customer-leaderboard)
+- [Oddíl Summary](#summary-section)
+- [Zákazníci podle geografie](#customers-by-geography)
+- [Grafy geometrického trendu](#growth-trend-charts)
+- [Zákaznická tabulek výsledků](#customer-leaderboard)
 - [Trend počtu sedadel](#seat-count-trend)
-- [Bezplatné zkušební verze SaaS objednávky trend](#free-trials-saas-orders-trend)
+- [Trend bezplatných zkušebních verzí SaaS objednávek](#free-trials-saas-orders-trend)
 
-## <a name="elements-of-the-summary-dashboard"></a>Prvky panelu Souhrn
+## <a name="elements-of-the-summary-dashboard"></a>Prvky řídicího panelu souhrnu
 
 Následující části popisují, jak používat souhrnný řídicí panel a jak číst data.
 
 ### <a name="date-range"></a>Rozsah dat
 
-Výběr rozsahu dat najdete v pravém horním rohu každé stránky. Přizpůsobte výstup **souhrnných** grafů stránek výběrem rozsahu dat na základě posledních 3, 6 nebo 12 měsíců nebo výběrem vlastního období s maximální dobou trvání 12 měsíců. Výchozí časové období je šest měsíců.
+Výběr rozsahu kalendářních dat najdete v pravém horním rohu každé stránky. Výběrem rozsahu kalendářních dat na základě posledních 3, 6 nebo 12 měsíců nebo výběrem vlastního rozsahu kalendářních dat s maximální dobou trvání 12 měsíců upravte výstup grafů stránky **souhrnu** . Výchozí rozsah kalendářních dat je šest měsíců.
 
-![Řídicí panel Analýza centra partnerů](./media/analyze-dashboard.png)
+![Řídicí panel pro analýzu partnerského centra](./media/analyze-dashboard.png)
 
-### <a name="summary-section"></a>Souhrnná sekce
+### <a name="summary-section"></a>Oddíl Summary
 
-V části Souhrn se zobrazuje počet všech vytvořených objednávek, získaných zákazníků a využití vykázaných během vybraného období. Částečný aktuální měsíc bude z výpočtu těchto metrik vyloučen. Příklad: Pokud jste vybrali časový rámec 6 milionů, hodiny využití se vypočítají pro šest měsíců před aktuálním měsícem. Pokud je vybráno vlastní časové období, částečná částka z aktuálního měsíce bude z výpočtu vyloučena.
+V části Souhrn se zobrazuje počet všech vytvořených objednávek, zákazníků získaných a používání hlášených během vybraného časového období. Částečný aktuální měsíc bude vyloučen z výpočtu těchto metrik. Příklad: Pokud jste vybrali časový rámec 6 min, hodiny využití se vypočítají po dobu šesti měsíců před aktuálním měsícem. Pokud je vybrán vlastní rozsah kalendářních dat, bude z výpočtu vyloučena částečná částka z aktuálního měsíce.
 
-![Trendy růstu v panelu Souhrn](./media/summary-summary-section.png)
+![Trendy růstu na řídicím panelu souhrnu](./media/summary-summary-section.png)
 
-#### <a name="reading-the-summary-section"></a>Čtení souhrnné části
+#### <a name="reading-the-summary-section"></a>Čtení oddílu Summary
 
-- **Objednávky**: Počet všech zakoupených objednávek (s výjimkou zrušených objednávek) u nabídek, které jste dosud publikovali.
-- **Zákazníci**: Počet všech zákazníků, kteří si zakoupili vaše nabídky a mají alespoň jednu nezrušenou objednávku.
-- **Normalizované hodiny využití**: Definováno jako hodiny využití normalizované tak, aby zohledňovala počet jader virtuálních počítače ([počet jader virtuálních počítače] x [hodiny nezpracovaného využití]). Virtuální procesory označené jako "SHAREDCORE" používají 1/6 (nebo 0,1666) jako multiplikátor [počet jader virtuálních v.m.].
-- **Nezpracované hodiny využití**: Množství času, po které virtuální počítače běží z hlediska hodin. Procentuální hodnota vedle **celkového počtu objednávek**, **celkovýpočet odběratelů**, **normalizovaných hodin používání**, **nezpracovaných hodin využití**, návštěv **stránek**a **akcí výzvy** představují míru růstu spotřeby pro vybrané období ([využití posledního měsíce – využití prvního měsíce])/ využití prvního měsíce). Jak je popsáno výše, částečné množství aktuálního měsíce bude z této metriky vyloučeno.
-- **Růstové trendy**: Pokud najedete na sloupce grafu, sloupcové grafy zobrazí hodnotu pro každý měsíc.
-- **Zelený trojúhelník směřující nahoru**: Označuje pozitivní růstový trend.
-- **Červený trojúhelník směřující dolů**: Označuje záporný trend růstu ve srovnání s předchozím měsícem.
+- **Orders**: počet zakoupených objednávek (nezahrnuje zrušené objednávky) pro nabídky, které jste dosud publikovali.
+- **Zákazníci**: počet všech zákazníků, kteří si zakoupili vaše nabídky a mají aspoň jednu nezrušenou objednávku.
+- **Normalizované hodiny používání**: definované jako hodiny využití normalizované na účet pro počet jader virtuálního počítače ([počet jader virtuálních počítačů] x [hodiny nezpracovaného využití]). Virtuální počítače označené jako "SHAREDCORE" používají 1/6 (nebo 0,1666) jako násobitel [počet jader virtuálních počítačů].
+- **Nezpracované hodiny využití**: doba, po kterou jsou virtuální počítače spuštěné v hodinách. Procentuální hodnota vedle položky **Celkový počet objednávek**, **Celkový počet zákazníků**, **normalizovaná doba využití**, **nezpracované hodiny využití**, **návštěvy stránky**a **volání akcí** představuje množství nárůstu využití pro vybraný rozsah kalendářních dat ([využití za poslední měsíc – používání prvního měsíce])/první měsíc použití). Jak je popsáno výše, z této metriky bude vyloučena částečná částka aktuálního měsíce.
+- **Trendy růstu**: Pokud najedete myší na sloupce grafu, zobrazí se v pruhových grafech hodnota pro každý měsíc.
+- **Zelený trojúhelník ukazující nahoru**: označuje pozitivní trend růstu.
+- **Červený trojúhelník směřující dolů**: označuje negativní trend růstu vzhledem k předchozímu měsíci.
 
-### <a name="customers-by-geography"></a>Zákazníci podle zeměpisné polohy
+### <a name="customers-by-geography"></a>Zákazníci podle geografie
 
-**Heatmapa Zákazníci podle zeměpisu** zobrazuje počet zákazníků na mapě světa.
+**Zákazníci podle geografického** heatmapuu zobrazují počet zákazníků na světové mapě.
 
-![Zákazníci podle zeměpisné polohy v panelu Souhrn](./media/summary-customers-by-geography.png)
+![Zákazníci podle geografického řídicího panelu souhrnu](./media/summary-customers-by-geography.png)
 
-- Mapu můžete přesunout a zobrazit tak přesnou polohu.
+- Mapu můžete přesunout tak, aby se zobrazilo přesné umístění.
 - Můžete přiblížit konkrétní umístění.
-- Heatmap má doplňkovou mřížku pro zobrazení podrobností o počtu zákazníků, počtu objednávek, normalizovaných hodinách využití v určitém umístění.
-- Můžete vyhledat a vybrat zemi v mřížce pro přiblížení místa v mapě. Vraťte se k původnímu zobrazení stisknutím tlačítka **Plochy** na mapě.
-- **Nový** zákazník zakoupil jednu z vašich nabídek poprvé během měsíce ve zvoleném časovém období.
+- Heatmapu má doplňkovou mřížku pro zobrazení podrobností o počtu zákazníků, počtu objednávek, normalizovaných hodinách využití v určitém umístění.
+- Můžete vyhledat a vybrat zemi v mřížce pro přiblížení do umístění v mapě. Kliknutím na tlačítko **Domů** na mapě se vraťte k původnímu zobrazení.
+- **Novému** zákazníkovi si koupili jednu z vašich nabídek poprvé během měsíce v rámci vybraného rozsahu kalendářních dat.
 
-### <a name="growth-trend-charts"></a>Grafy růstových trendů
+### <a name="growth-trend-charts"></a>Grafy geometrického trendu
 
-Můžete zobrazit trendy na základě růstu **zakoupených objednávek** (včetně zrušených objednávek), **získaných zákazníků** (včetně ztracených zákazníků) a **hlášeného využití,** které jsou zobrazeny měsíc po měsíci podle vybraného období. Tyto trendy můžete dále analyzovat výběrem odkazů pod grafem, které přecházejí na příslušné stránky **Objednávka**, **Využití**, **Zákazník**nebo **Marketplace Insights.**
+Můžete sledovat trendy na základě nárůstu **zakoupených objednávek** (včetně zrušených objednávek), od **zákazníků** , kteří získali (včetně ztracených zákazníků), a podle údajů o **využití** , které se zobrazí po měsících podle vybraného rozsahu kalendářních dat. Tyto trendy můžete dál analyzovat tak, že vyberete odkazy pod grafem, které navigují na stránky příslušné **objednávky**, **použití**, **zákazníka**nebo **webu Marketplace – přehled** .
 
-Marketplace nabízí **návštěvy stránek a grafy** trendů výzvy k akci se zobrazují pro Azure Marketplace a AppSource na dvou kartách.
+Na webu Azure Marketplace a AppSource na dvou kartách se zobrazí stránky nabídek Marketplace **a volání na** grafy trendů akcí.
 
-![Návštěvy stránek a grafy trendů volání na akce v panelu Souhrn](./media/summary-page-visits-and-cta.png)
+![Návštěvy stránky a volání akcí v grafech trendů na řídicím panelu souhrnu](./media/summary-page-visits-and-cta.png)
 
-Graf **objednávek podle nabídek** uspořádá vaše objednávky podle názvu nabídky.
+Graf **ORDER by nabízí** uspořádání objednávek podle názvu nabídky.
 
-Výsečový graf **Objednávky podle prodejního kanálu** uspořádá objednávky (včetně objednávek, které zákazníci zrušili) během vybraného období podle prodejního kanálu. Prodejní kanál je typ licenční smlouvy, kterou zákazníci používají k nákupu Azure, což jsou poskytovateli cloudových řešení (CSP), Enterprise, Enterprise prostřednictvím prodejce, GTM a Průběžně platby.
+Výsečový graf **objednávky podle prodejních kanálů** uspořádá vaše objednávky (včetně objednávek zrušených zákazníky) během vybraného rozsahu kalendářních dat podle prodejních kanálů. Prodejní kanál je typ licenční smlouvy používané zákazníky k nákupu Azure, což jsou Cloud Solution Provider (CSP), Enterprise, Enterprise prostřednictvím prodejce, GTM a průběžné platby.
 
-**Využití podle nabídek** a **využití podle prodejních kanálů** výsečové grafy představují rozpis využití podle nejlepších nabídek a prodejních kanálů. Vnitřní výsečový graf představuje nezpracované využití a vnější výsečový graf představuje normalizované využití.
+**Využití díky nabídkám** a využití v výsečových grafech **prodejních kanálů** prezentuje rozdělení využití pomocí hlavních nabídek a prodejních kanálů v uvedeném pořadí. Vnitřní výsečový graf představuje nezpracované využití a vnější výsečový graf představuje normalizované využití.
 
-Objednávky **podle typu licence marketplace** a použití podle **výsečových** grafů typu licence marketplace zobrazují rozpis objednávek a použití podle příslušného typu licence. Mezi typy licencí patří:
+Typ licence **Orders by Marketplace** a **využití podle výsečových grafů typ licence na webu Marketplace** zobrazuje Rozpis objednávek a využití podle příslušného typu licence. Mezi typy licencí patří:
 
-- **Fakturované prostřednictvím Azure**: Microsoft účtuje zákazníkům vaším jménem, když se rozhodnete prodávat svou nabídku prostřednictvím Microsoftu s tímto typem licence. Typy plateb zahrnují průběžnou platbu prostřednictvím platební karty nebo fakturace enterprise.
-- **Přineste si vlastní licenci**: Společnost Microsoft neúčtuje zákazníkům jejich použití s tímto typem nabídky tržiště. Toto použití je uvedeno jako **Získat nyní (zdarma)** na trhu.
-- **Zdarma**: Společnost Microsoft neúčtuje zákazníkům za jejich použití s tímto typem nabídky tržiště. Toto použití je uvedeno jako **bezplatná zkušební verze** na trhu.
-- **Microsoft jako prodejce**: Představuje nabídky prodávané prodejci společnosti Microsoft jako součást **programu Zprostředkovatel cloudových řešení (CSP).**
+- **Účtuje se prostřednictvím Azure**: Microsoft účtuje zákazníky vaším jménem, když se rozhodnete tuto nabídku prodávat prostřednictvím Microsoftu s tímto typem licence. Typy plateb zahrnují platby s průběžnými platbami prostřednictvím kreditní karty nebo fakturace na podnikové úrovni.
+- **Přineste si vlastní licenci**: Společnost Microsoft neúčtuje zákazníkům za použití s tímto typem nabídky Marketplace. Toto využití je uvedené na webu Marketplace jako **hned (zdarma)** .
+- **Zdarma**: Společnost Microsoft neúčtuje zákazníkům za použití s tímto typem nabídky Marketplace. Toto využití je uvedené jako **bezplatné zkušební verze** na webu Marketplace.
+- **Microsoft as prodejce**: představuje nabídky prodávané prodejci Microsoftu jako součást **programu Cloud Solution Provider (CSP)**.
 
-### <a name="customer-leaderboard"></a>Žebříček zákazníků
+### <a name="customer-leaderboard"></a>Zákaznická tabulek výsledků
 
-50 nejlepších zákazníků s nejvyšším počtem objednávek je zobrazeno na *předváděčce*, seřazeno podle nejvyššího počtu objednávek a procenta objednávky.
+Prvních 50 zákazníků s největším počtem objednávek se zobrazí na *vodicí desce*, seřazené podle nejvyšší počet objednávek a procento objednávky.
 
-- Výběrem zákazníka zobrazíte podrobnosti profilu, objednávky uspořádané podle nabídky nebo objednávky uspořádané podle typu licence Azure a cenového kanálu.
-- Graf **Nabídky podle objednávek** představuje čtyři nejlepší nabídky (podle počtu objednávek) a zbývající nabídky seskupené jako "Rest All".
-- **Normalizované využití nabídkou** donut graf představuje prvních pět nabídek podle využití.
+- Vyberte zákazníka pro zobrazení podrobností o profilu, objednávek uspořádaných podle nabídky nebo objednávek uspořádaných podle typu licence Azure a cenového kanálu.
+- Prstencový graf **nabídky podle objednávek** prezentuje horní čtyři nabídky (podle počtu objednávek) a zbývající nabídky seskupené ve formátu "REST All".
+- **Normalizované využití pomocí nabídky** prstencový graf představuje pět nejlepších nabídek podle využití.
 
 > [!NOTE]
-> Osobní údaje zákazníka budou předloženy pouze v případě, že zákazník poskytl souhlas. Tyto informace můžete zobrazit, pokud jste se přihlásili pomocí úrovně oprávnění role **vlastníka.** Uživatelé s rolí **přispěvatele** nebudou moci tyto informace zobrazit. [Přečtěte si další informace o uživatelských rolích a oprávněních](./manage-account.md#define-user-roles-and-permissions).
+> Osobní údaje zákazníků se zobrazí jenom v případě, že zákazník poskytl souhlas. Tyto informace můžete zobrazit, pokud jste přihlášeni s úrovní oprávnění role **vlastníka** . Uživatelé s rolí **Přispěvatel** nebude moci zobrazit tyto informace. [Přečtěte si další informace o uživatelských rolích a oprávněních](./manage-account.md#define-user-roles-and-permissions).
 
 ### <a name="seat-count-trend"></a>Trend počtu sedadel
 
-**Objednávky podle místa na místo/ podle grafu lokality** představují rozpis všech objednávek zakoupených podle cenového modelu. Graf **trendů počtu sedadel** zobrazuje počet sedadel oproti objednávkám zakoupeným pro všechny nabídky softwaru jako služby (SaaS) na vašem místě.
+V tabulce **ORDER by za pracovní stanici/na jeden web** se zobrazuje rozpis všech objednávek koupených podle cenového modelu. Graf **Trend počtu pracovních míst** zobrazuje místa a objednávky zakoupené pro všechny nabídky softwaru na pracovní stanici (SaaS).
 
-### <a name="free-trials-saas-orders-trend"></a>Bezplatné zkušební verze SaaS objednávky trend
+### <a name="free-trials-saas-orders-trend"></a>Trend bezplatných zkušebních verzí SaaS objednávek
 
-**Graf trendů bezplatných zkušebních objednávek SaaS** představuje trend objednávek bezplatných zkušebních verzí, které SaaS nabízí s 30denní zkušební dobou.
+Graf **trendu bezplatných zkušebních SaaS objednávek** prezentuje trend objednávek pro bezplatné zkušební verze SaaS nabídky s 30denní zkušební dobou.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přehled analytických přehledů dostupných na komerčním trhu Partnerského centra najdete v [článku Analýza pro komerční tržiště v Centru partnerů](./analytics.md).
-- Informace o vašich objednávkách v grafickém formátu a formátu ke stažení najdete [v tématu Řídicí panel objednávek v analýze komerčního tržiště](./orders-dashboard.md).
-- Pro virtuální počítač (VM) nabízí využití a účtované metriky účtované podle objemu dat, najdete [v tématu Využití Řídicí panel v komerčním tržišti analýzy](./usage-dashboard.md).
-- Podrobné informace o zákaznících, včetně trendů růstu, najdete [v tématu Řídicí panel zákazníků v analýzách komerčního tržiště](./customer-dashboard.md).
-- Seznam žádostí o stažení za posledních 30 dní najdete [v tématu Řídicí panel ke stažení v analýze komerčního tržiště](./downloads-dashboard.md).
-- Konsolidované zobrazení zpětné vazby od zákazníků u nabídek na Azure Marketplace a AppSource najdete [v tématu Hodnocení a recenze v analýze komerčního webu](./ratings-reviews.md).
-- Nejčastější dotazy týkající se analýzy komerčního tržiště a komplexní slovník termínů pro data naleznete [v tématu Nejčastější dotazy a terminologie pro analýzu komerčního tržiště](./faq-terminology.md).
+- Přehled analytických sestav dostupných na obchodním tržišti partnerského centra najdete v tématu [analýzy pro komerční tržiště v partnerském centru](./analytics.md).
+- Informace o vašich objednávkách v grafickém formátu a ve formátu ke stažení najdete v tématu věnovaném [řídicímu panelu objednávky v rámci komerčních tržišť](./orders-dashboard.md).
+- U virtuálních počítačů nabízí metriky využití a měření fakturace, viz [řídicí panel využití v komerčních obchodech na webu Marketplace](./usage-dashboard.md).
+- Podrobné informace o vašich zákaznících, včetně trendů růstu, najdete [v tématu řídicí panel zákazníka v analytickém obchodě na komerčním webu](./customer-dashboard.md).
+- Seznam vašich žádostí o stažení za posledních 30 dní najdete [v tématu řídicí panel ke stažení v komerčních obchodech na webu Marketplace](./downloads-dashboard.md).
+- Chcete-li zobrazit konsolidované zobrazení zpětné vazby od zákazníků pro nabídky Azure Marketplace a AppSource, přečtěte si téma [hodnocení a recenze řídicího panelu na komerčních analýzách na webu Marketplace](./ratings-reviews.md).
+- Nejčastější dotazy týkající se komerčních analýz na webu Marketplace a ucelený slovník datových podmínek najdete v tématu [Nejčastější dotazy a terminologie pro komerční analýzy na webu Marketplace](./faq-terminology.md).

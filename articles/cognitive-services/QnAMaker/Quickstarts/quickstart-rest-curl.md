@@ -1,45 +1,45 @@
 ---
-title: 'Úvodní příručka: Ke správě znalostní báze cURL & REST použijte – QnA Maker'
-description: Tento rychlý start ukazuje, jak vytvořit, publikovat a dotazovat znalostní báze pomocí rest API.
+title: 'Rychlý Start: použití &u REST pro správu znalostní báze Knowledge Base – QnA Maker'
+description: V tomto rychlém startu se dozvíte, jak pomocí rozhraní REST API vytvořit, publikovat a dotazovat znalostní bázi.
 ms.date: 04/13/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
 ms.topic: quickstart
 ms.openlocfilehash: facc45ab8f916181f7eeceb65c5102a60ae7d7e9
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81261699"
 ---
-# <a name="quickstart-use-curl-and-rest-to-manage-knowledge-base"></a>Úvodní příručka: Správa znalostní báze cURL a REST pomocí cURL a REST
+# <a name="quickstart-use-curl-and-rest-to-manage-knowledge-base"></a>Rychlý Start: použití kudrlinkou a REST ke správě znalostní báze
 
-Tento rychlý začátek vás provede vytvářením, publikováním a dotazováním znalostní báze. Služba QnA Maker automaticky extrahuje otázky a odpovědi z částečně strukturovaného obsahu, jako jsou třeba časté otázky, ze [zdrojů dat](../Concepts/knowledge-base.md). Model pro znalostní bázi je definovaný v kódu ve formátu JSON poslaném v těle požadavku rozhraní API.
+Tento rychlý Start vás provede vytvořením, publikováním a dotazem znalostní báze. Služba QnA Maker automaticky extrahuje otázky a odpovědi z částečně strukturovaného obsahu, jako jsou třeba časté otázky, ze [zdrojů dat](../Concepts/knowledge-base.md). Model pro znalostní bázi je definovaný v kódu ve formátu JSON poslaném v těle požadavku rozhraní API.
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Aktuální verze [cURL](https://curl.haxx.se/). V rychlých startech se používá několik přepínačů příkazového řádku, které jsou uvedeny v [dokumentaci cURL](https://curl.haxx.se/docs/manpage.html).
-* Chcete-li použít klíč a název prostředku, musíte mít [prostředek qnA makeru.](../How-To/set-up-qnamaker-service-azure.md) Během vytváření zdroje jste zadali **název** zdroje a klíč byl vytvořen za vás. Název prostředku se používá jako subdoména pro koncový bod. Pokud chcete načíst název klíče a prostředku, vyberte **rychlý start** pro svůj prostředek na webu Azure Portal. Název prostředku je první subdoménou adresy URL koncového bodu:
+* Aktuální verze sady [kudrlinkou](https://curl.haxx.se/). V rychlých startech se používá několik přepínačů příkazového řádku, které jsou uvedeny v [dokumentaci k kudrlinkou](https://curl.haxx.se/docs/manpage.html).
+* Abyste mohli použít klíč a název prostředku, musíte mít [QnA maker Resource](../How-To/set-up-qnamaker-service-azure.md). Při vytváření prostředku jste zadali **název** prostředku, klíč byl proto vytvořen za vás. Název prostředku se používá jako subdoména pro koncový bod. Pokud chcete načíst svůj klíč a název prostředku, vyberte pro svůj prostředek v Azure Portal **rychlý Start** . Název prostředku je první subdoménou adresy URL koncového bodu:
 
     `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamaker/v4.0`
 
 > [!CAUTION]
-> Následující příklady BASH `\` používají znak pokračování řádku. Pokud konzolová nebo terminál používá jiný znak pokračování řádku, použijte tento znak.
+> Následující příklady BASH používají znak pro `\` pokračování řádku. Pokud konzola nebo terminál používá jiný znak pro pokračování řádku, použijte tento znak.
 
 ## <a name="create-a-knowledge-base"></a>Vytvoření znalostní báze
 
-Chcete-li vytvořit znalostní bázi s rest API a cURL, musíte mít následující informace:
+Chcete-li vytvořit znalostní bázi rozhraní REST API a oblé, je nutné mít následující informace:
 
-|Informace|konfigurace cURL|Účel|
+|Informace|Konfigurace kudrlinkou|Účel|
 |--|--|--|
-|Název prostředku qnA makeru|zprostředkovatele identity|slouží k vytvoření adresy URL|
-|Klíč prostředku QnA Maker|`-h`param `Ocp-Apim-Subscription-Key` pro záhlaví|Ověření služby QnA Maker|
-|JSON popisující znalostní bázi|`-d`Param|[Příklady](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create#examples) JSON|
-|Velikost JSON v bajtů|`-h`param `Content-Size` pro záhlaví||
+|Název prostředku QnA Maker|zprostředkovatele identity|slouží k vytvoření adresy URL.|
+|Klíč prostředku QnA Maker|`-h`param `Ocp-Apim-Subscription-Key` pro záhlaví|Ověřování pro QnA Maker službu|
+|JSON popisující znalostní bázi Knowledge Base|`-d`bajty|[Příklady](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create#examples) formátu JSON|
+|Velikost JSON v bajtech|`-h`param `Content-Size` pro záhlaví||
 
-Příkaz cURL je proveden z prostředí BASH. Upravte tento příkaz s vlastním názvem prostředku, klíčem prostředku a hodnotami JSON a velikostí JSON.
+Příkaz kudrlinkou se spustí z prostředí BASH. Tento příkaz upravte pomocí vlastního názvu prostředku, klíče prostředku a hodnot JSON a velikosti JSON.
 
 ```bash
 curl https://REPLACE-WITH-YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamaker/v4.0/knowledgebases/create \
@@ -50,7 +50,7 @@ curl https://REPLACE-WITH-YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamake
 -d '{ name: "QnA Maker FAQ",urls: [ "https://docs.microsoft.com/en-in/azure/cognitive-services/qnamaker/faqs"]}'
 ```
 
-Odpověď cURL od QnA `operationId` Maker obsahuje , který je nutný pro [získání stavu operace](#get-status-of-operation).
+Odpověď složené z QnA Maker zahrnuje `operationId` , který je požadován k [získání stavu operace](#get-status-of-operation).
 
 ```json
 {
@@ -64,15 +64,15 @@ Odpověď cURL od QnA `operationId` Maker obsahuje , který je nutný pro [získ
 
 ## <a name="get-status-of-operation"></a>Získat stav operace
 
-Při vytváření znalostní báze, protože operace je asynchronní, odpověď obsahuje informace k určení stavu.
+Když vytvoříte znalostní bázi, protože operace je asynchronní, odpověď obsahuje informace o tom, jak určit stav.
 
-|Informace|konfigurace cURL|Účel|
+|Informace|Konfigurace kudrlinkou|Účel|
 |--|--|--|
-|Název prostředku qnA makeru|zprostředkovatele identity|slouží k vytvoření adresy URL|
-|Id operace|Trasa adresy URL|`/operations/REPLACE-WITH-YOUR-OPERATION-ID`|
-|Klíč prostředku QnA Maker|`-h`param `Ocp-Apim-Subscription-Key` pro záhlaví|Ověření služby QnA Maker|
+|Název prostředku QnA Maker|zprostředkovatele identity|slouží k vytvoření adresy URL.|
+|ID operace|Trasa URL|`/operations/REPLACE-WITH-YOUR-OPERATION-ID`|
+|Klíč prostředku QnA Maker|`-h`param `Ocp-Apim-Subscription-Key` pro záhlaví|Ověřování pro QnA Maker službu|
 
-Příkaz cURL je proveden z prostředí BASH. Upravte tento příkaz pomocí vlastního názvu prostředku, klíče prostředku a ID operace.
+Příkaz kudrlinkou se spustí z prostředí BASH. Tento příkaz upravte s vlastním názvem prostředku, klíčem prostředku a ID operace.
 
 ```bash
 curl https://REPLACE-WITH-YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamaker/v4.0/operations/REPLACE-WITH-YOUR-OPERATION-ID \
@@ -80,7 +80,7 @@ curl https://REPLACE-WITH-YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamake
 -H "Ocp-Apim-Subscription-Key: REPLACE-WITH-YOUR-RESOURCE-KEY"
 ```
 
-Odpověď cURL zahrnuje stav. Pokud je stav operace úspěšný, `resourceLocation` zahrnuje ID znalostní báze.
+Odpověď složeného pole zahrnuje stav. Pokud je stav operace úspěšný, pak `resourceLocation` zahrnuje ID znalostní báze.
 
 ```json
 {
@@ -95,19 +95,19 @@ Odpověď cURL zahrnuje stav. Pokud je stav operace úspěšný, `resourceLocati
 
 ## <a name="publish-knowledge-base"></a>Publikování znalostní báze
 
-Před dotazem na znalostní bázi je třeba:
+Před dotazem znalostní báze musíte:
 * Publikování znalostní báze
-* Získání klíče koncového bodu runtime
+* Získat klíč koncového bodu modulu runtime
 
-Tento úkol publikuje znalostní bázi. Získání klíče koncového bodu runtime je [samostatná úloha](#get-published-knowledge-bases-runtime-endpoint-key).
+Tato úloha publikuje znalostní bázi. Získání klíče běhového koncového bodu je [samostatný úkol](#get-published-knowledge-bases-runtime-endpoint-key).
 
-|Informace|konfigurace cURL|Účel|
+|Informace|Konfigurace kudrlinkou|Účel|
 |--|--|--|
-|Název prostředku qnA makeru|zprostředkovatele identity|slouží k vytvoření adresy URL|
-|Klíč prostředku QnA Maker|`-h`param `Ocp-Apim-Subscription-Key` pro záhlaví|Ověření služby QnA Maker|
-|Id znalostní báze|Trasa adresy URL|`/knowledgebases/REPLACE-WITH-YOUR-KNOWLEDGE-BASE-ID`|
+|Název prostředku QnA Maker|zprostředkovatele identity|slouží k vytvoření adresy URL.|
+|Klíč prostředku QnA Maker|`-h`param `Ocp-Apim-Subscription-Key` pro záhlaví|Ověřování pro QnA Maker službu|
+|ID znalostní báze|Trasa URL|`/knowledgebases/REPLACE-WITH-YOUR-KNOWLEDGE-BASE-ID`|
 
-Příkaz cURL je proveden z prostředí BASH. Upravte tento příkaz pomocí vlastního názvu prostředku, klíče prostředků a ID znalostní báze.
+Příkaz kudrlinkou se spustí z prostředí BASH. Tento příkaz upravte s vlastním názvem prostředku, klíčem prostředku a ID znalostní báze.
 
 ```bash
 curl https://REPLACE-WITH-YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamaker/v4.0/knowledgebases/REPLACE-WITH-YOUR-KNOWLEDGE-BASE-ID \
@@ -117,24 +117,24 @@ curl https://REPLACE-WITH-YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamake
 --data-raw ''
 ```
 
-Stav odpovědi je 204 bez výsledků. Pomocí `-v` parametru příkazového řádku zobrazíte podrobný výstup příkazu cURL. To bude zahrnovat stav HTTP.
+Stav odpovědi je 204 bez výsledků. Použijte parametr `-v` příkazového řádku pro zobrazení podrobného výstupu příkazu složeného. To bude zahrnovat stav HTTP.
 
-## <a name="get-published-knowledge-bases-runtime-endpoint-key"></a>Získání publikovaného klíče koncového bodu runpoint znalostní báze Knowledge Base
+## <a name="get-published-knowledge-bases-runtime-endpoint-key"></a>Získat klíč koncového bodu běhové služby znalostní báze
 
-Před dotazem na znalostní bázi je třeba:
+Před dotazem znalostní báze musíte:
 * Publikování znalostní báze
-* Získání klíče koncového bodu runtime
+* Získat klíč koncového bodu modulu runtime
 
-Tato úloha získá klíč koncového bodu za běhu. Publikování znalostní báze je [samostatný úkol](#publish-knowledge-base).
+Tato úloha Získá klíč koncového bodu modulu runtime. Publikování znalostní báze je [samostatná úloha](#publish-knowledge-base).
 
-Klíč koncového bodu runtime je stejný klíč pro všechny znalostní báze pomocí prostředku QnA Maker.
+Klíč běhového koncového bodu je stejný klíč pro všechny znalostní báze pomocí prostředku QnA Maker.
 
-|Informace|konfigurace cURL|Účel|
+|Informace|Konfigurace kudrlinkou|Účel|
 |--|--|--|
-|Název prostředku qnA makeru|zprostředkovatele identity|slouží k vytvoření adresy URL|
-|Klíč prostředku QnA Maker|`-h`param `Ocp-Apim-Subscription-Key` pro záhlaví|Ověření služby QnA Maker|
+|Název prostředku QnA Maker|zprostředkovatele identity|slouží k vytvoření adresy URL.|
+|Klíč prostředku QnA Maker|`-h`param `Ocp-Apim-Subscription-Key` pro záhlaví|Ověřování pro QnA Maker službu|
 
-Příkaz cURL je proveden z prostředí BASH. Upravte tento příkaz pomocí vlastního názvu prostředku, klíče prostředku.
+Příkaz kudrlinkou se spustí z prostředí BASH. Tento příkaz upravte s vlastním názvem prostředku a klíčem prostředku.
 
 ```bash
 curl https://REPLACE-WITH-YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamaker/v4.0/endpointkeys \
@@ -143,7 +143,7 @@ curl https://REPLACE-WITH-YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamake
 ```
 
 
-Odpověď cURL obsahuje klíče koncového bodu runtime. Při dotazování použijte pouze jeden z klíčů, abyste získali odpověď ze znalostní báze.
+Odezva na kudrlinkou zahrnuje klíče koncového bodu modulu runtime. Při dotazování na získání odpovědi ze znalostní báze použijte pouze jeden z těchto klíčů.
 
 ```json
 {
@@ -156,17 +156,17 @@ Odpověď cURL obsahuje klíče koncového bodu runtime. Při dotazování použ
 
 ## <a name="query-for-answer-from-published-knowledge-base"></a>Dotaz na odpověď z publikované znalostní báze
 
-Získání odpovědi ze znalostí se provádí ze samostatného běhu než správa znalostní báze. Vzhledem k tomu, že se jedná o samostatný běhový čas, je třeba ověřit pomocí klíče runtime.
+Získání odpovědi od znalostní báze se provádí od samostatného modulu runtime, než správy znalostní báze. Vzhledem k tomu, že se jedná o samostatný modul runtime, je nutné ověřit klíč za běhu.
 
-|Informace|konfigurace cURL|Účel|
+|Informace|Konfigurace kudrlinkou|Účel|
 |--|--|--|
-|Název prostředku qnA makeru|zprostředkovatele identity|slouží k vytvoření adresy URL|
-|Klíč runtime QnA Maker|`-h`param `Authorization` pro záhlaví|Klíč je součástí řetězce, který `Endpointkey `obsahuje slovo . Ověření služby QnA Maker|
-|Id znalostní báze|Trasa adresy URL|`/knowledgebases/REPLACE-WITH-YOUR-KNOWLEDGE-BASE-ID`|
-|JSON popisující dotaz|`-d`Param|[Parametry těla požadavku](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#request-body) a [příklady](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#examples) JSON|
-|Velikost JSON v bajtů|`-h`param `Content-Size` pro záhlaví||
+|Název prostředku QnA Maker|zprostředkovatele identity|slouží k vytvoření adresy URL.|
+|QnA Maker klíč modulu runtime|`-h`param `Authorization` pro záhlaví|Klíč je součástí řetězce, který obsahuje slovo `Endpointkey `. Ověřování pro QnA Maker službu|
+|ID znalostní báze|Trasa URL|`/knowledgebases/REPLACE-WITH-YOUR-KNOWLEDGE-BASE-ID`|
+|Popis dotazu JSON|`-d`bajty|[Parametry těla požadavku](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#request-body) a [Příklady](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#examples) JSON|
+|Velikost JSON v bajtech|`-h`param `Content-Size` pro záhlaví||
 
-Příkaz cURL je proveden z prostředí BASH. Upravte tento příkaz pomocí vlastního názvu prostředku, klíče prostředků a ID znalostní báze.
+Příkaz kudrlinkou se spustí z prostředí BASH. Tento příkaz upravte s vlastním názvem prostředku, klíčem prostředku a ID znalostní báze.
 
 ```bash
 curl https://REPLACE-WITH-YOUR-RESOURCE-NAME.azurewebsites.net/qnamaker/knowledgebases/REPLACE-WITH-YOUR-KNOWLEDGE-BASE-ID/generateAnswer \
@@ -177,19 +177,19 @@ curl https://REPLACE-WITH-YOUR-RESOURCE-NAME.azurewebsites.net/qnamaker/knowledg
 -d '{"question": "How are QnA Maker and LUIS used together?","top": 6,"isTest": true,  "scoreThreshold": 20, "strictFilters": [], "userId": "sd53lsY="}'
 ```
 
-Úspěšná odpověď obsahuje nejvyšší odpověď spolu s dalšími informacemi, které klientská aplikace, jako je například chatovací robot, potřebuje zobrazit odpověď uživateli.
+Úspěšná odpověď zahrnuje horní odpověď spolu s dalšími informacemi, které klientská aplikace, jako je například robotka chatu, musí zobrazit odpověď uživateli.
 
-## <a name="delete-knowledge-base"></a>Odstranění znalostní báze
+## <a name="delete-knowledge-base"></a>Odstranit znalostní bázi
 
-Až budete hotovi se znalostí, odstraňte ji.
+Až se znalostní báze dokončí, odstraňte ji.
 
-|Informace|konfigurace cURL|Účel|
+|Informace|Konfigurace kudrlinkou|Účel|
 |--|--|--|
-|Název prostředku qnA makeru|zprostředkovatele identity|slouží k vytvoření adresy URL|
-|Klíč prostředku QnA Maker|`-h`param `Ocp-Apim-Subscription-Key` pro záhlaví|Ověření služby QnA Maker|
-|Id znalostní báze|Trasa adresy URL|`/knowledgebases/REPLACE-WITH-YOUR-KNOWLEDGE-BASE-ID`|
+|Název prostředku QnA Maker|zprostředkovatele identity|slouží k vytvoření adresy URL.|
+|Klíč prostředku QnA Maker|`-h`param `Ocp-Apim-Subscription-Key` pro záhlaví|Ověřování pro QnA Maker službu|
+|ID znalostní báze|Trasa URL|`/knowledgebases/REPLACE-WITH-YOUR-KNOWLEDGE-BASE-ID`|
 
-Příkaz cURL je proveden z prostředí BASH. Upravte tento příkaz pomocí vlastního názvu prostředku, klíče prostředků a ID znalostní báze.
+Příkaz kudrlinkou se spustí z prostředí BASH. Tento příkaz upravte s vlastním názvem prostředku, klíčem prostředku a ID znalostní báze.
 
 ```bash
 curl https://REPLACE-WITH-YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamaker/v4.0/knowledgebases/REPLACE-WITH-YOUR-KNOWLEDGE-BASE-ID \
@@ -198,13 +198,13 @@ curl https://REPLACE-WITH-YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamake
 -H "Ocp-Apim-Subscription-Key: REPLACE-WITH-YOUR-RESOURCE-KEY"
 ```
 
-Stav odpovědi je 204 bez výsledků. Pomocí `-v` parametru příkazového řádku zobrazíte podrobný výstup příkazu cURL. To bude zahrnovat stav HTTP.
+Stav odpovědi je 204 bez výsledků. Použijte parametr `-v` příkazového řádku pro zobrazení podrobného výstupu příkazu složeného. To bude zahrnovat stav HTTP.
 
 ## <a name="additional-resources"></a>Další zdroje
 
-* [Vytváření](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase) Referenční dokumentace
-* [Doba běhu](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/) Referenční dokumentace
-* [Ukázkové skripty BASH pomocí cURL](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/curl/QnAMaker)
+* [Vytváření obsahu](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase) Referenční dokumentace
+* [Modul runtime](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/) Referenční dokumentace
+* [Ukázkové skripty BASH využívající kudrlinkou](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/curl/QnAMaker)
 
 ## <a name="next-steps"></a>Další kroky
 

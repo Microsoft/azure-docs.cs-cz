@@ -1,67 +1,67 @@
 ---
-title: Odebrání tls 1.0 a 1.1 z použití s Azure Cache pro Redis
-description: Zjistěte, jak odebrat TLS 1.0 a 1.1 z vaší aplikace při komunikaci s Azure Cache pro Redis
+title: Odeberte TLS 1,0 a 1,1 pro použití s Azure cache pro Redis.
+description: Zjistěte, jak z aplikace odebrat TLS 1,0 a 1,1 při komunikaci s Azure cache pro Redis.
 author: yegu-ms
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: yegu
 ms.openlocfilehash: 809fbe85a9783777d5dbef86357bd5a386bd6f81
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81261226"
 ---
-# <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>Odebrání tls 1.0 a 1.1 z použití s Azure Cache pro Redis
+# <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>Odeberte TLS 1,0 a 1,1 pro použití s Azure cache pro Redis.
 
-Existuje celooborový tlak směrem k výhradnímu použití zabezpečení transportní vrstvy (TLS) verze 1.2 nebo novější. Je známo, že tls verze 1.0 a 1.1 jsou náchylné k útokům, jako jsou BEAST a POODLE, a mají další společné chyby zabezpečení a chyby expozice (CVE). Nepodporují také moderní metody šifrování a šifrovací sady doporučené standardy pci (Payment Card Industry). Tento [blog zabezpečení TLS](https://www.acunetix.com/blog/articles/tls-vulnerabilities-attacks-final-part/) vysvětluje některé z těchto chyb zabezpečení podrobněji.
+K exkluzivnímu používání protokolu TLS (Transport Layer Security) verze 1,2 nebo novější se nabízí celé odvětví. Je známo, že TLS verze 1,0 a 1,1 jsou náchylné k útokům, jako je TOUCHDOWN a POODLE, a k dalším běžným slabým místám zabezpečení a ohrožením (CVE). Nepodporují také moderní šifrovací metody a šifrovací sady Doporučené standardy dodržování předpisů v oboru platebních karet (PCI). Tento [blog o zabezpečení TLS](https://www.acunetix.com/blog/articles/tls-vulnerabilities-attacks-final-part/) podrobněji popisuje některé z těchto ohrožení zabezpečení.
 
-V rámci tohoto úsilí provedeme následující změny azure cache pro Redis:
+V rámci tohoto úsilí budeme provádět následující změny v mezipaměti Azure pro Redis:
 
-* **Fáze 1:** Nakonfigurujeme výchozí minimální verzi TLS na 1.2 pro nově vytvořené instance mezipaměti. (Toto bývalo TLS 1.0.) Existující instance mezipaměti nebudou v tomto okamžiku aktualizovány. V případě potřeby budete moci [změnit minimální verzi TLS](cache-configure.md#access-ports) zpět na 1.0 nebo 1.1 pro zpětnou kompatibilitu. Tuto změnu lze provést prostřednictvím portálu Azure nebo jiných řešení API pro správu.
-* **Fáze 2:** Přestaneme podporovat TLS verze 1.0 a 1.1. Po této změně bude aplikace muset ke komunikaci s mezipamětí používat tls 1.2 nebo novější.
+* **Fáze 1:** Nastavíme výchozí minimální verzi TLS na 1,2 pro nově vytvořené instance mezipaměti. (Používá se k TLS 1,0.) Existující instance mezipaměti se v tomto okamžiku neaktualizují. V případě potřeby budete moct [změnit minimální verzi TLS](cache-configure.md#access-ports) zpátky na 1,0 nebo 1,1 na zpětnou kompatibilitu. Tato změna se dá udělat prostřednictvím Azure Portal nebo jiných rozhraní API pro správu.
+* **Fáze 2:** Přestanou podporovat verze TLS 1,0 a 1,1. Po této změně bude vaše aplikace vyžadovat použití TLS 1,2 nebo novější ke komunikaci s mezipamětí.
 
-Kromě toho v rámci této změny budeme odebírání podpory pro starší, nezabezpečené cypher sady.  Naše podporované cypherové sady budou omezeny na následující, pokud je mezipaměť nakonfigurována s minimální verzí TLS 1.2.
+Kromě toho se v rámci této změny odstraní podpora pro starší, nezabezpečené sady šifrováním.  Naše podporované sady šifrováním budou omezeny na následující, pokud je mezipaměť konfigurována s minimální verzí TLS 1,2.
 
 * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P384
 * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256
 
-Tento článek obsahuje obecné pokyny o tom, jak zjistit závislosti na těchto starších verzích TLS a odebrat je z vaší aplikace.
+Tento článek poskytuje obecné pokyny k detekci závislostí na těchto starších verzích TLS a jejich odebrání z aplikace.
 
-Data, kdy se tyto změny projeví, jsou:
+Datum, kdy se tyto změny projeví:
 
 | Cloud               | Počáteční datum fáze 1 | Počáteční datum fáze 2      |
 |---------------------|--------------------|-------------------------|
-| Azure (globální)      |  13. ledna 2020  | 11. května 2020 (prodlouženo) |
+| Azure (Global)      |  13. ledna 2020  | 11. května 2020 (rozšířené) |
 | Azure Government    |  13. března 2020    | 11. května 2020            |
 | Azure Germany       |  13. března 2020    | 11. května 2020            |
 | Azure (Čína)         |  13. března 2020    | 11. května 2020            |
 
-## <a name="check-whether-your-application-is-already-compliant"></a>Zkontrolujte, zda je aplikace již kompatibilní
+## <a name="check-whether-your-application-is-already-compliant"></a>Ověřte, zda je aplikace již kompatibilní.
 
-Nejjednodušší způsob, jak zjistit, zda bude vaše aplikace pracovat s TLS 1.2, je nastavit minimální hodnotu **verze TLS** na TLS 1.2 v testovací nebo pracovní mezipaměti, kterou používá. Minimální nastavení **verze TLS** je v [rozšířenénastavení](cache-configure.md#advanced-settings) instance mezipaměti na webu Azure Portal. Pokud aplikace nadále fungovat podle očekávání po této změně, je pravděpodobně kompatibilní. Možná budete muset nakonfigurovat některé klientské knihovny Redis používané vaší aplikací speciálně k povolení TLS 1.2, aby se mohly připojit k Azure Cache for Redis přes tento protokol zabezpečení.
+Nejjednodušší způsob, jak zjistit, jestli vaše aplikace bude fungovat s TLS 1,2, je nastavit **minimální hodnotu verze TLS** na TLS 1,2 v testovací nebo pracovní mezipaměti, kterou používá. **Minimální verze protokolu TLS** je v [upřesňujících nastaveních](cache-configure.md#advanced-settings) instance mezipaměti v Azure Portal. Pokud aplikace i nadále funguje podle očekávání po této změně, je to pravděpodobně vyhovující. Je možné, že budete muset nakonfigurovat některé klientské knihovny Redis, které vaše aplikace používá, konkrétně k povolení TLS 1,2, aby se mohly připojit k mezipaměti Azure pro Redis prostřednictvím tohoto protokolu zabezpečení.
 
-## <a name="configure-your-application-to-use-tls-12"></a>Konfigurace aplikace pro použití protokolu TLS 1.2
+## <a name="configure-your-application-to-use-tls-12"></a>Konfigurace aplikace tak, aby používala TLS 1,2
 
-Většina aplikací používá klientské knihovny Redis ke zpracování komunikace s jejich mezipamětí. Zde jsou pokyny pro konfiguraci některých populárních klientských knihoven v různých programovacích jazycích a architekturách pro použití TLS 1.2.
+Většina aplikací používá klientské knihovny Redis ke zpracování komunikace s jejich mezipamětí. Tady jsou pokyny pro konfiguraci některých oblíbených klientských knihoven v různých programovacích jazycích a architekturách pro použití TLS 1,2.
 
 ### <a name="net-framework"></a>.NET Framework
 
-Klienti Redis .NET používají nejstarší verzi TLS ve výchozím nastavení v rozhraní .NET Framework 4.5.2 nebo starší a používají nejnovější verzi TLS v rozhraní .NET Framework 4.6 nebo novější. Pokud používáte starší verzi rozhraní .NET Framework, můžete tls 1.2 povolit ručně:
+Redis klienti .NET standardně používají nejstarší verzi TLS ve výchozím nastavení v .NET Framework 4.5.2 nebo starším a používají nejnovější verzi TLS v .NET Framework 4,6 nebo novější. Pokud používáte starší verzi .NET Framework, můžete povolit TLS 1,2 ručně:
 
-* **StackExchange.Redis:** Set `ssl=true` `sslprotocols=tls12` a v připojovacím řetězci.
-* **ServiceStack.Redis:** Postupujte podle pokynů [ServiceStack.Redis](https://github.com/ServiceStack/ServiceStack.Redis#servicestackredis-ssl-support) a vyžaduje ServiceStack.Redis v5.6 minimálně.
+* **Stackexchange. Redis:** Nastavte `ssl=true` a `sslprotocols=tls12` v připojovacím řetězci.
+* **ServiceStack. Redis:** Postupujte podle pokynů [ServiceStack. Redis](https://github.com/ServiceStack/ServiceStack.Redis#servicestackredis-ssl-support) a vyžaduje ServiceStack. Redis v 5.6 minimálně.
 
 ### <a name="net-core"></a>.NET Core
 
-Klienti Redis .NET Core používají ve výchozím nastavení nejnovější verzi TLS.
+Redis klienti .NET Core používají ve výchozím nastavení nejnovější verzi TLS.
 
 ### <a name="java"></a>Java
 
-Klienti Redis Java používají TLS 1.0 na Javě verze 6 nebo starší. Jedis, Salát a Redisson se nemohou připojit k Azure Cache pro Redis, pokud je tls 1.0 v mezipaměti zakázán. Upgradujte java framework tak, aby používal nové verze TLS.
+Redis klienti Java používají TLS 1,0 v Java verze 6 nebo starší. Jedis, Lettuce a Redisson se nemůžou připojit ke službě Azure cache pro Redis, pokud je v mezipaměti zakázané TLS 1,0. Upgradujte rozhraní Java, aby používalo nové verze TLS.
 
-Pro Java 7 klienti Redis ve výchozím nastavení nepoužívají TLS 1.2, ale mohou být pro něj nakonfigurováni. Jedis umožňuje zadat základní nastavení TLS s následujícím fragmentem kódu:
+Pro Java 7 nepoužívají klienti Redis ve výchozím nastavení TLS 1,2, ale můžou se pro něj nakonfigurovat. Jedis umožňuje zadat základní nastavení TLS s následujícím fragmentem kódu:
 
 ``` Java
 SSLSocketFactory sslSocketFactory = (SSLSocketFactory) SSLSocketFactory.getDefault();
@@ -77,21 +77,21 @@ shardInfo.setPassword("cachePassword");
 Jedis jedis = new Jedis(shardInfo);
 ```
 
-Klienti Salad a Redisson zatím nepodporují určení verze TLS, takže se přeruší, pokud mezipaměť přijímá pouze připojení TLS 1.2. Opravy pro tyto klienty jsou kontrolovány, proto zkontrolujte s těmito balíčky pro aktualizovanou verzi s touto podporou.
+Klienti Lettuce a Redisson ještě nepodporují určení verze protokolu TLS, takže budou přerušit, pokud mezipaměť akceptuje jenom připojení TLS 1,2. Opravy pro tyto klienty se kontrolují, proto si s touto podporou Přečtěte aktualizované verze těchto balíčků.
 
-V jazyce Java 8 se tls 1.2 používá ve výchozím nastavení a ve většině případů by neměl vyžadovat aktualizace konfigurace klienta. Chcete-li být v bezpečí, otestujte aplikaci.
+V jazyce Java 8 se standardně používá TLS 1,2 a ve většině případů nemusí vyžadovat aktualizace konfigurace klienta. Chcete-li být bezpečné, otestujte svoji aplikaci.
 
 ### <a name="nodejs"></a>Node.js
 
-Uzel Redis a IORedis používají ve výchozím nastavení TLS 1.2.
+Uzly Redis a IORedis ve výchozím nastavení používají TLS 1,2.
 
 ### <a name="php"></a>PHP
 
-#### <a name="predis"></a>Predis (Predis)
+#### <a name="predis"></a>Predis
  
-* Verze starší než PHP 7: Predis podporuje pouze TLS 1.0. Tyto verze nefungují s TLS 1.2; chcete-li používat tls 1.2, musíte provést upgrade.
+* Verze starší než PHP 7: Predis podporuje pouze TLS 1,0. Tyto verze nefungují s TLS 1,2; musíte upgradovat na použití TLS 1,2.
  
-* PHP 7.0 až PHP 7.2.1: Predis ve výchozím nastavení používá pouze TLS 1.0 nebo 1.1. K použití tls 1.2 můžete použít následující řešení. Při vytváření instance klienta zadejte TLS 1.2:
+* PHP 7,0 až PHP 7.2.1: Predis používá ve výchozím nastavení pouze TLS 1,0 nebo 1,1. K použití TLS 1,2 můžete použít následující alternativní řešení. Zadejte TLS 1,2 při vytváření instance klienta:
 
   ``` PHP
   $redis=newPredis\Client([
@@ -105,20 +105,20 @@ Uzel Redis a IORedis používají ve výchozím nastavení TLS 1.2.
   ]);
   ```
 
-* PHP 7.3 a novější verze: Predis používá nejnovější verzi TLS.
+* PHP 7,3 a novější verze: Predis používá nejnovější verzi TLS.
 
 #### <a name="phpredis"></a>PhpRedis
 
-PhpRedis nepodporuje TLS na žádné verzi PHP.
+PhpRedis nepodporuje protokol TLS u žádné verze PHP.
 
 ### <a name="python"></a>Python
 
-Redis-py ve výchozím nastavení používá TLS 1.2.
+Redis-py používá standardně TLS 1,2.
 
 ### <a name="go"></a>GO
 
-Redigo ve výchozím nastavení používá TLS 1.2.
+RediGO používá standardně TLS 1,2.
 
 ## <a name="additional-information"></a>Další informace
 
-- [Jak nakonfigurovat Azure Cache pro Redis](cache-configure.md)
+- [Jak nakonfigurovat Azure cache pro Redis](cache-configure.md)

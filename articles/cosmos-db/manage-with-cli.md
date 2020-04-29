@@ -1,21 +1,21 @@
 ---
-title: Správa prostředků Azure Cosmos DB pomocí azure cli
-description: Azure CLI slouží ke správě účtu Azure Cosmos DB, databáze a kontejnerů.
+title: Správa prostředků Azure Cosmos DB pomocí Azure CLI
+description: Pomocí Azure CLI můžete spravovat Azure Cosmos DB účet, databázi a kontejnery.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.author: mjbrown
 ms.openlocfilehash: 3f86468bcafe3d7ce78827aba761bb4e1bf920fa
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81273626"
 ---
-# <a name="manage-azure-cosmos-resources-using-azure-cli"></a>Správa prostředků Azure Cosmos pomocí azure cli
+# <a name="manage-azure-cosmos-resources-using-azure-cli"></a>Správa prostředků Azure Cosmos pomocí Azure CLI
 
-Následující příručka popisuje běžné příkazy pro automatizaci správy účtů, databází a kontejnerů Azure Cosmos DB pomocí Azure CLI. Referenční stránky pro všechny příkazy Rozhraní příkazu Příkaz příkazu Azure Cosmos DB JSOU k dispozici v [referenčním rozhraní příkazového příkazu Azure .](https://docs.microsoft.com/cli/azure/cosmosdb) Další příklady najdete také v [ukázkách rozhraní API Azure pro Azure Cosmos DB](cli-samples.md), včetně toho, jak vytvořit a spravovat účty Cosmos DB, databáze a kontejnery pro MongoDB, Gremlin, Cassandra a Table API.
+Následující příručka popisuje běžné příkazy pro automatizaci správy účtů, databází a kontejnerů Azure Cosmos DB pomocí Azure CLI. Referenční stránky pro všechny příkazy rozhraní příkazového řádku Azure Cosmos DB jsou k dispozici v [referenčních informacích k Azure CLI](https://docs.microsoft.com/cli/azure/cosmosdb). Další příklady najdete v [ukázkách Azure CLI pro Azure Cosmos DB](cli-samples.md), včetně toho, jak vytvářet a spravovat Cosmos DB účty, databáze a kontejnery pro MongoDB, Gremlin, Cassandra a rozhraní API pro tabulky.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -23,10 +23,10 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (
 
 ## <a name="create-an-azure-cosmos-db-account"></a>Vytvoření účtu služby Azure Cosmos DB
 
-Vytvořte účet Azure Cosmos DB s rozhraním SQL API, konzistenci relace v oblastech ZÁPADNÍ USA 2 a Východní USA 2:
+Vytvoření účtu Azure Cosmos DB pomocí rozhraní SQL API, konzistence relace v Západní USA 2 a Východní USA 2 oblastech:
 
 > [!IMPORTANT]
-> Název účtu Azure Cosmos musí být malá a menší než 31 znaků.
+> Název účtu Azure Cosmos musí být malými písmeny a kratší než 31 znaků.
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'
@@ -42,12 +42,12 @@ az cosmosdb create \
 
 ## <a name="add-or-remove-regions"></a>Přidání nebo odebrání oblastí
 
-Vytvořte účet Azure Cosmos se dvěma oblastmi, přidejte oblast a odeberte oblast.
+Vytvořte účet Azure Cosmos se dvěma oblastmi, přidejte oblast a odstraňte oblast.
 
 > [!NOTE]
-> Nelze současně přidat nebo `locations` odebrat oblasti a změnit další vlastnosti pro účet Azure Cosmos. Změna oblastí musí být provedena jako samostatná operace než jakákoli jiná změna prostředku účtu.
+> Nemůžete současně přidat ani odebrat `locations` oblasti a změnit další vlastnosti pro účet Azure Cosmos. Úprava oblastí se musí provádět jako samostatná operace, než jakákoli jiná změna prostředku účtu.
 > [!NOTE]
-> Tento příkaz umožňuje přidávat a odebírat oblasti, ale neumožňuje měnit priority převzetí služeb při selhání nebo aktivovat ruční převzetí služeb při selhání. Viz [Nastavení priority převzetí služeb při selhání](#set-failover-priority) a [ručního převzetí služeb při selhání](#trigger-manual-failover).
+> Tento příkaz umožňuje přidat a odebrat oblasti, ale neumožňuje měnit priority převzetí služeb při selhání ani aktivovat ruční převzetí služeb při selhání. Viz [Nastavení priority převzetí služeb při selhání](#set-failover-priority) a [Aktivace ručního převzetí služeb](#trigger-manual-failover)
 
 ```azurecli-interactive
 resourceGroupName='myResourceGroup'
@@ -70,9 +70,9 @@ az cosmosdb update --name $accountName --resource-group $resourceGroupName \
     --locations regionName="East US 2" failoverPriority=1 isZoneRedundant=False
 ```
 
-## <a name="enable-multiple-write-regions"></a>Povolení více oblastí zápisu
+## <a name="enable-multiple-write-regions"></a>Povolit více oblastí zápisu
 
-Povolení více hlavních hlavních pro účet Cosmos
+Povolení pro účet Cosmos s více hlavními servery
 
 ```azurecli-interactive
 # Update an Azure Cosmos account from single to multi-master
@@ -85,7 +85,7 @@ accountId=$(az cosmosdb show -g $resourceGroupName -n $accountName --query id -o
 az cosmosdb update --ids $accountId --enable-multiple-write-locations true
 ```
 
-## <a name="set-failover-priority"></a>Nastavit prioritu převzetí služeb při selhání
+## <a name="set-failover-priority"></a>Nastavení priority převzetí služeb při selhání
 
 Nastavení priority převzetí služeb při selhání pro účet Azure Cosmos nakonfigurovaný pro automatické převzetí služeb při selhání
 
@@ -115,10 +115,10 @@ accountId=$(az cosmosdb show -g $resourceGroupName -n $accountName --query id -o
 az cosmosdb update --ids $accountId --enable-automatic-failover true
 ```
 
-## <a name="trigger-manual-failover"></a>Aktivovat ruční převzetí služeb při selhání
+## <a name="trigger-manual-failover"></a>Aktivace ručního převzetí služeb při selhání
 
 > [!CAUTION]
-> Změna oblasti s prioritou = 0 aktivuje ruční převzetí služeb při selhání pro účet Azure Cosmos. Žádná jiná změna priority nespustí převzetí služeb při selhání.
+> Změna oblasti s prioritou = 0 spustí ruční převzetí služeb při selhání pro účet Azure Cosmos. Žádná jiná změna priority nebude aktivovat převzetí služeb při selhání.
 
 ```azurecli-interactive
 # Assume region order is initially 'West US 2'=0 'East US 2'=1 'South Central US'=2 for account
@@ -147,7 +147,7 @@ az cosmosdb keys list \
    -g $resourceGroupName
 ```
 
-## <a name="list-read-only-account-keys"></a>Seznam klíčů účtů jen pro čtení
+## <a name="list-read-only-account-keys"></a>Vypsat klíče účtu jen pro čtení
 
 Získejte klíče jen pro čtení pro účet Cosmos.
 
@@ -162,7 +162,7 @@ az cosmosdb keys list \
     --type read-only-keys
 ```
 
-## <a name="list-connection-strings"></a>Seznam připojovacích řetězců
+## <a name="list-connection-strings"></a>Vypsat připojovací řetězce
 
 Získejte připojovací řetězce pro účet Cosmos.
 
@@ -177,9 +177,9 @@ az cosmosdb keys list \
     --type connection-strings
 ```
 
-## <a name="regenerate-account-key"></a>Obnovit klíč účtu
+## <a name="regenerate-account-key"></a>Znovu vygenerovat klíč účtu
 
-Znovu vygenerovat nový klíč pro účet Cosmos.
+Znovu Vygenerujte nový klíč pro účet Cosmos.
 
 ```azurecli-interactive
 # Regenerate secondary account keys
@@ -222,7 +222,7 @@ az cosmosdb sql database create \
     --throughput $throughput
 ```
 
-## <a name="change-the-throughput-of-a-database"></a>Změna propustnost databáze
+## <a name="change-the-throughput-of-a-database"></a>Změna propustnosti databáze
 
 Zvyšte propustnost databáze Cosmos o 1000 RU/s.
 
@@ -250,7 +250,7 @@ az cosmosdb sql database throughput update \
 
 ## <a name="create-a-container"></a>Vytvoření kontejneru
 
-Vytvořte kontejner Cosmos s výchozí zásadou indexu, klíčem oddílu a RU/s 400.
+Vytvořte kontejner Cosmos s výchozími zásadami indexování, klíč oddílu a RU/s 400.
 
 ```azurecli-interactive
 # Create a SQL API container
@@ -267,9 +267,9 @@ az cosmosdb sql container create \
     -p $partitionKey --throughput $throughput
 ```
 
-## <a name="create-a-container-with-ttl"></a>Vytvoření kontejneru s TTL
+## <a name="create-a-container-with-ttl"></a>Vytvoření kontejneru s hodnotou TTL
 
-Vytvořte kontejner Cosmos s povolenou ttl.
+Vytvoří kontejner Cosmos s povoleným TTL.
 
 ```azurecli-interactive
 # Create an Azure Cosmos container with TTL of one day
@@ -286,9 +286,9 @@ az cosmosdb sql container update \
     --ttl=86400
 ```
 
-## <a name="create-a-container-with-a-custom-index-policy"></a>Vytvoření kontejneru s vlastní zásadou indexu
+## <a name="create-a-container-with-a-custom-index-policy"></a>Vytvoření kontejneru s vlastními zásadami indexů
 
-Vytvořte kontejner Cosmos s vlastní zásadou indexu, prostorovým indexem, složeným indexem, klíčem oddílu a RU/s 400.
+Vytvořte kontejner Cosmos s vlastními zásadami indexů, prostorový index, složený index, klíč oddílu a RU/s 400.
 
 ```azurecli-interactive
 # Create a SQL API container
@@ -338,9 +338,9 @@ az cosmosdb sql container create \
 rm -f "idxpolicy-$uniqueId.json"
 ```
 
-## <a name="change-the-throughput-of-a-container"></a>Změna propustnost kontejneru
+## <a name="change-the-throughput-of-a-container"></a>Změna propustnosti kontejneru
 
-Zvyšte propustnost kontejneru Cosmos o 1000 RU/s.
+Zvyšte propustnost Cosmos kontejneru o 1000 RU/s.
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'
@@ -368,8 +368,8 @@ az cosmosdb sql container throughput update \
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o azure cli, najdete v tématu:
+Další informace o rozhraní příkazového řádku Azure najdete v těchto tématech:
 
-- [Instalace azure cli](/cli/azure/install-azure-cli)
-- [Referenční informace k rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/cosmosdb)
-- [Další ukázky Azure CLI pro Azure Cosmos DB](cli-samples.md)
+- [Instalace rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli)
+- [Reference k rozhraní příkazového řádku Azure CLI](https://docs.microsoft.com/cli/azure/cosmosdb)
+- [Další ukázky v Azure CLI pro Azure Cosmos DB](cli-samples.md)

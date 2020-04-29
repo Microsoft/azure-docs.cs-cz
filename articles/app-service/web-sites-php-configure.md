@@ -9,43 +9,43 @@ ms.date: 04/13/2020
 ms.author: msangapu
 ms.custom: seodec18
 ms.openlocfilehash: 208f4f7b4c2d8562d5237a40f52e4774ea5c5606
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81272470"
 ---
-# <a name="configure-php-in-azure-app-service"></a>Konfigurace PHP ve službě Azure App Service
+# <a name="configure-php-in-azure-app-service"></a>Konfigurace PHP v Azure App Service
 
 ## <a name="introduction"></a>Úvod
 
-Tato příručka ukazuje, jak nakonfigurovat vestavěný běh ový čas PHP pro webové aplikace a aplikace rozhraní API ve [službě Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714), poskytnout vlastní běhový čas PHP a povolit rozšíření. Chcete-li používat službu App Service, zaregistrujte si [bezplatnou zkušební verzi]. Chcete-li získat co nejvíce z této příručky, měli byste nejprve vytvořit aplikaci PHP v App Service.
+V této příručce se dozvíte, jak nakonfigurovat integrovaný modul runtime PHP pro webové aplikace a aplikace API v [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714), poskytnout vlastní modul runtime php a povolit rozšíření. Pokud chcete použít App Service, zaregistrujte se do [bezplatné zkušební verze]. Pokud chcete z této příručky získat maximum, měli byste nejdřív vytvořit aplikaci PHP v App Service.
 
-## <a name="how-to-change-the-built-in-php-version"></a>Postup: Změna vestavěné verze PHP
+## <a name="how-to-change-the-built-in-php-version"></a>Postupy: Změna předdefinované verze PHP
 
-Při vytváření webové aplikace si můžete vybrat verzi PHP, která bude nakonfigurována. Aktuální informace o aktuálně podporovaných verzích [najdete v tématu PHP on App Service.](https://github.com/Azure/app-service-linux-docs/blob/master/Runtime_Support/php_support.md)
+Při vytváření webové aplikace můžete zvolit verzi PHP, která se nakonfiguruje. Aktuální informace o aktuálně podporovaných verzích najdete v tématu [php on App Service](https://github.com/Azure/app-service-linux-docs/blob/master/Runtime_Support/php_support.md) .
 
-Chcete-li zkontrolovat existující runtime verzi aplikace, můžete nasadit skript, který volá funkci [phpinfo().]
+Chcete-li zjistit existující verzi aplikace runtime, můžete nasadit skript, který volá funkci [phpinfo ()] .
 
-Chcete-li aktualizovat verzi PHP, postupujte podle jedné z těchto metod:
+K aktualizaci verze PHP použijte jednu z těchto metod:
 
 ### <a name="azure-portal"></a>portál Azure
 
-1. Přejděte do své aplikace na [webu Azure Portal](https://portal.azure.com) a přejděte na stránku **Konfigurace.**
+1. Přejděte do aplikace v [Azure Portal](https://portal.azure.com) a přejděte na stránku **Konfigurace** .
 
-2. V **části Konfigurace**vyberte Obecné **nastavení** a zvolte novou verzi PHP.
+2. V části **Konfigurace**vyberte **Obecné nastavení** a zvolte novou verzi PHP.
 
-3. Klepněte na tlačítko **Uložit** v horní části okna **Obecné nastavení.**
+3. Klikněte na tlačítko **Uložit** v horní části okna **Obecné nastavení** .
 
 ### <a name="azure-cli"></a>Azure CLI 
 
-Chcete-li používat rozhraní příkazového řádku Azure, musíte do počítače [nainstalovat rozhraní příkazového řádku Azure.](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+Pokud chcete používat rozhraní příkazového řádku Azure, musíte na svém počítači [nainstalovat Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) .
 
 1. Otevřete terminál a přihlaste se ke svému účtu.
 
         az login
 
-1. Zkontrolujte, zda chcete zobrazit seznam podporovaných modulů runtimes.
+1. Zkontrolujte, zda se zobrazí seznam podporovaných modulů runtime.
 
         az webapp list-runtimes | grep php
 
@@ -53,18 +53,18 @@ Chcete-li používat rozhraní příkazového řádku Azure, musíte do počíta
 
         az webapp config set --php-version {5.6 | 7.2 | 7.3} --name {app-name} --resource-group {resource-group-name}
 
-3. Verze PHP je nyní nastavena. Můžete potvrdit tato nastavení:
+3. Verze PHP je teď nastavená. Můžete potvrdit tato nastavení:
 
         az webapp show --name {app-name} --resource-group {resource-group-name}
 
-## <a name="how-to-change-the-built-in-php-configurations"></a>Postup: Změna vestavěných konfigurací PHP
+## <a name="how-to-change-the-built-in-php-configurations"></a>Postupy: Změna předdefinovaných konfigurací PHP
 
-U jakéhokoli vestavěného běhu PHP můžete změnit některou z možností konfigurace pomocí následujících kroků. (Informace o směrnicích php.ini naleznete v [seznamu směrnic php.ini].)
+Pro jakýkoli integrovaný modul runtime PHP můžete změnit kteroukoli z možností konfigurace pomocí následujících kroků. (Informace o direktivách php. ini najdete v tématu [seznam direktiv php. ini].)
 
-### <a name="changing-php_ini_user-php_ini_perdir-php_ini_all-configuration-settings"></a>Změna\_PHP\_INI\_USER,\_PHP INI PERDIR, PHP\_INI\_VŠECHNA nastavení konfigurace
+### <a name="changing-php_ini_user-php_ini_perdir-php_ini_all-configuration-settings"></a>Změna uživatele\_php\_ini, PHP\_ini\_PERDIR, php\_ini\_všechna nastavení konfigurace
 
-1. Přidejte soubor [.user.ini] do kořenového adresáře.
-1. Přidejte nastavení `.user.ini` konfigurace do souboru pomocí stejné `php.ini` syntaxe, jakou byste použili v souboru. Pokud byste například chtěli zapnout `display_errors` nastavení `upload_max_filesize` a nastavit nastavení `.user.ini` na 10 M, soubor by obsahoval tento text:
+1. Přidejte soubor [. User. ini] do kořenového adresáře.
+1. Přidejte konfigurační nastavení do `.user.ini` souboru pomocí stejné syntaxe, jakou byste použili v `php.ini` souboru. Pokud jste například chtěli zapnout `display_errors` nastavení a nastavit `upload_max_filesize` nastavení na 10 milionů, `.user.ini` soubor by obsahoval tento text:
 
         ; Example Settings
         display_errors=On
@@ -73,99 +73,99 @@ U jakéhokoli vestavěného běhu PHP můžete změnit některou z možností ko
         ; OPTIONAL: Turn this on to write errors to d:\home\LogFiles\php_errors.log
         ; log_errors=On
 2. Nasaďte aplikaci.
-3. Restartujte aplikaci. (Restartování je nezbytné, protože frekvence, `.user.ini` s jakou `user_ini.cache_ttl` PHP čte soubory, se řídí nastavením, což je nastavení systémové úrovně a ve výchozím nastavení je 300 sekund (5 minut). Restartování aplikace nutí PHP číst nové nastavení `.user.ini` v souboru.)
+3. Restartujte aplikaci. (Restart je nezbytný, protože frekvence, se kterou `.user.ini` se čte php souborů, řídí `user_ini.cache_ttl` nastavení, což je nastavení na úrovni systému a ve výchozím nastavení je 300 sekund (5 minut). Restartování aplikace vynutí, aby PHP načetla nová nastavení `.user.ini` v souboru.)
 
-Jako alternativu k `.user.ini` použití souboru můžete použít funkci [ini_set()] ve skriptech k nastavení možností konfigurace, které nejsou direktivy na úrovni systému.
+Jako alternativu k používání `.user.ini` souboru můžete použít funkci [ini_set ()] ve skriptech k nastavení možností konfigurace, které nejsou direktivami na úrovni systému.
 
-### <a name="changing-php_ini_system-configuration-settings"></a>Změna\_nastavení\_konfigurace SYSTÉMU PHP INI
+### <a name="changing-php_ini_system-configuration-settings"></a>Změna nastavení\_konfigurace\_systému php ini
 
-1. Přidání nastavení aplikace do aplikace `PHP_INI_SCAN_DIR` s klíčem a hodnotou`d:\home\site\ini`
-1. Vytvořte `settings.ini` soubor pomocí konzoly&lt;Kudu&gt;(http:// název `d:\home\site\ini` webu .scm.azurewebsite.net) v adresáři.
-1. Přidejte nastavení `settings.ini` konfigurace do souboru pomocí stejné `php.ini` syntaxe, jakou byste použili v souboru. Pokud byste například chtěli `curl.cainfo` nasměrovat `*.crt` nastavení na soubor a nastavit nastavení wincache.maxfilesize `settings.ini` na 512 K, soubor by obsahoval tento text:
+1. Přidání nastavení aplikace do aplikace s klíčovým `PHP_INI_SCAN_DIR` a hodnotou`d:\home\site\ini`
+1. Vytvořte `settings.ini` soubor pomocí konzoly Kudu (http://&lt;site-name&gt;. SCM.azurewebsite.NET) v `d:\home\site\ini` adresáři.
+1. Přidejte konfigurační nastavení do `settings.ini` souboru pomocí stejné syntaxe, jakou byste použili v `php.ini` souboru. Pokud byste například chtěli nasměrovat `curl.cainfo` nastavení na `*.crt` soubor a nastavit ' WinCache. MaxFileSize ' na 512 k, váš `settings.ini` soubor by obsahoval tento text:
 
         ; Example Settings
         curl.cainfo="%ProgramFiles(x86)%\Git\bin\curl-ca-bundle.crt"
         wincache.maxfilesize=512
-1. Chcete-li změny znovu načíst, restartujte aplikaci.
+1. Pokud chcete změny znovu načíst, restartujte aplikaci.
 
-## <a name="how-to-enable-extensions-in-the-default-php-runtime"></a>Postup: Povolení rozšíření ve výchozím běhu PHP
+## <a name="how-to-enable-extensions-in-the-default-php-runtime"></a>Postupy: povolení rozšíření ve výchozím modulu runtime PHP
 
-Jak je uvedeno v předchozí části, nejlepší způsob, jak vidět výchozí verzi PHP, jeho výchozí konfiguraci a povolené rozšíření, je nasadit skript, který volá [phpinfo()]. Chcete-li povolit další rozšíření, postupujte takto:
+Jak je uvedeno v předchozí části, nejlepší způsob, jak zobrazit výchozí verzi PHP, její výchozí konfiguraci a povolená rozšíření, je nasazení skriptu, který volá [phpinfo ()]. Pokud chcete povolit další rozšíření, postupujte podle těchto kroků:
 
-### <a name="configure-via-ini-settings"></a>Konfigurace pomocí nastavení ini
+### <a name="configure-via-ini-settings"></a>Konfigurace prostřednictvím nastavení ini
 
-1. Přidejte `ext` do `d:\home\site` adresáře adresáře adresář.
-1. Vložte `.dll` soubory `ext` rozšíření do adresáře `php_xdebug.dll`(například). Ujistěte se, že rozšíření jsou kompatibilní s výchozí verzí PHP a jsou kompatibilní s VC9 a nepro přístup k vláknům (nts).
-1. Přidání nastavení aplikace do aplikace `PHP_INI_SCAN_DIR` s klíčem a hodnotou`d:\home\site\ini`
-1. Vytvořte `ini` soubor `d:\home\site\ini` `extensions.ini`s názvem .
-1. Přidejte nastavení `extensions.ini` konfigurace do souboru pomocí stejné `php.ini` syntaxe, jakou byste použili v souboru. Pokud byste například chtěli povolit přípony MongoDB a `extensions.ini` XDebug, soubor by obsahoval tento text:
+1. Přidejte `ext` adresář do `d:\home\site` adresáře.
+1. Umístěte `.dll` soubory rozšíření do `ext` adresáře (například `php_xdebug.dll`). Ujistěte se, že jsou rozšíření kompatibilní s výchozí verzí PHP a že jsou kompatibilní s VC9 a bez NTS (non-Thread-Safe).
+1. Přidání nastavení aplikace do aplikace s klíčovým `PHP_INI_SCAN_DIR` a hodnotou`d:\home\site\ini`
+1. Vytvoří `ini` soubor s `d:\home\site\ini` názvem. `extensions.ini`
+1. Přidejte konfigurační nastavení do `extensions.ini` souboru pomocí stejné syntaxe, jakou byste použili v `php.ini` souboru. Pokud jste například chtěli povolit rozšíření MongoDB a nástroje Xdebug, bude `extensions.ini` soubor obsahovat tento text:
 
         ; Enable Extensions
         extension=d:\home\site\ext\php_mongo.dll
         zend_extension=d:\home\site\ext\php_xdebug.dll
-1. Chcete-li načíst změny, restartujte aplikaci.
+1. Pokud chcete načíst změny, restartujte aplikaci.
 
-### <a name="configure-via-app-setting"></a>Konfigurace pomocí nastavení aplikace
+### <a name="configure-via-app-setting"></a>Konfigurace prostřednictvím nastavení aplikace
 
 1. Přidejte `bin` adresář do kořenového adresáře.
-2. Vložte `.dll` soubory `bin` rozšíření do adresáře `php_xdebug.dll`(například). Ujistěte se, že rozšíření jsou kompatibilní s výchozí verzí PHP a jsou kompatibilní s VC9 a nepro přístup k vláknům (nts).
+2. Umístěte `.dll` soubory rozšíření do `bin` adresáře (například `php_xdebug.dll`). Ujistěte se, že jsou rozšíření kompatibilní s výchozí verzí PHP a že jsou kompatibilní s VC9 a bez NTS (non-Thread-Safe).
 3. Nasaďte aplikaci.
-4. Přejděte do své aplikace na webu Azure Portal a klikněte na **část Konfigurace** uvedená **pod** nastavením.
-5. V okně **Konfigurace** vyberte **Nastavení aplikace**.
-6. V části **Nastavení aplikace** klikněte na + Nové **nastavení aplikace** a vytvořte **PHP_EXTENSIONS** klíč. Hodnota tohoto klíče by byla cesta vzhledem ke kořenu webu: **bin\your-ext-file**.
-7. Klikněte na tlačítko **Aktualizovat** dole a potom klikněte na **Uložit** nad kartou **Nastavení aplikace.**
+4. V Azure Portal přejděte do své aplikace a klikněte na oddíl **Konfigurace** umístěný pod **nastavením** .
+5. V okně **Konfigurace** vyberte **nastavení aplikace**.
+6. V části **nastavení aplikace** klikněte na **+ nové nastavení aplikace** a vytvořte **PHP_EXTENSIONS** klíč. Hodnota tohoto klíče by byla cesta relativní k kořenu webu: **bin\your-EXT-File**.
+7. V dolní části klikněte na tlačítko **aktualizovat** a pak klikněte na **Uložit** nad kartou **nastavení aplikace** .
 
-Zend rozšíření jsou také podporovány pomocí **PHP_ZENDEXTENSIONS** klíč. Chcete-li povolit více rozšíření, zahrňte seznam souborů oddělených `.dll` čárkami pro hodnotu nastavení aplikace.
+Rozšíření Zend jsou také podporována pomocí **PHP_ZENDEXTENSIONSho** klíče. Pokud chcete povolit více rozšíření, zahrňte čárkami oddělený `.dll` seznam souborů pro hodnotu nastavení aplikace.
 
-## <a name="how-to-use-a-custom-php-runtime"></a>Postup: Použití vlastního runtime PHP
+## <a name="how-to-use-a-custom-php-runtime"></a>Postupy: použití vlastního modulu runtime PHP
 
-Namísto výchozího runtime PHP může služba App Service použít runtime PHP, který poskytnete ke spuštění skriptů PHP. Za běhu, který zadáte, lze `php.ini` nakonfigurovat souborem, který také zadáte. Chcete-li použít vlastní php runtime se službou App Service, postupujte podle těchto kroků.
+Místo výchozího modulu runtime PHP může App Service použít modul runtime PHP, který zadáte pro spouštění skriptů PHP. Modul runtime, který poskytnete, se dá nakonfigurovat `php.ini` pomocí souboru, který zadáte zároveň. Pokud chcete použít vlastní modul runtime PHP s App Service, postupujte podle těchto kroků.
 
-1. Získejte verzi PHP PHP pro Windows kompatibilní s technologií VC9 nebo VC11, která není bezpečná pro přístup z více vláken. Nedávné verze PHP pro Windows lze [https://windows.php.net/download/]nalézt zde: . Starší verze naleznete v archivu [https://windows.php.net/downloads/releases/archives/]zde: .
-2. Upravte `php.ini` soubor pro váš runtime. Všechna nastavení konfigurace, které jsou pouze na úrovni systému direktivy jsou ignorovány službou App Service. (Informace o směrnicích pouze na úrovni systému naleznete v [seznamu směrnic php.ini]).
-3. Volitelně můžete přidat rozšíření do běhu PHP a `php.ini` povolit je v souboru.
-4. Přidejte `bin` adresář do kořenového adresáře a vložte do něj adresář, `bin\php`který obsahuje váš runtime PHP (například ).
+1. Získejte VC9 nebo VC11 kompatibilní verzi PHP pro Windows, která není bezpečná pro přístup z více vláken. Poslední verze PHP pro Windows najdete tady: [https://windows.php.net/download/]. Starší verze najdete v archivu tady: [https://windows.php.net/downloads/releases/archives/].
+2. Upravte `php.ini` soubor pro modul runtime. Všechna nastavení konfigurace, která jsou direktivami pouze pro systém, jsou App Service ignorována. (Informace o direktivách týkajících se pouze systémové úrovně naleznete v tématu [seznam direktiv php. ini]).
+3. Volitelně můžete přidat rozšíření pro modul runtime PHP a povolit je v `php.ini` souboru.
+4. Přidejte `bin` adresář do kořenového adresáře a vložte do něj adresář, který obsahuje modul runtime php (například `bin\php`).
 5. Nasaďte aplikaci.
-6. Přejděte do své aplikace na webu Azure Portal a klikněte na okno **Konfigurace.**
-8. V okně **Konfigurace** vyberte **mapování cesty**. 
-9. Klepněte na **tlačítko + Nová obslužná rutina** a přidejte `*.php` do pole Rozšíření a přidejte cestu ke spustitelnému souboru `php-cgi.exe` v **procesoru Skript**. Pokud vložíte runtime PHP `bin` do adresáře v kořenovém `D:\home\site\wwwroot\bin\php\php-cgi.exe`adresáři aplikace, cesta je .
-10. V dolní části klikněte na **Aktualizovat** a dokončete přidávání mapování obslužné rutiny.
+6. Přejděte do aplikace v Azure Portal a klikněte na okno **Konfigurace** .
+8. V okně **Konfigurace** vyberte **mapování cest**. 
+9. Klikněte na **+ Nová obslužná rutina** a přidejte `*.php` do pole přípona a přidejte cestu `php-cgi.exe` ke spustitelnému souboru do **skriptovacího procesoru**. Pokud zadáte modul runtime PHP do `bin` adresáře v kořenovém adresáři vaší aplikace, cesta je. `D:\home\site\wwwroot\bin\php\php-cgi.exe`
+10. V dolní části klikněte na **aktualizovat** , aby se dokončilo přidávání mapování obslužných rutin.
 11. Uložte změny kliknutím na **Uložit**.
 
 <a name="composer" />
 
-## <a name="how-to-enable-composer-automation-in-azure"></a>Postup: Povolení automatizace skladatelů v Azure
+## <a name="how-to-enable-composer-automation-in-azure"></a>Postupy: povolení automatizace skladatele v Azure
 
-Ve výchozím nastavení app service nedělá nic s composer.json, pokud máte jeden v projektu PHP. Pokud používáte [nasazení Git](deploy-local-git.md), můžete povolit `git push` composer.json zpracování během povolením composer rozšíření.
+Ve výchozím nastavení App Service nedělá cokoli s skladatel. JSON, pokud ho máte v projektu PHP. Pokud používáte [nasazení Git](deploy-local-git.md), můžete povolit zpracování `git push` pomocí skladatele. JSON tím, že povolíte rozšíření skladatele.
 
 > [!NOTE]
-> Můžete [hlasovat pro prvotřídní podporu Composer v App Service zde!](https://feedback.azure.com/forums/169385-web-apps-formerly-websites/suggestions/6477437-first-class-support-for-composer-and-pip)
+> Můžete [hlasovat o podpoře prvotřídního skladatele v App Service sem](https://feedback.azure.com/forums/169385-web-apps-formerly-websites/suggestions/6477437-first-class-support-for-composer-and-pip).
 >
 
-1. V okně aplikace PHP na [webu Azure Portal](https://portal.azure.com)klikněte na**Rozšíření** **nástrojů** > .
+1. V okně aplikace PHP v [Azure Portal](https://portal.azure.com)klikněte na**rozšíření** **nástrojů** > .
 
-    ![Okno nastavení portálu Azure, které umožňuje automatizaci composerv azure](./media/web-sites-php-configure/composer-extension-settings.png)
-2. Klepněte na tlačítko **Přidat**a potom klepněte na tlačítko **Skladatel .**
+    ![Okno nastavení Azure Portal umožňující automatizaci skladatele v Azure](./media/web-sites-php-configure/composer-extension-settings.png)
+2. Klikněte na **Přidat**a pak na **skladatel**.
 
-    ![Přidání rozšíření Composer pro povolení automatizace skladatelů v Azure](./media/web-sites-php-configure/composer-extension-add.png)
-3. Chcete-li přijmout zákonné podmínky, klepněte na tlačítko **OK.** Dalším klepnutím na **tlačítko OK** přidáte rozšíření.
+    ![Přidání rozšíření skladatele pro povolení automatizace skladatele v Azure](./media/web-sites-php-configure/composer-extension-add.png)
+3. Kliknutím na **OK** přijměte právní podmínky. Opětovným kliknutím na tlačítko **OK** rozšíření přidejte.
 
-    Okno **Nainstalované rozšíření** zobrazuje rozšíření Composer.
-    ![Přijměte právní podmínky, které umožní automatizaci composer v Azure](./media/web-sites-php-configure/composer-extension-view.png)
-4. Nyní v okně terminálu v místním `git add` `git commit`počítači `git push` proveďte , a do aplikace. Všimněte si, že Composer instaluje závislosti definované v souboru composer.json.
+    V okně **instalované přípony** se zobrazuje rozšíření skladatele.
+    ![Přijmout právní podmínky pro povolení automatizace skladatele v Azure](./media/web-sites-php-configure/composer-extension-view.png)
+4. Nyní můžete v okně terminálu na místním počítači provádět `git add`, `git commit`a `git push` do své aplikace. Všimněte si, že skladatel instaluje závislosti definované v skladatele. JSON.
 
-    ![Nasazení Gitu s automatizací composer v Azure](./media/web-sites-php-configure/composer-extension-success.png)
+    ![Nasazení Git s automatizací skladatele v Azure](./media/web-sites-php-configure/composer-extension-success.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace naleznete v [centru pro vývojáře PHP](https://azure.microsoft.com/develop/php/).
+Další informace najdete v tématu [středisko pro vývojáře PHP](https://azure.microsoft.com/develop/php/).
 
 [bezplatná zkušební verze]: https://www.windowsazure.com/pricing/free-trial/
 [phpinfo()]: https://php.net/manual/en/function.phpinfo.php
 [select-php-version]: ./media/web-sites-php-configure/select-php-version.png
-[Seznam směrnic php.ini]: https://www.php.net/manual/en/ini.list.php
-[.user.ini]: https://www.php.net/manual/en/configuration.file.per-user.php
-[ini_set()]: https://www.php.net/manual/en/function.ini-set.php
+[Seznam direktiv php. ini]: https://www.php.net/manual/en/ini.list.php
+[. User. ini]: https://www.php.net/manual/en/configuration.file.per-user.php
+[ini_set ()]: https://www.php.net/manual/en/function.ini-set.php
 [application-settings]: ./media/web-sites-php-configure/application-settings.png
 [settings-button]: ./media/web-sites-php-configure/settings-button.png
 [save-button]: ./media/web-sites-php-configure/save-button.png

@@ -1,25 +1,25 @@
 ---
 title: Klíčová slova SQL pro Azure Cosmos DB
-description: Další informace o klíčových slovech SQL pro Azure Cosmos DB.
+description: Seznamte se s klíčovými slovy SQL pro Azure Cosmos DB.
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: tisande
 ms.openlocfilehash: 069548b9b69ef6f7f6bde85ede830d97f3d312db
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81261563"
 ---
 # <a name="keywords-in-azure-cosmos-db"></a>Klíčová slova v Azure Cosmos DB
 
-Tento článek podrobnosti klíčová slova, která mohou být použity v Azure Cosmos DB SQL dotazy.
+Tento článek podrobně popisuje klíčová slova, která se dají použít v Azure Cosmos DBch dotazech SQL.
 
 ## <a name="between"></a>BETWEEN
 
-`BETWEEN` Klíčové slovo můžete použít k vyjádření dotazů proti rozsahům řetězcových nebo číselných hodnot. Například následující dotaz vrátí všechny položky, ve kterých je první dítě stupeň 1-5, včetně.
+`BETWEEN` Klíčové slovo lze použít pro vyjádření dotazů na rozsahy řetězcových nebo číselných hodnot. Například následující dotaz vrátí všechny položky, ve kterých je první podřízená hodnota 1-5 (včetně).
 
 ```sql
     SELECT *
@@ -27,23 +27,23 @@ Tento článek podrobnosti klíčová slova, která mohou být použity v Azure 
     WHERE c.grade BETWEEN 1 AND 5
 ```
 
-Můžete také použít `BETWEEN` klíčové `SELECT` slovo v klauzuli, jako v následujícím příkladu.
+`BETWEEN` Klíčové slovo lze použít také v `SELECT` klauzuli, jak je uvedeno v následujícím příkladu.
 
 ```sql
     SELECT (c.grade BETWEEN 0 AND 10)
     FROM Families.children[0] c
 ```
 
-V rozhraní SQL API, na rozdíl od ANSI SQL, můžete vyjádřit dotazy rozsahu proti vlastnostem smíšených typů. Může být `grade` například číslo `5` jako u některých `grade4` položek a řetězec jako v jiných. V těchto případech, stejně jako v Jazyce JavaScript, porovnání mezi dvěma různými typy má za následek `Undefined`, takže položka je přeskočena.
+V rozhraní SQL API na rozdíl od ANSI SQL můžete vyjádřit dotazy na rozsah proti vlastnostem smíšených typů. Může se například `grade` jednat o číslo, například `5` v některých položkách, a v `grade4` řetězci podobném jiným. V těchto případech, jako v jazyce JavaScript, porovnávání dvou různých typů má za `Undefined`následek, že se položka přeskočí.
 
 > [!TIP]
-> Pro rychlejší časy spuštění dotazu vytvořte zásadu indexování, která používá typ `BETWEEN` indexu rozsahu proti všem číselným vlastnostem nebo cestám, které klauzule filtruje.
+> Pro rychlejší spouštění dotazů vytvořte zásadu indexování, která používá typ indexu rozsahu pro všechny číselné vlastnosti nebo cesty, které jsou `BETWEEN` filtry klauzule.
 
 ## <a name="distinct"></a>DISTINCT
 
-Klíčové `DISTINCT` slovo eliminuje duplikáty v projekci dotazu.
+`DISTINCT` Klíčové slovo eliminuje duplicity v projekci dotazu.
 
-V tomto příkladu dotaz předpokládá hodnoty pro každé příjmení:
+V tomto příkladu se dotazují hodnoty pro každý poslední název:
 
 ```sql
 SELECT DISTINCT VALUE f.lastName
@@ -58,7 +58,7 @@ Výsledky jsou následující:
 ]
 ```
 
-Můžete také promítat jedinečné objekty. V tomto případě pole lastName v jednom ze dvou dokumentů neexistuje, takže dotaz vrátí prázdný objekt.
+Můžete také projektovat jedinečné objekty. V takovém případě pole lastName v jednom ze dvou dokumentů neexistuje, takže dotaz vrátí prázdný objekt.
 
 ```sql
 SELECT DISTINCT f.lastName
@@ -76,14 +76,14 @@ Výsledky jsou následující:
 ]
 ```
 
-DISTINCT lze také použít v projekci v rámci poddotazu:
+KLAUZULE DISTINCT se dá použít taky v projekci v rámci poddotazu:
 
 ```sql
 SELECT f.id, ARRAY(SELECT DISTINCT VALUE c.givenName FROM c IN f.children) as ChildNames
 FROM f
 ```
 
-Tento dotaz projekty pole, které obsahuje každé dítě givenName s duplikáty odebrány. Toto pole je aliasováno jako ChildNames a promítáno ve vnějším dotazu.
+Tento dotaz projektuje pole, které obsahuje dané jméno dítěte s odebranými duplicitami. Toto pole má aliasy jako ChildNames a prochází z vnějšího dotazu.
 
 Výsledky jsou následující:
 
@@ -103,7 +103,7 @@ Výsledky jsou následující:
 ]
 ```
 
-Dotazy s agregační systémovou funkcí `DISTINCT` a poddotazem s nejsou podporovány. Například následující dotaz není podporován:
+Dotazy s agregovanou systémovou funkcí a poddotazem `DISTINCT` s nejsou podporovány. Například následující dotaz není podporován:
 
 ```sql
 SELECT COUNT(1) FROM (SELECT DISTINCT f.lastName FROM f)
@@ -111,7 +111,7 @@ SELECT COUNT(1) FROM (SELECT DISTINCT f.lastName FROM f)
 
 ## <a name="in"></a>IN
 
-Pomocí klíčového slova IN zkontrolujte, zda zadaná hodnota odpovídá libovolné hodnotě v seznamu. Například následující dotaz vrátí všechny položky `WakefieldFamily` `AndersenFamily`rodiny, `id` kde je nebo .
+Použijte klíčové slovo IN ke kontrole, zda zadaná hodnota odpovídá jakékoli hodnotě v seznamu. Například následující dotaz vrátí všechny rodinné položky, kde `id` je `WakefieldFamily` nebo. `AndersenFamily`
 
 ```sql
     SELECT *
@@ -119,7 +119,7 @@ Pomocí klíčového slova IN zkontrolujte, zda zadaná hodnota odpovídá libov
     WHERE Families.id IN ('AndersenFamily', 'WakefieldFamily')
 ```
 
-Následující příklad vrátí všechny položky, kde je stav některé ze zadaných hodnot:
+Následující příklad vrátí všechny položky, kde je stav kterákoli z určených hodnot:
 
 ```sql
     SELECT *
@@ -127,15 +127,15 @@ Následující příklad vrátí všechny položky, kde je stav některé ze zad
     WHERE Families.address.state IN ("NY", "WA", "CA", "PA", "OH", "OR", "MI", "WI", "MN", "FL")
 ```
 
-Rozhraní SQL API poskytuje podporu pro [iterace přes pole JSON](sql-query-object-array.md#Iteration), s novou konstrukci přidánprostřednictvím v klíčové slovo ve zdroji FROM.
+Rozhraní SQL API poskytuje podporu pro [iteraci přes pole JSON](sql-query-object-array.md#Iteration)s novou konstrukcí přidanou prostřednictvím klíčového slova in ve zdroji from.
 
-Pokud do filtru zahrnete klíč oddílu, `IN` dotaz se automaticky přefiltruje pouze na příslušné oddíly.
+Pokud zahrnete klíč oddílu do `IN` filtru, dotaz se automaticky vyfiltruje jenom na relevantní oddíly.
 
 ## <a name="top"></a>TOP
 
-Klíčové slovo TOP `N` vrátí první počet výsledků dotazu v nedefinovaném pořadí. Jako osvědčený postup použijte TOP `ORDER BY` s klauzulí k `N` omezení výsledků na první počet objednaných hodnot. Kombinace těchto dvou klauzulí je jediný způsob, jak předvídatelně určit, které řádky TOP ovlivňuje.
+Klíčové slovo TOP vrátí první `N` počet výsledků dotazu v nedefinovaném pořadí. Jako osvědčený postup použijte `ORDER BY` klauzuli TOP s klauzulí k omezení výsledků na první `N` počet seřazených hodnot. Kombinování těchto dvou klauzulí je jediným způsobem, jak prediktivním označovat, které řádky mají vliv na nejvyšší vliv.
 
-Top můžete použít s konstantní hodnotou, jako v následujícím příkladu, nebo s hodnotou proměnné pomocí parametrizovaných dotazů.
+Můžete použít TOP s konstantní hodnotou, jako v následujícím příkladu, nebo s hodnotou proměnné s použitím parametrizovaných dotazů.
 
 ```sql
     SELECT TOP 1 *
@@ -168,4 +168,4 @@ Výsledky jsou následující:
 
 - [Začínáme](sql-query-getting-started.md)
 - [Spojení](sql-query-join.md)
-- [Poddotazů](sql-query-subquery.md)
+- [Poddotazy](sql-query-subquery.md)

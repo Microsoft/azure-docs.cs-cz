@@ -1,5 +1,5 @@
 ---
-title: 'Úvodní příručka: Syntetizovat řeč do zvukového souboru, C# (.NET) - Služba řeči'
+title: 'Rychlý Start: syntetizace řeči do zvukového souboru, C# (.NET) – služba Speech'
 titleSuffix: Azure Cognitive Services
 description: Bude doplněno
 services: cognitive-services
@@ -11,30 +11,30 @@ ms.topic: include
 ms.date: 04/04/2020
 ms.author: erhopf
 ms.openlocfilehash: d3d0a807e8742419ee321f38daebf6f70d6b0be1
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81274883"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
-Než začnete, ujistěte se, že:
+Než začnete, nezapomeňte:
 
 > [!div class="checklist"]
-> * [Vytvoření řečového prostředku Azure](../../../../get-started.md)
+> * [Vytvoření prostředku Azure Speech](../../../../get-started.md)
 > * [Nastavení vývojového prostředí a vytvoření prázdného projektu](../../../../quickstarts/setup-platform.md?tabs=dotnet&pivots=programming-language-csharp)
 
-## <a name="open-your-project-in-visual-studio"></a>Otevření projektu v sadě Visual Studio
+## <a name="open-your-project-in-visual-studio"></a>Otevřete projekt v aplikaci Visual Studio
 
-Prvním krokem je ujistěte se, že máte projekt otevřený v sadě Visual Studio.
+Prvním krokem je ujistit se, že máte projekt otevřený v aplikaci Visual Studio.
 
 1. Spusťte Visual Studio 2019.
-2. Načtěte projekt `Program.cs`a otevřete .
+2. Načtěte projekt a otevřete `Program.cs`.
 
-## <a name="start-with-some-boilerplate-code"></a>Začněte s nějakým standardním kódem
+## <a name="start-with-some-boilerplate-code"></a>Začínáme s některým často používaným kódem
 
-Přidáme nějaký kód, který funguje jako kostra pro náš projekt. Všimněte si, že jste vytvořili `SynthesisToAudioFileAsync()`asynchronní metodu s názvem .
+Pojďme přidat kód, který funguje jako kostra pro náš projekt. Nezapomeňte, že jste vytvořili asynchronní metodu s názvem `SynthesisToAudioFileAsync()`.
 
 ````C#
 
@@ -61,7 +61,7 @@ namespace helloworld
 
 ## <a name="create-a-speech-configuration"></a>Vytvoření konfigurace řeči
 
-Před inicializaci objektu `SpeechSynthesizer` je třeba vytvořit konfiguraci, která používá klíč předplatného a oblast předplatného. Vložte tento `SynthesisToAudioFileAsync()` kód do metody.
+Než budete moct inicializovat `SpeechSynthesizer` objekt, musíte vytvořit konfiguraci, která používá váš klíč předplatného a oblast předplatného. Vložte tento kód do `SynthesisToAudioFileAsync()` metody.
 
 ````C#
 // Replace with your own subscription key and region identifier from here: https://aka.ms/speech/sdkregion
@@ -71,7 +71,7 @@ var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRe
 
 ## <a name="create-an-audio-configuration"></a>Vytvoření konfigurace zvuku
 
-Nyní je třeba vytvořit ````AudioConfig```` objekt, který odkazuje na zvukový soubor. Tento objekt je vytvořen uvnitř using prohlášení k zajištění správné uvolnění nespravovaných prostředků. Vložte tento `SynthesisToAudioFileAsync()` kód do metody přímo pod konfigurací řeči.
+Nyní je třeba vytvořit ````AudioConfig```` objekt, který odkazuje na váš zvukový soubor. Tento objekt je vytvořen v rámci příkazu Using, aby bylo zajištěno správné vydání nespravovaných prostředků. Vložte tento kód do `SynthesisToAudioFileAsync()` metody hned pod konfigurací řeči.
 
 ````C#
 var fileName = "helloworld.wav";
@@ -80,9 +80,9 @@ using (var fileOutput = AudioConfig.FromWavFileOutput(fileName))
 }
 ````
 
-## <a name="initialize-a-speechsynthesizer"></a>Inicializovat syntezátor řeči
+## <a name="initialize-a-speechsynthesizer"></a>Inicializovat SpeechSynthesizer
 
-Nyní vytvoříme `SpeechSynthesizer` objekt pomocí objektů `SpeechConfig` `AudioConfig` a vytvořených dříve. Tento objekt je také vytvořen uvnitř using prohlášení k zajištění správné uvolnění nespravovaných prostředků. Vložte tento `SynthesisToAudioFileAsync()` kód do metody, uvnitř using ````AudioConfig```` prohlášení, které obtéká objekt.
+Nyní vytvoříme `SpeechSynthesizer` objekt pomocí dříve vytvořených objektů `SpeechConfig` a. `AudioConfig` Tento objekt je vytvořen také v rámci příkazu Using, aby bylo zajištěno správné vydání nespravovaných prostředků. Vložte tento kód do `SynthesisToAudioFileAsync()` metody uvnitř příkazu Using, který zabalí váš ````AudioConfig```` objekt.
 
 ````C#
 using (var synthesizer = new SpeechSynthesizer(config, fileOutput))
@@ -90,21 +90,21 @@ using (var synthesizer = new SpeechSynthesizer(config, fileOutput))
 }
 ````
 
-## <a name="synthesize-text-using-speaktextasync"></a>Syntetizovat text pomocí aplikace SpeakTextAsync
+## <a name="synthesize-text-using-speaktextasync"></a>Vysyntetizení textu pomocí SpeakTextAsync
 
-Z `SpeechSynthesizer` objektu zavoláte metodu. `SpeakTextAsync()` Tato metoda odešle text do služby Speech, která jej převede na zvuk. Bude `SpeechSynthesizer` používat výchozí hlas, pokud `config.VoiceName` není explicitně zadán.
+Z `SpeechSynthesizer` objektu budete volat `SpeakTextAsync()` metodu. Tato metoda pošle váš text službě rozpoznávání řeči, která ji převede na zvuk. `SpeechSynthesizer` Pokud `config.VoiceName` není explicitně zadaný, použije se výchozí hlas.
 
-Uvnitř příkazu using přidejte tento kód:
+V příkazu Using přidejte tento kód:
 ````C#
 var text = "Hello world!";
 var result = await synthesizer.SpeakTextAsync(text);
 ````
 
-## <a name="check-for-errors"></a>Kontrola chyb
+## <a name="check-for-errors"></a>Vyhledat chyby
 
-Pokud je výsledek syntézy vrácen službou Řeč, měli byste zkontrolovat, zda byl váš text úspěšně syntetizován.
+Když služba pro rozpoznávání řeči vrátí výsledek shrnutí, měli byste zkontrolovat, zda byl text úspěšně syntetizované.
 
-Uvnitř příkazu using `SpeakTextAsync()`níže přidejte tento kód:
+V příkazu Using níže `SpeakTextAsync()`přidejte tento kód:
 ````C#
 if (result.Reason == ResultReason.SynthesizingAudioCompleted)
 {
@@ -124,9 +124,9 @@ else if (result.Reason == ResultReason.Canceled)
 }
 ````
 
-## <a name="check-your-code"></a>Kontrola kódu
+## <a name="check-your-code"></a>Kontrolovat kód
 
-V tomto okamžiku by měl váš kód vypadat takto:
+V tomto okamžiku váš kód by měl vypadat takto:
 
 ````C#
 //
@@ -182,13 +182,13 @@ namespace helloworld
 }
 ````
 
-## <a name="build-and-run-your-app"></a>Vytvoření a spuštění aplikace
+## <a name="build-and-run-your-app"></a>Sestavení a spuštění aplikace
 
-Teď jste připraveni vytvořit aplikaci a otestovat naši syntézu řeči pomocí služby Řeč.
+Nyní jste připraveni sestavit aplikaci a otestovat syntézu řeči pomocí služby Speech.
 
-1. **Kompilace kódu** – z panelu nabídek sady Visual Studio zvolte **Build** > **Build Build Solution**.
-2. **Spuštění aplikace** – z řádku nabídek zvolte **Ladění** > **ladění startování** nebo stiskněte **klávesu F5**.
-3. **Zahájit syntézu** – Text se převede na řeč a uloží se do zadaných zvukových dat.
+1. **Zkompilujte kód** -z panelu nabídek v aplikaci Visual Studio, vyberte **sestavení** > **řešení**sestavení.
+2. **Spusťte aplikaci** – z řádku nabídek zvolte **ladění** > **Spustit ladění** nebo stiskněte klávesu **F5**.
+3. **Zahájit syntézu** – váš text se převede na řeč a uloží se do zadaného zvukového data.
 
    ```text
    Speech synthesized to [helloworld.wav] for text [Hello world!]
@@ -201,4 +201,4 @@ Teď jste připraveni vytvořit aplikaci a otestovat naši syntézu řeči pomoc
 ## <a name="see-also"></a>Viz také
 
 - [Vytvoření vlastního hlasu](~/articles/cognitive-services/Speech-Service/how-to-custom-voice-create-voice.md)
-- [Záznam vlastních hlasových ukázek](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)
+- [Zaznamenat vlastní ukázky hlasu](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)

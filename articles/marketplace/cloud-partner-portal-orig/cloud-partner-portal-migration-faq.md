@@ -1,6 +1,6 @@
 ---
-title: Nejčastější dotazy týkající se migrace do Partnerského centra | Azure Marketplace
-description: Tento článek se zabývá nejčastějšími dotazy týkajícími se migrace nabídek z portálu partnerů cloudu do centra partnerů.
+title: Nejčastější dotazy týkající se migrace do partnerského centra | Azure Marketplace
+description: Tento článek popisuje Nejčastější dotazy týkající se migrace nabídek z portál partnerů cloudu do partnerského centra.
 author: anbene
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,152 +8,152 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: mingshen
 ms.openlocfilehash: 672153eba4aa2b739b67694f939c4796b39ac4c6
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81274377"
 ---
-# <a name="frequently-asked-questions-for-migrating-from-the-cloud-partner-portal-to-partner-center"></a>Nejčastější dotazy týkající se migrace z portálu partnerů cloudu do centra partnerů
+# <a name="frequently-asked-questions-for-migrating-from-the-cloud-partner-portal-to-partner-center"></a>Nejčastější dotazy k migraci z portál partnerů cloudu do partnerského centra
 
-Tento článek se zabývá běžně kladenými dotazy týkajícími se migrace nabídek z portálu partnerů cloudu do Centra partnerů.
+Tento článek popisuje Nejčastější dotazy týkající se migrace nabídek z portál partnerů cloudu do partnerského centra.
 
-## <a name="what-does-offer-migration-mean"></a>Co znamená nabídka migrace?
+## <a name="what-does-offer-migration-mean"></a>Co nabízí migrační význam?
 
-Data vaší nabídky přesouváme z portálu partnerů cloudu do Partnerského centra se změnami v prostředí publikování a správy nabídek.
+Data vaší nabídky z portál partnerů cloudu přesouváme do partnerského centra se změnami v možnosti publikování a správy nabídky.
 
 | Oblast  | Změny  |
 |-------|----------|
-| **Publikační a nabízejí manažerské zkušenosti** | Díky intuitivnímu rozhraní v Centru partnerů budete mít lepší uživatelské prostředí. Další podrobnosti najdete [v tématu Jaké jsou rozdíly mezi Partnerským centrem a portálem pro partnery cloudu?](#what-are-the-differences-between-partner-center-and-the-cloud-partner-portal) |
-| **Dostupnost vašich nabídek na trhu** | Žádné změny. Pokud je vaše nabídka aktivní na trhu, bude i nadále aktivní během a po dokončení migrace. |
-| **Nové nákupy a nasazení** | Žádné změny. Vaši zákazníci budou i nadále moci nakupovat a nasazovat vaše nabídky bez přerušení. |
-| **Výplaty** | Všechny nákupy a nasazení, ke kterým dojde během migrace nebo po ní, vám budou nadále vypláceny jako obvykle. |
-|**Integrace rozhraní API s existujícími [rozhraními API portálu pro partnery cloudu](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview)** | Existující cloudpartner portál u api bude i nadále podporována po migraci a vaše stávající integrace bude i nadále fungovat. Další podrobnosti najdete [v tématu Bude být po migraci podporována uživatelská centra REST portálu cloudových partnerů?](#will-the-cloud-partner-portal-rest-apis-be-supported-post-migration) |
+| **Publikování a nabídka správy** | V partnerském centru budete mít vylepšené uživatelské prostředí s intuitivním rozhraním. Další podrobnosti najdete v tématu [Jaké jsou rozdíly mezi partnerským centrem a portál partnerů cloudu?](#what-are-the-differences-between-partner-center-and-the-cloud-partner-portal) |
+| **Dostupnost nabídek na webu Marketplace** | Žádné změny. Pokud je vaše nabídka na webu Marketplace živá, bude i nadále v provozu i po dokončení migrace. |
+| **Nové nákupy a nasazení** | Žádné změny. Vaši zákazníci budou moct nakupovat a nasazovat vaše nabídky bez přerušení. |
+| **Výplaty** | Při jakémkoli nákupu a nasazení, ke kterým dojde během migrace nebo po ní, se bude dál platit jako normálně. |
+|**Integrace rozhraní API se stávajícími [rozhraními api portál partnerů cloudu](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview)** | Existující rozhraní API portál partnerů cloudu budou po migraci nadále podporována a stávající integrace budou i nadále fungovat. Další podrobnosti najdete v tématu [portál partnerů cloudu jsou rozhraní REST API podporovaná po migraci?](#will-the-cloud-partner-portal-rest-apis-be-supported-post-migration) |
 | | |
 
-## <a name="can-i-still-access-the-cloud-partner-portal-and-manage-my-offers-during-migration"></a>Můžu mít i nadále přístup k portálu cloudových partnerů a spravovat své nabídky během migrace?
+## <a name="can-i-still-access-the-cloud-partner-portal-and-manage-my-offers-during-migration"></a>Můžu stále přístup k portál partnerů cloudu a spravovat moje nabídky během migrace?
 
-Nabídky budou migrovány do Partnerského centra od 13. Během tohoto časového období budete mít přístup k portálu partnerů cloudu obvyklým způsobem, s výjimkou času, který nabízíte, je naplánována migrace.
-Během migrace nabídek budou mít stav Uzamčeno – přesun do Partnerského centra,jak je vidět na následujícím snímku obrazovky. Toto období migrace by mělo být kratší než 24 hodin. Během této doby nebudete moci své nabídky aktualizovat. Po dokončení migrace vašich nabídek obdržíte e-mailové oznámení.
+Nabídky budou migrovány do partnerského centra od 13. dubna v měsíci od května. Během tohoto časového období budete mít přístup k portál partnerů cloudu běžným způsobem, s výjimkou doby, po kterou jste nabídku naplánovali na migraci.
+I když se vaše nabídky migrují, budou mít stav uzamčeno – přesun do partnerského centra, jak je vidět na následujícím snímku obrazovky. Tato doba migrace by měla být kratší než 24 hodin. Během této doby nebudete moci provádět žádné aktualizace nabídek. Po dokončení migrace vašich nabídek obdržíte e-mailové oznámení.
 
-:::image type="content" source="media/migration-faq/all-offers-1.png" alt-text="Znázorňuje stav přenesených nabídek.":::
+:::image type="content" source="media/migration-faq/all-offers-1.png" alt-text="Ukazuje stav migrovaných nabídek.":::
 
-Po migraci nabídek budou na portálu partnerů cloudu **po omezenou dobu** v režimu jen pro čtení. Jejich stav se zobrazí "Přesunuto do partnerského centra" a obsahuje odkaz na vaši nabídku v Partnerském centru, jak je znázorněno na následujících snímcích obrazovky. Od tohoto okamžiku budete spravovat aktualizace všech svých nabídek nebo vytvářet nové nabídky výhradně prostřednictvím Partnerského centra,
+Až budou vaše nabídky migrovány, budou v režimu jen pro čtení po **omezené** době v portál partnerů cloudu. Jejich stav bude zobrazovat "přesunuto do partnerského centra" a zahrnovat odkaz na vaši nabídku v partnerském centru, jak je znázorněno na následujících snímcích obrazovky. Od tohoto okamžiku budete spravovat aktualizace všech nabídek nebo vytvoříte nové nabídky výhradně prostřednictvím partnerského centra,
 
-:::image type="content" source="media/migration-faq/all-offers-2.png" alt-text="Ilustruje zprávu pro nabídky, které byly migrovány do Centra partnerů.":::
+:::image type="content" source="media/migration-faq/all-offers-2.png" alt-text="Ukazuje zprávu pro nabídky, které byly migrovány do partnerského centra.":::
 
-:::image type="content" source="media/migration-faq/offer-has-moved.png" alt-text="Ilustruje stránku Portál partnerů cloudu pro migrouje nabídku.":::
+:::image type="content" source="media/migration-faq/offer-has-moved.png" alt-text="Znázorňuje stránku portál partnerů cloudu pro migrovaná nabídku.":::
 
-## <a name="how-will-i-create-new-offers"></a>Jak vytvořím nové nabídky?
+## <a name="how-will-i-create-new-offers"></a>Jak se vytvoří nové nabídky?
 
-Z portálu partnerů cloudu budete vyzváni k vytváření nových nabídek v Partnerském centru.
+Z portál partnerů cloudu budete přesměrováni na vytváření nových nabídek v partnerském centru.
 
-:::image type="content" source="media/migration-faq/create-new-offer-1.png" alt-text="Ilustruje nabídku pro vytvoření nové nabídky na portálu partnerů cloudu":::
+:::image type="content" source="media/migration-faq/create-new-offer-1.png" alt-text="Znázorňuje nabídku pro vytvoření nové nabídky v portál partnerů cloudu":::
 
 Po výběru nové nabídky se zobrazí zpráva, například následující.
 
-:::image type="content" source="media/migration-faq/create-new-offer-2.png" alt-text="Ilustruje zprávu přijatou při vytváření nové nabídky v CPP":::
+:::image type="content" source="media/migration-faq/create-new-offer-2.png" alt-text="Ukazuje zprávu přijatou při vytváření nové nabídky v CPP.":::
 
-## <a name="do-i-need-to-create-a-new-account-to-manage-offers-in-partner-center"></a>Musím si vytvořit nový účet pro správu nabídek v Centru partnerů?
+## <a name="do-i-need-to-create-a-new-account-to-manage-offers-in-partner-center"></a>Potřebuji vytvořit nový účet pro správu nabídek v partnerském centru?
 
-Ne. Váš podkladový účet bude zachován a v centru partnerů byste jej již měli spravovat. To znamená, že pokud jste stávajícím partnerem, můžete se přihlásit do Centra partnerů po migraci pomocí stávajících přihlašovacích údajů k účtu cloudového portálu partnerů. Z portálu partnerů cloudu do Centra partnerů se přesouvají pouze nabídky a související možnosti správy. Žádáme vás, abyste si nevytvářeli žádné nové účty, protože vaše nabídky nebudou spojeny s novým účtem.
+Ne. Váš základní účet se zachová a Vy už ho budete moct spravovat v partnerském centru. To znamená, že pokud jste stávající partner, můžete k přihlášení do partnerského centra po migraci použít stávající přihlašovací údaje účtu portál partnerů cloudu. Z portál partnerů cloudu do partnerského centra se přesouvá jenom nabídky a související prostředí pro správu. Požádáme, abyste nevytvořili žádné nové účty, protože vaše nabídky nebudou přidružené k novému účtu.
 
-## <a name="i-see-a-message-in-the-cloud-partner-portal-to-activate-my-account-what-does-this-mean"></a>Co to znamená, když se na portálu pro partnery v cloudu zobrazí zpráva pro aktivaci účtu?
+## <a name="i-see-a-message-in-the-cloud-partner-portal-to-activate-my-account-what-does-this-mean"></a>V portál partnerů cloudu se zobrazí zpráva o aktivaci mého účtu, co to znamená?
 
-Potřebujeme od vás několik dalších podrobností, abychom mohli správně migrovat svůj účet do Centra pro partnery a umožnit vám spravovat nabídky v Centru partnerů po dokončení migrace nabídky. Další podrobnosti o aktivaci účtu najdete v [tématu Migrace účtu z portálu partnerů cloudu do Centra partnerů](https://docs.microsoft.com/azure/marketplace/partner-center-portal/account-migration-from-cpp-to-pc).
+Abychom mohli správně migrovat váš účet do partnerského centra, potřebujeme několik dalších údajů a po dokončení migrace nabídky vám umožní spravovat nabídky v partnerském centru. Další podrobnosti o aktivaci účtu najdete v tématu [migrace účtu z portál partnerů cloudu do partnerského centra](https://docs.microsoft.com/azure/marketplace/partner-center-portal/account-migration-from-cpp-to-pc).
 
-Postup potřebný k dokončení aktivace účtu se liší v závislosti na roli vašeho účtu.
+Kroky potřebné k dokončení aktivace účtu se liší v závislosti na vaší roli účtu.
 
 | Role účtu | Kroky aktivace |
 |--------------|----------------|
-|Vlastník | Přejděte na stránku [Profil vydavatele](https://cloudpartner.azure.com/#profile) na portálu partnerů cloudu a kliknutím na odkaz v banneru aktivujte. K dokončení aktivace účtu budete přesměrováni do Centra partnerů. |
-| Přispěvatel | Účet může aktivovat pouze uživatel v účtu s rolí vlastníka. Chcete-li dokončit aktivaci účtu, obraťte se na vlastníky účtu. Vlastníci vašeho účtu by měli být uvedeni v bannerové zprávě. |
+|Vlastník | Přejděte na stránku [profil vydavatele](https://cloudpartner.azure.com/#profile) v portál partnerů cloudu a potom kliknutím na odkaz na informačním panelu aktivujte. K dokončení aktivace účtu budete přesměrováni do partnerského centra. |
+| Přispěvatel | Účet může aktivovat jenom uživatel v účtu s rolí vlastníka. Pro dokončení aktivace účtu se obraťte na svého vlastníka účtu. Vlastníci vašeho účtu by měli být uvedeni v hlavičce zprávy. |
 | | |
 
-## <a name="im-having-trouble-logging-in-to-my-account-and-opening-a-support-ticket"></a>Mám potíže s přihlášením k účtu a otevřením lístku podpory
+## <a name="im-having-trouble-logging-in-to-my-account-and-opening-a-support-ticket"></a>Mám potíže s přihlášením k mému účtu a otevření lístku podpory
 
-Pokud se nemůžete přihlásit ke svému účtu, můžete si otevřít [lístek podpory](https://partner.microsoft.com/support/v2/?stage=1).
+Pokud se nemůžete přihlásit ke svému účtu, můžete otevřít [lístek podpory](https://partner.microsoft.com/support/v2/?stage=1).
 
-## <a name="where-can-i-find-documentation-on-the-new-partner-center-publishing-experience"></a>Kde najdu dokumentaci k novému prostředí pro publikování v Centru partnerů?
+## <a name="where-can-i-find-documentation-on-the-new-partner-center-publishing-experience"></a>Kde najdu dokumentaci o novém prostředí pro publikování v partnerském centru?
 
-Přejděte do [dokumentace komerčního tržiště](https://docs.microsoft.com/azure/marketplace/). Pak rozbalte **portál Commercial Marketplace v Centru**  > partnerů**Vytvořte novou nabídku** a podívejte se na témata nápovědy pro vytváření jednotlivých typů nabídek.
+Přejít na [komerční dokumentaci k webu Marketplace](https://docs.microsoft.com/azure/marketplace/). Pak rozbalte **portál komerčního tržiště v partnerském centru**  > **vytvořit novou nabídku** , ve které najdete témata nápovědy pro vytvoření každého typu nabídky.
 
-:::image type="content" source="media/migration-faq/marketplace-help-topics.png" alt-text="Ilustruje témata nápovědy pro Partnerské centrum.":::
+:::image type="content" source="media/migration-faq/marketplace-help-topics.png" alt-text="Znázorňuje témata nápovědy pro partnerské Centrum.":::
 
-### <a name="what-are-the-differences-between-partner-center-and-the-cloud-partner-portal"></a>Jaké jsou rozdíly mezi Partnerským centrem a portálem partnerů v cloudu?
+### <a name="what-are-the-differences-between-partner-center-and-the-cloud-partner-portal"></a>Jaké jsou rozdíly mezi partnerským centrem a portál partnerů cloudu?
 
-Můžete si všimnout následujících rozdílů mezi portálem partnerů cloudu a partnerským centrem.
+Mezi portál partnerů cloudu a Partnerským centrem si můžete všimnout následujících rozdílů.
 
 ### <a name="modular-publishing-capabilities"></a>Modulární možnosti publikování
 
-Centrum partnerů poskytuje modulární možnost publikování, která umožňuje vybrat změny, které chcete publikovat, namísto publikování všech aktualizací najednou. Následující snímek obrazovky například ukazuje, že jediné změny, které mají být publikovány, jsou změny **v položkách Vlastnosti** a **Výpis nabídek**.
+Partnerské centrum poskytuje modulární možnost publikování, která umožňuje vybrat změny, které chcete publikovat, místo aby se vždy publikovaly všechny aktualizace najednou. Například na následujícím snímku obrazovky vidíte, že pouze změny vybrané k publikování jsou změny **vlastností** a **seznamu nabídek**.
 
-:::image type="content" source="media/migration-faq/review-and-publish-migration.png" alt-text="Ilustruje stránku Náhled a Publikovat":::
+:::image type="content" source="media/migration-faq/review-and-publish-migration.png" alt-text="Znázorňuje stránku náhledu a publikování.":::
 
-Aktualizace, které nepublikujete, se uloží jako koncepty. Před tím, než ji předvezete veřejnosti, můžete pokračovat v používání náhledu nabídky k ověření nabídky.
+Aktualizace, které nepublikujete, se ukládají jako koncepty. Pokračujte v používání vaší nabídky Preview a ověřte si vaši nabídku před tím, než ji provedete ve veřejném provozu.
 
-### <a name="rich-text-format"></a>Formát RTF
+### <a name="rich-text-format"></a>Rich Text Format
 
-Vylepšete svou nabídku a popis plánu pomocí editoru RTF na stránce Výpis nabídky a Výpis plánu.
+Vylepšete svůj popis nabídky a plánu pomocí editoru formátovaného textu na stránce seznam nabídek a seznam plánů.
 
-:::image type="content" source="media/migration-faq/rich-text-editor-migration.png" alt-text="Ilustruje editor rtf":::
+:::image type="content" source="media/migration-faq/rich-text-editor-migration.png" alt-text="Znázorňuje Editor formátovaného textu.":::
 
 ### <a name="enhanced-preview-options"></a>Rozšířené možnosti náhledu
 
-Centrum partnerů obsahuje [funkci porovnání](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#compare-changes-to-marketplace-offers) s vylepšenými možnostmi filtrování. To vám dává možnost porovnat s náhledem a živými verzemi nabídky.
+Partnerské centrum zahrnuje [funkci porovnání](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#compare-changes-to-marketplace-offers) s vylepšenými možnostmi filtrování. To vám umožní porovnat verze této nabídky s verzí Preview a živými verzemi.
 
-:::image type="content" source="media/migration-faq/enhanced-preview.png" alt-text="Ilustruje funkci porovnání":::
+:::image type="content" source="media/migration-faq/enhanced-preview.png" alt-text="Znázorňuje funkci Compare.":::
 
-### <a name="branding-and-navigation-changes"></a>Změny značky a navigace
+### <a name="branding-and-navigation-changes"></a>Změny brandingu a navigace
 
-Všimněte si některých změn značky. Například "SKU" jsou označeny jako "Plány" v Partnerském centru.
+Všimnete si, že se změní branding. Například "SKU" jsou v partnerském centru označeny jako "plány".
 
-:::image type="content" source="media/migration-faq/plan-overview-migration.png" alt-text="Ilustruje přehled plánu.":::
+:::image type="content" source="media/migration-faq/plan-overview-migration.png" alt-text="Znázorňuje přehled plánu.":::
 
-Informace, které jste použili k poskytnutí na stránkách **Marketplace** nebo S**torefront Details** (poradenská služba, aplikace Power BI) na portálu partnerů cloudu, se shromažďují také na stránce **Nabídka v** Centru partnerů.
+Také informace, které jste použili k zadání na **webu Marketplace** nebo**Torefront** (konzultační služba, Power BI App) v portál partnerů cloudu, se shromažďují na stránce **seznam nabídek** v partnerském centru.
 
-:::image type="content" source="media/migration-faq/offer-listing-migration.png" alt-text="Ilustruje stránku nabídky.":::
+:::image type="content" source="media/migration-faq/offer-listing-migration.png" alt-text="Znázorňuje stránku se seznamem nabídek.":::
 
-Informace, které jste použili k poskytnutí slok na jedné stránce na portálu partnerů cloudu, mohou být nyní shromažďovány na několika stránkách v Centru partnerů:
+Informace, které jste použili k poskytování SKU na jedné stránce v portál partnerů cloudu, se teď můžou shromažďovat v rámci několika stránek v partnerském centru:
 
 * Stránka nastavení plánu
-* Stránka nabídky plánu
+* Stránka se seznamem plánů
 * Stránka dostupnosti plánu
-* Naplánujte stránku technické konfigurace, jak je znázorněno na tomto snímku obrazovky.
+* Stránku naplánovat technickou konfiguraci, jak je znázorněno na tomto snímku obrazovky.
 
-:::image type="content" source="media/migration-faq/tech-config-migration.png" alt-text="Ilustruje stránku technické konfigurace Plán.":::
+:::image type="content" source="media/migration-faq/tech-config-migration.png" alt-text="Ukazuje stránku plánování technické konfigurace.":::
 
-ID nabídky se nyní zobrazí na levém navigačním panelu nabídky.
+ID vaší nabídky se teď zobrazuje na levém navigačním panelu nabídky.
 
-:::image type="content" source="media/migration-faq/offer-id-offer-overview.png" alt-text="Ilustruje levou navigační nabídku s ID nabídky.":::
+:::image type="content" source="media/migration-faq/offer-id-offer-overview.png" alt-text="Znázorňuje levou navigační nabídku s ID nabídky.":::
 
-### <a name="stop-selling-an-offer"></a>Ukončení prodeje nabídky
+### <a name="stop-selling-an-offer"></a>Zastavení prodeje nabídky
 
-Můžete požádat o [zastavení prodeje nabídky](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#stop-selling-an-offer-or-plan) na trhu přímo z portálu Partnerského centra. Tato možnost je k dispozici na stránce **Přehled nabídky** pro vaši nabídku.
+Můžete požádat o [zastavení prodeje nabídky](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#stop-selling-an-offer-or-plan) na webu Marketplace přímo z portálu partnerského centra. Možnost je k dispozici na stránce **Přehled nabídky** pro vaši nabídku.
 
-:::image type="content" source="media/migration-faq/stop-selling-migration.png" alt-text="Ilustruje stránku Přehled nabídek s možností ukončit prodej.":::
+:::image type="content" source="media/migration-faq/stop-selling-migration.png" alt-text="Znázorňuje stránku s přehledem nabídky s možností zastavit prodej.":::
 
-## <a name="what-pages-in-partner-center-correspond-to-pages-i-used-in-the-cloud-partner-portal"></a>Které stránky v Centru partnerů odpovídají stránkám, které jsem použil na portálu partnerů v cloudu?
+## <a name="what-pages-in-partner-center-correspond-to-pages-i-used-in-the-cloud-partner-portal"></a>Které stránky v partnerském centru odpovídají stránkám používaným v portál partnerů cloudu?
 
-V následující tabulce jsou uvedena odpovídající propojení mezi dvěma portály.
+V následující tabulce jsou uvedeny odpovídající odkazy mezi dvěma portály.
 
-| stránka | Odkaz na portál pro partnery cloudu | Odkaz Na Centrum partnerů |
+| stránka | Odkaz na portál partnerů cloudu | Odkaz na partnerské Centrum |
 |------|---------------------------|---------------------|
 | **Stránka Všechny nabídky** | https://cloudpartner.azure.com/#alloffers | https://partner.microsoft.com/dashboard/commercial-marketplace/overview |
 | **Stránka Všichni vydavatelé** | https://cloudpartner.azure.com/#publishers | https://partner.microsoft.com/dashboard/account/v3/publishers/list |
 | **Profil vydavatele** | https://cloudpartner.azure.com/#profile | https://partner.microsoft.com/dashboard/account/management |
 | **Stránka Uživatelé** | https://cloudpartner.azure.com/#users | https://partner.microsoft.com/dashboard/account/usermanagement |
-| **Stránka Historie** | https://cloudpartner.azure.com/#history | Funkce Historie ještě není v Centru partnerů podporována. |
-| **Řídicí panel Přehledů** | https://cloudpartner.azure.com/#insights | https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary |
-| **Výplatní sestava** | https://cloudpartner.azure.com/#insights/payout | https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments |
+| **Stránka historie** | https://cloudpartner.azure.com/#history | Funkce historie ještě není v partnerském centru podporovaná. |
+| **Řídicí panel Insights** | https://cloudpartner.azure.com/#insights | https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary |
+| **Výběr sestavy** | https://cloudpartner.azure.com/#insights/payout | https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments |
 | | |
 
-## <a name="will-the-cloud-partner-portal-rest-apis-be-supported-post-migration"></a>Budou po migraci podporována uživatelská laureáta REST portálu cloudových partnerů?
+## <a name="will-the-cloud-partner-portal-rest-apis-be-supported-post-migration"></a>Budou rozhraní REST API pro portál partnerů cloudu podporovat po migraci?
 
-Api portálu pro partnery cloudu jsou integrovaná s Partnerským centrem a budou fungovat i po migraci nabídek do Centra partnerů. Integrace přináší malé změny. Zkontrolujte změny v následující tabulce a ujistěte se, že váš kód bude i nadále fungovat i po migraci do Centra partnerů.
+Rozhraní API pro portál partnerů cloudu jsou integrovaná do partnerského centra a budou fungovat i po migraci nabídek do partnerského centra. Integrace přináší malé změny. Zkontrolujte změny v následující tabulce, abyste zajistili, že váš kód bude i po migraci do partnerského centra fungovat i nadále.
 
-| **rozhraní API** | **Popis změny** | **Dopad** |
+| **Rozhraní API** | **Popis změny** | **Dopad** |
 | ------- | ---------------------- | ---------- |
-| POST Publikovat, GoLive, Zrušit | U migrovaných nabídek bude mít hlavička odpovědi jiný formát, ale bude nadále fungovat stejným způsobem, což bude upozorovat na relativní cestu k načtení stavu operace. | Při odesílání odpovídajících požadavků POST na nabídku bude mít hlavička Umístění jeden ze dvou formátů v závislosti na stavu migrace nabídky:<ul><li>Nemigrované nabídky<br>`/api/operations/{PublisherId}${offerId}$2$preview?api-version=2017-10-31`</li><li>Migrované nabídky<br>`/api/publishers/{PublisherId}/offers/{offereId}/operations/408a4835-0000-1000-0000-000000000000?api-version=2017-10-31`</li> |
-| Operace GET | U nabídek, které dříve podporovaly pole "oznamovací e-mail" v odpovědi, bude toto pole zastaralé a již nebude vráceno pro migrované nabídky. | U migrovaných nabídek již nebudeme odesílat oznámení na seznam e-mailů uvedených v požadavcích. Místo toho bude služba rozhraní API zarovnána s procesem e-mailu s oznámením v Centru partnerů pro odesílání e-mailů. Konkrétně budou oznámení odeslána na e-mailovou adresu nastavenou v části Kontaktní údaje prodejce v nastavení účtu v Centru partnerů, aby vás upozornili na průběh operace.<br><br>Zkontrolujte e-mailovou adresu nastavenou v části Informace o kontaktech prodejce v [nastavení účtu](https://partner.microsoft.com/dashboard/account/management) v Centru partnerů, abyste se ujistili, že pro oznámení je k dispozici správný e-mail.  |
+| Publikovat, GoLive, zrušit | V případě migrovaných nabídek bude hlavička odpovědi v jiném formátu, ale bude i nadále fungovat stejným způsobem, aby se zaznamenala relativní cesta pro načtení stavu operace. | Při odesílání kterékoli z odpovídajících požadavků POST pro nabídku bude mít hlavička umístění v závislosti na stavu migrace v jednom ze dvou formátů:<ul><li>Nemigrované nabídky<br>`/api/operations/{PublisherId}${offerId}$2$preview?api-version=2017-10-31`</li><li>Migrované nabídky<br>`/api/publishers/{PublisherId}/offers/{offereId}/operations/408a4835-0000-1000-0000-000000000000?api-version=2017-10-31`</li> |
+| Operace GET | U nabídek, které dříve podporovaly pole "Notification-e-mail" v odpovědi, bude toto pole zastaralé a již nebude vráceno pro migrované nabídky. | U migrovaných nabídek už nebudeme odesílat oznámení na seznam e-mailů zadaných v požadavcích. Místo toho bude služba API v partnerském centru pro posílání e-mailů zarovnávat s e-mailovým procesem oznámení. Konkrétně se oznámení odešlou na e-mailovou adresu nastavenou v části kontaktní informace prodejce v nastavení vašeho účtu v partnerském centru, aby vás upozornila na průběh operace.<br><br>Zkontrolujte e-mailovou adresu nastavenou v části kontaktní údaje prodejce v [Nastavení účtu](https://partner.microsoft.com/dashboard/account/management) v partnerském centru, abyste měli jistotu, že je pro oznámení k dispozici správný e-mail.  |
 | | | |

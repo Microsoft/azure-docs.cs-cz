@@ -1,6 +1,6 @@
 ---
-title: Předběžné načtení prostředků v koncovém bodě Azure CDN | Dokumenty společnosti Microsoft
-description: Zjistěte, jak předem načíst obsah uložený v mezipaměti v koncovém bodě Azure CDN.
+title: Předběžné načtení prostředků na Azure CDN koncový bod | Microsoft Docs
+description: Naučte se, jak předem načíst obsah uložený v mezipaměti na Azure CDN koncový bod.
 services: cdn
 documentationcenter: ''
 author: asudbring
@@ -15,59 +15,59 @@ ms.topic: article
 ms.date: 02/12/2018
 ms.author: allensu
 ms.openlocfilehash: c45d0a9195a719d830753a9614cfa7efb6f1c23d
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81260271"
 ---
 # <a name="pre-load-assets-on-an-azure-cdn-endpoint"></a>Předběžné načtení prostředků v koncovém bodu Azure CDN
 [!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
 
-Ve výchozím nastavení jsou datové zdroje ukládány do mezipaměti pouze v případě, že jsou požadovány. Vzhledem k tomu, že hraniční servery ještě neuvázali obsah do mezipaměti a je třeba předat požadavek na zdrojový server, může první požadavek z každé oblasti trvat déle než následné požadavky. Chcete-li se vyhnout této latenci prvního přístupu, předem načtěte prostředky. Kromě lepšího zákaznického prostředí může předběžné načtení prostředků uložených v mezipaměti snížit zatížení sítě na původním serveru.
+Ve výchozím nastavení jsou prostředky ukládány do mezipaměti pouze v případě, že jsou požadovány. Vzhledem k tomu, že hraniční servery ještě neobsahují obsah do mezipaměti a potřebují přesměrovat požadavek na zdrojový server, první požadavek z každé oblasti může trvat déle než následné žádosti. Abyste se vyhnuli této latenci prvního volání, Předveďte své prostředky předem. Kromě poskytování lepšího prostředí pro zákazníky může před načtením prostředků v mezipaměti dojít k omezení síťového provozu na zdrojovém serveru.
 
 > [!NOTE]
-> Předběžné načítání datových zdrojů je užitečné pro velké události nebo obsah, který je současně k dispozici mnoha uživatelům, například nové filmové verzi nebo aktualizaci softwaru.
+> Předem načtené prostředky jsou užitečné pro velké události nebo obsah, který se současně zpřístupní mnoha uživatelům, jako je například nová verze videa nebo aktualizace softwaru.
 > 
 > 
 
-Tento kurz vás provede předběžným načítáním obsahu uloženého v mezipaměti na všech hraničních uzlech Azure CDN.
+Tento kurz vás provede předběžným načtením obsahu v mezipaměti na všech Azure CDN hraničních uzlech.
 
-## <a name="to-pre-load-assets"></a>Předběžné načtení prostředků
-1. Na [webu Azure Portal](https://portal.azure.com)přejděte na profil CDN obsahující koncový bod, který chcete předem načíst. Otevře se podokno profilu.
+## <a name="to-pre-load-assets"></a>Postup předběžného načtení prostředků
+1. V [Azure Portal](https://portal.azure.com)přejděte do profilu CDN obsahujícího koncový bod, který chcete předem načíst. Otevře se podokno profil.
     
-2. Klikněte na koncový bod v seznamu. Otevře se podokno koncového bodu.
-3. V podokně koncového bodu CDN vyberte **načíst**.
+2. V seznamu klikněte na koncový bod. Otevře se podokno koncový bod.
+3. V podokně koncový bod CDN vyberte **načíst**.
    
     ![Podokno koncového bodu CDN](./media/cdn-preload-endpoint/cdn-endpoint-blade.png)
    
-    Otevře se podokno **Zatížení.**
+    Otevře se podokno **zatížení** .
    
     ![Podokno zatížení CDN](./media/cdn-preload-endpoint/cdn-load-blade.png)
-4. Do **cesty K obsahu**zadejte úplnou cestu ke každému `/pictures/kitten.png`datovému zdroji, který chcete načíst (například).
+4. V poli **cesta k obsahu**zadejte úplnou cestu každého assetu, který chcete načíst (například `/pictures/kitten.png`).
    
    > [!TIP]
-   > Po zadání textu se zobrazí další textová pole **cesty obsahu,** která vám umožní sestavit seznam více datových zdrojů. Chcete-li odstranit datové zdroje ze seznamu, vyberte tlačítko tři tečky (...) a pak vyberte **Odstranit**.
+   > Po zahájení zadávání textu se zobrazí další textová pole s dalšími **cestami k obsahu** , která vám umožní vytvořit seznam více prostředků. Pokud chcete odstranit assety ze seznamu, vyberte tlačítko se třemi tečkami (...) a pak vyberte **Odstranit**.
    > 
-   > Každá cesta k obsahu musí být relativní adresou URL, která odpovídá následujícím [regulárním výrazům](/dotnet/standard/base-types/regular-expression-language-quick-reference):  
-   > - Načtení jedné cesty k souboru:`^(?:\/[a-zA-Z0-9-_.%=\u0020]+)+$`  
-   > - Načtení jednoho souboru s řetězcem dotazu:`^(?:\?[-_a-zA-Z0-9\/%:;=!,.\+'&\u0020]*)?$` 
+   > Každá cesta k obsahu musí být relativní adresa URL, která odpovídá následujícím [regulárním výrazům](/dotnet/standard/base-types/regular-expression-language-quick-reference):  
+   > - Načtěte jednu cestu k souboru:`^(?:\/[a-zA-Z0-9-_.%=\u0020]+)+$`  
+   > - Načtěte jeden soubor s řetězcem dotazu:`^(?:\?[-_a-zA-Z0-9\/%:;=!,.\+'&\u0020]*)?$` 
    > 
-   > Vzhledem k tomu, že každý prostředek musí mít svou vlastní cestu, neexistuje žádná funkce zástupných symbolů pro předběžné načítání prostředků.
+   > Vzhledem k tomu, že každý prostředek musí mít svou vlastní cestu, neexistuje žádná funkce zástupných znaků pro předem načtené prostředky.
    > 
    > 
    
-    ![Tlačítko Načíst](./media/cdn-preload-endpoint/cdn-load-paths.png)
-5. Po zadání cest obsahu vyberte **Načíst**.
+    ![Tlačítko načíst](./media/cdn-preload-endpoint/cdn-load-paths.png)
+5. Až skončíte s zadáváním cest k obsahu, vyberte **načíst**.
    
 
 > [!NOTE]
-> Je limit 10 požadavků na zatížení za minutu na profil CDN a 50 souběžných cest lze zpracovat najednou. Každá cesta má limit délky cesty 1024 znaků.
+> Omezení 10 požadavků na zatížení za minutu na jeden profil CDN a 50 souběžných cest je možné zpracovat najednou. Každá cesta má omezení délky cesty 1024 znaků.
 > 
 > 
 
 ## <a name="see-also"></a>Viz také
-* [Vymazání koncového bodu Azure CDN](cdn-purge-endpoint.md)
-* [Odkaz na rozhraní API Azure CDN: Předběžné načtení obsahu v koncovém bodě](https://docs.microsoft.com/rest/api/cdn/endpoints/loadcontent)
-* [Odkaz na rozhraní API Azure CDN: Vymazání obsahu z koncového bodu](https://docs.microsoft.com/rest/api/cdn/endpoints/purgecontent)
+* [Vyprázdnit Azure CDN koncový bod](cdn-purge-endpoint.md)
+* [Odkaz na Azure CDN REST API: předběžné načtení obsahu na koncový bod](https://docs.microsoft.com/rest/api/cdn/endpoints/loadcontent)
+* [Odkaz na Azure CDN REST API: vyprázdnění obsahu z koncového bodu](https://docs.microsoft.com/rest/api/cdn/endpoints/purgecontent)
 

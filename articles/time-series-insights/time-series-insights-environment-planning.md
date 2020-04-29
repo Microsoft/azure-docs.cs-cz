@@ -1,6 +1,6 @@
 ---
-title: Plánování prostředí GA – Azure Time Series Insights | Dokumenty společnosti Microsoft
-description: Doporučené postupy pro přípravu, konfiguraci a nasazení prostředí Ga Azure Time Series Insights.
+title: Plánování prostředí GA – Azure Time Series Insights | Microsoft Docs
+description: Osvědčené postupy pro přípravu, konfiguraci a nasazení Azure Time Series Insightsho prostředí GA
 services: time-series-insights
 ms.service: time-series-insights
 author: deepakpalled
@@ -12,66 +12,66 @@ ms.topic: conceptual
 ms.date: 04/13/2020
 ms.custom: seodec18
 ms.openlocfilehash: 85910ee5467ecc9f4fe3c1a8bc13110b6f218e5c
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81272708"
 ---
 # <a name="plan-your-azure-time-series-insights-ga-environment"></a>Plánování prostředí Azure Time Series Insights GA
 
-Tento článek popisuje, jak naplánovat prostředí obecné dostupnosti Azure Time Series Insights na základě očekávané míry příchozího přenosu dat a požadavků na uchovávání dat.
+Tento článek popisuje, jak naplánovat Azure Time Series Insights prostředí pro obecné dostupnosti (GA) na základě očekávané míry příchozího přenosu dat a vašich požadavků na uchovávání dat.
 
 ## <a name="video"></a>Video
 
-**V tomto videu se dozvíte další informace o uchovávání dat v Azure Time Series Insights a o tom, jak ho naplánovat:**<br /><br />
+**Podívejte se na toto video, kde najdete další informace o uchovávání dat v Azure Time Series Insights a o tom, jak je naplánovat**:<br /><br />
 
 > [!VIDEO https://www.youtube.com/embed/03x6zKDQ6DU]
 
 ## <a name="best-practices"></a>Osvědčené postupy
 
-Chcete-li začít s Azure Time Series Insights, je nejlepší, pokud víte, kolik dat očekáváte, že bude tlačit minutu a jak dlouho budete muset ukládat data.  
+Pokud chcete začít s Azure Time Series Insights, je nejlepší, pokud víte, kolik dat jste čekali po minutách a jak dlouho budete potřebovat ukládat data.  
 
-Další informace o kapacitě a uchovávání informací pro obě sloky Time Series Insights najdete v [cenách Time Series Insights](https://azure.microsoft.com/pricing/details/time-series-insights/).
+Další informace o kapacitě a uchování obou Time Series Insights SKU najdete v [Time Series Insights cenách](https://azure.microsoft.com/pricing/details/time-series-insights/).
 
-Chcete-li nejlépe naplánovat prostředí Time Series Insights pro dlouhodobý úspěch, zvažte následující atributy:
+Chcete-li nejlépe naplánovat Time Series Insights prostředí pro dlouhodobou úspěšnost, vezměte v úvahu následující atributy:
 
 - [Kapacita úložiště](#storage-capacity)
 - [Doba uchování dat](#data-retention)
 - [Kapacita příchozího přenosu dat](#ingress-capacity)
-- [Formování vašich akcí](#shape-your-events)
-- [Zajištění toho, abyste měli referenční data na místě](#ensure-that-you-have-reference-data)
+- [Natvarování událostí](#shape-your-events)
+- [Zajištění, že máte referenční data na místě](#ensure-that-you-have-reference-data)
 
 ## <a name="storage-capacity"></a>Kapacita úložiště
 
-Ve výchozím nastavení time series insights uchovává data na základě množství úložiště, které zřídíte (jednotky &#215; velikost úložiště na jednotku) a příchozí ho.
+Ve výchozím nastavení Time Series Insights uchovává data na základě velikosti úložiště, které zřizujete (jednotky &#215; velikosti úložiště na jednotku) a příchozího přenosu dat.
 
 ## <a name="data-retention"></a>Uchovávání dat
 
-Nastavení času **uchovávání dat** můžete změnit v prostředí Azure Time Series Insights. Můžete povolit až 400 dní uchovávání. 
+Nastavení **doby uchovávání dat** můžete změnit v prostředí Azure Time Series Insights. Můžete povolit až 400 dnů uchovávání. 
 
 Azure Time Series Insights má dva režimy:
 
-* Jeden režim optimalizuje pro nejaktuálnější data. Vynucuje zásady **vymazat stará data,** takže poslední data jsou k dispozici s instancí. Tento režim je ve výchozím nastavení zapnutý. 
-* Ostatní optimalizuje data tak, aby zůstala pod nakonfigurovanými limity uchovávání informací. **Pozastavení příchozího přenosu dat** zabrání vniknutí nových dat, když je vybráno jako **chování limitu úložiště**.
+* Jeden režim optimalizuje pro nejaktuálnější data. Vynutila zásady pro **mazání starých dat** , která opustí poslední data dostupná s instancí. Tento režim je ve výchozím nastavení zapnutý. 
+* Ostatní data optimalizují, aby zůstala pod nakonfigurovanými limity uchování. **Pozastavení** příchozího přenosu dat znemožňuje, aby se nová data nezobrazovala, když se vybrala při **překročení limitu úložiště**.
 
-Můžete upravit uchovávání informací a přepínat mezi dvěma režimy na konfigurační stránce prostředí na webu Azure Portal.
+Můžete upravit dobu uchovávání a přepínání mezi oběma režimy na stránce konfigurace prostředí v Azure Portal.
 
 > [!IMPORTANT]
-> V prostředí Ga Azure Time Series Insights můžete nakonfigurovat maximálně 400 dní uchovávání dat.
+> V prostředí Azure Time Series Insights GA můžete nakonfigurovat maximálně 400 dní uchovávání dat.
 
 ### <a name="configure-data-retention"></a>Konfigurace uchovávání dat
 
-1. Na [webu Azure Portal](https://portal.azure.com)vyberte prostředí Time Series Insights.
+1. V [Azure Portal](https://portal.azure.com)vyberte své prostředí Time Series Insights.
 
-1. V podokně **prostředí Time Series Insights** vyberte v části **Nastavení** **konfiguraci úložiště**.
+1. V podokně **Time Series Insights prostředí** v části **Nastavení**vyberte **Konfigurace úložiště**.
 
 1. Do pole **Doba uchovávání dat (ve dnech)** zadejte hodnotu mezi 1 a 400.
 
-   [![Konfigurace uchovávání informací](media/data-retention/configure-data-retention.png)](media/data-retention/configure-data-retention.png#lightbox)
+   [![Konfigurace uchovávání](media/data-retention/configure-data-retention.png)](media/data-retention/configure-data-retention.png#lightbox)
 
 > [!TIP]
-> Další informace o implementaci příslušných zásad uchovávání dat naleznete v zásadách [konfigurace uchovávání informací](./time-series-insights-how-to-configure-retention.md).
+> Další informace o tom, jak implementovat příslušné zásady uchovávání dat, najdete v tématu [Jak konfigurovat uchovávání](./time-series-insights-how-to-configure-retention.md).
 
 ## <a name="ingress-capacity"></a>Kapacita příchozího přenosu dat
 
@@ -79,52 +79,52 @@ Můžete upravit uchovávání informací a přepínat mezi dvěma režimy na ko
 
 ### <a name="environment-planning"></a>Plánování prostředí
 
-Druhou oblastí, na kterou se zaměřit při plánování prostředí Time Series Insights je kapacita příchozího přenosu dat. Denní příchozí přenos dat úložiště a kapacita událostí se měří za minutu, v blocích 1 KB. Maximální povolená velikost paketu je 32 kB. Datové pakety větší než 32 KB jsou zkráceny.
+Druhá oblast, která se zaměřuje na plánování Time Series Insightsho prostředí, je kapacita pro příchozí přenosy. Denní příchozí úložiště a kapacita události se měří na minuty v blocích po 1 KB. Maximální povolená velikost paketu je 32 KB. Datové pakety větší než 32 KB se zkrátí.
 
-Můžete zvýšit kapacitu S1 nebo S2 Skladové jednotky na 10 jednotek v jednom prostředí. Z prostředí S1 nelze migrovat do prostředí S2. Z prostředí S2 nelze migrovat na S1.
+Kapacitu SKU S1 nebo S2 můžete zvýšit na 10 jednotek v jednom prostředí. Z prostředí S1 nemůžete migrovat na S2. Nemůžete migrovat z prostředí S2 na S1.
 
-Pro příchozí kapacity nejprve určete celkový příchozí přenos dat, který požadujete na základě měsíce. Dále určete, jaké jsou vaše potřeby za minutu. 
+V případě kapacity příchozího přenosu dat nejprve určete celkový počet příchozích dat, který budete potřebovat měsíčně. V dalším kroku určete, jaké jsou požadavky na minuty. 
 
-Omezení a latence hrají roli v kapacitě za minutu. Pokud máte špičku v příchozích dat, která trvá méně než 24 hodin, Time Series Insights můžete "dohnat" rychlostí příchozího přenosu dat dvakrát sazby uvedené v předchozí tabulce.
+Omezování a latence hrají roli v rámci kapacity po minutách. Pokud máte špičku vstupních dat, která trvá méně než 24 hodin, Time Series Insights se dá zachytit na míru příchozího přenosu dvou časů, jakou jsou sazby uvedené v předchozí tabulce.
 
-Například pokud máte jednu skladovou položku S1, příchozí přenos dat rychlostí 720 událostí za minutu a rychlost přenosu dat špičky pro méně než jednu hodinu rychlostí 1 440 událostí nebo méně, neexistuje žádná znatelná latence ve vašem prostředí. Pokud však překročíte 1 440 událostí za minutu po dobu delší než jednu hodinu, pravděpodobně zaznamenáte latenci v datech, která jsou vizualizována a k dispozici pro dotaz ve vašem prostředí.
+Pokud máte třeba jednu SKU S1, data příchozího přenosu dat jsou 720 událostí za minutu a rychlost přenosu dat se v tomto prostředí neshoduje po dobu kratší než jedna hodina, a to v poměru 1 440 událostí nebo méně. Pokud ale po dobu více než jedné hodiny překročíte 1 440 událostí za minutu, pravděpodobně budete mít k dispozici latenci v datech, která jsou vizuální a dostupná pro dotaz ve vašem prostředí.
 
-Možná předem nevíte, kolik dat očekáváte, že budete tlačit. V takovém případě můžete najít telemetrii dat pro [Azure IoT Hub](../iot-hub/iot-hub-metrics.md) a [Azure Event Hubs](https://blogs.msdn.microsoft.com/cloud_solution_architect/2016/05/25/using-the-azure-rest-apis-to-retrieve-event-hub-metrics/) v předplatném portálu Azure. Telemetrie vám může pomoci určit, jak zřídit vaše prostředí. Pomocí podokna **Metriky** na portálu Azure pro příslušný zdroj událostí zobrazit jeho telemetrie. Pokud rozumíte metrikám zdroje událostí, můžete efektivněji plánovat a zřčovat prostředí Time Series Insights.
+Je možné, že předem nevíte, kolik dat jste čekali. V takovém případě můžete v předplatném Azure Portal najít telemetrii dat pro [azure IoT Hub](../iot-hub/iot-hub-metrics.md) a [Azure Event Hubs](https://blogs.msdn.microsoft.com/cloud_solution_architect/2016/05/25/using-the-azure-rest-apis-to-retrieve-event-hub-metrics/) . Telemetrii vám pomůže určit, jak se vaše prostředí dá zřídit. K zobrazení telemetrie použijte podokno **metrik** v Azure Portal pro příslušný zdroj události. Pokud rozumíte metrikám zdroje událostí, můžete efektivněji naplánovat a zřídit Time Series Insights prostředí.
 
-### <a name="calculate-ingress-requirements"></a>Výpočet požadavků na příchozí přenos dat
+### <a name="calculate-ingress-requirements"></a>Vypočítat požadavky na příchozí přenosy
 
 Výpočet požadavků na příchozí přenos dat:
 
-- Ověřte, zda je kapacita příchozího přenosu dat vyšší než průměrná rychlost za minutu a zda je vaše prostředí dostatečně velké, aby zvládlo očekávaný příchozí přenos dat, což odpovídá dvojnásobné kapacitě po dobu kratší než jednu hodinu.
+- Ověřte, že vaše kapacita příchozího přenosu dat překračuje průměrnou sazbu za minutu a že vaše prostředí je dostatečně velké, aby bylo možné zpracovat předpokládaný ekvivalent vstupu do dvojnásobku kapacity za méně než jednu hodinu.
 
-- Pokud dojde k ingress hroty, které trvají déle než 1 hodinu, použijte rychlost špičky jako průměr. Zřízení prostředí s kapacitou pro zpracování rychlost i pro špičku.
+- Pokud se objeví špičky vstupu, které jsou poslední po dobu delší než 1 hodinu, použijte jako průměr sazbu za špičku. Zřídí prostředí s kapacitou pro zpracování rychlosti špičky.
 
 ### <a name="mitigate-throttling-and-latency"></a>Zmírnění omezení a latence
 
-Informace o tom, jak zabránit omezení a latence, [přečtěte si zmírnění latence a omezení](time-series-insights-environment-mitigate-latency.md).
+Informace o tom, jak zabránit omezování a latenci, získáte v tématu [zmírnění latence a omezování](time-series-insights-environment-mitigate-latency.md).
 
-## <a name="shape-your-events"></a>Utvářejte své události
+## <a name="shape-your-events"></a>Natvarování událostí
 
-Je důležité zajistit, aby způsob odesílání událostí do Time Series Insights podporoval velikost prostředí, které zřizujete. (Naopak můžete mapovat velikost prostředí na počet událostí, které time series insights přečte a velikost každé události.) Je také důležité přemýšlet o atributy, které můžete chtít použít k řezu a filtrování při dotazování dat.
+Je důležité zajistit, aby způsob, jakým odesíláte události do Time Series Insights, podporoval velikost prostředí, které zřizujete. (Naopak, můžete namapovat velikost prostředí na kolik událostí Time Series Insights čtení a velikost každé události.) Je také důležité vzít v úvahu atributy, které můžete chtít použít k vytváření řezů a filtrování při dotazování na data.
 
 > [!TIP]
-> Projděte si dokumentaci k tvarování JSON v [odesílání událostí](time-series-insights-send-events.md).
+> Projděte si dokumentaci ke tvarům JSON při [odesílání událostí](time-series-insights-send-events.md).
 
 ## <a name="ensure-that-you-have-reference-data"></a>Ujistěte se, že máte referenční data
 
-*Referenční datová sada* je kolekce položek, které rozšiřují události ze zdroje událostí. Modul příchozího přenosu dat Time Series Insights připojí každou událost ze zdroje událostí s odpovídajícím datovým řádkem v referenční datové sadě. Rozšířená událost je pak k dispozici pro dotaz. Spojení je založeno na sloupcích **primárního klíče,** které jsou definovány ve vaší referenční datové sadě.
+*Referenční datová sada* je kolekce položek, které rozšiřují události ze zdroje událostí. Modul příchozího přenosu Time Series Insights spojí každou událost ze zdroje události s odpovídajícím řádkem dat v referenční datové sadě. Rozšířená událost je pak k dispozici pro dotaz. Spojení je založeno na sloupcích **primárního klíče** , které jsou definovány ve vaší referenční datové sadě.
 
 > [!NOTE]
-> Referenční data nejsou spojena zpětně. Pouze aktuální a budoucí příchozí přenos dat je spárována a připojena k referenční datové sadě po nakonfigurované a nahrané. Pokud plánujete odeslat velké množství historických dat do přehledů Time Series Insights a nenahrávejte nejprve ani nevytvářejte referenční data v Přehledech časových řad, možná budete muset svou práci zrekonstruovat (nápověda: není zábavná).  
+> Referenční data nejsou připojená zpětně. Po konfiguraci a nahrání referenční datové sady se budou shodovat pouze aktuální a budoucí data příchozího přenosu dat. Pokud plánujete odeslat velké množství historických dat Time Series Insights a nemusíte nejdřív nahrávat nebo vytvářet referenční data v Time Series Insights, možná budete muset opakovat svou práci (pomocný parametr: ne zábavné).  
 
-Další informace o vytváření, nahrávání a správě referenčních dat v přehledech časové řady si přečtěte v [dokumentaci k referenční datové sadě](time-series-insights-add-reference-data-set.md).
+Pokud chcete získat další informace o tom, jak vytvářet, nahrávat a spravovat referenční data v Time Series Insights, přečtěte si [dokumentaci k referenční datové sadě](time-series-insights-add-reference-data-set.md).
 
 [!INCLUDE [business-disaster-recover](../../includes/time-series-insights-business-recovery.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
-- Můžete začít vytvořením [nového prostředí Time Series Insights na webu Azure Portal](time-series-insights-get-started.md).
+- Začněte vytvořením [nového Time Series Insightsho prostředí v Azure Portal](time-series-insights-get-started.md).
 
-- Přečtěte si, jak [přidat zdroj událostí Centra událostí](time-series-insights-how-to-add-an-event-source-eventhub.md) do přehledů time series.
+- Naučte se, jak [přidat Event Hubs zdroj události](time-series-insights-how-to-add-an-event-source-eventhub.md) do Time Series Insights.
 
-- Přečtěte si, jak [nakonfigurovat zdroj událostí služby IoT Hub](time-series-insights-how-to-add-an-event-source-iothub.md).
+- Přečtěte si o tom, jak [nakonfigurovat zdroj události IoT Hub](time-series-insights-how-to-add-an-event-source-iothub.md).

@@ -10,54 +10,54 @@ ms.author: dpalled
 manager: cshankar
 ms.custom: include file
 ms.openlocfilehash: 11469d992e0f5669cd3fc1e3864627dd0b8ae23d
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81263335"
 ---
-Následující shrnuje omezení klíčů v obecné dostupnosti.
+V následující části jsou shrnuta klíčová omezení obecně dostupné.
 
-### <a name="sku-ingress-rates-and-capacities"></a>SAZBY A Kapacity příchozích skladových položk
+### <a name="sku-ingress-rates-and-capacities"></a>Míry příchozího přenosu SKU a kapacity
 
-S1 a S2 SKU příchozích přenosů dat sazby a kapacity poskytují flexibilitu při konfiguraci nového prostředí Time Series Insights. Kapacita skladové položky označuje denní rychlost příchozího přenosu dat na základě počtu uložených událostí nebo bajtů podle toho, co nastane dříve. Všimněte si, že příchozí přenos dat se měří *za minutu*a **omezení** se používá pomocí algoritmu token bucket. Příchozí přenos se měří v blocích 1 KB. Například 0,8 KB skutečné události by se měří jako jedna událost a 2,6 KB událost se počítá jako tři události.
+Frekvence a míry příchozího přenosu SKU S1 a S2 poskytují flexibilitu při konfiguraci nového prostředí Time Series Insights. Kapacita SKU indikuje denní míru příchozího přenosu dat na základě počtu uložených událostí nebo bajtů, podle toho, co nastane dřív. Všimněte si, že příchozí přenos dat se měří *za minutu*a **omezování** se aplikuje pomocí algoritmu kontejneru tokenů. Příchozí přenos dat se měří v blocích po 1 KB. Například skutečná událost 0,8-KB bude měřena jako jedna událost a událost 2,6-KB se počítá jako tři události.
 
-| Kapacita skladových míst S1 | Rychlost příchozího přenosu dat | Maximální úložná kapacita
+| Kapacita SKU S1 | Míra příchozího přenosu dat | Maximální kapacita úložiště
 | --- | --- | --- |
-| 1 | 1 GB (1 milion událostí) za den | 30 GB (30 milionů událostí) za měsíc |
-| 10 | 10 GB (10 milionů událostí) za den | 300 GB (300 milionů událostí) za měsíc |
+| 1 | 1 GB (1 000 000 událostí) za den | 30 GB (30 000 000 událostí) za měsíc |
+| 10 | 10 GB (10 000 000 událostí) za den | 300 GB (300 000 000 událostí) za měsíc |
 
-| Kapacita skladových míst S2 | Rychlost příchozího přenosu dat | Maximální úložná kapacita
+| Kapacita SKU S2 | Míra příchozího přenosu dat | Maximální kapacita úložiště
 | --- | --- | --- |
-| 1 | 10 GB (10 milionů událostí) za den | 300 GB (300 milionů událostí) za měsíc |
-| 10 | 100 GB (100 milionů událostí) za den | 3 TB (3 miliardy událostí) za měsíc |
+| 1 | 10 GB (10 000 000 událostí) za den | 300 GB (300 000 000 událostí) za měsíc |
+| 10 | 100 GB (100 000 000 událostí) za den | 3 TB (3 000 000 000 událostí) za měsíc |
 
 > [!NOTE]
-> Kapacity škálovat lineárně, takže S1 SKU s kapacitou 2 podporuje 2 GB (2 miliony) událostí za den příchozího přenosu dat a 60 GB (60 milionů událostí) za měsíc.
+> Kapacity se lineárně škálují, takže SKU S1 s kapacitou 2 podporuje 2 GB (2 000 000) událostí za den a 60 GB (60 000 000 událostí) za měsíc.
 
-Prostředí skladových míst s skladem podporují podstatně více událostí za měsíc a mají výrazně vyšší kapacitu příchozího přenosu dat.
+Prostředí S2 SKU podporují podstatně více událostí za měsíc a mají výrazně vyšší kapacitu příchozího přenosu dat.
 
 | Skladová jednotka (SKU)  | Počet událostí za měsíc  | Počet událostí za minutu | Velikost události za minutu  |
 |---------|---------|---------|---------|---------|
-| S1     |   30 milionů   |  720    |  720 KB   |
- |S2     |   300 milionů   | 7,200   | 7 200 KB  |
+| S1     |   30 000 000   |  720    |  720 KB   |
+ |S2     |   300 000 000   | 7 200   | 7 200 KB  |
 
 ### <a name="property-limits"></a>Omezení vlastností
 
-Omezení vlastností GA závisí na vybraném prostředí sku. Zadané vlastnosti událostí mají odpovídající sloupce JSON, CSV a grafu, které lze zobrazit v průzkumníku [přehledů časových řad](https://docs.microsoft.com/azure/time-series-insights/time-series-quickstart).
+Omezení vlastností GA závisí na vybraném prostředí SKU. Zadané vlastnosti události mají odpovídající sloupce JSON, CSV a grafu, které se dají zobrazit v [Time Series Insights Exploreru](https://docs.microsoft.com/azure/time-series-insights/time-series-quickstart).
 
 | Skladová jednotka (SKU) | Maximální vlastnosti |
 | --- | --- |
-| S1 | 600 vlastností (sloupců) |
-| S2 | 800 vlastností (sloupce) |
+| S1 | 600 vlastnosti (sloupce) |
+| S2 | 800 vlastnosti (sloupce) |
 
 ### <a name="event-sources"></a>Zdroje událostí
 
-Je podporovány maximálně dva zdroje událostí na instanci. 
+Podporuje se maximálně dva zdroje událostí na instanci. 
 
-* Přečtěte si, jak [přidat zdroj centra událostí](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub).
-* Konfigurace [zdroje centra IoT](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub).
+* Naučte se [Přidat zdroj centra událostí](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub).
+* Nakonfigurujte [Zdroj služby IoT Hub](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub).
 
-### <a name="api-limits"></a>Limity rozhraní API
+### <a name="api-limits"></a>Omezení rozhraní API
 
-Omezení rozhraní API doby pro obecnou dostupnost časových řad jsou specifikována v [referenční dokumentaci rozhraní REST API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#limits).
+Omezení REST API pro Time Series Insights Obecná dostupnost jsou uvedena v [referenční dokumentaci k REST API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#limits).

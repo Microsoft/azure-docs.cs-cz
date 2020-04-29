@@ -1,6 +1,6 @@
 ---
-title: Řídicí panel Objednávky partnerského centra v analýze komerčního tržiště
-description: Přečtěte si, jak získat přístup k analytickým přehledům o objednávkách nabídky na trhu v grafickém formátu a formátu ke stažení.
+title: Řídicí panel objednávky partnerského centra v analýzách komerčního tržiště
+description: Naučte se, jak získat přístup k analytickým sestavám o objednávkách nabídek na webu Marketplace v grafickém a ke stažení.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
@@ -8,126 +8,126 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
 ms.openlocfilehash: 148b80a6843168b11e4feb3558f6bf08eaeb3ace
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81261257"
 ---
-# <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>Řídicí panel objednávek v analýze komerčního tržiště
+# <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>Řídicí panel objednávky v komerčních obchodech Marketplace
 
-Tento článek obsahuje informace na **řídicím panelu Objednávky** v Centru partnerů. Tento řídicí panel zobrazuje informace o vašich objednávkách v grafickém formátu a formátu ke stažení.
+Tento článek poskytuje informace o **řídicím panelu objednávky** v partnerském centru. Tento řídicí panel zobrazuje informace o vašich objednávkách v grafickém formátu a ve formátu ke stažení.
 
-Chcete-li získat přístup k **řídicímu panelu Objednávky** v analytických nástrojích Centra partnerů, otevřete **[řídicí panel Analyzovat](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** v části Komerční tržiště.
+Pokud chcete získat přístup k **řídicímu panelu objednávky** v analytických nástrojích partnerského centra, otevřete **[řídicí panel analyzovat](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** v rámci komerčního tržiště.
 
 >[!NOTE]
-> Podrobné definice terminologie analýzy naleznete [v tématu Nejčastější dotazy a terminologie pro analýzu komerčního trhu](./faq-terminology.md).
+> Podrobné definice terminologie analýz najdete v tématu [Nejčastější dotazy a terminologie pro komerční analýzy na webu Marketplace](./faq-terminology.md).
 
 ## <a name="orders-dashboard"></a>Řídicí panel objednávek
 
-**Řídicí panel Objednávky** v nabídce **Analyzovat** zobrazuje aktuální objednávky pro všechny nabídky SaaS. Můžete zobrazit grafické znázornění následujících položek:
+**Řídicí panel objednávky** v nabídce **analyzovat** zobrazuje aktuální objednávky všech nabídek SaaS. Můžete zobrazit grafické reprezentace následujících položek:
 
 - [Souhrn objednávky](#order-summary)
-- [Objednávky podle geografie](#orders-by-geography)
+- [Objednávky podle geografického](#orders-by-geography)
 - [Objednávky podle nabídek](#orders-by-offers)
-- [Trend objednávek na web oproti místu](#orders-trend-per-site-versus-per-seat)
+- [Trend objednávek na web versus na pracovišti](#orders-trend-per-site-versus-per-seat)
 - [Objednávky podle SKU](#orders-by-skus)
 - [Trend objednávek a sedadel](#orders-and-seats-trend)
 - [Tabulka podrobností objednávky](#order-details-table)
 
 > [!NOTE]
-> Existují rozdíly mezi zobrazením analytických sestav na portálu partnerů cloudu (CPP) a novým komerčním programem marketplace v Partnerském centru. Jedním z konkrétních způsobů je, že **Přehledy prodejců** v CPP mají kartu **Objednávky & použití,** která zobrazuje data pro nabídky založené na využití a nabídky nezaložené na využití. V Centru partnerů má stránka **Objednávky** samostatnou kartu pro nabídky SaaS.
+> Existují rozdíly mezi zobrazením sestav analýzy v portál partnerů cloudu (CPP) a v novém programu komerčního obchodu v partnerském centru. Jedním z nich je, že **přehledy prodejců** v CPP mají **objednávky & použití** , která zobrazuje data pro nabídky založené na využití a nabídky nevyužívající použití. Stránka **objednávky** v partnerském centru má samostatnou kartu pro nabídky SaaS.
 
-## <a name="order-dashboard-details"></a>Podrobnosti řídicího panelu objednávky
+## <a name="order-dashboard-details"></a>Objednat podrobnosti řídicího panelu
 
-Tato část podrobněji popisuje analytické sestavy.
+Tato část popisuje analytické sestavy podrobněji.
 
 ### <a name="order-summary"></a>Souhrn objednávky
 
-V části Souhrn objednávek se zobrazuje počet všech zakoupených objednávek (kromě zrušených objednávek), zrušených objednávek a míst.
+V části objednávka Summary (souhrn objednávky) se zobrazuje počet všech zakoupených objednávek (s výjimkou zrušených objednávek), zrušených objednávek a míst.
 
-Procentuální hodnota vedle položky Celkové objednávky představuje velikost růstu vybraného období.
+Procentuální hodnota vedle Celková objednávka představuje množství nárůstu vybraného rozsahu kalendářních dat.
 
-![Souhrn objednávek Analýzy partnerského centra](./media/order-summary.png)
+![Shrnutí pořadí analýzy partnerského centra](./media/order-summary.png)
 
-- Zelený trojúhelník směřující nahoru naznačuje pozitivní růstový trend.
-- Červený trojúhelník směřující dolů označuje negativní růstový trend ve srovnání s předchozím měsícem.
-- Růstové trendy jsou reprezentovány mikrosloupcovými grafy. Hodnotu pro každý měsíc můžete zobrazit tak, že najedete na sloupce v grafu.
-- Zrušené objednávky jsou počet objednávek, které byly dříve zakoupeny a poté zrušeny během vybraného období.
-- Počet míst vytvořených během zvoleného období.
+- Zelený trojúhelník ukazující nahoru indikuje kladný trend růstu.
+- Červený trojúhelník ukazující dolů označuje negativní trend růstu vzhledem k předchozímu měsíci.
+- Trendy růstu jsou znázorněny pomocí mikropruhových grafů. Můžete zobrazit hodnotu pro každý měsíc přesunutím ukazatele myši na sloupce v grafu.
+- Zrušené objednávky jsou počty objednávek, které se dřív nakoupily a pak zrušily během vybraného časového období.
+- Křesla jsou počty míst vytvořených během vybraného rozsahu dat.
 
-### <a name="orders-by-geography"></a>Objednávky podle geografie
+### <a name="orders-by-geography"></a>Objednávky podle geografického
 
-**Heatmapa Objednávky podle zeměpisu** zobrazuje počet vašich objednávek na mapě světa a zobrazuje místa mapovaná na základě země zákazníka. Tato heatmap funguje stejně jako **[zákazník podle geografie heatmap](./customer-dashboard.md#customer-by-geography)**.
+Heatmapu **ORDER by geografie** zobrazuje počet objednávek na mapě světa a ukazuje, že jsou na základě země zákazníka mapovány místa. Tato heatmapu funguje stejně jako **[Zákazník podle geografické heatmapu](./customer-dashboard.md#customer-by-geography)**.
 
-![Partnerské centrum Analyzovat objednávky podle zeměpisné polohy](./media/orders-by-geography.png)
+![Partnerské centrum analyzuje objednávky podle geografického středu](./media/orders-by-geography.png)
 
 ### <a name="orders-by-offers"></a>Objednávky podle nabídek
 
-**Objednávky podle nabídek** donut graf organizuje objednávky (včetně zrušených objednávek) podle jejich nabídky jména.
+**Příkazy ORDER by nabízí** prstencový graf uspořádává objednávky (včetně zrušených objednávek) podle jejich názvů nabídek.
 
-- Horní nabídky jsou zobrazeny v grafu a ostatní nabídky jsou seskupeny jako "Rest All".
-- V legendě můžete vybrat konkrétní nabídky, které zobrazí pouze nabídky v grafu.
-- Když najedete přes výseč v grafu, zobrazí se počet objednávek a procento této nabídky ve srovnání s celkovým počtem objednávek ve všech nabídkách.
-- Trendy růstu **podle nabídek** zobrazují meziměsíční trendy růstu. Sloupec měsíc představuje počet objednávek podle názvu nabídky. Spojnicový graf zobrazuje trend procenta růstu vykreslený na ose z.
-- Pomocí posuvníku v horní části grafu můžete posouvat doprava a doleva podél osy x a zaměřit se na konkrétní datové body.
-- Graf trendů můžete zobrazit výběrem konkrétní položky v legendě.
-- Můžete také zobrazit trendy a data pro **zrušené objednávky**. Graf bude fungovat stejným způsobem jako **objednávky podle nabídek** grafu.
+- Horní nabídky se zobrazují v grafu a zbývající nabídky jsou seskupené jako "REST All".
+- V legendě můžete vybrat konkrétní nabídky, aby se zobrazily pouze nabídky v grafu.
+- Při najetí myší na řez v grafu se zobrazí počet objednávek a procento této nabídky ve srovnání s celkovým počtem objednávek napříč všemi nabídkami.
+- **Trend podle nabídky ORDER by** zobrazuje trendy růstu po měsících. Sloupec month (měsíc) představuje počet objednávek podle názvu nabídky. Spojnicový graf zobrazuje trend procenta nárůstu vykreslený na ose z.
+- Pomocí posuvníku v horní části grafu se můžete posunout doprava a doleva podél osy x a soustředit se na konkrétní datové body.
+- Graf trendu můžete zobrazit tak, že vyberete konkrétní položku v legendě.
+- Můžete se také rozhodnout zobrazit trendy a data pro **zrušené objednávky**. Graf bude fungovat stejným způsobem jako v **nabídce Orders by** .
 
-### <a name="orders-trend-per-site-versus-per-seat"></a>Trend objednávek na web oproti místu
+### <a name="orders-trend-per-site-versus-per-seat"></a>Trend objednávek na web versus na pracovišti
 
-Graf **na lokalitu a na sedadlo** představuje rozpis objednávek SaaS na webu a na sedadlo SaaS zakoupených zákazníky (tento graf obsahuje zrušené objednávky). Sloupcový graf představuje trend objednávek SaaS na pracovišti a na sedadlo SaaS zakoupených zákazníky (tento graf obsahuje zrušené objednávky).
+Graf na **jeden web oproti pracovnímu** prstenci znázorňuje rozdělení na SaaS webu a objednávky SaaS na pracovní stanici zakoupené zákazníky (Tento graf obsahuje zrušené objednávky). Sloupcový graf představuje trend počtu SaaSů na webu a objednávek SaaS na pracovní stanici koupených zákazníky (Tento graf obsahuje zrušené objednávky).
 
 ### <a name="orders-by-skus"></a>Objednávky podle SKU
 
-Graf **Objednávky podle skladových jednotek** představuje trend objednávek na úrovni skladové jednotky (Skladová jednotka) pro všechny vaše nabídky (včetně zrušených objednávek). Graf koblihy představuje rozpis prvních pěti objednávek skladových bodů a sloupcový graf představuje trend objednávek pro prvních pět skladových bodů.
+Graf **ORDER by SKU** představuje trend objednávek na úrovni skladových jednotek (SKU) pro všechny vaše nabídky (zahrnuje zrušené objednávky). Prstencový graf představuje rozpis pěti objednávek SKU a sloupcového grafu představuje trend objednávek pro prvních pět SKU.
 
 ### <a name="orders-and-seats-trend"></a>Trend objednávek a sedadel
 
-Graf **trendů objednávek a sedadel** představuje 50 nejlepších nabídek s nejvyšším počtem objednávek. Ty jsou zobrazeny na žebříčku a jsou seřazeny podle nejvyššího počtu objednávek a procenta objednávky.
+Graf **trendu objednávek a sedadel** představuje nejvyšší 50 nabídky s největším počtem objednávek. Tyto hodnoty jsou zobrazeny na kartě vedoucí a jsou seřazeny podle nejvyšší počet objednávek a procento objednávky.
 
-- **Objednávky podle sku**: Vyberte nabídku pro zobrazení rozpisu počtu objednávek pro prvních pět SKU v grafu.
-- **Sedadla sku :** Měsíční trend sedadel pro prvních pět SKU. Pokud vybraná nabídka není nabídkou pro každou sedátko, v tomto plošném grafu se nezobrazí žádná data.
+- **Objednávky podle SKU**: vyberte nabídku pro zobrazení rozpisu počtu objednávek pro prvních pět SKU v grafu.
+- **Místa na SKU**: Měsíční trend sedadel pro 5 hlavních SKU. Pokud nabídka, kterou jste vybrali, není na pracovní stanici, nezobrazí se v tomto plošném grafu žádná data.
 
 ### <a name="canceled-orders-by-offers"></a>Zrušené objednávky podle nabídek
 
-**Výsečový graf Zrušené objednávky podle nabídek** uspořádá všechny zrušené objednávky podle názvů jejich nabídek. Horní nabídky jsou zobrazeny v grafu a ostatní nabídky jsou seskupeny jako "Rest All". V legendě můžete vybrat konkrétní nabídky, které se zobrazí v grafu.
+Výsečový graf, který **zruší objednávky podle** , uspořádá všechny zrušené objednávky podle jejich názvů nabídek. Horní nabídky se zobrazí v grafu a zbytek nabídek se seskupuje jako "zbývající vše". V legendě můžete vybrat konkrétní nabídky, které se zobrazí v grafu.
 
-- Když najedete přes výseč v grafu, zobrazí se počet objednávek a procento vybrané nabídky v porovnání s celkovým počtem objednávek ve všech nabídkách.
-- Sloupcový graf zobrazuje trendy měsíc po měsíci. Sloupce představují počet zrušených objednávek podle názvu nabídky. Pomocí posuvníku v horní části grafu můžete posouvat doprava a doleva podél osy x a zaměřit se na konkrétní datové body. Graf trendů můžete zobrazit výběrem konkrétní položky v legendě.
+- Při najetí myší na řez v grafu se zobrazí počet objednávek a procento vybrané nabídky ve srovnání s celkovým počtem objednávek ve všech nabídkách.
+- Ve sloupcovém grafu se zobrazují trendy po měsících. Sloupce představují Počet zrušených objednávek podle názvu nabídky. Pomocí posuvníku v horní části grafu se můžete posunout doprava a doleva podél osy x a soustředit se na konkrétní datové body. Graf trendu můžete zobrazit tak, že vyberete konkrétní položku v legendě.
 
 ### <a name="order-details-table"></a>Tabulka podrobností objednávky
 
-Tabulka Podrobnosti objednávky zobrazuje číslovaný seznam 1000 nejlepších objednávek seřazených podle data pořízení.
+Tabulka Podrobnosti objednávky zobrazuje číslovaný seznam 1000 hlavních objednávek seřazených podle data pořízení.
 
-- Každý sloupec v mřížce je seřaditelný.
-- Data lze extrahovat do souboru TSV, pokud je počet záznamů menší než 1000.
-- Pokud je počet záznamů vyšší než 1000, exportovaná data budou asynchronně umístěna na stránce stahování po dobu následujících 30 dnů.
-- Filtry lze použít v **tabulce Podrobnosti objednávky** a zobrazit pouze data, která vás zajímají. Data lze filtrovat podle země, typu licence Azure, typu licence Marketplace, typu nabídky, stavu objednávky, bezplatných tras, ID předplatného Marketplace, ID zákazníka a názvu společnosti.
+- Každý sloupec v mřížce lze seřadit.
+- Data je možné extrahovat do souboru TSV, pokud je počet záznamů menší než 1000.
+- Pokud zaznamenává číslo přes 1000, vyexportovaná data se asynchronně nasadí na stránku ke stažení po dobu příštích 30 dnů.
+- Filtry lze použít v **tabulce podrobností objednávky** k zobrazení pouze těch dat, která vás zajímají. Data je možné filtrovat podle země, typu licence Azure, typu licence Marketplace, typu nabídky, stavu objednávky, volných stop, ID předplatného Marketplace, ID zákazníka a názvu společnosti.
 
-#### <a name="orders-page-filters"></a>Filtry stránek objednávek
+#### <a name="orders-page-filters"></a>Filtry stránek objednávky
 
-Tyto filtry jsou použity na úrovni stránky.
+Tyto filtry jsou aplikovány na úrovni stránky.
 
-Můžete vybrat více filtrů, chcete-li vykreslit graf pro kritéria, která chcete zobrazit, a data, která chcete zobrazit v mřížce **Podrobných dat objednávky** nebo exportu. Filtry se použijí na data extrahovaná pro oblast dat, kterou jste vybrali v pravém horním rohu stránky objednávky.
+Můžete vybrat více filtrů pro vykreslení grafu pro kritéria, která chcete zobrazit, a data, která se mají zobrazit v **podrobném pořadí dat** a exportu. Filtry se aplikují na extrahovaná data pro rozsah dat, který jste vybrali v pravém horním rohu stránky objednávky.
 
-- Typy nabídek a názvy nabídek jsou uvedeny pouze u nabídek, které mají objednávky během vybraného období. Názvy nabídek v seznamu se zobrazí pro typy nabídek, které jste vybrali v seznamu.
-- Použité filtry zobrazují celkové metriky v rámci každého výběru (výběrů) pro každý vybraný filtr. Použité filtry se nezobrazí, když je vybrán výchozí výběr.
-- Pokud je pro jeden z rozevíracích seznamů vybrána možnost **Vše,** budou agregovány všechny metriky na vybrané stránce. Například: Možnost "Vše" v možnosti filtru Typů nabídek znamená, že byly vybrány všechny typy nabídek. Toto je výchozí výběr pro rozevírací seznamy. Použité filtry se zobrazí, když je **vybrána možnost Vše.**
-- **Výběr více hodnot**: Všechny metriky na stránce budou agregovány pro všechny výběry provedené v rozevíracím seznamu. Pokud je provedeno více výběrů, použitý filtr zobrazí počet všech provedených výběrů. Viz obrázek níže pro referenci.
+- Typy nabídek a názvy nabídek jsou uvedeny pouze pro nabídky, které máte v průběhu vybraného rozsahu kalendářních dat. Názvy nabídek v seznamu se zobrazí pro nabídky typy, které jste v seznamu vybrali.
+- Použité filtry zobrazují celkový počet metrik v rámci jednotlivých výběrů pro každý vybraný filtr. Použité filtry se nezobrazí, pokud je zvolen výchozí výběr.
+- Pokud je pro jeden z rozevíracích seznamů vybraná možnost **vše** , budou agregované všechny metriky vybrané stránky. Například: "All" v možnosti filtru typů nabídek znamená, že byly vybrány všechny typy nabídek. Toto je výchozí výběr rozevíracích seznamů. Při výběru **všech** použitých filtrů se nezobrazí vše.
+- **Výběr více hodnot**: všechny metriky na stránce budou agregovány pro všechny výběry provedené v rozevíracím seznamu. Pokud provedete více výběrů, použije se pro filtr počet všech provedených výběrů. Informace najdete v obrázku níže.
 
-    ![Pořadí analýzy centra partnerů s více hodnotami použitými pro filtrování](./media/filters-applied.png)
+    ![Partnerské centrum analyzuje pořadí s více hodnotami použitými na filtr](./media/filters-applied.png)
 
-- **Výběr jedné hodnoty**: Pokud je vybrána jedna hodnota, použitý filtr zobrazí počet jednoho vybraného filtru. Viz níže obrázek pro referenci.
+- **Výběr jedné hodnoty**: Pokud je vybraná jedna hodnota, použije se filtr, ve kterém se zobrazí počet vybraných filtrů. Odkaz najdete níže v části obrázek.
 
-     ![Pořadí analýzy centra partnerů s jedinou hodnotou použitou pro filtr](./media/filters-applied-single.png)
+     ![Centrum pro partnery analyzuje pořadí s jednou hodnotou použitou k filtrování](./media/filters-applied-single.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přehled analytických přehledů dostupných na komerčním trhu Partnerského centra najdete v [článku Analýza pro komerční tržiště v Centru partnerů](./analytics.md).
-- Grafy, trendy a hodnoty souhrnných dat, které shrnují aktivitu na marketplace pro vaši nabídku, najdete [v tématu Souhrnný řídicí panel v analýze komerčního tržiště](./summary-dashboard.md).
-- Pro virtuální počítač (VM) nabízí využití a účtované metriky účtované podle objemu dat, najdete [v tématu Využití řídicího panelu v komerčním tržišti analýzy](./usage-dashboard.md).
-- Podrobné informace o zákaznících, včetně trendů růstu, najdete [v tématu Řídicí panel zákazníka v analýzách komerčního tržiště](./customer-dashboard.md).
-- Seznam žádostí o stažení za posledních 30 dní najdete [v tématu Řídicí panel Ke stažení v analýze komerčního tržiště](./downloads-dashboard.md).
-- Konsolidované zobrazení zpětné vazby od zákazníků u nabídek na Azure Marketplace a AppSource najdete [v tématu Hodnocení a recenze v analýze komerčního webu](./ratings-reviews.md).
-- Nejčastější dotazy týkající se analýzy komerčního tržiště a komplexní slovník termínů pro data naleznete [v tématu Nejčastější dotazy a terminologie pro analýzu komerčního tržiště](./faq-terminology.md).
+- Přehled analytických sestav dostupných na obchodním tržišti partnerského centra najdete v tématu [analýzy pro komerční tržiště v partnerském centru](./analytics.md).
+- Grafy, trendy a hodnoty agregovaných dat, která shrnují aktivity Marketplace pro vaši nabídku, najdete v tématu [souhrnný řídicí panel v části komerční analýza na webu Marketplace](./summary-dashboard.md).
+- U virtuálních počítačů nabízí metriky využití a měření fakturace, viz [řídicí panel využití v komerčních obchodech na webu Marketplace](./usage-dashboard.md).
+- Podrobné informace o vašich zákaznících, včetně trendů růstu, najdete [v tématu řídicí panel zákazníka v analytickém obchodě na komerčním webu](./customer-dashboard.md).
+- Seznam vašich žádostí o stažení za posledních 30 dní najdete [v tématu řídicí panel ke stažení v komerčních obchodech na webu Marketplace](./downloads-dashboard.md).
+- Chcete-li zobrazit konsolidované zobrazení zpětné vazby od zákazníků pro nabídky Azure Marketplace a AppSource, přečtěte si téma [hodnocení a recenze řídicího panelu na komerčních analýzách na webu Marketplace](./ratings-reviews.md).
+- Nejčastější dotazy týkající se komerčních analýz na webu Marketplace a ucelený slovník datových podmínek najdete v tématu [Nejčastější dotazy a terminologie pro komerční analýzy na webu Marketplace](./faq-terminology.md).

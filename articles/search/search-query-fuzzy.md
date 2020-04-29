@@ -1,7 +1,7 @@
 ---
 title: Vyhledávání přibližných shod
 titleSuffix: Azure Cognitive Search
-description: Implementujte prostředí vyhledávání "máte na mysli" k automatické opravě chybně napsaného výrazu nebo překlepu.
+description: Pokud chcete automaticky opravovat nesprávně napsaný nebo překlepy, implementujte vyhledávací prostředí "měli jste na mysli".
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
@@ -9,108 +9,108 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/08/2020
 ms.openlocfilehash: 32ad34bcfb42bf8fc45ba7fdb7fba5e797ee6106
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81262430"
 ---
-# <a name="fuzzy-search-to-correct-misspellings-and-typos"></a>Přibližné hledání pro opravu překlepů a překlepů
+# <a name="fuzzy-search-to-correct-misspellings-and-typos"></a>Nepřibližné vyhledávání pro opravu chybných pravopisů a překlepů
 
-Azure Cognitive Search podporuje přibližné vyhledávání, typ dotazu, který kompenzuje překlepy a chybně napsané termíny ve vstupním řetězci. Je to tím, že hledá termíny, které mají podobné složení. Rozbalení hledání na pokrytí blízkých shod má za následek automatickou opravu překlepu, když je rozdíl jen několik chybně umístěných znaků. 
+Azure Kognitivní hledání podporuje hledání přibližných hodnot, což je typ dotazu, který kompenzuje překlepy a špatně napsané výrazy ve vstupním řetězci. Provede to tak, že vyhledá výrazy s podobným složením. Rozbalení vyhledávání na pokrytí blízkou shody má vliv na automatické opravy překlepů, pokud je rozdílová část pouze pár nesprávně umístěných znaků. 
 
-## <a name="what-is-fuzzy-search"></a>Co je fuzzy vyhledávání?
+## <a name="what-is-fuzzy-search"></a>Co je přibližné vyhledávání?
 
-Je to expanzní cvičení, které vytváří zápas za podmínek, které mají podobné složení. Když je zadáno přibližné vyhledávání, modul vytvoří graf (založený na [deterministické teorii konečného automatu)](https://en.wikipedia.org/wiki/Deterministic_finite_automaton)podobně složených termínů pro všechny celé termíny v dotazu. Například pokud váš dotaz obsahuje tři termíny "university of Washington", `search=university~ of~ washington~` graf je vytvořen pro každý termín v dotazu (neexistuje žádný stop-word odstranění v fuzzy vyhledávání, takže "of" získá graf).
+Je to rozšíření cvičení, které vytváří shodu s podobným složením. Při určení přibližného hledání vytvoří modul graf (založený na [deterministické konečné Automation teorie](https://en.wikipedia.org/wiki/Deterministic_finite_automaton)) podobně složené výrazy, pro všechny celé výrazy v dotazu. Pokud například váš dotaz obsahuje tři pojmy "University of Washington", vytvoří se graf pro každý výraz v dotazu `search=university~ of~ washington~` (při hledání přibližného počtu stop se neprovádí odebráním), takže "z" získá graf).
 
-Graf se skládá z až 50 rozšíření nebo permutací každého termínu, zachycující správné i nesprávné varianty v procesu. Motor pak vrátí nejvyšší relevantní shody v odpovědi. 
+Graf se skládá z až 50 rozšíření nebo permutací každého období zachytávání správné i nesprávné varianty v procesu. Modul pak vrátí nejvyšší odpovídající shody v odpovědi. 
 
-Pro termín jako "univerzita", graf může mít "unversty, universty, univerzita, vesmír, inverzní". Všechny dokumenty, které odpovídají na ty v grafu jsou zahrnuty ve výsledcích. Na rozdíl od jiných dotazů, které analyzují text pro zpracování různých forem stejného slova ("myši" a "myš"), jsou porovnání v přibližném dotazu přijímána v nominální hodnotě bez jazykové analýzy textu. "Vesmír" a "inverzní", které jsou sémanticky odlišné, bude odpovídat, protože syntaktické nesrovnalosti jsou malé.
+Pro termín, jako je "univerzita", může mít graf "unversty, Universty, University, Universe, Inverted". Všechny dokumenty, které odpovídají na těch v grafu, jsou součástí výsledků. Na rozdíl od dalších dotazů, které analyzují text pro zpracování různých forem stejného slova ("myši" a "myš"), se porovnávání v přibližných dotazech provádí na úrovni obličeje bez jakékoli jazykové analýzy textu. "Základní" a "invertované", které jsou sémanticky odlišné, se shodují, protože syntaktické rozdíly jsou malé.
 
-Shoda je úspěšná, pokud jsou nesrovnalosti omezeny na dvě nebo méně úprav, kde je úprava vloženým, odstraněným, nahrazeným nebo transponovaným znakem. Algoritmus korekce řetězce, který určuje rozdíl je [Damerau-Levenshtein vzdálenost](https://en.wikipedia.org/wiki/Damerau%E2%80%93Levenshtein_distance) metrika, popsal jako "minimální počet operací (vložení, odstranění, substituce, nebo transpozice dvou sousedních znaků) potřebné ke změně jednoho slova do druhého". 
+Shoda je úspěšná, pokud jsou rozdíly omezené na dvě nebo méně úprav, kde Edit je vložený, odstraněný, nahrazený nebo převedený znak. Algoritmus opravy řetězce, který určuje rozdíl, je metrika [Damerau-Levenshtein](https://en.wikipedia.org/wiki/Damerau%E2%80%93Levenshtein_distance) , která je popsaná jako "minimální počet operací (vložení, odstranění, náhrady nebo přemístění dvou sousedících znaků), která se vyžadují ke změně jednoho slova na druhý. 
 
-V Azure Kognitivní vyhledávání:
+V Azure Kognitivní hledání:
 
-+ Přibližovací dotaz se vztahuje na celé termíny, ale můžete podporovat fráze prostřednictvím a konstrukce. Například "Unviersty~ z ~ "Wshington~" by odpovídala na "University of Washington".
++ Nepřibližný dotaz platí pro celé výrazy, ale můžete podporovat fráze prostřednictvím a konstrukcí. Například "Unviersty ~ ~" Wshington ~ "by se shodovala s" University of Washington ".
 
-+ Výchozí vzdálenost úpravy je 2. Hodnota `~0` znamená žádné rozšíření (pouze přesný termín je považován za shodu), ale můžete zadat `~1` pro jeden stupeň rozdílu nebo jednu úpravu. 
++ Výchozí vzdálenost úpravy je 2. Hodnota `~0` znamená bez rozšíření (pouze přesný termín je považován za shodu), ale můžete zadat `~1` pro jeden stupeň rozdílu nebo jeden z úprav. 
 
-+ Přibližný dotaz může rozšířit termín až o 50 dalších permutací. Toto omezení nelze konfigurovat, ale můžete efektivně snížit počet rozšíření snížením vzdálenosti úprav na 1.
++ Nepřibližný dotaz může rozšířit výraz až na 50 dalších permutací. Toto omezení není konfigurovatelné, ale můžete omezit počet rozšíření tím, že zmenšíte vzdálenost úprav na 1.
 
-+ Odpovědi se skládají z dokumentů obsahujících příslušnou shodu (až 50).
++ Odpovědi se skládají z dokumentů obsahujících relevantní shodu (až do 50).
 
-Společně grafy jsou odeslány jako kritéria shody proti tokeny v indexu. Jak si dokážete představit, přibližné hledání je ze své podstaty pomalejší než jiné formuláře dotazu. Velikost a složitost indexu můžete určit, zda výhody jsou dostatečné k vyrovnání latence odpovědi.
+Souhrnně jsou grafy odesílány jako kritéria shody s tokeny v indexu. Jak si představím, přibližné vyhledávání je z hlediska jejich podstaty pomalejší než u jiných formulářů dotazů. Velikost a složitost indexu můžou určit, jestli jsou výhody dostatečné pro posun latence odpovědi.
 
 > [!NOTE]
-> Vzhledem k tomu, že fuzzy hledání má tendenci být pomalé, může být užitečné prozkoumat alternativy, jako je indexování n-gram, s jeho průběh krátkých sekvencí znaků (dvě a tři sekvence znaků pro tokeny bigram a trigram). V závislosti na vašem jazyce a povrchu dotazu n-gram může poskytnout lepší výkon. Kompromis je, že n-gram indexování je velmi náročné na úložiště a generuje mnohem větší indexy.
+> Vzhledem k tomu, že přibližné vyhledávání je v úmyslu pomalé, může být vhodné prozkoumat alternativy, jako je například indexování n-gramů, s průběhem krátkých znakových sekvencí (dvě a tři sekvence znaků pro bigram a Hiragana). V závislosti na vašem jazyku a na ploše dotazů vám může n-gram zvýšit výkon. Obchodování je, že n-gramové indexování je velmi náročné na úložiště a generuje mnohem větší indexy.
 >
-> Další alternativou, kterou byste mohli zvážit, pokud chcete zvládnout jen ty nejkřiklavější případy, by byla [mapa synonym .](search-synonyms.md) Například mapování "hledat" na "serach, serch, sarch" nebo "načíst" na "retreive".
+> Další alternativou, kterou můžete zvážit, pokud chcete zpracovat pouze egregious případy, by to byla [Mapa synonym](search-synonyms.md). Například mapování "Search" na "vyhledávání, Serch, sarch" nebo "načíst" na "načtení".
 
-## <a name="indexing-for-fuzzy-search"></a>Indexování pro přibližné vyhledávání
+## <a name="indexing-for-fuzzy-search"></a>Indexování pro hledání přibližné vyhledávání
 
-Analyzátory se nepoužívají při zpracování dotazů k vytvoření grafu rozšíření, ale to neznamená, že analyzátory by měly být ignorovány ve scénářích přibližné hledání. Koneckonců analyzátory se používají při indexování k vytvoření tokenů, proti kterým se provádí párování, zda je dotaz volný formulář, filtrované vyhledávání nebo přibližné vyhledávání s grafem jako vstup. 
+Analyzátory se během zpracování dotazu nepoužívají k vytvoření rozšiřujícího grafu, ale to neznamená, že analyzátory by se měly ignorovat ve scénářích hledání přibližné. Po všech vzdálení analyzátory se při indexování používají k vytvoření tokenů, u kterých se shoduje, zda je dotaz v podobě bezplatné formě, filtrovaného vyhledávání nebo přibližného vyhledávání s grafem jako vstupem. 
 
-Obecně platí, že při přiřazování analyzátorů na základě pole, rozhodnutí doladit řetězce analýzy je založena na primární případ použití (filtr nebo fulltextové vyhledávání) spíše než specializované formuláře dotazu, jako je přibližné vyhledávání. Z tohoto důvodu neexistuje konkrétní doporučení analyzátoru pro přibližné vyhledávání. 
+Obecně platí, že při přiřazování analyzátorů pro každé pole je rozhodnutí o vyladění řetězu analýz založeno na primárním případu použití (filtr nebo fulltextové vyhledávání) místo specializovaných formulářů dotazů, jako je hledání přibližné. Z tohoto důvodu není k dispozici konkrétní doporučení analyzátoru pro přibližné vyhledávání. 
 
-Pokud však testovací dotazy nevytvářejí očekávaných shod, můžete zkusit měnit analyzátor indexování a nastavit jej na [analyzátor jazyka](index-add-language-analyzers.md), abyste zjistili, zda dosáhnete lepších výsledků. Některé jazyky, zejména jazyky se samohláskami, mohou těžit z inflexních a nepravidelných slovních formulářů generovaných procesory přirozeného jazyka společnosti Microsoft. V některých případech pomocí analyzátoru správného jazyka může mít vliv na to, zda je termín tokenizován způsobem, který je kompatibilní s hodnotou poskytovanou uživatelem.
+Pokud ale testovací dotazy nezpůsobují očekávané shody, můžete zkusit provést změny v analyzátoru indexování, nastavit ji na [analyzátor jazyka](index-add-language-analyzers.md), abyste viděli, jestli získáte lepší výsledky. Některé jazyky, zejména ty, které mají samohlásky, mohou těžit z informování a nepravidelných slovových tvarů generovaných procesory přirozeného jazyka společnosti Microsoft. V některých případech může použití správného jazykového analyzátoru udělat rozdíl v tom, zda je výraz vypsaný způsobem, který je kompatibilní s hodnotou poskytnutou uživatelem.
 
-## <a name="how-to-use-fuzzy-search"></a>Jak používat přibližné vyhledávání
+## <a name="how-to-use-fuzzy-search"></a>Jak používat hledání fuzzy
 
-Přibližné dotazy jsou vytvořeny pomocí syntaxe úplného dotazu Lucene a vyvolávají [analyzátor dotazů Lucene](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html).
+Fuzzy dotazy jsou vytvářeny pomocí úplné syntaxe dotazů Lucene a vyvolává [analyzátor dotazů Lucene](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html).
 
-1. Nastavte úplný analyzátor Lucene v`queryType=full`dotazu ( ).
+1. Nastavte úplný analyzátor Lucene na dotaz (`queryType=full`).
 
-1. Volitelně můžete požadavek určit na určitá`searchFields=<field1,field2>`pole pomocí tohoto parametru ( ). 
+1. Volitelně můžete určit rozsah žádosti na konkrétní pole pomocí tohoto parametru (`searchFields=<field1,field2>`). 
 
-1. Připojit operátor tilde`~`( ) na konci celého termínu (`search=<string>~`).
+1. Připojí operátor tilda`~`() na konci celého výrazu (`search=<string>~`).
 
-   Pokud chcete zadat vzdálenost úprav , zahrňte volitelný parametr číslo`~1`mezi 0 a 2 (výchozí). Například "modrá~" nebo "modrá~1" vrátí "modrá", "modrá" a "lepidlo".
+   Zahrňte volitelný parametr, číslo mezi 0 a 2 (výchozí), pokud chcete určit vzdálenost úprav (`~1`). Například "Blue ~" nebo "Blue ~ 1" vrátí "Blue", "blues" a "Glue".
 
-V Azure Cognitive Search, kromě termínu a vzdálenosti (maximálně 2) neexistují žádné další parametry, které by bylo možné nastavit v dotazu.
+V Azure Kognitivní hledání kromě termínu a vzdálenosti (maximálně 2) neexistují žádné další parametry pro nastavení dotazu.
 
 > [!NOTE]
-> Během zpracování dotazů fuzzy dotazy neprocházejí [lexikální analýzy](search-lucene-query-architecture.md#stage-2-lexical-analysis). Vstup dotazu je přidán přímo do stromu dotazu a rozbalen, aby se vytvořil graf termínů. Jediná provedená transformace je nižší kryt.
+> Během zpracování dotazu nejdou dotazy s fuzzy [analýzou podléhat lexikální analýze](search-lucene-query-architecture.md#stage-2-lexical-analysis). Vstup dotazu se přidá přímo do stromu dotazu a rozbalí se, aby se vytvořil graf podmínek. Jediná provedená transformace je malá písmena.
 
-## <a name="testing-fuzzy-search"></a>Testování přibližné vyhledávání
+## <a name="testing-fuzzy-search"></a>Testování přibližného vyhledávání
 
-Pro jednoduché testování doporučujeme [Průzkumník a hledání](search-explorer.md) nebo [Pošťák](search-get-started-postman.md) pro iterace přes výraz dotazu. Oba nástroje jsou interaktivní, což znamená, že můžete rychle projít více variant termínu a vyhodnotit odpovědi, které se vrátí.
+Pro jednoduché testování doporučujeme, abyste provedli příkaz [Průzkumník služby Search](search-explorer.md) nebo [publikování](search-get-started-postman.md) pro iteraci na výrazu dotazu. Oba nástroje jsou interaktivní, což znamená, že můžete rychle krokovat více variant termínu a vyhodnotit odpovědi, které se vrátí zpět.
 
-Pokud jsou výsledky nejednoznačné, [zvýraznění přístupů](search-pagination-page-layout.md#hit-highlighting) vám může pomoci identifikovat shodu v odpovědi. 
+Pokud jsou výsledky dvojznačné, [zvýrazňování přístupů](search-pagination-page-layout.md#hit-highlighting) vám může pomáhat identifikovat shodu v odpovědi. 
 
 > [!Note]
-> Použití zvýraznění přístupů k identifikaci fuzzy shody má omezení a funguje pouze pro základní přibližné vyhledávání. Pokud index obsahuje profily hodnocení nebo pokud vrstvy dotazu s další syntaxe, zvýraznění přístupů může selhat k identifikaci shody. 
+> Použití zvýraznění přístupů k identifikaci přibližných shod má omezení a funguje pouze pro základní přibližné vyhledávání. Pokud má váš index vyhodnocování profilů nebo pokud zařadíte do vrstvy dotaz s další syntaxí, může zvýrazňování chyb identifikovat shodu. 
 
-### <a name="example-1-fuzzy-search-with-the-exact-term"></a>Příklad 1: fuzzy vyhledávání s přesným termínem
+### <a name="example-1-fuzzy-search-with-the-exact-term"></a>Příklad 1: hledání přibližného vyhledávání s přesným termínem
 
-Předpokládejme, že v `"Description"` poli ve vyhledávacím dokumentu existuje následující řetězec:`"Test queries with special characters, plus strings for MSFT, SQL and Java."`
+V `"Description"` poli vyhledávacího dokumentu se předpokládá následující řetězec:`"Test queries with special characters, plus strings for MSFT, SQL and Java."`
 
-Začněte s přimazaným vyhledáváním na "special" a přidejte zvýraznění přístupů do pole Popis:
+Začněte s přibližným hledáním "Special" a přidejte zvýraznění přístupů do pole Popis:
 
     search=special~&highlight=Description
 
-V odpovědi, protože jste přidali zvýraznění přístupů, formátování se použije na "zvláštní" jako odpovídající termín.
+Vzhledem k tomu, že jste přidali zvýraznění přístupů, se v odpovědi použije jako shodný termín formátování "Special".
 
     "@search.highlights": {
         "Description": [
             "Test queries with <em>special</em> characters, plus strings for MSFT, SQL and Java."
         ]
 
-Zkuste žádost znovu, chybně napsané "zvláštní" tím, že se několik písmen ("pe"):
+Opakujte pokus o zadání několika písmen ("PE"):
 
     search=scial~&highlight=Description
 
-Zatím žádná změna v odpovědi. Použití výchozí vzdálenosti 2 stupně, odstranění dvou znaků "pe" z "speciální" stále umožňuje úspěšnou shodu na tento termín.
+Zatím se žádná změna odezvy nezměnila. Při použití výchozí vzdálenosti 2 stupňů se při odebrání dvou znaků "PE" z "zvláštního" stále povoluje úspěšná shoda s tímto termínem.
 
     "@search.highlights": {
         "Description": [
             "Test queries with <em>special</em> characters, plus strings for MSFT, SQL and Java."
         ]
 
-Pokusem o další požadavek dále upravte hledaný výraz tím, že vyložíte poslední znak pro celkem tři odstranění (od "speciální" do "scal"):
+Když se pokusíte o jednu další žádost, dál upravte hledaný termín tak, že si vyberete jeden poslední znak celkem tři odstranění (od "speciální" až po "škálovatelnost"):
 
     search=scal~&highlight=Description
 
-Všimněte si, že je vrácena stejná odpověď, ale nyní místo odpovídající na "zvláštní", přibližná shoda je na "SQL".
+Všimněte si, že se vrátí stejná odpověď, ale teď místo porovnání s "speciální" je přibližná shoda na SQL.
 
             "@search.score": 0.4232868,
             "@search.highlights": {
@@ -118,11 +118,11 @@ Všimněte si, že je vrácena stejná odpověď, ale nyní místo odpovídajíc
                     "Mix of special characters, plus strings for MSFT, <em>SQL</em>, 2019, Linux, Java."
                 ]
 
-Bod tohoto rozšířeného příkladu je ilustrovat srozumitelnost, že zvýraznění přístupů může přinést nejednoznačné výsledky. Ve všech případech je vrácen stejný dokument. Pokud byste se při ověřování shody spoléhali na ID dokumentů, možná jste zmeškali přechod od "special" k "SQL".
+Bodem tohoto rozbaleného příkladu je ilustrovat přehlednost, který zvýrazňování výsledků může přinést nejednoznačným výsledkům. Ve všech případech se vrátí stejný dokument. Při ověřování shody jste se spoléhali na ID dokumentů, možná jste nenalezli Shift "Special" na "SQL".
 
 ## <a name="see-also"></a>Viz také
 
-+ [Jak fulltextové vyhledávání funguje v Azure Cognitive Search (architektura analýzy dotazů)](search-lucene-query-architecture.md)
-+ [Průzkumník hledání](search-explorer.md)
-+ [Jak dotazovat v rozhraní .NET](search-query-dotnet.md)
-+ [Jak dotazovat v REST](search-create-index-rest-api.md)
++ [Jak funguje fulltextové vyhledávání v Azure Kognitivní hledání (architektura analýzy dotazů)](search-lucene-query-architecture.md)
++ [Průzkumník vyhledávání](search-explorer.md)
++ [Dotazování v .NET](search-query-dotnet.md)
++ [Dotazování v REST](search-create-index-rest-api.md)

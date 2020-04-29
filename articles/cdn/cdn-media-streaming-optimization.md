@@ -1,6 +1,6 @@
 ---
 title: Optimalizace streamování médií pomocí Azure CDN
-description: Optimalizace datových proudů mediálních souborů pro hladké doručení
+description: Optimalizujte streamování mediálních souborů pro zajištění hladkého doručení
 services: cdn
 documentationcenter: ''
 author: asudbring
@@ -15,97 +15,97 @@ ms.topic: article
 ms.date: 05/01/2018
 ms.author: allensu
 ms.openlocfilehash: 2931dffaaab2d06b2c06f03770a66d78d6466787
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81260468"
 ---
 # <a name="media-streaming-optimization-with-azure-cdn"></a>Optimalizace streamování médií pomocí Azure CDN 
  
-Používání videa s vysokým rozlišením se zvyšuje na internetu, což vytváří potíže pro efektivní doručování velkých souborů. Zákazníci očekávají plynulé přehrávání videa na vyžádání nebo živé video datové zdroje v různých sítích a klientech po celém světě. Rychlý a efektivní mechanismus doručování souborů datových proudů médií je zásadní pro zajištění plynulého a příjemného zážitku pro spotřebitele.  
+Použití videa s vysokým rozlišením roste na internetu, což vytváří problémy pro efektivní doručování velkých souborů. Zákazníci očekávají hladké přehrávání videa na vyžádání nebo živých videí na různých sítích a klientů po celém světě. Rychlý a efektivní mechanismus doručování pro soubory multimediálního streamování je velmi důležitý, aby se zajistilo hladké a pohodlnější uživatelské prostředí.  
 
-Živé vysílání médií je obzvláště obtížné dodat z důvodu velkých velikostí a počtu souběžných prohlížečů. Dlouhá zpoždění způsobují, že uživatelé odejdou. Vzhledem k tomu, že živé přenosy nelze předem uložit do mezipaměti a velké latence nejsou pro diváky přijatelné, fragmenty videa musí být doručeny včas. 
+Médium živého streamování je obzvlášť obtížné doručovat v důsledku velkých velikostí a počtu souběžných návštěvníků. Dlouhé zpoždění způsobí, že uživatelé odejdou. Vzhledem k tomu, že živé streamy nelze ukládat do mezipaměti před časem a vysoké latence není pro diváky přijatelné, je nutné včas doručovat fragmenty videa. 
 
-Vzorce požadavků streamování také poskytují některé nové výzvy. Když je populární živý přenos nebo nová série vydána pro video na vyžádání, tisíce až miliony diváků mohou požádat o datový proud současně. V tomto případě je inteligentní konsolidace požadavků nezbytná pro to, aby nedošlo k zahlcení původních serverů, když datové zdroje ještě nejsou uloženy do mezipaměti.
+Některé nové výzvy poskytují také vzory žádostí o streamování. Když je pro video na vyžádání vydaný oblíbený živý stream nebo nová řada, může datový proud vyžádat tisíce až milionů prohlížečů. V takovém případě je konsolidace inteligentních požadavků zásadní pro případ, že se prostředky ještě neukládají do mezipaměti, a tím nezahltí servery.
  
 
 ## <a name="media-streaming-optimizations-for-azure-cdn-from-microsoft"></a>Optimalizace streamování médií pro Azure CDN od Microsoftu
 
-**Azure CDN Standard od koncových** bodů Microsoftu doručují datové prostředky datových proudů médií přímo pomocí obecného typu optimalizace webového doručování. 
+**Azure CDN Standard z** koncových bodů Microsoftu doručovat prostředky streamování přímo pomocí obecného typu optimalizace webového doručování. 
 
-Optimalizace streamování médií pro **Azure CDN Standard od Microsoftu** je efektivní pro živé nebo video na vyžádání streamovaná média, která používají jednotlivé fragmenty médií pro doručování. Tento proces se liší od jednoho velkého majetku převedeného prostřednictvím postupného stahování nebo pomocí požadavků na rozsah bajtů. Informace o tomto stylu doručování médií najdete v [tématu optimalizace stahování velkých souborů pomocí Azure CDN](cdn-large-file-optimization.md).
+Optimalizace streamování médií pro **Azure CDN Standard od Microsoftu** je platná pro živé streamování nebo streamování videa na vyžádání, které používá jednotlivé fragmenty médií k doručení. Tento proces se liší od jednoho velkého prostředku přenesených prostřednictvím postupného stahování nebo pomocí požadavků na rozsah bajtů. Informace o tomto stylu doručování médií najdete v tématu [optimalizace stahování velkých souborů pomocí Azure CDN](cdn-large-file-optimization.md).
 
-Obecné doručování médií nebo typy optimalizace doručování médií na vyžádání používají Azure Content Delivery Network (CDN) s back-endovými optimalizacemi pro rychlejší doručování mediálních prostředků. Používají také konfigurace pro mediální prostředky na základě osvědčených postupů získaných v průběhu času.
-
-### <a name="partial-cache-sharing"></a>Částečné sdílení mezipaměti
-Částečné sdílení mezipaměti umožňuje síti CDN poskytovat částečně uložený obsah částečně uložený v mezipaměti novým požadavkům. Například pokud první požadavek na CDN výsledky v mezipaměti chybět, požadavek je odeslán do původu. Přestože je tento neúplný obsah načten do mezipaměti CDN, ostatní požadavky na CDN mohou začít získat tato data. 
-
-
-## <a name="media-streaming-optimizations-for-azure-cdn-from-verizon"></a>Optimalizace streamování médií pro Azure CDN od verizonu
-
-**Azure CDN Standard od Verizonu** a **Azure CDN Premium od koncových** bodů Verizonu poskytují datové zdroje datových proudů datových proudů prostředků přímo pomocí obecného typu optimalizace webového doručování. Několik funkcí na CDN přímo pomoci při poskytování mediálních prostředků ve výchozím nastavení.
+Typy optimalizace doručování médií na základě médií nebo videa na vyžádání využívají službu Azure Content Delivery Network (CDN) s optimalizací back-endu k rychlejšímu poskytování mediálních prostředků. Používají také konfigurace pro Media assety na základě osvědčených postupů, které se v průběhu času seznámily.
 
 ### <a name="partial-cache-sharing"></a>Částečné sdílení mezipaměti
+Částečné sdílení mezipaměti umožňuje CDN poskytovat obsah v mezipaměti do nových požadavků. Například pokud první požadavek na CDN má za následek neúspěšný pokus o ukládání do mezipaměti, pošle se požadavek na počátek. I když je tento nekompletní obsah načtený do mezipaměti CDN, můžou začít získat tato data další požadavky na CDN. 
 
-Částečné sdílení mezipaměti umožňuje síti CDN poskytovat částečně uložený obsah částečně uložený v mezipaměti novým požadavkům. Například pokud první požadavek na CDN výsledky v mezipaměti chybět, požadavek je odeslán do původu. Přestože je tento neúplný obsah načten do mezipaměti CDN, ostatní požadavky na CDN mohou začít získat tato data. 
 
-### <a name="cache-fill-wait-time"></a>Doba čekání na plnění mezipaměti
+## <a name="media-streaming-optimizations-for-azure-cdn-from-verizon"></a>Optimalizace streamování médií pro Azure CDN z Verizon
 
- Funkce čekací doby vyplňování mezipaměti nutí hraniční server podržet všechny následné požadavky na stejný prostředek, dokud nebudou z původního serveru doručeny hlavičky odpovědí HTTP. Pokud hlavičky odpovědi HTTP z počátku dorazí před vypršením časovače, všechny požadavky, které byly pozastaveny jsou doručeny mimo rostoucí mezipaměti. Současně je mezipaměť vyplněna daty z počátku. Ve výchozím nastavení je doba čekání na plnění mezipaměti nastavena na 3 000 milisekund. 
+**Azure CDN Standard z Verizon** a **Azure CDN Premium od** koncových bodů Verizon poskytuje prostředky streamování médií přímo pomocí obecného typu optimalizace webového doručování. Několik funkcí v CDN přímo pomáhá při doručování mediálních prostředků ve výchozím nastavení.
+
+### <a name="partial-cache-sharing"></a>Částečné sdílení mezipaměti
+
+Částečné sdílení mezipaměti umožňuje CDN poskytovat obsah v mezipaměti do nových požadavků. Například pokud první požadavek na CDN má za následek neúspěšný pokus o ukládání do mezipaměti, pošle se požadavek na počátek. I když je tento nekompletní obsah načtený do mezipaměti CDN, můžou začít získat tato data další požadavky na CDN. 
+
+### <a name="cache-fill-wait-time"></a>Doba čekání na doplňování mezipaměti
+
+ Funkce čekání na doplňování mezipaměti vynutí hraniční Server, aby obsahoval všechny následné požadavky na stejný prostředek, dokud hlavičky odpovědí HTTP nepřijde ze zdrojového serveru. Pokud se hlavičky HTTP odpovědi od počátku dorazí do vypršení platnosti časovače, všechny požadavky, které byly pozastaveny, se zpracovávají z rostoucí mezipaměti. V současné době se mezipaměť vyplní daty od počátku. Ve výchozím nastavení je doba čekání na vyplňování mezipaměti nastavená na 3 000 milisekund. 
 
  
 ## <a name="media-streaming-optimizations-for-azure-cdn-from-akamai"></a>Optimalizace streamování médií pro Azure CDN z Akamai
  
-**Azure CDN Standard od Akamai** nabízí funkci, která efektivně poskytuje datové zdroje datových proudů datových proudů uživatelům po celém světě ve velkém měřítku. Tato funkce snižuje latence, protože snižuje zatížení na původní servery. Tato funkce je k dispozici se standardní cenovou úrovní Akamai. 
+**Azure CDN Standard z Akamai** nabízí funkci, která efektivně doručuje streamování mediálních prostředků uživatelům po celém světě. Funkce snižuje latenci, protože snižuje zatížení na počátečních serverech. Tato funkce je k dispozici ve standardní cenové úrovni Akamai. 
 
-Optimalizace streamování médií pro **Azure CDN Standard od Akamai** je efektivní pro živé nebo video-on-demand streamování médií, která používá jednotlivé fragmenty médií pro doručení. Tento proces se liší od jednoho velkého majetku převedeného prostřednictvím postupného stahování nebo pomocí požadavků na rozsah bajtů. Informace o tomto stylu doručování médií naleznete v tématu [Optimalizace velkých souborů](cdn-large-file-optimization.md).
+Optimalizace streamování médií pro **Azure CDN Standard od Akamai** je platná pro živé nebo video streamování na vyžádání, které používá jednotlivé fragmenty médií k doručení. Tento proces se liší od jednoho velkého prostředku přenesených prostřednictvím postupného stahování nebo pomocí požadavků na rozsah bajtů. Informace o tomto stylu doručování médií najdete v tématu [optimalizace velkých souborů](cdn-large-file-optimization.md).
 
-Obecné typy pro doručování médií nebo optimalizace doručování videa na vyžádání používají cdn s back-endovými optimalizacemi k rychlejšímu doručování mediálních prostředků. Používají také konfigurace pro mediální prostředky na základě osvědčených postupů získaných v průběhu času.
+Typy optimalizace doručování médií v rámci programu Media Delivery nebo videa na vyžádání využívají síť CDN s optimalizací back-endu k rychlejšímu poskytování mediálních prostředků. Používají také konfigurace pro Media assety na základě osvědčených postupů, které se v průběhu času seznámily.
 
-### <a name="configure-an-akamai-cdn-endpoint-to-optimize-media-streaming"></a>Konfigurace koncového bodu Akamai CDN pro optimalizaci streamování médií
+### <a name="configure-an-akamai-cdn-endpoint-to-optimize-media-streaming"></a>Konfigurace koncového bodu CDN Akamai k optimalizaci streamování médií
  
-Můžete nakonfigurovat koncový bod sítě pro doručování obsahu (CDN) pro optimalizaci doručování pro velké soubory prostřednictvím portálu Azure. Můžete také použít rest API nebo některý z klientských sad SDK k tomu. Následující kroky ukazují proces prostřednictvím portálu Azure pro Azure CDN Standard z profilu **Akamai:**
+Můžete nakonfigurovat koncový bod služby Content Delivery Network (CDN) pro optimalizaci doručování velkých souborů prostřednictvím Azure Portal. K tomu můžete použít také rozhraní REST API nebo libovolné klientské sady SDK. Následující kroky ukazují proces prostřednictvím Azure Portal pro **Azure CDN Standard z profilu Akamai** :
 
-1. Pokud chcete přidat nový koncový bod, vyberte na stránce profilu Akamai **CDN** možnost **Koncový bod**.
+1. Pokud chcete přidat nový koncový bod, na stránce **profilu CDN** Akamai vyberte **koncový bod**.
   
     ![Nový koncový bod](./media/cdn-media-streaming-optimization/cdn-new-akamai-endpoint.png)
 
-2. V rozevíracím seznamu **Optimalizace pro** vyberte **streamování médií Videa na vyžádání** pro datové zdroje videa na vyžádání. Pokud děláte kombinaci živého vysílání a streamování videa na vyžádání, vyberte **možnost Obecné streamování médií**.
+2. V rozevíracím seznamu **optimalizované pro** vyberte **video streamování na vyžádání** pro prostředky videa na vyžádání. Pokud používáte kombinaci živého streamování a streamování videa na vyžádání, vyberte možnost **Obecné streamování médií**.
 
-    ![Vybrané streamování](./media/cdn-media-streaming-optimization/02_Creating.png) 
+    ![Vybráno streamování](./media/cdn-media-streaming-optimization/02_Creating.png) 
  
-Po vytvoření koncového bodu použije optimalizaci pro všechny soubory, které odpovídají určitým kritériím. Následující část popisuje tento proces. 
+Po vytvoření koncového bodu se použije optimalizace pro všechny soubory, které splňují určitá kritéria. Tento proces je popsán v následující části. 
 
 ### <a name="caching"></a>Ukládání do mezipaměti
 
-Pokud **Azure CDN Standard od Akamai** zjistí, že datový zdroj je manifest streamování nebo fragment, používá různé doby vypršení platnosti ukládání do mezipaměti z obecného poskytování webu. (Viz úplný seznam v následující tabulce.) Jako vždy jsou dodrženy hlavičky cache-control nebo Expires odeslané z počátku. Pokud datový zdroj není datový mprostředek, ukládá do mezipaměti pomocí doby vypršení platnosti pro obecné doručování webu.
+Pokud **Azure CDN Standard z Akamai** zjistí, že Asset je manifest nebo fragment streamování, používá jiné časy vypršení platnosti pro ukládání do mezipaměti z obecného doručování webu. (Podívejte se na úplný seznam v následující tabulce.) Jako vždy jsou dodrženy hlavičky pro řízení mezipaměti nebo vypršení platnosti odeslané počátkem. Pokud se nejedná o mediální prostředek, uloží se do mezipaměti pomocí doby vypršení platnosti pro obecné doručování webu.
 
-Krátká doba negativního ukládání do mezipaměti je užitečná pro počáteční zátěž, když mnoho uživatelů požaduje fragment, který ještě neexistuje. Příkladem je živý datový proud, kde pakety nejsou k dispozici od počátku, že druhý. Delší interval ukládání do mezipaměti také pomáhá snížit zatížení požadavků z počátku, protože video obsah není obvykle změněn.
+Krátký negativní čas ukládání do mezipaměti je vhodný pro snižování zátěže, když mnoho uživatelů vyžádá fragment, který ještě neexistuje. Příkladem je živý datový proud, ve kterém nejsou pakety k dispozici od počátku druhého. Delší interval mezipaměti také pomáhá přesměrovat požadavky od počátku, protože obsah videa se obvykle nemění.
  
 
-|   | Obecné doručování webových stránek | Obecné vysílání datových proudů médií | Streamování médií videa na vyžádání  
+|   | Obecné doručování webu | Obecné streamování médií | Streamování médií videa na vyžádání  
 --- | --- | --- | ---
-Ukládání do mezipaměti: Pozitivní <br> HTTP 200, 203, 300, <br> 301, 302 a 410 | 7 dní |365 dní | 365 dní   
-Ukládání do mezipaměti: Negativní <br> HTTP 204, 305, 404, <br> a 405 | Žádný | 1 sekunda | 1 sekunda
+Ukládání do mezipaměti: kladné <br> HTTP 200, 203, 300, <br> 301, 302 a 410 | 7 dní |365 dní | 365 dní   
+Ukládání do mezipaměti: záporné <br> HTTP 204, 305, 404, <br> a 405 | Žádná | 1 sekunda | 1 sekunda
  
-### <a name="deal-with-origin-failure"></a>Řešení selhání původu  
+### <a name="deal-with-origin-failure"></a>Zabývat se selháním původu  
 
-Obecné doručování médií a doručování médií na vyžádání mají také časové osátosti původu a protokol opakování na základě osvědčených postupů pro typické vzory požadavků. Například protože obecné doručování médií je pro živé a video-on-demand doručování médií, používá kratší časový limit připojení vzhledem k časově citlivé povaze živého vysílání.
+Obecné doručování médií a doručování médií na vyžádání má také časový limit původu a opakovaný protokol opakování na základě osvědčených postupů typických vzorů požadavků. Například vzhledem k tomu, že je běžné doručování médií k dislive a k doručování médií na vyžádání, používá kratší časový limit připojení kvůli časově náročnému streamování živého streamování.
 
-Při výpadku časového limitu připojení CDN opakuje několikrát před odesláním chyby "504 - Gateway Timeout" klientovi. 
+Když se připojení vyprší, služba CDN se pokusy opakuje několikrát, než pošle klientovi chybu "504-Gateway timeout". 
 
-Pokud soubor odpovídá seznamu podmínek typu souboru a velikosti, cdn používá chování pro vysílání datových proudů médií. V opačném případě používá obecné doručování webových stránek.
+Když soubor odpovídá typu souboru a seznamu stavů velikostí, CDN používá chování pro streamování médií. V opačném případě používá obecné doručování webu.
    
-### <a name="conditions-for-media-streaming-optimization"></a>Podmínky pro optimalizaci streamování médií 
+### <a name="conditions-for-media-streaming-optimization"></a>Podmínky Optimalizace streamování médií 
 
-V následující tabulce je uvedena sada kritérií, která mají být splněna pro optimalizaci streamování médií: 
+Následující tabulka uvádí sadu kritérií, která se mají splnit pro optimalizaci streamování médií: 
  
-Podporované typy datových proudů | Přípony souborů  
+Podporované typy streamování | Přípony souborů  
 --- | ---  
-Jablko HLS | m3u8, m3u, m3ub, klíč, ts, aac
-Adobe HDS | f4m, f4x, drmmeta, bootstrap, f4f,<br>Seg-Frag STRUKTURA URL <br> (odpovídající regulární výraz: ^(/.*)Seq(\d+)-Frag(\d+)
-Pomlčka | mpd, pomlčka, divx, ismv, m4s, m4v, mp4, mp4v, <br> sidx, webm, mp4a, m4a, isma
-Plynulé streamování | /manifest/, /QualityLevels/Fragments/
+Apple HLS | M3U8, M3U, m3ub, Key, TS, AAC
+Adobe HDS | f4m, f4x, drmmeta, Bootstrap, f4f,<br>Struktura adresy URL SEG –-Frag <br> (odpovídajícího regulárního výrazu: ^ (/. *) SEQ (\d +)-Frag (\d +)
+PŘERUŠENÍ | MPD, pomlčka, DivX, ISMV, M4S, M4V, MP4, MP4V, <br> sidx, webm, mp4a, m4a, isma
+Hladké streamování | /manifest/, /QualityLevels/Fragments/
   
  

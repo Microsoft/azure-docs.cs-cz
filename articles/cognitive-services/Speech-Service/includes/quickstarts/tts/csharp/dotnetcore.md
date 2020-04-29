@@ -1,7 +1,7 @@
 ---
-title: 'Úvodní příručka: Syntetizovat řeč, C# (.NET Core) - služba řeči'
+title: 'Rychlý Start: syntetizace řeči, C# (.NET Core) – Speech Service'
 titleSuffix: Azure Cognitive Services
-description: Naučte se syntetizovat řeč v c# pod .NET Core v systému Windows pomocí sady Speech SDK
+description: Naučte se, jak syntetizovat řeč v C# v části .NET Core ve Windows pomocí sady Speech SDK
 services: cognitive-services
 author: yinhew
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: include
 ms.date: 04/04/2020
 ms.author: yinhew
 ms.openlocfilehash: 91e06805b687e66c147b0904175ae20d01387acf
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81275464"
 ---
 > [!NOTE]
@@ -22,10 +22,10 @@ ms.locfileid: "81275464"
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než začnete, ujistěte se, že:
+Než začnete, nezapomeňte:
 
 > [!div class="checklist"]
-> * [Vytvoření řečového prostředku Azure](../../../../get-started.md)
+> * [Vytvoření prostředku Azure Speech](../../../../get-started.md)
 > * [Nastavení vývojového prostředí a vytvoření prázdného projektu](../../../../quickstarts/setup-platform.md?tabs=dotnetcore&pivots=programming-language-csharp)
 
 ## <a name="add-sample-code"></a>Přidání ukázkového kódu
@@ -42,17 +42,17 @@ Než začnete, ujistěte se, že:
 
 ## <a name="build-and-run-the-app"></a>Sestavení a spuštění aplikace
 
-1. Sestavte aplikaci. Na řádku nabídek zvolte **Sestavení** > **řešení sestavení**. Kód by se měl zkompilovat bez chyb.
+1. Sestavte aplikaci. V řádku nabídek klikněte na **sestavit** > sestavení**řešení**. Kód by se měl zkompilovat bez chyb.
 
     ![Snímek obrazovky s aplikací sady Visual Studio se zvýrazněnou možností Sestavit řešení](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-dotnetcore-windows-05-build.png "Úspěšné sestavení")
 
-1. Spusťte aplikaci. Na řádku nabídek zvolte **Ladění** > **ladění startování**nebo stiskněte **klávesu F5**.
+1. Spusťte aplikaci. V řádku nabídek zvolte **ladění** > **Spustit ladění**nebo stiskněte klávesu **F5**.
 
-    ![Snímek obrazovky s aplikací sady Visual Studio se zvýrazněnou možností Spustit ladění](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-dotnetcore-windows-06-start-debugging.png "Spuštění aplikace do ladění")
+    ![Snímek obrazovky s aplikací sady Visual Studio se zvýrazněnou možností Spustit ladění](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-dotnetcore-windows-06-start-debugging.png "Spustit aplikaci do ladění")
 
-1. Zobrazí se okno konzoly s výzvou k zadání textu. Zadejte několik slov nebo větu. Zadaný text je přenesen do služby Řeč a syntetizován do řeči, která se přehraje na reproduktoru.
+1. Zobrazí se okno konzoly, které vás vyzve k zadání textu. Zadejte několik slov nebo větu. Text, který jste zadali, se přenáší do služby pro rozpoznávání řeči a syntetizuje se na řeč, který hraje na svém mluvčím.
 
-    ![Snímek obrazovky s výstupem konzoly po úspěšné syntéze](~/articles/cognitive-services/Speech-Service/media/sdk/qs-tts-csharp-dotnet-windows-console-output.png "Výstup konzoly po úspěšné syntéze")
+    ![Snímek obrazovky s výstupem konzoly po úspěšném Shrnutí](~/articles/cognitive-services/Speech-Service/media/sdk/qs-tts-csharp-dotnet-windows-console-output.png "Výstup na konzole po úspěšném Shrnutí")
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -61,4 +61,4 @@ Než začnete, ujistěte se, že:
 ## <a name="see-also"></a>Viz také
 
 - [Vytvoření vlastního hlasu](~/articles/cognitive-services/Speech-Service/how-to-custom-voice-create-voice.md)
-- [Záznam vlastních hlasových ukázek](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)
+- [Zaznamenat vlastní ukázky hlasu](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)
