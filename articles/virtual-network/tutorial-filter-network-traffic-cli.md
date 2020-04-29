@@ -1,6 +1,6 @@
 ---
-title: Filtrování síťového provozu – Azure CLI | Dokumenty společnosti Microsoft
-description: V tomto článku se dozvíte, jak filtrovat síťový provoz do podsítě se skupinou zabezpečení sítě pomocí rozhraní příkazového příkazového příkazu k síti Azure.
+title: Filtrování síťového provozu – Azure CLI | Microsoft Docs
+description: V tomto článku se dozvíte, jak filtrovat síťový provoz do podsítě a pomocí skupiny zabezpečení sítě pomocí Azure CLI.
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -18,13 +18,13 @@ ms.date: 03/30/2018
 ms.author: kumud
 ms.custom: ''
 ms.openlocfilehash: 72c8b4d57b5064af34665cff1386179e62324938
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80235082"
 ---
-# <a name="filter-network-traffic-with-a-network-security-group-using-the-azure-cli"></a>Filtrování síťových přenosů se skupinou zabezpečení sítě pomocí příkazového příkazového příkazu Azure
+# <a name="filter-network-traffic-with-a-network-security-group-using-the-azure-cli"></a>Filtrování síťového provozu pomocí skupiny zabezpečení sítě pomocí Azure CLI
 
 Příchozí a odchozí provoz podsítě virtuální sítě můžete filtrovat pomocí skupiny zabezpečení sítě. Skupiny zabezpečení sítě obsahují pravidla zabezpečení, která filtrují síťový provoz podle IP adresy, portu a protokolu. Pravidla zabezpečení se vztahují na prostředky nasazené v podsíti. V tomto článku získáte informace o těchto tématech:
 
@@ -33,11 +33,11 @@ Příchozí a odchozí provoz podsítě virtuální sítě můžete filtrovat po
 * Nasazení virtuálních počítačů do podsítě
 * Testování filtrů provozu
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat příkaz cli místně, tento článek vyžaduje, abyste spouštěli Azure CLI verze 2.0.28 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli). 
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.0.28 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli). 
 
 
 ## <a name="create-a-network-security-group"></a>Vytvoření skupiny zabezpečení sítě
@@ -46,7 +46,7 @@ Skupina zabezpečení sítě obsahuje pravidla zabezpečení. Pravidla zabezpeč
 
 ### <a name="create-application-security-groups"></a>Vytvoření skupin zabezpečení aplikací
 
-Nejprve vytvořte skupinu prostředků pro všechny prostředky vytvořené v tomto článku pomocí [vytvoření skupiny AZ](/cli/azure/group). Následující příklad vytvoří skupinu prostředků v umístění *eastus*: 
+Nejprve vytvořte skupinu prostředků pro všechny prostředky vytvořené v tomto článku pomocí [AZ Group Create](/cli/azure/group). Následující příklad vytvoří skupinu prostředků v umístění *eastus*: 
 
 ```azurecli-interactive
 az group create \
@@ -54,7 +54,7 @@ az group create \
   --location eastus
 ```
 
-Vytvořte skupinu zabezpečení aplikace pomocí [az network asg create](/cli/azure/network/asg). Skupina zabezpečení aplikací umožňuje seskupovat servery s podobnými požadavky na filtrování portů. Následující příklad vytvoří dvě skupiny zabezpečení aplikací.
+Vytvořte skupinu zabezpečení aplikace pomocí [AZ Network ASG Create](/cli/azure/network/asg). Skupina zabezpečení aplikací umožňuje seskupovat servery s podobnými požadavky na filtrování portů. Následující příklad vytvoří dvě skupiny zabezpečení aplikací.
 
 ```azurecli-interactive
 az network asg create \
@@ -70,7 +70,7 @@ az network asg create \
 
 ### <a name="create-a-network-security-group"></a>Vytvoření skupiny zabezpečení sítě
 
-Vytvořte skupinu zabezpečení sítě pomocí vytvoření [sítě az nsg](/cli/azure/network/nsg). Následující příklad vytvoří skupinu zabezpečení sítě *myNsg*: 
+Vytvořte skupinu zabezpečení sítě pomocí [AZ Network NSG Create](/cli/azure/network/nsg). Následující příklad vytvoří skupinu zabezpečení sítě *myNsg*: 
 
 ```azurecli-interactive 
 # Create a network security group
@@ -81,7 +81,7 @@ az network nsg create \
 
 ### <a name="create-security-rules"></a>Vytvoření pravidel zabezpečení
 
-Vytvořte pravidlo zabezpečení pomocí [vytvoření pravidla az network nsg](/cli/azure/network/nsg/rule). Následující příklad vytvoří pravidlo povolující příchozí provoz z internetu do skupiny zabezpečení aplikací *myWebServers* na portech 80 a 443:
+Vytvořte pravidlo zabezpečení pomocí [AZ Network NSG Rule Create](/cli/azure/network/nsg/rule). Následující příklad vytvoří pravidlo povolující příchozí provoz z internetu do skupiny zabezpečení aplikací *myWebServers* na portech 80 a 443:
 
 ```azurecli-interactive
 az network nsg rule create \
@@ -98,7 +98,7 @@ az network nsg rule create \
   --destination-port-range 80 443
 ```
 
-Následující příklad vytvoří pravidlo, které umožňuje přenosy příchozí z Internetu do skupiny zabezpečení aplikace *myMgmtServers* přes port 22:
+Následující příklad vytvoří pravidlo, které umožňuje příchozí provoz z Internetu do skupiny zabezpečení aplikací *myMgmtServers* přes port 22:
 
 ```azurecli-interactive
 az network nsg rule create \
@@ -115,7 +115,7 @@ az network nsg rule create \
   --destination-port-range 22
 ```
 
-V tomto článku SSH (port 22) je vystavena internetu pro *myAsgMgmtServers* VM. Pro produkční prostředí se namísto vystavení portu 22 internetu doporučujete připojit k prostředkům Azure, které chcete spravovat pomocí připojení [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nebo [privátní](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) sítě.
+V tomto článku se k Internetu pro virtuální počítač *myAsgMgmtServers* zveřejňuje SSH (port 22). U produkčních prostředí se místo vystavení portu 22 k Internetu doporučuje připojit k prostředkům Azure, které chcete spravovat, pomocí [sítě VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nebo [privátního](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) síťového připojení.
 
 ## <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
 
@@ -128,7 +128,7 @@ az network vnet create \
   --address-prefixes 10.0.0.0/16
 ```
 
-Přidání podsítě do virtuální sítě s [vytvořením podsítě sítě AZ](/cli/azure/network/vnet/subnet). Následující příklad do virtuální sítě přidá podsíť *mySubnet* a přidruží k ní skupinu zabezpečení sítě *myNsg*:
+Přidejte podsíť do virtuální sítě pomocí [AZ Network VNet Subnet Create](/cli/azure/network/vnet/subnet). Následující příklad do virtuální sítě přidá podsíť *mySubnet* a přidruží k ní skupinu zabezpečení sítě *myNsg*:
 
 ```azurecli-interactive
 az network vnet subnet create \
@@ -143,9 +143,9 @@ az network vnet subnet create \
 
 Vytvořte ve virtuální síti dva virtuální počítače, abyste v pozdějším kroku mohli ověřit filtrování provozu. 
 
-Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm). Následující příklad vytvoří virtuální počítač, který bude sloužit jako webový server. Tato `--asgs myAsgWebServers` možnost způsobí, že Azure vytvoří síťové rozhraní, které vytvoří pro virtuální počítač, jako člena skupiny zabezpečení aplikace *myAsgWebServers.*
+Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm). Následující příklad vytvoří virtuální počítač, který bude sloužit jako webový server. Možnost způsobí, že Azure zpřístupní síťové rozhraní, které vytvoří pro virtuální počítač jako člena skupiny zabezpečení aplikací *myAsgWebServers.* `--asgs myAsgWebServers`
 
-Možnost `--nsg ""` je určena, aby se zabránilo Azure ve vytvoření výchozí skupiny zabezpečení sítě pro síťové rozhraní, které Azure vytvoří při vytváření virtuálního počítače. Chcete-li zefektivnit tento článek, heslo se používá. Klíče se obvykle používají v produkčních nasazeních. Pokud používáte klíče, musíte také nakonfigurovat předávání agentů SSH pro zbývající kroky. Další informace naleznete v dokumentaci pro vašeho klienta SSH. Nahraďte `<replace-with-your-password>` v následujícím příkazu heslo podle vašeho výběru.
+Tato `--nsg ""` možnost je určená k tomu, aby se zabránilo tomu, aby Azure vytvořil výchozí skupinu zabezpečení sítě pro síťové rozhraní, které Azure vytvoří při vytváření virtuálního počítače. Pro zjednodušení tohoto článku se používá heslo. Klíče se obvykle používají v produkčních nasazeních. Pokud používáte klíče, musíte také nakonfigurovat přesměrování agenta SSH pro zbývající kroky. Další informace najdete v dokumentaci ke klientovi SSH. V `<replace-with-your-password>` následujícím příkazu nahraďte heslem, které jste si zvolili.
 
 ```azurecli-interactive
 adminPassword="<replace-with-your-password>"
@@ -162,7 +162,7 @@ az vm create \
   --admin-password $adminPassword
 ```
 
-Vytvoření virtuálního počítače trvá několik minut. Po vytvoření virtuálního virtuálního zařízení je vrácen výstup podobný následujícímu příkladu: 
+Vytvoření virtuálního počítače trvá několik minut. Po vytvoření virtuálního počítače se vrátí výstup podobný následujícímu příkladu: 
 
 ```output
 {
@@ -177,7 +177,7 @@ Vytvoření virtuálního počítače trvá několik minut. Po vytvoření virtu
 }
 ```
 
-Poznamenejte si hodnotu **publicIpAddress**. Tato adresa se používá pro přístup k virtuálnímu virtuálnímu mněmu z internetu v pozdějším kroku.  Vytvořte virtuální počítač, který bude sloužit jako server pro správu:
+Poznamenejte si hodnotu **publicIpAddress**. Tato adresa se používá pro přístup k virtuálnímu počítači z Internetu v pozdějším kroku.  Vytvořte virtuální počítač, který bude sloužit jako server pro správu:
 
 ```azurecli-interactive
 az vm create \
@@ -192,29 +192,29 @@ az vm create \
   --admin-password $adminPassword
 ```
 
-Vytvoření virtuálního počítače trvá několik minut. Po vytvoření virtuálního počítačů si poznamenejte **publicIpAddress** ve vráceném výstupu. Tato adresa se používá pro přístup k virtuálnímu virtuálnímu serveru v dalším kroku. Nepokračujte dalším krokem, dokud Azure nedokončí vytváření virtuálního počítače.
+Vytvoření virtuálního počítače trvá několik minut. Po vytvoření virtuálního počítače si poznamenejte **publicIpAddress** ve vráceném výstupu. Tato adresa se používá pro přístup k virtuálnímu počítači v dalším kroku. Nepokračujte dalším krokem, dokud Azure nedokončí vytváření virtuálního počítače.
 
 ## <a name="test-traffic-filters"></a>Testování filtrů provozu
 
-Pomocí následujícího příkazu vytvořte relaci SSH s virtuálním virtuálním mem *myVmMgmt.* Nahraďte * \<>publicIpAddress* veřejnou IP adresou virtuálního počítače. Ve výše uvedeném příkladu je adresa IP *13.90.242.231*.
+Pomocí následujícího příkazu vytvořte relaci SSH s virtuálním počítačem s *myVmMgmt* . * \<PublicIpAddress>* nahraďte veřejnou IP adresou vašeho virtuálního počítače. V předchozím příkladu je IP adresa *13.90.242.231*.
 
 ```bash 
 ssh azureuser@<publicIpAddress>
 ```
 
-Po zobrazení výzvy k zadání hesla zadejte heslo, které jste zadali v okně [Vytvořit virtuální počítače](#create-virtual-machines).
+Po zobrazení výzvy k zadání hesla zadejte heslo, které jste zadali v části [Vytvoření virtuálních počítačů](#create-virtual-machines).
 
-Připojení je úspěšné, protože port 22 je povolen příchozí z Internetu do skupiny zabezpečení aplikace *myAsgMgmtServers,* ve které je síťové rozhraní připojené k virtuálnímu modulu *myVmMgmt.*
+Připojení je úspěšné, protože port 22 je povolený z Internetu do skupiny zabezpečení aplikace *myAsgMgmtServers* , ve které je síťové rozhraní připojené k virtuálnímu počítači *myVmMgmt* .
 
-Použijte následující příkaz s ssh na *myVmWeb* VM z *myVmMgmt* virtuálního virtuálního mísy:
+Z virtuálního počítače *myVmMgmt* použijte následující příkaz pro SSH k virtuálnímu počítači s *myVmWeb* :
 
 ```bash 
 ssh azureuser@myVmWeb
 ```
 
-Připojení bude úspěšné, protože výchozí pravidlo zabezpečení v obou skupinách zabezpečení sítě povoluje provoz na všech portech mezi všemi IP adresami v rámci virtuální sítě. Nelze SSH na *myVmWeb* VM z Internetu, protože pravidlo zabezpečení pro *myAsgWebServers* neumožňuje port 22 příchozí z Internetu.
+Připojení bude úspěšné, protože výchozí pravidlo zabezpečení v obou skupinách zabezpečení sítě povoluje provoz na všech portech mezi všemi IP adresami v rámci virtuální sítě. K virtuálnímu počítači s *myVmWeb* se nemůžete pomocí protokolu SSH z Internetu, protože pravidlo zabezpečení pro *myAsgWebServers* nepovoluje port 22 příchozí z Internetu.
 
-K instalaci webového serveru nginx na virtuální ms *myVmWeb* použijte následující příkazy:
+K instalaci webového serveru Nginx na virtuálním počítači s *myVmWeb* použijte následující příkazy:
 
 ```bash 
 # Update package source
@@ -224,17 +224,17 @@ sudo apt-get -y update
 sudo apt-get -y install nginx
 ```
 
-Virtuální ho ms *myVmWeb* je povoleno odchozí do Internetu načíst nginx, protože výchozí pravidlo zabezpečení umožňuje veškerý odchozí provoz do Internetu. Ukončete relaci *myVmWeb* SSH, `username@myVmMgmt:~$` která vás ponechá na výzvu virtuálního zařízení *myVmMgmt.* Chcete-li načíst uvítací obrazovku nginx z virtuálního virtuálního serveru *myVmWeb,* zadejte následující příkaz:
+Virtuální počítač *myVmWeb* je povolený pro načtení Nginx z Internetu, protože výchozí pravidlo zabezpečení povoluje veškerý odchozí provoz na Internet. Ukončete relaci SSH *myVmWeb* , která vám ponechá `username@myVmMgmt:~$` výzvu k zadání virtuálního počítače s *myVmMgmt* . Pokud chcete načíst úvodní obrazovku Nginx z virtuálního počítače *myVmWeb* , zadejte následující příkaz:
 
 ```bash
 curl myVmWeb
 ```
 
-Odhlášení z virtuálního virtuálního mísy *myVmMgmt.* Chcete-li potvrdit, že máte přístup k webovému serveru `curl <publicIpAddress>` *myVmWeb* mimo Azure, zadejte z vlastního počítače. Připojení je úspěšné, protože port 80 je povolen příchozí z Internetu do skupiny zabezpečení aplikace *myAsgWebServers,* ve které je síťové rozhraní připojené k virtuálnímu zařízení *myVmWeb.*
+Odhlaste se k virtuálnímu počítači *myVmMgmt* . Pokud chcete potvrdit, že máte přístup k webovému serveru *myVmWeb* mimo Azure, zadejte `curl <publicIpAddress>` z vlastního počítače. Připojení je úspěšné, protože port 80 je povolený pro příchozí z Internetu do skupiny zabezpečení aplikací *myAsgWebServers* , ve které je síťové rozhraní připojené k virtuálnímu počítači *myVmWeb* .
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud již není potřeba, použijte [az skupiny odstranit](/cli/azure/group) odebrat skupinu prostředků a všechny prostředky, které obsahuje.
+Pokud už je nepotřebujete, odeberte skupinu prostředků a všechny prostředky, které obsahuje, pomocí [AZ Group Delete](/cli/azure/group) .
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes
@@ -242,6 +242,6 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste vytvořili skupinu zabezpečení sítě a přidružili ji k podsíti virtuální sítě. Další informace o skupinách zabezpečení sítě najdete v tématech [Přehled skupin zabezpečení sítě](security-overview.md) a [Správa skupiny zabezpečení sítě](manage-network-security-group.md).
+V tomto článku jste vytvořili skupinu zabezpečení sítě a přidružíte ji k podsíti virtuální sítě. Další informace o skupinách zabezpečení sítě najdete v tématech [Přehled skupin zabezpečení sítě](security-overview.md) a [Správa skupiny zabezpečení sítě](manage-network-security-group.md).
 
-Provoz mezi podsítěmi směruje ve výchozím nastavení Azure. Místo toho se můžete rozhodnout směrovat provoz mezi podsítěmi například prostřednictvím virtuálního počítače, který slouží jako brána firewall. Informace o tom, jak [najdete v tématu Vytvoření tabulky tras](tutorial-create-route-table-cli.md).
+Provoz mezi podsítěmi směruje ve výchozím nastavení Azure. Místo toho se můžete rozhodnout směrovat provoz mezi podsítěmi například prostřednictvím virtuálního počítače, který slouží jako brána firewall. Další informace o postupu najdete v tématu [Vytvoření směrovací tabulky](tutorial-create-route-table-cli.md).

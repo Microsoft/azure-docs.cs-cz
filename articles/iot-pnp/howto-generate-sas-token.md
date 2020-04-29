@@ -1,6 +1,6 @@
 ---
-title: Generovat token zabezpečení pro přístup k úložišti Náhled plug and play IoT | Dokumenty společnosti Microsoft
-description: Vygenerujte token sdíleného přístupového podpisu, který se použije při programovém přístupu k úložišti modelu Náhled technologie IoT Plug and Play.
+title: Generovat token zabezpečení pro přístup do úložiště IoT technologie Plug and Play Preview | Microsoft Docs
+description: Vygenerujte token sdíleného přístupového podpisu, který se použije při programovém přístupu do úložiště modelu IoT technologie Plug and Play Preview.
 author: Philmea
 ms.author: philmea
 ms.date: 12/27/2019
@@ -9,19 +9,19 @@ ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
 ms.openlocfilehash: f008627317588467d731ccc03aec7738f58e46e0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80159196"
 ---
 # <a name="generate-sas-token"></a>Generovat token SAS
 
-Tento návod vám ukáže, jak programově generovat token sdíleného přístupového podpisu (SAS) pro použití s úložištěm úložiště modelu IoT Plug and Play Preview.
+V této příručce se dozvíte, jak programově generovat token sdíleného přístupového podpisu (SAS) pro použití s rozhraními API úložiště modelu IoT technologie Plug and Play Preview.
 
 ## <a name="python"></a>Python
 
-Následující úryvek ukazuje, jak generovat token SAS pomocí Pythonu:
+Následující fragment kódu ukazuje, jak vygenerovat token SAS pomocí Pythonu:
 
 ```python
 from base64 import b64decode, b64encode
@@ -46,7 +46,7 @@ def calculate_sas_token(hostname, repo_id, key_name, key, expiry_in_second):
 
 ## <a name="c"></a>C\#
 
-Následující úryvek ukazuje, jak generovat token SAS pomocí C\#:
+Následující fragment kódu ukazuje, jak vygenerovat token SAS pomocí jazyka C\#:
 
 ```csharp
 public static string generateSasToken(string hostName, string repoId, string key, string keyName, int expiryInSeconds = 3600)
@@ -72,16 +72,16 @@ public static string generateSasToken(string hostName, string repoId, string key
 }
 ```
 
-## <a name="use-the-sas-token"></a>Použití tokenu SAS
+## <a name="use-the-sas-token"></a>Použít token SAS
 
-Po vygenerování tokenu SAS jej můžete použít k vytvoření požadavku HTTP POST. Například:
+Po vygenerování tokenu SAS ho můžete použít k vytvoření požadavku HTTP POST. Příklad:
 
 ```text
 POST https:///models/{modelId}?repositoryId={repositoryId}&api-version=2019-07-01-preview
 ```
 
-Pokud klientovi přidáte token SAS, klient nemá primární klíč prostředku a nelze jej stornovat hash k jeho získání. Token SAS vám dává kontrolu nad tím, k čemu má klient přístup a na jak dlouho. Změníte-li primární klíč v zásadě, všechny tokeny SAS vytvořené z ní jsou zneplatněny.
+Pokud klientovi udělíte token SAS, klient nemá primární klíč prostředku a nemůže hodnotu hash vrátit, aby ho získal. Token SAS vám dává kontrolu nad tím, k čemu má klient přístup, a za jak dlouhou dobu. Když změníte primární klíč v zásadě, všechny tokeny SAS, které jsou z něho vytvořené, se zruší.
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste se dozvěděli o generování tokenů zabezpečení pro přístup k modelu úložiště modelu IoT Plug and Play Preview, je dalším krokem další informace v [průvodci vývojářem pro modelování náhledu IoT Plug and Play](concepts-developer-guide.md).
+Teď, když jste se naučili generovat tokeny zabezpečení, které se mají použít pro přístup k modelům úložiště IoT technologie Plug and Play ve verzi Preview, je doporučený další krok, kde najdete další informace v [příručce pro vývojáře modelování ve službě iot technologie Plug and Play Preview](concepts-developer-guide.md).

@@ -9,10 +9,10 @@ ms.date: 10/22/2019
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: 4deae235ed15d02874ab5cb3470c62e934324364
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80234291"
 ---
 # <a name="soft-delete-for-azure-storage-blobs"></a>Obnovitelné odstranění objektů blob služby Azure Storage
@@ -230,7 +230,7 @@ Chcete-li najít aktuální zásady uchovávání informací o tichém odstraně
    Get-AzStorageServiceProperty -ServiceType Blob -Context $account.Context
 ```
 
-# <a name="cli"></a>[Rozhraní příkazového řádku](#tab/azure-CLI)
+# <a name="cli"></a>[CLI](#tab/azure-CLI)
 
 Pokud chcete povolit obnovitelné odstranění, aktualizujte vlastnosti služby klienta objektů BLOB:
 

@@ -3,24 +3,24 @@ title: Interakce s kontejnery Windows
 services: azure-dev-spaces
 ms.date: 01/16/2020
 ms.topic: conceptual
-description: Zjistěte, jak spustit Azure Dev Spaces v existujícím clusteru s kontejnery Windows
-keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery, kontejnery s Windows
+description: Naučte se spouštět Azure Dev Spaces v existujícím clusteru s kontejnery Windows.
+keywords: Azure Dev Spaces, vývojářské prostory, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, kontejnery Windows
 ms.openlocfilehash: 0b3f221c9e62343a02ba8742e4cf988c7cf26c12
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80240489"
 ---
 # <a name="interact-with-windows-containers-using-azure-dev-spaces"></a>Interakce s kontejnery Windows pomocí Azure Dev Spaces
 
-Azure Dev Spaces můžete povolit v nových i stávajících oborech názvů Kubernetes. Azure Dev Spaces se bude spouštět a instrumentuje služby, které běží na linuxových kontejnerech. Tyto služby mohou také pracovat s aplikacemi, které běží v kontejnerech systému Windows ve stejném oboru názvů. Tento článek ukazuje, jak pomocí funkce Dev Spaces spouštět služby v oboru názvů s existujícími kontejnery systému Windows. V tuto chvíli nelze ladit nebo připojit k kontejnerům Windows s Azure Dev Spaces.
+Azure Dev Spaces můžete povolit pro nové i existující obory názvů Kubernetes. Azure Dev Spaces spustí služby a instrumentují služby, které běží na kontejnerech Linux. Tyto služby mohou také interagovat s aplikacemi, které běží na kontejnerech Windows ve stejném oboru názvů. V tomto článku se dozvíte, jak používat vývojové prostory ke spouštění služeb v oboru názvů s existujícími kontejnery Windows. V tuto chvíli nemůžete ladit nebo připojovat kontejnery Windows pomocí Azure Dev Spaces.
 
 ## <a name="set-up-your-cluster"></a>Nastavení clusteru
 
-Tento článek předpokládá, že již máte cluster s fondy uzlů Linux u Windows a Windows. Pokud potřebujete vytvořit cluster s fondy uzlů Linuxu a Windows, postupujte podle pokynů [zde][windows-container-cli].
+V tomto článku se předpokládá, že už máte cluster s fondy uzlů pro Linux i Windows. Pokud potřebujete vytvořit cluster s fondy uzlů pro Linux a Windows, můžete postupovat podle pokynů uvedených [tady][windows-container-cli].
 
-Připojte se ke clusteru pomocí [kubectl][kubectl], klienta příkazového řádku Kubernetes. Pomocí příkazu [az aks get-credentials][az-aks-get-credentials] nakonfigurujte klienta `kubectl` pro připojení k vašemu clusteru Kubernetes. Tento příkaz stáhne pověření a nakonfiguruje rozhraní příkazového příkazu Kubernetes tak, aby je používalo.
+Připojte se ke clusteru pomocí [kubectl][kubectl]a klienta příkazového řádku Kubernetes. Pomocí příkazu [az aks get-credentials][az-aks-get-credentials] nakonfigurujte klienta `kubectl` pro připojení k vašemu clusteru Kubernetes. Tento příkaz stáhne pověření a nakonfiguruje rozhraní příkazového řádku Kubernetes pro jejich použití.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
@@ -32,7 +32,7 @@ Pokud chcete ověřit připojení ke clusteru, použijte příkaz [kubectl get][
 kubectl get nodes
 ```
 
-Následující příklad výstupu ukazuje cluster s windows a linuxovým uzlem. Ujistěte se, že stav je *připraven* pro každý uzel před pokračováním.
+Následující příklad výstupu ukazuje cluster s uzlem Windows i Linux. Než budete pokračovat, ujistěte se, že je stav *připraveno* pro každý uzel.
 
 ```console
 NAME                                STATUS   ROLES   AGE    VERSION
@@ -41,27 +41,27 @@ aks-nodepool1-12345678-vmss000001   Ready    agent   13m    v1.14.8
 aksnpwin000000                      Ready    agent   108s   v1.14.8
 ```
 
-Na uzly systému Windows použijte [počitadlo.][using-taints] Počin na uzlech systému Windows zabraňuje dev spaces v plánování linuxových kontejnerů tak, aby se spouštěly na uzlech systému Windows. Následující příkaz příklad příkazu použije počitadlo *aksnpwin987654* uzel systému Windows z předchozího příkladu.
+Použijte k uzlům Windows [chuti][using-taints] . Chuti v uzlech Windows brání vývojovým prostorům v Naplánování spuštění kontejnerů Linux na uzlech systému Windows. Následující příkaz příkazu příklad aplikuje na *aksnpwin987654* uzel Windows z předchozího příkladu hodnotu chuti.
 
 ```azurecli-interactive
 kubectl taint node aksnpwin987654 sku=win-node:NoSchedule
 ```
 
 > [!IMPORTANT]
-> Při použití počin uzla, je nutné nakonfigurovat odpovídající tolerance v šabloně nasazení vaší služby ke spuštění služby v tomto uzlu. Ukázková aplikace je již nakonfigurována s [odpovídající tolerací][sample-application-toleration-example] s počitatým příkazem, který jste nakonfigurovali v předchozím příkazu.
+> Když na uzel použijete ICM, musíte v šabloně nasazení vaší služby nakonfigurovat, aby se vaše služba na tomto uzlu spustila. Ukázková aplikace je už nakonfigurovaná tak, aby se [shodovala][sample-application-toleration-example] s tím, jak jste nakonfigurovali v předchozím příkazu.
 
-## <a name="run-your-windows-service"></a>Spuštění služby Systému Windows
+## <a name="run-your-windows-service"></a>Spuštění služby systému Windows
 
-Spusťte službu Windows v clusteru AKS a ověřte, zda je ve *stavu Spuštěno.* Tento článek používá [ukázkovou aplikaci][sample-application] k předvedení služby Windows a Linux spuštěné v clusteru.
+Spusťte službu Windows v clusteru AKS a ověřte, zda je ve *spuštěném* stavu. Tento článek používá [ukázkovou aplikaci][sample-application] k předvedení služby systému Windows a Linux spuštěné v clusteru.
 
-Klonujte ukázkovou aplikaci z GitHubu `dev-spaces/samples/existingWindowsBackend/mywebapi-windows` a přejděte do adresáře:
+Naklonujte ukázkovou aplikaci z GitHubu a `dev-spaces/samples/existingWindowsBackend/mywebapi-windows` přejděte do adresáře:
 
 ```console
 git clone https://github.com/Azure/dev-spaces
 cd dev-spaces/samples/existingWindowsBackend/mywebapi-windows
 ```
 
-Ukázková aplikace používá [Helm 3][helm-installed] ke spuštění služby Systému Windows v clusteru. Přejděte `charts` do adresáře a pomocí helmu spusťte službu Windows:
+Ukázková aplikace používá [Helm 3][helm-installed] ke spuštění služby Windows v clusteru. Přejděte do `charts` adresáře a pomocí Helm spusťte službu systému Windows:
 
 ```console
 cd charts/
@@ -69,9 +69,9 @@ kubectl create ns dev
 helm install windows-service . --namespace dev
 ```
 
-Výše uvedený příkaz používá helmke spuštění služby systému Windows v oboru názvů *dev.* Pokud nemáte obor názvů s názvem *dev*, bude vytvořen.
+Výše uvedený příkaz používá Helm ke spuštění služby Windows v oboru názvů pro *vývoj* . Pokud nemáte obor názvů s názvem *dev*, vytvoří se.
 
-Pomocí `kubectl get pods` příkazu ověřte, zda je služba systému Windows spuštěna v clusteru. 
+Pomocí `kubectl get pods` příkazu ověřte, že je služba Windows v clusteru spuštěná. 
 
 ```console
 $ kubectl get pods --namespace dev --watch
@@ -81,17 +81,17 @@ myapi-4b9667d123-1a2b3   0/1     ContainerCreating   0          47s
 myapi-4b9667d123-1a2b3   1/1     Running             0          98s
 ```
 
-## <a name="enable-azure-dev-spaces"></a>Povolení azure dev spaces
+## <a name="enable-azure-dev-spaces"></a>Povolit Azure Dev Spaces
 
-Povolte dev spaces ve stejném oboru názvů, který jste použili ke spuštění služby systému Windows. Následující příkaz povolí funkce Dev Spaces v oboru názvů *dev:*
+Povolte vývojové prostory ve stejném oboru názvů, který jste použili ke spuštění služby systému Windows. Následující příkaz povoluje vývojové prostory v oboru názvů pro *vývoj* :
 
 ```console
 az aks use-dev-spaces -g myResourceGroup -n myAKSCluster --space dev --yes
 ```
 
-## <a name="update-your-windows-service-for-dev-spaces"></a>Aktualizace služby Windows pro dev spaces
+## <a name="update-your-windows-service-for-dev-spaces"></a>Aktualizace služby Windows pro vývojové prostory
 
-Pokud povolíte Dev Spaces v existujícím oboru názvů s kontejnery, které jsou již spuštěny, ve výchozím nastavení se dev Spaces pokusí instrumentovat všechny nové kontejnery, které běží v tomto oboru názvů. Dev Spaces se také pokusí instrumentovat všechny nové kontejnery vytvořené pro službu, která je již spuštěna v oboru názvů. Chcete-li zabránit tomu, aby aplikace Dev Spaces instrumentovala kontejner `deployment.yaml`spuštěný v oboru názvů, přidejte *do* pole .
+Pokud povolíte vývojářské prostory v existujícím oboru názvů s kontejnery, které jsou již spuštěny, ve výchozím nastavení se vývojové prostory pokusí a instrumentují nové kontejnery, které jsou spuštěny v daném oboru názvů. Vývojové prostory taky vyzkouší a instrumentují všechny nové kontejnery vytvořené pro službu, která už je v oboru názvů spuštěná. Chcete-li zabránit vývojovým prostorům v instrumentaci kontejneru běžícího v oboru názvů, přidejte hlavičku *No-proxy* do `deployment.yaml`.
 
 Přidat `azds.io/no-proxy: "true"` do `existingWindowsBackend/mywebapi-windows/charts/templates/deployment.yaml` souboru:
 
@@ -112,7 +112,7 @@ spec:
         azds.io/no-proxy: "true"
 ```
 
-Slouží `helm list` k zobrazení seznamu nasazení pro službu systému Windows:
+Slouží `helm list` k vypsání nasazení pro službu systému Windows:
 
 ```cmd
 $ helm list --namespace dev
@@ -120,17 +120,17 @@ NAME              REVISION  UPDATED                     STATUS      CHART       
 windows-service 1           Wed Jul 24 15:45:59 2019    DEPLOYED    mywebapi-0.1.0  1.0         dev  
 ```
 
-Ve výše uvedeném příkladu je název nasazení *windows-service*. Aktualizujte službu systému `helm upgrade`Windows novou konfigurací pomocí :
+V tomto příkladu je název vašeho nasazení *služba Windows-Service*. Aktualizujte službu Windows pomocí nové konfigurace pomocí `helm upgrade`:
 
 ```cmd
 helm upgrade windows-service . --namespace dev
 ```
 
-Od aktualizace `deployment.yaml`aplikace , aplikace Dev Spaces se nepokusí o instrumentace vaší služby.
+Od chvíle, kdy `deployment.yaml`jste aktualizovali své služby, nebudete si vyvíjet ani instrumentovat službu.
 
-## <a name="run-your-linux-application-with-azure-dev-spaces"></a>Spuštění linuxové aplikace pomocí Azure Dev Spaces
+## <a name="run-your-linux-application-with-azure-dev-spaces"></a>Spuštění aplikace pro Linux pomocí Azure Dev Spaces
 
-Přejděte `webfrontend` do adresáře `azds prep` `azds up` a pomocí příkazů a spusťte aplikaci Linux v clusteru.
+Přejděte do `webfrontend` adresáře a pomocí příkazů `azds prep` a `azds up` spusťte aplikaci pro Linux v clusteru.
 
 ```console
 cd ../../webfrontend-linux/
@@ -138,12 +138,12 @@ azds prep --enable-ingress
 azds up
 ```
 
-Příkaz `azds prep --enable-ingress` generuje graf Helm a Dockerfiles pro vaši aplikaci.
+`azds prep --enable-ingress` Příkaz vygeneruje graf Helm a fázemi pro vaši aplikaci.
 
 > [!TIP]
-> [Dockerfile a Helm graf](../how-dev-spaces-works-prep.md#prepare-your-code) pro váš projekt se používá Azure Dev Spaces k sestavení a spuštění kódu, ale můžete upravit tyto soubory, pokud chcete změnit způsob sestavení a spuštění projektu.
+> [Graf souboru Dockerfile a Helm](../how-dev-spaces-works-prep.md#prepare-your-code) pro váš projekt je používán Azure dev Spaces k sestavení a spuštění kódu, ale tyto soubory lze změnit, pokud chcete změnit způsob sestavení a spuštění projektu.
 
-Příkaz `azds up` spustí službu v oboru názvů.
+`azds up` Příkaz spustí vaši službu v oboru názvů.
 
 ```console
 $ azds up
@@ -161,16 +161,16 @@ Service 'webfrontend' port 'http' is available at http://dev.webfrontend.abcdef0
 Service 'webfrontend' port 80 (http) is available via port forwarding at http://localhost:57648
 ```
 
-Službu spuštěnou můžete zobrazit otevřením veřejné adresy URL, která je zobrazena ve výstupu z příkazu azds up. V tomto příkladu je `http://dev.webfrontend.abcdef0123.eus.azds.io/`veřejná adresa URL . Přejděte na službu v prohlížeči a klikněte na *o o* v horní části. Ověřte, zda se zobrazí zpráva ze služby *mywebapi* obsahující verzi systému Windows, kterou kontejner používá.
+Službu spuštěnou můžete zobrazit otevřením veřejné adresy URL, která se zobrazí ve výstupu příkazu azds nahoru. V tomto příkladu je `http://dev.webfrontend.abcdef0123.eus.azds.io/`veřejná adresa URL. Přejděte ke službě v prohlížeči a klikněte *na v horní* části. Ověřte, že se zobrazí zpráva od služby *mywebapi* obsahující verzi Windows, kterou kontejner používá.
 
 ![Ukázková aplikace zobrazující verzi Windows z mywebapi](../media/run-dev-spaces-windows-containers/sample-app.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-Zjistěte, jak Azure Dev Spaces pomáhá vyvíjet složitější aplikace napříč více kontejnery a jak můžete zjednodušit vývoj spolupráce pomocí práce s různými verzemi nebo větvemi kódu v různých prostorech.
+Přečtěte si, jak Azure Dev Spaces pomáhá vyvíjet složitější aplikace napříč více kontejnery a jak zjednodušit vývoj díky práci s různými verzemi nebo větvemi kódu v různých prostorech.
 
 > [!div class="nextstepaction"]
-> [Vývoj týmu v Azure Dev Spaces][team-development-qs]
+> [Vývoj pro tým v Azure Dev Spaces][team-development-qs]
 
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get

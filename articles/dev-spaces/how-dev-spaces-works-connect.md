@@ -1,57 +1,57 @@
 ---
-title: Jak funguje připojení vývojového počítače ke clusteru AKS
+title: Jak připojit vývojový počítač ke clusteru AKS funguje
 services: azure-dev-spaces
 ms.date: 03/24/2020
 ms.topic: conceptual
-description: Popisuje procesy pomocí Azure Dev Spaces k připojení vývojového počítače k clusteru služby Azure Kubernetes.
-keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
+description: Popisuje procesy, které používají Azure Dev Spaces k připojení vašeho vývojového počítače ke clusteru služby Azure Kubernetes.
+keywords: Azure Dev Spaces, vývojářské prostory, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
 ms.openlocfilehash: a74a5a623006ccd64441023c2c4bc9ad3dcb517e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80241709"
 ---
-# <a name="how-connecting-your-development-computer-to-your-aks-cluster-works"></a>Jak funguje připojení vývojového počítače ke clusteru AKS
+# <a name="how-connecting-your-development-computer-to-your-aks-cluster-works"></a>Jak připojit vývojový počítač ke clusteru AKS funguje
 
-Pomocí Azure Dev Spaces můžete připojit vývojový počítač k clusteru AKS, což vám umožní spouštět a ladit kód ve vývojovém počítači, jako by byl spuštěn v clusteru. Azure Dev Spaces přesměruje provoz mezi připojeným clusterem AKS spuštěním podu v clusteru, který funguje jako vzdálený agent pro přesměrování provozu mezi vývojovým počítačem a clusterem. Toto přesměrování provozu umožňuje kódu vývojového počítače a služeb spuštěných v clusteru AKS komunikovat, jako by byly ve stejném clusteru AKS. Toto připojení také umožňuje spouštět a ladit kód s kontejnerem nebo bez kontejneru ve vývojovém počítači. Připojení vývojového počítače ke clusteru vám pomůže rychle vyvinout aplikaci a provést komplexní testování.
+Pomocí Azure Dev Spaces můžete připojit svůj vývojový počítač ke clusteru AKS, který vám umožní spouštět a ladit kód ve vývojovém počítači, jako kdyby byl spuštěný v clusteru. Azure Dev Spaces přesměruje provoz mezi připojeným clusterem AKS spuštěním pod sebou v clusteru, který funguje jako vzdálený Agent pro přesměrování provozu mezi vývojovým počítačem a clusterem. Toto přesměrování provozu umožňuje kódu na vašem vývojovém počítači a službách spuštěných ve vašem clusteru AKS komunikovat, jako kdyby byly ve stejném clusteru AKS. Toto připojení také umožňuje spustit a ladit kód s kontejnerem ve vývojovém počítači nebo bez něj. Připojení vývojového počítače k vašemu clusteru vám pomůže rychle vyvíjet aplikace a provádět komplexní testování.
 
-## <a name="connecting-to-your-cluster"></a>Připojení ke clusteru
+## <a name="connecting-to-your-cluster"></a>Připojování ke clusteru
 
-Ke stávajícímu clusteru AKS se připojíte pomocí [kódu Visual Studia][vs-code] s nainstalovaným rozšířením Azure [Dev Spaces][azds-vs-code] spuštěným v MacOS nebo Windows 10. Při navázání připojení máte možnost přesměrovat veškerý provoz do a z nového nebo existujícího podu v clusteru do vývojového počítače.
+Připojíte se ke stávajícímu clusteru AKS pomocí [Visual Studio Code][vs-code] s nainstalovaným rozšířením [Azure dev Spaces][azds-vs-code] spuštěným na MacOS nebo Windows 10. Po navázání připojení máte možnost přesměrovat veškerý provoz do nebo z nového nebo existujícího v clusteru do vašeho vývojového počítače.
 
 > [!NOTE]
-> Při použití Visual Studio Code pro připojení ke clusteru, rozšíření Azure Dev Spaces vám dává možnost přesměrování služby do vývojového počítače. Tato možnost je pohodlný způsob, jak identifikovat pod pro přesměrování. Veškeré přesměrování mezi clusterem AKS a vývojovým počítačem je pro pod.
+> Při použití Visual Studio Code pro připojení ke clusteru vám rozšíření Azure Dev Spaces nabízí možnost přesměrovat službu na vývojový počítač. Tato možnost je pohodlný způsob, jak identifikovat pod pro přesměrování. Všechna přesměrování mezi clusterem AKS a vaším vývojovým počítačem jsou pro objekt pod.
 
-Připojení ke clusteru nevyžaduje, abyste měli v clusteru povoleno azure dev spaces. Místo toho, když rozšíření Azure Dev Spaces naváže připojení k vašemu clusteru, bude:
+Připojení ke clusteru nevyžaduje, abyste ve svém clusteru povolili Azure Dev Spaces. Místo toho, když rozšíření Azure Dev Spaces naváže připojení ke clusteru,:
 
-* Nahradí kontejner v podu v clusteru AKS kontejnerem vzdáleného agenta, který přesměruje provoz do vývojového počítače. Při přesměrování nového podu azure dev spaces vytvoří nový pod ve vašem clusteru AKS se vzdáleným agentem.
-* Spustí [port kubectl vpřed][kubectl-port-forward] ve vývojovém počítači a přesměruje přenos y z vývojového počítače vzdálenému agentovi spuštěnému v clusteru.
-* Shromažďuje informace o prostředí z clusteru pomocí vzdáleného agenta. Tyto informace o prostředí zahrnují proměnné prostředí, viditelné služby, připojení svazků a tajné připojení.
-* Nastaví prostředí v terminálu kódu sady Visual Studio, aby služba ve vývojovém počítači přistupovala ke stejným proměnným, jako kdyby byla spuštěna v clusteru.  
-* Aktualizuje soubor hosts na mapové služby v clusteru AKS na místní IP adresy ve vývojovém počítači. Tyto položky souborů hosts umožňují kódu spuštěnému ve vývojovém počítači podávat požadavky na jiné služby spuštěné v clusteru. Chcete-li aktualizovat soubor hosts, Azure Dev Spaces požádá o přístup správce ve vývojovém počítači při připojování k clusteru.
+* Nahradí kontejner v pod clusterem AKS pomocí vzdáleného kontejneru agenta, který přesměruje provoz do vývojového počítače. Při přesměrování nového pod Azure Dev Spaces v clusteru AKS vytvoří nový pod vzdáleným agentem.
+* Spustí [kubectl][kubectl-port-forward] na svém vývojovém počítači a přesměruje provoz z vývojového počítače do vzdáleného agenta spuštěného v clusteru.
+* Shromažďuje informace o prostředí z vašeho clusteru pomocí vzdáleného agenta. Toto jsou informace o prostředí, včetně proměnných prostředí, viditelných služeb, připojení svazků a tajných připojení.
+* Nastaví prostředí v Visual Studio Code terminálu, aby služba ve vývojovém počítači mohla přistupovat ke stejným proměnným, jako kdyby byla spuštěna v clusteru.  
+* Aktualizuje soubor hostitelů pro mapování služeb v clusteru AKS na místní IP adresy ve vývojovém počítači. Tyto položky souborů hostitelů umožňují, aby kód spuštěný ve vývojovém počítači vytvářely požadavky na jiné služby spuštěné v clusteru. Pokud chcete aktualizovat soubor hostitelů, Azure Dev Spaces při připojování ke clusteru požádat o přístup správce na vašem vývojovém počítači.
 
-Pokud máte v clusteru povoleno azure dev spaces, máte také možnost použít [přesměrování provozu nabízené Azure Dev Spaces][how-it-works-routing]. Přesměrování provozu nabízené Azure Dev Spaces umožňuje připojení ke kopii vaší služby spuštěné v podřízeném dev prostoru. Použití podřízeného dev prostoru pomáhá zabránit narušení ostatních pracujících v nadřazeném prostoru pro vývoj, protože pouze přesměrováváte provoz zaměřený na instanci podřízeného prostoru služby a ponechá vající nadřazenou vesmírnou instanci služby beze změny.
+Pokud ve vašem clusteru máte povolené Azure Dev Spaces, máte také možnost použít [přesměrování provozu, které nabízí Azure dev Spaces][how-it-works-routing]. Přesměrování provozu nabízené nástrojem Azure Dev Spaces umožňuje připojit se k kopii vaší služby spuštěné v podřízeném vývojovém prostoru. Použití podřízeného prostoru pro vývoj pomáhá vyhnout se přerušení dalších práce v nadřazeném vývojovém prostoru, protože přesměrujete přenosy, které cílí na instanci vaší služby podřízeného prostoru, a ponechání instance nadřazeného prostoru této služby beze změny.
 
-Po připojení ke clusteru je provoz směrován do vývojového počítače bez ohledu na to, zda je služba spuštěna ve vývojovém počítači.
+Jakmile se připojíte ke clusteru, provoz se směruje na váš vývojový počítač bez ohledu na to, jestli vaše služba běží na vašem vývojovém počítači.
 
-## <a name="running-code-on-your-development-computer"></a>Spuštění kódu ve vývojovém počítači
+## <a name="running-code-on-your-development-computer"></a>Spuštění kódu na vašem vývojovém počítači
 
-Po navázání připojení ke clusteru AKS můžete spustit libovolný kód nativně v počítači bez kontejnerizace. Jakýkoli síťový provoz, který vzdálený agent obdrží, je přesměrován na místní port zadaný během připojení, aby nativně spuštěný kód mohl tento provoz přijmout a zpracovat. Proměnné prostředí, svazky a tajné klíče z clusteru jsou k dispozici kódu spuštěnému ve vývojovém počítači. Vzhledem k položkám souborů hostitelů a předávání portů přidanému do vývojářského počítače pomocí azure dev spaces může váš kód odesílat síťový provoz službám spuštěným v clusteru pomocí názvů služeb z clusteru a tento provoz se přesměruje do služby, které jsou spuštěny v clusteru.
+Po navázání připojení ke clusteru AKS můžete v počítači nativně spustit libovolný kód bez kontejneru. Veškerý síťový provoz, který vzdálený agent obdrží, se přesměruje na místní port zadaný během připojení, takže váš nativní běžící kód může přijmout a zpracovat tento provoz. Proměnné prostředí, svazky a tajné klíče z vašeho clusteru jsou zpřístupněny kódu běžícímu na vašem vývojovém počítači. Kromě toho, že se položky souborů hostitelů a přesměrování portů přidávají do vašeho vývojářského počítače Azure Dev Spaces, může váš kód odesílat síťový provoz do služeb spuštěných v clusteru pomocí názvů služeb z vašeho clusteru a tento provoz se předává do služeb spuštěných ve vašem clusteru.
 
-Vzhledem k tomu, že váš kód je spuštěn ve vývojovém počítači, máte flexibilitu použít libovolný nástroj, který běžně používáte pro vývoj ke spuštění kódu a ladění. Provoz je směrován mezi vývojovým počítačem a clusterem po celou dobu připojení. Toto trvalé připojení umožňuje spustit, zastavit a restartovat kód tolik, kolik potřebujete, aniž byste museli znovu navázat připojení.
+Vzhledem k tomu, že váš kód běží na vašem vývojovém počítači, máte flexibilitu při používání libovolného nástroje, který obvykle používáte pro vývoj, ke spuštění kódu a jeho ladění. Provoz se směruje mezi vývojovým počítačem a vaším clusterem a celou dobu, po kterou jste se připojili. Toto trvalé připojení umožňuje spustit, zastavit a restartovat kód tak, jak potřebujete, aniž byste museli znovu navázat připojení.
 
-Azure Dev Spaces navíc poskytuje způsob replikace proměnných prostředí a připojených souborů dostupných pro pody v clusteru AKS ve vývojovém počítači prostřednictvím souboru *azds-local.env.* Tento soubor můžete také použít k vytvoření nových proměnných prostředí a připojení svazků.
+Kromě toho Azure Dev Spaces poskytuje způsob, jak replikovat proměnné prostředí a připojené soubory, které jsou k dispozici ve vašem clusteru AKS ve vývojovém počítači prostřednictvím souboru *azds-Local. env* . Tento soubor můžete také použít k vytvoření nových proměnných prostředí a připojení svazků.
 
-## <a name="additional-configuration-with-azds-localenv"></a>Další konfigurace s azds-local.env
+## <a name="additional-configuration-with-azds-localenv"></a>Další konfigurace pomocí azds-Local. env
 
-Soubor *azds-local.env* umožňuje replikovat proměnné prostředí a připojené soubory, které jsou k dispozici vašim podům v clusteru AKS. V souboru *azds-local.env* můžete určit následující akce:
+Soubor *azds-Local. env* umožňuje replikovat proměnné prostředí a připojené soubory, které jsou k dispozici pro vaše lusky v clusteru AKS. V souboru *azds-Local. env* můžete zadat následující akce:
 
 * Stáhněte svazek a nastavte cestu k tomuto svazku jako proměnnou prostředí.
-* Stáhněte si jednotlivé soubory nebo sadu souborů ze svazku a připojte jej do vývojového počítače.
-* Zpřístupní te službu bez ohledu na cluster, ke které jste připojeni.
+* Stáhněte si jednotlivý soubor nebo sadu souborů ze svazku a připojte ho na svém vývojovém počítači.
+* Zpřístupněte službu bez ohledu na to, ke kterému clusteru jste připojení.
 
-Zde je příklad *souboru azds-local.env:*
+Tady je příklad souboru *azds-Local. env* :
 
 ```
 # This downloads the "whitelist" volume from the container,
@@ -82,15 +82,15 @@ MYAPP1_SERVICE_HOST=${services.myapp1}
 MYAPP2_SERVICE_HOST=${services.mynamespace.myapp2}
 ```
 
-Výchozí soubor *azds-local.env* není vytvořen automaticky, takže je nutné ručně vytvořit soubor v kořenovém adresáři projektu.
+Výchozí soubor *azds-Local. env* se nevytvoří automaticky, takže musíte ručně vytvořit soubor v kořenu projektu.
 
 ## <a name="diagnostics-and-logging"></a>Diagnostika a protokolování
 
-Při připojení ke clusteru AKS jsou diagnostické protokoly z clusteru zaznamenány do [dočasného adresáře][azds-tmp-dir]vývojového počítače . Pomocí kódu sady Visual Studio můžete také použít příkaz *Zobrazit diagnostické informace* k tisku aktuálních proměnných prostředí a položek DNS z clusteru AKS.
+Když se připojíte ke clusteru AKS, diagnostické protokoly z vašeho clusteru se zaprotokolují do [dočasného adresáře][azds-tmp-dir]vašeho vývojového počítače. Pomocí Visual Studio Code můžete k tisku aktuálních proměnných prostředí a záznamů DNS z clusteru AKS použít taky příkaz *Zobrazit diagnostické informace* .
 
 ## <a name="next-steps"></a>Další kroky
 
-Informace o zahájení připojování místního vývojového počítače ke clusteru AKS naleznete v [tématu Připojení vývojového počítače ke clusteru AKS][connect].
+Pokud chcete začít s připojením místního vývojového počítače ke clusteru AKS, přečtěte si téma [připojení vývojového počítače ke clusteru AKS][connect].
 
 [azds-tmp-dir]: troubleshooting.md#before-you-begin
 [azds-vs-code]: https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds

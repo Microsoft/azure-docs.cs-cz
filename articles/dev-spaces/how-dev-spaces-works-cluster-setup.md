@@ -1,98 +1,98 @@
 ---
-title: Jak funguje nastavení clusteru pro Azure Dev Spaces
+title: Jak nastavovat cluster pro Azure Dev Spaces funguje
 services: azure-dev-spaces
 ms.date: 03/24/2020
 ms.topic: conceptual
-description: Popisuje, jak funguje nastavení clusteru služby Azure Kubernetes pro Azure Dev Spaces.
-keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
+description: Popisuje, jak nastavovat cluster služby Azure Kubernetes pro Azure Dev Spaces funguje.
+keywords: Azure Dev Spaces, vývojářské prostory, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
 ms.openlocfilehash: 00f8262f3008ce9ba82726960f78d18395458a2a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80241722"
 ---
-# <a name="how-setting-up-a-cluster-for-azure-dev-spaces-works"></a>Jak funguje nastavení clusteru pro Azure Dev Spaces
+# <a name="how-setting-up-a-cluster-for-azure-dev-spaces-works"></a>Jak nastavovat cluster pro Azure Dev Spaces funguje
 
-Azure Dev Spaces vám nabízí několik způsobů, jak rychle itetovat a ladit aplikace Kubernetes a spolupracovat s týmem v clusteru Služby Azure Kubernetes (AKS). Jedním ze způsobů je povolit Azure Dev Spaces ve vašem clusteru AKS, abyste mohli [spouštět služby přímo ve vašem clusteru][how-it-works-up] a používat [další možnosti sítě a směrování][how-it-works-routing]. Tento článek popisuje, co se stane při přípravě clusteru a povolení Azure Dev Spaces.
+Azure Dev Spaces poskytuje několik způsobů, jak rychle iterovat a ladit aplikace Kubernetes a spolupracovat s týmem v clusteru Azure Kubernetes Service (AKS). Jedním ze způsobů je povolit Azure Dev Spaces v clusteru AKS, abyste mohli [spouštět služby přímo v clusteru][how-it-works-up] a využívat [Další možnosti sítě a směrování][how-it-works-routing]. Tento článek popisuje, co se stane, když připravíte cluster a povolíte Azure Dev Spaces.
 
 ## <a name="prepare-your-aks-cluster"></a>Příprava clusteru AKS
 
-Chcete-li připravit cluster AKS pro Dev Spaces, ověřte, že váš cluster AKS je v oblasti [podporované Azure Dev Spaces][supported-regions] a používáte Kubernetes 1.10.3 nebo novější. Pokud chcete v clusteru povolit Azure Dev Spaces z portálu Azure, přejděte do svého clusteru, klikněte na *Dev Spaces*, změňte *použít dev spaces* na *Ano*a klikněte na *Uložit*. Azure Dev Spaces můžete taky povolit z `az aks use-dev-spaces`azure cli spuštěním .
+Pokud chcete připravit cluster AKS pro vývojové prostory, ověřte, jestli je cluster AKS v oblasti [podporované Azure dev Spaces][supported-regions] a používáte Kubernetes 1.10.3 nebo novější. Pokud chcete povolit Azure Dev Spaces v clusteru z Azure Portal, přejděte do clusteru, klikněte na *vývojové prostory*, změňte možnost *použít vývojové prostory* na *Ano*a klikněte na *Uložit*. Můžete taky povolit Azure Dev Spaces z Azure CLI spuštěním `az aks use-dev-spaces`.
 
-Příklad nastavení clusteru AKS pro funkce Dev Spaces naleznete v [rychlém startu vývoje týmu][quickstart-team].
+Příklad nastavení clusteru AKS pro vývojové prostory najdete v tématu [rychlý Start pro vývoj týmu][quickstart-team].
 
-Když je azure dev spaces v clusteru AKS povolen, nainstaluje řadič pro váš cluster. Řadič je umístěn mimo cluster AKS. Řídí chování a komunikaci mezi nástroji na straně klienta a clusterem AKS. Jakmile je povolena, můžete pracovat s řadičem pomocí nástrojů na straně klienta.
+Když je v clusteru AKS povolená možnost Azure Dev Spaces, nainstaluje se kontrolér pro váš cluster. Kontroler se nachází mimo váš cluster AKS. Řídí chování a komunikaci mezi nástroji na straně klienta a clusterem AKS. Jakmile je tato možnost povolená, můžete s řadičem pracovat pomocí nástrojů na straně klienta.
 
-Řadič provádí následující akce:
+Kontroler provádí následující akce:
 
-* Spravuje vytváření a výběr dev prostoru.
-* Nainstaluje helmchart vaší aplikace a vytvoří objekty Kubernetes.
-* Vytvoří image kontejneru vaší aplikace.
-* Nasazuje vaši aplikaci do AKS.
-* Má přírůstkové sestavení a restartuje při změně zdrojového kódu.
+* Spravuje vytváření a výběr vývojového prostoru.
+* Nainstaluje graf Helm vaší aplikace a vytvoří objekty Kubernetes.
+* Vytvoří Image kontejneru aplikace.
+* Nasadí vaši aplikaci do AKS.
+* Provede přírůstkové sestavení a restart při změně zdrojového kódu.
 * Spravuje protokoly a trasování HTTP.
-* Přeposílá stdout a stderr na straně klienta nástroje.
-* Konfiguruje směrování pro aplikace v rámci prostoru, stejně jako napříč nadřazené a podřízené prostory.
+* Přepošle stdout a stderr do nástrojů na straně klienta.
+* Nakonfiguruje směrování pro aplikace v rámci prostoru i mezi nadřazenými a podřízenými mezerami.
 
-Řadič je samostatný prostředek Azure mimo váš cluster a provádí následující prostředky v clusteru:
+Kontroler je samostatný prostředek Azure mimo váš cluster a u prostředků v clusteru provádí následující akce:
 
-* Vytvoří nebo označí obor názvů Kubernetes, který se použije jako dev prostor.
-* Odebere všechny obory názvů Kubernetes s názvem *azds*, pokud existuje, a vytvoří nový.
-* Nasazuje konfiguraci webhooku Kubernetes.
-* Nasazuje webhookový přístupový server.
+* Vytvoří nebo určí obor názvů Kubernetes, který se má použít jako místo pro vývoj.
+* Odebere libovolný obor názvů Kubernetes s názvem *azds*, pokud existuje, a vytvoří nový.
+* Nasadí konfiguraci Webhooku Kubernetes.
+* Nasadí Server pro přístup Webhooku.
 
-Používá stejný instanční objekt, který váš cluster AKS používá k volání služby do jiných součástí Azure Dev Spaces.
+Používá stejný instanční objekt, který používá váš cluster AKS k tomu, aby vyvolaly služby na jiné součásti Azure Dev Spaces.
 
-![Azure Dev Spaces připravit cluster](media/how-dev-spaces-works/prepare-cluster.svg)
+![Azure Dev Spaces Příprava clusteru](media/how-dev-spaces-works/prepare-cluster.svg)
 
-Aby bylo možné používat Azure Dev Spaces, musí existovat alespoň jeden dev prostor. Azure Dev Spaces používá obory názvů Kubernetes v rámci clusteru AKS pro dev prostory. Při instalaci řadiče vás vyzve k vytvoření nového oboru názvů Kubernetes nebo k výběru existujícího oboru názvů, který chcete použít jako první dev prostor. Ve výchozím nastavení nabízí řadič upgrade existujícího *výchozího* oboru názvů Kubernetes na první dev prostor.
+Aby bylo možné použít Azure Dev Spaces, musí existovat alespoň jeden vývojového prostoru. Azure Dev Spaces používá obory názvů Kubernetes v rámci clusteru AKS pro vývojové prostory. Při instalaci kontroleru se zobrazí výzva k vytvoření nového oboru názvů Kubernetes nebo výběru existujícího oboru názvů, který se použije jako první místo pro vývoj. Ve výchozím nastavení kontroler nabízí upgrade existujícího *výchozího* oboru názvů Kubernetes na první místo pro vývoj.
 
-Pokud je obor názvů určen jako dev prostor, řadič přidá *popisek azds.io/space=true* do tohoto oboru názvů k jeho identifikaci jako dev prostoru. Počáteční dev prostor, který vytvoříte nebo určíte, je vybrán ve výchozím nastavení po přípravě clusteru. Když je vybrána mezera, používá Azure Dev Spaces pro vytváření nových úloh.
+Pokud je obor názvů určen jako místo pro vývoj, kontroler přidá k tomuto oboru názvů jmenovku *azds.IO/Space=true* , aby jej identifikoval jako místo pro vývoj. Počáteční prostor pro vývoj, který vytvoříte nebo označíte, se po přípravě clusteru vybere ve výchozím nastavení. Když je vybraná mezera, používá se Azure Dev Spaces k vytváření nových úloh.
 
-Nástroje na straně klienta můžete použít k vytvoření nových dev mezer a odebrání existujících dev mezer. Z důvodu omezení v Kubernetes nelze odebrat *výchozí* dev prostor. Řadič také odebere všechny existující obory názvů Kubernetes s názvem `azds` *azds,* aby se zabránilo konfliktům s příkazem používaným nástroji na straně klienta.
+Pomocí nástrojů na straně klienta můžete vytvořit nové vývojové prostory a odebrat existující vývojové prostory. V důsledku omezení v Kubernetes nejde *výchozí* místo pro vývoj odebrat. Kontroler taky odebere všechny existující obory názvů Kubernetes s názvem *azds* , aby `azds` nedocházelo ke konfliktům s příkazem používaným nástroji na straně klienta.
 
-Kubernetes webhook přijímací server se používá k vkládání pods tři kontejnery během nasazení pro instrumentaci: devspaces proxy kontejner, devspaces proxy-init kontejner u devspaces a devspaces sestavení kontejneru. **Všechny tři tyto kontejnery běží s root přístup v clusteru AKS.** Používají také stejný instanční objekt, který váš cluster AKS používá k volání služby do jiných součástí Azure Dev Spaces.
+Přidaný server Webhooku Kubernetes se používá k vkládání lusků se třemi kontejnery během nasazování do instrumentace: kontejner devspaces-proxy, kontejner devspaces-proxy-init a kontejner devspaces-buildu. **Všechny tři tyto kontejnery se spouštějí s kořenovým přístupem v clusteru AKS.** Používají také stejný instanční objekt, který cluster AKS používá k tomu, aby vyvolaly služby na jiné součásti Azure Dev Spaces.
 
-![Server pro přijetí webhooku Azure Dev Spaces Kubernetes](media/how-dev-spaces-works/kubernetes-webhook-admission-server.svg)
+![Kubernetes Server pro přístup Webhooku Webhooku Azure Dev Spaces](media/how-dev-spaces-works/kubernetes-webhook-admission-server.svg)
 
-Kontejner proxy devspaces je kontejner sajdkáru, který zpracovává veškerý přenos protokolu TCP do a z kontejneru aplikace a pomáhá provádět směrování. Kontejner devspaces-proxy přesměruje zprávy HTTP, pokud jsou používány určité mezery. Může například pomoci směrovat zprávy HTTP mezi aplikacemi v nadřazených a podřízených prostorech. Všechny non-HTTP přenosy prochází devspaces proxy nezměněno. Kontejner devspaces-proxy také protokoluje všechny příchozí a odchozí zprávy HTTP a odešle je do nástrojů na straně klienta jako trasování. Tyto trasování pak mohou být zobrazeny vývojářem ke kontrole chování aplikace.
+Kontejner devspaces-proxy je kontejner postranového vozíku, který zpracovává veškerý provoz TCP do kontejneru aplikace a z něj a pomáhá provádět směrování. Kontejner devspaces-proxy přesměruje zprávy HTTP, pokud se používají určité mezery. Může například přispět k směrování zpráv HTTP mezi aplikacemi v nadřazených a podřízených prostorech. Veškerý provoz jiného typu než HTTP projde prostřednictvím devspaces-proxy beze změny. Kontejner devspaces-proxy také zaznamenává všechny příchozí a odchozí zprávy HTTP a odesílá je do nástrojů na straně klienta jako trasování. Tato trasování pak mohou vývojáři zobrazit a zkontrolovat chování aplikace.
 
-Kontejner devspaces-proxy-init je [kontejner init,](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/) který přidává další pravidla směrování založená na hierarchii prostoru do kontejneru vaší aplikace. Přidá pravidla směrování aktualizací souboru */etc/resolv.conf* kontejneru aplikace a konfigurace iptables před jeho spuštěním. Aktualizace */etc/resolv.conf* umožňují rozlišení služby DNS v nadřazených prostorech. Aktualizace konfigurace iptables zajišťují, že veškerý provoz Protokolu TCP do a z kontejneru aplikace jsou směrovány prostřednictvím devspaces-proxy. Všechny aktualizace z devspaces-proxy-init dojít kromě pravidel, která Kubernetes přidává.
+Kontejner devspaces-proxy-init je [inicializační kontejner](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/) , který přidává další pravidla směrování založená na hierarchii prostoru do kontejneru vaší aplikace. Přidává pravidla směrování tím, že aktualizuje soubor */etc/resolv.conf* kontejneru aplikace a konfiguraci softwaru iptables před tím, než se spustí. Aktualizace */etc/resolv.conf* umožňují překlad DNS služeb v nadřazených prostorech. Aktualizace konfigurace softwaru iptables zajistí směrování všech přenosů dat TCP do kontejneru aplikace a z něj, i když devspaces-proxy. Všechny aktualizace z devspaces-proxy-init nastávají kromě pravidel, která Kubernetes přidává.
 
-Kontejner sestavení devspaces je kontejner init a má zdrojový kód projektu a soket Dockeru připojený. Zdrojový kód projektu a přístup k Dockeru umožňuje kontejneru aplikace sestavit přímo pod.
+Kontejner devspaces-Build je inicializační kontejner a má připojený zdrojový kód projektu a Docker Socket. Zdrojový kód projektu a přístup k Docker umožňuje, aby byl kontejner aplikace sestaven přímo pod ním.
 
 > [!NOTE]
-> Azure Dev Spaces používá stejný uzel k sestavení kontejneru vaší aplikace a jeho spuštění. V důsledku toho Azure Dev Spaces nepotřebuje externí registru kontejnerů pro vytváření a spouštění aplikace.
+> Azure Dev Spaces používá stejný uzel k sestavení kontejneru aplikace a jeho spuštění. V důsledku toho Azure Dev Spaces pro sestavování a spouštění vaší aplikace potřebovat externí registr kontejnerů.
 
-Webhookový přístupový server Kubernetes naslouchá každému novému podu, který je vytvořen v clusteru AKS. Pokud tento pod je nasazen do libovolného oboru názvů s *popiskem azds.io/space=true,* vloží tento pod s další kontejnery. Kontejner sestavení devspaces je vložen pouze v případě, že kontejner aplikace je spuštěn pomocí nástrojů na straně klienta.
+Server pro příjem Webhooku Kubernetes naslouchá každému novému z nich, který je vytvořený v clusteru AKS. Pokud je tento příkaz nasazený do libovolného oboru názvů s popiskem *azds.IO/Space=true* , vloží ho pod další kontejnery. Kontejner devspaces-Build je vložen pouze v případě, že je kontejner aplikace spuštěn pomocí nástrojů na straně klienta.
 
-Po přípravě clusteru AKS můžete pomocí nástrojů na straně klienta připravit a spustit kód v prostoru pro spuštění.
+Po přípravě clusteru AKS můžete pomocí nástrojů na straně klienta připravit a spustit kód ve vývojovém prostoru.
 
 ## <a name="client-side-tooling"></a>Nástroje na straně klienta
 
 Nástroje na straně klienta umožňují uživateli:
-* Vygenerujte konfigurační soubor Dockerfile, Helm a konfigurační soubor Azure Dev Spaces pro aplikaci.
-* Vytvořte nadřazené a podřízené dev prostory.
-* Řekněte kontroleru, aby vytvořil a spustil aplikaci.
+* Vygenerujte souboru Dockerfile, Helm graf a Azure Dev Spaces konfigurační soubor pro aplikaci.
+* Vytvoření nadřazených a podřízených vývojových prostorů.
+* Řekněte řadiči, aby sestavil a spustil vaši aplikaci.
 
-Když je aplikace spuštěna, nástroje na straně klienta také:
+I když je vaše aplikace spuštěná, nástroje na straně klienta:
 * Přijímá a zobrazuje stdout a stderr z vaší aplikace spuštěné v AKS.
-* Používá [port-forward](https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/) povolit webový přístup k\/vaší aplikaci pomocí http: /localhost.
-* Připojí ladicí program ke spuštěné aplikaci v AKS.
-* Synchronizuje zdrojový kód do dev prostoru, když je zjištěna změna pro přírůstková sestavení, což umožňuje rychlou iteraci.
-* Umožňuje připojit vývojářský počítač přímo k clusteru AKS.
+* Pomocí [předávaného portu](https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/) umožní webovému přístupu k vaší aplikaci používat http\/:/localhost..
+* Připojí ladicí program ke svojí spuštěné aplikaci v AKS.
+* Synchronizuje zdrojový kód s vývojovým místem, když je zjištěna změna přírůstkových sestavení, což umožňuje rychlou iteraci.
+* Umožňuje připojit počítač pro vývojáře přímo ke clusteru AKS.
 
-Jako součást `azds` příkazu můžete použít nástroje na straně klienta z příkazového řádku. Nástroje na straně klienta můžete také použít s:
+V rámci `azds` příkazu můžete použít nástroje na straně klienta z příkazového řádku. Můžete také použít nástroje na straně klienta s nástrojem:
 
-* Visual Studio Kód pomocí [rozšíření Azure Dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds).
-* Visual Studio s [nástroji Visual Studio pro Kubernetes](https://aka.ms/get-vsk8stools).
+* Visual Studio Code pomocí [rozšíření Azure dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds).
+* Visual Studio s [Visual Studio Tools for Kubernetes](https://aka.ms/get-vsk8stools).
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o použití nástrojů na straně klienta k přípravě a spuštění kódu v prostoru pro konkrétní prostředí najdete v [tématu Jak funguje příprava projektu pro Azure Dev Spaces][how-it-works-prep].
+Další informace o tom, jak pomocí nástrojů na straně klienta připravit a spustit váš kód ve vývojovém prostoru, najdete v tématu [jak připravovat projekt pro Azure dev Spaces funguje][how-it-works-prep].
 
-Pokud chcete začít používat Azure Dev Spaces pro vývoj týmu, podívejte se na vývoj týmu v azure [dev spaces][quickstart-team] quickstart.
+Chcete-li začít používat Azure Dev Spaces pro týmový vývoj, přečtěte si téma [vývoj týmu v Azure dev Spaces][quickstart-team] rychlý Start.
 
 [how-it-works-prep]: how-dev-spaces-works-prep.md
 [how-it-works-routing]: how-dev-spaces-works-routing.md

@@ -1,51 +1,51 @@
 ---
-title: Jak funguje příprava projektu pro Azure Dev Spaces
+title: Příprava projektu na Azure Dev Spaces funguje
 services: azure-dev-spaces
 ms.date: 03/24/2020
 ms.topic: conceptual
-description: Popisuje, jak funguje příprava projektu pomocí Azure Dev Spaces.
-keywords: azds.yaml, Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
+description: Popisuje, jak připravit projekt pomocí Azure Dev Spaces funguje.
+keywords: azds. yaml, Azure Dev Spaces, vývojářské prostory, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers
 ms.openlocfilehash: 24a54fffdc8e94493d2a4a9aeb1c5f02dcd192b9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80241631"
 ---
-# <a name="how-preparing-a-project-for-azure-dev-spaces-works"></a>Jak funguje příprava projektu pro Azure Dev Spaces
+# <a name="how-preparing-a-project-for-azure-dev-spaces-works"></a>Příprava projektu na Azure Dev Spaces funguje
 
-Azure Dev Spaces vám nabízí několik způsobů, jak rychle itetovat a ladit aplikace Kubernetes a spolupracovat s týmem v clusteru Služby Azure Kubernetes (AKS). Dev Spaces můžete generovat Dockerfiles a Helm grafy pro váš projekt. Dev Spaces také vytvoří a používá konfigurační soubor pro nasazení, spuštění a ladění aplikací Kubernetes v AKS. Všechny tyto soubory jsou umístěny s kódem aplikace a mohou být přidány do systému správy verzí.
+Azure Dev Spaces poskytuje několik způsobů, jak rychle iterovat a ladit aplikace Kubernetes a spolupracovat s týmem v clusteru Azure Kubernetes Service (AKS). Vývojové prostory mohou generovat fázemi a Helm grafy pro váš projekt. Vývojové prostory také vytváří a využívají konfigurační soubor pro nasazení, spuštění a ladění aplikací Kubernetes v AKS. Všechny tyto soubory jsou umístěny v kódu vaší aplikace a lze je přidat do systému správy verzí.
 
-Tento článek popisuje, co se stane připravit projekt pro spuštění v AKS s Dev Spaces.
+Tento článek popisuje, co se stane, když připravíte projekt pro běh v AKS s využitím vývojových prostorů.
 
 ## <a name="prepare-your-code"></a>Příprava kódu
 
-Chcete-li spustit aplikaci v prostoru pro vývoj, je třeba kontejnerizovat a je třeba definovat, jak by měla být nasazena do Kubernetes. Chcete-li kontejnerizovat aplikace, budete potřebovat Dockerfile. Chcete-li definovat, jak je aplikace nasazena do Kubernetes, potřebujete [graf Helm](https://docs.helm.sh/). Chcete-li pomoci při vytváření dockerfile a helm graf pro vaši `prep` aplikaci, nástroje na straně klienta poskytují příkaz:
+Aby bylo možné aplikaci spustit ve vývojovém prostoru, je nutné ji zařadit do kontejneru a je třeba definovat, jak by měla být nasazena do Kubernetes. K kontejnerizaceí vaší aplikace potřebujete souboru Dockerfile. K definování způsobu nasazení aplikace na Kubernetes potřebujete [graf Helm](https://docs.helm.sh/). Pro pomoc při vytváření grafu souboru Dockerfile i Helm pro vaši aplikaci poskytují nástroje na straně klienta `prep` příkaz:
 
 ```cmd
 azds prep --enable-ingress
 ```
 
-Příkaz `prep` se podíváme na soubory v projektu a pokuste se vytvořit Dockerfile a Helm graf pro spuštění aplikace v Kubernetes. V současné `prep` době příkaz vygeneruje graf Dockerfile a Helm s následujícími jazyky:
+`prep` Příkaz se podívá na soubory v projektu a pokusí se vytvořit graf souboru Dockerfile a Helm pro spuštění aplikace v Kubernetes. V `prep` současné době příkaz vytvoří graf souboru Dockerfile a Helm s následujícími jazyky:
 
 * Java
 * Node.js
 * .NET Core
 
-Příkaz *je nutné* spustit z adresáře, který obsahuje zdrojový kód. `prep` Spuštění `prep` příkazu ze správného adresáře umožňuje nástrojům na straně klienta identifikovat jazyk a vytvořit vhodný soubor Dockerfile pro kontejnerizaci aplikace. `prep` Příkaz můžete spustit také z adresáře, který obsahuje soubor *pom.xml* pro projekty jazyka Java.
+`prep` Příkaz *musíte* spustit z adresáře, který obsahuje zdrojový kód. Spuštění `prep` příkazu ze správného adresáře umožňuje nástrojům na straně klienta identifikovat jazyk a vytvořit odpovídající souboru Dockerfile pro kontejnerizace aplikace. Můžete také spustit `prep` příkaz z adresáře, který obsahuje soubor *pom. XML* pro projekty Java.
 
-Pokud spustíte `prep` příkaz z adresáře, který neobsahuje zdrojový kód, nástroje na straně klienta nebudou generovat soubor Dockerfile. Zobrazí se také chyba, která říká: *Dockerfile nelze vygenerovat z důvodu nepodporovaného jazyka*. K této chybě dochází také v případě, že nástroje na straně klienta nerozpozná typ projektu.
+Pokud spustíte `prep` příkaz z adresáře, který neobsahuje zdrojový kód, nástroje na straně klienta nebudou generovat souboru Dockerfile. Zobrazí se také chyba s oznámením, že *souboru Dockerfile nebylo možné vygenerovat z důvodu nepodporovaného jazyka*. K této chybě dochází také v případě, že nástroje na straně klienta nerozpoznají typ projektu.
 
-Při spuštění `prep` příkazu máte možnost zadat `--enable-ingress` příznak. Tento příznak říká kontroleru vytvořit koncový bod přístupný internetu pro tuto službu. Pokud tento příznak nezadáte, služba je přístupná pouze z clusteru nebo pomocí tunelu localhost vytvořeného nástroji na straně klienta. Toto chování můžete povolit `prep` nebo zakázat po spuštění příkazu aktualizací generovaného grafu helmu.
+Při spuštění `prep` příkazu máte možnost zadat `--enable-ingress` příznak. Tento příznak oznamuje řadiči, aby vytvořil koncový bod přístupný z Internetu pro tuto službu. Pokud tento příznak nezadáte, služba je přístupná jenom v rámci clusteru nebo pomocí tunelového připojení localhost vytvořeného nástroji na straně klienta. Můžete povolit nebo zakázat toto chování po spuštění `prep` příkazu aktualizací generovaného grafu Helm.
 
-Příkaz `prep` nenahradí žádné existující Dockerfiles nebo Helm grafy, které máte v projektu. Pokud existující dockerfile nebo helm graf používá stejnou konvenci pojmenování jako soubory generované příkazem, `prep` `prep` příkaz přeskočí generování těchto souborů. V opačném `prep` případě příkaz vygeneruje svůj vlastní Dockerfile nebo Helm graf spolu s existujícísoubory.
+`prep` Příkaz nenahradí žádné existující grafy fázemi nebo Helm, které máte v projektu. Pokud existující souboru Dockerfile nebo Helm graf používá stejné konvence vytváření názvů jako soubory generované `prep` příkazem, `prep` příkaz tyto soubory přeskočí. V opačném `prep` případě příkaz vytvoří svůj vlastní souboru Dockerfile nebo Helm graf vedle sebe stávající soubory.
 
 > [!IMPORTANT]
-> Azure Dev Spaces používá Dockerfile a Helm graf pro váš projekt k sestavení a spuštění kódu, ale můžete upravit tyto soubory, pokud chcete změnit způsob sestavení a spuštění projektu.
+> Azure Dev Spaces používá k sestavení a spuštění kódu graf souboru Dockerfile a Helm pro váš projekt, ale tyto soubory lze změnit, pokud chcete změnit způsob sestavení a spuštění projektu.
 
-Příkaz `prep` také vygeneruje `azds.yaml` soubor v kořenovém adresáři projektu. Azure Dev Spaces používá tento soubor k sestavení, instalaci, konfiguraci a spuštění aplikace. Tento konfigurační soubor uvádí umístění dockerfile a helm grafu a také poskytuje další konfiguraci nad tyto artefakty.
+`prep` Příkaz také vygeneruje `azds.yaml` soubor v kořenu projektu. Azure Dev Spaces používá tento soubor k sestavení, instalaci, konfiguraci a spuštění vaší aplikace. Tento konfigurační soubor obsahuje seznam umístění vašeho grafu souboru Dockerfile a Helm a také poskytuje další konfiguraci nad těmito artefakty.
 
-Zde je příklad souboru azds.yaml vytvořeného pomocí [ukázkové aplikace .NET Core](https://github.com/Azure/dev-spaces/tree/master/samples/dotnetcore/getting-started/webfrontend):
+Tady je příklad souboru azds. yaml vytvořeného pomocí [ukázkové aplikace .NET Core](https://github.com/Azure/dev-spaces/tree/master/samples/dotnetcore/getting-started/webfrontend):
 
 ```yaml
 kind: helm-release
@@ -92,19 +92,19 @@ configurations:
         - [dotnet, build, --no-restore, -c, "${BUILD_CONFIGURATION:-Debug}"]
 ```
 
-Soubor `azds.yaml` generovaný `prep` příkazem je určen pro jednoduchý, jeden scénář vývoje projektu. Pokud váš konkrétní projekt zvýšil složitost, bude pravděpodobně nutné `prep` aktualizovat tento soubor po spuštění příkazu. Projekt může například vyžadovat některé změny procesu sestavení nebo spuštění na základě vašich potřeb vývoje nebo ladění. Můžete mít také více aplikací v projektu, které vyžadují více procesů sestavení nebo jiný obsah sestavení.
+`azds.yaml` Soubor vygenerovaný `prep` příkazem je určen pro použití jednoduchého a jednoduchého vývoje projektu. Pokud váš konkrétní projekt zvyšuje složitost, možná budete muset tento soubor po spuštění `prep` příkazu aktualizovat. Například váš projekt může vyžadovat některé změny v procesu sestavení nebo spuštění na základě potřeb vývoje nebo ladění. V projektu může být také více aplikací, které vyžadují více procesů sestavení nebo jiný obsah sestavení.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o spuštění kódu v prostoru pro spuštění najdete v tématu [Jak funguje spuštění kódu s Azure Dev Spaces][how-it-works-up].
+Další informace o spuštění kódu ve vývojovém prostoru naleznete v tématu [jak běží váš kód s Azure dev Spaces pracuje][how-it-works-up].
 
-Pokud chcete začít používat Azure Dev Spaces k přípravě projektu pro Azure Dev Space, podívejte se na následující rychlé starty:
+Pokud chcete začít používat Azure Dev Spaces pro přípravu projektu na vývojové místo Azure, přečtěte si následující rychlé starty:
 
-* [Rychlé itereje a ladění pomocí kódu Visual Studio a Javy][quickstart-java]
-* [Rychlé itered a ladění pomocí kódu Sady Visual Studio a rozhraní .NET][quickstart-netcore]
-* [Rychlé itered a ladění pomocí kódu sady Visual Studio a souboru Node.js][quickstart-node]
-* [Rychlé itered a ladění pomocí sady Visual Studio a .NET Core][quickstart-vs]
-* [Použití CLI k vývoji aplikace na Kubernetes][quickstart-cli]
+* [Rychlé iterování a ladění pomocí Visual Studio Code a Java][quickstart-java]
+* [Rychlé iterování a ladění pomocí Visual Studio Code a .NET][quickstart-netcore]
+* [Rychlé iterace a ladění pomocí Visual Studio Code a Node. js][quickstart-node]
+* [Rychlé iterace a ladění pomocí sady Visual Studio a .NET Core][quickstart-vs]
+* [Použití rozhraní příkazového řádku k vývoji aplikace v Kubernetes][quickstart-cli]
 
 [how-it-works-up]: how-dev-spaces-works-up.md
 [quickstart-cli]: quickstart-cli.md

@@ -1,7 +1,7 @@
 ---
-title: Ukázka skriptu Azure CLI – konfigurace front-endu IPv6
+title: Ukázkový skript Azure CLI – konfigurace front-endu IPv6
 titlesuffix: Azure Virtual Network
-description: Povolení koncových bodů IPv6 pomocí azure cli ve virtuální síti Azure
+description: Povolení koncových bodů IPv6 pomocí rozhraní příkazového řádku Azure v Azure Virtual Network
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -13,29 +13,29 @@ ms.workload: infrastructure-services
 ms.date: 04/23/2019
 ms.author: kumud
 ms.openlocfilehash: 1ef8742bc4f8de2d08d9bb4fc98b3df6f9420737
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80235026"
 ---
-# <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-preview"></a>Konfigurace koncových bodů IPv6 v ukázkové matné verzi skriptu virtuální sítě (preview)
+# <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-preview"></a>Ukázka konfigurace koncových bodů IPv6 v ukázce skriptu virtuální sítě (Preview)
 
-Tento článek ukazuje, jak nasadit aplikaci s duálním zásobníkem (IPv4 + IPv6) v Azure, která zahrnuje virtuální síť se dvěma zásobníky s podsítí s dvěma zásobníky, nástroj pro vyrovnávání zatížení s duálními konfiguracemi (IPv4 + IPv6), virtuální počítače s síťovými kartami, které mají konfiguraci duální IP adresy, duální sítě bezpečnostní skupiny a duální veřejné IP adresy.
+V tomto článku se dozvíte, jak nasadit aplikaci duálního zásobníku (IPv4 + IPv6) v Azure, která zahrnuje virtuální síť s duálním zásobníkem s podsítí duálního zásobníku, nástroj pro vyrovnávání zatížení s duálními konfiguracemi (IPv4 + IPv6), virtuální počítače se síťovými kartami, které mají konfiguraci s duálním nastavením IP, pravidla skupiny zabezpečení sítě a duální veřejné IP adresy.
 
 Skript můžete spustit ve službě Azure [Cloud Shell](https://shell.azure.com/bash) nebo v místně nainstalovaném Azure CLI. Pokud používáte rozhraní příkazového řádku místně, musíte použít verzi 2.0.28 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli). Pokud používáte rozhraní příkazového řádku místně, je také potřeba spustit příkaz `az login` pro vytvoření připojení k Azure.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Požadavky
-Chcete-li použít funkci virtuální sítě IPv6 pro Azure, musíte předplatné nakonfigurovat pouze jednou takto:
+Pokud chcete použít funkci IPv6 pro virtuální síť Azure, musíte si nakonfigurovat předplatné jenom jednou, a to takto:
 
 ```azurecli
 az feature register --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
 az feature register --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
 ```
 
-Dokončení registrace funkce trvá až 30 minut. Stav registrace můžete zkontrolovat spuštěním následujícího příkazu Azure CLI:
+Dokončení registrace funkce trvá až 30 minut. Stav registrace můžete zjistit spuštěním následujícího příkazu rozhraní příkazového řádku Azure:
 
 ```azurecli
 az feature show --name AllowIPv6VirtualNetwork --namespace Microsoft.Network

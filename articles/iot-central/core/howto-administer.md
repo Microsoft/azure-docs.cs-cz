@@ -1,6 +1,6 @@
 ---
-title: Změna nastavení aplikace Azure IoT Central | Dokumenty společnosti Microsoft
-description: Jak jako správce spravovat aplikaci Azure IoT Central změnou názvu aplikace, adresy URL, nahrát image a odstranit aplikaci
+title: Změnit nastavení aplikace v Azure IoT Central | Microsoft Docs
+description: Správa aplikace Azure IoT Central změnou názvu aplikace, adresy URL, nahrání obrázku a odstranění aplikace jako správce
 author: viv-liu
 ms.author: viviali
 ms.date: 11/27/2019
@@ -9,43 +9,43 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.openlocfilehash: 7b77ea9e0e1f322cb5ef0bc63885c3ccce1b76f6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80158673"
 ---
-# <a name="change-iot-central-application-settings"></a>Změna nastavení aplikace IoT Central
+# <a name="change-iot-central-application-settings"></a>Změnit nastavení IoT Central aplikace
 
 
 
-Tento článek popisuje, jak můžete jako správce spravovat aplikaci změnou názvu aplikace a adresy URL, nahráním bitové kopie a odstraněním aplikace v aplikaci Azure IoT Central.
+Tento článek popisuje, jak jako správce můžete spravovat aplikaci tak, že změníte název aplikace a adresu URL, nahrajete image a odstraníte aplikaci v aplikaci Azure IoT Central.
 
-Chcete-li získat přístup a používat část **Správa,** musíte být v roli **správce** pro aplikaci Azure IoT Central. Pokud vytvoříte aplikaci Azure IoT Central, automaticky se přiřadíte k roli **správce** pro tuto aplikaci.
+Pokud chcete získat přístup k části **Správa** a používat ji, musíte být v roli **správce** aplikace Azure IoT Central. Pokud vytvoříte aplikaci IoT Central pro Azure, automaticky se přiřadíte k roli **správce** této aplikace.
 
-## <a name="change-application-name-and-url"></a>Změna názvu aplikace a adresy URL
+## <a name="change-application-name-and-url"></a>Změnit název a adresu URL aplikace
 
-Na stránce **Nastavení aplikace** můžete změnit název a adresu URL aplikace a pak vybrat **uložit**.
+Na stránce **nastavení aplikace** můžete změnit název a adresu URL vaší aplikace a pak vybrat **Uložit**.
 
 ![Stránka nastavení aplikace](media/howto-administer/image0-a.png)
 
-Pokud správce vytvoří vlastní motiv pro vaši aplikaci, tato stránka obsahuje možnost skrýt **název aplikace** v uživatelském rozhraní. Tato možnost je užitečná, pokud logo aplikace ve vlastním motivu obsahuje název aplikace. Další informace najdete [v tématu Přizpůsobení centrálního uhlavního uznatelného operačního systému Azure](./howto-customize-ui.md).
+Pokud správce vytvoří vlastní motiv pro vaši aplikaci, Tato stránka obsahuje možnost skrýt **název aplikace** v uživatelském rozhraní. Tato možnost je užitečná v případě, že logo aplikace ve vlastním motivu obsahuje název aplikace. Další informace najdete v tématu [přizpůsobení uživatelského rozhraní Azure IoT Central](./howto-customize-ui.md).
 
 > [!Note]
-> Pokud změníte adresu URL, může být vaše stará adresa URL převzata jiným zákazníkem Azure IoT Central. Pokud k tomu dojde, již není k dispozici pro použití. Když změníte adresu URL, stará adresa URL již nefunguje a je třeba upozornit uživatele na novou adresu URL, kterou chcete použít.
+> Pokud změníte adresu URL, může být vaše stará adresa URL pořízena jiným zákazníkem služby Azure IoT Central. Pokud k tomu dojde, nebude již k dispozici pro použití. Když změníte adresu URL, stará adresa URL už nebude fungovat a vy budete muset upozornit uživatele na použití nové adresy URL.
 
 ## <a name="delete-an-application"></a>Odstranění aplikace:
 
-Pomocí tlačítka **Odstranit** trvale odstraňte aplikaci IoT Central. Tato akce trvale odstraní všechna data, která je přidružena k aplikaci.
+K trvalému odstranění IoT Central aplikace použijte tlačítko **Odstranit** . Tato akce trvale odstraní všechna data, která jsou přidružená k aplikaci.
 
 > [!Note]
-> Chcete-li odstranit aplikaci, musíte mít také oprávnění k odstranění prostředků v předplatném Azure, které jste zvolili při vytváření aplikace. Další informace najdete v tématu Správa přístupu ke službě access access access na [základě rolí ke správě přístupu k prostředkům předplatného Azure](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure).
+> Pokud chcete odstranit aplikaci, musíte mít také oprávnění k odstraňování prostředků v předplatném Azure, které jste si zvolili při vytváření aplikace. Další informace najdete v tématu [použití řízení přístupu na základě rolí ke správě přístupu k prostředkům předplatného Azure](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure).
 
 ## <a name="manage-programmatically"></a>Programová správa
 
-Balíčky sady IoT Central Azure Resource Manager SDK jsou dostupné pro node, python, c#, ruby, java a go. Tyto balíčky můžete použít k vytvoření, seznam, aktualizace nebo odstranění aplikací IoT Central. Balíčky obsahují pomocníky pro správu ověřování a zpracování chyb.
+Balíčky sady SDK pro IoT Central Azure Resource Manager jsou k dispozici pro uzly, Python, C#, Ruby, Java a přejít. Tyto balíčky můžete použít k vytvoření, výpisu, aktualizaci nebo odstranění aplikací IoT Central. Balíčky obsahují pomocníky pro správu ověřování a zpracování chyb.
 
-Příklady použití sad SDK správce prostředků Azure najdete na adrese [https://github.com/emgarten/iotcentral-arm-sdk-examples](https://github.com/emgarten/iotcentral-arm-sdk-examples).
+Můžete najít příklady použití sady Azure Resource Manager SDK na adrese [https://github.com/emgarten/iotcentral-arm-sdk-examples](https://github.com/emgarten/iotcentral-arm-sdk-examples).
 
 Další informace najdete v následujících úložištích a balíčcích GitHubu:
 
@@ -60,4 +60,4 @@ Další informace najdete v následujících úložištích a balíčcích GitHu
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste se dozvěděli o tom, jak spravovat aplikaci Azure IoT Central, je dalším doporučeným krokem informace o [správě uživatelů a rolí](howto-manage-users-roles.md) v Azure IoT Central.
+Teď, když jste se naučili, jak spravovat vaši aplikaci Azure IoT Central, je doporučeným dalším krokem informace o [správě uživatelů a rolí](howto-manage-users-roles.md) v Azure IoT Central.

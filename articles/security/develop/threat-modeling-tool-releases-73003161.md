@@ -1,56 +1,56 @@
 ---
-title: Microsoft Threat Modeling Tool verze 03/22/2020 - Azure
-description: Dokumentace poznámek k verzi pro nástroj modelování hrozeb
+title: Microsoft Threat Modeling Tool verze 03/22/2020 – Azure
+description: Dokumentující poznámky k verzi pro nástroj pro modelování hrozeb
 author: jegeib
 ms.author: jegeib
 ms.service: security
 ms.topic: article
 ms.date: 03/22/2020
 ms.openlocfilehash: 6fea4d48b62d6ea429d37924ffd15855db6294cc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80146859"
 ---
-# <a name="threat-modeling-tool-update-release-73003161---03222020"></a>Aktualizace nástroje pro modelování hrozeb 7.3.00316.1 - 03/22/2020
+# <a name="threat-modeling-tool-update-release-73003161---03222020"></a>Threat Modeling Tool vydání aktualizace 7.3.00316.1-03/22/2020
 
-Verze 7.3.00316.1 nástroje Microsoft Threat Modeling Tool (TMT) byla vydána 22.
+7.3.00316.1 verze Microsoft Threat Modeling Tool (TMT) byla vydána v březnu 22 2020 a obsahuje následující změny:
 
 - Vylepšení přístupnosti
 - Opravy chyb
-- Nová funkce aplikace DiagramReader
+- Nová funkce DiagramReader
 
-## <a name="notable-bug-fixes"></a>Pozoruhodné opravy chyb
+## <a name="notable-bug-fixes"></a>Významné opravy chyb
 
-### <a name="exporting-the-threat-list-to-csv"></a>Export seznamu hrozeb do csv
+### <a name="exporting-the-threat-list-to-csv"></a>Export seznamu hrozeb do sdíleného svazku clusteru
 
-Funkce exportu do systému CSV nekonzistentně vydávala, která pole ze seznamu hrozeb budou exportována. Nyní budou všechna pole ze seznamu hrozeb exportována do souboru CSV. 
+Funkce exportu do sdíleného svazku clusteru nekonzistentně vybrala pole ze seznamu hrozeb, která by byla exportována. Všechna pole ze seznamu hrozeb se teď exportují do souboru CSV. 
 
-### <a name="ux-bugs"></a>Chyby uživatelského x
+### <a name="ux-bugs"></a>Chyby uživatelského rozhraní
 
-- Nabídky nápovědy v primárním pracovním postupu (vytvoření/otevření/analýza) a prostředí editoru šablon mají nyní konzistentní možnosti nabídky.
-- Vyhledávací panel v podokně vzorníků má nyní standardní kurzor a byly přidány příslušné popisky.
+- Nabídky Help v primárním pracovním postupu (vytvořit/otevřít/analyzovat) a prostředí editoru šablon teď mají konzistentní možnosti nabídky.
+- Panel hledání v podokně vzorníků teď má standardní kurzor a přidaly se odpovídající popisky.
 
 ## <a name="new-features"></a>Nové funkce
 
-### <a name="diagramreader-feature-has-been-added"></a>Byla přidána funkce diagramreaderu.
+### <a name="diagramreader-feature-has-been-added"></a>Byla přidána funkce DiagramReader
 
-V hlavní nabídce byla přidána nová funkce aplikace DiagramReader, která je otevřena. Tato funkce převede grafické znázornění modelu na textovou interpretaci. 
+Do hlavní nabídky se přidala nová funkce DiagramReader, zatímco je model otevřený. Tato funkce převede grafickou reprezentaci modelu na textový mluvený komentář. 
 
 ## <a name="system-requirements"></a>Požadavky na systém
 
 - Podporované operační systémy:
-  - [Aktualizace Microsoft Windows 10 Anniversary Update](https://blogs.windows.com/windowsexperience/2016/08/02/how-to-get-the-windows-10-anniversary-update/#HTkoK5Zdv0g2F2Zq.97) nebo novější
-- Je vyžadována verze rozhraní .NET:
+  - [Microsoft Windows 10 – aktualizace pro výročí](https://blogs.windows.com/windowsexperience/2016/08/02/how-to-get-the-windows-10-anniversary-update/#HTkoK5Zdv0g2F2Zq.97) nebo novější
+- Vyžaduje se verze .NET:
   - [.NET 4.7.1](https://go.microsoft.com/fwlink/?LinkId=863262) nebo novější
 - Další požadavky:
-  - Připojení k internetu pro příjem aktualizací nástroje, stejně jako šablony
+  - Připojení k Internetu pro příjem aktualizací nástroje i šablon
 
 ## <a name="documentation-and-feedback"></a>Dokumentace a zpětná vazba
 
-- Dokumentace k nástroji pro modelování hrozeb je umístěna na [docs.microsoft.com](https://docs.microsoft.com/azure/security/azure-security-threat-modeling-tool)a obsahuje informace [o jeho používání](https://docs.microsoft.com/azure/security/azure-security-threat-modeling-tool-getting-started).
+- Dokumentace k Threat Modeling Tool je umístěna na [docs.Microsoft.com](https://docs.microsoft.com/azure/security/azure-security-threat-modeling-tool)a obsahuje informace [o použití nástroje](https://docs.microsoft.com/azure/security/azure-security-threat-modeling-tool-getting-started).
 
 ## <a name="next-steps"></a>Další kroky
 
-Stáhněte si nejnovější verzi [nástroje Microsoft Threat Modeling Tool](https://aka.ms/threatmodelingtool).
+Stáhněte si nejnovější verzi [Microsoft Threat Modeling Tool](https://aka.ms/threatmodelingtool).

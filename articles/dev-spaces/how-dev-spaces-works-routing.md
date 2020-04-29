@@ -1,72 +1,72 @@
 ---
-title: Jak směrování funguje s Azure Dev Spaces
+title: Jak funguje směrování s Azure Dev Spaces
 services: azure-dev-spaces
 ms.date: 03/24/2020
 ms.topic: conceptual
-description: Popisuje procesy, které pohánějí Azure Dev Spaces a jak funguje směrování.
-keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
+description: V této části najdete popis procesů, které Azure Dev Spaces výkonu a způsobu fungování směrování.
+keywords: Azure Dev Spaces, vývojářské prostory, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
 ms.openlocfilehash: e9bc1875c053335da6a8e2603406bcdb34a6dd04
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80241384"
 ---
-# <a name="how-routing-works-with-azure-dev-spaces"></a>Jak směrování funguje s Azure Dev Spaces
+# <a name="how-routing-works-with-azure-dev-spaces"></a>Jak funguje směrování s Azure Dev Spaces
 
-Azure Dev Spaces vám nabízí několik způsobů, jak rychle itetovat a ladit aplikace Kubernetes a spolupracovat s týmem v clusteru Služby Azure Kubernetes (AKS). Jakmile váš projekt běží v dev prostoru, Azure Dev Spaces poskytuje další možnosti sítě a směrování pro váš projekt.
+Azure Dev Spaces poskytuje několik způsobů, jak rychle iterovat a ladit aplikace Kubernetes a spolupracovat s týmem v clusteru Azure Kubernetes Service (AKS). Po spuštění projektu ve vývojovém prostoru Azure Dev Spaces poskytuje další možnosti sítě a směrování pro váš projekt.
 
-Tento článek popisuje, jak směrování funguje s Dev Spaces.
+Tento článek popisuje, jak funguje směrování s využitím vývojových prostorů.
 
-## <a name="how-routing-works"></a>Jak směrování funguje
+## <a name="how-routing-works"></a>Jak funguje směrování
 
-Dev prostor je postaven na vrcholu AKS a používá stejné [síťové koncepty](../aks/concepts-network.md). Azure Dev Spaces má také centralizovanou službu *ingressmanager* a nasazuje vlastní řadič příchozího přenosu dat do clusteru AKS. Služba *ingressmanager* monitoruje clustery AKS s dev prostory a rozšiřuje řadič příchozího přenosu dat Azure Dev Spaces v clusteru s objekty Ingress pro směrování do podů aplikací. Kontejner proxy devspaces v každém `azds-route-as` podu přidá hlavičku HTTP pro přenos http do dev prostoru na základě adresy URL. Například požadavek na *http://azureuser.s.default.serviceA.fedcba09...azds.io* adresu URL by `azds-route-as: azureuser`získal hlavičku HTTP s . Kontejner proxy devspaces nepřidá `azds-route-as` záhlaví, pokud je již k dispozici.
+Vývojové místo je postavené na AKS a používá stejné [Koncepty sítě](../aks/concepts-network.md). Azure Dev Spaces má taky centralizovanou službu *ingressmanager* a nasadí svůj vlastní kontroler příchozího přenosu do clusteru AKS. Služba *ingressmanager* monitoruje clustery AKS pomocí vývojových prostorů a rozšiřuje Azure dev Spaces řadič příchozího přenosu v clusteru s objekty příchozího přenosu dat pro směrování do lusků aplikací. Kontejner devspaces-proxy v každém z nich přidá hlavičku `azds-route-as` http pro přenosy HTTP do vývojového prostoru založeného na adrese URL. Například požadavek na adresu URL *http://azureuser.s.default.serviceA.fedcba09...azds.io* získá hlavičku HTTP s. `azds-route-as: azureuser` Kontejner devspaces-proxy nebude přidávat `azds-route-as` hlavičku, pokud již existuje.
 
-Při požadavku HTTP pro službu mimo cluster, požadavek přejde do řadiče příchozího přenosu dat. Řadič příchozího přenosu dat směruje požadavek přímo do příslušného podu na základě jeho ingress objekty a pravidla. Kontejner proxy devspaces v podu obdrží požadavek, přidá `azds-route-as` záhlaví na základě adresy URL a potom směruje požadavek do kontejneru aplikace.
+Když se ve službě mimo cluster provede požadavek HTTP, požadavek přejde do kontroleru příchozího přenosu dat. Kontroler příchozího přenosu trasuje požadavek přímo na příslušné pole na základě jeho objektů a pravidel příchozího přenosu dat. Kontejner devspaces-proxy v rámci obdrží požadavek, přidá `azds-route-as` hlavičku na základě adresy URL a potom směruje požadavek do kontejneru aplikace.
 
-Při požadavku HTTP na službu z jiné služby v rámci clusteru, požadavek nejprve prochází volající služby devspaces proxy kontejneru. Kontejner proxy devspaces se podívá na `azds-route-as` požadavek HTTP a zkontroluje záhlaví. Na základě záhlaví bude kontejner proxy devspaces vyhledat adresu IP služby přidružené k hodnotě záhlaví. Pokud je nalezena adresa IP, kontejner devspaces-proxy přesměruje požadavek na tuto adresu IP. Pokud není nalezena adresa IP, kontejner devspaces-proxy směruje požadavek do nadřazeného kontejneru aplikace.
+Pokud se ve službě v rámci clusteru provede požadavek HTTP služby z jiné služby, požadavek se nejprve doprovází do kontejneru devspaces-proxy služby volající služby. Kontejner devspaces-proxy vyhledává požadavek HTTP a kontroluje `azds-route-as` hlavičku. V závislosti na záhlaví kontejner devspaces-proxy vyhledá IP adresu služby přidružené k hodnotě hlavičky. Pokud je nalezena IP adresa, kontejner devspaces-proxy přesměruje požadavek na tuto IP adresu. Pokud se IP adresa nenajde, kontejner devspaces-proxy směruje požadavek do nadřazeného kontejneru aplikace.
 
-Například aplikace *serviceA* a *serviceB* jsou nasazeny do nadřazeného dev prostoru *nazývaného výchozí*. *serviceA* spoléhá na *serviceB* a provádí volání HTTP k němu. Azure User vytvoří podřízený dev prostor na základě *výchozího* prostoru s názvem *azureuser*. Azure User také nasadí vlastní verzi *serviceA* do svého podřízeného prostoru. Je-li podána *http://azureuser.s.default.serviceA.fedcba09...azds.io*žádost:
+Například *Služba* Applications a *serviceB* jsou nasazeny do nadřazeného vývojového prostoru s názvem *Default*. *služba Service* spoléhá na *serviceB* a provede volání http. Uživatel Azure vytvoří podřízený prostor pro vývoj založený na *výchozím* prostoru s názvem *azureuser*. Uživatel Azure také nasadí svou vlastní verzi *služby* do jejich podřízeného prostoru. Když se zavede požadavek *http://azureuser.s.default.serviceA.fedcba09...azds.io*:
 
 ![Směrování Azure Dev Spaces](media/how-dev-spaces-works/routing.svg)
 
-1. Řadič ingress vyhledá IP pro pod přidružené k adrese URL, což je *serviceA.azureuser*.
-1. Řadič ingress vyhledá IP pro pod v prostoru pro dev uživatele Azure a směruje požadavek na *pod serviceA.azureuser.*
-1. Kontejner devspaces-proxy v podu *serviceA.azureuser* obdrží `azds-route-as: azureuser` požadavek a přidá jako hlavičku HTTP.
-1. Kontejner devspaces-proxy v *podu serviceA.azureuser* směruje požadavek do kontejneru aplikace *serviceA* v podu *serviceA.azureuser.*
-1. Aplikace *serviceA* v *podu serviceA.azureuser* provádí volání *serviceB*. Aplikace *serviceA* také obsahuje kód `azds-route-as` pro zachování existující hlavičky, což je `azds-route-as: azureuser`v tomto případě .
-1. Kontejner proxy devspaces v podu *serviceA.azureuser* obdrží požadavek a vyhledá IP *serviceB* `azds-route-as` na základě hodnoty hlavičky.
-1. Kontejner devspaces-proxy v podu *serviceA.azureuser* nenalezne IP pro *serviceB.azureuser*.
-1. Kontejner devspaces-proxy v podu *serviceA.azureuser* vyhledá IP pro *serviceB* v nadřazeném prostoru, což je *serviceB.default*.
-1. Kontejner devspaces-proxy v podu *serviceA.azureuser* najde IP pro *serviceB.default* a směruje požadavek na *pod serviceB.default.*
-1. Kontejner proxy devspaces v podu *serviceB.default* obdrží požadavek a směruje požadavek do kontejneru aplikace *serviceB* v podu *serviceB.default.*
-1. Aplikace *serviceB* v *podu serviceB.default* vrátí odpověď na pod *serviceA.azureuser.*
-1. Kontejner devspaces-proxy v podu *serviceA.azureuser* obdrží odpověď a směruje odpověď na kontejner aplikace *serviceA* v podu *serviceA.azureuser.*
-1. Aplikace *serviceA* obdrží odpověď a potom vrátí vlastní odpověď.
-1. Kontejner devspaces-proxy v podu *serviceA.azureuser* obdrží odpověď z kontejneru aplikace *serviceA* a směruje odpověď na původního volajícího mimo cluster.
+1. Kontroler příchozího přenosu dat vyhledá adresu pod adresou URL, která je přidružená k adrese URL, která je *Service. azureuser*.
+1. Kontroler příchozího přenosu dat vyhledá na zařízení pod vývojovým místem uživatele Azure a směruje požadavek do *služby Service. azureuser* pod.
+1. Kontejner devspaces-proxy v rámci *služby Service. azureuser* pod ní obdrží požadavek a přidá `azds-route-as: azureuser` ho jako hlavičku HTTP.
+1. Kontejner devspaces-proxy v nástroji *Service. azureuser* pod směruje požadavek do kontejneru Application aplikace *služby* v této *službě. azureuser* pod.
+1. Aplikace *služby* v nástroji *Service. Azureuser* pod volá *serviceB*. Aplikace *služby* také obsahuje kód pro zachování existující `azds-route-as` hlavičky, v tomto případě je `azds-route-as: azureuser`to.
+1. Kontejner devspaces-proxy v *Service. azureuser* pod obdrží požadavek a VYHLEDÁ IP adresu *serviceB* na základě hodnoty `azds-route-as` záhlaví.
+1. Kontejner devspaces-proxy v nástroji *Service. azureuser* pod nenalezne IP adresu pro *serviceB. azureuser*.
+1. Kontejner devspaces-proxy v rámci *služby Service. azureuser* vyhledá v nadřazeném prostoru IP adresu *serviceB* , která je *serviceB. Default*.
+1. Kontejner devspaces-proxy v nástroji *Service. azureuser* NALEZNE IP adresu pro *serviceB. Default* a směruje požadavek do *serviceB. Default* pod.
+1. Kontejner devspaces-proxy v *serviceB. Default* pod obdrží požadavek a směruje požadavek do kontejneru aplikace *serviceB* v *serviceB. Default* pod.
+1. Aplikace *serviceB* ve *serviceB. Default* pod vrátí odpověď na *službu Service. azureuser* pod.
+1. Kontejner devspaces-proxy v *Service. azureuser* pod obdrží odpověď a směruje odpověď do kontejneru aplikace *služby* v nástroji *Service. azureuser* pod.
+1. Aplikace *služby* obdrží odpověď a potom vrátí svoji vlastní odpověď.
+1. Kontejner devspaces-proxy v rámci *služby Service. azureuser* pod obdrží odpověď z kontejneru aplikace *služby* a směruje odpověď původnímu volajícímu mimo cluster.
 
-Všechny ostatní přenosy TCP, který není HTTP prochází řadič evidenčního přenosu dat a devspaces proxy kontejnery nezměněny.
+Všechny ostatní přenosy TCP, které neprošly protokolem HTTP, prostřednictvím kontroleru příchozího přenosu dat a kontejnerů devspaces-proxy se nezměnily.
 
-## <a name="sharing-a-dev-space"></a>Sdílení dev prostoru
+## <a name="sharing-a-dev-space"></a>Sdílení prostoru pro vývoj
 
-Při práci s týmem můžete [sdílet dev prostor v celém týmu](how-to/share-dev-spaces.md) a vytvářet odvozené dev prostory. Dev prostor může použít kdokoli s přístupem přispěvatele do skupiny prostředků dev prostoru.
+Při práci s týmem můžete [sdílet vývojové místo v celém týmu](how-to/share-dev-spaces.md) a vytvářet odvozené vývojové prostory. Místo pro vývoj může použít kdokoli s přístupem přispěvatele ke skupině prostředků vývojového prostoru.
 
-Můžete také vytvořit novou dev prostor, který je odvozen z jiné hodu. Při vytváření odvozené dev prostoru je *popisek azds.io/parent-space=PARENT-SPACE-NAME* přidán do oboru názvů odvozeného dev prostoru. Všechny aplikace z nadřazeného dev prostoru jsou také sdíleny s odvozeným prostorem pro vývoj. Pokud nasadíte aktualizovanou verzi aplikace do odvozeného dev prostoru, bude existovat pouze v odvozeném prostoru pro vývoj a nadřazený vývojový prostor zůstane nedotčen. Můžete mít maximálně tři úrovně odvozených dev mezer nebo *pranadcích.*
+Můžete také vytvořit nové vývojové místo, které je odvozeno z jiného vývojového prostoru. Při vytváření odvozeného vývojového prostoru je popisek *azds.IO/Parent-Space=Parent-Space-Name* přidán do oboru názvů odvozeného vývojového prostoru. Všechny aplikace z nadřazeného vývojového prostoru jsou také sdíleny s odvozeným místem pro vývoj. Pokud nasadíte aktualizovanou verzi aplikace do odvozeného vývojového prostoru, bude existovat pouze v odvozeném vývojovém prostoru a nadřazené vývojové místo zůstane neovlivněno. Můžete mít maximálně tři úrovně odvozených vývojových prostorů nebo *prarodičů* .
 
-Odvozený dev prostor bude také inteligentně směrovat požadavky mezi vlastními aplikacemi a aplikacemi sdílenými z nadřazeného objektu. Směrování funguje tak, že se pokusíte směrovat požadavek do aplikace v odvozeném prostoru pro vývoj a vrátíte se ke sdílené aplikaci z nadřazeného prostoru pro vývoj. Směrování bude spadat zpět do sdílené aplikace v pranadčím prostoru, pokud aplikace není v nadřazeném prostoru.
+Odvozené místo pro vývoj také inteligentně směruje požadavky mezi vlastní aplikace a aplikace sdílené z jejího nadřazeného objektu. Směrování funguje tak, že se pokusí směrovat požadavek do aplikace v odvozeném vývojovém prostoru a vrátit se do sdílené aplikace z nadřazeného vývojového prostoru. Směrování se vrátí do sdílené aplikace v prostoru No, pokud aplikace není v nadřazeném prostoru.
 
-Například:
-* Výchozí *prostor* pro vývoj má aplikace *serviceA* a *serviceB*.
-* Dev space *azureuser* je odvozen od *výchozího*.
-* Aktualizovaná verze *serviceA* je nasazena na *azureuser*.
+Příklad:
+* *Výchozí* místo pro vývoj má aplikace *Service* a *serviceB*.
+* Vývojové místo *azureuser* je odvozeno od *výchozího nastavení*.
+* Do *azureuser*se nasadí aktualizovaná verze *služby Service* .
 
-Při použití *azureuser*, všechny požadavky na *serviceA* budou směrovány na aktualizovanou verzi v *azureuser*. Požadavek na *serviceB* se nejprve pokusí směrovat na *azureuser* verzi *serviceB*. Vzhledem k tomu, že neexistuje, bude směrována na *výchozí* verzi *serviceB*. Pokud *azureuser* verze serviceA je *odebrána,* všechny požadavky na *serviceA* se vrátí k použití *výchozí* verze *serviceA*.
+Při použití *azureuser*budou všechny požadavky na *službu* směrovány do aktualizované verze v *azureuser*. Požadavek na *serviceB* se nejprve pokusí o směrování na *azureuser* verzi *serviceB*. Protože neexistuje, bude směrována do *výchozí* verze *serviceB*. Pokud je odebrána verze *služby* *azureuser* , všechny požadavky na *službu* se vrátí k používání *výchozí* verze *služby*.
 
 ## <a name="next-steps"></a>Další kroky
 
-Některé příklady toho, jak Azure Dev Spaces používá směrování k zajištění rychlé iterace a vývoje, najdete v [tématu Jak funguje připojení vývojového počítače k vašemu vývojovému prostoru][how-it-works-connect], [Jak funguje vzdálené ladění kódu pomocí Azure Dev Spaces][how-it-works-remote-debugging]a Akce [GitHubu & azure kubernetes service][pr-flow].
+Některé příklady, jak Azure Dev Spaces používá směrování k zajištění rychlé iterace a vývoje, najdete v tématu [Jak připojit vývojový počítač k vašemu][how-it-works-connect]vývojovému prostoru, [jak vzdálené ladění kódu pomocí Azure dev Spaces funguje][how-it-works-remote-debugging]a [Akce GitHubu & službě Azure Kubernetes][pr-flow].
 
-Pokud chcete začít používat směrování s Azure Dev Spaces pro vývoj týmu, podívejte se na vývoj týmu v azure [dev spaces][quickstart-team] quickstart.
+Chcete-li začít používat směrování s Azure Dev Spaces pro vývoj týmu, přečtěte si téma [vývoj týmu v Azure dev Spaces][quickstart-team] rychlý Start.
 
 [helm-upgrade]: https://helm.sh/docs/intro/using_helm/#helm-upgrade-and-helm-rollback-upgrading-a-release-and-recovering-on-failure
 [how-it-works-connect]: how-dev-spaces-works-connect.md

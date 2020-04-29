@@ -1,56 +1,56 @@
 ---
-title: Jak kód Visual Studia funguje s Azure Dev Spaces
+title: Jak Visual Studio Code pracuje s Azure Dev Spaces
 services: azure-dev-spaces
 ms.date: 07/08/2019
 ms.topic: conceptual
-description: Zjistěte, jak vám visual studio code a Azure Dev Spaces pomáhají ladit a rychle iterovat aplikace Kubernetes
-keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
+description: Přečtěte si, jak Visual Studio Code a Azure Dev Spaces vám pomůžou ladit aplikace Kubernetes a rychle je iterovat.
+keywords: Azure Dev Spaces, vývojářské prostory, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
 ms.openlocfilehash: 91440e59fdb8c21579ef1f04e78e66f933221ba0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80240443"
 ---
-# <a name="how-visual-studio-code-works-with-azure-dev-spaces"></a>Jak kód Visual Studia funguje s Azure Dev Spaces
+# <a name="how-visual-studio-code-works-with-azure-dev-spaces"></a>Jak Visual Studio Code pracuje s Azure Dev Spaces
 
-Pomocí kódu Visual Studia a [rozšíření Azure Dev Spaces][azds-extension] můžete připravit, spustit a ladit své služby pomocí Azure Dev Spaces. Pomocí kódu Visual Studia a rozšíření Azure Dev Spaces můžete:
+Visual Studio Code a [rozšíření Azure dev Spaces][azds-extension] můžete použít k přípravě, spuštění a ladění služeb pomocí Azure dev Spaces. Pomocí Visual Studio Code a rozšíření Azure Dev Spaces můžete:
 
-* Generování datových zdrojů pro spouštění a ladění služeb v AKS
-* Spuštění služeb Java, Node.js a .NET Core v dev prostoru
-* Přímé ladění java, node.js a .NET Core služby běžící v dev prostoru
+* Generování prostředků pro spouštění a ladění služeb v AKS
+* Spouštění služeb Java, Node. js a .NET Core ve vývojovém prostoru
+* Přímo ladit služby Java, Node. js a .NET Core běžící ve vývojovém prostoru
 
-## <a name="generate-assets"></a>Generovat datové zdroje
+## <a name="generate-assets"></a>Generovat prostředky
 
-Visual Studio Code a rozšíření Azure Dev Spaces generují pro váš projekt následující prostředky:
+Visual Studio Code a rozšíření Azure Dev Spaces vygeneruje následující prostředky pro váš projekt:
 
-* Dockerfiles pro java aplikace používající aplikace Maven, Node.js a .NET Core aplikace
-* Grafy soutoku pro téměř jakýkoli jazyk s Dockerfile
-* Soubor, `azds.yaml` což je [konfigurační soubor Azure Dev Spaces][azds-yaml] pro váš projekt
-* Složka `.vscode` s konfigurací spuštění kódu Visual Studio projektu pro aplikace Java pomocí aplikací Maven, Node.js a .NET Core
+* Fázemi pro aplikace v jazyce Java využívající Maven, aplikace Node. js a aplikace .NET Core
+* Helm grafy pro skoro libovolný jazyk s souboru Dockerfile
+* `azds.yaml` Soubor, což je [konfigurační soubor Azure dev Spaces][azds-yaml] pro váš projekt
+* `.vscode` Složka, ve které je Visual Studio Code spustit konfiguraci projektu pro aplikace Java pomocí Maven, aplikací v Node. js a aplikací .NET Core
 
-Dockerfile, Helm graf `azds.yaml` a soubory jsou stejné datové `azds prep`zdroje generované při spuštění . Tyto soubory lze také použít mimo kód sady Visual Studio ke spuštění `azds up`projektu v AKS, jako je například spuštění . Složka `.vscode` se používá pouze kód sady Visual Studio ke spuštění projektu v AKS z Visual Studio Code.
+Souboru Dockerfile, Helm graf a `azds.yaml` soubory jsou stejné prostředky vygenerované při spuštění. `azds prep` Tyto soubory lze také použít mimo Visual Studio Code ke spuštění projektu v AKS, jako je například spuštění `azds up`. Tuto `.vscode` složku používá pouze Visual Studio Code ke spuštění projektu v AKS z Visual Studio Code.
 
-## <a name="run-your-service-in-aks"></a>Spusťte svou službu v AKS
+## <a name="run-your-service-in-aks"></a>Spuštění služby v AKS
 
-Po vygenerování prostředků pro váš projekt můžete spustit java, node.js a .NET Core služby v existujícím dev prostoru z Visual Studio Code. Na stránce *Ladění* kódu sady Visual Studio můžete vyvolat `.vscode` konfiguraci spuštění z adresáře a spustit projekt.
+Po vygenerování assetů pro projekt můžete spustit služby Java, Node. js a .NET Core v existujícím prostoru pro vývoj z Visual Studio Code. Na stránce *ladění* Visual Studio Code můžete vyvolat konfiguraci spuštění z `.vscode` adresáře ke spuštění projektu.
 
-Musíte vytvořit cluster AKS a povolit Azure Dev Spaces ve vašem clusteru mimo Visual Studio Code. Například můžete použít Azure CLI nebo portál Azure k tomuto nastavení. Můžete znovu použít existující Dockerfiles, `azds.yaml` Helm grafy a soubory vytvořené mimo Visual Studio `azds prep`Code, jako jsou například prostředky generované spuštěním . Pokud znovu použijete datové zdroje generované mimo kód sady Visual `.vscode` Studio, stále potřebujete mít adresář. Tento `.vscode` adresář lze obnovit pomocí kódu sady Visual Studio a rozšíření Azure Dev Spaces a nebude přepisovat vaše stávající prostředky.
+Musíte vytvořit cluster AKS a povolit Azure Dev Spaces v clusteru mimo Visual Studio Code. K tomuto nastavení můžete použít například Azure CLI nebo Azure Portal. Můžete znovu použít stávající fázemi, Helm grafy a `azds.yaml` soubory vytvořené mimo Visual Studio Code, jako jsou například prostředky vygenerované spuštěním. `azds prep` Pokud znovu použijete prostředky vygenerované mimo Visual Studio Code, stále potřebujete mít `.vscode` adresář. Tento `.vscode` adresář je možné znovu vygenerovat pomocí Visual Studio Code a rozšíření Azure dev Spaces a nepřepíše stávající prostředky.
 
-Pro projekty .NET Core musíte mít nainstalované [rozšíření C#][csharp-extension] pro spuštění služby .NET z kódu sady Visual Studio. Také pro java projekty pomocí Maven, musíte mít nainstalovaný [java debugger pro rozšíření Azure Dev Spaces,][java-extension] stejně jako [Maven nainstalován a nakonfigurován][maven] tak, aby spouštět službu Java z Visual Studio Code.
+Pro projekty .NET Core musíte mít nainstalované [rozšíření C#][csharp-extension] pro spuštění služby .net z Visual Studio Code. V případě projektů Java, které používají Maven, musíte mít nainstalované [rozšíření Java debugger pro Azure dev Spaces][java-extension] a [Maven nainstalované a nakonfigurované][maven] tak, aby spouštělo službu Java od Visual Studio Code.
 
 ## <a name="debug-your-service-in-aks"></a>Ladění služby v AKS
 
-Po spuštění projektu můžete ladit java, node.js a služby .NET Core spuštěné v prostoru pro spuštění přímo z kódu sady Visual Studio. Konfigurace spuštění v `.vscode` adresáři poskytuje další informace o ladění pro spuštění služby s laděním povoleným v prostoru pro změnu. Visual Studio Code také připojí k procesu ladění v běžícím kontejneru ve vašich vývojových prostorech, což umožňuje nastavit body přerušení, zkontrolovat proměnné a provádět další operace ladění.
+Po spuštění projektu můžete ladit služby Java, Node. js a .NET Core spouštěné ve vývojovém prostoru přímo z Visual Studio Code. Konfigurace spuštění v `.vscode` adresáři poskytuje další informace o ladění pro spuštění služby s povoleným laděním ve vývojovém prostoru. Visual Studio Code se také připojí k procesu ladění ve spuštěném kontejneru ve vývojových prostorech, což vám umožní nastavit body přerušení, kontrolovat proměnné a provádět jiné operace ladění.
 
 
-## <a name="use-visual-studio-code-with-azure-dev-spaces"></a>Použití kódu Visual Studia s Azure Dev Spaces
+## <a name="use-visual-studio-code-with-azure-dev-spaces"></a>Použití Visual Studio Code s Azure Dev Spaces
 
-Kód Visual Studia a rozšíření Azure Dev Spaces, které spolupracuje s Azure Dev Spaces, najdete v následujících rychlých startech:
+V následujících rychlých startech můžete vidět Visual Studio Code a rozšíření Azure Dev Spaces pracující s Azure Dev Spaces:
 
-* [Rychlé itereje a ladění pomocí kódu Visual Studio a Javy][quickstart-java]
-* [Rychlé itered a ladění pomocí kódu Sady Visual Studio a rozhraní .NET][quickstart-netcore]
-* [Rychlé itered a ladění pomocí kódu sady Visual Studio a souboru Node.js][quickstart-node]
+* [Rychlé iterování a ladění pomocí Visual Studio Code a Java][quickstart-java]
+* [Rychlé iterování a ladění pomocí Visual Studio Code a .NET][quickstart-netcore]
+* [Rychlé iterace a ladění pomocí Visual Studio Code a Node. js][quickstart-node]
 
 [azds-extension]: https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds
 [azds-yaml]: how-dev-spaces-works-prep.md#prepare-your-code

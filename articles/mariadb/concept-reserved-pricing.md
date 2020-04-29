@@ -1,70 +1,70 @@
 ---
-title: Platba předem za výpočetní prostředky s rezervovanou kapacitou – Databáze Azure pro MariaDB
-description: Předplatit azure databáze pro mariadb výpočetní prostředky s rezervovanou kapacitou
+title: Platba za výpočetní prostředky s využitím rezervované kapacity – Azure Database for MariaDB
+description: Platba za Azure Database for MariaDB výpočetních prostředků s rezervovanou kapacitou
 author: kummanish
 ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 9a6bd3cab41c69075f5170a8a3aad4f059d970e3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80159043"
 ---
-# <a name="prepay-for-azure-database-for-mariadb-compute-resources-with-reserved-capacity"></a>Předplatit azure databáze pro mariadb výpočetní prostředky s rezervovanou kapacitou
+# <a name="prepay-for-azure-database-for-mariadb-compute-resources-with-reserved-capacity"></a>Platba za Azure Database for MariaDB výpočetních prostředků s rezervovanou kapacitou
 
-Azure Database for MariaDB vám teď pomůže ušetřit peníze tím, že předplatíte výpočetní prostředky ve srovnání s průběžnými platbami. S Azure Database pro mariadb rezervované kapacity, můžete předem závazek na serverech MariaDB po dobu jednoho nebo tří let získat významnou slevu na výpočetní náklady. Chcete-li zakoupit Azure Database pro rezervovanou kapacitu MariaDB, musíte zadat oblast Azure, typ nasazení, úroveň výkonu a termín. </br>
+Azure Database for MariaDB nyní pomáhá ušetřit peníze tím, že se předplatí pro výpočetní prostředky v porovnání s cenami průběžných plateb. Díky Azure Database for MariaDB rezervované kapacity vytvoříte předem závazek na serverech MariaDB po dobu jednoho nebo tří let, abyste dosáhli výrazné slevy na výpočetní náklady. Pokud chcete koupit Azure Database for MariaDB rezervovanou kapacitu, musíte zadat oblast Azure, typ nasazení, úroveň výkonu a termín. </br>
 
-Není nutné přiřadit rezervaci konkrétní Azure Database pro servery MariaDB. Již spuštěná databáze Azure pro MariaDB nebo ty, které jsou nově nasazené, automaticky získají výhodu rezervovaných cen. Zakoupením rezervace platíte předem výpočetní náklady na dobu jednoho nebo tří let. Jakmile si koupíte rezervaci, databáze Azure pro mariadb výpočetní poplatky, které odpovídají atributy rezervace se již neúčtují na průběžných sazeb. Rezervace se nevztahuje na poplatky za software, sítě nebo úložiště spojené s databázovým serverem MariaDB. Na konci období rezervace vyprší platnost fakturační výhody a databáze Azure pro MariaDB se účtuje za průběžnou průběžnou platbu. Rezervace se neobnovují automaticky. Informace o cenách najdete v tématu [Azure Database for MariaDB rezervované kapacity nabídky](https://azure.microsoft.com/pricing/details/mariadb/). </br>
+Nemusíte přiřadit rezervaci konkrétním Azure Database for MariaDBm serverům. Již běžící Azure Database for MariaDB, nebo nově nasazené, budou automaticky využívat výhod rezervovaných cen. Když si koupíte rezervaci, platíte za výpočetní náklady po dobu jednoho nebo tří let. Jakmile si koupíte rezervaci, poplatky za výpočetní výkon služby Azure Database for MariaDB se už nebudou účtovat podle tarifů průběžných plateb. Rezervace nepokrývá software, sítě ani poplatky za úložiště přidružené k databázovému serveru MariaDB. Na konci rezervovaného období vyprší platnost fakturačního přínosu a Azure Database for MariaDB se účtují podle ceny za průběžné platby. Rezervace se neobnoví automaticky. Informace o cenách najdete v [nabídce Azure Database for MariaDB rezervované kapacity](https://azure.microsoft.com/pricing/details/mariadb/). </br>
 
-Rezervovanou kapacitu Azure Database for MariaDB si můžete zakoupit na [webu Azure Portal](https://portal.azure.com/). Zakoupení rezervované kapacity:
+V [Azure Portal](https://portal.azure.com/)si můžete koupit Azure Database for MariaDB rezervovanou kapacitu. Zakoupení rezervované kapacity:
 
-* Musíte být v roli vlastníka alespoň pro jedno předplatné Enterprise nebo individuální předplatné s průběžnými platbami.
-* U předplatných se smlouvou Enterprise musí být na webu [EA Portal](https://ea.azure.com/) povolená možnost **Přidat rezervované instance**. Nebo pokud je toto nastavení zakázané, musíte být správcem EA v předplatném.
-* V programu Zprostředkovatel cloudových řešení (CSP) mohou správci nebo prodejci zakoupit vyhrazenou kapacitu Azure Database pro MariaDB. </br>
+* Musíte být v roli vlastníka alespoň u jednoho podnikového nebo individuálního předplatného s tarify průběžných plateb.
+* U předplatných se smlouvou Enterprise musí být na webu [EA Portal](https://ea.azure.com/) povolená možnost **Přidat rezervované instance**. Nebo, pokud je toto nastavení zakázané, musíte být správce EA v předplatném.
+* V případě programu Cloud Solution Provider (CSP) mohou Azure Database for MariaDB rezervované kapacity koupit pouze agenti správce nebo prodejní agenti. </br>
 
-Podrobnosti o tom, jak se podnikovým zákazníkům a zákazníkům s průběžným implacem účtují poplatky za nákupy rezervací, najdete [v tématu vysvětlení využití rezervací Azure pro registraci enterprise](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea) a [vysvětlení využití rezervací Azure pro vaše předplatné s průběžným platbou](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage).
+Podrobnosti o tom, jak se zákazníkům z podnikových zákazníků a průběžné platby účtují poplatky za nákupy rezervací, najdete v tématu [vysvětlení využití rezervace Azure pro vaši podnikovou registraci](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea) a [pochopení využití rezervace Azure pro vaše předplatné](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage)s průběžnými platbami.
 
 
 ## <a name="determine-the-right-server-size-before-purchase"></a>Určení správné velikosti serveru před nákupem
 
-Velikost rezervace by měla být založena na celkovém množství výpočetních prostředků používaných existující instancí nebo brzy nasazených databází v rámci určité oblasti a pomocí stejné úrovně výkonu a generování hardwaru.</br>
+Velikost rezervace by měla být založena na celkovém počtu výpočtů používaných stávající nebo již nasazenou instancí databází v konkrétní oblasti a pomocí stejné úrovně výkonu a generování hardwaru.</br>
 
-Předpokládejme například, že používáte jeden obecný účel, Gen5 – 32 vCore MariaDB databáze a dvě paměti optimalizované, Gen5 – 16 virtuálních jader MariaDB databází. Dále předpokládáme, že plánujete nasadit během příštího měsíce další obecný účel, Gen5 – 32 virtuálních jader databázový server a jednu optimalizovanou paměť, Gen5 – 16 virtuálních jader databázový server. Předpokládejme, že víte, že budete potřebovat tyto zdroje po dobu nejméně 1 roku. V takovém případě byste si měli zakoupit 64 (2x32) virtuálních jader, 1 rok rezervace pro jednu databázi obecnéúčely - Gen5 a 48 (2x16 + 16) vCore 1 rok rezervace pro jednu databázi paměti optimalizované - Gen5
+Předpokládejme například, že máte spuštěný jeden z obecných účelů, Gen5 – 32 vCore MariaDB Database a dvě paměťově optimalizované databáze Gen5 – 16 vCore MariaDB. V dalším měsíci byste si měli naplánovat nasazení za další měsíc, což je další obecné účely, Gen5 – 32 vCore databázového serveru a jedna paměťově optimalizovaná, Gen5 – 16 vCore databázový server. Dejme tomu, že víte, že tyto prostředky budete potřebovat aspoň 1 rok. V takovém případě byste si měli koupit 64 (2x32) virtuální jádra, rezervaci 1 roku pro izolovanou databázi pro obecné účely – Gen5 a 48 (2x16 + 16) pro paměť s izolovanými databázemi – Vcore.
 
 
-## <a name="buy-azure-database-for-mariadb-reserved-capacity"></a>Zakoupení azure databáze pro rezervovanou kapacitu MariaDB
+## <a name="buy-azure-database-for-mariadb-reserved-capacity"></a>Koupit Azure Database for MariaDB rezervovanou kapacitu
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
-2. Vyberte **všechny služby** > **Rezervace**.
-3.  Vyberte **Přidat** a potom v podokně Rezervace nákupu vyberte **Azure Database for MariaDB** a zakoupíte novou rezervaci pro vaše databáze MariaDB.
-4.  Vyplňte požadovaná pole. Existující nebo nové databáze, které odpovídají vybraným atributům, mají nárok na získání slevy na rezervovanou kapacitu. Skutečný počet databáze Azure pro servery MariaDB, které získají slevu, závisí na vybraném oboru a množství.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+2. Vyberte **všechny** > **rezervace**služeb.
+3.  Vyberte **Přidat** a potom v podokně rezervace nákupu vyberte **Azure Database for MariaDB** a Zakupte novou rezervaci pro databáze MariaDB.
+4.  Vyplňte požadovaná pole. Stávající nebo nové databáze, které odpovídají atributům, které vyberete, mají nárok na získání rezervované slevy kapacity. Skutečný počet serverů Azure Database for MariaDB, které získávají slevu, závisí na zvoleném rozsahu a množství.
 
 
 ![Přehled rezervovaných cen](media/concepts-reserved-pricing/mariadb-reserved-price.png)
 
 
-Následující tabulka popisuje povinná pole.
+V následující tabulce jsou popsána povinná pole.
 
 | Pole | Popis |
 | :------------ | :------- |
-| Předplatné   | Předplatné slouží k platbě za Azure Database pro rezervaci rezervované kapacity MariaDB. Způsob platby na předplatné se účtuje předem náklady na Azure Database pro rezervaci rezervované kapacity MariaDB. Typ předplatného musí být smlouva enterprise (čísla nabídek: MS-AZR-0017P nebo MS-AZR-0148P) nebo individuální smlouva s průběžnými platbami (čísla nabídek: MS-AZR-0003P nebo MS-AZR-0023P). V případě předplatného se smlouvou Enterprise se poplatky strhávají z peněžního zůstatku v rámci dané registrace nebo se účtují jako nadlimitní využití. U individuálního předplatného s průběžnými platbami se poplatky účtují na základě platební karty nebo způsobu platby faktury v rámci předplatného.
-| Rozsah | Obor rezervace virtuálních jader může zahrnovat jedno předplatné nebo více předplatných (sdílený obor). Pokud vyberete: </br></br> **Sdílená**sleva na rezervaci virtuálních jader se použije na azure databázi pro servery MariaDB spuštěné ve všech předplatných v rámci vaší fakturace. Pro podnikové zákazníky je sdílený obor registrace a zahrnuje všechna předplatná v rámci registrace. U zákazníků s průběžnými platbami jsou v rozsahu Sdílený všechna předplatná s průběžnými platbami vytvořená správcem účtu.</br></br> **Jedno předplatné**, sleva rezervace virtuálních jader se použije na azure databáze pro mariadb servery v tomto předplatném. </br></br> **Jedna skupina prostředků**, sleva rezervace se použije na Azure Database pro mariadb servery ve vybraném předplatném a vybrané skupiny prostředků v rámci tohoto předplatného.
-| Region (Oblast) | Oblast Azure, která je pokryta Azure Database for MariaDB rezervace rezervované kapacity.
-| Typ nasazení | Azure Database for MariaDB typ prostředku, který chcete zakoupit rezervace.
-| Úroveň výkonu | Úroveň služby pro azure databáze pro servery MariaDB.
+| Předplatné   | Předplatné použité pro platbu Azure Database for MariaDB rezervované rezervace kapacity. Platební metodou předplatného se účtují náklady na front-end pro rezervaci rezervované kapacity Azure Database for MariaDB. Typ předplatného musí být smlouva Enterprise (číslo nabídky: MS-AZR-0017P nebo MS-AZR-0148P) nebo samostatná smlouva s cenami s průběžnými platbami (čísla nabídek: MS-AZR-0003P nebo MS-AZR-0023P). V případě předplatného se smlouvou Enterprise se poplatky strhávají z peněžního zůstatku v rámci dané registrace nebo se účtují jako nadlimitní využití. U jednotlivých předplatných s průběžnými platbami se poplatky účtují na základě platební karty nebo platby na faktuře v předplatném.
+| Rozsah | Obor rezervace vCore může zahrnovat jedno nebo víc předplatných (sdílený rozsah). Pokud vyberete: </br></br> **Shared**, Azure Database for MariaDB na servery běžící v rámci vašeho fakturačního kontextu se použije sleva za rezervaci Vcore. U podnikových zákazníků je sdíleným oborem registrace a zahrnuje všechna předplatná v rámci registrace. U zákazníků s průběžnými platbami jsou v rozsahu Sdílený všechna předplatná s průběžnými platbami vytvořená správcem účtu.</br></br> Pro Azure Database for MariaDB servery v tomto **předplatném**se použije sleva za rezervované Vcore. </br></br> **Jedna skupina prostředků**, použije se sleva rezervace pro Azure Database for MariaDB servery ve vybraném předplatném a v rámci daného předplatného.
+| Oblast | Oblast Azure, která je pokrytá rezervací rezervované kapacity Azure Database for MariaDB.
+| Typ nasazení | Typ prostředku Azure Database for MariaDB, pro který chcete zakoupit rezervaci.
+| Úroveň výkonu | Vrstva služby pro servery Azure Database for MariaDB.
 | Označení | Jeden rok
-| Množství | Množství výpočetních prostředků nakupovaných v rámci databáze Azure pro rezervaci rezervované kapacity MariaDB. Množství je počet virtuálních jader ve vybrané oblasti Azure a úroveň výkonu, které jsou rezervované a získají fakturační slevu. Pokud například spouštěte nebo plánujete spouštět databázi Azure pro servery MariaDB s celkovou výpočetní kapacitou virtuálních jader Gen5 16 v oblasti USA – východní USA, určíte množství jako 16, abyste maximalizovali přínos pro všechny servery.
+| Množství | Množství výpočetních prostředků, které se zakoupí v rámci rezervace rezervované kapacity Azure Database for MariaDB. Množství je počet virtuální jádra ve vybrané oblasti Azure a úroveň výkonu, které jsou rezervované, a obdrží fakturační slevu. Pokud například používáte nebo plánujete spustit Azure Database for MariaDB servery s celkovou výpočetní kapacitou Gen5 16 virtuální jádra v oblasti Východní USA, pak byste zadali množství na 16, aby se zajistilo zvýšení výhod pro všechny servery.
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Zrušení, výměna nebo refundace rezervací
 
-Rezervace je možné s určitými omezeními zrušit, vyměnit nebo refundovat. Další informace najdete v tématu [Samoobslužné výměny a vrácení peněz za rezervace Azure](https://docs.microsoft.com/azure/billing/billing-azure-reservations-self-service-exchange-and-refund).
+Rezervace je možné s určitými omezeními zrušit, vyměnit nebo refundovat. Další informace najdete v tématu věnovaném [výměnám samoobslužných služeb a refundacím pro Azure reservations](https://docs.microsoft.com/azure/billing/billing-azure-reservations-self-service-exchange-and-refund).
 
-## <a name="vcore-size-flexibility"></a>flexibilita velikosti virtuálních jader
+## <a name="vcore-size-flexibility"></a>flexibilita velikosti vCore
 
-Flexibilita velikosti virtuálních jader vám pomůže vertikálně navýšit nebo snížit kapacitu v rámci úrovně výkonu a oblasti, aniž byste ztratili výhodu rezervované kapacity. 
+flexibilita velikosti vCore vám pomůže škálovat směrem nahoru nebo dolů v rámci úrovně výkonu a oblasti, aniž by došlo ke ztrátě výhod vyhrazené kapacity. 
 
 ## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás
 
@@ -72,12 +72,12 @@ Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https
 
 ## <a name="next-steps"></a>Další kroky
 
-Sleva na rezervaci virtuálních jader se automaticky použije na počet serverů Azure Database pro MariaDB, které odpovídají azure databázi pro mariadb vyhrazenou kapacitu rezervace oboru a atributy. Můžete aktualizovat obor databáze Azure pro rezervaci rezervované kapacity MariaDB prostřednictvím portálu Azure, PowerShell, CLI nebo prostřednictvím rozhraní API. </br></br>
-Informace o tom, jak spravovat vyhrazenou kapacitu Azure Database for MariaDB, najdete v tématu správa vyhrazené kapacity Azure Database for MariaDB.
+Sleva rezervovaného vCore se automaticky aplikuje na počet serverů Azure Database for MariaDB, které odpovídají Azure Database for MariaDB rezervovaných rezervací kapacity a atributů. Rozsah rezervace rezervované kapacity Azure Database for MariaDB můžete aktualizovat prostřednictvím Azure Portal, PowerShellu, CLI nebo přes rozhraní API. </br></br>
+Informace o tom, jak spravovat Azure Database for MariaDB rezervovanou kapacitu, najdete v tématu Správa Azure Database for MariaDB rezervované kapacity.
 
 Další informace o rezervacích Azure najdete v následujících článcích:
 
-* [Co jsou rezervace Azure?](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations)
+* [Co jsou Azure reservations](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations)?
 * [Správa rezervací Azure](https://docs.microsoft.com/azure/billing/billing-manage-reserved-vm-instance)
 * [Vysvětlení slev za rezervace Azure](https://docs.microsoft.com/azure/billing/billing-understand-reservation-charges)
 * [Vysvětlení využití rezervací u předplatného s průběžnými platbami](https://docs.microsoft.com/azure/billing/billing-understand-reservation-charges-mariadb)

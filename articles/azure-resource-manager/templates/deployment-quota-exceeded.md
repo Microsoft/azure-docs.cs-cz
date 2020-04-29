@@ -1,34 +1,34 @@
 ---
-title: Překročena kvóta nasazení
-description: Popisuje, jak vyřešit chybu, která má více než 800 nasazení v historii skupiny prostředků.
+title: Překročila se kvóta nasazení.
+description: Popisuje, jak vyřešit chybu s více než 800 nasazeními v historii skupiny prostředků.
 ms.topic: troubleshooting
 ms.date: 10/04/2019
 ms.openlocfilehash: 919cd9a3482401cd47516e2677b0bf58387488b0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80245085"
 ---
-# <a name="resolve-error-when-deployment-count-exceeds-800"></a>Vyřešit chybu, pokud počet nasazení překročí 800
+# <a name="resolve-error-when-deployment-count-exceeds-800"></a>Vyřešit chybu, pokud je počet nasazení vyšší než 800
 
-Každá skupina prostředků je omezena na 800 nasazení v historii nasazení. Tento článek popisuje chybu, která se zobrazí při selhání nasazení, protože by překročilpovolené nasazení 800. Chcete-li tuto chybu vyřešit, odstraňte nasazení z historie skupiny prostředků. Odstranění nasazení z historie nemá vliv na žádné prostředky, které byly nasazeny.
+Každá skupina prostředků je v historii nasazení omezená na 800 nasazení. Tento článek popisuje chybu, která se zobrazí, když se nasazení nepovede, protože by překročilo povolené nasazení 800. Chcete-li tuto chybu vyřešit, odstraňte nasazení z historie skupiny prostředků. Odstranění nasazení z historie neovlivní žádné z nasazených prostředků.
 
 ## <a name="symptom"></a>Příznak
 
-Během nasazení se zobrazí chyba oznamující, že aktuální nasazení překročí kvótu 800 nasazení.
+Během nasazování se zobrazí chyba s oznámením, že aktuální nasazení překročí kvótu nasazení 800.
 
 ## <a name="solution"></a>Řešení
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Pomocí příkazu [delete skupiny nasazení az](/cli/azure/group/deployment) odstraňte nasazení z historie.
+Pomocí příkazu [AZ Deployment Group Delete](/cli/azure/group/deployment) odstraňte nasazení z historie.
 
 ```azurecli-interactive
 az deployment group delete --resource-group exampleGroup --name deploymentName
 ```
 
-Chcete-li odstranit všechna nasazení starší než pět dní, použijte:
+Pokud chcete odstranit všechna nasazení starší než pět dnů, použijte:
 
 ```azurecli-interactive
 startdate=$(date +%F -d "-5days")
@@ -40,7 +40,7 @@ do
 done
 ```
 
-Aktuální počet v historii nasazení můžete získat pomocí následujícího příkazu:
+Aktuální počet můžete v historii nasazení získat pomocí následujícího příkazu:
 
 ```azurecli-interactive
 az deployment group list --resource-group exampleGroup --query "length(@)"
@@ -48,13 +48,13 @@ az deployment group list --resource-group exampleGroup --query "length(@)"
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Pomocí příkazu [Remove-AzResourceGroupDeployment](/powershell/module/az.resources/remove-azresourcegroupdeployment) odstraňte nasazení z historie.
+Pomocí příkazu [Remove-AzResourceGroupDeployment](/powershell/module/az.resources/remove-azresourcegroupdeployment) z historie odstraňte nasazení.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroupDeployment -ResourceGroupName exampleGroup -Name deploymentName
 ```
 
-Chcete-li odstranit všechna nasazení starší než pět dní, použijte:
+Pokud chcete odstranit všechna nasazení starší než pět dnů, použijte:
 
 ```azurepowershell-interactive
 $deployments = Get-AzResourceGroupDeployment -ResourceGroupName exampleGroup | Where-Object Timestamp -lt ((Get-Date).AddDays(-5))
@@ -64,7 +64,7 @@ foreach ($deployment in $deployments) {
 }
 ```
 
-Aktuální počet v historii nasazení můžete získat pomocí následujícího příkazu:
+Aktuální počet můžete v historii nasazení získat pomocí následujícího příkazu:
 
 ```azurepowershell-interactive
 (Get-AzResourceGroupDeployment -ResourceGroupName exampleGroup).Count
@@ -72,7 +72,7 @@ Aktuální počet v historii nasazení můžete získat pomocí následujícího
 
 ## <a name="third-party-solutions"></a>Řešení třetích stran
 
-Konkrétní scénáře řeší následující externí řešení:
+Následující externí řešení řeší konkrétní scénáře:
 
-* [Aplikace Logiky Azure a řešení PowerShellu](https://devkimchi.com/2018/05/30/managing-excessive-arm-deployment-histories-with-logic-apps/)
+* [Řešení Azure Logic Apps a PowerShellu](https://devkimchi.com/2018/05/30/managing-excessive-arm-deployment-histories-with-logic-apps/)
 * [Rozšíření AzDevOps](https://github.com/christianwaha/AzureDevOpsExtensionCleanRG)

@@ -1,6 +1,6 @@
 ---
-title: Rozšíření Azure IoT Central o vlastní pravidla a oznámení | Dokumenty společnosti Microsoft
-description: Jako vývojář řešení nakonfigurujte aplikaci IoT Central tak, aby odesílala e-mailová oznámení, když zařízení přestane odesílat telemetrii. Toto řešení používá Azure Stream Analytics, Azure Functions a SendGrid.
+title: Rozšiřování IoT Central Azure s vlastními pravidly a oznámeními | Microsoft Docs
+description: Jako vývojář řešení můžete nakonfigurovat aplikaci IoT Central, aby odesílala e-mailová oznámení v případě, že zařízení přestane odesílat telemetrii. Toto řešení používá Azure Stream Analytics, Azure Functions a SendGrid.
 author: dominicbetts
 ms.author: dobett
 ms.date: 12/02/2019
@@ -10,74 +10,74 @@ services: iot-central
 ms.custom: mvc
 manager: philmea
 ms.openlocfilehash: 0e161cf83662df671b8cfb100ddc12c3b3e7359f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80158142"
 ---
-# <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>Rozšíření Azure IoT Central o vlastní pravidla pomocí Stream Analytics, Azure Functions a SendGrid
+# <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>Rozšiřování IoT Central Azure pomocí vlastních pravidel pomocí Stream Analytics, Azure Functions a SendGrid
 
 
 
-Tento návod vám jako vývojářřešení ukáže, jak rozšířit aplikaci IoT Central o vlastní pravidla a oznámení. Příklad ukazuje odeslání oznámení operátorovi, když zařízení přestane odesílat telemetrii. Řešení používá dotaz [Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/) ke zjištění, kdy zařízení přestalo odesílat telemetrii. Úloha Stream Analytics používá [funkce Azure](https://docs.microsoft.com/azure/azure-functions/) k odesílání e-mailů s oznámením pomocí [SendGrid](https://sendgrid.com/docs/for-developers/partners/microsoft-azure/).
+V této příručce se dozvíte, jak pomocí vývojářů řešení rozšíříte svou IoT Central aplikaci pomocí vlastních pravidel a oznámení. Příklad ukazuje odeslání oznámení do operátoru, když zařízení přestane odesílat telemetrii. Řešení používá [Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/) dotaz k detekci, kdy zařízení zastavilo odesílání telemetrie. Stream Analytics úloha používá [Azure Functions](https://docs.microsoft.com/azure/azure-functions/) k posílání e-mailů s oznámením pomocí [SendGrid](https://sendgrid.com/docs/for-developers/partners/microsoft-azure/).
 
-Tento návod vám ukáže, jak rozšířit IoT Central nad rámec toho, co už může dělat s předdefinovanými pravidly a akcemi.
+V této příručce se dozvíte, jak můžete IoT Central nad rámec toho, co už s vestavěnými pravidly a akcemi udělat.
 
-V tomto návodu se dozvíte, jak:
+V této příručce se dozvíte, jak:
 
-* Streamtele telemetrii z aplikace IoT Central pomocí *průběžného exportu dat*.
-* Vytvořte dotaz Stream Analytics, který zjistí, kdy zařízení přestalo odesílat data.
+* Pomocí *průběžného exportu dat*Streamujte telemetrii z IoT Central aplikace.
+* Vytvořte Stream Analytics dotaz, který zjistí, kdy zařízení zastavilo odesílání dat.
 * Odešlete e-mailové oznámení pomocí služeb Azure Functions a SendGrid.
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení kroků v tomto návodu, budete potřebovat aktivní předplatné Azure.
+K dokončení kroků v tomto průvodci, potřebujete aktivní předplatné Azure.
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-### <a name="iot-central-application"></a>Aplikace IoT Central
+### <a name="iot-central-application"></a>IoT Central aplikace
 
-Vytvořte aplikaci IoT Central na webu [správce aplikací Azure IoT Central](https://aka.ms/iotcentral) s následujícím nastavením:
+Na webu [Azure IoT Central Správce aplikací](https://aka.ms/iotcentral) vytvořte aplikaci IoT Central s následujícím nastavením:
 
 | Nastavení | Hodnota |
 | ------- | ----- |
-| Cenový plán | Standard |
-| Šablona aplikace | Analýza v obchodě – monitorování stavu |
-| Název aplikace | Přijmout výchozí nastavení nebo zvolit vlastní jméno |
-| zprostředkovatele identity | Přijmout výchozí hodnotu nebo zvolit vlastní jedinečnou předponu URL |
-| Adresář | Váš klient Služby Azure Active Directory |
+| Cenový tarif | Standard |
+| Šablona aplikace | Analýzy v obchodě – monitorování podmínek |
+| Název aplikace | Přijměte výchozí nebo vyberte svůj vlastní název. |
+| zprostředkovatele identity | Přijměte výchozí nebo vyberte vlastní jedinečnou předponu adresy URL. |
+| Adresář | Váš tenant Azure Active Directory |
 | Předplatné Azure | Vaše předplatné Azure |
-| Region (Oblast) | Vaše nejbližší oblast |
+| Oblast | Vaše nejbližší oblast |
 
-Příklady a snímky obrazovky v tomto článku používají oblast **Spojených států.** Vyberte umístění blízko vás a ujistěte se, že vytvoříte všechny prostředky ve stejné oblasti.
+Příklady a snímky obrazovky v tomto článku používají oblast **USA** . Vyberte umístění, které chcete zavřít, a ujistěte se, že jste vytvořili všechny prostředky ve stejné oblasti.
 
-Tato šablona aplikace obsahuje dvě simulovaná termostatová zařízení, která odesílají telemetrii.
+Tato šablona aplikace zahrnuje dvě simulovaná termostata zařízení, která odesílají telemetrii.
 
 ### <a name="resource-group"></a>Skupina prostředků
 
-Pomocí [portálu Azure vytvořte skupinu prostředků nazvanou](https://portal.azure.com/#create/Microsoft.ResourceGroup) **DetectStoppedDevices,** která bude obsahovat další prostředky, které vytvoříte. Vytvořte prostředky Azure ve stejném umístění jako vaše aplikace IoT Central.
+Pomocí [Azure Portal vytvořte skupinu prostředků](https://portal.azure.com/#create/Microsoft.ResourceGroup) s názvem **DetectStoppedDevices** , která bude obsahovat další prostředky, které vytvoříte. Vytvořte prostředky Azure ve stejném umístění jako vaše aplikace IoT Central.
 
 ### <a name="event-hubs-namespace"></a>Obor názvů služby Event Hubs
 
-Na [webu Azure Portal můžete vytvořit obor názvů Event Hubs](https://portal.azure.com/#create/Microsoft.EventHub) s následujícím nastavením:
+Pomocí [Azure Portal vytvořte obor názvů Event Hubs](https://portal.azure.com/#create/Microsoft.EventHub) s následujícím nastavením:
 
 | Nastavení | Hodnota |
 | ------- | ----- |
-| Name (Název)    | Zvolte název oboru názvů |
-| Cenová úroveň | Basic |
+| Název    | Zvolit název oboru názvů |
+| Cenová úroveň | Základní |
 | Předplatné | Vaše předplatné |
 | Skupina prostředků | DetectStoppedDevices |
 | Umístění | USA – východ |
 | Jednotky propustnosti | 1 |
 
-### <a name="stream-analytics-job"></a>Úloha Stream Analytics
+### <a name="stream-analytics-job"></a>Stream Analytics úlohy
 
-Pomocí [portálu Azure vytvořte úlohu Stream Analytics](https://portal.azure.com/#create/Microsoft.StreamAnalyticsJob) s následujícím nastavením:
+Pomocí [Azure Portal vytvořte úlohu Stream Analytics](https://portal.azure.com/#create/Microsoft.StreamAnalyticsJob) s následujícím nastavením:
 
 | Nastavení | Hodnota |
 | ------- | ----- |
-| Name (Název)    | Vyberte si název své úlohy |
+| Název    | Vyberte název vaší úlohy. |
 | Předplatné | Vaše předplatné |
 | Skupina prostředků | DetectStoppedDevices |
 | Umístění | USA – východ |
@@ -86,91 +86,91 @@ Pomocí [portálu Azure vytvořte úlohu Stream Analytics](https://portal.azure.
 
 ### <a name="function-app"></a>Function App
 
-Pomocí [portálu Azure vytvořte aplikaci funkcí](https://portal.azure.com/#create/Microsoft.FunctionApp) s následujícím nastavením:
+Pomocí [Azure Portal vytvořte aplikaci funkcí](https://portal.azure.com/#create/Microsoft.FunctionApp) s následujícím nastavením:
 
 | Nastavení | Hodnota |
 | ------- | ----- |
-| App name (Název aplikace)    | Zvolte název aplikace pro funkci |
+| App name (Název aplikace)    | Zvolit název aplikace Function App |
 | Předplatné | Vaše předplatné |
 | Skupina prostředků | DetectStoppedDevices |
 | Operační systém | Windows |
 | Plán Hosting | Plán Consumption |
 | Umístění | USA – východ |
 | Zásobník modulu runtime | .NET |
-| Úložiště | Vytvořit nový |
+| Storage | Vytvořit nový |
 
 ### <a name="sendgrid-account"></a>Účet SendGrid
 
-Pomocí [portálu Azure vytvořte účet SendGrid](https://portal.azure.com/#create/Sendgrid.sendgrid) s následujícím nastavením:
+Pomocí [Azure Portal vytvořte účet SendGrid](https://portal.azure.com/#create/Sendgrid.sendgrid) s následujícím nastavením:
 
 | Nastavení | Hodnota |
 | ------- | ----- |
-| Name (Název)    | Zvolte název účtu SendGrid. |
-| Heslo | Vytvoření hesla |
+| Název    | Vyberte název účtu SendGrid. |
+| Heslo | Vytvořit heslo |
 | Předplatné | Vaše předplatné |
 | Skupina prostředků | DetectStoppedDevices |
 | Cenová úroveň | F1 Free |
-| Kontaktní informace | Vyplňte požadované informace |
+| Kontaktní informace | Vyplnit požadované informace |
 
-Po vytvoření všech požadovaných prostředků vypadá vaše skupina prostředků **DetectStoppedDevices** jako následující snímek obrazovky:
+Po vytvoření všech požadovaných prostředků vypadá vaše skupina prostředků **DetectStoppedDevices** jako na následujícím snímku obrazovky:
 
-![Zjišťování skupiny prostředků zastavených zařízení](media/howto-create-custom-rules/resource-group.png)
+![Zjistit skupinu prostředků zastavených zařízení](media/howto-create-custom-rules/resource-group.png)
 
 ## <a name="create-an-event-hub"></a>Vytvoření centra událostí
 
-Můžete nakonfigurovat aplikaci IoT Central tak, aby průběžně exportovala telemetrii do centra událostí. V této části vytvoříte centrum událostí pro příjem telemetrie z aplikace IoT Central. Centrum událostí doručuje telemetrická data do úlohy Stream Analytics ke zpracování.
+IoT Central aplikaci můžete nakonfigurovat tak, aby průběžně exportovali telemetrii do centra událostí. V této části vytvoříte centrum událostí pro příjem telemetrie z vaší aplikace IoT Central. Centrum událostí doručí telemetrii do vaší Stream Analytics úlohy ke zpracování.
 
-1. Na webu Azure Portal přejděte do oboru názvů Centra událostí a vyberte **+ Event Hub**.
-1. Pojmenujte centrum událostí **centralexportace**a vyberte **Vytvořit**.
+1. V Azure Portal přejděte na obor názvů Event Hubs a vyberte **+ centrum událostí**.
+1. Pojmenujte centrum událostí **centralexport**a vyberte **vytvořit**.
 
-Obor názvů Event Hubs vypadá jako následující snímek obrazovky:
+Váš Event Hubs obor názvů vypadá jako na následujícím snímku obrazovky:
 
 ![Obor názvů služby Event Hubs](media/howto-create-custom-rules/event-hubs-namespace.png)
 
-## <a name="get-sendgrid-api-key"></a>Klíč rozhraní API GetGrid
+## <a name="get-sendgrid-api-key"></a>Získat klíč rozhraní API pro SendGrid
 
-Vaše aplikace funkce potřebuje pro odesílání e-mailových zpráv klíč rozhraní API SendGrid. Vytvoření klíče rozhraní API SendGrid:
+Vaše aplikace Function App potřebuje k posílání e-mailových zpráv klíč rozhraní SendGrid API. Vytvoření klíče rozhraní API pro SendGrid:
 
-1. Na webu Azure Portal přejděte na svůj účet SendGrid. Pak zvolte **Spravovat** pro přístup k účtu SendGrid.
-1. V účtu SendGrid zvolte **Nastavení**a potom **klíče rozhraní API**. Zvolte **Vytvořit klíč rozhraní API**:
+1. V Azure Portal přejděte na svůj účet SendGrid. Pak zvolte **Spravovat** pro přístup k účtu SendGrid.
+1. V účtu SendGrid zvolte **Nastavení**a potom **klíče rozhraní API**. Vyberte **vytvořit klíč rozhraní API**:
 
-    ![Vytvořit klíč rozhraní API SendGrid](media/howto-create-custom-rules/sendgrid-api-keys.png)
+    ![Vytvoření klíče rozhraní API pro SendGrid](media/howto-create-custom-rules/sendgrid-api-keys.png)
 
-1. Na stránce **Vytvořit klíč rozhraní API** vytvořte klíč s názvem **AzureFunctionAccess** s **oprávněními úplného přístupu.**
-1. Poznamenejte si klíč rozhraní API, který potřebujete při konfiguraci aplikace funkce.
+1. Na stránce **vytvořit klíč rozhraní API** vytvořte klíč s názvem **AzureFunctionAccess** s oprávněním **úplný přístup** .
+1. Poznamenejte si klíč rozhraní API, budete ho potřebovat při konfiguraci aplikace Function App.
 
-## <a name="define-the-function"></a>Definování funkce
+## <a name="define-the-function"></a>Definovat funkci
 
-Toto řešení používá aplikaci Azure Functions k odeslání e-mailového oznámení, když úloha Stream Analytics zjistí zastavené zařízení. Vytvoření aplikace pro funkce:
+Toto řešení používá aplikaci Azure Functions k odeslání e-mailového oznámení, když úloha Stream Analytics detekuje zastavené zařízení. Vytvoření aplikace Function App:
 
-1. Na webu Azure Portal přejděte na instanci **služby App Service** ve skupině prostředků **DetectStoppedDevices.**
-1. Tuto **+** možnost vyberte, chcete-li vytvořit novou funkci.
-1. Na stránce **ZVOLIT VÝVOJOVÉ PROSTŘEDÍ** zvolte **In-portal** a pak vyberte **Pokračovat**.
-1. Na stránce **CREATE A FUNCTION** zvolte **Webhook + API** a pak vyberte **Create**.
+1. V Azure Portal přejděte na instanci **App Service** ve skupině prostředků **DetectStoppedDevices** .
+1. Tuto **+** možnost vyberte, pokud chcete vytvořit novou funkci.
+1. Na stránce **Zvolte vývojové prostředí** zvolte **in-Portal** a pak vyberte **pokračovat**.
+1. Na stránce **vytvořit funkci** vyberte **Webhook + API** a pak vyberte **vytvořit**.
 
 Portál vytvoří výchozí funkci nazvanou **HttpTrigger1**:
 
-![Výchozí aktivační funkce PROTOKOLU HTTP](media/howto-create-custom-rules/default-function.png)
+![Výchozí funkce triggeru HTTP](media/howto-create-custom-rules/default-function.png)
 
 ### <a name="configure-function-bindings"></a>Konfigurace vazeb funkcí
 
-Chcete-li odesílat e-maily s SendGrid, musíte nakonfigurovat vazby pro vaši funkci následujícím způsobem:
+Pro posílání e-mailů pomocí SendGrid je nutné nakonfigurovat vazby pro funkci následujícím způsobem:
 
-1. Vyberte **Integrovat**, zvolte výstupní **http ($return)** a pak vyberte **odstranit**.
-1. Zvolte **+ Nový výstup**, pak zvolte **SendGrid**a pak zvolte **Vybrat**. Chcete-li nainstalovat rozšíření SendGrid, zvolte **Instalovat.**
-1. Po dokončení instalace vyberte **použít vrácenou hodnotu funkce**. Přidejte platnou **adresu Chcete-li** dostávat e-mailová oznámení.  Přidejte platnou **adresu Od,** která se použije jako odesílatel e-mailu.
-1. Vyberte **nový** vedle **nastavení aplikace Klíče rozhraní API SendGrid**. Jako klíč zadejte **sendgridAPIKey** a klíč rozhraní API SendGrid, který jste si dříve zavšimli jako hodnotu. Pak vyberte **Vytvořit**.
-1. Zvolte **Uložit,** chcete-li uložit vazby SendGrid pro vaši funkci.
+1. Vyberte možnost **integrace**, zvolte výstup **http ($Return)** a pak vyberte **Odstranit**.
+1. Zvolte **+ Nový výstup**, pak zvolte **SendGrid**a pak zvolte **Vybrat**. Kliknutím na **nainstalovat** nainstalujte rozšíření SendGrid.
+1. Po dokončení instalace vyberte **použít návratovou hodnotu funkce**. Přidejte platnou **adresu pro** příjem e-mailových oznámení.  Přidejte platnou **adresu z adresy** , kterou chcete použít jako odesílatele e-mailu.
+1. V poli **nastavení aplikace klíč rozhraní API pro SendGrid**vyberte **Nový** . Jako klíč zadejte **SendGridAPIKey** a klíč rozhraní SendGrid API, který jste si dříve poznamenali jako hodnotu. Pak vyberte **vytvořit**.
+1. Kliknutím na **Uložit** uložte vazby SendGrid pro vaši funkci.
 
-Nastavení integrace vypadá jako následující snímek obrazovky:
+Nastavení integrace vypadají jako na následujícím snímku obrazovky:
 
-![Integrace aplikací funkcí](media/howto-create-custom-rules/function-integrate.png)
+![Integrace aplikací Function App](media/howto-create-custom-rules/function-integrate.png)
 
-### <a name="add-the-function-code"></a>Přidání kódu funkce
+### <a name="add-the-function-code"></a>Přidat kód funkce
 
-Chcete-li implementovat funkci, přidejte kód C# pro analýzu příchozího požadavku HTTP a odešlete e-maily následujícím způsobem:
+K implementaci funkce přidejte kód jazyka C# k analýze příchozího požadavku HTTP a odešlete e-maily takto:
 
-1. Zvolte funkci **HttpTrigger1** ve vaší aplikaci funkcí a nahraďte kód C# následujícím kódem:
+1. Ve své aplikaci Function App vyberte funkci **HttpTrigger1** a nahraďte kód v jazyce C# následujícím kódem:
 
     ```csharp
     #r "Newtonsoft.Json"
@@ -212,21 +212,21 @@ Chcete-li implementovat funkci, přidejte kód C# pro analýzu příchozího po�
 
     Může se zobrazit chybová zpráva, dokud neuložíte nový kód.
 
-1. Chcete-li uložit **funkci,** vyberte uložit.
+1. Vyberte **Uložit** a funkci uložte.
 
-### <a name="test-the-function-works"></a>Otestujte funkční funkce funguje
+### <a name="test-the-function-works"></a>Testování funkce
 
-Chcete-li otestovat funkci na portálu, nejprve zvolte **protokoly** v dolní části editoru kódu. Pak zvolte **Test** napravo od editoru kódu. Jako tělo požadavku použijte následující **json**:
+Chcete-li otestovat funkci na portálu, nejprve v dolní části editoru kódu vyberte možnost **protokoly** . Pak zvolte **test** napravo od editoru kódu. Jako **Text žádosti**použijte následující JSON:
 
 ```json
 [{"deviceid":"test-device-1","time":"2019-05-02T14:23:39.527Z"},{"deviceid":"test-device-2","time":"2019-05-02T14:23:50.717Z"},{"deviceid":"test-device-3","time":"2019-05-02T14:24:28.919Z"}]
 ```
 
-Zprávy protokolu funkcí se zobrazí v panelu **Protokoly:**
+Zprávy protokolu funkcí se zobrazí na panelu **protokoly** :
 
 ![Výstup protokolu funkcí](media/howto-create-custom-rules/function-app-logs.png)
 
-Po několika minutách obdrží e-mailová adresa **Do** e-mail s následujícím obsahem:
+Po několika minutách **obdrží e-mailová** adresa e-mail s následujícím obsahem:
 
 ```txt
 The following device(s) have stopped sending telemetry:
@@ -237,31 +237,31 @@ test-device-2    2019-05-02T14:23:50.717Z
 test-device-3    2019-05-02T14:24:28.919Z
 ```
 
-## <a name="add-stream-analytics-query"></a>Přidat dotaz Stream Analytics
+## <a name="add-stream-analytics-query"></a>Přidat Stream Analytics dotaz
 
-Toto řešení používá dotaz Stream Analytics ke zjištění, kdy zařízení přestane odesílat telemetrii po dobu delší než 120 sekund. Dotaz používá telemetrická data z centra událostí jako jeho vstup. Úloha odešle výsledky dotazu do aplikace funkce. V této části nakonfigurujete úlohu Stream Analytics:
+Toto řešení používá Stream Analytics dotaz k detekci, kdy se zařízení zastaví odesílání telemetrie na více než 120 sekund. Dotaz používá telemetrii z centra událostí jako svůj vstup. Úloha odešle výsledky dotazu do aplikace Function App. V této části nakonfigurujete úlohu Stream Analytics:
 
-1. Na webu Azure Portal přejděte na úlohu Stream Analytics, v části **Topologie úloh** vyberte **Vstupy**, zvolte **+ Přidat vstup datového proudu**a pak zvolte Event **Hub**.
-1. Pomocí informací v následující tabulce nakonfigurujte vstup pomocí dříve vytvořeného centra událostí a pak zvolte **Uložit**:
-
-    | Nastavení | Hodnota |
-    | ------- | ----- |
-    | Alias vstupu | centrální telemetrie |
-    | Předplatné | Vaše předplatné |
-    | Obor názvů centra událostí | Obor názvů Centra událostí |
-    | Název centra událostí | Použít existující - **centralexport** |
-
-1. V části **Topologie úloh**vyberte **Výstupy**, zvolte **+ Přidat**a pak zvolte Azure **function**.
-1. Ke konfiguraci výstupu použijte informace v následující tabulce a pak zvolte **Uložit**:
+1. V Azure Portal přejděte na Stream Analytics úlohu, v části **topologie úlohy** vyberte **vstupy**, zvolte **+ Přidat vstup streamu**a pak zvolte **centrum událostí**.
+1. Použijte informace v následující tabulce ke konfiguraci vstupu pomocí centra událostí, které jste předtím vytvořili, a pak zvolte **Uložit**:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
-    | Alias pro výstup | e-mailové oznámení |
+    | Alias vstupu | centraltelemetry |
     | Předplatné | Vaše předplatné |
-    | Function App | Vaše funkční aplikace |
+    | Obor názvů centra událostí | Obor názvů centra událostí |
+    | Název centra událostí | Použít existující- **centralexport** |
+
+1. V části **topologie úloh**vyberte **výstupy**, zvolte **+ Přidat**a pak zvolte **Azure Functions**.
+1. Pomocí informací v následující tabulce nakonfigurujte výstup a pak zvolte **Uložit**:
+
+    | Nastavení | Hodnota |
+    | ------- | ----- |
+    | Alias pro výstup | emailnotification |
+    | Předplatné | Vaše předplatné |
+    | Function App | Vaše aplikace Function App |
     | Funkce  | HttpTrigger1 |
 
-1. V části **Topologie úloh**vyberte **Dotaz** a nahraďte existující dotaz následujícím SQL:
+1. V části **topologie úloh**vyberte **dotaz** a nahraďte stávající dotaz následujícím SQL:
 
     ```sql
     with
@@ -303,20 +303,20 @@ Toto řešení používá dotaz Stream Analytics ke zjištění, kdy zařízení
     ```
 
 1. Vyberte **Uložit**.
-1. Chcete-li spustit úlohu Stream Analytics, zvolte **Přehled**, pak **Start**, then **Now**a then **Start**:
+1. Chcete-li spustit úlohu Stream Analytics, zvolte možnost **Přehled**, **Spustit**, **nyní**a potom **Spusťte**příkaz:
 
     ![Stream Analytics](media/howto-create-custom-rules/stream-analytics.png)
 
-## <a name="configure-export-in-iot-central"></a>Konfigurace exportu v centru IoT
+## <a name="configure-export-in-iot-central"></a>Konfigurace exportu v IoT Central
 
-Na webu [správce aplikací Azure IoT Central](https://aka.ms/iotcentral) přejděte na aplikaci IoT Central, kterou jste vytvořili ze šablony Contoso. V této části nakonfigurujete aplikaci pro streamování telemetrie ze simulovaných zařízení do centra událostí. Postup konfigurace exportu:
+Na webu [Azure IoT Central Správce aplikací](https://aka.ms/iotcentral) přejděte do IoT Central aplikace, kterou jste vytvořili ze šablony společnosti Contoso. V této části nakonfigurujete aplikaci pro streamování telemetrie z simulovaných zařízení do centra událostí. Konfigurace exportu:
 
-1. Přejděte na stránku **Export dat,** vyberte **+ Nový**a potom na Azure **Event Hubs**.
-1. Ke konfiguraci exportu použijte následující nastavení a pak vyberte **Uložit**:
+1. Přejděte na stránku pro **Export dat** , vyberte **+ Nový**a pak **Azure Event Hubs**.
+1. Pro konfiguraci exportu použijte následující nastavení a pak vyberte **Uložit**:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
-    | Zobrazovaný název | Export do centra událostí |
+    | Zobrazovaný název | Exportovat do Event Hubs |
     | Povoleno | Zapnuto |
     | Obor názvů služby Event Hubs | Název oboru názvů Event Hubs |
     | Centrum událostí | centralexport |
@@ -324,17 +324,17 @@ Na webu [správce aplikací Azure IoT Central](https://aka.ms/iotcentral) přejd
     | Zařízení | Vypnuto |
     | Šablony zařízení | Vypnuto |
 
-![Konfigurace průběžného exportu dat](media/howto-create-custom-rules/cde-configuration.png)
+![Konfigurace kontinuálního exportu dat](media/howto-create-custom-rules/cde-configuration.png)
 
-Než budete pokračovat, počkejte, dokud nebude **spuštěn** stav exportu.
+Než budete pokračovat, počkejte, než se **spustí** stav exportu.
 
 ## <a name="test"></a>Test
 
-Chcete-li otestovat řešení, můžete zakázat nepřetržitý export dat z IoT Central do simulovaných zastavených zařízení:
+K otestování řešení můžete zakázat export průběžných dat z IoT Central na simulovaná zastavená zařízení:
 
-1. V aplikaci IoT Central přejděte na stránku **Export dat** a vyberte konfiguraci exportu do centra **událostí.**
-1. Nastavte **možnost Vypnuto** a zvolte **Uložit**. **Off**
-1. Po nejméně dvou minutách obdrží e-mailová adresa **To** jeden nebo více e-mailů, které vypadají jako následující příklad obsahu:
+1. V aplikaci IoT Central přejděte na stránku pro **Export dat** a vyberte **exportovat do Event Hubs** Exportovat konfiguraci.
+1. Nastavte hodnotu **zapnuto** na **vypnuto** a klikněte na **Uložit**.
+1. Po nejméně dvou minutách obdrží e-mailová adresa jeden nebo více e **-mailů** , které vypadají jako v následujícím ukázkovém obsahu:
 
     ```txt
     The following device(s) have stopped sending telemetry:
@@ -343,18 +343,18 @@ Chcete-li otestovat řešení, můžete zakázat nepřetržitý export dat z IoT
     Thermostat-Zone1  2019-11-01T12:45:14.686Z
     ```
 
-## <a name="tidy-up"></a>Uklidit
+## <a name="tidy-up"></a>Uklizený nahoru
 
-Chcete-li uklidit po tomto návodu a vyhnout se zbytečným nákladům, odstraňte skupinu prostředků **DetectStoppedDevices** na webu Azure Portal.
+Pokud se chcete uklizený po tomto postupu a vyhnout se zbytečným nákladům, odstraňte skupinu prostředků **DetectStoppedDevices** v Azure Portal.
 
-Aplikaci IoT Central můžete odstranit ze stránky **Správa** v rámci aplikace.
+Aplikaci IoT Central můžete odstranit ze stránky **pro správu** v rámci aplikace.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto návodu jste se naučili:
+V této příručce se naučíte:
 
-* Streamtele telemetrii z aplikace IoT Central pomocí *průběžného exportu dat*.
-* Vytvořte dotaz Stream Analytics, který zjistí, kdy zařízení přestalo odesílat data.
+* Pomocí *průběžného exportu dat*Streamujte telemetrii z IoT Central aplikace.
+* Vytvořte Stream Analytics dotaz, který zjistí, kdy zařízení zastavilo odesílání dat.
 * Odešlete e-mailové oznámení pomocí služeb Azure Functions a SendGrid.
 
-Teď, když víte, jak vytvořit vlastní pravidla a oznámení, je navrhovaným dalším krokem naučit se [rozšířit Azure IoT Central pomocí vlastníanalýzy](howto-create-custom-analytics.md).
+Když teď víte, jak vytvářet vlastní pravidla a oznámení, je navržený další krok, kde se dozvíte, jak [rozšiřuje IoT Central Azure s vlastními analýzami](howto-create-custom-analytics.md).
