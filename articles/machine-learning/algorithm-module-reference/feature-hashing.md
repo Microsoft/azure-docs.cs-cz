@@ -1,7 +1,7 @@
 ---
-title: Odkaz na modul hash funkce
+title: Reference k modulům hash funkcí
 titleSuffix: Azure Machine Learning
-description: Zjistěte, jak pomocí modulu Hashing funkcí v Azure Machine Learning featurize textová data.
+description: Naučte se používat modul hashování funkcí v Azure Machine Learning k zpracování textových dat.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,125 +10,125 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
 ms.openlocfilehash: 7178417a5c20afe5b1ed02bc526ec174704962df
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79456246"
 ---
-# <a name="feature-hashing-module-reference"></a>Odkaz na modul hash funkce
+# <a name="feature-hashing-module-reference"></a>Reference k modulům hash funkcí
 
-Tento článek popisuje modul zahrnutý v návrháři Azure Machine Learning (preview).
+Tento článek popisuje modul zahrnutý v Návrháři Azure Machine Learning (Preview).
 
-Pomocí modulu Hashing funkcí můžete transformovat datový proud anglického textu do sady funkcí celého čísla. Potom můžete předat tuto funkci hash nastavenou na algoritmus strojového učení pro trénování modelu analýzy textu.
+K transformaci datového proudu anglického textu do sady celočíselných funkcí použijte modul hash funkcí. Tuto funkci s hodnotou hash můžete následně předat algoritmu strojového učení a naučit se model pro analýzu textu.
 
-Funkce hash funkce poskytované v tomto modulu je založena na rozhraní nimbusml. Další informace naleznete v tématu [NgramHash class](https://docs.microsoft.com/python/api/nimbusml/nimbusml.feature_extraction.text.extractor.ngramhash?view=nimbusml-py-latest).
+Funkce hash funkcí uvedená v tomto modulu vychází z rozhraní nimbusml. Další informace naleznete v tématu [Třída NgramHash](https://docs.microsoft.com/python/api/nimbusml/nimbusml.feature_extraction.text.extractor.ngramhash?view=nimbusml-py-latest).
 
-## <a name="what-is-feature-hashing"></a>Co je funkce hash?
+## <a name="what-is-feature-hashing"></a>Co je funkce hashing funkcí?
 
-Funkce hash funguje převedením jedinečných tokenů na celá čísla. Pracuje na přesné řetězce, které zadáte jako vstup a neprovádí žádné jazykové analýzy nebo předběžné zpracování. 
+Funkce hashing funkcí funguje převodem jedinečných tokenů na celá čísla. Funguje na přesných řetězcích, které zadáte jako vstup a neprovádí žádnou jazykovou analýzu ani předzpracování. 
 
-Vezměte například sadu jednoduchých vět, jako jsou tyto, následované skóre mínění. Předpokládejme, že chcete použít tento text k vytvoření modelu.
+Například proveďte sadu jednoduchých vět, jako třeba, a potom mínění skóre. Předpokládejme, že chcete použít tento text k vytvoření modelu.
 
-|Text uživatele|Mínění|
+|Uživatelský text|Mínění|
 |--------------|---------------|
-|Miloval jsem tuto knihu|3|
-|Nenáviděl jsem tuto knihu|1|
-|Tato kniha byla skvělá|3|
-|Miluji knihy|2|
+|Jsem mi blízký tuto knihu|3|
+|Hated tuto knihu|1|
+|Tato kniha byla Skvělé|3|
+|Líbí se mi moje knihy|2|
 
-Interně modul Hashing funkce vytvoří slovník n-gramů. Například seznam bigrams pro tuto datovou sadu by bylo něco jako toto:
+Interně modul hashování funkcí vytvoří slovník n-gramů. Například seznam bigrams pro tuto datovou sadu by byl podobný tomuto:
 
 |Termín (bigrams)|Frequency|
 |------------|---------------|
 |Tato kniha|3|
-|Miloval jsem|1|
-|Nesnášel jsem to.|1|
-|Miluji|1|
+|Jsem blízký|1|
+|Hated|1|
+|Líbí se mi|1|
 
-Můžete řídit velikost n-gramů pomocí **N-gramů** vlastnost. Pokud zvolíte bigrams, jsou také počítány unigrams. Slovník by také obsahovat jednotlivé termíny, jako jsou tyto:
+Velikost n-gramů můžete řídit pomocí vlastnosti **n-gramů** . Zvolíte-li možnost bigrams, jsou vypočítány také unigrams. Slovník by měl také zahrnovat jednotlivé výrazy, jako jsou tyto:
 
-|Termín (unigramy)|Frequency|
+|Termín (unigrams)|Frequency|
 |------------|---------------|
-|Kniha|3|
+|účetních|3|
 |I|3|
 |books|1|
-|Byl|1|
+|vytvořen|1|
 
-Po sestrojově slovníku modul Hashing funkce převede termíny slovníku na hodnoty hash. Potom vypočítá, zda byla funkce použita v každém případě. Pro každý řádek textových dat modul vypíše sadu sloupců, jeden sloupec pro každou funkci hashe.
+Po vytvoření slovníku modul hash funkcí převede výrazy slovníku na hodnoty hash. Pak vypočítá, zda byla funkce v každém případě použita. Pro každý řádek textových dat modul výstupuje sadu sloupců, jeden sloupec pro každou funkci s algoritmem hash.
 
-Například po zahašování mohou sloupce funkcí vypadat přibližně takto:
+Například po použití algoritmu hash mohou sloupce funkce vypadat přibližně takto:
 
-|Rating|Funkce hašování 1|Funkce hašování 2|Funkce hašování 3|
+|Rating|Hash – funkce 1|Funkce hashing 2|Funkce hashing 3|
 |-----|-----|-----|-----|
 |4|1|1|0|
 |5|0|0|0|
 
-* Pokud je hodnota ve sloupci 0, řádek neobsahuje funkci hashe.
-* Pokud je hodnota 1, řádek obsahoval funkci.
+* Pokud je hodnota ve sloupci 0, řádek neobsahuje funkci hash.
+* Pokud je hodnota 1, řádek obsahuje funkci.
 
-Zapisování funkcí umožňuje reprezentovat textové dokumenty o proměnné délce jako číselné vektory prvků stejné délky pro snížení dimenzionality. Pokud jste se pokusili použít textový sloupec pro školení tak, jak je, by bylo považováno za sloupec kategorických funkcí s mnoha odlišnými hodnotami.
+Funkce hashing funkcí umožňuje reprezentovat textové dokumenty s proměnlivou délkou jako vektory numerické funkce stejné délky, aby se snížila hodnota argumentu. Pokud jste se pokusili použít textový sloupec pro školení tak, jak je, bude považován za sloupec funkce kategorií s mnoha jedinečnými hodnotami.
 
-Číselné výstupy také umožňují používat běžné metody strojového učení, včetně klasifikace, clusteringu a načítání informací. Vzhledem k tomu, že vyhledávací operace můžete použít trvalá hashe spíše než porovnání řetězců, získání funkce váhy je také mnohem rychlejší.
+Číselné výstupy také umožňují používat běžné metody strojového učení, včetně klasifikace, clusteringu a načítání informací. Vzhledem k tomu, že operace vyhledávání můžou použít celočíselnou hodnotu hash spíše než porovnávání řetězců, získání váhy funkcí je také mnohem rychlejší.
 
-## <a name="configure-the-feature-hashing-module"></a>Konfigurace modulu Hash funkce
+## <a name="configure-the-feature-hashing-module"></a>Konfigurace modulu hashování funkcí
 
-1.  Přidejte modul Hodnotit funkce do kanálu v návrháři.
+1.  Přidejte modul hash funkcí do kanálu v návrháři.
 
 1. Připojte datovou sadu obsahující text, který chcete analyzovat.
 
     > [!TIP]
-    > Vzhledem k tomu, že funkce hash neprovádí lexikální operace, jako je například vyplývající nebo zkrácení, můžete někdy získat lepší výsledky předzpracovánítextu před použitím funkce hash. 
+    > Vzhledem k tomu, že funkce hashing funkcí neprovádí lexikální operace, jako je například odvozování nebo zkrácení, můžete někdy dosáhnout lepších výsledků předzpracováním textu před použitím funkce hashování funkcí. 
 
-1. Nastavte **cílové sloupce** na textové sloupce, které chcete převést na funkce hashe. Mějte na paměti, že:
+1. Nastavte **cílové sloupce** na textové sloupce, které chcete převést na funkce s algoritmem hash. Pamatujte na to, že:
 
-    * Sloupce musí být datový typ řetězce.
+    * Sloupce musí být řetězcového datového typu.
     
-    * Výběr více sloupců textu může mít významný vliv na dimenzionalitu funkce. Například počet sloupců pro 10bitovou hash přejde z 1 024 pro jeden sloupec na 2 048 pro dva sloupce.
+    * Výběr více textových sloupců může mít výrazný vliv na dimenzionální funkce. Například počet sloupců pro 10 bitů hodnoty hash přechází z 1 024 na jeden sloupec na 2 048 pro dva sloupce.
 
-1. Pomocí **bitové velikosti hash** určete počet bitů, které se mají použít při vytváření tabulky hash.
+1. Použijte **algoritmus hashing bitsize** k určení počtu bitů, které se mají použít při vytváření zatřiďovací tabulky.
     
-    Výchozí velikost bitu je 10. Pro mnoho problémů je tato hodnota přiměřená. Možná budete potřebovat více místa, abyste se vyhnuli kolizím, v závislosti na velikosti slovníku n-gramů v textu školení.
+    Výchozí bitová velikost je 10. V případě mnoha problémů je tato hodnota dostačující. Je možné, že budete potřebovat více místa, abyste se vyhnuli kolizím, v závislosti na velikosti slovníku n gramů v školicím textu.
     
-1. Pro **N-gramů**zadejte číslo, které definuje maximální délku n-gramů, které chcete přidat do školicího slovníku. N-gram je posloupnost *n* slov, považovaných za jedinečnou jednotku.
+1. U **n-gramů**zadejte číslo definující maximální délku N-gramů, které se mají přidat do školicího slovníku. N-gram je sekvence *n* slov, která je považována za jedinečnou jednotku.
 
-    Pokud například zadáte 3, vytvoří se jednogramy, bigramy a trigramy.
+    Pokud například zadáte 3, unigrams, bigrams a trigrams, vytvoří se.
 
-1. Odešlete potrubí.
+1. Odešlete kanál.
 
 ## <a name="results"></a>Výsledky
 
-Po dokončení zpracování modul vypíše transformovnou datovou sadu, ve které byl původní sloupec textu převeden na více sloupců. Každý sloupec představuje prvek v textu. V závislosti na tom, jak významný je slovník, může být výsledná datová sada velká:
+Po dokončení zpracování modul vypíše transformovaná datovou sadu, ve které byl původní textový sloupec převeden na více sloupců. Každý sloupec představuje funkci v textu. V závislosti na tom, jak velký je slovník, může být výsledná datová sada velká:
 
 |Název sloupce 1|Typ sloupce 2|
 |-------------------|-------------------|
-|UŽIVATELSKÝ TEXT|Původní sloupec dat|
-|Sentiment|Původní sloupec dat|
-|USERTEXT - Hashing funkce 1|Sloupec funkce hasí|
-|USERTEXT - Hashing funkce 2|Sloupec funkce hasí|
-|USERTEXT - Hashing funkce n|Sloupec funkce hasí|
-|USERTEXT - Hashing funkce 1024|Sloupec funkce hasí|
+|USERTEXT|Původní datový sloupec|
+|MÍNĚNÍ|Původní datový sloupec|
+|USERTEXT-hashing – funkce 1|Sloupec funkce s algoritmem hash|
+|USERTEXT-hash – funkce 2|Sloupec funkce s algoritmem hash|
+|USERTEXT-hash – funkce n|Sloupec funkce s algoritmem hash|
+|USERTEXT-hashing – funkce 1024|Sloupec funkce s algoritmem hash|
 
-Po vytvoření transformované datové sady ji můžete použít jako vstup do modulu Model vlaku.
+Po vytvoření transformované datové sady můžete použít jako vstup do modulu vlakového modelu.
  
 ## <a name="best-practices"></a>Osvědčené postupy
 
-Následující doporučené postupy vám mohou pomoci maximálně využít modul Hashing funkcí:
+Následující osvědčené postupy vám pomůžou využít modul hashování funkcí na maximum:
 
-* Před použitím funkce Hashing k předběžnému zpracování vstupního textu přidejte modul Předzpracování textu. 
+* Před použitím hashování funkcí k předběžnému zpracování vstupního textu přidejte modul textu před zpracování. 
 
-* Přidáním modulu Vybrat sloupce za modul Hodnotit hodnotu prvku odeberte textové sloupce z výstupní datové sady. Po vygenerování funkcí hash nepotřebujete textové sloupce.
+* Přidejte modul Výběr sloupců za modul hashování funkcí, aby se odstranily textové sloupce z výstupní datové sady. Po vygenerování funkcí hash nepotřebujete textové sloupce.
     
-* Zvažte použití těchto možností předběžného zpracování textu, abyste zjednodušili výsledky a zlepšili přesnost:
+* Zvažte použití těchto možností předzpracování textu, abyste zjednodušili výsledky a vylepšili přesnost:
 
-    * Rozdělení slov
-    * Zastavení odstranění slova
+    * Dělení slov
+    * Zastavení odebrání slova
     * Normalizace případu
-    * Odstranění interpunkce a speciálních znaků
-    * Vyplývající  
+    * Odebrání interpunkčních znamének a speciálních znaků
+    * Způsobenému výpadky proudu  
 
-Optimální sada metod předběžného zpracování, které se použijí v jakémkoli řešení, závisí na potřebě domény, slovní zásoby a podnikání. s daty, abyste zjistili, které metody zpracování textu jsou nejúčinnější.
+Optimální sada metod předběžného zpracování, která se má použít v jakémkoli řešení, závisí na doméně, slovníku a potřebě firmy. Podívejte se na kanály s daty a zjistěte, které metody zpracování textu jsou nejefektivnější.
 
 ## <a name="next-steps"></a>Další kroky
             
-Podívejte se na [sadu modulů dostupných](module-reference.md) pro Azure Machine Learning 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning 

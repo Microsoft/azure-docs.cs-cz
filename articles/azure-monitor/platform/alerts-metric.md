@@ -1,118 +1,118 @@
 ---
-title: Vytváření, zobrazení a správa upozornění na metriky pomocí Azure Monitoru
-description: Přečtěte si, jak pomocí portálu Azure nebo příkazového příkazu k použití příkazového příkazu k vytváření, zobrazení a správě pravidel upozornění na metriky.
+title: Vytváření, zobrazování a správa výstrah metrik pomocí Azure Monitor
+description: Naučte se, jak pomocí Azure Portal nebo CLI vytvářet, zobrazovat a spravovat pravidla upozornění na metriky.
 author: harelbr
 ms.author: harelbr
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.subservice: alerts
 ms.openlocfilehash: cefccd08ea66638f08f00e280fe2704444a7f916
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79369382"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Vytváření, zobrazení a správa upozornění na metriky pomocí služby Azure Monitor
 
-Upozornění metrik y ve Službě Azure Monitor poskytují způsob, jak se dostat upozorněni, když jedna z vašich metrik překročí prahovou hodnotu. Upozornění metrik fungují pro celou řadu vícedimenzionálních metrik platformy, vlastních metrik a standardních i vlastních metrik služby Application Insights. V tomto článku popíšeme, jak vytvořit, zobrazit a spravovat pravidla upozornění metriky prostřednictvím portálu Azure portal a Azure CLI. Pravidla upozornění metriky můžete také vytvořit pomocí šablon Azure Resource Manager, které jsou popsány v [samostatném článku](alerts-metric-create-templates.md).
+Výstrahy metrik v Azure Monitor poskytují způsob, jak dostávat oznámení, když jedna z vašich metrik překračuje prahovou hodnotu. Upozornění metrik fungují pro celou řadu vícedimenzionálních metrik platformy, vlastních metrik a standardních i vlastních metrik služby Application Insights. V tomto článku popíšeme, jak vytvářet, zobrazovat a spravovat pravidla upozornění metrik prostřednictvím Azure Portal a Azure CLI. Pravidla upozornění na metriky můžete vytvořit také pomocí šablon Azure Resource Manager, které jsou popsány v [samostatném článku](alerts-metric-create-templates.md).
 
-Další informace o tom, jak upozornění na metriky fungují, najdete v [přehledu upozornění na metriky](alerts-metric-overview.md).
+Přečtěte si další informace o tom, jak výstrahy metrik fungují z [výstrah metriky](alerts-metric-overview.md).
 
 ## <a name="create-with-azure-portal"></a>Vytvoření s využitím webu Azure Portal
 
-Následující postup popisuje, jak vytvořit pravidlo upozornění metriky na webu Azure Portal:
+Následující postup popisuje, jak vytvořit pravidlo upozornění na metriku v Azure Portal:
 
-1. Na [webu Azure Portal](https://portal.azure.com)klikněte na **Monitor**. Okno Monitor konsoliduje všechna nastavení monitorování a data v jednom zobrazení.
+1. V [Azure Portal](https://portal.azure.com)klikněte na **monitorování**. Okno monitor slučuje všechna nastavení monitorování a data v jednom zobrazení.
 
-2. Klepněte na tlačítko **Výstrahy** a potom klepněte na tlačítko **+ Nové pravidlo výstrah**.
+2. Klikněte na **výstrahy** a pak klikněte na **+ nové pravidlo výstrahy**.
 
     > [!TIP]
-    > Většina nožů prostředků má také **výstrahy** v jejich nabídce prostředků v části **Monitorování**, můžete také vytvořit výstrahy odtud.
+    > Většina oken prostředků má také **výstrahy** v nabídce prostředků v části **monitorování**, můžete také vytvořit výstrahy.
 
-3. Klikněte na **Vybrat cíl**, v podokně kontextu, které se načte, vyberte cílový prostředek, na který chcete upozornit. Pomocí rozevíracích seznamů **Typu odběr** a **Prostředek** vyhledejte prostředek, který chcete monitorovat. K vyhledání zdroje můžete také použít vyhledávací panel.
+3. Klikněte na **vybrat cíl**a v kontextovém podokně, které se načte, vyberte cílový prostředek, na kterém chcete upozornit. Pro vyhledání prostředku, který chcete monitorovat, použijte rozevírací seznam pro **předplatné** a **typ prostředku** . K vyhledání prostředku můžete použít také panel hledání.
 
-4. Pokud vybraný prostředek obsahuje metriky, na které můžete vytvářet výstrahy, budou **dostupné signály** v pravém dolním rohu obsahovat metriky. Úplný seznam typů prostředků podporovaných pro upozornění na metriky můžete zobrazit v tomto [článku](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported).
+4. Pokud u vybraného prostředku existují metriky, na které můžete vytvářet výstrahy, budou **dostupné signály** v pravém dolním rohu obsahovat metriky. Úplný seznam typů prostředků podporovaných pro výstrahy metrik v tomto [článku](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)si můžete prohlédnout.
 
-5. Po výběru cílového zdroje klikněte na **Přidat podmínku**.
+5. Po výběru cílového prostředku klikněte na **Přidat podmínku**.
 
-6. Zobrazí se seznam signálů podporovaných pro prostředek, vyberte metriku, na kterou chcete vytvořit výstrahu.
+6. Zobrazí se seznam signálů podporovaných pro daný prostředek, vyberte metriku, na které chcete vytvořit výstrahu.
 
-7. Zobrazí se graf metriky za posledních šest hodin. Pomocí rozevíracího nabídky **Období grafu** vyberte zobrazení delší historie metriky.
+7. Zobrazí se graf metriky za posledních 6 hodin. Pomocí rozevíracího seznamu **období grafu** můžete vybrat, že se má zobrazit historie metriky.
 
-8. Pokud metrika obsahuje dimenze, zobrazí se tabulka dimenzí. Vyberte jednu nebo více hodnot pro jednu dimenzi.
-    - Zobrazené hodnoty dimenzí jsou založeny na metrických datech za poslední tři dny.
-    - Pokud se nezobrazuje hodnota dimenze, kterou hledáte, kliknutím na tlačítko +přidejte vlastní hodnotu.
-    - Můžete také ** \* vybrat** pro libovolnou kótu. **Výběr \* ** dynamicky změní velikost výběru na všechny aktuální a budoucí hodnoty dimenze.
+8. Pokud má metrika rozměry, zobrazí se tabulka Dimensions. Vyberte jednu nebo více hodnot na dimenzi.
+    - Zobrazené hodnoty dimenzí jsou založené na datech metriky za poslední tři dny.
+    - Pokud Hledaná hodnota dimenze není zobrazená, přidejte vlastní hodnotu kliknutím na "+".
+    - Můžete také **vybrat \* ** některou z dimenzí. **Možnost \* vybrat** bude dynamicky škálovat výběr na všechny aktuální a budoucí hodnoty pro dimenzi.
 
-    Pravidlo upozornění metriky vyhodnotí podmínku pro všechny kombinace vybraných hodnot. [Přečtěte si další informace o tom, jak funguje upozornění na vícerozměrné metriky](alerts-metric-overview.md).
+    Pravidlo upozornění metriky vyhodnotí podmínku pro všechny kombinace hodnot, které jsou vybrány. [Přečtěte si další informace o tom, jak funguje upozorňování na multidimenzionální metriky](alerts-metric-overview.md).
 
-9. Vyberte typ **prahová hodnota,** **operátor**a **typ agregace**. To určí logiku, kterou vyhodnotí pravidlo upozornění metriky.
-    - Pokud používáte **statickou** prahovou hodnotu, pokračujte v definování **prahové hodnoty**. Graf metriky může pomoci určit, co může být přiměřená prahová hodnota.
-    - Pokud používáte **dynamickou** prahovou hodnotu, pokračujte v definování **citlivosti prahu**. V tabulce metrik se zobrazí vypočtené prahové hodnoty na základě posledních dat. [Další informace o typu podmínky dynamické prahové hodnoty a možnosti citlivosti](alerts-dynamic-thresholds.md).
+9. Vyberte typ **prahové hodnoty** , **operátor**a **typ agregace**. Tím se určí logika, kterou vyhodnotí pravidlo výstrahy metriky.
+    - Pokud používáte **statickou** prahovou hodnotu, pokračujte v definování **prahové hodnoty**. Graf metriky vám pomůže určit, co může být vhodnou prahovou hodnotou.
+    - Pokud používáte **dynamickou** prahovou hodnotu, pokračujte v definování **prahové hodnoty citlivosti**. V grafu metriky se zobrazí vypočtené prahové hodnoty na základě nedávných dat. [Přečtěte si další informace o typu dynamické prahové hodnoty a možnosti citlivosti](alerts-dynamic-thresholds.md).
 
-10. Volitelně můžete upravit podmínku úpravou **rozlišovací schopnosti agregace** a **četnosti hodnocení**. 
+10. Volitelně můžete upřesnit podmínku úpravou **členitosti agregace** a **četnosti vyhodnocení**. 
 
 11. Klikněte na **Done** (Hotovo).
 
-12. Volitelně můžete přidat další kritéria, pokud chcete sledovat složité pravidlo výstrahy. V současné době mohou uživatelé mít pravidla výstrah s kritérii dynamických prahových hodnot jako jediné kritérium.
+12. Případně můžete přidat další kritéria, pokud chcete monitorovat složité pravidlo výstrahy. Aktuálně uživatelé mohou mít pravidla upozornění s dynamickými kritérii prahové hodnoty jako jedno kritérium.
 
-13. Vyplňte **podrobnosti výstrahy,** jako **je název pravidla výstrahy**, **Popis**a **Závažnost**.
+13. Vyplňte **Podrobnosti výstrahy** , jako **je název pravidla výstrahy**, **Popis**a **závažnost**.
 
-14. Přidejte skupinu akcí do výstrahy výběrem existující skupiny akcí nebo vytvořením nové skupiny akcí.
+14. Přidejte skupinu akcí k výstraze buď výběrem existující skupiny akcí, nebo vytvořením nové skupiny akcí.
 
-15. Kliknutím na **Hotovo** uložte pravidlo upozornění metriky.
+15. Kliknutím na **Hotovo** uložte pravidlo upozornění na metriku.
 
 > [!NOTE]
-> Pravidla upozornění metriky vytvořená prostřednictvím portálu jsou vytvořena ve stejné skupině prostředků jako cílový prostředek.
+> Pravidla upozornění na metriky vytvořená prostřednictvím portálu se vytvoří ve stejné skupině prostředků jako cílový prostředek.
 
-## <a name="view-and-manage-with-azure-portal"></a>Zobrazení a správa pomocí portálu Azure
+## <a name="view-and-manage-with-azure-portal"></a>Zobrazení a správa pomocí Azure Portal
 
-Pravidla upozornění na metriky můžete zobrazit a spravovat pomocí okna Spravovat pravidla v části Výstrahy. Následující postup ukazuje, jak zobrazit pravidla upozornění metriky a upravit jednu z nich.
+Pravidla upozornění na metriky můžete zobrazit a spravovat pomocí okna spravovat pravidla v části výstrahy. Následující postup ukazuje, jak zobrazit pravidla upozornění na metriky a upravit jednu z nich.
 
-1. Na webu Azure Portal přejděte na **Monitor.**
+1. V Azure Portal přejděte na **monitorování** .
 
-2. Klikněte na **Upozornění** a **správa pravidel**
+2. Kliknutí na **výstrahy** a **Spravovat pravidla**
 
-3. V okně **Spravovat pravidla** můžete zobrazit všechna pravidla výstrah napříč předplatnými. Pravidla můžete dále filtrovat pomocí **skupiny prostředků**, **typu zdroje**a **zdroje**. Pokud chcete zobrazit jenom upozornění na metriky, vyberte **Typ signálu** jako metriky.
+3. V okně **Spravovat pravidla** můžete zobrazit všechna pravidla výstrah v rámci předplatných. Pravidla můžete dál filtrovat pomocí **skupiny prostředků**, **typu prostředku**a **prostředku**. Pokud chcete zobrazit jenom výstrahy metriky, vyberte **typ signálu** jako metriky.
 
     > [!TIP]
-    > V okně **Spravovat pravidla** můžete vybrat více pravidel výstrah a povolit nebo zakázat. To může být užitečné, pokud je třeba určité cílové zdroje uchovat
+    > V okně **Spravovat pravidla** můžete vybrat více pravidel upozornění a povolit nebo zakázat. To může být užitečné, když je potřeba zařadit do údržby určité cílové prostředky.
 
-4. Klikněte na název pravidla upozornění metriky, které chcete upravit.
+4. Klikněte na název pravidla upozornění metrik, které chcete upravit.
 
-5. V pravidle pro úpravy klikněte na **kritéria výstrahy,** která chcete upravit. Metriku, prahovou podmínku a další pole můžete podle potřeby změnit.
+5. V pravidle úprav klikněte na **kritéria výstrahy** , která chcete upravit. Metriky, podmínky prahové hodnoty a další pole můžete změnit podle potřeby.
 
     > [!NOTE]
-    > Po vytvoření upozornění na metriku nelze upravit **cílový prostředek** a název **pravidla výstrahy.**
+    > Po vytvoření výstrahy metriky nemůžete upravit název **cílového prostředku** a **pravidla výstrahy** .
 
 6. Kliknutím na **Hotovo** uložte úpravy.
 
 ## <a name="with-azure-cli"></a>S využitím rozhraní příkazového řádku Azure
 
-V předchozích částech je popsáno, jak vytvořit, zobrazit a spravovat pravidla upozornění metriky pomocí portálu Azure Portal. Tato část popisuje, jak provést totéž pomocí [příkazového příkazu Azure pro](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)více platforem . Nejrychlejší způsob, jak začít používat Azure CLI je přes [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest). Pro tento článek použijeme Cloud Shell.
+Předchozí části popisují, jak vytvářet, zobrazovat a spravovat pravidla upozornění metrik pomocí Azure Portal. V této části se dozvíte, jak to samé provést pomocí [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)pro různé platformy. Nejrychlejší způsob, jak začít používat Azure CLI, je prostřednictvím [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest). V tomto článku použijeme Cloud Shell.
 
-1. Přejděte na portál Azure a klikněte na **Cloud Shell**.
+1. Přejděte na Azure Portal a klikněte na **Cloud Shell**.
 
-2. Na výzvu můžete pomocí příkazů ``--help`` s možností získat další informace o příkazu a jeho použití. Následující příkaz například zobrazuje seznam příkazů, které jsou k dispozici pro vytváření, prohlížení a správu upozornění na metriky.
+2. V příkazovém řádku můžete k získání dalších informací o ``--help`` příkazu a jeho použití použít příkazy s možností. Například následující příkaz zobrazí seznam příkazů, které jsou k dispozici pro vytváření, zobrazování a správu upozornění na metriky.
 
     ```azurecli
     az monitor metrics alert --help
     ```
 
-3. Můžete vytvořit jednoduché pravidlo upozornění metriky, které monitoruje, jestli je průměrný procentuální procesor na virtuálním počítači větší než 90
+3. Můžete vytvořit jednoduché pravidlo výstrahy metriky, které monitoruje, jestli je průměrný procentuální procesor na virtuálním počítači větší než 90.
 
     ```azurecli
     az monitor metrics alert create -n {nameofthealert} -g {ResourceGroup} --scopes {VirtualMachineResourceID} --condition "avg Percentage CPU > 90" --description {descriptionofthealert}
     ```
 
-4. Všechny upozornění metriky ve skupině prostředků můžete zobrazit pomocí následujícího příkazu.
+4. Všechny výstrahy metriky ve skupině prostředků můžete zobrazit pomocí následujícího příkazu.
 
     ```azurecli
     az monitor metrics alert list  -g {ResourceGroup}
     ```
 
-5. Můžete zobrazit podrobnosti o konkrétní pravidlo upozornění metriky pomocí názvu nebo ID prostředku pravidla.
+5. Podrobnosti konkrétního pravidla výstrahy metriky můžete zobrazit pomocí názvu nebo ID prostředku pravidla.
 
     ```azurecli
     az monitor metrics alert show -g {ResourceGroup} -n {AlertRuleName}
@@ -136,8 +136,8 @@ V předchozích částech je popsáno, jak vytvořit, zobrazit a spravovat pravi
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Vytvářejte upozornění na metriky pomocí šablon Azure Resource Manager .](../../azure-monitor/platform/alerts-metric-create-templates.md)
-- [Zjistěte, jak fungují upozornění na metriky](alerts-metric-overview.md).
-- [Zjistěte, jak fungují upozornění na metriky s podmínkou dynamické prahové hodnoty](alerts-dynamic-thresholds.md).
-- [Principy schématu webového háku pro upozornění na metriky](../../azure-monitor/platform/alerts-metric-near-real-time.md#payload-schema)
+- [Vytvářejte výstrahy metriky pomocí šablon Azure Resource Manager](../../azure-monitor/platform/alerts-metric-create-templates.md).
+- [Pochopte, jak fungují výstrahy metrik](alerts-metric-overview.md).
+- [Seznamte se s tím, jak výstrahy metrik s podmínkou dynamického prahu fungují](alerts-dynamic-thresholds.md)
+- [Princip schématu webového zavěšení pro výstrahy metrik](../../azure-monitor/platform/alerts-metric-near-real-time.md#payload-schema)
 

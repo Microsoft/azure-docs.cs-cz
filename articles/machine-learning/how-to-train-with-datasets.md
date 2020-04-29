@@ -1,7 +1,7 @@
 ---
-title: Trénování pomocí azureml-datových sad
+title: Výuka pomocí souborů AzureML-DataSet
 titleSuffix: Azure Machine Learning
-description: Naučte se používat datové sady v trénování
+description: Naučte se používat datové sady při školeních.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -12,43 +12,43 @@ manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 03/09/2020
 ms.openlocfilehash: 401383f2d483836bf725051810d78167869f7b22
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79283495"
 ---
-# <a name="train-with-datasets-in-azure-machine-learning"></a>Trénování pomocí datových sad v Azure Machine Learning
+# <a name="train-with-datasets-in-azure-machine-learning"></a>Výuka s datovými sadami v Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-V tomto článku se dozvíte dva způsoby, jak využívat [datové sady Azure Machine Learning](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py) ve vzdáleném experimentu školení běží bez obav o připojovací řetězce nebo datové cesty.
+V tomto článku se naučíte dva způsoby, jak využívat [Azure Machine Learning datové sady](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py) ve vzdálených školicích kurzech, aniž byste se museli starat o připojovací řetězce nebo cesty k datům.
 
-- Možnost 1: Pokud máte strukturovaná data, vytvořte tabularDataset a použijte ji přímo v trénovacím skriptu.
+- Možnost 1: Pokud máte strukturovaná data, vytvořte TabularDataset a použijte ji přímo ve školicím skriptu.
 
-- Možnost 2: Pokud máte nestrukturovaná data, vytvořte soubor FileDataset a připojte nebo sbalte soubory do vzdáleného výpočetního zařízení pro školení.
+- Možnost 2: Pokud máte nestrukturovaná data, vytvořte datovou sadu souborů a připojte nebo Stáhněte soubory do vzdáleného výpočetního prostředí pro školení.
 
-Datové sady Azure Machine Learning poskytují bezproblémovou integraci s trénovanými produkty Azure Machine Learning, jako [jsou kanály ScriptRun](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrun?view=azure-ml-py), [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py), [HyperDrive](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive?view=azure-ml-py) a [Azure Machine Learning](how-to-create-your-first-pipeline.md).
+Azure Machine Learning datové sady poskytují bezproblémovou integraci s Azure Machine Learning školicími produkty, jako jsou [ScriptRun](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrun?view=azure-ml-py), [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py), [Hyperdrive](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive?view=azure-ml-py) a [kanály Azure Machine Learning](how-to-create-your-first-pipeline.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li vytvořit a trénovat pomocí datových sad, potřebujete:
+K vytváření a školení s datovými sadami potřebujete:
 
-* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušejte [bezplatnou nebo placenou verzi Azure Machine Learning](https://aka.ms/AMLFree) ještě dnes.
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
-* Pracovní [prostor Azure Machine Learning](how-to-manage-workspace.md).
+* [Pracovní prostor Azure Machine Learning](how-to-manage-workspace.md).
 
-* Nainstalovaná [sada Azure Machine Learning SDK pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py), která obsahuje balíček azureml-datasets.
+* [Nainstalovaná sada Azure Machine Learning SDK pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py), která zahrnuje balíček AzureML-DataSet Sets.
 
 > [!Note]
-> Některé třídy datových sad mají závislosti na balíčku [azureml-dataprep.](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) Pro uživatele Linuxu jsou tyto třídy podporovány pouze na následujících distribucích: Red Hat Enterprise Linux, Ubuntu, Fedora a CentOS.
+> Některé třídy DataSet mají závislosti na balíčku [AzureML-dataprep](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) . Pro uživatele systému Linux jsou tyto třídy podporovány pouze v následujících distribucích: Red Hat Enterprise Linux, Ubuntu, Fedora a CentOS.
 
-## <a name="option-1-use-datasets-directly-in-training-scripts"></a>Možnost 1: Použití datových sad přímo v trénovacích skriptech
+## <a name="option-1-use-datasets-directly-in-training-scripts"></a>Možnost 1: použití datových sad přímo ve školicích skriptech
 
-V tomto příkladu vytvoříte [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) a použít jako `estimator` přímý vstup do objektu pro školení. 
+V tomto příkladu vytvoříte [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) a použijete ho jako přímý vstup k vašemu `estimator` objektu pro školení. 
 
-### <a name="create-a-tabulardataset"></a>Vytvoření tabulkové datové sady
+### <a name="create-a-tabulardataset"></a>Vytvoření TabularDataset
 
-Následující kód vytvoří neregistrovanou tabulardataset z webové adresy URL. Můžete také vytvořit datové sady z místních souborů nebo cest v úložišti dat. Další informace o [vytváření datových sad](https://aka.ms/azureml/howto/createdatasets).
+Následující kód vytvoří neregistrovanou TabularDataset z webové adresy URL. Můžete také vytvořit datové sady z místních souborů nebo cest v úložišti dat. Přečtěte si další informace o [tom, jak vytvořit datové sady](https://aka.ms/azureml/howto/createdatasets).
 
 ```Python
 from azureml.core.dataset import Dataset
@@ -57,11 +57,11 @@ web_path ='https://dprepdata.blob.core.windows.net/demo/Titanic.csv'
 titanic_ds = Dataset.Tabular.from_delimited_files(path=web_path)
 ```
 
-### <a name="access-the-input-dataset-in-your-training-script"></a>Přístup ke vstupní datové sadě v trénovacím skriptu
+### <a name="access-the-input-dataset-in-your-training-script"></a>Přístup ke vstupní datové sadě ve školicím skriptu
 
-Objekty TabularDataset poskytují možnost načíst data do pandy nebo jiskru DataFrame, takže můžete pracovat se známými knihovnami pro přípravu dat a školení. Chcete-li využít tuto funkci, můžete předat TabularDataset jako vstup v konfiguraci školení a načíst ve skriptu.
+Objekty TabularDataset poskytují možnost načíst data do datového rámce PANDAS nebo Spark, abyste mohli pracovat se známými knihovnami pro přípravu dat a školení. Pokud chcete tuto funkci využít, můžete předat TabularDataset jako vstup ve vaší konfiguraci školení a pak ho načíst ve svém skriptu.
 
-Chcete-li tak učinit, přístup [`Run`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py) k vstupní datové sady [`to_pandas_dataframe()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset#to-pandas-dataframe-on-error--null---out-of-range-datetime--null--) prostřednictvím objektu v trénovacím skriptu a použít metodu. 
+Provedete to tak, že získáte přístup ke [`Run`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py) vstupní datové sadě prostřednictvím objektu ve školicím [`to_pandas_dataframe()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset#to-pandas-dataframe-on-error--null---out-of-range-datetime--null--) skriptu a použijete metodu. 
 
 ```Python
 %%writefile $script_folder/train_titanic.py
@@ -75,16 +75,16 @@ dataset = run.input_datasets['titanic']
 df = dataset.to_pandas_dataframe()
 ```
 
-### <a name="configure-the-estimator"></a>Konfigurace odhadu
+### <a name="configure-the-estimator"></a>Konfigurace Estimator
 
-K odeslání experimentu se používá objekt [odhadu.](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) Azure Machine Learning má předem nakonfigurované odhady pro běžné architektury strojového učení, stejně jako obecný odhad.
+K odeslání experimentu se používá objekt [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) . Azure Machine Learning má předem nakonfigurovanou odhady pro běžné architektury strojového učení a také pro obecné Estimator.
 
-Tento kód vytvoří obecný objekt `est`odhadu , který určuje
+Tento kód vytvoří obecný objekt Estimator, `est`který určuje
 
-* Adresář skriptů pro vaše skripty. Všechny soubory v tomto adresáři se nahrají do uzlů clusteru ke spuštění.
-* Školicí *skript, train_titanic.py*.
-* Vstupní datová sada `titanic`pro školení . `as_named_input()`je vyžadována tak, aby vstupní datová sada mohla být odkazována přiřazeným názvem v trénovacím skriptu. 
-* Výpočetní cíl pro experiment.
+* Adresář skriptu pro skripty. Všechny soubory v tomto adresáři se nahrají do uzlů clusteru ke spuštění.
+* Školicí skript *train_titanic. py*.
+* Vstupní datová sada pro školení, `titanic`. `as_named_input()`je nutné, aby na vstupní datovou sadu bylo možné odkazovat pomocí přiřazeného názvu ve školicím skriptu. 
+* Cílová výpočetní operace experimentu.
 * Definice prostředí pro experiment.
 
 ```Python
@@ -101,19 +101,19 @@ experiment_run.wait_for_completion(show_output=True)
 ```
 
 
-## <a name="option-2--mount-files-to-a-remote-compute-target"></a>Možnost 2: Připojení souborů ke vzdálenému výpočetnímu cíli
+## <a name="option-2--mount-files-to-a-remote-compute-target"></a>Možnost 2: připojení souborů ke vzdálenému cíli výpočtů
 
-Pokud chcete zpřístupnit datové soubory v cílovém výpočetním prostředí pro trénování, použijte [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) k připojení nebo stahování souborů, které jsou podle něj.
+Pokud chcete, aby byly datové soubory k dispozici na výpočetním cíli pro školení, použijte [datovou sadu](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) souborů pro připojení nebo stažení souborů, na které odkazuje.
 
-### <a name="mount-vs-download"></a>Připojit vs. Stáhnout
+### <a name="mount-vs-download"></a>Připojit vs. stáhnout
 
-Připojení nebo stahování souborů libovolného formátu je podporované pro datové sady vytvořené z úložiště objektů Blob Azure, souborů Azure, Azure Data Lake Storage Gen1, Azure Data Lake Storage Gen2, Azure SQL Database a Azure Database for PostgreSQL. 
+Pro datové sady vytvořené ze služby Azure Blob Storage, souborů Azure, Azure Data Lake Storage Gen1, Azure Data Lake Storage Gen2, Azure SQL Database a Azure Database for PostgreSQL se podporují připojení nebo stahování souborů libovolného formátu. 
 
-Když připojíte datovou sadu, připojíte soubory, na které odkazuje datová sada, do adresáře (přípojného bodu) a zpřístupníte je na výpočetním cíli. Montáž je podporovaná pro výpočetní prostředky založené na Linuxu, včetně Azure Machine Learning Compute, virtuálních počítačů a HDInsight. Při stahování datové sady se všechny soubory, na které odkazuje datová sada, stáhnou do výpočetního cíle. Stahování je podporováno pro všechny typy výpočetních prostředků. 
+Když připojíte datovou sadu, připojíte soubory, na které datová sada odkazuje, do adresáře (přípojný bod) a zpřístupníte ji na cílovém výpočetním cíli. Připojení se podporuje pro výpočetní služby založené na systému Linux, včetně Azure Machine Learning výpočetních, virtuálních počítačů a HDInsight. Když stáhnete datovou sadu, všechny soubory, na které datová sada odkazuje, se stáhnou do cílového výpočetního prostředí. Stahování je podporováno pro všechny typy výpočtů. 
 
-Pokud skript zpracovává všechny soubory, na které odkazuje datová sada, a výpočetní disk se vejde do celé datové sady, doporučujeme stáhnout, aby se zabránilo režii datových proudů dat ze služeb úložiště. Pokud velikost dat překročí velikost výpočetního disku, stahování není možné. V tomto scénáři doporučujeme připojení, protože v době zpracování jsou načteny pouze datové soubory používané skriptem.
+Pokud váš skript zpracovává všechny soubory, na které datová sada odkazuje, a váš výpočetní disk může vyhovovat vaší celé datové sadě, doporučujeme stažení se doporučuje, abyste se vyhnuli režii streamování dat ze služby úložiště. Pokud velikost dat překročí výpočetní velikost disku, není stahování možné. V tomto scénáři doporučujeme připojení, protože jenom datové soubory používané skriptem se načtou v době zpracování.
 
-Následující kód se `dataset` připojí k dočasnému adresáři na adrese`mounted_path`
+Následující kód se připojí `dataset` k dočasnému adresáři na adrese`mounted_path`
 
 ```python
 import tempfile
@@ -129,9 +129,9 @@ print(os.listdir(mounted_path))
 print (mounted_path)
 ```
 
-### <a name="create-a-filedataset"></a>Vytvoření datové sady souborů
+### <a name="create-a-filedataset"></a>Vytvoření datové sady
 
-Následující příklad vytvoří neregistrovanou sadu FileDataset z webových adres URL. Přečtěte si další informace o [tom, jak vytvářet datové sady](https://aka.ms/azureml/howto/createdatasets) z jiných zdrojů.
+Následující příklad vytvoří neregistrovanou datovou sadu z adres URL webu. Přečtěte si další informace o [tom, jak vytvořit datové sady](https://aka.ms/azureml/howto/createdatasets) z jiných zdrojů.
 
 ```Python
 from azureml.core.dataset import Dataset
@@ -145,11 +145,11 @@ web_paths = [
 mnist_ds = Dataset.File.from_files(path = web_paths)
 ```
 
-### <a name="configure-the-estimator"></a>Konfigurace odhadu
+### <a name="configure-the-estimator"></a>Konfigurace Estimator
 
-Kromě předávání datové sady `inputs` prostřednictvím parametru v odhadu můžete `script_params` také předat datovou sadu a získat datovou cestu (montážní bod) ve školicím skriptu prostřednictvím argumentů. Tímto způsobem můžete udržovat váš školicí skript nezávislý na azureml-sdk. Jinými slovy, budete moci použít stejný školicí skript pro místní ladění a vzdálené školení na libovolné cloudové platformě.
+Kromě předání datové sady prostřednictvím `inputs` parametru v Estimator můžete také předat datovou sadu pomocí `script_params` a získat cestu k datům (bod připojení) ve školicím skriptu pomocí argumentů. Tímto způsobem můžete zachovávat školicí skript nezávisle na nástroji AzureML-SDK. Jinými slovy, budete moci použít stejný školicí skript pro místní ladění a vzdálené školení na jakékoli cloudové platformě.
 
-[SKLearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py) odhad objekt se používá k odeslání spustit pro scikit-learn experimenty. Další informace o školení s [odhadem SKlearn](how-to-train-scikit-learn.md).
+[Skriptu sklearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py) objekt Estimator se používá k odeslání běhu pro scikit experimenty. Přečtěte si další informace o školeních s [skriptu sklearn Estimator](how-to-train-scikit-learn.md).
 
 ```Python
 from azureml.train.sklearn import SKLearn
@@ -171,9 +171,9 @@ run = experiment.submit(est)
 run.wait_for_completion(show_output=True)
 ```
 
-### <a name="retrieve-the-data-in-your-training-script"></a>Načtení dat v trénovacím skriptu
+### <a name="retrieve-the-data-in-your-training-script"></a>Načtěte data ve školicím skriptu.
 
-Po odeslání spuštění datové soubory uvedené `mnist` datové sady budou připojeny k výpočetnímu cíli. Následující kód ukazuje, jak načíst data ve skriptu.
+Po odeslání běhu budou datové soubory odkazované `mnist` datovou sadou připojeny k cíli výpočtů. Následující kód ukazuje, jak načíst data ve skriptu.
 
 ```Python
 %%writefile $script_folder/train_mnist.py
@@ -213,8 +213,8 @@ y_test = load_data(y_test, True).reshape(-1)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Automatické trénování modelů strojového učení](how-to-auto-train-remote.md) pomocí tabulardatasets
+* [Automatické učení modelů strojového učení](how-to-auto-train-remote.md) pomocí TabularDatasets
 
-* [Modely klasifikace obrázků trénování](https://aka.ms/filedataset-samplenotebook) pomocí souborů FileDatasets
+* [Analýza modelů klasifikace obrázků](https://aka.ms/filedataset-samplenotebook) pomocí datových sad
 
-* [Trénování pomocí datových sad pomocí kanálů](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb)
+* [Výuka s datovými sadami pomocí kanálů](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb)

@@ -1,34 +1,34 @@
 ---
-title: Vytvoření webových api & REST API pro aplikace Logika Azure
-description: Vytvoření webových api & REST API pro volání vašich API, služeb nebo systémů pro systémové integrace v Aplikacích Logika Azure
+title: Vytváření webových rozhraní API & rozhraní REST API pro Azure Logic Apps
+description: Vytváření webových rozhraní API & rozhraní REST API pro volání rozhraní API, služeb nebo systémů pro integraci systému v Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, jehollan, logicappspm
 ms.topic: article
 ms.date: 05/26/2017
 ms.openlocfilehash: bb6c99ea12e5b53631d42a04b36b7bfef2337e42
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79270534"
 ---
-# <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Vytvoření vlastních api, která můžete volat z Aplikací Azure Logic Apps
+# <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Vytváření vlastních rozhraní API, která můžete volat z Azure Logic Apps
 
-Přestože Azure Logic Apps nabízí [stovky konektorů,](../connectors/apis-list.md) které můžete použít v pracovních postupech aplikace logiky, můžete chtít volat rozhraní API, systémy a služby, které nejsou k dispozici jako konektory. Můžete vytvořit vlastní api, které poskytují akce a aktivační události pro použití v aplikacích logiky. Tady jsou další důvody, proč můžete chtít vytvořit vlastní api, která můžete volat z pracovních postupů aplikace logiky:
+I když Azure Logic Apps nabízí [stovky konektorů](../connectors/apis-list.md) , které můžete použít v pracovních postupech aplikace logiky, možná budete chtít volat rozhraní API, systémy a služby, které nejsou k dispozici jako konektory. Můžete vytvořit vlastní rozhraní API, která zajišťují akce a triggery, které se mají použít ve službě Logic Apps. Tady jsou další důvody, proč byste mohli chtít vytvořit vlastní rozhraní API, které můžete volat z pracovních postupů aplikací logiky:
 
-* Rozšiřte své aktuální pracovní postupy integrace systému a integrace dat.
-* Pomozte zákazníkům používat vaše služby ke správě profesionálních nebo osobních úkolů.
-* Rozšiřte dosah, zjistitelnost a používejte pro své služby.
+* Rozšíříte své stávající pracovní postupy integrace systému a integrace dat.
+* Zákazníci můžou pomocí vaší služby spravovat profesionální nebo osobní úkoly.
+* Rozšiřte dostupnost, zjistitelnost a použití pro vaši službu.
 
-V podstatě konektory jsou webová rozhraní API, která používají REST pro připojitelná rozhraní, [formát metadat Swagger](https://swagger.io/specification/) pro dokumentaci a JSON jako formát výměny dat. Vzhledem k tomu, že konektory jsou rozhraní REST API, které komunikují prostřednictvím koncových bodů HTTP, můžete pro vytváření konektorů použít libovolný jazyk, jako je .NET, Java, Python nebo Node.js. Můžete také hostovat rozhraní API ve [službě Azure App Service](../app-service/overview.md), což je nabídka platformy jako služby (PaaS), která poskytuje jeden z nejlepších, nejjednodušších a nejškálovatelnějších způsobů pro hostování rozhraní API. 
+V podstatě jsou konektory webová rozhraní API, která používají REST pro připojitelná rozhraní, [formát metadat Swagger](https://swagger.io/specification/) pro dokumentaci a formát JSON jako formát výměny dat. Vzhledem k tomu, že konektory jsou rozhraní REST API, která komunikují prostřednictvím koncových bodů HTTP, můžete pro stavební konektory použít libovolný jazyk, například .NET, Java, Python nebo Node. js. Můžete také hostovat rozhraní API na [Azure App Service](../app-service/overview.md), jako je nabídka typu platforma jako služba (PaaS), která poskytuje jeden z nejlepších, nejjednodušších a nejškálovatelných způsobů pro hostování rozhraní API. 
 
-Pro vlastní rozhraní API pro práci s aplikacemi logiky, vaše rozhraní API můžete poskytnout [*akce,*](./logic-apps-overview.md#logic-app-concepts) které provádějí konkrétní úkoly v pracovních postupech aplikace logiky. Vaše rozhraní API může také fungovat jako [*aktivační událost,*](./logic-apps-overview.md#logic-app-concepts) která spustí pracovní postup aplikace logiky, když nová data nebo událost splňuje zadanou podmínku. Toto téma popisuje běžné vzory, které můžete sledovat pro vytváření akcí a aktivačních událostí v rozhraní API, na základě chování, které chcete, aby vaše rozhraní API poskytovat.
+Aby mohla vlastní rozhraní API spolupracovat s Logic Apps, může vaše rozhraní API poskytovat [*Akce*](./logic-apps-overview.md#logic-app-concepts) , které provádějí konkrétní úkoly v pracovních postupech aplikace logiky. Vaše rozhraní API může fungovat taky jako [*Trigger*](./logic-apps-overview.md#logic-app-concepts) , který spouští pracovní postup aplikace logiky, když nová data nebo událost splňují zadanou podmínku. Toto téma popisuje běžné vzory, které můžete provést při vytváření akcí a triggerů v rozhraní API na základě chování, které má vaše rozhraní API poskytovat.
 
-Rozhraní API můžete hostovat ve [službě Azure App Service](../app-service/overview.md), což je nabídka paas (platforma jako služba), která poskytuje vysoce škálovatelný a snadný hosting rozhraní API.
+Své rozhraní API můžete hostovat na [Azure App Service](../app-service/overview.md), jako je nabídka typu platforma jako služba (PaaS), která poskytuje vysoce škálovatelné a jednoduché hostování rozhraní API.
 
 > [!TIP] 
-> I když rozhraní API můžete nasadit jako webové aplikace, zvažte nasazení rozhraní API jako aplikace rozhraní API, což může usnadnit vaši práci při vytváření, hostování a využívání rozhraní API v cloudu a místně. Není třeba měnit žádný kód ve vašich rozhraních API – stačí nasadit kód do aplikace rozhraní API. Najdete například, jak vytvářet aplikace rozhraní API vytvořené pomocí těchto jazyků: 
+> I když můžete nasadit rozhraní API jako webové aplikace, zvažte nasazení rozhraní API jako aplikací API, které vám umožní usnadnit práci při sestavování, hostování a využívání rozhraní API v cloudu i místně. Nemusíte měnit žádný kód v rozhraních API – stačí kód nasadit do aplikace API. Přečtěte si například, jak vytvářet aplikace API vytvořené pomocí těchto jazyků: 
 > 
 > * [ASP.NET](../app-service/app-service-web-get-started-dotnet.md). 
 > * [Java](../app-service/app-service-web-get-started-java.md)
@@ -37,192 +37,192 @@ Rozhraní API můžete hostovat ve [službě Azure App Service](../app-service/o
 > * [Python](../app-service/containers/quickstart-python.md)
 > * [Ruby](../app-service/containers/quickstart-ruby.md)
 >
-> Ukázky aplikací API vytvořené pro aplikace logiky najdete v [úložišti GitHub azure logic apps](https://github.com/logicappsio) nebo [blogu](https://aka.ms/logicappsblog).
+> Ukázky pro aplikace API vytvořené pro Logic Apps najdete v [Azure Logic Apps úložišti GitHubu](https://github.com/logicappsio) nebo [blogu](https://aka.ms/logicappsblog).
 
 ## <a name="how-do-custom-apis-differ-from-custom-connectors"></a>Jak se vlastní rozhraní API liší od vlastních konektorů?
 
-Vlastní rozhraní API a [vlastní konektory](../logic-apps/custom-connector-overview.md) jsou webová rozhraní API, která používají REST pro připojitelná rozhraní, [formát metadat Swagger](https://swagger.io/specification/) pro dokumentaci a JSON jako formát výměny dat. A protože tato rozhraní API a konektory jsou rozhraní REST API, které komunikují prostřednictvím koncových bodů PROTOKOLU HTTP, můžete použít libovolný jazyk, jako je .NET, Java, Python nebo Node.js, pro vytváření vlastních rozhraní API a konektorů.
+Vlastní rozhraní API a [vlastní konektory](../logic-apps/custom-connector-overview.md) jsou webová rozhraní API, která používají REST pro připojitelná rozhraní, [formát metadat Swagger](https://swagger.io/specification/) pro dokumentaci a formát JSON jako formát výměny dat. A vzhledem k tomu, že tato rozhraní API a konektory jsou rozhraní REST API, která komunikují prostřednictvím koncových bodů HTTP, můžete pro vytváření vlastních rozhraní API a konektorů použít libovolný jazyk, třeba .NET, Java, Python nebo Node. js.
 
-Vlastní rozhraní API umožňují volat rozhraní API, která nejsou konektory, a poskytovat koncové body, které můžete volat pomocí HTTP + Swagger, Azure API Management nebo App Services. Vlastní konektory fungují jako vlastní rozhraní API, ale mají také tyto atributy:
+Vlastní rozhraní API umožňují volat rozhraní API, která nejsou konektory, a poskytnout koncové body, které můžete volat pomocí protokolu HTTP + Swagger, Azure API Management nebo App Services. Vlastní konektory fungují jako vlastní rozhraní API, ale mají také tyto atributy:
 
-* Registrované jako prostředky Logic Apps Connector v Azure.
-* Zobrazí se s ikonami vedle konektorů spravovaných společností Microsoft v Návrháři logických aplikací.
-* K dispozici jenom pro autory konektorů a uživatele aplikace logiky, kteří mají stejného klienta Azure Active Directory a předplatné Azure v oblasti, kde se nasazují aplikace logiky.
+* Registrováno jako Logic Apps prostředků konektoru v Azure.
+* Zobrazuje se ikonami vedle konektorů spravovaných Microsoftem v Návrháři Logic Apps.
+* K dispozici pouze pro autory konektorů a uživatele aplikace logiky, kteří mají stejné Azure Active Directory tenanta a předplatné Azure v oblasti, kde jsou nasazené Logic Apps.
 
-Můžete také nominovat registrované konektory pro certifikaci Microsoftu. Tento proces ověří, zda registrované konektory splňují kritéria pro veřejné použití, a zpřístupní tyto konektory uživatelům v power automatech a aplikacích Microsoft Power Apps.
+Můžete také jmenovat zaregistrované konektory pro certifikaci Microsoftu. Tento proces ověří, že registrované konektory splňují kritéria pro veřejné použití a zpřístupňuje tyto konektory uživatelům v Power automatu a Microsoft Power Apps.
 
-Další informace o vlastních konektorech naleznete v tématu 
+Další informace o vlastních konektorech najdete v tématu. 
 
 * [Přehled vlastních konektorů](../logic-apps/custom-connector-overview.md)
-* [Vytvoření vlastních konektorů z webových rozhraní API](../logic-apps/custom-connector-build-web-api-app-tutorial.md)
-* [Registrace vlastních konektorů v aplikacích Azure Logic Apps](../logic-apps/logic-apps-custom-connector-register.md)
+* [Vytváření vlastních konektorů z webových rozhraní API](../logic-apps/custom-connector-build-web-api-app-tutorial.md)
+* [Registrace vlastních konektorů v Azure Logic Apps](../logic-apps/logic-apps-custom-connector-register.md)
 
 ## <a name="helpful-tools"></a>Užitečné nástroje
 
-Vlastní rozhraní API funguje nejlépe s aplikacemi logiky, když rozhraní API má také [dokument Swagger,](https://swagger.io/specification/) který popisuje operace a parametry rozhraní API.
-Mnoho knihoven, jako [je Swashbuckle](https://github.com/domaindrivendev/Swashbuckle), může automaticky generovat soubor Swagger pro vás. Chcete-li okomentovat soubor Swagger pro zobrazované názvy, typy vlastností a tak dále, můžete také použít [TRex,](https://github.com/nihaue/TRex) aby váš soubor Swagger fungoval dobře s aplikacemi logiky.
+Vlastní rozhraní API funguje nejlépe s Logic Apps, když rozhraní API má také [dokument Swagger](https://swagger.io/specification/) , který popisuje operace a parametry rozhraní API.
+Mnoho knihoven, jako je [swashbuckle](https://github.com/domaindrivendev/Swashbuckle), může automaticky vygenerovat soubor Swagger. Chcete-li přidat poznámku do souboru Swagger pro zobrazované názvy, typy vlastností a tak dále, můžete použít také [TRex](https://github.com/nihaue/TRex) , aby soubor Swagger dobře fungoval s Logic Apps.
 
 <a name="actions"></a>
 
-## <a name="action-patterns"></a>Vzory akcí
+## <a name="action-patterns"></a>Vzorce akcí
 
-Pro aplikace logiky provádět úkoly, vlastní rozhraní API by měl poskytnout [*akce*](./logic-apps-overview.md#logic-app-concepts). Každá operace v rozhraní API se mapuje na akci. Základní akce je řadič, který přijímá požadavky HTTP a vrací odpovědi HTTP. Takže například aplikace logiky odešle požadavek HTTP do webové aplikace nebo aplikace rozhraní API. Vaše aplikace pak vrátí odpověď HTTP spolu s obsahem, který aplikace logiky může zpracovat.
+Aby Logic Apps prováděly úlohy, měla by vaše vlastní rozhraní API poskytovat [*Akce*](./logic-apps-overview.md#logic-app-concepts). Každá operace v rozhraní API se mapuje na akci. Základní akce je kontroler, který přijímá požadavky HTTP a vrací odpovědi HTTP. Například aplikace logiky pošle požadavek HTTP do vaší webové aplikace nebo aplikace API. Vaše aplikace pak vrátí odpověď HTTP spolu s obsahem, který může aplikace logiky zpracovat.
 
-Pro standardní akce můžete napsat metodu požadavku HTTP do rozhraní API a popsat tuto metodu v souboru Swagger. Potom můžete volat rozhraní API přímo pomocí [akce HTTP](../connectors/connectors-native-http.md) nebo akce HTTP [+ Swagger.](../connectors/connectors-native-http-swagger.md) Ve výchozím nastavení musí být odpovědi vráceny v rámci [časového limitu požadavku](./logic-apps-limits-and-config.md). 
+U standardní akce můžete napsat metodu žádosti HTTP do rozhraní API a popsat tuto metodu v souboru Swagger. Své rozhraní API pak můžete volat přímo pomocí [akce http](../connectors/connectors-native-http.md) nebo akce [http + Swagger](../connectors/connectors-native-http-swagger.md) . Ve výchozím nastavení musí být odpovědi vráceny v rámci [časového](./logic-apps-limits-and-config.md)limitu požadavku. 
 
-![Standardní vzor akce](./media/logic-apps-create-api-app/standard-action.png)
+![Standardní vzorec akce](./media/logic-apps-create-api-app/standard-action.png)
 
-<a name="pattern-overview"></a>Chcete-li, aby aplikace logiky čekala, zatímco vaše rozhraní API dokončí déle běžící úlohy, vaše rozhraní API můžete sledovat [asynchronní dotazování vzor](#async-pattern) nebo [asynchronní webhookvzor](#webhook-actions) popsaný v tomto tématu. Pro analogii, která vám pomůže vizualizovat různé chování těchto vzorů, představte si proces objednání vlastního dortu z pekárny. Vzor dotazování odráží chování, kde voláte pekárnu každých 20 minut, abyste zkontrolovali, zda je koláč připraven. Webhook vzor odráží chování, kde pekárna vás požádá o vaše telefonní číslo, aby vám mohli zavolat, když je dort připraven.
+<a name="pattern-overview"></a>Aby aplikace logiky čekala na dokončení probíhajících úloh, vaše rozhraní API může postupovat podle [vzorce asynchronního cyklického dotazování](#async-pattern) nebo pomocí [asynchronního vzoru Webhooku](#webhook-actions) popsaného v tomto tématu. V případě analogového způsobu, který vám pomůže vizualizovat Tato vzorová chování, Představte si proces pro objednávání vlastního dortíku z pekařství. Vzor cyklického dotazování zrcadlí chování, kdy zavoláte do pekařství každých 20 minut, a zkontrolujete, jestli je dortík připravený. Vzorek Webhooku zrcadlí chování, ve kterém se vám bude připojovat k telefonnímu číslu, aby se mohli zavolat na to, kdy je dortík připravený.
 
-Ukázky najdete v [úložišti GitHub logic Apps](https://github.com/logicappsio). Další informace o [měření využití akcí](logic-apps-pricing.md).
+Ukázky najdete v [Logic Apps úložišti GitHubu](https://github.com/logicappsio). Přečtěte si taky další informace o [měření využití pro akce](logic-apps-pricing.md).
 
 <a name="async-pattern"></a>
 
-### <a name="perform-long-running-tasks-with-the-polling-action-pattern"></a>Provádění dlouhotrvajících úloh se vzorem akce dotazování
+### <a name="perform-long-running-tasks-with-the-polling-action-pattern"></a>Provádění dlouhotrvajících úloh pomocí vzoru akce cyklického dotazování
 
-Chcete-li, aby rozhraní API provádělo úlohy, které by mohly běžet déle než [časový limit požadavku](./logic-apps-limits-and-config.md), můžete použít vzor asynchronního dotazování. Tento vzor má vaše rozhraní API pracovat v samostatném vlákně, ale zachovat aktivní připojení k modulu Logic Apps. Tímto způsobem aplikace logiky není časový čas nebo pokračovat s dalším krokem v pracovním postupu před dokončením práce rozhraní API.
+Chcete-li, aby vaše rozhraní API provádělo úlohy, které by mohly běžet déle než [časový limit žádosti](./logic-apps-limits-and-config.md), můžete použít model asynchronního cyklického dotazování. Tento model rozhraní API funguje v samostatném vlákně, ale zachová aktivní připojení k modulu Logic Apps. Díky tomuto postupu aplikace logiky nevypršel časový limit nebo v dalším kroku pracovního postupu pokračovala, než vaše rozhraní API dokončí práci.
 
-Zde je obecný vzor:
+Tady je obecný vzor:
 
-1. Ujistěte se, že modul ví, že vaše rozhraní API přijal požadavek a začal pracovat.
-2. Když modul provede následné požadavky na stav úlohy, dejte modulu vědět, kdy vaše rozhraní API dokončí úlohu.
-3. Vraťte příslušná data do modulu tak, aby pracovní postup aplikace logiky můžete pokračovat.
+1. Ujistěte se, že stroj ví, že vaše rozhraní API přijalo požadavek a začal pracovat.
+2. Když modul provede další požadavky na stav úlohy, poznáte modul, když vaše rozhraní API dokončí úlohu.
+3. Vrátí relevantní data modulu, aby mohl pracovní postup aplikace logiky pokračovat.
 
-<a name="bakery-polling-action"></a>Nyní aplikujte předchozí analogii pekárny na volební vzor a představte si, že zavoláte pekárnu a objednáte si vlastní dort pro doručení. Proces výroby dortu nějakou dobu trvá a nechcete čekat na telefonu, zatímco pekárna pracuje na dortu. Pekárna potvrzuje vaši objednávku a každých 20 minut vám zavolá na stav dortu. Po 20 minutách, zavoláte do pekárny, ale oni vám řeknou, že váš dort není hotový a že byste měli zavolat za dalších 20 minut. Tento proces tam a zpět pokračuje, dokud nezavoláte, a pekárna vám řekne, že vaše objednávka je připravena a doručí váš dort. 
+<a name="bakery-polling-action"></a>Teď použijte předchozí pekařskou analogii na vzor cyklického dotazování a Představte si, že voláte a objednat si vlastní dortík za doručení. Proces pro zajištění, že dortík přetrvá čas, nechcete čekat na telefon, zatímco pekařace působí na dort. Baker potvrdí vaši objednávku a zavolá se každé 20 minut na stav dortíku. Po 20 minutách budete volat pekařství, ale dáme vám vědět, že se váš dort nedokončil a že byste měli zavolat za další 20 minut. Tento proces back-and se pokračuje, dokud nebudete volat, a přípravné informace o tom, že vaše objednávka je připravená a dává vám svůj dortík. 
 
-Takže pojďme mapovat tento volební vzor zpět. Pekárna představuje vlastní rozhraní API, zatímco vy, zákazník dortu, představujete modul Logic Apps. Když motor volá vaše rozhraní API s požadavkem, vaše rozhraní API potvrdí požadavek a odpoví časovým intervalem, kdy může modul zkontrolovat stav úlohy. Modul pokračuje v kontrole stavu úlohy, dokud vaše rozhraní API neodpoví, že úloha je hotová a vrátí data do aplikace logiky, která pak pokračuje v pracovním postupu. 
+Pojďme tedy tento vzor cyklického dotazování namapovat zpátky. Pekař představuje vaše vlastní rozhraní API, zatímco vy, což je zákazník, představuje Logic Apps Engine. Když stroj zavolá vaše rozhraní API s požadavkem, rozhraní API potvrdí požadavek a odpoví na časový interval, kdy může modul kontrolovat stav úlohy. Modul pokračuje v kontrole stavu úlohy, dokud vaše rozhraní API neodpoví na to, že se úloha dokončila, a vrátí data do vaší aplikace logiky, které pak pokračuje v pracovním postupu. 
 
-![Vzor akce dotazování](./media/logic-apps-create-api-app/custom-api-async-action-pattern.png)
+![Vzor akce cyklického dotazování](./media/logic-apps-create-api-app/custom-api-async-action-pattern.png)
 
-Tady jsou konkrétní kroky, které má vaše rozhraní API sledovat, popsané z pohledu rozhraní API:
+Tady jsou konkrétní kroky, které má vaše rozhraní API sledovat, a to popsaných v perspektivě rozhraní API:
 
-1. Když vaše rozhraní API získá požadavek HTTP `202 ACCEPTED` pro zahájení `location` práce, okamžitě vrátí odpověď HTTP s hlavičkou popsanou dále v tomto kroku. Tato odpověď umožňuje modul u nakládací aplikace vědět, že vaše rozhraní API získal požadavek, přijal datové části požadavku (vstup dat) a nyní zpracovává. 
+1. Když rozhraní API vrátí požadavek HTTP na spuštění práce, okamžitě vrátí odpověď HTTP `202 ACCEPTED` s `location` hlavičkou popsanou níže v tomto kroku. Tato odpověď umožňuje, aby modul Logic Apps ví, že vaše rozhraní API získalo požadavek, přijalo datovou část požadavku (vstup dat) a právě zpracovává. 
    
-   Odpověď `202 ACCEPTED` by měla obsahovat tyto hlavičky:
+   `202 ACCEPTED` Odpověď by měla obsahovat tyto hlavičky:
    
-   * *Povinné:* `location` Záhlaví, které určuje absolutní cestu k adrese URL, kde modul Logic Apps může zkontrolovat stav úlohy vašeho rozhraní API.
+   * *Požadováno*: `location` záhlaví, které určuje absolutní cestu k adrese URL, kde Logic Apps modul může kontrolovat stav úlohy rozhraní API.
 
-   * *Volitelné*: `retry-after` Záhlaví, které určuje počet sekund, po které `location` by měl modul čekat, než zkontroluje adresu URL pro stav úlohy. 
+   * *Volitelné*: `retry-after` hlavička, která určuje počet sekund, po které má modul čekat před kontrolou `location` adresy URL pro stav úlohy. 
 
-     Ve výchozím nastavení motor kontroluje každých 20 sekund. Chcete-li zadat jiný `retry-after` interval, zahrňte záhlaví a počet sekund do dalšího dotazování.
+     Ve výchozím nastavení modul kontroluje každých 20 sekund. Pokud chcete zadat jiný interval, zahrňte `retry-after` hlavičku a počet sekund do dalšího cyklického dotazování.
 
-2. Po uplynutí zadaného času modul Logic `location` Apps vyhledá adresu URL pro kontrolu stavu úlohy. Rozhraní API by mělo provádět tyto kontroly a vrátit tyto odpovědi:
+2. Po uplynutí zadaného času se modul Logic Apps dotazuje na `location` adresu URL, aby zkontroloval stav úlohy. Vaše rozhraní API by mělo provádět tyto kontroly a vracet tyto odpovědi:
    
-   * Pokud je úloha hotová, vraťte odpověď HTTP `200 OK` spolu s datovou částí odpovědi (vstup pro další krok).
+   * Pokud se úloha dokončí, vraťte odpověď HTTP `200 OK` spolu s datovou částí Response (vstup pro další krok).
 
-   * Pokud úloha stále zpracovává, `202 ACCEPTED` vraťte další odpověď HTTP, ale se stejnými záhlavími jako původní odpověď.
+   * Pokud se úloha stále zpracovává, vraťte jinou odpověď HTTP `202 ACCEPTED` , ale se stejnými hlavičkami jako původní odpověď.
 
-Když vaše rozhraní API následuje tento vzor, nemusíte dělat nic v definici pracovního postupu aplikace logiky pokračovat v kontrole stavu úlohy. Když modul získá `202 ACCEPTED` odpověď HTTP `location` a platné záhlaví, modul respektuje asynchronní `location` vzor a zkontroluje záhlaví, dokud vaše rozhraní API vrátí non-202 odpověď.
+Když je tento model rozhraní API, nemusíte dělat nic v definici pracovního postupu aplikace logiky, aby bylo možné pokračovat v kontrole stavu úlohy. Když modul získá odpověď HTTP `202 ACCEPTED` a platnou `location` hlavičku, modul respektuje asynchronní vzor a zkontroluje `location` hlavičku, dokud rozhraní API nevrátí odpověď, která není 202.
 
 > [!TIP]
-> Příklad asynchronní vzor, zkontrolujte tuto [ukázku odezvy asynchronní horečné kontroly v GitHub](https://github.com/logicappsio/LogicAppsAsyncResponseSample).
+> Příklad asynchronního vzoru najdete [v této ukázce asynchronního řadiče v GitHubu](https://github.com/logicappsio/LogicAppsAsyncResponseSample).
 
 <a name="webhook-actions"></a>
 
-### <a name="perform-long-running-tasks-with-the-webhook-action-pattern"></a>Provádění dlouhotrvajících úloh pomocí vzoru akce webhooku
+### <a name="perform-long-running-tasks-with-the-webhook-action-pattern"></a>Provádění dlouhotrvajících úloh pomocí vzoru akce Webhooku
 
-Jako alternativu můžete použít webhooku vzor pro dlouhotrvající úlohy a asynchronní zpracování. Tento vzor má pozastavit aplikaci logiky a čekat na "zpětné volání" z vašeho rozhraní API k dokončení zpracování před pokračováním pracovního postupu. Toto zpětné volání je HTTP POST, který odešle zprávu na adresu URL, když dojde k události. 
+Alternativně můžete použít vzor Webhooku pro dlouhotrvající úlohy a asynchronní zpracování. V tomto modelu se aplikace logiky pozastavuje a před pokračováním pracovního postupu čeká na zpětné volání z rozhraní API, aby se dokončilo zpracování. Toto zpětné volání je příspěvek HTTP, který pošle zprávu na adresu URL, když dojde k události. 
 
-<a name="bakery-webhook-action"></a>Nyní aplikujte předchozí analogii pekárny na webhookový vzor a představte si, že zavoláte pekárnu a objednáte si vlastní dort pro doručení. Proces výroby dortu nějakou dobu trvá a nechcete čekat na telefonu, zatímco pekárna pracuje na dortu. Pekárna potvrzuje vaši objednávku, ale tentokrát jim dáte své telefonní číslo, aby vám mohli zavolat, až bude dort hotový. Tentokrát vám pekárna řekne, kdy je vaše objednávka připravena a doručí váš dort.
+<a name="bakery-webhook-action"></a>Teď použijte předchozí pekařii na vzor Webhooku a Představte si, že jste volali pekařství a obvedli vlastní dortíky na doručení. Proces pro zajištění, že dortík přetrvá čas, nechcete čekat na telefon, zatímco pekařace působí na dort. Baker potvrdí vaši objednávku, ale tentokrát jim poskytnete své telefonní číslo, aby vás mohli zavolat, až se dortík dokončí. Tentokrát vám oznamujeme, že je vaše objednávka připravená a že je doručí váš dort.
 
-Když mapujeme tento webhookvzor zpět, pekárna představuje vaše vlastní rozhraní API, zatímco vy, zákazník dort, představují modul Logic Apps. Modul volá vaše rozhraní API s požadavkem a obsahuje adresu URL zpětného volání.
-Po dokončení úlohy, rozhraní API používá adresu URL upozornit motor a vrátit data do aplikace logiky, která pak pokračuje v pracovním postupu. 
+Když jsme tento vzor Webhooku namapovali zpátky, pracovní postup představuje vaše vlastní rozhraní API, zatímco vy, což je zákazník v dortu, představuje modul Logic Apps. Stroj volá vaše rozhraní API s požadavkem a obsahuje adresu URL zpětného volání.
+Po dokončení úlohy používá vaše rozhraní API adresu URL, která upozorní modul a vrátí data do vaší aplikace logiky, což pak pokračuje v pracovním postupu. 
 
-Pro tento vzor nastavte na ovladači `subscribe` dva koncové body: a`unsubscribe`
+Pro tento model nastavte na řadiči dva koncové body: `subscribe` a`unsubscribe`
 
-*  `subscribe`koncový bod: Když spuštění dosáhne akce vašeho rozhraní API v pracovním `subscribe` postupu, modul Logic Apps volá koncový bod. Tento krok způsobí, že aplikace logiky k vytvoření adresy URL zpětného volání, které vaše rozhraní API ukládá a pak čekat na zpětné volání z vašeho rozhraní API po dokončení práce. Vaše rozhraní API pak volá zpět s HTTP POST na adresu URL a předá všechny vrácený obsah a záhlaví jako vstup do aplikace logiky.
+*  `subscribe`koncový bod: když provádění dosáhne akce vašeho rozhraní API v pracovním postupu, modul Logic Apps volá `subscribe` koncový bod. Tento krok způsobí, že aplikace logiky vytvoří adresu URL zpětného volání, kterou vaše rozhraní API uloží, a po dokončení práce počká na zpětné volání od rozhraní API. Rozhraní API pak zavolá zpět s HTTP POST na adresu URL a předá do aplikace logiky libovolný vrácený obsah a záhlaví jako vstup.
 
-* `unsubscribe`koncový bod: Pokud je spuštění aplikace logiky zrušeno, `unsubscribe` modul Logic Apps volá koncový bod. Vaše rozhraní API pak můžete zrušit registraci adresu URL zpětného volání a zastavit všechny procesy podle potřeby.
+* `unsubscribe`koncový bod: Pokud je aplikace logiky zrušena, modul Logic Apps volá `unsubscribe` koncový bod. Vaše rozhraní API pak může zrušit registraci adresy URL zpětného volání a v případě potřeby zastavit všechny procesy.
 
 ![Vzor akce Webhooku](./media/logic-apps-create-api-app/custom-api-webhook-action-pattern.png)
 
 > [!NOTE]
-> V současné době návrhář aplikace logiky nepodporuje zjišťování koncových bodů webhooku prostřednictvím Swagger. Takže pro tento vzor, budete muset přidat akci [ **Webhook** ](../connectors/connectors-native-webhook.md) a zadejte adresu URL, záhlaví a tělo pro váš požadavek. Viz také [akce a aktivační události pracovního postupu](logic-apps-workflow-actions-triggers.md#apiconnection-webhook-action). Chcete-li předat adresu URL zpětného `@listCallbackUrl()` volání, můžete použít funkci pracovního postupu v libovolném z předchozích polí podle potřeby.
+> Návrhář aplikace logiky v současné době nepodporuje zjišťování koncových bodů webhooků prostřednictvím Swagger. Pro tento model tedy musíte přidat [akci **Webhooku** ](../connectors/connectors-native-webhook.md) a zadat adresu URL, záhlaví a text pro vaši žádost. Viz také [akce a triggery pracovního postupu](logic-apps-workflow-actions-triggers.md#apiconnection-webhook-action). Chcete-li předat adresu URL zpětného volání, můžete `@listCallbackUrl()` v případě potřeby použít funkci pracovního postupu v libovolném z předchozích polí.
 
 > [!TIP]
-> Příklad vzoru webhooku, zkontrolujte tuto [ukázku aktivační události webhooku v GitHubu](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs).
+> Příklad vzoru Webhooku najdete v tomto příkladu [triggeru Webhooku na GitHubu](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs).
 
 <a name="triggers"></a>
 
-## <a name="trigger-patterns"></a>Spouštěcí vzory
+## <a name="trigger-patterns"></a>Vzory triggerů
 
-Vaše vlastní rozhraní API může fungovat jako [*aktivační událost,*](./logic-apps-overview.md#logic-app-concepts) která spustí aplikaci logiky, když nová data nebo událost splňuje zadanou podmínku. Tato aktivační událost můžete buď pravidelně kontrolovat, nebo čekat a poslouchat, pro nová data nebo události v koncovém bodě služby. Pokud nová data nebo událost splňuje zadanou podmínku, aktivační událost se spustí a spustí aplikaci logiky, která naslouchá této aktivační události. Chcete-li spustit aplikace logiky tímto způsobem, vaše rozhraní API můžete sledovat [*dotazování aktivační události*](#polling-triggers) nebo [*webhooku aktivační model.*](#webhook-triggers) Tyto vzory jsou podobné jejich protějšky pro [dotazování akce](#async-pattern) a [webhooku akce](#webhook-actions). Další informace o [měření využití aktivačních událostí](logic-apps-pricing.md).
+Vaše vlastní rozhraní API může fungovat jako [*Trigger*](./logic-apps-overview.md#logic-app-concepts) , který spouští aplikaci logiky, když nová data nebo událost splňují zadanou podmínku. Tato aktivační událost může buď pravidelně kontrolovat, nebo čekat a naslouchat pro nová data nebo události na koncovém bodu služby. Pokud nová data nebo událost splní zadanou podmínku, Trigger se aktivuje a spustí aplikaci logiky, která naslouchá této aktivační události. Aby bylo možné spustit Logic Apps tímto způsobem, může vaše rozhraní API sledovat [*Trigger cyklického dotazování*](#polling-triggers) nebo vzor [*triggeru Webhooku*](#webhook-triggers) . Tyto vzory jsou podobné jejich protějškům při [dotazování akcí](#async-pattern) a [akcí Webhooku](#webhook-actions). Přečtěte si taky další informace o [měření využití pro aktivační události](logic-apps-pricing.md).
 
 <a name="polling-triggers"></a>
 
-### <a name="check-for-new-data-or-events-regularly-with-the-polling-trigger-pattern"></a>Pravidelně kontrolujte nová data nebo události pomocí způsobu spouště ní dotazování
+### <a name="check-for-new-data-or-events-regularly-with-the-polling-trigger-pattern"></a>Pravidelné zjišťování nových dat nebo událostí pomocí vzoru triggeru cyklického dotazování
 
-*Aktivační událost dotazování* se chová podobně jako [akce dotazování,](#async-pattern) která byla dříve popsána v tomto tématu. Modul Logic Apps pravidelně volá a kontroluje koncový bod aktivační události pro nová data nebo události. Pokud modul najde nová data nebo událost, která splňuje zadanou podmínku, spustí aktivační událost. Potom modul vytvoří instanci aplikace logiky, která zpracovává data jako vstup. 
+*Aktivační událost cyklického dotazování* funguje podobně jako [Akce cyklického dotazování](#async-pattern) dříve popsané v tomto tématu. Modul Logic Apps pravidelně volá a kontroluje koncový bod triggeru pro nová data nebo události. Pokud modul najde nová data nebo událost, která splňuje zadanou podmínku, aktivuje se Trigger. Modul potom vytvoří instanci aplikace logiky, která zpracovává data jako vstup. 
 
-![Vzor aktivační události dotazování](./media/logic-apps-create-api-app/custom-api-polling-trigger-pattern.png)
+![Vzor triggeru cyklického dotazování](./media/logic-apps-create-api-app/custom-api-polling-trigger-pattern.png)
 
 > [!NOTE]
-> Každý požadavek dotazování se počítá jako spuštění akce, i když je vytvořena žádná instance aplikace logiky. Chcete-li zabránit zpracování stejných dat vícekrát, aktivační událost by měla vyčistit data, která již byla přečtena a předána do aplikace logiky.
+> Každá žádost o cyklické dotazování se počítá jako provedení akce, a to i v případě, že se nevytvoří žádná instance aplikace logiky. Aby se zabránilo tomu, že se stejná data zpracovávají víckrát, měla by aktivační událost vyčistit data, která již byla přečtena a předána do aplikace logiky.
 
-Tady jsou konkrétní kroky pro aktivační událost dotazování, popsané z pohledu rozhraní API:
+Tady jsou konkrétní kroky pro aktivační událost cyklického dotazování, která je popsaná v perspektivě rozhraní API:
 
-| Našli jste nová data nebo událost?  | Odpověď rozhraní API | 
+| Našla se nová data nebo událost?  | Odpověď rozhraní API | 
 | ------------------------- | ------------ |
-| Found | Vrátí stav `200 OK` HTTP s datovou částí odpovědi (vstup pro další krok). <br/>Tato odpověď vytvoří instanci aplikace logiky a spustí pracovní postup. | 
-| Nebyl nalezen. | Vrátí stav `202 ACCEPTED` HTTP `location` s hlavičkou a záhlavím. `retry-after` <br/>Pro aktivační události `location` by záhlaví `triggerState` mělo také obsahovat parametr dotazu, což je obvykle "časové razítko". Vaše rozhraní API můžete použít tento identifikátor ke sledování poslední, kdy byla spuštěna aplikace logiky. | 
+| Found | Vrátí stav HTTP `200 OK` s datovou částí Response (vstup pro další krok). <br/>Tato odpověď vytvoří instanci aplikace logiky a spustí pracovní postup. | 
+| Nenalezeno | Vrátí stav HTTP `202 ACCEPTED` s `location` hlavičkou a `retry-after` hlavičkou. <br/>V `location` případě aktivačních událostí by záhlaví mělo obsahovat `triggerState` také parametr dotazu, což je obvykle "časové razítko". Rozhraní API může pomocí tohoto identifikátoru sledovat čas poslední aktivace aplikace logiky. | 
 ||| 
 
-Chcete-li například pravidelně kontrolovat službu pro nové soubory, můžete vytvořit aktivační událost dotazování, která má tyto chování:
+Pokud třeba chcete pravidelně kontrolovat službu pro nové soubory, můžete vytvořit Trigger cyklického dotazování s tímto chováním:
 
-| Žádost `triggerState`obsahuje ? | Odpověď rozhraní API | 
+| Obsahuje `triggerState`požadavek? | Odpověď rozhraní API | 
 | -------------------------------- | -------------| 
-| Ne | Vrátí stav `202 ACCEPTED` HTTP `location` plus `triggerState` záhlaví s nastaveným `retry-after` na aktuální čas a interval na 15 sekund. | 
-| Ano | Zkontrolujte, zda služba `DateTime` nenaschla soubory přidané po aplikaci for `triggerState`. | 
+| Ne | Vrátí stav HTTP `202 ACCEPTED` a `location` hlavičku s `triggerState` nastavenou na aktuální čas a `retry-after` interval na 15 sekund. | 
+| Ano | Ověřte službu pro soubory přidané po `DateTime` pro. `triggerState` | 
 ||| 
 
 | Počet nalezených souborů | Odpověď rozhraní API | 
 | --------------------- | -------------| 
-| Jeden soubor | Vraťte `200 OK` stav PROTOKOLU HTTP a `triggerState` datovou `DateTime` část obsahu, aktualizujte na vrácený soubor a nastavte `retry-after` interval na 15 sekund. | 
-| Více souborů | Vraťte jeden soubor najednou `200 OK` a stav `triggerState`HTTP, `retry-after` aktualizujte a nastavte interval na 0 sekund. </br>Tyto kroky umožňují modulu vědět, že je k dispozici více dat a `location` že modul by měl okamžitě požadovat data z adresy URL v záhlaví. | 
-| Žádné soubory | Vraťte `202 ACCEPTED` stav PROTOKOLU HTTP, `triggerState`neměňte jej a nastavte `retry-after` interval na 15 sekund. | 
+| Jeden soubor | Vraťte stav HTTP `200 OK` a datovou část obsahu, aktualizujte `triggerState` hodnotu `DateTime` pro vrácený soubor a nastavte `retry-after` interval na 15 sekund. | 
+| Více souborů | V jednom okamžiku vraťte soubor a stav HTTP `200 OK` , aktualizujte `triggerState`a nastavte `retry-after` interval na 0 sekund. </br>Pomocí těchto kroků stroj ví, že jsou k dispozici další data a že by měl modul hned požádat o data z adresy URL v `location` hlavičce. | 
+| Žádné soubory | Vrátí stav HTTP `202 ACCEPTED` , neměňte `triggerState`a nastavte `retry-after` interval na 15 sekund. | 
 ||| 
 
 > [!TIP]
-> Příklad dotazování spouštěcí vzor, zkontrolujte tuto [ukázku řadiče aktivační události dotazování v GitHubu](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/PollTriggerController.cs).
+> Ukázkový vzor triggeru cyklického dotazování najdete [v ukázce tohoto kontroleru triggeru cyklického dotazování v GitHubu](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/PollTriggerController.cs).
 
 <a name="webhook-triggers"></a>
 
-### <a name="wait-and-listen-for-new-data-or-events-with-the-webhook-trigger-pattern"></a>Čekání a naslouchání novým datům nebo událostem pomocí spouštěcího vzoru webhooku
+### <a name="wait-and-listen-for-new-data-or-events-with-the-webhook-trigger-pattern"></a>Vyčkejte a poslouchejte nová data nebo události pomocí vzoru triggeru Webhooku.
 
-Aktivační událost webhooku je *aktivační událost push,* která čeká a naslouchá novým datům nebo událostem v koncovém bodě služby. Pokud nová data nebo událost splňuje zadanou podmínku, aktivační událost se aktivuje a vytvoří instanci aplikace logiky, která pak zpracuje data jako vstup.
-Webhook aktivační události se chovají podobně jako [akce webhooku](#webhook-actions) dříve `subscribe` popsané `unsubscribe` v tomto tématu a jsou nastaveny s a koncové body. 
+Trigger Webhooku je *Trigger push* , který čeká a naslouchá novým datům nebo událostem na koncovém bodu služby. Pokud nová data nebo událost splní zadanou podmínku, Trigger se aktivuje a vytvoří instanci aplikace logiky, která pak data zpracuje jako vstup.
+Triggery Webhooku fungují podobně jako [Akce Webhooku](#webhook-actions) dříve popsané v tomto tématu a jsou nastavené `subscribe` pomocí `unsubscribe` koncových bodů a. 
 
-* `subscribe`koncový bod: Když přidáte a uložíte aktivační událost webhooku v `subscribe` aplikaci logiky, modul Logic Apps zavolá koncový bod. Tento krok způsobí, že aplikace logiky k vytvoření adresy URL zpětného volání, které ukládá vaše rozhraní API. Pokud jsou nová data nebo událost, která splňuje zadanou podmínku, vaše rozhraní API volá zpět s HTTP POST na adresu URL. Datová část obsahu a záhlaví předat jako vstup do aplikace logiky.
+* `subscribe`koncový bod: když do aplikace logiky přidáte a uložíte Trigger Webhooku, modul Logic Apps volá `subscribe` koncový bod. Tento krok způsobí, že aplikace logiky vytvoří adresu URL zpětného volání, které vaše rozhraní API ukládá. Pokud jsou k dispozici nová data nebo událost, která splňuje zadanou podmínku, rozhraní API se vrátí pomocí HTTP POST na adresu URL. Datová část obsahu a hlavičky přecházejí jako vstup do aplikace logiky.
 
-* `unsubscribe`koncový bod: Pokud se odstraní aktivační událost webhooku `unsubscribe` nebo celá aplikace logiky, modul Logic Apps zavolá koncový bod. Vaše rozhraní API pak můžete zrušit registraci adresu URL zpětného volání a zastavit všechny procesy podle potřeby.
+* `unsubscribe`koncový bod: Pokud se Trigger Webhooku nebo celá aplikace logiky odstraní, modul Logic Apps volá `unsubscribe` koncový bod. Vaše rozhraní API pak může zrušit registraci adresy URL zpětného volání a v případě potřeby zastavit všechny procesy.
 
-![Vzor aktivační události webhooku](./media/logic-apps-create-api-app/custom-api-webhook-trigger-pattern.png)
+![Vzor triggeru Webhooku](./media/logic-apps-create-api-app/custom-api-webhook-trigger-pattern.png)
 
 > [!NOTE]
-> V současné době návrhář aplikace logiky nepodporuje zjišťování koncových bodů webhooku prostřednictvím Swagger. Takže pro tento vzor, budete muset přidat [ **Webhook** aktivační událost](../connectors/connectors-native-webhook.md) a zadejte ADRESU URL, záhlaví a tělo pro váš požadavek. Viz také [HTTPWebhook trigger](logic-apps-workflow-actions-triggers.md#httpwebhook-trigger). Chcete-li předat adresu URL zpětného `@listCallbackUrl()` volání, můžete použít funkci pracovního postupu v libovolném z předchozích polí podle potřeby.
+> Návrhář aplikace logiky v současné době nepodporuje zjišťování koncových bodů webhooků prostřednictvím Swagger. Pro tento model proto musíte přidat [Trigger **Webhooku** ](../connectors/connectors-native-webhook.md) a zadat adresu URL, záhlaví a text vaší žádosti. Viz také [Trigger HTTPWebhook](logic-apps-workflow-actions-triggers.md#httpwebhook-trigger). Chcete-li předat adresu URL zpětného volání, můžete `@listCallbackUrl()` v případě potřeby použít funkci pracovního postupu v libovolném z předchozích polí.
 >
-> Chcete-li zabránit zpracování stejných dat vícekrát, aktivační událost by měla vyčistit data, která již byla přečtena a předána do aplikace logiky.
+> Aby se zabránilo tomu, že se stejná data zpracovávají víckrát, měla by aktivační událost vyčistit data, která již byla přečtena a předána do aplikace logiky.
 
 > [!TIP]
-> Příklad vzoru webhooku, zkontrolujte tuto [ukázku řadiče aktivační události webhooku v GitHubu](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs).
+> Příklad vzoru Webhooku najdete [v ukázce tohoto kontroleru triggeru triggeru Webhooku na GitHubu](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs).
 
-## <a name="improve-security-for-calls-to-your-apis-from-logic-apps"></a>Zlepšení zabezpečení pro volání do vašich api z aplikací logiky
+## <a name="improve-security-for-calls-to-your-apis-from-logic-apps"></a>Vylepšení zabezpečení volání rozhraní API z Logic Apps
 
-Po vytvoření vlastních api nastavte ověřování pro vaše api, abyste je mohli bezpečně volat z aplikací logiky. [Zjistěte, jak zlepšit zabezpečení pro volání vlastních api z aplikací logiky](../logic-apps/logic-apps-custom-api-authentication.md).
+Po vytvoření vlastních rozhraní API nastavte ověřování pro vaše rozhraní API, abyste je mohli bezpečně volat z Logic Apps. Naučte [se zlepšovat zabezpečení volání vlastních rozhraní API z Logic Apps](../logic-apps/logic-apps-custom-api-authentication.md).
 
-## <a name="deploy-and-call-your-apis"></a>Nasazení a volání vašich api
+## <a name="deploy-and-call-your-apis"></a>Nasazení a volání rozhraní API
 
-Po nastavení ověřování nastavte nasazení pro vaše api. Přečtěte [si, jak nasadit a volat vlastní api z aplikací logiky](../logic-apps/logic-apps-custom-api-host-deploy-call.md).
+Po nastavení ověřování nastavte nasazení pro vaše rozhraní API. Naučte [se nasazovat a volat vlastní rozhraní API z Logic Apps](../logic-apps/logic-apps-custom-api-host-deploy-call.md).
 
-## <a name="publish-custom-apis-to-azure"></a>Publikování vlastních api do Azure
+## <a name="publish-custom-apis-to-azure"></a>Publikování vlastních rozhraní API do Azure
 
-Chcete-li zpřístupnit vlastní rozhraní API pro ostatní uživatele logic apps v Azure, musíte přidat zabezpečení a zaregistrovat je jako konektory aplikace logiky. Další informace najdete v tématu [Přehled vlastních konektorů](../logic-apps/custom-connector-overview.md). 
+Aby vaše vlastní rozhraní API byla dostupná pro ostatní Logic Apps uživatele v Azure, musíte přidat zabezpečení a zaregistrovat je jako konektory aplikace logiky. Další informace najdete v tématu [Přehled vlastních konektorů](../logic-apps/custom-connector-overview.md). 
 
-Chcete-li zpřístupnit vlastní rozhraní API všem uživatelům v aplikacích Logic Apps, Power Automate a Microsoft Power Apps, musíte přidat zabezpečení, zaregistrovat rozhraní API jako konektory aplikace logiky a nominovat konektory pro [program Microsoft Azure Certified](https://azure.microsoft.com/marketplace/programs/certified/logic-apps/). 
+Pokud chcete, aby vaše vlastní rozhraní API byla dostupná pro všechny uživatele v Logic Apps, automatizaci a aplikacích Microsoft Power, musíte přidat zabezpečení, zaregistrovat vaše rozhraní API jako konektory aplikací logiky a pojmenovat konektory pro [program Microsoft Azure Certified](https://azure.microsoft.com/marketplace/programs/certified/logic-apps/). 
 
-## <a name="get-support"></a>Získat podporu
+## <a name="get-support"></a>Získání podpory
 
-* Chcete-li požádat o [customapishelp@microsoft.com](mailto:customapishelp@microsoft.com)konkrétní pomoc s vlastními řešeními API, obraťte se na společnost .
+* Pro konkrétní nápovědu k vlastním rozhraním API [customapishelp@microsoft.com](mailto:customapishelp@microsoft.com)kontaktujte.
 
 * Pokud máte dotazy, navštivte [fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
 
@@ -231,5 +231,5 @@ Chcete-li zpřístupnit vlastní rozhraní API všem uživatelům v aplikacích 
 ## <a name="next-steps"></a>Další kroky
 
 * [Zpracování chyb a výjimek](../logic-apps/logic-apps-exception-handling.md)
-* [Volání, aktivace nebo vnoření logických aplikací s koncovými body HTTP](../logic-apps/logic-apps-http-endpoint.md)
-* [Měření využití akcí a aktivačních událostí](../logic-apps/logic-apps-pricing.md)
+* [Volání, triggery nebo vnořování Logic Apps s koncovými body HTTP](../logic-apps/logic-apps-http-endpoint.md)
+* [Měření využití pro akce a triggery](../logic-apps/logic-apps-pricing.md)

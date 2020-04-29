@@ -4,10 +4,10 @@ description: Zašifrujte data aplikace v Azure Storage a nasaďte je jako soubor
 ms.topic: article
 ms.date: 03/06/2020
 ms.openlocfilehash: 7e5e809fe8b670ae6ec5bfd15e54f9a8019e76d1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79408739"
 ---
 # <a name="encryption-at-rest-using-customer-managed-keys"></a>Šifrování v klidovém formátu pomocí klíčů spravovaných zákazníkem

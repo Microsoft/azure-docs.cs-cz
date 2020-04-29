@@ -1,7 +1,7 @@
 ---
-title: 'Odstranit duplicitní řádky: Odkaz na modul'
+title: 'Odebrat duplicitní řádky: odkaz na modul'
 titleSuffix: Azure Machine Learning
-description: Zjistěte, jak pomocí modulu Odebrat duplicitní řádky v Azure Machine Learning odebrat potenciální duplikáty z datové sady.
+description: Naučte se, jak pomocí modulu odebrat duplicitní řádky v Azure Machine Learning odebrat možné duplicity z datové sady.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,21 +10,21 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
 ms.openlocfilehash: 490d3305abcbcd906a0f727d736db8cab7e4287e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79456017"
 ---
-# <a name="remove-duplicate-rows-module"></a>Odstranit modul Duplicitní řádky
+# <a name="remove-duplicate-rows-module"></a>Odebrat modul duplicitních řádků
 
-Tento článek popisuje modul v návrháři Azure Machine Learning (preview).
+Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
 
-Tento modul slouží k odebrání potenciálních duplikátů z datové sady.
+Pomocí tohoto modulu můžete z datové sady odebrat možné duplicity.
 
-Předpokládejme například, že vaše data vypadají takto a představují více záznamů pro pacienty. 
+Předpokládejme například, že vaše data vypadají jako následující a představují více záznamů pro pacienty. 
 
-| ID pacienta | Iniciály| Pohlaví|Věk|Přijaty|
+| PatientID | Iniciály| Pohlaví|Věk|Pustil|
 |----|----|----|----|----|
 |1|F.M.| M| 53| Jan|
 |2| F.A.M.| M| 53| Jan|
@@ -36,45 +36,45 @@ Předpokládejme například, že vaše data vypadají takto a představují ví
 |6| F.A.M.| M| Není číslo| |
 |7| F.A.M.| M| Není číslo| |
 
-Je zřejmé, že tento příklad má více sloupců s potenciálně duplicitní data. Zda se skutečně jedná o duplikáty, závisí na vaší znalosti dat. 
+V tomto příkladu je jasně uvedeno více sloupců s potenciálně duplicitními daty. Bez ohledu na to, jestli jsou ve skutečnosti duplicity, záleží na vašich znalostech dat. 
 
-+ Například, možná víte, že mnoho pacientů má stejný název. Neodstranili byste duplikáty pomocí sloupců názvů, pouze sloupce **ID.** Tímto způsobem jsou odfiltrovány pouze řádky s duplicitními hodnotami ID, bez ohledu na to, zda mají pacienti stejný název nebo ne.
++ Například můžete zjistit, že mnoho pacientů má stejný název. Duplicity nebudete odstraňovat pomocí sloupců s názvy, a to pouze ve sloupci **ID** . Tímto způsobem jsou odfiltrovány pouze řádky s duplicitními hodnotami ID bez ohledu na to, zda mají pacienty stejný název.
 
-+ Případně se můžete rozhodnout povolit duplikáty v poli ID a použít jinou kombinaci souborů k vyhledání jedinečných záznamů, například křestního jména, příjmení, věku a pohlaví.  
++ Alternativně se můžete rozhodnout v poli ID k povolení duplicit a použít jinou kombinaci souborů k vyhledání jedinečných záznamů, jako je jméno, příjmení, věk a pohlaví.  
 
-Chcete-li nastavit kritéria pro to, zda je řádek duplicitní či nikoli, zadejte jeden sloupec nebo sadu sloupců, které mají být **použity**jako klíče . Dva řádky jsou považovány za duplicitní pouze v případě, že hodnoty ve **všech** klíčových sloupcích jsou stejné. Pokud některý řádek má chybějící hodnotu pro **klíče**, nebudou považovány za duplicitní řádky. Pokud jsou například pohlaví a věk nastaveny jako klíče ve výše uvedené tabulce, řádek 6 a 7 nejsou duplicitní řádky vzhledem k tomu, že mají chybějící hodnotu v Age.
+Chcete-li nastavit kritéria pro, zda je řádek duplicitní nebo nikoli, zadejte jeden sloupec nebo sadu sloupců, které mají být použity jako **klíče**. Dva řádky jsou považovány za duplicitní pouze v případě, že jsou hodnoty ve **všech** klíčových sloupcích stejné. Pokud některý z řádků postrádá hodnotu pro **klíče**, nepovažují se za duplicitní řádky. Pokud je například pohlaví a stáří nastavené jako klíče ve výše uvedené tabulce, řádky 6 a 7 nejsou duplicitní řádky, protože mají chybějící hodnotu v stáří.
 
-Při spuštění modulu vytvoří datovou sadu kandidátů a vrátí sadu řádků, které nemají žádné duplikáty v celé sadě sloupců, které jste zadali.
+Když spustíte modul, vytvoří se kandidátská datová sada a vrátí sadu řádků, které nemají žádné duplicity v rámci zadané sady sloupců.
 
 > [!IMPORTANT]
-> Zdrojová datová sada se nezmění. Tento modul vytvoří novou datovou sadu, která je filtrována tak, aby vyloučila duplikáty, na základě zadaných kritérií.
+> Zdrojová datová sada se nemění; Tento modul vytvoří novou datovou sadu, která je filtrována tak, aby vyloučila duplicity na základě kritérií, která zadáte.
 
-## <a name="how-to-use-remove-duplicate-rows"></a>Použití použití funkce Odstranit duplicitní řádky
+## <a name="how-to-use-remove-duplicate-rows"></a>Použití funkce odebrat duplicitní řádky
 
-1. Přidejte modul do kanálu. Modul Odstranit **duplicitní řádky** najdete v části **Transformace dat**, **Manipulace**.  
+1. Přidejte modul do svého kanálu. Modul **Odebrat duplicitní řádky** můžete najít v části **transformace dat**, **manipulace**.  
 
-2. Připojte datovou sadu, kterou chcete zkontrolovat pro duplicitní řádky.
+2. Připojte datovou sadu, u které chcete kontrolovat duplicitní řádky.
 
-3. V podokně **Vlastnosti** klikněte v části **Výraz filtru výběru sloupce klíče**na **selekátor sloupce spuštění**a vyberte sloupce, které chcete použít při identifikaci duplikátů.
+3. V podokně **vlastnosti** v části **výraz filtru výběru klíčového sloupce**klikněte na **Spustit selektor sloupců**a vyberte sloupce, které chcete použít při identifikaci duplicitních hodnot.
 
-    V tomto kontextu **Key** neznamená jedinečný identifikátor. Všechny sloupce, které vyberete pomocí voliče sloupců, jsou **označeny**jako klíčové sloupce . Všechny nevybrané sloupce jsou považovány za sloupce, které nejsou klíčové. Kombinace sloupců, které vyberete jako klíče, určuje jedinečnost záznamů. (Představte si to jako příkaz SQL, který používá více spojení rovnosti.)
+    V tomto kontextu **klíč** neznamená jedinečný identifikátor. Všechny sloupce, které vyberete pomocí selektoru sloupců, jsou označeny jako **klíčové sloupce**. Všechny sloupce bez výběru jsou považovány za neklíčové sloupce. Jedinečnost záznamů závisí na kombinaci sloupců, které vyberete jako klíče. (Můžete si ho představit jako příkaz SQL, který používá vícenásobné spojení se rovností.)
 
     Příklady:
 
-    + "Chci zajistit, aby ID byla jedinečná": Zvolte pouze sloupec ID.
-    + "Chci zajistit, aby kombinace křestního jména, příjmení a ID byla jedinečná": Vyberte všechny tři sloupce.
+    + "Chci zajistit, aby ID byla jedinečná": vyberte pouze sloupec ID.
+    + "Chcete zajistit, aby byla kombinace jména, příjmení a ID jedinečná": vyberte všechny tři sloupce.
 
-4. Pomocí zaškrtávacího políčka **Zachovat první duplicitní řádek** označte, který řádek má být vrácen při nalezení duplicity:
+4. Chcete-li určit, který řádek, který se má vrátit, když budou nalezeny duplicity, použijte zaškrtávací políčko **zachovat první duplicitní řádek** :
 
-    + Pokud je tato možnost vybrána, vrátí se první řádek a ostatní budou zahozeny. 
-    + Pokud zrušíte zaškrtnutí této možnosti, poslední duplicitní řádek je zachován ve výsledcích a ostatní jsou zahozeny. 
+    + Pokud je tato možnost vybrána, vrátí se první řádek a ostatní se zruší. 
+    + Pokud zrušíte kontrolu této možnosti, bude poslední duplicitní řádek ve výsledcích uchováván a ostatní budou zahozeny. 
 
-5. Odešlete potrubí.
+5. Odešlete kanál.
 
-6. Chcete-li zkontrolovat výsledky, klepněte pravým tlačítkem myši na modul a vyberte **možnost Vizualizovat**. 
+6. Chcete-li zkontrolovat výsledky, klikněte pravým tlačítkem na modul a vyberte **vizualizovat**. 
 
 > [!TIP]
-> Pokud jsou výsledky obtížně pochopitelné nebo pokud chcete vyloučit některé sloupce z úvahy, můžete sloupce odebrat pomocí modulu [Vybrat sloupce v datové sadě.](./select-columns-in-dataset.md)
+> Pokud jsou výsledky obtížné pochopit nebo pokud chcete vyloučit některé sloupce z úvah, můžete sloupce odebrat pomocí modulu [Výběr sloupců v datové sadě](./select-columns-in-dataset.md) .
 
 ## <a name="next-steps"></a>Další kroky
 

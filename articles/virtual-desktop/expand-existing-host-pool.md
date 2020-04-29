@@ -9,10 +9,10 @@ ms.date: 02/21/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: aee5195fe86fed3e631908a38d3bdb7d5e4883b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79365215"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>Rozšíření existujícího fondu hostitelů s novými hostiteli relací

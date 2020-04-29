@@ -1,7 +1,7 @@
 ---
-title: Určení modelu šifrovacího klíče se používá pro účet úložiště
+title: Určení modelu šifrovacího klíče, který se používá pro účet úložiště
 titleSuffix: Azure Storage
-description: Pomocí portálu Azure, PowerShellu nebo Azure CLI zkontrolujte, jak se spravují šifrovací klíče pro účet úložiště. Klíče mohou spravovat společnost Microsoft (výchozí) nebo zákazník. Klíče spravované zákazníkem musí být uloženy v trezoru klíčů Azure.
+description: Pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure můžete zjistit, jak se šifrovací klíče spravují pro účet úložiště. Klíče může spravovat Microsoft (výchozí) nebo zákazník. Klíče spravované zákazníkem musí být uloženy v Azure Key Vault.
 services: storage
 author: tamram
 ms.service: storage
@@ -11,45 +11,45 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 0df0ba4ce76d249bcb4738b41c94677e061f14ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79409847"
 ---
-# <a name="determine-which-azure-storage-encryption-key-model-is-in-use-for-the-storage-account"></a>Určení modelu šifrovacího klíče azure storage se používá pro účet úložiště
+# <a name="determine-which-azure-storage-encryption-key-model-is-in-use-for-the-storage-account"></a>Určete, který Azure Storage model šifrovacího klíče se používá pro účet úložiště.
 
-Data ve vašem účtu úložiště se automaticky šifrují službou Azure Storage. Šifrování Azure Storage nabízí dvě možnosti správy šifrovacích klíčů na úrovni účtu úložiště:
+Data v účtu úložiště se automaticky šifrují pomocí Azure Storage. Azure Storage šifrování nabízí dvě možnosti správy šifrovacích klíčů na úrovni účtu úložiště:
 
-- **Klíče spravované společností Microsoft.** Ve výchozím nastavení spravuje společnost Microsoft klíče používané k šifrování účtu úložiště.
-- **Klíče spravované zákazníkem.** Volitelně můžete zvolit správu šifrovacích klíčů pro váš účet úložiště. Klíče spravované zákazníkem musí být uloženy v trezoru klíčů Azure.
+- **Klíče spravované společností Microsoft.** Ve výchozím nastavení spravuje Microsoft klíče používané k zašifrování účtu úložiště.
+- **Klíče spravované zákazníkem.** Volitelně můžete zvolit správu šifrovacích klíčů pro váš účet úložiště. Klíče spravované zákazníkem musí být uloženy v Azure Key Vault.
 
-Kromě toho můžete poskytnout šifrovací klíč na úrovni individuální požadavek pro některé operace úložiště objektů blob. Pokud je v požadavku zadán šifrovací klíč, tento klíč přepíše šifrovací klíč, který je aktivní v účtu úložiště. Další informace naleznete [v tématu Určení klíče poskytnutého zákazníkem na žádost o úložiště objektů Blob](../blobs/storage-blob-customer-provided-key.md).
+Navíc můžete zadat šifrovací klíč na úrovni individuální žádosti pro některé operace BLOB Storage. Při zadání šifrovacího klíče v žádosti tento klíč přepíše šifrovací klíč, který je aktivní v účtu úložiště. Další informace najdete v tématu [určení klíče poskytnutého zákazníkem v požadavku na úložiště objektů BLOB](../blobs/storage-blob-customer-provided-key.md).
 
-Další informace o šifrovacích klíčích najdete v tématu [šifrování Azure Storage pro data v klidovém stavu](storage-service-encryption.md).
+Další informace o šifrovacích klíčích najdete v tématu [Azure Storage Encryption for data v klidovém umístění](storage-service-encryption.md).
 
-## <a name="check-the-encryption-key-model-for-the-storage-account"></a>Kontrola modelu šifrovacího klíče pro účet úložiště
+## <a name="check-the-encryption-key-model-for-the-storage-account"></a>Ověřte model šifrovacího klíče pro účet úložiště.
 
-Chcete-li zjistit, zda účet úložiště používá klíče spravované společností Microsoft nebo klíče spravované zákazníkem pro šifrování, použijte jeden z následujících přístupů.
+K určení, jestli účet úložiště používá pro šifrování klíče spravované Microsoftem nebo klíče spravované zákazníkem, použijte jeden z následujících přístupů.
 
-# <a name="azure-portal"></a>[Portál Azure](#tab/portal)
+# <a name="azure-portal"></a>[portál Azure](#tab/portal)
 
-Chcete-li zkontrolovat model šifrování pro účet úložiště pomocí portálu Azure, postupujte takto:
+Pokud chcete ověřit model šifrování pro účet úložiště pomocí Azure Portal, postupujte podle těchto kroků:
 
 1. Na portálu Azure Portal přejděte k účtu úložiště.
-1. Vyberte nastavení **Šifrování** a poznamenejte si to.
+1. Vyberte nastavení **šifrování** a poznamenejte si nastavení.
 
-Následující obrázek znázorňuje účet úložiště, který je šifrován pomocí klíčů spravovaných společností Microsoft:
+Následující obrázek ukazuje účet úložiště zašifrovaný pomocí klíčů spravovaných Microsoftem:
 
-![Zobrazit účet zašifrovaný pomocí klíčů spravovaných společností Microsoft](media/storage-encryption-key-model-get/microsoft-managed-encryption-key-setting-portal.png)
+![Zobrazit účet zašifrovaný pomocí klíčů spravovaných Microsoftem](media/storage-encryption-key-model-get/microsoft-managed-encryption-key-setting-portal.png)
 
-A následující obrázek ukazuje účet úložiště, který je šifrován pomocí klíčů spravovaných zákazníkem:
+A na následujícím obrázku vidíte účet úložiště, který je zašifrovaný pomocí klíčů spravovaných zákazníkem:
 
-![Snímek obrazovky s nastavením šifrovacího klíče na Webu Azure Portal](media/storage-encryption-key-model-get/customer-managed-encryption-key-setting-portal.png)
+![Snímek obrazovky s nastavením šifrovacího klíče v Azure Portal](media/storage-encryption-key-model-get/customer-managed-encryption-key-setting-portal.png)
 
-# <a name="powershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[Prostředí](#tab/powershell)
 
-Chcete-li zkontrolovat model šifrování pro účet úložiště pomocí prostředí PowerShell, zavolejte příkaz [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) a zkontrolujte vlastnost **KeySource** pro účet.
+Pokud chcete ověřit model šifrování pro účet úložiště pomocí PowerShellu, zavolejte příkaz [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) a potom zkontrolujte vlastnost **source** daného účtu.
 
 ```powershell
 $account = Get-AzStorageAccount -ResourceGroupName <resource-group> `
@@ -57,11 +57,11 @@ $account = Get-AzStorageAccount -ResourceGroupName <resource-group> `
 $account.Encryption.KeySource
 ```
 
-Pokud je hodnota **vlastnosti KeySource** , je `Microsoft.Storage`účet zašifrován pomocí klíčů spravovaných společností Microsoft. Pokud je hodnota **Vlastnosti KeySource** , je `Microsoft.Keyvault`účet zašifrován pomocí klíčů spravovaných zákazníkem.
+Pokud je `Microsoft.Storage`hodnota vlastnosti **zdroje** klíče, pak je účet zašifrovaný pomocí klíčů spravovaných Microsoftem. Pokud je `Microsoft.Keyvault`hodnota vlastnosti **zdroje** , je účet zašifrovaný pomocí klíčů spravovaných zákazníkem.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/cli)
 
-Chcete-li zkontrolovat model šifrování pro účet úložiště pomocí azure CLI, zavolejte příkaz [az úložiště show](/cli/azure/storage/account#az-storage-account-show) a pak zkontrolujte vlastnost **keySource** pro účet.
+Pokud chcete ověřit model šifrování pro účet úložiště pomocí rozhraní příkazového řádku Azure, zavolejte příkaz [AZ Storage Account show](/cli/azure/storage/account#az-storage-account-show) a pak zkontrolujte vlastnost **source** účtu.
 
 ```azurecli-interactive
 key_source=$(az storage account show \
@@ -71,11 +71,11 @@ key_source=$(az storage account show \
     --output tsv)
 ```
 
-Pokud je hodnota vlastnosti `Microsoft.Storage` **keySource** , je účet zašifrován pomocí klíčů spravovaných společností Microsoft. Pokud je `Microsoft.Keyvault`hodnota vlastnosti **keySource** , je účet zašifrován pomocí klíčů spravovaných zákazníkem.
+Pokud je `Microsoft.Storage`hodnota vlastnosti **zdroje** klíče, pak je účet zašifrovaný pomocí klíčů spravovaných Microsoftem. Pokud je `Microsoft.Keyvault`hodnota vlastnosti **zdroje** , je účet zašifrovaný pomocí klíčů spravovaných zákazníkem.
 
 ---
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Šifrování Azure Storage pro data v klidovém stavu](storage-service-encryption.md)
-- [Správa šifrování Azure Storage pomocí azure key vaultu pomocí klíčů Azure Key Vault](encryption-customer-managed-keys.md)
+- [Azure Storage šifrování dat v klidovém umístění](storage-service-encryption.md)
+- [Použití klíčů spravovaných zákazníkem se Azure Key Vault ke správě šifrování Azure Storage](encryption-customer-managed-keys.md)

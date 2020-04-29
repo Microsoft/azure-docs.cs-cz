@@ -1,5 +1,5 @@
 ---
-title: Vytvoření centra událostí s povoleným zachycením – Azure Event Hubs | Dokumenty společnosti Microsoft
+title: Vytvoření centra událostí s povoleným zachytáváním – Azure Event Hubs | Microsoft Docs
 description: Vytvoření oboru názvů Azure Event Hubs s jedním centrem událostí a povolení funkce Capture pomocí šablony Azure Resource Manageru
 services: event-hubs
 documentationcenter: .net
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/12/2020
 ms.author: shvija
 ms.openlocfilehash: 0b20c73ed0590f3afc19db43b4b55dd3ff6bde8e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79453866"
 ---
 # <a name="create-a-namespace-with-event-hub-and-enable-capture-using-a-template"></a>Vytvoření oboru názvů v centru událostí a povolení funkce Capture pomocí šablony
@@ -27,7 +27,7 @@ Tento článek ukazuje, jak použít šablonu Azure Resource Manageru, která vy
 
 Tento článek také ukazuje, jak určit, že se události mají zachytávat do objektů Azure Storage Blob nebo do služby Azure Data Lake Store v závislosti na zvoleném cíli.
 
-Další informace o vytváření šablon najdete v tématu [Tvorba šablon Azure Resource Manageru][Authoring Azure Resource Manager templates]. Syntaxe JSON a vlastnosti pro použití v šabloně naleznete v [tématu Typy prostředků Microsoft.EventHub](/azure/templates/microsoft.eventhub/allversions).
+Další informace o vytváření šablon najdete v tématu [Tvorba šablon Azure Resource Manageru][Authoring Azure Resource Manager templates]. Informace o syntaxi a vlastnostech JSON pro použití v šabloně najdete v tématu [typy prostředků Microsoft. EventHub](/azure/templates/microsoft.eventhub/allversions).
 
 Další informace o vzorech a postupech pro zásady vytváření názvů prostředků Azure najdete v tématu [Zásady vytváření názvů prostředků Azure][Azure Resources naming conventions].
 
@@ -235,7 +235,7 @@ Kontejner objektů blob, do kterého se mají zachytávat data událostí.
 }
 ```
 
-Pokud jako cíl zvolíte Azure Data Lake Store Gen 1, použijte následující parametry. Je potřeba nastavit oprávnění k cestě Data Lake Store, ve které chcete událost zachytávat. Pokud chcete nastavit oprávnění, přečtěte si informace [o sběru dat do úložiště datového jezera Azure Gen 1](event-hubs-capture-enable-through-portal.md#capture-data-to-azure-data-lake-storage-gen-1).
+Pokud jako cíl zvolíte Azure Data Lake Store Gen 1, použijte následující parametry. Je potřeba nastavit oprávnění k cestě Data Lake Store, ve které chcete událost zachytávat. Pokud chcete nastavit oprávnění, přečtěte si téma [zachycení dat do Azure Data Lake Storage Gen 1](event-hubs-capture-enable-through-portal.md#capture-data-to-azure-data-lake-storage-gen-1).
 
 ### <a name="subscriptionid"></a>subscriptionId
 
@@ -387,7 +387,7 @@ Vytvoří obor názvů typu **EventHub** s jedním centrem událostí a povolí 
 ```
 
 > [!NOTE]
-> Můžete povolit nebo zakázat vyzařování prázdných souborů, pokud během okna Capture nedojde k žádným událostem pomocí vlastnosti **skipEmptyArchives.** 
+> Můžete povolit nebo zakázat vygenerování prázdných souborů, pokud během okna sběru nedojde k událostem pomocí vlastnosti **skipEmptyArchives** . 
 
 ## <a name="commands-to-run-deployment"></a>Příkazy pro spuštění nasazení
 
@@ -429,7 +429,7 @@ Funkci Event Hubs Capture můžete konfigurovat také prostřednictvím webu [Az
 
 Další informace o službě Event Hubs najdete na následujících odkazech:
 
-* [Přehled centra událostí](event-hubs-what-is-event-hubs.md)
+* [Přehled Event Hubs](event-hubs-what-is-event-hubs.md)
 * [Vytvoření centra událostí](event-hubs-create.md)
 * [Nejčastější dotazy k Event Hubs](event-hubs-faq.md)
 

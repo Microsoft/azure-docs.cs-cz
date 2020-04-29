@@ -1,6 +1,6 @@
 ---
-title: Azure Front Door – přepis adresy URL | Dokumenty společnosti Microsoft
-description: Tento článek vám pomůže pochopit, jak Azure Front Door provádí přepis adresy URL pro vaše trasy, pokud jsou nakonfigurované.
+title: Přední dvířka Azure – přepsání adresy URL | Microsoft Docs
+description: Tento článek vám pomůže porozumět tomu, jak přední dvířka Azure Přepisuje adresu URL pro vaše trasy, pokud jsou nakonfigurované.
 services: front-door
 documentationcenter: ''
 author: sharad4u
@@ -12,48 +12,48 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: 1e5bd565be7a1cabf08ddf33c65eb12b5294249f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79471468"
 ---
-# <a name="url-rewrite-custom-forwarding-path"></a>Přepsání adresy URL (vlastní cesta pro předávání)
-Azure Front Door podporuje přepsání adresy URL tím, že umožňuje nakonfigurovat volitelnou **vlastní cestu pro předávání,** která se použije při vytváření požadavku na předávání do back-endu. Pokud není zadaná žádná vlastní předávací cesta, ve výchozím nastavení služba Front Door zkopíruje příchozí cestu URL do adresy URL použité v přesměrovaném požadavku. Hlavička hostitele použitá v přesměrovaném požadavku odpovídá konfiguraci pro vybraný back-end. Přečtěte si [záhlaví back-endu hostitele,](front-door-backend-pool.md#hostheader) abyste zjistili, co dělá a jak ho můžete nakonfigurovat.
+# <a name="url-rewrite-custom-forwarding-path"></a>Přepsání adresy URL (vlastní cesta přesměrování)
+Přední dvířka Azure podporují přepis adres URL tím, že vám umožní nakonfigurovat volitelnou **cestu pro přesměrování** , která se má použít při vytváření žádosti pro předání do back-endu. Pokud není zadaná žádná vlastní předávací cesta, ve výchozím nastavení služba Front Door zkopíruje příchozí cestu URL do adresy URL použité v přesměrovaném požadavku. Hlavička hostitele použitá v přesměrovaném požadavku odpovídá konfiguraci pro vybraný back-end. Přečtěte si [hlavičku back-end hostitele](front-door-backend-pool.md#hostheader) , kde se dozvíte, co dělá a jak ho můžete nakonfigurovat.
 
-Výkonná část přepisování adres URL pomocí vlastní cesty pro předávání je, že zkopíruje libovolnou část příchozí cesty, která odpovídá zástupné cestě k předané cestě (tyto segmenty cesty jsou **zelené** segmenty v příkladu níže):
+Výkonná součást přepsání adresy URL pomocí vlastního předávacího postupu spočívá v tom, že zkopíruje všechny části příchozí cesty, které odpovídají zástupným cestám, do přesměrované cesty (tyto segmenty cest jsou **zelenými** segmenty v následujícím příkladu):
 </br>
-![Přepsání adresy URL předních dveří Azure][1]
+![Přepsání adresy URL z předních dveří Azure][1]
 
-## <a name="url-rewrite-example"></a>Příklad přepisu adresy URL
-Zvažte pravidlo směrování s následujícími front-endovými hostiteli a nakonfigurovanými cestami:
+## <a name="url-rewrite-example"></a>Příklad přepsání adresy URL
+Vezměte v úvahu pravidlo směrování s nakonfigurovanými následujícími hostiteli a cestami front-endu:
 
 | Hostitelé      | Cesty       |
 |------------|-------------|
-| www\.contoso.com | /\*         |
+| Webová\.contoso.com | /\*         |
 |            | /foo        |
-|            | /foo/\*     |
+|            | foo\*     |
 |            | /foo/bar/\* |
 
-První sloupec v následující tabulce ukazuje příklady příchozích požadavků a druhý sloupec ukazuje, co by bylo "nejvíce specifické" odpovídající trasu 'Cesta'.  Třetí a následující sloupce prvního řádku tabulky jsou příklady nakonfigurovaných **vlastních cest pro předávání**, přičemž ostatní řádky v těchto sloupcích představují příklady toho, co by byla cesta předávaného požadavku, pokud by byla spárována s požadavkem v tomto řádku.
+První sloupec v tabulce ukazuje příklady příchozích požadavků a druhý sloupec zobrazuje, co by bylo "" nejlépe se "vyhovující" cesta ".  Třetím a dalším sloupcem prvního řádku tabulky jsou příklady konfigurovaných **vlastních cest předávání**, ve kterých zbylé řádky v těchto sloupcích představují příklady toho, co by byla přesměrovaná cesta požadavku shodná s požadavkem v tomto řádku.
 
-Pokud například čteme přes druhý řádek, říká se, `www.contoso.com/sub`že pro příchozí požadavek `/`, pokud byla vlastní `/sub`cesta pro předávání , pak by byla předaná cesta . Pokud byla vlastní cesta `/fwd/`pro předávání , byla `/fwd/sub`by předaná cesta . A tak dále, pro zbývající sloupce. **Zvýrazněné** části cest níže představují části, které jsou součástí zástupné shody.
+Pokud je například čteno v druhém řádku, znamená to, že pro příchozí požadavek `www.contoso.com/sub`se v případě, že byla vytvořena `/`vlastní cesta přesměrování, přesměrovaná cesta bude. `/sub` Pokud byla `/fwd/`cesta pro vlastní přesměrování, přesměrovaná cesta bude `/fwd/sub`. A tak dále pro zbývající sloupce. **Zvýrazněné** části níže uvedených cest představují části, které jsou součástí porovnávání se zástupnými znaky.
 
 
-| Příchozí požadavek       | Cesta nejkonkrétnější shody | /          | /fwd/          | /foo/          | /foo/bar/          |
+| Příchozí žádost       | Konkrétní cesta shody | /          | /fwd/          | foo          | /foo/bar/          |
 |------------------------|--------------------------|------------|----------------|----------------|--------------------|
-| www\.contoso.com/            | /\*                      | /          | /fwd/          | /foo/          | /foo/bar/          |
-| www\.contoso.com/**sub**     | /\*                      | /**Dílčí**   | /fwd/**dílčí**   | /foo/**sub**   | /foo/bar/**sub**   |
-| www\.contoso.com/**a/b/c**   | /\*                      | /**a/b/c** | /fwd/**a/b/c** | /foo/**a/b/c** | /foo/bar/**a/b/c** |
-| www\.contoso.com/foo         | /foo                     | /          | /fwd/          | /foo/          | /foo/bar/          |
-| www\.contoso.com/foo/        | /foo/\*                  | /          | /fwd/          | /foo/          | /foo/bar/          |
-| www\.contoso.com/foo/**bar** | /foo/\*                  | /**Bar**   | /fwd/**bar**   | /foo/**bar**   | /foo/bar/**bar**   |
+| Webová\.contoso.com/            | /\*                      | /          | /fwd/          | foo          | /foo/bar/          |
+| Webová\.contoso.com/**Sub**     | /\*                      | /**jednotk**   | /FWD/**Sub**   | /foo/**Sub**   | /foo/bar/**Sub**   |
+| Webová\.contoso.com/**a/b/c**   | /\*                      | /**a/b/c** | /FWD/**a/b/c** | /foo/**a/b/c** | /foo/bar/**a/b/c** |
+| Webová\.contoso.com/foo         | /foo                     | /          | /fwd/          | foo          | /foo/bar/          |
+| Webová\.contoso.com/foo/        | foo\*                  | /          | /fwd/          | foo          | /foo/bar/          |
+| contoso.com/foo/\.**panel** www | foo\*                  | /**příčk**   | **panel** /FWD/   | **panel** /foo/   | **panel** /foo/bar/   |
 
 
 ## <a name="optional-settings"></a>Volitelná nastavení
-Existují další volitelná nastavení, která můžete také zadat pro libovolné nastavení pravidla směrování:
+K dispozici jsou další volitelná nastavení, která můžete zadat také pro všechna zadaná nastavení pravidla směrování:
 
-* **Konfigurace mezipaměti** – Pokud je zakázána nebo není zadána, pak požadavky, které odpovídají tomuto pravidlu směrování, se nepokusí použít obsah uložený v mezipaměti a místo toho se vždy načtou z back-endu. Přečtěte si více o [ukládání do mezipaměti pomocí předních dveří](front-door-caching.md).
+* **Konfigurace mezipaměti** – Pokud je zakázaná nebo není zadaná, pak se požadavky odpovídající tomuto pravidlu směrování nebudou pokoušet použít obsah uložený v mezipaměti a místo toho se načte z back-endu. Přečtěte si další informace o [ukládání do mezipaměti s předními dvířky](front-door-caching.md).
 
 
 

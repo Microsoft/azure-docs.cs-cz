@@ -1,7 +1,7 @@
 ---
-title: 'Rozdělit data: Odkaz na modul'
+title: 'Rozdělit data: odkaz na modul'
 titleSuffix: Azure Machine Learning
-description: Zjistěte, jak pomocí modulu Split Data v Azure Machine Learning rozdělit datovou sadu do dvou odlišných sad.
+description: Naučte se používat modul rozdělit data v Azure Machine Learning k rozdělení datové sady do dvou různých sad.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,84 +10,84 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
 ms.openlocfilehash: 9eba6f2c47629b708dde4a5a2888b76dbd24b4e4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79455889"
 ---
-# <a name="split-data-module"></a>Modul Rozdělit data
+# <a name="split-data-module"></a>Modul rozdělení dat
 
-Tento článek popisuje modul v návrháři Azure Machine Learning (preview).
+Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
 
-Pomocí modulu Rozdělit data rozdělte datovou sadu na dvě odlišné sady.
+Použijte modul rozdělit data, chcete-li datovou sadu rozdělit do dvou různých sad.
 
-Tento modul je užitečný, když potřebujete oddělit data do trénovacích a testovacích sad. Můžete také přizpůsobit způsob rozdělení dat. Některé možnosti podporují randomizaci dat. Jiné jsou přizpůsobeny pro určitý typ dat nebo typ modelu.
+Tento modul je užitečný v případě, že potřebujete oddělit data do sad pro školení a testování. Můžete také přizpůsobit způsob, jakým jsou data rozdělena. Některé možnosti podporují náhodnost dat. Jiné jsou přizpůsobené pro určitý typ dat nebo model.
 
 ## <a name="configure-the-module"></a>Konfigurace modulu
 
 > [!TIP]
-> Než zvolíte režim rozdělení, přečtěte si všechny možnosti, abyste určili typ rozdělení, který potřebujete.
-> Pokud změníte režim rozdělení, mohou být všechny ostatní možnosti resetovány.
+> Než zvolíte režim rozdělování, přečtěte si všechny možnosti a určete typ rozdělení, který potřebujete.
+> Pokud změníte rozdělovací režim, všechny ostatní možnosti se můžou resetovat.
 
-1. Přidejte modul **Rozdělit data** do kanálu v návrháři. Tento modul najdete v části **Transformace dat**v kategorii **Ukázka a Rozdělení.**
+1. Přidejte modul **rozdělit data** do kanálu v návrháři. Tento modul můžete najít v části **transformace dat**v kategorii **Ukázka a rozdělení** .
 
-1. **Režim rozdělení**: V závislosti na typu dat a způsobu jejich rozdělení zvolte jeden z následujících režimů. Každý režim rozdělení má jiné možnosti.
+1. **Režim rozdělení**: v závislosti na typu dat a způsobu, jakým je chcete rozdělit, vyberte jeden z následujících režimů. Každý režim rozdělování má různé možnosti.
 
-   - **Rozdělit řádky**: Tuto možnost použijte, pokud chcete data rozdělit na dvě části. Můžete určit procento dat, která se mají vložit do každého rozdělení. Ve výchozím nastavení jsou data rozdělena na 50/50.
+   - **Rozdělit řádky**: tuto možnost použijte, pokud chcete pouze rozdělit data do dvou částí. Můžete určit procento dat, která se mají vložit do každého rozdělení. Ve výchozím nastavení jsou data rozdělena 50/50.
 
-     Můžete také náhodně vybrat řádky v každé skupině a použít stratifikované vzorkování. Při stratifikovaném vzorkování je nutné vybrat jeden sloupec dat, pro který mají být hodnoty rovnoměrně rozděleny mezi dvě datové sady výsledků.  
+     Můžete také náhodně vybrat řádky v každé skupině a použít vzorkování stratified. V stratified vzorkování musíte vybrat jeden sloupec dat, pro který chcete hodnoty rozdělit rovnoměrně mezi dvě datové sady výsledků.  
 
-   - **Rozdělení regulárních výrazů**: Tuto možnost zvolte, pokud chcete rozdělit datovou sadu testováním hodnoty v jednom sloupci.
+   - **Rozdělení regulárního výrazu**: tuto možnost vyberte, pokud chcete datovou sadu rozdělit tak, že otestujete jeden sloupec s hodnotou.
 
-     Pokud například analyzujete mínění, můžete zkontrolovat přítomnost konkrétního názvu produktu v textovém poli. Potom můžete rozdělit datovou sadu do řádků s názvem cílového produktu a řádky bez názvu cílového produktu.
+     Pokud například analyzujete mínění, můžete zjistit přítomnost konkrétního názvu produktu v textovém poli. Datovou sadu pak můžete rozdělit do řádků s cílovým názvem produktu a řádky bez názvu cílového produktu.
 
-   - **Relativní rozdělení výrazu**: Tuto možnost použijte vždy, když chcete použít podmínku pro číselný sloupec. Číslem může být pole data a času, sloupec obsahující částky podle věku nebo v dolarech nebo dokonce procento. Můžete například rozdělit datovou sadu na základě nákladů na položky, skupiny osob podle věkových oblastí nebo samostatné ho data podle kalendářního data.
+   - **Rozdělení relativního výrazu**: tuto možnost použijte vždy, když chcete použít podmínku pro sloupec s čísly. Toto číslo může být pole Datum a čas, sloupec, který obsahuje stáří nebo částku dolaru, nebo dokonce i procento. Můžete například chtít rozdělit datovou sadu na základě nákladů na položky, seskupit lidi podle věkových rozsahů nebo rozdělit data podle kalendářního data.
 
 ### <a name="split-rows"></a>Rozdělit řádky
 
-1. Přidejte modul [Rozdělit data](./split-data.md) do kanálu v návrháři a připojte datovou sadu, kterou chcete rozdělit.
+1. Přidejte modul [rozdělit data](./split-data.md) do kanálu v návrháři a připojte datovou sadu, kterou chcete rozdělit.
   
-1. V **režimu Rozdělení**vyberte **rozdělit řádky**. 
+1. V případě **rozdělení režimu**vyberte **rozdělit řádky**. 
 
-1. **Zlomek řádků v první výstupní datové sadě**: Pomocí této možnosti určete, kolik řádků půjde do prvního výstupu (na levé straně). Všechny ostatní řádky přejdou do druhého (pravé strany) výstupu.
+1. **Zlomek řádků v první výstupní sadě dat**: pomocí této možnosti určíte, kolik řádků bude přejít na první (levou stranu) výstup. Všechny ostatní řádky budou umístěny do druhého výstupu (na pravé straně).
 
-   Poměr představuje procento řádků odeslaných do první výstupní datové sady, takže je nutné zadat desetinné číslo mezi 0 a 1.
+   Poměr představuje procento řádků odeslaných na první výstupní datovou sadu, takže je nutné zadat desetinné číslo od 0 do 1.
      
-   Pokud například zadáte **hodnotu 0,75,** bude datová sada rozdělena na 75/25. V tomto rozdělení bude 75 procent řádků odesláno do první výstupní datové sady. Zbývajících 25 procent bude odesláno do druhé výstupní datové sady.
+   Pokud například zadáte **0,75** jako hodnotu, datová sada bude rozdělena 75/25. V tomto rozdělení se 75 procento řádků pošle na první výstupní datovou sadu. Zbývající 25 procent se pošle druhé výstupní datové sadě.
   
-1. Pokud chcete do obou skupin náhodně vybrat možnost **Randomizované rozdělení.** Toto je upřednostňovaná možnost při vytváření trénovacích a testovacích datových sad.
+1. Vyberte možnost **náhodného rozdělení** , pokud chcete náhodně vybrat data do dvou skupin. Toto je upřednostňovaná možnost při vytváření školicích a testovacích datových sad.
 
-1. **Náhodné osiva**: Zadejte nezápornou celočíselnou hodnotu pro spuštění pseudonáhodné sekvence instancí, které mají být použity. Toto výchozí osivo se používá ve všech modulech, které generují náhodná čísla. 
+1. **Random seed**: zadejte nezáporné celé číslo, pokud chcete spustit pseudonáhodných sekvenci instancí, které se mají použít. Toto výchozí osivo se používá ve všech modulech, které generují náhodná čísla. 
 
-   Zadání osiva způsobí, že výsledky budou reprodukovatelné. Pokud potřebujete opakovat výsledky operace rozdělení, měli byste zadat osiva generátoru náhodných čísel. V opačném případě je náhodné osiva ve výchozím nastavení nastaveno na **hodnotu 0**, což znamená, že počáteční hodnota osiva je získána ze systémových hodin. V důsledku toho může být distribuce dat mírně odlišná při každém rozdělení. 
+   Zadání počáteční hodnoty způsobí, že výsledky budou reprodukovatelné. Pokud potřebujete výsledky operace rozdělení zopakovat, měli byste pro generátor náhodných čísel zadat počáteční hodnotu. V opačném případě je náhodné osazení nastaveno na **hodnotu 0**, což znamená, že počáteční počáteční hodnota se získá ze systémových hodin. V důsledku toho může být distribuce dat mírně odlišná pokaždé, když provedete rozdělení. 
 
-1. **Stratifikované rozdělení**: Nastavte tuto možnost na **Hodnotu True,** abyste zajistili, že dvě výstupní datové sady obsahují reprezentativní vzorek hodnot ve *sloupci strata* nebo *ve sloupci stratifikačního klíče*. 
+1. **Stratified Split**: tuto možnost nastavte na **hodnotu true** , chcete-li zajistit, aby dvě výstupní datové sady obsahovaly reprezentativní vzorek hodnot ve *sloupci vrstvy* nebo ve *sloupci klíč rozdělení*na více úrovní. 
 
-   Při stratifikovaném vzorkování jsou data rozdělena tak, že každá výstupní datová sada získá přibližně stejné procento každé cílové hodnoty. Můžete například chtít zajistit, aby vaše tréninkové a testovací sady byly zhruba vyvážené s ohledem na výsledek nebo na jiný sloupec (například pohlaví).
+   V případě vzorkování stratified jsou data rozdělena tak, že každá výstupní datová sada získá zhruba stejné procento každé cílové hodnoty. Například můžete chtít zajistit, aby vaše školicí a testovací sady byly zhruba vyvážené s ohledem na výsledek nebo do jiného sloupce (například pohlaví).
 
-1. Odešlete potrubí.
+1. Odešlete kanál.
 
 
-## <a name="select-a-regular-expression"></a>Výběr regulárního výrazu
+## <a name="select-a-regular-expression"></a>Vybrat regulární výraz
 
-1. Přidejte modul [Rozdělit data](./split-data.md) do kanálu a připojte jej jako vstup k datové sadě, kterou chcete rozdělit.  
+1. Přidejte do svého kanálu modul [rozdělení dat](./split-data.md) a připojte ho jako vstup k datové sadě, kterou chcete rozdělit.  
   
-1. V **režimu Rozdělení**vyberte **možnost Rozdělení regulárního výrazu**.
+1. V případě **rozdělení režimu**vyberte možnost **rozdělení regulárního výrazu**.
 
-1. Do pole **Regulární výraz** zadejte platný regulární výraz. 
+1. V poli **regulární výraz** zadejte platný regulární výraz. 
   
-   Regulární výraz by měl pro regulární výrazy postupovat podle syntaxe Pythonu.
+   Regulární výraz by měl následovat za syntaxí Pythonu pro regulární výrazy.
 
-1. Odešlete potrubí.
+1. Odešlete kanál.
 
-   Na základě zadaný regulárního výrazu je datová sada rozdělena do dvou sad řádků: řádky s hodnotami, které odpovídají výrazu, a všechny zbývající řádky. 
+   Na základě regulárního výrazu, který zadáte, je datová sada rozdělena do dvou sad řádků: řádků s hodnotami, které odpovídají výrazu a všem zbývajícím řádkům. 
 
-Následující příklady ukazují, jak rozdělit datovou sadu pomocí možnosti **Regulární výraz.** 
+Následující příklady ukazují, jak rozdělit datovou sadu pomocí možnosti **regulárního výrazu** . 
 
-### <a name="single-whole-word"></a>Celé jedno slovo 
+### <a name="single-whole-word"></a>Jedno celé slovo 
 
-Tento příklad vloží do první datové sady `Gryphon` všechny řádky, které obsahují text ve sloupci `Text`. Vloží další řádky do druhého výstupu **Split Data**.
+Tento příklad vloží do první datové sady všechny řádky, které obsahují text `Gryphon` ve sloupci `Text`. Vloží další řádky do druhého výstupu **rozdělených dat**.
 
 ```text
     \"Text" Gryphon  
@@ -95,49 +95,49 @@ Tento příklad vloží do první datové sady `Gryphon` všechny řádky, kter�
 
 ### <a name="substring"></a>Podřetězec
 
-Tento příklad hledá zadaný řetězec v libovolné pozici v rámci druhého sloupce datové sady. Pozice je zde označena hodnotou indexu 1. Shoda rozlišuje malá a velká písmena.
+Tento příklad hledá zadaný řetězec na libovolné pozici v druhém sloupci datové sady. Pozice je zde označena hodnotou indexu 1. Porovnávání rozlišuje velká a malá písmena.
 
 ```text
 (\1) ^[a-f]
 ```
 
-První datová sada výsledků obsahuje všechny řádky, ve kterých `a` `b`sloupec `c` `d`rejstříku začíná jedním z těchto znaků: , , , , `e`. `f` Všechny ostatní řádky jsou směrovány na druhý výstup.
+První výsledná datová sada obsahuje všechny řádky, ve kterých indexový sloupec začíná jedním z těchto `a`znaků `b`: `c`, `d`, `e`, `f`,,. Všechny ostatní řádky jsou směrovány na druhý výstup.
 
 ## <a name="select-a-relative-expression"></a>Výběr relativního výrazu
 
-1. Přidejte modul [Rozdělit data](./split-data.md) do kanálu a připojte jej jako vstup k datové sadě, kterou chcete rozdělit.
+1. Přidejte do svého kanálu modul [rozdělení dat](./split-data.md) a připojte ho jako vstup k datové sadě, kterou chcete rozdělit.
   
-1. V **režimu rozdělení**vyberte **relativní výraz**.
+1. V případě **rozdělení režimu**vyberte **relativní výraz**.
   
-1. Do pole **Relační výraz** zadejte výraz, který provádí operaci porovnání na jednom sloupci.
+1. Do pole **relační výraz** zadejte výraz, který provádí operaci porovnání v jednom sloupci.
 
    Pro **číselný sloupec**:
    - Sloupec obsahuje čísla libovolného číselného datového typu, včetně datových typů data a času.
    - Výraz může odkazovat maximálně na jeden název sloupce.
-   - Pro operaci AND použijte `&`znak ampersand , , . Použijte znak kanálu `|`, pro operaci OR.
-   - Podporovány jsou následující `<` `>`operátory: , `<=`, , `>=` `==`, . `!=`.
-   - Operace nelze seskupit pomocí `(` a . `)`
+   - Pro operaci a použijte znak `&`ampersand. Použijte pro operaci nebo znak `|`kanálu.
+   - Podporovány jsou následující `<`operátory:, `>`, `<=`, `>=`, `==`,. `!=`
+   - Operace nelze seskupit pomocí `(` a. `)`
    
-   Pro **sloupec String**:
-   - Podporovány jsou následující `==` `!=`operátory: , .
+   Pro **řetězcový sloupec**:
+   - Podporovány jsou následující operátory: `==`,. `!=`
 
-1. Odešlete potrubí.
+1. Odešlete kanál.
 
-   Výraz rozděluje datovou sadu na dvě sady řádků: řádky s hodnotami, které splňují podmínku, a všechny zbývající řádky.
+   Výraz rozdělí datovou sadu do dvou sad řádků: řádky s hodnotami, které splňují podmínku, a všechny zbývající řádky.
 
-Následující příklady ukazují, jak rozdělit datovou sadu pomocí **možnosti Relativní výraz** v modulu **Rozdělit data.**  
+Následující příklady ukazují, jak rozdělit datovou sadu pomocí možnosti **relativního výrazu** v modulu **Split data** .  
 
 ### <a name="calendar-year"></a>Kalendářní rok
 
-Běžným scénářem je rozdělení datové sady podle let. Následující výraz vybere všechny řádky, ve `Year` kterých `2010`jsou hodnoty ve sloupci větší než .
+Běžným scénářem je rozdělit datovou sadu o roky. Následující výraz vybere všechny řádky, ve kterých jsou hodnoty ve sloupci `Year` větší než `2010`.
 
 ```text
 \"Year" > 2010
 ```
 
-Výraz data musí odpovídat všem částem kalendářních dat, které jsou zahrnuty ve sloupci dat. Formát kalendářních dat ve sloupci dat musí být konzistentní. 
+Výraz data musí mít účet pro všechny části kalendářních dat zahrnuté do sloupce data. Formát dat v datovém sloupci musí být konzistentní. 
 
-Například ve sloupci data, `mmddyyyy`který používá formát , by měl být výraz přibližně takto:
+Například ve sloupci kalendářních dat, který používá formát `mmddyyyy`, by měl být výraz podobný tomuto:
 
 ```text
 \"Date" > 1/1/2010
@@ -145,7 +145,7 @@ Například ve sloupci data, `mmddyyyy`který používá formát , by měl být 
 
 ### <a name="column-index"></a>Index sloupce
 
-Následující výraz ukazuje, jak můžete pomocí indexu sloupce vybrat všechny řádky v prvním sloupci datové sady, které obsahují hodnoty menší nebo rovné 30, ale nerovno 20.
+Následující výraz ukazuje, jak můžete použít index sloupce pro výběr všech řádků v prvním sloupci datové sady, které obsahují hodnoty menší než nebo rovny 30, ale nerovnají se 20.
 
 ```text
 (\0)<=30 & !=20

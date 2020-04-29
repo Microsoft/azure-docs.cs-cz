@@ -1,7 +1,7 @@
 ---
-title: 'Důležitost funkce permutace: Odkaz na modul'
+title: 'Permutace – funkce důležitost: odkaz na modul'
 titleSuffix: Azure Machine Learning
-description: Zjistěte, jak pomocí modulu Důležitost funkce permutace v Azure Machine Learning vypočítat skóre důležitosti funkce funkce, vzhledem k trénovaného modelu a testovací datové sadě.
+description: Naučte se, jak používat modul důležitost funkcí permutace v Azure Machine Learning k výpočtu skóre důležitosti funkcí funkcí, s ohledem na vyškolený model a testovací datovou sadu.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,39 +10,39 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/24/2020
 ms.openlocfilehash: e4511cf4393172e7d2b1ab8a985c76d8f98d4015
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79456059"
 ---
 # <a name="permutation-feature-importance"></a>Důležitost funkce permutací
 
-Tento článek popisuje, jak použít modul Důležitost funkce permutace v návrháři Azure Machine Learning (preview) k výpočtu sady skóre důležitosti funkce pro vaši datovou sadu. Tato skóre slouží k určení nejlepší funkce pro použití v modelu.
+Tento článek popisuje, jak použít modul důležitost funkcí permutace v Návrháři Azure Machine Learning (Preview) k výpočtu sady výsledků důležitosti funkcí pro datovou sadu. Tato skóre vám pomůžou určit nejlepší funkce pro použití v modelu.
 
-V tomto modulu jsou hodnoty prvků náhodně zamíchány, po jednom sloupci. Výkon modelu se měří před a po. Můžete zvolit jednu ze standardních metrik pro měření výkonu.
+V tomto modulu jsou hodnoty funkcí náhodně přemístěné, vždy v jednom sloupci. Výkon modelu je měřen před a po. Můžete zvolit jednu ze standardních metrik pro měření výkonu.
 
-Skóre, které modul vrátí představují *změnu* výkonu trénovaného modelu po permutaci. Důležité funkce jsou obvykle citlivější na proces míchání, takže budou mít za následek vyšší důležitost skóre. 
+Skóre, které modul vrací, představuje *změnu* výkonu pro vyškolený model po permutaci. Důležité funkce jsou obvykle citlivější na proces náhodného zpracování, takže budou mít výsledek vyšší důležitost. 
 
-Tento článek obsahuje přehled funkce permutace, jeho teoretického základu a jeho aplikací ve strojovém učení: [Význam funkce permutace](https://blogs.technet.com/b/machinelearning/archive/2015/04/14/permutation-feature-importance.aspx).  
+Tento článek poskytuje přehled funkce permutace, její teoretickou a její aplikace ve službě Machine Learning: [důležitost funkce permutace](https://blogs.technet.com/b/machinelearning/archive/2015/04/14/permutation-feature-importance.aspx).  
 
-## <a name="how-to-use-permutation-feature-importance"></a>Jak používat důležitost funkce permutace
+## <a name="how-to-use-permutation-feature-importance"></a>Použití funkce permutace důležitost
 
-Generování sady výsledků funkcí vyžaduje, abyste měli již trénovaný model a také testovací datovou sadu.  
+Generování sady výsledků funkcí vyžaduje, abyste měli už vyškolený model i testovací datovou sadu.  
 
-1.  Přidejte do kanálu modul Důležitost funkce permutace. Tento modul naleznete v kategorii **Výběr funkcí.** 
+1.  Přidejte modul důležitost funkce permutace do vašeho kanálu. Tento modul můžete najít v kategorii **výběru funkcí** . 
 
-2.  Připojte trénovaný model k levému vstupu. Model musí být regresní model nebo klasifikační model.  
+2.  Připojte k levému vstupu vyškolený model. Model musí být regresní model nebo klasifikační model.  
 
-3.  Na pravém vstupu připojte datovou sadu. Pokud možno vyberte ten, který se liší od datové sady, kterou jste použili pro trénování modelu. Tato datová sada se používá pro vyhodnocování na základě trénovaného modelu. Používá se také pro vyhodnocení modelu po změně hodnot prvku.  
+3.  U správného vstupu připojte datovou sadu. V takovém případě vyberte, který se liší od datové sady, kterou jste použili pro školení modelu. Tato datová sada se používá pro hodnocení na základě trained model. Používá se také k vyhodnocení modelu po změně hodnot vlastností.  
 
-4.  U **náhodného osiva**zadejte hodnotu, která se má použít jako osivo pro randomizaci. Pokud zadáte 0 (výchozí), číslo je generováno na základě systémových hodin.
+4.  V případě **náhodného osazení**zadejte hodnotu, která se má použít jako počáteční hodnota pro náhodnost. Pokud zadáte 0 (výchozí), vygeneruje se číslo na základě systémových hodin.
 
-     Hodnota osiva je volitelná, ale měli byste zadat hodnotu, pokud chcete reprodukovatelnost napříč spuštěními stejného kanálu.  
+     Hodnota počáteční hodnoty je volitelná, ale měli byste zadat hodnotu, pokud chcete reprodukovatelnost napříč běhy stejného kanálu.  
 
-5.  Pro **metriku pro měření výkonu**vyberte jednu metriku, která se má použít při výpočtu kvality modelu po permutaci.  
+5.  Pro **metriku pro měření výkonu**vyberte jednu metriku, která se má použít, když počítáte kvalitu modelu po permutaci.  
 
-     Azure Machine Learning návrhář podporuje následující metriky, v závislosti na tom, zda vyhodnocujete model klasifikace nebo regrese:  
+     Azure Machine Learning Designer podporuje následující metriky v závislosti na tom, zda vyhodnocujete model klasifikace nebo regrese:  
 
     -   **Classification**
 
@@ -50,22 +50,22 @@ Generování sady výsledků funkcí vyžaduje, abyste měli již trénovaný mo
 
     -   **Regrese**
 
-        Přesnost, odvolání, střední absolutní chyba, střední kvadratická chyba, relativní absolutní chyba, relativní kvadratická chyba, koeficient stanovení  
+        Přesnost, odvolání, Přibližná absolutní chyba, hlavní střední hodnota chyby, relativní absolutní chyba, relativní navýšení chyby, koeficient stanovitelnosti  
 
-     Podrobnější popis těchto metrik hodnocení a jejich výpočtu najdete v [tématu Vyhodnocení modelu](evaluate-model.md).  
+     Podrobnější popis těchto metrik vyhodnocení a způsobu jejich výpočtu najdete v tématu [vyhodnocení modelu](evaluate-model.md).  
 
-6.  Odešlete potrubí.  
+6.  Odešlete kanál.  
 
-7.  Modul vypíše seznam sloupců funkcí a skóre s nimi spojené. Seznam je seřazen v sestupném pořadí podle skóre.  
+7.  Modul vytvoří výstup seznamu sloupců funkcí a skóre, která jsou k nim přidružená. Seznam je seřazen v sestupném pořadí podle skóre.  
 
 
 ##  <a name="technical-notes"></a>Technické poznámky
 
-Důležitost funkce permutace funguje tak, že náhodně mění hodnoty každého sloupce prvku, po jednom sloupci. Potom vyhodnotí model. 
+Význam funkce permutace funguje tak, že náhodně změní hodnoty každého sloupce funkce, jeden sloupec v daném okamžiku. Pak vyhodnotí model. 
 
-Pořadí, které modul poskytuje, se často liší od hodnocení, které získáte z [výběru funkcí založených na filtru](filter-based-feature-selection.md). Výběr funkce založený na filtru vypočítá skóre *před* vytvořením modelu. 
+Klasifikace, kterou modul poskytuje, se často liší od těch, které získáte z [výběru funkcí založených na filtrech](filter-based-feature-selection.md). Výběr funkce založený na filtrech vypočítá skóre *před* vytvořením modelu. 
 
-Důvodem rozdílu je, že důležitost funkce permutace neměří přidružení mezi funkcí a cílovou hodnotou. Místo toho zachycuje, jak velký vliv má každá funkce na předpovědi z modelu.
+Důvodem rozdílu je, že důležitost funkcí permutace neměří přidružení mezi funkcí a cílovou hodnotou. Místo toho zachycuje, jaký vliv má každá funkce na předpovědi z modelu.
   
 ## <a name="next-steps"></a>Další kroky
 

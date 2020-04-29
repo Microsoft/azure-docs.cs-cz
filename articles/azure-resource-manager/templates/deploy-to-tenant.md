@@ -1,33 +1,33 @@
 ---
-title: Nasazení prostředků do klienta
-description: Popisuje, jak nasadit prostředky v oboru klienta v šabloně Azure Resource Manager.
+title: Nasazení prostředků do tenanta
+description: Popisuje postup nasazení prostředků v oboru tenanta v šabloně Azure Resource Manager.
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.openlocfilehash: fcdfc5b1c4333a0d7eeec80a09ad85579a1f8b77
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79460258"
 ---
-# <a name="create-resources-at-the-tenant-level"></a>Vytvoření prostředků na úrovni klienta
+# <a name="create-resources-at-the-tenant-level"></a>Vytváření prostředků na úrovni tenanta
 
-Jak vaše organizace dozrává, možná budete muset definovat a přiřadit [zásady](../../governance/policy/overview.md) nebo [ovládací prvky přístupu založené na rolích](../../role-based-access-control/overview.md) v rámci vašeho klienta Azure AD. Pomocí šablon na úrovni tenanta můžete deklarativně použít zásady a přiřadit role na globální úrovni.
+V případě, že vaše organizace bude vyspělá, možná budete muset v tenantovi Azure AD definovat a přiřazovat [zásady](../../governance/policy/overview.md) nebo [řízení přístupu na základě rolí](../../role-based-access-control/overview.md) . Pomocí šablon na úrovni tenanta můžete deklarativně uplatňovat zásady a přiřazovat role na globální úrovni.
 
 ## <a name="supported-resources"></a>Podporované prostředky
 
-Na úrovni klienta můžete nasadit následující typy prostředků:
+Na úrovni tenanta můžete nasadit následující typy prostředků:
 
 * [nasazení](/azure/templates/microsoft.resources/deployments) – pro vnořené šablony, které se nasazují do skupin pro správu nebo předplatných.
 * [policyAssignments](/azure/templates/microsoft.authorization/policyassignments)
 * [policyDefinitions](/azure/templates/microsoft.authorization/policydefinitions)
 * [policySetDefinitions](/azure/templates/microsoft.authorization/policysetdefinitions)
-* [roleÚkoly](/azure/templates/microsoft.authorization/roleassignments)
-* [definice rolí](/azure/templates/microsoft.authorization/roledefinitions)
+* [roleAssignments](/azure/templates/microsoft.authorization/roleassignments)
+* [roleDefinitions](/azure/templates/microsoft.authorization/roledefinitions)
 
 ### <a name="schema"></a>Schéma
 
-Schéma, které používáte pro nasazení klienta, se liší od schématu pro nasazení skupiny prostředků.
+Schéma, které používáte pro nasazení klientů, se liší od schématu pro nasazení skupin prostředků.
 
 Pro šablony použijte:
 
@@ -35,7 +35,7 @@ Pro šablony použijte:
 https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#
 ```
 
-Schéma pro soubor parametrů je stejné pro všechny obory nasazení. Pro soubory parametrů použijte:
+Schéma pro soubor parametrů je pro všechny obory nasazení stejné. Pro soubory parametrů použijte:
 
 ```json
 https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#
@@ -43,13 +43,13 @@ https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json
 
 ## <a name="required-access"></a>Požadovaný přístup
 
-Hlavní nasazení šablony musí mít oprávnění k vytváření prostředků v oboru klienta. Objekt zabezpečení musí mít oprávnění k`Microsoft.Resources/deployments/*`provádění akcí nasazení ( ) a k vytvoření prostředků definovaných v šabloně. Chcete-li například vytvořit skupinu pro správu, musí mít objekt zabezpečení oprávnění přispěvatele v oboru klienta. Chcete-li vytvořit přiřazení rolí, musí mít objekt zabezpečení oprávnění Vlastník.
+Objekt zabezpečení, který šablonu nasazuje, musí mít oprávnění k vytváření prostředků v oboru tenanta. Objekt zabezpečení musí mít oprávnění ke spuštění akcí nasazení (`Microsoft.Resources/deployments/*`) a k vytvoření prostředků definovaných v šabloně. Chcete-li například vytvořit skupinu pro správu, musí mít objekt zabezpečení oprávnění přispěvatele v oboru tenanta. Aby bylo možné vytvořit přiřazení rolí, musí mít objekt zabezpečení oprávnění vlastníka.
 
-Globální správce služby Azure Active Directory nemá automaticky oprávnění k přiřazování rolí. Chcete-li povolit nasazení šablon v oboru klienta, globální správce musí provést následující kroky:
+Globální správce pro Azure Active Directory nemá automaticky oprávnění k přiřazování rolí. Chcete-li povolit nasazení šablon v oboru klienta, globální správce musí provést následující kroky:
 
-1. Zvyšte přístup k účtu, aby globální správce mohl přiřadit role. Další informace najdete [v tématu Zvýšení přístupu ke správě všech předplatných Azure a skupin pro správu](../../role-based-access-control/elevate-access-global-admin.md).
+1. Zvyšte přístup k účtu, aby globální správce mohl přiřadit role. Další informace najdete v tématu [zvýšení úrovně přístupu ke správě všech předplatných Azure a skupin pro správu](../../role-based-access-control/elevate-access-global-admin.md).
 
-1. Přiřaďte vlastníka nebo přispěvatele k objektu zabezpečení, který potřebuje k nasazení šablon.
+1. Přiřaďte vlastníka nebo přispěvateli objektu zabezpečení, který potřebuje k nasazení šablon.
 
    ```azurepowershell-interactive
    New-AzRoleAssignment -SignInName "[userId]" -Scope "/" -RoleDefinitionName "Owner"
@@ -59,13 +59,13 @@ Globální správce služby Azure Active Directory nemá automaticky oprávněn�
    az role assignment create --assignee "[userId]" --scope "/" --role "Owner"
    ```
 
-Objekt zabezpečení má nyní požadovaná oprávnění k nasazení šablony.
+Objekt zabezpečení má teď požadovaná oprávnění k nasazení šablony.
 
 ## <a name="deployment-commands"></a>Příkazy nasazení
 
-Příkazy pro nasazení klienta se liší od příkazů pro nasazení skupiny prostředků.
+Příkazy pro nasazení klientů se liší od příkazů pro nasazení skupin prostředků.
 
-Pro Azure CLI použijte [vytvoření klienta nasazení az](/cli/azure/deployment/tenant?view=azure-cli-latest#az-deployment-tenant-create):
+Pro rozhraní příkazového řádku Azure CLI použijte [AZ Deployment tenant Create](/cli/azure/deployment/tenant?view=azure-cli-latest#az-deployment-tenant-create):
 
 ```azurecli-interactive
 az deployment tenant create \
@@ -83,32 +83,32 @@ New-AzTenantDeployment `
   -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/tenant-level-deployments/new-mg/azuredeploy.json"
 ```
 
-Pro rozhraní REST API použijte [nasazení – vytvořit nebo aktualizovat v oboru klienta](/rest/api/resources/deployments/createorupdateattenantscope).
+V případě REST API použijte [nasazení – vytvořit nebo aktualizovat v oboru tenanta](/rest/api/resources/deployments/createorupdateattenantscope).
 
 ## <a name="deployment-location-and-name"></a>Umístění a název nasazení
 
-Pro nasazení na úrovni klienta je nutné zadat umístění pro nasazení. Umístění nasazení je oddělené od umístění prostředků, které nasazujete. Umístění nasazení určuje, kam se mají ukládat data nasazení.
+Pro nasazení na úrovni tenanta musíte zadat umístění pro nasazení. Umístění nasazení je oddělené od umístění prostředků, které nasazujete. Umístění nasazení určuje, kam se mají ukládat data nasazení.
 
-Můžete zadat název pro nasazení nebo použít výchozí název nasazení. Výchozí název je název souboru šablony. Například nasazení šablony s názvem **azuredeploy.json** vytvoří výchozí název nasazení **azuredeploy**.
+Můžete zadat název nasazení nebo použít výchozí název nasazení. Výchozí název je název souboru šablony. Například nasazení šablony s názvem **azuredeploy. JSON** vytvoří výchozí název nasazení **azuredeploy**.
 
-Pro každý název nasazení umístění je neměnné. Nasazení nelze vytvořit na jednom místě, pokud existuje existující nasazení se stejným názvem v jiném umístění. Pokud se zobrazí `InvalidDeploymentLocation`kód chyby , použijte jiný název nebo stejné umístění jako předchozí nasazení pro tento název.
+Pro každý název nasazení je umístění neměnné. Nasazení nelze vytvořit v jednom umístění, pokud existuje existující nasazení se stejným názvem v jiném umístění. Pokud se zobrazí kód `InvalidDeploymentLocation`chyby, použijte jiný název nebo stejné umístění jako předchozí nasazení pro tento název.
 
-## <a name="use-template-functions"></a>Použití funkcí šablony
+## <a name="use-template-functions"></a>Použití funkcí šablon
 
-Pro nasazení klienta existují některé důležité důležité aspekty při použití funkce šablony:
+Pro nasazení klientů existují při použití funkcí šablon důležité důležité informace:
 
-* Funkce [resourceGroup()](template-functions-resource.md#resourcegroup) **není** podporována.
-* Funkce [subscription()](template-functions-resource.md#subscription) **není** podporována.
-* [Funkce reference()](template-functions-resource.md#reference) a [list()](template-functions-resource.md#list) jsou podporovány.
-* Pomocí funkce [tenantResourceId()](template-functions-resource.md#tenantresourceid) získat ID prostředku pro prostředky, které jsou nasazeny na úrovni klienta.
+* Funkce [Resource ()](template-functions-resource.md#resourcegroup) **není podporována.**
+* Funkce [Subscription ()](template-functions-resource.md#subscription) **není podporována.**
+* Funkce [Reference ()](template-functions-resource.md#reference) a [list ()](template-functions-resource.md#list) jsou podporovány.
+* K získání ID prostředku pro prostředky, které jsou nasazeny na úrovni tenanta, použijte funkci [tenantResourceId ()](template-functions-resource.md#tenantresourceid) .
 
-  Chcete-li například získat ID prostředku pro definici zásad, použijte:
+  Pokud například chcete získat ID prostředku pro definici zásady, použijte:
   
   ```json
   tenantResourceId('Microsoft.Authorization/policyDefinitions/', parameters('policyDefinition'))
   ```
   
-  Vrácené ID prostředku má následující formát:
+  ID vráceného prostředku má následující formát:
   
   ```json
   /providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -142,7 +142,7 @@ Pro nasazení klienta existují některé důležité důležité aspekty při p
 
 ## <a name="assign-role"></a>Přiřadit roli
 
-[Následující šablona](https://github.com/Azure/azure-quickstart-templates/tree/master/tenant-level-deployments/tenant-role-assignment) přiřadí roli v oboru klienta.
+[Následující šablona](https://github.com/Azure/azure-quickstart-templates/tree/master/tenant-level-deployments/tenant-role-assignment) přiřadí roli v oboru tenanta.
 
 ```json
 {
@@ -184,5 +184,5 @@ Pro nasazení klienta existují některé důležité důležité aspekty při p
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o přiřazování rolí najdete [v tématu Správa přístupu k prostředkům Azure pomocí šablon RBAC a Azure Resource Manager](../../role-based-access-control/role-assignments-template.md).
-* Šablony můžete také nasadit na [úrovni předplatného](deploy-to-subscription.md) nebo [na úrovni skupiny pro správu](deploy-to-management-group.md).
+* Další informace o přiřazování rolí najdete v tématu [Správa přístupu k prostředkům Azure pomocí šablon RBAC a Azure Resource Manager](../../role-based-access-control/role-assignments-template.md).
+* Šablony můžete nasadit i na úrovni [předplatného](deploy-to-subscription.md) nebo [skupiny pro správu](deploy-to-management-group.md).

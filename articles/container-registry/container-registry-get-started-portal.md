@@ -1,21 +1,21 @@
 ---
-title: Úvodní příručka – vytvoření registru na portálu
-description: Rychle se naučte vytvářet privátní registr Dockeru v registru kontejnerů Azure pomocí portálu Azure.
+title: Rychlý Start – vytvoření registru na portálu
+description: Rychle se naučíte, jak vytvořit privátní registr Docker v Azure Container Registry pomocí Azure Portal.
 ms.topic: quickstart
 ms.date: 03/03/2020
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 6fe6358655f50ab783b4017efa8ee1db351cd018
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79409234"
 ---
-# <a name="quickstart-create-a-private-container-registry-using-the-azure-portal"></a>Úvodní příručka: Vytvoření registru privátního kontejneru pomocí portálu Azure
+# <a name="quickstart-create-a-private-container-registry-using-the-azure-portal"></a>Rychlý Start: Vytvoření privátního registru kontejnerů pomocí Azure Portal
 
-Registr kontejnerů Azure je soukromý registr Dockeru v Azure, kde můžete ukládat a spravovat privátní ibi kontejnerů Dockeru a související artefakty. V tomto rychlém startu vytvoříte registr kontejnerů pomocí webu Azure Portal. Potom pomocí příkazů Dockeru vysuňte bitovou kopii kontejneru do registru a nakonec ji vyprovokejte a spusťte z registru.
+Registr kontejnerů Azure je privátní registr Docker v Azure, kde můžete ukládat a spravovat soukromé image kontejneru Docker a související artefakty. V tomto rychlém startu vytvoříte registr kontejnerů pomocí webu Azure Portal. Pak pomocí příkazů Docker nahrajte image kontejneru do registru a nakonec si vydejte a spusťte image z registru.
 
-Chcete-li se přihlásit do registru pro práci s imagí kontejneru, tento rychlý start vyžaduje, abyste spustili azure CLI (verze 2.0.55 nebo novější doporučeno). Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli].
+Pokud se chcete přihlásit k registru, abyste mohli pracovat s imagemi kontejnerů, tento rychlý Start vyžaduje, abyste spustili Azure CLI (doporučuje se verze 2.0.55 nebo novější). Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli].
 
 Je také nutné mít Docker nainstalovaný místně. Docker nabízí balíčky pro snadnou konfiguraci Dockeru na jakémkoli [Macu][docker-mac] nebo systému [Windows][docker-windows] či [Linux][docker-linux].
 
@@ -25,27 +25,27 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 ## <a name="create-a-container-registry"></a>Vytvoření registru kontejnerů
 
-Vyberte **možnost Vytvořit** > **registr kontejnerů****prostředků** > .
+Vyberte **vytvořit** > **kontejnery** > prostředků**Container Registry**.
 
 ![Vytvoření registru kontejnerů na webu Azure Portal][qs-portal-01]
 
-Na kartě **Základy** zadejte hodnoty pro **skupinu prostředků** a **název registru**. Název registru musí být jedinečný v rámci Azure a musí obsahovat 5 až 50 alfanumerických znaků. Pro účely tohoto rychlého startu vytvořte novou skupinu prostředků `myResourceGroup` v umístění `West US` a jako **skladovou položku** vyberte Basic. 
+Na kartě **základy** zadejte hodnoty pro **skupinu prostředků** a **název registru**. Název registru musí být jedinečný v rámci Azure a musí obsahovat 5 až 50 alfanumerických znaků. Pro účely tohoto rychlého startu vytvořte novou skupinu prostředků `myResourceGroup` v umístění `West US` a jako **skladovou položku** vyberte Basic. 
 
-![Vytvoření registru kontejnerů na webu Azure Portal][qs-portal-03]
+![Vytvoření registru kontejneru v Azure Portal][qs-portal-03]
 
-Přijměte výchozí hodnoty pro zbývající nastavení. Pak vyberte **Zkontrolovat + vytvořit**. Po kontrole nastavení vyberte **Vytvořit**.
+Přijměte výchozí hodnoty pro zbývající nastavení. Pak vyberte **zkontrolovat + vytvořit**. Po zkontrolování nastavení vyberte **vytvořit**.
 
-V tomto rychlém startu vytvoříte *základní* registr, což je nákladově optimalizovaná možnost pro vývojáře, kteří se učí o registru kontejnerů Azure. Podrobnosti o dostupných úrovních služeb naleznete [v tématu Kontejner registru SKU][container-registry-skus].
+V tomto rychlém startu vytvoříte *základní* registr, což je výhodná možnost pro vývojáře, kteří se naučí o Azure Container Registry. Podrobnosti k dostupným úrovním služeb najdete v tématu [SKU služby Container Registry][container-registry-skus].
 
-Po **oznámení o úspěšném nasazení** vyberte registr kontejnerů na portálu. 
+Po zobrazení zprávy o **úspěšném nasazení** vyberte v portálu registr kontejnerů. 
 
-![Přehled registru kontejnerů na webu Azure Portal][qs-portal-05]
+![Přehled registru kontejnerů v Azure Portal][qs-portal-05]
 
-Poznamenejte si hodnotu **přihlašovacího serveru**. Tuto hodnotu použijete v následujících krocích při nabízení a vytahovat image s Docker.
+Poznamenejte si hodnotu **přihlašovacího serveru**. Tuto hodnotu použijete v následujících krocích při doručování a vyžádání imagí pomocí Docker.
 
 ## <a name="log-in-to-registry"></a>Přihlášení k registru
 
-Před odesíláním a vyžadováním imagí kontejnerů se musíte přihlásit k instanci služby ACR. Otevřete příkazové prostředí v operačním systému a použijte příkaz [az acr přihlášení][az-acr-login] v azure CLI. (Při přihlašování zadejte pouze název registru. Nezahrnejte příponu azurecr.io.)
+Před odesíláním a vyžadováním imagí kontejnerů se musíte přihlásit k instanci služby ACR. Otevřete příkazové prostředí v operačním systému a použijte příkaz [AZ ACR Login][az-acr-login] v rozhraní příkazového řádku Azure CLI. (Při přihlašování zadejte jenom název registru. Nezahrnovat příponu ' azurecr.io '.)
 
 ```azurecli
 az acr login --name <acrName>
@@ -57,26 +57,26 @@ Příkaz po dokončení vrátí zprávu `Login Succeeded` (Přihlášení bylo �
 
 ## <a name="list-container-images"></a>Výpis imagí kontejnerů
 
-Chcete-li zobrazit seznam bitových kopií v registru, přejděte na portál do registru `docker push`a vyberte **možnost Repozitáře**a vyberte úložiště, které jste vytvořili.
+Pokud chcete zobrazit seznam imagí v registru, přejděte na portálu na svůj registr a vyberte úložiště a pak vyberte **úložiště, pomocí** `docker push`kterého jste vytvořili.
 
-V tomto příkladu vybereme úložiště **hello-world** a `v1`vidíme tagovaný obrázek v části **Tagy**.
+V tomto příkladu vybereme úložiště **Hello-World** a v části `v1` **značky**se zobrazí obrázek označený příznakem.
 
-![Seznam ibi kontejnerů na webu Azure Portal][qs-portal-09]
+![Výpis imagí kontejneru v Azure Portal][qs-portal-09]
 
 [!INCLUDE [container-registry-quickstart-docker-pull](../../includes/container-registry-quickstart-docker-pull.md)]
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Chcete-li vyčistit prostředky, přejděte do skupiny prostředků **myResourceGroup** na portálu. Po načtení skupiny prostředků klikněte na **Odstranit skupinu prostředků** odebrat skupinu prostředků, registr kontejneru a image kontejneru uložené v něm.
+Pokud chcete prostředky vyčistit, přejděte do skupiny prostředků **myResourceGroup** na portálu. Po načtení skupiny prostředků klikněte na **Odstranit skupinu prostředků** a odstraňte skupinu prostředků, registr kontejnerů a image kontejnerů, které jsou tam uložené.
 
 ![Odstranění skupiny prostředků na webu Azure Portal][qs-portal-08]
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili registr kontejnerů Azure s portálem Azure, posunuli image kontejneru a stáhli a spustili image z registru. Pokračujte do kurzů Azure Container Registry pro hlubší pohled na ACR.
+V tomto rychlém startu jste vytvořili Azure Container Registry s Azure Portal, nahráli jste image kontejneru a z registru jste vyžádali a spustili image. Pokračujte Azure Container Registry výukové kurzy, kde najdete hlubší přehled na ACR.
 
 > [!div class="nextstepaction"]
-> [Kurzy registru kontejnerů Azure][container-registry-tutorial-quick-task]
+> [Kurzy Azure Container Registry][container-registry-tutorial-quick-task]
 
 <!-- IMAGES -->
 [qs-portal-01]: ./media/container-registry-get-started-portal/qs-portal-01.png

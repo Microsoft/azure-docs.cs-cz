@@ -1,6 +1,6 @@
 ---
-title: Azure Cloud Shell Rychlý start - Bash
-description: Přečtěte si, jak používat příkazový řádek Bash ve vašem prohlížeči pomocí Azure Cloud Shell.
+title: Rychlý Start Azure Cloud Shell – bash
+description: Naučte se používat příkazový řádek bash v prohlížeči s Azure Cloud Shell.
 author: maertendMSFT
 manager: timlt
 tags: azure-resource-manager
@@ -11,35 +11,35 @@ ms.topic: article
 ms.date: 03/12/2018
 ms.author: damaerte
 ms.openlocfilehash: 58d795a5aee79e4149864a79a923ce34950b31d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79458065"
 ---
-# <a name="quickstart-for-bash-in-azure-cloud-shell"></a>Úvodní příručka pro Bash ve službě Azure Cloud Shell
+# <a name="quickstart-for-bash-in-azure-cloud-shell"></a>Rychlý Start pro bash v Azure Cloud Shell
 
-Tento dokument podrobně popisuje, jak používat Bash v Azure Cloud Shell na [webu Azure Portal](https://ms.portal.azure.com/).
+Tento dokument popisuje, jak používat Bash v Azure Cloud Shell v [Azure Portal](https://ms.portal.azure.com/).
 
 > [!NOTE]
-> [PowerShell v Azure Cloud Shell](quickstart-powershell.md) Úvodní je také k dispozici.
+> K dispozici je také [PowerShell v Azure Cloud Shell](quickstart-powershell.md) rychlý Start.
 
 ## <a name="start-cloud-shell"></a>Spuštění Cloud Shellu
-1. Spusťte **Cloud Shell** z horní navigace na webu Azure Portal. <br>
+1. **Cloud Shell** spustit z horní navigace Azure Portal. <br>
 ![](media/quickstart/shell-icon.png)
 
-2. Vyberte předplatné a vytvořte účet úložiště a sdílenou složku Microsoft Azure Files.
-3. Vyberte možnost Vytvořit úložiště.
+2. Vyberte předplatné, ve kterém chcete vytvořit účet úložiště a sdílenou složku Microsoft Azure Files.
+3. Vyberte vytvořit úložiště.
 
 > [!TIP]
-> Jste automaticky ověřeni pro Azure CLI v každé relaci.
+> Při každé relaci se automaticky ověřují pro Azure CLI.
 
-### <a name="select-the-bash-environment"></a>Vyberte prostředí Bash
-Zkontrolujte, zda prostředí drop-down z levé strany okna shell udává `Bash`. <br>
+### <a name="select-the-bash-environment"></a>Výběr prostředí bash
+Ověřte, že je v rozevíracím seznamu prostředí v levé části okna prostředí uvedena ikona prostředí `Bash`. <br>
 ![](media/quickstart/env-selector.png)
 
 ### <a name="set-your-subscription"></a>Nastavení předplatného
-1. Seznam odběrů, ke kterých máte přístup.
+1. Seznam předplatných, ke kterým máte přístup.
    ```azurecli-interactive
    az account list
    ```
@@ -50,51 +50,51 @@ az account set --subscription 'my-subscription-name'
 ```
 
 > [!TIP]
-> Vaše předplatné bude zapamatováno pro budoucí relace pomocí `/home/<user>/.azure/azureProfile.json`aplikace .
+> Vaše předplatné bude zapamatovatelné pro budoucí relace pomocí `/home/<user>/.azure/azureProfile.json`.
 
 ### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
-Vytvořte novou skupinu prostředků ve společnosti WestUS s názvem "MyRG".
+Vytvořte novou skupinu prostředků v WestUS s názvem "MyRG".
 ```azurecli-interactive
 az group create --location westus --name MyRG
 ```
 
 ### <a name="create-a-linux-vm"></a>Vytvoření virtuálního počítače s Linuxem
-Vytvořte virtuální počítač Ubuntu ve své nové skupině prostředků. Azure CLI vytvoří klíče SSH a nastavit virtuální počítač s nimi. <br>
+Vytvořte virtuální počítač s Ubuntu v nové skupině prostředků. Rozhraní příkazového řádku Azure vytvoří klíče SSH a nastaví pro něj virtuální počítač. <br>
 
 ```azurecli-interactive
 az vm create -n myVM -g MyRG --image UbuntuLTS --generate-ssh-keys
 ```
 
 > [!NOTE]
-> Použití `--generate-ssh-keys` pokyn Azure CLI k vytvoření a nastavení veřejných `$Home` a soukromých klíčů ve vašem virtuálním počítači a adresáři. Ve výchozím nastavení jsou klíče `/home/<user>/.ssh/id_rsa` `/home/<user>/.ssh/id_rsa.pub`umístěny v prostředí Cloud Shell na adrese a . Složka `.ssh` je zachována v obrázku s připojenou sdílenou `$Home`složkou o velikosti 5 GB, který slouží k uchování .
+> Pomocí `--generate-ssh-keys` pokynů příkazového řádku Azure CLI vytvoří a nastaví veřejné a privátní klíče ve vašem virtuálním `$Home` počítači a adresáři. Ve výchozím nastavení jsou klíče umístěny v Cloud Shell `/home/<user>/.ssh/id_rsa` v `/home/<user>/.ssh/id_rsa.pub`a. Vaše `.ssh` složka je trvalá v IMAGI 5 GB připojené sdílené složky, která se používá k zachování `$Home`.
 
-Vaše uživatelské jméno na tomto virtuálním počítači budeUser@Azure:vaše uživatelské jméno používané v Cloud Shell ($ ).
+Vaše uživatelské jméno na tomto VIRTUÁLNÍm počítači bude vaše uživatelské jméno použité vUser@Azure:Cloud Shell ($).
 
-### <a name="ssh-into-your-linux-vm"></a>SSH do vašeho virtuálního počítače s Linuxem
-1. Vyhledejte název virtuálního počítače na panelu hledání na portálu Azure.
-2. Kliknutím na "Připojit" získáte název virtuálního počítače a veřejnou IP adresu. <br>
+### <a name="ssh-into-your-linux-vm"></a>SSH do virtuálního počítače se systémem Linux
+1. Na panelu hledání Azure Portal vyhledejte název svého virtuálního počítače.
+2. Kliknutím na připojit získáte název virtuálního počítače a veřejnou IP adresu. <br>
    ![](media/quickstart/sshcmd-copy.png)
 
-3. SSH do virtuálního `ssh` počítače s cmd.
+3. Připojte se přes SSH k VIRTUÁLNÍmu počítači pomocí `ssh` příkazu cmd.
    ```
    ssh username@ipaddress
    ```
 
-Po navázání připojení SSH byste měli vidět výzvu uvítání Ubuntu. <br>
+Při navazování připojení SSH by se měla zobrazit úvodní výzva Ubuntu. <br>
 ![](media/quickstart/ubuntu-welcome.png)
 
 ## <a name="cleaning-up"></a>Čištění 
-1. Ukončete relaci ssh.
+1. Ukončete relaci SSH.
    ```
    exit
    ```
 
-2. Odstraňte skupinu prostředků a všechny prostředky v ní.
+2. Odstraňte skupinu prostředků a všechny prostředky, které jsou v ní obsažené.
    ```azurecli-interactive
    az group delete -n MyRG
    ```
 
 ## <a name="next-steps"></a>Další kroky
-[Další informace o uchování souborů pro Bash v Cloud Shellu](persisting-shell-storage.md) <br>
-[Další informace o azure cli](https://docs.microsoft.com/cli/azure/) <br>
-[Informace o úložišti Souborů Azure](../storage/files/storage-files-introduction.md) <br>
+[Další informace o trvalém ukládání souborů pro bash v Cloud Shell](persisting-shell-storage.md) <br>
+[Další informace o Azure CLI](https://docs.microsoft.com/cli/azure/) <br>
+[Další informace o službě Azure Files Storage](../storage/files/storage-files-introduction.md) <br>

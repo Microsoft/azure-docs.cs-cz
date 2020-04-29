@@ -1,18 +1,18 @@
 ---
 title: Nasazení prostředků do skupiny pro správu
-description: Popisuje, jak nasadit prostředky v oboru skupiny pro správu v šabloně Azure Resource Manager.
+description: V této části najdete popis postupu nasazení prostředků v oboru skupiny pro správu v šabloně Azure Resource Manager.
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.openlocfilehash: 863d1330412fa238b820eb0f1f05351fc723de6f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79460309"
 ---
-# <a name="create-resources-at-the-management-group-level"></a>Vytvoření zdrojů na úrovni skupiny pro správu
+# <a name="create-resources-at-the-management-group-level"></a>Vytváření prostředků na úrovni skupiny pro správu
 
-Jak vaše organizace dozrává, možná budete muset definovat a přiřadit [zásady](../../governance/policy/overview.md) nebo [ovládací prvky přístupu založené na rolích](../../role-based-access-control/overview.md) pro skupinu pro správu. Pomocí šablon na úrovni skupiny pro správu můžete deklarativně použít zásady a přiřadit role na úrovni skupiny pro správu.
+V případě, že vaše organizace bude vyspělá, možná budete muset definovat a přiřazovat [zásady](../../governance/policy/overview.md) nebo [řízení přístupu na základě rolí](../../role-based-access-control/overview.md) pro skupinu pro správu. Šablony na úrovni skupiny pro správu umožňují deklarativní použití zásad a přiřazování rolí na úrovni skupiny pro správu.
 
 ## <a name="supported-resources"></a>Podporované prostředky
 
@@ -22,12 +22,12 @@ Na úrovni skupiny pro správu můžete nasadit následující typy prostředků
 * [policyAssignments](/azure/templates/microsoft.authorization/policyassignments)
 * [policyDefinitions](/azure/templates/microsoft.authorization/policydefinitions)
 * [policySetDefinitions](/azure/templates/microsoft.authorization/policysetdefinitions)
-* [roleÚkoly](/azure/templates/microsoft.authorization/roleassignments)
-* [definice rolí](/azure/templates/microsoft.authorization/roledefinitions)
+* [roleAssignments](/azure/templates/microsoft.authorization/roleassignments)
+* [roleDefinitions](/azure/templates/microsoft.authorization/roledefinitions)
 
 ### <a name="schema"></a>Schéma
 
-Schéma, které používáte pro nasazení skupiny pro správu, se liší od schématu pro nasazení skupiny prostředků.
+Schéma, které používáte pro nasazení skupiny pro správu, se liší od schématu pro nasazení skupin prostředků.
 
 Pro šablony použijte:
 
@@ -35,7 +35,7 @@ Pro šablony použijte:
 https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#
 ```
 
-Schéma pro soubor parametrů je stejné pro všechny obory nasazení. Pro soubory parametrů použijte:
+Schéma pro soubor parametrů je pro všechny obory nasazení stejné. Pro soubory parametrů použijte:
 
 ```json
 https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#
@@ -43,9 +43,9 @@ https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json
 
 ## <a name="deployment-commands"></a>Příkazy nasazení
 
-Příkazy pro nasazení skupiny pro správu se liší od příkazů pro nasazení skupiny prostředků.
+Příkazy pro nasazení skupiny pro správu se liší od příkazů pro nasazení skupin prostředků.
 
-Pro azure cli použijte [nasazení az mg create](/cli/azure/deployment/mg?view=azure-cli-latest#az-deployment-mg-create):
+Pro rozhraní příkazového řádku Azure CLI použijte [AZ Deployment g Create](/cli/azure/deployment/mg?view=azure-cli-latest#az-deployment-mg-create):
 
 ```azurecli-interactive
 az deployment mg create \
@@ -65,32 +65,32 @@ New-AzManagementGroupDeployment `
   -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/management-level-deployment/azuredeploy.json"
 ```
 
-Pro rozhraní REST API použijte [nasazení – vytvořit v oboru skupiny pro správu](/rest/api/resources/deployments/createorupdateatmanagementgroupscope).
+V případě REST API použijte [nasazení – vytvořte v oboru skupiny pro správu](/rest/api/resources/deployments/createorupdateatmanagementgroupscope).
 
 ## <a name="deployment-location-and-name"></a>Umístění a název nasazení
 
-Pro nasazení na úrovni skupiny pro správu je nutné zadat umístění pro nasazení. Umístění nasazení je oddělené od umístění prostředků, které nasazujete. Umístění nasazení určuje, kam se mají ukládat data nasazení.
+Pro nasazení na úrovni skupiny pro správu musíte zadat umístění pro nasazení. Umístění nasazení je oddělené od umístění prostředků, které nasazujete. Umístění nasazení určuje, kam se mají ukládat data nasazení.
 
-Můžete zadat název pro nasazení nebo použít výchozí název nasazení. Výchozí název je název souboru šablony. Například nasazení šablony s názvem **azuredeploy.json** vytvoří výchozí název nasazení **azuredeploy**.
+Můžete zadat název nasazení nebo použít výchozí název nasazení. Výchozí název je název souboru šablony. Například nasazení šablony s názvem **azuredeploy. JSON** vytvoří výchozí název nasazení **azuredeploy**.
 
-Pro každý název nasazení umístění je neměnné. Nasazení nelze vytvořit na jednom místě, pokud existuje existující nasazení se stejným názvem v jiném umístění. Pokud se zobrazí `InvalidDeploymentLocation`kód chyby , použijte jiný název nebo stejné umístění jako předchozí nasazení pro tento název.
+Pro každý název nasazení je umístění neměnné. Nasazení nelze vytvořit v jednom umístění, pokud existuje existující nasazení se stejným názvem v jiném umístění. Pokud se zobrazí kód `InvalidDeploymentLocation`chyby, použijte jiný název nebo stejné umístění jako předchozí nasazení pro tento název.
 
-## <a name="use-template-functions"></a>Použití funkcí šablony
+## <a name="use-template-functions"></a>Použití funkcí šablon
 
-Pro nasazení skupiny pro správu existují některé důležité důležité aspekty při použití funkcí šablony:
+V případě nasazení skupin pro správu existují při používání funkcí šablon důležité důležité informace:
 
-* Funkce [resourceGroup()](template-functions-resource.md#resourcegroup) **není** podporována.
-* Funkce [subscription()](template-functions-resource.md#subscription) **není** podporována.
-* [Funkce reference()](template-functions-resource.md#reference) a [list()](template-functions-resource.md#list) jsou podporovány.
-* Funkce [resourceId()](template-functions-resource.md#resourceid) je podporována. Použijte ji k získání ID prostředku pro prostředky, které se používají na úrovni nasazení skupiny pro správu. Nezadejte hodnotu parametru skupiny prostředků.
+* Funkce [Resource ()](template-functions-resource.md#resourcegroup) **není podporována.**
+* Funkce [Subscription ()](template-functions-resource.md#subscription) **není podporována.**
+* Funkce [Reference ()](template-functions-resource.md#reference) a [list ()](template-functions-resource.md#list) jsou podporovány.
+* Funkce [ResourceID ()](template-functions-resource.md#resourceid) je podporována. Použijte ho k získání ID prostředku pro prostředky, které se používají v nasazeních na úrovni skupiny pro správu. Nezadávejte hodnotu parametru skupiny prostředků.
 
-  Chcete-li například získat ID prostředku pro definici zásad, použijte:
+  Pokud například chcete získat ID prostředku pro definici zásady, použijte:
   
   ```json
   resourceId('Microsoft.Authorization/policyDefinitions/', parameters('policyDefinition'))
   ```
   
-  Vrácené ID prostředku má následující formát:
+  ID vráceného prostředku má následující formát:
   
   ```json
   /providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -131,9 +131,9 @@ Následující příklad ukazuje, jak [definovat](../../governance/policy/concep
 }
 ```
 
-### <a name="assign-policy"></a>Přiřadit zásadu
+### <a name="assign-policy"></a>Přiřadit zásady
 
-Následující příklad přiřadí existující definici zásady skupině pro správu. Pokud zásada přebírá parametry, zadejte je jako objekt. Pokud zásada nepřevezme parametry, použijte výchozí prázdný objekt.
+Následující příklad přiřadí existující definici zásady ke skupině pro správu. Pokud zásady přebírají parametry, poskytněte je jako objekt. Pokud zásada nepřijímá parametry, použijte výchozí prázdný objekt.
 
 ```json
 {
@@ -168,10 +168,10 @@ Následující příklad přiřadí existující definici zásady skupině pro s
 
 ## <a name="template-sample"></a>Ukázka šablony
 
-* [Vytvořte skupinu zdrojů, zásadu a přiřazení zásad](https://github.com/Azure/azure-docs-json-samples/blob/master/management-level-deployment/azuredeploy.json).
+* [Vytvořte skupinu prostředků, zásadu a přiřazení zásad](https://github.com/Azure/azure-docs-json-samples/blob/master/management-level-deployment/azuredeploy.json).
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o přiřazování rolí najdete [v tématu Správa přístupu k prostředkům Azure pomocí šablon RBAC a Azure Resource Manager](../../role-based-access-control/role-assignments-template.md).
-* Příklad nasazení nastavení pracovního prostoru pro Azure Security Center najdete v [tématu nasazení ASCwithWorkspaceSettings.json](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json).
-* Můžete také nasadit šablony na [úrovni předplatného](deploy-to-subscription.md) a na [úrovni klienta](deploy-to-tenant.md).
+* Další informace o přiřazování rolí najdete v tématu [Správa přístupu k prostředkům Azure pomocí šablon RBAC a Azure Resource Manager](../../role-based-access-control/role-assignments-template.md).
+* Příklad nasazení nastavení pracovního prostoru pro Azure Security Center najdete v tématu [deployASCwithWorkspaceSettings. JSON](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json).
+* Šablony můžete také nasadit na úrovni [předplatného](deploy-to-subscription.md) a na [úrovni tenanta](deploy-to-tenant.md).

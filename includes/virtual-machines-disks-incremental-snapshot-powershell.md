@@ -9,10 +9,10 @@ ms.date: 03/05/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 3eec6583ebdff35d7e40d2eec305a947de0cb87c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79299447"
 ---
 [!INCLUDE [virtual-machines-disks-incremental-snapshots-description](virtual-machines-disks-incremental-snapshots-description.md)]
@@ -26,17 +26,17 @@ ms.locfileid: "79299447"
 
 ## <a name="powershell"></a>PowerShell
 
-Azure PowerShell můžete použít k vytvoření přírůstkového snímku. Budete potřebovat nejnovější verzi Azure PowerShellu, následující příkaz ho buď nainstaluje, nebo aktualizuje stávající instalaci na nejnovější:
+K vytvoření přírůstkového snímku můžete použít Azure PowerShell. Budete potřebovat nejnovější verzi Azure PowerShell, následující příkaz si buď nainstaluje nebo aktualizuje stávající instalaci na nejnovější:
 
 ```PowerShell
 Install-Module -Name Az -AllowClobber -Scope CurrentUser
 ```
 
-Po instalaci se přihlaste k `az login`relaci prostředí PowerShell pomocí aplikace .
+Po nainstalování se přihlaste k relaci PowerShellu `az login`pomocí.
 
-Chcete-li vytvořit přírůstkový snímek s Azure PowerShell, nastavte konfiguraci `-Incremental` s [New-AzSnapShotConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshotconfig?view=azps-2.7.0) s parametrem `-Snapshot` a pak předat jako proměnnou [New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot?view=azps-2.7.0) prostřednictvím parametru.
+Chcete-li vytvořit přírůstkový snímek s Azure PowerShell, nastavte konfiguraci pomocí `-Incremental` parametru [New-AzSnapShotConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshotconfig?view=azps-2.7.0) s parametrem a pak jej předejte jako proměnnou do [New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot?view=azps-2.7.0) prostřednictvím `-Snapshot` parametru.
 
-Nahradit `<yourDiskNameHere>` `<yourResourceGroupNameHere>`, `<yourDesiredSnapShotNameHere>` a s hodnotami, pak můžete použít následující skript k vytvoření přírůstkového snímku:
+`<yourDiskNameHere>`Nahraďte `<yourResourceGroupNameHere>`, a `<yourDesiredSnapShotNameHere>` hodnotami a pak můžete použít následující skript k vytvoření přírůstkového snímku:
 
 ```PowerShell
 # Get the disk that you need to backup by creating an incremental snapshot
@@ -47,9 +47,9 @@ $snapshotConfig=New-AzSnapshotConfig -SourceUri $yourDisk.Id -Location $yourDisk
 New-AzSnapshot -ResourceGroupName <yourResourceGroupNameHere> -SnapshotName <yourDesiredSnapshotNameHere> -Snapshot $snapshotConfig 
 ```
 
-Můžete identifikovat přírůstkové snímky ze stejného disku s `SourceResourceId` a vlastnosti `SourceUniqueId` snímků. `SourceResourceId`je ID prostředku Správce prostředků Azure nadřazeného disku. `SourceUniqueId`je hodnota zděděná z vlastnosti `UniqueId` disku. Pokud byste odstranili disk a potom vytvořili nový disk se `UniqueId` stejným názvem, hodnota vlastnosti se změní.
+Můžete identifikovat přírůstkové snímky ze stejného disku s `SourceResourceId` `SourceUniqueId` vlastnostmi a a vlastnostmi snímků. `SourceResourceId`je ID prostředku Azure Resource Manager nadřazeného disku. `SourceUniqueId`je hodnota zděděná z `UniqueId` vlastnosti disku. Pokud byste chtěli odstranit disk a pak vytvořit nový disk se stejným názvem, změní se hodnota `UniqueId` vlastnosti.
 
-Můžete použít `SourceResourceId` `SourceUniqueId` a vytvořit seznam všech snímků přidružených k určitému disku. Nahraďte `<yourResourceGroupNameHere>` hodnotou a potom můžete použít následující příklad pro seznam existujících přírůstkových snímků:
+Pomocí `SourceResourceId` a `SourceUniqueId` můžete vytvořit seznam všech snímků přidružených k určitému disku. Nahraďte `<yourResourceGroupNameHere>` hodnotou a pak můžete použít následující příklad k vypsání stávajících přírůstkových snímků:
 
 ```PowerShell
 $snapshots = Get-AzSnapshot -ResourceGroupName <yourResourceGroupNameHere>
@@ -69,7 +69,7 @@ $incrementalSnapshots
 
 ## <a name="resource-manager-template"></a>Šablona Resource Manageru
 
-Šablony Azure Resource Manageru můžete taky použít k vytvoření přírůstkového snímku. Budete muset ujistěte se, že apiVersion je nastavena na **2019-03-01** a že přírůstkové vlastnost je také nastavena na hodnotu true. Následující úryvek je příkladem, jak vytvořit přírůstkový snímek pomocí šablon Správce prostředků:
+Můžete také použít šablony Azure Resource Manager k vytvoření přírůstkového snímku. Musíte se ujistit, že je apiVersion nastavené na **2019-03-01** a že vlastnost Increment je nastavená taky na true. Následující fragment kódu je příkladem vytvoření přírůstkového snímku pomocí šablon Správce prostředků:
 
 ```json
 {
@@ -105,4 +105,4 @@ $incrementalSnapshots
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud chcete zobrazit ukázkový kód demonstrující rozdílové schopnosti přírůstkových snímků pomocí rozhraní .NET, přečtěte si část [Kopírování záloh spravovaných disků Azure do jiné oblasti s rozdílovou schopností přírůstkových snímků](https://github.com/Azure-Samples/managed-disks-dotnet-backup-with-incremental-snapshots).
+Pokud se chcete podívat na vzorový kód prokazující rozdílovou schopnost přírůstkových snímků pomocí .NET, přečtěte si téma [kopírování záloh Azure Managed disks do jiné oblasti s rozdílovou schopností přírůstkových snímků](https://github.com/Azure-Samples/managed-disks-dotnet-backup-with-incremental-snapshots).

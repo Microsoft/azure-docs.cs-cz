@@ -1,7 +1,7 @@
 ---
-title: 'Import dat: Odkaz na modul'
+title: 'Importovat data: odkaz na modul'
 titleSuffix: Azure Machine Learning
-description: Zjistěte, jak pomocí modulu Import ovat data v Azure Machine Learning načíst data do kanálu strojového učení z existujících cloudových datových služeb.
+description: Naučte se používat modul importovat data v Azure Machine Learning k načtení dat do kanálu strojového učení z existujících cloudových datových služeb.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,82 +10,82 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
 ms.openlocfilehash: d124fdc15bd34743b237985a66cc35625f5d9a4b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79456195"
 ---
-# <a name="import-data-module"></a>Modul Importovat data
+# <a name="import-data-module"></a>Importovat data modul
 
-Tento článek popisuje modul v návrháři Azure Machine Learning (preview).
+Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
 
-Tento modul slouží k načtení dat do kanálu strojového učení z existujících cloudových datových služeb. 
+Pomocí tohoto modulu můžete načíst data do kanálu strojového učení z existujících cloudových datových služeb. 
 
 > [!Note]
-> Všechny funkce poskytované tímto modulem lze provádět **úložištěm dat** a **datovými sadami** na vstupní stránce worksapce. Doporučujeme používat **úložiště dat** a **datovou sadu,** která obsahuje další funkce, jako je monitorování dat. Další informace najdete v článku [Jak získat přístup k datům](../how-to-access-data.md) a Jak [zaregistrovat datové sady.](../how-to-create-register-datasets.md)
-> Po registraci datové sady ji najdete v kategorii **Datové sady** -> **Moje datové sady** v rozhraní návrháře. Tento modul je vyhrazen pro uživatele studia (klasické) pro známé prostředí. 
+> Všechny funkce, které tento modul poskytuje, může udělat **úložiště dat** a **datové sady** na úvodní stránce pracovního prostoru. Doporučujeme používat **úložiště** dat a **datovou sadu** , které zahrnují další funkce, jako je monitorování dat. Další informace najdete v článku [Jak získat přístup k datům](../how-to-access-data.md) a [jak zaregistrovat datové sady](../how-to-create-register-datasets.md) .
+> Po registraci můžete datovou sadu najít v -> kategorii DataSets moje **Datasets**datové**sady** v rozhraní návrháře. Tento modul je vyhrazený pro uživatele v rámci studia (Classic) pro známé prostředí. 
 >
 
-Modul **Import dat** podporuje čtená data z následujících zdrojů:
+Modul **Import dat** podporuje čtení dat z následujících zdrojů:
 
-- ADRESA URL přes HTTP
-- Cloudová úložiště Azure prostřednictvím [**datových úložišť**](../how-to-access-data.md))
+- Adresa URL prostřednictvím protokolu HTTP
+- Cloudové úložiště Azure přes [**úložiště dat**](../how-to-access-data.md))
     - Kontejner objektů blob Azure
     - Sdílená složka Azure
     - Azure Data Lake
     - Azure Data Lake Gen2
     - Azure SQL Database
-    - Azure PostgreSQL    
+    - PostgreSQL Azure    
 
-Před použitím cloudového úložiště je třeba nejprve zaregistrovat úložiště dat v pracovním prostoru Azure Machine Learning. Další informace naleznete v [tématu Jak získat přístup k datům](../how-to-access-data.md). 
+Než použijete cloudové úložiště, musíte nejdřív zaregistrovat úložiště dat v pracovním prostoru Azure Machine Learning. Další informace najdete v tématu [Jak získat přístup k datům](../how-to-access-data.md). 
 
-Po definování požadovaných dat a připojení ke zdroji **[importdat](./import-data.md)** odvodí datový typ každého sloupce na základě hodnot, které obsahuje, a načte data do kanálu návrháře. Výstup **importu dat** je datová sada, kterou lze použít s libovolným kanálem návrháře.
+Jakmile definujete požadovaná data a připojíte se ke zdroji, **[importujte data](./import-data.md)** datový typ každého sloupce v závislosti na hodnotách, které obsahuje, a načte data do kanálu návrháře. Výstupem **importu dat** je datová sada, která se dá použít s libovolným kanálem návrháře.
 
-Pokud se zdrojová data změní, můžete aktualizovat datovou sadu a přidat nová data opětovným spuštěním [importu dat](./import-data.md).
+Pokud se vaše zdrojová data změní, můžete datovou sadu aktualizovat a přidat nová data tak, že znovu spustíte [importovaná data](./import-data.md).
 
-## <a name="how-to-configure-import-data"></a>Konfigurace importu dat
+## <a name="how-to-configure-import-data"></a>Jak konfigurovat importovaná data
 
-1. Přidejte do kanálu modul **Importdat.** Tento modul najdete v kategorii **Vstup a Výstup dat** v návrháři.
+1. Přidejte do svého kanálu modul **Import dat** . Tento modul můžete najít v kategorii **vstup a výstup dat** v návrháři.
 
 1. Výběrem modulu otevřete pravé podokno.
 
-1. Vyberte **Zdroj dat**a zvolte typ zdroje dat. Může to být HTTP nebo úložiště dat.
+1. Vyberte **zdroj dat**a vyberte typ zdroje dat. Může se jednat o protokol HTTP nebo úložiště dat.
 
-    Pokud zvolíte úložiště dat, můžete vybrat existující úložiště dat, která se už zaregistrovala do pracovního prostoru Azure Machine Learning, nebo vytvořit nové úložiště dat. Pak definujte cestu k importu dat v úložišti dat. Cestu můžete snadno procházet kliknutím na **procházet cestu** ![import-data-path](media/module/import-data-path.png)
+    Pokud zvolíte úložiště dat, můžete vybrat existující úložiště dat, která jsou už zaregistrovaná v pracovním prostoru Azure Machine Learning, nebo vytvořit nové úložiště dat. Pak definujte cestu k datům, která chcete importovat do úložiště dat. Cestu můžete snadno procházet kliknutím na **Procházet cesta** ![import-data-cesta.](media/module/import-data-path.png)
 
-1. Vyberte schéma náhledu, které chcete filtrovat sloupce, které chcete zahrnout. Můžete také definovat upřesňující nastavení, jako je oddělovač v možnostech analýzy.
+1. Vyberte schéma verze Preview pro filtrování sloupců, které chcete zahrnout. V možnostech analýzy můžete také definovat upřesňující nastavení, jako je oddělovač.
 
-    ![import-data-preview](media/module/import-data.png)
+    ![import-data-Preview](media/module/import-data.png)
 
-1. Zaškrtávací políčko **Regenerate output**rozhodne, zda má být modul spuštěn za běhu. 
+1. Zaškrtávací políčko **znovu vygenerovat výstup**určuje, zda se má spustit modul pro opětovné vygenerování výstupu za běhu. 
 
-    Ve výchozím nastavení není vybrán, což znamená, že pokud byl modul dříve proveden se stejnými parametry, systém znovu použije výstup z posledního spuštění, aby zkrátil dobu běhu. 
+    Ve výchozím nastavení je Nevybraná, což znamená, že pokud byl modul spuštěn se stejnými parametry dřív, systém použije výstup z posledního spuštění k omezení doby běhu. 
 
-    Pokud je vybrána, systém modul znovu spustí, aby se znovu vygeneroval výstup. Takže tuto možnost vyberte, když jsou podkladová data v úložišti aktualizována, může pomoci získat nejnovější data.
+    Pokud je vybraná, systém znovu spustí modul a obnoví výstup. Tuto možnost vyberte, pokud se budou zdrojová data v úložišti aktualizovat, může vám to usnadnit získání nejnovějších dat.
 
 
-1. Odešlete potrubí.
+1. Odešlete kanál.
 
-    Když import dat načte data do návrháře, odvodí datový typ každého sloupce na základě hodnot, které obsahuje, číselné nebo kategorické.
+    Když import dat načte data do návrháře, odvodí datový typ každého sloupce na základě hodnot, které obsahuje, buď číselného, nebo kategorií.
 
-    Pokud je záhlaví k dispozici, záhlaví se používá k pojmenování sloupců výstupní datové sady.
+    Pokud je hlavička k dispozici, záhlaví se použije k pojmenování sloupců výstupní datové sady.
 
-    Pokud v datech nejsou žádná existující záhlaví sloupců, budou nové názvy sloupců generovány pomocí formátu col1, col2,... , coln*.
+    Pokud v datech nejsou žádná existující záhlaví sloupců, generují se nové názvy sloupců pomocí formátu Sloupec1, col2,... , coln*.
 
 ## <a name="results"></a>Výsledky
 
-Po dokončení importu klepněte na výstupní datovou sadu a vyberte **Visualize, abyste zjistili,** zda byla data úspěšně importována.
+Po dokončení importu klikněte na výstupní datovou sadu a vyberte **vizualizovat** , abyste viděli, jestli se data úspěšně importovala.
 
-Pokud chcete data uložit k opakovanému použití, nikoli importovat novou sadu dat při každém spuštění kanálu, vyberte ikonu **Registrovat datovou sadu** na kartě **Výstupy** v pravém panelu modulu. Zvolte název datové sady. Uložená datová sada zachová data v době uložení, datová sada se při opětovném spuštění kanálu neaktualizuje, a to ani v případě, že se změní datová sada v kanálu. To může být užitečné pro pořizování snímků dat.
+Pokud chcete data uložit pro opakované použití, místo importu nové sady dat pokaždé, když je kanál spuštěný, vyberte ikonu **zaregistrovat datovou sadu** na kartě **výstupy** na pravém panelu modulu. Vyberte název datové sady. Uložená datová sada zachovává data v době uložení, datová sada se při opětovném spuštění kanálu neaktualizuje, i když se datová sada v kanálu změní. To může být užitečné při pořizování snímků dat.
 
-Po importu dat může potřebovat další přípravy pro modelování a analýzu:
+Po importu dat možná budete potřebovat další přípravy na modelování a analýzu:
 
-- Pomocí [funkce Upravit metadata](./edit-metadata.md) můžete měnit názvy sloupců, zpracovávat sloupec jako jiný datový typ nebo označovat, že některé sloupce jsou popisky nebo prvky.
+- Pomocí možnosti [Upravit metadata](./edit-metadata.md) můžete změnit názvy sloupců, zpracovat sloupec jako jiný datový typ nebo označit, že některé sloupce jsou popisky nebo funkce.
 
-- Pomocí [příkazu Vybrat sloupce v datové sadě](./select-columns-in-dataset.md) vyberte podmnožinu sloupců, které chcete transformovat nebo použít v modelování. Transformované nebo odebrané sloupce lze snadno připojit k původní datové sadě pomocí modulu [Přidat sloupce.](./add-columns.md)  
+- Pomocí [Vybrat sloupce v datové sadě](./select-columns-in-dataset.md) můžete vybrat podmnožinu sloupců pro transformaci nebo použití při modelování. Transformované nebo odebrané sloupce lze snadno znovu připojit k původní datové sadě pomocí modulu [Přidat sloupce](./add-columns.md) .  
 
-- Pomocí [oddílu a ukázky](./partition-and-sample.md) rozdělte datovou sadu, proveďte vzorkování nebo získejte horní n řádků.
+- Pomocí [oddílu a vzorku](./partition-and-sample.md) rozdělte datovou sadu, proveďte vzorkování nebo získejte horních n řádků.
 
 ## <a name="next-steps"></a>Další kroky
 

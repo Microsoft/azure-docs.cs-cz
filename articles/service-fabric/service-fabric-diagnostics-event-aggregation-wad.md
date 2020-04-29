@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 04/03/2018
 ms.author: srrengar
 ms.openlocfilehash: b9a448ff41c66fa3a38c124f7acde062bacbe9ba
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79282494"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Agregace a shromažďování událostí pomocí Azure Diagnostics Windows
@@ -26,12 +26,12 @@ Jedním ze způsobů, jak nahrávat a shromažďovat protokoly, je použít roz�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 V tomto článku se používají následující nástroje:
 
 * [Azure Resource Manager](../azure-resource-manager/management/overview.md)
 * [Azure PowerShell](/powershell/azure/overview)
-* [Šablona Azure Resource Manageru](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Šablona Azure Resource Manager](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ## <a name="service-fabric-platform-events"></a>Service Fabric události platformy
 Service Fabric nastavíte v několika málo integrovaných [kanálech protokolování](service-fabric-diagnostics-event-generation-infra.md), u kterých jsou následující kanály předem nakonfigurované s příponou, aby odesílaly data monitorování a diagnostiky do tabulky úložiště nebo jinde:

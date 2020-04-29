@@ -1,6 +1,6 @@
 ---
-title: Jak nainstalovat IoT Edge na Kubernetes | Dokumenty společnosti Microsoft
-description: Další informace o instalaci IoT Edge na Kubernetes pomocí prostředí clusteru pro místní vývoj
+title: Jak nainstalovat IoT Edge v Kubernetes | Microsoft Docs
+description: Naučte se, jak nainstalovat IoT Edge v Kubernetes pomocí prostředí místního vývojového clusteru.
 author: kgremban
 manager: philmea
 ms.author: veyalla
@@ -9,35 +9,35 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 4b2068c3944f9e7616b0666c7bafcafc68ee0cd9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79471281"
 ---
-# <a name="how-to-install-iot-edge-on-kubernetes-preview"></a>Jak nainstalovat IoT Edge na Kubernetes (Náhled)
+# <a name="how-to-install-iot-edge-on-kubernetes-preview"></a>Postup instalace IoT Edge v Kubernetes (Preview)
 
-IoT Edge se může integrovat s Kubernetes a používat ho jako odolnou a vysoce dostupnou vrstvu infrastruktury. Zde je místo, kde tato podpora zapadá do řešení IoT Edge na vysoké úrovni:
+IoT Edge můžete integrovat s Kubernetes a používat ji jako odolnou, vysoce dostupnou infrastrukturu infrastruktury. Tady je místo, kde se tato podpora vejde do řešení IoT Edge vysoké úrovně:
 
-![k8s úvod](./media/how-to-install-iot-edge-kubernetes/kubernetes-model.png)
+![k8s Úvod](./media/how-to-install-iot-edge-kubernetes/kubernetes-model.png)
 
 >[!TIP]
->Dobrým mentálním modelem pro tuto integraci je myslet na Kubernetes jako na další operační prostředí, na kterých mohou aplikace IoT Edge běžet kromě Linuxu a Windows.
+>Dobrým duševním modelem této integrace je představit Kubernetes jako jiné operační prostředí, IoT Edge Aplikace můžou běžet kromě systémů Linux a Windows.
 
 ## <a name="architecture"></a>Architektura 
-Na Kubernetes, IoT Edge poskytuje *vlastní definici prostředků* (CRD) pro nasazení úloh y edge. IoT Edge Agent přebírá roli *řadiče CRD,* který odsouhlasí clouds spravované požadovaný stav se stavem místního clusteru.
+V Kubernetes IoT Edge poskytuje pro nasazení hraničních úloh *vlastní definici prostředků* (CRD). Agent IoT Edge předpokládá, že role *řadiče CRD* sjednotí požadovaný stav cloudu spravovaného cloudu s místním stavem clusteru.
 
-Životnost modulu spravuje plánovač Kubernetes, který udržuje dostupnost modulu a vybírá jejich umístění. IoT Edge spravuje hraniční aplikační platformu spuštěnou nahoře a průběžně odřazuje požadovaný stav zadaný v ioT hubu se stavem v hraničním clusteru. Aplikační model je stále známý model založený na modulech a trasách IoT Edge. Řadič IoT Edge Agent provádí *automatický* překlad aplikačního modelu IoT Edge do nativních konstrukcí Kubernetes, jako jsou pody, nasazení, služby atd.
+Doba života modulu je spravovaná plánovačem Kubernetes, který udržuje dostupnost modulu a volí jejich umístění. IoT Edge spravuje platformu hraniční aplikace spuštěnou nahoře a nepřetržitě slučuje požadovaný stav zadaný v IoT Hub se stavem na hraničním clusteru. Model aplikace je stále známý model založený na IoT Edgech modulech a trasách. Řadič IoT Edge agenta provádí model aplikace *automatických* IoT Edge překladu do nativních konstrukcí Kubernetes, jako jsou lusky, nasazení, služby atd.
 
-Zde je diagram architektury na vysoké úrovni:
+Tady je diagram architektury vysoké úrovně:
 
-![kubernetes oblouk](./media/how-to-install-iot-edge-kubernetes/publicpreview-refresh-kubernetes.png)
+![Kubernetes arch](./media/how-to-install-iot-edge-kubernetes/publicpreview-refresh-kubernetes.png)
 
-Každá součást nasazení hraniční sítě je vymezena na obor názvů Kubernetes specifické pro zařízení, což umožňuje sdílet stejné prostředky clusteru mezi více hraničních zařízení a jejich nasazení.
+Každá součást nasazení Edge je vymezená na obor názvů Kubernetes specifický pro zařízení, takže je možné sdílet stejné prostředky clusteru mezi více hraničními zařízeními a jejich nasazeními.
 
 >[!NOTE]
->IoT Edge na Kubernetes je ve [veřejné verzi Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+>IoT Edge v Kubernetes je ve [verzi Public Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="tutorials-and-references"></a>Kurzy a reference 
+## <a name="tutorials-and-references"></a>Kurzy a odkazy 
 
-Další informace, včetně podrobných výukových lekcí a odkazů, najdete [na miniwebu náhledu dokumentů IoT Edge na Kubernetes.](https://aka.ms/edgek8sdoc)
+Další informace, včetně podrobných kurzů a odkazů, najdete v článku [IoT Edge na webu Kubernetes ve verzi Preview](https://aka.ms/edgek8sdoc) .

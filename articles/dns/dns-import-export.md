@@ -1,7 +1,7 @@
 ---
 title: Import a export souboru zóny domény – Azure CLI
 titleSuffix: Azure DNS
-description: Zjistěte, jak importovat a exportovat soubor zóny DNS do Azure DNS pomocí azure cli
+description: Naučte se importovat a exportovat soubor zóny DNS pro Azure DNS pomocí Azure CLI.
 services: dns
 author: rohinkoul
 ms.service: dns
@@ -9,59 +9,59 @@ ms.date: 4/3/2019
 ms.author: rohink
 ms.topic: conceptual
 ms.openlocfilehash: a5c2fdde564eba2d95e7f14f4d47e4d381739d5d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79365164"
 ---
 # <a name="import-and-export-a-dns-zone-file-using-the-azure-cli"></a>Import a export souboru zóny DNS pomocí Azure CLI
 
-Tento článek vás provede, jak importovat a exportovat soubory zóny DNS pro Azure DNS pomocí Azure CLI.
+Tento článek vás provede postupem importu a exportu souborů zóny DNS pro Azure DNS pomocí rozhraní příkazového řádku Azure CLI.
 
-## <a name="introduction-to-dns-zone-migration"></a>Úvod k migraci zóny DNS
+## <a name="introduction-to-dns-zone-migration"></a>Úvod do migrace zóny DNS
 
-Soubor zóny DNS je textový soubor, který obsahuje podrobnosti o každém záznamu DNS (Domain Name System) v zóně. Je ve standardním formátu, takže je vhodný pro přenos DNS záznamů mezi DNS systémy. Použití souboru zóny je rychlý, spolehlivý a pohodlný způsob přenosu zóny DNS do nebo z Azure DNS.
+Soubor zóny DNS je textový soubor, který obsahuje podrobnosti o všech záznamech DNS (Domain Name System) v zóně. Sleduje se podle standardního formátu a je vhodný pro přenos záznamů DNS mezi systémy DNS. Použití souboru zóny je rychlý, spolehlivý a pohodlný způsob přenosu zóny DNS do nebo z Azure DNS.
 
-Azure DNS podporuje import a export zónových souborů pomocí rozhraní příkazového řádku Azure (CLI). Import souborů zóny **není** momentálně podporovaný přes Azure PowerShell nebo portál Azure.
+Azure DNS podporuje import a export souborů zón pomocí rozhraní příkazového řádku Azure (CLI). Import souboru zóny se **v současné době nepodporuje prostřednictvím** Azure PowerShell nebo Azure Portal.
 
-Azure CLI je nástroj příkazového řádku pro různé platformy, který se používá ke správě služeb Azure. Je k dispozici pro platformy Windows, Mac a Linux na [stránce Azure ke stažení](https://azure.microsoft.com/downloads/). Podpora mezi platformami je důležitá pro import a export souborů zón, protože nejběžnější software názvového serveru [BIND](https://www.isc.org/downloads/bind/), obvykle běží na Linuxu.
+Azure CLI je nástroj příkazového řádku pro různé platformy, který slouží ke správě služeb Azure. Je k dispozici pro platformy Windows, Mac a Linux ze [stránky Azure downloads](https://azure.microsoft.com/downloads/). Podpora více platforem je důležitá pro import a export souborů zóny, protože nejběžnější software názvového serveru, [BIND](https://www.isc.org/downloads/bind/), se obvykle spouští na Linux.
 
-## <a name="obtain-your-existing-dns-zone-file"></a>Získání existujícího souboru zóny DNS
+## <a name="obtain-your-existing-dns-zone-file"></a>Získat existující soubor zóny DNS
 
-Před importem souboru zóny DNS do služby Azure DNS je třeba získat kopii souboru zóny. Zdroj tohoto souboru závisí na tom, kde je aktuálně hostována zóna DNS.
+Před importem souboru zóny DNS do Azure DNS musíte získat kopii souboru zóny. Zdroj tohoto souboru závisí na tom, kde je zóna DNS aktuálně hostovaná.
 
-* Pokud je vaše zóna DNS hostována partnerskou službou (například registrátorem domény, vyhrazeným poskytovatelem hostingu DNS nebo alternativním poskytovatelem cloudu), měla by tato služba poskytovat možnost stáhnout soubor zóny DNS.
-* Pokud je vaše zóna DNS hostována ve službě Windows DNS, je výchozí složkou souborů zóny **%systemroot%\system32\dns**. Úplná cesta ke každému souboru zóny se také zobrazuje na kartě **Obecné** konzoly DNS.
-* Pokud je vaše zóna DNS hostována pomocí funkce BIND, je v konfiguračním souboru BIND **s názvem.conf**určeno umístění souboru zóny pro každou zónu.
+* Pokud je vaše zóna DNS hostovaná službou partnera (například doménovým registrátorem, vyhrazeným poskytovatelem hostingu DNS nebo alternativním poskytovatelem cloudu), měla by tato služba poskytovat možnost stáhnout soubor zóny DNS.
+* Pokud je vaše zóna DNS hostovaná na DNS systému Windows, bude výchozí složkou pro soubory zóny **%SystemRoot%\System32\Dns**. Úplná cesta ke každému souboru zóny se zobrazí také na kartě **Obecné** konzoly DNS.
+* Pokud je vaše zóna DNS hostovaná pomocí služby BIND, umístění souboru zóny pro každou zónu je zadané v konfiguračním souboru vazby **s názvem. conf**.
 
 ## <a name="import-a-dns-zone-file-into-azure-dns"></a>Import souboru zóny DNS do Azure DNS
 
-Import souboru zóny vytvoří novou zónu v Azure DNS, pokud ještě neexistuje. Pokud zóna již existuje, musí být sady záznamů v souboru zóny sloučeny s existujícími sadami záznamů.
+Import souboru zóny vytvoří v Azure DNS novou zónu, pokud ještě neexistuje. Pokud zóna již existuje, musí být sady záznamů v souboru zóny sloučeny s existujícími sadami záznamů.
 
 ### <a name="merge-behavior"></a>Chování sloučení
 
-* Ve výchozím nastavení jsou sloučeny existující a nové sady záznamů. Identické záznamy v rámci sloučené sady záznamů jsou duplikovány.
-* Při sloučení sad záznamů se používá doba, která má být aktuální (TTL) již existujících sad záznamů.
-* Parametry (s výjimkou) úřadu (kromě) `host`jsou vždy převzaty z importovaného souboru zóny. Podobně pro záznam názvového serveru nastavený na vrcholu zóny je TTL vždy převzat z importovaného souboru zóny.
-* Importovaný záznam CNAME nenahradí existující záznam CNAME se stejným názvem.  
-* Pokud dojde ke konfliktu mezi záznamem CNAME a jiným záznamem se stejným názvem, ale jiného typu (bez ohledu na to, který je existující nebo nový), existující záznam zůstane zachován. 
+* Ve výchozím nastavení se sloučí existující a nové sady záznamů. Identické záznamy v sadě sloučených záznamů jsou duplicitní.
+* Při sloučení sad záznamů se použije hodnota TTL (Time to Live) pro stávající sady záznamů.
+* Parametry Start of Authority (SOA) (s `host`výjimkou) jsou vždy odebírány ze souboru importované zóny. Podobně platí, že pro záznam názvového serveru nastaveného na vrcholu zóny se hodnota TTL vždy převezme ze souboru importované zóny.
+* Importovaný záznam CNAME nenahrazuje stávající záznam CNAME se stejným názvem.  
+* Pokud dojde ke konfliktu mezi záznamem CNAME a jiným záznamem se stejným názvem, ale jiným typem (bez ohledu na to, který je už existující nebo nový), zachová se stávající záznam. 
 
 ### <a name="additional-information-about-importing"></a>Další informace o importu
 
 Následující poznámky poskytují další technické podrobnosti o procesu importu zóny.
 
-* Směrnice `$TTL` je nepovinná a je podporována. Pokud `$TTL` není uvedena žádná směrnice, záznamy bez explicitní TTL jsou importovány nastavit výchozí TTL 3600 sekund. Pokud dva záznamy ve stejné sadě záznamů určují různé hodnoty TTL, použije se nižší hodnota.
-* Směrnice `$ORIGIN` je nepovinná a je podporována. Pokud `$ORIGIN` není nastavena žádná, výchozí hodnotou je název zóny, jak je zadán na příkazovém řádku (plus ukončující ".").
-* A `$INCLUDE` `$GENERATE` směrnice nejsou podporovány.
-* Tyto typy záznamů jsou podporovány: A, AAAA, CAA, CNAME, MX, NS, SOA, SRV a TXT.
-* Záznam SOA se vytvoří automaticky službou Azure DNS při vytvoření zóny. Při importu souboru zóny jsou ze souboru zóny převzaty všechny parametry SOA *s výjimkou* parametru. `host` Tento parametr používá hodnotu poskytovanou službou Azure DNS. Důvodem je, že tento parametr musí odkazovat na primární název serveru poskytované Azure DNS.
-* Záznam názvového serveru nastavený na vrcholu zóny je také vytvořen automaticky službou Azure DNS při vytvoření zóny. Importuje se pouze ttl této sady záznamů. Tyto záznamy obsahují názvy názvových serverů poskytované službou Azure DNS. Data záznamu nejsou přepsána hodnotami obsaženými v importovaném souboru zóny.
-* Během public preview azure DNS podporuje pouze jednořetězcové TXT záznamy. Víceřetězcové txt záznamy jsou zřetězené a zkráceny na 255 znaků.
+* `$TTL` Direktiva je volitelná a je podporovaná. Pokud není `$TTL` zadána žádná direktiva, jsou záznamy bez explicitní hodnoty TTL importovány nastavené na výchozí hodnotu TTL 3600 sekund. Pokud dva záznamy ve stejné sadě záznamů určují různé TTLs, použije se spodní hodnota.
+* `$ORIGIN` Direktiva je volitelná a je podporovaná. Pokud `$ORIGIN` není nastavená, použije se výchozí hodnota název zóny, jak je uvedeno na příkazovém řádku (plus ukončovací znak ".").
+* `$INCLUDE` Direktivy `$GENERATE` a nejsou podporovány.
+* Podporují se tyto typy záznamů: A, AAAA, CAA, CNAME, MX, NS, SOA, SRV a TXT.
+* Záznam SOA se vytvoří automaticky Azure DNS při vytvoření zóny. Když importujete soubor zóny, všechny parametry SOA jsou pořízeny ze souboru zóny *s výjimkou* `host` parametru. Tento parametr používá hodnotu poskytnutou Azure DNS. Důvodem je, že tento parametr musí odkazovat na primární názvový server, který poskytuje Azure DNS.
+* Záznam názvového serveru nastavený na vrcholu zóny je také automaticky vytvořen Azure DNS při vytvoření zóny. Naimportovala se jenom hodnota TTL této sady záznamů. Tyto záznamy obsahují název názvového serveru, který poskytuje Azure DNS. Data záznamu nejsou přepsána hodnotami obsaženými v importovaném souboru zóny.
+* Během Public Preview Azure DNS podporuje pouze záznamy TXT s jedním řetězcem. Záznamy s více řetězci se budou zřetězit a zkrátit na 255 znaků.
 
-### <a name="cli-format-and-values"></a>Formát a hodnoty příkazového příkazového příkazu
+### <a name="cli-format-and-values"></a>Hodnoty a formát CLI
 
-Formát příkazu Azure CLI pro import zóny DNS je:
+Formát příkazu rozhraní příkazového řádku Azure pro import zóny DNS:
 
 ```azurecli
 az network dns zone import -g <resource group> -n <zone name> -f <zone file name>
@@ -71,21 +71,21 @@ Hodnoty:
 
 * `<resource group>`je název skupiny prostředků pro zónu v Azure DNS.
 * `<zone name>`je název zóny.
-* `<zone file name>`je cesta/název souboru zóny, který má být importován.
+* `<zone file name>`je cesta nebo název souboru zóny, který se má importovat.
 
-Pokud zóna s tímto názvem ve skupině prostředků neexistuje, je vytvořena za vás. Pokud zóna již existuje, importované sady záznamů se sloučí s existujícími sadami záznamů. 
+Pokud ve skupině prostředků neexistuje zóna s tímto názvem, vytvoří se pro vás. Pokud již zóna existuje, importované sady záznamů budou sloučeny s existujícími sadami záznamů. 
 
-### <a name="step-1-import-a-zone-file"></a>Krok 1. Import souboru zóny
+### <a name="step-1-import-a-zone-file"></a>Krok 1. Importovat soubor zóny
 
 Import souboru zóny pro zónu **contoso.com**.
 
-1. Pokud ještě nemáte, je třeba vytvořit skupinu prostředků Správce prostředků.
+1. Pokud ho ještě nemáte, budete muset vytvořit Správce prostředků skupinu prostředků.
 
     ```azurecli
     az group create --group myresourcegroup -l westeurope
     ```
 
-2. Chcete-li importovat **zónu contoso.com** ze souboru **contoso.com.txt** do nové zóny DNS `az network dns zone import`ve skupině prostředků **myresourcegroup**, spustíte příkaz .<BR>Tento příkaz načte soubor zóny a analyzuje jej. Příkaz provede řadu příkazů ve službě Azure DNS k vytvoření zóny a všech sad záznamů v zóně. Příkaz hlásí průběh v okně konzoly spolu s případnými chybami nebo upozorněními. Vzhledem k tomu, že sady záznamů jsou vytvářeny v řadě, může trvat několik minut importovat soubor velké zóny.
+2. Pokud chcete importovat zónu **contoso.com** ze souboru **contoso. com. txt** do nové zóny DNS ve skupině prostředků **myresourcegroup**, spusťte příkaz `az network dns zone import`.<BR>Tento příkaz načte soubor zóny a analyzuje ho. Příkaz spustí sérii příkazů ve službě Azure DNS k vytvoření zóny a všech sad záznamů v zóně. Příkaz hlásí průběh v okně konzoly spolu s případnými chybami a upozorněními. Vzhledem k tomu, že sady záznamů jsou vytvořeny v řadě, může trvat několik minut, než se naimportuje soubor velké zóny.
 
     ```azurecli
     az network dns zone import -g myresourcegroup -n contoso.com -f contoso.com.txt
@@ -93,16 +93,16 @@ Import souboru zóny pro zónu **contoso.com**.
 
 ### <a name="step-2-verify-the-zone"></a>Krok 2. Ověření zóny
 
-Chcete-li ověřit zónu DNS po importu souboru, můžete použít některou z následujících metod:
+Pokud chcete po importu souboru ověřit zónu DNS, můžete použít některou z následujících metod:
 
-* Záznamy můžete uvést pomocí následujícího příkazu Azure CLI:
+* Záznamy můžete vypsat pomocí následujícího příkazu rozhraní příkazového řádku Azure:
 
     ```azurecli
     az network dns record-set list -g myresourcegroup -z contoso.com
     ```
 
-* Záznamy můžete uvést pomocí příkazu `az network dns record-set ns list`Azure CLI .
-* Můžete použít `nslookup` k ověření překladu názvů pro záznamy. Vzhledem k tomu, že zóna ještě není delegována, je třeba explicitně zadat správné názvové servery Azure DNS. Následující ukázka ukazuje, jak načíst názvy názvového serveru přiřazené zóně. To také ukazuje, jak dotaz "www" záznam pomocí `nslookup`.
+* Záznamy můžete vypsat pomocí příkazu rozhraní příkazového `az network dns record-set ns list`řádku Azure CLI.
+* Můžete použít `nslookup` k ověření překladu názvů záznamů. Protože zóna ještě není delegovaná, musíte explicitně zadat správné názvové servery Azure DNS. Následující příklad ukazuje, jak načíst názvy názvových serverů přiřazené k zóně. Také se dozvíte, jak zadat dotaz na záznam "www" `nslookup`pomocí.
 
     ```azurecli
     az network dns record-set ns list -g myresourcegroup -z contoso.com  --output json 
@@ -151,11 +151,11 @@ Chcete-li ověřit zónu DNS po importu souboru, můžete použít některou z n
 
 ### <a name="step-3-update-dns-delegation"></a>Krok 3. Aktualizovat delegování DNS
 
-Po ověření, že zóna byla importována správně, je třeba aktualizovat delegování DNS přejděte na názvové servery Azure DNS. Další informace naleznete v článku [Aktualizace delegace DNS](dns-domain-delegation.md).
+Po ověření, že byla zóna správně naimportována, je třeba aktualizovat delegování DNS tak, aby odkazovalo na Azure DNS názvové servery. Další informace najdete v článku [aktualizace DELEGOVÁNÍ DNS](dns-domain-delegation.md).
 
-## <a name="export-a-dns-zone-file-from-azure-dns"></a>Export souboru zóny DNS z Azure DNS
+## <a name="export-a-dns-zone-file-from-azure-dns"></a>Exportovat soubor zóny DNS z Azure DNS
 
-Formát příkazu Azure CLI pro export zóny DNS je:
+Formátem příkazu rozhraní příkazového řádku Azure pro export zóny DNS je:
 
 ```azurecli
 az network dns zone export -g <resource group> -n <zone name> -f <zone file name>
@@ -165,13 +165,13 @@ Hodnoty:
 
 * `<resource group>`je název skupiny prostředků pro zónu v Azure DNS.
 * `<zone name>`je název zóny.
-* `<zone file name>`je cesta/název souboru zóny, který má být exportován.
+* `<zone file name>`je cesta nebo název souboru zóny, který má být exportován.
 
-Stejně jako u importu zóny se musíte nejprve přihlásit, zvolit předplatné a nakonfigurovat rozhraní příkazového příkazového nastavení Azure tak, aby používalo režim Správce prostředků.
+Stejně jako u importu zóny se nejprve musíte přihlásit, zvolit předplatné a nakonfigurovat rozhraní příkazového řádku Azure CLI tak, aby používalo režim Správce prostředků.
 
 ### <a name="to-export-a-zone-file"></a>Export souboru zóny
 
-Chcete-li exportovat existující **zónu** Azure DNS contoso.com ve skupině prostředků **myresourcegroup** do souboru `azure network dns zone export` **contoso.com.txt** (v aktuální složce), spusťte . Tento příkaz volá službu Azure DNS k vytvoření výčtu sad záznamů v zóně a exportu výsledků do souboru zóny kompatibilního s BIND.
+Pokud chcete exportovat existující zónu Azure DNS **contoso.com** ve skupině prostředků **myresourcegroup** do souboru **contoso. com. txt** (v aktuální složce), spusťte příkaz `azure network dns zone export`. Tento příkaz volá službu Azure DNS pro zobrazení výčtu sad záznamů v zóně a export výsledků do souboru zóny kompatibilního s BIND.
 
 ```azurecli
 az network dns zone export -g myresourcegroup -n contoso.com -f contoso.com.txt
@@ -179,6 +179,6 @@ az network dns zone export -g myresourcegroup -n contoso.com -f contoso.com.txt
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si, jak [spravovat sady záznamů a záznamy](dns-getstarted-create-recordset-cli.md) v zóně DNS.
+* Naučte se [Spravovat sady záznamů a záznamy](dns-getstarted-create-recordset-cli.md) v zóně DNS.
 
 * Přečtěte si, jak [delegovat doménu na Azure DNS](dns-domain-delegation.md).
