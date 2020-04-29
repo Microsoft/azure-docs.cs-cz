@@ -1,5 +1,5 @@
 ---
-title: Nahrání obsahu do datového zdroje Mediálních služeb Azure pomocí azure cli
+title: Nahrání obsahu do Azure Media Services prostředku pomocí Azure CLI
 description: Skript Azure CLI v tomto tématu znázorňuje, jak vytvořit asset služby Azure Media Services, do kterého je možné nahrát obsah.
 services: media-services
 documentationcenter: ''
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/01/2019
 ms.author: juliako
 ms.openlocfilehash: 0c24464050d0beee120dcb234582a464d6245270
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76310641"
 ---
 # <a name="cli-example-create-an-asset"></a>Příklad rozhraní příkazového řádku: vytvoření prostředku
@@ -27,7 +27,7 @@ Skript Azure CLI v tomto článku znázorňuje, jak vytvořit asset služby Azur
 
 ## <a name="prerequisites"></a>Požadavky 
 
-[Vytvořte účet mediálních služeb](create-account-cli-how-to.md).
+[Vytvořte účet Media Services](create-account-cli-how-to.md).
 
 [!INCLUDE [media-services-cli-instructions.md](../../../includes/media-services-cli-instructions.md)]
 
@@ -37,4 +37,4 @@ Skript Azure CLI v tomto článku znázorňuje, jak vytvořit asset služby Azur
 
 ## <a name="next-steps"></a>Další kroky
 
-[Přehled mediálních služeb](media-services-overview.md)
+[Přehled Media Services](media-services-overview.md)
