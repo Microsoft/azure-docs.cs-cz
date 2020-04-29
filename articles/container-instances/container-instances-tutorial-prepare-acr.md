@@ -1,30 +1,30 @@
 ---
-title: Kurz – příprava registru kontejneru k nasazení bitové kopie
-description: Kurz instance Azure Container, část 2 od 3 – příprava registru kontejnerů Azure a nabízení bitové kopie
+title: Kurz – Příprava registru kontejnerů k nasazení bitové kopie
+description: Azure Container Instances kurz 2 ze 3 – Příprava služby Azure Container registry a vložení image
 ms.topic: tutorial
 ms.date: 12/18/2019
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 1a5b9555572264b6a00b4ce73eaa0719d94fd99b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78252164"
 ---
-# <a name="tutorial-create-an-azure-container-registry-and-push-a-container-image"></a>Kurz: Vytvoření registru kontejnerů Azure a nabízení bitové kopie kontejneru
+# <a name="tutorial-create-an-azure-container-registry-and-push-a-container-image"></a>Kurz: vytvoření služby Azure Container registry a vložení image kontejneru
 
 Toto je druhá část třídílného kurzu. [V první části](container-instances-tutorial-prepare-app.md) tohoto kurzu se vytvářela image kontejneru Docker pro webovou aplikaci Node.js. V tomto kurzu nahrajete image do služby Azure Container Registry. Pokud jste image kontejneru ještě nevytvořili, vraťte se ke [kurzu 1 – Vytvoření image kontejneru](container-instances-tutorial-prepare-app.md).
 
-Služba Azure Container Registry je vaším privátním registrem Dockeru v Azure. V tomto kurzu, druhá část série, můžete:
+Služba Azure Container Registry je vaším privátním registrem Dockeru v Azure. V tomto kurzu, který je druhou částí série, jste:
 
 > [!div class="checklist"]
-> * Vytvoření instance registru kontejnerů Azure pomocí příkazového příkazu k řešení Azure
+> * Vytvoření instance Azure Container Registry pomocí Azure CLI
 > * Označit image kontejneru pro svůj registr kontejneru Azure
 > * Odeslat image do svého registru
 
 V následujícím článku, který je posledním dílem série, nasadíte kontejner z privátního registru do služby Azure Container Instances.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 [!INCLUDE [container-instances-tutorial-prerequisites](../../includes/container-instances-tutorial-prerequisites.md)]
 
@@ -77,7 +77,7 @@ Před nahráváním imagí do instance služby Azure Container Registry se k ní
 az acr login --name <acrName>
 ```
 
-Například:
+Příklad:
 
 ```azurecli
 az acr login --name mycontainerregistry082
@@ -125,7 +125,7 @@ REPOSITORY          TAG       IMAGE ID        CREATED           SIZE
 aci-tutorial-app    latest    5c745774dfa9    39 minutes ago    68.1 MB
 ```
 
-Označte bitovou kopii *aplikace aci-tutorial pomocí* přihlašovacího serveru registru kontejnerů. Na konec názvu image přidejte také značku `:v1`, abyste označili číslo verze image. Nahraďte položku `<acrLoginServer>` výsledkem příkazu [az acr show][az-acr-show], který jste spustili před chvílí.
+Označte obrázek *ACI-tutorial-aplikace* pomocí přihlašovacího serveru vašeho registru kontejneru. Na konec názvu image přidejte také značku `:v1`, abyste označili číslo verze image. Nahraďte položku `<acrLoginServer>` výsledkem příkazu [az acr show][az-acr-show], který jste spustili před chvílí.
 
 ```bash
 docker tag aci-tutorial-app <acrLoginServer>/aci-tutorial-app:v1
@@ -142,7 +142,7 @@ mycontainerregistry082.azurecr.io/aci-tutorial-app    v1        5c745774dfa9    
 
 ## <a name="push-image-to-azure-container-registry"></a>Nahrání image do služby Azure Container Registry
 
-Nyní, když jste označili image *aci-tutorial-app* s úplným názvem přihlašovacího serveru vašeho soukromého registru, můžete tuto bitovou kopii stisknout do registru pomocí příkazu [push dockeru.][docker-push] Nahraďte položku `<acrLoginServer>` úplným názvem přihlašovacího serveru, který jste získali v dřívějším kroku.
+Teď, když jste označili image *ACI-tutorial-App* s úplným názvem přihlašovacího serveru vašeho privátního registru, můžete do registru vložit Image pomocí příkazu [Docker push][docker-push] . Nahraďte položku `<acrLoginServer>` úplným názvem přihlašovacího serveru, který jste získali v dřívějším kroku.
 
 ```bash
 docker push <acrLoginServer>/aci-tutorial-app:v1
@@ -170,7 +170,7 @@ Pokud si chcete ověřit, že image, kterou jste právě odeslali, se skutečně
 az acr repository list --name <acrName> --output table
 ```
 
-Například:
+Příklad:
 
 ```azurecli
 az acr repository list --name mycontainerregistry082 --output table
@@ -202,7 +202,7 @@ v1
 V tomto kurzu jste připravili registr kontejneru Azure pro použití se službou Azure Container Instances a nahráli jste image kontejneru do registru. Dokončili jste následující kroky:
 
 > [!div class="checklist"]
-> * Vytvoření instance registru kontejnerů Azure pomocí příkazového příkazu k vytvořenému nastavení azure
+> * Vytvoření instance Azure Container Registry pomocí Azure CLI
 > * Označení image kontejneru pro službu Azure Container Registry
 > * Odeslání image do služby Azure Container Registry
 

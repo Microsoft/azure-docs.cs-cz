@@ -1,6 +1,6 @@
 ---
-title: Připojení nastavené z virtuální sítě na SAP HANA v Azure (velké instance) | Dokumenty společnosti Microsoft
-description: Připojení nastavené z virtuální sítě pro použití SAP HANA v Azure (velké instance).
+title: Nastavení připojení z virtuální sítě na SAP HANA v Azure (velké instance) | Microsoft Docs
+description: Nastavení připojení z virtuální sítě pro použití SAP HANA v Azure (velké instance).
 services: virtual-machines-linux
 documentationcenter: ''
 author: msjuergent
@@ -14,28 +14,28 @@ ms.date: 05/25/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: f7ac8e69c4e149fdd0f365e19f7a0282a547af43
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77617187"
 ---
 # <a name="connect-a-virtual-network-to-hana-large-instances"></a>Připojení virtuální sítě k velkým instancím HANA
 
-Po vytvoření virtuální sítě Azure můžete tuto síť připojit k SAP HANA ve velkých instancích Azure. Vytvořte bránu Azure ExpressRoute ve virtuální síti. Tato brána umožňuje propojit virtuální síť s okruhem ExpressRoute, který se připojuje k tenantovi zákazníka na razítku velké instance HANA.
+Po vytvoření virtuální sítě Azure se tato síť dá připojit k SAP HANA ve velkých instancích Azure. Vytvořte ve virtuální síti bránu Azure ExpressRoute. Tato brána umožňuje propojit virtuální síť k okruhu ExpressRoute, který se připojuje k tenantovi zákazníka na velké instanci razítka HANA.
 
 > [!NOTE] 
-> Tento krok může trvat až 30 minut. Nová brána se vytvoří v určeném předplatném Azure a pak se připojí k zadané virtuální síti Azure.
+> Dokončení tohoto kroku může trvat až 30 minut. Nová brána se vytvoří v určeném předplatném Azure a pak se připojí k zadané službě Azure Virtual Network.
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
-Pokud brána již existuje, zkontrolujte, jestli se jedná o bránu ExpressRoute nebo ne. Pokud se nejedná o bránu ExpressRoute, odstraňte bránu a znovu ji vytvořte jako bránu ExpressRoute. Pokud je brána ExpressRoute již vytvořena, přečtěte si následující část tohoto článku "Propojit virtuální sítě". 
+Pokud brána již existuje, ověřte, zda se jedná o bránu ExpressRoute. Pokud se nejedná o bránu ExpressRoute, odstraňte bránu a znovu ji vytvořte jako bránu ExpressRoute. Pokud je už brána ExpressRoute vytvořená, přečtěte si následující část tohoto článku "propojení virtuálních sítí". 
 
-- Pomocí [portálu Azure nebo](https://portal.azure.com/) PowerShellu vytvořte bránu ExpressRoute VPN připojenou k vaší virtuální síti.
-  - Pokud používáte portál Azure, přidejte novou **bránu virtuální sítě**a pak jako typ brány vyberte **ExpressRoute.**
-  - Pokud používáte PowerShell, nejprve stáhněte a použijte nejnovější [Azure PowerShell SDK](https://azure.microsoft.com/downloads/). 
+- Pomocí [Azure Portal](https://portal.azure.com/) nebo PowerShellu vytvořte bránu VPN ExpressRoute připojenou k vaší virtuální síti.
+  - Pokud používáte Azure Portal, přidejte novou **bránu Virtual Network**a jako typ brány vyberte **ExpressRoute** .
+  - Pokud používáte PowerShell, nejdřív si stáhněte a použijte nejnovější [sadu Azure PowerShell SDK](https://azure.microsoft.com/downloads/). 
  
-Následující příkazy vytvoří bránu ExpressRoute. Texty, před nimiž a jsou uživatelem _$_ definované proměnné, které by měly být aktualizovány s konkrétními informacemi.
+Následující příkazy vytvoří bránu ExpressRoute. Text předchází _$_ uživatelem definovaných proměnných, které by měly být aktualizovány s konkrétními informacemi.
 
 ```powershell
 # These Values should already exist, update to match your environment
@@ -63,16 +63,16 @@ New-AzVirtualNetworkGateway -Name $myGWName -ResourceGroupName $myGroupName -Loc
 -GatewaySku $myGWSku -VpnType PolicyBased -EnableBgp $true
 ```
 
-V tomto příkladu byla použita skladová položka brány s vysokým výkonem. Vaše možnosti jsou HighPerformance nebo UltraPerformance jako jediné brány skum, které jsou podporovány pro SAP HANA v Azure (velké instance).
+V tomto příkladu se použila SKU brány HighPerformance. Vaše možnosti jsou HighPerformance nebo UltraPerformance jako jediné SKU brány, které jsou podporované pro SAP HANA v Azure (velké instance).
 
 > [!IMPORTANT]
-> Pro velké instance HANA třídy Typu II je nutné použít skladovou položku brány UltraPerformance.
+> Pro velké instance SKU třídy typu II je nutné použít SKU brány UltraPerformance.
 
 ## <a name="link-virtual-networks"></a>Propojení virtuálních sítí
 
-Virtuální síť Azure má teď bránu ExpressRoute. Pomocí informací o autorizaci poskytnutých společností Microsoft připojte bránu ExpressRoute k okruhu SAP HANA Large Instances ExpressRoute. Můžete se připojit pomocí portálu Azure nebo PowerShellu. Pokyny prostředí PowerShell jsou následující. 
+Virtuální síť Azure teď má bránu ExpressRoute. Pomocí autorizačních informací poskytnutých společností Microsoft připojte bránu ExpressRoute k okruhu Velké instance SAP HANA ExpressRoute. Můžete se připojit pomocí Azure Portal nebo PowerShellu. Pokyny k PowerShellu jsou následující. 
 
-Spusťte následující příkazy pro každou bránu ExpressRoute pomocí jiného AuthGUID pro každé připojení. První dvě položky uvedené v následujícím skriptu pocházejí z informací poskytnutých společností Microsoft. Také AuthGUID je specifické pro každou virtuální síť a její bránu. Pokud chcete přidat další virtuální síť Azure, musíte získat další AuthID pro okruh ExpressRoute, který spojuje velké instance HANA do Azure od Microsoftu. 
+Pro každou bránu ExpressRoute spusťte následující příkazy s použitím různých AuthGUID pro každé připojení. První dvě položky zobrazené v následujícím skriptu pocházejí z informací poskytnutých společností Microsoft. AuthGUID je také specifický pro každou virtuální síť a bránu. Pokud chcete přidat další službu Azure Virtual Network, musíte pro okruh ExpressRoute získat další AuthID, které propojí velké instance HANA s Azure od Microsoftu. 
 
 ```powershell
 # Populate with information provided by Microsoft Onboarding team
@@ -96,12 +96,12 @@ New-AzVirtualNetworkGatewayConnection -Name $myConnectionName `
 ```
 
 > [!NOTE]
-> Poslední parametr v příkazu New-AzVirtualNetworkGatewayConnection, **ExpressRouteGatewayBypass** je nový parametr, který umožňuje ExpressRoute Rychlá cesta. Funkce, která snižuje latenci sítě mezi jednotkami velké instance HANA a virtuálními počítači Azure. Funkce byla přidána v květnu 2019. Další podrobnosti naleznete v článku [architektura sítě SAP HANA (Velké instance).](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture) Před spuštěním příkazů se ujistěte, že používáte nejnovější verzi rutin prostředí PowerShell.
+> Poslední parametr příkazu New-AzVirtualNetworkGatewayConnection, **ExpressRouteGatewayBypass** je nový parametr, který umožňuje rychlou cestu ExpressRoute. Funkce, která omezuje latenci sítě mezi jednotkami velkých instancí HANA a virtuálními počítači Azure. Tato funkce byla přidána v květnu 2019. Další podrobnosti najdete v článku [architektura sítě SAP Hana (velké instance)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture). Před spuštěním příkazů se ujistěte, že používáte nejnovější verze rutin PowerShellu.
 
-Chcete-li připojit bránu k více než jednomu okruhu ExpressRoute přidruženému k vašemu předplatnému, může být nutné spustit tento krok více než jednou. Například pravděpodobně připojíte stejnou bránu virtuální sítě k okruhu ExpressRoute, který propojuje virtuální síť s místní sítí.
+Pokud chcete bránu připojit k více než jednomu okruhu ExpressRoute přidruženému k vašemu předplatnému, možná budete muset tento krok spustit více než jednou. Například pravděpodobně budete chtít připojit stejnou bránu virtuální sítě k okruhu ExpressRoute, který připojuje virtuální síť k místní síti.
 
-## <a name="applying-expressroute-fast-path-to-existing-hana-large-instance-expressroute-circuits"></a>Použití rychlé cesty ExpressRoute na existující okruhy HANA Large Instance ExpressRoute
-Dokumentace zatím vysvětluje, jak připojit nový okruh ExpressRoute, který byl vytvořen pomocí nasazení velké instance HANA, k bráně Azure ExpressRoute jedné z vašich virtuálních sítí Azure. Ale mnoho zákazníků již má své okruhy ExpressRoute nastavení již a mají své virtuální sítě připojené k HANA velké instance již. Vzhledem k tomu, že nová rychlá cesta ExpressRoute snižuje latenci sítě, doporučujeme použít změnu k použití této funkce. Příkazy pro připojení nového okruhu ExpreesRoute a pro změnu existujícího okruhu ExpressRoute jsou stejné. V důsledku toho je třeba spustit tuto sekvenci příkazů prostředí PowerShell změnit existující obvod pro použití 
+## <a name="applying-expressroute-fast-path-to-existing-hana-large-instance-expressroute-circuits"></a>Použití rychlé cesty ExpressRoute na stávající ExpressRoute okruhy velké instance HANA
+Dokumentace zatím vysvětluje, jak připojit nový okruh ExpressRoute, který byl vytvořen s nasazením velké instance HANA, do brány Azure ExpressRoute jedné z vašich virtuálních sítí Azure. Ale spousta zákazníků už má nastavené ExpressRouteé okruhy a jejich virtuální sítě už jsou připojené k velkým instancím HANA. Vzhledem k tomu, že nová rychlá cesta ExpressRoute snižuje latenci sítě, doporučuje se použít tuto funkci ke změně. Příkazy pro připojení nového okruhu ExpreesRoute a změnu stávajícího okruhu ExpressRoute jsou stejné. V důsledku toho musíte spustit tuto sekvenci příkazů PowerShellu a změnit stávající okruh na použití. 
 
 ```powershell
 # Populate with information provided by Microsoft Onboarding team
@@ -124,35 +124,35 @@ New-AzVirtualNetworkGatewayConnection -Name $myConnectionName `
 -PeerId $PeerID -ConnectionType ExpressRoute -AuthorizationKey $AuthGUID -ExpressRouteGatewayBypass
 ```
 
-Je důležité přidat poslední parametr zobrazený výše, abyste povolili funkci Rychlé cesty ExpressRoute.
+Je důležité přidat poslední parametr zobrazený výše a povolit funkci ExpressRoute rychlá cesta.
 
 
 ## <a name="expressroute-global-reach"></a>ExpressRoute Global Reach
-Chcete-li povolit globální dosah pro jeden nebo oba dva scénáře:
+Jak chcete povolit Global Reach pro jeden nebo oba dva scénáře:
 
- - Replikace systému HANA bez dalších proxy serverů nebo bran firewall
- - Kopírování záloh mezi jednotkami velké instance HANA ve dvou různých oblastech za účelem provedení systémových kopií nebo aktualizací systému
+ - Replikace systému HANA bez dalších proxy a bran firewall
+ - Kopírování záloh mezi jednotkami velkých instancí HANA ve dvou různých oblastech, aby se prováděly systémové kopie nebo aktualizace systému
 
-je třeba vzít v úvahu, že:
+je potřeba vzít v úvahu:
 
-- Je třeba zadat rozsah adresního prostoru /29 adresního prostoru. Tento rozsah adres se nemusí překrývat s žádným jiným rozsahem adresního prostoru, který jste dosud používali při připojování velkých instancí HANA k Azure, a nemusí se překrývat s žádným rozsahem IP adres, který jste použili někde jinde v Azure nebo v místním prostředí.
-- Je omezení asns (číslo autonomního systému), které lze použít k inzerování místní trasy hana velké instance. Vaše místní nesmí inzerovat žádné trasy se soukromými ASN v rozsahu 65000 – 65020 nebo 65515. 
-- Pro scénář připojení místního přímého přístupu k velkým instancím HANA je potřeba vypočítat poplatek za okruh, který vás připojí k Azure. Ceny najdete v cenách [doplňku Global Reach Add-On](https://azure.microsoft.com/pricing/details/expressroute/).
+- Je potřeba zadat rozsah adresního prostoru a/29 adresního prostoru. Tento rozsah adres se nesmí překrývat s žádným z dalších rozsahů adresních prostorů, které jste použili k nasazení velkých instancí HANA do Azure, a nesmí se překrývat s žádným z rozsahů IP adres, které jste použili jinde v Azure nebo v místním prostředí.
+- K dispozici je omezení čísla ASN (autonomního systému), které se dá použít k inzerování místních tras do rozsáhlých instancí HANA. Vaše místní zařízení nesmí inzerovat žádné trasy s privátním čísla ASN v rozsahu 65000 – 65020 nebo 65515. 
+- Pro scénář připojení místního přímého přístupu k velkým instancím HANA musíte vypočítat poplatek za okruh, který vás připojí k Azure. Pro ceny si prohlédněte ceny za [Global REACH doplněk](https://azure.microsoft.com/pricing/details/expressroute/).
 
-Chcete-li získat jeden nebo oba scénáře použité pro vaše nasazení, otevřete zprávu podpory s Azure, jak je popsáno v [otevřete žádost o podporu pro velké instance HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-li-portal#open-a-support-request-for-hana-large-instances)
+Pokud chcete získat jeden nebo oba scénáře použité pro vaše nasazení, otevřete zprávu o podpoře v Azure, jak je popsáno v tématu [otevření žádosti o podporu pro velké instance Hana](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-li-portal#open-a-support-request-for-hana-large-instances) .
 
-Data, která jsou potřebná, a klíčová slova, která je třeba použít k tomu, aby společnost Microsoft mohla na vaši žádost směrovat a provádět, vypadají takto:
+Požadovaná data a klíčová slova, která potřebujete použít pro Microsoft, aby bylo možné směrovat a provádět na vaší žádosti, vypadá takto:
 
-- Služba: Velká instance SAP HANA
-- Typ problému: Konfigurace a instalace
-- Podtyp problému: Můj problém není uveden výše
-- Předmět "Změnit síť – přidat globální dosah"
-- Podrobnosti: "Přidat globální dosah hana velké instance hana velké instance tenanta nebo "Přidat globální dosah do místního klienta velké instance HANA.
-- Další podrobnosti pro případ klienta velkého instanci HANA hana: Je třeba definovat **dvě oblasti Azure,** kde jsou umístěny dva klienti pro připojení **a** je třeba odeslat rozsah ip **adres /29**
-- Další podrobnosti pro místní případ tenanta HANA velké instance: Je třeba definovat **oblast Azure,** kde je nasazen ý tenanta velké instance HANA, ke kterému se chcete připojit přímo. Kromě toho je třeba zadat **auth GUID** a **Circuit Peer ID,** které jste obdrželi při nastavování okruhu ExpressRoute mezi místní a Azure. Kromě toho je třeba pojmenovat **asn**. Poslední dodávka je **rozsah IP adres /29** pro ExpressRoute Global Reach.
+- Služba: SAP HANA velká instance
+- Typ problému: konfigurace a nastavení
+- Podtyp problému: můj problém není uvedený výše
+- Subject "upravit síť – přidat Global Reach"
+- Podrobnosti: ' Přidání Global Reach do systému HANA velká instance pro tenanta rozsáhlých instancí nebo přidání Global Reach k místnímu tenantovi instance HANA.
+- Další podrobnosti o velkých instancích HANA pro klienta HANA velké instance: je potřeba definovat **dvě oblasti Azure** , ve kterých se oba klienti připojují **, a** potřebujete odeslat **Rozsah IP adres/29** .
+- Další podrobnosti pro případ klienta s velkými instancemi v síti pro HANA: musíte definovat **oblast Azure** , ve které je nasazený tenant pro velké instance Hana, k němuž se chcete připojit přímo. Kromě toho musíte zadat **identifikátor GUID ověřování** a **partnerské číslo okruhu** , který jste dostali při navázání okruhu ExpressRoute mezi místními sítěmi a Azure. Dále musíte pojmenovat **ASN**. Poslední dodávkou je **Rozsah IP adres/29** pro ExpressRoute Global REACH.
 
 > [!NOTE]
-> Pokud chcete, aby byly oba případy zpracovány, je třeba zadat dva různé rozsahy ADRES /29 IP, které se nepřekrývají s žádným jiným rozsahem IP adres, který byl dosud používán. 
+> Pokud chcete oba případy zpracovat, je nutné dodat dva různé rozsahy IP adres/29, které se nepřekrývají s žádným jiným použitým rozsahem IP adres. 
 
 
 

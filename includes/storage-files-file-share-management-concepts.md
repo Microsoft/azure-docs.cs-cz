@@ -9,16 +9,16 @@ ms.date: 12/26/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: a67ad4c5010cf93ff55123013a35c697ce5971f8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77597786"
 ---
-Sdílené složky Azure se nasazují do *účtů úložiště*, což jsou objekty nejvyšší úrovně, které představují sdílený fond úložiště. Tento fond úložiště lze použít k nasazení více sdílených složek souborů, stejně jako další prostředky úložiště, jako jsou kontejnery objektů blob, fronty nebo tabulky. Všechny prostředky úložiště, které jsou nasazeny do účtu úložiště, sdílejí limity, které se vztahují k tomuto účtu úložiště. Aktuální limity pro účet úložiště najdete v tématu [Škálovatelnost a výkonnostní cíle Azure Files](../articles/storage/files/storage-files-scale-targets.md).
+Sdílené složky Azure se nasazují do *účtů úložiště*, což jsou objekty nejvyšší úrovně, které představují sdílený fond úložiště. Tento fond úložiště se dá použít k nasazení několika sdílených složek a dalších prostředků úložiště, jako jsou kontejnery objektů blob, fronty nebo tabulky. Všechny prostředky úložiště, které jsou nasazené do účtu úložiště, sdílejí omezení vztahující se na tento účet úložiště. Aktuální omezení pro účet úložiště najdete v tématu [škálovatelnost a cíle výkonnosti souborů Azure](../articles/storage/files/storage-files-scale-targets.md).
 
 Existují dva hlavní typy účtů úložiště, které budete používat pro nasazení souborů Azure: 
-- **Účty úložiště pro obecné účely verze 2 (GPv2):** Účty úložiště GPv2 umožňují nasazovat sdílené složky Azure na standardním hardwaru založeném na pevném disku (na pevném disku). Kromě ukládání sdílených složek Azure mohou účty úložiště GPv2 ukládat další prostředky úložiště, jako jsou kontejnery objektů blob, fronty nebo tabulky. 
-- **Účty úložiště úložiště úložiště Úložiště**souborů : Účty úložiště Úložiště souborů umožňují nasazovat sdílené složky Azure na hardware založený na prémiovém nebo ssd disku (SSD). Účty FileStorage lze použít pouze k ukládání sdílených složek Azure; žádné jiné prostředky úložiště (kontejnery objektů blob, fronty, tabulky atd.) nelze nasadit v účtu FileStorage.
+- **Účty úložiště pro obecné účely verze 2 (GPv2)**: účty úložiště GPv2 umožňují nasadit sdílené složky Azure na hardwaru založeném na standardu a na pevných discích (HDD). Kromě ukládání sdílených složek Azure můžou účty úložiště GPv2 ukládat i další prostředky úložiště, jako jsou kontejnery objektů blob, fronty nebo tabulky. 
+- **Účty úložiště**úložiště: účty úložiště úložiště umožňují nasadit sdílené složky Azure na hardware Premium/Solid-State (SSD) na disku (SSD). Účty úložiště souborů se dají použít jenom k ukládání sdílených složek Azure. v účtu úložiště úložiště se nedají nasadit žádné další prostředky úložiště (kontejnery objektů blob, fronty, tabulky atd.).
 
-Existuje několik dalších typů účtů úložiště, se kterými se můžete sejít na webu Azure Portal, PowerShellu nebo CLI. Dva typy účtů úložiště, BlockBlobStorage a BlobStorage účty úložiště, nemůže obsahovat sdílené složky Azure. Další dva typy účtů úložiště, které se mohou zobrazit, jsou verze 1 pro obecné účely (GPv1) a klasické účty úložiště, které mohou obsahovat sdílené složky Azure. Přestože účty GPv1 a klasické úložiště mohou obsahovat sdílené složky Azure, většina nových funkcí souborů Azure je dostupná jenom v účtech úložiště GPv2 a FileStorage. Proto doporučujeme používat pouze účty úložiště GPv2 a FileStorage pro nová nasazení a upgradovat účty GPv1 a klasické úložiště, pokud již ve vašem prostředí existují.  
+V Azure Portal, PowerShellu nebo rozhraní příkazového řádku se může nacházet několik dalších typů účtů úložiště. Dva typy účtů úložiště, účty úložiště BlockBlobStorage a BlobStorage, nemůžou obsahovat sdílené složky Azure. Další dva typy účtů úložiště, které se můžou zobrazovat, jsou obecné účely verze 1 (GPv1) a klasické účty úložiště, z nichž obě můžou obsahovat sdílené složky Azure. I když účty úložiště GPv1 a Classic můžou obsahovat sdílené složky Azure, jsou většina nových funkcí služby Azure Files k dispozici pouze v účtech úložiště GPv2 a úložiště souborů. Proto doporučujeme, abyste pro nová nasazení používali jenom účty úložiště GPv2 a Storage a k upgradu GPv1 a klasických účtů úložiště, pokud už ve svém prostředí existují.  

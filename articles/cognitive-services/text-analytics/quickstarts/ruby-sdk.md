@@ -1,7 +1,7 @@
 ---
-title: 'Úvodní příručka: Klientská knihovna Text Analytics pro Ruby | Dokumenty společnosti Microsoft'
+title: 'Rychlý Start: Analýza textu klientskou knihovnu pro Ruby | Microsoft Docs'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu zjišťujte jazyk pomocí klientské knihovny Ruby Text Analytics ze služby Azure Cognitive Services.
+description: V tomto rychlém startu zjistíte jazyk pomocí klientské knihovny Analýza textu Ruby z Azure Cognitive Services.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,17 +11,17 @@ ms.topic: quickstart
 ms.date: 02/26/2020
 ms.author: aahi
 ms.openlocfilehash: 0d4d32a413dd22c55f1b2f01dce3a3df81f5f729
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77919664"
 ---
-# <a name="quickstart-use-the-text-analytics-client-library-for-ruby"></a>Úvodní příručka: Použití klientské knihovny Text Analytics pro Ruby
+# <a name="quickstart-use-the-text-analytics-client-library-for-ruby"></a>Rychlý Start: použití klientské knihovny Analýza textu pro Ruby
 
-Začínáme s klientskou knihovnou Text Analytics. Následujícím postupem nainstalujte balíček a vyzkoušejte ukázkový kód pro základní úkoly.
+Začněte s klientskou knihovnou Analýza textu. Pomocí těchto kroků nainstalujete balíček a vyzkoušíte ukázkový kód pro základní úlohy.
 
-Pomocí klientské knihovny Text Analytics můžete provádět:
+Použijte klientskou knihovnu Analýza textu k provedení těchto akcí:
 
 * Analýza mínění
 * Rozpoznávání jazyka
@@ -29,31 +29,31 @@ Pomocí klientské knihovny Text Analytics můžete provádět:
 * Extrakce klíčových frází
 
 > [!NOTE]
-> Tento rychlý start se vztahuje pouze na analýzu textu verze 2.1. V současné době je klientská knihovna v3 pro Ruby nedostupná.
+> Tento rychlý Start platí pouze pro Analýza textu verze 2,1. V současné době není k dispozici Klientská knihovna v3 pro Ruby.
 
-[Referenční dokumentace](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python) | [Ukázky zdrojového kódu](https://github.com/Azure/azure-sdk-for-ruby/tree/master/data/azure_cognitiveservices_textanalytics) | [knihovny](https://github.com/Azure-Samples/cognitive-services-quickstart-code) [(RubyGems)](https://rubygems.org/gems/azure_cognitiveservices_textanalytics) | 
+[Reference documentation](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python) | [Ukázky](https://github.com/Azure-Samples/cognitive-services-quickstart-code) balíčku[zdrojového kódu](https://github.com/Azure/azure-sdk-for-ruby/tree/master/data/azure_cognitiveservices_textanalytics) | knihovny Referenční dokumentace[(RubyGems)](https://rubygems.org/gems/azure_cognitiveservices_textanalytics) | 
 
 <a name="HOLTop"></a>
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure – [vytvořte si ho zdarma](https://azure.microsoft.com/free/)
+* Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/) .
 * Aktuální verze [Ruby](https://www.ruby-lang.org/)
-* Jakmile budete mít předplatné <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="Azure, vytvořte"  target="_blank">prostředek analýzy <span class="docon docon-navigate-external x-hidden-focus"></span> </a> textu vytvořit prostředek analýzy textu na webu Azure Portal, abyste získali klíč a koncový bod. 
-    * Budete potřebovat klíč a koncový bod z prostředku, který vytvoříte pro připojení aplikace k rozhraní API analýzy textu. Uděláte to později v rychlém startu.
-    * Můžete použít bezplatnou cenovou úroveň vyzkoušet službu a upgradovat později na placenou úroveň pro produkční prostředí.
+* Jakmile budete <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="mít předplatné Azure, vytvořte prostředek analýza textu vytvoření prostředku"  target="_blank">analýza textu <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal, abyste získali svůj klíč a koncový bod. 
+    * K připojení aplikace k rozhraní API pro analýzu textu budete potřebovat klíč a koncový bod z prostředku, který vytvoříte. Provedete to později v rychlém startu.
+    * Pomocí cenové úrovně Free můžete službu vyzkoušet a později upgradovat na placenou úroveň pro produkční prostředí.
 
 ## <a name="setting-up"></a>Nastavení
 
-### <a name="create-a-new-ruby-application"></a>Vytvoření nové aplikace Ruby
+### <a name="create-a-new-ruby-application"></a>Vytvoření nové aplikace v Ruby
 
-V okně konzoly (například cmd, PowerShell nebo Bash) vytvořte nový adresář pro vaši aplikaci a přejděte na něj. Potom vytvořte `GemFile`soubor s názvem a soubor Ruby pro váš kód.
+V okně konzoly (například cmd, PowerShell nebo bash) vytvořte nový adresář pro vaši aplikaci a přejděte na něj. Pak vytvořte soubor s názvem `GemFile`a soubor Ruby pro váš kód.
 
 ```console
 mkdir myapp && cd myapp
 ```
 
-Do `GemFile`aplikace přidejte následující řádky a přidejte klientskou knihovnu jako závislost.
+V aplikaci `GemFile`přidejte následující řádky pro přidání klientské knihovny jako závislosti.
 
 ```ruby
 source 'https://rubygems.org'
@@ -64,7 +64,7 @@ V souboru Ruby importujte následující balíčky.
 
 [!code-ruby[Import statements](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=includeStatement)]
 
-Vytvořte proměnné pro koncový bod a klíč Azure vašeho prostředku. 
+Vytvořte proměnné pro koncový bod a klíč Azure prostředku. 
 
 [!INCLUDE [text-analytics-find-resource-information](../includes/find-azure-resource-info.md)]
 
@@ -75,19 +75,19 @@ const endpoint = `<paste-your-text-analytics-endpoint-here>`
 
 ## <a name="object-model"></a>Objektový model 
 
-Klient Text Analytics se ověřuje do Azure pomocí vašeho klíče. Klient poskytuje několik metod pro analýzu textu jako jeden řetězec nebo dávka. 
+Klient Analýza textu se ověřuje v Azure pomocí vašeho klíče. Klient nabízí několik metod analýzy textu, jako jeden řetězec nebo dávku. 
 
-Text je odeslán do rozhraní `documents`API jako `dictionary` seznam , což `id` `text`jsou `language` objekty obsahující kombinaci , a atributy v závislosti na použité metodě. Atribut `text` ukládá text, který má `language`být analyzován `id` v počátku , a může být libovolná hodnota. 
+Text se pošle do rozhraní API jako seznam objektů `documents`, což jsou `dictionary` objekty obsahující kombinaci atributů `id`, `text`a `language` v závislosti na použité metodě. `text` Atribut ukládá text, který má být analyzován v původním `language`umístění, a `id` může být libovolná hodnota. 
 
-Objekt odpovědi je seznam obsahující informace o analýze pro každý dokument. 
+Objekt Response je seznam obsahující informace o analýze pro každý dokument. 
 
 ## <a name="code-examples"></a>Příklady kódu
 
-Tyto fragmenty kódu ukazují, jak provést následující akce v klientské knihovně Text Analytics pro Python:
+Tyto fragmenty kódu ukazují, jak pomocí Analýza textu klientské knihovny pro Python provést následující akce:
 
 * [Ověření klienta](#authenticate-the-client)
 * [Analýza mínění](#sentiment-analysis)
-* [Detekce jazyka](#language-detection)
+* [Rozpoznávání jazyka](#language-detection)
 * [Rozpoznávání entit](#entity-recognition)
 * [Extrakce klíčových frází](#key-phrase-extraction)
 
@@ -102,11 +102,11 @@ class TextAnalyticsClient
 end
 ```
 
-V této třídě vytvořte `initialize` funkci volanou k ověření klienta pomocí klíče a koncového bodu. 
+V této třídě vytvořte funkci nazvanou `initialize` , která ověří klienta pomocí klíče a koncového bodu. 
 
 [!code-ruby[initialize function for authentication](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=initialize)]
 
-Mimo třídu použijte funkci klienta `new()` k vytvoření instance.
+Mimo třídu použijte k vytvoření instance `new()` funkci klienta.
 
 [!code-ruby[client creation](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=clientCreation)] 
 
@@ -114,11 +114,11 @@ Mimo třídu použijte funkci klienta `new()` k vytvoření instance.
 
 ## <a name="sentiment-analysis"></a>Analýza mínění
 
-V objektu klienta vytvořte funkci volanou, `AnalyzeSentiment()` která přebírá seznam vstupních dokumentů, které budou vytvořeny později. Zavolejte funkci `sentiment()` klienta a získejte výsledek. Pak iterate prostřednictvím výsledků a vytisknout ID každého dokumentu a skóre mínění. Skóre blíže k 0 označuje negativní sentiment, zatímco skóre blíže k 1 označuje pozitivní sentiment.
+V objektu klienta vytvořte funkci s názvem `AnalyzeSentiment()` , která převezme seznam vstupních dokumentů, které budou vytvořeny později. Zavolejte `sentiment()` funkci klienta a získejte výsledek. Potom Iterujte výsledky a vytiskněte ID každého dokumentu a mínění skóre. Skóre Blíže k 0 označuje negativní mínění, zatímco skóre Blíže k hodnotě 1 označuje kladný mínění.
 
 [!code-ruby[client method for sentiment analysis](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=analyzeSentiment)] 
 
-Mimo klientské funkce vytvořte novou `SentimentAnalysisExample()` funkci `TextAnalyticsClient` volanou, která přebírá dříve vytvořený objekt. Vytvořte seznam `MultiLanguageInput` objektů obsahující dokumenty, které chcete analyzovat. Každý objekt bude `id` `Language` obsahovat `text` atribut , a atribut. Atribut `text` ukládá text, který `language` má být analyzován, je `id` jazyk dokumentu a může být libovolná hodnota. Potom volání funkce `AnalyzeSentiment()` klienta.
+Mimo funkci klienta vytvořte novou funkci s názvem `SentimentAnalysisExample()` , která převezme objekt, `TextAnalyticsClient` který byl vytvořen dříve. Vytvořte seznam `MultiLanguageInput` objektů obsahující dokumenty, které chcete analyzovat. Každý objekt bude obsahovat `id` `Language` a `text` atribut. `text` Atribut ukládá text, který má být analyzován, `language` je jazyk dokumentu a `id` může být libovolná hodnota. Pak zavolejte `AnalyzeSentiment()` funkci klienta.
 
 [!code-ruby[sentiment analysis document creation and call](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=sentimentCall)] 
 
@@ -142,11 +142,11 @@ Document ID: 4 , Sentiment Score: 1.00
 
 ## <a name="language-detection"></a>Rozpoznávání jazyka
 
-V objektu klienta vytvořte funkci volanou, `DetectLanguage()` která přebírá seznam vstupních dokumentů, které budou vytvořeny později. Zavolejte funkci `detect_language()` klienta a získejte výsledek. Poté iterate prostřednictvím výsledků a vytisknout ID každého dokumentu a zjištěný jazyk.
+V objektu klienta vytvořte funkci s názvem `DetectLanguage()` , která převezme seznam vstupních dokumentů, které budou vytvořeny později. Zavolejte `detect_language()` funkci klienta a získejte výsledek. Pak Projděte výsledky a vytiskněte identifikátor každého dokumentu a zjištěné jazyky.
 
 [!code-ruby[client method for language detection](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=detectLanguage)] 
 
-Mimo klientské funkce vytvořte novou `DetectLanguageExample()` funkci `TextAnalyticsClient` volanou, která přebírá dříve vytvořený objekt. Vytvořte seznam `LanguageInput` objektů obsahující dokumenty, které chcete analyzovat. Každý objekt bude `id`obsahovat `text` atribut , a atribut. Atribut `text` ukládá text, který má `id` být analyzován, a může být libovolná hodnota. Potom volání funkce `DetectLanguage()` klienta.
+Mimo funkci klienta vytvořte novou funkci s názvem `DetectLanguageExample()` , která převezme objekt, `TextAnalyticsClient` který byl vytvořen dříve. Vytvořte seznam `LanguageInput` objektů obsahující dokumenty, které chcete analyzovat. Každý objekt bude obsahovat `id`a `text` atribut. `text` Atribut ukládá text, který má být analyzován, a `id` může být libovolná hodnota. Pak zavolejte `DetectLanguage()` funkci klienta.
 
 [!code-ruby[language detection document creation and call](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=detectLanguageCall)] 
 
@@ -169,11 +169,11 @@ Document ID: 3 , Language: Chinese_Simplified
 
 ## <a name="entity-recognition"></a>Rozpoznávání entit
 
-V objektu klienta vytvořte funkci volanou, `RecognizeEntities()` která přebírá seznam vstupních dokumentů, které budou vytvořeny později. Zavolejte funkci `entities()` klienta a získejte výsledek. Potom iterate prostřednictvím výsledků a vytisknout ID každého dokumentu a rozpoznané entity.
+V objektu klienta vytvořte funkci s názvem `RecognizeEntities()` , která převezme seznam vstupních dokumentů, které budou vytvořeny později. Zavolejte `entities()` funkci klienta a získejte výsledek. Pak Projděte výsledky a vytiskněte ID každého dokumentu a rozpoznané entity.
 
 [!code-ruby[client method for entity recognition](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=recognizeEntities)]
 
-Mimo klientské funkce vytvořte novou `RecognizeEntitiesExample()` funkci `TextAnalyticsClient` volanou, která přebírá dříve vytvořený objekt. Vytvořte seznam `MultiLanguageInput` objektů obsahující dokumenty, které chcete analyzovat. Každý objekt bude `id`obsahovat atribut , a `language`a. `text` Atribut `text` ukládá text, který `language` má být analyzován, je `id` jazyk textu a může být libovolná hodnota. Potom volání funkce `RecognizeEntities()` klienta.
+Mimo funkci klienta vytvořte novou funkci s názvem `RecognizeEntitiesExample()` , která převezme objekt, `TextAnalyticsClient` který byl vytvořen dříve. Vytvořte seznam `MultiLanguageInput` objektů obsahující dokumenty, které chcete analyzovat. Každý objekt bude obsahovat `id` `language` `text` atribut, a. `text` Atribut ukládá text, který má být analyzován, `language` je jazyk textu a `id` může být libovolná hodnota. Pak zavolejte `RecognizeEntities()` funkci klienta.
 
 [!code-ruby[entity recognition documents and method call](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=recognizeEntitiesCall)] 
 
@@ -227,11 +227,11 @@ Document ID: 2
 
 ## <a name="key-phrase-extraction"></a>Extrakce klíčových frází
 
-V objektu klienta vytvořte funkci volanou, `ExtractKeyPhrases()` která přebírá seznam vstupních dokumentů, které budou vytvořeny později. Zavolejte funkci `key_phrases()` klienta a získejte výsledek. Pak iterate prostřednictvím výsledků a vytisknout ID každého dokumentu a extrahované klíčové fráze.
+V objektu klienta vytvořte funkci s názvem `ExtractKeyPhrases()` , která převezme seznam vstupních dokumentů, které budou vytvořeny později. Zavolejte `key_phrases()` funkci klienta a získejte výsledek. Potom Iterujte výsledky a vytiskněte ID každého dokumentu a extrahované klíčové fráze.
 
 [!code-ruby[key phrase extraction client method](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=extractKeyPhrases)] 
 
-Mimo klientské funkce vytvořte novou `KeyPhraseExtractionExample()` funkci `TextAnalyticsClient` volanou, která přebírá dříve vytvořený objekt. Vytvořte seznam `MultiLanguageInput` objektů obsahující dokumenty, které chcete analyzovat. Každý objekt bude `id`obsahovat atribut , a `language`a. `text` Atribut `text` ukládá text, který `language` má být analyzován, je `id` jazyk textu a může být libovolná hodnota. Potom volání funkce `ExtractKeyPhrases()` klienta.
+Mimo funkci klienta vytvořte novou funkci s názvem `KeyPhraseExtractionExample()` , která převezme objekt, `TextAnalyticsClient` který byl vytvořen dříve. Vytvořte seznam `MultiLanguageInput` objektů obsahující dokumenty, které chcete analyzovat. Každý objekt bude obsahovat `id` `language` `text` atribut, a. `text` Atribut ukládá text, který má být analyzován, `language` je jazyk textu a `id` může být libovolná hodnota. Pak zavolejte `ExtractKeyPhrases()` funkci klienta.
 
 [!code-ruby[key phrase document creation and call](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=keyPhrasesCall)]
 

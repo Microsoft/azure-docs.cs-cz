@@ -11,10 +11,10 @@ author: iainfoulds
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4abb15462689470c87e9cf5ba8d5be8af2e45bfd
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78252842"
 ---
 # <a name="tutorial-configure-custom-banned-passwords-for-azure-active-directory-password-protection"></a>Kurz: Konfigurace vlastního zakázaného hesla pro Azure Active Directory ochranu heslem
@@ -28,7 +28,7 @@ Co se v tomto kurzu naučíte:
 > * Přidat položky do seznamu vlastních zakázaných hesel
 > * Testování změn hesel pomocí zakázaného hesla
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu potřebujete následující prostředky a oprávnění:
 

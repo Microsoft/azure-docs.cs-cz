@@ -1,37 +1,37 @@
 ---
 title: Správa clusteru služby Azure Kubernetes pomocí webového řídicího panelu
-description: Přečtěte si, jak pomocí integrovaného webového řídicího panelu uživatelského panelu Kubernetes spravovat cluster služby Azure Kubernetes Service (AKS)
+description: Naučte se používat integrovaný řídicí panel webového uživatelského rozhraní Kubernetes ke správě clusteru Azure Kubernetes Service (AKS).
 services: container-service
 ms.topic: article
 ms.date: 10/08/2018
 ms.openlocfilehash: 15fcf765be0a754575713eebcdaa7d68e1c299b9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77595344"
 ---
-# <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>Přístup k webovému řídicímu panelu Kubernetes ve službě Azure Kubernetes Service (AKS)
+# <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>Přístup k webovému řídicímu panelu Kubernetes ve službě Azure Kubernetes (AKS)
 
-Kubernetes obsahuje webový řídicí panel, který lze použít pro základní operace správy. Tento řídicí panel umožňuje zobrazit základní stav a metriky pro vaše aplikace, vytvářet a nasazovat služby a upravovat stávající aplikace. Tento článek ukazuje, jak získat přístup k řídicímu panelu Kubernetes pomocí azure CLI, pak vás provede některé základní operace řídicího panelu.
+Kubernetes zahrnuje webový řídicí panel, který se dá použít pro základní operace správy. Tento řídicí panel umožňuje zobrazit základní stav a metriky pro vaše aplikace, vytvářet a nasazovat služby a upravovat stávající aplikace. V tomto článku se dozvíte, jak získat přístup k řídicímu panelu Kubernetes pomocí rozhraní příkazového řádku Azure, a pak vás provede několik základních operací řídicích panelů.
 
-Další informace o řídicím panelu Kubernetes najdete v [tématu Kubernetes Web UI Dashboard][kubernetes-dashboard].
+Další informace o řídicím panelu Kubernetes najdete v tématu [řídicí panel webového uživatelského rozhraní Kubernetes][kubernetes-dashboard].
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
-Kroky popsané v tomto dokumentu předpokládají, že jste vytvořili `kubectl` cluster AKS a navázali připojení ke clusteru. Pokud potřebujete vytvořit cluster AKS, přečtěte si [úvodní příručku AKS][aks-quickstart].
+Kroky popsané v tomto dokumentu předpokládají, že jste vytvořili cluster AKS a navázali `kubectl` připojení k tomuto clusteru. Pokud potřebujete vytvořit cluster AKS, přečtěte si téma [rychlý Start AKS][aks-quickstart].
 
-Také musíte mít nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.46 nebo novější. Verzi zjistíte spuštěním příkazu  `az --version` . Pokud potřebujete nainstalovat nebo upgradovat, přečtěte si informace [o instalaci příkazového příkazového příkazu k webu Azure][install-azure-cli].
+Také musíte mít nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.46 nebo novější. Verzi zjistíte spuštěním příkazu  `az --version` . Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
 
 ## <a name="start-the-kubernetes-dashboard"></a>Spuštění řídicího panelu Kubernetes
 
-Chcete-li spustit řídicí panel Kubernetes, použijte příkaz [az aks browse.][az-aks-browse] Následující příklad otevře řídicí panel pro cluster s názvem *myAKSCluster* ve skupině prostředků s názvem *myResourceGroup*:
+Řídicí panel Kubernetes spustíte pomocí příkazu [AZ AKS Browse][az-aks-browse] . Následující příklad otevře řídicí panel pro cluster s názvem *myAKSCluster* ve skupině prostředků s názvem *myResourceGroup*:
 
 ```azurecli
 az aks browse --resource-group myResourceGroup --name myAKSCluster
 ```
 
-Tento příkaz vytvoří proxy mezi vaším vývojovým systémem a rozhraním API Kubernetes a otevře webový prohlížeč na řídicím panelu Kubernetes. Pokud se webový prohlížeč neotevře na řídicím panelu Kubernetes, zkopírujte a vložte adresu URL uvedenou v nastavení příkazového řádku Azure, obvykle `http://127.0.0.1:8001`.
+Tento příkaz vytvoří proxy server mezi vývojovým systémem a rozhraním API Kubernetes a otevře webový prohlížeč na řídicím panelu Kubernetes. Pokud se webový prohlížeč neotevře na řídicím panelu Kubernetes, zkopírujte a vložte adresu URL, kterou jste si poznamenali `http://127.0.0.1:8001`v Azure CLI, obvykle.
 
 <!--
 ![The login page of the Kubernetes web dashboard](./media/kubernetes-dashboard/dashboard-login.png)
@@ -65,69 +65,69 @@ After you choose a method to sign in, the Kubernetes dashboard is displayed. If 
 -->
 
 > [!IMPORTANT]
-> Pokud váš cluster AKS používá RBAC, *clusterRoleBinding* musí být vytvořen před správně přístup k řídicímu panelu. Ve výchozím nastavení je řídicí panel Kubernetes nasazen s minimálním přístupem pro čtení a zobrazuje chyby přístupu RBAC. Řídicí panel Kubernetes aktuálně nepodporuje pověření zajišťovaná uživatelem k určení úrovně přístupu, ale používá role udělené účtu služby. Správce clusteru se může rozhodnout udělit další přístup k účtu *služby kubernetes-dashboard,* ale může to být vektor pro eskalaci oprávnění. Můžete také integrovat ověřování služby Azure Active Directory a poskytnout tak podrobnější úroveň přístupu.
+> Pokud cluster AKS používá RBAC, musí být vytvořen *ClusterRoleBinding* , aby bylo možné správně přistupovat k řídicímu panelu. Ve výchozím nastavení je řídicí panel Kubernetes nasazený s minimálním přístupem pro čtení a zobrazuje chyby přístupu RBAC. Řídicí panel Kubernetes v současné době nepodporuje uživatelsky zadané přihlašovací údaje k určení úrovně přístupu, místo toho používá role udělené účtu služby. Správce clusteru se může rozhodnout pro udělení dalšího přístupu k účtu služby *Kubernetes-Dashboard* , ale může se jednat o vektor pro eskalaci oprávnění. Můžete také integrovat Azure Active Directory ověřování a zajistit tak podrobnější úroveň přístupu.
 > 
-> Chcete-li vytvořit vazbu, použijte [příkaz create clusterrolebinding kubectl.][kubectl-create-clusterrolebinding] Následující příklad ukazuje, jak vytvořit vzorovou vazbu, ale tato ukázková vazba nepoužije žádné další součásti ověřování a může vést k nezabezpečenému použití. Řídicí panel Kubernetes je otevřen všem, kdo mají přístup k adrese URL. Nezveřejňujte řídicí panel Kubernetes veřejně.
+> K vytvoření vazby použijte příkaz [kubectl Create clusterrolebinding][kubectl-create-clusterrolebinding] . Následující příklad ukazuje, jak vytvořit ukázkovou vazbu, ale Tato vzorová vazba nepoužívá žádné další ověřovací komponenty a může vést k nezabezpečenému použití. Řídicí panel Kubernetes je otevřený pro kohokoli, kdo má přístup k adrese URL. Nezveřejňujte řídicí panel Kubernetes veřejně.
 >
 > ```console
 > kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard
 > ```
 > 
-> Další informace o používání různých metod ověřování najdete na wiki řídicího panelu Kubernetes o [ovládacích prvcích přístupu][dashboard-authentication].
+> Další informace o používání různých metod ověřování najdete v článku wiki řídicího panelu Kubernetes na [ovládacím prvku Access Controls][dashboard-authentication].
 
-![Přehledná stránka webového panelu Kubernetes](./media/kubernetes-dashboard/dashboard-overview.png)
+![Stránka s přehledem webového řídicího panelu Kubernetes](./media/kubernetes-dashboard/dashboard-overview.png)
 
 ## <a name="create-an-application"></a>Vytvoření aplikace
 
-Chcete-li zjistit, jak řídicí panel Kubernetes může snížit složitost úloh správy, vytvořte aplikaci. Aplikaci můžete vytvořit z řídicího panelu Kubernetes poskytnutím textového vstupu, souboru YAML nebo pomocí grafického průvodce.
+Pokud chcete zjistit, jak může řídicí panel Kubernetes snižovat složitost úloh správy, vytvoříme aplikaci. Aplikaci můžete z řídicího panelu Kubernetes vytvořit zadáním textového zadání, souboru YAML nebo pomocí grafického průvodce.
 
 Chcete-li vytvořit aplikaci, proveďte následující kroky:
 
-1. V pravém horním okně vyberte tlačítko **Vytvořit.**
-1. Chcete-li použít grafického průvodce, zvolte **vytvořit aplikaci**.
-1. Zadejte název pro nasazení, například *nginx*
-1. Zadejte název obrázku kontejneru, který chcete použít, například *nginx:1.15.5*
-1. Chcete-li vystavit port 80 pro webový provoz, vytvořte službu Kubernetes. V části **Služba**vyberte **Externí**a zadejte **80** pro port i cílový port.
-1. Až budete připraveni, vyberte **Nasazení** a vytvořte aplikaci.
+1. V pravém horním rohu vyberte tlačítko **vytvořit** .
+1. Chcete-li použít Průvodce grafickým rozhraním, vyberte možnost **vytvořit aplikaci**.
+1. Zadejte název pro nasazení, například *Nginx* .
+1. Zadejte název Image kontejneru, která se má použít, například *Nginx: 1.15.5.*
+1. K vystavení portu 80 pro webový provoz vytvoříte službu Kubernetes. V části **Služba**vyberte **externí**a potom zadejte **80** pro port i cílový port.
+1. Až budete připraveni, vyberte **nasadit** a vytvořte aplikaci.
 
-![Nasazení aplikace na webovém řídicím panelu Kubernetes](./media/kubernetes-dashboard/create-app.png)
+![Nasazení aplikace na webový řídicí panel Kubernetes](./media/kubernetes-dashboard/create-app.png)
 
-Trvá minutu nebo dvě, než bude veřejná externí IP adresa přiřazena službě Kubernetes. Na levé straně velikosti vyberte v části **Zjišťování a vyrovnávání zatížení** **služby**. Služba aplikace je uvedena, včetně *externích koncových bodů*, jak je znázorněno v následujícím příkladu:
+K přiřazení veřejné externí IP adresy službě Kubernetes může trvat minutu nebo dvě. Na levé straně v části **zjišťování a vyrovnávání zatížení** vyberte **služby**. Služba vaší aplikace je uvedena, včetně *externích koncových bodů*, jak je znázorněno v následujícím příkladu:
 
-![Zobrazit seznam služeb a koncových bodů](./media/kubernetes-dashboard/view-services.png)
+![Zobrazení seznamu služeb a koncových bodů](./media/kubernetes-dashboard/view-services.png)
 
-Výběrem adresy koncového bodu otevřete okno webového prohlížeče na výchozí stránku NGINX:
+Vyberte adresu koncového bodu a otevřete tak okno webového prohlížeče na výchozí stránce NGINX:
 
-![Zobrazení výchozí stránky NGINX nasazené aplikace](./media/kubernetes-dashboard/default-nginx.png)
+![Zobrazit výchozí stránku NGINX nasazené aplikace](./media/kubernetes-dashboard/default-nginx.png)
 
-## <a name="view-pod-information"></a>Zobrazit informace o podu
+## <a name="view-pod-information"></a>Zobrazit informace pod
 
-Řídicí panel Kubernetes může poskytovat základní metriky monitorování a informace o řešení potíží, jako jsou protokoly.
+Řídicí panel Kubernetes může poskytovat základní metriky monitorování a informace o řešení problémů, jako jsou protokoly.
 
-Chcete-li zobrazit další informace o podech aplikací, vyberte **pody** v levé nabídce. Zobrazí se seznam dostupných podů. Zvolte *nginx* pod pro zobrazení informací, jako je například spotřeba zdrojů:
+Pokud chcete zobrazit další informace o luskech aplikací, vyberte v nabídce vlevo možnost **lusky** . Zobrazí se seznam dostupných lusků. Pokud si chcete zobrazit informace, jako je například spotřeba prostředků, vyberte *Nginx* pod.
 
-![Zobrazit informace o podu](./media/kubernetes-dashboard/view-pod-info.png)
+![Zobrazit informace pod](./media/kubernetes-dashboard/view-pod-info.png)
 
-## <a name="edit-the-application"></a>Úprava aplikace
+## <a name="edit-the-application"></a>Upravit aplikaci
 
-Kromě vytváření a prohlížení aplikací lze řídicí panel Kubernetes použít k úpravám a aktualizaci nasazení aplikací. Chcete-li poskytnout další redundance pro aplikaci, pojďme zvýšit počet replik NGINX.
+Kromě vytváření a zobrazování aplikací je možné pomocí řídicího panelu Kubernetes upravit a aktualizovat nasazení aplikací. Abychom zajistili další redundanci pro aplikaci, zvýšili jsme počet NGINX replik.
 
-Úprava nasazení:
+Postup úpravy nasazení:
 
-1. V levé nabídce vyberte **Nasazení** a pak zvolte nasazení *nginx.*
-1. V pravém horním navigačním panelu vyberte **Upravit.**
-1. Vyhledejte `spec.replica` hodnotu na řádku 20. Chcete-li zvýšit počet replik pro aplikaci, změňte tuto hodnotu z *1* na *3*.
-1. Vyberte **Aktualizovat,** až bude připraven.
+1. V nabídce vlevo vyberte **nasazení** a pak zvolte nasazení *Nginx* .
+1. V pravém horním navigačním panelu vyberte **Upravit** .
+1. Vyhledejte `spec.replica` hodnotu, při přibližně na řádku 20. Chcete-li zvýšit počet replik pro aplikaci, změňte tuto hodnotu z *1* na *3*.
+1. Po přípravě vyberte **aktualizovat** .
 
-![Úprava nasazení za účelem aktualizace počtu replik](./media/kubernetes-dashboard/edit-deployment.png)
+![Upravte nasazení a aktualizujte počet replik.](./media/kubernetes-dashboard/edit-deployment.png)
 
-Trvá několik okamžiků pro nové pody, které mají být vytvořeny uvnitř sady replik. V nabídce na levé straně zvolte **Sady replik**a pak zvolte sadu replik *nginx.* Seznam podů nyní odráží aktualizovaný počet replik, jak je znázorněno v následujícím příkladu výstupu:
+Vytvoření nových lusků v sadě replik může chvíli trvat. V nabídce vlevo zvolte **sady replik**a pak zvolte svou sadu replik *Nginx* . Seznam lusků nyní odráží aktualizovaný počet replik, jak je znázorněno v následujícím příkladu výstupu:
 
 ![Zobrazit informace o sadě replik](./media/kubernetes-dashboard/view-replica-set.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o řídicím panelu Kubernetes najdete v [ovládacím panelu kubernetes web ui .][kubernetes-dashboard]
+Další informace o řídicím panelu Kubernetes najdete na [řídicím panelu webového uživatelského rozhraní Kubernetes][kubernetes-dashboard].
 
 <!-- LINKS - external -->
 [dashboard-authentication]: https://github.com/kubernetes/dashboard/wiki/Access-control

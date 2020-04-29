@@ -15,10 +15,10 @@ ms.custom: mvc
 ms.date: 02/10/2020
 ms.author: spelluru
 ms.openlocfilehash: a1a3e62646fedd468a02eac7b1a48d0b2d00fd74
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77591978"
 ---
 # <a name="tutorial-track-usage-of-a-lab-in-azure-lab-service"></a>Kurz: Sledování využití testovacího prostředí v Azure Lab Services
@@ -37,28 +37,28 @@ V tomto kurzu provedete následující akce:
 1. Přejděte na [web Azure Lab Services](https://labs.azure.com). 
 2. Vyberte **Sign in** (Přihlásit se) a zadejte své přihlašovací údaje. Azure Lab Services podporuje účty organizací a účty Microsoft.
 3. Na stránce **My labs** (Moje testovací prostředí) vyberte testovací prostředí, jehož využití chcete sledovat. 
-4. V levé nabídce nebo **na dlaždici Uživatelé** vyberte **Uživatelé.** Zobrazí se studenti, kteří se zaregistrovali do vašeho testovacího prostředí.  
+4. V levé nabídce nebo na dlaždici **Uživatelé** vyberte **Uživatelé** . Zobrazí se studenti, kteří se zaregistrovali do vašeho testovacího prostředí.  
 
     ![Registrovaní uživatelé](../media/tutorial-track-usage/registered-users.png)
 
-    Další informace o přidávání a správě uživatelů testovacího prostředí naleznete v tématu [Přidání a správa uživatelů testovacího prostředí](how-to-configure-student-usage.md).
+    Další informace o přidávání a správě uživatelů pro testovací prostředí najdete v tématu [Přidání a Správa uživatelů testovacího prostředí](how-to-configure-student-usage.md).
 
-## <a name="view-the-usage-of-vms"></a>Zobrazení využití virtuálních počítače
+## <a name="view-the-usage-of-vms"></a>Zobrazit využití virtuálních počítačů
 
 1. V nabídce vlevo vyberte **Virtual machines** (Virtuální počítače). 
-2. Ověřte, že se zobrazí stav virtuálních počítačů a počet hodin, po které jsou virtuální počítače spuštěné. Čas, který vlastník testovacího prostředí stráví na virtuálním počítači studenta se nezapočítává do doby využití uvedené v posledním sloupci. 
+2. Ověřte, že se zobrazí stav virtuálních počítačů a počet hodin, po které jsou virtuální počítače spuštěné. Čas, který vlastník testovacího prostředí stráví na virtuálním počítači studenta, se nepočítá s časem využití zobrazeným v posledním sloupci. 
 
     ![Využití virtuálních počítačů](../media/tutorial-track-usage/vm-usage.png)
 
 ## <a name="manage-student-vms"></a>Správa virtuálních počítačů studentů 
-Na této stránce můžete spustit, zastavit nebo obnovit virtuální chod studentů pomocí ovládacích prvků ve sloupci **Stav** nebo na panelu nástrojů.
+Na této stránce můžete spustit, zastavit nebo resetovat virtuální počítače studenta pomocí ovládacích prvků ve sloupci **stav** nebo na panelu nástrojů.
 
-![Akce virtuálních montovna](../media/tutorial-track-usage/vm-controls.png)
+![Akce virtuálních počítačů](../media/tutorial-track-usage/vm-controls.png)
 
-Další informace o správě fondu virtuálních strojů pro testovací prostředí najdete v tématu [Nastavení a správa fondu virtuálních strojů](how-to-set-virtual-machine-passwords.md).
+Další informace o správě fondu virtuálních počítačů pro testovací prostředí najdete v tématu [nastavení a Správa fondu virtuálních počítačů](how-to-set-virtual-machine-passwords.md).
 
 > [!NOTE]
-> Když pedagog zapne virtuální počítač pro studenty, kvóta pro studenta není ovlivněna. Kvóta pro uživatele určuje počet hodin testovacího prostředí, které má uživatel k dispozici mimo plánovaný čas třídy. Další informace o kvótách naleznete v tématu [Nastavení kvót pro uživatele](how-to-configure-student-usage.md?#set-quotas-for-users).
+> Když Educator zapnete virtuální počítač studenta, neovlivní kvóta pro studenta. Kvóta pro uživatele určuje počet hodin testovacího prostředí uživatele mimo plánovaný čas třídy. Další informace o kvótách najdete v tématu [nastavení kvót pro uživatele](how-to-configure-student-usage.md?#set-quotas-for-users).
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o učebních laboratořích najdete v článcích v článku [Návody .](how-to-manage-lab-accounts.md)
+Další informace o učebn Labs najdete v článcích v části [Průvodce postupy](how-to-manage-lab-accounts.md).

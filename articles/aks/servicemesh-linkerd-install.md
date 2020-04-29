@@ -1,45 +1,45 @@
 ---
-title: Instalace linkerdu ve službě Azure Kubernetes Service (AKS)
-description: Zjistěte, jak nainstalovat a používat Linkerd k vytvoření sítě služeb v clusteru Služby Azure Kubernetes (AKS)
+title: Instalace linkeru ve službě Azure Kubernetes Service (AKS)
+description: Naučte se instalovat a používat linker pro vytvoření sítě v clusteru Azure Kubernetes Service (AKS).
 author: paulbouwer
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
 ms.openlocfilehash: 419b61527b68299c82dec4f2f5da6b0220859cc1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77593707"
 ---
-# <a name="install-linkerd-in-azure-kubernetes-service-aks"></a>Instalace linkerdu ve službě Azure Kubernetes Service (AKS)
+# <a name="install-linkerd-in-azure-kubernetes-service-aks"></a>Instalace linkeru ve službě Azure Kubernetes Service (AKS)
 
-[Linkerd][linkerd-github] je open-source service mesh a [CNCF inkubační projekt][linkerd-cncf]. Linkerd je síť ultralehkých služeb, která poskytuje funkce, které zahrnují správu provozu, identitu služby a zabezpečení, spolehlivost a pozorovatelnost. Další informace o linkerd, naleznete v [oficiálnílinkerd FAQ][linkerd-faq] a [Linkerd architektura][linkerd-architecture] dokumentace.
+[Linker][linkerd-github] je open source síť a CNCF se na [inkubaci projektu][linkerd-cncf]. Linker je síť Ultralight, která poskytuje funkce, které zahrnují správu provozu, identitu služby a zabezpečení, spolehlivost a možnosti pozorovatele. Další informace o linkeru naleznete v oficiálních [nejčastějších dotazech][linkerd-faq] a v dokumentaci k [linkerům][linkerd-architecture] .
 
-Tento článek ukazuje, jak nainstalovat Linkerd. Binární soubor `linkerd` klienta Linkerd je nainstalován do klientského počítače a součásti Linkerd jsou nainstalovány do clusteru Kubernetes v AKS.
+V tomto článku se dozvíte, jak nainstalovat linker. Linkerový binární `linkerd` soubor klienta je nainstalován do klientského počítače a linkerované komponenty jsou nainstalovány do clusteru KUBERNETES v AKS.
 
 > [!NOTE]
-> Tyto pokyny odkazují na `stable-2.6.0`verzi Linkerd .
+> Tyto pokyny odkazují na verzi `stable-2.6.0`linkeru.
 >
-> Linkerd `stable-2.6.x` lze spustit proti verzím Kubernetes `1.13+`. Další stabilní a hraniční verze Linkerd najdete na [GitHubu - Linkerd Releases][linkerd-github-releases].
+> Linker se `stable-2.6.x` dá spustit na Kubernetes verzích `1.13+`. Další stabilní a hraniční linkery jsou k dispozici ve [verzích linkeru na GitHubu][linkerd-github-releases].
 
 V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Stažení a instalace binárního souboru klienta Linkerd Linkerd
-> * Instalace linkerdu na AKS
-> * Ověření instalace linkerd
+> * Stažení a instalace binárního linkeru linkeru
+> * Instalace linkeru v AKS
+> * Ověřit Linkerskou instalaci
 > * Přístup k řídicímu panelu
-> * Odinstalace linkerdu z AKS
+> * Odinstalace linkeru z AKS
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
-Kroky popsané v tomto článku předpokládají, že jste vytvořili cluster AKS (Kubernetes `1.13` a `kubectl` výše, s povoleným RBAC) a navázali připojení ke clusteru. Pokud potřebujete pomoc s některou z těchto položek, naleznete [v aks rychlý start][aks-quickstart].
+Kroky popsané v tomto článku předpokládají, že jste vytvořili cluster AKS (Kubernetes `1.13` a vyšší s povoleným RBAC) a navázali jste `kubectl` připojení ke clusteru. Pokud potřebujete s kteroukoli z těchto položek pomáhat, přečtěte si [rychlý Start AKS][aks-quickstart].
 
-Všechny linkerdové pody musí být naplánovány tak, aby běžely na linuxových uzlech - toto nastavení je výchozí v níže uvedené metodě instalace a nevyžaduje žádnou další konfiguraci.
+Všechna Linkerová Luska musí být naplánována na spuštění v uzlech se systémem Linux – Tato instalace je výchozím nastavením v níže popsané metodě instalace a nevyžaduje žádnou další konfiguraci.
 
-Tento článek odděluje linkerd instalace pokyny do několika samostatných kroků. Výsledek je ve struktuře stejný jako oficiální [linkerd][linkerd-getting-started]začínáte pokyny .
+Tento článek odděluje linkery s pokyny k instalaci do několika diskrétních kroků. Výsledek je stejný ve struktuře jako oficiální úvodní [Průvodce][linkerd-getting-started]Začínáme.
 
 ::: zone pivot="client-operating-system-linux"
 
@@ -59,15 +59,15 @@ Tento článek odděluje linkerd instalace pokyny do několika samostatných kro
 
 ::: zone-end
 
-## <a name="install-linkerd-on-aks"></a>Instalace linkerdu na AKS
+## <a name="install-linkerd-on-aks"></a>Instalace linkeru v AKS
 
-Než nainstalujeme Linkerd, spustíme kontroly před instalací, abychom zjistili, zda lze řídicí rovinu nainstalovat do našeho clusteru AKS:
+Před instalací linkeru spustíme kontroly před instalací, abyste zjistili, jestli se na náš cluster AKS dá nainstalovat rovina ovládacího prvku:
 
 ```console
 linkerd check --pre
 ```
 
-Mělo by se zobrazit něco jako následující, které označuje, že cluster AKS je platný cíl instalace pro Linkerd:
+Měl by se zobrazit něco podobného jako u následujícího, což znamená, že váš cluster AKS je platným cílem instalace linkeru:
 
 ```console
 kubernetes-api
@@ -117,26 +117,26 @@ linkerd-version
 Status check results are √
 ```
 
-Nyní je čas nainstalovat součásti Linkerd. Pomocí `linkerd` binárních souborů a `kubectl` nainstalujte součásti Linkerd do clusteru AKS. Bude `linkerd` automaticky vytvořen obor názvů a součásti budou nainstalovány do tohoto oboru názvů.
+Nyní je čas nainstalovat Linkerované komponenty. Pomocí `linkerd` binárních `kubectl` souborů a nainstalujte linkerované komponenty do clusteru AKS. Automaticky `linkerd` se vytvoří obor názvů a součásti se nainstalují do tohoto oboru názvů.
 
 ```console
 linkerd install | kubectl apply -f -
 ```
 
-Linkerd nasazuje počet objektů. Zobrazí se seznam z výstupu příkazu `linkerd install` výše. Nasazení součástí Linkerd by mělo trvat přibližně 1 minutu, v závislosti na prostředí clusteru.
+Linker nasadí určitý počet objektů. Zobrazí se seznam z výstupu `linkerd install` příkazu výše. Nasazení Linkerních komponent by mělo trvat přibližně jednu minutu, v závislosti na prostředí clusteru.
 
-V tomto okamžiku jste nasadili Linkerd do clusteru AKS. Chcete-li zajistit úspěšné nasazení linkerd, přejdeme k další části [k ověření instalace Linkerd](#validate-the-linkerd-installation).
+V tomto okamžiku jste nasadili linker s clusterem AKS. Abychom zajistili úspěšné nasazení linkeru, pojďme přejít k další části a [ověřit linkerovou instalaci](#validate-the-linkerd-installation).
 
-## <a name="validate-the-linkerd-installation"></a>Ověření instalace linkerd
+## <a name="validate-the-linkerd-installation"></a>Ověřit Linkerskou instalaci
 
-Zkontrolujte, zda byly prostředky úspěšně vytvořeny. Pomocí příkazů [get svc][kubectl-get] a [kubectl get pod][kubectl-get] použijte `linkerd` příkazy get pod pro dotaz na `linkerd install` obor názvů, kde byly komponenty Linkerd nainstalovány příkazem:
+Potvrďte, že se prostředky úspěšně vytvořily. Použijte příkazy [kubectl Get svc][kubectl-get] a [kubectl Get pod][kubectl-get] k dotazování `linkerd` oboru názvů, ve kterém se linkerové komponenty nainstalovaly `linkerd install` příkazem:
 
 ```console
 kubectl get svc --namespace linkerd --output wide
 kubectl get pod --namespace linkerd --output wide
 ```
 
-Následující příklad výstupu ukazuje služby a pody (naplánované na linuxových uzlech), které by nyní měly být spuštěny:
+Následující příklad výstupu ukazuje služby a lusky (naplánované na uzlech se systémem Linux), které by nyní měly být spuštěny:
 
 ```console
 NAME                     TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)             AGE  SELECTOR
@@ -163,13 +163,13 @@ linkerd-tap-5cd9fc566-ct988               2/2     Running   0          64s   10.
 linkerd-web-774c79b6d5-dhhwf              2/2     Running   0          65s   10.240.0.70   aks-linux-16165125-vmss000002   <none>           <none>
 ```
 
-Linkerd poskytuje příkaz `linkerd` prostřednictvím binárního klienta k ověření, že rovina řízení Linkerd byla úspěšně nainstalována a nakonfigurována.
+Linkerd poskytuje příkaz prostřednictvím binárního `linkerd` souboru klienta pro ověření, že se úspěšně nainstalovala a nakonfigurovala Řídicí rovina ovládacího prvku.
 
 ```console
 linkerd check
 ```
 
-Měli byste vidět něco jako následující, které označuje, že vaše instalace byla úspěšná:
+Mělo by se zobrazit něco podobného jako v následujícím tématu, které indikuje, že instalace proběhla úspěšně:
 
 ```console
 kubernetes-api
@@ -226,13 +226,13 @@ Status check results are √
 
 ## <a name="access-the-dashboard"></a>Přístup k řídicímu panelu
 
-Linkerd je dodáván s řídicím panelem, který poskytuje přehled o síti služeb a úlohách. Chcete-li získat přístup `linkerd dashboard` k řídicímu panelu, použijte příkaz. Tento příkaz využívá [port ubectl vpřed][kubectl-port-forward] k vytvoření zabezpečeného připojení mezi klientským počítačem a příslušnými pody v clusteru AKS. Poté automaticky otevře řídicí panel ve výchozím prohlížeči.
+Linker se dodává s řídicím panelem, který poskytuje přehled o síti a úlohách služby. Pro přístup k řídicímu panelu použijte `linkerd dashboard` příkaz. Tento příkaz využívá [kubectl portů –][kubectl-port-forward] k vytvoření zabezpečeného připojení mezi klientským počítačem a příslušnými lusky v clusteru AKS. Řídicí panel pak bude automaticky otevřen ve výchozím prohlížeči.
 
 ```console
 linkerd dashboard
 ```
 
-Příkaz také vytvoří port-forward a vrátí odkaz pro řídicí panely Grafana.
+Příkaz také vytvoří dopředný port a vrátí odkaz na řídicí panely Grafana.
 
 ```console
 Linkerd dashboard available at:
@@ -242,12 +242,12 @@ http://127.0.0.1:50750/grafana
 Opening Linkerd dashboard in the default browser
 ```
 
-## <a name="uninstall-linkerd-from-aks"></a>Odinstalace linkerdu z AKS
+## <a name="uninstall-linkerd-from-aks"></a>Odinstalace linkeru z AKS
 
 > [!WARNING]
-> Odstranění linkerdu ze spuštěného systému může mít za následek problémy související s provozem mezi vašimi službami. Ujistěte se, že jste před pokračováním zajistili, že váš systém bude stále fungovat správně bez linkerdu.
+> Odstranění linkeru ze spuštěného systému může vést k problémům souvisejícím s provozem mezi vašimi službami. Než budete pokračovat, ujistěte se, že jste provedli správné fungování vašeho systému bez linkeru.
 
-Nejprve budete muset odebrat proxy datové roviny. Odeberte všechny [poznámky][linkerd-automatic-proxy-injection] automatického vkládání proxy prostředků z oborů názvů úloh a zaveďte nasazení úloh. Vaše úlohy by již neměly mít žádné přidružené součásti roviny dat.
+Nejprve bude nutné odebrat proxy roviny dat. Odstraňte jakékoli automatické [Anotace][linkerd-automatic-proxy-injection] injektáže proxy z oboru názvů úlohy a zaveďte nasazení úloh. Vaše úlohy by již neměly mít žádné přidružené součásti roviny dat.
 
 Nakonec odstraňte rovinu ovládacího prvku následujícím způsobem:
 
@@ -257,15 +257,15 @@ linkerd install --ignore-cluster | kubectl delete -f -
 
 ## <a name="next-steps"></a>Další kroky
 
-Další možnosti instalace a konfigurace linkerdu naleznete v následujících oficiálních pokynech pro linkerd:
+Chcete-li prozkoumat další možnosti instalace a konfigurace linkeru, přečtěte si následující oficiální pokyny k linkeru:
 
-- [Linkerd - Instalace helmu][linkerd-install-with-helm]
-- [Linkerd - Vícestupňová instalace pro zajištění oprávnění role][linkerd-multi-stage-installation]
+- [Linkerem-Helm instalace][linkerd-install-with-helm]
+- [Linkerem vytvořená instalace s více fázemi pro oprávnění role][linkerd-multi-stage-installation]
 
-Můžete také sledovat další scénáře pomocí:
+Můžete také postupovat podle dalších scénářů pomocí:
 
-- [Linkerd emojivoto demo][linkerd-demo-emojivoto]
-- [Linkerd knihy demo][linkerd-demo-books]
+- [Ukázka linkeru emojivoto][linkerd-demo-emojivoto]
+- [Ukázka linkerních knih][linkerd-demo-books]
 
 <!-- LINKS - external -->
 

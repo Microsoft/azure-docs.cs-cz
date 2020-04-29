@@ -1,51 +1,51 @@
 ---
-title: Vytváření a spouštění vlastních testů dostupnosti pomocí funkcí Azure
-description: Tento dokument se bude týkat, jak vytvořit funkci Azure s TrackAvailability(), který bude pravidelně spouštět podle konfigurace uvedené ve funkci TimerTrigger. Výsledky tohoto testu budou odeslány do prostředku Application Insights, kde budete moci dotazovat a upozorňovat na data výsledků dostupnosti. Přizpůsobené testy vám umožní psát složitější testy dostupnosti, než je možné pomocí portálu uznaného, monitorování aplikace uvnitř virtuální sítě Azure, změna adresy koncového bodu nebo vytvoření testu dostupnosti, pokud není k dispozici ve vaší oblasti.
+title: Vytvoření a spuštění vlastních testů dostupnosti pomocí Azure Functions
+description: Tento dokument popisuje, jak vytvořit funkci Azure pomocí TrackAvailability (), která se pravidelně spouští podle konfigurace zadané ve funkci TimerTrigger. Výsledky tohoto testu se odešlou do vašeho prostředku Application Insights, kde se budete moct dotazovat na data výsledků dostupnosti a upozornit na ně. Přizpůsobené testy vám umožní zapisovat složitější testy dostupnosti, než je možné pomocí uživatelského rozhraní portálu, monitorovat aplikaci v rámci virtuální sítě Azure, změnit adresu koncového bodu nebo vytvořit test dostupnosti, pokud není ve vaší oblasti dostupný.
 ms.topic: conceptual
 author: morgangrobin
 ms.author: mogrobin
 ms.date: 11/22/2019
 ms.openlocfilehash: 476d66c51c10a5fcfb3cb0319c47b3338d28812c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77665795"
 ---
-# <a name="create-and-run-custom-availability-tests-using-azure-functions"></a>Vytváření a spouštění vlastních testů dostupnosti pomocí funkcí Azure
+# <a name="create-and-run-custom-availability-tests-using-azure-functions"></a>Vytvoření a spuštění vlastních testů dostupnosti pomocí Azure Functions
 
-Tento článek se bude zabývat tím, jak vytvořit funkci Azure s TrackAvailability(), která se bude pravidelně spouštět podle konfigurace uvedené ve funkci TimerTrigger s vlastní obchodní logikou. Výsledky tohoto testu budou odeslány do prostředku Application Insights, kde budete moci dotazovat a upozorňovat na data výsledků dostupnosti. To umožňuje vytvořit vlastní testy podobné tomu, co můžete udělat prostřednictvím [monitorování dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md) na portálu. Přizpůsobené testy vám umožní psát složitější testy dostupnosti, než je možné pomocí portálu uznaného, monitorování aplikace uvnitř virtuální sítě Azure, změna adresy koncového bodu nebo vytvoření testu dostupnosti, i když tato funkce není k dispozici ve vaší oblasti.
+Tento článek popisuje, jak vytvořit funkci Azure pomocí TrackAvailability (), která se pravidelně spouští podle konfigurace zadané ve funkci TimerTrigger s vlastní obchodní logikou. Výsledky tohoto testu se odešlou do vašeho prostředku Application Insights, kde se budete moct dotazovat na data výsledků dostupnosti a upozornit na ně. To vám umožní vytvořit vlastní testy podobné tomu, co můžete dělat prostřednictvím [monitorování dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md) na portálu. Přizpůsobené testy vám umožní psát složitější testy dostupnosti, než je možné pomocí uživatelského rozhraní portálu, monitorovat aplikaci v rámci virtuální sítě Azure, změnit adresu koncového bodu nebo vytvořit test dostupnosti, i když tato funkce není ve vaší oblasti dostupná.
 
 > [!NOTE]
-> Tento příklad je určen výhradně k zobrazení mechaniky, jak trackAvailability() volání rozhraní API funguje v rámci funkce Azure. Není, jak napsat základní http test kódu/obchodní logiku, která by byla požadována pro přeměnu na plně funkční test dostupnosti. Ve výchozím nastavení, pokud budete procházet tento příklad, budete vytvářet test dostupnosti, který bude vždy generovat selhání.
+> Tento příklad je určený výhradně k tomu, aby vám ukázal, jak volání rozhraní API TrackAvailability () funguje v rámci funkce Azure Function. Nemusíte psát podkladový kód testu HTTP nebo obchodní logiku, který by byl nutný k tomu, aby se tento test vypnul na plně funkční test dostupnosti. Ve výchozím nastavení se při procházení tohoto příkladu vytvoří test dostupnosti, který bude vždy generovat selhání.
 
-## <a name="create-timer-triggered-function"></a>Vytvořit funkci spouštění časovače
+## <a name="create-timer-triggered-function"></a>Vytvoření funkce aktivované časovačem
 
 - Pokud máte prostředek Application Insights:
-    - Ve výchozím nastavení Azure Functions vytvoří prostředek Application Insights, ale pokud chcete použít jeden z již vytvořených prostředků, budete muset zadat, že při vytváření.
-    - Postupujte podle pokynů, jak [vytvořit prostředek Azure Functions a timer aktivovanou funkci](https://docs.microsoft.com/azure/azure-functions/functions-create-scheduled-function) (zastavit před vyčištěním) s následujícími možnostmi.
-        -  V horní části vyberte kartu **Monitorování.**
+    - Ve výchozím nastavení Azure Functions vytvoří prostředek Application Insights, ale pokud byste chtěli použít některý z již vytvořených prostředků, budete ho muset během vytváření zadat.
+    - Postupujte podle pokynů v tématu Postup [Vytvoření funkce Azure Functions prostředku a časovače](https://docs.microsoft.com/azure/azure-functions/functions-create-scheduled-function) (zastavit před vyčištěním) s následujícími možnostmi.
+        -  Vyberte kartu **monitorování** v pravém horním rohu.
 
-            ![ Vytvoření aplikace Azure Functions s vlastním zdrojem Přehledů aplikací](media/availability-azure-functions/create-function-app.png)
+            ![ Vytvoření aplikace Azure Functions s vlastním prostředkem App Insights](media/availability-azure-functions/create-function-app.png)
 
-        - Vyberte rozevírací pole Přehledy aplikací a zadejte nebo vyberte název svého prostředku.
+        - Vyberte rozevírací seznam Application Insights a zadejte nebo vyberte název prostředku.
 
             ![Výběr existujícího prostředku Application Insights](media/availability-azure-functions/app-insights-resource.png)
 
-        - Vybrat **zkontrolovat + vytvořit**
-- Pokud ještě nemáte pro funkci aktivovanou časovačem vytvořený prostředek Application Insights:
-    - Ve výchozím nastavení při vytváření aplikace Azure Functions vytvoří prostředek Application Insights pro vás.
-    - Postupujte podle pokynů, jak [vytvořit prostředek Azure Functions a timer aktivovanou funkci](https://docs.microsoft.com/azure/azure-functions/functions-create-scheduled-function) (zastavit před vyčištěním).
+        - Vybrat **kontrolu + vytvořit**
+- Pokud ještě nemáte vytvořený prostředek Application Insights pro funkci aktivovanou časovačem:
+    - Když vytváříte aplikaci Azure Functions, vytvoří se ve výchozím nastavení pro vás prostředek Application Insights.
+    - Postupujte podle pokynů v tématu Jak [vytvořit prostředek Azure functions a funkci aktivovanou časovačem](https://docs.microsoft.com/azure/azure-functions/functions-create-scheduled-function) (před čištěním zastavit).
 
 ## <a name="sample-code"></a>Ukázka kódu
 
-Zkopírujte níže uvedený kód do souboru run.csx (tím se nahradí již existující kód). Chcete-li to provést, přejděte do aplikace Azure Functions a vyberte funkci aktivační události časovače na levé straně.
+Zkopírujte následující kód do souboru run. CSX (Tato akce nahradí již existující kód). Provedete to tak, že přejdete do aplikace Azure Functions a na levé straně vyberete funkci Trigger časovače.
 
 >[!div class="mx-imgBorder"]
->![Run.csx funkce Azure na webu Azure Portal](media/availability-azure-functions/runcsx.png)
+>![Běh. csx funkce Azure Functions v Azure Portal](media/availability-azure-functions/runcsx.png)
 
 > [!NOTE]
-> Pro adresu koncového bodu, `EndpointAddress= https://dc.services.visualstudio.com/v2/track`kterou byste použili: . Pokud váš prostředek se nachází v oblasti, jako je Azure Government nebo Azure China v takovém případě naleznete v tomto článku o [přepsání výchozí koncové body](https://docs.microsoft.com/azure/azure-monitor/app/custom-endpoints#regions-that-require-endpoint-modification) a vyberte příslušný koncový bod kanálu telemetrie pro vaši oblast.
+> Pro adresu koncového bodu použijte: `EndpointAddress= https://dc.services.visualstudio.com/v2/track`. Pokud se prostředek nenachází v oblasti, jako je Azure Government nebo Azure Čína, najdete v tomto článku o [přepsání výchozích koncových bodů](https://docs.microsoft.com/azure/azure-monitor/app/custom-endpoints#regions-that-require-endpoint-modification) a výběru příslušného koncového bodu kanálu telemetrie pro vaši oblast.
 
 ```C#
 #load "runAvailabilityTest.csx"
@@ -127,7 +127,7 @@ public async static Task Run(TimerInfo myTimer, ILogger log)
 
 ```
 
-Vpravo v zobrazení souborů vyberte **Přidat**. Zavolejte nový soubor **function.proj** s následující konfigurací.
+Na pravé straně v části Zobrazit soubory vyberte **Přidat**. Zavolejte nový soubor **Function. proj** s následující konfigurací.
 
 ```C#
 <Project Sdk="Microsoft.NET.Sdk">
@@ -142,9 +142,9 @@ Vpravo v zobrazení souborů vyberte **Přidat**. Zavolejte nový soubor **funct
 ```
 
 >[!div class="mx-imgBorder"]
->![Na pravé straně vyberte, přidejte. Pojmenování funkce souboru.proj](media/availability-azure-functions/addfile.png)
+>![Na pravé straně vyberte Přidat. Pojmenujte soubor Function. proj](media/availability-azure-functions/addfile.png)
 
-Vpravo v zobrazení souborů vyberte **Přidat**. Volání nového souboru **runAvailabilityTest.csx** s následující konfigurací.
+Na pravé straně v části Zobrazit soubory vyberte **Přidat**. Zavolejte nový soubor **runAvailabilityTest. csx** s následující konfigurací.
 
 ```C#
 public async static Task RunAvailbiltyTestAsync(ILogger log)
@@ -155,31 +155,31 @@ public async static Task RunAvailbiltyTestAsync(ILogger log)
 
 ```
 
-## <a name="check-availability"></a>Zkontrolovat dostupnost
+## <a name="check-availability"></a>Ověřit dostupnost
 
-Chcete-li se ujistit, že vše funguje, můžete se podívat na graf na kartě Dostupnost prostředku Application Insights.
+Abyste se ujistili, že všechno funguje, můžete se podívat na graf na kartě Dostupnost prostředku Application Insights.
 
 > [!NOTE]
-> Pokud jste implementovali vlastní obchodní logiku v runAvailabilityTest.csx pak uvidíte úspěšné výsledky, jako na níže uvedených snímcích obrazovky, pokud jste to neudělali, pak uvidíte neúspěšné výsledky.
+> Pokud jste implementovali vlastní obchodní logiku v runAvailabilityTest. csx, zobrazí se úspěšné výsledky, jako na snímcích obrazovky níže, pokud jste tak nepracovali, zobrazí se neúspěšné výsledky.
 
 >[!div class="mx-imgBorder"]
->![Karta Dostupnost s úspěšnými výsledky](media/availability-azure-functions/availtab.png)
+>![Karta dostupnost s úspěšnými výsledky](media/availability-azure-functions/availtab.png)
 
-Když nastavíte test pomocí funkce Azure, všimnete si, že na rozdíl od použití **add test** na kartě Dostupnost se název vašeho testu nezobrazí a nebudete s ním moci pracovat. Výsledky jsou vizualizovány, ale místo stejného podrobného zobrazení, které získáte při vytváření testu dostupnosti prostřednictvím portálu, získáte souhrnné zobrazení.
+Při nastavování testu pomocí Azure Functions všimnete si, že na rozdíl od použití možnosti **Přidat test** na kartě Dostupnost nebude název testu zobrazen a nebudete s ním moci pracovat. Výsledky jsou vizuálně vizuální, ale místo stejného podrobného zobrazení, které získáte při vytváření testu dostupnosti prostřednictvím portálu, získáte souhrnné zobrazení.
 
-Chcete-li zobrazit podrobnosti o transakci od konce, vyberte **možnost Úspěšné** nebo **Neúspěšné** v části Přejít k podrobnostem a pak vyberte ukázku. Můžete také získat podrobnosti o transakci od konce kliknutím na výběr datového bodu v grafu.
-
->[!div class="mx-imgBorder"]
->![Výběr testu dostupnosti vzorku](media/availability-azure-functions/sample.png)
+Chcete-li zobrazit podrobnosti o koncových transakcích, vyberte možnost **úspěšné** nebo **neúspěšné** v oblasti podrobností a pak vyberte ukázku. Můžete také získat informace o podrobnostech transakce, a to tak, že vyberete datový bod v grafu.
 
 >[!div class="mx-imgBorder"]
->![Podrobnosti o transakcích od konce](media/availability-azure-functions/end-to-end.png)
+>![Výběr testu dostupnosti vzorků](media/availability-azure-functions/sample.png)
 
-Pokud jste spustili vše tak, jak je (bez přidání obchodní logiky), uvidíte, že test se nezdařil.
+>[!div class="mx-imgBorder"]
+>![Podrobnosti transakce od začátku do konce](media/availability-azure-functions/end-to-end.png)
 
-## <a name="query-in-logs-analytics"></a>Dotaz v protokolech (Analytics)
+Pokud jste spustili vše, co je (bez přidání obchodní logiky), pak se test nezdařil.
 
-Protokoly(analýzy) můžete zobrazit výsledky dostupnosti, závislosti a další. Další informace o protokolech naleznete v části [Přehled dotazu protokolu](../../azure-monitor/log-query/log-query-overview.md).
+## <a name="query-in-logs-analytics"></a>Dotaz v protokolech (analýza)
+
+Pomocí protokolů (Analytics) můžete zobrazit výsledky, závislosti a další informace o dostupnosti. Další informace o protokolech najdete v článku [Přehled dotazů protokolu](../../azure-monitor/log-query/log-query-overview.md).
 
 >[!div class="mx-imgBorder"]
 >![Výsledky dostupnosti](media/availability-azure-functions/availabilityresults.png)

@@ -1,6 +1,6 @@
 ---
-title: Připojení brány Barracuda CloudGen firewall k Azure Sentinel| Dokumenty společnosti Microsoft
-description: Přečtěte si, jak připojit bránu Barracuda CloudGen firewall k Azure Sentinelu.
+title: Připojit bránu firewall Barracuda CloudGen k Azure Sentinel | Microsoft Docs
+description: Naučte se připojit bránu firewall Barracuda CloudGen ke službě Azure Sentinel.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,38 +15,38 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: aaedbfdd3b1bbbc653756d74ee86fc277b21caec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77588497"
 ---
 # <a name="connect-barracuda-cloudgen-firewall"></a>Připojení brány Barracuda CloudGen Firewall
 
-Konektor Barracuda CloudGen Firewall (CGFW) umožňuje snadno připojit protokoly Barracuda CGFW pomocí Azure Sentinelu, zobrazit řídicí panely, vytvořit vlastní výstrahy a zlepšit vyšetřování. Získáte tak lepší přehled o síti vaší organizace a zlepšíte možnosti operací zabezpečení.
+Konektor brány firewall Barracuda CloudGen (CGFW) umožňuje snadno připojit protokoly Barracuda CGFW k Azure Sentinel, zobrazit řídicí panely, vytvořit vlastní výstrahy a vylepšit šetření. Získáte tak lepší přehled o síti vaší organizace a zlepšíte možnosti vaší operace zabezpečení.
 
 
 
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Oprávnění ke čtení a zápisu do pracovního prostoru Azure Sentinelu.
+- Oprávnění ke čtení a zápisu do pracovního prostoru Azure Sentinel.
 
-- Barracuda CloudGen Firewall musí být nakonfigurován pro export protokolů přes Syslog.
+- Brána firewall Barracuda CloudGen musí být nakonfigurovaná tak, aby se protokoly exportovali přes syslog.
 
-## <a name="connect-azure-sentinel-to-barracuda-cloudgen-firewall"></a>Připojení Azure Sentinelu k bráně firewall Barracuda CloudGen
+## <a name="connect-azure-sentinel-to-barracuda-cloudgen-firewall"></a>Připojení Azure Sentinel k bráně firewall Barracuda CloudGen
 
-1. Na webu Azure Portal přejděte na**datové konektory** **Azure Sentinel** > a vyberte konektor **brány firewall Barracuda CloudGen.**
+1. V Azure Portal přejděte na**datové konektory** **Azure Sentinel** > a pak vyberte konektor **brány firewall Barracuda CloudGen** .
 
-2. Vyberte **Otevřít stránku konektoru**.
+2. Vyberte **stránku otevřít konektor**.
 
-3. Postupujte podle pokynů na **barracuda CloudGen Firewall** stránce.
+3. Postupujte podle pokynů na stránce **brány firewall Barracuda CloudGen** .
 
 
 ## <a name="next-steps"></a>Další kroky
-V tomto dokumentu jste se dozvěděli, jak připojit bránu firewall Barracuda CloudGen k Azure Sentinelu. Další informace o Azure Sentinelu najdete v následujících článcích:
-- Přečtěte [si, jak získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
-- Začínáme [s detekcí hrozeb pomocí Azure Sentinelu](tutorial-detect-threats-built-in.md).
-- Ke sledování dat [použijte sešity.](tutorial-monitor-your-data.md)
+V tomto dokumentu jste zjistili, jak připojit bránu firewall Barracuda CloudGen ke službě Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:
+- Naučte se [, jak získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
+- Začněte [s detekcí hrozeb pomocí služby Azure Sentinel](tutorial-detect-threats-built-in.md).
+- [Pomocí sešitů](tutorial-monitor-your-data.md) můžete monitorovat data.
 
 

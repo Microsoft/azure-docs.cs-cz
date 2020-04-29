@@ -16,10 +16,10 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: ee6d437915f6c87ce9ef5f9c711d90793a96048c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77920123"
 ---
 # <a name="detailed-ssh-troubleshooting-steps-for-issues-connecting-to-a-linux-vm-in-azure"></a>Podrobný postup řešení potíží s SSH při připojování k virtuálnímu počítači s Linuxem v Azure
@@ -132,5 +132,5 @@ Zkuste z počítače znovu připojit. Pokud se to pořád nepovede, jsou zde ně
 * Místní brána firewall na cílovém virtuálním počítači obsahuje pravidla, která zabraňují příchozímu nebo odchozímu provozu SSH.
 * Zjišťování neoprávněných vniknutí nebo software pro monitorování sítě, který běží na virtuálním počítači Azure, brání připojení SSH.
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 Další informace o řešení potíží s přístupem k aplikacím najdete v tématu [řešení potíží s přístupem k aplikaci spuštěné na virtuálním počítači Azure](../linux/troubleshoot-app-connection.md) .

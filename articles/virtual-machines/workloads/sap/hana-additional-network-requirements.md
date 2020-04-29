@@ -1,5 +1,5 @@
 ---
-title: Další požadavky na síť pro SAP HANA v Azure (velké instance) | Dokumenty společnosti Microsoft
+title: Další požadavky na síť pro SAP HANA v Azure (velké instance) | Microsoft Docs
 description: Další požadavky na síť pro SAP HANA v Azure (velké instance).
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,57 +14,57 @@ ms.date: 09/10/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 66bbd8b462ac35756be0fae6eba940ba0aba6c4b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77614569"
 ---
 # <a name="additional-network-requirements-for-large-instances"></a>Další požadavky na síť pro velké instance
 
-Můžete mít další požadavky na síť jako součást nasazení velkých instancí SAP HANA v Azure.
+V rámci nasazení velkých instancí SAP HANA v Azure můžete mít další požadavky na síť.
 
-## <a name="add-more-ip-addresses-or-subnets"></a>Přidání dalších adres IP nebo podsítí
+## <a name="add-more-ip-addresses-or-subnets"></a>Přidat další IP adresy nebo podsítě
 
-Při přidání dalších IP adres nebo podsítí použijte portál Azure, PowerShell nebo rozhraní příkazového příkazu k Síti Azure.
+Při přidávání dalších IP adres nebo podsítí použijte Azure Portal, PowerShell nebo rozhraní příkazového řádku Azure.
 
-Přidejte nový rozsah IP adres jako nový rozsah do adresního prostoru virtuální sítě namísto generování nového agregovaného rozsahu. Odešlete tuto změnu společnosti Microsoft. To umožňuje připojit z tohoto nového rozsahu IP adres k jednotkám velkých instancí HANA ve vašem klientovi. Můžete otevřít žádost o podporu Azure, abyste získali nový adresní prostor virtuální sítě. Po obdržení potvrzení proveďte další kroky.
+Místo generování nového agregovaného rozsahu přidejte nový rozsah IP adres jako nový rozsah do adresního prostoru virtuální sítě. Odešlete tuto změnu do Microsoftu. To vám umožní připojit se z tohoto nového rozsahu IP adres k jednotkám velkých instancí HANA ve vašem klientovi. K získání nového přidaného adresního prostoru virtuální sítě můžete otevřít žádost o podporu Azure. Po obdržení potvrzení proveďte následující kroky.
 
-Pokud chcete vytvořit další podsíť z portálu Azure, přečtěte si, že [najdete v tématu Vytvoření virtuální sítě pomocí portálu Azure](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network). Pokud chcete ho vytvořit z PowerShellu, přečtěte [si tématu Vytvoření virtuální sítě pomocí PowerShellu](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network).
+Pokud chcete vytvořit další podsíť z Azure Portal, přečtěte si téma [vytvoření virtuální sítě pomocí Azure Portal](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network). Pokud ho chcete vytvořit z PowerShellu, přečtěte si téma [vytvoření virtuální sítě pomocí PowerShellu](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network).
 
-## <a name="add-virtual-networks"></a>Přidání virtuálních sítí
+## <a name="add-virtual-networks"></a>Přidat virtuální sítě
 
-Po počátečním připojení jedné nebo více virtuálních sítí Azure můžete chtít připojit další, které přistupují k SAP HANA v Azure (velké instance). Nejprve odešlete žádost o podporu Azure. Do tohoto požadavku uveďte konkrétní informace identifikující konkrétní nasazení Azure. Zahrňte také rozsah adresního prostoru IP nebo rozsahy adresního prostoru virtuální sítě Azure. SAP HANA na Microsoft Service Management pak poskytuje potřebné informace, které potřebujete k připojení dalších virtuálních sítí a Azure ExpressRoute. Pro každou virtuální síť potřebujete jedinečný autorizační klíč pro připojení k okruhu ExpressRoute k velkým instancím HANA.
+Po počátečním připojení k jedné nebo více virtuálním sítím Azure budete možná chtít připojit další ty, které mají přístup k SAP HANA v Azure (velké instance). Nejdřív odešlete žádost o podporu Azure. V tomto požadavku Zahrňte konkrétní informace identifikující konkrétní nasazení Azure. Také zahrňte rozsah adres IP adres nebo rozsah adresního prostoru virtuální sítě Azure. SAP HANA ve službě Microsoft Service Management pak poskytuje potřebné informace, které potřebujete k propojení dalších virtuálních sítí a Azure ExpressRoute. Pro každou virtuální síť potřebujete jedinečný autorizační klíč pro připojení k okruhu ExpressRoute k velkým instancím HANA.
 
-## <a name="increase-expressroute-circuit-bandwidth"></a>Zvýšení šířky pásma okruhu ExpressRoute
+## <a name="increase-expressroute-circuit-bandwidth"></a>Zvýšit šířku pásma okruhu ExpressRoute
 
-Poraďte se se společností SAP HANA o správě služeb společnosti Microsoft. Pokud vám poradí zvýšit šířku pásma okruhu ExpressRoute SAP HANA (velké instance), vytvořte žádost o podporu Azure. (Můžete požádat o zvýšení šířky pásma jednoho okruhu až na maximálně 10 Gb/s.) Poté obdržíte oznámení po dokončení operace. nemusíte dělat nic jiného, abyste tuto vyšší rychlost v Azure povolili.
+Projděte si SAP HANA na webu Microsoft Service Management. Pokud vás poradí, abyste zvýšili šířku pásma SAP HANA v Azure (velkých instancích) okruhu ExpressRoute, vytvořte žádost o podporu Azure. (Můžete požádat o zvýšení šířky pásma jednoho okruhu až na maximálně 10 GB/s.) Až se operace dokončí, dostanete oznámení. abyste tuto vyšší rychlost v Azure mohli povolit, nemusíte dělat nic dalšího.
 
-## <a name="add-an-additional-expressroute-circuit"></a>Přidání dalšího okruhu ExpressRoute
+## <a name="add-an-additional-expressroute-circuit"></a>Přidat další okruh ExpressRoute
 
-Poraďte se se společností SAP HANA o správě služeb společnosti Microsoft. Pokud vám poradí přidat další okruh ExpressRoute, vytvořte žádost o podporu Azure (včetně žádosti o získání informací o autorizaci pro připojení k novému okruhu). Před podáním žádosti je nutné definovat adresní prostor používaný ve virtuálních sítích. SAP HANA na Microsoft Service Management pak můžete poskytnout autorizaci.
+Projděte si SAP HANA na webu Microsoft Service Management. Pokud vám doporučuje přidat další okruh ExpressRoute, vytvořte žádost o podporu Azure (včetně žádosti o získání autorizačních informací pro připojení k novému okruhu). Před vytvořením žádosti musíte definovat adresní prostor, který se používá ve virtuálních sítích. SAP HANA ve službě Microsoft Service Management pak může poskytnout autorizaci.
 
-Po vytvoření nového okruhu a sap hana na konfiguraci Microsoft Service Management je dokončena, obdržíte oznámení s informacemi, které je třeba pokračovat. Virtuální sítě Azure nelze připojit k tomuto dodatečnému okruhu, pokud jsou už připojené k jinému okruhu SAP HANA v Azure (velká instance) ExpressRoute ve stejné oblasti Azure.
+Když se vytvoří nový okruh a SAP HANA v konfiguraci služby Microsoft Service Management, obdržíte oznámení s informacemi, které potřebujete k pokračování provést. K tomuto dalšímu okruhu nemůžete připojit virtuální sítě Azure, pokud jsou už připojené k jiné SAP HANA v Azure (Velká instance) okruh ExpressRoute ve stejné oblasti Azure.
 
 ## <a name="delete-a-subnet"></a>Odstranění podsítě
 
-Pokud chcete odebrat podsíť virtuální sítě, můžete použít portál Azure, PowerShell nebo rozhraní příkazového příkazu Konzi. Pokud váš rozsah IP adres virtuální sítě Azure nebo adresní prostor byl agregovaný rozsah, neexistuje žádné zpracování pro vás s Microsoftem. (Všimněte si však, že virtuální síť je stále šíří směrový prostor Protokolu BGP, který zahrnuje odstraněnou podsíť.) Je možné, že jste definovali rozsah adres virtuální sítě Azure nebo adresní prostor jako více rozsahů IP adres, z nichž jeden byl přiřazen k odstraněné podsíti. Nezapomeňte to odstranit z adresního prostoru virtuální sítě. Pak informujte SAP HANA na Microsoft Service Management odebrat z rozsahů, které SAP HANA v Azure (velké instance) je povoleno komunikovat s.
+Pokud chcete odebrat podsíť virtuální sítě, můžete použít Azure Portal, PowerShell nebo rozhraní příkazového řádku Azure CLI. Pokud je rozsah IP adres vaší virtuální sítě Azure nebo adresní prostor agregovaný rozsah, nebudete u vás od Microsoftu nic sledovat. (Upozorňujeme ale, že virtuální síť pořád šíří adresní prostor trasy protokolu BGP, který obsahuje odstraněnou podsíť.) Možná jste definovali rozsah adres virtuální sítě Azure nebo adresní prostor jako více rozsahů IP adres, z nichž jedna byla přiřazena k odstraněné podsíti. Nezapomeňte ho odstranit z adresního prostoru virtuální sítě. Pak informujte SAP HANA o správě služeb Microsoftu, abyste ho odebrali z rozsahů, které SAP HANA na Azure (velké instance) můžou komunikovat s.
 
-Další informace naleznete [v tématu Odstranění podsítě](../../../virtual-network/virtual-network-manage-subnet.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#delete-a-subnet).
+Další informace najdete v tématu [odstranění podsítě](../../../virtual-network/virtual-network-manage-subnet.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#delete-a-subnet).
 
 ## <a name="delete-a-virtual-network"></a>Odstranění virtuální sítě
 
-Další informace naleznete [v tématu Odstranění virtuální sítě](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#delete-a-virtual-network).
+Informace najdete v tématu [odstranění virtuální sítě](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#delete-a-virtual-network).
 
-SAP HANA na Microsoft Service Management odebere existující autorizace na SAP HANA v Azure (velké instance) ExpressRoute okruhu. Také odebere rozsah IP adres virtuální sítě Azure nebo adresní prostor pro komunikaci s velkými instancemi HANA.
+SAP HANA ve službě Microsoft Service Management odstraní existující autorizaci v SAP HANA na Azure (velké instance) okruh ExpressRoute. Také odebere rozsah IP adres virtuální sítě Azure nebo adresní prostor pro komunikaci s velkými instancemi HANA.
 
-Po odebrání virtuální sítě otevřete žádost o podporu Azure a poskytněte rozsah prostoru IP adres nebo rozsahy, které mají být odebrány.
+Po odebrání virtuální sítě otevřete žádost o podporu Azure, která poskytne rozsah adresního prostoru IP adres nebo rozsahů, které se mají odebrat.
 
-Chcete-li zajistit odebrání všeho, odstraňte připojení ExpressRoute, bránu virtuální sítě, veřejnou IP adresu brány virtuální sítě a virtuální síť.
+Abyste se ujistili, že jste odebrali všechno, odstraňte připojení ExpressRoute, bránu virtuální sítě, veřejnou IP adresu brány virtuální sítě a virtuální síť.
 
-## <a name="delete-an-expressroute-circuit"></a>Odstranění okruhu ExpressRoute
+## <a name="delete-an-expressroute-circuit"></a>Odstranit okruh ExpressRoute
 
-Chcete-li odebrat další okruh ExpressRoute SAP HANA v Azure (velké instance), otevřete žádost o podporu Azure pomocí SAP HANA ve službě Microsoft Service Management. Požádejte o odstranění okruhu. V rámci předplatného Azure můžete virtuální síť podle potřeby odstranit nebo zachovat. Je však nutné odstranit připojení mezi okruhem expressroute velkých instancí HANA a propojenou bránou virtuální sítě.
+Pokud chcete odebrat další SAP HANA v Azure (velkých instancích) okruh ExpressRoute, otevřete žádost o podporu Azure s SAP HANA na webu Microsoft Service Management. Požadavek na odstranění okruhu V rámci předplatného Azure můžete v případě potřeby virtuální síť odstranit nebo ponechat. Je však nutné odstranit připojení mezi ExpressRoute okruhem HANA a propojenou bránou virtuální sítě.
 
 ## <a name="next-steps"></a>Další kroky
 

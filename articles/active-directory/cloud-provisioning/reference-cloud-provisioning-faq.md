@@ -1,6 +1,6 @@
 ---
 title: Nejčastější dotazy ke zřizování cloudu Azure AD Connect
-description: Tento dokument popisuje nejčastější dotazy pro zřizování cloudu.
+description: V tomto dokumentu jsou popsány nejčastější dotazy k zřizování cloudu.
 services: active-directory
 author: billmath
 manager: daveba
@@ -12,73 +12,73 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fbc1baa86bb81c8975587e84427a72ccc044805e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77916570"
 ---
-# <a name="azure-active-directory-connect-faq"></a>Nejčastější dotazy k připojení služby Azure Active Directory
+# <a name="azure-active-directory-connect-faq"></a>Nejčastější dotazy k Azure Active Directory Connect
 
-Přečtěte si o nejčastějších dotazech pro Azure Active Directory (Azure AD) Connect zřizování cloudu.
+Přečtěte si o nejčastějších dotazech ke službě Azure Active Directory (Azure AD) Connect Provisioning pro Cloud.
 
 ## <a name="general-installation"></a>Obecná instalace
 
-**Otázka: Jak často běží zřizování cloudu?**
+**Otázka: jak často se zřizování cloudu spouští?**
 
-Zřizování cloudu je naplánováno na každé 2 min. Každé 2 min, všechny změny hash uživatele, skupiny a hesla se zřídí do Azure AD.
+Zřizování cloudu se plánuje spouštět každé 2 minuty. Každé 2 minuty se všechny změny hodnot hash uživatelů, skupin a hesel zřídí do Azure AD.
 
-**Otázka: Zobrazení selhání synchronizace hash hesla při prvním spuštění. Proč?**
+**Otázka: zobrazení chyb synchronizace hodnot hash hesel při prvním spuštění. Proč?**
 
-To se očekává. Chyby jsou způsobeny objektuživatele není k dispozici ve službě Azure AD. Jakmile se uživatel zřídí do Azure AD, by měly zřídit hashe hesla v následném spuštění. Počkejte na několik spuštění a potvrďte, že synchronizace hash hesla již nemá chyby.
+To se očekává. Příčinou chyb je objekt uživatele, který není ve službě Azure AD přítomen. Po zřízení uživatele v Azure AD by se měly hodnoty hash hesel zřídit v následném spuštění. Počkejte na několik spuštění a potvrďte, že synchronizace hodnot hash hesel už neobsahuje chyby.
 
-**Otázka: Co se stane, pokud instance služby Active Directory obsahuje atributy, které nejsou podporovány cloudovou provisonicí (například rozšíření adresářů)?**
+**Otázka: co se stane, pokud instance služby Active Directory obsahuje atributy, které nejsou podporovány službou Cloud provisoning (např. rozšíření adresáře)?**
 
-Zřizování cloudu se spustí a zřídí podporované atributy. Nepodporované atributy se nezřídí do služby Azure AD. Zkontrolujte rozšíření adresáře ve službě Active Directory a ujistěte se, že nepotřebujete tyto atributy toku do Azure AD. Pokud jsou požadovány jeden nebo více atributů, zvažte použití synchronizace Azure AD Connect nebo přesunutí požadovaných informací do jednoho z podporovaných atributů (například atributy rozšíření 1-15).
+Zřizování cloudu se spustí a zřídí podporované atributy. Nepodporované atributy se nezřídí do Azure AD. Zkontrolujte přípony adresářů ve službě Active Directory a ujistěte se, že nepotřebujete, aby tento atribut Flow do služby Azure AD. Pokud je vyžadován jeden nebo více atributů, zvažte použití Azure AD Connect synchronizaci nebo přesunutí požadovaných informací do jednoho z podporovaných atributů (například atributy rozšíření 1-15).
 
-**Otázka: Jaký je rozdíl mezi synchronizací Azure AD Connect a zřizováním cloudu?**
+**Otázka: Jaký je rozdíl mezi Azure AD Connect synchronizace a zřizování cloudu?**
 
-Díky synchronizaci Azure AD Connect se zřizování spouští na místním synchronizačním serveru. Konfigurace je uložena na místním synchronizačním serveru. Díky zřizování cloudu Azure AD Connect se konfigurace zřizování uložených v cloudu a běží v cloudu jako součást zřizovací služby Azure AD. 
+Při Azure AD Connect synchronizaci se zřizování spouští na místním serveru synchronizace. Konfigurace je uložená na místním serveru synchronizace. Při zřizování Azure AD Connect cloudu se konfigurace zřizování ukládá v cloudu a v rámci služby Azure AD Provisioning je spuštěná v cloudu. 
 
-**Otázka: Můžu použít zřizování cloudu k synchronizaci z více doménových struktur služby Active Directory?**
+**Otázka: můžu použít zřizování cloudu pro synchronizaci z více doménových struktur služby Active Directory?**
 
-Ano. Zřizování cloudu lze použít k synchronizaci z více doménových struktur služby Active Directory. V prostředí s více doménovými strukturami musí být všechny odkazy (například správce) v doméně.  
+Ano. Zřizování cloudu se dá použít k synchronizaci z několika doménových struktur služby Active Directory. V prostředí s více doménovými strukturami musí být všechny odkazy (například správce) v doméně.  
 
-**Otázka: Jak je agent aktualizován?**
+**Otázka: jak se Agent aktualizuje?**
 
-Agenti jsou automaticky inovován společností Microsoft. Pro it tým to snižuje zátěž nutnosti testovat a ověřovat nové verze agenta. 
+Agenti jsou automaticky upgradováni společností Microsoft. Pro IT tým to snižuje zatížení, které musí testovat a ověřovat nové verze agentů. 
 
-**Otázka: Mohu zakázat automatický upgrade?**
+**Otázka: mohu zakázat automatický upgrade?**
 
-Neexistuje žádný podporovaný způsob, jak zakázat automatický upgrade.
+Neexistuje žádný podporovaný způsob, jak automatický upgrade zakázat.
 
-**Otázka: Můžu změnit zdrojovou kotvu pro zřizování cloudu?**
+**Otázka: mohu změnit zdrojovou kotvu pro zřizování cloudu?**
 
-Ve výchozím nastavení cloud zřizování používá ms-ds-consistency-GUID s záložní objekt UBodA jako zdrojové kotvy. Neexistuje žádný podporovaný způsob, jak změnit zdrojovou kotvu.
+Ve výchozím nastavení používá cloudové zřizování službu MS-DS-konzistence-GUID s přechodem k identifikátoru ObjectGUID jako zdrojový kotvu. Neexistuje žádný podporovaný způsob, jak změnit zdrojové ukotvení.
 
-**Otázka: Při použití zřizování cloudu se zobrazují nové objekty zabezpečení služeb s názvy domén služby AD. Očekává se to?**
+**Otázka: při použití zřizování cloudu se zobrazují nové instanční objekty s názvy domén služby AD. Očekává se?**
 
-Ano, zřizování cloudu vytvoří instanční objekt pro konfiguraci zřizování s názvem domény jako hlavním názvem služby. Neprováděte žádné změny konfigurace instančního objektu.
+Ano, zřizování cloudu vytvoří instanční objekt pro konfiguraci zřizování s názvem domény jako hlavní název služby. Neprovádějte žádné změny v konfiguraci instančního objektu.
 
-**Otázka: Co se stane, když je synchronizovaný uživatel povinen změnit heslo při příštím přihlášení?**
+**Otázka: co se stane, když se synchronizovaný uživatel při příštím přihlášení vyžaduje, aby změnil heslo?**
 
-Pokud je synchronizace hash hesla povolena při zřizování cloudu a synchronizovaný uživatel je povinen změnit heslo při příštím přihlášení v místním ad, zřizování cloudu nezřídí, aby se změnilo hash hesla do Azure AD. Jakmile uživatel změní heslo, hash uživatelského hesla se zřídí ze služby AD do služby Azure AD.
+Pokud je v zřizování cloudu zapnutá synchronizace hodnot hash hesel a synchronizovaný uživatel musí změnit heslo při příštím přihlášení v místní službě AD, zřizování cloudu nezajistí, aby se hodnota hash hesla změnila na Azure AD. Jakmile uživatel změní heslo, bude hodnota hash hesla uživatele zřízená ze služby AD do služby Azure AD.
 
-**Otázka: Podporuje zřizování cloudu zpětný zápis ms-ds-consistencyGUID pro libovolný objekt?**
+**Otázka: podporuje zřízení cloudu zpětný zápis do MS-DS-consistencyGUID pro libovolný objekt?**
 
-Ne, zřizování cloudu nepodporuje zpětný zápis ms-ds-consistencyGUID pro libovolný objekt (včetně objektů uživatelů). 
+Ne, zřizování cloudu nepodporuje zpětný zápis do MS-DS-consistencyGUID pro žádný objekt (včetně uživatelských objektů). 
 
-**Otázka: Zřizuji uživatele pomocí zřizování cloudu. Vymazal jsem konfiguraci. Proč se stále zobrazují staré synchronizované objekty ve službě Azure AD?** 
+**Otázka: zřizování uživatelů pomocí zřizování cloudu. Odstranil (a) jsem konfiguraci. Proč se stále zobrazují staré synchronizované objekty ve službě Azure AD?** 
 
-Když odstraníte konfiguraci, zřizování cloudu nečistí synchronizované objekty ve službě Azure AD. Chcete-li zajistit, že nemáte staré objekty, změňte rozsah konfigurace na prázdnou skupinu nebo organizační jednotky. Jakmile zřizování spustí a vyčistí objekty, zakázat a odstranit konfiguraci. 
+Když konfiguraci odstraníte, zřizování cloudu neprovádí čištění synchronizovaných objektů ve službě Azure AD. Aby se zajistilo, že nemáte staré objekty, změňte obor konfigurace na prázdnou skupinu nebo organizační jednotky. Jakmile zřizování spustí a vyčistí objekty, zakažte a odstraňte konfiguraci. 
 
-**Otázka: Co to znamená, že exchange hybrid není podporován?**
+**Otázka: co znamená, že systém Exchange Hybrid není podporován?**
 
-Funkce Hybridní nasazení systému Exchange umožňuje souběžnou existenci poštovních schránek serveru Exchange jak místně, tak v Office 365. Azure AD Connect synchronizuje konkrétní sadu atributů z Azure AD zpátky do místního adresáře.  Agent cloudu zřizování aktuálně nesynchronizuje tyto atributy zpět do místního adresáře a proto není podporován jako náhrada za Azure AD Connect.
+Funkce Hybridní nasazení systému Exchange umožňuje souběžnou existenci poštovních schránek serveru Exchange jak místně, tak v Office 365. Azure AD Connect synchronizuje konkrétní sadu atributů z Azure AD zpátky do místního adresáře.  Agent zřizování cloudu v současné době nesynchronizuje tyto atributy zpátky do místního adresáře, takže není podporován jako náhrada za Azure AD Connect.
 
-**Otázka: Můžu nainstalovat agenta cloudu pro zřizování do windows servercore?**
+**Otázka: mohu nainstalovat agenta zřizování cloudu na Windows serveru Core?**
 
-Ne, instalace agenta na jádro serveru není podporována.
+Ne, instalace agenta na Server Core není podporovaná.
 
 ## <a name="next-steps"></a>Další kroky 
 

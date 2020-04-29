@@ -1,7 +1,7 @@
 ---
-title: 'Úvodní příručka: Klientská knihovna Text Analytics pro Go | Dokumenty společnosti Microsoft'
+title: 'Rychlý Start: Analýza textu klientskou knihovnu pro cestách | Microsoft Docs'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu zjišťujte jazyk pomocí klientské knihovny Go Text Analytics ze služby Azure Cognitive Services.
+description: V tomto rychlém startu zjistíte jazyk pomocí klientské knihovny přejít Analýza textu z Azure Cognitive Services.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,100 +11,100 @@ ms.topic: quickstart
 ms.date: 02/26/2020
 ms.author: aahi
 ms.openlocfilehash: 0b4495616c750b2b3e8431e011d71ae8671af1ef
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77912632"
 ---
-# <a name="quickstart-use-the-text-analytics-client-library-for-go"></a>Úvodní příručka: Použití klientské knihovny Text Analytics pro možnost Přejít
+# <a name="quickstart-use-the-text-analytics-client-library-for-go"></a>Rychlý Start: použití klientské knihovny Analýza textu pro přejít
 
-[Referenční dokumentace](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python) | [Ukázky zdrojového kódu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-textanalytics) | [knihovny](https://github.com/Azure-Samples/cognitive-services-quickstart-code) [(GitHub)](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/textanalytics) | 
+[Ukázky dokumentace k](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python) | [balíčku zdrojového kódu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-textanalytics) | knihovny Referenční dokumentace[(GitHub)](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/textanalytics) | [Samples](https://github.com/Azure-Samples/cognitive-services-quickstart-code)
 
 > [!NOTE]
-> Tento rychlý start se vztahuje pouze na analýzu textu verze 2.1. V současné době je klientská knihovna v3 pro Go není k dispozici.
+> Tento rychlý Start platí pouze pro Analýza textu verze 2,1. V současné době není k dispozici Klientská knihovna v3 pro příkaz Přejít.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure – [vytvořte si ho zdarma](https://azure.microsoft.com/free/)
-* Nejnovější verze [Go](https://golang.org/dl/)
-* Jakmile budete mít předplatné <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="Azure, vytvořte"  target="_blank">prostředek analýzy <span class="docon docon-navigate-external x-hidden-focus"></span> </a> textu vytvořit prostředek analýzy textu na webu Azure Portal, abyste získali klíč a koncový bod. 
-    * Budete potřebovat klíč a koncový bod z prostředku, který vytvoříte pro připojení aplikace k rozhraní API analýzy textu. Uděláte to později v rychlém startu.
-    * Můžete použít bezplatnou cenovou úroveň vyzkoušet službu a upgradovat později na placenou úroveň pro produkční prostředí.
+* Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/) .
+* Nejnovější verze nástroje [Přejít](https://golang.org/dl/)
+* Jakmile budete <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="mít předplatné Azure, vytvořte prostředek analýza textu vytvoření prostředku"  target="_blank">analýza textu <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal, abyste získali svůj klíč a koncový bod. 
+    * K připojení aplikace k rozhraní API pro analýzu textu budete potřebovat klíč a koncový bod z prostředku, který vytvoříte. Provedete to později v rychlém startu.
+    * Pomocí cenové úrovně Free můžete službu vyzkoušet a později upgradovat na placenou úroveň pro produkční prostředí.
 
 ## <a name="setting-up"></a>Nastavení
 
-### <a name="create-a-new-go-project"></a>Vytvoření nového projektu Go
+### <a name="create-a-new-go-project"></a>Vytvoření nového projektu přejít
 
-V okně konzoly (cmd, PowerShell, Terminal, Bash) vytvořte nový pracovní prostor pro projekt Go a přejděte na něj. Pracovní prostor bude obsahovat tři složky: 
+V okně konzoly (cmd, PowerShell, terminál, bash) vytvořte nový pracovní prostor pro projekt přejít a přejděte na něj. Váš pracovní prostor bude obsahovat tři složky: 
 
-* **src** - Tento adresář obsahuje zdrojový kód a balíčky. Všechny balíčky `go get` nainstalované pomocí příkazu budou umístěny zde.
-* **pkg** - Tento adresář obsahuje zkompilované objekty balíčku Go. Všechny tyto soubory `.a` mají příponu.
-* **bin** - Tento adresář obsahuje binární spustitelné soubory, které jsou vytvořeny při spuštění `go install`.
+* **Src** – tento adresář obsahuje zdrojový kód a balíčky. Všechny balíčky nainstalované s tímto `go get` příkazem budou umístěny zde.
+* **pkg** – tento adresář obsahuje kompilované objekty balíčku pro přechod. Všechny tyto soubory mají `.a` rozšíření.
+* **bin** – tento adresář obsahuje binární spustitelné soubory, které se vytvoří při spuštění `go install`.
 
 > [!TIP]
-> Přečtěte si další informace o struktuře [pracovního prostoru Go](https://golang.org/doc/code.html#Workspaces). Tato příručka obsahuje `$GOPATH` `$GOROOT`informace pro nastavení a .
+> Přečtěte si další informace o struktuře [pracovního prostoru přejít](https://golang.org/doc/code.html#Workspaces). Tato příručka obsahuje informace o nastavení `$GOPATH` a `$GOROOT`.
 
-Vytvořte pracovní `my-app` prostor s názvem a `src` `pkg`požadované `bin`podadresáře pro , a :
+Vytvořte pracovní prostor s `my-app` názvem a požadované podadresáře `src`pro `pkg`, a `bin`:
 
 ```console
 $ mkdir -p my-app/{src, bin, pkg}  
 $ cd my-app
 ```
 
-### <a name="install-the-text-analytics-client-library-for-go"></a>Instalace klientské knihovny Text Analytics pro přejít
+### <a name="install-the-text-analytics-client-library-for-go"></a>Instalace klientské knihovny Analýza textu pro přejít
 
-Nainstalujte klientskou knihovnu pro Go: 
+Nainstalujte klientskou knihovnu pro přejít: 
 
 ```console
 $ go get -u <https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/textanalytics>
 ```
 
-nebo pokud používáte dep, v rámci vašeho repo běhu:
+nebo pokud používáte DEP, v rámci vašeho úložiště úložišť:
 
 ```console
 $ dep ensure -add <https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/textanalytics>
 ```
 
-### <a name="create-your-go-application"></a>Vytvoření aplikace Go
+### <a name="create-your-go-application"></a>Vytvoření aplikace v cestách
 
-Dále vytvořte soubor `src/quickstart.go`s názvem :
+Dále vytvořte soubor s názvem `src/quickstart.go`:
 
 ```bash
 $ cd src
 $ touch quickstart.go
 ```
 
-Otevřete `quickstart.go` ve svém oblíbeném ide nebo textovém editoru. Potom přidejte název balíčku a importujte následující knihovny:
+Otevřete `quickstart.go` v oblíbených rozhraní IDE nebo textovém editoru. Pak přidejte název balíčku a importujte následující knihovny:
 
 [!code-go[Import statements](~/azure-sdk-for-go-samples/cognitiveservices/textanalytics.go?name=imports)]
 
 ## <a name="object-model"></a>Objektový model 
 
-Klient Text Analytics je objekt [BaseClient,](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#New) který se ověřuje v Azure pomocí vašeho klíče. Klient poskytuje několik metod pro analýzu textu jako jeden řetězec nebo dávka. 
+Klient Analýza textu je objekt [BaseClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#New) , který se ověřuje v Azure pomocí vašeho klíče. Klient nabízí několik metod analýzy textu, jako jeden řetězec nebo dávku. 
 
-Text je odeslán do rozhraní `documents`API jako `dictionary` seznam , což `id` `text`jsou `language` objekty obsahující kombinaci , a atributy v závislosti na použité metodě. Atribut `text` ukládá text, který má `language`být analyzován `id` v počátku , a může být libovolná hodnota. 
+Text se pošle do rozhraní API jako seznam objektů `documents`, což jsou `dictionary` objekty obsahující kombinaci atributů `id`, `text`a `language` v závislosti na použité metodě. `text` Atribut ukládá text, který má být analyzován v původním `language`umístění, a `id` může být libovolná hodnota. 
 
-Objekt odpovědi je seznam obsahující informace o analýze pro každý dokument. 
+Objekt Response je seznam obsahující informace o analýze pro každý dokument. 
 
 ## <a name="code-examples"></a>Příklady kódu
 
-Tyto fragmenty kódu ukazují, jak provést následující akce v klientské knihovně Text Analytics pro Python:
+Tyto fragmenty kódu ukazují, jak pomocí Analýza textu klientské knihovny pro Python provést následující akce:
 
 * [Ověření klienta](#authenticate-the-client)
 * [Analýza mínění](#sentiment-analysis)
-* [Detekce jazyka](#language-detection)
+* [Rozpoznávání jazyka](#language-detection)
 * [Rozpoznávání entit](#entity-recognition)
 * [Extrakce klíčových frází](#key-phrase-extraction)
 
 ## <a name="authenticate-the-client"></a>Ověření klienta
 
 
-V nové funkci vytvořte proměnné pro koncový bod azure a klíč předplatného vašeho prostředku.
+V nové funkci vytvořte proměnné pro koncový bod a klíč předplatného prostředku.
 
 [!INCLUDE [text-analytics-find-resource-information](../includes/find-azure-resource-info.md)]
 
-Vytvořte nový objekt [BaseClient.](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#New) Podej klíč k [autoopěrce. NewCognitiveServicesAuthorizer()](https://godoc.org/github.com/Azure/go-autorest/autorest#NewCognitiveServicesAuthorizer) funkce, která pak bude předána `authorizer` vlastnosti klienta.
+Vytvořte nový objekt [BaseClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#New) . Předejte svůj klíč do [AutoRest. Funkce NewCognitiveServicesAuthorizer ()](https://godoc.org/github.com/Azure/go-autorest/autorest#NewCognitiveServicesAuthorizer) , která se pak předává do `authorizer` vlastnosti klienta.
 
 ```go
 func GetTextAnalyticsClient() textanalytics.BaseClient {
@@ -120,13 +120,13 @@ func GetTextAnalyticsClient() textanalytics.BaseClient {
 
 ## <a name="sentiment-analysis"></a>Analýza mínění
 
-Vytvořte novou `SentimentAnalysis()` funkci s názvem `GetTextAnalyticsClient()` a vytvořte klienta pomocí metody vytvořené dříve. Vytvořte seznam objektů [MultiLanguageInput](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#MultiLanguageBatchInput) obsahující dokumenty, které chcete analyzovat. Každý objekt bude `id` `Language` obsahovat `text` atribut , a atribut. Atribut `text` ukládá text, který `language` má být analyzován, je `id` jazyk dokumentu a může být libovolná hodnota. 
+Vytvořte novou funkci nazvanou `SentimentAnalysis()` a vytvořte klienta pomocí `GetTextAnalyticsClient()` metody vytvořené dříve. Vytvořte seznam objektů [MultiLanguageInput](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#MultiLanguageBatchInput) s dokumenty, které chcete analyzovat. Každý objekt bude obsahovat `id` `Language` a `text` atribut. `text` Atribut ukládá text, který má být analyzován, `language` je jazyk dokumentu a `id` může být libovolná hodnota. 
 
-Zavolejte funkci [Sentiment()](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#BaseClient.Sentiment) klienta a získejte výsledek. Pak iterate prostřednictvím výsledků a vytisknout ID každého dokumentu a skóre mínění. Skóre blíže k 0 označuje negativní sentiment, zatímco skóre blíže k 1 označuje pozitivní sentiment.
+Zavolejte funkci [mínění ()](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#BaseClient.Sentiment) klienta a získejte výsledek. Potom Iterujte výsledky a vytiskněte ID každého dokumentu a mínění skóre. Skóre Blíže k 0 označuje negativní mínění, zatímco skóre Blíže k hodnotě 1 označuje kladný mínění.
 
 [!code-go[Sentiment analysis sample](~/azure-sdk-for-go-samples/cognitiveservices/textanalytics.go?name=sentimentAnalysis)]
 
-hovoru `SentimentAnalysis()` ve vašem projektu.
+Zavolejte `SentimentAnalysis()` v projektu.
 
 ### <a name="output"></a>Výstup
 
@@ -139,13 +139,13 @@ Document ID: 4 , Sentiment Score: 1.00
 
 ## <a name="language-detection"></a>Rozpoznávání jazyka
 
-Vytvořte novou `LanguageDetection()` funkci s názvem `GetTextAnalyticsClient()` a vytvořte klienta pomocí metody vytvořené dříve. Vytvořte seznam objektů [LanguageInput](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#LanguageInput) obsahující dokumenty, které chcete analyzovat. Každý objekt bude `id` obsahovat atribut a. `text` Atribut `text` ukládá text, který má `id` být analyzován, a může být libovolná hodnota. 
+Vytvořte novou funkci nazvanou `LanguageDetection()` a vytvořte klienta pomocí `GetTextAnalyticsClient()` metody vytvořené dříve. Vytvořte seznam objektů [LanguageInput](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#LanguageInput) s dokumenty, které chcete analyzovat. Každý objekt bude obsahovat `id` `text` atribut a. `text` Atribut ukládá text, který má být analyzován, a `id` může být libovolná hodnota. 
 
-Zavolejte klienta [DetectLanguage()](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#BaseClient.DetectLanguage) a získat výsledek. Poté iterate prostřednictvím výsledků a vytisknout ID každého dokumentu a zjištěný jazyk.
+Zavolejte [operaci DetectLanguage ()](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#BaseClient.DetectLanguage) klienta a získejte výsledek. Pak Projděte výsledky a vytiskněte identifikátor každého dokumentu a zjištěné jazyky.
 
 [!code-go[Language detection sample](~/azure-sdk-for-go-samples/cognitiveservices/textanalytics.go?name=languageDetection)]
 
-Zavolejte `LanguageDetection()` do svého projektu.
+Zavolejte `LanguageDetection()` v projektu.
 
 ### <a name="output"></a>Výstup
 
@@ -157,13 +157,13 @@ Document ID: 2 , Language: Chinese_Simplified
 
 ## <a name="entity-recognition"></a>Rozpoznávání entit
 
-Vytvořte novou `ExtractEntities()` funkci s názvem `GetTextAnalyticsClient()` a vytvořte klienta pomocí metody vytvořené dříve. Vytvořte seznam objektů [MultiLanguageInput](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#MultiLanguageBatchInput) obsahující dokumenty, které chcete analyzovat. Každý objekt bude `id` `language`obsahovat `text` atribut , a atribut. Atribut `text` ukládá text, který `language` má být analyzován, je `id` jazyk dokumentu a může být libovolná hodnota. 
+Vytvořte novou funkci nazvanou `ExtractEntities()` a vytvořte klienta pomocí `GetTextAnalyticsClient()` metody vytvořené dříve. Vytvořte seznam objektů [MultiLanguageInput](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#MultiLanguageBatchInput) s dokumenty, které chcete analyzovat. Každý objekt bude obsahovat `id` `language` `text` atribut, a. `text` Atribut ukládá text, který má být analyzován, `language` je jazyk dokumentu a `id` může být libovolná hodnota. 
 
-Zavolejte entity [klienta()](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#BaseClient.Entities) a získat výsledek. Pak iterate prostřednictvím výsledků a vytisknout ID každého dokumentu a extrahované entity skóre.
+Zavolejte [entity klienta ()](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#BaseClient.Entities) a získejte výsledek. Pak Projděte výsledky a vytiskněte ID každého dokumentu a skóre extrahovaných entit.
 
 [!code-go[entity recognition sample](~/azure-sdk-for-go-samples/cognitiveservices/textanalytics.go?name=entityRecognition)]
 
-hovoru `ExtractEntities()` ve vašem projektu.
+Zavolejte `ExtractEntities()` v projektu.
 
 ### <a name="output"></a>Výstup
 
@@ -197,13 +197,13 @@ Document ID: 2
 
 ## <a name="key-phrase-extraction"></a>Extrakce klíčových frází
 
-Vytvořte novou `ExtractKeyPhrases()` funkci s názvem `GetTextAnalyticsClient()` a vytvořte klienta pomocí metody vytvořené dříve. Vytvořte seznam objektů [MultiLanguageInput](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#MultiLanguageBatchInput) obsahující dokumenty, které chcete analyzovat. Každý objekt bude `id` `language`obsahovat `text` atribut , a atribut. Atribut `text` ukládá text, který `language` má být analyzován, je `id` jazyk dokumentu a může být libovolná hodnota.
+Vytvořte novou funkci nazvanou `ExtractKeyPhrases()` a vytvořte klienta pomocí `GetTextAnalyticsClient()` metody vytvořené dříve. Vytvořte seznam objektů [MultiLanguageInput](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#MultiLanguageBatchInput) s dokumenty, které chcete analyzovat. Každý objekt bude obsahovat `id` `language` `text` atribut, a. `text` Atribut ukládá text, který má být analyzován, `language` je jazyk dokumentu a `id` může být libovolná hodnota.
 
-Zavolejte klientovi [KeyPhrases()](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#BaseClient.KeyPhrases) a získejte výsledek. Pak iterate prostřednictvím výsledků a vytisknout ID každého dokumentu a extrahované klíčové fráze.
+Zavolejte klíčová [slova klienta ()](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#BaseClient.KeyPhrases) a získejte výsledek. Potom Iterujte výsledky a vytiskněte ID každého dokumentu a extrahujte klíčové fráze.
 
 [!code-go[key phrase extraction sample](~/azure-sdk-for-go-samples/cognitiveservices/textanalytics.go?name=keyPhrases)]
 
-Zavolejte `ExtractKeyPhrases()` do svého projektu.
+Zavolejte `ExtractKeyPhrases()` v projektu.
 
 ### <a name="output"></a>Výstup
 

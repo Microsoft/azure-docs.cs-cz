@@ -1,40 +1,40 @@
 ---
-title: Šifrování disků Azure ve službě Azure Kubernetes Service (AKS) pomocí klíče spravovaného zákazníkem
-description: Přineste si vlastní klíče (BYOK) pro šifrování AKS OS a datové disky.
+title: Použití klíče spravovaného zákazníkem k šifrování disků Azure ve službě Azure Kubernetes Service (AKS)
+description: Přineste si vlastní klíče (BYOK) k šifrování AKS operačního systému a datových disků.
 services: container-service
 ms.topic: article
 ms.date: 01/12/2020
 ms.openlocfilehash: bb6ba5e6dd4ace9e33043079c0f435c10baf5cb2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77596500"
 ---
-# <a name="bring-your-own-keys-byok-with-azure-disks-in-azure-kubernetes-service-aks"></a>Přineste si vlastní klíče (BYOK) s disky Azure ve službě Azure Kubernetes Service (AKS)
+# <a name="bring-your-own-keys-byok-with-azure-disks-in-azure-kubernetes-service-aks"></a>Přineste si vlastní klíče (BYOK) s disky Azure ve službě Azure Kubernetes Service (AKS).
 
-Azure Storage šifruje všechna data v účtu úložiště v klidovém stavu. Ve výchozím nastavení jsou data šifrována pomocí klíčů spravovaných společností Microsoft. Pro další kontrolu nad šifrovacími klíči můžete zadat [klíče spravované zákazníkem,][customer-managed-keys] které se použijí pro šifrování v klidovém stavu pro operační systém i datové disky pro clustery AKS.
+Azure Storage šifruje všechna data v účtu úložiště v klidovém umístění. Ve výchozím nastavení se data šifrují pomocí klíčů spravovaných Microsoftem. Pro další kontrolu nad šifrovacími klíči můžete zadat [klíče spravované zákazníkem][customer-managed-keys] , které se použijí pro šifrování v klidovém prostředí pro AKS clustery i pro datové disky.
 
 > [!NOTE]
-> Clustery AKS založené na BYOK Linuxu a Windows jsou dostupné v [oblastech Azure,][supported-regions] které podporují šifrování spravovaných disků Azure na straně serveru.
+> Clustery AKS s BYOK Linux a Windows jsou dostupné v [oblastech Azure][supported-regions] , které podporují šifrování na straně serveru Azure Managed disks.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
-* Tento článek předpokládá, že vytváříte *nový cluster AKS*.
+* V tomto článku se předpokládá, že vytváříte *nový cluster AKS*.
 
-* Při šifrování spravovaných disků je nutné povolit ochranu proti odstranění a vymazání úložiště klíčů Azure Key *Vault.*
+* Pokud používáte Key Vault k šifrování spravovaných disků, musíte povolit ochranu pomocí obnovitelného odstranění a vyprázdnění pro *Azure Key Vault* .
 
-* Potřebujete azure CLI verze 2.0.79 nebo novější a rozšíření aks-preview 0.4.26
+* Potřebujete Azure CLI verze 2.0.79 nebo novější a rozšíření 0.4.26 AKS-Preview.
 
 > [!IMPORTANT]
-> Funkce AKS preview jsou samoobslužné opt-in. Náhledy jsou poskytovány "tak, jak jsou" a "jako dostupné" a jsou vyloučeny ze smluv o úrovni služeb a omezené záruky. AKS Previews jsou částečně pokryty zákaznickou podporou na základě maximálního úsilí. Jako takové tyto funkce nejsou určeny pro produkční použití. Další infromace naleznete v následujících článcích podpory:
+> Funkce služby AKS ve verzi Preview jsou samoobslužné přihlašovací. Verze Preview jsou k dispozici "tak jak jsou" a "jako dostupné" a jsou vyloučeny ze smluv o úrovni služeb a omezené záruky. AKS verze Preview jsou částečně pokryté zákaznickou podporou na základě nejlepšího úsilí. V takovém případě tyto funkce nejsou určeny pro použití v produkčním prostředí. Další informace o tom, jak se zaregistrují, najdete v následujících článcích podpory:
 >
 > * [Zásady podpory AKS](support-policies.md)
 > * [Nejčastější dotazy k podpoře Azure](faq.md)
 
-## <a name="install-latest-aks-cli-preview-extension"></a>Instalace nejnovějšího rozšíření náhledu AKS CLI
+## <a name="install-latest-aks-cli-preview-extension"></a>Nainstalovat nejnovější rozšíření AKS CLI Preview
 
-Chcete-li používat klíče spravované zákazníkem, potřebujete rozšíření cli *aks-preview* verze 0.4.26 nebo vyšší. Nainstalujte rozšíření *AKS-preview* Azure CLI pomocí příkazu [az extension add][az-extension-add] a pak zkontrolujte všechny dostupné aktualizace pomocí příkazu [aktualizace rozšíření az:][az-extension-update]
+Pokud chcete používat klíče spravované zákazníkem, potřebujete rozšíření *AKS-Preview* CLI verze 0.4.26 nebo vyšší. Nainstalujte rozšíření Azure CLI *AKS-Preview* pomocí příkazu [AZ Extension Add][az-extension-add] a potom zkontrolujte, jestli nejsou dostupné aktualizace, pomocí příkazu [AZ Extension Update][az-extension-update] :
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -44,11 +44,11 @@ az extension add --name aks-preview
 az extension update --name aks-preview
 ```
 
-## <a name="create-an-azure-key-vault-instance"></a>Vytvoření instance trezoru klíčů Azure
+## <a name="create-an-azure-key-vault-instance"></a>Vytvoření instance Azure Key Vault
 
-K ukládání klíčů použijte instanci Azure Key Vault.  Na webu Azure Portal můžete volitelně použít [ke konfiguraci klíčů spravovaných zákazníky pomocí azure key vaultu.][byok-azure-portal]
+Použijte instanci Azure Key Vault k uložení klíčů.  Volitelně můžete použít Azure Portal ke [konfiguraci klíčů spravovaných zákazníkem Azure Key Vault][byok-azure-portal]
 
-Vytvořte novou *skupinu prostředků*, vytvořte novou instanci *trezoru klíčů* a povolte ochranu proti měkkému odstranění a vymazání.  Ujistěte se, že pro každý příkaz používáte stejné názvy oblastí a skupin prostředků.
+Vytvořte novou *skupinu prostředků*, vytvořte novou instanci *Key Vault* a povolte ochranu pomocí obnovitelného odstranění a vyprázdnění.  Ujistěte se, že pro každý příkaz používáte stejnou oblast a názvy skupin prostředků.
 
 ```azurecli-interactive
 # Optionally retrieve Azure region short names for use on upcoming commands
@@ -63,9 +63,9 @@ az group create -l myAzureRegionName -n myResourceGroup
 az keyvault create -n myKeyVaultName -g myResourceGroup -l myAzureRegionName  --enable-purge-protection true --enable-soft-delete true
 ```
 
-## <a name="create-an-instance-of-a-diskencryptionset"></a>Vytvoření instance sady DiskEncryptionSet
+## <a name="create-an-instance-of-a-diskencryptionset"></a>Vytvoření instance objektu DiskEncryptionSet
 
-Nahraďte *název myKeyVaultName* názvem trezoru klíčů.  Budete také potřebovat *klíč* uložený v azure key vault k dokončení následujících kroků.  Buď uložte existující klíč do trezoru klíčů, který jste vytvořili v předchozích krocích, nebo [vygenerujte nový klíč][key-vault-generate] a nahraďte *myKeyName* níže názvem klíče.
+Nahraďte *myKeyVaultName* názvem vašeho trezoru klíčů.  Budete také potřebovat *klíč* uložený v Azure Key Vault k provedení následujících kroků.  Uložte svůj existující klíč do Key Vault, který jste vytvořili v předchozích krocích, nebo [Vygenerujte nový klíč][key-vault-generate] a nahraďte *myKeyName* názvem vašeho klíče.
     
 ```azurecli-interactive
 # Retrieve the Key Vault Id and store it in a variable
@@ -78,9 +78,9 @@ keyVaultKeyUrl=$(az keyvault key show --vault-name myKeyVaultName  --name myKeyN
 az disk-encryption-set create -n myDiskEncryptionSetName  -l myAzureRegionName  -g myResourceGroup --source-vault $keyVaultId --key-url $keyVaultKeyUrl 
 ```
 
-## <a name="grant-the-diskencryptionset-access-to-key-vault"></a>Udělení přístupu programu DiskEncryptionSet k trezoru klíčů
+## <a name="grant-the-diskencryptionset-access-to-key-vault"></a>Udělení přístupu DiskEncryptionSet k trezoru klíčů
 
-Použijte DiskEncryptionSet a skupiny prostředků, které jste vytvořili v předchozích krocích a udělit DiskEncryptionSet přístup k prostředku Azure Key Vault.
+Použijte DiskEncryptionSet a skupiny prostředků, které jste vytvořili v předchozích krocích, a udělte přístup k Azure Key Vault prostředkům DiskEncryptionSet.
 
 ```azurecli-interactive
 # Retrieve the DiskEncryptionSet value and set a variable
@@ -93,12 +93,12 @@ az keyvault set-policy -n myKeyVaultName -g myResourceGroup --object-id $desIden
 az role assignment create --assignee $desIdentity --role Reader --scope $keyVaultId
 ```
 
-## <a name="create-a-new-aks-cluster-and-encrypt-the-os-disk"></a>Vytvoření nového clusteru AKS a šifrování disku operačního systému
+## <a name="create-a-new-aks-cluster-and-encrypt-the-os-disk"></a>Vytvořte nový cluster AKS a Zašifrujte disk s operačním systémem.
 
-Vytvořte **novou skupinu prostředků** a cluster AKS a potom pomocí klíče zašifrujte disk operačního systému. Klíče spravované zákazníkem jsou podporovány pouze ve verzích Kubernetes větších než 1.17. 
+Vytvořte **novou skupinu prostředků** a cluster AKS a pak použijte svůj klíč k zašifrování disku s operačním systémem. Klíče spravované zákazníkem jsou podporovány pouze ve verzích Kubernetes vyšších než 1,17. 
 
 > [!IMPORTANT]
-> Ujistěte se, že vytvoříte novou skupinu resoklid pro váš cluster AKS
+> Ujistěte se, že jste pro svůj cluster AKS vytvořili novou skupinu prostředků.
 
 ```azurecli-interactive
 # Retrieve the DiskEncryptionSet value and set a variable
@@ -111,14 +111,14 @@ az group create -n myResourceGroup -l myAzureRegionName
 az aks create -n myAKSCluster -g myResourceGroup --node-osdisk-diskencryptionset-id $diskEncryptionSetId --kubernetes-version 1.17.0 --generate-ssh-keys
 ```
 
-Při přidání nových fondů uzlů do clusteru vytvořeného výše se klíč spravovaný zákazníkem poskytnutý během vytváření použije k šifrování disku operačního systému.
+Když se do clusteru vytvořeného výše přidá nové fondy uzlů, klíč spravovaný zákazníkem, který se poskytuje během vytváření, se použije k zašifrování disku s operačním systémem.
 
 ## <a name="encrypt-your-aks-cluster-data-disk"></a>Šifrování datového disku clusteru AKS
 
 Datové disky AKS můžete také šifrovat pomocí vlastních klíčů.
 
 > [!IMPORTANT]
-> Ujistěte se, že máte správné pověření AKS. Instanční objekt bude muset mít přístup přispěvatele ke skupině prostředků, kde je nasazena sada šifrování disku. V opačném případě se zobrazí chyba oznamovat, že instanční objekt nemá oprávnění.
+> Ujistěte se, že máte správné přihlašovací údaje AKS. Instanční objekt bude muset mít přístup přispěvatele ke skupině prostředků, ve které je nasazená služba diskencryptionset. V opačném případě se zobrazí chyba naznačující, že objekt služby nemá oprávnění.
 
 ```azurecli-interactive
 # Retrieve your Azure Subscription Id from id property as shown below
@@ -144,7 +144,7 @@ someuser@Azure:~$ az account list
 ]
 ```
 
-Vytvořte soubor s názvem **byok-azure-disk.yaml,** který obsahuje následující informace.  Nahraďte myAzureSubscriptionId, myResourceGroup a myDiskEncrptionSetName svými hodnotami a použijte yaml.  Ujistěte se, že používáte skupinu prostředků, kde je nasazena sada DiskEncryptionSet.  Pokud používáte Azure Cloud Shell, tento soubor lze vytvořit pomocí vi nebo nano, jako by pracoval na virtuální nebo fyzický systém:
+Vytvořte soubor s názvem **BYOK-Azure-disk. yaml** , který obsahuje následující informace.  Nahraďte myAzureSubscriptionId, myResourceGroup a myDiskEncrptionSetName hodnotami a použijte YAML.  Ujistěte se, že používáte skupinu prostředků, ve které je nasazená vaše DiskEncryptionSet.  Pokud Azure Cloud Shell použijete, můžete tento soubor vytvořit pomocí VI nebo nano jako při práci na virtuálním nebo fyzickém systému:
 
 ```
 kind: StorageClass
@@ -157,7 +157,7 @@ parameters:
   kind: managed
   diskEncryptionSetID: "/subscriptions/{myAzureSubscriptionId}/resourceGroups/{myResourceGroup}/providers/Microsoft.Compute/diskEncryptionSets/{myDiskEncryptionSetName}"
 ```
-Dále spusťte toto nasazení v clusteru AKS:
+V dalším kroku spusťte toto nasazení v clusteru AKS:
 ```azurecli-interactive
 # Get credentials
 az aks get-credentials --name myAksCluster --resource-group myResourceGroup --output table
@@ -168,16 +168,16 @@ kubectl apply -f byok-azure-disk.yaml
 
 ## <a name="limitations"></a>Omezení
 
-* BYOK je momentálně dostupný jenom v GA a Preview v určitých [oblastech Azure.][supported-regions]
-* Šifrování disku operačního systému podporované kubernetes verze 1.17 a vyšší   
-* K dispozici pouze v oblastech, kde je podporován BYOK
-* Šifrování pomocí klíčů spravovaných zákazníkem je v současné době pouze pro nové clustery AKS, existující clustery nelze upgradovat.
-* Cluster AKS používající škálovací sady virtuálních strojů je povinný, žádná podpora pro sady dostupnosti virtuálních strojů
+* BYOK je aktuálně dostupná jenom v GA a ve verzi Preview v určitých [oblastech Azure][supported-regions] .
+* Šifrování disku s operačním systémem s podporou Kubernetes verze 1,17 a vyšší   
+* K dispozici pouze v oblastech, kde je podporována podpora BYOK
+* Šifrování pomocí klíčů spravovaných zákazníkem se momentálně používá jenom pro nové clustery AKS. stávající clustery nejde upgradovat.
+* AKS Virtual Machine Scale Sets cluster se vyžaduje, není dostupná žádná podpora pro sady dostupnosti virtuálních počítačů.
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Projděte si [doporučené postupy pro zabezpečení clusteru AKS][best-practices-security]
+Kontrola [osvědčených postupů pro zabezpečení clusteru AKS][best-practices-security]
 
 <!-- LINKS - external -->
 

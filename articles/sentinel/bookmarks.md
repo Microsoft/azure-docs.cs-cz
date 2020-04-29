@@ -1,6 +1,6 @@
 ---
-title: Použití loveckých záložek pro účely prozkoumání dat v Azure Sentinelu
-description: Tento článek popisuje, jak používat záložky Azure Sentinel lov ke sledování dat.
+title: Používejte lovecké záložky pro vyšetřování dat v Azure Sentinel
+description: Tento článek popisuje, jak použít záložky pro lovecké funkce Azure Sentinel k udržení přehledu o datech.
 author: yelevin
 ms.author: yelevin
 manager: rkarlin
@@ -11,146 +11,146 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.date: 10/24/2019
 ms.openlocfilehash: eacc104bf7157732f91507f631bcda2cd166bfb3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77588684"
 ---
-# <a name="keep-track-of-data-during-hunting-with-azure-sentinel"></a>Sledování dat během lovu pomocí Azure Sentinelu
+# <a name="keep-track-of-data-during-hunting-with-azure-sentinel"></a>Udržujte si přehled o datech během přilovu k Azure Sentinel
 
-Hledání hrozeb obvykle vyžaduje kontrolu hory dat protokolu hledá důkazy o škodlivé chování. Během tohoto procesu vyšetřovatelé nacházejí události, které si chtějí pamatovat, znovu a analyzovat jako součást ověřování potenciálních hypotéz a pochopení celého příběhu kompromisu.
+Lovecké hrozby obvykle vyžadují kontrolu Mountains dat protokolu a hledání důkazů o škodlivém chování. Během tohoto procesu prověřování vyhledá události, které chtějí pamatovat, znovu navštívit a analyzovat, jako součást ověřování potenciální hypotézy a porozumění celému příběhu ohrožení.
 
-Lovení záložek v Azure Sentinelu vám to pomůže tím, že zachová dotazy, které jste spustili v **Azure Sentinel – protokoly**, spolu s výsledky dotazu, které považujete za relevantní. Můžete také zaznamenat kontextové pozorování a odkazovat na vaše zjištění přidáním poznámek a značek. Data se záložkami jsou viditelná pro vás a vaše spoluhráče pro snadnou spolupráci.
+Rozkládání záložek v Azure Sentinel vám to uděláte tak, že zachováte dotazy, které jste spustili v **protokolech Azure Sentinel**, společně s výsledky dotazu, které považujete za relevantní. Můžete také zaznamenat kontextová pozorování a odkazovat na své závěry přidáním poznámek a značek. Data s záložkami jsou viditelná pro vás a vaše ostatními týmu pro jednoduchou spolupráci.
 
-Data se záložkami můžete kdykoli znovu zobrazit na kartě **Záložky** v podokně **Lov.** Pomocí možností filtrování a vyhledávání můžete rychle najít konkrétní data pro aktuální šetření. Případně můžete zobrazit data se záložkami přímo v tabulce **HuntingBookmark** v pracovním prostoru Log Analytics. Například:
+Data v záložkách můžete kdykoli znovu navštívit na kartě **záložky** v podokně pro **lov** . Pomocí možností filtrování a hledání můžete rychle najít konkrétní data pro vaše aktuální šetření. Případně můžete data z vaší záložky zobrazit přímo v tabulce **HuntingBookmark** v pracovním prostoru Log Analytics. Příklad:
 
 > [!div class="mx-imgBorder"]
-> ![zobrazit tabulku HuntingBookmark](./media/bookmarks/bookmark-table.png)
+> ![Zobrazit tabulku HuntingBookmark](./media/bookmarks/bookmark-table.png)
 
-Zobrazení záložek z tabulky umožňuje filtrovat, sumarizovat a spojit data se záložkami s jinými zdroji dat, což usnadňuje vyhledávání potvrzujících důkazů.
+Zobrazením záložek z tabulky můžete filtrovat, shrnout a spojovat data v záložkách s ostatními zdroji dat, což usnadňuje hledání corroborating legitimace.
 
-V současné době ve verzi Preview, pokud zjistíte něco, co naléhavě je třeba řešit při lovu v protokolech, v několika kliknutí, můžete vytvořit záložku a povýšit ji na incident, nebo přidat záložku k existujícímu incidentu. Další informace o incidentech najdete [v tématu Kurz: Vyšetřování incidentů s Azure Sentinel](tutorial-investigate-cases.md). 
+Pokud zjistíte, že je v současnosti ve verzi Preview něco, co naléhavě musí být vyřešené při lovu do protokolů, můžete vytvořit záložku a povýšit ji na incident nebo přidat záložku k existujícímu incidentu. Další informace o incidentech najdete v tématu [kurz: prozkoumání incidentů pomocí služby Azure Sentinel](tutorial-investigate-cases.md). 
 
-Také ve verzi preview můžete vizualizovat data se záložkami kliknutím na **Prozkoumat** z podrobností záložky. Tím se spustí prostředí šetření, ve kterém můžete zobrazit, prozkoumat a vizuálně komunikovat vaše zjištění pomocí interaktivní entity graf diagramu a časové osy.
+Také ve verzi Preview můžete vizualizovat data v záložkách kliknutím na tlačítko **prozkoumat** v podrobnostech záložky. Tím se spustí šetření, ve kterém si můžete prohlédnout, prozkoumat a vizuálně komunikovat vaše závěry pomocí interaktivního diagramu entit a Timeline grafu.
 
 ## <a name="add-a-bookmark"></a>Přidání záložky
 
-1. Na webu Azure Portal přejděte na **službu Sledování** > **hrozeb** > **Sentinel,** kde můžete spouštět dotazy na podezřelé a neobvyklé chování.
+1. V Azure Portal přejděte do části **Sentinel** > **Threat Management** > **lovu** a spusťte dotazy pro podezřelé a neobvyklé chování.
 
-2. Vyberte jeden z vyhledávacích dotazů a vpravo v podrobnostech vyhledávacího dotazu vyberte **spustit dotaz**. 
+2. Vyberte jeden z loveckých dotazů a na pravé straně v části Podrobnosti o loveckém dotazu vyberte **Spustit dotaz**. 
 
-3. Vyberte **Zobrazit výsledky dotazu**. Například:
+3. Vyberte **Zobrazit výsledky dotazu**. Příklad:
     
     > [!div class="mx-imgBorder"]
-    > ![zobrazit výsledky dotazu z azure sentinelu lovu](./media/bookmarks/new-processes-observed-example.png)
+    > ![zobrazení výsledků dotazu z hlediska pro lov Azure Sentinel](./media/bookmarks/new-processes-observed-example.png)
     
-    Tato akce otevře výsledky dotazu v podokně **Protokoly.**
+    Tato akce otevře výsledky dotazu v podokně **protokoly** .
 
-4. V seznamu výsledků dotazu protokolu vyberte pomocí zaškrtávacích políček jeden nebo více řádků obsahujících informace, které vás zaujaly.
+4. V seznamu výsledků dotazu protokolu pomocí zaškrtávacích políček vyberte jeden nebo více řádků, které obsahují informace, které najdete zajímavě.
 
 5. Vyberte **Přidat záložku**:
     
     > [!div class="mx-imgBorder"]
-    > ![Přidání lovecké záložky do dotazu](./media/bookmarks/add-hunting-bookmark.png)
+    > ![Přidat do dotazu záložku pro lov](./media/bookmarks/add-hunting-bookmark.png)
 
-6. Vpravo v podokně **Přidat záložku** můžete volitelně aktualizovat název záložky, přidávat značky a poznámky, abyste zjistili, co bylo na položce zajímavé.
+6. Napravo můžete v podokně **Přidat záložek** volitelně aktualizovat název záložky, přidat značky a poznámky, které vám pomůžou zjistit, co bylo pro danou položku zajímavé.
 
-7. V části **Informace o dotazu** použijte rozevírací seznamy k extrahování informací z výsledků dotazu pro typy entit **Účet**, **Hostitel**a **IP adresa.** Tato akce mapuje vybraný typ entity na určitý sloupec z výsledku dotazu. Například:
+7. V části **informace o dotazu** můžete pomocí rozevíracích seznamů extrahovat informace z výsledků dotazu pro typ entity **účet**, **hostitele**a **IP adresy** . Tato akce mapuje vybraný typ entity na konkrétní sloupec z výsledku dotazu. Příklad:
     
     > [!div class="mx-imgBorder"]
-    > ![Typy entit mapy pro loveckou záložku](./media/bookmarks/map-entity-types-bookmark.png)
+    > ![Mapování typů entit pro lovecké záložky](./media/bookmarks/map-entity-types-bookmark.png)
     
-    Chcete-li zobrazit záložku v grafu šetření (aktuálně ve verzi Preview), musíte namapovat alespoň jeden typ entity, který je buď **účet**, **hostitel**nebo **IP adresa**. 
+    Chcete-li zobrazit záložku v grafu šetření (aktuálně ve verzi Preview), je nutné namapovat alespoň jeden typ entity, který je buď **účet**, **hostitel**, nebo **IP adresa**. 
 
-5. Kliknutím na **Uložit** potvrďte změny a přidejte záložku. Všechna data se záložkami jsou sdílena s ostatními vyšetřovateli a jsou prvním krokem ke společnému vyšetřování.
+5. Klikněte na **Uložit** a potvrďte provedené změny a přidejte záložku. Všechna data s záložkami se sdílejí s ostatními zkoušejícími a jedná se o první krok k prostředí šetření zaměřenému na spolupráci.
 
  
 > [!NOTE]
-> Výsledky dotazu protokolu podporují záložky při každém otevření tohoto podokna z Azure Sentinelu. Například vyberete **obecné** > **protokoly** z navigačního panelu, vyberete odkazy na události v grafu vyšetřování nebo vyberete ID výstrahy z úplných podrobností incidentu (aktuálně ve verzi Preview). Při otevření podokna Protokoly z jiných umístění, například přímo z Azure Monitoru, nelze vytvořit **záložky.**
+> Výsledky dotazu protokolu podporují záložky vždy, když je toto podokno otevřeno z Azure Sentinel. Můžete například vybrat **Obecné** > **protokoly** z navigačního panelu, vybrat odkazy na události v grafu vyšetřování nebo vybrat ID výstrahy z úplných podrobností incidentu (aktuálně ve verzi Preview). Záložky nelze vytvořit, pokud je podokno **protokoly** otevřeno z jiných umístění, například přímo z Azure monitor.
 
 ## <a name="view-and-update-bookmarks"></a>Zobrazení a aktualizace záložek 
 
-1. Na webu Azure najdete v části **Hledání** > **správu** > hrozeb Sentinel **.** 
+1. V Azure Portal přejděte do části **Sentinel** > **Threat Management** > **lov**. 
 
-2. Chcete-li zobrazit seznam záložek, vyberte kartu **Záložky.**
+2. Vyberte kartu **záložky** a zobrazte tak seznam záložek.
 
-3. Chcete-li najít konkrétní záložku, použijte vyhledávací pole nebo možnosti filtru.
+3. Pokud vám pomůžete najít konkrétní záložku, použijte vyhledávací pole nebo možnosti filtrování.
 
-4. Vyberte jednotlivé záložky a zobrazte podrobnosti záložky v pravém podokně podrobností.
+4. Vyberte jednotlivé záložky a zobrazte podrobnosti o záložce v podokně podrobností na pravé straně.
 
 5. Proveďte změny podle potřeby, které se automaticky uloží.
 
 ## <a name="exploring-bookmarks-in-the-investigation-graph"></a>Zkoumání záložek v grafu šetření
 
 > [!IMPORTANT]
-> Zkoumání záložek v grafu šetření a samotném grafu šetření jsou aktuálně ve verzi Public Preview.
-> Tyto funkce jsou k dispozici bez smlouvy o úrovni služeb a nejsou doporučeny pro produkční úlohy.
+> Zkoumání záložek v grafu šetření a samotného grafu šetření jsou momentálně ve verzi Public Preview.
+> Tyto funkce se poskytují bez smlouvy o úrovni služeb a nedoporučují se pro produkční úlohy.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-1. Na webu Azure portal přejděte > na kartu >  > **Hunting****Záložky** **pro správu hrozeb** **Sentinel**a vyberte záložku nebo záložky, které chcete prozkoumat.
+1. V Azure Portal přejděte na kartu **Sentinel** > **Threat Management** > – karta**lovecké** > **záložky** a vyberte záložku nebo záložky, které chcete prozkoumat.
 
-2. V podrobnostech záložky zajistěte, aby byla mapována alespoň jedna entita. Například pro **entity**se zobrazí položky pro **IP**, **Stroj**nebo **Účet**.
+2. V podrobnostech záložky se ujistěte, že je namapovaná aspoň jedna entita. Například u **entit**se zobrazí položky pro **IP adresu**, **počítač**nebo **účet**.
 
-3. Chcete-li zobrazit záložku v grafu šetření, klepněte na tlačítko **Prozkoumat.**
+3. Kliknutím na **prozkoumat** Zobrazte záložku v grafu šetření.
 
-Pokyny k použití grafu šetření naleznete v [tématu Použití grafu šetření k podrobnému prozkoumání](tutorial-investigate-cases.md#use-the-investigation-graph-to-deep-dive).
+Pokyny k používání grafu šetření najdete v tématu [použití grafu šetření k hloubkové podrobně](tutorial-investigate-cases.md#use-the-investigation-graph-to-deep-dive).
 
-## <a name="add-bookmarks-to-a-new-or-existing-incident"></a>Přidání záložek k novému nebo existujícímu incidentu
+## <a name="add-bookmarks-to-a-new-or-existing-incident"></a>Přidat záložky do nového nebo existujícího incidentu
 
 > [!IMPORTANT]
-> Přidání záložek k novému nebo existujícímu incidentu je aktuálně ve verzi Public Preview.
-> Tato funkce je k dispozici bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy.
+> Přidávání záložek do nového nebo existujícího incidentu je aktuálně ve verzi Public Preview.
+> Tato funkce se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-1. Na webu Azure portal přejděte > na kartu >  > **Hunting****Záložky** **pro správu hrozeb** **Sentinel**a vyberte záložku nebo záložky, které chcete přidat k incidentu.
+1. V Azure Portal přejděte na kartu **Sentinel** > **Threat Management** > – karta**lovecké** > **záložky** a vyberte záložku nebo záložky, které chcete přidat k incidentu.
 
-2. Na panelu příkazů vyberte **akce incidentu (náhled):**
+2. Na panelu příkazů vyberte **Akce incidentu (Preview)** :
     
     > [!div class="mx-imgBorder"]
-    > ![Přidání záložek k incidentu](./media/bookmarks/incident-actions.png)
+    > ![Přidat záložky k incidentu](./media/bookmarks/incident-actions.png)
 
-3. Podle potřeby vyberte **možnost Vytvořit nový incident** nebo Přidat k **existujícímu incidentu**. Potom:
+3. V případě potřeby vyberte možnost **vytvořit nový incident** nebo **Přidat k existujícímu incidentu**. Potom:
     
-    - Pro nový incident: Volitelně aktualizujte podrobnosti incidentu a pak vyberte **Vytvořit**.
-    - Přidání záložky k existujícímu incidentu: Vyberte jeden incident a pak vyberte **Přidat**. 
+    - Pro nový incident: volitelně aktualizujte podrobnosti incidentu a potom vyberte **vytvořit**.
+    - Přidání záložky do existujícího incidentu: vyberte jeden incident a pak vyberte **Přidat**. 
 
-Chcete-li zobrazit záložku v **Sentinel** > rámci incidentu: Přejděte na**Incidenty** **správy** > hrozeb Sentinel a vyberte incident pomocí záložky. Vyberte **Zobrazit úplné podrobnosti**a pak vyberte kartu **Záložky.**
+Zobrazení záložky v rámci incidentu: přejděte na > **incidenty** se**správou hrozeb**s **ověřovacími** > hrozbami a vyberte incident s vaší záložkou. Vyberte **Zobrazit úplné podrobnosti**a potom vyberte kartu **záložky** .
 
 > [!TIP]
-> Jako alternativu k možnosti **Akce incidentu (Náhled)** na panelu příkazů můžete použít kontextovou nabídku (**...**) pro jednu nebo více záložek a vybrat možnosti pro **vytvoření nového incidentu**, Přidat k **existujícímu incidentu**a **Odebrat z incidentu**. 
+> Jako alternativu k možnosti **Akce incidentu (Preview)** na panelu příkazů můžete použít kontextovou nabídku (**...**) pro jednu nebo více záložek a vybrat možnosti pro **Vytvoření nového incidentu**, **přidání do existujícího incidentu**a **Odebrat z incidentu**. 
 
-## <a name="view-bookmarked-data-in-logs"></a>Zobrazení dat se záložkami v protokolech
+## <a name="view-bookmarked-data-in-logs"></a>Zobrazit data v záložkách v protokolech
 
-Chcete-li zobrazit dotazy, výsledky nebo jejich historii se záložkami, vyberte záložku na kartě**Záložky** **lovu** > a použijte odkazy uvedené v podokně podrobností: 
+Pokud chcete zobrazit záložky, výsledky nebo jejich historii, vyberte záložku na kartě **lovecké** > **záložky** a použijte odkazy v podokně podrobností: 
 
-- **Zobrazení zdrojového dotazu** pro zobrazení zdrojového dotazu v podokně **Protokoly**
+- **Zobrazit zdrojový dotaz** pro zobrazení zdrojového dotazu v podokně **protokoly** .
 
-- **Zobrazením protokolů záložek** zobrazíte všechna metadata záložek, která zahrnují, kdo provedl aktualizaci, aktualizované hodnoty a čas aktualizace.
+- **Zobrazením protokolů záložky** zobrazíte všechna metadata záložky, včetně toho, kdo provedl aktualizaci, aktualizované hodnoty a čas, kdy k aktualizaci došlo.
 
-Data nezpracovaná záložky pro všechny záložky můžete také zobrazit výběrem **položek Protokoly záložek** z panelu příkazů na kartě**Záložky** **lovu:** > 
+Nezpracované data záložky pro všechny záložky můžete zobrazit také tak, že na panelu příkazů na kartě **lovecké** > **záložky** vyberete možnost **protokoly záložek** :
 
 > [!div class="mx-imgBorder"]
-> ![Záložky protokoly](./media/bookmarks/bookmark-logs.png)
+> ![Protokoly záložek](./media/bookmarks/bookmark-logs.png)
 
-Toto zobrazení zobrazuje všechny záložky s přidruženými metadaty. Pomocí [dotazů pro dotazy na klíčové slovo](https://docs.microsoft.com/sharepoint/dev/general-development/keyword-query-language-kql-syntax-reference) (KQL) můžete filtrovat na nejnovější verzi konkrétní záložky, kterou hledáte.
+V tomto zobrazení se zobrazují všechny záložky s přidruženými metadaty. Pomocí dotazů jazyka KQL ( [klíč Query Language](https://docs.microsoft.com/sharepoint/dev/general-development/keyword-query-language-kql-syntax-reference) ) můžete filtrovat dolů na nejnovější verzi konkrétní záložky, kterou hledáte.
 
 > [!NOTE]
-> Může dojít k významnému zpoždění (měřeno v minutách) mezi časem vytvoření záložky a zobrazením na kartě **Záložky.**
+> Mezi časem vytvoření záložky a jejím zobrazením na kartě **záložky** může být významná prodleva (měřeno v minutách).
 
 ## <a name="delete-a-bookmark"></a>Odstranění záložky
  
-1.  Na webu Azure portal přejděte > na kartu >  > **Hunting****Záložky** **pro správu hrozeb** **Sentinel**a vyberte záložku nebo záložky, které chcete odstranit. 
+1.  V Azure Portal přejděte na kartu **Sentinel** > **Threat Management** > – karta**lovecké** > **záložky** a vyberte záložku nebo záložky, které chcete odstranit. 
 
-2. Klikněte pravým tlačítkem myši na výběry a vyberte možnost odstranění záložky nebo záložek. Například **Odstranit záložku,** pokud jste vybrali pouze jednu záložku, a **Odstranit 2 záložky,** pokud jste vybrali dvě záložky.
+2. Klikněte pravým tlačítkem na své výběry a vyberte možnost odstranění záložky nebo záložek. Pokud jste například vybrali jenom jednu záložku, **odstraňte záložku** , a pokud jste vybrali dvě záložky, odstraňte **2 záložky** .
     
-Odstraněním záložky odstraníte záložku ze seznamu na kartě **Záložka.** Tabulka **HuntingBookmark** pro pracovní prostor Log Analytics bude nadále obsahovat předchozí položky záložek, ale poslední položka změní hodnotu **SoftDelete** na hodnotu true, což usnadňuje filtrování starých záložek. Odstraněním záložky neodeberete žádné entity ze zkušenosti s šetřením, které jsou přidruženy k jiným záložkám nebo výstrahám. 
+Odstranění záložky odebere záložku ze seznamu na kartě **Záložka** . Tabulka **HuntingBookmark** pro váš pracovní prostor Log Analytics bude dál obsahovat položky předchozí záložky, ale nejnovější položka změní hodnotu **SoftDelete** na true, což usnadňuje filtrování starých záložek. Odstraněním záložky se neodstraní žádné entity z prostředí pro šetření, které jsou přidruženy k jiným záložkám nebo výstrahám. 
 
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste se naučili, jak spustit hledání šetření pomocí záložek v Azure Sentinelu. Další informace o Azure Sentinelu najdete v následujících článcích:
+V tomto článku jste zjistili, jak spustit lovecké šetření pomocí záložek ve službě Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:
 
 
-- [Proaktivně lovit hrozby](hunting.md)
-- [Používání automatických loveckých kampaní pomocí poznámkových bloků](notebooks.md)
+- [Proaktivní vylovení hrozeb](hunting.md)
+- [Použití poznámkových bloků ke spouštění automatizovaných loveckých kampaní](notebooks.md)

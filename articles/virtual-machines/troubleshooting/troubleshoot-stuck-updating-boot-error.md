@@ -1,6 +1,6 @@
 ---
-title: Spuštění virtuálního počítače Azure se zaseklo na webu Windows Update| Dokumenty společnosti Microsoft
-description: Zjistěte, jak tento problém vyřešit, když se při aktualizaci Windows zaseklo spuštění virtuálního počítače Azure.
+title: Spuštění virtuálního počítače Azure je zablokované na web Windows Update | Microsoft Docs
+description: Naučte se, jak tento problém vyřešit při zablokování spuštění virtuálního počítače Azure ve službě Windows Update.
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
@@ -13,47 +13,47 @@ ms.workload: infrastructure
 ms.date: 10/09/2018
 ms.author: genli
 ms.openlocfilehash: 8a47131cb4f19cce1664eafa50c67ab1a1171e67
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77919426"
 ---
-# <a name="azure-vm-startup-is-stuck-at-windows-update"></a>Spuštění virtuálního počítače Azure se zaseklo na aktualizaci Windows
+# <a name="azure-vm-startup-is-stuck-at-windows-update"></a>Spuštění virtuálního počítače Azure je zablokované na Windows Update.
 
-Tento článek pomáhá vyřešit problém, když váš virtuální počítač (VM) se zasekl ve fázi Windows Update při spuštění. 
+Tento článek pomáhá vyřešit problém, když se váš virtuální počítač zablokuje ve fázi web Windows Update během spouštění. 
 
 
 ## <a name="symptom"></a>Příznak
 
- Virtuální ho virtuálního mísa systému Windows se nespustí. Když zkontrolujete snímky obrazovky v okně [Diagnostika spouštění,](../troubleshooting/boot-diagnostics.md) uvidíte, že spuštění se zaseklo v procesu aktualizace. Následují příklady zpráv, které můžete obdržet:
+ Virtuální počítač s Windows se nespustí. Když zkontrolujete snímky obrazovky v okně [diagnostiky spouštění](../troubleshooting/boot-diagnostics.md) , uvidíte, že spuštění je zablokované v procesu aktualizace. Následují příklady zpráv, které můžete obdržet:
 
-- Instalace Systému Windows ##% Nevypírejte počítač. To bude chvíli trvat, váš počítač se několikrát restartuje
-- Udržujte počítač zapnutý, dokud to nebude hotové. Instalace aktualizace # #... 
-- Nepodařilo se nám dokončit aktualizace Zrušení změn Nevypínejte počítač
-- Chyba konfigurace aktualizací systému Windows Vrácení změn Nevypíte počítač
-- Chyba < kód chyby > použití operací aktualizace ##### ##### (\Regist...)
-- Chybová chyba < > použití aktualizačních operací ##### ##### ($$...)
+- Instalace Windows # #% vypne počítač. Tím dojde k tomu, že se Váš počítač několikrát restartuje.
+- Nechte počítač zapnutý, dokud neproběhne. Probíhá instalace aktualizace #... 
+- Nepovedlo se nám dokončit aktualizace, protože se změny nevypnou z počítače.
+- Chyba při konfiguraci vrácení změn aktualizací Windows nevypne počítač
+- Chyba < kód chyby > provádění operací aktualizace # # # # # z # # # # # (\Regist...)
+- Závažná chyba < kód chyby > provádění operací aktualizace # # # # # z # # # # # ($ $...)
 
 
 ## <a name="solution"></a>Řešení
 
-V závislosti na počtu aktualizací, které jsou stále nainstalovány nebo vráceny zálohování, proces aktualizace může chvíli trvat. Virtuální ho ponechte v tomto stavu po dobu 8 hodin. Pokud virtuální počítač je stále v tomto stavu po uplynutí této doby, restartujte virtuální počítač z portálu Azure a zjistěte, jestli se můžete normálně spustit. Pokud tento krok nefunguje, vyzkoušejte následující řešení.
+V závislosti na počtu aktualizací, které jsou instalovány nebo vraceny zpět, může proces aktualizace chvíli trvat. Ponechte virtuální počítač v tomto stavu po dobu 8 hodin. Pokud je virtuální počítač v tomto období stále v tomto stavu, restartujte virtuální počítač z Azure Portal a podívejte se, jestli se může normálně spustit. Pokud tento krok nefunguje, vyzkoušejte následující řešení.
 
 ### <a name="remove-the-update-that-causes-the-problem"></a>Odebrání aktualizace, která způsobuje problém
 
-1. Pořiďte snímek disku operačního systému ovlivněného virtuálního počítače jako zálohu. Další informace naleznete [v tématu Snímek disku](../windows/snapshot-copy-managed-disk.md). 
-2. [Připojte disk operačního systému k virtuálnímu virtuálnímu počítače pro obnovení](troubleshoot-recovery-disks-portal-windows.md).
-3. Jakmile je disk operačního systému připojen k virtuálnímu počítači pro obnovení, spusťte **diskmgmt.msc** a otevřete správu disků a ujistěte se, že připojený disk je **ONLINE**. Poznamenejte si písmeno jednotky, které je přiřazeno připojenému disku operačního systému, který obsahuje složku \windows. Pokud je disk zašifrován, dešifrujte disk před pokračováním v dalších krocích v tomto dokumentu.
+1. Pořídit snímek disku s operačním systémem ovlivněného virtuálního počítače jako zálohy. Další informace najdete v tématu [vytvoření snímku disku](../windows/snapshot-copy-managed-disk.md). 
+2. [Připojte disk s operačním systémem k virtuálnímu počítači pro obnovení](troubleshoot-recovery-disks-portal-windows.md).
+3. Jakmile je disk s operačním systémem připojený k virtuálnímu počítači pro obnovení, spusťte **diskmgmt. msc** a spusťte správu disků a ujistěte se, že připojený disk je **online**. Poznamenejte si písmeno jednotky přiřazené k připojenému disku s operačním systémem, ve kterém je umístěná složka \Windows. Pokud je disk zašifrovaný, před pokračováním v dalším postupu v tomto dokumentu disk dešifrujte.
 
-4. Otevřete instanci příkazového řádku se zvýšenými oprávněními (Spustit jako správce). Spuštěním následujícího příkazu získáte seznam balíčků aktualizací, které jsou na připojeném disku operačního systému:
+4. Otevřete instanci příkazového řádku se zvýšenými oprávněními (Spustit jako správce). Spuštěním následujícího příkazu Získejte seznam balíčků aktualizací, které jsou na připojeném disku s operačním systémem:
 
         dism /image:<Attached OS disk>:\ /get-packages > c:\temp\Patch_level.txt
 
-    Pokud je například připojený disk operačního systému jednotka F, spusťte následující příkaz:
+    Pokud je například připojený disk s operačním systémem jednotka F, spusťte následující příkaz:
 
         dism /image:F:\ /get-packages > c:\temp\Patch_level.txt
-5. Otevřete soubor C:\temp\Patch_level.txt a přečtěte si jej zdola nahoru. Vyhledejte aktualizaci, která je ve stavu **Instalace čeká na vyřízení** nebo **Odinstalace čeká na vyřízení.**  Následuje ukázka stavu aktualizace:
+5. Otevřete soubor složce c:\Temp\ Patch_level. txt a pak ho z dolní části si přečtěte. Vyhledejte aktualizaci, která čeká na **instalaci** nebo **čeká na odinstalaci** .  Následuje ukázka stavu aktualizace:
 
      ```
     Package Identity : Package_for_RollupFix~31bf3856ad364e35~amd64~~17134.345.1.5
@@ -73,6 +73,6 @@ V závislosti na počtu aktualizací, které jsou stále nainstalovány nebo vr�
     ```
 
     > [!NOTE] 
-    > V závislosti na velikosti balíčku bude chvíli trvat, než nástroj DISM zpracuje odinstalaci. Obvykle bude proces dokončen do 16 minut.
+    > V závislosti na velikosti balíčku zabere nástroj DISM během procesu zrušení instalace nějakou dobu. Normálně se proces dokončí do 16 minut.
 
-7. [Odpojte disk operačního systému a znovu vytvořte virtuální hod](troubleshoot-recovery-disks-portal-windows.md#unmount-and-detach-original-virtual-hard-disk). Potom zkontrolujte, zda je problém vyřešen.
+7. [Odpojte disk s operačním systémem a znovu vytvořte virtuální počítač](troubleshoot-recovery-disks-portal-windows.md#unmount-and-detach-original-virtual-hard-disk). Potom zkontrolujte, zda byl problém vyřešen.

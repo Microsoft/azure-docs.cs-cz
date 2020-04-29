@@ -1,5 +1,5 @@
 ---
-title: Monitorování SAP HANA v Azure (velké instance) | Dokumenty společnosti Microsoft
+title: Monitorování SAP HANA v Azure (velké instance) | Microsoft Docs
 description: Monitorujte SAP HANA v Azure (velké instance).
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,40 +14,40 @@ ms.date: 09/10/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 50a6b4f15a7de02533e3bb51e5659f7b4c078b40
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77617295"
 ---
-# <a name="how-to-monitor-sap-hana-large-instances-on-azure"></a>Jak sledovat SAP HANA (velké instance) v Azure
+# <a name="how-to-monitor-sap-hana-large-instances-on-azure"></a>Jak monitorovat SAP HANA (velké instance) v Azure
 
-SAP HANA v Azure (velké instance) se nijak neliší od všech ostatních nasazení IaaS – je třeba sledovat, co operační systém a aplikace dělá a jak aplikace spotřebovávají následující prostředky:
+SAP HANA v Azure (velké instance) se neliší od žádného jiného nasazení IaaS. potřebujete monitorovat, co operační systém a aplikace dělají, a jak aplikace spotřebovávají tyto prostředky:
 
 - Procesor
 - Memory (Paměť)
 - Šířka pásma sítě
 - Místo na disku
 
-S virtuálními počítači Azure, musíte zjistit, zda výše uvedené třídy prostředků jsou dostatečné nebo se vyčerpají. Zde je více podrobností o každé z různých tříd:
+V případě Azure Virtual Machines je nutné zjistit, zda jsou třídy prostředků uvedené výše dostačující nebo jsou vyčerpány. Zde je více podrobností o každé z různých tříd:
 
-**Spotřeba prostředků procesoru:** Poměr, který SAP definované pro určité zatížení proti HANA je vynuceno, aby se ujistil, že by měl být dostatek prostředků procesoru k dispozici pro práci prostřednictvím dat, která je uložena v paměti. Nicméně může být případy, kdy HANA spotřebovává mnoho procesorů provádění dotazů z důvodu chybějící indexy nebo podobné problémy. To znamená, že byste měli sledovat spotřebu prostředků procesoru jednotky velké instance HANA a také prostředky procesoru spotřebované konkrétními službami HANA.
+**Spotřeba prostředků procesoru:** Poměr, který SAP definoval pro určité zatížení pro HANA, se vynutil, aby se zajistilo, že bude k dispozici dostatek prostředků procesoru pro práci prostřednictvím dat uložených v paměti. Nicméně mohou nastat případy, kdy HANA spotřebovává mnoho procesorů provádějících dotazy z důvodu chybějících indexů nebo podobných problémů. To znamená, že byste měli monitorovat spotřebu prostředků procesoru pro velkou instanci instance HANA a prostředky procesoru spotřebované konkrétními službami HANA.
 
-**Spotřeba paměti:** Je důležité sledovat zevnitř HANA, stejně jako mimo HANA na jednotce. V rámci HANA sledovat, jak data spotřebovává HANA přidělené paměti, aby zůstali v rámci požadované zásady pro velikost i SAP. Chcete také sledovat spotřebu paměti na úrovni velké instance a ujistěte se, že další nainstalovaný software bez HANA nespotřebovává příliš mnoho paměti, a proto soutěžit s HANA pro paměť.
+**Spotřeba paměti:** Je důležité monitorovat z HANA i mimo HANA na jednotce. V rámci HANA monitorujte, jak data spotřebovávají paměť HANA, aby bylo možné zachovat požadované pokyny pro změnu velikosti v SAP. Také budete chtít monitorovat spotřebu paměti na úrovni velkých instancí, abyste se ujistili, že další nainstalovaný software jiného typu než HANA nespotřebovává příliš mnoho paměti, a proto s HANAm soutěží o paměť.
 
-**Šířka pásma sítě:** Brána virtuální sítě Azure má omezenou šířku pásma dat, která se přesouvají do virtuální sítě Azure, takže je užitečné sledovat data přijatá všemi virtuálními počítači Azure v rámci virtuální sítě, abyste zjistili, jak blízko jste limitům skladové položky brány Azure, kterou jste vybrali. V jednotce velké instance HANA má smysl také sledovat příchozí a odchozí síťový provoz a sledovat svazky, které jsou zpracovávány v průběhu času.
+**Šířka pásma sítě:** Brána virtuální sítě Azure je omezená na šířku pásma dat přesouvaných do virtuální sítě Azure, takže je užitečné monitorovat data přijatá všemi virtuálními počítači Azure v rámci virtuální sítě, abyste zjistili, jak blízko máte omezení zvolené SKU brány Azure. U velké jednotky instance HANA má smysl monitorovat také příchozí a odchozí síťový provoz a sledovat svazky, které jsou zpracovávány v průběhu času.
 
-**Místo na disku:** Spotřeba místa na disku se obvykle časem zvyšuje. Nejběžnější příčiny jsou: zvýšení objemu dat, spuštění záloh protokolu transakcí, ukládání trasovacích souborů a provádění snímků úložiště. Proto je důležité sledovat využití místa na disku a spravovat místo na disku přidružené k jednotce velké instance HANA.
+**Místo na disku:** Využití místa na disku obvykle roste v čase. Mezi běžné příčiny patří: objem dat roste, provádění záloh protokolů transakcí, ukládání trasovacích souborů a provádění snímků úložiště. Proto je důležité monitorovat využití místa na disku a spravovat místo na disku spojené s jednotkou velké instance HANA.
 
-Pro **objekty SKU typu II** velkých instancí HANA je server dodáván s předinstalovanými nástroji pro diagnostiku systému. Tyto diagnostické nástroje můžete použít k provedení kontroly stavu systému. Spusťte následující příkaz a vygenerujte soubor protokolu kontroly stavu na adrese /var/log/health_check.
+U **SKU typu II** velkých instancí Hana Server obsahuje předem načtené systémové diagnostické nástroje. Tyto diagnostické nástroje můžete využít k provedení kontroly stavu systému. Spuštěním následujícího příkazu vygenerujete soubor protokolu kontroly stavu na adrese/var/log/health_check.
 ```
 /opt/sgi/health_check/microsoft_tdi.sh
 ```
-Při práci s týmem podpory společnosti Microsoft k řešení problému, můžete být také vyzváni k poskytnutí souborů protokolu pomocí těchto diagnostických nástrojů. Soubor můžete zipovat pomocí následujícího příkazu.
+Při práci s podpora Microsoftu týmem při řešení problému může být také požádáno o zadání souborů protokolu pomocí těchto diagnostických nástrojů. Soubor můžete ZIP pomocí následujícího příkazu.
 ```
 tar  -czvf health_check_logs.tar.gz /var/log/health_check
 ```
 
 **Další kroky**
 
-- Podívejte se [na how to monitor SAP HANA (large instances) on Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-monitor-troubleshoot).
+- Přečtěte si [, jak monitorovat SAP Hana (velké instance) v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-monitor-troubleshoot).

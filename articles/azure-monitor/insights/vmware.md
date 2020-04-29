@@ -1,85 +1,85 @@
 ---
-title: Řešení monitorování v oblasti VMware ve službě Azure Monitor | Dokumenty společnosti Microsoft
-description: Zjistěte, jak může řešení VMware Monitoring pomoci spravovat protokoly a monitorovat hostitele ESXi.
+title: VMware Monitoring řešení v Azure Monitor | Microsoft Docs
+description: Přečtěte si, jak může řešení VMware Monitoring pomáhat spravovat protokoly a monitorovat hostitele ESXi.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/04/2018
 ms.openlocfilehash: c1622ef16155206d779c6d703fc7da568d233e7e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77664775"
 ---
-# <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>Řešení Monitorování VMware (zastaralé) ve službě Azure Monitor
+# <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>Řešení VMware Monitoring (nepoužívané) v Azure Monitor
 
 ![Symbol VMware](./media/vmware/vmware-symbol.png)
 
 > [!NOTE]
-> Řešení VMware Monitoring bylo zastaralé.  Zákazníci, kteří již nainstalovali řešení, jej mohou nadále používat, ale monitorování společnosti VMware nelze přidat do žádných nových pracovních prostorů.
+> Řešení VMware Monitoring se už nepoužívá.  Zákazníci, kteří už toto řešení nainstalovali, ho můžou dál používat, ale VMware Monitoring nemůžou být přidané do žádných nových pracovních prostorů.
 
-Řešení Monitorování VMware ve službě Azure Monitor je řešení, které vám pomůže vytvořit centralizovaný přístup k protokolování a monitorování pro velké protokoly VMware. Tento článek popisuje, jak můžete řešit problémy, zachytit a spravovat hostitele ESXi na jednom místě pomocí řešení. S řešením můžete vidět podrobná data pro všechny hostitele ESXi na jednom místě. Můžete zobrazit nejvyšší počet událostí, stav a trendy hostitelů virtuálních vapů a ESXi, které jsou k dispozici prostřednictvím protokolů hostitelů ESXi. Řešení potíží můžete zobrazit a prohledat centralizované protokoly hostitelů ESXi. A můžete vytvořit výstrahy na základě vyhledávacích dotazů protokolu.
+Řešení VMware Monitoring v Azure Monitor je řešení, které vám pomůže vytvořit centralizovaný protokol pro protokolování a monitorování pro velké protokoly VMware. Tento článek popisuje, jak můžete pomocí řešení řešit, zachytit a spravovat hostitele ESXi v jednom umístění. Pomocí tohoto řešení můžete zobrazit podrobná data všech hostitelů ESXi v jednom umístění. Můžete se podívat na hlavní počty událostí, stav a trendy hostitelů virtuálních počítačů a ESXi poskytovaných prostřednictvím protokolů hostitele ESXi. Problémy můžete řešit zobrazením a prohledáváním centralizovaných protokolů hostitele ESXi. A můžete vytvářet výstrahy na základě dotazů hledání v protokolu.
 
-Řešení používá nativní funkce sysloghostitele ESXi k nabízení dat do cílového virtuálního virtuálního provozu, který má agenta Log Analytics. Řešení však nezapisuje soubory do syslogu v rámci cílového virtuálního virtuálního soudu. Agent Log Analytics otevře port 1514 a poslouchá to. Jakmile obdrží data, agent Analýzy protokolů odešle data do Azure Monitoru.
+Řešení používá nativní funkce syslog hostitele ESXi k odesílání dat do cílového virtuálního počítače, který má agenta Log Analytics. Řešení ale nepíše soubory do protokolu syslog v cílovém virtuálním počítači. Agent Log Analytics otevře port 1514 a nanaslouchá tomuto. Jakmile data obdrží, agent Log Analytics data vloží do Azure Monitor.
 
 ## <a name="install-and-configure-the-solution"></a>Instalace a konfigurace řešení
 K instalaci a konfiguraci řešení můžete použít následující informace.
 
-* Přidejte do předplatného řešení VMware Monitoring pomocí postupu popsaného v [části Instalace monitorovacího řešení](../insights/solutions.md#install-a-monitoring-solution).
+* Přidejte řešení VMware Monitoring do svého předplatného pomocí postupu popsaného v tématu [instalace řešení monitorování](../insights/solutions.md#install-a-monitoring-solution).
 
-#### <a name="supported-vmware-esxi-hosts"></a>Podporovaní hostitelé vsystému VMware ESXi
-vSphere ESXi Host 5.5, 6.0 a 6.5
+#### <a name="supported-vmware-esxi-hosts"></a>Podporovaná VMware ESXi hostitelé
+vSphere ESXi hostitele 5,5, 6,0 a 6,5
 
-#### <a name="prepare-a-linux-server"></a>Příprava linuxového serveru
-Vytvořte virtuální počítač s operačním systémem Linux pro příjem všech dat syslogu z hostitelů ESXi. [Agent Linuxu Log Analytics](../learn/quick-collect-linux-computer.md) je sběrné místo pro všechna data syslogu hostitele ESXi. Můžete použít více hostitelů ESXi k předávání protokolů na jeden server Linux, jako v následujícím příkladu.
+#### <a name="prepare-a-linux-server"></a>Příprava serveru Linux
+Vytvořte virtuální počítač s operačním systémem Linux pro příjem všech dat syslog z hostitelů ESXi. [Agent Log Analytics Linux](../learn/quick-collect-linux-computer.md) je bod shromažďování pro všechna data syslog hostitele ESXi. Můžete použít více hostitelů ESXi pro přeposílání protokolů na jeden server Linux, jak je uvedeno v následujícím příkladu.
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]  
 
-   ![tok syslogu](./media/vmware/diagram.png)
+   ![tok syslog](./media/vmware/diagram.png)
 
-### <a name="configure-syslog-collection"></a>Konfigurace kolekce syslogu
-1. Nastavte předávání syslogu pro VSphere. Podrobné informace, které vám pomohou nastavit předávání syslogů, naleznete [v tématu Konfigurace syslogu na ESXi 5.0 a vyšší (2003322)](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2003322). Přejděte na **web ESXi Host Configuration** > **Software** > **Advanced Settings** > **Syslog**.
+### <a name="configure-syslog-collection"></a>Konfigurovat shromažďování syslog
+1. Nastavte předávání syslog pro VSphere. Podrobné informace, které vám pomůžou nastavit předávání syslog, najdete v tématu [Konfigurace protokolu syslog na ESXi 5,0 a vyšší (2003322)](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2003322). Přejít**Software** > na **konfiguraci** > hostitele ESXi**Rozšířené nastavení** > **syslog**.
    ![vsphereconfig](./media/vmware/vsphere1.png)  
-1. Do pole *Syslog.global.logHost* přidejte linuxový server a číslo portu *1514*. Příklad: `tcp://hostname:1514` nebo `tcp://123.456.789.101:1514`
-1. Otevřete bránu firewall hostitele ESXi pro syslog. **Esxi Host Configuration** > **Software** > **Security Profile** > **Firewall** a open **Properties**.  
+1. Do pole *syslog. Global. logHost* přidejte server Linux a číslo portu *1514*. Příklad: `tcp://hostname:1514` nebo `tcp://123.456.789.101:1514`
+1. Otevřete hostitelskou bránu firewall ESXi pro syslog. **Konfigurace** > **Software** > hostitele ESXi > **profil zabezpečení**softwaru**firewall** a otevřete **vlastnosti**.  
 
     ![vspherefw](./media/vmware/vsphere2.png)  
 
     ![vspherefwproperties](./media/vmware/vsphere3.png)  
-1. Zkontrolujte konzolu vSphere a ověřte, zda je syslog správně nastaven. Na hostiteli ESXI zkontrolujte, zda je port **1514** nakonfigurován.
-1. Stáhněte a nainstalujte agenta Log Analytics pro Linux na linuxový server. Další informace naleznete [v dokumentaci pro agenta Log Analytics pro Linux](https://github.com/Microsoft/OMS-Agent-for-Linux).
-1. Po instalaci agenta Log Analytics pro Linux přejděte do adresáře /etc/opt/microsoft/omsagent/sysconf/omsagent.d a zkopírujte soubor vmware_esxi.conf do adresáře /etc/opt/microsoft/omsagent/conf/omsagent.d a změňte vlastníka/skupinu a oprávnění souboru. Například:
+1. Zkontrolujte konzolu vSphere a ověřte, jestli je syslog správně nastavený. Potvrďte u hostitele ESXI, že je nakonfigurovaný port **1514** .
+1. Stáhněte a nainstalujte agenta Log Analytics pro Linux na server Linux. Další informace najdete v [dokumentaci ke službě Log Analytics Agent pro Linux](https://github.com/Microsoft/OMS-Agent-for-Linux).
+1. Po instalaci agenta Log Analytics pro Linux přejděte do adresáře/etc/opt/Microsoft/omsagent/sysconf/omsagent.d a zkopírujte soubor vmware_esxi. conf do adresáře/etc/opt/Microsoft/omsagent/conf/omsagent.d a změňte vlastníka/skupinu a oprávnění souboru. Příklad:
 
     ```
     sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/vmware_esxi.conf /etc/opt/microsoft/omsagent/conf/omsagent.d
    sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/conf/omsagent.d/vmware_esxi.conf
     ```
-1. Restartujte agenta Log Analytics `sudo /opt/microsoft/omsagent/bin/service_control restart`pro Linux spuštěním .
-1. Otestujte připojení mezi serverem Linux a `nc` hostitelem ESXi pomocí příkazu na hostiteli ESXi. Například:
+1. Restartujte agenta Log Analytics pro Linux spuštěním `sudo /opt/microsoft/omsagent/bin/service_control restart`.
+1. Otestujte připojení mezi serverem Linux a hostitelem ESXi pomocí `nc` příkazu na hostiteli ESXi. Příklad:
 
     ```
     [root@ESXiHost:~] nc -z 123.456.789.101 1514
     Connection to 123.456.789.101 1514 port [tcp/*] succeeded!
     ```
 
-1. Na webu Azure Portal proveďte `VMware_CL`dotaz protokolu pro aplikaci . Když Azure Monitor shromažďuje data syslogu, zachová formát syslogu. Na portálu jsou zachycena některá konkrétní pole, například *Název hostitele* a *Název_procesu*.  
+1. V Azure Portal proveďte dotaz protokolu pro `VMware_CL`. Když Azure Monitor shromažďuje data syslog, uchovává formát syslog. Na portálu jsou některá konkrétní pole zachycena, například *název hostitele* a název *procesu*.  
 
     ![type](./media/vmware/type.png)  
 
-    Pokud jsou výsledky hledání protokolu zobrazení podobné obrázku výše, můžete použít řídicí panel řešení Monitorování vsystému VMware.  
+    Pokud výsledky hledání protokolu zobrazení jsou podobné obrázku výše, je nastaveno použití řídicího panelu řešení VMware Monitoring.  
 
-## <a name="vmware-data-collection-details"></a>Podrobnosti o shromažďování dat společnosti VMware
-Řešení VMware Monitoring shromažďuje různé metriky výkonu a data protokolu od hostitelů ESXi pomocí agentů Log Analytics pro Linux, které jste povolili.
+## <a name="vmware-data-collection-details"></a>Podrobnosti shromažďování dat VMware
+Řešení VMware Monitoring shromažďuje různé metriky výkonu a data protokolů z hostitelů ESXi pomocí agentů Log Analytics pro Linux, které jste povolili.
 
-V následující tabulce jsou uvedeny metody shromažďování dat a další podrobnosti o způsobu shromažďování dat.
+V následující tabulce jsou uvedeny metody shromažďování dat a další podrobnosti o tom, jak se data shromažďují.
 
-| platforma | Agent Log Analytics pro Linux | Agent SCOM | Azure Storage | SCOM požadované? | Data agenta SCOM odeslaná prostřednictvím skupiny pro správu | sběrová frekvence |
+| platforma | Agent Log Analytics pro Linux | Agent SCOM | Azure Storage | Vyžaduje se SCOM? | Data agenta SCOM odesílaná prostřednictvím skupiny pro správu | frekvence shromažďování |
 | --- | --- | --- | --- | --- | --- | --- |
 | Linux |&#8226; |  |  |  |  |každé 3 minuty |
 
-V následující tabulce jsou uvedeny příklady datových polí shromážděných řešením Monitorování společnosti VMware:
+V následující tabulce jsou uvedeny příklady datových polí shromažďovaných řešením VMware Monitoring:
 
 | název pole | description |
 | --- | --- |
@@ -87,116 +87,116 @@ V následující tabulce jsou uvedeny příklady datových polí shromážděný
 | ESXIFailure_s |typy selhání |
 | EventTime_t |čas, kdy došlo k události |
 | HostName_s |Název hostitele ESXi |
-| Operation_s |vytvoření virtuálního virtuálního mísy nebo odstranění virtuálního mísy |
+| Operation_s |Vytvoření virtuálního počítače nebo odstranění virtuálního počítače |
 | ProcessName_s |název události |
-| ResourceId_s |název hostitele společnosti VMware |
+| ResourceId_s |název hostitele VMware |
 | ResourceLocation_s |VMware |
 | ResourceName_s |VMware |
 | ResourceType_s |Hyper-V |
-| SCSIStatus_s |Stav VMware SCSI |
+| SCSIStatus_s |Stav rozhraní SCSI VMware |
 | SyslogMessage_s |Data syslogu |
-| UserName_s |uživatel, který vytvořil nebo odstranil virtuální hod |
+| UserName_s |uživatel, který vytvořil nebo odstranil virtuální počítač |
 | VMName_s |název virtuálního počítače |
 | Počítač |hostitelský počítač |
-| TimeGenerated |čas vygenerování dat |
+| TimeGenerated |čas, kdy byla data vygenerována |
 | DataCenter_s |Datové centrum VMware |
-| StorageLatency_s |latence úložiště (ms) |
+| StorageLatency_s |latence úložiště (MS) |
 
 ## <a name="vmware-monitoring-solution-overview"></a>Přehled řešení VMware Monitoring
-Dlaždice VMware se zobrazí v pracovním prostoru Log Analytics. Poskytuje zobrazení na vysoké úrovni všech selhání. Po kliknutí na dlaždici přejdete do zobrazení řídicího panelu.
+Dlaždice VMware se zobrazí v pracovním prostoru Log Analytics. Poskytuje podrobný pohled na případné chyby. Když kliknete na dlaždici, přejdete do zobrazení řídicího panelu.
 
 ![tile (obkladač)](./media/vmware/tile.png)
 
 #### <a name="navigate-the-dashboard-view"></a>Navigace v zobrazení řídicího panelu
-V zobrazení řídicího panelu **společnosti VMware** jsou listy uspořádány podle:
+V zobrazení řídicího panelu **VMware** jsou okna uspořádána podle:
 
 * Počet stavů selhání
-* Nejlepší hostitel podle počtu událostí
-* Nejlepší počty událostí
-* Aktivity virtuálních strojů
-* Události hostitelského disku ESXi
+* Hlavní hostitel podle počtu událostí
+* Počty hlavních událostí
+* Aktivity virtuálních počítačů
+* Události disku hostitele ESXi
 
-![řešení1](./media/vmware/solutionview1-1.png)
+![solution1](./media/vmware/solutionview1-1.png)
 
-![řešení2](./media/vmware/solutionview1-2.png)
+![solution2](./media/vmware/solutionview1-2.png)
 
-Kliknutím na libovolné okno otevřete podokno hledání Analýzy protokolů, které zobrazuje podrobné informace specifické pro okno.
+Kliknutím na libovolné okno otevřete Log Analytics podokně hledání, které zobrazuje podrobné informace specifické pro okno.
 
-Zde můžete upravit dotaz protokolu a upravit jej pro něco konkrétního. Podrobnosti o vytváření dotazů protokolu najdete v [tématu Hledání dat pomocí dotazů protokolu v Azure Monitor](../log-query/log-query-overview.md).
+Z tohoto místa můžete upravit dotaz protokolu a upravit ho pro konkrétní specifickou hodnotu. Podrobnosti o vytváření dotazů protokolu najdete v tématu [hledání dat pomocí dotazů protokolu v Azure monitor](../log-query/log-query-overview.md).
 
 #### <a name="find-esxi-host-events"></a>Najít události hostitele ESXi
-Jeden hostitel ESXi generuje více protokolů na základě jejich procesů. Řešení VMware Monitoring je centralizuje a shrnuje počty událostí. Toto centralizované zobrazení vám pomůže pochopit, který hostitel ESXi má velký objem událostí a jaké události se vyskytují nejčastěji ve vašem prostředí.
+Jeden hostitel ESXi generuje více protokolů na základě jejich procesů. VMware Monitoring řešení je centralizovaná a shrnuje počty událostí. Toto centralizované zobrazení vám pomůže pochopit, který hostitel ESXi má velký objem událostí a k jakým událostem dochází nejčastěji ve vašem prostředí.
 
 ![event](./media/vmware/events.png)
 
-Můžete přejít k podrobnostem kliknutím na hostitele ESXi nebo typ události.
+Další podrobnosti můžete zobrazit kliknutím na hostitele ESXi nebo na typ události.
 
-Po klepnutí na název hostitele ESXi zobrazíte informace z tohoto hostitele ESXi. Pokud chcete zúžit výsledky s typem události, přidejte `“ProcessName_s=EVENT TYPE”` do vyhledávacího dotazu. Ve vyhledávacím filtru můžete vybrat **Název_procesu.** To zužuje informace pro vás.
+Když kliknete na název hostitele ESXi, zobrazí se informace z tohoto hostitele ESXi. Pokud chcete zúžit výsledky s typem události, přidejte `“ProcessName_s=EVENT TYPE”` je do vyhledávacího dotazu. Ve vyhledávacím filtru můžete vybrat možnost **Process** . Tím se omezí informace za vás.
 
-![Vrtačka](./media/vmware/eventhostdrilldown.png)
+![Drob](./media/vmware/eventhostdrilldown.png)
 
-#### <a name="find-high-vm-activities"></a>Vyhledání vysokých aktivit virtuálních montovek
-Virtuální počítač lze vytvořit a odstranit na libovolném hostiteli ESXi. Je užitečné pro správce určit, kolik virtuálních účtů hostitel ESXi vytvoří. To zase pomáhá pochopit výkon a plánování kapacity. Sledování událostí aktivit virtuálních počítačů je při správě vašeho prostředí klíčové.
+#### <a name="find-high-vm-activities"></a>Najít vysoké aktivity virtuálních počítačů
+Virtuální počítač se dá vytvořit a odstranit na jakémkoli hostiteli ESXi. Správce může zjistit, kolik virtuálních počítačů vytvoří hostitel ESXi. To zase pomáhá pochopit plánování výkonu a kapacity. Sledování událostí aktivit virtuálních počítačů je klíčové při správě vašeho prostředí.
 
-![Vrtačka](./media/vmware/vmactivities1.png)
+![Drob](./media/vmware/vmactivities1.png)
 
-Pokud chcete zobrazit další data pro vytváření virtuálních virtuálních informací hostitele ESXi, klikněte na název hostitele ESXi.
+Pokud se chcete podívat na další data o vytváření virtuálních počítačů hostitele ESXi, klikněte na název hostitele ESXi.
 
-![Vrtačka](./media/vmware/createvm.png)
+![Drob](./media/vmware/createvm.png)
 
 #### <a name="common-log-queries"></a>Běžné dotazy protokolu
-Řešení obsahuje další užitečné dotazy, které vám pomohou spravovat hostitele ESXi, jako je vysoký úložný prostor, latence úložiště a selhání cesty.
+Řešení zahrnuje další užitečné dotazy, které vám pomůžou spravovat hostitele ESXi, jako je třeba vysoký prostor úložiště, latence úložiště a selhání cesty.
 
-![Dotazy](./media/vmware/queries.png)
+![odešle](./media/vmware/queries.png)
 
 
 #### <a name="save-queries"></a>Uložení dotazů
-Ukládání dotazů protokolu je standardní funkce ve službě Azure Monitor a může vám pomoci zachovat všechny dotazy, které jste našli užitečné. Po vytvoření dotazu, který považujete za užitečný, jej uložte klepnutím na **položku Oblíbené položky**. Uložený dotaz umožňuje jeho pozdější použití na stránce [Můj řídicí panel,](../learn/tutorial-logs-dashboards.md) kde můžete vytvořit vlastní řídicí panely.
+Ukládání dotazů na protokol je standardní funkce v Azure Monitor a může pomoct s případnými dotazy, které byly užitečné. Po vytvoření dotazu, který je užitečný, ho uložte kliknutím na **Oblíbené položky**. Uložený dotaz vám umožní snadno ho znovu použít později ze stránky [Můj řídicí panel](../learn/tutorial-logs-dashboards.md) , kde můžete vytvořit vlastní řídicí panely.
 
-![Zobrazení řídicího panelu dockeru](./media/vmware/dockerdashboardview.png)
+![DockerDashboardView](./media/vmware/dockerdashboardview.png)
 
 #### <a name="create-alerts-from-queries"></a>Vytváření výstrah z dotazů
-Po vytvoření dotazů můžete použít dotazy k upozornění, když dojde k určité události. Informace o tom, jak vytvářet výstrahy, najdete v tématu [Výstrahy v Log Analytics.](../platform/alerts-overview.md) Příklady upozornění na dotazy a další příklady dotazů najdete v [tématu Monitor VMware pomocí blogu Log Analytics.](https://blogs.technet.microsoft.com/msoms/2016/06/15/monitor-vmware-using-oms-log-analytics)
+Po vytvoření dotazů můžete chtít použít dotazy, které vás upozorní, když dojde k určitým událostem. Informace o tom, jak vytvářet výstrahy, najdete [v tématu výstrahy v Log Analytics](../platform/alerts-overview.md) . Příklady dotazů na dotazy a další příklady dotazů naleznete v příspěvku k [VMware pomocí Log Analytics](https://blogs.technet.microsoft.com/msoms/2016/06/15/monitor-vmware-using-oms-log-analytics) Blogový příspěvek.
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
-### <a name="what-do-i-need-to-do-on-the-esxi-host-setting-what-impact-will-it-have-on-my-current-environment"></a>Co musím udělat s nastavením hostitele ESXi? Jaký dopad to bude mít na mé současné prostředí?
-Řešení používá nativní ESXi Host Syslog předávání mechanismus. K zachycení protokolů nepotřebujete žádný další software společnosti Microsoft na hostiteli ESXi. To by mělo mít malý dopad na vaše stávající prostředí. Je však nutné nastavit předávání syslogu, což je funkce ESXI.
+### <a name="what-do-i-need-to-do-on-the-esxi-host-setting-what-impact-will-it-have-on-my-current-environment"></a>Co musím udělat v nastavení hostitele ESXi? Jaký dopad bude mít v mém aktuálním prostředí?
+Řešení používá nativní mechanizmus předávání syslog hostitele ESXi. Pro zachycení protokolů není potřeba žádný další software Microsoftu na hostiteli ESXi. Mělo by mít nízký dopad na vaše stávající prostředí. Je ale potřeba nastavit předávání syslog, což je funkce ESXI.
 
-### <a name="do-i-need-to-restart-my-esxi-host"></a>Musím restartovat hostitele ESXi?
-Ne. Tento proces nevyžaduje restartování. V některých případě vSphere není správně aktualizovat syslog. V takovém případě se přihlaste k hostiteli ESXi a znovu načtěte syslog. Opět není nutné restartovat hostitele, takže tento proces není rušivý pro vaše prostředí.
+### <a name="do-i-need-to-restart-my-esxi-host"></a>Potřebuji restartovat hostitele ESXi?
+Ne. Tento proces nevyžaduje restart. V některých případech vSphere nesprávně aktualizuje syslog. V takovém případě se přihlaste k hostiteli ESXi a znovu načtěte protokol syslog. Znovu nemusíte restartovat hostitele, takže tento proces nebude mít dopad na vaše prostředí.
 
-### <a name="can-i-increase-or-decrease-the-volume-of-log-data-sent-to-log-analytics"></a>Můžu zvýšit nebo snížit objem dat protokolu odeslaných do Log Analytics?
-Ano, můžete. Nastavení úrovně protokolu hostitele ESXi můžete použít ve vSphere. Kolekce protokolů je založena na úrovni *informací.* Takže pokud chcete auditovat vytvoření nebo odstranění virtuálního počítače, musíte zachovat úroveň *informací* na Hostd. Další informace naleznete ve [znalostní bázi VMware Knowledge Base](https://kb.vmware.com/selfservice/microsites/search.do?&cmd=displayKC&externalId=1017658).
+### <a name="can-i-increase-or-decrease-the-volume-of-log-data-sent-to-log-analytics"></a>Můžu zvýšit nebo snížit objem dat protokolu odesílaných do Log Analytics?
+Ano, můžete. V vSphere můžete použít nastavení úrovně protokolu hostitele ESXi. Shromažďování protokolů je založeno na úrovni *informací* . Pokud tedy chcete auditovat vytváření nebo odstraňování virtuálních počítačů, je třeba zachovat úroveň *informací* na hostiteli. Další informace najdete v [článku znalostní báze VMware](https://kb.vmware.com/selfservice/microsites/search.do?&cmd=displayKC&externalId=1017658).
 
-### <a name="why-is-hostd-not-providing-data-to-log-analytics-my-log-setting-is-set-to-info"></a>Proč Hostd neposkytuje data do služby Log Analytics? Nastavení protokolu je nastaveno na informace.
-Pro časové razítko syslogu došlo k chybě hostitele ESXi. Další informace naleznete ve [znalostní bázi VMware Knowledge Base](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2111202). Po použití řešení hostované by měl fungovat normálně.
+### <a name="why-is-hostd-not-providing-data-to-log-analytics-my-log-setting-is-set-to-info"></a>Proč hostitel neposkytuje data Log Analytics? Nastavení moje protokol je nastaveno na informace.
+Došlo k chybě hostitele ESXi pro časové razítko syslog. Další informace najdete v [článku znalostní báze VMware](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2111202). Po použití alternativního řešení by měl hostitel fungovat normálně.
 
-### <a name="can-i-have-multiple-esxi-hosts-forwarding-syslog-data-to-a-single-vm-with-omsagent"></a>Můžu mít více hostitelů ESXi přeposílání dat syslogu do jednoho virtuálního počítači s omsagentem?
-Ano. Můžete mít více hostitelů ESXi předávání do jednoho virtuálního počítači s omsagent.
+### <a name="can-i-have-multiple-esxi-hosts-forwarding-syslog-data-to-a-single-vm-with-omsagent"></a>Můžu více hostitelů ESXi předávat data syslogu do jednoho virtuálního počítače pomocí omsagent?
+Ano. K jednomu virtuálnímu počítači s omsagent může předávat víc hostitelů ESXi.
 
-### <a name="why-dont-i-see-data-flowing-into-log-analytics"></a>Proč nevidím data proudící do analýzy protokolů?
-Důvodů může být několik důvodů:
+### <a name="why-dont-i-see-data-flowing-into-log-analytics"></a>Proč se mi nezobrazuje tok dat do Log Analytics?
+Může existovat několik důvodů:
 
-* Hostitel ESXi není správně odesílání dat do virtuálního zařízení běží omsagent. Chcete-li provést testování, proveďte následující kroky:
+* Hostitel ESXi nevkládá data do virtuálního počítače se systémem omsagent správně. Chcete-li provést test, proveďte následující kroky:
 
-  1. Chcete-li potvrdit, přihlaste se k hostiteli ESXi pomocí ssh a spusťte následující příkaz:`nc -z ipaddressofVM 1514`
+  1. Potvrďte to tak, že se přihlásíte k hostiteli ESXi pomocí SSH a spustíte následující příkaz:`nc -z ipaddressofVM 1514`
 
-      Pokud to není úspěšné, nastavení vSphere v rozšířené konfiguraci pravděpodobně nejsou správné. Informace o tom, jak nastavit hostitele ESXi pro předávání syslogů, najdete v tématu [Konfigurace kolekce syslogů.](#configure-syslog-collection)
-  1. Pokud je připojení portu syslogu úspěšné, ale stále nevidíte žádná data, načtěte syslog na hostiteli ESXi opětovným použitím ssh a spusťte následující příkaz:`esxcli system syslog reload`
-* Virtuální ms s agentem Log Analytics není správně nastavena. Chcete-li to otestovat, proveďte následující kroky:
+      Pokud to neproběhne úspěšně, nastavení vSphere v rozšířené konfiguraci nejspíš nejsou správná. Informace o tom, jak nastavit hostitele ESXi pro předávání syslog, najdete v tématu [Konfigurace kolekce SYSLOG](#configure-syslog-collection) .
+  1. Pokud je připojení portu syslog úspěšné, ale pořád se nezobrazí žádná data, pak znovu načtěte na hostiteli ESXi pomocí SSH tento příkaz:`esxcli system syslog reload`
+* Virtuální počítač s agentem Log Analytics není správně nastavený. Pokud to chcete otestovat, proveďte následující kroky:
 
-  1. Log Analytics naslouchá portu 1514. Chcete-li ověřit, zda je otevřená, spusťte následující příkaz:`netstat -a | grep 1514`
-  1. Měli byste `1514/tcp` vidět port otevřený. Pokud tak neučiníte, ověřte, zda je omsagent nainstalován správně. Pokud nevidíte informace o portu, pak port syslog není otevřen a na virtuálním počítači.
+  1. Log Analytics naslouchá na portu 1514. Pokud chcete ověřit, že je otevřený, spusťte následující příkaz:`netstat -a | grep 1514`
+  1. Měl by se zobrazit `1514/tcp` otevřený port. Pokud to neuděláte, ověřte, že je omsagent správně nainstalovaný. Pokud nevidíte informace o portu, pak na virtuálním počítači není otevřený port syslog.
 
-    a. Ověřte, zda je agent `ps -ef | grep oms`analýzy protokolů spuštěn pomocí aplikace . Pokud není spuštěn, spusťte proces spuštěním příkazu`sudo /opt/microsoft/omsagent/bin/service_control start`
+    a. Pomocí nástroje `ps -ef | grep oms`ověřte, zda je spuštěný agent Log Analytics. Pokud není spuštěný, spusťte proces spuštěním příkazu.`sudo /opt/microsoft/omsagent/bin/service_control start`
 
      b. Otevřete soubor `/etc/opt/microsoft/omsagent/conf/omsagent.d/vmware_esxi.conf`.
 
-     c. Ověřte, zda je správné nastavení uživatele a skupiny platné, podobně jako:`-rw-r--r-- 1 omsagent omiusers 677 Sep 20 16:46 vmware_esxi.conf`
+     c. Ověřte, jestli je správné nastavení uživatele a skupiny, podobně jako:`-rw-r--r-- 1 omsagent omiusers 677 Sep 20 16:46 vmware_esxi.conf`
 
-     d. Pokud soubor neexistuje nebo je nesprávné nastavení uživatele a skupiny, provádějte nápravná opatření [přípravou serveru Linux](#prepare-a-linux-server).
+     d. Pokud soubor neexistuje nebo se jedná o nesprávné nastavení uživatele a skupiny, proveďte nápravná opatření [přípravou serveru pro Linux](#prepare-a-linux-server).
 
 ## <a name="next-steps"></a>Další kroky
-* Pomocí [dotazů protokolu](../log-query/log-query-overview.md) v Log Analytics zobrazte podrobná data hostitele voblasti VMware.
-* [Vytvořte si vlastní řídicí panely](../learn/tutorial-logs-dashboards.md) zobrazující data hostitele vMware.
-* [Vytvořte výstrahy,](../platform/alerts-overview.md) když dojde k určitým událostem hostitele VMware.
+* K zobrazení podrobných dat hostitele VMware použijte [dotazy protokolu](../log-query/log-query-overview.md) v Log Analytics.
+* [Vytvořte si vlastní řídicí panely](../learn/tutorial-logs-dashboards.md) zobrazující data hostitele VMware.
+* [Vytváření výstrah](../platform/alerts-overview.md) v případě, že dojde k určitým událostem hostitele VMware.

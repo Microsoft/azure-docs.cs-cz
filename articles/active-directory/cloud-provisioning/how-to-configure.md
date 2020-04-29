@@ -1,6 +1,6 @@
 ---
-title: Azure AD Connect zřazování nové konfigurace agenta
-description: Tento článek popisuje, jak nainstalovat zřizování cloudu.
+title: Konfigurace nového agenta Azure AD Connect zřízení cloudu
+description: Tento článek popisuje, jak nainstalovat cloudové zřizování.
 services: active-directory
 author: billmath
 manager: daveba
@@ -12,74 +12,74 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c086227d23901cb7904d8cc0a768e9f4b5ad43db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77620978"
 ---
-# <a name="create-a-new-configuration-for-azure-ad-connect-cloud-based-provisioning"></a>Vytvoření nové konfigurace pro cloudové zřizování Azure AD Connect
+# <a name="create-a-new-configuration-for-azure-ad-connect-cloud-based-provisioning"></a>Vytvoření nové konfigurace pro Azure AD Connect cloudové zřizování
 
-Po instalaci agenta se musíte přihlásit k portálu Azure a nakonfigurovat azure active directory (Azure AD) connect cloud zřizování. Chcete-li agenta povolit, postupujte takto.
+Po nainstalování agenta se budete muset přihlásit do Azure Portal a nakonfigurovat Azure Active Directory (Azure AD) Connect Cloud Provisioning. Chcete-li povolit agenta, postupujte podle těchto kroků.
 
 ## <a name="configure-provisioning"></a>Konfigurace zřizování
-Chcete-li konfigurovat zřizování, postupujte takto.
+Pokud chcete nakonfigurovat zřizování, postupujte podle těchto kroků.
 
 1.  Na portálu Azure Portal vyberte **Azure Active Directory**.
 1.  Vyberte **Azure AD Connect**.
-1.  Vyberte **Spravovat zřizování (náhled).**
+1.  Vyberte **Spravovat zřizování (Preview)**.
 
-    ![Správa zřizování (náhled)](media/how-to-configure/manage1.png)
+    ![Spravovat zřizování (Preview)](media/how-to-configure/manage1.png)
 
-1.  Vyberte **nová konfigurace**.
-1.  Na konfigurační obrazovce je předem vyplněná místní doména.
-1.  Zadejte **e-mail s oznámením**. Tento e-mail bude upozorněn, když zřizování není v pořádku.
-1.  Přesuňte volič na **Povolit**a vyberte **Uložit**.
+1.  Vyberte **Nová konfigurace**.
+1.  Na obrazovce konfigurace se předběžně vyplní místní doména.
+1.  Zadejte **e-mailové oznámení**. Tento e-mail se upozorní, když zřizování není v pořádku.
+1.  Přesuňte selektor, který chcete **Povolit**, a vyberte **Uložit**.
 
-    ![Zřizování Azure AD (preview)](media/tutorial-single-forest/configure2.png)
+    ![Zřizování Azure AD (Preview)](media/tutorial-single-forest/configure2.png)
 
-## <a name="scope-provisioning-to-specific-users-and-groups"></a>Zřizování rozsahu pro konkrétní uživatele a skupiny
-Agenta můžete určit tak, aby synchronizoval konkrétní uživatele a skupiny pomocí místních skupin služby Active Directory nebo organizačních jednotek. Skupiny a organizační jednotky nelze konfigurovat v rámci konfigurace. 
+## <a name="scope-provisioning-to-specific-users-and-groups"></a>Zřizování oboru pro konkrétní uživatele a skupiny
+Můžete určit, že má agent synchronizovat konkrétní uživatele a skupiny pomocí místních skupin služby Active Directory nebo organizačních jednotek. V rámci konfigurace nemůžete konfigurovat skupiny a organizační jednotky. 
 
 1.  Na portálu Azure Portal vyberte **Azure Active Directory**.
 1.  Vyberte **Azure AD Connect**.
-1.  Vyberte **Spravovat zřizování (náhled).**
-1.  V části **Konfigurace**vyberte konfiguraci.
+1.  Vyberte **Spravovat zřizování (Preview)**.
+1.  V části **Konfigurace**vyberte svou konfiguraci.
 
-    ![Oddíl Konfigurace](media/how-to-configure/scope1.png)
+    ![Konfigurační oddíl](media/how-to-configure/scope1.png)
 
-1.  V části **Konfigurovat**vyberte **Možnost Všichni uživatelé,** chcete-li změnit rozsah pravidla konfigurace.
+1.  V části **Konfigurovat**vyberte možnost **Všichni uživatelé** a změňte rozsah pravidla konfigurace.
 
-    ![Možnost Všichni uživatelé](media/how-to-configure/scope2.png)
+    ![Možnost všichni uživatelé](media/how-to-configure/scope2.png)
 
-1. Na pravé straně můžete změnit obor tak, aby zahrnoval pouze skupiny zabezpečení. Zadejte rozlišující název skupiny a vyberte **Přidat**.
+1. Napravo můžete změnit obor tak, aby zahrnoval pouze skupiny zabezpečení. Zadejte rozlišující název skupiny a vyberte **Přidat**.
 
     ![Vybraná možnost skupin zabezpečení](media/how-to-configure/scope3.png)
 
-1.  Nebo můžete změnit obor tak, aby zahrnoval pouze určité organizační jednotky. Vyberte **Hotovo** a **Uložit**.  
+1.  Můžete také změnit obor tak, aby zahrnoval pouze konkrétní organizační jednotky. Vyberte **Hotovo** a **Uložit**.  
 2.  Po změně oboru byste měli [restartovat zřizování](#restart-provisioning) a zahájit okamžitou synchronizaci změn.
 
     ![Možnost vybraných organizačních jednotek](media/how-to-configure/scope4.png)
 
 
 ## <a name="restart-provisioning"></a>Restartovat zřizování 
-Pokud nechcete čekat na další naplánované spuštění, aktivujte spuštění zřizování pomocí tlačítka **Restartzování.** 
+Pokud nechcete čekat na další naplánované spuštění, aktivujte zřizování spuštěním pomocí tlačítka pro **restartování** . 
 1.  Na portálu Azure Portal vyberte **Azure Active Directory**.
 1.  Vyberte **Azure AD Connect**.
-1.  Vyberte **Spravovat zřizování (náhled).**
-1.  V části **Konfigurace**vyberte konfiguraci.
+1.  Vyberte **Spravovat zřizování (Preview)**.
+1.  V části **Konfigurace**vyberte svou konfiguraci.
 
     ![Výběr konfigurace pro restartování zřizování](media/how-to-configure/scope1.png)
 
-1.  V horní části vyberte **Restartovat zřizování**.
+1.  V horní části vyberte **restartovat zřizování**.
 
-## <a name="remove-a-configuration"></a>Odebrání konfigurace
-Chcete-li odstranit konfiguraci, postupujte takto.
+## <a name="remove-a-configuration"></a>Odebrat konfiguraci
+Pokud chcete konfiguraci odstranit, postupujte podle těchto kroků.
 
 1.  Na portálu Azure Portal vyberte **Azure Active Directory**.
 1.  Vyberte **Azure AD Connect**.
-1.  Vyberte **Spravovat zřizování (náhled).**
-1.  V části **Konfigurace**vyberte konfiguraci.
+1.  Vyberte **Spravovat zřizování (Preview)**.
+1.  V části **Konfigurace**vyberte svou konfiguraci.
 
     ![Výběr konfigurace pro odebrání konfigurace](media/how-to-configure/scope1.png)
 
@@ -88,7 +88,7 @@ Chcete-li odstranit konfiguraci, postupujte takto.
     ![Tlačítko Odstranit](media/how-to-configure/remove1.png)
 
 >[!IMPORTANT]
->Před odstraněním konfigurace není žádné potvrzení. Před výběrem možnosti **Odstranit**se ujistěte, že se jedná o akci, kterou chcete provést.
+>Před odstraněním konfigurace se nejedná o žádné potvrzení. Ujistěte se, že se jedná o akci, kterou chcete provést před výběrem možnosti **Odstranit**.
 
 
 ## <a name="next-steps"></a>Další kroky 

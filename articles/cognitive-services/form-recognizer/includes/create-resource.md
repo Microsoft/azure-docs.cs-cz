@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 06/12/2019
 ms.author: pafarley
 ms.openlocfilehash: 33624ab800bd1155b52efbc05f317122a99bb479
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78205813"
 ---
 Přejít <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer" title="na Azure Portal a vytvořit nový prostředek" target="_blank">pro rozpoznávání formulářů vytvořit nový prostředek <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>pro rozpoznávání formulářů. V podokně **vytvořit** zadejte následující informace:

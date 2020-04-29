@@ -1,6 +1,6 @@
 ---
-title: Vytvoření nebo aktualizace vlastních rolí Azure pomocí portálu Azure (preview) – Azure RBAC
-description: Zjistěte, jak vytvořit vlastní role Azure pro řízení přístupu na základě rolí Azure (Azure RBAC) pomocí portálu Azure. To zahrnuje způsob, jak vypsat, vytvořit, aktualizovat a odstranit vlastní role.
+title: Vytvoření nebo aktualizace vlastních rolí Azure pomocí Azure Portal (Preview) – Azure RBAC
+description: Naučte se vytvářet vlastní role Azure pro řízení přístupu na základě role Azure (Azure RBAC) pomocí Azure Portal. Zahrnuje to, jak vypisovat, vytvářet, aktualizovat a odstraňovat vlastní role.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,81 +13,81 @@ ms.workload: identity
 ms.date: 02/26/2020
 ms.author: rolyon
 ms.openlocfilehash: 3204cdf51f3f37588f684f801a811f569b337d13
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77674867"
 ---
-# <a name="create-or-update-azure-custom-roles-using-the-azure-portal-preview"></a>Vytvoření nebo aktualizace vlastních rolí Azure pomocí portálu Azure (Preview)
+# <a name="create-or-update-azure-custom-roles-using-the-azure-portal-preview"></a>Vytvoření nebo aktualizace vlastních rolí Azure pomocí Azure Portal (Preview)
 
 > [!IMPORTANT]
-> Vlastní role Azure pomocí portálu Azure je aktuálně ve verzi Public Preview.
+> Vlastní role Azure pomocí Azure Portal jsou momentálně ve verzi Public Preview.
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Pokud [předdefinované role Azure](built-in-roles.md) nesplňují specifické potřeby vaší organizace, můžete si vytvořit vlastní vlastní role Azure. Stejně jako předdefinované role můžete přiřadit vlastní role uživatelům, skupinám a instančním objektům v oborech předplatného a skupiny prostředků. Vlastní role se ukládají v adresáři Azure Active Directory (Azure AD) a můžou být sdíleny mezi předplatnými. Každý adresář může mít až 5000 vlastních rolí. Vlastní role se můžou vytvářet pomocí portálu Azure, Azure PowerShellu, rozhraní API Azure nebo rozhraní REST API. Tento článek popisuje, jak vytvořit vlastní role pomocí portálu Azure (aktuálně ve verzi Preview).
+Pokud [předdefinované role Azure](built-in-roles.md) nevyhovují konkrétním potřebám vaší organizace, můžete vytvořit vlastní vlastní role Azure. Stejně jako předdefinované role můžete uživatelům, skupinám a instančním objektům přiřadit vlastní role v oborech předplatného a skupiny prostředků. Vlastní role se ukládají v adresáři Azure Active Directory (Azure AD) a můžou se sdílet mezi předplatnými. Každý adresář může mít až 5000 vlastních rolí. Vlastní role se dají vytvořit pomocí Azure Portal, Azure PowerShell, rozhraní příkazového řádku Azure nebo REST API. Tento článek popisuje, jak vytvořit vlastní role pomocí Azure Portal (aktuálně ve verzi Preview).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li vytvořit vlastní role, potřebujete:
+K vytvoření vlastních rolí budete potřebovat:
 
 - Oprávnění k vytváření vlastních rolí, například [Vlastník](built-in-roles.md#owner) nebo [Správce přístupu uživatelů](built-in-roles.md#user-access-administrator)
 
-## <a name="step-1-determine-the-permissions-you-need"></a>Krok 1: Určení oprávnění, která potřebujete
+## <a name="step-1-determine-the-permissions-you-need"></a>Krok 1: určení potřebných oprávnění
 
-Azure má tisíce oprávnění, která můžete potenciálně zahrnout do vlastní role. Zde jsou čtyři způsoby, jak můžete určit oprávnění, která budete chtít přidat do vlastní role:
+Azure má tisíce oprávnění, která můžete zahrnout do vaší vlastní role. Tady je čtyř způsobů, jak můžete určit oprávnění, která budete chtít přidat do vlastní role:
 
 | Metoda | Popis |
 | --- | --- |
-| Podívejte se na existující role | Můžete se podívat na existující role a zjistit, jaká oprávnění se používají. Další informace najdete [v tématu Předdefinované role Azure](built-in-roles.md). |
-| Hledání oprávnění podle klíčového slova | Když vytvoříte vlastní roli pomocí portálu Azure, můžete vyhledávat oprávnění podle klíčového slova. Můžete například vyhledat oprávnění k *virtuálnímu počítači* nebo *fakturaci.* Tato funkce hledání je popsána dále v [kroku 4: Oprávnění](#step-4-permissions). |
-| Stáhnout všechna oprávnění | Když vytvoříte vlastní roli pomocí portálu Azure, můžete stáhnout všechna oprávnění jako soubor CSV a pak prohledat tento soubor. V podokně **Přidat oprávnění** klikněte na tlačítko Stáhnout **všechna oprávnění** a stáhněte všechna oprávnění. Další informace o podokně Přidat oprávnění naleznete v [tématu Krok 4: Oprávnění](#step-4-permissions). |
-| Zobrazení oprávnění v dokumentech | Dostupná oprávnění můžete zobrazit v [operacích zprostředkovatele prostředků Azure Resource Manageru](resource-provider-operations.md). |
+| Podívejte se na stávající role | Můžete si prohlédnout stávající role a zjistit, jaká oprávnění jsou používána. Další informace najdete v tématu [předdefinované role Azure](built-in-roles.md). |
+| Vyhledat oprávnění podle klíčového slova | Když vytvoříte vlastní roli pomocí Azure Portal, můžete vyhledat oprávnění podle klíčového slova. Můžete například vyhledat *virtuální počítač* nebo oprávnění *fakturace* . Tato funkce hledání je podrobněji popsána v [kroku 4: oprávnění](#step-4-permissions). |
+| Stáhnout všechna oprávnění | Když vytvoříte vlastní roli pomocí Azure Portal, můžete stáhnout všechna oprávnění jako soubor CSV a potom tento soubor vyhledat. V podokně **Přidat oprávnění** kliknutím na tlačítko **Stáhnout všechna oprávnění** Stáhněte všechna oprávnění. Další informace o podokně Přidat oprávnění najdete v části [Krok 4: oprávnění](#step-4-permissions). |
+| Zobrazení oprávnění v dokumentaci | Dostupná oprávnění můžete zobrazit v [Azure Resource Manager operacích poskytovatele prostředků](resource-provider-operations.md). |
 
-## <a name="step-2-choose-how-to-start"></a>Krok 2: Zvolte způsob spuštění
+## <a name="step-2-choose-how-to-start"></a>Krok 2: Volba způsobu spuštění
 
-Existují tři způsoby, jak můžete začít vytvářet vlastní roli. Můžete klonovat existující roli, začít od začátku nebo začít se souborem JSON. Nejjednodušší způsob je najít existující roli, která má většinu oprávnění, které potřebujete, a potom klonovat a upravit pro váš scénář. 
+Existují tři způsoby, jak můžete začít vytvářet vlastní role. Můžete naklonovat stávající roli, začít od začátku nebo začít se souborem JSON. Nejjednodušší způsob je najít stávající roli, která má většinu oprávnění, která potřebujete, a pak ji klonovat a upravit pro váš scénář. 
 
-### <a name="clone-a-role"></a>Klonovat roli
+### <a name="clone-a-role"></a>Naklonování role
 
-Pokud existující role zcela nemá potřebná oprávnění, můžete ji naklonovat a potom je upravit. Chcete-li zahájit klonování role, postupujte takto.
+Pokud existující role nemá poměrně potřebná oprávnění, můžete ji klonovat a pak změnit její oprávnění. Pomocí těchto kroků spustíte klonování role.
 
-1. Na webu Azure Portal otevřete předplatné nebo skupinu prostředků, kde chcete přiřadit vlastní roli, a pak otevřete **řízení přístupu (IAM).**
+1. V Azure Portal otevřete předplatné nebo skupinu prostředků, ve které chcete přiřadit vlastní roli, a pak otevřete **řízení přístupu (IAM)**.
 
-    Následující snímek obrazovky ukazuje stránku řízení přístupu (IAM) otevřenou pro předplatné.
+    Na následujícím snímku obrazovky vidíte stránku řízení přístupu (IAM) otevřenou pro předplatné.
 
     ![Stránka řízení přístupu (IAM) pro předplatné](./media/custom-roles-portal/access-control-subscription.png)
 
-1. Kliknutím na kartu **Role** zobrazíte seznam všech předdefinovaných a vlastních rolí.
+1. Kliknutím na kartu **role** zobrazíte seznam všech předdefinovaných a vlastních rolí.
 
-1. Vyhledejte roli, kterou chcete klonovat, například roli Čtenář fakturace.
+1. Vyhledejte roli, kterou chcete klonovat, jako je například role čtecího modulu fakturace.
 
-1. Na konci řádku klikněte na tři tečky (**...**) a potom klikněte na **Klonovat**.
+1. Na konci řádku klikněte na tři tečky (**...**) a pak klikněte na **klonovat**.
 
-    ![Kontextová nabídka Klonování](./media/custom-roles-portal/clone-menu.png)
+    ![Klonovat kontextovou nabídku](./media/custom-roles-portal/clone-menu.png)
 
-    Tím se otevře editor vlastních rolí s vybranou možností **Klonovat roli.**
+    Tím se otevře Editor vlastních rolí s vybranou možností **klonovat roli** .
 
 1. Přejděte ke [kroku 3: Základy](#step-3-basics).
 
 ### <a name="start-from-scratch"></a>Začátek od nuly
 
-Pokud chcete, můžete podle těchto kroků spustit vlastní roli od začátku.
+Pokud budete chtít, můžete podle těchto kroků začít vlastní roli úplně od začátku.
 
-1. Na webu Azure Portal otevřete předplatné nebo skupinu prostředků, kde chcete přiřadit vlastní roli, a pak otevřete **řízení přístupu (IAM).**
+1. V Azure Portal otevřete předplatné nebo skupinu prostředků, ve které chcete přiřadit vlastní roli, a pak otevřete **řízení přístupu (IAM)**.
 
-1. Klikněte na **Přidat** a potom na **Přidat vlastní roli (náhled).**
+1. Klikněte na **Přidat** a pak klikněte na **Přidat vlastní roli (Preview)**.
 
-    ![Přidat vlastní nabídku rolí](./media/custom-roles-portal/add-custom-role-menu.png)
+    ![Přidat vlastní nabídku role](./media/custom-roles-portal/add-custom-role-menu.png)
 
-    Tím se otevře editor vlastních rolí s vybranou volbou **Start od začátku.**
+    Otevře se Editor vlastních rolí s vybranou možností **začít od začátku** .
 
 1. Přejděte ke [kroku 3: Základy](#step-3-basics).
 
-### <a name="start-from-json"></a>Začněte od JSON
+### <a name="start-from-json"></a>Začít od formátu JSON
 
-Pokud chcete, můžete zadat většinu vlastních hodnot rolí v souboru JSON. Soubor můžete otevřít v editoru vlastních rolí, provést další změny a potom vytvořit vlastní roli. Chcete-li začít se souborem JSON, postupujte takto.
+Pokud dáváte přednost, můžete v souboru JSON zadat většinu vlastních hodnot role. Tento soubor můžete otevřít v Editoru vlastních rolí, udělat další změny a pak vytvořit vlastní roli. Pomocí následujícího postupu začněte se souborem JSON.
 
 1. Vytvořte soubor JSON, který má následující formát:
 
@@ -109,7 +109,7 @@ Pokud chcete, můžete zadat většinu vlastních hodnot rolí v souboru JSON. S
     }
     ```
 
-1. V souboru JSON zadejte hodnoty pro různé vlastnosti. Zde je příklad s některými přidanými hodnotami. Informace o různých vlastnostech naleznete v [tématu Understand role definitions](role-definitions.md).
+1. V souboru JSON zadejte hodnoty pro různé vlastnosti. Tady je příklad s přidanými hodnotami. Informace o různých vlastnostech naleznete v tématu [Principy definic rolí](role-definitions.md).
 
     ```json
     {
@@ -139,77 +139,77 @@ Pokud chcete, můžete zadat většinu vlastních hodnot rolí v souboru JSON. S
     }
     ```
     
-1. Na webu Azure Portal otevřete stránku **řízení přístupu (IAM).**
+1. V Azure Portal otevřete stránku **řízení přístupu (IAM)** .
 
-1. Klikněte na **Přidat** a potom na **Přidat vlastní roli (náhled).**
+1. Klikněte na **Přidat** a pak klikněte na **Přidat vlastní roli (Preview)**.
 
-    ![Přidat vlastní nabídku rolí](./media/custom-roles-portal/add-custom-role-menu.png)
+    ![Přidat vlastní nabídku role](./media/custom-roles-portal/add-custom-role-menu.png)
 
-    Tím se otevře editor vlastních rolí.
+    Otevře se Editor vlastních rolí.
 
-1. Na kartě Základy vyberte v **části Oprávnění směrného plánu**možnost Začít z pole **JSON**.
+1. Na kartě základy vyberte v části **základní oprávnění**možnost **začít od formátu JSON**.
 
-1. Vedle pole Vybrat soubor klepnutím na tlačítko složky otevřete dialogové okno Otevřít.
+1. Vedle pole vybrat soubor klikněte na tlačítko Složka a otevřete dialogové okno otevřít.
 
-1. Vyberte soubor JSON a klepněte na tlačítko **Otevřít**.
+1. Vyberte soubor JSON a pak klikněte na **otevřít**.
 
 1. Přejděte ke [kroku 3: Základy](#step-3-basics).
 
 ## <a name="step-3-basics"></a>Krok 3: Základy
 
-Na kartě **Základy** zadáte název, popis a směrný plán oprávnění pro vlastní roli.
+Na kartě **základy** zadáte název, popis a základní oprávnění pro vlastní roli.
 
-1. Do pole **Vlastní název role** zadejte název vlastní role. Název musí být jedinečný pro adresář Azure AD. Název může obsahovat písmena, číslice, mezery a speciální znaky.
+1. Do pole **název vlastní role** zadejte název vlastní role. Název musí být pro adresář služby Azure AD jedinečný. Název může obsahovat písmena, číslice, mezery a speciální znaky.
 
-1. Do pole **Popis** zadejte volitelný popis vlastní role. To se stane popisem pro vlastní roli.
+1. Do pole **Popis** zadejte volitelný popis vlastní role. Tím se stane popis pro vlastní roli.
 
-    Možnost **oprávnění podle směrného plánu** by již měla být nastavena na základě předchozího kroku, ale můžete ji změnit.
+    Možnost **oprávnění standardních hodnot** by již měla být nastavena v závislosti na předchozím kroku, ale lze ji změnit.
 
-    ![Karta Základy se zadanými hodnotami](./media/custom-roles-portal/basics-values.png)
+    ![Karta základy se zadanými hodnotami](./media/custom-roles-portal/basics-values.png)
 
-## <a name="step-4-permissions"></a>Krok 4: Oprávnění
+## <a name="step-4-permissions"></a>Krok 4: oprávnění
 
-Na kartě **Oprávnění** zadáte oprávnění pro vlastní roli. V závislosti na tom, zda jste naklonovali roli nebo pokud jste začali s JSON, může karta Oprávnění již uvádět některá oprávnění.
+Na kartě **oprávnění** zadáte oprávnění pro vlastní roli. V závislosti na tom, jestli jste naklonoval roli nebo pokud jste začali s JSON, může mít karta oprávnění už seznam oprávnění.
 
-![Karta Oprávnění vytvořit vlastní roli](./media/custom-roles-portal/permissions.png)
+![Karta oprávnění pro vytvoření vlastní role](./media/custom-roles-portal/permissions.png)
 
-### <a name="add-or-remove-permissions"></a>Přidání nebo odebrání oprávnění
+### <a name="add-or-remove-permissions"></a>Přidat nebo odebrat oprávnění
 
-Chcete-li přidat nebo odebrat oprávnění pro vlastní roli, postupujte takto.
+Pomocí těchto kroků můžete přidat nebo odebrat oprávnění pro vlastní roli.
 
-1. Pokud chcete přidat oprávnění, kliknutím na **Přidat oprávnění** otevřete podokno Přidat oprávnění.
+1. Chcete-li přidat oprávnění, klikněte na tlačítko **Přidat oprávnění** a otevřete podokno přidat oprávnění.
 
     V tomto podokně jsou uvedena všechna dostupná oprávnění seskupená do různých kategorií ve formátu karty. Každá kategorie představuje *poskytovatele prostředků*, což je služba, která poskytuje prostředky Azure.
 
-1. Do pole **Hledat oprávnění** zadejte řetězec pro hledání oprávnění. Například vyhledejte *fakturu* a vyhledejte oprávnění související s fakturou.
+1. V poli **Hledat oprávnění** zadejte řetězec, ve kterém chcete vyhledat oprávnění. Vyhledejte například *fakturu* a vyhledejte oprávnění související s fakturou.
 
-    Na základě vyhledávacího řetězce se zobrazí seznam karet poskytovatele prostředků. Seznam toho, jak se poskytovatelé prostředků mapují na služby Azure, najdete v tématu [Zprostředkovatelé prostředků pro služby Azure](../azure-resource-manager/management/azure-services-resource-providers.md).
+    Na základě vašeho hledaného řetězce se zobrazí seznam karet poskytovatele prostředků. Seznam způsobu mapování poskytovatelů prostředků na služby Azure najdete v tématu [poskytovatelé prostředků pro služby Azure](../azure-resource-manager/management/azure-services-resource-providers.md).
 
-    ![Podokno oprávnění přidání s poskytovatelem prostředků](./media/custom-roles-portal/add-permissions-provider.png)
+    ![Přidání podokna oprávnění s poskytovatelem prostředků](./media/custom-roles-portal/add-permissions-provider.png)
 
-1. Klikněte na kartu poskytovatele prostředků, která může mít oprávnění, která chcete přidat do vlastní role, například **Fakturace společnosti Microsoft**.
+1. Klikněte na kartu poskytovatel prostředků, která může mít oprávnění, která chcete přidat do vlastní role, jako je například **fakturace společnosti Microsoft**.
 
-    Seznam oprávnění pro správu tohoto zprostředkovatele prostředků se zobrazí na základě vyhledávacího řetězce.
+    V závislosti na hledaném řetězci se zobrazí seznam oprávnění pro správu pro tohoto poskytovatele prostředků.
 
     ![Přidat seznam oprávnění](./media/custom-roles-portal/add-permissions-list.png)
 
-1. Pokud hledáte oprávnění, která se vztahují k rovině dat, klepněte na **položku Akce dat**. V opačném případě ponechte akce nastavenou na **Akce** a uveďte oprávnění, která se vztahují k rovině správy. Další informace o rozdílech mezi rovinou správy a rovinou dat naleznete v [tématu Správa a operace s daty](role-definitions.md#management-and-data-operations).
+1. Pokud hledáte oprávnění, která se vztahují na rovinu dat, klikněte na položku **akce s daty**. V opačném případě ponechte přepínač akce nastaven na **Akce** k zobrazení seznamu oprávnění, která se vztahují na rovinu správy. Další informace o rozdílech mezi rovinou správy a rovinou dat najdete v tématu [Správa a operace s daty](role-definitions.md#management-and-data-operations).
 
 1. V případě potřeby aktualizujte hledaný řetězec a upřesněte hledání.
 
-1. Jakmile najdete jedno nebo více oprávnění, která chcete přidat do vlastní role, zaškrtněte vedle oprávnění. Chcete-li například přidat oprávnění ke stažení faktur, zaškrtněte políčko **Jiné : Stáhnout fakturu.**
+1. Jakmile najdete jedno nebo více oprávnění, která chcete přidat do vlastní role, přidejte u nich zaškrtnutí u oprávnění. Například zaškrtněte políčko další **: stáhnout fakturu** , abyste mohli přidat oprávnění ke stažení faktur.
 
-1. Kliknutím na **Přidat** přidáte oprávnění do seznamu oprávnění.
+1. Kliknutím na **Přidat** přidejte oprávnění do seznamu oprávnění.
 
-    Oprávnění získá přidán `Actions` jako `DataActions`nebo .
+    Oprávnění se přidá jako `Actions` nebo. `DataActions`
 
-    ![Bylo přidáno oprávnění.](./media/custom-roles-portal/permissions-list-add.png)
+    ![Přidaná oprávnění](./media/custom-roles-portal/permissions-list-add.png)
 
-1. Chcete-li odebrat oprávnění, klepněte na ikonu odstranění na konci řádku. V tomto příkladu vzhledem k tomu, že uživatel `Microsoft.Support/*` nebude potřebovat možnost vytvářet lístky podpory, oprávnění lze odstranit.
+1. Chcete-li odebrat oprávnění, klikněte na ikonu Odstranit na konci řádku. Vzhledem k tomu, že uživatel nebude potřebovat možnost vytvářet lístky podpory, může být v tomto `Microsoft.Support/*` příkladu oprávnění odstraněno.
 
-### <a name="add-wildcard-permissions"></a>Přidání oprávnění se zástupnými symboly
+### <a name="add-wildcard-permissions"></a>Přidat oprávnění zástupných znaků
 
-V závislosti na tom, jak jste se rozhodli\*začít, můžete mít v seznamu oprávnění oprávnění oprávnění se zástupnými znaky ( ). Zástupný znak\*( ) rozšiřuje oprávnění na vše, co odpovídá řetězci, který zadáte. Předpokládejme například, že jste chtěli přidat všechna oprávnění související se správou nákladů Azure a exporty. Můžete přidat všechna tato oprávnění:
+V závislosti na tom, jak se rozhodnete začít, můžete mít ve svém seznamu oprávnění\*zástupné znaky (). Zástupný znak (\*) rozšiřuje oprávnění na vše, co odpovídá řetězci, který zadáte. Předpokládejme například, že jste chtěli přidat všechna oprávnění související s Azure Cost Management a exporty. Můžete přidat všechna tato oprávnění:
 
 ```
 Microsoft.CostManagement/exports/action
@@ -219,106 +219,106 @@ Microsoft.CostManagement/exports/delete
 Microsoft.CostManagement/exports/run/action
 ```
 
-Namísto přidání všech těchto oprávnění můžete pouze přidat oprávnění se zástupnými znaky. Například následující oprávnění se zástupnými symboly je ekvivalentní předchozím pěti oprávněním. To by také zahrnovalo všechna budoucí oprávnění k exportu, která by mohla být přidána.
+Místo přidání všech těchto oprávnění jste mohli jenom přidat oprávnění zástupného znaku. Například následující oprávnění zástupných znaků je ekvivalentní předchozímu pěti oprávněním. To by také zahrnovalo všechna budoucí oprávnění k exportu, která by se mohla přidat.
 
 ```
 Microsoft.CostManagement/exports/*
 ```
 
-Pokud chcete přidat nové oprávnění se zástupnými symboly, nemůžete je přidat pomocí podokna **Přidat oprávnění.** Chcete-li přidat oprávnění se zástupnými symboly, musíte je přidat ručně pomocí karty **JSON.** Další informace naleznete [v tématu Krok 6: JSON](#step-6-json).
+Pokud chcete přidat nové oprávnění zástupných znaků, nemůžete ho přidat pomocí podokna **Přidat oprávnění** . Chcete-li přidat oprávnění pro zástupný znak, je nutné jej přidat ručně pomocí karty **JSON** . Další informace najdete v části [Krok 6: JSON](#step-6-json).
 
 ### <a name="exclude-permissions"></a>Vyloučit oprávnění
 
-Pokud má vaše role\*oprávnění se zástupným znakem ( ) a chcete vyloučit nebo odečíst určitá oprávnění od tohoto oprávnění se zástupnými symboly, můžete je vyloučit. Řekněme například, že máte následující oprávnění se zástupnými symboly:
+Pokud má vaše role zástupné\*oprávnění () a chcete vyloučit nebo odečíst konkrétní oprávnění od těchto oprávnění, můžete je vyloučit. Řekněme například, že máte následující oprávnění zástupných znaků:
 
 ```
 Microsoft.CostManagement/exports/*
 ```
 
-Pokud nechcete povolit odstranění exportu, můžete vyloučit následující oprávnění k odstranění:
+Pokud nechcete povolit odstranění exportu, můžete vyloučit následující oprávnění odstranit:
 
 ```
 Microsoft.CostManagement/exports/delete
 ```
 
-Pokud vyloučíte oprávnění, `NotActions` je `NotDataActions`přidáno jako nebo . Skutečná oprávnění pro správu jsou vypočítána přidáním všech `Actions` a `NotActions`následným odečtením všech souborů . Skutečná oprávnění dat jsou vypočítána přidáním všech `DataActions` a následným `NotDataActions`odečtením všech .
+Pokud oprávnění vyloučíte, přidá se jako `NotActions` nebo. `NotDataActions` Efektivní oprávnění pro správu jsou vypočítána přidáním všech `Actions` a poté odečtením všech. `NotActions` Platná oprávnění k datům jsou vypočítána přidáním všech `DataActions` a poté odečtením všech. `NotDataActions`
 
 > [!NOTE]
-> Vyloučení oprávnění není totéž jako odepřít. Vyloučení oprávnění je jednoduše pohodlný způsob, jak odečíst oprávnění od oprávnění se zástupnými symboly.
+> Vyloučení oprávnění není stejné jako odepřít. Vyloučení oprávnění je jednoduše pohodlný způsob, jak odečíst oprávnění od oprávnění zástupných znaků.
 
-1. Pokud chcete vyloučit nebo odečíst oprávnění od povoleného oprávnění se zástupnými symboly, otevřete klepnutím na **tlačítko Vyloučit oprávnění** podokno Vyloučit oprávnění.
+1. Pokud chcete vyloučit nebo odečíst oprávnění od povoleného oprávnění zástupných znaků, klikněte na **vyloučit oprávnění** a otevřete podokno vyloučení oprávnění.
 
-    V tomto podokně určíte oprávnění pro správu nebo data, která jsou vyloučena nebo odečtena.
+    V tomto podokně zadáte oprávnění pro správu nebo data, která jsou vyloučena nebo odečtena.
 
-1. Jakmile najdete jedno nebo více oprávnění, která chcete vyloučit, přidejte zaškrtnutí vedle oprávnění a klikněte na tlačítko **Přidat.**
+1. Po nalezení jednoho nebo více oprávnění, která chcete vyloučit, přidejte u oprávnění zaškrtnutí a pak klikněte na tlačítko **Přidat** .
 
-    ![Podokno Vyloučit oprávnění – je vybráno oprávnění](./media/custom-roles-portal/exclude-permissions-select.png)
+    ![Podokno vyloučení oprávnění – vybrané oprávnění](./media/custom-roles-portal/exclude-permissions-select.png)
 
-    Oprávnění se přidá `NotActions` jako `NotDataActions`a nebo .
+    Oprávnění se přidá jako `NotActions` nebo. `NotDataActions`
 
-    ![Vyloučeno oprávnění](./media/custom-roles-portal/exclude-permissions-list-add.png)
+    ![Vyloučená oprávnění](./media/custom-roles-portal/exclude-permissions-list-add.png)
 
-## <a name="step-5-assignable-scopes"></a>Krok 5: Přiřaditelné obory
+## <a name="step-5-assignable-scopes"></a>Krok 5: přiřazení oborů
 
-Na kartě **Přiřaditelné obory** určíte, kde je vaše vlastní role k dispozici pro přiřazení, například předplatné nebo skupina prostředků. V závislosti na tom, jak jste se rozhodli začít, může tato karta vypsat obor, kde jste otevřeli stránku řízení přístupu (IAM). Nastavení přiřaditelného oboru kořenového oboru ("/") není podporováno. V tomto náhledu nelze přidat skupinu pro správu jako přiřaditelný obor.
+Na kartě **přiřadit obory** určete, kde má být vaše vlastní role k dispozici pro přiřazení, jako je například předplatné nebo skupina prostředků. V závislosti na tom, jak se rozhodnete začít, může tato karta obsahovat seznam rozsahů, ve kterých jste otevřeli stránku řízení přístupu (IAM). Nastavení přiřaditelné oboru ke kořenovému oboru ("/") není podporováno. Pro tuto verzi Preview nemůžete přidat skupinu pro správu jako obor s přiřazením.
 
-1. Kliknutím na **Přidat přiřaditelné obory** otevřete podokno Přidat přiřaditelné obory.
+1. Kliknutím na **Přidat přidružitelné obory** otevřete podokno přidat přiřazovatelné obory.
 
-    ![Karta Přiřaditelné obory](./media/custom-roles-portal/assignable-scopes.png)
+    ![Karta přiřadit obory](./media/custom-roles-portal/assignable-scopes.png)
 
-1. Klikněte na jeden nebo více oborů, které chcete použít, obvykle na vaše předplatné.
+1. Klikněte na jeden nebo víc oborů, které chcete použít, obvykle v rámci vašeho předplatného.
 
-    ![Přidání přiřaditelných oborů](./media/custom-roles-portal/add-assignable-scopes.png)
+    ![Přidat obory, které lze přiřadit](./media/custom-roles-portal/add-assignable-scopes.png)
 
-1. Kliknutím na tlačítko **Přidat** přidejte přiřaditelný obor.
+1. Kliknutím na tlačítko **Přidat** přidáte svůj přidružitelné obor.
 
 ## <a name="step-6-json"></a>Krok 6: JSON
 
-Na kartě **JSON** uvidíte vlastní roli formátovanou v JSON. Pokud chcete, můžete přímo upravit JSON. Chcete-li přidat oprávnění se\*zástupným znakem ( ), musíte použít tuto kartu.
+Na kartě **JSON** uvidíte vlastní roli formátovanou ve formátu JSON. Pokud chcete, můžete JSON přímo upravit. Chcete-li přidat oprávnění zástupného znaku (\*), je nutné použít tuto kartu.
 
-1. Chcete-li upravit položku JSON, klepněte na tlačítko **Upravit**.
+1. Pokud chcete kód JSON upravit, klikněte na **Upravit**.
 
-    ![Karta JSON s vlastní rolí](./media/custom-roles-portal/json.png)
+    ![Karta JSON zobrazující vlastní roli](./media/custom-roles-portal/json.png)
 
-1. Proveďte změny json.
+1. Proveďte změny ve formátu JSON.
 
-    Pokud JSON není správně formátován, zobrazí se ve svislém žlabu červená zubatá čára a indikátor.
+    Pokud formát JSON není správně naformátovaný, zobrazí se červená zubatá čára a indikátor na svislém hřbetu.
 
-1. Po dokončení úprav klepněte na **tlačítko Uložit**.
+1. Po dokončení úprav klikněte na **Uložit**.
 
-## <a name="step-7-review--create"></a>Krok 7: Recenze + vytvořit
+## <a name="step-7-review--create"></a>Krok 7: Kontrola a vytvoření
 
-Na kartě **Revize + vytvoření** můžete zkontrolovat vlastní nastavení role.
+Na kartě **Revize + vytvořit** můžete zkontrolovat vlastní nastavení role.
 
 1. Zkontrolujte vlastní nastavení role.
 
-    ![Karta Revize + vytvoření](./media/custom-roles-portal/review-create.png)
+    ![Revize + vytvořit kartu](./media/custom-roles-portal/review-create.png)
 
-1. Chcete-li vytvořit vlastní roli, klepněte na **tlačítko Vytvořit.**
+1. Kliknutím na **vytvořit** vytvořte vlastní roli.
 
-    Po chvíli se zobrazí okno se zprávou, které označuje, že vaše vlastní role byla úspěšně vytvořena.
+    Po chvíli se zobrazí okno se zprávou oznamující, že vaše vlastní role se úspěšně vytvořila.
 
-    ![Vytvořit vlastní zprávu o roli](./media/custom-roles-portal/custom-role-success.png)
+    ![Vytvořit vlastní zprávu role](./media/custom-roles-portal/custom-role-success.png)
 
     Pokud jsou zjištěny nějaké chyby, zobrazí se zpráva.
 
-    ![Kontrola + chyba vytvoření](./media/custom-roles-portal/review-create-error.png)
+    ![Zkontrolovat + vytvořit chybu](./media/custom-roles-portal/review-create-error.png)
 
-1. Zobrazení nové vlastní role v seznamu **rolí.** Pokud vlastní roli nevidíte, klikněte na **Aktualizovat**.
+1. Zobrazení nové vlastní role v seznamu **rolí** . Pokud nevidíte svoji vlastní roli, klikněte na **aktualizovat**.
 
-     Může trvat několik minut, než se vaše vlastní role zobrazí všude.
+     Může to trvat několik minut, než se vaše vlastní role zobrazí všude.
 
 ## <a name="list-custom-roles"></a>Výpis vlastních rolí
 
-Chcete-li zobrazit vlastní role, postupujte takto.
+Pomocí těchto kroků můžete zobrazit vlastní role.
 
-1. Otevřete předplatné nebo skupinu prostředků a potom otevřete **řízení přístupu (IAM).**
+1. Otevřete předplatné nebo skupinu prostředků a pak otevřete **řízení přístupu (IAM)**.
 
-1. Kliknutím na kartu **Role** zobrazíte seznam všech předdefinovaných a vlastních rolí.
+1. Kliknutím na kartu **role** zobrazíte seznam všech předdefinovaných a vlastních rolí.
 
-1. V seznamu **Typ** vyberte **Vlastní role,** abyste viděli jen své vlastní role.
+1. V seznamu **typ** vyberte **CustomRole** , aby se zobrazily pouze vaše vlastní role.
 
-    Pokud jste právě vytvořili vlastní roli a v seznamu ji nevidíte, klikněte na **Aktualizovat**.
+    Pokud jste právě vytvořili vlastní roli a v seznamu ji nevidíte, klikněte na **aktualizovat**.
 
     ![Vlastní seznam rolí](./media/custom-roles-portal/custom-role-list.png)
 
@@ -326,17 +326,17 @@ Chcete-li zobrazit vlastní role, postupujte takto.
 
 1. Jak je popsáno výše v tomto článku, otevřete seznam vlastních rolí.
 
-1. Klepněte na tři tečky (**...**) pro vlastní roli, kterou chcete aktualizovat, a potom klepněte na tlačítko **Upravit**. Všimněte si, že nelze aktualizovat předdefinované role.
+1. Klikněte na tlačítko se třemi tečkami (**...**) pro vlastní roli, kterou chcete aktualizovat, a pak klikněte na **Upravit**. Všimněte si, že nemůžete aktualizovat předdefinované role.
 
     Vlastní role se otevře v editoru.
 
-    ![Vlastní nabídka rolí](./media/custom-roles-portal/edit-menu.png)
+    ![Nabídka vlastní role](./media/custom-roles-portal/edit-menu.png)
 
-1. Pomocí různých karet aktualizujte vlastní roli.
+1. K aktualizaci vlastní role použijte různé karty.
 
-1. Po dokončení změn klikněte na kartu **Revize + vytvoření** a zkontrolujte změny.
+1. Až změny dokončíte, klikněte na kartu **Revize + vytvořit** a Prohlédněte si změny.
 
-1. Kliknutím na tlačítko **Aktualizovat** aktualizujte vlastní roli.
+1. Kliknutím na tlačítko **aktualizovat** aktualizujte svou vlastní roli.
 
 ## <a name="delete-a-custom-role"></a>Odstranění vlastní role
 
@@ -344,14 +344,14 @@ Chcete-li zobrazit vlastní role, postupujte takto.
 
 1. Odeberte všechna přiřazení rolí, která používají vlastní roli.
 
-1. Klepněte na tři tečky (**...**) pro vlastní roli, kterou chcete odstranit, a potom klepněte na **tlačítko Odstranit**.
+1. Klikněte na tlačítko se třemi tečkami (**...**) pro vlastní roli, kterou chcete odstranit, a pak klikněte na **Odstranit**.
 
-    ![Vlastní nabídka rolí](./media/custom-roles-portal/delete-menu.png)
+    ![Nabídka vlastní role](./media/custom-roles-portal/delete-menu.png)
 
-    Může trvat několik minut, než bude vaše vlastní role zcela odstraněna.
+    Zcela odstranění vlastní role může trvat několik minut.
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Kurz: Vytvoření vlastní role pomocí Azure PowerShellu](tutorial-custom-role-powershell.md)
 - [Vlastní role v Azure](custom-roles.md)
-- [Operace zprostředkovatele prostředků Azure Resource Manager](resource-provider-operations.md)
+- [Azure Resource Manager operace poskytovatele prostředků](resource-provider-operations.md)

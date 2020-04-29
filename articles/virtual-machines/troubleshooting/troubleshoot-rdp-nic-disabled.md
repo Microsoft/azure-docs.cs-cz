@@ -1,6 +1,6 @@
 ---
-title: Vzdáleně se nelze připojit k virtuálním počítačům Azure, protože je neplatná | Dokumenty společnosti Microsoft
-description: Zjistěte, jak vyřešit problém, ve kterém se nezdaří rdp, protože nic je zakázáno v azure virtuálním počítači| Dokumenty společnosti Microsoft
+title: Nejde se vzdáleně připojit k Azure Virtual Machines, protože síťová karta je zakázaná | Microsoft Docs
+description: Naučte se řešit potíže s tím, že se protokol RDP nepovede, protože síťová karta je zakázaná ve virtuálním počítači Azure | Microsoft Docs
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
@@ -13,53 +13,53 @@ ms.workload: infrastructure
 ms.date: 11/12/2018
 ms.author: genli
 ms.openlocfilehash: 315974e4995630eb3af055ac0e1c44f7d8dd0737
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77918236"
 ---
-#  <a name="cannot-remote-desktop-to-a-vm-because-the-network-interface-is-disabled"></a>Nelze vzdálenou plochu pro virtuální počítač, protože síťové rozhraní je zakázáno
+#  <a name="cannot-remote-desktop-to-a-vm-because-the-network-interface-is-disabled"></a>Nejde o vzdálenou plochu k virtuálnímu počítači, protože síťové rozhraní je zakázané.
 
-Tento článek vysvětluje, jak vyřešit problém, ve kterém nelze vytvořit připojení ke vzdálené ploše k virtuálním počítačům Azure Windows (VM), pokud je síťové rozhraní zakázáno.
+Tento článek vysvětluje, jak vyřešit problém, ve kterém nemůžete vytvořit připojení ke vzdálené ploše do Azure Windows Virtual Machines (virtuální počítače), pokud je síťové rozhraní zakázané.
 
 
 ## <a name="symptoms"></a>Příznaky
 
-Nelze vytvořit připojení RDP nebo jakýkoli jiný typ připojení k jiným portům k virtuálnímu počítači v Azure, protože síťové rozhraní ve virtuálním počítači je zakázáno.
+Nemůžete vytvořit připojení RDP ani jiný typ připojení k virtuálnímu počítači v Azure, protože síťové rozhraní je ve virtuálním počítači zakázané.
 
 ## <a name="solution"></a>Řešení
 
-Než budete postupovat podle těchto kroků, pořiďte snímek disku operačního systému ovlivněného virtuálního počítače jako zálohu. Další informace naleznete [v tématu Snímek disku](../windows/snapshot-copy-managed-disk.md).
+Než budete postupovat podle těchto kroků, pořiďte si snímek disku s operačním systémem ovlivněného virtuálního počítače jako záložního. Další informace najdete v tématu [vytvoření snímku disku](../windows/snapshot-copy-managed-disk.md).
 
-Chcete-li povolit rozhraní pro virtuální modul, použijte sériové řízení nebo [obnovení síťového rozhraní](#reset-network-interface) pro virtuální ho.
+Pokud chcete povolit rozhraní pro virtuální počítač, použijte pro virtuální počítač sériové řízení nebo [resetování síťového rozhraní](#reset-network-interface) .
 
-### <a name="use-serial-control"></a>Použití sériového řízení
+### <a name="use-serial-control"></a>Použití ovládacího prvku sériového portu
 
-1. Připojte se k [konzoli Serial Console a otevřete instanci CMD](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
-). Pokud konzola Serial Console není na vašem virtuálním počítači povolená, přečtěte si článek [Obnovení síťového rozhraní](#reset-network-interface).
-2. Zkontrolujte stav síťového rozhraní:
+1. Připojte se ke [konzole sériového prostředí a otevřete instanci cmd](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
+). Pokud není na vašem VIRTUÁLNÍm počítači povolená síťová konzola, přečtěte si téma [resetování síťového rozhraní](#reset-network-interface).
+2. Ověřte stav síťového rozhraní:
 
         netsh interface show interface
 
     Poznamenejte si název zakázaného síťového rozhraní.
 
-3. Povolte síťové rozhraní:
+3. Povolit síťové rozhraní:
 
         netsh interface set interface name="interface Name" admin=enabled
 
-    Pokud má například mezipracovní rozhraní název "Ethernet 2", spusťte následující příkaz:
+    Pokud je třeba rozhraní pro spolupráci s názvem "Ethernet 2", spusťte následující příkaz:
 
         netsh interface set interface name="Ethernet 2" admin=enabled
 
-4.  Zkontrolujte stav síťového rozhraní znovu a ujistěte se, že je povoleno síťové rozhraní.
+4.  Zkontrolujte stav síťového rozhraní znovu a ujistěte se, že je síťové rozhraní povolené.
 
         netsh interface show interface
 
-    V tomto okamžiku není nutné restartovat virtuální počítač. Virtuální měkce bude zase dosažitelný.
+    V tuto chvíli nemusíte restartovat virtuální počítač. Virtuální počítač bude dostupný zpátky.
 
-5.  Připojte se k virtuálnímu virtuálnímu zařízení a zjistěte, zda je problém vyřešen.
+5.  Připojte se k virtuálnímu počítači a podívejte se, jestli se problém vyřeší.
 
-## <a name="reset-network-interface"></a>Obnovit síťové rozhraní
+## <a name="reset-network-interface"></a>Resetovat síťové rozhraní
 
-Chcete-li obnovit síťové rozhraní, změňte adresu IP na jinou adresu IP, která je k dispozici v podsíti. K tomu použijte Azure Portal nebo Azure PowerShell. Další informace naleznete v tématu [Reset síťového rozhraní](reset-network-interface.md).
+Pokud chcete resetovat síťové rozhraní, změňte IP adresu na jinou IP adresu, která je k dispozici v podsíti. K tomu použijte Azure Portal nebo Azure PowerShell. Další informace najdete v tématu [resetování síťového rozhraní](reset-network-interface.md).

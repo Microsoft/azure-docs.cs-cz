@@ -1,43 +1,43 @@
 ---
-title: Vytváření, testování a nasazování kontejnerů do služby Azure Kubernetes pomocí akcí GitHub
-description: Přečtěte si, jak pomocí akcí GitHubu nasadit kontejner do Kubernetes
+title: Sestavování, testování a nasazení kontejnerů do služby Azure Kubernetes pomocí akcí GitHubu
+description: Naučte se používat akce GitHubu k nasazení vašeho kontejneru do Kubernetes
 services: container-service
 author: azooinmyluggage
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: atulmal
 ms.openlocfilehash: 5ee8ee4d2c9e225d82e58daffeef9e5f09e43e6b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77595361"
 ---
 # <a name="github-actions-for-deploying-to-kubernetes-service"></a>Akce GitHubu pro nasazení do služby Kubernetes
 
-[Akce GitHubu](https://help.github.com/en/articles/about-github-actions) vám poskytují flexibilitu při vytváření automatizovaného pracovního cyklu životního cyklu vývoje softwaru. Akce [azure/aks-set-context@v1](https://github.com/Azure/aks-set-context) Kubernetes usnadňuje nasazení do clusterů služby Azure Kubernetes. Akce nastaví cílový kontext clusteru AKS, který může být použit jinými akcemi, jako [je azure/k8s-deploy](https://github.com/Azure/k8s-deploy/tree/master), [azure/k8s-create-secret](https://github.com/Azure/k8s-create-secret/tree/master) atd.
+[Akce GitHubu](https://help.github.com/en/articles/about-github-actions) vám nabízí flexibilitu při vytváření automatizovaného pracovního postupu životního cyklu vývoje softwaru. Akce [azure/aks-set-context@v1](https://github.com/Azure/aks-set-context) Kubernetes usnadňuje nasazení do clusterů služby Azure Kubernetes. Akce nastaví cílový kontext clusteru AKS, který můžou použít jiné akce jako [Azure/k8s-Deploy](https://github.com/Azure/k8s-deploy/tree/master), [Azure/k8s – Create-Secret](https://github.com/Azure/k8s-create-secret/tree/master) atd., nebo spustit všechny příkazy kubectl.
 
-Pracovní postup je definován souborem YAML (.yml) v `/.github/workflows/` cestě v úložišti. Tato definice obsahuje různé kroky a parametry, které tvoří pracovní postup.
+Pracovní postup je definovaný souborem YAML (. yml) v `/.github/workflows/` cestě v úložišti. Tato definice obsahuje různé kroky a parametry, které tvoří pracovní postup.
 
-Pro pracovní postup cílení AKS má soubor tři části:
+Pro pracovní postup cílící na AKS má soubor tři části:
 
 |Sekce  |Úlohy  |
 |---------|---------|
-|**Ověřování** | Přihlášení do registru soukromého kontejneru (ACR) |
-|**Sestavení** | Vytvoření & stlačení montovky kontejneru  |
-|**Nasadit** | 1. Nastavení cílového clusteru AKS |
-| |2. Vytvoření obecného tajného klíče/tajného klíče registru dockeru v clusteru Kubernetes  |
-||3. Nasazení do clusteru Kubernetes|
+|**Authentication** | Přihlášení k privátnímu registru kontejnerů (ACR) |
+|**Sestavení** | Sestavení image kontejneru &m vložením  |
+|**Nasadit** | 1. nastavení cílového clusteru AKS |
+| |2. vytvoření tajného kódu registru Generic/Docker-Registry v clusteru Kubernetes  |
+||3. nasazení do clusteru Kubernetes|
 
 ## <a name="create-a-service-principal"></a>Vytvoření instančního objektu
 
-[Instanční objekt](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object) můžete vytvořit pomocí příkazu [az ad sp create-for-rbac](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) v [příkazovém příkazu Azure CLI](https://docs.microsoft.com/cli/azure/). Tento příkaz můžete spustit pomocí [Azure Cloud Shell](https://shell.azure.com/) na webu Azure Portal nebo výběrem tlačítka Try **It.**
+[Instanční objekt](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object) můžete vytvořit pomocí příkazu [AZ AD SP Create-for-RBAC](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) v rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/). Tento příkaz můžete spustit pomocí [Azure Cloud Shell](https://shell.azure.com/) v Azure Portal nebo tak, že vyberete tlačítko **vyzkoušet** .
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP> --sdk-auth
 ```
 
-Ve výše uvedeném příkazu nahraďte zástupné symboly ID předplatného a skupinou prostředků. Výstup emituje pověření přiřazení role, které poskytují přístup k prostředku. Příkaz by měl výstup JSON objekt podobný tomuto.
+Ve výše uvedeném příkazu nahraďte zástupné symboly IDENTIFIKÁTORem vašeho předplatného a skupinou prostředků. Výstupem jsou přihlašovací údaje přiřazení role, které poskytují přístup k vašemu prostředku. Příkaz by měl výstup objektu JSON podobný tomuto.
 
 ```json
   {
@@ -50,40 +50,40 @@ Ve výše uvedeném příkazu nahraďte zástupné symboly ID předplatného a s
 ```
 Zkopírujte tento objekt JSON, který můžete použít k ověření z GitHubu.
 
-## <a name="configure-the-github-secrets"></a>Konfigurace tajných klíčů GitHubu
+## <a name="configure-the-github-secrets"></a>Konfigurace tajných kódů GitHubu
 
-Postupujte podle pokynů pro konfiguraci tajných kódů:
+Použijte postup konfigurace tajných kódů:
 
-1. V [GitHubu](https://github.com/)přejděte do svého repozitáře a vyberte **Nastavení > Tajemství > Přidat nový tajný klíč**.
+1. V [GitHubu](https://github.com/)přejděte do úložiště, vyberte **Nastavení > tajných kódů > přidejte nový tajný kód**.
 
-    ![Tajemství](media/kubernetes-action/secrets.png)
+    ![záleží](media/kubernetes-action/secrets.png)
 
-2. Vložte obsah výše `az cli` uvedeného příkazu jako hodnotu proměnné tajného klíče. Například, `AZURE_CREDENTIALS`.
+2. Vložte obsah výše uvedeného `az cli` příkazu jako hodnotu tajné proměnné. Například, `AZURE_CREDENTIALS`.
 
-3. Podobně definujte následující další tajné kódy pro pověření registru kontejneru a nastavte je v akci přihlášení Dockeru. 
+3. Podobně definujte následující další tajné kódy pro přihlašovací údaje registru kontejneru a nastavte je v akci přihlášení k Docker. 
 
     - REGISTRY_USERNAME
     - REGISTRY_PASSWORD
 
-4. Uvidíte tajemství, jak je uvedeno níže, jakmile je definováno.
+4. Po definování se zobrazí tajné kódy, jak je uvedeno níže.
 
-    ![kubernetes-tajemství](media/kubernetes-action/kubernetes-secrets.png)
+    ![Kubernetes – tajné klíče](media/kubernetes-action/kubernetes-secrets.png)
 
-##  <a name="build-a-container-image-and-deploy-to-azure-kubernetes-service-cluster"></a>Vytvoření image kontejneru a nasazení do clusteru služby Azure Kubernetes
+##  <a name="build-a-container-image-and-deploy-to-azure-kubernetes-service-cluster"></a>Sestavení image kontejneru a nasazení do clusteru služby Azure Kubernetes
 
-Sestavení a nabízení bitové kopie `Azure/docker-login@v1` kontejneru se provádí pomocí akce. Chcete-li nasadit image kontejneru do AKS, budete muset použít `Azure/k8s-deploy@v1` akci. Tato akce má pět parametrů:
+Sestavení a vložení imagí kontejneru se provádí pomocí `Azure/docker-login@v1` akce. K nasazení image kontejneru do AKS budete muset použít `Azure/k8s-deploy@v1` akci. Tato akce má pět parametrů:
 
-| **Parametr**  | **Vysvětlení**  |
+| **Ukazatele**  | **Vysvětlení**  |
 |---------|---------|
-| **namespace** | (Nepovinné) Zvolte cílový obor názvů Kubernetes. Pokud není k dispozici obor názvů, budou příkazy spuštěny ve výchozím oboru názvů. | 
-| **Manifesty** |  (Povinné) Cesta k souborům manifestu, které budou použity pro nasazení |
-| **Obrázky** | (Nepovinné) Plně kvalifikovaná adresa URL zdroje obrázku (obrázků), která má být použita pro substituce v souborech manifestu |
-| **imagepullsecrets** | (Nepovinné) Název tajného klíče registru dockeru, který již byl v clusteru nastaven. Každý z těchto tajných názvů je přidán do pole imagePullSecrets pro úlohy nalezené ve vstupních souborech manifestu |
-| **kubectl-verze** | (Nepovinné) Nainstaluje konkrétní verzi kubectl binární |
+| **namespace** | Volitelné Vyberte cílový obor názvů Kubernetes. Pokud obor názvů není zadaný, příkazy se spustí ve výchozím oboru názvů. | 
+| **manifesty** |  Požadovanou Cesta k souborům manifestu, které se použijí pro nasazení |
+| **fotografií** | Volitelné Plně kvalifikovaná adresa URL pro obrázky, které se mají použít k nahrazení souborů manifestu |
+| **imagepullsecrets** | Volitelné Název tajného klíče registru Docker-Registry, který již byl nastaven v rámci clusteru. Každý z těchto tajných názvů se přidá do pole imagePullSecrets pro úlohy, které se nacházejí ve vstupních souborech manifestu. |
+| **kubectl – verze** | Volitelné Nainstaluje specifickou verzi kubectl binárního souboru. |
 
 ### <a name="deploy-to-azure-kubernetes-service-cluster"></a>Nasazení do clusteru služby Azure Kubernetes
 
-Komplexní pracovní postup pro vytváření ibi kontejnerů a nasazování do clusteru služby Azure Kubernetes.
+Koncový postup pro vytváření imagí kontejnerů a nasazování do clusteru služby Azure Kubernetes.
 
 ```yaml
 on: [push]
@@ -131,18 +131,18 @@ jobs:
 
 ## <a name="next-steps"></a>Další kroky
 
-Naši sadu akcí najdete v různých repozitářích na GitHubu, z nichž každá obsahuje dokumentaci a příklady, které vám pomůžou používat GitHub pro CI/CD a nasadit aplikace do Azure.
+Naši sadu akcí můžete najít v různých úložištích na GitHubu. Každá z nich obsahuje dokumentaci a příklady, které vám pomůžou s používáním GitHubu pro CI/CD a nasazení aplikací do Azure.
 
-- [setup-kubectl](https://github.com/Azure/setup-kubectl)
+- [nastavení – kubectl](https://github.com/Azure/setup-kubectl)
 
-- [k8s-set-kontext](https://github.com/Azure/k8s-set-context)
+- [k8s-set-Context](https://github.com/Azure/k8s-set-context)
 
-- [aks-set-context](https://github.com/Azure/aks-set-context)
+- [AKS-set-Context](https://github.com/Azure/aks-set-context)
 
-- [k8s-vytvořit-tajný klíč](https://github.com/Azure/k8s-create-secret)
+- [k8s-vytvoření-tajného klíče](https://github.com/Azure/k8s-create-secret)
 
-- [k8s-nasazení](https://github.com/Azure/k8s-deploy)
+- [k8s – nasazení](https://github.com/Azure/k8s-deploy)
 
-- [nasazení webových aplikací-kontejnerů](https://github.com/Azure/webapps-container-deploy)
+- [webapps-kontejner – nasazení](https://github.com/Azure/webapps-container-deploy)
 
-- [akce-workflow-ukázky](https://github.com/Azure/actions-workflow-samples)
+- [Actions-Workflow-Samples](https://github.com/Azure/actions-workflow-samples)

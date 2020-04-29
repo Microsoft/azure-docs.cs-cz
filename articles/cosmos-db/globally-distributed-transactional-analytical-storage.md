@@ -1,6 +1,6 @@
 ---
-title: Globálně distribuované transakční a analytické (v privátní verzi Preview) úložiště pro kontejnery Azure Cosmos
-description: Seznamte se s transakčním a analytickým úložištěm a jejich možnostmi konfigurace pro kontejnery Azure Cosmos.
+title: Globálně distribuované transakční a analytické úložiště (v privátní verzi Preview) pro kontejnery Azure Cosmos
+description: Přečtěte si o transakčních a analytických úložištích a možnostech jejich konfigurace pro kontejnery Azure Cosmos.
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
@@ -8,65 +8,65 @@ ms.topic: conceptual
 ms.date: 09/30/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 1c2b79f8d0641b1a1386329a2add14ded766bf5a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77623383"
 ---
 # <a name="globally-distributed-transactional-and-analytical-storage-for-azure-cosmos-containers"></a>Globálně distribuované transakční a analytické úložiště pro kontejnery Azure Cosmos
 
-Kontejner Azure Cosmos je interně zálohován dvěma moduly úložiště – transakčním úložištěm a aktualizovatelným analytickým úložištěm (v privátní verzi Preview). Oba moduly úložiště jsou strukturované protokolem a optimalizované pro zápis pro rychlejší aktualizace. Nicméně, každý z nich je kódován jinak:
+Služba Azure Cosmos Container je interně založená na dvou úložištích – transakční modul úložiště a aktualizovatelný modul analytického úložiště (v privátní verzi Preview). Úložné moduly jsou strukturované a optimalizované pro zápis pro rychlejší aktualizace. Každý z nich je však kódován odlišně:
 
-* **Transakční úložiště motor –** je kódován ve formátu orientovaném na řádek pro rychlé transakční čtení a dotazy.
+* **Transakční modul úložiště** – je kódovaný v řádkovém formátu pro rychlé transakční čtení a dotazy.
 
-* **Analytický úložný modul** - Je kódován ve sloupcovém formátu pro rychlé analytické dotazy a skenování.
+* **Analytický modul úložiště** – je kódovaný ve sloupcovém formátu pro rychlé analytické dotazy a kontroly.
 
-![Moduly úložišť a mapování rozhraní API Azure Cosmos DB](./media/globally-distributed-transactional-analytical-storage/storage-engines-api-mapping.png)
+![Moduly úložiště a mapování Azure Cosmos DB API](./media/globally-distributed-transactional-analytical-storage/storage-engines-api-mapping.png)
 
-Modul transakčníúložiště je zálohována místní ssd disky, zatímco analytické úložiště je uloženo na levné úložiště SSD mimo cluster. Následující tabulka zachycuje významné rozdíly mezi transakční a analytické úložiště.
+Transakční modul úložiště je zálohovaný místními SSD, zatímco analytické úložiště je uložené v nenákladovém úložišti SSD mimo cluster. Následující tabulka zachycuje významné rozdíly mezi transakčním a analytickým úložištěm.
 
 
-|Funkce  |Transakční úložiště  |Analytické skladování |
+|Funkce  |Transakční úložiště  |Analytické úložiště |
 |---------|---------|---------|
-|Maximální úložiště na kontejner Azure Cosmos |   Unlimited      |    Unlimited     |
-|Maximální úložiště na klíč logického oddílu   |   20 GB      |   Unlimited      |
-|Kódování úložiště  |   Orientované na řádky, pomocí interního formátu.   |   Orientace na sloupce, pomocí formátu Apache Parquet. |
-|Lokalita úložiště |   Replikované úložiště podporované místními nebo vnitroclusterovými disky SSD. |  Replikované úložiště podporované levnými vzdálenými nebo offclusterovými ssd disky.       |
+|Maximální velikost úložiště na jeden kontejner Azure Cosmos |   Unlimited      |    Unlimited     |
+|Maximální velikost úložiště na klíč logického oddílu   |   20 GB      |   Unlimited      |
+|Kódování úložiště  |   Řádky orientované pomocí interního formátu.   |   Sloupce orientované pomocí formátu Apache Parquet. |
+|Místní úložiště |   Replikované úložiště, které je založené na místním/souběžném clusteru SSD. |  Replikované úložiště zajištěné nenáročným vzdáleným/vypnutým clusterem SSD.       |
 |Stálost  |    99,99999 (7-9 s)     |  99,99999 (7-9 s)       |
-|API, která přistupují k datům  |   SQL, MongoDB, Cassandra, Gremlin, tabulky a etcd.       | Apache Spark         |
-|Uchovávání (doba aktivní nebo TTL)   |  Zásady řízené, nakonfigurované v `DefaultTimeToLive` kontejneru Azure Cosmos pomocí vlastnosti.       |   Zásady řízené, nakonfigurované v `ColumnStoreTimeToLive` kontejneru Azure Cosmos pomocí vlastnosti.      |
-|Cena za GB    |   Podívejte se na [stránku s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/)     |   Podívejte se na [stránku s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/)        |
-|Cena za skladovací transakce    |  Podívejte se na [stránku s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/)         |   Podívejte se na [stránku s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/)        |
+|Rozhraní API, která přistupují k datům  |   SQL, MongoDB, Cassandra, Gremlin, Tables a etcd.       | Apache Spark         |
+|Uchování (Time-to-Live nebo TTL)   |  Řízené zásadami, které jsou nakonfigurovány v kontejneru Azure Cosmos pomocí `DefaultTimeToLive` vlastnosti.       |   Řízené zásadami, které jsou nakonfigurovány v kontejneru Azure Cosmos pomocí `ColumnStoreTimeToLive` vlastnosti.      |
+|Cena za GB    |   Zobrazit [stránku s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/)     |   Zobrazit [stránku s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/)        |
+|Cena za transakce úložiště    |  Zobrazit [stránku s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/)         |   Zobrazit [stránku s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/)        |
 
-## <a name="benefits-of-transactional-and-analytical-storage"></a>Výhody transakčního a analytického skladování
+## <a name="benefits-of-transactional-and-analytical-storage"></a>Výhody transakčního a analytického úložiště
 
 ### <a name="no-etl-operations"></a>Žádné operace ETL
 
-Tradiční analytické kanály jsou složité s více fázemi, z nichž každá vyžaduje operace extrakce transformace a zatížení (ETL) do a z výpočetních a úložných vrstev. Výsledkem je komplexní architektura zpracování dat. Což znamená vysoké náklady na více fází úložiště a výpočetních prostředků a vysokou latenci díky masivním objemům dat přenášených mezi různými fázemi úložiště a výpočetních prostředků.  
+Tradiční analytické kanály jsou složité s více fázemi, které vyžadují operace extrakce, transformace a načítání (ETL) do a z výpočetních a úložných vrstev. Výsledkem je komplexní architektury zpracování dat. Což znamená vysoké náklady na více fází úložiště a výpočetních prostředků a vysokou latenci kvůli obrovským objemům dat přenesených mezi různými fázemi úložiště a výpočetními prostředky.  
 
-Neexistuje žádná režie provádění operací ETL s Azure Cosmos DB. Každý kontejner Azure Cosmos je zálohována transakční a analytické moduly úložiště a přenos dat mezi transakční a analytický modul úložiště se provádí v rámci databázového stroje a bez jakékoli sítě směrování. Výsledná latence a náklady jsou výrazně nižší ve srovnání s tradičními analytickými řešeními. A získáte jeden globálně distribuovaný úložný systém pro transakční i analytické úlohy.  
+Nehrozí žádná režie na provádění operací ETL pomocí Azure Cosmos DB. Každý kontejner Azure Cosmos je zálohovaný pomocí transakčního i analytického strojového úložiště a přenos dat mezi transakčním a analytickým modulem úložiště se provádí v rámci databázového stroje a bez směrování sítě. Výsledná latence a náklady jsou v porovnání s tradičními analytickými řešeními výrazně nižší. A získáte jeden globálně distribuovaný úložný systém pro transakční i analytické úlohy.  
 
-### <a name="store-multiple-versions-update-and-query-the-analytical-storage"></a>Uložení více verzí, aktualizace a dotazování na analytické úložiště
+### <a name="store-multiple-versions-update-and-query-the-analytical-storage"></a>Uložení více verzí, aktualizace a dotazování analytického úložiště
 
-Analytické úložiště je plně aktualizovatelné a obsahuje úplnou historii verzí všech transakčních aktualizací, ke kterým došlo v kontejneru Azure Cosmos.
+Analytické úložiště je plně aktualizovatelné a obsahuje kompletní historii všech transakčních aktualizací, ke kterým došlo v kontejneru Azure Cosmos.
 
-Jakákoli aktualizace transakčního úložiště je zaručena viditelná pro analytické úložiště do 30 sekund. 
+Jakékoli aktualizace transakčního úložiště jsou zaručené k analýze úložiště do 30 sekund. 
 
-### <a name="globally-distributed-multi-master-analytical-storage"></a>Globálně distribuované analytické úložiště s více servery
+### <a name="globally-distributed-multi-master-analytical-storage"></a>Globálně distribuované analytické úložiště s více hlavními servery
 
-Pokud váš účet Azure Cosmos je vymezenna do jedné oblasti, data uložená (v transakční a analytické úložiště) v kontejnerech je také vymezena na jednu oblast. Na druhou stranu pokud je účet Azure Cosmos globálně distribuován, data uložená v kontejnerech jsou také globálně distribuována.
+Pokud je váš účet Azure Cosmos vymezený na jednu oblast, jsou uložená data (v transakčním a analytickém úložišti) v kontejnerech také vymezena v jedné oblasti. Na druhou stranu platí, že pokud je účet Azure Cosmos globálně distribuovaný, data uložená v kontejnerech se také globálně distribuují.
 
-Pro účty Azure Cosmos nakonfigurované s více oblastí zápisu, zápisy do kontejneru (do transakční a analytické úložiště) se vždy provádí v místní oblasti, a proto jsou rychlé.
+U účtů Azure Cosmos konfigurovaných s více oblastmi zápisu se zápisy do kontejneru (do transakčního i analytického úložiště) vždycky provádějí v místní oblasti, a proto jsou rychlé.
 
-Pro účty Azure Cosmos s jednou nebo více oblastmi, bez ohledu na to, zda se v dané oblasti provádí oblast jednoho zápisu (jeden hlavní) nebo více oblastí zápisu (označované také jako více hlavních), transakční i analytické čtení/dotazy místně v dané oblasti.
+Pro jeden nebo více oblastí Azure Cosmos účet bez ohledu na to, jestli je jedna oblast pro zápis (jedna předloha) nebo více oblastí zápisu (označovaná také jako vícenásobný příklad), provádějí se transakční i analytické čtení a dotazy v dané oblasti místně.
 
 ### <a name="performance-isolation-between-transactional-and-analytical-workloads"></a>Izolace výkonu mezi transakčními a analytickými úlohami
 
-V dané oblasti transakční úlohy pracovat proti transakční úložiště kontejneru/řádek. Na druhou stranu analytické úlohy pracují s analytickým/sloupcovým úložištěm vašeho kontejneru. Dva moduly úložiště pracují nezávisle a poskytují přísnou izolaci výkonu mezi úlohami.
+V dané oblasti transakční úlohy fungují na transakčním a řádkovém úložišti vašeho kontejneru. Na druhé straně analytické úlohy působí v rámci analytického a sloupcového úložiště vašeho kontejneru. Tyto dva úložné motory pracují nezávisle a poskytují striktní izolaci výkonu mezi úlohami.
 
-Transakční úlohy spotřebovávají zřízenou propustnost (RU). Na rozdíl od transakčních úloh je propustnost analytických úloh založena na skutečné spotřebě. Analytické úlohy spotřebovávají prostředky na vyžádání.
+Transakční úlohy využívají zřízenou propustnost (ru). Na rozdíl od transakčních úloh je propustnost analytických úloh založena na skutečné spotřebě. Analytické úlohy využívají prostředky na vyžádání.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Čas žít v Azure Cosmos DB](time-to-live.md)
+* [Čas do provozu v Azure Cosmos DB](time-to-live.md)

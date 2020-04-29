@@ -1,6 +1,6 @@
 ---
-title: Seznam knih SRE | Dokumenty společnosti Microsoft
-description: Zvyšte své znalosti o spolehlivosti webu inženýrství s těmito knihami
+title: Seznam knih SRE | Microsoft Docs
+description: Zvyšte vaše znalosti o řízení spolehlivosti sítě pomocí těchto knih
 author: dnblankedelman
 manager: efreeman
 ms.service: site-reliability-engineering
@@ -8,15 +8,15 @@ ms.topic: article
 ms.date: 02/18/2020
 ms.author: dnb
 ms.openlocfilehash: 4a350953a5755f24c938011ae4b98e1e35e094e8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77599038"
 ---
-# <a name="books-about-site-reliability-engineering"></a>Knihy o technice spolehlivosti webu
+# <a name="books-about-site-reliability-engineering"></a>Knihy o analýze spolehlivosti webů
 
-Pro podrobnější informace o spolehlivosti webu inženýrství (SRE), nejlepším zdrojem je trio knih, které byly zveřejněny na toto téma
+Pro podrobnější informace o technikě SRE (site respolehlivost) je nejlepším zdrojem trojice knihy, které byly publikovány na předmětu.
 
 - [_Site Reliability Engineering: How Google Runs Production Systems_](https://shop.oreilly.com/product/0636920041528.do) (Site Reliability Engineering: Jak Google provozuje produkční systémy, známý také jako „The SRE Book“)
 - [_The Site Reliability Workbook: Practical Ways to Implement SRE_](https://shop.oreilly.com/product/0636920132448.do) (Pracovní sešit SRE: Praktické způsoby implementace SRE, známá také jako „The SRE Workbook“)
@@ -30,4 +30,4 @@ Každá z těchto knih přináší důležitou sadu informací:
 
 - Hledání SRE nabízí hlubší pohled do světa SRE, včetně informací o tom, jak bylo implementováno do jiných prostředí.
 
-Vzhledem k tomu, že tyto knihy popisují zkušenosti, prostředí a kulturu organizací, které se mohou nebo nemusí podobat tomu, ve které se nacházíte, je důležité číst tyto knihy kritickým okem. Při čtení se pokuste určit, které postupy by ve vaší organizaci uspěly nebo nebyly úspěšné. Nějakou dobu trvá, než poznáte, které informace jsou pro vás přínosné. Zamyslete se, která část vaší firemní kultury a hodnot již v zásadě je v souladu s činnostmi SRE tak, jak jsme je popsali, a v jakých oblastech by byla implementace náročnější. Pečlivé, iterativní přijetí SRE bude téměř vždy přinést lepší výsledky, než velkoobchodní duplikace něco, co čtete v těchto knihách.
+Vzhledem k tomu, že tyto knihy popisují prostředí, prostředí a jazykovou verzi organizací, které se mohou nebo nemusí podobat tomu, na kterém jste v, je důležité si tyto knihy přečíst s kritickým okem. Při čtení se pokuste určit, které postupy by nebo neuspěly ve vaší organizaci. Nějakou dobu trvá, než poznáte, které informace jsou pro vás přínosné. Zamyslete se, která část vaší firemní kultury a hodnot již v zásadě je v souladu s činnostmi SRE tak, jak jsme je popsali, a v jakých oblastech by byla implementace náročnější. Pečlivá iterativní přechodua SRE téměř vždy dosáhne lepších výsledků než při vytváření duplicitních dat, která se v těchto knihách čtou.

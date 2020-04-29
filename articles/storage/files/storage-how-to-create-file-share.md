@@ -9,10 +9,10 @@ ms.date: 2/22/2020
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: ed6abbac7c5953eaec4fa4584248d0d98b49ba63
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77596872"
 ---
 # <a name="create-an-azure-file-share"></a>Vytvoření sdílené složky Azure
@@ -31,7 +31,7 @@ Pokud chcete vytvořit sdílenou složku Azure, musíte odpovědět na tři otá
 
 Další informace o těchto třech volbách najdete v tématu [Plánování nasazení služby soubory Azure](storage-files-planning.md).
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 - V tomto článku se předpokládá, že jste už vytvořili předplatné Azure. Pokud ještě nemáte předplatné, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 - Pokud máte v úmyslu použít Azure PowerShell, [nainstalujte nejnovější verzi](https://docs.microsoft.com/powershell/azure/install-az-ps).
 - Pokud máte v úmyslu používat rozhraní příkazového řádku Azure, [nainstalujte nejnovější verzi](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
@@ -86,7 +86,7 @@ Značky jsou páry název-hodnota, které umožňují kategorizaci prostředků 
 #### <a name="review--create"></a>Zkontrolovat a vytvořit
 Posledním krokem při vytváření účtu úložiště je výběr tlačítka **vytvořit** na kartě **Revize + vytvořit** . Toto tlačítko nebude k dispozici, pokud nejsou vyplněna všechna povinná pole pro účet úložiště.
 
-# <a name="powershell"></a>[Prostředí](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 K vytvoření účtu úložiště pomocí PowerShellu použijeme `New-AzStorageAccount` rutinu. Tato rutina má mnoho možností; zobrazí se pouze požadované možnosti. Další informace o rozšířených možnostech najdete v [ `New-AzStorageAccount` dokumentaci k rutině](/powershell/module/az.storage/new-azstorageaccount).
 
 Abychom zjednodušili vytváření účtu úložiště a další sdílené složky, uložíme do proměnných několik parametrů. Obsah proměnné můžete nahradit libovolnými hodnotami, ale Všimněte si, že název účtu úložiště musí být globálně jedinečný.
@@ -177,7 +177,7 @@ Na obrazovce by se mělo zobrazit okno nové sdílení souborů. V okně Nová s
 
 Vyberte **vytvořit** a dokončí se vytváření nové sdílené složky. Všimněte si, že pokud je váš účet úložiště ve virtuální síti, nebudete moct úspěšně vytvořit sdílenou složku Azure, pokud je váš klient zároveň ve virtuální síti. Pomocí rutiny Azure PowerShell `New-AzRmStorageShare` můžete také obejít toto omezení bodu v čase.
 
-# <a name="powershell"></a>[Prostředí](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Pomocí [`New-AzRmStorageShare`](/powershell/module/az.storage/New-AzRmStorageShare) rutiny můžete vytvořit sdílenou složku Azure. Následující příkazy PowerShellu předpokládají, že jste `$resourceGroupName` nastavili `$storageAccountName` proměnné a jak je definováno výše v části vytvoření účtu úložiště s Azure PowerShell. 
 
 > [!Important]  
