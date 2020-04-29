@@ -1,6 +1,6 @@
 ---
-title: Příprava na změnu formátu do protokolů prostředků Azure Monitoru
-description: Protokoly prostředků Azure přesunuty k použití objektů BLOB připojit na 1 listopadu 2018.
+title: Příprava na změnu formátu pro Azure Monitor protokoly prostředků
+description: Protokoly prostředků Azure se přesunuly tak, aby používaly doplňovací objekty blob, od 1. listopadu 2018.
 author: johnkemnetz
 services: monitoring
 ms.topic: conceptual
@@ -8,54 +8,54 @@ ms.date: 07/06/2018
 ms.author: johnkem
 ms.subservice: logs
 ms.openlocfilehash: 001dfbc78c0027249143e933684523d47af383d1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79096778"
 ---
-# <a name="prepare-for-format-change-to-azure-monitor-platform-logs-archived-to-a-storage-account"></a>Příprava na změnu formátu protokolů platformy Azure Monitor archivovaných do účtu úložiště
+# <a name="prepare-for-format-change-to-azure-monitor-platform-logs-archived-to-a-storage-account"></a>Příprava na změnu formátu Azure Monitor protokoly platformy archivované na účet úložiště
 
 > [!WARNING]
-> Pokud odesíláte [protokoly prostředků Azure nebo metriky do účtu úložiště pomocí diagnostických nastavení](resource-logs-collect-storage.md) nebo [protokolů aktivit do účtu úložiště pomocí profilů protokolu](resource-logs-collect-storage.md), formát dat v účtu úložiště se změnil na JSON Lines v listopadu 1, 2018. Níže uvedené pokyny popisují dopad a jak aktualizovat nástroje pro zpracování nového formátu.
+> Pokud odesíláte [protokoly prostředků Azure nebo metriky do účtu úložiště pomocí nastavení diagnostiky](resource-logs-collect-storage.md) nebo [protokolů aktivit v účtu úložiště pomocí profilů protokolů](resource-logs-collect-storage.md), formát dat v účtu úložiště se změní na řádky JSON od 1. listopadu 2018. Níže uvedené pokyny popisují dopad a způsob aktualizace nástrojů pro zpracování nového formátu.
 >
 
 ## <a name="what-changed"></a>Co se změnilo
 
-Azure Monitor nabízí funkci, která umožňuje odesílat protokoly prostředků a protokoly aktivit do účtu úložiště Azure, obornázvů Event Hubs nebo do pracovního prostoru Log Analytics v Azure Monitoru. Aby bylo možné vyřešit problém s výkonem **systému, v listopadu 1, 2018 v 12:00 půlnoci UTC** formát dat protokolu odeslat do úložiště objektů blob změnil. Pokud máte nástroje, které jsou čtení dat z úložiště objektů blob, budete muset aktualizovat nástroje pochopit nový formát dat.
+Azure Monitor nabízí možnost, která umožňuje odesílat protokoly prostředků a protokoly aktivit do účtu služby Azure Storage, Event Hubs oboru názvů nebo do Log Analyticsho pracovního prostoru v Azure Monitor. Aby bylo možné vyřešit potíže s výkonem systému, **1. listopadu 2018 ve 12:00 půlnoci času UTC** se změnil formát data protokolu odeslání do úložiště objektů BLOB. Pokud máte nástroje, které čtou data z úložiště objektů blob, je potřeba aktualizovat nástroje, abyste pochopili nový formát dat.
 
-* Ve čtvrtek 1. [JSON Lines](http://jsonlines.org/) To znamená, že každý záznam bude oddělen novým řádkem, bez pole vnějších záznamů a bez čárek mezi záznamy JSON.
-* Formát objektu blob se změnil pro všechna diagnostická nastavení ve všech předplatných najednou. První soubor PT1H.json vyzařovaný pro 1. Názvy objektů blob a kontejnerů zůstávají stejné.
-* Nastavení diagnostického nastavení mezi před 1.
-* K této změně došlo najednou ve všech oblastech veřejného cloudu. Ke změně nedojde v Microsoft Azure provozovaném cloudy 21Vianet, Azure Germany nebo Azure Government.
-* Tato změna má vliv na následující datové typy:
-  * [Protokoly prostředků Azure](archive-diagnostic-logs.md) ([viz seznam prostředků zde](diagnostic-logs-schema.md))
-  * [Metriky prostředků Azure exportované podle nastavení diagnostiky](diagnostic-settings.md)
-  * [Data protokolu aktivit Azure exportovaná pomocí profilů protokolu](activity-log-collect.md)
+* Ve čtvrtek od 1. listopadu 2018 ve 12:00 půlnoci UTC se formát objektu BLOB změnil na [řádky JSON](http://jsonlines.org/). To znamená, že každý záznam bude oddělený novým řádkem, bez pole vnějších záznamů a žádné čárky mezi záznamy JSON.
+* Formát objektu BLOB se změnil pro všechna nastavení diagnostiky ve všech předplatných najednou. První soubor PT1H. JSON vydaný pro 1. listopadu použil tento nový formát. Názvy objektů BLOB a kontejnerů zůstávají stejné.
+* Nastavení diagnostiky mezi před 1. listopadu pokračuje v generování dat v aktuálním formátu do 1. listopadu.
+* Tato změna nastala v rámci všech oblastí veřejné cloudové oblasti. Tato změna se neprojeví v Microsoft Azure provozovaných v cloudech 21Vianet, Azure Německo nebo Azure Government.
+* Tato změna má vliv na následující typy dat:
+  * [Protokoly prostředků Azure](archive-diagnostic-logs.md) ([tady najdete seznam prostředků](diagnostic-logs-schema.md))
+  * [Metriky prostředků Azure, které se exportují pomocí nastavení diagnostiky](diagnostic-settings.md)
+  * [Data protokolu aktivit Azure, která se exportují pomocí profilů protokolů](activity-log-collect.md)
 * Tato změna nemá vliv na:
   * Protokoly toku sítě
-  * Protokoly služeb Azure ještě nejsou dostupné prostřednictvím Azure Monitoru (například protokoly prostředků služby Azure App Service, protokoly analýzy úložiště).
-  * Směrování protokolů prostředků Azure a protokolů aktivit do jiných cílů (centra událostí, analýza protokolů)
+  * Protokoly služby Azure nejsou k dispozici prostřednictvím Azure Monitor zatím (například protokoly Azure App Service prostředků, protokoly analýzy úložiště)
+  * Směrování protokolů o prostředcích a protokolů aktivit Azure do jiných cílů (Event Hubs Log Analytics)
 
-### <a name="how-to-see-if-you-are-impacted"></a>Jak zjistit, zda jste ovlivněni
+### <a name="how-to-see-if-you-are-impacted"></a>Jak zjistit, jestli jste ovlivnili
 
-Tato změna vás ovlivní pouze v případě, že:
-1. Posílají data protokolu do účtu úložiště Azure pomocí diagnostického nastavení a
+Tato změna ovlivní jenom v případě, že:
+1. Odesílají data protokolu do účtu služby Azure Storage pomocí nastavení diagnostiky a
 2. Mít nástroje, které závisí na struktuře JSON těchto protokolů v úložišti.
  
-Chcete-li zjistit, zda máte diagnostická nastavení, která odesílají data do účtu úložiště Azure, můžete přejít do části **Sledování** na portálu, kliknout na **Nastavení diagnostiky**a identifikovat všechny prostředky, které mají **diagnostický stav** nastavený na **Povoleno**:
+Pokud chcete zjistit, jestli máte nastavení diagnostiky, která odesílají data do účtu služby Azure Storage, můžete přejít do části **monitorování** na portálu, kliknout na **nastavení diagnostiky**a identifikovat všechny prostředky, u nichž je **stav diagnostiky** nastaven na **povoleno**:
 
-![Okno Nastavení diagnostiky monitoru Azure](media/diagnostic-logs-append-blobs/portal-diag-settings.png)
+![Okno nastavení diagnostiky Azure Monitor](media/diagnostic-logs-append-blobs/portal-diag-settings.png)
 
-Pokud je stav diagnostiky nastaven na povoleno, máte aktivní diagnostické nastavení tohoto prostředku. Kliknutím na prostředek zobrazíte, jestli nějaká diagnostická nastavení neodesílají data do účtu úložiště:
+Pokud je stav diagnostiky nastaven na povoleno, máte aktivní nastavení diagnostiky pro tento prostředek. Kliknutím na prostředek zjistíte, jestli nějaké nastavení diagnostiky posílá data do účtu úložiště:
 
-![Účet úložiště povolen.](media/diagnostic-logs-append-blobs/portal-storage-enabled.png)
+![Účet úložiště je povolený.](media/diagnostic-logs-append-blobs/portal-storage-enabled.png)
 
-Pokud máte prostředky odesílající data do účtu úložiště pomocí těchto nastavení diagnostiky prostředků, formát dat v tomto účtu úložiště bude mít vliv na tuto změnu. Pokud nemáte vlastní nástroje, které fungují mimo tyto účty úložiště, změna formátu nebude mít vliv na vás.
+Pokud máte prostředky odesílající data do účtu úložiště pomocí těchto nastavení diagnostiky prostředků, bude tato změna mít vliv na formát dat v tomto účtu úložiště. Pokud nemáte vlastní nástroje, které nefungují z těchto účtů úložiště, změna formátu vás nebude ovlivňovat.
 
-### <a name="details-of-the-format-change"></a>Podrobnosti o změně formátu
+### <a name="details-of-the-format-change"></a>Podrobnosti změny formátu
 
-Aktuální formát souboru PT1H.json v úložišti objektů blob Azure používá pole json záznamů. Zde je ukázka souboru protokolu KeyVault nyní:
+Aktuální formát souboru PT1H. JSON ve službě Azure Blob Storage používá pole JSON záznamů. Tady je ukázka souboru protokolu trezoru klíčů nyní:
 
 ```json
 {
@@ -116,23 +116,23 @@ Aktuální formát souboru PT1H.json v úložišti objektů blob Azure použív�
 }
 ```
 
-Nový formát používá [řádky JSON](http://jsonlines.org/), kde každá událost je řádek a znak nového řádku označuje novou událost. Zde je to, co výše uvedená ukázka bude vypadat v souboru PT1H.json po změně:
+Nový formát používá [řádky JSON](http://jsonlines.org/), kde každá událost je řádek a znak nového řádku indikuje novou událost. V tomto příkladu bude výše uvedený vzor vypadat jako v souboru PT1H. JSON po provedení změny:
 
 ```json
 {"time": "2016-01-05T01:32:01.2691226Z","resourceId": "/SUBSCRIPTIONS/361DA5D4-A47A-4C79-AFDD-XXXXXXXXXXXX/RESOURCEGROUPS/CONTOSOGROUP/PROVIDERS/MICROSOFT.KEYVAULT/VAULTS/CONTOSOKEYVAULT","operationName": "VaultGet","operationVersion": "2015-06-01","category": "AuditEvent","resultType": "Success","resultSignature": "OK","resultDescription": "","durationMs": "78","callerIpAddress": "104.40.82.76","correlationId": "","identity": {"claim": {"http://schemas.microsoft.com/identity/claims/objectidentifier": "d9da5048-2737-4770-bd64-XXXXXXXXXXXX","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn": "live.com#username@outlook.com","appid": "1950a258-227b-4e31-a9cf-XXXXXXXXXXXX"}},"properties": {"clientInfo": "azure-resource-manager/2.0","requestUri": "https://control-prod-wus.vaultcore.azure.net/subscriptions/361da5d4-a47a-4c79-afdd-XXXXXXXXXXXX/resourcegroups/contosoresourcegroup/providers/Microsoft.KeyVault/vaults/contosokeyvault?api-version=2015-06-01","id": "https://contosokeyvault.vault.azure.net/","httpStatusCode": 200}}
 {"time": "2016-01-05T01:33:56.5264523Z","resourceId": "/SUBSCRIPTIONS/361DA5D4-A47A-4C79-AFDD-XXXXXXXXXXXX/RESOURCEGROUPS/CONTOSOGROUP/PROVIDERS/MICROSOFT.KEYVAULT/VAULTS/CONTOSOKEYVAULT","operationName": "VaultGet","operationVersion": "2015-06-01","category": "AuditEvent","resultType": "Success","resultSignature": "OK","resultDescription": "","durationMs": "83","callerIpAddress": "104.40.82.76","correlationId": "","identity": {"claim": {"http://schemas.microsoft.com/identity/claims/objectidentifier": "d9da5048-2737-4770-bd64-XXXXXXXXXXXX","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn": "live.com#username@outlook.com","appid": "1950a258-227b-4e31-a9cf-XXXXXXXXXXXX"}},"properties": {"clientInfo": "azure-resource-manager/2.0","requestUri": "https://control-prod-wus.vaultcore.azure.net/subscriptions/361da5d4-a47a-4c79-afdd-XXXXXXXXXXXX/resourcegroups/contosoresourcegroup/providers/Microsoft.KeyVault/vaults/contosokeyvault?api-version=2015-06-01","id": "https://contosokeyvault.vault.azure.net/","httpStatusCode": 200}}
 ```
 
-Tento nový formát umožňuje Azure Monitor nabízení souborů protokolu pomocí [připojit objekty BLOB](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs), které jsou efektivnější pro průběžné přidávání nových dat událostí.
+Tento nový formát umožňuje Azure Monitor vkládat soubory protokolu pomocí [doplňovacích objektů BLOB](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs), které jsou efektivnější pro nepřetržité připojení nových dat událostí.
 
-## <a name="how-to-update"></a>Jak aktualizovat
+## <a name="how-to-update"></a>Postup aktualizace
 
-Aktualizace je třeba provést pouze v případě, že máte vlastní nástroje, které tyto soubory protokolu ingestuje pro další zpracování. Pokud používáte externí protokol analytics nebo siem nástroj, doporučujeme [použít centra událostí k ingestování těchto dat místo](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/). Integrace centra událostí je jednodušší, pokud jde o zpracování protokolů z mnoha služeb a umístění bookmarkingu v určitém protokolu.
+Aktualizace je potřeba provést jenom v případě, že máte vlastní nástroje, které ingestují tyto soubory protokolu k dalšímu zpracování. Pokud používáte externí nástroj Log Analytics nebo nástroj SIEM, doporučujeme [místo toho použít centra událostí k](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)ingestování těchto dat. Integrace centra událostí je snazší v souvislosti s zpracováním protokolů z mnoha služeb a umístěním do záložky v konkrétním protokolu.
 
-Vlastní nástroje by měly být aktualizovány tak, aby zpracovávali aktuální formát i formát JSON Lines popsaný výše. Tím zajistíte, že když se data začnou objevovat v novém formátu, vaše nástroje se nepřeruší.
+Vlastní nástroje by se měly aktualizovat tak, aby zpracovávala jak aktuální formát, tak formát řádků JSON, jak je popsáno výše. Tím se zajistí, že když se data začnou zobrazovat v novém formátu, nástroje se neruší.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Informace o [archivaci protokolů prostředků prostředků do účtu úložiště](./../../azure-monitor/platform/archive-diagnostic-logs.md)
-* Informace o [archivaci dat protokolu aktivit do účtu úložiště](./../../azure-monitor/platform/archive-activity-log.md)
+* Přečtěte si o [archivaci protokolů prostředků prostředků do účtu úložiště](./../../azure-monitor/platform/archive-diagnostic-logs.md) .
+* Další informace o [archivaci dat protokolu aktivit do účtu úložiště](./../../azure-monitor/platform/archive-activity-log.md)
 

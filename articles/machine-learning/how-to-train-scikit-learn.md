@@ -1,7 +1,7 @@
 ---
-title: Vyškolit modely strojového učení scikit-learn
+title: Výukové scikity – Naučte se modely strojového učení
 titleSuffix: Azure Machine Learning
-description: Zjistěte, jak spustit vaše školicí skripty scikit-learn v podnikovém měřítku pomocí třídy odhadu Azure Machine Learning SKlearn. Ukázkové skripty klasifikují obrazy květin iris a vytvářejí model strojového učení založený na datové sadě duhovky scikit-learn.
+description: Naučte se spouštět scikité školicí skripty v podnikovém měřítku pomocí třídy Azure Machine Learning skriptu sklearn Estimator. Ukázkové skripty klasifikují obrázky v sadě Iris pro sestavení modelu strojového učení na základě datové sady Iris scikit-učení.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,45 +11,45 @@ author: maxluk
 ms.date: 03/09/2020
 ms.custom: seodec18
 ms.openlocfilehash: bdd2cc400c3df75742689258caea8cb87ee8ccc6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78942255"
 ---
-# <a name="build-scikit-learn-models-at-scale-with-azure-machine-learning"></a>Vytvářejte modely scikit-learn ve velkém měřítku pomocí Azure Machine Learning
+# <a name="build-scikit-learn-models-at-scale-with-azure-machine-learning"></a>Sestavujte modely scikit s využitím škálování pomocí Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-V tomto článku se dozvíte, jak spustit vaše školicí skripty scikit-learn v podnikovém měřítku pomocí třídy odhadu Azure Machine Learning [SKlearn.](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py) 
+V tomto článku se dozvíte, jak spouštět scikit skripty s učením v podnikové škále pomocí třídy Azure Machine Learning [skriptu sklearn Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py) . 
 
-Příklad skripty v tomto článku se používají ke klasifikaci iris květinové obrázky k vytvoření modelu strojového učení založené na scikit-learn [iris datové sady](https://archive.ics.uci.edu/ml/datasets/iris).
+V ukázkových skriptech v tomto článku se používají ke klasifikaci imagí květů Iris k sestavení modelu machine learningu založeného na [datové sadě Iris](https://archive.ics.uci.edu/ml/datasets/iris)scikit-učení.
 
-Ať už trénujete model scikit-learn pro strojové učení od základu nebo přinášíte do cloudu existující model, můžete pomocí Azure Machine Learning škálovat úlohy školení s otevřeným zdrojovým kódem pomocí elastických cloudových výpočetních prostředků. Pomocí Azure Machine Learning můžete vytvářet, nasazovat, nastavovat a monitorovat produkční modely.
+Bez ohledu na to, jestli provedete výukový model Machine Learning scikit z provozu nebo do cloudu převedete existující model, můžete použít Azure Machine Learning k horizontálnímu navýšení kapacity Open-Source školicích úloh pomocí elastických výpočetních prostředků pro Cloud. Pomocí Azure Machine Learning můžete sestavovat, nasazovat, používat verzi a monitorovat modely produkčního prostředí.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Spusťte tento kód v některém z těchto prostředí:
- - Výpočetní instance Azure Machine Learning – není nutné žádné stahování ani instalace
+Spusťte tento kód v jednom z těchto prostředí:
+ - Azure Machine Learning výpočetní instance – nepotřebujete žádné soubory ke stažení nebo instalaci
 
-    - Dokončete [kurz: Instalační prostředí a pracovní prostor](tutorial-1st-experiment-sdk-setup.md) a vytvořte vyhrazený notebook ový server s předinstalovaným sadou SDK a ukázkovým úložištěm.
-    - Ve složce školení ukázky na serveru notebooku, najít dokončené a rozšířené poznámkový blok přechodem do tohoto adresáře: **how-to-use-azureml > ml-frameworks > scikit-learn > školení > vlak-hyperparameter-tune-deploy-with-sklearn** složky.
+    - Dokončete [kurz: instalační prostředí a pracovní prostor](tutorial-1st-experiment-sdk-setup.md) pro vytvoření vyhrazeného serveru poznámkového bloku předem načteného se sadou SDK a s ukázkovým úložištěm.
+    - Ve složce školení ukázek na serveru pro Poznámkový blok Najděte dokončený a rozbalený Poznámkový blok tak, že přejdete na tento adresář: **How-to->-azureml ml-framework > scikit-Projděte si > školení > výukových--skriptu sklearn-Intune-with-** .
 
- - Váš vlastní Jupyter Notebook server
+ - Váš vlastní server Jupyter Notebook
 
-    - [Nainstalujte azure machine learning sdk](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
+    - [Nainstalujte sadu Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
     - [Vytvořte konfigurační soubor pracovního prostoru](how-to-configure-environment.md#workspace).
-    - Stažení souboru dat a ukázkového skriptu 
-        - [datová sada duhovky](https://archive.ics.uci.edu/ml/datasets/iris)
-        - [train_iris.py](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/scikit-learn/training/train-hyperparameter-tune-deploy-with-sklearn)
-    - Můžete také najít vyplněnou [verzi jupyterského poznámkového bloku](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/scikit-learn/training/train-hyperparameter-tune-deploy-with-sklearn/train-hyperparameter-tune-deploy-with-sklearn.ipynb) této příručky na stránce ukázek GitHub. Poznámkový blok obsahuje rozšířenou sekci, která zahrnuje inteligentní hyperparametrické ladění a načítání nejlepšího modelu podle primárních metrik.
+    - Stáhnout datovou sadu a ukázkový soubor skriptu 
+        - [datová sada Iris](https://archive.ics.uci.edu/ml/datasets/iris)
+        - [train_iris. py](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/scikit-learn/training/train-hyperparameter-tune-deploy-with-sklearn)
+    - Dokončenou [Jupyter notebook verzi](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/scikit-learn/training/train-hyperparameter-tune-deploy-with-sklearn/train-hyperparameter-tune-deploy-with-sklearn.ipynb) tohoto průvodce najdete na stránce ukázek na GitHubu. Poznámkový blok obsahuje rozšířený oddíl, který pokrývá inteligentní ladění parametrů a načítá nejlepší model podle primární metriky.
 
 ## <a name="set-up-the-experiment"></a>Nastavení experimentu
 
-Tato část nastaví trénovací experiment načtením požadovaných balíčků pythonu, inicializací pracovního prostoru, vytvořením experimentu a nahráním trénovacích dat a trénovacích skriptů.
+Tato část nastavuje experiment pro školení načtením požadovaných balíčků Pythonu, inicializací pracovního prostoru, vytvořením experimentu a nahráním školicích dat a školicích skriptů.
 
 ### <a name="import-packages"></a>Import balíčků
 
-Nejprve importujte potřebné knihovny Pythonu.
+Nejdřív importujte nezbytné knihovny Pythonu.
 
 ```Python
 import os
@@ -64,11 +64,11 @@ from azureml.core.compute import ComputeTarget, AmlCompute
 from azureml.core.compute_target import ComputeTargetException
 ```
 
-### <a name="initialize-a-workspace"></a>Inicializaci pracovního prostoru
+### <a name="initialize-a-workspace"></a>Inicializovat pracovní prostor
 
-[Pracovní prostor Azure Machine Learning](concept-workspace.md) je prostředek nejvyšší úrovně pro službu. Poskytuje vám centralizované místo pro práci se všemi artefakty, které vytvoříte. V pythonu SDK můžete přistupovat k artefaktům [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) pracovního prostoru vytvořením objektu.
+[Azure Machine Learning pracovní prostor](concept-workspace.md) je prostředek nejvyšší úrovně pro službu. Poskytuje centralizované místo pro práci se všemi artefakty, které vytvoříte. V sadě Python SDK máte přístup k artefaktům pracovního prostoru vytvořením [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) objektu.
 
-Vytvořte objekt pracovního `config.json` prostoru ze souboru vytvořeného v [části požadavky](#prerequisites).
+Vytvořte objekt pracovního prostoru ze `config.json` souboru vytvořeného v [části požadavky](#prerequisites).
 
 ```Python
 ws = Workspace.from_config()
@@ -76,7 +76,7 @@ ws = Workspace.from_config()
 
 ### <a name="create-a-machine-learning-experiment"></a>Vytvoření experimentu se strojovým učením
 
-Vytvořte experiment a složku pro uložení školicích skriptů. V tomto příkladu vytvořte experiment s názvem "sklearn-iris".
+Vytvořte experiment a složku, do které se budou ukládat skripty pro školení. V tomto příkladu vytvořte experiment nazvaný "skriptu sklearn-Iris".
 
 ```Python
 project_folder = './sklearn-iris'
@@ -87,24 +87,24 @@ exp = Experiment(workspace=ws, name='sklearn-iris')
 
 ### <a name="prepare-training-script"></a>Příprava školicího skriptu
 
-V tomto kurzu je pro vás již k dispozici školicí skript **train_iris.py.** V praxi byste měli být schopni přijmout všechny vlastní trénovací skript, jak je a spustit jej s Azure ML bez nutnosti měnit kód.
+V tomto kurzu se školicí skript **train_iris. py** pro vás už poskytuje. V praxi byste měli být schopni vzít libovolný vlastní školicí skript a spustit ho s Azure ML bez nutnosti upravovat kód.
 
-Pokud chcete používat možnosti sledování a metrik Azure ML, přidejte do školicího skriptu malé množství kódu Azure ML.  Školicí skript **train_iris.py** ukazuje, jak protokolovat některé `Run` metriky do vašeho Azure ML spustit pomocí objektu ve skriptu.
+Pokud chcete používat funkce pro sledování a metriky Azure ML, přidejte do školicího skriptu malý objem kódu Azure ML.  Školicí skript **train_iris. py** ukazuje, jak protokolovat některé metriky do Azure ml Run pomocí `Run` objektu ve skriptu.
 
-Poskytnutý trénovací skript používá `iris = datasets.load_iris()` ukázková data z funkce.  Pro vlastní data může být nutné použít kroky, jako je [například nahrát datovou sadu a skripty,](how-to-train-keras.md#data-upload) aby byla data k dispozici během školení.
+Zadaný školicí skript používá ukázková data z `iris = datasets.load_iris()` funkce.  Pro vlastní data možná budete muset použít kroky, jako je například [nahrát datovou sadu a skripty](how-to-train-keras.md#data-upload) k zpřístupnění dat během školení.
 
-Zkopírujte školicí skript **train_iris.py** do adresáře projektu.
+Zkopírujte skript školení **train_iris. py** do adresáře projektu.
 
 ```
 import shutil
 shutil.copy('./train_iris.py', project_folder)
 ```
 
-## <a name="create-or-get-a-compute-target"></a>Vytvoření nebo získání výpočetního cíle
+## <a name="create-or-get-a-compute-target"></a>Vytvořit nebo získat cíl výpočtů
 
-Vytvořte výpočetní cíl pro úlohu scikit-learn, na které se můžete spustit. Scikit-learn podporuje pouze jeden uzel, CPU výpočetní techniky.
+Vytvořte výpočetní cíl pro úlohu scikit-učení, na které se má spustit. Scikit – informace podporují jenom jeden uzel a výpočetní výkon procesoru.
 
-Následující kód vytvoří spravované výpočetní prostředky Azure Machine Learning (AmlCompute) pro váš výpočetní prostředek pro vzdálené školení. Vytvoření AmlCompute trvá přibližně 5 minut. Pokud AmlCompute s tímto názvem je již ve vašem pracovním prostoru, tento kód přeskočí proces vytváření.
+Následující kód vytvoří Azure Machine Learning spravované COMPUTE (AmlCompute) pro výpočetní prostředek vzdáleného školení. Vytváření AmlCompute trvá přibližně 5 minut. Pokud je AmlCompute s tímto názvem již ve vašem pracovním prostoru, tento kód přeskočí proces vytváření.
 
 ```Python
 cluster_name = "cpu-cluster"
@@ -122,13 +122,13 @@ except ComputeTargetException:
     compute_target.wait_for_completion(show_output=True, min_node_count=None, timeout_in_minutes=20)
 ```
 
-Další informace o výpočetních cílech najdete v článku, [co je cíl výpočetního cíle.](concept-compute-target.md)
+Další informace o výpočetních cílech najdete v článku [co je cílový výpočetní cíl](concept-compute-target.md) .
 
-## <a name="create-a-scikit-learn-estimator"></a>Vytvoření odhadu scikit-learn
+## <a name="create-a-scikit-learn-estimator"></a>Vytvoření scikit-učit Estimator
 
-[Scikit-learn odhad poskytuje](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn?view=azure-ml-py) jednoduchý způsob, jak zahájit scikit-learn školení práci na výpočetní cíl. Je implementována [`SKLearn`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py) prostřednictvím třídy, která může být použita pro podporu školení procesoru s jedním uznami.
+[Scikit-Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn?view=azure-ml-py) poskytuje jednoduchý způsob, jak spustit výukovou úlohu s scikitmi postupy na výpočetním cíli. Je implementována prostřednictvím [`SKLearn`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py) třídy, kterou lze použít k podpoře školení procesoru s jedním uzlem.
 
-Pokud váš školicí skript potřebuje další pip nebo conda balíčky ke spuštění, můžete mít `pip_packages` `conda_packages` balíčky nainstalované na výsledné image docker ujeho předávání jejich názvy prostřednictvím a argumenty.
+Pokud váš školicí skript potřebuje ke spuštění další balíčky PIP nebo Conda, můžete mít balíčky nainstalované ve výsledné imagi Docker tím, že předáte jejich názvy pomocí argumentů `pip_packages` a `conda_packages` .
 
 ```Python
 from azureml.train.sklearn import SKLearn
@@ -147,32 +147,32 @@ estimator = SKLearn(source_directory=project_folder,
 ```
 
 
-Další informace o přizpůsobení prostředí Pythonu najdete v [tématu Vytváření a správa prostředí pro školení a nasazení](how-to-use-environments.md). 
+Další informace o přizpůsobení prostředí Pythonu najdete v tématu [vytváření a Správa prostředí pro školení a nasazení](how-to-use-environments.md). 
 
 ## <a name="submit-a-run"></a>Odeslat běh
 
-Run [Objekt](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py) poskytuje rozhraní pro historii spuštění, zatímco úloha je spuštěna a po dokončení.
+[Objekt Run](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py) poskytuje rozhraní k historii spuštění, když je úloha spuštěná a po jejím dokončení.
 
 ```Python
 run = experiment.submit(estimator)
 run.wait_for_completion(show_output=True)
 ```
 
-Při spuštění prochází následujícími fázemi:
+Po spuštění se spustí v následujících fázích:
 
-- **Příprava**: Obrázek dockeru je vytvořen podle odhadu TensorFlow. Bitová kopie se nahraje do registru kontejnerů pracovního prostoru a uloží do mezipaměti pro pozdější spuštění. Protokoly jsou také přenášeny do historie spuštění a lze je zobrazit za účelem sledování průběhu.
+- **Příprava**: obrázek Docker se vytvoří podle TensorFlow Estimator. Obrázek se nahraje do registru kontejneru v pracovním prostoru a v mezipaměti pro pozdější spuštění. Protokoly se také streamují do historie spuštění a dají se zobrazit ke sledování průběhu.
 
-- **Škálování:** Cluster se pokusí vertikálně navýšit kapacitu, pokud cluster Batch AI vyžaduje ke spuštění spuštění více uzlů, než je aktuálně k dispozici.
+- **Škálování**: cluster se pokusí o horizontální navýšení kapacity, pokud Batch AI cluster vyžaduje více uzlů pro spuštění běhu, než je aktuálně k dispozici.
 
-- **Spuštění**: Všechny skripty ve složce skriptu jsou odeslány do výpočetního cíle, úložiště dat jsou připojena nebo zkopírována a entry_script se spustí. Výstupy ze složky stdout a ./logs jsou přenášeny do historie spuštění a lze je použít ke sledování běhu.
+- **Spuštěno**: všechny skripty ve složce skriptu se nahrají do cílového výpočetního prostředí, úložiště dat se připojí nebo zkopírují a entry_script se spustí. Výstupy z stdout a složky./logs se streamují do historie spuštění a dají se použít k monitorování běhu.
 
-- **Post-Processing**: Složka ./výstupy spuštění je zkopírována do historie spuštění.
+- **Následné zpracování**: složka./Outputs se v běhu kopíruje do historie spuštění.
 
 ## <a name="save-and-register-the-model"></a>Uložení a registrace modelu
 
-Po vyškolení modelu jej můžete uložit a zaregistrovat do pracovního prostoru. Registrace modelu umožňuje ukládat a nakládat s modely v pracovním prostoru a zjednodušit [tak správu a nasazení modelu](concept-model-management-and-deployment.md).
+Po proškolení modelu ho můžete uložit a zaregistrovat do svého pracovního prostoru. Registrace modelu umožňuje ukládat a modelovat vaše modely do svého pracovního prostoru, aby bylo možné zjednodušit [správu modelů a nasazení](concept-model-management-and-deployment.md).
 
-Přidejte následující kód do školicího skriptu, train_iris.py, chcete-li model uložit. 
+Do skriptu pro školení přidejte následující kód train_iris. py pro uložení modelu. 
 
 ``` Python
 import joblib
@@ -180,7 +180,7 @@ import joblib
 joblib.dump(svm_model_linear, 'model.joblib')
 ```
 
-Zaregistrujte model do pracovního prostoru pomocí následujícího kódu. Zadáním parametrů `model_framework`, `model_framework_version`, `resource_configuration`a , bez kódu nasazení modelu bude k dispozici. To umožňuje přímo nasadit model jako webovou službu [`ResourceConfiguration`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.resource_configuration.resourceconfiguration?view=azure-ml-py) z registrovaného modelu a objekt definuje výpočetní prostředek pro webovou službu.
+Zaregistrujte model do svého pracovního prostoru pomocí následujícího kódu. Zadáním parametrů `model_framework`, `model_framework_version`a `resource_configuration`nebudete mít k dispozici nasazení modelu bez kódu. To vám umožní přímo nasadit model jako webovou službu z registrovaného modelu a [`ResourceConfiguration`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.resource_configuration.resourceconfiguration?view=azure-ml-py) objekt definuje výpočetní prostředek pro webovou službu.
 
 ```Python
 from azureml.core import Model
@@ -195,17 +195,17 @@ model = run.register_model(model_name='sklearn-iris',
 
 ## <a name="deployment"></a>Nasazení
 
-Model, který jste právě zaregistrovali, můžete nasadit přesně stejným způsobem jako jakýkoli jiný registrovaný model v Azure Machine Learning, bez ohledu na to, který odhad jste použili pro školení. Postup nasazení obsahuje oddíl o registraci modelů, ale můžete přeskočit přímo k [vytvoření výpočetního cíle](how-to-deploy-and-where.md#choose-a-compute-target) pro nasazení, protože již máte registrovaný model.
+Model, který jste právě zaregistrovali, lze nasadit stejným způsobem jako jakýkoli jiný registrovaný model v Azure Machine Learning, bez ohledu na to, který Estimator jste použili pro školení. Postup nasazení obsahuje část týkající se registrace modelů, ale můžete přeskočit přímo na [Vytvoření výpočetního cíle](how-to-deploy-and-where.md#choose-a-compute-target) pro nasazení, protože již máte registrovaný model.
 
-### <a name="preview-no-code-model-deployment"></a>(Náhled) Nasazení modelu bez kódu
+### <a name="preview-no-code-model-deployment"></a>Tisk Nasazení modelu bez kódu
 
-Namísto tradiční trasy nasazení můžete také použít funkci nasazení bez kódu (náhled) pro scikit-learn. Nasazení modelu bez kódu je podporováno pro všechny předdefinované typy modelů scikit-learn. Registrací modelu, jak je `model_framework`znázorněno výše, pomocí , `model_framework_version`a `resource_configuration` parametry, můžete jednoduše použít statickou [`deploy()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) funkci k nasazení modelu.
+Místo tradičního postupu nasazení můžete také použít funkci nasazení bez kódu (Preview) pro scikit-učení. Nasazení modelu bez kódu se nepodporuje pro všechny integrované typy modelů scikit-učení. Registrací modelu `model_framework`, jak je uvedeno výše, pomocí `model_framework_version`parametrů, `resource_configuration` a můžete jednoduše použít [`deploy()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) statickou funkci pro nasazení modelu.
 
 ```python
 web_service = Model.deploy(ws, "scikit-learn-service", [model])
 ```
 
-Poznámka: Tyto závislosti jsou zahrnuty v předem sestavené scikit-learn odvození kontejneru.
+Poznámka: tyto závislosti jsou součástí předem připraveného kontejneru scikit-učení.
 
 ```yaml
     - azureml-defaults
@@ -214,13 +214,13 @@ Poznámka: Tyto závislosti jsou zahrnuty v předem sestavené scikit-learn odvo
     - numpy
 ```
 
-Úplné [návody na](how-to-deploy-and-where.md) nasazení v Azure Machine Learning do větší hloubky.
+Úplný [postup](how-to-deploy-and-where.md) pokrývá nasazení v Azure Machine Learning s větší hloubkou.
 
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste vyškolili a zaregistrovali model scikit-learn a dozvěděli jste se o možnostech nasazení. Další informace o Azure Machine Learning najdete v těchto dalších článcích.
+V tomto článku jste si naučili a zaregistrovali model scikit-učení a seznámili jste se s možnostmi nasazení. Další informace o Azure Machine Learning najdete v těchto článcích.
 
-* [Sledovat metriky běhu během tréninku](how-to-track-experiments.md)
+* [Sledovat metriky spuštění během školení](how-to-track-experiments.md)
 * [Ladění hyperparametrů](how-to-tune-hyperparameters.md)
-* [Referenční architektura pro distribuované školení pro hloubkové učení v Azure](/azure/architecture/reference-architectures/ai/training-deep-learning)
+* [Referenční architektura distribuovaného školení pro hloubkové učení v Azure](/azure/architecture/reference-architectures/ai/training-deep-learning)

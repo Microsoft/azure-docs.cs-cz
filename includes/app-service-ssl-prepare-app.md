@@ -9,31 +9,31 @@ ms.date: 10/15/2018
 ms.author: cephalin
 ms.custom: include file
 ms.openlocfilehash: 4c5c0197ab6cecbba4bac4c0bff5ef76de24b6de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78300994"
 ---
 ## <a name="prepare-your-web-app"></a>Příprava webové aplikace
 
-Chcete-li vytvořit vlastní vazby zabezpečení nebo povolit klientské certifikáty pro aplikaci App Service, váš [plán služby App Service](https://azure.microsoft.com/pricing/details/app-service/) musí být na úrovni **Basic**, **Standard**, **Premium**nebo **Isolated.** V tomto kroku se ujistíte, že je vaše webová aplikace na podporované cenové úrovni.
+Pokud chcete vytvořit vlastní vazby zabezpečení nebo povolit klientské certifikáty pro aplikaci App Service, musí být [plán App Service](https://azure.microsoft.com/pricing/details/app-service/) na úrovni **Basic**, **Standard**, **Premium**nebo **Isolated** . V tomto kroku se ujistíte, že je vaše webová aplikace na podporované cenové úrovni.
 
 ### <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Otevřete [portál Azure](https://portal.azure.com).
+Otevřete [Azure Portal](https://portal.azure.com).
 
 ### <a name="navigate-to-your-web-app"></a>Přechod do webové aplikace
 
-Vyhledejte a vyberte **služby App Services**.
+Vyhledejte a vyberte **App Services**.
 
-![Vybrat služby aplikace](./media/app-service-ssl-prepare-app/app-services.png)
+![Vyberte App Services](./media/app-service-ssl-prepare-app/app-services.png)
 
-Na stránce **Služby aplikací** vyberte název webové aplikace.
+Na stránce **App Services** vyberte název vaší webové aplikace.
 
 ![Přechod do aplikace Azure na portálu](./media/app-service-ssl-prepare-app/select-app.png)
 
-Přistáli jste na stránce správy webové aplikace.  
+Vyložili jste na stránce pro správu vaší webové aplikace.  
 
 ### <a name="check-the-pricing-tier"></a>Kontrola cenové úrovně
 
@@ -45,7 +45,7 @@ Zkontrolujte, že vaše webová aplikace není na úrovni **F1** nebo **D1**. Ak
 
 ![Kontrola cenové úrovně](./media/app-service-ssl-prepare-app/check-pricing-tier.png)
 
-Na úrovni **F1** a **D1** se nepodporuje vlastní SSL. Pokud potřebujete vertikálně navýšit kapacitu, postupujte podle kroků v další části. V opačném případě zavřete stránku **Vertika nahoru** a přeskočte oddíl [Škálování na výšinou stránku plánu služby App Service.](#scale-up-your-app-service-plan)
+Na úrovni **F1** a **D1** se nepodporuje vlastní SSL. Pokud potřebujete vertikálně navýšit kapacitu, postupujte podle kroků v další části. V opačném případě zavřete stránku **horizontálního navýšení kapacity** a přeskočte část [navýšení kapacity schématu App Service](#scale-up-your-app-service-plan) .
 
 ### <a name="scale-up-your-app-service-plan"></a>Vertikální navýšení kapacity plánu služby App Service
 

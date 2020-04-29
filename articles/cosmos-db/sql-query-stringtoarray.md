@@ -1,6 +1,6 @@
 ---
-title: StringToArray v dotazovacím jazyce Azure Cosmos DB
-description: Další informace o funkci systému SQL StringToArray v Azure Cosmos DB.
+title: StringToArray v jazyce pro dotaz na Azure Cosmos DB
+description: Přečtěte si o StringToArray funkcí SQL systému v Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 18acbd94fa3d717fc20b9e1020b9bf7c6db7744d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78302912"
 ---
 # <a name="stringtoarray-azure-cosmos-db"></a>StringToArray (Azure Cosmos DB)
- Vrátí výraz přeložený do pole. Pokud výraz nelze přeložit, vrátí undefined.  
+ Vrátí výraz přeložený do pole. Pokud výraz nelze přeložit, vrátí nedefinované funkce.  
   
 ## <a name="syntax"></a>Syntaxe
   
@@ -26,20 +26,20 @@ StringToArray(<str_expr>)
 ## <a name="arguments"></a>Argumenty
   
 *str_expr*  
-   Je řetězcový výraz, který má být analyzován jako výraz JSON Array. 
+   Je řetězcový výraz, který se má analyzovat jako výraz pole JSON. 
   
 ## <a name="return-types"></a>Návratové typy
   
   Vrátí výraz pole nebo nedefinovaný. 
   
 ## <a name="remarks"></a>Poznámky
-  Vnořené hodnoty řetězce musí být zapsány s dvojitými uvozovkami, aby byly platné JSON. Podrobnosti o formátu JSON naleznete v [json.org](https://json.org/)
+  Vnořené řetězcové hodnoty musí být zapsány pomocí dvojitých uvozovek, aby byly platné JSON. Podrobnosti o formátu JSON najdete v tématu [JSON.org](https://json.org/) .
   
 ## <a name="examples"></a>Příklady
   
-  Následující příklad ukazuje, jak `StringToArray` se chová napříč různými typy. 
+  Následující příklad ukazuje, jak `StringToArray` se chová v různých typech. 
   
- Následují příklady s platným vstupem.
+ Níže jsou uvedeny příklady s platným vstupem.
 
 ```sql
 SELECT 
@@ -59,7 +59,7 @@ Zde je sada výsledků.
 Následuje příklad neplatného vstupu. 
    
  Jednoduché uvozovky v rámci pole nejsou platné JSON.
-I když jsou platné v rámci dotazu, nebudou analyzovat na platná pole. Řetězce v řetězci pole musí\\být\\buď uvozeny uvozeny "[ " "]" nebo okolní uvozovky musí být jednoduché '[""]'.
+I když jsou v rámci dotazu platné, nebudou analyzovány na platná pole. Řetězce v řetězci pole musí být buď uvozeny řídicím znakem "[\\"\\"]", nebo okolní uvozovka musí být jednoduché "[" "]".
 
 ```sql
 SELECT
@@ -72,9 +72,9 @@ Zde je sada výsledků.
 [{}]
 ```
 
-Následují příklady neplatného vstupu.
+Níže jsou uvedeny příklady neplatného vstupu.
    
- Předaný výraz bude analyzován jako pole JSON; následující nevyhodnocují typ pole a proto vrátit undefined.
+ Předaný výraz se analyzuje jako pole JSON; Následující pole nejsou vyhodnocena pro typ Array a proto vracejí nedefinované.
    
 ```sql
 SELECT
@@ -93,10 +93,10 @@ Zde je sada výsledků.
 
 ## <a name="remarks"></a>Poznámky
 
-Tato systémová funkce nebude využívat index.
+Tato systémová funkce nebude index využívat.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Funkce řetězce Azure Cosmos DB](sql-query-string-functions.md)
+- [Azure Cosmos DB funkce řetězce](sql-query-string-functions.md)
 - [Systémové funkce Azure Cosmos DB](sql-query-system-functions.md)
 - [Úvod do Azure Cosmos DB](introduction.md)

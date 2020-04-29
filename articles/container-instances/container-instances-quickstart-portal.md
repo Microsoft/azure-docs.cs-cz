@@ -1,21 +1,21 @@
 ---
-title: Úvodní příručka – nasazení kontejneru Dockeru do instance kontejneru – portál
-description: V tomto rychlém startu použijete portál Azure k rychlému nasazení kontejnerizované webové aplikace, která běží v izolované instanci kontejneru Azure.
+title: Rychlý Start – nasazení kontejneru Docker do instance kontejneru – portál
+description: V tomto rychlém startu použijete Azure Portal k rychlému nasazení kontejnerové webové aplikace, která běží v izolované instanci kontejneru Azure.
 ms.topic: quickstart
 ms.date: 03/09/2020
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 7a872e955db46b76d3b12f8ffc38d4a8e497ea63
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79087997"
 ---
-# <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-portal"></a>Úvodní příručka: Nasazení instance kontejneru v Azure pomocí portálu Azure
+# <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-portal"></a>Rychlý Start: nasazení instance kontejneru v Azure pomocí Azure Portal
 
-Instance kontejnerů Azure slouží ke spouštění kontejnerů Dockeru bez serveru v Azure s jednoduchostí a rychlostí. Nasaďte aplikaci na instanci kontejneru na vyžádání, když nepotřebujete úplnou platformu orchestrace kontejneru, jako je služba Azure Kubernetes Service.
+Použijte Azure Container Instances ke spouštění kontejnerů Docker bez serveru v Azure s využitím jednoduchosti a rychlosti. Pokud nepotřebujete úplnou platformu orchestrace kontejnerů, jako je třeba služba Azure Kubernetes, nasaďte aplikaci na vyžádání do instance kontejneru na vyžádání.
 
-V tomto rychlém startu použijete portál Azure k nasazení izolovaného kontejneru Dockeru a zpřístupníte jeho aplikaci s plně kvalifikovaným názvem domény (FQDN). Po konfiguraci několika nastavení a nasazení kontejneru můžete přejít na běžící aplikaci:
+V tomto rychlém startu použijete Azure Portal k nasazení izolovaného kontejneru Docker a zpřístupníte jeho aplikaci s plně kvalifikovaným názvem domény (FQDN). Po konfiguraci několika nastavení a nasazení kontejneru můžete přejít na běžící aplikaci:
 
 ![Aplikace nasazená do služby Azure Container Instances zobrazená v prohlížeči][aci-portal-07]
 
@@ -23,38 +23,38 @@ V tomto rychlém startu použijete portál Azure k nasazení izolovaného kontej
 
 Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,][azure-free-account] než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet][azure-free-account] před tím, než začnete.
 
 ## <a name="create-a-container-instance"></a>Vytvoření instance kontejneru
 
-Vyberte **možnost Vytvořit** > **instance kontejnerů****prostředků** > .
+Vyberte Container Instances **vytvořit** > **kontejnery** > **Container Instances**prostředků.
 
 ![Zahájení vytváření nové instance kontejneru na webu Azure Portal][aci-portal-01]
 
-Na stránce **Základy** zadejte následující hodnoty do textových polí **Skupiny prostředků**, **Název kontejneru**a **Obrázek kontejneru.** U ostatních hodnot ponechte výchozí nastavení a vyberte **OK**.
+Na stránce **základy** zadejte do textových polí **Skupina prostředků**, **název kontejneru**a **Image kontejneru** následující hodnoty. U ostatních hodnot ponechte výchozí nastavení a vyberte **OK**.
 
-* Skupina prostředků: **Vytvoření nového** > `myresourcegroup`
+* Skupina prostředků: **vytvořit novou** > `myresourcegroup`
 * Název kontejneru: `mycontainer`
-* Zdroj obrázku: **Obrázky rychlého startu**
-* Obrázek `mcr.microsoft.com/azuredocs/aci-helloworld` kontejneru: (Linux)
+* Zdroj obrázku: **obrázky rychlého** startu
+* Image kontejneru: `mcr.microsoft.com/azuredocs/aci-helloworld` (Linux)
 
 ![Konfigurace základního nastavení pro novou instanci kontejneru na webu Azure Portal][aci-portal-03]
 
-Pro tento rychlý start použijete výchozí nastavení `aci-helloworld` k nasazení veřejné image Microsoft. Tato ukázková bitová kopie Linuxu sbalí malou webovou aplikaci napsanou v souboru Node.js, která slouží statické stránce HTML. Můžete také přenést vlastní image kontejneru uložené v Azure Container Registry, Docker Hub nebo jiných registrech.
+V tomto rychlém startu použijete výchozí nastavení k nasazení veřejné image `aci-helloworld` Microsoft. Tato ukázková bitová kopie systému Linux zapisuje malou webovou aplikaci napsanou v Node. js, která slouží ke statické stránce HTML. Můžete také přenést vlastní image kontejnerů uložené v Azure Container Registry, Docker Hub nebo v jiných registrech.
 
-Na stránce **Síť** zadejte **popisek názvu DNS** pro kontejner. Název musí být jedinečný v oblasti Azure, kde vytvoříte instanci kontejneru. Váš kontejner bude veřejně dostupný na adrese `<dns-name-label>.<region>.azurecontainer.io`. Pokud se zobrazí chybová zpráva „Popisek názvu DNS není dostupný“, zkuste jiný popisek názvu DNS.
+Na stránce **sítě** zadejte **popisek názvu DNS** pro váš kontejner. Název musí být jedinečný v rámci oblasti Azure, ve které vytvoříte instanci kontejneru. Váš kontejner bude veřejně dostupný na adrese `<dns-name-label>.<region>.azurecontainer.io`. Pokud se zobrazí chybová zpráva „Popisek názvu DNS není dostupný“, zkuste jiný popisek názvu DNS.
 
-![Konfigurace nastavení sítě pro novou instanci kontejneru na webu Azure Portal][aci-portal-04]
+![Konfigurace nastavení sítě pro novou instanci kontejneru v Azure Portal][aci-portal-04]
 
-Ostatní nastavení ponechejte ve výchozím nastavení a pak vyberte **Zkontrolovat + vytvořit**.
+U ostatních nastavení ponechte výchozí nastavení a pak vyberte **zkontrolovat + vytvořit**.
 
-Po dokončení ověření se zobrazí souhrn nastavení kontejneru. Výběrem **možnosti Vytvořit** odešlete požadavek na nasazení kontejneru.
+Po dokončení ověření se zobrazí souhrn nastavení kontejneru. Vyberte **vytvořit** a odešlete žádost o nasazení kontejneru.
 
 ![Souhrn nastavení pro novou instanci kontejneru na webu Azure Portal][aci-portal-05]
 
-Při spuštění nasazení se zobrazí oznámení oznamovat, že probíhá nasazení. Po nasazení skupiny kontejnerů se zobrazí další oznámení.
+Po zahájení nasazení se zobrazí oznámení, které indikuje, že nasazení probíhá. Po nasazení skupiny kontejnerů se zobrazí další oznámení.
 
-Otevřete přehled pro skupinu kontejnerů přechodem na **skupiny** > prostředků**myresourcegroup** > **mycontainer**. Poznamenejte si **Plně kvalifikovaný název domény** instance kontejneru a také její **Stav**.
+Otevřete přehled skupiny kontejnerů tak, že přejdete na **skupiny** > **prostředků myresourcegroup** > **myContainer**. Poznamenejte si **Plně kvalifikovaný název domény** instance kontejneru a také její **Stav**.
 
 ![Přehled skupiny kontejnerů na webu Azure Portal][aci-portal-06]
 
@@ -84,7 +84,7 @@ Jakmile se zobrazí potvrzovací dialogové okno, vyberte **Ano**.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili instanci kontejneru Azure z veřejné image Microsoftu. Pokud si chcete sestavit image kontejneru a nasadit ji z privátního registru kontejnerů Azure, pokračujte ke kurzu služby Azure Container Instances.
+V tomto rychlém startu jste vytvořili službu Azure Container instance z veřejné image Microsoft. Pokud si chcete sestavit image kontejneru a nasadit ji z privátního registru kontejnerů Azure, pokračujte ke kurzu služby Azure Container Instances.
 
 > [!div class="nextstepaction"]
 > [Kurz služby Azure Container Instances](./container-instances-tutorial-prepare-app.md)

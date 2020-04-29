@@ -1,6 +1,6 @@
 ---
-title: ZAČÍNÁ V dotazovacím jazyce Azure Cosmos DB
-description: Další informace o funkci systému SQL začíná v Azure Cosmos DB.
+title: STARTSWITH v jazyce Azure Cosmos DB Query Language
+description: Další informace o funkci SQL System Function STARTSWITH v Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 9ed49c067946186f8b79f67bad0a460113eacb73
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78295704"
 ---
 # <a name="startswith-azure-cosmos-db"></a>STARTSWITH (Azure Cosmos DB)
- Vrátí logickou hodnotu označující, zda první řetězcový výraz začíná druhým.  
+ Vrátí logickou hodnotu, která označuje, zda první řetězcový výraz začíná druhým.  
   
 ## <a name="syntax"></a>Syntaxe
   
@@ -26,10 +26,10 @@ STARTSWITH(<str_expr1>, <str_expr2>)
 ## <a name="arguments"></a>Argumenty
   
 *str_expr1*  
-   Je řetězec výraz.
+   Je řetězcový výraz.
   
 *str_expr2*  
-   Je řetězec výraz, který má být porovnán se začátkem *str_expr1*.
+   Je řetězcový výraz, který má být porovnán s počátkem *str_expr1*.
 
 ## <a name="return-types"></a>Návratové typy
   
@@ -37,7 +37,7 @@ STARTSWITH(<str_expr1>, <str_expr2>)
   
 ## <a name="examples"></a>Příklady
   
-  Následující příklad zkontroluje, zda řetězec "abc" začíná řetězcem "b" a "a".  
+  Následující příklad zkontroluje, zda řetězec "ABC" začíná písmenem "b" a "a".  
   
 ```sql
 SELECT STARTSWITH("abc", "b") AS s1, STARTSWITH("abc", "a") AS s2  
@@ -51,10 +51,10 @@ SELECT STARTSWITH("abc", "b") AS s1, STARTSWITH("abc", "a") AS s2
 
 ## <a name="remarks"></a>Poznámky
 
-Tato systémová funkce bude mít prospěch z [indexu rozsahu](index-policy.md#includeexclude-strategy).
+Tato systémová funkce bude využívat výhod [indexu rozsahu](index-policy.md#includeexclude-strategy).
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Funkce řetězce Azure Cosmos DB](sql-query-string-functions.md)
+- [Azure Cosmos DB funkce řetězce](sql-query-string-functions.md)
 - [Systémové funkce Azure Cosmos DB](sql-query-system-functions.md)
 - [Úvod do Azure Cosmos DB](introduction.md)

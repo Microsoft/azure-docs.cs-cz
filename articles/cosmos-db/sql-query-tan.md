@@ -1,6 +1,6 @@
 ---
-title: TAN v dotazovacím jazyce Azure Cosmos DB
-description: Další informace o funkci SYSTÉMU SQL TAN v Azure Cosmos DB.
+title: TAN v Azure Cosmos DB dotazovací jazyk
+description: Přečtěte si o funkci SQL System Function TAN v Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 03/04/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 9d7187ba116067445e835769fc33aa70677ef80b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78301977"
 ---
 # <a name="tan-azure-cosmos-db"></a>TAN (Azure Cosmos DB)
- Vrátí tečnu zadaného úhlu v radiánech v určeném výrazu.  
+ Vrátí tangens zadaného úhlu v radiánech v zadaném výrazu.  
   
 ## <a name="syntax"></a>Syntaxe
   
@@ -26,7 +26,7 @@ TAN (<numeric_expr>)
 ## <a name="arguments"></a>Argumenty
   
 *numeric_expr*  
-   Je číselný výraz.  
+   Je numerický výraz.  
   
 ## <a name="return-types"></a>Návratové typy
   
@@ -34,7 +34,7 @@ TAN (<numeric_expr>)
   
 ## <a name="examples"></a>Příklady
   
-  Následující příklad vypočítá tečnu PI()/2.  
+  Následující příklad vypočítá tangens pí ()/2.  
   
 ```sql
 SELECT TAN(PI()/2) AS tan 
@@ -48,7 +48,7 @@ SELECT TAN(PI()/2) AS tan
 
 ## <a name="remarks"></a>Poznámky
 
-Tato systémová funkce nebude využívat index.
+Tato systémová funkce nebude index využívat.
 
 ## <a name="next-steps"></a>Další kroky
 

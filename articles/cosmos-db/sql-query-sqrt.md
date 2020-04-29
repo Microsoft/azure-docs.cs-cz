@@ -1,6 +1,6 @@
 ---
-title: SQRT v dotazovacím jazyce Azure Cosmos DB
-description: Další informace o funkci systému SQL SQRT v Azure Cosmos DB.
+title: Odmocnina v Azure Cosmos DB dotazovací jazyk
+description: Přečtěte si o funkci systému SQL SQRT v Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,10 +8,10 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 3d5452e5ba650b487acff03f622cdbb170275dce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78303456"
 ---
 # <a name="sqrt-azure-cosmos-db"></a>SQRT (Azure Cosmos DB)
@@ -26,7 +26,7 @@ SQRT(<numeric_expr>)
 ## <a name="arguments"></a>Argumenty
   
 *numeric_expr*  
-   Je číselný výraz.  
+   Je numerický výraz.  
   
 ## <a name="return-types"></a>Návratové typy
   
@@ -34,7 +34,7 @@ SQRT(<numeric_expr>)
   
 ## <a name="examples"></a>Příklady
   
-  Následující příklad vrátí druhou odmocninu čísel 1-3.  
+  Následující příklad vrátí čtvercové kořeny čísel 1-3.  
   
 ```sql
 SELECT SQRT(1) AS s1, SQRT(2.0) AS s2, SQRT(3) AS s3  
@@ -48,7 +48,7 @@ SELECT SQRT(1) AS s1, SQRT(2.0) AS s2, SQRT(3) AS s3
 
 ## <a name="remarks"></a>Poznámky
 
-Tato systémová funkce nebude využívat index.
+Tato systémová funkce nebude index využívat.
 
 ## <a name="next-steps"></a>Další kroky
 

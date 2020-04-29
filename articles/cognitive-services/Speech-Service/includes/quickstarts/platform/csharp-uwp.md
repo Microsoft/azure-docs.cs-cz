@@ -1,7 +1,7 @@
 ---
-title: 'Úvodní příručka: Sada Speech SDK pro nastavení platformy C# Universal Windows Platform (UPW) – služba Rozpoznávání řeči'
+title: 'Rychlý Start: sada Speech SDK pro nastavení platformy v C# Univerzální platforma Windows (UWP) – služba Speech'
 titleSuffix: Azure Cognitive Services
-description: Tato příručka slouží k nastavení platformy pro C# v části Univerzální platforma Windows (UPW) se sadou SDK služby Rozpoznávání řeči.
+description: Pomocí tohoto průvodce můžete nastavit platformu pro C# v části Univerzální platforma Windows (UWP) se sadou Speech Service SDK.
 services: cognitive-services
 author: markamos
 manager: nitinme
@@ -11,13 +11,13 @@ ms.topic: include
 ms.date: 10/10/2019
 ms.author: erhopf
 ms.openlocfilehash: f95fd8aa66e83e6be8f4b0eef9635750d83ce55e
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78925202"
 ---
-Tato příručka ukazuje, jak nainstalovat [sadu Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) pro platformu C# Universal Windows Platform (UPW). Pokud chcete, aby název balíčku začít na `Install-Package Microsoft.CognitiveServices.Speech` vlastní pěst, spusťte v konzoli NuGet.
+V této příručce se dozvíte, jak nainstalovat [sadu Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) pro C# Univerzální platforma Windows (UWP). Pokud chcete, aby název balíčku začal vlastním způsobem, spusťte `Install-Package Microsoft.CognitiveServices.Speech` v konzole NuGet.
 
 > [!NOTE]
 > Univerzální platforma Windows umožňuje vyvíjet aplikace, které běží na všech zařízeních podporujících Windows 10 včetně počítačů, Xboxu, Surface Hubu a dalších.
@@ -28,13 +28,13 @@ Tato příručka ukazuje, jak nainstalovat [sadu Speech SDK](~/articles/cognitiv
 
 K tomuto rychlému startu potřebujete:
 
-* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) (libovolné vydání)
+* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) (jakákoli edice)
 
-## <a name="create-a-visual-studio-project-and-install-the-speech-sdk"></a>Vytvoření projektu sady Visual Studio a instalace sady Speech SDK
+## <a name="create-a-visual-studio-project-and-install-the-speech-sdk"></a>Vytvořit projekt sady Visual Studio a nainstalovat sadu Speech SDK
 
 [!INCLUDE [](~/includes/cognitive-services-speech-service-quickstart-uwp-create-proj.md)]
 
-Nyní můžete přejít na [další kroky](#next-steps) níže.
+Nyní můžete přejít na [Další kroky](#next-steps) níže.
 
 ## <a name="next-steps"></a>Další kroky
 

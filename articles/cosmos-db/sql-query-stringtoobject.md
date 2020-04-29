@@ -1,6 +1,6 @@
 ---
-title: StringToObject v dotazovacím jazyce Azure Cosmos DB
-description: Další informace o funkci systému SQL StringToObject v Azure Cosmos DB.
+title: StringToObject v jazyce pro dotaz na Azure Cosmos DB
+description: Přečtěte si o StringToObject funkcí SQL systému v Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: c3e61d1efe20910d84ef4ff583d74982b3ea9f3d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78296377"
 ---
 # <a name="stringtoobject-azure-cosmos-db"></a>StringToObject (Azure Cosmos DB)
- Vrátí výraz přeložený do objektu. Pokud výraz nelze přeložit, vrátí undefined.  
+ Vrátí výraz přeložený na objekt. Pokud výraz nelze přeložit, vrátí nedefinované funkce.  
   
 ## <a name="syntax"></a>Syntaxe
   
@@ -26,7 +26,7 @@ StringToObject(<str_expr>)
 ## <a name="arguments"></a>Argumenty
   
 *str_expr*  
-   Je řetězcový výraz, který má být analyzován jako výraz objektu JSON. Všimněte si, že vnořené hodnoty řetězce musí být zapsány s dvojitými uvozovkami, aby byly platné. Podrobnosti o formátu JSON naleznete v [json.org](https://json.org/)  
+   Je řetězcový výraz, který má být analyzován jako výraz objektu JSON. Všimněte si, že hodnoty vnořených řetězců musí být zapsány s dvojitými uvozovkami, aby byly platné. Podrobnosti o formátu JSON najdete v tématu [JSON.org](https://json.org/) .  
   
 ## <a name="return-types"></a>Návratové typy
   
@@ -34,9 +34,9 @@ StringToObject(<str_expr>)
   
 ## <a name="examples"></a>Příklady
   
-  Následující příklad ukazuje, jak `StringToObject` se chová napříč různými typy. 
+  Následující příklad ukazuje, jak `StringToObject` se chová v různých typech. 
   
- Následují příklady s platným vstupem.
+ Níže jsou uvedeny příklady s platným vstupem.
 
 ```sql
 SELECT 
@@ -56,7 +56,7 @@ Zde je sada výsledků.
 ```
 
  Následují příklady s neplatným vstupem.
-I když jsou platné v rámci dotazu, nebudou analyzovat platné objekty. Řetězce v řetězci objektu musí být\\buď\\uvozeny "{ "a":\\"str\\"}" nebo okolní uvozovky musí být jednoduché '{"a": "str"}'.
+I když jsou v rámci dotazu platné, nebudou analyzovány na platné objekty. Řetězce v řetězci objektu musí být buď uvozené řídicím znakem\\"{\\" a\\":\\" str "}", nebo okolní uvozovka musí být jednoduché "{" a ":" str "}".
 
 Jednoduché uvozovky obklopující názvy vlastností nejsou platné JSON.
 
@@ -86,7 +86,7 @@ Zde je sada výsledků.
 
 Následují příklady s neplatným vstupem.
 
- Předaný výraz bude analyzován jako objekt JSON; tyto vstupy nevyhodnocují na typ objektu a proto vrátit undefined.
+ Předaný výraz se analyzuje jako objekt JSON. Tyto vstupy se nevyhodnotí na typ Object a tak vrátí nedefinované.
 
 ```sql
 SELECT 
@@ -106,10 +106,10 @@ SELECT
 
 ## <a name="remarks"></a>Poznámky
 
-Tato systémová funkce nebude využívat index.
+Tato systémová funkce nebude index využívat.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Funkce řetězce Azure Cosmos DB](sql-query-string-functions.md)
+- [Azure Cosmos DB funkce řetězce](sql-query-string-functions.md)
 - [Systémové funkce Azure Cosmos DB](sql-query-system-functions.md)
 - [Úvod do Azure Cosmos DB](introduction.md)

@@ -1,6 +1,6 @@
 ---
-title: STROP v dotazovacím jazyce Azure Cosmos DB
-description: Zjistěte, jak funkce systému CEILING SQL v Azure Cosmos DB vrátí nejmenší celou hodnotu čísla větší než nebo rovno zadanému číselnému výrazu.
+title: STROP v Azure Cosmos DB dotazovací jazyk
+description: Přečtěte si, jak funkce stropní SQL System v Azure Cosmos DB vrátí nejmenší celočíselnou hodnotu větší než nebo rovnu zadanému numerickému výrazu.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 81f113aa51a7f739b506ec7e3eb5bf2cb9f49a03
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78302640"
 ---
 # <a name="ceiling-azure-cosmos-db"></a>STROP (Azure Cosmos DB)
- Vrátí nejmenší hodnotu celého čísla větší nebo rovnou zadanému číselnému výrazu.  
+ Vrátí nejmenší celočíselnou hodnotu, která je větší než nebo rovna zadanému numerickému výrazu.  
   
 ## <a name="syntax"></a>Syntaxe
   
@@ -26,7 +26,7 @@ CEILING (<numeric_expr>)
 ## <a name="arguments"></a>Argumenty
   
 *numeric_expr*  
-   Je číselný výraz.  
+   Je numerický výraz.  
   
 ## <a name="return-types"></a>Návratové typy
   
@@ -34,7 +34,7 @@ CEILING (<numeric_expr>)
   
 ## <a name="examples"></a>Příklady
   
-  Následující příklad ukazuje kladné číselné, záporné a nulové hodnoty s `CEILING` funkcí.  
+  Následující příklad zobrazuje kladné číselné, záporné a nulové hodnoty pomocí `CEILING` funkce.  
   
 ```sql
 SELECT CEILING(123.45) AS c1, CEILING(-123.45) AS c2, CEILING(0.0) AS c3  
@@ -48,7 +48,7 @@ SELECT CEILING(123.45) AS c1, CEILING(-123.45) AS c2, CEILING(0.0) AS c3
 
 ## <a name="remarks"></a>Poznámky
 
-Tato systémová funkce bude mít prospěch z [indexu rozsahu](index-policy.md#includeexclude-strategy).
+Tato systémová funkce bude využívat výhod [indexu rozsahu](index-policy.md#includeexclude-strategy).
 
 ## <a name="next-steps"></a>Další kroky
 

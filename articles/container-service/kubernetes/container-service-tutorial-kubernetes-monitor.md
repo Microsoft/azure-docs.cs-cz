@@ -1,5 +1,5 @@
 ---
-title: (ZASTARALÉ) Kurz služby Azure Container Service – monitorování Kubernetes
+title: ZASTARALÉ Kurz Azure Container Service – monitorování Kubernetes
 description: Kurz Azure Container Service – Monitorování Kubernetes pomocí služby Log Analytics
 author: iainfoulds
 ms.service: container-service
@@ -8,16 +8,16 @@ ms.date: 04/05/2018
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: 84c2438a8c25b1b64f46e12923212812beac687d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78273324"
 ---
-# <a name="deprecated-monitor-a-kubernetes-cluster-with-log-analytics"></a>(ZASTARALÉ) Sledování clusteru Kubernetes pomocí log analytics
+# <a name="deprecated-monitor-a-kubernetes-cluster-with-log-analytics"></a>ZASTARALÉ Monitorování clusteru Kubernetes pomocí Log Analytics
 
 > [!TIP]
-> Aktualizovanou verzi tohoto kurzu, který používá službu Azure Kubernetes, najdete v článku [Azure Monitor pro kontejnery (Náhled) přehled](../../azure-monitor/insights/container-insights-overview.md).
+> Aktualizovanou verzi v tomto kurzu, který používá službu Azure Kubernetes, najdete v tématu [Přehled služby Azure monitor for Containers (Preview)](../../azure-monitor/insights/container-insights-overview.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -32,7 +32,7 @@ V tomto kurzu, který je sedmou částí sedmidílné série, se probírají ná
 > * Nastavení agentů Log Analytics na uzlech Kubernetes
 > * Přístup k informacím o monitorování na portálu Log Analytics nebo webu Azure Portal
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 V předchozích kurzech se aplikace zabalila do imagí kontejneru, tyto image se odeslaly do Azure Container Registry a vytvořil se cluster Kubernetes.
 
@@ -169,4 +169,4 @@ V tomto kurzu jste monitorovali svůj cluster Kubernetes pomocí služby Log Ana
 Na tomto odkazu najdete předem připravené ukázky skriptů pro službu Container Service.
 
 > [!div class="nextstepaction"]
-> [Ukázky skriptů služby Azure Container Service](cli-samples.md)
+> [Ukázky skriptů Azure Container Service](cli-samples.md)

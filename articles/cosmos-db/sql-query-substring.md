@@ -1,6 +1,6 @@
 ---
-title: SUBSTRING v dotazovacím jazyce Azure Cosmos DB
-description: Další informace o funkci systému SQL SUBSTRING v Azure Cosmos DB.
+title: Podřetězec v jazyce Azure Cosmos DB Query
+description: Přečtěte si o podřetězcůch funkcí systému SQL v Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: d4462fc407093b23510bddfae4d9f55d68f8c0fa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78303694"
 ---
-# <a name="substring-azure-cosmos-db"></a>SUBSTRING (Azure Cosmos DB)
- Vrátí část řetězcového výrazu začínající na zadané pozici znaku s nulovým základem a pokračuje do zadané délky nebo na konec řetězce.  
+# <a name="substring-azure-cosmos-db"></a>Podřetězec (Azure Cosmos DB)
+ Vrátí část řetězcového výrazu počínaje zadaným znakem na základě nuly a pokračuje určenou délkou nebo na konci řetězce.  
   
 ## <a name="syntax"></a>Syntaxe
   
@@ -26,21 +26,21 @@ SUBSTRING(<str_expr>, <num_expr1>, <num_expr2>)
 ## <a name="arguments"></a>Argumenty
   
 *str_expr*  
-   Je řetězec výraz.
+   Je řetězcový výraz.
   
 *num_expr1*  
-   Je číselný výraz označujít počáteční znak. Hodnota 0 je první znak *str_expr*.
+   Je číselný výraz, který označuje počáteční znak. Hodnota 0 je prvním znakem *str_expr*.
   
 *num_expr2*  
-   Je číselný výraz označujících maximální počet znaků *str_expr,* které mají být vráceny. Hodnota 0 nebo méně má za následek prázdný řetězec.
+   Je číselný výraz, který označuje maximální počet znaků *str_expr* , které mají být vráceny. Hodnota 0 nebo méně výsledků v prázdném řetězci.
 
 ## <a name="return-types"></a>Návratové typy
   
-  Vrátí řetězec výraz.  
+  Vrátí řetězcový výraz.  
   
 ## <a name="examples"></a>Příklady
   
-  Následující příklad vrátí podřetězec "abc" začínající na 1 a pro délku 1 znak.  
+  Následující příklad vrátí podřetězec "ABC" od 1 a po délku 1 znak.  
   
 ```sql
 SELECT SUBSTRING("abc", 1, 1) AS substring  
@@ -54,10 +54,10 @@ SELECT SUBSTRING("abc", 1, 1) AS substring
 
 ## <a name="remarks"></a>Poznámky
 
-Tato systémová funkce bude mít prospěch z `0` [indexu rozsahu,](index-policy.md#includeexclude-strategy) pokud je počáteční pozice .
+Tato systémová funkce bude těžit z [indexu rozsahu](index-policy.md#includeexclude-strategy) , pokud je `0`počáteční pozice.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Funkce řetězce Azure Cosmos DB](sql-query-string-functions.md)
+- [Azure Cosmos DB funkce řetězce](sql-query-string-functions.md)
 - [Systémové funkce Azure Cosmos DB](sql-query-system-functions.md)
 - [Úvod do Azure Cosmos DB](introduction.md)

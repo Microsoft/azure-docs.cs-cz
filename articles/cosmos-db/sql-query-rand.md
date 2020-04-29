@@ -1,6 +1,6 @@
 ---
-title: NÁHĚ v dotazovacím jazyce Azure Cosmos DB
-description: Další informace o funkci systému SQL NÁHČÍSLO v Azure Cosmos DB.
+title: RAND v Azure Cosmos DB dotazovací jazyk
+description: Přečtěte si o funkci systému SQL NÁHČÍSLO v Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 09/16/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: e44878b6d65725f08aeca4eb07088315ae2bb78a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78302215"
 ---
-# <a name="rand-azure-cosmos-db"></a>Náhroce (Azure Cosmos DB)
- Vrátí náhodně generovanou číselnou hodnotu z [0,1).
+# <a name="rand-azure-cosmos-db"></a>RAND (Azure Cosmos DB)
+ Vrátí náhodně generovanou číselnou hodnotu z [0, 1).
  
 ## <a name="syntax"></a>Syntaxe
   
@@ -29,11 +29,11 @@ RAND ()
 
 ## <a name="remarks"></a>Poznámky
 
-  `RAND`je nedeterministická funkce. Opakované volání `RAND` nevracejí stejné výsledky.
+  `RAND`je nedeterministické funkce. Opakující se volání `RAND` nevrací stejné výsledky.
 
 ## <a name="examples"></a>Příklady
   
-  Následující příklad vrátí náhodně generovanou číselnou hodnotu.
+  Následující příklad vrací náhodně generovanou číselnou hodnotu.
   
 ```sql
 SELECT RAND() AS rand 
@@ -47,7 +47,7 @@ SELECT RAND() AS rand
 
 ## <a name="remarks"></a>Poznámky
 
-Tato systémová funkce nebude využívat index.
+Tato systémová funkce nebude index využívat.
 
 ## <a name="next-steps"></a>Další kroky
 

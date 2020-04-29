@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.openlocfilehash: 9227417d28eb09a322dd4757033ee62fee97d91c
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78943889"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>Kurz: Vytvoření jednostránkové aplikace pomocí rozhraní API Bingu pro vyhledávání obrázků
@@ -34,13 +34,13 @@ Ukázková aplikace předvádí, jak:
 ## <a name="prerequisites"></a>Požadavky
 
 * Nejnovější verze [Node.js](https://nodejs.org/)
-* Architektura [Express.js](https://expressjs.com/) pro Node.js. Pokyny k instalaci zdrojového kódu jsou k dispozici v ukázkovém souboru Readme GitHub.
+* Architektura [Express.js](https://expressjs.com/) pro Node.js. Pokyny k instalaci zdrojového kódu jsou k dispozici v ukázkovém souboru Readme pro GitHub.
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
 ## <a name="manage-and-store-user-subscription-keys"></a>Správa a ukládání uživatelských klíčů předplatného
 
-Tato aplikace používá k uložení klíčů předplatného rozhraní API trvalé úložiště webových prohlížečů. Pokud není uložen žádný klíč, webová stránka vyzve uživatele, aby zadal svůj klíč a uloží ho pro pozdější použití. Pokud je klíč později odmítnut rozhraním API, aplikace jej odebere z úložiště. Tato ukázka používá globální koncový bod. Můžete také použít vlastní koncový bod [subdomény](../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený na webu Azure Portal pro váš prostředek.
+Tato aplikace používá k uložení klíčů předplatného rozhraní API trvalé úložiště webových prohlížečů. Pokud není uložen žádný klíč, webová stránka vyzve uživatele, aby zadal svůj klíč a uloží ho pro pozdější použití. Pokud je klíč později odmítnut rozhraním API, aplikace jej odebere z úložiště. Tato ukázka používá globální koncový bod. Můžete použít také vlastní koncový bod [subdomény](../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal prostředku.
 
 
 Definujte funkce `storeValue` a `retrieveValue`, které používají buď objekt `localStorage` (když je podporovaný prohlížečem), nebo soubor cookie.
@@ -386,7 +386,7 @@ Zásady zabezpečení prohlížeče (CORS) můžou bránit tomu, aby byla hlavi�
 > [!NOTE]
 > Při tvorbě webové aplikace byste měli provádět žádost na straně serveru tak jako tak. Jinak musí být klíč rozhraní API pro vyhledávání Bingu součástí webové stránky, kde je k dispozici každému, kdo si zobrazí zdroj. Účtuje se vám veškeré využívání vašeho klíče předplatného rozhraní API, dokonce i požadavky provedené neoprávněnými stranami, proto je důležité klíč nezveřejňovat.
 
-Pro účely vývoje můžete požadavek na rozhraní API Bingu pro vyhledávání na webu provést prostřednictvím proxy serveru CORS. Odpověď z takového proxy `Access-Control-Expose-Headers` serveru má hlavičku, která umožňuje hlavičky odpovědí a zpřístupňuje je JavaScriptu.
+Pro účely vývoje můžete požadavek na rozhraní API Bingu pro vyhledávání na webu provést prostřednictvím proxy serveru CORS. Odpověď z takového serveru proxy má `Access-Control-Expose-Headers` záhlaví, které umožňuje použití hlaviček odpovědí a zpřístupňuje je pro JavaScript.
 
 Nainstalovat proxy server CORS a povolit naší ukázkové aplikaci přístup k hlavičce ID klienta je snadné. Nejdřív [nainstalujte Node.js](https://nodejs.org/en/download/), pokud jste to ještě neudělali. Pak zadejte v příkazovém okně tento příkaz:
 

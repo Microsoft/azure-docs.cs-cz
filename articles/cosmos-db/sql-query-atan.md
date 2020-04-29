@@ -1,6 +1,6 @@
 ---
-title: ATAN v dotazovacím jazyce Azure Cosmos DB
-description: Informace o tom, jak arctangent (ATAN) funkce systému SQL v Azure Cosmos DB vrátí úhel, v radiánech, jehož tečna je zadaný číselný výraz
+title: ATAN v Azure Cosmos DB dotazovací jazyk
+description: Přečtěte si, jak funkce arkustangens (ATAN) SQL System v Azure Cosmos DB vrátí úhel v radiánech, jehož tangens je zadaný numerický výraz.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 03/04/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 899c94a939be7825dca82522eab235bde9252896
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78302674"
 ---
 # <a name="atan-azure-cosmos-db"></a>ATAN (Azure Cosmos DB)
- Vrátí úhel v radiánech, jehož tečna je zadaný číselný výraz. To se také nazývá arctangent.  
+ Vrátí úhel v radiánech, jejichž tangens je zadaný numerický výraz. Toto je také označováno jako arkustangens.  
   
 ## <a name="syntax"></a>Syntaxe
   
@@ -26,7 +26,7 @@ ATAN(<numeric_expr>)
 ## <a name="arguments"></a>Argumenty
   
 *numeric_expr*  
-   Je číselný výraz.  
+   Je numerický výraz.  
   
 ## <a name="return-types"></a>Návratové typy
   
@@ -48,7 +48,7 @@ SELECT ATAN(-45.01) AS atan
   
 ## <a name="remarks"></a>Poznámky
 
-Tato systémová funkce nebude využívat index.
+Tato systémová funkce nebude index využívat.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,47 +1,47 @@
 ---
-title: Instalace konzula ve službě Azure Kubernetes Service (AKS)
-description: Přečtěte si, jak nainstalovat a použít konzula k vytvoření sítě služeb v clusteru Služby Azure Kubernetes (AKS).
+title: Instalace Consul ve službě Azure Kubernetes (AKS)
+description: Naučte se instalovat a používat Consul k vytvoření sítě v clusteru Azure Kubernetes Service (AKS).
 author: dstrebel
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: dastrebe
 zone_pivot_groups: client-operating-system
 ms.openlocfilehash: 1601ab6d81b888fd2247e95f22c58e1fc91df698
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78273742"
 ---
-# <a name="install-and-use-consul-in-azure-kubernetes-service-aks"></a>Instalace a použití konzula ve službě Azure Kubernetes Service (AKS)
+# <a name="install-and-use-consul-in-azure-kubernetes-service-aks"></a>Instalace a použití Consul ve službě Azure Kubernetes Service (AKS)
 
-[Konzul][consul-github] je síť služeb s otevřeným zdrojovým kódem, která poskytuje sadu funkcí klíče napříč mikroslužbami v clusteru Kubernetes. Mezi tyto funkce patří zjišťování služeb, kontrola stavu, segmentace služeb a pozorovatelnost. Další informace o konzulovi najdete v oficiální dokumentaci [Co je konzul?][consul-docs-concepts]
+[Consul][consul-github] je open source síť, která poskytuje klíčovou sadu funkcí napříč mikroslužbami v clusteru Kubernetes. Mezi tyto funkce patří zjišťování služby, kontrola stavu, segmentace služby a pozorování. Další informace o Consul najdete v dokumentaci oficiální dokumentace k [Consul?][consul-docs-concepts] .
 
-Tento článek ukazuje, jak nainstalovat konzula. Komponenty konzula jsou nainstalovány do clusteru Kubernetes na AKS.
+V tomto článku se dozvíte, jak nainstalovat Consul. Komponenty Consul jsou nainstalovány do clusteru Kubernetes v AKS.
 
 > [!NOTE]
-> Tyto pokyny odkazují `1.6.0`na verzi konzula `2.14.2`a používají alespoň verzi Helm .
+> Tyto pokyny odkazují na verzi `1.6.0`Consul a používají minimálně Helm verzi `2.14.2`.
 >
-> Verze Consul `1.6.x` lze spustit proti verzím Kubernetes `1.13+`. Další verze konzula najdete na [GitHubu - Consul Releases][consul-github-releases] a informace o každé z verzí na [Consul- Release Notes][consul-release-notes].
+> Verze Consul `1.6.x` se dají spouštět na Kubernetes verzích `1.13+`. Další verze Consul najdete na webu [GitHub-Consul releases][consul-github-releases] a v informacích o všech vydáních v [poznámkách k verzi Consul][consul-release-notes].
 
 V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Instalace komponent konzula na AKS
-> * Ověření instalace konzula
-> * Odinstalovat konzula z AKS
+> * Instalace součástí Consul v AKS
+> * Ověření instalace Consul
+> * Odinstalace Consul z AKS
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
-Kroky popsané v tomto článku předpokládají, že jste vytvořili cluster AKS (Kubernetes `1.13` a `kubectl` výše, s povoleným RBAC) a navázali připojení ke clusteru. Pokud potřebujete pomoc s některou z těchto položek, naleznete [v aks rychlý start][aks-quickstart]. Ujistěte se, že váš cluster má alespoň 3 uzly ve fondu uzlů Linuxu.
+Kroky popsané v tomto článku předpokládají, že jste vytvořili cluster AKS (Kubernetes `1.13` a vyšší s povoleným RBAC) a navázali jste `kubectl` připojení ke clusteru. Pokud potřebujete s kteroukoli z těchto položek pomáhat, přečtěte si [rychlý Start AKS][aks-quickstart]. Ujistěte se, že cluster má minimálně 3 uzly ve fondu uzlů Linux.
 
-Budete potřebovat [Helma,][helm] aby se řídil těmito pokyny a nainstaloval konzula. Doporučujeme, abyste měli v clusteru správně nainstalovanou a nakonfigurovanou nejnovější stabilní verzi. Pokud potřebujete pomoc s instalací helmu, přečtěte si [pokyny k instalaci helmu AKS][helm-install]. Všechny consul lusky musí být také naplánováno spuštění na linuxových uzlech.
+K provedení těchto pokynů budete potřebovat [Helm][helm] a nainstalujete Consul. Doporučuje se správně nainstalovat a nakonfigurovat nejnovější stabilní verze v clusteru. Pokud potřebujete pomoc s instalací Helm, přečtěte si [pokyny k instalaci AKS Helm][helm-install]. Všechny lusky Consul musí být také naplánované pro spouštění na uzlech se systémem Linux.
 
-Tento článek odděluje pokyny k instalaci konzula do několika samostatných kroků. Konečný výsledek má stejnou strukturu jako oficiální [pokyny pro][consul-install-k8]instalaci konzula .
+Tento článek odděluje pokyny k instalaci Consul do několika diskrétních kroků. Konečný výsledek je stejný ve struktuře jako oficiální [návod][consul-install-k8]k instalaci Consul.
 
-### <a name="install-the-consul-components-on-aks"></a>Instalace komponent konzula na AKS
+### <a name="install-the-consul-components-on-aks"></a>Instalace součástí Consul v AKS
 
-Začneme stažením verze `v0.10.0` grafu Consul Helm. Tato verze grafu obsahuje verzi `1.6.0`konzula .
+Začneme stažením verze `v0.10.0` grafu Consul Helm. Tato verze grafu obsahuje verzi `1.6.0`Consul.
 
 ::: zone pivot="client-operating-system-linux"
 
@@ -61,20 +61,20 @@ Začneme stažením verze `v0.10.0` grafu Consul Helm. Tato verze grafu obsahuje
 
 ::: zone-end
 
-Pomocí helmu a `consul-helm` staženého grafu nainstalujte komponenty Consul do `consul` oboru názvů v clusteru AKS. 
+Pomocí Helm a staženého `consul-helm` grafu nainstalujte komponenty Consul do `consul` oboru názvů v clusteru AKS. 
 
 > [!NOTE]
 > **Možnosti instalace**
 > 
 > V rámci naší instalace používáme následující možnosti:
-> - `connectInject.enabled=true`- umožnit vstřikování proxy do lusků
-> - `client.enabled=true`- umožnit klientům konzula spouštět na každém uzlu
-> - `client.grpc=true`- povolit naslouchací proces gRPC pro connectInject
-> - `syncCatalog.enabled=true`- synchronizace služeb Kubernetes a Consul
+> - `connectInject.enabled=true`– Povolit vkládání proxy do lusků
+> - `client.enabled=true`-Povolit spouštění klientů Consul na všech uzlech
+> - `client.grpc=true`-Povolit naslouchací proces gRPC pro connectInject
+> - `syncCatalog.enabled=true`– synchronizace Kubernetes a Consul služeb
 >
-> **Voliči uzlů**
+> **Selektory uzlů**
 >
-> Konzul v současné době musí být naplánováno spuštění na linuxových uzlech. Pokud máte v clusteru uzly Windows Server, musíte zajistit, aby byly moduly Consul spuštěny pouze v uzlech Linuxu. Budeme používat [voliče uzlů,][kubernetes-node-selectors] abychom se ujistili, že pody jsou naplánovány na správné uzly.
+> Consul je v současné době nutné naplánovat na spuštění v uzlech se systémem Linux. Pokud máte v clusteru uzly Windows serveru, musíte zajistit, aby se Consul lusky spouštěly jenom na uzlech se systémem Linux. Použijeme [Selektory uzlů][kubernetes-node-selectors] k ujištění, že lusky jsou naplánované na správných uzlech.
 
 ::: zone pivot="client-operating-system-linux"
 
@@ -94,20 +94,20 @@ Pomocí helmu a `consul-helm` staženého grafu nainstalujte komponenty Consul d
 
 ::: zone-end
 
-Helm `Consul` graf nasazuje počet objektů. Seznam můžete vidět z výstupu `helm install` vašeho příkazu výše. Nasazení komponent konzula může trvat přibližně 3 minuty v závislosti na prostředí clusteru.
+Graf `Consul` Helm nasadí několik objektů. Seznam můžete zobrazit z výstupu `helm install` příkazu výše. Dokončení nasazení součástí Consul může trvat přibližně 3 minuty, v závislosti na prostředí clusteru.
 
-V tomto okamžiku jste nasadili konzula do clusteru AKS. Abychom zajistili úspěšné nasazení konzula, přejdeme k další části a ověříme instalaci konzula.
+V tomto okamžiku jste nasadili Consul do svého clusteru AKS. Abychom zajistili úspěšné nasazení Consul, pojďme přejít k další části a ověřit instalaci Consul.
 
-## <a name="validate-the-consul-installation"></a>Ověření instalace konzula
+## <a name="validate-the-consul-installation"></a>Ověření instalace Consul
 
-Zkontrolujte, zda byly prostředky úspěšně vytvořeny. Pomocí příkazů [get svc a][kubectl-get] [kubectl get pod][kubectl-get] použijte `consul` příkazy get pod pro dotaz na `helm install` obor názvů, kde byly komponenty konzula nainstalovány příkazem:
+Potvrďte, že se prostředky úspěšně vytvořily. Použijte příkazy [kubectl Get svc][kubectl-get] a [kubectl Get pod][kubectl-get] k dotazování `consul` oboru názvů, kde byly komponenty Consul nainstalovány `helm install` příkazem:
 
 ```console
 kubectl get svc --namespace consul --output wide
 kubectl get pod --namespace consul --output wide
 ```
 
-Následující příklad výstupu ukazuje služby a pody (naplánované na linuxových uzlech), které by nyní měly být spuštěny:
+Následující příklad výstupu ukazuje služby a lusky (naplánované na uzlech se systémem Linux), které by nyní měly být spuštěny:
 
 ```output
 NAME                                 TYPE           CLUSTER-IP    EXTERNAL-IP             PORT(S)                                                                   AGE     SELECTOR
@@ -128,28 +128,28 @@ consul-consul-sync-catalog-d846b79c-8ssr8                         1/1     Runnin
 consul-consul-tz2t5                                               1/1     Running   0          3m9s   10.240.0.12   aks-linux-92468653-vmss000000   <none>           <none>
 ```
 
-Všechny lusky by měly `Running`zobrazovat stav . Pokud vaše moduly nemají tyto stavy, počkejte minutu nebo dvě, dokud to neudělají. Pokud některé pody hlásí problém, použijte [příkaz kubectl describe pod][kubectl-describe] ke kontrole jejich výstupu a stavu.
+Všechny lusky by měly zobrazit stav `Running`. Pokud vaše lusky nemají tyto stavy, počkejte minutu nebo dvě, dokud to neudělá. Pokud jakékoli lusky nahlásí problém, zkontrolujte výstup a stav pomocí příkazu [kubectl popsat pod][kubectl-describe] .
 
-## <a name="accessing-the-consul-ui"></a>Přístup k uzlicím konzulu
+## <a name="accessing-the-consul-ui"></a>Přístup k uživatelskému rozhraní Consul
 
-Consul UI byl nainstalován v našem nastavení výše a poskytuje konfiguraci založenou na uI pro konzula. UI pro konzula není veřejně vystaveno prostřednictvím externí IP adresy. Pro přístup k uživatelskému rozhraní konzula použijte příkaz [kubectl port-forward.][kubectl-port-forward] Tento příkaz vytvoří zabezpečené připojení mezi klientským počítačem a příslušným modulem v clusteru AKS.
+Uživatelské rozhraní Consul bylo nainstalováno v naší instalaci výše a poskytuje konfiguraci založenou na uživatelském rozhraní pro Consul. Uživatelské rozhraní pro Consul se veřejně zveřejňuje prostřednictvím externí IP adresy. Chcete-li získat přístup k uživatelskému rozhraní Consul, použijte příkaz pro [přeposílání portů kubectl][kubectl-port-forward] . Tento příkaz vytvoří zabezpečené připojení mezi klientským počítačem a relevantním pod v clusteru AKS.
 
 ```console
 kubectl port-forward -n consul svc/consul-consul-ui 8080:80
 ```
 
-Nyní můžete otevřít prohlížeč a `http://localhost:8080/ui` nasměrovat ho na otevření uhlavního nastavení konzula. Při otevření ui byste měli vidět následující:
+Teď můžete otevřít prohlížeč a nasměrovat ho na `http://localhost:8080/ui` , aby se OTEVŘELO uživatelské rozhraní Consul. Při otevření uživatelského rozhraní byste měli vidět následující:
 
-![UI konzula](./media/servicemesh/consul/consul-ui.png)
+![Uživatelské rozhraní Consul](./media/servicemesh/consul/consul-ui.png)
 
-## <a name="uninstall-consul-from-aks"></a>Odinstalovat konzula z AKS
+## <a name="uninstall-consul-from-aks"></a>Odinstalace Consul z AKS
 
 > [!WARNING]
-> Odstranění konzula ze spuštěného systému může mít za následek problémy související s provozem mezi vašimi službami. Ujistěte se, že jste před pokračováním zajistili, že váš systém bude fungovat správně bez konzula.
+> Odstranění Consul ze spuštěného systému může vést k problémům souvisejícím s provozem mezi vašimi službami. Než budete pokračovat, ujistěte se, že jste provedli správné fungování vašeho systému bez Consul.
 
-### <a name="remove-consul-components-and-namespace"></a>Odebrání součástí konzula a oboru názvů
+### <a name="remove-consul-components-and-namespace"></a>Odebrat součásti a obor názvů Consul
 
-Chcete-li odebrat konzula z clusteru AKS, použijte následující příkazy. Příkazy `helm delete` odstraní `consul` graf a `kubectl delete namespace` příkaz odebere `consul` obor názvů.
+K odebrání Consul z clusteru AKS použijte následující příkazy. `helm delete` Příkazy `consul` odstraní graf a `kubectl delete namespace` příkaz odstraní `consul` obor názvů.
 
 ```console
 helm delete --purge consul
@@ -158,14 +158,14 @@ kubectl delete namespace consul
 
 ## <a name="next-steps"></a>Další kroky
 
-Chcete-li prozkoumat další možnosti instalace a konfigurace konzula, přečtěte si následující oficiální články o konzulovi:
+Pokud chcete prozkoumat další možnosti instalace a konfigurace pro Consul, přečtěte si následující oficiální články pro Consul:
 
-- [Průvodce instalací helmu][consul-install-k8]
-- [Konzul - Možnosti instalace helmu][consul-install-helm-options]
+- [Průvodce instalací Consul-Helm][consul-install-k8]
+- [Consul – možnosti instalace Helm][consul-install-helm-options]
 
-Můžete také sledovat další scénáře pomocí:
+Můžete také postupovat podle dalších scénářů pomocí:
 
-- [Příklad aplikace konzula][consul-app-example]
+- [Consul – ukázková aplikace][consul-app-example]
 
 <!-- LINKS - external -->
 [Hashicorp]: https://hashicorp.com

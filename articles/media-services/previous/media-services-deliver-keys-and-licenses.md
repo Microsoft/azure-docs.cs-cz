@@ -1,6 +1,6 @@
 ---
-title: Použití služby Azure Media Services k doručování licencí DRM nebo klíčů AES | Dokumenty společnosti Microsoft
-description: Tento článek popisuje, jak můžete pomocí Služby Azure Media Services doručovat licence PlayReady a/nebo Widevine a klíče AES, ale zbytek (zakódovat, šifrovat, streamovat) pomocí místních serverů.
+title: Použití Azure Media Services k doručování licencí DRM nebo klíčů AES | Microsoft Docs
+description: Tento článek popisuje, jak můžete použít Azure Media Services k doručování licencí PlayReady a/nebo Widevine a ke klíčům AES, ale ke zbytku (kódování, šifrování a streamování) pomocí místních serverů.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,36 +15,36 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: b1f8b158c511919a72e72629d72b0e5ff73ff7db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78268116"
 ---
-# <a name="use-media-services-to-deliver-drm-licenses-or-aes-keys"></a>Použití služby Media Services k doručování licencí DRM nebo klíčů AES 
+# <a name="use-media-services-to-deliver-drm-licenses-or-aes-keys"></a>Použití Media Services k doručování licencí DRM nebo klíčů AES 
 
 > [!NOTE]
-> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Viz také [pokyny k migraci z v2 na v3](../latest/migrate-from-v2-to-v3.md)
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](https://docs.microsoft.com/azure/media-services/latest/). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
 
-Azure Media Services umožňuje ingestovat, kódovat, přidat ochranu obsahu a streamovat obsah. Další informace naleznete [v tématu Use PlayReady and/or Widevine dynamic common encryption](media-services-protect-with-playready-widevine.md). Někteří zákazníci chtějí používat služby Media Services pouze k doručování licencí nebo klíčů a kódování, šifrování a streamování pomocí místních serverů. Tento článek popisuje, jak můžete pomocí služby Media Services doručit licence PlayReady a/nebo Widevine, ale zbytek provést s místními servery. 
+Azure Media Services umožňují ingestování, kódování, přidávání ochrany obsahu a streamování obsahu. Další informace najdete v tématu [použití dynamického společného šifrování PlayReady nebo Widevine](media-services-protect-with-playready-widevine.md). Někteří zákazníci chtějí použít Media Services jenom k poskytování licencí a/nebo klíčů a ke kódování, šifrování a streamování pomocí jejich místních serverů. Tento článek popisuje, jak můžete použít Media Services k doručování licencí PlayReady a/nebo Widevine, ale také ke zbytku vašich místních serverů. 
 
 K dokončení tohoto kurzu potřebujete mít účet Azure. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="overview"></a>Přehled
-Služba Media Services poskytuje službu pro poskytování licencí pro správu digitálních práv PlayReady a Widevine (DRM) a klíčů AES-128. Mediální služby také poskytuje rozhraní API, která umožňují konfigurovat práva a omezení, která chcete pro zaběhu DRM vynutit při přehrávání obsahu chráněného drm. Když uživatel požaduje chráněný obsah, aplikace přehrávače požádá o licenci od licenční služby Media Services. Pokud je licence autorizována, vydá licenční služba služby Media Services licenci přehrávači. Licence PlayReady a Widevine obsahují dešifrovací klíč, který může klientský přehrávač použít k dešifrování a streamování obsahu.
+Media Services poskytuje službu pro doručování licencí PlayReady a Widevine pro digitální Rights Management (DRM) a klíče AES-128. Media Services také poskytuje rozhraní API, která umožňují nakonfigurovat práva a omezení, která má modul runtime DRM vyhovět, když uživatel přehraje obsah chráněný pomocí DRM. Když uživatel požádá o chráněný obsah, aplikace přehrávače si vyžádá licenci od služby Media Services License Service. Pokud je licence autorizována, služba Media Services License Service vydá licenci do přehrávače. Licence PlayReady a Widevine obsahují dešifrovací klíč, který může klientský přehrávač použít k dešifrování a streamování obsahu.
 
-Služba Media Services podporuje několik způsobů autorizace uživatelů, kteří požadují licenci nebo klíče. Nakonfigurujete zásady autorizace klíče obsahu. Zásady mohou mít jedno nebo více omezení. Možnosti jsou otevřené nebo omezení tokenu. Zásady omezení tokenem musí být doplněny tokenem vydaným službou tokenů zabezpečení (STS). Media Services podporuje tokeny ve formátu jednoduchého webového tokenu (SWT) a formátu JSON Web Token (JWT).
+Media Services podporuje více způsobů, jak autorizovat uživatele, kteří vytvářejí licence nebo požadavky na klíč. Nakonfigurujte zásady autorizace klíče obsahu. Tato zásada může mít jedno nebo víc omezení. Možnosti jsou otevřené nebo omezení tokenu. Zásady omezení tokenem musí být doplněny tokenem vydaným službou tokenů zabezpečení (STS). Media Services podporuje tokeny ve formátu jednoduchého webového tokenu (SWT) a ve formátu JSON Web Token (JWT).
 
-Následující diagram znázorňuje hlavní kroky, které je třeba provést, abyste pomocí mediálních služeb doručovali licence PlayReady a/nebo Widevine, ale zbytek se svými místními servery:
+Následující diagram znázorňuje hlavní kroky, které musíte provést, abyste mohli používat Media Services k doručování licencí PlayReady nebo Widevine, ale zbylé místní servery:
 
 ![Ochrana technologií PlayReady](./media/media-services-deliver-keys-and-licenses/media-services-diagram1.png)
 
 ## <a name="download-sample"></a>Stažení ukázky
-Ukázku popsanou v tomto článku najdete v [tématu Použití mediálních služeb Azure k doručování licencí PlayReady a/nebo Widevine s rozhraním .NET](https://github.com/Azure/media-services-dotnet-deliver-drm-licenses).
+Ukázku popsanou v tomto článku si můžete přečíst v tématu [použití Azure Media Services k doručování licencí PlayReady nebo Widevine s .NET](https://github.com/Azure/media-services-dotnet-deliver-drm-licenses).
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Vytvoření a konfigurace projektu Visual Studia
 
-1. Nastavte vývojové prostředí a naplňte soubor app.config informacemi o připojení, jak je popsáno ve [vývoji mediálních služeb pomocí rozhraní .NET](media-services-dotnet-how-to-use.md).
+1. Nastavte vývojové prostředí a naplňte soubor App. config informacemi o připojení, jak je popsáno v tématu [Media Services vývoj pomocí .NET](media-services-dotnet-how-to-use.md).
 
 2. Do části **appSettings** definované ve vašem souboru app.config přidejte následující elementy:
 
@@ -53,8 +53,8 @@ Ukázku popsanou v tomto článku najdete v [tématu Použití mediálních slu�
     <add key="Audience" value="urn:test"/>
     ```
  
-## <a name="net-code-example"></a>Příklad kódu rozhraní .NET
-Následující příklad kódu ukazuje, jak vytvořit společný klíč obsahu a získat adresy URL získání licence PlayReady nebo Widevine. Chcete-li nakonfigurovat místní server, potřebujete klíč obsahu, ID klíče a adresu URL pro získání licence. Po konfiguraci místního serveru můžete streamovat z vlastního serveru streamování. Vzhledem k tomu, že šifrovaný datový proud odkazuje na licenční server služby Media Services, požaduje přehrávač licenci od služby Media Services. Pokud zvolíte ověřování tokenů, licenční server Služby Media Ověří token, který jste odeslali prostřednictvím protokolu HTTPS. Pokud je token platný, licenční server doručí licenci zpět do přehrávače. Následující příklad kódu pouze ukazuje, jak vytvořit společný klíč obsahu a získat adresy URL získání licence PlayReady nebo Widevine. Pokud chcete doručit klíče AES-128, musíte vytvořit klíč obsahu obálky a získat adresu URL pro získání klíče. Další informace naleznete [v tématu Použití dynamického šifrování AES-128 a služby doručování klíčů](media-services-protect-with-aes128.md).
+## <a name="net-code-example"></a>Příklad kódu .NET
+Následující příklad kódu ukazuje, jak vytvořit společný klíč obsahu a získat adresy URL pro získání licence PlayReady nebo Widevine. Pokud chcete nakonfigurovat místní server, budete potřebovat klíč obsahu, ID klíče a adresu URL pro získání licence. Po nakonfigurování místního serveru můžete streamovat z vlastního serveru streamování. Vzhledem k tomu, že zašifrovaný datový proud odkazuje na licenční server Media Services, váš hráč si vyžádá licenci od Media Services. Pokud zvolíte ověřování pomocí tokenu, Media Services licenční server ověří token, který jste odeslali prostřednictvím protokolu HTTPS. Pokud je token platný, licenční server licence zaručí zpátky do svého přehrávače. Následující příklad kódu ukazuje, jak vytvořit společný klíč obsahu a získat adresy URL pro získání licence PlayReady nebo Widevine. Pokud chcete doručovat klíče AES-128, je nutné vytvořit klíč obsahu obálky a získat adresu URL pro získání klíče. Další informace najdete v tématu [použití dynamického šifrování AES-128 a služby pro doručování klíčů](media-services-protect-with-aes128.md).
 
 ```csharp
 using System;
@@ -347,7 +347,7 @@ namespace DeliverDRMLicenses
 
 ## <a name="additional-notes"></a>Další poznámky
 
-* Widevine je služba poskytovaná společností Google Inc. a podléhá podmínkám služeb a zásadám ochrany osobních údajů společnosti Google, Inc.
+* Widevine je služba od společnosti Google Inc. v souladu s podmínkami služby a zásadami ochrany osobních údajů Google, Inc.
 
 ## <a name="media-services-learning-paths"></a>Mapy kurzů k Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
@@ -357,4 +357,4 @@ namespace DeliverDRMLicenses
 
 ## <a name="see-also"></a>Viz také
 * [Použití běžného dynamického šifrování PlayReady nebo Widevine](media-services-protect-with-playready-widevine.md)
-* [Používejte dynamické šifrování AES-128 a službu doručování klíčů](media-services-protect-with-aes128.md)
+* [Použití dynamického šifrování AES-128 a služby doručování klíčů](media-services-protect-with-aes128.md)

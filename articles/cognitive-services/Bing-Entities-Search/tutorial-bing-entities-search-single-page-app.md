@@ -1,7 +1,7 @@
 ---
 title: 'Kurz: Vyhledávání entit Bingu pomocí jednostránkové webové aplikace'
 titleSuffix: Azure Cognitive Services
-description: Tento kurz ukazuje, jak používat rozhraní API pro vyhledávání entit Bingu v jednostránkové webové aplikaci.
+description: V tomto kurzu se dozvíte, jak používat rozhraní API Bingu pro vyhledávání entit webové aplikace s jednou stránkou.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.openlocfilehash: d45b9a153b770dd10da9dd61e8a7b3d138345b8a
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78943140"
 ---
 # <a name="tutorial-single-page-web-app"></a>Kurz: Jednostránková webová aplikace
@@ -58,7 +58,7 @@ V tomto kurzu probereme jen vybrané části zdrojového kódu. Úplný zdrojov�
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li sledovat spolu s kurzem, budete potřebovat klíče předplatného pro rozhraní API pro vyhledávání Bing a rozhraní API Mapy Bing. Pokud je nemáte, můžete použít [zkušební klíč](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) a [základní klávesu Mapy Bing](https://www.microsoft.com/maps/create-a-bing-maps-key).
+Abyste mohli postupovat podle tohoto kurzu, potřebujete klíče předplatného pro rozhraní Vyhledávání Bingu API a rozhraní API pro mapy Bing. Pokud je nemáte, můžete použít [zkušební klíč](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) a [základní klíč mapy Bing](https://www.microsoft.com/maps/create-a-bing-maps-key).
 
 ## <a name="app-components"></a>Komponenty aplikace
 
@@ -90,7 +90,7 @@ Kód HTML také obsahuje úseky (značky HTML `<div>`), kde se zobrazují výsle
 
 Aby se nemusely klíče předplatného rozhraní API pro vyhledávání Bingu a Map Bing zahrnout do kódu, používáme k uložení klíčů trvalé úložiště prohlížeče. Pokud není žádný z klíčů uložený, vyzveme k jeho zadání a uložíme ho pro pozdější použití. Když později rozhraní API klíč odmítne, zneplatníme uložený klíč. Uživatel o něj bude při příštím hledání požádán znovu.
 
-Definujeme funkce `storeValue` a `retrieveValue`, které používají buď objekt `localStorage` (když je podporovaný prohlížečem), nebo soubor cookie. Naše funkce `getSubscriptionKey()` tyto funkce používá k ukládání a načítání uživatelova klíče. Můžete použít globální koncový bod níže nebo vlastní koncový bod [subdomény](../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený na portálu Azure pro váš prostředek.
+Definujeme funkce `storeValue` a `retrieveValue`, které používají buď objekt `localStorage` (když je podporovaný prohlížečem), nebo soubor cookie. Naše funkce `getSubscriptionKey()` tyto funkce používá k ukládání a načítání uživatelova klíče. Můžete použít globální koncový bod nebo vlastní koncový bod [subdomény](../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
 
 ```javascript
 // cookie names for data we store
@@ -167,7 +167,7 @@ Funkce `bingSearchOptions()` nepracuje s polem `mapquery`. To se použije pro do
 
 ## <a name="obtaining-a-location"></a>Získání polohy
 
-Rozhraní API Map Bing nabízí [ `locationQuery` metodu](//msdn.microsoft.com/library/ff701711.aspx), kterou používáme k nalezení zeměpisné šířky a délky umístění, které uživatel zadá. Tyto souřadnice se pak s požadavkem uživatele předají rozhraní API Bingu pro vyhledávání entit. Výsledky hledání upřednostňují entity a místa, která jsou blízko zadané polohy.
+Rozhraní API služby mapy Bing nabízí [ `locationQuery` metodu](//msdn.microsoft.com/library/ff701711.aspx), kterou použijeme k nalezení zeměpisné šířky a délky umístění, které uživatel zadá. Tyto souřadnice se pak s požadavkem uživatele předají rozhraní API Bingu pro vyhledávání entit. Výsledky hledání upřednostňují entity a místa, která jsou blízko zadané polohy.
 
 Ve webové aplikaci nemůžeme přistupovat k rozhraní API Map Bing pomocí běžného dotazu `XMLHttpRequest`, protože tato služba nepodporuje dotazy nepůvodního zdroje. JSONP (kde P znamená odsazený (padded)) ji naštěstí podporuje. Odpověď JSONP je běžná odpověď JSON zabalená do volání funkce. Požadavek se vytvoří vložením značky `<script>` do dokumentu. (Načítání skriptů nepodléhá zásadám zabezpečení prohlížeče)
 

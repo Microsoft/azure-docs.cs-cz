@@ -1,5 +1,5 @@
 ---
-title: (ZASTARALÉ) Kurz služby Azure Container Service – nasazení aplikace
+title: ZASTARALÉ Kurz Azure Container Service – nasazení aplikace
 description: Kurz Azure Container Service – Nasazení aplikace
 author: iainfoulds
 ms.service: container-service
@@ -8,16 +8,16 @@ ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: 2c2d50da4328ff07c3d2fda4a8721839aa3aa6e7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78274059"
 ---
-# <a name="deprecated-run-applications-in-kubernetes"></a>(ZASTARALÉ) Spouštění aplikací v Kubernetes
+# <a name="deprecated-run-applications-in-kubernetes"></a>ZASTARALÉ Spouštění aplikací v Kubernetes
 
 > [!TIP]
-> Aktualizovanou verzi tohoto kurzu, který používá službu Azure Kubernetes, [najdete v tématu Kurz: Spouštění aplikací ve službě Azure Kubernetes Service (AKS).](../../aks/tutorial-kubernetes-deploy-application.md)
+> Aktualizovanou verzi v tomto kurzu, který používá službu Azure Kubernetes, najdete v tématu [kurz: spouštění aplikací ve službě Azure Kubernetes Service (AKS)](../../aks/tutorial-kubernetes-deploy-application.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -32,7 +32,7 @@ V dalších kurzech se tato aplikace bude škálovat a aktualizovat a nakonfigur
 
 V tomto kurzu se předpokládá základní znalost konceptů Kubernetes. Podrobné informace o Kubernetes najdete v [dokumentaci ke Kubernetes](https://kubernetes.io/docs/home/).
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 V předchozích kurzech se aplikace zabalila do image kontejneru, tato image se odeslala do Azure Container Registry a vytvořil se cluster Kubernetes. 
 

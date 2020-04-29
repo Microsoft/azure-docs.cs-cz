@@ -1,7 +1,7 @@
 ---
-title: 'Kurz: Detekce anomálií při streamování dat pomocí Azure Databricks'
+title: 'Kurz: detekce anomálií pro streamovaná data pomocí Azure Databricks'
 titleSuffix: Azure Cognitive Services
-description: Zjistěte, jak pomocí rozhraní API detektoru anomálií a Azure Databricks sledovat anomálie ve vašich datech.
+description: Naučte se používat rozhraní API detektoru anomálií a Azure Databricks k monitorování anomálií ve vašich datech.
 titlesuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -12,19 +12,19 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.openlocfilehash: e0df0773daf8f9be21ac70d8390013adfd93483a
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78402671"
 ---
-# <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>Kurz: Detekce anomálií při streamování dat pomocí Azure Databricks
+# <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>Kurz: detekce anomálií pro streamovaná data pomocí Azure Databricks
 
-[Azure Databricks](https://azure.microsoft.com/services/databricks/) je rychlá, snadná a kolaborativní analytická služba založená na Apache Spark. Rozhraní API detektoru anomálií, které je součástí služby Azure Cognitive Services, poskytuje způsob sledování dat časových řad. Tento kurz slouží ke spuštění detekce anomálií na datovém proudu v téměř reálném čase pomocí Azure Databricks. Budete ingestovat twitter data pomocí Azure Event Hubs a importovat je do Azure Databricks pomocí konektoru Spark Event Hubs. Poté budete používat rozhraní API k detekci anomálií na streamovaných datech. 
+[Azure Databricks](https://azure.microsoft.com/services/databricks/) je rychlá, snadná a týmová analytická služba založená na Apache Spark. Rozhraní API pro detekci anomálií, součást služby Azure Cognitive Services, nabízí způsob, jak monitorovat data časových řad. Pomocí tohoto kurzu můžete spustit detekci anomálií na proud dat téměř v reálném čase pomocí Azure Databricks. Data Twitteru budete přijímat pomocí Azure Event Hubs a naimportujte je do Azure Databricks pomocí konektoru Spark Event Hubs. Následně použijete rozhraní API ke zjištění anomálií dat streamování. 
 
 Následující obrázek ukazuje běh aplikace:
 
-![Azure Databricks s centry událostí a kognitivními službami](../media/tutorials/databricks-cognitive-services-tutorial.png "Azure Databricks s centry událostí a kognitivními službami")
+![Azure Databricks s Event Hubs a Cognitive Services](../media/tutorials/databricks-cognitive-services-tutorial.png "Azure Databricks s Event Hubs a Cognitive Services")
 
 Tento kurz se zabývá následujícími úkony:
 
@@ -37,35 +37,35 @@ Tento kurz se zabývá následujícími úkony:
 > * Vytvoření prostředku detektoru anomálií a načtení přístupového klíče
 > * Odeslání tweetů do služby Event Hubs
 > * Čtení tweetů ze služby Event Hubs
-> * Spusťte detekci anomálií na tweetech
+> * Spustit detekci anomálií na tweety
 
 > [!Note]
-> * Tento kurz představuje přístup k implementaci architektury doporučené [řešení](https://azure.microsoft.com/solutions/architecture/anomaly-detector-process/) pro rozhraní API detektoru anomálií.
-> * Tento kurz nelze dokončit s bezplatnou zkušební verzi pro rozhraní API detektoru anomálií nebo Azure Databricks. 
+> * Tento kurz zavádí přístup k implementaci doporučené [architektury řešení](https://azure.microsoft.com/solutions/architecture/anomaly-detector-process/) pro rozhraní API detektoru anomálií.
+> * Tento kurz nejde dokončit s bezplatnou zkušební verzí rozhraní API detektoru anomálií nebo Azure Databricks. 
 
-Pokud ho nemáte, vytvořte [předplatné Azure.](https://azure.microsoft.com/free/)
+Pokud nemáte [předplatné Azure](https://azure.microsoft.com/free/) , vytvořte ho.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Obor [názvů Centra událostí Azure](https://docs.microsoft.com/azure/event-hubs/event-hubs-create) a centrum událostí.
+- Obor názvů a centrum událostí pro [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/event-hubs-create) .
 
-- [Připojovací řetězec](../../../event-hubs/event-hubs-get-connection-string.md) pro přístup k oboru názvů Event Hubs. Připojovací řetězec by měl mít podobný formát jako:
+- [Připojovací řetězec](../../../event-hubs/event-hubs-get-connection-string.md) pro přístup k oboru názvů Event Hubs. Připojovací řetězec by měl mít podobný formát:
 
     `Endpoint=sb://<namespace>.servicebus.windows.net/;SharedAccessKeyName=<key name>;SharedAccessKey=<key value>`. 
 
-- Název zásady sdíleného přístupu a klíč zásad pro centra událostí.
+- Název zásady sdíleného přístupu a klíč zásad pro Event Hubs.
 
-Informace o vytvoření oboru názvů a centra událostí najdete v [rychlém startu](../../../event-hubs/event-hubs-create.md) centra Událostí Azure.
+Informace o vytvoření oboru názvů a centra událostí najdete v tématu [rychlý Start](../../../event-hubs/event-hubs-create.md) pro Azure Event Hubs.
 
 ## <a name="create-an-azure-databricks-workspace"></a>Vytvoření pracovního prostoru Azure Databricks
 
-V této části vytvoříte pracovní prostor Azure Databricks pomocí [portálu Azure](https://portal.azure.com/).
+V této části vytvoříte Azure Databricks pracovní prostor pomocí [Azure Portal](https://portal.azure.com/).
 
-1. Na webu Azure Portal vyberte **Vytvořit zdroj** > **Analytics** > **Azure Databricks**.
+1. V Azure Portal vyberte vytvořit Azure Databricks **prostředků** > **Analytics** > **Azure Databricks**.
 
-    ![Datové cihly na webu Azure Portal](../media/tutorials/azure-databricks-on-portal.png "Datové cihly na webu Azure Portal")
+    ![Datacihly na Azure Portal](../media/tutorials/azure-databricks-on-portal.png "Datacihly na Azure Portal")
 
-3. V části **Azure Databricks Service**zadejte následující hodnoty pro vytvoření pracovního prostoru Databricks:
+3. V části **Azure Databricks služba**zadejte následující hodnoty pro vytvoření pracovního prostoru datacihly:
 
 
     |Vlastnost  |Popis  |
@@ -73,7 +73,7 @@ V této části vytvoříte pracovní prostor Azure Databricks pomocí [portálu
     |**Název pracovního prostoru**     | Zadejte název pracovního prostoru Databricks.        |
     |**Předplatné**     | Z rozevíracího seznamu vyberte své předplatné Azure.        |
     |**Skupina prostředků**     | Určete, jestli chcete vytvořit novou skupinu prostředků, nebo použít existující. Skupina prostředků je kontejner, který obsahuje související prostředky pro řešení Azure. Další informace naleznete v tématu [Přehled skupin prostředků v Azure](../../../azure-resource-manager/management/overview.md). |
-    |**Umístění**     | Vyberte **možnost Východní USA 2** nebo některou z dalších dostupných oblastí. Dostupnost oblasti najdete [v tématu Služby Azure dostupné podle oblastí.](https://azure.microsoft.com/regions/services/)        |
+    |**Umístění**     | Vyberte **východní USA 2** nebo jednu z dalších dostupných oblastí. Dostupnost oblastí najdete v tématu [služby Azure dostupné v oblasti](https://azure.microsoft.com/regions/services/) .        |
     |**Cenová úroveň**     |  Zvolte úroveň **Standard** nebo **Premium**. Nevybírejte **zkušební verzi**. Další informace o těchto úrovních najdete na [stránce s cenami za Databricks](https://azure.microsoft.com/pricing/details/databricks/).       |
 
     Vyberte **Vytvořit**.
@@ -84,19 +84,19 @@ V této části vytvoříte pracovní prostor Azure Databricks pomocí [portálu
 
 1. Na webu Azure Portal přejděte do pracovního prostoru Databricks, který jste vytvořili, a vyberte **Spustit pracovní prostor**.
 
-2. Budete přesměrováni na portál Azure Databricks. Na portálu vyberte **Nový cluster**.
+2. Budete přesměrováni na portál Azure Databricks. Na portálu vyberte **nový cluster**.
 
-    ![Datové cihly v Azure](../media/tutorials/databricks-on-azure.png "Datové cihly v Azure")
+    ![Datacihly v Azure](../media/tutorials/databricks-on-azure.png "Datacihly v Azure")
 
-3. Na stránce **Nový cluster** zadejte hodnoty pro vytvoření clusteru.
+3. Na stránce **nový cluster** zadejte hodnoty pro vytvoření clusteru.
 
-    ![Vytvoření clusteru Databricks Spark v Azure](../media/tutorials/create-databricks-spark-cluster.png "Vytvoření clusteru Databricks Spark v Azure")
+    ![Vytvoření clusteru datacihly Spark v Azure](../media/tutorials/create-databricks-spark-cluster.png "Vytvoření clusteru datacihly Spark v Azure")
 
     Přijměte všechny výchozí hodnoty kromě následujících:
 
    * Zadejte název clusteru.
-   * Pro tento článek vytvořte cluster s **5.2** runtime. Nevybírejte za běhu **5.3.**
-   * Ujistěte se, že je zaškrtnuté políčko **Ukončit po \_ \_ minutách nečinnosti.** Zadejte dobu trvání (v minutách) k ukončení clusteru, pokud se cluster nepoužívá.
+   * V tomto článku vytvořte cluster s modulem runtime **5,2** . Nevybírejte modul runtime **5,3** .
+   * Ujistěte se, že je zaškrtnuté políčko **ukončit po \_ \_ minutách nečinnosti** . Zadejte dobu (v minutách), po kterou se má cluster ukončit, pokud se cluster nepoužívá.
 
      Vyberte **Vytvořit cluster**. 
 4. Vytvoření clusteru trvá několik minut. Po spuštění clusteru můžete ke clusteru připojit poznámkové bloky a spouštět úlohy Spark.
@@ -107,7 +107,7 @@ Pro příjem streamovaných tweetů je potřeba vytvořit aplikaci na Twitteru. 
 
 1. Ve webovém prohlížeči přejděte na stránku [Twitter Application Management](https://apps.twitter.com/) (Správa aplikací Twitter) a vyberte **Create New App** (Vytvořit novou aplikaci).
 
-    ![Vytvořit aplikaci Twitter](../media/tutorials/databricks-create-twitter-app.png "Vytvořit aplikaci Twitter")
+    ![Vytvoření aplikace Twitter](../media/tutorials/databricks-create-twitter-app.png "Vytvoření aplikace Twitter")
 
 2. Na stránce **Create an application** (Vytvoření aplikace) zadejte podrobnosti o nové aplikaci a pak vyberte **Create your Twitter application** (Vytvořit aplikaci Twitter).
 
@@ -121,41 +121,41 @@ Uložte hodnoty, které jste načetli pro aplikaci Twitter. Tyto hodnoty budete 
 
 ## <a name="attach-libraries-to-spark-cluster"></a>Připojení knihoven ke clusteru Spark
 
-V tomto kurzu k odesílání tweetů do služby Event Hubs použijete rozhraní Twitter API. Použijete také [konektor služby Event Hubs pro Apache Spark](https://github.com/Azure/azure-event-hubs-spark) ke čtení a zápisu dat do služby Azure Event Hubs. Pokud chcete tato rozhraní API použít v rámci svého clusteru, přidejte je jako knihovny do Azure Databricks a pak je přidružte ke svému clusteru Spark. Následující pokyny ukazují, jak přidat knihovny do **sdílené** složky v pracovním prostoru.
+V tomto kurzu k odesílání tweetů do služby Event Hubs použijete rozhraní Twitter API. Použijete také [konektor služby Event Hubs pro Apache Spark](https://github.com/Azure/azure-event-hubs-spark) ke čtení a zápisu dat do služby Azure Event Hubs. Pokud chcete tato rozhraní API použít v rámci svého clusteru, přidejte je jako knihovny do Azure Databricks a pak je přidružte ke svému clusteru Spark. Následující pokyny ukazují, jak přidat knihovny do **sdílené** složky ve vašem pracovním prostoru.
 
-1. V pracovním prostoru Azure Databricks vyberte **Pracovní prostor** a pak klikněte pravým tlačítkem na **Sdílené**. V místní nabídce vyberte **Vytvořit** > **knihovnu**.
+1. V pracovním prostoru Azure Databricks vyberte **Pracovní prostor** a pak klikněte pravým tlačítkem na **Sdílené**. V místní nabídce vyberte možnost **vytvořit** > **knihovnu**.
 
    ![Dialogové okno Přidat knihovnu](../media/tutorials/databricks-add-library-option.png "Dialogové okno Přidat knihovnu")
 
-2. Na stránce Nová knihovna vyberte pro **Zdroj** **Maven**. Do **souřadnic**zadejte souřadnici balíčku, který chcete přidat. Tady jsou souřadnice Maven pro knihovny použité v tomto kurzu:
+2. Na stránce Nová knihovna vyberte v části **zdroj** možnost **Maven**. Pro **souřadnice**zadejte souřadnici balíčku, který chcete přidat. Tady jsou souřadnice Maven pro knihovny použité v tomto kurzu:
 
    * Konektor služby Event Hubs pro Spark – `com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.10`
    * Rozhraní Twitter API – `org.twitter4j:twitter4j-core:4.0.7`
 
-     ![Poskytnout maven souřadnice](../media/tutorials/databricks-eventhub-specify-maven-coordinate.png "Poskytnout maven souřadnice")
+     ![Zadat souřadnice Maven](../media/tutorials/databricks-eventhub-specify-maven-coordinate.png "Zadat souřadnice Maven")
 
 3. Vyberte **Vytvořit**.
 
 4. Vyberte složku, do které jste knihovnu přidali, a pak vyberte název knihovny.
 
-    ![Vyberte knihovnu, která chcete přidat.](../media/tutorials/select-library.png "Vyberte knihovnu, která chcete přidat.")
+    ![Vyberte knihovnu, kterou chcete přidat.](../media/tutorials/select-library.png "Vyberte knihovnu, kterou chcete přidat.")
 
-5. Pokud na stránce knihovny není žádný cluster, vyberte **Clustery** a spusťte cluster, který jste vytvořili. Počkejte, až se ve stavu zobrazí "Spuštěno" a pak se vraťte na stránku knihovny.
-Na stránce knihovny vyberte cluster, ve kterém chcete knihovnu používat, a pak vyberte **Instalovat**. Jakmile je knihovna úspěšně přidružena ke clusteru, stav se okamžitě změní na **Nainstalováno**.
+5. Pokud na stránce Knihovna není žádný cluster, vyberte **clustery** a spusťte cluster, který jste vytvořili. Počkejte, dokud stav nezobrazuje ' spuštěno ' a pak se vraťte na stránku knihovny.
+Na stránce Knihovna vyberte cluster, ve kterém chcete použít knihovnu, a pak vyberte **nainstalovat**. Po úspěšném přidružení knihovny ke clusteru se stav okamžitě změní na **nainstalováno**.
 
-    ![Instalace knihovny do clusteru](../media/tutorials/databricks-library-attached.png "Instalace knihovny do clusteru")
+    ![Nainstalovat knihovnu do clusteru](../media/tutorials/databricks-library-attached.png "Nainstalovat knihovnu do clusteru")
 
 6. Zopakujte tyto kroky pro balíček Twitteru `twitter4j-core:4.0.7`.
 
 ## <a name="get-a-cognitive-services-access-key"></a>Získání přístupového klíče služeb Cognitive Services
 
-V tomto kurzu použijete [Azure Cognitive Services detektor anomálií k](../overview.md) spuštění detekce anomálií na proudu tweets v téměř reálném čase. Před použitím api, musíte vytvořit prostředek detektoru anomálií v Azure a načíst přístupový klíč pro použití detektoru anomálií API.
+V tomto kurzu použijete rozhraní API pro detekci [anomálií v Azure Cognitive Services](../overview.md) ke spouštění detekce anomálií na streamu tweety téměř v reálném čase. Než použijete rozhraní API, musíte v Azure vytvořit prostředek detektoru anomálií a načíst přístupový klíč pro použití rozhraní API detektoru anomálií.
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 2. Vyberte **+ Vytvořit prostředek**.
 
-3. V části Azure Marketplace vyberte **AI + Machine Learning** > **Zobrazit všechny** > **kognitivní služby – další** > **detektor anomálií**. Nebo můžete [použít tento odkaz](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) k přímému přepychu do dialogového okna **Vytvořit.**
+3. V části Azure Marketplace vyberte **AI + Machine Learning** > **Zobrazit všechny** > **Cognitive Services** > **detektor anomálií**. Nebo můžete použít [Tento odkaz](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) k přímému přechodu do dialogového okna **vytvořit** .
 
     ![Vytvořit prostředek detektoru anomálií](../media/tutorials/databricks-cognitive-services-anomaly-detector.png "Vytvořit prostředek detektoru anomálií")
 
@@ -163,20 +163,20 @@ V tomto kurzu použijete [Azure Cognitive Services detektor anomálií k](../ove
 
     |Hodnota |Popis  |
     |---------|---------|
-    |Name (Název)     | Název prostředku detektoru anomálií.        |
-    |Předplatné     | Předplatné Azure, ke kterým bude prostředek přidružen.        |
+    |Název     | Název prostředku detektoru anomálií.        |
+    |Předplatné     | Předplatné Azure, ke kterému bude prostředek přidružen.        |
     |Umístění     | Umístění Azure.        |
-    |Cenová úroveň     | Cenová úroveň pro službu. Další informace o cenách detektoru anomálií naleznete na [stránce s cenami](https://azure.microsoft.com/pricing/details/cognitive-services/anomaly-detector/).        |
-    |Skupina prostředků     | Určete, zda chcete vytvořit novou skupinu prostředků nebo vybrat existující skupinu.        |
+    |Cenová úroveň     | Cenová úroveň služby. Další informace o cenách detektoru anomálií najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/cognitive-services/anomaly-detector/).        |
+    |Skupina prostředků     | Určete, jestli chcete vytvořit novou skupinu prostředků, nebo vyberte existující.        |
 
 
      Vyberte **Vytvořit**.
 
-5. Po vytvoření prostředku zkopírujte a uložte adresu URL **koncového bodu** na kartě **Přehled,** jak je znázorněno na snímku obrazovky. Pak vyberte **Zobrazit přístupové klávesy**.
+5. Po vytvoření prostředku na kartě **Přehled** zkopírujte a uložte adresu URL **koncového bodu** , jak je znázorněno na snímku obrazovky. Pak vyberte **Zobrazit přístupové klíče**.
 
-    ![Zobrazit přístupové klávesy](../media/tutorials/cognitive-services-get-access-keys.png "Zobrazit přístupové klávesy")
+    ![Zobrazit přístupové klíče](../media/tutorials/cognitive-services-get-access-keys.png "Zobrazit přístupové klíče")
 
-6. V části **Klávesy**vyberte ikonu kopírování proti klíči, který chcete použít. Uložte přístupový klíč.
+6. V části **klíče**vyberte ikonu kopírování na klíč, který chcete použít. Uložte přístupový klíč.
 
     ![Kopírování přístupových klíčů](../media/tutorials/cognitive-services-copy-access-keys.png "Kopírování přístupových klíčů")
 
@@ -185,15 +185,15 @@ V tomto kurzu použijete [Azure Cognitive Services detektor anomálií k](../ove
 V této části vytvoříte v pracovním prostoru Databricks dva poznámkové bloky s následujícími názvy:
 
 - **SendTweetsToEventHub** –Poznámkový blob producenta, který použijete k získání tweetů z Twitteru a jejich streamování do služby Event Hubs.
-- **AnalyzeTweetsFromEventHub** - Poznámkový blok příjemce, který slouží ke čtení tweetů z center událostí a ke spuštění detekce anomálií.
+- **AnalyzeTweetsFromEventHub** – uživatelský Poznámkový blok, který použijete ke čtení tweety z Event Hubs a spuštění detekce anomálií.
 
-1. V pracovním prostoru Azure Databricks vyberte **pracovní prostor** v levém podokně. V rozevíracím seznamu **Pracovní prostor** vyberte **Vytvořit** a pak vyberte **Poznámkový blok**.
+1. V pracovním prostoru Azure Databricks v levém podokně vyberte **pracovní prostor** . V rozevíracím seznamu **Pracovní prostor** vyberte **Vytvořit** a pak vyberte **Poznámkový blok**.
 
-    ![Vytvoření poznámkového bloku v datových cihlách](../media/tutorials/databricks-create-notebook.png "Vytvoření poznámkového bloku v datových cihlách")
+    ![Vytvoření poznámkového bloku v datacihlech](../media/tutorials/databricks-create-notebook.png "Vytvoření poznámkového bloku v datacihlech")
 
-2. V dialogovém okně **Vytvořit poznámkový blok** zadejte jako název **SendTweetsToEventHub,** jako jazyk vyberte **Scala** a vyberte cluster Spark, který jste vytvořili dříve.
+2. V dialogovém okně **vytvořit Poznámkový blok** zadejte **SendTweetsToEventHub** jako název, jako jazyk vyberte **Scala** a vyberte cluster Spark, který jste vytvořili dříve.
 
-    ![Vytvoření poznámkového bloku v datových cihlách](../media/tutorials/databricks-notebook-details.png "Vytvoření poznámkového bloku v datových cihlách")
+    ![Vytvoření poznámkového bloku v datacihlech](../media/tutorials/databricks-notebook-details.png "Vytvoření poznámkového bloku v datacihlech")
 
     Vyberte **Vytvořit**.
 
@@ -201,7 +201,7 @@ V této části vytvoříte v pracovním prostoru Databricks dva poznámkové bl
 
 ## <a name="send-tweets-to-event-hubs"></a>Odeslání tweetů do služby Event Hubs
 
-V poznámkovém bloku **SendTweetsToEventHub** vložte následující kód a nahraďte zástupný symbol hodnotami pro obor názvů Event Hubs a aplikaci Twitter, kterou jste vytvořili dříve. Tento poznámkový blok extrahuje čas a počet "Like" z tweetů s klíčovým slovem "Azure" a streamuje je jako události do event hubů v reálném čase.
+Do poznámkového bloku **SendTweetsToEventHub** vložte následující kód a nahraďte zástupný text hodnotami pro váš obor názvů Event Hubs a aplikaci Twitter, kterou jste vytvořili dříve. Tento Poznámkový blok extrahuje čas vytvoření a číslo "Like" s z tweety s klíčovým slovem "Azure" a streamuje je jako události do Event Hubs v reálném čase.
 
 ```scala
 //
@@ -298,7 +298,7 @@ eventHubClient.get().close()
 pool.shutdown()
 ```
 
-Pokud chcete poznámkový blok spustit, stiskněte **SHIFT + ENTER**. Zobrazí se výstup jako v následujícím fragmentu kódu. Každá událost ve výstupu je kombinací časového razítka a počtu "Like" s ingested do centra událostí.
+Pokud chcete poznámkový blok spustit, stiskněte **SHIFT + ENTER**. Zobrazí se výstup jako v následujícím fragmentu kódu. Každá událost ve výstupu je kombinací časového razítka a počtu "podobného" s ingestování do Event Hubs.
 
     Sent event: {"timestamp":"2019-04-24T09:39:40.000Z","favorite":0}
 
@@ -321,9 +321,9 @@ Pokud chcete poznámkový blok spustit, stiskněte **SHIFT + ENTER**. Zobrazí s
 
 ## <a name="read-tweets-from-event-hubs"></a>Čtení tweetů ze služby Event Hubs
 
-V poznámkovém bloku **AnalyzeTweetsFromEventHub** vložte následující kód a nahraďte zástupný symbol hodnotami pro prostředek detektoru anomálií, který jste vytvořili dříve. Tento poznámkový blok čte tweety, které jste předtím streamovali do služby Event Hubs pomocí poznámkového bloku **SendTweetsToEventHub**.
+Do poznámkového bloku **AnalyzeTweetsFromEventHub** vložte následující kód a nahraďte zástupný symbol hodnotami pro prostředek detektoru anomálií, který jste vytvořili dříve. Tento poznámkový blok čte tweety, které jste předtím streamovali do služby Event Hubs pomocí poznámkového bloku **SendTweetsToEventHub**.
 
-Nejprve napište klientovi pro volání detektoru anomálií. 
+Nejdřív napište klienta pro volání detektoru anomálií. 
 ```scala
 
 //
@@ -434,7 +434,7 @@ Pokud chcete poznámkový blok spustit, stiskněte **SHIFT + ENTER**. Zobrazí s
     defined class AnomalyBatchResponse
     defined object AnomalyDetector
 
-Potom připravte funkci agregace pro budoucí použití.
+Pak Připravte agregační funkci pro budoucí použití.
 ```scala
 //
 // User Defined Aggregation Function for Anomaly Detection
@@ -501,7 +501,7 @@ Pokud chcete poznámkový blok spustit, stiskněte **SHIFT + ENTER**. Zobrazí s
     import scala.collection.immutable.ListMap
     defined class AnomalyDetectorAggregationFunction
 
-Pak načtěte data z centra událostí pro detekci anomálií. Nahraďte zástupný symbol hodnotami pro centra událostí Azure, které jste vytvořili dříve.
+Pak načtěte data z centra událostí pro detekci anomálií. Zástupný text nahraďte hodnotami pro váš Event Hubs Azure, který jste vytvořili dříve.
 
 ```scala
 //
@@ -539,18 +539,18 @@ display(msgStream)
 
 ```
 
-Výstup se nyní podobá následujícímu obrázku. Všimněte si, že vaše datum v tabulce se může lišit od data v tomto kurzu, protože data jsou v reálném čase.
-![Načíst data z centra událostí](../media/tutorials/load-data-from-eventhub.png "Načtení dat z centra událostí")
+Výstup teď vypadá podobně jako na následujícím obrázku. Všimněte si, že vaše datum v tabulce se může od data v tomto kurzu lišit, protože data jsou v reálném čase.
+![Načtení dat z centra událostí](../media/tutorials/load-data-from-eventhub.png "Načtení dat z centra událostí")
 
-Teď jste streamovali data z Azure Event Hubs do Azure Databricks téměř v reálném čase pomocí konektoru Event Hubs pro Apache Spark. Další informace o použití konektoru služby Event Hubs pro Spark najdete v [dokumentaci ke konektorům](https://github.com/Azure/azure-event-hubs-spark/tree/master/docs).
+Nyní máte streamovaná data z Azure Event Hubs do Azure Databricks téměř v reálném čase pomocí konektoru Event Hubs pro Apache Spark. Další informace o použití konektoru služby Event Hubs pro Spark najdete v [dokumentaci ke konektorům](https://github.com/Azure/azure-event-hubs-spark/tree/master/docs).
 
 
 
-## <a name="run-anomaly-detection-on-tweets"></a>Spusťte detekci anomálií na tweetech
+## <a name="run-anomaly-detection-on-tweets"></a>Spustit detekci anomálií na tweety
 
-V této části spustíte detekci anomálií na tweets přijaté pomocí rozhraní API detektoru anomálií. Fragmenty kódu v této části přidáte do stejného poznámkového bloku **AnalyzeTweetsFromEventHub**.
+V této části spustíte detekci anomálií na tweety přijatém pomocí rozhraní API detektoru anomálií. Fragmenty kódu v této části přidáte do stejného poznámkového bloku **AnalyzeTweetsFromEventHub**.
 
-Chcete-li provést detekci anomálií, nejprve je třeba agregovat počet metrik podle hodiny.
+Aby bylo možné zjistit anomálii, je třeba nejprve agregovat počet metrik o hodinu.
 ```scala
 //
 // Aggregate Metric Count by Hour
@@ -566,7 +566,7 @@ groupStream.printSchema
 
 display(groupStream)
 ```
-Výstup se nyní podobá následujícím úryvkům.
+Výstup nyní připomíná následující fragmenty kódu.
 ```
 groupTime                       average
 2019-04-23T04:00:00.000+0000    24
@@ -578,8 +578,8 @@ groupTime                       average
 
 ```
 
-Potom získat agregovaný výsledek výstupu Delta. Protože detekce anomálií vyžaduje delší okno historie, používáme Delta k uchování dat historie pro bod, který chcete zjistit. Nahraďte "[Zástupný symbol: název tabulky]" kvalifikovaným názvem tabulky Delta, který má být vytvořen (například "tweets"). Nahraďte "[Zástupný symbol: název složky pro kontrolní body]" hodnotou řetězce, která je jedinečná při každém spuštění tohoto kódu (například "etl-from-eventhub-20190605").
-Další informace o Delta Lake na Azure Databricks, naleznete [v Průvodce Delta Lake](https://docs.azuredatabricks.net/delta/index.html)
+Pak získá agregovaný výsledek výstupu do rozdílu. Vzhledem k tomu, že detekce anomálií vyžaduje okno s delší historií, používáme k uchování dat historie bodu, který chcete zjistit, rozdílová data. Nahraďte "[zástupný symbol: název tabulky]" kvalifikovaným názvem tabulky rozdílů, který má být vytvořen (například "tweety"). Nahraďte "[zástupný symbol: název složky pro kontrolní body]" hodnotou řetězce, která je jedinečná při každém spuštění tohoto kódu (například "ETL-from-eventhub-20190605").
+Další informace o rozdílových Lake na Azure Databricks najdete v tématu [Průvodce rozdílovým Lake Guide](https://docs.azuredatabricks.net/delta/index.html) .
 
 
 ```scala
@@ -595,7 +595,7 @@ groupStream.writeStream
 
 ```
 
-Nahraďte "[Zástupný symbol: název tabulky]" stejným názvem tabulky Delta, který jste vybrali výše.
+Nahraďte "[zástupný symbol: název tabulky]" stejným názvem rozdílové tabulky, kterou jste vybrali výše.
 ```scala
 //
 // Show Aggregate Result
@@ -609,7 +609,7 @@ twitterData.show(200, false)
 
 display(twitterData)
 ```
-Výstup, jak je uvedeno níže: 
+Výstup je následující: 
 ```
 groupTime                       average
 2019-04-08T01:00:00.000+0000    25.6
@@ -622,7 +622,7 @@ groupTime                       average
 
 ```
 
-Nyní jsou agregovaná data časových řad průběžně pojídaná do delty. Pak můžete naplánovat každou hodinovou úlohu, abyste zjistili anomálii posledního bodu. Nahraďte "[Zástupný symbol: název tabulky]" stejným názvem tabulky Delta, který jste vybrali výše.
+Data agregované časové řady se teď neustále ingestují do rozdílu. Pak můžete naplánovat hodinovou úlohu k detekci anomálií nejnovějšího bodu. Nahraďte "[zástupný symbol: název tabulky]" stejným názvem rozdílové tabulky, kterou jste vybrali výše.
 
 ```scala
 //
@@ -661,7 +661,7 @@ spark.udf.register("anomalydetect", new AnomalyDetectorAggregationFunction)
 val adResult = spark.sql("SELECT '" + endTime.toString + "' as datetime, anomalydetect(groupTime, average) as anomaly FROM series")
 adResult.show()
 ```
-Výsledek, jak je uvedeno níže: 
+Výsledek následujícím způsobem: 
 
 ```
 +--------------------+-------+
@@ -671,20 +671,20 @@ Výsledek, jak je uvedeno níže:
 +--------------------+-------+
 ```
 
-A to je vše! Pomocí Azure Databricks jste úspěšně streamovali data do Azure Event Hubs, spotřebovává data datového proudu pomocí konektoru Event Hubs a pak spouštějí detekci anomálií na streamovaných datech téměř v reálném čase.
-Ačkoli v tomto kurzu je rozlišovací schopnost hodinová, můžete vždy změnit rozlišovací schopnost tak, aby vyhovovala vašim potřebám. 
+A to je vše! Pomocí Azure Databricks jste úspěšně streamovaná data do Azure Event Hubs, využili jste data datového proudu pomocí konektoru Event Hubs a pak spustíte detekci anomálií pro streamovaná data prakticky v reálném čase.
+I když je v tomto kurzu členitost na hodinu, můžete změnit členitost tak, aby odpovídala vašim potřebám. 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Po dokončení tohoto kurzu můžete cluster ukončit. Chcete-li tak učinit, v pracovním prostoru Azure Databricks vyberte **clustery** z levého podokna. U clusteru, který chcete ukončit, přesuňte kurzor nad tři tečky ve **sloupci Akce** a vyberte ikonu **Ukončit** a pak vyberte **Potvrdit**.
+Po dokončení tohoto kurzu můžete cluster ukončit. Provedete to tak, že v pracovním prostoru Azure Databricks v levém podokně vyberete **clustery** . U clusteru, který chcete ukončit, přesuňte kurzor na tři tečky pod sloupcem **Actions (akce** ) a vyberte ikonu **ukončit** a pak vyberte **Potvrdit**.
 
-![Zastavení clusteru Databricks](../media/tutorials/terminate-databricks-cluster.png "Zastavení clusteru Databricks")
+![Zastavení clusteru datacihly](../media/tutorials/terminate-databricks-cluster.png "Zastavení clusteru datacihly")
 
-Pokud cluster ručně neukončíte, bude automaticky ukončen za předpokladu, že jste při vytváření clusteru zaškrtli políčko **Ukončit po \_ \_ minutách nečinnosti.** V takovém případě se cluster automaticky zastaví, pokud byl po zadanou dobu neaktivní.
+Pokud cluster neukončíte ručně, zastaví se automaticky, a to za předpokladu, že jste při vytváření clusteru zaškrtli políčko **ukončit po \_ \_ minutách nečinnosti** . V takovém případě se cluster automaticky zastaví, pokud byl po zadanou dobu neaktivní.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste zjistili, jak pomocí Azure Databricks streamovat data do služby Azure Event Hubs a pak streamovaná data v reálném čase číst ze služby Event Hubs. Přejdete k dalšímu kurzu, kde se dozvíte, jak volat rozhraní API detektoru anomálií a vizualizovat anomálie pomocí desktopu Power BI. 
+V tomto kurzu jste zjistili, jak pomocí Azure Databricks streamovat data do služby Azure Event Hubs a pak streamovaná data v reálném čase číst ze služby Event Hubs. Přejděte k dalšímu kurzu, kde se dozvíte, jak volat rozhraní API detektoru anomálií a vizualizovat anomálie pomocí Power BI plochy. 
 
 > [!div class="nextstepaction"]
->[Detekce dávkových anomálií s desktopem Power BI](batch-anomaly-detection-powerbi.md)
+>[Detekce anomálií dávky pomocí Power BI Desktop](batch-anomaly-detection-powerbi.md)

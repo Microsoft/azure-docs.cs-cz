@@ -1,6 +1,6 @@
 ---
-title: REVERSE v dotazovacím jazyce Azure Cosmos DB
-description: Další informace o funkci systému SQL REVERSE v Azure Cosmos DB.
+title: OBRÁTIT se na Azure Cosmos DB dotazovací jazyk
+description: Přečtěte si informace o funkci systému SQL obrátit v Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: a22e1c8a5f4350bd2f966ee48f96368c648a4a1e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78302164"
 ---
-# <a name="reverse-azure-cosmos-db"></a>REVERZNÍ (Azure Cosmos DB)
- Vrátí zpětné pořadí hodnoty řetězce.  
+# <a name="reverse-azure-cosmos-db"></a>OBRÁTIT (Azure Cosmos DB)
+ Vrátí obrácené pořadí řetězcové hodnoty.  
   
 ## <a name="syntax"></a>Syntaxe
   
@@ -26,15 +26,15 @@ REVERSE(<str_expr>)
 ## <a name="arguments"></a>Argumenty
   
 *str_expr*  
-   Je řetězec výraz.  
+   Je řetězcový výraz.  
   
 ## <a name="return-types"></a>Návratové typy
   
-  Vrátí řetězec výraz.  
+  Vrátí řetězcový výraz.  
   
 ## <a name="examples"></a>Příklady
   
-  Následující příklad ukazuje, `REVERSE` jak se používá v dotazu.  
+  Následující příklad ukazuje, jak použít `REVERSE` v dotazu.  
   
 ```sql
 SELECT REVERSE("Abc") AS reverse  
@@ -48,10 +48,10 @@ SELECT REVERSE("Abc") AS reverse
 
 ## <a name="remarks"></a>Poznámky
 
-Tato systémová funkce nebude využívat index.
+Tato systémová funkce nebude index využívat.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Funkce řetězce Azure Cosmos DB](sql-query-string-functions.md)
+- [Azure Cosmos DB funkce řetězce](sql-query-string-functions.md)
 - [Systémové funkce Azure Cosmos DB](sql-query-system-functions.md)
 - [Úvod do Azure Cosmos DB](introduction.md)

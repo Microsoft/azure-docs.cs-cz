@@ -1,6 +1,6 @@
 ---
-title: Principy dvojčat modulů Azure IoT Hub | Dokumenty společnosti Microsoft
-description: Průvodce pro vývojáře – použití dvojčat modulů k synchronizaci dat stavu a konfigurace mezi službou IoT Hub a vašimi zařízeními
+title: Principy nevláken modulu Azure IoT Hub | Microsoft Docs
+description: Příručka pro vývojáře – pomocí vláken modulu můžete synchronizovat stavová a konfigurační data mezi IoT Hub a vašimi zařízeními.
 author: chrissie926
 ms.service: iot-hub
 services: iot-hub
@@ -8,54 +8,54 @@ ms.topic: conceptual
 ms.date: 02/01/2020
 ms.author: menchi
 ms.openlocfilehash: 5ef6c4de288a764abbe434c5d84fc99e154f7492
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78303592"
 ---
-# <a name="understand-and-use-module-twins-in-iot-hub"></a>Principy a používání dvojčat modulů v centru IoT Hub
+# <a name="understand-and-use-module-twins-in-iot-hub"></a>Pochopení a použití vláken v modulech v IoT Hub
 
-Tento článek předpokládá, že jste si přečetli [pochopit a používat dvojčata zařízení v centru IoT nejprve.](iot-hub-devguide-device-twins.md) V centru IoT Hub můžete pod každou identitou zařízení vytvořit až 20 identit modulů. Každá identita modulu implicitně generuje dvojče modulu. Podobně jako dvojčata zařízení jsou dvojčata modulu Dokumenty JSON, které ukládají informace o stavu modulu včetně metadat, konfigurací a podmínek. Azure IoT Hub udržuje dvojče modulu pro každý modul, který se připojíte k ioT hubu. 
+Tento článek předpokládá, že jste nejdřív [pochopili a používali vlákna zařízení v IoT Hub](iot-hub-devguide-device-twins.md) . V IoT Hub v rámci každé identity zařízení můžete vytvořit až 20 identit modulu. Každá identita modulu implicitně generuje nevlákenný modul. Podobně jako u stavů zařízení jsou vlákna v modulech dokumenty JSON, které ukládají informace o stavu modulu, včetně metadat, konfigurací a podmínek. Azure IoT Hub udržuje modul pro každý modul, ke kterému se připojujete, a který se IoT Hub. 
 
-Na straně zařízení umožňují sady SDK zařízení IoT Hub vytvářet moduly, kde každý z nich otevře nezávislé připojení k centru IoT Hub. Tato funkce umožňuje používat samostatné obory názvů pro různé součásti v zařízení. Například máte prodejní automat, který má tři různé senzory. Každý senzor je řízen různými odděleními ve vaší společnosti. Pro každý senzor můžete vytvořit modul. Tímto způsobem je každé oddělení schopno odesílat úlohy nebo přímé metody pouze senzoru, který řídí, a vyhnout se konfliktům a chybám uživatelů.
+Na straně zařízení vám sady SDK pro IoT Hub zařízení umožňují vytvářet moduly, ve kterých každá z nich otevře nezávislé připojení k IoT Hub. Tato funkce umožňuje používat samostatné obory názvů pro různé komponenty na vašem zařízení. Máte například prodejní počítač, který má tři různé senzory. Jednotlivé senzory se řídí různými odděleními ve vaší společnosti. Pro každý senzor můžete vytvořit modul. Tímto způsobem může každé oddělení odesílat úlohy nebo přímé metody do snímače, které řídí, předcházení konfliktům a chybám uživatelů.
 
- Identita modulu a dvojče modulu poskytují stejné funkce jako identita zařízení a dvojče zařízení, ale s jemnější granularitou. Tato jemnější rozlišovací schopnost umožňuje schopným zařízením, jako jsou zařízení s operačním systémem nebo zařízení firmwaru spravující více součástí, izolovat konfiguraci a podmínky pro každou z těchto součástí. Dvojčata identity modulu a dvojčata modulů poskytují oddělení správy problémů při práci se zařízeními IoT, která mají modulární softwarové součásti. Zaměřujeme se na podporu všech funkcí dvojčete zařízení na úrovni dvojčete modulu podle všeobecné dostupnosti dvojčete modulu. 
+ Identita modulu a modul s dvojitou přesností poskytují stejné možnosti jako identita zařízení a vyzdvojené zařízení, ale s jemnější členitosti. Tato přesnější členitost umožňuje zařízením, jako jsou zařízení s operačním systémem nebo zařízení firmwaru, spravovat víc komponent, izolovat konfiguraci a podmínky pro každou z těchto součástí. Vlákna identity a modulu v modulech poskytují oddělení správy ke všem problémům při práci se zařízeními IoT, které mají modulární softwarové součásti. Zaměřujeme se na podporu všech funkcí, které jsou na úrovni vlákna, na úrovni vláken v modulu, protože modul funguje se základními funkcemi. 
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 Tento článek popisuje:
 
-* Struktura dvojčete modulu: *tagy*, *požadované* a *hlášené vlastnosti*.
-* Operace, které moduly a back-endy lze provádět na dvojčata modulu.
+* Struktura modulu je dvojitá: *značky*, *požadované* a *hlášené vlastnosti*.
+* Operace, které moduly a back-endy můžou provádět u modulu s dvojitou vlákenou.
 
-Pokyny k používání ohlášených vlastností, zpráv mezi zařízeními a cloudem nebo nahrávání souborů naleznete v [pokynech pro komunikaci mezi zařízeními.](iot-hub-devguide-d2c-guidance.md)
+Pokyny k používání hlášených vlastností, zpráv zařízení-Cloud nebo nahrání souborů najdete v tématu [pokyny k komunikace zařízení a cloudu](iot-hub-devguide-d2c-guidance.md) .
 
-Pokyny k používání požadovaných vlastností, přímých metod nebo zpráv o cloudu zařízení naleznete v [pokynech ke komunikaci](iot-hub-devguide-c2d-guidance.md) mezi cloudem.
+Pokyny k používání požadovaných vlastností, přímých metod nebo zpráv z cloudu na zařízení najdete v tématu [pokyny k komunikaci z cloudu na zařízení](iot-hub-devguide-c2d-guidance.md) .
 
-## <a name="module-twins"></a>Dvojčata modulů
+## <a name="module-twins"></a>Nevlákenná modul
 
-Dvojčata modulů ukládají informace týkající se modulu, které:
+Modul se s dvojitou čárkou ukládá informace související s modulem:
 
-* Moduly na zařízení a IoT Hub lze použít k synchronizaci podmínek modulu a konfigurace.
+* Moduly na zařízení a IoT Hub můžou použít k synchronizaci podmínek modulu a konfigurace.
 
-* Back-end řešení můžete použít k dotazování a cíl dlouhotrvající operace.
+* Back-end řešení může používat dotazování a cíle dlouhotrvajících operací.
 
-Životní cyklus dvojčete modulu je propojen s odpovídající [identitou modulu](iot-hub-devguide-identity-registry.md). Dvojčata modulů jsou implicitně vytvořeny a odstraněny při vytvoření nebo odstranění identity modulu v centru IoT Hub.
+Životní cyklus modulu s dvojitou vazbou je propojen s odpovídající [identitou modulu](iot-hub-devguide-identity-registry.md). Vlákna v modulech se při vytváření nebo odstraňování identity v IoT Hub implicitně vytvářejí a odstraňují.
 
-Dvojče modulu je dokument JSON, který obsahuje:
+Nevlákenný modul je dokument JSON, který obsahuje:
 
-* **Značky**. Část dokumentu JSON, ze které může back-end řešení číst a do které zapisovat. Značky nejsou viditelné pro moduly v zařízení. Značky jsou nastaveny pro dotazování účelu.
+* **Značky**. Oddíl dokumentu JSON, ze kterého může back-end řešení číst a zapisovat do něj. Značky nejsou pro moduly v zařízení viditelné. Značky jsou nastaveny pro účely dotazování.
 
-* **Požadované vlastnosti**. Používá se spolu s ohlášenými vlastnostmi k synchronizaci konfigurace modulu nebo podmínek. Back-end řešení můžete nastavit požadované vlastnosti a aplikace modulu můžete číst. Aplikace modulu může také přijímat oznámení o změnách v požadovaných vlastnostech.
+* **Požadované vlastnosti**. Používá se spolu s nahlášenými vlastnostmi k synchronizaci konfigurace nebo podmínek modulu. Back-end řešení může nastavit požadované vlastnosti a aplikace modulu je může číst. Aplikace modulu může také dostávat oznámení o změnách v požadovaných vlastnostech.
 
-* **Hlášené vlastnosti**. Používá se spolu s požadovanými vlastnostmi pro synchronizaci konfigurace modulu nebo podmínek. Aplikace modulu můžete nastavit hlášené vlastnosti a back-end řešení můžete číst a dotaz na ně.
+* **Hlášené vlastnosti**. Používá se společně s požadovanými vlastnostmi k synchronizaci konfigurace nebo podmínek modulu. Aplikace modulu může nastavit hlášené vlastnosti a back-end řešení může číst a dotazovat je.
 
-* **Vlastnosti identity modulu**. Kořen dokumentu JSON dvojčete modulu obsahuje vlastnosti jen pro čtení z odpovídající identity modulu uložené v [registru identit](iot-hub-devguide-identity-registry.md).
+* **Vlastnosti identity modulu** Kořen dokumentu JSON s neuloženým modulem obsahuje vlastnosti jen pro čtení z odpovídající identity modulu uložené v [registru identit](iot-hub-devguide-identity-registry.md).
 
-![Architektonické znázornění dvojčete zařízení](./media/iot-hub-devguide-device-twins/module-twin.jpg)
+![Strukturální reprezentace zařízení s dvojitou platností](./media/iot-hub-devguide-device-twins/module-twin.jpg)
 
-Následující příklad ukazuje dvojče modulu Dokument JSON:
+Následující příklad ukazuje nevlákenný dokument JSON modulu:
 
 ```json
 {
@@ -102,20 +102,20 @@ Následující příklad ukazuje dvojče modulu Dokument JSON:
 }
 ```
 
-V kořenovém objektu jsou vlastnosti identity modulu a objekty kontejneru a `tags` jak `reported` a `desired` vlastnosti. Kontejner `properties` obsahuje některé prvky`$metadata`jen `$etag`pro `$version`čtení ( , , a ) popsané v [modulem dvojče metadata](iot-hub-devguide-module-twins.md#module-twin-metadata) a [optimistické souběžnosti](iot-hub-devguide-device-twins.md#optimistic-concurrency) oddíly.
+V kořenovém objektu jsou vlastnosti identity modulu a objekty kontejneru pro `tags` a i `reported` `desired` vlastnosti. `properties` Kontejner obsahuje některé prvky jen`$metadata`pro čtení (, `$etag`a `$version`) popsané v modulu s [dvojitou metadaty](iot-hub-devguide-module-twins.md#module-twin-metadata) a v oddílech [optimistického souběžného zpracování](iot-hub-devguide-device-twins.md#optimistic-concurrency) .
 
 ### <a name="reported-property-example"></a>Příklad hlášené vlastnosti
 
-V předchozím příkladu dvojče modulu obsahuje `batteryLevel` vlastnost, která je hlášena aplikací modulu. Tato vlastnost umožňuje dotazovat a pracovat s moduly na základě poslední hlášené úrovně baterie. Mezi další příklady patří funkce modulu modulu pro vytváření sestav aplikace nebo možnosti připojení.
+V předchozím příkladu modul má nevlákennou `batteryLevel` vlastnost, která je hlášena aplikací modulu. Tato vlastnost umožňuje dotazování a práci s moduly založenými na poslední hlášené úrovni baterie. Mezi další příklady patří možnosti modulu vytváření sestav modulu App Module nebo možnosti připojení.
 
 > [!NOTE]
-> Hlášené vlastnosti zjednodušují scénáře, kde back-end řešení má zájem o poslední známou hodnotu vlastnosti. Zprávy [mezi zařízeními a cloudem](iot-hub-devguide-messages-d2c.md) použijte, pokud back-end řešení potřebuje ke zpracování telemetrie modulu ve formě sekvencí událostí s časovým razítkem, jako jsou časové řady.
+> Hlášené vlastnosti zjednodušují scénáře, kde back-end řešení zajímá poslední známou hodnotu vlastnosti. [Zprávy typu zařízení-Cloud](iot-hub-devguide-messages-d2c.md) použijte v případě, že back-end řešení potřebuje zpracovat telemetrii modulu ve formě sekvence událostí s časovým razítkem, jako je například časová řada.
 
-### <a name="desired-property-example"></a>Příklad požadované vlastnosti
+### <a name="desired-property-example"></a>Požadovaný příklad vlastnosti
 
-V předchozím příkladu `telemetryConfig` twin modulu požadované a hlášené vlastnosti jsou používány back-end řešení a aplikace modulu pro synchronizaci konfigurace telemetrie pro tento modul. Například:
+V předchozím příkladu `telemetryConfig` modul neplní požadované a hlášené vlastnosti, které jsou používány back-end řešení a aplikaci modulu k synchronizaci konfigurace telemetrie pro tento modul. Příklad:
 
-1. Back-end řešení nastaví požadovanou vlastnost s požadovanou hodnotou konfigurace. Zde je část dokumentu s požadovanou sadou vlastností:
+1. Back-end řešení nastaví požadovanou vlastnost s požadovanou konfigurační hodnotou. Tady je část dokumentu s požadovanou sadou vlastností:
 
     ```json
     ...
@@ -128,7 +128,7 @@ V předchozím příkladu `telemetryConfig` twin modulu požadované a hlášen�
     ...
     ```
 
-2. Aplikace modulu je upozorněna na změnu okamžitě, pokud je připojena, nebo při prvním opětovném připojení. Aplikace modulu pak hlásí aktualizovanou konfiguraci (nebo chybový stav pomocí vlastnosti). `status` Zde je část hlášené vlastnosti:
+2. Aplikace modulu se okamžitě upozorní na změnu, pokud je připojená, nebo při prvním opětovném připojení. Aplikace modulu pak nahlásí aktualizovanou konfiguraci (nebo chybovou podmínku pomocí `status` vlastnosti). Tady je část hlášených vlastností:
 
     ```json
     "reported": {
@@ -140,19 +140,19 @@ V předchozím příkladu `telemetryConfig` twin modulu požadované a hlášen�
     }
     ```
 
-3. Back-end řešení můžete sledovat výsledky operace konfigurace v mnoha modulech dotazováním dvojčata [modulu.](iot-hub-devguide-query-language.md)
+3. Back-end řešení může sledovat výsledky operace konfigurace napříč mnoha moduly, protože se [dotazuje](iot-hub-devguide-query-language.md) na vlákna modulu.
 
 > [!NOTE]
-> Předchozí úryvky jsou příklady, optimalizované pro čitelnost, jeden způsob, jak zakódovat konfiguraci modulu a jeho stav. IoT Hub neukládá konkrétní schéma pro dvojče modulu požadované a hlášené vlastnosti v dvojčata modulu.
+> Předchozí fragmenty kódu jsou příklady optimalizované pro čitelnost, které zakódují konfiguraci modulu a jeho stav. IoT Hub neukládá konkrétní schéma pro nedokončené a hlášené vlastnosti modulu, které jsou v modulu vlákna.
 > 
 > 
 
 ## <a name="back-end-operations"></a>Back-endové operace
-Back-end řešení pracuje na dvojčeti modulu pomocí následujících atomových operací, vystavených prostřednictvím protokolu HTTPS:
+Back-end řešení funguje v modulu s dvojím použitím následujících atomických operací, které jsou zpřístupněny prostřednictvím protokolu HTTPS:
 
-* **Načíst dvojče modulu podle ID**. Tato operace vrátí dokument dvojčete modulu, včetně značek a požadovaných a oznámených vlastností systému.
+* **Načte modul s dvojitým ID**. Tato operace vrátí nedokončený dokument modulu, včetně značek a požadovaných a hlášených systémových vlastností.
 
-* **Částečně aktualizovat modul dvojče**. Tato operace umožňuje back-endu řešení částečně aktualizovat značky nebo požadované vlastnosti v dvojčeti modulu. Částečná aktualizace je vyjádřena jako dokument JSON, který přidává nebo aktualizuje všechny vlastnosti. Vlastnosti `null` nastavené na jsou odebrány. Následující příklad vytvoří novou požadovanou `{"newProperty": "newValue"}`vlastnost s hodnotou `existingProperty` `"otherNewValue"`, přepíše `otherOldProperty`existující hodnotu with a odebere . V existujících požadovaných vlastnostech nebo značkách nejsou provedeny žádné další změny:
+* **Částečně aktualizovat modul s dvojitou aktualizací** Tato operace umožňuje back-endu řešení částečně aktualizovat značky nebo požadované vlastnosti v modulu s dvojitou funkčností. Částečná aktualizace se vyjádří jako dokument JSON, který přidá nebo aktualizuje libovolnou vlastnost. Vlastnosti nastavené `null` na jsou odebrané. Následující příklad vytvoří novou požadovanou vlastnost s `{"newProperty": "newValue"}`hodnotou, přepíše existující hodnotu `existingProperty` s `"otherNewValue"`a odebere. `otherOldProperty` U stávajících požadovaných vlastností nebo značek nejsou provedeny žádné další změny:
 
     ```json
     {
@@ -168,32 +168,32 @@ Back-end řešení pracuje na dvojčeti modulu pomocí následujících atomový
     }
     ```
 
-* **Nahraďte požadované vlastnosti**. Tato operace umožňuje back-endu řešení zcela přepsat všechny existující požadované vlastnosti a nahradit nový dokument JSON pro `properties/desired`.
+* **Nahraďte požadované vlastnosti**. Tato operace umožňuje back-endu řešení úplně přepsat všechny existující požadované vlastnosti a nahradit nový dokument JSON pro `properties/desired`.
 
-* **Nahradit značky**. Tato operace umožňuje back-endu řešení zcela přepsat všechny existující značky `tags`a nahradit nový dokument JSON pro .
+* **Nahraďte značky**. Tato operace umožňuje back-endu řešení úplně přepsat všechny existující značky a nahradit nový dokument JSON pro `tags`.
 
-* **Dostávat oznámení dvojčete**. Tato operace umožňuje back-end řešení, které mají být oznámeny při změně dvojčete. Chcete-li tak učinit, vaše řešení IoT musí vytvořit trasu a nastavit zdroj dat rovná *twinChangeEvents*. Ve výchozím nastavení jsou odesílána žádná oznámení dvojčete, to znamená, že žádné takové trasy předem existují. Pokud je rychlost změny příliš vysoká nebo z jiných důvodů, jako jsou interní selhání, může centrum IoT Hub odeslat pouze jedno oznámení, které obsahuje všechny změny. Proto pokud vaše aplikace potřebuje spolehlivé auditování a protokolování všech zprostředkujících stavů, měli byste použít zprávy zařízení cloud. Dvojitá zpráva oznámení obsahuje vlastnosti a tělo.
+* **Dostávat dvojitá oznámení**. Tato operace umožňuje, aby byl back-end řešení upozorněn při změně vlákna. K tomu je potřeba, aby vaše řešení IoT vytvořilo trasu a nastavilo zdroj dat na hodnotu *twinChangeEvents*. Ve výchozím nastavení nejsou odesílána žádná nevytvořená oznámení, tj. žádné takové trasy již neexistují. Pokud je frekvence změny příliš vysoká nebo z jiných důvodů, jako jsou například vnitřní chyby, může IoT Hub odeslat pouze jedno oznámení, které obsahuje všechny změny. Proto pokud vaše aplikace potřebuje spolehlivé auditování a protokolování všech zprostředkujících stavů, měli byste použít zprávy typu zařízení-Cloud. Zpráva s dvojitým oznámením obsahuje vlastnosti a text.
 
   - Vlastnosti
 
-    | Name (Název) | Hodnota |
+    | Název | Hodnota |
     | --- | --- |
-    $content typu | application/json |
-    $iothub doba zařazení do fronty |  Čas odeslání oznámení |
-    $iothub-zdroj zprávy | twinChangeEvents |
-    kódování $content | utf-8 |
+    $content – typ | application/json |
+    $iothub – enqueuedtime |  Čas odeslání oznámení |
+    $iothub-Message-source | twinChangeEvents |
+    $content – kódování | UTF-8 |
     deviceId | ID zařízení |
-    modulId | ID modulu |
-    název hubu | Název ioT hubu |
-    operationTimestamp | [Iso8601](https://en.wikipedia.org/wiki/ISO_8601) časové razítko provozu |
-    iothub-message-schéma | twinChangeNotification |
-    opTyp | "replaceTwin" nebo "updateTwin" |
+    moduleId | ID modulu |
+    hubName | Název IoT Hub |
+    operationTimestamp | [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) časové razítko operace |
+    iothub-Message-Schema | twinChangeNotification |
+    opType | "replaceTwin" nebo "updateTwin" |
 
-    Vlastnosti systému zpráv `$` jsou předponou se symbolem.
+    Vlastnosti systému zprávy jsou předpony s `$` symbolem.
 
   - Tělo
         
-    Tato část obsahuje všechny změny dvojčete ve formátu JSON. Používá stejný formát jako oprava, s tím rozdílem, že může obsahovat všechny oddíly dvojčete: tagy, properties.reported, properties.desired a že obsahuje prvky "$metadata". Například:
+    Tato část obsahuje všechny zdvojené změny ve formátu JSON. Používá stejný formát jako oprava, s rozdílem, který může obsahovat všechny nedokončené oddíly: Tagy, Properties. hlášené, Properties. revisioned a obsahuje prvky "$metadata". Například:
 
     ```json
     {
@@ -214,37 +214,37 @@ Back-end řešení pracuje na dvojčeti modulu pomocí následujících atomový
     }
     ```
 
-Všechny předchozí operace podporují [optimistickou souběžnost](iot-hub-devguide-device-twins.md#optimistic-concurrency) a vyžadují oprávnění **ServiceConnect,** jak je definováno v [článku Řízení přístupu k centru IoT Hub.](iot-hub-devguide-security.md)
+Všechny předchozí operace podporují [optimistickou souběžnost](iot-hub-devguide-device-twins.md#optimistic-concurrency) a vyžadují oprávnění **ServiceConnect** , jak je definováno v tématu [řízení přístupu k IoT Hub](iot-hub-devguide-security.md) článku.
 
-Kromě těchto operací může back-end řešení dotazovat dvojčata modulu pomocí [dotazovacího jazyka IoT Hub](iot-hub-devguide-query-language.md)podobné sql .
+Kromě těchto operací může back-end řešení dotazovat modul na vlákna pomocí [dotazovacího jazyka IoT Hub](iot-hub-devguide-query-language.md), který se podobá jazyku SQL.
 
-## <a name="module-operations"></a>Operace modulů
+## <a name="module-operations"></a>Operace modulu
 
-Aplikace modulu pracuje na dvojčeti modulu pomocí následujících atomových operací:
+Aplikace modulu funguje v modulu s dvojitou platností pomocí následujících atomických operací:
 
-* **Načíst dvojče modulu**. Tato operace vrátí dokument dvojčete modulu (včetně značek a požadovaných a oznámených vlastností systému) pro aktuálně připojený modul.
+* **Načíst nevlákenný modul**. Tato operace vrátí nedokončený dokument modulu (včetně značek a požadovaných a hlášených systémových vlastností) aktuálně připojeného modulu.
 
-* **Částečně aktualizovat hlášené vlastnosti**. Tato operace umožňuje částečnou aktualizaci vykazošených vlastností aktuálně připojeného modulu. Tato operace používá stejný formát aktualizace JSON, který back-end řešení používá pro částečnou aktualizaci požadovaných vlastností.
+* **Částečně aktualizované hlášené vlastnosti**. Tato operace umožňuje částečnou aktualizaci hlášených vlastností aktuálně připojeného modulu. Tato operace používá stejný formát aktualizace JSON, který back-end řešení používá pro částečnou aktualizaci požadovaných vlastností.
 
-* **Dodržujte požadované vlastnosti**. Aktuálně připojený modul může být upozorněn na aktualizace požadovaných vlastností, když k nim dojde. Modul obdrží stejnou formu aktualizace (částečné nebo úplné nahrazení) provedené back-endem řešení.
+* **Sledujte požadované vlastnosti**. V aktuálně připojeném modulu se můžete rozhodnout, že se při jejich výskytu informují aktualizace požadovaných vlastností. Modul obdrží stejnou formu aktualizace (částečnou nebo úplnou náhradou) spuštěnou back-end řešení.
 
-Všechny předchozí operace vyžadují oprávnění **ModuleConnect,** jak je definováno v [článku Řízení přístupu k centru IoT Hub.](iot-hub-devguide-security.md)
+Všechny předchozí operace vyžadují oprávnění **ModuleConnect** , jak je definováno v tématu [řízení přístupu k IoT Hub](iot-hub-devguide-security.md) článku.
 
-Sady [SDK zařízení Azure IoT](iot-hub-devguide-sdks.md) usnadňují použití předchozích operací z mnoha jazyků a platforem.
+Sady [SDK pro zařízení Azure IoT](iot-hub-devguide-sdks.md) usnadňují používání předchozích operací z mnoha jazyků a platforem.
 
-## <a name="tags-and-properties-format"></a>Formát tagů a vlastností
+## <a name="tags-and-properties-format"></a>Formát značek a vlastností
 
-Značky, požadované vlastnosti a ohlášené vlastnosti jsou objekty JSON s následujícími omezeními:
+Značky, požadované vlastnosti a hlášené vlastnosti jsou objekty JSON s následujícími omezeními:
 
-* **Klávesy**: Všechny klávesy v objektech JSON jsou rozlišování malých a velkých písmen 64 bajtů UTF-8 UNICODE řetězce. Povolené znaky vylučují řídicí znaky UNICODE `.`(segmenty `$`C0 a C1) a , SP a .
+* **Keys**: všechny klíče v objektech JSON mají pro řetězce Unicode UTF-8 s rozlišením velkých a malých písmen 64. Povolené znaky vyloučí řídicí znaky UNICODE (segmenty C0 a C1) `.`, a SP a `$`.
 
-* **Hodnoty**: Všechny hodnoty v objektech JSON mohou být z následujících typů JSON: logické, číslo, řetězec, objekt. Pole nejsou povolena.
+* **Hodnoty**: všechny hodnoty v objektech JSON můžou být z následujících typů JSON: Boolean, Number, String, Object. Pole nejsou povolena.
 
-    * Celá čísla mohou mít minimální hodnotu -4503599627370496 a maximální hodnotu 4503599627370495.
+    * Celá čísla můžou mít minimální hodnotu-4503599627370496 a maximální hodnotu 4503599627370495.
 
-    * Řetězcové hodnoty jsou kódovány UTF-8 a mohou mít maximální délku 512 bajtů.
+    * Řetězcové hodnoty mají kódování UTF-8 a můžou mít maximální délku 512 bajtů.
 
-* **Hloubka**: Všechny objekty JSON ve značkách, požadované a hlášené vlastnosti mohou mít maximální hloubku 5. Například je platný následující objekt:
+* **Hloubka**: všechny objekty JSON ve značkách, požadované a hlášené vlastnosti můžou mít maximální hloubku 5. Například následující objekt je platný:
 
     ```json
     {
@@ -266,28 +266,28 @@ Značky, požadované vlastnosti a ohlášené vlastnosti jsou objekty JSON s n�
     }
     ```
 
-## <a name="module-twin-size"></a>Velikost dvojčete modulu
+## <a name="module-twin-size"></a>Velikost vlákna modulu
 
-IoT Hub vynucuje limit velikosti `tags`8 kB na hodnotu , a `properties/desired` `properties/reported`32 kB limit velikosti každý na hodnotu a . Tyto součty jsou bez prvků `$etag`jen `$version`pro `$metadata/$lastUpdated`čtení, jako jsou , a .
+IoT Hub vynutilo omezení velikosti 8 KB na hodnotě `tags`a omezení velikosti 32 KB na hodnotu `properties/desired` a. `properties/reported` Tyto součty jsou výhradně prvky jen pro čtení `$etag`, `$version`například, a `$metadata/$lastUpdated`.
 
-Velikost dvojčete se vypočítá takto:
+Velikost vlákna je vypočítána následujícím způsobem:
 
-* Pro každou vlastnost v dokumentu JSON ioT Hub kumulativně vypočítá a přidá délku klíče a hodnoty vlastnosti.
+* Pro každou vlastnost v dokumentu JSON IoT Hub kumulativně COMPUTE a přidá délku klíče a hodnoty vlastnosti.
 
-* Klíče vlastností jsou považovány za řetězce kódované UTF8.
+* Klíče vlastností se považují za řetězce kódované pomocí UTF8.
 
-* Jednoduché hodnoty vlastností jsou považovány za řetězce kódované UTF8, číselné hodnoty (8 bajtů) nebo logické hodnoty (4 bajty).
+* Jednoduché hodnoty vlastností se považují za řetězce kódované v kódování UTF8, číselné hodnoty (8 bajtů) nebo logické hodnoty (4 bajty).
 
-* Velikost řetězců kódovaných UTF8 se vypočítá počítáním všech znaků s výjimkou řídicích znaků UNICODE (segmenty C0 a C1).
+* Velikost řetězců zakódovaných v kódování UTF8 se vypočítává pomocí počítání všech znaků, kromě řídicích znaků UNICODE (segmenty C0 a C1).
 
-* Komplexní hodnoty vlastností (vnořené objekty) jsou vypočítány na základě agregační velikostklíče vlastností a hodnoty vlastností, které obsahují.
+* Hodnoty komplexních vlastností (vnořené objekty) se vypočítávají na základě agregované velikosti klíčů vlastností a hodnot vlastností, které obsahují.
 
-IoT Hub odmítne s chybou všechny operace, které by zvětšily velikost těchto dokumentů nad limit.
+IoT Hub se odmítne s chybou všech operací, které by zvýšily velikost těchto dokumentů nad rámec limitu.
 
-## <a name="module-twin-metadata"></a>Metadata dvojčete modulu
+## <a name="module-twin-metadata"></a>Moduly s dvojitou metadaty
 
-IoT Hub udržuje časové razítko poslední aktualizace pro každý objekt JSON v modulu twin požadované a hlášené vlastnosti. Časová razítka jsou v UTC a kódována ve `YYYY-MM-DDTHH:MM:SS.mmmZ`formátu [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) .
-Například:
+IoT Hub udržuje časové razítko poslední aktualizace pro každý objekt JSON v modulu, který má požadovanou a nahlášené vlastnosti. Časová razítka jsou v UTC a kódovaná ve [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) formátu `YYYY-MM-DDTHH:MM:SS.mmmZ`ISO8601.
+Příklad:
 
 ```json
 {
@@ -334,19 +334,19 @@ Například:
 }
 ```
 
-Tyto informace jsou uchovávány na všech úrovních (nejen listy struktury JSON) zachovat aktualizace, které odeberou klíče objektu.
+Tyto informace jsou uchovávány na všech úrovních (nikoli pouze v pochodech struktury JSON), aby zachovaly aktualizace, které odstraňují klíče objektu.
 
 ## <a name="optimistic-concurrency"></a>Optimistická souběžnost
 
 Značky, požadované a hlášené vlastnosti podporují optimistickou souběžnost.
-Značky mají etag, podle [RFC7232](https://tools.ietf.org/html/rfc7232), který představuje značku JSON reprezentace. ETags můžete použít v operacích podmíněné aktualizace z back-endu řešení k zajištění konzistence.
+Značky mají ETag, jako na [RFC7232](https://tools.ietf.org/html/rfc7232), které představují reprezentace značky JSON. Pomocí značek ETag v operacích podmíněné aktualizace z back-endu řešení můžete zajistit konzistenci.
 
-Modul dvojče požadované a hlášené vlastnosti nemají `$version` ETags, ale mají hodnotu, která je zaručena přírůstkové. Podobně jako ETag, verze může být použita aktualizační stranou k vynucení konzistence aktualizací. Například modulaplikace pro ohlášené vlastnosti nebo back-end řešení pro požadovanou vlastnost.
+Požadovaná vlastnost modulu a hlášené vlastnosti neobsahuje značky ETag, ale má `$version` hodnotu, která je zaručena k přírůstkové. Podobně jako ETag může být verze využívána stranou aktualizace k vymáhání konzistence aktualizací. Například aplikace modulu pro hlášené vlastnosti nebo back-end řešení pro požadovanou vlastnost.
 
-Verze jsou také užitečné, když agent pozorování (například aplikace modulu, který sleduje požadované vlastnosti) musí sladit rasy mezi výsledkem operace načtení a oznámením o aktualizaci. Další informace poskytuje část [Tok opětovného připojení zařízení.](iot-hub-devguide-device-twins.md#device-reconnection-flow) 
+Verze jsou užitečné také v případě, že pozorovatelský Agent (například aplikace modulu, který je pozorování požadovaných vlastností), musí sjednotit Races mezi výsledkem operace načtení a oznámením o aktualizacích. Další informace najdete v části [tok opětovného připojení zařízení](iot-hub-devguide-device-twins.md#device-reconnection-flow) . 
 
 ## <a name="next-steps"></a>Další kroky
 
-Chcete-li vyzkoušet některé koncepty popsané v tomto článku, podívejte se na následující kurzy ioT Hub:
+Některé z konceptů popsaných v tomto článku si můžete vyzkoušet v následujících kurzech IoT Hub:
 
-* [Začínáme s identitou modulu IoT Hub a dvojčetem modulu pomocí back-endu rozhraní .NET a zařízení .NET](iot-hub-csharp-csharp-module-twin-getstarted.md)
+* [Začínáme s identitou modulu IoT Hub a modulem s dvojitým zprovozněním pomocí back-endu .NET a zařízení .NET](iot-hub-csharp-csharp-module-twin-getstarted.md)

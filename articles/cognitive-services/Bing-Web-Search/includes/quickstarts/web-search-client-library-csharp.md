@@ -1,5 +1,5 @@
 ---
-title: Rychlý start klientské knihovny c# webového vyhledávání Bingu
+title: Rychlý Start klientské knihovny Vyhledávání na webu Bingu C#
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,15 +9,15 @@ ms.topic: include
 ms.date: 03/05/2020
 ms.author: aahi
 ms.openlocfilehash: 32a31892317cadb37f16e48df80bef7d6d8a99ef
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78925312"
 ---
-Klientská knihovna Bing Web Search usnadňuje integraci webového vyhledávání Bingu do aplikace C#. V tomto rychlém startu se dozvíte, jak vytvořit instanci klienta, odeslat požadavek a vytisknout odpověď.
+Klientská knihovna Vyhledávání na webu Bingu usnadňuje integraci Vyhledávání na webu Bingu do aplikace v jazyce C#. V tomto rychlém startu se dozvíte, jak vytvořit instanci klienta, odeslat požadavek a vytisknout odpověď.
 
-Chcete se rovnou podívat na kód? Ukázky [pro klientské knihovny Bing Search pro rozhraní .NET](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7) jsou k dispozici na GitHubu.
+Chcete se rovnou podívat na kód? Ukázky pro [klientské knihovny vyhledávání Bingu pro .NET](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7) jsou k dispozici na GitHubu.
 
 ## <a name="prerequisites"></a>Požadavky
 Tady je pár věcí, které budete potřebovat na začátku tohoto rychlého startu:
@@ -33,9 +33,9 @@ Tady je pár věcí, které budete potřebovat na začátku tohoto rychlého sta
 ## <a name="create-a-project-and-install-dependencies"></a>Vytvoření projektu a instalace závislostí
 
 > [!TIP]
-> Získejte nejnovější kód jako řešení Visual Studia z [GitHubu](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/).
+> Získejte nejnovější kód jako řešení sady Visual Studio z [GitHubu](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/).
 
-V prvním kroku vytvoříme nový projekt konzoly. Pokud potřebujete pomoc s nastavením konzolového projektu, přečtěte si informace [o tom, že váš první program (C# Programming Guide) bude váš první program (Průvodce programováním jazyka C.](https://docs.microsoft.com/dotnet/csharp/programming-guide/inside-a-program/hello-world-your-first-program)). Pokud chcete ve své aplikaci použít sadu SDK Bingu pro vyhledávání na web, budete si muset nainstalovat `Microsoft.Azure.CognitiveServices.Search.WebSearch` pomocí správce balíčků NuGet.
+V prvním kroku vytvoříme nový projekt konzoly. Potřebujete-li nápovědu k nastavení projektu konzoly, přečtěte si téma [Hello World – první program (Průvodce programováním v C#)](https://docs.microsoft.com/dotnet/csharp/programming-guide/inside-a-program/hello-world-your-first-program). Pokud chcete ve své aplikaci použít sadu SDK Bingu pro vyhledávání na web, budete si muset nainstalovat `Microsoft.Azure.CognitiveServices.Search.WebSearch` pomocí správce balíčků NuGet.
 
 [Balíček sady SDK webového vyhledávání](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.WebSearch/1.2.0) také nainstaluje:
 
@@ -57,7 +57,7 @@ using System.Linq;
 
 ## <a name="create-project-scaffolding"></a>Vytvoření projektu pro generování uživatelského rozhraní
 
-Při vytvoření nového projektu konzoly by se také měl pro aplikaci vytvořit obor názvů a třída. Program by měl vypadat takto:
+Při vytvoření nového projektu konzoly by se také měl pro aplikaci vytvořit obor názvů a třída. Váš program by měl vypadat jako v tomto příkladu:
 
 ```csharp
 namespace WebSearchSDK
@@ -421,5 +421,5 @@ Až projekt dokončíte, nezapomeňte z kódu aplikace odebrat klíč předplatn
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Ukázky sady SDK aplikace Cognitive Services Node.js](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/)
+> [Ukázky Cognitive Services Node. js SDK](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/)
                                     

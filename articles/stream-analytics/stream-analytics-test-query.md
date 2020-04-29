@@ -1,6 +1,6 @@
 ---
-title: Testování úlohy Azure Stream Analytics pomocí ukázkových dat
-description: Tento článek popisuje, jak pomocí portálu Azure k testování úlohy Azure Stream Analytics, ukázkovému vstupu a nahrání ukázkových dat.
+title: Testování úlohy Azure Stream Analytics s ukázkovými daty
+description: Tento článek popisuje, jak použít Azure Portal k otestování Azure Stream Analytics úlohy, ukázkového vstupu a nahrání ukázkových dat.
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
@@ -9,101 +9,101 @@ ms.topic: conceptual
 ms.date: 3/6/2020
 ms.custom: seodec18
 ms.openlocfilehash: de2b99666dbed4eaec3db3e56800e9a7352e10e7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78898391"
 ---
 # <a name="test-an-azure-stream-analytics-job-in-the-portal"></a>Testování úlohy Azure Stream Analytics na portálu
 
-Ve službě Azure Stream Analytics můžete dotaz otestovat bez spuštění nebo zastavení úlohy. Můžete otestovat dotazy na příchozí data z vašich zdrojů streamování nebo nahrát ukázková data z místního souboru na Webu Azure Portal. Dotazy můžete také testovat místně z místních ukázkových dat nebo živých dat v [sadě Visual Studio](stream-analytics-live-data-local-testing.md) a Visual Studio [Code](visual-studio-code-local-run-live-input.md).
+V Azure Stream Analytics můžete dotaz testovat bez spuštění nebo zastavení úlohy. Můžete testovat dotazy na příchozí data ze zdrojů streamování nebo nahrávat ukázková data z místního souboru na webu Azure Portal. Dotazy můžete testovat také místně z místních ukázkových dat nebo živých dat v [aplikaci Visual Studio](stream-analytics-live-data-local-testing.md) a [Visual Studio Code](visual-studio-code-local-run-live-input.md).
 
-## <a name="automatically-sample-incoming-data-from-input"></a>Automatické vzorkování příchozích dat ze vstupu
+## <a name="automatically-sample-incoming-data-from-input"></a>Automaticky vzorkovat příchozí data ze vstupu
 
-Azure Stream Analytics automaticky načte události z vašich streamovacích vstupů. Můžete spustit dotazy na výchozí ukázku nebo nastavit konkrétní časový rámec pro ukázku.
+Azure Stream Analytics automaticky načítá události ze vstupů streamování. Můžete spustit dotazy ve výchozí ukázce nebo nastavit konkrétní časový rámec pro ukázku.
 
 1. Přihlaste se k portálu Azure.
 
 2. Vyhledejte a vyberte svou stávající úlohu Stream Analytics.
 
-3. Na stránce úlohy Stream Analytics vyberte v části **Topologie úlohy** **dotaz,** abyste otevřeli okno editoru dotazů. 
+3. Na stránce Stream Analytics úlohy pod záhlavím **topologie úlohy** vyberte možnost **dotaz** . otevře se okno Editor dotazů. 
 
-4. Chcete-li zobrazit ukázkový seznam příchozích událostí, vyberte vstup s ikonou souboru a ukázkové události se automaticky zobrazí v **náhledu vstupu**.
+4. Pokud chcete zobrazit ukázkový seznam příchozích událostí, vyberte ikonu vstup se souborem a vzorové události se automaticky zobrazí v **náhledu vstupu**.
 
-   a. Typ serializace pro vaše data je automaticky rozpoznán, pokud jeho JSON nebo CSV. Můžete ručně změnit také JSON, CSV, AVRO změnou možnosti v rozbalovací nabídce.
+   a. Typ serializace pro vaše data se automaticky rozpozná, pokud je jeho JSON nebo CSV. Můžete ji ručně změnit i na formát JSON, CSV a AVRO změnou možnosti v rozevírací nabídce.
     
-   b. Pomocí voliče můžete zobrazit data ve formátu **Tabulka** nebo **Nezpracovaný.**
+   b. Pomocí selektoru můžete zobrazit data v **tabulce** nebo v **nezpracovaném** formátu.
     
-   c. Pokud zobrazená data nejsou aktuální, kliknutím na **Aktualizovat** zobrazte nejnovější události.
+   c. Pokud vaše data nejsou aktuální, vyberte **aktualizovat** , aby se zobrazily nejnovější události.
 
-   Následující tabulka je příkladem dat ve **formátu tabulka**:
+   Následující tabulka je příkladem dat ve **formátu tabulky**:
 
-   ![Ukázkový vstup Azure Stream Analytics ve formátu tabulky](./media/stream-analytics-test-query/asa-sample-table.png)
+   ![Azure Stream Analytics ukázkový vstup ve formátu tabulky](./media/stream-analytics-test-query/asa-sample-table.png)
 
-   Následující tabulka je příkladem dat ve **formátu Raw**:
+   V následující tabulce je příklad dat v **nezpracovaném formátu**:
 
-   ![Ukázkový vstup Azure Stream Analytics v nezpracovaném formátu](./media/stream-analytics-test-query/asa-sample-raw.png)
+   ![Azure Stream Analytics ukázkový vstup v nezpracovaném formátu](./media/stream-analytics-test-query/asa-sample-raw.png)
 
-5. Chcete-li dotaz otestovat s příchozími daty, vyberte **možnost Testovat dotaz**. Výsledky se zobrazí na kartě **Výsledky testu.** Můžete také vybrat **stáhnout výsledky** ke stažení výsledky.
+5. Chcete-li otestovat dotaz s příchozími daty, vyberte možnost **test Query**. Výsledky se zobrazí na kartě **výsledky testu** . Můžete také vybrat **Stáhnout výsledky** a stáhnout výsledky.
 
-   ![Výsledky ukázkového testovacího dotazu Azure Stream Analytics](./media/stream-analytics-test-query/asa-test-query.png)
+   ![Výsledky testovacího dotazu Azure Stream Analytics ukázka](./media/stream-analytics-test-query/asa-test-query.png)
 
-6. Chcete-li dotaz otestovat podle určitého časového rozsahu příchozích událostí, vyberte **možnost Vybrat časový rozsah**.
+6. Chcete-li otestovat dotaz proti určitému časovému rozsahu příchozích událostí, vyberte **možnost vybrat časový rozsah**.
    
-   ![Časový rozsah Azure Stream Analytics pro příchozí ukázkové události](./media/stream-analytics-test-query/asa-select-time-range.png)
+   ![Azure Stream Analytics časový rozsah pro příchozí ukázkové události](./media/stream-analytics-test-query/asa-select-time-range.png)
 
-7. Nastavte časový rozsah událostí, které chcete použít k testování dotazu, a vyberte **ukázku**. V tomto časovém rámci můžete načíst až 1000 událostí nebo 1 MB, podle toho, co nastane dříve.
+7. Nastavte časový rozsah událostí, které chcete použít k otestování dotazu, a vyberte **vzorek**. V tomto časovém rámci můžete načíst až 1000 událostí nebo 1 MB, podle toho, co nastane dřív.
 
    ![Azure Stream Analytics nastavit časový rozsah pro příchozí ukázkové události](./media/stream-analytics-test-query/asa-set-time-range.png)
 
-8. Jakmile jsou události vzorkovány pro vybraný časový rozsah, zobrazí se na kartě **Vstupní náhled.**
+8. Po výběru událostí pro vybraný časový rozsah se zobrazí na kartě **Náhled vstupu** .
 
-   ![Výsledky testů zobrazení Azure Stream Analytics](./media/stream-analytics-test-query/asa-view-test-results.png)
+   ![Azure Stream Analytics zobrazení výsledků testu](./media/stream-analytics-test-query/asa-view-test-results.png)
 
-9. Výběrem **možnosti Obnovit** zobrazíte ukázkový seznam příchozích událostí. Pokud vyberete **Obnovit**, bude výběr časového rozsahu ztracen. Vyberte **Testovat dotaz,** chcete-li dotaz otestovat a zkontrolovat výsledky na kartě **Výsledky testu.**
+9. Výběrem **obnovit** zobrazíte ukázkový seznam příchozích událostí. Pokud vyberete možnost **resetovat**, váš časový rozsah bude ztracen. Vyberte **test Query** a otestujte dotaz a zkontrolujte výsledky na kartě **výsledky testu** .
 
-10. Když v dotazu provedete změny, vyberte **Uložit dotaz** a otestujte novou logiku dotazu. To umožňuje iterativně upravit dotaz a znovu jej otestovat, abyste viděli, jak se změní výstup.
+10. Když provedete změny v dotazu, vyberte **Uložit dotaz** a otestujte novou logiku dotazu. To umožňuje iterativní úpravu dotazu a znovu ho otestovat, abyste viděli, jak se výstup změní.
 
-11. Po ověření výsledků zobrazených v prohlížeči jste připraveni **úlohu spustit.**
+11. Po ověření výsledků zobrazených v prohlížeči jste připraveni úlohu **Spustit** .
 
 ## <a name="upload-sample-data-from-a-local-file"></a>Nahrání ukázkových dat z místního souboru
 
-Místo použití živých dat můžete k testování dotazu Azure Stream Analytics použít ukázková data z místního souboru.
+Místo používání živých dat můžete použít ukázková data z místního souboru a otestovat svůj Azure Stream Analytics dotaz.
 
 1. Přihlaste se k portálu Azure.
    
-2. Vyhledejte stávající úlohu Stream Analytics a vyberte ji.
+2. Vyhledejte existující úlohu Stream Analytics a vyberte ji.
 
-3. Na stránce úlohy Stream Analytics vyberte v části **Topologie úlohy** **dotaz,** abyste otevřeli okno editoru dotazů.
+3. Na stránce Stream Analytics úlohy pod záhlavím **topologie úlohy** vyberte možnost **dotaz** . otevře se okno Editor dotazů.
 
-4. Chcete-li dotaz otestovat pomocí místního souboru, vyberte na kartě **Náhled vstupu** možnost **Odeslat ukázkový vstup.** 
+4. Pokud chcete dotaz otestovat pomocí místního souboru, vyberte **Odeslat vzorový vstup** na kartě **Náhled vstupu** . 
 
-   ![Ukázkový soubor pro nahrávání služby Azure Stream Analytics](./media/stream-analytics-test-query/asa-upload-sample-file.png)
+   ![Azure Stream Analytics odeslat ukázkový soubor](./media/stream-analytics-test-query/asa-upload-sample-file.png)
 
-5. Nahrajte místní soubor a otestujte dotaz. Soubory lze nahrávat pouze ve formátech JSON, CSV nebo AVRO. Vyberte **OK**.
+5. Nahrajte místní soubor a otestujte dotaz. Soubory lze nahrávat pouze pomocí formátu JSON, CSV nebo AVRO. Vyberte **OK**.
 
-   ![Ukázkový soubor pro nahrávání služby Azure Stream Analytics](./media/stream-analytics-test-query/asa-upload-sample-json-file.png)
+   ![Azure Stream Analytics odeslat ukázkový soubor](./media/stream-analytics-test-query/asa-upload-sample-json-file.png)
 
-6. Jakmile soubor nahrajete, můžete také zobrazit obsah souboru ve formuláři jako tabulku nebo v jeho nezpracovaném formátu. Pokud vyberete **obnovit**, ukázková data se vrátí k příchozím vstupním datům vysvětleným v předchozí části. Dotaz můžete kdykoli nahrát libovolný jiný soubor.
+6. Po nahrání souboru můžete také zobrazit obsah souboru ve formuláři jako tabulku nebo v nezpracovaném formátu. Vyberete-li možnost **obnovit**, budou se ukázková data vracet do příchozích vstupních dat popsaných v předchozí části. Můžete nahrát jakýkoli jiný soubor a Testovat dotaz kdykoli.
 
-7. Vyberte **Testovat dotaz,** chcete-li dotaz otestovat proti nahranému ukázkovému souboru.
+7. Vyberte **test Query** a otestujte dotaz proti nahranému ukázkovému souboru.
 
-8. Výsledky testů jsou zobrazeny na základě dotazu. Můžete změnit dotaz a vybrat **uložit dotaz** a otestovat novou logiku dotazu. To umožňuje iterativně upravit dotaz a znovu jej otestovat, abyste viděli, jak se změní výstup.
+8. Výsledky testů se zobrazují na základě dotazu. Můžete změnit dotaz a vybrat **Uložit dotaz** a otestovat novou logiku dotazu. To umožňuje iterativní úpravu dotazu a znovu ho otestovat, abyste viděli, jak se výstup změní.
 
-9. Při použití více výstupů v dotazu jsou výsledky zobrazeny na základě vybraného výstupu. 
+9. Použijete-li v dotazu více výstupů, výsledky se zobrazí na základě vybraného výstupu. 
 
-   ![Vybraný výstup Azure Stream Analytics](./media/stream-analytics-test-query/asa-sample-test-selected-output.png)
+   ![Azure Stream Analytics vybraný výstup](./media/stream-analytics-test-query/asa-sample-test-selected-output.png)
 
-10. Po ověření výsledků zobrazených v prohlížeči můžete úlohu **spustit.**
+10. Po ověření výsledků zobrazených v prohlížeči můžete úlohu **Spustit** .
 
 ## <a name="next-steps"></a>Další kroky
-* [Vytvořte řešení IoT pomocí Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-build-an-iot-solution-using-stream-analytics): tento kurz vás provede vytvořením komplexního řešení s generátorem dat, který bude simulovat provoz na mýtném stánku.
+* [Sestavte řešení IoT pomocí Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-build-an-iot-solution-using-stream-analytics): Tento kurz vás provede vytvořením uceleného řešení s generátorem dat, který simuluje provoz v rámci bezplatného zasedacího stánku.
 
 * [Referenční příručka k jazyku Azure Stream Analytics Query Language](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 
-* [Příklady dotazů pro běžné vzorce využití služby Stream Analytics](stream-analytics-stream-analytics-query-patterns.md)
+* [Příklady dotazů pro běžné vzorce použití Stream Analytics](stream-analytics-stream-analytics-query-patterns.md)
 
-* [Principy vstupů pro Azure Stream Analytics](stream-analytics-add-inputs.md)
+* [Vysvětlení vstupů pro Azure Stream Analytics](stream-analytics-add-inputs.md)
 
-* [Principy výstupů z Azure Stream Analytics](stream-analytics-define-outputs.md)
+* [Porozumění výstupům z Azure Stream Analytics](stream-analytics-define-outputs.md)

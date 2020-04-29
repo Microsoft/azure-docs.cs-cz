@@ -1,6 +1,6 @@
 ---
-title: Přiřazení popisků citlivosti skupinám – Azure AD | Dokumenty společnosti Microsoft
-description: Jak vytvořit pravidla členství pro automatické vyplnění skupin a odkaz na pravidlo.
+title: Přiřazení popisků citlivosti skupinám – Azure AD | Microsoft Docs
+description: Jak vytvořit pravidla členství pro automatické naplňování skupin a odkaz na pravidlo.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -15,24 +15,24 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 667fb39aabfec14cff01221b82a45ba8ad1d68d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78329728"
 ---
-# <a name="assign-sensitivity-labels-to-office-365-groups-in-azure-active-directory-preview"></a>Přiřazení popisků citlivosti skupinám Office 365 ve službě Azure Active Directory (preview)
+# <a name="assign-sensitivity-labels-to-office-365-groups-in-azure-active-directory-preview"></a>Přiřazení popisků citlivosti skupinám Office 365 v Azure Active Directory (Preview)
 
-Azure Active Directory (Azure AD) podporuje použití popisků citlivosti publikovaných [centrem dodržování předpisů Microsoftu 365](https://sip.protection.office.com/homepage) pro skupiny Office 365. Popisky citlivosti platí pro skupiny mezi službami, jako je Outlook, Microsoft Teams a SharePoint. Tato funkce je aktuálně ve verzi Public Preview. Další informace o podpoře aplikací Office 365 najdete v tématu [Podpora popisků citlivosti v Office 365](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#support-for-the-sensitivity-labels).
+Azure Active Directory (Azure AD) podporuje použití popisků citlivostí publikovaných [centrem dodržování předpisů Microsoft 365](https://sip.protection.office.com/homepage) do skupin Office 365. Popisky citlivosti se vztahují na skupinu napříč službami, jako je Outlook, Microsoft teams a SharePoint. Tato funkce je aktuálně ve verzi Public Preview. Další informace o podpoře aplikací Office 365 najdete v článku [Podpora sady office 365 pro popisky citlivosti](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#support-for-the-sensitivity-labels).
 
 > [!IMPORTANT]
-> Chcete-li tuto funkci nakonfigurovat, musí být ve vaší organizaci Azure AD alespoň jedna aktivní licence Služby Azure Active Directory Premium P1.
+> Pokud chcete tuto funkci nakonfigurovat, musí být ve vaší organizaci Azure AD aspoň jedna licence Active Azure Active Directory Premium P1.
 
-## <a name="enable-sensitivity-label-support-in-powershell"></a>Povolení podpory popisků citlivosti v PowerShellu
+## <a name="enable-sensitivity-label-support-in-powershell"></a>Povolit podporu popisku citlivosti v PowerShellu
 
-Chcete-li na skupiny použít publikované popisky, musíte nejprve tuto funkci povolit. Tyto kroky povolit funkci ve službě Azure AD.
+Pokud chcete použít publikované popisky na skupiny, musíte ji nejdřív povolit. Tyto kroky povolují funkci ve službě Azure AD.
 
-1. Otevřete v počítači okno prostředí Windows PowerShell. Můžete ji otevřít bez zvýšených oprávnění.
+1. Otevřete v počítači okno prostředí Windows PowerShell. Můžete ho otevřít bez zvýšených oprávnění.
 1. Spuštěním následujících příkazů se připravte na spouštění rutin.
 
     ```PowerShell
@@ -40,112 +40,112 @@ Chcete-li na skupiny použít publikované popisky, musíte nejprve tuto funkci 
     Connect-AzureAD
     ```
 
-    Na stránce **Přihlásit se ke svému účtu** zadejte účet správce a heslo, abyste se připojili ke službě, a **vyberte Přihlásit se**.
-1. Načtení aktuálního nastavení skupiny pro organizaci Azure AD.
+    Na stránce **Přihlásit se k účtu** zadejte účet správce a heslo, abyste se připojili ke službě, a vyberte **Přihlásit**se.
+1. Načte aktuální nastavení skupiny pro organizaci Azure AD.
 
     ```PowerShell
     $Setting = Get-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id
     ```
 
     > [!NOTE]
-    > Pokud pro tuto organizaci Azure AD nebyla vytvořena žádná nastavení skupiny, musíte nejprve vytvořit nastavení. Postupujte podle pokynů v [rutinách Služby Azure Active Directory pro konfiguraci nastavení skupiny](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-settings-cmdlets) k vytvoření nastavení skupiny pro tuto organizaci Azure AD.
+    > Pokud se pro tuto organizaci Azure AD nevytvořilo žádné nastavení skupiny, musíte nejdřív vytvořit nastavení. Podle pokynů v části [Azure Active Directory rutiny nakonfigurujte nastavení skupiny](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-settings-cmdlets) pro vytvoření nastavení skupiny pro tuto organizaci Azure AD.
 
-1. Dále zobrazte aktuální nastavení skupiny.
+1. Potom zobrazte aktuální nastavení skupiny.
 
     ```PowerShell
     $Setting.Values
     ```
 
-1. Poté tuto funkci povolte:
+1. Pak funkci povolte:
 
     ```PowerShell
     $Setting["EnableMIPLabels"] = "True"
     ```
 
-1. Pak uložte změny a použijte nastavení:
+1. Pak změny uložte a použijte nastavení:
 
     ```PowerShell
     Set-AzureADDirectorySetting -Id $Setting.Id -DirectorySetting $Setting
     ```
 
-A to je vše. Tuto funkci jste povolili a publikované štítky můžete použít na skupiny.
+A to je vše. Tuto funkci jste povolili a můžete použít publikované popisky na skupiny.
 
-## <a name="assign-a-label-to-a-new-group-in-azure-portal"></a>Přiřazení štítku nové skupině na webu Azure Portal
+## <a name="assign-a-label-to-a-new-group-in-azure-portal"></a>Přiřazení popisku nové skupině v Azure Portal
 
-1. Přihlaste se do [Centra pro správu Azure AD](https://aad.portal.azure.com).
-1. Vyberte **Skupiny**a potom vyberte **Nová skupina**.
-1. Na stránce **Nová skupina** vyberte **Office 365**a vyplňte požadované informace pro novou skupinu a ze seznamu vyberte popisek citlivosti.
+1. Přihlaste se k [centru pro správu Azure AD](https://aad.portal.azure.com).
+1. Vyberte **skupiny**a pak vyberte **Nová skupina**.
+1. Na stránce **Nová skupina** vyberte **Office 365**a potom vyplňte požadované informace pro novou skupinu a v seznamu vyberte popisek citlivosti.
 
-   ![Přiřazení popisku citlivosti na stránce Nové skupiny](./media/groups-assign-sensitivity-labels/new-group-page.png)
+   ![Přiřazení popisku citlivosti na stránce nové skupiny](./media/groups-assign-sensitivity-labels/new-group-page.png)
 
-1. Uložte změny a vyberte **Vytvořit**.
+1. Uložte změny a vyberte **vytvořit**.
 
-Vaše skupina je vytvořena a nastavení webu a skupiny přidružené k vybranému popisku se pak automaticky vynucují.
+Vaše skupina se vytvoří a automaticky se vynutila nastavení lokality a skupiny přidružená k vybranému popisku.
 
-## <a name="assign-a-label-to-an-existing-group-in-azure-portal"></a>Přiřazení popisku existující skupině na webu Azure Portal
+## <a name="assign-a-label-to-an-existing-group-in-azure-portal"></a>Přiřazení popisku existující skupině v Azure Portal
 
-1. Přihlaste se do [Centra pro správu Azure AD](https://aad.portal.azure.com) pomocí účtu správce skupin nebo jako vlastník skupiny.
+1. Přihlaste se k [centru pro správu Azure AD](https://aad.portal.azure.com) pomocí účtu správce skupin nebo jako vlastníkem skupiny.
 1. Vyberte **skupiny**.
-1. Na stránce **Všechny skupiny** vyberte skupinu, kterou chcete označit.
-1. Na stránce vybrané skupiny vyberte **Vlastnosti** a ze seznamu vyberte popisek citlivosti.
+1. Na stránce **všechny skupiny** vyberte skupinu, kterou chcete označit.
+1. Na stránce vybrané skupiny vyberte **vlastnosti** a v seznamu vyberte popisek citlivosti.
 
-   ![Přiřazení popisku citlivosti na stránce přehledu pro skupinu](./media/groups-assign-sensitivity-labels/assign-to-existing.png)
+   ![Přiřazení popisku citlivosti na stránce Přehled pro skupinu](./media/groups-assign-sensitivity-labels/assign-to-existing.png)
 
 1. Vyberte **Uložit** a uložte tak provedené změny.
 
-## <a name="remove-a-label-from-an-existing-group-in-azure-portal"></a>Odebrání popisku z existující skupiny na webu Azure Portal
+## <a name="remove-a-label-from-an-existing-group-in-azure-portal"></a>Odebrání popisku z existující skupiny v Azure Portal
 
-1. Přihlaste se do [Centra pro správu Azure AD](https://aad.portal.azure.com) pomocí účtu správce globálního správce nebo skupin nebo vlastníka skupiny.
+1. Přihlaste se k [centru pro správu Azure AD](https://aad.portal.azure.com) pomocí účtu globálního správce nebo skupiny správce nebo jako vlastníkem skupiny.
 1. Vyberte **skupiny**.
-1. Na stránce **Všechny skupiny** vyberte skupinu, ze které chcete popisek odebrat.
-1. Na stránce **Skupina** vyberte **Vlastnosti**.
+1. Na stránce **všechny skupiny** vyberte skupinu, ze které chcete odebrat popisek.
+1. Na stránce **Skupina** vyberte možnost **vlastnosti**.
 1. Vyberte **Odebrat**.
 1. Vyberte **Uložit**, aby se tyto změny použily.
 
-## <a name="using-classic-azure-ad-classifications"></a>Použití klasických klasifikací Azure AD
+## <a name="using-classic-azure-ad-classifications"></a>Používání klasifikací Azure AD Classic
 
-Po povolení této funkce se "klasické" klasifikace pro skupiny zobrazí pouze existující skupiny a weby a měli byste je použít pro nové skupiny pouze v případě, že vytváříte skupiny v aplikacích, které nepodporují popisky citlivosti. Správce je může v případě potřeby později převést na popisky citlivosti. Klasické klasifikace jsou staré klasifikace, které nastavíte `ClassificationList` definováním hodnot pro nastavení v prostředí Azure AD PowerShell. Pokud je tato funkce povolena, nebudou tyto klasifikace použity pro skupiny.
+Po povolení této funkce se "klasické" klasifikace pro skupiny zobrazí jenom existující skupiny a lokality a měli byste je používat pro nové skupiny jenom v případě, že vytváříte skupiny v aplikacích, které nepodporují popisky citlivosti. Správce je může v případě potřeby převést na popisky citlivosti později. Standardní klasifikace jsou staré klasifikace, které jste nastavili definováním hodnot `ClassificationList` nastavení ve službě Azure AD PowerShell. Když je tato funkce povolená, nebudou se tyto klasifikace u skupin použít.
 
 ## <a name="troubleshooting-issues"></a>Řešení potíží
 
-### <a name="sensitivity-labels-are-not-available-for-assignment-on-a-group"></a>Popisky citlivosti nejsou k dispozici pro přiřazení ve skupině.
+### <a name="sensitivity-labels-are-not-available-for-assignment-on-a-group"></a>Popisky citlivosti nejsou k dispozici pro přiřazení ke skupině.
 
-Možnost popisku citlivosti je zobrazena pouze pro skupiny, pokud jsou splněny všechny následující podmínky:
+Možnost popisek citlivosti se zobrazí pouze pro skupiny, pokud jsou splněny všechny následující podmínky:
 
-1. Popisky jsou publikovány v Centru dodržování předpisů Microsoft 365 pro tohoto klienta.
-1. Tato funkce je povolena, EnableMIPLabels je nastavena na True v prostředí PowerShell.
+1. Štítky jsou publikovány v centru dodržování předpisů Microsoft 365 pro tohoto tenanta.
+1. Funkce je povolená, EnableMIPLabels je v PowerShellu nastavená na true.
 1. Skupina je skupina Office 365.
-1. Klient má aktivní licenci Azure Active Directory Premium P1.
-1. Aktuální přihlášený uživatel má dostatečná oprávnění k přiřazení popisků. Uživatel musí být globální správce, správce skupiny nebo vlastník skupiny.
+1. Tenant má aktivní licenci Azure Active Directory Premium P1.
+1. Aktuálně přihlášený uživatel má dostatečná oprávnění k přiřazování popisků. Uživatel musí být buď globální správce, správce skupiny, nebo vlastník skupiny.
 
-Ujistěte se, že jsou splněny všechny podmínky, abyste mohli přiřadit štítky skupině.
+Ujistěte se prosím, že jsou splněné všechny podmínky, aby bylo možné přiřadit popisky ke skupině.
 
-### <a name="the-label-i-want-to-assign-is-not-in-the-list"></a>Popisek, který chci přiřadit, není v seznamu
+### <a name="the-label-i-want-to-assign-is-not-in-the-list"></a>Popisek, který chci přiřadit, není v seznamu.
 
-Pokud popisek, který hledáte, není v seznamu, může tomu tak být z jednoho z následujících důvodů:
+Pokud popisek, který hledáte, není v seznamu, může to být případ z některého z následujících důvodů:
 
-- Popisek nemusí být publikován v Centru dodržování předpisů Microsoft 365. To by se mohlo vztahovat i na popisky, které již nejsou publikovány. Další informace získáte od správce.
-- Popisek může být publikován, ale není k dispozici uživateli, který je přihlášen. Další informace o tom, jak získat přístup k štítku, získáte od správce.
+- Popisek se nemusí publikovat v centru kompatibility Microsoft 365. To se může vztahovat i na popisky, které už nejsou publikované. Další informace najdete u správce.
+- Popisek může být publikovaný, ale není dostupný pro uživatele, který je přihlášený. Další informace o tom, jak získat přístup k popisku, získáte u správce.
 
-### <a name="how-to-change-the-label-on-a-group"></a>Jak změnit popisek ve skupině
+### <a name="how-to-change-the-label-on-a-group"></a>Změna popisku skupiny
 
-Popisky lze kdykoli vyměnit stejným způsobem jako přiřazení popisku existující skupině takto:
+Popisky lze kdykoli měnit pomocí stejných kroků, jako přiřazení popisku existující skupině, a to následujícím způsobem:
 
-1. Přihlaste se do [Centra pro správu Azure AD](https://aad.portal.azure.com) pomocí účtu správce globálního nebo skupinového správce nebo jako vlastník skupiny.
+1. Přihlaste se k [centru pro správu Azure AD](https://aad.portal.azure.com) pomocí globálního účtu nebo účtu správce skupiny nebo jako vlastníkem skupiny.
 1. Vyberte **skupiny**.
-1. Na stránce **Všechny skupiny** vyberte skupinu, kterou chcete označit.
-1. Na stránce vybrané skupiny vyberte **Vlastnosti** a ze seznamu vyberte nový popisek citlivosti.
+1. Na stránce **všechny skupiny** vyberte skupinu, kterou chcete označit.
+1. Na stránce vybrané skupiny vyberte **vlastnosti** a v seznamu vyberte nový popisek citlivosti.
 1. Vyberte **Uložit**.
 
-### <a name="group-setting-changes-to-published-labels-are-not-updated-on-the-groups"></a>Změny nastavení skupiny publikovaných popisků nejsou ve skupinách aktualizovány.
+### <a name="group-setting-changes-to-published-labels-are-not-updated-on-the-groups"></a>Změny nastavení skupiny u publikovaných popisků se ve skupinách neaktualizují.
 
-Jako osvědčený postup nedoporučujeme měnit nastavení skupiny pro popisek po označení se použije na skupiny. Pokud provedete změny nastavení skupiny přidružené k publikovaným popiskům v [Centru dodržování předpisů microsoftu 365](https://sip.protection.office.com/homepage), nebudou tyto změny zásad automaticky použity na ovlivněné skupiny.
+Jako osvědčený postup doporučujeme, abyste po použití popisku na skupiny nezměnili nastavení skupiny pro popisek. Když provedete změny nastavení skupiny přidruženého k publikovaným popiskům v [centru dodržování předpisů Microsoft 365](https://sip.protection.office.com/homepage), tyto změny zásad se na ovlivněné skupiny automaticky nepoužijí.
 
-Pokud musíte provést změnu, použijte [skript Prostředí Azure AD PowerShell](https://github.com/microsoftgraph/powershell-aad-samples/blob/master/ReassignSensitivityLabelToO365Groups.ps1) ručně použít aktualizace pro ovlivněné skupiny. Tato metoda zajišťuje, že všechny existující skupiny vynucují nové nastavení.
+Pokud je třeba provést změnu, použijte [skript Azure AD PowerShellu](https://github.com/microsoftgraph/powershell-aad-samples/blob/master/ReassignSensitivityLabelToO365Groups.ps1) k ručnímu provedení aktualizací pro ovlivněné skupiny. Tato metoda zajistí, že nové nastavení vynutila všechny existující skupiny.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Použití popisků citlivosti s Microsoft Teams, skupinami Office 365 a weby SharePointu](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites)
-- [Aktualizace skupin po ruční změně zásad popisků pomocí skriptu Azure AD PowerShell](https://github.com/microsoftgraph/powershell-aad-samples/blob/master/ReassignSensitivityLabelToO365Groups.ps1)
+- [Použití popisků citlivosti s Microsoft teams, skupinami Office 365 a weby služby SharePoint](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites)
+- [Aktualizace skupin po ruční změně popisku pomocí skriptu Azure AD PowerShell](https://github.com/microsoftgraph/powershell-aad-samples/blob/master/ReassignSensitivityLabelToO365Groups.ps1)
 - [Úprava nastavení skupiny](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-settings-azure-portal)
 - [Správa skupin pomocí powershellových příkazů](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-settings-v2-cmdlets)

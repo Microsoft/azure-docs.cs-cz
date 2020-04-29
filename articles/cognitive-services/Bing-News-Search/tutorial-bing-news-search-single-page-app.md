@@ -1,7 +1,7 @@
 ---
-title: 'Kurz: Vytvoření jednostránkové webové aplikace pomocí rozhraní API pro vyhledávání zpráv Bingu'
+title: 'Kurz: Vytvoření webové aplikace s jednou stránkou pomocí rozhraní API Bingu pro vyhledávání zpráv'
 titleSuffix: Azure Cognitive Services
-description: Tento kurz slouží k vytvoření jednostránkové webové aplikace, která může odesílat vyhledávací dotazy do rozhraní API pro zprávy Bingu a zobrazovat výsledky v rámci webové stránky.
+description: Tento kurz slouží k vytvoření jednostránkové webové aplikace, která může odesílat vyhledávací dotazy do rozhraní API služby Bing News a zobrazit výsledky v rámci webové stránky.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -12,13 +12,13 @@ ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: 801bfcf02174c5dd98d4c7231c674299ef411aff
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78943121"
 ---
-# <a name="tutorial-create-a-single-page-web-app"></a>Kurz: Vytvoření jednostránkové webové aplikace
+# <a name="tutorial-create-a-single-page-web-app"></a>Kurz: Vytvoření webové aplikace s jednou stránkou
 
 Rozhraní API Bingu pro vyhledávání zpráv umožňuje hledat na webu a získávat výsledky v podobě zpráv relevantních pro vyhledávací dotaz. V tomto kurzu sestavíme jednostránkovou webovou aplikaci, která používá rozhraní API Bingu pro vyhledávání zpráv k zobrazení výsledků hledání na stránce. Aplikace zahrnuje komponenty HTML, CSS a JavaScriptu. Zdrojový kód pro tuto ukázku je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/BingNewsSearchApp.html).
 
@@ -43,7 +43,7 @@ Stránka kurzu je zcela nezávislá. Nepoužívá žádná externí rozhraní, �
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li sledovat spolu s kurzem, budete potřebovat klíče předplatného pro rozhraní API pro vyhledávání Bing. Pokud je nemáte, můžete použít [zkušební klíč](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) a [základní klávesu Mapy Bing](https://www.microsoft.com/maps/create-a-bing-maps-key).
+Abyste mohli postupovat podle tohoto kurzu, potřebujete klíče předplatného pro rozhraní Vyhledávání Bingu API. Pokud je nemáte, můžete použít [zkušební klíč](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) a [základní klíč mapy Bing](https://www.microsoft.com/maps/create-a-bing-maps-key).
 
 
 ## <a name="app-components"></a>Komponenty aplikace
@@ -67,7 +67,7 @@ Kód HTML také obsahuje úseky (značky HTML `<div>`), kde se zobrazují výsle
 
 Aby se nemusel klíč předplatného rozhraní API pro vyhledávání Bingu zahrnout do kódu, používáme k uložení klíče trvalé úložiště prohlížeče. Před uložením klíče vyzveme k zadání uživatelova klíče. Pokud rozhraní API klíč později odmítne, uložený klíč zneplatníme, takže uživateli se znovu zobrazí výzva.
 
-Definujeme funkce `storeValue` a `retrieveValue`, které používají buď objekt `localStorage` (který nepodporují všechny prohlížeče) nebo soubor cookie. Funkce `getSubscriptionKey()` tyto funkce používá k ukládání a načítání uživatelova klíče. Můžete použít globální koncový bod níže nebo vlastní koncový bod [subdomény](../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený na portálu Azure pro váš prostředek.
+Definujeme funkce `storeValue` a `retrieveValue`, které používají buď objekt `localStorage` (který nepodporují všechny prohlížeče) nebo soubor cookie. Funkce `getSubscriptionKey()` tyto funkce používá k ukládání a načítání uživatelova klíče. Můžete použít globální koncový bod nebo vlastní koncový bod [subdomény](../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
 
 ``` javascript
 // Cookie names for data we store
@@ -107,7 +107,7 @@ Následující obrázek znázorňuje textové pole dotazu a možnosti, které de
 
 Formulář HTML obsahuje prvky s těmito názvy:
 
-|Element|Popis|
+|Prvek|Popis|
 |-|-|
 | `where` | Rozevírací nabídka pro výběr trhu (polohy a jazyka) pro vyhledávání. |
 | `query` | Textového pole k zadání hledaných termínů. |
@@ -403,7 +403,7 @@ Zásady zabezpečení prohlížeče (CORS) můžou bránit tomu, aby byla hlavi�
 > [!NOTE]
 > V produkční webové aplikaci byste měli požadavek provádět na straně serveru. Jinak musí být klíč rozhraní API pro vyhledávání Bingu součástí webové stránky, kde je k dispozici každému, kdo si zobrazí zdroj. Účtuje se vám veškeré využívání vašeho klíče předplatného rozhraní API, dokonce i požadavky provedené neoprávněnými stranami, proto je důležité klíč nezveřejňovat.
 
-Pro účely vývoje můžete požadavek na rozhraní API Bingu pro vyhledávání na webu provést prostřednictvím proxy serveru CORS. Odpověď z takového proxy `Access-Control-Expose-Headers` serveru má hlavičku, která umožňuje hlavičky odpovědí a zpřístupňuje je JavaScriptu.
+Pro účely vývoje můžete požadavek na rozhraní API Bingu pro vyhledávání na webu provést prostřednictvím proxy serveru CORS. Odpověď z takového serveru proxy má `Access-Control-Expose-Headers` záhlaví, které umožňuje použití hlaviček odpovědí a zpřístupňuje je pro JavaScript.
 
 Nainstalovat proxy server CORS a povolit naší ukázkové aplikaci přístup k hlavičce ID klienta je snadné. Nejdřív [nainstalujte Node.js](https://nodejs.org/en/download/), pokud jste to ještě neudělali. Pak zadejte v příkazovém okně tento příkaz:
 

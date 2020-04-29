@@ -1,7 +1,7 @@
 ---
 title: 'Kurz: Získání výsledků kontroly pravopisu pomocí rozhraní API Bingu pro kontrolu pravopisu'
 titleSuffix: Azure Cognitive Services
-description: Tento kurz slouží k vytvoření webové stránky, která odesílá dotazy do rozhraní API kontroly pravopisu Bingu a zobrazuje výsledky.
+description: V tomto kurzu můžete vytvořit webovou stránku, která odešle dotazy do rozhraní API Bingu pro kontrolu pravopisu a zobrazí výsledky.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,15 +11,15 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.openlocfilehash: fa10ab5a4b1c69b359936edf91da767da08d2f98
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78943096"
 ---
 # <a name="tutorial-build-a-web-page-spell-check-client"></a>Kurz: Sestavení klienta pro kontrolu pravopisu na webové stránce
 
-V tomto kurzu vytvoříme webovou stránku, která uživatelům umožňuje zadávat dotazy do rozhraní API Bingu pro kontrolu pravopisu. Zdrojový kód pro tuto aplikaci je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/BingSpellCheckApp.html).
+V tomto kurzu vytvoříme webovou stránku, která uživatelům umožňuje zadávat dotazy do rozhraní API Bingu pro kontrolu pravopisu. Zdrojový kód této aplikace je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/BingSpellCheckApp.html).
 
 V tomto kurzu získáte informace o následujících postupech:
 
@@ -29,7 +29,7 @@ V tomto kurzu získáte informace o následujících postupech:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Abyste mohli postupovat podle tohoto kurzu, potřebujete klíč předplatného k rozhraní API Bingu pro kontrolu pravopisu. Pokud ho nemáte, [vytvořte prostředek kontroly pravopisu Bingu](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSpellCheck-v7) na webu Azure Portal. Můžete také použít [zkušební klíč](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api).
+Abyste mohli postupovat podle tohoto kurzu, potřebujete klíč předplatného k rozhraní API Bingu pro kontrolu pravopisu. Pokud ho ještě nemáte, vytvořte v Azure Portal [prostředek kontrola pravopisu Bingu](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSpellCheck-v7) . Můžete použít také [zkušební klíč](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api).
 
 ## <a name="create-a-new-web-page"></a>Vytvoření nové webové stránky
 
@@ -322,4 +322,4 @@ Otevřete webovou stránku ve svém prohlížeči. Až budete vyzváni, zadejte 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Požadavky na použití a zobrazení](../UseAndDisplayRequirements.md)
+> [Požadavky na zobrazení a použití](../UseAndDisplayRequirements.md)

@@ -5,94 +5,94 @@ author: lisaguthrie
 ms.author: lcozzens
 ms.date: 01/28/2019
 ms.topic: conceptual
-description: Naučte se používat Azure Dev Spaces a Služby Azure Kubernetes k zajištění kontinuity podnikání a přípravě na zotavení po havárii
-keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery, Helm, síť služeb, směrování sítě služeb, kubectl, k8s '
+description: Naučte se používat Azure Dev Spaces a služby Azure Kubernetes k zajištění kontinuity podnikových aplikací a příprava na zotavení po havárii.
+keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s '
 manager: gwallace
 ms.openlocfilehash: 37c0048bfa7e72b25eb56603fc027045eba25cea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78295823"
 ---
-# <a name="business-continuity-and-disaster-recovery-in-azure-dev-spaces"></a>Kontinuita podnikání a zotavení po havárii v Azure Dev Spaces
+# <a name="business-continuity-and-disaster-recovery-in-azure-dev-spaces"></a>Provozní kontinuita a zotavení po havárii v Azure Dev Spaces
 
-## <a name="review-disaster-recovery-guidance-for-azure-kubernetes-service-aks"></a>Projděte si pokyny k zotavení po havárii pro službu Azure Kubernetes Service (AKS)
+## <a name="review-disaster-recovery-guidance-for-azure-kubernetes-service-aks"></a>Přečtěte si pokyny pro zotavení po havárii pro službu Azure Kubernetes Service (AKS).
 
-Azure Dev Spaces je funkce služby Azure Kubernetes Service (AKS). Měli byste znát pokyny pro zotavení po havárii v AKS a zvážit, zda se vztahují na clustery AKS, které používáte pro dev Spaces. Další informace najdete [v doporučených postupech pro kontinuitu podnikání a zotavení po havárii ve službě Azure Kubernetes Service (AKS).](https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region)
+Azure Dev Spaces je funkce služby Azure Kubernetes Service (AKS). Měli byste si být vědomi pokynů pro zotavení po havárii v AKS a zvážit, zda se vztahují na clustery AKS, které používáte pro vývojové prostory. Další informace najdete [v článku osvědčené postupy pro kontinuitu podnikových procesů a zotavení po havárii ve službě Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region) .
 
-## <a name="enable-dev-spaces-on-aks-clusters-in-different-regions"></a>Povolení dev prostorů v clusterech AKS v různých oblastech
+## <a name="enable-dev-spaces-on-aks-clusters-in-different-regions"></a>Povolit vývojářské prostory v clusterech AKS v různých oblastech
 
-Povolení dev spaces na clusterech AKS v různých oblastech umožňuje pokračovat v používání funkce Dev Spaces ihned po selhání oblasti Azure.
+Povolením vývojových prostorů v clusterech AKS v různých oblastech můžete dál používat vývojové prostory hned po selhání oblasti Azure.
 
-Obecné informace o nasazení AKS ve více oblastech najdete v tématu [Plán pro nasazení ve více oblastech.](https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region#plan-for-multiregion-deployment)
+Obecné informace o nasazeních AKS ve více oblastech najdete v tématu [Plánování nasazení ve více oblastech](https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region#plan-for-multiregion-deployment) .
 
-### <a name="enable-dev-spaces-via-the-azure-portal"></a>Povolení dev spaces přes portál Azure
+### <a name="enable-dev-spaces-via-the-azure-portal"></a>Povolit vývojářské prostory prostřednictvím Azure Portal
 
-Vyberte položku nabídky **Dev Spaces** pod nastavením každého clusteru na webu Azure Portal. Pak zvolte možnost povolit dev spaces a uložit.
+Vyberte položku nabídky **vývojové prostory** v části nastavení každého clusteru v Azure Portal. Pak zvolte možnost Povolit vývojové prostory a uložit.
 
-![Povolení dev spaces přes portál Azure](../media/common/enable-dev-spaces.jpg)
+![Povolení vývojových prostorů prostřednictvím Azure Portal](../media/common/enable-dev-spaces.jpg)
 
 Tento postup opakujte pro každý cluster.
 
-### <a name="enable-dev-spaces-via-the-azure-cli"></a>Povolení dev prostorů prostřednictvím příkazového příkazového příkazového příkazu Azure
+### <a name="enable-dev-spaces-via-the-azure-cli"></a>Povolit vývojářské prostory prostřednictvím Azure CLI
 
-Na příkazovém řádku můžete také povolit funkci Dev Spaces:
+V příkazovém řádku můžete taky povolit vývojové prostory:
 
 ```azurecli
 az aks use-dev-spaces -g <resource group name> -n <cluster name>
 ```
 
-## <a name="deploy-your-teams-baseline-to-each-cluster"></a>Nasazení směrného plánu týmu do každého clusteru
+## <a name="deploy-your-teams-baseline-to-each-cluster"></a>Nasazení standardních hodnot týmu do každého clusteru
 
-Při práci s Dev Spaces obvykle nasazujete celou aplikaci do nadřazeného dev prostoru v clusteru Kubernetes. Ve výchozím `default` nastavení je místo použito. Počáteční nasazení zahrnuje všechny služby, stejně jako externí prostředky, které tyto služby závisí na, jako jsou databáze nebo fronty. Tento stav se označuje jako *výchozí bod*. Po nastavení směrného plánu v nadřazeném dev prostoru itetujete a ladíte jednotlivé služby uvnitř podřízených dev prostorů.
+Při práci s vývojovým prostorem obvykle nasadíte celou aplikaci do nadřazeného vývojového prostoru v clusteru Kubernetes. Ve výchozím nastavení se `default` používá mezera. Počáteční nasazení zahrnuje všechny služby a také externí prostředky, na kterých tyto služby závisejí, jako jsou databáze nebo fronty. To se označuje jako *standardní*hodnota. Po nastavení směrného plánu v nadřazeném vývojovém prostoru můžete iterovat a ladit jednotlivé služby v podřízených vývojových prostorech.
 
-Nejnovější verze základní sady služeb byste měli nasadit do clusterů ve více oblastech. Aktualizace směrných služeb tímto způsobem zajistí, že můžete i nadále používat Dev Spaces, pokud dojde k selhání oblasti Azure. Pokud například nasadíte směrný plán prostřednictvím kanálu CI/CD, upravte kanál tak, aby se nasazuje do více clusterů v různých oblastech.
+Nejnovější verze sady služeb můžete nasadit do clusterů ve více oblastech. Aktualizace standardních služeb tímto způsobem zajistí, že budete moct dál používat vývojářské prostory, pokud dojde k selhání oblasti Azure. Pokud například nasadíte svůj směrný plán prostřednictvím kanálu CI/CD, upravte kanál tak, aby se nasadil do několika clusterů v různých oblastech.
 
-## <a name="select-the-correct-aks-cluster-to-use-for-dev-spaces"></a>Vyberte správný cluster AKS, který se má použít pro funkce Dev Spaces.
+## <a name="select-the-correct-aks-cluster-to-use-for-dev-spaces"></a>Vyberte správný cluster AKS, který se má použít pro vývojové prostory.
 
-Po správné konfiguraci záložního clusteru se směrným plánem vašeho týmu můžete kdykoli rychle přepnout do zálohovacího clusteru. Potom můžete znovu spustit jednotlivé služby, na kterých pracujete, v podřízených prostorech pro vývoj.
+Po správném nakonfigurování záložního clusteru se směrným plánem vašeho týmu můžete kdykoli rychle přejít na záložní cluster. Pak můžete znovu spustit jednotlivé služby, na kterých pracujete v podřízených vývojových prostorech.
 
-Vyberte jiný cluster s následujícím příkazem příkazu příkazu příkazu příkazu:
+Vyberte jiný cluster s následujícím příkazem CLI:
 
 ```azurecli
 az aks use-dev-spaces -g <new resource group name> -n <new cluster name>
 ```
 
-Dostupné dev prostory v novém clusteru můžete uvést pomocí následujícího příkazu:
+Dostupné vývojové prostory v novém clusteru můžete zobrazit pomocí následujícího příkazu:
 
 ```cmd
 azds space list
 ```
 
-Můžete vytvořit novou dev prostor pro práci, nebo vybrat existující dev prostor, s následujícím příkazem:
+Můžete vytvořit nový prostor pro vývoj pro práci, nebo vybrat existující místo pro vývoj pomocí následujícího příkazu:
 
 ```cmd
 azds space select -n <space name>
 ```
 
-Po spuštění těchto příkazů se vybraný cluster a dev prostor použijí pro následné operace příkazového příkazu a pro ladění projektů pomocí rozšíření kódu Visual Studio pro Azure Dev Spaces.
+Po spuštění těchto příkazů se vybraný cluster a místo pro vývoj použijí pro následné operace CLI a pro ladění projektů pomocí rozšíření Visual Studio Code pro Azure Dev Spaces.
 
-Pokud používáte Visual Studio, můžete přepnout cluster používaný existujícím projektem pomocí následujících kroků:
+Pokud používáte aplikaci Visual Studio, můžete přepínat cluster používaný existujícím projektem pomocí následujících kroků:
 
-1. Otevřete projekt v sadě Visual Studio.
-1. Klikněte pravým tlačítkem myši na název projektu v Průzkumníku řešení a klikněte na **Vlastnosti.**
-1. V levém podokně klikněte na **Ladění.**
-1. Na stránce Vlastnosti ladění klikněte na rozevírací seznam **Profil** a zvolte **Azure Dev Spaces**.
-1. Klikněte na tlačítko **Změnit.**
-1. V zobrazeném dialogovém okně vyberte cluster AKS, který chcete použít. V případě potřeby zvolte jiný prostor pro vytvoření pro práci nebo vytvořte novou dev prostor, výběrem příslušné volby z rozevíracího seznamu **Prostor.**
+1. Otevřete projekt v aplikaci Visual Studio.
+1. Klikněte pravým tlačítkem myši na název projektu v Průzkumník řešení a klikněte na **vlastnosti** .
+1. V levém podokně klikněte na **ladění** .
+1. Na stránce Vlastnosti ladění klikněte na rozevírací seznam **profil** a vyberte **Azure dev Spaces**.
+1. Klikněte na tlačítko **změnit** .
+1. V dialogovém okně, které se zobrazí, vyberte cluster AKS, který chcete použít. V případě potřeby zvolte jiný prostor pro vývoj, na kterém chcete pracovat, nebo vytvořte nový prostor pro vývoj tím, že v rozevíracím seznamu **prostor** vyberete příslušnou možnost.
 
-Jakmile vyberete správný cluster a prostor, můžete službu spustit stisknutím klávesy F5 v části Funkce Provspaces.
+Po výběru správného clusteru a prostoru můžete stisknutím klávesy F5 službu spustit ve vývojových prostorech.
 
-Opakujte tyto kroky pro všechny ostatní projekty nakonfigurované pro použití původního clusteru.
+Opakujte tyto kroky pro všechny ostatní projekty nakonfigurované na použití původního clusteru.
 
-## <a name="access-a-service-on-a-backup-cluster"></a>Přístup ke službě v zálohovacím clusteru
+## <a name="access-a-service-on-a-backup-cluster"></a>Přístup ke službě na záložním clusteru
 
-Pokud jste službu nakonfigurovali tak, aby používala veřejný název DNS, bude mít jinou adresu URL, pokud ji spustíte v zálohovacím clusteru. Veřejné názvy DNS jsou `<space name>.s.<root space name>.<service name>.<cluster GUID>.<region>.azds.io`vždy ve formátu . Pokud přepnete do jiného clusteru, změní se identifikátor GUID clusteru a případně oblast.
+Pokud jste službu nakonfigurovali tak, aby používala veřejný název DNS, bude mít služba jinou adresu URL, pokud ji spustíte na záložním clusteru. Veřejné názvy DNS jsou vždycky ve formátu `<space name>.s.<root space name>.<service name>.<cluster GUID>.<region>.azds.io`. Pokud přepnete na jiný cluster, identifikátor GUID clusteru, případně se změna oblasti změní.
 
-Dev Spaces vždy zobrazuje správnou adresu `azds up`URL služby při spuštění nebo v okně Výstup v sadě Visual Studio v části **Azure Dev Spaces**.
+Pro vývojové prostory se vždycky zobrazuje správná adresa URL pro službu, `azds up`Pokud je spuštěná, nebo v okně výstup v aplikaci Visual Studio v části **Azure dev Spaces**.
 
-Adresu URL můžete také najít `azds list-uris` spuštěním příkazu:
+Adresu URL můžete najít také spuštěním `azds list-uris` příkazu:
 ```
 $ azds list-uris
 Uri                                                     Status
@@ -100,4 +100,4 @@ Uri                                                     Status
 http://default.mywebapi.d05afe7e006a4fddb73c.eus.azds.io/  Available
 ```
 
-Tuto adresu URL použijte při přístupu ke službě.
+Použijte tuto adresu URL při přístupu ke službě.

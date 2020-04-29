@@ -1,5 +1,5 @@
 ---
-title: Rychlý start klientské knihovny Java webového vyhledávání Bingu
+title: Rychlý Start klientské knihovny s Vyhledávání na webu Bingu Java
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,15 +9,15 @@ ms.topic: include
 ms.date: 03/05/2020
 ms.author: aahi
 ms.openlocfilehash: c204f8482d46d6586d490cb2bd3dd1a4cddac682
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78925746"
 ---
-Klientská knihovna Bing Web Search usnadňuje integraci webového vyhledávání Bingu do aplikace Java. V tomto rychlém startu se naučíte poslat požadavek, přijmout odpověď JSON, filtrovat a parsovat výsledky.
+Klientská knihovna Vyhledávání na webu Bingu usnadňuje integraci Vyhledávání na webu Bingu do aplikace Java. V tomto rychlém startu se naučíte poslat požadavek, přijmout odpověď JSON, filtrovat a parsovat výsledky.
 
-Chcete se rovnou podívat na kód? Ukázky [pro klientské knihovny Bing Search pro Javu](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search) jsou dostupné na GitHubu.
+Chcete se rovnou podívat na kód? Ukázky pro [klientské knihovny vyhledávání Bingu pro jazyk Java](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search) jsou k dispozici na GitHubu.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -31,7 +31,7 @@ Tady je pár věcí, které budete potřebovat na začátku tohoto rychlého sta
 
 ## <a name="create-a-project-and-set-up-your-pom-file"></a>Vytvoření projektu a nastavení souboru POM
 
-Vytvořte nový projekt Java. Použijte Maven nebo jiný oblíbený nástroj na automatické sestavení. Za předpokladu, že používáte Maven, přidejte následující řádky do souboru [project object model (POM).](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html) Všechny instance `mainClass` nahraďte svou aplikací.
+Vytvořte nový projekt Java. Použijte Maven nebo jiný oblíbený nástroj na automatické sestavení. Za předpokladu, že používáte Maven, přidejte následující řádky do souboru [Project Object Model (pom)](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html) . Všechny instance `mainClass` nahraďte svou aplikací.
 
 ```xml
 <build>
@@ -121,7 +121,7 @@ import com.microsoft.azure.cognitiveservices.search.websearch.models.VideoObject
 import com.microsoft.azure.cognitiveservices.search.websearch.models.WebPage;
 ```
 
-Pokud jste k vytvoření projektu použili Maven, balíček by měl být deklarovaný. Pokud není, deklarujte ho teď. Například:
+Pokud jste k vytvoření projektu použili Maven, balíček by měl být deklarovaný. Pokud není, deklarujte ho teď. Příklad:
 
 ```java
 package com.bingwebsearch.app

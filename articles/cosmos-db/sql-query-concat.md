@@ -1,6 +1,6 @@
 ---
-title: CONCAT v dotazovacím jazyce Azure Cosmos DB
-description: Informace o tom, jak funkce systému CONCAT SQL v Azure Cosmos DB vrátí řetězec, který je výsledkem zřetězení dvou nebo více hodnot řetězce
+title: CONCAT v Azure Cosmos DB dotazovací jazyk
+description: Přečtěte si, jak funkce CONCAT SQL System v Azure Cosmos DB vrátí řetězec, který je výsledkem zřetězení dvou nebo více řetězcových hodnot.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: c8a0941376ed74d7f8cb819d78df43eb9f0b7bd1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78302606"
 ---
 # <a name="concat-azure-cosmos-db"></a>CONCAT (Azure Cosmos DB)
- Vrátí řetězec, který je výsledkem zřetězení dvou nebo více hodnot řetězce.  
+ Vrátí řetězec, který je výsledkem zřetězení dvou nebo více řetězcových hodnot.  
   
 ## <a name="syntax"></a>Syntaxe
   
@@ -26,11 +26,11 @@ CONCAT(<str_expr1>, <str_expr2> [, <str_exprN>])
 ## <a name="arguments"></a>Argumenty
   
 *str_expr*  
-   Je řetězcový výraz zřetězit na jiné hodnoty. Funkce `CONCAT` vyžaduje alespoň dva *str_expr* argumenty.  
+   Je řetězcový výraz, který se má zřetězit k ostatním hodnotám. `CONCAT` Funkce vyžaduje alespoň dva argumenty *str_expr* .  
   
 ## <a name="return-types"></a>Návratové typy
   
-  Vrátí řetězec výraz.  
+  Vrátí řetězcový výraz.  
   
 ## <a name="examples"></a>Příklady
   
@@ -48,10 +48,10 @@ SELECT CONCAT("abc", "def") AS concat
   
 ## <a name="remarks"></a>Poznámky
 
-Tato systémová funkce nebude využívat index.
+Tato systémová funkce nebude index využívat.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Funkce řetězce Azure Cosmos DB](sql-query-string-functions.md)
+- [Azure Cosmos DB funkce řetězce](sql-query-string-functions.md)
 - [Systémové funkce Azure Cosmos DB](sql-query-system-functions.md)
 - [Úvod do Azure Cosmos DB](introduction.md)

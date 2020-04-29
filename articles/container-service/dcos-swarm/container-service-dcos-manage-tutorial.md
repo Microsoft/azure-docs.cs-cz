@@ -1,5 +1,5 @@
 ---
-title: (ZASTARALÉ) Kurz služby Azure Container Service – správa řadiče domény/operačního služby
+title: ZASTARALÉ Kurz Azure Container Service – Správa DC/OS
 description: Kurz Azure Container Service – Správa DC/OS
 author: iainfoulds
 ms.service: container-service
@@ -8,17 +8,17 @@ ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: 4212277dbdf29705152832f3830692b43b8d1297
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78402807"
 ---
-# <a name="deprecated-azure-container-service-tutorial---manage-dcos"></a>(ZASTARALÉ) Kurz služby Azure Container Service – správa řadiče domény/operačního služby
+# <a name="deprecated-azure-container-service-tutorial---manage-dcos"></a>ZASTARALÉ Kurz Azure Container Service – Správa DC/OS
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
-DC/OS poskytuje distribuovanou platformu pro spouštění moderních a kontejnerizovaných aplikací. Se službou Azure Container Service je zřízení clusteru DC/OS připraveného pro produkční prostředí snadné a rychlé. Tento rychlý start podrobně popisuje základní kroky potřebné k nasazení clusteru DC/OS a spuštění základníúlohy.
+DC/OS poskytuje distribuovanou platformu pro spouštění moderních a kontejnerizovaných aplikací. Se službou Azure Container Service je zřízení clusteru DC/OS připraveného pro produkční prostředí snadné a rychlé. Tento rychlý Start podrobně popisuje základní kroky potřebné k nasazení clusteru DC/OS a spuštění základní úlohy.
 
 > [!div class="checklist"]
 > * Vytvoření clusteru ACS DC/OS

@@ -1,6 +1,6 @@
 ---
 title: ARRAY_LENGTH v dotazovacím jazyce Azure Cosmos DB
-description: Informace o tom, jak funkce systému SQL délka pole v Azure Cosmos DB vrací počet prvků zadaného výrazu pole
+description: Přečtěte si, jak funkce systému SQL délka pole v Azure Cosmos DB vrací počet prvků zadaného výrazu Array.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 3596ce4bc702d5e54225d8c90db2f9563feab670
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78303983"
 ---
 # <a name="array_length-azure-cosmos-db"></a>ARRAY_LENGTH (Azure Cosmos DB)
- Vrátí počet prvků zadaného výrazu pole.  
+ Vrátí počet prvků určeného výrazu pole.  
   
 ## <a name="syntax"></a>Syntaxe
   
@@ -26,7 +26,7 @@ ARRAY_LENGTH(<arr_expr>)
 ## <a name="arguments"></a>Argumenty
   
 *arr_expr*  
-   Je pole výraz.  
+   Je výraz pole.  
   
 ## <a name="return-types"></a>Návratové typy
   
@@ -34,7 +34,7 @@ ARRAY_LENGTH(<arr_expr>)
   
 ## <a name="examples"></a>Příklady
   
-  Následující příklad, jak získat délku `ARRAY_LENGTH`pole pomocí .  
+  Následující příklad, jak získat délku pole pomocí `ARRAY_LENGTH`.  
   
 ```sql
 SELECT ARRAY_LENGTH(["apples", "strawberries", "bananas"]) AS len  
@@ -48,7 +48,7 @@ SELECT ARRAY_LENGTH(["apples", "strawberries", "bananas"]) AS len
   
 ## <a name="remarks"></a>Poznámky
 
-Tato systémová funkce nebude využívat index.
+Tato systémová funkce nebude index využívat.
 
 ## <a name="next-steps"></a>Další kroky
 

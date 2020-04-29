@@ -1,27 +1,27 @@
 ---
-title: Ověření Azure Spring Cloud u trezoru klíčů v akcích GitHubu
-description: Jak používat trezor klíčů s pracovním postupem CI/CD pro Azure Spring Cloud s akcemi GitHubu
+title: Ověřování Azure jaře cloudu s Key Vault v akcích GitHubu
+description: Použití trezoru klíčů s pracovním postupem CI/CD pro jarní Cloud v Azure s akcemi GitHubu
 author: MikeDodaro
 ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/20/2019
 ms.openlocfilehash: 78cd5945e394219be0551bbe97afef07f18b61f7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78945472"
 ---
-# <a name="authenticate-azure-spring-cloud-with-key-vault-in-github-actions"></a>Ověření Azure Spring Cloud u trezoru klíčů v akcích GitHubu
-Trezor klíčů je bezpečné místo pro uložení klíčů. Podnikoví uživatelé potřebují ukládat pověření pro prostředí CI/CD v oboru, který řídí. Klíč k získání pověření v trezoru klíčů by měl být omezen na obor prostředků.  Má přístup pouze k oboru trezoru klíčů, nikoli k celému oboru Azure. Je to jako klíč, který může otevřít pouze silnou krabici, ne hlavní klíč, který může otevřít všechny dveře v budově. Je to způsob, jak získat klíč s jiným klíčem, což je užitečné v pracovním postupu CICD. 
+# <a name="authenticate-azure-spring-cloud-with-key-vault-in-github-actions"></a>Ověřování Azure jaře cloudu s Key Vault v akcích GitHubu
+Trezor klíčů je bezpečné místo pro ukládání klíčů. Podnikoví uživatelé potřebují ukládat přihlašovací údaje pro prostředí CI/CD v oboru, který řídí. Klíč pro získání přihlašovacích údajů v trezoru klíčů by měl být omezený na obor prostředků.  Má přístup jenom k oboru trezoru klíčů, ne k celému oboru Azure. Je to jako klíč, který může otevřít pouze silné pole, nikoli hlavní klíč, který může otevřít všechny dveře v budově. Je to způsob, jak získat klíč s jiným klíčem, který je užitečný pro CICD pracovní postup. 
 
-## <a name="generate-credential"></a>Generovat pověření
-Chcete-li vygenerovat klíč pro přístup k trezoru klíčů, spusťte příkaz níže v místním počítači:
+## <a name="generate-credential"></a>Generovat přihlašovací údaje
+Pokud chcete vygenerovat klíč pro přístup k trezoru klíčů, spusťte níže uvedený příkaz na svém místním počítači:
 ```
 az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP>/providers/Microsoft.KeyVault/vaults/<KEY_VAULT> --sdk-auth
 ```
-Obor určený parametrem `--scopes` omezuje přístup klíče k prostředku.  Může přistupovat pouze k silné krabici.
+Rozsah určený `--scopes` parametrem omezuje přístup klíče k prostředku.  Může přistupovat jenom k silnému poli.
 
 S výsledky:
 ```
@@ -37,29 +37,29 @@ S výsledky:
     "managementEndpointUrl": "https://management.core.windows.net/"
 }
 ```
-Pak uložte výsledky do **tajných kódů** GitHubu, jak je popsáno v [části Nastavení úložiště GitHubu a ověření pomocí Azure](./spring-cloud-howto-github-actions.md#set-up-github-repository-and-authenticate).
+Pak výsledky uložte do **tajných** kódů GitHubu, jak je popsáno v tématu [Nastavení úložiště GitHubu a ověření pomocí Azure](./spring-cloud-howto-github-actions.md#set-up-github-repository-and-authenticate).
 
-## <a name="add-access-policies-for-the-credential"></a>Přidání přístupových zásad pro pověření
-Přihlašovací údaje, které jste vytvořili výše, mohou získat pouze obecné informace o trezoru klíčů, nikoli o obsahu, který ukládá.  Chcete-li získat tajné klíče uložené v trezoru klíčů, je třeba nastavit zásady přístupu pro pověření.
+## <a name="add-access-policies-for-the-credential"></a>Přidat zásady přístupu pro přihlašovací údaje
+Přihlašovací údaje, které jste vytvořili výše, můžou získat obecné informace o Key Vault, nikoli obsah, který ukládá.  Pro získání tajných kódů uložených v Key Vault musíte nastavit zásady přístupu pro přihlašovací údaje.
 
-Přejděte na řídicí panel Trezor **klíčů** na portálu Azure Portal, klikněte **Apps** na **Type** nabídku **scope** **Řízení přístupu** a otevřete kartu **Přiřazení rolí.** `This resource`  Měli byste vidět pověření, které jste vytvořili v předchozím kroku:
+V Azure Portal přejděte na řídicí panel **Key Vault** , klikněte na nabídku **řízení přístupu** a pak otevřete kartu **přiřazení rolí** . Vyberte **aplikace** pro **typ** a `This resource` **obor**.  Měli byste vidět přihlašovací údaje, které jste vytvořili v předchozím kroku:
 
  ![Nastavení zásad přístupu](./media/github-actions/key-vault1.png)
 
-Zkopírujte název pověření, `azure-cli-2020-01-19-04-39-02`například . Otevřete nabídku **Zásady přístupu** a klikněte na +Přidat odkaz **Zásady přístupu.**  Vyberte `Secret Management` pro **šablonu**, pak vyberte **hlavní**. Vložte název pověření do **vstupního**/pole Hlavní**výběr:**
+Zkopírujte název přihlašovacích údajů, například `azure-cli-2020-01-19-04-39-02`. Otevřete nabídku **zásady přístupu** , klikněte na **+ Přidat odkaz zásady přístupu** .  Vyberte `Secret Management` možnost pro **šablonu**a pak vyberte **objekt zabezpečení**. Vložte název přihlašovacích údajů do **objektu zabezpečení**/**Vybrat** vstupní pole:
 
  ![Vyberte](./media/github-actions/key-vault2.png)
 
- Klepněte na tlačítko **Přidat** v dialogovém okně **Přidat zásady přístupu** a potom klepněte na tlačítko **Uložit**.
+ Klikněte na tlačítko **Přidat** v dialogovém okně **Přidat zásadu přístupu** a pak klikněte na **Uložit**.
 
-## <a name="generate-full-scope-azure-credential"></a>Generovat pověření Azure s plným rozsahem
-Tohle je hlavní klíč k otevření všech dveří v budově. Postup je podobný předchozímu kroku, ale zde změníme rozsah pro generování hlavního klíče:
+## <a name="generate-full-scope-azure-credential"></a>Generování přihlašovacích údajů Azure v plném rozsahu
+Toto je hlavní klíč pro otevření všech dveří v budově. Postup je podobný předchozímu kroku, ale v tomto článku změníte obor, který vygeneruje hlavní klíč:
 
 ```
 az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID> --sdk-auth
 ```
 
-Opět platí, že výsledky:
+Znovu, výsledky:
 ```
 {
     "clientId": "<GUID>",
@@ -73,12 +73,12 @@ Opět platí, že výsledky:
     "managementEndpointUrl": "https://management.core.windows.net/"
 }
 ```
-Zkopírujte celý řetězec JSON.  Bo zpět na řídicí panel **Trezoru klíčů.** Otevřete nabídku **Tajné klíče** a klepněte na tlačítko **Generovat/importovat.** Zadejte tajný název, `AZURE-CRENDENTIALS-FOR-SPRING`například . Vložte řetězec pověření JSON do pole **Vstup pro hodnotu.** Můžete si všimnout, že vstupní pole hodnoty je jednořádkové textové pole, nikoli víceřádková textová oblast.  Můžete vložit kompletní Řetězec JSON tam.
+Zkopírujte celý řetězec JSON.  Bo zpátky na **Key Vault** řídicí panel. Otevřete nabídku **tajné klíče** a pak klikněte na tlačítko **Generovat/importovat** . Zadejte název tajného kódu, například `AZURE-CRENDENTIALS-FOR-SPRING`. Vložte řetězec přihlašovacích údajů JSON do vstupního pole **Value (hodnota** ). Můžete si všimnout, že vstupní pole hodnoty je jednořádkové textové pole místo víceřádkové textové oblasti.  Do tohoto pole můžete vložit celý řetězec JSON.
 
- ![Pověření s úplným rozsahem](./media/github-actions/key-vault3.png)
+ ![Úplné přihlašovací údaje oboru](./media/github-actions/key-vault3.png)
 
 ## <a name="combine-credentials-in-github-actions"></a>Kombinování přihlašovacích údajů v akcích GitHubu
-Nastavte pověření použitá při spuštění kanálu CICD:
+Nastavte přihlašovací údaje, které se použijí, když se CICD kanál spustí:
 
 ```
 on: [push]
@@ -109,4 +109,4 @@ jobs:
 ```
 
 ## <a name="next-steps"></a>Další kroky
-* [Akce Github u spring cloudu](./spring-cloud-howto-github-actions.md)
+* [Akce GitHubu na jaře Cloud](./spring-cloud-howto-github-actions.md)

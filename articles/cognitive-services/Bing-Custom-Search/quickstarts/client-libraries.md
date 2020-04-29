@@ -1,7 +1,7 @@
 ---
-title: 'Úvodní příručka: Použití klientské knihovny vlastního vyhledávání Bingu'
+title: 'Rychlý Start: použití klientské knihovny Vlastní vyhledávání Bingu'
 titleSuffix: Azure Cognitive Services
-description: Rozhraní API pro vlastní vyhledávání nabízí klientské knihovny, které usnadňují integraci funkcí vyhledávání do vašich aplikací. Pomocí tohoto rychlého startu můžete začít odesílat požadavky na hledání a získat zpět výsledky.
+description: Rozhraní API pro vlastní vyhledávání nabízí klientské knihovny usnadňující integraci vyhledávacích funkcí do vašich aplikací. V tomto rychlém startu můžete začít odesílat žádosti o vyhledávání a vracet výsledky.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -12,13 +12,13 @@ ms.topic: quickstart
 ms.date: 02/27/2020
 ms.author: aahi
 ms.openlocfilehash: 91beae69489c8ac7741b173b25fdbc87c861a9e8
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78270947"
 ---
-# <a name="quickstart-use-the-bing-custom-search-client-library"></a>Úvodní příručka: Použití klientské knihovny vlastního vyhledávání Bingu
+# <a name="quickstart-use-the-bing-custom-search-client-library"></a>Rychlý Start: použití klientské knihovny Vlastní vyhledávání Bingu
 
 ::: zone pivot="programming-language-csharp"
 

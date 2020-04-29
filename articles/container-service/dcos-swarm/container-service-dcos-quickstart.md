@@ -1,5 +1,5 @@
 ---
-title: (ZASTARALÉ) Rychlý start služby Azure Container Service – nasazení clusteru řadičů domény/operačního systému
+title: ZASTARALÉ Rychlý Start Azure Container Service – nasazení clusteru DC/OS
 description: Rychlý start pro Azure Container Service – Nasazení clusteru DC/OS
 author: iainfoulds
 ms.service: container-service
@@ -8,19 +8,19 @@ ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: 6274e24bae2e2a6eade0122fe244652eb29cacf9
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78399226"
 ---
-# <a name="deprecated-deploy-a-dcos-cluster"></a>(ZASTARALÉ) Nasazení clusteru řadičů domény/operačního systému
+# <a name="deprecated-deploy-a-dcos-cluster"></a>ZASTARALÉ Nasazení clusteru DC/OS
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
-DC/OS poskytuje distribuovanou platformu pro spouštění moderních a kontejnerizovaných aplikací. Se službou Azure Container Service je zřízení clusteru DC/OS připraveného pro produkční prostředí snadné a rychlé. Tento rychlý start podrobně popisuje základní kroky potřebné k nasazení clusteru DC/OS a spuštění základníúlohy.
+DC/OS poskytuje distribuovanou platformu pro spouštění moderních a kontejnerizovaných aplikací. Se službou Azure Container Service je zřízení clusteru DC/OS připraveného pro produkční prostředí snadné a rychlé. Tento rychlý Start podrobně popisuje základní kroky potřebné k nasazení clusteru DC/OS a spuštění základní úlohy.
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 Tento kurz vyžaduje Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete upgradovat, přečtěte si článek [Instalace Azure CLI]( /cli/azure/install-azure-cli). 
 
@@ -165,7 +165,7 @@ az group delete --name myResourceGroup --no-wait
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste nasadili cluster DC/OS a spustili jste v clusteru jednoduchý kontejner Dockeru. Další informace o službě Azure Container Service najdete v kurzech služby ACS.
+V tomto rychlém startu jste nasadili cluster DC/OS a spustili v clusteru jednoduchý kontejner Docker. Další informace o službě Azure Container Service najdete v kurzech služby ACS.
 
 > [!div class="nextstepaction"]
 > [Správa clusteru ACS DC/OS](container-service-dcos-manage-tutorial.md)

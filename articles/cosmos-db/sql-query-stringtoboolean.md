@@ -1,6 +1,6 @@
 ---
-title: StringToBoolean v dotazovacím jazyce Azure Cosmos DB
-description: Další informace o funkci systému SQL StringToBoolean v Azure Cosmos DB.
+title: StringToBoolean v jazyce pro dotaz na Azure Cosmos DB
+description: Přečtěte si o StringToBoolean funkcí SQL systému v Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: ce11db91eff51e669f0917fbf34b1d560d0e9f07
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78296537"
 ---
 # <a name="stringtoboolean-azure-cosmos-db"></a>StringToBoolean (Azure Cosmos DB)
- Vrátí výraz přeložený do logické hodnoty. Pokud výraz nelze přeložit, vrátí undefined.  
+ Vrátí výraz přeložený na logickou hodnotu. Pokud výraz nelze přeložit, vrátí nedefinované funkce.  
   
 ## <a name="syntax"></a>Syntaxe
   
@@ -26,7 +26,7 @@ StringToBoolean(<str_expr>)
 ## <a name="arguments"></a>Argumenty
   
 *str_expr*  
-   Je řetězcový výraz, který má být analyzován jako logický výraz.  
+   Je řetězcový výraz, který se má analyzovat jako logický výraz.  
   
 ## <a name="return-types"></a>Návratové typy
   
@@ -34,11 +34,11 @@ StringToBoolean(<str_expr>)
   
 ## <a name="examples"></a>Příklady
   
-  Následující příklad ukazuje, jak `StringToBoolean` se chová napříč různými typy. 
+  Následující příklad ukazuje, jak `StringToBoolean` se chová v různých typech. 
  
- Následují příklady s platným vstupem.
+ Níže jsou uvedeny příklady s platným vstupem.
 
-Mezery jsou povoleny pouze před nebo za "true"/"false".
+Prázdný znak je povolený jenom před nebo za "true"/"false".
 
 ```sql
 SELECT 
@@ -55,7 +55,7 @@ SELECT
 
 Následují příklady s neplatným vstupem.
 
- Logické hodnoty rozlišují malá a velká písmena a musí být zapsána se všemi znaky s malými písmeny, tj.
+ V logických hodnotách se rozlišují malá a velká písmena a musí být zapsána bez malých písmen, tj. "true" a "false".
 
 ```sql
 SELECT 
@@ -69,7 +69,7 @@ Zde je sada výsledků.
 [{}]
 ``` 
 
-Předaný výraz bude analyzován jako logický výraz; tyto vstupy nevyhodnocují na typ logické a proto vrátit undefined.
+Předaný výraz bude analyzován jako logický výraz; Tyto vstupy se nevyhodnotí na typ Boolean, takže vrátí nedefinovanou hodnotu.
 
 ```sql
 SELECT 
@@ -88,10 +88,10 @@ Zde je sada výsledků.
 
 ## <a name="remarks"></a>Poznámky
 
-Tato systémová funkce nebude využívat index.
+Tato systémová funkce nebude index využívat.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Funkce řetězce Azure Cosmos DB](sql-query-string-functions.md)
+- [Azure Cosmos DB funkce řetězce](sql-query-string-functions.md)
 - [Systémové funkce Azure Cosmos DB](sql-query-system-functions.md)
 - [Úvod do Azure Cosmos DB](introduction.md)

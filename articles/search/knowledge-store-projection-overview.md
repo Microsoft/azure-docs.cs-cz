@@ -1,7 +1,7 @@
 ---
-title: Projekce v úložišti znalostí (náhled)
+title: Projekce ve znalostní bázi Knowledge Store (Preview)
 titleSuffix: Azure Cognitive Search
-description: Uložte a tvarovat obohacená data z kanálu indexování obohacení ai do úložiště znalostí pro použití v jiných scénářích než fulltextové vyhledávání. Úložiště znalostí je v současné době ve verzi Public Preview.
+description: Uložte obohacená data z kanálu indexování pro rozšíření AI do úložiště znalostí pro použití ve scénářích, které nejsou fulltextovým vyhledáváním. Znalostní databáze je aktuálně ve verzi Public Preview.
 manager: nitinme
 author: vkurpad
 ms.author: vikurpad
@@ -9,77 +9,77 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/08/2020
 ms.openlocfilehash: d264768bf27967d1a778400ae4e9e6f2e054d746
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78942975"
 ---
-# <a name="projections-in-a-knowledge-store-in-azure-cognitive-search"></a>Projekce v úložišti znalostí v Azure Cognitive Search
+# <a name="projections-in-a-knowledge-store-in-azure-cognitive-search"></a>Projekce ve znalostní bázi ve službě Azure Kognitivní hledání
 
 > [!IMPORTANT] 
-> Úložiště znalostí je v současné době ve verzi Public Preview. Funkce náhledu je k dispozici bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [Rozhraní REST API verze 2019-05-06-Preview](search-api-preview.md) poskytuje funkce náhledu. V současné době je omezená podpora portálu a žádná podpora sady .NET SDK.
+> Znalostní databáze je aktuálně ve verzi Public Preview. Funkce Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [REST API verze 2019-05-06-Preview](search-api-preview.md) poskytuje funkce ve verzi Preview. V současné době je omezená podpora portálu a žádná podpora sady .NET SDK.
 
-Azure Cognitive Search umožňuje obohacení obsahu prostřednictvím integrovaných kognitivních dovedností a vlastních dovedností jako součást indexování. Obohacení vytvořit nové informace, kde žádný dříve neexistoval: extrahování informací z obrázků, detekce mínění, klíčové fráze a entity z textu, abychom jmenovali několik. Obohacení také přidat strukturu nediferencovaný text. Výsledkem všech těchto procesů jsou dokumenty, které zefektivní fulltextové vyhledávání. V mnoha případech jsou rozšířené dokumenty užitečné pro jiné scénáře než hledání, například pro dolování znalostí.
+Azure Kognitivní hledání v rámci indexování umožňuje rozšíření obsahu prostřednictvím integrovaných schopností rozpoznávání a vlastní dovednosti. Obohacení vytvoří nové informace tam, kde už dříve neexistovaly: extrakce informací z obrázků, detekce mínění, klíčových slov a entit z textu, na několik názvů. Rozšíření také přidává strukturu na nerozlišený text. Výsledkem všech těchto procesů jsou dokumenty, které usnadňují vyhledávání fulltextového vyhledávání. V mnoha instancích jsou obohacené dokumenty užitečné pro jiné scénáře, než je hledání, například pro dolování znalostí.
 
-Projekce, součást [úložiště znalostí](knowledge-store-concept-intro.md), jsou pohledy na obohacené dokumenty, které lze uložit do fyzického úložiště pro účely dolování znalostí. Projekce umožňuje "promítat" data do obrazce, který odpovídá vašim potřebám, a zachovat tak vztahy, aby nástroje jako Power BI mohly data číst bez dalšího úsilí.
+Projekce, součást služby [Knowledge Store](knowledge-store-concept-intro.md), představují zobrazení obohacených dokumentů, které je možné uložit do fyzického úložiště pro účely dolování v rámci vědomostí. Projekce umožňuje "projekt" vašich dat do tvaru, který se podle vašich potřeb sjednotí, zachovávání vztahů, aby nástroje, jako Power BI, mohly data číst bez dalšího úsilí.
 
-Projekce můžou být tabulkové, s daty uloženými v řádcích a sloupcích v úložišti Azure Table storage nebo s objekty JSON uloženými v úložišti objektů blob Azure. Můžete definovat více projekcí dat, jak je obohacována. Více projekcí jsou užitečné, pokud chcete, aby stejná data ve tvaru odlišně pro jednotlivé případy použití.
+Projekce můžou být tabulkové, s daty uloženými v řádcích a sloupcích ve službě Azure Table Storage nebo objekty JSON uložené ve službě Azure Blob Storage. Můžete definovat více výčnělků vašich dat při jejich obohacení. Více projekcí je užitečné, pokud chcete, aby stejný tvar dat byl pro jednotlivé případy použití odlišný.
 
-Úložiště znalostí podporuje tři typy projekcí:
+Znalostní databáze podporuje tři typy projekce:
 
-+ **Tabulky**: Pro data, která jsou nejlépe reprezentována jako řádky a sloupce, umožňují projekce tabulek definovat schematizovaný tvar nebo projekci v úložišti tabulky. Jako tabulky lze promítat pouze platné objekty JSON, obohacený dokument může obsahovat uzly, které nemají název JSON objekty, a při promítání těchto objektů vytvořte platný objekt JSON s dovedností tvarovače nebo inline tvarování.
++ **Tabulky**: u dat, která jsou nejlépe reprezentovaná jako řádky a sloupce, vám umožňují definovat schematized tvar nebo projekci v úložišti tabulek. Jako tabulky lze promítnout pouze platné objekty JSON, obohacený dokument může obsahovat uzly, které nejsou pojmenované objekty JSON, a při projekci těchto objektů vytvořit platný objekt JSON s dovedností Shaper nebo s vloženým tvarem.
 
-+ **Objekty**: Když potřebujete json reprezentaci dat a obohacení, objekt projekce jsou uloženy jako objekty BLOB. Pouze platné objekty JSON mohou být promítány jako objekty, obohacený dokument může obsahovat uzly, které nemají název JSON objekty a při promítání těchto objektů vytvořte platný objekt JSON s dovedností tvarovače nebo inline tvarování.
++ **Objekty**: Pokud potřebujete reprezentace JSON vašich dat a rozšíření, jsou projekce objektů uloženy jako objekty blob. Pouze platné objekty JSON mohou být probíhají jako objekty, obohacený dokument může obsahovat uzly, které nejsou pojmenované objekty JSON, a při projekci těchto objektů vytvořit platný objekt JSON s Shaper dovedností nebo včleněným tvarem.
 
-+ **Soubory**: Když potřebujete uložit obrazy extrahované z dokumentů, projekce souborů umožňují uložit normalizované obrazy do úložiště objektů blob.
++ **Soubory**: Pokud potřebujete uložit obrázky extrahované z dokumentů, projekce souborů vám umožní ukládat normalizované image do úložiště objektů BLOB.
 
-Chcete-li zobrazit projekce definované v kontextu, krok ovat [Vytvořit úložiště znalostí v REST](knowledge-store-create-rest.md).
+Pokud chcete zobrazit projekce definované v kontextu, Projděte si téma [Vytvoření úložiště znalostí v REST](knowledge-store-create-rest.md).
 
-## <a name="projection-groups"></a>Projekční skupiny
+## <a name="projection-groups"></a>Skupiny projekce
 
-V některých případech budete muset promítat obohacená data v různých tvarech, abyste splnili různé cíle. Úložiště znalostí umožňuje definovat více skupin projekcí. Projekční skupiny mají následující klíčové charakteristiky vzájemné exkluzivity a příbuznosti.
+V některých případech budete muset promítnout obohacená data v různých tvarech, aby splňovala různé cíle. Znalostní báze umožňuje definovat více skupin projekce. Skupiny projekce mají následující klíčové charakteristiky vzájemného výhradního práva a příbuznosti.
 
-### <a name="mutual-exclusivity"></a>Vzájemná exkluzivita
+### <a name="mutual-exclusivity"></a>Vzájemná výlučná práva
 
-Veškerý obsah promítaný do jedné skupiny je nezávislý na datech promítaných do jiných projekčních skupin.
-Tato nezávislost znamená, že můžete mít stejná data ve tvaru jinak, ale opakovat v každé projekční skupině.
+Veškerý obsah, který je promítnut do jedné skupiny, je nezávislý na datech, které jsou promítnuty do jiných skupin projekce.
+Tato nezávislost znamená, že můžete mít stejný tvar dat, který se v každé skupině projekce opakuje jinak, ale opakuje se.
 
 ### <a name="relatedness"></a>Příbuznost
 
-Projekční skupiny nyní umožňují promítat dokumenty mezi typy projekcí při zachování vztahů mezi typy projekce. Veškerý obsah promítaný v rámci jedné projekční skupiny zachovává vztahy v rámci dat napříč typy projekce. V rámci tabulek jsou relace založeny na generovaném klíči a každý podřízený uzel si zachová odkaz na nadřazený uzel. Napříč typy (tabulky, objekty a soubory) jsou relace zachovány, když je jeden uzel promítán napříč různými typy. Zvažte například scénář, ve kterém máte dokument obsahující obrázky a text. Text můžete promítat do tabulek nebo objektů a obrázků do souborů, kde tabulky nebo objekty mají sloupec nebo vlastnost obsahující adresu URL souboru.
+Skupiny projekce teď umožňují při zachovávání vztahů mezi typy projekce promítnout dokumenty mezi typy projekce. Veškerý obsah, který se promítá v rámci jedné skupiny projekce, zachovává vztahy v rámci dat napříč typy projekcí. V tabulkách jsou relace založeny na vygenerovaném klíči a každý podřízený uzel uchovává odkaz na nadřazený uzel. V různých typech (tabulky, objekty a soubory) se vztahy uchovávají, pokud je jeden uzel rozložený napříč různými typy. Představte si například scénář, ve kterém máte dokument obsahující obrázky a text. Text můžete promítnout do tabulek nebo objektů a obrázků do souborů, kde tabulky nebo objekty mají sloupec nebo vlastnost obsahující adresu URL souboru.
 
 ## <a name="input-shaping"></a>Vstupní tvarování
 
-Získání dat do správného tvaru nebo struktury je klíčem k efektivnímu využití, ať už se jedná o tabulky nebo objekty. Schopnost tvarovat nebo strukturovat data na základě toho, jak je plánujete přistupovat a používat je klíčovou schopností, která je vystavena jako dovednost **Shaper** v rámci skillset.  
+Načtení dat do pravého tvaru nebo struktury je klíčem k efektivnímu použití, jedná se o tabulky nebo objekty. Schopnost tvarovat nebo strukturovat data na základě toho, jak plánujete přístup a používat, je klíčovou funkcí, která je vystavena jako **Shaper** dovednost v rámci dovednosti.  
 
-Projekce jsou snadněji definovat, když máte objekt ve stromu obohacení, který odpovídá schématu projekce. Aktualizované [Shaper dovednosti](cognitive-search-skill-shaper.md) umožňuje vytvořit objekt z různých uzlů stromu obohacení a nadřazený je pod novým uzlem. Dovednost **Shaper** umožňuje definovat složité typy s vnořenými objekty.
+Pokud máte objekt ve stromu obohacení, který odpovídá schématu projekce, je snazší definovat projekce. Aktualizovaná [Shaper dovednost](cognitive-search-skill-shaper.md) umožňuje vytvořit objekt z různých uzlů stromu obohacení a jejich nadřazených objektů v rámci nového uzlu. **Shaper** dovednost umožňuje definovat komplexní typy s vnořenými objekty.
 
-Pokud máte nový tvar definovaný, který obsahuje všechny prvky, které potřebujete promítnout, můžete nyní použít tento obrazec jako zdroj pro vaše projekce nebo jako vstup do jiné dovednosti.
+Když máte definovaný nový tvar, který obsahuje všechny prvky, které potřebujete k vyzkoušení projektu, můžete teď tento tvar použít jako zdroj pro vaše projekce nebo jako vstup pro jinou dovednost.
 
-## <a name="projection-slicing"></a>Projekční krájení
+## <a name="projection-slicing"></a>Průřez projekce
 
-Při definování projekční skupiny lze jeden uzel ve stromu obohacení rozdělit do více souvisejících tabulek nebo objektů. Přidání projekce se zdrojovou cestou, která je podřízenou existující projekcí, bude mít za následek, že podřízený uzel bude rozdělen z nadřazeného uzlu a promítnut do nové, ale související tabulky nebo objektu. Tato technika umožňuje definovat jeden uzel v shaper dovednost, která může být zdrojem pro všechny vaše projekce.
+Při definování skupiny projekce lze jeden uzel ve stromu rozšíření rozřezat na více souvisejících tabulek nebo objektů. Přidáním projekce se zdrojovou cestou, která je podřízenou položkou existující projekce, bude mít za následek vyřazení podřízeného uzlu mimo nadřazený uzel a promítnut do nového související tabulky nebo objektu. Tato technika vám umožní definovat jeden uzel v Shaper dovednosti, která může být zdrojem všech vašich projekce.
 
-## <a name="table-projections"></a>Projekce stolů
+## <a name="table-projections"></a>Projekce tabulek
 
-Protože usnadňuje import, doporučujeme projekci tabulek pro zkoumání dat pomocí Power BI. Projekce tabulky navíc umožňují změnu mohutnosti mezi relacemi mezi tabulkami. 
+Vzhledem k tomu, že usnadňuje import, doporučujeme pro zkoumání dat pomocí Power BI použít projekce tabulek. Kromě toho mohou projekce tabulek umožňovat změnu mohutnosti mezi vztahy mezi tabulkami. 
 
-Můžete promítnout jeden dokument v indexu do více tabulek, zachování relací. Při promítání do více tabulek bude celý obrazec promítán do každé tabulky, pokud podřízený uzel není zdrojem jiné tabulky ve stejné skupině.
+Jeden dokument v indexu můžete promítnout do několika tabulek a zachovat vztahy. Když procházíte na více tabulek, celý tvar bude v každé tabulce projekt, pokud podřízený uzel není zdrojem jiné tabulky ve stejné skupině.
 
 ### <a name="defining-a-table-projection"></a>Definování projekce tabulky
 
-Při definování projekce tabulky `knowledgeStore` v rámci prvku vaší skillset začněte mapováním uzlu ve stromu obohacení na zdroj tabulky. Obvykle je tento uzel výstupem **shaper** dovednosti, které jste přidali do seznamu dovedností k vytvoření konkrétní ho tvaru, který je třeba promítnout do tabulek. Uzel, který zvolíte k promítu, lze rozdělit na projekt do více tabulek. Definice tabulek je seznam tabulek, které chcete promítnout.
+Při definování projekce tabulky v rámci `knowledgeStore` prvku dovednosti začněte mapováním uzlu ve stromu rozšíření na zdroj tabulky. Obvykle je tento uzel výstupem **Shaper** dovednosti, kterou jste přidali do seznamu dovedností k vytvoření konkrétního tvaru, který potřebujete k Projectu v tabulkách. Uzel, který se rozhodnete pro projekt, lze rozdělit na více tabulek. Definice tabulek je seznam tabulek, které chcete projektovat.
 
 Každá tabulka vyžaduje tři vlastnosti:
 
-+ název tabulky ve službě Azure Storage.
++ tableName: název tabulky v Azure Storage.
 
-+ generatedKeyName: Název sloupce pro klíč, který jednoznačně identifikuje tento řádek.
++ generatedKeyName: název sloupce pro klíč, který jednoznačně identifikuje tento řádek.
 
-+ zdroj: Uzel ze stromu obohacení, ze kterých získáváte obohacení. Tento uzel je obvykle výstup shaper, ale může být výstup emitovaného.
++ Zdroj: uzel ze stromu obohacení, ze kterého spravujete vaše rozšíření. Tento uzel je obvykle výstupem Shaper, ale může to být výstup kterékoli dovednosti.
 
-Zde je příklad projekcí tabulek.
+Tady je příklad projekce tabulek.
 
 ```json
 {
@@ -112,11 +112,11 @@ Zde je příklad projekcí tabulek.
 }
 ```
 
-Jak je znázorněno v tomto příkladu, klíčové fráze a entity jsou modelovány do různých tabulek a bude obsahovat odkaz zpět na nadřazené (MainTable) pro každý řádek.
+Jak je znázorněno v tomto příkladu, klíčové fráze a entity jsou modelovány do různých tabulek a budou obsahovat odkaz zpátky na nadřazenou (hlavní tabulku) pro každý řádek.
 
-## <a name="object-projections"></a>Objektové projekce
+## <a name="object-projections"></a>Projekce objektů
 
-Objekt projekce jsou JSON reprezentace stromu obohacení, které mohou být získávány z libovolného uzlu. V mnoha případech lze stejnou dovednost **Shaper,** která vytvoří projekci tabulky, použít ke generování projekce objektu. 
+Projekce objektů jsou reprezentace JSON stromu obohacení, kterou lze naformátovat z libovolného uzlu. V mnoha případech může být k vygenerování projekce objektu použita stejná **Shaper** dovednost, která vytvoří projekci tabulky. 
 
 ```json
 {
@@ -152,12 +152,12 @@ Objekt projekce jsou JSON reprezentace stromu obohacení, které mohou být zís
 
 Generování projekce objektu vyžaduje několik atributů specifických pro objekt:
 
-+ storageContainer: Kontejner objektů blob, kde budou uloženy objekty
-+ zdroj: Cesta k uzlu stromu obohacení, který je kořenem projekce
++ storageContainer: kontejner objektů blob, do kterého se uloží objekty
++ Zdroj: cesta k uzlu stromu obohacení, který je kořenem projekce.
 
-## <a name="file-projection"></a>Projekce souborů
+## <a name="file-projection"></a>Projekce souboru
 
-Projekce souborů jsou podobné projekce objektu a `normalized_images` působí pouze na kolekci. Podobně jako projekce objektů jsou projekce souborů uloženy v kontejneru objektů blob s předponou složky kódované hodnoty id dokumentu base64. Projekce souborů nemohou sdílet stejný kontejner jako projekce objektů a je třeba je promítnout do jiného kontejneru.
+Projekce souborů jsou podobné projekcím objektů a pracují pouze s `normalized_images` kolekcí. Podobně jako u projekcí objektů jsou projekce souborů uloženy v kontejneru objektů BLOB s předponou složky s hodnotou kódování Base64 ID dokumentu. Výčnělky souborů nemůžou sdílet stejný kontejner jako projekce objektů a musí se promítnout do jiného kontejneru.
 
 ```json
 {
@@ -193,26 +193,26 @@ Projekce souborů jsou podobné projekce objektu a `normalized_images` působí 
 
 ## <a name="projection-lifecycle"></a>Životní cyklus projekce
 
-Vaše projekce mají životní cyklus, který je vázán na zdrojová data ve zdroji dat. Při aktualizaci a přeindexování dat jsou vaše projekce aktualizovány s výsledky obohacení, které zajišťují, že vaše projekce budou nakonec konzistentní s daty ve zdroji dat. Projekce dědí zásady odstranění, které jste nakonfigurovali pro index. Projekce nejsou odstraněny při odstranění indexeru nebo samotné vyhledávací služby.
+Vaše projekce mají životní cyklus, který je svázán se zdrojovými daty ve zdroji dat. Jak jsou vaše data aktualizována a znovu indexována, vaše projekce se aktualizují o výsledky rozšíření, která zajišťují, že vaše projekce jsou nakonec konzistentní s daty ve zdroji dat. Výčnělky dědí zásadu odstranění, kterou jste nakonfigurovali pro váš index. Při odstranění indexeru nebo samotné vyhledávací služby se projekce neodstraňují.
 
-## <a name="using-projections"></a>Použití projekcí
+## <a name="using-projections"></a>Použití projekce
 
-Po spuštění indexeru můžete číst promítaná data v kontejnerech nebo tabulkách, které jste zadali prostřednictvím projekcí.
+Po spuštění indexeru můžete číst provedená data v kontejnerech nebo tabulkách, které jste určili pomocí projekce.
 
-Pro analýzy je průzkum v Power BI stejně jednoduchý jako nastavení úložiště Azure Table jako zdroj dat. Pomocí relací uvnitř můžete snadno vytvořit sadu vizualizací na datech.
+V případě analýz je průzkum v Power BI jednoduchý jako nastavení úložiště tabulek Azure jako zdroje dat. Pomocí vztahů v rámci můžete snadno vytvořit sadu vizualizací dat.
 
-Případně pokud potřebujete použít obohacená data v kanálu datové [vědy, můžete načíst data z objektů BLOB do datového rámce Pandy](../machine-learning/team-data-science-process/explore-data-blob.md).
+Případně, pokud potřebujete použít obohacená data v kanálu pro datové vědy, můžete [načíst data z objektů blob do PANDAS dataframe](../machine-learning/team-data-science-process/explore-data-blob.md).
 
-A konečně, pokud potřebujete exportovat data z úložiště znalostí, Azure Data Factory má konektory pro export dat a přiložte je do databáze podle vašeho výběru. 
+Nakonec, pokud potřebujete exportovat data z znalostní báze Knowledge Store, Azure Data Factory obsahuje konektory pro export dat a pozemky v databázi podle vašeho výběru. 
 
 ## <a name="next-steps"></a>Další kroky
 
-Jako další krok vytvořte první úložiště znalostí pomocí ukázkových dat a pokynů.
+Jako další krok si vytvořte svoje první úložiště znalostní báze s použitím ukázkových dat a pokynů.
 
 > [!div class="nextstepaction"]
-> [Vytvořte úložiště znalostí v REST](knowledge-store-create-rest.md).
+> [Vytvořte znalostní bázi v klidovém úložišti](knowledge-store-create-rest.md).
 
-Pro kurz zahrnující pokročilé projekce pojmy, jako je krájení, inline tvarování a vztahy, začít s [definovat projekce v úložišti znalostí](knowledge-store-projections-examples.md)
+Kurz týkající se pokročilých konceptů projekce, jako je například vytváření řezů, line Shaping a Relationships, Začínáme s [definováním projekce ve znalostní bázi Knowledge Store](knowledge-store-projections-examples.md)
 
 > [!div class="nextstepaction"]
-> [Definování projekcí v úložišti znalostí](knowledge-store-projections-examples.md)
+> [Definování projekce ve znalostní bázi Knowledge Store](knowledge-store-projections-examples.md)

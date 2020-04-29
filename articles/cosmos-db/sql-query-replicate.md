@@ -1,6 +1,6 @@
 ---
-title: REPLIKOvat v dotazovacím jazyce Azure Cosmos DB
-description: Další informace o funkci systému SQL REPLICATE v Azure Cosmos DB.
+title: REPLIKovat v Azure Cosmos DB dotazovací jazyk
+description: Přečtěte si o replikaci funkce systému SQL v Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 19fcde522c5cb0355e53a5616145f27fada7dad9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78302181"
 ---
-# <a name="replicate-azure-cosmos-db"></a>REPLIKACE (Azure Cosmos DB)
- Opakuje hodnotu řetězce zadaný počet opakování.
+# <a name="replicate-azure-cosmos-db"></a>REPLIKovat (Azure Cosmos DB)
+ Zopakuje řetězcovou hodnotu v zadaném počtu opakování.
   
 ## <a name="syntax"></a>Syntaxe
   
@@ -26,21 +26,21 @@ REPLICATE(<str_expr>, <num_expr>)
 ## <a name="arguments"></a>Argumenty
   
 *str_expr*  
-   Je řetězec výraz.
+   Je řetězcový výraz.
   
 *num_expr*  
-   Je číselný výraz. Pokud *je num_expr* záporná nebo neomezená, výsledek není definován.
+   Je numerický výraz. Pokud je *num_expr* záporné nebo nekonečno, výsledek není definován.
   
 ## <a name="return-types"></a>Návratové typy
   
-  Vrátí řetězec výraz.
+  Vrátí řetězcový výraz.
   
 ## <a name="remarks"></a>Poznámky
-  Maximální délka výsledku je 10 000 znaků, tj <*num_expr**str_expr.*
+  Maximální délka výsledku je 10 000 znaků, například (length (*str_expr*) * *num_expr*) <= 10 000.
 
 ## <a name="examples"></a>Příklady
   
-  Následující příklad ukazuje, `REPLICATE` jak se používá v dotazu.
+  Následující příklad ukazuje, jak použít `REPLICATE` v dotazu.
   
 ```sql
 SELECT REPLICATE("a", 3) AS replicate
@@ -54,10 +54,10 @@ SELECT REPLICATE("a", 3) AS replicate
 
 ## <a name="remarks"></a>Poznámky
 
-Tato systémová funkce nebude využívat index.
+Tato systémová funkce nebude index využívat.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Funkce řetězce Azure Cosmos DB](sql-query-string-functions.md)
+- [Azure Cosmos DB funkce řetězce](sql-query-string-functions.md)
 - [Systémové funkce Azure Cosmos DB](sql-query-system-functions.md)
 - [Úvod do Azure Cosmos DB](introduction.md)

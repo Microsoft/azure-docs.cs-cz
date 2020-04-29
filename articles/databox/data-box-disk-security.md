@@ -1,6 +1,6 @@
 ---
-title: Funkce zabezpečení disku datové schránky Microsoft Azure | Dokumenty Microsoft u dat
-description: Popisuje funkce zabezpečení implementované pro Disk datové schránky Azure, cloudové řešení, které umožňuje přenášet velké množství dat do Azure
+title: Funkce zabezpečení Microsoft Azure Data Box Disk | Microsoft Docs v datech
+description: Popisuje funkce zabezpečení implementované pro Azure Data Box Disk cloudové řešení, které umožňuje přenášet velké objemy dat do Azure.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: alkohli
 ms.openlocfilehash: 59cce6d89bc863ad489a8ed37c7f284d3085c775
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79117268"
 ---
-# <a name="azure-data-box-disk-security-and-data-protection"></a>Azure Data Box Zabezpečení disku a ochrana dat
+# <a name="azure-data-box-disk-security-and-data-protection"></a>Azure Data Box Disk zabezpečení a ochrana dat
 
 Tento článek popisuje bezpečnostní funkce Azure Data Box Disku, které pomáhají chránit všechny komponenty řešení Data Box i uložená data. 
 
@@ -72,7 +72,7 @@ Azure Data Box Disk shromažďuje a zobrazuje osobní údaje v následujících 
 
   - Jméno kontaktu
   - Telefonní číslo
-  - E-mail
+  - E-mailu
   - Ulice a číslo
   - Město
   - PSČ

@@ -1,5 +1,5 @@
 ---
-title: 'Úvodní příručka: Překlad řeči na řeč, Java (Windows, Linux) - Řečová služba'
+title: 'Rychlý Start: Převod řeči na řeč, Java (Windows, Linux) – Speech Service'
 titleSuffix: Azure Cognitive Services
 description: Bude doplněno
 services: cognitive-services
@@ -11,23 +11,23 @@ ms.topic: include
 ms.date: 12/09/2019
 ms.author: erhopf
 ms.openlocfilehash: 8208f6bd4e41063f514d6008166bd64ce7b1cfca
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78924773"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
-Než začnete, ujistěte se, že:
+Než začnete, nezapomeňte:
 
 > [!div class="checklist"]
-> * [Vytvoření řečového prostředku Azure](../../../../get-started.md)
+> * [Vytvoření prostředku Azure Speech](../../../../get-started.md)
 > * [Nastavení vývojového prostředí a vytvoření prázdného projektu](../../../../quickstarts/setup-platform.md?tabs=jre)
 
 ## <a name="add-sample-code"></a>Přidání ukázkového kódu
 
-1. Chcete-li do projektu Java přidat novou prázdnou**třídu,** vyberte **možnost Soubor** > **nové** > třídy .
+1. Chcete-li do projektu Java přidat novou prázdnou třídu, vyberte možnost **soubor** > **Nová** > **Třída**.
 
 1. V okně **New Java Class** (Nová třída Javy) zadejte do pole **Package** (Balíček) **speechsdk.quickstart** a do pole **Name** (Název) zadejte **Main** (Hlavní).
 
@@ -140,9 +140,9 @@ Než začnete, ujistěte se, že:
 
 ## <a name="build-and-run-the-app"></a>Sestavení a spuštění aplikace
 
-Stiskněte klávesu F11 nebo vyberte **spustit** > **ladění**.
+Stiskněte klávesu F11 nebo vyberte **Spustit** > **ladění**.
 
-1. Vyslovte anglickou frázi nebo větu. Aplikace přenáší váš projev do služby Speech, která překládá a přepisuje na text (v tomto případě do němčiny). Služba Řeč pak odešle syntetizovaný zvuk a text zpět do aplikace pro zobrazení.
+1. Vyslovte anglickou frázi nebo větu. Aplikace přenáší váš hlas ke službě rozpoznávání řeči, která překládá a transcribes text (v tomto případě do němčiny). Služba Speech pak pošle syntetizované zvuky a text zpátky do aplikace k zobrazení.
 
 ````
 Say something...

@@ -1,6 +1,6 @@
 ---
-title: Azure Data Box Edge spravují uživatele | Dokumenty společnosti Microsoft
-description: Popisuje, jak používat portál Azure ke správě uživatelů na Azure Data Box Edge.
+title: Azure Data Box Edge Správa uživatelů | Microsoft Docs
+description: Popisuje, jak používat Azure Portal ke správě uživatelů v Azure Data Box Edge.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 03/11/2019
 ms.author: alkohli
 ms.openlocfilehash: 443ed983a0eec5dfd8f7a917fbc1440cd66c3db3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78946127"
 ---
-# <a name="use-the-azure-portal-to-manage-users-on-your-azure-data-box-edge"></a>Správa uživatelů na Azure Data Box Edge pomocí portálu Azure Portal
+# <a name="use-the-azure-portal-to-manage-users-on-your-azure-data-box-edge"></a>Použití Azure Portal ke správě uživatelů v Azure Data Box Edge
 
-Tento článek popisuje, jak spravovat uživatele na Azure Data Box Edge. Azure Data Box Edge můžete spravovat prostřednictvím portálu Azure nebo prostřednictvím místního webového uživatelského prostředí. Azure Portal můžete použít k přidání, úpravě nebo odstranění uživatelů.
+Tento článek popisuje, jak spravovat uživatele v Azure Data Box Edge. Azure Data Box Edge můžete spravovat přes Azure Portal nebo prostřednictvím místního webového uživatelského rozhraní. Azure Portal můžete použít k přidání, úpravě nebo odstranění uživatelů.
 
 V tomto článku získáte informace o těchto tématech:
 
@@ -33,24 +33,24 @@ Uživatelé můžou být typu jen pro čtení, nebo s úplnými oprávněními. 
  - **Uživatel s úplnými oprávněními** – místní uživatele s úplným přístupem.
  - **Uživatel jen pro čtení** –místní uživatel s přístupem jen pro čtení. Tito uživatelé jsou přidruženi ke sdíleným složkám, které umožňují operace jen pro čtení.
 
-Oprávnění uživatele jsou definována při vytváření uživatele během vytváření sdílené složky. Úprava oprávnění na úrovni sdílené složky není aktuálně podporována.
+Oprávnění uživatele jsou definována při vytváření uživatele během vytváření sdílené složky. Úprava oprávnění na úrovni sdílené složky se v tuto chvíli nepodporuje.
 
 ## <a name="add-a-user"></a>Přidání uživatele
 
 Pokud chcete přidat uživatele, proveďte na webu Azure Portal následující kroky.
 
-1. Na webu Azure Portal přejděte na prostředek Data Box Edge a potom na **přehled > uživatelé**. Vyberte **+ Přidat uživatele** na panelu příkazů.
+1. V Azure Portal přejdete na prostředek Data Box Edge a pak přejdete na **přehled > uživatelé**. Na panelu příkazů vyberte **+ Přidat uživatele** .
 
-    ![Vybrat přidat uživatele](media/data-box-edge-manage-users/add-user-1.png)
+    ![Vyberte Přidat uživatele.](media/data-box-edge-manage-users/add-user-1.png)
 
 2. Zadejte uživatelské jméno a heslo pro uživatele, kterého chcete přidat. Potvrďte heslo a vyberte **Přidat**.
 
-    ![Zadání uživatelského jména a hesla](media/data-box-edge-manage-users/add-user-2.png)
+    ![Zadat uživatelské jméno a heslo](media/data-box-edge-manage-users/add-user-2.png)
 
     > [!IMPORTANT] 
     > Tito uživatelé jsou rezervováni systémem a není možné je používat: Administrator, EdgeUser, EdgeSupport, HcsSetupUser, WDAGUtilityAccount, CLIUSR, DefaultAccount, Guest.  
 
-3. Při zahájení a dokončení vytvoření uživatele se zobrazí oznámení. Po vytvoření uživatele zvolte z panelu příkazů možnost **Aktualizovat** a zobrazte aktualizovaný seznam uživatelů.
+3. Po zahájení a dokončení vytvoření uživatele se zobrazí oznámení. Po vytvoření uživatele klikněte na panelu příkazů na **aktualizovat** , aby se zobrazil aktualizovaný seznam uživatelů.
 
 
 ## <a name="modify-user"></a>Úprava uživatele
@@ -65,13 +65,13 @@ Po vytvoření uživatele můžete změnit heslo přidružené k uživateli. Vyb
 Pokud chcete uživatele odstranit, proveďte na webu Azure Portal následující kroky.
 
 
-1. Na webu Azure Portal přejděte na prostředek Data Box Edge a potom na **přehled > uživatelé**.
+1. V Azure Portal přejdete na prostředek Data Box Edge a pak přejdete na **přehled > uživatelé**.
 
-    ![Vyberte uživatele, který má být odstraněn.](media/data-box-edge-manage-users/delete-user-1.png)
+    ![Vyberte uživatele, kterého chcete odstranit.](media/data-box-edge-manage-users/delete-user-1.png)
 
 2. Vyberte uživatele ze seznamu uživatelů a pak vyberte **Odstranit**.  
 
-   ![Vybrat Odstranit](media/data-box-edge-manage-users/delete-user-2.png)
+   ![Vybrat odstranit](media/data-box-edge-manage-users/delete-user-2.png)
 
 3. Po zobrazení výzvy potvrďte odstranění. 
 

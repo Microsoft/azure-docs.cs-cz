@@ -1,5 +1,5 @@
 ---
-title: (ZASTARALÉ) Použití acr s clusterem Azure DC/OS
+title: ZASTARALÉ Použití ACR s clusterem DC/OS Azure
 description: Použití služby Azure Container Registry s clusterem DC/OS ve službě Azure Container Service
 services: container-service
 author: julienstroheker
@@ -10,13 +10,13 @@ ms.date: 03/23/2017
 ms.author: juliens
 ms.custom: mvc
 ms.openlocfilehash: 9e69b66c7cee5a6e012ad7ed2477556fa840bfb5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78402067"
 ---
-# <a name="deprecated-use-acr-with-a-dcos-cluster-to-deploy-your-application"></a>(ZASTARALÉ) Nasazení aplikace pomocí acr s clusterem řadiče domény/operačního systému
+# <a name="deprecated-use-acr-with-a-dcos-cluster-to-deploy-your-application"></a>ZASTARALÉ Nasazení aplikace pomocí ACR s clusterem DC/OS
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
@@ -127,7 +127,7 @@ Vytvořte kontejner z image Ubuntu.
 docker run ubuntu --name base-image
 ```
 
-Potom kontejner zachyťte do nové image. Název bitové kopie `loginServer` musí obsahovat název registru `loginServer/imageName`kontejnerů ve formátu .
+Potom kontejner zachyťte do nové image. Název bitové kopie musí obsahovat `loginServer` název registru kontejneru s formátem. `loginServer/imageName`
 
 ```console
 docker -H tcp://localhost:2375 commit base-image mycontainerregistry30678.azurecr.io/dcos-demo

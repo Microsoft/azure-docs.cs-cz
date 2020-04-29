@@ -1,6 +1,6 @@
 ---
-title: HORNÍ v dotazovacím jazyce Azure Cosmos DB
-description: Další informace o funkci systému SQL UPPER v Azure Cosmos DB.
+title: HORNÍ v Azure Cosmos DB dotazovací jazyk
+description: Přečtěte si o funkci systému SQL UPPER v Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,16 +8,16 @@ ms.date: 03/04/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 5129b4fffafb6918f655263cac2f5564635acf36
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78303966"
 ---
-# <a name="upper-azure-cosmos-db"></a>HORNÍ (Azure Cosmos DB)
+# <a name="upper-azure-cosmos-db"></a>UPPER (Azure Cosmos DB)
  Vrátí řetězcový výraz po převodu malých znakových dat na velká písmena.  
 
-Funkce systému UPPER nevyužívá index. Pokud máte v plánu provádět časté porovnávání bez rozlišování velkých a malých písmen, funkce systému UPPER může spotřebovat značné množství RU. Pokud se jedná o tento případ, namísto použití funkce systému UPPER normalizovat data pokaždé, když pro porovnání, můžete normalizovat kryt při vložení. Pak dotaz jako SELECT * FROM c WHERE UPPER(c.name) = 'BOB' jednoduše stane SELECT * FROM c KDE c.name = 'BOB'.
+Funkce horní soustavy nevyužívá index. Pokud se chystáte provádět časté porovnávání velkých a malých písmen, může funkce HORNÍch systémových funkcí spotřebovat značné množství RU. Pokud se jedná o tento případ, namísto použití horní systémové funkce k normalizaci dat pokaždé, když se postará o porovnávání, můžete při vložení normalizovat velká a malá písmena. Pak dotaz, jako je SELECT * FROM c, kde UPPER (c. Name) = ' BOB ', se jednoduše vybere jako * FROM c WHERE c.name = ' BOB '.
 
 ## <a name="syntax"></a>Syntaxe
   
@@ -28,15 +28,15 @@ UPPER(<str_expr>)
 ## <a name="arguments"></a>Argumenty
   
 *str_expr*  
-   Je řetězec výraz.  
+   Je řetězcový výraz.  
   
 ## <a name="return-types"></a>Návratové typy
   
-  Vrátí řetězec výraz.  
+  Vrátí řetězcový výraz.  
   
 ## <a name="examples"></a>Příklady
   
-  Následující příklad ukazuje, `UPPER` jak se používá v dotazu  
+  Následující příklad ukazuje, jak použít `UPPER` v dotazu.  
   
 ```sql
 SELECT UPPER("Abc") AS upper  
@@ -50,10 +50,10 @@ SELECT UPPER("Abc") AS upper
 
 ## <a name="remarks"></a>Poznámky
 
-Tato systémová funkce nebude využívat index.
+Tato systémová funkce nebude index využívat.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Funkce řetězce Azure Cosmos DB](sql-query-string-functions.md)
+- [Azure Cosmos DB funkce řetězce](sql-query-string-functions.md)
 - [Systémové funkce Azure Cosmos DB](sql-query-system-functions.md)
 - [Úvod do Azure Cosmos DB](introduction.md)

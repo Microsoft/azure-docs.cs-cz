@@ -1,5 +1,5 @@
 ---
-title: Rychlý start klientské knihovny Java pro vyhledávání obrázků Bingu
+title: Rychlý Start klientské knihovny s Vyhledávání obrázků Bingu Java
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,21 +9,21 @@ ms.topic: include
 ms.date: 03/04/2020
 ms.author: aahi
 ms.openlocfilehash: 4656d8116ddd2e618adad97aeea576e88bc8785f
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78899577"
 ---
-Pomocí tohoto rychlého startu můžete provést první vyhledávání obrázků pomocí klientské knihovny hledání obrázků Bing, která je obálkou rozhraní API a obsahuje stejné funkce. Tato jednoduchá aplikace Javy posílá dotaz pro vyhledání obrázku, parsuje odpověď JSON a zobrazuje adresu URL prvního nalezeného obrázku.
+Pomocí tohoto rychlého startu můžete udělat své první hledání obrázků pomocí klientské knihovny Vyhledávání obrázků Bingu, což je obálka pro rozhraní API a obsahuje stejné funkce. Tato jednoduchá aplikace Javy posílá dotaz pro vyhledání obrázku, parsuje odpověď JSON a zobrazuje adresu URL prvního nalezeného obrázku.
 
-Zdrojový kód pro tuto ukázku je k dispozici [na GitHubu](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingImageSearch/Quickstart) s dalším zpracováním chyb a anotacemi.
+Zdrojový kód pro tuto ukázku je k dispozici [na GitHubu](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingImageSearch/Quickstart) s dalšími zpracováním chyb a poznámkami.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Nejnovější verze sady [Java Development Kit](https://aka.ms/azure-jdks) (JDK)
 
-Nainstalujte závislosti klientské knihovny Bing Image Search pomocí Maven, Gradle nebo jiného systému správy závislostí. Soubor POM Mavenu vyžaduje následující deklaraci:
+Nainstalujte závislosti Vyhledávání obrázků Bingu klientské knihovny pomocí nástroje Maven, Gradle nebo jiného systému pro správu závislostí. Soubor POM Mavenu vyžaduje následující deklaraci:
 
 ```xml
  <dependencies>
@@ -39,7 +39,7 @@ Nainstalujte závislosti klientské knihovny Bing Image Search pomocí Maven, Gr
 
 ## <a name="create-and-initialize-the-application"></a>Vytvoření a inicializace aplikace
 
-1. Vytvořte nový projekt Java ve svém oblíbeném rozhraní IDE nebo editoru a přidejte do implementace třídy následující importy:
+1. Vytvořte nový projekt Java v oblíbeném prostředí IDE nebo editoru a přidejte následující importy do vaší implementace třídy:
 
     ```java
     import com.microsoft.azure.cognitiveservices.search.imagesearch.BingImageSearchAPI;
@@ -57,7 +57,7 @@ Nainstalujte závislosti klientské knihovny Bing Image Search pomocí Maven, Gr
     BingImageSearchAPI client = BingImageSearchManager.authenticate(subscriptionKey);
     ```
 
-## <a name="send-a-search-request-to-the-api"></a>Odeslání požadavku na vyhledávání do rozhraní API
+## <a name="send-a-search-request-to-the-api"></a>Odeslání žádosti o vyhledávání do rozhraní API
 
 1. Pomocí `bingImages().search()` odešlete požadavek HTTP obsahující vyhledávací dotaz. Uložte odpověď jako `ImagesModel`.
 
@@ -71,7 +71,7 @@ Nainstalujte závislosti klientské knihovny Bing Image Search pomocí Maven, Gr
 ## <a name="parse-and-view-the-result"></a>Parsování a zobrazení výsledku
 
 Parsujte výsledky obrázků vrácené v odpovědi.
-Pokud odpověď obsahuje výsledky hledání, uložte první výsledek a vytiskněte jeho podrobnosti, například adresu URL miniatury, původní adresu URL spolu s celkovým počtem vrácených obrázků.  
+Pokud odpověď obsahuje výsledky hledání, uložte první výsledek a vytiskněte jeho podrobnosti, jako je například adresa URL miniatury, původní adresa URL a celkový počet vrácených imagí.  
 
 ```java
 if (imageResults != null && imageResults.value().size() > 0) {
@@ -99,5 +99,5 @@ else {
 * [Vyzkoušet online interaktivní ukázku](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
 * [Získání přístupového klíče služeb Cognitive Services zdarma](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)
 * [Ukázky Java pro sadu Azure Cognitive Services SDK](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
-* [Dokumentace ke službě Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services)
+* [Dokumentace k Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services)
 * [Referenční informace k rozhraní API Bingu pro vyhledávání obrázků](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

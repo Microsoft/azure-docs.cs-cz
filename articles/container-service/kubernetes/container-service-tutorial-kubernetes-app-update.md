@@ -1,5 +1,5 @@
 ---
-title: (ZASTARALÉ) Kurz služby Azure Container Service – aktualizace aplikace
+title: ZASTARALÉ Kurz Azure Container Service – aktualizace aplikace
 description: Kurz Azure Container Service – Aktualizace aplikace
 author: iainfoulds
 ms.service: container-service
@@ -8,16 +8,16 @@ ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: e65ca30e4f15b6f69f39160c67813047c40ce8ee
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78274130"
 ---
-# <a name="deprecated-update-an-application-in-kubernetes"></a>(ZASTARALÉ) Aktualizace aplikace v Kubernetes
+# <a name="deprecated-update-an-application-in-kubernetes"></a>ZASTARALÉ Aktualizace aplikace v Kubernetes
 
 > [!TIP]
-> Aktualizovanou verzi tohoto kurzu, který používá službu Azure Kubernetes, [najdete v tématu Kurz: Aktualizace aplikace ve službě Azure Kubernetes Service (AKS).](../../aks/tutorial-kubernetes-app-update.md)
+> Aktualizovanou verzi v tomto kurzu, který používá službu Azure Kubernetes, najdete v tématu [kurz: aktualizace aplikace ve službě Azure Kubernetes Service (AKS)](../../aks/tutorial-kubernetes-app-update.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -33,7 +33,7 @@ V tomto kurzu, který je šestou částí sedmidílné série, se aktualizuje ap
 
 V dalších kurzech se služba Log Analytics konfiguruje pro monitorování clusteru Kubernetes.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 V předchozích kurzech se aplikace zabalila do image kontejneru, tato image se odeslala do Azure Container Registry a vytvořil se cluster Kubernetes. Aplikace se potom spustila v tomto clusteru Kubernetes. 
 
@@ -81,7 +81,7 @@ Přejděte na adresu `http://localhost:8080` a prohlédněte si aktualizovanou a
 
 Označte image `azure-vote-front` pomocí názvu loginServer registru kontejneru. 
 
-Získejte název přihlašovacího serveru pomocí příkazu [az acr list.](/cli/azure/acr#az-acr-list)
+Pomocí příkazu [AZ ACR list](/cli/azure/acr#az-acr-list) Získejte název přihlašovacího serveru.
 
 ```azurecli
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table

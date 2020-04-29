@@ -1,58 +1,58 @@
 ---
-title: Azure Functions geografické zotavení po havárii a vysoká dostupnost
-description: Jak používat geografické oblasti pro redundanci a převzetí služeb při selhání v Azure Functions.
+title: Azure Functions geografického zotavení po havárii a vysoké dostupnosti
+description: Použití geografických oblastí pro zajištění redundance a převzetí služeb při selhání v Azure Functions.
 ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.openlocfilehash: 481a716bd6ced5c304da41c70fdcfc687b76661d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79080236"
 ---
 # <a name="azure-functions-geo-disaster-recovery"></a>Azure Functions geografické zotavení po havárii
 
-Když celé oblasti Azure nebo datová centra dojít k prostojům, je důležité pro výpočetní prostředky pokračovat ve zpracování v jiné oblasti.  Tento článek vysvětluje některé strategie, které můžete použít k nasazení funkcí, které umožňují zotavení po havárii.
+Když celé oblasti Azure nebo datová centra dostanou výpadky, je důležité, aby výpočetní prostředky pokračovaly v zpracování v jiné oblasti.  V tomto článku se vysvětlují některé strategie, které můžete použít k nasazení funkcí, které umožňují zotavení po havárii.
 
 ## <a name="basic-concepts"></a>Základní koncepty
 
-Funkce Azure běží v určité oblasti.  Chcete-li získat vyšší dostupnost, můžete nasadit stejné funkce do více oblastí.  Ve více oblastech můžete mít své funkce spuštěné v *aktivním/aktivním* vzoru nebo *v aktivním/pasivním* vzoru.  
+Azure Functions spustit v konkrétní oblasti.  Chcete-li získat vyšší dostupnost, můžete stejné funkce nasadit do více oblastí.  Když ve více oblastech můžete mít vaše funkce spuštěné v *aktivním/aktivním* vzoru nebo v *aktivním/pasivním* vzoru.  
 
-* Aktivní/aktivní vysoká dostupnost: Obě oblasti jsou aktivní a přijímající události (duplicitní nebo otočení). Aktivní/aktivní se doporučuje pro funkce HTTPS v kombinaci s Azure Front Door.
-* Aktivní/pasivní. Jedna oblast je aktivní a přijímá události, zatímco sekundární je nečinný.  Pokud je požadováno převzetí služeb při selhání, sekundární oblast je aktivována a převezme zpracování.  To se doporučuje pro funkce bez protokolu HTTP, jako je Service Bus a Event Hubs.
+* Aktivní/aktivní vysoká dostupnost: Obě oblasti jsou aktivní a přijímají se události (jsou duplicitní nebo kruhové). Aktivní/aktivní se doporučuje pro funkce protokolu HTTPS v kombinaci s předními dvířky Azure.
+* Aktivní/pasivní. Jedna oblast je aktivní a přijímá události, zatímco sekundární je nečinný.  Pokud je vyžadováno převzetí služeb při selhání, je sekundární oblast aktivována a převezme se zpracování.  Tato možnost se doporučuje pro jiné funkce než HTTP, jako je Service Bus a Event Hubs.
 
-Další informace o nasazeních ve více oblastech najdou další informace o tom, jak [spouštět aplikace ve více oblastech.](https://docs.microsoft.com/azure/architecture/reference-architectures/app-service-web-app/multi-region)
+Další informace o nasazeních ve více oblastech najdete [v tématu spuštění aplikací v několika oblastech](https://docs.microsoft.com/azure/architecture/reference-architectures/app-service-web-app/multi-region) .
 
 ## <a name="activeactive-for-https-functions"></a>Aktivní/aktivní pro funkce HTTPS
 
-K dosažení aktivního nebo aktivního nasazení funkcí vyžaduje některé součásti, které mohou koordinovat události mezi oběma oblastmi.  Pro funkce HTTPS se tato koordinace provádí pomocí [Azure Front Door](../frontdoor/front-door-overview.md).  Azure Front Door můžete směrovat a kruhové dotazování https požadavky mezi více regionálních funkcí.  Také pravidelně kontroluje stav každého koncového bodu.  Pokud regionální funkce přestane reagovat na kontroly stavu, Azure Front Door ji vyvede z rotace a přepošle provoz pouze na funkce v pořádku.  
+Pro zajištění aktivní/aktivní nasazení funkcí vyžaduje některá součást, která může koordinovat události mezi oběma oblastmi.  V případě funkcí protokolu HTTPS je tato koordinace prováděna pomocí služby [Azure front-dveří](../frontdoor/front-door-overview.md).  Přední dvířka Azure můžou směrovat požadavky HTTPS a kruhové dotazování mezi několika místními funkcemi.  Také pravidelně kontroluje stav každého koncového bodu.  Pokud místní funkce přestane reagovat na kontroly stavu, přední dveře Azure přestanou být v provozu a přesměrují jenom provoz do zdravých funkcí.  
 
-![Architektura pro přední dveře a funkce Azure](media/functions-geo-dr/front-door.png)  
+![Architektura pro službu Azure front-dveří a funkci](media/functions-geo-dr/front-door.png)  
 
-## <a name="activeactive-for-non-https-functions"></a>Aktivní/aktivní pro funkce bez protokolu HTTPS
+## <a name="activeactive-for-non-https-functions"></a>Aktivní/aktivní pro funkce jiného typu než HTTPS
 
-Stále můžete dosáhnout aktivního/aktivního nasazení pro funkce bez protokolu HTTPS.  Je však třeba zvážit, jak budou tyto dvě oblasti vzájemně spolupracovat nebo koordinovat.  Pokud jste nasadili stejnou aplikaci funkce do dvou oblastí, z nichž každá se aktivuje ve stejné frontě service bus, budou fungovat jako konkurenční spotřebitelé při vyřazení této fronty do fronty.  I když to znamená, že každá zpráva je zpracovávána pouze jednou z instancí, znamená to také, že v jedné sběrnici je stále jediný bod selhání.  Pokud nasadíte dvě fronty service bus (jeden v primární oblasti, jeden v sekundární oblasti) a dvě aplikace funkce ukázal na jejich fronty oblasti, výzva nyní přichází v tom, jak jsou zprávy fronty distribuovány mezi dvěma oblastmi.  Často to znamená, že každý vydavatel se pokusí publikovat zprávu do *obou* oblastí a každá zpráva je zpracována oběma aplikacemi aktivních funkcí.  I když to vytvoří aktivní/aktivní vzor, vytvoří další problémy kolem duplikace výpočetních prostředků a kdy nebo jak jsou data konsolidována.  Z těchto důvodů se doporučuje pro aktivační události bez https používat aktivní/pasivní vzor.
+K dispozici jsou i nadále aktivní/aktivní nasazení pro funkce bez HTTPS.  Je však třeba vzít v úvahu, jak budou tyto dvě oblasti vzájemně spolupracovat nebo se vzájemně koordinovat.  Pokud jste stejnou aplikaci Function App nasadili do dvou oblastí, každá aktivuje se ve stejné Service Busové frontě, která by mohla vystupovat jako konkurenční příjemce ve frontě.  To znamená, že každá zpráva je zpracovávána pouze jednou z instancí, znamená to také, že v jednom Service Bus je stále jediný bod selhání.  Pokud nasadíte dvě fronty Service Bus (jednu v primární oblasti, jednu v sekundární oblasti) a dvě aplikace funkcí odkazovaly na jejich oblast, zobrazí se výzva nyní ve způsobu, jakým jsou zprávy fronty distribuovány mezi dvě oblasti.  To často znamená, že se každý Vydavatel pokusí publikovat zprávy do *obou* oblastí a každá zpráva je zpracována aktivní funkcí aplikace.  V takovém případě se vytvoří model aktivní/aktivní a vytvoří se další výzvy týkající se duplikace výpočetních prostředků a při konsolidaci dat nebo způsobu jejich konsolidace.  Z těchto důvodů se doporučuje, aby triggery bez HTTPS používaly vzorek aktivní/pasivní.
 
-## <a name="activepassive-for-non-https-functions"></a>Aktivní/pasivní pro funkce bez PROTOKOLU HTTPS
+## <a name="activepassive-for-non-https-functions"></a>Aktivní/pasivní pro funkce bez HTTPS
 
-Aktivní/pasivní poskytuje způsob, jak pouze jednu funkci zpracovat každou zprávu, ale poskytuje mechanismus převzetí služeb při selhání do sekundární oblasti v případě havárie.  Azure Functions funguje společně s [geografickou obnovou Azure Service Bus](../service-bus-messaging/service-bus-geo-dr.md) a [geografickou obnovou Azure Event Hubs](../event-hubs/event-hubs-geo-dr.md).
+Aktivní/pasivní poskytuje způsob, jak každou zprávu zpracovat jenom jedna funkce, ale poskytuje mechanismus pro převzetí služeb při selhání do sekundární oblasti v případě havárie.  Azure Functions funguje souběžně s [Azure Service Bus geografickým obnovením](../service-bus-messaging/service-bus-geo-dr.md) a [geografickým obnovením Azure Event Hubs](../event-hubs/event-hubs-geo-dr.md).
 
-Použití Azure Event Hubs aktivační události jako příklad, aktivní/pasivní vzor by zahrnovat následující:
+Pomocí aktivačních událostí Azure Event Hubs jako příklad může vzor aktivní/pasivní zahrnovat následující:
 
-* Azure Event Hub nasazené do primární i sekundární oblasti.
-* Geografická katastrofa povolena pro spárování primárního a sekundárního centra událostí.  Tím se také vytvoří "alias", který můžete použít k připojení k rozbočovačům událostí a přepnout z primárního na sekundární bez změny informací o připojení.
-* Funkční aplikace nasazené do primární i sekundární oblasti.
-* Aplikace funkcí se aktivují v *přímém* (nealias) připojovacím řetězci pro příslušné centrum událostí. 
-* Vydavatelé centra událostí by měli publikovat do připojovacího řetězce aliasu. 
+* Centrum událostí Azure je nasazené do primární i sekundární oblasti.
+* Geografická havárie povolená pro spárování primárního a sekundárního centra událostí.  Tím se také vytvoří alias, pomocí kterého se můžete připojit k centrům událostí a přepnout z primárního na sekundární, aniž by se změnily informace o připojení.
+* Aplikace Function App se nasazují do primární i sekundární oblasti.
+* Aplikace Function App se aktivují v připojovacím řetězci *přímého* (bez aliasu) pro příslušné centrum událostí. 
+* Vydavatelé do centra událostí by se měli publikovat do připojovacího řetězce aliasu. 
 
-![Příkladová architektura active-pasivní](media/functions-geo-dr/active-passive.png)
+![Příklad architektury aktivní – pasivní](media/functions-geo-dr/active-passive.png)
 
-Před převzetím služeb při selhání budou vydavatelé odesílající do sdíleného aliasu směrováni do primárního centra událostí.  Aplikace primární funkce naslouchá výhradně primárnímu centru událostí.  Aplikace sekundární funkce bude pasivní a nečinná.  Jakmile je zahájeno převzetí služeb při selhání, vydavatelé odesílající do sdíleného aliasu se nyní přesměrují do sekundárního centra událostí.  Aplikace sekundární funkce se nyní aktivuje a spustí se automaticky.  Efektivní převzetí služeb při selhání do sekundární oblasti lze řídit zcela z centra událostí, přičemž funkce se stanou aktivními pouze v případě, že je aktivní příslušné centrum událostí.
+Před převzetím služeb při selhání budou vydavatelé odesílající do sdíleného aliasu směrovat do primárního centra událostí.  Primární aplikace Function naslouchá výhradně primárnímu centru událostí.  Sekundární aplikace Function App bude pasivní a nečinný.  Po zahájení převzetí služeb při selhání budou vydavatelé odesílající do sdíleného aliasu přesměrováni do sekundárního centra událostí.  Sekundární aplikace Function App se teď aktivuje jako aktivní a spustí se automaticky.  Efektivní převzetí služeb při selhání u sekundární oblasti se dá zcela řídit z centra událostí. funkce se stanou aktivní jenom v případě, že je příslušné centrum událostí aktivní.
 
-Přečtěte si další informace a důležité informace o převzetí služeb při selhání pomocí [služby Service Bus](../service-bus-messaging/service-bus-geo-dr.md) a [center událostí](../event-hubs/event-hubs-geo-dr.md).
+Přečtěte si další informace a požadavky pro převzetí služeb při selhání pomocí [Service Bus](../service-bus-messaging/service-bus-geo-dr.md) a [centra událostí](../event-hubs/event-hubs-geo-dr.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Vytvoření předních dveří Azure](../frontdoor/quickstart-create-front-door.md)
-* [Důležité informace o převzetí služeb při selhání centra událostí](../event-hubs/event-hubs-geo-dr.md#considerations)
+* [Vytvoření front-dveří Azure](../frontdoor/quickstart-create-front-door.md)
+* [Event Hubs předpoklady pro převzetí služeb při selhání](../event-hubs/event-hubs-geo-dr.md#considerations)

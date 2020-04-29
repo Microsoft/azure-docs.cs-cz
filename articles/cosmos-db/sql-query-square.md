@@ -1,6 +1,6 @@
 ---
-title: SQUARE v dotazovacím jazyce Azure Cosmos DB
-description: Další informace o funkci systému SQL SQUARE v Azure Cosmos DB.
+title: Čtvereček v Azure Cosmos DB dotazovací jazyk
+description: Další informace o funkci systému SQL ČTVERCe v Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,10 +8,10 @@ ms.date: 03/04/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: a22c4daaf9df889f2256bc78f2175c966d4841f7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78303439"
 ---
 # <a name="square-azure-cosmos-db"></a>ČTVEREC (Azure Cosmos DB)
@@ -26,7 +26,7 @@ SQUARE(<numeric_expr>)
 ## <a name="arguments"></a>Argumenty
   
 *numeric_expr*  
-   Je číselný výraz.  
+   Je numerický výraz.  
   
 ## <a name="return-types"></a>Návratové typy
   
@@ -34,7 +34,7 @@ SQUARE(<numeric_expr>)
   
 ## <a name="examples"></a>Příklady
   
-  Následující příklad vrátí koncelní kyvné na čísla 1-3.  
+  Následující příklad vrátí čtverce čísel 1-3.  
   
 ```sql
 SELECT SQUARE(1) AS s1, SQUARE(2.0) AS s2, SQUARE(3) AS s3  
@@ -48,7 +48,7 @@ SELECT SQUARE(1) AS s1, SQUARE(2.0) AS s2, SQUARE(3) AS s3
 
 ## <a name="remarks"></a>Poznámky
 
-Tato systémová funkce nebude využívat index.
+Tato systémová funkce nebude index využívat.
 
 ## <a name="next-steps"></a>Další kroky
 
