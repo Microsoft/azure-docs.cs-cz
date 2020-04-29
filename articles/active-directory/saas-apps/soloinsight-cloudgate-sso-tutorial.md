@@ -17,10 +17,10 @@ ms.date: 05/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b88822f164e0fe8cdf55eddfa981644f725e01f3
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73159933"
 ---
 # <a name="tutorial-integrate-soloinsight-cloudgate-sso-with-azure-active-directory"></a>Kurz: integrace Soloinsight-CloudGate SSO s Azure Active Directory
@@ -33,7 +33,7 @@ V tomto kurzu se dozvíte, jak integrovat jednotné přihlašování Soloinsight
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -48,7 +48,7 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 
 Pokud chcete nakonfigurovat integraci Soloinsight-CloudGate jednotného přihlašování do služby Azure AD, musíte do svého seznamu spravovaných aplikací pro SaaS přidat jednotné přihlašování Soloinsight-CloudGate z galerie.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
 1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
@@ -68,7 +68,7 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
 5. **[Vytvořte uživatele Soloinsight-CLOUDGATE SSO Test User](#create-soloinsight-cloudgate-sso-test-user)** , který má protějšek Britta Simon v Soloinsight-CloudGate SSO, který je propojený s reprezentací uživatele Azure AD.
 6. **[Otestujte jednotné přihlašování](#test-sso)** a ověřte, jestli konfigurace funguje.
 
-### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
+### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
@@ -80,9 +80,9 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Na stránce **základní konfigurace SAML** zadejte hodnoty pro následující pole:
 
-    1. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<SUBDOMAIN>.sigateway.com/login`
+    1. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<SUBDOMAIN>.sigateway.com/login`
 
-    1. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru: `https://<SUBDOMAIN>.sigateway.com/process/sso`
+    1. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru:`https://<SUBDOMAIN>.sigateway.com/process/sso`
 
    > [!NOTE]
    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným přihlašovacím URL a identifikátorem, který je vysvětlen později v části **Konfigurace jednotného přihlašování Soloinsight-CLOUDGATE jednotného přihlašování** v tomto kurzu.
@@ -107,7 +107,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 3. Pokud chcete ručně nastavit Soloinsight-CloudGate jednotné přihlašování, otevřete nové okno webového prohlížeče a přihlaste se k vaší společnosti Soloinsight-CloudGate SSO jako správce a proveďte následující kroky:
 
-4. Chcete-li získat hodnoty, které mají být vloženy do Azure Portal při konfiguraci základního SAML, přihlaste se k webovému portálu CloudGate pomocí svých přihlašovacích údajů a potom přejděte k nastavení jednotného přihlašování, které najdete v následující cestě **> správě > Nastavení systému. > Obecné**.
+4. Chcete-li získat hodnoty, které mají být vloženy do Azure Portal při konfiguraci základní SAML, přihlaste se k webovému portálu CloudGate pomocí svých přihlašovacích údajů a potom přejděte k nastavení jednotného přihlašování, které najdete v následující cestě **>správě>nastavení systému>obecné**.
 
     ![Nastavení jednotného přihlašování CloudGate](./media/soloinsight-cloudgate-sso-tutorial/sso-main-settings.png)
 
@@ -187,7 +187,7 @@ Chcete-li vytvořit testovacího uživatele, vyberte možnost **zaměstnanci** z
 
 Když na přístupovém panelu kliknete na dlaždici SSO Soloinsight-CloudGate, měli byste se automaticky přihlásit k rozhraní Soloinsight-CloudGate SSO, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

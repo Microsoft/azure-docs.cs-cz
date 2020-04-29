@@ -17,10 +17,10 @@ ms.date: 10/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bcec326ddab1e74f43e1bb7ef446998a40799fd0
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73043562"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-veracode"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Veracode
@@ -33,7 +33,7 @@ V tomto kurzu se dozvíte, jak integrovat Veracode s Azure Active Directory (Azu
 
 Další informace o integraci aplikací SaaS (software jako služba) s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -68,7 +68,7 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
     * **[Vytvořte Veracode testovacího uživatele](#create-veracode-test-user)** , který bude mít protějšek B. Simon v Veracode propojený s uživatelem v zastoupení Azure AD.
 1. **[Otestujte jednotné přihlašování](#test-sso)** a ověřte, jestli konfigurace funguje.
 
-## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
+## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
@@ -78,9 +78,9 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
    ![Snímek obrazovky s nastavením jednotného přihlašování pomocí SAML se zvýrazněnou ikonou tužky](common/edit-urls.png)
 
-1. V **základní sekci konfigurace SAML** je aplikace předem nakonfigurovaná a potřebné adresy URL už jsou předem naplněné pomocí Azure. Vyberte **Save** (Uložit).
+1. V **základní sekci konfigurace SAML** je aplikace předem nakonfigurovaná a potřebné adresy URL už jsou předem naplněné pomocí Azure. Vyberte **Uložit**.
 
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** Najděte **certifikát (Base64)** . Vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do svého počítače.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** Najděte **certifikát (Base64)**. Vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do svého počítače.
 
     ![Snímek obrazovky s oddílem podpisového certifikátu SAML se zvýrazněným odkazem pro stažení](common/certificatebase64.png)
 
@@ -90,11 +90,11 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Veracode také očekává několik dalších atributů, které se mají zpětně předat v odpovědi SAML. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle svých požadavků.
 
-    | Name (Název) | Zdrojový atribut|
+    | Název | Zdrojový atribut|
     | ---------------| --------------- |
     | FirstName |User. křestní jméno |
     | polím |User. příjmení |
-    | e-mail |uživatel. pošta |
+    | e-mail |Uživatel. pošta |
 
 1. V části **Nastavení Veracode** zkopírujte na základě vašeho požadavku příslušné adresy URL.
 
@@ -104,7 +104,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V jiném okně webového prohlížeče se přihlaste k webu Veracode společnosti jako správce.
 
-1. V nabídce v horní části vyberte **nastavení** > **správce**.
+1. V nabídce v horní části vyberte **Nastavení** > **správce**.
    
     ![Snímek obrazovky se správou Veracode s ikonami nastavení a zvýrazněným správcem](./media/veracode-tutorial/ic802911.png "Správa")
 
@@ -131,11 +131,11 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     c. V části **Podrobnosti atributu SAML**vyberte následující:
       * **Role uživatelů**
       * **Správce zásad**
-      * **Revidujícího**
+      * **Kontrolor**
       * **Vedoucí zabezpečení**
-      * **Operativní**
+      * **Manažer**
       * **Odesílatel**
-      * **Tvůrce**
+      * **tvůrce**
       * **Všechny typy kontrol**
       * **Členství v týmu**
       * **Výchozí tým**
@@ -144,20 +144,20 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně Azure Portal vyberte **Azure Active Directory** >**uživatelů** > **všech uživatelích**.
+1. V levém podokně Azure Portal vyberte **Azure Active Directory** >**Uživatelé** > **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
 
    1. Jako **název**zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno**zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Do pole username@companydomain.extension **uživatelské jméno**zadejte. Například, `B.Simon@contoso.com`.
    1. Vyberte možnost **Zobrazit heslo**a potom zapište zobrazenou hodnotu.
-   1. Vyberte **Create** (Vytvořit).
+   1. Vyberte **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte B. Simon použití jednotného přihlašování Azure tím, že udělíte přístup k Veracode.
 
-1. V Azure Portal vyberte **podnikové aplikace** > **všech aplikacích**.
+1. V Azure Portal vyberte možnost **podnikové aplikace** > **všechny aplikace**.
 1. V seznamu aplikace vyberte **Veracode**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
@@ -184,7 +184,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu vyberete **Veracode** , měli byste se automaticky přihlásit k Veracode, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další zdroje
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

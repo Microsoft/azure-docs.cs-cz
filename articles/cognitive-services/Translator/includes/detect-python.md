@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: 6591fd6eb232bf5fb242c9e08830324f864dac2f
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71837498"
 ---
 [!INCLUDE [Prerequisites](prerequisites-python.md)]
@@ -31,7 +31,7 @@ První komentář říká interpretu Pythonu, že má použít kódování UTF-8
 
 ## <a name="set-the-subscription-key-endpoint-and-path"></a>Nastavení klíče předplatného, koncového bodu a cesty
 
-Tato ukázka se pokusí přečíst klíč předplatného Translator Text `TRANSLATOR_TEXT_KEY` a `TRANSLATOR_TEXT_ENDPOINT`koncový bod z proměnných prostředí: a . Pokud nejste obeznámeni s proměnnými prostředí, můžete nastavit `subscription_key` a `endpoint` jako řetězce a komentovat podmíněné příkazy.
+Tato ukázka se pokusí přečíst klíč předplatného Translator Text a koncový bod z proměnných prostředí: `TRANSLATOR_TEXT_KEY` a `TRANSLATOR_TEXT_ENDPOINT`. Pokud nejste obeznámeni s proměnnými prostředí, můžete nastavit `subscription_key` a `endpoint` jako řetězce a přidat komentář k podmíněným příkazům.
 
 Zkopírujte do svého projektu tento kód:
 
@@ -47,7 +47,7 @@ if not endpoint_var_name in os.environ:
 endpoint = os.environ[endpoint_var_name]
 ```
 
-Globální koncový bod Translator Text `endpoint`je nastaven jako . `path` nastaví trasu `detect` a určuje, že chceme cílit na rozhraní API verze 3.
+Translator Text globální koncový bod je nastaven jako `endpoint`. `path` nastaví trasu `detect` a určuje, že chceme cílit na rozhraní API verze 3.
 
 >[!NOTE]
 > Další informace o koncových bodech, trasách a parametrech požadavků najdete v tématu [Translator Text API 3.0: Rozpoznávání](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect).
@@ -71,7 +71,7 @@ headers = {
 }
 ```
 
-Pokud používáte předplatné služeb Cognitive Services s více `Ocp-Apim-Subscription-Region` službami, musíte také zahrnout parametry požadavku. [Přečtěte si další informace o ověřování pomocí předplatného s více službami](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
+Pokud používáte Cognitive Services předplatné s více službami, musíte taky zahrnout `Ocp-Apim-Subscription-Region` do parametrů žádosti. [Přečtěte si další informace o ověřování pomocí předplatného s více službami](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
 
 ## <a name="create-a-request-to-detect-text-language"></a>Vytvoření požadavku na rozpoznání jazyka textu
 
@@ -112,10 +112,10 @@ Pokud chcete porovnat svůj kód s naším, kompletní ukázka je k dispozici na
 
 ## <a name="sample-response"></a>Ukázková odpověď
 
-Po spuštění ukázky, měli byste vidět následující vytištěno na terminálu:
+Po spuštění ukázky by se měla zobrazit následující tištěná do terminálu:
 
 > [!NOTE]
-> Zkratku země/oblasti naleznete v tomto [seznamu jazyků](https://docs.microsoft.com/azure/cognitive-services/translator/language-support).
+> V tomto [seznamu jazyků](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)Najděte zkratku země/oblasti.
 
 ```json
 [
@@ -148,7 +148,7 @@ Pokud jste do svého programu pevně zakódovali klíč předplatného, nezapome
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na odkaz rozhraní API pochopit vše, co můžete dělat s překladačem text api.
+Podívejte se na reference k rozhraní API, abyste porozuměli všem, co můžete s Translator Text API dělat.
 
 > [!div class="nextstepaction"]
 > [referenční dokumentace k rozhraní API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

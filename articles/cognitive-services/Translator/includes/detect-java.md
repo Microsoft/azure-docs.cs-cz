@@ -5,36 +5,36 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: 9ce4b25d26c0294cf7618b5851c0956af7687ee7
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71837548"
 ---
 [!INCLUDE [Prerequisites](prerequisites-java.md)]
 
 [!INCLUDE [Setup and use environment variables](setup-env-variables.md)]
 
-## <a name="initialize-a-project-with-gradle"></a>Inicializovat projekt s Gradlem
+## <a name="initialize-a-project-with-gradle"></a>Inicializovat projekt pomocí Gradle
 
-Začněme vytvořením pracovního adresáře pro tento projekt. Z příkazového řádku (nebo terminálu) spusťte tento příkaz:
+Pojďme začít vytvořením pracovního adresáře pro tento projekt. Z příkazového řádku (nebo terminálu) spusťte tento příkaz:
 
 ```console
 mkdir detect-sample
 cd detect-sample
 ```
 
-Dále inicializujete projekt Gradle. Tento příkaz vytvoří základní soubory sestavení pro Gradle, co je nejdůležitější, `build.gradle.kts`, který se používá za běhu k vytvoření a konfiguraci aplikace. Spusťte tento příkaz z pracovního adresáře:
+Teď budete chtít inicializovat projekt Gradle. Tento příkaz vytvoří základní soubory sestavení pro Gradle, co je nejdůležitější, `build.gradle.kts`a který se používá za běhu k vytvoření a konfiguraci vaší aplikace. Spusťte tento příkaz z pracovního adresáře:
 
 ```console
 gradle init --type basic
 ```
 
-Po zobrazení výzvy k výběru **dsl**vyberte **možnost Kotlin**.
+Po zobrazení výzvy k výběru **DSL**vyberte **Kotlin**.
 
-## <a name="configure-the-build-file"></a>Konfigurace souboru sestavení
+## <a name="configure-the-build-file"></a>Konfigurovat soubor sestavení
 
-Vyhledejte `build.gradle.kts` a otevřete jej pomocí svého oblíbeného rozhraní IDE nebo textového editoru. Potom zkopírujte v této konfiguraci sestavení:
+Vyhledejte `build.gradle.kts` ho a otevřete ho pomocí svého oblíbeného integrovaného vývojového prostředí nebo textového editoru. Pak zkopírujte do této konfigurace sestavení:
 
 ```
 plugins {
@@ -53,21 +53,21 @@ dependencies {
 }
 ```
 
-Vezměte na vědomí, že tato ukázka má závislosti na OkHttp pro požadavky HTTP a Gson pro zpracování a analýzu JSON. Pokud se chcete dozvědět více o konfiguracích sestavení, přečtěte si informace [o vytváření nových gradle buildů](https://guides.gradle.org/creating-new-gradle-builds/).
+Všimněte si, že tato ukázka obsahuje závislosti na OkHttp pro požadavky HTTP a gson pro zpracování a analýzu JSON. Pokud se chcete dozvědět více o konfiguracích sestavení, přečtěte si téma [vytváření nových Gradle sestavení](https://guides.gradle.org/creating-new-gradle-builds/).
 
-## <a name="create-a-java-file"></a>Vytvoření souboru java
+## <a name="create-a-java-file"></a>Vytvoření souboru Java
 
-Pojďme vytvořit složku pro ukázkovou aplikaci. Z pracovního adresáře spusťte:
+Pojďme vytvořit složku pro ukázkovou aplikaci. V pracovním adresáři spusťte:
 
 ```console
 mkdir -p src/main/java
 ```
 
-Dále v této složce vytvořte soubor s názvem `Detect.java`.
+Potom v této složce vytvořte soubor s názvem `Detect.java`.
 
-## <a name="import-required-libraries"></a>Import požadovaných knihoven
+## <a name="import-required-libraries"></a>Importovat požadované knihovny
 
-Otevřete `Detect.java` a přidejte tyto příkazy importu:
+Otevřete `Detect.java` a přidejte tyto příkazy pro import:
 
 ```java
 import java.io.*;
@@ -80,7 +80,7 @@ import com.squareup.okhttp.*;
 
 ## <a name="define-variables"></a>Definování proměnných
 
-Nejprve budete muset vytvořit veřejnou třídu pro váš projekt:
+Nejprve budete muset vytvořit veřejnou třídu pro svůj projekt:
 
 ```java
 public class Detect {
@@ -88,7 +88,7 @@ public class Detect {
 }
 ```
 
-Přidejte tyto `Detect` řádky do třídy. Všimněte si, že klíč předplatného a koncový bod se čtou z proměnných prostředí:
+Přidejte tyto řádky do `Detect` třídy. Všimněte si, že klíč předplatného a koncový bod se čtou z proměnných prostředí:
 
 ```java
 private static String subscriptionKey = System.getenv("TRANSLATOR_TEXT_SUBSCRIPTION_KEY");
@@ -96,18 +96,18 @@ private static String endpoint = System.getenv("TRANSLATOR_TEXT_ENDPOINT");
 String url = endpoint + "/detect?api-version=3.0";
 ```
 
-Pokud používáte předplatné služeb Cognitive Services s více `Ocp-Apim-Subscription-Region` službami, musíte také zahrnout parametry požadavku. [Přečtěte si další informace o ověřování pomocí předplatného s více službami](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
+Pokud používáte Cognitive Services předplatné s více službami, musíte taky zahrnout `Ocp-Apim-Subscription-Region` do parametrů žádosti. [Přečtěte si další informace o ověřování pomocí předplatného s více službami](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
 
-## <a name="create-a-client-and-build-a-request"></a>Vytvoření klienta a sestavení požadavku
+## <a name="create-a-client-and-build-a-request"></a>Vytvoření klienta a sestavení žádosti
 
-Přidejte tento `Detect` řádek do třídy `OkHttpClient`k vytvoření instance :
+Přidejte tento řádek do `Detect` třídy pro vytvoření instance: `OkHttpClient`
 
 ```java
 // Instantiates the OkHttpClient.
 OkHttpClient client = new OkHttpClient();
 ```
 
-Dále sestavíme požadavek POST. Nebojte se změnit text pro detekci jazyka.
+Nyní sestavíme požadavek POST. Můžete měnit text pro detekci jazyka.
 
 ```java
 // This function performs a POST request.
@@ -126,7 +126,7 @@ public String Post() throws IOException {
 
 ## <a name="create-a-function-to-parse-the-response"></a>Vytvoření funkce pro analýzu odpovědi
 
-Tato jednoduchá funkce analyzuje a prettifikuje odpověď JSON ze služby Translator Text.
+Tato jednoduchá funkce analyzuje a prettifies odpověď JSON od služby Translator Text.
 
 ```java
 // This function prettifies the json response.
@@ -140,7 +140,7 @@ public static String prettify(String json_text) {
 
 ## <a name="put-it-all-together"></a>Spojení všech součástí dohromady
 
-Posledním krokem je podat žádost a získat odpověď. Přidejte do projektu tyto řádky:
+Posledním krokem je vytvoření žádosti a získání odpovědi. Přidejte tyto řádky do projektu:
 
 ```java
 public static void main(String[] args) {
@@ -156,7 +156,7 @@ public static void main(String[] args) {
 
 ## <a name="run-the-sample-app"></a>Spuštění ukázkové aplikace
 
-To je ono, jste připraveni spustit ukázkovou aplikaci. Z příkazového řádku (nebo terminálové relace) přejděte do kořenového adresáře pracovního adresáře a spusťte:
+To je to, že jste připraveni spustit ukázkovou aplikaci. Z příkazového řádku (nebo relace Terminálové služby) přejděte do kořenového adresáře svého pracovního adresáře a spusťte příkaz:
 
 ```console
 gradle build
@@ -170,10 +170,10 @@ gradle run
 
 ## <a name="sample-response"></a>Ukázková odpověď
 
-Po spuštění ukázky, měli byste vidět následující vytištěno na terminálu:
+Po spuštění ukázky by se měla zobrazit následující tištěná do terminálu:
 
 > [!NOTE]
-> Zkratku země/oblasti naleznete v tomto [seznamu jazyků](https://docs.microsoft.com/azure/cognitive-services/translator/language-support).
+> V tomto [seznamu jazyků](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)Najděte zkratku země/oblasti.
 
 ```json
 [
@@ -202,7 +202,7 @@ Po spuštění ukázky, měli byste vidět následující vytištěno na termin�
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na odkaz rozhraní API pochopit vše, co můžete dělat s překladačem text api.
+Podívejte se na reference k rozhraní API, abyste porozuměli všem, co můžete s Translator Text API dělat.
 
 > [!div class="nextstepaction"]
 > [referenční dokumentace k rozhraní API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

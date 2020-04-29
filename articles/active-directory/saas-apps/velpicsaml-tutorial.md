@@ -17,10 +17,10 @@ ms.date: 10/01/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f699e2244cde53200a9885602bd20c899c0ce4cd
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "72241564"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-velpic-saml"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s VELPIC SAML
@@ -33,7 +33,7 @@ V tomto kurzu se dozvíte, jak integrovat VELPIC SAML pomocí Azure Active Direc
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -70,7 +70,7 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
     1. **[Vytvořte VELPIC testovacího uživatele SAML](#create-velpic-saml-test-user)** – abyste měli protějšek B. Simon ve VELPIC SAML, která je propojená s reprezentací uživatele v Azure AD.
 1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
+## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
@@ -82,9 +82,9 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V části **základní konfigurace SAML** zadejte hodnoty pro následující pole:
 
-    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<sub-domain>.velpicsaml.net`.
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<sub-domain>.velpicsaml.net`
 
-    b) Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru: `https://auth.velpic.com/saml/v2/<entity-id>/login`
+    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru:`https://auth.velpic.com/saml/v2/<entity-id>/login`
 
     > [!NOTE]
     > Upozorňujeme, že přihlašovací adresa URL bude poskytnuta týmem VELPIC SAML a hodnota identifikátoru bude k dispozici při konfiguraci modulu plug-in SSO na straně VELPIC SAML. Tuto hodnotu musíte zkopírovat ze stránky aplikace VELPIC SAML a vložit ji sem.
@@ -104,8 +104,8 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
-   1. Do pole **název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například `B.Simon@contoso.com`.
+   1. Do pole **Název** zadejte `B.Simon`.  
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na **Vytvořit**.
 
@@ -161,7 +161,7 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
     a. Do textového pole **název** zadejte název modulu plug-in SAML.
 
-    b) Do textového pole **Adresa URL vystavitele** vložte **identifikátor Azure AD** , který jste zkopírovali z okna **Konfigurace přihlášení** Azure Portal.
+    b. Do textového pole **Adresa URL vystavitele** vložte **identifikátor Azure AD** , který jste zkopírovali z okna **Konfigurace přihlášení** Azure Portal.
 
     c. V **konfiguraci metadat poskytovatele** nahrajte soubor XML metadat, který jste stáhli z Azure Portal.
 
@@ -169,7 +169,7 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
     e. Do textového pole zkopírujte **adresu URL jednotného přihlašování** a vložte ji do Azure Portal.
     
-    f. Klikněte na **Save** (Uložit).
+    f. Klikněte na **Uložit**.
 
 ### <a name="create-velpic-saml-test-user"></a>Vytvořit testovacího uživatele VELPIC SAML
 
@@ -187,11 +187,11 @@ Přihlaste se k VELPIC webu společnosti SAML jako správce a proveďte následu
     
     a. Do textového pole **název** zadejte jméno B.
 
-    b) Do textového pole **příjmení** zadejte jméno Simon.
+    b. Do textového pole **příjmení** zadejte jméno Simon.
 
     c. Do textového pole **uživatelské jméno** zadejte uživatelské jméno B. Simon.
 
-    d. Do textového pole **e-mail** zadejte e-mailovou adresu účtu B.Simon@contoso.com.
+    d. Do textového pole **e-mail** zadejte e-mailovou adresu B.Simon@contoso.com účtu.
 
     e. Zbývající informace jsou volitelné, můžete je v případě potřeby vyplnit.
     
@@ -207,7 +207,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 1. Pokud se chcete přihlásit k VELPIC pomocí svého účtu Azure AD, klikněte na tlačítko **Přihlásit se pomocí Azure AD** .
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
