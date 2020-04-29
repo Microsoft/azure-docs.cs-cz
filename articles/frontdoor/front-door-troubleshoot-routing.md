@@ -1,6 +1,6 @@
 ---
-title: Řešení problémů s konfigurací Azure Front Door
-description: V tomto kurzu se dozvíte, jak samostatně řešit některé běžné problémy, kterým můžete čelit pro vaše přední dveře.
+title: Řešení potíží s konfigurací front-dveří Azure
+description: V tomto kurzu se naučíte, jak sami řešit některé běžné problémy, které se dají pro vaše přední dveře vytvářet.
 services: frontdoor
 documentationcenter: ''
 author: sharad4u
@@ -13,96 +13,96 @@ ms.topic: article
 ms.date: 09/22/2018
 ms.author: sharadag
 ms.openlocfilehash: 962c884eb8adc05e5d50b6b254d5c3f0b18af556
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79471502"
 ---
-# <a name="troubleshooting-common-routing-issues"></a>Poradce při potížích s běžným směrováním
+# <a name="troubleshooting-common-routing-issues"></a>Řešení běžných potíží se směrováním
 
-Tento článek popisuje, jak řešit některé běžné problémy směrování, kterým můžete čelit pro konfiguraci Azure Front Door.
+Tento článek popisuje, jak řešit některé běžné problémy s směrováním, které můžete mít pro konfiguraci front-výstupů Azure.
 
-## <a name="503-response-from-front-door-after-a-few-seconds"></a>503 odezva od předních dveří po několika sekundách
+## <a name="503-response-from-front-door-after-a-few-seconds"></a>503 reakce z předních dveří po několika sekundách
 
 ### <a name="symptom"></a>Příznak
 
-- Pravidelné požadavky odeslané do backendu, aniž by procházely předními dveřmi, jsou úspěšné, ale procházení frontových dveří vede k 503 chybovým odpovědím.
+- Pravidelné požadavky odeslané do back-endu bez průchodu před předními dveřmi jsou úspěšné, ale přes přední dveře mají za následek 503 chybových odpovědí.
 
-- Porucha z předních dveří se zobrazí po několika sekundách (obvykle po 30 sekundách)
+- Selhání z front-dveří se zobrazí po několika sekundách (obvykle přibližně po 30 sekundách).
 
 ### <a name="cause"></a>Příčina
 
-Tento příznak se stane, když buď back-end trvá nad časový limit konfigurace (výchozí je 30 sekund) přijímat požadavek z předních dveří nebo pokud trvá déle než tuto hodnotu časového limitu odeslat odpověď na požadavek z front door. 
+K tomuto problému dochází, když back-end trvá déle než konfigurace časového limitu (výchozí hodnota je 30 sekund), aby se žádost dostala z front-endu, nebo pokud tato hodnota časového limitu překročí k odeslání odpovědi na požadavek z předních dveří. 
 
 ### <a name="troubleshooting-steps"></a>Postup při řešení potíží
 
-- Pošlete žádost přímo do back-endu (bez průchodu předními dveřmi) a zjistěte, jaký je obvyklý čas, který trvá, než váš backend odpoví.
-- Pošlete žádost přes přední dveře a uvidíme, jestli vidíte nějaké 503 odpovědí. Pokud ne, pak to nemusí být problém s časovým časem. Obraťte se na podporu.
-- Pokud procházíte front door, výsledkem je kód odpovědi na chybu 503, nakonfigurujte pole sendReceiveTimeout pro přední dveře, abyste prodloužili výchozí časový limit až na 4 minuty (240 sekund). Nastavení je pod `backendPoolSettings` a `sendRecvTimeoutSeconds`je volána . 
+- Odešlete žádost přímo do back-endu (bez přechodu přes přední vrátka) a podívejte se na to, jaká je obvyklá doba, jakou má váš back-end reagovat.
+- Poslat požadavek přes dvířka a zjistit, jestli se vám zobrazují odpovědi 503. Pokud ne, může se jednat o problém s vypršením časového limitu. Obraťte se prosím na podporu.
+- Pokud provedete přes přední dvířka, výsledkem bude 503 kód chyby odezvy a potom nakonfigurovat pole sendReceiveTimeout pro vaše přední dveře, aby se výchozí časový limit rozšířil na 4 minuty (240 sekund). Nastavení je zavolána `sendRecvTimeoutSeconds`v `backendPoolSettings` a. 
 
-## <a name="requests-sent-to-the-custom-domain-returns-400-status-code"></a>Požadavky odeslané do vlastní domény vrátí 400 Stavový kód
+## <a name="requests-sent-to-the-custom-domain-returns-400-status-code"></a>Požadavky odeslané do vlastní domény vrátí stavový kód 400.
 
 ### <a name="symptom"></a>Příznak
 
-- Vytvořili jste front door, ale požadavek na doménu nebo hostitele front-endu vrací stavový kód HTTP 400.
+- Vytvořili jste frontu, ale požadavek na hostitele domény nebo front-end vrací kód stavu HTTP 400.
 
-- Vytvořili jste mapování DNS z vlastní domény na front-endového hostitele, který jste nakonfigurovali. Odeslání požadavku na vlastní název_hostitele domény však vrátí stavový kód HTTP 400 a nezobrazí se směrovat do back-endu, které jste nakonfigurovali.
+- Vytvořili jste mapování DNS z vlastní domény na hostitele front-endu, kterého jste nakonfigurovali. Odesláním žádosti o název hostitele vlastní domény ale vrátí stavový kód HTTP 400 a nezobrazuje se směrování na back-endové servery, které jste nakonfigurovali.
 
 ### <a name="cause"></a>Příčina
 
-K tomuto příznaku může dojít, pokud jste nenakonfigurovali pravidlo směrování pro vlastní doménu, kterou jste přidali jako front-endového hostitele. Pravidlo směrování musí být explicitně přidáno pro tohoto hostitele front-endu, i když již bylo nakonfigurováno pro front-endového hostitele pod subdoménou Front Door (*.azurefd.net), na kterou má vaše vlastní doména mapování DNS.
+K tomuto problému může dojít, pokud jste nenakonfigurovali pravidlo směrování pro vlastní doménu, kterou jste přidali jako hostitele s front-endu. Pravidlo směrování se musí explicitně přidat pro tohoto hostitele front-endu, a to i v případě, že už je nakonfigurovaný pro hostitele front-end v rámci subdomény front-endu (*. azurefd.net), na kterou má vaše vlastní doména mapování DNS.
 
 ### <a name="troubleshooting-steps"></a>Postup při řešení potíží
 
-Přidejte pravidlo směrování z vlastní domény do požadovaného back-endového fondu.
+Přidejte pravidlo směrování z vlastní domény do požadovaného back-end fondu.
 
-## <a name="front-door-is-not-redirecting-http-to-https"></a>Přední dveře nepřesměrovává HTTP na HTTPS
+## <a name="front-door-is-not-redirecting-http-to-https"></a>Přední dvířka přesměrují HTTP na HTTPS.
 
 ### <a name="symptom"></a>Příznak
 
-Přední dveře mají pravidlo směrování, které říká přesměrování HTTP na protokol HTTPS, ale přístup k doméně stále udržuje protokol HTTP jako protokol.
+Vaše přední dveře obsahují pravidlo směrování, které říká přesměrování HTTP na HTTPS, ale přístup k doméně stále udržuje protokol HTTP jako protokol.
 
 ### <a name="cause"></a>Příčina
 
-K tomuto chování může dojít, pokud jste správně nenakonfigurovali pravidla směrování pro přední dveře. V podstatě vaše aktuální konfigurace není specifická a může mít konfliktní pravidla.
+K tomuto chování může dojít, pokud jste nenakonfigurovali správně pravidla směrování pro vaše přední dveře. V podstatě vaše aktuální konfigurace není specifická a může mít konfliktní pravidla.
 
 ### <a name="troubleshooting-steps"></a>Postup při řešení potíží
 
-## <a name="request-to-frontend-hostname-returns-404-status-code"></a>Požadavek na název hostitele front-endvrátí stavový kód 404.
+## <a name="request-to-frontend-hostname-returns-404-status-code"></a>Požadavek na název hostitele front-endu vrátí stavový kód 404.
 
 ### <a name="symptom"></a>Příznak
 
-- Vytvořili jste frontdoor a nakonfigurovali front-endového hostitele, back-endový fond s alespoň jedním back-endem a pravidlo směrování, které spojuje front-endového hostitele s back-endovým fondem. Zdá se, že váš obsah není k dispozici při odesílání požadavku na konfigurovanému hostiteli front-endu, protože je vrácen stavový kód HTTP 404.
+- Vytvořili jste přední dvířka a nakonfigurovali hostitele front-endu, back-end fond s alespoň jedním back-end serverem a pravidlo směrování, které připojuje hostitele front-end k back-endovému fondu. Váš obsah nemusí být k dispozici při odesílání žádosti do nakonfigurovaného hostitele front-endu, protože je vrácen stavový kód HTTP 404.
 
 ### <a name="cause"></a>Příčina
 
-Existuje několik možných příčin tohoto příznaku:
+U tohoto příznaku existuje několik možných příčin:
 
-- Back-end není veřejný back-end a není viditelný pro přední dveře.
-- Back-end je nesprávně nakonfigurován, což způsobuje, že přední dveře odešlou nesprávný požadavek (to znamená, že back-end přijímá pouze protokol HTTP, ale nezrušili jste povolení protokolu HTTPS, takže front door se pokouší předat požadavky HTTPS).
-- Back-end odmítá hlavičku hostitele, která byla předána s požadavkem back-endu.
-- Konfigurace pro back-end ještě nebyla plně nasazena.
+- Back-end není veřejným přístupem k back-endu a není viditelný pro přední dveře.
+- Back-end je nesprávně nakonfigurovaný, což způsobuje, že přední dveře pošle nesprávný požadavek (to znamená, že back-end přijímá jenom protokol HTTP, ale nejste u něj nekontrolované, aby se při pokusu o přeposílání požadavků HTTPS předaly i přední dveře.
+- Back-end odmítá hlavičku hostitele předanou žádostí do back-endu.
+- Konfigurace pro back-end ještě není plně nasazená.
 
 ### <a name="troubleshooting-steps"></a>Postup při řešení potíží
 
 1. Čas nasazení
-   - Ujistěte se, že jste čekali ~10 minut na nasazení konfigurace.
+   - Před nasazením konfigurace se ujistěte, že jste čekali přibližně 10 minut.
 
-2. Kontrola nastavení back-endu
-    - Přejděte do back-endového fondu, do kterého by měl být požadavek směrován (závisí na tom, jak máte nakonfigurované pravidlo směrování) a ověřte, zda je _typ back-endového a_ back-endového hostitele správný. Pokud back-end je vlastní hostitel, ujistěte se, že jste jej napsali správně. 
+2. Kontrolovat nastavení back-endu
+    - Přejděte do fondu back-end, do kterého se má žádost směrovat (závisí na tom, jak máte nakonfigurované pravidlo směrování), a ověřte, že _typ hostitele back-endu_ a název hostitele back-endu jsou správné. Pokud je back-end vlastním hostitelem, ujistěte se, že je správně napsaný. 
 
-    - Zkontrolujte porty HTTP a HTTPS. Ve většině případů 80 a 443 (v uvedeném pořadí) jsou správné a žádné změny budou vyžadovány. Existuje však možnost, že back-end není nakonfigurován tímto způsobem a naslouchá na jiném portu.
+    - Ověřte porty HTTP a HTTPS. Ve většině případů jsou 80 a 443 (v uvedeném pořadí) správné a nevyžadují se žádné změny. Existuje však možnost, že back-end není nakonfigurován tímto způsobem a naslouchá na jiném portu.
 
-        - Zkontrolujte _hlavičku hostitele Back-end_ nakonfigurované pro back-endy, do kterých by měl být směrován hostitel front-end. Ve většině případů by toto záhlaví mělo být stejné jako _název hostitele Back-endu_. Nesprávná hodnota však může způsobit různé kódy stavu HTTP 4xx, pokud back-end očekává něco jiného. Pokud zadáte IP adresu back-endu, možná budete muset nastavit _hlavičku hostitele Back-end_ na název hostitele back-endu.
+        - Ověřte _hlavičku hostitele back-end_ nakonfigurovanou pro back-endy, do kterých se má hostitel front-endu směrovat. Ve většině případů by tato hlavička měla být stejná jako _název hostitele back-endu_. Nesprávná hodnota ale může způsobit různé stavové kódy 4xx HTTP, pokud back-end očekává něco jiného. Pokud zadáte IP adresu vašeho back-endu, možná budete muset nastavit _hlavičku hostitele back-end_ na název hostitele back-endu.
 
 
-3. Kontrola nastavení pravidla směrování
-    - Přejděte na pravidlo směrování, které by mělo směrovat z názvu hostitele front-endu do fondu back-endu. Ujistěte se, že přijaté protokoly jsou správně nakonfigurovány, nebo pokud ne, ujistěte se, že protokol Front Door bude používat při předávání požadavku je správně nakonfigurován. Pole _přijaté protokoly_ určuje, které požadavky by měly přijmout front door, a _protokol předávání_ určuje, jaký protokol by měl front door použít k předání požadavku back-endu.
-         - Například pokud back-end přijímá pouze požadavky HTTP, budou platné následující konfigurace:
-            - _Přijaté protokoly_ jsou HTTP a HTTPS. _Protokol předávání_ je http. Požadavek na shodu nebude fungovat, protože protokol HTTPS je povolený protokol a pokud je požadavek přišel jako HTTPS, front door by se ho pokusil předat dál pomocí protokolu HTTPS.
+3. Ověřte nastavení pravidla směrování.
+    - Přejděte do pravidla směrování, které by mělo směrovat z daného názvu hostitele front-endu do back-endového fondu. Zajistěte, aby byly přijaté protokoly správně nakonfigurované, nebo pokud ne, zajistěte, aby se při předávání žádosti správně nakonfigurovala Tato dvířka protokolu. Pole _přijaté protokoly_ určuje, které požadavky musí přední dveře přijmout, a _protokol předávání_ určuje, jaké přední dveře protokolu mají použít pro předání žádosti do back-endu.
+         - Příklad: Pokud back-end akceptuje pouze požadavky HTTP, budou platné následující konfigurace:
+            - _Přijaté protokoly_ jsou HTTP a HTTPS. _Protokol předávání_ je http. Požadavek shody nebude fungovat, protože HTTPS je povolený protokol, a pokud požadavek přišel jako HTTPS, přední dveře se pokusí o přeposlání pomocí protokolu HTTPS.
 
-            - _Přijaté protokoly_ jsou HTTP. _Protokol předávání_ je buď požadavek na shodu, nebo protokol HTTPS.
+            - _Přijaté protokoly_ jsou http. _Protokol předávání_ buď odpovídá požadavku, nebo protokolu HTTPS.
 
-    - _Přepis adresy URL_ je ve výchozím nastavení zakázán a toto pole byste měli použít pouze v případě, že chcete zúžit rozsah prostředků hostovaných v back-endu, které chcete zpřístupnit. Pokud je zakázáno, front door předá stejnou cestu požadavku, kterou obdrží. Je možné, že toto pole je nesprávně nakonfigurována a front door požaduje prostředek z back-endu, který není k dispozici, a tedy vrácení stavový kód HTTP 404.
+    - _Přepsání adresy URL_ je ve výchozím nastavení zakázáno a toto pole byste měli použít pouze v případě, že chcete zúžit rozsah prostředků hostovaných hostovaným serverem, které mají být k dispozici. Pokud je tato akce zakázána, předá přední dveře stejnou cestu požadavku, kterou obdrží. Je možné, že toto pole je špatně nakonfigurované a přední dveře vyžadují prostředek z back-endu, který není k dispozici, a vrátí stavový kód HTTP 404.
 

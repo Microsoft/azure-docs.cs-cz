@@ -1,6 +1,6 @@
 ---
-title: Azure Front Door – monitorování stavu back-endu | Dokumenty společnosti Microsoft
-description: Tento článek vám pomůže pochopit, jak Azure Front Door monitoruje stav back-endů
+title: Sledování stavu back-endu pro Azure front-endu | Microsoft Docs
+description: Tento článek vám pomůže pochopit, jak přední dveře Azure monitorují stav back-endu.
 services: frontdoor
 documentationcenter: ''
 author: sharad4u
@@ -12,65 +12,65 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: e2e656c395f1a31c1f5ebbd46d5a18a046f854f7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79471570"
 ---
 # <a name="health-probes"></a>Sondy stavu
 
-Za účelem určení stavu a blízkosti každého back-endu z daného prostředí front door, každé prostředí front door pravidelně odesílá syntetický požadavek HTTP/HTTPS do každého z nakonfigurovaných back-endů. Služba Front Door pak s využitím odpovědí z těchto sond určí nejlepší back-endy, do kterých má směrovat skutečné požadavky klientů. 
+Aby bylo možné určit stav a blízkost každého back-endu z určitého prostředí front-endu, každé prostředí front-endu pravidelně odesílá do každého nakonfigurovaného back-endu syntetickou žádost HTTP/HTTPS. Služba Front Door pak s využitím odpovědí z těchto sond určí nejlepší back-endy, do kterých má směrovat skutečné požadavky klientů. 
 
 > [!WARNING]
-> Vzhledem k tomu, že přední dveře mají mnoho okrajových prostředí po celém světě, zdravotní sonda požaduje objem pro vaše back-endy může být poměrně vysoká - v rozmezí od 25 požadavků každou minutu až po 1200 požadavků za minutu, v závislosti na frekvenci nakonfigurované na frekvenci sondy stavu. S výchozí frekvence sondy 30 sekund, objem sondy na back-endu by měla být asi 200 požadavků za minutu.
+> Vzhledem k tomu, že přední dvířka mají globálně mnoho hraničních prostředí, může být objem požadavků na vaše back-endy poměrně vysoký od 25 požadavků každou minutu až po 1200 požadavků za minutu, v závislosti na konfiguraci frekvence sond stavu. S výchozí frekvencí sondy 30 sekund by měl mít svazek sondy na back-endu přibližně 200 požadavků za minutu.
 
 ## <a name="supported-protocols"></a>Podporované protokoly
 
-Přední dveře podporují odesílání sond přes protokoly HTTP nebo HTTPS. Tyto sondy se odesílají přes stejné porty TCP, jaké jsou nakonfigurované pro směrování požadavků klientů. Toto chování není možné přepsat.
+Přední dvířka podporují odesílání sond přes protokoly HTTP nebo HTTPS. Tyto sondy se odesílají přes stejné porty TCP, jaké jsou nakonfigurované pro směrování požadavků klientů. Toto chování není možné přepsat.
 
 ## <a name="supported-http-methods-for-health-probes"></a>Podporované metody HTTP pro sondy stavu
 
-Přední dveře podporují následující metody HTTP pro odesílání sond stavu:
+Přední dvířka podporují následující metody protokolu HTTP pro odesílání sond stavu:
 
-1. **Získat:** Metoda GET znamená, že načtení jakékoli informace (ve formě entity) je identifikován Request-URI.
-2. **HLAVA:** Head Metoda je shodná s GET s tím rozdílem, že server nesmí vrátit text zprávy v odpovědi. U nových profilů předních dveří je ve výchozím nastavení metoda sondy nastavena jako HEAD.
+1. **Získat:** Metoda GET znamená načtení jakýchkoli informací (ve formě entity), které jsou identifikovány identifikátorem požadavku-URI.
+2. **Pozice:** Metoda HEAD je shodná s metodou GET s tím rozdílem, že server nesmí v odpovědi vracet tělo zprávy. Pro nové profily front-dveří je ve výchozím nastavení metoda sondy nastavena jako HEAD.
 
 > [!NOTE]
-> Pro nižší zatížení a náklady na back-endy, Přední dveře doporučuje používat HEAD požadavky na zdravotní sondy.
+> V případě nižšího zatížení a nákladů na back-endy doporučuje přední dveře použití požadavků hlav pro sondy stavu.
 
-## <a name="health-probe-responses"></a>Reakce sondy stavu
+## <a name="health-probe-responses"></a>Odezvy sond stavu
 
 | Odezvy  | Popis | 
 | ------------- | ------------- |
-| Určení zdraví  |  Stavový kód 200 OK označuje, že back-end je v pořádku. Všechno ostatní je považováno za selhání. Pokud z nějakého důvodu (včetně selhání sítě) není přijata platná odpověď HTTP pro sondu, sonda se počítá jako selhání.|
-| Měření latence  | Latence je čas nástěnných hodin měřený od okamžiku bezprostředně před odesláním požadavku na sondu do okamžiku, kdy obdržíme poslední bajt odpovědi. Pro každý požadavek používáme nové připojení TCP, takže toto měření není zkreslené vůči back-endům se stávajícími teplými připojeními.  |
+| Určování stavu  |  200 OK stavový kód označuje, že back-end je v pořádku. Všechno ostatní je považováno za selhání. Pokud z nějakého důvodu (včetně selhání sítě) neobdrží platná odpověď HTTP, bude test paměti počítán jako selhání.|
+| Latence měření  | Latence je čas na zeď měřený od okamžiku těsně před odesláním žádosti o test do okamžiku, kdy obdržíte poslední bajt odpovědi. Pro každý požadavek používáme nové připojení TCP, takže toto měření není posunuté směrem k back-endu se stávajícími teplými připojeními.  |
 
-## <a name="how-front-door-determines-backend-health"></a>Jak přední dveře určuje zdraví back-endu
+## <a name="how-front-door-determines-backend-health"></a>Jak přední dveře určují stav back-endu
 
-Azure Front Door používá stejný proces ve třech krocích níže napříč všemi algoritmy k určení stavu.
+Přední dveře Azure používají pro určení stavu stejný postup tří kroků v rámci všech algoritmů.
 
-1. Vyloučit zakázané back-endy.
+1. Vyloučit zakázané back-endy
 
-2. Vyloučit back-endy, které mají chyby sond stavu:
-    * Tento výběr se provádí při pohledu na poslední _n_ odpovědi sondy stavu. Pokud alespoň _x_ jsou zdravé, back-end je považován za zdravý.
+2. Vyloučit back-endy s chybami sond stavu:
+    * Tento výběr se provádí zobrazením posledních _n_ odpovědí na test stavu. Pokud je v pořádku alespoň _x_ , back-end je považován za dobrý.
 
-    * _n_ je konfigurován změnou vlastnosti SampleSize v nastavení vyrovnávání zatížení.
+    * _n_ se konfiguruje změnou vlastnosti SampleSize v nastavení vyrovnávání zatížení.
 
-    * _x_ je konfigurovánzměnou vlastnosti SuccessfulSamplesRequired v nastavení vyrovnávání zatížení.
+    * _x_ se konfiguruje změnou vlastnosti SuccessfulSamplesRequired v nastavení vyrovnávání zatížení.
 
-3. Mimo sadu vyživované back-endy v back-endfondu, Front Door dodatečně měří a udržuje latence (doba odezvy) pro každý back-end.
+3. Ze sady bezproblémového back-endu ve fondu back-endu navíc přední dveře měří a udržuje latenci (dobu odezvy) pro každý back-end.
 
 
-## <a name="complete-health-probe-failure"></a>Úplné selhání sondy stavu
+## <a name="complete-health-probe-failure"></a>Dokončit selhání sondy stavu
 
-Pokud sondy stavu nezdaří pro každý back-end ve fondu back-endu, pak Front Door považuje všechny backendy v pořádku a směruje provoz v distribuci kruhového dotazování napříč všemi z nich.
+Pokud sondy stavu selžou u každého back-endu v back-endu fondu, pak přední dveře považují všechny back-endy v pořádku a směruje provoz v kruhovém dotazování napříč všemi.
 
-Jakmile se jakýkoli back-end vrátí do stavu v pořádku, pak Front Door obnoví normální algoritmus vyrovnávání zatížení.
+Jakmile se kterýkoli back-end vrátí do stavu v pořádku, pak přední dveře obnoví normální algoritmus vyrovnávání zatížení.
 
 ## <a name="disabling-health-probes"></a>Zakázání sond stavu
 
-Pokud máte jeden back-end ve vašem back-endu fondu, můžete zakázat sondy stavu snížení zatížení back-endu aplikace. I v případě, že máte více back-endů v back-endovém fondu, ale pouze jeden z nich je ve stavu povoleno, můžete zakázat sondy stavu.
+Pokud máte ve fondu back-endu jeden back-end, můžete se rozhodnout zakázat sondy stavu, které snižují zatížení back-endu aplikace. I v případě, že máte více back-endu ve fondu back-end, ale pouze jeden z nich je v povoleném stavu, můžete sondy stavu zakázat.
 
 ## <a name="next-steps"></a>Další kroky
 

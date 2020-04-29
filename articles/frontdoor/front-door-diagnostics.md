@@ -1,6 +1,6 @@
 ---
-title: Monitorování metrik a protokolů v Azure Front Door| Dokumenty společnosti Microsoft
-description: Tento článek popisuje různé metriky a protokoly přístupu, které podporují Azure Front Door
+title: Monitorování metrik a protokolů v dopředných dveřích Azure | Microsoft Docs
+description: Tento článek popisuje různé metriky a protokoly přístupu, které podporuje přední dvířka Azure.
 services: frontdoor
 documentationcenter: ''
 author: sharad4u
@@ -12,99 +12,99 @@ ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sharadag
 ms.openlocfilehash: b935355cce36a6e26b168db286ab40248f8f0f68
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79471723"
 ---
-# <a name="monitoring-metrics-and-logs-in-azure-front-door"></a>Monitorování metrik a protokolů v Azure Front Door
+# <a name="monitoring-metrics-and-logs-in-azure-front-door"></a>Monitorování metrik a protokolů v frontách Azure na předních dveřích
 
-Pomocí Azure Front Door můžete sledovat prostředky následujícími způsoby:
+Pomocí front-dveří Azure můžete monitorovat prostředky následujícími způsoby:
 
-- **Metriky**. Azure Front Door má aktuálně sedm metrik pro zobrazení čítačů výkonu.
-- **Protokoly**. Protokoly aktivit a diagnostiky umožňují ukládání nebo spotřebovávaní výkonu, přístupu a dalších dat z prostředku pro účely monitorování.
+- **Metriky**. Přední dveře Azure mají v současné době sedm metrik pro zobrazení čítačů výkonu.
+- **Protokoly**. Protokoly aktivit a diagnostiky umožňují uložit nebo spotřebovat data z prostředku pro účely monitorování.
 
 ### <a name="metrics"></a>Metriky
 
-Metriky jsou funkce pro určité prostředky Azure, které umožňují zobrazit čítače výkonu na portálu. Níže jsou k dispozici front door metriky:
+Metriky jsou funkce pro určité prostředky Azure, které umožňují zobrazit čítače výkonu na portálu. K dispozici jsou následující metriky front dveří:
 
 | Metrika | Zobrazovaný název metriky | Jednotka | Dimenze | Popis |
 | --- | --- | --- | --- | --- |
-| RequestCount | Počet požadavků | Počet | HttpStatus</br>Skupina HttpStatus</br>Klientská oblast</br>Klientská země | Počet požadavků klientů obsluhovaných frontdoor.  |
-| RequestSize | Velikost požadavku | Bajty | HttpStatus</br>Skupina HttpStatus</br>Klientská oblast</br>Klientská země | Počet bajtů odeslaných jako požadavky od klientů do front door. |
-| Velikost odpovědi | Velikost odpovědi | Bajty | HttpStatus</br>Skupina HttpStatus</br>Klientská oblast</br>Klientská země | Počet bajtů odeslaných jako odpovědi z front door klientům. |
-| Celková latence | Celková latence | Milisekund | HttpStatus</br>Skupina HttpStatus</br>Klientská oblast</br>Klientská země | Čas vypočítaný z požadavku klienta přijatého společností Front Door, dokud klient nepotvrdil poslední bajt odpovědi od front door. |
-| BackendRequestCount | Počet požadavků back-endu | Počet | HttpStatus</br>Skupina HttpStatus</br>Back-end | Počet požadavků odeslaných z front door do back-endů. |
-| BackendRequestLatency | Latence back-endu | Milisekund | Back-end | Čas vypočítaný od okamžiku, kdy byl požadavek odeslán front door do back-endu, dokud přední dveře obdržely poslední bajt odpovědi z back-endu. |
-| Procento backendhealth | Procento stavu back-endu | Procento | Back-end</br>BackendPool | Procento úspěšných zdravotních sond od předních dveří až po back-endy. |
-| WebApplicationFirewallRequestCount | Počet požadavků brány firewall webové aplikace | Počet | PolicyName</br>Název_pravidla</br>Akce | Počet požadavků klientů zpracovaných zabezpečením aplikační vrstvy front door. |
+| RequestCount | Počet požadavků | Počet | Stavu protokolu http</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Počet požadavků klientů poskytovaných předními dveřmi.  |
+| RequestSize | Velikost požadavku | Bajty | Stavu protokolu http</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Počet bajtů odeslaných jako požadavek od klientů do předních dveří. |
+| ResponseSize | Velikost odpovědi | Bajty | Stavu protokolu http</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Počet bajtů odeslaných jako odpověď z front-dveří klientům. |
+| TotalLatency | Celková latence | Milisekund | Stavu protokolu http</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Čas vypočítaný z požadavku klienta obdrženého předními dvířky, dokud klient nepotvrdí poslední bajt odpovědi z předních dveří. |
+| BackendRequestCount | Počet požadavků back-endu | Počet | Stavu protokolu http</br>HttpStatusGroup</br>Back-end | Počet požadavků odeslaných z předních dveří do back-endu. |
+| BackendRequestLatency | Latence žádosti back-endu | Milisekund | Back-end | Čas vypočítaný z doby, kdy byla žádost odeslána přes dvířka do back-endu, dokud přední dveře nedostaly poslední bajt odezvy z back-endu. |
+| BackendHealthPercentage | Procento stavu back-endu | Procento | Back-end</br>Problémových | Procento úspěšných sond stavu z předních dveří do back-endu. |
+| WebApplicationFirewallRequestCount | Počet požadavků firewallu webových aplikací | Počet | PolicyName</br>RuleName</br>Akce | Počet požadavků klientů zpracovaných zabezpečením aplikační vrstvy předních dveří. |
 
 ## <a name="activity-logs"></a><a name="activity-log"></a>Protokoly aktivit
 
-Protokoly aktivit poskytují informace o operacích provedených na frontdoor. Oni také určit, co, kdo, a kdy pro všechny operace zápisu (put, post, nebo odstranit) přijata na přední dveře.
+Protokoly aktivit obsahují informace o operacích provedených na Frontních dveřích. Určují taky to, kdo a kdy se při operacích zápisu (Put, post nebo Delete) převezme na přední dveře.
 
 >[!NOTE]
->Protokoly aktivit nezahrnují operace čtení (získání). Nezahrnují také operace, které provádíte pomocí portálu Azure nebo původního rozhraní API pro správu.
+>Protokoly aktivit nezahrnují operace čtení (Get). Nezahrnují také operace, které provádíte pomocí Azure Portal nebo původního rozhraní API pro správu.
 
-Přístup k protokolům aktivit ve vašich předních dveřích nebo ke všem protokolům prostředků Azure v Azure Monitoru. Zobrazení protokolů aktivit:
+Přístup k protokolům aktivit ve front-Vratích nebo ve všech protokolech prostředků Azure v Azure Monitor. Zobrazení protokolů aktivit:
 
-1. Vyberte instanci Předních dveří.
-2. Vyberte **protokol aktivit**.
+1. Vyberte instanci front-dveří.
+2. Vyberte **Protokol aktivit**.
 
     ![Protokol aktivit](./media/front-door-diagnostics/activity-log.png)
 
-3. Zvolte obor filtrování a pak vyberte **Použít**.
+3. Zvolte rozsah filtrování a pak vyberte **použít**.
 
 ## <a name="diagnostic-logs"></a><a name="diagnostic-logging"></a>Diagnostické protokoly
-Diagnostické protokoly poskytují bohaté informace o operacích a chybách, které jsou důležité pro auditování a řešení potíží. Diagnostické protokoly se liší od protokolů aktivit.
+Diagnostické protokoly poskytují obsáhlé informace o operacích a chybách, které jsou důležité pro auditování a řešení potíží. Diagnostické protokoly se liší od protokolů aktivit.
 
-Protokoly aktivit poskytují přehled o operacích provedených na prostředcích Azure. Diagnostické protokoly poskytují přehled o operacích, které váš prostředek provedl. Další informace naleznete v [tématu Diagnostické protokoly Azure Monitor](../azure-monitor/platform/platform-logs-overview.md).
+Protokoly aktivit poskytují přehled o operacích provedených v prostředcích Azure. Diagnostické protokoly poskytují přehled o operacích, které provedl váš prostředek. Další informace najdete v tématu [Azure monitor diagnostické protokoly](../azure-monitor/platform/platform-logs-overview.md).
 
 ![Diagnostické protokoly](./media/front-door-diagnostics/diagnostic-log.png)
 
-Konfigurace diagnostických protokolů pro přední dveře:
+Konfigurace diagnostických protokolů pro vaše přední dveře:
 
-1. Vyberte přední dveře Azure.
+1. Vyberte si přední dvířka Azure.
 
-2. Zvolte **Nastavení diagnostiky**.
+2. Vyberte **nastavení diagnostiky**.
 
-3. Vyberte **možnost Zapnout diagnostiku**. Archivujte diagnostické protokoly spolu s metrikami do účtu úložiště, streamujte je do centra událostí nebo je odešlete do protokolů Azure Monitoru.
+3. Vyberte **zapnout diagnostiku**. Archivujte diagnostické protokoly spolu se metrikami do účtu úložiště, streamujte je do centra událostí nebo je odešlete do protokolů Azure Monitor.
 
-Přední dveře v současné době poskytuje diagnostické protokoly (dávkově každou hodinu). Diagnostické protokoly poskytují jednotlivé požadavky rozhraní API s každou položkou s následujícím schématem:
+Přední dveře aktuálně poskytují protokoly diagnostiky (v dávce po hodinách). Diagnostické protokoly poskytují jednotlivé požadavky rozhraní API s každou položkou, která má následující schéma:
 
 | Vlastnost  | Popis |
 | ------------- | ------------- |
-| BackendHostname | Pokud byl požadavek předáván do back-endu, toto pole představuje název hostitele back-endu. Toto pole bude prázdné, pokud byl požadavek přesměrován nebo předán do místní mezipaměti (pokud je pro pravidlo směrování povoleno ukládání do mezipaměti). |
-| Stav mezipaměti | Pro scénáře ukládání do mezipaměti toto pole definuje přístup/nepřístupnou položku mezipaměti v |
-| ClientIp | IP adresa klienta, který podal požadavek. Pokud byla v požadavku hlavička X-Forwarded-For, je ip adresa klienta vybrána ze stejné. |
-| Klientský port | Port IP klienta, který podal požadavek. |
-| Metoda http | Metoda HTTP použitá požadavkem. |
+| BackendHostname | Pokud byl požadavek předán do back-endu, toto pole představuje název hostitele back-endu. Pokud je žádost přesměrována nebo předána do místní mezipaměti (Pokud je pro pravidlo směrování povoleno ukládání do mezipaměti), bude toto pole prázdné. |
+| CacheStatus | V případě scénářů pro ukládání do mezipaměti toto pole definuje počet přístupů do mezipaměti nebo neúspěšný přístup na adresu POP. |
+| ClientIp | IP adresa klienta, který odeslal požadavek. Pokud v žádosti existovala hlavička X předaná-pro, pak je IP adresa klienta převzata ze stejné. |
+| ClientPort | Port IP klienta, který odeslal požadavek. |
+| HttpMethod | Metoda HTTP, kterou požadavek používá |
 | HttpStatusCode | Stavový kód HTTP vrácený z proxy serveru. |
-| HttpStatusDetails | Výsledný stav na požadavku. Význam této hodnoty řetězce lze nalézt v tabulce odkaz na stav. |
-| HttpVersion | Typ požadavku nebo připojení. |
-| POP | Krátký název okraje, kde byla žádost vyložena. |
-| RequestBytes | Velikost zprávy požadavku HTTP v bajtů, včetně hlavičky požadavku a tělo požadavku. |
-| Requesturi | Identifikátor URI přijatého požadavku. |
-| Bajty odpovědí | Bajty odeslané serverem back-end jako odpověď.  |
-| Název_směrovacího_státu | Název pravidla směrování, kterému požadavek odpovídá. |
-| Protokol Zabezpečení | Verze protokolu TLS/SSL používaná požadavkem nebo hodnotou null, pokud není šifrování. |
-| SentToOriginShield | Logické pole představující, pokud došlo k chybě mezipaměti v prvním prostředí a požadavek byl odeslán do místní mezipaměti. Toto pole ignorujte, pokud je pravidlo směrování přesměrováním nebo pokud není povoleno ukládání do mezipaměti. |
-| TimeTaken | Doba, po kterou akce trvala v milisekundách. |
-| TrackingReference | Jedinečný referenční řetězec, který identifikuje požadavek obsluhovaný front door, také odeslánjako x-Azure-ref záhlaví klientovi. Vyžadováno pro vyhledávání podrobností v protokolech přístupu pro konkrétní požadavek. |
-| Useragent | Typ prohlížeče, který klient použil. |
+| HttpStatusDetails | Výsledný stav žádosti. Význam této řetězcové hodnoty lze nalézt v tabulce odkazů na stav. |
+| HttpVersion | Typ požadavku nebo připojení |
+| POP | Krátký název okraje, ve kterém se vyložila žádost |
+| RequestBytes | Velikost zprávy požadavku HTTP v bajtech, včetně hlaviček požadavků a textu žádosti. |
+| RequestUri | Identifikátor URI přijatého požadavku |
+| ResponseBytes | Bajty odeslané back-end serverem jako odpověď  |
+| RoutingRuleName | Název pravidla směrování, na které se požadavek shodoval. |
+| Tato SecurityProtocol | Verze protokolu TLS/SSL používaná požadavkem nebo hodnotou null, pokud není šifrování. |
+| SentToOriginShield | Logické pole představující, zda v prvním prostředí chyběla mezipaměť a žádost byla odeslána do místní mezipaměti. Ignorujte toto pole, pokud je pravidlo směrování přesměrování nebo když nemá povoleno ukládání do mezipaměti. |
+| TimeTaken | Doba, kterou trvala akce, v milisekundách. |
+| TrackingReference | Jedinečný referenční řetězec, který identifikuje požadavek, který je obsluhován předními dvířky, je také odeslán jako hlavička X-Azure-ref na klienta. Vyžaduje se pro hledání podrobností v protokolech přístupu pro konkrétní požadavek. |
+| UserAgent | Typ prohlížeče, který klient použil. |
 
-**Poznámka:** Pro různé konfigurace směrování a chování provozu, některá pole, jako je backendHostname, cacheStatus, sentToOriginShield a POP pole může reagovat s různými hodnotami. Níže uvedená tabulka vysvětluje různé hodnoty, tato pole budou mít pro různé scénáře:
+**Poznámka:** U různých konfigurací směrování a chování provozu můžou některá pole jako backendHostname, cacheStatus, sentToOriginShield a POP reagovat pomocí různých hodnot. Následující tabulka vysvětluje různé hodnoty, tato pole budou mít různé scénáře:
 
-| Scénáře | Počet položek protokolu | POP | BackendHostname | SentToOriginShield | Stav mezipaměti |
+| Scénáře | Počet položek protokolu | POP | BackendHostname | SentToOriginShield | CacheStatus |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
-| Pravidlo směrování bez povoleného ukládání do mezipaměti | 1 | Kód PROTOKOLU POP edge | Back-end, kde byl požadavek předán | False | CONFIG_NOCACHE |
-| Pravidlo směrování s povoleným ukládáním do mezipaměti. Přístup do mezipaměti na hraničním bodě POP | 1 | Kód PROTOKOLU POP edge | Prázdné | False | Hit |
-| Pravidlo směrování s povoleným ukládáním do mezipaměti. Mezipaměť chybí na okraji POP, ale cache hit na mateřské mezipaměti POP | 2 | 1. Edge POP kód</br>2. Nadřazený cache POP kód | 1. Název hostitele protokolu POP nadřazené mezipaměti</br>2. Prázdné | 1. Pravda</br>2. Nepravdivé | 1. SLEČNA</br>2. PARTIAL_HIT |
-| Pravidlo směrování s povoleným ukládáním do mezipaměti. Mezipaměť chybí na hraniční i nadřazené mezipaměti POP | 2 | 1. Edge POP kód</br>2. Nadřazený cache POP kód | 1. Název hostitele protokolu POP nadřazené mezipaměti</br>2. Backend, který pomáhá naplnit mezipaměť | 1. Pravda</br>2. Nepravdivé | 1. SLEČNA</br>2. SLEČNA |
+| Pravidlo směrování bez povoleného ukládání do mezipaměti | 1 | Hraniční kód POP | Back-end, kde byl požadavek předán | False | CONFIG_NOCACHE |
+| Pravidlo směrování s povoleným ukládáním do mezipaměti. Přístup do mezipaměti na hraničním okně Edge | 1 | Hraniční kód POP | Obsahovat | False | KLEPNUTÍ |
+| Pravidlo směrování s povoleným ukládáním do mezipaměti. Neúspěšné přístupy do mezipaměti na hraničním zařízení POP, ale přístupy do mezipaměti v nadřazené mezipaměti | 2 | 1. hraniční kód POP</br>2. kód POP nadřazené mezipaměti | 1. název hostitele POP nadřazené mezipaměti</br>2. prázdné | 1. true</br>2. false | 1. NEÚSPĚŠNÉ</br>2. PARTIAL_HIT |
+| Pravidlo směrování s povoleným ukládáním do mezipaměti. Neúspěšné přístupy do mezipaměti na úrovni POP hraničních i nadřazených cache | 2 | 1. hraniční kód POP</br>2. kód POP nadřazené mezipaměti | 1. název hostitele POP nadřazené mezipaměti</br>2. back-end, který pomáhá naplnit mezipaměť | 1. true</br>2. false | 1. NEÚSPĚŠNÉ</br>2. NEÚSPĚŠNÉ |
 
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Vytvoření profilu předních dveří](quickstart-create-front-door.md)
+- [Vytvoření profilu front-dveří](quickstart-create-front-door.md)
 - [Jak fungují přední dveře](front-door-routing-architecture.md)

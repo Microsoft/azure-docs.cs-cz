@@ -1,6 +1,6 @@
 ---
-title: Kódování vzdáleného souboru a datového proudu pomocí Azure Media Services v3
-description: Podle kroků tohoto kurzu zakódujte soubor na základě adresy URL a streamujte obsah pomocí Azure Media Services pomocí REST.
+title: Kódování vzdáleného souboru a datového proudu pomocí Azure Media Services V3
+description: Použijte postup v tomto kurzu ke kódování souboru na základě adresy URL a streamování vašeho obsahu pomocí Azure Media Services s využitím REST.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,17 +13,17 @@ ms.custom: mvc
 ms.date: 03/16/2020
 ms.author: juliako
 ms.openlocfilehash: 35be4ec2c4f5f8c299120c0ba7dbdcb1dd112473
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79472029"
 ---
-# <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>Kurz: Zakódujte vzdálený soubor na základě adresy URL a streamujte video - REST
+# <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>Kurz: kódování vzdáleného souboru na základě adresy URL a streamu pro video
 
-Azure Media Services umožňuje kódovat mediální soubory do formátů, které lze přehrávat v celé řadě prohlížečů a zařízení. Například můžete chtít svůj obsah streamovat ve formátu Apple HLS nebo MPEG DASH. Před streamováním je vhodné soubor digitálního média ve vysoké kvalitě zakódovat. Pokyny ke kódování najdete v tématu [Principy kódování](encoding-concept.md).
+Azure Media Services umožňuje kódování mediálních souborů ve formátech, které se dají přehrávat na nejrůznějších prohlížečích a zařízeních. Například můžete chtít svůj obsah streamovat ve formátu Apple HLS nebo MPEG DASH. Před streamováním je vhodné soubor digitálního média ve vysoké kvalitě zakódovat. Pokyny ke kódování najdete v tématu [Principy kódování](encoding-concept.md).
 
-Tento kurz ukazuje, jak kódovat soubor na základě adresy URL a streamovat video pomocí Azure Media Services pomocí REST. 
+V tomto kurzu se dozvíte, jak zakódovat soubor na základě adresy URL a streamu videa s Azure Media Services pomocí REST. 
 
 ![Přehrávání videa](./media/stream-files-tutorial-with-api/final-video.png)
 
@@ -42,13 +42,13 @@ V tomto kurzu získáte informace o následujících postupech:
 
 ## <a name="prerequisites"></a>Požadavky
 
-- [Vytvořte účet mediálních služeb](create-account-cli-how-to.md).
+- [Vytvořte účet Media Services](create-account-cli-how-to.md).
 
-    Nezapomeňte si pamatovat hodnoty, které jste použili pro název skupiny prostředků a název účtu služby Media Services.
+    Nezapomeňte si pamatovat hodnoty, které jste použili pro název skupiny prostředků a název účtu Media Services
 
 - Nainstalujte klienta [Postman](https://www.getpostman.com/) rozhraní REST, ve kterém můžete spouštět rozhraní REST API používaná v některých kurzech ke službě AMS REST. 
 
-    V příkladech používáme **Postman**, můžete ale zvolit jakýkoli nástroj REST. Další alternativy jsou: **Visual Studio Code** s pluginem REST nebo **Telerik Fiddler**. 
+    V příkladech používáme **Postman**, můžete ale zvolit jakýkoli nástroj REST. Další alternativy: **Visual Studio Code** pomocí modulu plug-in REST nebo **Telerik Fiddler**. 
 
 ## <a name="download-postman-files"></a>Stažení souborů nástroje Postman
 
@@ -60,13 +60,13 @@ Naklonujte úložiště GitHub, který obsahuje soubory kolekce a prostředí n�
 
 ## <a name="access-api"></a>Přístup k rozhraní API
 
-Podrobné informace naleznete v tématu [Získání přihlašovacích údajů pro přístup k rozhraní MEDIA Services API](access-api-howto.md)
+Podrobné informace najdete v tématu [získání přihlašovacích údajů pro přístup k rozhraní Media Services API](access-api-howto.md) .
 
 ## <a name="configure-postman"></a>Konfigurace nástroje Postman
 
 ### <a name="configure-the-environment"></a>Konfigurace prostředí 
 
-1. Otevřete aplikaci **Pošťák.**
+1. Otevřete aplikaci pro **vyúčtování** .
 2. Na pravé straně obrazovky vyberte možnost **Manage environment** (Spravovat prostředí).
 
     ![Správa prostředí](./media/develop-with-postman/postman-import-env.png)
@@ -98,7 +98,7 @@ V této části odešleme požadavky relevantní pro kódování a vytvoření a
 1. Získání tokenu služby Azure AD pro ověření instančního objektu
 1. Spuštění koncového bodu streamování
 2. Vytvoření výstupního prostředku
-3. Vytvoření transformace
+3. Vytvořit transformaci
 4. Vytvoření úlohy
 5. Vytvoření lokátoru streamování
 6. Seznam cest lokátoru streamování
@@ -108,7 +108,7 @@ V této části odešleme požadavky relevantní pro kódování a vytvoření a
 
 ### <a name="get-azure-ad-token"></a>Získání tokenu služby Azure AD 
 
-1. V levém okně aplikace Postman vyberte "Krok 1: Získat token auth AAD".
+1. V levém okně aplikace po výběru vyberte "krok 1: získání ověřovacího tokenu AAD".
 2. Potom vyberte „Get Azure AD Token for Service Principal Authentication“ (Získat token služby Azure AD pro ověření instančního objektu).
 3. Stiskněte **Odeslat**.
 
@@ -125,35 +125,35 @@ V této části odešleme požadavky relevantní pro kódování a vytvoření a
 
 ### <a name="start-a-streaming-endpoint"></a>Spuštění koncového bodu streamování
 
-Chcete-li povolit streamování, musíte nejprve spustit [koncový bod streamování,](https://docs.microsoft.com/azure/media-services/latest/streaming-endpoint-concept) ze kterého chcete streamovat video.
+Pokud chcete streamování povolit, musíte nejdřív spustit [koncový bod streamování](https://docs.microsoft.com/azure/media-services/latest/streaming-endpoint-concept) , ze kterého chcete streamovat video.
 
 > [!NOTE]
-> Bude se vám účtovat pouze v případě, že je koncový bod streamování ve spuštěném stavu.
+> Fakturuje se vám jenom v případě, že je koncový bod streamování ve stavu spuštěno.
 
-1. V levém okně aplikace Postman vyberte "Streamování a živé vysílání".
-2. Potom vyberte "Start StreamingEndpoint".
+1. V levém okně aplikace po výběru vyberte streamování a živé.
+2. Pak vyberte "spustit StreamingEndpoint".
 3. Stiskněte **Odeslat**.
 
-    * Je odeslána následující operace **POST:**
+    * Odesílá se následující operace **post** :
 
         ```
         https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaservices/:accountName/streamingEndpoints/:streamingEndpointName/start?api-version={{api-version}}
         ```
-    * Pokud je požadavek `Status: 202 Accepted` úspěšný, je vrácena.
+    * Pokud je žádost úspěšná, vrátí `Status: 202 Accepted` se.
 
-        Tento stav znamená, že žádost byla přijata ke zpracování; zpracování však nebylo dokončeno. Můžete dotazovat na stav operace na `Azure-AsyncOperation` základě hodnoty v hlavičce odpovědi.
+        Tento stav znamená, že žádost byla přijata ke zpracování; zpracování však nebylo dokončeno. Můžete zadat dotaz na stav operace na základě hodnoty v hlavičce `Azure-AsyncOperation` Response.
 
-        Například následující operace GET vrátí stav operace:
+        Například následující operace GET vrátí stav vaší operace:
         
         `https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/<resourceGroupName>/providers/Microsoft.Media/mediaservices/<accountName>/streamingendpointoperations/1be71957-4edc-4f3c-a29d-5c2777136a2e?api-version=2018-07-01`
 
-        [Track asynchronní Azure operations](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations) článek vysvětluje do hloubky, jak sledovat stav asynchronní operace Azure prostřednictvím hodnot vrácených v odpovědi.
+        Článek [sledování asynchronních operací Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations) podrobněji vysvětluje, jak sledovat stav asynchronních operací Azure prostřednictvím hodnot vrácených v odpovědi.
 
 ### <a name="create-an-output-asset"></a>Vytvoření výstupního prostředku
 
-Výstup [Asset](https://docs.microsoft.com/rest/api/media/assets) ukládá výsledek úlohy kódování. 
+Výstupní [Asset](https://docs.microsoft.com/rest/api/media/assets) ukládá výsledek vaší úlohy kódování. 
 
-1. V levém okně aplikace Pošťák vyberte "Prostředky".
+1. V levém okně aplikace po výběru vyberte prostředky.
 2. Pak vyberte „Create or update an Asset“ (Vytvořit nebo aktualizovat prostředek).
 3. Stiskněte **Odeslat**.
 
@@ -175,7 +175,7 @@ Výstup [Asset](https://docs.microsoft.com/rest/api/media/assets) ukládá výsl
 
 ### <a name="create-a-transform"></a>Vytvoření transformace
 
-Když kódujete nebo zpracováváte obsah v Media Services, kódování se obvykle nastaví jako předpis. Potom stačí odeslat **Úlohu**, která tento předpis použije pro video. Odesláním nových pracovních míst pro každé nové video použijete tento recept na všechna videa v knihovně. V Media Services se pro předpis používá označení **transformace**. Další informace najdete v tématu [Transformace a úlohy](transform-concept.md). Ukázka popsaná v tomto kurzu definuje předpis, který zakóduje video tak, aby se dalo streamovat na nejrůznějších zařízeních s iOSem a Androidem. 
+Když kódujete nebo zpracováváte obsah v Media Services, kódování se obvykle nastaví jako předpis. Potom stačí odeslat **Úlohu**, která tento předpis použije pro video. Odesláním nových úloh pro každé nové video použijete tento recept na všechna videa v knihovně. V Media Services se pro předpis používá označení **transformace**. Další informace najdete v tématu [Transformace a úlohy](transform-concept.md). Ukázka popsaná v tomto kurzu definuje předpis, který zakóduje video tak, aby se dalo streamovat na nejrůznějších zařízeních s iOSem a Androidem. 
 
 Když vytváříte novou instanci [Transformace](https://docs.microsoft.com/rest/api/media/transforms), musíte určit, co má být jejím výstupem. Objekt **TransformOutput** je povinný parametr. Každý objekt **TransformOutput** obsahuje **Předvolbu**. **Předvolba** popisuje podrobné pokyny operací zpracování videa nebo zvuku, které se používají ke generování požadovaného objektu **TransformOutput**. Ukázka popsaná v tomto článku používá předdefinovanou předvolbu s názvem **AdaptiveStreaming**. Tato předvolba zakóduje vstupní video na základě vstupního rozlišení a přenosové rychlosti do automaticky generované dvojice přenosová rychlost / rozlišení (tzv. bitrate ladder) a vytvoří soubory ISO MP4 s videem H.264 a zvukem AAC odpovídající jednotlivým dvojicím přenosová rychlost / rozlišení. Informace o této předvolbě najdete v tématu o [automatickém generování dvojic bitrate ladder](autogen-bitrate-ladder.md).
 
@@ -184,11 +184,11 @@ Můžete použít předdefinovanou předvolbu EncoderNamedPreset, nebo si vytvo�
 > [!Note]
 > Než začnete vytvářet [transformaci](https://docs.microsoft.com/rest/api/media/transforms), ověřte si nejdřív pomocí metody **Get**, jestli už neexistuje. V tomto kurzu předpokládáme, že vytváříte transformaci s jedinečným názvem.
 
-1. V levém okně aplikace Postman vyberte "Kódování a analýza".
+1. V levém okně aplikace po vybírání kódování a analýzy.
 2. Potom vyberte „Create Transform“ (Vytvořit transformaci).
 3. Stiskněte **Odeslat**.
 
-    * Je odeslána následující operace **PUT.**
+    * Následující operace **Put** je odeslána.
 
         ```
         https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/transforms/:transformName?api-version={{api-version}}
@@ -217,13 +217,13 @@ Můžete použít předdefinovanou předvolbu EncoderNamedPreset, nebo si vytvo�
 
 [Úloha](https://docs.microsoft.com/rest/api/media/jobs) je vlastní požadavek na službu Media Services, aby vytvořenou **transformaci** použila na daný vstupní videoobsah nebo zvukový obsah. **Úloha** určuje informace, jako je umístění vstupního videa a umístění pro výstup.
 
-V tomto příkladu je vstup úlohy založen na adrese\/URL HTTPS ("https: /nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/").
+V tomto příkladu je vstup úlohy založen na adrese URL HTTPS ("https:\//nimbuscdn-nimbuspm.Streaming.MediaServices.Windows.NET/2b533311-b215-4409-80af-529c3e853622/").
 
-1. V levém okně aplikace Postman vyberte "Kódování a analýza".
+1. V levém okně aplikace po vybírání kódování a analýzy.
 2. Pak vyberte „Create or Update Job“ (Vytvořit nebo aktualizovat úlohu).
 3. Stiskněte **Odeslat**.
 
-    * Je odeslána následující operace **PUT.**
+    * Následující operace **Put** je odeslána.
 
         ```
         https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/transforms/:transformName/jobs/:jobName?api-version={{api-version}}
@@ -256,26 +256,26 @@ V tomto příkladu je vstup úlohy založen na adrese\/URL HTTPS ("https: /nimbu
 
 #### <a name="job-error-codes"></a>Kódy chyb úlohy
 
-Viz [Chybové kódy](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode).
+Viz [kódy chyb](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode).
 
 ### <a name="create-a-streaming-locator"></a>Vytvoření lokátoru streamování
 
-Po dokončení úlohy kódování je dalším krokem zpřístupnění videa ve výstupním **datovém zdroji** klientům pro přehrávání. Video můžete zpřístupnit ve dvou krocích: nejdřív vytvořte streamovací lokátor ([StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators)) a pak adresy URL pro streamování, které budou klienti používat. 
+Po dokončení úlohy kódování je dalším krokem vytvoření videa ve výstupním **prostředku** pro klienty k přehrávání. Video můžete zpřístupnit ve dvou krocích: nejdřív vytvořte streamovací lokátor ([StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators)) a pak adresy URL pro streamování, které budou klienti používat. 
 
-Proces vytváření lokátoru streamování se nazývá publikování. Ve výchozím nastavení je lokátor streamování platný ihned po volání rozhraní API a trvá, dokud není odstraněn, pokud nenakonfigurujete volitelný počáteční a koncový čas. 
+Proces vytvoření lokátoru streamování se nazývá publikování. Ve výchozím nastavení je Lokátor streamování platný hned po volání rozhraní API a trvá až do odstranění, pokud nenastavíte volitelné počáteční a koncové časy. 
 
-Když vytváříte streamovací lokátor [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators), je potřeba zadat požadovaný název zásady streamování **StreamingPolicyName**. V tomto příkladu budete streamovat v jasném (nebo nešifrovaném) obsahu, takže se používá předdefinovaná zásada prostého streamování "Predefined_ClearStreamingOnly".
+Když vytváříte streamovací lokátor [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators), je potřeba zadat požadovaný název zásady streamování **StreamingPolicyName**. V tomto příkladu budete zasílat streamování (nebo nešifrovaných) obsahu, takže se použije předdefinovaná zásada pro zrušení streamování Predefined_ClearStreamingOnly.
 
 > [!IMPORTANT]
 > Pokud chcete definovat vlastní [zásady streamování](https://docs.microsoft.com/rest/api/media/streamingpolicies), doporučujeme navrhnout pro účet služby Media Service omezený počet takovýchto zásad a používat je opakovaně pro streamovací lokátory, kdykoli potřebujete stejné protokoly a možnosti šifrování. 
 
-Váš účet služby Media Service má kvótu pro počet položek **zásad streamování.** Pro každý lokátor streamování byste neměli vytvářet nové **zásady streamování.**
+Váš účet Media Service má kvótu pro počet položek **zásad streamování** . Pro každý Lokátor streamování byste neměli vytvářet nové **zásady streamování** .
 
-1. V levém okně aplikace Postman vyberte "Zásady streamování a lokátory".
-2. Potom vyberte "Vytvořit lokátor streamování (vymazat)".
+1. V levém okně aplikace po tomto výběru vyberte zásady streamování a lokátory.
+2. Pak vyberte vytvořit Lokátor streamování (Vymazat).
 3. Stiskněte **Odeslat**.
 
-    * Je odeslána následující operace **PUT.**
+    * Následující operace **Put** je odeslána.
 
         ```
         https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/streamingLocators/:streamingLocatorName?api-version={{api-version}}
@@ -297,9 +297,9 @@ Váš účet služby Media Service má kvótu pro počet položek **zásad strea
 
 #### <a name="list-paths"></a>Seznam cest
 
-Nyní, když byl vytvořen [lokátor streamování,](https://docs.microsoft.com/rest/api/media/streaminglocators) můžete získat adresy URL streamování
+Teď, když se vytvořil [Lokátor streamování](https://docs.microsoft.com/rest/api/media/streaminglocators) , můžete získat adresy URL streamování.
 
-1. V levém okně aplikace Postman vyberte "Zásady streamování".
+1. V levém okně aplikace pro odesílání vyberte možnost Zásady streamování.
 2. Potom vyberte „List Paths“ (Seznam cest).
 3. Stiskněte **Odeslat**.
 
@@ -350,7 +350,7 @@ V této části vytvoříme adresu URL pro streamování HLS. Adresy URL se skl�
 
 2. Název hostitele koncového bodu streamování. V tomto případě je to „amsaccount-usw22.streaming.media.azure.net“.
 
-    Chcete-li získat název hostitele, můžete použít následující operaci GET:
+    K získání názvu hostitele můžete použít následující operaci GET:
     
     ```
     https://management.azure.com/subscriptions/00000000-0000-0000-0000-0000000000000/resourceGroups/amsResourceGroup/providers/Microsoft.Media/mediaservices/amsaccount/streamingEndpoints/default?api-version={{api-version}}
@@ -368,11 +368,11 @@ https://amsaccount-usw22.streaming.media.azure.net/cdb80234-1d94-42a9-b056-0eefa
 
 
 > [!NOTE]
-> Ujistěte se, že **koncový bod streamování,** ze kterého chcete streamovat, je spuštěn.
+> Ujistěte se, že **koncový bod streamování** , ze kterého chcete streamovat, je spuštěný.
 
 Tento článek používá k otestování streamu přehrávač Azure Media Player. 
 
-1. Otevřete webový prohlížeč [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/)a přejděte na .
+1. Otevřete webový prohlížeč a přejděte na [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/).
 2. Do pole pro **adresu URL** vložte adresu URL, kterou jste vytvořili. 
 3. Stiskněte **Update Player** (Aktualizovat přehrávač).
 
@@ -380,7 +380,7 @@ Azure Media Player můžete použít pro účely testování, nesmí se ale pou�
 
 ## <a name="clean-up-resources-in-your-media-services-account"></a>Vyčištění prostředků v účtu služby Media Services
 
-Obecně byste měli vyčistit vše kromě objektů, které plánujete znovu použít (obvykle budete znovu použít **transformace**a budete zachovat **umístění datových proudů**atd.). Pokud chcete účet po experimentování vyčistit, měli byste odstranit prostředky, které nemáte v plánu znovu použít.  
+Obecně platí, že byste měli vyčistit všechno kromě objektů, které plánujete znovu použít (obvykle budete znovu používat **transformace**a budete uchovávat **Lokátory streamování**atd.). Pokud chcete účet po experimentování vyčistit, měli byste odstranit prostředky, které nemáte v plánu znovu použít.  
 
 Provedete to tak, že u prostředku, který chcete odstranit, vyberete operaci „Odstranit…“.
 
@@ -388,15 +388,15 @@ Provedete to tak, že u prostředku, který chcete odstranit, vyberete operaci �
 
 Pokud ze skupiny prostředků už žádné prostředky nepotřebujete, včetně účtu služby Media Services a účtu úložiště, které jste vytvořili v tomto kurzu, pak tuto dříve vytvořenou skupinu prostředků odstraňte.  
 
-Proveďte následující příkaz příkazového příkazu příkazu příkazu:
+Spusťte následující příkaz rozhraní příkazového řádku:
 
 ```azurecli
 az group delete --name amsResourceGroup
 ```
 
-## <a name="ask-questions-give-feedback-get-updates"></a>Ptejte se, podávejte zpětnou vazbu, získejte aktualizace
+## <a name="ask-questions-give-feedback-get-updates"></a>Položte otázky, sdělte nám svůj názor, Získejte aktualizace.
 
-Podívejte se na článek [komunity Mediálních služeb Azure](media-services-community.md) a podívejte se na různé způsoby, jak můžete klást otázky, poskytovat zpětnou vazbu a získat aktualizace o mediálních službách.
+Podívejte se na článek o [komunitě Azure Media Services](media-services-community.md) a podívejte se na různé způsoby, jak můžete klást otázky, sdělit svůj názor a získávat aktualizace Media Services.
 
 ## <a name="next-steps"></a>Další kroky
 
