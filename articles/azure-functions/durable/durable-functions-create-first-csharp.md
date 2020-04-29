@@ -1,123 +1,123 @@
 ---
-title: 'Vytvořte si první odolnou funkci v Azure pomocí Jazyka C #'
-description: Vytvořte a publikujte funkci Azure Durable pomocí visual studia nebo kódu Sady Visual Studio.
+title: 'Vytvoření první trvalé funkce v Azure pomocí jazyka C #'
+description: Vytvořte a publikujte funkci trvalosti Azure pomocí sady Visual Studio nebo Visual Studio Code.
 author: jeffhollan
 ms.topic: quickstart
 ms.date: 03/18/2020
 ms.author: azfuncdf
 zone_pivot_groups: code-editors-set-one
 ms.openlocfilehash: eda3afdf8deb3336cd0c5293c2422e694caa69c8
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80132795"
 ---
-# <a name="create-your-first-durable-function-in-c"></a>Vytvořte si první odolnou funkci v C\#
+# <a name="create-your-first-durable-function-in-c"></a>Vytvoření první trvalé funkce v jazyce C\#
 
-*Trvalé funkce* je rozšíření [funkcí Azure,](../functions-overview.md) které vám umožní psát stavové funkce v prostředí bez serveru. Toto rozšíření za vás spravuje stav, kontrolní body a restartování.
+*Durable Functions* je rozšíření [Azure Functions](../functions-overview.md) , které umožňuje psát stavové funkce v prostředí bez serveru. Toto rozšíření za vás spravuje stav, kontrolní body a restartování.
 
 ::: zone pivot="code-editor-vscode"
 
-V tomto článku se dozvíte, jak pomocí kódu sady Visual Studio místně vytvořit a otestovat "hello world" trvalé funkce.  Tato funkce orchestruje a řetězy společně volání dalších funkcí. Kód funkce potom publikujete do Azure. Tyto nástroje jsou k dispozici jako součást rozšíření VS Code [Azure Functions](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions).
+V tomto článku se naučíte, jak používat Visual Studio Code k místnímu vytvoření a otestování trvalé funkce "Hello World".  Tato funkce orchestruje a zřetězí volání dalších funkcí. Kód funkce potom publikujete do Azure. Tyto nástroje jsou dostupné jako součást [rozšíření VS Code Azure Functions](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions).
 
-![Spuštění trvanlivé funkce v Azure](./media/durable-functions-create-first-csharp/functions-vscode-complete.png)
+![Spuštění trvalé funkce v Azure](./media/durable-functions-create-first-csharp/functions-vscode-complete.png)
 
 ## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu potřebujete:
 
-* Nainstalujte [kód sady Visual Studio](https://code.visualstudio.com/download).
+* Nainstalujte [Visual Studio Code](https://code.visualstudio.com/download).
 
-* Nainstalujte následující rozšíření v kódu VS:
+* Nainstalujte následující rozšíření VS Code:
     - [Azure Functions](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)
-    - [C #](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
+    - [R #](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
 
-* Ujistěte se, že máte nejnovější verzi [nástrojů Azure Functions Core Tools](../functions-run-local.md).
+* Ujistěte se, že máte nejnovější verzi [Azure Functions Core Tools](../functions-run-local.md).
 
-* Trvalé funkce vyžadují účet úložiště Azure. Potřebujete předplatné Azure.
+* Durable Functions vyžaduje účet služby Azure Storage. Potřebujete předplatné Azure.
 
-* Ujistěte se, že máte nainstalovanou verzi 3.1 nebo novější verzi sady [.NET Core SDK.](https://dotnet.microsoft.com/download)
+* Ujistěte se, že máte nainstalovanou verzi 3,1 nebo novější verzi [.NET Core SDK](https://dotnet.microsoft.com/download) .
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-your-local-project"></a><a name="create-an-azure-functions-project"></a>Vytvoření místního projektu 
+## <a name="create-your-local-project"></a><a name="create-an-azure-functions-project"></a>Vytvořit místní projekt 
 
-V této části použijete visual studio kód k vytvoření projektu místní funkce Azure. 
+V této části použijete Visual Studio Code k vytvoření místního projektu Azure Functions. 
 
-1. V kódu visual ateliéru otevřete paletu příkazů stisknutím klávesF1 (nebo Ctrl/Cmd+Shift+P). V paletě příkazů vyhledejte `Azure Functions: Create New Project...`a vyberte .
+1. V Visual Studio Code stisknutím klávesy F1 (nebo Ctrl/Cmd + Shift + P) otevřete paletu příkazů. V paletě příkazů vyhledejte a vyberte `Azure Functions: Create New Project...`.
 
     ![Vytvoření projektu funkce](media/durable-functions-create-first-csharp/functions-vscode-create-project.png)
 
-1. Zvolte umístění prázdné složky pro projekt a zvolte **Vybrat**.
+1. Zvolte prázdné umístění složky pro váš projekt a zvolte **možnost vybrat**.
 
-1. V následujících výzvách uveďte následující informace:
+1. Podle pokynů zadejte následující informace:
 
     | Výzva | Hodnota | Popis |
     | ------ | ----- | ----------- |
-    | Výběr jazyka pro projekt aplikace pro funkce | C# | Vytvořte místní c# funkce projektu. |
-    | Výběr verze | Funkce Azure v3 | Tuto možnost se zobrazí pouze v případě, že základní nástroje ještě nejsou nainstalovány. V takovém případě jsou základní nástroje nainstalovány při prvním spuštění aplikace. |
-    | Výběr šablony pro první funkci projektu | Přeskočit pro tuto chvíli | |
-    | Vyberte, jak chcete projekt otevřít. | Otevřít v aktuálním okně | Znovu otevře kód VS ve vybrané složce. |
+    | Vyberte jazyk pro projekt Function App. | C# | Vytvořte místní projekt C# Functions. |
+    | Vybrat verzi | Azure Functions V3 | Tato možnost se zobrazí jenom v případě, že už nejsou nainstalované základní nástroje. V takovém případě se při prvním spuštění aplikace nainstalují základní nástroje. |
+    | Vyberte šablonu pro funkci prvního projektu. | Přeskočit hned | |
+    | Vyberte, jak se má projekt otevřít. | Otevřít v aktuálním okně | Znovu otevře VS Code ve vybrané složce. |
 
-Visual Studio Code nainstaluje nástroje Azure Functions Core Tools, v případě potřeby. Také vytvoří projekt aplikace funkce ve složce. Tento projekt obsahuje konfigurační soubory [host.json](../functions-host-json.md) a [local.settings.json.](../functions-run-local.md#local-settings-file)
+V případě potřeby Visual Studio Code nainstaluje Azure Functions Core Tools. Zároveň vytvoří projekt Function App ve složce. Tento projekt obsahuje konfigurační soubory [Host. JSON](../functions-host-json.md) a [Local. Settings. JSON](../functions-run-local.md#local-settings-file) .
 
 ## <a name="add-functions-to-the-app"></a>Přidání funkcí do aplikace
 
-Následující kroky používají šablonu k vytvoření kódu trvalé funkce v projektu.
+Následující kroky používají šablonu k vytvoření trvalého kódu funkce v projektu.
 
-1. V paletě příkazů vyhledejte `Azure Functions: Create Function...`a vyberte .
+1. V paletě příkazů vyhledejte a vyberte `Azure Functions: Create Function...`.
 
-1. V následujících výzvách uveďte následující informace:
-
-    | Výzva | Hodnota | Popis |
-    | ------ | ----- | ----------- |
-    | Výběr šablony pro vaši funkci | DurableFunctionsOrchestraation | Vytvoření orchestrace trvalých funkcí |
-    | Zadání názvu funkce | HelloOrchestration | Název třídy, ve které jsou vytvářeny funkce |
-    | Poskytnutí oboru názvů | Společnost.Function | Obor názvů pro vygenerovanou třídu |
-
-1. Když vás Kód VS vyzve k výběru účtu úložiště, zvolte **Vybrat účet úložiště**. V návaznosti na výzvy zadejte následující informace k vytvoření nového účtu úložiště v Azure.
+1. Podle pokynů zadejte následující informace:
 
     | Výzva | Hodnota | Popis |
     | ------ | ----- | ----------- |
-    | Výběr předplatného | *název předplatného* | Vyberte své předplatné Azure. |
-    | Výběr účtu úložiště | Vytvoření nového účtu úložiště |  |
-    | Zadejte název nového účtu úložiště. | *jedinečný název* | Název účtu úložiště, který chcete vytvořit |
-    | Výběr skupiny prostředků | *jedinečný název* | Název skupiny prostředků, kterou chcete vytvořit |
-    | Výběr umístění | *oblast* | Výběr oblasti blízko vás |
+    | Vyberte šablonu pro funkci | DurableFunctionsOrchestration | Vytvoření orchestrace Durable Functions |
+    | Zadejte název funkce. | HelloOrchestration | Název třídy, ve které jsou vytvářeny funkce |
+    | Zadejte obor názvů. | Company. Function | Obor názvů pro generovanou třídu |
 
-Třída obsahující nové funkce je přidán do projektu. VS Code také přidá připojovací řetězec účtu úložiště do *local.settings.json* a odkaz na balíček [`Microsoft.Azure.WebJobs.Extensions.DurableTask`](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) NuGet do souboru projektu *.csproj.*
+1. Když VS Code zobrazí výzvu k výběru účtu úložiště, zvolte **Vybrat účet úložiště**. Podle pokynů zadejte následující informace, které vám pomůžou vytvořit nový účet úložiště v Azure.
 
-Otevřete nový *soubor HelloOrchestration.cs* a zobrazte obsah. Tato trvalá funkce je jednoduchýpříklad zřetězení funkcí s následujícími metodami:  
+    | Výzva | Hodnota | Popis |
+    | ------ | ----- | ----------- |
+    | Výběr předplatného | *název vašeho předplatného* | Vyberte své předplatné Azure. |
+    | Vyberte účet úložiště. | Vytvoření nového účtu úložiště |  |
+    | Zadejte název nového účtu úložiště. | *jedinečný název* | Název účtu úložiště, který se má vytvořit |
+    | Výběr skupiny prostředků | *jedinečný název* | Název skupiny prostředků, která se má vytvořit |
+    | Výběr umístění | *věřitel* | Vyberte oblast, kterou chcete zavřít. |
 
-| Metoda | Název funkce | Popis |
+Do projektu se přidá třída obsahující nové funkce. VS Code taky přidá připojovací řetězec účtu úložiště do souboru *Local. Settings. JSON* a odkaz na balíček [`Microsoft.Azure.WebJobs.Extensions.DurableTask`](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) NuGet na soubor projektu *. csproj* .
+
+Otevřete nový soubor *HelloOrchestration.cs* pro zobrazení obsahu. Tato trvalá funkce je příklad řetězení jednoduchých funkcí s následujícími metodami:  
+
+| Metoda | FunctionName | Popis |
 | -----  | ------------ | ----------- |
-| **`RunOrchestrator`** | `HelloOrchestration` | Spravuje trvalé orchestraci. V tomto případě orchestrace spustí, vytvoří seznam a přidá výsledek tři funkce volání do seznamu.  Po dokončení tři volání funkce vrátí seznam. |
-| **`SayHello`** | `HelloOrchestration_Hello` | Funkce vrátí hello. Je to funkce, která obsahuje obchodní logiku, která je orchestrována. |
-| **`HttpStart`** | `HelloOrchestration_HttpStart` | [Funkce spouštěná protokolem HTTP,](../functions-bindings-http-webhook.md) která spustí instanci orchestraci a vrátí odpověď na stav kontroly. |
+| **`RunOrchestrator`** | `HelloOrchestration` | Spravuje trvalou orchestraci. V tomto případě se orchestrace spustí, vytvoří seznam a přidá výsledek tří volání funkcí do seznamu.  Po dokončení tří volání funkce vrátí seznam. |
+| **`SayHello`** | `HelloOrchestration_Hello` | Funkce vrátí Hello. Jedná se o funkci, která obsahuje orchestraci obchodní logiky. |
+| **`HttpStart`** | `HelloOrchestration_HttpStart` | [Funkce aktivovaná protokolem HTTP](../functions-bindings-http-webhook.md) , která spustí instanci Orchestrace a vrátí odpověď stavu kontroly. |
 
-Nyní, když jste vytvořili projekt funkce a trvalou funkci, můžete jej otestovat v místním počítači.
+Teď, když jste vytvořili projekt funkcí a trvalou funkci, můžete ho otestovat na místním počítači.
 
 ## <a name="test-the-function-locally"></a>Místní testování funkce
 
 Nástroje Azure Functions Core umožňují spouštět projekt Azure Functions na místním počítači pro vývoj. K instalaci těchto nástrojů budete vyzváni při prvním spuštění funkce z Visual Studio Code.
 
-1. Chcete-li otestovat funkci, nastavte `SayHello` zarážku v kódu funkce aktivity a stisknutím klávesy F5 spusťte projekt aplikace funkce. Výstup z nástrojů Tools se zobrazí na panelu **Terminál**.
+1. Chcete-li otestovat funkci, nastavte zarážku v `SayHello` kódu funkce Activity a stisknutím klávesy F5 spusťte projekt Function App. Výstup z nástrojů Tools se zobrazí na panelu **Terminál**.
 
     > [!NOTE]
-    > Další informace o ladění naleznete v [části Diagnostika trvanlivých funkcí.](durable-functions-diagnostics.md#debugging)
+    > Další informace o ladění naleznete v tématu [diagnostika Durable Functions](durable-functions-diagnostics.md#debugging) .
 
 1. Na panelu **Terminál** zkopírujte adresu URL koncového bodu vaší funkce aktivované protokolem HTTP.
 
     ![Místní výstup Azure](media/durable-functions-create-first-csharp/functions-vscode-f5.png)
 
-1. Pomocí nástroje, jako je [Postman](https://www.getpostman.com/) nebo [cURL](https://curl.haxx.se/), odešlete požadavek HTTP POST do koncového bodu URL.
+1. Pomocí nástroje, jako je například [post](https://www.getpostman.com/) nebo [kudrlinkou](https://curl.haxx.se/), odešlete požadavek HTTP POST na koncový bod adresy URL.
 
-   Odpověď je počáteční výsledek z funkce HTTP nám vědět, trvalé orchestrace úspěšně spuštěna. Ještě není konečným výsledkem orchestrace. Odpověď obsahuje několik užitečných adres URL. Prozatím se podíváme na stav orchestrace.
+   Odpověď je počáteční výsledek z funkce HTTP, což nám umožňuje zjistit, že trvalá orchestrace byla úspěšně spuštěna. Není ještě konečným výsledkem orchestrace. Odpověď obsahuje několik užitečných adres URL. Prozatím si vydejte dotaz na stav orchestrace.
 
-1. Zkopírujte hodnotu `statusQueryGetUri` adresy URL pro a vložte ji do adresního řádku prohlížeče a proveďte požadavek. Případně můžete také pokračovat v používání Postman k vydání požadavku GET.
+1. Zkopírujte hodnotu URL pro `statusQueryGetUri` a vložte ji do adresního řádku prohlížeče a spusťte požadavek. Případně můžete i nadále používat metodu post pro vydání žádosti o získání.
 
-   Požadavek bude dotaz orchestrace instance pro stav. Měli byste získat konečnou odpověď, která nám ukazuje, že instance byla dokončena a obsahuje výstupy nebo výsledky trvalé funkce. Vypadá to takto: 
+   Požadavek se zadotazuje instance orchestrace na stav. Měli byste získat případnou reakci, která ukazuje, že se instance dokončila, a obsahuje výstupy nebo výsledky trvalé funkce. Vypadá takto: 
 
     ```json
     {
@@ -136,7 +136,7 @@ Nástroje Azure Functions Core umožňují spouštět projekt Azure Functions na
     }
     ```
 
-1. Ladění zastavíte stisknutím **kláves Shift + F5** v kódu VS.
+1. Pokud chcete zastavit ladění, stiskněte **SHIFT + F5** v vs Code.
 
 Po ověření správného fungování funkce na místním počítači je na čase publikovat projekt do Azure.
 
@@ -150,80 +150,80 @@ Po ověření správného fungování funkce na místním počítači je na čas
 
         https://<functionappname>.azurewebsites.net/api/HelloOrchestration_HttpStart
 
-1. Vložte tuto novou adresu URL pro požadavek HTTP do panelu Adresa prohlížeče. Při používání publikované aplikace byste měli dostat stejnou odpověď na stav jako předtím.
+1. Vložte tuto novou adresu URL pro požadavek HTTP do panelu Adresa prohlížeče. Po použití publikované aplikace byste měli získat stejnou reakci na stav jako předtím.
 
 ## <a name="next-steps"></a>Další kroky
 
-Použili jste Visual Studio Kód k vytvoření a publikování aplikace c# trvalé funkce.
+Použili jste Visual Studio Code k vytvoření a publikování aplikace funkce, která je v jazyce C#.
 
 > [!div class="nextstepaction"]
-> [Informace o běžných vzorcích trvalých funkcí](durable-functions-overview.md#application-patterns)
+> [Další informace o běžných vzorech trvalých funkcí](durable-functions-overview.md#application-patterns)
 
 ::: zone-end
 
 ::: zone pivot="code-editor-visualstudio"
 
-V tomto článku se dozvíte, jak Visual Studio 2019 místně vytvořit a otestovat "hello world" trvalé funkce.  Tato funkce orchestruje a řetězy společně volání dalších funkcí. Kód funkce potom publikujete do Azure. Tyto nástroje jsou dostupné jako součást úlohy vývoje Azure ve Visual Studiu 2019.
+V tomto článku se naučíte, jak se v rámci sady Visual Studio 2019 místně vytvoří a otestuje trvalá funkce Hello World.  Tato funkce orchestruje a zřetězí volání dalších funkcí. Kód funkce potom publikujete do Azure. Tyto nástroje jsou k dispozici v rámci úlohy vývoje Azure v aplikaci Visual Studio 2019.
 
-![Spuštění trvanlivé funkce v Azure](./media/durable-functions-create-first-csharp/functions-vs-complete.png)
+![Spuštění trvalé funkce v Azure](./media/durable-functions-create-first-csharp/functions-vs-complete.png)
 
 ## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu potřebujete:
 
-* Nainstalujte sadu [Visual Studio 2019](https://visualstudio.microsoft.com/vs/). Ujistěte se, že je také nainstalována úloha **vývoje Azure.** Visual Studio 2017 také podporuje vývoj trvanlivé funkce, ale ui a kroky se liší.
+* Nainstalujte sadu [Visual Studio 2019](https://visualstudio.microsoft.com/vs/). Ujistěte se, že je nainstalovaná také úloha **vývoj pro Azure** . Visual Studio 2017 také podporuje vývoj Durable Functions, ale uživatelské rozhraní a postup se liší.
 
-* Ověřte, že máte nainstalovaný a spuštěný [emulátor úložiště Azure.](../../storage/common/storage-use-emulator.md)
+* Ověřte, že je nainstalovaný a spuštěný [emulátor Azure Storage](../../storage/common/storage-use-emulator.md) .
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="create-a-function-app-project"></a>Vytvoření projektu aplikace funkcí
 
-Šablona Azure Functions vytvoří projekt, který se dá publikovat do aplikace funkce v Azure. Aplikace funkce umožňuje seskupit funkce jako logická jednotka pro snadnější správu, nasazení, škálování a sdílení prostředků.
+Šablona Azure Functions vytvoří projekt, který se dá publikovat do aplikace Function App v Azure. Aplikace Function App umožňuje seskupit funkce jako logickou jednotku pro snadnější správu, nasazování, škálování a sdílení prostředků.
 
-1. V Sadě Visual Studio **vyberte** > nový**projekt** z nabídky **Soubor.**
+1. V aplikaci Visual Studio vyberte v nabídce **soubor** možnost **Nový** > **projekt** .
 
-1. V **dialogovém** okně Vytvořit nový `functions`projekt vyhledejte , zvolte šablonu **Azure Functions** a vyberte **Další**. 
+1. V dialogovém okně **vytvořit nový projekt** vyhledejte `functions`, vyberte šablonu **Azure Functions** a vyberte **Další**. 
 
     ![Dialogové okno Nový projekt pro vytvoření funkce v sadě Visual Studio](./media/durable-functions-create-first-csharp/functions-vs-new-project.png)
 
-1. Zadejte **název projektu** projektu a vyberte **OK**. Název projektu musí být platný jako obor názvů jazyka C#, proto nepoužívejte podtržítka, pomlčky ani jiné nealfanumerické znaky.
+1. Zadejte **název projektu** a vyberte **OK**. Název projektu musí být platný jako obor názvů C#, proto nepoužívejte podtržítka, spojovníky nebo žádné jiné nealfanumerické znaky.
 
-1. V **části Vytvoření nové aplikace Azure Functions**použijte nastavení zadaná v tabulce, která následuje za bitovou kopií.
+1. V části **vytvořit novou aplikaci Azure Functions**použijte nastavení zadaná v tabulce, která následuje po obrázku.
 
-    ![Vytvoření nového dialogového okna aplikace Azure Functions v Sadě Visual Studio](./media/durable-functions-create-first-csharp/functions-vs-new-function.png)
+    ![Vytvoření nového dialogového okna aplikace Azure Functions v aplikaci Visual Studio](./media/durable-functions-create-first-csharp/functions-vs-new-function.png)
 
     | Nastavení      | Navrhovaná hodnota  | Popis                      |
     | ------------ |  ------- |----------------------------------------- |
-    | **Verze** | Funkce Azure 3.0 <br />(.NET Core) | Vytvoří projekt funkce, který používá runtime verze 3.0 Azure Functions, který podporuje rozhraní .NET Core 3.1. Další informace najdete v tématu s [přehledem verzí modulu runtime Azure Functions](../functions-versions.md).   |
-    | **Šablony** | Prázdné | Vytvoří prázdnou aplikaci funkce. |
-    | **Účet úložiště**  | Emulátor úložiště | Účet úložiště je vyžadován pro správu stavu trvalé funkce. |
+    | **Verze** | Azure Functions 3,0 <br />(.NET Core) | Vytvoří projekt funkce, který používá běhový modul Azure Functions verze 3,0, který podporuje .NET Core 3,1. Další informace najdete v tématu s [přehledem verzí modulu runtime Azure Functions](../functions-versions.md).   |
+    | **Šablona** | Obsahovat | Vytvoří prázdnou aplikaci Function App. |
+    | **Účet úložiště**  | Emulátor úložiště | Pro trvalou správu stavu funkce se vyžaduje účet úložiště. |
 
-4. Vyberte **Vytvořit,** chcete-li vytvořit prázdný projekt funkce. Tento projekt má základní konfigurační soubory potřebné ke spuštění funkcí.
+4. Vyberte **vytvořit** k vytvoření prázdného projektu funkce. Tento projekt má základní konfigurační soubory potřebné ke spuštění vašich funkcí.
 
 ## <a name="add-functions-to-the-app"></a>Přidání funkcí do aplikace
 
-Následující kroky používají šablonu k vytvoření kódu trvalé funkce v projektu.
+Následující kroky používají šablonu k vytvoření trvalého kódu funkce v projektu.
 
-1. Klikněte pravým tlačítkem myši na projekt v sadě Visual Studio a vyberte **Přidat** > **novou funkci Azure**.
+1. Klikněte pravým tlačítkem na projekt v aplikaci Visual Studio a vyberte **Přidat** > **novou funkci Azure Functions**.
 
     ![Přidat novou funkci](./media/durable-functions-create-first-csharp/functions-vs-add-function.png)
 
-1. Ověřte, zda je **funkce Azure** vybraná v nabídce Přidat, zadejte název souboru C# a pak vyberte **Přidat**.
+1. Ověřte, že je v nabídce Přidat vybraná možnost **Azure Function** , zadejte název souboru C# a pak vyberte **Přidat**.
 
-1. Vyberte šablonu **Orchestrace trvanlivé funkce** a pak vyberte **Ok**
+1. Vyberte šablonu **orchestrace Durable Functions** a pak vyberte **OK** .
 
-    ![Vybrat odolnou šablonu](./media/durable-functions-create-first-csharp/functions-vs-select-template.png)
+    ![Vybrat trvanlivé šablonu](./media/durable-functions-create-first-csharp/functions-vs-select-template.png)
 
-Do aplikace se přidá nová trvalá funkce.  Otevřete nový soubor CS a zobrazte obsah. Tato trvalá funkce je jednoduchýpříklad zřetězení funkcí s následujícími metodami:  
+Do aplikace se přidá nová trvalá funkce.  Otevřete nový soubor. cs pro zobrazení obsahu. Tato trvalá funkce je příklad řetězení jednoduchých funkcí s následujícími metodami:  
 
-| Metoda | Název funkce | Popis |
+| Metoda | FunctionName | Popis |
 | -----  | ------------ | ----------- |
-| **`RunOrchestrator`** | `<file-name>` | Spravuje trvalé orchestraci. V tomto případě orchestrace spustí, vytvoří seznam a přidá výsledek tři funkce volání do seznamu.  Po dokončení tři volání funkce vrátí seznam. |
-| **`SayHello`** | `<file-name>_Hello` | Funkce vrátí hello. Je to funkce, která obsahuje obchodní logiku, která je orchestrována. |
-| **`HttpStart`** | `<file-name>_HttpStart` | [Funkce spouštěná protokolem HTTP,](../functions-bindings-http-webhook.md) která spustí instanci orchestraci a vrátí odpověď na stav kontroly. |
+| **`RunOrchestrator`** | `<file-name>` | Spravuje trvalou orchestraci. V tomto případě se orchestrace spustí, vytvoří seznam a přidá výsledek tří volání funkcí do seznamu.  Po dokončení tří volání funkce vrátí seznam. |
+| **`SayHello`** | `<file-name>_Hello` | Funkce vrátí Hello. Jedná se o funkci, která obsahuje orchestraci obchodní logiky. |
+| **`HttpStart`** | `<file-name>_HttpStart` | [Funkce aktivovaná protokolem HTTP](../functions-bindings-http-webhook.md) , která spustí instanci Orchestrace a vrátí odpověď stavu kontroly. |
 
-Nyní, když jste vytvořili projekt funkce a trvalou funkci, můžete jej otestovat v místním počítači.
+Teď, když jste vytvořili projekt funkcí a trvalou funkci, můžete ho otestovat na místním počítači.
 
 ## <a name="test-the-function-locally"></a>Místní testování funkce
 
@@ -235,15 +235,15 @@ Nástroje Azure Functions Core umožňují spouštět projekt Azure Functions na
 
     ![Místní modul runtime Azure](./media/durable-functions-create-first-csharp/functions-vs-debugging.png)
 
-3. Vložte adresu URL pro požadavek HTTP do adresního řádku prohlížeče a požadavek spusťte. Následuje ukázka odezvy na místní požadavek GET vrácené funkcí v prohlížeči:
+3. Vložte adresu URL požadavku HTTP do adresního řádku prohlížeče a spusťte požadavek. Následuje ukázka odezvy na místní požadavek GET vrácené funkcí v prohlížeči:
 
     ![Odezva místního hostitele funkce v prohlížeči](./media/durable-functions-create-first-csharp/functions-vs-status.png)
 
-    Odpověď je počáteční výsledek z funkce HTTP nám vědět, trvalé orchestrace úspěšně spuštěna.  Ještě není konečným výsledkem orchestrace.  Odpověď obsahuje několik užitečných adres URL.  Prozatím se podíváme na stav orchestrace.
+    Odpověď je počáteční výsledek z funkce HTTP, což nám umožňuje zjistit, že trvalá orchestrace byla úspěšně spuštěna.  Není ještě konečným výsledkem orchestrace.  Odpověď obsahuje několik užitečných adres URL.  Prozatím si vydejte dotaz na stav orchestrace.
 
-4. Zkopírujte hodnotu `statusQueryGetUri` adresy URL pro a vneste ji do adresního řádku prohlížeče a proveďte požadavek.
+4. Zkopírujte hodnotu URL pro `statusQueryGetUri` a vložte ji do adresního řádku prohlížeče a spusťte požadavek.
 
-    Požadavek bude dotaz orchestrace instance pro stav. Měli byste dostat konečnou odpověď, která vypadá takto.  Tento výstup nám ukazuje, že instance byla dokončena a obsahuje výstupy nebo výsledky trvalé funkce.
+    Požadavek se zadotazuje instance orchestrace na stav. Měli byste získat případnou reakci, která vypadá nějak takto.  Tento výstup ukazuje, že jsme instanci dokončili, a obsahuje výstupy nebo výsledky trvalé funkce.
 
     ```json
     {
@@ -261,7 +261,7 @@ Nástroje Azure Functions Core umožňují spouštět projekt Azure Functions na
     }
     ```
 
-5. Ladění zastavíte stisknutím **kláves Shift + F5**.
+5. Chcete-li zastavit ladění, stiskněte klávesy **SHIFT + F5**.
 
 Po ověření správného fungování funkce na místním počítači je na čase publikovat projekt do Azure.
 
@@ -275,17 +275,17 @@ Před publikováním projektu musíte mít v předplatném Azure aplikaci funkc�
 
 1. Zkopírujte základní adresu URL aplikace funkcí ze stránky Publikovat profil. Nahraďte část adresy URL použité při místním testování funkce, která obsahuje `localhost:port`, novou základní adresou URL.
 
-    Adresa URL, která volá aktivační událost HTTP s trvalou funkcí, by měla být v následujícím formátu:
+    Adresa URL, která volá aktivační událost trvalé funkce HTTP, by měla být v následujícím formátu:
 
         https://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>_HttpStart
 
-2. Vložte tuto novou adresu URL pro požadavek HTTP do panelu Adresa prohlížeče. Při používání publikované aplikace byste měli dostat stejnou odpověď na stav jako předtím.
+2. Vložte tuto novou adresu URL pro požadavek HTTP do panelu Adresa prohlížeče. Po použití publikované aplikace byste měli získat stejnou reakci na stav jako předtím.
 
 ## <a name="next-steps"></a>Další kroky
 
-Visual Studio jste použili k vytvoření a publikování aplikace trvalé funkce jazyka C#.
+Pomocí sady Visual Studio jste vytvořili a publikovali aplikaci funkcí s trvalým prostředím C#.
 
 > [!div class="nextstepaction"]
-> [Informace o běžných vzorcích trvalých funkcí](durable-functions-overview.md#application-patterns)
+> [Další informace o běžných vzorech trvalých funkcí](durable-functions-overview.md#application-patterns)
 
 ::: zone-end

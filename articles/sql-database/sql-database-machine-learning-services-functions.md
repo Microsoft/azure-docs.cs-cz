@@ -1,7 +1,7 @@
 ---
 title: Psaní pokročilých funkcí R
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
-description: Naučte se, jak napsat funkci R pro pokročilé statistické výpočty v Azure SQL Database pomocí Machine Learning Services (preview).
+description: Přečtěte si, jak napsat funkci R pro pokročilý statistickou výpočet v Azure SQL Database pomocí Machine Learning Services (Preview).
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
@@ -15,37 +15,37 @@ manager: cgronlun
 ms.date: 04/11/2019
 ROBOTS: NOINDEX
 ms.openlocfilehash: ba78267b1c6dc8f0e1bd25bb8ecdb1d8d344d03e
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81453110"
 ---
-# <a name="write-advanced-r-functions-in-azure-sql-database-using-machine-learning-services-preview"></a>Psaní pokročilých funkcí R v Azure SQL Database pomocí služby Machine Learning Services (preview)
+# <a name="write-advanced-r-functions-in-azure-sql-database-using-machine-learning-services-preview"></a>Zápis pokročilých funkcí R v Azure SQL Database pomocí Machine Learning Services (Preview)
 
-Tento článek popisuje, jak vložit R matematické a užitkové funkce v sql uložené procedury. Pokročilé statistické funkce, které jsou složité implementovat v T-SQL lze provést v R pouze s jedním řádkem kódu.
+Tento článek popisuje, jak do uložené procedury SQL vložit matematické a obslužné funkce jazyka R. Pokročilé statistické funkce, které jsou komplikované k implementaci v T-SQL, se dají provádět v R s pouze jedním řádkem kódu.
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Pokud nemáte předplatné Azure, [vytvořte si účet,](https://azure.microsoft.com/free/) než začnete.
+- Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-- Chcete-li spustit ukázkový kód v těchto cvičeních, musíte mít nejprve [povolenou Azure SQL Database se službami machine learning (s R).](sql-database-machine-learning-services-overview.md)
+- Chcete-li spustit vzorový kód v těchto cvičeních, musíte nejprve mít [Azure SQL Database s povolenou Machine Learning Services (s R)](sql-database-machine-learning-services-overview.md) .
 
-- Ujistěte se, že jste nainstalovali nejnovější [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS). Skripty R můžete spustit pomocí jiných nástrojů pro správu databáze nebo dotazů, ale v tomto rychlém startu budete používat SSMS.
+- Ujistěte se, že jste nainstalovali nejnovější [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS). Můžete spouštět skripty R pomocí jiných nástrojů pro správu databáze nebo dotazů, ale v tomto rychlém startu použijete SSMS.
 
-## <a name="create-a-stored-procedure-to-generate-random-numbers"></a>Vytvoření uložené procedury pro generování náhodných čísel
+## <a name="create-a-stored-procedure-to-generate-random-numbers"></a>Vytvořit uloženou proceduru pro generování náhodných čísel
 
-Pro jednoduchost použijeme balíček R, `stats` který je nainstalovaný a načtený ve výchozím nastavení s Azure SQL Database pomocí machine learningových služeb (preview). Balíček obsahuje stovky funkcí pro běžné statistické `rnorm` úkoly, mezi nimi funkce. Tato funkce generuje zadaný počet náhodných čísel pomocí normálního rozdělení, vzhledem k směrodatné odchylce a prostředkům.
+Pro jednoduchost použijte balíček R `stats` , který je nainstalovaný a načtený ve výchozím nastavení, s Azure SQL Database pomocí Machine Learning Services (Preview). Balíček obsahuje stovky funkcí pro běžné statistické úkoly, které `rnorm` jsou mimo ně funkce. Tato funkce generuje zadaný počet náhodných čísel pomocí normálního rozdělení s ohledem na směrodatnou odchylku a způsob.
 
-Například následující kód R vrátí 100 čísel na střední hodnotu 50, vzhledem k směrodatné odchylce 3.
+Například následující kód R vrátí 100 čísel ve střední části 50 s ohledem na směrodatnou odchylku 3.
 
 ```R
 as.data.frame(rnorm(100, mean = 50, sd = 3));
 ```
 
-Chcete-li volat tento řádek R `sp_execute_external_script` z T-SQL, spusťte a přidejte funkci R do parametru skriptu R takto:
+Pro volání tohoto řádku R z T-SQL spusťte `sp_execute_external_script` a přidejte funkci R do parametru skriptu jazyka R, například takto:
 
 ```sql
 EXECUTE sp_execute_external_script @language = N'R'
@@ -56,9 +56,9 @@ OutputDataSet <- as.data.frame(rnorm(100, mean = 50, sd =3));
 WITH RESULT SETS(([Density] FLOAT NOT NULL));
 ```
 
-Co když chcete usnadnit generování jiné sady náhodných čísel?
+Co když byste chtěli usnadnit generování jiné sady náhodných čísel?
 
-To je snadné v kombinaci s SQL. Definujete uloženou proceduru, která získá argumenty od uživatele a pak je předá temeno do skriptu R jako proměnné.
+Je to jednoduché v kombinaci s SQL. Definujete uloženou proceduru, která získá argumenty od uživatele, a pak tyto argumenty předejte do skriptu jazyka R jako proměnné.
 
 ```sql
 CREATE PROCEDURE MyRNorm (
@@ -79,13 +79,13 @@ OutputDataSet <- as.data.frame(rnorm(mynumbers, mymean, mysd));
 WITH RESULT SETS(([Density] FLOAT NOT NULL));
 ```
 
-- První řádek definuje každý vstupní parametry SQL, které jsou požadovány při spuštění uložené procedury.
+- První řádek definuje všechny vstupní parametry SQL, které jsou požadovány při spuštění uložené procedury.
 
-- Řádek začínající `@params` definuje všechny proměnné používané kódem R a odpovídající datové typy SQL.
+- Řádek začínající v `@params` definuje všechny proměnné používané kódem R a odpovídající datové typy SQL.
 
 - Řádky, které bezprostředně následují, mapují názvy parametrů SQL na odpovídající názvy proměnných R.
 
-Nyní, když jste zabalili funkci R do uložené procedury, můžete snadno volat funkci a předat různé hodnoty, například takto:
+Teď, když jste zabalily funkci R v uložené proceduře, můžete snadno volat funkci a předat do nich různé hodnoty, jako je:
 
 ```sql
 EXECUTE MyRNorm @param1 = 100
@@ -95,9 +95,9 @@ EXECUTE MyRNorm @param1 = 100
 
 ## <a name="use-r-utility-functions-for-troubleshooting"></a>Použití funkcí nástroje R pro řešení potíží
 
-Balíček, `utils` který je nainstalován ve výchozím nastavení, poskytuje řadu funkcí nástroje pro zkoumání aktuálního prostředí R. Tyto funkce mohou být užitečné, pokud jste zjištění nesrovnalostí ve způsobu, jakým r kód provádí v SQL a ve vnějších prostředích. Můžete například použít funkci `memory.limit()` R k získání paměti pro aktuální prostředí R.
+`utils` Balíček nainstalovaný ve výchozím nastavení poskytuje celou řadu funkcí nástrojů pro zkoumání aktuálního prostředí jazyka R. Tyto funkce mohou být užitečné, pokud hledáte rozdíly ve způsobu, jakým váš kód R provádí v SQL a mimo prostředí. Například můžete použít funkci R `memory.limit()` k získání paměti pro aktuální prostředí jazyka R.
 
-Vzhledem `utils` k tomu, že balíček je `library()` nainstalován, ale není načten ve výchozím nastavení, je nutné použít funkci k jeho načtení jako první.
+Vzhledem k `utils` tomu, že balíček je nainstalovaný, ale není ve výchozím nastavení načtený, musíte ho nejdřív načíst pomocí `library()` funkce.
 
 ```sql
 EXECUTE sp_execute_external_script @language = N'R'
@@ -111,4 +111,4 @@ WITH RESULT SETS(([Col1] INT NOT NULL));
 ```
 
 > [!TIP]
-> Mnoho uživatelů jako použití funkce časování systému v R, jako je například `system.time` a `proc.time`, zachytit čas používaný procesy R a analyzovat problémy s výkonem.
+> Mnoho uživatelů chce používat funkce časování systému v jazyce R, například `system.time` a `proc.time`, k zachycení času používaného procesy jazyka r a k analýze problémů s výkonem.

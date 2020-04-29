@@ -1,47 +1,47 @@
 ---
-title: Vykreslení modelu pomocí Unity
-description: Rychlý start, který uživatele provede kroky k vykreslení modelu
+title: Vykreslení modelu s využitím Unity
+description: Rychlý Start, který provede uživatele prostřednictvím kroků pro vykreslení modelu
 author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
 ms.openlocfilehash: b0af45ba4a6b1ca7f9e751af082ff0db80776ec0
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80679783"
 ---
-# <a name="quickstart-render-a-model-with-unity"></a>Úvodní příručka: Vykreslení modelu pomocí Unity
+# <a name="quickstart-render-a-model-with-unity"></a>Rychlý Start: vykreslení modelu pomocí Unity
 
-Tento rychlý start popisuje, jak spustit ukázku Unity, která na dálku vykreslí vestavěný model pomocí služby Azure Remote Rendering (ARR).
+V tomto rychlém startu se dozvíte, jak spustit vzorek Unity, který vykreslí vestavěný model vzdáleně pomocí služby Azure Remote rendering (ARR).
 
-Nebudeme zacházet do podrobností o samotném Api ARR ani o tom, jak nastavit nový projekt Unity. Tato témata jsou popsána v [kurzu: Nastavení projektu Unity od nuly](../tutorials/unity/project-setup.md).
+Nebudeme se k tomu přihlédnout přímo k samotnému rozhraní API ARR nebo k nastavení nového projektu Unity. Tato témata jsou popsaná v tématu [kurz: nastavení projektu Unity od začátku](../tutorials/unity/project-setup.md).
 
 V tomto rychlém startu se dozvíte, jak:
 > [!div class="checklist"]
 >
 >* Nastavení místního vývojového prostředí
->* Získání a sestavení ukázkové aplikace ARR Quickstart pro Unity
->* Vykreslení modelu v ukázkové aplikaci ARR Quickstart
+>* Získat a sestavit ukázkovou aplikaci s rychlým startem pro Unity
+>* Vykreslení modelu v ukázkové aplikaci rychlý Start pro ARR
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li získat přístup ke službě Vzdálené vykreslování Azure, musíte nejprve [vytvořit účet](../how-tos/create-an-account.md).
+Pokud chcete získat přístup ke službě vzdáleného vykreslování Azure, musíte nejdřív [vytvořit účet](../how-tos/create-an-account.md).
 
-Musí být nainstalován následující software:
+Musí být nainstalovaný následující software:
 
-* Sada Windows SDK 10.0.18362.0 [(stáhnout)](https://developer.microsoft.com/windows/downloads/windows-10-sdk)
-* Nejnovější verze Visual Studia 2019 [(ke stažení)](https://visualstudio.microsoft.com/vs/older-downloads/)
-* GIT [(stáhnout)](https://git-scm.com/downloads)
-* Unity 2019.3.1 [(ke stažení)](https://unity3d.com/get-unity/download)
+* Windows SDK 10.0.18362.0 [(Stáhnout)](https://developer.microsoft.com/windows/downloads/windows-10-sdk)
+* Nejnovější verzi sady Visual Studio 2019 [(Stáhnout)](https://visualstudio.microsoft.com/vs/older-downloads/)
+* GIT [(Stáhnout)](https://git-scm.com/downloads)
+* Unity 2019.3.1 [(Stáhnout)](https://unity3d.com/get-unity/download)
   * Nainstalujte tyto moduly v Unity:
-    * **UPWP** – podpora sestavení univerzální platformy Windows
-    * **IL2CPP** - Podpora sestavení systému Windows (IL2CPP)
+    * Podpora **UWP** – Univerzální platforma Windows sestavení
+    * **IL2CPP** – podpora sestavení pro Windows (IL2CPP)
 
 ## <a name="clone-the-sample-app"></a>Klonování ukázkové aplikace
 
-Otevřete příkazový `cmd` řádek (zadejte nabídku Start systému Windows) a změňte na adresář, do kterého chcete uložit ukázkový projekt ARR.
+Otevřete příkazový řádek (typ `cmd` v nabídce Start systému Windows) a přejděte do adresáře, kam chcete uložit vzorový projekt Arr.
 
 Spusťte následující příkazy:
 
@@ -51,66 +51,66 @@ cd ARR
 git clone https://github.com/Azure/azure-remote-rendering
 ```
 
-Poslední příkaz vytvoří podadresář v adresáři ARR obsahující různé ukázkové projekty pro vzdálené vykreslování Azure.
+Poslední příkaz vytvoří podadresář v adresáři ARR, který obsahuje různé ukázkové projekty pro vzdálené vykreslování Azure.
 
-Ukázková aplikace quickstart pro Unity se nachází v podadresáři *Unity/Quickstart*.
+Ukázková aplikace pro rychlý Start pro Unity se nachází v podadresáři *Unity/rychlý Start*.
 
 ## <a name="rendering-a-model-with-the-unity-sample-project"></a>Vykreslení modelu pomocí ukázkového projektu Unity
 
-Otevřete centrum Unity a přidejte ukázkový projekt, což je složka *ARR\azure-remote-rendering\Unity\Quickstart.*
-Otevřete projekt. V případě potřeby povolte Unity upgradovat projekt na nainstalovanou verzi.
+Otevřete centrum Unity a přidejte vzorový projekt, což je složka *ARR\azure-Remote-rendering\Unity\Quickstart* .
+Otevřete projekt. V případě potřeby povolte Unity upgrade projektu na vaši nainstalovanou verzi.
 
-Výchozí model, který vykreslujeme, je [vestavěný ukázkový model](../samples/sample-model.md). Ukážeme, jak převést vlastní model pomocí služby převodu ARR v [příštím rychlém startu](convert-model.md).
+Výchozí model, který vykreslíme, je [vestavěný Vzorový model](../samples/sample-model.md). Ukážeme, jak převést vlastní model pomocí převodní služby ARR v [dalším rychlém](convert-model.md)startu.
 
-### <a name="enter-your-account-info"></a>Zadejte informace o svém účtu.
+### <a name="enter-your-account-info"></a>Zadejte informace o účtu.
 
-1. V prohlížeči datových zdrojů Unity přejděte do složky *Scény* a otevřete scénu **rychlého startu.**
-1. V *hierarchii*vyberte objekt hry **RemoteRendering.**
-1. V *inspektoru*zadejte [přihlašovací údaje svého účtu](../how-tos/create-an-account.md).
+1. V prohlížeči assetů Unity přejděte do složky *scény* a otevřete scénu **rychlý Start** .
+1. Z *hierarchie*vyberte objekt **RemoteRendering** Game.
+1. V *inspektoru*zadejte své [přihlašovací údaje k účtu](../how-tos/create-an-account.md).
 
 ![Informace o účtu ARR](./media/arr-sample-account-info.png)
 
 > [!IMPORTANT]
-> Azure Portal zobrazuje doménu vašeho účtu jenom jako *mixedreality.azure.com*. To je nedostatečné pro úspěšné připojení.
-> Nastavte **accountdomain** `<region>.mixedreality.azure.com`na `<region>` , kde je [jedna z dostupných oblastí ve vašem okolí](../reference/regions.md).
+> Azure Portal zobrazí doménu vašeho účtu jenom jako *mixedreality.Azure.com*. To není pro úspěšné připojení dostatečné.
+> Nastavte **AccountDomain** na `<region>.mixedreality.azure.com`, kde `<region>` je [jedna z dostupných oblastí poblíž](../reference/regions.md).
 
-Později chceme nasadit tento projekt na HoloLens a připojit se ke službě vzdáleného vykreslování z tohoto zařízení. Vzhledem k tomu, že nemáme snadný způsob, jak zadat přihlašovací údaje v zařízení, ukázka rychlého startu **uloží pověření ve scéně Unity**.
+Později chceme nasadit tento projekt na HoloLens a připojit se ke službě vzdáleného vykreslování z tohoto zařízení. Vzhledem k tomu, že jsme nemuseli na zařízení zadat přihlašovací údaje, ukázka pro rychlý Start **uloží přihlašovací údaje v rámci scény Unity**.
 
 > [!WARNING]
-> Ujistěte se, že projekt s uloženými přihlašovacími údaji nezkontrolujete do nějakého úložiště, kde by unikly tajné přihlašovací údaje!
+> Ujistěte se, že jste projekt nezkontrolovali s uloženými přihlašovacími údaji v některém úložišti, kde by došlo k úniku tajných přihlašovacích informací.
 
 ### <a name="create-a-session-and-view-the-default-model"></a>Vytvoření relace a zobrazení výchozího modelu
 
-Stisknutím tlačítka Unity **Play** spusťte relaci. V dolní části výřezu v panelu *Hra* by se mělo zobrazit překryvné překrytí se stavovým textem. Relace projde řadou přechodů stavu. Ve stavu **Spuštění** se vzdálený virtuální virtuální ms otáčí, což trvá několik minut. Po úspěchu přejde do stavu **Připraveno.** Nyní relace přejde do stavu **Připojení,** kde se pokusí dosáhnout vykreslování runtime na tomto virtuálním počítači. V případě úspěchu se ukázka přejde do stavu **Připojeno.** V tomto okamžiku začne stahovat model pro vykreslování. Vzhledem k velikosti modelu může stahování trvat ještě několik minut. Pak se zobrazí vzdáleně vykreslený model.
+Kliknutím na tlačítko **Přehrát** v Unity spustíte relaci. V dolní části zobrazení na panelu *hry* by se měla zobrazit překryvný text stavu. Relace se bude podrobit sérii přechodů mezi stavy. Ve **výchozím** stavu je vzdálený virtuální počítač vyspuninstý, což trvá několik minut. Po úspěšném přechodu přejde do stavu **připraveno** . Nyní relace vstoupí do stavu **připojení** , kde se pokusí získat přístup k modulu runtime vykreslování na daném virtuálním počítači. Po úspěšném přechodu se ukázka přepne do stavu **připojeno** . V tuto chvíli začne stahovat model pro vykreslování. Kvůli velikosti modelu může stahování trvat několik minut. Pak se zobrazí vzdálený vykreslený model.
 
-![Výstup ze vzorku](media/arr-sample-output.png)
+![Výstup z ukázky](media/arr-sample-output.png)
 
-Blahopřejeme! Nyní si prohlížíte vzdáleně vykreslený model!
+Blahopřejeme! Nyní prohlížíte vzdáleně vykreslený model.
 
 ## <a name="inspecting-the-scene"></a>Kontrola scény
 
-Jakmile je spuštěno připojení vzdáleného vykreslování, panel Inspektor se aktualizuje o další informace o stavu:
+Po spuštění připojení vzdáleného vykreslování se panel inspektor aktualizuje o další informace o stavu:
 
-![Unity ukázka přehrávání](./media/arr-sample-configure-session-running.png)
+![Přehrávání ukázek Unity](./media/arr-sample-configure-session-running.png)
 
-Nyní můžete prozkoumat graf scény výběrem nového uzlu a kliknutím na **Zobrazit podřízené položky** v inspektoru.
+Graf scény teď můžete prozkoumat tak, že vyberete nový uzel a v inspektoru kliknete na **Zobrazit podřízené objekty** .
 
-![Hierarchie jednoty](./media/unity-hierarchy.png)
+![Hierarchie Unity](./media/unity-hierarchy.png)
 
-Ve scéně je objekt [řezané roviny.](../overview/features/cut-planes.md) Zkuste ji povolit ve svých vlastnostech a přesunout ji:
+Ve scéně je objekt [vyjmuté plochy](../overview/features/cut-planes.md) . Zkuste ho povolit ve vlastnostech a přesunout ho kolem:
 
-![Změna roviny řezu](media/arr-sample-unity-cutplane.png)
+![Změna plochy řezu](media/arr-sample-unity-cutplane.png)
 
-Chcete-li synchronizovat transformace, klepněte buď na **tlačítko Synchronizovat nyní,** nebo zaškrtněte možnost **Synchronizovat každý snímek.** Pro vlastnosti komponenty stačí jejich změna.
+Pokud chcete transformovat transformace, klikněte buď na **synchronizovat** , nebo zaškrtněte políčko **synchronizovat všechny snímky** . V případě vlastností komponenty stačí změnit jejich počet.
 
 ## <a name="next-steps"></a>Další kroky
 
-V dalším rychlém startu nasadíme ukázku do HoloLens, abychom zobrazili vzdáleně vykreslený model v původní velikosti.
+V dalším rychlém startu nasadíme ukázku na HoloLens a zobrazí se vzdáleně vykreslený model v původní velikosti.
 
 > [!div class="nextstepaction"]
-> [Úvodní příručka: Nasazení ukázky Unity do HoloLens](deploy-to-hololens.md)
+> [Rychlý Start: nasazení ukázky Unity do HoloLens](deploy-to-hololens.md)
 
-Alternativně ukázka může být také nasazena do stolního počítače.
+Alternativně lze ukázku také nasadit do stolního počítače.
 
 > [!div class="nextstepaction"]
-> [Úvodní příručka: Nasazení ukázky Unity na plochu](deploy-to-desktop.md)
+> [Rychlý Start: nasazení ukázky Unity do desktopu](deploy-to-desktop.md)

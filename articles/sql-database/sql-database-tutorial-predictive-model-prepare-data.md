@@ -1,7 +1,7 @@
 ---
-title: 'Kurz: Příprava dat pro trénování prediktivního modelu v R'
+title: 'Kurz: Příprava dat pro výuku prediktivního modelu v jazyce R'
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
-description: V první části této třídílné série kurzů připravíte data z databáze Azure SQL, abyste trénovali prediktivní model v R se službami Machine Learning Services azure SQL database (preview).
+description: V první části této série výukových kurzů budete připravovat data z Azure SQL Database, abyste mohli vytvořit prediktivní model v R s Azure SQL Database Machine Learning Services (Preview).
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
@@ -15,44 +15,44 @@ manager: cgronlun
 ms.date: 07/26/2019
 ROBOTS: NOINDEX
 ms.openlocfilehash: bf69d2963c74723cb3fea542e28288e4f136d5c3
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81458756"
 ---
-# <a name="tutorial-prepare-data-to-train-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Kurz: Příprava dat pro trénování prediktivního modelu v R se službami Azure SQL Database Machine Learning Services (preview)
+# <a name="tutorial-prepare-data-to-train-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Kurz: Příprava dat pro výuku prediktivního modelu v R s Azure SQL Database Machine Learning Services (Preview)
 
-V první části této třídílné série kurzů budete importovat a připravovat data z databáze Azure SQL pomocí R. Později v této řadě použijete tato data k trénování a nasazování prediktivního modelu strojového učení v R se službami Azure SQL Database Machine Learning Services (preview).
+V první části této série kurzů pro tři části budete importovat a připravit data z Azure SQL Database pomocí jazyka R. Později v této sérii budete tato data používat k výuce a Nasazení prediktivního modelu strojového učení v jazyce R s Azure SQL Database Machine Learning Services (Preview).
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
-Pro tuto sérii kurzů si představte, že vlastníte půjčovnu lyží a chcete předpovědět počet pronájmů, které budete mít v budoucnu. Tyto informace vám pomohou připravit vaše akcie, personál a zařízení.
+V této sérii kurzů si představte, že jste vlastníkem programu Ski půjčovna a chcete předpovědět počet zapůjčení, které budete mít k budoucímu datu. Tyto informace vám pomůžou zajistit připravenost vašich akcií, zaměstnanců a zařízení.
 
-V částech první a dvě této řady budete vyvíjet některé skripty R v RStudiu pro přípravu dat a trénování modelu strojového učení. Potom v části třetí, budete spouštět tyto skripty R uvnitř databáze SQL pomocí uložené procedury.
+V rámci jedné a dvou částí této série budete vyvíjet několik skriptů R v RStudio, abyste mohli připravit vaše data a naučit model strojového učení. Pak v části 3 spustíte tyto skripty R v databázi SQL pomocí uložených procedur.
 
 V tomto článku se dozvíte, jak:
 
 > [!div class="checklist"]
-> * Import ukázkové databáze do databáze Azure SQL pomocí jazyka R
-> * Načtení dat z databáze Azure SQL do datového rámce R
-> * Příprava dat v R identifikací některých sloupců jako kategorických
+> * Import ukázkové databáze do Azure SQL Database s využitím R
+> * Načtení dat z databáze SQL Azure do datového rámce R
+> * Příprava dat v jazyce R určením některých sloupců jako kategorií
 
-Ve [druhé části](sql-database-tutorial-predictive-model-build-compare.md)se dozvíte, jak vytvořit a trénovat více modelů strojového učení v R a pak zvolte nejpřesnější modely.
+V [druhé části](sql-database-tutorial-predictive-model-build-compare.md)se dozvíte, jak vytvořit a naučit více modelů strojového učení v jazyce R a pak zvolit nejpřesnější model.
 
-V [části tři](sql-database-tutorial-predictive-model-deploy.md)se dozvíte, jak uložit model v databázi a potom vytvořit uložené procedury ze skriptů R, které jste vyvinuli v částech jedna a dvě. Uložené procedury budou spuštěny v databázi SQL, aby se předpovědi založené na nových datech.
+V [třetí části](sql-database-tutorial-predictive-model-deploy.md)se dozvíte, jak uložit model do databáze a pak vytvořit uložené procedury z skriptů R, které jste vytvořili v částech One a 2. Uložené procedury se spustí v databázi SQL, aby se předpovědi na základě nových dat.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure – Pokud nemáte předplatné Azure, [vytvořte si účet,](https://azure.microsoft.com/free/) než začnete.
+* Předplatné Azure – Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-* [Azure SQL Database se službami strojového učení (s povolenou R).](sql-database-machine-learning-services-overview.md)
+* [Azure SQL Database se zapnutou Machine Learning Services (s R)](sql-database-machine-learning-services-overview.md) .
 
-* RevoScaleR balíček - Viz [RevoScaleR](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-revoscaler?view=sql-server-2017#versions-and-platforms) pro možnosti instalace tohoto balíčku místně.
+* Balíček RevoScaleR – možnosti pro místní instalaci balíčku najdete v tématu [RevoScaleR](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-revoscaler?view=sql-server-2017#versions-and-platforms) .
 
-* R IDE - Tento kurz používá [RStudio Desktop](https://www.rstudio.com/products/rstudio/download/).
+* Prostředí IDE jazyka R – tento kurz používá [RStudio Desktop](https://www.rstudio.com/products/rstudio/download/).
 
-* Sql dotaz nástroj – tento kurz předpokládá, že používáte [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is) nebo SQL Server Management [Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS).
+* Nástroj SQL Query – v tomto kurzu se předpokládá, že používáte [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is) nebo [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
@@ -60,21 +60,21 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 ## <a name="import-the-sample-database"></a>Import ukázkové databáze
 
-Ukázková datová sada použitá v tomto kurzu byla uložena do záložního souboru databáze **.bacpac,** který můžete stáhnout a použít.
+Ukázková datová sada použitá v tomto kurzu se uložila do záložního souboru databáze **. BacPac** , abyste ji mohli stáhnout a použít.
 
-1. Stáhněte si soubor [TutorialDB.bacpac](https://sqlchoice.blob.core.windows.net/sqlchoice/static/TutorialDB.bacpac).
+1. Stáhněte si soubor [databáze tutorialdb. BacPac](https://sqlchoice.blob.core.windows.net/sqlchoice/static/TutorialDB.bacpac).
 
-1. Podle pokynů v [části Import souboru BACPAC vytvořte databázi Azure SQL](https://docs.microsoft.com/azure/sql-database/sql-database-import)pomocí těchto podrobností:
+1. Postupujte podle pokynů v části [Import souboru BacPac a vytvořte databázi SQL Azure](https://docs.microsoft.com/azure/sql-database/sql-database-import)pomocí těchto podrobností:
 
-   * Import ze staženého souboru **TutorialDB.bacpac**
-   * Během veřejné verze Preview zvolte konfiguraci **Gen5/vCore** pro novou databázi.
-   * Pojmenujte novou databázi "TutorialDB"
+   * Import ze souboru **databáze tutorialdb. BacPac** , který jste stáhli
+   * Ve verzi Public Preview vyberte konfiguraci **Gen5/Vcore** pro novou databázi.
+   * Pojmenujte novou databázi "databáze tutorialdb".
 
 ## <a name="load-the-data-into-a-data-frame"></a>Načtení dat do datového rámce
 
-Chcete-li použít data v R, načtete data z databáze`rentaldata`Azure SQL do datového rámce ( ).
+Pokud chcete použít data v R, nahrajete data z databáze SQL Azure do datového rámce (`rentaldata`).
 
-Vytvořte nový soubor RScript v RStudiu a spusťte následující skript. Nahraďte **server**, **UID**a **PWD** vlastními informacemi o připojení.
+Vytvořte nový soubor RScript v RStudio a spusťte následující skript. Nahraďte **Server**, **UID**a **PWD** vlastními informacemi o připojení.
 
 ```r
 #Define the connection string to connect to the TutorialDB database
@@ -96,7 +96,7 @@ head(rentaldata);
 str(rentaldata);
 ```
 
-Měli byste vidět výsledky podobné následujícímu.
+Měly by se zobrazit výsledky podobné následujícímu.
 
 ```results
    Year  Month  Day  RentalCount  WeekDay  Holiday  Snow
@@ -118,8 +118,8 @@ $ Snow       : num  0 0 0 0 0 0 0 0 0 0 ...
 
 ## <a name="prepare-the-data"></a>Příprava dat
 
-V této ukázkové databázi již byla provedena většina přípravy, ale tady projdete ještě jednou přípravou.
-Pomocí následujícího skriptu R můžete identifikovat tři sloupce jako *kategorie* změnou datových typů na *faktor*.
+V této ukázkové databázi se většina přípravy už provedla, ale tady provedete ještě další přípravu.
+Pomocí následujícího skriptu jazyka R Identifikujte tři sloupce jako *kategorie* změnou datových typů na *faktor*.
 
 ```r
 #Changing the three factor columns to factor types
@@ -131,7 +131,7 @@ rentaldata$WeekDay <- factor(rentaldata$WeekDay);
 str(rentaldata);
 ```
 
-Měli byste vidět výsledky podobné následujícímu.
+Měly by se zobrazit výsledky podobné následujícímu.
 
 ```results
 data.frame':      453 obs. of  7 variables:
@@ -144,28 +144,28 @@ $ Holiday    : Factor w/ 2 levels "0","1": 2 1 1 1 1 1 1 1 1 1 ...
 $ Snow       : Factor w/ 2 levels "0","1": 1 1 1 1 1 1 1 1 1 1 ...
 ```
 
-Data jsou nyní připravena k tréninku.
+Data jsou teď připravená pro školení.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud nebudete pokračovat v tomto kurzu, odstraňte databázi TutorialDB z vašeho serveru Azure SQL Database.
+Pokud nebudete pokračovat v tomto kurzu, odstraňte databázi databáze tutorialdb ze serveru Azure SQL Database.
 
-Na webu Azure Portal postupujte takto:
+V Azure Portal postupujte podle následujících kroků:
 
-1. V levé nabídce na webu Azure Portal vyberte **Všechny prostředky** nebo **databáze SQL**.
-1. Do pole **Filtr podle názvu...** zadejte **TutorialDB**a vyberte předplatné.
-1. Vyberte databázi TutorialDB.
+1. V nabídce na levé straně Azure Portal vyberte **všechny prostředky** nebo **databáze SQL**.
+1. Do pole **filtrovat podle názvu...** zadejte **databáze tutorialdb**a vyberte své předplatné.
+1. Vyberte databázi databáze tutorialdb.
 1. Na stránce **Přehled** vyberte **Odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 
 V první části této série kurzů jste dokončili tyto kroky:
 
-* Import ukázkové databáze do databáze Azure SQL pomocí jazyka R
-* Načtení dat z databáze Azure SQL do datového rámce R
-* Příprava dat v R identifikací některých sloupců jako kategorických
+* Import ukázkové databáze do Azure SQL Database s využitím R
+* Načtení dat z databáze SQL Azure do datového rámce R
+* Příprava dat v jazyce R určením některých sloupců jako kategorií
 
-Chcete-li vytvořit model strojového učení, který používá data z databáze TutorialDB, postupujte podle druhé části této série kurzů:
+Pokud chcete vytvořit model strojového učení, který používá data z databáze databáze tutorialdb, postupujte podle části 2 této série kurzů:
 
 > [!div class="nextstepaction"]
-> [Kurz: Vytvoření prediktivního modelu v R se službami Azure SQL Database Machine Learning Services (preview)](sql-database-tutorial-predictive-model-build-compare.md)
+> [Kurz: Vytvoření prediktivního modelu v R s Azure SQL Database Machine Learning Services (Preview)](sql-database-tutorial-predictive-model-build-compare.md)

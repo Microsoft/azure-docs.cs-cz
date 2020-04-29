@@ -1,6 +1,6 @@
 ---
-title: Migrace úloh místních služb SQL Server Integration Services (SSIS) do Azure Data Factory
-description: Tento článek popisuje, jak migrovat úlohy SQL Server Integration Services (SSIS) do kanálu Azure Data Factory/aktivity/aktivační události pomocí SQL Server Management Studio.
+title: Migrace místních služba SSIS (SQL Server Integration Services) úloh (SSIS) do Azure Data Factory
+description: Tento článek popisuje, jak migrovat úlohy služba SSIS (SQL Server Integration Services) (SSIS) na Azure Data Factory kanály/aktivity/triggery pomocí SQL Server Management Studio.
 services: data-factory
 documentationcenter: ''
 author: chugugrace
@@ -12,72 +12,72 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/7/2020
 ms.openlocfilehash: 6e357e98d6c5190c6dfef675dc1ab9cf30a717c1
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81455083"
 ---
-# <a name="migrate-sql-server-agent-jobs-to-adf-with-ssms"></a>Migrace úloh agenta serveru SQL Server do adf s SSMS
+# <a name="migrate-sql-server-agent-jobs-to-adf-with-ssms"></a>Migrace úloh agenta SQL Server do ADF pomocí SSMS
 
-Při [migraci místních úloh služby SQL Server Integration Services (SSIS) do ssis v adf](scenario-ssis-migration-overview.md)můžete po migraci balíčků SSIS provést dávkovou migraci úloh agenta SQL Server s typem kroku úlohy SQL Server Integration Services Package do kanálu/aktivit/spouštění aktivit/plánu Azure Data Factory (ADF) prostřednictvím **Průvodce migrace úloh SSIS**(SQL Server Management Studio) SSIS .
+Při [migraci místních služba SSIS (SQL Server Integration Services) úloh (SSIS) na SSIS v ADF](scenario-ssis-migration-overview.md)se po migraci balíčků SSIS dá dávková migrace úloh SQL Server agentů s typem kroku úlohy služba SSIS (SQL Server Integration Services) balíčku do Azure Data Factory (ADF) kanálů/aktivit/naplánovat aktivační události prostřednictvím SQL Server Management Studio (SSMS) **SSIS Průvodce migrací úloh**.
 
-Obecně platí, že pro vybrané úlohy agenta SQL s příslušnými typy kroků úlohy může **Průvodce migrací úloh SSIS:**
+Obecně platí, že pro vybrané úlohy agenta SQL s použitelnými typy kroků úlohy může **Průvodce migrací úlohy SSIS** :
 
-- mapovat umístění balíčku SSIS do místa, kam jsou balíčky migrovány, které jsou přístupné SSIS v ADF.
+- namapujte místní umístění balíčku SSIS na místo, kam se balíčky migrují, které jsou přístupné SSIS v ADF.
     > [!NOTE]
     > Umístění balíčku systému souborů je podporováno pouze.
-- migrujte příslušné úlohy s příslušnými kroky úlohy do odpovídajících zdrojů ADF, jak je uvedeno níže:
+- Migrujte příslušné úlohy s příslušnými kroky úlohy do odpovídajících prostředků ADF, jak je uvedeno níže:
 
-|Objekt úlohy agenta SQL  |Zdroj ADF  |Poznámky|
+|Objekt úlohy agenta SQL  |Prostředek ADF  |Poznámky|
 |---------|---------|---------|
-|Úloha agenta SQL|Potrubí     |Název kanálu bude *generován pro \<>názvu úlohy *. <br> <br> Integrované úlohy agenta nejsou použitelné: <li> Úloha údržby serveru SSIS <li> syspolicy_purge_history <li> collection_set_* <li> mdw_purge_data_* <li> sysutility_*|
-|Krok úlohy SSIS|Spustit aktivitu balíčku SSIS|<li> Název aktivity bude \<název kroku>. <li> Účet proxy použitý v kroku úlohy bude migrován jako ověřování této aktivity systémem Windows. <li> *Možnosti spuštění* s výjimkou *Použití 32bitového běhu definovaného* v kroku úlohy bude při migraci ignorováno. <li> *Ověření* definované v kroku úlohy bude při migraci ignorováno.|
-|schedule      |trigger plánu        |Název aktivační události plánu bude *generován pro \<>názvu plánu *. <br> <br> Níže uvedené možnosti v plánu úloh agenta SQL budou při migraci ignorovány: <li> Interval druhé úrovně. <li> *Automatické spuštění při spuštění agenta serveru SQL Server* <li> *Spusťte vždy, když se procesory stanou nečinnými* <li> *den v týdnu* a *víkendový den*<time zone> <br> Níže jsou uvedeny rozdíly po migraci plánu úloh agenta SQL na aktivační událost plánu ADF: <li> Následné spuštění spuštění plánu ADF je nezávislé na stavu spuštění předchozího spuštění. <li> Konfigurace opakování aktivační události plánu adf se liší od denní frekvence v úloze agenta SQL.|
+|Úloha agenta SQL|kanálu     |Název kanálu bude *vygenerován pro \<název úlohy>*. <br> <br> Předdefinované úlohy agenta nejsou k dispozici: <li> Úloha údržby serveru SSIS <li> syspolicy_purge_history <li> collection_set_ * <li> mdw_purge_data_ * <li> sysutility_ *|
+|Krok úlohy SSIS|Aktivita provádění balíčku SSIS|<li> Název aktivity bude> název \<kroku. <li> Proxy účet použitý v kroku úlohy bude migrován jako ověřování systému Windows této aktivity. <li> *Možnosti spuštění* s výjimkou *použití 32ho modulu runtime* definovaného v kroku úlohy budou při migraci ignorovány. <li> *Ověřování* definované v kroku úlohy bude při migraci ignorováno.|
+|schedule      |trigger plánu        |Název aktivační události plánovače se *vygeneruje pro \<název plánu>*. <br> <br> Níže uvedené možnosti v plánu úlohy agenta SQL se budou při migraci ignorovat: <li> Interval druhé úrovně. <li> *Spustit automaticky při spuštění agenta SQL Server* <li> *Spustit pokaždé, když se procesory stanou nečinné* <li> den v *týdnu* a *víkend*<time zone> <br> Níže jsou uvedeny rozdíly po migraci plánu úlohy agenta SQL do aktivační události naplánování ADF: <li> Následné spuštění triggeru na základě plánu ADF je nezávisle na stavu spuštění v předchůdci aktivovaném spuštěním. <li> Konfigurace opakování aktivační události plánu ADF se v úloze agenta SQL liší od každodenní frekvence.|
 
-- generujte šablony Azure Resource Manager (ARM) v místní výstupní složce a nasaďte je přímo nebo později ručně do datové továrny. Další informace o šablonách Správce prostředků ADF naleznete v [tématu Typy prostředků Microsoft.DataFactory](https://docs.microsoft.com/azure/templates/microsoft.datafactory/allversions).
+- Vygenerujte šablony Azure Resource Manager (ARM) v místní výstupní složce a přímo nebo později nasaďte do objektu pro vytváření dat. Další informace o šablonách ADF Správce prostředků najdete v tématu [typy prostředků Microsoft. DataFactory](https://docs.microsoft.com/azure/templates/microsoft.datafactory/allversions).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Funkce popsaná v tomto článku vyžaduje SQL Server Management Studio verze 18.5 nebo vyšší. Nejnovější verzi služby SSMS naleznete v [tématu Stažení aplikace SQL Server Management Studio (SSMS).](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15)
+Funkce popsaná v tomto článku vyžaduje SQL Server Management Studio verze 18,5 nebo vyšší. Pokud chcete získat nejnovější verzi SSMS, přečtěte si téma [stažení SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15).
 
-## <a name="migrate-ssis-jobs-to-adf"></a>Migrace úloh SSIS do adf
+## <a name="migrate-ssis-jobs-to-adf"></a>Migrace úloh SSIS do ADF
 
-1. V SSMS vyberte v Průzkumníku objektů agenta serveru SQL Server, vyberte Úlohy, klikněte pravým tlačítkem myši a **vyberte Migrovat úlohy SSIS do adf**.
-![Nabídky](media/how-to-migrate-ssis-job-ssms/menu.png)
+1. V SSMS v Průzkumník objektů vyberte SQL Server Agent, vyberte úlohy, klikněte pravým tlačítkem a vyberte **migrovat úlohy SSIS na ADF**.
+![nabídce](media/how-to-migrate-ssis-job-ssms/menu.png)
 
-1. Přihlaste se do Azure, vyberte předplatné Azure, Data Factory a integration runtime. Azure Storage je volitelné, který se používá v kroku mapování umístění balíčku, pokud úlohy SSIS, které mají být migrovány, mají balíčky systému souborů SSIS.
-![Nabídky](media/how-to-migrate-ssis-job-ssms/step1.png)
+1. Přihlaste se k Azure, vyberte předplatné Azure, Data Factory a Integration Runtime. Azure Storage je volitelná, která se používá v kroku mapování umístění balíčku, pokud mají migrovány úlohy SSIS balíčky systému souborů SSIS.
+![nabídce](media/how-to-migrate-ssis-job-ssms/step1.png)
 
-1. Namapujte cesty balíčků SSIS a konfiguračních souborů v úlohách SSIS na cílové cesty, kam mají přístup migrované kanály. V tomto kroku mapování můžete:
+1. Namapujte cesty balíčků SSIS a konfiguračních souborů v úlohách SSIS na cílové cesty, ke kterým mají migrované kanály přístup. V tomto kroku mapování můžete:
 
-    1. Vyberte zdrojovou složku a **pak přidejte mapování**.
-    1. Aktualizovat cestu ke zdrojové složce. Platné cesty jsou cesty složek nebo cesty nadřazených složek balíčků.
-    1. Aktualizujte cestu cílové složky. Výchozí je relativní cesta k výchozímu účtu úložiště, který je vybrán v kroku 1.
-    1. Odstranit vybrané mapování pomocí **příkazu Odstranit mapování**.
-![krok2](media/how-to-migrate-ssis-job-ssms/step2.png)
-![krok2-1](media/how-to-migrate-ssis-job-ssms/step2-1.png)
+    1. Vyberte zdrojovou složku a pak **Přidat mapování**.
+    1. Aktualizujte cestu ke zdrojové složce. Platné cesty jsou cesty ke složkám nebo cesty nadřazených složek balíčků.
+    1. Aktualizujte cestu k cílové složce. Výchozí hodnota je relativní cesta k výchozímu účtu úložiště, který je vybraný v kroku 1.
+    1. Odstraní vybrané mapování prostřednictvím **mapování pro odstranění**.
+![STEP2](media/how-to-migrate-ssis-job-ssms/step2.png)
+![STEP2 – 1](media/how-to-migrate-ssis-job-ssms/step2-1.png)
 
-1. Vyberte příslušné úlohy k migraci a nakonfigurujte nastavení odpovídající *aktivity balíčku SSIS*.
+1. Vyberte příslušné úlohy, které chcete migrovat, a nakonfigurujte nastavení odpovídající *spouštěné aktivity balíčku SSIS*.
 
-    - *Výchozí nastavení*se ve výchozím nastavení vztahuje na všechny vybrané kroky. Další informace o jednotlivých vlastnostech naleznete v *tématu Nastavení karty* [pro spuštění aktivity balíčku SSIS,](how-to-invoke-ssis-package-ssis-activity.md) pokud je umístění balíčku *systém souborů (balíček).*
-    ![krok3-1](media/how-to-migrate-ssis-job-ssms/step3-1.png)
-    - *Nastavení kroku*, konfigurace nastavení pro vybraný krok.
+    - *Výchozí nastavení*platí pro všechny vybrané kroky ve výchozím nastavení. Další informace o jednotlivých vlastnostech naleznete v tématu *Karta nastavení* pro [aktivitu spustit SSIS balíčku](how-to-invoke-ssis-package-ssis-activity.md) , když je umístění balíčku *systém souborů (Package)*.
+    ![Step3-1](media/how-to-migrate-ssis-job-ssms/step3-1.png)
+    - *Nastavení kroku*, nakonfigurujte nastavení pro vybraný krok.
         
-        **Použít výchozí nastavení**: Je vybráno výchozí nastavení. Zrušením zaškrtnutí nakonfigurujte nastavení pouze pro vybraný krok.  
-        Další informace o dalších vlastnostech naleznete v *tématu Nastavení karty* [pro aktivitu Spustit balíček SSIS,](how-to-invoke-ssis-package-ssis-activity.md) pokud je umístění balíčku *systém souborů (balíček).*
-    ![krok3-2](media/how-to-migrate-ssis-job-ssms/step3-2.png)
+        **Použít výchozí nastavení**: je vybraná možnost výchozí. Zrušte výběr ke konfiguraci nastavení pouze pro vybraný krok.  
+        Další informace o dalších vlastnostech naleznete v tématu *Karta nastavení* pro [aktivitu spustit SSIS balíčku](how-to-invoke-ssis-package-ssis-activity.md) , když je umístění balíčku *systém souborů (Package)*.
+    ![Step3 – 2](media/how-to-migrate-ssis-job-ssms/step3-2.png)
 
 1. Vygenerujte a nasaďte šablonu ARM.
-    1. Vyberte nebo zadejte výstupní cestu pro šablony ARM migrovaných kanálů ADF. Složka bude vytvořena automaticky, pokud neexistuje.
-    2. Vyberte možnost **Nasazení šablon ARM do vaší datové továrny**:
-        - Výchozí hodnota není vybrána. Vygenerované šablony ARM můžete nasadit později ručně.
-        - Tuto možnost vyberte, chcete-li nasadit generované šablony ARM přímo do datové továrny.
-    ![krok4](media/how-to-migrate-ssis-job-ssms/step4.png)
+    1. Vyberte nebo zadejte výstupní cestu šablon ARM migrovaných kanálů ADF. Složka se vytvoří automaticky, pokud neexistuje.
+    2. Vyberte možnost **Nasazení šablon ARM do objektu pro vytváření dat**:
+        - Výchozí hodnota není vybraná. Vygenerované šablony ARM můžete nasadit později ručně.
+        - Tuto možnost vyberte, pokud chcete nasadit vygenerované šablony ARM přímo do objektu pro vytváření dat.
+    ![step4](media/how-to-migrate-ssis-job-ssms/step4.png)
 
-1. Migrujte a zkontrolujte výsledky.
-![krok5](media/how-to-migrate-ssis-job-ssms/step5.png)
+1. Migrujte a pak zkontrolujte výsledky.
+![step5](media/how-to-migrate-ssis-job-ssms/step5.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-[Spuštění a monitorování kanálu](how-to-invoke-ssis-package-ssis-activity.md)
+[Spustit a monitorovat kanál](how-to-invoke-ssis-package-ssis-activity.md)

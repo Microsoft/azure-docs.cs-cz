@@ -1,6 +1,6 @@
 ---
-title: Rozhraní API microsoft graphu pro PIM (preview) – Azure AD | Dokumenty společnosti Microsoft
-description: Obsahuje informace o používání rozhraní API Microsoft Graphu pro správu privilegovaných identit (PIM) (Preview) služby Azure AD Privileged Identity Management (PIM).
+title: Rozhraní API pro Microsoft Graph pro PIM (Preview) – Azure AD | Microsoft Docs
+description: Poskytuje informace o použití rozhraní API Microsoft Graph pro Azure AD Privileged Identity Management (PIM) (Preview).
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -15,26 +15,26 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6da6bffbc54bfa6e9c39ddace665eb7cfec58614
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75638659"
 ---
-# <a name="microsoft-graph-apis-for-privileged-identity-management-preview"></a>Rozhraní API aplikace Microsoft Graph pro správu privilegovaných identit (preview)
+# <a name="microsoft-graph-apis-for-privileged-identity-management-preview"></a>Rozhraní API pro Microsoft Graph pro Privileged Identity Management (Preview)
 
-Všechny úlohy správy privilegovaných identit můžete provádět pomocí [rozhraní API microsoft graphu](https://developer.microsoft.com/graph/docs/concepts/overview) pro Azure Active Directory. Tento článek popisuje důležité koncepty pro použití rozhraní API aplikace Microsoft Graph pro správu privilegovaných identit.
+Všechny úlohy Privileged Identity Management můžete provádět pomocí [Microsoft Graph rozhraní API](https://developer.microsoft.com/graph/docs/concepts/overview) pro Azure Active Directory. Tento článek popisuje důležité koncepty pro používání rozhraní Microsoft Graph API pro Privileged Identity Management.
 
-Podrobnosti o rozhraních API microsoft graphu najdete v [referenční příručce rozhraní API pro privilegované identity Azure AD](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/privilegedidentitymanagement_root).
+Podrobnosti o rozhraních API Microsoft Graph najdete v referenčních informacích k [rozhraní api Azure AD Privileged Identity Management](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/privilegedidentitymanagement_root).
 
 > [!IMPORTANT]
-> Rozhraní API v rámci /beta verze v Microsoft Graphu jsou ve verzi Preview a mohou se změnit. Použití těchto api v produkčních aplikacích není podporováno.
+> Rozhraní API pod verzí/beta v Microsoft Graph jsou ve verzi Preview a mohou se měnit. Použití těchto rozhraní API v produkčních aplikacích není podporováno.
 >
-> Přestože jsou všechny operace PIM podporovány prostřednictvím našich příkazů rozhraní API graphu, ke schvalování žádostí o aktivaci používáme jiný systém. Graph API pro schválení je v současné době vyvíjen a bude vydána v příštích několika měsících.
+> I když jsou všechny operace PIM podporované prostřednictvím našich Graph APIch příkazů, používáme pro schvalování žádostí o aktivaci jiný systém. Graph API ke schválení se momentálně vyvíjí a vydávají se za několik následujících měsíců.
 
 ## <a name="required-permissions"></a>Požadovaná oprávnění
 
-Chcete-li volat rozhraní API aplikace Microsoft Graph pro správu privilegovaných identit, musíte mít **jedno nebo více** z následujících oprávnění:
+Chcete-li volat rozhraní API Microsoft Graph pro Privileged Identity Management, je nutné mít **minimálně jedno** z následujících oprávnění:
 
 - `Directory.AccessAsUser.All`
 - `Directory.Read.All`
@@ -43,24 +43,24 @@ Chcete-li volat rozhraní API aplikace Microsoft Graph pro správu privilegovan�
 
 ### <a name="set-permissions"></a>Nastavení oprávnění
 
-Aby aplikace mohly volat rozhraní API aplikace Microsoft Graph pro správu privilegovaných identit, musí mít požadovaná oprávnění. Nejjednodušší způsob, jak určit požadovaná oprávnění, je použití [rámce souhlasu Azure AD](../develop/consent-framework.md).
+Aby mohly aplikace volat rozhraní API Microsoft Graph pro Privileged Identity Management, musí mít požadovaná oprávnění. Nejjednodušším způsobem, jak zadat požadovaná oprávnění, je použít [rozhraní pro vyjádření souhlasu Azure AD](../develop/consent-framework.md).
 
-### <a name="set-permissions-in-graph-explorer"></a>Nastavení oprávnění v Průzkumníkovi grafů
+### <a name="set-permissions-in-graph-explorer"></a>Nastavení oprávnění v Graph Exploreru
 
-Pokud k testování hovorů používáte Průzkumník a graf, můžete v nástroji zadat oprávnění.
+Pokud k otestování volání používáte Průzkumníka grafů, můžete zadat oprávnění v nástroji.
 
-1. Přihlaste se k [Průzkumníku grafů](https://developer.microsoft.com/graph/graph-explorer) jako globální správce.
+1. Přihlaste se k [aplikaci Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) jako globální správce.
 
-1. Klepněte na **tlačítko Změnit oprávnění**.
+1. Klikněte na **Upravit oprávnění**.
 
-    ![Průzkumník grafů – změna oprávnění](./media/pim-apis/graph-explorer.png)
+    ![Průzkumník grafů – Změna oprávnění](./media/pim-apis/graph-explorer.png)
 
-1. Zaškrtněte políčka vedle oprávnění, která chcete zahrnout. `PrivilegedAccess.ReadWrite.AzureAD`v aplikaci Graph Explorer ještě není k dispozici.
+1. Zaškrtněte políčka vedle oprávnění, která chcete zahrnout. `PrivilegedAccess.ReadWrite.AzureAD`není zatím k dispozici v Graph Exploreru.
 
-    ![Průzkumník grafů – změna oprávnění](./media/pim-apis/graph-explorer-modify-permissions.png)
+    ![Průzkumník grafů – Změna oprávnění](./media/pim-apis/graph-explorer-modify-permissions.png)
 
-1. Chcete-li použít změny oprávnění, klepněte na **tlačítko Změnit oprávnění.**
+1. Klikněte na **Upravit oprávnění** , aby se změny oprávnění projevily.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Odkaz na rozhraní API pro privilegované identity Azure AD](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/privilegedidentitymanagement_root)
+- [Reference k rozhraní API Azure AD Privileged Identity Management](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/privilegedidentitymanagement_root)

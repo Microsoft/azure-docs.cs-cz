@@ -1,5 +1,5 @@
 ---
-title: Výuka – Zálohování virtuálních počítačů S Linuxem na webu Azure Portal
+title: Kurz – zálohování virtuálních počítačů se systémem Linux v Azure Portal
 description: V tomto kurzu se naučíte, jak využít portál Azure k ochraně virtuálních počítačů s Linuxem pomocí Azure Backup.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,10 +15,10 @@ ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: d233cba65d190178c500f78d4817e233ab46d780
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81460066"
 ---
 # <a name="tutorial-back-up-and-restore-files-for-linux-virtual-machines-in-azure"></a>Kurz: Zálohování a obnova souborů pro virtuální počítače s Linuxem v Azure
@@ -45,12 +45,12 @@ Vytvořte plánované denní zálohování do trezoru služby Recovery Services:
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. V nabídce na levé straně vyberte **Virtuální počítače**. 
 3. V seznamu vyberte virtuální počítač, který chcete zálohovat.
-4. V okně virtuálního počítače v části **Nastavení** klikněte na **Zálohování**. Otevře se okno **Povolit zálohování.**
+4. V okně virtuálního počítače v části **Nastavení** klikněte na **Zálohování**. Otevře se okno **Povolit zálohování** .
 5. V části **Trezor služby Recovery Services** klikněte na **Vytvořit nový** a zadejte název nového trezoru. Nový trezor se vytvoří ve stejné skupině prostředků a stejném umístění jako virtuální počítač.
 6. Klikněte na **Zásady zálohování**. Pro účely tohoto příkladu ponechte výchozí hodnoty a klikněte na **OK**.
 7. V okně **Povolit zálohování** klikněte na **Povolit zálohování**. Tím se vytvoří denní zálohování na základě výchozího plánu.
 10. Pokud chcete vytvořit prvotní bod obnovení, v okně **Zálohování** klikněte na **Zálohovat nyní**.
-11. V okně **Backup Now** klepněte na ikonu kalendáře, pomocí ovládacího prvku kalendář vyberte poslední den, kdy je tento bod obnovení zachován, a klepněte na tlačítko **Zálohovat**.
+11. V okně **Zálohovat nyní** klikněte na ikonu kalendáře, pomocí ovládacího prvku kalendáře vyberte poslední den uchování tohoto bodu obnovení a klikněte na **zálohovat**.
 12. V okně **Zálohování** vašeho virtuálního počítače se zobrazí počet dokončených bodů obnovení.
 
     ![Body obnovení](./media/tutorial-backup-vms/backup-complete.png)

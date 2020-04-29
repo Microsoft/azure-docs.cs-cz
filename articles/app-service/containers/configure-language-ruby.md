@@ -1,49 +1,49 @@
 ---
-title: Konfigurace aplikací Ruby – služba Azure App Service
-description: Přečtěte si, jak pro vaši aplikaci nakonfigurovat předem sestavený kontejner Ruby. Tento článek ukazuje nejběžnější úlohy konfigurace.
+title: Konfigurace aplikací Ruby – Azure App Service
+description: Naučte se nakonfigurovat předem připravený kontejner Ruby pro vaši aplikaci. Tento článek ukazuje nejběžnější konfigurační úlohy.
 ms.topic: quickstart
 ms.date: 03/28/2019
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18
 ms.openlocfilehash: 8daebba840223d050a14b4b99cb6ae15472ee4f5
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80046329"
 ---
-# <a name="configure-a-linux-ruby-app-for-azure-app-service"></a>Konfigurace aplikace Linux Ruby pro službu Azure App Service
+# <a name="configure-a-linux-ruby-app-for-azure-app-service"></a>Konfigurace aplikace pro Linux v Ruby pro Azure App Service
 
-Tento článek popisuje, jak [služba Azure App Service](app-service-linux-intro.md) spouští aplikace Ruby a jak můžete přizpůsobit chování služby App Service v případě potřeby. Aplikace Ruby musí být nasazeny se všemi [požadovanými drahokamy](https://rubygems.org/gems).
+Tento článek popisuje, jak [Azure App Service](app-service-linux-intro.md) spouští aplikace Ruby a jak můžete v případě potřeby přizpůsobit chování App Service. Aplikace Ruby musí být nasazené se všemi požadovanými [Gems](https://rubygems.org/gems).
 
-Tato příručka obsahuje klíčové koncepty a pokyny pro vývojáře Ruby, kteří používají integrovaný kontejner Linuxu ve službě App Service. Pokud jste službu Azure App Service nikdy nepoužívali, měli byste nejprve postupovat podle [rychlého startu Ruby](quickstart-ruby.md) a [Ruby s postgreSQL kurzem.](tutorial-ruby-postgres-app.md)
+V této příručce najdete klíčové koncepty a pokyny pro vývojáře Ruby, kteří používají integrovaný kontejner Linux v nástroji App Service. Pokud jste nikdy Azure App Service nepoužili, měli byste nejdřív postupovat podle kurzu [Ruby pro rychlé](quickstart-ruby.md) zprovoznění a [Ruby v PostgreSQL](tutorial-ruby-postgres-app.md) .
 
 ## <a name="show-ruby-version"></a>Zobrazit verzi Ruby
 
-Chcete-li zobrazit aktuální verzi Ruby, spusťte v [prostředí Cloud Shell](https://shell.azure.com)následující příkaz :
+Aktuální verzi Ruby zobrazíte spuštěním následujícího příkazu v [Cloud Shell](https://shell.azure.com):
 
 ```azurecli-interactive
 az webapp config show --resource-group <resource-group-name> --name <app-name> --query linuxFxVersion
 ```
 
-Chcete-li zobrazit všechny podporované verze Ruby, spusťte v [prostředí Cloud Shell](https://shell.azure.com)následující příkaz :
+Pokud chcete zobrazit všechny podporované verze Ruby, spusťte v [Cloud Shell](https://shell.azure.com)následující příkaz:
 
 ```azurecli-interactive
 az webapp list-runtimes --linux | grep RUBY
 ```
 
-Nepodporovanou verzi Ruby můžete spustit tak, že místo toho nastavíte vlastní image kontejneru. Další informace naleznete [v tématu použití vlastní image Dockeru](tutorial-custom-docker-image.md).
+Můžete spustit nepodporovanou verzi Ruby vytvořením vlastní image kontejneru. Další informace najdete v tématu [použití vlastní image Docker](tutorial-custom-docker-image.md).
 
 ## <a name="set-ruby-version"></a>Nastavit verzi Ruby
 
-Spusťte následující příkaz v [prostředí Cloud Shell](https://shell.azure.com) a nastavte verzi Ruby na verzi 2.3:
+Spusťte následující příkaz v [Cloud Shell](https://shell.azure.com) k nastavení verze Ruby na 2,3:
 
 ```azurecli-interactive
 az webapp config set --resource-group <resource-group-name> --name <app-name> --linux-fx-version "RUBY|2.3"
 ```
 
 > [!NOTE]
-> Pokud se během doby nasazení zobrazí podobné chybám jako následující:
+> Pokud se v době nasazení zobrazí chyby podobné následujícímu:
 > ```
 > Your Ruby version is 2.3.3, but your Gemfile specified 2.3.1
 > ```
@@ -51,11 +51,11 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 > ```
 > rbenv: version `2.3.1' is not installed
 > ```
-> To znamená, že verze Ruby nakonfigurovaná ve vašem projektu se liší`2.3.3` od verze, která je nainstalovaná v kontejneru, který používáte (v příkladu výše). Ve výše uvedeném příkladu zkontrolujte *verzi Gemfile* i *.ruby* a ověřte, zda není verze Ruby nastavena nebo`2.3.3` je nastavena na verzi nainstalovanou v kontejneru, který používáte (v příkladu výše).
+> To znamená, že verze Ruby nakonfigurovaná ve vašem projektu se liší od verze, která je nainstalovaná v kontejneru, který používáte`2.3.3` (v předchozím příkladu). V předchozím příkladu zkontrolujte *Gemfile* i *. Ruby-Version* a ověřte, že verze Ruby není nastavená, nebo je nastavená na verzi, která je nainstalovaná v kontejneru, který používáte (`2.3.3` v předchozím příkladu).
 
 ## <a name="access-environment-variables"></a>Přístup k proměnným prostředí
 
-Ve službě App Service můžete [nastavit nastavení aplikace](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) mimo kód aplikace. Pak k nim můžete přistupovat pomocí standardního vzoru [ENV['\<path-name>'].](https://ruby-doc.org/core-2.3.3/ENV.html) Chcete-li například získat `WEBSITE_SITE_NAME`přístup k nastavení aplikace s názvem , použijte následující kód:
+V App Service můžete [nastavit nastavení aplikace](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) mimo kód vaší aplikace. Pak k nim můžete přistupovat pomocí vzoru standard [ENV ['\<path-Name> ']](https://ruby-doc.org/core-2.3.3/ENV.html) . Chcete-li například získat přístup k nastavení aplikace `WEBSITE_SITE_NAME`s názvem, použijte následující kód:
 
 ```ruby
 ENV['WEBSITE_SITE_NAME']
@@ -63,55 +63,55 @@ ENV['WEBSITE_SITE_NAME']
 
 ## <a name="customize-deployment"></a>Přizpůsobení nasazení
 
-Když nasadíte [úložiště Git](../deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)nebo [balíček Zip](../deploy-zip.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) se zapnutými procesy sestavení, modul nasazení (Kudu) automaticky ve výchozím nastavení spustí následující kroky po nasazení:
+Když nasadíte [úložiště Git](../deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)nebo se zapnul [balíček zip](../deploy-zip.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) s procesy sestavení, modul pro nasazení (Kudu) automaticky spustí následující kroky po nasazení:
 
-1. Zkontrolujte, zda *gemfile* existuje.
+1. Zkontroluje, jestli *Gemfile* existuje.
 1. Spusťte `bundle clean`. 
 1. Spusťte `bundle install --path "vendor/bundle"`.
-1. Spusťte `bundle package` balíček drahokamů do složky dodavatele/mezipaměti.
+1. Spusťte `bundle package` příkaz pro zabalení Gems do složky dodavatel/cache.
 
-### <a name="use---without-flag"></a>Použít --bez příznaku
+### <a name="use---without-flag"></a>Použít příznak--bez příznaku
 
-Chcete-li spustit `bundle install` s [--without](https://bundler.io/man/bundle-install.1.html) flag, nastavte `BUNDLE_WITHOUT` nastavení [aplikace](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) na seznam skupin oddělených čárkami. Například následující příkaz jej `development,test`nastaví na .
+Pokud chcete `bundle install` spustit s příznakem [--bez](https://bundler.io/man/bundle-install.1.html) příznaku, nastavte `BUNDLE_WITHOUT` [nastavení aplikace](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) na čárkami oddělený seznam skupin. Například následující příkaz nastaví na `development,test`.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings BUNDLE_WITHOUT="development,test"
 ```
 
-Pokud je toto nastavení definováno, modul nasazení běží `bundle install` s `--without $BUNDLE_WITHOUT`.
+Pokud je toto nastavení definované, spustí `bundle install` se modul pro nasazení pomocí `--without $BUNDLE_WITHOUT`nástroje.
 
-### <a name="precompile-assets"></a>Předkompilovat datové zdroje
+### <a name="precompile-assets"></a>Předkompilovat prostředky
 
-Kroky po nasazení nejsou předkompilovat prostředky ve výchozím nastavení. Chcete-li zapnout předkompilaci datových `ASSETS_PRECOMPILE` zdrojů, nastavte nastavení [aplikace](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) na . `true` Poté je `bundle exec rake --trace assets:precompile` příkaz spuštěn na konci kroků po nasazení. Například:
+Kroky po nasazení nekompiluje ve výchozím nastavení prostředky. Pokud chcete předkompilaci assetů zapnout, nastavte `ASSETS_PRECOMPILE` [nastavení aplikace](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) na `true`. Pak se příkaz `bundle exec rake --trace assets:precompile` spustí na konci postupu po nasazení. Příklad:
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings ASSETS_PRECOMPILE=true
 ```
 
-Další informace naleznete v tématu [Serve static assets](#serve-static-assets).
+Další informace najdete v tématu [obsluha statických prostředků](#serve-static-assets).
 
 ## <a name="customize-start-up"></a>Přizpůsobení spuštění
 
-Ve výchozím nastavení spustí kontejner Ruby server Rails v následujícím pořadí (další informace naleznete ve [skriptu pro spuštění](https://github.com/Azure-App-Service/ruby/blob/master/2.3.8/startup.sh)):
+Ve výchozím nastavení kontejner Ruby spouští server kolejnice v následující sekvenci (Další informace najdete v tématu [spouštěcí skript](https://github.com/Azure-App-Service/ruby/blob/master/2.3.8/startup.sh)):
 
-1. Vygenerujte [hodnotu secret_key_base,](https://edgeguides.rubyonrails.org/security.html#environmental-security) pokud již neexistuje. Tato hodnota je vyžadována pro spuštění aplikace v produkčním režimu.
-1. Nastavte `RAILS_ENV` proměnnou `production`prostředí na .
-1. Odstraňte libovolný soubor *.pid* v adresáři *tmp/pids,* který je ponechán dříve spuštěným serverem Rails.
-1. Zkontrolujte, zda jsou nainstalovány všechny závislosti. Pokud ne, zkuste nainstalovat drahokamy z adresáře místního *dodavatele/mezipaměti.*
+1. Vygeneruje hodnotu [secret_key_base](https://edgeguides.rubyonrails.org/security.html#environmental-security) , pokud již neexistuje. Tato hodnota se vyžaduje, aby se aplikace spouštěla v provozním režimu.
+1. Nastavte proměnnou `RAILS_ENV` prostředí na `production`.
+1. Odstraňte všechny soubory *. PID* v adresáři *TMP/PID* , který zbývá z dříve běžícího serveru s kolejnicemi.
+1. Ověřte, zda jsou nainstalovány všechny závislosti. Pokud ne, zkuste nainstalovat Gems z místního *dodavatele nebo adresáře mezipaměti* .
 1. Spusťte `rails server -e $RAILS_ENV`.
 
-Proces spuštění můžete přizpůsobit následujícími způsoby:
+Proces spouštění můžete přizpůsobit následujícími způsoby:
 
-- [Obsluha statických datových zdrojů](#serve-static-assets)
+- [Obsluha statických prostředků](#serve-static-assets)
 - [Spustit v neprodukčním režimu](#run-in-non-production-mode)
-- [Ruční nastavení secret_key_base](#set-secret_key_base-manually)
+- [Nastavit secret_key_base ručně](#set-secret_key_base-manually)
 
-### <a name="serve-static-assets"></a>Obsluha statických datových zdrojů
+### <a name="serve-static-assets"></a>Obsluha statických prostředků
 
-Server Rails v kontejneru Ruby je ve výchozím nastavení spuštěn v produkčním režimu a [předpokládá, že datové zdroje jsou předkompilovány a jsou obsluhovány webovým serverem](https://guides.rubyonrails.org/asset_pipeline.html#in-production). Chcete-li obsluhovat statické datové zdroje ze serveru Rails, musíte udělat dvě věci:
+Server kolejnice v kontejneru Ruby běží ve výchozím nastavení v produkčním režimu a [předpokládá, že prostředky jsou předkompilovány a obsluhovány vaším webovým serverem](https://guides.rubyonrails.org/asset_pipeline.html#in-production). K obsluze statických prostředků ze serveru kolejnice je třeba provést dvě věci:
 
-- **Předkompilujte datové zdroje** - [Předkompilujte statické prostředky místně](https://guides.rubyonrails.org/asset_pipeline.html#local-precompilation) a nasaďte je ručně. Nebo nechte modul nasazení zpracovat místo toho (viz [Předkompilace datových zdrojů](#precompile-assets).
-- **Povolení zobrazování statických souborů** – Chcete-li obsluhovat statické `true`datové zdroje z kontejneru Ruby, nastavte nastavení [ `RAILS_SERVE_STATIC_FILES` aplikace](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) na . Například:
+- **Předkompilování prostředků** - [předkompilování statických prostředků místně](https://guides.rubyonrails.org/asset_pipeline.html#local-precompilation) a jejich ruční nasazení. Nebo ho modul pro nasazení místo toho zpracuje (viz [předkompilování prostředků](#precompile-assets).
+- **Povolit obsluze statických souborů** – pro obsluhu statických prostředků z kontejneru Ruby [nastavte `RAILS_SERVE_STATIC_FILES` nastavení aplikace](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) na `true`. Příklad:
 
     ```azurecli-interactive
     az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings RAILS_SERVE_STATIC_FILES=true
@@ -119,21 +119,21 @@ Server Rails v kontejneru Ruby je ve výchozím nastavení spuštěn v produkčn
 
 ### <a name="run-in-non-production-mode"></a>Spustit v neprodukčním režimu
 
-Server Rails je ve výchozím nastavení spuštěn v produkčním režimu. Chcete-li spustit v režimu `RAILS_ENV` vývoje, `development`například nastavte nastavení [aplikace](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) na .
+Server kolejnice běží ve výchozím nastavení v provozním režimu. Chcete-li spustit v režimu pro vývoj, například nastavte `RAILS_ENV` [nastavení aplikace](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) na `development`.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings RAILS_ENV="development"
 ```
 
-Toto nastavení však samo o sobě způsobí, že server Rails spustit v režimu vývoje, který přijímá pouze požadavky localhost a není přístupný mimo kontejner. Chcete-li přijímat požadavky vzdálených klientů, nastavte `APP_COMMAND_LINE` nastavení [aplikace](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) na . `rails server -b 0.0.0.0` Toto nastavení aplikace umožňuje spustit vlastní příkaz v kontejneru Ruby. Například:
+Toto nastavení ale samostatně způsobí, že se server kolejnice spustí v režimu vývoje, který přijímá pouze požadavky localhost a není přístupný mimo kontejner. Pokud chcete přijmout žádosti vzdálených klientů, nastavte `APP_COMMAND_LINE` [nastavení aplikace](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) na `rails server -b 0.0.0.0`. Toto nastavení aplikace umožňuje spustit vlastní příkaz v kontejneru Ruby. Příklad:
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings APP_COMMAND_LINE="rails server -b 0.0.0.0"
 ```
 
-### <a name="set-secret_key_base-manually"></a><a name="set-secret_key_base-manually"></a>Ruční nastavení secret_key_base
+### <a name="set-secret_key_base-manually"></a><a name="set-secret_key_base-manually"></a>Nastavit secret_key_base ručně
 
-Pokud chcete `secret_key_base` použít vlastní hodnotu, místo toho, `SECRET_KEY_BASE` aby služba App Service pro vás vygenerovala jednu, nastavte [nastavení aplikace](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) podle požadované hodnoty. Například:
+Pokud chcete použít vlastní `secret_key_base` hodnotu místo toho, aby vám App Service pro vás vygenerovala `SECRET_KEY_BASE` jednu z nich, nastavte u [nastavení aplikace](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) hodnotu, kterou chcete. Příklad:
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings SECRET_KEY_BASE="<key-base-value>"
@@ -143,7 +143,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 [!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
 
-## <a name="open-ssh-session-in-browser"></a>Otevření relace SSH v prohlížeči
+## <a name="open-ssh-session-in-browser"></a>Otevřít relaci SSH v prohlížeči
 
 [!INCLUDE [Open SSH session in browser](../../../includes/app-service-web-ssh-connect-builtin-no-h.md)]
 
@@ -152,7 +152,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Výuka: Rails aplikace s PostgreSQL](tutorial-ruby-postgres-app.md)
+> [Kurz: aplikace s kolejnicemi pomocí PostgreSQL](tutorial-ruby-postgres-app.md)
 
 > [!div class="nextstepaction"]
-> [Nejčastější dotazy k aplikační službě Linux](app-service-linux-faq.md)
+> [Nejčastější dotazy k App Service Linux](app-service-linux-faq.md)

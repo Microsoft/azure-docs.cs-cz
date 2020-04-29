@@ -1,6 +1,6 @@
 ---
-title: Výuka – správa virtuálních počítačů pomocí cli
-description: V tomto kurzu se dozvíte, jak používat Azure CLI ke správě virtuálních počítačů Azure pomocí RBAC, policie, zámky a značky.
+title: Kurz – Správa virtuálních počítačů pomocí rozhraní příkazového řádku
+description: V tomto kurzu se naučíte používat rozhraní příkazového řádku Azure ke správě virtuálních počítačů Azure pomocí RBAC, policies, zámků a značek.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: tfitzmac
@@ -13,13 +13,13 @@ ms.date: 09/30/2019
 ms.author: tomfitz
 ms.custom: mvc
 ms.openlocfilehash: 883bc209c343784e07bb5e03dc9f721c19b2f635
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81460082"
 ---
-# <a name="tutorial-learn-about-linux-virtual-machine-management-with-azure-cli"></a>Kurz: Další informace o správě virtuálních strojů linuxu pomocí Azure CLI
+# <a name="tutorial-learn-about-linux-virtual-machine-management-with-azure-cli"></a>Kurz: informace o správě virtuálních počítačů s Linux pomocí Azure CLI
 
 [!INCLUDE [Resource Manager governance introduction](../../../includes/resource-manager-governance-intro.md)]
 
@@ -63,7 +63,7 @@ adgroupId=$(az ad group show --group <your-group-name> --query objectId --output
 az role assignment create --assignee-object-id $adgroupId --role "Virtual Machine Contributor" --resource-group myResourceGroup
 ```
 
-Pokud se zobrazí chyba **oznamující hlavní \<guid> neexistuje v adresáři**, nová skupina nebyla rozšířena v celé službě Azure Active Directory. Zkuste příkaz znovu spustit.
+Pokud se zobrazí chyba oznamující, že **identifikátor \<guid objektu zabezpečení> v adresáři neexistuje**, nová skupina se po celou Azure Active Directory nerozšířila. Zkuste příkaz znovu spustit.
 
 Obvykle tento postup zopakujete pro role *Přispěvatel sítě* a *Přispěvatel účtů úložiště*, abyste zajistili přiřazení uživatelů ke správě nasazených prostředků. V tomto článku můžete tyto kroky vynechat.
 
@@ -171,7 +171,7 @@ Zobrazí se chyba s oznámením, že operaci odstranění nelze kvůli zámku do
 
 ## <a name="tag-resources"></a>Označení prostředků
 
-[Značky](../../azure-resource-manager/management/tag-resources.md) se použijí na prostředky Azure, aby je logicky uspořádat podle kategorií. Každá značka se skládá z názvu a hodnoty. Můžete například použít název Prostředí a hodnotu Produkční na všechny prostředky v produkčním prostředí.
+[Značky](../../azure-resource-manager/management/tag-resources.md) můžete použít pro prostředky Azure, abyste je logicky uspořádali podle kategorií. Každá značka se skládá z názvu a hodnoty. Můžete například použít název Prostředí a hodnotu Produkční na všechny prostředky v produkčním prostředí.
 
 [!INCLUDE [Resource Manager governance tags CLI](../../../includes/resource-manager-governance-tags-cli.md)]
 
@@ -218,7 +218,7 @@ nsglock=$(az lock show --name LockNSG \
 az lock delete --ids $vmlock $nsglock
 ```
 
-Pokud už nepotřebujete, můžete pomocí příkazu [odstranění skupiny az](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) odebrat skupinu prostředků, virtuální hod a všechny související prostředky. Ukončete relaci SSH k vašemu virtuálnímu počítači a pak odstraňte prostředky následujícím způsobem:
+Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků, virtuálního počítače a všech souvisejících prostředků použít příkaz [AZ Group Delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) . Ukončete relaci SSH k vašemu virtuálnímu počítači a pak odstraňte prostředky následujícím způsobem:
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup
@@ -235,7 +235,7 @@ V tomto kurzu jste vytvořili vlastní image virtuálního počítače. Naučili
 > * Ochrana důležitých prostředků pomocí zámků
 > * Označení prostředků pro fakturaci a správu
 
-Přejdete k dalšímu kurzu, kde se dozvíte, jak identifikovat změny a spravovat aktualizace balíčků na virtuálním počítači.
+Přejděte k dalšímu kurzu, kde se dozvíte, jak identifikovat změny a spravovat aktualizace balíčků na virtuálním počítači.
 
 > [!div class="nextstepaction"]
 > [Správa virtuálních počítačů](tutorial-config-management.md)

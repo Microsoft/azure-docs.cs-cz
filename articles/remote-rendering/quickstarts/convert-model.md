@@ -1,123 +1,123 @@
 ---
 title: Převod modelu
-description: Rychlý start, který zobrazuje kroky převodu pro vlastní model.
+description: Rychlý Start, který ukazuje kroky převodu pro vlastní model.
 author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
 ms.openlocfilehash: 7ba8d201c29b5e3835fec52d8c479a388ca07f71
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81312997"
 ---
-# <a name="quickstart-convert-a-model-for-rendering"></a>Úvodní příručka: Převod modelu pro vykreslování
+# <a name="quickstart-convert-a-model-for-rendering"></a>Rychlý Start: převod modelu pro vykreslování
 
-V [úvodním startu: Render model s Unity](render-model.md), jste se naučili, jak pomocí projektu ukázky Unity k vykreslení předdefinovaného modelu. Tato příručka ukazuje, jak převést své vlastní modely.
+V [rychlém startu: vykreslit model pomocí Unity](render-model.md), zjistili jste, jak pomocí ukázkového projektu Unity vykreslit vestavěný model. Tato příručka ukazuje, jak převést vlastní modely.
 
 Dozvíte se, jak provést tyto akce:
 
 > [!div class="checklist"]
 >
-> * Nastavení účtu úložiště objektů blob Azure pro vstup a výstup
-> * Nahrání a převod 3D modelu pro použití se vzdáleným vykreslováním Azure
-> * Zahrnutí převedeného 3D modelu do aplikace pro vykreslování
+> * Nastavení účtu Azure Blob Storage pro vstup a výstup
+> * Nahrání a převod 3D model pro použití s Azure Remote rendering
+> * Zahrnout převedený 3D model v aplikaci pro vykreslování
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Kompletní [úvodní příručka: Vykreslení modelu pomocí Unity](render-model.md)
-* Instalace Azure [PowerShellu (dokumentace)](https://docs.microsoft.com/powershell/azure/)
+* Kompletní [rychlé zprovoznění: vykreslení modelu pomocí Unity](render-model.md)
+* Nainstalovat Azure PowerShell [(dokumentace)](https://docs.microsoft.com/powershell/azure/)
   * Otevření PowerShellu s právy správce
-  * Spustit:`Install-Module -Name Az -AllowClobber`
+  * Spouštěl`Install-Module -Name Az -AllowClobber`
 
 ## <a name="overview"></a>Přehled
 
-Vykreslovací modul na serveru nemůže pracovat přímo se zdrojovými formáty modelu, jako je FBX nebo GLTF. Místo toho vyžaduje, aby byl model v proprietárním binárním formátu.
-Služba převodu spotřebovává modely z úložiště objektů blob Azure a zapíše převedené modely zpět do kontejneru úložiště objektů blob Azure.
+Zobrazovací jednotka na serveru nemůže pracovat přímo se zdrojovými formáty zdrojového modelu, jako je například FBX nebo GLTF. Místo toho vyžaduje, aby byl model ve speciálním binárním formátu.
+Převodní služba spotřebovává modely z Azure Blob Storage a zapisuje převedené modely zpátky do poskytnutého kontejneru úložiště objektů BLOB v Azure.
 
 Budete potřebovat:
 
 * Předplatné Azure
-* Účet "StorageV2" ve vašem předplatném
-* Kontejner úložiště objektů blob pro vstupní model
-* Kontejner úložiště objektů blob pro vaše výstupní data
-* Model pro převod, viz [ukázkové modely](../samples/sample-model.md)
-  * Zobrazit seznam [podporovaných zdrojových formátů](../how-tos/conversion/model-conversion.md#supported-source-formats)
-  * Chcete-li použít ukázkový převodový skript, ujistěte se, že připravíte vstupní složku, která obsahuje model a všechny externí závislosti (jako jsou externí textury nebo geometrie)
+* Účet StorageV2 v předplatném
+* Kontejner úložiště objektů BLOB pro vstupní model
+* Kontejner úložiště objektů BLOB pro vaše výstupní data
+* Model, který se má převést, najdete v tématu [ukázkové modely](../samples/sample-model.md) .
+  * Zobrazit seznam [podporovaných formátů zdroje](../how-tos/conversion/model-conversion.md#supported-source-formats)
+  * Chcete-li použít vzorový skript pro převod, ujistěte se, že jste připravili vstupní složku, která obsahuje model a všechny externí závislosti (například externí textury nebo geometrii).
 
 ## <a name="azure-setup"></a>Nastavení Azure
 
-Pokud ještě nemáte účet, přejděte [https://azure.microsoft.com/get-started/](https://azure.microsoft.com/get-started/)na , klikněte na možnost bezplatného účtu a postupujte podle pokynů.
+Pokud ještě nemáte účet, přejděte na [https://azure.microsoft.com/get-started/](https://azure.microsoft.com/get-started/), klikněte na možnost bezplatný účet a postupujte podle pokynů.
 
-Až budete mít účet Azure, přejděte na [https://ms.portal.azure.com/#home](https://ms.portal.azure.com/#home).
+Jakmile budete mít účet Azure, pokračujte na [https://ms.portal.azure.com/#home](https://ms.portal.azure.com/#home).
 
 ### <a name="storage-account-creation"></a>Vytvoření účtu úložiště
 
-Chcete-li vytvořit úložiště objektů blob, musíte nejprve účet úložiště.
-Chcete-li jej vytvořit, klikněte na tlačítko "Vytvořit zdroj":
+Pokud chcete vytvořit úložiště objektů blob, budete nejdřív potřebovat účet úložiště.
+Pokud ho chcete vytvořit, klikněte na tlačítko vytvořit prostředek:
 
-![Azure – přidání prostředku](media/azure-add-a-resource.png)
+![Azure – přidat prostředek](media/azure-add-a-resource.png)
 
-Na nové obrazovce zvolte **Úložiště** na levé straně a potom **účet úložiště – objekt blob, soubor, tabulka, fronta** z dalšího sloupce:
+Na nové obrazovce zvolte na levé straně **úložiště** a potom **účet úložiště – objekt blob, soubor, tabulka, fronta** z dalšího sloupce:
 
 ![Azure – přidání úložiště](media/azure-add-storage.png)
 
-Kliknutím na toto tlačítko se zobrazí následující obrazovka s vlastnostmi úložiště, které je třeba vyplnit:
+Po kliknutí na toto tlačítko se zobrazí následující obrazovka s vlastnostmi úložiště, které se mají vyplnit:
 
 ![Nastavení Azure](media/azure-setup1.png)
 
 Vyplňte formulář následujícím způsobem:
 
-* Vytvořte novou skupinu prostředků z odkazu pod rozevíracím seznamem a pojmenujte tento **ARR_Tutorial**
-* Pro **název účtu úložiště**zadejte jedinečný název zde. **Tento název musí být globálně jedinečný**, jinak bude existovat výzva, která vás informuje, že je název připraven. V rozsahu tohoto rychlého startu, pojmenujeme to **arrtutorialstorage**. Proto je třeba jej nahradit svým jménem pro každou událost v tomto rychlém startu.
-* Vyberte **umístění** ve své blízkosti. V ideálním případě použijte stejné umístění jako pro nastavení vykreslování v jiném rychlém startu.
-* **Výkon** nastavený na standardní
-* **Typ účtu** nastavený na "StorageV2 (pro všeobecné účely v2)"
-* **Replikace** nastavena na "Geograficky redundantní úložiště pro čtení (RA-GRS)"
-* **Úroveň přístupu** nastavená na "Hot"
+* Na odkaz pod rozevíracím seznamem vytvořte novou skupinu prostředků a pojmenujte ji **ARR_Tutorial**
+* Do pole **název účtu úložiště**zadejte jedinečný název. **Tento název musí být globálně jedinečný**, jinak se zobrazí výzva, která vás informuje, že název je připravený. V rámci tohoto rychlého startu pojmenujte IT **arrtutorialstorage**. V tomto rychlém startu je tedy budete muset nahradit vaším jménem pro všechny výskyty.
+* Vyberte **umístění** , které je blízko vás. V ideálním případě používejte stejné umístění, které se používá k nastavení vykreslování v druhém rychlém startu.
+* **Výkon** je nastavený na standardní.
+* **Typ účtu** je nastavený na StorageV2 (obecné účely v2).
+* **Replikace** je nastavená na geograficky redundantní úložiště s přístupem pro čtení (RA-GRS).
+* **Úroveň přístupu** nastavená na Hot
 
-Žádná z vlastností na jiných kartách nemusí být změněna, takže můžete pokračovat **v "Review + create"** a potom postupujte podle pokynů k dokončení instalace.
+Žádná z vlastností na jiných kartách se nesmí měnit, takže můžete pokračovat pomocí **příkazu "zkontrolovat + vytvořit"** a potom postupovat podle pokynů k dokončení instalace.
 
-Web vás nyní informuje o průběhu nasazení a nakonec nahlásí, že je vaše nasazení dokončeno. Klikněte na tlačítko **"Přejít na zdroj"** pro další kroky:
+Web teď informuje o průběhu nasazení a sestav "vaše nasazení je hotové". V dalších krocích klikněte na tlačítko **Přejít ke zdroji** :
 
-![Vytvoření Azure Storage dokončeno](./media/storage-creation-complete.png)
+![Vytváření Azure Storage dokončeno](./media/storage-creation-complete.png)
 
-### <a name="blob-storage-creation"></a>Vytvoření úložiště objektů blob
+### <a name="blob-storage-creation"></a>Vytváření úložiště objektů BLOB
 
-Dále potřebujeme dvě kontejnery blob, jednu pro vstup a jednu pro výstup.
+Dál potřebujeme dva kontejnery objektů blob, jednu pro vstup a jednu pro výstup.
 
-Z výše uvedeného tlačítka **"Přejít na zdroj"** se dostanete na stránku s panelem vlevo, který obsahuje nabídku seznamu. V tomto seznamu v kategorii **"Služba objektů blob"** klikněte na tlačítko **"Kontejnery":**
+Na výše uvedeném tlačítku **Přejít k prostředku** se dostanete na stránku s panelem vlevo, který obsahuje nabídku seznam. V tomto seznamu pod kategorií **"BLOB Service"** klikněte na tlačítko **kontejnery** :
 
-![Azure – přidání kontejnerů](./media/azure-add-containers.png)
+![Azure – přidat kontejnery](./media/azure-add-containers.png)
 
-Stisknutím tlačítka **"+ Kontejner"** vytvořte **vstupní** kontejner úložiště objektů blob.
+Stisknutím tlačítka **+ kontejner** vytvořte **vstupní** kontejner úložiště objektů BLOB.
 Při vytváření použijte následující nastavení:
   
 * Název = arrinput
-* Úroveň veřejného přístupu = Soukromé
+* Úroveň veřejného přístupu = soukromá
 
-Po vytvoření kontejneru klikněte znovu na **+ Kontejner** a opakujte s těmito nastaveními pro **výstupní** kontejner:
+Po vytvoření kontejneru znovu klikněte na **+ kontejner** a opakujte akci s těmito nastaveními pro **výstupní** kontejner:
 
-* Name = arroutput
-* Úroveň veřejného přístupu = Soukromé
+* Název = arroutput
+* Úroveň veřejného přístupu = soukromá
 
-Teď byste měli mít dva kontejnery pro ukládání objektů blob:
+Teď byste měli mít dva kontejnery úložiště objektů BLOB:
 
-![Nastavení úložiště objektů blob](./media/blob-setup.png)
+![Instalace Blob Storage](./media/blob-setup.png)
 
 ## <a name="run-the-conversion"></a>Spuštění převodu
 
-Abychom usnadnili volání služby převodu majetku, poskytujeme nástrojový skript. Je umístěn ve složce *Skripty* a nazývá se **Conversion.ps1**.
+Aby bylo snazší volat službu převodu assetů, poskytujeme skript nástrojů. Je umístěný ve složce *Scripts* a nazývá se **Conversion. ps1**.
 
-Zejména tento skript
+Konkrétně tento skript
 
-1. odešle všechny soubory v daném adresáři z místního disku do kontejneru vstupního úložiště.
-1. volá [rozhraní REST API pro převod majetku,](../how-tos/conversion/conversion-rest-api.md) které načte data ze vstupního kontejneru úložiště a zahájí převod, který vrátí ID převodu
-1. dotazování rozhraní API stavu převodu s id načteného převodu, dokud proces převodu neskončí úspěchem nebo neúspěchem
-1. načte odkaz na převedený datový zdroj ve výstupním úložišti.
+1. nahraje všechny soubory v daném adresáři z místního disku do vstupního kontejneru úložiště.
+1. volá [REST API převodu assetu](../how-tos/conversion/conversion-rest-api.md) , která načte data z kontejneru vstupního úložiště a spustí převod, který vrátí ID převodu.
+1. cyklické dotazování na rozhraní API stavu převodu s načteným ID převodu, dokud se proces převodu neukončí s úspěchem nebo selháním
+1. Načte odkaz na převedený prostředek ve výstupním úložišti.
 
-Skript čte jeho konfiguraci ze souboru *Scripts\arrconfig.json*. Otevřete tento soubor JSON v textovém editoru.
+Skript načte svou konfiguraci ze souboru *Scripts\arrconfig.JSON*. Otevřete tento soubor JSON v textovém editoru.
 
 ```json
 {
@@ -144,58 +144,58 @@ Skript čte jeho konfiguraci ze souboru *Scripts\arrconfig.json*. Otevřete tent
 }
 ```
 
-Konfigurace v rámci skupiny **accountSettings** (ID účtu a klíč) by měla být vyplněna podobně jako pověření v [render modelu s Unity quickstart](render-model.md).
+Konfigurace v rámci skupiny **accountSettings** (ID účtu a klíč) by měla být vyplněna analogkou k přihlašovacím údajům v [modelu vykreslit model pomocí služby Unity pro rychlý Start](render-model.md).
 
-Uvnitř skupiny **assetConversionSettings** nezapomeňte změnit **resourceGroup**, **blobInputAledName**a **blobOutputContainerName,** jak je vidět výše.
-Všimněte si, že hodnota **arrtutorialstorage** musí být nahrazenjedinečný název, který jste vybrali při vytváření účtu úložiště.
+Ve skupině **assetConversionSettings** se ujistěte, že měníte skupinu **Resources**, **blobInputContainerName**a **blobOutputContainerName** , jak vidíte výše.
+Všimněte si, že hodnota **arrtutorialstorage** musí být nahrazena jedinečným názvem, který jste vybrali během vytváření účtu úložiště.
 
-Změňte **localAssetDirectoryPath** tak, aby přesměroval na adresář na disku, který obsahuje model, který chcete převést. Dávejte pozor, abyste správně unikli zpětným lomítkům\\("\\\\") v cestě pomocí dvojitých zpětná lomítka (" ").
+Změňte **localAssetDirectoryPath** tak, aby odkazoval na adresář na disku, který obsahuje model, který chcete převést. Pozor na správné řídicí lomítka ("\\") v cestě pomocí dvojitých zpětných lomítek (\\\\"").
 
-Všechna data z cesty uvedené v **localAssetDirectoryPath** budou odeslána do kontejneru **blobObjektů blobName blob** pod podcestí danou **inputFolderPath**. Takže v příkladu konfigurace výše obsah\\adresáře\\"D: tmp robot" bude nahrán do kontejneru blob "arrinput" z účtu úložiště "arrtutorialstorage" pod cestou "robotConversion". Již existující soubory budou přepsány.
+Všechna data z cesty zadané v **localAssetDirectoryPath** se nahrají do kontejneru objektů BLOB **blobInputContainerName** pod podcestou určenou **inputFolderPath**. Proto se v příkladu konfigurace nad rámec obsahu adresáře "D:\\TMP\\robot" nahraje do kontejneru objektů blob "arrinput" účtu úložiště "arrtutorialstorage" v cestě "robotConversion". Již existující soubory budou přepsány.
 
-Změňte **inputAssetPath** na cestu modelu, který má být převeden - cesta je relativní k localAssetDirectoryPath. Jako oddělovač cesty\\použijte místo "" . Takže pro soubor "robot.fbx", který je\\umístěn\\přímo v "D: tmp robot" použijte "robot.fbx".
+Změňte **inputAssetPath** na cestu k modelu, který se má převést – cesta je relativní k localAssetDirectoryPath. Jako oddělovač cest použijte "/"\\místo "". Takže pro soubor robot. FBX, který se nachází přímo v "D:\\TMP\\robot", používá "robot. FBX".
 
-Jakmile byl model převeden, bude zapsán zpět do kontejneru úložiště dané **objektem blobOutputContainerName**. Podcestu lze zadat poskytnutím volitelného **outputFolderPath**. Ve výše uvedeném příkladu bude výsledný "robot.arrAsset" zkopírován do výstupního kontejneru objektů blob pod "convert/robot".
+Až se model převede, zapíše se zpátky do kontejneru úložiště, který je zadaný pomocí **blobOutputContainerName**. Je možné zadat dílčí cestu zadáním volitelné **outputFolderPath**. Ve výše uvedeném příkladu se "robot. arrAsset" zkopíruje do výstupního kontejneru objektů BLOB v části převedený/robot.
 
-Nastavení konfigurace **outputAssetFileName** určuje název převedeného datového zdroje - parametr je volitelný a výstupní název souboru bude odvozen z názvu vstupního souboru jinak. 
+Nastavení konfigurace **outputAssetFileName** Určuje název převedeného prostředku – parametr je nepovinný a název výstupního souboru bude odvozený ze vstupního souboru jinak. 
 
-Otevřete PowerShell a ujistěte se, že jste nainstalovali *Azure PowerShell,* jak je uvedeno v [požadavcích](#prerequisites). Pak se přihlaste k odběru pomocí následujícího příkazu a postupujte podle pokynů na obrazovce:
+Otevřete PowerShell, ujistěte se, že jste nainstalovali *Azure PowerShell* , jak je uvedeno v části [požadavky](#prerequisites). Pak se přihlaste k předplatnému pomocí následujícího příkazu a postupujte podle pokynů na obrazovce:
 
 ```PowerShell
 Connect-AzAccount
 ```
 
 > [!NOTE]
-> V případě, že vaše organizace má více než jedno předplatné, budete muset zadat SubscriptionId a Tenant argumenty. Podrobnosti naleznete v [dokumentaci connect-azaccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount).
+> V případě, že má vaše organizace více než jedno předplatné, možná budete muset zadat SubscriptionId a argumenty tenanta. Vyhledejte podrobnosti v [dokumentaci Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount).
 
-Přecházte do `azure-remote-rendering\Scripts` adresáře a spusťte skript převodu:
+Přejděte do `azure-remote-rendering\Scripts` adresáře a spusťte převodní skript:
 
 ```PowerShell
 .\Conversion.ps1 -UseContainerSas
 ```
 
-Měli byste vidět něco ![takového: Conversion.ps1](./media/successful-conversion.png)
+Mělo by se zobrazit něco podobného ![: Conversion. ps1](./media/successful-conversion.png)
 
-Skript převodu generuje identifikátor URI *sdíleného přístupového podpisu (SAS)* pro převedený model. Nyní můžete zkopírovat tento identifikátor URI jako **název modelu** do ukázkové aplikace pro rychlý start (viz [Úvodní příručka: Vykreslení modelu pomocí Unity).](render-model.md)
+Převodní skript generuje identifikátor URI *sdíleného přístupového podpisu (SAS)* pro převedený model. Teď můžete tento identifikátor URI zkopírovat jako **název modelu** do ukázkové aplikace pro rychlé zprovoznění (viz [rychlý Start: vykreslení modelu pomocí Unity](render-model.md)).
 
 ![Nahradit model v Unity](./media/replace-model-in-unity.png)
 
- Ukázka by nyní měla načíst a vykreslit vlastní model!
+ Ukázka by teď měla načíst a vykreslit vlastní model.
 
-## <a name="optional-re-creating-a-sas-uri"></a>Volitelné: Opětovné vytvoření identifikátoru URI SAS
+## <a name="optional-re-creating-a-sas-uri"></a>Volitelné: opětovné vytvoření identifikátoru URI SAS
 
-Identifikátor URI SAS vytvořený skriptem převodu bude platný pouze po dobu 24 hodin. Po vypršení platnosti však není nutné znovu převést model. Místo toho můžete vytvořit nový SAS na portálu, jak je popsáno v dalších krocích:
+Identifikátor URI SAS vytvořený skriptem pro převod bude platný pouze 24 hodin. Po vypršení platnosti však nemusíte model znovu převádět. Místo toho můžete vytvořit nové SAS na portálu, jak je popsáno v následujících krocích:
 
 1. Přejděte na web [Azure Portal](https://www.portal.azure.com).
-1. Klikněte na prostředek ![ **účtu úložiště:** Přístup k podpisu](./media/portal-storage-accounts.png)
-1. Na následující obrazovce klikněte na **Průzkumník úložiště** v levém panelu a najděte svůj výstupní model (*soubor ArrAsset)* v kontejneru úložiště objektů blob *arroutput.* Klikněte pravým tlačítkem myši na soubor a v ![místní nabídce: Přístup k podpisu vyberte získat sdílený **přístupový podpis.**](./media/portal-storage-explorer.png)
-1. Otevře se nová obrazovka, na které můžete vybrat datum vypršení platnosti. Stiskněte **klávesu Create**a zkopírujte identifikátor URI, který se zobrazí v dalším dialogovém okně. Tento nový identifikátor URI nahrazuje dočasný identifikátor URI, který skript vytvořil.
+1. Klikněte na prostředek **účtu úložiště** : ![přístup k podpisu](./media/portal-storage-accounts.png)
+1. Na následující obrazovce klikněte na Průzkumník služby **Storage** na levém panelu a v kontejneru úložiště objektů BLOB *arroutput* Najděte svůj výstupní model (soubor *. arrAsset* ). Klikněte pravým tlačítkem na soubor a v místní nabídce vyberte **získat sdílený přístupový podpis** : ![přístup k podpisu](./media/portal-storage-explorer.png)
+1. Otevře se nová obrazovka, kde můžete vybrat datum vypršení platnosti. Stiskněte **vytvořit**a zkopírujte identifikátor URI, který je zobrazen v následujícím dialogovém okně. Tento nový identifikátor URI nahrazuje dočasný identifikátor URI, který skript vytvořil.
 
 ## <a name="next-steps"></a>Další kroky
 
-Nyní, když znáte základy, podívejte se na naše výukové programy, abyste získali hlubší znalosti.
+Teď, když znáte základy, podíváme se na naše kurzy, abyste získali podrobnější znalosti.
 
-Pokud se chcete dozvědět podrobnosti o převodu modelu, podívejte se [na rozhraní REST API převodu modelu](../how-tos/conversion/conversion-rest-api.md).
+Pokud se chcete seznámit s podrobnostmi o převodu modelu, podívejte [se na převod modelu REST API](../how-tos/conversion/conversion-rest-api.md).
 
 > [!div class="nextstepaction"]
-> [Kurz: Nastavení projektu Unity od nuly](../tutorials/unity/project-setup.md)
+> [Kurz: vytvoření projektu Unity od začátku](../tutorials/unity/project-setup.md)

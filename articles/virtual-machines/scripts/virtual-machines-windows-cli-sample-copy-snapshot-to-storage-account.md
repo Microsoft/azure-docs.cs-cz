@@ -1,6 +1,6 @@
 ---
-title: Zkopírování snímku do účtu úložiště v jiné oblasti – ukázka vyjednané zúčtovacích úsecích
-description: Ukázka skriptu Azure CLI – export/kopírování snímku jako virtuálního pevného disku do účtu úložiště ve stejné nebo jiné oblasti.
+title: Zkopírování snímku do účtu úložiště v jiné oblasti – ukázka CLI
+description: Ukázkový skript Azure CLI – export nebo kopírování snímku jako virtuálního pevného disku do účtu úložiště ve stejné nebo jiné oblasti.
 services: virtual-machines-windows
 documentationcenter: storage
 author: ramankumarlive
@@ -16,13 +16,13 @@ ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc,seodec18
 ms.openlocfilehash: d470c20718b007b05360ad539973cbc2a9d7ad98
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81459572"
 ---
-# <a name="exportcopy-a-snapshot-to-a-storage-account-in-different-region-with-cli"></a>Export/kopírování snímku do účtu úložiště v jiné oblasti pomocí příkazového příkazového příkazu
+# <a name="exportcopy-a-snapshot-to-a-storage-account-in-different-region-with-cli"></a>Export/zkopírování snímku do účtu úložiště v jiné oblasti pomocí rozhraní příkazového řádku
 
 Tento skript exportuje spravovaný snímek do účtu úložiště v jiné oblasti. Nejprve vygeneruje identifikátor URI SAS snímku a pak pomocí něj zkopíruje snímek do účtu úložiště v jiné oblasti. Tento skript můžete použít k udržování zálohy spravovaných disků v jiné oblasti pro účely zotavení po havárii.
 
@@ -49,4 +49,4 @@ Tento skript k vygenerování identifikátoru URI SAS pro spravovaný snímek a 
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).
 
-Další ukázky skriptu příkazového příkazu virtuálního počítače a spravovaných disků najdete v [dokumentaci k virtuálnímu počítači Azure Windows](../windows/cli-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Další ukázkové skripty rozhraní příkazového řádku pro virtuální počítače a služby Managed disks najdete v [dokumentaci k virtuálním počítačům Azure s Windows](../windows/cli-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

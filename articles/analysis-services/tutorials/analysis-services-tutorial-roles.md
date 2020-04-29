@@ -1,6 +1,6 @@
 ---
-title: Kurz – konfigurace rolí služby Azure Analysis Services | Dokumenty společnosti Microsoft
-description: Zjistěte, jak nakonfigurovat správce azure analysis services a uživatelské role pomocí portálu Azure nebo SQL Server Management Studio.
+title: Kurz – konfigurace rolí Azure Analysis Services | Microsoft Docs
+description: Naučte se konfigurovat Azure Analysis Services správce a role uživatelů pomocí Azure Portal nebo SQL Server Management Studio.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: tutorial
@@ -8,10 +8,10 @@ ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: owend
 ms.openlocfilehash: 0bedc88b78f2ac758d3201965425b42b69580719
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81454250"
 ---
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>Kurz: Konfigurace správce serveru a uživatelských rolí
@@ -67,7 +67,7 @@ Pro zbývající úkoly použijete SQL Server Management Studio, které umožňu
 
 ## <a name="add-a-user-account-to-the-server-administrator-role"></a>Přidání uživatelského účtu do role správce serveru
 
-V rámci tohoto úkolu přidáte do role správce serveru uživatelský nebo skupinový účet ze služby Azure AD. Pokud zadáváte skupinu `obj:groupid@tenantid`zabezpečení, použijte .
+V rámci tohoto úkolu přidáte do role správce serveru uživatelský nebo skupinový účet ze služby Azure AD. Pokud zadáváte skupinu zabezpečení, `obj:groupid@tenantid`použijte.
 
 1. V **Průzkumníku objektů** klikněte pravým tlačítkem na název serveru a pak klikněte na **Vlastnosti**. 
 2. V okně **Analysis Server – vlastnosti** klikněte na **Zabezpečení** > **Přidat**.
@@ -130,13 +130,13 @@ V rámci tohoto úkolu použijete příkaz [Create](https://docs.microsoft.com/a
 ## <a name="verify-your-changes"></a>Ověření změn
 
 1. V **Průzkumníku objektů** klikněte na název serveru a pak na **Aktualizovat**, nebo stiskněte klávesu **F5**.
-2. Rozbalte **databáze** > **adventureworks** > **role**. Ověřte, že se zobrazují změny uživatelského účtu a nové role, které jste provedli v předchozích úkolech.   
+2. Rozbalte položku **databáze** > **AdventureWorks** > **role**. Ověřte, že se zobrazují změny uživatelského účtu a nové role, které jste provedli v předchozích úkolech.   
 
     ![Ověření v Průzkumníku objektů](./media/analysis-services-tutorial-roles/aas-connect-ssms-verify.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už uživatelské nebo skupinové účty a role nepotřebujete, můžete je odstranit. Chcete-li tak učinit, odeberte uživatelské účty pomocí**členství ve** **vlastnostech** > role nebo klepněte pravým tlačítkem myši na roli a potom klepněte na příkaz **Odstranit**.
+Pokud už uživatelské nebo skupinové účty a role nepotřebujete, můžete je odstranit. Provedete to tak, že pomocí > **členství ve** **vlastnostech role**odeberete uživatelské účty nebo kliknete pravým tlačítkem na roli a pak kliknete na **Odstranit**.
 
 
 ## <a name="next-steps"></a>Další kroky

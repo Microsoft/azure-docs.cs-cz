@@ -1,7 +1,7 @@
 ---
-title: 'Kurz: Vytvoření modelu clusteringu v R'
+title: 'Kurz: sestavení modelu clusteringu v jazyce R'
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
-description: Ve druhé části této třídílné série kurzů vytvoříte model K-Means k provádění clusteringu v R se službami Azure SQL Database Machine Learning Services (preview).
+description: Ve třetí části této série výukových kurzů sestavíte model K, který provádí clusteringu v R s Azure SQL Database Machine Learning Services (Preview).
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
@@ -15,42 +15,42 @@ manager: cgronlun
 ms.date: 07/29/2019
 ROBOTS: NOINDEX
 ms.openlocfilehash: ebea6117420ee6de67025dfd4cfba71e905cb9ec
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81453093"
 ---
-# <a name="tutorial-build-a-clustering-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Kurz: Vytvoření modelu clusteringu v R se službami Azure SQL Database Machine Learning Services (preview)
+# <a name="tutorial-build-a-clustering-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Kurz: sestavení modelu clusteringu v R s Azure SQL Database Machine Learning Services (Preview)
 
-Ve druhé části této třídílné série kurzů vytvoříte model K-Means v R k provedení clusteringu. V další části této řady nasadíte tento model v databázi SQL se službou Azure SQL Database Machine Learning Services (preview).
+Ve třetí části této série výukových kurzů sestavíte model K, v jazyce R, který provádí clusteringu. V další části této série tento model nasadíte do databáze SQL pomocí Azure SQL Database Machine Learning Services (Preview).
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
 V tomto článku se dozvíte, jak:
 
 > [!div class="checklist"]
-> * Definovat počet clusterů pro algoritmus K-Means
-> * Provádět clustering
+> * Zadejte počet clusterů pro algoritmus K.
+> * Provedení clusteringu
 > * Analýza výsledků
 
-V [první části](sql-database-tutorial-clustering-model-prepare-data.md)jste se naučili, jak připravit data z databáze Azure SQL k provádění clustering.
+V [první části](sql-database-tutorial-clustering-model-prepare-data.md)jste zjistili, jak připravit data z databáze SQL Azure pro provádění clusteringu.
 
-V [části třetí](sql-database-tutorial-clustering-model-deploy.md)se dozvíte, jak vytvořit uloženou proceduru v databázi Azure SQL, která může provádět clustering v R na základě nových dat.
+V [třetí části](sql-database-tutorial-clustering-model-deploy.md)se dozvíte, jak vytvořit uloženou proceduru ve službě Azure SQL Database, která může provádět clusteringu v R na základě nových dat.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Druhá část tohoto kurzu předpokládá, že jste dokončili [**první část**](sql-database-tutorial-clustering-model-prepare-data.md) a její předpoklady.
+* Druhá část tohoto kurzu předpokládá, že jste dokončili [**část**](sql-database-tutorial-clustering-model-prepare-data.md) a její požadavky.
 
 ## <a name="define-the-number-of-clusters"></a>Definovat počet clusterů
 
-Chcete-li sclusterovat vaše zákaznická data, použijete algoritmus clusteringu **K-Means,** což je jeden z nejjednodušších a nejznámějších způsobů seskupování dat.
-Můžete si přečíst více o K-Prostředky v [kompletní průvodce K-znamená clustering algoritmus](https://www.kdnuggets.com/2019/05/guide-k-means-clustering-algorithm.html).
+Chcete-li seskupit zákaznická data, použijte **k** tomu algoritmus pro clusteringu, jeden z nejjednodušších a nejpokročilejších způsobů seskupování dat.
+Můžete si přečíst více o tom, jak to znamená v [kompletní příručce k nasazení k-znamená algoritmus clusteringu](https://www.kdnuggets.com/2019/05/guide-k-means-clustering-algorithm.html).
 
-Algoritmus přijímá dva vstupy: samotná data a předdefinované číslo "*k*" představující počet clusterů, které mají být generovány.
-Výstupem jsou *clustery k* se vstupními daty rozdělenými mezi clustery.
+Algoritmus přijímá dva vstupy: samotná data a předdefinované číslo "*k*" představující počet clusterů, které se mají vygenerovat.
+Výstupem je *t clustery se* vstupními daty rozdělenými mezi clustery.
 
-Chcete-li zjistit počet clusterů pro algoritmus použít, použijte obrázek v rámci skupiny součtu čtverců, podle počtu clusterů extrahovaných. Příslušný počet clusterů, které mají být vytryskány, je v ohybu nebo "kolenu" parcely.
+Chcete-li určit počet clusterů, které mají použít algoritmus, použijte vykreslení součtu čtverců v rámci skupin podle počtu extrahovaných clusterů. Příslušný počet clusterů, které se mají použít, je v ohybu nebo pravoúhlém zobrazení.
 
 ```r
 # Determine number of clusters by using a plot of the within groups sum of squares,
@@ -61,13 +61,13 @@ for (i in 2:20)
 plot(1:20, wss, type = "b", xlab = "Number of Clusters", ylab = "Within groups sum of squares")
 ```
 
-![Loketní graf](./media/sql-database-tutorial-clustering-model-build/elbow-graph.png)
+![Graf pravoúhlého grafu](./media/sql-database-tutorial-clustering-model-build/elbow-graph.png)
 
-Na základě grafu to vypadá, že *k = 4* by bylo dobrou hodnotou vyzkoušet. Tato hodnota *k* seskupila zákazníky do čtyř clusterů.
+V závislosti na grafu vypadá to, že se jedná o dobrou hodnotu pro vyzkoušení *= 4* . Tato hodnota *k* bude seskupovat zákazníky do čtyř clusterů.
 
-## <a name="perform-clustering"></a>Provádět clustering
+## <a name="perform-clustering"></a>Provedení clusteringu
 
-V následujícím skriptu R použijete funkci **rxKmeans**, což je funkce K-Means v balíčku RevoScaleR.
+V následujícím skriptu jazyka R budete používat funkci **rxKmeans**, což je funkce K, která je v balíčku RevoScaleR.
 
 ```r
 # Output table to hold the customer group mappings.
@@ -91,9 +91,9 @@ customer_cluster <- rxDataStep(return_cluster);
 
 ## <a name="analyze-the-results"></a>Analýza výsledků
 
-Nyní, když jste provedli clustering pomocí K-Means, dalším krokem je analyzovat výsledek a zjistit, zda můžete najít nějaké užitečné informace.
+Teď, když jste provedli clusteringu pomocí K-znamenají, je dalším krokem analýza výsledku a zjištění, jestli můžete najít informace, které se dají dělat.
 
-**Clust** objekt obsahuje výsledky z K-Prostředky clustering.
+Objekt **clust** obsahuje výsledky z části k-znamená clustering.
 
 ```r
 #Look at the clustering details to analyze results
@@ -123,39 +123,39 @@ Within cluster sum of squares by cluster:
     0.0000  1329.0160 18561.3157   363.2188
 ```
 
-Čtyři prostředky seskupení jsou uvedeny pomocí proměnných definovaných v [části 1](sql-database-tutorial-clustering-model-prepare-data.md#separate-customers):
+Čtyři clustery znamenají použití proměnných definovaných v [části 1](sql-database-tutorial-clustering-model-prepare-data.md#separate-customers):
 
-* *orderRatio* = poměr vratky (celkový počet částečně nebo plně vrácených objednávek oproti celkovému počtu objednávek)
-* *itemsRatio* = poměr vrácených položek (celkový počet vrácených položek oproti počtu zakoupených položek)
-* *monetaryRatio* = poměr vrácené částky (celková peněžní částka vrácených položek oproti nakoupené částce)
-* *frekvence* = frekvence návratu
+* *orderRatio* = poměr návratové objednávky (celkový počet poslaných částečně nebo úplně vrácených objednávek oproti celkovému počtu objednávek)
+* *itemsRatio* = poměr návratové položky (celkový počet vrácených položek oproti počtu zakoupených položek)
+* *monetaryRatio* = poměr návratové hodnoty (celková peněžní částka vrácených položek oproti zakoupené množství)
+* *frekvence* = návratová frekvence
 
-Dolování dat pomocí K-Prostředky často vyžaduje další analýzu výsledků a další kroky k lepšímu pochopení každého clusteru, ale může poskytnout některé dobré vede.
-Zde je několik způsobů, jak můžete interpretovat tyto výsledky:
+Dolování dat pomocí pro je často potřeba k další analýze výsledků a dalším krokům pro lepší pochopení jednotlivých clusterů, ale může poskytovat nějaké dobré zájemce.
+Tady je několik způsobů, jak můžete interpretovat tyto výsledky:
 
-* Cluster 1 (největší cluster) se zdá být skupinou zákazníků, kteří nejsou aktivní (všechny hodnoty jsou nulové).
-* Cluster 3 se zdá být skupina, která vyniká, pokud jde o chování návratu.
+* Cluster 1 (největší cluster) se jeví jako skupina zákazníků, kteří nejsou aktivní (všechny hodnoty jsou nulové).
+* Cluster 3 se jeví jako skupina, která se nachází v souvislosti s chováním při vracení.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-***Pokud nebudete pokračovat v tomto kurzu***, odstraňte tpcxbb_1gb databázi z vašeho serveru Azure SQL Database.
+Pokud nebudete ***pokračovat v tomto kurzu***, odstraňte databázi tpcxbb_1gb ze serveru Azure SQL Database.
 
-Na webu Azure Portal postupujte takto:
+V Azure Portal postupujte podle následujících kroků:
 
-1. V levé nabídce na webu Azure Portal vyberte **Všechny prostředky** nebo **databáze SQL**.
-1. Do pole **Filtr podle názvu...** zadejte **tpcxbb_1gb**a vyberte předplatné.
-1. Vyberte **databázi tpcxbb_1gb.**
+1. V nabídce na levé straně Azure Portal vyberte **všechny prostředky** nebo **databáze SQL**.
+1. Do pole **filtrovat podle názvu...** zadejte **tpcxbb_1gb**a vyberte své předplatné.
+1. Vyberte svou databázi **tpcxbb_1gb** .
 1. Na stránce **Přehled** vyberte **Odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 
 Ve druhé části této série kurzů jste dokončili tyto kroky:
 
-* Definovat počet clusterů pro algoritmus K-Means
-* Provádět clustering
+* Zadejte počet clusterů pro algoritmus K.
+* Provedení clusteringu
 * Analýza výsledků
 
-Chcete-li nasadit model strojového učení, který jste vytvořili, postupujte podle třetí části této série kurzů:
+Pokud chcete nasadit model strojového učení, který jste vytvořili, postupujte podle třetí části této série kurzů:
 
 > [!div class="nextstepaction"]
-> [Kurz: Nasazení modelu clusteringu v R se službami Machine Learning Services Azure SQL Database Machine Learning Services (preview)](sql-database-tutorial-clustering-model-deploy.md)
+> [Kurz: nasazení modelu clusteringu v jazyce R s Azure SQL Database Machine Learning Services (Preview)](sql-database-tutorial-clustering-model-deploy.md)

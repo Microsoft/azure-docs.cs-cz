@@ -12,46 +12,46 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b15b022726c09ccbaf9674775d114c8dd1916e1d
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81457293"
 ---
-# <a name="conditional-access-cloud-apps-or-actions"></a>Podmíněný přístup: Cloudové aplikace nebo akce
+# <a name="conditional-access-cloud-apps-or-actions"></a>Podmíněný přístup: cloudové aplikace nebo akce
 
-Cloudové aplikace nebo akce jsou klíčovým signálem v zásadách podmíněného přístupu. Zásady podmíněného přístupu umožňují správcům přiřadit ovládací prvky určitým aplikacím nebo akcím.
+Cloudové aplikace nebo akce jsou klíčovým signálem v zásadách podmíněného přístupu. Zásady podmíněného přístupu umožňují správcům přiřazovat ovládací prvky konkrétním aplikacím nebo akcím.
 
-- Správci si mohou vybrat ze seznamu aplikací, které zahrnují předdefinované aplikace Microsoftu a všechny [integrované aplikace Azure AD,](../manage-apps/what-is-application-management.md) včetně galerie, jiných galerií a aplikací publikovaných prostřednictvím [proxy aplikace](../manage-apps/what-is-application-proxy.md).
-- Správci se mohou rozhodnout definovat zásady, které nejsou založeny na cloudové aplikaci, ale na akci uživatele. Jedinou podporovanou akcí je Registrace informací o zabezpečení (preview), která umožňuje podmíněnému přístupu vynucovat ovládací prvky kolem [kombinovaného prostředí registrace informací o zabezpečení](../authentication/howto-registration-mfa-sspr-combined.md).
+- Správci si můžou vybrat ze seznamu aplikací, které obsahují integrované aplikace Microsoftu a všechny [integrované aplikace Azure AD](../manage-apps/what-is-application-management.md) , včetně galerie, mimo galerie a aplikace publikované prostřednictvím [proxy aplikací](../manage-apps/what-is-application-proxy.md).
+- Správci se můžou rozhodnout definovat zásady, které nejsou založené na cloudové aplikaci, ale na akci uživatele. Jediná podporovaná akce je registrace informací o zabezpečení (Preview), která umožňuje podmíněný přístup vymáhat ovládací prvky v rámci [kombinovaného prostředí pro registraci informací o zabezpečení](../authentication/howto-registration-mfa-sspr-combined.md).
 
 ![Definování zásad podmíněného přístupu a určení cloudových aplikací](./media/concept-conditional-access-cloud-apps/conditional-access-cloud-apps-or-actions.png)
 
 ## <a name="microsoft-cloud-applications"></a>Cloudové aplikace Microsoftu
 
-Mnoho existujících cloudových aplikací Microsoftu je zahrnuto do seznamu aplikací, ze kterých si můžete vybrat. 
+Mnohé z existujících cloudových aplikací Microsoftu jsou uvedené v seznamu aplikací, ze kterých můžete vybírat. 
 
-Správci můžou přiřadit zásady podmíněného přístupu k následujícím cloudovým aplikacím od Microsoftu. Některé aplikace, jako je Office 365 (preview) a Microsoft Azure Management, zahrnují několik souvisejících podřízených aplikací nebo služeb. Následující seznam není vyčerpávající a může se změnit.
+Správci můžou k těmto cloudovým aplikacím od Microsoftu přiřazovat zásady podmíněného přístupu. Některé aplikace, jako je například sada Office 365 (Preview) a Správa Microsoft Azure, zahrnují několik souvisejících podřízených aplikací nebo služeb. Následující seznam není vyčerpávající a může se změnit.
 
-- [Office 365 (náhled)](#office-365-preview)
+- [Office 365 (Preview)](#office-365-preview)
 - Azure Analysis Services
 - Azure DevOps
 - [Azure SQL Database a Data Warehouse](../../sql-database/sql-database-conditional-access.md)
 - Dynamics CRM Online
-- Microsoft Application Insights Analytics
-- [Ochrana informací Microsoft Azure](/azure/information-protection/faqs#i-see-azure-information-protection-is-listed-as-an-available-cloud-app-for-conditional-accesshow-does-this-work)
+- Analýzy Microsoft Application Insights
+- [Microsoft Azure Information Protection](/azure/information-protection/faqs#i-see-azure-information-protection-is-listed-as-an-available-cloud-app-for-conditional-accesshow-does-this-work)
 - [Správa Microsoft Azure](#microsoft-azure-management)
 - Správa předplatného Microsoft Azure
 - Microsoft Cloud App Security
-- Portál řízení přístupu k nástrojům microsoftu
-- Služba ověřování nástrojů služby Microsoft Commerce Tools
+- Portál Microsoft Commerce Tools Access Control Portal
+- Služba Microsoft Commerce Tools Authentication Service
 - Microsoft Flow
 - Microsoft Forms
 - Microsoft Intune
 - [Registrace Microsoft Intune](/intune/enrollment/multi-factor-authentication)
 - Microsoft Planner
 - Microsoft PowerApps
-- Hledání microsoftu ve službě Bing
+- Hledání ve službě Bing
 - Microsoft StaffHub
 - Microsoft Stream
 - Microsoft Teams
@@ -59,7 +59,7 @@ Správci můžou přiřadit zásady podmíněného přístupu k následujícím 
 - Office 365 SharePoint Online
 - Office 365 Yammer
 - Office Delve
-- Office Sway
+- Sway pro Office
 - Outlook Groups
 - Služba Power BI
 - Project Online
@@ -67,15 +67,15 @@ Správci můžou přiřadit zásady podmíněného přístupu k následujícím 
 - Virtuální privátní síť (VPN)
 - Ochrana ATP v programu Windows Defender
 
-### <a name="office-365-preview"></a>Office 365 (náhled)
+### <a name="office-365-preview"></a>Office 365 (Preview)
 
-Office 365 poskytuje cloudové služby pro zvýšení produktivity a spolupráce, jako jsou Exchange, SharePoint a Microsoft Teams. Cloudové služby Office 365 jsou hluboce integrované, aby zajistily plynulé a kolaborativní prostředí. Tato integrace může způsobit nejasnosti při vytváření zásad, protože některé aplikace, jako je Microsoft Teams, mají závislosti na jiných, jako je SharePoint nebo Exchange.
+Office 365 poskytuje cloudové služby pro produktivitu a spolupráci, jako je Exchange, SharePoint a Microsoft Teams. Cloudové služby Office 365 jsou integrovány, aby bylo zajištěno hladké a spolupracující prostředí. Tato integrace může při vytváření zásad způsobit nejasnost, protože některé aplikace, jako je například Microsoft teams, mají závislosti na jiných, jako je SharePoint nebo Exchange.
 
-Aplikace Office 365 (preview) umožňuje cílit na tyto služby najednou. Doporučujeme používat novou aplikaci Office 365 (preview) místo cílení na jednotlivé cloudové aplikace. Cílení na tuto skupinu aplikací pomáhá vyhnout se problémům, které mohou vzniknout v důsledku nekonzistentních zásad a závislostí.
+Aplikace Office 365 (Preview) umožňuje zaměřit se na tyto služby najednou. Místo cílení na jednotlivé cloudové aplikace doporučujeme použít novou aplikaci Office 365 (Preview). Cílení na tuto skupinu aplikací pomáhá zabránit problémům, ke kterým může dojít kvůli nekonzistentním zásadám a závislostem.
 
-Správci se můžou rozhodnout, že vyloučí konkrétní aplikace ze zásad, pokud si to přejí, a to tak, že zadají aplikaci Office 365 (preview) a vyloučí konkrétní aplikace podle vlastního výběru v zásadách.
+Správci se můžou rozhodnout vyloučit konkrétní aplikace ze zásad, pokud si chtějí zahrnout aplikaci Office 365 (Preview) a vyloučit konkrétní aplikace podle jejich výběru v zásadách.
 
-Klíčové aplikace, které jsou součástí klientské aplikace Office 365 (preview):
+Klíčové aplikace, které jsou zahrnuté v klientské aplikaci Office 365 (Preview):
 
    - Microsoft Flow
    - Microsoft Forms
@@ -84,10 +84,10 @@ Klíčové aplikace, které jsou součástí klientské aplikace Office 365 (pre
    - Microsoft Teams
    - Office 365 Exchange Online
    - Office 365 SharePoint Online
-   - Vyhledávací služba Office 365
+   - Sada Office 365 Search Service
    - Office 365 Yammer
    - Office Delve
-   - Office Online
+   - Online Office
    - Office.com
    - OneDrive
    - PowerApps
@@ -96,35 +96,35 @@ Klíčové aplikace, které jsou součástí klientské aplikace Office 365 (pre
 
 ### <a name="microsoft-azure-management"></a>Správa Microsoft Azure
 
-Aplikace Microsoft Azure Management zahrnuje několik základních služeb. 
+Aplikace pro správu Microsoft Azure zahrnuje několik základních služeb. 
 
    - portál Azure
-   - Zprostředkovatel Azure Resource Manageru
-   - Klasická prostředí API modelu nasazení
+   - Poskytovatel Azure Resource Manager
+   - Rozhraní API modelu nasazení Classic
    - Azure PowerShell
-   - Portál pro správce předplatných Visual Studia
+   - Portál pro správu předplatných sady Visual Studio
    - Azure DevOps
    - Portál Azure Data Factory
 
 > [!NOTE]
-> Aplikace Microsoft Azure Management se vztahuje na Azure PowerShell, který volá rozhraní API Azure Resource Manager. Nevztahuje se na Azure AD PowerShell, který volá Microsoft Graph.
+> Aplikace Microsoft Azure Management se vztahuje na Azure PowerShell, která volá rozhraní API Azure Resource Manager. Nevztahuje se na Azure AD PowerShell, který volá Microsoft Graph.
 
-## <a name="other-applications"></a>Ostatní aplikace
+## <a name="other-applications"></a>Další aplikace
 
-Kromě aplikací Microsoftu můžou správci přidat do zásad podmíněného přístupu libovolnou registrovanou aplikaci Azure AD. Tyto žádosti mohou zahrnovat: 
+Kromě aplikací Microsoftu můžou správci přidat do zásad podmíněného přístupu libovolnou aplikaci registrovanou v Azure AD. Tyto aplikace můžou zahrnovat: 
 
-- Aplikace publikované prostřednictvím [proxy aplikace Azure AD](../manage-apps/what-is-application-proxy.md)
-- [Aplikace přidané z galerie](../manage-apps/add-application-portal.md)
+- Aplikace publikované prostřednictvím [Azure proxy aplikací služby AD](../manage-apps/what-is-application-proxy.md)
+- [Aplikace přidané z Galerie](../manage-apps/add-application-portal.md)
 - [Vlastní aplikace, které nejsou v galerii](../manage-apps/add-non-gallery-app.md)
-- [Starší aplikace publikované prostřednictvím řadičů pro doručování aplikací a sítí](../manage-apps/secure-hybrid-access.md)
+- [Starší verze aplikací publikované prostřednictvím řadičů pro doručování aplikací a sítí](../manage-apps/secure-hybrid-access.md)
 
 ## <a name="user-actions"></a>Akce uživatele
 
-Akce uživatele jsou úkoly, které může provádět uživatel. Jedinou aktuálně podporovanou akcí je **Registrace informací o zabezpečení**, která umožňuje vynucení zásad podmíněného přístupu, když se uživatelé, kteří mají povolenou kombinovanou registraci, pokusí zaregistrovat své informace o zabezpečení. Více informací naleznete v článku [Kombinovaná registrace bezpečnostních informací](../authentication/concept-registration-mfa-sspr-combined.md).
+Akce uživatele jsou úkoly, které může provést uživatel. Jediná aktuálně podporovaná akce je **Registrace informací o zabezpečení**, která umožňuje vyhovět zásadám podmíněného přístupu, když se uživatelům, kteří mají povolený pokus o registraci v rámci kombinované registrace, pokusí zaregistrovat své bezpečnostní údaje. Další informace najdete v článku [o registraci kombinovaných bezpečnostních údajů](../authentication/concept-registration-mfa-sspr-combined.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Podmíněný přístup: Podmínky](concept-conditional-access-conditions.md)
+- [Podmíněný přístup: podmínky](concept-conditional-access-conditions.md)
 
-- [Podmíněné přístupové běžné zásady](concept-conditional-access-policy-common.md)
+- [Společné zásady podmíněného přístupu](concept-conditional-access-policy-common.md)
 - [Závislosti klientských aplikací](service-dependencies.md)

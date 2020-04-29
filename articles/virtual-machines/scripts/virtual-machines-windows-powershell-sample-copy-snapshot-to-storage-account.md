@@ -1,6 +1,6 @@
 ---
-title: Export/kopírování snímku jako virtuálního pevného disku do účtu úložiště v jiné oblasti – ukázka prostředí PowerShell
-description: Ukázka skriptu Azure PowerShell – export/kopírování snímku jako virtuálního pevného disku do účtu úložiště ve stejné jiné oblasti
+title: Export/Kopírování snímku jako virtuálního pevného disku do účtu úložiště v jiné oblasti – ukázka PowerShellu
+description: Ukázka skriptu Azure PowerShell – export nebo kopírování snímku jako virtuálního pevného disku do účtu úložiště ve stejné jiné oblasti
 services: virtual-machines-windows
 documentationcenter: storage
 author: ramankumarlive
@@ -14,13 +14,13 @@ ms.workload: infrastructure
 ms.date: 06/05/2017
 ms.author: ramankum
 ms.openlocfilehash: 760b6ae2d791267053acdb1e216ab5daeab7c061
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81459351"
 ---
-# <a name="exportcopy-managed-snapshots-as-vhd-to-a-storage-account-in-different-region-with-powershell"></a>Export/kopírování spravovaných snímků jako virtuálního pevného disku do účtu úložiště v jiné oblasti pomocí Prostředí PowerShell
+# <a name="exportcopy-managed-snapshots-as-vhd-to-a-storage-account-in-different-region-with-powershell"></a>Export/kopírování spravovaných snímků jako VHD do účtu úložiště v jiné oblasti pomocí PowerShellu
 
 Tento skript exportuje spravovaný snímek do účtu úložiště v jiné oblasti. Nejprve vygeneruje identifikátor URI SAS snímku a pak pomocí něj zkopíruje snímek do účtu úložiště v jiné oblasti. Tento skript můžete použít k udržování zálohy spravovaných disků v jiné oblasti pro účely zotavení po havárii.  
 
@@ -41,7 +41,7 @@ Tento skript k vygenerování identifikátoru URI SAS pro spravovaný snímek a 
 
 | Příkaz | Poznámky |
 |---|---|
-| [Udělit azsnapshotaccess](https://docs.microsoft.com/powershell/module/az.compute/New-AzDisk) | Generuje identifikátor URI SAS pro snímek, který se používá ke kopírování do účtu úložiště. |
+| [Grant – AzSnapshotAccess](https://docs.microsoft.com/powershell/module/az.compute/New-AzDisk) | Generuje identifikátor URI SAS pro snímek, který se používá ke zkopírování do účtu úložiště. |
 | [New-AzStorageContext](https://docs.microsoft.com/powershell/module/az.storage/new-azstoragecontext) | Vytvoří kontext účtu úložiště s použitím názvu a klíče účtu. Tento kontext je možné použít k provádění operací čtení a zápisu v účtu úložiště. |
 | [Start-AzStorageBlobCopy](https://docs.microsoft.com/powershell/module/az.storage/start-azstorageblobcopy) | Zkopíruje základní virtuální pevný disk snímku do účtu úložiště. |
 

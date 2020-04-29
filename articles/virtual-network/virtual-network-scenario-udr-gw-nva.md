@@ -1,6 +1,6 @@
 ---
-title: Hybridní připojení s dvoustupňovou aplikací | Dokumenty společnosti Microsoft
-description: Zjistěte, jak nasadit virtuální zařízení a UDR k vytvoření vícevrstvého aplikačního prostředí v Azure
+title: Hybridní připojení se 2 úrovněmi aplikace | Microsoft Docs
+description: Naučte se nasazovat virtuální zařízení a UDR a vytvořit vícevrstvé prostředí aplikací v Azure.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -14,157 +14,157 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2016
 ms.author: kumud
 ms.openlocfilehash: 80a9397838e90a2af504125b2dc4c4ef39251d4e
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81455358"
 ---
 # <a name="virtual-appliance-scenario"></a>Scénář virtuálního zařízení
-Běžným scénářem mezi většími zákazníky Azure je potřeba poskytnout dvouvrstvou aplikaci vystavenou internetu a zároveň povolit přístup k zadní vrstvě z místního datového centra. Tento dokument vás provede scénářem pomocí uživatelem definovaných tras (UDR), brány VPN a síťových virtuálních zařízení k nasazení dvouvrstvého prostředí, které splňuje následující požadavky:
+Běžným scénářem v rámci většího zákazníka Azure je nutnost poskytovat dvě vrstvené aplikace, které jsou zpřístupněné pro Internet, a současně umožnit přístup k back-vrstvám z místního datacentra. Tento dokument vás provede scénářem, který využívá trasy definované uživatelem (UDR), VPN Gateway a síťová virtuální zařízení k nasazení dvou vícevrstvých prostředí, která splňují následující požadavky:
 
-* Webová aplikace musí být přístupná pouze z veřejného Internetu.
-* Webový server hostující aplikaci musí mít přístup k serveru back-endové aplikace.
-* Veškerý provoz z Internetu do webové aplikace musí projít virtuálním zařízením brány firewall. Toto virtuální zařízení bude použito pouze pro internetový provoz.
-* Veškerý provoz na aplikační server musí projít virtuálním zařízením brány firewall. Toto virtuální zařízení se použije pro přístup k koncovému serveru back-end a přístup přicházející z místní sítě prostřednictvím brány VPN.
-* Správci musí být schopni spravovat virtuální zařízení brány firewall ze svých místních počítačů pomocí třetího virtuálního zařízení brány firewall používaného výhradně pro účely správy.
+* Webová aplikace musí být přístupná jenom z veřejného Internetu.
+* Webový server, který je hostitelem aplikace, musí být schopný získat přístup k back-endovému aplikačnímu serveru.
+* Veškerý provoz z Internetu do webové aplikace musí projít virtuálním zařízením brány firewall. Toto virtuální zařízení se bude používat jenom pro internetový provoz.
+* Veškerý provoz směřující do aplikačního serveru musí projít virtuálním zařízením brány firewall. Toto virtuální zařízení se bude používat pro přístup k back-end back-endu serveru a přístup k němu z místní sítě prostřednictvím VPN Gateway.
+* Správci musí být schopni spravovat virtuální zařízení brány firewall ze svých místních počítačů pomocí třetí virtuální brány firewall používané výhradně pro účely správy.
 
-Jedná se o standardní hraniční síť (také známý jako DMZ) scénář s DMZ a chráněné sítě. Takový scénář lze sestavit v Azure pomocí nsGs,firewall virtuální zařízení nebo kombinace obou. Níže uvedená tabulka ukazuje některé výhody a nevýhody mezi sítěmi nsg a firewall virtuálními zařízeními.
+Toto je standardní hraniční síť (označovaná také jako DMZ) s DMZ a chráněnou sítí. Tento scénář je možné vytvořit v Azure pomocí skupin zabezpečení sítě, virtuálními zařízeními brány firewall nebo kombinací obou. V následující tabulce jsou uvedeny některé z specialistů a nevýhody mezi virtuálními zařízeními skupin zabezpečení sítě a firewallem.
 
 |  | Výhody | Nevýhody |
 | --- | --- | --- |
-| NSG |Žádné náklady. <br/>Integrovaná do Azure RBAC. <br/>Pravidla lze vytvořit v šablonách Azure Resource Manager. |Složitost se může lišit ve větších prostředích. |
-| Brána firewall |Plná kontrola nad rovinou dat. <br/>Centrální správa prostřednictvím brány firewall. |Náklady na zařízení firewall. <br/>Není integrován s Azure RBAC. |
+| NSG |Žádné náklady. <br/>Integrováno do Azure RBAC. <br/>Pravidla lze vytvořit v Azure Resource Manager šablonách. |Složitost se může ve větších prostředích lišit. |
+| Brána firewall |Plné řízení roviny dat <br/>Centrální správa prostřednictvím konzoly brány firewall. |Náklady na zařízení brány firewall. <br/>Není integrováno do Azure RBAC. |
 
-Níže uvedené řešení používá virtuální zařízení brány firewall k implementaci scénáře hraniční sítě (DMZ)/chráněné sítě.
+Řešení níže používá virtuální zařízení brány firewall k implementaci scénáře sítě/Protected hraniční sítě (DMZ).
 
 ## <a name="considerations"></a>Požadavky
-Prostředí vysvětlené výše v Azure můžete nasadit pomocí různých funkcí, které jsou dnes k dispozici, a to následovně.
+Prostředí můžete nasadit v Azure podrobněji pomocí různých funkcí dostupných v současnosti, a to následujícím způsobem.
 
-* **Virtuální síť (VNet)**. Virtuální síť Azure funguje podobným způsobem jako místní síť a lze je segmentovat do jedné nebo více podsítí, aby poskytovala izolaci provozu a oddělení problémů.
-* **Virtuální zařízení**. Několik partnerů poskytuje virtuální zařízení na Azure Marketplace, která lze použít pro tři výše popsané brány firewall. 
-* **Uživatelem definované trasy (UDR).** Tabulky směrování mohou obsahovat UDR používané sítí Azure k řízení toku paketů v rámci virtuální sítě. Tyto směrovací tabulky lze použít pro podsítě. Jednou z nejnovějších funkcí v Azure je možnost použít směrovací tabulku na GatewaySubnet, což poskytuje možnost předávat veškerý provoz přicházející do virtuální sítě Azure z hybridního připojení na virtuální zařízení.
-* **Ip forwarding**. Ve výchozím nastavení předávají síťové moduly Azure pakety na karty virtuálního síťového rozhraní (NIC) pouze v případě, že cílová ip adresa paketu odpovídá ip adrese síťové karty. Proto pokud UDR definuje, že paket musí být odeslány do daného virtuálního zařízení, síťový modul Azure by pokles tohoto paketu. Chcete-li zajistit, aby byl paket doručen do virtuálního počítače (v tomto případě virtuálního zařízení), který není skutečným cílem paketu, je třeba povolit předávání IP adres pro virtuální zařízení.
-* **Skupiny zabezpečení sítě (NSG).** Následující příklad nepoužívá skupiny nsg, ale můžete použít skupiny sítě nsg aplikované na podsítě nebo síťové karty v tomto řešení k dalšímu filtrování provozu v těchto podsítích a síťových rozhraních.
+* **Virtuální síť (VNet)** . Virtuální síť Azure funguje podobně jako místní síť a dá se rozdělit do jedné nebo víc podsítí, aby poskytovala izolaci provozu a oddělení obav.
+* **Virtuální zařízení**. Několik partnerů poskytuje virtuální zařízení v Azure Marketplace, která se dají použít pro tři výše popsané brány firewall. 
+* **Trasy definované uživatelem (udr)**. Směrovací tabulky můžou obsahovat udr, které používají sítě Azure k řízení toku paketů v rámci virtuální sítě. Tyto směrovací tabulky lze použít pro podsítě. Jednou z nejnovějších funkcí v Azure je možnost použít pro GatewaySubnet směrovací tabulku, která poskytuje schopnost předávat veškerý provoz přicházející do virtuální sítě Azure z hybridního připojení k virtuálnímu zařízení.
+* **Předávání IP**. Ve výchozím nastavení předávají pakety síťové služby Azure do síťových karet (nic) pouze v případě, že cílová IP adresa paketu odpovídá IP adrese síťového rozhraní. Proto pokud UDR definuje, že se paket musí odeslat do daného virtuálního zařízení, síťový modul Azure tento paket vynechá. Aby se zajistilo doručení paketu do virtuálního počítače (v tomto případě virtuální zařízení), které není skutečným cílem pro daný paket, musíte povolit předávání IP pro virtuální zařízení.
+* **Skupiny zabezpečení sítě (skupin zabezpečení sítě)**. Následující příklad nepoužívá skupin zabezpečení sítě, ale můžete použít skupin zabezpečení sítě, které se použijí pro podsítě nebo síťové karty v tomto řešení k dalšímu filtrování provozu v a z těchto podsítí a síťových adaptérů.
 
-![Připojení IPv6](./media/virtual-network-scenario-udr-gw-nva/figure01.png)
+![Připojení protokolem IPv6](./media/virtual-network-scenario-udr-gw-nva/figure01.png)
 
-V tomto příkladu je předplatné, které obsahuje následující:
+V tomto příkladu je k dispozici předplatné, které obsahuje následující:
 
-* 2 skupiny prostředků, které nejsou zobrazeny v diagramu. 
-  * **ONPREMRG**. Obsahuje všechny prostředky potřebné k simulaci místní sítě.
-  * **AZURERG**. Obsahuje všechny prostředky potřebné pro prostředí virtuální sítě Azure. 
-* Virtuální síť s názvem **onpremvnet** slouží k napodobení místní datové centrum segmentované, jak je uvedeno níže.
-  * **onpremsn1**. Podsíť obsahující virtuální počítač (VM) se systémem Ubuntu napodobovat místní server.
-  * **onpremsn2**. Podsíť obsahující virtuální počítač se systémem Ubuntu, který napodobuje místní počítač používaný správcem.
-* Existuje jeden virtuální zařízení brány firewall s názvem **OPFW** na **onpremvnet** slouží k údržbě tunelového propojení **azurevnet**.
-* Virtuální síť s názvem **azurevnet** segmentované, jak je uvedeno níže.
-  * **azsn1**. Externí podsíť brány firewall používaná výhradně pro externí bránu firewall. Veškerý internetový provoz bude procházet prostřednictvím této podsítě. Tato podsíť obsahuje pouze síť ovou kartu propojenou s externí bránou firewall.
-  * **azsn2**. Podsíť front-endu hostující virtuální hovirtuální ho disponiál jako webový server, ke kterému bude přístup náležející z Internetu.
-  * **azsn3**. Podsíť back-endu hostující virtuální server se serverem back-endaplikace, ke kterému bude přistupovat webový server front-endu.
-  * **azsn4**. Podsíť pro správu používanou výhradně k poskytování přístupu ke správě všech virtuálních zařízení brány firewall. Tato podsíť obsahuje pouze síťovou kartu pro každé virtuální zařízení brány firewall používané v řešení.
-  * **GatewaySubnet**. Podsíť hybridního připojení Azure, která je vyžadována pro bránu ExpressRoute a BRÁNA VPN, aby poskytovala připojení mezi virtuálními sítěmi Azure a dalšími sítěmi. 
-* V síti **azurevnet** jsou 3 virtuální zařízení brány firewall. 
-  * **AZF1**. Externí brána firewall vystavená veřejnému Internetu pomocí prostředku veřejné IP adresy v Azure. Musíte zajistit, že máte šablonu z marketplace nebo přímo od dodavatele zařízení, která zřazuje virtuální zařízení 3-NIC.
-  * **AZF2**. Interní brána firewall používaná k řízení provozu mezi **azsn2** a **azsn3**. Toto je také virtuální zařízení 3-NIC.
-  * **AZF3**. Brána firewall pro správu přístupná správcům z místního datového centra a připojená k podsíti pro správu, která slouží ke správě všech zařízení brány firewall. Šablony virtuálních zařízení 2-NIC najdete na webu Marketplace nebo si je můžete vyžádat přímo od dodavatele zařízení.
+* 2 skupiny prostředků, které nejsou zobrazené v diagramu. 
+  * **ONPREMRG**. Obsahuje všechny prostředky nezbytné pro simulaci místní sítě.
+  * **AZURERG**. Obsahuje všechny prostředky nezbytné pro prostředí Azure Virtual Network. 
+* Virtuální síť s názvem **onpremvnet** , která se používá k napodobení místního datového centra, jak je uvedeno níže.
+  * **onpremsn1**. Podsíť obsahující virtuální počítač se systémem Ubuntu, aby napodoboval místní server.
+  * **onpremsn2**. Podsíť obsahující virtuální počítač se systémem Ubuntu pro napodobení místního počítače, který používá správce.
+* K dispozici je jedno virtuální zařízení brány firewall s názvem **OPFW** v **onpremvnet** , které slouží k údržbě tunelu na **azurevnet**.
+* Virtuální síť s názvem **azurevnet** segmentovaná, jak je uvedeno níže.
+  * **azsn1**. Externí podsíť brány firewall, která se používá výhradně pro externí bránu firewall. Veškerý internetový provoz bude přicházet přes tuto podsíť. Tato podsíť obsahuje jenom síťovou kartu propojenou s externí bránou firewall.
+  * **azsn2**. Front-end, který hostuje virtuální počítač běžící jako webový server, ke kterému se bude přicházet z Internetu.
+  * **azsn3**. Podsíť back-endu hostující virtuální počítač, na kterém běží aplikační server back-end, ke kterému se bude přicházet prostřednictvím webového serveru front-end.
+  * **azsn4**. Podsíť pro správu, která se používá výhradně k poskytnutí přístupu pro správu ke všem virtuálním zařízením brány firewall. Tato podsíť obsahuje jenom síťovou kartu pro každé virtuální zařízení brány firewall použité v řešení.
+  * **GatewaySubnet**. Podsíť hybridního připojení Azure, která se vyžaduje pro ExpressRoute a VPN Gateway, aby poskytovala připojení mezi virtuální sítě Azure a dalšími sítěmi. 
+* V **azurevnet** síti se nachází 3 virtuální zařízení brány firewall. 
+  * **AZF1**. Externí brána firewall vystavená veřejnému Internetu pomocí prostředku veřejné IP adresy v Azure. Musíte mít jistotu, že máte šablonu z webu Marketplace nebo přímo od dodavatele zařízení, která zřídí virtuální zařízení se třemi síťovými kartami.
+  * **AZF2**. Interní brána firewall používaná k řízení provozu mezi **azsn2** a **azsn3**. Toto je také virtuální zařízení se třemi kartami.
+  * **AZF3**. Brána firewall pro správu přístupná správcům z místního datového centra a připojená k podsíti pro správu, která se používá ke správě všech zařízení brány firewall. Na webu Marketplace můžete najít šablony virtuálních zařízení se dvěma síťovými kartami nebo si ji vyžádat přímo od dodavatele zařízení.
 
-## <a name="user-defined-routing-udr"></a>Uživatelem definované směrování (UDR)
-Každá podsíť v Azure může být propojena s tabulkou UDR, která slouží k definování způsobu směrování přenosů iniciovaných v této podsíti. Pokud nejsou definovány žádné UDR, Azure používá výchozí trasy k povolení přenosu z jedné podsítě do druhé. Chcete-li lépe porozumět udr, navštivte informace o tom, [jaké jsou uživatelem definované trasy a předávání IP](virtual-networks-udr-overview.md)adres .
+## <a name="user-defined-routing-udr"></a>Směrování definované uživatelem (UDR)
+Každá podsíť v Azure se dá propojit s tabulkou UDR, která slouží k definování způsobu směrování provozu v této podsíti. Pokud nejsou definované žádné udr, Azure použije výchozí trasy, které umožní tok provozu z jedné podsítě do jiné. Abyste lépe pochopili udr, přečtěte si téma [co jsou uživatelsky definované trasy a předávání IP](virtual-networks-udr-overview.md).
 
-Chcete-li zajistit komunikaci prostřednictvím správného zařízení brány firewall, na základě posledního požadavku výše, je třeba vytvořit následující tabulku tras obsahující UDR v **azurevnetu**.
+Aby bylo zajištěno, že komunikace probíhá přes správné zařízení brány firewall na základě posledního požadavku výše, je třeba vytvořit následující směrovací tabulku obsahující udr v **azurevnet**.
 
 ### <a name="azgwudr"></a>azgwudr
-V tomto scénáři pouze provoz, který proudí z místního do Azure se použije ke správě firewallů připojením k **AZF3**a že provoz musí projít vnitřní bránou firewall, **AZF2**. Proto je v **síti GatewaySubnet** nutná pouze jedna trasa, jak je znázorněno níže.
+V tomto scénáři se k řízení bran firewall pomocí připojení k **AZF3**použije jediný přenos z místního prostředí do Azure a tento provoz musí projít interní bránou firewall **AZF2**. Proto je v **GatewaySubnet** nutná pouze jedna trasa, jak je znázorněno níže.
 
 | Cíl | Další směrování | Vysvětlení |
 | --- | --- | --- |
-| 10.0.4.0/24 |10.0.3.11 |Umožňuje místnímu provozu dosáhnout brány firewall pro správu **AZF3.** |
+| 10.0.4.0/24 |10.0.3.11 |Umožňuje místní provoz pro přístup k bráně firewall pro správu **AZF3** . |
 
 ### <a name="azsn2udr"></a>azsn2udr
 | Cíl | Další směrování | Vysvětlení |
 | --- | --- | --- |
-| 10.0.3.0/24 |10.0.2.11 |Umožňuje přenos do podsítě back-end, která hostuje aplikační server prostřednictvím **AZF2.** |
-| 0.0.0.0/0 |10.0.2.10 |Umožňuje směrování veškerého ostatního provozu přes **AZF1** |
+| 10.0.3.0/24 |10.0.2.11 |Umožňuje provoz do podsítě back-endu hostující aplikační server prostřednictvím **AZF2** . |
+| 0.0.0.0/0 |10.0.2.10 |Povolí směrování všech ostatních přenosů přes **AZF1** . |
 
 ### <a name="azsn3udr"></a>azsn3udr
 | Cíl | Další směrování | Vysvětlení |
 | --- | --- | --- |
-| 10.0.2.0/24 |10.0.3.10 |Umožňuje přenos **na azsn2** toku z aplikačního serveru na webový server přes **AZF2** |
+| 10.0.2.0/24 |10.0.3.10 |Umožňuje přenosu dat do **azsn2** z aplikačního serveru do webserveru prostřednictvím **AZF2** . |
 
-Je také potřeba vytvořit tabulky tras pro podsítě v **onpremvnet** napodobovat místní datové centrum.
+Pro podsítě v **onpremvnet** je také potřeba vytvořit směrovací tabulky, které napodobují místní datacentrum.
 
 ### <a name="onpremsn1udr"></a>onpremsn1udr
 | Cíl | Další směrování | Vysvětlení |
 | --- | --- | --- |
-| 192.168.2.0/24 |192.168.1.4 |Umožňuje provoz **na onpremsn2** přes **OPFW** |
+| 192.168.2.0/24 |192.168.1.4 |Povoluje přenos do **onpremsn2** prostřednictvím **OPFW** . |
 
 ### <a name="onpremsn2udr"></a>onpremsn2udr
 | Cíl | Další směrování | Vysvětlení |
 | --- | --- | --- |
-| 10.0.3.0/24 |192.168.2.4 |Umožňuje provoz do zálohované podsítě v Azure prostřednictvím **OPFW** |
-| 192.168.1.0/24 |192.168.2.4 |Umožňuje provoz **na onpremsn1** přes **OPFW** |
+| 10.0.3.0/24 |192.168.2.4 |Povoluje provoz do back-mailové podsítě v Azure prostřednictvím **OPFW** |
+| 192.168.1.0/24 |192.168.2.4 |Povoluje přenos do **onpremsn1** prostřednictvím **OPFW** . |
 
 ## <a name="ip-forwarding"></a>Předávání IP
-Předávání UDR a IP jsou funkce, které můžete použít v kombinaci k povolení virtuálních zařízení, které mají být použity k řízení toku provozu ve virtuální síti Azure.  Virtuální zařízení není nic jiného než virtuální počítač, na kterém běží aplikace sloužící k určitému zpracování síťového provozu, jako je například brána firewall nebo zařízení NAT.
+UDR a předávání IP jsou funkce, které můžete použít v kombinaci k umožnění použití virtuálních zařízení k řízení toku provozu ve virtuální síti Azure.  Virtuální zařízení není nic jiného než virtuální počítač, na kterém běží aplikace sloužící k určitému zpracování síťového provozu, jako je například brána firewall nebo zařízení NAT.
 
-Tento virtuální počítač virtuálního zařízení musí být schopný přijímat příchozí provoz, který mu není adresovaný. Pokud chcete virtuálnímu počítači povolit přijímání dat adresovaných jiným cílům, je nutné, abyste mu povolili předávání IP. Toto je nastavení Azure, nikoli nastavení hostovaného operačního systému. Vaše virtuální zařízení stále potřebuje spustit nějaký typ aplikace pro zpracování příchozího provozu a odpovídajícím způsobem směrovat.
+Tento virtuální počítač virtuálního zařízení musí být schopný přijímat příchozí provoz, který mu není adresovaný. Pokud chcete virtuálnímu počítači povolit přijímání dat adresovaných jiným cílům, je nutné, abyste mu povolili předávání IP. Toto je nastavení Azure, nikoli nastavení hostovaného operačního systému. Virtuální zařízení ještě potřebuje spustit nějaký typ aplikace pro zpracování příchozího provozu a správně ho směrovat.
 
-Další informace o předávání IP adres, navštivte [What are User Defined Routes and IP Forwarding](virtual-networks-udr-overview.md).
+Další informace o předávání IP adres najdete v [informacích o trasách definovaných uživatelem a předávání IP](virtual-networks-udr-overview.md).
 
 Představte si například, že máte ve virtuální síti Azure následující nastavení:
 
-* Podsíť **onpremsn1** obsahuje virtuální počítač s názvem **onpremvm1**.
-* Podsíť **onpremsn2** obsahuje virtuální počítač s názvem **onpremvm2**.
-* Virtuální zařízení s názvem **OPFW** je připojen k **onpremsn1** a **onpremsn2**.
-* Uživatelem definovaná trasa propojená s **onpremsn1** určuje, že veškerý provoz **na onpremsn2** musí být odeslán **opfw**.
+* **Onpremsn1** podsítě obsahuje virtuální počítač s názvem **onpremvm1**.
+* **Onpremsn2** podsítě obsahuje virtuální počítač s názvem **onpremvm2**.
+* Virtuální zařízení s názvem **OPFW** je připojené k **onpremsn1** a **onpremsn2**.
+* Uživatelem definovaná trasa propojená s **onpremsn1** určuje, že všechny přenosy do **onpremsn2** musí být odesílány do **OPFW**.
 
-V tomto okamžiku, pokud **onpremvm1** pokusí navázat spojení s **onpremvm2**, UDR bude použit a provoz bude odeslána **OPFW** jako další směrování. Mějte na paměti, že skutečný cíl paketu se nemění, stále říká, **že onpremvm2** je cíl. 
+V tomto okamžiku se v případě, že se **onpremvm1** pokusí navázat spojení s **onpremvm2**, se použije udr a provoz se pošle **OPFW** jako další segment směrování. Mějte na paměti, že skutečný cíl paketu se nemění, stále říká, že **onpremvm2** je cílem. 
 
-Bez ip forwarding u **OPFW**, logika virtuální sítě Azure bude vyřadit pakety, protože umožňuje pouze pakety, které mají být odeslány do virtuálního počítače, pokud IP adresa virtuálního počítače je cíl paketu.
+Bez povoleného předávání IP pro **OPFW**vynechá logika virtuálních sítí Azure pakety, protože povoluje odesílání paketů do virtuálního počítače jenom v případě, že je IP adresa virtuálního počítače cílová pro daný paket.
 
-S IP forwarding logiky virtuální sítě Azure předá pakety OPFW, aniž by se změnila původní cílová adresa. **OPFW** musí zpracovávat pakety a určit, co s nimi dělat.
+Díky předávání IP je logika virtuální sítě Azure předávat pakety do OPFW beze změny původní cílové adresy. **OPFW** musí pakety zpracovávat a určit, co s nimi dělat.
 
-Aby výše uvedený scénář fungoval, musíte povolit předávání IP adres na síťových listech pro **OPFW**, **AZF1**, **AZF2**a **AZF3,** které se používají pro směrování (všechny síťové karty s výjimkou těch, které jsou propojeny s podsítí pro správu). 
+Aby výše uvedený scénář fungoval, musíte povolit předávání IP na síťových kartách pro **OPFW**, **AZF1**, **AZF2**a **AZF3** , které se používají pro směrování (všechny síťové karty kromě těch, které jsou propojené s podsítí pro správu). 
 
 ## <a name="firewall-rules"></a>Pravidla brány firewall
-Jak je popsáno výše, předávání IP pouze zajišťuje, že pakety jsou odesílány do virtuálních zařízení. Váš spotřebič se stále musí rozhodnout, co s těmito pakety udělá. Ve výše uvedeném scénáři budete muset ve svých spotřebičích vytvořit následující pravidla:
+Jak je popsáno výše, předávání IP zajišťuje pouze odeslání paketů do virtuálních zařízení. Vaše zařízení pořád potřebuje rozhodnout, co s těmito pakety udělat. Ve výše uvedeném scénáři budete muset ve svých zařízeních vytvořit tato pravidla:
 
 ### <a name="opfw"></a>OPFW
-OPFW představuje místní zařízení obsahující následující pravidla:
+OPFW představuje místní zařízení, které obsahuje následující pravidla:
 
-* **Trasa**: Veškerý provoz na 10.0.0.0/16 **(azurevnet**) musí být odeslán tunelem **ONPREMAZURE**.
-* **Zásady**: Povolit veškerý obousměrný provoz mezi **port2** a **ONPREMAZURE**.
+* **Trasa**: veškerý provoz do 10.0.0.0/16 (**azurevnet**) se musí odesílat prostřednictvím tunelového **ONPREMAZURE**.
+* **Zásada**: povolí veškerý obousměrný provoz mezi **PORT2** a **ONPREMAZURE**.
 
 ### <a name="azf1"></a>AZF1
 AZF1 představuje virtuální zařízení Azure obsahující následující pravidla:
 
-* **Zásady**: Povolit veškerý obousměrný provoz mezi **port1** a **port2**.
+* **Zásada**: povolí veškerý obousměrný provoz mezi **PORT1** a **PORT2**.
 
 ### <a name="azf2"></a>AZF2
 AZF2 představuje virtuální zařízení Azure obsahující následující pravidla:
 
-* **Trasa**: Veškerý provoz na 10.0.0.0/16 **(onpremvnet**) musí být odeslán na IP adresu brány Azure (tj. 10.0.0.1) přes **port1**.
-* **Zásady**: Povolit veškerý obousměrný provoz mezi **port1** a **port2**.
+* **Trasa**: veškerý provoz do 10.0.0.0/16 (**onpremvnet**) musí být odeslán do IP adresy brány Azure (tj. 10.0.0.1) prostřednictvím **PORT1**.
+* **Zásada**: povolí veškerý obousměrný provoz mezi **PORT1** a **PORT2**.
 
-## <a name="network-security-groups-nsgs"></a>Skupiny zabezpečení sítě (NSG)
-V tomto scénáři nejsou používány nsg. Skupiny nsg však můžete použít pro každou podsíť a omezit příchozí a odchozí provoz. Můžete například použít následující pravidla skupiny nsg pro externí podsíť FW.
+## <a name="network-security-groups-nsgs"></a>Skupiny zabezpečení sítě (skupin zabezpečení sítě)
+V tomto scénáři se skupin zabezpečení sítě nepoužívají. Můžete ale použít skupin zabezpečení sítě pro každou podsíť a omezit tak příchozí a odchozí provoz. Například můžete použít následující pravidla NSG pro externí podsíť FW.
 
 **Příchozí**
 
-* Povolit veškerý přenos TCP z Internetu na port 80 na libovolném virtuálním počítači v podsíti.
-* Odepřít všechny ostatní přenosy z Internetu.
+* Povolte veškerý provoz TCP z Internetu na port 80 na jakémkoli virtuálním počítači v podsíti.
+* Zakažte všechny ostatní přenosy z Internetu.
 
-**Odchozí**
+**Odesílaná**
 
-* Odepřít veškerý provoz na Internetu.
+* Odepřít veškerý provoz do Internetu.
 
-## <a name="high-level-steps"></a>Kroky na vysoké úrovni
-Chcete-li nasadit tento scénář, postupujte podle kroků na vysoké úrovni níže.
+## <a name="high-level-steps"></a>Kroky vysoké úrovně
+Pokud chcete tento scénář nasadit, postupujte podle následujících kroků na nejvyšší úrovni.
 
-1. Přihlaste se ke svému předplatnému Azure.
-2. Pokud chcete nasadit virtuální síť napodobovat místní sítě, zřídit prostředky, které jsou součástí **ONPREMRG**.
-3. Zřídit prostředky, které jsou součástí **AZURERG**.
-4. Zřídit tunel z **onpremvnet** do **azurevnet**.
-5. Po zřízení všech prostředků se přihlaste k **onpremvm2** a ping 10.0.3.101 k testování připojení mezi **onpremsn2** a **azsn3**.
+1. Přihlaste se k předplatnému Azure.
+2. Pokud chcete nasadit virtuální síť, která bude napodobovat místní síť, zřiďte prostředky, které jsou součástí **ONPREMRG**.
+3. Zřídí prostředky, které jsou součástí **AZURERG**.
+4. Zřízení tunelu z **onpremvnet** na **azurevnet**.
+5. Po zřízení všech prostředků se přihlaste k **onpremvm2** a otestujte 10.0.3.101 a otestujte připojení mezi **onpremsn2** a **azsn3**.
 

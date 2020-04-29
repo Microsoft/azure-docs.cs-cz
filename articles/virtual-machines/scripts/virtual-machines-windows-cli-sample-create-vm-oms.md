@@ -1,6 +1,6 @@
 ---
-title: Ukázka azure cli – vytvoření virtuálního počítače Azure se systémem Azure Monitor
-description: Ukázka nastavení řízení vybraných příkazových od lože Azure – vytvořte virtuální počítač Azure se systémem Windows Server 2016 VM a Azure Monitor.
+title: Ukázka Azure CLI – vytvoření virtuálního počítače Azure se spuštěným Azure Monitor
+description: Ukázka Azure CLI – vytvoření virtuálního počítače Azure se spuštěným virtuálním počítačem s Windows serverem 2016 a Azure Monitor.
 services: virtual-machines-Windows
 documentationcenter: virtual-machines
 author: rickstercdn
@@ -16,13 +16,13 @@ ms.date: 02/23/2017
 ms.author: rclaus
 ms.custom: mvc,seodec18
 ms.openlocfilehash: b3c8c045b7d773f6345072ed46c4a668d0db8ec5
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81459470"
 ---
-# <a name="monitor-a-vm-with-azure-monitor-logs"></a>Monitorování virtuálního počítače pomocí protokolů Azure Monitoru
+# <a name="monitor-a-vm-with-azure-monitor-logs"></a>Monitorování virtuálního počítače pomocí protokolů Azure Monitor
 
 Tento skript vytvoří virtuální počítač Azure, nainstaluje agenta Log Analytics a zaregistruje systém v pracovním prostoru služby Log Analytics. Po spuštění skriptu bude virtuální počítač viditelný v monitorování Azure.
 

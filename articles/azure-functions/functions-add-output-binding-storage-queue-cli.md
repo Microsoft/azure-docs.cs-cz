@@ -1,23 +1,23 @@
 ---
-title: Připojení funkcí Azure k Úložišti Azure pomocí nástrojů příkazového řádku
-description: Zjistěte, jak připojit funkce Azure k frontě Azure Storage přidáním výstupní vazby do projektu příkazového řádku.
+title: Připojení Azure Functions k Azure Storage pomocí nástrojů příkazového řádku
+description: Naučte se připojit Azure Functions k frontě Azure Storage přidáním výstupní vazby do projektu příkazového řádku.
 ms.date: 02/07/2020
 ms.topic: quickstart
 zone_pivot_groups: programming-languages-set-functions
 ms.openlocfilehash: f9d9573523083b6355f423b7b3db94b795d8657f
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80673333"
 ---
-# <a name="connect-azure-functions-to-azure-storage-using-command-line-tools"></a>Připojení funkcí Azure k Úložišti Azure pomocí nástrojů příkazového řádku
+# <a name="connect-azure-functions-to-azure-storage-using-command-line-tools"></a>Připojení Azure Functions k Azure Storage pomocí nástrojů příkazového řádku
 
-V tomto článku integrujete frontu služby Azure Storage s účtem funkce a úložiště, které jste [vytvořili](functions-create-first-azure-function-azure-cli.md)v předchozím rychlém startu . Dosažení této integrace pomocí *výstupní vazby,* která zapisuje data z požadavku HTTP na zprávu ve frontě. Dokončení tohoto článku nevznikají žádné další náklady nad rámec několika USD centů z předchozího rychlého startu. Další informace o vazbách najdete v [tématu Azure Functions triggers and bindings concepts](functions-triggers-bindings.md).
+V tomto článku integrujete frontu Azure Storage pomocí funkce a účtu úložiště, který jste vytvořili v [předchozím rychlém](functions-create-first-azure-function-azure-cli.md)startu. Tuto integraci dosáhnete pomocí *výstupní vazby* , která zapisuje data z požadavku HTTP do zprávy ve frontě. Po dokončení tohoto článku se neúčtují žádné další náklady nad několik centů za USD předchozího rychlého startu. Další informace o vazbách naleznete v tématu [Azure Functions triggery a koncepty vazeb](functions-triggers-bindings.md).
 
 ## <a name="configure-your-local-environment"></a>Konfigurace místního prostředí
 
-Než začnete, musíte dokončit [článek, Úvodní příručka: Vytvořte projekt Azure Functions z příkazového řádku](functions-create-first-azure-function-azure-cli.md). Pokud jste už vyčistili prostředky na konci tohoto článku, projděte si další kroky k opětovnému vytvoření aplikace funkce a souvisejících prostředků v Azure.
+Než začnete, musíte dokončit článek, [rychlý Start: vytvoření Azure Functions projektu z příkazového řádku](functions-create-first-azure-function-azure-cli.md). Pokud jste již vyčistili prostředky na konci tohoto článku, Projděte kroky znovu a znovu vytvořte aplikaci funkcí a související prostředky v Azure.
 
 [!INCLUDE [functions-cli-get-storage-connection](../../includes/functions-cli-get-storage-connection.md)]
 
@@ -32,11 +32,11 @@ Než začnete, musíte dokončit [článek, Úvodní příručka: Vytvořte proj
 [!INCLUDE [functions-add-output-binding-java-cli](../../includes/functions-add-output-binding-java-cli.md)]
 ::: zone-end   
 
-Další informace o podrobnostech vazby, najdete v [tématu Azure Functions aktivační události a vazby koncepty](functions-triggers-bindings.md) a [konfigurace výstupu fronty](functions-bindings-storage-queue-output.md#configuration).
+Další informace o podrobnostech vazeb najdete v tématu [Azure Functions triggery a koncepty vazeb](functions-triggers-bindings.md) a [Konfigurace výstupu fronty](functions-bindings-storage-queue-output.md#configuration).
 
-## <a name="add-code-to-use-the-output-binding"></a>Přidání kódu pro použití výstupní vazby
+## <a name="add-code-to-use-the-output-binding"></a>Přidat kód pro použití výstupní vazby
 
-S definovanou vazbou fronty můžete nyní aktualizovat `msg` funkci tak, aby přijímali výstupní parametr a zapisovat zprávy do fronty.
+Je-li definována vazba fronty, můžete nyní aktualizovat funkci tak, aby přijímala `msg` výstupní parametr, a zapisovat zprávy do fronty.
 
 ::: zone pivot="programming-language-python"     
 [!INCLUDE [functions-add-output-binding-python](../../includes/functions-add-output-binding-python.md)]
@@ -64,7 +64,7 @@ S definovanou vazbou fronty můžete nyní aktualizovat `msg` funkci tak, aby p�
 [!INCLUDE [functions-add-output-binding-java-test-cli](../../includes/functions-add-output-binding-java-test-cli.md)]
 ::: zone-end
 
-Všimněte si, že *není* nutné psát žádný kód pro ověřování, získání odkazu na frontu nebo zápis dat. Všechny tyto úlohy integrace jsou pohodlně zpracovány v Azure Functions runtime a fronty výstupní vazby.
+Pozor *, abyste nemuseli* psát žádný kód pro ověřování, získání odkazu na frontu nebo zápis dat. Všechny tyto úkoly integrace jsou pohodlně zpracovávány v Azure Functions modul runtime a výstupní vazba fronty.
 
 [!INCLUDE [functions-run-function-test-local-cli](../../includes/functions-run-function-test-local-cli.md)]
 
@@ -76,10 +76,10 @@ Všimněte si, že *není* nutné psát žádný kód pro ověřování, získá
 
 ## <a name="redeploy-the-project-to-azure"></a>Opětovné nasazení projektu do Azure
 
-Teď, když jste místně ověřili, že funkce napsala zprávu do fronty Azure Storage, můžete znovu nasadit projekt a aktualizovat koncový bod spuštěný v Azure.
+Teď, když jste místně ověřili, že funkce zapsala zprávu do fronty Azure Storage, můžete projekt znovu nasadit, aby se aktualizoval koncový bod běžící v Azure.
 
 ::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell,programming-language-csharp" 
-Ve složce *LocalFunctionsProj* [`func azure functionapp publish`](functions-run-local.md#project-file-deployment) použijte příkaz k opětovnému`<APP_NAME>` nasazení projektu a nahrazením názvem aplikace.
+Ve složce *LocalFunctionsProj* použijte [`func azure functionapp publish`](functions-run-local.md#project-file-deployment) příkaz pro opětovné nasazení projektu a nahraďte`<APP_NAME>` názvem vaší aplikace.
 
 ```
 func azure functionapp publish <APP_NAME>
@@ -88,7 +88,7 @@ func azure functionapp publish <APP_NAME>
 
 ::: zone pivot="programming-language-java" 
 
-V místní složce projektu použijte k opětovnému publikování projektu následující příkaz Maven:
+V místní složce projektu použijte následující příkaz Maven pro opětovné publikování projektu:
 ```
 mvn azure-functions:deploy
 ```
@@ -96,27 +96,27 @@ mvn azure-functions:deploy
 
 ## <a name="verify-in-azure"></a>Ověření v Azure
 
-1. Stejně jako v předchozím rychlém startu použijte prohlížeč nebo CURL k testování znovu nasazené funkce.
+1. Stejně jako v předchozím rychlém startu použijte k otestování znovu nasazené funkce prohlížeč nebo KUDRLINKOU.
 
     # <a name="browser"></a>[Prohlížeč](#tab/browser)
     
-    Zkopírujte úplnou **adresu URL invoke** zobrazenou ve výstupu příkazu publikovat `&name=Functions`do adresního řádku prohlížeče a přidejte parametr dotazu . Prohlížeč by měl zobrazit podobný výstup jako při spuštění funkce místně.
+    Zkopírujte úplnou **adresu URL pro vyvolání** zobrazenou ve výstupu příkazu publikovat do adresního řádku prohlížeče a přidejte parametr `&name=Functions`dotazu. V prohlížeči by se měl zobrazit podobný výstup jako při spuštění funkce místně.
 
-    ![Výstup funkce běží v Azure v prohlížeči](./media/functions-add-output-binding-storage-queue-cli/function-test-cloud-browser.png)
+    ![Výstup funkce se spouští v Azure v prohlížeči.](./media/functions-add-output-binding-storage-queue-cli/function-test-cloud-browser.png)
 
     # <a name="curl"></a>[Curl](#tab/curl)
     
-    Spustit [`curl`](https://curl.haxx.se/) s **adresou URL**invoke `&name=Functions`, připojit parametr . Výstupem příkazu by měl být text "Funkce Hello".
+    Spusťte [`curl`](https://curl.haxx.se/) s **adresou URL vyvolání**a přidejte parametr `&name=Functions`. Výstupem příkazu by měl být text "Hello".
     
-    ![Výstup funkce běží v Azure pomocí CURL](./media/functions-add-output-binding-storage-queue-cli/function-test-cloud-curl.png)
+    ![Výstup funkce se spouští v Azure pomocí KUDRLINKOU.](./media/functions-add-output-binding-storage-queue-cli/function-test-cloud-curl.png)
 
     --- 
 
-1. Zkontrolujte frontu úložiště znovu, jak je popsáno v předchozí části, chcete-li ověřit, zda obsahuje novou zprávu zapsanou do fronty.
+1. Znovu zkontrolujte frontu úložiště, jak je popsáno v předchozí části, a ověřte tak, že obsahuje novou zprávu zapsanou do fronty.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Po dokončení odstraňte skupinu prostředků a všechny její obsažené prostředky pomocí následujícího příkazu, abyste zabránili dalším nákladům.
+Po dokončení použijte následující příkaz k odstranění skupiny prostředků a všech jejích obsažených prostředků, abyste se vyhnuli vzniku dalších nákladů.
 
 ```azurecli
 az group delete --name AzureFunctionsQuickstart-rg
@@ -124,37 +124,37 @@ az group delete --name AzureFunctionsQuickstart-rg
 
 ## <a name="next-steps"></a>Další kroky
 
-Aktualizovali jste funkci aktivovanou protokolem HTTP tak, aby zapisovali data do fronty úložiště. Teď se můžete dozvědět více o vývoji funkcí z příkazového řádku pomocí základních nástrojů a Azure CLI:
+Aktualizovali jste funkci aktivovanou protokolem HTTP, která zapisuje data do fronty úložiště. Nyní se můžete dozvědět víc o vývoji funkcí z příkazového řádku pomocí základních nástrojů a Azure CLI:
 
-+ [Práce s nástroji Azure Functions Core Tools](functions-run-local.md)  
++ [Práce s Azure Functions Core Tools](functions-run-local.md)  
 
 ::: zone pivot="programming-language-csharp"  
-+ [Příklady úplných projektů funkce v c#](/samples/browse/?products=azure-functions&languages=csharp).
++ [Příklady kompletních projektů funkcí v jazyce C#](/samples/browse/?products=azure-functions&languages=csharp).
 
-+ [Odkaz na vývojáře Azure Functions C#](functions-dotnet-class-library.md)  
++ [Referenční informace pro vývojáře v jazyce C# Azure Functions](functions-dotnet-class-library.md)  
 ::: zone-end 
 ::: zone pivot="programming-language-javascript"  
 + [Příklady kompletních projektů funkcí v JavaScriptu](/samples/browse/?products=azure-functions&languages=javascript).
 
-+ [Průvodce vývojářem JavaScriptu azure funkce](functions-reference-node.md)  
++ [Azure Functions příručka pro vývojáře JavaScriptu](functions-reference-node.md)  
 ::: zone-end  
 ::: zone pivot="programming-language-typescript"  
-+ [Příklady úplných projektů funkce v typescriptu](/samples/browse/?products=azure-functions&languages=typescript).
++ [Příklady kompletních projektů funkcí v TypeScript](/samples/browse/?products=azure-functions&languages=typescript).
 
-+ [Průvodce vývojářem Azure Functions TypeScript](functions-reference-node.md#typescript)  
++ [Azure Functions příručka pro vývojáře TypeScript](functions-reference-node.md#typescript)  
 ::: zone-end  
 ::: zone pivot="programming-language-python"  
-+ [Příklady kompletních projektů funkcí v Pythonu](/samples/browse/?products=azure-functions&languages=python).
++ [Příklady kompletních projektů funkcí v Pythonu](/samples/browse/?products=azure-functions&languages=python)
 
-+ [Průvodce vývojářem Azure Functions Pythonu](functions-reference-python.md)  
++ [Příručka pro vývojáře Azure Functions Pythonu](functions-reference-python.md)  
 ::: zone-end  
 ::: zone pivot="programming-language-powershell"  
 + [Příklady kompletních projektů funkcí v prostředí PowerShell](/samples/browse/?products=azure-functions&languages=azurepowershell).
 
-+ [Průvodce vývojářem prostředí Azure Functions PowerShell](functions-reference-powershell.md) 
++ [Azure Functions příručka pro vývojáře PowerShellu](functions-reference-powershell.md) 
 ::: zone-end
-+ [Azure Funkce aktivační události a vazby](functions-triggers-bindings.md)
++ [Aktivační události a vazby Azure Functions](functions-triggers-bindings.md)
 
 + [Stránka s cenami funkcí](https://azure.microsoft.com/pricing/details/functions/)
 
-+ [Odhad nákladů plánu spotřeby](functions-consumption-costs.md) 
++ [Odhad nákladů na plán spotřeby](functions-consumption-costs.md) 

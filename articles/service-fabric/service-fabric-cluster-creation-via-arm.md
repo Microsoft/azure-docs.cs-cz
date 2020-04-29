@@ -1,44 +1,44 @@
 ---
 title: Vytvoření clusteru Azure Service Fabric
-description: Zjistěte, jak nastavit zabezpečený cluster Service Fabric v Azure pomocí Správce prostředků Azure.  Cluster můžete vytvořit pomocí výchozí šablony nebo vlastní šablony clusteru.
+description: Přečtěte si, jak nastavit zabezpečený Service Fabric cluster v Azure pomocí Azure Resource Manager.  Cluster můžete vytvořit pomocí výchozí šablony nebo pomocí vlastní šablony clusteru.
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.openlocfilehash: 24bc80a7ab3ce61b79466cdd943c60efd367ce01
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81458296"
 ---
-# <a name="create-a-service-fabric-cluster-using-azure-resource-manager"></a>Vytvoření clusteru Service Fabric pomocí Správce prostředků Azure 
+# <a name="create-a-service-fabric-cluster-using-azure-resource-manager"></a>Vytvoření clusteru Service Fabric pomocí Azure Resource Manager 
 > [!div class="op_single_selector"]
 > * [Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
 > * [portál Azure](service-fabric-cluster-creation-via-portal.md)
 >
 >
 
-[Cluster Azure Service Fabric](service-fabric-deploy-anywhere.md) je síťová sada virtuálních počítačů, do kterých se vaše mikroslužby nasazují a spravují.  Cluster Service Fabric spuštěný v Azure je prostředek Azure a nasadí se pomocí Správce prostředků Azure. Tento článek popisuje, jak nasadit zabezpečené service fabric clusteru v Azure pomocí Správce prostředků. Můžete použít výchozí šablonu clusteru nebo vlastní šablonu.  Pokud ještě nemáte vlastní šablonu, můžete [se naučit, jak ji vytvořit](service-fabric-cluster-creation-create-template.md).
+[Cluster Azure Service Fabric](service-fabric-deploy-anywhere.md) je sada virtuálních počítačů připojených k síti, do kterých se nasazují a spravují vaše mikroslužby.  Service Fabric cluster se systémem v Azure je prostředek Azure, který je nasazený pomocí Azure Resource Manager. Tento článek popisuje, jak nasadit zabezpečený Service Fabric cluster v Azure pomocí Správce prostředků. Můžete použít výchozí šablonu clusteru nebo vlastní šablonu.  Pokud ještě nemáte vlastní šablonu, můžete se [dozvědět, jak si ji vytvořit](service-fabric-cluster-creation-create-template.md).
 
-Typ zabezpečení zvoleného k zabezpečení clusteru (tj.: Identita systému Windows, X509 atd.) musí být určen pro počáteční vytvoření clusteru a poté jej nelze změnit. Před nastavením clusteru si přečtěte [scénáře zabezpečení clusteru Service Fabric][service-fabric-cluster-security]. V Azure service fabric používá certifikát x509 k zabezpečení clusteru a jeho koncových bodů, ověřování klientů a šifrování dat. Azure Active Directory se také doporučuje zabezpečit přístup ke koncovým bodům správy. Další informace načtete [načláneknutí azure ad k ověření klientů](service-fabric-cluster-creation-setup-aad.md).
+Typ zabezpečení zvoleného pro zabezpečení clusteru (tj.: identita systému Windows, identifikátor x509 atd.) je nutné zadat pro počáteční vytvoření clusteru a poté jej nelze změnit. Před nastavením clusteru si přečtěte [Service Fabric scénáře zabezpečení clusteru][service-fabric-cluster-security]. V Azure Service Fabric používá certifikát x509 k zabezpečení clusteru a jeho koncových bodů, ověřování klientů a šifrování dat. Azure Active Directory také doporučujeme zabezpečit přístup ke koncovým bodům správy. Pokud potřebujete další informace, přečtěte si téma [Nastavení Azure AD pro ověřování klientů](service-fabric-cluster-creation-setup-aad.md).
 
-Pokud vytváříte produkční cluster pro spuštění produkčních úloh, doporučujeme nejprve přečíst [kontrolní seznam připravenosti výroby](service-fabric-production-readiness-checklist.md).
+Pokud vytváříte provozní cluster pro spouštění produkčních úloh, doporučujeme si nejdřív projít [Kontrolní seznam připravenosti na produkci](service-fabric-production-readiness-checklist.md).
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Požadavky 
-V tomto článku použijte powershellserviceové prostředí Service Fabric RM nebo moduly Azure CLI k nasazení clusteru:
+V tomto článku nasadíte cluster pomocí modulu Service Fabric RM PowerShell nebo Azure CLI:
 
-* [Azure PowerShell 4.1 a vyšší][azure-powershell]
-* [Azure CLI verze 2.0 a vyšší][azure-CLI]
+* [Azure PowerShell 4,1 a vyšší][azure-powershell]
+* [Azure CLI verze 2,0 a vyšší][azure-CLI]
 
-Referenční dokumentaci pro moduly Service Fabric naleznete zde:
+Referenční dokumentaci k modulům Service Fabric najdete tady:
 * [Az.ServiceFabric](https://docs.microsoft.com/powershell/module/az.servicefabric)
-* [modul az SF CLI](https://docs.microsoft.com/cli/azure/sf?view=azure-cli-latest)
+* [AZ SF CLI Module](https://docs.microsoft.com/cli/azure/sf?view=azure-cli-latest)
 
 ### <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Před spuštěním některého z příkazů v tomto článku se nejprve přihlaste do Azure.
+Před spuštěním kteréhokoli z příkazů v tomto článku se nejdřív přihlaste k Azure.
 
 ```powershell
 Connect-AzAccount
@@ -50,24 +50,24 @@ az login
 az account set --subscription $subscriptionId
 ```
 
-## <a name="create-a-new-cluster-using-a-system-generated-self-signed-certificate"></a>Vytvoření nového clusteru pomocí systémově generovaného certifikátu podepsaného svým držitelem
+## <a name="create-a-new-cluster-using-a-system-generated-self-signed-certificate"></a>Vytvoření nového clusteru pomocí systému generovaného certifikátem podepsaným svým držitelem
 
-Pomocí následujících příkazů vytvořte cluster zabezpečený systémem generovaným certifikátem podepsaným svým držitelem. Tento příkaz nastaví primární certifikát clusteru, který se používá pro zabezpečení clusteru, a k nastavení přístupu správce k provádění operací správy pomocí tohoto certifikátu.  Certifikáty podepsané svým držitelem jsou užitečné pro zabezpečení testovacích clusterů.  Produkční clustery by měly být zabezpečeny certifikátem certifikační autority .
+Pomocí následujících příkazů vytvořte cluster zabezpečený systémem generovaným certifikátem podepsaným svým držitelem. Tento příkaz nastaví primární clusterový certifikát, který se používá k zabezpečení clusteru, a k nastavení přístupu správce k provádění operací správy pomocí tohoto certifikátu.  Certifikáty podepsané svým držitelem jsou užitečné pro zabezpečení testovacích clusterů.  Provozní clustery by se měly zabezpečit pomocí certifikátu od certifikační autority (CA).
 
-### <a name="use-the-default-cluster-template-that-ships-in-the-module"></a>Použití výchozí šablony clusteru, která je dodávána v modulu.
+### <a name="use-the-default-cluster-template-that-ships-in-the-module"></a>Použít výchozí šablonu clusteru, která je dodávána v modulu
 
 Pomocí následujícího příkazu můžete rychle vytvořit cluster zadáním minimálních parametrů pomocí výchozí šablony.
 
-Použitá šablona je dostupná na [ukázkách šablon Azure Service Fabric : šablona windows](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure-NSG) a [šablona Ubuntu](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeTypes-Secure)
+Použitá šablona je k dispozici v [ukázkách šablon Azure Service Fabric: Šablona Windows](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure-NSG) a [Ubuntu](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeTypes-Secure)
 
-Následující příkaz můžete vytvořit buď Windows nebo Linux clustery, je třeba zadat operační systém odpovídajícím způsobem. Příkazy prostředí PowerShell/CLI také výstup certifikátu v zadané *CertificateOutputFolder*; přesvědčte se však, zda je složka certifikátu již vytvořena. Příkaz přebírá další parametry, jako je například skladová položka virtuálního řezu.
+Následující příkaz může vytvořit clustery se systémem Windows nebo Linux, a proto je nutné zadat odpovídající operační systém. Příkazy PowerShellu/CLI také výstupují certifikát v zadaném *CertificateOutputFolder*; Ujistěte se však, že je složka s certifikátem již vytvořena. Příkaz používá i jiné parametry, jako je třeba SKU virtuálního počítače.
 
 > [!NOTE]
-> Následující příkaz PowerShellu funguje jenom s modulem Azure PowerShell. `Az` Chcete-li zkontrolovat aktuální verzi verze prostředí PowerShell azure správce prostředků, spusťte následující příkaz PowerShellu "Get-Module Az". [Chcete-li](/powershell/azure/install-Az-ps) upgradovat verzi prostředí PowerShell azure správce prostředků, postupujte takto. 
+> Následující příkaz PowerShell funguje jenom s modulem Azure PowerShell `Az` . Pokud chcete zjistit aktuální verzi Azure Resource Manager PowerShellu, spusťte následující příkaz PowerShellu Get-Module AZ. Pomocí [tohoto odkazu](/powershell/azure/install-Az-ps) můžete upgradovat Azure Resource Manager powershellovou verzi. 
 >
 >
 
-Nasazení clusteru pomocí PowerShellu:
+Nasazení clusteru pomocí prostředí PowerShell:
 
 ```powershell
 $resourceGroupLocation="westus"
@@ -84,7 +84,7 @@ $certOutputFolder="c:\certificates"
 New-AzServiceFabricCluster -ResourceGroupName $resourceGroupName -Location $resourceGroupLocation -CertificateOutputFolder $certOutputFolder -CertificatePassword $certpassword -CertificateSubjectName $CertSubjectName -OS $os -VmPassword $vmpassword -VmUserName $vmuser
 ```
 
-Nasazení clusteru pomocí azure cli:
+Nasazení clusteru pomocí rozhraní příkazového řádku Azure:
 
 ```azurecli
 declare resourceGroupLocation="westus"
@@ -107,9 +107,9 @@ az sf cluster create --resource-group $resourceGroupName --location $resourceGro
 
 ### <a name="use-your-own-custom-template"></a>Použití vlastní šablony
 
-Pokud potřebujete vytvořit vlastní šablonu tak, aby vyhovovala vašim potřebám, důrazně doporučujeme začít s jednou ze šablon, které jsou k dispozici na [ukázkách šablon Azure Service Fabric](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master). Přečtěte si, jak [přizpůsobit šablonu clusteru][customize-your-cluster-template].
+Pokud potřebujete vytvořit vlastní šablonu, která bude vyhovovat vašim potřebám, důrazně doporučujeme začít s jednou ze šablon, které jsou k dispozici v [ukázkách šablon Azure Service Fabric](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master). Přečtěte si, jak [přizpůsobit šablonu clusteru][customize-your-cluster-template].
 
-Pokud již vlastní šablonu máte, zkontrolujte, zda jsou všechny tři parametry související s certifikátem v šabloně a souboru parametrů pojmenovány následujícím způsobem a hodnoty jsou null:
+Pokud již máte vlastní šablonu, překontrolujte, že všechny tři parametry související s certifikátem v šabloně a souboru parametrů jsou pojmenovány takto a hodnoty jsou null následujícím způsobem:
 
 ```json
    "certificateThumbprint": {
@@ -123,7 +123,7 @@ Pokud již vlastní šablonu máte, zkontrolujte, zda jsou všechny tři paramet
     },
 ```
 
-Nasazení clusteru pomocí PowerShellu:
+Nasazení clusteru pomocí prostředí PowerShell:
 
 ```powershell
 $resourceGroupLocation="westus"
@@ -138,7 +138,7 @@ $templateFilePath="c:\mytemplates\mytemplate.json"
 New-AzServiceFabricCluster -ResourceGroupName $resourceGroupName -CertificateOutputFolder $certOutputFolder -CertificatePassword $certpassword -CertificateSubjectName $CertSubjectName -TemplateFile $templateFilePath -ParameterFile $parameterFilePath 
 ```
 
-Nasazení clusteru pomocí azure cli:
+Nasazení clusteru pomocí rozhraní příkazového řádku Azure:
 
 ```azurecli
 declare certPassword=""
@@ -155,16 +155,16 @@ az sf cluster create --resource-group $resourceGroupName --location $resourceGro
     --template-file $templateFilePath --parameter-file $parametersFilePath
 ```
 
-## <a name="create-a-new-cluster-using-your-own-x509-certificate"></a>Vytvoření nového clusteru pomocí vlastního certifikátu X.509
+## <a name="create-a-new-cluster-using-your-own-x509-certificate"></a>Vytvoření nového clusteru pomocí vlastního certifikátu X. 509
 
-Pokud máte certifikát, pomocí kterého chcete cluster zabezpečit, použijte následující příkaz.
+Pomocí následujícího příkazu vytvořte cluster, pokud máte certifikát, pomocí kterého chcete zabezpečit svůj cluster.
 
-Pokud se jedná o certifikát podepsaný certifikační autoritou, který budete nakonec používat i pro jiné účely, doporučujeme zadat samostatnou skupinu prostředků speciálně pro trezor klíčů. Doporučujeme umístit trezor klíčů do vlastní skupiny prostředků. Tato akce umožňuje odebrat skupiny prostředků výpočetních prostředků a úložiště, včetně skupiny prostředků, která obsahuje cluster Service Fabric, bez ztráty klíčů a tajných klíčů. **Skupina prostředků, která obsahuje trezor *klíčů, musí být ve stejné oblasti* jako cluster, který jej používá.**
+Pokud se jedná o certifikát podepsaný certifikační autoritou, který budete mít k dispozici i pro jiné účely, doporučuje se zadat odlišnou skupinu prostředků specifickou pro váš Trezor klíčů. Doporučujeme vložit Trezor klíčů do vlastní skupiny prostředků. Tato akce vám umožní odebrat skupiny prostředků COMPUTE a Storage, včetně skupiny prostředků, která obsahuje váš Cluster Service Fabric, aniž by došlo ke ztrátě klíčů a tajných kódů. **Skupina prostředků, která obsahuje váš Trezor klíčů, *musí být ve stejné oblasti* jako cluster, který ho používá.**
 
-### <a name="use-the-default-five-node-one-node-type-template-that-ships-in-the-module"></a>Použijte výchozí pět uzlů, jeden typ uzlu šablony, která je dodávána v modulu
-Použitá šablona je dostupná na [ukázkách Azure: Šablona Windows](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure-NSG) a [Šablona Ubuntu](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeTypes-Secure)
+### <a name="use-the-default-five-node-one-node-type-template-that-ships-in-the-module"></a>Použijte výchozí pět uzlů, jednu šablonu typu uzlu, která je dodávána v modulu.
+Použitá šablona je dostupná na [ukázkách Azure: Šablona Windows](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure-NSG) a [Ubuntu](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeTypes-Secure)
 
-Nasazení clusteru pomocí PowerShellu:
+Nasazení clusteru pomocí prostředí PowerShell:
 
 ```powershell
 $resourceGroupLocation="westus"
@@ -179,7 +179,7 @@ $os="WindowsServer2016DatacenterwithContainers"
 New-AzServiceFabricCluster -ResourceGroupName $resourceGroupName -Location $resourceGroupLocation -KeyVaultResourceGroupName $vaultResourceGroupName -KeyVaultName $vaultName -CertificateFile C:\MyCertificates\chackocertificate3.pfx -CertificatePassword $certPassword -OS $os -VmPassword $vmpassword -VmUserName $vmuser 
 ```
 
-Nasazení clusteru pomocí azure cli:
+Nasazení clusteru pomocí rozhraní příkazového řádku Azure:
 
 ```azurecli
 declare vmPassword="Password!1"
@@ -200,9 +200,9 @@ az sf cluster create --resource-group $resourceGroupName --location $resourceGro
 ```
 
 ### <a name="use-your-own-custom-cluster-template"></a>Použití vlastní šablony clusteru
-Pokud potřebujete vytvořit vlastní šablonu tak, aby vyhovovala vašim potřebám, důrazně doporučujeme začít s jednou ze šablon, které jsou k dispozici na [ukázkách šablon Azure Service Fabric](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master). Přečtěte si, jak [přizpůsobit šablonu clusteru][customize-your-cluster-template].
+Pokud potřebujete vytvořit vlastní šablonu, která bude vyhovovat vašim potřebám, důrazně doporučujeme začít s jednou ze šablon, které jsou k dispozici v [ukázkách šablon Azure Service Fabric](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master). Přečtěte si, jak [přizpůsobit šablonu clusteru][customize-your-cluster-template].
 
-Pokud již vlastní šablonu máte, zkontrolujte, zda jsou všechny tři parametry související s certifikátem v šabloně a soubor parametrů pojmenovány následujícím způsobem a hodnoty jsou null.
+Pokud již máte vlastní šablonu, ujistěte se, že jsou všechny tři parametry související s certifikátem v šabloně a souborem parametrů pojmenovány takto a hodnoty mají hodnotu null následujícím způsobem.
 
 ```json
    "certificateThumbprint": {
@@ -216,7 +216,7 @@ Pokud již vlastní šablonu máte, zkontrolujte, zda jsou všechny tři paramet
     },
 ```
 
-Nasazení clusteru pomocí PowerShellu:
+Nasazení clusteru pomocí prostředí PowerShell:
 
 ```powershell
 $resourceGroupLocation="westus"
@@ -232,7 +232,7 @@ $certificateFile="C:\MyCertificates\chackonewcertificate3.pem"
 New-AzServiceFabricCluster -ResourceGroupName $resourceGroupName -Location $resourceGroupLocation -TemplateFile $templateFilePath -ParameterFile $parameterFilePath -KeyVaultResourceGroupName $vaultResourceGroupName -KeyVaultName $vaultName -CertificateFile $certificateFile -CertificatePassword $certPassword
 ```
 
-Nasazení clusteru pomocí azure cli:
+Nasazení clusteru pomocí rozhraní příkazového řádku Azure:
 
 ```azurecli
 declare certPassword="Password!1"
@@ -249,11 +249,11 @@ az sf cluster create --resource-group $resourceGroupName --location $resourceGro
     --template-file $templateFilePath --parameter-file $parametersFilePath 
 ```
 
-### <a name="use-a-pointer-to-a-secret-uploaded-into-a-key-vault"></a>Použití ukazatele na tajný klíč nahraný do trezoru klíčů
+### <a name="use-a-pointer-to-a-secret-uploaded-into-a-key-vault"></a>Použití ukazatele na tajný kód nahraný do trezoru klíčů
 
-Chcete-li použít existující trezor klíčů, musí být povolen trezor klíčů [pro nasazení,](../key-vault/general/manage-with-cli2.md#bkmk_KVperCLI) aby poskytovatel výpočetních prostředků mohl získat certifikáty a nainstalovat jej do uzlů clusteru.
+Aby bylo možné použít existující Trezor klíčů, musí být [povolený Trezor klíčů pro nasazení](../key-vault/general/manage-with-cli2.md#bkmk_KVperCLI) , aby poskytovateli výpočetních prostředků mohl získat certifikáty z něj a nainstalovat ho na uzly clusteru.
 
-Nasazení clusteru pomocí PowerShellu:
+Nasazení clusteru pomocí prostředí PowerShell:
 
 ```powershell
 Set-AzKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -EnabledForDeployment
@@ -265,7 +265,7 @@ $secretID="https://test1.vault.azure.net:443/secrets/testcertificate4/55ec7c4dc6
 New-AzServiceFabricCluster -ResourceGroupName $resourceGroupName -SecretIdentifier $secretID -TemplateFile $templateFilePath -ParameterFile $parameterFilePath 
 ```
 
-Nasazení clusteru pomocí azure cli:
+Nasazení clusteru pomocí rozhraní příkazového řádku Azure:
 
 ```azurecli
 declare $resourceGroupName = "testRG"
@@ -279,9 +279,9 @@ az sf cluster create --resource-group $resourceGroupName --location $resourceGro
 ```
 
 ## <a name="next-steps"></a>Další kroky
-V tomto okamžiku máte v Azure spuštěný zabezpečený cluster. Dále [se připojte ke clusteru a zjistěte,](service-fabric-connect-to-secure-cluster.md) jak [spravovat tajné kódy aplikací](service-fabric-application-secret-management.md).
+V tomto okamžiku máte zabezpečený cluster běžící v Azure. Pak se [připojte ke svému clusteru](service-fabric-connect-to-secure-cluster.md) a Naučte se [spravovat tajné klíče aplikace](service-fabric-application-secret-management.md).
 
-Syntaxe a vlastnosti JSON pro použití šablony naleznete v [tématu Microsoft.ServiceFabric/clusters reference šablony](/azure/templates/microsoft.servicefabric/clusters).
+Informace o syntaxi a vlastnostech JSON pro použití šablony naleznete v tématu [Reference k šabloně Microsoft. ServiceFabric/Clusters](/azure/templates/microsoft.servicefabric/clusters).
 
 <!-- Links -->
 [azure-powershell]:https://docs.microsoft.com/powershell/azure/install-Az-ps

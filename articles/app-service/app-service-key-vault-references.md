@@ -1,49 +1,49 @@
 ---
-title: Použití odkazů trezoru klíčů
-description: Zjistěte, jak nastavit Azure App Service a Azure Functions pro použití odkazů azure key vaultu. Zpřístupněte tajnýkódy trezoru klíčů kódu aplikace.
+title: Použití Key Vaultch odkazů
+description: Naučte se nastavit Azure App Service a Azure Functions používat odkazy na Azure Key Vault. Zpřístupnění Key Vault tajných kódů pro kód aplikace.
 author: mattchenderson
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: mahender
 ms.custom: seodec18
 ms.openlocfilehash: dd0a03ea76d517486bb9bda6d9628fb529166dd8
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81453723"
 ---
-# <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>Použití odkazů trezoru klíčů pro službu App Service a funkce Azure
+# <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>Použití Key Vault odkazů pro App Service a Azure Functions
 
-Toto téma ukazuje, jak pracovat s tajnými klíči z Azure Key Vault ve vaší aplikaci App Service nebo Azure Functions bez nutnosti jakýchkoli změn kódu. [Azure Key Vault](../key-vault/general/overview.md) je služba, která poskytuje centralizovanou správu tajných klíčů s plnou kontrolou nad zásadami přístupu a historií auditu.
+V tomto tématu se dozvíte, jak pracovat s tajnými kódy z Azure Key Vault v App Service nebo Azure Functions aplikace bez nutnosti jakýchkoli změn kódu. [Azure Key Vault](../key-vault/general/overview.md) je služba, která poskytuje centralizovanou správu tajných kódů s úplnou kontrolou zásad přístupu a historie auditu.
 
-## <a name="granting-your-app-access-to-key-vault"></a>Udělení přístupu aplikace k trezoru klíčů
+## <a name="granting-your-app-access-to-key-vault"></a>Udělení přístupu aplikace k Key Vault
 
-Abyste mohli číst tajné klíče z trezoru klíčů, musíte mít vytvořený trezor a udělit aplikaci oprávnění k přístupu k němu.
+Aby bylo možné číst tajné kódy z Key Vault, je nutné vytvořit trezor a udělit aplikaci oprávnění k přístupu.
 
-1. Vytvořte trezor klíčů podle [rychlého startu trezoru klíčů](../key-vault/secrets/quick-create-cli.md).
+1. Vytvořte Trezor klíčů pomocí [Key Vault rychlý Start](../key-vault/secrets/quick-create-cli.md).
 
-1. Vytvořte [systémem přiřazenou spravovanou identitu](overview-managed-identity.md) pro vaši aplikaci.
+1. Vytvořte [spravovanou identitu přiřazenou systémem](overview-managed-identity.md) pro vaši aplikaci.
 
    > [!NOTE] 
-   > Odkazy na úložiště klíčů aktuálně podporují pouze spravované identity přiřazené systémem. Uživatelem přiřazené identity nelze použít.
+   > Odkazy na Key Vault aktuálně podporují pouze spravované identity přiřazené systémem. Uživatelsky přiřazené identity nelze použít.
 
-1. Vytvořte [zásadu přístupu v trezoru klíčů](../key-vault/general/secure-your-key-vault.md#key-vault-access-policies) pro identitu aplikace, kterou jste vytvořili dříve. Povolte oprávnění tajného klíče "Získat" pro tuto zásadu. Nekonfigurujte "autorizovanou aplikaci" nebo `applicationId` nastavení, protože to není kompatibilní se spravovanou identitou.
+1. Vytvořte [zásadu přístupu v Key Vault](../key-vault/general/secure-your-key-vault.md#key-vault-access-policies) pro identitu aplikace, kterou jste vytvořili dříve. Povolit pro tuto zásadu oprávnění tajného klíče "získat". Nekonfigurujte "autorizovanou aplikaci" ani `applicationId` nastavení, protože to není kompatibilní se spravovanou identitou.
 
     > [!NOTE]
-    > Odkazy trezoru klíčů nejsou v současné době schopny vyřešit tajné klíče uložené v trezoru klíčů s [omezeními sítě](../key-vault/general/overview-vnet-service-endpoints.md).
+    > Odkazy na Key Vault nejsou v současné době schopné přeložit tajné klíče uložené v trezoru klíčů s [omezeními sítě](../key-vault/general/overview-vnet-service-endpoints.md).
 
-## <a name="reference-syntax"></a>Syntaxe odkazu
+## <a name="reference-syntax"></a>Referenční syntaxe
 
-Odkaz trezoru klíčů je `@Microsoft.KeyVault({referenceString})`formuláře `{referenceString}` , kde je nahrazen jednou z následujících možností:
+Odkaz na Key Vault je ve formátu `@Microsoft.KeyVault({referenceString})`, kde `{referenceString}` je nahrazen jednou z následujících možností:
 
 > [!div class="mx-tdBreakAll"]
-> | Referenční řetězec                                                            | Popis                                                                                                                                                                                 |
+> | Řetězec odkazu                                                            | Popis                                                                                                                                                                                 |
 > |-----------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-> | SecretUri =_tajemstvíUri_                                                       | **SecretUri** by měl být úplný identifikátor URI datové roviny tajného klíče v trezoru klíčů, včetně verze, např.https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931  |
-> | VaultName =_název__ SecretName =_secretName_; SecretVersion =_secretVersion_ | **Název vaultu** by měl název prostředku trezoru klíčů. **SecretName** by měl být název cílového tajného klíče. **SecretVersion** by měla být verze tajného klíče použít. |
+> | SecretUri =_SecretUri_                                                       | **SecretUri** by měl být úplný identifikátor URI datové roviny tajného klíče v Key Vault, včetně verze, např.https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931  |
+> | Trezor =_trezor_; Tajné heslo =_tajné heslo_ Verzetajnéhoklíče =_verzetajnéhoklíče_ | Název **trezoru** by měl být název vašeho prostředku Key Vault. Název **tajného** kódu by měl být název cílového tajného klíče. **Verzetajnéhoklíče** by měla být verze tajného klíče, který se má použít. |
 
-Úplný odkaz s version bude vypadat takto:
+Například kompletní odkaz s verzí by vypadal takto:
 
 ```
 @Microsoft.KeyVault(SecretUri=https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931)
@@ -55,20 +55,20 @@ Máte k dispozici i další možnosti:
 ```
 
 
-## <a name="source-application-settings-from-key-vault"></a>Nastavení zdrojové aplikace z trezoru klíčů
+## <a name="source-application-settings-from-key-vault"></a>Nastavení zdrojové aplikace z Key Vault
 
-Odkazy na úložiště klíčů lze použít jako hodnoty pro [nastavení aplikace](configure-common.md#configure-app-settings), což umožňuje zachovat tajné kódy v trezoru klíčů namísto konfigurace webu. Nastavení aplikace jsou bezpečně šifrována v klidovém stavu, ale pokud potřebujete možnosti správy tajných kódů, měla by přejít do trezoru klíčů.
+Odkazy na Key Vault lze použít jako hodnoty pro [nastavení aplikace](configure-common.md#configure-app-settings), což vám umožní zachovat tajné klíče v Key Vault namísto Konfigurace lokality. Nastavení aplikace jsou bezpečně šifrovaná v klidovém stavu, ale pokud potřebujete možnosti správy tajných klíčů, měli byste přejít do Key Vault.
 
-Chcete-li použít odkaz trezoru klíčů pro nastavení aplikace, nastavte odkaz jako hodnotu nastavení. Vaše aplikace může odkazovat na tajný klíč prostřednictvím svého klíče jako obvykle. Nejsou vyžadovány žádné změny kódu.
+Chcete-li použít odkaz Key Vault pro nastavení aplikace, nastavte odkaz jako hodnotu nastavení. Vaše aplikace může na tajný klíč odkazovat jako na klíč jako normální. Nevyžadují se žádné změny kódu.
 
 > [!TIP]
-> Většina nastavení aplikací pomocí odkazů trezoru klíčů by měla být označena jako nastavení patice, protože byste měli mít samostatné trezory pro každé prostředí.
+> Většina nastavení aplikací pomocí Key Vault odkazů by měla být označená jako nastavení slotu, protože pro každé prostředí byste měli mít oddělené trezory.
 
 ### <a name="azure-resource-manager-deployment"></a>Nasazení podle modelu Azure Resource Manager
 
-Při automatizaci nasazení prostředků prostřednictvím šablon Azure Resource Manager, budete muset sekvenovat závislosti v určitém pořadí, aby tato funkce fungovala. Všimněte si, že budete muset definovat nastavení aplikace jako `siteConfig` vlastní prostředek, spíše než pomocí vlastnosti v definici webu. Důvodem je, že lokalita musí být definována jako první tak, aby systémpřiřazená identita byla vytvořena s ní a může být použita v zásadách přístupu.
+Při automatizaci nasazení prostředků prostřednictvím šablon Azure Resource Manager může být nutné pořadí závislostí v určitém pořadí, aby tato funkce fungovala. Všimněte si, že budete muset definovat nastavení aplikace jako vlastní prostředek, a ne použít `siteConfig` vlastnost v definici webu. Je to proto, že lokalita musí být definovaná jako první, aby se k ní vytvořila identita přiřazená systémem a mohla by se používat v zásadách přístupu.
 
-Příklad psuedo-template pro aplikaci funkce může vypadat takto:
+Příklad psuedo-Template pro aplikaci Function App může vypadat takto:
 
 ```json
 {
@@ -172,30 +172,30 @@ Příklad psuedo-template pro aplikaci funkce může vypadat takto:
 ```
 
 > [!NOTE] 
-> V tomto příkladu závisí nasazení správy zdrojového kódu na nastavení aplikace. Obvykle se jedná o nebezpečné chování, protože aktualizace nastavení aplikace se chová asynchronně. Protože jsme však `WEBSITE_ENABLE_SYNC_UPDATE_SITE` zahrnuli nastavení aplikace, je aktualizace synchronní. To znamená, že nasazení správy zdrojového kódu začne až po úplné aktualizaci nastavení aplikace.
+> V tomto příkladu je nasazení správy zdrojů závislé na nastavení aplikace. To je obvykle nebezpečné chování, protože se aktualizace nastavení aplikace chová asynchronně. Protože však jsme zahrnuli nastavení `WEBSITE_ENABLE_SYNC_UPDATE_SITE` aplikace, aktualizace je synchronní. To znamená, že nasazení správy zdrojů bude zahájeno až po úplné aktualizaci nastavení aplikace.
 
-## <a name="troubleshooting-key-vault-references"></a>Poradce při potížích s odkazy na trezor klíčů
+## <a name="troubleshooting-key-vault-references"></a>Řešení potíží s Key Vaultmi odkazy
 
-Pokud odkaz není správně vyřešen, bude použita referenční hodnota. To znamená, že pro nastavení aplikace by byla `@Microsoft.KeyVault(...)` vytvořena proměnná prostředí, jejíž hodnota má syntaxi. To může způsobit, že aplikace vyvolá chyby, protože očekávala tajný klíč určité struktury.
+Pokud odkaz není správně přeložen, použije se místo toho referenční hodnota. To znamená, že pro nastavení aplikace by se vytvořila proměnná prostředí, jejíž hodnota má `@Microsoft.KeyVault(...)` syntaxi. To může způsobit, že aplikace vyvolá chyby, protože očekávala tajný kód určité struktury.
 
-Nejčastěji je to způsobeno chybnou konfigurací [zásad přístupu trezoru klíčů](#granting-your-app-access-to-key-vault). Může však být také způsobeno tajným klíčem, který již neexistuje, nebo syntaktickou chybou v samotném odkazu.
+Nejčastěji to je způsobeno neznámým nastavením [zásad přístupu Key Vault](#granting-your-app-access-to-key-vault). Může to ale také být způsobeno tím, že už existující tajný kód nebo Chyba syntaxe samotného odkazu.
 
-Pokud je syntaxe správná, můžete zobrazit další příčiny chyby kontrolou aktuálního stavu rozlišení na portálu. Přejděte do nastavení aplikace a vyberte možnost "Upravit" pro daný odkaz. Pod konfigurací nastavení byste měli vidět informace o stavu, včetně případných chyb. Absence z nich znamená, že syntaxe odkazu je neplatná.
+Pokud je syntaxe správná, můžete zobrazit další příčiny chyby tak, že zkontrolujete aktuální stav řešení na portálu. Přejděte do nastavení aplikace a pro příslušný odkaz vyberte Upravit. Pod konfigurací nastavení byste měli vidět informace o stavu, včetně všech chyb. Neexistence těchto informací implikuje neplatnou syntaxi reference.
 
-K získání dalších informací můžete také použít jeden z vestavěných detektorů.
+K získání dalších informací můžete použít také jeden z vestavěných detektorů.
 
-### <a name="using-the-detector-for-app-service"></a>Používání detektoru pro službu App Service
+### <a name="using-the-detector-for-app-service"></a>Použití detektoru pro App Service
 
 1. Na portálu přejděte do aplikace.
 2. Vyberte **Diagnostikovat a řešit problémy**.
-3. Zvolte **Dostupnost a výkon** a vyberte **Webovou aplikaci dolů.**
-4. Vyhledejte **diagnostiku nastavení aplikace trezoru klíčů** a klepněte na tlačítko **Další informace**.
+3. Zvolte možnost **dostupnost a výkon** a vyberte možnost **Webová aplikace dolů.**
+4. Najděte **Key Vault Diagnostika nastavení aplikace** a klikněte na **Další informace**.
 
 
-### <a name="using-the-detector-for-azure-functions"></a>Použití detektoru pro funkce Azure
+### <a name="using-the-detector-for-azure-functions"></a>Použití detektoru pro Azure Functions
 
 1. Na portálu přejděte do aplikace.
-2. Přejděte na **funkce platformy.**
+2. Přejděte k **funkcím platformy.**
 3. Vyberte **Diagnostikovat a řešit problémy**.
-4. Zvolte **Dostupnost a výkon** a vyberte aplikace Funkce dolů nebo hlášení **chyb.**
-5. Klikněte na **Diagnostika nastavení aplikace trezoru klíčů.**
+4. Zvolte možnost **dostupnost a výkon** a vyberte **funkce aplikace dolů nebo hlášení chyb.**
+5. Klikněte na **Key Vault Diagnostika nastavení aplikace.**

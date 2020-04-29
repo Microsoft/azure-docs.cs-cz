@@ -18,15 +18,15 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b655fa2f12eac894e97c61cc931983aa58fff7a9
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74007924"
 ---
 # <a name="what-are-azure-active-directory-reports"></a>Co jsou sestavy Azure Active Directory?
 
-Sestavy Azure Active Directory (Azure AD) poskytují komplexní přehled o aktivitách ve vašem prostředí. Poskytnutá data vám umožní:
+Sestavy Azure Active Directory (Azure AD) poskytují ucelený přehled o aktivitě ve vašem prostředí. Poskytnutá data vám umožní:
 
 - Určit, jak uživatelé využívají vaše aplikace a služby.
 - Rozpoznat potenciální rizika ovlivňující stav vašeho prostředí.
@@ -37,12 +37,12 @@ Architektura generování sestav se spoléhá na dva hlavní pilíře:
 - [Sestavy zabezpečení](#security-reports)
 - [Sestavy aktivit](#activity-reports)
 
-![Vytváření sestav](./media/overview-reports/01.png)
+![Generování sestav](./media/overview-reports/01.png)
 
 
 ## <a name="security-reports"></a>Sestavy zabezpečení
 
-Sestavy zabezpečení pomáhají chránit identity vaší organizace. Existují dva typy zpráv o zabezpečení:
+Sestavy zabezpečení vám pomůžou chránit identity vaší organizace. Existují dva typy sestav zabezpečení:
 
 - **Uživatelé označení příznakem rizika** – Ze [sestavy zabezpečení uživatelů označených příznakem rizika](concept-user-at-risk.md) získáte přehled o uživatelských účtech, u kterých mohlo dojít k ohrožení zabezpečení.
 
@@ -50,18 +50,18 @@ Sestavy zabezpečení pomáhají chránit identity vaší organizace. Existují 
 
 ### <a name="what-azure-ad-license-do-you-need-to-access-a-security-report"></a>Jaká licence Azure AD je potřeba pro přístup k sestavě zabezpečení?  
 
-Všechny edice Azure AD vám poskytují uživatele označené pro zprávy o rizicích a rizikových přihlášeních. Úroveň podrobností sestav se však mezi jednotlivými edicemi liší: 
+Všechny edice služby Azure AD poskytují uživatelům příznakem rizika pro rizikové a rizikové přihlašovací zprávy. Úroveň podrobností sestav se však mezi jednotlivými edicemi liší: 
 
-- V **edicích Azure Active Directory Free a Basic**získáte seznam uživatelů označených příznakem rizika a riskantních přihlášení. 
+- V **edicích Azure Active Directory Free a Basic**se zobrazí seznam uživatelů označených příznakem rizika a rizikových přihlášení. 
 
-- **Edice Azure Active Directory Premium 1** rozšiřuje tento model také umožňuje prozkoumat některé základní zjišťování rizik, které byly zjištěny pro každou sestavu. 
+- Edice **Azure Active Directory Premium 1** rozšiřuje tento model tím, že umožňuje prověření některých základních zjištění rizik zjištěných pro každou sestavu. 
 
-- **Edice Azure Active Directory Premium 2** poskytuje nejpodrobnější informace o základních zjišťování rizik a také umožňuje konfigurovat zásady zabezpečení, které automaticky reagují na nakonfigurované úrovně rizika.
+- Edice **Azure Active Directory Premium 2** poskytuje nejpodrobnější informace o základních detekcích rizik a umožňuje také konfigurovat zásady zabezpečení, které automaticky reagují na nakonfigurované úrovně rizika.
 
 
 ## <a name="activity-reports"></a>Sestavy aktivit
 
-Sestavy aktivit pomáhají pochopit chování uživatelů ve vaší organizaci. Existují dva typy sestav aktivit ve službě Azure AD:
+Sestavy aktivit vám pomohou pochopit chování uživatelů ve vaší organizaci. V Azure AD existují dva typy sestav aktivit:
 
 - **Protokoly auditu** – [Sestava aktivit protokolů auditu](concept-audit-logs.md) poskytuje přístup k historii každé úlohy provedené ve vašem tenantovi.
 
@@ -81,11 +81,11 @@ Sestavy aktivit pomáhají pochopit chování uživatelů ve vaší organizaci. 
 
 #### <a name="what-azure-ad-license-do-you-need-to-access-the-audit-logs-report"></a>Jaká licence Azure AD je potřeba pro přístup k sestavě protokolů auditu?  
 
-Sestava protokolů auditu je dostupná pro funkce, ke kterým máte licence. Pokud máte licenci ke konkrétní funkci, máte u ní také přístup k informacím protokolu auditu. Další podrobnosti najdete [v tématu Funkce a možnosti služby Azure Active Directory](https://www.microsoft.com/cloud-platform/azure-active-directory-features).   
+Sestava protokolů auditu je dostupná pro funkce, ke kterým máte licence. Pokud máte licenci ke konkrétní funkci, máte u ní také přístup k informacím protokolu auditu. Další podrobnosti najdete v tématu [Azure Active Directory funkce a možnosti](https://www.microsoft.com/cloud-platform/azure-active-directory-features).   
 
 ### <a name="sign-ins-report"></a>Sestava přihlášení
 
-[Sestava přihlášení](concept-sign-ins.md) umožňuje najít odpovědi na otázky, jako jsou:
+[Sestava přihlášení](concept-sign-ins.md) vám umožní najít odpovědi na otázky, jako například:
 
 - Jaký je vzorec přihlašování uživatele?
 - Kolik uživatelů se přihlásilo za týden?
@@ -97,7 +97,7 @@ Pro přístup k sestavě aktivit přihlašování musí mít váš tenant přiř
 
 ## <a name="programmatic-access"></a>Programový přístup
 
-Kromě uživatelského rozhraní azure ad také poskytuje [programový přístup k](concept-reporting-api.md) datům sestav, a to prostřednictvím sady rozhraní API založených na rest. Tato rozhraní API můžete volat z nejrůznějších programovacích jazyků a nástrojů. 
+Kromě uživatelského rozhraní poskytuje Azure AD také [programový přístup](concept-reporting-api.md) k datům sestav prostřednictvím sady rozhraní API založených na REST. Tato rozhraní API můžete volat z nejrůznějších programovacích jazyků a nástrojů. 
 
 ## <a name="next-steps"></a>Další kroky
 

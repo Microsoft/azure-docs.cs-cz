@@ -1,6 +1,6 @@
 ---
-title: Struktura řídicích panelů Azure | Dokumenty společnosti Microsoft
-description: Projděte si strukturu JSON řídicího panelu Azure pomocí ukázkového řídicího panelu. Obsahuje odkaz na vlastnosti prostředků.
+title: Struktura řídicích panelů Azure | Microsoft Docs
+description: Projděte si strukturu JSON řídicího panelu Azure pomocí ukázkového řídicího panelu. Obsahuje odkaz na vlastnosti prostředku.
 services: azure-portal
 documentationcenter: ''
 author: adamabmsft
@@ -13,18 +13,18 @@ ms.workload: na
 ms.date: 12/20/2019
 ms.author: mblythe
 ms.openlocfilehash: ad0d3a1bf2c293039df3bba3aa18da7d6e7dd0a5
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81459215"
 ---
 # <a name="the-structure-of-azure-dashboards"></a>Struktura řídicích panelů Azure
-Tento dokument prochází strukturou řídicího panelu Azure pomocí následujícího řídicího panelu jako příkladu:
+Tento dokument projde strukturu řídicího panelu Azure pomocí následujícího řídicího panelu jako příklad:
 
 ![Ukázkový řídicí panel](./media/azure-portal-dashboards-structure/sample-dashboard.png)
 
-Vzhledem k tomu, že sdílené [řídicí panely Azure jsou prostředky](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview), tento řídicí panel může být reprezentován jako JSON.  Následující JSON představuje řídicí panel vizualizovaný výše.
+Vzhledem k tomu, že sdílené [řídicí panely Azure jsou prostředky](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview), tento řídicí panel je možné ZNÁZORNIT jako JSON.  Následující kód JSON reprezentuje řídicí panel, který je uveden výše.
 
 ```json
 
@@ -288,62 +288,62 @@ Vzhledem k tomu, že sdílené [řídicí panely Azure jsou prostředky](https:/
 
 ```
 
-## <a name="common-resource-properties"></a>Běžné vlastnosti prostředků
+## <a name="common-resource-properties"></a>Obecné vlastnosti prostředku
 
-Pojďme rozebrat příslušné části JSON.  Vlastnosti nejvyšší úrovně, __id__, __název__, __typ__, __umístění__a __značky__ vlastnosti jsou sdíleny ve všech typech prostředků Azure. To znamená, že nemají moc co do činění s obsahem řídicího panelu.
+Pojďme rozdělit relevantní části JSON.  Vlastnosti nejvyšší úrovně, __ID__, __název__, __typ__, __umístění__a __značky__ se sdílejí mezi všemi typy prostředků Azure. To znamená, že se s obsahem řídicího panelu nemusejí dělat mnohem.
 
 ### <a name="the-id-property"></a>Vlastnost ID
 
-ID prostředku Azure, s výhradou [konvencí pojmenování prostředků Azure](/azure/architecture/best-practices/resource-naming). Když portál vytvoří řídicí panel, obvykle zvolí ID ve formě identifikátoru GUID, ale při programovém vytváření můžete použít libovolný platný název. 
+ID prostředku Azure, se kterým se vztahují zásady [vytváření názvů prostředků Azure](/azure/architecture/best-practices/resource-naming). Když portál vytvoří řídicí panel, obvykle zvolí ID ve formě identifikátoru GUID, ale při jejich vytváření programově můžete použít libovolný platný název. 
 
-### <a name="the-name-property"></a>Vlastnost name
-Název je segment ID prostředku, který neobsahuje informace o předplatném, typu prostředku nebo skupině prostředků. V podstatě se jedná o poslední segment ID prostředku.
+### <a name="the-name-property"></a>Vlastnost Name
+Název je segmentem ID prostředku, které neobsahuje informace o předplatném, typu prostředku ani skupině prostředků. V podstatě je to poslední segment ID prostředku.
 
-### <a name="the-type-property"></a>Vlastnost type
-Všechny řídicí panely jsou typu __Microsoft.Portal/dashboards__.
+### <a name="the-type-property"></a>Vlastnost Type
+Všechny řídicí panely jsou typu __Microsoft. Portal/řídicích panelů__.
 
-### <a name="the-location-property"></a>Vlastnost umístění
-Na rozdíl od jiných prostředků řídicí panely nemají součást runtime.  Pro řídicí panely umístění označuje primární geografické umístění, které ukládá reprezentaci JSON řídicího panelu. Hodnota by měla být jedním z kódů lokací, které lze načíst pomocí [rozhraní API umístění na prostředku odběry](https://docs.microsoft.com/rest/api/resources/subscriptions).
+### <a name="the-location-property"></a>Vlastnost Location
+Na rozdíl od jiných prostředků řídicí panely nemají komponentu modulu runtime.  V případě řídicích panelů označuje umístění hlavní geografické umístění, ve kterém je uložený reprezentace JSON řídicího panelu. Hodnota by měla být jeden z kódů umístění, které je možné načíst pomocí [rozhraní API umístění v prostředku předplatných](https://docs.microsoft.com/rest/api/resources/subscriptions).
 
-### <a name="the-tags-property"></a>Vlastnost tagy
-Značky jsou běžnou funkcí prostředků Azure, které umožňují uspořádat prostředek podle dvojice libovolných hodnot názvu. Pro řídicí panely existuje jedna speciální značka nazvaná __skrytý název__. Pokud má řídicí panel tuto vlastnost naplněnou, použije se jako zobrazovaný název řídicího panelu na portálu. Id prostředků Azure nelze přejmenovat, ale značky mohou. Tato značka umožňuje mít pro řídicí panel renamable zobrazovaný název.
+### <a name="the-tags-property"></a>Vlastnost značky
+Značky jsou běžnou funkcí prostředků Azure, které umožňují organizovat prostředky pomocí dvojic libovolných hodnot názvů. U řídicích panelů existuje jedna speciální značka s názvem __skrytý – název__. Pokud je tato vlastnost nastavená na řídicím panelu, použije se jako zobrazovaný název řídicího panelu na portálu. ID prostředků Azure nejde přejmenovat, ale značky můžou. Tato značka poskytuje způsob, jak mít renamable zobrazovaný název pro řídicí panel.
 
 `"tags": { "hidden-title": "Created via API" }`
 
-### <a name="the-properties-object"></a>Objekt vlastností
-Objekt vlastností obsahuje dvě vlastnosti, __objektivy__ a __metadata__. Vlastnost __objektivy__ obsahuje informace o dlaždicích na řídicím panelu.  Vlastnost __metadata__ je k dispozici pro potenciální budoucí funkce.
+### <a name="the-properties-object"></a>Objekt Properties
+Objekt Properties obsahuje dvě vlastnosti, __rozptylová skla__ a __metadata__. Vlastnost __čočky__ obsahuje informace o dlaždicích na řídicím panelu.  Vlastnost __metadata__ je pro možné budoucí funkce.
 
-### <a name="the-lenses-property"></a>Vlastnost objektivy
-Vlastnost __objektivy__ obsahuje řídicí panel. Všimněte si, že objektivy objekt v tomto příkladu obsahuje jednu vlastnost s názvem "0". Objektivy jsou koncept seskupení, který není aktuálně implementován v řídicích panelech. Pro tuto chvíli mají všechny řídicí panely tuto jedinou vlastnost na objektu objektivu, opět nazvanou "0".
+### <a name="the-lenses-property"></a>Vlastnost čočky
+Vlastnost __čočky__ obsahuje řídicí panel. Všimněte si, že objekt čočky v tomto příkladu obsahuje jednu vlastnost s názvem "0". Rozptylová skla jsou koncept seskupení, který není v současnosti implementován v řídicích panelech. V současné době všechny řídicí panely mají tuto jedinou vlastnost objektu objektivu (s názvem "0").
 
-### <a name="the-lens-object"></a>Objekt objektivu
-Objekt pod "0" obsahuje dvě vlastnosti, __pořadí__ a __části__.  V aktuální verzi řídicích panelů je __pořadí__ vždy 0. Vlastnost __parts__ obsahuje objekt, který definuje jednotlivé části (označované také jako dlaždice) na řídicím panelu.
+### <a name="the-lens-object"></a>Objekt čočky
+Objekt pod "0" obsahuje dvě vlastnosti, __pořadí__ a __části__.  V aktuální verzi řídicích panelů je __objednávka__ vždycky 0. Vlastnost __Parts__ obsahuje objekt, který definuje jednotlivé části (také označované jako dlaždice) na řídicím panelu.
 
-Objekt __parts__ obsahuje vlastnost pro každou část, kde název vlastnosti je číslo. Toto číslo není významné. 
+Objekt __Parts__ obsahuje vlastnost pro každou část, kde název vlastnosti je číslo. Toto číslo není významné. 
 
-### <a name="the-part-object"></a>Objekt dílu
-Každý jednotlivý objekt dílu má __pozici__a __metadata__.
+### <a name="the-part-object"></a>Objekt součásti
+Každý objekt jednotlivé součásti má __pozici__a __metadata__.
 
-### <a name="the-position-object"></a>Objekt polohy
-Vlastnost __pozice__ obsahuje informace o velikosti a umístění dílu vyjádřené jako __x__, __y__, __rowSpan__a __colSpan__. Hodnoty jsou z hlediska jednotek mřížky. Tyto jednotky mřížky jsou viditelné, když je řídicí panel v režimu přizpůsobení, jak je znázorněno zde. Pokud chcete, aby dlaždice měla šířku dvou jednotek mřížky, výšku jedné jednotky mřížky a umístění v levém horním rohu řídicího panelu, pak objekt pozice vypadá takto:
+### <a name="the-position-object"></a>Objekt pozice
+Vlastnost __Position__ obsahuje informace o velikosti a umístění pro část vyjádřené jako __x__, __y__, __RowSpan__a __ColSpan__. Hodnoty jsou v jednotkách mřížky. Tyto jednotky mřížky se zobrazí, když je řídicí panel v režimu přizpůsobení, jak je znázorněno zde. Chcete-li, aby dlaždice měla šířku dvou jednotek mřížky, výšku jedné jednotky mřížky a umístění v levém horním rohu řídicího panelu, bude objekt pozice vypadat takto:
 
 `location: { x: 0, y: 0, rowSpan: 2, colSpan: 1 }`
 
-![mřížkové jednotky](./media/azure-portal-dashboards-structure/grid-units.png)
+![Mřížka – jednotky](./media/azure-portal-dashboards-structure/grid-units.png)
 
 ### <a name="the-metadata-object"></a>Objekt metadat
-Každá část má vlastnost metadata, objekt má pouze jednu požadovanou vlastnost nazvanou __type__. Tento řetězec informuje portál, kterou dlaždici chcete zobrazit. Náš příklad řídicího panelu používá tyto typy dlaždic:
+Každá část má vlastnost metadat, objekt má pouze jednu povinnou vlastnost nazvanou __typ__. Tento řetězec instruuje portál, který má zobrazit dlaždici. Náš ukázkový řídicí panel používá tyto typy dlaždic:
 
 
-1. `Extension/Microsoft_Azure_Monitoring/PartType/MetricsChartPart`– Používá se k zobrazení metrik monitorování
-1. `Extension[azure]/HubsExtension/PartType/MarkdownPart`- Používá se k zobrazení s textem nebo obrázky se základním formátováním pro seznamy, odkazy, atd.
-1. `Extension[azure]/HubsExtension/PartType/VideoPart`– Používá se k zobrazení videí z YouTube, Channel9 a jakéhokoli jiného typu videa, které funguje ve značce videa HTML.
+1. `Extension/Microsoft_Azure_Monitoring/PartType/MetricsChartPart`– Používá se k zobrazení metrik monitorování.
+1. `Extension[azure]/HubsExtension/PartType/MarkdownPart`– Slouží k zobrazení textu nebo obrázků se základním formátováním pro seznamy, odkazy atd.
+1. `Extension[azure]/HubsExtension/PartType/VideoPart`– Používá se k zobrazení videí z YouTube, channel9 a jakéhokoli jiného typu videa, které funguje ve značce HTML video.
 1. `Extension/Microsoft_Azure_Compute/PartType/VirtualMachinePart`– Slouží k zobrazení názvu a stavu virtuálního počítače Azure.
 
-Každý typ dílu má svou vlastní konfiguraci. Možné vlastnosti konfigurace se nazývají __vstupy__, __nastavení__a __datový zdroj__. 
+Každý typ součásti má svou vlastní konfiguraci. Možné vlastnosti konfigurace se nazývají __vstupy__, __Nastavení__a __assety__. 
 
-### <a name="the-inputs-object"></a>Objekt inputs
-Objekt inputs obvykle obsahuje informace, které svážují dlaždici s instancí prostředku.  Část virtuálního počítače v našem ukázkovém řídicím panelu obsahuje jediný vstup, který používá ID prostředku Azure k vyjádření vazby.  Tento formát ID prostředků je konzistentní ve všech prostředcích Azure.
+### <a name="the-inputs-object"></a>Objekt Inputs
+Objekt Inputs obecně obsahuje informace, které vážou dlaždici s instancí prostředků.  Část virtuálního počítače na našem řídicím panelu ukázky obsahuje jeden vstup, který k vyjádření vazby používá ID prostředku Azure.  Tento formát ID prostředku je konzistentní napříč všemi prostředky Azure.
 
 ```json
 "inputs":
@@ -355,7 +355,7 @@ Objekt inputs obvykle obsahuje informace, které svážují dlaždici s instanc�
 ]
 
 ```
-Část grafu metriky obsahuje jeden vstup, který vyjadřuje prostředek, na který se má vážit, a také informace o zobrazených metrikách. Tady je vstup pro dlaždici, která zobrazuje metriky Network In a Network Out.
+Část grafu metriky obsahuje jeden vstup, který vyjadřuje prostředek, ke kterému se má vytvořit vazba, a informace o metrikách, které se zobrazují. Tady je vstup pro dlaždici, na které se zobrazuje síť a metrika sítě.
 
 ```json
 “inputs”:
@@ -390,7 +390,7 @@ Objekt inputs obvykle obsahuje informace, které svážují dlaždici s instanc�
 ```
 
 ### <a name="the-settings-object"></a>Objekt nastavení
-Objekt nastavení obsahuje konfigurovatelné prvky dílu.  V našem ukázkovém řídicím panelu používá část Markdown nastavení pro uložení vlastního obsahu markdownu a konfigurovatelný název a titulky.
+Objekt nastavení obsahuje konfigurovatelné prvky součásti.  Na našem ukázkovém řídicím panelu používá část Markdownu nastavení k uložení vlastního obsahu Markdownu a také konfigurovatelného názvu a podnadpisu.
 
 ```json
 "settings": 
@@ -408,7 +408,7 @@ Objekt nastavení obsahuje konfigurovatelné prvky dílu.  V našem ukázkovém 
 
 ```
 
-Podobně má dlaždice videa vlastní nastavení, která obsahují ukazatel na video, které chcete přehrát, nastavení automatického přehrávání a volitelné informace o nadpisu.
+Podobně dlaždice video má vlastní nastavení, které obsahuje ukazatel na video, které se má přehrát, nastavení automatického přehrávání a volitelné informace o názvu.
 
 ```json
 "settings": 
@@ -427,7 +427,7 @@ Podobně má dlaždice videa vlastní nastavení, která obsahují ukazatel na v
 
 ```
 
-### <a name="the-asset-object"></a>Objekt datového zdroje
-Dlaždice, které jsou vázány na prvotřídní spravovatelné objekty portálu (nazývané datové zdroje), mají tento vztah vyjádřený prostřednictvím objektu asset.  V našem příkladu řídicího panelu obsahuje dlaždice virtuálního počítače tento popis datového zdroje.  Vlastnost __idInputName__ informuje portál, že vstup ID obsahuje jedinečný identifikátor pro datový zdroj, v tomto případě ID prostředku. Většina typů prostředků Azure má prostředky definované na portálu.
+### <a name="the-asset-object"></a>Objekt Asset
+Dlaždice, které jsou vázány na první třídu spravovatelné objekty portálu (nazývané assety), mají tento vztah vyjádřen prostřednictvím objektu Asset.  Na našem řídicím panelu obsahuje dlaždice virtuálního počítače tento popis prostředku.  Vlastnost __idInputName__ přikáže portálu, že vstup ID obsahuje jedinečný identifikátor pro Asset, v tomto případě ID prostředku. Většina typů prostředků Azure má prostředky definované na portálu.
 
 `"asset": {    "idInputName": "id",    "type": "VirtualMachine"    }`

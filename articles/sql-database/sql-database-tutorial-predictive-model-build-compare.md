@@ -1,7 +1,7 @@
 ---
-title: 'Výuka: Trénovat a porovnávat prediktivní modely v R'
+title: 'Kurz: analýza a porovnání prediktivních modelů v jazyce R'
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
-description: Ve druhé části této třídílné série kurzů vytvoříte dva prediktivní modely v R s Azure SQL Database Machine Learning Services (preview) a pak vyberete nejpřesnější model.
+description: V druhé části této série výukových kurzů vytvoříte dva prediktivní modely v R s Azure SQL Database Machine Learning Services (Preview) a pak vyberete nejpřesnější model.
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
@@ -15,36 +15,36 @@ manager: cgronlun
 ms.date: 07/26/2019
 ROBOTS: NOINDEX
 ms.openlocfilehash: 0985b37280e3cd363ba1728a5ec33b0012611ab2
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81452923"
 ---
-# <a name="tutorial-create-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Kurz: Vytvoření prediktivního modelu v R se službami Azure SQL Database Machine Learning Services (preview)
+# <a name="tutorial-create-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Kurz: Vytvoření prediktivního modelu v R s Azure SQL Database Machine Learning Services (Preview)
 
-Ve druhé části této třídílné série kurzů vytvoříte dva prediktivní modely v R a vyberete nejpřesnější model. V další části této řady nasadíte tento model v databázi SQL se službou Azure SQL Database Machine Learning Services (preview).
+Ve druhé části této série výukových kurzů vytvoříte dva prediktivní modely v jazyce R a vyberete nejpřesnější model. V další části této série tento model nasadíte do databáze SQL pomocí Azure SQL Database Machine Learning Services (Preview).
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
 V tomto článku se dozvíte, jak:
 
 > [!div class="checklist"]
-> * Školení dvou modelů strojového učení
-> * Předvídací ceny z obou modelů
-> * Porovnání výsledků pro výběr nejpřesnějšího modelu
+> * Výuka dvou modelů strojového učení
+> * Vytvoření předpovědi z obou modelů
+> * Porovnání výsledků a výběr nejpřesnější modelu
 
-V [první části](sql-database-tutorial-predictive-model-prepare-data.md)jste se naučili importovat ukázkovou databázi a potom připravit data, která mají být použita pro trénování prediktivního modelu v R.
+V [první části](sql-database-tutorial-predictive-model-prepare-data.md)jste zjistili, jak naimportovat ukázkovou databázi a potom připravit data, která se mají používat k výuce prediktivního modelu v jazyce R.
 
-V [části tři](sql-database-tutorial-predictive-model-deploy.md)se dozvíte, jak uložit model v databázi a potom vytvořit uložené procedury ze skriptů R, které jste vyvinuli v částech jedna a dvě. Uložené procedury budou spuštěny v databázi SQL, aby se předpovědi založené na nových datech.
+V [třetí části](sql-database-tutorial-predictive-model-deploy.md)se dozvíte, jak uložit model do databáze a pak vytvořit uložené procedury z skriptů R, které jste vytvořili v částech One a 2. Uložené procedury se spustí v databázi SQL, aby se předpovědi na základě nových dat.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Druhá část tohoto kurzu předpokládá, že jste dokončili [**první část**](sql-database-tutorial-predictive-model-prepare-data.md) a její předpoklady.
+* Druhá část tohoto kurzu předpokládá, že jste dokončili [**část**](sql-database-tutorial-predictive-model-prepare-data.md) a její požadavky.
 
-## <a name="train-two-models"></a>Vlak dva modely
+## <a name="train-two-models"></a>Výuka dvou modelů
 
-Chcete-li najít nejlepší model pro data zapůjčení lyží, vytvořte dva různé modely (lineární regresní a rozhodovací strom) a zjistěte, který z nich předpovídá přesněji. Budete používat datový rámec, `rentaldata` který jste vytvořili v první části této řady.
+Chcete-li najít nejlepší model pro data o pronájmu, vytvořte dva různé modely (lineární regresi a rozhodovací strom) a zjistěte, který z nich je předpověď přesnější. Použijete datový rámec `rentaldata` , který jste vytvořili v části jedné z těchto řad.
 
 ```r
 #First, split the dataset into two different sets:
@@ -62,9 +62,9 @@ model_linmod <- rxLinMod(RentalCount ~  Month + Day + WeekDay + Snow + Holiday, 
 model_dtree  <- rxDTree(RentalCount ~ Month + Day + WeekDay + Snow + Holiday, data = train_data);
 ```
 
-## <a name="make-predictions-from-both-models"></a>Předvídací ceny z obou modelů
+## <a name="make-predictions-from-both-models"></a>Vytvoření předpovědi z obou modelů
 
-Pomocí funkce predict můžete předpovědět počty pronájmů pomocí každého trénovaného modelu.
+Pomocí funkce prediktivního odhadu počtu zapůjčení můžete použít každý vyškolený model.
 
 ```r
 #Use both models to make predictions using the test data set.
@@ -94,9 +94,9 @@ head(predict_dtree);
 6          40.0000          38       1     12     2      1       0
 ```
 
-## <a name="compare-the-results"></a>Porovnejte výsledky
+## <a name="compare-the-results"></a>Porovnat výsledky
 
-Nyní chcete zjistit, který z modelů dává nejlepší předpovědi. Rychlý a snadný způsob, jak to provést, je použít základní funkci vykreslování k zobrazení rozdílu mezi skutečnými hodnotami v trénovacích datech a předpovídanými hodnotami.
+Nyní chcete zjistit, které modely poskytují nejlepší předpovědi. Rychlý a snadný způsob, jak to provést, je použít základní funkci vykreslení k zobrazení rozdílu mezi skutečnými hodnotami vašich školicích dat a předpovězenými hodnotami.
 
 ```r
 #Use the plotting functionality in R to visualize the results from the predictions
@@ -107,28 +107,28 @@ plot(predict_dtree$RentalCount_Pred  - predict_dtree$RentalCount,  main = "Diffe
 
 ![Porovnání dvou modelů](./media/sql-database-tutorial-predictive-model-build-compare/compare-models.png)
 
-Vypadá to, že rozhodovací strom model je přesnější ze dvou modelů.
+Vypadá to, že model rozhodovacího stromu je přesnější z těchto dvou modelů.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud nebudete pokračovat v tomto kurzu, odstraňte databázi TutorialDB z vašeho serveru Azure SQL Database.
+Pokud nebudete pokračovat v tomto kurzu, odstraňte databázi databáze tutorialdb ze serveru Azure SQL Database.
 
-Na webu Azure Portal postupujte takto:
+V Azure Portal postupujte podle následujících kroků:
 
-1. V levé nabídce na webu Azure Portal vyberte **Všechny prostředky** nebo **databáze SQL**.
-1. Do pole **Filtr podle názvu...** zadejte **TutorialDB**a vyberte předplatné.
-1. Vyberte databázi TutorialDB.
+1. V nabídce na levé straně Azure Portal vyberte **všechny prostředky** nebo **databáze SQL**.
+1. Do pole **filtrovat podle názvu...** zadejte **databáze tutorialdb**a vyberte své předplatné.
+1. Vyberte databázi databáze tutorialdb.
 1. Na stránce **Přehled** vyberte **Odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 
 Ve druhé části této série kurzů jste dokončili tyto kroky:
 
-* Školení dvou modelů strojového učení
-* Předvídací ceny z obou modelů
-* Porovnání výsledků pro výběr nejpřesnějšího modelu
+* Výuka dvou modelů strojového učení
+* Vytvoření předpovědi z obou modelů
+* Porovnání výsledků a výběr nejpřesnější modelu
 
-Chcete-li nasadit model strojového učení, který jste vytvořili, postupujte podle třetí části této série kurzů:
+Pokud chcete nasadit model strojového učení, který jste vytvořili, postupujte podle třetí části této série kurzů:
 
 > [!div class="nextstepaction"]
-> [Kurz: Nasazení prediktivního modelu v R se službami Machine Learning Services azure SQL database (preview)](sql-database-tutorial-predictive-model-deploy.md)
+> [Kurz: Nasazení prediktivního modelu v R s Azure SQL Database Machine Learning Services (Preview)](sql-database-tutorial-predictive-model-deploy.md)

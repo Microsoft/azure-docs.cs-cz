@@ -1,5 +1,5 @@
 ---
-title: Kurz – vytvoření vlastních ibi virtuálních počítačů pomocí azure cli
+title: Kurz – vytváření vlastních imagí virtuálních počítačů pomocí Azure CLI
 description: V tomto kurzu zjistíte, jak pomocí Azure CLI vytvořit vlastní image virtuálního počítače v Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,10 +15,10 @@ ms.date: 12/13/2017
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: dc7b395d46fd28cde9ccbbda8a8a55447efa61c9
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81460048"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-the-azure-cli"></a>Kurz: Vytvoření vlastní image virtuálního počítače Azure pomocí Azure CLI
@@ -32,15 +32,15 @@ Vlastní image jsou podobné imagím z marketplace, ale vytváříte je sami. Vl
 > * Výpis všech imagí v předplatném
 > * Odstranění image
 
-Tento kurz používá vynesené mezizaviny příkazového příkazové číslo v rámci [prostředí Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), které se neustále aktualizuje na nejnovější verzi. Chcete-li otevřít prostředí Cloud Shell, vyberte **Vyzkoušet** v horní části libovolného bloku kódu.
+V tomto kurzu se používá CLI v rámci [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), který se průběžně aktualizuje na nejnovější verzi. Chcete-li otevřít Cloud Shell, vyberte možnost **vyzkoušet** v horní části libovolného bloku kódu.
 
 Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0.30 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Následující postup podrobně popisuje přeměnu existujícího virtuálního počítače na opětovně použitelnou vlastní image, pomocí které můžete vytvářet nové instance virtuálních počítačů.
 
-K dokončení příkladu v tomto kurzu potřebujete existující virtuální počítač. V případě potřeby může tato [ukázka skriptu](../scripts/virtual-machines-linux-cli-sample-create-vm-nginx.md) vytvořit jeden pro vás. V průběhu kurzu nahraďte na příslušných místech názvy skupiny prostředků a virtuálních počítačů.
+K dokončení příkladu v tomto kurzu potřebujete existující virtuální počítač. V případě potřeby může tento [ukázkový skript](../scripts/virtual-machines-linux-cli-sample-create-vm-nginx.md) vytvořit jednu za vás. V průběhu kurzu nahraďte na příslušných místech názvy skupiny prostředků a virtuálních počítačů.
 
 ## <a name="create-a-custom-image"></a>Vytvoření vlastní image
 
@@ -51,7 +51,7 @@ Pokud chcete vytvořit image virtuálního počítače, musíte virtuální poč
 Zrušením zřízení dojde ke generalizaci virtuálního počítače tím, že se odeberou informace specifické pro počítač. Díky této generalizaci je možné z jedné image nasazovat více virtuálních počítačů. Během rušení zřízení se název hostitele resetuje na *localhost.localdomain*. Odstraní se také klíče hostitele SSH, konfigurace názvového serveru, kořenové heslo a zapůjčení DHCP uložená v mezipaměti.
 
 > [!WARNING]
-> Zrušení zřízení a označení virtuálního virtuálního aplikace jako generalizovaného způsobí, že zdrojový virtuální virtuální svět nebude použitelný a nelze jej restartovat. 
+> Zrušení zřízení a označení virtuálního počítače jako zobecněného způsobí, že zdrojový virtuální počítač nebude použitelný a nemůže být restartován. 
 
 Ke zrušení zřízení virtuálního počítače použijte agenta virtuálního počítače Azure (waagent). Agent virtuálního počítače Azure je nainstalovaný na virtuálním počítači a spravuje zřizování a interakci s kontrolerem prostředků infrastruktury Azure. Další informace najdete v [uživatelské příručce agenta Azure Linux](../extensions/agent-linux.md).
 
@@ -110,7 +110,7 @@ az vm create \
     --generate-ssh-keys
 ```
 
-Doporučujeme omezit počet souběžných nasazení na 20 virtuálních počítače z jedné bitové kopie. Pokud plánujete rozsáhlé souběžné nasazení více než 20 virtuálních počítačů ze stejné vlastní image, měli byste použít [Galerii sdílených bitových obrázků](shared-image-galleries.md) s více replikami bitových obrázků. 
+Doporučujeme omezit počet souběžných nasazení na 20 virtuálních počítačů z jedné image. Pokud plánujete rozsáhlé souběžné nasazení více než 20 virtuálních počítačů ze stejné vlastní image, měli byste použít [sdílenou galerii imagí](shared-image-galleries.md) s více replikami imagí. 
 
 ## <a name="image-management"></a>Správa imagí 
 
@@ -145,5 +145,5 @@ V tomto kurzu jste vytvořili vlastní image virtuálního počítače. Naučili
 Přejděte k dalšímu kurzu, kde se seznámíte s vysoce dostupnými virtuálními počítači.
 
 > [!div class="nextstepaction"]
-> [Vytvořte vysoce dostupné virtuální aplikace](tutorial-availability-sets.md).
+> [Vytvořte virtuální počítače s vysokou dostupností](tutorial-availability-sets.md).
 

@@ -1,24 +1,24 @@
 ---
-title: 'Úvodní příručka: Vytvoření aplikace Linux Ruby'
-description: Začínáme s linuxovými aplikacemi ve službě Azure App Service nasazením první aplikace Ruby do kontejneru Linuxu ve službě App Service.
+title: 'Rychlý Start: Vytvoření aplikace pro Linux Ruby'
+description: Začněte s aplikacemi pro Linux v Azure App Service nasazením první aplikace v Ruby do kontejneru Linux v App Service.
 keywords: azure app service, linux, oss, ruby, rails
 ms.assetid: 6d00c73c-13cb-446f-8926-923db4101afa
 ms.topic: quickstart
 ms.date: 07/11/2019
 ms.custom: mvc, cli-validate, seodec18
 ms.openlocfilehash: 33723e6dd8fbcd91d2d5863816786c0f08cdf923
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80045838"
 ---
 # <a name="create-a-ruby-on-rails-app-in-app-service-on-linux"></a>Vytvoření aplikace v Ruby on Rails ve službě App Service v Linuxu
 
-[App Service na Linuxu](app-service-linux-intro.md) poskytuje vysoce škálovatelnou webhostingovou službu s vlastní mizákou pomocí operačního systému Linux. Tento úvodní kurz ukazuje, jak nasadit aplikaci Ruby on Rails do služby Azure App Service na Linuxu pomocí [cloudového prostředí](https://docs.microsoft.com/azure/cloud-shell/overview).
+[App Service v systému Linux](app-service-linux-intro.md) poskytuje vysoce škálovatelnou službu s automatickými opravami pro hostování webů pomocí operačního systému Linux. V tomto kurzu rychlý Start se dozvíte, jak nasadit aplikaci v Ruby na železnici, která Azure App Service na Linux pomocí [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview).
 
 > [!NOTE]
-> Vývojová sada Ruby podporuje v současnosti jen Ruby on Rails. Pokud chcete použít jinou platformu, například Sinatra, nebo pokud chcete použít [nepodporovanou verzi Ruby](app-service-linux-intro.md), musíte [ji spustit ve vlastním kontejneru](quickstart-docker-go.md).
+> Vývojová sada Ruby podporuje v současnosti jen Ruby on Rails. Pokud chcete použít jinou platformu, například Sinatra, nebo pokud chcete použít [nepodporovanou verzi Ruby](app-service-linux-intro.md), je nutné [ji spustit ve vlastním kontejneru](quickstart-docker-go.md).
 
 ![Hello World](./media/quickstart-ruby/hello-world-configured.png)
 
@@ -26,7 +26,7 @@ ms.locfileid: "80045838"
 
 ## <a name="prerequisites"></a>Požadavky
 
-* <a href="https://www.ruby-lang.org/en/documentation/installation/#rubyinstaller" target="_blank">Instalace ruby 2.6 nebo vyšší</a>
+* <a href="https://www.ruby-lang.org/en/documentation/installation/#rubyinstaller" target="_blank">Nainstalovat Ruby 2,6 nebo vyšší</a>
 * <a href="https://git-scm.com/" target="_blank">Nainstalovat Git</a>.
 
 ## <a name="download-the-sample"></a>Stažení ukázky
@@ -41,7 +41,7 @@ git clone https://github.com/Azure-Samples/ruby-docs-hello-world
 
 Spusťte aplikaci místně, abyste viděli, jak by měla vypadat po nasazení do Azure. Otevřete okno terminálu, přejděte do adresáře `hello-world` a pomocí příkazu `rails server` spusťte server.
 
-Prvním krokem je instalace požadovaných souborů gem. Součástí ukázky `Gemfile` je, takže stačí spustit následující příkaz:
+Prvním krokem je instalace požadovaných souborů gem. V ukázce je `Gemfile` zahrnut, stačí spustit následující příkaz:
 
 ```bash
 bundle install
@@ -69,7 +69,7 @@ Ve webovém prohlížeči přejděte na adresu `http://localhost:3000` a místn�
 
 [!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-ruby-linux-no-h.md)] 
 
-Přejděte do aplikace a podívejte se na nově vytvořenou webovou aplikaci s vestavěnou image. Nahraďte _ &lt;název aplikace>_ názvem webové aplikace.
+Přejděte do aplikace a podívejte se na nově vytvořenou webovou aplikaci s použitím integrované image. Nahraďte _ &lt;název aplikace>_ názvem vaší webové aplikace.
 
 ```bash
 http://<app_name>.azurewebsites.net
@@ -81,7 +81,7 @@ Vaše nová webová aplikace by měla vypadat takto:
 
 ## <a name="deploy-your-application"></a>Nasazení aplikace
 
-Spusťte následující příkazy k nasazení místní aplikace do webové aplikace Azure:
+Spuštěním následujících příkazů nasaďte místní aplikaci do vaší webové aplikace Azure:
 
 ```bash
 git remote add azure <Git deployment URL from above>
@@ -107,7 +107,7 @@ To https://<app-name>.scm.azurewebsites.net/<app-name>.git
    a6e73a2..ae34be9  master -> master
 ```
 
-Po dokončení nasazení počkejte asi 10 sekund, než se webová aplikace restartuje, a pak přejděte do webové aplikace a ověřte výsledky.
+Až se nasazení dokončí, počkejte asi 10 sekund, než se webová aplikace restartuje, a pak přejděte do webové aplikace a ověřte výsledky.
 
 ```bash
 http://<app-name>.azurewebsites.net
@@ -116,7 +116,7 @@ http://<app-name>.azurewebsites.net
 ![aktualizovaná webová aplikace](./media/quickstart-ruby/hello-world-configured.png)
 
 > [!NOTE]
-> Při restartování aplikace můžete sledovat stavový kód `Error 503 Server unavailable` HTTP v prohlížeči nebo na `Hey, Ruby developers!` výchozí stránce. Může trvat několik minut, než se aplikace plně restartuje.
+> I když se aplikace restartuje, můžete sledovat stavový kód `Error 503 Server unavailable` http v prohlížeči nebo `Hey, Ruby developers!` výchozí stránku. Úplné restartování aplikace může trvat několik minut.
 >
 
 [!INCLUDE [Clean-up section](../../../includes/cli-script-clean-up.md)]
@@ -124,7 +124,7 @@ http://<app-name>.azurewebsites.net
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Výuka: Ruby on Rails s Postgres](tutorial-ruby-postgres-app.md)
+> [Kurz: Ruby na kolejnicích s Postgres](tutorial-ruby-postgres-app.md)
 
 > [!div class="nextstepaction"]
 > [Konfigurace aplikace Ruby](configure-language-ruby.md)
