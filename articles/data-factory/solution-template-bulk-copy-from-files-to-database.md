@@ -1,6 +1,6 @@
 ---
 title: Hromadné kopírování ze souborů do databáze
-description: Zjistěte, jak pomocí šablony řešení hromadně kopírovat data z Azure Data Lake Storage Gen2 do Azure Synapse Analytics / Azure SQL Database.
+description: Naučte se, jak pomocí šablony řešení hromadně kopírovat data z Azure Data Lake Storage Gen2 do Azure synapse Analytics/Azure SQL Database.
 services: data-factory
 author: linda33wj
 ms.author: jingwang
@@ -9,42 +9,42 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/08/2020
 ms.openlocfilehash: 070b708f204006bc1ba90c4c3676696291fde902
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81414870"
 ---
 # <a name="bulk-copy-from-files-to-database"></a>Hromadné kopírování ze souborů do databáze
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Tento článek popisuje šablonu řešení, kterou můžete použít ke kopírování dat hromadně z Azure Data Lake Storage Gen2 do Azure Synapse Analytics / Azure SQL Database.
+Tento článek popisuje šablonu řešení, kterou můžete použít ke hromadnému kopírování dat z Azure Data Lake Storage Gen2 do služby Azure synapse Analytics/Azure SQL Database.
 
 ## <a name="about-this-solution-template"></a>O této šabloně řešení
 
-Tato šablona načítá soubory ze zdroje Azure Data Lake Storage Gen2. Pak iterates přes každý soubor ve zdroji a zkopíruje soubor do cílového úložiště dat. 
+Tato šablona načte soubory ze zdroje Azure Data Lake Storage Gen2. Pak projde všechny soubory ve zdroji a zkopíruje soubor do cílového úložiště dat. 
 
-V současné době tato šablona podporuje pouze kopírování dat ve formátu **DelimitedText.** Soubory v jiných formátech dat lze také načíst ze zdrojového úložiště dat, ale nelze je zkopírovat do cílového úložiště dat.  
+V současné době tato šablona podporuje pouze kopírování dat ve formátu **DelimitedText** . Soubory v jiných datových formátech lze také načíst ze zdrojového úložiště dat, ale nelze je zkopírovat do cílového úložiště dat.  
 
 Šablona obsahuje tři aktivity:
-- **Získejte metadata aktivity** načte soubory z Azure Data Lake Storage Gen2 a předá je následné *ForEach* aktivity.
-- **ForEach** aktivita získá soubory z *get metadata aktivity* a itety každý soubor *kopírovat* aktivity.
-- **Zkopírujte** aktivitu, která se nachází v části *ForEach,* a zkopírujte každý soubor ze zdrojového úložiště dat do cílového úložiště dat.
+- Aktivita **získat metadata** načte soubory z Azure Data Lake Storage Gen2 a předá je do následné aktivity *foreach* .
+- Aktivita **foreach** získá soubory z aktivity *získat metadata* a každý soubor projde do aktivity *kopírování* .
+- Aktivita **kopírování** se nachází v aktivitě *foreach* a kopíruje jednotlivé soubory ze zdrojového úložiště dat do cílového úložiště dat.
 
 Šablona definuje následující dva parametry:
-- *SourceContainer* je kořenová cesta kontejneru, kde se data zkopírují z ve vašem Azure Data Lake Storage Gen2. 
-- *SourceDirectory* je cesta k adresáři pod kořenovým kontejnerem, ze kterého se data zkopírují ve vašem Azure Data Lake Storage Gen2.
+- *SourceContainer* je cesta ke kořenovému kontejneru, ze které se zkopírují data v Azure Data Lake Storage Gen2. 
+- *SourceDirectory* je cesta k adresáři v kořenovém kontejneru, ve kterém se data zkopírují z ve vašem Azure Data Lake Storage Gen2.
 
-## <a name="how-to-use-this-solution-template"></a>Použití této šablony řešení
+## <a name="how-to-use-this-solution-template"></a>Jak používat tuto šablonu řešení
 
-1. Přejděte do šablony **Hromadné kopírování ze souborů do databáze.** Vytvořte **nové** připojení ke zdrojovému úložišti Gen2. Uvědomte si, že "GetMetadataDataset" a "SourceDataset" jsou odkazy na stejné připojení úložiště zdrojových souborů.
+1. Přejít na **soubor hromadného kopírování ze souborů do šablony databáze** . Vytvoří **nové** připojení ke zdrojovému úložišti Gen2. Upozorňujeme, že "GetMetadataDataset" a "SourceDataset" odkazují na stejné připojení ke zdrojovému úložišti souborů.
 
-    ![Vytvoření nového připojení ke zdrojovému úložišti dat](media/solution-template-bulk-copy-from-files-to-database/source-connection.png)
+    ![Vytvoří nové připojení ke zdrojovému úložišti dat.](media/solution-template-bulk-copy-from-files-to-database/source-connection.png)
 
-2. Vytvořte **nové** připojení k úložišti dat jímky, do kterého kopírujete data.
+2. Vytvoří **nové** připojení k úložišti dat jímky, do kterého kopírujete data.
 
-    ![Vytvoření nového připojení k úložišti dat jímky](media/solution-template-bulk-copy-from-files-to-database/destination-connection.png)
+    ![Vytvoří nové připojení k úložišti dat jímky.](media/solution-template-bulk-copy-from-files-to-database/destination-connection.png)
     
 3. Vyberte **Použít tuto šablonu**.
 
@@ -55,17 +55,17 @@ V současné době tato šablona podporuje pouze kopírování dat ve formátu *
     ![Kontrola kanálu](media/solution-template-bulk-copy-from-files-to-database/new-pipeline.png)
 
     > [!NOTE]
-    > Pokud jste jako cíl dat v **kroku 2** uvedeném výše zvolili **Azure Synapse Analytics (dříve SQL DW),** musíte zadat připojení k úložišti objektů Blob Azure pro pracovní, jak to vyžaduje SQL Data Warehouse Polybase. Jak ukazuje následující snímek obrazovky, šablona automaticky vygeneruje *cestu úložiště* pro úložiště objektů Blob. Zkontrolujte, zda byl kontejner vytvořen po spuštění kanálu.
+    > Pokud jste ve výše uvedeném **kroku 2** zvolili **Azure synapse Analytics (dříve SQL DW)** jako cíl dat, musíte pro přípravu zadat připojení k úložišti objektů BLOB v Azure, jak to vyžaduje SQL Data Warehouse báze. Jak ukazuje následující snímek obrazovky, šablona automaticky vygeneruje cestu k *úložišti* pro úložiště objektů BLOB. Ověřte, zda byl kontejner vytvořen po spuštění kanálu.
         
-    ![Polybase, nastavení](media/solution-template-bulk-copy-from-files-to-database/staging-account.png)
+    ![Základní nastavení](media/solution-template-bulk-copy-from-files-to-database/staging-account.png)
 
-5. Vyberte **Ladit**, zadejte **parametry**a pak vyberte **Dokončit**.
+5. Vyberte **ladit**, zadejte **parametry**a pak vyberte **Dokončit**.
 
-    ![Klikněte na **Ladění**](media/solution-template-bulk-copy-from-files-to-database/debug-run.png)
+    ![Klikněte na * * ladit * *.](media/solution-template-bulk-copy-from-files-to-database/debug-run.png)
 
-6. Po úspěšném dokončení spuštění kanálu se zobrazí výsledky podobné následujícímu příkladu:
+6. Po úspěšném dokončení kanálu se zobrazí podobné výsledky jako v následujícím příkladu:
 
-    ![Zkontrolujte výsledek](media/solution-template-bulk-copy-from-files-to-database/run-succeeded.png)
+    ![Kontrola výsledku](media/solution-template-bulk-copy-from-files-to-database/run-succeeded.png)
 
        
 ## <a name="next-steps"></a>Další kroky

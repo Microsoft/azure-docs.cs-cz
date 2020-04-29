@@ -1,6 +1,6 @@
 ---
 title: Řešení potíží s konektory služby Azure Data Factory
-description: Zjistěte, jak řešit problémy s konektorem v Azure Data Factory.
+description: Naučte se řešit potíže s konektorem v Azure Data Factory.
 services: data-factory
 author: linda33wj
 ms.service: data-factory
@@ -9,17 +9,17 @@ ms.date: 01/09/2020
 ms.author: jingwang
 ms.reviewer: craigg
 ms.openlocfilehash: 62ad337646cf3fc0bbe4305dccad5adb56f8ee15
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81410232"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>Řešení potíží s konektory služby Azure Data Factory
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Tento článek zkoumá běžné metody řešení potíží pro konektory v Azure Data Factory.
+Tento článek popisuje běžné metody řešení potíží pro konektory v Azure Data Factory.
   
 
 ## <a name="azure-blob-storage"></a>Azure Blob Storage
@@ -28,9 +28,9 @@ Tento článek zkoumá běžné metody řešení potíží pro konektory v Azure
 
 - **Zpráva**:`Blob operation Failed. ContainerName: %containerName;, path: %path;.`
 
-- **Příčina**: Problém s operací úložiště objektů blob.
+- **Příčina**: došlo k potížím s voláním operace BLOB Storage.
 
-- **Doporučení**: Zkontrolujte chybu v detailech. Viz dokument nápovědy https://docs.microsoft.com/rest/api/storageservices/blob-service-error-codesk objektům blob: . V případě potřeby kontaktujte tým úložiště.
+- **Doporučení**: Podrobnosti najdete v podrobnostech o chybě. Podívejte se na dokument s nápovědě https://docs.microsoft.com/rest/api/storageservices/blob-service-error-codesk objektu BLOB:. Pokud potřebujete, obraťte se na tým úložiště.
 
 
 ### <a name="error-code--azureblobservicenotreturnexpecteddatalength"></a>Kód chyby: AzureBlobServiceNotReturnExpectedDataLength
@@ -50,17 +50,17 @@ Tento článek zkoumá běžné metody řešení potíží pro konektory v Azure
 
 ## <a name="azure-cosmos-db"></a>Azure Cosmos DB
 
-### <a name="error-message-request-size-is-too-large"></a>Chybová zpráva: Velikost požadavku je příliš velká.
+### <a name="error-message-request-size-is-too-large"></a>Chybová zpráva: velikost požadavku je příliš velká.
 
-- **Příznaky**: Zkopírujete data do Azure Cosmos DB s výchozí velikostí dávky zápisu a chyba ***přístupů**" Velikost požadavku je příliš velká "*.
+- **Příznaky**: kopírujete data do Azure Cosmos DB s výchozí velikostí dávky pro zápis a chyba volání *"**Velikost požadavku je příliš velká**"*.
 
-- **Příčina**: Cosmos DB omezuje velikost jednoho požadavku na 2 MB. Vzorec je Velikost požadavku = Velikost jednoho dokumentu * Velikost dávky zápisu. Pokud je velikost dokumentu velká, bude mít výchozí chování za následek příliš velkou velikost požadavku. Můžete optimalizovat velikost dávky zápisu.
+- **Příčina**: Cosmos DB omezuje velikost jednoho požadavku na 2 MB. Vzorec je, velikost požadavku = jedna velikost dokumentu * velikost dávky zápisu. Pokud je velikost dokumentu velká, výchozí chování bude mít za následek příliš velkou velikost požadavku. Můžete vyladit velikost dávky zápisu.
 
-- **Řešení**: V jímce aktivity kopírování zmenšete hodnotu "Write batch size" (výchozí hodnota je 10000).
+- **Řešení**: v jímky aktivity kopírování snižte hodnotu "zapsat velikost dávky" (výchozí hodnota je 10000).
 
-### <a name="error-message-unique-index-constraint-violation"></a>Chybová zpráva: Porušení omezení jedinečného indexu
+### <a name="error-message-unique-index-constraint-violation"></a>Chybová zpráva: porušení omezení jedinečného indexu
 
-- **Příznaky**: Při kopírování dat do cosmos DB, narazí na následující chybu:
+- **Příznaky**: při kopírování dat do Cosmos DB se zobrazí následující chyba:
 
     ```
     Message=Partition range id 0 | Failed to import mini-batch. 
@@ -69,47 +69,47 @@ Tento článek zkoumá běžné metody řešení potíží pro konektory v Azure
 
 - **Příčina**: Existují dvě možné příčiny:
 
-    - Pokud použijete **Vložit** jako chování zápisu, tato chyba znamená, že zdrojová data mají řádky nebo objekty se stejným ID.
+    - Pokud použijete funkci **Vložit** jako zápis, tato chyba znamená, že zdrojová data mají řádky nebo objekty se stejným ID.
 
-    - Pokud použijete **Upsert** jako chování zápisu a nastavíte jiný jedinečný klíč do kontejneru, tato chyba znamená, že zdrojová data mají řádky nebo objekty s různými ID, ale stejnou hodnotu pro definovaný jedinečný klíč.
+    - Pokud použijete **Upsert** jako chování zápisu a nastavíte do kontejneru jiný jedinečný klíč, tato chyba znamená, že zdrojová data budou mít řádky nebo objekty s odlišnými identifikátory, ale stejnou hodnotu pro definovaný jedinečný klíč.
 
-- **Rozlišení**: 
+- **Řešení**: 
 
-    - Pro cause1 nastavte **Upsert** jako chování zápisu.
-    - Z důvodu 2 se ujistěte, že každý dokument má jinou hodnotu pro definovaný jedinečný klíč.
+    - V případě cause1 nastavte **Upsert** jako chování zápisu.
+    - V případě příčiny 2 se ujistěte, že každý dokument má odlišnou hodnotu pro definovaný jedinečný klíč.
 
-### <a name="error-message-request-rate-is-large"></a>Chybová zpráva: Míra požadavků je velká
+### <a name="error-message-request-rate-is-large"></a>Chybová zpráva: frekvence požadavků je velká
 
-- **Příznaky**: Při kopírování dat do cosmos DB, narazí na následující chybu:
+- **Příznaky**: při kopírování dat do Cosmos DB se zobrazí následující chyba:
 
     ```
     Type=Microsoft.Azure.Documents.DocumentClientException,
     Message=Message: {"Errors":["Request rate is large"]}
     ```
 
-- **Příčina**: Použité jednotky požadavku jsou větší než dostupné ru nakonfigurované v Cosmos DB. Zde se dozvíte, jak Cosmos DB vypočítá v RU [.](../cosmos-db/request-units.md#request-unit-considerations)
+- **Příčina**: použité jednotky žádostí jsou větší než dostupný ru nakonfigurovaný v Cosmos DB. Přečtěte [si, jak](../cosmos-db/request-units.md#request-unit-considerations)Cosmos DB počítá ru.
 
-- **Řešení**: Zde jsou dvě řešení:
+- **Řešení**: tady jsou dvě řešení:
 
-    1. **Zvyšte počet žp. na vyšší** hodnotu kontejneru v Cosmos DB, což zlepší výkon aktivity kopírování, i když v Cosmos DB vzniknou vyšší náklady. 
+    1. **Zvyšte hodnotu v kontejneru ru** na větší hodnotu v Cosmos DB, což vylepší výkon aktivity kopírování, i když se v Cosmos DB účtuje větší náklady. 
 
-    2. Snížit **writeBatchSize** na menší hodnotu (například 1000) a nastavit **parallelCopies** na menší hodnotu, jako je například 1, což způsobí, že výkon spuštění kopie horší než aktuální, ale nebude mít větší náklady v Cosmos DB.
+    2. Zmenšete **writeBatchSize** na menší hodnotu (například 1000) a nastavte **parallelCopies** na menší hodnotu, jako je například 1, což způsobí, že kopírování bude mít horší výkon, než je aktuální, ale nebudou se vám účtovat žádné náklady Cosmos DB.
 
-### <a name="column-missing-in-column-mapping"></a>Sloupec chybí v mapování sloupců
+### <a name="column-missing-in-column-mapping"></a>V mapování sloupce chybí sloupec.
 
-- **Příznaky**: Při importu schématu pro Cosmos DB pro mapování sloupců chybí některé sloupce. 
+- **Příznaky**: Když importujete schéma pro Cosmos DB mapování sloupců, chybí některé sloupce. 
 
-- **Příčina**: ADF odvodí schéma z prvních 10 dokumentů Cosmos DB. Pokud některé sloupce/vlastnosti nemají v těchto dokumentech hodnotu, nebudou adf detekovány, a proto se nezobrazí.
+- **Příčina**: ADF odvodí schéma z prvních 10 Cosmos DB dokumentů. Pokud některé sloupce nebo vlastnosti v těchto dokumentech nemají hodnotu, nebudou zjištěny pomocí ADF, takže se nebudou zobrazovat.
 
-- **Řešení**: Můžete vyladit dotaz tak, jak je uvedeno níže, chcete-li vynutit sloupec, který se zobrazí v sadě výsledků s prázdnou hodnotou: (předpokládejme: v prvních dokumentech 10 chybí sloupec "nemožné"). Případně můžete ručně přidat sloupec pro mapování.
+- **Řešení**: Tento dotaz můžete vyladit tak, aby se sloupec vynutil, aby se zobrazil v sadě výsledků s prázdnou hodnotou: (Předpokládejme, že ve prvních 10 dokumentech chybí sloupec nemožné). Případně můžete ručně přidat sloupec pro mapování.
 
     ```sql
     select c.company, c.category, c.comments, (c.impossible??'') as impossible from c
     ```
 
-### <a name="error-message-the-guidrepresentation-for-the-reader-is-csharplegacy"></a>Chybová zpráva: GuidRepresentation pro čtenáře je CSharpLegacy
+### <a name="error-message-the-guidrepresentation-for-the-reader-is-csharplegacy"></a>Chybová zpráva: GuidRepresentation pro čtecí zařízení je CSharpLegacy
 
-- **Příznaky**: Při kopírování dat z Cosmos DB MongoAPI/MongoDB s polem UUID se zobrazí následující chyba:
+- **Příznaky**: při kopírování dat z Cosmos DB MongoAPI/MongoDB s polem UUID se zobrazí následující chyba:
 
     ```
     Failed to read data via MongoDB client.,
@@ -117,9 +117,9 @@ Tento článek zkoumá běžné metody řešení potíží pro konektory v Azure
     Message=The GuidRepresentation for the reader is CSharpLegacy which requires the binary sub type to be UuidLegacy not UuidStandard.,Source=MongoDB.Bson,’“,
     ```
 
-- **Příčina**: Existují dva způsoby, jak reprezentovat UUID v BSON - UuidStardard a UuidLegacy. Ve výchozím nastavení se UuidLegacy používá ke čtení dat. Dojde k chybě, pokud vaše uuid data v MongoDB je UuidStandard.
+- **Příčina**: Existují dva způsoby, jak vyjádřit UUID v bson-UuidStardard a UuidLegacy. Ve výchozím nastavení se pro čtení dat používá UuidLegacy. Pokud jsou vaše data UUID v MongoDB UuidStandard, bude se vám vyrazit chyba.
 
-- **Rozlišení**: V připojovacím řetězci MongoDB přidejte možnost "**uuidRepresentation=standard**". Další informace naleznete v [připojovacím řetězci MongoDB](connector-mongodb.md#linked-service-properties).
+- **Řešení**: v připojovacím řetězci MongoDB přidejte možnost "**uuidRepresentation = Standard**". Další informace najdete v tématu [připojovací řetězec MongoDB](connector-mongodb.md#linked-service-properties).
             
 
 ## <a name="azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2
@@ -128,17 +128,17 @@ Tento článek zkoumá běžné metody řešení potíží pro konektory v Azure
 
 - **Zpráva**:`ADLS Gen2 operation failed for: %adlsGen2Message;.%exceptionData;.`
 
-- **Příčina**: ADLS Gen2 vyvolá chybu označující operace se nezdařila.
+- **Příčina**: adls Gen2 vyvolá chybu oznamující, že operace se nezdařila.
 
-- **Doporučení:** Zkontrolujte podrobnou chybovou zprávu vyvrženou adls gen2. Pokud je to způsobeno přechodnou poruchou, zkuste to znovu. Pokud potřebujete další pomoc, obraťte se na podporu Azure Storage a zadejte ID žádosti v chybové zprávě.
+- **Doporučení**: Přečtěte si podrobnou chybovou zprávu vyvolanou adls Gen2. Pokud je to způsobeno přechodným selháním, zkuste to prosím znovu. Pokud potřebujete další pomoc, obraťte se prosím na podporu Azure Storage a poskytněte ID žádosti v chybové zprávě.
 
-- **Příčina**: Pokud chybová zpráva obsahuje "Zakázáno", instanční objekt nebo spravovanou identitu, kterou používáte, nemusí mít dostatečná oprávnění pro přístup k ADLS Gen2.
+- **Příčina**: Pokud chybová zpráva obsahuje zakázané, instanční objekt nebo spravovaná identita nemusí mít k dispozici dostatečná oprávnění pro přístup k adls Gen2.
 
-- **Doporučení**: Viz dokument https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authenticationnápovědy: .
+- **Doporučení**: informace naleznete v dokumentu Help: https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication.
 
-- **Příčina**: Pokud chybová zpráva obsahuje chybu InternalServerError, je chyba vrácena gen2 Služby ADLS.
+- **Příčina**: Pokud chybová zpráva obsahuje hodnotu ' Nenalezeno ', je vrácena chyba adls Gen2.
 
-- **Doporučení**: To může být způsobeno přechodnou poruchou, opakujte akci. Pokud problém přetrvává, obraťte se na podporu Azure Storage a zadejte ID požadavku v chybové zprávě.
+- **Doporučení**: může to být způsobeno přechodným selháním. zkuste to prosím znovu. Pokud se problém nevyřeší, obraťte se prosím na podporu Azure Storage a poskytněte ID žádosti v chybové zprávě.
 
 
 ### <a name="error-code--adlsgen2invalidurl"></a>Kód chyby: AdlsGen2InvalidUrl
@@ -163,31 +163,31 @@ Tento článek zkoumá běžné metody řešení potíží pro konektory v Azure
 
 ## <a name="azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1
 
-### <a name="error-message-the-remote-server-returned-an-error-403-forbidden"></a>Chybová zpráva: Vzdálený server vrátil chybu: (403) Zakázáno
+### <a name="error-message-the-remote-server-returned-an-error-403-forbidden"></a>Chybová zpráva: vzdálený server vrátil chybu: (403) zakázáno
 
-- **Příznaky**: Aktivita kopírování se nezdaří s následující chybou: 
+- **Příznaky**: aktivita kopírování se nezdařila s následující chybou: 
 
     ```
     Message: The remote server returned an error: (403) Forbidden.. 
     Response details: {"RemoteException":{"exception":"AccessControlException""message":"CREATE failed with error 0x83090aa2 (Forbidden. ACL verification failed. Either the resource does not exist or the user is not authorized to perform the requested operation.)....
     ```
 
-- **Příčina**: Jednou z možných příčin je, že instanční objekt nebo spravovaná identita, kterou používáte, nemá oprávnění k přístupu k určité složce nebo souboru.
+- **Příčina**: jedinou možnou příčinou je, že instanční objekt nebo spravovaná identita nemají oprávnění pro přístup k určité složce nebo souboru.
 
-- **Řešení**: Udělte odpovídající oprávnění pro všechny složky a podsložky, které potřebujete zkopírovat. Viz [tento dokument](connector-azure-data-lake-store.md#linked-service-properties).
+- **Řešení**: Udělte odpovídající oprávnění pro všechny složky a podsložky, které potřebujete zkopírovat. Přečtěte si [Tento dokument](connector-azure-data-lake-store.md#linked-service-properties).
 
-### <a name="error-message-failed-to-get-access-token-by-using-service-principal-adal-error-service_unavailable"></a>Chybová zpráva: Nepodařilo se získat přístupový token pomocí instančního objektu. ADAL Chyba: service_unavailable
+### <a name="error-message-failed-to-get-access-token-by-using-service-principal-adal-error-service_unavailable"></a>Chybová zpráva: Nepodařilo se získat přístupový token pomocí instančního objektu. Chyba ADAL: service_unavailable
 
-- **Příznaky**: Aktivita kopírování se nezdaří s následující chybou:
+- **Příznaky**: aktivita kopírování se nezdařila s následující chybou:
 
     ```
     Failed to get access token by using service principal. 
     ADAL Error: service_unavailable, The remote server returned an error: (503) Server Unavailable.
     ```
 
-- **Příčina:** Pokud server tokenů služby (STS) vlastněný službou Azure Active Directory není k dispozici, tj. 
+- **Příčina**: Pokud server tokenu služby (STS), který je vlastněn Azure Active Directory, není k dispozici, například příliš zaneprázdněný pro zpracování požadavků, vrátí chybu HTTP 503. 
 
-- **Rozlišení**: Znovu spusťte aktivitu kopírování po několika minutách.
+- **Řešení**: po několika minutách znovu spusťte aktivitu kopírování.
                   
 
 ## <a name="azure-sql-data-warehouseazure-sql-databasesql-server"></a>Azure SQL Data Warehouse/Azure SQL Database/SQL Server
@@ -196,98 +196,98 @@ Tento článek zkoumá běžné metody řešení potíží pro konektory v Azure
 
 - **Zpráva**:`Cannot connect to SQL Database: '%server;', Database: '%database;', User: '%user;'. Check the linked service configuration is correct, and make sure the SQL Database firewall allows the integration runtime to access.`
 
-- **Příčina:** Pokud chybová zpráva obsahuje "SqlException", sql database vyvolá chybu označující některé konkrétní operace se nezdařilo.
+- **Příčina**: Pokud chybová zpráva obsahuje "SqlException", SQL Database vyvolá chybu oznamující, že některá konkrétní operace selhala.
 
-- Doporučení : Další **podrobnosti**naleznete podle kódu chyby SQL v tomto referenčním dokumentu: https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors. Pokud potřebujete další pomoc, obraťte se na podporu Azure SQL.
+- **Doporučení**: Další podrobnosti najdete v kódu chyby SQL v tomto referenčním dokumentu: https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors. Pokud potřebujete další pomoc, obraťte se na podporu Azure SQL.
 
-- **Příčina**: Pokud chybová zpráva obsahuje "Klient s IP adresou ..." není povolen přístup k serveru", a pokoušíte se připojit k Azure SQL Database, obvykle je způsobena problémem brány firewall Azure SQL Database.
+- **Příčina**: Pokud chybová zpráva obsahuje "klient s IP adresou"... nemá povolený přístup k serveru a pokoušíte se připojit k Azure SQL Database, obvykle to způsobuje Azure SQL Database potížích s bránou firewall.
 
-- **Doporučení:** V konfiguraci brány firewall Azure SQL Server povolte možnost Povolit služby Azure a prostředky pro přístup k tomuto serveru. Referenční dokument: https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure.
+- **Doporučení**: v konfiguraci brány firewall Azure SQL Server povolte možnost Povolit službám a prostředkům Azure přístup k tomuto serveru. Referenční doc: https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure.
 
 
 ### <a name="error-code--sqloperationfailed"></a>Kód chyby: SqlOperationFailed
 
 - **Zpráva**:`A database operation failed. Please search error to get more details.`
 
-- **Příčina:** Pokud chybová zpráva obsahuje "SqlException", sql database vyvolá chybu označující některé konkrétní operace se nezdařilo.
+- **Příčina**: Pokud chybová zpráva obsahuje "SqlException", SQL Database vyvolá chybu oznamující, že některá konkrétní operace selhala.
 
-- **Doporučení:** Pokud chyba SQL není jasná, pokuste se změnit databázi na nejnovější úroveň kompatibility '150'. To může vyvolat nejnovější verze SQL chyby. Prosím, podívejte se https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-compatibility-level?view=sql-server-ver15#backwardCompatna detail doc: .
-        Řešení potíží s SQL naleznete v tomto referenčním dokumentu podle https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errorskódu chyby SQL: . Pokud potřebujete další pomoc, obraťte se na podporu Azure SQL.
+- **Doporučení**: Pokud chyba SQL není jasná, zkuste prosím změnit databázi na nejnovější úroveň kompatibility 150. Může vyvolat nejnovější verzi chyb SQL. Přečtěte si dokument s podrobnostmi: https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-compatibility-level?view=sql-server-ver15#backwardCompat.
+        Pokud chcete řešit potíže s SQL serverem, vyhledejte v tomto referenčním dokumentu kód chyby SQL, kde https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errorsnajdete další podrobnosti:. Pokud potřebujete další pomoc, obraťte se na podporu Azure SQL.
 
-- **Příčina**: Pokud chybová zpráva obsahuje "PdwManagedToNativeInteropException", obvykle je to způsobeno neshodou mezi velikostí zdrojového a jímanového sloupce.
+- **Příčina**: Pokud chybová zpráva obsahuje "PdwManagedToNativeInteropException", obvykle se jedná o neshodu mezi zdrojem a velikostmi sloupců jímky.
 
-- **Doporučení:** Zkontrolujte velikost zdrojových i jímacích sloupců. Pokud potřebujete další pomoc, obraťte se na podporu Azure SQL.
+- **Doporučení**: Ověřte velikost zdroje i sloupce jímky. Pokud potřebujete další pomoc, obraťte se na podporu Azure SQL.
 
-- **Příčina**: Pokud chybová zpráva obsahuje "InvalidOperationException", obvykle je to způsobeno neplatnými vstupními daty.
+- **Příčina**: Pokud chybová zpráva obsahuje "InvalidOperationException", obvykle je způsobena neplatnými vstupními daty.
 
-- **Doporučení:** Chcete-li zjistit, který řádek narazí na problém, povolte funkci odolnosti proti chybám při aktivitě kopírování, která může přesměrovat problematické řádky do úložiště pro další šetření. Referenční dokument: https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance.
+- **Doporučení**: Chcete-li zjistit, který řádek narazí na problém, povolte funkci odolnost proti chybám u aktivity kopírování, která může přesměrovat problematické řádky do úložiště pro další šetření. Referenční doc: https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance.
 
 
 ### <a name="error-code--sqlunauthorizedaccess"></a>Kód chyby: SqlUnauthorizedAccess
 
 - **Zpráva**:`Cannot connect to '%connectorName;'. Detail Message: '%message;'`
 
-- **Příčina**: Pověření je nesprávné nebo přihlašovací účet nemá přístup k databázi SQL.
+- **Příčina**: přihlašovací údaje jsou nesprávné nebo přihlašovací účet nemá přístup k SQL Database.
 
-- **Doporučení**: Zkontrolujte, zda přihlašovací účet má dostatečná oprávnění pro přístup k databázi SQL.
+- **Doporučení**: Ověřte, že přihlašovací účet má dostatečná oprávnění pro přístup k SQL Database.
 
 
 ### <a name="error-code--sqlopenconnectiontimeout"></a>Kód chyby: SqlOpenConnectionTimeout
 
 - **Zpráva**:`Open connection to database timeout after '%timeoutValue;' seconds.`
 
-- **Příčina**: Může být přechodná chyba databáze SQL.
+- **Příčina**: SQL Database přechodného selhání.
 
-- **Doporučení:** Pokuste se znovu aktualizovat propojený připojovací řetězec služby s větší hodnotou časového limitu připojení.
+- **Doporučení**: zkuste aktualizovat připojovací řetězec propojené služby s větším časovým limitem připojení.
 
 
 ### <a name="error-code--sqlautocreatetabletypemapfailed"></a>Kód chyby: SqlAutoCreateTableTypeMapFailed
 
 - **Zpráva**:`Type '%dataType;' in source side cannot be mapped to a type that supported by sink side(column name:'%columnName;') in autocreate table.`
 
-- **Příčina:** Tabulka automatického vytváření nemůže splnit požadavek zdroje.
+- **Příčina**: tabulka automatického vytváření nemůže splňovat požadavek na zdroj.
 
-- **Doporučení:** Aktualizujte typ sloupce v "mapování" nebo ručně vytvořte tabulku jímky na cílovém serveru.
+- **Doporučení**: Aktualizujte typ sloupce v mapování nebo na cílovém serveru vytvořte tabulku jímky ručně.
 
 
 ### <a name="error-code--sqldatatypenotsupported"></a>Kód chyby: SqlDataTypeNotSupported
 
 - **Zpráva**:`A database operation failed. Check the SQL errors.`
 
-- **Příčina**: Pokud k problému dochází ve zdroji SQL a chyba souvisí s přetečením SqlDateTime, hodnota dat je přes rozsah typu logiky (1/1/1753 12:00:00 - 12/31/9999 11:59:59 PM).
+- **Příčina**: Pokud k problému dojde ve zdroji SQL a chyba se týká přetečení Hodnota SqlDateTime, hodnota dat je nad rozsahem typu logic (1/1/1753 12:00:00 dop. 12/31/9999 11:59:59 odp.).
 
-- **Doporučení:** Přetypování typu na řetězec ve zdrojovém dotazu SQL nebo v mapování sloupce aktivity kopírování změňte typ sloupce na Řetězec.
+- **Doporučení**: přetypování typu na řetězec ve zdrojovém dotazu SQL nebo v mapování sloupce aktivity kopírování změňte typ sloupce na String.
 
-- **Příčina**: Pokud k problému dochází na jímce SQL a chyba souvisí s přetečenísqlDateTime, hodnota dat je přes povolený rozsah v tabulce jímky.
+- **Příčina**: Pokud k problému dojde v jímky SQL a chyba se vztahuje k přetečení Hodnota SqlDateTime, hodnota dat je nad povoleným rozsahem v tabulce jímky.
 
-- **Doporučení:** Aktualizace odpovídajícího typu sloupce na typ datetime2 v tabulce jímky.
+- **Doporučení**: aktualizujte odpovídající typ sloupce na typ datetime2 v tabulce jímky.
 
 
 ### <a name="error-code--sqlinvaliddbstoredprocedure"></a>Kód chyby: SqlInvalidDbStoredProcedure
 
 - **Zpráva**:`The specified Stored Procedure is not valid. It could be caused by that the stored procedure doesn't return any data. Invalid Stored Procedure script: '%scriptName;'.`
 
-- **Příčina**: Zadaná uložená procedura není platná. To může být způsobeno tím, že uložená procedura nevrátí žádná data.
+- **Příčina**: zadaná uložená procedura není platná. Příčinou může být to, že uložená procedura nevrací žádná data.
 
-- **Doporučení**: Ověřte uloženou proceduru pomocí nástrojů SQL. Ujistěte se, že uložená procedura může vrátit data.
+- **Doporučení**: Ověřte uloženou proceduru pomocí nástrojů SQL. Ujistěte se, že uložená procedura může vracet data.
 
 
 ### <a name="error-code--sqlinvaliddbquerystring"></a>Kód chyby: SqlInvalidDbQueryString
 
 - **Zpráva**:`The specified SQL Query is not valid. It could be caused by that the query doesn't return any data. Invalid query: '%query;'`
 
-- **Příčina:** Zadaný dotaz SQL není platný. Může to být způsobeno tím, že dotaz nevrátí žádná data
+- **Příčina**: zadaný dotaz SQL není platný. To může být způsobeno tím, že dotaz nevrátí žádná data.
 
-- **Doporučení:** Ověřte dotaz SQL pomocí nástrojů SQL. Ujistěte se, že dotaz může vrátit data.
+- **Doporučení**: Ověřte dotaz SQL pomocí nástrojů SQL. Ujistěte se, že dotaz může vracet data.
 
 
 ### <a name="error-code--sqlinvalidcolumnname"></a>Kód chyby: SqlInvalidColumnName
 
 - **Zpráva**:`Column '%column;' does not exist in the table '%tableName;', ServerName: '%serverName;', DatabaseName: '%dbName;'.`
 
-- **Příčina**: Sloupec nelze najít. Možná konfigurace špatně.
+- **Příčina**: sloupec nelze najít. Možná konfigurace je chybná.
 
-- **Doporučení:** Ověřte sloupec v dotazu, "struktura" v datové sadě a "mapování" v aktivitě.
+- **Doporučení**: Ověřte sloupec v dotazu, "Structure" v datové sadě a "Mappings" v aktivitě.
 
 
 ### <a name="error-code--sqlcolumnnamemismatchbycasesensitive"></a>Kód chyby: SqlColumnNameMismatchByCaseSensitive
@@ -299,40 +299,40 @@ Tento článek zkoumá běžné metody řešení potíží pro konektory v Azure
 
 - **Zpráva**:`Timeouts in SQL write operation.`
 
-- **Příčina**: Může být přechodná chyba databáze SQL.
+- **Příčina**: SQL Database přechodného selhání.
 
-- **Doporučení**: Opakujte akci. Pokud problém repro, obraťte se na podporu Azure SQL.
+- **Doporučení**: zkuste to prosím znovu. Pokud se problém reprodukci, obraťte se na podporu Azure SQL.
 
 
 ### <a name="error-code--sqlbatchwritetransactionfailed"></a>Kód chyby: SqlBatchWriteTransactionFailed
 
 - **Zpráva**:`SQL transaction commits failed`
 
-- **Příčina**: Pokud podrobnosti o výjimce neustále sdělují časový limit transakce, latence sítě mezi integračním runtimem a databází je vyšší než výchozí prahová hodnota jako 30 sekund.
+- **Příčina**: Pokud detaily výjimky neustále oznamují časový limit transakce, latence sítě mezi integrací modulem runtime a databází je vyšší než výchozí prahová hodnota 30 sekund.
 
-- **Doporučení:** Aktualizace připojovacího řetězce propojené služby SQL s hodnotou "časový limit připojení" se rovná hodnotě 120 nebo vyšší a znovu spusťte aktivitu.
+- **Doporučení**: aktualizujte připojovací řetězec propojené služby SQL s hodnotou časový limit připojení se rovná 120 nebo vyšší a znovu spusťte aktivitu.
 
-- **Příčina**: Pokud podrobnosti o výjimce občas sdělují sqlconnection přerušeno, může se jedná pouze o přechodné selhání sítě nebo problém na straně databáze SQL
+- **Příčina**: Pokud se v podrobnostech výjimky občas říká SqlConnection, může se jednat o přechodný výpadek sítě nebo problém na straně SQL Database.
 
-- **Doporučení:** Opakujte aktivitu a zkontrolujte metriky na straně databáze SQL.
+- **Doporučení**: Zkuste prosím tuto aktivitu znovu a zkontrolujte SQL Database metriky na straně.
 
 
 ### <a name="error-code--sqlbulkcopyinvalidcolumnlength"></a>Kód chyby: SqlBulkCopyInvalidColumnLength
 
 - **Zpráva**:`SQL Bulk Copy failed due to receive an invalid column length from the bcp client.`
 
-- **Příčina:** Hromadná kopie SQL se nezdařila z důvodu přijetí neplatné délky sloupce z klienta bcp.
+- **Příčina**: hromadné kopírování SQL se nezdařilo, protože od klienta BCP byla přijata neplatná délka sloupce.
 
-- **Doporučení:** Chcete-li zjistit, který řádek narazí na problém, povolte funkci odolnosti proti chybám při aktivitě kopírování, která může přesměrovat problematické řádky do úložiště pro další šetření. Referenční dokument: https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance.
+- **Doporučení**: Chcete-li zjistit, který řádek narazí na problém, povolte funkci odolnost proti chybám u aktivity kopírování, která může přesměrovat problematické řádky do úložiště pro další šetření. Referenční doc: https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance.
 
 
 ### <a name="error-code--sqlconnectionisclosed"></a>Kód chyby: SqlConnectionIsClosed
 
 - **Zpráva**:`The connection is closed by SQL Database.`
 
-- **Příčina**: Připojení SQL je ukončeno databází SQL při vysokém souběžném spuštění a ukončení připojení serveru.
+- **Příčina**: připojení SQL je ukončeno SQL Database při vysokém souběžném spuštění a ukončení připojení serveru.
 
-- **Doporučení:** Vzdálený server ukončil připojení SQL. Zkuste to prosím znovu. Pokud problém repro, obraťte se na podporu Azure SQL.
+- **Doporučení**: vzdálený server zavřel připojení SQL. Zkuste to prosím znovu. Pokud se problém reprodukci, obraťte se na podporu Azure SQL.
 
 
 ### <a name="error-code--sqlcreatetablefailedunsupportedtype"></a>Kód chyby: SqlCreateTableFailedUnsupportedType
@@ -340,9 +340,9 @@ Tento článek zkoumá běžné metody řešení potíží pro konektory v Azure
 - **Zpráva**:`Type '%type;' in source side cannot be mapped to a type that supported by sink side(column name:'%name;') in autocreate table.`
 
 
-### <a name="error-message-conversion-failed-when-converting-from-a-character-string-to-uniqueidentifier"></a>Chybová zpráva: Převod se nezdařil při převodu z řetězce znaků na jedinečný identifikátor
+### <a name="error-message-conversion-failed-when-converting-from-a-character-string-to-uniqueidentifier"></a>Chybová zpráva: převod se nezdařil při převodu ze znakového řetězce na typ uniqueidentifier.
 
-- **Příznaky:** Při kopírování dat ze zdroje tabulkových dat (například SQL Server) do datového skladu Azure SQL pomocí fázované kopie a PolyBase, narazí na následující chybu:
+- **Příznaky**: Když zkopírujete data z tabulkového zdroje dat (například SQL Server) do Azure SQL Data Warehouse pomocí připravené kopie a základu, zobrazí se následující chyba:
 
     ```
     ErrorCode=FailedDbOperation,Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,
@@ -351,13 +351,13 @@ Tento článek zkoumá běžné metody řešení potíží pro konektory v Azure
     Message=Conversion failed when converting from a character string to uniqueidentifier...
     ```
 
-- **Příčina:** Azure SQL Data Warehouse PolyBase nemůže převést prázdný řetězec na identifikátor GUID.
+- **Příčina**: Azure SQL data Warehouseá základna nemůže převést prázdný řetězec na identifikátor GUID.
 
-- **Rozlišení**: V propadu aktivity kopírování nastavte v části Nastavení polybase možnost **"use type default"** na hodnotu false.
+- **Řešení**: v jímky aktivity kopírování v části nastavení základní hodnoty nastavte možnost**použít výchozí typ**na hodnotu NEPRAVDA.
 
-### <a name="error-message-expected-data-type-decimalxx-offending-value"></a>Chybová zpráva: Očekávaný datový typ: DECIMAL(x,x), Problematický hodnota
+### <a name="error-message-expected-data-type-decimalxx-offending-value"></a>Chybová zpráva: očekávaný datový typ: DECIMAL (x, x), problematická hodnota
 
-- **Příznaky**: Při kopírování dat ze zdroje tabulkových dat (například SQL Server) do SQL DW pomocí fázované kopie a PolyBase, narazí na následující chybu:
+- **Příznaky**: Když zkopírujete data z tabulkového zdroje dat (například SQL Server) do SQL DW pomocí připravené kopie a základu, zobrazí se následující chyba:
 
     ```
     ErrorCode=FailedDbOperation,Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,
@@ -367,13 +367,13 @@ Tento článek zkoumá běžné metody řešení potíží pro konektory v Azure
     Column ordinal: 18, Expected data type: DECIMAL(x,x), Offending value:..
     ```
 
-- **Příčina:** Azure SQL Datový sklad Polybase nelze vložit prázdný řetězec (hodnota null) do desítkového sloupce.
+- **Příčina**: Azure SQL Data Warehouse základnu nemůže vložit prázdný řetězec (hodnota null) do desetinného sloupce.
 
-- **Rozlišení**: V propadu aktivity kopírování nastavte v části Nastavení polybase možnost **"use type default"** na hodnotu false.
+- **Řešení**: v jímky aktivity kopírování v části nastavení základní hodnoty nastavte možnost**použít výchozí typ**na hodnotu NEPRAVDA.
 
-### <a name="error-message-java-exception-messagehdfsbridgecreaterecordreader"></a>Chybová zpráva: Zpráva o výjimce java:HdfsBridge::CreateRecordReader
+### <a name="error-message-java-exception-messagehdfsbridgecreaterecordreader"></a>Chybová zpráva: zpráva o výjimce Java: HdfsBridge:: CreateRecordReader
 
-- **Příznaky**: Zkopírujete data do datového skladu Azure SQL pomocí PolyBase a hit následující chybu:
+- **Příznaky**: kopírujete data do Azure SQL Data Warehouse pomocí primární databáze a zaškrtnete tuto chybu:
 
     ```
     Message=110802;An internal DMS error occurred that caused this operation to fail. 
@@ -382,70 +382,70 @@ Tento článek zkoumá běžné metody řešení potíží pro konektory v Azure
     Java exception message:HdfsBridge::CreateRecordReader - Unexpected error encountered creating the record reader.: Error [HdfsBridge::CreateRecordReader - Unexpected error encountered creating the record reader.] occurred while accessing external file.....
     ```
 
-- **Příčina**: Možnou příčinou je, že schéma (celková šířka sloupce) je příliš velké (větší než 1 MB). Zkontrolujte schéma cílové tabulky SQL DW přidáním velikosti všech sloupců:
+- **Příčina**: možnou příčinou je, že schéma (celková šířka sloupce) je příliš velké (větší než 1 MB). Ověřte schéma cílové tabulky SQL DW přidáním velikosti všech sloupců:
 
-    - Int -> 4 bajty
-    - Bigint -> 8 bajtů
-    - Varchar(n),char(n),binary(n), varbinary(n) -> n bajtů
-    - Nvarchar(n), nchar(n) -> n*2 bajty
-    - Datum -> 6 bajtů
-    - Datetime/(2), smalldatetime -> 16 bajtů
-    - Datetimeoffset -> 20 bajtů
-    - Desítkové -> 19 bajtů
-    - Plovák -> 8 bajtů
-    - Peníze -> 8 bajtů
-    - Smallmoney -> 4 bajty
-    - Real -> 4 bajty
-    - Smallint -> 2 bajty
-    - Čas -> 12 bajtů
-    - Tinyint -> 1 bajt
+    - Int-> 4 bajty
+    - Bigint – > 8 bajtů
+    - Varchar (n), char (n), Binary (n), varbinary (n)-> n bajtů
+    - Nvarchar (n), nchar (n)-> n * 2 bajty
+    - Datum-> 6 bajtů
+    - DateTime/(2), smalldatetime-> 16 bajtů
+    - DateTimeOffset-> 20 bajtů
+    - Desítkové – > 19 bajtů
+    - Float-> 8 bajtů
+    - Peníze – > 8 bajtů
+    - Smallmoney-> 4 bajty
+    - Reálné > 4 bajty
+    - Smallint – > 2 bajty
+    - Čas – > 12 bajtů
+    - Tinyint-> 1 bajt
 
-- **Rozlišení:** Zmenšení šířky sloupce na menší než 1 MB
+- **Řešení**: Zmenšete šířku sloupce tak, aby byla menší než 1 MB.
 
-- Nebo použijte přístup hromadného vložení zakázáním Polybase
+- Nebo použijte přístup k hromadnému vložení zakázáním základny
 
-### <a name="error-message-the-condition-specified-using-http-conditional-headers-is-not-met"></a>Chybová zpráva: Podmínka zadaná pomocí podmíněných záhlaví HTTP není splněna.
+### <a name="error-message-the-condition-specified-using-http-conditional-headers-is-not-met"></a>Chybová zpráva: podmínka zadaná pomocí podmíněných hlaviček HTTP není splněna.
 
-- **Příznaky**: Pomocí dotazu SQL naváděte data z Azure SQL Data Warehouse a dosáhnete následující chyby:
+- **Příznaky**: k vyžádání dat z Azure SQL Data Warehouse použijte dotaz SQL a stiskněte následující chybu:
 
     ```
     ...StorageException: The condition specified using HTTP conditional header(s) is not met...
     ```
 
-- **Příčina:** Problém s požadavkem na externí tabulku v Azure Storage v Azure Storage.
+- **Příčina**: Azure SQL Data Warehouse narazila na dotaz na externí tabulku v Azure Storage.
 
-- **Řešení**: Spusťte stejný dotaz v SSMS a zkontrolujte, zda se zobrazí stejný výsledek. Pokud ano, pokračujte v řešení potíží otevřením lístku podpory pro službu Azure SQL Data Warehouse a zadáním názvu serveru a databáze SQL Data Warehouse.
+- **Řešení**: Spusťte stejný dotaz v SSMS a zkontrolujte, jestli vidíte stejný výsledek. Pokud ano, pokračujte v řešení potíží otevřením lístku podpory pro službu Azure SQL Data Warehouse a zadáním názvu serveru a databáze SQL Data Warehouse.
             
 
-## <a name="delimited-text-format"></a>Formát textu s oddělovačem
+## <a name="delimited-text-format"></a>Textový formát s oddělovači
 
 ### <a name="error-code--delimitedtextcolumnnamenotallownull"></a>Kód chyby: DelimitedTextColumnNameNotAllowNull
 
 - **Zpráva**:`The name of column index %index; is empty. Make sure column name is properly specified in the header row.`
 
-- **Příčina**: Při nastavení 'firstRowAsHeader' v aktivitě, první řádek bude použit jako název sloupce. Tato chyba znamená, že první řádek obsahuje prázdnou hodnotu. Například: 'ColumnA,,ColumnB'.
+- **Příčina**: když se v aktivitě nastaví ' firstRowAsHeader ', jako název sloupce se použije první řádek. Tato chyba znamená, že první řádek obsahuje prázdnou hodnotu. Například: "Columns,; ColumnB".
 
-- **Doporučení:** Zkontrolujte první řádek a opravte hodnotu, pokud je prázdná hodnota.
+- **Doporučení**: Ověřte první řádek a opravte hodnotu, pokud existuje prázdná hodnota.
 
 
-### <a name="error-code--delimitedtextmorecolumnsthandefined"></a>Kód chyby: Oddělovač textůVícesloupců Thandefined
+### <a name="error-code--delimitedtextmorecolumnsthandefined"></a>Kód chyby: DelimitedTextMoreColumnsThanDefined
 
 - **Zpráva**:`Error found when processing '%function;' source '%name;' with row number %rowCount;: found more columns than expected column count: %columnCount;.`
 
-- **Příčina**: Počet sloupců problematického řádku je velký než počet sloupců prvního řádku. To může být způsobeno problémem s daty nebo nesprávným nastavením znaku oddělovače/uvozovky.
+- **Příčina**: problematický počet sloupců řádku je větší než počet sloupců prvního řádku. Může to být způsobeno problémem s daty nebo nesprávným nastavením oddělovače sloupců nebo uvozovek.
 
-- **Doporučení:** Prosím, získejte počet řádků v chybové zprávě, zkontrolujte sloupec řádku a opravte data.
+- **Doporučení**: načtěte počet řádků v chybové zprávě, zkontrolujte sloupec řádku a opravte data.
 
-- **Příčina**: Pokud je očekávaný počet sloupců "1" v chybové zprávě, je možné, že jste zadali nesprávné nastavení komprese nebo formátu, což způsobilo, že adf nesprávně analyzovat soubory.
+- **Příčina**: Pokud je v chybové zprávě očekávaný počet sloupců "1", je možné, že jste zadali nesprávná nastavení komprese nebo formátu, což způsobilo, že ADF nesprávně analyzuje soubory.
 
-- **Doporučení:** Zkontrolujte nastavení formátu, abyste se ujistili, že se shoduje se zdrojovým souborem.
+- **Doporučení**: Zkontrolujte nastavení formátu a ujistěte se, že se shoduje se zdrojovými soubory.
 
-- **Příčina**: Pokud je zdrojem složka, je možné, že soubory pod určenou složkou mají jiné schéma.
+- **Příčina**: Pokud je zdrojem složka, je možné, že soubory v zadané složce mají jiné schéma.
 
-- **Doporučení**: Ujistěte se, že soubory pod danou složkou mají stejné schéma.
+- **Doporučení**: Ujistěte se, že soubory v dané složce mají stejné schéma.
 
 
-### <a name="error-code--delimitedtextincorrectrowdelimiter"></a>Kód chyby: Oddělovač limitovaných textůTextIncorrectRowDeděl
+### <a name="error-code--delimitedtextincorrectrowdelimiter"></a>Kód chyby: DelimitedTextIncorrectRowDelimiter
 
 - **Zpráva**:`The specified row delimiter %rowDelimiter; is incorrect. Cannot detect a row after parse %size; MB data.`
 
@@ -467,9 +467,9 @@ Tento článek zkoumá běžné metody řešení potíží pro konektory v Azure
 
 - **Zpráva**:`This is a transient issue on dynamics server side. Try to rerun the pipeline.`
 
-- **Příčina**: Jedná se o přechodný problém na straně serveru Dynamics.
+- **Příčina**: Jedná se o přechodný problém na straně Dynamics serveru.
 
-- **Doporučení**: Znovu spusťte potrubí. Pokud se stále nedaří, pokuste se snížit paralelismus. Pokud se stále nezdaří, obraťte se na podporu dynamiky.
+- **Doporučení**: Spusťte kanál znovu. Pokud budete pokračovat, zkuste omezit paralelismus. Pokud pořád selže, obraťte se prosím na podporu Dynamics.
 
 
 
@@ -511,122 +511,122 @@ Tento článek zkoumá běžné metody řešení potíží pro konektory v Azure
 
 
 
-## <a name="parquet-format"></a>Formát parket
+## <a name="parquet-format"></a>Formát Parquet
 
-### <a name="error-code--parquetjavainvocationexception"></a>Kód chyby: ParketyJavaInvocationException
+### <a name="error-code--parquetjavainvocationexception"></a>Kód chyby: ParquetJavaInvocationException
 
 - **Zpráva**:`An error occurred when invoking java, message: %javaException;.`
 
-- **Příčina**: Pokud chybová zpráva obsahuje 'java.lang.OutOfMemory', 'Java haldy prostor' a 'doubleCapacity', obvykle je to problém správy paměti ve staré verzi integrace runtime.
+- **Příčina**: Pokud chybová zpráva obsahuje "Java. lang. OutOfMemory", "prostor haldy jazyka Java" a "doubleCapacity", obvykle se jedná o problém se správou paměti ve staré verzi prostředí Integration runtime.
 
-- **Doporučení:** Pokud používáte modul Runtime integrace s vlastním hostitelem a verze je starší než 3.20.7159.1, navrhněte upgrade na nejnovější verzi.
+- **Doporučení**: pokud používáte Integration runtime v místním prostředí a verze je starší než 3.20.7159.1, navrhněte upgrade na nejnovější verzi.
 
-- **Příčina**: Pokud chybová zpráva obsahuje 'java.lang.OutOfMemory', integrační runtime nemá dostatek prostředků pro zpracování souborů.
+- **Příčina**: Pokud chybová zpráva obsahuje "Java. lang. OutOfMemory", modul runtime integrace nemá dostatek prostředků ke zpracování těchto souborů.
 
-- **Doporučení**: Omezte souběžné spuštění v modulu runtime integrace. Pro prostředí Integrace s vlastním hostitelem můžete vertikálně navýšit kapacitu na výkonný počítač s pamětí rovnou nebo větší než 8 GB.
+- **Doporučení**: Omezte souběžné běhy prostředí Integration runtime. Pro Integration Runtime v místním prostředí, Škálujte až do výkonného počítače s pamětí rovnou nebo větší než 8 GB.
 
-- **Příčina**: Pokud chybová zpráva obsahuje 'NullPointerReference', je možné, že je přechodná chyba.
+- **Příčina**: Pokud chybová zpráva obsahuje ' NullPointerReference ', je možné, že se jedná o přechodnou chybu.
 
-- **Doporučení**: Opakujte akci. Pokud problém přetrvává, obraťte se na podporu.
+- **Doporučení**: zkuste to prosím znovu. Pokud se problém opakuje, obraťte se prosím na podporu.
 
 
-### <a name="error-code--parquetinvalidfile"></a>Kód chyby: ParketyInvalidFile
+### <a name="error-code--parquetinvalidfile"></a>Kód chyby: ParquetInvalidFile
 
 - **Zpráva**:`File is not a valid parquet file.`
 
-- **Příčina**: Problém s parketovými soubory.
+- **Příčina**: problém Parquet souboru.
 
-- **Doporučení:** Zkontrolujte, zda je vstup platný soubor parket.
+- **Doporučení**: Ověřte, zda je vstup platným souborem Parquet.
 
 
 ### <a name="error-code--parquetnotsupportedtype"></a>Kód chyby: ParquetNotSupportedType
 
 - **Zpráva**:`Unsupported Parquet type. PrimitiveType: %primitiveType; OriginalType: %originalType;.`
 
-- **Příčina**: Formát parket není v Azure Data Factory podporovaný.
+- **Příčina**: formát Parquet není v Azure Data Factory podporován.
 
-- **Doporučení**: Zkontrolujte zdrojová data. Viz doc: https://docs.microsoft.com/azure/data-factory/supported-file-formats-and-compression-codecs.
+- **Doporučení**: poklikejte na zdrojová data. Podívejte se na dokument: https://docs.microsoft.com/azure/data-factory/supported-file-formats-and-compression-codecs.
 
 
-### <a name="error-code--parquetmisseddecimalprecisionscale"></a>Kód chyby: ParketyMissedDecimalPrecisionScale
+### <a name="error-code--parquetmisseddecimalprecisionscale"></a>Kód chyby: ParquetMissedDecimalPrecisionScale
 
 - **Zpráva**:`Decimal Precision or Scale information is not found in schema for column: %column;.`
 
-- **Příčina**: Pokuste se analyzovat přesnost čísla a měřítko, ale žádné takové informace nejsou k dispozici.
+- **Příčina**: zkuste analyzovat přesnost čísel a škálování, ale nejsou k dispozici žádné informace.
 
-- **Doporučení**: "Zdroj" nevrací správnou přesnost a měřítko. Zkontrolujte přesnost a měřítko sloupce problému.
+- **Doporučení**: ' source ' nevrací správnou přesnost a škálování. Podívejte se na přesnost a měřítko sloupce problému.
 
 
-### <a name="error-code--parquetinvaliddecimalprecisionscale"></a>Kód chyby: ParketyInvalidDecimalPrecisionScale
+### <a name="error-code--parquetinvaliddecimalprecisionscale"></a>Kód chyby: ParquetInvalidDecimalPrecisionScale
 
 - **Zpráva**:`Invalid Decimal Precision or Scale. Precision: %precision; Scale: %scale;.`
 
-- **Příčina**: Schéma je neplatné.
+- **Příčina**: schéma je neplatné.
 
-- **Doporučení:** Zkontrolujte přesnost a měřítko sloupce problému.
+- **Doporučení**: Ověřte přesnost a měřítko sloupce problému.
 
 
-### <a name="error-code--parquetcolumnnotfound"></a>Kód chyby: ParketaColumnNotFound
+### <a name="error-code--parquetcolumnnotfound"></a>Kód chyby: ParquetColumnNotFound
 
 - **Zpráva**:`Column %column; does not exist in Parquet file.`
 
-- **Příčina**: Schéma zdroje je neshoda se schématem jímky.
+- **Příčina**: zdrojové schéma se neshoduje se schématem jímky.
 
-- **Doporučení**: Zkontrolujte "mapování" v "aktivitě". Ujistěte se, že zdrojový sloupec lze mapovat na sloupec pravéjím houp.
+- **Doporučení**: Ověřte the'mappings v aktivitě. Ujistěte se, že zdrojový sloupec lze namapovat do pravého sloupce jímky.
 
 
-### <a name="error-code--parquetinvaliddataformat"></a>Kód chyby: ParketyInvalidDataFormat
+### <a name="error-code--parquetinvaliddataformat"></a>Kód chyby: ParquetInvalidDataFormat
 
 - **Zpráva**:`Incorrect format of %srcValue; for converting to %dstType;.`
 
-- **Příčina:** Data nelze převést na typ určený v souboru mappings.source
+- **Příčina**: data nejde převést na typ zadaný v mapování. Source.
 
-- **Doporučení:** Zkontrolujte zdrojová data nebo určete správný datový typ pro tento sloupec v mapování sloupců aktivity kopírování. Viz doc: https://docs.microsoft.com/azure/data-factory/supported-file-formats-and-compression-codecs.
+- **Doporučení**: poklikejte na zdrojová data nebo zadejte správný datový typ pro tento sloupec v mapování sloupců aktivity kopírování. Podívejte se na dokument: https://docs.microsoft.com/azure/data-factory/supported-file-formats-and-compression-codecs.
 
 
 ### <a name="error-code--parquetdatacountnotmatchcolumncount"></a>Kód chyby: ParquetDataCountNotMatchColumnCount
 
 - **Zpráva**:`The data count in a row '%sourceColumnCount;' does not match the column count '%sinkColumnCount;' in given schema.`
 
-- **Příčina:** Neshoda počtu zdrojových sloupců a sloupců jímky
+- **Příčina**: Neshoda počtu zdrojových sloupců a sloupců jímky
 
-- **Doporučení:** Dvojitá kontrola počtu zdrojových sloupců je stejná jako počet sloupců jímky v "mapování".
+- **Doporučení**: typ zdrojového sloupce dvojité kontroly je stejný jako počet sloupců jímky v mapování.
 
 
 ### <a name="error-code--parquetdatatypenotmatchcolumntype"></a>Kód chyby: ParquetDataTypeNotMatchColumnType
 
-- **Zpráva**: Datový typ %srcType; neodpovídá danému typu sloupce %dstType; ve sloupci %columnIndex;'.
+- **Zpráva**: datový typ% srcType; se neshoduje s daným typem sloupce% dstType;. ve sloupci% columnIndex;.
 
-- **Příčina:** Data ze zdroje nelze převést na zadaný definovaný v jímce.
+- **Příčina**: data ze zdroje nejde převést na typované definované v jímky.
 
-- **Doporučení:** Zadejte správný typ v mapping.sink.
+- **Doporučení**: Zadejte prosím správný typ v mapování. jímka.
 
 
-### <a name="error-code--parquetbridgeinvaliddata"></a>Kód chyby: Parketa BridgeInvalidData
+### <a name="error-code--parquetbridgeinvaliddata"></a>Kód chyby: ParquetBridgeInvalidData
 
 - **Zpráva**:`%message;`
 
-- **Příčina:** Hodnota dat nad omezením
+- **Příčina**: hodnota dat nad omezením
 
-- **Doporučení**: Opakujte akci. Pokud problém přetrvává, kontaktujte nás.
+- **Doporučení**: zkuste to prosím znovu. Pokud se problém opakuje, kontaktujte nás prosím.
 
 
-### <a name="error-code--parquetunsupportedinterpretation"></a>Kód chyby: ParketyNepodporovanéInterpretace
+### <a name="error-code--parquetunsupportedinterpretation"></a>Kód chyby: ParquetUnsupportedInterpretation
 
 - **Zpráva**:`The given interpretation '%interpretation;' of parquet format is not supported.`
 
-- **Příčina**: Nepodporovaný scénář
+- **Příčina**: nepodporováný scénář
 
-- **Doporučení**: 'ParketquetInterpretFor' by neměl být 'sparkSql'.
+- **Doporučení**: ' ParquetInterpretFor ' by neměl být ' sparkSql '.
 
 
-### <a name="error-code--parquetunsupportfilelevelcompressionoption"></a>Kód chyby: Varianta UnquetUnsupportFileLevelCompressionOption
+### <a name="error-code--parquetunsupportfilelevelcompressionoption"></a>Kód chyby: ParquetUnsupportFileLevelCompressionOption
 
 - **Zpráva**:`File level compression is not supported for Parquet.`
 
-- **Příčina**: Nepodporovaný scénář
+- **Příčina**: nepodporováný scénář
 
-- **Doporučení:** Odebrat 'CompressionType' v datové části.
+- **Doporučení**: Odeberte ' Argument ' v datové části.
 
 
 
@@ -636,18 +636,18 @@ Tento článek zkoumá běžné metody řešení potíží pro konektory v Azure
 
 - **Zpráva**:`Java Runtime Environment cannot be found on the Self-hosted Integration Runtime machine. It is required for parsing or writing to Parquet/ORC files. Make sure Java Runtime Environment has been installed on the Self-hosted Integration Runtime machine.`
 
-- **Příčina**: Prostředí runtime integrace s vlastním hostitelem nemůže najít java runtime. Java Runtime je vyžadován pro čtení konkrétního zdroje.
+- **Příčina**: modul runtime integrace v místním prostředí nemůže najít modul runtime Java. Modul Java Runtime je vyžadován pro čtení konkrétního zdroje.
 
-- **Doporučení:** Zkontrolujte prostředí runtime integrace, referenční dokument:https://docs.microsoft.com/azure/data-factory/format-parquet#using-self-hosted-integration-runtime
+- **Doporučení**: Podívejte se do prostředí Integration runtime, referenční dokument:https://docs.microsoft.com/azure/data-factory/format-parquet#using-self-hosted-integration-runtime
 
 
-### <a name="error-code--wildcardpathsinknotsupported"></a>Kód chyby: Zástupný znak_
+### <a name="error-code--wildcardpathsinknotsupported"></a>Kód chyby: WildcardPathSinkNotSupported
 
 - **Zpráva**:`Wildcard in path is not supported in sink dataset. Fix the path: '%setting;'.`
 
-- **Příčina**: Datová sada jímky nepodporuje zástupný znak.
+- **Příčina**: datová sada jímky nepodporuje zástupný znak.
 
-- **Doporučení:** Zkontrolujte datovou sadu jímky a opravte cestu bez hodnoty zástupných symbolů.
+- **Doporučení**: Ověřte datovou sadu jímky a opravte cestu bez zástupných hodnot.
 
 
 ### <a name="error-code--mappinginvalidpropertywithemptyvalue"></a>Kód chyby: MappingInvalidPropertyWithEmptyValue
@@ -672,12 +672,12 @@ Tento článek zkoumá běžné metody řešení potíží pro konektory v Azure
 
 ## <a name="next-steps"></a>Další kroky
 
-Další nápovědu k řešení potíží naleznete v těchto zdrojích:
+Pro další nápovědu k řešení potíží zkuste tyto prostředky:
 
-*  [Blog data factory](https://azure.microsoft.com/blog/tag/azure-data-factory/)
-*  [Požadavky na funkce datové továrny](https://feedback.azure.com/forums/270578-data-factory)
+*  [Blog Data Factory](https://azure.microsoft.com/blog/tag/azure-data-factory/)
+*  [Žádosti o Data Factory funkcí](https://feedback.azure.com/forums/270578-data-factory)
 *  [Videa Azure](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
 *  [Fórum MSDN](https://social.msdn.microsoft.com/Forums/home?sort=relevancedesc&brandIgnore=True&searchTerm=data+factory)
-*  [Fórum přetečení zásobníku pro datovou továrnu](https://stackoverflow.com/questions/tagged/azure-data-factory)
-*  [Twitter informace o Data Factory](https://twitter.com/hashtag/DataFactory)
+*  [Stack Overflow fórum pro Data Factory](https://stackoverflow.com/questions/tagged/azure-data-factory)
+*  [Informace o Twitteru týkající se Data Factory](https://twitter.com/hashtag/DataFactory)
             

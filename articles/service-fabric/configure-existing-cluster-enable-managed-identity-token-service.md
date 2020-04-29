@@ -1,30 +1,30 @@
 ---
-title: Konfigurace podpory spravovaných identit v existujícím clusteru Service Fabric
-description: Tady je postup, jak povolit podporu spravovaných identit v existujícím clusteru Azure Service Fabric.
+title: Konfigurace podpory spravované identity v existujícím clusteru Service Fabric
+description: Tady je postup povolení podpory spravovaných identit v existujícím clusteru Azure Service Fabric.
 ms.topic: article
 ms.date: 03/11/2019
 ms.custom: sfrev
 ms.openlocfilehash: 73c890e960f26b8e0e3fa924d9ff6b7a4cd4a4dc
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81415691"
 ---
-# <a name="configure-managed-identity-support-in-an-existing-service-fabric-cluster"></a>Konfigurace podpory spravovaných identit v existujícím clusteru Service Fabric
+# <a name="configure-managed-identity-support-in-an-existing-service-fabric-cluster"></a>Konfigurace podpory spravované identity v existujícím clusteru Service Fabric
 
-Chcete-li používat [spravované identity pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md) ve vašich aplikacích Service Fabric, povolte nejprve *službu Token spravované identity* v clusteru. Tato služba je zodpovědná za ověřování aplikací Service Fabric pomocí jejich spravovaných identit a za získání přístupových tokenů jejich jménem. Jakmile je služba povolena, můžete ji vidět v aplikaci Service Fabric Explorer v části **Systém** v levém podokně, která je spuštěna pod názvem **fabric:/System/ManagedIdentityTokenService**.
+Pokud chcete používat [spravované identity pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md) ve vašich aplikacích Service Fabric, nejdřív v clusteru povolte *službu Managed identity token* . Tato služba zodpovídá za ověřování Service Fabric aplikací pomocí svých spravovaných identit a pro získání přístupových tokenů jejich jménem. Jakmile je služba povolená, můžete ji zobrazit v Service Fabric Explorer v části **systém** v levém podokně, která běží pod názvem **Fabric:/System/ManagedIdentityTokenService**.
 
 > [!NOTE]
-> K povolení **služby Managed Identity Token Service Fabric**verze 6.5.658.9590 nebo vyšší je vyžadována runtime service fabric verze 6.5.658.9590 nebo vyšší .  
+> Aby bylo možné povolit **službu tokenu spravované identity**, je nutné, aby verze modulu runtime Service Fabric 6.5.658.9590 nebo novější.  
 >
-> Verzi service fabric clusteru z portálu Azure najdete tak, že otevřete prostředek clusteru a zkontrolujete vlastnost **Service Fabric verze** v části **Essentials.**
+> Service Fabric verzi clusteru můžete najít z Azure Portal otevřením prostředku clusteru a kontrolou vlastnosti **Service Fabric verze** v části **Essentials** .
 >
-> Pokud je cluster v režimu **ručního** upgradu, budete ho muset nejprve upgradovat na 6.5.658.9590 nebo novější.
+> Pokud je cluster v režimu **ručního** upgradu, budete ho muset nejdřív upgradovat na 6.5.658.9590 nebo novější.
 
-## <a name="enable-managed-identity-token-service-in-an-existing-cluster"></a>Povolení *služby tokenů spravované identity* v existujícím clusteru
+## <a name="enable-managed-identity-token-service-in-an-existing-cluster"></a>Povolení *služby spravovaného tokenu identity* v existujícím clusteru
 
-Chcete-li povolit službu tokenů spravované identity v existujícím clusteru, budete muset zahájit upgrade clusteru určující dvě změny: (1) Povolení služby tokenů spravované identity a (2) požadující restartování každého uzlu. Nejprve přidejte následující úryvek šablony správce prostředků Azure:
+Chcete-li povolit službu spravovaných tokenů identity v existujícím clusteru, bude nutné zahájit upgrade clusteru s určením dvou změn: (1) povolení služby spravovaného tokenu identity a (2) požadavky na restartování každého uzlu. Nejdřív přidejte následující fragment kódu, který Azure Resource Manager šablona clusteru:
 
 ```json
 "fabricSettings": [
@@ -40,7 +40,7 @@ Chcete-li povolit službu tokenů spravované identity v existujícím clusteru,
 ]
 ```
 
-Aby se změny projevily, budete také muset změnit zásady upgradu a určit vynucené restartování runtime Service Fabric v každém uzlu, zatímco upgrade probíhá v clusteru. Toto restartování zajišťuje, že nově povolená systémová služba je spuštěna a spuštěna na každém uzlu. Ve fragmentu níže, `forceRestart` je základní nastavení povolit restartování. Pro zbývající parametry použijte níže popsané hodnoty nebo použijte existující vlastní hodnoty, které již byly zadány pro prostředek clusteru. Vlastní nastavení zásad upgradu prostředků ("upgradeDescription") lze zobrazit z webu Azure Portal výběrem možnosti Upgrady prostředků prostředků nebo resources.azure.com. Výchozí možnosti zásad upgradu ("upgradeDescription") nelze zobrazit z prostředí Powershell nebo resources.azure.com. Další informace naleznete v [tématu ClusterUpgradePolicy.](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.servicefabric.models.clusterupgradepolicy?view=azure-dotnet)  
+Aby se změny projevily, budete také muset změnit zásadu upgradu, aby určovala vynucené restartování Service Fabric modulu runtime na každém uzlu, protože upgrade probíhají prostřednictvím clusteru. Tento restart zajistí, že se nově povolená systémová služba spustí a spustí na každém uzlu. V následujícím fragmentu kódu `forceRestart` je základní nastavení pro povolení restartu. Pro zbývající parametry použijte hodnoty popsané níže nebo použijte existující vlastní hodnoty, které už jsou pro prostředek clusteru zadané. Vlastní nastavení zásad upgradu prostředků infrastruktury (upgradeDescription) se dají zobrazit na webu Azure Portal výběrem možnosti upgrady prostředků infrastruktury na prostředku Service Fabric nebo resources.azure.com. Výchozí možnosti pro zásady upgradu (upgradeDescription) není možné zobrazit z PowerShellu ani resources.azure.com. Další informace najdete v tématu [ClusterUpgradePolicy](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.servicefabric.models.clusterupgradepolicy?view=azure-dotnet) .  
 
 ```json
 "upgradeDescription": {
@@ -55,11 +55,11 @@ Aby se změny projevily, budete také muset změnit zásady upgradu a určit vyn
 ```
 
 > [!NOTE]
-> Po úspěšném dokončení upgradu nezapomeňte vrátit `forceRestart` zpět nastavení, aby se minimalizoval dopad následných upgradů. 
+> Po úspěšném dokončení upgradu nezapomeňte `forceRestart` nastavení vrátit zpátky, abyste minimalizovali dopad následných upgradů. 
 
 ## <a name="errors-and-troubleshooting"></a>Chyby a řešení problémů
 
-Pokud se nasazení nezdaří s následující zprávou, znamená to, že cluster není spuštěn na dostatečně vysoké verzi Service Fabric:
+Pokud se nasazení nepovede s následující zprávou, znamená to, že cluster neběží na dostatečně vysokém Service Fabric verzi:
 
 ```json
 {
@@ -71,5 +71,5 @@ Pokud se nasazení nezdaří s následující zprávou, znamená to, že cluster
 ## <a name="next-steps"></a>Další kroky
 * [Nasazení aplikace Azure Service Fabric se spravovanou identitou přiřazenou systémem](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
 * [Nasazení aplikace Azure Service Fabric s uživatelem přiřazenou spravovanou identitou](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
-* [Využití spravované identity aplikace Service Fabric z kódu služby](./how-to-managed-identity-service-fabric-app-code.md)
-* [Udělení přístupu aplikací Azure Service Fabric k dalším prostředkům Azure](./how-to-grant-access-other-resources.md)
+* [Využití spravované identity Service Fabric aplikace z kódu služby](./how-to-managed-identity-service-fabric-app-code.md)
+* [Udělení přístupu k aplikacím Azure Service Fabric k ostatním prostředkům Azure](./how-to-grant-access-other-resources.md)

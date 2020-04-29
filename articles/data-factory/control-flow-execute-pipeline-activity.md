@@ -1,6 +1,6 @@
 ---
-title: Spuštění aktivity kanálu v Azure Data Factory
-description: Zjistěte, jak můžete použít aktivitu spuštění kanálu k vyvolání jednoho kanálu datové továrny z jiného kanálu datové továrny.
+title: Spustit aktivitu kanálu v Azure Data Factory
+description: Zjistěte, jak můžete pomocí aktivity spustit kanál vyvolat jeden Data Factory kanál z jiného kanálu Data Factory.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 4bd667a2302136b5e12d2e4e548c9e8863715621
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81415282"
 ---
-# <a name="execute-pipeline-activity-in-azure-data-factory"></a>Spuštění aktivity kanálu v Azure Data Factory
+# <a name="execute-pipeline-activity-in-azure-data-factory"></a>Spustit aktivitu kanálu v Azure Data Factory
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
@@ -66,17 +66,17 @@ Aktivita spuštění kanálu umožňuje kanálu služby Data Factory volat jiný
 
 Vlastnost | Popis | Povolené hodnoty | Požaduje se
 -------- | ----------- | -------------- | --------
-jméno | Název aktivity kanálu spuštění. | Řetězec | Ano
-type | Musí být nastavena na: **ExecutePipeline**. | Řetězec | Ano
-Potrubí | Odkaz na závislý kanál, který tento kanál vyvolá. Referenční objekt kanálu má dvě vlastnosti: **referenceName** a **type**. Vlastnost referencename určuje název referenčního kanálu. Vlastnost type musí být nastavena na PipelineReference. | Odkaz na kanál | Ano
-parameters | Parametry, které mají být předány vyvolaný kanál | Objekt JSON, který mapuje názvy parametrů na hodnoty argumentů | Ne
-waitOnCompletion | Definuje, zda spuštění aktivity čeká na dokončení spuštění závislého kanálu. Výchozí hodnota je false. | Logická hodnota | Ne
+jméno | Název aktivity spustit kanál | Řetězec | Ano
+type | Musí být nastavené na: **ExecutePipeline**. | Řetězec | Ano
+kanálu | Odkaz na kanál na závislý kanál, který tento kanál vyvolá Objekt odkazu na kanál má dva vlastnosti: **odkaz** a **typ**. Vlastnost FileReference Určuje název kanálu odkazu. Vlastnost Type musí být nastavená na PipelineReference. | PipelineReference | Ano
+parameters | Parametry, které se mají předat vyvolanému kanálu | Objekt JSON, který mapuje názvy parametrů na hodnoty argumentu | Ne
+waitOnCompletion | Definuje, zda provádění aktivit čeká na dokončení zpracování závislého kanálu. Výchozí hodnota je false. | Logická hodnota | Ne
 
 ## <a name="sample"></a>Ukázka
 Tento scénář má dva kanály:
 
-- **Hlavní kanál** – Tento kanál má jednu aktivitu spustit kanálu, která volá vyvolaný kanál. Hlavní kanál má dva `masterSourceBlobContainer`parametry: , `masterSinkBlobContainer`.
-- **Vyvolaný kanál** – tento kanál má jednu aktivitu copy, která kopíruje data ze zdroje objektů Blob Azure do jímky objektů Blob Azure. Vyvolaný kanál má `sourceBlobContainer` `sinkBlobContainer`dva parametry: , .
+- **Hlavní kanál** – tento kanál má jednu aktivitu spuštění kanálu, která volá vyvolaný kanál. Hlavní kanál používá dva parametry: `masterSourceBlobContainer`,. `masterSinkBlobContainer`
+- **Vyvolaný kanál** – tento kanál má jednu aktivitu kopírování, která kopíruje data ze zdroje objektů blob Azure do jímky objektů BLOB v Azure. Vyvolaný kanál používá dva parametry: `sourceBlobContainer`, `sinkBlobContainer`.
 
 ### <a name="master-pipeline-definition"></a>Definice hlavního kanálu
 
@@ -120,7 +120,7 @@ Tento scénář má dva kanály:
 
 ```
 
-### <a name="invoked-pipeline-definition"></a>Vyvolání definice kanálu
+### <a name="invoked-pipeline-definition"></a>Vyvolaná definice kanálu
 
 ```json
 {
@@ -222,7 +222,7 @@ Tento scénář má dva kanály:
 
 ### <a name="running-the-pipeline"></a>Spuštění kanálu
 
-Chcete-li spustit hlavní kanál v tomto příkladu, jsou předány následující hodnoty pro parametry masterSourceBlobContainer a masterSinkBlobContainer: 
+Pro spuštění hlavního kanálu v tomto příkladu jsou předány následující hodnoty pro parametry masterSourceBlobContainer a masterSinkBlobContainer: 
 
 ```json
 {
@@ -231,7 +231,7 @@ Chcete-li spustit hlavní kanál v tomto příkladu, jsou předány následujíc
 }
 ```
 
-Hlavní kanál předá tyto hodnoty do vyvolaný kanál, jak je znázorněno v následujícím příkladu: 
+Hlavní kanál přepošle tyto hodnoty na vyvolaný kanál, jak je znázorněno v následujícím příkladu: 
 
 ```json
 {
@@ -257,7 +257,7 @@ Hlavní kanál předá tyto hodnoty do vyvolaný kanál, jak je znázorněno v n
 
 ```
 ## <a name="next-steps"></a>Další kroky
-Podívejte se na další aktivity toku řízení podporované factory: 
+Podívejte se na další aktivity toku řízení podporované Data Factory: 
 
 - [Aktivita For Each](control-flow-for-each-activity.md)
 - [Aktivita získání metadat](control-flow-get-metadata-activity.md)

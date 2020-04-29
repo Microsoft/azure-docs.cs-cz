@@ -1,6 +1,6 @@
 ---
-title: Sloučení transformace v toku dat mapování
-description: Denormalizovat hierarchická data pomocí sloučení transformace
+title: Transformace sloučení v toku dat mapování
+description: Denormalizovat hierarchická data pomocí transformace sloučení
 author: kromerm
 ms.author: makromer
 ms.review: daperlov
@@ -8,41 +8,41 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.openlocfilehash: a0e75957a0ab49394dab56f2b7fb847dee4b43cb
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81413677"
 ---
-# <a name="flatten-transformation-in-mapping-data-flow"></a>Sloučení transformace v toku dat mapování
+# <a name="flatten-transformation-in-mapping-data-flow"></a>Transformace sloučení v toku dat mapování
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Pomocí sloučení transformace můžete vzít hodnoty pole do hierarchických struktur, jako je například JSON, a rozbalit je do jednotlivých řádků. Tento proces se nazývá denormalizace.
+Použijte transformaci sloučení k převzetí hodnot polí v hierarchických strukturách, jako je JSON, a Odveďte je do jednotlivých řádků. Tento proces se označuje jako denormalizace.
 
 ## <a name="configuration"></a>Konfigurace
 
-Sloučení transformace obsahuje následující nastavení konfigurace
+Transformace sloučení obsahuje následující nastavení konfigurace.
 
-![Sloučení nastavení](media/data-flow/flatten1.png "Sloučení nastavení")
+![Nastavení sloučení průhledností](media/data-flow/flatten1.png "Nastavení sloučení průhledností")
 
-### <a name="unroll-by"></a>Odvíjet podle
+### <a name="unroll-by"></a>Odvádět od
 
-Vyberte pole, které chcete rozbalit. Výstupní data budou mít jeden řádek na položku v každém poli. Pokud rozbalit pole ve vstupním řádku je null nebo prázdné, bude jeden výstupní řádek s unrolled hodnoty jako null.
+Vyberte pole, které chcete odznačit. Výstupní data budou mít jeden řádek na každou položku v každém poli. Pokud je pole Nezahrnuto ve vstupním řádku null nebo prázdné, bude jeden výstupní řádek s nenasazenými hodnotami jako null.
 
-### <a name="unroll-root"></a>Zrušit kořenový adresář
+### <a name="unroll-root"></a>Odveďte kořen
 
-Ve výchozím nastavení sloučení množí se zploštit matice na začátek hierarchie, ve které existuje. Volitelně můžete vybrat pole jako kořenový adresář. Rozbalit kořen musí být pole složitých objektů, které buď je nebo obsahuje rozbalit pole. Pokud je vybrán kořen rozbalovací, výstupní data budou obsahovat alespoň jeden řádek na položky v kořenovém adresáři rozbalit. Pokud vstupní řádek nemá žádné položky v kořenovém adresáři unroll, bude vynechán z výstupních dat. Výběr kořenového adresáře pro rozvrácení bude vždy výstup menší nebo stejný počet řádků než výchozí chování.
+Ve výchozím nastavení sloučí transformaci pole na horní část hierarchie, ve které existuje. Volitelně můžete vybrat pole jako nekumulativní kořen. Kořenová složka pro odebrání musí být pole komplexních objektů, které je buď nebo obsahuje pole dewind. Pokud je vybráno "kumulativní kořen", budou výstupní data obsahovat alespoň jeden řádek na položky v kořenu kumulativního umístění. Pokud vstupní řádek neobsahuje žádné položky v kořenu, bude z výstupních dat vyřazen. Výběr neúplného kořenu bude vždy mít za následek menší nebo stejný počet řádků než výchozí chování.
 
-### <a name="flatten-mapping"></a>Sloučení mapování
+### <a name="flatten-mapping"></a>Mapování sloučení
 
-Podobně jako u vybrané transformace zvolte projekci nové struktury z příchozích polí a nenormalizovaného pole. Pokud je namapováno nenormalizované pole, bude výstupní sloupec mít stejný datový typ jako pole. Pokud unroll podle pole je pole složitých objektů, které obsahuje subpole, mapování položky tohoto subarry bude výstup pole.
+Podobně jako u transformace vyberte možnost projekce nové struktury ze příchozích polí a denormalizovaného pole. Pokud je namapováno denormalizované pole, výstupní sloupec bude stejný datový typ jako pole. Pokud je pole unwind v poli složitých objektů, které obsahují podpole, mapování položky tohoto subarry bude mít za následek výstup pole.
 
-Ověřte výstup mapování na kartě Kontrola a náhledu dat.
+Pokud chcete ověřit výstup mapování, přečtěte si kartu Kontrola a náhled dat.
 
 ## <a name="examples"></a>Příklady
 
-Následující příklady zploštělé transformace naleznete na následujícím objektu JSON.
+Viz následující objekt JSON pro níže uvedené příklady transformace sloučení.
 
 ``` json
 {
@@ -64,11 +64,11 @@ Následující příklady zploštělé transformace naleznete na následujícím
 {"name": "Company3", "location": "Kirkland"}
 ```
 
-### <a name="no-unroll-root-with-string-array"></a>Žádný kořenový adresář s polem řetězců
+### <a name="no-unroll-root-with-string-array"></a>Nekumulativní kořen s polem řetězců
 
-| Odvíjet podle | Zrušit kořenový adresář | Projekce |
+| Odvádět od | Odveďte kořen | Projekce |
 | --------- | ----------- | ---------- |
-| zboží.zákazníci | Žádná | jméno <br> odběratel = goods.customer |
+| zboží. zákazníci | Žádná | jméno <br> Zákazník = zboží. Zákazník |
 
 #### <a name="output"></a>Výstup
 
@@ -82,11 +82,11 @@ Následující příklady zploštělé transformace naleznete na následujícím
 { 'Company3', null}
 ```
 
-### <a name="no-unroll-root-with-complex-array"></a>Žádný kořenový adresář se složitým polem
+### <a name="no-unroll-root-with-complex-array"></a>Nekumulativní kořen se složitým polem
 
-| Odvíjet podle | Zrušit kořenový adresář | Projekce |
+| Odvádět od | Odveďte kořen | Projekce |
 | --------- | ----------- | ---------- |
-| goods.orders.shipped.orderItems | Žádná | jméno <br> orderId = goods.orders.orderId <br> itemName = goods.orders.shipped.orderItems.itemName <br> itemQty = goods.orders.shipped.orderItems.itemQty <br> umístění = umístění |
+| zboží. Orders. expedovaných. orderItems | Žádná | jméno <br> ČísloObjednávky = zboží. Orders. ČísloObjednávky <br> Item = zboží. Orders. expedováno. orderItems. Item <br> itemQty = zboží. Orders. dodána. orderItems. itemQty <br> umístění = umístění |
 
 #### <a name="output"></a>Výstup
 
@@ -103,11 +103,11 @@ Následující příklady zploštělé transformace naleznete na následujícím
 { 'Company3', null, null, null, 'Kirkland'}
 ```
 
-### <a name="same-root-as-unroll-array"></a>Stejný kořen jako rozbalit pole
+### <a name="same-root-as-unroll-array"></a>Stejný kořen jako nekumulativní pole
 
-| Odvíjet podle | Zrušit kořenový adresář | Projekce |
+| Odvádět od | Odveďte kořen | Projekce |
 | --------- | ----------- | ---------- |
-| zboží.objednávky | zboží.objednávky | jméno <br> goods.orders.shipped.orderItems.itemName <br> zboží.zákazníci <br> location |
+| zboží. objednávky | zboží. objednávky | jméno <br> Items. Orders. expedovaných. orderItems. Item <br> zboží. zákazníci <br> location |
 
 #### <a name="output"></a>Výstup
 
@@ -119,11 +119,11 @@ Následující příklady zploštělé transformace naleznete na následujícím
 { 'Company2', null, ['Bank'], 'Bellevue'}
 ```
 
-### <a name="unroll-root-with-complex-array"></a>Odvíjet kořen se složitým polem
+### <a name="unroll-root-with-complex-array"></a>Rozveďte kořen se složitým polem.
 
-| Odvíjet podle | Zrušit kořenový adresář | Projekce |
+| Odvádět od | Odveďte kořen | Projekce |
 | --------- | ----------- | ---------- |
-| goods.orders.shipped.orderItem | zboží.objednávky |jméno <br> orderId = goods.orders.orderId <br> itemName = goods.orders.shipped.orderItems.itemName <br> itemQty = goods.orders.shipped.orderItems.itemQty <br> umístění = umístění |
+| zboží. Orders. expedovaných. orderItem | zboží. objednávky |jméno <br> ČísloObjednávky = zboží. Orders. ČísloObjednávky <br> Item = zboží. Orders. expedováno. orderItems. Item <br> itemQty = zboží. Orders. dodána. orderItems. itemQty <br> umístění = umístění |
 
 #### <a name="output"></a>Výstup
 
@@ -171,5 +171,5 @@ source foldDown(unroll(goods.orders.shipped.orderItems, goods.orders),
 
 ## <a name="next-steps"></a>Další kroky
 
-* Transformace [pivotu](data-flow-pivot.md) slouží k přemění řádků ke sloupcům.
-* Transformace [Unpivot](data-flow-unpivot.md) slouží k přeměně sloupců na řádky.
+* K pivotování řádků na sloupce použijte [transformaci pivotu](data-flow-pivot.md) .
+* Použijte [transformaci Unpivot](data-flow-unpivot.md) k vytvoření kontingenčních sloupců na řádcích.

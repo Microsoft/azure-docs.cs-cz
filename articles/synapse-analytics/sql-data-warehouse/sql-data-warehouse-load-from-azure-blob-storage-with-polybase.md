@@ -1,6 +1,6 @@
 ---
-title: Načtení maloobchodních dat společnosti Contoso do datového skladu Synapse SQL
-description: Příkazy PolyBase a T-SQL slouží k načtení dvou tabulek z maloobchodních dat společnosti Contoso do synapse SQL.
+title: Načtení maloobchodních dat Contoso do synapse SQL Data Warehouse
+description: K načtení dvou tabulek z maloobchodních dat společnosti Contoso do synapse SQL použijte příkazy jazyka T-SQL.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -12,35 +12,35 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 118653efc8829ac5ef6287bb36fb5595cff1147b
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81416133"
 ---
-# <a name="load-contoso-retail-data-to-synapse-sql"></a>Načtení maloobchodních dat společnosti Contoso do synapse SQL 
+# <a name="load-contoso-retail-data-to-synapse-sql"></a>Načtení maloobchodních dat Contoso do synapse SQL 
 
-V tomto kurzu se naučíte používat příkazy PolyBase a T-SQL k načtení dvou tabulek z maloobchodních dat Contoso do datového skladu Synapse SQL.
+V tomto kurzu se naučíte používat příkazy jazyka T-SQL k načtení dvou tabulek z maloobchodních dat společnosti Contoso do synapse SQL Data Warehouse.
 
-V tomto tutoriálu budete:
+V tomto kurzu provedete tyto kroky:
 
-1. Konfigurace polybase pro načtení z úložiště objektů blob Azure
-2. Načítání veřejných dat do databáze
-3. Po dokončení načítání proveďte optimalizace.
+1. Konfigurace základu pro načtení ze služby Azure Blob Storage
+2. Načtení veřejných dat do databáze
+3. Proveďte optimalizace po dokončení zátěže.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
-Ke spuštění tohoto kurzu potřebujete účet Azure, který už má datový sklad Synapse SQL. Pokud nemáte zřízený datový sklad, přečtěte si článek [Vytvoření datového skladu a nastavení pravidla brány firewall na úrovni serveru](create-data-warehouse-portal.md).
+Ke spuštění tohoto kurzu potřebujete účet Azure, který už má synapse SQL Data Warehouse. Pokud nemáte zřízen datový sklad, přečtěte si téma [vytvoření datového skladu a nastavení pravidla brány firewall na úrovni serveru](create-data-warehouse-portal.md).
 
 ## <a name="configure-the-data-source"></a>Konfigurace zdroje dat
 
-PolyBase používá externí objekty T-SQL k definování umístění a atributů externích dat. Definice externích objektů jsou uloženy v datovém skladu Synapse SQL. Data jsou uložena externě.
+Základna používá externí objekty T-SQL k definování umístění a atributů externích dat. Definice externích objektů se ukládají do služby synapse SQL Data Warehouse. Data jsou ukládána externě.
 
-## <a name="create-a-credential"></a>Vytvoření pověření
+## <a name="create-a-credential"></a>Vytvoření přihlašovacích údajů
 
-**Tento krok přeskočte,** pokud načítáte veřejná data contoso. Nepotřebujete zabezpečený přístup k veřejným datům, protože jsou již přístupná komukoli.
+**Tento krok přeskočte** , pokud načítáte veřejná data společnosti Contoso. Nepotřebujete zabezpečený přístup k veřejným datům, protože už je přístupná pro kohokoli.
 
-**Tento krok nepřeskakujte,** pokud tento kurz používáte jako šablonu pro načítání vlastních dat. Chcete-li získat přístup k datům prostřednictvím pověření, vytvořte pověření s rozsahem databáze pomocí následujícího skriptu. Pak ji použijte při definování umístění zdroje dat.
+**Tento krok nepřeskakujte** , pokud tento kurz používáte jako šablonu pro načítání vlastních dat. Pro přístup k datům prostřednictvím přihlašovacích údajů použijte následující skript k vytvoření přihlašovacích údajů v oboru databáze. Pak ji použijte při definování umístění zdroje dat.
 
 ```sql
 -- A: Create a master key.
@@ -77,7 +77,7 @@ WITH (
 
 ## <a name="create-the-external-data-source"></a>Vytvoření externího zdroje dat
 
-Pomocí tohoto příkazu [VYTVOŘIT EXTERNÍ ZDROJ DAT](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) můžete uložit umístění dat a datový typ.
+Pomocí tohoto příkazu [Create External data source](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) uložte umístění dat a datový typ.
 
 ```sql
 CREATE EXTERNAL DATA SOURCE AzureStorage_west_public
@@ -89,11 +89,11 @@ WITH
 ```
 
 > [!IMPORTANT]
-> Pokud se rozhodnete, že vaše kontejnery úložiště objektů blob azure budou veřejné, nezapomeňte, že jako vlastník dat se vám budou účtovat poplatky za odchozí data, když data opustí datové centrum.
+> Pokud se rozhodnete, aby byly kontejnery úložiště objektů BLOB v Azure veřejné, pamatujte, že jako vlastník dat se vám budou účtovat poplatky za přenos dat, když data opustí datové centrum.
 
 ## <a name="configure-the-data-format"></a>Konfigurace formátu dat
 
-Data jsou uložená v textových souborech v úložišti objektů blob Azure a každé pole je odděleno oddělovačem. V SSMS spusťte následující příkaz CREATE EXTERNAL FILE FORMAT a určete formát dat v textových souborech. Data Contoso jsou nekomprimovaná a potrubí odděleno.
+Data jsou uložená v textových souborech v úložišti objektů BLOB v Azure a každé pole je oddělené oddělovačem. V SSMS spusťte následující příkaz CREATE EXTERNAL FILE FORMAT a určete formát dat v textových souborech. Data společnosti Contoso jsou nekomprimovaná a oddělená kanálem.
 
 ```sql
 CREATE EXTERNAL FILE FORMAT TextFileFormat
@@ -111,7 +111,7 @@ WITH
 
 Teď, když jste zadali zdroj dat a formát souboru, jste připraveni vytvořit schéma pro externí tabulky.
 
-Chcete-li vytvořit místo pro uložení dat contoso v databázi, vytvořte schéma.
+Chcete-li vytvořit místo pro uložení dat společnosti Contoso v databázi, vytvořte schéma.
 
 ```sql
 CREATE SCHEMA [asb]
@@ -120,9 +120,9 @@ GO
 
 ## <a name="create-the-external-tables"></a>Vytvoření externích tabulek
 
-Spusťte následující skript a vytvořte externí tabulky DimProduct a FactOnlineSales. Jediné, co tady děláte, je definování názvů sloupců a datových typů a jejich vazba na umístění a formát souborů úložiště objektů blob Azure. Definice se uložených v datovém skladu a data je stále v objektu blob úložiště Azure.
+Spusťte následující skript pro vytvoření externích tabulek DimProduct a FactOnlineSales. Tady je definování názvů sloupců a datových typů a jejich navázání na umístění a formát souborů úložiště objektů BLOB v Azure. Definice je uložena v datovém skladu a data jsou stále v Azure Storage Blob.
 
-Parametr **LOCATION** je složka pod kořenovou složkou v objektu blob úložiště Azure. Každá tabulka je v jiné složce.
+Parametr **Location** je složka v kořenové složce Azure Storage BLOB. Každá tabulka je v jiné složce.
 
 ```sql
 --DimProduct
@@ -208,11 +208,11 @@ WITH
 
 ## <a name="load-the-data"></a>Načtení dat
 
-Existují různé způsoby přístupu k externím datům.  Data můžete dotazovat přímo z externích tabulek, načíst je do nových tabulek v datovém skladu nebo přidat externí data do existujících tabulek datového skladu.  
+Existují různé způsoby, jak získat přístup k externím datům.  Můžete zadávat dotazy na data přímo z externích tabulek, načítat data do nových tabulek v datovém skladu nebo přidávat externí data do existujících tabulek datového skladu.  
 
-### <a name="create-a-new-schema"></a>Vytvoření nového schématu
+### <a name="create-a-new-schema"></a>Vytvořit nové schéma
 
-CTAS vytvoří novou tabulku, která obsahuje data.  Nejprve vytvořte schéma pro data contoso.
+CTAS vytvoří novou tabulku, která obsahuje data.  Nejprve vytvořte schéma pro data společnosti Contoso.
 
 ```sql
 CREATE SCHEMA [cso]
@@ -221,9 +221,9 @@ GO
 
 ### <a name="load-the-data-into-new-tables"></a>Načtení dat do nových tabulek
 
-Chcete-li načíst data z úložiště objektů blob Azure do tabulky datového skladu, použijte příkaz [CREATE TABLE AS SELECT (Transact-SQL).](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) Načítání pomocí [CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) využívá silně typované externí tabulky, které jste vytvořili. Chcete-li načíst data do nových tabulek, použijte jeden příkaz CTAS pro tabulku.
+K načtení dat z úložiště objektů BLOB v Azure do tabulky datového skladu použijte příkaz [CREATE TABLE AS Select (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) . Načítání pomocí [CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) využívá externí tabulky silného typu, které jste vytvořili. Chcete-li načíst data do nových tabulek, použijte jeden příkaz CTAS na tabulku.
 
-CTAS vytvoří novou tabulku a naplní ji výsledky příkazu select. CTAS definuje novou tabulku mít stejné sloupce a datové typy jako výsledky příkazu select. Pokud vyberete všechny sloupce z externí tabulky, bude nová tabulka replikou sloupců a datových typů v externí tabulce.
+CTAS vytvoří novou tabulku a naplní ji výsledky příkazu SELECT. CTAS definuje novou tabulku, která bude mít stejné sloupce a datové typy jako výsledky příkazu SELECT. Pokud vyberete všechny sloupce z externí tabulky, bude nová tabulka replikou sloupců a datových typů v externí tabulce.
 
 V tomto příkladu vytvoříme dimenzi i tabulku faktů jako distribuované tabulky hash.
 
@@ -235,9 +235,9 @@ CREATE TABLE [cso].[DimProduct]            WITH (DISTRIBUTION = HASH([ProductKey
 CREATE TABLE [cso].[FactOnlineSales]       WITH (DISTRIBUTION = HASH([ProductKey]  ) ) AS SELECT * FROM [asb].[FactOnlineSales]        OPTION (LABEL = 'CTAS : Load [cso].[FactOnlineSales]        ');
 ```
 
-### <a name="track-the-load-progress"></a>Sledování průběhu načítání
+### <a name="track-the-load-progress"></a>Sledovat průběh načítání
 
-Průběh načítání můžete sledovat pomocí dynamických zobrazení správy (DMVs).
+Průběh zátěže můžete sledovat pomocí zobrazení dynamické správy (zobrazení dynamické správy).
 
 ```sql
 -- To see all requests
@@ -274,9 +274,9 @@ ORDER BY
 
 ## <a name="optimize-columnstore-compression"></a>Optimalizace komprese columnstore
 
-Ve výchozím nastavení ukládá datový sklad Synapse SQL tabulku jako clusterovaný index columnstore. Po dokončení zatížení některé řádky dat nemusí být komprimovány do columnstore.  Existují různé důvody, proč k tomu může dojít. Další informace naleznete v [tématu správa indexů columnstore](sql-data-warehouse-tables-index.md).
+Ve výchozím nastavení služba SQL Data Warehouse synapse ukládá tabulku jako clusterovaný index columnstore. Po dokončení načtení se některé řádky dat nemusí do columnstore komprimovat.  Existují různé důvody, proč k tomu může dojít. Další informace najdete v tématu [Správa indexů columnstore](sql-data-warehouse-tables-index.md).
 
-Chcete-li optimalizovat výkon dotazu a kompresi columnstore po zatížení, znovu sestavit tabulku vynutit columnstore index komprimovat všechny řádky.
+Pro optimalizaci výkonu dotazů a komprese columnstore po načtení znovu sestavte tabulku, aby index columnstore vynutil komprimaci všech řádků.
 
 ```sql
 SELECT GETDATE();
@@ -286,15 +286,15 @@ ALTER INDEX ALL ON [cso].[DimProduct]               REBUILD;
 ALTER INDEX ALL ON [cso].[FactOnlineSales]          REBUILD;
 ```
 
-Další informace o udržování indexů columnstore naleznete v článku [správa indexů columnstore.](sql-data-warehouse-tables-index.md)
+Další informace o údržbě indexů columnstore najdete v článku [Správa indexů](sql-data-warehouse-tables-index.md) columnstore.
 
 ## <a name="optimize-statistics"></a>Optimalizace statistik
 
-Je nejlepší vytvořit statistiky s jedním sloupcem ihned po zatížení. Pokud víte, že některé sloupce nebudou v predikátech dotazů, můžete přeskočit vytváření statistik v těchto sloupcích. Pokud vytvoříte statistiky s jedním sloupcem pro každý sloupec, může trvat dlouhou dobu znovu sestavit všechny statistiky.
+Je nejlepší vytvořit statistiku s jedním sloupcem hned po načtení. Pokud víte, že některé sloupce nebudou v predikátech dotazů, můžete na tyto sloupce přeskočit vytváření statistik. Pokud vytvoříte statistiku s jedním sloupcem v každém sloupci, může se znovu sestavit všechny statistiky.
 
-Pokud se rozhodnete vytvořit statistiku jednoho sloupce na každém sloupci každé `prc_sqldw_create_stats` tabulky, můžete použít ukázku kódu uložené procedury v článku [statistiky.](sql-data-warehouse-tables-statistics.md)
+Pokud se rozhodnete vytvořit statistiku s jedním sloupcem pro každý sloupec každé tabulky, můžete použít ukázku `prc_sqldw_create_stats` kódu uložené procedury v článku [Statistika](sql-data-warehouse-tables-statistics.md) .
 
-Následující příklad je dobrým výchozím bodem pro vytváření statistik. Vytvoří jednosloupcové statistiky pro každý sloupec v tabulce dimenzí a na každém spojovacím sloupci v tabulkách faktů. Statistiky s jedním nebo více sloupci můžete vždy přidat do jiných sloupců tabulky faktů později.
+Následující příklad je dobrým výchozím bodem pro vytváření statistik. Vytvoří statistiku s jedním sloupcem pro každý sloupec v tabulce dimenzí a pro každý sloupec spojování v tabulkách faktů. Můžete kdykoli přidat statistiku jednoho nebo více sloupců do dalších sloupců tabulky faktů.
 
 ```sql
 CREATE STATISTICS [stat_cso_DimProduct_AvailableForSaleDate] ON [cso].[DimProduct]([AvailableForSaleDate]);
@@ -338,11 +338,11 @@ CREATE STATISTICS [stat_cso_FactOnlineSales_PromotionKey] ON [cso].[FactOnlineSa
 CREATE STATISTICS [stat_cso_FactOnlineSales_StoreKey] ON [cso].[FactOnlineSales]([StoreKey]);
 ```
 
-## <a name="achievement-unlocked"></a>Úspěch odemčený!
+## <a name="achievement-unlocked"></a>Úspěch je odemčený!
 
-Úspěšně jste načetli veřejná data do datového skladu. Skvělá práce!
+Do datového skladu jste úspěšně načetli veřejná data. Skvělá práce!
 
-Nyní můžete začít dotazovat tabulek, abyste prozkoumali data. Spusťte následující dotaz, abyste zjistili celkový prodej podle značky:
+Teď můžete začít dotazovat se na tabulky a prozkoumat data. Chcete-li zjistit celkový prodej na jednu značku, spusťte následující dotaz:
 
 ```sql
 SELECT  SUM(f.[SalesAmount]) AS [sales_by_brand_amount]
@@ -354,5 +354,5 @@ GROUP BY p.[BrandName]
 
 ## <a name="next-steps"></a>Další kroky
 
-Chcete-li načíst úplnou sadu dat, spusťte příklad [načtení úplného maloobchodního datového skladu Contoso](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/contoso-data-warehouse/readme.md) z úložiště ukázek serveru Microsoft SQL Server.
-Další tipy pro vývoj najdete v [tématu Rozhodnutí o návrhu a techniky kódování pro datové sklady](sql-data-warehouse-overview-develop.md).
+Pokud chcete načíst celou datovou sadu, spusťte příklad [načtení úplného maloobchodního datového skladu společnosti Contoso](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/contoso-data-warehouse/readme.md) z úložiště ukázek Microsoft SQL Server.
+Další tipy pro vývoj najdete v tématu věnovaném [rozhodování o návrhu a technikům kódování pro datové sklady](sql-data-warehouse-overview-develop.md).

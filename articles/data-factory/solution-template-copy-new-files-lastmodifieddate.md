@@ -1,6 +1,6 @@
 ---
-title: Kopírovat nové a změněné soubory podle LastModifiedDate
-description: Zjistěte, jak pomocí šablony řešení kopírovat nové a změněné soubory podle LastModifiedDate s Azure Data Factory.
+title: Kopírování nových a změněných souborů pomocí LastModifiedDate
+description: Naučte se používat šablonu řešení ke kopírování nových a změněných souborů pomocí LastModifiedDate s Azure Data Factory.
 services: data-factory
 author: dearandyxu
 ms.author: yexu
@@ -12,83 +12,83 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 3/8/2019
 ms.openlocfilehash: 979977b2dd2eb5742d4e488623c79cb91427f055
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81414798"
 ---
-# <a name="copy-new-and-changed-files-by-lastmodifieddate-with-azure-data-factory"></a>Kopírování nových a změněných souborů podle LastModifiedDate pomocí Azure Data Factory
+# <a name="copy-new-and-changed-files-by-lastmodifieddate-with-azure-data-factory"></a>Kopírování nových a změněných souborů pomocí LastModifiedDate s Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Tento článek popisuje šablonu řešení, kterou můžete použít ke kopírování nových a změněných souborů pouze podle LastModifiedDate z úložiště založeného na souborech do cílového úložiště. 
+Tento článek popisuje šablonu řešení, kterou můžete použít ke kopírování nových a změněných souborů pouze pomocí LastModifiedDate z úložiště založeného na souborech do cílového úložiště. 
 
 ## <a name="about-this-solution-template"></a>O této šabloně řešení
 
-Tato šablona nejprve vybere nové a změněné soubory pouze podle jejich atributů **LastModifiedDate**a potom zkopíruje vybrané soubory z úložiště zdrojů dat do cílového úložiště dat.
+Tato šablona nejprve vybere nové a změněné soubory pouze pomocí atributů **LastModifiedDate**a pak zkopíruje tyto vybrané soubory z úložiště zdrojů dat do úložiště cíle dat.
 
 Šablona obsahuje jednu aktivitu:
-- **Zkopírujte** zkopírovat nové a změněné soubory pouze lastmodifieddate z úložiště souborů do cílového úložiště.
+- **Kopírováním** můžete kopírovat nové a změněné soubory pouze pomocí LastModifiedDate z úložiště souborů do cílového úložiště.
 
 Šablona definuje šest parametrů:
 -  *FolderPath_Source* je cesta ke složce, kde můžete číst soubory ze zdrojového úložiště. Výchozí hodnotu je třeba nahradit vlastní cestou ke složce.
--  *Directory_Source* je cesta podsložky, kde můžete číst soubory ze zdrojového úložiště. Výchozí hodnotu je třeba nahradit vlastní cestou podsložky.
--  *FolderPath_Destination* je cesta ke složce, kam chcete kopírovat soubory do cílového úložiště. Výchozí hodnotu je třeba nahradit vlastní cestou ke složce.
--  *Directory_Destination* je cesta podsložky, kde chcete kopírovat soubory do cílového úložiště. Výchozí hodnotu je třeba nahradit vlastní cestou podsložky.
--  *LastModified_From* se používá k výběru souborů, jejichž lastmodifieddate atribut je po nebo rovna této datetime hodnotu.  Chcete-li vybrat pouze nové soubory, které nebyly naposledy zkopírovány, může být tato hodnota datatime časem časem, kdy byl kanál naposledy spuštěn. Výchozí hodnotu 2019-02-01T00:00:00Z můžete nahradit očekávanou hodnotou LastModifiedDate v časovém pásmu UTC. 
--  *LastModified_To* se používá k výběru souborů, jejichž atribut LastModifiedDate je před touto hodnotou datetime. Chcete-li vybrat pouze nové soubory, které nebyly naposledy zkopírovány, může být tato hodnota datetime aktuálním časem.  Výchozí hodnotu 2019-02-01T00:00:00Z můžete nahradit očekávanou hodnotou LastModifiedDate v časovém pásmu UTC. 
+-  *Directory_Source* je cesta k podsložce, kde můžete číst soubory ze zdrojového úložiště. Výchozí hodnota musí být nahrazena vlastní cestou podsložky.
+-  *FolderPath_Destination* je cesta ke složce, kam chcete zkopírovat soubory do cílového úložiště. Výchozí hodnotu je třeba nahradit vlastní cestou ke složce.
+-  *Directory_Destination* je cesta k podsložce, kam chcete zkopírovat soubory do cílového úložiště. Výchozí hodnota musí být nahrazena vlastní cestou podsložky.
+-  *LastModified_From* slouží k výběru souborů, jejichž atribut LastModifiedDate je po nebo roven této hodnotě DateTime.  Pokud chcete vybrat jenom nové soubory, které se nezkopírovaly jako poslední, tato hodnota DateTime může být čas, kdy se kanál aktivoval při posledním spuštění kanálu. Výchozí hodnotu 2019-02-01T00:00:00Z můžete nahradit očekávaným LastModifiedDate v časovém pásmu UTC. 
+-  *LastModified_To* slouží k výběru souborů, jejichž atribut LastModifiedDate je před touto hodnotou DateTime. Aby bylo možné vybrat pouze nové soubory, které nebyly poslední zkopírovány, může být tato hodnota DateTime aktuální čas.  Výchozí hodnotu 2019-02-01T00:00:00Z můžete nahradit očekávaným LastModifiedDate v časovém pásmu UTC. 
 
-## <a name="how-to-use-this-solution-template"></a>Použití této šablony řešení
+## <a name="how-to-use-this-solution-template"></a>Jak používat tuto šablonu řešení
 
-1. Přejít na šablonu **Kopírovat nové soubory pouze lastmodifieddate**. Vytvořte **nové** připojení k úložišti zdrojového úložiště. Úložiště zdrojového úložiště je místo, odkud chcete kopírovat soubory.
+1. Přejít na šablonu **kopírování nových souborů pouze pomocí LastModifiedDate**. Vytvořte **nové** připojení ke zdrojovému úložišti úložiště. Zdrojové úložiště úložiště, ze kterého chcete kopírovat soubory.
 
-    ![Vytvoření nového připojení ke zdroji](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate1.png)
+    ![Vytvoří nové připojení ke zdroji.](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate1.png)
     
-2. Vytvořte **nové** připojení k cílovému úložišti. Cílové úložiště je místo, kam chcete kopírovat soubory. 
+2. Vytvořte **nové** připojení k cílovému úložišti. Cílovým úložištěm je místo, kam chcete zkopírovat soubory. 
 
-    ![Vytvoření nového připojení k cíli](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate3.png)
+    ![Vytvoří nové připojení k cíli.](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate3.png)
 
 3. Vyberte **Použít tuto šablonu**.
 
     ![Použít tuto šablonu](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate4.png)
     
-4. V panelu uvidíte kanál, který je k dispozici, jak je znázorněno v následujícím příkladu:
+4. Na panelu se zobrazí dostupný kanál, jak je znázorněno v následujícím příkladu:
 
-    ![Zobrazit potrubí](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate5.png)
+    ![Zobrazení kanálu](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate5.png)
 
-5. Vyberte **Ladit**, napište hodnotu **parametrů** a vyberte **Dokončit**.  Na následujícím obrázku nastavíme následující parametry.
-   - **FolderPath_Source** = zdrojová složka
+5. Vyberte **ladit**, zadejte hodnotu **parametrů** a vyberte **Dokončit**.  Na obrázku níže nastavíme parametry následujícím způsobem.
+   - **FolderPath_Source** = SourceFolder
    - **Directory_Source** = podsložka
-   - **FolderPath_Destination** = cílová složka
+   - **FolderPath_Destination** = DestinationFolder
    - **Directory_Destination** = podsložka
    - **LastModified_From** = 2019-02-01T00:00:00Z
    - **LastModified_To** = 2019-03-01T00:00:00Z
     
-    V příkladu je uvedeno, že soubory, které byly naposledy změněny v rámci časový montovna (**2019-02-01T00:00:00Z** na **2019-03-01T00:00:00Z**) budou zkopírovány ze zdrojové **cesty source sourcefolder/podfolder** do **cílové složky/podsložky**cílové cesty .  Můžete je nahradit vlastními parametry.
+    Příklad ukazuje, že soubory, které byly naposledy změněny v rámci TimeSpan (**2019-02-01T00:00:00Z** až **2019-03-01T00:00:00Z**), budou zkopírovány ze zdrojové cesty **SourceFolder nebo podsložky** do cílové cesty **DestinationFolder/podsložky**.  Můžete je nahradit vlastními parametry.
 
     ![Spuštění kanálu](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate6.png)
 
-6. Zkontrolujte výsledek. Zobrazí se pouze soubory naposledy změněné v rámci nakonfigurovaného časovým rozpětí, které bylo zkopírováno do cílového úložiště.
+6. Zkontrolujte výsledek. Zobrazí se pouze soubory poslední změny v nakonfigurovaném časovém rozmezí byly zkopírovány do cílového úložiště.
 
-    ![Zkontrolujte výsledek](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate7.png)
+    ![Kontrola výsledku](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate7.png)
     
-7. Nyní můžete přidat omílání windows aktivační událost automatizovat tento kanál, tak, aby kanál může vždy kopírovat nové a změněné soubory pouze lastmodifieddate pravidelně.  Vyberte **Přidat aktivační událost**a vyberte **Nový/Upravit**.
+7. Nyní můžete přidat bubnovou aktivační událost Windows pro automatizaci tohoto kanálu, aby kanál vždy mohl pravidelně kopírovat nové a změněné soubory pouze pomocí LastModifiedDate.  Vyberte **Přidat aktivační událost**a vyberte **Nová/upravit**.
 
-    ![Zkontrolujte výsledek](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate8.png)
+    ![Kontrola výsledku](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate8.png)
     
-8. V okně **Přidat aktivační události** vyberte + **Nový**.
+8. V okně **Přidat aktivační události** vyberte **+ Nový**.
 
-9. Vyberte **omílání okno** pro typ aktivační události, nastavit **každých 15 minut** jako opakování (můžete změnit na libovolný čas intervalu). Vyberte **Ano** pro aktivované pole a pak vyberte **OK**.
+9. Vyberte **okno bubnu** pro typ triggeru, nastavte **každých 15 minut** jako opakování (můžete změnit na libovolný časový interval). Zaškrtněte políčko **Ano** pro aktivovanou a potom vyberte **OK**.
 
     ![Vytvoření triggeru](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate10.png)    
     
-10. Nastavte hodnotu **parametrů spuštění aktivační události** takto a vyberte **možnost Dokončit**.
-    - **FolderPath_Source** = **zdrojové složky**.  Složku můžete nahradit v úložišti zdrojových dat.
-    - **Directory_Source** = **podsložky**.  V úložišti zdrojových dat můžete nahradit podsložku.
-    - **FolderPath_Destination** = **cílovou složku**.  V cílovém úložišti dat můžete nahradit složku.
-    - **Directory_Destination** = **podsložka**.  V cílovém úložišti dat můžete nahradit podsložku.
-    - **LastModified_From** =  **LastModified_From\@trigger().outputs.windowStartTime**.  Jedná se o systémovou proměnnou z aktivační události určující čas, kdy byl kanál naposledy spuštěn.
-    - **LastModified_To** = **LastModified_To\@trigger().outputs.windowEndTime**.  Jedná se o systémovou proměnnou z aktivační události určující čas, kdy je kanál aktivován tentokrát.
+10. Nastavte hodnotu pro **parametry spuštění aktivační události** následujícím způsobem a vyberte **Dokončit**.
+    - **FolderPath_Source** = **SourceFolder**.  Můžete nahradit složkou ve zdrojovém úložišti dat.
+    - **Directory_Source** = **podsložku**.  Můžete nahradit podsložku ve zdrojovém úložišti dat.
+    - **FolderPath_Destination** = **DestinationFolder**.  Můžete nahradit složkou v cílovém úložišti dat.
+    - **Directory_Destination** = **podsložku**.  Můžete nahradit podsložku v cílovém úložišti dat.
+    - **LastModified_From** =  **LastModified_From\@Trigger (). Outputs. windowStartTime**.  Jedná se o systémovou proměnnou od triggeru, která určuje čas, kdy se kanál aktivoval při posledním spuštění.
+    - **LastModified_To** = **LastModified_To\@Trigger (). Outputs. windowEndTime**.  Jedná se o systémovou proměnnou z triggeru určující čas, kdy se kanál aktivuje.
     
     ![Vstupní parametry](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate11.png)
     
@@ -96,13 +96,13 @@ Tato šablona nejprve vybere nové a změněné soubory pouze podle jejich atrib
     
     ![Publikovat vše](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate12.png)
 
-12. Vytvořte nové soubory ve zdrojové složce úložiště zdrojů dat.  Nyní čekáte na automatické spuštění kanálu a do cílového úložiště budou zkopírovány pouze nové soubory.
+12. Vytvořte nové soubory ve zdrojové složce úložiště zdrojů dat.  Nyní čekáte na automatické spuštění kanálu a do cílového úložiště se zkopírují jenom nové soubory.
 
-13. Na levém navigačním panelu vyberte kartu **Sledování** a počkejte přibližně 15 minut, pokud je opakování aktivační události nastaveno na každých 15 minut. 
+13. V levém navigačním panelu vyberte kartu **monitorování** a počkejte asi 15 minut, pokud se opakování triggeru nastavilo na každých 15 minut. 
 
-14. Zkontrolujte výsledek. Zobrazí se, že váš kanál se spustí automaticky každých 15 minut a pouze nové nebo změněné soubory ze zdrojového úložiště budou zkopírovány do cílového úložiště v každém spuštění kanálu.
+14. Zkontrolujte výsledek. Váš kanál se zobrazí automaticky každých 15 minut a do cílového úložiště v každém spuštění kanálu se zkopírují jenom nové nebo změněné soubory ze zdrojového úložiště.
 
-    ![Zkontrolujte výsledek](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate15.png)
+    ![Kontrola výsledku](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate15.png)
     
 ## <a name="next-steps"></a>Další kroky
 

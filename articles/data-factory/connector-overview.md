@@ -1,6 +1,6 @@
 ---
 title: Přehled konektoru Azure Data Factory
-description: Seznamte se s podporovanými konektory v Datové továrně.
+description: Seznamte se s podporovanými konektory v Data Factory.
 services: data-factory
 author: linda33wj
 ms.service: data-factory
@@ -10,16 +10,16 @@ ms.date: 12/10/2019
 ms.author: jingwang
 ms.reviewer: craigg
 ms.openlocfilehash: 623ee15c5071fdc7a36677481e98872b8c2bd562
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81410412"
 ---
 # <a name="azure-data-factory-connector-overview"></a>Přehled konektoru Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Azure Data Factory podporuje následující úložiště a formáty dat prostřednictvím aktivit Copy, Flow, Look-up, Get Metadat a Delete. Kliknutím na každé úložiště dat se dozvíte o podporovaných možnostech a odpovídajících konfiguracích podrobnosti.
+Azure Data Factory podporují následující úložiště a formáty dat prostřednictvím kopírování, toku dat, vyhledávání, získávání metadat a odstraňování aktivit. Klikněte na jednotlivá úložiště dat, abyste se seznámili s podporovanými funkcemi a odpovídajícími konfiguracemi v podrobnostech.
 
 ## <a name="supported-data-stores"></a>Podporované zdroje dat
 
@@ -31,7 +31,7 @@ Azure Data Factory podporuje následující úložiště a formáty dat prostře
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Kopírovat aktivitu](copy-activity-overview.md)
+- [Aktivita kopírování](copy-activity-overview.md)
 - [Mapování toku dat](concepts-data-flow-overview.md)
 - [Aktivita vyhledávání](control-flow-lookup-activity.md)
 - [Aktivita získání metadat](control-flow-get-metadata-activity.md)

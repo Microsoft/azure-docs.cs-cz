@@ -1,6 +1,6 @@
 ---
-title: Načítání dat z Office 365 pomocí Azure Data Factory
-description: Kopírování dat z Office 365 pomocí Azure Data Factory
+title: Načtení dat ze sady Office 365 pomocí Azure Data Factory
+description: Použití Azure Data Factory ke kopírování dat z Office 365
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,36 +12,36 @@ ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: jingwang
 ms.openlocfilehash: 3422176ed89b7f575c11cc40e5be8420da0018b0
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81415798"
 ---
-# <a name="load-data-from-office-365-by-using-azure-data-factory"></a>Načítání dat z Office 365 pomocí Azure Data Factory
+# <a name="load-data-from-office-365-by-using-azure-data-factory"></a>Načtení dat ze sady Office 365 pomocí Azure Data Factory
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Tento článek ukazuje, jak používat data načítání Datové továrny _z Office 365 do úložiště objektů blob Azure_. Můžete postupovat podle podobných kroků ke kopírování dat do Azure Data Lake Gen1 nebo Gen2. Článek o kopírování dat z Office 365 obecně najdete článek o [konektoru Office](connector-office-365.md) 365.
+V tomto článku se dozvíte, jak pomocí Data Factory _načíst data z Office 365 do úložiště objektů BLOB v Azure_. Pomocí podobných kroků můžete zkopírovat data do Azure Data Lake Gen1 nebo Gen2. V [článku konektor office 365](connector-office-365.md) najdete obecné informace o kopírování dat z Office 365.
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
-1. V levé nabídce vyberte Vytvořit**datovou továrnu****Analytics** >  **:** >  
+1. V nabídce vlevo vyberte **vytvořit** > **Analytics** > **Data Factory**analýzy prostředků: 
    
    ![Výběr datové továrny v podokně Nový](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
-2. Na stránce **Nová továrna dat** zadejte hodnoty pro pole, která jsou zobrazena na následujícím obrázku:
+2. Na stránce **Nová datová továrna** zadejte hodnoty pro pole, která jsou zobrazena na následujícím obrázku:
       
    ![Stránka Nová datová továrna](./media/load-office-365-data/new-azure-data-factory.png)
  
-    * **Název:** Zadejte globálně jedinečný název pro vaši datovou továrnu Azure. Pokud se zobrazí chyba "Název datové továrny *LoadFromOffice365Demo* není k dispozici", zadejte jiný název pro datové továrny. Můžete například použít název _**yourname**_**LoadFromOffice365Demo**. Zkuste znovu vytvořit datovou továrnu. Pravidla pojmenování artefaktů služby Data Factory najdete v tématu [Data Factory – pravidla pojmenování](naming-rules.md).
-    * **Předplatné:** Vyberte předplatné Azure, ve kterém chcete vytvořit datové továrny. 
-    * **Skupina prostředků**: V rozevíracím seznamu vyberte existující skupinu prostředků nebo vyberte možnost **Vytvořit nový** a zadejte název skupiny prostředků. Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/management/overview.md).  
-    * **Verze**: Vyberte **V2**.
-    * **Umístění**: Vyberte umístění pro datové továrny. V rozevíracím seznamu se zobrazí pouze podporovaná umístění. Úložiště dat, které jsou používány factory může být v jiných umístěních a oblastech. Mezi tato úložiště dat patří Azure Data Lake Store, Azure Storage, Azure SQL Database a tak dále.
+    * **Název**: zadejte globálně jedinečný název pro objekt pro vytváření dat Azure. Pokud se zobrazí chyba "název objektu pro vytváření dat *LoadFromOffice365Demo* není k dispozici", zadejte jiný název pro datovou továrnu. Můžete například použít název _**Your**_**LoadFromOffice365Demo**. Zkuste vytvořit datovou továrnu znovu. Pravidla pojmenování artefaktů služby Data Factory najdete v tématu [Data Factory – pravidla pojmenování](naming-rules.md).
+    * **Předplatné**: vyberte předplatné Azure, ve kterém chcete vytvořit datovou továrnu. 
+    * **Skupina prostředků**: v rozevíracím seznamu vyberte existující skupinu prostředků nebo vyberte možnost **vytvořit novou** a zadejte název skupiny prostředků. Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/management/overview.md).  
+    * **Verze**: vyberte **v2**.
+    * **Umístění**: vyberte umístění pro datovou továrnu. V rozevíracím seznamu se zobrazí pouze podporovaná umístění. Úložiště dat, která služba Data Factory používá, můžou být v jiných umístěních a oblastech. Mezi Tato úložiště dat patří Azure Data Lake Store, Azure Storage, Azure SQL Database a tak dále.
 
 3. Vyberte **Vytvořit**.
-4. Po dokončení vytváření přejděte do datové továrny. Zobrazí se domovská stránka **Data Factory,** jak je znázorněno na následujícím obrázku:
+4. Až se vytváření dokončí, přejdete do vaší datové továrny. Zobrazí se Domovská stránka **Data Factory** , jak je znázorněno na následujícím obrázku:
    
    ![Domovská stránka objektu pro vytváření dat](./media/load-office-365-data/data-factory-home-page.png)
 
@@ -49,76 +49,76 @@ Tento článek ukazuje, jak používat data načítání Datové továrny _z Off
 
 ## <a name="create-a-pipeline"></a>Vytvoření kanálu
 
-1. Na stránce "Začínáme" vyberte **Vytvořit kanál**.
+1. Na stránce Začínáme vyberte **vytvořit kanál**.
  
     ![Vytvoření kanálu](./media/load-office-365-data/create-pipeline-entry.png)
 
-2. Na **kartě Obecné** pro kanál zadejte "CopyPipeline" pro **název** kanálu.
+2. Na **kartě Obecné** pro kanál zadejte **název** kanálu "CopyPipeline".
 
-3. V poli Nástroje aktivity > Kategorie Přesunout & Transformace > přetáhnout **aktivitu Kopírování** z panelu nástrojů na povrch návrháře kanálu. Zadejte jako název aktivity "CopyFromOffice365ToBlob".
+3. V poli nástroje aktivity > přesunout & transformovat kategorii > přetáhněte **aktivitu kopírování** z panelu nástrojů na plochu návrháře kanálu. Jako název aktivity zadejte "CopyFromOffice365ToBlob".
 
 ### <a name="configure-source"></a>Konfigurace zdroje
 
-1. Přejděte na **kartu**> kanálu Zdroj , kliknutím na **+ Nový** vytvořte zdrojovou datovou sadu. 
+1. Přejděte na **kartu zdroj**> kanálu a kliknutím na **+ Nový** vytvořte zdrojovou datovou sadu. 
 
-2. V okně Nová datová sada vyberte **Office 365**a pak vyberte **Pokračovat**.
+2. V okně Nová datová sada vyberte možnost **Office 365**a potom vyberte **pokračovat**.
  
-3. Nyní se nacházíte na kartě konfigurace **Edit** aktivity kopírování.
+3. Teď jste na kartě Konfigurace aktivity kopírování. Kliknutím na tlačítko **Upravit** vedle datové sady Office 365 můžete pokračovat v konfiguraci dat.
 
-    ![Konfigurace datové sady Office 365 obecně](./media/load-office-365-data/transition-to-edit-dataset.png)
+    ![Obecná konfigurace Office 365 datová sada](./media/load-office-365-data/transition-to-edit-dataset.png)
  
-4. Zobrazí se nová karta otevřená pro datovou sadu Office 365. Na **kartě Obecné** v dolní části okna Vlastnosti zadejte pro Název hodnotu SourceOffice365Dataset.
+4. Zobrazí se nová karta, která je otevřená pro sadu Office 365 DataSet. Na **kartě Obecné** v dolní části okno vlastnosti jako název zadejte "SourceOffice365Dataset".
  
-5. Přejděte na **kartu Připojení** v okně Vlastnosti. Vedle textového pole Propojená služba klikněte na **+ Nový**.
+5. Přejít na **kartu připojení** okno Vlastnosti. Vedle textového pole propojená služba klikněte na **+ Nový**.
 
-6. V okně Nová propojená služba zadejte jako název "Office365LinkedService", zadejte ID instančního objektu a klíč instančního objektu služby, pak otestujte připojení a vyberte **Vytvořit** pro nasazení propojené služby.
+6. V okně Nová propojená služba jako název zadejte "Office365LinkedService", zadejte ID instančního objektu a klíč instančního objektu, pak otestujte připojení a vyberte **vytvořit** , aby se nasadila propojená služba.
 
     ![Nová propojená služba Office 365](./media/load-office-365-data/new-office-365-linked-service.png)
  
-7. Po vytvoření propojené služby se vrátíte do nastavení datové sady. Vedle **tabulky**zvolte šipku dolů, chcete-li rozbalit seznam dostupných datových sad Office 365, a zvolte "BasicDataSet_v0." Message_v0" z rozevíracího seznamu:
+7. Po vytvoření propojené služby se vrátíte do nastavení datové sady. Vedle pole **tabulka**vyberte šipku dolů a rozbalte seznam dostupných datových sad sady Office 365 a vyberte možnost "BasicDataSet_v0. Message_v0 v rozevíracím seznamu:
 
-    ![Konfigurace tabulky datových sad Office 365](./media/load-office-365-data/edit-dataset.png)
+    ![Konfigurační tabulka sady Office 365](./media/load-office-365-data/edit-dataset.png)
 
-8. Teď se vraťte na**kartu Zdroj** **kanálu** > a pokračujte v konfiguraci dalších vlastností pro extrakci dat Office 365.  Obor uživatele a filtr uživatelského oboru jsou volitelné predikáty, které můžete definovat k omezení dat, která chcete extrahovat z Office 365. Jak tato nastavení nakonfigurujete, najdete v části [Vlastnosti datové sady Office 365.](https://docs.microsoft.com/azure/data-factory/connector-office-365#dataset-properties)
+8. Teď se vraťte na**kartu zdroj** **kanálu** > a pokračujte v konfiguraci dalších vlastností pro extrakci dat Office 365.  Uživatelský rozsah a filtr oboru uživatele jsou volitelné predikáty, které můžete definovat k omezení dat, která chcete vyjmout z Office 365. Postup při konfiguraci těchto nastavení najdete v části [Vlastnosti datové sady Office 365](https://docs.microsoft.com/azure/data-factory/connector-office-365#dataset-properties) .
 
-9. Musíte zvolit jeden z filtrů data a zadat hodnoty počátečního a koncového času.
+9. Je nutné zvolit jeden z filtrů data a zadat počáteční a koncové hodnoty času.
 
-10. Kliknutím na kartu **Importovat schéma** importujte schéma datové sady Zprávy.
+10. Klikněte na kartu **importovat schéma** a importujte schéma pro datovou sadu zpráv.
 
-    ![Konfigurační schéma datové sady Office 365](./media/load-office-365-data/edit-source-properties.png)
+    ![Konfigurace schématu datové sady Office 365](./media/load-office-365-data/edit-source-properties.png)
 
 ### <a name="configure-sink"></a>Konfigurace jímky
 
-1. Přejděte na kartu potrubí > **jímky**a vyberte **+ Nový,** chcete-li vytvořit datovou sadu jímky.
+1. Pokud chcete vytvořit datovou sadu jímky, otevřete **kartu**> kanálu a vyberte **+ Nová** .
  
-2. V okně Nová datová sada si všimněte, že při kopírování z Office 365 jsou vybrány pouze podporované cíle. Vyberte **Azure Blob Storage**, vyberte Binární formát a pak vyberte **Pokračovat**.  V tomto kurzu zkopírujete data Office 365 do úložiště objektů blob Azure.
+2. V okně Nová datová sada si všimněte, že při kopírování ze sady Office 365 jsou vybrány pouze podporované cíle. Vyberte **Azure Blob Storage**, vyberte binární formát a pak vyberte **pokračovat**.  V tomto kurzu zkopírujte data Office 365 do Blob Storage Azure.
 
-3. Kliknutím na **tlačítko Upravit** vedle datové sady Azure Blob Storage pokračujte v konfiguraci dat.
+3. Pokud chcete pokračovat v konfiguraci dat, klikněte na tlačítko **Upravit** vedle datové sady služby Azure Blob Storage.
 
-4. Na **kartě Obecné** v okně Vlastnosti zadejte do pole Název "OutputBlobDataset".
+4. Na **kartě obecné** okno Vlastnosti v poli název zadejte "OutputBlobDataset".
 
-5. Přejděte na **kartu Připojení** v okně Vlastnosti. Vyberte **+ Nová** vedle textového pole Propojená služba.
+5. Přejít na **kartu připojení** okno Vlastnosti. Vyberte **+ Nová** vedle textového pole Propojená služba.
 
-6. V okně Nová propojená služba zadejte jako název "AzureStorageLinkedService", vyberte "Instanční objekt služby" z rozevíracího seznamu metod ověřování, vyplňte koncový bod služby, tenanta, ID instančního objektu a hlavní ho klíče služby a pak vyberte Uložit, chcete-li nasadit propojenou službu.  Tady [najdete,](connector-azure-blob-storage.md#service-principal-authentication) jak nastavit ověřování instančního objektu pro Azure Blob Storage.
+6. V okně Nová propojená služba zadejte "AzureStorageLinkedService" jako název, v rozevíracím seznamu metod ověřování vyberte "instanční objekt", vyplňte koncový bod služby, tenant, ID instančního objektu a klíč instančního objektu a potom vyberte Uložit a nasaďte propojenou službu.  Postup nastavení ověřování instančního objektu pro Azure Blob Storage najdete [tady](connector-azure-blob-storage.md#service-principal-authentication) .
 
-    ![Nová propojená služba objektů blob](./media/load-office-365-data/configure-blob-linked-service.png)
+    ![Nová propojená služba objektů BLOB](./media/load-office-365-data/configure-blob-linked-service.png)
 
 
 ## <a name="validate-the-pipeline"></a>Ověření kanálu
 
 Vyberte **Ověřit** z panelu nástrojů a kanál ověřte.
 
-Můžete také zobrazit kód JSON přidružený k kanálu kliknutím na kód v pravém horním.
+Kliknutím na kód v pravém horním rohu můžete také zobrazit kód JSON přidružený k kanálu.
 
 ## <a name="publish-the-pipeline"></a>Publikování kanálu
 
-V horním panelu nástrojů vyberte **Publikovat vše**. Touto akcí publikujete vytvořené entity (datové sady a kanály) do služby Data Factory.
+Na horním panelu nástrojů vyberte **publikovat vše**. Touto akcí publikujete vytvořené entity (datové sady a kanály) do služby Data Factory.
 
 ![Publikování změn](./media/load-office-365-data/publish-changes.png) 
 
 ## <a name="trigger-the-pipeline-manually"></a>Ruční aktivace kanálu
 
-Na panelu nástrojů vyberte **Přidat aktivační událost** a pak vyberte **Aktivovat nyní**. Na stránce Spuštění kanálu vyberte **Dokončit**. 
+Vyberte **Přidat aktivační událost** na panelu nástrojů a pak vyberte **aktivovat nyní**. Na stránce Spuštění kanálu vyberte **Dokončit**. 
 
 ## <a name="monitor-the-pipeline"></a>Monitorování kanálu
 
@@ -128,26 +128,26 @@ Vlevo přejděte na kartu **Monitorování**. Zobrazí se stav ručně aktivovan
 
 Pokud se chcete podívat na spuštění aktivit, která souvisí se spuštěním kanálu, vyberte odkaz **Zobrazit spuštění aktivit** ve sloupci Akce. Tento příklad obsahuje pouze jednu aktivitu, takže se v seznamu zobrazí pouze jedna položka. Podrobnosti o operaci kopírování zobrazíte výběrem odkazu **Podrobnosti** (ikona brýlí) ve sloupci Akce.
 
-![Sledovat aktivitu](./media/load-office-365-data/activity-status.png) 
+![Aktivita monitorování](./media/load-office-365-data/activity-status.png) 
 
-Pokud je to poprvé, kdy požadujete data pro tento kontext (kombinace, která tabulka dat je přístup, který cílový účet je data, která jsou načítána do a která identita uživatele provádí žádost o přístup k datům), zobrazí se stav aktivity kopírování jako **Probíhá**a pouze po klepnutí na odkaz Podrobnosti v části Akce se zobrazí stav **RequesetingConsent**.  Člen skupiny schvalovatel přístupu k datům musí schválit požadavek v privilegovaném přístupu managementu před extrakce dat může pokračovat.
+Pokud se jedná o data pro tento kontext poprvé (kombinace toho, ke které tabulce dat se přistupuje, na jehož cílovém účtu se načítají data a jakou identitu uživatele vytváří požadavek na přístup k datům), zobrazí se stav aktivity kopírování jako probíhající a jenom když kliknete na odkaz Podrobnosti v části **akce, zobrazí**se stav jako **RequesetingConsent**.  Člen skupiny schvalovatelů přístupu k datům musí schválit žádost v Privileged Access Management předtím, než může pokračovat v extrakci dat.
 
 _Stav jako žádost o souhlas:_
-![Podrobnosti o spuštění aktivity - žádost o souhlas](./media/load-office-365-data/activity-details-request-consent.png) 
+![podrobnosti spuštění aktivity – souhlas žádosti](./media/load-office-365-data/activity-details-request-consent.png) 
 
-_Stav jako extrahování dat:_
+_Stav při extrakci dat:_
 
-![Podrobnosti spuštění aktivity – extrahování dat](./media/load-office-365-data/activity-details-extract-data.png) 
+![Podrobnosti o spuštění aktivity – extrakce dat](./media/load-office-365-data/activity-details-extract-data.png) 
 
-Jakmile je souhlas poskytnut, extrakce dat bude pokračovat a po určité době se spuštění kanálu zobrazí jako úspěšné.
+Po zadání souhlasu bude extrakce dat pokračovat a po nějaké době se spuštění kanálu zobrazí jako úspěšné.
 
-![Kanál monitoru - úspěšné](./media/load-office-365-data/pipeline-monitoring-succeeded.png) 
+![Monitorování kanálu – úspěšné](./media/load-office-365-data/pipeline-monitoring-succeeded.png) 
 
-Teď přejděte na cílové úložiště objektů blob Azure a ověřte, že data Office 365 byla extrahována v binárním formátu.
+Nyní přejdete do cílového Azure Blob Storage a ověříte, že data Office 365 byla extrahována v binárním formátu.
 
 ## <a name="next-steps"></a>Další kroky
 
-Přejdete k následujícímu článku, kde se dozvíte o podpoře Datového skladu Azure SQL: 
+V následujícím článku se dozvíte o podpoře Azure SQL Data Warehouse: 
 
 > [!div class="nextstepaction"]
 >[Konektor Office 365](connector-office-365.md)

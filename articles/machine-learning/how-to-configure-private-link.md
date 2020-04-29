@@ -1,7 +1,7 @@
 ---
-title: Konfigurace privátního propojení Azure
+title: Konfigurace privátního odkazu Azure
 titleSuffix: Azure Machine Learning
-description: Pomocí Azure Private Link můžete bezpečně přistupovat k pracovnímu prostoru Azure Machine Learning z virtuální sítě.
+description: Pomocí privátního odkazu Azure získáte zabezpečený přístup k pracovnímu prostoru Azure Machine Learning z virtuální sítě.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,67 +11,67 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/13/2020
 ms.openlocfilehash: 8140fc4286ac97260e0b23ea700a70303ec69e2e
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81411202"
 ---
-# <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a>Konfigurace privátního propojení Azure pro pracovní prostor Azure Machine Learning (preview)
+# <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a>Konfigurace privátního odkazu Azure pro pracovní prostor Azure Machine Learning (Preview)
 
-V tomto dokumentu se dozvíte, jak používat Azure Private Link s pracovním prostorem Azure Machine Learning. Tato funkce je v současné době ve verzi preview a je k dispozici v oblastech USA – východ, USA – západ 2, USA – jižní střed. 
+V tomto dokumentu se dozvíte, jak pomocí privátního propojení Azure s vaším pracovním prostorem Azure Machine Learning. Tato funkce je aktuálně ve verzi Preview a je k dispozici v USA – východ USA – západ 2 USA (střed) – jih oblastech. 
 
-Azure Private Link umožňuje připojení k pracovnímu prostoru pomocí privátního koncového bodu. Privátní koncový bod je sada privátních IP adres v rámci virtuální sítě. Přístup k pracovnímu prostoru pak můžete omezit tak, aby se vyskytovaný pouze přes privátní IP adresy. Private Link pomáhá snížit riziko exfiltrace dat. Další informace o privátní koncové body, najdete v článku [Azure Private Link.](/azure/private-link/private-link-overview)
+Privátní odkaz Azure umožňuje připojit se k pracovnímu prostoru pomocí privátního koncového bodu. Soukromý koncový bod je sada privátních IP adres v rámci vaší virtuální sítě. Přístup k pracovnímu prostoru pak můžete omezit tak, aby se nacházet jenom přes privátní IP adresy. Soukromý odkaz pomáhá snižovat riziko exfiltrace dat. Další informace o privátních koncových bodech najdete v článku věnovaném [privátním odkazům Azure](/azure/private-link/private-link-overview) .
 
 > [!IMPORTANT]
-> Azure Private Link nemá vliv na rovinu řízení Azure (operace správy), jako je například odstranění pracovního prostoru nebo správa výpočetních prostředků. Například vytvoření, aktualizace nebo odstranění výpočetního cíle. Tyto operace jsou prováděny prostřednictvím veřejného Internetu jako obvykle.
+> Privátní propojení Azure neovlivňuje plochu ovládacího prvku Azure (operace správy), jako je například odstranění pracovního prostoru nebo Správa výpočetních prostředků. Například vytvoření, aktualizace nebo odstranění cíle služby Compute. Tyto operace se provádějí na veřejném Internetu jako normální.
 >
-> Azure Machine Learning výpočetní instance náhled není podporovánv pracovním prostoru, kde je povolena privátní odkaz.
+> V pracovním prostoru, kde je povolený privátní odkaz, se nepodporuje Azure Machine Learning výpočetních instancí Preview.
 
-## <a name="create-a-workspace-that-uses-a-private-endpoint"></a>Vytvoření pracovního prostoru, který používá soukromý koncový bod
+## <a name="create-a-workspace-that-uses-a-private-endpoint"></a>Vytvoření pracovního prostoru, který používá privátní koncový bod
 
-V současné době podporujeme jenom povolení privátní koncový bod při vytváření nového pracovního prostoru Azure Machine Learning. Následující šablony jsou k dispozici pro několik oblíbených konfigurací:
+V současné době podporujeme při vytváření nového pracovního prostoru Azure Machine Learning jenom povolení privátního koncového bodu. Následující šablony jsou k dispozici pro několik oblíbených konfigurací:
 
 > [!TIP]
-> Automatické schvalování řídí automatizovaný přístup k prostředku s povolenou privátní linkou. Další informace najdete v tématu [Co je služba Azure Private Link](../private-link/private-link-service-overview.md).
+> Automatické schválení ovládá automatizovaný přístup k prostředku s povoleným privátním propojením. Další informace najdete v tématu [co je služba Azure Private Link](../private-link/private-link-service-overview.md).
 
-* [Pracovní prostor s klíči spravovanými zákazníky a automatickým schvalováním privátního spojení](#cmkaapl)
-* [Pracovní prostor s klíči spravovanými zákazníky a ručním schválením privátního spojení](#cmkmapl)
-* [Pracovní prostor s klíči spravovanými společností Microsoft a automatickým schvalováním privátního spojení](#mmkaapl)
-* [Pracovní prostor s klíči spravovanými společností Microsoft a ručním schválením privátního odkazu](#mmkmapl)
+* [Pracovní prostor s klíči spravovanými zákazníkem a automatickým schválením pro privátní propojení](#cmkaapl)
+* [Pracovní prostor s klíči spravovanými zákazníkem a ručním schválením pro privátní propojení](#cmkmapl)
+* [Pracovní prostor s klíči spravovanými Microsoftem a automatickým schválením pro privátní propojení](#mmkaapl)
+* [Pracovní prostor s klíči spravovanými Microsoftem a ručním schválením pro privátní propojení](#mmkmapl)
 
 Při nasazování šablony je nutné zadat následující informace:
 
 * Název pracovního prostoru
-* Oblast Azure pro vytvoření prostředků v
-* Edice Pracovního prostoru (Základní nebo Podniková)
-* Pokud by měla být povolena vysoká důvěrnost nastavení pracovního prostoru
-* Pokud by mělo být povoleno šifrování pracovního prostoru pomocí klíče spravovaného zákazníkem a přidružené hodnoty pro klíč
-* Název virtuální sítě a podsítě, šablona vytvoří novou virtuální síť a podsíť
+* Oblast Azure, ve které se mají vytvářet prostředky
+* Verze pracovního prostoru (Basic nebo Enterprise)
+* Pokud má být povoleno nastavení vysoké důvěrnosti pro pracovní prostor
+* Pokud má být povoleno šifrování pro pracovní prostor s klíčem spravovaným zákazníkem a související hodnoty pro klíč
+* Virtual Network a název podsítě šablona vytvoří novou virtuální síť a podsíť.
 
-Po odeslání šablony a dokončení zřizování bude skupina prostředků obsahující váš pracovní prostor obsahovat tři nové typy artefaktů související s privátním odkazem:
+Po odeslání a zřízení šablony bude skupina prostředků obsahující váš pracovní prostor obsahovat tři nové typy artefaktů, které se vztahují k soukromému propojení:
 
 * Soukromý koncový bod
 * Síťové rozhraní
 * Zóna privátního DNS
 
-Pracovní prostor také obsahuje virtuální síť Azure, která může komunikovat s pracovním prostorem přes privátní koncový bod.
+Pracovní prostor obsahuje taky Virtual Network Azure, které mohou komunikovat s pracovním prostorem prostřednictvím privátního koncového bodu.
 
-### <a name="deploy-the-template-using-the-azure-portal"></a>Nasazení šablony pomocí webu Azure Portal
+### <a name="deploy-the-template-using-the-azure-portal"></a>Nasazení šablony pomocí Azure Portal
 
-1. Postupujte podle pokynů v [části Nasazení prostředků z vlastní šablony](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal#deploy-resources-from-custom-template). Po příjezdu na obrazovku __Upravit šablonu__ vložte jednu ze šablon z konce tohoto dokumentu.
-1. Vyberte __Uložit,__ chcete-li šablonu použít. Uveďte následující informace a souhlasíte s uvedenými podmínkami:
+1. Postupujte podle kroků v části [nasazení prostředků z vlastní šablony](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal#deploy-resources-from-custom-template). Až se dostanete na obrazovku __Upravit šablonu__ , vložte ji na konci tohoto dokumentu do jedné ze šablon.
+1. Vyberte __Uložit__ a použijte šablonu. Zadejte následující informace a vyjádřete souhlas s uvedenými podmínkami a ujednáními:
 
-   * Předplatné: Vyberte předplatné Azure, které chcete použít pro tyto prostředky.
-   * Skupina prostředků: Vyberte nebo vytvořte skupinu prostředků, která bude obsahovat služby.
-   * Název pracovního prostoru: Název, který se má použít pro pracovní prostor Azure Machine Learning, který se vytvoří. Název pracovního prostoru musí být mezi 3 a 33 znaky. Může obsahovat pouze alfanumerické znaky a '-'.
-   * Umístění: Vyberte umístění, kde budou zdroje vytvořeny.
+   * Předplatné: vyberte předplatné Azure, které chcete použít pro tyto prostředky.
+   * Skupina prostředků: vyberte nebo vytvořte skupinu prostředků, která bude obsahovat služby.
+   * Název pracovního prostoru: název, který se má použít pro pracovní prostor Azure Machine Learning, který se vytvoří. Název pracovního prostoru musí být dlouhý 3 až 33 znaků. Může obsahovat pouze alfanumerické znaky a znak "-".
+   * Umístění: vyberte umístění, kde se budou prostředky vytvářet.
 
-Další informace naleznete v [tématu Nasazení prostředků z vlastní šablony](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template).
+Další informace najdete v tématu [nasazení prostředků z vlastní šablony](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template).
 
-### <a name="deploy-the-template-using-azure-powershell"></a>Nasazení šablony pomocí Azure PowerShellu
+### <a name="deploy-the-template-using-azure-powershell"></a>Nasazení šablony pomocí Azure PowerShell
 
-Tento příklad předpokládá, že jste uložili jednu ze šablon z `azuredeploy.json` konce tohoto dokumentu do souboru pojmenovaného v aktuálním adresáři:
+V tomto příkladu se předpokládá, že jste uložili jednu ze šablon z konce tohoto dokumentu do souboru s názvem `azuredeploy.json` v aktuálním adresáři:
 
 ```powershell
 New-AzResourceGroup -Name examplegroup -Location "East US"
@@ -80,11 +80,11 @@ new-azresourcegroupdeployment -name exampledeployment `
   -templatefile .\azuredeploy.json -workspaceName "exampleworkspace" -sku "basic"
 ```
 
-Další informace najdete [v tématu Nasazení prostředků pomocí šablon Správce prostředků a Azure PowerShellu](../azure-resource-manager/templates/deploy-powershell.md) a [Nasazení privátní šablony Správce prostředků s tokenem SAS a Azure PowerShellem.](../azure-resource-manager/templates/secure-template-with-sas-token.md)
+Další informace najdete v tématu [nasazení prostředků pomocí šablon Správce prostředků a Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md) a [nasazení privátní šablony Správce prostředků pomocí tokenu SAS a Azure PowerShell](../azure-resource-manager/templates/secure-template-with-sas-token.md).
 
-### <a name="deploy-the-template-using-the-azure-cli"></a>Nasazení šablony pomocí příkazového příkazového příkazu Azure
+### <a name="deploy-the-template-using-the-azure-cli"></a>Nasazení šablony pomocí Azure CLI
 
-Tento příklad předpokládá, že jste uložili jednu ze šablon z `azuredeploy.json` konce tohoto dokumentu do souboru pojmenovaného v aktuálním adresáři:
+V tomto příkladu se předpokládá, že jste uložili jednu ze šablon z konce tohoto dokumentu do souboru s názvem `azuredeploy.json` v aktuálním adresáři:
 
 ```azurecli-interactive
 az group create --name examplegroup --location "East US"
@@ -95,46 +95,46 @@ az group deployment create \
   --parameters workspaceName=exampleworkspace location=eastus sku=basic
 ```
 
-Další informace najdete [v tématu Nasazení prostředků pomocí šablon Správce prostředků a Azure CLI](../azure-resource-manager/templates/deploy-cli.md) a [nasazení privátní šablony Správce prostředků s tokenem SAS a Azure CLI](../azure-resource-manager/templates/secure-template-with-sas-token.md).
+Další informace najdete v tématu [nasazení prostředků pomocí šablon Správce prostředků a Azure CLI](../azure-resource-manager/templates/deploy-cli.md) a [nasazení privátních správce prostředků šablony s tokenem SAS a](../azure-resource-manager/templates/secure-template-with-sas-token.md)rozhraním příkazového řádku Azure CLI.
 
-## <a name="using-a-workspace-over-a-private-endpoint"></a>Použití pracovního prostoru přes soukromý koncový bod
+## <a name="using-a-workspace-over-a-private-endpoint"></a>Použití pracovního prostoru v rámci privátního koncového bodu
 
-Vzhledem k tomu, že komunikace s pracovním prostorem je povolena pouze z virtuální sítě, musí být členy virtuální sítě všechna vývojová prostředí, která používají pracovní prostor. Například virtuální počítač ve virtuální síti nebo počítač připojený k virtuální síti pomocí brány VPN.
+Vzhledem k tomu, že komunikace s pracovním prostorem je povolená jenom z virtuální sítě, musí být všechna vývojová prostředí, která používají pracovní prostory, členy virtuální sítě. Například virtuální počítač ve virtuální síti nebo počítač připojený k virtuální síti pomocí brány VPN.
 
 > [!IMPORTANT]
-> Aby se zabránilo dočasnému narušení připojení, společnost Microsoft doporučuje vyprázdnění mezipaměti DNS v počítačích, které se připojují k pracovnímu prostoru po povolení služby Private Link. 
+> Aby nedošlo k dočasnému přerušení připojení, společnost Microsoft doporučuje po povolení privátního odkazu vyprázdnit mezipaměť DNS na počítačích, které se připojují k pracovnímu prostoru. 
 
-Informace o virtuálních počítačích Azure najdete v [dokumentaci k virtuálním počítačům](/azure/virtual-machines/).
+Informace o službě Azure Virtual Machines najdete v [dokumentaci k Virtual Machines](/azure/virtual-machines/).
 
-Informace o branách VPN najdete v tématu [Co je brána VPN](/azure/vpn-gateway/vpn-gateway-about-vpngateways).
+Informace o branách VPN najdete v tématu [co je VPN Gateway](/azure/vpn-gateway/vpn-gateway-about-vpngateways).
 
 ## <a name="using-azure-storage"></a>S využitím Azure Storage
 
-Pokud chcete zabezpečit účet Azure Storage, který používá váš pracovní prostor, vložte ho do virtuální sítě.
+Pokud chcete zabezpečit účet Azure Storage používaný vaším pracovním prostorem, umístěte ho do virtuální sítě.
 
-Informace o umístění účtu úložiště do virtuální sítě najdete v [tématu Použití účtu úložiště pro pracovní prostor](how-to-enable-virtual-network.md#use-a-storage-account-for-your-workspace).
+Informace o tom, jak vložit účet úložiště ve virtuální síti, najdete v tématu [použití účtu úložiště pro váš pracovní prostor](how-to-enable-virtual-network.md#use-a-storage-account-for-your-workspace).
 
-## <a name="using-azure-key-vault"></a>Použití trezoru klíčů Azure
+## <a name="using-azure-key-vault"></a>Použití Azure Key Vault
 
-Chcete-li zabezpečit Trezor klíčů Azure používaný vaším pracovním prostorem, můžete ho buď umístit do virtuální sítě, nebo pro něj povolit privátní propojení.
+Pokud chcete zabezpečit Azure Key Vault používané vaším pracovním prostorem, můžete ho buď umístit do virtuální sítě, nebo pro něj Povolit privátní propojení.
 
-Informace o umístění trezoru klíčů do virtuální sítě najdete v [tématu Použití instance trezoru klíčů s pracovním prostorem](how-to-enable-virtual-network.md#use-a-key-vault-instance-with-your-workspace).
+Informace o vložení trezoru klíčů ve virtuální síti najdete v tématu [použití instance trezoru klíčů v pracovním prostoru](how-to-enable-virtual-network.md#use-a-key-vault-instance-with-your-workspace).
 
-Informace o povolení privátní ho propojení pro trezor klíčů najdete v [tématu Integrace trezoru klíčů s privátním propojením Azure](/azure/key-vault/private-link-service).
+Informace o povolení privátního odkazu pro Trezor klíčů najdete v tématu věnovaném [integraci Key Vault s privátním odkazem Azure](/azure/key-vault/private-link-service).
 
-## <a name="using-azure-kubernetes-services"></a>Používání služeb Azure Kubernetes
+## <a name="using-azure-kubernetes-services"></a>Používání služeb Azure Kubernetes Services
 
-Chcete-li zabezpečit služby Azure Kubernetes používané vaším pracovním prostorem, vložte je do virtuální sítě. Další informace najdete [v tématu Použití služeb Azure Kubernetes services s pracovním prostorem](how-to-enable-virtual-network.md#aksvnet).
+Pokud chcete zabezpečit službu Azure Kubernetes, kterou používá váš pracovní prostor, umístěte ji do virtuální sítě. Další informace najdete v tématu [použití služeb Azure Kubernetes Services s vaším pracovním prostorem](how-to-enable-virtual-network.md#aksvnet).
 
 > [!WARNING]
-> Azure Machine Learning nepodporuje pomocí služby Azure Kubernetes, která má povolenou privátní vazbu.
+> Azure Machine Learning nepodporuje použití služby Azure Kubernetes s povoleným privátním odkazem.
 
 ## <a name="azure-container-registry"></a>Azure Container Registry
 
-Informace o zabezpečení registru kontejnerů Azure uvnitř virtuální sítě najdete v tématu [Použití registru kontejnerů Azure](how-to-enable-virtual-network.md#use-azure-container-registry).
+Informace o zabezpečení Azure Container Registry v rámci virtuální sítě najdete v tématu [použití Azure Container Registry](how-to-enable-virtual-network.md#use-azure-container-registry).
 
 > [!IMPORTANT]
-> Pokud používáte privátní odkaz pro pracovní prostor Azure Machine Learning a umístit registr kontejnerů Azure pro váš pracovní prostor ve virtuální síti, musíte také použít následující šablonu Azure Resource Manager. Tato šablona umožňuje vašemu pracovnímu prostoru komunikovat s ACR přes soukromé propojení.
+> Pokud pro váš pracovní prostor Azure Machine Learning používáte privátní odkaz a Azure Container Registry pro svůj pracovní prostor ve virtuální síti, musíte použít také následující šablonu Azure Resource Manager. Tato šablona umožňuje vašemu pracovnímu prostoru komunikovat s ACR prostřednictvím privátního odkazu.
 
 ```json
 {
@@ -189,7 +189,7 @@ Informace o zabezpečení registru kontejnerů Azure uvnitř virtuální sítě 
 ## <a name="azure-resource-manager-templates"></a>Šablony Azure Resource Manageru
 
 <a id="cmkaapl"></a>
-### <a name="workspace-with-customer-managed-keys-and-auto-approval-for-private-link"></a>Pracovní prostor s klíči spravovanými zákazníky a automatickým schvalováním privátního spojení
+### <a name="workspace-with-customer-managed-keys-and-auto-approval-for-private-link"></a>Pracovní prostor s klíči spravovanými zákazníkem a automatickým schválením pro privátní propojení
 
 ```json
 {
@@ -492,7 +492,7 @@ Informace o zabezpečení registru kontejnerů Azure uvnitř virtuální sítě 
 ```
 
 <a id="cmkmapl"></a>
-### <a name="workspace-with-customer-managed-keys-and-manual-approval-for-private-link"></a>Pracovní prostor s klíči spravovanými zákazníky a ručním schválením privátního spojení
+### <a name="workspace-with-customer-managed-keys-and-manual-approval-for-private-link"></a>Pracovní prostor s klíči spravovanými zákazníkem a ručním schválením pro privátní propojení
 
 ```json
 {
@@ -718,7 +718,7 @@ Informace o zabezpečení registru kontejnerů Azure uvnitř virtuální sítě 
 ```
 
 <a id="mmkaapl"></a>
-### <a name="workspace-with-microsoft-managed-keys-and-auto-approval-for-private-link"></a>Pracovní prostor s klíči spravovanými společností Microsoft a automatickým schvalováním privátního spojení
+### <a name="workspace-with-microsoft-managed-keys-and-auto-approval-for-private-link"></a>Pracovní prostor s klíči spravovanými Microsoftem a automatickým schválením pro privátní propojení
 
 ```json
 {
@@ -979,7 +979,7 @@ Informace o zabezpečení registru kontejnerů Azure uvnitř virtuální sítě 
 ```
 
 <a id="mmkmapl"></a>
-### <a name="workspace-with-microsoft-managed-keys-and-manual-approval-for-private-link"></a>Pracovní prostor s klíči spravovanými společností Microsoft a ručním schválením privátního odkazu
+### <a name="workspace-with-microsoft-managed-keys-and-manual-approval-for-private-link"></a>Pracovní prostor s klíči spravovanými Microsoftem a ručním schválením pro privátní propojení
 
 ```json
 {
@@ -1164,4 +1164,4 @@ Informace o zabezpečení registru kontejnerů Azure uvnitř virtuální sítě 
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o zabezpečení pracovního prostoru Azure Machine Learning najdete v článku [podnikové zabezpečení.](concept-enterprise-security.md)
+Další informace o zabezpečení Azure Machine Learning pracovního prostoru najdete v článku o [podnikovém zabezpečení](concept-enterprise-security.md) .

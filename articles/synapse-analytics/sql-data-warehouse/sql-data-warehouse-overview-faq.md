@@ -1,6 +1,6 @@
 ---
-title: Azure Synapse Analytics (dříve SQL DW) Nejčastější dotazy
-description: V tomto článku jsou uvedeny nejčastější dotazy týkající se Azure Synapse Analytics (dříve SQL DW) od zákazníků a vývojářů.
+title: Nejčastější dotazy k Azure synapse Analytics (dříve SQL DW)
+description: V tomto článku najdete seznam nejčastějších dotazů ke službě Azure synapse Analytics (dříve SQL DW) od zákazníků a vývojářů.
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -11,105 +11,105 @@ ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.openlocfilehash: 260086d186f7e2b2d6f76c437057f5fbc8af39b5
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81416078"
 ---
-# <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Azure Synapse Analytics (dříve SQL DW) Nejčastější dotazy
+# <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Nejčastější dotazy k Azure synapse Analytics (dříve SQL DW)
 
 ## <a name="general"></a>Obecné
 
 Otázka: Co je Azure Synapse?
 
-A. Azure Synapse je neomezená analytická služba, která sdružuje datové sklady a analýzy velkých objemů dat. Poskytuje vám svobodu dotazování dat na vaše podmínky, pomocí bezserveru na vyžádání nebo zřízených prostředků - ve velkém měřítku. Azure Synapse spojuje tyto dva světy s jednotným prostředím pro ingestování, přípravu, správu a poskytování dat pro okamžité potřeby BI a strojového učení. Další informace naleznete v tématu [Co je Azure Synapse Analytics](sql-data-warehouse-overview-what-is.md).
+A. Azure synapse je bezlimitní analytická služba, která přináší dohromady datové sklady a analýzu velkých objemů dat. Poskytuje vám volnost v dotazování na data podle vašich podmínek, a to s využitím neserverových nebo zřízených prostředků se škálováním na vyžádání. Azure synapse přináší tyto dvě světů společně s jednotným prostředím pro ingestování, přípravu, správu a poskytování dat pro potřeby okamžitého BI a strojového učení. Další informace najdete v tématu [co je Azure synapse Analytics](sql-data-warehouse-overview-what-is.md).
 
 Otázka: Co se stalo s Azure SQL Data Warehouse?
 
-A. Azure Synapse je Azure SQL Data Warehouse (SQL DW) vyvinul. Posrali jsme stejný datový sklad, který je v oboru, na zcela novou úroveň výkonu a schopností. Můžete pokračovat ve spuštění stávajících úloh datového skladu v produkčním prostředí s Azure Synapse a automaticky využívat nové funkce, které jsou ve verzi preview. Další informace naleznete v tématu [Co je Azure Synapse Analytics](sql-data-warehouse-overview-what-is.md).
+A. Azure synapse je vyvíjejí se Azure SQL Data Warehouse (SQL DW). Provedli jsme stejný oborový datový sklad na celou novou úroveň výkonu a schopností. Můžete dál spouštět stávající úlohy datového skladu v produkčním prostředí s využitím Azure synapse a automaticky využívat výhod nových funkcí, které jsou ve verzi Preview. Další informace najdete v tématu [co je Azure synapse Analytics](sql-data-warehouse-overview-what-is.md).
 
-Otázka: Co je synapse SQL fond?
+Otázka: Co je synapse fond SQL?
 
-A. Synapse SQL fond odkazuje na podnikové datové sklady funkce, které jsou obecně dostupné s Azure Synapse. Další informace naleznete v tématu [Co je Azure Synapse Analytics](sql-data-warehouse-overview-what-is.md).
+A. Synapse fond SQL odkazuje na funkce podnikových dat v datovém skladu, které jsou všeobecně dostupné v Azure synapse. Další informace najdete v tématu [co je Azure synapse Analytics](sql-data-warehouse-overview-what-is.md).
 
-Otázka: Jak začít s Azure Synapse?
+Otázka: Návody začít s Azure synapse?
 
-A. Můžete začít s [bezplatným účtem Azure](https://azure.microsoft.com/free/sql-data-warehouse/) nebo [se obrátit na prodej, kde najdete další informace](https://info.microsoft.com/ww-landing-azure-sql-data-warehouse-contactme.html).
+A. Můžete začít s [bezplatným účtem Azure](https://azure.microsoft.com/free/sql-data-warehouse/) nebo se [obrátit na prodej, kde najdete další informace](https://info.microsoft.com/ww-landing-azure-sql-data-warehouse-contactme.html).
 
-Otázka: Co Azure Synapse nabízí pro zabezpečení dat?
+Otázka: Co Azure synapse nabízí pro zabezpečení dat?
 
-A. Azure Synapse nabízí několik řešení pro ochranu dat, jako je TDE a auditování. Další informace naleznete v tématu [Zabezpečení](sql-data-warehouse-overview-manage-security.md).
+A. Azure synapse nabízí několik řešení pro ochranu dat, jako je TDE a auditování. Další informace najdete v tématu [zabezpečení](sql-data-warehouse-overview-manage-security.md).
 
-Otázka: Kde zjistím, jaké právní nebo obchodní standardy Azure Synapse splňuje?
+Otázka: Kde můžu zjistit, jaké právní nebo obchodní standardy Azure synapse dodržuje předpisy?
 
-A. Navštivte stránku [Microsoft Compliance,](https://www.microsoft.com/trustcenter/compliance/complianceofferings) kde najdete různé nabídky dodržování předpisů podle produktů, jako jsou SOC a ISO.
-Nejprve zvolte podle názvu dodržování předpisů. Pak rozbalte Azure v části cloudových služeb Microsoft in-scope na pravé straně stránky a zjistěte, jaké služby jsou kompatibilní s Azure Synapse.
+A. Navštivte stránku [dodržování předpisů Microsoftu](https://www.microsoft.com/trustcenter/compliance/complianceofferings) , kde najdete různé nabídky dodržování předpisů podle produktů, jako je SOC a ISO.
+Nejdřív vyberte podle názvu dodržování předpisů. Pak rozbalte Azure v části věnované cloudovým službám Microsoftu v oboru na pravé straně stránky a podívejte se, jaké služby jsou v Azure synapse kompatibilní.
 
-Otázka: Můžu připojit Power BI?
+Otázka: Můžu se Power BI připojit?
 
-A. Ano! I když Power BI podporuje přímý dotaz s Azure Synapse, není určen pro velký počet uživatelů nebo data v reálném čase. Pokud chcete výkon Power BI dále optimalizovat, zvažte použití Power BI nad Azure Analysis Services nebo Analysis Service IaaS.
+A. Ano! I když Power BI podporuje přímý dotaz s Azure synapse, není určený pro velký počet uživatelů nebo dat v reálném čase. Pokud chcete optimalizovat Power BI výkon, zvažte použití Power BI nad Azure Analysis Services nebo Analysis Service IaaS.
 
-Otázka: Co jsou limity kapacity fondu SQL Synapse?
+Otázka: Co jsou synapse limity kapacity fondu SQL?
 
-A. Podívejte se na naši aktuální [stránku omezení kapacity.](sql-data-warehouse-service-capacity-limits.md)
+A. Podívejte se na naše aktuální [omezení kapacity](sql-data-warehouse-service-capacity-limits.md) .
 
-Otázka: Proč moje scale/pause/resume trvá tak dlouho?
+Otázka: Proč je můj rozsah/pozastavení/pokračování trvá tak dlouho?
 
-A. Několik faktorů může ovlivnit čas pro operace správy výpočetních prostředků. Běžným případem pro dlouhotrvající operace je transakční vrácení zpět. Při zahájení operace škálování nebo pozastavení jsou blokovány všechny příchozí relace a dotazy jsou vybité. Chcete-li ponechat systém ve stabilním stavu, musí být transakce před zahájením operace vráceny zpět. Čím větší je počet a větší velikost protokolu transakcí, tím déle bude operace pozastavena obnovení systému do stabilního stavu.
+A. Několik faktorů může ovlivnit čas operací správy výpočetních prostředků. Běžným případem dlouhotrvajících operací je vrácení transakční služby za provozu. Při zahájení operace škálování nebo pozastavení jsou všechny příchozí relace blokované a dotazy se vyprázdní. Aby bylo možné systém opustit v stabilním stavu, transakce musí být vráceny zpět před zahájením operace. Čím větší je počet a větší velikost protokolu transakcí, tím déle bude operace zablokované obnovení systému do stabilního stavu.
 
 ## <a name="user-support"></a>Podpora uživatelů
 
-Otázka: Mám žádost o funkci, kde ji mám odeslat?
+Otázka: Mám žádost o funkci, kde ji mohu odeslat?
 
-A. Pokud máte žádost o funkci, odešlete ji na naši stránku [UserVoice](https://feedback.azure.com/forums/307516-sql-data-warehouse)
+A. Pokud máte žádost o funkci, odešlete ji na naši stránku [UserVoice](https://feedback.azure.com/forums/307516-sql-data-warehouse) .
 
-Otázka: Jak mohu udělat x?
+Otázka: Jak můžu provést x?
 
-A. Pokud potřebujete pomoc s vývojem s Azure Synapse, můžete klást otázky na naší stránce [Přetečení zásobníku.](https://stackoverflow.com/questions/tagged/azure-sqldw)
+A. Pokud potřebujete pomoc s vývojem pomocí Azure synapse, můžete klást otázky na stránce [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-sqldw) .
 
-Otázka: Jak odešlu lístek podpory?
+Otázka: Návody odeslat lístek podpory?
 
-A. [Lístky podpory](sql-data-warehouse-get-started-create-support-ticket.md) lze podat prostřednictvím portálu Azure.
+A. [Lístky podpory](sql-data-warehouse-get-started-create-support-ticket.md) mohou být archivovány prostřednictvím Azure Portal.
 
-## <a name="sql-languagefeature-support"></a>Podpora jazyka/funkcí SQL
+## <a name="sql-languagefeature-support"></a>Podpora jazyka a funkcí SQL
 
 Otázka: Jaké datové typy jsou podporovány?
 
-A. Viz [datové typy](sql-data-warehouse-tables-data-types.md).
+A. Podívejte se na [datové typy](sql-data-warehouse-tables-data-types.md).
 
 Otázka: Jaké funkce tabulky podporujete?
 
-A. Mnoho funkcí je podporováno. Funkce, které nejsou podporovány, lze nalézt v [nepodporovaných funkcích tabulky](sql-data-warehouse-tables-data-types.md).
+A. Je podporováno mnoho funkcí. Funkce, které nejsou podporované, najdete v [nepodporovaných funkcích tabulky](sql-data-warehouse-tables-data-types.md).
 
-## <a name="tooling-and-administration"></a>Nástroje a správa
+## <a name="tooling-and-administration"></a>Nástroje a Správa
 
-Otázka: Podporuje fond SQL Synapse REST API?
+Otázka: Podporuje synapse fond SQL rozhraní REST API?
 
-A. Ano. Většina funkcí REST, které lze použít s databází SQL, je také k dispozici s fondem SYNApse SQL. Informace o rozhraní API najdete na stránkách dokumentace REST nebo [v databázích](/rest/api/sql/databases?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
+A. Ano. Většina funkcí REST, které je možné používat s SQL Database, je k dispozici také v synapse fondu SQL. Informace o rozhraní API najdete v rámci stránek nebo [databází](/rest/api/sql/databases?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)v dokumentaci k REST.
 
-## <a name="loading"></a>Načítání
+## <a name="loading"></a>Načítá
 
-Otázka: Jaké ovladače klientů podporujete?
+Otázka: Jaké ovladače klienta podporujete?
 
-A. Podpora ovladačů pro fond Synapse SQL naleznete na stránce [Připojovací řetězce](../sql/connection-strings.md)
+A. Podporu ovladačů pro synapse fond SQL najdete na stránce [připojovací řetězce](../sql/connection-strings.md) .
 
-Otázka: Jaké formáty souborů jsou podporovány PolyBase?
+Otázka: Jaké formáty souborů podporuje základová databáze?
 
-A: Skorta, RC, parkety a plochý oddělený text
+O: Orc, RC, Parquet a plochý text oddělený textem
 
-Otázka: K jakým zdrojům dat se mohu připojit pomocí technologie PolyBase?
+Otázka: Jaké zdroje dat se mohu připojit k používání základny?
 
-A: [Azure Data Lake Storage](sql-data-warehouse-load-from-azure-data-lake-store.md) a Azure Storage [objekty BLOB](sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md)
+O: [Azure Data Lake Storage](sql-data-warehouse-load-from-azure-data-lake-store.md) a [objekty blob Azure Storage](sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md)
 
-Otázka: Je možné nabízení výpočtů při připojování k objektům BLOB úložiště Azure nebo ADLS?
+Otázka: když se připojujete k Azure Storage objektům blob nebo ADLS, je možné výpočet směrem dolů?
 
-A: Ne, PolyBase pouze spolupracuje s komponenty úložiště.
+Odpověď: Ne, základová databáze komunikuje pouze s součástmi úložiště.
 
-Otázka: Mohu se připojit k HDI?
+Otázka: je možné se připojit k HDI?
 
-A: HDI můžete použít buď ADLS nebo WASB jako vrstvu HDFS. Pokud máte buď jako vrstva HDFS, můžete načíst data do fondu SYNApse SQL. Nelze však generovat výpočty pushdown do instance HDI.
+Odpověď: HDI může jako vrstvu HDFS použít buď ADLS, nebo WASB. Pokud máte buď vrstvu HDFS, můžete tato data načíst do synapse fondu SQL. V instanci HDI ale nemůžete vygenerovat výpočet přenosů směrem dolů.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o Azure Synapse jako celku najdete na naší stránce [Přehled.](sql-data-warehouse-overview-faq.md)
+Další informace o Azure synapse jako celku najdete na naší stránce s [přehledem](sql-data-warehouse-overview-faq.md) .

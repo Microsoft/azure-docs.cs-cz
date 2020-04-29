@@ -1,6 +1,6 @@
 ---
-title: Sledování úlohy fondu SQL pomocí zařízení DMV
-description: Zjistěte, jak sledovat úlohu fondu SQL Azure Synapse Analytics a spouštění dotazů pomocí dmv.
+title: Monitorování zatížení fondu SQL pomocí zobrazení dynamické správy
+description: Naučte se monitorovat úlohy fondu SQL ve službě Azure synapse Analytics a provádění dotazů pomocí zobrazení dynamické správy.
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -12,43 +12,43 @@ ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: synapse-analytics
 ms.openlocfilehash: 5360d91a17a7eee2dd0373ac311c79d22e085939
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81416086"
 ---
-# <a name="monitor-your-azure-synapse-analytics-sql-pool-workload-using-dmvs"></a>Sledování úlohy fondu SQL Azure Synapse Analytics pomocí digitálních vozidl
+# <a name="monitor-your-azure-synapse-analytics-sql-pool-workload-using-dmvs"></a>Monitorování úloh fondu SQL ve službě Azure synapse Analytics pomocí zobrazení dynamické správy
 
-Tento článek popisuje, jak pomocí zobrazení dynamické správy (DMVs) sledovat vaše úlohy, včetně zkoumání provádění dotazů ve fondu SQL.
+Tento článek popisuje, jak pomocí zobrazení dynamické správy (zobrazení dynamické správy) monitorovat vaše úlohy, včetně zkoumání provádění dotazů ve fondu SQL.
 
 ## <a name="permissions"></a>Oprávnění
 
-Chcete-li dotaz DMVs v tomto článku, budete potřebovat **buď ZOBRAZIT STAV DATABÁZE** nebo **ŘÍZENÍ** oprávnění. Udělení stavu **databáze zobrazení** je obvykle upřednostňované oprávnění, protože je mnohem více omezující.
+K dotazování na zobrazení dynamické správy v tomto článku potřebujete buď oprávnění **Zobrazit stav databáze** nebo **řídit** . Obecně platí, že přidělení **stavu databáze zobrazení** je preferované oprávnění, protože je mnohem více omezující.
 
 ```sql
 GRANT VIEW DATABASE STATE TO myuser;
 ```
 
-## <a name="monitor-connections"></a>Sledování připojení
+## <a name="monitor-connections"></a>Monitorování připojení
 
-Všechna přihlášení do datového skladu jsou zaznamenána na [sys.dm_pdw_exec_sessions](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-sessions-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).  Toto DMV obsahuje posledních 10 000 přihlášení.  Session_id je primární klíč a je přiřazen postupně pro každé nové přihlášení.
+Všechna přihlášení k vašemu datovému skladu se protokolují do [Sys. dm_pdw_exec_sessions](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-sessions-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).  Tento DMV obsahuje poslední 10 000 přihlášení.  Session_id je primární klíč a pro každé nové přihlášení se přiřadí sekvenčně.
 
 ```sql
 -- Other Active Connections
 SELECT * FROM sys.dm_pdw_exec_sessions where status <> 'Closed' and session_id <> session_id();
 ```
 
-## <a name="monitor-query-execution"></a>Sledování provádění dotazů
+## <a name="monitor-query-execution"></a>Monitorovat provádění dotazů
 
-Všechny dotazy spuštěné ve fondu SQL jsou protokolovány do [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).  Tento DMV obsahuje posledních 10 000 provedených dotazů.  Request_id jednoznačně identifikuje každý dotaz a je primární klíč pro tento DMV.  request_id je přiřazena postupně pro každý nový dotaz a je předponou qid, což znamená ID dotazu.  Dotazování tohoto DMV pro danou session_id zobrazí všechny dotazy pro dané přihlášení.
+Všechny dotazy spouštěné ve fondu SQL jsou protokolovány do [Sys. dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).  Tento DMV obsahuje poslední spuštěné dotazy 10 000.  Request_id jedinečně identifikuje každý dotaz a je primárním klíčem pro tento DMV.  Request_id se každému novému dotazu přiřadí sekvenčně a je předponou QID, která představuje ID dotazu.  Dotaz na tento DMV pro daný session_id zobrazuje všechny dotazy pro dané přihlášení.
 
 > [!NOTE]
-> Uložené procedury používají více ID požadavků.  ID požadavku jsou přiřazovány v sekvenčním pořadí.
+> Uložené procedury používají více ID žádostí.  ID žádostí se přiřazují v sekvenčním pořadí.
 
-Zde jsou kroky, které je třeba postupovat pro zkoumání plánů spuštění dotazu a časů pro konkrétní dotaz.
+Tady je postup pro prošetření plánů provádění dotazů a časů pro konkrétní dotaz.
 
-### <a name="step-1-identify-the-query-you-wish-to-investigate"></a>KROK 1: Identifikujte dotaz, který chcete prozkoumat
+### <a name="step-1-identify-the-query-you-wish-to-investigate"></a>Krok 1: určení dotazu, který chcete prozkoumat
 
 ```sql
 -- Monitor active queries
@@ -65,11 +65,11 @@ ORDER BY total_elapsed_time DESC;
 
 ```
 
-Z předchozích výsledků dotazu **si poznamenejte ID požadavku** dotazu, který chcete prozkoumat.
+Z předchozích výsledků dotazu **si poznamenejte ID žádosti** o dotaz, který chcete prozkoumat.
 
-Dotazy v **pozastaveném** stavu mohou být zařazeny do fronty z důvodu velkého počtu aktivních spuštěných dotazů. Tyto dotazy se také zobrazí v [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) čeká dotaz s typem UserConcurrencyResourceType. Informace o omezení souběžnosti naleznete v [tématu Omezení paměti a souběžnosti](memory-concurrency-limits.md) nebo [Třídy prostředků pro správu úloh](resource-classes-for-workload-management.md). Dotazy můžete také čekat na jiné důvody, například pro uzamčení objektu.  Pokud váš dotaz čeká na prostředek, naleznete [v tématu Zkoumání dotazů čekání na prostředky](#monitor-waiting-queries) dále v tomto článku.
+Dotazy v **pozastaveném** stavu lze zařadit do fronty z důvodu velkého počtu aktivních spuštěných dotazů. Tyto dotazy se také zobrazí v [Sys. dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) čeká na dotaz s typem UserConcurrencyResourceType. Informace o omezeních souběžnosti najdete v tématu [limity paměti a souběžnosti](memory-concurrency-limits.md) nebo [třídy prostředků pro správu úloh](resource-classes-for-workload-management.md). Dotazy mohou také čekat na jiné důvody, například na zámky objektů.  Pokud dotaz čeká na prostředek, prostudujte si další informace v tomto článku v tématu [zkoumání dotazů, které čekají na prostředky](#monitor-waiting-queries) .
 
-Chcete-li zjednodušit vyhledávání dotazu v tabulce [sys.dm_pdw_exec_requests,](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) [LABEL](/sql/t-sql/queries/option-clause-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) přiřaďte k dotazu komentář, který lze vyhledat v zobrazení sys.dm_pdw_exec_requests.
+Chcete-li zjednodušit vyhledávání dotazu v tabulce [Sys. dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) , použijte [popisek](/sql/t-sql/queries/option-clause-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) k přiřazení komentáře k dotazu, který lze vyhledat v zobrazení sys. dm_pdw_exec_requests.
 
 ```sql
 -- Query with Label
@@ -85,9 +85,9 @@ FROM    sys.dm_pdw_exec_requests
 WHERE   [label] = 'My Query';
 ```
 
-### <a name="step-2-investigate-the-query-plan"></a>KROK 2: Prozkoumání plánu dotazů
+### <a name="step-2-investigate-the-query-plan"></a>Krok 2: prozkoumání plánu dotazů
 
-ID požadavku použijte k načtení plánu distribuovaného SQL (DSQL) dotazu ze [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+Pomocí ID žádosti načtěte plán SQL (DSQL) pro dotaz z [Sys. dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 ```sql
 -- Find the distributed query plan steps for a specific query.
@@ -98,16 +98,16 @@ WHERE request_id = 'QID####'
 ORDER BY step_index;
 ```
 
-Když plán DSQL trvá déle, než se očekávalo, příčinou může být komplexní plán s mnoha kroky DSQL nebo jen jeden krok, který trvá dlouhou dobu.  Pokud je plán mnoho kroků s několika operacemi přesunutí, zvažte optimalizaci rozložení tabulek, abyste snížili přesun dat. Článek [distribuce tabulky](sql-data-warehouse-tables-distribute.md) vysvětluje, proč musí být data přesunuta k vyřešení dotazu. Článek také vysvětluje některé distribuční strategie pro minimalizaci pohybu dat.
+Pokud plán DSQL trvá déle, než se čekalo, může být příčinou složitý plán s mnoha kroky DSQL nebo pouze jedním krokem trvat dlouhou dobu.  Pokud má plán mnoho kroků s několika operacemi přesunutí, zvažte optimalizaci distribuce vašich tabulek, aby se snížil pohyb dat. Článek [distribuce tabulek](sql-data-warehouse-tables-distribute.md) vysvětluje, proč je nutné přesunout data, aby bylo možné dotaz vyřešit. Článek také vysvětluje některé strategie distribuce pro minimalizaci přesunu dat.
 
-Chcete-li prozkoumat další podrobnosti o jednom kroku, *sloupec operation_type* dlouho běžící ho kroku dotazu a poznamenejte si **index kroku**:
+Chcete-li prozkoumat další podrobnosti o jednom kroku, sloupec *operation_type* dlouhého kroku dotazu a poznamenejte si **Krok index**:
 
-* Pokračujte krokem 3a pro **operace SQL:** OnOperation, RemoteOperation, ReturnOperation.
-* Pokračujte krokem 3b pro **operace přesunu dat**: ShuffleMoveOperation, BroadcastMoveOperation, TrimMoveOperation, PartitionMoveOperation, MoveOperation, CopyOperation.
+* Pokračujte krokem 3a pro **operace SQL**: operace s RemoteOperation, ReturnOperation.
+* Pokračujte krokem 3B pro **operace přesunu dat**: ShuffleMoveOperation, BroadcastMoveOperation, TrimMoveOperation, PartitionMoveOperation, MoveOperation, CopyOperation.
 
-### <a name="step-3-investigate-sql-on-the-distributed-databases"></a>KROK 3: Prozkoumání sql v distribuovaných databázích
+### <a name="step-3-investigate-sql-on-the-distributed-databases"></a>Krok 3: Prozkoumejte SQL pro distribuované databáze
 
-Pomocí ID požadavku a indexu kroku načtěte podrobnosti ze [souboru sys.dm_pdw_sql_requests](/sql/t-sql/database-console-commands/dbcc-pdw-showexecutionplan-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), který obsahuje informace o spuštění kroku dotazu ve všech distribuovaných databázích.
+K načtení podrobností z [Sys. dm_pdw_sql_requests](/sql/t-sql/database-console-commands/dbcc-pdw-showexecutionplan-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), který obsahuje informace o spuštění kroku dotazu ve všech distribuovaných databázích, použijte ID žádosti a krokový index.
 
 ```sql
 -- Find the distribution run times for a SQL step.
@@ -117,7 +117,7 @@ SELECT * FROM sys.dm_pdw_sql_requests
 WHERE request_id = 'QID####' AND step_index = 2;
 ```
 
-Při spuštění kroku dotazu [DBCC PDW_SHOWEXECUTIONPLAN](/sql/t-sql/database-console-commands/dbcc-pdw-showexecutionplan-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) lze použít k načtení plánu odhadovaný sql server z mezipaměti plánu serveru SQL Server pro krok spuštěný na konkrétní distribuci.
+Když je spuštěný krok dotazu, můžete použít [příkaz DBCC PDW_SHOWEXECUTIONPLAN](/sql/t-sql/database-console-commands/dbcc-pdw-showexecutionplan-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) k načtení SQL Server odhadovaného plánu z mezipaměti plánu SQL Server pro krok spuštěný v konkrétní distribuci.
 
 ```sql
 -- Find the SQL Server execution plan for a query running on a specific SQL pool or control node.
@@ -126,9 +126,9 @@ Při spuštění kroku dotazu [DBCC PDW_SHOWEXECUTIONPLAN](/sql/t-sql/database-c
 DBCC PDW_SHOWEXECUTIONPLAN(1, 78);
 ```
 
-### <a name="step-4-investigate-data-movement-on-the-distributed-databases"></a>KROK 4: Prozkoumání pohybu dat v distribuovaných databázích
+### <a name="step-4-investigate-data-movement-on-the-distributed-databases"></a>Krok 4: prozkoumání přesunu dat v distribuovaných databázích
 
-Pomocí ID požadavku a indexu kroku načtěte informace o kroku přesunu dat spuštěných v každé distribuci ze [souboru sys.dm_pdw_dms_workers](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-workers-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+K načtení informací o kroku přesunu dat běžícímu na každé distribuci z [Sys. dm_pdw_dms_workers](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-workers-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)použijte ID žádosti a krokový index.
 
 ```sql
 -- Find information about all the workers completing a Data Movement Step.
@@ -138,10 +138,10 @@ SELECT * FROM sys.dm_pdw_dms_workers
 WHERE request_id = 'QID####' AND step_index = 2;
 ```
 
-* Zkontrolujte *sloupec total_elapsed_time* a zjistěte, zda určitý rozdělení trvá výrazně déle než ostatní pro přesun dat.
-* Pro dlouhotrvající distribuce zkontrolujte *sloupec rows_processed* a zjistěte, zda je počet řádků přesunutých z této distribuce výrazně větší než ostatní. Pokud ano, toto zjištění může znamenat zkosení podkladových dat.
+* Zkontrolujte sloupec *total_elapsed_time* , abyste viděli, jestli konkrétní distribuce trvá podstatně déle než jiné pro pohyb dat.
+* V případě dlouhotrvající distribuce zkontrolujte sloupec *rows_processed* a zjistěte, zda je počet přesouvaných řádků z této distribuce významně větší než ostatní. Pokud ano, může toto hledání znamenat zkosení vašich podkladových dat.
 
-Pokud je dotaz spuštěn, můžete použít [dbcc PDW_SHOWEXECUTIONPLAN](/sql/t-sql/database-console-commands/dbcc-pdw-showexecutionplan-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) načíst plán odhadovaný sql server z mezipaměti plánu serveru SQL Server pro aktuálně spuštěný krok SQL v rámci určité distribuce.
+Pokud je dotaz spuštěný, můžete použít [příkaz DBCC PDW_SHOWEXECUTIONPLAN](/sql/t-sql/database-console-commands/dbcc-pdw-showexecutionplan-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) k načtení SQL Server odhadovaného plánu z mezipaměti plánu SQL Server pro aktuálně běžící krok SQL v rámci určité distribuce.
 
 ```sql
 -- Find the SQL Server estimated plan for a query running on a specific SQL pool Compute or control node.
@@ -152,9 +152,9 @@ DBCC PDW_SHOWEXECUTIONPLAN(55, 238);
 
 <a name="waiting"></a>
 
-## <a name="monitor-waiting-queries"></a>Sledovat čekající dotazy
+## <a name="monitor-waiting-queries"></a>Monitorování čekajících dotazů
 
-Pokud zjistíte, že dotaz nepostupuje, protože čeká na prostředek, je zde dotaz, který zobrazuje všechny prostředky, na které dotaz čeká.
+Pokud zjistíte, že váš dotaz neprovádí postup, protože čeká na prostředek, tady je dotaz, který zobrazuje všechny prostředky, na které dotaz čeká.
 
 ```sql
 -- Find queries
@@ -176,15 +176,15 @@ WHERE waits.request_id = 'QID####'
 ORDER BY waits.object_name, waits.object_type, waits.state;
 ```
 
-Pokud dotaz aktivně čeká na prostředky z jiného dotazu, pak stav bude **AcquireResources**.  Pokud dotaz obsahuje všechny požadované prostředky, bude stav **udělen**.
+Pokud dotaz aktivně čeká na prostředky z jiného dotazu, bude stav **AcquireResources**.  Pokud dotaz obsahuje všechny požadované prostředky, bude **udělen**stav.
 
-## <a name="monitor-tempdb"></a>Monitor tempdb
+## <a name="monitor-tempdb"></a>Monitorování databáze tempdb
 
-Tempdb se používá k uložení průběžné výsledky během provádění dotazu. Vysoké využití databáze tempdb může vést ke snížení výkonu dotazu. Pro každý dw100c nakonfigurován, 399 GB prostoru tempdb je přidělena (DW1000c bude mít 3,99 TB celkového prostoru tempdb).  Níže jsou uvedeny tipy pro sledování využití tempdb a pro snížení využití tempdb ve vašich dotazech.
+Databáze tempdb slouží k uchovávání průběžných výsledků během provádění dotazu. Vysoké využití databáze tempdb může vést k zpomalení výkonu dotazů. Pro každý nakonfigurovaný DW100c se přidělí 399 GB místa v databázi tempdb (DW1000c by měl 3,99 TB z celkového místa v databázi tempdb).  Níže jsou uvedené tipy pro monitorování využití databáze tempdb a snížení využití databáze tempdb ve vašich dotazech.
 
-### <a name="monitoring-tempdb-with-views"></a>Sledování databáze tempdb pomocí zobrazení
+### <a name="monitoring-tempdb-with-views"></a>Monitorování databáze tempdb pomocí zobrazení
 
-Chcete-li sledovat využití databáze tempdb, nainstalujte nejprve zobrazení [microsoft.vw_sql_requests](https://github.com/Microsoft/sql-data-warehouse-samples/blob/master/solutions/monitoring/scripts/views/microsoft.vw_sql_requests.sql) z [fondu nástrojů microsoft toolkit pro sql](https://github.com/Microsoft/sql-data-warehouse-samples/tree/master/solutions/monitoring). Potom můžete spustit následující dotaz zobrazíte využití tempdb na uzel pro všechny spuštěné dotazy:
+Chcete-li monitorovat využití databáze tempdb, nejprve nainstalujte [Microsoft. vw_sql_requests](https://github.com/Microsoft/sql-data-warehouse-samples/blob/master/solutions/monitoring/scripts/views/microsoft.vw_sql_requests.sql) View z [fondu nástrojů Microsoft Toolkit for SQL](https://github.com/Microsoft/sql-data-warehouse-samples/tree/master/solutions/monitoring). Pak můžete spustit následující dotaz a zobrazit využití databáze tempdb na uzel pro všechny spuštěné dotazy:
 
 ```sql
 -- Monitor tempdb
@@ -216,17 +216,17 @@ WHERE DB_NAME(ssu.database_id) = 'tempdb'
 ORDER BY sr.request_id;
 ```
 
-Pokud máte dotaz, který spotřebovává velké množství paměti nebo obdrželi chybovou zprávu týkající se přidělení tempdb, může to být způsobeno velmi velké [vytvořit tabulku jako SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) nebo INSERT [SELECT](/sql/t-sql/statements/insert-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) příkaz spuštěn, který selhává v konečné operace přesundat dat. To lze obvykle identifikovat jako operaci ShuffleMove v plánu distribuovaných dotazů těsně před konečným INSERT SELECT.  Ke sledování operací ShuffleMove použijte [sys.dm_pdw_request_steps.](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+Pokud máte dotaz, který spotřebovává velké množství paměti nebo obdržel chybovou zprávu týkající se přidělení databáze tempdb, může to být způsobeno velmi velkým [Create Table jako Select (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) nebo příkaz [INSERT Select](/sql/t-sql/statements/insert-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) , který se v konečné operaci přesunu dat nezdařil. To může být obvykle identifikováno jako operace ShuffleMove v plánu distribuovaného dotazu přímo před konečným výběrem vložení.  Pomocí [Sys. dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) můžete monitorovat operace ShuffleMove.
 
-Nejběžnější zmírnění je přerušit ctas nebo INSERT SELECT prohlášení do více příkazů zatížení, takže svazek dat nepřekročí limit tempdb 1TB na uzel. Můžete také škálovat clusteru na větší velikost, která bude šířit velikost tempdb přes více uzlů snížení tempdb na každém jednotlivém uzlu.
+Nejběžnějším rizikem je přerušení CTAS nebo vložení příkazu SELECT do více příkazů Load, aby datový svazek nepřesáhl počet 1 TB na uzel tempdb. Cluster můžete také škálovat na větší velikost, která bude rozšiřovat velikost databáze tempdb na více uzlech, čímž se zmenší databáze tempdb na každém jednotlivém uzlu.
 
-Kromě ctas a INSERT SELECT příkazy velké, složité dotazy spuštěné s nedostatkem paměti může přelít do tempdb způsobuje dotazy k selhání.  Zvažte spuštění s větší [třídou prostředků,](resource-classes-for-workload-management.md) abyste se vyhnuli rozlití do databáze tempdb.
+Kromě CTAS a vkládání příkazů SELECT můžou velké a komplexní dotazy běžící s nedostatečnou pamětí přesahovat do databáze tempdb, což způsobuje selhání dotazů.  Zvažte spuštění s větší [třídou prostředků](resource-classes-for-workload-management.md) , abyste se vyhnuli zalití do tempdb.
 
-## <a name="monitor-memory"></a>Paměť monitoru
+## <a name="monitor-memory"></a>Monitorovat paměť
 
-Paměť může být hlavní příčinou pro pomalý výkon a problémy s pamětí. Zvažte škálování datového skladu, pokud zjistíte, že využití paměti serveru SQL Server dosahuje svých limitů během provádění dotazu.
+Paměť může být hlavní příčinou pomalého výkonu a potíží při nedostatku paměti. Pokud SQL Server zjistíte, že využití paměti při provádění dotazu dosáhlo svého limitu, zvažte škálování datového skladu.
 
-Následující dotaz vrátí využití paměti serveru SQL Server a tlak paměti na uzel:
+Následující dotaz vrátí SQL Server využití paměti a tlak paměti na uzel:
 
 ```sql
 -- Memory consumption
@@ -250,9 +250,9 @@ pc1.counter_name = 'Total Server Memory (KB)'
 AND pc2.counter_name = 'Target Server Memory (KB)'
 ```
 
-## <a name="monitor-transaction-log-size"></a>Sledování velikosti transakčního protokolu
+## <a name="monitor-transaction-log-size"></a>Monitorování velikosti transakčního protokolu
 
-Následující dotaz vrátí velikost transakčního protokolu v každé distribuci. Pokud jeden ze souborů protokolu dosahuje 160 GB, měli byste zvážit škálování na výšinou velikost instance nebo omezení velikosti transakce.
+Následující dotaz vrátí velikost transakčního protokolu při každé distribuci. Pokud jeden ze souborů protokolu dosáhne 160 GB, měli byste zvážit horizontální navýšení kapacity instance nebo omezení velikosti transakcí.
 
 ```sql
 -- Transaction log size
@@ -266,9 +266,9 @@ instance_name like 'Distribution_%'
 AND counter_name = 'Log File(s) Used Size (KB)'
 ```
 
-## <a name="monitor-transaction-log-rollback"></a>Sledování vrácení protokolu transakcí
+## <a name="monitor-transaction-log-rollback"></a>Sledování odvolání protokolu transakcí
 
-Pokud vaše dotazy selhávají nebo trvá dlouhou dobu pokračovat, můžete zkontrolovat a sledovat, zda máte všechny transakce vrácení zpět.
+Pokud budete pokračovat v dotazech nebo trváte delší dobu, můžete kontrolovat a monitorovat, pokud se nějaké transakce vrací zpět.
 
 ```sql
 -- Monitor rollback
@@ -281,9 +281,9 @@ JOIN sys.dm_pdw_nodes nod ON t.pdw_node_id = nod.pdw_node_id
 GROUP BY t.pdw_node_id, nod.[type]
 ```
 
-## <a name="monitor-polybase-load"></a>Monitor Ovat zatížení PolyBase
+## <a name="monitor-polybase-load"></a>Monitorovat základní zatížení
 
-Následující dotaz poskytuje přibližný odhad průběhu zatížení. Dotaz zobrazuje pouze aktuálně zpracovávané soubory.
+Následující dotaz poskytuje přibližný odhad průběhu zátěže. Dotaz zobrazuje pouze soubory, které jsou právě zpracovávány.
 
 ```sql
 
@@ -309,4 +309,4 @@ ORDER BY
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o dmvs, naleznete [v tématu systémová zobrazení](../sql/reference-tsql-system-views.md).
+Další informace o zobrazení dynamické správy najdete v tématu [Systémová zobrazení](../sql/reference-tsql-system-views.md).

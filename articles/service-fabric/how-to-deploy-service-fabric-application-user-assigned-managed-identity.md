@@ -1,33 +1,33 @@
 ---
-title: Nasazení aplikace se spravovanou identitou přiřazenou uživatelem
-description: Tento článek ukazuje, jak nasadit aplikaci Service Fabric s uživatelem přiřazenou spravovanou identitou
+title: Nasazení aplikace pomocí spravované identity přiřazené uživatelem
+description: V tomto článku se dozvíte, jak nasadit aplikaci Service Fabric s uživatelem přiřazenou spravovanou identitou.
 ms.topic: article
 ms.date: 12/09/2019
 ms.openlocfilehash: 9aef81db7a455b72c83cf96898a0c228f1c382fd
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81415628"
 ---
 # <a name="deploy-service-fabric-application-with-a-user-assigned-managed-identity"></a>Nasazení aplikace Service Fabric s uživatelem přiřazenou spravovanou identitou
 
-K nasazení aplikace Service Fabric se spravovanou identitou je potřeba aplikaci nasadit prostřednictvím Správce prostředků Azure, obvykle se šablonou Azure Resource Manager. Další informace o tom, jak nasadit aplikaci Service Fabric prostřednictvím Správce prostředků Azure, najdete v [tématu Správa aplikací a služeb jako prostředků Azure Resource Manager](service-fabric-application-arm-resource.md).
+Chcete-li nasadit aplikaci Service Fabric se spravovanou identitou, musí být aplikace nasazena prostřednictvím Azure Resource Manager, obvykle se šablonou Azure Resource Manager. Další informace o tom, jak nasadit aplikaci Service Fabric prostřednictvím Azure Resource Manager, najdete v tématu [Správa aplikací a služeb jako Azure Resource Manager prostředků](service-fabric-application-arm-resource.md).
 
 > [!NOTE] 
 > 
-> Aplikace, které nejsou nasazené jako prostředek **Azure, nemohou** mít spravované identity. 
+> Aplikace, které nejsou nasazené jako prostředek Azure, **nemůžou** mít spravované identity. 
 >
-> Nasazení aplikace Service Fabric se spravovanou `"2019-06-01-preview"`identitou je podporováno verzí rozhraní API . Můžete také použít stejnou verzi rozhraní API pro typ aplikace, verzi typu aplikace a prostředky služby.
+> Nasazení aplikace Service Fabric se spravovanou identitou podporuje verze `"2019-06-01-preview"`rozhraní API. Můžete použít také stejnou verzi rozhraní API pro typ aplikace, verzi typu aplikace a prostředky služby.
 >
 
-## <a name="user-assigned-identity"></a>Identita přiřazená uživateli
+## <a name="user-assigned-identity"></a>Identita přiřazená uživatelem
 
-Chcete-li povolit aplikaci s identitou přiřazenou k **uživateli,** přidejte nejprve vlastnost identity do prostředku aplikace s **typem userAssigned** a odkazovaných identit přiřazených uživatelem. Potom přidejte oddíl **managedIdentities** do oddílu **vlastností** pro prostředek **aplikace,** který obsahuje seznam popisného názvu, do mapování principalId pro každou z uživatelem přiřazených identit. Další informace o identitách přiřazených uživatelům naleznete v [tématu Vytvoření, seznam nebo odstranění spravované identity přiřazené uživateli](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell).
+Chcete-li povolit aplikaci s uživatelem přiřazenou identitou, přidejte do prostředku aplikace vlastnost **identity** s typem **userAssigned** a odkazovanými identitami přiřazenými uživatelem. Pak přidejte část **managedIdentities** do oddílu **Properties (vlastnosti** ) prostředku **aplikace** , který obsahuje seznam popisného názvu pro principalId mapování pro každou identitu přiřazenou uživateli. Další informace o identitách přiřazených uživateli najdete v tématu [Vytvoření, vypsání nebo odstranění spravované identity přiřazené uživatelem](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell).
 
 ### <a name="application-template"></a>Šablona aplikace
 
-Chcete-li povolit aplikaci s identitou Přiřazená uživatel, nejprve přidejte vlastnost **identity** do prostředku aplikace s typem **userAssigned** a odkazovaným uživatelem přiřazenými identitami a potom přidejte objekt **managedIdentities** uvnitř oddílu **vlastností,** který obsahuje seznam popisného názvu do mapování principalId pro každý uživatel přiřazené identity.
+Pokud chcete povolit aplikaci s identitou přiřazenou uživateli, nejdřív přidejte do prostředku aplikace vlastnost **identity** s typem **userAssigned** a odkazovanými identitami přiřazenými uživatelem a pak přidejte objekt **managedIdentities** do oddílu **Properties (vlastnosti** ), který obsahuje seznam popisného názvu pro principalId mapování pro každou identitu přiřazenou uživatelem.
 
     {
       "apiVersion": "2019-06-01-preview",
@@ -58,11 +58,11 @@ Chcete-li povolit aplikaci s identitou Přiřazená uživatel, nejprve přidejte
       }
     }
 
-Ve výše uvedeném příkladu se název prostředku uživatele přiřazené identity používá jako popisný název spravované identity pro aplikaci. Následující příklady předpokládají, že skutečný popisný název je "AdminUser".
+V předchozím příkladu se jako popisný název spravované identity aplikace používá název prostředku přiřazené identitě uživatele. V následujících příkladech se předpokládá, že skutečný popisný název je "AdminUser".
 
 ### <a name="application-package"></a>Balíček aplikace
 
-1. Pro každou identitu `managedIdentities` definovanou v části v šabloně Azure Resource Manager přidejte `<ManagedIdentity>` značku do manifestu aplikace v části **Objekty zabezpečení.** Atribut `Name` musí odpovídat `name` vlastnosti `managedIdentities` definované v části.
+1. Pro každou identitu definovanou v `managedIdentities` části šablony Azure Resource Manager přidejte `<ManagedIdentity>` značku v manifestu aplikace v části **objekty zabezpečení** . `Name` Atribut musí odpovídat `name` vlastnosti definované v `managedIdentities` oddílu.
 
     **ApplicationManifest.xml**
 
@@ -74,7 +74,7 @@ Ve výše uvedeném příkladu se název prostředku uživatele přiřazené ide
       </Principals>
     ```
 
-2. V části **ServiceManifestImport** přidejte **identityBindingPolicy** pro službu, která používá spravovanou identitu. Tato zásada `AdminUser` mapuje identitu na název identity specifické pro službu, který je třeba přidat do manifestu služby později.
+2. V části **ServiceManifestImport** přidejte **IdentityBindingPolicy** pro službu, která používá spravovanou identitu. Tato zásada mapuje `AdminUser` identitu na název identity specifický pro službu, kterou je třeba přidat do manifestu služby později.
 
     **ApplicationManifest.xml**
 
@@ -86,7 +86,7 @@ Ve výše uvedeném příkladu se název prostředku uživatele přiřazené ide
       </ServiceManifestImport>
     ```
 
-3. Aktualizujte manifest služby a přidejte **managedidentity** uvnitř `ServiceIdentityRef` části `IdentityBindingPolicy` **Prostředky** s názvem odpovídajícím v manifestu aplikace:
+3. Aktualizujte manifest služby, aby přidal **ManagedIdentity** do části **Resources (prostředky** ) s `ServiceIdentityRef` názvem, `IdentityBindingPolicy` který odpovídá názvu v manifestu aplikace:
 
     **ServiceManifest.xml**
 
@@ -101,5 +101,5 @@ Ve výše uvedeném příkladu se název prostředku uživatele přiřazené ide
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Použití kódu aplikace spravované identity v aplikaci Service Fabric](how-to-managed-identity-service-fabric-app-code.md)
-* [Jak udělit přístup aplikací Service Fabric k jiným prostředkům Azure](how-to-grant-access-other-resources.md)
+* [Použití spravované identity v Service Fabric kódu aplikace](how-to-managed-identity-service-fabric-app-code.md)
+* [Postup udělení přístupu aplikace Service Fabric k jiným prostředkům Azure](how-to-grant-access-other-resources.md)

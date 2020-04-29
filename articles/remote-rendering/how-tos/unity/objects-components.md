@@ -1,28 +1,28 @@
 ---
-title: Unity herní objekty a komponenty
-description: Popisuje unity specifické metody pro práci s entity vzdáleného vykreslování a součásti.
+title: Objekty a komponenty hry Unity
+description: Popisuje metody specifické pro Unity pro práci s entitami a komponentami vzdáleného vykreslování.
 author: jakrams
 ms.author: jakras
 ms.date: 02/28/2020
 ms.topic: how-to
 ms.openlocfilehash: a34276c73211c1d9bea291f449cbc7041a3e78a2
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81409856"
 ---
 # <a name="interact-with-unity-game-objects-and-components"></a>Interakce s herními objekty a komponentami Unity
 
-Azure Remote Rendering (ARR) je optimalizován pro obrovské množství objektů (viz [Omezení).](../../reference/limits.md) I když je možné spravovat velké a složité hierarchie na hostiteli, replikace je všechny v Unity na zařízeních s nízkou výkonem je neproveditelné.
+Vzdálené vykreslování Azure (ARR) je optimalizované pro rozsáhlé počty objektů (viz [omezení](../../reference/limits.md)). I když je možné spravovat velké a složité hierarchie na hostiteli, je replikace všech v Unity na zařízení s nízkým výkonem neproveditelná.
 
-Proto při načtení modelu na hostitele Azure Remote Rendering zrcadlí informace o struktuře modelu na klientském zařízení (které bude mít za následek síťový provoz), ale nereplikuje objekty a součásti v Unity. Místo toho očekává, že budete požadovat potřebné unity herní objekty a komponenty ručně, tak, aby můžete omezit režii na to, co je skutečně potřeba. Tímto způsobem máte větší kontrolu nad výkonem na straně klienta.
+Proto když je model načten do hostitele, vzdálené vykreslování Azure zrcadlí informace o struktuře modelu v klientském zařízení (což bude účtovat síťový provoz), ale nereplikuje objekty a součásti v Unity. Místo toho očekává, že budete vyžadovat potřebné objekty a komponenty pro Unity, takže můžete omezit režii na to, co je skutečně potřeba. Tímto způsobem máte větší kontrolu nad výkonem na straně klienta.
 
-V důsledku toho integrace Unity vzdáleného vykreslování Azure přichází s další funkce replikovat strukturu vzdáleného vykreslování na vyžádání.
+V důsledku toho je integrace Unity pro vzdálené vykreslování Azure dodávána s dalšími funkcemi pro replikaci struktury vzdáleného vykreslování na vyžádání.
 
-## <a name="load-a-model-in-unity"></a>Načtení modelu v unity
+## <a name="load-a-model-in-unity"></a>Načtení modelu v Unity
 
-Při načtení modelu získáte odkaz na kořenový objekt načteného modelu. Tento odkaz není objekt hry Unity, ale můžete jej změnit `Entity.GetOrCreateGameObject()`na jeden pomocí metody rozšíření . Tato funkce očekává argument `UnityCreationMode`typu . Pokud předáte `CreateUnityComponents`, nově vytvořený objekt hry Unity bude navíc naplněn součástmi proxy pro všechny součásti vzdáleného vykreslování, které existují na hostiteli. Doporučuje se však dát `DoNotCreateUnityComponents`přednost , aby režie byla minimální.
+Při načítání modelu získáte odkaz na kořenový objekt načteného modelu. Tento odkaz není objektem hry Unity, ale můžete ho převést na jednu pomocí metody `Entity.GetOrCreateGameObject()`rozšíření. Tato funkce očekává argument typu `UnityCreationMode`. Pokud předáte `CreateUnityComponents`, nově vytvořený objekt hry Unity se bude naplnit pomocí součástí proxy pro všechny součásti vzdáleného vykreslování, které existují na hostiteli. Doporučuje se to sice ale preferovat `DoNotCreateUnityComponents`, aby se režie vynechala minimální.
 
 ### <a name="load-model-with-task"></a>Načíst model s úkolem
 
@@ -50,7 +50,7 @@ void LoadModelWithTask()
 }
 ```
 
-### <a name="load-model-with-unity-coroutines"></a>Načíst model s unity coroutines
+### <a name="load-model-with-unity-coroutines"></a>Načíst model s korutinami Unity
 
 ```cs
 IEnumerator LoadModelWithCoroutine()
@@ -72,7 +72,7 @@ IEnumerator LoadModelWithCoroutine()
 }
 ```
 
-### <a name="load-model-with-await-pattern"></a>Načíst model se vzorem await
+### <a name="load-model-with-await-pattern"></a>Model zatížení pomocí vzoru await
 
 ```cs
 async void LoadModelWithAwait()
@@ -82,33 +82,33 @@ async void LoadModelWithAwait()
 }
 ```
 
-Výše uvedené ukázky kódu používaly cestu načítání modelu prostřednictvím SAS, protože vestavěný model je načten. Adresování modelu pomocí kontejnerů `LoadModelAsync` `LoadModelParams`objektů blob (pomocí a ) funguje plně analogicky.
+Výše uvedené ukázky kódu používaly cestu načtení modelu prostřednictvím SAS, protože je načtený integrovaný model. Adresování modelu prostřednictvím kontejnerů objektů BLOB `LoadModelAsync` ( `LoadModelParams`pomocí a) funguje zcela obdobně.
 
 ## <a name="remoteentitysyncobject"></a>RemoteEntitySyncObject
 
-Vytvoření objektu hry Unity `RemoteEntitySyncObject` implicitně přidá komponentu do herního objektu. Tato komponenta se používá k synchronizaci transformace entity na server. Ve `RemoteEntitySyncObject` výchozím nastavení vyžaduje, `SyncToRemote()` aby uživatel explicitně volat synchronizovat místní stav Unity na server. Povolením `SyncEveryFrame` se objekt automaticky synchronizuje.
+Vytvoření objektu hry Unity implicitně přidá `RemoteEntitySyncObject` komponentu do objektu Game. Tato součást slouží k synchronizaci entit transformace na server. Ve výchozím `RemoteEntitySyncObject` nastavení vyžaduje, aby uživatel explicitně `SyncToRemote()` volal synchronizaci místního stavu Unity se serverem. Při `SyncEveryFrame` povolení se objekt automaticky synchronizuje.
 
-Objekty `RemoteEntitySyncObject` s mohou mít své vzdálené podřízené instance a zobrazí se v editoru Unity pomocí tlačítka **Zobrazit děti.**
+Objekty s objektem `RemoteEntitySyncObject` můžou mít instance vzdálených podřízených objektů a zobrazují se v editoru Unity tlačítkem **Zobrazit podřízené** .
 
 ![RemoteEntitySyncObject](media/remote-entity-sync-object.png)
 
 ## <a name="wrapper-components"></a>Komponenty obálky
 
-[Součásti](../../concepts/components.md) připojené k entitám vzdáleného vykreslování jsou vystaveny unity prostřednictvím proxy `MonoBehavior`s. Tyto proxy servery představují vzdálenou součást unity a předávají hostiteli všechny změny.
+[Součásti](../../concepts/components.md) připojené k entitám vzdáleného vykreslování jsou zpřístupněny Unity prostřednictvím `MonoBehavior`proxy serveru. Tyto proxy servery reprezentují vzdálenou komponentu v Unity a předávají všechny úpravy hostitele.
 
-Chcete-li vytvořit součásti vzdáleného `GetOrCreateArrComponent`vykreslování proxy serveru, použijte metodu rozšíření :
+Chcete-li vytvořit komponenty vzdáleného vykreslování proxy, použijte metodu `GetOrCreateArrComponent`rozšíření:
 
 ```cs
 var cutplane = gameObject.GetOrCreateArrComponent<ARRCutPlaneComponent>(RemoteManagerUnity.CurrentSession);
 ```
 
-## <a name="coupled-lifetimes"></a>Vázané životnosti
+## <a name="coupled-lifetimes"></a>Spárované životnosti
 
-Životnost vzdálené [entity](../../concepts/entities.md) a objektu hry Unity je spojena, `RemoteEntitySyncObject`zatímco jsou vázány prostřednictvím . Pokud zavoláte `UnityEngine.Object.Destroy(...)` s takovým objektem hry, bude odebrána i vzdálená entita.
+Doba životnosti vzdálené [entity](../../concepts/entities.md) a objektu hry Unity je spojená, pokud jsou svázané přes `RemoteEntitySyncObject`. Pokud voláte `UnityEngine.Object.Destroy(...)` pomocí takového herního objektu, bude odebrána i vzdálená entita.
 
-Chcete-li zničit objekt hry Unity, aniž byste ovlivnili vzdálenou entitu, musíte nejprve volat `Unbind()` na `RemoteEntitySyncObject`.
+Chcete-li zničit objekt hry Unity, aniž by to ovlivnilo vzdálenou entitu, musíte `Unbind()` nejprve zavolat `RemoteEntitySyncObject`na.
 
-Totéž platí pro všechny součásti proxy. Chcete-li zničit pouze reprezentaci na `Unbind()` straně klienta, musíte nejprve volat komponentu proxy:
+Totéž platí pro všechny součásti proxy serveru. Chcete-li zničit pouze reprezentaci na straně klienta, je třeba `Unbind()` nejprve zavolat na součást proxy:
 
 ```cs
 var cutplane = gameObject.GetComponent<ARRCutPlaneComponent>();
@@ -122,4 +122,4 @@ if (cutplane != null)
 ## <a name="next-steps"></a>Další kroky
 
 * [Nastavení Remote Renderingu pro Unity](unity-setup.md)
-* [Kurz: Práce se vzdálenými entitami v Unity](../../tutorials/unity/working-with-remote-entities.md)
+* [Kurz: práce se vzdálenými entitami v Unity](../../tutorials/unity/working-with-remote-entities.md)

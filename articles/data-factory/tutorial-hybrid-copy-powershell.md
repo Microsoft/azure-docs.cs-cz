@@ -1,5 +1,5 @@
 ---
-title: Kopírování dat z SQL Serveru do úložiště objektů Blob pomocí Prostředí PowerShell
+title: Kopírování dat z SQL Server do úložiště objektů BLOB pomocí PowerShellu
 description: Zjistěte, jak kopírovat data z místního úložiště dat do cloudu Azure s využitím místního prostředí Integration Runtime ve službě Azure Data Factory.
 services: data-factory
 author: nabhishek
@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/22/2018
 ms.openlocfilehash: 70bc79470cd72ce01007265c6c1236c951ddd7d0
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81411439"
 ---
 # <a name="tutorial-copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>Kurz: Kopírování dat z místní databáze SQL Serveru do úložiště objektů blob v Azure
@@ -43,7 +43,7 @@ V tomto kurzu budete provádět následující kroky:
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ### <a name="azure-roles"></a>Role Azure
-Chcete-li vytvořit instance datové továrny, musí být uživatelský účet, který používáte k přihlášení k Azure, přiřazen roli *přispěvatele* nebo *vlastníka* nebo musí být *správcem* předplatného Azure.
+Pro vytvoření instancí služby Data Factory musí být uživatelský účet, který použijete pro přihlášení k Azure, přiřazený k roli *Přispěvatel* nebo *vlastník* nebo musí být *správcem* předplatného Azure.
 
 Pokud chcete zobrazit oprávnění, která v předplatném máte, přejděte na web Azure Portal, v pravém horním rohu vyberte své uživatelské jméno a pak vyberte **Oprávnění**. Pokud máte přístup k několika předplatným, vyberte odpovídající předplatné. Ukázkové pokyny pro přidání uživatele k roli najdete v článku o [správě přístupu pomocí RBAC a webu Azure Portal](../role-based-access-control/role-assignments-portal.md).
 
@@ -94,7 +94,7 @@ V tomto kurzu použijete název a klíč svého účtu úložiště Azure. Získ
 1. Zkopírujte hodnoty polí **Název účtu úložiště** a **klíč1** a vložte je do Poznámkového bloku nebo jiného editoru pro pozdější použití v rámci kurzu.
 
 #### <a name="create-the-adftutorial-container"></a>Vytvoření kontejneru adftutorial
-V této části vytvoříte kontejner objektů blob s názvem **adftutorial** ve vašem úložišti objektů blob Azure.
+V této části vytvoříte ve svém úložišti objektů BLOB v Azure kontejner objektů BLOB s názvem **adftutorial** .
 
 1. V okně **Účet úložiště** přepněte na **Přehled** a pak vyberte **Objekty blob**.
 
@@ -108,7 +108,7 @@ V této části vytvoříte kontejner objektů blob s názvem **adftutorial** ve
 
 1. V seznamu kontejnerů vyberte **adftutorial**.  
 
-1. Udržujte okno **kontejneru** pro **adftutorial** otevřené. Použijete ji k ověření výstupu na konci tohoto kurzu. Data Factory v tomto kontejneru vytvoří výstupní složku automaticky, takže ji nemusíte vytvářet.
+1. Nechejte okno **kontejneru** pro **adftutorial** otevřené. Použijete ji k ověření výstupu na konci tohoto kurzu. Data Factory v tomto kontejneru vytvoří výstupní složku automaticky, takže ji nemusíte vytvářet.
 
 
 ### <a name="windows-powershell"></a>Windows PowerShell
@@ -129,7 +129,7 @@ Pokud jej ve svém počítači ještě nemáte, nainstalujte nejnovější verzi
     Connect-AzAccount
     ```        
 
-1. Pokud máte několik předplatných Azure, spuštěním následujícího příkazu vyberte předplatné, se kterým chcete pracovat. Nahraďte **Id předplatného** ID vašeho předplatného Azure:
+1. Pokud máte několik předplatných Azure, spuštěním následujícího příkazu vyberte předplatné, se kterým chcete pracovat. Nahraďte **SubscriptionId** číslem ID vašeho předplatného Azure:
 
     ```powershell
     Select-AzSubscription -SubscriptionId "<SubscriptionId>"    
@@ -271,7 +271,7 @@ V této části vytvoříte místní prostředí Integration Runtime a přidruž
 
     ![Registrace modulu runtime integrace](media/tutorial-hybrid-copy-powershell/register-integration-runtime.png)
 
-1. V okně **Nový integrační runtime (samoobslužný) uzel** vyberte **Dokončit**.
+1. V okně **nový Integration runtime (v místním prostředí) uzel** vyberte **Dokončit**.
 
     ![Okno Nový uzel prostředí Integration Runtime](media/tutorial-hybrid-copy-powershell/new-integration-runtime-node-page.png)
 
@@ -287,7 +287,7 @@ V této části vytvoříte místní prostředí Integration Runtime a přidruž
 
 1. Pomocí následujícího postupu otestujte připojení k databázi SQL Serveru:
 
-    a. V okně **Správce konfigurace** přepněte na kartu **Diagnostika.**
+    a. V okně **Configuration Manager** přepněte na kartu **Diagnostika** .
 
     b. V poli **Typ zdroje dat** vyberte **SqlServer**.
 
@@ -413,9 +413,9 @@ V tomto kroku s datovou továrnou propojíte místní instanci SQL Serveru.
 
     > [!IMPORTANT]
     > - Vyberte odpovídající část na základě ověřování, které používáte pro připojení k vaší instanci SQL Serveru.
-    > - Nahraďte ** \<název prostředí runtime integrace>** názvem integračního běhu.
-    > - Před uložením souboru ** \< **nahraďte název serveru>, ** \<název databáze>**, ** \<uživatelské jméno>** a ** \<heslo>** hodnotami instance serveru SQL Server.
-    > - Pokud v názvu uživatelského účtu nebo serveru potřebujete použít zpětné lomítko (\\), vložte před něj řídicí znak (\\). Například použijte *\\\\mydomain myuser*.
+    > - Nahraďte ** \<název prostředí Integration runtime>** názvem vašeho prostředí Integration runtime.
+    > - Než soubor uložíte, nahraďte parametr ** \<servername>**, ** \<DatabaseName>**, ** \<username>** a ** \<>hesla** hodnotami vaší instance SQL Server.
+    > - Pokud v názvu uživatelského účtu nebo serveru potřebujete použít zpětné lomítko (\\), vložte před něj řídicí znak (\\). Použijte například *MyDomain\\\\MyUser*.
 
 1. Pokud chcete šifrovat citlivá data (uživatelské jméno, heslo atd.), spusťte rutinu `New-AzDataFactoryV2LinkedServiceEncryptedCredential`.  
     Toto šifrování zajišťuje šifrování přihlašovacích údajů pomocí rozhraní Data Protection API. Zašifrované přihlašovací údaje jsou uložené místně v uzlu místního prostředí Integration Runtime (místní počítač). Výstupní datovou část je možné přesměrovat do jiného souboru JSON (v tomto případě *encryptedLinkedService.json*), který obsahuje zašifrované přihlašovací údaje.
@@ -728,7 +728,7 @@ Kanál v této ukázce kopíruje data z jednoho umístění do jiného v úloži
 > * Zahajte spuštění kanálu.
 > * Monitorování spuštění kanálu
 
-Seznam úložišť dat podporovaných programem Data Factory naleznete v [tématu podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats).
+Seznam úložišť dat podporovaných nástrojem Data Factory najdete v části [podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats).
 
 Pokud se chcete dozvědět víc o hromadném kopírování dat ze zdroje do cíle, přejděte k následujícímu kurzu:
 

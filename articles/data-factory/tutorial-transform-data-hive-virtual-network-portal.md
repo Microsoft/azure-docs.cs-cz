@@ -1,5 +1,5 @@
 ---
-title: Transformace dat pomocí Hive ve virtuální síti Azure pomocí portálu Azure
+title: Transformace dat pomocí podregistru v Azure Virtual Network pomocí Azure Portal
 description: Tento kurz obsahuje podrobné pokyny pro transformaci dat pomocí aktivity Hivu v Azure Data Factory.
 services: data-factory
 ms.service: data-factory
@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/04/2018
 ms.openlocfilehash: 23accddcc468eb841eb7c217ec17a893db214cb6
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81409472"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Transformace dat ve službě Azure Virtual Network pomocí aktivity Hivu v Azure Data Factory
@@ -32,17 +32,17 @@ V tomto kurzu pomocí webu Azure Portal vytvoříte kanál Data Factory, který 
 > * Monitorování spuštění kanálu 
 > * Ověření výstupu
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 - **Účet Azure Storage**. Vytvoříte skript Hivu a uložíte ho do úložiště Azure. Výstup ze skriptu Hivu je uložený v tomto účtu úložiště. V této ukázce clusteru HDInsight používá tento účet služby Azure Storage jako primární úložiště. 
-- **Virtuální síť Azure.** Pokud nemáte virtuální síť Azure, vytvořte ji pomocí [těchto pokynů](../virtual-network/quick-create-portal.md). V této ukázce je HDInsight ve službě Azure Virtual Network. Tady je ukázka konfigurace služby Azure Virtual Network. 
+- **Virtual Network Azure.** Pokud nemáte virtuální síť Azure, vytvořte ji pomocí [těchto pokynů](../virtual-network/quick-create-portal.md). V této ukázce je HDInsight ve službě Azure Virtual Network. Tady je ukázka konfigurace služby Azure Virtual Network. 
 
     ![Vytvoření virtuální sítě](media/tutorial-transform-data-using-hive-in-vnet-portal/create-virtual-network.png)
-- **clusteru HDInsight.** Vytvořte cluster HDInsight a připojte ho k virtuální síti, kterou jste vytvořili v předchozím kroku, a na základě informací v článku věnovaném [rozšíření Azure HDInsightu s využitím služby Azure Virtual Network](../hdinsight/hdinsight-extend-hadoop-virtual-network.md). Tady je ukázka konfigurace HDInsightu ve virtuální síti. 
+- **Cluster HDInsight.** Vytvořte cluster HDInsight a připojte ho k virtuální síti, kterou jste vytvořili v předchozím kroku, a na základě informací v článku věnovaném [rozšíření Azure HDInsightu s využitím služby Azure Virtual Network](../hdinsight/hdinsight-extend-hadoop-virtual-network.md). Tady je ukázka konfigurace HDInsightu ve virtuální síti. 
 
     ![HDInsight ve virtuální síti](media/tutorial-transform-data-using-hive-in-vnet-portal/hdinsight-virtual-network-settings.png)
 - **Azure PowerShell**. Postupujte podle pokynů v tématu [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/install-Az-ps).
@@ -73,7 +73,7 @@ Pokud nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.micros
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
 1. Spusťte webový prohlížeč **Microsoft Edge** nebo **Google Chrome**. Uživatelské rozhraní služby Data Factory podporují v současnosti jenom webové prohlížeče Microsoft Edge a Google Chrome.
-1. Přihlaste se k [portálu Azure](https://portal.azure.com/).    
+1. Přihlaste se k [Azure Portal](https://portal.azure.com/).    
 2. V nabídce vlevo klikněte na **Nový**, klikněte na **Data + analýzy** a pak na **Data Factory**. 
    
    ![Nový -> Objekt pro vytváření dat](./media/tutorial-transform-data-using-hive-in-vnet-portal/new-data-factory-menu.png)
@@ -88,14 +88,14 @@ Pokud nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.micros
 4. Pro **Skupinu prostředků** proveďte jeden z následujících kroků:
      
    - Vyberte **Použít existující** a z rozevíracího seznamu vyberte existující skupinu prostředků. 
-   - Vyberte **Vytvořit nový**a zadejte název skupiny prostředků.   
+   - Vyberte **vytvořit novou**a zadejte název skupiny prostředků.   
          
      Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/management/overview.md).  
 4. Jako **verzi** vyberte **V2**.
 5. Vyberte **umístění** pro objekt pro vytváření dat. V seznamu se zobrazí pouze podporovaná umístění pro vytváření datových továren.
 6. Zaškrtněte **Připnout na řídicí panel**.     
 7. Klikněte na **Vytvořit**.
-8. Na řídicím panelu se zobrazí následující dlaždice se stavem: **Nasazení datové továrny**. 
+8. Na řídicím panelu se zobrazí následující dlaždice se stavem: **nasazování datové továrny**. 
 
      ![nasazování dlaždice datové továrny](media/tutorial-transform-data-using-hive-in-vnet-portal/deploying-data-factory.png)
 9. Po vytvoření se zobrazí stránka **Datová továrna**, jak je znázorněno na obrázku.
@@ -127,7 +127,7 @@ Vzhledem k tomu, že cluster Hadoop je ve virtuální síti, musíte do stejné 
 
 ### <a name="install-ir-on-a-virtual-machine"></a>Instalace prostředí IR na virtuálním počítači
 
-1. Ve virtuálním počítači Azure stáhněte [modul runtime integrace v místním prostředí](https://www.microsoft.com/download/details.aspx?id=39717). Pomocí **ověřovacího klíče** získaného v předchozím kroku můžete ručně zaregistrovat prostředí runtime integrace s vlastním hostitelem. 
+1. Ve virtuálním počítači Azure stáhněte [modul runtime integrace v místním prostředí](https://www.microsoft.com/download/details.aspx?id=39717). Použijte **ověřovací klíč** získaný v předchozím kroku k ručnímu registraci místního prostředí Integration runtime. 
 
     ![Registrace modulu runtime integrace](media/tutorial-transform-data-using-hive-in-vnet-portal/register-integration-runtime.png)
 
@@ -151,7 +151,7 @@ Vzhledem k tomu, že cluster Hadoop je ve virtuální síti, musíte do stejné 
 ## <a name="create-linked-services"></a>Vytvoření propojených služeb
 
 V této části vytvoříte a nasadíte dvě propojené služby:
-- Propojená **služba Azure Storage,** která propojuje účet Azure Storage s toutovou továrně dat. Toto úložiště používá cluster HDInsight jako primární. V tomto případě použijete tento účet služby Azure Storage k uložení skriptu Hivu a výstupu tohoto skriptu.
+- **Propojená služba Azure Storage** , která propojuje účet Azure Storage s datovou továrnou. Toto úložiště používá cluster HDInsight jako primární. V tomto případě použijete tento účet služby Azure Storage k uložení skriptu Hivu a výstupu tohoto skriptu.
 - **Propojená služba HDInsight**. Azure Data Factory odešle skript Hivu tomuto clusteru HDInsight ke spuštění.
 
 ### <a name="create-azure-storage-linked-service"></a>Vytvoření propojené služby Azure Storage
@@ -166,7 +166,7 @@ V této části vytvoříte a nasadíte dvě propojené služby:
 
     1. Jako **Název** zadejte **AzureStorageLinkedService**.
     2. V části **Připojit prostřednictvím prostředí Integration Runtime** zadejte **MySelfHostedIR**.
-    3. Vyberte účet úložiště Azure pro **název účtu úložiště**. 
+    3. Jako **název účtu úložiště**vyberte svůj účet úložiště Azure. 
     4. Pokud chcete otestovat připojení k účtu úložiště, klikněte na **Test připojení**.
     5. Klikněte na **Uložit**.
    
