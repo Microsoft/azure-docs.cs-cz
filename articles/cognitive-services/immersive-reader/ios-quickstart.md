@@ -1,7 +1,7 @@
 ---
-title: 'Úvodní příručka: Vytvoření aplikace pro iOS, která spustí immersive Reader (Swift)'
+title: 'Rychlý Start: Vytvoření aplikace pro iOS, která spustí moderní čtečku (SWIFT)'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu vytvoříte aplikaci pro iOS od začátku a přidáte funkci Immersive Reader.
+description: V tomto rychlém startu vytvoříte aplikaci pro iOS od začátku a přidáte funkce moderního čtečky.
 author: metanMSFT
 ms.service: cognitive-services
 ms.subservice: immersive-reader
@@ -9,46 +9,46 @@ ms.topic: quickstart
 ms.date: 01/14/2020
 ms.author: metan
 ms.openlocfilehash: 9003eb85938cc3afaad7fef341b1ed2826e8fbc9
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76841605"
 ---
-# <a name="quickstart-create-an-ios-app-that-launches-the-immersive-reader-swift"></a>Úvodní příručka: Vytvoření aplikace pro iOS, která spustí immersive Reader (Swift)
+# <a name="quickstart-create-an-ios-app-that-launches-the-immersive-reader-swift"></a>Rychlý Start: Vytvoření aplikace pro iOS, která spustí moderní čtečku (SWIFT)
 
-[Immersive Reader](https://www.onenote.com/learningtools) je inkluzivně navržený nástroj, který implementuje osvědčené techniky pro zlepšení porozumění čtení.
+[Moderní čtečka](https://www.onenote.com/learningtools) je celkově navržený nástroj, který implementuje osvědčené techniky pro zlepšení porozumění čtení.
 
-V tomto rychlém startu vytvoříte aplikaci pro iOS od začátku a integrujete immersive Reader. Úplný pracovní vzorek tohoto rychlého startu je k dispozici [zde](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/ios).
+V tomto rychlém startu vytvoříte aplikaci pro iOS od začátku a integrujete moderní čtečku. Kompletní pracovní vzorek tohoto rychlého startu je k dispozici [zde](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/ios).
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
 * [Xcode](https://apps.apple.com/us/app/xcode/id497799835?mt=12)
-* Prostředek immersive Reader nakonfigurovaný pro ověřování Azure Active Directory. Podle [těchto pokynů](./how-to-create-immersive-reader.md) se připravte. Při konfiguraci vlastností ukázkového projektu budete potřebovat některé hodnoty vytvořené zde. Uložte výstup relace do textového souboru pro budoucí použití.
+* Prostředek moderního čtecího zařízení nakonfigurovaný pro ověřování Azure Active Directory. Pomocí [těchto pokynů](./how-to-create-immersive-reader.md) si můžete nastavit. Při konfiguraci ukázkových vlastností projektu budete potřebovat některé z hodnot, které jsou zde vytvořeny. Uložte výstup vaší relace do textového souboru pro budoucí referenci.
 
 ## <a name="create-an-xcode-project"></a>Vytvoření projektu Xcode
 
-Vytvořte nový projekt v Xcode.
+Vytvoří nový projekt v Xcode.
 
 ![Nový projekt](./media/ios/xcode-create-project.png)
 
-Zvolte **aplikace s jedním zobrazením**.
+Vyberte **aplikaci s jedním zobrazením**.
 
 ![Nová aplikace s jedním zobrazením](./media/ios/xcode-single-view-app.png)
 
 ## <a name="set-up-authentication"></a>Nastavení ověřování
 
-V horní nabídce klikněte na **Schéma > > schématu produktů...**.
+V horní nabídce klikněte na **schéma > produktu > upravit schéma...**.
 
 ![Upravit schéma](./media/ios/quickstart-ios-edit-scheme.png)
 
-V zobrazení **Spustit** klikněte na kartu **Argumenty.**
+V zobrazení **Spustit** klikněte na kartu **argumenty** .
 
 ![Upravit schéma](./media/ios/quickstart-ios-env-vars.png)
 
-V části Proměnné prostředí přidejte následující **názvy** a hodnoty a zadejte hodnoty uvedené při vytváření prostředku imersive Reader.
+V části **proměnné prostředí** přidejte následující názvy a hodnoty a zadejte hodnoty, které jste zadali při vytváření prostředku pro moderní čtečku.
 
 ```text
 TENANT_ID=<YOUR_TENANT_ID>
@@ -59,7 +59,7 @@ SUBDOMAIN=<YOUR_SUBDOMAIN>
 
 ## <a name="set-up-the-app-to-run-without-a-storyboard"></a>Nastavení spuštění aplikace bez scénáře
 
-Otevřete *soubor AppDelegate.swift* a nahraďte soubor následujícím kódem.
+Otevřete *AppDelegate. SWIFT* a nahraďte soubor následujícím kódem.
 
 ```swift
 import UIKit
@@ -108,9 +108,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 ```
 
-## <a name="create-the-view-controllers-and-add-sample-content"></a>Vytvoření kontrolerů zobrazení a přidání ukázkového obsahu
+## <a name="create-the-view-controllers-and-add-sample-content"></a>Vytvoření řadičů zobrazení a přidání ukázkového obsahu
 
-Přejmenujte *ViewController.swift* na *LaunchViewController.swift* a nahraďte soubor následujícím kódem.
+Přejmenujte *soubor viewcontroller. SWIFT* na *LaunchViewController. SWIFT* a nahraďte soubor následujícím kódem.
 
 ```swift
 import UIKit
@@ -259,7 +259,7 @@ class LaunchViewController: UIViewController {
 }
 ```
 
-Přidejte nový soubor do kořenové složky projektu s názvem *ImmersiveReaderViewController.swift* a přidejte následující kód.
+Přidejte nový soubor do kořenové složky projektu s názvem *ImmersiveReaderViewController. SWIFT* a přidejte následující kód.
 
 ```swift
 import UIKit
@@ -438,7 +438,7 @@ extension ImmersiveReaderViewController: WKScriptMessageHandler {
 }
 ```
 
-Přidejte další nový soubor do kořenové složky projektu s názvem *LaunchImmersiveReader.swift* a přidejte následující kód.
+Přidejte další nový soubor do kořenové složky projektu s názvem *LaunchImmersiveReader. SWIFT* a přidejte následující kód.
 
 ```swift
 import UIKit
@@ -528,7 +528,7 @@ public func launchImmersiveReader(navController: UINavigationController, token: 
 }
 ```
 
-Přidejte soubor do složky *Zdroje* s názvem *iFrameMessaging.js* a přidejte následující kód.
+Přidejte soubor do složky *Resources* s názvem *iFrameMessaging. js* a přidejte následující kód.
 
 ```javascript
 window.addEventListener("message", function(message) {
@@ -556,22 +556,22 @@ function sendContentToReader(message) {
 
 ## <a name="build-and-run-the-app"></a>Sestavení a spuštění aplikace
 
-Nastavte schéma archivu v Xcode výběrem simulátoru nebo cíle zařízení.
+Nastavte schéma archivu v Xcode tak, že vyberete simulátor nebo cíl zařízení.
 
 ![Schéma archivu](./media/ios/xcode-archive-scheme.png)
 
 ![Výběr cíle](./media/ios/xcode-select-target.png)
 
-V Xcode spusťte projekt stisknutím **kombinace kláves Ctrl+R** nebo kliknutím na tlačítko přehrát. Aplikace by se měla spustit na určeném simulátoru nebo zařízení.
+V Xcode stiskněte **kombinaci kláves CTRL + R** nebo klikněte na tlačítko Přehrát a spusťte projekt. Aplikace by se měla spustit na zadaném simulátoru nebo zařízení.
 
 V aplikaci byste měli vidět:
 
 ![Ukázková aplikace](./media/ios/sample-app-ipad.png)
 
-Když kliknete na tlačítko **Immersive Reader,** uvidíte Immersive Reader spuštěna s obsahem v aplikaci.
+Po kliknutí na tlačítko pro **moderní čtečku** se zobrazí moderní čtečka, která se spustí s obsahem aplikace.
 
 ![Asistivní čtečka](./media/ios/immersive-reader-ipad.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-* Seznamte se s [referenční sadou Immersive Reader SDK](./reference.md)
+* Prozkoumejte [referenční materiály k sadě pro moderní čtečku](./reference.md)

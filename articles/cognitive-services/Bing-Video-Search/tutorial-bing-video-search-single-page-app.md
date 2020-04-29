@@ -1,7 +1,7 @@
 ---
 title: 'Kurz: Sestavení jednostránkové aplikace s Vyhledáváním videí Bingu'
 titleSuffix: Azure Cognitive Services
-description: Tento kurz vysvětluje, jak používat rozhraní API pro vyhledávání videa Bingu v jednostránkové webové aplikaci.
+description: V tomto kurzu se dozvíte, jak používat rozhraní API Bingu pro vyhledávání videí webové aplikace s jednou stránkou.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 02/03/2020
 ms.author: aahi
 ms.openlocfilehash: fb989825ed27cc83c14c36e6394e37ae2db2c12a
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76988256"
 ---
 # <a name="tutorial-single-page-video-search-app"></a>Kurz: Jednostránková aplikace s vyhledáváním videí
@@ -100,7 +100,7 @@ Následující obrázek znázorňuje textové pole dotazu a možnosti, které de
 
 Formulář HTML obsahuje prvky s těmito názvy:
 
-|Element|Popis|
+|Prvek|Popis|
 |-|-|
 | `where` | Rozevírací nabídka pro výběr trhu (polohy a jazyka) pro vyhledávání. |
 | `query` | Textového pole k zadání hledaných termínů. |
@@ -138,10 +138,10 @@ function bingSearchOptions(form) {
 }
 ```
 
-`SafeSearch` Například parametr ve skutečném volání `strict`rozhraní `moderate`API `moderate` může být , nebo , s tím, že je výchozí.
+Například `SafeSearch` parametr ve vlastním volání rozhraní API může být `strict`nebo `moderate`, s `moderate` výchozím nastavením.
 
 ## <a name="performing-the-request"></a>Provedení požadavku
-Na základě dotazu, řetězce možností a klíče rozhraní API funkce `BingWebSearch` použije objekt `XMLHttpRequest` k provedení požadavku na koncový bod vyhledávání Bingu. Můžete použít globální koncový bod níže nebo vlastní koncový bod [subdomény](../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený na portálu Azure pro váš prostředek.
+Na základě dotazu, řetězce možností a klíče rozhraní API funkce `BingWebSearch` použije objekt `XMLHttpRequest` k provedení požadavku na koncový bod vyhledávání Bingu. Můžete použít globální koncový bod nebo vlastní koncový bod [subdomény](../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
 
 ```javascript
 // Search on the query, using search options, authenticated by the key.
@@ -389,7 +389,7 @@ Zásady zabezpečení prohlížeče (CORS) můžou bránit tomu, aby byla hlavi�
 > [!NOTE]
 > V produkční webové aplikaci byste měli požadavek provádět na straně serveru. Jinak musí být klíč rozhraní API pro vyhledávání Bingu součástí webové stránky, kde je k dispozici každému, kdo si zobrazí zdroj. Účtuje se vám veškeré využívání vašeho klíče předplatného rozhraní API, dokonce i požadavky provedené neoprávněnými stranami, proto je důležité klíč nezveřejňovat.
 
-Pro účely vývoje můžete požadavek na rozhraní API Bingu pro vyhledávání na webu provést prostřednictvím proxy serveru CORS. Odpověď z takového proxy `Access-Control-Expose-Headers` serveru má hlavičku, která umožňuje hlavičky odpovědí a zpřístupňuje je JavaScriptu.
+Pro účely vývoje můžete požadavek na rozhraní API Bingu pro vyhledávání na webu provést prostřednictvím proxy serveru CORS. Odpověď z takového serveru proxy má `Access-Control-Expose-Headers` záhlaví, které umožňuje použití hlaviček odpovědí a zpřístupňuje je pro JavaScript.
 
 Nainstalovat proxy server CORS a povolit naší ukázkové aplikaci přístup k hlavičce ID klienta je snadné. Nejdřív [nainstalujte Node.js](https://nodejs.org/en/download/), pokud jste to ještě neudělali. Pak zadejte v příkazovém okně tento příkaz:
 

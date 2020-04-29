@@ -1,7 +1,7 @@
 ---
-title: 'Úvodní příručka: Extrahujte data příjmů pomocí cURL – nástroj pro rozpoznávání formulářů'
+title: 'Rychlý Start: extrakce příjmových dat pomocí funkce pro rozpoznávání složeného formuláře'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu použijete rozhraní REST API pro rozpoznávání formulářů s kódem cURL k extrahování dat z bitových kopií prodejních certifikátů v USA.
+description: V tomto rychlém startu použijete REST API pro rozpoznávání formulářů s kudrlinkou k extrakci dat z imagí prodejních příjmů v USA.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -10,52 +10,52 @@ ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: pafarley
 ms.openlocfilehash: e053222d3b79668c2f6044417e31e104ce0f4222
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77118491"
 ---
-# <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-curl"></a>Úvodní příručka: Extrahujte data příjmů pomocí rozhraní REST API nástroje pro rozpoznávání formulářů pomocí cURL
+# <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-curl"></a>Rychlý Start: extrakce údajů o příjemcích pomocí REST API pro rozpoznávání formulářů s kudrlinkou
 
-V tomto rychlém startu použijete rozhraní REST API nástroje Azure pro rozpoznávání formulářů s cURL k extrahování a identifikaci relevantních informací v prodejních účtenkách v USA.
+V tomto rychlém startu použijete REST API pro rozpoznávání formulářů Azure s kudrlinkou k extrakci a identifikaci relevantních informací v prodejních příjemkách USA.
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li dokončit tento rychlý start, musíte mít:
-- [cURL](https://curl.haxx.se/windows/) nainstalován.
-- Adresa URL obrázku účtenky Pro tento rychlý start můžete použít [ukázkový obrázek.](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/contoso-allinone.jpg?raw=true)
+K dokončení tohoto rychlého startu musíte mít:
+- byl nainstalován [oblý](https://curl.haxx.se/windows/) .
+- Adresa URL obrázku účtenky Pro tento rychlý Start můžete použít [ukázkový obrázek](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/contoso-allinone.jpg?raw=true) .
 
-## <a name="create-a-form-recognizer-resource"></a>Vytvoření prostředku nástroje pro rozpoznávání formulářů
+## <a name="create-a-form-recognizer-resource"></a>Vytvoření prostředku pro rozpoznávání formulářů
 
 [!INCLUDE [create resource](../includes/create-resource.md)]
 
 ## <a name="analyze-a-receipt"></a>Analýza účtenky
 
-Chcete-li začít analyzovat příjem, zavolejte **[analyzovat rozhraní API příjmu](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeReceiptAsync)** pomocí příkazu cURL níže. Před spuštěním příkazu proveďte tyto změny:
+Chcete-li zahájit analýzu účtenky, zavolejte rozhraní API **[analýzy pro příjem](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeReceiptAsync)** pomocí příkazu složeného níže. Před spuštěním příkazu proveďte tyto změny:
 
-1. Nahraďte `<Endpoint>` koncovýbod, který jste získali s odběrem nástroje pro rozpoznávání formulářů.
-1. Nahraďte `<your receipt URL>` adresu URL obrázku účtenky.
+1. Nahraďte `<Endpoint>` koncovým bodem, který jste získali v rámci předplatného pro rozpoznávání formulářů.
+1. Nahraďte `<your receipt URL>` adresou URL obrázku účtenky.
 1. Nahraďte `<subscription key>` klíčem předplatného, který jste zkopírovali z předchozího kroku.
 
 ```bash
 curl -i -X POST "https://<Endpoint>/formrecognizer/v2.0-preview/prebuilt/receipt/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" --data-ascii "{ \"url\": \"<your receipt URL>\"}"
 ```
 
-Obdržíte `202 (Success)` odpověď, která zahrnuje hlavičku **AM Operation-Location.** Hodnota této hlavičky obsahuje ID operace, které můžete použít k dotazování na stav asynchronní operace a získat výsledky. V následujícím příkladu je `operations/` řetězec po ID operace.
+Dostanete `202 (Success)` odpověď, která zahrnuje hlavičku **Operations – Location Location** . Hodnota této hlavičky obsahuje ID operace, pomocí které můžete zadat dotaz na stav asynchronní operace a získat výsledky. V následujícím příkladu řetězce `operations/` následuje ID operace.
 
 ```console
 https://cognitiveservice/formrecognizer/v2.0-preview/prebuilt/receipt/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
 ```
 
-## <a name="get-the-receipt-results"></a>Získejte výsledky účtenek
+## <a name="get-the-receipt-results"></a>Získání výsledků pro příjem
 
-Po volání analyzovat **příjem** rozhraní API, zavoláte **[získat analyzovat výsledek příjmu](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetAnalyzeReceiptResult)** rozhraní API získat stav operace a extrahovaná data. Před spuštěním příkazu proveďte tyto změny:
+Po volání funkce **analyzovat příjem** rozhraní API zavoláte rozhraní API pro **[získání výsledku analýzy](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetAnalyzeReceiptResult)** pro získání stavu operace a extrahovaná data. Před spuštěním příkazu proveďte tyto změny:
 
-1. Nahraďte `<Endpoint>` koncovýbod, který jste získali pomocí klíče předplatného nástroje pro rozpoznávání formulářů. Najdete ji na kartě **Přehled** prostředků nástroje pro rozpoznávání formulářů.
-1. Nahraďte `<operationId>` id operace z předchozího kroku.
+1. Nahraďte `<Endpoint>` koncovým bodem, který jste získali pomocí klíče předplatného pro rozpoznávání formulářů. Můžete ji najít na kartě **Přehled** prostředků nástroje pro rozpoznávání formulářů.
+1. Nahraďte `<operationId>` ID operace z předchozího kroku.
 1. Místo `<subscription key>` použijte váš klíč předplatného.
 
 ```bash
@@ -64,13 +64,13 @@ curl -X GET "https://<Endpoint>/formrecognizer/v2.0-preview/prebuilt/receipt/ana
 
 ### <a name="examine-the-response"></a>Prozkoumání odpovědi
 
-Obdržíte odpověď `200 (Success)` s výstupem JSON. První pole `"status"`, označuje stav operace. Pokud je operace dokončena, `"recognitionResults"` pole obsahuje každý řádek textu, který `"understandingResults"` byl extrahován z příjmu, a toto pole obsahuje informace klíč/hodnota pro nejdůležitější části příjmu. Pokud operace není dokončena, `"status"` hodnota `"running"` bude `"notStarted"`nebo , a měli byste volat rozhraní API znovu, a to buď ručně, nebo prostřednictvím skriptu. Doporučujeme interval jedné sekundy nebo více mezi hovory.
+Dostanete `200 (Success)` odpověď s výstupem JSON. První pole `"status"`indikuje stav operace. Pokud je operace dokončena, `"recognitionResults"` pole obsahuje každý řádek textu, který byl extrahován z účtenky, a `"understandingResults"` pole obsahuje informace o klíč/hodnotě pro nejrelevantnější části účtenky. Pokud operace není dokončena, hodnota `"status"` bude `"running"` nebo `"notStarted"`a později byste měli zavolat rozhraní API, a to buď ručně, nebo prostřednictvím skriptu. Pro mezi voláními doporučujeme interval o délce jedné sekundy nebo více.
 
-Viz následující obrázek účtenky a jeho odpovídající výstup JSON. Výstup byl zkrácen pro čitelnost.
+Podívejte se na následující obrázek účtenky a příslušný výstup JSON. Výstup byl zkrácen z důvodu čitelnosti.
 
-![Účtenka z obchodu Contoso](../media/contoso-allinone.jpg)
+![Účtenka z obchodu contoso](../media/contoso-allinone.jpg)
 
-Uzel `"recognitionResults"` obsahuje veškerý rozpoznaný text. Text je uspořádán podle stránky, pak podle řádku a pak podle jednotlivých slov. Uzel `"understandingResults"` obsahuje hodnoty specifické pro příjem, které model zjistil. To je místo, kde najdete užitečné páry klíč / hodnota, jako je daň, celkem, adresa obchodníka a tak dále.
+`"recognitionResults"` Uzel obsahuje veškerý rozpoznaný text. Text je uspořádán podle stránky, potom podle řádku, podle jednotlivých slov. `"understandingResults"` Uzel obsahuje hodnoty specifické pro příjem, které model zjistil. Tady najdete užitečné páry klíč/hodnota, jako je daň, celková, obchodní adresa atd.
 
 ```json
 { 
@@ -399,7 +399,7 @@ Uzel `"recognitionResults"` obsahuje veškerý rozpoznaný text. Text je uspoř�
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste k extrahování obsahu účtenky z prodeje použili rozhraní REST API pro rozpoznávání formulářů s kódem cURL. Dále naleznete v referenční dokumentaci k podrobnějšímu prozkoumání rozhraní API pro rozpoznávání formulářů.
+V tomto rychlém startu jste k extrakci obsahu prodejní účtenky použili REST API pro rozpoznávání formuláře s kudrlinkou. Dále si přečtěte referenční dokumentaci a prozkoumejte rozhraní API pro rozpoznávání formulářů ve větší hloubkě.
 
 > [!div class="nextstepaction"]
-> [Referenční dokumentace rozhraní REST API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeReceiptAsync)
+> [Referenční dokumentace REST API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeReceiptAsync)

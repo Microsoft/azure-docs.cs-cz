@@ -1,6 +1,6 @@
 ---
-title: Interakce se zařízením IoT Plug and Play Preview připojeným k vašemu řešení Azure IoT | Dokumenty společnosti Microsoft
-description: Pomocí jazyka C# (.NET) se můžete připojit k zařízení IoT Plug and Play Preview, které je připojené k vašemu řešení Azure IoT, a pracovat s ním.
+title: Interakce se zařízením IoT technologie Plug and Play Preview připojeným k řešení Azure IoT | Microsoft Docs
+description: Pomocí jazyka C# (.NET) se můžete připojit k zařízení IoT technologie Plug and Play Preview, které je připojené k řešení Azure IoT, a pracovat s nimi.
 author: dominicbetts
 ms.author: dobett
 ms.date: 12/30/2019
@@ -9,23 +9,23 @@ ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
 ms.openlocfilehash: 0953f68839217c1c75eb86f8399ce023f3863ab4
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76963967"
 ---
-# <a name="quickstart-interact-with-an-iot-plug-and-play-preview-device-thats-connected-to-your-solution-c"></a>Úvodní příručka: Interakce se zařízením IoT Plug and Play Preview, které je připojené k vašemu řešení (C#)
+# <a name="quickstart-interact-with-an-iot-plug-and-play-preview-device-thats-connected-to-your-solution-c"></a>Rychlý Start: interakce se zařízením IoT technologie Plug and Play ve verzi Preview, které je připojené k vašemu řešení (C#)
 
 [!INCLUDE [iot-pnp-quickstarts-3-selector.md](../../includes/iot-pnp-quickstarts-3-selector.md)]
 
-IoT Plug and Play Preview zjednodušuje IoT tím, že umožňuje interakci s funkcemi zařízení bez znalosti základní implementace zařízení. Tento rychlý start ukazuje, jak používat C# (s .NET) pro připojení a řízení zařízení IoT Plug and Play, které je připojené k vašemu řešení.
+IoT technologie Plug and Play Preview zjednodušuje IoT tím, že vám umožní pracovat s funkcemi zařízení bez znalosti základní implementace zařízení. V tomto rychlém startu se dozvíte, jak pomocí jazyka C# (s .NET) připojit a řídit zařízení IoT technologie Plug and Play, které je připojené k vašemu řešení.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li tento rychlý start dokončit, je třeba nainstalovat .NET Core (2.x.x nebo 3.x.x) ve vývojovém počítači. Z [download .NET Core](https://dotnet.microsoft.com/download/dotnet-core/)si můžete stáhnout upřednostňovanou verzi sady .NET Core SDK pro více platforem.
+K dokončení tohoto rychlého startu je potřeba na svém vývojovém počítači nainstalovat .NET Core (2. x. x nebo 3. x. x). Můžete si stáhnout upřednostňovanou verzi .NET Core SDK pro více platforem od [stažení .NET Core](https://dotnet.microsoft.com/download/dotnet-core/).
 
-Verzi rozhraní .NET, která je ve vývojovém počítači, můžete ověřit spuštěním následujícího příkazu v místním okně terminálu: 
+Verzi rozhraní .NET, která je na vašem vývojovém počítači, můžete ověřit spuštěním následujícího příkazu v místním okně terminálu: 
 
 ```cmd/sh
 dotnet --version
@@ -35,7 +35,7 @@ dotnet --version
 
 [!INCLUDE [iot-pnp-prepare-iot-hub.md](../../includes/iot-pnp-prepare-iot-hub.md)]
 
-Spusťte následující příkaz, abyste získali _připojovací řetězec centra IoT hub_ pro vaše centrum (poznámka pro pozdější použití):
+Spuštěním následujícího příkazu Získejte _připojovací řetězec služby IoT Hub_ pro vaše centrum (Poznámka pro pozdější použití):
 
 ```azurecli-interactive
 az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
@@ -43,15 +43,15 @@ az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
 
 ## <a name="run-the-sample-device"></a>Spuštění ukázkového zařízení
 
-V tomto rychlém startu použijete ukázkový senzor prostředí, který je napsán v C# jako zařízení IoT Plug and Play. Následující pokyny ukazují, jak nainstalovat a spustit zařízení:
+V tomto rychlém startu použijete vzorový senzor prostředí, který je napsán v jazyce C# jako zařízení IoT technologie Plug and Play. Následující pokyny ukazují, jak nainstalovat a spustit zařízení:
 
-1. Otevřete okno terminálu v adresáři, který si vyberete. Spusťte následující příkaz pro klonování [azure iot ukázky pro úložiště GitHub C# (.NET)](https://github.com/Azure-Samples/azure-iot-samples-csharp) do tohoto umístění:
+1. Otevřete okno terminálu v adresáři dle vašeho výběru. Spuštěním následujícího příkazu naklonujte [ukázky Azure IoT pro úložiště GitHubu v jazyce C# (.NET)](https://github.com/Azure-Samples/azure-iot-samples-csharp) do tohoto umístění:
 
     ```cmd/sh
     git clone https://github.com/Azure-Samples/azure-iot-samples-csharp
     ```
 
-1. Toto okno terminálu bude nyní použito jako terminál _vašeho zařízení._ Přejděte do složky vašeho klonovaného úložiště a přejděte do složky **/azure-iot-samples-csharp/digitaltwin/Samples/device/EnvironmentalSensorSample.**
+1. Toto okno terminálu se teď použije jako terminál _zařízení_ . Přejděte do složky naklonovaného úložiště a přejděte do složky **/Azure-IoT-Samples-CSharp/digitaltwin/Samples/Device/EnvironmentalSensorSample** .
 
 1. Konfigurace _připojovacího řetězce zařízení_:
 
@@ -59,43 +59,43 @@ V tomto rychlém startu použijete ukázkový senzor prostředí, který je naps
     set DIGITAL_TWIN_DEVICE_CONNECTION_STRING=<YourDeviceConnectionString>
     ```
 
-1. Vytvořte potřebné balíčky a spusťte ukázku pomocí následujícího příkazu:
+1. Sestavte potřebné balíčky a spusťte ukázku pomocí následujícího příkazu:
 
     ```cmd\sh
         dotnet run
     ```
 
-1. Zobrazí se zprávy, že se zařízení úspěšně zaregistrovalo a čeká na aktualizace z cloudu. To znamená, že zařízení je nyní připraven o příjem příkazů a aktualizace vlastností a začal oodesílání telemetrických dat do rozbočovače. Nezavírejte tento terminál, budete ho později potřebovat k potvrzení, že vzorky služeb také fungovaly.
+1. Zobrazí se zpráva oznamující, že se zařízení úspěšně zaregistrovalo a čeká na aktualizace z cloudu. To znamená, že zařízení je nyní připraveno přijímat příkazy a aktualizace vlastností a zahájilo posílání dat telemetrie do centra. Nezavírejte tohoto terminálu, budete ho potřebovat později, abyste ověřili, že se ukázky služby také osvědčily.
 
-## <a name="run-the-sample-solution"></a>Spuštění ukázkového roztoku
+## <a name="run-the-sample-solution"></a>Spuštění ukázkového řešení
 
-V tomto rychlém startu použijete ukázkové řešení IoT v C# k interakci s ukázkovým zařízením.
+V tomto rychlém startu použijete k interakci s ukázkovým zařízením ukázkové řešení IoT v jazyce C#.
 
-1. Otevřete další okno terminálu (toto bude váš _servisní_ terminál). Přejděte do složky vašeho klonovaného úložiště a přejděte do složky **/azure-iot-samples-csharp/digitaltwin/Samples/service.**
+1. Otevřete další okno terminálu (bude to váš terminál _služby_ ). Přejděte do složky naklonovaného úložiště a přejděte do složky **/Azure-IoT-Samples-CSharp/digitaltwin/Samples/Service** .
 
-1. Nakonfigurujte _připojovací řetězec a_ _ID centra_ IoT, abyste službě umožnili připojení k oběma těmto:
+1. Nakonfigurujte _připojovací řetězec služby IoT Hub_ a _ID zařízení_ , aby se služba mohla připojit k oběma těmto akcím:
 
     ```cmd/sh
     set IOTHUB_CONNECTION_STRING=<YourIoTHubConnectionString>
     set DEVICE_ID=<YourDeviceID>
     ```
 
-### <a name="read-a-property"></a>Čtení vlastnosti
+### <a name="read-a-property"></a>Číst vlastnost
 
-1. Když jste _zařízení_ připojili k jeho terminálu, zosakli jste následující zprávu s uvedením jeho stavu online:
+1. Po připojení _zařízení_ v terminálu se zobrazí následující zpráva s informacemi o stavu online:
 
     ```cmd/sh
     Waiting to receive updates from cloud...
     ```
 
-1. Přejděte na _servisní_ terminál a pomocí následujících příkazů spusťte ukázku pro čtení informací o zařízení:
+1. Přejděte do terminálu _služby_ a pomocí následujících příkazů spusťte ukázku pro čtení informací o zařízení:
 
     ```cmd/sh
     cd GetDigitalTwin
     dotnet run
     ```
 
-1. Ve výstupu _terminálu služby_ přejděte na komponentu. `environmentalSensor` Uvidíte, `state` že vlastnost, která se používá k označení, zda je zařízení online, byla hlášena jako _true_:
+1. Ve výstupu terminálu _služby_ se posuňte k `environmentalSensor` součásti. Vidíte, že `state` vlastnost, která určuje, jestli je zařízení online, se ohlásila jako _true_:
 
     ```JSON
     "environmentalSensor": {
@@ -110,23 +110,23 @@ V tomto rychlém startu použijete ukázkové řešení IoT v C# k interakci s u
     }
     ```
 
-### <a name="update-a-writable-property"></a>Aktualizace zapisovatelné vlastnosti
+### <a name="update-a-writable-property"></a>Aktualizovat vlastnost s možností zápisu
 
-1. Přejděte na _servisní_ terminál a nastavte následující proměnné, které definují, kterou vlastnost chcete aktualizovat:
+1. Přejděte do terminálu _služby_ a nastavte následující proměnné pro definování, kterou vlastnost chcete aktualizovat:
     ```cmd/sh
     set INTERFACE_INSTANCE_NAME=environmentalSensor
     set PROPERTY_NAME=brightness
     set PROPERTY_VALUE=42
     ```
 
-1. Ke spuštění ukázky pro aktualizaci vlastnosti použijte následující příkazy:
+1. Pomocí následujících příkazů spusťte ukázku pro aktualizaci vlastnosti:
 
     ```cmd/sh
     cd ..\UpdateProperty
     dotnet run
     ```
 
-1. Výstup _terminálu služby_ zobrazuje aktualizované informace o zařízení. Přejděte `environmentalSensor` na komponentu a zobcete novou hodnotu jasu 42.
+1. Výstup terminálu _služby_ zobrazuje aktualizované informace o zařízení. Posuňte se `environmentalSensor` na součást, abyste viděli novou hodnotu jasu 42.
 
     ```json
         "environmentalSensor": {
@@ -146,7 +146,7 @@ V tomto rychlém startu použijete ukázkové řešení IoT v C# k interakci s u
     }
     ```
 
-1. Přejděte na terminál _zařízení,_ uvidíte, že zařízení obdrželo aktualizaci:
+1. Přejděte do terminálu _zařízení_ , vidíte, že zařízení obdrželo aktualizaci:
 
     ```cmd/sh
     Received updates for property 'brightness'
@@ -156,13 +156,13 @@ V tomto rychlém startu použijete ukázkové řešení IoT v C# k interakci s u
     Sent pending status for brightness property.
     Sent completed status for brightness property.
     ```
-2. Vraťte se do _svého servisního_ terminálu a spusťte níže uvedené příkazy, abyste znovu získali informace o zařízení, abyste potvrdili, že vlastnost byla aktualizována.
+2. Vraťte se do terminálu _služby_ a spusťte následující příkazy, abyste mohli znovu získat informace o zařízení. Tím ověříte, že se vlastnost aktualizovala.
     
     ```cmd/sh
     cd ..\GetDigitalTwin
     dotnet run
     ```
-3. Ve výstupu _terminálu služby,_ pod komponentou, `environmentalSensor` uvidíte, že byla hlášena aktualizovaná hodnota jasu. Poznámka: Dokončení aktualizace může chvíli trvat, než zařízení dokončí. Tento krok můžete opakovat, dokud zařízení skutečně nezpracuje aktualizaci vlastnosti.
+3. V výstupu terminálu _služby_ se pod `environmentalSensor` komponentou zobrazí aktualizovaná hodnota jasu. Poznámka: může chvíli trvat, než zařízení dokončí aktualizaci. Tento krok můžete opakovat, dokud zařízení nezpracovává aktualizaci vlastností.
     
     ```json
     "environmentalSensor": {
@@ -192,20 +192,20 @@ V tomto rychlém startu použijete ukázkové řešení IoT v C# k interakci s u
 
 ### <a name="invoke-a-command"></a>Vyvolání příkazu
 
-1. Přejděte na _servisní_ terminál a nastavte následující proměnné, které definují, který příkaz chcete vyvolat:
+1. Přejděte do terminálu _služby_ a nastavte následující proměnné pro definování příkazu, který se má vyvolat:
     ```cmd/sh
     set INTERFACE_INSTANCE_NAME=environmentalSensor
     set COMMAND_NAME=blink
     ```
 
-1. Ke spuštění ukázky pro vyvolání příkazu použijte následující příkazy:
+1. Pomocí následujících příkazů spusťte ukázku pro vyvolání příkazu:
 
     ```cmd/sh
     cd ..\InvokeCommand
     dotnet run
     ```
 
-1. Výstup v _servisním_ terminálu by měl být potvrzen následujícím potvrzením:
+1. Výstup v terminálu _služby_ by měl zobrazovat následující potvrzení:
 
     ```cmd/sh
     Invoking blink on device <YourDeviceID> with interface instance name environmentalSensor
@@ -215,7 +215,7 @@ V tomto rychlém startu použijete ukázkové řešení IoT v C# k interakci s u
     Enter any key to finish
     ```
 
-1. Přejděte na terminál _zařízení,_ uvidíte, že příkaz byl potvrzen:
+1. Přejděte do terminálu _zařízení_ , uvidíte, že byl příkaz potvrzen:
 
     ```cmd/sh
     Command - blink was invoked from the service
@@ -227,7 +227,7 @@ V tomto rychlém startu použijete ukázkové řešení IoT v C# k interakci s u
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste se naučili, jak připojit zařízení IoT Plug and Play k řešení IoT. Další informace o tom, jak vytvořit řešení, které spolupracuje s vašimi zařízeními IoT Plug and Play, najdete v tématu:
+V tomto rychlém startu jste zjistili, jak připojit zařízení IoT technologie Plug and Play k řešení IoT. Další informace o tom, jak vytvořit řešení, které komunikuje s technologie Plug and Play vašich zařízení IoT, najdete tady:
 
 > [!div class="nextstepaction"]
-> [Postup: Připojení k zařízení a interakce se zařízením](howto-develop-solution.md)
+> [Postupy: připojení k zařízení a práce s nimi](howto-develop-solution.md)

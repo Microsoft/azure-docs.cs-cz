@@ -1,6 +1,6 @@
 ---
-title: Připojení ukázkového kódu zařízení IoT Plug and Play Preview ke službě IoT Hub | Dokumenty společnosti Microsoft
-description: Pomocí Javy sestavujte a spouštějte ukázkový kód zařízení IoT Plug and Play Preview, který se připojuje k centru IoT. Pomocí nástroje Průzkumník Avistu Azure můžete zobrazit informace odeslané zařízením do centra.
+title: Připojení ukázkového kódu zařízení pro IoT technologie Plug and Play Preview IoT Hub | Microsoft Docs
+description: Pomocí Java sestavíte a spustíte IoT technologie Plug and Play Preview ukázkový kód zařízení, který se připojuje ke centru IoT. K zobrazení informací odesílaných zařízením do centra použijte nástroj Azure IoT Explorer.
 author: dominicbetts
 ms.author: dobett
 ms.date: 12/27/2019
@@ -9,33 +9,33 @@ ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
 ms.openlocfilehash: aa676dd374eccf2a4b5c4622689ed402c8679e5a
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76964817"
 ---
-# <a name="quickstart-connect-a-sample-iot-plug-and-play-preview-device-application-to-iot-hub-java"></a>Úvodní příručka: Připojení ukázkové aplikace zařízení IoT Plug and Play Preview do služby IoT Hub (Java)
+# <a name="quickstart-connect-a-sample-iot-plug-and-play-preview-device-application-to-iot-hub-java"></a>Rychlý Start: připojení ukázkové aplikace technologie Plug and Play v rámci IoT pro IoT Hub (Java)
 
 [!INCLUDE [iot-pnp-quickstarts-2-selector.md](../../includes/iot-pnp-quickstarts-2-selector.md)]
 
-Tento rychlý start ukazuje, jak vytvořit ukázkovou aplikaci zařízení IoT Plug and Play, připojit ji k centru IoT a použít nástroj Průzkumník Azure IoT k zobrazení informací, které odesílá do centra. Ukázková aplikace je napsaná v jazyce Java a je k dispozici jako součást kolekce Azure IoT Samples for Java. Vývojář řešení můžete použít nástroj Průzkumník Azure IoT pochopit možnosti zařízení IoT Plug and Play bez nutnosti zobrazení kódu zařízení.
+V tomto rychlém startu se dozvíte, jak vytvořit ukázkovou aplikaci IoT technologie Plug and Play zařízení, jak ji připojit ke službě IoT Hub, a pomocí nástroje Azure IoT Explorer zobrazit informace, které odesílá do centra. Ukázková aplikace je napsaná v jazyce Java a poskytuje se jako součást ukázek Azure IoT pro kolekci Java. Vývojář řešení může pomocí nástroje Azure IoT Explorer pochopit možnosti zařízení technologie Plug and Play IoT, aniž by musel zobrazovat žádný kód zařízení.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení tohoto rychlého startu potřebujete java SE 8 na vývojovém počítači. Musíte také nainstalovat Maven 3.
+K dokončení tohoto rychlého startu potřebujete Java SE 8 na svém vývojovém počítači. Také je potřeba nainstalovat Maven 3.
 
-Podrobnosti o tom, jak nastavit s těmito, najdete [v tématu Příprava vývojového prostředí](https://github.com/Azure/azure-iot-sdk-java/blob/preview/doc/java-devbox-setup.md) v Microsoft Azure IoT zařízení SDK pro Java.
+Podrobnosti o tom, jak s nimi nastavovat, najdete v tématu [Příprava vývojového prostředí](https://github.com/Azure/azure-iot-sdk-java/blob/preview/doc/java-devbox-setup.md) v sadě SDK pro zařízení Microsoft Azure IoT pro jazyk Java.
 
-### <a name="install-the-azure-iot-explorer"></a>Instalace Průzkumníka Azure IoT
+### <a name="install-the-azure-iot-explorer"></a>Instalace Azure IoT Exploreru
 
-Stáhněte a nainstalujte nejnovější verzi **Průzkumníka Azure IoT** ze stránky [úložiště](https://github.com/Azure/azure-iot-explorer/releases) nástroje výběrem souboru MSI v části "Prostředky" pro nejnovější aktualizaci.
+Stáhněte a nainstalujte si nejnovější verzi **Azure IoT Exploreru** ze stránky [úložiště](https://github.com/Azure/azure-iot-explorer/releases) tohoto nástroje tak, že vyberete soubor. msi v části assets (prostředky) pro nejnovější aktualizaci.
 
 [!INCLUDE [iot-pnp-prepare-iot-hub.md](../../includes/iot-pnp-prepare-iot-hub.md)]
 
-Spusťte následující příkaz, abyste získali _připojovací řetězec centra IoT hub_ pro vaše centrum (poznámka pro pozdější použití):
+Spuštěním následujícího příkazu Získejte _připojovací řetězec služby IoT Hub_ pro vaše centrum (Poznámka pro pozdější použití):
 
 ```azurecli-interactive
 az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
@@ -43,21 +43,21 @@ az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
 
 ## <a name="prepare-the-development-environment"></a>Příprava vývojového prostředí
 
-V tomto rychlém startu připravíte vývojové prostředí, které můžete použít ke klonování a sestavení ukázky Azure IoT pro Jazyk Java.
+V tomto rychlém startu připravíte vývojové prostředí, které můžete použít ke klonování a sestavování ukázek Azure IoT pro jazyk Java.
 
-Otevřete okno terminálu v adresáři, který si vyberete. Spusťte následující příkaz pro klonování [ukázek Azure IoT pro úložiště GitHub v Jazyce Java](https://github.com/Azure-Samples/azure-iot-samples-java) do tohoto umístění:
+Otevřete okno terminálu v adresáři dle vašeho výběru. Spuštěním následujícího příkazu naklonujte [ukázky Azure IoT pro](https://github.com/Azure-Samples/azure-iot-samples-java) úložiště GitHub Java do tohoto umístění:
 
 ```cmd/sh
 git clone https://github.com/Azure-Samples/azure-iot-samples-java
 ```
 
-Tato operace může trvat několik minut.
+Dokončení této operace může trvat několik minut.
 
 ## <a name="build-the-code"></a>Sestavení kódu
 
-Klonovaný ukázkový kód se používá k vytvoření aplikace, která simuluje zařízení, které se připojuje k centru IoT. Aplikace odesílá telemetrii a vlastnosti a přijímá příkazy.
+Pomocí klonovaného ukázkového kódu sestavíte aplikaci, která simuluje zařízení, které se připojuje ke službě IoT Hub. Aplikace odesílá telemetrie a vlastnosti a přijímá příkazy.
 
-1. V okně místního terminálu přejděte do složky vašeho klonovaného úložiště a přejděte do složky **/azure-iot-samples-java/digital-twin/Samples/device/JdkSample.** Potom spusťte následující příkaz k instalaci požadovaných knihoven a sestavení aplikace simulovaných zařízení:
+1. V místním okně terminálu přejděte do složky naklonovaného úložiště a přejděte do složky **/Azure-IoT-Samples-Java/Digital-Twin/Samples/Device/JdkSample** . Pak spuštěním následujícího příkazu nainstalujte požadované knihovny a sestavte aplikaci simulovaného zařízení:
 
     ```cmd/sh
     mvn clean install -DskipTests
@@ -71,23 +71,23 @@ Klonovaný ukázkový kód se používá k vytvoření aplikace, která simuluje
 
 ## <a name="run-the-device-sample"></a>Spuštění ukázky zařízení
 
-Spusťte ukázkovou aplikaci a simulujte zařízení IoT Plug and Play, které odesílá telemetrii do vašeho centra IoT Hub. Chcete-li spustit ukázkovou aplikaci, použijte následující příkaz:
+Spusťte ukázkovou aplikaci pro simulaci technologie Plug and Play zařízení IoT, které odesílá telemetrii do služby IoT Hub. Chcete-li spustit ukázkovou aplikaci, použijte následující příkaz:
 
 ```cmd\sh
 java -jar environmental-sensor-sample\target\environmental-sensor-sample-with-deps.jar
 ```
 
-Zobrazí se zprávy, že zařízení je připojeno, provádění různých kroků instalace a čekání na aktualizace služby, následované protokoly telemetrie. To znamená, že zařízení je nyní připraven o příjem příkazů a aktualizace vlastností a začal oodesílání telemetrických dat do rozbočovače. Po nechat vzorek běží při dokončení dalších kroků.
+Zobrazí se zpráva oznamující, že je zařízení připojené, provádění různých kroků instalace a čekání na aktualizace služby, a potom i protokoly telemetrie. To znamená, že zařízení je nyní připraveno přijímat příkazy a aktualizace vlastností a zahájilo posílání dat telemetrie do centra. Ponechte ukázku spuštěnou při dokončení dalších kroků.
 
-## <a name="use-the-azure-iot-explorer-to-validate-the-code"></a>Ověření kódu pomocí průzkumníka Azure IoT
+## <a name="use-the-azure-iot-explorer-to-validate-the-code"></a>Použití Průzkumníka Azure IoT k ověření kódu
 
 [!INCLUDE [iot-pnp-iot-explorer-1.md](../../includes/iot-pnp-iot-explorer-1.md)]
 
-4. Chcete-li zajistit, aby nástroj mohl číst definice modelu rozhraní ze zařízení, vyberte **nastavení**. V nabídce Nastavení se **na připojeném zařízení** již může zobrazit v konfiguracích Plug and Play. Pokud tomu tak není, vyberte **+ Přidat zdroj definice modulu** a pak na **připojeném zařízení** jej přidat.
+4. Chcete-li zajistit, aby nástroj mohl číst definice modelů rozhraní ze zařízení, vyberte **Nastavení**. V nabídce nastavení se **v připojeném zařízení** už může zobrazit konfigurace technologie Plug and Play. Pokud ne, vyberte **+ Přidat zdroj definice modulu** a pak **na připojeném zařízení** ho přidejte.
 
-1. Zpět na stránce **Přehled zařízení** najděte identitu zařízení, kterou jste vytvořili dříve. Pokud je aplikace zařízení stále spuštěná v příkazovém řádku, zkontrolujte, jestli **stav připojení** zařízení v průzkumníku Azure IoT hlásí jako _Připojený_ (pokud ne, stiskněte **tlačítko Aktualizovat,** dokud nebude). Výběrem zařízení zobrazíte další podrobnosti.
+1. Zpátky na stránce Přehled **zařízení** vyhledejte identitu zařízení, kterou jste vytvořili dříve. Když je aplikace zařízení pořád spuštěná na příkazovém řádku, ověřte, že se **stav připojení** zařízení v Azure IoT Exploreru hlásí jako _připojené_ (Pokud ne, stiskněte **aktualizovat** , dokud není). Kliknutím na zařízení zobrazíte další podrobnosti.
 
-1. Rozbalte rozhraní s id **urn:java_sdk_sample:EnvironmentalSensor:1** a odhalte rozhraní a základní prvky IoT Plug and Play – vlastnosti, příkazy a telemetrii.
+1. Rozbalte rozhraní s IDENTIFIKÁTORem **urn: java_sdk_sample: EnvironmentalSensor: 1** a odhalte rozhraní a technologie Plug and Play primitivních elementů IoT – vlastnosti, příkazy a telemetrie.
 
 [!INCLUDE [iot-pnp-iot-explorer-2.md](../../includes/iot-pnp-iot-explorer-2.md)]
 
@@ -95,7 +95,7 @@ Zobrazí se zprávy, že zařízení je připojeno, provádění různých krok�
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste se naučili, jak připojit zařízení IoT Plug and Play k centru IoT. Další informace o tom, jak vytvořit řešení, které spolupracuje s vašimi zařízeními IoT Plug and Play, najdete v tématu:
+V tomto rychlém startu jste se naučili připojit zařízení IoT technologie Plug and Play ke službě IoT Hub. Další informace o tom, jak vytvořit řešení, které komunikuje s technologie Plug and Play vašich zařízení IoT, najdete tady:
 
 > [!div class="nextstepaction"]
-> [Postup: Připojení k zařízení IoT Plug and Play Preview a jeho práce s ním](howto-develop-solution.md)
+> [Postupy: připojení a interakce se zařízením IoT technologie Plug and Play Preview](howto-develop-solution.md)
