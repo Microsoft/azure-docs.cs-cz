@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 03/05/2019
 ms.author: alkohli
 ms.openlocfilehash: 880b630ae48eda086f6454f0d7108d27d3403b77
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67175675"
 ---
-Pokud se spustíte v prostředí, které není dhcp, postupujte takto a nasaďte virtuální počítač pro bránu datové schránky.
+Pokud se spouštíte v prostředí bez DHCP, postupujte podle těchto kroků a nasaďte virtuální počítač pro svůj Data Box Gateway.
 
-1. Připojte se k rozhraní prostředí [Windows PowerShell zařízení](#connect-to-the-powershell-interface).
-2. Pomocí `Get-HcsIpAddress` rutiny můžete zobrazit seznam síťových rozhraní povolených ve vašem virtuálním zařízení. Pokud má vaše zařízené povolené jediné síťové rozhraní, výchozí název přiřazený tomuto rozhraní je `Ethernet`.
+1. [Připojte se k rozhraní Windows PowerShell zařízení](#connect-to-the-powershell-interface).
+2. Pomocí `Get-HcsIpAddress` rutiny uveďte síťová rozhraní povolená na virtuálním zařízení. Pokud má vaše zařízené povolené jediné síťové rozhraní, výchozí název přiřazený tomuto rozhraní je `Ethernet`.
 
     Následující příklad ukazuje použití této rutiny:
 

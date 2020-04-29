@@ -9,22 +9,22 @@ ms.date: 05/21/2019
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: bae66078a1bcb1d80f0798b1d501598fa785fb80
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "66241208"
 ---
 ## <a name="launch-azure-cloud-shell"></a>Spuštění služby Azure Cloud Shell
 
 Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. 
 
-Pokud chcete otevřít Cloud Shell, vyberte položku **Vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné [https://shell.azure.com/powershell](https://shell.azure.com/powershell)kartě prohlížeče tak, že přejdete na . Zkopírujte bloky kódu výběrem možnosti **Kopírovat**, vložte je do služby Cloud Shell a potom je spusťte stisknutím klávesy Enter.
+Pokud chcete otevřít Cloud Shell, vyberte položku **Vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné kartě prohlížeče tak, že přejdete [https://shell.azure.com/powershell](https://shell.azure.com/powershell)na. Zkopírujte bloky kódu výběrem možnosti **Kopírovat**, vložte je do služby Cloud Shell a potom je spusťte stisknutím klávesy Enter.
 
 
-## <a name="get-the-managed-image"></a>Získání spravované bitové kopie
+## <a name="get-the-managed-image"></a>Získat spravovanou bitovou kopii
 
-Můžete zobrazit seznam obrázků, které jsou k dispozici ve skupině prostředků pomocí [Get-AzImage](https://docs.microsoft.com/powershell/module/az.compute/get-azimage). Jakmile znáte název obrázku a jakou skupinu `Get-AzImage` prostředků se nachází, můžete znovu použít k získání objektu obrázku a jeho uložení do proměnné, která bude později použít. Tento příklad získá obrázek s názvem *myImage* ze skupiny prostředků "myResourceGroup" a přiřadí jej proměnné *$managedImage*. 
+Seznam imagí, které jsou k dispozici ve skupině prostředků, můžete zobrazit pomocí [Get-AzImage](https://docs.microsoft.com/powershell/module/az.compute/get-azimage). Jakmile znáte název bitové kopie a její skupinu prostředků, můžete znovu použít `Get-AzImage` k získání objektu image a uložit ho do proměnné pro pozdější použití. Tento příklad načte image s názvem *myImage* ze skupiny prostředků "myResourceGroup" a přiřadí ji k proměnné *$managedImage*. 
 
 ```azurepowershell-interactive
 $managedImage = Get-AzImage `
@@ -32,11 +32,11 @@ $managedImage = Get-AzImage `
    -ResourceGroupName myResourceGroup
 ```
 
-## <a name="create-an-image-gallery"></a>Vytvoření galerie obrázků 
+## <a name="create-an-image-gallery"></a>Vytvoření galerie imagí 
 
-Galerie obrázků je primární prostředek používaný pro povolení sdílení obrázků. Povolené znaky pro název galerie jsou velká nebo malá písmena, číslice, tečky a tečky. Název galerie nesmí obsahovat pomlčky. Názvy galerií musí být v rámci předplatného jedinečné. 
+Galerie imagí je primární prostředek, který slouží k povolení sdílení obrázků. Povolenými znaky pro název galerie jsou velká a malá písmena, číslice, tečky a tečky. Název galerie nesmí obsahovat pomlčky. Názvy galerií musí být v rámci vašeho předplatného jedinečné. 
 
-Vytvořte galerii obrázků pomocí [New-AzGallery](https://docs.microsoft.com/powershell/module/az.compute/new-azgallery). Následující příklad vytvoří galerii s názvem *myGallery* ve skupině prostředků *myGalleryRG.*
+Vytvořte galerii imagí pomocí [New-AzGallery](https://docs.microsoft.com/powershell/module/az.compute/new-azgallery). Následující příklad vytvoří galerii s názvem *myGallery* ve skupině prostředků *myGalleryRG* .
 
 ```azurepowershell-interactive
 $resourceGroup = New-AzResourceGroup `
@@ -51,9 +51,9 @@ $gallery = New-AzGallery `
    
 ## <a name="create-an-image-definition"></a>Vytvoření definice obrázku 
 
-Definice obrázků vytvářejí logické seskupení pro obrazy. Používají se ke správě informací o verzích bitových obrázků, které jsou v nich vytvořeny. Názvy definic obrázků mohou být tvořeny velkými nebo velkými písmeny, číslicemi, tečkami, pomlčkami a tečkami. Další informace o hodnotách, které můžete zadat pro definici obrazu, naleznete v [tématu Definice obrázků](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#image-definitions).
+Definice obrázků vytvoří logické seskupení obrázků. Slouží ke správě informací o verzích imagí, které jsou v nich vytvořeny. Názvy definic obrázků mohou být tvořeny velkými a malými písmeny, číslicemi, tečkami, pomlčkami a tečkami. Další informace o hodnotách, které můžete zadat pro definici obrázku, najdete v tématu [definice imagí](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#image-definitions).
 
-Vytvořte definici obrazu pomocí [New-AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion). V tomto příkladu je obrázek galerie pojmenován *myGalleryImage*.
+Vytvořte definici Image pomocí [New-AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion). V tomto příkladu má image galerie název *myGalleryImage*.
 
 ```azurepowershell-interactive
 $galleryImage = New-AzGalleryImageDefinition `
@@ -69,13 +69,13 @@ $galleryImage = New-AzGalleryImageDefinition `
 ```
 
 
-## <a name="create-an-image-version"></a>Vytvoření verze obrázku
+## <a name="create-an-image-version"></a>Vytvoření verze image
 
-Vytvořte verzi bitové kopie ze spravované bitové kopie pomocí [new-azgalleryimageversion](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion). 
+Vytvořte verzi image ze spravované Image pomocí [New-AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion). 
 
-Povolené znaky pro verzi obrázku jsou čísla a tečky. Čísla musí být v rozsahu 32bitové celé číslo. Formát: *MajorVersion*. *MinorVersion*. *Záplata*.
+Povolené znaky pro verzi obrázku jsou čísla a tečky. Čísla musí být v rozsahu 32 celé číslo. Formát: *MajorVersion*. *Podverze.* *Oprava*.
 
-V tomto příkladu je verze bitové kopie *1.0.0* a je replikována do datových center *– střed USA* – západ a střed *usa.* Při výběru cílových oblastí pro replikaci nezapomeňte, že je také třeba zahrnout *zdrojovou* oblast jako cíl pro replikaci.
+V tomto příkladu je verze image *1.0.0* a replikuje se do datových center *středozápadní USA* i *střed USA – jih* . Při výběru cílových oblastí pro replikaci nezapomeňte, že je také nutné zahrnout *zdrojovou* oblast jako cíl pro replikaci.
 
 
 ```azurepowershell-interactive
@@ -94,22 +94,22 @@ $job = $imageVersion = New-AzGalleryImageVersion `
    -asJob 
 ```
 
-Replikace obrázku do všech cílových oblastí může chvíli trvat, takže jsme vytvořili úlohu, abychom mohli sledovat průběh. Chcete-li zobrazit průběh úlohy, zadejte . `$job.State`
+Replikace obrázku do všech cílových oblastí může chvíli trvat, proto jsme vytvořili úlohu, abychom mohli sledovat průběh. Chcete-li zobrazit průběh úlohy, zadejte `$job.State`.
 
 ```azurepowershell-interactive
 $job.State
 ```
 
 > [!NOTE]
-> Před použitím stejné spravované bitové kopie k vytvoření jiné verze bitové kopie je třeba počkat, až bude verze bitové kopie zcela dokončena. 
+> Aby bylo možné použít stejnou spravovanou bitovou kopii k vytvoření jiné verze bitové kopie, je třeba počkat na dokončení sestavení a repliky verze image. 
 >
-> Verzi bitové kopie můžete také uložit `-StorageAccountType Standard_ZRS` do [zónového redundantního úložiště](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) přidáním při vytváření verze bitové kopie.
+> Verzi image můžete také uložit v [zóně redundantního úložiště](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) přidáním `-StorageAccountType Standard_ZRS` při vytváření verze image.
 >
 
 
-## <a name="share-the-gallery"></a>Sdílet galerii
+## <a name="share-the-gallery"></a>Sdílení galerie
 
-Doporučujeme sdílet přístup na úrovni galerie obrázků. Pomocí e-mailové adresy a rutiny [Get-AzADUser](/powershell/module/az.resources/get-azaduser) získáte ID objektu pro uživatele a pak jim udělte přístup do galerie pomocí [funkce New-AzRoleAssignment.](/powershell/module/Az.Resources/New-AzRoleAssignment) Nahraďte ukázkový e-mail alinne_montes@contoso.com v tomto příkladu vlastními informacemi.
+Doporučujeme sdílet přístup na úrovni Galerie imagí. Pomocí e-mailové adresy a rutiny [Get-AzADUser](/powershell/module/az.resources/get-azaduser) Získejte ID objektu pro uživatele a pak pomocí [New-AzRoleAssignment](/powershell/module/Az.Resources/New-AzRoleAssignment) udělte přístup k galerii. alinne_montes@contoso.com V tomto příkladu nahraďte příklad e-mailu vlastními informacemi.
 
 ```azurepowershell-interactive
 # Get the object ID for the user

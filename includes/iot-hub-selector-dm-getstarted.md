@@ -5,10 +5,10 @@ ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
 ms.openlocfilehash: 239ea2eb4d5bc8d326d5ca503a18b149252dc1be
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "69558715"
 ---
 > [!div class="op_single_selector"]
@@ -17,19 +17,19 @@ ms.locfileid: "69558715"
 > * [Java](../articles/iot-hub/iot-hub-java-java-device-management-getstarted.md)
 > * [Python](../articles/iot-hub/iot-hub-python-python-device-management-get-started.md)
 
-Back-endové aplikace můžou používat primitiva Azure IoT Hub, jako jsou [dvojče zařízení][lnk-devtwin] a [přímé metody][lnk-c2dmethod], ke vzdálenému spuštění a monitorování akcí správy zařízení na zařízeních. Tento kurz ukazuje, jak může back-endová aplikace a aplikace zařízení spolupracovat na zahájení a monitorování vzdáleného restartování zařízení pomocí služby IoT Hub.
+Back-endové aplikace můžou používat primitivní IoT Hub Azure, jako jsou například [Dvojitá][lnk-devtwin] a [Přímá metoda][lnk-c2dmethod]zařízení, vzdáleně spouštět a monitorovat akce správy zařízení v zařízeních. V tomto kurzu se dozvíte, jak může aplikace back-end a aplikace zařízení společně spolupracovat a zahájit a monitorovat vzdálené restartování zařízení pomocí IoT Hub.
 
 [!INCLUDE [iot-hub-basic](iot-hub-basic-whole.md)]
 
-Pomocí přímé metody můžete zahájit akce správy zařízení (například restartování, obnovení továrního nastavení a aktualizaci firmwaru) z back-endové aplikace v cloudu. Zařízení je odpovědné za:
+Použijte přímou metodu pro zahájení akcí správy zařízení (například restartování, obnovení továrního nastavení a aktualizace firmwaru) z back-endové aplikace v cloudu. Zařízení zodpovídá za:
 
-* Zpracování požadavku na metodu odeslané z ioT hubu.
+* Zpracovává se žádost o metodu poslaná z IoT Hub.
 
-* Zahajuji odpovídající akci specifickou pro zařízení na zařízení.
+* Inicializuje se odpovídající akce specifická pro zařízení v zařízení.
 
-* Poskytování aktualizací stavu prostřednictvím *ohlášených vlastností* služby IoT Hub.
+* Poskytování aktualizací stavu prostřednictvím *hlášených vlastností* IoT Hub.
 
-Pomocí back-endové aplikace v cloudu můžete spouštět dotazy na dvojče zařízení a podávat zprávy o průběhu akcí správy zařízení.
+Pomocí back-endové aplikace v cloudu můžete spouštět nedokončené dotazy na zařízení a vykazovat průběh akcí správy zařízení.
 
 [lnk-devtwin]: ../articles/iot-hub/iot-hub-devguide-device-twins.md
 [lnk-c2dmethod]: ../articles/iot-hub/iot-hub-devguide-direct-methods.md

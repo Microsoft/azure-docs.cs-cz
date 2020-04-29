@@ -9,106 +9,106 @@ ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 08cca67455df4b2d28bba0a7410fccc11446fcdc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76748859"
 ---
-Tento článek obsahuje další úroveň podrobností pro zabezpečení infrastruktury Internetu věcí (IoT) založené na Azure IoT. Odkazuje na podrobnosti na úrovni implementace pro konfiguraci a nasazení jednotlivých komponent. Poskytuje také srovnání a volby mezi různými konkurenčními metodami.
+Tento článek poskytuje další úroveň podrobností pro zabezpečení infrastruktury Internet věcí založené na službě Azure IoT (IoT). Odkazuje na podrobnosti úrovně implementace pro konfiguraci a nasazení jednotlivých komponent. Nabízí také porovnání a volby mezi různými konkurenčními metodami.
 
-Zabezpečení nasazení Azure IoT lze rozdělit do následujících tří oblastí zabezpečení:
+Zabezpečení nasazení Azure IoT se dá rozdělit do těchto tří oblastí zabezpečení:
 
-* **Zabezpečení zařízení:** Zabezpečení zařízení IoT, když je nasazeno ve volné přírodě.
+* **Zabezpečení zařízení**: zabezpečení zařízení IoT při jeho nasazení v nevolném režimu.
 
-* **Zabezpečení připojení**: Zajištění všech dat přenášených mezi zařízením IoT a ioT hubem je důvěrné a odolné proti manipulaci.
+* **Zabezpečení připojení**: Zajistěte, aby byla veškerá data přenášená mezi zařízením IoT a IoT Hub důvěrná a oprávněná kontrola.
 
-* **Cloud Security**: Poskytuje prostředky k zabezpečení dat, zatímco se pohybuje a je uložen v cloudu.
+* **Zabezpečení cloudu**: poskytuje prostředky k zabezpečení dat při jejich přesouvání a ukládá se do cloudu.
 
-![Tři bezpečnostní oblasti](./media/iot-secure-your-deployment/overview.png)
+![Tři oblasti zabezpečení](./media/iot-secure-your-deployment/overview.png)
 
-## <a name="secure-device-provisioning-and-authentication"></a>Zřizování a ověřování zabezpečeného zařízení
+## <a name="secure-device-provisioning-and-authentication"></a>Zabezpečené zřizování a ověřování zařízení
 
 Akcelerátory řešení IoT zabezpečují zařízení IoT pomocí následujících dvou metod:
 
-* Poskytnutím jedinečného klíče identity (tokenů zabezpečení) pro každé zařízení, které může zařízení používat ke komunikaci s centrem IoT Hub.
+* Poskytnutím jedinečného klíče identity (tokeny zabezpečení) pro každé zařízení, které může zařízení používat ke komunikaci s IoT Hub.
 
-* Pomocí [certifikátu X.509](https://www.itu.int/rec/T-REC-X.509-201210-S) na zařízení a soukromého klíče jako prostředku k ověření zařízení do služby IoT Hub. Tato metoda ověřování zajišťuje, že soukromý klíč v zařízení není mimo zařízení v žádném okamžiku znám, což poskytuje vyšší úroveň zabezpečení.
+* Pomocí [certifikátu X. 509](https://www.itu.int/rec/T-REC-X.509-201210-S) na zařízení a privátního klíče jako prostředku k ověření zařízení pro IoT Hub. Tato metoda ověřování zajišťuje, že privátní klíč v zařízení není kdykoli v zařízení znám, což zajišťuje vyšší úroveň zabezpečení.
 
-Metoda tokenu zabezpečení poskytuje ověřování pro každé volání zařízení do služby IoT Hub tím, že přizpůsobuje symetrický klíč ke každému volání. Ověřování založené na x.509 umožňuje ověřování zařízení IoT ve fyzické vrstvě jako součást připojení TLS. Metodu založenou na tokenech zabezpečení lze použít bez ověřování X.509, což je méně zabezpečený vzor. Volba mezi těmito dvěma metodami je primárně dána tím, jak bezpečné ověřování zařízení musí být, a dostupnost zabezpečeného úložiště v zařízení (bezpečně uložit soukromý klíč).
+Metoda tokenu zabezpečení poskytuje ověřování pro každé volání, které zařízení provedlo, k IoT Hub přiřazením symetrického klíče ke každému volání. Ověřování pomocí X. 509 umožňuje ověřování zařízení IoT ve fyzické vrstvě v rámci zřízení připojení TLS. Metoda založená na tokenech zabezpečení se dá použít bez ověřování X. 509, což je méně zabezpečený vzor. Volba mezi těmito dvěma metodami je primárně vyřízena způsobem, jakým je nutné zabezpečit ověřování zařízení, a dostupnost zabezpečeného úložiště na zařízení (bezpečné uložení privátního klíče).
 
-## <a name="iot-hub-security-tokens"></a>Tokeny zabezpečení centra IoT Hub
+## <a name="iot-hub-security-tokens"></a>IoT Hub tokeny zabezpečení
 
-Služba IoT Hub používá tokeny zabezpečení k ověřování zařízení a služeb, aby se zabránilo odesílání klíčů v síti. Tokeny zabezpečení jsou navíc omezeny časovou platností a rozsahem. Sady Azure IoT SDK automaticky generují tokeny bez nutnosti jakékoli speciální konfigurace. Některé scénáře však vyžadují, aby uživatel přímo generoval a používal tokeny zabezpečení. Tyto scénáře zahrnují přímé použití mqtt, AMQP nebo HTTP povrchy nebo implementace vzoru služby tokenu.
+IoT Hub používá k ověřování zařízení a služeb tokeny zabezpečení, aby nedocházelo k posílání klíčů v síti. Tokeny zabezpečení jsou navíc omezené v době platnosti a rozsahu. Sady SDK Azure IoT automaticky generují tokeny bez nutnosti jakékoli speciální konfigurace. Některé scénáře ale vyžadují, aby uživatel vygeneroval a použil tokeny zabezpečení přímo. Mezi tyto scénáře patří přímé použití MQTT, AMQP nebo povrchu HTTP nebo implementace vzoru služby tokenu.
 
-Další podrobnosti o struktuře tokenu zabezpečení a jeho použití naleznete v následujících článcích:
+Další podrobnosti o struktuře tokenu zabezpečení a jeho použití najdete v následujících článcích:
 
-* [Struktura tokenů zabezpečení](../articles/iot-hub/iot-hub-devguide-security.md#security-token-structure)
+* [Struktura tokenu zabezpečení](../articles/iot-hub/iot-hub-devguide-security.md#security-token-structure)
 
 * [Použití tokenů SAS jako zařízení](../articles/iot-hub/iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app)
 
-Každý IoT Hub má [registr identit,](../articles/iot-hub/iot-hub-devguide-identity-registry.md) který lze použít k vytvoření prostředků pro jednotlivé zařízení ve službě, jako je například fronta, která obsahuje zprávy z cloudu na zařízení za letu, a k povolení přístupu ke koncovým bodům směřujícím k zařízení. Registr identit služby IoT Hub poskytuje zabezpečené úložiště identit zařízení a klíčů zabezpečení pro řešení. Jednotlivé nebo skupiny identit zařízení lze přidat do seznamu povolených položek nebo seznamu blokování, což umožňuje úplnou kontrolu nad přístupem k zařízení. Následující články obsahují další podrobnosti o struktuře registru identit a podporovaných operací.
+Každý IoT Hub má [registr identit](../articles/iot-hub/iot-hub-devguide-identity-registry.md) , který se dá použít k vytvoření prostředků pro jednotlivé zařízení ve službě, jako je například fronta, která obsahuje zprávy v letadlech a umožňuje přístup k koncovým bodům pro zařízení. IoT Hub registr identit poskytuje zabezpečené úložiště identit zařízení a klíčů zabezpečení pro řešení. Do seznamu povolených nebo blokovaných identit zařízení můžete přidat jednotlivé identity nebo skupiny a povolit tak úplnou kontrolu nad přístupem k zařízení. Následující články poskytují další podrobnosti o struktuře registru identit a podporovaných operacích.
 
-[IoT Hub podporuje protokoly, jako je MQTT, AMQP a HTTP](../articles//iot-hub/iot-hub-devguide-security.md). Každý z těchto protokolů používá tokeny zabezpečení ze zařízení IoT do ioT hubu jinak:
+[IoT Hub podporuje protokoly, jako jsou MQTT, AMQP a http](../articles//iot-hub/iot-hub-devguide-security.md). Každý z těchto protokolů používá tokeny zabezpečení ze zařízení IoT pro IoT Hub odlišně:
 
-* AMQP: Zabezpečení založené na deklaracích SASL`{policyName}@sas.root.{iothubName}` PLAIN a AMQP (s tokeny na úrovni centra IoT; `{deviceId}` tokeny s rozsahem zařízení).
+* AMQP: SASL PLAIN a AMQP zabezpečení založené na deklaracích`{policyName}@sas.root.{iothubName}` identity (s tokeny na úrovni IoT Hub). `{deviceId}` s tokeny v oboru zařízení).
 
-* MQTT: CONNECT `{deviceId}` paket `{ClientId}`používá `{IoThubhostname}/{deviceId}` jako , v poli **Uživatelské jméno** a token SAS v poli **Heslo.**
+* MQTT `{deviceId}` : pomocí `{ClientId}` `{IoThubhostname}/{deviceId}` pole pro zadání **uživatelského jména** a tokenu SAS v poli **heslo** připojte paket.
 
-* HTTP: Platný token je v hlavičce žádosti o autorizaci.
+* HTTP: platný token je v hlavičce autorizační žádosti.
 
-Registr identit služby IoT Hub lze použít ke konfiguraci pověření zabezpečení pro zařízení a řízení přístupu. Pokud však řešení IoT již má významné investice do [vlastního registru identitzařízení nebo schématu ověřování](../articles/iot-hub/iot-hub-devguide-security.md#custom-device-and-module-authentication), lze jej integrovat do existující infrastruktury s službou IoT Hub vytvořením tokenové služby.
+IoT Hub registru identit lze použít ke konfiguraci pověření zabezpečení jednotlivých zařízení a řízení přístupu. Pokud však řešení IoT již má významnou investici do [vlastního registru identity zařízení nebo schématu ověřování](../articles/iot-hub/iot-hub-devguide-security.md#custom-device-and-module-authentication), může být integrováno do existující infrastruktury s IoT Hub vytvořením služby tokenu.
 
-### <a name="x509-certificate-based-device-authentication"></a>Ověřování zařízení založené na certifikátu X.509
+### <a name="x509-certificate-based-device-authentication"></a>Ověřování zařízení založeného na certifikátech X. 509
 
-Použití [certifikátu X.509 založeného na zařízení](../articles/iot-hub/iot-hub-devguide-security.md) a jeho přidruženédvojice soukromého a veřejného klíče umožňuje další ověřování ve fyzické vrstvě. Soukromý klíč je bezpečně uložen v zařízení a není zjistitelný mimo zařízení. Certifikát X.509 obsahuje informace o zařízení, jako je ID zařízení a další podrobnosti o organizaci. Podpis certifikátu je generován pomocí soukromého klíče.
+Použití [certifikátu X. 509 založeného na zařízení](../articles/iot-hub/iot-hub-devguide-security.md) a jeho přidruženého páru privátních a veřejných klíčů umožňuje další ověřování ve fyzické vrstvě. Privátní klíč je bezpečně uložený v zařízení a nemůže být zjistitelný mimo zařízení. Certifikát X. 509 obsahuje informace o zařízení, jako je ID zařízení a další informace o organizaci. Podpis certifikátu se vygeneruje pomocí privátního klíče.
 
-Tok zřizování zařízení na vysoké úrovni:
+Tok zřizování zařízení vysoké úrovně:
 
-* Přidružte identifikátor k fyzickému zařízení – identita zařízení a/nebo certifikát X.509 přidružený k zařízení během výroby nebo uvedení zařízení do provozu.
+* Přidružte identifikátor k fyzickému zařízení – identitě zařízení nebo k certifikátu X. 509, který je přidružený k zařízení během výroby zařízení nebo provize.
 
-* Vytvořte odpovídající položku identity v centru IoT Hub – identity zařízení a přidružené informace o zařízení v registru identit služby IoT Hub.
+* Vytvoření odpovídající položky identity v IoT Hub – identita zařízení a související informace o zařízení v registru IoT Hub identity.
 
-* Bezpečně uklánějte kryptografický otisk certifikátu X.509 do registru identit služby IoT Hub.
+* Kryptografický otisk certifikátu X. 509 bezpečně ukládejte v IoT Hub registru identit.
 
 ### <a name="root-certificate-on-device"></a>Kořenový certifikát na zařízení
 
-Při navazování zabezpečeného připojení TLS pomocí služby IoT Hub ověřuje zařízení IoT Hub pomocí kořenového certifikátu, který je součástí sady SDK zařízení. Pro sadu SDK klienta C je\\certifikát\\umístěn pod složkou "c certs" pod kořenem úložiště. Ačkoli tyto kořenové certifikáty jsou dlouhodobé, stále mohou vypršet nebo být odvolány. Pokud neexistuje žádný způsob, jak aktualizovat certifikát na zařízení, zařízení nemusí být možné následně připojit k centru IoT Hub (nebo jiné cloudové služby). S prostředky k aktualizaci kořenového certifikátu po nasazení zařízení IoT účinně zmírňuje toto riziko.
+Při vytváření zabezpečeného připojení TLS s IoT Hub se zařízení IoT ověřuje IoT Hub pomocí kořenového certifikátu, který je součástí sady SDK pro zařízení. Pro klientskou sadu SDK pro c je certifikát umístěný pod složkou "\\certifikáty\\c" v kořenovém adresáři úložiště. I když jsou tyto kořenové certifikáty dlouhodobé, můžou pořád vypršet nebo odvolat. Pokud neexistuje žádný způsob, jak aktualizovat certifikát na zařízení, nemusí být zařízení následně možné připojit se k IoT Hub (nebo jiné cloudové službě). Když je zařízení IoT efektivně nasazené, může se jednat o způsob, jak tento certifikát aktualizovat, protože toto riziko bude zmírnit.
 
 ## <a name="securing-the-connection"></a>Zabezpečení připojení
 
-Připojení k Internetu mezi zařízením IoT a službou IoT Hub je zabezpečeno pomocí standardu TLS (Transport Layer Security). Azure IoT podporuje [TLS 1.2](https://tools.ietf.org/html/rfc5246), TLS 1.1 a TLS 1.0 v tomto pořadí. Podpora pro TLS 1.0 je k dispozici pouze pro zpětnou kompatibilitu. Zkontrolujte [podporu TLS v centru IoT,](../articles/iot-hub/iot-hub-tls-support.md) abyste zjistili, jak nakonfigurovat centrum tak, aby používalo TLS 1.2, protože poskytuje největší zabezpečení.
+Připojení k internetu mezi zařízením IoT a IoT Hub je zabezpečené pomocí standardu TLS (Transport Layer Security). Azure IoT podporuje [tls 1,2](https://tools.ietf.org/html/rfc5246), TLS 1,1 a TLS 1,0 v tomto pořadí. Podpora TLS 1,0 se poskytuje jenom pro zpětnou kompatibilitu. Podívejte se na [podporu TLS v IoT Hub](../articles/iot-hub/iot-hub-tls-support.md) a zjistěte, jak nakonfigurovat rozbočovač tak, aby používal TLS 1,2, protože poskytuje nejvyšší zabezpečení.
 
 ## <a name="securing-the-cloud"></a>Zabezpečení cloudu
 
-Azure IoT Hub umožňuje definici [zásad řízení přístupu](../articles/iot-hub/iot-hub-devguide-security.md) pro každý klíč zabezpečení. Používá následující sadu oprávnění k udělení přístupu ke každému koncovému bodu ioT hubu. Oprávnění omezují přístup k IoT Hubu podle funkcí.
+Azure IoT Hub umožňuje definici [zásad řízení přístupu](../articles/iot-hub/iot-hub-devguide-security.md) pro každý bezpečnostní klíč. K udělení přístupu ke všem koncovým bodům IoT Hub používá následující sadu oprávnění. Oprávnění omezují přístup k IoT Hubu podle funkcí.
 
-* **RegistryRead**. Uděluje přístup pro čtení do registru identit. Další informace naleznete v [registru identit](../articles/iot-hub/iot-hub-devguide-identity-registry.md).
+* **RegistryRead**. Udělí přístup pro čtení k registru identit. Další informace najdete v části [registr identit](../articles/iot-hub/iot-hub-devguide-identity-registry.md).
 
-* **RegistryReadWrite**. Uděluje přístup pro čtení a zápis do registru identit. Další informace naleznete v [registru identit](../articles/iot-hub/iot-hub-devguide-identity-registry.md).
+* **RegistryReadWrite**. Udělí registru identity přístup pro čtení a zápis. Další informace najdete v části [registr identit](../articles/iot-hub/iot-hub-devguide-identity-registry.md).
 
-* **ServiceConnect**. Uděluje přístup ke komunikaci cloudové služby a monitorování koncových bodů. Uděluje například oprávnění back-endovým cloudovým službám přijímat zprávy mezi zařízeními, odesílat zprávy z cloudu na zařízení a načítat odpovídající potvrzení o doručení.
+* **ServiceConnect**. Uděluje přístup k koncovým bodům pro komunikaci a monitorování cloudových služeb. Například uděluje oprávnění back-endu Cloud Services pro příjem zpráv ze zařízení do cloudu, posílání zpráv z cloudu na zařízení a načítání odpovídajících potvrzení o doručení.
 
-* **DeviceConnect**. Uděluje přístup ke koncovým bodům směřujícím k zařízení. Uděluje například oprávnění k odesílání zpráv mezi zařízeními a přijímání zpráv z cloudu na zařízení. Toto oprávnění používají zařízení.
+* **DeviceConnect**. Udělí přístup k koncovým bodům orientovaným na zařízení. Například uděluje oprávnění odesílat zprávy ze zařízení do cloudu a přijímat zprávy z cloudu na zařízení. Tato oprávnění používají zařízení.
 
-Existují dva způsoby, jak získat oprávnění **DeviceConnect** pomocí služby IoT Hub s [tokeny zabezpečení:](../articles/iot-hub/iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app)pomocí klíče identity zařízení nebo sdíleného přístupového klíče. Kromě toho je důležité si uvědomit, že všechny funkce přístupné ze zařízení `/devices/{deviceId}`jsou vystaveny podle návrhu na koncových bodech s předponou .
+Existují dva způsoby, jak získat **DeviceConnect** oprávnění pomocí IoT Hub s [tokeny zabezpečení](../articles/iot-hub/iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app): pomocí klíče identity zařízení nebo sdíleného přístupového klíče. Kromě toho je důležité si uvědomit, že všechny funkce dostupné ze zařízení jsou zpřístupněny návrhem u koncových `/devices/{deviceId}`bodů s předponou.
 
-[Součásti služby mohou generovat tokeny zabezpečení pouze](../articles/iot-hub/iot-hub-devguide-security.md#use-security-tokens-from-service-components) pomocí zásad sdíleného přístupu udělujících příslušná oprávnění.
+[Součásti služby mohou generovat pouze tokeny zabezpečení](../articles/iot-hub/iot-hub-devguide-security.md#use-security-tokens-from-service-components) pomocí zásad sdíleného přístupu udělujících příslušná oprávnění.
 
-Azure IoT Hub a další služby, které mohou být součástí řešení, umožňují správu uživatelů pomocí služby Azure Active Directory.
+Azure IoT Hub a další služby, které mohou být součástí řešení, umožňují správu uživatelů pomocí Azure Active Directory.
 
-Data ingestovaná službou Azure IoT Hub můžou spotřebovávat celá řada služeb, jako je Azure Stream Analytics a úložiště objektů blob Azure. Tyto služby umožňují přístup ke správě. Přečtěte si více o těchto službách a dostupných možnostech:
+Data ingestovaná službou Azure IoT Hub můžou využívat nejrůznější služby, jako je Azure Stream Analytics a Azure Blob Storage. Tyto služby umožňují přístup pro správu. Přečtěte si další informace o těchto službách a dostupných možnostech:
 
-* [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/): Škálovatelná, plně indexovaná databázová služba pro částečně strukturovaná data, která spravují metadata pro zařízení, která zřídíte, jako jsou atributy, konfigurace a vlastnosti zabezpečení. Azure Cosmos DB nabízí vysoce výkonné a vysoce propustné zpracování, indexování dat bez schématu a bohaté rozhraní dotazu SQL.
+* [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/): škálovatelná, plně indexovaná databázová služba pro částečně strukturovaná data, která spravují metadata pro zařízení, která zřizujete, například atributy, konfiguraci a vlastnosti zabezpečení. Azure Cosmos DB nabízí vysoce výkonné zpracování a vysokou propustnost, schéma – nezávislá indexování dat a bohatou rozhraní SQL dotazů.
 
-* [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/): Zpracování streamů v reálném čase v cloudu, které vám umožní rychle vyvinout a nasadit nízkonákladové analytické řešení pro odhalení přehledů v reálném čase ze zařízení, senzorů, infrastruktury a aplikací. Data z této plně spravované služby můžete škálovat na libovolný svazek a zároveň dosáhnout vysoké propustnosti, nízké latence a odolnosti proti chybám.
+* [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/): zpracování datových proudů v reálném čase v cloudu, které vám umožní rychle vyvíjet a nasazovat řešení s nízkými náklady, abyste mohli získat přehled o zařízeních, senzorech, infrastruktuře a aplikacích v reálném čase. Data z této plně spravované služby se můžou škálovat na libovolný svazek a přitom pořád dosahovat vysoké propustnosti, nízké latence a odolnosti.
 
-* [Azure App Services:](https://azure.microsoft.com/services/app-service/)Cloudová platforma pro vytváření výkonných webových a mobilních aplikací, které se připojují k datům kdekoli; v cloudu nebo v místním prostředí. Vytvářejte poutavé mobilní aplikace pro iOS, Android a Windows. Integrujte se svým softwarem jako službou (SaaS) a podnikovými aplikacemi s out-of-the-box připojení k desítkám cloudových služeb a podnikových aplikací. Kód ve vašem oblíbeném jazyce a IDE (.NET, Node.js, PHP, Python nebo Java) pro vytváření webových aplikací a rozhraní API rychleji než kdy předtím.
+* [Azure App Services](https://azure.microsoft.com/services/app-service/): cloudová platforma pro vytváření výkonných webových a mobilních aplikací, které se připojují k datům kdekoli; v cloudu nebo v místním prostředí. Vytvářejte poutavé mobilní aplikace pro iOS, Android a Windows. Integraci s vaším softwarem jako služby (SaaS) a podnikovými aplikacemi s okamžitým připojením k desítkám cloudových služeb a podnikových aplikací. Kód ve vašem oblíbeném jazyce a integrovaném vývojovém prostředí (.NET, Node. js, PHP, Python nebo Java) vám umožní vytvářet webové aplikace a rozhraní API rychleji než kdy dřív.
 
-* [Logic Apps](https://azure.microsoft.com/services/app-service/logic/): Funkce Logic Apps služby Azure App Service pomáhá integrovat vaše řešení IoT do vašich stávajících obchodních systémů a automatizovat procesy pracovního postupu. Logic Apps umožňuje vývojářům navrhovat pracovní postupy, které začínají od aktivační události a pak provést řadu kroků – pravidla a akce, které používají výkonné konektory pro integraci s obchodními procesy. Logic Apps nabízí out-of-the-box připojení k rozsáhlé ekosystému SaaS, cloudové a místní aplikace.
+* [Logic Apps](https://azure.microsoft.com/services/app-service/logic/): funkce Logic Apps Azure App Service pomáhá integrovat vaše řešení IoT do stávajících obchodních systémů a automatizovat pracovní postupy. Logic Apps umožňuje vývojářům navrhovat pracovní postupy, které začínají triggerem, a pak provádět řadu kroků – pravidla a akce, které používají výkonné konektory pro integraci s vašimi podnikovými procesy. Logic Apps nabízí předem dostupné možnosti připojení k rozsáhlému ekosystému SaaS, cloudových a místních aplikací.
 
-* [Úložiště objektů blob Azure:](https://azure.microsoft.com/services/storage/)Spolehlivé a hospodárné cloudové úložiště pro data, která vaše zařízení odesílají do cloudu.
+* [Azure Blob Storage](https://azure.microsoft.com/services/storage/): spolehlivé a ekonomické úložiště v cloudu pro data, která vaše zařízení odesílají do cloudu.
 
 ## <a name="conclusion"></a>Závěr
 
-Tento článek obsahuje přehled podrobností o úrovni implementace pro navrhování a nasazování infrastruktury IoT pomocí Azure IoT. Konfigurace jednotlivých komponent tak, aby byla zabezpečená, je klíčem k zabezpečení celkové infrastruktury IoT. Možnosti návrhu, které jsou k dispozici v Azure IoT poskytují určitou úroveň flexibility a výběru; každá volba však může mít bezpečnostní důsledky. Doporučuje se, aby každá z těchto možností byla vyhodnocena prostřednictvím posouzení rizika/nákladů.
+Tento článek poskytuje přehled podrobností úrovně implementace pro návrh a nasazení infrastruktury IoT pomocí Azure IoT. Konfigurace každé součásti tak, aby byla zabezpečená, je klíčem k zabezpečení celkové infrastruktury IoT. Volby návrhu dostupné v Azure IoT poskytují určitou úroveň flexibility a možnosti volby; Každá volba ale může mít vliv na zabezpečení. Doporučuje se, aby se každá z těchto možností vyhodnotila prostřednictvím vyhodnocení rizika a nákladů.

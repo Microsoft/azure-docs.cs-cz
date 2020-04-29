@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: rogarana
 ms.openlocfilehash: 8fcd85a42deab2ea5f7d8587b276eca106f6dd97
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "67174995"
 ---
-**Standardní nespravované disky virtuálních počítačů: Omezení pro disk**
+**Standardní nespravované disky virtuálních počítačů: omezení na disk**
 
-| Úroveň virtuálního virtuálního mísa | Virtuální virtuální ms základní úrovně | Virtuální virtuální ms standardní úrovně |
+| Vrstva virtuálního počítače | Virtuální počítač úrovně Basic | Virtuální počítač úrovně Standard |
 | --- | --- | --- |
 | Velikost disku |4 095 GB |4 095 GB |
-| Maximální počet iops 8 KB na trvalý disk |300 |500 |
-| Maximální počet disků, které provádějí maximální viposlužby |66 |40 |
+| Maximální počet vstupně-výstupních operací na trvalý disk 8 – KB |300 |500 |
+| Maximální počet disků, které provádějí maximální IOPS |66 |40 |
 

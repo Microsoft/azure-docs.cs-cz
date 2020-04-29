@@ -5,37 +5,37 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 9b9922602218280d58331a755ed0dfed7df96f40
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67175043"
 ---
-#### <a name="to-cable-your-device-for-power"></a>Kabel zařízení pro napájení
+#### <a name="to-cable-your-device-for-power"></a>Postup zapojení zařízení do elektrického proudu
 > [!NOTE]
-> Obě skříně na vašem zařízení StorSimple obsahují redundantní PCM. Pro každou skříň musí být PCM instalovány a připojeny k různým zdrojům napájení, aby byla zajištěna vysoká dostupnost.
+> Mezi skříňky na zařízení StorSimple patří redundantní PCMs. Pro každou skříň je nutné nainstalovat PCMs a připojit se k různým zdrojům napájení, abyste zajistili vysokou dostupnost.
 > 
 > 
 
-1. Ujistěte se, že vypínače na všech PCM jsou v poloze OFF.
-2. V primární mašitě připojte napájecí kabely k oběma PCM. Napájecí kabely jsou označeny červeně v schématu elektrické kabeláže níže.
-3. Ujistěte se, že dva PCM v primární skříni používají samostatné zdroje napájení.
-4. Připojte napájecí kabely k napájení rozvaděčů, jak je znázorněno na schématu napájecí kabely.
-5. Opakujte kroky 2 až 4 pro skříň EBOD.
-6. Zapněte skříň EBOD přepnutím vypínače na každém PCM do polohy ON.
-7. Zkontrolujte, zda je skříň EBOD zapnuta, a zkontrolujte, zda jsou zapnuty zelené LED diody na zadní straně regulátoru EBOD.
-8. Zapněte primární skříň přepnutím každého přepínače PCM do polohy ON.
-9. Ověřte, zda je systém zapnutý, a to tak, že se zapnou led diody řadiče zařízení.
-10. Ujistěte se, že spojení mezi řadičem EBOD a řadičem zařízení je aktivní ověřením, že čtyři LED diody vedle portu SAS na řadiči EBOD jsou zelené.
+1. Ujistěte se, že přepínače napájení na všech PCMs jsou mimo danou pozici.
+2. V primární skříni Připojte napájecí šňůry k obou PCMs. Napájecí šňůry jsou v diagramu napájecích kabelů označeny červeně.
+3. Ujistěte se, že dvě PCMs v primární skříni používají samostatné zdroje napájení.
+4. Připojte napájecí šňůry k napájení v jednotkách distribuce stojanu, jak je znázorněno v diagramu napájecích kabelů.
+5. Opakujte kroky 2 až 4 pro EBOD skříň.
+6. Zapněte EBOD skříň tím, že překlopete vypínač na každé PCM na pozici.
+7. Ověřte, že je skříň EBOD zapnutá, pomocí kontroly, jestli jsou zapnuté zelené indikátory LED na zadní straně kontroleru EBOD.
+8. Zapněte primární skříň překlopením jednotlivých přepínačů PCM na pozici.
+9. Ověřte, že je systém zapnutý, a to tak, že se zapnou diody řadiče zařízení.
+10. Ujistěte se, že připojení mezi řadičem EBOD a řadičem zařízení je aktivní, tak, že ověříte, že čtyři diody LED vedle portu SAS na řadiči EBOD jsou zelené.
     
     > [!IMPORTANT]
-    > Chcete-li zajistit vysokou dostupnost systému, doporučujeme přísně dodržovat schéma napájecí kabeláže uvedené v následujícím diagramu.
+    > Abychom zajistili vysokou dostupnost vašeho systému, doporučujeme, abyste přesně dodržovali schéma kabelů napájení, které vidíte v následujícím diagramu.
     > 
     > 
     
     ![Kabel zařízení 4U pro napájení](./media/storsimple-cable-8600-for-power/HCSCableYour4UDeviceforPower.png)
     
-    **Elektrická kabeláž**
+    **Kabely napájení**
     
     | Popisek | Popis |
     |:--- |:--- |
@@ -44,8 +44,8 @@ ms.locfileid: "67175043"
     | 3 |PCM 1 |
     | 4 |Kontroler 0 |
     | 5 |Kontroler 1 |
-    | 6 |Řadič EBOD 0 |
-    | 7 |Řadič EBOD 1 |
-    | 8 |Skříň EBOD |
-    | 9 |PDU |
+    | 6 |EBOD Controller 0 |
+    | 7 |EBOD řadič 1 |
+    | 8 |EBOD skříň |
+    | 9 |Jednotek |
 

@@ -5,14 +5,14 @@ ms.topic: include
 ms.date: 02/14/2019
 ms.author: alkohli
 ms.openlocfilehash: 69f77bf969c5d9adfb084682fbbc9eb9e762c8b4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67175455"
 ---
-Zařízení jsou navržena tak, aby i nadále fungovala, když je vaše připojení k internetu pomalé nebo přerušeno. Za běžných provozních podmínek doporučujeme použít: 
+Zařízení jsou navržená tak, aby fungovala i v případě, že je připojení k Internetu pomalé nebo se přerušilo. V normálních provozních podmínkách doporučujeme použít: 
 
-- Minimálně 10 Mb/s šířka pásma pro stažení, aby zařízení zůstalo aktualizované.
-- Minimálně 20 Mb/s vyhrazená šířka pásma pro nahrávání a stahování pro přenos souborů.
+- Minimální šířka pásma ke stažení, která zajistí, že se zařízení bude aktualizovat, musí mít minimálně 10 MB/s.
+- Minimálně 20 MB/s vyhrazeným nahráváním a šířkou pásma pro přenos souborů.
 

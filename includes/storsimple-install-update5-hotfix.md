@@ -5,38 +5,38 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 19d2dedc2ccf7015696504a94f5ef7c43a90d3be
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67175204"
 ---
 #### <a name="to-download-hotfixes"></a>Stažení oprav hotfix
 
 Provedením následujících kroků si stáhněte aktualizace softwaru z Katalogu služby Microsoft Update.
 
-1. Spusťte aplikaci [http://catalog.update.microsoft.com](https://catalog.update.microsoft.com)Internet Explorer a přejděte na .
+1. Spusťte Internet Explorer a přejděte na [http://catalog.update.microsoft.com](https://catalog.update.microsoft.com).
 2. Pokud na tomto počítači používáte Katalog služby Microsoft Update poprvé, po zobrazení výzvy k instalaci doplňku Katalog služby Microsoft Update klikněte na **Nainstalovat**.
 
     ![Instalace katalogu](./media/storsimple-install-update2-hotfix/HCS_InstallCatalog-include.png)
 
-3. Do vyhledávacího pole katalogu Microsoft Update zadejte číslo znalostní báze Knowledge Base (KB) opravy hotfix, kterou chcete stáhnout, například **4037264**, a klepněte na tlačítko **Hledat**.
+3. Do vyhledávacího pole katalogu Microsoft Update zadejte číslo opravy hotfix (KB), kterou chcete stáhnout, například **4037264**, a pak klikněte na **Hledat**.
    
-    Výpis opravy hotfix se zobrazí například **kumulativní aktualizace sady softwaru 5.0 pro řadu StorSimple 8000**.
+    Seznam oprav hotfix se zobrazí například **kumulativní aktualizace softwaru 5,0 pro řady StorSimple 8000**.
    
     ![Prohledávání katalogu](./media/storsimple-install-update5-hotfix/update-catalog-search.png)
 
-4. Klepněte na tlačítko **Stáhnout**. Zadejte místní umístění, do kterého chcete aktualizace stáhnout, nebo do něj přejděte pomocí tlačítka **Procházet**. Klikněte na soubory, které chcete stáhnout do zadaného umístění a složky. Složku je také možné zkopírovat do sdílené síťové složky dostupné ze zařízení.
-5. Vyhledejte všechny další opravy hotfix uvedené ve výše uvedené tabulce (**4037266**) a stáhněte odpovídající soubory do konkrétních složek uvedených v předchozí tabulce.
+4. Klikněte na tlačítko **Stáhnout**. Zadejte místní umístění, do kterého chcete aktualizace stáhnout, nebo do něj přejděte pomocí tlačítka **Procházet**. Klikněte na soubory, které chcete stáhnout, do zadaného umístění a složky. Složku je také možné zkopírovat do sdílené síťové složky dostupné ze zařízení.
+5. Vyhledejte všechny další opravy hotfix uvedené v tabulce výše (**4037266**) a Stáhněte příslušné soubory do určitých složek, které jsou uvedeny v předchozí tabulce.
 
 > [!NOTE]
-> Opravy hotfix musí být přístupné z obou řadičů, aby bylo možné zjistit případné chybové zprávy z peer řadiče.
+> Aby bylo možné zjistit případné chybové zprávy z partnerského řadiče, musí být tyto opravy hotfix přístupné z obou řadičů.
 >
-> Opravy hotfix je nutné zkopírovat do 3 oddělených složek. Například aktualizace softwaru zařízení/cis/mds agenta může být zkopírována ve složce _FirstOrderUpdate,_ všechny ostatní nerušivé aktualizace mohou být zkopírovány ve složce _SecondOrderUpdate_ a aktualizace režimu údržby zkopírovány ve složce _ThirdOrderUpdate._
+> Opravy hotfix je nutné zkopírovat do 3 oddělených složek. Například je možné zkopírovat aktualizaci softwaru zařízení/CIS/agenta služby MDS do složky _FirstOrderUpdate_ . všechny ostatní aktualizace bez přerušení by se daly zkopírovat do složky _SecondOrderUpdate_ a aktualizace režimu údržby zkopírované do složky _ThirdOrderUpdate_ .
 
 #### <a name="to-install-and-verify-regular-mode-hotfixes"></a>Instalace a ověření oprav hotfix běžného režimu
 
-Provedením následujících kroků nainstalujte a ověřte opravy hotfix běžného režimu. Pokud jste je už nainstalovali pomocí portálu Azure, přeskočte dopředu a [nainstalujte a ověřte opravy hotfix v režimu údržby](#to-install-and-verify-maintenance-mode-hotfixes).
+Provedením následujících kroků nainstalujte a ověřte opravy hotfix běžného režimu. Pokud jste je již nainstalovali pomocí Azure Portal, přeskočte k části [instalace a ověření oprav hotfix režimu údržby](#to-install-and-verify-maintenance-mode-hotfixes).
 
 1. Pokud chcete nainstalovat opravy hotfix, v konzole sériového portu zařízení StorSimple spusťte rozhraní Windows PowerShell. Postupujte podle podrobných pokynů v článku [Připojení ke konzole sériového portu pomocí klienta PuTTy](../articles/storsimple/storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console). Na příkazovém řádku stiskněte **Enter**.
 2. Vyberte možnost 1, **Přihlaste se s úplným přístupem**. Doporučujeme opravu hotfix nejprve nainstalovat na pasivním kontroleru.
@@ -48,10 +48,10 @@ Provedením následujících kroků nainstalujte a ověřte opravy hotfix běžn
    
     Parametr Credential doporučujeme používat pro přístup ke sdíleným složkám. I sdílené složky otevřené všem uživatelům obvykle nejsou otevřené pro neověřené uživatele.
    
-4. Po zobrazení výzvy zadejte heslo. Ukázkový výstup instalace aktualizací prvního řádu najdete níž. Pro aktualizaci první objednávky je třeba přejděte na konkrétní soubor.
+4. Po zobrazení výzvy zadejte heslo. Ukázkový výstup instalace aktualizací prvního řádu najdete níž. U první aktualizace objednávky musíte odkazovat na konkrétní soubor.
 
     >[!NOTE] 
-    > Nejprve byste měli nainstalovat soubor _HCSSoftwareUpdate.exe._ Po dokončení této instalace nainstalujte _cisMdsAgentUpdate.exe_.
+    > Nejdřív byste měli nainstalovat _HcsSoftwareUpdate. exe_ . Po dokončení této instalace nainstalujte _CisMdsAgentUpdate. exe_.
    
         ```
         Controller0>Start-HcsHotfix -Path \\10.100.100.100\share
@@ -68,7 +68,7 @@ Provedením následujících kroků nainstalujte a ověřte opravy hotfix běžn
 5. Po zobrazení výzvy k potvrzení instalace opravy hotfix zadejte **Y**.
 6. Průběh aktualizace můžete sledovat pomocí rutiny `Get-HcsUpdateStatus`. Aktualizace se nejdříve dokončí na pasivním kontroleru. Jakmile je pasivní kontroler aktualizovaný, proběhne převzetí služeb při selhání a potom se aktualizace nainstaluje i na druhý kontroler. Aktualizace je dokončena, když jsou aktualizované oba kontrolery.
    
-    Následující ukázkový výstup ukazuje probíhající aktualizaci. `RunInprogress` Je, `True` když probíhá aktualizace.
+    Následující ukázkový výstup ukazuje probíhající aktualizaci. Je `RunInprogress` `True` v případě, že probíhá aktualizace.
 
     ```
     Controller0>Get-HcsUpdateStatus
@@ -79,7 +79,7 @@ Provedením následujících kroků nainstalujte a ověřte opravy hotfix běžn
     Controller1Events   :
     ```
    
-     Následující ukázkový výstup ukazuje dokončení aktualizace. `RunInProgress` Je, `False` když je aktualizace dokončena.
+     Následující ukázkový výstup ukazuje dokončení aktualizace. `RunInProgress` Je `False` po dokončení aktualizace.
    
     ```
     Controller0>Get-HcsUpdateStatus
@@ -105,13 +105,13 @@ Provedením následujících kroků nainstalujte a ověřte opravy hotfix běžn
      Pokud se číslo verze po instalaci aktualizace nezměnilo, znamená to, že se instalace opravy hotfix nezdařila. Pokud je to váš případ a potřebujete další pomoc, kontaktujte [podporu Microsoftu](../articles/storsimple/storsimple-8000-contact-microsoft-support.md).
      
      > [!IMPORTANT]
-     > Před použitím další aktualizace `Restart-HcsController` je nutné restartovat aktivní ovladač prostřednictvím rutiny.
+     > Před použitím další aktualizace musíte restartovat aktivní kontroler prostřednictvím `Restart-HcsController` rutiny.
      
-8. Opakujte kroky 3-6 k instalaci agenta _CisMDSAgentupdate.exe_ staženého do složky _FirstOrderUpdate._
-8. Opakujte kroky 3-6 pro instalaci aktualizací druhého řádu. 
+8. Opakujte kroky 3-6 pro instalaci agenta _CisMDSAgentupdate. exe_ staženého do vaší složky _FirstOrderUpdate_ .
+8. Zopakováním kroků 3-6 nainstalujte aktualizace druhé objednávky. 
 
     > [!NOTE] 
-    > Pro aktualizace druhého řádu lze nainstalovat více `Start-HcsHotfix cmdlet` aktualizací pouhým spuštěním a odkazem na složku, kde jsou umístěny aktualizace druhého řádu. Rutina spustí všechny aktualizace, které jsou ve složce k dispozici. Pokud je aktualizace již nainstalovaná, logika aktualizace to pozná a nebude ji instalovat.
+    > V případě aktualizací pro druhé pořadí lze nainstalovat více aktualizací pouhým spuštěním `Start-HcsHotfix cmdlet` a ukázáním do složky, kde jsou umístěny aktualizace druhé objednávky. Rutina spustí všechny aktualizace, které jsou ve složce k dispozici. Pokud je aktualizace již nainstalovaná, logika aktualizace to pozná a nebude ji instalovat.
 
     Jakmile budou nainstalované všechny opravy hotfix, použijte rutinu `Get-HcsSystem`. Verze by měly být:
     
@@ -122,19 +122,19 @@ Provedením následujících kroků nainstalujte a ověřte opravy hotfix běžn
 
 #### <a name="to-install-and-verify-maintenance-mode-hotfixes"></a>Instalace a ověření oprav hotfix režimu údržby
 
-K instalaci aktualizací firmwaru disku použijte kb4037263. Jedná se o narušující aktualizace a jejich dokončení trvá přibližně 30 minut. Můžete se rozhodnout je nainstalovat během naplánovaného časového období údržby pomocí připojení ke konzole sériového portu zařízení.
+Pomocí KB4037263 nainstalujte aktualizace firmwaru disku. Jedná se o narušující aktualizace a jejich dokončení trvá přibližně 30 minut. Můžete se rozhodnout je nainstalovat během naplánovaného časového období údržby pomocí připojení ke konzole sériového portu zařízení.
 
 > [!NOTE] 
-> Pokud je firmware disku již aktuální, nebudete muset tyto aktualizace instalovat. Z konzoly sériového portu zařízení spusťte rutinu `Get-HcsUpdateAvailability`, která zkontroluje dostupnost aktualizací a jestli se jedná o narušující (režim údržby) nebo nenarušující (běžný režim) aktualizace.
+> Pokud je váš firmware disku už aktuální, nebudete muset tyto aktualizace instalovat. Z konzoly sériového portu zařízení spusťte rutinu `Get-HcsUpdateAvailability`, která zkontroluje dostupnost aktualizací a jestli se jedná o narušující (režim údržby) nebo nenarušující (běžný režim) aktualizace.
 
 Pokud chcete nainstalovat aktualizace firmwaru disku, postupujte podle následujících pokynů.
 
 1. Umístíte zařízení do režimu údržby. 
 
     > [!NOTE] 
-    > Při připojování k zařízení v režimu údržby nepoužívejte vzdálené komunikace prostředí Windows PowerShell. Místo toho se připojte prostřednictvím konzoly sériového portu zařízení a spusťte v kontroleru zařízení tuto rutinu.
+    > Při připojování k zařízení v režimu údržby nepoužívejte vzdálenou komunikaci Windows PowerShellu. Místo toho se připojte prostřednictvím konzoly sériového portu zařízení a spusťte v kontroleru zařízení tuto rutinu.
 
-    Chcete-li regulátor umístit do režimu údržby, zadejte:
+    Pokud chcete řadič umístit do režimu údržby, zadejte:
    
     `Enter-HcsMaintenanceMode`
    
@@ -175,7 +175,7 @@ Pokud chcete nainstalovat aktualizace firmwaru disku, postupujte podle následuj
         [Y] Yes [N] No (Default is "Y"): Y
         WARNING: Installation is currently in progress. This operation can take several minutes to complete.
 3. Průběh instalace můžete sledovat pomocí příkazu `Get-HcsUpdateStatus`. Když se `RunInProgress` změní na `False`, aktualizace je dokončena.
-4. Po dokončení instalace se kontroler, na který se instalovala oprava hotfix režimu údržby, restartuje. Přihlaste se jako možnost 1, **přihlaste se s úplným přístupem**a ověřte verzi firmwaru disku. Zadejte:
+4. Po dokončení instalace se kontroler, na který se instalovala oprava hotfix režimu údržby, restartuje. Přihlaste se jako možnost 1, **Přihlaste se s úplným přístupem**a ověřte verzi firmwaru disku. Zadejte:
    
    `Get-HcsFirmwareVersion`
    
@@ -270,5 +270,5 @@ Pokud chcete nainstalovat aktualizace firmwaru disku, postupujte podle následuj
    
    `Exit-HcsMaintenanceMode`
 
-5. Kontrolery se restartují, jakmile ukončíte režim údržby. Po úspěšném použití aktualizací firmwaru disku a ukončení režimu údržby zařízení se vraťte na portál Azure. Poznámka: Informace o instalaci aktualizací režimu údržby se na portálu může zobrazit až po 24 hodinách.
+5. Kontrolery se restartují, jakmile ukončíte režim údržby. Po úspěšné instalaci aktualizací firmwaru disku a ukončení režimu údržby zařízení se vraťte do Azure Portal. Poznámka: Informace o instalaci aktualizací režimu údržby se na portálu může zobrazit až po 24 hodinách.
 

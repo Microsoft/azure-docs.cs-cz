@@ -9,21 +9,21 @@ ms.date: 10/09/2018
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 98d765e2f6909f00f8dfe76d06aef017aad67adf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71174939"
 ---
 ## <a name="terminology"></a>Terminologie
 
-Image Marketplace v Azure má následující atributy:
+Image na Marketplace v Azure má následující atributy:
 
-* **Vydavatel**: Organizace, která vytvořila bitovou kopii. Příklady: Canonical, MicrosoftWindowsServer
-* **Nabídka**: Název skupiny souvisejících obrázků vytvořených vydavatelem. Příklady: UbuntuServer, WindowsServer
-* **Skladová položka**: Instance nabídky, například hlavní vydání distribuce. Příklady: 18.04-LTS, 2019-Datacenter
-* **Verze**: Číslo verze sku obrázku. 
+* **Vydavatel**: organizace, která bitovou kopii vytvořila. Příklady: Canonical, MicrosoftWindowsServer
+* **Nabídka**: název skupiny souvisejících imagí vytvořených vydavatelem. Příklady: UbuntuServer, WindowsServer
+* **SKU**: instance nabídky, jako je například hlavní verze distribuce. Příklady: 18,04-LTS, 2019-Datacenter
+* **Version (verze**): číslo verze SKU image. 
 
-Chcete-li identifikovat image Marketplace při nasazení virtuálního virtuálního montovana programově, zadávat tyto hodnoty jednotlivě jako parametry. Některé nástroje přijímají obraz *URN*, který kombinuje tyto hodnoty oddělené dvojtečkou (:) charakter: *Vydavatel*:*Nabídka*:*Sku*:*Verze*. V URN můžete nahradit číslo verze "nejnovější", který vybere nejnovější verzi obrázku. 
+Pokud chcete identifikovat image Marketplace při programovém nasazení virtuálního počítače, zadejte tyto hodnoty jednotlivě jako parametry. Některé nástroje přijímají obrázkovou hodnotu *urn*, která kombinuje tyto hodnoty oddělené dvojtečkou (:) znak: *Vydavatel*:*Nabídka*:*SKU*:*verze* V názvu URN můžete nahradit číslo verze "poslední", které vybere nejnovější verzi obrázku. 
 
-Pokud vydavatel bitové kopie poskytuje další licenční a nákupní podmínky, musíte tyto podmínky přijmout a povolit programové nasazení. Budete také muset dodat parametry *plánu nákupu* při programovém nasazení virtuálního montu. Viz [Nasazení bitové kopie s podmínkami Marketplace](#deploy-an-image-with-marketplace-terms).
+Pokud Vydavatel obrázku poskytuje další licenční a nákupní podmínky, musíte tyto podmínky přijmout a povolit programové nasazení. Při programovém nasazování virtuálního počítače budete taky muset zadávat parametry *plánu nákupu* . Viz [nasazení image s podmínkami Marketplace](#deploy-an-image-with-marketplace-terms).

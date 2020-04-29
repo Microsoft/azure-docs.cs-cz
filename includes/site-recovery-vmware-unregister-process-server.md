@@ -5,38 +5,38 @@ ms.topic: include
 ms.date: 04/28/2019
 ms.author: ramamill
 ms.openlocfilehash: 00b0c1b1a40ad16db177916c57dba6e9d5a187a7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67175535"
 ---
-Postupujte podle pokynů pro konkrétní okolnosti.
+Použijte postup podle svých konkrétních okolností.
 
-### <a name="unregister-a-connected-process-server"></a>Zrušení registrace připojeného procesního serveru
+### <a name="unregister-a-connected-process-server"></a>Zrušení registrace připojeného procesového serveru
 
-1. Navázání vzdáleného připojení k procesnímu serveru jako správce.
-2. V **Ovládacích panelech**stevírat **programy > odinstalovat program**.
-3. Odinstalujte program **Microsoft Azure Site Recovery Mobility Service/Master Target Server**.
-4. Odinstalujte program **Microsoft Azure Site Recovery Configuration/Process Server**.
-5. Po odinstalaci programů v krocích 3 a 4 odinstalujte **závislosti konfigurace a zpracovatelského serveru webu Microsoft Azure**.
+1. Navažte vzdálené připojení k procesu serveru jako správce.
+2. V **Ovládacích panelech**otevřete **programy > odinstalovat program**.
+3. Odinstalujte program **Microsoft Azure Site Recovery služby mobility nebo hlavního cílového serveru**.
+4. Odinstalujte program **Microsoft Azure Site Recovery konfiguračním nebo procesovém serveru**.
+5. Po odinstalování programů v krocích 3 a 4 odinstalujte **Microsoft Azure Site Recovery konfigurace a procesový Server závislosti**.
 
-### <a name="unregister-a-disconnected-process-server"></a>Zrušení registrace odpojeného procesního serveru
+### <a name="unregister-a-disconnected-process-server"></a>Zrušení registrace odpojeného procesového serveru
 
-Tyto kroky použijte pouze v případě, že neexistuje žádný způsob, jak oživit počítač, na kterém je nainstalován procesní server.
+Tyto kroky použijte pouze v případě, že není k dispozici žádný způsob, jak potřebuji obnovit počítač, na kterém je nainstalován procesový Server.
 
-1. Přihlaste se konfiguračníserver jako správce.
-2. Otevřete příkazový řádek Pro `%ProgramData%\ASR\home\svsystems\bin`správu a přejděte na .
-3. Spuštěním tohoto příkazu získáte seznam jednoho nebo více procesních serverů.
+1. Přihlaste konfigurační server jako správce.
+2. Otevřete příkazový řádek pro správu a přejděte na `%ProgramData%\ASR\home\svsystems\bin`.
+3. Spuštěním tohoto příkazu získáte seznam jednoho nebo více procesových serverů.
 
     ```
     perl Unregister-ASRComponent.pl -IPAddress <IP_of_Process_Server> -Component PS
     ```
-    - Sér. Ne: sériové číslo procesního serveru.
-    - IP/Name: Adresa IP a název počítače se spuštěnou procesním serverem.
-    - Prezenční signál: Poslední prezenční signál z počítače procesního serveru.
-    ![Zrušit registraci-cmd](media/site-recovery-vmware-unregister-process-server/Unregister-cmd.PNG)
+    - Sér. Ne: sériové číslo procesového serveru.
+    - IP/název: IP adresa a název počítače, na kterém běží procesový Server.
+    - Prezenční signál: poslední prezenční signál z počítače procesového serveru.
+    ![Zrušit registraci – cmd](media/site-recovery-vmware-unregister-process-server/Unregister-cmd.PNG)
 
-4. Zadejte sériové číslo procesního serveru, který chcete zrušit registraci.
-5. Zrušení registrace procesního serveru odebere ze systému všechny podrobnosti a zobrazí se zpráva: **Úspěšně neregistrovaný> název serveru (server-IP-adresa)**
+4. Zadejte sériové číslo procesového serveru, který chcete zrušit.
+5. Zrušení registrace procesového serveru odebere ze systému všechny jeho podrobnosti a zobrazí zprávu: **úspěšně odregistrované servery – název> (Server-IP-Address)**
 

@@ -6,17 +6,17 @@ ms.topic: include
 ms.date: 05/22/2019
 ms.author: alkohli
 ms.openlocfilehash: 2b0149bd2bb46de87b4575ccb5d44836dd74bde9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "66242194"
 ---
-Zde je seznam webových prohlížečů podporovaných pro místní webové uživatelské prostředí.
+Tady je seznam webových prohlížečů podporovaných pro místní webové uživatelské rozhraní.
 
-| **Prohlížeč** | **Verze** | **Další požadavky/poznámky** |
+| **Prohlížeč** | **Zachovávaných** | **Další požadavky/poznámky** |
 | --- | --- | --- |
-| Google Chrome |Nejnovější verze |Testováno s Chrome|
+| Google Chrome |Nejnovější verze |Testováno pomocí Chromu|
 | Microsoft Edge |Nejnovější verze | |
-| Firefox | Nejnovější verze | Testováno s FireFox|
-| Internet Explorer |Nejnovější verze |Pokud se nemůžete přihlásit, zkontrolujte, zda jsou povoleny soubory cookie a Javascript. Chcete-li povolit přístup k uznacím, přidejte IP adresu zařízení do **akce ochrany osobních údajů,** aby zařízení mohlo přistupovat k souborům cookie. |
+| FireFox | Nejnovější verze | Testováno s použitím FireFox|
+| Internet Explorer |Nejnovější verze |Pokud se nemůžete přihlásit, ověřte, jestli jsou soubory cookie a JavaScript povolené. Pokud chcete povolit přístup k uživatelskému rozhraní, přidejte k **akcím ochrany osobních údajů** IP adresu zařízení, aby zařízení mohlo přistupovat k souborům cookie. |

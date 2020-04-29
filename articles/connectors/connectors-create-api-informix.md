@@ -10,90 +10,90 @@ ms.topic: article
 ms.date: 01/07/2020
 tags: connectors
 ms.openlocfilehash: dccb715c974037b4e3080f3e51576feae34c03df
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76757964"
 ---
-# <a name="manage-ibm-informix-database-resources-by-using-azure-logic-apps"></a>Správa databázových prostředků IBM Informix pomocí Azure Logic Apps
+# <a name="manage-ibm-informix-database-resources-by-using-azure-logic-apps"></a>Správa prostředků databáze IBM Informix pomocí Azure Logic Apps
 
-Pomocí [aplikací Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [konektoru Informix](/connectors/informix/)můžete vytvářet automatizované úlohy a pracovní postupy, které spravují prostředky v databázi IBM Informix. Tento konektor zahrnuje klienta Microsoftu, který komunikuje se vzdálenými serverovými počítači Informix v síti TCP/IP, včetně cloudových databází, jako je IBM Informix for Windows spuštěného v virtualizaci Azure, a místních databází při použití [místní brány dat](../logic-apps/logic-apps-gateway-connection.md). K těmto platformám a verzím Informixu se můžete připojit, pokud jsou nakonfigurovány tak, aby podporovaly připojení klientů drda (Distributed Relational Database Architecture):
+Pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [konektoru Informix](/connectors/informix/)můžete vytvářet automatizované úlohy a pracovní postupy, které SPRAVUJÍ prostředky v databázi IBM Informix. Tento konektor zahrnuje klienta Microsoftu, který komunikuje se vzdálenými počítači Informix serveru napříč sítí TCP/IP, včetně cloudových databází, jako je například IBM Informix pro Windows spuštěné v virtualizaci Azure a v místních databázích, když použijete místní [bránu dat](../logic-apps/logic-apps-gateway-connection.md). K těmto platformám a verzím Informix se můžete připojit, pokud jsou nakonfigurované tak, aby podporovaly připojení klientů DRDA (Distributed relační Database Architecture):
 
-* IBM Informix 12.1
+* IBM Informix 12,1
 * IBM Informix 11,7
 
-Toto téma ukazuje, jak používat konektor v aplikaci logiky ke zpracování databázových operací.
+V tomto tématu se dozvíte, jak pomocí konektoru v aplikaci logiky zpracovat operace databáze.
 
 ## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
-* Pro místní databáze [stáhněte a nainstalujte místní datovou bránu](../logic-apps/logic-apps-gateway-install.md) do místního počítače a pak [vytvořte prostředek brány dat Azure na webu Azure Portal](../logic-apps/logic-apps-gateway-connection.md).
+* V případě místních databází [Stáhněte a nainstalujte místní bránu dat](../logic-apps/logic-apps-gateway-install.md) na místním počítači a pak [vytvořte prostředek služby Azure data Gateway v Azure Portal](../logic-apps/logic-apps-gateway-connection.md).
 
-* Aplikace logiky, kde potřebujete přístup k databázi Informix. Tento konektor poskytuje pouze akce, takže aplikace logiky musí již začít s aktivační událostí, například [aktivační událost opakování](../connectors/connectors-native-recurrence.md). 
+* Aplikace logiky, kde potřebujete přístup k databázi Informix. Tento konektor nabízí jenom akce, takže vaše aplikace logiky už musí začínat triggerem, například [triggerem opakování](../connectors/connectors-native-recurrence.md). 
 
-## <a name="add-an-informix-action"></a>Přidání akce Informix
+## <a name="add-an-informix-action"></a>Přidat akci Informix
 
-1. Na [webu Azure Portal](https://portal.azure.com)otevřete aplikaci logiky v Návrháři aplikací logiky, pokud už není otevřená.
+1. V [Azure Portal](https://portal.azure.com)otevřete aplikaci logiky v návrháři aplikace logiky, pokud ještě není otevřená.
 
-1. Pod krokem, kam chcete přidat akci Informix, vyberte **Nový krok**.
+1. V kroku, kam chcete přidat akci Informix, vyberte **Nový krok**.
 
-   Chcete-li přidat akci mezi existující kroky, přesuňte ukazatel myši na spojovací šipku. Vyberte znaménko plus (**+**), které se zobrazí, a pak vyberte Přidat **akci**.
+   Pokud chcete přidat akci mezi stávajícími kroky, přesuňte ukazatel myši na šipku připojení. Vyberte symbol plus (**+**), který se zobrazí, a pak vyberte **přidat akci**.
 
-1. Do vyhledávacího pole `informix` zadejte jako filtr. Ze seznamu akcí vyberte požadovanou akci, například:
+1. Do vyhledávacího pole zadejte `informix` jako filtr. V seznamu akce vyberte akci, kterou chcete, například:
 
-   ![Vyberte akci Informix, kterou chcete spustit.](./media/connectors-create-api-informix/select-informix-connector-action.png)
+   ![Vyberte akci Informix, která se má spustit.](./media/connectors-create-api-informix/select-informix-connector-action.png)
 
-   Spojnice poskytuje tyto akce, které spouštějí odpovídající databázové operace:
+   Konektor poskytuje tyto akce, které spouštějí příslušné databázové operace:
 
-   * Získat tabulky – seznam databázových tabulek pomocí příkazu `CALL`
-   * Získat řádky – čtení všech `SELECT *` řádků pomocí příkazu
-   * Získat řádek – čtení řádku `SELECT WHERE` pomocí příkazu
+   * Získat tabulky – vypíše tabulky databáze pomocí `CALL` příkazu.
+   * Získá řádky – načte všechny řádky pomocí `SELECT *` příkazu.
+   * Získat řádek a načíst řádek pomocí `SELECT WHERE` příkazu
    * Přidání řádku pomocí `INSERT` příkazu
    * Úprava řádku pomocí `UPDATE` příkazu
    * Odstranění řádku pomocí `DELETE` příkazu
 
-1. Pokud se zobrazí výzva k zadání podrobností o připojení k databázi Informix, [vytvořte připojení](#create-connection)podle pokynů a pokračujte dalším krokem.
+1. Pokud se zobrazí výzva k zadání podrobností o připojení pro vaši databázi Informix, postupujte podle [pokynů pro vytvoření připojení](#create-connection)a pak pokračujte dalším krokem.
 
 1. Zadejte informace pro vybranou akci:
 
    | Akce | Popis | Vlastnosti a popisy |
    |--------|-------------|-----------------------------|
-   | **Získat tabulky** | Seznam databázové tabulky spuštěním příkazu Informix CALL. | Žádný |
-   | **Získat řádky** | Načíst všechny řádky v zadané tabulce spuštěním příkazu Informix. `SELECT *` | **Název tabulky**: Název požadované tabulky Informix <p><p>Chcete-li do této akce přidat další vlastnosti, vyberte je ze seznamu **Přidat nový parametr.** Další informace naleznete v [referenčním tématu konektoru](/connectors/informix/). |
-   | **Získat řádek** | Načtení řádku ze zadané tabulky spuštěním `SELECT WHERE` příkazu Informix. | - **Název tabulky**: Název požadované tabulky Informix <br>- **ID řádku**: Jedinečné ID pro řádek, například`9999` |
-   | **Vložení řádku** | Přidejte řádek do zadané tabulky Informix spuštěním příkazu Informix. `INSERT` | - **Název tabulky**: Název požadované tabulky Informix <br>- **položka**: Řádek s přidanými hodnotami |
-   | **Aktualizovat řádek** | Změňte řádek v zadané tabulce Informix spuštěním příkazu Informix. `UPDATE` | - **Název tabulky**: Název požadované tabulky Informix <br>- **ID řádku**: Jedinečné ID pro řádek aktualizovat, například`9999` <br>- **Řádek**: Řádek s aktualizovanými hodnotami, například`102` |
-   | **Odstranit řádek** | Odeberte řádek ze zadané tabulky Informix `DELETE` spuštěním příkazu Informix. | - **Název tabulky**: Název požadované tabulky Informix <br>- **ID řádku**: Jedinečné ID pro řádek, který má být odstraněn, například`9999` |
+   | **Získat tabulky** | Vypíše tabulky databáze spuštěním příkazu Informix. | Žádná |
+   | **Získat řádky** | Načte všechny řádky v zadané tabulce spuštěním příkazu Informix `SELECT *` . | **Název tabulky**: název tabulky Informix, kterou chcete <p><p>Chcete-li do této akce přidat další vlastnosti, vyberte je ze seznamu **Přidat nový parametr** . Další informace naleznete v [tématu reference ke konektoru](/connectors/informix/). |
+   | **Získat řádek** | Načte řádek ze zadané tabulky spuštěním příkazu Informix `SELECT WHERE` . | - **Název tabulky**: název tabulky Informix, kterou chcete <br>- **ID řádku**: jedinečné ID řádku, například`9999` |
+   | **Vložení řádku** | Spuštěním příkazu Informix `INSERT` přidejte řádek do zadané tabulky Informix. | - **Název tabulky**: název tabulky Informix, kterou chcete <br>- **položka**: řádek s hodnotami, které se mají přidat |
+   | **Aktualizovat řádek** | Spuštěním příkazu Informix `UPDATE` změňte řádek v zadané tabulce Informix. | - **Název tabulky**: název tabulky Informix, kterou chcete <br>- **ID řádku**: jedinečné ID řádku, který se má aktualizovat, například`9999` <br>- **Řádek**: řádek s aktualizovanými hodnotami, například`102` |
+   | **Odstranit řádek** | Odebere řádek ze zadané tabulky Informix spuštěním příkazu Informix `DELETE` . | - **Název tabulky**: název tabulky Informix, kterou chcete <br>- **ID řádku**: jedinečné ID řádku, který se má odstranit, například`9999` |
    ||||
 
-1. Uložte svou aplikaci logiky. Teď buď [otestujte aplikaci logiky,](#test-logic-app) nebo pokračujte v vytváření aplikace logiky.
+1. Uložte svou aplikaci logiky. Nyní buď [otestujte aplikaci logiky](#test-logic-app) , nebo pokračujte v sestavování aplikace logiky.
 
 <a name="create-connection"></a>
 
-## <a name="connect-to-informix"></a>Připojení k Informixu
+## <a name="connect-to-informix"></a>Připojit k Informix
 
-1. Pokud se vaše aplikace logiky připojuje k místní databázi, vyberte **Připojit prostřednictvím místní brány dat**.
+1. Pokud se aplikace logiky připojí k místní databázi, vyberte **připojit přes místní bránu dat**.
 
-1. Zadejte tyto informace o připojení a vyberte **příkaz Vytvořit**.
+1. Zadejte tyto informace o připojení a pak vyberte **vytvořit**.
 
    | Vlastnost | Vlastnost JSON | Požaduje se | Příklad hodnoty | Popis |
    |----------|---------------|----------|---------------|-------------|
-   | Název připojení | `name` | Ano | `informix-demo-connection` | Název, který chcete použít pro připojení k databázi Informix |
-   | Server | `server` | Ano | - Mrak:`informixdemo.cloudapp.net:9089` <br>- Místní:`informixdemo:9089` | Adresa nebo alias Protokolu TCP/IP ve formátu IPv4 nebo IPv6 následovaný dvojtečkou a číslem portu TCP/IP |
-   | Databáze | `database` | Ano | `nwind` | Název relační databáze DRDA (RDBNAM) nebo Název databáze Informix (dbname). Informix přijímá řetězec 128 bajtů. |
-   | Ověřování | `authentication` | Pouze v místním prostředí | **Základní** nebo **Windows** (kerberos) | Typ ověřování, který je vyžadován vaší databází Informix. Tato vlastnost se zobrazí pouze v případě, že vyberete **připojit prostřednictvím místní brány dat**. |
-   | Uživatelské jméno | `username` | Ne | <*databáze-uživatelské jméno*> | Uživatelské jméno databáze |
-   | Heslo | `password` | Ne | <*heslo databáze*> | Heslo pro databázi |
-   | brána | `gateway` | Pouze v místním prostředí | - <*předplatného Azure*> <br>- <*Azure-on-premises-data-gateway-resource*> | Předplatné Azure a název prostředku Azure pro místní datovou bránu, kterou jste vytvořili na webu Azure Portal. Vlastnost **gateway** a dílčí vlastnosti se zobrazí pouze v případě, že vyberete **připojit prostřednictvím místní brány dat**. |
+   | Název připojení | `name` | Ano | `informix-demo-connection` | Název, který se má použít pro připojení k databázi Informix |
+   | Server | `server` | Ano | Cloudu`informixdemo.cloudapp.net:9089` <br>– Místní:`informixdemo:9089` | Adresa TCP/IP nebo alias, který je ve formátu IPv4 nebo IPv6 následovaný dvojtečkou a číslem portu TCP/IP |
+   | databáze | `database` | Ano | `nwind` | Název relační databáze DRDA (RDBNAM) nebo název databáze Informix (dbname). Informix akceptuje řetězec 128 bajtů. |
+   | Authentication | `authentication` | Pouze místní | **Basic** nebo **Windows** (Kerberos) | Typ ověřování, který požaduje vaše databáze Informix. Tato vlastnost se zobrazí jenom v případě, že vyberete **připojit přes místní bránu dat**. |
+   | Uživatelské jméno | `username` | Ne | <*databáze – uživatelské jméno*> | Uživatelské jméno pro databázi |
+   | Heslo | `password` | Ne | <*databáze – heslo*> | Heslo pro databázi |
+   | brána | `gateway` | Pouze místní | -<*Azure – předplatné*> <br>-<*Azure-on-premises-data-Gateway-Resource*> | Předplatné Azure a název prostředku Azure pro místní bránu dat, kterou jste vytvořili v Azure Portal. Vlastnost **brány** a dílčí vlastnosti se zobrazí jenom v případě, že vyberete **připojit přes místní bránu dat**. |
    ||||||
 
-   Například:
+   Příklad:
 
    * **Cloudová databáze**
 
-     ![Informace o připojení k cloudové databázi](./media/connectors-create-api-informix/informix-cloud-connection.png)
+     ![Informace o připojení k databázi cloudu](./media/connectors-create-api-informix/informix-cloud-connection.png)
 
    * **Místní databáze**
 
@@ -105,46 +105,46 @@ Toto téma ukazuje, jak používat konektor v aplikaci logiky ke zpracování da
 
 ## <a name="test-your-logic-app"></a>Testování aplikace logiky
 
-1. Na panelu nástrojů Návrhář epoje vyberte **Spustit**. Po spuštění aplikace logiky můžete zobrazit výstupy z tohoto spuštění.
+1. Na panelu nástrojů návrháře aplikace logiky vyberte **Spustit**. Po spuštění aplikace logiky můžete zobrazit výstupy z tohoto spuštění.
 
-1. V nabídce aplikace logiky vyberte **Přehled**. V podokně přehledu vyberte v části **Historie souhrnných** > **spuštění**poslední spuštění.
+1. V nabídce vaší aplikace logiky vyberte **Přehled**. V podokně Přehled v části **Souhrnná** > **historie spuštění**vyberte poslední spuštění.
 
-1. V části **Spuštění aplikace logiky**vyberte **Spustit podrobnosti**.
+1. V části **spuštění aplikace logiky**vyberte **Spustit podrobnosti**.
 
-1. Ze seznamu akcí vyberte akci s výstupy, které chcete zobrazit, například **Get_tables**.
+1. V seznamu akce vyberte akci s výstupy, které chcete zobrazit, například **Get_tables**.
 
-   Pokud byla akce úspěšná, jejich **Stav** vlastnost je **označena**jako Úspěšné .
+   Pokud byla akce úspěšná, jejich vlastnost **status** je označena jako **úspěšná**.
 
-1. Chcete-li zobrazit vstupy, vyberte v části **Inputs Link**odkaz URL. Chcete-li zobrazit výstupy, vyberte v části **Odkaz na výstupy** odkaz URL. Zde jsou některé příklady výstupů:
+1. Chcete-li zobrazit vstupy, klikněte v části **vstupy na odkaz**odkaz na adresu URL. Chcete-li zobrazit výstupy, klikněte v části odkaz na **výstup** odkazy na odkaz adresa URL. Tady je několik ukázkových výstupů:
 
-   * **Get_tables** zobrazí seznam tabulek:
+   * **Get_tables** zobrazuje seznam tabulek:
 
-     ![Výstupy z akce Získat tabulky](./media/connectors-create-api-informix/InformixconnectorGetTablesLogicAppRunOutputs.png)
+     ![Výstupy z akce získat tabulky](./media/connectors-create-api-informix/InformixconnectorGetTablesLogicAppRunOutputs.png)
 
-   * **Get_rows** zobrazí seznam řádků:
+   * **Get_rows** zobrazuje seznam řádků:
 
-     ![Výstupy z akce Získat řádky](./media/connectors-create-api-informix/InformixconnectorGetRowsOutputs.png)
+     ![Výstupy z akce získat řádky](./media/connectors-create-api-informix/InformixconnectorGetRowsOutputs.png)
 
-   * **Get_row** zobrazí zadaný řádek:
+   * **Get_row** zobrazuje zadaný řádek:
 
-     ![Výstupy z akce "Získat řádek"](./media/connectors-create-api-informix/InformixconnectorGetRowOutputs.png)
+     ![Výstupy z akce získat řádek](./media/connectors-create-api-informix/InformixconnectorGetRowOutputs.png)
 
-   * **Insert_row** zobrazí nový řádek:
+   * **Insert_row** se zobrazuje nový řádek:
 
-     ![Výstupy z akce Vložit řádek](./media/connectors-create-api-informix/InformixconnectorInsertRowOutputs.png)
+     ![Výstupy z akce "Vložit řádek"](./media/connectors-create-api-informix/InformixconnectorInsertRowOutputs.png)
 
-   * **Update_row** zobrazí aktualizovaný řádek:
+   * **Update_row** se zobrazuje aktualizovaný řádek:
 
-     ![Výstupy z akce Aktualizovat řádek](./media/connectors-create-api-informix/InformixconnectorUpdateRowOutputs.png)
+     ![Výstupy z akce aktualizovat řádek](./media/connectors-create-api-informix/InformixconnectorUpdateRowOutputs.png)
 
-   * **Delete_row** zobrazí odstraněný řádek:
+   * **Delete_row** zobrazuje odstraněný řádek:
 
      ![Výstupy z akce Odstranit řádek](./media/connectors-create-api-informix/InformixconnectorDeleteRowOutputs.png)
 
-## <a name="connector-specific-details"></a>Podrobnosti specifické pro konektor
+## <a name="connector-specific-details"></a>Podrobnosti specifické pro spojnici
 
-Technické podrobnosti o aktivačních událostech, akcích a limitech, které jsou popsány v popisu swagger konektoru, zkontrolujte [referenční stránku konektoru](/connectors/informix/).
+Technické podrobnosti o aktivačních událostech, akcích a omezeních, které jsou popsány v popisu Swagger konektoru, najdete na [referenční stránce konektoru](/connectors/informix/).
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o dalších [konektorech logic apps](apis-list.md)
+* Další informace o dalších [konektorech Logic Apps](apis-list.md)

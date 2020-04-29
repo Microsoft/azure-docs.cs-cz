@@ -9,19 +9,19 @@ ms.date: 08/09/2018
 ms.author: vashan, cynthn, rajsqr
 ms.custom: include file
 ms.openlocfilehash: 57f557a812ec5e4eea75b76ca1394ca360a85d30
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67174946"
 ---
-Virtuální počítače Azure (VM) procházejí různými stavy, které lze kategorizovat do *zřizování* a *stavy napájení.* Účelem tohoto článku je popsat tyto stavy a konkrétně zvýraznit, když se zákazníkům účtují za použití instance. 
+Azure Virtual Machines (virtuální počítače) procházejí různými stavy, které je možné zařadit do stavu *zřizování* a *napájení* . Účelem tohoto článku je popsání těchto stavů a konkrétně zdůraznění, kdy se zákazníkům účtuje použití instance. 
 
 ## <a name="power-states"></a>Stavy napájení
 
-Stav napájení představuje poslední známý stav virtuálního soudu.
+Stav napájení představuje poslední známý stav virtuálního počítače.
 
-![Diagram stavu napájení virtuálního připojení](./media/virtual-machines-common-states-lifecycle/vm-power-states.png)
+![Diagram stavu napájení virtuálního počítače](./media/virtual-machines-common-states-lifecycle/vm-power-states.png)
 
 <br>
 Následující tabulka obsahuje popis každého stavu instance a označuje, zda se účtuje za použití instance nebo ne.
@@ -35,15 +35,15 @@ Stav
 Popis
 </th>
 <th>
-Fakturace využití instance
+Fakturace využití instancí
 </th>
 </tr>
 <tr>
 <td>
-<p><b>Spuštění</b></p>
+<p><b>Začátek</b></p>
 </td>
 <td>
-<p>Virtuální mísa se spouští.</p>
+<p>Spouští se virtuální počítač.</p>
 <code>"statuses": [<br>
    {<br>
       "code": "PowerState/starting",<br>
@@ -53,7 +53,7 @@ Fakturace využití instance
     ]</code><br>
 </td>
 <td>
-<p><b>Nefakturováno</b></p>
+<p><b>Neúčtuje se</b></p>
 </td>
 </tr>
 <tr>
@@ -61,7 +61,7 @@ Fakturace využití instance
 <p><b>Spuštěno</b></p>
 </td>
 <td>
-<p>Normální pracovní stav pro virtuální hod</p>
+<p>Normální pracovní stav pro virtuální počítač</p>
 <code>"statuses": [<br>
  {<br>
  "code": "PowerState/running",<br>
@@ -71,7 +71,7 @@ Fakturace využití instance
  ]</code><br>
 </td>
 <td>
-<p><b>Účtovány</b></p>
+<p><b>Účtuje</b></p>
 </td>
 </tr>
 <tr>
@@ -79,7 +79,7 @@ Fakturace využití instance
 <p><b>Zastavování</b></p>
 </td>
 <td>
-<p>Jedná se o přechodný stav. Po dokončení se zobrazí jako **Zastaveno**.</p>
+<p>Toto je přechodný stav. Po dokončení se zobrazí jako **Zastaveno**.</p>
 <code>"statuses": [<br>
  {<br>
  "code": "PowerState/stopping",<br>
@@ -89,7 +89,7 @@ Fakturace využití instance
  ]</code><br>
 </td>
 <td>
-<p><b>Účtovány</b></p>
+<p><b>Účtuje</b></p>
 </td>
 </tr>
 <tr>
@@ -97,8 +97,8 @@ Fakturace využití instance
 <p><b>Zastaveno</b></p>
 </td>
 <td>
-<p>Virtuální ho virtuálního se stavu vypínal z hostovaného operačního prostředí nebo pomocí poweroff ských api.</p>
-<p>Hardware je stále přidělena virtuálního počítači a zůstane na hostiteli. </p>
+<p>Virtuální počítač se vypnul v hostovaném operačním systému nebo pomocí rozhraní stavu PowerOff API.</p>
+<p>Hardware je stále přidělen k virtuálnímu počítači a zůstane na hostiteli. </p>
 <code>"statuses": [<br>
  {<br>
  "code": "PowerState/stopped",<br>
@@ -108,7 +108,7 @@ Fakturace využití instance
  ]</code><br>
 </td>
 <td>
-<p><b>Fakturovaná&#42;</b></p>
+<p><b>Fakturované&#42;</b></p>
 </td>
 </tr>
 <tr>
@@ -116,7 +116,7 @@ Fakturace využití instance
 <p><b>Rušení přidělení</b></p>
 </td>
 <td>
-<p>Přechodný stav. Po dokončení se virtuální virtuální město zobrazí jako **deallocated**.</p>
+<p>Přechodný stav. Po dokončení se virtuální počítač zobrazí jako **navrácené**.</p>
 <code>"statuses": [<br>
  {<br>
  "code": "PowerState/deallocating",<br>
@@ -126,7 +126,7 @@ Fakturace využití instance
  ]</code><br>
 </td>
 <td>
-<p><b>Nefakturované&#42;</b></p>
+<p><b>Nefakturovatelné&#42;</b></p>
 </td>
 </tr>
 <tr>
@@ -134,7 +134,7 @@ Fakturace využití instance
 <p><b>Přidělení zrušeno</b></p>
 </td>
 <td>
-<p>Virtuální ho virtuálního žena byla úspěšně zastavena a odebrána z hostitele. </p>
+<p>Virtuální počítač se úspěšně zastavil a odebral z hostitele. </p>
 <code>"statuses": [<br>
  {<br>
  "code": "PowerState/deallocated",<br>
@@ -144,30 +144,30 @@ Fakturace využití instance
  ]</code><br>
 </td>
 <td>
-<p><b>Nefakturováno</b></p>
+<p><b>Neúčtuje se</b></p>
 </td>
 </tr>
 </tbody>
 </table>
 
 
-&#42;Některé prostředky Azure, jako jsou disky a sítě, účtují poplatky. Za softwarové licence v instanci se neúčtují poplatky.
+&#42;některých prostředků Azure, jako jsou disky a sítě, se účtují poplatky. K softwarovým licencím na instanci se neúčtují poplatky.
 
-## <a name="provisioning-states"></a>Zřizovací státy
+## <a name="provisioning-states"></a>Stavy zřizování
 
-Stav zřizování je stav uživatelem iniciovaného, řízeného roviny operace na virtuálním počítači. Tyto stavy jsou oddělené od stavu napájení virtuálního soudu.
+Stav zřizování je stav operace iniciované uživatelem na úrovni virtuálního počítače. Tyto stavy jsou oddělené od stavu napájení virtuálního počítače.
 
-- **Vytvořit** – vytvoření virtuálního pracovního procesu.
+- **Vytvoření** – vytvoření virtuálního počítače
 
-- **Aktualizace** – aktualizuje model pro existující virtuální hod. Některé změny virtuálního počítače, které nejsou modelové, jako je například spuštění a restartování, také spadají pod aktualizaci.
+- **Update** – aktualizuje model pro existující virtuální počítač. Některé nemodelované změny virtuálních počítačů, jako je spuštění nebo restartování, spadají do části aktualizace.
 
-- **Odstranit** – odstranění virtuálního mísa.
+- **Odstranění** – odstranění virtuálního počítače.
 
-- **Navrátit** – je místo, kde je virtuální ms zastavena a odebrána z hostitele. Zrušení přidělení virtuálního soudu se považuje za aktualizaci, takže se zobrazí stavy zřizování související s aktualizací.
+- Zrušení **přidělení** – znamená, že se virtuální počítač zastaví a odebere z hostitele. Zrušení přidělení virtuálního počítače se považuje za aktualizaci, aby se zobrazily stavy zřizování související s aktualizací.
 
 
 
-Zde jsou přechodné provozní stavy poté, co platforma přijala akci inicionouji uživatelem:
+Zde jsou přechodné stavy operace poté, co platforma přijala akci iniciované uživatelem:
 
 <br>
 
@@ -196,7 +196,7 @@ Zde jsou přechodné provozní stavy poté, co platforma přijala akci inicionou
 </tr>
 <tr>
 <td width="162">
-<p><b>Aktualizace</b></p>
+<p><b>Doplnění</b></p>
 </td>
 <td width="366">
 <code>"statuses": [<br>
@@ -210,7 +210,7 @@ Zde jsou přechodné provozní stavy poté, co platforma přijala akci inicionou
 </tr>
 <tr>
 <td width="162">
-<p><b>Odstranění</b></p>
+<p><b>Odstraňuje</b></p>
 </td>
 <td width="366">
 <code>"statuses": [<br>
@@ -224,11 +224,11 @@ Zde jsou přechodné provozní stavy poté, co platforma přijala akci inicionou
 </tr>
 <tr>
 <td width="162">
-<p><b>Stavy zřizování operačního spoje</b></p>
+<p><b>Stavy zřizování operačního systému</b></p>
 </td>
 <td width="366">
-<p>Pokud virtuální ho virtuální ho samalý a ne se specializovanou bitovou kopii, lze pozorovat následující dílčí stavy:</p>
-<p>1. <b>OSProvisioningInprogress</b> &ndash; Virtuální ho diář i instalace hostovaného operačního systému probíhá. <p /> 
+<p>Pokud se vytvoří virtuální počítač s bitovou kopií operačního systému, a ne s specializovanou imagí, můžete dodržovat tyto podstavy:</p>
+<p>1. <b>OSProvisioningInprogress</b> &ndash; , že virtuální počítač běží a probíhá instalace hostovaného operačního systému. <p /> 
 <code> "statuses": [<br>
  {<br>
  "code": "ProvisioningState/creating/OSProvisioningInprogress",<br>
@@ -236,7 +236,7 @@ Zde jsou přechodné provozní stavy poté, co platforma přijala akci inicionou
  "displayStatus": "OS Provisioning In progress"<br>
  }<br>
 ]</code><br>
-<p>2. <b>OSProvisioningComplete</b> &ndash; Krátkodobý stav. Virtuální ho virtuálního zařízení rychle přechází na **úspěch,** pokud není nutné nainstalovat žádná rozšíření. Instalace rozšíření může nějakou dobu trvat. <br />
+<p>2. <b>OSProvisioningComplete</b> &ndash; krátkodobý stav. Virtuální počítač se rychle přepřechodem na **úspěch** , pokud není potřeba instalovat nějaká rozšíření. Instalace rozšíření může chvíli trvat. <br />
 <code> "statuses": [<br>
  {<br>
  "code": "ProvisioningState/creating/OSProvisioningComplete",<br>
@@ -244,15 +244,15 @@ Zde jsou přechodné provozní stavy poté, co platforma přijala akci inicionou
  "displayStatus": "OS Provisioning Complete"<br>
  }<br>
 ]</code><br>
-<p><b>Poznámka:</b>Zřizování operačního systému může přejít na **Selhání,** pokud dojde k selhání operačního systému nebo operační systém se nenainstaluje včas. Zákazníkům se bude účtovat nasazený virtuální počítač v infrastruktuře.</p>
+<p><b>Poznámka</b>: zřizování operačního systému může přejít na **neúspěšné** , pokud dojde k selhání operačního systému nebo pokud se operační systém neinstaluje v čase. Zákazníkům se bude účtovat nasazený virtuální počítač v infrastruktuře.</p>
 </td>
 </tr>
 </table>
 
 
-Po dokončení operace virtuální ho dispozice přejde do jednoho z následujících stavů:
+Po dokončení operace se virtuální počítač převede do jednoho z následujících stavů:
 
-- **Úspěšné** – akce iniciované uživatelem byly dokončeny.
+- **Úspěch** – akce iniciované uživatelem byly dokončeny.
 
     ```
   "statuses": [ 
@@ -267,7 +267,7 @@ Po dokončení operace virtuální ho dispozice přejde do jednoho z následují
 
  
 
-- **Nezdařilo se** – představuje neúspěšnou operaci. Další informace a možná řešení naleznete v kódech chyb.
+- **Chyba** – představuje neúspěšnou operaci. Pokud chcete získat další informace a možná řešení, přečtěte si kódy chyb.
 
     ```
   "statuses": [
@@ -283,11 +283,11 @@ Po dokončení operace virtuální ho dispozice přejde do jednoho z následují
 
 
 
-## <a name="vm-instance-view"></a>Zobrazení instance virtuálního virtuálního virtuálního soudu
+## <a name="vm-instance-view"></a>Zobrazení instance virtuálního počítače
 
-Rozhraní API zobrazení instance poskytuje informace o stavu spouštění virtuálního soudu. Další informace najdete v dokumentaci [k rozhraní API virtuálních počítačů – instance.](https://docs.microsoft.com/rest/api/compute/virtualmachines/instanceview)
+Rozhraní API pro zobrazení instancí poskytuje informace o běhu virtuálního počítače. Další informace najdete v dokumentaci k rozhraní API pro [zobrazení Virtual Machines-instance](https://docs.microsoft.com/rest/api/compute/virtualmachines/instanceview) .
 
-Průzkumník prostředků Azure poskytuje jednoduché rozhraní pro zobrazení stavu spuštěného virtuálního počítače: [Průzkumník prostředků](https://resources.azure.com/).
+Průzkumník prostředků Azure poskytuje jednoduché uživatelské rozhraní pro zobrazení stavu spuštěného virtuálního počítače: [Průzkumník prostředků](https://resources.azure.com/).
 
-Stavy zřizování jsou viditelné ve vlastnostech virtuálních počítačů a zobrazení instance. Stavy napájení jsou k dispozici například zobrazení virtuálního mísu. 
+Stavy zřizování jsou viditelné pro vlastnosti virtuálního počítače a zobrazení instance. Stavy napájení jsou k dispozici v zobrazení instance virtuálního počítače. 
 

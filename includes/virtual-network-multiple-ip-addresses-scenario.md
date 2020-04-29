@@ -5,22 +5,22 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: genli
 ms.openlocfilehash: 3df4108907a4e1e65a444faf1049163966b7accf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67174929"
 ---
 ## <a name="scenario"></a>Scénář
-Virtuální počítač s jednou samostatnou pomocí je vytvořen a připojen k virtuální síti. Virtuální ho virtuálního *private* počítačů mj. *public* Ip adresy jsou přiřazeny k následujícím konfiguracím IP:
+Vytvoří se virtuální počítač s jedním síťovým ADAPTÉRem a připojí se k virtuální síti. Virtuální počítač vyžaduje tři různé *privátní* IP adresy a dvě *veřejné* IP adresy. IP adresy jsou přiřazené k následujícím konfiguracím protokolu IP:
 
-* **PROTOKOL IPConfig-1:** Přiřadí *statickou* privátní IP adresu a *statickou* veřejnou IP adresu.
-* **PROTOKOL IPConfig-2:** Přiřadí *statickou* privátní IP adresu a *statickou* veřejnou IP adresu.
-* **PROTOKOL IPConfig-3:** Přiřadí *statickou* privátní IP adresu a žádnou veřejnou IP adresu.
+* **Ipconfig-1:** Přiřadí *statickou* privátní IP adresu a *statickou* veřejnou IP adresu.
+* **Ipconfig-2:** Přiřadí *statickou* privátní IP adresu a *statickou* veřejnou IP adresu.
+* **Ipconfig-3:** Přiřadí *statickou* privátní IP adresu bez veřejné IP adresy.
   
     ![Několik IP adres](./media/virtual-network-multiple-ip-addresses-scenario/multiple-ipconfigs.png)
 
-Konfigurace IP jsou přidružené k nic při vytvoření nic a nic je připojen k virtuálnímu počítače při vytvoření virtuálního počítače. Typy ADRES IP použité pro scénář jsou pro ilustraci. Můžete přiřadit libovolné ip adresy a typy přiřazení, které požadujete.
+Konfigurace IP adres se k síťovému rozhraní připojí, když se vytvoří síťová karta a síťový adaptér je připojený k virtuálnímu počítači, když se vytvoří virtuální počítač. Typy IP adres, které se používají pro daný scénář, jsou určené pro ilustraci. Můžete přiřadit libovolné typy IP adres a přiřazení, které požadujete.
 
 > [!NOTE]
-> Přestože kroky v tomto článku přiřadí všechny konfigurace IP jedné nic, můžete také přiřadit více konfigurací IP libovolné nic ve virtuálním počítači s více samostatnými mikonien. Pokud se chcete dozvědět, jak vytvořit virtuální počítač s více síťové karty, přečtěte si článek [Vytvořit virtuální počítač s více síťové karty.](../articles/virtual-machines/windows/multiple-nics.md)
+> I když kroky v tomto článku přiřadí všechny konfigurace IP adresy jedinému síťovému rozhraní, můžete také přiřadit více konfigurací IP adres ke kterékoli síťové kartě ve virtuálním počítači s více síťovými kartami. Pokud chcete zjistit, jak vytvořit virtuální počítač s více síťovými rozhraními, přečtěte si článek [Vytvoření virtuálního počítače s několika síťovými](../articles/virtual-machines/windows/multiple-nics.md) kartami.

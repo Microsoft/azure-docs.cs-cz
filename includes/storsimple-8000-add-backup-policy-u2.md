@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 02274bacb66a33ef54e07bc8113d7db46d4d5296
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67175197"
 ---
 #### <a name="to-add-a-storsimple-backup-policy"></a>Přidání zásady zálohování StorSimple
@@ -35,7 +35,7 @@ ms.locfileid: "67175197"
 
        1. Jako **Typ snímku** vyberte **Cloud** nebo **Místní**.
 
-       2. Uveďte frekvenci zálohování (zadejte číslo a v rozevíracím seznamu zvolte **Dny** nebo **Týdny.**
+       2. Určete frekvenci záloh (zadejte číslo a potom v rozevíracím seznamu zvolte **dny** nebo **týdny** .
 
        3. Zadejte plán uchovávání.
 

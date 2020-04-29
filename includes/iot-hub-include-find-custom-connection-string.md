@@ -9,30 +9,30 @@ ms.date: 11/02/2018
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 6f43bbcd83861f7d39de2aa89bbe035c2ff5b809
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "70050429"
 ---
 <!-- This tells how to create a custom shared access policy for your IoT hub and get the connection string for it-->
 
-Chcete-li vytvořit zásadu sdíleného přístupu, která uděluje oprávnění ke čtení **služby** a **registru** a získat připojovací řetězec pro tuto zásadu, postupujte takto:
+Pokud chcete vytvořit zásadu sdíleného přístupu, která uděluje oprávnění **ke čtení** **služby** a registru a k získání připojovacího řetězce pro tuto zásadu, postupujte podle těchto kroků:
 
-1. Na [webu Azure Portal](https://portal.azure.com)vyberte **skupiny prostředků**. Vyberte skupinu prostředků, kde se nachází vaše centrum, a pak vyberte rozbočovač ze seznamu prostředků.
+1. V [Azure Portal](https://portal.azure.com)vyberte **skupiny prostředků**. Vyberte skupinu prostředků, ve které se nachází vaše centrum, a potom v seznamu prostředků vyberte své centrum.
 
-1. V levém podokně centra vyberte **Zásady sdíleného přístupu**.
+1. V levém podokně centra vyberte **zásady sdíleného přístupu**.
 
 1. V horní nabídce nad seznamem zásad vyberte **Přidat**.
 
-1. V části **Přidat zásadu sdíleného přístupu**zadejte popisný název zásady, například *serviceAndRegistryRead*. V části **Oprávnění**vyberte **položku Čtení registru** a Připojení **služby**a pak vyberte **Vytvořit**.
+1. V části **Přidat zásadu sdíleného přístupu**zadejte popisný název zásady, například *serviceAndRegistryRead*. V části **oprávnění**vyberte **čtení z registru** a **Služba připojit**a pak vyberte **vytvořit**.
 
-    ![Ukázka přidání nové zásady sdíleného přístupu](./media/iot-hub-include-find-custom-connection-string/iot-hub-add-custom-policy.png)
+    ![Ukázat, jak přidat nové zásady sdíleného přístupu](./media/iot-hub-include-find-custom-connection-string/iot-hub-add-custom-policy.png)
 
-1. Vyberte novou zásadu ze seznamu zásad.
+1. V seznamu zásad vyberte nové zásady.
 
-1. V části **Sdílené přístupové klávesy**vyberte ikonu kopírování **pro připojovací řetězec – primární klíč** a uložte hodnotu.
+1. V části **sdílené přístupové klíče**vyberte ikonu kopírování pro **připojovací řetězec – primární klíč** a uložte hodnotu.
 
-    ![Zobrazit, jak načíst připojovací řetězec](./media/iot-hub-include-find-custom-connection-string/iot-hub-get-connection-string.png)
+    ![Zobrazit způsob načtení připojovacího řetězce](./media/iot-hub-include-find-custom-connection-string/iot-hub-get-connection-string.png)
 
-Další informace o zásadách a oprávněních sdíleného přístupu centra IoT Hub najdete [v tématu Řízení přístupu a oprávnění](../articles/iot-hub/iot-hub-devguide-security.md#access-control-and-permissions).
+Další informace o zásadách a oprávněních sdíleného přístupu IoT Hub najdete v tématu [řízení přístupu a oprávnění](../articles/iot-hub/iot-hub-devguide-security.md#access-control-and-permissions).

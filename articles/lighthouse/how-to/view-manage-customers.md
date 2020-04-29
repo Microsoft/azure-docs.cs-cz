@@ -1,75 +1,75 @@
 ---
 title: Zobrazení a správa zákazníků a delegovaných prostředků
-description: Jako poskytovatel služeb pomocí azure delegované správy prostředků můžete zobrazit všechny delegované prostředky zákazníků a předplatná tak, že přejdete na můj zákazníkna portálu Azure.
+description: Jako poskytovatel služeb s využitím delegované správy prostředků Azure můžete zobrazit všechny svoje delegované prostředky a předplatná zákazníka tak, že na Azure Portal kliknete na moji zákazníci.
 ms.date: 01/22/2020
 ms.topic: conceptual
 ms.openlocfilehash: 0d4b3187066754e8a549f029623762df539b30b1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76543422"
 ---
 # <a name="view-and-manage-customers-and-delegated-resources"></a>Zobrazení a správa zákazníků a delegovaných prostředků
 
-Poskytovatelé služeb, kteří používají [správu delegovaných prostředků Azure,](../concepts/azure-delegated-resource-management.md) můžou pomocí stránky **Moji zákazníci** na [webu Azure Portal](https://portal.azure.com) zobrazit delegované prostředky zákazníků a předplatná. I když budeme odkazovat na poskytovatele služeb a zákazníky zde, podniky spravující více klientů můžete použít stejný proces ke konsolidaci jejich prostředí pro správu.
+Poskytovatelé služeb využívající [Azure delegovaných prostředků](../concepts/azure-delegated-resource-management.md) můžou pomocí stránky **moji zákazníci** v [Azure Portal](https://portal.azure.com) zobrazit delegované prostředky a odběry zákazníků. V takovém případě budeme odkazováni na poskytovatele služeb a zákazníky a podniky, které spravují víc tenantů, můžou stejný postup využít k konsolidaci prostředí pro správu.
 
-Pokud chcete na webu Azure portal získat přístup na stránku **Moji zákazníci,** vyberte **Všechny služby**, **vyhledejte moji zákazníci** a vyberte je. Najdete ji také zadáním "Moji zákazníci" do vyhledávacího pole v horní části portálu Azure.
+Chcete-li získat přístup ke stránce **moji zákazníci** v Azure Portal, vyberte **všechny služby**a pak vyhledejte **Moje zákazníky** a vyberte ji. Můžete ji také najít zadáním "Moji zákazníci" do vyhledávacího pole v horní části Azure Portal.
 
-Nezapomeňte, že v části Hlavní **zákazníci** na stránce **Moji zákazníci** se zobrazují pouze informace o zákaznících, kteří delegovali předplatná nebo skupiny prostředků. Pokud spolupracujete s jinými zákazníky (například prostřednictvím [programu Zprostředkovatel cloudových řešení](https://docs.microsoft.com/partner-center/csp-overview)), nezobrazí se informace o těchto zákaznících v části **Zákazníci,** pokud jste nezadali jejich prostředky pro správu delegovaných prostředků Azure.
+Mějte na paměti, že v části hlavní **zákazníci** na stránce **moji zákazníci** se zobrazují jenom informace o zákaznících, kteří mají delegované předplatné nebo skupiny prostředků. Pokud pracujete s ostatními zákazníky (například prostřednictvím [programu Cloud Solution Provider](https://docs.microsoft.com/partner-center/csp-overview), neuvidíte informace o těchto zákaznících v části **zákazníci** , pokud jste se nepřipojili k prostředkům pro správu delegovaných prostředků Azure.
 
-V samostatné části s názvem **Cloud Solution Provider (Preview)** se zobrazí fakturační údaje a prostředky pro zákazníky CSP, kteří [podepsali smlouvu se zákazníkem microsoftu (MCA)](https://docs.microsoft.com/partner-center/confirm-customer-agreement) a jsou [v rámci plánu Azure](https://docs.microsoft.com/partner-center/azure-plan-get-started). Další informace najdete [v tématu Začínáme s fakturačním účtem smlouvy Microsoft Partner .](../../billing/mpa-overview.md) Všimněte si, že tyto zákazníky CSP se zobrazí v této části bez ohledu na to, zda jste je také zadali pro správu delegovaných prostředků Azure. Podobně se zákazník zprostředkovatele csp nemusí zobrazit v části **Poskytovatel cloudových řešení (preview)** **Moji zákazníci,** abyste je mohli zavést pro správu delegovaných prostředků Azure.
+Na stránce dole se v samostatném oddílu s názvem **Cloud Solution Provider (Preview)** zobrazuje informace o fakturaci a prostředky pro zákazníky CSP, kteří [podepsali smlouvu o zákaznících Microsoftu (MCA)](https://docs.microsoft.com/partner-center/confirm-customer-agreement) a jsou [v rámci plánu Azure](https://docs.microsoft.com/partner-center/azure-plan-get-started). Další informace najdete v tématu [Začínáme s fakturačním účtem Microsoft Partner Agreement](../../billing/mpa-overview.md). Všimněte si, že tito zákazníci CSP se zobrazí v této části bez ohledu na to, jestli jste je taky připojili ke správě delegovaných prostředků Azure. Obdobně se zákazník CSP nemusí zobrazit v části **Poskytovatel řešení cloudu (Preview)** ve **svých zákaznících** , aby je bylo možné integrovat do správy delegovaných prostředků Azure.
 
 > [!NOTE]
-> Vaši zákazníci si můžou zobrazit informace o poskytovatelích služeb tak, že přejdete k **poskytovatelům služeb** na webu Azure Portal. Další informace najdete v tématu [Zobrazení a správa poskytovatelů služeb](view-manage-service-providers.md).
+> Vaši zákazníci mohou zobrazit informace o poskytovatelích služeb přechodem na **poskytovatele služeb** v Azure Portal. Další informace najdete v tématu [zobrazení a Správa poskytovatelů služeb](view-manage-service-providers.md).
 
-## <a name="view-and-manage-customer-details"></a>Zobrazení a správa podrobností o zákaznících
+## <a name="view-and-manage-customer-details"></a>Zobrazit a spravovat podrobnosti o zákazníkovi
 
-Chcete-li zobrazit podrobnosti o zákaznících, vyberte **možnost Zákazníci** na levé straně stránky **Moji zákazníci.**
+Pokud chcete zobrazit podrobnosti o zákaznících, vyberte na levé straně stránky **Customers** možnost **zákazníci** .
 
-U každého zákazníka uvidíte jméno zákazníka, ID zákazníka (ID klienta) a nabídku přidruženou k interakci. Ve sloupci **Delegování** uvidíte počet delegovaných předplatných nebo počet delegovaných skupin prostředků.
+Pro každého zákazníka uvidíte jméno zákazníka, ID zákazníka (ID tenanta) a nabídku přidruženou ke službě Engagement. Ve sloupci **delegování** se zobrazí počet delegovaných předplatných nebo počet delegovaných skupin prostředků.
 
 > [!IMPORTANT]
-> Aby bylo možné zobrazit delegování, uživatelé musí mít udělena role [čtečky](../../role-based-access-control/built-in-roles.md#reader) (nebo jiné předdefinované role, která zahrnuje přístup čtenáře) v procesu registrace.
+> Aby bylo možné zobrazit delegování, uživatelé musí mít v procesu připojování udělenou roli [Čtenář](../../role-based-access-control/built-in-roles.md#reader) (nebo jinou předdefinovanou roli, která zahrnuje přístup ke čtenářům).
 
-Filtry v horní části stránky umožňují seřadit a seskupit informace o zákaznících nebo filtrovat podle konkrétních zákazníků, nabídek nebo klíčových slov.
+Filtry v horní části stránky umožňují řadit a seskupovat informace o zákaznících nebo filtrovat podle konkrétních zákazníků, nabídek nebo klíčových slov.
 
 Na této stránce můžete zobrazit následující informace:
 
-- Chcete-li zobrazit všechna předplatná, nabídky a delegace přidružené k zákazníkovi, vyberte jméno zákazníka.
-- Chcete-li zobrazit další podrobnosti o nabídce a jejích delegacích, vyberte název nabídky.
-- Chcete-li zobrazit další podrobnosti o přiřazení rolí pro delegované odběry nebo skupiny prostředků, vyberte položku ve **sloupci Delegování.**
+- Pokud chcete zobrazit všechna předplatná, nabídky a delegování přidružená k zákazníkovi, vyberte jméno zákazníka.
+- Pokud chcete zobrazit další podrobnosti o nabídce a jejích delegováních, vyberte název nabídky.
+- Chcete-li zobrazit další podrobnosti o přiřazení rolí pro delegovaná předplatná nebo skupiny prostředků, vyberte položku ve sloupci **delegace** .
 
-## <a name="view-and-manage-delegations"></a>Zobrazení a správa delegací
+## <a name="view-and-manage-delegations"></a>Zobrazení a Správa delegování
 
-Delegování zobrazit odběr nebo skupina prostředků, která byla delegována , spolu s uživateli a oprávnění, které mají přístup k němu. Chcete-li tyto informace zobrazit, vyberte **delegování** na levé straně stránky **Moji zákazníci.**
+Delegování zobrazuje předplatné nebo skupinu prostředků, které byly delegovány, spolu s uživateli a oprávněními, které k nim mají přístup. Chcete-li zobrazit tyto informace, vyberte možnost **delegace** na levé straně stránky **moji zákazníci** .
 
-Filtry v horní části stránky umožňují seřadit a seskupit informace o přiřazení přístupu nebo filtrovat podle konkrétních zákazníků, nabídek nebo klíčových slov.
+Filtry v horní části stránky umožňují řadit a seskupovat informace o přiřazení přístupu nebo filtrovat podle konkrétních zákazníků, nabídek nebo klíčových slov.
 
 ### <a name="view-role-assignments"></a>Zobrazit přiřazení rolí
 
-Uživatelé a oprávnění přidružená ke každému delegování se zobrazí ve sloupci **Přiřazení rolí.** Můžete vybrat každou položku a zobrazit úplný seznam uživatelů, skupin a instančních objektů, kterým byl udělen přístup k předplatnému nebo skupině prostředků. Odtud můžete vybrat konkrétního uživatele, skupinu nebo hlavní název služby, abyste získali další podrobnosti.
+Uživatelé a oprávnění přidružená ke každému delegování se zobrazí ve sloupci **přiřazení rolí** . Jednotlivé položky můžete vybrat a zobrazit tak úplný seznam uživatelů, skupin a instančních objektů, kterým byl udělen přístup k předplatnému nebo skupině prostředků. Odtud můžete vybrat konkrétního uživatele, skupinu nebo hlavní název služby a získat další podrobnosti.
 
-### <a name="remove-delegations"></a>Odebrání delegací
+### <a name="remove-delegations"></a>Odebrat delegování
 
-Pokud jste zahrnuli uživatele s [rolí odstranění registrace spravovaných služeb](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role) při registraci zákazníka pro správu delegovaných prostředků Azure, tito uživatelé mohou odebrat delegování výběrem ikony koše, která se zobrazí v řádku pro toto delegování. Pokud tak učiní, žádný uživatel v tenantovi poskytovatele služeb bude mít přístup k prostředkům, které byly dříve delegovány.
+Pokud jste při připojování zákazníka ke správě delegovaných prostředků Azure zahrnuli uživatele s [přiřazením při registraci spravovaných služeb](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role) , můžou tyto uživatele odebrat delegování tak, že vybere ikonu odpadkového koše, která se zobrazí na řádku tohoto delegování. V takovém případě nebudou mít žádní uživatelé v tenantovi poskytovatele služeb přístup k prostředkům, které byly dříve delegovány.
 
 
 ## <a name="work-in-the-context-of-a-delegated-subscription"></a>Práce v kontextu delegovaného předplatného
 
-Můžete pracovat přímo v kontextu delegovaného předplatného v rámci portálu Azure, bez přepínání adresáře, ve kterém pracujete. Postupujte následovně:
+V rámci Azure Portal můžete pracovat přímo v kontextu delegovaného předplatného, aniž byste museli přepínat adresář, ve kterém pracujete. Postupujte následovně:
 
-1. V horní části portálu Azure vyberte ikonu **Adresář + předplatné.**
-2. Ve filtru **globální předplatné,** ujistěte se, že je vybrána pouze pole pro toto delegované předplatné. Rozevírací seznam **Aktuální + delegované adresáře** můžete použít k zobrazení pouze předplatných v rámci určitého adresáře. (Nepoužívejte možnost **Přepnout adresář,** protože to změní adresář, ke kterému jste přihlášeni.)
+1. V horní části Azure Portal vyberte ikonu **adresář + předplatné** .
+2. V **globálním filtru předplatného** ověřte, že je vybrané jenom políčko pro toto delegované předplatné. Pomocí rozevíracího seznamu **aktuální + delegované adresáře** můžete zobrazit pouze odběry v rámci určitého adresáře. (Nepoužívejte možnost **adresáře Switch** , protože se změní adresář, ke kterému jste přihlášení.)
 
-Pokud pak získáte přístup ke službě, která podporuje [prostředí správy mezi klienty](../concepts/cross-tenant-management-experience.md), bude služba ve výchozím nastavení nastavena na kontext vybraného delegovaného předplatného. Můžete to změnit podle výše uvedených kroků a zaškrtnutím políčka **Vybrat vše** (nebo výběrem jednoho nebo více předplatných, ve kterých budete pracovat).
+Pokud pak získáte přístup ke službě, která podporuje [prostředí pro správu mezi klienty](../concepts/cross-tenant-management-experience.md), služba bude ve výchozím nastavení kontextem delegovaného předplatného, které jste vybrali. To můžete změnit podle výše uvedených kroků a zaškrtnutím políčka **Vybrat vše** (nebo zvolením jednoho nebo více předplatných, která chcete místo toho použít).
 
 > [!NOTE]
-> Pokud vám byl udělen přístup k jedné nebo více skupin prostředků, nikoli přístup k celé předplatné, můžete vybrat předplatné, do kterého patří tato skupina prostředků. Pak budete pracovat v kontextu tohoto předplatného, ale budete mít přístup pouze k určeným skupinám prostředků.
+> Pokud jste vám udělili přístup k jedné nebo více skupinám prostředků místo přístupu k celému předplatnému, můžete vybrat předplatné, ke kterému patří tato skupina prostředků. Pak budete pracovat v kontextu tohoto předplatného, ale budou mít přístup jenom k určeným skupinám prostředků.
 
-Můžete také získat přístup k funkcím souvisejícím s delegovanými předplatnými nebo skupinami prostředků v rámci služeb, které podporují prostředí správy mezi tenanty výběrem předplatného nebo skupiny prostředků z této služby.
+K funkcím, které souvisí s delegovanými předplatnými nebo skupinami prostředků, se můžete dostat i v rámci služeb, které podporují prostředí pro správu klientů, a to výběrem předplatného nebo skupiny prostředků v rámci této služby.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o [prostředích správy mezi tenanty](../concepts/cross-tenant-management-experience.md).
-- Zjistěte, jak můžou vaši zákazníci [zobrazit a spravovat poskytovatele služeb](view-manage-service-providers.md) tím, že přejdou na azure **portálu.**
+- Přečtěte si o [prostředích pro správu mezi klienty](../concepts/cross-tenant-management-experience.md).
+- Přečtěte si, jak můžou zákazníci [Zobrazit a spravovat poskytovatele služeb, a](view-manage-service-providers.md) to tak, že v Azure Portal přesměrují **poskytovatelé služeb** .

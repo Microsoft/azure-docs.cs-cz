@@ -5,14 +5,14 @@ ms.topic: include
 ms.date: 03/04/2019
 ms.author: alkohli
 ms.openlocfilehash: d5af557a62f4bd35c242d334c28a38c3d632f7cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67175467"
 ---
-1. [Připojte se k rozhraní prostředí PowerShell](#connect-to-the-powershell-interface).
-2. Použijte `Get-HcsApplianceInfo` k získání informací pro vaše zařízení.
+1. [Připojte se k rozhraní PowerShell](#connect-to-the-powershell-interface).
+2. `Get-HcsApplianceInfo` Informace pro vaše zařízení získáte pomocí.
 
     Následující příklad ukazuje použití této rutiny:
 
@@ -43,16 +43,16 @@ ms.locfileid: "67175467"
     IsRegistered                  : False
     ```
 
-    Zde je tabulka shrnující některé důležité informace o zařízení:
+    Tady je tabulka shrnující některé důležité informace o zařízení:
     
     | Parametr                             | Popis                                                                                                                                                  |   |
     |--------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|---|
-    | Friendlyname                   | Popisný název zařízení nakonfigurovaný prostřednictvím místního webového uživatelského rozhraní během nasazení zařízení. Výchozí popisný název je sériové číslo zařízení.  |   |
-    | SerialNumber                   | Sériové číslo zařízení je jedinečné číslo přiřazené z výroby.                                                                             |   |
-    | Model                          | Model pro zařízení Data Box Edge nebo Data Box Gateway. Model je virtuální pro bránu datové schránky a fyzické pro data box edge.                   |   |
-    | Verze FriendlySoftwareVersion        | Přátelský řetězec, který odpovídá verzi softwaru zařízení. Pro systém se spuštěnou předběžnou verzi by přátelská verze softwaru byla Data Box Edge 1902. |   |
-    | HcsVersion                     | Verze softwaru HCS spuštěná na vašem zařízení. Například verze softwaru HCS odpovídající Data Box Edge 1902 je 1.4.771.324.            |   |
-    | Místní kapacitainmb              | Celková místní kapacita zařízení v Megabits.                                                                                                        |   |
-    | Jeregistrován                   | Tato hodnota označuje, zda je zařízení aktivováno službou.                                                                                         |   |
+    | FriendlyName                   | Popisný název zařízení nakonfigurovaný prostřednictvím místního webového uživatelského rozhraní během nasazování zařízení. Výchozím popisným názvem je sériové číslo zařízení.  |   |
+    | SerialNumber                   | Sériové číslo zařízení je jedinečné číslo přiřazené v továrně.                                                                             |   |
+    | Model                          | Model pro Data Box Edge nebo Data Box Gateway zařízení. Model je virtuální pro Data Box Gateway a fyzický pro Data Box Edge.                   |   |
+    | FriendlySoftwareVersion        | Popisný řetězec, který odpovídá verzi softwaru zařízení. V systému, ve kterém je spuštěný náhled, by se měla používat popisná verze softwaru Data Box Edge 1902. |   |
+    | HcsVersion                     | Verze softwaru klientovi HCS spuštěná na vašem zařízení. Například verze softwaru klientovi HCS, která odpovídá Data Box Edge 1902, je 1.4.771.324.            |   |
+    | LocalCapacityInMb              | Celková místní kapacita zařízení v megabajtech.                                                                                                        |   |
+    | Registrováno                   | Tato hodnota označuje, jestli je zařízení aktivované službou.                                                                                         |   |
 
 
