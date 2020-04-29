@@ -9,11 +9,11 @@ ms.topic: include
 ms.date: 3/11/2020
 ms.custom: include file
 ms.openlocfilehash: cb36863f0072b031a8c40dd3dc8efcf26a29fb58
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80408101"
 ---
 > [!NOTE]
-> Děkujeme vám za váš zájem o program Azure Digital Twins preview. Vzhledem k obrovské poptávce je program náhledu dočasně uzavřen, protože se připravujeme na nadcházející vydání nových funkcí. V důsledku toho nemusí být možné vytvořit nové prostředky Azure Digital Twins právě teď. Pokračujte v kontrole nových informací.
+> Děkujeme za váš zájem o program Azure Digital revlákens ve verzi Preview. Z důvodu zahlcení poptávky je program Preview dočasně uzavřený, protože jsme připravili na nadcházející vydání nových funkcí. V důsledku toho možná nebudete moct vytvářet nové prostředky digitálních vláken Azure hned teď. Pokračujte v kontrole zpět pro nové informace.
