@@ -1,6 +1,6 @@
 ---
-title: Vytvoření vstupní stránky na Azure Marketplace | Azure
-description: Přečtěte si, jak vytvořit vstupní stránku na Azure Marketplace a Microsoft AppSource pro vydavatele aplikací a služeb.
+title: Sestavení cílové stránky v Azure Marketplace | Azure
+description: Naučte se, jak vytvořit cílovou stránku v Azure Marketplace a Microsoft AppSource, pro vydavatele aplikací a služeb.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,49 +8,49 @@ ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: dsindona
 ms.openlocfilehash: 0952c1d4b6955ff20f06afc6eaded18fbd105708
-ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80387797"
 ---
-# <a name="build-your-landing-page"></a>Vytvoření vstupní stránky
+# <a name="build-your-landing-page"></a>Sestavení cílové stránky
 
-Vstupní stránka na webu vaší společnosti je vstupní branou z aktivit generování poptávky do vašeho zápisu na [Azure Marketplace](https://azuremarketplace.microsoft.com).
+Cílová stránka na webu společnosti představuje bránu z aktivit generování požadavků na váš výpis v [Azure Marketplace](https://azuremarketplace.microsoft.com).
 
-Začněte tím, že identifikuje své cíle. Pro vaše řešení vyberte cílového zákazníka a akci, kterou zákazník provede. Vaše řešení může zahrnovat následující akce:
-*   Zkušební jízda řešení
-*   Získejte řešení nyní
+Začněte tím, že identifikujete své cíle. Pro vaše řešení vyberte cílového zákazníka a akci, kterou bude zákazník provádět. Vaše řešení může zahrnovat následující akce:
+*   Test-Drive řešení
+*   Získejte řešení hned teď
 
-Na vstupní stránku můžete odkazovat na několik marketingových taktik. Můžete použít následující marketingové taktiky: 
+Na svou cílovou stránku můžete odkazovat v rámci více marketingových taktiku. Můžete použít následující marketingové taktiku: 
 *   Události
 *   Webcasty
 *   Sociální média
 *   Dokumenty white paper
-*   Technická školení
+*   Cvičení pro technický výcvik
 *   Tiskové zprávy
 
-Čím konzistentnější jste ve svých zprávách a ve výzvě k akci, tím snazší je pro vaše zákazníky najít vaše řešení.
+Tím lépe konzistentní máte zprávy a ve vašem volání akce je snazší, aby vaši zákazníci našli vaše řešení.
 
 ## <a name="recommendations"></a>Doporučení
 
-Až budete mít připravený plán kampaně, vytvořte si vstupní stránku na Marketplace. Následující tabulka popisuje způsoby, jak můžete maximalizovat efektivitu vstupní stránky: 
+Po přípravě plánu kampaně vytvořte na webu Marketplace svou cílovou stránku. Následující tabulka popisuje možnosti, které vám pomohou maximalizovat efektivitu cílové stránky: 
 
 | Osvědčený postup | Vyloučit |
 |:--- |:--- |
-| **Sdělte, jaký problém zákazníka vaše řešení řeší a jak k tomu využíváte Azure** | Nekomunikuje způsoby, ve kterých vaše řešení pracuje s Azure. |
-| **Vytvoření krátké, snadno zapamatovatelné adresy URL** | Použití dlouhých adres URL. Dlouhé adresy URL nejsou zapamatovatelné a je těžké je najít. |
-| **Přidání relevantního vizuálního obsahu, jako je video ohodnocení zákazníka nebo architektura řešení** | Použití příliš velkého textu způsobí, že zákazníci budou ignorovat váš obsah a přestanou prozkoumávat.|
-| **Vytvoření jasné výzvy k akci, která nasměruje návštěvníky na stránku katalogu Marketplace** | Mít příliš mnoho odkazů nebo akcí na stránce. |
-| **Zobrazení výzvy k akci v záhlaví nebo jasně vymezené masce** | Vložení odkazů na zápis na Marketplace do odstavce textu. |
-| **Výzkum nejlepší klíčová slova a optimalizovat stránku pro vyhledávání** | Za předpokladu, že název vašeho produktu generuje vyšší hodnocení vyhledávání. |
-| **Používání klíčových slov z reklamních kampaní** | Použití mnoha různých klíčových slov ve vašich webových vlastnostech zředí vaše reklamní investice. |
-| **Vložte relevantní názvy produktů a klíčová slova "nad záhyb"** | Vytvoření posouvání uživatelů za účelem zobrazení produktu nebo řešení, které představujete. |
-| **Pomocí image značky ověřte své řešení v souladu s pokyny pro branding od Microsoftu, jako je Azure Certified** | Použití image značky Společnosti Microsoft, které nejsou schváleny. |
+| **Informujte se s tím, co problém zákazníka řešení řeší, a jak se k tomu dá využít Azure** | Nekomunikujete se způsoby, kterými vaše řešení funguje s Azure. |
+| **Vytvoření krátké, snadno zapamatovatelné adresy URL** | Použití dlouhých adres URL. Dlouhé adresy URL nejsou zapamatovatelné a je obtížné je najít. |
+| **Přidání relevantního vizuálního obsahu, jako je video o zákaznických doporučeních nebo Architektura řešení** | Použití příliš velkého textu způsobí, že vaši zákazníci budou obsah ignorovat a nebudete moct prozkoumat.|
+| **Vytvoření jasného volání akce pro směrování návštěvníků na stránku katalogu Marketplace** | Příliš mnoho odkazů nebo akcí na stránce. |
+| **Vložení volání akce do záhlaví nebo jasně vymezené části** | Vložení odkazů na svůj výpis na webu Marketplace v odstavci textu. |
+| **Prozkoumat nejlepší klíčová slova a optimalizovat stránku pro hledání** | Za předpokladu, že název produktu vygeneruje vyšší pořadí hledání. |
+| **Použití klíčových slov z reklamních kampaní** | Použití mnoha různých klíčových slov v rámci webových vlastností rozředí vaše reklamní investice. |
+| **Umístit relevantní názvy produktů a klíčová slova "nad skládání"** | Uživatelé se posouvají, aby viděli produkt nebo řešení, které se předvádí. |
+| **Použijte k ověření vašeho řešení v souladu s pokyny pro značky Microsoftu, jako je Azure Certified** | Použití Microsoft Brand snímků, který není schválený. |
 
 ## <a name="next-steps"></a>Další kroky
 
-*   Další informace o informačním odznaku Azure Certified najdete v [pokynech pro certifikaci Microsoft Azure](https://azure.microsoft.com/support/legal/marketplace/certified-guidelines).
-*   Další informace o značce najdete v [tématu Brand Central](https://microsoft.sharepoint.com/teams/brandcentral).
-*   Další informace o nástroji Tvůrce loga naleznete v tématu [Logo Builder](https://logobuilder.partner.microsoft.com).
-*   Přečtěte [si, jak pro vás partnerský program společnosti Microsoft funguje](https://partner.microsoft.com/membership/how-it-works).
+*   Další informace o označení pro certifikaci v Azure najdete v článku [pokyny pro certifikaci Microsoft Azure](https://azure.microsoft.com/support/legal/marketplace/certified-guidelines).
+*   Další zdroje informací o brandingu najdete v tématu [značky Central](https://microsoft.sharepoint.com/teams/brandcentral).
+*   Další informace o nástroji pro sestavování loga najdete v tématu [Tvůrce loga](https://logobuilder.partner.microsoft.com).
+*   Podívejte [se, jak partnerský program Microsoftu funguje za vás](https://partner.microsoft.com/membership/how-it-works).

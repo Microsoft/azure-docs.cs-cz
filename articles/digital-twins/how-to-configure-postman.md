@@ -1,6 +1,6 @@
 ---
-title: Jak nakonfigurovat Pošťáka – Azure Digital Twins | Dokumenty společnosti Microsoft
-description: Přečtěte si, jak nakonfigurovat a použít Postman k testování rozhraní API Azure Digital Twins.
+title: Jak nakonfigurovat post-Azure digitální vlákna | Microsoft Docs
+description: Naučte se konfigurovat a používat metodu post pro testování rozhraní API pro digitální vlákna Azure.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -9,99 +9,99 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.openlocfilehash: ffcfb4f6ec5f6c654d0b243af85034ab575e0d88
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80297156"
 ---
-# <a name="how-to-configure-postman-for-azure-digital-twins"></a>Jak nakonfigurovat Postman pro Azure Digital Twins
+# <a name="how-to-configure-postman-for-azure-digital-twins"></a>Jak nakonfigurovat metodu post pro digitální vlákna Azure
 
-Tento článek popisuje, jak nakonfigurovat klienta Postman REST pro interakci s a testování rozhraní API pro správu digitálních dvojčat Azure. Konkrétně popisuje:
+Tento článek popisuje, jak nakonfigurovat klienta programu post REST pro interakci s a testováním rozhraní API pro správu digitálních vláken Azure. Konkrétně popisuje:
 
-* Jak nakonfigurovat aplikaci Azure Active Directory pro použití implicitního grantového toku OAuth 2.0.
-* Jak použít klienta Postman REST k výrobě požadavků HTTP s tokeny pro vaše nastavení API pro správu.
-* Jak používat Postman k vícedílné požadavky POST na vaše nastavení API pro správu.
+* Jak nakonfigurovat aplikaci Azure Active Directory pro použití procesu implicitního udělení žádosti OAuth 2,0.
+* Jak používat klienta post REST k vytváření tokenů nesoucích požadavky HTTP na rozhraní API pro správu.
+* Jak používat metodu POST k provádění požadavků POST na rozhraní API pro správu.
 
-## <a name="postman-summary"></a>Pošťák shrnutí
+## <a name="postman-summary"></a>Souhrn příspěvku
 
-Můžete začít s Azure Digital Twins pomocí klientského nástroje REST, jako je [Postman,](https://www.getpostman.com/) k přípravě místního testovacího prostředí. Pošťákův klient pomáhá rychle vytvářet složité požadavky HTTP. Stáhněte si desktopovou verzi klienta Postman tak, že přejdete na [www.getpostman.com/apps](https://www.getpostman.com/apps).
+Začněte využívat digitální vlákna Azure pomocí nástroje klienta REST, jako je například [post](https://www.getpostman.com/) , pro přípravu místního testovacího prostředí. Klient pro odesílání pomáhá rychle vytvářet komplexní požadavky HTTP. Stáhněte desktopovou verzi klienta po přechodu na [www.getpostman.com/apps](https://www.getpostman.com/apps).
 
-[Pošťák](https://www.getpostman.com/) je testovací nástroj REST, který vyhledá klíčové funkce požadavků HTTP do užitečného grafického uživatelského rozhraní založeného na stolních počítačích a pluginech.
+[Držitelem je nástroj](https://www.getpostman.com/) pro testování REST, který vyhledává klíčové funkce požadavku HTTP do užitečného grafického uživatelského rozhraní a GUI založeného na modulu plug-in.
 
-Prostřednictvím klienta Postman mohou vývojáři řešení určit druh požadavku HTTP (*POST*, *GET*, *UPDATE*, *PATCH*a *DELETE*), koncový bod rozhraní API pro volání a použití protokolu TLS. Pošťák také podporuje přidávání hlavičky požadavků HTTP, parametrů, dat formuláře a těl.
+Prostřednictvím klienta pro řešení můžou vývojáři řešení určit druh požadavku HTTP (*post*, *Get*, *Update*, *patch*a *Delete*), koncový bod rozhraní API pro volání a používání protokolu TLS. Post také podporuje přidávání hlaviček požadavků HTTP, parametrů, formulářů-dat a institucí.
 
-## <a name="configure-azure-active-directory-to-use-the-oauth-20-implicit-grant-flow"></a>Konfigurace služby Azure Active Directory tak, aby používala implicitní tok grantů OAuth 2.0
+## <a name="configure-azure-active-directory-to-use-the-oauth-20-implicit-grant-flow"></a>Konfigurace Azure Active Directory pro použití procesu implicitního udělení žádosti OAuth 2,0
 
-1. Podle pokynů na [úvodním panelu](quickstart-view-occupancy-dotnet.md#set-permissions-for-your-app) vytvořte a nakonfigurujte aplikaci Služby Azure Active Directory. Případně můžete znovu použít existující registraci aplikace.
+1. Pomocí kroků v [rychlém](quickstart-view-occupancy-dotnet.md#set-permissions-for-your-app) startu vytvořte a nakonfigurujte aplikaci Azure Active Directory. Alternativně můžete znovu použít stávající registraci aplikace.
 
-    [![Konfigurace nového identifikátoru URI přesměrování Pozora](media/how-to-configure-postman/authentication-redirect-uri.png)](media/how-to-configure-postman/authentication-redirect-uri.png#lightbox)
+    [![Konfigurovat nový identifikátor URI pro přesměrování po odeslání](media/how-to-configure-postman/authentication-redirect-uri.png)](media/how-to-configure-postman/authentication-redirect-uri.png#lightbox)
 
-1. Nyní přidejte identifikátor URI `https://www.getpostman.com/oauth2/callback` **přesměrování** do .
+1. Teď přidejte **identifikátor URI pro přesměrování** do `https://www.getpostman.com/oauth2/callback`.
 
-1. Zaškrtněte políčko **Implicitní udělení** > **tokenů přístupu,** aby bylo možné použít implicitní grantový tok OAuth 2.0. Vyberte **konfigurovat**a potom **uložit**.
+1. Zaškrtněte políčko **implicitní udělení** > **přístupových tokenů** , abyste umožnili použití toku implicitního udělení OAuth 2,0. Vyberte **Konfigurovat**a pak **Uložit**.
 
-1. Zkopírujte **ID klienta** aplikace Azure Active Directory.
+1. Zkopírujte **ID klienta** vaší aplikace Azure Active Directory.
 
-## <a name="obtain-an-oauth-20-token"></a>Získání tokenu OAuth 2.0
+## <a name="obtain-an-oauth-20-token"></a>Získání tokenu OAuth 2,0
 
 [!INCLUDE [digital-twins-management-api](../../includes/digital-twins-management-api.md)]
 
-Nastavte a nakonfigurujte Postman a získejte token Služby Azure Active Directory. Potom vytvořte ověřený požadavek HTTP pro Azure Digital Twins pomocí získaného tokenu:
+Nastavte a nakonfigurujte metodu post pro získání tokenu Azure Active Directory. Následně můžete pomocí získaného tokenu vytvořit ověřený požadavek HTTP na digitální vlákna Azure:
 
-1. Ověřte **správnost adresy URL autorizace.** To by mělo mít formát:
+1. Ověřte, jestli je vaše **autorizační adresa URL** správná. Měla by mít formát:
 
     ```plaintext
     https://login.microsoftonline.com/YOUR_AZURE_TENANT.onmicrosoft.com/oauth2/authorize?resource=0b07f429-9f4b-4714-9392-cc5e8e80c8b0
     ```
 
-    | Name (Název)  | Nahradit hodnotou | Příklad |
+    | Název  | Nahradit hodnotou | Příklad |
     |---------|---------|---------|
-    | YOUR_AZURE_TENANT | Název vašeho klienta nebo organizace. Místo alfanumerického **ID klienta** registrace aplikace Azure Active Directory použijte název vhodný pro člověka. | `microsoft` |
+    | YOUR_AZURE_TENANT | Název vašeho tenanta nebo organizace. Místo alfanumerického **ID tenanta** vaší Azure Active Directory registrace aplikace použijte popisný název. | `microsoft` |
 
-1. Přejděte na [www.getpostman.com](https://www.getpostman.com/) a stáhněte si aplikaci.
+1. Pokud si chcete aplikaci stáhnout, navštivte [www.getpostman.com](https://www.getpostman.com/) .
 
-1. Chceme podat žádost GET. Vyberte kartu **Autorizace,** vyberte OAuth 2.0 a pak vyberte **Získat nový přístupový token**.
+1. Chceme vytvořit žádost o získání. Vyberte kartu **autorizace** , vyberte OAuth 2,0 a potom vyberte **získat nový přístupový token**.
 
     | Pole  | Hodnota |
     |---------|---------|
     | Typ udělení | `Implicit` |
     | Adresa URL zpětného volání | `https://www.getpostman.com/oauth2/callback` |
-    | Ověřovací adresa URL | Použití **adresy URL autorizace** z **kroku 1** |
-    | ID klienta | Použití **ID aplikace** pro aplikaci Azure Active Directory, která byla vytvořena nebo znovu použita z předchozí části |
+    | Ověřovací adresa URL | Použijte **autorizační adresu URL** z **kroku 1** . |
+    | ID klienta | Použijte **ID aplikace** pro aplikaci Azure Active Directory, která se vytvořila nebo znovu použila z předchozí části. |
     | Rozsah | Ponechte prázdné |
     | Stav | Ponechte prázdné |
     | Ověření klienta | `Send as Basic Auth header` |
 
-1. Klient by se nyní měl zobrazit jako:
+1. Klient by teď měl vypadat takto:
 
-    [![Příklad tokenu klienta Pošťáka](media/how-to-configure-postman/configure-postman-oauth-token.png)](media/how-to-configure-postman/configure-postman-oauth-token.png#lightbox)
+    [![Příklad tokenu klienta pro vystavení](media/how-to-configure-postman/configure-postman-oauth-token.png)](media/how-to-configure-postman/configure-postman-oauth-token.png#lightbox)
 
 1. Vyberte **Request Token** (Vyžádat token).
   
-1. Posuňte se dolů a vyberte **Použít token**.
+1. Posuňte se dolů a vyberte **použít token**.
 
-## <a name="make-a-multipart-post-request"></a>Vytvoření vícedílné žádosti POST
+## <a name="make-a-multipart-post-request"></a>Vytvoření žádosti POST s více částmi
 
-Po dokončení předchozích kroků nakonfigurujte Postman tak, aby ověřoval vícedílný požadavek POST protokolu HTTP:
+Po dokončení předchozích kroků nakonfigurujte metodu post, aby se ověřil ověřený požadavek HTTP na více než jedna z nich:
 
-1. Na kartě Záhlaví přidejte klíč **obsahu** obsahu `multipart/mixed` **hlavičky** požadavku HTTP s hodnotou .
+1. Na kartě **hlavičky** přidejte klíč HLAVIČKY požadavku HTTP **– typ obsahu** s hodnotou `multipart/mixed`.
 
-   [![Určení typu obsahu vícedílné/smíšené](media/how-to-configure-postman/configure-postman-content-type.png)](media/how-to-configure-postman/configure-postman-content-type.png#lightbox)
+   [![Zadat typ obsahu multipart/Mixed](media/how-to-configure-postman/configure-postman-content-type.png)](media/how-to-configure-postman/configure-postman-content-type.png#lightbox)
 
-1. Serialize netextových dat do souborů. Data JSON budou uložena jako soubor JSON.
-1. Na **Body** kartě Tělo `form-data`vyberte . 
-1. Přidejte každý soubor **key** přiřazením názvu `File`klíče a výběrem .
-1. Potom vyberte každý soubor pomocí tlačítka **Zvolit soubor.**
+1. Serializace jiných než textových dat do souborů. Data JSON by se uložila jako soubor JSON.
+1. Na kartě **tělo** vyberte `form-data`. 
+1. Přidejte každý soubor tak, že **key** přiřadíte název `File`klíče a vyberete.
+1. Pak vyberte jednotlivé soubory pomocí tlačítka **zvolit soubor** .
 
-   [![Příklad těla klienta Pošťáka](media/how-to-configure-postman/configure-postman-form-body.png)](media/how-to-configure-postman/configure-postman-form-body.png#lightbox)
+   [![Příklad textu formuláře klienta pro vystavení](media/how-to-configure-postman/configure-postman-form-body.png)](media/how-to-configure-postman/configure-postman-form-body.png#lightbox)
 
    >[!NOTE]
-   > * Pošťákův klient nevyžaduje, aby vícedílné bloky měly ručně přiřazenou **položku Content-Type** nebo **Content-Disposition**.
-   > * Není nutné zadat tyto hlavičky pro každou část.
-   > * Pro celý `multipart/mixed` požadavek je nutné vybrat nebo jiný vhodný **typ obsahu.**
+   > * Klient po straně klienta nevyžaduje, aby bloky částí v částech měly ručně přiřazený **typ obsahu** nebo **Content-Disposition**.
+   > * Pro každou část není nutné zadávat tato záhlaví.
+   > * Pro celý požadavek `multipart/mixed` musíte vybrat nebo jiný vhodný **typ obsahu** .
 
-1. Nakonec vyberte **Odeslat,** chcete-li odeslat vícedílný požadavek HTTP POST. Stavový kód `200` `201` nebo označuje úspěšný požadavek. Příslušná zpráva odpovědi se zobrazí v rozhraní klienta.
+1. Nakonec vyberte **Odeslat** a odešlete požadavek HTTP POST s více částmi. Stavový kód `200` nebo `201` označuje úspěšný požadavek. V klientském rozhraní se zobrazí odpovídající zpráva odpovědi.
 
 1. Ověřte data požadavku HTTP POST voláním koncového bodu rozhraní API: 
 
@@ -111,8 +111,8 @@ Po dokončení předchozích kroků nakonfigurujte Postman tak, aby ověřoval v
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o virtuálních i min. a správě digitálních dvojčat a o tom, jak je používat, najdete v tématu [Jak používat řešení API pro správu digitálních dvojčat Azure](how-to-navigate-apis.md).
+- Další informace o rozhraních API pro správu digitálních vláken a způsobu jejich použití najdete v článku [Jak používat rozhraní API pro správu digitálních vláken Azure](how-to-navigate-apis.md).
 
-- Pomocí vícedílných požadavků [můžete přidávat objekty BLOB do entit Azure Digital Twins](./how-to-add-blobs.md).
+- K [Přidání objektů blob do entit Azure Digital](./how-to-add-blobs.md)requests použijte požadavky na více částí.
 
-- Informace o ověřování pomocí api pro správu najdete v části [Ověření pomocí řešení api](./security-authenticating-apis.md).
+- Pokud se chcete dozvědět o ověřování pomocí rozhraní API pro správu, přečtěte si téma [ověřování pomocí rozhraní API](./security-authenticating-apis.md).

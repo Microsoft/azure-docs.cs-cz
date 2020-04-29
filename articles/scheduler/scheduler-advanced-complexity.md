@@ -1,6 +1,6 @@
 ---
-title: Vytváření pokročilých plánů úloh a opakování
-description: Zjistěte, jak vytvořit pokročilé plány a opakování pro úlohy v Plánovači Azure
+title: Sestavení pokročilých plánů a opakování úloh
+description: Naučte se vytvářet pokročilé plány a opakování pro úlohy v Azure Scheduleru.
 services: scheduler
 ms.service: scheduler
 author: derek1ee
@@ -10,69 +10,69 @@ ms.suite: infrastructure-services
 ms.topic: article
 ms.date: 11/14/2018
 ms.openlocfilehash: b85932bf0d4fd080afadef2bc28d6a218b2d627a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78898586"
 ---
-# <a name="build-advanced-schedules-and-recurrences-for-jobs-in-azure-scheduler"></a>Vytváření pokročilých plánů a opakování úloh v Plánovači Azure
+# <a name="build-advanced-schedules-and-recurrences-for-jobs-in-azure-scheduler"></a>Sestavování pokročilých plánů a opakování úloh v Azure Scheduleru
 
 > [!IMPORTANT]
-> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) nahrazuje Azure Scheduler, který [je vyřazen .](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date) Pokud chcete pokračovat v práci s úlohami, které jste nastavili v Plánovači, [migrujte co](../scheduler/migrate-from-scheduler-to-logic-apps.md) nejdříve do Azure Logic Apps. 
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) nahrazuje [vyřazení](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)Azure Scheduleru. Pokud chcete pokračovat v práci s úlohami, které jste nastavili v plánovači, [migrujte prosím na Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) co nejdříve. 
 >
-> Plánovač už není k dispozici na webu Azure Portal, ale rutiny [ROZHRANÍ REST API](/rest/api/scheduler) a Azure [Scheduler PowerShell](scheduler-powershell-reference.md) zůstávají k dispozici v tuto chvíli, takže můžete spravovat své úlohy a kolekce úloh.
+> Plánovač již není v Azure Portal k dispozici, ale [rutiny prostředí PowerShell](scheduler-powershell-reference.md) [REST API](/rest/api/scheduler) a Azure Scheduler jsou v tuto chvíli dostupné, abyste mohli spravovat úlohy a kolekce úloh.
 
-V rámci úlohy [Plánovač Azure](../scheduler/scheduler-intro.md) je plán jádrem, které určuje, kdy a jak služba Plánovač úlohu spouští. Pomocí plánovače můžete nastavit více jednorázových a opakovaných plánů pro úlohu. Jednorázové plány se spouštějí pouze jednou v určený čas a jsou v podstatě opakované plány, které jsou spuštěny pouze jednou. Opakované plány se spouštějí na zadané frekvenci. S touto flexibilitou můžete plánovač použít pro různé obchodní scénáře, například:
+V rámci úlohy [Azure Scheduleru](../scheduler/scheduler-intro.md) je plán jádrem, který určuje, kdy a jak služba plánovače úlohu spouští. Pro úlohu s plánovačem můžete nastavit několik jednorázových a opakovaných plánů. Jednorázové plány se spouští jenom jednou v zadaném čase a jsou v podstatě opakující se plány, které se spouštějí jenom jednou. Opakující se plány běží na zadané frekvenci. Díky této flexibilitě můžete použít Scheduler pro různé obchodní scénáře, například:
 
-* **Pravidelně čistěte data**: Vytvořte denní úlohu, která odstraní všechny tweety starší než tři měsíce.
+* **Pravidelně čistit data**: Vytvořte každodenní úlohu, která odstraní všechny tweety starší než tři měsíce.
 
-* **Archivní data**: Vytvořte měsíční úlohu, která odešle historii faktur do zálohovací služby.
+* **Archivovaná data**: Vytvořte měsíční úlohu, která vloží historii faktury do zálohovací služby.
 
-* **Požádat o externí data**: Vytvořte úlohu, která běží každých 15 minut a vytáhne novou zprávu o počasí z NOAA.
+* **Požadovat externí data**: vytvořte úlohu, která se spouští každých 15 minut, a vyžádá si novou zprávu o počasí z NOAA.
 
-* **Zpracovat obrázky**: Vytvořte úlohu ve všední den, která běží mimo špičku a používá cloud computing pro kompresi obrázků nahraných během dne.
+* **Image procesů**: můžete vytvořit úlohu v týdnu, která běží v době mimo špičku, a používá Cloud Computing pro komprimaci imagí odeslaných během dne.
 
-Tento článek popisuje ukázkové úlohy, které můžete vytvořit pomocí Plánovače a [rozhraní REST API plánovače Azure](/rest/api/scheduler)a obsahuje definici zápisu objektu JavaScript (JSON) pro každý plán. 
+Tento článek popisuje příklady úloh, které můžete vytvořit pomocí plánovače a [služby Azure scheduler REST API](/rest/api/scheduler), a obsahuje definici JavaScript Object Notation (JSON) pro každý plán. 
 
 ## <a name="supported-scenarios"></a>Podporované scénáře
 
-Tyto příklady ukazují rozsah scénářů, které podporuje Plánovač Azure a jak vytvořit plány pro různé vzorce chování, například:
+Tyto příklady znázorňují rozsah scénářů, které Azure Scheduler podporuje, a postup pro vytváření plánů pro různé vzory chování, například:
 
-* Spustit jednou v určitém datu a čase.
-* Spusťte a opakujte určitý počet opakování.
-* Okamžitě spusťte a opakujte.
-* Spouštět a opakovat *každých n* minut, hodin, dnů, týdnů nebo měsíců počínaje určitým časem.
-* Spouštět a opakovat každý týden nebo měsíčně, ale pouze v určité dny v týdnu nebo v konkrétní dny v měsíci.
-* Spusťte a opakujte více než jednou za určité období. Například každý měsíc poslední pátek a pondělí nebo denně v 5:15 a v 17:15.
+* Spustí se jednou v konkrétní datum a čas.
+* Spuštění a opakování určitého počtu opakování.
+* Spusťte okamžitě a znovu se opakuje.
+* Spuštění a opakování každých *n* minut, hodin, dnů, týdnů nebo měsíců, a to od určitého času.
+* Spustit a opakovat každý týden nebo každý měsíc, ale jenom v konkrétní dny v týdnu nebo v konkrétní dny v měsíci.
+* Spuštění a opakování více než jednou pro konkrétní období. Například každý měsíc v posledním pátek a pondělí nebo každý den v 5:15. a v 5:15 ODP.
 
 Tento článek později popisuje tyto scénáře podrobněji.
 
 <a name="create-scedule"></a>
 
-## <a name="create-schedule-with-rest-api"></a>Vytvořit plán pomocí rozhraní REST API
+## <a name="create-schedule-with-rest-api"></a>Vytvořit plán s REST API
 
-Pokud chcete vytvořit základní plán s [rozhraním REST api Plánovače Azure](/rest/api/scheduler), postupujte takto:
+K vytvoření plánu Basic pomocí [REST API Azure Scheduleru](/rest/api/scheduler)použijte následující postup:
 
-1. Zaregistrujte své předplatné Azure u poskytovatele prostředků pomocí [operace Registrovat – rozhraní REST API správce prostředků](https://docs.microsoft.com/rest/api/resources/providers). Název zprostředkovatele služby Azure Scheduler je **Microsoft.Scheduler**. 
+1. Zaregistrujte své předplatné Azure u poskytovatele prostředků pomocí [REST API operace Register-správce prostředků](https://docs.microsoft.com/rest/api/resources/providers). Název poskytovatele služby Azure Scheduler je **Microsoft. Scheduler**. 
 
-1. Vytvořte kolekci úloh pomocí [operace Vytvořit nebo aktualizovat pro kolekce úloh](https://docs.microsoft.com/rest/api/scheduler/jobcollections) v rozhraní REST ROZHRANÍ API plánovače. 
+1. Vytvořte kolekci úloh pomocí [operace vytvořit nebo aktualizovat pro kolekce úloh](https://docs.microsoft.com/rest/api/scheduler/jobcollections) v plánovači REST API. 
 
-1. Vytvořte úlohu pomocí [operace Vytvořit nebo aktualizovat pro úlohy](https://docs.microsoft.com/rest/api/scheduler/jobs/createorupdate). 
+1. Vytvořte úlohu pomocí [operace vytvořit nebo aktualizovat pro úlohy](https://docs.microsoft.com/rest/api/scheduler/jobs/createorupdate). 
 
 ## <a name="job-schema-elements"></a>Prvky schématu úlohy
 
-Tato tabulka obsahuje přehled na vysoké úrovni pro hlavní prvky JSON, které můžete použít při nastavování opakování a plánů pro úlohy. 
+Tato tabulka poskytuje podrobný přehled hlavních elementů JSON, které můžete použít při nastavování opakování a plánů pro úlohy. 
 
-| Element | Požaduje se | Popis | 
+| Prvek | Požaduje se | Popis | 
 |---------|----------|-------------|
-| **startTime** | Ne | Hodnota řetězce DateTime ve [formátu ISO 8601,](https://en.wikipedia.org/wiki/ISO_8601) která určuje, kdy se úloha poprvé spustí v základním plánu. <p>U složitých plánů úloha začíná nejdříve **startTime**. | 
-| **recurrence** | Ne | Pravidla opakování při spuštění úlohy. Objekt **opakování** podporuje tyto prvky: **frekvence**, **interval**, **plán**, **počet**a **endTime**. <p>Pokud použijete prvek **opakování,** musíte také použít prvek **frekvence,** zatímco jiné prvky **opakování** jsou volitelné. |
-| **Frekvence** | Ano, při použití **opakování** | Časová jednotka mezi výskyty a podporuje tyto hodnoty: "Minuta", "Hodina", "Den", "Týden", "Měsíc" a "Rok" | 
-| **interval** | Ne | Kladné celé číslo, které určuje počet časových jednotek mezi výskyty na základě **frekvence**. <p>Pokud je například **interval** 10 a **frekvence** je "Týden", úloha se opakuje každých 10 týdnů. <p>Zde je největší počet intervalů pro každou frekvenci: <p>- 18 měsíců <br>- 78 týdnů <br>- 548 dní <br>- Pro hodiny a minuty je rozsah 1 <= <*interval*> <= 1000. | 
-| **Plán** | Ne | Definuje změny opakování na základě zadaných minutových značek, hodinových značek, dnů v týdnu a dnů v měsíci. | 
-| **count** | Ne | Kladné celé číslo, které určuje počet spuštění úlohy před dokončením. <p>Například pokud má denní úloha **počet** nastavený na 7 a počáteční datum je pondělí, úloha skončí v neděli. Pokud počáteční datum již uplynulo, první spuštění se vypočítá z času vytvoření. <p>Bez **endTime** nebo **count**, úloha běží nekonečně. Nelze použít **počet** a **endTime** ve stejné úloze, ale pravidlo, které dokončí jako první je dodržena. | 
-| **endTime** | Ne | Hodnota řetězce Date nebo DateTime ve [formátu ISO 8601,](https://en.wikipedia.org/wiki/ISO_8601) která určuje, kdy úloha přestane běžet. Můžete nastavit hodnotu pro **endTime,** která je v minulosti. <p>Bez **endTime** nebo **count**, úloha běží nekonečně. Nelze použít **počet** a **endTime** ve stejné úloze, ale pravidlo, které dokončí jako první je dodržena. |
+| **startTime** | Ne | Hodnota řetězce DateTime ve [formátu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) , která určuje, kdy se úloha poprvé spustí podle plánu Basic. <p>U složitých plánů úloha začíná dřív než **StartTime**. | 
+| **vzorec** | Ne | Pravidla opakování při spuštění úlohy. Objekt **opakování** podporuje tyto prvky: **četnost**, **interval**, **plán**, **počet**a **čas**ukončení. <p>Použijete-li element **opakování** , je nutné také použít prvek **frekvence** , zatímco jiné prvky **opakování** jsou volitelné. |
+| **opakování** | Ano, při použití **opakování** | Časová jednotka mezi výskyty a podporuje tyto hodnoty: "minuta", "hodina", "den", "týden", "Month" a "Year" | 
+| **interval** | Ne | Celé kladné číslo určující počet časových jednotek mezi výskyty na základě **frekvence**. <p>Pokud má například **interval** hodnotu 10 a **frekvence** "týden", úloha se opakuje každých 10 týdnů. <p>Toto je nejvyšší počet intervalů pro každou frekvenci: <p>– 18 měsíců <br>– 78 týdnů <br>– 548 dní <br>– Pro hodiny a minuty je rozsah 1 <= <*intervalu*> <= 1000. | 
+| **CXL** | Ne | Definuje změny opakování na základě zadaných minutových značek, hodinových značek, dnů v týdnu a dnů v měsíci. | 
+| **výpočtu** | Ne | Kladné celé číslo, které určuje počet pokusů o spuštění úlohy před dokončením. <p>Pokud je například denní úloha v poli **počet** nastavená na hodnotu 7 a počáteční datum je pondělí, úloha skončí běžet v neděli. Pokud počáteční datum již prošlo, je první spuštění vypočítáno z času vytvoření. <p>Aniž byste měli **čas** ukončení ani **počet**, úloha se spustí nekonečně. V rámci stejné úlohy nemůžete použít současně jak **Count** , tak i **čas** , ale pravidlo, které se dokončí jako první, se respektuje. | 
+| **endTime** | Ne | Hodnota řetězce Date nebo DateTime ve [formátu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) , která určuje, kdy se úloha přestane spouštět. Můžete nastavit hodnotu pro **čas** ukončení, který je v minulosti. <p>Aniž byste měli **čas** ukončení ani **počet**, úloha se spustí nekonečně. V rámci stejné úlohy nemůžete použít současně jak **Count** , tak i **čas** , ale pravidlo, které se dokončí jako první, se respektuje. |
 |||| 
 
 Toto schéma JSON například popisuje základní plán a opakování úlohy: 
@@ -95,26 +95,26 @@ Toto schéma JSON například popisuje základní plán a opakování úlohy:
 
 *Data a hodnoty DateTime*
 
-* Data v úlohách plánovače zahrnují pouze datum a postupujte podle [specifikace ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).
+* Data v úlohách Scheduleru obsahují pouze datum a postupují podle [Specifikace ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).
 
-* Datum-časy v úlohách Plánovač zahrnují datum a čas, postupujte podle [specifikace ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)a jsou považovány za Čas UTC, pokud není zadán žádný posun UTC. 
+* Datum a čas v úlohách Scheduleru zahrnují datum i čas, dodržuje [specifikaci ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)a předpokládá se, že se jedná o čas UTC, pokud není zadaný žádný posun UTC. 
 
-Další informace naleznete v [tématu Koncepty, terminologie a entity](../scheduler/scheduler-concepts-terms.md).
+Další informace najdete v tématu [Koncepty, terminologie a entity](../scheduler/scheduler-concepts-terms.md).
 
 <a name="start-time"></a>
 
-## <a name="details-starttime"></a>Podrobnosti: startTime
+## <a name="details-starttime"></a>Podrobnosti: Čas_spuštění
 
-Tato tabulka popisuje, jak ovládací prvky **startTime** řídí způsob spuštění úlohy:
+Tato tabulka popisuje, jak **StartTime** řídí způsob spuštění úlohy:
 
-| startTime | Žádné opakování | Opakování, žádný plán | Opakování s plánem |
+| startTime | Bez opakování | Opakování, žádný plán | Opakování s plánem |
 |-----------|---------------|-------------------------|--------------------------|
-| **Žádný čas zahájení** | Okamžitě utíkej. | Okamžitě utíkej. Spustit pozdější spuštění vypočítané z doby posledního spuštění. | Okamžitě utíkej. Spusťte pozdější spuštění na základě plánu opakování. | 
-| **Čas zahájení v minulosti** | Okamžitě utíkej. | Vypočítejte první budoucí čas spuštění po počátečním čase a spusťte v tomto okamžiku. <p>Spustit pozdější spuštění vypočítané z doby posledního spuštění. <p>Viz příklad za touto tabulkou. | Zahájit *úlohu nejdříve* zadaný čas zahájení. První výskyt vychází z plánu vypočítaného z času začátku. <p>Spusťte pozdější spuštění na základě plánu opakování. | 
-| **Počáteční čas v budoucnosti nebo aktuální čas** | Spustit jednou v zadaném čase zahájení. | Spustit jednou v zadaném čase zahájení. <p>Spustit pozdější spuštění vypočítané z doby posledního spuštění. | Zahájit *úlohu nejdříve* zadaný čas zahájení. První výskyt vychází z plánu a je vypočítaný z času začátku. <p>Spusťte pozdější spuštění na základě plánu opakování. |
+| **Žádný počáteční čas** | Spustit ihned. | Spustit ihned. Spustit pozdější spuštění vypočítané z posledního času spuštění. | Spustit ihned. Spusťte pozdější spuštění na základě plánu opakování. | 
+| **Čas začátku v minulosti** | Spustit ihned. | Vypočítá první čas spuštění v budoucnosti po počátečním čase a spustí se v daném čase. <p>Spustit pozdější spuštění vypočítané z posledního času spuštění. <p>Podívejte se na příklad za touto tabulkou. | Spustit úlohu *ne dřív než* zadaný počáteční čas. První výskyt vychází z plánu vypočítaného z času začátku. <p>Spusťte pozdější spuštění na základě plánu opakování. | 
+| **Čas spuštění v budoucnosti nebo aktuální čas** | Spustí se jednou v zadaném počátečním čase. | Spustí se jednou v zadaném počátečním čase. <p>Spustit pozdější spuštění vypočítané z posledního času spuštění. | Spustit úlohu *ne dřív než* zadaný počáteční čas. První výskyt vychází z plánu a je vypočítaný z času začátku. <p>Spusťte pozdější spuštění na základě plánu opakování. |
 ||||| 
 
-Předpokládejme, že tento příklad s těmito podmínkami: čas zahájení v minulosti s opakováním, ale bez plánu.
+Předpokládejme, že tento příklad s těmito podmínkami: čas zahájení v minulosti s opakováním, ale žádný plán.
 
 ```json
 "properties": {
@@ -126,85 +126,85 @@ Předpokládejme, že tento příklad s těmito podmínkami: čas zahájení v m
 }
 ```
 
-* Aktuální datum a čas je duben 08, 2015 v 1:00 PM.
+* Aktuální datum a čas je 8. dubna 2015 na 1:00 odp.
 
-* Počáteční datum a čas je duben 07, 2015 v 14:00, což je před aktuálním datem a časem.
+* Počáteční datum a čas jsou 07. dubna 2015 na 2:00 PM, což předchází aktuálnímu datu a času.
 
 * Opakování je každé dva dny.
 
-1. Za těchto podmínek je první poprava v dubnu 09, 2015 v 14:00. 
+1. Za těchto podmínek se první spuštění vyplatí od 09 do 9. dubna 2015 na 2:00 odp. 
 
-   Plánovač vypočítá výskyty spuštění na základě počátečního času, zahodí všechny instance v minulosti a použije další instanci v budoucnu. 
-   V tomto případě **startTime** je v dubnu 07, 2015 v 14:00, takže další instance je dva dny od této doby, což je duben 09, 2015 v 14:00.
+   Scheduler vypočítá výskyty spuštění založené na čase spuštění, zahodí všechny instance v minulosti a v budoucnu používá další instanci. 
+   V tomto případě je **čas StartTime** 15. dubna 2015 na 2:00 PM, takže další instance je od té doby dvě dny, což je 9. dubna 2015 na 2:00 odp.
 
-   První spuštění je stejné, zda **startTime** je 2015-04-05 14:00 nebo 2015-04-01 14:00. Po prvním spuštění pozdější spuštění jsou vypočteny na základě plánu. 
+   První spuštění je stejné, bez ohledu na to, jestli je **čas_spuštění** 2015-04-05 14:00 nebo 2015-04-01 14:00. Po prvním spuštění se pozdější spuštění vypočítají na základě plánu. 
    
-1. Popravy pak následovat v tomto pořadí: 
+1. Spuštění pak bude následovat v tomto pořadí: 
    
-   1. 2015-04-11 ve 14:00
-   1. 2015-04-13 ve 14:00 
-   1. 2015-04-15 ve 14:00
+   1. 2015-04-11 na 2:00 odp.
+   1. 2015-04-13 na 2:00 odp. 
+   1. 2015-04-15 na 2:00 odp.
    1. A tak dále...
 
-1. Nakonec, pokud má úloha plán, ale žádné zadané hodiny a minuty, tyto hodnoty jsou ve výchozím nastavení na hodiny a minuty v prvním spuštění.
+1. Nakonec platí, že pokud má úloha plán, ale ne zadané hodiny a minuty, tyto hodnoty se ve výchozím nastavení vyhodnotí jako hodiny a minuty v prvním spuštění, v uvedeném pořadí.
 
 <a name="schedule"></a>
 
 ## <a name="details-schedule"></a>Podrobnosti: plán
 
-Plán můžete **použít** k *omezení* počtu spuštění úloh. Například pokud úloha s **frekvencí** "měsíc" má plán, který běží pouze na den 31, úloha spustí pouze v měsících, které mají 31.
+Pomocí **plánu** můžete *omezit* počet spuštění úloh. Pokud má například úloha s **frekvencí** "Month" plán, který se spouští jenom na 31. den, úloha se spustí jenom v měsících, které mají 31 den.
 
-Plán můžete také **použít** k *rozšíření* počtu spuštění úloh. Například pokud úloha s **frekvencí** "měsíc" má plán, který běží na měsíc dny 1 a 2, úloha běží na první a druhý den v měsíci namísto pouze jednou za měsíc.
+Pomocí **plánu** můžete také *rozšířit* počet spuštění úloh. Pokud má například úloha s **frekvencí** "Month" plán, který se spouští v měsících 1 a 2, úloha se spustí první a druhý den v měsíci, nikoli jenom jednou za měsíc.
 
-Pokud zadáte více než jeden prvek plánu, pořadí hodnocení je od největší ho nejmenší: číslo týdne, měsíc den, den v týdnu, hodina a minuta.
+Pokud zadáte více než jeden prvek plánování, pořadí vyhodnocení bude od největšího po nejmenší: číslo týdne, měsíc, den v týdnu, hodina a minuta.
 
 Následující tabulka obsahuje podrobný popis elementů plánu:
 
 | Název JSON | Popis | Platné hodnoty |
 |:--- |:--- |:--- |
-| **minutes** |Minuty hodiny, kdy je úloha spuštěna. |Pole celá čísla. |
-| **Hodin** |Hodiny dne, kdy je úloha spuštěna. |Pole celá čísla. |
-| **weekDays** |Dny v týdnu, kdy se úloha spustí. Lze zadat pouze s týdenní frekvencí. |Pole některé z následujících hodnot (maximální velikost pole je 7):<br />- "Pondělí"<br />- "Úterý"<br />- "Středa"<br />- "Čtvrtek"<br />- "Pátek"<br />- "Sobota"<br />- "Neděle"<br /><br />Nerozlišují malá a velká písmena. |
-| **monthlyOccurrences** |Určuje, které dny v měsíci se úloha spustí. Lze zadat pouze s měsíční frekvencí. |Pole objektů **monthlyOccurrences:**<br /> `{ "day": day, "occurrence": occurrence}`<br /><br /> **den** je den v týdnu, kdy se úloha spustí. Například *{Neděle}* je každou neděli v měsíci. Povinná hodnota.<br /><br />**je** výskyt dne během měsíce. Například *{Neděle, -1}* je poslední neděle v měsíci. Nepovinný parametr. |
-| **monthDays** |Den v měsíci, kdy se úloha spustí. Lze zadat pouze s měsíční frekvencí. |Pole následujících hodnot:<br />– Libovolná hodnota <= −1 a >= −31<br />– Libovolná hodnota >= 1 a <= 31|
+| **minuty** |Minuty hodiny, kdy se úloha spouští. |Pole celých čísel. |
+| **hodin** |Hodiny dne, kdy se úloha spouští. |Pole celých čísel. |
+| **weekDays** |Dny v týdnu, kdy úloha běží. Dá se zadat jenom s týdenní frekvencí. |Pole některé z následujících hodnot (maximální velikost pole je 7):<br />– "Pondělí"<br />– "Úterý"<br />– "Středa"<br />-"Čtvrtek"<br />-"Pátek"<br />-"Sobota"<br />-"Neděle"<br /><br />Nerozlišuje velká a malá písmena. |
+| **monthlyOccurrences** |Určuje, které dny v měsíci je úloha spuštěna. Dá se zadat jenom s měsíční frekvencí. |Pole objektů **monthlyOccurrences** :<br /> `{ "day": day, "occurrence": occurrence}`<br /><br /> **Day** je den v týdnu, kdy se úloha spouští. Například *{neděle}* je každou neděli v měsíci. Povinná hodnota.<br /><br />**výskyt** je výskyt dne v měsíci. Například *{neděle,-1}* je poslední neděle v měsíci. Nepovinný parametr. |
+| **monthDays** |Den v měsíci, kdy se úloha spouští. Dá se zadat jenom s měsíční frekvencí. |Pole s následujícími hodnotami:<br />– Libovolná hodnota <= −1 a >= −31<br />– Libovolná hodnota >= 1 a <= 31|
 
-## <a name="examples-recurrence-schedules"></a>Příklady: Plány opakování
+## <a name="examples-recurrence-schedules"></a>Příklady: plány opakování
 
-Následující příklady ukazují různé plány opakování. Příklady se zaměřují na objekt plánu a jeho dílčí prvky.
+Následující příklady znázorňují různé plány opakování. Příklady jsou zaměřeny na objekt Schedule a jeho dílčí prvky.
 
-Tyto plány předpokládají, že **interval** je nastaven na 1\. Příklady také předpokládají správné hodnoty **frekvence** pro hodnoty v **plánu**. Například nelze použít **frekvenci** "den" a mají **monthDays** změny v **plánu**. Tato omezení popisujeme dříve v článku.
+V těchto plánech se předpokládá, že je tento **interval** nastavený na hodnotu 1.\. Příklady také předpokládají správné hodnoty **frekvence** pro hodnoty v **plánu**. Například nemůžete použít **frekvenci** "Day" (den) a **monthDays** změnu v **plánu**. Tato omezení jsme popsali výše v článku.
 
 | Příklad | Popis |
 |:--- |:--- |
-| `{"hours":[5]}` |Běh v 5 hodin ráno každý den.<br /><br />Plánovač odpovídá každou hodnotu v "hodiny" s každou hodnotu v "minuty", jeden po druhém, chcete-li vytvořit seznam všech časů, kdy je úloha spuštěna. |
+| `{"hours":[5]}` |Spusťte každý den v intervalu 5 dop.<br /><br />Scheduler porovnává každou hodnotu v řádu "hours" s každou hodnotou v hodnotě "minuty" a vytvoří seznam všech časů spuštění úlohy. |
 | `{"minutes":[15], "hours":[5]}` |Spuštění každý den v 5:15. |
 | `{"minutes":[15], "hours":[5,17]}` |Spuštění každý den v 5:15 a 17:15. |
 | `{"minutes":[15,45], "hours":[5,17]}` |Spuštění každý den v 5:15, 5:45 a 17:15 a 17:45. |
 | `{"minutes":[0,15,30,45]}` |Spuštění každých 15 minut. |
-| `{hours":[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]}` |Spuštění každou hodinu.<br /><br />Tato úloha běží každou hodinu. Minuta je řízena hodnotou pro **startTime**, pokud je zadána. Pokud není zadána žádná hodnota **startTime,** je minuta řízena časem vytvoření. Například pokud čas zahájení nebo čas vytvoření (podle toho, co platí) je 12:25 PM, úloha běží v 00:25, 01:25, 02:25, ..., 23:25.<br /><br />Plán je stejný jako úloha s **frekvencí** "hodina", **interval** 1 a žádná hodnota **plánu.** Rozdíl je v tom, že tento plán můžete použít s různými hodnotami **frekvence** a **intervalu** k vytvoření jiných úloh. Například pokud **je frekvence** "měsíc", plán se spustí pouze jednou za měsíc namísto každý den (pokud je **frekvence** "den"). |
-| `{minutes:[0]}` |Spuštění v každou celou hodinu.<br /><br />Tato úloha se také spouští každou hodinu, ale v hodinu (12:00, 1:00, 2:00 a tak dále). Tento plán je stejný jako úloha s **frekvencí** "hodina", hodnota **startTime** nula minut a žádný **plán**, pokud je frekvence "den". Pokud je však **frekvence** "týden" nebo "měsíc", plán provede pouze jeden den v týdnu nebo jeden den v měsíci. |
-| `{"minutes":[15]}` |Běh at 15 minut po hodině každou hodinu.<br /><br />Běží každou hodinu, počínaje 00:15, 1:15, 2:15 a tak dále. Končí ve 23:15. |
-| `{"hours":[17], "weekDays":["saturday"]}` |Spustit v 17:00 v sobotu každý týden. |
-| `{hours":[17], "weekDays":["monday", "wednesday", "friday"]}` |Spustit v 17 hodin v pondělí, středu a pátek každý týden. |
+| `{hours":[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]}` |Spuštění každou hodinu.<br /><br />Tato úloha se spouští každou hodinu. Minuta se řídí hodnotou pro **StartTime**, pokud je zadaná. Pokud není zadána žádná hodnota **StartTime** , je minuta řízena časem vytvoření. Pokud je například čas spuštění nebo čas vytvoření (případná částka) 12:25 ODP., úloha se spustí v 00:25, 01:25, 02:25,..., 23:25.<br /><br />Plán je stejný jako úloha s **frekvencí** "hodina", **intervalem** 1 a hodnotou **plánu** . Rozdílem je, že k vytvoření dalších úloh můžete použít tento plán s různými hodnotami **frekvence** a **intervalů** . Například pokud je **počet_plateb** "Month", plán se spustí pouze jednou měsíčně místo každého dne (Pokud je **frekvence** "Day"). |
+| `{minutes:[0]}` |Spuštění v každou celou hodinu.<br /><br />Tato úloha se také spouští každou hodinu, ale v hodině (12 DOP, 1 dop. 2 dop atd.). Tento plán je stejný jako úloha s **frekvencí** "hodina", hodnotou **StartTime** 0 minut a bez **plánu**, pokud je frekvence "Day". Pokud je však **frekvence** "Week" nebo "Month", plán se spustí pouze jeden den v týdnu nebo jeden den v měsíci. |
+| `{"minutes":[15]}` |Spustí se 15 minut po každé hodině.<br /><br />Spustí se každou hodinu, od 00:15 do 1:15 dopoledne, 2:15 a tak dále. Končí na 11:15 PM. |
+| `{"hours":[17], "weekDays":["saturday"]}` |Každý týden spusťte v sobotu za 5 hodin. |
+| `{hours":[17], "weekDays":["monday", "wednesday", "friday"]}` |Každý týden spouštějte v pondělí, středu a pátek. |
 | `{"minutes":[15,45], "hours":[17], "weekDays":["monday", "wednesday", "friday"]}` |Spuštění každý týden v pondělí, středu a pátek v 17:15 a 17:45. |
-| `{"hours":[5,17], "weekDays":["monday", "wednesday", "friday"]}` |Spustit v 5:00 a 17:00 v pondělí, středu a pátek každý týden. |
-| `{"minutes":[15,45], "hours":[5,17], "weekDays":["monday", "wednesday", "friday"]}` |Spustit v 5:15, 5:45 AM, 5:15 PM, a 5:45 PM v pondělí, středu a pátek každý týden. |
+| `{"hours":[5,17], "weekDays":["monday", "wednesday", "friday"]}` |Spouštějte každý týden v pondělí, středu a pátek v 8:00 a 5 odp. |
+| `{"minutes":[15,45], "hours":[5,17], "weekDays":["monday", "wednesday", "friday"]}` |Spusťte každý týden v pondělí, středu a pátek v 5:15 dop. 5:45 AM, 5:15 ODP. a 5:45 odp. |
 | `{"minutes":[0,15,30,45], "weekDays":["monday", "tuesday", "wednesday", "thursday", "friday"]}` |Spuštění ve všední dny každých 15 minut. |
-| `{"minutes":[0,15,30,45], "hours": [9, 10, 11, 12, 13, 14, 15, 16] "weekDays":["monday", "tuesday", "wednesday", "thursday", "friday"]}` |Běh každých 15 minut ve všední dny, od 9:00 do 16:45. |
-| `{"weekDays":["sunday"]}` |Běhvá v neděli v čase startu. |
-| `{"weekDays":["tuesday", "thursday"]}` |Spustit v úterý a ve čtvrtek v době zahájení. |
-| `{"minutes":[0], "hours":[6], "monthDays":[28]}` |Spustit v 6 hodin ráno na 28 den každého měsíce (za **předpokladu,** že frekvence "měsíc"). |
-| `{"minutes":[0], "hours":[6], "monthDays":[-1]}` |Spustit v 6 hodin poslední den v měsíci.<br /><br />Pokud chcete spustit úlohu poslední den v měsíci, použijte -1 namísto dne 28, 29, 30 nebo 31. |
-| `{"minutes":[0], "hours":[6], "monthDays":[1,-1]}` |Spustit v 6 hodin ráno na první a poslední den každého měsíce. |
-| `{monthDays":[1,-1]}` |Spustit na první a poslední den každého měsíce v době zahájení. |
-| `{monthDays":[1,14]}` |Spustit na první a čtrnáctý den každého měsíce v době zahájení. |
-| `{monthDays":[2]}` |Spustit druhý den v měsíci v době zahájení. |
-| `{"minutes":[0], "hours":[5], "monthlyOccurrences":[{"day":"friday", "occurrence":1}]}` |Spustit na první pátek v měsíci v 5 hodin ráno. |
-| `{"monthlyOccurrences":[{"day":"friday", "occurrence":1}]}` |Spustit na první pátek v měsíci v době zahájení. |
-| `{"monthlyOccurrences":[{"day":"friday", "occurrence":-3}]}` |Spustit na třetí pátek od konce měsíce, každý měsíc, v době zahájení. |
+| `{"minutes":[0,15,30,45], "hours": [9, 10, 11, 12, 13, 14, 15, 16] "weekDays":["monday", "tuesday", "wednesday", "thursday", "friday"]}` |Spouští se každých 15 minut v pracovních dnech od 9:00 do 4:45./odp.. |
+| `{"weekDays":["sunday"]}` |Spustí se v neděli v čase spuštění. |
+| `{"weekDays":["tuesday", "thursday"]}` |V počátečním čase spouštějte v úterý a v čtvrtek. |
+| `{"minutes":[0], "hours":[6], "monthDays":[28]}` |Spustí se v rozmezí od 6 do 28 dne v měsíci (za předpokladu, že je k dispozici **frekvence** "měsíc"). |
+| `{"minutes":[0], "hours":[6], "monthDays":[-1]}` |Běžet v rozmezí od 6. až do poslední den v měsíci.<br /><br />Pokud chcete úlohu spustit poslední den v měsíci, použijte hodnotu-1 namísto dne 28, 29, 30 nebo 31. |
+| `{"minutes":[0], "hours":[6], "monthDays":[1,-1]}` |Spustí se v 6. první a poslední den v každém měsíci. |
+| `{monthDays":[1,-1]}` |Spustí se první a poslední den v měsíci v počátečním čase. |
+| `{monthDays":[1,14]}` |Spustí se v prvním a 14 dni v měsíci v počátečním čase. |
+| `{monthDays":[2]}` |Spustí se v druhém dni v měsíci v počátečním čase. |
+| `{"minutes":[0], "hours":[5], "monthlyOccurrences":[{"day":"friday", "occurrence":1}]}` |Spustí se první pátek v měsíci v intervalu 5 dop. |
+| `{"monthlyOccurrences":[{"day":"friday", "occurrence":1}]}` |Spustí se první pátek v měsíci v počátečním čase. |
+| `{"monthlyOccurrences":[{"day":"friday", "occurrence":-3}]}` |Spustí se třetí pátek od konce měsíce v počátečním čase. |
 | `{"minutes":[15], "hours":[5], "monthlyOccurrences":[{"day":"friday", "occurrence":1},{"day":"friday", "occurrence":-1}]}` |Spuštění v každý první a poslední pátek v měsíci v 5:15. |
-| `{"monthlyOccurrences":[{"day":"friday", "occurrence":1},{"day":"friday", "occurrence":-1}]}` |Spustit na první a poslední pátek v měsíci v době zahájení. |
-| `{"monthlyOccurrences":[{"day":"friday", "occurrence":5}]}` |Běžet pátý pátek v měsíci v době zahájení.<br /><br />Pokud není pátý pátek v měsíci, úloha neběží. Můžete zvážit použití -1 místo 5 pro výskyt, pokud chcete spustit úlohu na poslední vyskytující se pátek v měsíci. |
+| `{"monthlyOccurrences":[{"day":"friday", "occurrence":1},{"day":"friday", "occurrence":-1}]}` |Spustí se v prvním a posledním pátek v měsíci v počátečním čase. |
+| `{"monthlyOccurrences":[{"day":"friday", "occurrence":5}]}` |Spustí se pátý pátek v měsíci v počátečním čase.<br /><br />Pokud v měsíci není pátý pátek, úloha se nespustí. Pokud chcete úlohu spustit v poslední pátek v měsíci, zvažte použití parametru-1 namísto 5. |
 | `{"minutes":[0,15,30,45], "monthlyOccurrences":[{"day":"friday", "occurrence":-1}]}` |Spuštění v poslední pátek v měsíci každých 15 minut. |
 | `{"minutes":[15,45], "hours":[5,17], "monthlyOccurrences":[{"day":"wednesday", "occurrence":3}]}` |Spuštění každou třetí středu v měsíci v 5:15, 5:45, 17:15 a 17:45. |
 

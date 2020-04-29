@@ -1,7 +1,7 @@
 ---
 title: Rezervace veřejných adres IPv6 a rozsahů adres ve virtuální síti Azure
 titlesuffix: Azure Virtual Network
-description: Přečtěte si, jak rezervovat veřejné adresy IPv6 a rozsahy adres ve virtuální síti Azure.
+description: Přečtěte si, jak rezervovat veřejné adresy IPv6 a rozsahy adres ve službě Azure Virtual Network.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -13,21 +13,21 @@ ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
 ms.openlocfilehash: 9a0dd56842174d89688c862397c373326ef50d1f
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80420547"
 ---
-# <a name="reserve-public-ipv6-address-prefix"></a>Rezervovat veřejnou předponu adresy IPv6
-IPv6 pro virtuální síť Azure (VNet) umožňuje hostovat aplikace v Azure pomocí připojení IPv6 a IPv4 v rámci virtuální sítě i do a z Internetu. Kromě rezervace jednotlivých adres IPv6 můžete pro své použití rezervovat souvislé rozsahy adres Azure IPv6 (označované jako IP prefix). Tento článek popisuje, jak vytvořit IPv6 veřejné IP adresy a rozsahy adres pomocí Azure PowerShell a CLI.
+# <a name="reserve-public-ipv6-address-prefix"></a>Rezervovat předponu veřejné adresy IPv6
+Protokol IPv6 pro Azure Virtual Network (VNet) umožňuje hostovat aplikace v Azure s připojením IPv6 a IPv4 jak v rámci virtuální sítě, tak i z Internetu. Kromě rezervace individuálních adres IPv6 můžete pro své použití rezervovat souvislé rozsahy adres IPv6 pro Azure (označované jako předpona IP adresy). V tomto článku se dozvíte, jak vytvořit veřejné IP adresy a rozsahy adres IPv6 pomocí Azure PowerShell a CLI.
 
 
-## <a name="create-a-single-reserved-ipv6-public-ip"></a>Vytvoření jedné vyhrazené veřejné IP adresy IPv6
+## <a name="create-a-single-reserved-ipv6-public-ip"></a>Vytvoření jediné rezervované veřejné IP adresy IPv6
 
 ### <a name="using-azure-powershell"></a>Použití Azure Powershell
 
-Můžete vytvořit jednu vyhrazenou (statickou) veřejnou IP adresu IPv6 pomocí Azure PowerShellu s [new-azPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) takto:
+Jednu rezervovanou (statickou) veřejnou IP adresu IPv6 můžete vytvořit pomocí Azure PowerShell pomocí příkazu [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) následujícím způsobem:
 
 ```azurepowershell  
  $myOwnIPv6Address = New-AzPublicIpAddress `
@@ -41,7 +41,7 @@ Můžete vytvořit jednu vyhrazenou (statickou) veřejnou IP adresu IPv6 pomocí
 
 ### <a name="using-azure-cli"></a>Použití Azure CLI
 
- Můžete vytvořit jednu vyhrazenou (statickou) veřejnou IP adresu IPv6 Veřejné IP adresy Azure CLI s [az sítě public-ip vytvořit](/cli/azure/network/public-ip) takto:
+ Pomocí příkazu AZ Network Public-IP můžete vytvořit jednu rezervovanou (statickou) veřejnou IP adresu typu Azure CLI pomocí příkazu [AZ Network Public-IP Create](/cli/azure/network/public-ip) takto:
   
 ```azurecli
  az network public-ip create \
@@ -53,13 +53,13 @@ Můžete vytvořit jednu vyhrazenou (statickou) veřejnou IP adresu IPv6 pomocí
  --version IPv6
 ```
 
-## <a name="create-a-reserved-ipv6-prefix-range"></a>Vytvoření vyhrazené předpony IPv6 (rozsah)
+## <a name="create-a-reserved-ipv6-prefix-range"></a>Vytvoření rezervované předpony IPv6 (rozsah)
 
-Chcete-li rezervovat předponu IPv6, přidejte do stejného příkazu, který se používá k vytváření předpon IPv4, rodinu IP adres protokolu IPv6. Následující příkazy vytvoří předponu o velikosti /125 ( 8 adres IPv6).  
+K rezervaci předpony IPv6 přidejte rodinu IP adres IPv6 do stejného příkazu, který se používá pro vytváření předpon IPv4. Následující příkazy vytvoří prefix velikosti/125 (8 IPv6 adres).  
 
 ### <a name="using-azure-powershell"></a>Použití Azure Powershell
 
-Veřejnou adresu IPv6 můžete vytvořit pomocí azure cli s [az sítě public-ip vytvořit](/powershell/module/az.network/new-azpublicipprefix) takto:
+Veřejnou adresu IPv6 můžete vytvořit pomocí Azure CLI pomocí příkazu [AZ Network Public-IP Create](/powershell/module/az.network/new-azpublicipprefix) takto:
 ```azurepowershell  
  $myOwnIPv6Prefix = New-AzPublicIpPrefix `
  -name IPv6PrefixWestUS `
@@ -72,7 +72,7 @@ Veřejnou adresu IPv6 můžete vytvořit pomocí azure cli s [az sítě public-i
 
 ### <a name="using-azure-cli"></a>Použití Azure CLI
 
-Veřejnou adresu IPv6 můžete pomocí azure cli vytvořit následujícím způsobem:
+Veřejnou adresu IPv6 můžete vytvořit pomocí Azure CLI následujícím způsobem:
 
 ```azurecli  
 az network public-ip prefix create \
@@ -87,7 +87,7 @@ az network public-ip prefix create \
 
 ### <a name="using-azure-powershell"></a>Použití Azure Powershell
 
- Statickou veřejnou IP adresu IPv6 vytvoříte `-PublicIpPrefix` z vyhrazené předpony přidáním argumentu při vytváření veřejné IP adresy pomocí Azure PowerShellu. Následující příklad předpokládá, že předpona byla vytvořena a uložena v proměnné Prostředí PowerShell s názvem: *$myOwnIPv6Prefix*.
+ Můžete vytvořit statickou veřejnou IP adresu IPv6 z rezervované předpony přidáním `-PublicIpPrefix` argumentu při vytváření veřejné IP adresy pomocí Azure PowerShell. Následující příklad předpokládá, že byla vytvořena předpona a uložena do proměnné prostředí PowerShell s názvem: *$MyOwnIPv 6prefix*.
 
 ```azurepowershell:  
  $MyIPv6PublicIPFromMyReservedPrefix = New-AzPublicIpAddress \
@@ -116,5 +116,5 @@ az network public-ip create \
 ```
 
 ## <a name="next-steps"></a>Další kroky
-- Další informace o [předponě adresy IPv6](ipv6-public-ip-address-prefix.md).
-- Další informace o [adresách IPv6](ipv6-overview.md).
+- Přečtěte si další informace o [předponě adresy IPv6](ipv6-public-ip-address-prefix.md).
+- Přečtěte si další informace o [adresách IPv6](ipv6-overview.md).

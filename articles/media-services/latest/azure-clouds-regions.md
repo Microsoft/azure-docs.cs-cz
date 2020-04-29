@@ -1,6 +1,6 @@
 ---
-title: Cloudy a oblasti, ve kterých je azure media services v3 k dispozici
-description: Tento článek popisuje cloudy Azure a oblasti, ve kterých je azure media services v3 k dispozici.
+title: Cloudy a oblasti, ve kterých je Azure Media Services V3 k dispozici
+description: Tento článek pojednává o cloudech a oblastech Azure, ve kterých je k dispozici Azure Media Services V3.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,15 +12,15 @@ ms.topic: article
 ms.date: 01/21/2020
 ms.author: juliako
 ms.openlocfilehash: 1257bf4dfb0d5b2c4995cac760290f97293a0c0f
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80382966"
 ---
-# <a name="clouds-and-regions-in-which-azure-media-services-v3-exists"></a>Cloudy a oblasti, ve kterých existuje Azure Media Services v3
+# <a name="clouds-and-regions-in-which-azure-media-services-v3-exists"></a>Cloudy a oblasti, ve kterých existuje Azure Media Services V3
 
-Azure Media Services v3 je dostupná přes manifest Azure Resource Manager v globálníazure, Azure Government, Azure Germany, Azure China 21Vianet. Ne všechny funkce Mediálních služeb jsou však k dispozici ve všech cloudech Azure. Tento dokument popisuje dostupnost hlavních součástí media services v3.
+Azure Media Services V3 je k dispozici prostřednictvím Azure Resource Manager manifestu v globálním Azure, Azure Government, Azure Německo, Azure Čína 21Vianet. Ne všechny funkce Media Services ale jsou dostupné ve všech cloudech Azure. Tento dokument popisuje nákup hlavních komponent Media Services V3.
 
 ## <a name="feature-availability-in-azure-clouds"></a>Dostupnost funkcí v cloudech Azure
 
@@ -30,24 +30,24 @@ Azure Media Services v3 je dostupná přes manifest Azure Resource Manager v glo
 | [VideoAnalyzerPreset](analyzing-video-audio-files-concept.md) |  K dispozici. | Není k dispozici. | Není k dispozici. | Není k dispozici. |
 | [AudioAnalyzerPreset](analyzing-video-audio-files-concept.md) |  K dispozici. | Není k dispozici. | Není k dispozici. | Není k dispozici. |
 | [StandardEncoderPreset](encoding-concept.md) | K dispozici. | K dispozici. | K dispozici. | K dispozici. |
-| [Živé události](live-streaming-overview.md) | K dispozici. | K dispozici. | K dispozici. | K dispozici. |
-| [Streamování koncových bodů](streaming-endpoint-concept.md) | K dispozici. | K dispozici. | K dispozici. | K dispozici. |
+| [LiveEvents](live-streaming-overview.md) | K dispozici. | K dispozici. | K dispozici. | K dispozici. |
+| [Starají](streaming-endpoint-concept.md) | K dispozici. | K dispozici. | K dispozici. | K dispozici. |
 
-## <a name="regionsgeographieslocations"></a>Oblasti/zeměpisné oblasti/lokality
+## <a name="regionsgeographieslocations"></a>Oblasti/geografické oblasti/umístění
 
-[Oblasti, ve kterých se nasazuje služba Azure Media Services](https://azure.microsoft.com/global-infrastructure/services/?products=media-services)
+[Oblasti, ve kterých je nasazená služba Azure Media Services](https://azure.microsoft.com/global-infrastructure/services/?products=media-services)
 
-### <a name="region-code-name"></a>Kódový název oblasti
+### <a name="region-code-name"></a>Název kódu oblasti
 
-Pokud potřebujete zadat parametr **lokace,** je třeba zadat kódový název oblasti jako hodnotu **umístění.** Chcete-li získat kódový název oblasti, ve které se váš účet nachází a do které by měl být hovor směrován, můžete spustit následující řádek v [nastavení nastavení nastavení účtu Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)
+Pokud potřebujete zadat parametr **umístění** , musíte jako hodnotu **umístění** zadat název kódu oblasti. Pokud chcete získat název kódu pro oblast, ve které je váš účet, a na to, na který má být vaše volání směrováno, můžete spustit následující řádek v rozhraní příkazového řádku [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) .
 
 ```azurecli-interactive
 az account list-locations
 ```
 
-Po spuštění řádku uvedeného výše získáte seznam všech oblastí Azure. Přejděte do oblasti Azure, která má *displayName,* který hledáte, a použijte jeho hodnotu *názvu* pro parametr **umístění.**
+Po spuštění výše uvedeného řádku získáte seznam všech oblastí Azure. Přejděte do oblasti Azure s názvem *DisplayName* , který hledáte, a použijte jeho *název* pro parametr **Location** .
 
-Například pro oblast Azure West US 2 (zobrazeno níže) použijete "westus2" pro parametr **umístění.**
+Například pro oblast Azure Západní USA 2 (zobrazenou níže) budete pro parametr **Location** používat "westus2".
 
 ```json
    {
@@ -62,14 +62,14 @@ Například pro oblast Azure West US 2 (zobrazeno níže) použijete "westus2" p
 
 ## <a name="endpoints"></a>Koncové body  
 
-Následující koncové body jsou důležité vědět při připojování k účtům Media Services z různých národních cloudů Azure.
+Následující koncové body jsou důležité pro informace o připojení k Media Services účtům z různých národních cloudů Azure.
 
 ### <a name="global-azure"></a>Globální Azure
 
 |Koncové body||
 | --- | --- |
 | Azure Resource Manager |  `https://management.azure.com/` |
-| Ověřování | `https://login.microsoftonline.com/` |
+| Authentication | `https://login.microsoftonline.com/` |
 | Cílová skupina tokenů | `https://management.core.windows.net/` |
 
 ### <a name="azure-government"></a>Azure Government
@@ -77,7 +77,7 @@ Následující koncové body jsou důležité vědět při připojování k úč
 |Koncové body||
 | --- | --- |
 | Azure Resource Manager |  `https://management.usgovcloudapi.net/` |
-| Ověřování | `https://login.microsoftonline.us/` |
+| Authentication | `https://login.microsoftonline.us/` |
 | Cílová skupina tokenů | `https://management.core.usgovcloudapi.net/` |
 
 ### <a name="azure-germany"></a>Azure Germany
@@ -85,7 +85,7 @@ Následující koncové body jsou důležité vědět při připojování k úč
 | Koncové body ||
 | --- | --- |  
 | Azure Resource Manager | `https://management.cloudapi.de/` |
-| Ověřování | `https://login.microsoftonline.de/` |
+| Authentication | `https://login.microsoftonline.de/` |
 | Cílová skupina tokenů | `https://management.core.cloudapi.de/`|
 
 ### <a name="azure-china-21vianet"></a>Azure China 21Vianet
@@ -93,15 +93,15 @@ Následující koncové body jsou důležité vědět při připojování k úč
 |Koncové body||
 | --- | --- |
 | Azure Resource Manager | `https://management.chinacloudapi.cn/` |
-| Ověřování | `https://login.chinacloudapi.cn/` |
+| Authentication | `https://login.chinacloudapi.cn/` |
 | Cílová skupina tokenů |  `https://management.core.chinacloudapi.cn/` |
 
 ## <a name="see-also"></a>Viz také
 
-* [Oblast Azure](https://azure.microsoft.com/global-infrastructure/regions/)
+* [Oblasti Azure](https://azure.microsoft.com/global-infrastructure/regions/)
 * [Zeměpisné oblasti Azure](https://azure.microsoft.com/global-infrastructure/geographies/)
 * [Umístění Azure](https://azure.microsoft.com/global-infrastructure/locations/)
 
 ## <a name="next-steps"></a>Další kroky
 
-[Mediální služby v3 – přehled](media-services-overview.md)
+[Přehled Media Services V3](media-services-overview.md)

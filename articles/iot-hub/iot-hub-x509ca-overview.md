@@ -1,6 +1,6 @@
 ---
-title: Přehled zabezpečení Azure IoT Hub X.509 CA | Dokumenty společnosti Microsoft
-description: Přehled – jak ověřit zařízení do služby IoT Hub pomocí certifikačních úřadů X.509.
+title: Přehled zabezpečení certifikační autority Azure IoT Hub X. 509 | Microsoft Docs
+description: Přehled – jak ověřit zařízení IoT Hub pomocí certifikačních autorit X. 509.
 author: eustacea
 manager: arjmands
 ms.service: iot-hub
@@ -9,79 +9,79 @@ ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
 ms.openlocfilehash: 3d02d3573902964a8549fa0eeb1f4f1471de1752
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79284509"
 ---
 # <a name="device-authentication-using-x509-ca-certificates"></a>Ověřování zařízení pomocí certifikátů webu X.509
 
-Tento článek popisuje použití certifikátů Certifikační autority X.509 (CA) k ověření zařízení připojujících službu IoT Hub.  V tomto článku se dozvíte:
+Tento článek popisuje, jak používat certifikáty certifikační autority (CA) X. 509 k ověřování zařízení připojujících se IoT Hub.  V tomto článku se dozvíte, jak:
 
-* Jak získat certifikát certifikační autority X.509
-* Jak zaregistrovat certifikát Certifikační autority X.509 do služby IoT Hub
-* Jak podepsat zařízení pomocí certifikátů Certifikační autority X.509
-* Ověřování zařízení podepsaných pomocí certifikační autority X.509
+* Jak získat certifikát certifikační autority X. 509
+* Jak zaregistrovat certifikát CA X. 509 pro IoT Hub
+* Jak podepisovat zařízení pomocí certifikátů certifikační autority X. 509
+* Způsob ověřování zařízení podepsaných pomocí certifikační autority X. 509
 
 ## <a name="overview"></a>Přehled
 
-Funkce Certifikační autority X.509 umožňuje ověřování zařízení v centru IoT Hub pomocí certifikační autority ( CA). Výrazně zjednodušuje počáteční proces registrace zařízení a logistiku dodavatelského řetězce během výroby zařízení. [Další informace v tomto scénáři článku o hodnotě pomocí X.509 certifikáty certifikační autority](iot-hub-x509ca-concept.md) pro ověřování zařízení.  Doporučujeme vám přečíst si tento scénář článku před pokračováním, protože vysvětluje, proč existují následující kroky.
+Funkce CA X. 509 umožňuje ověřování zařízení IoT Hub pomocí certifikační autority (CA). Značně zjednodušuje proces prvotního registrace zařízení a poskytuje logistické řetězce při výrobě zařízení. Další [informace najdete v tomto článku o tomto scénáři o hodnotě použití certifikátů CA X. 509](iot-hub-x509ca-concept.md) pro ověřování zařízení.  Doporučujeme, abyste před pokračováním přečetli tento článek s scénářem, protože vysvětluje, proč existují níže uvedené kroky.
 
 ## <a name="prerequisite"></a>Požadavek
 
-Použití funkce Certifikační autority X.509 vyžaduje, abyste měli účet služby IoT Hub.  [Přečtěte si, jak vytvořit instanci služby IoT Hub,](quickstart-send-telemetry-dotnet.md) pokud ji ještě nemáte.
+Použití funkce CA X. 509 vyžaduje, abyste měli účet IoT Hub.  [Naučte se, jak vytvořit instanci IoT Hub](quickstart-send-telemetry-dotnet.md) , pokud ji ještě nemáte.
 
-## <a name="how-to-get-an-x509-ca-certificate"></a>Jak získat certifikát certifikační autority X.509
+## <a name="how-to-get-an-x509-ca-certificate"></a>Jak získat certifikát certifikační autority X. 509
 
-Certifikát certifikační autority X.509 je v horní části řetězce certifikátů pro každé z vašich zařízení.  Můžete si ji zakoupit nebo vytvořit v závislosti na tom, jak ji hodláte používat.
+Certifikát CA X. 509 je na začátku řetězce certifikátů pro každé ze svých zařízení.  Můžete si ho koupit nebo vytvořit v závislosti na tom, jak ho máte v úmyslu použít.
 
-V produkčním prostředí doporučujeme zakoupit certifikát certifikační autority X.509 od veřejné kořenové certifikační autority. Zakoupení certifikátu certifikační autority má výhodu, že kořenová certifikační autorita funguje jako důvěryhodná třetí strana, která se zaručuje za legitimitu vašich zařízení. Zvažte tuto možnost, pokud chcete, aby vaše zařízení byla součástí otevřené sítě IoT, kde se očekává, že budou komunikovat s produkty nebo službami třetích stran.
+V produkčním prostředí doporučujeme koupit certifikát CA X. 509 od veřejné kořenové certifikační autority. Zakoupení certifikátu certifikační autority má za to, že kořenová certifikační autorita slouží jako důvěryhodná třetí strana k přijetí nároků na legitimitu vašich zařízení. Tuto možnost zvažte, pokud chcete, aby vaše zařízení byla součástí otevřené sítě IoT, kde se očekává, že budou pracovat s produkty nebo službami třetích stran.
 
-Můžete také vytvořit certifikační autoritu X.509 podepsanou svým držitelem pro experimentování nebo pro použití v uzavřených sítích IoT.
+Můžete také vytvořit certifikační autoritu X. 509 podepsané svým držitelem pro experimentování nebo pro použití v uzavřených sítích IoT.
 
-Bez ohledu na to, jak získáte certifikát certifikační autority X.509, nezapomeňte zachovat jeho odpovídající soukromý klíč v tajnosti a vždy je chránit.  To je nezbytné pro vytváření důvěryhodnosti v ověřování certifikační autority X.509.
+Bez ohledu na to, jak získáte certifikát certifikační autority X. 509, zajistěte, aby měl odpovídající tajný klíč privátního klíče a byl neustále chráněný.  To je nezbytné pro důvěryhodnost vytváření vztahů důvěryhodnosti v ověřování CA X. 509.
 
-Přečtěte si, jak [vytvořit certifikát certifikační autority podepsaný svým držitelem](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md), který můžete použít pro experimentování v celém popisu této funkce.
+Naučte se, jak [vytvořit certifikát certifikační autority podepsané svým držitelem](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md), který můžete použít k experimentování v rámci tohoto popisu funkce.
 
-## <a name="sign-devices-into-the-certificate-chain-of-trust"></a>Přihlášení zařízení do řetězu důvěryhodnosti certifikátů
+## <a name="sign-devices-into-the-certificate-chain-of-trust"></a>Podepisování zařízení v řetězu certifikátů vztahu důvěryhodnosti
 
-Vlastník certifikátu certifikační autority X.509 může kryptograficky podepsat zprostředkující certifikační autoritu, která může následně podepsat další zprostředkující certifikační autoritu a tak dále, dokud poslední zprostředkující certifikační autorita neukončí tento proces podepsáním zařízení. Výsledkem je kaskádový řetězec certifikátů známý jako řetěz důvěryhodnosti certifikátů. V reálném životě se to odehrává jako delegování důvěry směrem k podpisu zařízení. Toto delegování je důležité, protože vytváří kryptograficky variabilní řetězec úschovy a zabraňuje sdílení podpisových klíčů.
+Vlastník certifikátu certifikační autority X. 509 může kryptograficky podepsat zprostředkující certifikační autoritu, která může zase podepsat další zprostředkující certifikační autoritu, a tak dále, dokud poslední zprostředkující certifikační autorita tento proces neukončí podepsáním zařízení. Výsledkem je kaskádový řetěz certifikátů označovaných jako řetěz certifikátů s důvěryhodností. V reálném čase se to pro podepisování zařízení vyhrává jako delegování důvěryhodnosti. Toto delegování je důležité, protože vytváří kryptograficky variabilní řetězec pro úschovu a zabraňuje sdílení podpisových klíčů.
 
-![img-generic-cert-chain-of-trust](./media/generic-cert-chain-of-trust.png)
+![IMG-Generic-CERT-Chain-of-Trust](./media/generic-cert-chain-of-trust.png)
 
-Certifikát zařízení (nazývaný také listový certifikát) musí mít *název subjektu* nastavený na **ID zařízení,** které se používalo při registraci zařízení IoT v centru Azure IoT Hub. Toto nastavení je vyžadováno pro ověřování.
+Certifikát zařízení (označovaný také jako listový certifikát) musí mít *název subjektu* nastavený na **ID zařízení** , které se použilo při registraci zařízení IoT v IoT Hub Azure. Toto nastavení se vyžaduje pro ověřování.
 
-Tady se dozvíte, jak [vytvořit řetěz certifikátů,](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) jak je tomu bylo při podepisování zařízení.
+Tady se dozvíte, jak [vytvořit řetěz certifikátů](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) , který se má provést při podepisování zařízení.
 
-## <a name="how-to-register-the-x509-ca-certificate-to-iot-hub"></a>Jak zaregistrovat certifikát Certifikační autority X.509 do služby IoT Hub
+## <a name="how-to-register-the-x509-ca-certificate-to-iot-hub"></a>Jak zaregistrovat certifikát CA X. 509 pro IoT Hub
 
-Zaregistrujte svůj certifikát Certifikační autority X.509 do služby IoT Hub, kde bude použit k ověření vašich zařízení během registrace a připojení.  Registrace certifikátu Certifikační autority X.509 je dvoustupňový proces, který zahrnuje nahrání souboru certifikátu a doklad o vlastnictví.
+Zaregistrujte svůj certifikát CA X. 509, abyste IoT Hub, kde se bude používat k ověřování vašich zařízení během registrace a připojení.  Registrace certifikátu certifikační autority X. 509 je proces se dvěma kroky, který obsahuje odeslání souboru certifikátu a důkaz o jeho vlastnictví.
 
-Proces nahrávání vyžaduje nahrání souboru, který obsahuje váš certifikát.  Tento soubor by nikdy neměl obsahovat žádné soukromé klíče.
+Proces nahrávání zahrnuje odeslání souboru, který obsahuje váš certifikát.  Tento soubor by nikdy neměl obsahovat žádné privátní klíče.
 
-Důkaz vlastnictví krok zahrnuje kryptografické výzvy a proces odezvy mezi vámi a IoT Hub.  Vzhledem k tomu, že obsah digitálního certifikátu je veřejný, a proto je náchylný k odposlouchávání, ioT Hub by rád zjistil, že certifikát certifikační autority skutečně vlastníte.  Učiní tak tak, že vygeneruje náhodnou výzvu, kterou musíte podepsat odpovídajícím soukromým klíčem certifikátu certifikační autority.  Pokud jste soukromý klíč uchovávali v tajnosti a chránili, jak bylo doporučeno dříve, pak pouze vy budete mít znalosti k dokončení tohoto kroku. Utajení soukromých klíčů je zdrojem důvěryhodnosti v této metodě.  Po podepsání výzvy proveďte tento krok nahráním souboru obsahujícího výsledky.
+Krok ověření přístupnosti zahrnuje kryptografickou výzvu a proces reakce mezi vámi a IoT Hub.  Vzhledem k tomu, že obsah digitálního certifikátu je veřejný a tudíž náchylný k odposlouchávání, IoT Hub by chtěl zjistit, že skutečně vlastníte certifikát certifikační autority.  Je to udělat tak, že vygeneruje náhodnou výzvu, kterou musíte podepsat pomocí odpovídajícího privátního klíče certifikátu certifikační autority.  Pokud jste si zanechali tajný klíč privátního klíče a chránili ho jako dříve, měli byste mít k dokončení tohoto kroku jenom tyto znalosti. Tajemství privátních klíčů je zdrojem důvěryhodnosti v této metodě.  Po podepsání výzvy dokončete tento krok nahráním souboru, který obsahuje výsledky.
 
-Zde se dozvíte, jak [zaregistrovat certifikát certifikační autority.](iot-hub-security-x509-get-started.md#register-x509-ca-certificates-to-your-iot-hub)
+Tady se dozvíte, jak [zaregistrovat certifikát certifikační autority](iot-hub-security-x509-get-started.md#register-x509-ca-certificates-to-your-iot-hub) .
 
-## <a name="how-to-create-a-device-on-iot-hub"></a>Jak vytvořit zařízení ve službě IoT Hub
+## <a name="how-to-create-a-device-on-iot-hub"></a>Postup vytvoření zařízení v IoT Hub
 
-Chcete-li zabránit zosobnění zařízení, IoT Hub vyžaduje, abyste mu vědět, jaká zařízení očekávat.  To provést vytvořením položky zařízení v registru zařízení služby IoT Hub.  Tento proces je automatizovaný při použití [služby Zřizování zařízení služby](https://azure.microsoft.com/blog/azure-iot-hub-device-provisioning-service-preview-automates-device-connection-configuration/)IoT Hub . 
+Aby se zamezilo zosobnění zařízení, IoT Hub vyžaduje, abyste věděli, co zařízení mají očekávat.  Provedete to tak, že vytvoříte záznam zařízení v registru zařízení IoT Hub.  Tento proces je automatizovaný při používání [služby IoT Hub Device Provisioning](https://azure.microsoft.com/blog/azure-iot-hub-device-provisioning-service-preview-automates-device-connection-configuration/). 
 
-Tady se dozvíte, jak [ručně vytvořit zařízení v centru IoT Hub](iot-hub-security-x509-get-started.md#create-an-x509-device-for-your-iot-hub).
+Tady se dozvíte, jak [ručně vytvořit zařízení v IoT Hub](iot-hub-security-x509-get-started.md#create-an-x509-device-for-your-iot-hub).
 
-Vytvoření zařízení X.509 pro centrum IoT hub
+Vytvoření zařízení X. 509 pro Centrum IoT
 
-## <a name="authenticating-devices-signed-with-x509-ca-certificates"></a>Ověřovací zařízení podepsaná certifikáty Certifikační autority X.509
+## <a name="authenticating-devices-signed-with-x509-ca-certificates"></a>Ověřování zařízení podepsaných pomocí certifikátů certifikační autority X. 509
 
-Díky registraci certifikátu Certifikační autority X.509 a zařízením přihlášeným do řetězu důvěryhodnosti certifikátů zůstává ověřování zařízení, když se zařízení připojí, a to i poprvé.  Když se připojí zařízení podepsané certifikační autoritou X.509, nahraje svůj řetězec certifikátů k ověření. Řetězec obsahuje všechny zprostředkující certifikáty certifikační autority a zařízení.  Pomocí těchto informací služby IoT Hub ověřuje zařízení ve dvou krocích.  IoT Hub kryptograficky ověří řetěz certifikátů pro vnitřní konzistenci a pak vydá ověření vlastnictví výzvu k zařízení.  IoT Hub deklaruje zařízení autentické na úspěšné ověření vlastnictví odpověď ze zařízení.  Toto prohlášení předpokládá, že soukromý klíč zařízení je chráněn a že pouze zařízení může úspěšně reagovat na tuto výzvu.  Doporučujeme používat zabezpečené čipy, jako jsou hardwarové zabezpečené moduly (HSM) v zařízeních k ochraně soukromých klíčů.
+Se zaregistrovaným certifikátem certifikační autority X. 509 a zařízeními přihlášenými do řetězu certifikátů důvěřuje, co zůstává k ověřování zařízení, když se zařízení připojuje, a to i poprvé.  Když se zařízení podepsaný certifikační autoritou (CA) X. 509 připojí, nahraje svůj řetěz certifikátů k ověření. Řetěz zahrnuje všechny zprostředkující certifikační autority a certifikáty zařízení.  Pomocí těchto informací IoT Hub ověří zařízení v procesu se dvěma kroky.  IoT Hub kryptograficky ověří řetěz certifikátů pro zajištění Interní konzistence a pak vydá výzvu k ověření přístupnosti zařízení.  IoT Hub deklaruje platnost zařízení po úspěšném potvrzení odezvy ze zařízení.  Tato deklarace předpokládá, že privátní klíč zařízení je chráněný a že jenom zařízení může na tuto výzvu úspěšně reagovat.  Pro ochranu privátních klíčů doporučujeme použít v zařízeních zabezpečené čipy, jako jsou hardwarové zabezpečené moduly (HSM).
 
-Úspěšné připojení zařízení k centru IoT Hub dokončí proces ověřování a také svědčí o správné nastavení.
+Úspěšné připojení zařízení k IoT Hub dokončí proces ověřování a je také indikativní pro správné nastavení.
 
-Zde se dozvíte, jak [tento krok připojení zařízení dokončit](iot-hub-security-x509-get-started.md#authenticate-your-x509-device-with-the-x509-certificates).
+Tady se dozvíte, jak [Dokončit tento krok připojení zařízení](iot-hub-security-x509-get-started.md#authenticate-your-x509-device-with-the-x509-certificates).
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si [o hodnotě ověřování certifikační autority X.509](iot-hub-x509ca-concept.md) v IoT.
+Přečtěte si o [hodnotě ověřování CA X. 509](iot-hub-x509ca-concept.md) v IoT.
 
-Začínáme se [službou Zřizování zařízení služby](https://docs.microsoft.com/azure/iot-dps/)IoT Hub .
+Začínáme se službou IoT Hub [Device Provisioning Service](https://docs.microsoft.com/azure/iot-dps/).

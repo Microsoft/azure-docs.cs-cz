@@ -1,8 +1,8 @@
 ---
-title: Zjišťování rizik služby Azure Active Directory | Dokumenty společnosti Microsoft
-description: Tento artice vám poskytuje podrobný přehled o tom, co jsou detekce rizik.
+title: Azure Active Directory detekci rizik | Microsoft Docs
+description: Tento artice poskytuje podrobný přehled o tom, jaké detekci rizik jsou.
 services: active-directory
-keywords: ochrana identity služby Azure Active Directory, zabezpečení, riziko, úroveň rizika, zranitelnost, zásady zabezpečení
+keywords: Azure Active Directory Identity Protection, zabezpečení, riziko, úroveň rizika, ohrožení zabezpečení, zásady zabezpečení
 author: MarkusVi
 manager: daveba
 ms.assetid: fa2c8b51-d43d-4349-8308-97e87665400b
@@ -17,25 +17,25 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4caa248f6972609ecb6bf71dd521c68d78cebd70
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80383952"
 ---
-# <a name="azure-active-directory-risk-detections"></a>Detekce rizik služby Azure Active Directory
+# <a name="azure-active-directory-risk-detections"></a>Azure Active Directory detekce rizik
 
-K převážné většině narušení zabezpečení dochází, když útočníci získají přístup k prostředí krádeží identity uživatele. Zjišťování kompromitovaných identit není snadný úkol. Azure Active Directory používá adaptivní algoritmy strojového učení a heuristiky k detekci podezřelých akcí, které souvisejí s vašimi uživatelskými účty. Každá zjištěná podezřelá akce je uložena v záznamu nazývaném **detekce rizik**.
+Pokud útočníci získají přístup k prostředí tím, že ukrást identitu uživatele, dojde k převážné většině narušení zabezpečení. Zjišťování ohrožených identit není jednoduché. Azure Active Directory používá k detekci podezřelých akcí, které souvisejí s vašimi uživatelskými účty, algoritmus adaptivního strojového učení a heuristiky. Každá zjištěná podezřelá akce je uložená v záznamu s názvem **detekce rizik**.
 
-Existují dvě místa, kde kontrolujete nahlášené detekce rizik:
+K dispozici jsou dvě místa, kde si prohlédnete zjištěná zjištění rizik:
 
- - **Sestavy Azure AD** – zjišťování rizik jsou součástí sestav zabezpečení Azure AD. Další informace naleznete [v protokolu o zabezpečení uživatelů v ohrožení](concept-user-at-risk.md) a v zprávě o zabezpečení [rizikových přihlášení](concept-risky-sign-ins.md).
+ - **Vytváření sestav Azure AD** – detekce rizik jsou součástí sestav zabezpečení služby Azure AD. Další informace najdete v sestavě zabezpečení [rizikové uživatele](concept-user-at-risk.md) a [zabezpečení rizikových přihlášení](concept-risky-sign-ins.md).
 
- - **Azure AD Identity Protection** – detekce rizik jsou také součástí možností vytváření sestav [azure active directory identity protection](../active-directory-identityprotection.md).
+ - **Azure AD Identity Protection** – detekce rizik je také součástí možností vytváření sestav [Azure Active Directory Identity Protection](../active-directory-identityprotection.md).
 
-Kromě toho můžete pomocí [rozhraní API detekce rizik ochrany identity](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent) získat programový přístup k detekci zabezpečení pomocí aplikace Microsoft Graph. Další informace najdete [v tématu Začínáme s Azure Active Directory Identity Protection a Microsoft Graph](../identity-protection/graph-get-started.md). 
+Kromě toho můžete pomocí [rozhraní API detekce rizik ochrany identity](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent) získat programový přístup k detekcím zabezpečení pomocí Microsoft Graph. Další informace najdete v tématu [Začínáme s Azure Active Directory Identity Protection a Microsoft Graph](../identity-protection/graph-get-started.md). 
 
-Služba Azure Active Directory v současné době detekuje šest typů detekcí rizik:
+V současné době Azure Active Directory detekuje šest typů detekcí rizik:
 
 - [Uživatelé s uniklými přihlašovacími údaji](#leaked-credentials) 
 - [Přihlášení z anonymních IP adres](#sign-ins-from-anonymous-ip-addresses) 
@@ -47,76 +47,76 @@ Služba Azure Active Directory v současné době detekuje šest typů detekcí 
 ![Detekce rizik](./media/concept-risk-events/91.png)
 
 > [!IMPORTANT]
-> V některých případě můžete najít detekci rizik bez odpovídající přihlášení v [sestavě přihlášení](concept-sign-ins.md). Je to proto, že ochrana identity vyhodnocuje riziko pro **interaktivní** i **neinteraktivní** přihlášení, zatímco sestava přihlášení zobrazuje pouze interaktivní přihlášení.
+> V případě, že se v [sestavě přihlášení](concept-sign-ins.md)může vyhledat riziko bez odpovídající položky přihlášení. Je to proto, že Identity Protection vyhodnocuje riziko pro **interaktivní** i **neinteraktivní** přihlášení, zatímco sestava přihlášení zobrazuje jenom interaktivní přihlášení.
 
-Přehled, který získáte pro detekci zjištěných rizik, je vázaný na vaše předplatné Azure AD. 
+Přehled, který získáte pro zjištění zjištěného rizika, je svázán s vaším předplatným služby Azure AD. 
 
-* S **edicí Azure AD Premium P2**získáte nejpodrobnější informace o všech základních detekcích. 
-* S **edicí Azure AD Premium P1**se pokročilá zjišťování (například neznámé přihlašovací služby) nevztahuje vaše licence a zobrazí se pod názvem **Přihlášení s dalším zjištěným rizikem**. Kromě toho jsou skryta pole úrovně rizika a podrobností rizika.
+* V případě **Azure AD Premiumho P2 Edition**získáte nejpodrobnější informace o všech základních detekcích. 
+* V případě **edice Azure AD Premium P1**se rozšířené detekce (například neznámé vlastnosti přihlášení) nevztahují na vaši licenci a zobrazí se pod názvem **přihlášení s dalšími zjištěnými riziky**. Kromě toho jsou skryta pole úroveň rizika a podrobnosti rizika.
 
-Zatímco detekce detekce rizik již představuje důležitý aspekt ochrany vašich identit, máte také možnost ručně je řešit nebo implementovat automatické odpovědi konfigurací zásad podmíněného přístupu. Další informace najdete v článku [Azure Active Directory Identity Protection](../active-directory-identityprotection.md).
+I když detekce rizik již představuje důležitý aspekt ochrany vašich identit, máte také možnost je buď ručně vyřešit, nebo implementovat automatické odpovědi konfigurací zásad podmíněného přístupu. Další informace najdete v článku [Azure Active Directory Identity Protection](../active-directory-identityprotection.md).
 
 ## <a name="risk-detection-types"></a>Typy detekce rizik
 
-Vlastnost **typu detekce rizika** je identifikátor pro podezřelou akci, pro kterou byl vytvořen záznam detekce rizik.
+Vlastnost **Typ detekce rizika** je identifikátor pro podezřelou akci, pro kterou byl vytvořen záznam o detekci rizik.
 
-Neustálé investice společnosti Microsoft do procesu zjišťování vedou k:
+Průběžné investice společnosti Microsoft do procesu zjišťování vedou k těmto akcím:
 
-- Zlepšení detekční přesnosti stávajících detekcí rizik 
-- Nové typy detekce rizik, které budou přidány v budoucnu
+- Vylepšení přesnosti detekce stávajících detekcí rizik 
+- Nové typy detekce rizik, které budou v budoucnu přidány
 
-### <a name="leaked-credentials"></a>Uniklá pověření
+### <a name="leaked-credentials"></a>Nevrácená pověření
 
-Když počítačoví zločinci ohrožují platná hesla legitimních uživatelů, často tyto přihlašovací údaje sdílejí. To se obvykle provádí tím, že vysílání je veřejně na tmavém webu nebo vložit stránky nebo obchodování nebo prodej pověření na černém trhu. Služba Microsoft leaked credentials získává dvojice uživatelského jména a hesla sledováním veřejných a tmavých webových stránek a prací s:
+Pokud cybercriminals ohrozit platná hesla legitimních uživatelů, často tyto přihlašovací údaje sdílejí. To se obvykle provádí publikováním veřejně na tmavém webu nebo vložením webů nebo obchodováním nebo prodejem přihlašovacích údajů na černém trhu. Služba nevrácených přihlašovacích údajů Microsoftu získává páry uživatelského jména a hesla, protože sleduje veřejné a tmavé weby a pracuje s těmito službami:
 
-- Výzkumníci
-- Donucovacími
-- Security teams ve společnosti Microsoft
+- Odborníky ze
+- Vynucování zákonů
+- Týmy zabezpečení v Microsoftu
 - Jiné důvěryhodné zdroje 
 
-Když služba získá dvojice uživatelského jména a hesla, jsou kontrolovány podle aktuálních platných pověření uživatelů AAD. Pokud je nalezena shoda, znamená to, že heslo uživatele bylo ohroženo a je vytvořena **detekce rizika uniklých pověření.**
+Když služba získá páry uživatelské jméno a heslo, jsou zkontrolovány proti aktuálním platným přihlašovacím údajům uživatele AAD. Pokud je nalezena shoda, znamená to, že došlo k ohrožení zabezpečení hesla uživatele a je vytvořeno **nevrácené riziko odhalení přihlašovacích údajů** .
 
 ### <a name="sign-ins-from-anonymous-ip-addresses"></a>Přihlášení z anonymních IP adres
 
-Tento typ zjišťování rizik identifikuje uživatele, kteří se úspěšně přihlásili z adresy IP, která byla identifikována jako anonymní adresa IP serveru proxy. Tyto proxy servery používají uživatelé, kteří chtějí skrýt IP adresu svého zařízení, a mohou být použity pro škodlivé úmysly.
+Tento typ detekce rizika identifikuje uživatele, kteří se úspěšně přihlásili z IP adresy, která byla identifikována jako IP adresa anonymního proxy serveru. Tyto proxy servery používají lidé, kteří chtějí skrýt IP adresu svého zařízení a můžou se používat ke škodlivému záměru.
 
 ### <a name="impossible-travel-to-atypical-locations"></a>Nemožná cesta do netypických míst
 
-Tento typ zjišťování rizika identifikuje dvě přihlášení pocházející z geograficky vzdálených umístění, kde alespoň jedno z umístění může být také atypické pro uživatele, vzhledem k minulému chování. Mezi několika dalšími faktory tento algoritmus strojového učení bere v úvahu čas mezi dvěma přihlášeními a čas, který by uživateli trvalo, než cestoval z prvního místa do druhého, což naznačuje, že jiný uživatel používá stejné Pověření.
+Tento typ detekce rizika identifikuje dvě přihlášení pocházející z geograficky vzdálených umístění, kde aspoň jedno z umístění může být pro uživatele neobvyklá, a to s ohledem na minulé chování. Kromě několika dalších faktorů tento algoritmus strojového učení bere v úvahu čas mezi dvěma přihlášeními a časem, kdy by uživatel musel cestovat z prvního umístění do druhé, což značí, že stejný přihlašovací údaj používá jiný uživatel.
 
-Algoritmus ignoruje zjevné "falešně pozitivní výsledky", které přispívají k nemožným podmínkám cestování, jako jsou virtuální ny a místa pravidelně používaná ostatními uživateli v organizaci. Systém má počáteční období učení 14 dnů, během kterého se učí chování nového uživatele přihlášení. 
+Algoritmus ignoruje zjevné "falešně pozitivní", které přispívají k nemožným cestovním podmínkám, jako jsou sítě VPN a lokality pravidelně používané jinými uživateli v organizaci. Systém má počáteční období učení 14 dnů, během kterého se učí chování při přihlašování nového uživatele. 
 
-### <a name="sign-in-from-unfamiliar-locations"></a>Přihlášení z neznámých míst
+### <a name="sign-in-from-unfamiliar-locations"></a>Přihlášení z neznámých umístění
 
-Tento typ detekce rizik a určuje nová / neznámá místa. Systém ukládá informace o předchozích umístěních používaných uživatelem a považuje tato "známá" umístění. Zjišťování rizika se aktivuje, když dojde k přihlášení z umístění, které ještě není v seznamu známých umístění. Systém má počáteční období učení 30 dnů, během kterého neoznačuje žádná nová místa jako neznámá místa. Systém také ignoruje přihlášení ze známých zařízení a umístění, která jsou geograficky blízko známého místa. 
+Tento typ detekce rizika považuje za minulá místa přihlášení (IP, zeměpisná šířka/délka a ASN) k určení nových/neznámých umístění. Systém ukládá informace o předchozích umístěních používaných uživatelem a považuje se za "známá" umístění. Zjišťování rizik se aktivuje, když se přihlásí z umístění, které ještě není v seznamu známých umístění. Systém má počáteční období učení 30 dní, během kterého neoznačí žádná nová umístění jako neznámou umístění. Systém také ignoruje přihlášení ze známých zařízení a umístění, která jsou geograficky blízko známého umístění. 
 
-Ochrana identity detekuje přihlášení z neznámých umístění také pro základní ověřování / starší protokoly. Vzhledem k tomu, že tyto protokoly nemají moderní známé funkce, jako je například ID klienta, není dostatek telemetrie ke snížení falešně pozitivních hodnot. Chcete-li snížit počet zjištěných detekcí rizik, měli byste přejít na moderní ověřování.   
+Identity Protection detekuje přihlášení z neznámých míst i pro základní ověřování/starší protokoly. Vzhledem k tomu, že tyto protokoly nemají moderní známé funkce, jako je ID klienta, není k dispozici dostatek telemetrie pro omezení falešně pozitivních hodnot. Chcete-li snížit počet zjištěných detekcí rizik, přejděte k modernímu ověřování.   
 
 > [!NOTE]
-> Pokud se přihlašovací uživatelské jméno a heslo neshodují, přihlášení se nezdaří a nedojde k detekci rizika. Přihlášení z neznámých zjišťování rizik umístění se aktivuje pouze při úspěšných přihlášeních.
+> Pokud se přihlašovací uživatelské jméno a heslo neshodují, přihlášení se nezdaří a k detekci rizika nedojde. Přihlášení z neznámého zjišťování rizik místa se aktivují jenom při úspěšném přihlášení.
 
 ### <a name="sign-ins-from-infected-devices"></a>Přihlášení z nakažených zařízení
 
-Tento typ detekce rizik identifikuje přihlášení ze zařízení infikovaných malwarem, o kterých je známo, že aktivně komunikují se serverem robotů. To je určeno korelaceip adres zařízení uživatele s IP adresami, které byly v kontaktu se serverem robota. 
+Tento typ detekce rizika identifikuje přihlášení ze zařízení nakažených malwarem, u kterých je známo, že aktivně komunikuje se serverem robot. To je určeno korelacemi IP adres zařízení uživatele proti IP adresám, které se nacházely v kontaktu se serverem bot. 
 
 ### <a name="sign-ins-from-ip-addresses-with-suspicious-activity"></a>Přihlášení z IP adres s podezřelou aktivitou
-Tento typ zjišťování rizik identifikuje IP adresy, ze kterých byl v krátkém časovém období zaznamenán vysoký počet neúspěšných pokusů o přihlášení napříč více uživatelskými účty. To odpovídá vzorcům provozu IP adres používaných útočníky a je silným ukazatelem toho, že účty jsou již nebo budou ohroženy. Jedná se o algoritmus strojového učení, který ignoruje zřejmé falešně pozitivní výsledky, jako jsou ip adresy, které jsou pravidelně používány jinými uživateli v organizaci.  Systém má počáteční období učení 14 dnů, kdy se učí chování přihlášení nového uživatele a nového klienta.
+Tento typ detekce rizika identifikuje IP adresy, ze kterých se v krátké době v rámci několika uživatelských účtů objevil velký počet neúspěšných pokusů o přihlášení. Tato možnost odpovídá vzorům přenosu IP adres, které používají útočníci, a je silným indikátorem, že už účty buď jsou, nebo se chystá být ohroženo. Toto je algoritmus strojového učení, který ignoruje zjevné falešně pozitivních hodnot, jako jsou například IP adresy, které pravidelně používají jiní uživatelé v organizaci.  Systém má počáteční období učení 14 dnů, kde se učí chování při přihlašování nového uživatele a nového tenanta.
 
 ## <a name="detection-type"></a>Typ detekce
 
-Vlastnost typu detekce je indikátor **(Real-time** nebo **Offline)** pro časový rámec detekce detekce rizik. V současné době je většina detekcí rizik zjištěna offline v operaci následného zpracování po zjištění rizika.
+Vlastnost typ detekce je indikátorem (**v reálném čase** nebo **offline**) pro časový rámec detekce rizika. V současné době jsou v operaci následného zpracování zjištěna většina detekcí rizik po zjištění rizika.
 
-V následující tabulce je uvedena doba, kterou je potřeba k zobrazení typu zjišťování v související sestavě:
+Následující tabulka uvádí dobu potřebnou pro zobrazení typu detekce v související sestavě:
 
-| Typ detekce | Latence hlášení |
+| Typ detekce | Latence generování sestav |
 | --- | --- |
 | Reálný čas | 5 až 10 minut |
 | Offline | 2 až 4 hodiny |
 
 
-Pro typy detekce rizik Azure Active Directory zjistí, typy detekce jsou:
+U typů detekce rizik Azure Active Directory detekuje typy detekce:
 
-| Typ detekce rizik | Typ detekce |
+| Typ detekce rizika | Typ detekce |
 | :-- | --- | 
 | [Uživatelé s uniklými přihlašovacími údaji](#leaked-credentials) | Offline |
 | [Přihlášení z anonymních IP adres](#sign-ins-from-anonymous-ip-addresses) | Reálný čas |
@@ -128,55 +128,55 @@ Pro typy detekce rizik Azure Active Directory zjistí, typy detekce jsou:
 
 ## <a name="risk-level"></a>Úroveň rizika
 
-Vlastnost detekce rizika na úrovni rizika je indikátor **(Vysoká**, **Střední**nebo **Nízká)** pro závažnost a spolehlivost detekce rizik. Tato vlastnost vám pomůže určit prioritu akcí, které je třeba provést. 
+Vlastnost úroveň rizika detekce rizik je indikátorem (**Vysoká**, **střední**nebo **Nízká**) pro závažnost a spolehlivost detekce rizik. Tato vlastnost vám pomůže určit prioritu akcí, které je třeba provést. 
 
-Závažnost detekce rizik představuje sílu signálu jako prediktor ohrožení identity. Důvěra je ukazatelem možnosti falešně pozitivních hodnot. 
+Závažnost detekce rizik představuje sílu signálu jako prediktivního ohrožení zabezpečení identity. Jistota je indikátorem pro možnost falešně pozitivních hodnot. 
 
 Například: 
 
-* **Vysoká**: Vysoká spolehlivost a detekce rizika vysoké závažnosti. Tyto události jsou silné ukazatele, že identita uživatele byla ohrožena a všechny uživatelské účty ovlivněné by měly být okamžitě opraveny.
+* **Vysoká**: vysoká důvěra a Vysoká závažnost rizika. Tyto události jsou silné indikátory, že došlo k ohrožení identity uživatele, a všechny ovlivněné uživatelské účty by měly být opraveny okamžitě.
 
-* **Střední**: Vysoká závažnost, ale nižší detekce rizika spolehlivosti, nebo naopak. Tyto události jsou potenciálně rizikové a všechny ovlivněné uživatelské účty by měly být opraveny.
+* **Střední**: Vysoká závažnost, ale nižší spolehlivost detekce rizik nebo naopak. Tyto události jsou potenciálně rizikové a všechny ovlivněné uživatelské účty by měly být opravené.
 
-* **Nízká**: Nízká spolehlivost a detekce rizika nízké závažnosti. Tato událost nemusí vyžadovat okamžitou akci, ale v kombinaci s jinými detekcemi rizik může poskytnout silný náznak ohrožení identity.
+* **Nízká**: nízká spolehlivost a rozpoznání rizika s nízkou závažností. Tato událost nemusí vyžadovat okamžitou akci, ale v kombinaci s jinými detekci rizika může poskytovat silný údaj o ohrožení identity.
 
 ![Úroveň rizika](./media/concept-risk-events/01.png)
 
-### <a name="leaked-credentials"></a>Uniklá pověření
+### <a name="leaked-credentials"></a>Nevrácená pověření
 
-Leaked credentials risk detections are classified as a **High**, protože poskytují jasný údaj, že uživatelské jméno a heslo jsou k dispozici útočníkovi.
+Detekce rizika nevrácených pověření jsou klasifikována jako **Vysoká**, protože poskytují jasné označení toho, že uživatelské jméno a heslo jsou k dispozici útočníkovi.
 
 ### <a name="sign-ins-from-anonymous-ip-addresses"></a>Přihlášení z anonymních IP adres
 
-Úroveň rizika pro tento typ zjišťování rizika je **střední,** protože anonymní adresa IP není silným ukazatelem ohrožení zabezpečení účtu. Doporučujeme, abyste okamžitě kontaktovali uživatele a ověřili, zda používali anonymní IP adresy.
+Úroveň rizika pro tento typ detekce rizik je **střední** , protože anonymní IP adresa není silné označení ohrožení bezpečnosti účtu. Doporučujeme, abyste okamžitě kontaktovali uživatele, aby ověřil, jestli používal anonymní IP adresy.
 
 
 ### <a name="impossible-travel-to-atypical-locations"></a>Nemožná cesta do netypických míst
 
-Nemožné cestování je obvykle dobrým ukazatelem toho, že se hacker úspěšně přihlásil. K falešně pozitivním vlivům však může dojít, když uživatel cestuje pomocí nového zařízení nebo pomocí sítě VPN, která obvykle nepoužívá jiní uživatelé v organizaci. Dalším zdrojem falešně pozitivních hodnot jsou aplikace, které nesprávně předávají IP adresy serveru jako klientské IP adresy, což může vyvolat vzhled přihlášení z datového centra, kde je hostována back-end této aplikace (často se jedná o datová centra Společnosti Microsoft, která může vyvolat vzhled přihlášení, ke které dochází z IP adres vlastněných společností Microsoft). V důsledku těchto falešně pozitivních výsledků je úroveň rizika pro tuto detekci **rizika střední**.
+Nemožná cesta je obvykle dobrý indikátor, že se hacker mohl úspěšně přihlásit. Falešné – kladné hodnoty se ale můžou vyskytnout, když se uživatel na cestách na cestách pomocí nového zařízení nebo přes VPN, které obvykle nepoužívá jiní uživatelé v organizaci. Dalším zdrojem falešně pozitivních aplikací jsou aplikace, které nesprávně předávají IP adresy serveru jako klientské IP adresy. to může mít za výsledek přihlášení z datového centra, kde se hostuje back-end aplikace (často se jedná o datová centra Microsoftu, což může vést k tomu, že se přihlašování uskuteční z IP adres vlastněných společností Microsoft). V důsledku těchto falešně pozitivních rizik je úroveň rizika pro toto zjišťování rizik **střední**.
 
 > [!TIP]
-> Počet hlášených falešných poplachů pro tento typ zjišťování rizika můžete snížit konfigurací [pojmenovaných umístění](../active-directory-named-locations.md). 
+> Můžete snížit množství hlášených falešně pozitivních hodnot pro tento typ detekce rizika konfigurací [pojmenovaných umístění](../active-directory-named-locations.md). 
 
-### <a name="sign-in-from-unfamiliar-locations"></a>Přihlášení z neznámých míst
+### <a name="sign-in-from-unfamiliar-locations"></a>Přihlášení z neznámých umístění
 
-Neznámá místa mohou být silným ukazatelem toho, že útočník může použít ukradenou identitu. Falešně pozitivní výsledky mohou nastat, když uživatel cestuje, zkouší nové zařízení nebo používá novou síť VPN. V důsledku těchto falešně pozitivních výsledků je úroveň rizika pro tento typ události **Střední**.
+Neznámou umístění poskytují silné indikaci, že útočník může použít odcizenou identitu. False – kladné hodnoty můžou nastat, když se uživatel na cestách, vyzkouší nové zařízení nebo používá novou síť VPN. V důsledku těchto falešně pozitivních hodnot je úroveň rizika pro tento typ události **střední**.
 
 ### <a name="sign-ins-from-infected-devices"></a>Přihlášení z nakažených zařízení
 
-Toto zjišťování rizik identifikuje IP adresy, nikoli uživatelská zařízení. Pokud několik zařízení jsou za jednu IP adresu, a jen některé jsou řízeny bot sítě, přihlášení z jiných zařízení můj trigger tuto událost zbytečně, což je důvod, proč tato detekce rizik a je klasifikován jako **low**.  
+Toto zjišťování rizik identifikuje IP adresy, ne zařízení uživatelů. Pokud je několik zařízení za jednou IP adresou a jenom některé jsou ovládány přes síť bot, přihlášení z jiných zařízení tuto událost bezpodmínečně vyvolalo, což znamená, proč je toto zjišťování rizik klasifikované jako **nízké**.  
 
-Doporučujeme kontaktovat uživatele a proskenovat všechna uživatelská zařízení. Je také možné, že je infikované osobní zařízení uživatele nebo že někdo jiný používal infikované zařízení ze stejné IP adresy jako uživatel. Infikovaná zařízení jsou často infikována malwarem, který dosud nebyl identifikován antivirovým softwarem, a může také naznačovat špatné uživatelské návyky, které mohly způsobit napadení zařízení.
+Doporučujeme, abyste se obrátili na uživatele a kontrolovali všechna zařízení uživatele. Je také možné, že osobní zařízení uživatele je nakažené nebo někdo jiný používal nakažené zařízení ze stejné IP adresy jako uživatel. Nakažená zařízení jsou často nakažena malwarem, který ještě nebyl identifikovaný antivirovým softwarem, a může také indikovat jakékoli špatné uživatelské návyky, které mohly způsobit, že se zařízení zablokuje jako nakažené.
 
-Další informace o řešení malwarových infekcí naleznete v [Centru ochrany proti malwaru](https://www.microsoft.com/en-us/security/portal/definitions/adl.aspx/).
+Další informace o tom, jak řešit napadení malwarem, najdete v [centru ochrany před malwarem](https://www.microsoft.com/en-us/security/portal/definitions/adl.aspx/).
 
 ### <a name="sign-ins-from-ip-addresses-with-suspicious-activity"></a>Přihlášení z IP adres s podezřelou aktivitou
 
-Doporučujeme kontaktovat uživatele a ověřit, zda se skutečně přihlásil z IP adresy, která byla označena jako podezřelá. Úroveň rizika pro tento typ události je "**Střední**", protože za stejnou IP adresou může být několik zařízení, zatímco pouze některá mohou být zodpovědná za podezřelou aktivitu. 
+Doporučujeme, abyste se obrátili na uživatele, aby ověřil, jestli jsou ve skutečnosti přihlášeni z IP adresy, která byla označena jako podezřelá. Úroveň rizika pro tento typ události je "**střední**", protože několik zařízení může být za stejnou IP adresou, zatímco pouze některé z nich mohou být zodpovědné za podezřelou aktivitu. 
 
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Zpráva o zabezpečení ohrožených uživatelů](concept-user-at-risk.md)
-* [Sestava zabezpečení rizikového přihlášení](concept-risky-sign-ins.md)
-* [Ochrana identity Azure AD](../active-directory-identityprotection.md).
+* [Sestava zabezpečení rizik uživatelů](concept-user-at-risk.md)
+* [Sestava zabezpečení rizikových přihlášení](concept-risky-sign-ins.md)
+* [Azure AD Identity Protection](../active-directory-identityprotection.md).

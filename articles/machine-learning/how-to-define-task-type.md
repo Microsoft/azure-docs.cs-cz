@@ -1,7 +1,7 @@
 ---
-title: Definování úlohy strojového učení pro automatizovaný běh strojového učení
+title: Definování úlohy strojového učení pro automatizované spuštění strojového učení
 titleSuffix: Azure Machine Learning
-description: Zjistěte, jak definovat úlohu strojového učení pro automatizovaný běh strojového učení
+description: Naučte se definovat úlohu strojového učení pro automatizované spuštění strojového učení.
 services: machine-learning
 author: RachelKellam
 ms.author: rakellam
@@ -11,52 +11,52 @@ ms.subservice: core
 ms.topic: how-to
 ms.date: 11/04/2019
 ms.openlocfilehash: fef3f0347d963b8a7d5fe2f1ca771293e9c3d2a9
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80475499"
 ---
 # <a name="how-to-define-a-machine-learning-task"></a>Jak definovat úlohu strojového učení 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-V tomto článku se dozvíte podporované úlohy strojového učení a jak je definovat pro spuštění experimentu automatizovaného strojového učení (automatizované ml).
+V tomto článku se seznámíte s podporovanými úlohami strojového učení a postupem jejich definování pro automatizované experimenty strojového učení (automatizovaného ML).
 
 
-## <a name="what-is-a-machine-learning-task"></a><a name="What is a machine learning task?"></a>Co je úkol strojového učení?
+## <a name="what-is-a-machine-learning-task"></a><a name="What is a machine learning task?"></a>Co je úloha strojového učení?
 
-Úloha strojového učení představuje typ problému, který se řeší vytvořením prediktivního modelu. Automatizované ML podporuje tři různé typy úkolů, včetně klasifikace, regrese a prognózy časových řad.
+Úloha strojového učení představuje typ problému, který se řeší, vytvořením prediktivního modelu. Automatizované ML podporuje tři různé typy úloh, včetně klasifikace, regrese a prognózy časových řad.
 
-Typ úkolu| Popis| Příklad
+Typ úlohy| Popis| Příklad
 ----|----|----
-Classification | Úloha pro předvídání kategorie určitého řádku v datové sadě. | Odhalování podvodů na kreditní kartě. Cílový sloupec by **byl podvod zjištěn** s kategoriemi *Pravda* nebo *Nepravda*. V tomto případě klasifikujeme každý řádek v datech jako true nebo false.
-Regrese | Úloha pro předvídání výstupu souvislého množství. | Náklady na automobil na základě jeho vlastností, cílový sloupec by **cena**.
-Prognózování |Úkol pro vytváření informovaných odhadů při určování směru budoucích trendů.| Předpovídání poptávky po energii pro ně příštích 48 hodin. Cílovýsloupec by **byla poptávka** a předpokládané hodnoty by se použily k zobrazení vzorců v poptávce po energii.
+Classification | Úkol pro předpověď kategorie určitého řádku v datové sadě. | Odhalování podvodů na platební kartě. U cílového sloupce by byl **zjištěn podvod** s kategoriemi *true* nebo *false*. V tomto případě budeme klasifikovat každý řádek v datech buď jako true, nebo false.
+Regrese | Úkol pro předpověď výstupu průběžného množství. | Náklady na automobil na základě jeho funkcí, cílový sloupec by byl **Price**.
+Prognózování |Úkol pro zajištění informovanéch odhadů při určování směru budoucích trendů.| Předpověď poptávky energie za další 48 hodin. Cílový sloupec by byl **Demand** a předpokládané hodnoty by se měly použít k zobrazení vzorů v poptávce na energii.
 
-Automatizované ML podporuje následující algoritmy během automatizace a ladění procesu. Jako uživatel není nutné zadat algoritmus.
+Automatizované ML během procesu automatizace a optimalizace podporuje následující algoritmy. Jako uživatel není nutné zadávat algoritmus.
 
 Classification | Regrese | Prognózování časové řady
 -- |-- |--
 [Logistická regrese](https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression)| [Elastická síť](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)| [Elastická síť](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)
 [Lehký GBM](https://lightgbm.readthedocs.io/en/latest/index.html)|[Lehký GBM](https://lightgbm.readthedocs.io/en/latest/index.html)|[Lehký GBM](https://lightgbm.readthedocs.io/en/latest/index.html)
-[Zesílení přechodu](https://scikit-learn.org/stable/modules/ensemble.html#classification)|[Zesílení přechodu](https://scikit-learn.org/stable/modules/ensemble.html#regression)|[Zesílení přechodu](https://scikit-learn.org/stable/modules/ensemble.html#regression)
+[Zvýšení barevného přechodu](https://scikit-learn.org/stable/modules/ensemble.html#classification)|[Zvýšení barevného přechodu](https://scikit-learn.org/stable/modules/ensemble.html#regression)|[Zvýšení barevného přechodu](https://scikit-learn.org/stable/modules/ensemble.html#regression)
 [Rozhodovací strom](https://scikit-learn.org/stable/modules/tree.html#decision-trees)|[Rozhodovací strom](https://scikit-learn.org/stable/modules/tree.html#regression)|[Rozhodovací strom](https://scikit-learn.org/stable/modules/tree.html#regression)
-[K Nejbližší sousedé](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)|[K Nejbližší sousedé](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)|[K Nejbližší sousedé](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)
+[K nejbližším sousedním sousedům](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)|[K nejbližším sousedním sousedům](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)|[K nejbližším sousedním sousedům](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)
 [Lineární SVC](https://scikit-learn.org/stable/modules/svm.html#classification)|[LARS Lasso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)|[LARS Lasso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)
-[Klasifikace vektorů podpory C (SVC)](https://scikit-learn.org/stable/modules/svm.html#classification)|[Stochastický gradient nísestup (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)|[Stochastický gradient nísestup (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)
+[C++ – podpora klasifikace vektoru (SVC)](https://scikit-learn.org/stable/modules/svm.html#classification)|[Stochastickéhoový přechod klesá (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)|[Stochastickéhoový přechod klesá (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)
 [Náhodný les](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)|[Náhodný les](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)|[Náhodný les](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)
-[Extrémně randomizované stromy](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)|[Extrémně randomizované stromy](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)|[Extrémně randomizované stromy](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)
+[Extrémně náhodné stromy](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)|[Extrémně náhodné stromy](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)|[Extrémně náhodné stromy](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)
 [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)|[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)| [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)
-[DNN třídění](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNClassifier)|[DNN regresor](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor) | [DNN regresor](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor)|
-[Lineární klasifikátor DNN](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearClassifier)|[Lineární regresor](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)|[Lineární regresor](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)
+[Třídění DNN](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNClassifier)|[DNN regresor](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor) | [DNN regresor](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor)|
+[DNN lineární třídění](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearClassifier)|[Lineární regresor](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)|[Lineární regresor](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)
 [Naivní Bayesovy klasifikátory](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)||
-[Stochastický gradient nísestup (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)||
+[Stochastickéhoový přechod klesá (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)||
 
 
-### <a name="set-the-task-type"></a>Nastavení typu úkolu
-Můžete nastavit typ úlohy pro automatizované experimenty ML s Sadou SDK nebo Azure Machine Learning studio.
+### <a name="set-the-task-type"></a>Nastavení typu úlohy
+Můžete nastavit typ úkolu pro automatizované experimenty ML pomocí sady SDK nebo Azure Machine Learning studia.
 
-Pomocí `task` parametru `AutoMLConfig` v konstruktoru určete typ experimentu.
+Použijte `task` parametr v `AutoMLConfig` konstruktoru k určení typu experimentu.
 
 ```python
 from azureml.train.automl import AutoMLConfig
@@ -65,17 +65,17 @@ from azureml.train.automl import AutoMLConfig
 automl_config = AutoMLConfig(task="classification")
 ```
 
-Úlohu můžete nastavit jako součást automatického spuštění experimentu ML ve studiu Azure Machine Learning. 
+Úkol můžete nastavit jako součást tvorby experimentu v rámci automatizovaného testu ML v Azure Machine Learning Studiu. 
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku-inline.md)]
 
-![Výběr typu úkolu](./media/how-to-define-task-type/task-type.png)
+![Výběr typu úlohy](./media/how-to-define-task-type/task-type.png)
 
 
 ## <a name="next-steps"></a>Další kroky
 
-+ Další informace o [automatizovanéml](concept-automated-ml.md) v Azure Machine Learning.
-+ Další informace o [automatickém trénování modelu prognózy časových řad](how-to-auto-train-forecast.md) v Azure Machine Learning
-+ Vyzkoušejte kurz [klasifikace automatizovaného strojového učení.](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb)
-+ Vyzkoušejte ukázkový poznámkový blok [automatického učení.](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/regression-hardware-performance-explanation-and-featurization/auto-ml-regression-hardware-performance-explanation-and-featurization.ipynb)
++ Přečtěte si další informace o [automatizovaném ml](concept-automated-ml.md) v Azure Machine Learning.
++ Přečtěte si další informace o [automatickém školení modelu prognózy časových řad](how-to-auto-train-forecast.md) v Azure Machine Learning
++ Vyzkoušejte kurz [automatizovaného Machine Learningho vyhodnocení](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb) .
++ Vyzkoušejte ukázkový Poznámkový blok [automatizované Machine Learning regrese](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/regression-hardware-performance-explanation-and-featurization/auto-ml-regression-hardware-performance-explanation-and-featurization.ipynb) .
 

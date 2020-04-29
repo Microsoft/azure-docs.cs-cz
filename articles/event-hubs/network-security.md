@@ -1,6 +1,6 @@
 ---
-title: Zabezpečení sítě pro centra událostí Azure
-description: Tento článek popisuje, jak nakonfigurovat přístup z privátní koncové body
+title: Zabezpečení sítě pro Azure Event Hubs
+description: Tento článek popisuje, jak nakonfigurovat přístup z privátních koncových bodů.
 services: event-hubs
 author: spelluru
 ms.service: event-hubs
@@ -8,86 +8,86 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: spelluru
 ms.openlocfilehash: 46e6a9ecc2ed09aed1076f12c1f61a966485bdad
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80422767"
 ---
-# <a name="network-security-for-azure-event-hubs"></a>Zabezpečení sítě pro centra událostí Azure 
-Tento článek popisuje, jak používat následující funkce zabezpečení s Azure Event Hubs: 
+# <a name="network-security-for-azure-event-hubs"></a>Zabezpečení sítě pro Azure Event Hubs 
+Tento článek popisuje, jak používat následující funkce zabezpečení pro Azure Event Hubs: 
 
 - Značky služeb
-- Pravidla brány firewall IP
+- Pravidla brány firewall protokolu IP
 - Koncové body síťové služby
-- Soukromé koncové body (náhled)
+- Soukromé koncové body (Preview)
 
 
 ## <a name="service-tags"></a>Značky služeb
-Značka služby představuje skupinu předpon IP adres z dané služby Azure. Společnost Microsoft spravuje předpony adres zahrnuté v servisním štítku a automaticky aktualizuje výrobní číslo, jak se adresy mění, čímž minimalizuje složitost častých aktualizací pravidel zabezpečení sítě. Další informace o značkách služeb naleznete v tématu [Service tags overview](../virtual-network/service-tags-overview.md).
+Značka služby představuje skupinu předpon IP adres z dané služby Azure. Společnost Microsoft spravuje předpony adres, které jsou zahrnuté ve značce služby, a automaticky aktualizuje značku služby, protože se mění adresy. tím se minimalizuje složitost častých aktualizací pravidel zabezpečení sítě. Další informace o značkách služby najdete v tématu [Přehled značek služeb](../virtual-network/service-tags-overview.md).
 
-Pomocí značek služeb můžete definovat ovládací prvky přístupu k síti ve [skupinách](../virtual-network/security-overview.md#security-rules) zabezpečení sítě nebo [azure firewall](../firewall/service-tags.md). Při vytváření pravidel zabezpečení používejte značky služeb místo konkrétních adres IP. Zadáním názvu značky služby (například **EventHub)** v příslušném *zdrojovém* nebo *cílovém* poli pravidla můžete povolit nebo odepřít provoz pro odpovídající službu.
+Pomocí značek služeb můžete definovat řízení přístupu k síti pro  [skupiny zabezpečení sítě](../virtual-network/security-overview.md#security-rules)nebo [Azure firewall](../firewall/service-tags.md). Při vytváření pravidel zabezpečení používejte značky služby místo konkrétních IP adres. Zadáním názvu značky služby (například **EventHub**) v příslušném *zdrojovém* nebo *cílovém* poli pravidla můžete povolit nebo odepřít provoz pro příslušnou službu.
 
-| Značka služby | Účel | Můžete použít příchozí nebo odchozí? | Může být regionální? | Můžete použít s Azure Firewall? |
+| Značka služby | Účel | Dá se použít příchozí nebo odchozí? | Je možné je rozregionovat? | Lze použít s Azure Firewall? |
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| **Centrum událostí** | Centra událostí Azure. | Odchozí | Ano | Ano |
+| **Centrum událostí** | Event Hubs Azure. | Odchozí | Ano | Ano |
 
 
 ## <a name="ip-firewall"></a>Brána firewall protokolu IP 
-Ve výchozím nastavení jsou obory názvů Event Hubs přístupné z Internetu, pokud je požadavek dodáván s platným ověřováním a autorizací. S ip firewallem ji můžete dále omezit pouze na sadu adres IPv4 nebo rozsahy adres IPv4 v zápisu [CIDR (Classless Inter-Domain Routing).](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+Ve výchozím nastavení jsou Event Hubs obory názvů přístupné z Internetu, pokud požadavek přichází s platným ověřováním a autorizací. Pomocí brány firewall protokolu IP je můžete omezit na více než jenom na sadu IPv4 adres nebo rozsahů IPv4 adres v [CIDR (směrování mezi doménami bez třídy)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) .
 
-Tato funkce je užitečná ve scénářích, ve kterých azure event huby by měly být přístupné jenom z určitých známých webů. Pravidla brány firewall umožňují konfigurovat pravidla pro přijímání přenosů pocházejících z konkrétních adres IPv4. Pokud například používáte centra událostí s [Azure Express Route](/azure/expressroute/expressroute-faqs#supported-services), můžete vytvořit pravidlo brány **firewall,** které povolí provoz pouze z vašich ip adres infrastruktury. 
+Tato funkce je užitečná ve scénářích, ve kterých by měl být Azure Event Hubs dostupný jenom z určitých dobře známých lokalit. Pravidla brány firewall umožňují konfigurovat pravidla pro příjem provozu pocházejících z konkrétních IPv4 adres. Pokud například používáte Event Hubs s využitím [Azure Express Route](/azure/expressroute/expressroute-faqs#supported-services), můžete vytvořit **pravidlo brány firewall** , které umožní provoz jenom z vašich místních IP adres infrastruktury. 
 
-Pravidla brány firewall IP se použijí na úrovni oboru názvů Event Hubs. Proto pravidla platí pro všechna připojení z klientů pomocí libovolného podporovaného protokolu. Jakýkoli pokus o připojení z adresy IP, která neodpovídá povolenému pravidlu PROTOKOLU IP v oboru názvů Event Hubs, je odmítnut jako neoprávněný. Odpověď neuvádí pravidlo IP. Pravidla filtru IP jsou použita v pořadí a první pravidlo, které odpovídá adrese IP, určuje akci přijmout nebo odmítnout.
+Pravidla brány firewall protokolu IP se používají na úrovni oboru názvů Event Hubs. Proto se pravidla vztahují na všechna připojení z klientů pomocí libovolného podporovaného protokolu. Všechny pokusy o připojení z IP adresy, které neodpovídají povolenému pravidlu IP v oboru názvů Event Hubs, se odmítnou jako neoprávněné. Odpověď nezmiňuje pravidlo protokolu IP. Pravidla filtru IP se aplikují v pořadí a první pravidlo, které odpovídá IP adrese, určuje akci přijmout nebo odmítnout.
 
-Další informace naleznete v tématu [Jak nakonfigurovat bránu firewall IP pro centrum událostí](event-hubs-ip-filtering.md)
+Další informace najdete v tématu [Postup konfigurace brány firewall protokolu IP pro centrum událostí](event-hubs-ip-filtering.md) .
 
 ## <a name="network-service-endpoints"></a>Koncové body síťové služby
-Integrace event hubů s [koncovými body služby Virtuální síť (Virtuální síť)](../virtual-network/virtual-network-service-endpoints-overview.md) umožňuje zabezpečený přístup k možnostem zasílání zpráv z úloh, jako jsou virtuální počítače, které jsou vázané na virtuální sítě, přičemž cesta síťového provozu je zabezpečena na obou koncích.
+Integrace Event Hubs s [koncovými body služby Virtual Network (VNET)](../virtual-network/virtual-network-service-endpoints-overview.md) umožňuje zabezpečenému přístupu k funkcím zasílání zpráv z úloh, jako jsou virtuální počítače, které jsou svázané s virtuálními sítěmi, a cestu síťového provozu, která je zabezpečená na obou koncích.
 
-Po nakonfigurované matné síti na vázaný na alespoň jeden koncový bod služby podsítě virtuální sítě nepřijímá obor názvů příslušných center událostí provoz odkudkoli, ale autorizované podsítě ve virtuálních sítích. Z hlediska virtuální sítě vazba oboru názvů Event Hubs na koncový bod služby konfiguruje izolovaný síťový tunel z podsítě virtuální sítě do služby zasílání zpráv. 
+Po navázání vazby na alespoň jeden koncový bod služby virtuální sítě musí příslušný obor názvů Event Hubs nadále přijímat provoz z libovolného místa, ale z nich budou ověřeny podsítě ve virtuálních sítích. Z perspektivy virtuální sítě naváže obor názvů Event Hubs na koncový bod služby a nakonfiguruje izolovaný síťový tunel z podsítě virtuální sítě do služby zasílání zpráv. 
 
-Výsledkem je soukromý a izolovaný vztah mezi úlohami vázanými na podsíť a příslušným oborem názvů Event Hubs, a to navzdory tomu, že pozorovatelná síťová adresa koncového bodu služby zasílání zpráv je ve veřejném rozsahu IP adres. Existuje výjimka z tohoto chování. Povolení koncového bodu služby ve `denyall` výchozím nastavení umožňuje pravidlo v [bráně firewall IP](event-hubs-ip-filtering.md) přidružené k virtuální síti. Do brány firewall IP můžete přidat konkrétní ip adresy, které umožní přístup k veřejnému koncovému bodu Centra událostí. 
+Výsledkem je privátní a izolovaný vztah mezi úlohami vázanými na podsíť a odpovídajícím oborem názvů Event Hubs, a to i přes pozorovatelnou síťovou adresu koncového bodu služby zasílání zpráv ve veřejném rozsahu IP adres. K tomuto chování existuje výjimka. Povolení koncového bodu služby ve výchozím nastavení povolí `denyall` pravidlo v [bráně firewall protokolu IP](event-hubs-ip-filtering.md) přidružené k virtuální síti. Můžete přidat konkrétní IP adresy v bráně firewall protokolu IP a povolit tak přístup ke veřejnému koncovému bodu centra událostí. 
 
 > [!IMPORTANT]
-> Virtuální sítě jsou podporovány ve **standardních** a **vyhrazených** úrovních event hubů. Není podporována v **základní** vrstvě.
+> Virtuální sítě jsou podporovány ve **standardních** a **vyhrazených** úrovních Event Hubs. Na úrovni **Basic** se nepodporuje.
 
 ### <a name="advanced-security-scenarios-enabled-by-vnet-integration"></a>Pokročilé scénáře zabezpečení povolené integrací virtuální sítě 
 
-Řešení, která vyžadují těsné a rozčleněné zabezpečení a kde podsítě virtuálních sítí poskytují segmentaci mezi rozčleněné služby, stále potřebují komunikační cesty mezi službami, které jsou v těchto oddílech.
+Řešení, která vyžadují těsné a compartmentalized zabezpečení a kde podsítě virtuální sítě poskytují segmentaci mezi službami compartmentalized, stále potřebují komunikační cesty mezi službami, které se nacházejí v těchto oddílech.
 
-Jakákoli okamžitá trasa IP mezi oddíly, včetně těch, které přenášejí protokol HTTPS přes Protokol TCP/IP, s sebou nese riziko zneužití zranitelných míst ze síťové vrstvy. Služby zasílání zpráv poskytují izolované komunikační cesty, kde jsou zprávy dokonce zapsány na disk při přechodu mezi stranami. Úlohy ve dvou odlišných virtuálních sítích, které jsou vázány na stejnou instanci Event Hubs, mohou efektivně a spolehlivě komunikovat prostřednictvím zpráv, zatímco je zachována integrita hranice izolace sítě.
+Veškerá okamžitá trasa IP mezi oddíly, včetně těch, které přenáší HTTPS přes protokol TCP/IP, přináší riziko zneužití chyb zabezpečení z síťové vrstvy. Služby zasílání zpráv poskytují izolované komunikační cesty, ve kterých se při přechodu mezi stranami na disk zapisují i zprávy. Úlohy ve dvou různých virtuálních sítích, které jsou vázané na stejnou instanci Event Hubs, mohou komunikovat efektivně a spolehlivě prostřednictvím zpráv, zatímco příslušná integrita hranice izolace sítě zůstane zachovaná.
  
-To znamená, že vaše cloudová řešení citlivá na zabezpečení nejen získají přístup k špičkovým spolehlivým a škálovatelným funkcím zasílání zpráv azure, ale teď můžou pomocí zasílání zpráv vytvářet komunikační cesty mezi zabezpečenými oddíly řešení, které jsou ze své podstaty bezpečnější než to, čeho je dosažitelné v jakémkoli režimu komunikace peer-to-peer, včetně protokolu HTTPS a dalších protokolů soketu zabezpečených protokoly TLS.
+To znamená, že vaše cloudová řešení citlivá na zabezpečení nezískají přístup k špičkovým spolehlivým a škálovatelným funkcím asynchronního zasílání zpráv, ale teď můžou pomocí zasílání zpráv vytvářet cesty pro komunikaci mezi oddíly zabezpečeného řešení, které jsou z vlastního hlediska bezpečnější než ty, které jsou dosažitelné pro libovolný režim komunikace peer-to-peer, včetně protokolu HTTPS a dalších protokolů soketu zabezpečen
 
-### <a name="bind-event-hubs-to-virtual-networks"></a>Vazba rozbočovačů událostí s virtuálními sítěmi
+### <a name="bind-event-hubs-to-virtual-networks"></a>Navázání centra událostí k virtuálním sítím
 
-**Pravidla virtuální sítě** jsou funkce zabezpečení brány firewall, která řídí, zda váš obor názvů Centra událostí Azure přijímá připojení z určité podsítě virtuální sítě.
+**Pravidla virtuální sítě** jsou funkcí zabezpečení brány firewall, která určuje, jestli váš obor názvů Azure Event Hubs akceptuje připojení z konkrétní podsítě virtuální sítě.
 
-Vazba oboru názvů Event Hubs do virtuální sítě je dvoustupňový proces. Nejprve je potřeba vytvořit **koncový bod virtuální síťové služby** v podsíti virtuální sítě a povolit jej pro **Microsoft.EventHub,** jak je vysvětleno v článku [přehledu koncového bodu služby.](../virtual-network/virtual-network-service-endpoints-overview.md) Po přidání koncového bodu služby svážete obor názvů Event Hubs s **pravidlem virtuální sítě**.
+Vytvoření vazby oboru názvů Event Hubs k virtuální síti je proces se dvěma kroky. Nejdřív je potřeba vytvořit **koncový bod služby virtuální sítě** v podsíti virtuální sítě a povolit ho pro **Microsoft. EventHub** , jak je vysvětleno v článku [Přehled koncového bodu služby](../virtual-network/virtual-network-service-endpoints-overview.md) . Po přidání koncového bodu služby navážete obor názvů Event Hubs s **pravidlem virtuální sítě**.
 
-Pravidlo virtuální sítě je přidružení oboru názvů Event Hubs s podsítí virtuální sítě. Zatímco pravidlo existuje, všem úlohám vázaným na podsíť je udělen přístup k oboru názvů Event Hubs. Centrum událostí sám nikdy nevytvoří odchozí připojení, není nutné získat přístup, a proto je nikdy udělen přístup k podsíti povolením tohoto pravidla.
+Pravidlo virtuální sítě je přidružení oboru názvů Event Hubs k podsíti virtuální sítě. I když toto pravidlo existuje, budou mít všechny úlohy vázané na podsíť přístup k oboru názvů Event Hubs. Event Hubs sám o sobě nenavazuje odchozí připojení, nemusí získat přístup, a proto nikdy neudělí přístup k podsíti tím, že toto pravidlo povolí.
 
-Další informace najdete v tématu [Jak nakonfigurovat koncové body služby virtuální sítě pro centrum událostí.](event-hubs-service-endpoints.md)
+Další informace najdete v tématu [Konfigurace koncových bodů služby virtuální sítě pro centrum událostí](event-hubs-service-endpoints.md) .
 
 ## <a name="private-endpoints"></a>Soukromé koncové body
 
-[Služba Azure Private Link](../private-link/private-link-overview.md) umožňuje přístup ke službám Azure Services (například Azure Event Hubs, Azure Storage a Azure Cosmos DB) a službám hostovaným zákazníkům/partnerům Azure přes **privátní koncový bod** ve vaší virtuální síti.
+[Služba privátního propojení Azure](../private-link/private-link-overview.md) umožňuje přístup ke službám Azure (například k Azure Event Hubs, Azure Storage a Azure Cosmos DB) a hostovaným zákaznickým a partnerským službám Azure prostřednictvím **privátního koncového bodu** ve vaší virtuální síti.
 
-Privátní koncový bod je síťové rozhraní, které vás soukromě a bezpečně připojí ke službě využívající Azure Private Link. Privátní koncový bod používá privátní IP adresu z vaší virtuální sítě, efektivně uvedení služby do virtuální sítě. Veškerý provoz na službu lze směrovat přes soukromý koncový bod, takže nejsou potřeba žádné brány, zařízení NAT, připojení ExpressRoute nebo VPN nebo veřejné IP adresy. Provoz mezi vaší virtuální sítí a službou prochází přes páteřní síť Microsoftu a eliminuje rizika vystavení na veřejném internetu. Můžete se připojit k instanci prostředku Azure, což vám nejvyšší úroveň rozlišovací schopnost v řízení přístupu.
+Privátní koncový bod je síťové rozhraní, které se připojuje soukromě a bezpečně ke službě využívající privátní propojení Azure. Privátní koncový bod používá privátní IP adresu z vaší virtuální sítě a efektivně ho přinášejí do vaší virtuální sítě. Veškerý provoz do služby se dá směrovat prostřednictvím privátního koncového bodu, takže se nevyžadují žádné brány, zařízení NAT, ExpressRoute, připojení VPN ani veřejné IP adresy. Provoz mezi vaší virtuální sítí a službou prochází přes páteřní síť Microsoftu a eliminuje rizika vystavení na veřejném internetu. Můžete se připojit k instanci prostředku Azure, která poskytuje nejvyšší úroveň členitosti v řízení přístupu.
 
 > [!NOTE]
-> Tato funkce je podporována pouze s **vyhrazenou** vrstvou. Další informace o vyhrazené vrstvě najdete v [tématu Přehled vyhrazených center událostí](event-hubs-dedicated-overview.md). 
+> Tato funkce je podporována pouze u **vyhrazené** úrovně. Další informace o vyhrazené úrovni najdete v tématu [přehled Event Hubs úrovně Dedicated](event-hubs-dedicated-overview.md). 
 >
 > Tato funkce je aktuálně ve **verzi Preview**. 
 
 
-Další informace najdete v tématu [Konfigurace privátní koncové body pro centrum událostí](private-link-service.md)
+Další informace najdete v tématu [Konfigurace privátních koncových bodů pro centrum událostí](private-link-service.md) .
 
 
 ## <a name="next-steps"></a>Další kroky
 Viz následující články:
 
-- [Konfigurace brány firewall IP pro centrum událostí](event-hubs-ip-filtering.md)
-- [Konfigurace koncových bodů služby virtuální sítě pro centrum událostí](event-hubs-service-endpoints.md)
-- [Konfigurace privátníkoncové koncové body pro centrum událostí](private-link-service.md)
+- [Postup konfigurace brány firewall protokolu IP pro centrum událostí](event-hubs-ip-filtering.md)
+- [Postup konfigurace koncových bodů služby virtuální sítě pro centrum událostí](event-hubs-service-endpoints.md)
+- [Postup konfigurace privátních koncových bodů pro centrum událostí](private-link-service.md)

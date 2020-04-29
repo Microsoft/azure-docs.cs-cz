@@ -1,6 +1,6 @@
 ---
-title: Podpora Windows Virtual Desktop Linux – Azure
-description: Stručný přehled linuxové podpory pro Windows Virtual Desktop.
+title: Linux Support virtuálních počítačů s Windows – Azure
+description: Stručné informace o podpoře pro Linux pro virtuální počítače s Windows
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -9,68 +9,68 @@ ms.date: 01/23/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 8c5de43ed29856451ad67e02a426b07cc34a0d54
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80422413"
 ---
 # <a name="linux-support"></a>Podpora Linuxu
 
-Partneři mohou pomocí sady Linux SDK pro virtuální plochu Windows vytvořit samostatného klienta virtuální plochy Windows. Můžete ji také použít k povolení podpory virtuální plochy systému Windows v klientské aplikaci. Tento rychlý průvodce vám vysvětlí, co je linuxová sada SDK a jak ji začít používat.
+Partneři můžou použít sadu Linux SDK pro virtuální plochu Windows k sestavení samostatného klienta virtuální plochy Windows. Můžete ji také použít k povolení podpory virtuálních počítačů s Windows v klientské aplikaci. V této stručné příručce se dozvíte, co je sada Linux SDK a jak ji začít používat.
 
-## <a name="connect-with-your-linux-device"></a>Připojení se zařízením Linux
+## <a name="connect-with-your-linux-device"></a>Připojení k zařízení se systémem Linux
 
-Následující partneři schválili klienty Windows Virtual Desktop pro zařízení s Linuxem.
+Následující partneři mají schválená klienta virtuální plochy Windows pro Linux.
 
-|Partner|Dokumentace partnerů|Podpora pro partnery|
+|Partner|Dokumentace k partnerům|Partnerská podpora|
 |:------|:--------------------|:--------------|
-|![Logo IGEL](./media/partners/igel.png)|[Dokumentace klienta IGEL](https://www.igel.com/igel-solution-family/windows-virtual-desktop/)|[Podpora pro IGEL](https://www.igel.com/support/)|
+|![Logo IGEL](./media/partners/igel.png)|[Dokumentace ke klientovi IGEL](https://www.igel.com/igel-solution-family/windows-virtual-desktop/)|[Podpora IGEL](https://www.igel.com/support/)|
 
-## <a name="what-is-the-linux-sdk"></a>Co je linuxová sada SDK?
+## <a name="what-is-the-linux-sdk"></a>Co je sada Linux SDK?
 
-Pomocí sad SDK API můžete načítat informační kanály prostředků, připojit se k relacím aplikací plochy nebo vzdálené aplikace a použít mnoho přesměrování, která naši klienti první strany podporují.
+Pomocí rozhraní API sady SDK můžete načíst kanály prostředků, připojit se k relaci počítače nebo vzdálené aplikace a použít spoustu přesměrování, která naši klienti podporují.
 
 > [!NOTE]
-> Sada SDK je v současné době ve vývoji. Tento dokument aktualizujeme s pokyny pro přístup k sdk, pokud je obecně k dispozici.
+> Sada SDK je aktuálně ve vývoji. Tento dokument aktualizujeme pokyny pro přístup k sadě SDK, pokud je všeobecně dostupná.
 
-### <a name="supported-linux-distributions"></a>Podporované distribuce Linuxu
+### <a name="supported-linux-distributions"></a>Podporované distribuce systému Linux
 
-Sada SDK je kompatibilní s většinou operačních systémů založených na Ubuntu 18.04 nebo novějším. Pokud máte jinou distribuci Linuxu, můžeme s vámi spolupracovat, abychom zjistili, jak nejlépe podporovat vaše potřeby.
+Sada SDK je kompatibilní s největším operačním systémem, který je založený na Ubuntu 18,04 nebo novějším. Pokud máte jinou distribuci pro Linux, můžeme s vámi spolupracovat a zjistit, jak co nejlépe vyhovuje vašim potřebám.
 
 ### <a name="feature-support"></a>Podpora funkcí
 
-Sada SDK podporuje více připojení k relacím plochy a vzdálených aplikací. Jsou podporována následující přesměrování:
+Sada SDK podporuje více připojení k relacím na plochu a vzdálené aplikace. Jsou podporovány následující přesměrování:
 
 | Přesměrování       | Podporuje se |
 | :---------------- | :-------: |
 | Klávesnice          | &#10004;  |
 | Myš             | &#10004;  |
 | Zvuk v          | &#10004;  |
-| Výstup zvuku         | &#10004;  |
+| Zvukový výstup         | &#10004;  |
 | Schránka (text)  | &#10004;  |
 | Schránka (obrázek) | &#10004;  |
 | Schránka (soubor)  | &#10004;  |
-| Čipová karta         | &#10004;  |
-| Jednotka/složka      | &#10004;  |
+| Pomocí         | &#10004;  |
+| Jednotka nebo složka      | &#10004;  |
 
-Sada SDK také podporuje více konfigurací monitoru, pokud jsou monitory vybrané pro relaci souvislé.
+Sada SDK také podporuje více konfigurací zobrazení monitorování, pokud jsou monitory, které vyberete pro vaši relaci, souvislé.
 
-Tento dokument aktualizujeme, když přidáme podporu pro nové funkce a přesměrování. Chcete-li navrhnout nové funkce a další vylepšení, navštivte naši [stránku UserVoice](https://go.microsoft.com/fwlink/?linkid=2116523).
+Tento dokument aktualizujeme, protože přidáváme podporu pro nové funkce a přesměrování. Pokud chcete navrhnout nové funkce a další vylepšení, navštivte [stránku UserVoice](https://go.microsoft.com/fwlink/?linkid=2116523).
 
-## <a name="get-started-with-the-linux-sdk"></a>Začínáme s linuxovou sadou SDK
+## <a name="get-started-with-the-linux-sdk"></a>Začínáme se sadou SDK pro Linux
 
-Než budete moci vyvinout klienta Linux pro Windows Virtual Desktop, musíte udělat následující věci:
+Než budete moct vyvíjet klienta pro Linux pro virtuální počítače s Windows, musíte provést následující akce:
 
-1. Vytvořte a nasaďte prostředí Virtuální plochy Windows pro testování nebo produkční využití.
-2. Otestujte dostupné klienty první strany, abyste se seznámili s uživatelským prostředím Windows Virtual Desktop.
+1. Sestavte a nasaďte prostředí virtuálních ploch Windows pro účely testování nebo produkčního použití.
+2. Otestujte dostupné klienty první strany a seznamte se s uživatelským prostředím pro virtuální počítače s Windows.
 
 ## <a name="next-steps"></a>Další kroky
 
-Prohlédněte si naši dokumentaci pro následující klienty:
+Projděte si naši dokumentaci pro následující klienty:
 
-- [Klient klasické pracovní plochy systému Windows](connect-windows-7-and-10.md)
+- [Klient pro stolní počítače Windows](connect-windows-7-and-10.md)
 - [Webový klient](connect-web.md)
-- [Klient androida](connect-android.md)
+- [Klient pro Android](connect-android.md)
 - [klient macOS](connect-macos.md)
 - [klient iOS](connect-ios.md)

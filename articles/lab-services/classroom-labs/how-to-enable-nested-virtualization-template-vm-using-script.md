@@ -1,6 +1,6 @@
 ---
-title: Povolení vnořené virtualizace na virtuálním počítači šablony ve službě Azure Lab Services (Script) | Dokumenty společnosti Microsoft
-description: Zjistěte, jak vytvořit virtuální počítač šablony s více virtuálními počítači uvnitř.  Jinými slovy povolte vnořenou virtualizaci na virtuálním počítači šablony ve službě Azure Lab Services.
+title: Povolit vnořenou virtualizaci na virtuálním počítači šablony v Azure Lab Services (skript) | Microsoft Docs
+description: Přečtěte si, jak vytvořit virtuální počítač šablony s několika virtuálními počítači v rámci.  Jinými slovy, povolit vnořenou virtualizaci na virtuálním počítači šablony v Azure Lab Services.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -14,42 +14,42 @@ ms.topic: article
 ms.date: 10/04/2019
 ms.author: spelluru
 ms.openlocfilehash: 56e5ad21f94521565b4df193b2450a1c994b66f8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79503033"
 ---
-# <a name="enable-nested-virtualization-on-a-template-virtual-machine-in-azure-lab-services-using-a-script"></a>Povolení vnořené virtualizace na virtuálním počítači šablony ve službě Azure Lab Services pomocí skriptu
+# <a name="enable-nested-virtualization-on-a-template-virtual-machine-in-azure-lab-services-using-a-script"></a>Povolit vnořenou virtualizaci na virtuálním počítači šablony v Azure Lab Services pomocí skriptu
 
-Vnořená virtualizace umožňuje vytvořit prostředí s více virtuálními počítači uvnitř virtuálního počítače šablony testovacího prostředí. Publikování šablony poskytne každému uživateli v testovacím prostředí virtuální počítač nastavený s více virtuálními počítači v něm.  Další informace o vnořené virtualizaci a službách Azure Lab services najdete [v tématu Povolení vnořené virtualizace na virtuálním počítači šablony ve službě Azure Lab Services](how-to-enable-nested-virtualization-template-vm.md).
+Vnořená virtualizace umožňuje vytvořit prostředí s několika virtuálními počítači v rámci virtuálních počítačů šablon testovacího prostředí. Publikování šablony poskytne každého uživatele v testovacím prostředí s virtuálním počítačem nastaveným s několika virtuálními počítači v rámci něj.  Další informace o vnořené virtualizaci a Azure Lab Services najdete v tématu [Povolení vnořené virtualizace na virtuálním počítači šablony v Azure Lab Services](how-to-enable-nested-virtualization-template-vm.md).
 
-Postup v tomto článku se zaměřuje na nastavení vnořené virtualizace pro Windows Server 2016 nebo Windows Server 2019. Budete používat skript k nastavení šablony počítače s Hyper-V.  Následující kroky vás provedou používáním [skriptů Hyper-V služby Lab](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Scripts/HyperV)Services .
+Postup v tomto článku se zaměřuje na nastavení vnořené virtualizace pro Windows Server 2016 nebo Windows Server 2019. K nastavení počítače s šablonou Hyper-V použijete skript.  Následující postup vás provede postupem použití [skriptů technologie Hyper-V služby testovacího prostředí](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Scripts/HyperV).
 
 >[!IMPORTANT]
->Vyberte **Velké (vnořené virtualizace)** nebo **Střední (vnořené virtualizace)** pro velikost virtuálního počítače při vytváření testovacího prostředí.  Vnořená virtualizace nebude fungovat jinak.  
+>Při vytváření testovacího prostředí vyberte možnost **Velká (vnořená virtualizace)** nebo **střední (vnořená virtualizace)** pro velikost virtuálního počítače.  Vnořená virtualizace nebude jinak fungovat.  
 
 ## <a name="run-script"></a>Spuštění skriptu
 
-1. Pokud používáte aplikaci Internet Explorer, `https://github.com` bude pravděpodobně pravděpodobně třeba přidat do seznamu důvěryhodných serverů.
+1. Pokud používáte Internet Explorer, bude pravděpodobně nutné přidat `https://github.com` seznam důvěryhodných serverů.
     1. Otevřete Internet Explorer.
-    1. Vyberte ikonu ozubeného kola a zvolte **možnosti Internetu**.  
-    1. Po zobrazení dialogového okna **Možnosti Internetu** vyberte **Možnosti zabezpečení**, vyberte **Důvěryhodné servery**, klepněte na tlačítko **Weby.**
-    1. Po zobrazení dialogového okna `https://github.com` **Důvěryhodné weby** přidejte do seznamu důvěryhodné weby a vyberte **Zavřít**.
+    1. Vyberte ikonu ozubeného kolečka a zvolte **Možnosti Internetu**.  
+    1. Jakmile se zobrazí dialogové okno **Možnosti Internetu** , vyberte **zabezpečení**, vyberte **Důvěryhodné servery**, klikněte na tlačítko **servery** .
+    1. Jakmile se zobrazí dialogové okno **Důvěryhodné servery** , `https://github.com` přidejte seznam důvěryhodných webů a vyberte **Zavřít**.
 
         ![Důvěryhodné servery](../media/how-to-enable-nested-virtualization-template-vm-using-script/trusted-sites-dialog.png)
-1. Stáhněte si soubory úložiště Git, jak je uvedeno v následujících krocích.
-    1. Přejděte [https://github.com/Azure/azure-devtestlab/](https://github.com/Azure/azure-devtestlab/)na .
-    1. Klikněte na tlačítko **Klonovat nebo Stáhnout.**
-    1. Klepněte na **tlačítko Stáhnout soubor ZIP**.
-    1. Extrahování souboru ZIP
+1. Stáhněte si soubory úložiště Git, jak je uvedeno v následujícím postupu.
+    1. Přejít na [https://github.com/Azure/azure-devtestlab/](https://github.com/Azure/azure-devtestlab/).
+    1. Klikněte na tlačítko **klonovat nebo stáhnout** .
+    1. Klikněte na **Stáhnout soubor zip**.
+    1. Extrakce souboru ZIP
 
     >[!TIP]
-    >Můžete také klonovat úložiště Git [https://github.com/Azure/azure-devtestlab.git](https://github.com/Azure/azure-devtestlab.git)na adrese .
+    >Úložiště Git můžete také klonovat na adrese [https://github.com/Azure/azure-devtestlab.git](https://github.com/Azure/azure-devtestlab.git).
 
-1. Spusťte **PowerShell** v režimu **správce.**
-1. V okně PowerShellpřejděte do složky se staženým skriptem. Pokud procházíte z horní složky souborů úložiště, je skript `azure-devtestlab\samples\ClassroomLabs\Scripts\HyperV\`umístěn na adrese .
-1. Možná budete muset změnit zásady spuštění úspěšně spustit skript. Spusťte následující příkaz:
+1. Spusťte **PowerShell** v režimu **správce** .
+1. V okně PowerShellu přejděte do složky se staženým skriptem. Pokud přecházíte z horní složky souborů úložiště, skript se nachází na adrese `azure-devtestlab\samples\ClassroomLabs\Scripts\HyperV\`.
+1. Možná budete muset změnit zásady spouštění na úspěšné spuštění skriptu. Spusťte následující příkaz:
 
     ```powershell
     Set-ExecutionPolicy bypass -force
@@ -62,8 +62,8 @@ Postup v tomto článku se zaměřuje na nastavení vnořené virtualizace pro W
     ```
 
     > [!NOTE]
-    > Skript může vyžadovat restartování počítače. Postupujte podle pokynů ze skriptu a znovu spusťte skript, dokud **script dokončen** je vidět ve výstupu.
-1. Nezapomeňte obnovit zásady provádění. Spusťte následující příkaz:
+    > Skript může vyžadovat restartování počítače. Postupujte podle pokynů ze skriptu a znovu spusťte skript, dokud se ve výstupu nezobrazí **dokončený skript** .
+1. Nezapomeňte resetovat zásady spouštění. Spusťte následující příkaz:
 
     ```powershell
     Set-ExecutionPolicy default -force
@@ -71,13 +71,13 @@ Postup v tomto článku se zaměřuje na nastavení vnořené virtualizace pro W
 
 ## <a name="conclusion"></a>Závěr
 
-Nyní je váš počítač šablony připraven k vytvoření virtuálních počítačů Hyper-V. Pokyny k vytvoření virtuálních počítačů [v technologii Hyper-V](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v) najdete v tématu Vytvoření virtuálního počítače v hyperv. Další informace o dostupných operačních systémech a softwaru naleznete v [Centru hodnocení společnosti Microsoft.](https://www.microsoft.com/evalcenter/)  
+Teď je váš počítač šablon připravený k vytváření virtuálních počítačů s technologií Hyper-V. Pokyny k vytváření virtuálních počítačů s technologií Hyper-V najdete v tématu [Vytvoření virtuálního počítače v technologii Hyper-v](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v) . Podívejte se také na téma [Microsoft Evaluation Center](https://www.microsoft.com/evalcenter/) , kde najdete dostupné operační systémy a software.  
 
 ## <a name="next-steps"></a>Další kroky
 
-Další kroky jsou společné pro nastavení libovolného testovacího prostředí.
+Další kroky jsou běžné pro nastavení testovacího prostředí.
 
 - [Přidávání uživatelů](tutorial-setup-classroom-lab.md#add-users-to-the-lab)
 - [Nastavit kvótu](how-to-configure-student-usage.md#set-quotas-for-users)
-- [Nastavení plánu](tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab)
-- [E-mailové registrační odkazy pro studenty](how-to-configure-student-usage.md#send-invitations-to-users)
+- [Nastavit plán](tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab)
+- [Odkazy na registraci e-mailu studentům](how-to-configure-student-usage.md#send-invitations-to-users)

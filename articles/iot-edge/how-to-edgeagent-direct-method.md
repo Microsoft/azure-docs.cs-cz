@@ -1,6 +1,6 @@
 ---
-title: Integrované přímé metody edgeAgent – Azure IoT Edge
-description: Monitorování a správa nasazení IoT Edge pomocí integrovaných přímých metod v modulu runtime agenta IoT Edge
+title: Integrované metody edgeAgent Direct – Azure IoT Edge
+description: Monitorování a Správa nasazení IoT Edge pomocí integrovaných přímých metod v modulu runtime agenta IoT Edge
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -10,43 +10,43 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 57b9d46918414cef9e8cbcffb941b98c98f985ff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80240350"
 ---
-# <a name="communicate-with-edgeagent-using-built-in-direct-methods"></a>Komunikace s edgeAgent pomocí vestavěných přímých metod
+# <a name="communicate-with-edgeagent-using-built-in-direct-methods"></a>Komunikace s edgeAgent pomocí integrovaných přímých metod
 
-Monitorujte a spravujte nasazení IoT Edge pomocí přímých metod zahrnutých v modulu agenta IoT Edge. Přímé metody jsou implementovány na zařízení a pak lze vyvolat z cloudu. Agent IoT Edge obsahuje přímé metody, které vám pomohou vzdáleně monitorovat a spravovat vaše zařízení IoT Edge.
+Monitorování a Správa nasazení IoT Edge pomocí přímých metod, které jsou součástí modulu IoT Edge agent. Přímé metody jsou implementovány v zařízení a je možné je vyvolávat z cloudu. Agent IoT Edge obsahuje přímé metody, které vám pomůžou vzdáleně monitorovat a spravovat vaše IoT Edge zařízení.
 
-Další informace o přímých metodách, jak je používat a jak je implementovat ve vlastních modulech, najdete v [tématu Principy a vyvolání přímých metod z ioT hubu](../iot-hub/iot-hub-devguide-direct-methods.md).
+Chcete-li získat další informace o přímých metodách, jejich použití a způsobu jejich implementace ve vlastních modulech, přečtěte si téma [pochopení a vyvolání přímých metod z IoT Hub](../iot-hub/iot-hub-devguide-direct-methods.md).
 
-Názvy těchto přímých metod jsou zpracovány bez rozlišování velkých a malých písmen.
+Názvy těchto přímých metod zpracovávají nerozlišování velkých a malých písmen.
 
 ## <a name="ping"></a>Ping
 
-Metoda **ping** je užitečná pro kontrolu, jestli je IoT Edge spuštěný na zařízení nebo jestli má zařízení otevřené připojení k IoT Hubu. Pomocí této přímé metody ping agenta IoT Edge a získat jeho stav. Úspěšný příkaz ping vrátí prázdnou datovou část a **stav: 200**.
+Metoda nástroje **příkazového testu** je užitečná pro kontrolu, zda je na zařízení spuštěný IoT Edge nebo zda má zařízení otevřené připojení k IoT Hub. Pomocí této přímé metody otestujete agenta IoT Edge a získejte jeho stav. Úspěšný test příkazu pro ověřování vrátí prázdnou datovou část a **"stav": 200**.
 
-Například:
+Příklad:
 
 ```azurecli
 az iot hub invoke-module-method --method-name 'ping' -n <hub name> -d <device name> -m '$edgeAgent'
 ```
 
-Na webu Azure Portal vyvoláte metodu s názvem `ping` metody `{}`a prázdnou datovou částjkou JSON .
+V Azure Portal volejte metodu s názvem `ping` metody a prázdnou datovou částí `{}`JSON.
 
-![Vyvolání přímé metody ping na webu Azure Portal](./media/how-to-edgeagent-direct-method/ping-direct-method.png)
+![Vyvolat přímo metodu "příkaz" příkazu "test" v Azure Portal](./media/how-to-edgeagent-direct-method/ping-direct-method.png)
 
 ## <a name="restart-module"></a>Restartovat modul
 
-Metoda **RestartModule** umožňuje vzdálenou správu modulů spuštěných na zařízení IoT Edge. Pokud modul hlásí stav selhání nebo jiné chování není v pořádku, můžete aktivovat agenta IoT Edge k jeho restartování. Příkaz úspěšného restartování vrátí prázdnou datovou část a **stav: 200**.
+Metoda **RestartModule** umožňuje vzdálenou správu modulů spuštěných na zařízení IoT Edge. Pokud modul hlásí stav selhání nebo jiné špatné chování, můžete aktivovat agenta IoT Edge k jeho restartování. Příkaz k úspěšnému restartování vrátí prázdnou datovou část a **"stav": 200**.
 
-Metoda RestartModule je k dispozici ve verzi IoT Edge verze 1.0.9 a novější. 
+Metoda RestartModule je k dispozici v IoT Edge verze 1.0.9 a novější. 
 
-Metodu RestartModule direct můžete použít na libovolném modulu spuštěném na zařízení IoT Edge, včetně samotného modulu edgeagent. Pokud však použijete tuto přímou metodu k vypnutí edgeAgent, neobdržíte výsledek úspěchu, protože připojení je přerušeno při restartování modulu.
+Metodu RestartModule Direct můžete použít v jakémkoli modulu běžícím na zařízení IoT Edge, včetně samotného modulu edgeAgent. Pokud však použijete tuto přímou metodu pro vypnutí edgeAgent, nepřijdete o úspěch, protože během restartování modulu dojde k přerušení připojení.
 
-Například:
+Příklad:
 
 ```azurecli
 az iot hub invoke-module-method --method-name 'RestartModule' -n <hub name> -d <device name> -m '$edgeAgent' --method-payload \
@@ -58,7 +58,7 @@ az iot hub invoke-module-method --method-name 'RestartModule' -n <hub name> -d <
 '
 ```
 
-Na webu Azure Portal vyvoláte metodu s názvem `RestartModule` metody a následující datovou částí JSON:
+V Azure Portal volejte metodu s názvem `RestartModule` metody a následující datovou částí JSON:
 
 ```json
 {
@@ -67,16 +67,16 @@ Na webu Azure Portal vyvoláte metodu s názvem `RestartModule` metody a násled
 }
 ```
 
-![Vyvolat přímou metodu "RestartModule" na webu Azure Portal](./media/how-to-edgeagent-direct-method/restartmodule-direct-method.png)
+![Vyvolat přímo metodu RestartModule v Azure Portal](./media/how-to-edgeagent-direct-method/restartmodule-direct-method.png)
 
 ## <a name="experimental-methods"></a>Experimentální metody
 
-Nové přímé metody možnosti jsou k dispozici jako experimentální funkce pro testování, včetně:
+Nové možnosti přímé metody jsou k dispozici jako experimentální funkce k testování, včetně:
 
-* [UploadLogs](https://github.com/Azure/iotedge/blob/master/doc/built-in-logs-pull.md): Načíst protokoly modulů a nahrát je do úložiště objektů blob Azure.
-* [GetTaskStatus](https://github.com/Azure/iotedge/blob/master/doc/built-in-logs-pull.md#gettaskstatus): Zkontrolujte stav požadavku na nahrávání protokolů.
-* [GetLogs](https://github.com/Azure/iotedge/blob/master/doc/built-in-logs-pull.md#getlogs): Načíst protokoly modulu v řádku v odpovědi přímé metody.
+* [UploadLogs](https://github.com/Azure/iotedge/blob/master/doc/built-in-logs-pull.md): načtěte protokoly modulu a nahrajte je do Azure Blob Storage.
+* [GetTaskStatus](https://github.com/Azure/iotedge/blob/master/doc/built-in-logs-pull.md#gettaskstatus): Projděte si stav žádosti o nahrání protokolů.
+* [Getlogs](https://github.com/Azure/iotedge/blob/master/doc/built-in-logs-pull.md#getlogs): načte protokoly modulů vložené do odpovědi přímé metody.
 
 ## <a name="next-steps"></a>Další kroky
 
-[Vlastnosti agenta IoT Edge a dvojčata modulů centra IoT Edge](module-edgeagent-edgehub.md)
+[Vlastnosti IoT Edge agenta a modulu IoT Edge centra pro vlákna](module-edgeagent-edgehub.md)

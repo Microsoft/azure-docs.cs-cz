@@ -1,51 +1,51 @@
 ---
-title: Připojovací řetězce v Přehledech aplikací Azure | Dokumenty společnosti Microsoft
-description: Použití připojovacích řetězců.
+title: Připojovací řetězce v Azure Application Insights | Microsoft Docs
+description: Jak používat připojovací řetězce.
 ms.topic: conceptual
 author: timothymothra
 ms.author: tilee
 ms.date: 01/17/2020
 ms.reviewer: mbullwin
 ms.openlocfilehash: 25eda0ae2b0d873fe9850e5b886489a5f2590e69
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80410616"
 ---
 # <a name="connection-strings"></a>Připojovací řetězce
 
 ## <a name="overview"></a>Přehled
 
-Připojovací řetězce poskytují uživatelům Application Insight jedno nastavení konfigurace, což eliminuje potřebu více nastavení proxy serveru. Vysoce užitečné pro intranetové webové servery, suverénní nebo hybridní cloudová prostředí, která chtějí odesílat data monitorovací službě.
+Připojovací řetězce poskytují uživatelům přehledné aplikace s jediným nastavením konfigurace, což eliminuje nutnost více nastavení proxy serveru. Vysoce užitečné pro intranetové webové servery, svrchované nebo hybridní cloudové prostředí, které se pokouší odeslat data do monitorovací služby.
 
-Dvojice hodnot klíče poskytují uživatelům snadný způsob, jak definovat kombinaci přípony předpony pro každou službu / produkt Application Insights (AI).
+Páry klíč-hodnota poskytují uživatelům snadný způsob, jak definovat kombinaci přípony předpony pro každou službu a produkt Application Insights (AI).
 
 > [!IMPORTANT]
-> Nedoporučujeme nastavení připojovacího řetězce a instrumentace. V případě, že uživatel nastaví obojí, podle toho, co bylo nastaveno jako poslední, bude mít přednost. 
+> Nedoporučujeme nastavovat připojovací řetězec a klíč instrumentace. V případě, že uživatel nastavení nastavil, podle toho, co byl nastaven jako poslední, bude mít přednost. 
 
 
 ## <a name="scenario-overview"></a>Přehled scénáře 
 
-Scénáře zákazníků, kde to vizualizujeme s největším dopadem:
+Scénáře zákazníků, kde vizualizuji, že to má největší dopad:
 
-- Výjimky brány firewall nebo přesměrování serveru proxy 
+- Výjimky brány firewall nebo přesměrování proxy 
 
-    V případech, kdy je vyžadováno monitorování pro intranetový webový server, naše dřívější řešení požádalo zákazníky o přidání jednotlivých koncových bodů služby do vaší konfigurace. Další informace naleznete [zde](https://docs.microsoft.com/azure/azure-monitor/app/troubleshoot-faq#can-i-monitor-an-intranet-web-server). 
-    Připojovací řetězce nabízejí lepší alternativu snížením tohoto úsilí na jedno nastavení. Jednoduchá předpona, přípona změna umožňuje automatické plnění a přesměrování všech koncových bodů na správné služby. 
+    V případech, kdy je vyžadováno monitorování pro intranetový webový server, jsme naši starší řešení požádali o přidání jednotlivých koncových bodů služby do vaší konfigurace. Další informace najdete [tady](https://docs.microsoft.com/azure/azure-monitor/app/troubleshoot-faq#can-i-monitor-an-intranet-web-server). 
+    Připojovací řetězce nabízejí lepší alternativu tím, že se toto úsilí omezuje na jedno nastavení. Jednoduchá předpona, změna přípony umožňuje automatické plnění a přesměrování všech koncových bodů do správných služeb. 
 
-- Suverénní nebo hybridní cloudová prostředí
+- Svrchovaná nebo hybridní cloudová prostředí
 
-    Uživatelé mohou odesílat data do definované [oblasti Azure Government .](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights)
-    Připojovací řetězce umožňují definovat nastavení koncového bodu pro intranetové servery nebo nastavení hybridního cloudu. 
+    Uživatelé mohou odesílat data do definované [oblasti Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights).
+    Připojovací řetězce umožňují definovat nastavení koncových bodů pro intranetové servery nebo nastavení hybridního cloudu. 
 
 ## <a name="getting-started"></a>Začínáme
 
-### <a name="finding-my-connection-string"></a>Hledáte můj připojovací řetězec?
+### <a name="finding-my-connection-string"></a>Hledáte připojovací řetězec?
 
-Připojovací řetězec se zobrazí v okně Přehled prostředku Application Insights.
+Váš připojovací řetězec se zobrazí v okně Přehled prostředku Application Insights.
 
-![připojovací řetězec na přehledovém noži](media/overview-dashboard/overview-connection-string.png)
+![připojovací řetězec pro okno s přehledem](media/overview-dashboard/overview-connection-string.png)
 
 ### <a name="schema"></a>Schéma
 
@@ -55,29 +55,29 @@ Připojení má maximální podporovanou délku 4096 znaků.
 
 #### <a name="key-value-pairs"></a>Páry klíč-hodnota
 
-Připojovací řetězec se skládá ze seznamu nastavení reprezentovaných jako dvojice klíč-hodnota oddělené středníkem:`key1=value1;key2=value2;key3=value3`
+Připojovací řetězec se skládá ze seznamu nastavení reprezentovaného jako páry klíč-hodnota oddělených středníkem:`key1=value1;key2=value2;key3=value3`
 
 #### <a name="syntax"></a>Syntaxe
 
-- `InstrumentationKey`(ex: 00000000-0000-0000-0000-000000000000000000)  Připojovací řetězec je **povinné** pole.
-- `Authorization`(například: ikey) (Toto nastavení je volitelné, protože dnes podporujeme pouze autorizaci ikey.)
-- `EndpointSuffix`(například: applicationinsights.azure.cn) Nastavení přípony koncového bodu dá suflávu SDK, ke kterému se má Azure připojit. Sada SDK sestaví zbytek koncového bodu pro jednotlivé služby.
+- `InstrumentationKey`(např.: 00000000-0000-0000-0000-000000000000)  Připojovací řetězec je **povinné** pole.
+- `Authorization`(např.: ikey) (Toto nastavení je volitelné, protože dnes podporujeme jenom autorizaci ikey.)
+- `EndpointSuffix`(např.: applicationinsights.azure.cn) Nastavením přípony koncového bodu budete dát pokyn k sadě SDK, ke které se cloud Azure připojuje. Sada SDK bude sestavovat zbytek koncového bodu pro jednotlivé služby.
 - Explicitní koncové body.
-  Jakákoli služba může být explicitně přepsána v připojovacím řetězci.
-   - `IngestionEndpoint`(například:https://dc.applicationinsights.azure.com)
-   - `LiveEndpoint`(například:https://live.applicationinsights.azure.com)
-   - `ProfilerEndpoint`(například:https://profiler.applicationinsights.azure.com)
-   - `SnapshotEndpoint`(například:https://snapshot.applicationinsights.azure.com)
+  Jakoukoli službu lze explicitně přepsat v připojovacím řetězci.
+   - `IngestionEndpoint`dodatečnéhttps://dc.applicationinsights.azure.com)
+   - `LiveEndpoint`dodatečnéhttps://live.applicationinsights.azure.com)
+   - `ProfilerEndpoint`dodatečnéhttps://profiler.applicationinsights.azure.com)
+   - `SnapshotEndpoint`dodatečnéhttps://snapshot.applicationinsights.azure.com)
 
 #### <a name="endpoint-schema"></a>Schéma koncového bodu
 
 `<prefix>.<suffix>`
-- Předpona: Definuje službu. 
-- Přípona: Definuje společný název domény.
+- Prefix: definuje službu. 
+- Přípona: definuje běžný název domény.
 
 ##### <a name="valid-suffixes"></a>Platné přípony
 
-Zde je seznam platných přípon 
+Tady je seznam platných přípon. 
 - applicationinsights.azure.cn
 - applicationinsights.us
 
@@ -87,7 +87,7 @@ Viz také:https://docs.microsoft.com/azure/azure-monitor/app/custom-endpoints#re
 
 ##### <a name="valid-prefixes"></a>Platné předpony
 
-- [Telemetrické požití](./app-insights-overview.md):`dc`
+- [Přijímání telemetrie](./app-insights-overview.md):`dc`
 - [Živé metriky](./live-stream.md):`live`
 - [Profiler](./profiler-overview.md):`profiler`
 - [Snímek](./snapshot-debugger.md):`snapshot`
@@ -101,15 +101,15 @@ Viz také:https://docs.microsoft.com/azure/azure-monitor/app/custom-endpoints#re
 
 `InstrumentationKey=00000000-0000-0000-0000-000000000000;`
 
-V tomto příkladu byl nastaven pouze klíč instrumentace.
+V tomto příkladu se nastavil jenom klíč instrumentace.
 
-- Autorizační schéma výchozí na "ikey" 
-- Instrumentační klíč: 00000000-0000-0000-0000-000000000000000000000000000000
-- Identifikátory URI místní služby jsou založeny na [výchozích hodnotách sady SDK](https://github.com/microsoft/ApplicationInsights-dotnet/blob/e50d569cebf485e72e98f4a08a0bc0e30cdf42bc/BASE/src/Microsoft.ApplicationInsights/Extensibility/Implementation/Endpoints/Constants.cs#L6) a připojí se k veřejnému globálnímu Azure:
-   - Požití:https://dc.services.visualstudio.com/
+- Ve výchozím nastavení se schéma autorizace používá jako "ikey". 
+- Klíč instrumentace: 00000000-0000-0000-0000-000000000000
+- Identifikátory URI regionálních služeb jsou založené na [výchozích hodnotách sady SDK](https://github.com/microsoft/ApplicationInsights-dotnet/blob/e50d569cebf485e72e98f4a08a0bc0e30cdf42bc/BASE/src/Microsoft.ApplicationInsights/Extensibility/Implementation/Endpoints/Constants.cs#L6) a připojovat se k veřejnému globálnímu Azure:
+   - Ingestováníhttps://dc.services.visualstudio.com/
    - Živé metriky:https://rt.services.visualstudio.com/
-   - Profiler:https://agent.azureserviceprofiler.net/
-   - Ladicí program:https://agent.azureserviceprofiler.net/  
+   - Moduluhttps://agent.azureserviceprofiler.net/
+   - Laděníhttps://agent.azureserviceprofiler.net/  
 
 
 
@@ -117,43 +117,43 @@ V tomto příkladu byl nastaven pouze klíč instrumentace.
 
 `InstrumentationKey=00000000-0000-0000-0000-000000000000;EndpointSuffix=ai.contoso.com;`
 
-V tomto příkladu tento připojovací řetězec určuje příponu koncového bodu a sada SDK vytvoří koncové body služby.
+V tomto příkladu tento připojovací řetězec Určuje příponu koncového bodu a sada SDK vytvoří koncové body služby.
 
-- Autorizační schéma výchozí na "ikey" 
-- Instrumentační klíč: 00000000-0000-0000-0000-000000000000000000000000000000
-- Místní identifikátory URI služby jsou založeny na poskytnuté příponě koncového bodu: 
-   - Požití:https://dc.ai.contoso.com
+- Ve výchozím nastavení se schéma autorizace používá jako "ikey". 
+- Klíč instrumentace: 00000000-0000-0000-0000-000000000000
+- Identifikátory URI regionálních služeb jsou založené na zadané příponě koncového bodu: 
+   - Ingestováníhttps://dc.ai.contoso.com
    - Živé metriky:https://live.ai.contoso.com
-   - Profiler:https://profiler.ai.contoso.com 
-   - Ladicí program:https://snapshot.ai.contoso.com   
+   - Moduluhttps://profiler.ai.contoso.com 
+   - Laděníhttps://snapshot.ai.contoso.com   
 
 
 
-### <a name="connection-string-with-explicit-endpoint-overrides"></a>Připojovací řetězec s explicitními přepsáními koncového bodu 
+### <a name="connection-string-with-explicit-endpoint-overrides"></a>Připojovací řetězec s explicitním přepsáním koncového bodu 
 
 `InstrumentationKey=00000000-0000-0000-0000-000000000000;IngestionEndpoint=https://custom.com:111/;LiveEndpoint=https://custom.com:222/;ProfilerEndpoint=https://custom.com:333/;SnapshotEndpoint=https://custom.com:444/;`
 
-V tomto příkladu tento připojovací řetězec určuje explicitní lokální změny pro každou službu. Sada SDK bude používat přesné koncové body, které jsou k dispozici bez epoých.
+V tomto příkladu tento připojovací řetězec Určuje Explicitní přepsání pro každou službu. Sada SDK bude používat přesné koncové body, které jsou poskytovány beze změny.
 
-- Autorizační schéma výchozí na "ikey" 
-- Instrumentační klíč: 00000000-0000-0000-0000-000000000000000000000000000000
-- Identifikátory URI místní služby jsou založeny na explicitních hodnotách přepsání: 
-   - Požití: https:\//custom.com:111/
-   - Živé metriky:\/https: /custom.com:222/
-   - Profiler: https:\//custom.com:333/ 
-   - Debugger: https:\//custom.com:444/   
+- Ve výchozím nastavení se schéma autorizace používá jako "ikey". 
+- Klíč instrumentace: 00000000-0000-0000-0000-000000000000
+- Identifikátory URI regionálních služeb jsou založené na explicitních hodnotách přepsání: 
+   - Ingestování: https\/:/Custom.com:111/
+   - Živá metrika: https:\//Custom.com:222/
+   - Profiler: https:\//Custom.com:333/ 
+   - Ladicí program: https\/:/Custom.com:444/   
 
 
-## <a name="how-to-set-a-connection-string"></a>Jak nastavit připojovací řetězec
+## <a name="how-to-set-a-connection-string"></a>Nastavení připojovacího řetězce
 
 Připojovací řetězce jsou podporovány v následujících verzích sady SDK:
-- .NET a .NET Core v2.12.0
-- Java v2.5.1 a Java 3.0
-- Javascript v2.3.0
-- NodeJS v1.5.0
-- Python v1.0.0
+- .NET a .NET Core v 2.12.0
+- Java v 2.5.1 a Java 3,0
+- JavaScript v 2.3.0
+- NodeJS v 1.5.0
+- Python v 1.0.0
 
-Připojovací řetězec lze nastavit buď v kódu, proměnné prostředí nebo konfiguračním souboru.
+Připojovací řetězec může být nastaven buď v kódu, v proměnné prostředí, nebo v konfiguračním souboru.
 
 
 
@@ -161,11 +161,11 @@ Připojovací řetězec lze nastavit buď v kódu, proměnné prostředí nebo k
 
 - Připojovací řetězec:`APPLICATIONINSIGHTS_CONNECTION_STRING`
 
-# <a name="netnetcore"></a>[.NET/.NetCore](#tab/net)
+# <a name="netnetcore"></a>[.NET/. NetCore](#tab/net)
 
-TelemetryConfiguration.ConnectionString:https://github.com/microsoft/ApplicationInsights-dotnet/blob/add45ceed35a817dc7202ec07d3df1672d1f610d/BASE/src/Microsoft.ApplicationInsights/Extensibility/TelemetryConfiguration.cs#L271-L274
+TelemetryConfiguration. ConnectionString:https://github.com/microsoft/ApplicationInsights-dotnet/blob/add45ceed35a817dc7202ec07d3df1672d1f610d/BASE/src/Microsoft.ApplicationInsights/Extensibility/TelemetryConfiguration.cs#L271-L274
 
-.Net Explicitně nastavit:
+Explicitně nastavené rozhraní .NET:
 ```csharp
 var configuration = new TelemetryConfiguration
 {
@@ -173,7 +173,7 @@ var configuration = new TelemetryConfiguration
 };
 ```
 
-Konfigurační soubor .Net:
+Konfigurační soubor .NET:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -183,7 +183,7 @@ Konfigurační soubor .Net:
 ```
 
 
-NetCore config.json: 
+NetCore config. JSON: 
 
 ```json
 {
@@ -197,12 +197,12 @@ NetCore config.json:
 # <a name="java"></a>[Java](#tab/java)
 
 
-Java (v2.5.x) Explicitně nastavit:
+Explicitně nastavené Java (v 2,5. x):
 ```java
 TelemetryConfiguration.getActive().setConnectionString("InstrumentationKey=00000000-0000-0000-0000-000000000000");
 ```
 
-ApplicationInsights.xml
+ApplicationInsights. XML
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings">
@@ -212,9 +212,9 @@ ApplicationInsights.xml
 
 # <a name="javascript"></a>[JavaScript](#tab/js)
 
-Důležité: Javascript nepodporuje použití proměnných prostředí.
+Důležité: jazyk JavaScript nepodporuje použití proměnných prostředí.
 
-Použití úryvku:
+Použití fragmentu:
 
 ```javascript
 <script type="text/javascript">
@@ -227,7 +227,7 @@ var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=wi
 ```
 
 
-Ruční nastavení:
+Ruční instalace:
 ```javascript
 import { ApplicationInsights } from '@microsoft/applicationinsights-web'
 
@@ -249,9 +249,9 @@ appInsights.start();
 
 # <a name="python"></a>[Python](#tab/python)
 
-Doporučujeme uživatelům nastavit proměnnou prostředí.
+Doporučujeme, aby uživatelé nastavili proměnnou prostředí.
 
-Explicitní nastavení připojovacího řetězce:
+Postup explicitního nastavení připojovacího řetězce:
 
 ```python
 from opencensus.ext.azure.trace_exporter import AzureExporter
@@ -266,7 +266,7 @@ tracer = Tracer(exporter=AzureExporter(connection_string='InstrumentationKey=000
 
 Začínáme při spuštění:
 
-* [Škálovací sady azure virtuálních počítačů a škálovací sady virtuálních strojů Azure hostované v aplikacích hostovaných ve službě IIS](../../azure-monitor/app/azure-vm-vmss-apps.md)
+* [Virtuální počítače Azure a škálování sady virtuálních počítačů Azure – aplikace hostované službou IIS](../../azure-monitor/app/azure-vm-vmss-apps.md)
 * [Server IIS](../../azure-monitor/app/monitor-performance-live-website-now.md)
 * [Azure Web Apps](../../azure-monitor/app/azure-web-apps.md)
 

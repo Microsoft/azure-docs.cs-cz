@@ -1,6 +1,6 @@
 ---
-title: Vysvětlení využití mobilních aplikací a chování uživatelů pomocí Visual Studio App Center a služeb Azure
-description: Seznamte se se službami, jako je App Center, které vám pomohou při rozhodování o chytrých firmách tím, že porozumíte tomu, jak uživatelé používají vaši mobilní aplikaci.
+title: Pochopení používání mobilních aplikací a chování uživatelů pomocí Visual Studio App Center a služeb Azure
+description: Přečtěte si o službách, jako je App Center, které vám pomůžou učinit inteligentní rozhodnutí v podniku tím, že porozumí, jak uživatelé používají vaši mobilní aplikaci.
 author: codemillmatt
 ms.assetid: 34a8a070-9b3c-4faf-8588-ccff02097224
 ms.service: vs-appcenter
@@ -8,70 +8,70 @@ ms.topic: article
 ms.date: 03/24/2020
 ms.author: masoucou
 ms.openlocfilehash: 4dc3cea4497c55dda0d8da2ca29201615dadff19
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80241082"
 ---
-# <a name="analyze-and-understand-mobile-application-use"></a>Analýza a pochopení používání mobilních aplikací
-Jak dobře rozumíte tomu, jak uživatelé používají vaše aplikace? Kolik aktivních uživatelů má vaše aplikace a jak se mění využití v průběhu času? Jaké funkce používají a které z nich se používají nejvíce? Kde jsou tito uživatelé založeni? Kolik uživatelů používá nejnovější verzi aplikace? Všechny tyto otázky jsou důležité pochopit, aby se vaše aplikace do úspěšného podnikání. Chcete-li odpovědět na tyto druhy otázek analýzy využití, musíte shromažďovat údaje o využití z vašich aplikací.
+# <a name="analyze-and-understand-mobile-application-use"></a>Analýza a pochopení použití mobilní aplikace
+Jak dobře rozumíte tomu, jak uživatelé používají vaše aplikace? Kolik aktivních uživatelů vaše aplikace má a jak se v průběhu času mění využití? Jaké funkce používá a které jsou používány nejvíc? Kde jsou tito uživatelé vycházející? Kolik uživatelů používá nejnovější verzi aplikace? Všechny tyto otázky jsou důležité k tomu, aby se vaše aplikace mohla poznat do úspěšného podnikání. K zodpovězení těchto druhů dotazů týkajících se analýzy využití je potřeba shromažďovat data o využití z vašich aplikací.
 
-Čím více se podíváte dolů do dat, tím více můžete najít způsoby, jak zlepšit svou aplikaci a udržet vaše uživatele spokojené. Je důležité použít data k vyhledání užitečných přehledů a k tomu, aby byli uživatelé spokojeni.
+Další informace najdete v datech. tím více můžete najít způsob, jak vylepšit vaši aplikaci a zajistit, aby se uživatelé pořád spokojeni. Je důležité použít data k vyhledání užitečných přehledů a udržování spokojenosti uživatelů.
 
-## <a name="importance-of-analytics"></a>Význam analýzy
-- Seznamte se s uživateli, jak interagují s vaší aplikací a co je přivádí zpět k doladění aplikace a poskytuje skvělé prostředí pro růst vašeho podnikání.
-- Sledujte metriky využití a přizpůsobte se informovaně o tom, jak prodávat vaši aplikaci a jak lépe sloužit svým zákazníkům.
+## <a name="importance-of-analytics"></a>Důležitost analýz
+- Seznamte se s uživateli, jak komunikují s vaší aplikací a co jim umožňuje doladit vaši aplikaci a poskytovat Skvělé prostředí pro růst vaší firmy.
+- Sledujte metriky využití a zajistěte si informovaná rozhodnutí o uvedení vaší aplikace na trh a lepší poskytování vašich zákazníků.
 - Změřte výkon aplikace.
-- Zjistěte, které části jednotky aplikace hodnotu a výkon.
-- Získejte přehledy založené na datech o problémech, které se týkají změn a uchovávání informací.
+- Zjistěte, které části hodnoty a výkonu vaší aplikační jednotky.
+- Získejte přehledy o problémech založených na datech, které se týkají změn a uchovávání.
 
-Pomocí následujících služeb můžete povolit analýzu mobilních aplikací.
+K povolení analýzy mobilních aplikací použijte následující služby.
 
 ## <a name="visual-studio-app-center"></a>Visual Studio App Center
-[App Center Analytics](/appcenter/analytics/) vám umožní rozšířit okruh uživatelů tím, že se zaměříte na to, co je důležité. Nabízí podrobné přehledy a přehledy o uživatelských relacích, špičkových zařízeních, verzích operačního systému a behaviorální analýze. Pomocí rozsáhlé analýzy aplikací můžete snadno vytvářet vlastní události a sledovat cokoli.
+[App Center Analytics](/appcenter/analytics/) umožňuje rozšířit cílovou skupinu tím, že se zaměříte na to, co je důležité. Nabízí obsáhlé vytváření sestav a přehled o uživatelských relacích, hlavních zařízeních, verzích operačních systémů a analýzách chování. Snadno vytvářejte vlastní události, abyste mohli sledovat cokoli s rozsáhlou analýzou aplikací.
 
    **Klíčové funkce**
-   - Sledujte vzory využití, přijetí uživatele maješ k jiným metrikám zapojení zdarma.
+   - Zadarmo Sledujte vzory využití, přijetí uživatelů a další metriky služby Engagement.
    - Identifikujte trendy, chování uživatelů a zapojení prostřednictvím vlastních událostí.
-   - Získejte předem uvedené metriky a podrobné přehledy o využití aplikací (denní, týdenní, měsíční), relací, vlastnostech zařízení a demografických údajích uživatelů na jednom řídicím panelu.
-   - Průběžně exportujte všechna data App Center Analytics do Azure, abyste je unavili, a to díky neomezenému uchovávání. App Center Analytics podporuje export do úložiště objektů blob Azure a Azure Application Insights.
-   - Integrujte s Azure Application Insights pro ještě hlubší přehledy, jako je uchovávání informací, analýza cesty a kohorty.
-   - Pomocí jednořádkové integrace sady SDK můžete začít během několika minut.
-   - Získejte podporu platformy pro iOS, Android, macOS, tvOS, Xamarin, React Native, Unity a Cordova.
+   - Získejte předem připravené metriky a podrobné informace o využití aplikací (denně, týdně, měsíčně), relacích, vlastnostech zařízení a demografických údajích uživatele na jednom řídicím panelu.
+   - Průběžně exportujte všechna vaše App Center analytická data do Azure a neomezenou dobu uchovávání. App Center Analytics podporuje export do služby Azure Blob Storage a Azure Application Insights.
+   - Integraci s Azure Application Insights pro ještě hlubší přehledy, jako je například uchovávání, analýza trychtýře a kohorty.
+   - Použijte jednu integraci sady SDK, abyste mohli začít během několika minut.
+   - Získejte podporu platforem pro iOS, Android, macOS, tvOS, Xamarin, reagují na nativní, Unity a Cordova.
 
    **Odkazy**
-   - [Zaregistrujte se pomocí Centra aplikací](https://appcenter.ms/signup?utm_source=Mobile%20Development%20Docs&utm_medium=Azure&utm_campaign=New%20azure%20docs)
-   - [Začínáme s Analýzou Centra aplikací](/appcenter/analytics/)
+   - [Zaregistrujte se App Center](https://appcenter.ms/signup?utm_source=Mobile%20Development%20Docs&utm_medium=Azure&utm_campaign=New%20azure%20docs)
+   - [Začínáme s App Center Analytics](/appcenter/analytics/)
 
 ## <a name="azure-monitor"></a>Azure Monitor
-Azure Monitor obsahuje [Application Insights](/azure/azure-monitor/app/app-insights-overview), který poskytuje nástroje pro shromažďování a analýzu telemetrie pro maximalizaci výkonu a monitorování mobilní aplikace. Přehledy aplikací můžete využít pomocí služby App Center Analytics k nastavení exportu do přehledů aplikací. Application Insights můžete dotazovat, segmentovat, filtrovat a analyzovat vlastní telemetrii událostí z vašich aplikací nad rámec analytických nástrojů, které Centrum aplikací poskytuje.
+Azure Monitor zahrnuje [Application Insights](/azure/azure-monitor/app/app-insights-overview), které poskytují nástroje pro shromažďování a analýzu telemetrie pro maximalizaci výkonu a monitorování vaší mobilní aplikace. Můžete využít výhod Application Insights pomocí App Center Analytics k nastavení exportu na Application Insights. Application Insights se může dotazovat, segmentovat, filtrovat a analyzovat vlastní telemetrii událostí z vašich aplikací, a to nad rámec analytických nástrojů, které poskytují App Center.
 
 **Klíčové funkce**
    - Dotazování vlastní telemetrie událostí.
-   - Filtrování telemetrie událostí s výkonnými možnostmi segmentace.
-   - Analyzujte vzory převodu, uchovávání informací a navigace ve vaší aplikaci. Můžete použít:
-     - Trychtýře pro analýzu a sledování míry konverze.
-     - Uchovávání informací analyzovat, jak dobře vaše aplikace zachová uživatele v průběhu času.
-     - Sešity pro kombinaci vizualizací a textu do sestavy, kterou lze sdílet.
-     - Kohorty pro pojmenování a uložení konkrétních skupin uživatelů nebo událostí, aby na ně bylo možné snadno odkazovat z jiných analytických nástrojů.
+   - Vyfiltrujte telemetrii událostí pomocí výkonných funkcí segmentace.
+   - Analýza převodů, uchovávání a navigačních vzorů ve vaší aplikaci. Můžete použít:
+     - Trychtýře pro analýzu a monitorování sazeb převodu.
+     - Uchovávání informací, aby bylo možné analyzovat, jak dobře vaše aplikace zachovává uživatele v průběhu času.
+     - Sešity pro kombinování vizualizací a textu do sestavy ke sdílení.
+     - Kohorty se na název a uložte konkrétní skupiny uživatelů nebo událostí, aby na ně bylo možné snadno odkazovat z jiných analytických nástrojů.
 
 **Odkazy**
-- [Portál Azure](https://portal.azure.com/)
-- [Analýza mobilní aplikace pomocí Centra aplikací a přehledů aplikací](/azure/azure-monitor/learn/mobile-center-quickstart)
-- [Použití analýzy Centra aplikací s přehledy aplikací](/azure/azure-monitor/app/usage-overview)
+- [portál Azure](https://portal.azure.com/)
+- [Analýza mobilní aplikace pomocí App Center a Application Insights](/azure/azure-monitor/learn/mobile-center-quickstart)
+- [Použití App Center Analytics s Application Insights](/azure/azure-monitor/app/usage-overview)
 
 ## <a name="azure-playfab"></a>Azure PlayFab
-[Azure PlayFab](https://playfab.com/) nabízí kompletní back-end platformu s herními službami, analýzami v reálném čase a liveops, které potřebujete k vytváření her připojených ke cloudu světové třídy. Tyto služby snižují překážky spuštění pro vývojáře her. Nabízejí jak velká, tak malá studia nákladově efektivní vývojová řešení, která se škálují s jejich hrami. Služby mohou pomoci studiím zapojit, udržet a zpeněžit hráče. S PlayFab mohou vývojáři používat inteligentní cloud k vytváření a provozu her, analýze herních dat a zlepšování celkových herních zážitků.
+[Azure PlayFab](https://playfab.com/) nabízí ucelenou platformu back-endu se Game Services, analýzou v reálném čase a LiveOps, kterou potřebujete k vytváření špičkových her připojených ke cloudu. Tyto služby omezují překážky, které se spouštějí pro vývojáře her. Nabízejí jak velká, tak malá studia vývojová řešení, která se škálují s jejich hrami. Služby mohou přispět k studiaí hráčů, zachovat a monetizovat. Díky PlayFab můžou vývojáři pomocí inteligentního cloudu vytvářet a provozovat hry, analyzovat herní data a zlepšovat celkové herní prostředí.
 
 **Klíčové funkce**
    - Monitorujte řídicí panely v reálném čase.
-   - Vyhodnoťte výkon své hry pomocí špičkových metrik.
-   - Projděte si souhrny denního a měsíčního výkonu hry prostřednictvím automaticky generovaných přehledů. Sestavy si můžete zobrazit ve Správci her a nechat si je stáhnout nebo doručit do doručené pošty každý den.
-   - Pomocí testování A/B můžete spustit experimenty a určit optimální nastavení pro určitou proměnnou.
-   - Pomocí segmentace pro hráče definujte automatizované seskupení hráčů.
+   - Vyhodnoťte výkon své hry díky špičkovým metrikám.
+   - Prohlédněte si souhrnné výsledky denního a měsíčního výkonu vaší hry prostřednictvím automaticky generovaných sestav. Sestavy můžete zobrazit ve Správci her a stáhnout nebo doručit do složky Doručená pošta denně.
+   - Použijte testování a/B pro spouštění experimentů a určení optimálního nastavení pro konkrétní proměnnou.
+   - Pomocí segmentace můžete v přehrávačích definovat automatizované seskupení přehrávačů.
     
 **Odkazy**
 - [Portál PlayFab](https://developer.playfab.com/en-US/sign-up)
-- [Analýza](/gaming/playfab/#pivot=documentation&panel=analytics)
+- [Analýzy](/gaming/playfab/#pivot=documentation&panel=analytics)
 - [Rychlé starty](/gaming/playfab/#pivot=documentation&panel=quickstarts) 

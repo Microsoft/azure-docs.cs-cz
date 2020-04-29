@@ -1,5 +1,5 @@
 ---
-title: Jak se připojit k virtuálnímu počítači Azure Lab Services z Macu | Dokumenty společnosti Microsoft
+title: Jak se připojit k virtuálnímu počítači s Azure Lab Services z Mac | Microsoft Docs
 description: Tento článek
 services: devtest-lab, lab-services, virtual-machines
 documentationcenter: na
@@ -14,37 +14,37 @@ ms.topic: article
 ms.date: 03/17/2020
 ms.author: spelluru
 ms.openlocfilehash: 0d3484c1008e00bcfde3adb399e925c0e054f49e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79503085"
 ---
-# <a name="connect-to-a-vm-using-rdp-on-a-mac"></a>Připojení k virtuálnímu počítači pomocí rdp na Macu
-Tato část ukazuje, jak se student může připojit k virtuálnímu počítači v laboratoři ve třídě z Macu pomocí RDP.
+# <a name="connect-to-a-vm-using-rdp-on-a-mac"></a>Připojení k virtuálnímu počítači pomocí protokolu RDP na Macu
+V této části se dozvíte, jak se student může připojit k virtuálnímu počítači učeben Labs z Mac pomocí protokolu RDP.
 
-## <a name="install-microsoft-remote-desktop-on-a-mac"></a>Instalace vzdálené plochy Microsoft Na Mac
-1. Otevřete Na Macu App Store a vyhledejte **microsoft remote desktop**.
+## <a name="install-microsoft-remote-desktop-on-a-mac"></a>Instalace Vzdálená plocha Microsoft na Macu
+1. Otevřete App Store na Macu a vyhledejte **Vzdálená plocha Microsoft**.
 
     ![Vzdálená plocha Microsoft](../media/how-to-use-classroom-lab/install-ms-remote-desktop.png)
-1. Nainstalujte nejnovější verzi vzdálené plochy microsoft. 
+1. Nainstalujte nejnovější verzi Vzdálená plocha Microsoft. 
 
-## <a name="access-the-vm-from-your-mac-using-rdp"></a>Přístup k virtuálnímu počítači z Macu pomocí RDP
-1. Otevřete soubor **RDP** stažený do počítače s **nainstalovanou vzdálenou plochou Microsoft.** Měl by se začít připojovat k virtuálnímu virtuálnímu zařízení. 
+## <a name="access-the-vm-from-your-mac-using-rdp"></a>Přístup k virtuálnímu počítači z Mac pomocí protokolu RDP
+1. Otevřete soubor **RDP** , který je stažený na počítači s nainstalovaným **Vzdálená plocha Microsoft** . Mělo by se začít připojovat k virtuálnímu počítači. 
 
     ![Připojení k virtuálnímu počítači](../media/how-to-use-classroom-lab/connect-linux-vm.png)
-1. Pokud se zobrazí následující upozornění, vyberte **pokračovat.** 
+1. Pokud se zobrazí následující upozornění, vyberte **pokračovat** . 
 
-    ![Upozornění na certifikát](../media/how-to-use-classroom-lab/certificate-error.png)
-1. Měli byste vidět virtuální ho dispozičně. 
+    ![Upozornění certifikátu](../media/how-to-use-classroom-lab/certificate-error.png)
+1. Měl by se zobrazit virtuální počítač. 
 
     > [!NOTE]
-    > Následující příklad je pro virtuální počítač CentOS Linux. 
+    > Následující příklad je pro virtuální počítač s CentOS Linux. 
 
     ![Virtuální počítač](../media/how-to-use-classroom-lab/vm-ui.png)
 
 
 ## <a name="next-steps"></a>Další kroky
-Informace o připojení k virtuálním počítačům SIP pomocí rdp najdete v tématu [Použití vzdálené plochy pro virtuální počítače s Linuxem.](how-to-use-remote-desktop-linux-student.md)
+Informace o připojení k virtuálním počítačům se systémem Linux pomocí protokolu RDP najdete v tématu [použití vzdálené plochy pro virtuální počítače se systémem Linux](how-to-use-remote-desktop-linux-student.md) .
 
 

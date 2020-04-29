@@ -1,6 +1,6 @@
 ---
-title: Testování mobilních aplikací na tisících reálných zařízení pomocí Visual Studio App Center
-description: Přečtěte si o Visual Studio App Center jako službě pro průběžné testování mobilních aplikací na tisících reálných zařízení.
+title: Otestujte mobilní aplikace na tisících skutečných zařízení pomocí Visual Studio App Center
+description: Přečtěte si o Visual Studio App Center jako službu, která umožňuje průběžně testovat mobilní aplikace na tisících skutečných zařízení.
 author: codemillmatt
 ms.assetid: 12a8a079-9b3c-4faf-0000-ccff02097224
 ms.service: vs-appcenter
@@ -8,35 +8,35 @@ ms.topic: article
 ms.date: 03/24/2020
 ms.author: masoucou
 ms.openlocfilehash: 05fa29e4b79cdbec7d925b2a35bd3fdf0bb03213
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80240098"
 ---
-# <a name="perform-automated-testing-on-thousands-of-mobile-devices-simultaneously"></a>Automatické testování na tisících mobilních zařízení současně
-Testování může být náročné a stále složitější z důvodu fragmentace zařízení, složitosti aplikace, cyklů rychlého vydání, krátkých relací a vysokých očekávání uživatelů. Musíte se pravidelně ujistit, že dodáváte důkladně testované aplikace, které poskytují skvělou zákaznickou zkušenost. Testování není snadný úkol a není dobré využít čas vývojáře k ručnímu testování každé verze.
+# <a name="perform-automated-testing-on-thousands-of-mobile-devices-simultaneously"></a>Automatizované testování na tisíce mobilních zařízení současně
+Testování může být náročné a stále složité kvůli fragmentaci zařízení, složitosti aplikace, cyklům rychlých verzí, krátkým relacím a vysokým očekáváním uživatelů. Musíte pravidelně zajistit, abyste poskytovali důkladně testované aplikace, které poskytují skvělé prostředí pro zákazníky. Testování není snadné, a proto není vhodné k ručnímu testování jednotlivých vydání použít vývojářský čas.
 
-Výzvy v oblasti testování lze účinně řešit. Pomocí automatického testování můžete testovat mobilní aplikace v celé řadě zařízení. Pomocí cloudových služeb můžete urychlit vydávání mobilních aplikací a překonat problémy s testováním, které přidávají úzká místa pro vývoj a nasazování aplikací.
+Problémy s testováním se dají efektivně řešit. Mobilní aplikace můžete testovat v široké škále zařízení pomocí automatizovaného testování. Cloudové služby můžete použít k urychlení vydání mobilních aplikací a k překonání výzev při testování, které přidávají kritickým bodům pro vývoj a nasazování aplikací.
 
-## <a name="importance-of-automated-testing"></a>Význam automatizovaného testování
-- Zvyšte pokrytí testu cílením na různé faktory formuláře, typy připojení a verze operačního systému.
-- Ušetřete čas, peníze a prostředky testováním na různých zařízeních a pokrytí operačního systémem.
-- Zlepšete přesnost tím, že se vyhnete opakovaným ručním testům a máte více času na vytvoření nových automatizovaných softwarových testů a řešení složitých funkcí.
-- Testujte nepřetržitě, analyzujte výkon aplikací a najděte a opravte problémy dříve, než do nich uživatelé narazíte a rychle se uvolní.
-- Poskytujte vysoce kvalitní aplikace tím, že zajistíte, aby vaši zákazníci na široké škále zařízení získali nejlepší zážitek.
+## <a name="importance-of-automated-testing"></a>Důležitost automatizovaného testování
+- Zvyšte pokrytí svého testu tím, že zacílíte na různé faktory formuláře, typy připojení a verze operačního systému.
+- Šetřete čas, peníze a prostředky testováním na různých zařízeních a pokrytí operačního systému.
+- Zlepšete přesnost tím, že se vyhnete opakovaným ručním testům a máte víc času na vytváření nových automatizovaných softwarových testů a práci se složitými funkcemi.
+- Průběžný test, analýza výkonu aplikace a hledání a opravy problémů před tím, než se uživatelé do nich budou spouštět a rychle vydávají.
+- Poskytněte vysoce kvalitní aplikace tím, že zajistíte, aby vaši zákazníci mohli využívat široké spektrum zařízení.
 
 ## <a name="visual-studio-app-center"></a>Visual Studio App Center
-[Test Centra aplikací](/appcenter/test-cloud/) je cloudová služba, kterou můžete použít ke spuštění automatizovaných testů rozhraní na tisících reálných zařízení v cloudu v systémech Android a iOS pro nativní a hybridní mobilní aplikace. S více než 2 000 zařízeními můžete psát testovací skripty, které lze spustit automaticky, aby bylo testování snadné.
+[App Center Test](/appcenter/test-cloud/) je cloudová služba, kterou můžete použít ke spouštění automatizovaných testů uživatelského rozhraní na tisících skutečných zařízení v cloudu napříč Androidem a iOS pro nativní a hybridní mobilní aplikace. U více než 2 000 zařízení můžete napsat skripty testu, které lze provést automaticky, aby bylo testování snadné.
 
 **Klíčové funkce**
-   - Testy, které běží na skutečných zařízeních, které nejsou zakořeněné nebo jailbroken poskytnout nejlepší aproximaci prostředí uživatelů.
-   - Snímky obrazovky jsou automaticky zachyceny a připojeny ke každému kroku testu. Mohou být zobrazeny vedle sebe pro všechna cílená zařízení v testovacím běhu.
-   - Protokoly zařízení pro všechna cílová zařízení v testovacím běhu a trasování zásobníku pro neúspěšné testovací kroky.
-   - Souběžné testování běží na více zařízeních současně, aby se urychlila doba do výsledků.
-   - Populární podpora testovacího rámce, jako je Appium (Java s JUnit) pro Android a iOS, Espresso (Java) pro Android, Calabash pro Android a iOS, Xamarin.UITest pro Android a iOS a XCUITest pro iOS.
-   - Podpora platformy pro iOS, Android Xamarin a React Native.
+   - Testy, které běží na skutečných zařízeních, která nejsou rootovaná, nebo s jailbreakem, aby poskytovaly co nejlepší odhad prostředí vašich uživatelů.
+   - Snímky obrazovky jsou automaticky zachyceny a připojeny ke každému testovacímu kroku. Lze je zobrazit vedle sebe pro všechna cílová zařízení v rámci testovacího běhu.
+   - Protokoly zařízení pro všechna cílová zařízení v testovacím běhu a trasování zásobníku pro neúspěšné kroky testu.
+   - Souběžný test běží na několika zařízeních současně, aby se urychlil čas na výsledky.
+   - Oblíbená podpora testovacích rozhraní jako je appium (Java s JUnit) pro Android a iOS, espresso (Java) pro Android, Calabash pro Android a iOS, Xamarin. UITest pro Android a iOS a XCUITest pro iOS.
+   - Podpora platforem pro iOS, Android Xamarin a reakci na nativní.
 
 **Odkazy**
-   - [Registrace pomocí Centra aplikací Visual Studia](https://appcenter.ms/signup?utm_source=Mobile%20Development%20Docs&utm_medium=Azure&utm_campaign=New%20azure%20docs) 
-   - [Začínáme s testem Centra aplikací](/appcenter/test-cloud/)
+   - [Zaregistrujte se Visual Studio App Center](https://appcenter.ms/signup?utm_source=Mobile%20Development%20Docs&utm_medium=Azure&utm_campaign=New%20azure%20docs) 
+   - [Začínáme s App Center testem](/appcenter/test-cloud/)

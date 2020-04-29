@@ -1,6 +1,6 @@
 ---
-title: Připojení dat zabezpečení cloudových aplikací k Azure Sentinelu| Dokumenty společnosti Microsoft
-description: Přečtěte si, jak propojit data cloudového zabezpečení aplikací s Azure Sentinelem.
+title: Připojit Cloud App Security dat ke službě Azure Sentinel | Microsoft Docs
+description: Přečtěte si, jak připojit Cloud App Security dat ke službě Azure Sentinel.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,49 +15,49 @@ ms.workload: na
 ms.date: 03/24/2020
 ms.author: yelevin
 ms.openlocfilehash: 266d97e834247088d40837cbec1436e00d0f4be2
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80422147"
 ---
-# <a name="connect-data-from-microsoft-cloud-app-security"></a>Připojení dat ze zabezpečení aplikací Microsoft Cloud App Security 
+# <a name="connect-data-from-microsoft-cloud-app-security"></a>Připojení dat z Microsoft Cloud App Security 
 
 
 
-Konektor [Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) (MCAS) umožňuje streamovat výstrahy a [protokoly Cloud Discovery](https://docs.microsoft.com/cloud-app-security/tutorial-shadow-it) z MCAS do Azure Sentinelu. To vám umožní získat přehled o vašich cloudových aplikacích, získat sofistikované analýzy pro identifikaci a boj proti kybernetickým hrozbám a řídit způsob, jakým vaše data cestují.
+Konektor [Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) (MCAS) umožňuje streamovat výstrahy a [protokoly Cloud Discovery](https://docs.microsoft.com/cloud-app-security/tutorial-shadow-it) z MCAS do služby Azure Sentinel. To vám umožní získat přehled o vašich cloudových aplikacích, získávat sofistikované analýzy, které vám pomůžou identifikovat a bojovat proti týká kybernetických hrozeb a řídit, jak se data cestují.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Uživatel musí mít oprávnění ke čtení a zápisu do pracovního prostoru.
-- Uživatel musí mít oprávnění globálního správce nebo správce zabezpečení v tenantovi pracovního prostoru.
-- Pokud chcete streamovat protokoly Cloud Discovery do Azure Sentinelu, [povolte Azure Sentinel jako SIEM v Microsoft Cloud App Security](https://aka.ms/AzureSentinelMCAS).
+- Váš uživatel musí mít v pracovním prostoru oprávnění ke čtení a zápisu.
+- Váš uživatel musí mít oprávnění globálního správce nebo správce zabezpečení v tenantovi pracovního prostoru.
+- Pokud chcete streamovat Cloud Discovery protokoly do Azure Sentinel, [Povolte jako Siem v Microsoft Cloud App Security možnost Sentinel Azure](https://aka.ms/AzureSentinelMCAS).
 
 > [!IMPORTANT]
-> Ingestování protokolů Zjišťování cloudu je aktuálně ve verzi Public Preview.
-> Tato funkce je k dispozici bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy.
+> Přijímání protokolů Cloud Discovery je v současnosti ve verzi Public Preview.
+> Tato funkce se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
  
-## <a name="connect-to-cloud-app-security"></a>Připojení k zabezpečení cloudových aplikací
+## <a name="connect-to-cloud-app-security"></a>Připojení k Cloud App Security
 
-Pokud už cloudové zabezpečení aplikací máte, zkontrolujte, zda je [v síti povolená](https://docs.microsoft.com/cloud-app-security/getting-started-with-cloud-app-security).
-Pokud cloudové zabezpečení aplikací se nasadí a ingestuje vaše data, data výstrah lze snadno streamovat do Azure Sentinelu.
+Pokud už máte Cloud App Security, ujistěte se, že je [ve vaší síti povolená](https://docs.microsoft.com/cloud-app-security/getting-started-with-cloud-app-security).
+Pokud je Cloud App Security nasazená a ingestují vaše data, můžou se data výstrah do Azure Sentinel snadno streamovat.
 
 
-1. V navigační nabídce Azure Sentinel vyberte **Datové konektory**. V seznamu konektorů klikněte na dlaždici **Microsoft Cloud App Security** a potom na tlačítko Otevřít **stránku konektoru** v pravém dolním.
+1. V navigační nabídce Azure Sentinel vyberte **datové konektory**. V seznamu konektorů klikněte na dlaždici **Microsoft Cloud App Security** a pak na pravé straně tlačítko **otevřít konektor** .
 
-1. Vyberte protokoly, které chcete streamovat do Azure Sentinelu; můžete zvolit **výstrahy** a **protokoly zjišťování cloudu** (náhled). 
+1. Vyberte protokoly, které chcete streamovat do Azure Sentinel; můžete zvolit **výstrahy** a **protokoly Cloud Discovery** (Preview). 
 
-1. Klepněte na **tlačítko Použít změny**.
+1. Klikněte na **použít změny**.
 
-1. Chcete-li použít příslušné schéma v Log Analytics pro `SecurityAlert` výstrahy Cloud App Security, zadejte okno dotazu. Pro schéma protokolů cloudového zjišťování `McasShadowItReporting`zadejte .
+1. Pokud chcete použít příslušné schéma v Log Analytics pro Cloud App Security výstrahy, zadejte `SecurityAlert` do okna dotazu. Do pole Cloud Discovery protokoly schématu zadejte `McasShadowItReporting`.
 
 > [!NOTE]
-> Cloud Discovery pomáhá zjišťovat a identifikovat trendy agregací dat, na kterých jsou uživatelé připojení, do cloudových aplikací.
+> Cloud Discovery pomáhá detekovat a identifikovat trendy tím, že agreguje data základních uživatelů ke cloudovým aplikacím.
 >
-> Vzhledem k tomu, že data cloudového zjišťování se agregují na základě denní hodu, uvědomte si, že v Azure Sentinelu se neprojeví až 24 hodin nejnovějších dat. V případě, že šetření na nízké úrovni vyžaduje bezprostřednější údaje, mělo by být provedeno přímo ve zdrojovém zařízení nebo službě, kde se nezpracovaná data nacházejí.
+> Vzhledem k tomu, že Cloud Discovery Data jsou agregována každý den, mějte na paměti, že v rámci služby Azure Sentinel se neprojeví až 24 hodin nejaktuálnějších dat. V případě, že vyšetřování nízké úrovně vyžaduje dobezprostředníná data, je třeba je provést přímo ve zdrojovém zařízení nebo službě, kde se nacházejí nezpracovaná data.
 
 ## <a name="next-steps"></a>Další kroky
-V tomto dokumentu jste se dozvěděli, jak připojit Microsoft Cloud App Security k Azure Sentinelu. Další informace o Azure Sentinelu najdete v následujících článcích:
-- Přečtěte [si, jak získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
-- Můžete začít zjišťovat hrozby pomocí Azure Sentinelu pomocí [integrovaných](tutorial-detect-threats.md) nebo [vlastních](tutorial-detect-threats-custom.md) pravidel.
+V tomto dokumentu jste zjistili, jak připojit Microsoft Cloud App Security ke službě Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:
+- Naučte se [, jak získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
+- Začněte s detekcí hrozeb pomocí služby Azure Sentinel a pomocí [předdefinovaných](tutorial-detect-threats.md) nebo [vlastních](tutorial-detect-threats-custom.md) pravidel.

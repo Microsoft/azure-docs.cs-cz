@@ -1,6 +1,6 @@
 ---
-title: Poradce při potížích s připojením RDP virtuálního počítače Azure podle ID události | Dokumenty společnosti Microsoft
-description: Pomocí ID událostí můžete řešit různé problémy, které brání připojení protokolu RDP (RdP) k virtuálnímu počítači (VM) azure.
+title: Řešení potíží s připojením ke službě RDP pro virtuální počítače Azure podle ID události | Microsoft Docs
+description: Pomocí ID událostí můžete řešit různé problémy, které zabraňují připojení protokolu RDP (Remote Desktop Protocol) k virtuálnímu počítači Azure (VM).
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
@@ -15,111 +15,111 @@ ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
 ms.openlocfilehash: 2073d5f91b26cd2ae53e3291a6d1dad4d711b66d
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80437059"
 ---
 # <a name="troubleshoot-azure-vm-rdp-connection-issues-by-event-id"></a>Řešení potíží s připojením RDP virtuálních počítačů Azure podle ID události 
 
-Tento článek vysvětluje, jak pomocí ID událostí řešit problémy, které brání připojení protokolu rdp (RdP) k virtuálnímu počítači (VM) Azure.
+Tento článek vysvětluje, jak pomocí ID událostí řešit problémy, které brání připojení protokolu RDP (Remote Desktop Protocol) k virtuálnímu počítači Azure (VM).
 
 ## <a name="symptoms"></a>Příznaky
 
-Pokusíte se použít relaci protokolu vzdálené plochy (RDP) pro připojení k virtuálnímu počítači Azure. Po zadání pověření se připojení nezdaří a zobrazí se následující chybová zpráva:
+Zkusíte použít relaci protokolu RDP (Remote Desktop Protocol) pro připojení k virtuálnímu počítači Azure. Po zadání přihlašovacích údajů dojde k chybě připojení a zobrazí se následující chybová zpráva:
 
-**Tento počítač se nemůže připojit ke vzdálenému počítači. Pokud problém přetrvává, obraťte se na vlastníka vzdáleného počítače nebo správce sítě.**
+**Tento počítač se nemůže připojit ke vzdálenému počítači. Zkuste se znovu připojit. Pokud potíže potrvají, obraťte se na vlastníka vzdáleného počítače nebo správce vaší sítě.**
 
-Chcete-li tento problém vyřešit, zkontrolujte protokoly událostí na virtuálním počítači a pak se podívejte na následující scénáře.
+Pokud chcete tento problém vyřešit, zkontrolujte protokoly událostí na virtuálním počítači a podívejte se na následující scénáře.
 
 ## <a name="before-you-troubleshoot"></a>Před odstraňováním potíží
 
-### <a name="create-a-backup-snapshot"></a>Vytvoření záložního snímku
+### <a name="create-a-backup-snapshot"></a>Vytvoření snímku zálohy
 
-Chcete-li vytvořit snímek zálohy, postupujte podle kroků v [snímek disku](../windows/snapshot-copy-managed-disk.md).
+Chcete-li vytvořit záložní snímek, postupujte podle kroků v části [vytvoření snímku disku](../windows/snapshot-copy-managed-disk.md).
 
-### <a name="connect-to-the-vm-remotely"></a>Vzdálené připojení k virtuálnímu virtuálnímu připojení
+### <a name="connect-to-the-vm-remotely"></a>Vzdálené připojení k virtuálnímu počítači
 
-Chcete-li se vzdáleně připojit k virtuálnímu počítači, použijte jednu z metod v [tématu Použití vzdálených nástrojů k řešení problémů s virtuálním počítačem Azure](remote-tools-troubleshoot-azure-vm-issues.md).
+Pokud se chcete vzdáleně připojit k virtuálnímu počítači, použijte jednu z metod, [jak pomocí nástrojů Remote Tools řešit problémy s virtuálními počítači Azure](remote-tools-troubleshoot-azure-vm-issues.md).
 
 ## <a name="scenario-1"></a>Scénář 1
 
 ### <a name="event-logs"></a>Protokoly událostí
 
-V instanci CMD spusťte následující příkazy a zkontrolujte, zda je událost 1058 nebo událost 1057 zaznamenána do systémového protokolu během posledních 24 hodin:
+V instanci CMD spusťte následující příkazy, abyste zkontrolovali, jestli se do systémového protokolu v posledních 24 hodinách protokoluje událost 1058 nebo událost 1057:
 
 ```cmd
 wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windows-TerminalServices-RemoteConnectionManager'] and EventID=1058 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more
 wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windows-TerminalServices-RemoteConnectionManager'] and EventID=1057 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more
 ```
 
-**Název protokolu:**      Systému <br />
+**Název protokolu:**      Souborů <br />
 **Zdroj:**        Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
 **Datum:**          *čas* <br />
 **ID události:** 1058 <br />
-**Kategorie úkolu:** Žádný <br />
+**Kategorie úlohy:** NTato <br />
 **Úroveň:**         Chyba <br />
-**Klíčová slova:**      Klasické <br />
-**Uživatel:**          N/a <br />
+**Klíčová slova:**      Standardním <br />
+**Uživatel:**          NENÍ K DISPOZICI <br />
 **Počítač:**      *počítač* <br />
-**Popis:** Hostitelský server relací VP nenahradil certifikát podepsaný vlastními podpisy, jehož platnost vypršela a který byl použit pro ověřování hostitelského serveru relací VP u připojení TLS. Příslušný stavový kód byl Přístup byl odepřen.
+**Popis:** Hostitel relace VPmu serveru se nepovedlo nahradit certifikát podepsaný svým podpisem, který se používá pro Hostitel relace VP ověřování serveru v připojeních TLS. K příslušnému kódu stavu byl přístup odepřen.
 
-**Název protokolu:**      Systému <br />
+**Název protokolu:**      Souborů <br />
 **Zdroj:**        Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
 **Datum:**          *čas* <br />
 **ID události:** 1058 <br />
-**Kategorie úkolu:** Žádný <br />
+**Kategorie úlohy:** NTato <br />
 **Úroveň:**         Chyba <br />
-**Klíčová slova:**      Klasické <br />
-**Uživatel:**          N/a <br />
+**Klíčová slova:**      Standardním <br />
+**Uživatel:**          NENÍ K DISPOZICI <br />
 **Počítač:**      *počítač* <br />
-**Popis:** Hostitelskému serveru relací VP se nepodařilo vytvořit nový certifikát podepsaný svým držitelem, který bude použit pro ověřování hostitelského serveru relací VP u připojení TLS, příslušný stavový kód již existuje.
+**Popis:** Serveru hostitele relace VP se nepodařilo vytvořit nový certifikát podepsaný svým držitelem, který se má použít pro ověřování serveru hostitele relace VP v připojeních TLS. příslušný stavový kód již objekt existuje.
 
-**Název protokolu:**      Systému <br />
+**Název protokolu:**      Souborů <br />
 **Zdroj:**        Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
 **Datum:**          *čas* <br />
 **ID události:** 1057 <br />
-**Kategorie úkolu:** Žádný <br />
+**Kategorie úlohy:** NTato <br />
 **Úroveň:**         Chyba <br />
-**Klíčová slova:**      Klasické <br />
-**Uživatel:**          N/a <br />
+**Klíčová slova:**      Standardním <br />
+**Uživatel:**          NENÍ K DISPOZICI <br />
 **Počítač:**      *počítač* <br />
-**Popis:** Hostitelskému serveru relací VP se nepodařilo vytvořit nový certifikát podepsaný vlastním podpisem, který bude použit pro ověřování hostitelského serveru relací VP u připojení TLS. Příslušný stavový kód byl Keyset neexistuje
+**Popis:** Serveru Hostitel relace VP se nepodařilo vytvořit nový certifikát podepsaný svým jménem, který se použije k ověřování Hostitel relace VP serveru v připojeních TLS. Příslušný stavový kód byl sada klíčů neexistuje.
 
-Můžete také zkontrolovat chybové události SCHANNEL 36872 a 36870 spuštěním následujících příkazů:
+Můžete také vyhledat chyby zprostředkovatele SCHANNEL 36872 a 36870 spuštěním následujících příkazů:
 
 ```cmd
 wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and EventID=36870 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more
 wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and EventID=36872 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more
 ```
 
-**Název protokolu:**      Systému <br />
+**Název protokolu:**      Souborů <br />
 **Zdroj:**        Schannel <br />
-**Datum:** — <br />
+**Datum:** – <br />
 **ID události:** 36870 <br />
-**Kategorie úkolu:** Žádný <br />
+**Kategorie úlohy:** NTato <br />
 **Úroveň:**         Chyba <br />
-**Klíčová slova:**       <br />
-**Uživatel:**          Systému <br />
+**Klíčov**       <br />
+**Uživatel:**          SOUBORŮ <br />
 **Počítač:**      *počítač* <br />
-**Popis:** Při pokusu o přístup k soukromému klíči pověření serveru TLS došlo k závažné chybě. Kód chyby vrácený z kryptografického modulu je 0x8009030D.  <br />
-Stav vnitřní chyby je 10001.
+**Popis:** Při pokusu o přístup k privátnímu klíči přihlašovacích údajů serveru TLS došlo k závažné chybě. Kód chyby vrácený kryptografickým modulem je 0x8009030D.  <br />
+Stav interní chyby je 10001.
 
 ### <a name="cause"></a>Příčina
-K tomuto problému dochází, protože místní rsa šifrovací klíče ve složce MachineKeys na virtuálním počítači nelze přistupovat. K tomuto problému může dojít z jednoho z následujících důvodů:
+K tomuto problému dochází, protože k místním šifrovacím klíčům RSA ve složce MachineKeys na virtuálním počítači nelze přistup. K tomuto problému může dojít z některého z následujících důvodů:
 
-1. Nesprávná konfigurace oprávnění ve složce Machinekeys nebo v souborech RSA.
+1. Nesprávná konfigurace oprávnění ve složce MachineKeys nebo v souborech RSA.
 
-2. Poškozený nebo chybějící klíč RSA.
+2. Klíč RSA je poškozený nebo chybí.
 
 ### <a name="resolution"></a>Řešení
 
-Chcete-li tento problém vyřešit, je třeba nastavit správná oprávnění k certifikátu RDP pomocí těchto kroků.
+Chcete-li tento problém vyřešit, musíte nastavit správná oprávnění pro certifikát RDP pomocí těchto kroků.
 
-#### <a name="grant-permission-to-the-machinekeys-folder"></a>Udělení oprávnění složce MachineKeys
+#### <a name="grant-permission-to-the-machinekeys-folder"></a>Udělení oprávnění ke složce MachineKeys
 
-1. Vytvořte skript pomocí následujícího obsahu:
+1. Pomocí následujícího obsahu vytvořte skript:
 
    ```powershell
    remove-module psreadline 
@@ -132,18 +132,18 @@ Chcete-li tento problém vyřešit, je třeba nastavit správná oprávnění k 
    Restart-Service TermService -Force
    ```
 
-2.  Spusťte tento skript, chcete-li obnovit oprávnění složky MachineKey a obnovit soubory RSA na výchozí hodnoty.
+2.  Spusťte tento skript pro resetování oprávnění ke složce MachineKey a k resetování souborů RSA na výchozí hodnoty.
 
-3.  Zkuste znovu získat přístup k virtuálnímu virtuálnímu mněmu.
+3.  Zkuste znovu získat přístup k virtuálnímu počítači.
 
-Po spuštění skriptu můžete zkontrolovat následující soubory, u kterých dochází k problémům s oprávněními:
+Po spuštění skriptu můžete vyhledat následující soubory, u kterých dochází k problémům s oprávněními:
 
-* c:\temp\BeforeScript_permissions.txt
-* c:\temp\AfterScript_permissions.txt
+* složce c:\Temp\ BeforeScript_permissions. txt
+* složce c:\Temp\ AfterScript_permissions. txt
 
-#### <a name="renew-rdp-self-signed-certificate"></a>Obnovit certifikát podepsaný pod svým držitelem RDP
+#### <a name="renew-rdp-self-signed-certificate"></a>Prodloužit platnost certifikátu podepsaného svým držitelem (RDP)
 
-Pokud problém přetrvává, spusťte následující skript a ujistěte se, že je obnoven certifikát podepsaný pod svým držitelem RDP:
+Pokud se problém opakuje, spusťte následující skript, abyste se ujistili, že se certifikát podepsaný svým držitelem protokolu RDP obnoví:
 
 ```powershell
 Import-Module PKI
@@ -154,27 +154,27 @@ Stop-Service -Name "SessionEnv"
 Start-Service -Name "SessionEnv"
 ```
 
-Pokud certifikát nemůžete obnovit, pokuste se certifikát odstranit následujícím postupem:
+Pokud certifikát nemůžete obnovit, zkuste certifikát odstranit pomocí těchto kroků:
 
-1. Na jiném virtuálním počítači ve stejné virtuální síti otevřete pole **Spustit,** zadejte **mmc**a stiskněte **OK**. 
+1. Na jiném virtuálním počítači ve stejné virtuální síti otevřete pole **Spustit** , zadejte **MMC**a potom stiskněte **OK**. 
 
-2. V nabídce **Soubor** vyberte **Přidat nebo odebrat modul snap-in**.
+2. V nabídce **soubor** vyberte **Přidat nebo odebrat modul snap-in**.
 
-3. V seznamu **Dostupné moduly snap-in** vyberte **Certifikáty**a pak vyberte **Přidat**.
+3. V seznamu **dostupné moduly snap-in** vyberte **certifikáty**a pak vyberte **Přidat**.
 
-4. Vyberte **účet Počítače**a pak vyberte **Další**.
+4. Vyberte položku **účet počítače**a potom vyberte možnost **Další**.
 
-5. Vyberte **jiný počítač**a přidejte IP adresu virtuálního počítače, který má problémy.
+5. Vyberte **jiný počítač**a pak přidejte IP adresu virtuálního počítače, který obsahuje problémy.
    >[!Note]
-   >Zkuste použít interní síť, abyste se vyhnuli použití virtuální IP adresy.
+   >Zkuste použít interní síť, abyste se vyhnuli používání virtuální IP adresy.
 
 6. Vyberte **Dokončit**a pak vyberte **OK**.
 
    ![Vybrat počítač](./media/event-id-troubleshoot-vm-rdp-connecton/select-computer.png)
 
-7. Rozbalte certifikáty, přejděte do složky Vzdálená plocha\Certifikáty, klikněte pravým tlačítkem myši na certifikát a vyberte **příkaz Odstranit**.
+7. Rozbalte certifikáty, přejděte do složky Remote Desktop\Certificates, klikněte pravým tlačítkem na certifikát a pak vyberte **Odstranit**.
 
-8. Restartujte službu Konfigurace vzdálené plochy:
+8. Restartujte službu Vzdálená plocha Configuration:
 
    ```cmd
    net stop SessionEnv
@@ -182,25 +182,25 @@ Pokud certifikát nemůžete obnovit, pokuste se certifikát odstranit následuj
    ```
 
    >[!Note]
-   >V tomto okamžiku, pokud aktualizujete úložiště z mmc, certifikát se znovu zobrazí. 
+   >Pokud v tuto chvíli aktualizujete Store z konzoly MMC, certifikát se znovu zobrazí. 
 
-Zkuste znovu získat přístup k virtuálnímu virtuálnímu virtuálnímu bodu pomocí funkce RDP.
+Pokuste se získat přístup k virtuálnímu počítači pomocí protokolu RDP znovu.
 
 #### <a name="update-tlsssl-certificate"></a>Aktualizace certifikátu TLS/SSL
 
-Pokud nastavíte virtuální ho virtuálního virtuálního provozu používat certifikát TLS/SSL, spusťte následující příkaz pro získání kryptografického otisku. Pak zkontrolujte, zda je stejný jako kryptografický otisk certifikátu:
+Pokud nastavíte virtuální počítač tak, aby používal certifikát TLS/SSL, spusťte následující příkaz, který tento kryptografický otisk získá. Potom zkontrolujte, zda se jedná o stejný kryptografický otisk certifikátu:
 
 ```cmd
 reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v SSLCertificateSHA1Hash
 ```
 
-Pokud tomu tak není, změňte otisk palce:
+Pokud ne, změňte kryptografický otisk:
 
 ```cmd
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v SSLCertificateSHA1Hash /t REG_BINARY /d <CERTIFICATE THUMBPRINT>
 ```
 
-Můžete se také pokusit odstranit klíč tak, aby rdp používá certifikát podepsaný svým držitelem pro RDP:
+Můžete se také pokusit odstranit klíč, aby protokol RDP používal certifikát podepsaný svým držitelem pro protokol RDP:
 
 ```cmd
 reg delete "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v SSLCertificateSHA1Hash
@@ -210,54 +210,54 @@ reg delete "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RD
 
 ### <a name="event-log"></a>Protokol událostí
 
-V instanci CMD spusťte následující příkazy a zkontrolujte, zda je událost chyby SCHANNEL 36871 zaznamenána do systémového protokolu během posledních 24 hodin:
+V instanci CMD spusťte následující příkazy, abyste zkontrolovali, jestli se do systémového protokolu v posledních 24 hodinách protokoluje událost chyby SCHANNEL 36871:
 
 ```cmd
 wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and EventID=36871 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more
 ```
 
-**Název protokolu:**      Systému <br />
+**Název protokolu:**      Souborů <br />
 **Zdroj:**        Schannel <br />
-**Datum:** — <br />
+**Datum:** – <br />
 **ID události:** 36871 <br />
-**Kategorie úkolu:** Žádný <br />
+**Kategorie úlohy:** NTato <br />
 **Úroveň:**         Chyba <br />
-**Klíčová slova:**       <br />
-**Uživatel:**          Systému <br />
+**Klíčov**       <br />
+**Uživatel:**          SOUBORŮ <br />
 **Počítač:**      *počítač* <br />
-**Popis:** Při vytváření pověření serveru TLS došlo k závažné chybě. Stav vnitřní chyby je 10013.
+**Popis:** Při vytváření přihlašovacích údajů serveru TLS došlo k závažné chybě. Stav interní chyby je 10013.
  
 ### <a name="cause"></a>Příčina
 
-Tento problém je způsoben zásadami zabezpečení. Pokud jsou zakázány starší verze tls (například 1.0), přístup k přístupu k přístupu k přístupu k verzi RDP se nezdaří.
+K tomuto problému dochází v důsledku zásad zabezpečení. Pokud jsou starší verze TLS (například 1,0) zakázané, přístup k protokolu RDP se nezdařil.
 
 ### <a name="resolution"></a>Řešení
 
-Protokol RDP používá jako výchozí protokol protokol TLS 1.0. Protokol však může být změněn na TLS 1.1, což je nový standard.
+Protokol RDP používá jako výchozí protokol TLS 1,0. Protokol se ale může změnit na TLS 1,1, což je nový standard.
 
-Informace o řešení tohoto problému [najdete v tématu Poradce při řešení chyb ověřování při připojení k virtuálnímu počítači Azure pomocí protokolu RDP.](troubleshoot-authentication-error-rdp-vm.md#tls-version)
+Pokud chcete tento problém vyřešit, přečtěte si téma [řešení chyb ověřování při připojení k virtuálnímu počítači Azure pomocí protokolu RDP](troubleshoot-authentication-error-rdp-vm.md#tls-version).
 
 ## <a name="scenario-3"></a>Scénář 3
 
-Pokud jste nainstalovali roli **Zprostředkovatel připojení ke vzdálené ploše** na virtuálním počítači, zkontrolujte, zda je událost 2056 nebo událost 1296 za posledních 24 hodin. V instanci CMD spusťte následující příkazy: 
+Pokud máte na virtuálním počítači nainstalovanou roli **Zprostředkovatel připojení k vzdálené ploše** , podívejte se, jestli za posledních 24 hodin spadá událost 2056 nebo 1296. V instanci CMD spusťte následující příkazy: 
 
 ```cmd
 wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name=' Microsoft-Windows-TerminalServices-SessionBroker '] and EventID=2056 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more
 wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name=' Microsoft-Windows-TerminalServices-SessionBroker-Client '] and EventID=1296 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more
 ```
 
-**Název protokolu:**      Microsoft-Windows-TerminalServices-SessionBroker/Provozní <br />
+**Název protokolu:**      Microsoft-Windows-TerminalServices-SessionBroker/Operational <br />
 **Zdroj:**        Microsoft-Windows-TerminalServices-SessionBroker <br />
 **Datum:**          *čas* <br />
-**ID akce:** 2056 <br />
-**Kategorie úkolů:** (109) <br />
+**ID události:** 2056 <br />
+**Kategorie úlohy:** (109) <br />
 **Úroveň:**         Chyba <br />
-**Klíčová slova:**       <br />
+**Klíčov**       <br />
 **Uživatel:**          SÍŤOVÁ SLUŽBA <br />
-**Počítač:**      *počítač fqdn* <br />
-**Popis:** Popis ID události 2056 ze zdroje Microsoft-Windows-TerminalServices-SessionBroker nebyl nalezen. Součást, která vyvolává tuto událost, není nainstalována v místním počítači nebo je instalace poškozena. Součást můžete nainstalovat nebo opravit v místním počítači. <br />
-Pokud událost vznikla v jiném počítači, musely být informace o zobrazení uloženy spolu s událostí. <br />
-K události byly zahrnuty následující informace: <br />
+**Počítač:**      *plně kvalifikovaný název domény počítače* <br />
+**Popis:** Nepovedlo se najít popis události s ID 2056 ze zdrojového kódu Microsoft-Windows-TerminalServices-SessionBroker. Buď není v místním počítači nainstalována komponenta, která vyvolává tuto událost, nebo je instalace poškozena. Součást můžete nainstalovat nebo opravit v místním počítači. <br />
+Pokud událost vznikla v jiném počítači, informace o zobrazení byly uloženy spolu s událostí. <br />
+V rámci této události byly zahrnuty následující informace: <br />
 NULL <br />
 NULL <br />
 Přihlášení k databázi se nezdařilo.
@@ -266,35 +266,35 @@ Přihlášení k databázi se nezdařilo.
 **Zdroj:**        Microsoft-Windows-TerminalServices-SessionBroker-Client <br />
 **Datum:**          *čas* <br />
 **ID události:** 1296 <br />
-**Kategorie úkolů:** (104) <br />
+**Kategorie úlohy:** (104) <br />
 **Úroveň:**         Chyba <br />
-**Klíčová slova:**       <br />
+**Klíčov**       <br />
 **Uživatel:**          SÍŤOVÁ SLUŽBA <br />
-**Počítač:**      *počítač fqdn* <br />
-**Popis:** Popis ID události 1296 ze zdroje Microsoft-Windows-TerminalServices-SessionBroker-Client nebyl nalezen. Součást, která vyvolává tuto událost, není nainstalována v místním počítači nebo je instalace poškozena. Součást můžete nainstalovat nebo opravit v místním počítači.
-Pokud událost vznikla v jiném počítači, musely být informace o zobrazení uloženy spolu s událostí.
-K události byly zahrnuty následující informace:  <br />
-*Text* <br />
-*Text* <br />
-Služba Zprostředkovatel připojení ke vzdálené ploše není připraven pro komunikaci vzdáleného volání procedur.
+**Počítač:**      *plně kvalifikovaný název domény počítače* <br />
+**Popis:** Nepovedlo se najít popis události s ID 1296 ze zdroje Microsoft-Windows-TerminalServices-SessionBroker-Client. Buď není v místním počítači nainstalována komponenta, která vyvolává tuto událost, nebo je instalace poškozena. Součást můžete nainstalovat nebo opravit v místním počítači.
+Pokud událost vznikla v jiném počítači, informace o zobrazení byly uloženy spolu s událostí.
+V rámci této události byly zahrnuty následující informace:  <br />
+*textové* <br />
+*textové* <br />
+Zprostředkovatel připojení k vzdálené ploše není připravená na komunikaci RPC.
 
 ### <a name="cause"></a>Příčina
 
-K tomuto problému dochází, protože název hostitele serveru služby Zprostředkovatel připojení ke vzdálené ploše je změněn, což není podporovaná změna. 
+K tomuto problému dochází, protože se změnil název hostitele Zprostředkovatel připojení k vzdálené ploše serveru, což není podporovaná změna. 
 
-Název hostitele obsahuje položky a závislosti na interní databázi systému Windows, kterou vyžaduje farma služby Vzdálená plocha, aby bylo možné pracovat. Změna názvu hostitele po farmě je již vytvořena způsobí mnoho chyb a může způsobit makléřského serveru přestat pracovat.
+Název hostitele má záznamy a závislosti v interní databázi Windows, kterou vyžaduje farma služby Vzdálená plocha, aby mohla fungovat. Změna názvu hostitele po sestavení farmy způsobuje mnoho chyb a může způsobit, že server služby broker přestane fungovat.
 
 ### <a name="resolution"></a>Řešení 
 
-Chcete-li tento problém vyřešit, role Zprostředkovatel připojení ke vzdálené ploše a interní databáze systému Windows je nutné přeinstalovat.
+Chcete-li tento problém vyřešit, je třeba přeinstalovat roli Zprostředkovatel připojení k vzdálené ploše a interní databázi systému Windows.
 
 ## <a name="next-steps"></a>Další kroky
 
-[Události Kanálu](https://technet.microsoft.com/library/dn786445(v=ws.11).aspx)
+[Události Schannel](https://technet.microsoft.com/library/dn786445(v=ws.11).aspx)
 
 [Zprostředkovatel zabezpečení Schannel – technický přehled](https://technet.microsoft.com/library/dn786429(v=ws.11).aspx)
 
-[Rdp se nezdaří s ID události 1058 & událost 36870 s certifikátem hostitele relací vzdálené plochy & ssl komunikace](https://blogs.technet.microsoft.com/askperf/2014/10/22/rdp-fails-with-event-id-1058-event-36870-with-remote-desktop-session-host-certificate-ssl-communication/)
+[Protokol RDP selže s ID události 1058 & události 36870 s certifikátem Hostitel relace vzdálené plochy & komunikaci SSL](https://blogs.technet.microsoft.com/askperf/2014/10/22/rdp-fails-with-event-id-1058-event-36870-with-remote-desktop-session-host-certificate-ssl-communication/)
 
 [Schannel 36872 nebo Schannel 36870 na řadiči domény](https://blogs.technet.microsoft.com/instan/2009/01/05/schannel-36872-or-schannel-36870-on-a-domain-controller/)
 

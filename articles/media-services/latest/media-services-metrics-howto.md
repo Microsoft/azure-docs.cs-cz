@@ -1,6 +1,6 @@
 ---
-title: Zobrazení metrik pomocí Azure Monitoru
-description: Tento článek ukazuje, jak sledovat metriky pomocí grafů portálu Azure a Azure CLI.
+title: Zobrazit metriky pomocí Azure Monitor
+description: Tento článek ukazuje, jak monitorovat metriky pomocí Azure Portalch grafů a Azure CLI.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,50 +14,50 @@ ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
 ms.openlocfilehash: c230e1e950bb924631032940642a6202acf4ade8
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80382932"
 ---
 # <a name="monitor-media-services-metrics"></a>Monitorování metrik služby Media Services
 
-[Azure Monitor](../../azure-monitor/overview.md) umožňuje monitorovat metriky a diagnostické protokoly, které vám pomohou pochopit, jak si vaše aplikace vedou. Podrobný popis této funkce a zjistěte, proč byste chtěli používat protokoly metrik a diagnostiky Azure Media Services, najdete [v tématu Monitor Media Services metriky a diagnostické protokoly](media-services-metrics-diagnostic-logs.md).
+[Azure monitor](../../azure-monitor/overview.md) vám umožní monitorovat metriky a diagnostické protokoly, které vám pomůžou pochopit, jak vaše aplikace provádí. Podrobný popis této funkce a informace o tom, proč byste chtěli použít Azure Media Services metriky a diagnostické protokoly, najdete v tématu [monitorování metrik Media Services a diagnostických protokolů](media-services-metrics-diagnostic-logs.md).
 
-Azure Monitor poskytuje několik způsobů, jak pracovat s metrikami, včetně jejich vytváření grafů na portálu, přístupu k nim prostřednictvím rozhraní REST API nebo dotazování pomocí rozhraní příkazového příkazového příkazu Azure. Tento článek ukazuje, jak sledovat metriky pomocí grafů portálu Azure a Azure CLI.
+Azure Monitor poskytuje několik způsobů, jak pracovat s metrikami, včetně jejich grafu na portálu, přístupu k nim přes REST API nebo jejich dotazování pomocí rozhraní příkazového řádku Azure CLI. Tento článek ukazuje, jak monitorovat metriky pomocí Azure Portalch grafů a Azure CLI.
 
 ## <a name="prerequisites"></a>Požadavky
 
 - [Vytvoření účtu Media Services](create-account-cli-how-to.md)
-- Zkontrolovat [metriky a diagnostické protokoly služby Monitor Media Services](media-services-metrics-diagnostic-logs.md)
+- Kontrola [monitorování Media Services metriky a diagnostické protokoly](media-services-metrics-diagnostic-logs.md)
 
-## <a name="view-metrics-in-azure-portal"></a>Zobrazení metrik na Webu Azure Portal
+## <a name="view-metrics-in-azure-portal"></a>Zobrazit metriky v Azure Portal
 
 1. Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
-1. Přejděte na svůj účet Mediální služby Azure a vyberte **metriky**.
-1. Klikněte na pole **ZDROJ** a vyberte zdroj, pro který chcete sledovat metriky.
+1. Přejděte na účet Azure Media Services a vyberte **metriky**.
+1. Klikněte na pole **prostředek** a vyberte prostředek, pro který chcete monitorovat metriky.
 
-    Vpravo se zobrazí okno **Vybrat zdroj** se seznamem zdrojů, které máte k dispozici. V tomto případě vidíte:
+    Na pravé straně se zobrazí okno **Vybrat prostředek** se seznamem dostupných zdrojů. V takovém případě se zobrazí:
 
-    * &lt;Název účtu služby Media Services&gt;
-    * &lt;Název koncového&gt;/&lt;bodu datového proudu účtu služby Media Services&gt;
+    * &lt;Název účtu Media Services&gt;
+    * &lt;Název koncového&gt;/&lt;bodu streamování názvu Media Services účtu&gt;
     * &lt;název účtu úložiště&gt;
 
-    Vyberte zdroj a stiskněte **klávesu Použít**. Podrobnosti o podporovaných prostředcích a metrikách naleznete [v tématu Metriky Monitor Media Services](media-services-metrics-diagnostic-logs.md).
+    Vyberte prostředek a stiskněte **použít**. Podrobnosti o podporovaných prostředcích a metrikách najdete v tématu [monitorování Media Services metriky](media-services-metrics-diagnostic-logs.md).
 
     ![Metriky](media/media-services-metrics/metrics02.png)
 
     > [!NOTE]
-    > Chcete-li přepínat mezi prostředky, u kterých chcete sledovat metriky, klikněte znovu na pole **ZDROJ** a opakujte tento krok.
-1. (Volitelně) pojmenujte graf (upravte název stisknutím tužky v horní části).
+    > Pokud chcete přepínat mezi prostředky, pro které chcete monitorovat metriky, klikněte znovu na pole **prostředek** a opakujte tento krok.
+1. (Volitelně) zadejte název grafu (upravte název tak, že stisknete tužku v horní části).
 1. Přidejte metriky, které chcete zobrazit.
 
     ![Metriky](media/media-services-metrics/metrics03.png)
-1. Graf můžete připnout na řídicí panel.
+1. Svůj graf můžete připnout na řídicí panel.
 
-## <a name="view-metrics-with-azure-cli"></a>Zobrazení metrik pomocí azure CLI
+## <a name="view-metrics-with-azure-cli"></a>Zobrazení metrik pomocí Azure CLI
 
-Chcete-li získat metriky "Odchozí" s Azure CLI, spustíte následující `az monitor metrics` příkaz:
+Pokud chcete získat metriky "odchozích" pomocí Azure CLI, spusťte následující `az monitor metrics` příkaz:
 
 ```azurecli-interactive
 az monitor metrics list --resource \
@@ -65,12 +65,12 @@ az monitor metrics list --resource \
    --metric "Egress"
 ```
 
-Chcete-li získat další metriky, nahraďte název metriky, která vás zajímá, "Odchozí přenos".
+Pokud chcete získat další metriky, nahraďte "výstup" pro název metriky, které vás zajímá.
 
 ## <a name="see-also"></a>Viz také
 
-* [Metriky azure monitoru](../../azure-monitor/platform/data-platform.md)
-* [Vytvářejte, zobrazujte a spravujte upozornění na metriky pomocí Azure Monitoru](../../azure-monitor/platform/alerts-metric.md).
+* [Azure Monitor metriky](../../azure-monitor/platform/data-platform.md)
+* [Umožňuje vytvářet, zobrazovat a spravovat výstrahy metrik pomocí Azure monitor](../../azure-monitor/platform/alerts-metric.md).
 
 ## <a name="next-steps"></a>Další kroky
 

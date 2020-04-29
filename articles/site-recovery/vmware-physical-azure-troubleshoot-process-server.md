@@ -1,6 +1,6 @@
 ---
-title: Poradce při potížích s procesem obnovení webu Azure server
-description: Tento článek popisuje, jak řešit problémy se serverem procesu obnovení webu Azure
+title: Řešení potíží s Azure Site Recovery procesový Server
+description: Tento článek popisuje, jak řešit problémy s Azure Site Recovery procesový Server.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
@@ -8,245 +8,245 @@ ms.topic: troubleshooting
 ms.date: 09/09/2019
 ms.author: raynew
 ms.openlocfilehash: 812cd0293f9627b7438e9870d8985e71dae1d147
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79256858"
 ---
-# <a name="troubleshoot-the-process-server"></a>Poradce při potížích s procesním serverem
+# <a name="troubleshoot-the-process-server"></a>Řešení potíží s procesovým serverem
 
-Server [procesu obnovení lokality](site-recovery-overview.md) se používá při nastavení zotavení po havárii do Azure pro místní virtuální počítače VMware a fyzické servery. Tento článek popisuje, jak řešit problémy s procesem serveru, včetně replikace a připojení problémy.
+[Site Recovery](site-recovery-overview.md) procesový Server se používá při nastavení zotavení po havárii do Azure pro místní virtuální počítače VMware a fyzické servery. Tento článek popisuje, jak řešit problémy s procesovým serverem, včetně potíží s replikací a připojením.
 
-[Přečtěte si další informace](vmware-physical-azure-config-process-server-overview.md) o procesním serveru.
+[Přečtěte si další informace](vmware-physical-azure-config-process-server-overview.md) o procesovém serveru.
 
 ## <a name="before-you-start"></a>Než začnete
 
-Než začnete s odstraňováním potíží:
+Než začnete řešit potíže:
 
-1. Ujistěte se, že rozumíte tomu, jak [sledovat procesní servery](vmware-physical-azure-monitor-process-server.md).
-2. Projděte si níže uvedené doporučené postupy.
-3. Ujistěte se, že dodržujete [aspekty kapacity](site-recovery-plan-capacity-vmware.md#capacity-considerations)a používáte pokyny pro změnu velikosti pro [konfigurační server](site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-configuration-server-and-inbuilt-process-server) nebo [samostatné procesní servery](site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-process-server).
+1. Ujistěte se, že rozumíte tomu, jak [sledovat procesové servery](vmware-physical-azure-monitor-process-server.md).
+2. Přečtěte si následující doporučené postupy.
+3. Ujistěte se, že dodržujete [požadavky na kapacitu](site-recovery-plan-capacity-vmware.md#capacity-considerations), a použijte pokyny pro změnu velikosti pro [konfigurační server](site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-configuration-server-and-inbuilt-process-server) nebo [samostatné procesové servery](site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-process-server).
 
-## <a name="best-practices-for-process-server-deployment"></a>Doporučené postupy pro nasazení procesního serveru
+## <a name="best-practices-for-process-server-deployment"></a>Osvědčené postupy pro nasazení procesového serveru
 
-Pro optimální výkon procesních serverů jsme shrnuli řadu obecných doporučených postupů.
+Pro optimální výkon procesových serverů jsme shromáždili řadu obecných osvědčených postupů.
 
-**Osvědčených** | **Podrobnosti**
+**Osvědčené postupy** | **Zobrazí**
 --- |---
-**Použití** | Ujistěte se, že konfigurační server/samostatný procesní server jsou používány pouze k určenému účelu. Nespouštějte nic jiného na stroji.
-**IP adresa** | Ujistěte se, že procesní server má statickou adresu IPv4 a nemá nakonfigurovaný nakonfigurovaný naváděný adresu NAT.
-**Řízení využití paměti/procesoru** |Udržujte využití procesoru a paměti pod 70 %.
-**Zajistěte volný prostor** | Volné místo označuje místo na disku mezipaměti na procesním serveru. Data replikace se ukládají do mezipaměti před odesláním do Azure.<br/><br/> Udržujte volný prostor nad 25%. Pokud je nižší než 20 %, replikace je omezena pro replikované počítače, které jsou přidruženy k procesu serveru.
+**Využívání** | Ujistěte se, že se konfigurační server/samostatný procesový Server používá pouze k zamýšlenému účelu. Nespouštějte na počítači nic jiného.
+**IP adresa** | Ujistěte se, že procesový Server má statickou adresu IPv4 a nemá nakonfigurován překlad adres (NAT).
+**Řízení paměti a využití CPU** |Ponechte využití CPU a paměti pod 70%.
+**Zajistěte volné místo** | Volné místo označuje místo na disku mezipaměti na procesovém serveru. Data replikace se ukládají do mezipaměti, než se nahrají do Azure.<br/><br/> Nechte volné místo nad 25%. Pokud překročíte 20%, replikace se omezí pro replikované počítače, které jsou přidružené k procesu serveru.
 
-## <a name="check-process-server-health"></a>Kontrola stavu serveru procesu
+## <a name="check-process-server-health"></a>Ověřit stav procesového serveru
 
-Prvním krokem při řešení potíží je kontrola stavu a stavu procesního serveru. Chcete-li to provést, zkontrolujte všechny výstrahy, zkontrolujte, zda jsou spuštěny požadované služby, a ověřte, zda je prezenční signál z procesního serveru. Tyto kroky jsou shrnuty v následujícím obrázku, následovaný postupy, které vám pomohou provést kroky.
+Prvním krokem při řešení potíží je kontrolu stavu a stavu procesového serveru. Provedete to tak, že zkontrolujete všechny výstrahy, zkontrolujete, že jsou spuštěné požadované služby, a ověříte, že z procesového serveru existuje prezenční signál. Tyto kroky jsou shrnuté na následujícím obrázku a následují postupy, které vám pomohou postupovat podle pokynů.
 
-![Poradce při potížích se stavem procesního serveru](./media/vmware-physical-azure-troubleshoot-process-server/troubleshoot-process-server-health.png)
+![Řešení potíží s stavem procesového serveru](./media/vmware-physical-azure-troubleshoot-process-server/troubleshoot-process-server-health.png)
 
-## <a name="step-1-troubleshoot-process-server-health-alerts"></a>Krok 1: Poradce při potížích se stavy serveru procesu
+## <a name="step-1-troubleshoot-process-server-health-alerts"></a>Krok 1: řešení potíží s upozorněními na stav procesového serveru
 
-Procesový server generuje řadu výstrah stavu. Tyto výstrahy a doporučené akce jsou shrnuty v následující tabulce.
+Procesový Server vygeneruje množství upozornění na stav. Tyto výstrahy a doporučené akce jsou shrnuty v následující tabulce.
 
 **Typ upozornění** | **Chyba** | **Řešení potíží**
 --- | --- | --- 
-![V pořádku][green] | Žádný  | Procesní server je připojen a v pořádku.
-![Upozornění][yellow] | Zadané služby nejsou spuštěny. | 1. Zkontrolujte, zda jsou spuštěny služby.<br/> 2. Pokud jsou služby spuštěny podle očekávání, postupujte podle následujících pokynů k [řešení problémů s připojením a replikací](#check-connectivity-and-replication).
-![Upozornění][yellow]  | Využití procesoru > 80 % za posledních 15 minut. | 1. Nepřidávejte nové stroje.<br/>2. Zkontrolujte, zda je počet virtuálních připojení používajících procesní server zarovnán s [definovanými omezeními,](site-recovery-plan-capacity-vmware.md#capacity-considerations)a zvažte nastavení [dalšího procesního serveru](vmware-azure-set-up-process-server-scale.md).<br/>3. Postupujte podle následujících pokynů k [řešení problémů s připojením a replikací](#check-connectivity-and-replication).
-![Kritická][red] |  Využití procesoru > 95 % za posledních 15 minut. | 1. Nepřidávejte nové stroje.<br/>2. Zkontrolujte, zda je počet virtuálních připojení používajících procesní server zarovnán s [definovanými omezeními,](site-recovery-plan-capacity-vmware.md#capacity-considerations)a zvažte nastavení [dalšího procesního serveru](vmware-azure-set-up-process-server-scale.md).<br/>3. Postupujte podle následujících pokynů k [řešení problémů s připojením a replikací](#check-connectivity-and-replication).<br/> 4. Pokud problém přetrvává, spusťte [Plánovač nasazení](https://aka.ms/asr-v2a-deployment-planner) pro replikaci serveru VMware/fyzický server.
-![Upozornění][yellow] | Využití paměti > 80% za posledních 15 minut. |  1. Nepřidávejte nové stroje.<br/>2. Zkontrolujte, zda je počet virtuálních připojení používajících procesní server zarovnán s [definovanými omezeními,](site-recovery-plan-capacity-vmware.md#capacity-considerations)a zvažte nastavení [dalšího procesního serveru](vmware-azure-set-up-process-server-scale.md).<br/>3. Postupujte podle pokynů spojených s varováním.<br/> 4. Pokud problém přetrvává, postupujte podle následujících pokynů k [řešení problémů s připojením a replikací](#check-connectivity-and-replication).
-![Kritická][red] | Využití paměti > 95% za posledních 15 minut. | 1. Nepřidávejte nové stroje a zvažte zřízení [dalšího procesního serveru](vmware-azure-set-up-process-server-scale.md).<br/> 2. Postupujte podle pokynů spojených s varováním.<br/> 3. 4. Pokud problém přetrvává, postupujte podle následujících pokynů k [řešení problémů s připojením a replikací](#check-connectivity-and-replication).<br/> 4. Pokud problém přetrvává, spusťte [Plánovač nasazení](https://aka.ms/asr-v2a-deployment-planner) pro problémy s replikací serveru VMware/fyzické.
-![Upozornění][yellow] | Volné místo ve složce mezipaměti < 30 % za posledních 15 minut. | 1. Nepřidávejte nové počítače a zvažte nastavení [dalšího procesního serveru](vmware-azure-set-up-process-server-scale.md).<br/>2. Zkontrolujte, zda je počet virtuálních připojení používajících procesní server v souladu s [pokyny](site-recovery-plan-capacity-vmware.md#capacity-considerations).<br/> 3. Postupujte podle následujících pokynů k [řešení problémů s připojením a replikací](#check-connectivity-and-replication).
-![Kritická][red] |  Volný prostor < 25% za posledních 15 minut | 1. Postupujte podle pokynů spojených s upozorněním pro tento problém.<br/> 2. 3. Podle následujících pokynů [můžete řešit problémy s připojením a replikací](#check-connectivity-and-replication).<br/> 3. Pokud problém přetrvává, spusťte [Plánovač nasazení](https://aka.ms/asr-v2a-deployment-planner) pro replikaci serveru VMware/fyzický server.
-![Kritická][red] | Žádný prezenční signál z procesního serveru po dobu 15 minut nebo déle. Služba tmansvs nekomunikuje s konfiguračním serverem. | 1) Zkontrolujte, zda je procesní server v provozu.<br/> 2. Zkontrolujte, zda je na procesním serveru spuštěn tmassvc.<br/> 3. Postupujte podle následujících pokynů k [řešení problémů s připojením a replikací](#check-connectivity-and-replication).
+![V pořádku][green] | Žádná  | Procesový Server je připojený a v pořádku.
+![Upozornění][yellow] | Zadané služby nejsou spuštěny. | 1. Ověřte, zda jsou služby spuštěny.<br/> 2. Pokud služby běží podle očekávání, postupujte podle pokynů níže a odstraňte potíže s [připojením a replikací](#check-connectivity-and-replication).
+![Upozornění][yellow]  | Využití CPU > 80% za posledních 15 minut. | 1. nepřidávejte nové počítače.<br/>2. Ověřte, že počet virtuálních počítačů, které používají procesový Server, se zarovnají k [definovaným limitům](site-recovery-plan-capacity-vmware.md#capacity-considerations)a zvažte nastavení [dalšího procesového serveru](vmware-azure-set-up-process-server-scale.md).<br/>3. [při řešení problémů s připojením a replikací](#check-connectivity-and-replication)postupujte podle následujících pokynů.
+![Kritická][red] |  Využití CPU > 95% za posledních 15 minut. | 1. nepřidávejte nové počítače.<br/>2. Ověřte, že počet virtuálních počítačů, které používají procesový Server, se zarovnají k [definovaným limitům](site-recovery-plan-capacity-vmware.md#capacity-considerations)a zvažte nastavení [dalšího procesového serveru](vmware-azure-set-up-process-server-scale.md).<br/>3. [při řešení problémů s připojením a replikací](#check-connectivity-and-replication)postupujte podle následujících pokynů.<br/> 4. Pokud potíže potrvají, spusťte [Plánovač nasazení](https://aka.ms/asr-v2a-deployment-planner) pro replikaci VMware/fyzického serveru.
+![Upozornění][yellow] | Využití paměti > 80% za posledních 15 minut. |  1. nepřidávejte nové počítače.<br/>2. Ověřte, že počet virtuálních počítačů, které používají procesový Server, se zarovnají k [definovaným limitům](site-recovery-plan-capacity-vmware.md#capacity-considerations)a zvažte nastavení [dalšího procesového serveru](vmware-azure-set-up-process-server-scale.md).<br/>3. postupujte podle pokynů souvisejících s upozorněním.<br/> 4. Pokud potíže potrvají, postupujte podle pokynů níže, abyste vyřešili [problémy s připojením a replikací](#check-connectivity-and-replication).
+![Kritická][red] | Využití paměti > 95% za posledních 15 minut. | 1. nepřidávejte nové počítače a zvažte nastavení [dalšího procesového serveru](vmware-azure-set-up-process-server-scale.md).<br/> 2. postupujte podle pokynů souvisejících s upozorněním.<br/> 3.4. Pokud se problém opakuje, postupujte podle pokynů níže, abyste vyřešili [problémy s připojením a replikací](#check-connectivity-and-replication).<br/> 4. Pokud potíže potrvají, spusťte [Plánovač nasazení](https://aka.ms/asr-v2a-deployment-planner) pro potíže s replikací VMware/fyzického serveru.
+![Upozornění][yellow] | Místo pro složku mezipaměti < 30% za posledních 15 minut. | 1. nepřidávejte nové počítače a zvažte nastavení [dalšího procesového serveru](vmware-azure-set-up-process-server-scale.md).<br/>2. Ověřte, že počet virtuálních počítačů, které používají procesový Server, jsou zarovnané na [pokyny](site-recovery-plan-capacity-vmware.md#capacity-considerations).<br/> 3. [při řešení problémů s připojením a replikací](#check-connectivity-and-replication)postupujte podle následujících pokynů.
+![Kritická][red] |  Volné místo < 25% za posledních 15 minut | 1. postupujte podle pokynů souvisejících s upozorněním pro tento problém.<br/> 2.3. [Při řešení potíží s připojením a replikací](#check-connectivity-and-replication)postupujte podle následujících pokynů.<br/> 3. Pokud potíže potrvají, spusťte [Plánovač nasazení](https://aka.ms/asr-v2a-deployment-planner) pro replikaci VMware/fyzického serveru.
+![Kritická][red] | Žádný prezenční signál od procesového serveru po dobu 15 minut nebo déle. Služba tmansvs nekomunikuje s konfiguračním serverem. | 1) ověřte, že je procesový Server v provozu.<br/> 2. Ověřte, že je na procesovém serveru spuštěný tmassvc.<br/> 3. [při řešení problémů s připojením a replikací](#check-connectivity-and-replication)postupujte podle následujících pokynů.
 
 
 ![Klíč tabulky](./media/vmware-physical-azure-troubleshoot-process-server/table-key.png)
 
 
-## <a name="step-2-check-process-server-services"></a>Krok 2: Kontrola služeb procesního serveru
+## <a name="step-2-check-process-server-services"></a>Krok 2: Projděte si služby procesového serveru
 
-Služby, které by měly být spuštěny na procesovém serveru, jsou shrnuty v následující tabulce. Existují mírné rozdíly ve službách v závislosti na tom, jak je nasadit procesní server. 
+Služby, které by měly být spuštěny na procesovém serveru, jsou shrnuty v následující tabulce. V závislosti na tom, jak je procesový Server nasazený, existují mírné rozdíly v rámci služeb. 
 
-U všech služeb kromě agenta služby Microsoft Azure Recovery Services (obengine) zkontrolujte, zda je typ StartType nastavený na **automatické** nebo **automatické (zpožděné spuštění).**
+U všech služeb s výjimkou agenta Microsoft Azure Recovery Services (obengine) ověřte, zda je StartType nastaven na hodnotu **automaticky** nebo **automaticky (zpožděné spuštění)**.
  
 **Nasazení** | **Běžící služby**
 --- | ---
-**Procesní server na konfiguračním serveru** | ProcessServer; ProcessServerMonitor; cxprocessserver; InMage PushInstall; Protokolovat upload služby (LogUpload); InMage Scout aplikační služba; Agent služby Microsoft Azure Recovery Services (obengine); InMage Scout VX Agent-Sentinel/Outpost (svagents); tmansvc; služba publikování na webu (W3SVC); MySQL; Služba obnovení webu Microsoft Azure (dra)
-**Procesní server spuštěný jako samostatný server** | ProcessServer; ProcessServerMonitor; cxprocessserver; InMage PushInstall; Protokolovat upload služby (LogUpload); InMage Scout aplikační služba; Agent služby Microsoft Azure Recovery Services (obengine); InMage Scout VX Agent-Sentinel/Outpost (svagents); tmansvc.
-**Procesní server nasazený v Azure pro navrácení služeb po službě 14.** | ProcessServer; ProcessServerMonitor; cxprocessserver; InMage PushInstall; Log Upload service (LogUpload)
+**Procesový Server na konfiguračním serveru** | ProcessServer; ProcessServerMonitor; cxprocessserver PushInstall InMage; Služba LogUpload (log upload Service); InMage Scout Application Service; Agent Microsoft Azure Recovery Services (obengine); InMage Scout VX agent – Sentinel/subpost (svagents); tmansvc W3SVC (World World Web Publishing Service); MySQL Služba Microsoft Azure Site Recovery (DRA)
+**Procesový Server spuštěný jako samostatný server** | ProcessServer; ProcessServerMonitor; cxprocessserver PushInstall InMage; Služba LogUpload (log upload Service); InMage Scout Application Service; Agent Microsoft Azure Recovery Services (obengine); InMage Scout VX agent – Sentinel/subpost (svagents); tmansvc.
+**Procesový Server nasazený v Azure pro navrácení služeb po obnovení** | ProcessServer; ProcessServerMonitor; cxprocessserver PushInstall InMage; Služba nahrání protokolu (LogUpload)
 
 
-## <a name="step-3-check-the-process-server-heartbeat"></a>Krok 3: Kontrola prezenčního signálu procesního serveru
+## <a name="step-3-check-the-process-server-heartbeat"></a>Krok 3: ověření prezenčního signálu procesového serveru
 
-Pokud ze procesního serveru (kód chyby 806) nenateče žádný prezenční signál), postupujte takto:
+Pokud z procesového serveru není žádný prezenční signál (kód chyby 806), udělejte toto:
 
-1. Ověřte, zda je virtuální virtuální server procesu v provozu.
-2. Zkontrolujte, zda tyto protokoly nejsou chyby.
+1. Ověřte, že je virtuální počítač procesového serveru v provozu.
+2. V těchto protokolech vyhledejte chyby.
 
-    C:\ProgramData\ASR\home\svsystems\eventmanager *.log C\ProgramData\ASR\home\svsystems\monitor_protection*.log
+    C:\ProgramData\ASR\home\svsystems\eventmanager *. log c\programdata\asr\home\svsystems\ monitor_protection*. log
 
-## <a name="check-connectivity-and-replication"></a>Kontrola připojení a replikace
+## <a name="check-connectivity-and-replication"></a>Ověření připojení a replikace
 
- Počáteční a probíhající selhání replikace jsou často způsobeny problémy s připojením mezi zdrojovými počítači a procesovým serverem nebo mezi procesním serverem a Azure. Tyto kroky jsou shrnuty v následujícím obrázku, následovaný postupy, které vám pomohou provést kroky.
+ Úvodní a průběžné selhání replikace často způsobují problémy s připojením mezi zdrojovými počítači a procesovým serverem, nebo mezi procesovým serverem a Azure. Tyto kroky jsou shrnuté na následujícím obrázku a následují postupy, které vám pomohou postupovat podle pokynů.
 
-![Poradce při potížích s připojením a replikací](./media/vmware-physical-azure-troubleshoot-process-server/troubleshoot-connectivity-replication.png)
-
-
-## <a name="step-4-verify-time-sync-on-source-machine"></a>Krok 4: Ověření synchronizace času na zdrojovém počítači
-
-Ujistěte se, že systémové datum a čas pro replikovaný počítač je synchronizován. [Další informace](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time)
-
-## <a name="step-5-check-anti-virus-software-on-source-machine"></a>Krok 5: Kontrola antivirového softwaru na zdrojovém počítači
-
-Zkontrolujte, zda v replikovaném počítači neblokuje žádný antivirový software. Pokud potřebujete vyloučit program Site Recovery z antivirových programů, přečtěte si [tento článek](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program).
-
-## <a name="step-6-check-connectivity-from-source-machine"></a>Krok 6: Kontrola připojení ze zdrojového počítače
+![Řešení potíží s připojením a replikací](./media/vmware-physical-azure-troubleshoot-process-server/troubleshoot-connectivity-replication.png)
 
 
-1. V případě potřeby nainstalujte [klienta Telnet](https://technet.microsoft.com/library/cc771275(v=WS.10).aspx) do zdrojového počítače. Nepoužívejte Ping.
-2. Ze zdrojového počítače příkazping procesového serveru na portu HTTPS s Telnet. Ve výchozím nastavení 9443 je port HTTPS pro replikační provoz.
+## <a name="step-4-verify-time-sync-on-source-machine"></a>Krok 4: ověření času synchronizace na zdrojovém počítači
+
+Ujistěte se, že je systémové datum a čas pro replikovaný počítač synchronizovaný. [Další informace](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time)
+
+## <a name="step-5-check-anti-virus-software-on-source-machine"></a>Krok 5: Ověřte antivirový software na zdrojovém počítači
+
+Ověřte, že Site Recovery žádný antivirový software na replikovaném počítači neblokuje. Pokud potřebujete vyloučit Site Recovery z antivirových programů, přečtěte si [Tento článek](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program).
+
+## <a name="step-6-check-connectivity-from-source-machine"></a>Krok 6: ověření připojení ze zdrojového počítače
+
+
+1. V případě potřeby nainstalujte [klienta služby Telnet](https://technet.microsoft.com/library/cc771275(v=WS.10).aspx) na zdrojový počítač. Nepoužívejte Příkazy k zadání příkazů.
+2. Na zdrojovém počítači otestujte procesový Server na portu HTTPS pomocí protokolu Telnet. Standardně 9443 je port HTTPS pro provoz replikace.
 
     `telnet <process server IP address> <port>`
 
-3. Ověřte, zda je připojení úspěšné.
+3. Ověřte, zda připojení proběhlo úspěšně.
 
 
-**Připojení** | **Podrobnosti** | **Akce**
+**Připojení** | **Zobrazí** | **Akce**
 --- | --- | ---
-**Úspěšné** | Telnet zobrazí prázdnou obrazovku a procesní server je dostupný. | Není nutná žádná další akce.
-**Neúspěšné** | Nelze se připojit | Ujistěte se, že příchozí port 9443 je povolen na procesu serveru. Například pokud máte hraniční síť nebo stíněnou podsíť. Zkontrolujte připojení znovu.
-**Částečně úspěšné** | Můžete se připojit, ale zdrojový počítač hlásí, že procesní server není dostupný. | Pokračujte dalším postupem řešení potíží.
+**Úspěšnou** | Telnet zobrazí prázdnou obrazovku a procesový Server je dostupný. | Není vyžadována žádná další akce.
+**Neúspěšné** | Nemůžete se připojit | Ujistěte se, že na procesovém serveru je povolený příchozí port 9443. Například pokud máte hraniční síť nebo monitorovaná podsíť. Znovu ověřte připojení.
+**Částečně úspěšné** | Můžete se připojit, ale zdrojový počítač hlásí, že procesový Server není dostupný. | Pokračujte dalším postupem řešení potíží.
 
-## <a name="step-7-troubleshoot-an-unreachable-process-server"></a>Krok 7: Poradce při potížích s nedostupným procesním serverem
+## <a name="step-7-troubleshoot-an-unreachable-process-server"></a>Krok 7: řešení potíží s nedosažitelným procesovým serverem
 
-Pokud procesní server není dostupný ze zdrojového počítače, zobrazí se chyba 78186. Pokud není vyřešen, tento problém povede k tomu, že body obnovení konzistentní v aplikaci a konzistentní s chybami nebudou generovány podle očekávání.
+Pokud procesový Server není dostupný ze zdrojového počítače, zobrazí se chyba 78186. Pokud tento problém neřešíte, bude to mít za následek to, že body obnovení konzistentní vzhledem k aplikacím i chybové havárie se negenerují podle očekávání.
 
-Poradce při potížích kontrolou, zda zdrojový počítač může dosáhnout IP adresy procesního serveru a spustit nástroj cxpsclient ve zdrojovém počítači, chcete-li zkontrolovat připojení od konce do konce.
+Odstraňte potíže tím, že zkontrolujete, jestli má zdrojový počítač přístup k IP adrese procesového serveru, a spusťte na zdrojovém počítači nástroj cxpsclient, abyste zkontrolovali koncové připojení.
 
 
-### <a name="check-the-ip-connection-on-the-process-server"></a>Kontrola připojení IP na procesním serveru
+### <a name="check-the-ip-connection-on-the-process-server"></a>Ověřte připojení IP na procesovém serveru.
 
-Pokud je telnet úspěšný, ale zdrojový počítač hlásí, že procesní server není dostupný, zkontrolujte, zda se můžete dostat k IP adrese procesního serveru.
+Pokud je protokol Telnet úspěšný, ale zdrojový počítač hlásí, že procesový Server není dostupný, ověřte, zda se můžete připojit k IP adrese procesového serveru.
 
-1. Ve webovém prohlížeči se pokuste o přístup k IP adrese https://<PS_IP>:<PS_Data_Port>/.
-2. Pokud tato kontrola zobrazí chybu certifikátu HTTPS, je to normální. Pokud chybu ignorujete, měli byste vidět 400 - Bad Request. To znamená, že server nemůže obsluhovat požadavek prohlížeče a že standardní připojení HTTPS je v pořádku.
-3. Pokud tato kontrola nefunguje, poznamenejte si chybovou zprávu prohlížeče. Například chyba 407 bude znamenat problém s ověřováním proxy serveru.
+1. Ve webovém prohlížeči se pokuste získat přístup k IP adrese https://<PS_IP>: <PS_Data_Port>/.
+2. Pokud tato kontrolní zpráva zobrazuje chybu certifikátu HTTPS, je to normální. Pokud chybu ignorujete, měla by se zobrazit zpráva 400 – Chybný požadavek. To znamená, že server nemůže obsluhovat požadavek prohlížeče a že standardní připojení HTTPS je přesné.
+3. Pokud tato kontrolu nefunguje, poznamenejte si chybovou zprávu prohlížeče. Například Chyba 407 znamená problém s ověřováním proxy serveru.
 
-### <a name="check-the-connection-with-cxpsclient"></a>Zkontrolujte připojení s cxpsclient
+### <a name="check-the-connection-with-cxpsclient"></a>Ověřit připojení pomocí cxpsclient
 
-Kromě toho můžete spustit nástroj cxpsclient a zkontrolovat připojení od konce na konec.
+Kromě toho můžete spustit nástroj cxpsclient a podívat se na koncové připojení.
 
-1. Spusťte nástroj takto:
+1. Spusťte nástroj následujícím způsobem:
 
     ```
     <install folder>\cxpsclient.exe -i <PS_IP> -l <PS_Data_Port> -y <timeout_in_secs:recommended 300>
     ```
 
-2. Na procesním serveru zkontrolujte generované protokoly v těchto složkách:
+2. Na procesovém serveru ověřte generované protokoly v těchto složkách:
 
     C:\ProgramData\ASR\home\svsystems\transport\log\cxps.err C:\ProgramData\ASR\home\svsystems\transport\log\cxps.xfer
 
 
 
-### <a name="check-source-vm-logs-for-upload-failures-error-78028"></a>Kontrola zdrojových protokolů virtuálních zařízení pro selhání nahrávání (chyba 78028)
+### <a name="check-source-vm-logs-for-upload-failures-error-78028"></a>Ověřte protokoly zdrojového virtuálního počítače pro selhání nahrávání (chyba 78028)
 
-Problém s nahráváním dat blokovaným ze zdrojových počítačů do procesní služby může vést k tomu, že nejsou generovány body obnovení konzistentní s havárií a konzistentní s aplikací. 
+Problém s odesíláním dat blokovaným ze zdrojových počítačů do procesové služby může vést k tomu, že se negenerují body obnovení konzistentní vzhledem k havárii i konzistentní vzhledem k aplikacím. 
 
-1. Chcete-li odstranit selhání nahrávání v síti, můžete hledat chyby v tomto protokolu:
+1. Pokud chcete řešit problémy se selháním síťového nahrávání, můžete najít chyby v tomto protokolu:
 
-    C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\svagents*.log 
+    C:\Program Files (x86) \Microsoft Azure Site Recovery\agent\svagents *. log 
 
-2. Pomocí zbývajících postupů v tomto článku vám může pomoci vyřešit problémy s odesíláním dat.
+2. Pomocí zbývajících postupů v tomto článku můžete vyřešit problémy s nahráváním dat.
 
 
 
-## <a name="step-8-check-whether-the-process-server-is-pushing-data"></a>Krok 8: Kontrola, zda procesový server tlačí data
+## <a name="step-8-check-whether-the-process-server-is-pushing-data"></a>Krok 8: ověření, zda procesový server přenáší data
 
-Zkontrolujte, jestli procesní server aktivně vyřazuje data do Azure.
+Ověřte, jestli procesový Server aktivně donáší data do Azure.
 
-  1. Na procesním serveru otevřete Správce úloh (stiskněte Ctrl+Shift+Esc).
-  2. Vyberte kartu **Výkon** > **Otevřít nástroj Sledování prostředků**.
-  3. Na stránce **Sledování prostředků** vyberte kartu **Síť.** V části **Procesy s aktivitou sítě**zkontrolujte, zda program cbengine.exe aktivně odesílá velký objem dat.
+  1. Na procesovém serveru otevřete Správce úloh (stiskněte kombinaci kláves CTRL + SHIFT + ESC).
+  2. Vyberte kartu **výkon** > **otevřít sledování prostředků**.
+  3. Na stránce **Sledování prostředků** vyberte kartu **síť** . V části **procesy s aktivitou sítě**ověřte, zda souboru cbengine. exe aktivně odesílá velké množství dat.
 
-       ![Svazky v rámci procesů se síťovou aktivitou](./media/vmware-physical-azure-troubleshoot-process-server/cbengine.png)
+       ![Svazky v procesech s aktivitou sítě](./media/vmware-physical-azure-troubleshoot-process-server/cbengine.png)
 
-  Pokud soubor cbengine.exe neodesílá velký objem dat, proveďte kroky v následujících částech.
+  Pokud souboru cbengine. exe neposílá velký objem dat, proveďte kroky v následujících částech.
 
-## <a name="step-9-check-the-process-server-connection-to-azure-blob-storage"></a>Krok 9: Kontrola připojení procesního serveru k úložišti objektů blob Azure
+## <a name="step-9-check-the-process-server-connection-to-azure-blob-storage"></a>Krok 9: ověření připojení procesového serveru ke službě Azure Blob Storage
 
-1. V programu Sledování prostředků vyberte **soubor cbengine.exe**.
-2. V **části Připojení TCP**zkontrolujte, jestli je připojení z procesního serveru do úložiště Azure.
+1. V Sledování prostředků vyberte **souboru cbengine. exe**.
+2. V části **připojení TCP**zkontrolujte, jestli je mezi procesovým serverem dosažitelný přístup k úložišti Azure.
 
-  ![Připojení mezi souborem cbengine.exe a adresou URL úložiště objektů blob Azure](./media/vmware-physical-azure-troubleshoot-process-server/rmonitor.png)
+  ![Připojení mezi souboru cbengine. exe a adresou URL úložiště objektů BLOB v Azure](./media/vmware-physical-azure-troubleshoot-process-server/rmonitor.png)
 
-### <a name="check-services"></a>Zkontrolovat služby
+### <a name="check-services"></a>Kontrolovat služby
 
-Pokud neexistuje žádné připojení z procesního serveru k adrese URL úložiště objektů blob Azure, zkontrolujte, že jsou spuštěné služby.
+Pokud se z procesového serveru nemůžete připojit k adrese URL služby Azure Blob Storage, podívejte se, jestli jsou spuštěné služby.
 
-1. V Ovládacích panelech vyberte **Položku Služby**.
+1. V Ovládacích panelech vyberte **služby**.
 2. Ověřte, zda jsou spuštěny následující služby:
 
     - cxprocessserver
-    - InMage Scout VX Agent – Sentinel/Outpost
-    - Microsoft Azure Recovery Services Agent
-    - Služba obnovení webu Microsoft Azure
+    - InMage Scout VX agent – Sentinel/vystavení
+    - Agent Microsoft Azure Recovery Services
+    - Služba Microsoft Azure Site Recovery
     - tmansvc
 
-3. Spusťte nebo restartujte jakoukoli službu, která není spuštěna.
-4. Ověřte, zda je procesní server připojený a dostupný. 
+3. Spusťte nebo restartujte jakoukoli službu, která není spuštěná.
+4. Ověřte, že je procesový server připojený a dostupný. 
 
-## <a name="step-10-check-the-process-server-connection-to-azure-public-ip-address"></a>Krok 10: Kontrola připojení procesního serveru k veřejné IP adrese Azure
+## <a name="step-10-check-the-process-server-connection-to-azure-public-ip-address"></a>Krok 10: ověření připojení procesového serveru k veřejné IP adrese Azure
 
-1. Na procesním serveru otevřete v **%programfiles%\Microsoft Azure Recovery Services Agent\Temp**nejnovější soubor CBEngineCurr.errlog.
-2. V souboru hledání **443**nebo pokus o připojení řetězce **se nezdařilo**.
+1. Na procesovém serveru v **%ProgramFiles%\Microsoft Azure Recovery Services Agent\Temp**otevřete nejnovější soubor CBEngineCurr. errlog.
+2. V souboru vyhledejte **443**nebo **se pokus o připojení k řetězci nezdařil**.
 
-  ![Protokoly chyb ve složce Temp](./media/vmware-physical-azure-troubleshoot-process-server/logdetails1.png)
+  ![Protokoly chyb v dočasné složce](./media/vmware-physical-azure-troubleshoot-process-server/logdetails1.png)
 
-3. Pokud se zobrazí problémy, najdete svou veřejnou IP adresu Azure v souboru CBEngineCurr.currLog pomocí portu 443:
+3. Pokud se zobrazí problémy, v souboru CBEngineCurr. currLog s použitím portu 443 se nachází veřejná IP adresa Azure:
 
   `telnet <your Azure Public IP address as seen in CBEngineCurr.errlog>  443`
 
-5. Na příkazovém řádku na procesním serveru použijte program Telnet k příkazu ping na veřejnou IP adresu Azure.
+5. Na příkazovém řádku na procesovém serveru použijte k otestování vaší veřejné IP adresy Azure službu Telnet.
 6. Pokud se nemůžete připojit, postupujte podle následujícího postupu.
 
-## <a name="step-11-check-process-server-firewall-settings"></a>Krok 11: Zkontrolujte nastavení brány firewall serveru procesu. 
+## <a name="step-11-check-process-server-firewall-settings"></a>Krok 11: Ověřte nastavení brány firewall procesového serveru. 
 
-Zkontrolujte, zda brána firewall založená na adrese IP na procesním serveru blokuje přístup.
+Ověřte, jestli brána firewall na procesovém serveru blokuje přístup na základě IP adresy.
 
-1. Pro pravidla brány firewall založené na adrese IP:
+1. Pro pravidla brány firewall založená na IP adresách:
 
-    a) Stáhněte si úplný seznam [rozsahů IP adres datového centra Microsoft Azure](https://www.microsoft.com/download/details.aspx?id=41653).
+    a) Stáhněte úplný seznam [Microsoft Azure rozsahy IP adres datového centra](https://www.microsoft.com/download/details.aspx?id=41653).
 
-    b) Přidejte rozsahy IP adres do konfigurace brány firewall, abyste zajistili, že brána firewall umožní komunikaci s Azure (a na výchozí port HTTPS 443).
+    b) přidejte rozsahy IP adres do konfigurace brány firewall, abyste zajistili, že brána firewall umožňuje komunikaci do Azure (a k výchozímu portu HTTPS, 443).
 
-    c) Povolit rozsahy IP adres pro oblast Azure vašeho předplatného a pro oblast Azure – usa (používá se pro řízení přístupu a správu identit).
+    c) Povolte rozsahy IP adres pro oblast Azure svého předplatného a pro oblast Azure Západní USA (slouží k řízení přístupu a správě identit).
 
-2. U bran firewall založených na adrese URL přidejte adresy URL uvedené v následující tabulce do konfigurace brány firewall.
+2. Pro brány firewall založené na adrese URL přidejte do konfigurace brány URL uvedené v následující tabulce.
 
     [!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]  
 
 
-## <a name="step-12-verify-process-server-proxy-settings"></a>Krok 12: Ověření nastavení proxy serveru procesu 
+## <a name="step-12-verify-process-server-proxy-settings"></a>Krok 12: ověření nastavení serveru proxy procesového serveru 
 
-1. Používáte-li proxy server, zkontrolujte, zda je název serveru proxy server serverem DNS přeložen. Zkontrolujte hodnotu, kterou jste zadali při nastavování konfiguračního serveru v klíči registru **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure Site Recovery\ProxySettings**.
-2. Ujistěte se, že stejné nastavení používá agent obnovení webu Azure k odesílání dat.
+1. Pokud používáte proxy server, ujistěte se, že server DNS přeloží název proxy server. Ověřte hodnotu, kterou jste zadali při nastavování konfiguračního serveru v klíči registru **HKEY_LOCAL_MACHINE \Software\microsoft\azure lokality Recovery\ProxySettings**.
+2. Zajistěte, aby se stejná nastavení používala agent Azure Site Recovery k odesílání dat.
 
-    a) Vyhledejte **microsoft azure backup**.
+    a) vyhledejte **Microsoft Azure Backup**.
 
-    b) Otevřete **microsoft azure backup**a vyberte**vlastnosti změny** **akce** > .
+    b) otevřete **Microsoft Azure Backup**a vyberte **Akce** > **vlastnosti změny**.
 
-    c) Na kartě **Konfigurace proxy serveru** by měla být adresa proxy stejná jako adresa proxy, která je zobrazena v nastavení registru. Pokud ne, změňte ji na stejnou adresu.
+    c) na kartě **konfigurace proxy** serveru musí být adresa proxy shodná s adresou proxy serveru, která je uvedena v nastavení registru. Pokud ne, změňte ji na stejnou adresu.
 
-## <a name="step-13-check-bandwidth"></a>Krok 13: Kontrola šířky pásma
+## <a name="step-13-check-bandwidth"></a>Krok 13: ověření šířky pásma
 
-Zvyšte šířku pásma mezi procesním serverem a Azure a zkontrolujte, zda problém stále dochází.
+Zvyšte šířku pásma mezi procesovým serverem a Azure a potom zkontrolujte, jestli k problému stále dochází.
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud potřebujete další pomoc, zadejte svůj dotaz ve [fóru Azure Site Recovery](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr). 
+Pokud potřebujete další informace, pošlete svůj dotaz do [fóra Azure Site Recovery](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr). 
 
 [green]: ./media/vmware-physical-azure-troubleshoot-process-server/green.png
 [yellow]: ./media/vmware-physical-azure-troubleshoot-process-server/yellow.png

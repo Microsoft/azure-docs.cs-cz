@@ -1,6 +1,6 @@
 ---
-title: Použití umělé inteligence k řešení obchodních problémů pomocí Azure Cognitive Services
-description: Seznamte se se službou pro vytváření inteligentních mobilních aplikací využívajících umělou inteligenci.
+title: Využití umělých inteligentních funkcí k řešení obchodních problémů s Azure Cognitive Services
+description: Přečtěte si o službě, abyste mohli vytvářet inteligentní mobilní aplikace s využitím umělých inteligentních aplikací.
 author: codemillmatt
 ms.assetid: 34a8a070-0123-4faf-8588-ccff02097224
 ms.service: vs-appcenter
@@ -8,54 +8,54 @@ ms.topic: article
 ms.date: 03/24/2020
 ms.author: masoucou
 ms.openlocfilehash: a3955379248c284066ec57d67e61654ac664bfa5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80240947"
 ---
-# <a name="cognitive-services-helps-to-solve-business-problems-by-using-ai"></a>Cognitive Services pomáhá řešit obchodní problémy pomocí AI
-[Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) poskytuje výkonné služby, které vašim aplikacím napojují inteligentní algoritmy, aby viděly, slyšely, mluvily, porozuměly a interpretovaly potřeby uživatelů k transformaci vašeho podnikání pomocí umělé inteligence (AI). Díky svým mobilním aplikacím můžete pro uživatele udělat inteligentní, poutavé a kontextově relevantní. Vývojáři mohou pomocí rozhraní API, sad SDK a služeb přidávat ai do svých nabídek a pomáhat vytvářet inteligentní aplikace bez přímých dovedností v oblasti umělou inteligenci nebo datové vědy.
+# <a name="cognitive-services-helps-to-solve-business-problems-by-using-ai"></a>Cognitive Services pomáhá řešit obchodní problémy pomocí AI.
+[Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) poskytuje výkonné služby pro zajištění vašich aplikací pomocí inteligentních algoritmů, abyste mohli vidět, slyšet, mluvit, pochopit a interpretovat uživatele, kteří potřebují transformovat vaše podnikání pomocí umělých inteligentních funkcí (AI). Mobilní aplikace můžete nastavit jako inteligentní, poutavé a kontextové pro uživatele. Vývojáři můžou používat rozhraní API, sady SDK a služby k přidávání AI do svých nabídek a pomáhat sestavování inteligentních aplikací bez nutnosti přímých dovedností v AI nebo v oblasti datových věd.
 
-## <a name="cognitive-services-capabilities"></a>Možnosti služeb Cognitive Services
+## <a name="cognitive-services-capabilities"></a>Možnosti Cognitive Services
 - **Obraz**
-    - Označování obrázků, miniatury
-    - OCR (rozpoznávání rukopisu)
+    - Označování obrázků, miniatur
+    - Optické rozpoznávání znaků (rozpoznávání rukopisu)
     - Rozpoznávání tváře
-    - Detekce emocí
-    - Přehledy videa
-    - Moderování obrazu a videa
+    - Detekce emoce
+    - Video přehledy
+    - Moderování obrázků a videí
     - Přizpůsobené rozpoznávání obrázků
 
 - **Řeč**
-    - Projev na text (přepis řeči)
-    - Přizpůsobený přepis řeči (složitá slova, hlučné prostředí)
+    - Převod řeči na text (řeč přepisu)
+    - Vlastní přepis řeči (složitá slova, prostředí s vysokou úrovní šumu)
     - Text na řeč
     - ID mluvčího a ověřování
     - Překlad řeči v reálném čase
 
 - **Jazyk**
-    - Kontextové jazykové porozumění, přizpůsobená analýza záměru
+    - Porozumění kontextovým jazykům, přizpůsobení vlastní záměrové analýzy
     - Analýza mínění, detekce klíčových frází
-    - Překlad textu až 60 jazyků
+    - Překlad textu až na 60 jazyků
     - Moderování textu
-    - Kontrolu pravopisu
+    - Kontrola pravopisu
 
 - **Rozhodnutí** 
     - Moderátor obsahu
-    - Doručování personalizovaného obsahu
+    - Individuální doručování obsahu
     - Detektor anomálií
 
 - **Hledat**
     - Automatické návrhy hledání 
     - Rozšíření informací o entitě
-    - Komplexní vyhledávání zpráv, obrázků, videí, webů a místních obchodních subjektů
-    - Přizpůsobená a přizpůsobená vyhledávací prostředí
+    - Komplexní novinky, hledání obrázků, videí, webů a místních podnikových entit
+    - Přizpůsobené prostředí pro vyhledávání
 
-- Podpora kontejnerů pro služby Cognitive Services
+- Podpora pro kontejnery pro Cognitive Services
 
  ## <a name="references"></a>Odkazy
-   - [Portál Azure](https://portal.azure.com) 
+   - [portál Azure](https://portal.azure.com) 
    - [Dokumentace ke službě Cognitive Services](/azure/cognitive-services/welcome)
    - [Rychlé starty](/azure/cognitive-services/cognitive-services-apis-create-account)
    - [Podpora kontejnerů](/azure/cognitive-services/cognitive-services-container-support)

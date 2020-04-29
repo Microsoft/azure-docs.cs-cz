@@ -1,7 +1,7 @@
 ---
-title: Co je distribuovaný trénink?
+title: Co je distribuované školení?
 titleSuffix: Azure Machine Learning
-description: Přečtěte si o distribuovaných školeních a o tom, jak ho Azure Machine Learning podporuje.
+description: Přečtěte si o distribuovaném školení a o tom, jak ho Azure Machine Learning podporuje.
 services: machine-learning
 ms.service: machine-learning
 author: nibaccam
@@ -10,45 +10,45 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/27/2020
 ms.openlocfilehash: a0d5bf795e4759a105b9a235770f37aa10bd6751
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80385542"
 ---
-# <a name="distributed-training-with-azure-machine-learning"></a>Distribuovaná školení s Azure Machine Learning
+# <a name="distributed-training-with-azure-machine-learning"></a>Distribuované školení pomocí Azure Machine Learning
 
-V tomto článku se dozvíte o distribuované školení a jak Azure Machine Learning podporuje pro modely hlubokéučení. 
+V tomto článku se dozvíte o distribuovaném školení a o tom, jak ho Azure Machine Learning podporuje pro modely hloubkového učení. 
 
-V distribuované školení pracovní vytížení trénovat model je rozdělena a sdílena mezi více mini procesory, nazývané pracovní uzly. Tyto pracovní uzly pracují paralelně, aby urychlily školení modelu. Distribuované školení lze použít pro tradiční modely ML, ale je vhodnější pro výpočetní a časově náročné úkoly, jako [je hluboké učení](concept-deep-learning-vs-machine-learning.md) pro školení hlubokých neuronových sítí.
+V distribuovaném školení úlohy pro vývoj modelu je rozdělené a sdílené mezi více mini procesory nazývaných pracovní uzly. Tyto pracovní uzly pracují paralelně a urychlují školení modelů. Distribuované školení se dá použít pro tradiční modely ML, ale je vhodnější pro úlohy náročné na výpočetní a časově náročné, jako je [obsáhlý Learning](concept-deep-learning-vs-machine-learning.md) pro školení neuronovéch sítí.
 
-## <a name="deep-learning-and-distributed-training"></a>Hloubkové učení a distribuovaná odborná příprava 
+## <a name="deep-learning-and-distributed-training"></a>Obsáhlý Learning a distribuované školení 
 
-Existují dva hlavní typy distribuovaného [tréninku: paralelismus dat](#data-parallelism) a [modelový paralelismus](#model-parallelism). Pro distribuované školení o modelech hlubokého učení podporuje [Sada Azure Machine Learning SDK v Pythonu](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) integraci s oblíbenými architekturami, PyTorch a TensorFlow. Obě architektury využívají paralelismus dat pro distribuované školení a mohou využít [horovod](https://horovod.readthedocs.io/en/latest/summary_include.html) pro optimalizaci výpočetních rychlostí. 
+Existují dva hlavní typy distribuovaných školení: [datová paralelismus](#data-parallelism) a [model paralelismus](#model-parallelism). Pro distribuované školení v modelech hloubkového učení podporuje [Azure Machine Learning SDK v Pythonu](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) integraci s oblíbenými architekturami, PyTorch a TensorFlow. Obě architektury využívají datovou paralelismuu pro distribuované školení a můžou využít [horovod](https://horovod.readthedocs.io/en/latest/summary_include.html) k optimalizaci rychlostech výpočtů. 
 
-* [Distribuované školení s PyTorch](how-to-train-pytorch.md#distributed-training)
+* [Distribuované školení pomocí PyTorch](how-to-train-pytorch.md#distributed-training)
 
-* [Distribuované školení s TensorFlow](how-to-train-tensorflow.md#distributed-training)
+* [Distribuované školení pomocí TensorFlow](how-to-train-tensorflow.md#distributed-training)
 
-Modely ML, které nevyžadují distribuované školení, najdete [v tématu trénování modelů s Azure Machine Learning](concept-train-machine-learning-model.md#python-sdk) pro různé způsoby, jak trénovat modely pomocí PythonU SDK.
+V případě modelů ML, které nevyžadují distribuované školení, najdete informace v tématu [výuka modelů pomocí Azure Machine Learning](concept-train-machine-learning-model.md#python-sdk) různých způsobech výuky modelů pomocí sady Python SDK.
 
-## <a name="data-parallelism"></a>Paralelismus dat
+## <a name="data-parallelism"></a>Datový paralelismus
 
-Paralelismus dat je nejjednodušší implementovat dva přístupy distribuované školení a je dostačující pro většinu případů použití.
+Data paralelismus je nejjednodušší implementace dvou distribuovaných školicích postupů a je pro většinu případů použití dostačující.
 
-V tomto přístupu jsou data rozdělena do oddílů, kde se počet oddílů rovná celkovému počtu dostupných uzlů ve výpočetním clusteru. Model je zkopírován v každém z těchto uzlů pracovníka a každý pracovník pracuje na vlastní podmnožinu dat. Mějte na paměti, že každý uzel musí mít kapacitu pro podporu modelu, který je trénovaný, to je model musí zcela vejde na každý uzel.
+V tomto přístupu jsou data rozdělená na oddíly, kde počet oddílů se rovná celkovému počtu dostupných uzlů ve výpočetním clusteru. Model je zkopírován do každého z těchto pracovních uzlů a každý pracovní proces funguje na vlastní podmnožině dat. Mějte na paměti, že každý uzel musí mít kapacitu pro podporu modelu, který je právě vyškolený, což je model, který je zcela přizpůsoben na každý uzel.
 
-Každý uzel nezávisle vypočítá chyby mezi jeho předpovědi pro jeho vzorky školení a popisované výstupy. Na druhé straně každý uzel aktualizuje svůj model na základě chyb a musí sdělit všechny své změny do ostatních uzlů aktualizovat své odpovídající modely. To znamená, že pracovní uzly potřebují synchronizovat parametry modelu nebo přechody na konci dávkového výpočtu, aby bylo zajištěno, že trénují konzistentní model. 
+Každý uzel nezávisle vypočítá chyby mezi jeho předpovědi a ukázkami, které jsou označeny jako výstupy. V takovém případě každý uzel aktualizuje svůj model na základě chyb a musí sdělit všechny jeho změny v ostatních uzlech za účelem aktualizace odpovídajících modelů. To znamená, že pracovní uzly musí synchronizovat parametry modelu nebo přechody na konci dávkového výpočtu, aby bylo zajištěno, že budou školení konzistentního modelu. 
 
-## <a name="model-parallelism"></a>Modelparalelismus
+## <a name="model-parallelism"></a>Paralelismuing modelu
 
-V paralelismu modelu, označovaném také jako síťový paralelismus, je model segmentován do různých částí, které mohou běžet souběžně v různých uzlech, a každý z nich bude spuštěn na stejných datech. Škálovatelnost této metody závisí na stupni paralelizace úkolu algoritmu a je složitější implementovat než paralelismus dat. 
+V modelu paralelismus, označovaný také jako paralelismue sítě, je model rozdělen do různých částí, které mohou běžet souběžně v různých uzlech, přičemž každý z nich bude spuštěn se stejnými daty. Škálovatelnost této metody závisí na stupních paralelismu tohoto algoritmu a je složitější pro implementaci než datový paralelismus. 
 
-V paralelismu modelu pracovní uzly stačí synchronizovat sdílené parametry, obvykle jednou pro každý krok šíření vpřed nebo vzad. Větší modely také nejsou problém, protože každý uzel pracuje na podčásti modelu na stejných trénovacích dat.
+V modelu paralelismus musí pracovní uzly synchronizovat pouze sdílené parametry, obvykle jednou pro každý krok dopředu nebo zpětná propagace. Větší modely navíc nezáleží na tom, že každý uzel funguje v dílčí části modelu na stejných školicích datech.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si, jak [nastavit školicí prostředí](how-to-set-up-training-targets.md) pomocí sady Python SDK.
-* Technický příklad naleznete scénář [referenční architektury](https://docs.microsoft.com/azure/architecture/reference-architectures/ai/training-deep-learning).
-* [Vlak ML modely s TensorFlow](how-to-train-tensorflow.md).
-* [Vlak ML modely s PyTorch](how-to-train-pytorch.md). 
+* Naučte se, jak [nastavit školicí prostředí](how-to-set-up-training-targets.md) pomocí sady Python SDK.
+* Technický příklad naleznete v tématu [scénář referenční architektury](https://docs.microsoft.com/azure/architecture/reference-architectures/ai/training-deep-learning).
+* [Modely vlakových ml pomocí TensorFlow](how-to-train-tensorflow.md).
+* [Modely vlakových ml pomocí PyTorch](how-to-train-pytorch.md). 

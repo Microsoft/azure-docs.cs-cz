@@ -1,6 +1,6 @@
 ---
-title: Zaregistrujte se v Dev Center | Azure
-description: Jak se zaregistrovat v Centru pro vývojáře (Dev Center).
+title: Zaregistrovat ve vývojářském centru | Azure
+description: Jak se zaregistrovat v centru pro vývojáře (Dev Center).
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,22 +8,22 @@ ms.topic: conceptual
 ms.date: 10/05/2018
 ms.author: dsindona
 ms.openlocfilehash: 62e25a252d6a4981bddd50361d01110ec10a6e2c
-ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80387661"
 ---
 # <a name="register-in-dev-center"></a>Registrace na webu Dev Center  
-Chcete-li ověřit, zda nejste přihlášeni k osobnímu účtu prohlížeče, otevřete novou relaci procházení aplikace Internet Explorer InPrivate nebo Chrome Incognito.  
-1.  Zaregistrujte se jako prodejce v Dev Center.  
-    *   Pokud se chcete přihlásit a zaregistrovat jako prodejce, navštivte stránku Azure Dev Center, která se nachází na [dev.windows.com/registration?accountprogram=azure](https://dev.windows.com/registration?accountprogram=azure).  
-2.  Dokončete `Help us protect your account` průvodce, který ověří vaši identitu pomocí telefonního čísla nebo e-mailové adresy.  
+Pokud chcete ověřit, že nejste přihlášeni k účtu osobního prohlížeče, otevřete novou relaci procházení anonymním v Internet Exploreru nebo Chrome.  
+1.  Zaregistrujte se jako prodejce ve vývojářském centru.  
+    *   Pokud se chcete přihlásit a zaregistrovat jako prodejce, navštivte stránku Azure Dev Center, která se nachází na adrese [dev.Windows.com/registration?accountprogram=Azure](https://dev.windows.com/registration?accountprogram=azure).  
+2.  Dokončete `Help us protect your account` průvodce, který ověří vaši identitu pomocí vašeho telefonního čísla nebo e-mailové adresy.  
 
 <!--
     ![Boxes for phone info in the Help us protect your account wizard](./media/marketplace-publishers-guide/registerdevcenteremail.png)  
 -->
-3.  V `Registration - Account Info` části vyberte zemi nebo oblast účtu v rozevírací nabídce *Země nebo oblast účtu.*  
+3.  V `Registration - Account Info` části vyberte v rozevírací nabídce *země/oblast* účtu svou zemi nebo oblast účtu.  
 <!--
     ![Account info with box for country/region](./media/marketplace-publishers-guide/devcenterregistrationaccountinfo.png)  
 -->
@@ -31,58 +31,58 @@ Chcete-li ověřit, zda nejste přihlášeni k osobnímu účtu prohlížeče, o
     >To sell your services in Azure Marketplace, verify that your registered entity is from one of the approved *sell-from* countries/regions. The location restriction is required for payout and taxation reasons. 
     >*   For more information, visit the Azure Marketplace Participation Policies page located at [azure.microsoft.com/support/legal/marketplace/participation-policies](https://azure.microsoft.com/support/legal/marketplace/participation-policies).  
 
-4.  V *části Typ* `Company` účtu vyberte přepínací tlačítko.  
-    *   Další informace o typech účtů a pomoc při určování, které jsou pro vás nejlepší, naleznete na stránce Typy účtů, míst a poplatků, která se nachází na [adrese docs.microsoft.com/windows/uwp/publish/account-types-locations-and-fees](https://docs.microsoft.com/windows/uwp/publish/account-types-locations-and-fees).  
+4.  Jako *typ účtu*zvolte `Company` přepínač.  
+    *   Další informace o typech účtů a pomoc při určování, které je pro vás nejvhodnější, najdete na stránce typy účtů, umístění a poplatky umístěné na adrese [docs.Microsoft.com/Windows/UWP/Publish/Account-Types-Locations-and-fees](https://docs.microsoft.com/windows/uwp/publish/account-types-locations-and-fees).  
 
     Klikněte na tlačítko Další.  
 
-5.  Do *pole Zobrazovaný název aplikace Publisher*zadejte zobrazovaný název (obvykle název společnosti).  
+5.  Jako *Zobrazovaný název vydavatele*zadejte zobrazované jméno (obvykle název vaší společnosti).  
 
     >[!NOTE]
-    >Zobrazované jméno vydavatele zadané v Centru pro vývoj se na Azure Marketplace nezobrazuje, když je vaše nabídka uvedená, ale musíte vyplnit toto pole, abyste dokončili proces registrace. 
+    >Zobrazovaný název vydavatele zadaný ve vývojářském centru se v Azure Marketplace nezobrazí, když je vaše nabídka uvedená, ale musíte vyplnit toto políčko, aby se proces registrace dokončil. 
 
-6.  Do *seznamu Kontaktní údaje*zadejte informace požadované pro ověření účtu. 
+6.  Pro *kontaktní údaje*zadejte informace požadované pro ověření účtu. 
 
     >[!IMPORTANT]
-    >Musíte poskytnout přesné kontaktní informace. Proces ověření používá vaše kontaktní údaje ke schválení vaší společnosti v Centru pro vývoj. 
+    >Je nutné zadat přesné kontaktní údaje. Proces ověření používá vaše kontaktní informace ke schválení vaší společnosti ve vývojářském centru. 
 
-1.  V *případě schvalovatele společnosti*zadejte kontaktní informace schvalovatele. Schvalovatel ověří, že jste oprávněni vytvořit účet v Centru pro dev pro vaši organizaci.  
+1.  Pro *schvalovatele společnosti*zadejte kontaktní údaje schvalovatele. Schvalovatel ověří, že máte oprávnění k vytvoření účtu v centru pro vývojáře pro vaši organizaci.  
 
     Klikněte na tlačítko Další.  
 <!--
     !["Account info" page with sections highlighted](./media/marketplace-publishers-guide/devcenterregistrationpayment.png)  
 -->
-8.  V `Registration - Payment` části musíte zadat platební údaje, abyste zaplatili za účet Dev Center.  
-    *   Pro *promo kód*, zadejte promo kód, který pokrývá náklady na registraci.  
-    *   V *případě fakturace*poskytněte informace o platební kartě. Na podporovaných trzích mohou být na podporovaných trzích použity informace paypal.  
+8.  V `Registration - Payment` části musíte zadat platební údaje, které se budou platit za účet služby Dev Center.  
+    *   Pro *propagační kód*zadejte propagační kód, který pokrývá náklady na registraci.  
+    *   Pro účely *fakturace*zadejte informace o kreditních kartách. Informace PayPal se můžou používat místo platební karty na podporovaných trzích.  
 
     Klikněte na tlačítko Další.  
 <!--
     ![Dev Center payment information](./media/marketplace-publishers-guide/devcenterregistrationpayment2.png)  
 -->
-9.  V `Registration - Review` části zkontrolujte informace o účtu a potvrďte, že je vše v pořádku.  
+9.  V `Registration - Review` části Zkontrolujte informace o účtu a potvrďte, že je vše správné.  
 
-    Přečtěte si podmínky [smlouvy s vydavatelem](https://cloudpartner.azure.com/Content/Unversioned/PublisherAgreement2.pdf)microsoft azure marketplace .  
+    Přečtěte si podmínky a ujednání smlouvy Microsoft Azure Marketplace [vydavatele](https://cloudpartner.azure.com/Content/Unversioned/PublisherAgreement2.pdf).  
 
-    Kliknutím na zaškrtávací políčko označíte, že jste si podmínky přečetli a přijali.  
+    Kliknutím na zaškrtávací políčko označíte, že jste si přečetli a přijali tyto výrazy.  
     
-    Klikněte na tlačítko Dokončit, které má být odesláno potvrzovací e-mailovou zprávu.  
-11. Zvolte další kroky pomocí fakturačního modelu pro vaši nabídku.  
+    Kliknutím na tlačítko Dokončit odešlete potvrzovací e-mailovou zprávu.  
+11. Vyberte další kroky s použitím modelu fakturace pro vaši nabídku.  
 
     | Model fakturace | Další kroky |  
     |:--- |:--- |  
-    | Free | Přejděte na portál pro partnery cloudu.<ul> <li>Pokud chcete publikovat na Azure Marketplace, navštivte stránku Portál partnerů cloudu, která se nachází na [adrese cloudpartner.azure.com](https://cloudpartner.azure.com).</li> </ul> |  
-    | Komerční (obchod) | Aktualizujte informace o svém účtu.<ul> <li>Další informace o přidávání informací o účtu naleznete v části [Jak přidat bankovní a daňové informace.](#add-bank-information)</li> </ul> |  
+    | Free | Přejít na portál partnerů cloudu.<ul> <li>Pokud chcete publikovat na Azure Marketplace, navštivte stránku portál partnerů cloudu, která se nachází na adrese [cloudpartner.Azure.com](https://cloudpartner.azure.com).</li> </ul> |  
+    | Komerční (Transact) | Aktualizujte informace o účtu.<ul> <li>Další informace o přidávání informací o účtu najdete v části [jak přidat informace o bance a dani](#add-bank-information) .</li> </ul> |  
 
-    *   Příkladem komerční nabídky je nabídka virtuálních účtů s hodinovým fakturačním modelem.  
+    *   Příkladem komerční nabídky je nabídka virtuálních počítačů s modelem hodinové fakturace.  
 
 ---
 
-## <a name="get-help-with-dev-center-registration"></a>Získání nápovědy k registraci centra pro dev  
-Pokud máte problémy s registrací Dev Center, potom podle následujících kroků odešlete lístek podpory.  
-1.  Přejděte na podporu Dev Center.  
-    *   Chcete-li získat přístup k podpoře, navštivte stránku podpory pro vývojáře systému Windows umístěnou na [adrese developer.microsoft.com/windows/support](https://developer.microsoft.com/windows/support).  
-2.  V sekci Kontaktujte nás klikněte na tlačítko Odeslat incident. 
+## <a name="get-help-with-dev-center-registration"></a>Získat nápovědu k registraci centra pro vývoj  
+Pokud máte problémy s registrací ke službě Dev Center, odešlete lístek podpory podle těchto kroků.  
+1.  Přejít na podporu pro Dev Center  
+    *   Pokud chcete získat přístup k podpoře, navštivte stránku podpory pro vývojáře ve Windows, která se nachází na adrese [Developer.Microsoft.com/Windows/Support](https://developer.microsoft.com/windows/support).  
+2.  V části kontaktujte nás klikněte na tlačítko Odeslat incident. 
 <!--
     !["Submit an incident" button](./media/marketplace-publishers-guide/devcentersubmitincident.png)  
 -->
@@ -91,102 +91,102 @@ Pokud máte problémy s registrací Dev Center, potom podle následujících kro
     Select `Publish and manage apps` from the *Category* drop-down menu.  
     
     Click on the Start email button.  
-1.  Na přihlašovací stránce se přihlaste pomocí libovolného Microsoft ID. Pokud nemáte Microsoft ID, vytvořte ho.  
-    *   Další informace o vytvoření Microsoft ID najdete v pokynech pro vytvoření Microsoft ID pro správu účtu Azure Marketplace části.  
-2.  Vyplňte podrobnosti o problému.  
+1.  Na přihlašovací stránce se přihlaste pomocí libovolného ID Microsoftu. Pokud nemáte ID Microsoftu, vytvořte ho.  
+    *   Další informace o vytváření ID Microsoftu najdete v pokynech k vytvoření ID Microsoftu pro správu účtu Azure Marketplace.  
+2.  Vyplňte podrobnosti problému.  
 3.  Chcete-li odeslat lístek, klikněte na tlačítko Odeslat. 
 
 
-## <a name="issue-add-bank-and-tax-information-for-publisher-payouts"></a>Problém: Přidání bankovních a daňových údajů pro výplaty majitelů stránek  
-Bankovní a daňové údaje jsou vyžadovány pro všechny komerční nabídky pomocí typu výpisu transact.  
-*   Pokud publikujete komerční nabídky k nákupu, musíte přidat výplatní a daňové informace a požádat o ověření v Centru pro dev.  
+## <a name="issue-add-bank-and-tax-information-for-publisher-payouts"></a>Problém: Přidání bankovní a daňové informace pro výběry vydavatele  
+Bankovní a daňové informace jsou požadovány pro všechny komerční nabídky používající typ výpisu transakcí.  
+*   Pokud publikujete komerční nabídky k nákupu, musíte přidat výběr a daňové informace a požádat o ověření na webu Dev Center.  
     >[!IMPORTANT]
-    >U komerčních nabídek (transact) musíte před tím, než budete moci své nabídky protlačit do výroby, vyplnit bankovní a daňové údaje.  
+    >V případě komerčních nabídek (Transact) je nutné před tím, než budete moci nabídky do produkčního prostředí, vyplnit informace o bance a daních.  
 
-*   Pokud publikujete pouze zdarma nebo BYOL nabízí, pak nejste povinni přidávat informace. Informace můžete přidat později, ale ověření daňových informací nějakou dobu trvá. Pokud máte v plánu nabídnout komerční nabídky k nákupu, měli byste přidat informace co nejdříve.  
+*   Pokud publikujete pouze bezplatné nebo BYOL nabídky, pak není nutné přidávat informace. Tyto informace můžete přidat později, ale ověření daňových informací může nějakou dobu trvat. Pokud máte v plánu nabízet komerční nabídky k nákupu, měli byste informace co nejdříve přidat.  
 
-## <a name="add-bank-information"></a>Přidání bankovních informací  
-1.  Přihlaste se do Dev Center pomocí svého Microsoft ID.  
-    *   Chcete-li se přihlásit do centra pro dev, navštivte stránku Centra pro střední verzi systému Windows, která se nachází na [adrese dev.windows.com](https://dev.windows.com).  
-2.  V levé nabídce vyberte výplatní účet.
-3.  Na `Choose payment method` stránce `Bank account` vyberte `PayPal`nebo .  
+## <a name="add-bank-information"></a>Přidat informace o bance  
+1.  Přihlaste se k webu Dev Center pomocí svého ID Microsoftu.  
+    *   Pokud se chcete přihlásit do centra pro vývojáře, navštivte stránku Windows Dev Center, která se nachází na adrese [dev.Windows.com](https://dev.windows.com).  
+2.  V nabídce vlevo vyberte položku Výběr účtu.
+3.  Na `Choose payment method` stránce vyberte `Bank account` nebo. `PayPal`  
     >[!IMPORTANT]
-    >Pokud máte komerční nabídky, které zákazníci nakupují na Marketplace, pak váš výplatní účet je místo, kde obdržíte výplatu za nákupy.  
+    >Pokud máte komerční nabídky, které si zákazníci kupují na webu Marketplace, pak je vaším účtem pro výběr místo, kde pro nákupy obdržíte výběr.  
 
-4.  Zadejte platební údaje. Po ověření správnost informací klikněte na tlačítko Uložit.  
+4.  Zadejte platební údaje. Po ověření, zda jsou informace správné, klikněte na tlačítko Uložit.  
     >[!IMPORTANT]
-    >Pokud aktualizujete nebo změníte výplatní účet, musíte postupovat stejným způsobem a nahradit aktuální informace novými informacemi. Změny výplatního účtu mohou zpozdit platby až do jednoho platebního cyklu. K tomuto zpoždění dochází, protože společnost Microsoft musí ověřit změnu účtu, je to stejné jako při prvním nastavení výplatního účtu. Po ověření účtu vám bude vyplacena celá částka. Všechny platby splatné z aktuálního platebního cyklu jsou přidány do dalšího cyklu.  
+    >Pokud aktualizujete nebo změníte svůj účet pro výběr, musíte postupovat podle stejných kroků, které nahradí aktuální informace novými informacemi. Změny svého účtu výběr mohou zpozdit platby až do jednoho platebního cyklu. K tomuto zpoždění dochází, protože společnost Microsoft musí ověřit, že změna účtu je stejná jako při prvním nastavení účtu výběr. Po ověření účtu se vám bude vyplatit celá částka. Jakékoli platby splatné z aktuálního platebního cyklu jsou přidány do dalšího cyklu.  
 
 4.  Klikněte na tlačítko Další. 
 
 ---
 
-## <a name="add-tax-information"></a>Přidání daňových údajů  
-1.  Přihlaste se do Dev Center pomocí svého Microsoft ID.  
-    *   Chcete-li se přihlásit do centra pro dev, navštivte stránku Centra pro střední verzi systému Windows, která se nachází na [adrese dev.windows.com](https://dev.windows.com).  
-2.  V levé nabídce vyberte Daňový profil. 
-3.  Na `Set up your tax form` stránce vyberte zemi nebo oblast, kde máte trvalý pobyt.  
+## <a name="add-tax-information"></a>Přidat daňové informace  
+1.  Přihlaste se k webu Dev Center pomocí svého ID Microsoftu.  
+    *   Pokud se chcete přihlásit do centra pro vývojáře, navštivte stránku Windows Dev Center, která se nachází na adrese [dev.Windows.com](https://dev.windows.com).  
+2.  V nabídce vlevo vyberte daňový profil. 
+3.  Na `Set up your tax form` stránce vyberte zemi nebo oblast, kde máte trvalé umístění.  
     
-    Vyberte zemi nebo oblast, ve které máte primární občanství.  
+    Vyberte zemi nebo oblast, ve které jste si podržíte primární občanství.  
     
     Klikněte na tlačítko Další. 
-4.  Zadejte své daňové údaje.  
+4.  Zadejte podrobnosti o dani.  
 5.  Klikněte na tlačítko Další.  
 
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy: 
 
-* **Kteří majitelé stránek vyžadují registraci účtu Dev Center?** 
-  > Vydavatel, který publikuje v typu výpisu Transact: Virtuální počítač, aplikace Azure: šablony řešení a spravované aplikace.  
+* **Kteří vydavatelé vyžadují registraci účtu centra pro vývoj?** 
+  > Vydavatel, který se publikuje v typu Transact-Type: VM, aplikace Azure: šablony řešení a spravované aplikace.  
 
-* **Proč je vyžadován účet Dev Center?**
-  > Účet Dev Center je nutný k tomu, aby společnost Microsoft mohla účtovat zákazníkovi jménem vydavatele za typ výpisu Transact. Registrace účtu Dev Center umožňuje společnosti Microsoft ověřit právní, daňové a bankovní informace pro vaši společnost. Chcete-li se dozvědět více klikněte [zde.](https://docs.microsoft.com/azure/marketplace/become-publisher)
+* **Proč je vyžadován účet centra pro vývojáře?**
+  > Účet centra pro vývojáře je nutný k tomu, aby Microsoft mohl fakturovat zákazníka jménem vydavatele pro typ výpisu transakcí. Registrace účtu na webu Dev Center umožňuje Microsoftu ověřit právní, daňové a bankovní informace pro vaši společnost. Další informace získáte kliknutím [sem.](https://docs.microsoft.com/azure/marketplace/become-publisher)
 
-* **Jak začít s registrací Dev Center?**
-  > Chcete-li zabránit duplicitě, ověřte, zda vaše společnost ještě nemá účet Dev Center registrovaný. Musíte být přihlášeni pomocí účtu Microsoft, který chcete přidružit ke svému vývojářskému účtu. Pokud ještě nemáte účet Microsoft, můžete si vytvořit nový účet [zde.](https://signup.live.com/signup?contextid=AEB123C8F2B1DA7A&bk=1529968434&ru=https%3a%2f%2flogin.live.com%2flogin.srf%3fcontextid%3dAEB123C8F2B1DA7A%26mkt%3dEN-US%26lc%3d1033%26bk%3d1529968434&uiflavor=web&uaid=9987e727fedb459780d95c1b9e46c82c&mkt=EN-US&lc=1033&lic=1) (příklad: contoso_marketplace@live.com) Chcete-li se přihlásit a zaregistrovat, přejděte nahttps://dev.windows.com/registration?accountProgram=Azure
-  > <br>Chcete-li se dozvědět více o registračním procesu, klikněte [zde.](https://docs.microsoft.com/azure/marketplace/register-dev-center)</br>
+* **Návody začít s registrací centra pro vývoj?**
+  > Pokud se chcete vyhnout duplicitám, ověřte, že vaše společnost ještě nemá registrovaný účet centra vývojářů. Musíte být přihlášeni pomocí účet Microsoft, které chcete přidružit k vašemu vývojářskému účtu. Pokud ještě nemáte účet Microsoft, můžete tady vytvořit nový účet [.](https://signup.live.com/signup?contextid=AEB123C8F2B1DA7A&bk=1529968434&ru=https%3a%2f%2flogin.live.com%2flogin.srf%3fcontextid%3dAEB123C8F2B1DA7A%26mkt%3dEN-US%26lc%3d1033%26bk%3d1529968434&uiflavor=web&uaid=9987e727fedb459780d95c1b9e46c82c&mkt=EN-US&lc=1033&lic=1) (příklad: contoso_marketplace@live.com) Chcete-li se přihlásit a zaregistrovat, přejít nahttps://dev.windows.com/registration?accountProgram=Azure
+  > <br>Další informace o procesu registrace získáte kliknutím [sem.](https://docs.microsoft.com/azure/marketplace/register-dev-center)</br>
 
-* **Mám zvolit typ účtu "Jednotlivec" nebo "Společnost"?**
-  > Chcete-li publikovat nabídku na webu Marketplace, musíte při registraci účtu Dev Center vybrat účet společnosti.
+* **Mám zvolit typ účtu jednotlivce nebo společnost?**
+  > Pokud chcete publikovat nabídku jazyka Transact na webu Marketplace, musíte při registraci účtu centra pro vývoj vybrat účet společnosti.
 
-* **Mohu po vytvoření účtu změnit typ svého účtu z individuálního na firemní účet?**
-  > Ne, typ účtu nelze aktualizovat po vytvoření účtu.
+* **Můžu po vytvoření účtu změnit svůj typ účtu z individuálního na účet společnosti?**
+  > Ne, typ účtu se po vytvoření účtu nedá aktualizovat.
 
-* **Proč se zobrazuje chybová zpráva "Město je povinné", i když jsem do města vstoupil správně?**
-  > Zkontrolujte, zda je také správně zadáno PSČ. Je tu město, ověření PSČ.
+* **Proč se zobrazí chybová zpráva "město je povinné", i když jsem správně zadal město?**
+  > Zkontrolujte, zda je PSČ správně zadáno. Je k dispozici město, ověřování PSČ.
 
-* **Jak mohu získat promo kód?**
-  > Vyplňte registrační formulář [Marketplace](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) a získejte propagační kód Dev Center. Další informace [najdete v tématu Jak vytvořit účet Centra partnerů.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)
+* **Jak mohu získat propagační kód?**
+  > Dokončete [registrační formulář Marketplace](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) pro příjem kódu propagačního centra pro vývojáře. Další informace najdete v tématu [Vytvoření účtu partnerského centra](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) .
  
 * **Co mám očekávat po dokončení registrace?**
-  > Vyhledejte e-mail s verify@microsoft.com předmětem "Nutná akce: Ověřte svůj e-mailový účet u společnosti Microsoft". Klikněte na časově citlivý ověřovací odkaz pro dokončení registrace. *Pokud jste neobdrželi e-mail do 24 hodin, zkontrolujte prosím složku se spamem.*
+  > Vyhledejte e-mail od verify@microsoft.com předmětu s předmětem akce: ověření e-mailového účtu pomocí Microsoftu. K dokončení registrace klikněte na odkaz pro ověření časově rozlišující čas. *Pokud jste v 24 hodin nedostali e-mail, zkontrolujte prosím složku Spam.*
 
-* **Jaké jsou další kroky po ověření Dev Center?**
-  > Přejděte na "Vašehttps://developer.microsoft.com/dashboard/Account/Programs) programy" ( a přihlaste se k účtu Dev Center. Pokud azure jako registrovaný program nevidíte, podívejte se do části Doporučené programy a pak vyhledejte Azure a vyberte možnost Začínáme.
+* **Jaké jsou další kroky po ověření centra pro vývoj?**
+  > Přejít na vaše programy (https://developer.microsoft.com/dashboard/Account/Programs) a přihlaste se k účtu centra pro vývojáře. Pokud nevidíte Azure jako registrovaný program, podívejte se do části "Doporučené programy pro vás" a potom vyhledejte Azure a vyberte "Začínáme".
 
-* **Jak propojuji svůj účet Dev Center s profilem vydavatele portálu Cloud Partner Portal?**
-  > Posledním krokem před publikováním je propojení účtu Dev Center s [profilem](https://cloudpartner.azure.com/#profile)portálu partnerů cloudu . Pokud se váš účet Dev Center liší od vašeho účtu na [portálu partnerů cloudu](https://cloudpartner.azure.com/#alloffers), přidejte svůj účet Dev Center jako nového [uživatele](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-manage-users) na portál u partnerů cloudu. Přihlaste se na [portál cloudových partnerů](https://cloudpartner.azure.com/#alloffers) pomocí účtu Dev Center. V nabídce vpravo nahoře ve webovém prohlížeči vyberte Profil aplikace Publisher. Vyberte Možnost Propojit účet centra pro střední chování.
+* **Návody propojit účet služby Dev Center s profilem vydavatele portál partnerů cloudu?**
+  > Poslední krok před publikováním propojuje účet služby Dev Center s vaším [profilem](https://cloudpartner.azure.com/#profile)portál partnerů cloudu. Pokud se Váš účet centra vývojářů liší od vašeho účtu na [portál partnerů cloudu](https://cloudpartner.azure.com/#alloffers), přidejte účet služby Dev Center jako nového [uživatele](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-manage-users) do portál partnerů cloudu. Přihlaste se k [portál partnerů cloudu](https://cloudpartner.azure.com/#alloffers) pomocí účtu centra pro vývojáře. Vyberte možnost Profil vydavatele v nabídce v pravém horním rohu webového prohlížeče. Vyberte propojit účet Dev Center.
 
-* **Proč je moje žádost o dev center zamítnuta?**
-  > Prověřující společnost třetí strany (Duns & Bradstreet) vás nemohla kontaktovat prostřednictvím telefonního čísla, které jste poskytli. Kontaktujte podporu na [developer.microsoft.com/windows/support](https://developer.microsoft.com/windows/support) pro opětovné zahájení procesu prověřování
+* **Proč se moje aplikace Dev Center zamítla?**
+  > Společnost dozvíte ČSFD třetí strany (Duns & Bradstreet) se nemohla spojit s telefonním číslem, které jste zadali. Pokud chcete znovu spustit proces dozvíte ČSFD, obraťte se na podporu na adrese [Developer.Microsoft.com/Windows/Support](https://developer.microsoft.com/windows/support) .
 
 > – nebo –
 > 
-> Registrace účtu je odmítnuta na základě problémů se zeměpisnými polohami. Společnosti s dceřinými společnostmi se sídlem v jiných lokalitách, než je ústředí, budou potřebovat pouze jeden účet Dev Center.
+> Registrace účtu se zamítla na základě geografických problémů. Společnosti, které mají pobočky založené v různých umístěních, než je ústředí, budou potřebovat jenom jeden účet centra pro vývojáře.
  
-* **Co mám dělat, pokud název společnosti, který chci použít, již v Centru pro dev existuje?**
-  > Přiřaďte dočasný název společnosti, kontaktujte podporu na [developer.microsoft.com/windows/support](https://developer.microsoft.com/windows/support) a poskytněte jim doklady o registraci vaší firmy.
+* **Co mám dělat, když název společnosti, který chcete použít, už ve vývojářském centru existuje?**
+  > Přiřaďte dočasný název společnosti, obraťte se na podporu na adrese [Developer.Microsoft.com/Windows/Support](https://developer.microsoft.com/windows/support) a Poskytněte svým registračním dokumentům pro vaši firmu.
 
-* **Jak přidám své daňové a výplatní informace?**
-  > Bez vyplnění daňových a bankovních údajů na účtu Dev Center nebudete moci publikovat nabídky na transakt.  Další informace o přidávání informací o účtu naleznete v informacích [o přidání bankovních a daňových údajů.](https://docs.microsoft.com/azure/marketplace/register-dev-center)
+* **Návody přidat informace o dani a výběrech?**
+  > Nebudete moct publikovat nabídky Transact bez vyplnění informací o daních a bankách v účtu centra vývojářů.  Další informace o přidání informací o účtu najdete v tématu [jak přidat bankovní a daňové informace.](https://docs.microsoft.com/azure/marketplace/register-dev-center)
 
-* **Můžu změnit přihlašovací účet Microsoft u Microsoftu?**
-  > Ne. Po vytvoření Centra pro změnu dev nelze změnit účet vlastníka. Budete muset začít znovu se zbrusu novým účtem Dev Center s požadovaným účtem Microsoft.
+* **Můžu změnit účet pro přihlášení k webu Microsoft Dev Center?**
+  > Ne. Po vytvoření centra vývojářů se nedá změnit účet vlastníka. Museli byste začít s přízcela nového účtu Dev Center s požadovaným účet Microsoft.
 
-* **Kde se mohu obrátit na podporu s problémy týkajícími se registrace Dev Center?**
-  Chcete-li získat přístup k podpoře, navštivte stránku podpory pro vývojáře systému Windows umístěnou na [adrese developer.microsoft.com/windows/support](https://developer.microsoft.com/windows/support). 
+* **Kde se můžu obrátit na podporu s problémy ohledně registrace v centru pro vývoj?**
+  Pokud chcete získat přístup k podpoře, navštivte stránku podpory pro vývojáře ve Windows, která se nachází na adrese [Developer.Microsoft.com/Windows/Support](https://developer.microsoft.com/windows/support). 
 
 ## <a name="next-steps"></a>Další kroky
-*   Navštivte stránku [Azure Marketplace a Průvodce vydavatelem AppSource.](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide)  
+*   Navštivte stránku [Příručka pro vydavatele Azure Marketplace a AppSource](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide) .  
 
 ---

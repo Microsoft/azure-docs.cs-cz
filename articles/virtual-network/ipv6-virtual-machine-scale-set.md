@@ -1,7 +1,7 @@
 ---
-title: Nasazení škálovacích sad virtuálních strojů pomocí IPv6 v Azure
+title: Nasazení služby Virtual Machine Scale Sets pomocí protokolu IPv6 v Azure
 titlesuffix: Azure Virtual Network
-description: Tento článek ukazuje, jak nasadit škálovací sady virtuálních strojů s IPv6 ve virtuální síti Azure.
+description: Tento článek ukazuje, jak nasadit službu Virtual Machine Scale Sets s protokolem IPv6 ve službě Azure Virtual Network.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -14,20 +14,20 @@ ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
 ms.openlocfilehash: 6a751fa193c8dd530707f790af0292d536a6f47d
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80420464"
 ---
-# <a name="deploy-virtual-machine-scale-sets-with-ipv6-in-azure"></a>Nasazení škálovacích sad virtuálních strojů pomocí IPv6 v Azure
+# <a name="deploy-virtual-machine-scale-sets-with-ipv6-in-azure"></a>Nasazení služby Virtual Machine Scale Sets pomocí protokolu IPv6 v Azure
 
-Tento článek ukazuje, jak nasadit sadu škálování virtuálních strojů (IPv4 + IPv6) s externím nástrojem pro vyrovnávání zatížení ve virtuální síti Azure. Proces vytvoření škálovací sady virtuálních strojů podporující chod IPv6 je téměř totožný s procesem vytváření jednotlivých virtuálních počítačů popsaných [zde](ipv6-configure-standard-load-balancer-template-json.md). Začnete s kroky, které jsou podobné těm, které jsou popsány pro jednotlivé virtuální chodů:
+V tomto článku se dozvíte, jak nasadit sadu škálování virtuálních počítačů s duálním zásobníkem (IPv4 + IPv6) pomocí duálního externího nástroje pro vyrovnávání zatížení ve službě Azure Virtual Network. Proces vytvoření sady škálování virtuálních počítačů s podporou protokolu IPv6 je téměř stejný jako proces vytváření jednotlivých virtuálních počítačů popsaných [tady](ipv6-configure-standard-load-balancer-template-json.md). Začnete s kroky, které jsou podobné těm, které jsou popsány pro jednotlivé virtuální počítače:
 1.    Vytvořte veřejné IP adresy IPv4 a IPv6.
-2.    Vytvořte dvouvrstvý systém pro vyrovnávání zatížení.  
+2.    Vytvořte duální Nástroj pro vyrovnávání zatížení.  
 3.    Vytvořte pravidla skupiny zabezpečení sítě (NSG).  
 
-Jediným krokem, který se liší od jednotlivých virtuálních počítačů, je vytvoření konfigurace síťového rozhraní (NIC), která používá prostředek škálovací sady virtuálních počítačů: networkProfile/networkInterfaceConfigurations. Struktura JSON je podobná jako u objektu Microsoft.Network/networkInterfaces používaného pro jednotlivé virtuální počítače s přidáním síťové koryty a konfigurace IpConfiguration IPv4 jako primárního rozhraní pomocí **atributu "primary": true,** jak je vidět v následujícím příkladu:
+Jediným krokem, který se liší od jednotlivých virtuálních počítačů, je vytvoření konfigurace síťového rozhraní (NIC), která používá prostředek sady škálování virtuálního počítače: networkProfile/networkInterfaceConfigurations. Struktura JSON je podobná jako objekt Microsoft. Network/networkInterfaces, který se používá pro jednotlivé virtuální počítače, přičemž jako primární rozhraní používá atribut **"Primary": true** , jak je vidět v následujícím příkladu:
 
 ```json
           "networkProfile": {
@@ -89,9 +89,9 @@ Jediným krokem, který se liší od jednotlivých virtuálních počítačů, j
 ```
 
 
-## <a name="sample-virtual-machine-scale-set-template-json"></a>Ukázka šablony škálovací sady virtuálních strojů JSON
+## <a name="sample-virtual-machine-scale-set-template-json"></a>Ukázka JSON šablony sady škálování virtuálního počítače
 
-Chcete-li nasadit duální zásobník (IPv4 + IPv6) Škálovací sada virtuálních strojů s externím nástrojem pro vyrovnávání zatížení s dvěma [zásobníky](https://azure.microsoft.com/resources/templates/ipv6-in-vnet-vmss/)a ukázkovou šablonou zobrazení virtuální sítě zde .
+Pokud chcete nasadit sadu škálování virtuálních počítačů duálního zásobníku (IPv4 + IPv6) s externím Load Balancerm duálního zásobníku a ukázkovou [šablonou](https://azure.microsoft.com/resources/templates/ipv6-in-vnet-vmss/)zobrazení virtuální sítě.
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o podpoře IPv6 ve virtuálních sítích Azure najdete v tématu [Co je IPv6 pro virtuální síť Azure?](ipv6-overview.md).
+Další informace o podpoře IPv6 ve virtuálních sítích Azure najdete v tématu [co je IPv6 pro Azure Virtual Network?](ipv6-overview.md).

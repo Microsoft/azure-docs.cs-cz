@@ -1,6 +1,6 @@
 ---
-title: Jak integrovat Centrum pro správu Windows s Azure Security Center | Dokumenty společnosti Microsoft
-description: Tento článek vysvětluje, jak integrovat Azure Security Center s Centrem pro správu Windows
+title: Integrace centra pro správu systému Windows pomocí Azure Security Center | Microsoft Docs
+description: Tento článek vysvětluje, jak integrovat Azure Security Center s centrem pro správu Windows
 services: security-center
 author: memildin
 manager: rkarlin
@@ -9,66 +9,66 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
 ms.openlocfilehash: cbbdf724b9d7fe4948553e7526410b994f491b49
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80435265"
 ---
-# <a name="integrate-azure-security-center-with-windows-admin-center"></a>Integrace Centra zabezpečení Azure s Centrem pro správu Windows
+# <a name="integrate-azure-security-center-with-windows-admin-center"></a>Integrace Azure Security Center s centrem pro správu Windows
 
-Centrum pro správu systému Windows je nástroj pro správu serverů se systémem Windows. Je to jediné místo pro správce systému pro přístup k většině nejčastěji používaných nástrojů pro správu. V Centru pro správu Windows můžete přímo založit servery na premu do Azure Security Center. Shrnutí doporučení a výstrah zabezpečení a výstrah můžete zobrazit přímo v centru pro správu Windows.
+Centrum pro správu systému Windows je nástroj pro správu serverů Windows. Pro správce systému je k dispozici jediné místo pro přístup ke většině nejčastěji používaných nástrojů pro správu. V centru pro správu Windows můžete přímo připojit servery na Prem do Azure Security Center. Pak můžete zobrazit souhrn doporučení a výstrah zabezpečení přímo v prostředí centra pro správu systému Windows.
 
 > [!NOTE]
-> Vaše předplatné Azure a přidružený pracovní prostor Log Analytics musí mít povolenou úroveň zabezpečení Centra zabezpečení, aby byla povolena integrace Centra pro správu Windows.
-> Standardní úroveň je zdarma pro prvních 30 dní, pokud jste dříve nepoužívali v předplatném a pracovním prostoru. Další informace naleznete [na stránce s informacemi o cenách](security-center-pricing.md).
+> Aby bylo možné povolit integraci centra pro správu systému Windows, musí mít vaše předplatné Azure a přidružený pracovní prostor Log Analytics mít povolenou úroveň Security Center.
+> Úroveň Standard je zadarmo na prvních 30 dnů, pokud jste ji předtím nepoužívali v předplatném a pracovním prostoru. Další informace najdete [na stránce s informacemi o cenách](security-center-pricing.md).
 >
 
-Až úspěšně založíte server z Centra pro správu Windows do Centra zabezpečení Azure, můžete:
+Po úspěšné registraci serveru z centra pro správu Windows do Azure Security Center můžete:
 
-* Zobrazení výstrah a doporučení zabezpečení v rozšíření Centrum zabezpečení v Centru pro správu Windows
-* Zobrazení stavu zabezpečení a načtení dalších podrobných informací o spravovaných serverech Centra pro správu Windows v Centru zabezpečení na webu Azure Portal (nebo prostřednictvím rozhraní API).
+* Zobrazení výstrah zabezpečení a doporučení v rámci rozšíření Security Center v centru pro správu Windows
+* Prohlédněte si stav zabezpečení a získejte další podrobné informace o spravovaných serverech centra pro správu Windows v Security Center v rámci Azure Portal (nebo přes rozhraní API).
 
-Kombinací těchto dvou nástrojů se Centrum zabezpečení stane vaším jediným skleněným podoknem, které zobrazí všechny vaše informace o zabezpečení bez ohledu na prostředek: ochrana serverů správy windows admin-prem, virtuálních počítačů a dalších úloh PaaS.
+Kombinací těchto dvou nástrojů se Security Center, že se jedná o vaše samostatné podokno, kde můžete zobrazit všechny informace o zabezpečení, a to bez ohledu na prostředek: ochrana centra pro správu Windows spravovaného na serverech Prem, virtuálních počítačů a dalších PaaS úloh.
 
-## <a name="onboarding-windows-admin-center-managed-servers-into-security-center"></a>Registrace spravovaných serverů Centra pro správu systému Windows do Centra zabezpečení
+## <a name="onboarding-windows-admin-center-managed-servers-into-security-center"></a>Připojování spravovaných serverů centra pro správu Windows do Security Center
 
-1. V Centru pro správu Windows vyberte jeden ze serverů a v podokně **Nástroje** vyberte rozšíření Azure Security Center:
+1. V centru pro správu systému Windows vyberte jeden z vašich serverů a v podokně **nástroje** vyberte rozšíření Azure Security Center:
 
-    ![Rozšíření Azure Security Center v Centru pro správu Windows](./media/windows-admin-center-integration/onboarding-from-wac.png)
-
-    > [!NOTE]
-    > Pokud je server již zasazený do Centra zabezpečení, okno nastavení se nezobrazí.
-
-1. Klikněte na **Přihlásit se do Azure a nastavte .**
-    ![Registrace rozšíření Centra pro správu Windows do Centra zabezpečení Azure](./media/windows-admin-center-integration/onboarding-from-wac-welcome.png)
-
-1. Podle pokynů připojte server k Centru zabezpečení. Po zadání potřebných podrobností a potvrzení provede Centrum zabezpečení potřebné změny konfigurace, aby bylo zajištěno, že budou splněny všechny následující skutečnosti:
-    * Je registrovaná brána Azure.
-    * Server má pracovní prostor, který má být vykazován, a přidružené předplatné.
-    * Centrum zabezpečení je standardní úroveň Log Analytics řešení je povoleno v pracovním prostoru. Toto řešení poskytuje funkce úrovně Standard centra zabezpečení pro *všechny* servery a virtuální počítače, které se hlásí do tohoto pracovního prostoru.
-    * Standard security center je úroveň ceny pro virtuální počítač je povolena na předplatné.
-    * Agent Analýzy protokolů je nainstalován na serveru a nakonfigurován tak, aby se hlásil do vybraného pracovního prostoru. Pokud server již hlásí do jiného pracovního prostoru, je nakonfigurován tak, aby sestavy do nově vybraného pracovního prostoru také.
+    ![Rozšíření Azure Security Center v centru pro správu Windows](./media/windows-admin-center-integration/onboarding-from-wac.png)
 
     > [!NOTE]
-    > Může chvíli trvat, než se doporučení zobrazí. Ve skutečnosti, v závislosti na vaší činnosti serveru nemusí přijímat *žádná* upozornění. Chcete-li generovat testovací výstrahy pro testování výstrah, které fungují správně, postupujte podle pokynů v [postupu ověření výstrahy](security-center-alert-validation.md).
+    > Pokud je server již připojen k Security Center, nezobrazí se okno nastavení.
+
+1. Klikněte na **Přihlásit se k Azure a nastavte**.
+    ![Připojování rozšíření centra pro správu Windows k Azure Security Center](./media/windows-admin-center-integration/onboarding-from-wac-welcome.png)
+
+1. Podle pokynů připojte Server k Security Center. Po zadání potřebných podrobností a potvrzení Security Center provede potřebné změny konfigurace, aby se zajistilo splnění všech následujících podmínek:
+    * Brána Azure je zaregistrovaná.
+    * Server má pracovní prostor k hlášení a přidruženému předplatnému.
+    * V pracovním prostoru je povolené řešení Log Analytics úrovně Standard Security Center. Toto řešení poskytuje funkce úrovně Standard Security Center pro *všechny* servery a virtuální počítače, které vytvářejí zprávy do tohoto pracovního prostoru.
+    * Pro virtuální počítač je v předplatném povolené ceny na úrovni Standard Security Center.
+    * Agent Log Analytics je nainstalovaný na serveru a nakonfigurovaný tak, aby nahlásil do vybraného pracovního prostoru. Pokud již Server hlásí do jiného pracovního prostoru, je nakonfigurován tak, aby nahlásil i nově vybraný pracovní prostor.
+
+    > [!NOTE]
+    > Zobrazení doporučení může nějakou dobu trvat. V závislosti na aktivitě serveru nemůžete obdržet *žádné* výstrahy. Chcete-li generovat výstrahy testu k otestování výstrah, které fungují správně, postupujte podle pokynů v [postupu ověření výstrahy](security-center-alert-validation.md).
 
 
-## <a name="viewing-security-recommendations-and-alerts-in-windows-admin-center"></a>Zobrazení doporučení zabezpečení a výstrah v Centru pro správu Windows
+## <a name="viewing-security-recommendations-and-alerts-in-windows-admin-center"></a>Zobrazení doporučení a upozornění zabezpečení v centru pro správu Windows
 
-Po naložit, můžete zobrazit výstrahy a doporučení přímo v oblasti Azure Security Center centra Windows Admin Center. Kliknutím na doporučení nebo upozornění je zobrazíte na webu Azure Portal. Tam získáte další informace a dozvíte se, jak problémy napravit.
+Po zprovoznění můžete výstrahy a doporučení zobrazit přímo v oblasti Azure Security Center v centru pro správu Windows. Kliknutím na doporučení nebo výstrahu je zobrazíte v Azure Portal. Tam najdete další informace a dozvíte se, jak problémy vyřešit.
 
-[![Doporučení a výstrahy Centra zabezpečení, jak je vidět v Centru pro správu Windows](media/windows-admin-center-integration/asc-recommendations-and-alerts-in-wac.png)](media/windows-admin-center-integration/asc-recommendations-and-alerts-in-wac.png#lightbox)
+[![Security Center doporučení a výstrah, jak se zobrazuje v centru pro správu Windows](media/windows-admin-center-integration/asc-recommendations-and-alerts-in-wac.png)](media/windows-admin-center-integration/asc-recommendations-and-alerts-in-wac.png#lightbox)
 
-## <a name="viewing-security-recommendations-and-alerts-for-windows-admin-center-managed-servers-in-security-center"></a>Zobrazení doporučení zabezpečení a výstrah pro spravované servery Centra pro správu Systému Windows v Centru zabezpečení
+## <a name="viewing-security-recommendations-and-alerts-for-windows-admin-center-managed-servers-in-security-center"></a>Zobrazení doporučení a upozornění zabezpečení pro spravované servery centra pro správu Windows v Security Center
 Z Azure Security Center:
 
-* Pokud chcete zobrazit doporučení zabezpečení pro všechny servery Centra pro správu Windows, otevřete **Výpočetní & aplikace** a klikněte na kartu Virtuální počítače a **počítače.**
+* Chcete-li zobrazit doporučení zabezpečení pro všechny servery centra pro správu systému Windows, otevřete **výpočetní & aplikace** a klikněte na kartu **virtuální počítače a počítače** . vyfiltrujte seznam podle prostředku "Server", jak je znázorněno zde:
 
-    [![Zobrazení doporučení zabezpečení pro spravované servery Centra pro správu Windows](media/windows-admin-center-integration/viewing-recommendations-wac.png)](media/windows-admin-center-integration/viewing-recommendations-wac.png#lightbox)
+    [![Zobrazit doporučení zabezpečení pro spravované servery centra pro správu Windows](media/windows-admin-center-integration/viewing-recommendations-wac.png)](media/windows-admin-center-integration/viewing-recommendations-wac.png#lightbox)
 
-* Chcete-li zobrazit výstrahy zabezpečení pro všechny servery Centra pro správu systému Windows, otevřete **schod ové výstrahy zabezpečení**. Klikněte na **Filtr** a ujistěte se, že je **vybrána jenom** "Non-Azure":
+* Chcete-li zobrazit výstrahy zabezpečení pro všechny servery centra pro správu systému Windows, otevřete **výstrahy zabezpečení**. Klikněte na **Filtr** a ujistěte se, že je vybraná **jenom** možnost nepoužívá Azure:
 
-    ![Filtrování výstrah zabezpečení pro spravované servery Centra pro správu Windows](./media/windows-admin-center-integration/filtering-alerts-to-non-azure.png)
+    ![Filtrovat výstrahy zabezpečení pro spravované servery centra pro správu Windows](./media/windows-admin-center-integration/filtering-alerts-to-non-azure.png)
 
-    [![Zobrazení výstrah zabezpečení pro spravované servery Centra pro správu Windows](media/windows-admin-center-integration/viewing-alerts-wac.png)](media/windows-admin-center-integration/viewing-alerts-wac.png#lightbox)
+    [![Zobrazit výstrahy zabezpečení pro spravované servery centra pro správu Windows](media/windows-admin-center-integration/viewing-alerts-wac.png)](media/windows-admin-center-integration/viewing-alerts-wac.png#lightbox)

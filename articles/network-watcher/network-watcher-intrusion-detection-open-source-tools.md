@@ -1,7 +1,7 @@
 ---
-title: Provádění zjišťování narušení sítě pomocí nástrojů s otevřeným zdrojovým kódem
+title: Zjišťování neoprávněných vniknutí k síti pomocí nástrojů Open Source
 titleSuffix: Azure Network Watcher
-description: Tento článek popisuje, jak používat Azure Network Watcher a open source nástroje k provedení zjišťování narušení sítě
+description: Tento článek popisuje, jak pomocí Azure Network Watcher a open source Tools provádět zjišťování neoprávněných vniknutí do sítě.
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -14,33 +14,33 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 1bd823d94552d1e920b367b6576b0e3bb74aefb2
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80474924"
 ---
-# <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>Provádění zjišťování narušení sítě pomocí nástroje Sledování sítě a open source
+# <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>Zjišťování neoprávněných vniknutí k síti pomocí Network Watcher a open source nástrojů
 
-Zachycení paketů je klíčovou součástí pro implementaci systémů detekce narušení sítě (IDS) a provádění monitorování zabezpečení sítě (NSM). Existuje několik nástrojů IDS s otevřeným zdrojovým kódem, které zpracovávají zachytávání paketů a hledají podpisy možných síťových vniknutí a škodlivé aktivity. Pomocí zachycení paketů poskytovaných sledovacím programem sítě můžete analyzovat síť na jakékoli škodlivé vniknutí nebo chyby zabezpečení.
+Zachytávání paketů představují klíčovou komponentu pro implementaci systémů zjišťování neoprávněných vniknutí k síti (ID) a provádění monitorování zabezpečení sítě (NSM). Existuje několik nástrojů Open Source ID, které zpracovávají pakety a vyhledávají signatury možných vniknutí do sítě a škodlivých aktivit. Pomocí zachytávání paketů poskytovaných Network Watcher můžete analyzovat síť pro jakékoli škodlivé napadení nebo ohrožení zabezpečení.
 
-Jedním z takových open source nástroj je Suricata, IDS motor, který používá pravidla pro sledování síťového provozu a aktivuje výstrahy vždy, když dojde k podezřelým událostem. Suricata nabízí vícevláknový motor, což znamená, že může provádět analýzu síťového provozu se zvýšenou rychlostí a účinností. Pro více informací o Suricata a jeho https://suricata-ids.org/schopnosti, navštivte jejich webové stránky na .
+Jedním z těchto open source nástrojů je Suricata, modul pro identifikaci, který používá RuleSets k monitorování síťového provozu a aktivuje výstrahy vždy, když dojde k podezřelým událostem. Suricata nabízí vícevláknový modul, což znamená, že může provádět analýzu síťového provozu se zvýšenou rychlostí a efektivitou. Další podrobnosti o Suricata a jejích funkcích najdete na webu na adrese https://suricata-ids.org/.
 
 ## <a name="scenario"></a>Scénář
 
-Tento článek vysvětluje, jak nastavit prostředí k provedení zjišťování narušení sítě pomocí sledování sítě, Suricata a elastický zásobník. Sledování sítě poskytuje zachycení paketů, které se používají k detekci narušení sítě. Suricata zpracovává zachytávání paketů a aktivuje výstrahy na základě paketů, které odpovídají dané sadě pravidel hrozeb. Tyto výstrahy jsou uloženy v souboru protokolu v místním počítači. Pomocí elastického zásobníku mohou být protokoly generované suricatou indexovány a použity k vytvoření řídicího panelu Kibana, který poskytuje vizuální reprezentaci protokolů a prostředky k rychlému získání přehledu o potenciálních chybách zabezpečení sítě.  
+Tento článek vysvětluje, jak nastavit prostředí pro provádění zjišťování neoprávněných vniknutí k síti pomocí Network Watcher, Suricata a elastického zásobníku. Network Watcher poskytuje zachytávání paketů používaných k provádění zjišťování neoprávněných vniknutí do sítě. Suricata zpracovává pakety a aktivuje výstrahy na základě paketů, které odpovídají daným RuleSet hrozbám. Tyto výstrahy se ukládají do souboru protokolu na místním počítači. Pomocí elastického zásobníku se protokoly vygenerované Suricata můžou indexovat a používat k vytvoření řídicího panelu Kibana, který vám poskytne vizuální znázornění protokolů a způsob, jak rychle získat přehled o potenciálních ohroženích zabezpečení sítě.  
 
-![jednoduchý scénář webové aplikace][1]
+![jednoduchý scénář webových aplikací][1]
 
-Oba nástroje s otevřeným zdrojovým kódem lze nastavit na virtuálním počítači Azure, což vám umožní provádět tuto analýzu v rámci vlastního síťového prostředí Azure.
+Na VIRTUÁLNÍm počítači Azure je možné nastavit jak Open Source nástroje, což vám umožní provádět tuto analýzu v rámci vlastního síťového prostředí Azure.
 
 ## <a name="steps"></a>Kroky
 
-### <a name="install-suricata"></a>Instalace Suricata
+### <a name="install-suricata"></a>Nainstalovat Suricata
 
-Všechny ostatní způsoby instalace naleznete nahttps://suricata.readthedocs.io/en/suricata-5.0.2/quickstart.html#installation
+Všechny ostatní metody instalace najdete na stráncehttps://suricata.readthedocs.io/en/suricata-5.0.2/quickstart.html#installation
 
-1. V terminálu příkazového řádku virtuálního počítače spusťte následující příkazy:
+1. V terminálu příkazového řádku pro virtuální počítač spusťte následující příkazy:
 
     ```
     sudo add-apt-repository ppa:oisf/suricata-stable
@@ -48,11 +48,11 @@ Všechny ostatní způsoby instalace naleznete nahttps://suricata.readthedocs.io
     sudo sudo apt-get install suricata
     ```
 
-1. Chcete-li ověřit instalaci, `suricata -h` spusťte příkaz a zobcesezobrazíte úplný seznam příkazů.
+1. Chcete-li ověřit instalaci, spusťte příkaz `suricata -h` , který zobrazí úplný seznam příkazů.
 
-### <a name="download-the-emerging-threats-ruleset"></a>Stažení sady pravidel Vznikající hrozby
+### <a name="download-the-emerging-threats-ruleset"></a>Stáhněte si nově vznikající hrozby RuleSet
 
-V této fázi nemáme žádná pravidla pro Suricata spustit. Můžete vytvořit vlastní pravidla, pokud existují konkrétní hrozby pro vaši síť, kterou chcete zjistit, nebo můžete také použít vyvinuté sady pravidel od řady poskytovatelů, jako jsou vznikající hrozby nebo pravidla VRT od společnosti Snort. Používáme volně přístupné emerging threats pravidlo zde:
+V této fázi nemáme žádná pravidla, která by Suricata běžet. Můžete vytvořit vlastní pravidla, pokud máte konkrétní hrozby vaší sítě, které chcete zjistit, nebo můžete použít také vytvořené sady pravidel z řady poskytovatelů, jako jsou nově vznikající hrozby nebo pravidla VRT z Snort. Využijeme volně přístupné nově vznikající hrozby RuleSet:
 
 Stáhněte sadu pravidel a zkopírujte je do adresáře:
 
@@ -62,25 +62,25 @@ tar zxf emerging.rules.tar.gz
 sudo cp -r rules /etc/suricata/
 ```
 
-### <a name="process-packet-captures-with-suricata"></a>Zpracovat zachytávání paketů pomocí suricata
+### <a name="process-packet-captures-with-suricata"></a>Zpracování zachycených paketů pomocí Suricata
 
-Chcete-li zpracovat zachycení paketů pomocí suricata, spusťte následující příkaz:
+Pokud chcete zpracovat zachycení paketů pomocí Suricata, spusťte následující příkaz:
 
 ```
 sudo suricata -c /etc/suricata/suricata.yaml -r <location_of_pcapfile>
 ```
-Chcete-li zkontrolovat výsledné výstrahy, přečtěte si soubor fast.log:
+Chcete-li zjistit výsledné výstrahy, přečtěte si soubor Fast. log:
 ```
 tail -f /var/log/suricata/fast.log
 ```
 
 ### <a name="set-up-the-elastic-stack"></a>Nastavení elastického zásobníku
 
-Zatímco protokoly, které Suricata vytváří obsahují cenné informace o tom, co se děje v naší síti, tyto soubory protokolu nejsou nejjednodušší číst a pochopit. Propojením Suricata s elastickým zásobníkem můžeme vytvořit řídicí panel Kibana, který nám umožňuje vyhledávat, vytvářet grafy, analyzovat a odvozovat poznatky z našich protokolů.
+I když protokoly, které Suricata vytváří, obsahují cenné informace o tom, co se děje v naší síti, tyto soubory protokolu nejsou nejjednodušší ke čtení a pochopení. Připojením Suricata pomocí elastického zásobníku můžeme vytvořit řídicí panel Kibana, který nám umožní Hledat, grafy, analyzovat a odvodit přehledy z našich protokolů.
 
-#### <a name="install-elasticsearch"></a>Instalace elastického vyhledávání
+#### <a name="install-elasticsearch"></a>Nainstalovat Elasticsearch
 
-1. Elastický zásobník z verze 5.0 a vyšší vyžaduje Java 8. Spusťte `java -version` příkaz a zkontrolujte svou verzi. Pokud nemáte nainstalovanou java, podívejte se do dokumentace na [Azure-suppored JDKs](https://aka.ms/azure-jdks).
+1. Elastická sada z verze 5,0 a vyšší vyžaduje Java 8. Spusťte příkaz `java -version` a ověřte svou verzi. Pokud nemáte nainstalovaný Java, přečtěte si dokumentaci k [Azure-suppored sady JDK](https://aka.ms/azure-jdks).
 
 1. Stáhněte si správný binární balíček pro váš systém:
 
@@ -90,15 +90,15 @@ Zatímco protokoly, které Suricata vytváří obsahují cenné informace o tom,
     sudo /etc/init.d/elasticsearch start
     ```
 
-    Další způsoby instalace lze nalézt na [Elasticsearch Instalace](https://www.elastic.co/guide/en/beats/libbeat/5.2/elasticsearch-installation.html)
+    Další metody instalace najdete v [Elasticsearch instalace](https://www.elastic.co/guide/en/beats/libbeat/5.2/elasticsearch-installation.html) .
 
-1. Ověřte, zda je pomocí příkazu spuštěno elastické hledání:
+1. Ověřte, že je Elasticsearch spuštěný s příkazem:
 
     ```
     curl http://127.0.0.1:9200
     ```
 
-    Měli byste vidět odpověď podobnou této:
+    Měla by se zobrazit odpověď podobná této:
 
     ```
     {
@@ -115,23 +115,23 @@ Zatímco protokoly, které Suricata vytváří obsahují cenné informace o tom,
     }
     ```
 
-Další pokyny k instalaci elastického vyhledávání naleznete na stránce [Instalace](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/_installation.html)
+Další pokyny k instalaci elastického vyhledávání najdete v tématu [instalace](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/_installation.html) stránky.
 
-### <a name="install-logstash"></a>Instalace logstash
+### <a name="install-logstash"></a>Nainstalovat Logstash
 
-1. Chcete-li nainstalovat Logstash spustit následující příkazy:
+1. Pro instalaci Logstash spusťte následující příkazy:
 
     ```
     curl -L -O https://artifacts.elastic.co/downloads/logstash/logstash-5.2.0.deb
     sudo dpkg -i logstash-5.2.0.deb
     ```
-1. Dále musíme nakonfigurovat Logstash číst z výstupu souboru eve.json. Vytvořte soubor logstash.conf pomocí:
+1. Dál musíme nakonfigurovat Logstash ke čtení z výstupu souboru předvečer. JSON. Vytvořte soubor logstash. conf pomocí:
 
     ```
     sudo touch /etc/logstash/conf.d/logstash.conf
     ```
 
-1. Přidejte do souboru následující obsah (ujistěte se, že cesta k souboru eve.json je správná):
+1. Do souboru přidejte následující obsah (Ujistěte se, že cesta k souboru předvečer. JSON je správná):
 
     ```ruby
     input {
@@ -203,88 +203,88 @@ Další pokyny k instalaci elastického vyhledávání naleznete na stránce [In
     }
     ```
 
-1. Ujistěte se, že udělit správná oprávnění k souboru eve.json tak, aby Logstash můžete ingestovat soubor.
+1. Ujistěte se, že máte správná oprávnění k souboru předvečer. JSON, aby Logstash mohl soubor ingestovat.
     
     ```
     sudo chmod 775 /var/log/suricata/eve.json
     ```
 
-1. Spuštění příkazu Logstash:
+1. Spuštění Logstash spustíte příkazem:
 
     ```
     sudo /etc/init.d/logstash start
     ```
 
-Další pokyny k instalaci logstash naleznete v [oficiální dokumentaci](https://www.elastic.co/guide/en/beats/libbeat/5.2/logstash-installation.html)
+Další pokyny k instalaci Logstash najdete v [oficiální dokumentaci](https://www.elastic.co/guide/en/beats/libbeat/5.2/logstash-installation.html) .
 
-### <a name="install-kibana"></a>Instalace Kibany
+### <a name="install-kibana"></a>Nainstalovat Kibana
 
-1. Chcete-li nainstalovat kibanu, spusťte následující příkazy:
+1. Spusťte následující příkazy a nainstalujte Kibana:
 
     ```
     curl -L -O https://artifacts.elastic.co/downloads/kibana/kibana-5.2.0-linux-x86_64.tar.gz
     tar xzvf kibana-5.2.0-linux-x86_64.tar.gz
 
     ```
-1. Chcete-li spustit Kibana, použijte příkazy:
+1. Pro spuštění Kibana použijte příkazy:
 
     ```
     cd kibana-5.2.0-linux-x86_64/
     ./bin/kibana
     ```
 
-1. Chcete-li zobrazit webové rozhraní kibana, přejděte na`http://localhost:5601`
-1. V tomto scénáři je index vzor použitý pro protokoly Suricata je "logstash-*"
+1. Pokud chcete zobrazit webové rozhraní Kibana, přejděte na`http://localhost:5601`
+1. Pro tento scénář je vzor indexu použitý pro protokoly Suricata "logstash-*".
 
-1. Chcete-li zobrazit řídicí panel Kibana vzdáleně, vytvořte příchozí pravidlo nsg umožňující přístup k **portu 5601**.
+1. Pokud chcete zobrazit řídicí panel Kibana vzdáleně, vytvořte příchozí pravidlo NSG, které umožní přístup k **portu 5601**.
 
 ### <a name="create-a-kibana-dashboard"></a>Vytvoření řídicího panelu Kibana
 
-V tomto článku jsme vám poskytli ukázkový řídicí panel, ve kterých můžete zobrazit trendy a podrobnosti ve vašich výstrahách.
+Pro tento článek poskytujeme ukázkový řídicí panel, který vám umožní zobrazit trendy a podrobnosti v upozorněních.
 
-1. Stáhněte si soubor řídicího panelu [zde](https://aka.ms/networkwatchersuricatadashboard), vizualizační soubor [zde](https://aka.ms/networkwatchersuricatavisualization)a uložený vyhledávací soubor [zde](https://aka.ms/networkwatchersuricatasavedsearch).
+1. Sem stáhněte [soubor s](https://aka.ms/networkwatchersuricatavisualization)řídicím panelem [, soubor](https://aka.ms/networkwatchersuricatadashboard)vizualizace a uložený soubor [hledání.](https://aka.ms/networkwatchersuricatasavedsearch)
 
-1. Na kartě **Správa** v Kibaně přejděte na **Uložené objekty** a importujte všechny tři soubory. Potom můžete na kartě **Řídicí panel** otevřít a načíst ukázkový řídicí panel.
+1. Na kartě **Správa** Kibana přejděte na **uložené objekty** a importujte všechny tři soubory. Pak na kartě **řídicí panel** můžete otevřít a načíst ukázkový řídicí panel.
 
-Můžete také vytvořit vlastní vizualizace a řídicí panely přizpůsobené metrikám vašeho vlastního zájmu. Přečtěte si více o vytváření vizualizací Kibana z [oficiální dokumentace](https://www.elastic.co/guide/en/kibana/current/visualize.html)Kibany .
+Můžete také vytvořit vlastní vizualizace a řídicí panely, které jsou přizpůsobené všem metrikám svého vlastního zájmu. Přečtěte si další informace o vytváření vizualizací Kibana z [oficiální dokumentace](https://www.elastic.co/guide/en/kibana/current/visualize.html)Kibana.
 
 ![řídicí panel kibana][2]
 
-### <a name="visualize-ids-alert-logs"></a>Vizualizace protokolů výstrah IDS
+### <a name="visualize-ids-alert-logs"></a>Vizualizace protokolů výstrah ID
 
-Ukázkový řídicí panel poskytuje několik vizualizací protokolů výstrah Suricata:
+Vzorový řídicí panel nabízí několik vizualizací protokolů výstrah Suricata:
 
-1. Upozornění geoip - mapa zobrazující rozdělení záznamů podle jejich země / oblasti původu na základě zeměpisné polohy (určeno IP)
+1. Výstrahy podle GeoIP – mapa znázorňující distribuci výstrah podle jejich země nebo oblasti původu na základě geografického umístění (určeného IP adresou)
 
-    ![geo ip][3]
+    ![Geografická IP adresa][3]
 
-1. Top 10 Upozornění - souhrn 10 nejčastějších aktivovaných výstrah a jejich popis. Kliknutím na jednotlivé výstrahy filtrujete řídicí panel na informace týkající se dané konkrétní výstrahy.
+1. 10 nejčastějších výstrah – Shrnutí 10 nejčastějších výstrah a jejich popis. Kliknutím na jednotlivé výstrahy filtrujete řídicí panel na informace týkající se konkrétní výstrahy.
 
-    ![obrázek 4][4]
+    ![Obrázek 4][4]
 
-1. Počet výstrah – celkový počet výstrah aktivovaných sadou pravidel
+1. Počet výstrah – celkový počet výstrah aktivovaných RuleSet
 
-    ![obrázek 5][5]
+    ![Obrázek 5][5]
 
-1. Prvních 20 zdrojových/cílových IP adresaí/portů – výsečové grafy zobrazující 20 nejlepších IP adresy a porty, na kterých byly spuštěny výstrahy. Můžete filtrovat dolů na konkrétní IP adresy /porty zobrazíte, kolik a jaký druh výstrah y jsou spouštěny.
+1. Prvních 20 zdrojů/cílových IP adres/portů – výsečové grafy zobrazující prvních 20 IP adres a portů, na kterých se aktivovaly výstrahy. Můžete vyfiltrovat konkrétní IP adresy nebo porty a zjistit, kolik výstrah se spouští.
 
-    ![obrázek 6][6]
+    ![Obrázek 6][6]
 
-1. Souhrn výstrah – tabulka shrnující konkrétní podrobnosti jednotlivých výstrah. Tuto tabulku můžete přizpůsobit tak, aby zobrazovala další parametry zájmu pro každou výstrahu.
+1. Souhrn výstrah – tabulka shrnující konkrétní podrobnosti o jednotlivých výstrahách. Tuto tabulku můžete přizpůsobit tak, aby zobrazovala další parametry zájmu každé výstrahy.
 
-    ![obrázek 7][7]
+    ![Obrázek 7][7]
 
-Další dokumentaci k vytváření vlastních vizualizací a řídicích panelů naleznete [v oficiální dokumentaci společnosti Kibana](https://www.elastic.co/guide/en/kibana/current/introduction.html).
+Další dokumentaci k vytváření vlastních vizualizací a řídicích panelů najdete v článku o [oficiální dokumentaci k Kibana](https://www.elastic.co/guide/en/kibana/current/introduction.html).
 
 ## <a name="conclusion"></a>Závěr
 
-Kombinací sběru paketů poskytovaného nástrojem Sledování sítě a nástroji IDS s otevřeným zdrojovým kódem, jako je například Suricata, můžete provádět zjišťování narušení sítě pro širokou škálu hrozeb. Tyto řídicí panely umožňují rychle rozpoznat trendy a anomálie v rámci sítě a také prohledejte data a zjišťujte hlavní příčiny výstrah, jako jsou agenti uživatelů se zlými úmysly nebo zranitelné porty. Pomocí těchto extrahovaných dat můžete činit informovaná rozhodnutí o tom, jak reagovat na síť a chránit ji před škodlivými pokusy o vniknutí, a vytvořit pravidla, která zabrání budoucím vniknutí do sítě.
+Díky kombinování zachycení paketů poskytovaných nástroji Network Watcher a open source ID, jako je Suricata, můžete zjišťovat neoprávněné vniknutí k síti pro nejrůznější hrozby. Tyto řídicí panely umožňují rychle odhalit trendy a anomálie v rámci vaší sítě a také dig data, abyste zjistili hlavní příčiny výstrah, jako jsou například zlomyslní uživatelé nebo zranitelné porty. Tato extrahovaná data vám umožní informovat o tom, jak reagovat a chránit vaši síť před škodlivými pokusy o vniknutí, a vytvořit pravidla, která zabraňují budoucímu vniknutí do vaší sítě.
 
 ## <a name="next-steps"></a>Další kroky
 
-Zjistěte, jak aktivovat sběr paketů na základě výstrah na stránce [Použití sběru paketů k proaktivnímu monitorování sítě pomocí funkcí Azure](network-watcher-alert-triggered-packet-capture.md)
+Naučte se, jak aktivovat zachycení paketů na základě výstrah, pomocí [zachytávání paketů, pomocí kterého provedete proaktivní monitorování sítě pomocí Azure Functions](network-watcher-alert-triggered-packet-capture.md)
 
-Přečtěte si, jak vizualizovat protokoly toku nsg pomocí Power BI na stránce [Visualize Protokoly toků nsg pomocí Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md)
+Naučte se vizualizovat protokoly toku NSG pomocí Power BI tím, že navštívíte [vizualizace NSG toků protokolů s Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md)
 
 
 

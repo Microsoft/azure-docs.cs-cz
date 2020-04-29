@@ -1,6 +1,6 @@
 ---
-title: Poradce při potížích s klientem vzdálené plochy Windows Virtual Desktop – Azure
-description: Jak vyřešit problémy při nastavení připojení klientů v prostředí klienta Virtuální plocha systému Windows.
+title: Řešení potíží s klientem vzdálené plochy na virtuálním počítači s Windows – Azure
+description: Řešení problémů při nastavování připojení klienta v prostředí klienta virtuální plochy Windows
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -9,79 +9,79 @@ ms.date: 03/31/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 595762e6e8f22dddff30f1cff8c4bb79e89624b1
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80473849"
 ---
-# <a name="troubleshoot-the-remote-desktop-client"></a>Poradce při potížích s klientem vzdálené plochy
+# <a name="troubleshoot-the-remote-desktop-client"></a>Řešení potíží s klientem vzdálené plochy
 
-Tento článek popisuje běžné problémy s klientem vzdálené plochy a jejich opravu.
+Tento článek popisuje běžné problémy s klientem vzdálené plochy a jejich řešení.
 
-## <a name="remote-desktop-client-for-windows-7-or-windows-10-stops-responding-or-cannot-be-opened"></a>Klient vzdálené plochy pro Windows 7 nebo Windows 10 přestane reagovat nebo jej nelze otevřít
+## <a name="remote-desktop-client-for-windows-7-or-windows-10-stops-responding-or-cannot-be-opened"></a>Klient služby Vzdálená plocha pro Windows 7 nebo Windows 10 přestane reagovat nebo ho nejde otevřít.
 
-Počínaje verzí 1.2.790 můžete obnovit uživatelská data ze stránky Informace nebo pomocí příkazu.
+Počínaje verzí 1.2.790 můžete obnovit data uživatelů ze stránky o o aplikaci nebo pomocí příkazu.
 
-Pomocí následujícího příkazu odeberte uživatelská data, obnovíte výchozí nastavení a odhlaste se ze všech pracovních prostorů.
+Pomocí následujícího příkazu odeberte uživatelská data, obnovte výchozí nastavení a zrušte odběr ze všech pracovních prostorů.
 
 ```cmd
 msrdcw.exe /reset [/f]
 ```
 
-Pokud používáte starší verzi klienta Vzdálené plochy, doporučujeme klienta odinstalovat a znovu nainstalovat.
+Pokud používáte starší verzi klienta vzdálené plochy, doporučujeme odinstalovat a znovu nainstalovat klienta.
 
-## <a name="web-client-wont-open"></a>Webový klient se neotevře
+## <a name="web-client-wont-open"></a>Webový klient se neotevře.
 
-Nejprve otestujte připojení k internetu otevřením jiné webové stránky ve vašem prohlížeči; například [www.bing.com](https://www.bing.com).
+Nejdřív otestujte připojení k Internetu otevřením jiného webu v prohlížeči. například [www.Bing.com](https://www.bing.com).
 
-Pomocí **nslookup** potvrďte, že dns může vyřešit hlavní název domény:
+Pomocí nástroje **nslookup** potvrďte, že DNS může přeložit plně kvalifikovaný název domény:
 
 ```cmd
 nslookup rdweb.wvd.microsoft.com
 ```
 
-Zkuste se připojit k jinému klientovi, jako je klient Vzdálené plochy pro Windows 7 nebo Windows 10, a zkontrolujte, jestli můžete otevřít webového klienta.
+Zkuste se připojit pomocí jiného klienta, jako je klient vzdálené plochy pro Windows 7 nebo Windows 10, a zkontrolujte, jestli můžete otevřít webového klienta.
 
-### <a name="opening-another-site-fails"></a>Otevření jiného webu se nezdaří
+### <a name="opening-another-site-fails"></a>Otevření jiného webového serveru se nezdařilo
 
-To je obvykle způsobeno problémy se síťovým připojením nebo výpadkem sítě. Doporučujeme kontaktovat síťovou podporu.
+To je obvykle způsobeno problémy s připojením k síti nebo výpadkem sítě. Doporučujeme, abyste kontaktovali podporu sítě.
 
-### <a name="nslookup-cannot-resolve-the-name"></a>Nslookup nemůže přeložit název
+### <a name="nslookup-cannot-resolve-the-name"></a>Nástroj Nslookup nemůže přeložit název.
 
-To je obvykle způsobeno problémy se síťovým připojením nebo výpadkem sítě. Doporučujeme kontaktovat síťovou podporu.
+To je obvykle způsobeno problémy s připojením k síti nebo výpadkem sítě. Doporučujeme, abyste kontaktovali podporu sítě.
 
-### <a name="your-client-cant-connect-but-other-clients-on-your-network-can-connect"></a>Klient se nemůže připojit, ale ostatní klienti ve vaší síti se mohou připojit
+### <a name="your-client-cant-connect-but-other-clients-on-your-network-can-connect"></a>Váš klient se nemůže připojit, ale ostatní klienti ve vaší síti se můžou připojit.
 
-Pokud váš prohlížeč začne pracovat nebo přestane pracovat, když používáte webového klienta, postupujte podle následujících pokynů k jeho řešení:
+Pokud se v prohlížeči spustí nebo přestane pracovat, když používáte webového klienta, vyřešte potíže podle těchto pokynů:
 
 1. Restartujte prohlížeč.
-2. Vymazat soubory cookie prohlížeče. Viz [Jak odstranit soubory cookie v aplikaci Internet Explorer](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer).
-3. Smažte mezipaměť prohlížeče. Viz [vymazání mezipaměti prohlížeče pro váš prohlížeč](https://binged.it/2RKyfdU).
-4. Otevřete prohlížeč v soukromém režimu.
+2. Vymazat soubory cookie prohlížeče. Informace najdete [v tématu Odstranění souborů cookie v aplikaci Internet Explorer](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer).
+3. Smažte mezipaměť prohlížeče. Viz [Vymazat mezipaměť prohlížeče pro prohlížeč](https://binged.it/2RKyfdU).
+4. Otevřete prohlížeč v privátním režimu.
 
-## <a name="web-client-stops-responding-or-disconnects"></a>Webový klient přestane reagovat nebo se odpojí
+## <a name="web-client-stops-responding-or-disconnects"></a>Webový klient přestane reagovat nebo odpojení.
 
 Zkuste se připojit pomocí jiného prohlížeče nebo klienta.
 
-### <a name="other-browsers-and-clients-also-malfunction-or-fail-to-open"></a>Ostatní prohlížeče a klienti také poruchy nebo nepodaří otevřít
+### <a name="other-browsers-and-clients-also-malfunction-or-fail-to-open"></a>Jiné prohlížeče a klienti také nefunguje správně nebo se nedaří otevřít
 
-Pokud problémy přetrvávají i po přepnutí prohlížeče, problém nemusí být v prohlížeči, ale v síti. Doporučujeme kontaktovat síťovou podporu.
+Pokud potíže potrvají i po přepnutí prohlížečů, problém se nemusí nacházet v prohlížeči, ale ve vaší síti. Doporučujeme, abyste kontaktovali podporu sítě.
 
-## <a name="web-client-keeps-prompting-for-credentials"></a>Webový klient nanese výzvu k zobrazení pověření
+## <a name="web-client-keeps-prompting-for-credentials"></a>Webový klient uchovává výzvy k zadání přihlašovacích údajů
 
-Pokud webový klient nastále vyzývá pověření, postupujte podle následujících pokynů:
+Pokud webový klient zachovává výzvy k zadání přihlašovacích údajů, postupujte podle těchto pokynů:
 
-1. Zkontrolujte, zda je adresa URL webového klienta správná.
-2. Zkontrolujte, zda jsou přihlašovací údaje, které používáte, pro prostředí Virtuální plochy Windows svázané s adresou URL.
-3. Vymazat soubory cookie prohlížeče. Další podrobnosti naleznete [v tématu Odstranění souborů souborů cookie v aplikaci Internet Explorer](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer).
-4. Smažte mezipaměť prohlížeče. Další podrobnosti naleznete v tématu [Vymazání mezipaměti prohlížeče pro váš prohlížeč](https://binged.it/2RKyfdU).
-5. Otevřete prohlížeč v soukromém režimu.
+1. Potvrďte správnost adresy URL webového klienta.
+2. Ověřte, že přihlašovací údaje, které používáte, jsou pro prostředí virtuálních počítačů s Windows svázané s adresou URL.
+3. Vymazat soubory cookie prohlížeče. Další podrobnosti najdete v tématu [odstranění souborů cookie v Internet Exploreru](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer).
+4. Smažte mezipaměť prohlížeče. Další podrobnosti najdete v tématu [vymazání mezipaměti prohlížeče pro prohlížeč](https://binged.it/2RKyfdU).
+5. Otevřete prohlížeč v privátním režimu.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přehled řešení potíží s virtuální plochou Windows a traseskalace najdete [v tématu Přehled řešení potíží, zpětná vazba a podpora](troubleshoot-set-up-overview.md).
-- Informace o řešení problémů při vytváření fondu klientů a hostitelů v prostředí Virtuální plochy systému Windows najdete v [tématu Vytvoření klientského a hostitelského fondu](troubleshoot-set-up-issues.md).
-- Informace o řešení problémů při konfiguraci virtuálního počítače (VM) ve Windows Virtual Desktop najdete v [tématu Konfigurace virtuálního počítače hostitele relací](troubleshoot-vm-configuration.md).
-- Informace o řešení problémů při používání PowerShellu s Windows Virtual Desktop najdete v [tématu Windows Virtual Desktop PowerShell](troubleshoot-powershell.md).
-- Chcete-li projít kurz řešení potíží, [přečtěte si článek Návod k řešení potíží s nasazením šablon Správce prostředků](../azure-resource-manager/templates/template-tutorial-troubleshoot.md).
+- Přehled řešení potíží s virtuálním počítačem s Windows a cvičeními eskalace najdete v tématu [věnovaném řešení potíží s přehledem, zpětnou vazbou a podporou](troubleshoot-set-up-overview.md).
+- Pokud chcete řešit problémy při vytváření tenanta a fondu hostitelů v prostředí virtuálních počítačů s Windows, přečtěte si téma [vytváření fondů klientů a hostitelů](troubleshoot-set-up-issues.md).
+- Informace o řešení problémů při konfiguraci virtuálního počítače na virtuálním počítači s Windows najdete v tématu [Konfigurace virtuálního počítače hostitele relace](troubleshoot-vm-configuration.md).
+- Pokud chcete řešit problémy při používání PowerShellu s virtuálním počítačem s Windows, přečtěte si téma [virtuální plocha Windows PowerShell](troubleshoot-powershell.md).
+- Kurz řešení potíží najdete v tématu [kurz: řešení potíží s nasazením správce prostředků šablon](../azure-resource-manager/templates/template-tutorial-troubleshoot.md).

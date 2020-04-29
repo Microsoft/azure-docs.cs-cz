@@ -1,6 +1,6 @@
 ---
-title: DPDK v virtuálním počítači Azure Linux | Dokumenty společnosti Microsoft
-description: Přečtěte si, jak nastavit DPDK ve virtuálním počítači s Linuxem.
+title: DPDK na virtuálním počítači Azure Linux | Microsoft Docs
+description: Přečtěte si, jak nastavit DPDK na virtuálním počítači se systémem Linux.
 services: virtual-network
 documentationcenter: na
 author: laxmanrb
@@ -15,52 +15,52 @@ ms.workload: infrastructure-services
 ms.date: 07/27/2018
 ms.author: labattul
 ms.openlocfilehash: c79c1fd687e329b97a854a3ff66a3cf95076b5d6
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80384224"
 ---
-# <a name="set-up-dpdk-in-a-linux-virtual-machine"></a>Nastavení dpdk ve virtuálním počítači s Linuxem
+# <a name="set-up-dpdk-in-a-linux-virtual-machine"></a>Nastavení DPDK na virtuálním počítači se systémem Linux
 
-Data Plane Development Kit (DPDK) v Azure nabízí rychlejší uživatelské prostorové zpracování paketů pro aplikace náročné na výkon. Tato architektura obchází zásobník sítě jádra virtuálního počítače.
+Sada data Development Kit (DPDK) v Azure nabízí rychlejší rozhraní pro zpracování paketů v uživatelském prostoru pro aplikace náročné na výkon. Toto rozhraní obchází sadu síťových protokolů jádra virtuálního počítače.
 
-Při typickém zpracování paketů, které používá síťový zásobník jádra, je proces řízen přerušením. Když síťové rozhraní přijímá příchozí pakety, dochází k přerušení jádra pro zpracování paketu a kontextový přepínač z prostoru jádra do uživatelského prostoru. DPDK eliminuje přepínání kontextu a přerušení řízené metody ve prospěch implementace uživatelského prostoru, který používá ovladače režimu dotazování pro rychlé zpracování paketů.
+V typickém zpracování paketů, které používá zásobník sítě jádra, je proces řízený přerušením. Když síťové rozhraní obdrží příchozí pakety, dojde k přerušení jádra za účelem zpracování paketu a kontextu přepnutí z prostoru jádra do uživatelského prostoru. DPDK eliminuje přepínání kontextu a metodu řízenou přerušením ve prospěch implementace v uživatelském prostoru, která pro rychlé zpracování paketů používá ovladače režimu cyklického dotazování.
 
-DPDK se skládá ze sad knihoven uživatelského prostoru, které poskytují přístup k prostředkům nižší úrovně. Tyto prostředky mohou zahrnovat ovladače hardwaru, logických jader, správy paměti a režimu dotazování pro karty síťového rozhraní.
+DPDK se skládá ze sad knihoven uživatelských prostorů, které poskytují přístup k prostředkům nižší úrovně. Tyto prostředky můžou zahrnovat hardware, logické jádra, správu paměti a ovladače režimu cyklického dotazování pro síťové karty.
 
-DPDK můžete spustit na virtuálních počítačích Azure, které podporují více distribucí operačního systému. DPDK poskytuje klíčovou diferenciaci výkonu v implementaci virtualizace funkcí sítě. Tyto implementace mohou mít podobu síťových virtuálních zařízení (NVA), jako jsou virtuální směrovače, brány firewall, sítě VIRTUÁLNÍSÍTĚ, nástroje pro vyrovnávání zatížení, vyvinutá jádra paketů a aplikace ddovařské služby (DDoS).
+DPDK může běžet na virtuálních počítačích Azure, které podporují víc distribucí operačních systémů. DPDK poskytuje klíčové rozlišení výkonu při řízení implementace virtualizace síťové funkce. Tyto implementace můžou mít formu síťových virtuálních zařízení (síťová virtuální zařízení), jako jsou virtuální směrovače, brány firewall, sítě VPN, nástroje pro vyrovnávání zatížení, virtualizované jádro paketů a aplikace DDoS (Denial of Service).
 
 ## <a name="benefit"></a>Výhoda
 
-**Vyšší pakety za sekundu (PPS):** Vynechání jádra a převzetí kontroly paketů v uživatelském prostoru snižuje počet cyklů odstraněním kontextových přepínačů. Také zlepšuje rychlost paketů, které jsou zpracovávány za sekundu ve virtuálních počítačích Azure Linux.
+**Vyšší počet paketů za sekundu (PPS)**: vynechání jádra a převzetí kontroly paketů v prostoru uživatele zmenší počet cyklů tím, že se odřadí přepínače kontextu. Zlepšuje také počet paketů zpracovávaných za sekundu ve virtuálních počítačích Azure Linux.
 
 
 ## <a name="supported-operating-systems"></a>Podporované operační systémy
 
-Podporovány jsou následující distribuce z Azure Marketplace:
+Jsou podporovány následující distribuce z Azure Marketplace:
 
 | Operační systém Linux     | Verze jádra               | 
 |--------------|---------------------------   |
-| Ubuntu 16.04 | 4.15.0-1014-azure+           | 
-| Ubuntu 18.04 | 4.15.0-1014-azure+           |
-| SLES 15 SP1  | 4.12.14-8.27-azure+          | 
-| RHEL 7.5     | 3.10.0-862.11.6.el7.x86_64+  | 
-| CentOS 7.5   | 3.10.0-862.11.6.el7.x86_64+  | 
+| Ubuntu 16.04 | 4.15.0-1014 – Azure +           | 
+| Ubuntu 18.04 | 4.15.0-1014 – Azure +           |
+| SLES 15 SP1  | 4.12.14-8,27 palců – Azure +          | 
+| RHEL 7.5     | 3.10.0-862.11.6. el7. x86_64 +  | 
+| CentOS 7.5   | 3.10.0-862.11.6. el7. x86_64 +  | 
 
-**Vlastní podpora jádra**
+**Podpora vlastního jádra**
 
-Pro všechny verze jádra Linuxu, která není uvedena, najdete v tématu [Opravy pro vytváření Azure-laděné linuxové jádro](https://github.com/microsoft/azure-linux-kernel). Pro více informací můžete [azuredpdk@microsoft.com](mailto:azuredpdk@microsoft.com)také kontaktovat . 
+Informace o všech neuvedených verzích jádra pro Linux najdete v tématu [opravy pro sestavení jádra systému Linux pro Azure](https://github.com/microsoft/azure-linux-kernel). Další informace můžete také kontaktovat [azuredpdk@microsoft.com](mailto:azuredpdk@microsoft.com). 
 
-## <a name="region-support"></a>Podpora regionu
+## <a name="region-support"></a>Podpora oblastí
 
 Všechny oblasti Azure podporují DPDK.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Na virtuálním počítači s Linuxem musí být povolena zrychlená síť. Virtuální počítač by měl mít alespoň dvě síťová rozhraní s jedním rozhraním pro správu. Naučte se, jak [vytvořit virtuální počítač linuxs s povolenou zrychlenou sítí](create-vm-accelerated-networking-cli.md).
+Na virtuálním počítači se systémem Linux musí být povoleny akcelerované síťové služby. Virtuální počítač by měl mít alespoň dvě síťová rozhraní s jedním rozhraním pro správu. Naučte se, jak [vytvořit virtuální počítač se systémem Linux s povolenými akcelerovanými síťovými](create-vm-accelerated-networking-cli.md)službami.
 
-## <a name="install-dpdk-dependencies"></a>Instalace závislostí DPDK
+## <a name="install-dpdk-dependencies"></a>Nainstalovat závislosti DPDK
 
 ### <a name="ubuntu-1604"></a>Ubuntu 16.04
 
@@ -78,7 +78,7 @@ sudo apt-get update
 sudo apt-get install -y librdmacm-dev librdmacm1 build-essential libnuma-dev libmnl-dev
 ```
 
-### <a name="rhel75centos-75"></a>RHEL7.5/CentOS 7.5
+### <a name="rhel75centos-75"></a>RHEL 7.5/CentOS 7,5
 
 ```bash
 yum -y groupinstall "Infiniband Support"
@@ -108,52 +108,52 @@ zypper \
 
 ## <a name="set-up-the-virtual-machine-environment-once"></a>Nastavení prostředí virtuálního počítače (jednou)
 
-1. [Stáhněte si nejnovější DPDK](https://core.dpdk.org/download). Verze 18.11 LTS nebo 19.11 LTS je vyžadována pro Azure.
-2. Vytvořte výchozí konfiguraci s . `make config T=x86_64-native-linuxapp-gcc`
-3. Povolte Mellanox PMDv v generované `sed -ri 's,(MLX._PMD=)n,\1y,' build/.config`konfiguraci s .
-4. Kompilace `make`s .
-5. Instalace `make install DESTDIR=<output folder>`pomocí aplikace .
+1. [Stáhněte si nejnovější verzi DPDK](https://core.dpdk.org/download). Pro Azure se vyžaduje verze 18,11 LTS nebo 19,11 LTS.
+2. Vytvořte výchozí konfiguraci pomocí `make config T=x86_64-native-linuxapp-gcc`.
+3. Povolte Mellanox PMDs ve vygenerované konfiguraci pomocí `sed -ri 's,(MLX._PMD=)n,\1y,' build/.config`.
+4. Zkompilujte s `make`.
+5. Nainstalujte pomocí `make install DESTDIR=<output folder>`.
 
-## <a name="configure-the-runtime-environment"></a>Konfigurace prostředí runtime
+## <a name="configure-the-runtime-environment"></a>Konfigurace běhového prostředí
 
-Po restartování spusťte jednou následující příkazy:
+Po restartování spusťte následující příkazy jednou:
 
-1. Obrovské stránky
+1. Hugepages
 
-   * Nakonfigurujte hugepage spuštěním následujícího příkazu, jednou pro každý uzel numa:
+   * Nakonfigurujte hugepage spuštěním následujícího příkazu, a to jednou pro každý uzel NUMA:
 
      ```bash
      echo 1024 | sudo tee /sys/devices/system/node/node*/hugepages/hugepages-2048kB/nr_hugepages
      ```
 
-   * Vytvořte adresář pro `mkdir /mnt/huge`připojení pomocí aplikace .
-   * Mount hugepages `mount -t hugetlbfs nodev /mnt/huge`s .
-   * Zkontrolujte, zda jsou `grep Huge /proc/meminfo`stránky obrovské stránky rezervovány pomocí .
+   * Vytvořte adresář pro připojení `mkdir /mnt/huge`.
+   * Připojte hugepages pomocí `mount -t hugetlbfs nodev /mnt/huge`.
+   * Ověřte, že je hugepages rezervovaný `grep Huge /proc/meminfo`.
 
-     > [POZNÁMKA] Existuje způsob, jak upravit soubor grub tak, aby hugepages jsou vyhrazeny při startu podle [pokynů](https://dpdk.org/doc/guides/linux_gsg/sys_reqs.html#use-of-hugepages-in-the-linux-environment) pro DPDK. Pokyny jsou v dolní části stránky. Pokud používáte virtuální počítač Azure Linux, upravte soubory pod **/etc/config/grub.d** místo, abyste si vyhradili obrovské stránky napříč restartováními.
+     > ZNAČTE Existuje způsob, jak upravit soubor GRUB tak, aby hugepages byly rezervované při spouštění, a to podle [pokynů](https://dpdk.org/doc/guides/linux_gsg/sys_reqs.html#use-of-hugepages-in-the-linux-environment) pro DPDK. Pokyny najdete v dolní části stránky. Pokud používáte virtuální počítač Azure Linux, upravte místo toho soubory **/etc/config/grub.d** a vyhradte hugepages v rámci restartování.
 
-2. MAC & IP adresy: Slouží `ifconfig –a` k zobrazení MAC a IP adresy síťových rozhraní. Síťové rozhraní *VF* a síťové rozhraní *NETVSC* mají stejnou adresu MAC, ale pouze síťové rozhraní *NETVSC* má adresu IP. *Rozhraní VF* jsou spuštěna jako podřízená rozhraní rozhraní *NETVSC.*
+2. IP adresa MAC &: použijte `ifconfig –a` k zobrazení adresy Mac a IP adresy síťových rozhraní. Síťové rozhraní *VF* a síťové rozhraní *NETVSC* mají stejnou adresu MAC, ale pouze síťové rozhraní *NETVSC* má IP adresu. Rozhraní *VF* jsou spuštěná jako podřízená rozhraní *NETVSC* rozhraní.
 
-3. ADRESY PCI
+3. Adresy PCI
 
-   * Slouží `ethtool -i <vf interface name>` k zjistit, které PCI adresu použít pro *VF*.
-   * Pokud *eth0* má povoleno urychlování sítí, ujistěte se, že testpmd není omylem převzít *VF* pci zařízení pro *eth0*. Pokud aplikace DPDK omylem převezme rozhraní sítě pro správu a způsobí ztrátu připojení SSH, zastavte aplikaci DPDK pomocí sériové konzoly. Pomocí konzoly sériového počítače můžete také zastavit nebo spustit virtuální počítač.
+   * Použijte `ethtool -i <vf interface name>` k zjištění, která adresa PCI se má použít pro *VF*.
+   * Pokud má *eth0* zapnuté akcelerované síťové služby, zajistěte, aby testpmd nechtěně převzala zařízení *VF* PCI pro *eth0*. Pokud aplikace DPDK omylem převezme rozhraní sítě pro správu a způsobí ztrátu připojení SSH, zastavte aplikaci DPDK pomocí konzoly sériového portu. K zastavení nebo spuštění virtuálního počítače můžete použít také konzolu sériového portu.
 
-4. Načíst *ibuverbs* při `modprobe -a ib_uverbs`každém restartu s . Pouze pro SLES 15 *mlx4_ib* také `modprobe -a mlx4_ib`naklápěte mlx4_ib s .
+4. Načíst *ibuverbs* při každém restartování pomocí `modprobe -a ib_uverbs`. Pouze pro SLES 15 načtěte také *mlx4_ib* `modprobe -a mlx4_ib`.
 
 ## <a name="failsafe-pmd"></a>Failsafe PMD
 
-DPDK aplikace musí spustit přes failsafe PMD, který je vystaven v Azure. Pokud aplikace běží přímo přes *VF* PMD, nepřijímá **všechny** pakety, které jsou určeny pro virtuální modul, protože některé pakety se zobrazí přes syntetické rozhraní. 
+DPDK aplikace musí běžet přes Failsafe PMD, která je vystavena v Azure. Pokud se aplikace spustí přímo přes *VF* PMD, neobdrží **všechny** pakety určené pro virtuální počítač, protože se některé pakety zobrazují přes syntetické rozhraní. 
 
-Pokud spustíte aplikaci DPDK přes failsafe PMD, zaručuje, že aplikace obdrží všechny pakety, které jsou určeny k němu. Také zajišťuje, že aplikace udržuje spuštěna v režimu DPDK, i v případě, že VF je odvolán při provozu hostitele. Další informace o selhání PMD naleznete v [tématu Fail-safe poll mode driver library](https://doc.dpdk.org/guides/nics/fail_safe.html).
+Pokud spustíte aplikaci DPDK prostřednictvím Failsafe PMD, zaručuje to, že aplikace obdrží všechny pakety, které jsou určené pro ně. Také se ujistěte, že aplikace funguje v režimu DPDK, a to i v případě, že je VF při obsluhování hostitele odvolán. Další informace o Failsafe PMD najdete v tématu [Knihovna ovladačů režimu cyklického dotazování na selhání](https://doc.dpdk.org/guides/nics/fail_safe.html).
 
 ## <a name="run-testpmd"></a>Spustit testpmd
 
-Chcete-li spustit testpmd `sudo` v kořenovém režimu, použijte před *testpmd* příkaz.
+Chcete-li spustit testpmd v kořenovém `sudo` režimu, použijte před příkazem *testpmd* .
 
-### <a name="basic-sanity-check-failsafe-adapter-initialization"></a>Základní: Kontrola příčetnosti, inicializace adaptéru failsafe
+### <a name="basic-sanity-check-failsafe-adapter-initialization"></a>Základní: správnosti check, inicializace adaptéru Failsafe
 
-1. Spuštěním aplikace single port testpmd spusťte následující příkazy:
+1. Spuštěním následujících příkazů spusťte jednu aplikaci testpmd portů:
 
    ```bash
    testpmd -w <pci address from previous step> \
@@ -162,7 +162,7 @@ Chcete-li spustit testpmd `sudo` v kořenovém režimu, použijte před *testpmd
      --port-topology=chained
     ```
 
-2. Spuštěním aplikace testpmd se dvěma porty spusťte následující příkazy:
+2. Spuštěním následujících příkazů spusťte aplikaci testpmd s duálním portem:
 
    ```bash
    testpmd -w <pci address nic1> \
@@ -172,16 +172,16 @@ Chcete-li spustit testpmd `sudo` v kořenovém režimu, použijte před *testpmd
    -- -i
    ```
 
-   Pokud používáte testpmd s více než dvěma nic, `--vdev` argument `net_vdev_netvsc<id>,iface=<vf’s pairing eth>`následuje tento vzor: .
+   Pokud používáte testpmd s více než dvěma síťovými rozhraními, `--vdev` argument odpovídá tomuto vzoru: `net_vdev_netvsc<id>,iface=<vf’s pairing eth>`.
 
-3.  Po spuštění spusťte `show port info all` a zkontrolujte informace o portu. Měli byste vidět jeden nebo dva porty DPDK, které jsou net_failsafe (nikoli *net_mlx4).*
-4.  Slouží `start <port> /stop <port>` ke spuštění provozu.
+3.  Po spuštění spusťte `show port info all` příkaz a ověřte informace o portu. Měl by se zobrazit jeden nebo dva porty DPDK, které jsou net_failsafe (není *net_mlx4*).
+4.  Použijte `start <port> /stop <port>` ke spuštění provozu.
 
-Předchozí příkazy spustit *testpmd* v interaktivním režimu, který je doporučen pro vyzkoušení testpmd příkazy.
+Předchozí příkazy se spustí *testpmd* v interaktivním režimu, což se doporučuje při vyzkoušení příkazů testpmd.
 
-### <a name="basic-single-sendersingle-receiver"></a>Základní: Jeden odesílatel/jeden přijímač
+### <a name="basic-single-sendersingle-receiver"></a>Základní: jediný odesílatel/jeden přijímač
 
-Následující příkazy pravidelně tisknou pakety za sekundu statistiky:
+Následující příkazy pravidelně tisknou statistiku paketů za sekundu:
 
 1. Na straně TX spusťte následující příkaz:
 
@@ -198,7 +198,7 @@ Následující příkazy pravidelně tisknou pakety za sekundu statistiky:
      --stats-period <display interval in seconds>
    ```
 
-2. Na straně RX spusťte následující příkaz:
+2. Na straně příjmu spusťte následující příkaz:
 
    ```bash
    testpmd \
@@ -213,10 +213,10 @@ Následující příkazy pravidelně tisknou pakety za sekundu statistiky:
      --stats-period <display interval in seconds>
    ```
 
-Když na virtuálním počítači spouštěte předchozí příkazy, `app/test-pmd/txonly.c` změňte *IP_SRC_ADDR* a *IP_DST_ADDR* tak, aby odpovídaly skutečné IP adrese virtuálních počítačů před kompilací. V opačném případě pakety jsou vynechány před dosažením příjemce.
+Pokud spouštíte předchozí příkazy na virtuálním počítači, změňte *IP_SRC_ADDR* a *IP_DST_ADDR* v `app/test-pmd/txonly.c` systému tak, aby odpovídaly skutečné IP adrese virtuálních počítačů před kompilací. V opačném případě jsou pakety před dosažením přijímače vyřazeny.
 
-### <a name="advanced-single-sendersingle-forwarder"></a>Upřesnit: Jeden odesílatel/jeden předávání
-Následující příkazy pravidelně tisknou pakety za sekundu statistiky:
+### <a name="advanced-single-sendersingle-forwarder"></a>Upřesnit: jeden odesílatel/jeden server pro posílání
+Následující příkazy pravidelně tisknou statistiku paketů za sekundu:
 
 1. Na straně TX spusťte následující příkaz:
 
@@ -249,9 +249,9 @@ Následující příkazy pravidelně tisknou pakety za sekundu statistiky:
      --stats-period <display interval in seconds>
     ```
 
-Když na virtuálním počítači spouštěte předchozí příkazy, `app/test-pmd/txonly.c` změňte *IP_SRC_ADDR* a *IP_DST_ADDR* tak, aby odpovídaly skutečné IP adrese virtuálních počítačů před kompilací. V opačném případě pakety jsou vynechány před dosažením předávání. Nebudete moci mít třetí počítač přijímat předávaný provoz, protože *testpmd* předávání nezmění vrstvy 3 adresy, pokud provedete některé změny kódu.
+Pokud spouštíte předchozí příkazy na virtuálním počítači, změňte *IP_SRC_ADDR* a *IP_DST_ADDR* v `app/test-pmd/txonly.c` systému tak, aby odpovídaly skutečné IP adrese virtuálních počítačů před kompilací. V opačném případě jsou pakety vyřazeny před tím, než se dostane do serveru pro předání. Nebudete mít přístup k přesměrovanému provozu z jiného počítače, protože server pro přeposílání *testpmd* nemění adresy vrstvy 3, Pokud neprovedete nějaké změny kódu.
 
 ## <a name="references"></a>Odkazy
 
-* [Možnosti EAL](https://dpdk.org/doc/guides/testpmd_app_ug/run_app.html#eal-command-line-options)
+* [EAL možnosti](https://dpdk.org/doc/guides/testpmd_app_ug/run_app.html#eal-command-line-options)
 * [Příkazy Testpmd](https://dpdk.org/doc/guides/testpmd_app_ug/run_app.html#testpmd-command-line-options)

@@ -1,6 +1,6 @@
 ---
-title: Nejčastější dotazy centra zabezpečení Azure – dotazy týkající se stávajících agentů analýzy protokolů
-description: Tyto nejčastější dotazy odpovídají na otázky pro zákazníky, kteří už používají agenta Log Analytics a vzhledem k Azure Security Center, produktu, který vám pomůže předcházet hrozbám, zjišťovat je a reagovat na ně.
+title: Nejčastější dotazy k Azure Security Center – otázky týkající se existujících agentů Log Analytics
+description: Tato Nejčastější dotazy vám odpoví na otázky pro zákazníky, kteří už používají agenta Log Analytics a zvažuje Azure Security Center, produkt, který pomáhá předcházet hrozbám, zjišťovat je a reagovat na ně.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,35 +14,35 @@ ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
 ms.openlocfilehash: f6384c1e9e14e38b4c44c5ac79a674839b43b4ca
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80436154"
 ---
-# <a name="faq-for-customers-already-using-azure-monitor-logs"></a>Nejčastější dotazy pro zákazníky, kteří už používají protokoly Azure Monitoru<a name="existingloganalyticscust"></a>
+# <a name="faq-for-customers-already-using-azure-monitor-logs"></a>Nejčastější dotazy pro zákazníky, kteří už používají protokoly Azure Monitor<a name="existingloganalyticscust"></a>
 
-## <a name="does-security-center-override-any-existing-connections-between-vms-and-workspaces"></a>Přepíše Centrum zabezpečení všechna existující připojení mezi virtuálními aplikacemi a pracovními prostory?
+## <a name="does-security-center-override-any-existing-connections-between-vms-and-workspaces"></a>Přepíší Security Center všechna existující připojení mezi virtuálními počítači a pracovními prostory?
 
-Pokud virtuální počítač už má agenta Analýzy protokolů nainstalovaný jako rozšíření Azure, Security Center nepřepíše existující připojení pracovního prostoru. Místo toho Security Center používá existující pracovní prostor. Virtuální počítač bude chráněn za předpokladu, že "Zabezpečení" nebo "SecurityCenterFree" řešení byla nainstalována v pracovním prostoru, do kterého je vykazování. 
+Pokud už má virtuální počítač Log Analytics agenta nainstalovaného jako rozšíření Azure, Security Center existující připojení k pracovnímu prostoru nepřepisuje. Místo toho Security Center používá existující pracovní prostor. Virtuální počítač bude chráněn za předpokladu, že řešení "Security" nebo "SecurityCenterFree" bylo nainstalováno do pracovního prostoru, do kterého se hlásí. 
 
-Řešení Security Center je nainstalováno v pracovním prostoru vybraném na obrazovce Shromažďování dat, pokud již není k dispozici, a řešení se použije pouze na příslušné virtuální počítačky. Když přidáte řešení, ve výchozím nastavení se automaticky nasadí na všechny agenty Windows a Linux připojených k pracovnímu prostoru Log Analytics. [Cílení na řešení](../operations-management-suite/operations-management-suite-solution-targeting.md) umožňuje použít obor pro vaše řešení.
+Řešení Security Center je nainstalováno v pracovním prostoru vybraném na obrazovce shromažďování dat, pokud již není přítomno, a toto řešení je použito pouze pro příslušné virtuální počítače. Když přidáte řešení, automaticky se nasadí ve výchozím nastavení na všechny agenty systému Windows a Linux připojené k vašemu pracovnímu prostoru Log Analytics. [Cílení na řešení](../operations-management-suite/operations-management-suite-solution-targeting.md) umožňuje použít obor pro vaše řešení.
 
 > [!TIP]
-> Pokud se agent Log Analytics nainstaluje přímo na virtuální počítač (ne jako rozšíření Azure), Security Center nenainstaluje agenta Log Analytics a monitorování zabezpečení je omezené.
+> Pokud je agent Log Analytics nainstalovaný přímo na virtuálním počítači (ne jako rozšíření Azure), Security Center agenta Log Analytics nenainstaluje a monitorování zabezpečení je omezené.
 
-## <a name="does-security-center-install-solutions-on-my-existing-log-analytics-workspaces-what-are-the-billing-implications"></a>Instaluje Centrum zabezpečení řešení do stávajících pracovních prostorů Služby Log Analytics? Jaké jsou důsledky fakturace?
-Když Security Center zjistí, že virtuální počítač je už připojený k pracovnímu prostoru, který jste vytvořili, Security Center povolí řešení v tomto pracovním prostoru podle vaší cenové úrovně. Řešení se použijí jenom na příslušné virtuální počítače Azure prostřednictvím [cílení řešení](../operations-management-suite/operations-management-suite-solution-targeting.md), takže fakturace zůstane stejná.
+## <a name="does-security-center-install-solutions-on-my-existing-log-analytics-workspaces-what-are-the-billing-implications"></a>Je Security Center instalovat řešení do stávajících pracovních prostorů Log Analytics? Jaké jsou důsledky fakturace?
+Když Security Center identifikuje, že je virtuální počítač už připojený k pracovnímu prostoru, který jste vytvořili, Security Center umožňuje řešení v tomto pracovním prostoru podle vaší cenové úrovně. Řešení se aplikují jenom na relevantní virtuální počítače Azure, a to prostřednictvím [cílení na řešení](../operations-management-suite/operations-management-suite-solution-targeting.md), takže účtování zůstane stejné.
 
-- **Bezplatná úroveň** – Security Center nainstaluje řešení SecurityCenterFree do pracovního prostoru. Úroveň Free se vám nebude účtovat.
-- **Standardní úroveň** – Security Center nainstaluje řešení zabezpečení do pracovního prostoru.
+- **Úroveň Free** – Security Center do pracovního prostoru nainstaluje řešení ' SecurityCenterFree '. Za bezplatnou úroveň se vám nebude účtovat.
+- **Úroveň Standard** – Security Center do pracovního prostoru nainstaluje řešení zabezpečení.
 
-   ![Řešení výchozího pracovního prostoru](./media/security-center-platform-migration-faq/solutions.png)
+   ![Řešení ve výchozím pracovním prostoru](./media/security-center-platform-migration-faq/solutions.png)
 
-## <a name="i-already-have-workspaces-in-my-environment-can-i-use-them-to-collect-security-data"></a>Pracovní prostory již mám ve svém prostředí, mohu je použít ke shromažďování bezpečnostních dat?
-Pokud virtuální počítač už má agenta Log Analytics nainstalovaného jako rozšíření Azure, Security Center používá existující připojený pracovní prostor. Řešení Security Center je nainstalováno v pracovním prostoru, pokud již není k dispozici, a řešení se použije pouze na příslušné virtuální počítače prostřednictvím [cílení řešení](../operations-management-suite/operations-management-suite-solution-targeting.md).
+## <a name="i-already-have-workspaces-in-my-environment-can-i-use-them-to-collect-security-data"></a>Již mám v prostředí pracovní prostory, můžu je použít ke shromažďování dat zabezpečení?
+Pokud už má virtuální počítač Log Analytics agenta nainstalovaného jako rozšíření Azure, Security Center používá existující připojený pracovní prostor. V pracovním prostoru je nainstalováno Security Center řešení, pokud již není přítomno a řešení se používá pouze pro příslušné virtuální počítače prostřednictvím [cílení na řešení](../operations-management-suite/operations-management-suite-solution-targeting.md).
 
-Když Security Center nainstaluje agenta Analýzy protokolů na virtuální počítač, použije výchozí pracovní prostor (y) vytvořený Security Center.
+Když Security Center nainstaluje agenta Log Analytics na virtuální počítače, použije výchozí pracovní prostory, které vytvořila Security Center.
 
-## <a name="i-already-have-security-solution-on-my-workspaces-what-are-the-billing-implications"></a>Již mám řešení zabezpečení na svých pracovních prostorech. Jaké jsou důsledky fakturace?
-Řešení zabezpečení & auditu se používá k povolení funkcí standardní úrovně Security Center pro virtuální počítače Azure. Pokud je řešení & audit zabezpečení již nainstalováno v pracovním prostoru, centrum zabezpečení používá existující řešení. Fakturace se nemění.
+## <a name="i-already-have-security-solution-on-my-workspaces-what-are-the-billing-implications"></a>Již mám řešení zabezpečení v pracovních prostorech. Jaké jsou důsledky fakturace?
+Řešení auditu & zabezpečení se používá k povolení funkcí služby Security Center úrovně Standard pro virtuální počítače Azure. Pokud je v pracovním prostoru již nainstalováno řešení auditu zabezpečení &, Security Center používá existující řešení. Fakturace se nemění.

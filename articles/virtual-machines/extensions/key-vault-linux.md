@@ -1,6 +1,6 @@
 ---
-title: Rozšíření virtuálního počítače Azure Key Vault pro Linux
-description: Nasazení agenta provádějícího automatickou aktualizaci certifikátů trezoru klíčů na virtuálních počítačích pomocí rozšíření virtuálního počítače.
+title: Rozšíření virtuálního počítače s Azure Key Vault pro Linux
+description: Nasaďte agenta, který provádí automatickou aktualizaci Key Vault certifikátů na virtuálních počítačích pomocí rozšíření virtuálního počítače.
 services: virtual-machines-linux
 author: msmbaldwin
 tags: keyvault
@@ -9,33 +9,33 @@ ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
 ms.openlocfilehash: add2d515e4f8e8c56a98a7292e137e601332d10c
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80410865"
 ---
-# <a name="key-vault-virtual-machine-extension-for-linux"></a>Rozšíření virtuálního počítače Key Vault pro Linux
+# <a name="key-vault-virtual-machine-extension-for-linux"></a>Key Vault rozšíření virtuálního počítače pro Linux
 
-Rozšíření virtuálního počítače trezoru klíčů poskytuje automatickou aktualizaci certifikátů uložených v trezoru klíčů Azure. Rozšíření konkrétně monitoruje seznam pozorovaných certifikátů uložených v trezorech klíčů.  Po zjištění změny rozšíření načte a nainstaluje odpovídající certifikáty. Rozšíření virtuálního počítače trezoru klíčů je publikováno a podporováno společností Microsoft, která je aktuálně na virtuálních počítačích s Linuxem. Tento dokument podrobně popisuje podporované platformy, konfigurace a možnosti nasazení pro rozšíření virtuálního počítače trezoru klíčů pro Linux. 
+Rozšíření virtuálního počítače Key Vault poskytuje automatickou aktualizaci certifikátů uložených v trezoru klíčů Azure. Konkrétně rozšíření monitoruje seznam pozorovaných certifikátů uložených v trezorech klíčů.  Při zjištění změny rozšíření načte a nainstaluje odpovídající certifikáty. Rozšíření virtuálního počítače Key Vault zveřejňuje a podporuje společnost Microsoft, aktuálně na virtuálních počítačích se systémem Linux. Tento dokument podrobně popisuje podporované platformy, konfigurace a možnosti nasazení pro rozšíření Key Vault virtuálního počítače pro Linux. 
 
 ### <a name="operating-system"></a>Operační systém
 
-Rozšíření virtuálního počítače Trezoru klíčů podporuje tyto distribuce Linuxu:
+Rozšíření virtuálních počítačů Key Vault podporuje tyto distribuce systému Linux:
 
 - Ubuntu-1604
 - Ubuntu-1804
-- Debian-9
-- Suse-15 
+- Debian – 9
+- SUSE-15 
 
-### <a name="supported-certificate-content-types"></a>Podporované typy obsahu certifikátů
+### <a name="supported-certificate-content-types"></a>Podporované typy obsahu certifikátu
 
 - #12 PKCS
-- Pem
+- PEM
 
 ## <a name="extension-schema"></a>Schéma rozšíření
 
-Následující JSON ukazuje schéma rozšíření virtuálního počítače trezoru klíčů. Rozšíření nevyžaduje chráněné nastavení - všechna jeho nastavení jsou považována za informace bez dopadu na zabezpečení. Rozšíření vyžaduje seznam sledovaných tajných kódů, frekvence dotazování a cílovéúložiště certifikátů. Konkrétně:  
+Následující JSON zobrazuje schéma pro rozšíření Key Vault virtuálního počítače. Rozšíření nevyžaduje chráněná nastavení – veškerá jeho nastavení jsou považována za informace bez dopadu na zabezpečení. Přípona vyžaduje seznam monitorovaných tajných kódů, četnost dotazování a cílové úložiště certifikátů. Konkrétně:  
 ```json
     {
       "type": "Microsoft.Compute/virtualMachines/extensions",
@@ -65,32 +65,32 @@ Následující JSON ukazuje schéma rozšíření virtuálního počítače trez
 ```
 
 > [!NOTE]
-> Adresy URL s pozorovanými certifikáty `https://myVaultName.vault.azure.net/secrets/myCertName`by měly být ve formuláři .
+> Vaše sledované adresy URL certifikátů by měly být ve `https://myVaultName.vault.azure.net/secrets/myCertName`formátu.
 > 
-> Důvodem je, že `/secrets` cesta vrátí úplný certifikát, `/certificates` včetně soukromého klíče, zatímco cesta není. Více informací o certifikátech naleznete zde: [Certifikáty trezoru klíčů](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-certificates)
+> Důvodem je to, `/secrets` že cesta vrátí úplný certifikát, včetně privátního klíče, ale `/certificates` cesta ne. Další informace o certifikátech najdete tady: [Key Vault certifikátů](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-certificates) .
 
 
 ### <a name="property-values"></a>Hodnoty vlastností
 
-| Name (Název) | Hodnota / Příklad | Typ dat |
+| Název | Hodnota/příklad | Typ dat |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
 | vydavatel | Microsoft.Azure.KeyVault | řetězec |
-| type | KeyVaultForlinux | řetězec |
+| type | KeyVaultForLinux | řetězec |
 | typeHandlerVersion | 1.0 | int |
 | pollingIntervalInS | 3600 | řetězec |
 | certificateStoreName | MY | řetězec |
 | linkOnRenewal | false (nepravda) | Boolean |
-| certificateStoreLocation  | Místní stroj | řetězec |
+| certificateStoreLocation  | LocalMachine | řetězec |
 | requiredInitialSync | true | Boolean |
 | observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | pole řetězců
 
 
 ## <a name="template-deployment"></a>Nasazení šablon
 
-Rozšíření virtuálních počítačů Azure se můžou nasadit pomocí šablon Azure Resource Manageru. Šablony jsou ideální při nasazování jednoho nebo více virtuálních počítačů, které vyžadují aktualizaci certifikátů po nasazení. Rozšíření lze nasadit na jednotlivé virtuální počítače nebo škálovací sady virtuálních strojů. Schéma a konfigurace jsou společné pro oba typy šablon. 
+Rozšíření virtuálních počítačů Azure je možné nasadit pomocí šablon Azure Resource Manager. Šablony jsou ideální při nasazení jednoho nebo více virtuálních počítačů, které vyžadují aktualizaci po nasazení certifikátů. Toto rozšíření se dá nasadit na jednotlivé virtuální počítače nebo sady škálování virtuálních počítačů. Schéma a konfigurace jsou společné pro oba typy šablon. 
 
-Konfigurace JSON pro rozšíření virtuálního počítače musí být vnořená uvnitř `"resources": []` fragmentu prostředku virtuálního počítače šablony, konkrétně `"virtualMachineProfile":"extensionProfile":{"extensions" :[]` objektu pro šablonu virtuálního počítače a v případě škálovací sady virtuálních počítačů pod objektem.
+Konfigurace JSON pro rozšíření virtuálního počítače musí být vnořená v rámci fragmentu prostředků virtuálního počítače v šabloně, konkrétně `"resources": []` objekt pro šablonu virtuálního počítače a v případě sady škálování virtuálního počítače v `"virtualMachineProfile":"extensionProfile":{"extensions" :[]` objektu Object.
 
 ```json
     {
@@ -119,11 +119,11 @@ Konfigurace JSON pro rozšíření virtuálního počítače musí být vnořen�
 ```
 
 
-## <a name="azure-powershell-deployment"></a>Nasazení Azure PowerShellu
+## <a name="azure-powershell-deployment"></a>Nasazení Azure PowerShell
 
-Azure PowerShell se dá použít k nasazení rozšíření virtuálního počítače trezoru klíčů do existujícího virtuálního počítače nebo škálovací sady virtuálních strojů. 
+Azure PowerShell lze použít k nasazení Key Vault rozšíření virtuálního počítače do existujícího virtuálního počítače nebo sady škálování virtuálních počítačů. 
 
-* Nasazení rozšíření na virtuální ms:
+* Nasazení rozšíření na virtuální počítač:
     
     ```powershell
         # Build settings
@@ -142,7 +142,7 @@ Azure PowerShell se dá použít k nasazení rozšíření virtuálního počít
     
     ```
 
-* Nasazení rozšíření na škálovací sadu virtuálních strojů :
+* Nasazení rozšíření do sady škálování virtuálních počítačů:
 
     ```powershell
     
@@ -165,11 +165,11 @@ Azure PowerShell se dá použít k nasazení rozšíření virtuálního počít
     
     ```
 
-## <a name="azure-cli-deployment"></a>Nasazení azure cli
+## <a name="azure-cli-deployment"></a>Nasazení Azure CLI
 
-Azure CLI lze použít k nasazení rozšíření virtuálního počítače trezoru klíčů na existující virtuální počítač nebo škálovací sadu virtuálních strojů. 
+Pomocí rozhraní příkazového řádku Azure můžete nasadit rozšíření Key Vault virtuálního počítače do existujícího virtuálního počítače nebo sady škálování virtuálních počítačů. 
  
-* Nasazení rozšíření na virtuální ms:
+* Nasazení rozšíření na virtuální počítač:
     
     ```azurecli
        # Start the deployment
@@ -180,7 +180,7 @@ Azure CLI lze použít k nasazení rozšíření virtuálního počítače trezo
          --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\ <observedCerts>\"] }}'
     ```
 
-* Nasazení rozšíření na škálovací sadu virtuálních strojů :
+* Nasazení rozšíření do sady škálování virtuálních počítačů:
 
    ```azurecli
         # Start the deployment
@@ -191,17 +191,17 @@ Azure CLI lze použít k nasazení rozšíření virtuálního počítače trezo
         --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\ <observedCerts>\"] }}'
     ```
 
-Mějte prosím na paměti následující omezení/požadavky:
-- Omezení trezoru klíčů:
-  - Musí existovat v době nasazení 
-  - Zásady přístupu trezoru klíčů jsou nastavené pro identitu VM/VMSS pomocí MSI
+Mějte na paměti následující omezení/požadavky:
+- Omezení Key Vault:
+  - Musí existovat v době nasazení. 
+  - Zásada přístupu Key Vault je nastavená pro identitu VM/VMSS pomocí MSI.
 
 
-## <a name="troubleshoot-and-support"></a>Poradce při potížích a podpora
+## <a name="troubleshoot-and-support"></a>Řešení potíží a podpora
 
 ### <a name="troubleshoot"></a>Řešení potíží
 
-Data o stavu nasazení rozšíření lze načíst z webu Azure Portal a pomocí Azure PowerShellu. Chcete-li zobrazit stav nasazení rozšíření pro daný virtuální počítač, spusťte následující příkaz pomocí Azure PowerShellu.
+Data o stavu nasazení rozšíření lze načíst z Azure Portal a pomocí Azure PowerShell. Pokud chcete zobrazit stav nasazení rozšíření pro daný virtuální počítač, spusťte následující příkaz pomocí Azure PowerShell.
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 ```powershell
@@ -215,4 +215,4 @@ Get-AzVMExtension -VMName <vmName> -ResourceGroupname <resource group name>
 
 ### <a name="support"></a>Podpora
 
-Pokud potřebujete další pomoc v libovolném bodě v tomto článku, můžete kontaktovat odborníky Azure na [Fóra MSDN Azure a přetečení zásobníku](https://azure.microsoft.com/support/forums/). Případně můžete soubor incidentu podpory Azure. Přejděte na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte Získat podporu. Informace o používání podpory Azure načtete v [nejčastějších dotazech k podpoře Microsoft Azure](https://azure.microsoft.com/support/faq/).
+Pokud potřebujete další podrobnější informace v jakémkoli bodě tohoto článku, můžete kontaktovat odborníky na Azure na [webu MSDN Azure a Stack Overflow fóra](https://azure.microsoft.com/support/forums/). Případně můžete zasouborovat incident podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte získat podporu. Informace o použití podpory Azure najdete v tématu [Nejčastější dotazy k podpoře pro Microsoft Azure](https://azure.microsoft.com/support/faq/).

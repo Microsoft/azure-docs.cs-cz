@@ -1,7 +1,7 @@
 ---
-title: Upgrade aplikace IPv4 na IPv6 ve virtuální síti Azure – PowerShell
+title: Upgrade aplikace IPv4 na IPv6 ve službě Azure Virtual Network-PowerShell
 titlesuffix: Azure Virtual Network
-description: Tento článek ukazuje, jak nasadit adresy IPv6 do existující aplikace ve virtuální síti Azure pomocí Azure Powershellu.
+description: Tento článek ukazuje, jak nasadit adresy IPv6 do existující aplikace ve službě Azure Virtual Network pomocí Azure PowerShellu.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -14,33 +14,33 @@ ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
 ms.openlocfilehash: c733538a4e730a95008a8ec1e4d50c20d6ce24ec
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80420767"
 ---
-# <a name="upgrade-an-ipv4-application-to-ipv6-in-azure-virtual-network---powershell"></a>Upgrade aplikace IPv4 na IPv6 ve virtuální síti Azure – PowerShell
+# <a name="upgrade-an-ipv4-application-to-ipv6-in-azure-virtual-network---powershell"></a>Upgrade aplikace IPv4 na IPv6 ve službě Azure Virtual Network – PowerShell
 
-Tento článek ukazuje, jak přidat připojení IPv6 k existující aplikaci IPv4 ve virtuální síti Azure se standardním nástrojem pro vyrovnávání zatížení a veřejnou IP adresou. Upgrade na místě zahrnuje:
+V tomto článku se dozvíte, jak přidat připojení IPv6 do existující aplikace IPv4 ve virtuální síti Azure pomocí Standard Load Balancer a veřejné IP adresy. Místní upgrade zahrnuje:
 - Adresní prostor IPv6 pro virtuální síť a podsíť
-- standardní nástroj pro vyrovnávání zatížení s front-endovými konfiguracemi IPv4 i IPV6
-- Virtuální počítače s kanaty, které mají konfiguraci IPv4 + IPv6
-- Veřejná IP adresa IPv6, takže systém vyrovnávání zatížení má připojení IPv6 směřující k Internetu
+- Standard Load Balancer s konfiguracemi front-endu IPv4 i IPV6
+- Virtuální počítače se síťovými kartami, které mají konfiguraci IPv4 i IPv6
+- Veřejná IP adresa IPv6, aby nástroj pro vyrovnávání zatížení měl připojení IPv6 k Internetu
 
 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat PowerShell místně, tento článek vyžaduje modul Azure PowerShell verze 6.9.0 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
+Pokud se rozhodnete nainstalovat a používat PowerShell místně, vyžaduje tento článek verzi modulu Azure PowerShell 6.9.0 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Tento článek předpokládá, že jste nasadili standardní vyrovnávání zatížení, jak je popsáno v [úvodním panelu: Vytvoření standardního vyrovnávání zatížení – Azure PowerShell](../load-balancer/quickstart-create-standard-load-balancer-powershell.md).
+V tomto článku se předpokládá, že jste nasadili Standard Load Balancer, jak je popsáno v tématu [rychlý Start: vytvoření Standard Load Balancer-Azure PowerShell](../load-balancer/quickstart-create-standard-load-balancer-powershell.md).
 
 ## <a name="retrieve-the-resource-group"></a>Načtení skupiny prostředků
 
-Před vytvořením virtuální sítě se dvěma zásobníky je nutné načíst skupinu prostředků pomocí [skupiny Get-AzResourceGroup](/powershell/module/az.resources/get-azresourcegroup).
+Než budete moct vytvořit virtuální síť se dvěma zásobníky, musíte načíst skupinu prostředků pomocí [Get-AzResourceGroup](/powershell/module/az.resources/get-azresourcegroup).
 
 ```azurepowershell
  $rg = Get-AzResourceGroup  -ResourceGroupName "myResourceGroupSLB"
@@ -48,7 +48,7 @@ Před vytvořením virtuální sítě se dvěma zásobníky je nutné načíst s
 
 ## <a name="create-an-ipv6-ip-addresses"></a>Vytvoření IP adres IPv6
 
-Vytvořte veřejnou adresu IPv6 s [novou azpublicipaddress](/powershell/module/az.network/new-azpublicipaddress) pro standardní vyrovnávání zatížení. Následující příklad vytvoří veřejnou IP adresu IPv6 s názvem *PublicIP_v6* ve skupině prostředků *myResourceGroupSLB:*
+Vytvořte veřejnou IPv6 adresu pomocí [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) pro vaši Standard Load Balancer. Následující příklad vytvoří veřejnou IP adresu IPv6 s názvem *PublicIP_v6* ve skupině prostředků *myResourceGroupSLB* :
 
 ```azurepowershell
   
@@ -61,9 +61,9 @@ Vytvořte veřejnou adresu IPv6 s [novou azpublicipaddress](/powershell/module/a
   -IpAddressVersion IPv6
 ```
 
-## <a name="configure-load-balancer-frontend"></a>Konfigurace front-endu pro vyrovnávání zatížení
+## <a name="configure-load-balancer-frontend"></a>Konfigurace front-endu nástroje pro vyrovnávání zatížení
 
-Načtěte existující konfiguraci nástroje pro vyrovnávání zatížení a přidejte novou adresu IP Protokolu IPv6 pomocí [funkce Add-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/Add-AzLoadBalancerFrontendIpConfig) následujícím způsobem:
+Načtěte existující konfiguraci služby Vyrovnávání zatížení a přidejte novou IP adresu IPv6 pomocí příkazu [Add-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/Add-AzLoadBalancerFrontendIpConfig) následujícím způsobem:
 
 ```azurepowershell
 # Retrieve the load balancer configuration
@@ -76,9 +76,9 @@ $lb | Add-AzLoadBalancerFrontendIpConfig `
 $lb | Set-AzLoadBalancer
 ```
 
-## <a name="configure-load-balancer-backend-pool"></a>Konfigurace back-endového fondu vyrovnávání zatížení
+## <a name="configure-load-balancer-backend-pool"></a>Konfigurovat back-end fond nástroje pro vyrovnávání zatížení
 
-Vytvořte back-endový fond v místní kopii konfigurace nástroje pro vyrovnávání zatížení a aktualizujte běžící nástroj pro vyrovnávání zatížení s novou konfigurací back-endového fondu následujícím způsobem:
+Vytvořte back-end fond na místní kopii konfigurace nástroje pro vyrovnávání zatížení a aktualizujte běžící Nástroj pro vyrovnávání zatížení s novou konfigurací back-endu, který je následující:
 
 ```azurepowershell
 $lb | Add-AzLoadBalancerBackendAddressPoolConfig -Name "LbBackEndPool_v6"
@@ -87,7 +87,7 @@ $lb | Set-AzLoadBalancer
 ```
 
 ## <a name="configure-load-balancer-rules"></a>Nakonfigurovat pravidla nástroje pro vyrovnávání zatížení
-Načtěte existující konfiguraci front-endového a back-endového fondu nástroje Pro vyrovnávání zatížení a pak přidejte nová pravidla vyrovnávání zatížení pomocí [funkce Add-AzLoadBalancerRuleConfig](/powershell/module/az.network/Add-AzLoadBalancerRuleConfig).
+Načtěte existující konfiguraci front-endu a back-endu pro vyrovnávání zatížení a pak přidejte nová pravidla vyrovnávání zatížení pomocí [Add-AzLoadBalancerRuleConfig](/powershell/module/az.network/Add-AzLoadBalancerRuleConfig).
 
 ```azurepowershell
 # Retrieve the updated (live) versions of the frontend and backend pool
@@ -104,9 +104,9 @@ $lb | Add-AzLoadBalancerRuleConfig `
 #Finalize all the load balancer updates on the running load balancer
 $lb | Set-AzLoadBalancer
 ```
-## <a name="add-ipv6-address-ranges"></a>Přidání rozsahů adres IPv6
+## <a name="add-ipv6-address-ranges"></a>Přidat rozsahy IPv6 adres
 
-Přidejte rozsahy adres IPv6 do virtuální sítě a podsítě hostující virtuální počítače následujícím způsobem:
+Přidejte rozsahy IPv6 adres do virtuální sítě a podsítě hostující virtuální počítače následujícím způsobem:
 
 ```azurepowershell
 #Add IPv6 ranges to the VNET and subnet
@@ -125,9 +125,9 @@ $subnet.addressprefix.add("ace:cab:deca::/64")
 $vnet |  Set-AzVirtualNetwork
 
 ```
-## <a name="add-ipv6-configuration-to-nic"></a>Přidání konfigurace Protokolu IPv6 na nic
+## <a name="add-ipv6-configuration-to-nic"></a>Přidat konfiguraci IPv6 do síťové karty
 
-Nakonfigurujte všechny síťové karty virtuálních počítačů s adresou IPv6 pomocí [funkce Add-AzNetworkInterfaceIpConfig](/powershell/module/az.network/Add-AzNetworkInterfaceIpConfig) následujícím způsobem:
+Nakonfigurujte všechny síťové karty virtuálních počítačů s adresou IPv6 pomocí příkazu [Add-AzNetworkInterfaceIpConfig](/powershell/module/az.network/Add-AzNetworkInterfaceIpConfig) následujícím způsobem:
 
 ```azurepowershell
 
@@ -147,10 +147,10 @@ $NIC_3 | Set-AzNetworkInterface
 
 ```
 
-## <a name="view-ipv6-dual-stack-virtual-network-in-azure-portal"></a>Zobrazení virtuální sítě iPv6 dual stack na webu Azure Portal
-Virtuální síť IPv6 dual stack můžete zobrazit na webu Azure Portal následujícím způsobem:
-1. Na vyhledávacím panelu portálu zadejte *myVnet*.
-2. Když se ve výsledcích hledání zobrazí **myVnet,** vyberte ji. Tím se spustí stránka **Přehled** virtuální sítě s názvem myVNet s názvem *myVNet*. Virtuální síť se dvěma zásobníky zobrazuje tři síťové karty s konfiguracemi IPv4 i IPv6 umístěnými v podsíti s duálním zásobníkem s názvem *mySubnet*.
+## <a name="view-ipv6-dual-stack-virtual-network-in-azure-portal"></a>Zobrazení virtuální sítě s duálním zásobníkem IPv6 v Azure Portal
+Virtuální síť s duálním zásobníkem IPv6 se dá zobrazit v Azure Portal následujícím způsobem:
+1. Na panelu hledání na portálu zadejte *myVnet*.
+2. Pokud se ve výsledcích hledání zobrazí **myVnet** , vyberte ji. Tím se spustí Stránka s **přehledem** pro virtuální síť Dual stack s názvem *myVNet*. Virtuální síť Dual Stack zobrazuje tři síťové karty s konfiguracemi protokolů IPv4 i IPv6 umístěných v podsíti duálního zásobníku s názvem *mySubnet*.
 
   ![Virtuální síť s duálním zásobníkem IPv6 v Azure](./media/ipv6-add-to-existing-vnet-powershell/ipv6-dual-stack-vnet.png)
 
@@ -158,7 +158,7 @@ Virtuální síť IPv6 dual stack můžete zobrazit na webu Azure Portal násled
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Když už nepotřebujete, můžete použít příkaz [Odebrat AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) k odebrání skupiny prostředků, virtuálního virtuálního času a všech souvisejících prostředků.
+Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků, virtuálního počítače a všech souvisejících prostředků použít příkaz [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) .
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name MyAzureResourceGroupSLB
@@ -166,4 +166,4 @@ Remove-AzResourceGroup -Name MyAzureResourceGroupSLB
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste aktualizovali existující standardní nástroj pro vyrovnávání zatížení pomocí konfigurace ip protokolu ipv4 frontendna konfiguraci duálního zásobníku (IPv4 a IPv6). Také jste přidali konfigurace IPv6 do síťových připojení virtuálních počítačů v back-endovém fondu a do virtuální sítě, která je hostuje. Další informace o podpoře IPv6 ve virtuálních sítích Azure najdete v tématu [Co je IPv6 pro virtuální síť Azure?](ipv6-overview.md)
+V tomto článku jste aktualizovali existující Standard Load Balancer s konfigurací protokolu IP front-endu IPv4 na konfiguraci duálního zásobníku (IPv4 a IPv6). Do síťových karet virtuálních počítačů ve fondu back-endu a do Virtual Network, která je hostuje, jste přidali taky konfigurace IPv6. Další informace o podpoře IPv6 ve virtuálních sítích Azure najdete v tématu [co je IPv6 pro Azure Virtual Network?](ipv6-overview.md)

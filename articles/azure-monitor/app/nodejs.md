@@ -4,19 +4,19 @@ description: Monitorujte výkon a diagnostikujte problémy ve službách Node.js
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.openlocfilehash: 38336e3faf3764233dd94bffbfb24421e054496a
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80411582"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>Monitorování služeb a aplikací Node.js pomocí Application Insights
 
-[Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) monitoruje vaše back-endové služby a komponenty po nasazení, které vám pomohou zjistit a rychle diagnostikovat výkon a další problémy. Application Insights můžete použít pro služby Node.js hostované ve vašem datovém centru, na virtuálních počítačích a ve webových aplikacích Azure a dokonce i v jiných veřejných cloudech.
+[Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) po nasazení monitorovat vaše back-end služby a komponenty, které vám pomůžou zjistit a rychle diagnostikovat výkon a další problémy. Application Insights můžete použít pro služby Node.js hostované ve vašem datovém centru, na virtuálních počítačích a ve webových aplikacích Azure a dokonce i v jiných veřejných cloudech.
 
 Pokud chcete přijímat, ukládat a prozkoumávat data monitorování, vložte do svého kódu sadu SDK a pak v Azure nastavte odpovídající prostředek Application Insights. Sada SDK do tohoto prostředku odesílá data pro další analýzy a prozkoumávání.
 
-Sada Node.js SDK dokáže automaticky monitorovat příchozí a odchozí požadavky HTTP, výjimky a některé systémové metriky. Počínaje verzí 0.20 může sada SDK také sledovat některé běžné [balíčky třetích stran](https://github.com/microsoft/node-diagnostic-channel/tree/master/src/diagnostic-channel-publishers#currently-supported-modules), jako jsou MongoDB, MySQL a Redis. Všechny události související s příchozím požadavkem HTTP se korelují za účelem rychlejšího řešení potíží.
+Sada Node.js SDK dokáže automaticky monitorovat příchozí a odchozí požadavky HTTP, výjimky a některé systémové metriky. Počínaje verzí 0,20 může sada SDK také monitorovat některé běžné [balíčky třetích stran](https://github.com/microsoft/node-diagnostic-channel/tree/master/src/diagnostic-channel-publishers#currently-supported-modules), jako jsou MongoDB, MySQL a Redis. Všechny události související s příchozím požadavkem HTTP se korelují za účelem rychlejšího řešení potíží.
 
 Pomocí rozhraní TelemetryClient API můžete ručně instrumentovat a monitorovat další aspekty aplikace a systému. Rozhraní TelemetryClient API popisujeme podrobněji dále v tomto článku.
 
@@ -35,8 +35,8 @@ Než začnete, ujistěte se, že máte předplatné Azure nebo [zdarma získejte
 ### <a name="set-up-an-application-insights-resource"></a><a name="resource"></a>Nastavení prostředku Application Insights
 
 
-1. Přihlaste se k [portálu Azure][portal].
-2. Vyberte **Vytvořit nástroje** > **Developer tools** > pro vývojáře prostředků Application**Insights**. Prostředek zahrnuje koncový bod pro příjem telemetrických dat, úložiště pro tato data, uložené sestavy a řídicí panely, konfigurace pravidel a upozornění a ještě více.
+1. Přihlaste se k webu [Azure Portal][portal].
+2. Vyberte **vytvořit prostředek** > **pro vývojáře** > **Application Insights**. Prostředek zahrnuje koncový bod pro příjem telemetrických dat, úložiště pro tato data, uložené sestavy a řídicí panely, konfigurace pravidel a upozornění a ještě více.
 
 3. Na stránce vytváření prostředku v poli **Typ aplikace** vyberte **Aplikace Node.js**. Typ aplikace určuje výchozí řídicí panely a sestavy, které se vytvoří. (Každý prostředek Application Insights může shromažďovat data z jakéhokoli jazyka a libovolné platformy.)
 
@@ -70,7 +70,7 @@ Vložte do své aplikace sadu SDK, aby mohla shromažďovat data.
 
    Sadu SDK můžete vyzkoušet bez odesílání telemetrie nastavením `appInsights.defaultClient.config.disableAppInsights = true`.
 
-### <a name="monitor-your-app"></a><a name="monitor"></a>Sledování aplikace
+### <a name="monitor-your-app"></a><a name="monitor"></a>Monitorování aplikace
 
 Sada SDK automaticky shromažďuje telemetrii o modulu runtime Node.js a některých běžných modulech třetích stran. Použijte svou aplikaci k vygenerování nějakých dat.
 
@@ -92,7 +92,7 @@ Vzhledem k tomu, že sada SDK seskupuje data do dávek pro odesílání, může 
 * V zobrazení prostředku na portálu klikněte na **Aktualizovat**. Grafy se samy pravidelně aktualizují, ale ruční aktualizace vynutí jejich okamžitou aktualizaci.
 * Ověřte, že jsou otevřené [požadované výchozí porty](../../azure-monitor/app/ip-addresses.md).
 * Pomocí [Vyhledávání](../../azure-monitor/app/diagnostic-search.md) vyhledejte konkrétní události.
-* Podívejte se na [nejčastější dotazy][FAQ].
+* Projděte si [Nejčastější dotazy][FAQ].
 
 
 ## <a name="sdk-configuration"></a>Konfigurace sady SDK

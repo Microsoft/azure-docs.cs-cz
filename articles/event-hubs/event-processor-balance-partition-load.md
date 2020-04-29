@@ -1,6 +1,6 @@
 ---
-title: Vyvažte zatížení oddílů mezi více instancemi – Azure Event Hubs | Dokumenty společnosti Microsoft
-description: Popisuje, jak vyvážit zatížení oddílu mezi více instancemi vaší aplikace pomocí procesoru událostí a sady Azure Event Hubs SDK.
+title: Vyrovnávání zatížení oddílu napříč několika instancemi – Azure Event Hubs | Microsoft Docs
+description: Popisuje, jak vyrovnávat zatížení oddílů mezi několika instancemi aplikace pomocí procesoru událostí a sady Azure Event Hubs SDK.
 services: event-hubs
 documentationcenter: .net
 author: ShubhaVijayasarathy
@@ -13,48 +13,48 @@ ms.workload: na
 ms.date: 01/16/2020
 ms.author: shvija
 ms.openlocfilehash: bf90120157bf64bd62a3b5ec9d8a6b2c6260e024
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80398300"
 ---
-# <a name="balance-partition-load-across-multiple-instances-of-your-application"></a>Vyvážení zatížení oddílu mezi více instancemi aplikace
-Chcete-li škálovat aplikaci pro zpracování událostí, můžete spustit více instancí aplikace a nechat ji vyvážit zatížení mezi sebou. Ve starších verzích [EventProcessorHost](event-hubs-event-processor-host.md) vám umožnilo vyvážit zatížení mezi více instancemi programu a událostmi kontrolního bodu při příjmu. V novějších verzích (5.0 a dále), **EventProcessorClient** (.NET a Java) nebo **EventHubConsumerClient** (Python a JavaScript) umožňuje provést totéž. Vývojový model je jednodušší pomocí událostí. Události, které vás zajímají, se přihlásíte registrací obslužné rutiny události.
+# <a name="balance-partition-load-across-multiple-instances-of-your-application"></a>Vyrovnávání zatížení oddílu napříč několika instancemi vaší aplikace
+Chcete-li škálovat aplikaci pro zpracování událostí, můžete spustit více instancí aplikace a vyrovnávat zatížení mezi sebou. Ve starších verzích vám [EventProcessorHost](event-hubs-event-processor-host.md) povolil vyrovnávat zatížení mezi několika instancemi programu a události kontrolního bodu při příjmu. V novějších verzích (5,0 a vyšší), **EventProcessorClient** (.NET a Java) nebo **EventHubConsumerClient** (Python a JavaScript) vám umožňuje provádět stejné. Vývojový model je jednodušší pomocí událostí. Přihlásíte se k odběru událostí, na které vás zajímáte, registrací obslužné rutiny události.
 
-Tento článek popisuje ukázkový scénář pro použití více instancí ke čtení událostí z centra událostí a potom vám poskytne podrobnosti o funkcích klienta procesoru událostí, který umožňuje přijímat události z více oddílů najednou a vyrovnávání zatížení s ostatními příjemci, kteří používají stejné centrum událostí a skupinu spotřebitelů.
+Tento článek popisuje vzorový scénář pro použití více instancí ke čtení událostí z centra událostí a pak vám poskytne podrobné informace o funkcích klienta procesoru událostí, který umožňuje přijímat události z více oddílů najednou a vyrovnávat zatížení s ostatními uživateli, kteří používají stejné centrum událostí a skupinu uživatelů.
 
 > [!NOTE]
-> Klíčem k škálování pro event huby je myšlenka rozdělených spotřebitelů. Na rozdíl od [konkurenčních spotřebitelů](https://msdn.microsoft.com/library/dn568101.aspx) vzor, rozdělený spotřebitelský vzor umožňuje vysoké měřítko odstraněním konflikty úzkým hrdlem a usnadnění min.-end paralelismus.
+> Klíčem k horizontálnímu navýšení kapacity pro Event Hubs je nápad rozdělit uživatele na oddíly. Na rozdíl od vzorce [konkurenčních spotřebitelů](https://msdn.microsoft.com/library/dn568101.aspx) umožňuje vzor rozděleného uživatele vysoké škálování odebráním kritických bodů pro spor a zjednodušením koncového paralelismu.
 
-## <a name="example-scenario"></a>Příklad scénáře
+## <a name="example-scenario"></a>Ukázkový scénář
 
-Jako příklad scénáře zvažte domácí bezpečnostní společnost, která monitoruje 100 000 domácností. Každou minutu získává data z různých senzorů, jako je detektor pohybu, senzor otevření dveří / oken, detektor rozbití skla a tak dále, instalovaný v každé domácnosti. Společnost poskytuje webové stránky pro obyvatele sledovat činnost svého domova v téměř reálném čase.
+Jako ukázkový scénář si představte firemní zabezpečení, které monitoruje 100 000 domů. Každou minutu získává data z různých senzorů, jako je detektor pohybu, otevřený senzor dveří nebo oken, detektor skla a tak dále, nainstalovaný v každé domácnosti. Společnost poskytuje web pro rezidenty, které sledují činnost svých domů téměř v reálném čase.
 
-Každý senzor odesílá data do centra událostí. Centrum událostí je nakonfigurováno s 16 oddíly. Na náročné mši potřebujete mechanismus, který může číst tyto události, konsolidovat je (filtr, agregovat a tak dále) a vypisovat agregaci do objektu blob úložiště, který se pak promítá na uživatelsky přívětivou webovou stránku.
+Každý senzor nahraje data do centra událostí. Centrum událostí je nakonfigurované s 16 oddíly. Na náročném konci budete potřebovat mechanismus, který může číst tyto události, konsolidovat je (filtrovat, agregovat atd.) a vypsat agregovanou hodnotu do objektu BLOB úložiště, který je pak navržený na uživatelsky přívětivou webovou stránku.
 
-## <a name="write-the-consumer-application"></a>Napsat spotřebitelskou aplikaci
+## <a name="write-the-consumer-application"></a>Zápis aplikace příjemce
 
-Při navrhování příjemce v distribuovaném prostředí scénář musí zpracovat následující požadavky:
+Při návrhu spotřebitele v distribuovaném prostředí musí tento scénář splňovat následující požadavky:
 
-1. **Měřítko:** Vytvořte více spotřebitelů, přičemž každý spotřebitel převezme vlastnictví čtení z několika oddílů Centra událostí.
-2. **Vyvážení zatížení:** Zvyšujte nebo snižujte spotřebitele dynamicky. Například při přidání nového typu senzoru (například detektoru oxidu uhelnatého) do každé domácnosti se počet událostí zvyšuje. V takovém případě operátor (člověk) zvyšuje počet instancí příjemce. Potom fond spotřebitelů můžete vyvážit počet oddílů, které vlastní, sdílet zatížení s nově přidané spotřebitele.
-3. **Bezproblémový životopis při selhání:** Pokud spotřebitel (**spotřebitel A)** selže (například virtuální počítač hostující spotřebitele náhle havaruje), pak ostatní spotřebitelé mohou vyzvednout oddíly vlastněné **spotřebitelem A** a pokračovat. Také bod pokračování, nazvaný *kontrolní bod* nebo *posun*, by měl být v přesném bodě, ve kterém **příjemce A** selhal, nebo mírně před tím.
-4. **Spotřebovávat události:** Zatímco předchozí tři body se zabývají správou spotřebitele, musí existovat kód, který spotřebuje události a udělá s ním něco užitečného. Agregujte ho například a nahrajte do úložiště objektů blob.
+1. **Měřítko:** Vytvořte více uživatelů, přičemž každý příjemce převezme vlastnictví čtení z několika oddílů Event Hubs.
+2. **Vyrovnávání zatížení:** Dynamické zvýšení nebo snížení počtu příjemců Například při přidání nového typu snímače (např. oxidu uhelnat) do každé domů se zvýší počet událostí. V takovém případě operátor (lidské) zvyšuje počet instancí příjemců. Fond příjemců pak může znovu vyrovnávat počet oddílů, které vlastní, a sdílet zatížení s nově přidanými spotřebiteli.
+3. **Bezproblémové obnovení při selhání:** Pokud se uživatel (**spotřebitel a**) nepovede (například virtuální počítač, který hostuje nějakého uživatele, dojde k výpadku), ostatní spotřebitelé si můžou vybrat oddíly vlastněné **zákazníkem** a a pokračovat. Bod pokračování, označovaný jako *kontrolní bod* nebo *posun*, by měl být v přesném okamžiku, kdy se **příjemce a** nezdařil, nebo mírně předtím.
+4. **Spotřebovávat události:** Zatímco předchozí tři body se týkají správy příjemce, musí existovat kód pro využívání událostí a co nejužitečnější je s ním. Například agreguje a nahrajte ho do úložiště objektů BLOB.
 
 ## <a name="event-processor-or-consumer-client"></a>Procesor událostí nebo klient příjemce
 
-Nemusíte vytvářet vlastní řešení pro splnění těchto požadavků. Sady SDK centra událostí Azure poskytují tuto funkci. V sadách SDK .NET nebo Java používáte klienta procesoru událostí (EventProcessorClient) a v sadách SDK skriptů Pythonu a Java používáte klient EventHubConsumerClient. Ve staré verzi sady SDK tyto funkce podporoval hostitel procesoru událostí (EventProcessorHost).
+K splnění těchto požadavků nemusíte sestavovat vlastní řešení. Tuto funkci poskytují sady Azure Event Hubs SDK. V sadách .NET nebo Java SDK použijete klienta procesoru událostí (EventProcessorClient) a sady SDK skriptů Pythonu a Java, použijete EventHubConsumerClient. Ve staré verzi sady SDK se jednalo o hostitele procesoru událostí (EventProcessorHost), který tyto funkce podporuje.
 
-Pro většinu produkčních scénářů doporučujeme použít klienta procesoru událostí pro čtení a zpracování událostí. Klient procesoru je určen k poskytování robustní prostředí pro zpracování událostí ve všech oddílech centra událostí v performant a odolné proti chybám způsobem a zároveň poskytuje prostředky pro kontrolní bod jeho průběhu. Klienti zpracovatelů událostí jsou také schopni pracovat kooperativně v rámci skupiny spotřebitelů pro dané centrum událostí. Klienti budou automaticky spravovat distribuci a vyvažování práce, jakmile budou instance pro skupinu k dispozici nebo nebudou k dispozici.
+Pro většinu produkčních scénářů doporučujeme použít klienta procesoru událostí pro čtení a zpracování událostí. Klient procesoru má k dispozici robustní prostředí pro zpracování událostí ve všech oddílech centra událostí v rámci výkonného a odolného přenosu, který poskytuje prostředky pro kontrolní body. Klienti procesorů událostí můžou spolupracují i v kontextu skupiny uživatelů pro dané centrum událostí. Klienti budou automaticky spravovat distribuci a vyrovnávání práce, protože instance budou k dispozici nebo nebudou pro skupinu k dispozici.
 
 ## <a name="partition-ownership-tracking"></a>Sledování vlastnictví oddílu
 
-Instance procesoru událostí obvykle vlastní a zpracovává události z jednoho nebo více oddílů. Vlastnictví oddílů je rovnoměrně rozděleno mezi všechny instance aktivního procesoru událostí přidružené k centru událostí a kombinaci skupiny spotřebitelů. 
+Instance procesoru událostí obvykle vlastní a zpracovává události z jednoho nebo více oddílů. Vlastnictví oddílů je rovnoměrně distribuované mezi všemi instancemi aktivních procesorů událostí přidružených k kombinaci centra událostí a skupiny uživatelů. 
 
-Každý procesor událostí je uveden jedinečný identifikátor a nároky vlastnictví oddílů přidáním nebo aktualizací položky v úložišti kontrolních bodů. Všechny instance procesoru událostí pravidelně komunikují s tímto úložištěm, aby aktualizovaly svůj vlastní stav zpracování a také se dozvěděly o dalších aktivních instancích. Tato data se pak používají k vyvážení zatížení mezi aktivními procesory. Nové instance můžete připojit do fondu zpracování navertovat. Když instance přejít dolů, z důvodu selhání nebo vertikálně, vlastnictví oddílu je řádně převedena na jiné aktivní procesory.
+Každému procesoru událostí se předává jedinečný identifikátor a vlastnictví deklarací oddílů přidáním nebo aktualizací položky v úložišti kontrolních bodů. Všechny instance procesoru událostí komunikují s tímto úložištěm pravidelně a aktualizují svůj vlastní stav zpracování i informace o dalších aktivních instancích. Tato data se pak použijí pro vyrovnání zatížení mezi aktivními procesory. Pro horizontální navýšení kapacity se můžou nové instance připojit ke fondu zpracování. Když instance nastanou mimo provoz, buď z důvodu selhání, nebo pro horizontální navýšení kapacity, vlastnictví oddílu se řádně přenáší na jiné aktivní procesory.
 
-Záznamy vlastnictví oddílů v úložišti kontrolních bodů zaznamenávají obor názvů Centra událostí, název centra událostí, skupinu spotřebitelů, identifikátor procesoru událostí (označovaný také jako vlastník), ID oddílu a čas poslední změny.
+Záznamy o vlastnictví oddílu v úložišti kontrolního bodu uchovávají informace o Event Hubs obor názvů, název centra událostí, skupinu uživatelů, identifikátor procesoru událostí (označovaný také jako vlastník), ID oddílu a čas poslední změny.
 
 
 
@@ -67,35 +67,35 @@ Záznamy vlastnictví oddílů v úložišti kontrolních bodů zaznamenávají 
 |                                    |                | :                  |                                      |              |                     |
 | mynamespace.servicebus.windows.net | myeventhub     | myconsumergroup    | 844bd8fb-1f3a-4580-984d-6324f9e208af | 15           | 2020-01-15T01:22:00 |
 
-Každá instance procesoru událostí získá vlastnictví oddílu a spustí zpracování oddílu z posledního známého [kontrolního bodu](# Checkpointing). Pokud procesor selže (virtuální hod se vypne), pak ostatní instance zjistit tím, že při pohledu na čas poslední změny. Jiné instance se pokusí získat vlastnictví oddílů dříve vlastněných neaktivní instance a úložiště kontrolních bodů zaručuje, že pouze jedna z instancí se podaří nárokovat vlastnictví oddílu. Takže v daném okamžiku je maximálně jeden procesor příjem událostí z oddílu.
+Každá instance procesoru událostí získá vlastnictví oddílu a spustí zpracování oddílu z posledního známého [kontrolního bodu](# Checkpointing). Pokud dojde k chybě procesoru (virtuální počítač se vypne), vyhledá jiné instance tím, že prohlíží čas poslední změny. Jiné instance se pokusí získat vlastnictví oddílů, které dříve vlastnila neaktivní instance, a úložiště kontrolního bodu zaručuje, že se při deklaracích vlastnictví oddílu úspěšně vytvoří jenom jedna z těchto instancí. Takže v jakémkoli časovém okamžiku existuje maximálně jeden procesor, který přijímá události z oddílu.
 
 ## <a name="receive-messages"></a>Příjem zpráv
 
-Při vytváření procesoru událostí určíte funkce, které budou zpracovávat události a chyby. Každé volání funkce, která zpracovává události, přináší jednu událost z určitého oddílu. Je vaší zodpovědností zvládnout tuto událost. Pokud chcete, aby se ujistil, že spotřebitel zpracovává každou zprávu alespoň jednou, musíte napsat vlastní kód s logikou opakování. Ale buďte opatrní ohledně otrávených zpráv.
+Když vytváříte procesor událostí, zadáváte funkce, které budou zpracovávat události a chyby. Každé volání funkce, která zpracovává události, zajišťuje jednu událost z konkrétního oddílu. Tato událost se zpracovává vaší zodpovědností. Pokud se chcete ujistit, že příjemce zpracuje alespoň jednou zprávu, musíte napsat vlastní kód s logikou opakování. Buďte ale opatrní v souvislosti s poškozenými zprávami.
 
-Doporučujeme, abyste dělali věci poměrně rychle. To znamená, že dělat co nejméně zpracování, jak je to možné. Pokud potřebujete zapisovat do úložiště a provést nějaké směrování, je lepší použít dvě skupiny spotřebitelů a mít dva procesory událostí.
+Doporučujeme, abyste provedli relativně rychle. To znamená co nejmenší zpracování. Pokud potřebujete zapisovat do úložiště a udělat si nějaké směrování, je lepší použít dvě skupiny uživatelů a mít dva procesory událostí.
 
 ## <a name="checkpointing"></a>Vytváření kontrolních bodů
 
-*Vytváření kontrolních bodů* je proces, při kterém procesor událostí označí nebo potvrdí pozici poslední úspěšně zpracované události v rámci oddílu. Označení kontrolního bodu se obvykle provádí v rámci funkce, která zpracovává události a dochází na základě oddílu v rámci skupiny spotřebitelů. 
+*Kontrolní bod* je proces, při kterém procesor událostí označí nebo potvrdí pozici poslední úspěšné zpracovávané události v rámci oddílu. Označení kontrolního bodu se obvykle provádí ve funkci, která zpracovává události a probíhá na jednotlivých oddílech v rámci skupiny příjemců. 
 
-Pokud se procesor událostí odpojí od oddílu, jiná instance může pokračovat ve zpracování oddílu v kontrolním bodu, který byl dříve potvrzen posledním procesorem tohoto oddílu v této skupině spotřebitelů. Když se procesor připojí, předá posun do centra událostí a určí umístění, ve kterém má být možné začít číst. Tímto způsobem můžete použít vytváření kontrolních bodů k označení událostí jako "úplné" pro příjem dat aplikací a poskytnout odolnost proti chybám při zpracování procesoru událostí přejde dolů. Ke starším datům se je možné vrátit tak, že určíte nižší posun od tohoto kontrolního bodu. 
+Pokud se procesor událostí z oddílu odpojí, může jiná instance pokračovat ve zpracování oddílu v kontrolním bodu, který byl dřív potvrzen posledním procesorem tohoto oddílu v této skupině příjemců. Když se procesor připojí, předá posun do centra událostí, aby určil umístění, ve kterém se má začít číst. Tímto způsobem můžete pomocí kontrolního bodu provádět označení událostí jako "dokončeno" v aplikacích pro příjem dat a zajištění odolnosti při výpadku procesoru událostí. Ke starším datům se je možné vrátit tak, že určíte nižší posun od tohoto kontrolního bodu. 
 
-Při provádění kontrolního bodu k označení události jako zpracované, je přidána nebo aktualizována položka v úložišti kontrolního bodu s posunem události a pořadovým číslem události. Uživatelé by měli rozhodnout o četnosti aktualizace kontrolního bodu. Aktualizace po každé úspěšně zpracované události může mít vliv na výkon a náklady, protože aktivuje operaci zápisu do základního úložiště kontrolních bodů. Také kontrolní body každou jednotlivou událost svědčí o vzorky zasílání zpráv ve frontě, pro které fronta service bus může být lepší volbou než centrum událostí. Myšlenka event hubů spoáčita je, že dostanete doručení "alespoň jednou" ve velkém měřítku. Tím, že vaše navazující systémy idempotentní, je snadné obnovit z chyb nebo restartování, které mají za následek stejné události přijaté vícekrát.
+Při provádění kontrolního bodu za účelem označení události jako zpracovaného je položka v úložišti kontrolního bodu přidána nebo aktualizována pomocí posunu události a čísla sekvence. Uživatelé by se měli rozhodnout frekvence aktualizace kontrolního bodu. Aktualizace po všech úspěšně zpracovaných událostech může mít dopad na výkon a náklady, protože aktivuje operaci zápisu do základního úložiště kontrolního bodu. Vytváření kontrolních bodů pro každou jednotlivou událost je také informativní. vzor zasílání zpráv ve frontě, pro který Service Bus frontu, může být lepší volbou než centrum událostí. Nápad za Event Hubs je, že se vám dostanete aspoň jednou doručování ve skvělém měřítku. Díky tomu, že vaše systémy pro příjem dat idempotentní, je snadné se zotavit z chyb nebo restartovat, což vede k tomu, že se stejné události přijímají vícekrát.
 
 > [!NOTE]
-> Pokud používáte Azure Blob Storage jako úložiště kontrolních bodů v prostředí, které podporuje jinou verzi sady Storage Blob SDK než ty, které jsou obvykle dostupné v Azure, budete muset použít kód ke změně verze rozhraní API služby úložiště na konkrétní verzi podporovanou tímto prostředím. Například pokud používáte [Centra událostí na Azure Stack Hub verze 2002](https://docs.microsoft.com/azure-stack/user/event-hubs-overview), nejvyšší dostupná verze pro službu Storage je verze 2017-11-09. V takovém případě musíte použít kód k cílení verze rozhraní API služby úložiště na 2017-11-09. Příklad, jak cílit na konkrétní verzi rozhraní API úložiště, najdete v těchto ukázkách na GitHubu: 
-> - [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs). 
+> Pokud používáte Azure Blob Storage jako úložiště kontrolního bodu v prostředí, které podporuje jinou verzi sady SDK pro úložiště objektů blob, než jaké jsou běžně dostupné v Azure, budete muset použít kód ke změně verze rozhraní API služby úložiště na konkrétní verzi podporovanou tímto prostředím. Pokud například používáte [Event Hubs v centru Azure Stack verze 2002](https://docs.microsoft.com/azure-stack/user/event-hubs-overview), nejvyšší dostupná verze služby úložiště je verze 2017-11-09. V takovém případě je nutné použít kód pro cílení na verzi rozhraní API služby úložiště na 2017-11-09. Příklad cílení na konkrétní verzi rozhraní API úložiště najdete v těchto ukázkách na GitHubu: 
+> - [Rozhraní .NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs). 
 > - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/EventProcessorWithOlderStorageVersion.java)
 > - [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/receiveEventsWithDownleveledStorage.js) nebo [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/receiveEventsWithDownleveledStorage.ts)
 > - [Python](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/event_processor_blob_storage_example_with_storage_api_version.py)
 
-## <a name="thread-safety-and-processor-instances"></a>Instance bezpečnosti vláken a procesoru
+## <a name="thread-safety-and-processor-instances"></a>Bezpečnost vlákna a instance procesoru
 
-Ve výchozím nastavení je procesor událostí nebo příjemce bezpečný pro přístup z více vláken a chová se synchronně. Když události dorazí pro oddíl, je volána funkce, která zpracovává události. Následné zprávy a volání této funkce fronty na pozadí jako čerpadlo zprávy nadále běžet na pozadí na jiných vláknech. Tato bezpečnost podprocesu odstraňuje potřebu kolekce bezpečné pro přístup z více vláken a výrazně zvyšuje výkon.
+Ve výchozím nastavení je procesor událostí nebo spotřebitel bezpečný pro přístup z více vláken a pracuje synchronním způsobem. Po doručení událostí pro oddíl se zavolá funkce, která zpracovává události. Následné zprávy a volání této funkce zařadí do fronty na pozadí, protože čerpadlo zpráv pokračuje v běhu na pozadí v jiných vláknech. Tato bezpečnost vlákna odstraňuje nutnost pro kolekce bezpečné pro přístup z více vláken a významně zvyšuje výkon.
 
 ## <a name="next-steps"></a>Další kroky
-Podívejte se na následující rychlé spuštění:
+Podívejte se na následující rychlé starty:
 
 - [.NET Core](get-started-dotnet-standard-send-v2.md)
 - [Java](event-hubs-java-get-started-send.md)

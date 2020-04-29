@@ -1,7 +1,7 @@
 ---
-title: Konfigurace režimu distribuce Azure Load Balancer
+title: Konfigurace distribučního režimu Azure Load Balancer
 titleSuffix: Azure Load Balancer
-description: V tomto článku můžete začít konfigurovat režim distribuce pro Azure Load Balancer pro podporu zdrojové spřažení IP.
+description: V tomto článku začnete s konfigurací distribučního režimu pro Azure Load Balancer podporovat spřažení zdrojové IP adresy.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -14,69 +14,69 @@ ms.workload: infrastructure-services
 ms.date: 11/19/2019
 ms.author: allensu
 ms.openlocfilehash: 5c50186692438be5d0922cd329c28e665310e5c2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77023527"
 ---
-# <a name="configure-the-distribution-mode-for-azure-load-balancer"></a>Konfigurace distribučního režimu pro Azure Load Balancer
+# <a name="configure-the-distribution-mode-for-azure-load-balancer"></a>Konfigurace režimu distribuce pro Azure Load Balancer
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="hash-based-distribution-mode"></a>Režim distribuce založený na hash
+## <a name="hash-based-distribution-mode"></a>Režim distribuce založený na hodnotě hash
 
 Výchozí režim distribuce pro Azure Load Balancer využívá hodnotu hash, kterou tvoří řazená kolekce pěti členů. 
 
-Řazená kolekce členů se skládá z:
+Řazená kolekce členů se skládá z těchto:
 * **Zdrojová IP adresa**
 * **Zdrojový port**
 * **Cílová IP adresa**
 * **Cílový port**
 * **Typ protokolu**
 
-Soubor hash se používá k mapování provozu na dostupné servery. Algoritmus poskytuje lepivost pouze v rámci relace přenosu. Pakety, které jsou ve stejné relaci jsou směrovány na stejné IP datového centra za koncový bod s vyrovnáváním zatížení. Když klient spustí novou relaci ze stejné zdrojové IP adresy, zdrojový port se změní a způsobí, že provoz přejde do jiného koncového bodu datového centra.
+Hodnota hash se používá k mapování provozu na dostupné servery. Algoritmus poskytuje vytrvalost jenom v rámci relace přenosu. Pakety, které jsou ve stejné relaci, se přesměrují na stejnou IP adresu datového centra za koncovým bodem s vyrovnáváním zatížení. Když klient spustí novou relaci ze stejné zdrojové IP adresy, změní se zdrojový port a způsobí, že provoz přejde na jiný koncový bod datového centra.
 
-![Režim distribuce založené na hash na základě pěti řasenek](./media/load-balancer-distribution-mode/load-balancer-distribution.png)
+![Distribuční režim s pěti řazenými kolekcemi členů založený na hodnotě hash](./media/load-balancer-distribution-mode/load-balancer-distribution.png)
 
-## <a name="source-ip-affinity-mode"></a>Režim spřažení ip adres zdroje
+## <a name="source-ip-affinity-mode"></a>Režim spřažení zdrojové IP adresy
 
-Výlohy na zatížení lze také nakonfigurovat pomocí režimu distribuce spřažení ip zdrojové ip adresy. Tento režim distribuce se také označuje jako spřažení relací nebo spřažení klientských IP adres. Režim používá dvě řazené kolekce členů (zdrojová IP a cílová IP) nebo tři řazené kolekce členů (zdrojová IP adresa, cílová IP adresa a typ protokolu) k mapování provozu na dostupné servery. Pomocí zdrojové spřažení IP se připojení, která jsou spuštěna ze stejného klientského počítače, přejdou do stejného koncového bodu datového centra.
+Nástroj pro vyrovnávání zatížení se dá nakonfigurovat taky pomocí distribučního režimu spřažení zdrojové IP adresy. Tento režim distribuce se také označuje jako spřažení relací nebo spřažení klientských IP adres. Režim používá k mapování provozu na dostupné servery dvě řazené kolekce členů (zdrojová IP adresa a cílová IP adresa) nebo tři řazené kolekce členů (zdrojová adresa IP, cílová IP adresa a typ protokolu). Při použití spřažení zdrojového protokolu IP se připojení spouštěná ze stejného klientského počítače přejdou na stejný koncový bod datového centra.
 
-Následující obrázek znázorňuje konfiguraci se dvěma řazemi do řazených členů. Všimněte si, jak dvě řazené kolekce členů procházejí nástroj pro vyrovnávání zatížení do virtuálního počítače 1 (VM1). VM1 je pak zálohována VM2 a VM3.
+Následující obrázek znázorňuje konfiguraci se dvěma řazenými kolekcemi členů. Všimněte si, jak se dvě řazené kolekce členů spustí prostřednictvím nástroje pro vyrovnávání zatížení, do virtuálního počítače 1 (VM1). VM1 je pak zálohovaný pomocí VM2 a VM3.
 
-![Režim distribuce spřažení dvou řazených členů řazené kolekce členů](./media/load-balancer-distribution-mode/load-balancer-session-affinity.png)
+![Distribuční režim spřažení relace se dvěma řazenými kolekcemi členů](./media/load-balancer-distribution-mode/load-balancer-session-affinity.png)
 
-Režim spřažení zdrojových IP adres řeší nekompatibilitu mezi nástrojem Azure Load Balancer a bránou vzdálené plochy (Brána VP). Pomocí tohoto režimu můžete vytvořit farmu služby Brána VP v jedné cloudové službě.
+Režim spřažení zdrojové IP adresy řeší nekompatibilitu mezi Azure Load Balancer a Brána vzdálené plochy (Brána VP). Pomocí tohoto režimu můžete vytvořit Brána VPovou farmu v jedné cloudové službě.
 
-Dalším scénářem použití je nahrání média. Nahrávání dat se děje prostřednictvím UDP, ale řídicí rovina je dosaženo prostřednictvím TCP:
+Dalším scénářem použití je nahrávání médií. Nahrávání dat probíhá prostřednictvím protokolu UDP, ale Řídicí rovina se dosahuje prostřednictvím protokolu TCP:
 
-* Klient spustí relaci Protokolu TCP na veřejnou adresu s vyrovnáváním zatížení a je přesměrován na konkrétní dip. Kanál je ponechán aktivní pro sledování stavu připojení.
-* Nová relace UDP ze stejného klientského počítače je spuštěna do stejného veřejného koncového bodu s vyrovnáváním zatížení. Připojení je směrováno do stejného koncového bodu DIP jako předchozí připojení TCP. Nahrávání médií lze provést s vysokou propustností při zachování řídicího kanálu prostřednictvím protokolu TCP.
+* Klient spustí relaci TCP na veřejné adrese s vyrovnáváním zatížení a přesměruje na konkrétní DIP. Kanál zůstane aktivní a monitoruje stav připojení.
+* Ve stejném klientském koncovém bodu s vyrovnáváním zatížení je spuštěná nová relace UDP ze stejného klientského počítače. Připojení je směrováno na stejný koncový bod DIP jako předchozí připojení TCP. Nahrávání médií je možné spustit při vysoké propustnosti a přitom zachovat řídicí kanál prostřednictvím protokolu TCP.
 
 > [!NOTE]
-> Když se sada s vyrovnáváním zatížení změní odebráním nebo přidáním virtuálního počítače, přepočítá se distribuce požadavků klientů. Nemůžete se spolehnout na nová připojení od stávajících klientů, abyste skončili na stejném serveru. Navíc pomocí zdrojové ip spřažení distribuční režim může způsobit nerovnoměrné rozdělení provozu. Klienti, kteří běží za proxy servery může být považován za jednu jedinečnou klientskou aplikaci.
+> Dojde-li ke změně sady s vyrovnáváním zatížení odebráním nebo přidáním virtuálního počítače, bude přepočítána distribuce požadavků klientů. Nemůžete záviset na nových připojeních od stávajících klientů po ukončení na stejném serveru. Kromě toho může použití distribučního režimu spřažení zdrojového protokolu IP způsobit nerovnost distribuce provozu. Klienti, kteří se spouštějí za proxy servery, se mohou zobrazit jako jedna jedinečná klientská aplikace.
 
-## <a name="configure-source-ip-affinity-settings"></a>Konfigurace nastavení spřažení protokolu IP
+## <a name="configure-source-ip-affinity-settings"></a>Konfigurovat nastavení spřažení zdrojové IP adresy
 
 ### <a name="azure-portal"></a>portál Azure
 
-Konfiguraci distribučního režimu můžete změnit úpravou pravidla vyrovnávání zatížení na portálu.
+Konfiguraci režimu distribuce můžete změnit úpravou pravidla vyrovnávání zatížení na portálu.
 
-1. Přihlaste se k portálu Azure a vyhledejte skupinu prostředků obsahující likvidátor zatížení, který chcete změnit, kliknutím na **skupiny prostředků**.
-2. Na obrazovce přehledu nástroje pro vyrovnávání zatížení klikněte na **pravidla vyrovnávání zatížení** v části **Nastavení**.
-3. Na obrazovce pravidla vyrovnávání zatížení klikněte na pravidlo vyrovnávání zatížení, které chcete změnit režim distribuce.
-4. Podle pravidla se režim distribuce změní změnou rozevíracího pole **Trvalosti relace.**  K dispozici jsou následující možnosti:
+1. Přihlaste se k Azure Portal a vyhledejte skupinu prostředků obsahující nástroj pro vyrovnávání zatížení, který chcete změnit kliknutím na **skupiny prostředků**.
+2. Na obrazovce Přehled nástroje pro vyrovnávání zatížení klikněte v části **Nastavení**na **pravidla vyrovnávání zatížení** .
+3. Na obrazovce pravidla vyrovnávání zatížení klikněte na pravidlo vyrovnávání zatížení, u kterého chcete změnit režim distribuce.
+4. V rámci pravidla se režim distribuce změní změnou rozevíracího seznamu **trvalá relace** .  K dispozici jsou následující možnosti:
     
-    * **Žádný (na základě hash)** - Určuje, že následné požadavky od stejného klienta mohou být zpracovány libovolným virtuálním počítačem.
-    * **IP klienta (zdrojová spřažení IP 2-n-tice)** - Určuje, že následné požadavky ze stejné ip adresy klienta budou zpracovány stejným virtuálním počítačem.
-    * **IP a protokol klienta (zdrojová spřažení IP 3-n-tice)** - Určuje, že následné požadavky ze stejné ip adresy klienta a kombinace protokolu budou zpracovány stejným virtuálním počítačem.
+    * **Žádný (založený na hodnotě hash)** – určuje, že úspěšné požadavky ze stejného klienta můžou být zpracovávány jakýmkoli virtuálním počítačem.
+    * **IP adresa klienta (spřažení zdrojové IP adresy 2 – řazená kolekce členů)** – určuje, že úspěšné požadavky ze stejné IP adresy klienta budou zpracovávány stejným virtuálním počítačem.
+    * **IP adresa klienta a protokol (přidružení zdrojové IP adresy 3 – řazená kolekce členů)** – určuje, že po jednom virtuálním počítači bude zpracována úspěšná žádost ze stejné kombinace IP adresy klienta a protokolu.
 
-5. Zvolte režim distribuce a klepněte na tlačítko **Uložit**.
+5. Zvolte režim distribuce a pak klikněte na **Uložit**.
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-U virtuálních počítačů nasazených ve Správci prostředků můžete pomocí prostředí PowerShell změnit nastavení distribuce nástroje pro vyrovnávání zatížení na existujícím pravidle vyrovnávání zatížení. Následující příkaz aktualizuje distribuční režim: 
+Pro virtuální počítače nasazené s Správce prostředků použijte PowerShell ke změně nastavení distribuce nástroje pro vyrovnávání zatížení pro existující pravidlo vyrovnávání zatížení. Následující příkaz aktualizuje distribuční režim: 
 
 ```azurepowershell-interactive
 $lb = Get-AzLoadBalancer -Name MyLb -ResourceGroupName MyLbRg
@@ -84,15 +84,15 @@ $lb.LoadBalancingRules[0].LoadDistribution = 'sourceIp'
 Set-AzLoadBalancer -LoadBalancer $lb
 ```
 
-U klasických virtuálních počítačů můžete pomocí Azure PowerShellu změnit nastavení distribuce. Přidejte koncový bod Azure do virtuálního počítače a nakonfigurujte režim distribuce nástroje pro vyrovnávání zatížení:
+U klasických virtuálních počítačů použijte Azure PowerShell ke změně nastavení distribuce. Přidání koncového bodu Azure do virtuálního počítače a konfigurace distribučního režimu nástroje pro vyrovnávání zatížení:
 
 ```azurepowershell-interactive
 Get-AzureVM -ServiceName mySvc -Name MyVM1 | Add-AzureEndpoint -Name HttpIn -Protocol TCP -PublicPort 80 -LocalPort 8080 –LoadBalancerDistribution sourceIP | Update-AzureVM
 ```
 
-Nastavte hodnotu `LoadBalancerDistribution` prvku pro požadovanou hodnotu vyrovnávání zatížení. Zadejte sourceIP pro dvě n-tice (zdrojová IP a cílová IP) vyrovnávání zatížení. Zadejte sourceIPProtocol pro tři n-tice (zdrojová IP adresa, cílová IP adresa a typ protokolu) vyrovnávání zatížení. Zadejte žádné pro výchozí chování pěti řazených členů systému vyrovnávání zatížení.
+Nastavte hodnotu `LoadBalancerDistribution` prvku pro požadovanou velikost vyrovnávání zatížení. Zadejte sourceIP pro vyrovnávání zatížení se dvěma řazenými kolekcemi členů (zdrojová IP adresa a cílová IP adresa). Pro vyrovnávání zatížení zadejte sourceIPProtocol pro tři řazené kolekce členů (zdrojová adresa IP, cílová IP adresa a typ protokolu). Pro výchozí chování při vyrovnávání zatížení s pěti řazenými kolekcemi členů zadejte None.
 
-Načtěte konfiguraci režimu distribučního režimu nástroje pro vyrovnávání zatížení koncového bodu pomocí těchto nastavení:
+Pomocí těchto nastavení načtěte konfiguraci distribučního režimu nástroje pro vyrovnávání zatížení koncového bodu:
 
     PS C:\> Get-AzureVM –ServiceName MyService –Name MyVM | Get-AzureEndpoint
 
@@ -114,21 +114,21 @@ Načtěte konfiguraci režimu distribučního režimu nástroje pro vyrovnáván
     IdleTimeoutInMinutes : 15
     LoadBalancerDistribution : sourceIP
 
-Když `LoadBalancerDistribution` prvek není k dispozici, Azure Balancer používá výchozí algoritmus pěti řazených členů.
+Pokud prvek `LoadBalancerDistribution` není k dispozici, Azure Load Balancer používá výchozí algoritmus pět-řazené kolekce členů.
 
-### <a name="configure-distribution-mode-on-load-balanced-endpoint-set"></a>Konfigurace distribučního režimu v sadě koncových bodů s vyrovnáváním zatížení
+### <a name="configure-distribution-mode-on-load-balanced-endpoint-set"></a>Konfigurace distribučního režimu pro sadu koncových bodů s vyrovnáváním zatížení
 
-Pokud jsou koncové body součástí sady koncových bodů s vyrovnáváním zatížení, musí být režim distribuce nakonfigurován na sadě koncových bodů s vyrovnáváním zatížení:
+Pokud jsou koncové body součástí sady koncových bodů s vyrovnáváním zatížení, musí být distribuční režim nakonfigurován v sadě koncových bodů s vyrovnáváním zatížení:
 
 ```azurepowershell-interactive
 Set-AzureLoadBalancedEndpoint -ServiceName MyService -LBSetName LBSet1 -Protocol TCP -LocalPort 80 -ProbeProtocolTCP -ProbePort 8080 –LoadBalancerDistribution sourceIP
 ```
 
-### <a name="configure-distribution-mode-for-cloud-services-endpoints"></a>Konfigurace distribučního režimu pro koncové body cloudových služeb
+### <a name="configure-distribution-mode-for-cloud-services-endpoints"></a>Konfigurace distribučního režimu pro koncové body Cloud Services
 
-K aktualizaci cloudové služby použijte azure sdk pro .NET 2.5. Nastavení koncového bodu pro cloudové služby se provádí v souboru .csdef. Chcete-li aktualizovat režim distribuce vykladače zatížení pro nasazení cloudových služeb, je vyžadován upgrade nasazení.
+Aktualizujte svou cloudovou službu pomocí sady Azure SDK pro .NET 2,5. Nastavení koncového bodu pro Cloud Services jsou vytvořena v souboru. csdef. Pro aktualizaci distribučního režimu nástroje pro vyrovnávání zatížení pro nasazení Cloud Services se vyžaduje upgrade nasazení.
 
-Zde je příklad změn .csdef pro nastavení koncového bodu:
+Tady je příklad. csdef změn pro nastavení koncového bodu:
 
 ```xml
 <WorkerRole name="worker-role-name" vmsize="worker-role-size" enableNativeCodeExecution="[true|false]">
@@ -150,13 +150,13 @@ Zde je příklad změn .csdef pro nastavení koncového bodu:
 
 ## <a name="api-example"></a>Příklad rozhraní API
 
-Následující příklad ukazuje, jak překonfigurovat režim distribuce vyrovnávání zatížení pro zadanou sadu s vyrovnáváním zatížení v nasazení. 
+Následující příklad ukazuje, jak změnit konfiguraci distribučního režimu nástroje pro vyrovnávání zatížení pro zadanou sadu s vyrovnáváním zatížení v nasazení. 
 
-### <a name="change-distribution-mode-for-deployed-load-balanced-set"></a>Změna režimu distribuce pro nasazenou sadu s vyrovnáváním zatížení
+### <a name="change-distribution-mode-for-deployed-load-balanced-set"></a>Změnit režim distribuce pro nasazenou sadu s vyrovnáváním zatížení
 
-Pomocí modelu klasického nasazení Azure můžete změnit existující konfiguraci nasazení. Přidejte `x-ms-version` záhlaví a nastavte hodnotu na verzi 2014-09-01 nebo novější.
+Pro změnu existující konfigurace nasazení použijte model nasazení Azure Classic. Přidejte `x-ms-version` hlavičku a nastavte hodnotu na verze 2014-09-01 nebo novější.
 
-#### <a name="request"></a>Žádost
+#### <a name="request"></a>Request
 
     POST https://management.core.windows.net/<subscription-id>/services/hostedservices/<cloudservice-name>/deployments/<deployment-name>?comp=UpdateLbSet   x-ms-version: 2014-09-01
     Content-Type: application/xml
@@ -179,7 +179,7 @@ Pomocí modelu klasického nasazení Azure můžete změnit existující konfigu
       </InputEndpoint>
     </LoadBalancedEndpointList>
 
-Jak již bylo popsáno, nastavte `LoadBalancerDistribution` prvek sourceIP pro dvě n-tice spřažení, sourceIPProtocol pro tři n-tice spřažení nebo žádný pro žádné spřažení (pět n-tice spřažení).
+Jak je popsáno výše, nastavte `LoadBalancerDistribution` element tak, aby sourceIP pro spřažení se dvěma řazenými kolekcemi členů, sourceIPProtocol pro spřažení se třemi řazenými kolekcemi členů, nebo žádný pro žádné spřažení (pět vztahů mezi řazenými kolekcemi členů).
 
 #### <a name="response"></a>Odpověď
 
@@ -193,6 +193,6 @@ Jak již bylo popsáno, nastavte `LoadBalancerDistribution` prvek sourceIP pro d
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přehled interního nástroje pro vyrovnávání zatížení Azure](load-balancer-internal-overview.md)
-* [Začínáme s konfigurací internetového zařízení pro vyrovnávání zatížení](quickstart-create-standard-load-balancer-powershell.md)
+* [Přehled interních Load Balancer Azure](load-balancer-internal-overview.md)
+* [Začínáme s konfigurací internetového nástroje pro vyrovnávání zatížení](quickstart-create-standard-load-balancer-powershell.md)
 * [Konfigurace nastavení časového limitu nečinnosti protokolu TCP pro nástroj pro vyrovnávání zatížení](load-balancer-tcp-idle-timeout.md)
