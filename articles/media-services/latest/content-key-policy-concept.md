@@ -1,6 +1,6 @@
 ---
-title: Zásady obsahu klíče v mediálních službách - Azure | Dokumenty společnosti Microsoft
-description: Tento článek poskytuje vysvětlení, jaké zásady klíče obsahu jsou a jak je používají Mediální služby Azure.
+title: Zásady pro klíč obsahu v Media Services – Azure | Microsoft Docs
+description: Tento článek obsahuje vysvětlení toho, jaké zásady klíčů obsahu jsou a jak se používají v Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,53 +13,53 @@ ms.date: 07/26/2019
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 85a9cad80156dc6ac40e78610c91805d485ff3df
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80585993"
 ---
 # <a name="content-key-policies"></a>Zásady symetrických klíčů
 
-Pomocí služby Media Services můžete poskytovat obsah živého i na vyžádání šifrovaný dynamicky pomocí advanced encryption standardu (AES-128) nebo některého ze tří hlavních systémů správy digitálních práv (DRM): Microsoft PlayReady, Google Widevine a Apple FairPlay. Mediální služby také poskytují službu pro doručování klíčů AES a licencí DRM (PlayReady, Widevine a FairPlay) oprávněným klientům. 
+Pomocí Media Services můžete doručovat živý obsah na vyžádání a dynamicky šifrovaný pomocí standard AES (Advanced Encryption Standard) (AES-128) nebo kteréhokoli ze tří hlavních systémů DRM (Digital Rights Management): Microsoft PlayReady, Google Widevine a Apple FairPlay. Media Services taky poskytuje službu pro doručování klíčů AES a licencí DRM (PlayReady, Widevine a FairPlay) autorizovaným klientům. 
 
-Chcete-li v datovém proudu určit možnosti šifrování, musíte vytvořit [zásady streamování](streaming-policy-concept.md) a přidružit je k [lokátoru streamování](streaming-locators-concept.md). Vytvoříte [zásady klíče obsahu](https://docs.microsoft.com/rest/api/media/contentkeypolicies) a nakonfigurujete, jak je klíč obsahu (který poskytuje zabezpečený přístup k vašim [prostředkům)](assets-concept.md)doručován koncovým klientům. Je třeba nastavit požadavky (omezení) na zásady klíče obsahu, které musí být splněny, aby klíče se zadanou konfigurací, které mají být dodány klientům. Zásady klíče obsahu nejsou potřebné pro jasné streamování nebo stahování. 
+Pokud chcete pro svůj Stream zadat možnosti šifrování, musíte vytvořit [zásadu streamování](streaming-policy-concept.md) a přidružit ji k [lokátoru streamování](streaming-locators-concept.md). [Zásadu pro klíč obsahu](https://docs.microsoft.com/rest/api/media/contentkeypolicies) vytvoříte pro konfiguraci způsobu doručení klíče obsahu (který poskytuje zabezpečený přístup k vašim [prostředkům](assets-concept.md)) koncovým klientům. Je nutné nastavit požadavky (omezení) na zásady klíče obsahu, které musí být splněny, aby bylo možné klíče se zadanou konfigurací doručovat klientům. Zásady klíče obsahu není potřeba pro vymazání streamování nebo stahování. 
 
-Zásady klíče obsahu obvykle přidružíte k [lokátoru streamování](streaming-locators-concept.md). Případně můžete zadat zásady klíče obsahu v rámci [zásad streamování](streaming-policy-concept.md) (při vytváření vlastní zásady streamování pro pokročilé scénáře). 
+Obvykle přidružíte zásady klíčů obsahu k [lokátoru streamování](streaming-locators-concept.md). Případně můžete určit zásady klíče obsahu v rámci [zásad streamování](streaming-policy-concept.md) (při vytváření vlastních zásad streamování pro pokročilé scénáře). 
 
-## <a name="best-practices-and-considerations"></a>Osvědčené postupy a důležité informace
+## <a name="best-practices-and-considerations"></a>Osvědčené postupy a požadavky
 
 > [!IMPORTANT]
 > Přečtěte si následující doporučení.
 
-* Měli byste navrhnout omezenou sadu zásad pro váš účet Media Service a znovu je použít pro lokátory streamování, kdykoli jsou potřeba stejné možnosti. Další informace naleznete v [tématu Kvóty a omezení](limits-quotas-constraints.md).
-* Klíčové zásady obsahu jsou aktualizovatelné. Aktualizace a vyzvednutí aktualizovaných zásad může trvat až 15 minut. 
+* Měli byste navrhnout omezené sady zásad pro svůj účet Media Service a znovu je použít pro Lokátory streamování, pokud jsou potřeba stejné možnosti. Další informace najdete v tématu [kvóty a omezení](limits-quotas-constraints.md).
+* Zásady klíčů obsahu je možné aktualizovat. Aktualizace a výběr aktualizované zásady může trvat až 15 minut, než se mezipaměť pro doručování klíčů aktualizuje. 
 
-   Aktualizací zásad přepíšete stávající mezipaměť CDN, což může způsobit problém y s přehráváním pro zákazníky, kteří používají obsah uložený v mezipaměti.  
-* Doporučujeme nevytvářet nové zásady klíče obsahu pro každý datový zdroj. Hlavní výhody sdílení stejné zásady obsahu klíče mezi prostředky, které potřebují stejné možnosti zásad jsou:
+   Když tuto zásadu aktualizujete, přepíšete stávající mezipaměť CDN, která by mohla způsobit problémy s přehráváním pro zákazníky, kteří používají obsah uložený v mezipaměti.  
+* Doporučujeme, abyste pro každý Asset nevytvořili nové zásady klíče obsahu. Hlavními výhodami sdílení stejných zásad pro klíč obsahu mezi prostředky, které potřebují stejné možnosti zásad, jsou:
    
-   * Je snazší spravovat malý počet zásad.
-   * Pokud potřebujete provést aktualizace zásad klíče obsahu, změny vstoupí v platnost u všech nových žádostí o licenci téměř ihned.
-* Pokud potřebujete vytvořit novou zásadu, musíte vytvořit nový lokátor streamování pro datový zdroj.
-* Doporučujeme, aby media services automaticky generovat klíč obsahu. 
+   * Správa malého počtu zásad je snazší.
+   * Pokud potřebujete provést aktualizace zásad klíče obsahu, změny se projeví u všech nových požadavků na licence téměř hned.
+* Pokud potřebujete vytvořit novou zásadu, budete muset vytvořit nový Lokátor streamování pro daný prostředek.
+* Doporučuje se, aby Media Services vygenerovat klíč obsahu. 
 
-   Obvykle byste použili klíč s dlouhou životností a zkontrolovali existenci zásad klíče obsahu pomocí [funkce Získat](https://docs.microsoft.com/rest/api/media/contentkeypolicies/get). Chcete-li získat klíč, musíte volat samostatnou metodu akce získat tajné klíče nebo pověření, viz příklad, který následuje.
+   Obvykle byste používali dlouhotrvající klíč a kontrolovali existenci zásad klíče obsahu pomocí [Get](https://docs.microsoft.com/rest/api/media/contentkeypolicies/get). Chcete-li získat klíč, je nutné zavolat samostatnou metodu akce pro získání tajných kódů nebo přihlašovacích údajů, viz následující příklad.
 
 ## <a name="example"></a>Příklad
 
-Chcete-li se dostat `GetPolicyPropertiesWithSecretsAsync`ke klíči, použijte , jak je znázorněno v [například Získat podpisový klíč z existujícího příkladu zásad.](get-content-key-policy-dotnet-howto.md#get-contentkeypolicy-with-secrets)
+K získání klíče použijte `GetPolicyPropertiesWithSecretsAsync`, jak je znázorněno v příkladu [získání podpisového klíče z existujícího zásad](get-content-key-policy-dotnet-howto.md#get-contentkeypolicy-with-secrets) .
 
 ## <a name="filtering-ordering-paging"></a>Filtrování, řazení, stránkování
 
-Viz [Filtrování, řazení, stránkování entit Mediálních služeb](entities-overview.md).
+Viz téma [filtrování, řazení, stránkování Media Services entit](entities-overview.md).
 
 ## <a name="additional-notes"></a>Další poznámky
 
-* Vlastnosti zásad klíče obsahu, `Datetime` které jsou typu jsou vždy ve formátu UTC.
-* Widevine je služba poskytovaná společností Google Inc. a podléhá podmínkám služeb a zásadám ochrany osobních údajů společnosti Google, Inc.
+* Vlastnosti zásad klíče obsahu, které jsou `Datetime` typu, jsou vždy ve formátu UTC.
+* Widevine je služba od společnosti Google Inc. v souladu s podmínkami služby a zásadami ochrany osobních údajů Google, Inc.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Používejte dynamické šifrování AES-128 a službu doručování klíčů](protect-with-aes128.md)
+* [Použití dynamického šifrování AES-128 a služby doručování klíčů](protect-with-aes128.md)
 * [Použití ochrany DRM s dynamickým šifrováním a služby doručování licencí](protect-with-drm.md)
-* [ZakódovatHTTPAndPublishAESŠifrované](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/tree/master/NETCore/EncodeHTTPAndPublishAESEncrypted)
+* [EncodeHTTPAndPublishAESEncrypted](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/tree/master/NETCore/EncodeHTTPAndPublishAESEncrypted)

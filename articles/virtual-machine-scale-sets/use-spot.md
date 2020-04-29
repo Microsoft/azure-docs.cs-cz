@@ -1,6 +1,6 @@
 ---
-title: Vytvoření škálovací sady, která používá virtuální počítače Azure Spot
-description: Zjistěte, jak vytvořit škálovací sady virtuálních strojů Azure, které používají virtuální počítače Spot k úspoře nákladů.
+title: Vytvoření sady škálování, která používá virtuální počítače Azure
+description: Naučte se vytvářet služby Azure Virtual Machine Scale Sets, které k úsporám šetří náklady pomocí virtuálních počítačů na místě.
 author: cynthn
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
@@ -8,40 +8,40 @@ ms.topic: article
 ms.date: 03/25/2020
 ms.author: cynthn
 ms.openlocfilehash: a7bd22032a554c83a2ea2323ffdb3ae52dfe4faf
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80545933"
 ---
-# <a name="azure-spot-vms-for-virtual-machine-scale-sets"></a>Virtuální počítače Azure Spot pro škálovací sady virtuálních strojů 
+# <a name="azure-spot-vms-for-virtual-machine-scale-sets"></a>Virtuální počítače Azure na místě pro Virtual Machine Scale Sets 
 
-Použití Azure Spot na škálovacích sadách vám umožní využít naši nevyužitou kapacitu s výraznými úsporami nákladů. Kdykoli v okamžiku, kdy Azure potřebuje kapacitu zpět, infrastruktura Azure vystěhovává instance Spot. Instance Spot jsou proto skvělé pro úlohy, které mohou zpracovávat přerušení, jako jsou úlohy dávkového zpracování, vývojová a testovací prostředí, velké výpočetní úlohy a další.
+Používání Azure na základě služby škálování na úrovni služby umožňuje využít výhod naší nevyužité kapacity s významnou úsporou nákladů. V jakémkoli okamžiku, kdy Azure potřebuje kapacitu zpět, bude infrastruktura Azure vyřadit instance v přímých intervalech. Proto jsou významné instance pro úlohy, které mohou zpracovávat přerušení jako úlohy dávkového zpracování, vývojová a testovací prostředí, velké výpočetní úlohy a další, velmi Skvělé.
 
-Množství dostupné kapacity se může lišit v závislosti na velikosti, oblasti, denní době a dalších. Při nasazování instancí Spot na škálovacísady Azure přidělí instanci pouze v případě, že je k dispozici kapacita, ale pro tyto instance neexistuje žádná sla. Škálovací sada Spot se nasadí v jedné doméně selhání a nenabízí žádné záruky vysoké dostupnosti.
+Množství dostupné kapacity se může lišit v závislosti na velikosti, oblasti, denní době a dalších. Při nasazování přímých instancí na sady škálování Azure přidělí tuto instanci jenom v případě, že je dostupná kapacita, ale pro tyto instance neexistuje žádná smlouva SLA. Sada škálování na místě je nasazená v jedné doméně selhání a neposkytuje žádné záruky vysoké dostupnosti.
 
 
 ## <a name="pricing"></a>Ceny
 
-Ceny pro spotové instance jsou variabilní na základě oblasti a skladové položky. Další informace naleznete v tématu ceny pro [Linux](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/linux/) a [Windows](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/windows/). 
+Ceny pro instance přímých instancí jsou proměnné na základě oblastí a SKU. Další informace najdete v tématu ceny pro [Linux](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/linux/) a [Windows](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/windows/). 
 
 
-S variabilními cenami máte možnost nastavit maximální cenu v amerických dolarech (USD) s použitím až 5 desetinných míst. Například hodnota `0.98765`by byla maximální cena $0.98765 USD za hodinu. Pokud nastavíte maximální `-1`cenu , instance nebude vystěhována na základě ceny. Cena instance bude aktuální cena spotu nebo cena za standardní instanci, která je vždy nižší, pokud je k dispozici kapacita a kvóta.
+S proměnnými cenami máte možnost nastavit maximální cenu v USD (USD), která používá až 5 desetinných míst. Hodnota `0.98765`by měla být například maximální cena $0,98765 USD za hodinu. Pokud nastavíte maximální cenu `-1`, instance se nevyřadí na základě ceny. Cena za instanci bude aktuální cena za cenu nebo cena standardní instance, která je stále menší, pokud je k dispozici kapacita a kvóta.
 
-## <a name="eviction-policy"></a>Politika vystěhovaní
+## <a name="eviction-policy"></a>Zásada vyřazení
 
-Při vytváření škálovacích sad Bodů můžete nastavit zásadu vyřazení na *Navrátit* (výchozí) nebo *Odstranit*. 
+Při vytváření sad s přímým škálováním můžete nastavit zásadu vyřazení, aby se nastavilo zrušení *přidělení* (výchozí) nebo *odstranění*. 
 
-Zásada *Nadeřit* přesune vaše vyřazené instance do zastaveného stavu, který umožňuje znovu nasadit vyřazené instance. Neexistuje však žádná záruka, že přidělení bude úspěšné. Přidělené virtuální počítače se započítávají do kvóty instance škálovací sady a budou se vám účtovat podkladové disky. 
+Zásady zrušení *přidělení* přesouvá vaše vyřazené instance do stavu Zastaveno (přidělení zrušeno), což vám umožní znovu nasadit vyřazené instance. Neexistuje však záruka, že přidělení bude úspěšné. Navrácené virtuální počítače se budou počítat s kvótou instance sady škálování a budou se vám účtovat vaše základní disky. 
 
-Pokud chcete, aby byly vaše instance ve škálovací sadě Bodů odstraněny při jejich vyřazení, můžete nastavit zásadu vyřazení tak, aby byla *odstraněna*. Se zásadou vyřazení nastavenou na odstranění můžete vytvořit nové virtuální počítačky zvýšením vlastnosti počet instancí sady škálování. Vyřazené virtuální počítače se odstraní společně s jejich základní disky, a proto se vám nebude účtovat za úložiště. Funkci automatického škálování škálovacích sad můžete také použít k automatickému pokusu o kompenzaci vyřazených virtuálních jevů, ale neexistuje žádná záruka, že přidělení bude úspěšné. Doporučujeme používat funkci automatického škálování pouze v sadách škálovacích stupňů Spot, když nastavíte zásadu vyřazení, aby se zabránilo nákladům na disky a dosažení limitů kvót. 
+Pokud chcete, aby se vaše instance na škále vašich přímých škálování odstranily při jejich vyřazení, můžete nastavit zásadu vyřazení, která se má *Odstranit*. Když je zásada vyřazení nastavená tak, aby se odstranila, můžete vytvořit nové virtuální počítače tím, že zvýšíte vlastnost počet instancí sady škálování. Vyřazení virtuálních počítačů se odstraní společně s jejich podkladovým diskům, takže se za úložiště nebudete účtovat. K automatickému vyzkoušení a kompenzaci vydaných virtuálních počítačů můžete použít také funkci automatického škálování sad škálování, ale nezaručujeme, že přidělení bude úspěšné. Pokud nastavíte zásadu vyřazení na hodnotu odstranit, doporučujeme vám používat jenom funkci automatického škálování na škále bodů obnovení, abyste se vyhnuli nákladům na vaše disky a omezeními kvót. 
 
-Uživatelé se můžou přihlásit k odběru oznámení ve virtuálním počítači prostřednictvím [naplánovaných událostí Azure](../virtual-machines/linux/scheduled-events.md). To vás upozorní, pokud vaše virtuální počítače jsou vyřazovány a budete mít 30 sekund k dokončení všech úloh a provedení úloh vypnutí před vyřazení. 
+Uživatelé se můžou přihlásit k přijímání oznámení v rámci virtuálního počítače prostřednictvím [Azure Scheduled Events](../virtual-machines/linux/scheduled-events.md). To vám upozorní na to, jestli se virtuální počítače vyloučí a že budete mít 30 sekund na dokončení všech úloh a před vyřazením provést úlohy vypnutí. 
 
 
-## <a name="deploying-spot-vms-in-scale-sets"></a>Nasazení virtuálních virtuálních jevů ve škálovacích sadách
+## <a name="deploying-spot-vms-in-scale-sets"></a>Nasazení virtuálních počítačů na místě v sadách škálování
 
-Chcete-li nasadit virtuální virtuální počítači Spot ve škálovacích sadách, můžete nastavit nový příznak *Priority* na *bod .* Všechny virtuální počítače ve vaší škálovací sadě se nastaví na spot. Chcete-li vytvořit škálovací sadu pomocí virtuálních virtuálních měn Spot, použijte jednu z následujících metod:
+Pokud chcete nasadit virtuální počítače na místě v sadě škálování, můžete nastavit příznak nové *priority* tak, aby byl *bodový*. Všechny virtuální počítače ve vaší sadě škálování budou nastavené na bodové. Pokud chcete vytvořit sadu škálování s virtuálními počítači, použijte jednu z následujících metod:
 - [portál Azure](#portal)
 - [Azure CLI](#azure-cli)
 - [Azure PowerShell](#powershell)
@@ -49,12 +49,12 @@ Chcete-li nasadit virtuální virtuální počítači Spot ve škálovacích sad
 
 ## <a name="portal"></a>Portál
 
-Proces vytvoření škálovací sady, která používá virtuální virtuální chod spotů, je stejný jako podrobně popsaný v [článku Začínáme](quick-create-portal.md). Při nasazování škálovací sady můžete nastavit příznak Spot a zásady vyřazování: ![Vytvořte škálovací sadu pomocí virtuálních počítačích Spot.](media/virtual-machine-scale-sets-use-spot/vmss-spot-portal-max-price.png)
+Proces vytvoření sady škálování, která používá virtuální počítače na místě, je stejný, jak je popsáno v [článku Začínáme](quick-create-portal.md). Když nasazujete sadu škálování, můžete nastavit příznak bodu a zásadu vyřazení: vytvoření sady škálování s virtuálními počítači ![s přímým použitím virtuálních počítačů.](media/virtual-machine-scale-sets-use-spot/vmss-spot-portal-max-price.png)
 
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Proces vytvoření škálovací sady s virtuálními virtuálními ms spotů je stejný jako podrobně popsaný v [článku Začínáme](quick-create-cli.md). Stačí přidat '--Priority Spot' `--max-price`a přidat . V tomto příkladu `-1` `--max-price` používáme pro tak instance nebude vystěhována na základě ceny.
+Proces vytvoření sady škálování se stejnými virtuálními počítači je stejný, jak je popsáno v [článku Začínáme](quick-create-cli.md). Stačí přidat klíčové slovo--priority a přidat `--max-price`. V tomto příkladu používáme `-1` pro `--max-price` , takže instance nebude vyřazení na základě ceny.
 
 ```azurecli
 az vmss create \
@@ -70,8 +70,8 @@ az vmss create \
 
 ## <a name="powershell"></a>PowerShell
 
-Proces vytvoření škálovací sady s virtuálními virtuálními ms spotů je stejný jako podrobně popsaný v [článku Začínáme](quick-create-powershell.md).
-Stačí přidat '-Priority Spot', `-max-price` a dodat [new-AzVmssConfig](/powershell/module/az.compute/new-azvmssconfig).
+Proces vytvoření sady škálování se stejnými virtuálními počítači je stejný, jak je popsáno v [článku Začínáme](quick-create-powershell.md).
+Stačí přidat klíčové slovo "– prioritní" a zadat `-max-price` do příkazu [New-AzVmssConfig](/powershell/module/az.compute/new-azvmssconfig).
 
 ```powershell
 $vmssConfig = New-AzVmssConfig `
@@ -85,9 +85,9 @@ $vmssConfig = New-AzVmssConfig `
 
 ## <a name="resource-manager-templates"></a>Šablony Resource Manageru
 
-Proces vytvoření škálovací sady, která používá virtuální počítače Spot, je stejný jako podrobně popsaný v článku Začínáme pro [Linux](quick-create-template-linux.md) nebo [Windows](quick-create-template-windows.md). 
+Proces vytvoření sady škálování, která používá bodové virtuální počítače, je stejný, jak je popsáno v článku Začínáme pro [Linux](quick-create-template-linux.md) nebo [Windows](quick-create-template-windows.md). 
 
-Pro nasazení šablony Spot`"apiVersion": "2019-03-01"` použijte nebo novější. Přidejte `priority` `evictionPolicy` vlastnosti `billingProfile` a `"virtualMachineProfile":` do oddílu v šabloně: 
+Pro nasazení šablon přímých verzí použijte`"apiVersion": "2019-03-01"` nebo novější. Přidejte do `"virtualMachineProfile":` části `evictionPolicy` šablony `billingProfile` a vlastnosti: `priority` 
 
 ```json
                 "priority": "Spot",
@@ -97,75 +97,75 @@ Pro nasazení šablony Spot`"apiVersion": "2019-03-01"` použijte nebo novějš�
                 }
 ```
 
-Chcete-li instanci odstranit po vyřazení, změňte `evictionPolicy` parametr na `Delete`.
+Chcete-li odstranit instanci poté, co byla vyřazena, změňte `evictionPolicy` parametr na `Delete`.
 
 ## <a name="faq"></a>Nejčastější dotazy
 
-**Otázka:** Je instance Spot po vytvoření stejná jako standardní instance?
+**Otázka:** Po vytvoření je stejná jako instance stejné jako standardní instance?
 
-**A:** Ano, kromě toho, že neexistuje žádná smlouva SLA pro virtuální virtuální chod spotů a mohou být kdykoli vystěhovány.
-
-
-**Otázka:** Co dělat, když se vystěhují, ale stále potřebujete kapacitu?
-
-**A:** Doporučujeme používat standardní virtuální chod místo virtuálních virtuálních měn spot, pokud potřebujete kapacitu hned.
+**A:** Ano, s výjimkou smlouvy SLA pro virtuální počítače na místě a jejich vyřazení z provozu kdykoli se dá provést.
 
 
-**Otázka:** Jak se spravuje kvóta pro spot?
+**Otázka:** Co dělat při vyřazení, ale stále potřebují kapacitu?
 
-**A:** Přímé instance a standardní instance budou mít samostatné fondy kvót. Kvóta na místě se bude sdílet mezi virtuálními stránkami a instancemi škálovací sady. Další informace najdete v tématu [Limity, kvóty a omezení předplatného a služeb Azure](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits).
-
-
-**Otázka:** Mohu požádat o další kvótu pro Spot?
-
-**A:** Ano, budete moci odeslat žádost o zvýšení kvóty pro virtuální počítače Spot prostřednictvím [procesu standardní žádosti o kvótu](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests).
+**A:** Pokud potřebujete kapacitu hned, doporučujeme použít virtuální počítače místo přímých virtuálních počítačů.
 
 
-**Otázka:** Mohu převést stávající škálovací sady na sady bodových měřítek?
+**Otázka:** Jak se Správa kvót spravuje pro místo?
 
-**A:** Ne, nastavení `Spot` příznaku je podporováno pouze v době vytvoření.
-
-
-**Otázka:** Pokud jsem `low` používal pro škálovací sady s nízkou `Spot` prioritou, musím místo toho začít používat?
-
-**A:** Pro tuto `low` chvíli, a to jak a `Spot` bude `Spot`fungovat, ale měli byste začít přechod na používání .
+**A:** Instance bodů a standardní instance budou mít samostatné fondy kvót. Kvóta na místě se bude sdílet mezi virtuálními počítači a instancemi sady škálování. Další informace najdete v tématu [Limity, kvóty a omezení předplatného a služeb Azure](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits).
 
 
-**Otázka:** Můžu vytvořit škálovací sadu s běžnými virtuálními aplikacemi i virtuálními virtuálními aplikacemi spot?
+**Otázka:** Můžu požádat o další kvótu na místě?
 
-**A:** Ne, škálovací sada nemůže podporovat více než jeden typ priority.
-
-
-**Otázka:**  Mohu používat automatické škálování se sadami bodových měřítek?
-
-**A:** Ano, v škálovací sadě Bodů můžete nastavit pravidla automatického škálování. Pokud jsou vaše virtuální počítače vyřazeny, automatické škálování se může pokusit vytvořit nové virtuální počítače Spot. Pamatujte si, že není zaručena tato kapacita ačkoli. 
+**A:** Ano, žádost budete moci odeslat, abyste zvýšili kvótu pro virtuální počítače pomocí [procesu žádosti o standardní kvótu](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests).
 
 
-**Otázka:**  Funguje automatické škálování s oběma zásadami vyřazování (navrátit a odstranit)?
+**Otázka:** Můžu převést existující sady škálování na škálované sady škálování?
 
-**A:** Doporučujeme nastavit zásady vyřazení odstranit při použití automatického škálování. Důvodem je, že problémové instance se počítají s počtem kapacit na škálovací sadě. Při použití automatického škálování pravděpodobně rychle zasáhnete počet cílových instancí kvůli přidělených, vyřazených instancí. 
+**A:** Ne, nastavení `Spot` příznaku se podporuje jenom při vytvoření.
 
 
-**Otázka:** Jaké kanály podporují spotové virtuální aplikace?
+**Otázka:** `low` Pokud používám sadu škálování s nízkou prioritou, musím místo toho začít používat `Spot` ?
 
-**A:** Dostupnost virtuálního virtuálního bodu najdete v tabulce níže.
+**A:** Prozatím `low` `Spot` bude fungovat i, ale měli byste začít s přechodem na použití `Spot`.
+
+
+**Otázka:** Můžu vytvořit sadu škálování s pravidelnými virtuálními počítači i s virtuálními počítači?
+
+**A:** Ne, sada škálování nepodporuje více než jeden typ priority.
+
+
+**Otázka:**  Můžu používat automatické škálování se sadami škálování na místě?
+
+**A:** Ano, můžete nastavit pravidla automatického škálování pro sadu škálování na místě. Pokud jsou vaše virtuální počítače vyřazené, automatické škálování se může pokusit vytvořit nové virtuální počítače na místě. Nezapomeňte, že tuto kapacitu nezaručujete. 
+
+
+**Otázka:**  Funguje automatické škálování podle zásad vyřazení (navrácení a odstranění)?
+
+**A:** Doporučuje se nastavit zásadu vyřazení, která se má odstranit při použití automatického škálování. Důvodem je to, že nepřidělené instance se počítají na základě počtu kapacit v sadě škálování. Při použití automatického škálování se pravděpodobně vám v důsledku navrácených instancí dokončí počet cílových instancí rychleji. 
+
+
+**Otázka:** Jaké kanály podporují přímé virtuální počítače?
+
+**A:** V následující tabulce najdete informace o dostupnosti virtuálních počítačů.
 
 <a name="channel"></a>
 
-| Kanály Azure               | Dostupnost virtuálních počítače Azure Spot       |
+| Kanály Azure               | Dostupnost virtuálních počítačů Azure       |
 |------------------------------|-----------------------------------|
 | Smlouva Enterprise         | Ano                               |
 | Pay As You Go                | Ano                               |
-| Poskytovatel cloudových služeb (CSP) | [Kontaktujte svého partnera](https://docs.microsoft.com/partner-center/azure-plan-get-started) |
+| Poskytovatel cloudových služeb (CSP) | [Obraťte se na svého partnera.](https://docs.microsoft.com/partner-center/azure-plan-get-started) |
 | Výhody                     | Není k dispozici.                     |
-| Sponzorované                    | Není k dispozici.                     |
+| Financovan                    | Není k dispozici.                     |
 | Bezplatná zkušební verze                   | Není k dispozici.                     |
 
 
-**Otázka:** Kde mohu psát otázky?
+**Otázka:** Kde můžu publikovat otázky?
 
-**A:** Svůj dotaz můžete zveřejnit `azure-spot` a označit na [q&A](https://docs.microsoft.com/answers/topics/azure-spot.html). 
+**A:** Svůj dotaz můžete odeslat a označit `azure-spot` na adrese [Q&A](https://docs.microsoft.com/answers/topics/azure-spot.html). 
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na [stránku s cenami škálovací sady virtuálních strojů, kde](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/linux/) najdete podrobnosti o cenách.
+Podrobnosti o cenách najdete na [stránce s cenami sady škálování virtuálních počítačů](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/linux/) .

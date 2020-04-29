@@ -1,6 +1,6 @@
 ---
-title: Podrobné informace o službě Gateway a osvědčené postupy pro Apache Hive v Azure HDInsight
-description: Zjistěte, jak se orientovat v doporučených postupech pro spouštění dotazů Hive přes bránu Azure HDInsight
+title: Podrobně a osvědčené postupy brány pro Apache Hive ve službě Azure HDInsight
+description: Naučte se, jak přejít k osvědčeným postupům pro spouštění dotazů na podregistry přes bránu Azure HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,79 +8,79 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.openlocfilehash: 924b1132efeb3ee4211593da190f5b7251029ae3
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80586974"
 ---
-# <a name="gateway-deep-dive-and-best-practices-for-apache-hive-in-azure-hdinsight"></a>Podrobné informace o službě Gateway a osvědčené postupy pro Apache Hive v Azure HDInsight
+# <a name="gateway-deep-dive-and-best-practices-for-apache-hive-in-azure-hdinsight"></a>Podrobně a osvědčené postupy brány pro Apache Hive ve službě Azure HDInsight
 
-Brána Azure HDInsight (Gateway) je front-end HTTPS pro clustery HDInsight. Brána je zodpovědná za: ověřování, rozlišení hostitele, zjišťování služeb a další užitečné funkce nezbytné pro moderní distribuovaný systém. Funkce poskytované bránou mají za následek určitou režii, pro kterou tento dokument popisuje osvědčené postupy pro navigaci. Brány řešení potíží jsou také popsány.
+Brána Azure HDInsight (brána) je front-end HTTPS pro clustery HDInsight. Brána zodpovídá za: ověřování, rozlišení hostitele, zjišťování služeb a další užitečné funkce, které jsou nezbytné pro moderní distribuované systémy. U funkcí poskytovaných bránou dojde k nějaké režii, za kterou tento dokument popisuje osvědčené postupy pro navigaci. Jsou zde také popsány techniky řešení potíží s bránou.
 
 ## <a name="the-hdinsight-gateway"></a>Brána HDInsight
 
-Brána HDInsight je jedinou částí clusteru HDInsight, která je veřejně přístupná přes internet. Služba Gateway je přístupná bez nutnosti přecit přes veřejný internet pomocí koncového `clustername-int.azurehdinsight.net` bodu interní brány. Koncový bod interní brány umožňuje navázat připojení ke službě brány bez ukončení virtuální sítě clusteru. Brána zpracovává všechny požadavky, které jsou odesílány do clusteru a předá tyto požadavky správné součásti a hostitelé clusteru.
+Brána HDInsight je jediná část clusteru HDInsight, která je veřejně přístupná prostřednictvím Internetu. Služba brány je k dispozici bez nutnosti přecházet přes veřejný Internet pomocí koncového bodu `clustername-int.azurehdinsight.net` interní brány. Koncový bod interní brány umožňuje navázat připojení ke službě brány bez opuštění virtuální sítě clusteru. Brána zpracovává všechny požadavky, které se odesílají do clusteru, a předává tyto požadavky na správné komponenty a hostitele clusteru.
 
-Následující diagram poskytuje hrubou ilustraci toho, jak brána poskytuje abstrakci před všemi různými možnostmi rozlišení hostitele v rámci HDInsight.
+Následující diagram poskytuje hrubou ilustraci, jak brána poskytuje abstrakci před všemi různými možnostmi rozlišení hostitele v rámci služby HDInsight.
 
-![Diagram řešení hostitele](./media/gateway-best-practices/host-resolution-diagram.png "Diagram řešení hostitele")
+![Diagram rozlišení hostitele](./media/gateway-best-practices/host-resolution-diagram.png "Diagram rozlišení hostitele")
 
 ## <a name="motivation"></a>Motivace
 
-Motivací pro umístění brány před clustery HDInsight je poskytnout rozhraní pro zjišťování služeb a ověřování uživatelů. Mechanismy ověřování poskytované bránou jsou obzvláště důležité pro clustery s podporou protokolu ESP.
+Motivace pro vložení brány do clusterů HDInsight je poskytnout rozhraní pro zjišťování služeb a ověřování uživatelů. Mechanismy ověřování poskytované bránou jsou obzvláště důležité pro clustery s podporou protokolu ESP.
 
-Pro zjišťování služby výhodou brány je, že každá součást v rámci clusteru je `clustername.azurehdinsight.net/hive2`přístupná jako jiný koncový `host:port` bod na webu brány ( ), na rozdíl od velkého počtu párování.
+Pro zjišťování služeb je výhodou brány, že každá součást v clusteru je přístupná jako jiný koncový bod na webu brány ( `clustername.azurehdinsight.net/hive2`), a to na rozdíl od velkého množství `host:port` párů.
 
-Pro ověřování umožňuje brána uživatelům `username:password` ověření pomocí dvojice pověření. Pro clustery s podporou ESP by toto pověření bylo uživatelské jméno a heslo domény uživatele. Ověřování clusterů HDInsight prostřednictvím brány nevyžaduje, aby klient získal lístek kerberos. Vzhledem k `username:password` tomu, že brána přijímá pověření a získává lístek kerberos uživatele jménem uživatele, lze k bráně vytvořit zabezpečená připojení z libovolného hostitele klienta, včetně klientů spojených s různými doménami AA-DDS než cluster (ESP).
+Pro ověřování brána umožňuje uživatelům ověřování pomocí páru `username:password` přihlašovacích údajů. U clusterů s podporou protokolu ESP by toto pověření představovalo uživatelské jméno a heslo v doméně uživatele. Ověřování clusterů HDInsight přes bránu nevyžaduje, aby klient získal lístek protokolu Kerberos. Vzhledem k tomu, `username:password` že brána přijímá přihlašovací údaje a získá v zastoupení uživatele lístek protokolu Kerberos, lze zabezpečená připojení k bráně z libovolného hostitele klienta, včetně klientů připojených k různým doménám AA-DDS než cluster (ESP).
 
 ## <a name="best-practices"></a>Osvědčené postupy
 
-Brána je jedna služba (vyrovnávání zatížení mezi dvěma hostiteli) zodpovědná za předávání a ověřování požadavků. Brána se může stát kritickým bodem propustnosti pro dotazy Hive přesahující určitou velikost. Snížení výkonu dotazu může být pozorováno při velmi velké **dotazy SELECT** jsou spouštěny na gateway prostřednictvím ROZHRANÍ ODBC nebo JDBC. "Velmi velké" znamená dotazy, které tvoří více než 5 GB dat napříč řádky nebo sloupci. Tento dotaz může obsahovat dlouhý seznam řádků a nebo široký počet sloupců.
+Brána je jediná služba (s vyrovnáváním zatížení mezi dvěma hostiteli), která je odpovědná za předávání a ověřování žádostí. Brána se může stát kritickým bodem propustnosti pro dotazy na podregistry překračující určitou velikost. Když se v bráně přes rozhraní ODBC nebo JDBC spouští velmi velké dotazy **výběru** , může se pozorovat snížení výkonu dotazů. Velmi velké znamená dotazy, které tvoří více než 5 GB dat napříč řádky nebo sloupci. Tento dotaz by mohl obsahovat dlouhý seznam řádků a nebo velký počet sloupců.
 
-Snížení výkonu brány kolem dotazů velké velikosti je, protože data musí být přenesena z podkladového úložiště dat (ADLS Gen2) na: HDInsight Hive Server, gateway a nakonec prostřednictvím ovladačů JDBC nebo ODBC na hostitele klienta.
+Snížení výkonu brány proti dotazům velké velikosti je způsobeno tím, že data musí být přenesena z podkladového úložiště dat (ADLS Gen2) na: Server pro podregistr HDInsight, bránu a nakonec prostřednictvím ovladače JDBC nebo ODBC na hostitele klienta.
 
-Následující diagram znázorňuje kroky související s dotazem SELECT.
+Následující diagram znázorňuje kroky zahrnuté v dotazu SELECT.
 
 ![Diagram výsledků](./media/gateway-best-practices/result-retrieval-diagram.png "Diagram výsledků")
 
-Apache Hive je relační abstrakce nad souborovým systémem kompatibilním s HDFS. Tato abstrakce znamená **SELECT** příkazy v Hive odpovídají operacím **čtení** v souborovém systému. Operace **čtení** jsou přeloženy do příslušnéschéma před nahlášeno u uživatele. Latence tohoto procesu se zvyšuje s velikostí dat a celkovým počtem směrování potřebných k oslovení koncového uživatele.
+Apache Hive je relační abstrakce nad systémem souborů, který je kompatibilní s HDFS. Tato abstrakce znamená, že příkazy **Select** v podregistru odpovídají operacím **čtení** v systému souborů. Operace **čtení** jsou přeloženy do příslušného schématu před Nahlášením uživateli. Latence tohoto procesu se zvyšuje o velikost dat a celkový počet směrování potřebných k dosažení koncového uživatele.
 
-Podobné chování může dojít při provádění **CREATE** nebo **INSERT** příkazy velkých dat, protože tyto příkazy budou odpovídat **write** operace v základním souborovém systému. Zvažte zápis dat, jako je například nezpracovaný ORC, do souborového systému/datalake namísto načtení pomocí **INSERT** nebo **LOAD**.
+K podobnému chování může dojít při provádění příkazů **Create** nebo **INSERT** velkých objemů dat, protože tyto příkazy budou odpovídat operacím **zápisu** v podkladovém systému souborů. Zvažte zápis dat, jako je RAW ORC, do systému souborů/datalake, místo aby se načetly pomocí **metody** **INSERT** nebo Load.
 
-V clusterech s podporou sady Enterprise Security Pack může způsobit dostatečně složité zásady Apache Ranger zpomalení doby kompilace dotazů, což může vést k časovému limitu brány. Pokud je v clusteru ESP zaznamenán časový rozsah brány, zvažte snížení nebo kombinování počtu zásad ranger.
+V clusterech s podporou sady Enterprise Security Pack můžou dostatečně složité zásady Apache Ranger způsobit zpomalení doby kompilace dotazů, což může vést k vypršení časového limitu brány. Pokud se v clusteru ESP zaznamená časový limit brány, zvažte snížení nebo kombinování počtu zásad Ranger.
 
-## <a name="troubleshooting-techniques"></a>Postupy řešení potíží
+## <a name="troubleshooting-techniques"></a>Techniky řešení potíží
 
-Existuje více míst pro zmírnění a pochopení problémů s výkonem splněny jako součást výše uvedeného chování. Při snížení výkonu dotazů nad bránou HDInsight použijte následující kontrolní seznam:
+Existuje několik míst pro zmírnění rizik a porozumění problémům s výkonem, které jsou splněné v rámci výše uvedeného chování. Použijte následující kontrolní seznam při vykonávání snížení výkonu dotazů prostřednictvím brány HDInsight:
 
-* Klauzuli **LIMIT** použijte při provádění velkých dotazů **SELECT.** Klauzule **LIMIT** sníží celkový počet řádků hlášených hostiteli klienta. Klauzule **LIMIT** ovlivňuje pouze generování výsledků a nemění plán dotazu. Chcete-li použít **klauzuli LIMIT** v `hive.limit.optimize.enable`plánu dotazů, použijte konfiguraci . **LIMIT** lze kombinovat s posunem pomocí formuláře **argumentu LIMIT x,y**.
+* Při provádění velkých dotazů **Select** použijte klauzuli **limit** . Klauzule **limit** omezuje celkové řádky hlášené na hostitele klienta. Klauzule **limit** ovlivňuje pouze generování výsledků a nemění plán dotazu. Chcete-li použít klauzuli **limit** pro plán dotazu, použijte konfiguraci `hive.limit.optimize.enable`. **Limit** lze kombinovat s posunem pomocí omezení formuláře argumentu **x, y**.
 
-* Pojmenujte sloupce, které vás zajímají, při spuštění dotazů **SELECT** namísto použití **funkce SELECT \* **. Výběrem menšího počtu sloupců se sníží množství přečtených dat.
+* Pojmenujte sloupce důležité při spuštění dotazů **Select** namísto použití **Select \* **. Výběr méně sloupců sníží množství čtených dat.
 
-* Zkuste spustit dotaz zájmu prostřednictvím Apache Beeline. Pokud načítání výsledků přes Apache Beeline trvá delší dobu, očekávejte zpoždění při načítání stejných výsledků prostřednictvím externích nástrojů.
+* Zkuste spustit dotaz, který vás zajímá prostřednictvím Apache Beeline. Pokud načítání výsledků prostřednictvím Apache Beeline trvá delší dobu, očekávat prodlevy při načítání stejných výsledků prostřednictvím externích nástrojů.
 
-* Otestujte základní dotaz Hive, abyste zajistili, že lze navázat připojení k bráně HDInsight. Zkuste spustit základní dotaz ze dvou nebo více externích nástrojů a ujistěte se, že žádný jednotlivý nástroj není spuštěn do problémů.
+* Otestujte základní dotaz na podregistr, abyste měli jistotu, že je možné navázat připojení k bráně HDInsight. Zkuste spustit základní dotaz ze dvou nebo více externích nástrojů, abyste se ujistili, že žádný z těchto nástrojů neběží.
 
-* Zkontrolujte všechny apache ambari výstrahy, abyste se ujistili, že služby HDInsight jsou v pořádku. Ambari Výstrahy lze integrovat s Azure Monitor pro vytváření sestav a analýzy.
+* Projděte si všechny výstrahy Apache Ambari a ujistěte se, že jsou služby HDInsight v dobrém stavu. Výstrahy Ambari je možné integrovat s Azure Monitor pro vytváření sestav a analýzy.
 
-* Pokud používáte externí Hive Metastore, zkontrolujte, že Azure SQL DB DTU pro Hive Metastore nedosáhla svého limitu. Pokud DTU se blíží jeho limit, budete muset zvětšit velikost databáze.
+* Pokud používáte externí podregistr metastore, ověřte, že metastore úložiště Azure SQL DB pro podregistr nedosáhlo svého limitu. Pokud se DTU blíží ke svému limitu, budete muset zvětšit velikost databáze.
 
-* Ujistěte se, že všechny nástroje jiných výrobců, jako je PBI nebo Tableau používají stránkování k zobrazení tabulek nebo databází. Poraďte se se svými partnery podpory pro tyto nástroje pro pomoc při stránkování. Hlavním nástrojem používaným pro stránkování je `fetchSize` parametr JDBC. Malá velikost načtení může mít za následek snížení výkonu brány, ale velikost načítání příliš velká může mít za následek časový čas brány. Optimalizace velikosti načítání musí být provedena na základě zatížení.
+* Zajistěte, aby všechny nástroje třetích stran, jako je PBI nebo Tableau, používaly stránkování k zobrazení tabulek nebo databází. Pokud potřebujete pomoc s stránkováním, obraťte se na partnery podpory pro tyto nástroje. Hlavním nástrojem použitým pro stránkování je parametr JDBC `fetchSize` . Velikost malého načtení může způsobit snížení výkonu brány, ale příliš velká velikost načtení může mít za následek časový limit brány. Ladění velikosti načtení se musí provádět na základě zatížení.
 
-* Pokud váš datový kanál zahrnuje čtení velkého množství dat ze základního úložiště clusteru HDInsight, zvažte použití nástroje, který je propojen přímo s Azure Storage, jako je Azure Data Factory.
+* Pokud váš datový kanál zahrnuje čtení velkého množství dat z podkladového úložiště clusteru HDInsight, zvažte použití nástroje, který rozhraní přímo s Azure Storage, například Azure Data Factory
 
-* Zvažte použití Apache Hive LLAP při spouštění interaktivních úloh, protože LLAP může poskytnout plynulejší prostředí pro rychlé vrácení výsledků dotazu
+* Při spouštění interaktivních úloh zvažte použití Apache Hive LLAP, protože LLAP může poskytovat plynulejší prostředí pro rychlé vracení výsledků dotazu.
 
-* Zvažte zvýšení počtu podprocesů, které jsou k `hive.server2.thrift.max.worker.threads`dispozici pro službu Hive Metastore pomocí . Toto nastavení je důležité zejména v případě, že do clusteru odesílá dotazy vysoký počet souběžných uživatelů.
+* Zvažte zvýšení počtu vláken dostupných pro službu metastore podregistru pomocí `hive.server2.thrift.max.worker.threads`. Toto nastavení je obzvláště důležité, když velký počet souběžných uživatelů posílá dotazy do clusteru.
 
-* Snižte počet opakovaných pokusů použitých k přístupu do brány z libovolného externího nástroje. Pokud se používá více opakování, zvažte následující exponenciální zásady zpětného opakování
+* Snižte počet opakovaných pokusů, které se použily pro přístup k bráně z jakýchkoli externích nástrojů. Je-li použito více opakovaných pokusů, zvažte následující zásady exponenciálního pokusu o opakování.
 
-* Zvažte povolení komprese Hive `hive.exec.compress.output` `hive.exec.compress.intermediate`pomocí konfigurací a .
+* Zvažte možnost Povolit podregistr komprese pomocí konfigurací `hive.exec.compress.output` a `hive.exec.compress.intermediate`.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Apache Beeline na HDInsight](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-use-hive-beeline)
-* [Postupy řešení potíží s časovým obdobím brány HDInsight](https://docs.microsoft.com/azure/hdinsight/interactive-query/troubleshoot-gateway-timeout)
+* [Apache Beeline ve službě HDInsight](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-use-hive-beeline)
+* [Postup řešení potíží s vypršením časového limitu brány HDInsight](https://docs.microsoft.com/azure/hdinsight/interactive-query/troubleshoot-gateway-timeout)
 * [Virtuální sítě pro HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment)
-* [HDInsight s expresní trasou](https://docs.microsoft.com/azure/hdinsight/connect-on-premises-network)
+* [HDInsight se službou Express Route](https://docs.microsoft.com/azure/hdinsight/connect-on-premises-network)

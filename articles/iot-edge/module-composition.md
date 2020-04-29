@@ -1,6 +1,6 @@
 ---
 title: Nasazení modulu & trasy s manifesty nasazení – Azure IoT Edge
-description: Zjistěte, jak manifest nasazení deklaruje, které moduly nasadit, jak je nasadit a jak mezi nimi vytvořit trasy zpráv.
+description: Přečtěte si, jak manifest nasazení deklaruje, které moduly se mají nasadit, jak je nasadit a jak mezi nimi vytvořit směrování zpráv.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -9,38 +9,38 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 6a4b90d8b6fe67de26c8e652e0dc5b62cc27023f
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80545629"
 ---
 # <a name="learn-how-to-deploy-modules-and-establish-routes-in-iot-edge"></a>Nasazování modulů a vytváření tras ve službě IoT Edge
 
-Každé zařízení IoT Edge běží alespoň dva moduly: $edgeAgent a $edgeHub, které jsou součástí běhu IoT Edge. Zařízení IoT Edge může spustit více dalších modulů pro libovolný počet procesů. Pomocí manifestu nasazení sdělte zařízení, které moduly nainstalovat a jak je nakonfigurovat tak, aby spolupracovaly.
+Každé zařízení IoT Edge spouští alespoň dva moduly: $edgeAgent a $edgeHub, které jsou součástí modulu runtime IoT Edge. Zařízení IoT Edge může spustit více dalších modulů pro libovolný počet procesů. Pomocí manifestu nasazení sdělte vašemu zařízení, které moduly se mají nainstalovat, a jak je nakonfigurovat tak, aby společně spolupracovaly.
 
 *Manifest nasazení* je dokument JSON, který popisuje:
 
-* Dvojče **modulu agenta IoT Edge,** který obsahuje tři součásti:
-  * Image kontejneru pro každý modul, který běží na zařízení.
-  * Pověření pro přístup k registrům soukromých kontejnerů, které obsahují image modulu.
-  * Pokyny pro vytvoření a spravování jednotlivých modulů.
-* Dvojče **modulu IoT Edge hub,** který zahrnuje tok zpráv mezi moduly a nakonec do ioT hubu.
-* Požadované vlastnosti všech dalších dvojčat modulu (volitelné).
+* Modul **IoT Edge agenta** je vyzdvojený, což zahrnuje tři komponenty:
+  * Obrázek kontejneru pro každý modul, který běží na zařízení.
+  * Přihlašovací údaje pro přístup k privátním registrům kontejnerů, které obsahují image modulů.
+  * Pokyny, jak by se měl každý modul vytvářet a spravovat.
+* Modul **IoT Edge hub** je nevlákenný, což zahrnuje způsob toku zpráv mezi moduly a nakonec IoT Hub.
+* Požadované vlastnosti všech dalších vláken modulu (volitelné).
 
-Všechna zařízení IoT Edge musí být nakonfigurována s manifestem nasazení. Nově nainstalovaný běhový čas IoT Edge hlásí kód chyby, dokud není nakonfigurován s platným manifestem.
+Všechna IoT Edge zařízení musí být nakonfigurována pomocí manifestu nasazení. Nově instalovaný IoT Edge modul runtime hlásí kód chyby, dokud není nakonfigurován s platným manifestem.
 
-V kurzech Azure IoT Edge vytvoříte manifest nasazení procházením průvodce na portálu Azure IoT Edge. Manifest nasazení můžete také použít programově pomocí sady REST nebo sady SDK služby IoT Hub. Další informace naleznete [v tématu Understand IoT Edge deployments](module-deployment-monitoring.md).
+V kurzech Azure IoT Edge sestavíte manifest nasazení prostřednictvím Průvodce na portálu Azure IoT Edge. Můžete také použít manifest nasazení programově pomocí REST nebo sady SDK služby IoT Hub. Další informace najdete v tématu [vysvětlení nasazení IoT Edge](module-deployment-monitoring.md).
 
 ## <a name="create-a-deployment-manifest"></a>Vytvoření manifestu nasazení
 
-Na vysoké úrovni manifest nasazení je seznam dvojčat modulu, které jsou nakonfigurovány s jejich požadované vlastnosti. Manifest nasazení říká zařízení IoT Edge (nebo skupině zařízení), které moduly nainstalovat a jak je nakonfigurovat. Manifesty nasazení zahrnují *požadované vlastnosti* pro každý dvojče modulu. Zařízení IoT Edge hlásí *ohlášené vlastnosti* pro každý modul.
+Manifest nasazení je na vysoké úrovni seznamem vláken modulu, které jsou nakonfigurovány s požadovanými vlastnostmi. Manifest nasazení oznamuje IoT Edge zařízení (nebo skupině zařízení), které moduly se mají nainstalovat a jak je nakonfigurovat. Manifesty nasazení obsahují *požadované vlastnosti* pro každý modul s dvojitou vlastností. IoT Edge zařízení hlásí zpět *ohlášené vlastnosti* pro každý modul.
 
-V každém manifestu nasazení jsou `$edgeAgent`vyžadovány dva moduly: a `$edgeHub`. Tyto moduly jsou součástí modulu runtime IoT Edge, který spravuje zařízení IoT Edge a moduly na něm spuštěné. Další informace o těchto modulech naleznete [v tématu Principy modulu runtime IoT Edge a jeho architektury](iot-edge-runtime.md).
+V každém manifestu nasazení jsou vyžadovány dva moduly `$edgeAgent`: a `$edgeHub`. Tyto moduly jsou součástí modulu runtime IoT Edge, který spravuje zařízení IoT Edge a moduly, které jsou v něm spuštěné. Další informace o těchto modulech naleznete v tématu [pochopení IoT Edge runtime a jeho architektury](iot-edge-runtime.md).
 
-Kromě dvou modulů runtime můžete přidat až 20 vlastních modulů, které můžete spustit na zařízení IoT Edge.
+Kromě těchto dvou běhových modulů můžete přidat až 20 modulů, které mají být spuštěny na zařízení IoT Edge.
 
-Manifest nasazení, který obsahuje pouze runtime IoT Edge (edgeAgent a edgeHub) je platný.
+Manifest nasazení, který obsahuje pouze modul runtime IoT Edge (edgeAgent a edgeHub), je platný.
 
 Manifesty nasazení se řídí touto strukturou:
 
@@ -75,13 +75,13 @@ Manifesty nasazení se řídí touto strukturou:
 }
 ```
 
-## <a name="configure-modules"></a>Konfigurace modulů
+## <a name="configure-modules"></a>Konfigurovat moduly
 
-Definujte, jak moduly IoT Edge nainstaluje do vašeho nasazení. Agent IoT Edge je součást runtime, která spravuje instalaci, aktualizace a hlášení stavu pro zařízení IoT Edge. Dvojče modulu $edgeAgent proto obsahuje informace o konfiguraci a správě pro všechny moduly. Tyto informace zahrnují parametry konfigurace samotného agenta IoT Edge.
+Definujte způsob, jakým modul runtime IoT Edge nainstaluje moduly do nasazení. Agent IoT Edge je komponenta modulu runtime, která spravuje instalaci, aktualizace a vytváření sestav o stavu pro IoT Edge zařízení. Proto modul $edgeAgent s dvojitou příponou obsahuje informace o konfiguraci a správě všech modulů. Tyto informace zahrnují parametry konfigurace pro agenta IoT Edge.
 
-Úplný seznam vlastností, které mohou nebo musí být zahrnuty, naleznete [v tématu Vlastnosti agenta IoT Edge a centra IoT Edge](module-edgeagent-edgehub.md).
+Úplný seznam vlastností, které mohou nebo musí být zahrnuté, najdete v tématu [vlastnosti IoT Edge agenta a centra IoT Edge](module-edgeagent-edgehub.md).
 
-Vlastnosti $edgeAgent postupujte podle této struktury:
+Vlastnosti $edgeAgent se řídí touto strukturou:
 
 ```json
 "$edgeAgent": {
@@ -116,9 +116,9 @@ Vlastnosti $edgeAgent postupujte podle této struktury:
 
 ## <a name="declare-routes"></a>Deklarovat trasy
 
-Centrum IoT Edge spravuje komunikaci mezi moduly, službou IoT Hub a všemi zařízeními s listy. Dvojče modulu $edgeHub proto obsahuje požadovanou vlastnost nazvanou *trasy,* která deklaruje, jak jsou zprávy předávány v rámci nasazení. V rámci stejného nasazení můžete mít více tras.
+Centrum IoT Edge spravuje komunikaci mezi moduly, IoT Hub a všemi koncovými zařízeními. Proto modul $edgeHub s dvojitou přesností obsahuje požadovanou vlastnost nazvanou *trasy* , která deklaruje, jak jsou zprávy předávány v rámci nasazení. Můžete mít několik tras v rámci stejného nasazení.
 
-Trasy jsou deklarovány v **$edgeHub** požadované vlastnosti s následující syntaxí:
+Trasy jsou deklarovány v **$edgeHub** požadovaných vlastností s následující syntaxí:
 
 ```json
 "$edgeHub": {
@@ -131,41 +131,41 @@ Trasy jsou deklarovány v **$edgeHub** požadované vlastnosti s následující 
 }
 ```
 
-Každá trasa potřebuje zdroj a jímku, ale podmínka je volitelný kus, který můžete použít k filtrování zpráv.
+Každá trasa potřebuje zdroj a jímku, ale podmínka je volitelným kamenem, který můžete použít k filtrování zpráv.
 
 ### <a name="source"></a>Zdroj
 
-Zdroj určuje, odkud zprávy pocházejí. IoT Edge může směrovat zprávy z modulů nebo listových zařízení.
+Zdroj Určuje, odkud zprávy pocházejí. IoT Edge může směrovat zprávy z modulů nebo na listových zařízeních.
 
-Pomocí sad IoT SDK mohou moduly deklarovat konkrétní výstupní fronty pro své zprávy pomocí třídy ModuleClient. Výstupní fronty nejsou nutné, ale jsou užitečné pro správu více tras. Zařízení Leaf můžou používat třídu DeviceClient sad SDK IoT k odesílání zpráv do zařízení brány IoT Edge stejným způsobem, jako by odesílaly zprávy do služby IoT Hub. Další informace najdete [v tématu Principy a používání sad SDK služby Azure IoT Hub](../iot-hub/iot-hub-devguide-sdks.md).
+Pomocí sad SDK pro IoT můžou moduly deklarovat konkrétní výstupní fronty pro své zprávy pomocí třídy ModuleClient. Výstupní fronty nejsou nutné, ale jsou užitečné pro správu více tras. Koncová zařízení můžou používat třídu DeviceClient sad IoT SDK k posílání zpráv do zařízení IoT Edge brány stejným způsobem, jakým odesílají zprávy IoT Hub. Další informace najdete v tématu [pochopení a používání sad Azure IoT Hub SDK](../iot-hub/iot-hub-devguide-sdks.md).
 
-Source vlastnost může být některou z následujících hodnot:
+Zdrojovou vlastností může být libovolná z následujících hodnot:
 
 | Zdroj | Popis |
 | ------ | ----------- |
-| `/*` | Všechny zprávy mezi zařízeními a cloudy nebo oznámení o změně dvojčete z libovolného modulu nebo zařízení list |
-| `/twinChangeNotifications` | Jakákoli změna dvojčete (hlášené vlastnosti) pocházející z libovolného modulu nebo listového zařízení |
-| `/messages/*` | Jakákoli zpráva mezi zařízeními a cloudy odeslaná modulem prostřednictvím některého nebo žádného výstupu nebo listového zařízení |
-| `/messages/modules/*` | Jakákoli zpráva mezi zařízeními a cloudy odeslaná modulem prostřednictvím některého nebo žádného výstupu |
-| `/messages/modules/<moduleId>/*` | Jakákoli zpráva mezi zařízeními a cloudy odeslaná určitým modulem prostřednictvím některého nebo žádného výstupu |
-| `/messages/modules/<moduleId>/outputs/*` | Jakákoli zpráva mezi zařízeními a cloudy odeslaná určitým modulem prostřednictvím |
-| `/messages/modules/<moduleId>/outputs/<output>` | Jakákoli zpráva mezi zařízeními a cloudy odeslaná určitým modulem prostřednictvím konkrétního výstupu |
+| `/*` | Všechna zprávy typu zařízení-Cloud nebo dopředné oznámení o změnách z libovolného modulu nebo na listovém zařízení |
+| `/twinChangeNotifications` | Všechny nedokončené změny (hlášené vlastnosti) pocházející z libovolného modulu nebo ze zařízení v listech |
+| `/messages/*` | Jakákoli zpráva typu zařízení-Cloud, kterou modul odesílá prostřednictvím nějakého nebo žádného výstupu, nebo na listovém zařízení |
+| `/messages/modules/*` | Jakákoli zpráva typu zařízení-Cloud, kterou modul odesílá pomocí nějakého nebo žádného výstupu |
+| `/messages/modules/<moduleId>/*` | Jakákoli zpráva typu zařízení-Cloud odeslaná konkrétním modulem prostřednictvím nějakého nebo žádného výstupu |
+| `/messages/modules/<moduleId>/outputs/*` | Jakákoli zpráva typu zařízení-Cloud odeslaná konkrétním modulem prostřednictvím nějakého výstupu |
+| `/messages/modules/<moduleId>/outputs/<output>` | Jakákoli zpráva typu zařízení-Cloud odeslaná konkrétním modulem prostřednictvím konkrétního výstupu |
 
 ### <a name="condition"></a>Podmínka
 
-Podmínka je nepovinná v deklaraci postupu. Pokud chcete předat všechny zprávy ze zdroje do jímky, stačí vynechat **klauzuli WHERE** úplně. Nebo můžete použít [dotazovací jazyk služby IoT Hub](../iot-hub/iot-hub-devguide-routing-query-syntax.md) k filtrování určitých zpráv nebo typů zpráv, které splňují podmínku. Trasy IoT Edge nepodporují filtrování zpráv na základě značek dvojčete nebo vlastností.
+Podmínka je v deklaraci trasy volitelná. Pokud chcete předat všechny zprávy ze zdroje do jímky, stačí opustit klauzuli **WHERE** úplně. Nebo můžete použít [jazyk dotazů IoT Hub](../iot-hub/iot-hub-devguide-routing-query-syntax.md) k filtrování určitých zpráv nebo typů zpráv, které podmínku splní. Trasy IoT Edge nepodporují filtrování zpráv na základě dvojitých značek nebo vlastností.
 
-Zprávy, které procházejí mezi moduly v IoT Edge jsou formátovány stejně jako zprávy, které procházejí mezi vašimi zařízeními a Azure IoT Hub. Všechny zprávy jsou formátovány jako JSON a mají **systemProperties**, **appProperties**a **body** parametry.
+Zprávy, které jsou předávány mezi moduly v IoT Edge jsou formátovány stejně jako zprávy, které jsou předávány mezi vašimi zařízeními a službou Azure IoT Hub. Všechny zprávy jsou formátovány jako JSON a mají parametry **systemProperties**, **appProperties**a **text** .
 
-Můžete vytvářet dotazy kolem některého ze tří parametrů s následující syntaxí:
+Dotazy můžete vytvářet kolem libovolného ze tří parametrů s následující syntaxí:
 
-* Vlastnosti `$<propertyName>` systému: nebo`{$<propertyName>}`
+* Vlastnosti systému: `$<propertyName>` nebo`{$<propertyName>}`
 * Vlastnosti aplikace:`<propertyName>`
-* Vlastnosti těla:`$body.<propertyName>`
+* Vlastnosti textu:`$body.<propertyName>`
 
-Příklady o vytváření dotazů na vlastnosti zprávy naleznete v [tématu Zpráva zařízení cloud směruje výrazy dotazu](../iot-hub/iot-hub-devguide-routing-query-syntax.md).
+Příklady, jak vytvářet dotazy na vlastnosti zpráv, najdete v tématu [výrazy dotazů směrování zpráv ze zařízení do cloudu](../iot-hub/iot-hub-devguide-routing-query-syntax.md).
 
-Příkladem, který je specifický pro IoT Edge je, když chcete filtrovat zprávy, které dorazily na zařízení brány z listového zařízení. Zprávy, které pocházejí z modulů patří vlastnost systému s názvem **connectionModuleId**. Pokud tedy chcete směrovat zprávy z listových zařízení přímo do ioT hubu, použijte následující trasu k vyloučení zpráv modulu:
+Příkladem, který je specifický pro IoT Edge, je, že chcete vyfiltrovat zprávy doručené do zařízení brány ze zařízení typu list. Zprávy, které pocházejí z modulů, zahrnují vlastnost System s názvem **connectionModuleId**. Takže pokud chcete směrovat zprávy ze zařízení na listech přímo na IoT Hub, pomocí následujícího postupu vylučte zprávy modulu:
 
 ```query
 FROM /messages/* WHERE NOT IS_DEFINED($connectionModuleId) INTO $upstream
@@ -173,26 +173,26 @@ FROM /messages/* WHERE NOT IS_DEFINED($connectionModuleId) INTO $upstream
 
 ### <a name="sink"></a>Jímka
 
-Jímka definuje, kde jsou odesílány zprávy. Zprávy můžou přijímat pouze moduly a IoT Hub. Zprávy nelze směrovat na jiná zařízení. Ve vlastnosti jímky nejsou žádné možnosti zástupných symbolů.
+Jímka definuje, kam se zprávy odesílají. Zprávy mohou přijímat pouze moduly a IoT Hub. Zprávy nelze směrovat do jiných zařízení. Vlastnost jímky neobsahuje žádné možnosti zástupných znaků.
 
-Vlastnost jímky může být některá z následujících hodnot:
+Vlastnost jímky může být libovolná z následujících hodnot:
 
 | Jímka | Popis |
 | ---- | ----------- |
-| `$upstream` | Odeslání zprávy do služby IoT Hub |
-| `BrokeredEndpoint("/modules/<moduleId>/inputs/<input>")` | Odeslat zprávu na konkrétní vstup konkrétního modulu |
+| `$upstream` | Odeslat zprávu do IoT Hub |
+| `BrokeredEndpoint("/modules/<moduleId>/inputs/<input>")` | Odeslání zprávy do konkrétního vstupu konkrétního modulu |
 
-IoT Edge poskytuje alespoň jednou záruky. Centrum IoT Edge ukládá zprávy místně v případě, že trasa nemůže doručit zprávu do jímky. Například pokud se centrum IoT Edge nemůže připojit k centru IoT Hub nebo cílový modul není připojený.
+IoT Edge poskytuje záruky alespoň jednou. Centrum IoT Edge ukládá místní zprávy pro případ, že trasa nemůže zprávu doručit do jímky. Pokud se například Centrum IoT Edge nemůže připojit k IoT Hub nebo cílový modul není připojen.
 
-Centrum IoT Edge ukládá zprávy až do `storeAndForwardConfiguration.timeToLiveSecs` doby zadané ve vlastnostech [požadovaných vlastností centra IoT Edge](module-edgeagent-edgehub.md).
+Centrum IoT Edge ukládá zprávy až do doby zadané ve `storeAndForwardConfiguration.timeToLiveSecs` vlastnosti [IoT Edge centra požadované vlastnosti](module-edgeagent-edgehub.md).
 
-## <a name="define-or-update-desired-properties"></a>Definování nebo aktualizace požadovaných vlastností
+## <a name="define-or-update-desired-properties"></a>Definovat nebo aktualizovat požadované vlastnosti
 
-Manifest nasazení určuje požadované vlastnosti pro každý modul nasazený do zařízení IoT Edge. Požadované vlastnosti v manifestu nasazení přepsat všechny požadované vlastnosti aktuálně v dvojčete modulu.
+Manifest nasazení určuje požadované vlastnosti pro každý modul nasazený do zařízení IoT Edge. Požadované vlastnosti v manifestu nasazení přepíšou všechny požadované vlastnosti, které jsou aktuálně v modulu vlákna.
 
-Pokud nezadáte požadované vlastnosti dvojčete modulu v manifestu nasazení, služba IoT Hub žádným způsobem nezmění dvojče modulu. Místo toho můžete nastavit požadované vlastnosti programově.
+Pokud v manifestu nasazení nezadáte požadované vlastnosti nevláken modulu, IoT Hub nebude modul pracovat jakýmkoli způsobem. Místo toho můžete nastavit požadované vlastnosti programově.
 
-Stejné mechanismy, které umožňují upravit dvojčata zařízení se používají k úpravě dvojčata modulu. Další informace naleznete v [průvodci pro vývojáře dvojčat modulu](../iot-hub/iot-hub-devguide-module-twins.md).
+Stejné mechanismy, které umožňují změnit vlákna zařízení, se používají ke změně vláken modulu. Další informace najdete v tématu [Průvodce pro vývojáře s vyzdvojeným modulem](../iot-hub/iot-hub-devguide-module-twins.md).
 
 ## <a name="deployment-manifest-example"></a>Příklad manifestu nasazení
 
@@ -281,6 +281,6 @@ Následující příklad ukazuje, jak může vypadat platný dokument manifestu 
 
 ## <a name="next-steps"></a>Další kroky
 
-* Úplný seznam vlastností, které mohou nebo musí být zahrnuty do $edgeAgent a $edgeHub, naleznete v [tématu Vlastnosti agenta IoT Edge a centra IoT Edge](module-edgeagent-edgehub.md).
+* Úplný seznam vlastností, které mohou nebo musí být součástí $edgeAgent a $edgeHub, najdete v tématu [Vlastnosti agenta IoT Edge a centra IoT Edge](module-edgeagent-edgehub.md).
 
-* Teď, když víte, jak se používají moduly IoT Edge, [pochopte požadavky a nástroje pro vývoj modulů IoT Edge](module-development.md).
+* Když teď víte, jak se používají IoT Edge moduly, [Pochopte požadavky a nástroje pro vývoj IoT Edge modulů](module-development.md).

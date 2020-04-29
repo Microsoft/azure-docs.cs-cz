@@ -1,7 +1,7 @@
 ---
-title: Filtrování, řazení a stránkování entit Mediálních služeb
+title: Filtrování, řazení a stránkování Media Services entit
 titleSuffix: Azure Media Services
-description: Další informace o filtrování, řazení a stránkování entit Azure Media Services v3.
+description: Přečtěte si o filtrování, řazení a stránkování entit Azure Media Services V3.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,80 +14,80 @@ ms.date: 01/21/2020
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 7e4f1141a9d4bd58451782e8412063a22565556d
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80584537"
 ---
-# <a name="filtering-ordering-and-paging-of-media-services-entities"></a>Filtrování, řazení a stránkování entit Mediálních služeb
+# <a name="filtering-ordering-and-paging-of-media-services-entities"></a>Filtrování, řazení a stránkování Media Services entit
 
-Toto téma popisuje možnosti dotazu OData a podporu stránkování, které jsou k dispozici, když uvádíte entity Azure Media Services v3.
+Toto téma popisuje možnosti dotazů OData a Podpora stránkování, která je dostupná při výpisu Azure Media Servicesch entit v3.
 
 ## <a name="considerations"></a>Požadavky
 
-* Vlastnosti entit, které `Datetime` jsou typu jsou vždy ve formátu UTC.
-* Prázdné místo v řetězci dotazu by mělo být před odesláním požadavku zakódováno adresou URL.
+* Vlastnosti entit, které jsou `Datetime` typu, jsou vždy ve formátu UTC.
+* Prázdný znak v řetězci dotazu by měl být zakódovaný pomocí adresy URL před odesláním žádosti.
 
 ## <a name="comparison-operators"></a>Operátory porovnání
 
-Následující operátory můžete použít k porovnání pole s konstantní hodnotou:
+K porovnání pole s konstantní hodnotou můžete použít následující operátory:
 
 Operátory rovnosti:
 
-- `eq`: Otestujte, zda se pole *rovná* konstantní hodnotě.
+- `eq`: Otestujte, zda je pole *rovno* konstantní hodnotě.
 - `ne`: Otestujte, zda se pole *nerovná* konstantní hodnotě.
 
 Operátory rozsahu:
 
 - `gt`: Otestujte, zda je pole *větší než* konstantní hodnota.
-- `lt`: Otestujte, zda je pole *menší než* konstantní hodnota.
-- `ge`: Otestujte, zda je pole *větší nebo rovno* konstantní hodnotě.
+- `lt`: Otestujte, zda je pole *menší než* hodnota konstanty.
+- `ge`: Otestujte, zda je pole *větší než nebo rovno* konstantní hodnotě.
 - `le`: Otestujte, zda je pole *menší nebo rovno* konstantní hodnotě.
 
 ## <a name="filter"></a>Filtr
 
-Slouží `$filter` k zadání parametru filtru OData k vyhledání pouze objektů, které vás zajímají.
+Použijte `$filter` k poskytnutí parametru filtru OData, abyste našli jenom objekty, které vás zajímají.
 
-Následující příklad REST filtruje hodnotu `alternateId` majetku:
+Následující příklad filtru REST filtruje `alternateId` hodnotu prostředku:
 
 ```
 GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01&$filter=properties/alternateId%20eq%20'unique identifier'
 ```
 
-Následující příklad jazyka C# filtruje datum vytvoření datového zdroje:
+Následující příklad v jazyce C# filtruje datum vytvoření prostředku:
 
 ```csharp
 var odataQuery = new ODataQuery<Asset>("properties/created lt 2018-05-11T17:39:08.387Z");
 var firstPage = await MediaServicesArmClient.Assets.ListAsync(CustomerResourceGroup, CustomerAccountName, odataQuery);
 ```
 
-## <a name="order-by"></a>Pořadí podle
+## <a name="order-by"></a>Řadit podle
 
-Slouží `$orderby` k seřazení vrácených objektů podle zadaného parametru. Například:  
+Použijte `$orderby` k řazení vrácených objektů zadaným parametrem. Příklad:  
 
 ```
 GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01$orderby=properties/created%20gt%202018-05-11T17:39:08.387Z
 ```
 
-Chcete-li výsledky seřadit ve vzestupném `asc` nebo `desc` sestupném pořadí, připojte buď název pole, oddělený mezerou. Například: `$orderby properties/created desc`.
+K řazení výsledků ve vzestupném nebo sestupném pořadí, přidejte `asc` buď `desc` nebo k názvu pole oddělené mezerou. Například: `$orderby properties/created desc`.
 
 ## <a name="skip-token"></a>Přeskočit token
 
-Pokud odpověď na dotaz obsahuje mnoho `$skiptoken` položek, vrátí služba hodnotu (`@odata.nextLink`), kterou použijete k získání další stránky výsledků. Použijte ji k procházení celé sady výsledků.
+Pokud odpověď dotazu obsahuje mnoho položek, vrátí služba hodnotu `$skiptoken` (`@odata.nextLink`), kterou použijete k získání další stránky výsledků. Použijte ji ke stránkám celé sady výsledků dotazu.
 
-Ve službě Media Services v3 nelze nakonfigurovat velikost stránky. Velikost stránky se liší podle typu entity. Podrobnosti načtete v jednotlivých oddílech, které následují.
+V Media Services V3 nemůžete konfigurovat velikost stránky. Velikost stránky se liší podle typu entity. Přečtěte si jednotlivé části, které následují za podrobnosti.
 
-Pokud entity jsou vytvořeny nebo odstraněny při stránkování kolekce, změny se projeví v vrácené výsledky (pokud tyto změny jsou v části kolekce, která nebyla stažena).
+Pokud jsou entity vytvářeny nebo smazány při stránkování prostřednictvím kolekce, změny se projeví ve vrácených výsledcích (pokud jsou tyto změny součástí kolekce, která nebyla stažena).
 
 > [!TIP]
-> Vždy `nextLink` použijte k výčet kolekce a nezávisí na konkrétní velikost stránky.
+> Vždy použít `nextLink` k zobrazení výčtu kolekce a nezáleží na konkrétní velikosti stránky.
 >
-> Hodnota `nextLink` bude k dispozici pouze v případě, že existuje více než jedna stránka entit.
+> `nextLink` Hodnota bude přítomna pouze v případě, že existuje více než jedna stránka entit.
 
-Zvažte následující příklad, kde `$skiptoken` se používá. Ujistěte se, že nahradíte *amstestaccount* názvem účtu a nastavte hodnotu *verze rozhraní api* na nejnovější verzi.
+Vezměte v úvahu následující příklad `$skiptoken` použití. Ujistěte se, že jste nahradili *amstestaccount* názvem vašeho účtu a nastavíte hodnotu *rozhraní API-Version* na nejnovější verzi.
 
-Pokud požadujete seznam datových zdrojů, jako je tento:
+Pokud si vyžádáte seznam prostředků, takto:
 
 ```
 GET  https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01 HTTP/1.1
@@ -95,7 +95,7 @@ x-ms-client-request-id: dd57fe5d-f3be-4724-8553-4ceb1dbe5aab
 Content-Type: application/json; charset=utf-8
 ```
 
-Dostanete zpět odpověď podobnou této:
+Vrátíte odpověď podobnou této:
 
 ```
 HTTP/1.1 200 OK
@@ -117,13 +117,13 @@ HTTP/1.1 200 OK
 }
 ```
 
-Poté byste požádali o další stránku odesláním žádosti o přijetí:
+Pak odešlete požadavek GET na další stránku.
 
 ```
 https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01&$skiptoken=Asset+517
 ```
 
-Následující příklad jazyka C# ukazuje, jak vytvořit výčet prostřednictvím všech lokátorů streamování v účtu.
+Následující příklad jazyka C# ukazuje, jak vytvořit výčet ze všech lokátorů streamování v účtu.
 
 ```csharp
 var firstPage = await MediaServicesArmClient.StreamingLocators.ListAsync(CustomerResourceGroup, CustomerAccountName);
@@ -135,57 +135,57 @@ while (currentPage.NextPageLink != null)
 }
 ```
 
-## <a name="using-logical-operators-to-combine-query-options"></a>Použití logických operátorů ke kombinování možností dotazu
+## <a name="using-logical-operators-to-combine-query-options"></a>Kombinování možností dotazu pomocí logických operátorů
 
-Media Services v3 podporuje **operátory OR** a **A** logické. 
+Media Services V3 podporuje logické operátory **nebo** **a a.** 
 
-Následující příklad REST kontroluje stav úlohy:
+Následující příklad funkce REST kontroluje stav úlohy:
 
 ```
 https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/qbtest/providers/Microsoft.Media/mediaServices/qbtest/transforms/VideoAnalyzerTransform/jobs?$filter=properties/state%20eq%20Microsoft.Media.JobState'Scheduled'%20or%20properties/state%20eq%20Microsoft.Media.JobState'Processing'&api-version=2018-07-01
 ```
 
-Vytvořit stejný dotaz v C# takto: 
+Stejný dotaz vytvoříte v jazyce C# následujícím způsobem: 
 
 ```csharp
 var odataQuery = new ODataQuery<Job>("properties/state eq Microsoft.Media.JobState'Scheduled' or properties/state eq Microsoft.Media.JobState'Processing'");
 client.Jobs.List(config.ResourceGroup, config.AccountName, VideoAnalyzerTransformName, odataQuery);
 ```
 
-## <a name="filtering-and-ordering-options-of-entities"></a>Filtrování a řazení entit
+## <a name="filtering-and-ordering-options-of-entities"></a>Možnosti filtrování a řazení entit
 
-Následující tabulka ukazuje, jak můžete použít možnosti filtrování a řazení na různé entity:
+Následující tabulka ukazuje, jak můžete použít možnosti filtrování a řazení u různých entit:
 
 |Název entity|Název vlastnosti|Filtr|Objednání|
 |---|---|---|---|
 |[Prostředky](https://docs.microsoft.com/rest/api/media/assets/)|jméno|`eq`, `gt`, `lt`, `ge`, `le`|`asc` a `desc`|
-||vlastnosti.alternateId |`eq`||
-||vlastnosti.assetId |`eq`||
-||properties.created| `eq`, `gt`, `lt`| `asc` a `desc`|
-|[Klíčové zásady obsahu](https://docs.microsoft.com/rest/api/media/contentkeypolicies)|jméno|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` a `desc`|
-||properties.created    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` a `desc`|
-||vlastnosti.popis    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`||
-||vlastnosti.lastModified|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` a `desc`|
-||vlastnosti.policyId|`eq`, `ne`||
+||Properties. alternateId |`eq`||
+||Properties. assetId |`eq`||
+||vlastnosti. vytvořeno| `eq`, `gt`, `lt`| `asc` a `desc`|
+|[Zásady pro klíč obsahu](https://docs.microsoft.com/rest/api/media/contentkeypolicies)|jméno|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` a `desc`|
+||vlastnosti. vytvořeno    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` a `desc`|
+||vlastnosti. Description    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`||
+||Properties. lastModified|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` a `desc`|
+||Properties. policyId|`eq`, `ne`||
 |[Úlohy](https://docs.microsoft.com/rest/api/media/jobs)| jméno  | `eq`            | `asc` a `desc`|
-||vlastnosti.stav        | `eq`, `ne`        |                         |
-||properties.created      | `gt`, `ge`, `lt`, `le`| `asc` a `desc`|
-||vlastnosti.lastModified | `gt`, `ge`, `lt`, `le` | `asc` a `desc`| 
+||vlastnosti. State        | `eq`, `ne`        |                         |
+||vlastnosti. vytvořeno      | `gt`, `ge`, `lt`, `le`| `asc` a `desc`|
+||Properties. lastModified | `gt`, `ge`, `lt`, `le` | `asc` a `desc`| 
 |[Lokátory streamování](https://docs.microsoft.com/rest/api/media/streaminglocators)|jméno|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` a `desc`|
-||properties.created    |`eq`, `ne`, `ge`, `le`,  `gt`, `lt`|`asc` a `desc`|
-||vlastnosti.endTime    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` a `desc`|
+||vlastnosti. vytvořeno    |`eq`, `ne`, `ge`, `le`,  `gt`, `lt`|`asc` a `desc`|
+||vlastnosti. čas_ukončení    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` a `desc`|
 |[Zásady streamování](https://docs.microsoft.com/rest/api/media/streamingpolicies)|jméno|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` a `desc`|
-||properties.created    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` a `desc`|
+||vlastnosti. vytvořeno    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` a `desc`|
 |[Transformace](https://docs.microsoft.com/rest/api/media/transforms)| jméno | `eq`            | `asc` a `desc`|
-|| properties.created      | `gt`, `ge`, `lt`, `le`| `asc` a `desc`|
-|| vlastnosti.lastModified | `gt`, `ge`, `lt`, `le`| `asc` a `desc`|
+|| vlastnosti. vytvořeno      | `gt`, `ge`, `lt`, `le`| `asc` a `desc`|
+|| Properties. lastModified | `gt`, `ge`, `lt`, `le`| `asc` a `desc`|
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Seznam datových zdrojů](https://docs.microsoft.com/rest/api/media/assets/list)
-* [Zásady klíče obsahu seznamu](https://docs.microsoft.com/rest/api/media/contentkeypolicies/list)
-* [Seznam úloh](https://docs.microsoft.com/rest/api/media/jobs/list)
-* [Zásady streamování seznamu](https://docs.microsoft.com/rest/api/media/streamingpolicies/list)
+* [Vypsat prostředky](https://docs.microsoft.com/rest/api/media/assets/list)
+* [Seznam zásad pro klíč obsahu](https://docs.microsoft.com/rest/api/media/contentkeypolicies/list)
+* [Vypsat úlohy](https://docs.microsoft.com/rest/api/media/jobs/list)
+* [Vypsat zásady streamování](https://docs.microsoft.com/rest/api/media/streamingpolicies/list)
 * [Seznam lokátorů streamování](https://docs.microsoft.com/rest/api/media/streaminglocators/list)
 * [Streamování souboru](stream-files-dotnet-quickstart.md)
 * [Kvóty a omezení](limits-quotas-constraints.md)

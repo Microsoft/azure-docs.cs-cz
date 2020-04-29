@@ -1,6 +1,6 @@
 ---
-title: Migrace dat z oracle do rozhraní API Azure Cosmos DB Cassandra pomocí blitzzu
-description: Zjistěte, jak migrovat data z databáze Oracle do rozhraní API Azure Cosmos DB Cassandra pomocí blitzzu.
+title: Migrace dat ze Oracle do Azure Cosmos DB rozhraní API Cassandra pomocí Blitzz
+description: Naučte se migrovat data z databáze Oracle do Azure Cosmos DB rozhraní API Cassandra pomocí Blitzz.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,43 +8,43 @@ ms.date: 08/21/2019
 ms.author: sngun
 ms.reviewer: sngun
 ms.openlocfilehash: 43d15a7252819a3e4f7635e37458b75e9b7ecca7
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80546274"
 ---
-# <a name="migrate-data-from-oracle-to-azure-cosmos-db-cassandra-api-account-using-blitzz"></a>Migrace dat z Oracle do účtu API Azure Cosmos DB Cassandra pomocí blitzzu
+# <a name="migrate-data-from-oracle-to-azure-cosmos-db-cassandra-api-account-using-blitzz"></a>Migrace dat z Oracle do Azure Cosmos DB účtu rozhraní API Cassandra pomocí Blitzz
 
-Rozhraní Cassandra API v Azure Cosmos DB se stalo skvělou volbou pro podnikové úlohy, které běží na oracle z různých důvodů, jako jsou:
+Rozhraní API Cassandra v Azure Cosmos DB se stal skvělou volbou pro podnikové úlohy spuštěné v Oracle z různých důvodů:
 
-* **Lepší škálovatelnost a dostupnost:** Eliminuje jednotlivé body selhání, lepší škálovatelnost a dostupnost pro vaše aplikace.
+* **Lepší škálovatelnost a dostupnost:** Eliminuje jednotlivé body selhání, lepší škálovatelnost a dostupnost vašich aplikací.
 
-* **Významné úspory nákladů:** Můžete ušetřit náklady s Azure Cosmos DB, který zahrnuje náklady na virtuální počítače, šířku pásma a všechny příslušné licence Oracle. Navíc nemusíte spravovat datová centra, servery, úložiště SSD, sítě a náklady na elektřinu.
+* **Významné úspory nákladů:** Náklady můžete ušetřit pomocí Azure Cosmos DB, což zahrnuje náklady na virtuální počítač, šířku pásma a všechny příslušné licence Oracle. Navíc nemusíte spravovat datové centra, servery, úložiště SSD, sítě a náklady na elektřinu.
 
-* **Žádné režijní náklady na správu a monitorování:** Jako plně spravovaná cloudová služba Azure Cosmos DB odstraňuje režii správy a monitorování nesčetných nastavení.
+* **Žádná režie správy a monitorování:** Jako plně spravovaná cloudová služba Azure Cosmos DB odstraňuje režijní náklady na správu a monitorování nesčetných nastavení.
 
-Existují různé způsoby migrace databázových úloh z jedné platformy na druhou. [Blitzz](https://www.blitzz.io) je nástroj, který nabízí bezpečný a spolehlivý způsob, jak provádět nulovou migraci prostojů z různých databází do Azure Cosmos DB. Tento článek popisuje kroky potřebné k migraci dat z databáze Oracle do rozhraní API Azure Cosmos DB Cassandra pomocí blitzzu.
+Existují různé způsoby, jak migrovat databázové úlohy z jedné platformy do jiné. [Blitzz](https://www.blitzz.io) je nástroj, který nabízí zabezpečený a spolehlivý způsob, jak provést migraci s nulovými výpadky z různých databází, aby se Azure Cosmos DB. Tento článek popisuje kroky potřebné k migraci dat z databáze Oracle do Azure Cosmos DB rozhraní API Cassandra pomocí Blitzz.
 
-## <a name="benefits-using-blitzz-for-migration"></a>Výhody využívající Blitzz pro migraci
+## <a name="benefits-using-blitzz-for-migration"></a>Výhody použití Blitzz pro migraci
 
-Řešení migrace blitzz ubírá krok za krokem k migraci složitých provozních úloh. Níže jsou uvedeny některé z klíčových aspektů blitzz je zero-prostoje migrační plán:
+Řešení migrace Blitzz se řídí postupem, jak migrovat složitá provozní zatížení. Tady jsou některé klíčové aspekty plánu migrace v rámci nulového výpadku Blitzz:
 
-* Nabízí automatickou migraci obchodní logiky (tabulky, indexy, zobrazení) z databáze Oracle do Azure Cosmos DB. Schémata není nutné vytvářet ručně.
+* Nabízí automatickou migraci obchodní logiky (tabulky, indexy, zobrazení) z databáze Oracle do Azure Cosmos DB. Schémata nemusíte vytvářet ručně.
 
-* Blitzz nabízí velkoobjemovou a paralelní replikaci databáze. Umožňuje zdrojové i cílové platformy, které mají být synchronizovány během migrace pomocí techniky s názvem Change-Data-Capture (CDC). Pomocí CDC Blitzz průběžně stahuje proud změn ze zdrojové databáze (Oracle) a použije ji na cílovou databázi (Azure Cosmos DB).
+* Blitzz nabízí vysoce velký objem a paralelní replikaci databáze. Umožňuje, aby zdrojové i cílové platformy byly během migrace synchronizované pomocí techniky označované jako Change-Data-Capture (CDC). Pomocí CDC Blitzz průběžně vyžádá datový proud změn ze zdrojové databáze (Oracle) a použije ho pro cílovou databázi (Azure Cosmos DB).
 
-* Je odolný proti chybám a zaručuje přesně jednou dodání dat i při selhání hardwaru nebo softwaru v systému.
+* Je odolný proti chybám a zaručuje přesně po doručení dat, i když dojde v systému k selhání hardwaru nebo softwaru.
 
-* Zabezpečuje data během přenosu pomocí různých metodik zabezpečení, jako je TLS / SSL, šifrování.
+* Zabezpečuje data během přenosu s využitím nejrůznějších metod zabezpečení, jako je TLS/SSL, šifrování.
 
 * Nabízí služby pro převod komplexní obchodní logiky napsané v PL/SQL na ekvivalentní obchodní logiku v Azure Cosmos DB.
 
 ## <a name="steps-to-migrate-data"></a>Postup migrace dat
 
-Tato část popisuje kroky potřebné k nastavení Blitzz a migruje data z databáze Oracle do Azure Cosmos DB.
+Tato část popisuje kroky potřebné k nastavení Blitzz a migraci dat z databáze Oracle do Azure Cosmos DB.
 
-1. Z počítače, kde plánujete nainstalovat replikant Blitzz, přidejte bezpečnostní certifikát. Tento certifikát je vyžadován replikantblitzz navázat připojení TLS se zadaným účtem Azure Cosmos DB. Certifikát můžete přidat pomocí následujících kroků:
+1. Z počítače, do kterého plánujete nainstalovat Blitzz replicant, přidejte certifikát zabezpečení. Tento certifikát vyžaduje Blitzz replicant k navázání připojení TLS se zadaným účtem Azure Cosmos DB. Certifikát můžete přidat pomocí následujících kroků:
 
    ```bash
    wget https://cacert.omniroot.com/bc2025.crt
@@ -52,13 +52,13 @@ Tato část popisuje kroky potřebné k nastavení Blitzz a migruje data z datab
    keytool -keystore $JAVA_HOME/lib/security/cacerts -importcert -alias bc2025ca -file bc2025.cer
    ```
 
-1. ou může dostat Blitzz instalaci a binární soubory buď tím, že žádá demo na [webových stránkách Blitzz](https://www.blitzz.io). Případně můžete také poslat [e-mail](mailto:success@blitzz.io) týmu.
+1. organizační jednotka může získat instalaci Blitzz a binární soubory buď tak, že si vyžádá ukázku na [webu Blitzz](https://www.blitzz.io). Alternativně můžete také odeslat [e-mail](mailto:success@blitzz.io) týmu.
 
-   ![Blitzz replikant nástroj ke stažení](./media/oracle-migrate-cosmos-db-blitzz/blitzz-replicant-download.png)
+   ![Stažení nástroje Blitzz replicant Tool](./media/oracle-migrate-cosmos-db-blitzz/blitzz-replicant-download.png)
 
-   ![Blitzz replikantsoubory](./media/oracle-migrate-cosmos-db-blitzz/replicant-files.png)
+   ![Soubory Blitzz replicant](./media/oracle-migrate-cosmos-db-blitzz/replicant-files.png)
 
-1. Z terminálu CLI nastavte konfiguraci zdrojové databáze. Otevřete konfigurační soubor pomocí **`vi conf/conn/oracle.yml`** příkazu a přidejte seznam IP adres oracle uzlů, čísla portu, uživatelského jména, hesla a dalších požadovaných podrobností. Následující kód ukazuje ukázkový konfigurační soubor:
+1. V terminálu CLI nastavte konfiguraci zdrojové databáze. Otevřete konfigurační soubor pomocí **`vi conf/conn/oracle.yml`** příkazu a přidejte čárkami oddělený seznam IP adres uzlů Oracle, číslo portu, uživatelské jméno, heslo a další požadované podrobnosti. Následující kód ukazuje příklad konfiguračního souboru:
 
    ```bash
    type: ORACLE
@@ -75,13 +75,13 @@ Tato část popisuje kroky potřebné k nastavení Blitzz a migruje data z datab
    use-ssl: false
    ```
 
-   ![Otevřít editor připojení Oracle](./media/oracle-migrate-cosmos-db-blitzz/open-connection-editor-oracle.png)
+   ![Otevřít Editor připojení Oracle](./media/oracle-migrate-cosmos-db-blitzz/open-connection-editor-oracle.png)
 
    ![Konfigurace připojení Oracle](./media/oracle-migrate-cosmos-db-blitzz/oracle-connection-configuration.png)
 
-   Po vyplnění podrobností o konfiguraci soubor uložte a zavřete.
+   Po vyplnění podrobností konfigurace soubor uložte a zavřete.
 
-1. Volitelně můžete nastavit soubor filtru zdrojové databáze. Soubor filtru určuje, která schémata nebo tabulky mají být migrovány. Otevřete konfigurační soubor pomocí **`vi filter/oracle_filter.yml`** příkazu a zadejte následující podrobnosti konfigurace:
+1. Volitelně můžete nastavit soubor filtru zdrojové databáze. Soubor filtru určuje, která schémata nebo tabulky se mají migrovat. Otevřete konfigurační soubor pomocí **`vi filter/oracle_filter.yml`** příkazu a zadejte následující konfigurační údaje:
 
    ```bash
 
@@ -92,17 +92,17 @@ Tato část popisuje kroky potřebné k nastavení Blitzz a migruje data z datab
  
    Po vyplnění podrobností filtru databáze uložte a zavřete soubor.
 
-1. Dále nastavíte konfiguraci cílové databáze. Před definováním konfigurace [vytvořte účet rozhraní API Azure Cosmos DB Cassandra](create-cassandra-dotnet.md#create-a-database-account). [Zvolte správný klíč oddílu](partitioning-overview.md#choose-partitionkey) z dat a vytvořte Keyspace a tabulku pro uložení migrovaných dat.
+1. V dalším kroku nastavíte konfiguraci cílové databáze. Před definováním konfigurace [vytvořte účet Azure Cosmos DB rozhraní API Cassandra](create-cassandra-dotnet.md#create-a-database-account). [Zvolte pravý klíč oddílu](partitioning-overview.md#choose-partitionkey) z vašich dat a pak vytvořte místo na disku a tabulku pro uložení migrovaných dat.
 
-1. Před migrací dat zvyšte propustnost kontejneru na částku potřebnou k rychlé migraci aplikace. Můžete například zvýšit propustnost na 100000 ru. Změna velikosti propustnost před zahájením migrace vám pomůže migrovat data v kratším čase. 
+1. Před migrací dat zvyšte propustnost kontejneru na množství potřebné k rychlé migraci vaší aplikace. Můžete například zvýšit propustnost na 100000 ru. Škálování propustnosti před zahájením migrace vám pomůže s migrací dat za kratší dobu. 
 
-   ![Škálování kontejneru Azure Cosmos v celém](./media/oracle-migrate-cosmos-db-blitzz/scale-throughput.png)
+   ![Škálování Cosmos kontejneru Azure v celém](./media/oracle-migrate-cosmos-db-blitzz/scale-throughput.png)
 
-   Po dokončení migrace je nutné snížit propustnost. Na základě množství dat uložených a ru požadovaných pro každou operaci můžete odhadnout propustnost požadovanou po migraci dat. Další informace o tom, jak odhadnout požadované ru, najdete v článku [Zřízení propustnosti pro kontejnery a databáze](set-throughput.md) a [odhadru/s pomocí článků plánovač kapacity Azure Cosmos DB.](estimate-ru-with-capacity-planner.md)
+   Propustnost je nutné po dokončení migrace snížit. Na základě množství uložených dat a ru vyžadovaných pro jednotlivé operace můžete odhadnout propustnost vyžadovanou po migraci dat. Další informace o tom, jak odhadovat požadované ru, najdete v tématech [zřízení propustnosti pro kontejnery a databáze](set-throughput.md) a [odhad ru/s pomocí článků Azure Cosmos DB kapacity pro plánování](estimate-ru-with-capacity-planner.md) .
 
-1. Získejte **kontaktní místo, port, uživatelské jméno**a primární **heslo** účtu Azure Cosmos z podokna **Připojovací řetězec.** Tyto hodnoty použijete v konfiguračním souboru.
+1. V podokně **připojovací řetězec** Získejte **kontaktní bod, port, uživatelské jméno**a **primární heslo** účtu Azure Cosmos. Tyto hodnoty použijete v konfiguračním souboru.
 
-1. Z terminálu CLI nastavte konfiguraci cílové databáze. Otevřete konfigurační soubor pomocí **`vi conf/conn/cosmosdb.yml`** příkazu a přidejte seznam identifikátorů URI, čísla portu, uživatelského jména, hesla a dalších požadovaných parametrů oddělených čárkami. Následuje příklad obsahu v konfiguračním souboru:
+1. V terminálu CLI nastavte konfiguraci cílové databáze. Otevřete konfigurační soubor pomocí **`vi conf/conn/cosmosdb.yml`** příkazu a přidejte čárkami oddělený seznam identifikátorů URI hostitele, číslo portu, uživatelské jméno, heslo a další požadované parametry. Následuje příklad obsahu v konfiguračním souboru:
 
    ```bash
    type: COSMOSDB
@@ -117,37 +117,37 @@ Tato část popisuje kroky potřebné k nastavení Blitzz a migruje data z datab
    use-ssl: false
    ```
 
-1. Další migrovat data pomocí Blitzz. Replikant Blizz můžete spustit v **režimu úplného** **nebo snímku:**
+1. Dále migrujte data pomocí Blitzz. Blizz replicant můžete spustit v režimu **úplného** nebo **snímku** :
 
-   * **Úplný režim** – V tomto režimu replicant pokračuje v běhu po migraci a naslouchá všem změnám ve zdrojovém systému Oracle. Pokud zjistí všechny změny, jsou replikovány na cílovém účtu Azure Cosmos v reálném čase.
+   * **Úplný režim** – v tomto režimu se replicant i nadále spouští po migraci a naslouchá jakýmkoli změnám ve zdrojovém systému Oracle. Pokud se nějaké změny zjistí, replikují se v reálném čase na cílový účet Azure Cosmos.
 
-   * **Režim snímek** – v tomto režimu můžete provést migraci schématu a jednorázovou replikaci dat. Tato možnost není podporována replikace v reálném čase.
+   * **Režim snímků** – v tomto režimu můžete provést migraci schématu a jednorázovou replikaci dat. Replikace v reálném čase není touto možností podporována.
 
 
-   Pomocí výše uvedených dvou režimů lze migraci provést s nulovými prostoji.
+   Pomocí předchozích dvou režimů se dá migrace provést bez výpadků.
 
-1. Chcete-li migrovat data, spusťte z terminálu blitzzského replikantského příkazu CLI následující příkaz:
+1. K migraci dat z terminálu Blitzz replicant CLI spusťte následující příkaz:
 
    ```bash
    ./bin/replicant full conf/conn/oracle.yaml conf/conn/cosmosdb.yaml --filter filter/oracle_filter.yaml --replace-existing
    ```
 
-   Replikační ui zobrazuje průběh replikace. Po dokončení migrace schématu a operace snímku se zobrazí průběh 100 %. Po dokončení migrace můžete ověřit data v cílové databázi Azure Cosmos.
+   Uživatelské rozhraní replicant zobrazuje průběh replikace. Po dokončení operace migrace schématu a snímku se zobrazí průběh 100%. Po dokončení migrace můžete ověřit data v cílové databázi Azure Cosmos.
 
    ![Výstup migrace dat Oracle](./media/oracle-migrate-cosmos-db-blitzz/oracle-data-migration-output.png)
 
-1. Vzhledem k tomu, že jste pro migraci použili úplný režim, můžete provádět operace, jako je vkládání, aktualizace nebo odstraňování dat ve zdrojové databázi Oracle. Později můžete ověřit, že jsou replikovány v reálném čase v cílové databázi Azure Cosmos. Po migraci nezapomeňte snížit propustnost nakonfigurovanou pro váš kontejner Azure Cosmos.
+1. Vzhledem k tomu, že jste použili úplný režim migrace, můžete provádět operace, jako je například vložení, aktualizace nebo odstranění dat ve zdrojové databázi Oracle. Později můžete ověřit, jestli jsou replikované v reálném čase v cílové databázi Azure Cosmos. Po dokončení migrace nezapomeňte snížit propustnost nakonfigurovanou pro váš kontejner Azure Cosmos.
 
-1. Replikant můžete zastavit libovolný bod a restartovat jej pomocí **přepínače --resume.** Replikace pokračuje od bodu, který byl zastaven bez ohrožení konzistence dat. Následující příkaz ukazuje, jak používat přepínač životopisu.
+1. Replicant můžete zastavit v jakémkoli bodě a restartovat ho pomocí přepínače **--Resume** . Replikace se obnoví z bodu, který se zastavil, aniž by došlo k narušení konzistence dat. Následující příkaz ukazuje, jak použít přepínač Resume.
 
    ```bash
    ./bin/replicant full conf/conn/oracle.yaml conf/conn/cosmosdb.yaml --filter filter/oracle_filter.yaml --replace-existing --resume
    ```
 
-Další informace o migraci dat do cíle v reálném čase najdete v [tématu Ukázka replikantu Blitzz](https://www.youtube.com/watch?v=y5ZeRK5A-MI).
+Další informace o migraci dat do cíle v reálném čase najdete v [ukázce Blitzz replicant](https://www.youtube.com/watch?v=y5ZeRK5A-MI).
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Zřízení propustnosti u kontejnerů a databází](set-throughput.md) 
-* [Doporučené postupy klíče oddílu](partitioning-overview.md#choose-partitionkey)
-* [Odhad ru/s pomocí článků plánovačkapacity Azure Cosmos DB](estimate-ru-with-capacity-planner.md)
+* [Doporučené postupy pro klíč oddílu](partitioning-overview.md#choose-partitionkey)
+* [Odhad ru/s pomocí článků Azure Cosmos DB Capacity Planneru](estimate-ru-with-capacity-planner.md)

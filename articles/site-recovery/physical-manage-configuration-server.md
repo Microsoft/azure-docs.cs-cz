@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/28/2019
 ms.author: mayg
 ms.openlocfilehash: eb7e891c031be5ac01295905d5c3304dc6818737
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80478962"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>Správa konfiguračního serveru pro zotavení po havárii fyzického serveru
@@ -20,7 +20,7 @@ Místní konfigurační server nastavíte při použití služby [Azure Site Rec
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 Tabulka shrnuje předpoklady pro nasazení místního počítače konfiguračního serveru.
 
@@ -38,7 +38,7 @@ Tabulka shrnuje předpoklady pro nasazení místního počítače konfigurační
 | Zásady skupiny| Nepovolujte tyto zásady skupiny: <br> -Zakázat přístup k příkazovému řádku <br> – Zakázat přístup k nástrojům pro úpravu registru <br> – Logika vztahu důvěryhodnosti pro přílohy souborů <br> -Zapnout provádění skriptu <br> [Další informace](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
 | IIS | -Žádný předdefinovaný výchozí web <br> -Povolit [anonymní ověřování](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> -Povolit nastavení [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx)  <br> -Žádný existující web nebo aplikace nenaslouchá na portu 443.<br>|
 | Typ síťové karty | VMXNET3 (při nasazení jako virtuální počítač VMware) |
-| Typ IP adresy | Statická |
+| Typ IP adresy | Static |
 | Přístup k internetu | Server potřebuje přístup k těmto adresám URL: <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - `https://management.azure.com` <br> – *. services.visualstudio.com <br> - https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi(nevyžaduje se pro procesové servery se škálováním na více instancí) <br> - time.nist.gov <br> - time.windows.com |
 | Porty | 443 (orchestrace řídicího kanálu)<br>9443 (přenos dat)|
 
@@ -71,7 +71,7 @@ Nejnovější verzi instalačního souboru konfiguračního serveru najdete na p
      ![Brána firewall](./media/physical-manage-configuration-server/combined-wiz4.png)
 6. Na stránce **Kontrola předpokladů** instalační program provede kontrolu a ověří, že lze spustit instalaci. Pokud se zobrazí varování u položky **Kontrola synchronizace globálního času**, ověřte, že čas na systémových hodinách (nastavení **Datum a čas**) je stejný jako časové pásmo.
 
-    ![Požadované součásti](./media/physical-manage-configuration-server/combined-wiz5.png)
+    ![Požadavky](./media/physical-manage-configuration-server/combined-wiz5.png)
 7. Na stránce **Konfigurace MySQL** vytvořte přihlašovací údaje pro přihlašování k nainstalované instanci serveru MySQL.
 
     ![MySQL](./media/physical-manage-configuration-server/combined-wiz6.png)

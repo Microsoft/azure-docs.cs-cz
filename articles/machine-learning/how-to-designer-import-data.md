@@ -1,7 +1,7 @@
 ---
 title: Import dat
 titleSuffix: Azure Machine Learning
-description: Zjistěte, jak importovat data do návrháře Azure Machine Learning z různých zdrojů dat.
+description: Naučte se importovat data do návrháře Azure Machine Learning z různých zdrojů dat.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,72 +10,72 @@ author: peterclu
 ms.author: peterlu
 ms.date: 01/16/2020
 ms.openlocfilehash: 1ad7677607d625f673546a6ea29ea58b80a8d1b5
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80546751"
 ---
-# <a name="import-your-data-into-azure-machine-learning-designer-preview"></a>Import dat do návrháře Azure Machine Learning (preview)
+# <a name="import-your-data-into-azure-machine-learning-designer-preview"></a>Import dat do návrháře Azure Machine Learning (Preview)
 
-V tomto článku se dozvíte, jak importovat vlastní data v návrháři k vytvoření vlastních řešení. Data lze do návrháře importovat dvěma způsoby: 
+V tomto článku se dozvíte, jak v Návrháři importovat vlastní data, abyste mohli vytvářet vlastní řešení. Existují dva způsoby, jak můžete importovat data do návrháře: 
 
-* **Datové sady Azure Machine Learning** – zaregistrujte datové [sady](concept-data.md#datasets) v Azure Machine Learning, abyste povolili pokročilé funkce, které vám pomůžou spravovat vaše data.
-* **Modul Importovat data** – Pomocí modulu [Import dat](algorithm-module-reference/import-data.md) můžete přímo přistupovat k datům z online zdrojů dat.
+* **Azure Machine Learning DataSets** – zaregistrujete datové [sady](concept-data.md#datasets) v Azure Machine Learning a povolíte tak pokročilé funkce, které vám pomůžou se správou vašich dat.
+* **Importovat modul dat** – pomocí modulu [Import dat](algorithm-module-reference/import-data.md) můžete získat přímý přístup k datům z online zdrojů dat.
 
-## <a name="use-azure-machine-learning-datasets"></a>Použití datových sad Azure Machine Learning
+## <a name="use-azure-machine-learning-datasets"></a>Použití Azure Machine Learning datových sad
 
-Doporučujeme použít [datové sady](concept-data.md#datasets) k importu dat do návrháře. Při registraci datové sady můžete plně využívat pokročilé funkce dat, jako je [správa verzí a sledování](how-to-version-track-datasets.md) verzí a monitorování [dat](how-to-monitor-datasets.md).
+Pro import dat do návrháře doporučujeme použít datové [sady](concept-data.md#datasets) . Když zaregistrujete datovou sadu, můžete plně využít výhod pokročilých datových funkcí, jako je [Správa verzí a sledování](how-to-version-track-datasets.md) a [monitorování dat](how-to-monitor-datasets.md).
 
 ### <a name="register-a-dataset"></a>Registrace datové sady
 
-Existující datové sady můžete programově zaregistrovat [pomocí sady SDK](how-to-create-register-datasets.md#use-the-sdk) nebo [vizuálně ve studiu Azure Machine Learning](how-to-create-register-datasets.md#use-the-ui).
+Existující datové sady [programově se sadou SDK](how-to-create-register-datasets.md#use-the-sdk) můžete registrovat nebo [vizuálně v Azure Machine Learning Studiu](how-to-create-register-datasets.md#use-the-ui).
 
-Můžete také zaregistrovat výstup pro libovolný modul návrháře jako datovou sadu.
+Výstup můžete také zaregistrovat pro libovolný modul návrháře jako datovou sadu.
 
-1. Vyberte modul, který vyvezuje data, která chcete registrovat.
+1. Vyberte modul, který vypíše data, která chcete zaregistrovat.
 
-1. V podokně vlastností vyberte**Dataset Registru** **výstupů** > .
+1. V podokně Vlastnosti vyberte možnost **výstupy** > pro**registrační datovou sadu**.
 
-    ![Snímek obrazovky znázorňující, jak přejít na možnost Registrovat datovou sadu](media/how-to-designer-import-data/register-dataset-designer.png)
+    ![Snímek obrazovky ukazující, jak přejít na možnost Registrovat datovou sadu](media/how-to-designer-import-data/register-dataset-designer.png)
 
 ### <a name="use-a-dataset"></a>Použití datové sady
 
-Vaše registrované datové sady najdete v paletě modulů v části **Datové sady** > **Moje datové sady**. Chcete-li použít datovou sadu, přetáhněte ji na plátno kanálu. Potom připojte výstupní port datové sady k jiným modulům v paletě.
+Vaše > **registrované datové sady**se dají najít v paletě modulu **v části datové sady.** Pokud chcete datovou sadu použít, přetáhněte ji na plátno kanálu. Pak připojte výstupní port datové sady k jiným modulům v paletě.
 
-![Snímek obrazovky s umístěním uložených datových sad v paletě návrháře](media/how-to-designer-import-data/use-datasets-designer.png)
+![Snímek obrazovky znázorňující umístění uložených datových sad v paletě návrháře](media/how-to-designer-import-data/use-datasets-designer.png)
 
-
-> [!NOTE]
-> Návrhář aktuálně podporuje pouze zpracování [tabulkových datových sad](how-to-create-register-datasets.md#dataset-types). Pokud chcete použít [datové sady souborů](how-to-create-register-datasets.md#dataset-types), použijte Azure Machine Learning SDK, který je k dispozici pro Python a R.
-
-## <a name="import-data-using-the-import-data-module"></a>Import dat pomocí modulu Importovat data
-
-I když doporučujeme používat datové sady k importu dat, můžete také použít modul [Importovat data.](algorithm-module-reference/import-data.md) Modul Importovat data přeskočí registraci datové sady v Azure Machine Learning a importuje data přímo z [úložiště dat](concept-data.md#datastores) nebo http adresy URL.
-
-Podrobné informace o použití modulu Import dat naleznete na [stránce Reference importu dat](algorithm-module-reference/import-data.md).
 
 > [!NOTE]
-> Pokud vaše datová sada má příliš mnoho sloupců, může dojít k následující chybě: "Ověření se nezdařilo z důvodu omezení velikosti". Chcete-li tomu zabránit, [zaregistrujte datovou sadu v rozhraní datových sad](how-to-create-register-datasets.md#use-the-ui).
+> Návrhář aktuálně podporuje pouze zpracování [tabelárních datových sad](how-to-create-register-datasets.md#dataset-types). Pokud chcete použít [souborové sady](how-to-create-register-datasets.md#dataset-types), použijte sadu SDK Azure Machine Learning dostupnou pro Python a R.
+
+## <a name="import-data-using-the-import-data-module"></a>Import dat pomocí modulu import dat
+
+I když doporučujeme k importu dat použít datové sady, můžete také použít modul [Import dat](algorithm-module-reference/import-data.md) . Modul Import dat přeskočí registraci datové sady v Azure Machine Learning a importuje data přímo z [úložiště](concept-data.md#datastores) dat nebo adresy URL protokolu HTTP.
+
+Podrobné informace o tom, jak používat modul import dat, najdete na [stránce s referenčními informacemi k importu dat](algorithm-module-reference/import-data.md).
+
+> [!NOTE]
+> Pokud vaše datová sada obsahuje příliš mnoho sloupců, může dojít k následující chybě: "ověření se nezdařilo z důvodu omezení velikosti". Pokud se tomu chcete vyhnout, [Zaregistrujte datovou sadu v rozhraní datových sad](how-to-create-register-datasets.md#use-the-ui).
 
 ## <a name="supported-sources"></a>Podporované zdroje
 
-V této části jsou uvedeny zdroje dat podporované návrhářem. Data přicházejí do návrháře z úložiště dat nebo z [tabulkové datové sady](how-to-create-register-datasets.md#dataset-types).
+Tato část obsahuje seznam zdrojů dat, které Návrhář podporuje. Data přicházejí do návrháře z úložiště dat nebo z [tabulkové sady dat](how-to-create-register-datasets.md#dataset-types).
 
 ### <a name="datastore-sources"></a>Zdroje úložiště dat
-Seznam podporovaných zdrojů úložiště dat najdete [v tématu Přístup ovádata ve službách úložiště Azure](how-to-access-data.md#supported-data-storage-service-types).
+Seznam podporovaných zdrojů úložiště [dat najdete v tématu přístup k datům ve službě Azure Storage](how-to-access-data.md#supported-data-storage-service-types).
 
-### <a name="tabular-dataset-sources"></a>Zdroje tabulkových datových sad
+### <a name="tabular-dataset-sources"></a>Zdroje tabelární datové sady
 
 Návrhář podporuje tabulkové datové sady vytvořené z následujících zdrojů:
- * Oddělované soubory
+ * Soubory s oddělovači
  * Soubory JSON
  * Soubory Parquet
  * Dotazy SQL
 
 ## <a name="data-types"></a>Typy dat
 
-Návrhář interně rozpozná následující datové typy:
+Návrhář interně rozpoznává následující typy dat:
 
 * Řetězec
 * Integer
@@ -83,12 +83,12 @@ Návrhář interně rozpozná následující datové typy:
 * Logická hodnota
 * Datum
 
-Návrhář používá interní datový typ k předání dat mezi moduly. Data můžete explicitně převést do formátu tabulky dat pomocí modulu [Převést na datovou sadu.](algorithm-module-reference/convert-to-dataset.md) Jakýkoli modul, který přijímá formáty jiné než vnitřní formát převede data tiše před předáním do dalšího modulu.
+Návrhář používá interní datový typ k předávání dat mezi moduly. Data můžete explicitně převést do formátu tabulky dat pomocí modulu [převést na datovou sadu](algorithm-module-reference/convert-to-dataset.md) . Libovolný modul, který přijímá jiné formáty než interní formát, převede data v tichém režimu předtím, než je předáte do dalšího modulu.
 
 ## <a name="data-constraints"></a>Omezení dat
 
-Moduly v návrháři jsou omezeny velikostí výpočetního cíle. Pro větší datové sady byste měli použít větší výpočetní prostředek Azure Machine Learning. Další informace o výpočetních náčtech Azure Machine Learning najdete v tématu [Co jsou výpočetní cíle v Azure Machine Learning?](concept-compute-target.md#azure-machine-learning-compute-managed)
+Moduly v návrháři jsou omezeny velikostí cíle výpočtů. U větších datových sad byste měli použít větší Azure Machine Learning výpočetní prostředky. Další informace o Azure Machine Learning COMPUTE najdete v tématu [co jsou výpočetní cíle v Azure Machine Learning?](concept-compute-target.md#azure-machine-learning-compute-managed)
 
 ## <a name="next-steps"></a>Další kroky
 
-Naučte se základy návrháře s [Tutorial: Předpovědět cenu automobilu s designérem](tutorial-designer-automobile-price-train-score.md).
+Seznamte se se základy návrháře pomocí [kurzu: předpověď ceny automobilu pomocí návrháře](tutorial-designer-automobile-price-train-score.md).

@@ -1,7 +1,7 @@
 ---
-title: Úprava kapacity pro úlohy dotazů a indexů
+title: Přizpůsobení kapacity pro úlohy dotazů a indexů
 titleSuffix: Azure Cognitive Search
-description: Upravte prostředky oddílu a repliky počítače v Azure Cognitive Search, kde každý prostředek je cena v jednotkách fakturovatelné vyhledávání.
+description: V Azure Kognitivní hledání upravovat prostředky oddílů a počítačů repliky, kde se jednotlivé prostředky účtují jako Fakturovatelné jednotky hledání.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
@@ -9,131 +9,131 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.openlocfilehash: 270ff3c3e8e4cffbb1f4b1987ee497530d0c0982
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80546268"
 ---
-# <a name="adjust-capacity-in-azure-cognitive-search"></a>Úprava kapacity v Azure Cognitive Search
+# <a name="adjust-capacity-in-azure-cognitive-search"></a>Nastavení kapacity v Azure Kognitivní hledání
 
-Před [zřizováním vyhledávací služby](search-create-service-portal.md) a uzamčením v určité cenové úrovni trvá několik minut pochopit roli replik a oddílů ve službě a jak můžete upravit službu tak, aby vyhovovala špičkám a poklesům poptávky po prostředcích.
+Než [zřídíte službu vyhledávání](search-create-service-portal.md) a zamknete ji v konkrétní cenové úrovni, pochopíte úlohu replik a oddílů ve službě a způsob, jakým můžete službu upravit tak, aby vyhovovala špičkám a nedorozuměním na vyžádání prostředků.
 
-Kapacita je funkce [vrstvy, kterou zvolíte](search-sku-tier.md) (vrstvy určují vlastnosti hardwaru) a kombinace replik a oddílů nezbytná pro předpokládané úlohy. V závislosti na úrovni a velikosti nastavení může přidání nebo snížení kapacity trvat od 15 minut do několika hodin. 
+Kapacita je funkce zvolené [úrovně](search-sku-tier.md) (úrovně určují hardwarové charakteristiky) a kombinaci repliky a oddílu potřebné pro plánované úlohy. V závislosti na vrstvě a velikosti úpravy může přidání nebo snížení kapacity trvat až 15 minut až několik hodin. 
 
-Při úpravě přidělení replik a oddílů doporučujeme použít portál Azure. Portál vynucuje limity na povolené kombinace, které zůstávají pod maximální limity úrovně. Pokud ale požadujete přístup zřizování založený na skriptech nebo na kódu, azure [powershell](search-manage-powershell.md) nebo [rozhraní REST api pro správu](https://docs.microsoft.com/rest/api/searchmanagement/services) jsou alternativní řešení.
+Při úpravách přidělení replik a oddílů doporučujeme použít Azure Portal. Portál vynutil omezení povolených kombinací, které jsou nižší než maximální limity vrstvy. Nicméně pokud vyžadujete přístup založený na skriptech nebo způsobu zřizování na základě kódu, [Azure PowerShell](search-manage-powershell.md) nebo [REST API správy](https://docs.microsoft.com/rest/api/searchmanagement/services) jsou alternativní řešení.
 
 ## <a name="terminology-replicas-and-partitions"></a>Terminologie: repliky a oddíly
 
 |||
 |-|-|
-|*Oddíly* | Poskytuje úložiště indexu a vstupně-va pro operace čtení a zápisu (například při opětovném sestavení nebo aktualizaci indexu). Každý oddíl má podíl na celkovém indexu. Pokud přidělíte tři oddíly, index je rozdělen do třetin. |
-|*Repliky* | Instance vyhledávací služby, které se používají především k operacím dotazů vyrovnávání zatížení. Každá replika je jedna kopie indexu. Pokud přidělíte tři repliky, budete mít k dispozici tři kopie indexu pro obsluhu požadavků na dotazy.|
+|*Oddíly* | Poskytuje úložiště indexu a vstupně-výstupní operace pro operace čtení/zápisu (například při opakovaném sestavování nebo obnovování indexu). Každý oddíl má podíl celkového indexu. Pokud přidělíte tři oddíly, váš index je rozdělen na třetiny. |
+|*Repliky* | Instance vyhledávací služby, které se primárně používají k vyrovnávání zatížení operací dotazů. Každá replika je jednou kopií indexu. Pokud přidělíte tři repliky, budete mít k dispozici tři kopie indexu pro obsluhu požadavků dotazů.|
 
 ## <a name="when-to-add-nodes"></a>Kdy přidat uzly
 
-Zpočátku je službě přidělena minimální úroveň prostředků skládající se z jednoho oddílu a jedné repliky. 
+Zpočátku je služba přidělena minimální úroveň prostředků, které se skládají z jednoho oddílu a jedné repliky. 
 
-Jedna služba musí mít dostatek prostředků pro zpracování všech úloh (indexování a dotazy). Ani zatížení běží na pozadí. Indexování můžete naplánovat pro časy, kdy jsou požadavky na dotazy přirozeně méně časté, ale služba jinak nebude upřednostňovat jednu úlohu před druhou. Kromě toho určité množství redundance vyhladí výkon dotazu při interně aktualizovány služby nebo uzly.
+Jedna služba musí mít dostatek prostředků pro zpracování všech úloh (indexování a dotazů). Na pozadí se nespouští žádné úlohy. Indexování můžete naplánovat na časy, kdy jsou požadavky na dotazy přirozeně méně časté, ale služba nebude jinak určovat prioritu jednoho úkolu v jiném. Kromě toho určité množství redundance vyplynule výkon dotazů při interní aktualizaci služeb nebo uzlů.
 
-Obecně platí, že vyhledávací aplikace mají tendenci potřebovat více replik než oddíly, zejména pokud jsou operace služby zkreslené směrem k úlohám dotazů. Část o [vysoké dostupnosti](#HA) vysvětluje proč.
+V rámci obecného pravidla hledají aplikace za následek větší repliky než oddíly, zejména v případě, že operace služby jsou posunuty k úlohám dotazů. Oddíl o [vysoké dostupnosti](#HA) vysvětluje, proč.
 
 > [!NOTE]
-> Přidání dalšírepliky nebo oddíly zvyšuje náklady na spuštění služby a může zavést mírné odchylky v pořadí výsledků. Nezapomeňte zkontrolovat [cenovou kalkulačku,](https://azure.microsoft.com/pricing/calculator/) abyste pochopili důsledky pro fakturaci přidání dalších uzlů. [Níže uvedená tabulka](#chart) vám pomůže křížově odkazovat na počet vyhledávacích jednotek požadovaných pro určitou konfiguraci. Další informace o tom, jak další repliky ovlivňují zpracování dotazů, naleznete [v tématu Řazení výsledků](search-pagination-page-layout.md#ordering-results).
+> Přidání dalších replik nebo oddílů zvyšuje náklady na provoz služby a může způsobit mírné variace při objednání výsledků. Nezapomeňte se podívat na [cenové kalkulačky](https://azure.microsoft.com/pricing/calculator/) , abyste porozuměli důsledkům fakturace při přidávání dalších uzlů. [Následující graf](#chart) vám může pomáhat s křížovým odkazem na počet jednotek hledání potřebných pro konkrétní konfiguraci. Další informace o tom, jak další repliky ovlivňují zpracování dotazů, najdete v tématu [řazení výsledků](search-pagination-page-layout.md#ordering-results).
 
-## <a name="how-to-allocate-replicas-and-partitions"></a>Jak přidělit repliky a oddíly
+## <a name="how-to-allocate-replicas-and-partitions"></a>Postup přidělení replik a oddílů
 
-1. Přihlaste se k [portálu Azure a](https://portal.azure.com/) vyberte vyhledávací službu.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com/) a vyberte vyhledávací službu.
 
-1. V **nastavení**otevřete stránku **Měřítko** a upravte repliky a oddíly. 
+1. V **Nastavení**otevřete stránku **škálování** a upravte repliky a oddíly. 
 
-   Následující snímek obrazovky ukazuje standardní službu zřízenou s jednou replikou a oddílem. Vzorec v dolní části označuje, kolik vyhledávacích jednotek je používáno (1). Pokud by jednotková cena byla 100 USD (nikoli skutečná cena), měsíční náklady na provoz této služby by byly v průměru 100 USD.
+   Následující snímek obrazovky ukazuje standardní službu zřízenou s jednou replikou a oddílem. Vzorec v dolní části indikuje, kolik jednotek hledání se používá (1). Pokud byla Jednotková cena $100 (nejedná se o skutečnou cenu), budou měsíční náklady na spuštění této služby $100 v průměru.
 
-   ![Změnit velikost stránky zobrazující aktuální hodnoty](media/search-capacity-planning/1-initial-values.png "Změnit velikost stránky zobrazující aktuální hodnoty")
+   ![Stránka škály zobrazující aktuální hodnoty](media/search-capacity-planning/1-initial-values.png "Stránka škály zobrazující aktuální hodnoty")
 
-1. Pomocí posuvníku zvyšte nebo snižte počet oddílů. Vzorec v dolní části označuje, kolik vyhledávacích jednotek je používáno.
+1. Pomocí posuvníku zvyšte nebo snižte počet oddílů. Vzorec v dolní části uvádí, kolik jednotek hledání se používá.
 
-   Tento příklad zdvojnásobí kapacitu, se dvěma replikami a oddíly každý. Všimněte si počtu vyhledávacích jednotek; nyní je čtyři, protože fakturační vzorec je repliky vynásobené oddíly (2 x 2). Zdvojnásobení kapacity více než zdvojnásobuje náklady na provoz služby. Pokud by náklady na vyhledávání byly 100 USD, nový měsíční účet by nyní činil 400 USD.
+   Tento příklad zdvojnásobuje kapacitu se dvěma replikami a oddíly. Všimněte si počtu jednotek hledání; je teď čtyři, protože vzorec fakturace je vynásobený pomocí oddílů (2 x 2). Dvojnásobná kapacita je větší než dvojnásobek nákladů na provoz služby. Pokud byla cena za jednotku vyhledávání $100, nový měsíční účet by byl nyní $400.
 
-   Aktuální jednotkové náklady každé úrovně najdete na [stránce Ceny](https://azure.microsoft.com/pricing/details/search/).
+   Aktuální cenu za každou jednotku na jednotlivých úrovních najdete na stránce s [cenami](https://azure.microsoft.com/pricing/details/search/).
 
-   ![Přidání replik a oddílů](media/search-capacity-planning/2-add-2-each.png "Přidání replik a oddílů")
+   ![Přidat repliky a oddíly](media/search-capacity-planning/2-add-2-each.png "Přidat repliky a oddíly")
 
-1. Kliknutím na **Uložit** potvrďte změny.
+1. Potvrďte změny kliknutím na **Uložit** .
 
-   ![Potvrzení změn škálování a fakturace](media/search-capacity-planning/3-save-confirm.png "Potvrzení změn škálování a fakturace")
+   ![Potvrďte změny ve škálování a fakturaci](media/search-capacity-planning/3-save-confirm.png "Potvrďte změny ve škálování a fakturaci")
 
-   Změny kapacity trvat několik hodin. Po spuštění procesu nelze zrušit a neexistuje žádné monitorování replik a oddílů v reálném čase. Následující zpráva však zůstane viditelná, zatímco změny probíhají.
+   Změny v kapacitě trvá několik hodin. Po spuštění procesu nemůžete operaci zrušit a v reálném čase není monitorování pro repliky a úpravy oddílů. Během probíhajících změn však zůstane vidět následující zpráva.
 
    ![Stavová zpráva na portálu](media/search-capacity-planning/4-updating.png "Stavová zpráva na portálu")
 
 > [!NOTE]
-> Po zřízení služby ji nelze upgradovat na vyšší úroveň. Je nutné vytvořit vyhledávací službu na nové úrovni a znovu načíst indexy. Nápovědu k zřizování služeb [najdete v tématu Vytvoření služby Azure Cognitive Search na portálu.](search-create-service-portal.md)
+> Po zřízení služby ji nelze upgradovat na vyšší úroveň. Je nutné vytvořit vyhledávací službu na nové úrovni a znovu načíst indexy. Nápovědu k zřizování služeb najdete [v tématu Vytvoření služby Azure kognitivní hledání na portálu](search-create-service-portal.md) .
 >
-> Kromě toho oddíly a repliky jsou spravovány výhradně a interně službou. Neexistuje žádný koncept spřažení procesoru nebo přiřazení úlohy k určitému uzlu.
+> Oddíly a repliky jsou navíc spravované výhradně a interně službou. Neexistuje koncept spřažení procesoru ani přiřazení úlohy ke konkrétnímu uzlu.
 >
 
 <a id="chart"></a>
 
-## <a name="partition-and-replica-combinations"></a>Kombinace oddílů a replik
+## <a name="partition-and-replica-combinations"></a>Kombinace oddílů a repliky
 
-Základní služba může mít přesně jeden oddíl a až tři repliky, pro maximální limit tří su. Jediným nastavitelným zdrojem jsou repliky. Potřebujete minimálně dvě repliky pro vysokou dostupnost na dotazy.
+Základní služba může mít přesně jeden oddíl a až tři repliky, a to maximálním limitem tři služby SUs. Jediným upravitelným prostředkem jsou repliky. Pro zajištění vysoké dostupnosti dotazů potřebujete minimálně dvě repliky.
 
-Všechny vyhledávací služby optimalizované pro standardy a úložiště mohou předpokládat následující kombinace replik a oddílů s výhradou limitu 36-SU. 
+Všechny služby a služby optimalizované pro úložiště Standard a Storage můžou v souladu s limitem 36-SU předpokládat následující kombinace replik a oddílů. 
 
 |   | **1 oddíl** | **2 oddíly** | **3 oddíly** | **4 oddíly** | **6 oddílů** | **12 oddílů** |
 | --- | --- | --- | --- | --- | --- | --- |
-| **1 replika** |1 SU |2 SU |3 SU |4 SU |6 SU |12 SU |
-| **2 repliky** |2 SU |4 SU |6 SU |8 SU |12 SU |24 SU |
-| **3 repliky** |3 SU |6 SU |9 SU |12 SU |18 SU |36 SU |
-| **4 repliky** |4 SU |8 SU |12 SU |16 SU |24 SU |Není dostupné. |
-| **5 replik** |5 SU |10 SU |15 SU |20 SU |30 SU |Není dostupné. |
-| **6 replik** |6 SU |12 SU |18 SU |24 SU |36 SU |Není dostupné. |
-| **12 replik** |12 SU |24 SU |36 SU |Není dostupné. |Není dostupné. |Není dostupné. |
+| **1 replika** |1. SU |2. SU |3. SU |4. SU |6. SU |12. SU |
+| **2 repliky** |2. SU |4. SU |6. SU |8. SU |12. SU |24 SU |
+| **3 repliky** |3. SU |6. SU |9. SU |12. SU |18 SU |36 SU |
+| **4 repliky** |4. SU |8. SU |12. SU |16. SU |24 SU |– |
+| **5 replik** |5 SU |10. SU |15 SU |20 SU |30 SU |– |
+| **6 replik** |6. SU |12. SU |18 SU |24 SU |36 SU |– |
+| **12 replik** |12. SU |24 SU |36 SU |– |– |– |
 
-SU, ceny a kapacita jsou podrobně vysvětleny na webu Azure. Další informace naleznete [v tématu Podrobnosti o cenách](https://azure.microsoft.com/pricing/details/search/).
+Služba SUs, ceny a kapacita jsou podrobně vysvětleny na webu Azure. Další informace najdete v [podrobnostech o cenách](https://azure.microsoft.com/pricing/details/search/).
 
 > [!NOTE]
-> Počet replik a oddílů se rovnoměrně rozdělí na 12 (konkrétně 1, 2, 3, 4, 6, 12). Důvodem je, že Azure Cognitive Search předem rozdělí každý index do 12 střepů tak, aby jej lze rozložit ve stejných částech napříč všemi oddíly. Například pokud vaše služba má tři oddíly a vytvořit index, každý oddíl bude obsahovat čtyři oddíly indexu. Jak Azure Cognitive Search střepy index je podrobnosti implementace, může změnit v budoucích verzích. I když je číslo 12 dnes, neměli byste očekávat, že toto číslo bude vždy 12 v budoucnu.
+> Počet replik a oddílů se rozdělí i na 12 (konkrétně 1, 2, 3, 4, 6, 12). Je to proto, že Azure Kognitivní hledání předdělí každý index na 12 horizontálních oddílů, aby se mohl rozdělit na stejné části ve všech oddílech. Například pokud má vaše služba tři oddíly a vytvoříte index, každý oddíl bude obsahovat čtyři horizontálních oddílůy indexu. Jak Azure Kognitivní hledání horizontálních oddílů index je podrobný popis implementace, se může v budoucích verzích změnit. I když je číslo 12 dnes, neměli byste očekávat, že toto číslo bude v budoucnu vždy 12.
 >
 
 <a id="HA"></a>
 
 ## <a name="high-availability"></a>Vysoká dostupnost
 
-Vzhledem k tomu, že je snadné a relativně rychlé škálování, obecně doporučujeme začít s jedním oddílem a jednou nebo dvěma replikami a potom vertikálně navýšit kapacitu jako sestavení svazků dotazů. Úlohy dotazů se spouštějí především na replikách. Pokud potřebujete větší propustnost nebo vysokou dostupnost, budete pravděpodobně potřebovat další repliky.
+Vzhledem k tomu, že je snadné a poměrně rychlé horizontální navýšení kapacity, doporučujeme, abyste začali s jedním oddílem a jednou nebo dvěma replikami a pak nastavili horizontální navýšení kapacity pro sestavení dotazů. Úlohy dotazů běží hlavně na replikách. Pokud potřebujete větší propustnost nebo vysokou dostupnost, budete pravděpodobně potřebovat další repliky.
 
-Obecná doporučení pro vysokou dostupnost jsou:
+K dispozici jsou obecná doporučení pro vysokou dostupnost:
 
-* Dvě repliky pro vysokou dostupnost úloh jen pro čtení (dotazy)
+* Dvě repliky pro vysokou dostupnost úloh jen pro čtení (dotazů)
 
-* Tři nebo více replik pro vysokou dostupnost úloh pro čtení a zápis (dotazy a indexování jako jednotlivé dokumenty jsou přidány, aktualizovány nebo odstraněny)
+* Tři nebo více replik pro vysokou dostupnost úloh čtení a zápisu (dotazy a indexování při přidání, aktualizaci nebo odstranění jednotlivých dokumentů)
 
-Smlouvy o úrovni služeb (SLA) pro Azure Cognitive Search jsou zaměřené na operace dotazů a na aktualizace indexu, které se skládají z přidávání, aktualizace nebo odstraňování dokumentů.
+Smlouvy o úrovni služeb (SLA) pro Azure Kognitivní hledání jsou zaměřené na operace dotazování a indexových aktualizací, které se skládají z přidávání, aktualizace a odstraňování dokumentů.
 
-Základní úroveň vrcholy se na jeden oddíl a tři repliky. Pokud chcete flexibilitu okamžitě reagovat na výkyvy v poptávce pro indexování a propustnost dotazu, zvažte jednu z úrovní Standard.  Pokud zjistíte, že vaše požadavky na úložiště rostou mnohem rychleji než propustnost dotazů, zvažte jednu z úrovní optimalizovaných pro úložiště.
+Úroveň Basic je vystaralá na jednom oddílu a tři repliky. Pokud chcete, aby flexibilita okamžitě reagovala na kolísání poptávky při indexování i propustnosti dotazů, vezměte v úvahu jednu z úrovní Standard.  Pokud zjistíte, že vaše požadavky na úložiště roste mnohem rychleji než propustnost dotazu, vezměte v úvahu jednu z vrstev optimalizovaných pro úložiště.
 
 ## <a name="disaster-recovery"></a>Zotavení po havárii
 
-V současné době neexistuje žádný vestavěný mechanismus pro zotavení po havárii. Přidání oddílů nebo replik by bylo nesprávné strategie pro splnění cílů zotavení po havárii. Nejběžnějším přístupem je přidání redundance na úrovni služby nastavením druhé vyhledávací služby v jiné oblasti. Stejně jako u dostupnosti během obnovení indexu, přesměrování nebo převzetí služeb při selhání logika musí pocházet z kódu.
+V současné době není k dispozici žádný vestavěný mechanismus pro zotavení po havárii. Přidání oddílů nebo replik by představovalo špatnou strategii pro splnění cílů zotavení po havárii. Nejběžnějším přístupem je přidat redundanci na úrovni služby nastavením druhé služby vyhledávání v jiné oblasti. Stejně jako v případě dostupnosti při opětovném sestavování indexu musí být logika přesměrování nebo převzetí služeb při selhání pocházet z vašeho kódu.
 
-## <a name="estimate-replicas"></a>Odhadreplik
+## <a name="estimate-replicas"></a>Odhadování replik
 
-Ve výrobní službě byste měli přidělit tři repliky pro účely sla. Pokud dojde k pomalému výkonu dotazů, můžete přidat repliky tak, aby další kopie indexu byly přeneseny do režimu online, aby podporovaly větší úlohy dotazů a vyrovnaly požadavky na více replik.
+V produkční službě byste měli přidělit tři repliky pro účely smlouvy SLA. Pokud se setkáte s pomalým výkonem dotazů, můžete přidat repliky, aby byly další kopie indexu do online režimu, aby podporovaly větší úlohy dotazů a vyrovnaly zatížení požadavků přes více replik.
 
-Neposkytujeme pokyny o tom, kolik replik je potřeba pro přizpůsobení zatížení dotazů. Výkon dotazu závisí na složitosti dotazu a konkurenční úlohy. Přestože přidání replik y jasně vede k lepšímu výkonu, výsledek není striktně lineární: přidání tří replik nezaručuje trojitou propustnost.
+Neposkytujeme pokyny k tomu, kolik replik je potřeba pro přizpůsobení dotazů. Výkon dotazů závisí na složitosti dotazování a konkurenčních úlohách. I když je přidání replik jasně výsledkem lepšího výkonu, výsledek není výhradně lineární: přidání tří replik nezaručuje trojnásobnou propustnost.
 
-Pokyny při odhadu QPS pro vaše řešení, najdete [v tématu škálování pro výkon](search-performance-optimization.md)a monitorování [dotazů](search-monitor-queries.md)
+Pokyny k odhadování QPS pro vaše řešení najdete v tématu [škálování pro výkon](search-performance-optimization.md)a [monitorování dotazů](search-monitor-queries.md) .
 
-## <a name="estimate-partitions"></a>Odhad oddílů
+## <a name="estimate-partitions"></a>Odhadnout oddíly
 
-[Úroveň, kterou zvolíte,](search-sku-tier.md) určuje velikost oddílu a rychlost a každá úroveň je optimalizována kolem sady charakteristik, které odpovídají různým scénářům. Pokud zvolíte vyšší úroveň, budete potřebovat méně oddílů, než když jdete s S1. Jednou z otázek, které budete muset odpovědět prostřednictvím samořízenétestování je, zda větší a dražší oddíl poskytuje lepší výkon než dva levnější oddíly na služby zřízené na nižší úrovni.
+[Úroveň, kterou zvolíte](search-sku-tier.md) , určuje velikost a rychlost oddílu a každá vrstva je optimalizovaná kolem sady vlastností, které odpovídají různým scénářům. Pokud zvolíte vyšší úroveň, budete možná potřebovat méně oddílů, než když provedete S1. Jedna z otázek, které budete potřebovat k zodpovězení na základě samy zaměřeného testování, je, jestli větší a levnější oddíl poskytuje lepší výkon než dvě levnější oddíly v rámci služby zřízené na nižší úrovni.
 
-Vyhledávací aplikace, které vyžadují aktualizaci dat téměř v reálném čase, budou potřebovat proporcionálně více oddílů než repliky. Přidání oddílů šíří operace čtení a zápisu napříč větším počtem výpočetních prostředků. Poskytuje také více místa na disku pro ukládání dalších indexů a dokumentů.
+Prohledat aplikace, které vyžadují aktualizaci dat téměř v reálném čase, budou potřebovat rozčlenit více oddílů než repliky. Přidávání oddílů rozšíří operace čtení/zápisu v rámci většího počtu výpočetních prostředků. Nabízí také více místa na disku pro ukládání dalších indexů a dokumentů.
 
-Větší indexy trvat déle dotaz. Jako takové můžete zjistit, že každé přírůstkové zvýšení oddílů vyžaduje menší, ale proporcionální zvýšení repliky. Složitost dotazů a objemu dotazů bude faktor do jak rychle spuštění dotazu se otočil.
+Větším indexům trvá dotaz déle. V takovém případě se může stát, že při každém přírůstkovém navýšení oddílů se v replikách vyžaduje menší, ale úměrný nárůst. Složitost vašich dotazů a svazků dotazů se projeví v tom, jak se rychle vykoná provádění dotazů.
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Výběr cenové úrovně pro Azure Cognitive Search](search-sku-tier.md)
+> [Výběr cenové úrovně pro Azure Kognitivní hledání](search-sku-tier.md)
