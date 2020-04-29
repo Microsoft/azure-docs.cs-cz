@@ -1,7 +1,7 @@
 ---
-title: Autorizace přístupu k datům se spravovanou identitou
+title: Autorizace přístupu k datům pomocí spravované identity
 titleSuffix: Azure Storage
-description: Zjistěte, jak používat spravované identity pro prostředky Azure k autorizaci přístupu k datům objektů blob a fronty z aplikací spuštěných ve virtuálních počítačích Azure, aplikacích funkcí, škálovacích sadách virtuálních počítačů a dalších.
+description: Naučte se používat spravované identity pro prostředky Azure k autorizaci přístupu k objektům blob a frontám z aplikací běžících na virtuálních počítačích Azure, aplikacích Function App, virtuálních počítačích škálování a dalších.
 services: storage
 author: tamram
 ms.service: storage
@@ -11,61 +11,61 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: f3bac0d47a53da1ec4d1fa08b5f0933f5f65dc56
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79255337"
 ---
-# <a name="authorize-access-to-blob-and-queue-data-with-managed-identities-for-azure-resources"></a>Autorizace přístupu k datům objektů blob a fronty se spravovanými identitami pro prostředky Azure
+# <a name="authorize-access-to-blob-and-queue-data-with-managed-identities-for-azure-resources"></a>Autorizace přístupu k datům BLOB a Queue pomocí spravovaných identit pro prostředky Azure
 
-Azure Blob and Queue storage podporuje ověřování Azure Active Directory (Azure AD) se [spravovanými identitami pro prostředky Azure.](../../active-directory/managed-identities-azure-resources/overview.md) Spravované identity pro prostředky Azure můžou autorizovat přístup k datům objektů blob a fronty pomocí přihlašovacích údajů Azure AD z aplikací spuštěných ve virtuálních počítačích Azure, aplikací chodů, škálovacích sad virtuálních počítačů a dalších služeb. Pomocí spravovaných identit pro prostředky Azure společně s ověřováním Azure AD se můžete vyhnout ukládání přihlašovacích údajů s vašimi aplikacemi, které běží v cloudu.  
+Azure Blob a Queue Storage podporují ověřování Azure Active Directory (Azure AD) se [spravovanými identitami pro prostředky Azure](../../active-directory/managed-identities-azure-resources/overview.md). Spravované identity pro prostředky Azure můžou autorizovat přístup k objektům blob a Queue pomocí přihlašovacích údajů Azure AD z aplikací běžících na virtuálních počítačích Azure, aplikací Functions, Virtual Machine Scale Sets a dalších služeb. Pomocí spravovaných identit pro prostředky Azure spolu s ověřováním Azure AD se můžete vyhnout ukládání přihlašovacích údajů k vašim aplikacím, které běží v cloudu.  
 
-Tento článek ukazuje, jak autorizovat přístup k datům objektů blob nebo fronty z virtuálního počítače Azure pomocí spravovaných identit pro prostředky Azure. Také popisuje, jak otestovat kód ve vývojovém prostředí.
+Tento článek popisuje, jak autorizovat přístup k datům objektů BLOB nebo front z virtuálního počítače Azure pomocí spravovaných identit pro prostředky Azure. Také popisuje, jak testovat kód ve vývojovém prostředí.
 
 ## <a name="enable-managed-identities-on-a-vm"></a>Povolení spravovaných identit na virtuálním počítači
 
-Než budete moct použít spravované identity pro prostředky Azure k autorizaci přístupu k objektům BLOB a frontám z vašeho virtuálního počítače, musíte nejdřív povolit spravované identity pro prostředky Azure na virtuálním počítači. Informace o povolení spravovaných identit pro prostředky Azure najdete v jednom z těchto článků:
+Než budete moct pomocí spravovaných identit pro prostředky Azure autorizovat přístup k objektům blob a frontám z virtuálního počítače, musíte nejdřív na VIRTUÁLNÍm počítači povolit spravované identity pro prostředky Azure. Informace o tom, jak povolit spravované identity pro prostředky Azure, najdete v jednom z těchto článků:
 
-- [Portál Azure](https://docs.microsoft.com/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm)
+- [portál Azure](https://docs.microsoft.com/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm)
 - [Azure PowerShell](../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
 - [Azure CLI](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
-- [Šablona Azure Resource Manageru](../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
-- [Klientské knihovny Azure Resource Manageru](../../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
+- [Šablona Azure Resource Manager](../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
+- [Klientské knihovny Azure Resource Manager](../../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 
-Další informace o spravovaných identitách najdete [v tématu Spravované identity pro prostředky Azure](../../active-directory/managed-identities-azure-resources/overview.md).
+Další informace o spravovaných identitách najdete v tématu [spravované identity pro prostředky Azure](../../active-directory/managed-identities-azure-resources/overview.md).
 
-## <a name="authenticate-with-the-azure-identity-library"></a>Ověření pomocí knihovny Azure Identity
+## <a name="authenticate-with-the-azure-identity-library"></a>Ověřování pomocí knihovny identit Azure
 
-Klientská knihovna Azure Identity poskytuje podporu ověřování tokenů Azure AD pro [azure sdk.](https://github.com/Azure/azure-sdk) Nejnovější verze klientských knihoven Azure Storage pro .NET, Java, Python a JavaScript se integrují s knihovnou Azure Identity a poskytují jednoduchý a bezpečný prostředek k získání tokenu OAuth 2.0 pro autorizaci požadavků azure storage.
+Klientská knihovna Azure identity poskytuje podporu ověřování tokenů Azure AD pro [sadu Azure SDK](https://github.com/Azure/azure-sdk). Nejnovější verze Azure Storage klientských knihoven pro .NET, Java, Python a JavaScript se integrují s knihovnou identit Azure, aby poskytovaly jednoduché a zabezpečené prostředky pro získání tokenu OAuth 2,0 pro autorizaci žádostí Azure Storage.
 
-Výhodou klientské knihovny Azure Identity je, že umožňuje použít stejný kód k ověření, zda vaše aplikace běží ve vývojovém prostředí nebo v Azure. Klientská knihovna Azure Identity pro rozhraní .NET ověřuje objekt zabezpečení. Když váš kód běží v Azure, objekt zabezpečení je spravovaná identita pro prostředky Azure. Ve vývojovém prostředí spravovaná identita neexistuje, takže klientská knihovna ověřuje uživatele nebo instanční objekt pro účely testování.
+Výhodou klientské knihovny Azure identity je to, že umožňuje použít stejný kód k ověření, jestli vaše aplikace běží ve vývojovém prostředí nebo v Azure. Klientská knihovna Azure identity pro .NET ověřuje objekt zabezpečení. Když váš kód běží v Azure, je objekt zabezpečení spravovaná identita pro prostředky Azure. Ve vývojovém prostředí neexistuje spravovaná identita, takže Klientská knihovna ověřuje pro účely testování buď uživatele, nebo instanční objekt.
 
-Po ověření získá klientská knihovna Azure Identity pověření tokenu. Tento pověření tokenu je pak zapouzdřen v objektu klienta služby, který vytvoříte k provedení operací proti Azure Storage. Knihovna zpracovává to pro vás bez problémů získáním příslušné pověření tokenu.
+Po ověření získá Klientská knihovna identity Azure přihlašovací údaje tokenu. Tyto přihlašovací údaje tokenu se pak zapouzdřují v objektu klienta služby, který vytvoříte k provádění operací s Azure Storage. Knihovna to zvládne bez problémů získáním příslušných přihlašovacích údajů tokenu.
 
-Další informace o knihovně klienta Azure Identity pro rozhraní .NET najdete v tématu [Knihovna klientů Azure Identity pro rozhraní .NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/identity/Azure.Identity). Referenční dokumentaci pro klientskou knihovnu Azure Identity najdete v [tématu Azure.Identity Namespace](/dotnet/api/azure.identity).
+Další informace o klientské knihovně Azure identity pro .NET najdete v tématu [Klientská knihovna Azure identity pro .NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/identity/Azure.Identity). Referenční dokumentaci ke klientské knihovně identit Azure najdete v tématu [obor názvů Azure. identity](/dotnet/api/azure.identity).
 
-### <a name="assign-role-based-access-control-rbac-roles-for-access-to-data"></a>Přiřazení rolí řízení přístupu na základě rolí (RBAC) pro přístup k datům
+### <a name="assign-role-based-access-control-rbac-roles-for-access-to-data"></a>Přiřazení rolí řízení přístupu na základě role (RBAC) pro přístup k datům
 
-Když se objekt zabezpečení Azure AD pokusí o přístup k datům objektu blob nebo fronty, musí mít tento objekt zabezpečení oprávnění k prostředku. Ať už je objekt zabezpečení spravovanou identitou v Azure nebo uživatelský účet Azure AD spuštěný kód ve vývojovém prostředí, musí být objektu zabezpečení přiřazena role RBAC, která uděluje přístup k datům objektů blob nebo fronty ve službě Azure Storage. Informace o přiřazování oprávnění prostřednictvím služby RBAC naleznete v části **Přiřazení rolí RBAC pro přístupová práva** v [tématu Autorizace přístupu k objektům BLOB a frontám Azure pomocí služby Azure Active Directory](../common/storage-auth-aad.md#assign-rbac-roles-for-access-rights).
+Když se objekt zabezpečení služby Azure AD pokusí získat přístup k datům objektu BLOB nebo fronty, musí mít tento objekt zabezpečení oprávnění k prostředku. Bez ohledu na to, jestli je objekt zabezpečení spravovanou identitou v Azure nebo uživatelským účtem Azure AD, který spouští kód ve vývojovém prostředí, musí být objektu zabezpečení přiřazená role RBAC, která uděluje přístup k objektům blob nebo frontě v Azure Storage. Informace o přiřazování oprávnění přes RBAC najdete v části s názvem **přiřazení rolí RBAC pro přístupová práva** v tématu [autorizace přístupu k objektům blob a frontám Azure pomocí Azure Active Directory](../common/storage-auth-aad.md#assign-rbac-roles-for-access-rights).
 
 ### <a name="authenticate-the-user-in-the-development-environment"></a>Ověření uživatele ve vývojovém prostředí
 
-Pokud je váš kód spuštěn ve vývojovém prostředí, ověřování může být zpracováno automaticky nebo může vyžadovat přihlášení prohlížeče v závislosti na tom, které nástroje používáte. Například Microsoft Visual Studio podporuje jednotné přihlašování (SSO), takže aktivní uživatelský účet Azure AD se automaticky používá pro ověřování. Další informace o jednotném přihlašování naleznete [v tématu jednotné přihlašování k aplikacím](../../active-directory/manage-apps/what-is-single-sign-on.md).
+Když váš kód běží ve vývojovém prostředí, ověřování může být zpracováno automaticky nebo může vyžadovat přihlášení prohlížeče v závislosti na tom, které nástroje používáte. Microsoft Visual Studio například podporuje jednotné přihlašování (SSO), aby se aktivní uživatelský účet Azure AD automaticky používal pro ověřování. Další informace o JEDNOTNÉm přihlašování najdete v tématu [jednotné přihlašování k aplikacím](../../active-directory/manage-apps/what-is-single-sign-on.md).
 
-Další vývojové nástroje vás mohou vyzvat k přihlášení prostřednictvím webového prohlížeče.
+Jiné vývojové nástroje vás můžou vyzvat k přihlášení přes webový prohlížeč.
 
 ### <a name="authenticate-a-service-principal-in-the-development-environment"></a>Ověření instančního objektu ve vývojovém prostředí
 
-Pokud vaše vývojové prostředí nepodporuje jednotné přihlašování nebo přihlášení prostřednictvím webového prohlížeče, můžete použít inistenci služby k ověření z vývojového prostředí.
+Pokud vaše vývojové prostředí nepodporuje jednotné přihlašování nebo přihlašování přes webový prohlížeč, můžete k ověření z vývojového prostředí použít instanční objekt.
 
 #### <a name="create-the-service-principal"></a>Vytvoření instančního objektu
 
-Chcete-li vytvořit instanční objekt s Azure CLI a přiřadit roli RBAC, zavolejte příkaz [az ad sp create-for-rbac.](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) Poskytněte roli přístupu k datům služby Azure Storage, kterou chcete přiřadit k novému instančnímu objektu služby. Dále zadejte rozsah pro přiřazení role. Další informace o předdefinovaných rolích poskytovaných pro Azure Storage najdete [v tématu Předdefinované role pro prostředky Azure](../../role-based-access-control/built-in-roles.md).
+Pokud chcete vytvořit instanční objekt pomocí Azure CLI a přiřadit roli RBAC, zavolejte příkaz [AZ AD SP Create-for-RBAC](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) . Zadejte Azure Storage roli přístupu k datům, která se přiřadí k novému instančnímu objektu. Kromě toho zadejte obor pro přiřazení role. Další informace o předdefinovaných rolích, které jsou k dispozici pro Azure Storage, najdete v tématu [předdefinované role pro prostředky Azure](../../role-based-access-control/built-in-roles.md).
 
-Pokud nemáte dostatečná oprávnění k přiřazení role instančnímu objektu, bude pravděpodobně nutné požádat vlastníka nebo správce účtu o provedení přiřazení role.
+Pokud nemáte dostatečná oprávnění k přiřazení role k instančnímu objektu, může být nutné požádat vlastníka nebo správce účtu, aby provedl přiřazení role.
 
-Následující příklad používá azure CLI k vytvoření nového instančního objektu a přiřadit roli **čtečky dat objektu blob úložiště** k němu s oborem účtu
+V následujícím příkladu se pomocí Azure CLI vytvoří nový instanční objekt a přiřadí se k němu role **čtečky dat objektů BLOB úložiště** s rozsahem účtu.
 
 ```azurecli-interactive
 az ad sp create-for-rbac \
@@ -74,7 +74,7 @@ az ad sp create-for-rbac \
     --scopes /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>
 ```
 
-Příkaz `az ad sp create-for-rbac` vrátí seznam vlastností instančního objektu ve formátu JSON. Zkopírujte tyto hodnoty, abyste je mohli použít k vytvoření potřebných proměnných prostředí v dalším kroku.
+`az ad sp create-for-rbac` Příkaz vrátí seznam vlastností instančního objektu ve formátu JSON. Zkopírujte tyto hodnoty, abyste je mohli použít k vytvoření potřebných proměnných prostředí v dalším kroku.
 
 ```json
 {
@@ -87,28 +87,28 @@ Příkaz `az ad sp create-for-rbac` vrátí seznam vlastností instančního obj
 ```
 
 > [!IMPORTANT]
-> Přiřazení rolí RBAC může trvat několik minut k šíření.
+> Rozšiřování přiřazení rolí RBAC může trvat několik minut.
 
 #### <a name="set-environment-variables"></a>Nastavení proměnných prostředí
 
-Klientská knihovna Azure Identity čte hodnoty ze tří proměnných prostředí za běhu k ověření instančního objektu. Následující tabulka popisuje hodnotu, která má být nastavena pro každou proměnnou prostředí.
+Klientská knihovna Azure identity načítá při ověřování instančního objektu hodnoty ze tří proměnných prostředí za běhu. Následující tabulka popisuje hodnotu, která se má nastavit pro každou proměnnou prostředí.
 
 |Proměnná prostředí|Hodnota
 |-|-
 |`AZURE_CLIENT_ID`|ID aplikace pro instanční objekt
-|`AZURE_TENANT_ID`|ID klienta Azure AD hlavního povinného servisu
+|`AZURE_TENANT_ID`|ID tenanta Azure AD objektu služby
 |`AZURE_CLIENT_SECRET`|Heslo generované pro instanční objekt
 
 > [!IMPORTANT]
-> Po nastavení proměnných prostředí zavřete a znovu otevřete okno konzoly. Pokud používáte Visual Studio nebo jiné vývojové prostředí, budete muset restartovat vývojové prostředí, aby mohl zaregistrovat nové proměnné prostředí.
+> Po nastavení proměnných prostředí zavřete a znovu otevřete okno konzoly. Pokud používáte aplikaci Visual Studio nebo jiné vývojové prostředí, může být nutné restartovat vývojové prostředí, aby bylo možné zaregistrovat nové proměnné prostředí.
 
-Další informace najdete [v tématu Vytvoření identity pro aplikaci Azure na portálu](../../active-directory/develop/howto-create-service-principal-portal.md).
+Další informace najdete v tématu věnovaném [vytvoření identity pro aplikaci Azure na portálu](../../active-directory/develop/howto-create-service-principal-portal.md).
 
 [!INCLUDE [storage-install-packages-blob-and-identity-include](../../../includes/storage-install-packages-blob-and-identity-include.md)]
 
-## <a name="net-code-example-create-a-block-blob"></a>Příklad kódu rozhraní .NET: Vytvoření objektu blob bloku
+## <a name="net-code-example-create-a-block-blob"></a>Příklad kódu .NET: vytvoření objektu blob bloku
 
-Přidejte `using` do kódu následující direktivy, abyste použili klientské knihovny Azure Identity a Azure Storage.
+Přidejte následující `using` direktivy do kódu, abyste mohli použít klientské knihovny Azure Identity a Azure Storage.
 
 ```csharp
 using Azure;
@@ -120,7 +120,7 @@ using System.Text;
 using System.Threading.Tasks;
 ```
 
-Chcete-li získat pověření tokenu, které váš kód můžete použít k autorizaci požadavků na Azure Storage, vytvořte instanci třídy [DefaultAzureCredential.](/dotnet/api/azure.identity.defaultazurecredential) Následující příklad kódu ukazuje, jak získat ověřené pověření tokenu a použít je k vytvoření objektu klienta služby, potom pomocí klienta služby nahrát nový objekt blob:
+Chcete-li získat přihlašovací údaje tokenu, které může váš kód použít k autorizaci požadavků na Azure Storage, vytvořte instanci třídy [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) . Následující příklad kódu ukazuje, jak získat pověření ověřeného tokenu a použít ho k vytvoření objektu klienta služby. potom pomocí klienta služby Nahrajte nový objekt BLOB:
 
 ```csharp
 async static Task CreateBlockBlobAsync(string accountName, string containerName, string blobName)
@@ -158,10 +158,10 @@ async static Task CreateBlockBlobAsync(string accountName, string containerName,
 ```
 
 > [!NOTE]
-> Chcete-li autorizovat požadavky proti datům objektů blob nebo fronty pomocí Azure AD, musíte pro tyto požadavky použít protokol HTTPS.
+> Pokud chcete autorizovat požadavky na data objektů BLOB nebo front pomocí Azure AD, musíte pro tyto požadavky použít protokol HTTPS.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Správa přístupových práv k datům úložiště pomocí RBAC](storage-auth-aad-rbac.md).
-- [Azure AD používejte s aplikacemi úložiště](storage-auth-aad-app.md).
-- [Spouštět příkazy Azure CLI nebo PowerShell s přihlašovacími údaji Azure AD pro přístup k datům objektu blob nebo fronty](authorize-active-directory-powershell.md).
+- [Spravujte přístupová práva k datům úložiště pomocí RBAC](storage-auth-aad-rbac.md).
+- [Používejte Azure AD s aplikacemi pro úložiště](storage-auth-aad-app.md).
+- [Spusťte příkazy Azure CLI nebo PowerShellu s přihlašovacími údaji Azure AD pro přístup k datům objektů BLOB nebo Queue](authorize-active-directory-powershell.md).

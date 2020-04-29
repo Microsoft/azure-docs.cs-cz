@@ -1,5 +1,5 @@
 ---
-title: (ZASTARALÉ) Kurz služby Kontejnerová služba Azure – škálovat aplikace
+title: ZASTARALÉ Kurz Azure Container Service – škálování aplikace
 description: Kurz Azure Container Service – Škálování aplikace
 author: dlepow
 ms.service: container-service
@@ -8,16 +8,16 @@ ms.date: 09/14/2017
 ms.author: danlep
 ms.custom: mvc
 ms.openlocfilehash: 2ea8a5428c1fabdfda4f2298c0559792537df481
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78273992"
 ---
-# <a name="deprecated-scale-kubernetes-pods-and-kubernetes-infrastructure"></a>(ZASTARALÉ) Scale Kubernetes lusky a Kubernetes infrastruktury
+# <a name="deprecated-scale-kubernetes-pods-and-kubernetes-infrastructure"></a>ZASTARALÉ Škálování Kubernetes lusků a Kubernetes infrastruktury
 
 > [!TIP]
-> Aktualizovanou verzi tohoto kurzu, který používá službu Azure Kubernetes, [najdete v tématu Kurz: Škálování aplikací ve službě Azure Kubernetes Service (AKS)](../../aks/tutorial-kubernetes-scale.md).
+> Aktualizovanou verzi v tomto kurzu, který používá službu Azure Kubernetes, najdete v tématu [kurz: škálování aplikací ve službě Azure Kubernetes Service (AKS)](../../aks/tutorial-kubernetes-scale.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -32,7 +32,7 @@ V tomto kurzu, který je pátou částí sedmidílné série, budete škálovat 
 
 V dalších kurzech se aktualizuje aplikace Azure Vote a nakonfiguruje se služba Log Analytics pro monitorování clusteru Kubernetes.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 V předchozích kurzech se aplikace zabalila do image kontejneru, tato image se odeslala do Azure Container Registry a vytvořil se cluster Kubernetes. Aplikace se potom spustila v tomto clusteru Kubernetes. 
 
@@ -42,7 +42,7 @@ Pokud jste tyto kroky neprovedli a chcete si je projít, vraťte se ke [kurzu 1 
 
 Doposud máme nasazený front-end Azure Vote a instanci Redis, oboje s jedinou replikou. K ověření spusťte příkaz [kubectl get](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get).
 
-Přejděte [https://shell.azure.com](https://shell.azure.com) na otevření cloudového prostředí ve vašem prohlížeči.
+[https://shell.azure.com](https://shell.azure.com) V prohlížeči otevřete Cloud Shell.
 
 ```console
 kubectl get pods

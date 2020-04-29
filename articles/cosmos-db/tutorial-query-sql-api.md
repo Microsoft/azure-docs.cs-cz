@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Jak se dotazovat pomocí SQL v Azure Cosmos DB?'
-description: 'Kurz: Naučte se dotazovat se pomocí dotazů SQL v Azure Cosmos DB pomocí hřiště pro dotazy thw'
+title: 'Kurz: dotazování s SQL v Azure Cosmos DB?'
+description: 'Kurz: Naučte se dotazovat se na dotazy SQL v Azure Cosmos DB pomocí dotazů THW Playground'
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 7e83ed0f9e635ed24b7e6115eeaaa9057d422c69
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74870067"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-sql-api"></a>Kurz: Dotazování služby Azure Cosmos DB pomocí rozhraní SQL API
@@ -71,13 +71,13 @@ V tomto kurzu se předpokládá, že máte účet a kolekci Azure Cosmos DB. Ně
 
 S použitím výše uvedeného dokumentu family (rodina) vrátí následující dotaz SQL dokumenty, jejichž pole ID odpovídá `WakefieldFamily`. Vzhledem k tomu, že se jedná o příkaz `SELECT *`, výstupem dotazu bude celý dokument JSON:
 
-**Dotazu**
+**Dotaz**
 
     SELECT * 
     FROM Families f 
     WHERE f.id = "WakefieldFamily"
 
-**Results**
+**Výsledky**
 
 ```json
 {
@@ -112,14 +112,14 @@ S použitím výše uvedeného dokumentu family (rodina) vrátí následující 
 
 Další dotaz vrátí křestní jména všech dětí v rodině, jejíž ID odpovídá `WakefieldFamily`, seřazená podle ročníku.
 
-**Dotazu**
+**Dotaz**
 
     SELECT c.givenName 
     FROM Families f 
     JOIN c IN f.children 
     WHERE f.id = 'WakefieldFamily'
 
-**Results**
+**Výsledky**
 
 [ { "givenName": "Jesse" }, { "givenName": "Lisa" } ]
 

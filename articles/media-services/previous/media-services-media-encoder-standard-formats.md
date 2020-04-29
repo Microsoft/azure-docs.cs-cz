@@ -1,6 +1,6 @@
 ---
-title: Formáty a kodeky pro média - Azure
-description: Tento článek obsahuje přehled formátů a kodeků programu Media Encoder Standard.
+title: Formáty a kodeky Media Encoder Standard – Azure
+description: Tento článek poskytuje přehled formátů Media Encoder Standard a kodeků.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,21 +15,21 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: anilmur
 ms.openlocfilehash: e2ccce13e4ef09426d0f3a02dcbce2f330b0ead8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79251021"
 ---
 # <a name="media-encoder-standard-formats-and-codecs"></a>Kodeky a standardní formáty kodéru médií
 
-> [!div class="op_single_selector" title1="Vyberte verzi služby Media Services, kterou používáte:"]
+> [!div class="op_single_selector" title1="Vyberte verzi Media Services, kterou používáte:"]
 > * [Verze 2](media-services-media-encoder-standard-formats.md)
 > * [Verze 3](../latest/media-encoder-standard-formats.md)
 
-Tento dokument obsahuje seznam nejběžnějších formátů souborů pro import a export, které lze použít se standardem kodéru médií.
+Tento dokument obsahuje seznam nejběžnějších formátů souborů pro import a export, které můžete použít s Media Encoder Standard.
 
-## <a name="input-containerfile-formats"></a>Vstupní formáty kontejnerů/souborů
+## <a name="input-containerfile-formats"></a>Vstupní formáty kontejneru nebo souborů
 | Formáty souborů (přípony souborů) | Podporuje se |
 | --- | --- |
 | FLV (s kodeky H.264 a AAC) (.flv) |Ano |
@@ -45,21 +45,21 @@ Tento dokument obsahuje seznam nejběžnějších formátů souborů pro import 
 | QuickTime (.mov) |Ano |
 
 > [!NOTE]
-> Výše uvedený seznam obsahuje běžnější přípony souborů. Media Encoder Standard podporuje mnoho dalších (například: .m2ts, .mpeg2video, .qt). Pokud se pokusíte zakódovat soubor a zobrazí se chybová zpráva o tom, že formát není podporován, zadejte svůj názor [zde](https://feedback.azure.com/forums/169396-media-services/category/144411-encoding-and-processing/).
+> Výše uvedený seznam obsahuje běžnější přípony souborů. Media Encoder Standard podporuje mnoho dalších (například:. m2ts,. mpeg2video,. QT). Pokud se pokusíte soubor zakódovat a zobrazí se chybová zpráva s informacemi o tom, že formát není podporován, zadejte [svou zpětnou](https://feedback.azure.com/forums/169396-media-services/category/144411-encoding-and-processing/)vazbu.
 > 
 > 
 
-### <a name="audio-formats-in-input-containers"></a>Zvukové formáty ve vstupních kontejnerech
-Standard Media Encoder Standard podporuje přenášení následujících zvukových formátů ve vstupních kontejnerech:
+### <a name="audio-formats-in-input-containers"></a>Formáty zvuku ve vstupních kontejnerech
+Media Encoder Standard podporuje překonání následujících formátů zvuku ve vstupních kontejnerech:
 
-* Soubory MXF, GXF a QuickTime, které mají zvukové stopy s proloženými stereo nebo 5,1 vzorky
+* Soubory MXF, GXF a QuickTime, které obsahují zvukové stopy s prokládanými ukázkami stereo nebo 5,1
 
 – nebo –
 
 * Soubory MXF, GXF a QuickTime, kde se zvuk přenáší jako samostatné stopy PCM, ale mapování kanálů (na stereo nebo prostorový zvuk 5.1) je možné odvodit z metadat souboru
 
-## <a name="input-video-codecs"></a>Vstupní video kodeky
-| Vstupní video kodeky | Podporuje se |
+## <a name="input-video-codecs"></a>Vstupní kodeky videa
+| Vstupní kodeky videa | Podporuje se |
 | --- | --- |
 | AVC s 8bitovou nebo 10bitovou hloubkou až do vzorkování 4:2:2, včetně AVCIntra |8bitová hloubka, 4:2:0 a 4:2:2 |
 | Avid DNxHD (v souborech MXF) |Ano |
@@ -79,7 +79,7 @@ Standard Media Encoder Standard podporuje přenášení následujících zvukov�
 | Apple ProRes Proxy |Ano |
 | Apple ProRes 4444 |Ano |
 | Apple ProRes 4444 XQ |Ano |
-| HEVC/H.265| Hlavní a hlavní profily 10 (&#42;)<br/>Podpora hlavního profilu 10 je určena pro obsah 8bit 4:2:0. |
+| HEVC/H. 265| Hlavní a hlavní profily 10 (&#42;)<br/>Hlavní Podpora profilů pro 10 je určená pro obsah 8bit 4:2:0. |
 
 ## <a name="input-audio-codecs"></a>Vstupní zvukové kodeky
 | Kodeky vstupního zvuku | Podporuje se |
@@ -89,7 +89,7 @@ Standard Media Encoder Standard podporuje přenášení následujících zvukov�
 | MP3 (MPEG-1 Audio Layer 3) |Ano |
 | Windows Media Audio |Ano |
 | WAV a PCM |Ano |
-| [Flac](https://en.wikipedia.org/wiki/FLAC)</a> |Ano |
+| [FLAC](https://en.wikipedia.org/wiki/FLAC)</a> |Ano |
 | [Opus](https://go.microsoft.com/fwlink/?LinkId=822667) |Ano |
 | [Vorbis](https://en.wikipedia.org/wiki/Vorbis)</a> |Ano |
 | AMR (adaptivní s více rychlostmi) |Ano |
@@ -98,13 +98,13 @@ Standard Media Encoder Standard podporuje přenášení následujících zvukov�
 | Dolby® Digital (AC3) |Ne |
 | Dolby® Digital Plus (E-AC3) |Ne |
 
-## <a name="output-formats-and-codecs"></a>Výstupní formáty a kodeky
+## <a name="output-formats-and-codecs"></a>Formáty výstupu a kodeky
 V následující tabulce jsou uvedeny kodeky a formáty souborů, které jsou podporovány pro export.
 
 | Formát souboru | Kodek videa | Zvukový kodek |
 | --- | --- | --- |
-| MP4 <br/><br/>(včetně vícebitových kontejnerů MP4) |H.264 (profily vysokých, hlavních a směrných plánů) |AAC-LC, HE-AAC v1, HE-AAC v2 |
-| MPEG2-TS |H.264 (profily vysokých, hlavních a směrných plánů) |AAC-LC, HE-AAC v1, HE-AAC v2 |
+| MP4 <br/><br/>(včetně kontejnerů MP4 s více přenosovými rychlostmi) |H. 264 (profily vysoké, hlavní a základní) |AAC-LC, HE-AAC V1, IT-AAC v2 |
+| MPEG2 – TS |H. 264 (profily vysoké, hlavní a základní) |AAC-LC, HE-AAC V1, IT-AAC v2 |
 
 ## <a name="media-services-learning-paths"></a>Mapy kurzů k Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
@@ -113,7 +113,7 @@ V následující tabulce jsou uvedeny kodeky a formáty souborů, které jsou po
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Viz také
-[Kódování obsahu na vyžádání pomocí mediálních služeb Azure](media-services-encode-asset.md)
+[Kódování obsahu na vyžádání pomocí Azure Media Services](media-services-encode-asset.md)
 
-[Jak kódovat pomocí standardu kodéru médií](media-services-dotnet-encode-with-media-encoder-standard.md)
+[Postup při kódování pomocí Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-standard.md)
 

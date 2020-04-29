@@ -1,6 +1,6 @@
 ---
-title: Příklad skriptu Azure CLI – fond Linuxu v dávce
-description: Tento skript ukazuje některé příkazy, které jsou k dispozici v rozhraní příkazového příkazu Azure k vytvoření a správě fondu výpočetních uzlů Linuxu v Azure Batch.
+title: Ukázkový skript Azure CLI – fond pro Linux ve službě Batch
+description: Tento skript ukazuje některé příkazy, které jsou k dispozici v Azure CLI pro vytvoření a správu fondu výpočetních uzlů Linux v Azure Batch.
 services: batch
 documentationcenter: ''
 author: LauraBrenner
@@ -15,15 +15,15 @@ ms.workload: na
 ms.date: 01/29/2018
 ms.author: labrenne
 ms.openlocfilehash: 7f896f7f6493cff8c25d4ccfd5a15f5edb11258f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77024479"
 ---
 # <a name="cli-example-create-and-manage-a-linux-pool-in-azure-batch"></a>Příklad rozhraní příkazového řádku: Vytvoření a správa fondu s Linuxem ve službě Azure Batch
 
-Tento skript ukazuje některé příkazy, které jsou k dispozici v rozhraní příkazového příkazu Azure k vytvoření a správě fondu výpočetních uzlů Linuxu v Azure Batch.
+Tento skript ukazuje některé příkazy, které jsou k dispozici v Azure CLI pro vytvoření a správu fondu výpočetních uzlů Linux v Azure Batch.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 

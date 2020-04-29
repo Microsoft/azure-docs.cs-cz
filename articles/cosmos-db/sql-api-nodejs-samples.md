@@ -1,5 +1,5 @@
 ---
-title: Příklady node.js pro správu dat v databázi Azure Cosmos
+title: Příklady pro Node. js pro správu dat v databázi Azure Cosmos
 description: Na GitHubu najdete příklady v Node.js pro běžné úlohy ve službě Azure Cosmos DB, včetně operací CRUD.
 author: deborahc
 ms.service: cosmos-db
@@ -8,16 +8,16 @@ ms.topic: sample
 ms.date: 08/23/2019
 ms.author: dech
 ms.openlocfilehash: 4ac3d74cb76a936cc88261a2fedf16764e8ae52f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76718289"
 ---
-# <a name="nodejs-examples-to-manage-data-in-azure-cosmos-db"></a>Příklady node.js pro správu dat v Azure Cosmos DB
+# <a name="nodejs-examples-to-manage-data-in-azure-cosmos-db"></a>Příklady pro Node. js pro správu dat v Azure Cosmos DB
 
 > [!div class="op_single_selector"]
-> * [Příklady sady .NET V2 SDK](sql-api-dotnet-samples.md)
+> * [Příklady sady .NET v2 SDK](sql-api-dotnet-samples.md)
 > * [Příklady sady .NET V3 SDK](sql-api-dotnet-v3sdk-samples.md)
 > * [Příklady v Javě](sql-api-java-samples.md)
 > * [Příklady v asynchronní Javě](sql-api-async-java-samples.md)
@@ -49,7 +49,7 @@ Potřebujete také sadu [JavaScript SDK](sql-api-sdk-node.md).
 
 ## <a name="database-examples"></a>Příklady pro databáze
 
-Soubor [DatabaseManagement](https://github.com/Azure/azure-cosmos-js/blob/master/samples/DatabaseManagement.ts) ukazuje, jak provádět operace CRUD v databázi. Informace o databázích Azure Cosmos před spuštěním následujících ukázek najdete v článku [Práce s databázemi, kontejnery a položkami.](databases-containers-items.md) 
+Soubor [DatabaseManagement](https://github.com/Azure/azure-cosmos-js/blob/master/samples/DatabaseManagement.ts) ukazuje, jak provést operace CRUD v databázi. Další informace o databázích Azure Cosmos před spuštěním následujících ukázek najdete v článku [práce s databázemi, kontejnery a položkami](databases-containers-items.md) konceptu. 
 
 | Úkol | API – referenční informace |
 | --- | --- |
@@ -60,7 +60,7 @@ Soubor [DatabaseManagement](https://github.com/Azure/azure-cosmos-js/blob/master
 
 ## <a name="container-examples"></a>Příklady pro kontejnery
 
-Kontejner [Management](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ContainerManagement.ts) soubor ukazuje, jak provádět operace CRUD na kontejneru. Informace o kolekcích Azure Cosmos před spuštěním následující ukázky, najdete [v tématu práce s databázemi, kontejnery a položky](databases-containers-items.md) koncepční článek. 
+Soubor [ContainerManagement](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ContainerManagement.ts) ukazuje, jak provést operace CRUD na kontejneru. Informace o kolekcích Azure Cosmos před spuštěním následujících ukázek najdete v článku [práce s databázemi, kontejnery a položkami](databases-containers-items.md) konceptu. 
 
 | Úkol | API – referenční informace |
 | --- | --- |
@@ -71,7 +71,7 @@ Kontejner [Management](https://github.com/Azure/azure-cosmos-js/blob/master/samp
 
 ## <a name="item-examples"></a>Příklady pro položky
 
-Soubor [ItemManagement](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ItemManagement.ts) ukazuje, jak provádět operace CRUD na položku. Informace o dokumentech Azure Cosmos před spuštěním následujícíukázky, najdete [v tématu práce s databázemi, kontejnery a položky](databases-containers-items.md) koncepční článek. 
+Soubor [ItemManagement](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ItemManagement.ts) ukazuje, jak provést operace CRUD pro položku. Další informace o dokumentech Azure Cosmos před spuštěním následujících ukázek najdete v článku [práce s databázemi, kontejnery a položkami](databases-containers-items.md) konceptu. 
 
 | Úkol | API – referenční informace |
 | --- | --- |
@@ -86,19 +86,19 @@ Soubor [ItemManagement](https://github.com/Azure/azure-cosmos-js/blob/master/sam
 
 ## <a name="indexing-examples"></a>Příklady indexování
 
-Soubor [IndexManagement](https://github.com/Azure/azure-cosmos-js/blob/master/samples/IndexManagement.ts) ukazuje, jak spravovat indexování. Další informace o indexování v Azure Cosmos DB před spuštěním následujícíukázky, najdete v [tématu indexování zásady](index-policy.md), [indexování typy](index-types.md)a [indexování cesty](index-paths.md) koncepční články. 
+V souboru [IndexManagement](https://github.com/Azure/azure-cosmos-js/blob/master/samples/IndexManagement.ts) se dozvíte, jak spravovat indexování. Další informace o indexování v Azure Cosmos DB před spuštěním následujících ukázek najdete v článku o [zásadách indexování](index-policy.md), [typech indexování](index-types.md)a [indexovaných cestách](index-paths.md) . 
 
 | Úkol | API – referenční informace |
 | --- | --- |
-| [Ruční indexování určité položky](https://github.com/Azure/azure-cosmos-js/blob/master/samples/IndexManagement.ts#L52-L75) |[RequestOptions.indexingDirective: 'include'](https://docs.microsoft.com/javascript/api/%40azure/cosmos/requestoptions?view=azure-node-latest#indexingdirective) |
-| [Ruční vyloučení určité položky z indexu](https://github.com/Azure/azure-cosmos-js/blob/master/samples/IndexManagement.ts#L17-L29) |[RequestOptions.indexingDirective: 'exclude'](https://docs.microsoft.com/javascript/api/%40azure/cosmos/requestoptions?view=azure-node-latest#indexingdirective) |
+| [Ruční indexace konkrétní položky](https://github.com/Azure/azure-cosmos-js/blob/master/samples/IndexManagement.ts#L52-L75) |[RequestOptions.indexingDirective: 'include'](https://docs.microsoft.com/javascript/api/%40azure/cosmos/requestoptions?view=azure-node-latest#indexingdirective) |
+| [Ručně vyloučit konkrétní položku z indexu](https://github.com/Azure/azure-cosmos-js/blob/master/samples/IndexManagement.ts#L17-L29) |[RequestOptions.indexingDirective: 'exclude'](https://docs.microsoft.com/javascript/api/%40azure/cosmos/requestoptions?view=azure-node-latest#indexingdirective) |
 | [Vyloučení cesty z indexu](https://github.com/Azure/azure-cosmos-js/blob/master/samples/IndexManagement.ts#L142-L167) |[IndexingPolicy.ExcludedPath](https://docs.microsoft.com/javascript/api/%40azure/cosmos/indexingpolicy?view=azure-node-latest#excludedpaths) |
 | [Vytvoření indexu rozsahu v cestě řetězce](https://github.com/Azure/azure-cosmos-js/blob/master/samples/IndexManagement.ts#L87-L112) |[IndexKind.Range](https://docs.microsoft.com/javascript/api/%40azure/cosmos/indexkind?view=azure-node-latest), [IndexingPolicy](https://docs.microsoft.com/javascript/api/%40azure/cosmos/indexingpolicy?view=azure-node-latest), [Items.query](https://docs.microsoft.com/javascript/api/%40azure/cosmos/items?view=azure-node-latest) |
 | [Vytvoření kontejneru s výchozí zásadou indexPolicy a její následná online aktualizace](https://github.com/Azure/azure-cosmos-js/blob/master/samples/IndexManagement.ts#L13-L15) |[Containers.create](https://docs.microsoft.com/javascript/api/%40azure/cosmos/containers?view=azure-node-latest)
 
 ## <a name="server-side-programming-examples"></a>Příklady programování na straně serveru
 
-Soubor [index.ts](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ServerSideScripts/index.ts) projektu [ServerSideScripts](https://github.com/Azure/azure-cosmos-js/tree/master/samples/ServerSideScripts) ukazuje, jak provádět následující úkoly. Informace o programování na straně serveru v Azure Cosmos DB před spuštěním následující ukázky, najdete [v tématu uložené procedury, aktivační události a uživatelem definované funkce](stored-procedures-triggers-udfs.md) koncepční článek. 
+Soubor [index. TS](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ServerSideScripts/index.ts) projektu [ServerSideScripts](https://github.com/Azure/azure-cosmos-js/tree/master/samples/ServerSideScripts) ukazuje, jak provádět následující úlohy. Další informace o programování na straně serveru v Azure Cosmos DB před spuštěním následujících ukázek najdete v článku o [uložených procedurách, triggerech a uživatelsky definovaných funkcích](stored-procedures-triggers-udfs.md) koncepční článek. 
 
 | Úkol | API – referenční informace |
 | --- | --- |

@@ -9,24 +9,24 @@ ms.date: 03/05/2019
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 9a20dca71727e83db98c4c97567949bd127fc7fb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77111191"
 ---
-[Směrování zpráv](../articles/iot-hub/iot-hub-devguide-messages-d2c.md) umožňuje odesílání telemetrických dat z vašich zařízení IoT do integrovaných koncových bodů kompatibilních s centrem událostí nebo do vlastních koncových bodů, jako je úložiště objektů blob, fronty služby Service Bus, témata služby Service Bus a centra událostí. Chcete-li konfigurovat vlastní směrování zpráv, vytvořte [směrovací dotazy](../articles/iot-hub/iot-hub-devguide-routing-query-syntax.md) pro přizpůsobení trasy, která odpovídá určité podmínce. Po nastavení se příchozí data automaticky přesměrují na koncové body pomocí služby IoT Hub. Pokud zpráva neodpovídá žádnému z definovaných směrovacích dotazů, je směrována do výchozího koncového bodu.
+[Směrování zpráv](../articles/iot-hub/iot-hub-devguide-messages-d2c.md) umožňuje odesílat data telemetrie ze zařízení IoT do integrovaných koncových bodů kompatibilních s centrem událostí nebo vlastních koncových bodů, jako je BLOB storage, Service Bus fronty, Service Bus témata a Event Hubs. Chcete-li nakonfigurovat vlastní směrování zpráv, vytvořte [dotazy směrování](../articles/iot-hub/iot-hub-devguide-routing-query-syntax.md) pro přizpůsobení trasy, která odpovídá určité podmínce. Po nastavení se příchozí data automaticky přesměrují na koncové body pomocí služby IoT Hub. Pokud zpráva neodpovídá žádnému z definovaných směrovacích dotazů, bude směrována do výchozího koncového bodu.
 
-V tomto dvoudílném kurzu se dozvíte, jak nastavit a používat tyto vlastní směrovací dotazy pomocí služby IoT Hub. Směrujete zprávy ze zařízení IoT do jednoho z více koncových bodů, včetně úložiště objektů blob a fronty service bus. Zprávy do fronty Service Bus jsou vyzvednuty aplikací logiky a odesílány e-mailem. Zprávy, které nemají definované vlastní směrování zpráv, se posílají do výchozího koncového bodu, pak je vyzvedne Azure Stream Analytics a zobrazí se ve vizualizaci Power BI.
+V tomto 2 kurzu se naučíte, jak nastavit a používat tyto vlastní dotazy směrování s IoT Hub. Zprávy ze zařízení IoT směrujete do jednoho z několika koncových bodů, včetně úložiště objektů BLOB a fronty Service Bus. Zprávy do fronty Service Bus vybírají aplikace logiky a odesílají se prostřednictvím e-mailu. Zprávy, které nemají definované vlastní směrování zpráv, se odešlou do výchozího koncového bodu a pak se vybírají Azure Stream Analytics a zobrazí se ve vizualizaci Power BI.
 
-Chcete-li dokončit části 1 a 2 tohoto kurzu, proveďte následující úkoly:
+K dokončení částí 1 a 2 tohoto kurzu provedete následující úlohy:
 
-**Část I: Vytvoření zdrojů, nastavení směrování zpráv**
+**Část I: vytvoření prostředků, nastavení směrování zpráv**
 > [!div class="checklist"]
-> * Vytvořte prostředky – centrum IoT, účet úložiště, frontu service bus a simulované zařízení. To se dá dělat pomocí portálu Azure, šablony Azure Resource Manager, Azure CLI nebo Azure PowerShellu.
-> * Nakonfigurujte koncové body a trasy zpráv v centru IoT Hub pro účet úložiště a frontu service bus.
+> * Vytvoření prostředků – služby IoT Hub, účtu úložiště, fronty Service Bus a simulovaného zařízení. Můžete to udělat pomocí Azure Portal, Azure Resource Manager šablony, rozhraní příkazového řádku Azure nebo Azure PowerShell.
+> * Konfigurace koncových bodů a směrování zpráv v IoT Hub pro účet úložiště a Service Bus fronty.
 
-**Část II: Odesílání zpráv do centra, zobrazení směrovaných výsledků**
+**Část II: odeslání zpráv do centra, zobrazení směrovaných výsledků**
 > [!div class="checklist"]
 > * Vytvoření aplikace logiky, která se aktivuje a odešle e-mail, kdykoli se ve frontě Service Bus objeví nová zpráva.
 > * Stažení a spuštění aplikaci, která bude simulovat IoT zařízení odesílající zprávy do centra s různými možnosti směrování.
@@ -38,14 +38,14 @@ Chcete-li dokončit části 1 a 2 tohoto kurzu, proveďte následující úkoly:
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Pro část 1 tohoto kurzu:
-  - Mít předplatné Azure. Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
+* V části 1 tohoto kurzu:
+  - Mít předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-* Pro část 2 tohoto kurzu:
-  - Musíte mít dokončenou část 1 tohoto kurzu a mít prostředky stále k dispozici.
-  - Nainstalujte [visual studio](https://www.visualstudio.com/).
-  - Měj přístup k účtu Power BI a analyzujte analýzu streamu výchozího koncového bodu. ([Vyzkoušejte službu Power BI zdarma](https://app.powerbi.com/signupredirect?pbi_source=web).)
-  - Měj účet Office 365 pro odesílání e-mailů s oznámením.
-  - Zkontrolujte, zda je v bráně firewall otevřený port 8883. Ukázka v tomto kurzu používá protokol MQTT, který komunikuje přes port 8883. Tento port může být blokován v některých prostředích podnikové a vzdělávací sítě. Další informace a způsoby, jak tento problém vyřešit, najdete [v tématu připojení k centru IoT Hub (MQTT)](../articles/iot-hub/iot-hub-mqtt-support.md#connecting-to-iot-hub).
+* V části 2 tohoto kurzu:
+  - Musíte mít hotovou část 1 tohoto kurzu a prostředky budou stále k dispozici.
+  - Nainstalujte [Visual Studio](https://www.visualstudio.com/).
+  - Mít přístup k účtu Power BI k analýze Stream Analytics výchozího koncového bodu. ([Vyzkoušejte službu Power BI zdarma](https://app.powerbi.com/signupredirect?pbi_source=web).)
+  - Mít účet Office 365 pro odesílání e-mailů s oznámením.
+  - Ujistěte se, že je v bráně firewall otevřený port 8883. Ukázka v tomto kurzu používá protokol MQTT, který komunikuje přes port 8883. Tento port může být blokovaný v některých podnikových a vzdělávacích prostředích sítě. Další informace a způsoby, jak tento problém obejít, najdete v tématu [připojení k IoT Hub (MQTT)](../articles/iot-hub/iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
 [!INCLUDE [cloud-shell-try-it.md](cloud-shell-try-it.md)]

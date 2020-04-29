@@ -1,6 +1,6 @@
 ---
 title: Ukázkový skript Azure CLI – Vytvoření vlastního tématu | Microsoft Docs
-description: Tento článek obsahuje ukázkový skript Azure CLI, který ukazuje, jak vytvořit vlastní téma Azure Event Grid.
+description: Tento článek obsahuje ukázkový skript rozhraní příkazového řádku Azure CLI, který ukazuje, jak vytvořit vlastní téma Azure Event Grid.
 services: event-grid
 documentationcenter: na
 author: spelluru
@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 01/23/2020
 ms.author: spelluru
 ms.openlocfilehash: 2c6e027d234104d5e45c632dd73e79d8f069deb5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76720839"
 ---
 # <a name="create-event-grid-custom-topic-with-azure-cli"></a>Vytvoření vlastního tématu Event Gridu pomocí Azure CLI

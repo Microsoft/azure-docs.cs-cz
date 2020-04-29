@@ -1,6 +1,6 @@
 ---
-title: Standardní formáty kodérů a kodeky – Azure
-description: Tento článek obsahuje seznam nejběžnějších formátů souborů pro import a export, které lze použít s standardencoderpreset.
+title: Formáty a kodeky Standard Encoder – Azure
+description: Tento článek obsahuje seznam nejběžnějších formátů souborů pro import a export, které můžete použít se službou StandardEncoderPreset.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,17 +15,17 @@ ms.date: 02/10/2019
 ms.author: juliako
 ms.reviewer: anilmur
 ms.openlocfilehash: f1d4d4f4006702ebe0d057e56cf24a022e73b83e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79251359"
 ---
-# <a name="standard-encoder-formats-and-codecs"></a>Standardní formáty kodéru a kodeky
+# <a name="standard-encoder-formats-and-codecs"></a>Formáty a kodeky Standard Encoder
 
-Tento článek obsahuje seznam nejběžnějších formátů souborů pro import a export, které lze použít s [standardencoderpreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset). Informace o tom, jak vytvořit vlastní přednastavení pomocí **standardencoderpreset**, naleznete [v tématu Vytvoření transformace s vlastním přednastavením](customize-encoder-presets-how-to.md).
+Tento článek obsahuje seznam nejběžnějších formátů souborů pro import a export, které můžete použít se službou [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset). Informace o tom, jak vytvořit vlastní přednastavení pomocí **StandardEncoderPreset**, najdete v tématu [Vytvoření transformace s vlastní předvolbumi](customize-encoder-presets-how-to.md).
 
-## <a name="input-containerfile-formats"></a>Vstupní formáty kontejnerů/souborů
+## <a name="input-containerfile-formats"></a>Vstupní formáty kontejneru nebo souborů
 
 | Formáty souborů (přípony souborů) | Podporuje se |
 | --- | --- |
@@ -41,18 +41,18 @@ Tento článek obsahuje seznam nejběžnějších formátů souborů pro import 
 | WAVE a WAV (.wav) |Ano |
 | QuickTime (.mov) |Ano |
 
-### <a name="audio-formats-in-input-containers"></a>Zvukové formáty ve vstupních kontejnerech
+### <a name="audio-formats-in-input-containers"></a>Formáty zvuku ve vstupních kontejnerech
 
-Standardní kodér podporuje přenášení následujících zvukových formátů ve vstupních kontejnerech:
+Kodér standard podporuje ve vstupních kontejnerech následující formáty zvuku:
 
-* Soubory MXF, GXF a QuickTime, které mají zvukové stopy s proloženými stereo nebo 5,1 vzorky
+* Soubory MXF, GXF a QuickTime, které obsahují zvukové stopy s prokládanými ukázkami stereo nebo 5,1
 
 – nebo –
 
 * Soubory MXF, GXF a QuickTime, kde se zvuk přenáší jako samostatné stopy PCM, ale mapování kanálů (na stereo nebo prostorový zvuk 5.1) je možné odvodit z metadat souboru
 
-## <a name="input-video-codecs"></a>Vstupní video kodeky
-| Vstupní video kodeky | Podporuje se |
+## <a name="input-video-codecs"></a>Vstupní kodeky videa
+| Vstupní kodeky videa | Podporuje se |
 | --- | --- |
 | AVC s 8bitovou nebo 10bitovou hloubkou až do vzorkování 4:2:2, včetně AVCIntra |8bitová hloubka, 4:2:0 a 4:2:2 |
 | Avid DNxHD (v souborech MXF) |Ano |
@@ -72,7 +72,7 @@ Standardní kodér podporuje přenášení následujících zvukových formátů
 | Apple ProRes Proxy |Ano |
 | Apple ProRes 4444 |Ano |
 | Apple ProRes 4444 XQ |Ano |
-| HEVC/H.265| Hlavní profil|
+| HEVC/H. 265| Hlavní profil|
 
 ## <a name="input-audio-codecs"></a>Vstupní zvukové kodeky
 | Kodeky vstupního zvuku | Podporuje se |
@@ -82,7 +82,7 @@ Standardní kodér podporuje přenášení následujících zvukových formátů
 | MP3 (MPEG-1 Audio Layer 3) |Ano |
 | Windows Media Audio |Ano |
 | WAV a PCM |Ano |
-| [Flac](https://en.wikipedia.org/wiki/FLAC)</a> |Ano |
+| [FLAC](https://en.wikipedia.org/wiki/FLAC)</a> |Ano |
 | [Opus](https://go.microsoft.com/fwlink/?LinkId=822667) |Ano |
 | [Vorbis](https://en.wikipedia.org/wiki/Vorbis)</a> |Ano |
 | AMR (adaptivní s více rychlostmi) |Ano |
@@ -91,14 +91,14 @@ Standardní kodér podporuje přenášení následujících zvukových formátů
 | Dolby® Digital (AC3) |Ne |
 | Dolby® Digital Plus (E-AC3) |Ne |
 
-## <a name="output-formats-and-codecs"></a>Výstupní formáty a kodeky
+## <a name="output-formats-and-codecs"></a>Formáty výstupu a kodeky
 V následující tabulce jsou uvedeny kodeky a formáty souborů, které jsou podporovány pro export.
 
 | Formát souboru | Kodek videa | Zvukový kodek |
 | --- | --- | --- |
-| MP4 <br/><br/>(včetně vícebitových kontejnerů MP4) |H.264 (profily vysokých, hlavních a směrných plánů) |AAC-LC, HE-AAC v1, HE-AAC v2 |
-| MPEG2-TS |H.264 (profily vysokých, hlavních a směrných plánů) |AAC-LC, HE-AAC v1, HE-AAC v2 |
+| MP4 <br/><br/>(včetně kontejnerů MP4 s více přenosovými rychlostmi) |H. 264 (profily vysoké, hlavní a základní) |AAC-LC, HE-AAC V1, IT-AAC v2 |
+| MPEG2 – TS |H. 264 (profily vysoké, hlavní a základní) |AAC-LC, HE-AAC V1, IT-AAC v2 |
 
 ## <a name="next-steps"></a>Další kroky
 
-[Vytvoření transformace s vlastním přednastavením](customize-encoder-presets-how-to.md)
+[Vytvoření transformace pomocí vlastní předvolby](customize-encoder-presets-how-to.md)

@@ -1,6 +1,6 @@
 ---
-title: Ukázky úložiště Azure pomocí JavaScriptu | Dokumenty společnosti Microsoft
-description: Zobrazení, stažení a spuštění ukázkového kódu a aplikací pro Azure Storage. Pomocí klientských knihoven úložiště JavaScript/Node.js můžete zjistit ukázky pro objekty BLOB, fronty, tabulky a soubory.
+title: Azure Storage ukázky pomocí JavaScriptu | Microsoft Docs
+description: Zobrazit, stáhnout a spustit vzorový kód a aplikace pro Azure Storage. Objevte úvodní ukázky pro objekty blob, fronty, tabulky a soubory pomocí klientských knihoven pro úložiště JavaScript/Node. js.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 02/19/2020
@@ -8,26 +8,26 @@ ms.service: storage
 ms.subservice: common
 ms.topic: sample
 ms.openlocfilehash: 1d6b4d37a3d7c4accc3e407fb6cf841600ac1c16
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77485841"
 ---
-# <a name="azure-storage-samples-using-v12-javascript-client-libraries"></a>Ukázky úložiště Azure pomocí klientských knihoven JavaScript u v12
+# <a name="azure-storage-samples-using-v12-javascript-client-libraries"></a>Azure Storage ukázky pomocí klientských knihoven V12 JavaScript
 
-Následující tabulky poskytují přehled úložiště našich ukázek a scénáře uvedené v každé ukázce. Kliknutím na odkazy zobrazíte odpovídající ukázkový kód na GitHubu.
+Následující tabulky obsahují přehled našich ukázkových úložišť a scénářů popsaných v jednotlivých ukázkách. Kliknutím na odkazy zobrazíte odpovídající vzorový kód v GitHubu.
 
 > [!NOTE]
-> Tyto ukázky používají nejnovější knihovnu Azure Storage JavaScript v12. Starší verze kódu v11 najdete [v tématu Začínáme se službou Azure Blob Service v node.js](https://github.com/Azure-Samples/storage-blob-node-getting-started) v úložišti GitHub.
+> Tyto ukázky používají nejnovější knihovnu V12 JavaScriptu pro Azure Storage. Starší verzi kódu V11 naleznete v tématu [Začínáme with Azure Blob Service v Node. js](https://github.com/Azure-Samples/storage-blob-node-getting-started) v úložišti GitHub.
 
-## <a name="blob-samples"></a>Vzorky objektů blob
+## <a name="blob-samples"></a>Ukázky objektů BLOB
 
-### <a name="authentication"></a>Ověřování
+### <a name="authentication"></a>Authentication
 
 :::row:::
    :::column span="":::
-      [Ověření pomocí připojovacího řetězce](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/withConnString.js#L14)
+      [Ověřit pomocí připojovacího řetězce](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/withConnString.js#L14)
    :::column-end:::
    :::column span="":::
       [Ověření pomocí připojovacího řetězce SAS](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/withConnString.js#L14)
@@ -35,10 +35,10 @@ Následující tabulky poskytují přehled úložiště našich ukázek a scén�
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Ověření pomocí pověření sdíleného klíče](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/sharedKeyCred.js#L5)
+      [Ověřit pomocí pověření sdíleného klíče](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/sharedKeyCred.js#L5)
    :::column-end:::
    :::column span="":::
-      [Ověření pomocí anonymouscredential](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/anonymousCred.js#L18)
+      [Ověřování pomocí AnonymousCredential](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/anonymousCred.js#L18)
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -46,7 +46,7 @@ Následující tabulky poskytují přehled úložiště našich ukázek a scén�
       [Ověření pomocí služby Azure Active Directory](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/azureAdAuth.js#L47)
    :::column-end:::
    :::column span="":::
-      [Ověření pomocí proxy serveru](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/proxyAuth.js#L28)
+      [Ověřování pomocí proxy](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/proxyAuth.js#L28)
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -59,7 +59,7 @@ Následující tabulky poskytují přehled úložiště našich ukázek a scén�
 
 :::row:::
    :::column span="2":::
-      [Vytvoření klienta služby blob pomocí adresy URL SAS](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/advanced.js#L39)
+      [Vytvoření klienta služby BLOB pomocí adresy URL SAS](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/advanced.js#L39)
    :::column-end:::
 :::row-end:::
 
@@ -78,12 +78,12 @@ Následující tabulky poskytují přehled úložiště našich ukázek a scén�
       [Výpis kontejnerů](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/basic.js#L48)
    :::column-end:::
    :::column span="":::
-      [Seznam kontejnerů pomocí iterátoru](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/iterators-containers.js#L28)
+      [Výpis kontejnerů pomocí iterátoru](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/iterators-containers.js#L28)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Seznam kontejnerů podle stránky](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/iterators-containers.js#L53)
+      [Vypsat kontejnery podle stránky](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/iterators-containers.js#L53)
    :::column-end:::
    :::column span="":::
       [Odstranění kontejneru](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/basic.js#L82)
@@ -105,20 +105,20 @@ Následující tabulky poskytují přehled úložiště našich ukázek a scén�
       [Stažení objektu blob](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/basic.js#L73)
    :::column-end:::
    :::column span="":::
-      [Seznam objektů BLOB pomocí iterátoru](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/iterators-blobs.js#L41)
+      [Výpis objektů BLOB pomocí iterátoru](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/iterators-blobs.js#L41)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Seznam objektů BLOB podle stránky](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/iterators-blobs.js#L66)
+      [Výpis objektů BLOB podle stránky](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/iterators-blobs.js#L66)
    :::column-end:::
    :::column span="":::
-      [Seznam objektů BLOB podle hierarchie](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/iterators-blobs-hierarchy.js#L70)
+      [Výpis objektů BLOB podle hierarchie](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/iterators-blobs-hierarchy.js#L70)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Výpis objektů BLOB bez použití await](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/iterators-without-await.js#L42)
+      [Výpis objektů BLOB bez použití operátoru await](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/iterators-without-await.js#L42)
    :::column-end:::
    :::column span="":::
       [Vytvoření snímku objektu blob](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/readingSnapshot.js#L56)
@@ -126,18 +126,18 @@ Následující tabulky poskytují přehled úložiště našich ukázek a scén�
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Stažení snímku objektu blob](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/readingSnapshot.js#L61)
+      [Stažení snímku objektu BLOB](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/readingSnapshot.js#L61)
    :::column-end:::
    :::column span="":::
-      [Paralelní nahrání datového proudu do objektu blob](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/advanced.js#L74)
+      [Paralelní nahrání datového proudu do objektu BLOB](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/advanced.js#L74)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Objekt blob bloku paralelního stahování](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/advanced.js#L99)
+      [Paralelní stažení bloku objektů BLOB](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/advanced.js#L99)
    :::column-end:::
    :::column span="":::
-      [Nastavení úrovně přístupu na objekt blob](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/advanced.js#L118)
+      [Nastavení úrovně přístupu u objektu BLOB](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/advanced.js#L118)
    :::column-end:::
 :::row-end:::
 
@@ -150,7 +150,7 @@ Následující tabulky poskytují přehled úložiště našich ukázek a scén�
 :::row-end:::
 
 
-## <a name="data-lake-storage-gen2-samples"></a>Vzorky Data Lake Storage Gen2
+## <a name="data-lake-storage-gen2-samples"></a>Ukázky Data Lake Storage Gen2
 
 :::row:::
    :::column span="":::
@@ -165,7 +165,7 @@ Následující tabulky poskytují přehled úložiště našich ukázek a scén�
       [Seznam systémů souborů](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-datalake/samples/javascript/basic.js#L42)
    :::column-end:::
    :::column span="":::
-      [Vytvoření souboru](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-datalake/samples/javascript/basic.js#L54)
+      [Vytvořit soubor](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-datalake/samples/javascript/basic.js#L54)
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -184,19 +184,19 @@ Následující tabulky poskytují přehled úložiště našich ukázek a scén�
 
 ## <a name="azure-files-samples"></a>Ukázky souborů Azure
 
-### <a name="authentication"></a>Ověřování
+### <a name="authentication"></a>Authentication
 
 :::row:::
    :::column span="":::
-      [Ověření pomocí připojovacího řetězce](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/withConnString.js)
+      [Ověřování pomocí připojovacího řetězce](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/withConnString.js)
    :::column-end:::
    :::column span="":::
-      [Ověření pomocí pověření sdíleného klíče](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/sharedKeyCred.js)
+      [Ověřování pomocí přihlašovacích údajů sdíleného klíče](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/sharedKeyCred.js)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Ověření pomocí anonymouscredential](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/anonymousCred.js)
+      [Ověřování pomocí AnonymousCredential](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/anonymousCred.js)
    :::column-end:::
    :::column span="":::
       [Připojení pomocí vlastního kanálu](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/customPipeline.js)
@@ -204,7 +204,7 @@ Následující tabulky poskytují přehled úložiště našich ukázek a scén�
 :::row-end:::
 :::row:::
    :::column span="2":::
-      [Připojení pomocí proxy serveru](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/proxyAuth.js)
+      [Připojit pomocí proxy](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/proxyAuth.js)
    :::column-end:::
 :::row-end:::
 
@@ -215,12 +215,12 @@ Následující tabulky poskytují přehled úložiště našich ukázek a scén�
       [Vytvoření sdílené složky](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/advanced.js#L48)
    :::column-end:::
    :::column span="":::
-      [Seznam sdílených složek](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/iterators-shares.js#L27)
+      [Vypsat sdílené složky](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/iterators-shares.js#L27)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Seznam sdílených složek podle stránky](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/iterators-shares.js#L51)
+      [Zobrazit seznam sdílených složek podle stránky](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/iterators-shares.js#L51)
    :::column-end:::
    :::column span="":::
       [Odstranění sdílené složky](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/advanced.js#L104)
@@ -234,12 +234,12 @@ Následující tabulky poskytují přehled úložiště našich ukázek a scén�
       [Vytvoření adresáře](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/advanced.js#L54)
    :::column-end:::
    :::column span="":::
-      [Seznam souborů a adresářů](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/iterators-files-and-directories.js#L56)
+      [Výpis souborů a adresářů](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/iterators-files-and-directories.js#L56)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="2":::
-      [Seznam souborů a adresářů podle stránky](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/iterators-files-and-directories.js#L90)
+      [Výpis souborů a adresářů podle stránky](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/iterators-files-and-directories.js#L90)
    :::column-end:::
 :::row-end:::
 
@@ -258,7 +258,7 @@ Následující tabulky poskytují přehled úložiště našich ukázek a scén�
       [Paralelní stažení souboru](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/advanced.js#L93)
    :::column-end:::
    :::column span="":::
-      [Popisovače souborů seznamu](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/iterators-handles.js#L43)
+      [Seznam popisovačů souborů](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/iterators-handles.js#L43)
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -267,21 +267,21 @@ Následující tabulky poskytují přehled úložiště našich ukázek a scén�
    :::column-end:::
 :::row-end:::
 
-## <a name="queue-samples"></a>Ukázky fronty
+## <a name="queue-samples"></a>Ukázky front
 
-### <a name="authentication"></a>Ověřování
+### <a name="authentication"></a>Authentication
 
 :::row:::
    :::column span="":::
-      [Ověření pomocí připojovacího řetězce](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/withConnString.js)
+      [Ověřování pomocí připojovacího řetězce](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/withConnString.js)
    :::column-end:::
    :::column span="":::
-      [Ověření pomocí pověření sdíleného klíče](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/sharedKeyCred.js)
+      [Ověřování pomocí přihlašovacích údajů sdíleného klíče](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/sharedKeyCred.js)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Ověření pomocí anonymouscredential](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/anonymousCred.js)
+      [Ověřování pomocí AnonymousCredential](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/anonymousCred.js)
    :::column-end:::
    :::column span="":::
       [Připojení pomocí vlastního kanálu](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/customPipeline.js)
@@ -289,18 +289,18 @@ Následující tabulky poskytují přehled úložiště našich ukázek a scén�
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Připojení pomocí proxy serveru](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/proxyAuth.js)
+      [Připojit pomocí proxy](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/proxyAuth.js)
    :::column-end:::
    :::column span="":::
       [Ověření pomocí služby Azure Active Directory](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/azureAdAuth.js)
    :::column-end:::
 :::row-end:::
 
-### <a name="queue-service"></a>Služba fronty
+### <a name="queue-service"></a>Služba front
 
 :::row:::
    :::column span="2":::
-      [Vytvoření klienta služby fronty](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/basic.js#L42)
+      [Vytvoření klienta služby front](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/basic.js#L42)
    :::column-end:::
 :::row-end:::
 
@@ -308,15 +308,15 @@ Následující tabulky poskytují přehled úložiště našich ukázek a scén�
 
 :::row:::
    :::column span="":::
-      [Vytvoření nové fronty](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/basic.js#L54)
+      [Vytvořit novou frontu](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/basic.js#L54)
    :::column-end:::
    :::column span="":::
-      [Seznam front](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/iterators.js#L27)
+      [Výpis front](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/iterators.js#L27)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Seznam front podle stránky](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/iterators.js#L51)
+      [Vypsat fronty podle stránky](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/iterators.js#L51)
    :::column-end:::
    :::column span="":::
       [Odstranění fronty](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/basic.js#L89)
@@ -327,10 +327,10 @@ Následující tabulky poskytují přehled úložiště našich ukázek a scén�
 
 :::row:::
    :::column span="":::
-      [Odeslání zprávy do fronty](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/basic.js#L62)
+      [Odeslat zprávu do fronty](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/basic.js#L62)
    :::column-end:::
    :::column span="":::
-      [Náhled na zprávy](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/basic.js#L68)
+      [Prohlížet zprávy](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/basic.js#L68)
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -338,18 +338,18 @@ Následující tabulky poskytují přehled úložiště našich ukázek a scén�
       [Příjem zpráv](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/basic.js#L76)
    :::column-end:::
    :::column span="":::
-      [Odstranění zpráv](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/basic.js#L80)
+      [Odstranit zprávy](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/basic.js#L80)
    :::column-end:::
 :::row-end:::
 
-## <a name="table-samples-v11"></a>Ukázky tabulky (v11)
+## <a name="table-samples-v11"></a>Ukázky tabulek (V11)
 
 :::row:::
    :::column span="":::
-      [Entity dávky](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L87)
+      [Entity Batch](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L87)
    :::column-end:::
    :::column span="":::
-      [Vytvoření tabulky](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L41)
+      [Vytvořit tabulku](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L41)
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -357,7 +357,7 @@ Následující tabulky poskytují přehled úložiště našich ukázek a scén�
       [Odstranit entitu/tabulku](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L67)
    :::column-end:::
    :::column span="":::
-      [Entita Vložení/sloučení/nahrazení](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L49)
+      [Vložit/sloučit/nahradit entitu](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L49)
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -381,12 +381,12 @@ Následující tabulky poskytují přehled úložiště našich ukázek a scén�
       [Sdílený přístupový podpis (SAS)](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/advanced.js#L87)
    :::column-end:::
    :::column span="":::
-      [ACL tabulky](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/advanced.js#L255)
+      [Seznam ACL tabulky](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/advanced.js#L255)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Pravidla pro sdílení zdrojů mezi zdroji (TABULKA: 60.](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/advanced.js#L149)
+      [Pravidla sdílení prostředků mezi zdroji (CORS) v tabulce](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/advanced.js#L149)
    :::column-end:::
    :::column span="":::
       [Vlastnosti tabulky](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/advanced.js#L188)
@@ -401,30 +401,30 @@ Následující tabulky poskytují přehled úložiště našich ukázek a scén�
    :::column-end:::
 :::row-end:::
 
-## <a name="azure-code-sample-libraries"></a>Ukázkové knihovny kódu Azure
+## <a name="azure-code-sample-libraries"></a>Knihovny ukázek kódu Azure
 
-Chcete-li zobrazit kompletní ukázkové knihovny JavaScriptu, přejděte na:
+Chcete-li zobrazit kompletní ukázkové knihovny jazyka JavaScript, přejít na:
 
-* [Ukázky kódu objektu blob Azure](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples/javascript)
-* [Ukázky kódu datového jezera Azure](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-datalake/samples/javascript)
+* [Ukázky kódu Azure Blob](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples/javascript)
+* [Ukázky kódu Azure Data Lake](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-datalake/samples/javascript)
 * [Ukázky kódu souborů Azure](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-share/samples/javascript)
 * [Ukázky kódu fronty Azure](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue/samples/javascript)
 
-Můžete procházet a klonovat úložiště GitHub pro každou knihovnu.
+Úložiště GitHubu můžete procházet a klonovat pro každou knihovnu.
 
-## <a name="getting-started-guides"></a>Příručky Začínáme
+## <a name="getting-started-guides"></a>Úvodní příručky
 
-Pokud hledáte pokyny k instalaci a zahájení instalace s klientskými knihovnami úložiště Azure, podívejte se na následující příručky.
+Pokud hledáte pokyny k instalaci a Začínáme s klientskými knihovnami Azure Storage, přečtěte si následující příručky.
 
 * [Začínáme se službou Azure Blob Service v JavaScriptu](../blobs/storage-quickstart-blobs-nodejs.md)
-* [Začínáme se službou Azure Queue Service v JavaScriptu](../queues/storage-quickstart-queues-nodejs.md)
+* [Začínáme ve službě Azure Queue Service v JavaScriptu](../queues/storage-quickstart-queues-nodejs.md)
 * [Začínáme se službou Azure Table Service v JavaScriptu](../../cosmos-db/table-storage-how-to-use-nodejs.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-Informace o vzorcích pro jiné jazyky:
+Informace o ukázkách pro jiné jazyky:
 
-* .NET: [Ukázky úložiště Azure pomocí rozhraní .NET](storage-samples-dotnet.md)
-* Java: [Ukázky azure úložiště pomocí Javy](storage-samples-java.md)
-* Python: [Ukázky úložiště Azure pomocí Pythonu](storage-samples-python.md)
-* Všechny ostatní jazyky: [Ukázky azure storage](storage-samples.md)
+* .NET: [Azure Storage ukázky pomocí .NET](storage-samples-dotnet.md)
+* Java: [Azure Storage ukázky pomocí jazyka Java](storage-samples-java.md)
+* Python: [Azure Storage ukázky pomocí Pythonu](storage-samples-python.md)
+* Všechny ostatní jazyky: [ukázky Azure Storage](storage-samples.md)

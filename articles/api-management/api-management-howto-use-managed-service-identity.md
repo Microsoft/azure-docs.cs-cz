@@ -1,6 +1,6 @@
 ---
-title: Použití spravovaných identit ve správě rozhraní Azure API | Dokumenty společnosti Microsoft
-description: Přečtěte si, jak používat spravované identity ve správě rozhraní API
+title: Použití spravovaných identit v Azure API Management | Microsoft Docs
+description: Naučte se používat spravované identity v API Management
 services: api-management
 documentationcenter: ''
 author: miaojiang
@@ -12,31 +12,31 @@ ms.topic: article
 ms.date: 10/18/2017
 ms.author: apimpm
 ms.openlocfilehash: 49576b805e6c6d01340e663bfb5d8e9013917625
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79249630"
 ---
-# <a name="use-managed-identities-in-azure-api-management"></a>Použití spravovaných identit ve správě Azure API
+# <a name="use-managed-identities-in-azure-api-management"></a>Použití spravovaných identit v Azure API Management
 
-Tento článek ukazuje, jak vytvořit spravovanou identitu pro instanci služby správy rozhraní API a jak získat přístup k dalším prostředkům. Spravovaná identita generovaná službou Azure Active Directory (Azure AD) umožňuje vaší instanci správy rozhraní API snadný a bezpečný přístup k dalším prostředkům chráněným azure ad, jako je Azure Key Vault. Tato identita je spravována Azure a nevyžaduje, abyste zřídit nebo otočit žádné tajné klíče. Další informace o spravovaných identitách najdete v tématu [Co je spravované identity pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md).
+V tomto článku se dozvíte, jak vytvořit spravovanou identitu pro instanci služby API Management a jak získat přístup k dalším prostředkům. Spravovaná identita generovaná službou Azure Active Directory (Azure AD) umožňuje vaší instanci API Management snadno a bezpečně přistupovat k dalším prostředkům chráněným službou Azure AD, jako je třeba Azure Key Vault. Tuto identitu spravuje Azure a nevyžaduje zřizování ani navýšení tajných kódů. Další informace o spravovaných identitách najdete v tématu [co jsou spravované identity pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md).
 
-## <a name="create-a-managed-identity-for-an-api-management-instance"></a>Vytvoření spravované identity pro instanci správy rozhraní API
+## <a name="create-a-managed-identity-for-an-api-management-instance"></a>Vytvoření spravované identity instance API Management
 
 ### <a name="using-the-azure-portal"></a>Použití webu Azure Portal
 
-Chcete-li nastavit spravovanou identitu na portálu, nejprve vytvoříte instanci správy rozhraní API jako normální a poté tuto funkci povolíte.
+Pokud chcete na portálu nastavit spravovanou identitu, nejdřív vytvořte instanci API Management jako normální a pak tuto funkci povolte.
 
-1. Vytvořte instanci správy rozhraní API na portálu jako obvykle. Přejděte na něj na portálu.
+1. Na portálu vytvořte instanci API Management, normálně by to bylo. Přejděte na portál na portálu.
 2. Vyberte **identity spravované služby**.
-3. Přepněte registraci pomocí služby Azure Active Directory na Zapnuto. Klikněte na Uložit.
+3. Přepněte registraci s Azure Active Directory do zapnuto. Klikněte na Uložit.
 
 ![Povolení MSI](./media/api-management-msi/enable-msi.png)
 
 ### <a name="using-the-azure-resource-manager-template"></a>Použití šablony Azure Resource Manager
 
-Můžete vytvořit instanci správy rozhraní API s identitou zahrnutím následující vlastnosti do definice prostředku:
+Můžete vytvořit instanci API Management s identitou, a to zahrnutím následující vlastnosti do definice prostředků:
 
 ```json
 "identity" : {
@@ -44,7 +44,7 @@ Můžete vytvořit instanci správy rozhraní API s identitou zahrnutím násled
 }
 ```
 
-To říká Azure k vytvoření a správě identity pro instanci api managementu.
+To oznamuje službě Azure, aby vytvořila a spravovala identitu vaší instance API Management.
 
 Například kompletní šablona Azure Resource Manager může vypadat takto:
 
@@ -75,16 +75,16 @@ Například kompletní šablona Azure Resource Manager může vypadat takto:
 ## <a name="use-the-managed-service-identity-to-access-other-resources"></a>Použití identity spravované služby pro přístup k jiným prostředkům
 
 > [!NOTE]
-> V současné době spravované identity lze získat certifikáty z Azure Key Vault pro správu rozhraní API vlastní názvy domén. Brzy budou podporovány další scénáře.
+> V současné době lze spravované identity použít k získání certifikátů z Azure Key Vault pro API Management vlastních názvů domén. Brzy bude podporováno více scénářů.
 >
 >
 
 
-### <a name="obtain-a-certificate-from-azure-key-vault"></a>Získání certifikátu z trezoru klíčů Azure
+### <a name="obtain-a-certificate-from-azure-key-vault"></a>Získání certifikátu z Azure Key Vault
 
 #### <a name="prerequisites"></a>Požadavky
-1. Trezor klíčů obsahující certifikát pfx musí být ve stejném předplatném Azure a ve stejné skupině prostředků jako služba API Management. Toto je požadavek šablony Azure Resource Manager.
-2. Typ obsahu tajného klíče musí být *application/x-pkcs12*. K nahrání certifikátu můžete použít následující skript:
+1. Key Vault obsahující certifikát PFX musí být ve stejném předplatném Azure a stejné skupině prostředků jako služba API Management. Toto je požadavek šablony Azure Resource Manager.
+2. Typ obsahu tajného kódu musí být *Application/x-PKCS12*. K nahrání certifikátu můžete použít následující skript:
 
 ```powershell
 $pfxFilePath = "PFX_CERTIFICATE_FILE_PATH" # Change this path 
@@ -101,13 +101,13 @@ Set-AzureKeyVaultSecret -VaultName KEY_VAULT_NAME -Name KEY_VAULT_SECRET_NAME -S
 ```
 
 > [!Important]
-> Pokud není k dispozici verze objektu certifikátu, správa rozhraní API automaticky získá novější verzi certifikátu po jeho odeslání do trezoru klíčů.
+> Pokud není k dispozici verze objektu certifikátu, API Management po nahrání do Key Vault automaticky získat novější verzi certifikátu.
 
 Následující příklad ukazuje šablonu Azure Resource Manager, která obsahuje následující kroky:
 
-1. Vytvořte instanci správy rozhraní API se spravovanou identitou.
-2. Aktualizujte zásady přístupu instance Azure Key Vault a povolte instanci api Management získat z ní tajné klíče.
-3. Aktualizujte instanci správy rozhraní API nastavením vlastního názvu domény prostřednictvím certifikátu z instance Trezoru klíčů.
+1. Vytvořte instanci API Management se spravovanou identitou.
+2. Aktualizujte zásady přístupu instance Azure Key Vault a umožněte, aby instance služby API Management z ní získala tajné kódy.
+3. Aktualizujte instanci API Management nastavením vlastního názvu domény pomocí certifikátu z instance Key Vault.
 
 ```json
 {
@@ -235,6 +235,6 @@ Následující příklad ukazuje šablonu Azure Resource Manager, která obsahuj
 
 Další informace o spravovaných identitách pro prostředky Azure:
 
-* [Co se spravuje identity pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md)
+* [Co jsou spravované identity pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md)
 * [Šablony Azure Resource Manageru](https://github.com/Azure/azure-quickstart-templates)
-* [Ověření pomocí spravované identity v zásadách](./api-management-authentication-policies.md#ManagedIdentity)
+* [Ověřování pomocí spravované identity v zásadě](./api-management-authentication-policies.md#ManagedIdentity)

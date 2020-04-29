@@ -1,16 +1,16 @@
 ---
-title: Získání skupiny spravovaných prostředků & změně velikosti virtuálních počítačů – Azure CLI
-description: Poskytuje ukázkový skript Azure CLI, který získá skupinu spravovaných prostředků ve spravované aplikaci Azure. Velikost skriptu změní velikost virtuálních počítače.
+title: Získání spravované skupiny prostředků & změně velikosti virtuálních počítačů – Azure CLI
+description: Poskytuje ukázkový skript Azure CLI, který načte spravovanou skupinu prostředků ve spravované aplikaci Azure. Skript změní velikost virtuálních počítačů.
 author: tfitzmac
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 10/25/2017
 ms.author: tomfitz
 ms.openlocfilehash: 878a8d660495c932cc8fa44bb1ed06e79576729b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75650055"
 ---
 # <a name="get-resources-in-a-managed-resource-group-and-resize-vms-with-azure-cli"></a>Získání prostředků ve spravované skupině prostředků a změna velikosti virtuálních počítačů pomocí Azure CLI

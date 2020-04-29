@@ -1,5 +1,5 @@
 ---
-title: Výuka – vysoká dostupnost pro virtuální počítače s Linuxem v Azure
+title: Kurz – vysoká dostupnost pro virtuální počítače se systémem Linux v Azure
 description: V tomto kurzu zjistíte, jak pomocí Azure CLI nasazovat vysoce dostupné virtuální počítače ve skupinách dostupnosti.
 documentationcenter: ''
 services: virtual-machines-linux
@@ -16,10 +16,10 @@ ms.date: 01/17/2020
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 300b497765dd1081fbad36292c01c56da5bb5e38
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76277249"
 ---
 # <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-the-azure-cli"></a>Kurz: Vytvoření a nasazení vysoce dostupných virtuálních počítačů pomocí Azure CLI
@@ -33,7 +33,7 @@ V tomto kurzu se naučíte:
 > * Vytvoření virtuálního počítače ve skupině dostupnosti
 > * Kontrola dostupných velikostí virtuálních počítačů
 
-Tento kurz používá vynesené mezizaviny příkazového příkazové číslo v rámci [prostředí Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), které se neustále aktualizuje na nejnovější verzi. Chcete-li otevřít prostředí Cloud Shell, vyberte **Vyzkoušet** v horní části libovolného bloku kódu.
+V tomto kurzu se používá CLI v rámci [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), který se průběžně aktualizuje na nejnovější verzi. Chcete-li otevřít Cloud Shell, vyberte možnost **vyzkoušet** v horní části libovolného bloku kódu.
 
 Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0.30 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
 
@@ -113,8 +113,8 @@ V tomto kurzu jste se naučili:
 Přejděte k dalšímu kurzu, kde se seznámíte se škálovacími sadami virtuálních počítačů.
 
 > [!div class="nextstepaction"]
-> [Vytvoření škálovací sady virtuálních strojů](tutorial-create-vmss.md)
+> [Vytvoření sady škálování virtuálních počítačů](tutorial-create-vmss.md)
 
-* Další informace o zónách dostupnosti naleznete v [dokumentaci k zónám dostupnosti](../../availability-zones/az-overview.md).
-* Další dokumentace k dostupnosti a zónám dostupnosti je k dispozici také [zde](./manage-availability.md).
-* Pokud chcete vyzkoušet zóny dostupnosti, navštivte [stránku Vytvoření virtuálního počítače s Linuxem v zóně dostupnosti pomocí azure CLI.](./create-cli-availability-zone.md)
+* Další informace o zónách dostupnosti najdete v dokumentaci k [zóny dostupnosti](../../availability-zones/az-overview.md).
+* Další dokumentace k dispozici pro obě skupiny dostupnosti i zóny dostupnosti jsou k dispozici také [zde](./manage-availability.md).
+* Pokud si chcete vyzkoušet zóny dostupnosti, přejděte na téma [Vytvoření virtuálního počítače se systémem Linux v zóně dostupnosti pomocí Azure CLI](./create-cli-availability-zone.md) .

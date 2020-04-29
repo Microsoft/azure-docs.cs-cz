@@ -1,7 +1,7 @@
 ---
-title: Kurz – diagnostika problémů s komunikací mezi sítěmi používajícími portál Azure
+title: Kurz – Diagnostika potíží s komunikací mezi sítěmi pomocí Azure Portal
 titleSuffix: Azure Network Watcher
-description: V tomto kurzu se dozvíte, jak diagnostikovat problém s komunikací mezi virtuální sítí Azure připojenou k místní nebo jiné virtuální síti prostřednictvím brány virtuální sítě Azure pomocí funkce diagnostiky VPN sledovacího programu sítě.
+description: V tomto kurzu se dozvíte, jak diagnostikovat problémy s komunikací mezi virtuální sítí Azure připojenou k místní nebo jiné virtuální síti přes bránu virtuální sítě Azure pomocí funkce diagnostiky sítě VPN Network Watcher.
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -15,10 +15,10 @@ ms.date: 04/27/2018
 ms.author: damendo
 ms.custom: mvc
 ms.openlocfilehash: 974e45b761fb45e4bc1c451fa6755e16cab49e11
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76834676"
 ---
 # <a name="tutorial-diagnose-a-communication-problem-between-networks-using-the-azure-portal"></a>Kurz: Diagnostika potíží s komunikací mezi sítěmi na portálu Azure Portal
@@ -30,7 +30,7 @@ Brána virtuální sítě připojuje virtuální síť Azure k místní síti ne
 > * Diagnostikovat potíže s připojením brány
 > * Vyřešit potíže s bránou
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -38,14 +38,14 @@ Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azur
 ## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete používat diagnostiku VPN, musí být spuštěná brána VPN. Pokud bránu VPN pro diagnostiku ještě nepoužíváte, můžete ji nasadit pomocí [skriptu PowerShellu](../vpn-gateway/scripts/vpn-gateway-sample-site-to-site-powershell.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). Skript PowerShellu můžete spustit z těchto umístění:
-- **Místní instalace Prostředí PowerShell:** Skript vyžaduje `Az` modul Azure PowerShell. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, podívejte se na článek o [instalaci Azure PowerShellu](/powershell/azure/install-Az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
+- **Místní instalace prostředí PowerShell**: skript vyžaduje modul Azure PowerShell `Az` . Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, podívejte se na článek o [instalaci Azure PowerShellu](/powershell/azure/install-Az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
 - **Azure Cloud Shell**: Služba [Azure Cloud Shell](https://shell.azure.com/powershell) má nainstalovanou a nakonfigurovanou nejnovější verzi PowerShellu a přihlásí vás k Azure.
 
 Vytvoření brány VPN pomocí tohoto skriptu trvá přibližně hodinu. Ve zbývajících krocích se předpokládá, že diagnostikovanou bránou je brána nasazená pomocí tohoto skriptu. Pokud tedy diagnostikujete jinou vlastní bránu, výsledky se budou lišit.
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k [portálu Azure](https://portal.azure.com).
+Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 ## <a name="enable-network-watcher"></a>Povolení Network Watcheru
 

@@ -1,14 +1,14 @@
 ---
-title: Výuka – Zálohování Windows Serveru do Azure
+title: Kurz – zálohování Windows serveru do Azure
 description: Tento kurz podrobně popisuje zálohování místních Windows Serverů do trezoru služby Recovery Services.
 ms.topic: tutorial
 ms.date: 08/22/2018
 ms.custom: mvc
-ms.openlocfilehash: 906901ce4792e8b363a3a9b77c9bf6bb4b59aec5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d29983bec7dbe379bfb2898e0f068a02b01ae726
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79238745"
 ---
 # <a name="back-up-windows-server-to-azure"></a>Zálohování Windows Serveru do Azure
@@ -23,7 +23,7 @@ Pomocí služby Azure Backup můžete chránit svůj Windows Server před poško
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
+Přihlaste se k webu Azure Portal na adrese <https://portal.azure.com.>.
 
 ## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru Služeb zotavení
 
@@ -59,7 +59,7 @@ Agent služby Microsoft Azure Recovery Services (MARS) vytvoří přidružení m
 
 3. V nabídce **Cíl zálohování**:
 
-   * pro **Kde běží vaše úloha?**, vyberte **Místní**
+   * pro **kde je spuštěná vaše úloha?** vyberte **místní** .
    * V části **Co chcete zálohovat?** vyberte **Soubory a složky** a **Stav systému**.
 
    ![zadání informací o trezoru](./media/tutorial-backup-windows-server-to-azure/backup-goal.png)
@@ -106,7 +106,7 @@ Pomocí agenta služby Microsoft Azure Recovery Services můžete nakonfigurovat
 
 4. Klikněte na **Přidat položky** a v dialogovém okně, které se otevře, vyberte **Stav systému** a soubory nebo složky, které chcete zálohovat. Pak klikněte na **OK**.
 
-5. Klikněte na **Další**.
+5. Klikněte na **Další**.
 
 6. Na stránce **Zadání plánu zálohování (Stav systému)** zadejte denní dobu nebo den v týdnu, kdy se má aktivovat zálohování stavu systému, a klikněte na **Další**.
 

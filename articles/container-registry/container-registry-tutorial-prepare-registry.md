@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 04/30/2017
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 70dc664d27fde3b7cf9fe4e5e3a99c041236ac16
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79238521"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>Kurz: Příprava geograficky replikovaného registru kontejnerů Azure
@@ -25,7 +25,7 @@ V tomto kurzu, který je první částí třídílné série, se naučíte:
 
 V dalších kurzech nasadíte kontejner ze svého privátního registru do webové aplikace spuštěné ve dvou oblastech Azure. Pak aktualizujete kód aplikace a pomocí jediného příkazu `docker push` pro váš registr aktualizujete obě instance webové aplikace.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Tento kurz vyžaduje místní instalaci Azure CLI (verze 2.0.31 nebo novější). Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
 
@@ -37,25 +37,25 @@ Azure Cloud Shell neobsahuje součásti Dockeru nutné pro dokončení všech kr
 
 ## <a name="create-a-container-registry"></a>Vytvoření registru kontejnerů
 
-Přihlaste se k [portálu Azure](https://portal.azure.com).
+Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
-Vyberte Vytvořit**kontejnery** >  **prostředků** > **Azure Container Registry**.
+Vyberte **vytvořit** > **kontejnery** > prostředků**Azure Container Registry**.
 
 ![Vytvoření registru kontejnerů na webu Azure Portal][tut-portal-01]
 
 Nakonfiguruje nový registr pomocí následujících nastavení:
 
 * **Název registru:** Vytvořte název registru, který je globálně jedinečný v rámci Azure a obsahuje 5 až 50 alfanumerických znaků.
-* **Skupina zdrojů**: **Vytvořit nové** > `myResourceGroup`
+* **Skupina prostředků**: **vytvořit novou** > `myResourceGroup`
 * **Umístění**:`West US`
-* **Admin**uživatel `Enable` : (vyžadováno pro Web App pro kontejnery vytáhnout obrázky)
-* **Skladová** `Premium` položka : (vyžadováno pro geografickou replikaci)
+* **Uživatel s oprávněními správce**: `Enable` (vyžadováno Web App for Containers k vyžádání imagí)
+* **SKU**: `Premium` (vyžadováno pro geografickou replikaci)
 
 Vyberte **Vytvořit** a nasaďte instanci služby ACR.
 
 ![Vytvoření registru kontejnerů na webu Azure Portal][tut-portal-02]
 
-Ve zbytku tohoto kurzu `<acrName>` používáme jako zástupný symbol pro **název registru** kontejneru, který jste zvolili.
+V celé zbývající části tohoto kurzu používáme `<acrName>` jako zástupný symbol pro **název registru** kontejneru, který jste zvolili.
 
 > [!TIP]
 > Vzhledem k tomu, že registry kontejnerů Azure jsou obvykle dlouhodobé prostředky, které se používají na více hostitelích kontejnerů, doporučujeme vytvořit registr ve vlastní skupině prostředků. Když budete konfigurovat geograficky replikované registry a webhooky, umístí se tyto další prostředky do stejné skupiny prostředků.

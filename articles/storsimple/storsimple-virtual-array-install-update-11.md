@@ -1,6 +1,6 @@
 ---
-title: Instalace aktualizace 1.1 na virtuálním poli StorSimple | Dokumenty společnosti Microsoft
-description: Popisuje, jak použít aktualizace pomocí portálu Azure a místního webového uživatelského prostředí pro storsimple virtual array
+title: Instalace aktualizace 1,1 ve virtuálním poli StorSimple | Microsoft Docs
+description: Popisuje, jak použít aktualizace pomocí Azure Portal a místního webového uživatelského rozhraní pro virtuální pole StorSimple.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,116 +15,116 @@ ms.workload: TBD
 ms.date: 07/18/2018
 ms.author: alkohli
 ms.openlocfilehash: 88b903d68e4398b4e30b0b7435279c29bee6cd6b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79254479"
 ---
-# <a name="install-update-11-on-your-storsimple-virtual-array"></a>Instalace aktualizace 1.1 do virtuálního pole StorSimple
+# <a name="install-update-11-on-your-storsimple-virtual-array"></a>Instalace aktualizace 1,1 ve virtuálním poli StorSimple
 
 ## <a name="overview"></a>Přehled
 
-Tento článek popisuje kroky potřebné k instalaci aktualizace 1.1 na virtuální pole StorSimple prostřednictvím místního webového uživatelského prostředí a prostřednictvím portálu Azure.
+Tento článek popisuje kroky potřebné k instalaci aktualizace 1,1 ve virtuálním poli StorSimple prostřednictvím místního webového uživatelského rozhraní a prostřednictvím Azure Portal.
 
-Aktualizace softwaru nebo opravy hotfix použijete, aby vaše virtuální pole StorSimple bylo aktuální. Před aktualizací doporučujeme nejprve převzít svazky nebo sdílené složky do offline na hostiteli a potom na zařízení. Minimalizuje se tak možnost poškození dat. Po offline svazky nebo sdílené složky byste měli také provést ruční zálohování zařízení.
+Aktualizace softwaru nebo opravy hotfix můžete použít, chcete-li, aby vaše virtuální pole StorSimple zůstalo v aktuálním stavu. Než použijete aktualizaci, doporučujeme, abyste nejprve převzali svazky nebo sdílené složky na hostiteli a pak zařízení. Minimalizuje se tak možnost poškození dat. Až budou svazky nebo sdílené složky offline, měli byste také provést ruční zálohování zařízení.
 
 > [!IMPORTANT]
-> - Aktualizace 1.1 odpovídá verzi softwaru **10.0.10307.0** v zařízení. Informace o novince v této aktualizaci naleznete v [poznámkách k verzi aktualizace 1.1](storsimple-virtual-array-update-11-release-notes.md).
+> - Aktualizace 1,1 odpovídá verzi **10.0.10307.0** softwaru na vašem zařízení. Informace o tom, co je v této aktualizaci nové, najdete v [poznámkách k verzi pro aktualizaci 1,1](storsimple-virtual-array-update-11-release-notes.md).
 >
-> - Nezapomeňte, že instalace aktualizace nebo opravy hotfix restartuje zařízení. Vzhledem k tomu, že virtuální pole StorSimple je zařízení s jedním uzly, je přerušeno jakékoli probíhající vstupně-up a prostoje zařízení.
+> - Mějte na paměti, že při instalaci aktualizace nebo opravy hotfix se zařízení restartuje. Vzhledem k tom, že virtuální pole StorSimple je zařízení s jedním uzlem, je přerušeno jakékoli vstupně-výstupní operace a dojde k výpadku zařízení.
 >
-> - Aktualizace 1.1 je dostupná na webu Azure Portal jenom v případě, že virtuální pole používá aktualizaci 1. U virtuálních polí s verzí aktualizace 0.6 je třeba nejprve nainstalovat aktualizaci 1.0 a potom nainstalovat aktualizaci 1.1.
+> - Aktualizace 1,1 je dostupná v Azure Portal jenom v případě, že je ve virtuálním poli spuštěná aktualizace 1. Pro virtuální pole, která používají verzi Update 0,6, je třeba nejprve nainstalovat Update 1,0 a pak použít Update 1,1.
 
 ## <a name="use-the-azure-portal"></a>Použití webu Azure Portal
 
-Pokud se sem schovali aktualizace 0.2 a novější, doporučujeme nainstalovat aktualizace prostřednictvím portálu Azure. Postup portálu vyžaduje, aby uživatel prohledává, stahuje a poté aktualizuje aktualizace. V závislosti na verzi softwaru, kterou virtuální pole používá, se použití aktualizace prostřednictvím portálu Azure liší.
+Pokud používáte aktualizaci 0,2 a novější, doporučujeme nainstalovat aktualizace prostřednictvím Azure Portal. Procedura portálu vyžaduje, aby uživatel kontroloval, stáhl a nainstaloval aktualizace. V závislosti na verzi softwaru, kterou vaše virtuální pole běží, se použití aktualizace prostřednictvím Azure Portal liší.
 
- - Pokud vaše virtuální pole používá aktualizaci 1, portál Azure přímo nainstaluje aktualizaci 1.1 (10.0.10307.0) do vašeho zařízení. Tento postup trvá přibližně 10 minut.
- - Pokud virtuální pole běží aktualizace 0.6, aktualizace se provádí ve dvou fázích. Portál Azure nejprve nainstaluje aktualizaci 1.0 (10.0.10296.0) do vašeho zařízení. Virtuální pole se restartuje a portál pak nainstaluje aktualizaci 1.1 (10.0.10307.0) do vašeho zařízení. Tento postup trvá přibližně 15 minut.
+ - Pokud je ve vašem virtuálním poli spuštěná aktualizace 1, Azure Portal na vaše zařízení přímo nainstaluje aktualizaci 1,1 (10.0.10307.0). Dokončení tohoto postupu trvá přibližně 10 minut.
+ - Pokud je ve vašem virtuálním poli spuštěná aktualizace 0,6, aktualizace se provádí ve dvou fázích. Azure Portal na vaše zařízení nejdřív nainstaluje aktualizaci 1,0 (10.0.10296.0). Virtuální pole se restartuje a portál pak na svém zařízení nainstaluje Update 1,1 (10.0.10307.0). Dokončení tohoto postupu trvá přibližně 15 minut.
 
 
 [!INCLUDE [storsimple-virtual-array-install-update-via-portal](../../includes/storsimple-virtual-array-install-update-via-portal-11.md)]
 
-Po dokončení instalace přejděte do služby Správce zařízení StorSimple. Vyberte **Zařízení** a pak vyberte a klikněte na zařízení, které jste právě aktualizovali. Přejděte **na nastavení > Správa aktualizací > zařízení**. Zobrazená verze softwaru by měla být **10.0.10307.0**.
+Po dokončení instalace přejdete do služby StorSimple Device Manager. Vyberte **zařízení** a pak vyberte a klikněte na zařízení, které jste právě aktualizovali. Přejít na **nastavení > spravovat > aktualizace zařízení**. Zobrazená verze softwaru by měla být **10.0.10307.0**.
 
 ![Verze softwaru po aktualizaci](./media/storsimple-virtual-array-install-update-11/azupdate17m2.png)
 
-## <a name="use-the-local-web-ui"></a>Použití místního webového uživatelského prostředí
+## <a name="use-the-local-web-ui"></a>Použití místního webového uživatelského rozhraní
 
-Při použití místního webového uživatelského prostředí existují dva kroky:
+Existují dva kroky při použití místního webového uživatelského rozhraní:
 
-* Stažení aktualizace nebo opravy hotfix
+* Stáhnout aktualizaci nebo opravu hotfix
 * Instalace aktualizace nebo opravy hotfix
 
 > [!IMPORTANT] 
-> **Pokračujte v této aktualizaci pouze v případě, že používáte aktualizaci 1 (10.0.10296.0). Pokud používáte aktualizaci 0.6, [nejprve nainstalujte do](storsimple-virtual-array-install-update-1.md) zařízení aktualizaci 1 a potom nainstalujte aktualizaci 1.1.**
+> **Pokračujte v této aktualizaci pouze v případě, že používáte aktualizaci 1 (10.0.10296.0). Pokud používáte aktualizaci 0,6, nejdřív na zařízení [nainstalujte Update 1](storsimple-virtual-array-install-update-1.md) a pak použijte Update 1,1.**
 
-### <a name="download-the-update-or-the-hotfix"></a>Stažení aktualizace nebo opravy hotfix
+### <a name="download-the-update-or-the-hotfix"></a>Stáhnout aktualizaci nebo opravu hotfix
 
-Chcete-li stáhnout aktualizaci 1.1 z katalogu microsoft update, proveďte následující kroky.
+K stažení aktualizace 1,1 z katalogu Microsoft Update proveďte následující kroky.
 
 #### <a name="to-download-the-update-or-the-hotfix"></a>Stažení aktualizace nebo opravy hotfix
 
-1. Spusťte aplikaci [https://catalog.update.microsoft.com](https://catalog.update.microsoft.com)Internet Explorer a přejděte na .
+1. Spusťte Internet Explorer a přejděte na [https://catalog.update.microsoft.com](https://catalog.update.microsoft.com).
 
-2. Pokud v tomto počítači používáte katalog Microsoft Update poprvé, klepněte po zobrazení výzvy k instalaci doplňku Katalogu microsoft update na **tlačítko Nainstalovat.**
+2. Pokud na tomto počítači používáte katalog Microsoft Update poprvé, po zobrazení výzvy k instalaci doplňku katalogu Microsoft Update klikněte na **nainstalovat** .
 
-3. Do vyhledávacího pole katalogu Microsoft Update zadejte číslo opravy hotfix, kterou chcete stáhnout, do znalostní báze Knowledge Base (KB). Zadejte **hodnotu 4337628** pro aktualizaci 1.1 a klepněte na tlačítko **Hledat**.
+3. Do vyhledávacího pole katalogu Microsoft Update zadejte číslo znalostní báze (KB), kterou chcete stáhnout. Zadejte **4337628** pro aktualizaci 1,1 a pak klikněte na **Hledat**.
    
-    Zobrazí se výpis opravy hotfix, například **Aktualizace virtuálního pole StorSimple 1.1**.
+    Zobrazí se seznam oprav hotfix, například **StorSimple Virtual Array Update 1,1**.
    
     ![Prohledávání katalogu](./media/storsimple-virtual-array-install-update-11/download1.png)
 
-4. Klepněte na tlačítko **Stáhnout**.
+4. Klikněte na tlačítko **Stáhnout**.
 
-5. Stáhněte si dva soubory do složky. Složku můžete také zkopírovat do sdílené síťové složky, která je dostupná ze zařízení.
+5. Stáhněte si dva soubory do složky. Můžete také zkopírovat složku do síťové sdílené složky, která je dosažitelná ze zařízení.
 
-6. Otevřete složku, ve které jsou soubory umístěny.
+6. Otevřete složku, ve které jsou umístěny soubory.
 
     ![Soubory v balíčku](./media/storsimple-virtual-array-install-update-11/update01folder.png)
 
     Zobrazí se dva soubory:
-    -  Soubor `WindowsTH-KB3011067-x64`samostatného balíčku společnosti Microsoft Update . Tento soubor se používá k aktualizaci softwaru zařízení.
-    - Soubor obsahující kumulativní aktualizace `Windows8.1-KB4284815-x64`za červen . Další informace o tom, co je součástí této kumulativní, naleznete v [červnu měsíční kumulativní zabezpečení](https://support.microsoft.com/help/4284815/windows-81-update-kb4284815).
+    -  Soubor `WindowsTH-KB3011067-x64`samostatného balíčku Microsoft Update. Tento soubor slouží k aktualizaci softwaru zařízení.
+    - Soubor, který obsahuje kumulativní aktualizace pro červenou `Windows8.1-KB4284815-x64`. Další informace o tom, co je zahrnuté v této kumulativní aktualizaci, najdete v [měsíci kumulativního zabezpečení v červnu](https://support.microsoft.com/help/4284815/windows-81-update-kb4284815).
 
 ### <a name="install-the-update-or-the-hotfix"></a>Instalace aktualizace nebo opravy hotfix
 
-Před instalací aktualizace nebo opravy hotfix se ujistěte, že:
+Před instalací aktualizace nebo oprav hotfix se ujistěte, že:
 
- - Aktualizace nebo oprava hotfix jsou staženy místně na hostiteli nebo jsou přístupné prostřednictvím sdílené síťové složky.
- - Ve virtuálním poli je spuštěna aktualizace 1 (10.0.10296.0). Pokud používáte aktualizaci 0.6, [nainstalujte nejprve aktualizaci 1](storsimple-virtual-array-install-update-1.md) a poté nainstalujte aktualizaci 1.1.
+ - Máte aktualizaci nebo opravu hotfix staženou místně na svém hostiteli nebo přístupnou přes sdílenou síťovou složku.
+ - Vaše virtuální pole používá aktualizaci 1 (10.0.10296.0). Pokud používáte aktualizaci 0,6, nejdřív [nainstalujte Update 1](storsimple-virtual-array-install-update-1.md) a pak nainstalujte Update 1,1.
 
-Tento postup trvá přibližně 4 minuty. Chcete-li nainstalovat aktualizaci nebo opravu hotfix, proveďte následující kroky.
+Dokončení této procedury trvá přibližně 4 minuty. Provedením následujících kroků nainstalujete aktualizaci nebo opravu hotfix.
 
 #### <a name="to-install-the-update-or-the-hotfix"></a>Instalace aktualizace nebo opravy hotfix
 
-1. V místním webovém uživatelském prostředí přejděte na**stránku Aktualizace softwaru** **údržby** > . Poznamenejte si verzi softwaru, kterou používáte. **Pokračujte v této aktualizaci pouze v případě, že používáte aktualizaci 1 (10.0.10296.0). Pokud používáte aktualizaci 0.6, [nejprve nainstalujte do](storsimple-virtual-array-install-update-1.md) zařízení aktualizaci 1 a potom nainstalujte aktualizaci 1.1.**
+1. V místním webovém uživatelském rozhraní přejdete na **Údržba** > **aktualizace softwaru**. Poznamenejte si verzi softwaru, kterou používáte. **Pokračujte v této aktualizaci pouze v případě, že používáte aktualizaci 1 (10.0.10296.0). Pokud používáte aktualizaci 0,6, nejdřív na zařízení [nainstalujte Update 1](storsimple-virtual-array-install-update-1.md) a pak použijte Update 1,1.**
    
     ![aktualizace zařízení](./media/storsimple-virtual-array-install-update-11/update1m.png)
 
-2. V **části Aktualizovat cestu k souboru**zadejte název souboru aktualizace nebo opravy hotfix. Můžete také přejít na instalační soubor aktualizace nebo opravy hotfix, pokud je umístěn do sdílené síťové složky. Klikněte na **Použít**.
+2. Do pole **cesta k souboru aktualizace**zadejte název souboru aktualizace nebo opravy hotfix. Můžete také přejít k instalačnímu souboru aktualizace nebo opravy hotfix, pokud je umístěn ve sdílené síťové složce. Klikněte na **Použít**.
    
     ![aktualizace zařízení](./media/storsimple-virtual-array-install-update-11/update2m.png)
 
-3. Zobrazí se upozornění. Vzhledem k tomu, virtuální pole je jeden uzel zařízení, po instalaci aktualizace, zařízení restartuje a je prostoje. Klikněte na ikonu šeku.
+3. Zobrazí se upozornění. Vzhledem k tom, že virtuální pole je zařízení s jedním uzlem, po použití aktualizace se zařízení restartuje a dojde k výpadku. Klikněte na ikonu zaškrtněte.
    
    ![aktualizace zařízení](./media/storsimple-virtual-array-install-update-11/update3m.png)
 
-4. Aktualizace se spustí. Po úspěšné aktualizaci zařízení se restartuje. Místní uI není přístupné v této době trvání.
+4. Spustí se aktualizace. Po úspěšné aktualizaci zařízení se restartuje. Místní uživatelské rozhraní není v tuto dobu k dispozici.
    
     ![aktualizace zařízení](./media/storsimple-virtual-array-install-update-11/update5m.png)
 
-5. Po dokončení restartování se dostanete na **přihlašovací** stránku. Chcete-li ověřit, zda byl software zařízení aktualizován, přejděte v místním webovém uživatelském rozhraní na**stránku** **Maintenance** > Software Update . Zobrazená verze softwaru by měla být **10.0.0.0.0.10307** pro aktualizaci 1.1.
+5. Po dokončení restartování přejdete na **přihlašovací** stránku. Chcete-li ověřit, zda byl software zařízení aktualizován, v místním webovém uživatelském rozhraní, navštivte web**aktualizace softwaru** **Údržba** > . Zobrazená verze softwaru by měla být **10.0.0.0.0.10307** pro aktualizaci 1,1.
    
    > [!NOTE]
-   > Verze softwaru hlásíme trochu jiným způsobem v místním webovém uživatelském prostředí a na portálu Azure. Například místní webové uživatelské prostředí hlásí **10.0.0.0.0.10307** a portál Azure hlásí **10.0.10307.0** pro stejnou verzi.
+   > Verze softwaru oznamujeme trochu jiným způsobem v místním webovém uživatelském rozhraní a Azure Portal. Například místní webové uživatelské rozhraní hlásí **10.0.0.0.0.10307** a sestavy Azure Portal **10.0.10307.0** pro stejnou verzi.
    
     ![aktualizace zařízení](./media/storsimple-virtual-array-install-update-11/update6m.png)
 
-6. Opakováním kroků 2-4 nainstalujte opravu `Windows8.1-KB4284815-x64`zabezpečení systému Windows pomocí souboru . Virtuální pole se restartuje po instalaci a je třeba se přihlásit do místního webového uživatelského prostředí.
+6. Opakujte kroky 2-4 pro instalaci opravy zabezpečení systému Windows pomocí souboru `Windows8.1-KB4284815-x64`. Virtuální pole se po instalaci restartuje a musíte se přihlásit k místnímu webovému uživatelskému rozhraní.
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o [správě virtuálního pole StorSimple](storsimple-ova-web-ui-admin.md).
+Přečtěte si další informace o [správě virtuálního pole StorSimple](storsimple-ova-web-ui-admin.md).

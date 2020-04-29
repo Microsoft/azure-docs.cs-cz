@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Kontroly dodržování předpisů – Azure Security Center'
-description: 'Kurz: Naučte se, jak zlepšit dodržování předpisů pomocí Azure Security Center.'
+title: 'Kurz: kontroly dodržování předpisů v legislativě – Azure Security Center'
+description: 'Kurz: Naučte se, jak vylepšit dodržování legislativních předpisů pomocí Azure Security Center.'
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,93 +14,93 @@ ms.workload: na
 ms.date: 11/12/2019
 ms.author: memildin
 ms.openlocfilehash: 1a6999c05c0b3dbaf572b376412f666c50c23df7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77604454"
 ---
-# <a name="tutorial-improve-your-regulatory-compliance"></a>Kurz: Zlepšete dodržování předpisů
+# <a name="tutorial-improve-your-regulatory-compliance"></a>Kurz: zlepšení dodržování legislativních předpisů
 ---
 
-Azure Security Center pomáhá zefektivnit proces pro splnění požadavků na dodržování předpisů pomocí **řídicího panelu dodržování předpisů**. Centrum zabezpečení na řídicím panelu poskytuje přehled o stavu dodržování předpisů na základě průběžného hodnocení vašeho prostředí Azure. Security Center analyzuje rizikové faktory ve vašem hybridním cloudovém prostředí podle doporučených postupů zabezpečení. Tato posouzení jsou mapována na kontroly dodržování předpisů z podporované sady standardů. Na řídicím panelu dodržování předpisů můžete zobrazit stav všech hodnocení ve vašem prostředí v kontextu konkrétní normy nebo nařízení. Při jednání podle doporučení a snižování rizikových faktorů ve vašem prostředí se vaše dodržování předpisů zlepšuje.
+Azure Security Center pomáhá zjednodušit proces splnění požadavků na dodržování legislativních předpisů pomocí **řídicího panelu dodržování předpisů regulativního předpisu**. Na řídicím panelu Security Center poskytuje přehledy o dodržování předpisů stav na základě průběžného posouzení prostředí Azure. V souladu s osvědčenými postupy zabezpečení Security Center analyzuje rizikové faktory v hybridním cloudovém prostředí. Tato posouzení jsou namapována na řízení dodržování předpisů z podporované sady standardů. Na řídicím panelu dodržování předpisů můžete zobrazit stav všech posouzení v rámci vašeho prostředí v kontextu určitého standardu nebo nařízení. Při rozhodování o doporučeních a omezení rizikových faktorů ve vašem prostředí vylepšuje stav dodržování předpisů.
 
 V tomto kurzu se naučíte:
 
--   Vyhodnoťte dodržování předpisů pomocí řídicího panelu pro dodržování předpisů
+-   Vyhodnocení dodržování předpisů pomocí řídicího panelu dodržování předpisů
 
--   Zlepšete své dodržování předpisů tím, že podniknete kroky na základě doporučení
+-   Vylepšete stav dodržování předpisů tím, že v doporučeních vybereme opatření.
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li procházet funkce uvedené v tomto kurzu, musíte mít Standard cenové úrovně Security Center. Můžete zkusit Security Center Standard zdarma.
+Pro krokování s funkcemi popsanými v tomto kurzu musíte mít standardní cenovou úroveň Security Center. Můžete vyzkoušet Security Center Standard bez jakýchkoli nákladů.
 Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/). Článek Rychlý Start: [Onboarding předplatného Azure na Security Center Standard](https://docs.microsoft.com/azure/security-center/security-center-get-started) vás provede postupem upgradu na úroveň Standard.
 
-##  <a name="assess-your-regulatory-compliance"></a>Vyhodnoťte dodržování předpisů
+##  <a name="assess-your-regulatory-compliance"></a>Posouzení dodržování legislativních předpisů
 
-Security Center průběžně vyhodnocuje konfiguraci prostředků k identifikaci problémů se zabezpečením a slabých míst. Tato hodnocení jsou prezentována jako doporučení, která se zaměřují na zlepšení vaší bezpečnostní hygieny. Na řídicím panelu dodržování předpisů můžete zobrazit sadu standardů dodržování předpisů se všemi jejich požadavky, kde jsou podporované požadavky mapovány na příslušná posouzení zabezpečení. To vám umožní zobrazit stav dodržování předpisů s ohledem na standard, na základě stavu těchto hodnocení.
+Security Center nepřetržitě posuzuje konfiguraci vašich prostředků pro identifikaci problémů a ohrožení zabezpečení. Tato posouzení jsou uvedena jako doporučení, která se zaměřují na vylepšení zabezpečení. Na řídicím panelu dodržování předpisů můžete zobrazit sadu standardů dodržování předpisů se všemi požadavky, kde jsou podporované požadavky namapovány na příslušné posouzení zabezpečení. To vám umožní zobrazit stav dodržování předpisů s ohledem na standard na základě stavu těchto posouzení.
 
-Zobrazení řídicího panelu pro dodržování předpisů může pomoci zaměřit vaši pozornost na mezery v souladu se standardem nebo předpisem, které jsou pro vás důležité. Toto cílené zobrazení také umožňuje průběžně sledovat skóre dodržování předpisů v průběhu času v rámci dynamického cloudu a hybridních prostředí.
+Zobrazení řídicího panelu dodržování předpisů může pomáhat zaměřit se na mezery v dodržování předpisů pomocí standardu nebo nařízení, které je pro vás důležité. Toto prioritní zobrazení také umožňuje průběžně monitorovat skóre dodržování předpisů v rámci dynamického cloudu a hybridních prostředí.
 
 >[!NOTE]
-> Ve výchozím nastavení security center podporuje následující regulační standardy: Azure CIS, PCI DSS 3.2, ISO 27001 a SOC TSP. 
+> Ve výchozím nastavení Security Center podporuje následující zákonné standardy: Azure CIS, PCI DSS 3,2, ISO 27001 a SOC TSP. 
 >
-> Funkce [dynamické balíčky dodržování předpisů (preview)](update-regulatory-compliance-packages.md) umožňuje upgradovat standardy uvedené na řídicím panelu dodržování předpisů na nové *dynamické* balíčky. Stejnou funkci náhledu můžete také použít k přidání nových balíčků dodržování předpisů a sledování dodržování dalších standardů. 
+> Funkce [dynamické balíčky s kompatibilitou (Preview)](update-regulatory-compliance-packages.md) umožňuje upgradovat standardy zobrazené na řídicím panelu dodržování předpisů pro nové *dynamické* balíčky. Stejnou funkci ve verzi Preview můžete použít také k přidání nových balíčků dodržování předpisů a k monitorování dodržování předpisů pomocí dalších standardů. 
 
-1.  V hlavní nabídce Centra zabezpečení vyberte v části **ZÁSADY dodržování předpisů v části ZÁSADY & dodržování předpisů** **dodržování předpisů**. <br>
-V horní části obrazovky se zobrazí řídicí panel s přehledem stavu dodržování předpisů se sadou podporovaných předpisů pro dodržování předpisů. Můžete zobrazit celkové skóre dodržování předpisů a počet absolvování vs selhání hodnocení spojené s každou normu.
+1.  V hlavní nabídce Security Center v části **zásady & dodržování předpisů** vyberte **dodržování předpisů**. <br>
+V horní části obrazovky se zobrazí řídicí panel s přehledem stavu dodržování předpisů se sadou podporovaných předpisů pro dodržování předpisů. Můžete si prohlédnout celkové skóre dodržování předpisů a počet průchodů a vyhodnocení souvisejících s každým standardem.
 
-    ![popis počítače vysoká důvěra](./media/security-center-compliance-dashboard/compliance-dashboard.png)
+    ![Popis počítače vysoká důvěra](./media/security-center-compliance-dashboard/compliance-dashboard.png)
 
-2.  Vyberte kartu standardu dodržování předpisů, který je pro vás relevantní. Zobrazí se seznam všech ovládacích prvků pro daný standard. V případě použitelných ovládacích prvků můžete zobrazit podrobnosti o úspěšných a neúspěšných posouzeních přidružených k danému ovládacímu prvku. Některé ovládací prvky jsou šedé. Tyto ovládací prvky nemají žádné hodnocení Centra zabezpečení s nimi spojené. Zkontrolujte požadavky na tyto a posoudit je ve vašem prostředí na vlastní pěst. Některé z nich mohou souviset s procesem a nikoli technické.
+2.  Vyberte kartu standardu dodržování předpisů, který je pro vás relevantní. Zobrazí se seznam všech ovládacích prvků pro daný standard. V případě použitelných ovládacích prvků můžete zobrazit podrobnosti o úspěšných a neúspěšných posouzeních přidružených k danému ovládacímu prvku. Některé ovládací prvky jsou zobrazeny šedě. K těmto ovládacím prvkům nejsou přidružena žádná Security Center posouzení. Ověřte požadavky těchto hodnot a vyhodnoťte je ve vašem prostředí sami. Některé z nich mohou být v souvislosti s procesy a nikoli technického typu.
 
     ![karta dodržování předpisů](./media/security-center-compliance-dashboard/compliance-pci.png)
 
-1. Chcete-li vygenerovat a stáhnout zprávu PDF shrnující aktuální stav dodržování předpisů pro určitý standard, klepněte na **tlačítko Stáhnout zprávu**.
+1. Pokud chcete vygenerovat a stáhnout sestavu PDF shrnující aktuální stav dodržování předpisů pro určitý standard, klikněte na **Stáhnout sestavu**.
 
-    Sestava poskytuje souhrn vysoké úrovně stavu dodržování předpisů pro vybraný standard na základě dat hodnocení Centra zabezpečení a je uspořádána podle ovládacích prvků daného standardu. Zpráva může být sdílena s příslušnými zúčastněnými stranami a může sloužit k poskytnutí důkazů interním a externím auditorům.
+    Tato sestava poskytuje přehled o stavu dodržování předpisů pro vybrané standardní údaje na základě Security Center dat posouzení a organizuje se podle ovládacích prvků tohoto standardu. Tuto sestavu lze sdílet s příslušnými zúčastněnými stranami a může sloužit k poskytování důkazů pro interní a externí auditory.
 
     ![stáhnout](./media/security-center-compliance-dashboard/download-report.png)
 
-## <a name="improve-your-compliance-posture"></a>Zlepšete své dodržování předpisů
+## <a name="improve-your-compliance-posture"></a>Zlepšení stav dodržování předpisů
 
-Vzhledem k informacím na řídicím panelu dodržování předpisů můžete zlepšit stav dodržování předpisů řešením doporučení přímo na řídicím panelu.
+S ohledem na informace na řídicím panelu dodržování předpisů můžete vylepšit stav dodržování doporučení přímo v řídicím panelu.
 
-1.  Kliknutím na libovolné neúspěšné hodnocení, které se zobrazí na řídicím panelu, zobrazíte podrobnosti pro toto doporučení. Každé doporučení obsahuje sadu nápravných kroků, které by měly být dodržovány k vyřešení problému.
+1.  Kliknutím na kterékoli z neúspěšných posouzení, která se zobrazí na řídicím panelu, zobrazíte podrobnosti o tomto doporučení. Každé doporučení zahrnuje sadu nápravných kroků, které by měly být dodrženy k vyřešení tohoto problému.
 
-1.  Můžete vybrat konkrétní zdroj, chcete-li zobrazit další podrobnosti a vyřešit doporučení pro tento prostředek. <br>Například na kartě **Standard Azure CIS** můžete kliknout na doporučení **Vyžadovat zabezpečený přenos do účtu úložiště**.
+1.  Pokud chcete zobrazit další podrobnosti a vyřešit doporučení pro daný prostředek, můžete vybrat konkrétní prostředek. <br>Například na kartě **Standard Azure SNS** můžete kliknout na doporučení **Vyžadovat zabezpečený přenos do účtu úložiště**.
 
     ![doporučení pro dodržování předpisů](./media/security-center-compliance-dashboard/compliance-recommendation.png)
 
-1. Když kliknete na informace o doporučení a vyberete prostředek není v pořádku, vede vás přímo k prostředí **umožňujícímu přenos zabezpečeného úložiště** v rámci portálu Azure.
+1. Po kliknutí na informace o doporučeních a výběru prostředku, který není v pořádku, vás zavede přímo k možnosti povolení **přenosu zabezpečeného úložiště** v rámci Azure Portal.
 
-    Další informace o tom, jak použít doporučení, najdete [v tématu Implementace doporučení zabezpečení v Centru zabezpečení Azure](security-center-recommendations.md).
+    Další informace o tom, jak používat doporučení, najdete [v tématu Implementace doporučení zabezpečení v Azure Security Center](security-center-recommendations.md).
 
     ![doporučení pro dodržování předpisů](./media/security-center-compliance-dashboard/compliance-remediate-recommendation.png)
 
-1.  Po přijetí opatření k vyřešení doporučení se v sestavě řídicího panelu pro dodržování předpisů zobrazí dopad, protože se zlepšuje skóre dodržování předpisů.
+1.  Po provedení akce k vyřešení doporučení uvidíte dopad v sestavě řídicího panelu dodržování předpisů, protože se zvyšuje skóre dodržování předpisů.
 
     > [!NOTE]
     > Posouzení se spouští přibližně každých 12 hodin, takže se akce projeví u vašich dat dodržování předpisů až po spuštění posouzení.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste se dozvěděli o použití řídicího panelu dodržování předpisů Centra zabezpečení k:
+V tomto kurzu jste se dozvěděli o použití řídicího panelu pro dodržování předpisů Security Center pro:
 
--   Zobrazení a sledování stavu dodržování předpisů ve vztahu k normám a předpisům, které jsou pro vás důležité.
+-   Můžete zobrazit a monitorovat stav dodržování předpisů vzhledem ke standardům a předpisům, které jsou pro vás důležité.
 
--   Zlepšete svůj stav dodržování předpisů tím, že vyřešíte příslušná doporučení a sledujete, jak se skóre dodržování předpisů zlepšuje.
+-   Vylepšete svůj stav dodržování předpisů tím, že vyřešte relevantní doporučení a sledujte skóre dodržování předpisů.
 
-Řídicí panel dodržování předpisů může výrazně zjednodušit proces dodržování předpisů a výrazně zkrátit čas potřebný ke shromažďování důkazů o dodržování předpisů pro vaše prostředí Azure a hybridní prostředí.
+Řídicí panel dodržování předpisů může významně zjednodušit proces dodržování předpisů a významně zkrátit dobu potřebnou ke shromažďování důkazů dodržování předpisů pro vaše prostředí Azure a hybridní prostředí.
 
-Další informace najdete na:
+Další informace najdete tady:
 
--   [Aktualizace dynamických balíčků dodržování předpisů na řídicím panelu dodržování předpisů (Preview)](update-regulatory-compliance-packages.md) – Přečtěte si o této funkci náhledu, která vám umožní aktualizovat standardy uvedené na řídicím panelu dodržování předpisů na nové *dynamické* balíčky. Můžete také stejnou funkci náhledu přidat nové balíčky dodržování předpisů a sledovat dodržování dalších standardů. 
+-   [Aktualizace na dynamické balíčky dodržování předpisů na řídicím panelu dodržování předpisů (Preview)](update-regulatory-compliance-packages.md) – Přečtěte si o této funkci ve verzi Preview, která vám umožní aktualizovat standardy zobrazené na řídicím panelu dodržování předpisů na nové *dynamické* balíčky. Stejnou funkci ve verzi Preview můžete také přidat nové balíčky dodržování předpisů a monitorovat dodržování předpisů pomocí dalších standardů. 
 
--   [Monitorování stavu zabezpečení v Azure Security Center](security-center-monitoring.md) – zjistěte, jak sledovat stav prostředků Azure.
+-   [Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md) – Zjistěte, jak monitorovat stav svých prostředků Azure.
 
--   [Správa doporučení zabezpečení v Azure Security Center](security-center-recommendations.md) – zjistěte, jak používat doporučení v Azure Security Center k ochraně prostředků Azure.
+-   [Správa doporučení zabezpečení v Azure Security Center](security-center-recommendations.md) – Přečtěte si, jak používat doporučení v Azure Security Center k ochraně vašich prostředků Azure.
 
--   [Vylepšete své skóre zabezpečení v Azure Security Center](security-center-secure-score.md) – zjistěte, jak upřednostnit chyby zabezpečení a doporučení zabezpečení, abyste většinu zlepšili stav zabezpečení.
+-   [Vylepšete Vaše zabezpečené skóre v Azure Security Center](security-center-secure-score.md) – Zjistěte, jak upřednostnit ohrožení zabezpečení a doporučení zabezpečení, aby se zlepšila bezpečnost stav.

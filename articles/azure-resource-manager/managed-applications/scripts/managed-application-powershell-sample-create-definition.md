@@ -1,16 +1,16 @@
 ---
-title: Vytvoření definice spravované aplikace – Azure PowerShell
-description: Poskytuje ukázku skriptu Azure PowerShell, která vytvoří definici spravované aplikace v předplatném Azure.
+title: Vytvořit definici spravované aplikace – Azure PowerShell
+description: Poskytuje ukázkový skript Azure PowerShell, který v předplatném Azure vytvoří definici spravované aplikace.
 author: tfitzmac
 ms.devlang: powershell
 ms.topic: sample
 ms.date: 10/27/2017
 ms.author: tomfitz
 ms.openlocfilehash: 09fe1455f0dba57fd23aeeb66acb1f99fc2513d4
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75650202"
 ---
 # <a name="create-a-managed-application-definition-with-powershell"></a>Vytvoření definice spravované aplikace pomocí PowerShellu
@@ -32,7 +32,7 @@ Tento skript k vytvoření definice spravované aplikace používá následujíc
 
 | Příkaz | Poznámky |
 |---|---|
-| [Nová definice aplikace AzManagedApplicationDefinition](https://docs.microsoft.com/powershell/module/az.resources/new-azmanagedapplicationdefinition) | Vytvoří definici spravované aplikace. Zadejte balíček obsahující požadované soubory. |
+| [New-AzManagedApplicationDefinition](https://docs.microsoft.com/powershell/module/az.resources/new-azmanagedapplicationdefinition) | Vytvoří definici spravované aplikace. Zadejte balíček obsahující požadované soubory. |
 
 
 ## <a name="next-steps"></a>Další kroky

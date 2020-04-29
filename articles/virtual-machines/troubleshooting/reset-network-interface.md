@@ -1,6 +1,6 @@
 ---
-title: Jak obnovit síťové rozhraní pro virtuální počítač Azure Windows| Dokumenty společnosti Microsoft
-description: Ukazuje, jak obnovit síťové rozhraní pro virtuální počítač Azure Windows.
+title: Postup resetování síťového rozhraní pro virtuální počítač Azure s Windows | Microsoft Docs
+description: Ukazuje, jak resetovat síťové rozhraní pro virtuální počítače Azure s Windows.
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
 author: genlin
@@ -13,42 +13,42 @@ ms.topic: troubleshooting
 ms.date: 11/16/2018
 ms.author: genli
 ms.openlocfilehash: a8bd12d98b76d5848753987c4f7bcb76d4e2266d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79250072"
 ---
 # <a name="how-to-reset-network-interface-for-azure-windows-vm"></a>Jak resetovat síťové rozhraní pro virtuální počítač Azure s Windows 
 
-Tento článek ukazuje, jak obnovit síťové rozhraní pro virtuální počítač Azure windows k vyřešení problémů, když se nemůžete připojit k virtuálnímu počítači Microsoft Azure Windows (VM) po:
+Tento článek popisuje, jak resetovat síťové rozhraní pro virtuální počítače Azure s Windows za účelem řešení problémů, když se nemůžete připojit k Microsoft Azure virtuálnímu počítači s Windows (VM) po:
 
 * Zakážete výchozí síťové rozhraní (NIC). 
-* Ručně nastavit statickou IP pro nic. 
+* Ručně jste pro síťovou kartu nastavili statickou IP adresu. 
 
 [!INCLUDE [support-disclaimer](../../../includes/support-disclaimer.md)]
 
-## <a name="reset-network-interface"></a>Obnovit síťové rozhraní
+## <a name="reset-network-interface"></a>Resetovat síťové rozhraní
 
-### <a name="for-vms-deployed-in-resource-group-model"></a>Pro virtuální chody nasazené v modelu skupiny prostředků
+### <a name="for-vms-deployed-in-resource-group-model"></a>Pro virtuální počítače nasazené v modelu skupiny prostředků
 
-1.  Přejděte na [portál Azure](https://ms.portal.azure.com).
+1.  Přejít na [Azure Portal](https://ms.portal.azure.com).
 2.  Vyberte ovlivněný virtuální počítač.
-3.  Vyberte **Síť a** pak vyberte síťové rozhraní virtuálního soudu.
+3.  Vyberte **sítě** a pak vyberte síťové rozhraní virtuálního počítače.
 
     ![Umístění síťového rozhraní](./media/reset-network-interface/select-network-interface-vm.png)
     
-4.  Vyberte **konfigurace protokolu IP**.
+4.  Vyberte **Konfigurace protokolu IP**.
 5.  Vyberte IP adresu. 
-6.  Pokud **přiřazení Privátní IP** není **statické**, změňte jej na **Statický**.
-7.  Změňte **adresu IP** na jinou adresu IP, která je k dispozici v podsíti.
-8. Virtuální počítač se restartuje a inicializuje novou nic do systému.
-9.  Pokuste se RDP do vašeho počítače. V případě úspěchu můžete změnit privátní IP adresu zpět na původní, pokud chcete. V opačném případě si ho můžete nechat. 
+6.  Pokud **přiřazení privátních IP adres** není **statické**, změňte ho na **static**.
+7.  Změňte **IP adresu** na jinou IP adresu, která je k dispozici v podsíti.
+8. Virtuální počítač se restartuje a Inicializuje novou síťovou kartu pro systém.
+9.  Zkuste k počítači protokol RDP. Pokud chcete, můžete privátní IP adresu v případě úspěchu změnit zpátky na původní. V opačném případě ji můžete zachovat. 
 
 #### <a name="use-azure-powershell"></a>Použití Azure Powershell
 
-1. Ujistěte se, že máte [nainstalovanou nejnovější Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)
-2. Otevřete relaci Azure PowerShellu se zvýšenými oprávněními (Spustit jako správce). Spusťte následující příkazy:
+1. Ujistěte se, že máte nainstalovanou [nejnovější Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)
+2. Otevřete relaci Azure PowerShell se zvýšenými oprávněními (Spustit jako správce). Spusťte následující příkazy:
 
     ```powershell
     #Set the variables 
@@ -68,30 +68,30 @@ Tento článek ukazuje, jak obnovit síťové rozhraní pro virtuální počíta
     #Add/Change static IP. This process will not change MAC address
     Get-AzVM -ResourceGroupName $ResourceGroup -Name $VM | Set-AzureStaticVNetIP -IPAddress $IP | Update-AzVM
     ```
-3. Pokuste se RDP do vašeho počítače.  V případě úspěchu můžete změnit privátní IP adresu zpět na původní, pokud chcete. V opačném případě si ho můžete nechat.
+3. Zkuste k počítači protokol RDP.  Pokud chcete, můžete privátní IP adresu v případě úspěchu změnit zpátky na původní. V opačném případě ji můžete zachovat.
 
-### <a name="for-classic-vms"></a>Pro klasické virtuální měsíčové
+### <a name="for-classic-vms"></a>Pro klasické virtuální počítače
 
 [!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
-Chcete-li obnovit síťové rozhraní, postupujte takto:
+K resetování síťového rozhraní použijte tento postup:
 
 #### <a name="use-azure-portal"></a>Použití webu Azure Portal
 
-1.  Přejděte na [portál Azure]( https://ms.portal.azure.com).
-2.  Vyberte **virtuální počítače (klasické)**.
+1.  Přejít na [Azure Portal]( https://ms.portal.azure.com).
+2.  Vyberte **Virtual Machines (Classic)**.
 3.  Vyberte ovlivněný virtuální počítač.
-4.  Vyberte **adresy IP**.
-5.  Pokud **přiřazení Privátní IP** není **statické**, změňte jej na **Statický**.
-6.  Změňte **adresu IP** na jinou adresu IP, která je k dispozici v podsíti.
+4.  Vyberte **IP adresy**.
+5.  Pokud **přiřazení privátních IP adres** není **statické**, změňte ho na **static**.
+6.  Změňte **IP adresu** na jinou IP adresu, která je k dispozici v podsíti.
 7.  Vyberte **Uložit**.
-8.  Virtuální počítač se restartuje a inicializuje novou nic do systému.
-9.  Pokuste se RDP do vašeho počítače. V případě úspěchu můžete vrátit privátní IP adresu zpět na původní adresu.  
+8.  Virtuální počítač se restartuje a Inicializuje novou síťovou kartu pro systém.
+9.  Zkuste k počítači protokol RDP. V případě úspěchu můžete privátní IP adresu obnovit zpátky na původní.  
 
 #### <a name="use-azure-powershell"></a>Použití Azure Powershell
 
-1. Ujistěte se, že máte [nainstalovaný nejnovější Azure PowerShell.](https://docs.microsoft.com/powershell/azure/overview)
-2. Otevřete relaci Azure PowerShellu se zvýšenými oprávněními (Spustit jako správce). Spusťte následující příkazy:
+1. Ujistěte se, že máte nainstalovanou [nejnovější Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) .
+2. Otevřete relaci Azure PowerShell se zvýšenými oprávněními (Spustit jako správce). Spusťte následující příkazy:
 
     ```powershell
     #Set the variables 
@@ -111,22 +111,22 @@ Chcete-li obnovit síťové rozhraní, postupujte takto:
     #Add/Change static IP. This process will not change MAC address
     Get-AzureVM -ResourceGroupName $CloudService -Name $VM | Set-AzureStaticVNetIP -IPAddress $IP |Update-AzureVM
     ```
-3. Pokuste se RDP do vašeho počítače. V případě úspěchu můžete změnit privátní IP adresu zpět na původní, pokud chcete. V opačném případě si ho můžete nechat. 
+3. Zkuste k počítači protokol RDP. Pokud chcete, můžete privátní IP adresu v případě úspěchu změnit zpátky na původní. V opačném případě ji můžete zachovat. 
 
-## <a name="delete-the-unavailable-nics"></a>Odstranění nedostupných nicotnic
-Po vzdálené ploše k počítači je nutné odstranit staré síťové karty, aby se zabránilo možnému problému:
+## <a name="delete-the-unavailable-nics"></a>Odstranění nedostupných síťových karet
+Po provedení vzdálené plochy k počítači je nutné odstranit staré síťové karty, aby nedocházelo k potenciálním potížím:
 
 1.  Spusťte Správce zařízení.
-2.  Vyberte **Zobrazit** > **skrytá zařízení**.
-3.  Vyberte **možnost Síťové adaptéry**. 
-4.  Zkontrolujte adaptéry s názvem "Síťový adaptér Microsoft Hyper-V".
-5.  Může se zobrazit nedostupný adaptér, který je zašedlý. Klepněte pravým tlačítkem myši na adaptér a vyberte odinstalovat.
+2.  Vyberte **Zobrazit** > **Zobrazit skrytá zařízení**.
+3.  Vyberte **síťové adaptéry**. 
+4.  Vyhledejte adaptéry s názvem Microsoft Hyper-V síťový adaptér.
+5.  Může se zobrazit nedostupný adaptér, který je šedý. Klikněte pravým tlačítkem na adaptér a pak vyberte odinstalovat.
 
-    ![obrázek nic](media/reset-network-interface/nicpage.png)
+    ![bitová kopie síťového rozhraní](media/reset-network-interface/nicpage.png)
 
     > [!NOTE]
-    > Odinstalujte pouze nedostupné adaptéry s názvem "Síťový adaptér Microsoft Hyper-V". Pokud odinstalujete některý z ostatních skrytých adaptérů, může to způsobit další problémy.
+    > Odinstalujte jenom nedostupné adaptéry, které mají název Microsoft Hyper-V síťový adaptér. Pokud odinstalujete některé z ostatních skrytých adaptérů, může to způsobit další problémy.
     >
     >
 
-6.  Nyní by měly být všechny nedostupné adaptéry vymazány ze systému.
+6.  Nyní by měly být všechny nedostupné adaptéry smazány v systému.

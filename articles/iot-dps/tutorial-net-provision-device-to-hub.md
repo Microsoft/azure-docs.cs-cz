@@ -1,6 +1,6 @@
 ---
-title: Kurz – zřízení zařízení pomocí služby Azure IoT Hub Device Provisioning Service (.NET)
-description: Tento kurz ukazuje, jak můžete zřídit zařízení do jednoho centra IoT pomocí služby Azure IoT Hub Device Provisioning Service (DPS) pomocí rozhraní .NET.
+title: Kurz – zřízení zařízení pomocí Azure IoT Hub Device Provisioning Service (.NET)
+description: V tomto kurzu se dozvíte, jak můžete zřídit zařízení pro jedno centrum IoT pomocí Azure IoT Hub Device Provisioning Service (DPS) pomocí .NET.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/12/2019
@@ -10,13 +10,13 @@ services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc
 ms.openlocfilehash: 9d5b1511ffb48f587d4ee5c5a7d2b0ee9216018f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74976770"
 ---
-# <a name="tutorial-enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>Kurz: Registrace zařízení do centra IoT pomocí klienta služby Azure IoT Hub Provisioning Service (.NET)
+# <a name="tutorial-enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>Kurz: registrace zařízení do služby IoT Hub pomocí klienta služby Azure IoT Hub Provisioning Service (.NET)
 
 V předchozím kurzu jste se naučili nastavit zařízení pro připojení ke službě Device Provisioning. V tomto kurzu zjistíte, jak pomocí této služby zřídit zařízení pro jedno centrum IoT s využitím **_jednotlivé registrace_** i **_skupin registrací_**. V tomto kurzu získáte informace o následujících postupech:
 
@@ -129,7 +129,7 @@ Zařízení můžete do služby Device Provisioning zaregistrovat dvěma způsob
     Console.ReadLine();
     ```
         
-1. V Průzkumníku řešení Sady Visual Studio klikněte pravým tlačítkem myši na vaše řešení a potom klikněte na **nastavit projekty spuštění...**. Vyberte **Jeden projekt po spuštění**a v rozevírací nabídce vyberte projekt **DeviceProvisioning.**  
+1. V sadě Visual Studio Průzkumník řešení klikněte pravým tlačítkem na své řešení a pak klikněte na **nastavit projekty po spuštění...**. Vyberte **jeden spouštěný projekt**a pak v rozevírací nabídce vyberte projekt **DeviceProvisioning** .  
 
 1. Spusťte aplikaci .NET pro zařízení **DeviceProvisiong**. Pro zařízení by se mělo nastavit zřizování: 
 

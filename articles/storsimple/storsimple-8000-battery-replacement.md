@@ -1,43 +1,43 @@
 ---
 title: Výměna baterie na zařízení řady Microsoft Azure StorSimple 8000
-description: Popisuje, jak odebrat, vyměnit a udržovat záložní bateriový modul na zařízení StorSimple.
+description: Popisuje, jak odebrat, nahradit a udržovat modul záložní baterie na zařízení StorSimple.
 author: alkohli
 ms.service: storsimple
 ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: f21bbf4777aa74e84ffb8c1af903f90608d5551f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79255012"
 ---
 # <a name="replace-the-backup-battery-module-on-your-storsimple-device"></a>Výměna modulu záložní baterie na zařízení StorSimple
 
 ## <a name="overview"></a>Přehled
-Primární skříň Power and Cooling Module (PCM) na vašem zařízení Microsoft Azure StorSimple má další sadu baterií. Tato sada poskytuje napájení tak, aby zařízení StorSimple mohlo ukládat data, pokud dojde ke ztrátě střídavého proudu do primární skříně. Tato sada baterií se označuje jako *záložní bateriový modul*. Modul záložní baterie existuje pouze pro primární skříň ve vašem zařízení StorSimple (skříň EBOD neobsahuje záložní bateriový modul).
+Modul Power and chladicího modulu (PCM) na vašem zařízení Microsoft Azure StorSimple má další balíček pro baterii. Tato sada poskytuje napájení, aby zařízení StorSimple mohlo ukládat data v případě výpadku napájení z elektrické sítě do primární skříně. Tato sada baterií je označována jako *modul záložní baterie*. Modul zálohování záložní baterie existuje jenom pro primární skříň v zařízení StorSimple (skříň EBOD neobsahuje modul záložní baterie).
 
 Tento kurz vysvětluje následující postupy:
 
-* Vyjmutí záložního bateriového modulu
-* Instalace nového záložního bateriového modulu
-* Udržovat záložní bateriový modul
+* Odebrat modul záložní baterie
+* Nainstalovat nový modul záložní baterie
+* Udržovat modul záložní baterie
 
 > [!IMPORTANT]
-> Před vyjmutím a výměnou záložního bateriového modulu si přečtěte bezpečnostní informace v [části Úvod do výměny hardwarové součásti StorSimple](storsimple-8000-hardware-component-replacement.md).
+> Než odeberete a nahradíte modul pro záložní baterii, Projděte si bezpečnostní informace v části [Úvod do StorSimple hardwarové součásti](storsimple-8000-hardware-component-replacement.md).
 
 
-## <a name="remove-the-backup-battery-module"></a>Vyjmutí záložního bateriového modulu
-Záložní bateriový modul pro vaše zařízení StorSimple je jednotka vyměnitelná v terénu. Před instalací do PCM by měl být bateriový modul uložen v původním obalu. Chcete-li záložní baterii vyjmout, proveďte následující kroky.
+## <a name="remove-the-backup-battery-module"></a>Odebrat modul záložní baterie
+Modul záložní baterie pro zařízení StorSimple je jednotka, která je nahraditelným polem. Předtím, než se nainstaluje do PCM, by měl být modul baterie uložený ve svém původním balení. Chcete-li odebrat baterii zálohování, proveďte následující kroky.
 
-#### <a name="to-remove-the-backup-battery-module"></a>Odebrání záložního modulu baterie
-1. Na webu Azure Portal přejděte do okna služby Správce zařízení StorSimple. Přejděte do **části Zařízení** a vyberte zařízení ze seznamu zařízení. Přejděte na **monitor** > **stavu hardwaru**. V části **Sdílené součásti**se podívejte na stav baterie.
-2. Identifikujte pcm, ve kterém selhala baterie. Obrázek 1 znázorňuje zadní část zařízení StorSimple.
+#### <a name="to-remove-the-backup-battery-module"></a>Odebrání modulu záložní baterie
+1. V Azure Portal otevřete okno služby pro Device Manager StorSimple. V seznamu **zařízení vyberte** zařízení. Přejděte na **monitor** > **stav hardwaru**. V části **sdílené součásti**se podívejte na stav baterie.
+2. Identifikujte PCM, ve kterém se baterie nezdařila. Obrázek 1 ukazuje back-StorSimple zařízení.
    
-    ![Backplane primárních modulů skříně zařízení](./media/storsimple-battery-replacement/IC740994.png)
+    ![Naplánování modulů primární skříně zařízení](./media/storsimple-battery-replacement/IC740994.png)
    
-    **Obrázek 1** Zadní část primárního zařízení s PCM a řídicími moduly
+    **Obrázek 1** Zpět primární zařízení, které zobrazuje moduly PCM a Controller
    
    | Popisek | Popis |
    |:--- |:--- |
@@ -46,58 +46,58 @@ Záložní bateriový modul pro vaše zařízení StorSimple je jednotka vyměni
    | 3 |Kontroler 0 |
    | 4 |Kontroler 1 |
    
-    Jak ukazuje číslo 3 na obrázku 2, indikátor LED na PCM 0, který odpovídá **poruše baterie,** by měl být rozsvícen.
+    Jak je znázorněno číslem 3 na obrázku 2, indikátor monitorování VEDLO na PCM 0, který odpovídá **chybě baterie** , by měl být osvětlen.
    
-    ![Zadní rovina zařízení PCM indikátor indikátor led diody](./media/storsimple-battery-replacement/IC740992.png)
+    ![Naplánování indikátorů LED sledování zařízení PCM](./media/storsimple-battery-replacement/IC740992.png)
    
-    **Obrázek 2** Zadní část PCM zobrazující indikátor led diody monitorování
+    **Obrázek 2** Zpět PCM ukazující indikátory LED sledování
    
    | Popisek | Popis |
    |:--- |:--- |
-   | 1 |Výpadku napájení střídavého proudu |
+   | 1 |Výpadek napájení elektrické sítě |
    | 2 |Selhání ventilátoru |
-   | 3 |Porucha baterie |
-   | 4 |PCM je v pořádku |
-   | 5 |Selhání napájení stejnosměrného proudu |
-   | 6 |Baterie zdravá |
-3. Chcete-li odebrat počítač PCM s neúspěšnou baterií, postupujte takto v části [Odebrání počítače PCM](storsimple-8000-power-cooling-module-replacement.md#remove-a-pcm).
-4. Po vyjmutí pcm zvedněte a otočte rukojeť bateriového modulu směrem nahoru, jak je uvedeno na následujícím obrázku, a vytáhněte jej nahoru, abyste baterii vyjmuli.
+   | 3 |Chyba baterie |
+   | 4 |PCM – OK |
+   | 5 |Selhání napájení řadiče domény |
+   | 6 |Stav baterie v pořádku |
+3. Pokud chcete odstranit PCM s chybnou baterií, postupujte podle kroků v části [Odebrání PCM](storsimple-8000-power-cooling-module-replacement.md#remove-a-pcm).
+4. Po odebrání PCM vyzvedněte a otočte modul baterie vzhůru, jak je znázorněno na následujícím obrázku, a Stáhněte si ho, abyste baterii odstranili.
    
-    ![Vyjmutí baterie z PCM](./media/storsimple-battery-replacement/IC741019.png)
+    ![Odebrání baterie ze PCM](./media/storsimple-battery-replacement/IC741019.png)
    
-    **Obrázek 3** Vyjmutí baterie z PCM
-5. Umístěte modul do obalu jednotky vyměnitelného polem.
-6. Vrátit vadný celek společnosti Microsoft pro správnou údržbu a manipulaci.
+    **Obrázek 3** Odebrání baterie z PCM
+5. Umístěte modul do balíčku s nahraditelnými jednotkami.
+6. Vraťte vadnou jednotku společnosti Microsoft pro zajištění správné údržby a zpracování.
 
-## <a name="install-a-new-backup-battery-module"></a>Instalace nového záložního bateriového modulu
-Provedením následujících kroků nainstalujte náhradní bateriový modul do počítače PCM v primární skříni zařízení StorSimple.
+## <a name="install-a-new-backup-battery-module"></a>Nainstalovat nový modul záložní baterie
+Provedením následujících kroků nainstalujete Náhradní modul baterie do PCM v primární skříni zařízení StorSimple.
 
-#### <a name="to-install-the-battery-module"></a>Instalace bateriového modulu
-1. Umístěte záložní bateriový modul do správné orientace v PCM.
-2. Zatlačte na rukojeť bateriového modulu úplně, abyste usadit konektor.
-3. Vyměňte PCM v primární skříni podle pokynů v [části Výměna napájecího a chladicího modulu na zařízení StorSimple](storsimple-8000-power-cooling-module-replacement.md).
-4. Po dokončení výměny přejděte do zařízení a přejděte na **monitor** > **u stavu hardwaru** na webu Azure Portal. Ověřte stav baterie a ujistěte se, že instalace byla úspěšná. Zelený stav označuje, že baterie je v pořádku.
+#### <a name="to-install-the-battery-module"></a>Instalace modulu baterie
+1. Dodejte modul záložní baterie do správné orientace v PCM.
+2. Stiskněte dolů a modul baterie zpracuje všechny způsoby, jak konektor zasedací.
+3. Pomocí pokynů v části [Výměna napájení a chladicího modulu na zařízení StorSimple](storsimple-8000-power-cooling-module-replacement.md)nahraďte PCM v primární skříni.
+4. Po nahrazení přejdete do svého zařízení a pak přejdete na **monitor** > **stav hardwaru** v Azure Portal. Ověřte stav baterie, abyste se ujistili, že instalace proběhla úspěšně. Zelený stav znamená, že je baterie v pořádku.
 
-## <a name="maintain-the-backup-battery-module"></a>Udržovat záložní bateriový modul
-V zařízení StorSimple poskytuje záložní bateriový modul napájení řadiče během události výpadku napájení. Umožňuje zařízení StorSimple ukládat důležitá data před vypnutím řízeným způsobem. Se dvěma plně nabitými bateriemi v PCM může systém zvládnout dvě po sobě jdoucí ztrátové události.
+## <a name="maintain-the-backup-battery-module"></a>Udržovat modul záložní baterie
+V zařízení StorSimple poskytuje modul pro zálohování záložní baterii napájení k řadiči během události ztráty napájení. Umožňuje zařízení StorSimple ukládat kritická data před vypnutím řízeným způsobem. U dvou plně účtovaných baterií v PCMs může systém zpracovávat dvě po sobě jdoucí události ztráty.
 
-Na webu Azure Portal **stav hardwaru** pod okno **monitor** označuje, zda baterie nefunguje nebo se blíží konec životnosti. Stav baterie je indikován **baterií v PCM 0** nebo baterií v **PCM 1 v** části Sdílené **součásti**. Tento nůž zobrazí **degradovaný** stav pro blížící se konec životnosti a **FAILED** pro dosažení konce životnosti.
+V Azure Portal **stav hardwaru** pod oknem **monitor** ukazuje, jestli baterie nefunguje nebo se blíží konci životního cyklu. Stav baterie je uveden na **baterii v PCM 0** nebo **na baterii v PCM 1** v části **sdílené součásti**. V tomto okně se zobrazí **snížený stav pro** blížící **se životnímu cyklu a bylo** dosaženo konce životního cyklu.
 
 > [!NOTE]
-> Baterie může hlásit **selhání,** když je prostě potřeba nabít.
+> Baterie může hlásit **neúspěšné** , když je potřeba ji účtovat.
 
 
-Pokud se zobrazí stav **DEGRADOVANÝ,** doporučujeme následující postup:
+Pokud se zobrazí stav **sníženo** , doporučujeme, abyste provedli následující kroky:
 
-* Systém mohl v poslední době dojít ke ztrátě napájení nebo baterie mohou být podstupují pravidelnou údržbu. Než budete pokračovat, dodržujte systém 12 hodin.
+* V systému možná došlo k nedávnému výpadku napájení nebo může docházet k pravidelné údržbě baterií. Než budete pokračovat, Sledujte systém po dobu 12 hodin.
   
-  * Pokud je stav stále **degradován** po 12 hodinách nepřetržitého připojení ke střídavému napájení s běžícími regulátory a PCM, je třeba baterii vyměnit. Požádejte o náhradní záložní bateriový modul [od podpory společnosti Microsoft.](storsimple-8000-contact-microsoft-support.md)
-  * Pokud se stav po 12 hodinách stane v pořádku, baterie je v provozu a potřebuje pouze nabití údržby.
-* Pokud nedošlo k související ztrátě střídavého proudu a pcm je zapnuto a připojeno ke střídavé síti, je třeba vyměnit baterii. [Chcete-li](storsimple-8000-contact-microsoft-support.md) objednat náhradní záložní bateriový modul, obraťte se na podporu společnosti Microsoft.
+  * Pokud je stav stále **snížen** po 12 hodinách nepřetržitého připojení k napájení ze sítě s řadiči a PCMs běžet, je nutné vyměnit baterii. [Kontaktujte prosím podpora Microsoftu](storsimple-8000-contact-microsoft-support.md) pro Náhradní modul záložní baterie.
+  * Pokud se stav v pořádku po 12 hodinách, baterie bude funkční a bude potřebovat jenom poplatek za údržbu.
+* Pokud není k dispozici žádná související ztráta napájení z elektrické sítě a modul PCM je zapnutý a připojený k napájení ze sítě, musí být tato baterie nahrazena. [Kontaktuje podpora Microsoftu](storsimple-8000-contact-microsoft-support.md) pro objednání náhradního modulu zálohování záložní baterie.
 
 > [!IMPORTANT]
-> Likvidujte neúspěšnou baterii v souladu s národními a regionálními předpisy.
+> Vyřazení baterie, která selhala, podle vnitrostátních a regionálních předpisů.
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o [výměně hardwarových komponent StorSimple](storsimple-8000-hardware-component-replacement.md).
+Přečtěte si další informace o [nahrazení StorSimple hardwarové součásti](storsimple-8000-hardware-component-replacement.md).
 

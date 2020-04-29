@@ -1,7 +1,7 @@
 ---
-title: Správa veřejného přístupu pro čtení pro kontejnery a objekty BLOB
+title: Spravovat veřejný přístup pro čtení kontejnerů a objektů BLOB
 titleSuffix: Azure Storage
-description: Zjistěte, jak zpřístupnit kontejnery a objekty BLOB pro anonymní přístup a jak k nim programově přistupovat.
+description: Naučte se, jak zpřístupnit kontejnery a objekty blob pro anonymní přístup a jak k nim přistupovat prostřednictvím kódu programu.
 services: storage
 author: tamram
 ms.service: storage
@@ -10,60 +10,60 @@ ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.openlocfilehash: 4d9a54c220861b19d67b07998e609ee72897446a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79255480"
 ---
 # <a name="manage-anonymous-read-access-to-containers-and-blobs"></a>Správa anonymního přístupu pro čtení ke kontejnerům a objektům blob
 
 V úložišti objektů blob v Azure můžete u kontejneru povolit anonymní veřejný přístup pro čtení. Pokud to uděláte, můžete u těchto prostředků udělit přístup jen pro čtení bez sdílení klíče k účtu a bez vyžadování sdíleného přístupového podpisu (SAS).
 
-Veřejný přístup pro čtení je nejvhodnější pro scénáře, kde chcete, aby určité objekty BLOB byly vždy k dispozici pro anonymní přístup pro čtení. Pro podrobnější ovládací prvek můžete vytvořit sdílený přístupový podpis. Sdílené přístupové podpisy umožňují poskytovat omezený přístup pomocí různých oprávnění po určité časové období. Další informace o vytváření sdílených přístupových podpisů najdete [v tématu Používání sdílených přístupových podpisů (SAS) ve službě Azure Storage](../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+Veřejný přístup pro čtení je nejvhodnější pro scénáře, ve kterých mají být některé objekty blob vždy dostupné pro anonymní přístup pro čtení. Pro detailní kontrolu můžete vytvořit sdílený přístupový podpis. Sdílené přístupové podpisy umožňují poskytovat omezený přístup pomocí různých oprávnění pro konkrétní časové období. Další informace o vytváření sdílených přístupových podpisů najdete [v tématu použití sdílených přístupových podpisů (SAS) v Azure Storage](../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
-## <a name="grant-anonymous-users-permissions-to-containers-and-blobs"></a>Udělení oprávnění anonymním uživatelům ke kontejnerům a objektům BLOB
+## <a name="grant-anonymous-users-permissions-to-containers-and-blobs"></a>Udělení anonymních oprávnění uživatelům k kontejnerům a objektům blob
 
 Ve výchozím nastavení může ke kontejneru a ke všem v něm obsaženým objektům blob získat přístup jen uživatel, kterému byla udělena příslušná oprávnění. Pokud chcete u kontejneru a u jeho objektů blob udělit přístup pro čtení anonymním uživatelům, můžete u něho nastavit veřejnou úroveň přístupu. Když u kontejneru nastavíte veřejný přístup, můžou anonymní uživatelé číst objekty blob, aniž by bylo třeba jejich žádost autorizovat.
 
-Kontejner můžete nakonfigurovat s následujícími oprávněními:
+Můžete nakonfigurovat kontejner s následujícími oprávněními:
 
-- **Žádný veřejný přístup pro čtení:** Ke kontejneru a jeho objektům BLOB má přístup pouze vlastník účtu úložiště. Toto je výchozí nastavení pro všechny nové kontejnery.
-- **Veřejný přístup pro čtení pouze pro objekty BLOB:** Objekty BLOB v kontejneru lze číst pomocí anonymní požadavek, ale data kontejneru není k dispozici. Anonymní klienti nelze vytvořit výčet objektů BLOB v rámci kontejneru.
-- **Veřejný přístup pro čtení pro kontejner a jeho objekty BLOB:** Všechna data kontejneru a objektu blob lze číst pomocí anonymního požadavku. Klienti mohou vytvořit výčet objektů BLOB v rámci kontejneru anonymní mj.
+- **Žádný veřejný přístup pro čtení:** K kontejneru a jeho objektům blob může mít přistup jenom vlastník účtu úložiště. Toto je výchozí nastavení pro všechny nové kontejnery.
+- **Veřejný přístup pro čtení jenom pro objekty BLOB:** Objekty BLOB v kontejneru lze číst anonymním požadavkem, ale data kontejneru nejsou k dispozici. Anonymní klienti nemohou vytvořit výčet objektů BLOB v rámci kontejneru.
+- **Veřejný přístup pro čtení kontejneru a jeho objektů BLOB:** Všechna data kontejneru a objektů BLOB lze číst anonymním požadavkem. Klienti mohou vytvořit výčet objektů BLOB v kontejneru anonymním požadavkem, ale nemohou vytvořit výčet kontejnerů v rámci účtu úložiště.
 
-### <a name="set-container-public-access-level-in-the-azure-portal"></a>Nastavení úrovně veřejného přístupu kontejneru na webu Azure Portal
+### <a name="set-container-public-access-level-in-the-azure-portal"></a>Nastavit úroveň veřejného přístupu kontejneru v Azure Portal
 
-Na [webu Azure Portal](https://portal.azure.com)můžete aktualizovat úroveň veřejného přístupu pro jeden nebo více kontejnerů:
+Z [Azure Portal](https://portal.azure.com)můžete úroveň veřejného přístupu aktualizovat na jeden nebo více kontejnerů:
 
-1. Přejděte na přehled svého účtu úložiště na webu Azure Portal.
-1. V části **Blob service** on the menu blade vyberte **Blobs**.
+1. V Azure Portal přejděte na přehled svého účtu úložiště.
+1. V části **BLOB Service** v okně nabídky vyberte **objekty blob**.
 1. Vyberte kontejnery, pro které chcete nastavit úroveň veřejného přístupu.
-1. Pomocí tlačítka **Změnit úroveň přístupu** můžete zobrazit nastavení veřejného přístupu.
-1. V rozevíracím souboru **Úroveň veřejného přístupu** vyberte požadovanou úroveň veřejného přístupu a klepnutím na tlačítko OK použijte změnu u vybraných kontejnerů.
+1. Pomocí tlačítka **změnit úroveň přístupu** můžete zobrazit nastavení veřejného přístupu.
+1. Vyberte požadovanou úroveň veřejného přístupu v rozevíracím seznamu **úroveň veřejného přístupu** a kliknutím na tlačítko OK tuto změnu použijte u vybraných kontejnerů.
 
 Následující snímek obrazovky ukazuje, jak změnit úroveň veřejného přístupu pro vybrané kontejnery.
 
-![Snímek obrazovky znázorňující nastavení úrovně veřejného přístupu na portálu](./media/storage-manage-access-to-resources/storage-manage-access-to-resources-0.png)
+![Snímek obrazovky ukazující, jak nastavit úroveň veřejného přístupu na portálu](./media/storage-manage-access-to-resources/storage-manage-access-to-resources-0.png)
 
 > [!NOTE]
-> Úroveň veřejného přístupu pro jednotlivé objekty blob nelze změnit. Úroveň veřejného přístupu je nastavena pouze na úrovni kontejneru.
+> Úroveň veřejného přístupu pro jednotlivý objekt BLOB se nedá změnit. Úroveň veřejného přístupu je nastavena pouze na úrovni kontejneru.
 
-### <a name="set-container-public-access-level-with-net"></a>Nastavení úrovně veřejného přístupu kontejneru pomocí rozhraní .NET
+### <a name="set-container-public-access-level-with-net"></a>Nastavení úrovně veřejného přístupu ke kontejneru pomocí .NET
 
-Chcete-li nastavit oprávnění pro kontejner pomocí klientské knihovny Azure Storage pro rozhraní .NET, nejprve načtěte existující oprávnění kontejneru voláním jedné z následujících metod:
+Chcete-li nastavit oprávnění pro kontejner pomocí klientské knihovny Azure Storage pro .NET, nejprve Načtěte existující oprávnění kontejneru voláním jedné z následujících metod:
 
 - [GetPermissions](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.getpermissions)
 - [GetPermissionsAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.getpermissionsasync)
 
-Dále nastavte vlastnost **PublicAccess** na objekt [blobContainerPermissions,](/dotnet/api/microsoft.azure.storage.blob.blobcontainerpermissions) který je vrácen metodou **GetPermissions.**
+Dále nastavte vlastnost **PublicAccess** objektu [BlobContainerPermissions](/dotnet/api/microsoft.azure.storage.blob.blobcontainerpermissions) , který je vrácen metodou **GetPermissions** .
 
-Nakonec zavolejte jednu z následujících metod k aktualizaci oprávnění kontejneru:
+Nakonec zavolejte jednu z následujících metod pro aktualizaci oprávnění kontejneru:
 
 - [SetPermissions](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.setpermissions)
 - [SetPermissionsAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.setpermissionsasync)
 
-Následující příklad nastaví oprávnění kontejneru na úplný veřejný přístup pro čtení. Chcete-li nastavit oprávnění pro veřejný přístup ke čtení pouze pro objekty BLOB, nastavte vlastnost **PublicAccess** na **objekt BlobContainerPublicAccessType.Blob**. Chcete-li odebrat všechna oprávnění pro anonymní uživatele, nastavte vlastnost **na BlobContainerPublicAccessType.Off**.
+Následující příklad nastaví oprávnění kontejneru na úplný veřejný přístup pro čtení. Pokud chcete nastavit oprávnění pro veřejný přístup pro čtení jenom pro objekty blob, nastavte vlastnost **PublicAccess** na **BlobContainerPublicAccessType. blob**. Chcete-li odebrat všechna oprávnění pro anonymní uživatele, nastavte vlastnost na hodnotu **BlobContainerPublicAccessType. off**.
 
 ```csharp
 private static async Task SetPublicContainerPermissions(CloudBlobContainer container)
@@ -76,13 +76,13 @@ private static async Task SetPublicContainerPermissions(CloudBlobContainer conta
 }
 ```
 
-## <a name="access-containers-and-blobs-anonymously"></a>Anonymní přístup ke kontejnerům a objektům BLOB
+## <a name="access-containers-and-blobs-anonymously"></a>Anonymní přístup k kontejnerům a objektům blob
 
-Klient, který přistupuje k kontejnerům a objektům BLOB anonymně, může používat konstruktory, které nevyžadují pověření. Následující příklady ukazují několik různých způsobů, jak odkazovat na kontejnery a objekty BLOB anonymně.
+Klient, který přistupuje k kontejnerům a objektům blob anonymně, může používat konstruktory, které nevyžadují přihlašovací údaje. V následujících příkladech je znázorněno několik různých způsobů, jak odkazovat na kontejnery a objekty blob anonymně.
 
-### <a name="create-an-anonymous-client-object"></a>Vytvoření anonymního objektu klienta
+### <a name="create-an-anonymous-client-object"></a>Vytvoření objektu anonymního klienta
 
-Můžete vytvořit nový objekt klienta služby pro anonymní přístup poskytnutím koncového bodu úložiště objektů blob pro účet. Musíte však také znát název kontejneru v tomto účtu, který je k dispozici pro anonymní přístup.
+Můžete vytvořit nový objekt klienta služby pro anonymní přístup tím, že zadáte koncový bod úložiště objektů BLOB pro tento účet. Musíte ale taky znát název kontejneru v tomto účtu, který je dostupný pro anonymní přístup.
 
 ```csharp
 public static void CreateAnonymousBlobClient()
@@ -104,7 +104,7 @@ public static void CreateAnonymousBlobClient()
 
 ### <a name="reference-a-container-anonymously"></a>Anonymní odkaz na kontejner
 
-Pokud máte adresu URL kontejneru, který je anonymně k dispozici, můžete ji použít k přímému odkazu na kontejner.
+Pokud máte adresu URL kontejneru, který je anonymně dostupný, můžete jej použít k přímému odkazování kontejneru.
 
 ```csharp
 public static void ListBlobsAnonymously()
@@ -122,9 +122,9 @@ public static void ListBlobsAnonymously()
 }
 ```
 
-### <a name="reference-a-blob-anonymously"></a>Anonymní odkaz na objekt blob
+### <a name="reference-a-blob-anonymously"></a>Anonymní odkazování na objekt BLOB
 
-Pokud máte adresu URL objektu blob, který je k dispozici pro anonymní přístup, můžete odkazovat na objekt blob přímo pomocí této adresy URL:
+Pokud máte adresu URL objektu blob, který je k dispozici pro anonymní přístup, můžete odkazovat na objekt BLOB přímo pomocí této adresy URL:
 
 ```csharp
 public static void DownloadBlobAnonymously()
@@ -138,5 +138,5 @@ public static void DownloadBlobAnonymously()
 ## <a name="next-steps"></a>Další kroky
 
 - [Autorizace přístupu k Azure Storage](../common/storage-auth.md)
-- [Udělit omezený přístup k prostředkům Azure Storage pomocí sdílených přístupových podpisů (SAS)](../common/storage-sas-overview.md)
+- [Udělení omezeného přístupu k prostředkům Azure Storage pomocí sdílených přístupových podpisů (SAS)](../common/storage-sas-overview.md)
 - [Rozhraní REST API služby Blob Service](/rest/api/storageservices/blob-service-rest-api)

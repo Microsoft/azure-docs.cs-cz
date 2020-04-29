@@ -8,15 +8,15 @@ ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: rohink
 ms.openlocfilehash: 8722a52a097f7f830287d125a4e56e9bbcb9f932
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76939097"
 ---
 # <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>Kurz: Vytvoření vlastních záznamů DNS ve vlastní doméně pro webovou aplikaci 
 
-Azure DNS můžete nakonfigurovat na hostování vlastní domény pro vaše webové aplikace. Můžete například vytvořit webovou aplikaci Azure a nechat\.uživatele k ní přistupovat pomocí www contoso.com nebo contoso.com jako plně kvalifikovaného názvu domény (Plně kvalifikovaný název domény).
+Azure DNS můžete nakonfigurovat na hostování vlastní domény pro vaše webové aplikace. Můžete například vytvořit webovou aplikaci Azure, která uživatelům přistupují pomocí webové\.contoso.com nebo contoso.com jako plně kvalifikovaného názvu domény (FQDN).
 
 > [!NOTE]
 > V tomto kurzu se jako příklad používá doména contoso.com. Doménu contoso.com nahraďte vlastním názvem domény.
@@ -39,7 +39,7 @@ V tomto kurzu se naučíte:
 > * Testování vlastních názvů hostitele
 
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -47,7 +47,7 @@ Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azur
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-* K testování, které můžete hostovat ve službě Azure DNS, musíte mít k dispozici název domény. Musíte mít úplnou kontrolu nad touto doménou. Úplná kontrola zahrnuje možnost nastavit pro doménu záznamy názvového serveru (NS).
+* Musíte mít k dispozici název domény pro testování, který můžete hostovat v Azure DNS. Musíte mít úplnou kontrolu nad touto doménou. Úplná kontrola zahrnuje možnost nastavit pro doménu záznamy názvového serveru (NS).
 * [Vytvořit plán služby App Service](../app-service/app-service-web-get-started-html.md) nebo použít aplikaci, kterou jste vytvořili pro účely jiného kurzu.
 
 * Vytvořte v Azure DNS zónu DNS a prostřednictvím svého registrátora ji delegujte na Azure DNS.
@@ -84,7 +84,7 @@ New-AzDnsRecordSet -Name "@" -RecordType "A" -ZoneName "contoso.com" `
 Služba App Services používá tento záznam jenom při konfiguraci, když potřebuje ověřit, že vám vlastní doména opravdu patří. Po ověření a konfiguraci vlastní domény ve službě App Service můžete tento záznam TXT odstranit.
 
 > [!NOTE]
-> Pokud chcete ověřit název domény, ale ne směrovat produkční provoz do webové aplikace, stačí zadat záznam TXT pro krok ověření.  Ověření nevyžaduje záznam A nebo CNAME kromě záznamu TXT.
+> Pokud chcete ověřit název domény, ale nechcete směrovat provozní provoz do webové aplikace, stačí zadat záznam TXT pro krok ověření.  Ověření kromě záznamu TXT nevyžaduje i záznam typu A ani CNAME.
 
 ```azurepowershell
 New-AzDnsRecordSet -ZoneName contoso.com -ResourceGroupName MyAzureResourceGroup `
@@ -173,9 +173,9 @@ set-AzWebApp `
 Otevřete prohlížeč a přejděte na `http://www.<your domainname>` a `http://<you domain name>` .
 
 > [!NOTE]
-> Ujistěte se, `http://` že jste zahrnuli předponu, jinak se váš prohlížeč může pokusit předpovědět adresu URL pro vás!
+> Ujistěte se, že jste `http://` předponu zahrnuli, jinak se může váš prohlížeč pokusit předpovědět adresu URL.
 
-Pro obě adresy URL by se vám měla zobrazit stejná stránka. Například:
+Pro obě adresy URL by se vám měla zobrazit stejná stránka. Příklad:
 
 ![Služba aplikace Contoso](media/dns-web-sites-custom-domain/contoso-app-svc.png)
 

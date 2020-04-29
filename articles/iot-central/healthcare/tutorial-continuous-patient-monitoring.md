@@ -1,6 +1,6 @@
 ---
-title: Vytvoření aplikace pro průběžné monitorování pacientů s Azure IoT Central | Dokumenty společnosti Microsoft
-description: Naučte se vytvářet aplikaci pro průběžné monitorování pacientů pomocí šablon aplikací Azure IoT Central.
+title: Vytvoření aplikace pro monitorování nepřetržitého pacienta pomocí Azure IoT Central | Microsoft Docs
+description: Naučte se vytvářet aplikace pro monitorování nepřetržitého pacienta pomocí šablon aplikací Azure IoT Central.
 author: philmea
 ms.author: philmea
 ms.date: 09/24/2019
@@ -9,120 +9,120 @@ ms.service: iot-central
 services: iot-central
 manager: eliotgra
 ms.openlocfilehash: 35ac39109bfcb4dc63b738c947d2ad8caf8ac0a6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77021283"
 ---
-# <a name="tutorial-deploy-and-walkthrough-a-continuous-patient-monitoring-app-template"></a>Kurz: Nasazení a návod na šablonu aplikace pro průběžné monitorování pacientů
+# <a name="tutorial-deploy-and-walkthrough-a-continuous-patient-monitoring-app-template"></a>Kurz: nasazení a návod pro šablonu aplikace monitorování průběžného pacienta
 
 
 
-Tento kurz vám ukáže, jak jako tvůrce řešení začít nasazením šablony aplikace průběžného monitorování pacientů ioT Central. Dozvíte se, jak nasadit šablonu, co je součástí po vybalení z krabice a co můžete dělat dál.
+V tomto kurzu se dozvíte, jak můžete začít tím, že nasadíte šablonu aplikace monitorování s průběžnými pacienty IoT Central. Naučíte se, jak nasadit šablonu, co je součástí okna a co můžete udělat dál.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Vytvoření šablony aplikace
-> * Procházení šablony aplikace
+> * Procházení šablonou aplikace
 
 ## <a name="create-an-application-template"></a>Vytvoření šablony aplikace
 
-Přejděte na [web správce aplikací Azure IoT Central](https://apps.azureiotcentral.com/). Na levém navigačním panelu vyberte **Build** a klikněte na kartu **Zdravotní stav.** 
+Přejděte na [web Azure IoT Central Správce aplikací](https://apps.azureiotcentral.com/). V levém navigačním panelu vyberte **sestavovat** a pak klikněte na kartu **zdravotní péče** . 
 
 >[!div class="mx-imgBorder"] 
->![Manažer aplikací Zdravotnictví](media/app-manager-health.png)
+>![Péče Správce aplikací](media/app-manager-health.png)
 
-Kliknutím na tlačítko **Vytvořit aplikaci** začněte vytvářet aplikaci a pak se přihlaste pomocí osobního, pracovního nebo školního účtu Microsoftu. Přejdete na stránku **Nová aplikace.**
+Klikněte na tlačítko **vytvořit aplikaci** a začněte vytvářet aplikaci a pak se přihlaste pomocí osobního, pracovního nebo školního účtu Microsoft. Přejdete na stránku **Nová aplikace** .
 
-![Vytvořit aplikaci Healthcare](media/app-manager-health-create.png)
+![Vytvoření zdravotnictví pro aplikace](media/app-manager-health-create.png)
 
-![Vytvoření aplikace Informace o fakturaci zdravotní péče](media/app-manager-health-create-billinginfo.png)
+![Vytvořit informace o fakturaci zdravotní péče pro aplikace](media/app-manager-health-create-billinginfo.png)
 
 Vytvoření aplikace:
 
-1. Azure IoT Central automaticky navrhne název aplikace na základě vybrané šablony. Můžete přijmout tento název nebo zadat vlastní popisný název aplikace, například **Průběžné monitorování pacienta**. Azure IoT Central také generuje jedinečnou předponu URL pro vás na základě názvu aplikace. Pokud chcete, můžete tuto předponu URL změnit na něco nezapomenutelnějšího.
+1. Azure IoT Central automaticky navrhuje název aplikace na základě vámi vybrané šablony. Můžete přijmout tento název nebo zadat vlastní popisný název aplikace, například **monitorování nepřetržitého pacienta**. Azure IoT Central také na základě názvu aplikace vygeneruje jedinečnou předponu adresy URL. Tuto předponu adresy URL můžete změnit na něco, co byste si chtěli.
 
-2. Můžete si vybrat, zda chcete vytvořit aplikaci pomocí *bezplatného* cenového plánu nebo jednoho ze *standardních* cenových plánů. Aplikace, které vytvoříte pomocí bezplatného plánu, jsou zdarma po dobu sedmi dnů před vypršením jejich platnosti a umožňují až pět bezplatných zařízení. Aplikaci můžete přesunout z bezplatného plánu do standardního cenového plánu kdykoli před vypršením jeho platnosti. Pokud zvolíte bezplatný plán, musíte zadat kontaktní údaje a zvolit, zda chcete od společnosti Microsoft dostávat informace a tipy. Aplikace, které vytvoříte pomocí standardního plánu, podporují až dvě bezplatná zařízení a vyžadují zadání informací o předplatném Azure pro fakturaci.
+2. Můžete vybrat, jestli chcete vytvořit aplikaci pomocí cenového plánu *zdarma* nebo jednoho ze *standardních* cenových plánů. Aplikace, které vytvoříte pomocí bezplatného plánu, jsou po dobu sedmi dnů zdarma a dovolují až pět bezplatných zařízení. Aplikaci můžete kdykoli přesunout z bezplatného plánu do cenového plánu Standard. Pokud zvolíte bezplatný plán, je nutné zadat kontaktní informace a vybrat, zda chcete dostávat informace a tipy od společnosti Microsoft. Aplikace, které vytvoříte pomocí plánu Standard, podporují až dvě volná zařízení a vyžadují, abyste zadali informace o vašem předplatném Azure pro účely fakturace.
 
-3. Vyberte **Vytvořit** v dolní části stránky pro nasazení aplikace.
+3. V dolní části stránky vyberte **vytvořit** a nasaďte svoji aplikaci.
 
-## <a name="walk-through-the-application-template"></a>Procházení šablony aplikace
+## <a name="walk-through-the-application-template"></a>Procházení šablonou aplikace
 
 ### <a name="dashboards"></a>Řídicí panely
 
-Po nasazení šablony aplikace se nejprve dostanete na **řídicí panel monitorování pro hospitalitivně Lamna**. Lamna Zdravotnictví je fiktivní nemocniční systém, který obsahuje dvě nemocnice: Woodgrove nemocnice a Burkville nemocnice. Na tomto řídicím panelu operátora pro nemocnici Woodgrove se zobrazí informace a telemetrie o zařízeních v této šabloně spolu se sadou příkazů, úloh a akcí, které můžete provést. Z palubní desky můžete:
+Po nasazení šablony aplikace se na **řídicím panelu monitorování Lamna na pacientech**stanete první půdou. Lamna zdravotnictví je fiktivní ústavní systém, který obsahuje dvě nemocnice: Woodgrove nemocnice a Burkville nemocnice. Na tomto řídicím panelu pro Woodgrove nemocnice uvidíte informace a telemetrii o zařízeních v této šabloně spolu se sadou příkazů, úloh a akcí, které můžete provést. Z řídicího panelu můžete:
 
-* Podívejte se na telemetrii zařízení a vlastnosti, jako je **úroveň baterie** vašeho zařízení nebo jeho stav **připojení.**
+* Podívejte se na telemetrii a vlastnosti zařízení, jako je například **úroveň baterie** vašeho zařízení nebo stav **připojení** .
 
-* Prohlédněte si **půdorys** a umístění zařízení Smart Vitals Patch.
+* Prohlédněte si plán a umístění **dílenského** zařízení s opravou inteligentních zásad.
 
-* **Znovu zřídit** Smart Vitals Patch pro nového pacienta.
+* Znovu **zajistěte** opravu pro nový pacient, která je v případě inteligentních zásad nezbytná.
 
-* Podívejte se na příklad **řídicího panelu poskytovatele,** který může tým nemocniční péče sledovat své pacienty.
+* Podívejte se na příklad **řídicího panelu poskytovatele** , který může tým ústavní péče sledovat své pacienty.
 
-* Změňte **stav pacienta** zařízení a označte, zda je zařízení používáno pro trpělivý nebo vzdálený scénář.
-
->[!div class="mx-imgBorder"] 
->![Lamna hospitalizován](media/lamna-in-patient.png)
-
-Můžete také kliknout na **Přejít na vzdálenou řídicí panel pacienta** a podívat se na druhý palubní panel operátora používaný pro nemocnici Burkville. Tento řídicí panel obsahuje podobnou sadu akcí, telemetrie a informace. Kromě toho můžete vidět více používaných zařízení a mají možnost **aktualizovat firmware** na každém.
+* Změňte **stav pacienta** zařízení tak, aby označovalo, jestli se zařízení používá pro pacienta nebo vzdálený scénář.
 
 >[!div class="mx-imgBorder"] 
->![Lamna dálkový ovladač](media/lamna-remote.png)
+>![Lamna v pacientech](media/lamna-in-patient.png)
 
-Na obou řídicích panelech můžete vždy odkazovat zpět na tuto dokumentaci.
+Můžete také kliknout na **řídicí panel vzdáleného pacienta** a zobrazit tak druhý řídicí panel, který se používá pro Burkville nemocnice. Tento řídicí panel obsahuje podobnou sadu akcí, telemetrie a informací. Kromě toho můžete zobrazit více používaných zařízení a mít možnost **aktualizovat firmware** v každém z nich.
+
+>[!div class="mx-imgBorder"] 
+>![Lamna vzdálené](media/lamna-remote.png)
+
+Na obou řídicích panelech můžete vždy propojit zpátky na tuto dokumentaci.
 
 ### <a name="device-templates"></a>Šablony zařízení
 
-Pokud kliknete na kartu **Šablony zařízení,** uvidíte, že existují dva různé typy zařízení, které jsou součástí šablony:
+Pokud kliknete na kartu **šablony zařízení** , uvidíte, že existují dva různé typy zařízení, které jsou součástí šablony:
 
-* **Smart Vitals Patch**: Toto zařízení představuje patch, který měří různé typy vitálních funkcí. Může být použit pro sledování pacientů v nemocnici i mimo ni. Pokud kliknete na šablonu, uvidíte, že kromě odesílání dat zařízení, jako je úroveň baterie a teplota zařízení, patch také odesílá údaje o zdravotním stavu pacienta, jako je respirační frekvence a krevní tlak.
+* **Oprava inteligentního zabezpečení**: Toto zařízení představuje opravu, která měří různé typy životně důležitých značek. Dá se použít k monitorování pacientů v nemocnicích i mimo něj. Pokud kliknete na šablonu, uvidíte, že kromě odesílání dat zařízení, jako je například úroveň baterie a teplota zařízení, tato oprava také odesílá data o zdravotním stavu, jako je třeba míra dýchacího a krevního tlaku.
 
-* **Smart Knee Brace**: Toto zařízení představuje kolenní ortézu, kterou mohou pacienti použít při zotavování z operace náhrady kolenního kloubu. Pokud kliknete na tuto šablonu, uvidíte kromě dat zařízení také možnosti, jako je rozsah pohybu a zrychlení.
+* **Chytrá závorka kolena**: Toto zařízení představuje složenou závorku, kterou můžou pacienti použít při obnovování z karty s výměnou kolena. Pokud kliknete na tuto šablonu, uvidíte kromě dat zařízení i možnosti, jako je například rozsah pohybu a akcelerace.
 
 >[!div class="mx-imgBorder"] 
->![Šablona zařízení Smart Vitals Patch](media/smart-vitals-device-template.png)
+>![Oprava – oprava šablony zařízení – důležité](media/smart-vitals-device-template.png)
 
-Pokud kliknete na kartu **Skupiny zařízení,** uvidíte také, že tyto šablony zařízení pro ně automaticky vytvářejí skupiny zařízení.
+Pokud kliknete na kartu **skupiny zařízení** , zjistíte také, že tyto šablony zařízení mají pro ně automaticky vytvořené skupiny zařízení.
 
 ### <a name="rules"></a>Pravidla
 
-Při přechodu na kartu pravidla se v šabloně aplikace zobrazí tři pravidla:
+Při přechodu na kartu pravidla se zobrazí tři pravidla, která existují v šabloně aplikace:
 
-* **Vysoká teplota ortézy**: Toto pravidlo se aktivuje,&deg;když je teplota zařízení smart knee brace větší než 95 F během 5minutového okna. Toto pravidlo můžete použít k upozornění pacienta a pečovatelského týmu a ochlazení zařízení na dálku.
+* **Teplota složené závorky**: Toto pravidlo se aktivuje, když je teplota zařízení v typografické závorce větší než 95&deg;F v intervalu 5 minut. Toto pravidlo můžete použít k upozornění týmu pacient a péče a k tomu, aby se zařízení vzdáleně vypnulo.
 
-* **Zjištěn pád**: Toto pravidlo se spustí, pokud je zjištěn pokles pacienta. Toto pravidlo můžete použít ke konfiguraci akce k nasazení operačního týmu, který pomůže pacientovi, který spadl.
+* **Zjištěná klesnout**: Toto pravidlo se aktivuje, pokud je zjištěno, že pacient je. Toto pravidlo můžete použít ke konfiguraci akce pro nasazení provozního týmu, která pomůže pacientovi, který se zařadí.
 
-* **Vybitá baterie**: Toto pravidlo se spustí, když úroveň nabití baterie na zařízení klesne pod 10 %. Pomocí tohoto pravidla můžete spustit oznámení pacientovi o nabití zařízení.
+* **Oprava baterie nízká**: Toto pravidlo se aktivuje, když úroveň baterie na zařízení překročí 10%. Toto pravidlo můžete použít k aktivaci oznámení, že má pacientovi účtovat zařízení.
 
 >[!div class="mx-imgBorder"] 
->![Vysoké pravidlo pro vysokou teplotu ortézy](media/brace-temp-rule.png)
+>![Střední pravidlo teploty složené závorky](media/brace-temp-rule.png)
 
 ### <a name="devices"></a>Zařízení
 
-Klikněte na kartu **Zařízení** a vyberte instanci **inteligentní kolenní ortézy**. Uvidíte, že existují tři zobrazení, která mají prozkoumat informace o konkrétním zařízení, které jste vybrali. Tato zobrazení se vytvářejí a publikují při vytváření šablony zařízení pro vaše zařízení, což znamená, že budou konzistentní na všech zařízeních, která připojíte nebo simulujete.
+Klikněte na kartu **zařízení** a pak vyberte instanci **čipové složené závorky**. Uvidíte, že existují tři zobrazení, která vám pomohou prozkoumat informace o konkrétním zařízení, které jste vybrali. Tato zobrazení jsou vytvářena a publikována při sestavování šablony zařízení pro vaše zařízení, což znamená, že budou konzistentní napříč všemi zařízeními, která jsou připojena nebo Simulovaná.
 
-Zobrazení **řídicího panelu** poskytuje přehled telemetrie a vlastnosti, které pocházejí ze zařízení, které jsou orientované na operátora.
+Zobrazení **řídicího panelu** poskytuje přehled telemetrie a vlastností, které pocházejí ze zařízení, které je orientované na obsluhu.
 
-Karta **Vlastnosti** vám umožní upravovat vlastnosti cloudu a vlastnosti zařízení pro čtení a zápis.
+Karta **vlastnosti** vám umožní upravit vlastnosti cloudu a vlastnosti zařízení pro čtení a zápis.
 
-Karta **Příkazy** vám umožní spouštět příkazy, které byly modelovány jako součást šablony zařízení.
+Karta **příkazy** vám umožní spustit příkazy, které byly namodelované jako součást šablony zařízení.
 
 >[!div class="mx-imgBorder"] 
->![Zobrazení kolenní ortézy](media/knee-brace-dashboard.png)
+>![Zobrazení kolenových závorek](media/knee-brace-dashboard.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud nebudete pokračovat v používání této aplikace, odstraňte aplikaci tak, že navštívíte **nastavení aplikace Správa >** a klepněte na tlačítko **Odstranit**.
+Pokud nebudete tuto aplikaci nadále používat, odstraňte aplikaci tím, že navštívíte **správu > nastavení aplikace** a kliknete na **Odstranit**.
 
 >[!div class="mx-imgBorder"] 
 >![Odstranit aplikaci](media/admin-delete.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-Přejdete k dalšímu článku a zjistěte, jak vytvořit řídicí panel zprostředkovatele, který se připojí k vaší aplikaci IoT Central.
+V dalším článku se dozvíte, jak vytvořit řídicí panel poskytovatele, který se připojuje k vaší IoT Central aplikaci.
 
 > [!div class="nextstepaction"]
 > [Vytvoření řídicího panelu poskytovatele](howto-health-data-triage.md)

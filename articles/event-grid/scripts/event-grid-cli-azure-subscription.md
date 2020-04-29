@@ -1,6 +1,6 @@
 ---
 title: Ukázkový skript Azure CLI – Přihlášení k odběru předplatného Azure | Microsoft Docs
-description: Tento článek obsahuje ukázkový skript Azure CLI, který ukazuje, jak se přihlásit k odběru událostí Azure Event Grid pomocí Azure CLI.
+description: Tento článek obsahuje ukázkový skript Azure CLI, který ukazuje, jak se přihlásit k odběru Azure Event Gridch událostí pomocí Azure CLI.
 services: event-grid
 documentationcenter: na
 author: spelluru
@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 01/23/2020
 ms.author: spelluru
 ms.openlocfilehash: 9d40367c8d0f4f1250504c30fcd6c4846921a830
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76720890"
 ---
 # <a name="subscribe-to-events-for-an-azure-subscription-with-azure-cli"></a>Přihlášení k odběru událostí předplatného Azure pomocí Azure CLI
