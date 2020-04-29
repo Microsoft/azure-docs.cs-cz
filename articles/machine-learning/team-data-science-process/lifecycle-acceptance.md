@@ -1,6 +1,6 @@
 ---
-title: Fáze přijetí zákazníkem v životním cyklu procesu teamových datových věd
-description: Cíle, úkoly a výstupy pro fázi přijímání vašich projektů datových věd
+title: Fáze přijetí zákazníků v životním cyklu procesu vědeckého zpracování dat týmu
+description: Cíle, úkoly a dodávky pro fázi přijetí zákazníků vašich projektů pro vědu pro data
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,15 +12,15 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 7224a7bb26ef491915df9fcb9b6b84ff171a9fc0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76720516"
 ---
-# <a name="customer-acceptance-stage-of-the-team-data-science-process-lifecycle"></a>Fáze přijetí zákazníkem v životním cyklu procesu teamových datových věd
+# <a name="customer-acceptance-stage-of-the-team-data-science-process-lifecycle"></a>Fáze přijetí zákazníků v životním cyklu procesu vědeckého zpracování dat týmu
 
-Tento článek popisuje cíle, úkoly a dodávky spojené s fází přijetí zákazníka procesu vědecké vědy o týmových datech (TDSP). Tento proces poskytuje doporučený životní cyklus, který můžete použít ke strukturování projektů datové vědy. Životní cyklus popisuje hlavní fáze, které projekty obvykle provádějí, často iterativně:
+Tento článek popisuje cíle, úlohy a dodávky spojené se zákaznickou fází pro vědecké zpracování týmových dat (TDSP). Tento proces poskytuje doporučený životní cyklus, který můžete použít ke strukturování projektů pro vědu. Životní cyklus popisuje hlavní fáze, které se obvykle spouštějí projekty, často iterativní:
 
    1. **Principy podniku**
    2. **Získávání a pochopení dat**
@@ -28,29 +28,29 @@ Tento článek popisuje cíle, úkoly a dodávky spojené s fází přijetí zá
    4. **Nasazení**
    5. **Přijetí zákazníky**
 
-Zde je vizuální znázornění životního cyklu TDSP: 
+Tady je vizuální znázornění životního cyklu TDSP: 
 
 ![Životní cyklus TDSP](./media/lifecycle/tdsp-lifecycle2.png) 
 
 
 ## <a name="goal"></a>Cíl
-**Dokončení výstupů projektu**: Potvrďte, že kanál, model a jejich nasazení v produkčním prostředí splňují cíle zákazníka.
+**Finalizace dodávek projektu**: Ověřte, že kanál, model a jejich nasazení v produkčním prostředí odpovídají cílům zákazníka.
 
-## <a name="how-to-do-it"></a>Jak na to
+## <a name="how-to-do-it"></a>Jak to provést
 V této fázi jsou řešeny dva hlavní úkoly:
 
-   * **Ověření systému**: Potvrďte, že nasazený model a kanál splňují potřeby zákazníka.
-   * **Předání projektu**: Předá projekt entitě, která bude systém ve výrobě spouštět.
+   * **Ověření systému**: Ověřte, že nasazený model a kanál splňují požadavky zákazníka.
+   * **Projektový ruka-vypnuto**: projekt je možné předat do entity, ve které se spouští systém v produkčním prostředí.
 
-Zákazník by měl ověřit, že systém splňuje jejich obchodní potřeby a že odpovídá na otázky s přijatelnou přesností pro nasazení systému do produkčního prostředí pro použití aplikací svého klienta. Veškerá dokumentace je dokončena a přezkoumána. Projekt je předán subjektu odpovědnému za operace. Tato entita může být například it nebo zákaznický datový vědecký tým nebo agent zákazníka, který je zodpovědný za spuštění systému v produkčním prostředí. 
+Zákazník by měl ověřit, že systém splňuje své obchodní potřeby a že odpoví na otázky s přijatelnou přesností pro nasazení systému do produkčního prostředí pro použití jejich aplikací klienta. Všechna dokumentace se dokončuje a přezkoumávají. Projekt je předán do entity zodpovědné za operace. Tato entita může být například tým pro odborníky na IT nebo zákazníky nebo agent zákazníka, který je zodpovědný za provoz systému v produkčním prostředí. 
 
 ## <a name="artifacts"></a>Artefakty
-Hlavním artefaktem vytvořeným v této konečné fázi je **výstupní zpráva projektu pro zákazníka**. Tato technická zpráva obsahuje všechny podrobnosti o projektu, které jsou užitečné pro učení o tom, jak systém provozovat. TDSP poskytuje šablonu [sestavy Ukončení.](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Project/Exit%20Report.md) Šablonu můžete použít tak, jak je, nebo ji můžete přizpůsobit pro konkrétní potřeby klienta. 
+Hlavním artefaktem vytvořeným v této konečné fázi je **Zpráva o ukončení projektu pro zákazníka**. Tato technická sestava obsahuje všechny podrobnosti projektu, které jsou užitečné pro získání informací o tom, jak systém provozovat. TDSP poskytuje šablonu [sestavy ukončení](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Project/Exit%20Report.md) . Šablonu můžete použít tak, jak je, nebo ji můžete přizpůsobit pro konkrétní potřeby klienta. 
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Zde jsou odkazy na každý krok v životním cyklu TDSP:
+Tady jsou odkazy na jednotlivé kroky v životním cyklu TDSP:
 
    1. [Principy podniku](lifecycle-business-understanding.md)
    2. [Získávání a pochopení dat](lifecycle-data.md)
@@ -58,6 +58,6 @@ Zde jsou odkazy na každý krok v životním cyklu TDSP:
    4. [Nasazení](lifecycle-deployment.md)
    5. [Přijetí zákazníky](lifecycle-acceptance.md)
 
-Poskytujeme úplné návody, které ukazují všechny kroky v procesu pro konkrétní scénáře. Ukázkový [článek obsahuje](walkthroughs.md) seznam scénářů s odkazy a popisy miniatur. Návody ilustrují, jak kombinovat cloud, místní nástroje a služby do pracovního postupu nebo kanálu k vytvoření inteligentní aplikace. 
+Poskytujeme kompletní návody, které ukazují všechny kroky v procesu pro konkrétní scénáře. Článek [příklad návodů](walkthroughs.md) obsahuje seznam scénářů s odkazy a popisy miniatur. Návody ukazují, jak zkombinovat cloudové, místní nástroje a služby do pracovního postupu nebo kanálu a vytvořit tak inteligentní aplikaci. 
 
-Příklady kroků v TDSP, které používají Azure Machine Learning Studio, najdete [v tématu Použití TDSP s Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
+Příklady, jak provést kroky v TDSPs, které používají Azure Machine Learning Studio, naleznete v tématu [použití TDSP s Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).

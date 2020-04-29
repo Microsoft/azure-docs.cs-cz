@@ -1,6 +1,6 @@
 ---
-title: Výstupní dávkování v Síti událostí Azure IoT Edge | Dokumenty společnosti Microsoft
-description: Výstupní dávkování v mřížce událostí na IoT Edge.
+title: Výstup dávkování v Azure Event Grid IoT Edge | Microsoft Docs
+description: Výstup dávkování v Event Grid IoT Edge.
 author: HiteshMadan
 manager: rajarv
 ms.author: himad
@@ -10,50 +10,50 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: a6f033af34088081090251f2e5e7cd4a07ce43cc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76841743"
 ---
 # <a name="output-batching"></a>Dávkování výstupu
 
-Event Grid má podporu pro doručení více než jedné události v jedné žádosti o doručení. Tato funkce umožňuje zvýšit celkovou propustnost doručení bez placení režie HTTP na požadavek. Dávkování je ve výchozím nastavení vypnuté a lze zapnout na jedno předplatné.
+Event Grid podporuje poskytování více než jedné události v rámci jedné žádosti o doručení. Tato funkce umožňuje zvýšit celkovou propustnost doručení bez placení režijních nákladů na požadavek HTTP. Dávkování je ve výchozím nastavení vypnuté a dá se zapnout pro každé předplatné.
 
 > [!WARNING]
-> Maximální povolená doba trvání zpracování každého požadavku na doručení se nezmění, i když kód odběratele potenciálně musí provést více práce na dávkový požadavek. Časový limit doručení je výchozí na 60 sekund.
+> Maximální povolená doba pro zpracování jednotlivých žádostí o doručení se nemění, i když kód předplatitele potenciálně potřebuje k provedení více práce na základě dávky. Časový limit doručení je ve výchozím nastavení nastaven na 60 sekund.
 
 ## <a name="batching-policy"></a>Zásady dávkování
 
-Dávkové chování event gridu lze přizpůsobit na odběratele, a to vyladěním následujících dvou nastavení:
+Chování dávkování Event Grid se dá přizpůsobit pro každého předplatitele pomocí přizpůsobení následujících dvou nastavení:
 
 * Maximální počet událostí na dávku
 
   Toto nastavení nastaví horní limit počtu událostí, které lze přidat do dávkového požadavku na doručení.
 
-* Upřednostňovaná velikost dávky v kilobajtech
+* Preferovaná velikost dávky v kilobajtech
 
-  Tento knoflík se používá k dalšímu řízení maximálního počtu kilobajtů, které lze odeslat na žádost o doručení
+  Tento knoflík slouží k dalšímu řízení maximálního počtu kilobajtů, které je možné odeslat za požadavek na doručení.
 
-## <a name="batching-behavior"></a>Dávkové chování
+## <a name="batching-behavior"></a>Chování dávkování
 
-* Všechny nebo žádné
+* Vše nebo žádné
 
-  Event Grid pracuje s sémantikou "vše nebo žádná". Nepodporuje částečný úspěch dávkové dodávky. Odběratelé by měli být opatrní pouze požádat o tolik událostí na dávku, jak mohou rozumně zpracovat za 60 sekund.
+  Event Grid pracuje se sémantikou All-nebo-None. Neumožňuje částečnou úspěšnost dávkového doručování. Předplatitelé by měli být opatrní, aby se na každou dávku žádali jenom tolik událostí, protože můžou v 60 sekundách rozumně zvládnout.
 
 * Optimistické dávkování
 
-  Nastavení zásad dávkování nejsou přísné hranice na dávkování chování a jsou respektovány na základě nejlepší úsilí. Při nízkých sazbách událostí často zjistíte, že velikost dávky je menší než požadovaná maximální událost na dávku.
+  Nastavení zásad dávkového zpracování není přísné meze pro chování dávkování a jsou dodržovány na základě nejlepšího úsilí. Při nízkých sazbách událostí často obdržíte velikost dávky menší než požadované maximum událostí na dávku.
 
-* Výchozí hodnota je nastavena na hodnotu VYPNUTO.
+* Výchozí nastavení je vypnuto.
 
-  Ve výchozím nastavení aplikace Event Grid přidá ke každé žádosti o doručení pouze jednu událost. Způsob, jak zapnout dávkování je nastavit jedno z nastavení uvedených výše v článku v odběru událostí JSON.
+  Ve výchozím nastavení Event Grid do každé žádosti o doručení přidat jenom jednu událost. Postup zapnutí dávkového zpracování je nastavení jednoho z výše uvedených nastavení v tomto článku v souboru JSON pro odběr události.
 
 * Výchozí hodnoty
 
-  Při vytváření předplatného událostí není nutné zadávat nastavení (Maximální počet událostí na dávku a Přibližná velikost dávky v kilobajtech). Pokud je nastaveno pouze jedno nastavení, funkce Event Grid používá (konfigurovatelné) výchozí hodnoty. Výchozí hodnoty a postup jejich přepsání naleznete v následujících částech.
+  Při vytváření odběru událostí není nutné zadávat nastavení (maximální počet událostí na dávku a přibližnou velikost dávky v kilobajtech). Pokud je nastavené jenom jedno nastavení, Event Grid použije (konfigurovatelné) výchozí hodnoty. V následujících částech jsou uvedeny výchozí hodnoty a jejich přepsání.
 
-## <a name="turn-on-output-batching"></a>Zapnutí výstupního dávkování
+## <a name="turn-on-output-batching"></a>Zapnout dávkování výstupu
 
 ```json
 {
@@ -75,18 +75,18 @@ Dávkové chování event gridu lze přizpůsobit na odběratele, a to vyladěn�
 
 ## <a name="configuring-maximum-allowed-values"></a>Konfigurace maximálních povolených hodnot
 
-Následující nastavení času nasazení řídí maximální povolenou hodnotu při vytváření odběru událostí.
+Následující nastavení času nasazení určuje maximální hodnotu povolenou při vytváření odběru události.
 
 | Název vlastnosti | Popis |
 | ------------- | ----------- | 
-| `api__deliveryPolicyLimits__maxpreferredBatchSizeInKilobytes` | Maximální povolená `PreferredBatchSizeInKilobytes` hodnota knoflíku. Výchozí `1033`nastavení .
-| `api__deliveryPolicyLimits__maxEventsPerBatch` | Maximální povolená `MaxEventsPerBatch` hodnota knoflíku. Výchozí `50`nastavení .
+| `api__deliveryPolicyLimits__maxpreferredBatchSizeInKilobytes` | Maximální povolená hodnota `PreferredBatchSizeInKilobytes` ovladače Výchozí `1033`hodnota.
+| `api__deliveryPolicyLimits__maxEventsPerBatch` | Maximální povolená hodnota `MaxEventsPerBatch` ovladače Výchozí `50`hodnota.
 
-## <a name="configuring-runtime-default-values"></a>Konfigurace výchozích hodnot za běhu
+## <a name="configuring-runtime-default-values"></a>Konfigurace výchozích hodnot modulu runtime
 
-Následující nastavení času nasazení řídí výchozí hodnotu runtime každého knoflíku, pokud není zadána v předplatném událostí. Chcete-li zopakovat, musí být v předplatném události nastaven alespoň jeden knoflík, aby bylo možné zapnout dávkování chování.
+Následující nastavení času nasazení řídí výchozí hodnotu modulu runtime každého ovladače, pokud není zadána v odběru události. Chcete-li provést iteraci, musí být v odběru událostí nastaven alespoň jeden ovladač, aby bylo možné zapnout dávkování chování.
 
 | Název vlastnosti | Popis |
 | ------------- | ----------- |
-| `broker__defaultMaxBatchSizeInBytes` | Maximální velikost požadavku `MaxEventsPerBatch` na doručení, pokud je zadán pouze. Výchozí `1_058_576`nastavení .
-| `broker__defaultMaxEventsPerBatch` | Maximální počet událostí, které mají `MaxBatchSizeInBytes` být zahrnuty do dávky, pokud je zadán pouze. Výchozí `10`nastavení .
+| `broker__defaultMaxBatchSizeInBytes` | Maximální velikost žádosti o doručení, `MaxEventsPerBatch` Pokud je určena pouze. Výchozí `1_058_576`hodnota.
+| `broker__defaultMaxEventsPerBatch` | Maximální počet událostí, které mají být přidány do dávky, `MaxBatchSizeInBytes` Pokud je určena pouze hodnota. Výchozí `10`hodnota.

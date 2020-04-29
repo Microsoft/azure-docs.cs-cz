@@ -1,7 +1,7 @@
 ---
-title: WAF na Azure Application Gateway bot přehled ochrany
+title: WAF on Azure Application Gateway – přehled ochrany bot
 titleSuffix: Azure Web Application Firewall
-description: Tento článek obsahuje přehled brány firewall webových aplikací (WAF) na ochranu robotů application gateway
+description: Tento článek poskytuje přehled firewallu webových aplikací (WAF) na Application Gateway ochraně bot
 services: web-application-firewall
 author: winthrop28
 ms.service: web-application-firewall
@@ -9,31 +9,31 @@ ms.date: 02/04/2020
 ms.author: victorh
 ms.topic: conceptual
 ms.openlocfilehash: 3bc481cfc35ac94699d2795862f1fe8e4decf875
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77027092"
 ---
-# <a name="azure-web-application-firewall-on-azure-application-gateway-bot-protection-overview"></a>Azure Web Application Firewall na Azure Application Gateway ochrana přehled
+# <a name="azure-web-application-firewall-on-azure-application-gateway-bot-protection-overview"></a>Firewall webových aplikací Azure v Azure Application Gateway – přehled ochrany bot
 
-Zhruba 20% veškerého internetového provozu pochází ze špatných robotů. Dělají věci, jako je škrábání, skenování a hledání zranitelných míst ve vaší webové aplikaci. Když jsou tyto roboty zastaveny u brány firewall webových aplikací (WAF), nemohou na vás zaútočit. Také nemohou využívat vaše prostředky a služby, jako jsou vaše back-endy a další základní infrastruktura.
+Přibližně 20% veškerého internetového provozu pochází ze špatné robotyy. Dělají věci, jako je například vyřazení, vyhledávání a hledání ohrožení zabezpečení ve vaší webové aplikaci. Když se tyto roboty zastaví na firewallu webových aplikací (WAF), nemůžou vás sami proútočit. Nemůžou také používat vaše prostředky a služby, jako jsou vaše back-endy a jiná základní infrastruktura.
 
-Můžete povolit sadu spravovaných pravidel ochrany robota pro waf, která blokuje nebo protokoluje požadavky ze známých škodlivých IP adres. IP adresy jsou získávány z informačního kanálu Microsoft Threat Intelligence. Inteligentní graf zabezpečení pohání microsoftovou analýzu hrozeb a používá ho několik služeb včetně Azure Security Center.
+Můžete povolit sadu pravidel spravované ochrany robotů pro WAF k blokování nebo protokolování požadavků ze známých škodlivých IP adres. IP adresy se naúčtují z informačního kanálu Microsoft Threat Intelligence. Intelligent Security Graph využívá Microsoft Threat Intelligence a používá ho víc služeb, včetně Azure Security Center.
 
 > [!IMPORTANT]
-> Sada pravidel ochrany robota je aktuálně ve verzi Public Preview a je vybavena předběžnou smlouvou o úrovni služeb. Některé funkce nemusí být podporované nebo můžou mít omezené možnosti. Podrobnosti najdete v [doplňkových podmínkách použití pro Microsoft Azure Preview.](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) 
+> Sada pravidel ochrany robota je aktuálně ve verzi Public Preview a poskytuje verzi Preview smlouvy o úrovni služeb. Některé funkce nemusí být podporované nebo můžou mít omezené možnosti. Podrobné informace o Microsoft Azure verzích Preview najdete v tématu s [dodatečnými podmínkami použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="use-with-owasp-rulesets"></a>Použití s sadami pravidel OWASP
+## <a name="use-with-owasp-rulesets"></a>Použití s OWASP RuleSets
 
-Sadu pravidel ochrany botmůžete použít společně s některou z pravidel OWASP (2.2.9, 3.0 a 3.1). V daném okamžiku lze použít pouze jednu sadu pravidel OWASP. Sada pravidel ochrany robota obsahuje další pravidlo, které se zobrazí ve vlastní sadě pravidel. Je s názvem **Microsoft_BotManagerRuleSet_0.1**a můžete jej povolit nebo zakázat jako ostatní pravidla OWASP.
+RuleSet ochranu robota můžete použít vedle kteréhokoli OWASP RuleSets (2.2.9, 3,0 a 3,1). V daném okamžiku může být použita pouze jedna OWASP RuleSet. RuleSet ochrany robota obsahuje další pravidlo, které se zobrazí ve vlastním RuleSet. Má podobu **Microsoft_BotManagerRuleSet_0.1**a můžete ho povolit nebo zakázat podobně jako ostatní pravidla OWASP.
 
-![Sada pravidel botu](../media/bot-protection-overview/bot-ruleset.png)
+![Robot RuleSet](../media/bot-protection-overview/bot-ruleset.png)
 
-## <a name="ruleset-update"></a>Aktualizace sady pravidel
+## <a name="ruleset-update"></a>RuleSet aktualizace
 
-Seznam známých chybných IP adres botů se aktualizuje několikrát denně z kanálu Microsoft Threat Intelligence, aby zůstal synchronizován s roboty. Vaše webové aplikace jsou neustále chráněny, i když se mění vektory útoku robotů.
+Seznam známých neplatných IP adres RuleSet v robotu se aktualizuje několikrát za den z informačního kanálu Microsoft Threat Intelligence, aby zůstal synchronizovaný s roboty. Webové aplikace jsou průběžně chráněny i v případě, že se změní vektory útoku robota.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Konfigurace ochrany botů pro bránu webových aplikací v bráně Aplikace Azure (Preview)](bot-protection.md)
+- [Konfigurace ochrany bot pro Firewall webových aplikací v Azure Application Gateway (Preview)](bot-protection.md)

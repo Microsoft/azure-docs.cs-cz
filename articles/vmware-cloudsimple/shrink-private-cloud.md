@@ -1,6 +1,6 @@
 ---
-title: Zmenšení řešení Azure VMware podle cloudového privátního cloudu
-description: Popisuje, jak zmenšit CloudSimple privátní cloud.
+title: Zmenšení řešení Azure VMware pomocí CloudSimple privátního cloudu
+description: Popisuje, jak zmenšit privátní cloud CloudSimple.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 07/01/2019
@@ -9,55 +9,55 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 602dca105e91c55c591388a833a36e71f951da8b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77014262"
 ---
-# <a name="shrink-a-cloudsimple-private-cloud"></a>Zmenšení cloudového jednoduchého privátního cloudu
+# <a name="shrink-a-cloudsimple-private-cloud"></a>Zmenšení privátního cloudu CloudSimple
 
-CloudSimple poskytuje flexibilitu dynamicky zmenšit privátní cloud.  Privátní cloud se skládá z jednoho nebo více clusterů vSphere. Každý cluster může mít 3 až 16 uzlů. Při zmenšování privátního cloudu odeberete uzel z existujícího clusteru nebo odstraníte celý cluster. 
+CloudSimple poskytuje flexibilitu pro dynamické zmenšování privátního cloudu.  Privátní cloud se skládá z jednoho nebo více clusterů vSphere. Každý cluster může mít 3 až 16 uzlů. Při zmenšování privátního cloudu odeberete uzel z existujícího clusteru nebo odstraníte celý cluster. 
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
-Pro zmenšení privátního cloudu musí být splněny následující podmínky.  Cluster pro správu (první cluster) vytvořený při vytvoření privátního cloudu nelze odstranit.
+Pro zmenšení privátního cloudu musí být splněné následující podmínky.  Cluster pro správu (první cluster) vytvořený při vytvoření privátního cloudu nelze odstranit.
 
-* Cluster vSphere musí mít tři uzly.  Cluster s pouze třemi uzly nelze ztíst.
-* Celkové spotřebované úložiště by nemělo překročit celkovou kapacitu po zmenšení clusteru.
-* Zkontrolujte, zda některá pravidla plánovače distribuovaných prostředků (DRS) brání vMotion virtuálního počítače.  Pokud jsou pravidla k dispozici, zakažte nebo odstraňte pravidla.  Pravidla DRS zahrnují virtuální počítač pro pravidla spřažení.
+* Cluster vSphere musí mít tři uzly.  Cluster se třemi uzly nelze zmenšit.
+* Celkové spotřebované úložiště by nemělo po zmenšení clusteru překročit celkovou kapacitu.
+* Ověřte, jestli některá pravidla plánovače distribuovaných zdrojů (DRS) brání vMotion virtuálního počítače.  Pokud jsou pravidla k dispozici, zakažte nebo odstraňte pravidla.  Pravidla DRS zahrnují pravidla vztahů mezi virtuálními počítači a hostiteli.
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k [https://portal.azure.com](https://portal.azure.com)portálu Azure na adrese .
+Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="shrink-a-private-cloud"></a>Zmenšení privátního cloudu
 
 1. [Přístup k portálu CloudSimple](access-cloudsimple-portal.md).
 
-2. Otevřete stránku **Zdroje.**
+2. Otevřete stránku **prostředky** .
 
-3. Klikněte na privátní cloud, který chcete zmenšit
+3. Klikněte na privátní cloud, který chcete zmenšit.
 
-4. Na stránce souhrnu klikněte na **zmenšit**.
+4. Na stránce Souhrn klikněte na tlačítko **zmenšit**.
 
-    ![Zmenšení privátního cloudu](media/shrink-private-cloud.png)
+    ![Zmenšit privátní cloud](media/shrink-private-cloud.png)
 
 5. Vyberte cluster, který chcete zmenšit nebo odstranit. 
 
-    ![Zmenšení privátního cloudu – výběr clusteru](media/shrink-private-cloud-select-cluster.png)
+    ![Zmenšit privátní cloud – vybrat cluster](media/shrink-private-cloud-select-cluster.png)
 
-6. Vyberte **Odebrat jeden uzel** nebo **Odstranit celý cluster**. 
+6. Vyberte **odebrat jeden uzel** nebo **odstranit celý cluster**. 
 
 7. Ověření kapacity clusteru
 
-8. Chcete-li soukromý cloud zmenšit, klepněte na **tlačítko Odeslat.**
+8. Kliknutím na **Odeslat** zmenšíte privátní cloud.
 
-Zmenšit privátního cloudu spustí.  Průběh úkolů můžete sledovat.  Proces zmenšení může trvat několik hodin v závislosti na datech, které je třeba resynced na vSAN.
+Spustí se zmenšení privátního cloudu.  Průběh můžete sledovat v úlohách.  Proces zmenšení může trvat několik hodin v závislosti na datech, která se musí znovu synchronizovat v síti vSAN.
 
 > [!NOTE]
-> 1. Pokud zmenšíte privátní cloud odstraněním posledního nebo jediného clusteru v datovém centru, datové centrum se neodstraní.
-> 2. Pokud dojde k porušení pravidel DRS, uzel nebude odebrán z clusteru a popis úkolu ukazuje, že odebrání uzlu poruší pravidla DRS v clusteru.    
+> 1. Pokud zmenšíte privátní cloud odstraněním posledního nebo jediného clusteru v datacentru, datacentrum se neodstraní.
+> 2. Pokud dojde k nějakému porušení pravidla DRS, uzel nebude odebrán z clusteru a popis úlohy zobrazí, že při odebrání uzlu dojde k porušení pravidel DRS v clusteru.    
 
 
 ## <a name="next-steps"></a>Další kroky

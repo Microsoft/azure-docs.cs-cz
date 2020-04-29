@@ -1,6 +1,6 @@
 ---
-title: Vytvoření clusteru se nezdaří s chybou DomainNotFound v Azure HDInsight
-description: Řešení potíží s kroky a možnými řešeními problémů při interakci s clustery Azure HDInsight
+title: Vytvoření clusteru selhalo s chybou DomainNotFound ve službě Azure HDInsight
+description: Postup řešení potíží a možná řešení pro problémy při komunikaci s clustery Azure HDInsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,50 +8,50 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/23/2020
 ms.openlocfilehash: adcdafbc07fa0a8cc6970ab227b52aee798b084f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76776232"
 ---
-# <a name="scenario-cluster-creation-fails-with-domainnotfound-error-in-azure-hdinsight"></a>Scénář: Vytvoření clusteru se nezdaří s chybou DomainNotFound v Azure HDInsight
+# <a name="scenario-cluster-creation-fails-with-domainnotfound-error-in-azure-hdinsight"></a>Scénář: Vytvoření clusteru selhalo s chybou DomainNotFound ve službě Azure HDInsight
 
-Tento článek popisuje kroky řešení potíží a možná řešení problémů při interakci s clustery Azure HDInsight.
+Tento článek popisuje postup řešení potíží a možná řešení potíží při komunikaci s clustery Azure HDInsight.
 
 ## <a name="issue"></a>Problém
 
-Vytvoření clusteru HDI Secure (Enterprise `DomainNotFound` Security Package) se nezdaří s chybovou zprávou.
+Vytvoření clusteru HDI Secure (Balíček zabezpečení podniku) se nezdařilo s `DomainNotFound` chybovou zprávou.
 
 ## <a name="cause"></a>Příčina
 
-Nesprávné nastavení DNS.
+Nesprávná nastavení DNS.
 
 ## <a name="resolution"></a>Řešení
 
-Při nasazení clusterů spojených s doménou vytvoří rozhraní HDI interní uživatelské jméno a heslo ve službách AAD DS (pro každý cluster) a připojí všechny uzly clusteru k této doméně. Spojení domény se provádí pomocí nástrojů Samba. Ujistěte se, že jsou splněny následující požadavky:
+Po nasazení clusterů připojených k doméně vytvoří HDI interní uživatelské jméno a heslo v AAD DS (pro každý cluster) a spojí všechny uzly clusteru s touto doménou. Připojení k doméně se provádí pomocí nástrojů pro Samba. Ujistěte se, že jsou splněné následující předpoklady:
 
-* Název domény by měl přeložit prostřednictvím služby DNS.
-* Ip adresa řadičů domény by měla být nastavena v nastavení DNS pro virtuální síť, ve které je cluster nasazován.
-* Pokud virtuální síť je peered s virtuální sítí AAD DS, pak je nutné provést ručně.
-* Pokud používáte servery pro předávání DNS, musí se název domény správně přeložit ve virtuální síti.
-* Zásady zabezpečení (NSG) by neměly blokovat připojení k doméně.
+* Název domény by se měl vyřešit prostřednictvím DNS.
+* IP adresa řadičů domény by se měla nastavit v nastavení DNS pro virtuální síť, ve které se cluster nasazuje.
+* Pokud má virtuální síť navázaný partnerský vztah s virtuální sítí služby AAD DS, je nutné ji provést ručně.
+* Pokud používáte servery DNS pro přeposílání, musí se název domény správně přeložit v rámci virtuální sítě.
+* Zásady zabezpečení (skupin zabezpečení sítě) by neměly blokovat připojení k doméně.
 
 ### <a name="additional-debugging-steps"></a>Další kroky ladění
 
-* Nasazení virtuálního počítače se systémem Windows ve stejné podsíti, připojení k počítači pomocí uživatelského jména a hesla (to lze provést prostřednictvím uživatelského rozhraní ovládacího panelu) nebo
+* Nasaďte virtuální počítač s Windows ve stejné podsíti, doménu připojte k počítači pomocí uživatelského jména a hesla (můžete to udělat prostřednictvím uživatelského rozhraní ovládacích panelů) nebo
 
-* Nasazení virtuálního počítače Ubuntu ve stejné podsíti a doméně připojit k počítači
-  * SSH do stroje
-  * sudo su
-  * Spuštění skriptu s uživatelským jménem a heslem
-  * Skript bude ping, vytvořit požadované konfigurační soubory a pak domény. Pokud se to podaří, nastavení DNS je dobré.
+* Nasazení virtuálního počítače s Ubuntu ve stejné podsíti a doméně připojit se k počítači
+  * Přihlaste se k počítači přes SSH
+  * sudo Su
+  * Spusťte skript s uživatelským jménem a heslem.
+  * Skript provede příkaz k otestování testu, vytvoří požadované konfigurační soubory a pak doménu. Pokud je to úspěšné, vaše nastavení DNS budou dobrá.
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud jste problém nezjistili nebo se vám nedaří problém vyřešit, navštivte jeden z následujících kanálů, kde najdete další podporu:
+Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
 
-* Získejte odpovědi od odborníků na Azure prostřednictvím [podpory Azure Community Support](https://azure.microsoft.com/support/community/).
+* Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
 
-* Spojte [@AzureSupport](https://twitter.com/azuresupport) se s oficiálním účtem Microsoft Azure pro zlepšení zákaznického prostředí. Propojení komunity Azure se správnými prostředky: odpovědi, podpora a odborníci.
+* Připojte se [@AzureSupport](https://twitter.com/azuresupport) k oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
 
-* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [webu Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Na řádku nabídek vyberte **Podpora** nebo otevřete centrum **Nápověda + podpora.** Podrobnější informace najděte v části [Jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Přístup ke správě předplatného a fakturační podpoře je součástí vašeho předplatného Microsoft Azure a technická podpora se poskytuje prostřednictvím jednoho z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).
+* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

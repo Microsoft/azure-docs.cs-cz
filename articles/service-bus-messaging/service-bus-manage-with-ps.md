@@ -1,6 +1,6 @@
 ---
-title: Použití PowerShellu ke správě prostředků Azure Service Bus | Dokumenty společnosti Microsoft
-description: Tento článek vysvětluje, jak pomocí modulu Azure PowerShell vytvořit a spravovat entity Service Bus (obory názvů, fronty, témata, předplatná).
+title: Použití PowerShellu ke správě Azure Service Busch prostředků | Microsoft Docs
+description: Tento článek vysvětluje, jak používat modul Azure PowerShell k vytváření a správě entit Service Bus (obory názvů, fronty, témata, odběry).
 services: service-bus-messaging
 documentationcenter: .NET
 author: axisc
@@ -15,17 +15,17 @@ ms.workload: na
 ms.date: 01/24/2020
 ms.author: aschhab
 ms.openlocfilehash: e333dfb109840538fd5dec8110e1c32adedce989
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76759257"
 ---
-# <a name="use-powershell-to-manage-service-bus-resources"></a>Správa prostředků service bus pomocí prostředí PowerShell
+# <a name="use-powershell-to-manage-service-bus-resources"></a>Použití PowerShellu ke správě Service Busch prostředků
 
-Microsoft Azure PowerShell je skriptovací prostředí, které můžete použít k řízení a automatizaci nasazení a správy služeb Azure. Tento článek popisuje, jak pomocí [modulu PowerShell Service Bus Resource Manager](/powershell/module/az.servicebus) zřídit a spravovat entity Service Bus (obory názvů, fronty, témata a odběry) pomocí místní konzoly nebo skriptu Azure PowerShellu.
+Microsoft Azure PowerShell je skriptovací prostředí, které můžete použít k řízení a automatizaci nasazení a správy služeb Azure. Tento článek popisuje, jak pomocí [modulu Service Bus správce prostředků PowerShellu](/powershell/module/az.servicebus) zřídit a spravovat Service Bus entit (obory názvů, fronty, témata a odběry) pomocí místní konzoly nebo skriptu pro Azure PowerShell.
 
-Můžete také spravovat entity Service Bus pomocí šablon Azure Resource Manager. Další informace najdete v článku [Vytvoření prostředků service bus pomocí šablon Azure Resource Manager](service-bus-resource-manager-overview.md).
+Service Bus entit můžete také spravovat pomocí šablon Azure Resource Manager. Další informace najdete v článku [vytvoření Service Busch prostředků pomocí šablon Azure Resource Manager](service-bus-resource-manager-overview.md).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -33,31 +33,31 @@ Můžete také spravovat entity Service Bus pomocí šablon Azure Resource Manag
 
 Než začnete, budete potřebovat následující požadavky:
 
-* Předplatné Azure. Další informace o získání předplatného naleznete v [tématu možnosti nákupu][purchase options], [nabídky členů][member offers]nebo [bezplatný účet][free account].
-* Počítač s Azure PowerShellem. Pokyny najdete [v tématu Začínáme s rutinami Prostředí Azure PowerShell](/powershell/azure/get-started-azureps).
-* Obecné pochopení skriptů prostředí PowerShell, balíčků NuGet a rozhraní .NET Framework.
+* Předplatné Azure. Další informace o získání předplatného najdete v tématu [možnosti nákupu][purchase options], [nabídky členů][member offers]nebo [bezplatný účet][free account].
+* Počítač se Azure PowerShell. Pokyny najdete v tématu [Začínáme s rutinami Azure PowerShell](/powershell/azure/get-started-azureps).
+* Obecné porozumění skriptům PowerShellu, balíčkům NuGet a .NET Framework.
 
 ## <a name="get-started"></a>Začínáme
 
-Prvním krokem je použití PowerShellu k přihlášení k účtu Azure a předplatnému Azure. Podle pokynů v [části Začínáme s rutinami Azure PowerShellu,](/powershell/azure/get-started-azureps) přihlaste se ke svému účtu Azure a načtěte a získejte přístup k prostředkům ve vašem předplatném Azure.
+Prvním krokem je použití PowerShellu pro přihlášení k účtu Azure a předplatnému Azure. Podle pokynů v tématu [Začínáme s rutinami Azure PowerShell](/powershell/azure/get-started-azureps) se přihlaste ke svému účtu Azure a načtěte a získejte přístup k prostředkům ve vašem předplatném Azure.
 
-## <a name="provision-a-service-bus-namespace"></a>Zřízení oboru názvů service bus
+## <a name="provision-a-service-bus-namespace"></a>Zřízení Service Busového oboru názvů
 
-Při práci s obory názvů service bus můžete použít rutiny [Get-AzServiceBusNamespace](/powershell/module/az.servicebus/get-azservicebusnamespace), [New-AzServiceBusNamespace](/powershell/module/az.servicebus/new-azservicebusnamespace), [Remove-AzServiceBusNamespace](/powershell/module/az.servicebus/remove-azservicebusnamespace)a [Set-AzServiceBusNamespace.](/powershell/module/az.servicebus/set-azservicebusnamespace)
+Při práci s oborem názvů Service Bus můžete použít rutiny [Get-AzServiceBusNamespace](/powershell/module/az.servicebus/get-azservicebusnamespace), [New-AzServiceBusNamespace](/powershell/module/az.servicebus/new-azservicebusnamespace), [Remove-AzServiceBusNamespace](/powershell/module/az.servicebus/remove-azservicebusnamespace)a [set-AzServiceBusNamespace](/powershell/module/az.servicebus/set-azservicebusnamespace) .
 
-Tento příklad vytvoří několik místních proměnných ve skriptu; `$Namespace` a `$Location`.
+Tento příklad vytvoří ve skriptu několik místních proměnných. `$Namespace` a `$Location`.
 
 * `$Namespace`je název oboru názvů Service Bus, se kterým chceme pracovat.
-* `$Location`identifikuje datové centrum, ve kterém zřídíme obor názvů.
-* `$CurrentNamespace`ukládá referenční obor názvů, který načteme (nebo vytvoříme).
+* `$Location`Určuje datové centrum, ve kterém zřizujeme obor názvů.
+* `$CurrentNamespace`ukládá referenční obor názvů, který načteme (nebo vytvoříte).
 
-Ve skutečném `$Namespace` skriptu a `$Location` mohou být předány jako parametry.
+Ve vlastním skriptu `$Namespace` a `$Location` lze předat jako parametry.
 
-Tato část skriptu provádí následující:
+Tato část skriptu provede následující akce:
 
-1. Pokusí se načíst obor názvů service bus se zadaným názvem.
-2. Pokud je nalezen obor názvů, hlásí, co bylo nalezeno.
-3. Pokud obor názvů nebyl nalezen, vytvoří obor názvů a potom načte nově vytvořený obor názvů.
+1. Pokusí se načíst obor názvů Service Bus se zadaným názvem.
+2. Pokud je obor názvů nalezen, oznamuje, co byl nalezen.
+3. Pokud obor názvů nebyl nalezen, vytvoří obor názvů a následně načte nově vytvořený obor názvů.
    
     ``` powershell
     # Query to see if the namespace currently exists
@@ -81,9 +81,9 @@ Tato část skriptu provádí následující:
     }
     ```
 
-### <a name="create-a-namespace-authorization-rule"></a>Vytvoření pravidla autorizace oboru názvů
+### <a name="create-a-namespace-authorization-rule"></a>Vytvoření autorizačního pravidla oboru názvů
 
-Následující příklad ukazuje, jak spravovat pravidla autorizace oboru názvů pomocí rutin [New-AzServiceBusAuthorizationRule](/powershell/module/az.servicebus/new-azservicebusauthorizationrule), [Get-AzServiceBusAuthorizationRule](/powershell/module/az.servicebus/get-azservicebusauthorizationrule), [Set-AzServiceBusAuthorizationRule](/powershell/module/az.servicebus/set-azservicebusauthorizationrule)a [Remove-AzServiceBusAuthorizationRule.](/powershell/module/az.servicebus/remove-azservicebusauthorizationrule)
+Následující příklad ukazuje, jak spravovat autorizační pravidla oboru názvů pomocí rutin [New-AzServiceBusAuthorizationRule](/powershell/module/az.servicebus/new-azservicebusauthorizationrule), [Get-AzServiceBusAuthorizationRule](/powershell/module/az.servicebus/get-azservicebusauthorizationrule), [set-AzServiceBusAuthorizationRule](/powershell/module/az.servicebus/set-azservicebusauthorizationrule)a [Remove-AzServiceBusAuthorizationRule](/powershell/module/az.servicebus/remove-azservicebusauthorizationrule) .
 
 ```powershell
 # Query to see if rule exists
@@ -125,7 +125,7 @@ else
 
 ## <a name="create-a-queue"></a>Vytvoření fronty
 
-Chcete-li vytvořit frontu nebo téma, proveďte kontrolu oboru názvů pomocí skriptu v předchozí části. Potom vytvořte frontu:
+Chcete-li vytvořit frontu nebo téma, proveďte kontrolu oboru názvů pomocí skriptu v předchozí části. Pak vytvořte frontu:
 
 ```powershell
 # Check if queue already exists
@@ -145,9 +145,9 @@ else
 }
 ```
 
-### <a name="modify-queue-properties"></a>Úprava vlastností fronty
+### <a name="modify-queue-properties"></a>Upravit vlastnosti fronty
 
-Po spuštění skriptu v předchozí části můžete pomocí rutiny [Set-AzServiceBusQueue](/powershell/module/az.servicebus/set-azservicebusqueue) aktualizovat vlastnosti fronty, jako v následujícím příkladu:
+Po spuštění skriptu v předchozí části můžete pomocí rutiny [set-AzServiceBusQueue](/powershell/module/az.servicebus/set-azservicebusqueue) aktualizovat vlastnosti fronty, jak je znázorněno v následujícím příkladu:
 
 ```powershell
 $CurrentQ.DeadLetteringOnMessageExpiration = $True
@@ -158,21 +158,21 @@ $CurrentQ.EnableExpress = $True
 Set-AzServiceBusQueue -ResourceGroup $ResGrpName -NamespaceName $Namespace -QueueName $QueueName -QueueObj $CurrentQ
 ```
 
-## <a name="provisioning-other-service-bus-entities"></a>Zřizování dalších entit service bus
+## <a name="provisioning-other-service-bus-entities"></a>Zřizování dalších entit Service Bus
 
-[Modul PowerShell service bus](/powershell/module/az.servicebus) můžete použít ke zřízení jiných entit, jako jsou témata a odběry. Tyto rutiny jsou syntakticky podobné rutinám vytváření front, které byly demonstrovány v předchozí části.
+K zřizování jiných entit, jako jsou témata a předplatná, můžete použít [modul Service Bus PowerShell](/powershell/module/az.servicebus) . Tyto rutiny jsou syntakticky podobné rutinám vytváření fronty, které jsou znázorněné v předchozí části.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Kompletní dokumentaci modulu powershellu Service Bus Resource Manager [naleznete zde](/powershell/module/az.servicebus). Na této stránce jsou uvedeny všechny dostupné rutiny.
-- Informace o používání šablon Azure Resource Manageru najdete v článku [Vytvoření prostředků služby Service Bus pomocí šablon Azure Resource Manager](service-bus-resource-manager-overview.md).
-- Informace o [knihovnách správy service bus .NET](service-bus-management-libraries.md).
+- Další [informace najdete v](/powershell/module/az.servicebus)dokumentaci k modulu PowerShellu pro Service Bus správce prostředků. Tato stránka obsahuje seznam všech dostupných rutin.
+- Informace o používání šablon Azure Resource Manager najdete v článku [vytvoření prostředků Service Bus pomocí Azure Resource Managerch šablon](service-bus-resource-manager-overview.md).
+- Informace o [Service Bus knihovny pro správu .NET](service-bus-management-libraries.md).
 
-Existují některé alternativní způsoby správy entit Service Bus, jak je popsáno v těchto příspěvcích blogu:
+Existuje několik alternativních způsobů, jak spravovat Service Bus entit, jak je popsáno v těchto blogových příspěvcích:
 
-* [Jak vytvořit fronty, témata a odběry služby Service Bus pomocí skriptu PowerShellu](https://blogs.msdn.com/b/paolos/archive/2014/12/02/how-to-create-a-service-bus-queues-topics-and-subscriptions-using-a-powershell-script.aspx)
-* [Jak vytvořit obor názvů service bus a centrum událostí pomocí skriptu Prostředí PowerShell](https://blogs.msdn.com/b/paolos/archive/2014/12/01/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script.aspx)
-* [Skripty prostředí PowerShell service bus](https://code.msdn.microsoft.com/Service-Bus-PowerShell-a46b7059)
+* [Postup vytvoření Service Bus front, témat a odběrů pomocí skriptu PowerShellu](https://blogs.msdn.com/b/paolos/archive/2014/12/02/how-to-create-a-service-bus-queues-topics-and-subscriptions-using-a-powershell-script.aspx)
+* [Postup vytvoření oboru názvů Service Bus a centra událostí pomocí skriptu PowerShellu](https://blogs.msdn.com/b/paolos/archive/2014/12/01/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script.aspx)
+* [Service Bus skripty PowerShellu](https://code.msdn.microsoft.com/Service-Bus-PowerShell-a46b7059)
 
 <!--Anchors-->
 

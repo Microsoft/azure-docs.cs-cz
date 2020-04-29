@@ -1,6 +1,6 @@
 ---
-title: Vytváření funkcí pro data v clusteru Azure HDInsight Hadoop – proces vědecké analýzy týmových dat
-description: Příklady dotazů Hive, které generují funkce v datech uložených v clusteru Azure HDInsight Hadoop.
+title: Vytváření funkcí pro data v Azure HDInsight Hadoop clusteru – vědecký proces týmových dat
+description: Příklady dotazů na podregistr, které generují funkce v datech uložených v clusteru Azure HDInsight Hadoop.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,40 +12,40 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: c926aac3ea4360793ff52b616a55dc6198357c8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76721774"
 ---
-# <a name="create-features-for-data-in-a-hadoop-cluster-using-hive-queries"></a>Vytváření funkcí pro data v clusteru Hadoop pomocí dotazů Hive
-Tento dokument ukazuje, jak vytvořit funkce pro data uložená v clusteru Azure HDInsight Hadoop pomocí dotazů Hive. Tyto dotazy Hive používají vložené hive uživatelem definované funkce (UDFs), skripty, pro které jsou k dispozici.
+# <a name="create-features-for-data-in-a-hadoop-cluster-using-hive-queries"></a>Vytváření funkcí pro data v clusteru Hadoop pomocí dotazů na podregistry
+V tomto dokumentu se dozvíte, jak vytvářet funkce pro data uložená v clusteru Azure HDInsight Hadoop pomocí dotazů na podregistry. Tyto dotazy na podregistr používají vložené uživatelem definované funkce (UDF) v podregistru, které jsou k dispozici.
 
-Operace potřebné k vytvoření funkcí mohou být náročné na paměť. Výkon dotazů Hive se v takových případech stává kritičtějším a lze jej zlepšit laděním určitých parametrů. Ladění těchto parametrů je popsáno v poslední části.
+Operace potřebné k vytvoření funkcí můžou být náročné na paměť. Výkon dotazů na podregistr v takových případech bude v takovém případě méně důležitý a lze ho zlepšit optimalizací určitých parametrů. Ladění těchto parametrů je popsáno v poslední části.
 
-Příklady dotazů, které jsou prezentovány, jsou specifické pro scénáře [NYC Taxi Trip Data](https://chriswhong.com/open-data/foil_nyc_taxi/) jsou také k dispozici v [úložišti GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts). Tyto dotazy již mají schéma dat zadané a jsou připraveny ke spuštění. V poslední části jsou také popsány parametry, které mohou uživatelé vyladit tak, aby bylo možné zlepšit výkon dotazů Hive.
+Příklady dotazů, které jsou prezentované, jsou uvedené v [úložišti GitHubu](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts)taky v rámci scénářů [NYC taxislužby Trip data](https://chriswhong.com/open-data/foil_nyc_taxi/) . Tyto dotazy již mají zadané schéma dat a jsou připraveny k odeslání ke spuštění. V poslední části jsou popsány také parametry, které mohou uživatelé ladit, aby bylo možné zlepšit výkon dotazů na podregistry.
 
-Tento úkol je krokem v [procesu vědecké vědy o týmových datech (TDSP).](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)
+Tento úkol je krok v rámci [vědeckého zpracování týmových dat (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
 
 ## <a name="prerequisites"></a>Požadavky
-Tento článek předpokládá, že máte:
+V tomto článku se předpokládá, že máte následující:
 
-* Vytvořil účet úložiště Azure. Pokud potřebujete pokyny, přečtěte [si tématy Vytvoření účtu Azure Storage.](../../storage/common/storage-account-create.md)
-* Zřídit vlastní cluster Hadoop se službou HDInsight.  Pokud potřebujete pokyny, [přečtěte si informace o přizpůsobení clusterů Azure HDInsight Hadoop pro pokročilou analýzu](customize-hadoop-cluster.md).
-* Data byla nahrána do tabulek Hive v clusterech Azure HDInsight Hadoop. Pokud tomu tak není, postupujte [podle vytvořit a načíst data do tabulek Hive](move-hive-tables.md) nahrát data do tabulek Hive jako první.
-* Povolený vzdálený přístup ke clusteru. Pokud potřebujete pokyny, přečtěte si [část Přístup k hlavnímu uzlu clusteru Hadoop](customize-hadoop-cluster.md).
+* Vytvořili jste účet úložiště Azure. Pokud potřebujete pokyny, přečtěte si téma [Vytvoření účtu Azure Storage](../../storage/common/storage-account-create.md) .
+* Byl zřízen přizpůsobený cluster Hadoop se službou HDInsight.  Pokud potřebujete pokyny, přečtěte si téma [přizpůsobení Azure HDInsight Hadoop clusterů pro pokročilou analýzu](customize-hadoop-cluster.md).
+* Data byla nahrána do tabulek podregistru v clusterech Azure HDInsight Hadoop. Pokud tomu tak není, dodržujte nejprve [tabulka vytvořit a načíst data do tabulek podregistru](move-hive-tables.md) a nahrajte data do tabulek podregistru.
+* Povolen vzdálený přístup ke clusteru. Pokud potřebujete pokyny, přečtěte si téma [přístup k hlavnímu uzlu clusteru Hadoop](customize-hadoop-cluster.md).
 
-## <a name="feature-generation"></a><a name="hive-featureengineering"></a>Generování funkcí
-V této části je popsáno několik příkladů způsobů, jakými mohou být funkce generovány pomocí dotazů Hive. Jakmile vygenerujete další funkce, můžete je buď přidat jako sloupce do existující tabulky, nebo vytvořit novou tabulku s dalšími funkcemi a primárním klíčem, které lze pak spojit s původní tabulkou. Zde jsou uvedeny příklady:
+## <a name="feature-generation"></a><a name="hive-featureengineering"></a>Generace funkcí
+V této části jsou popsány několik příkladů způsobů, jak lze vygenerovat funkce pomocí dotazů na podregistr. Jakmile vygenerujete další funkce, můžete je buď přidat jako sloupce do existující tabulky, nebo vytvořit novou tabulku s dalšími funkcemi a primárními klíči, které pak můžete propojit s původní tabulkou. Zde jsou uvedeny příklady:
 
-1. [Generování funkcí založených na frekvenci](#hive-frequencyfeature)
-2. [Rizika kategorických proměnných v binární klasifikaci](#hive-riskfeature)
-3. [Extrahování prvků z pole Datetime](#hive-datefeatures)
-4. [Extrahování prvků z textového pole](#hive-textfeatures)
-5. [Výpočet vzdálenosti mezi souřadnicemi GPS](#hive-gpsdistance)
+1. [Generování funkcí založených na četnosti](#hive-frequencyfeature)
+2. [Rizika proměnných kategorií v binární klasifikaci](#hive-riskfeature)
+3. [Extrahovat funkce z pole DateTime](#hive-datefeatures)
+4. [Extrahovat funkce z textového pole](#hive-textfeatures)
+5. [Vypočítat vzdálenost mezi souřadnicemi GPS](#hive-gpsdistance)
 
-### <a name="frequency-based-feature-generation"></a><a name="hive-frequencyfeature"></a>Generování funkcí založených na frekvenci
-Často je užitečné vypočítat frekvence úrovní kategorické proměnné nebo frekvence určitých kombinací úrovní z více kategorických proměnných. Uživatelé mohou k výpočtu těchto frekvencí použít následující skript:
+### <a name="frequency-based-feature-generation"></a><a name="hive-frequencyfeature"></a>Generování funkcí založených na četnosti
+Často je vhodné vypočítat frekvence úrovní kategorií proměnné nebo frekvence určitých kombinací úrovní od více proměnných kategorií. Uživatelé mohou pomocí následujícího skriptu vypočítat tyto frekvence:
 
         select
             a.<column_name1>, a.<column_name2>, a.sub_count/sum(a.sub_count) over () as frequency
@@ -58,8 +58,8 @@ V této části je popsáno několik příkladů způsobů, jakými mohou být f
         order by frequency desc;
 
 
-### <a name="risks-of-categorical-variables-in-binary-classification"></a><a name="hive-riskfeature"></a>Rizika kategorických proměnných v binární klasifikaci
-V binární klasifikaci musí být nečíselné kategorické proměnné převedeny na číselné funkce, pokud používané modely přebírají pouze číselné funkce. Tento převod se provádí nahrazením každé nečíselné úrovně číselným rizikem. Tato část zobrazuje některé obecné dotazy Hive, které vypočítávají rizikové hodnoty (kurzy protokolu) kategorické proměnné.
+### <a name="risks-of-categorical-variables-in-binary-classification"></a><a name="hive-riskfeature"></a>Rizika proměnných kategorií v binární klasifikaci
+V binární klasifikaci musí být nečíselné proměnné kategorií převedeny na číselné funkce, pokud používané modely berou pouze numerické funkce. Tento převod se provádí nahrazením každé jiné než číselné úrovně číslem rizika. Tato část obsahuje některé obecné dotazy na podregistry, které počítají hodnoty rizik (log lichá) proměnné kategorií.
 
         set smooth_param1=1;
         set smooth_param2=20;
@@ -79,40 +79,40 @@ V binární klasifikaci musí být nečíselné kategorické proměnné převede
             group by <column_name1>, <column_name2>
             )b
 
-V tomto příkladu `smooth_param1` `smooth_param2` proměnné a jsou nastaveny na vyhlazení hodnoty rizika vypočtené z dat. Rizika mají rozsah mezi -Inf a Inf. Riziko > 0 označuje, že pravděpodobnost, že cíl se rovná 1 je větší než 0,5.
+V tomto příkladu jsou proměnné `smooth_param1` a `smooth_param2` nastavené na vyhlazení rizikových hodnot vypočítaných z dat. Rizika mají rozsah mezi-inf a inf. Riziková > 0 značí, že pravděpodobnost, že je cíl roven 1, je větší než 0,5.
 
-Po výpočtu tabulky rizik mohou uživatelé přiřadit hodnotám rizik k tabulce spojením s tabulkou rizik. Dotaz spojení Hive byl uveden v předchozí části.
+Po vypočítání tabulky rizik můžou uživatelé k tabulce přiřadit rizikové hodnoty tím, že se spojí s tabulkou rizik. Dotaz, který se připojuje k podregistru, byl uveden v předchozí části.
 
-### <a name="extract-features-from-datetime-fields"></a><a name="hive-datefeatures"></a>Extrahování prvků z polí datetime
-Hive je dodáván se sadou UDFpro zpracování datetime pole. V Hive je výchozí formát datetime 'yyyy-MM-dd 00:00:00' ('1970-01-01 12:21:32' například). Tato část ukazuje příklady, které extrahují den v měsíci, měsíc z pole datetime a další příklady, které převádějí řetězec datetime ve formátu jiném než ve výchozím formátu na řetězec datetime ve výchozím formátu.
+### <a name="extract-features-from-datetime-fields"></a><a name="hive-datefeatures"></a>Extrahovat funkce z polí DateTime
+Podregistr se dodává se sadou UDF pro zpracování polí DateTime. V podregistru je výchozí formát data a času "yyyy-MM-DD 00:00:00" (například "1970-01-01 12:21:32"). V této části jsou uvedeny příklady, které extrahují den v měsíci, měsíc z pole DateTime a další příklady, které převádějí řetězec DateTime v jiném formátu než výchozí formát na řetězec DateTime ve výchozím formátu.
 
         select day(<datetime field>), month(<datetime field>)
         from <databasename>.<tablename>;
 
-Tento dotaz Hive předpokládá, že * \<pole datetime>* je ve výchozím formátu datetime.
+Tento dotaz na * \<* podregistr předpokládá, že se pole DateTime>ve výchozím formátu data a času.
 
-Pokud pole datetime není ve výchozím formátu, je třeba nejprve převést časové razítko datetime na časové razítko Unixu a poté převést časové razítko Unixu na řetězec datetime, který je ve výchozím formátu. Pokud datetime je ve výchozím formátu, uživatelé mohou použít vložené datetime UDFs extrahovat funkce.
+Pokud pole DateTime není ve výchozím formátu, je třeba nejprve převést pole DateTime na časové razítko systému UNIX a pak převést časové razítko systému UNIX na řetězec DateTime, který je ve výchozím formátu. Pokud je hodnota DateTime ve výchozím formátu, uživatelé mohou použít vložené hodnoty DateTime UDF k extrakci funkcí.
 
         select from_unixtime(unix_timestamp(<datetime field>,'<pattern of the datetime field>'))
         from <databasename>.<tablename>;
 
-V `'MM/dd/yyyy HH:mm:ss'`tomto dotazu * \<* pokud datumčasové pole>má vzor jako *03/26/2015 12:04:39*, * \<vzor pole datetime>'* by měl být . Chcete-li jej otestovat, mohou uživatelé
+V tomto dotazu, pokud * \<>pole DateTime* má vzor, jako je *03/26/2015 12:04:39*, by měl být `'MM/dd/yyyy HH:mm:ss'` * \<vzor pole DateTime>* . K otestování můžou uživatelé spustit
 
         select from_unixtime(unix_timestamp('05/15/2015 09:32:10','MM/dd/yyyy HH:mm:ss'))
         from hivesampletable limit 1;
 
-*Podkovené tabulky* v tomto dotazu je předinstalován na všech clusterech Azure HDInsight Hadoop ve výchozím nastavení při clustery jsou zřízeny.
+*Hivesampletable* v tomto dotazu se ve výchozím nastavení při zřizování clusterů předinstaluje do všech Azure HDInsight Hadoop clusterů.
 
-### <a name="extract-features-from-text-fields"></a><a name="hive-textfeatures"></a>Extrahování prvků z textových polí
-Pokud má tabulka Hive textové pole, které obsahuje řetězec slov, která jsou oddělena mezerami, následující dotaz extrahuje délku řetězce a počet slov v řetězci.
+### <a name="extract-features-from-text-fields"></a><a name="hive-textfeatures"></a>Extrakce funkcí z textových polí
+Pokud má tabulka podregistru textové pole obsahující řetězec slov, který je oddělen mezerami, následující dotaz vyextrahuje délku řetězce a počet slov v řetězci.
 
         select length(<text field>) as str_len, size(split(<text field>,' ')) as word_num
         from <databasename>.<tablename>;
 
-### <a name="calculate-distances-between-sets-of-gps-coordinates"></a><a name="hive-gpsdistance"></a>Výpočet vzdáleností mezi sadami souřadnic GPS
-Dotaz uvedený v této části lze použít přímo na NYC Taxi Data. Účelem tohoto dotazu je ukázat, jak použít vložené matematické funkce v Hive generovat funkce.
+### <a name="calculate-distances-between-sets-of-gps-coordinates"></a><a name="hive-gpsdistance"></a>Vypočítat vzdálenosti mezi sadami souřadnic GPS
+Dotaz uvedený v této části se dá přímo použít pro data NYC taxislužby na cestách. Účelem tohoto dotazu je Ukázat, jak použít vloženou matematickou funkci v podregistru pro generování funkcí.
 
-Pole, která se používají v tomto dotazu, jsou GPS souřadnice míst vyzvednutí a odtažení, s názvem *délka\_vyzvednutí*, *šířka vyzvednutí\_*, zeměpisná *délka dropoff\_* a *zeměpisná šířka vysazení\_*. Dotazy, které počítají přímou vzdálenost mezi souřadnicemi vyzvednutí a předání, jsou:
+Pole, která se používají v tomto dotazu, jsou souřadnicemi GPS pro vyzvednutí a dropoff, *s\_názvem výstupní Zeměpisná délka*, *\_vyzvednutí zeměpisné šířky*, *dropoff\_Zeměpisná délka*a *dropoff\_Zeměpisná šířka*. Dotazy, které počítají přímou vzdálenost mezi vyzvednutím a dropoff souřadnicemi, jsou:
 
         set R=3959;
         set pi=radians(180);
@@ -130,44 +130,44 @@ Pole, která se používají v tomto dotazu, jsou GPS souřadnice míst vyzvednu
         and dropoff_latitude between 30 and 90
         limit 10;
 
-Matematické rovnice, které počítají vzdálenost mezi dvěma GPS souřadnicemi lze nalézt na <a href="http://www.movable-type.co.uk/scripts/latlong.html" target="_blank">movité typ skripty</a> stránky, jehož autorem Je Peter Lapisu. V tomto Javascriptu `toRad()` je funkce jen *lat_or_lon*pi/180, která převádí stupně na radiány. Zde *je lat_or_lon* zeměpisná šířka nebo délka. Vzhledem k tomu, `atan2`že Hive `atan`neposkytuje `atan2` funkci , `atan` ale poskytuje funkci , je funkce implementována funkcí ve výše uvedeném dotazu Hive pomocí definice uvedené ve <a href="https://en.wikipedia.org/wiki/Atan2" target="_blank">Wikipedii</a>.
+Matematické rovnice, které vypočítávají vzdálenost mezi dvěma souřadnicemi GPS, najdete na webu <a href="http://www.movable-type.co.uk/scripts/latlong.html" target="_blank">typu Pohyblivý text</a> , který vytvořil Petr lapisu. V tomto JavaScriptu je funkce `toRad()` jenom *lat_or_lon*PI/180, která převede stupně na radiány. Zde je *lat_or_lon* Zeměpisná šířka a délka. Vzhledem k tomu, že podregistr funkci `atan2`neposkytuje, ale poskytuje `atan`funkci, `atan2` je funkce implementovaná `atan` funkcí ve výše uvedeném dotazu na podregistr pomocí definice poskytované v <a href="https://en.wikipedia.org/wiki/Atan2" target="_blank">Wikipedii</a>.
 
 ![Vytvoření pracovního prostoru](./media/create-features-hive/atan2new.png)
 
-Úplný seznam integrovaných UDv úlu najdete v sekci **Vestavěné funkce** na <a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-MathematicalFunctions" target="_blank">wiki Apache Hive</a>).  
+Úplný seznam integrovaných UDF podregistru najdete v části **předdefinované funkce** na <a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-MathematicalFunctions" target="_blank">wikiwebu Apache Hive</a>.  
 
-## <a name="advanced-topics-tune-hive-parameters-to-improve-query-speed"></a><a name="tuning"></a>Pokročilá témata: Optimalizace parametrů Hive pro zlepšení rychlosti dotazu
-Výchozí nastavení parametrů clusteru Hive nemusí být vhodné pro dotazy Hive a data, která dotazy zpracovávají. Tato část popisuje některé parametry, které mohou uživatelé vyladit ke zlepšení výkonu dotazů Hive. Uživatelé musí přidat dotazy optimalizace parametrů před dotazy zpracování dat.
+## <a name="advanced-topics-tune-hive-parameters-to-improve-query-speed"></a><a name="tuning"></a>Pokročilá témata: ladění parametrů podregistru za účelem zlepšení rychlosti dotazů
+Výchozí nastavení parametrů clusteru podregistru nemusí být vhodné pro dotazy na podregistr a data, která jsou zpracovávána dotazy. V této části jsou popsány některé parametry, které mohou uživatelé ladit pro zlepšení výkonu dotazů na podregistry. Uživatelé musí před dotazy na zpracování dat přidat dotazy ladění parametrů.
 
-1. **Java haldy prostor**: Pro dotazy zahrnující spojování velkých datových sad nebo zpracování dlouhých záznamů, **vyčerpání místa haldy** je jednou z běžných chyb. Této chybě se lze vyhnout nastavením parametrů *mapreduce.map.java.opts* a *mapreduce.task.io.sort.mb* na požadované hodnoty. Zde naleznete příklad:
+1. **Místo haldy jazyka Java**: u dotazů, které zahrnují spojování velkých datových sad nebo zpracování dlouhých záznamů, je **nedostatek prostoru haldy** jednou ze běžných chyb. Tato chyba se může vyhnout nastavením parametrů *MapReduce. map. Java. výslovný* a *MapReduce. Task. IO. Sort. MB* na požadované hodnoty. Zde naleznete příklad:
    
         set mapreduce.map.java.opts=-Xmx4096m;
         set mapreduce.task.io.sort.mb=-Xmx1024m;
 
-    Tento parametr přiděluje 4 GB paměti do místa haldy Jazyka Java a také umožňuje řazení efektivnější přidělením více paměti pro něj. Je vhodné hrát s těmito přidělení, pokud existují chyby selhání úlohy související s haldy prostoru.
+    Tento parametr přiděluje 4 GB paměti na místo v haldě Java a také umožňuje řazení efektivněji tím, že pro něj přiděluje více paměti. Pokud dojde k chybám při selhání úloh souvisejících s místem v haldě, je vhodné se s těmito alokacemi pohrát.
 
-1. **Velikost bloku DFS**: Tento parametr nastaví nejmenší jednotku dat, kterou systém souborů ukládá. Například pokud je velikost bloku DFS 128 MB, jsou všechna data o velikosti menší než 128 MB uložena v jednom bloku. Data, která je větší než 128 MB je přidělena další bloky. 
-2. Výběr velikosti malého bloku způsobí velké režijní náklady v Hadoopu, protože uzel názvu musí zpracovat mnoho dalších požadavků k nalezení příslušného bloku týkajícího se souboru. Doporučené nastavení při práci s gigabajty (nebo většími) daty je:
+1. **Velikost bloku DFS**: Tento parametr nastavuje nejmenší jednotku dat uložených v systému souborů. Pokud je například velikost bloku DFS 128 MB, uloží se v jednom bloku data o velikosti menší než a až 128 MB. Pro data, která jsou větší než 128 MB, se přiděluje další bloky. 
+2. Volba velikosti malého bloku způsobí velké režijní náklady v Hadoop, protože uzel Name musí zpracovat mnoho dalších požadavků, aby bylo možné najít příslušný blok, který se vztahuje k souboru. Doporučené nastavení při práci s gigabajty (nebo většími) daty:
 
         set dfs.block.size=128m;
 
-2. **Optimalizace operace spojení v Hive**: Zatímco operace spojení v rámci map/reduce se obvykle odehrávají ve fázi snižování, někdy lze dosáhnout obrovských zisků plánováním spojení ve fázi mapy (také nazývané "mapjoins"). Nastavit tuto možnost:
+2. **Optimalizace operace JOIN v podregistru**: zatímco operace JOIN v rozhraní map nebo zmenšení obvykle probíhají ve fázi zmenšení, někdy je možné dosáhnout mimořádných zisků pomocí plánování spojení ve fázi mapy (označované také jako "mapjoins"). Nastavte tuto možnost:
    
        set hive.auto.convert.join=true;
 
-3. **Určení počtu mapovačů na Hive**: Zatímco Hadoop umožňuje uživateli nastavit počet reduktorů, počet mapovačů obvykle není nastaven uživatelem. Trik, který umožňuje určitý stupeň kontroly na toto číslo je zvolit Hadoop proměnné *mapred.min.split.size* a *mapred.max.split.size* jako velikost každého úkolu mapy je určena:
+3. **Určení počtu mapovačů k podregistru**: když Hadoop umožňuje uživateli nastavit počet reduktorů, není obvykle počet mapovačů nastaven uživatelem. Zdvih, který umožňuje určitou míru řízení na tomto čísle, je zvolit proměnné Hadoop *mapred. min. Split. Size* a *mapred. max. Split. Size* , protože velikost jednotlivých mapových úloh je určena:
    
         num_maps = max(mapred.min.split.size, min(mapred.max.split.size, dfs.block.size))
    
-    Výchozí hodnota obvykle:
+    Obvykle výchozí hodnota:
     
-   - *mapred.min.split.size* je 0, velikost
-   - *mapred.max.split.size* je **Long.MAX** a velikost 
-   - *dfs.block.size* je 64 MB.
+   - *mapred. min. Split. Size* je 0, tj.
+   - *mapred. max. Split. Size* je **Long. Max** a to pro 
+   - *DFS. Block. Size* je 64 MB.
 
-     Jak můžeme vidět, vzhledem k velikosti dat, ladění těchto parametrů "nastavením" jim umožňuje vyladit počet mapperů používaných.
+     Jak vidíte, s ohledem na velikost dat, vyladění těchto parametrů pomocí "nastavení" nám umožňuje vyladit počet používaných mapovačů.
 
-4. Zde je několik dalších **pokročilejších možností** pro optimalizaci výkonu Hive. Tyto možnosti umožňují nastavit paměť přidělenou mapování a snížení úkolů a mohou být užitečné při ladění výkonu. Mějte na paměti, že *mapreduce.reduce.memory.mb* nemůže být větší než velikost fyzické paměti každého pracovního uzlu v clusteru Hadoop.
+4. Tady je několik dalších pokročilejších **možností** pro optimalizaci výkonu podregistru. Tyto možnosti umožňují nastavit paměť přidělenou pro mapování a omezení úkolů a můžou být užitečné při vylepšit výkon. Pamatujte, že *MapReduce. zmenšení. Memory. MB* nemůže být větší než velikost fyzické paměti pro každý pracovní uzel v clusteru Hadoop.
    
         set mapreduce.map.memory.mb = 2048;
         set mapreduce.reduce.memory.mb=6144;

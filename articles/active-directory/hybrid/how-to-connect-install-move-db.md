@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 742bc307c90ad58b83b7d4c92f9546b87c163c3b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77019277"
 ---
 # <a name="move-azure-ad-connect-database-from-sql-server-express-to-sql-server"></a>Přesun databáze Azure AD Connect z SQL Serveru Express na SQL Server 
@@ -25,13 +25,13 @@ Tento dokument popisuje, jak přesunout databázi Azure AD Connect z místního 
 ## <a name="about-this-scenario"></a>O tomto scénáři
 Následuje několik stručných informací o tomto scénáři.  V tomto scénáři je na jednom řadiči domény s Windows Serverem 2016 nainstalovaný nástroj Azure AD Connect verze 1.1.819.0.  Pro svou databázi využívá integrovaný SQL Server 2012 Express Edition.  Databáze se přesune na server SQL Server 2017.
 
-![architektura scénářů](media/how-to-connect-install-move-db/move1.png)
+![Architektura scénáře](media/how-to-connect-install-move-db/move1.png)
 
 ## <a name="move-the-azure-ad-connect-database"></a>Přesun databáze Azure AD Connect
 Pomocí následujících kroků přesuňte databázi Azure AD Connect na vzdálený SQL Server.
 
 1. Na serveru Azure AD Connect přejděte do části **Služby** a zastavte službu **Microsoft Azure AD Sync**.
-2. Vyhledejte složku **%ProgramFiles%\Microsoft Azure AD Sync\Data** a zkopírujte soubory **ADSync.mdf** a **ADSync_log.ldf** na vzdálený sql server.
+2. Vyhledejte složku **%ProgramFiles%\Microsoft Azure AD Sync\Data** a zkopírujte soubory **AdSync. mdf** a **ADSync_log. ldf** do vzdáleného SQL Server.
 3. Na serveru Azure AD Connect restartujte službu **Microsoft Azure AD Sync**.
 4. Odinstalujte Azure AD Connect tak, že přejdete do části Ovládací panely > Programy > Programy a funkce.  Vyberte Microsoft Azure AD Connect a v horní části klikněte na Odinstalovat.
 5. Na vzdáleném SQL Serveru otevřete SQL Server Management Studio.
@@ -42,11 +42,11 @@ Pomocí následujících kroků přesuňte databázi Azure AD Connect na vzdále
 8. Po připojení databáze se vraťte na server Azure AD Connect a nainstalujte Azure AD Connect.
 9. Po dokončení instalace MSI se spustí průvodce Azure AD Connect v režimu expresní instalace. Zavřete obrazovku kliknutím na ikonu Ukončit.
    ![Uvítání](./media/how-to-connect-install-move-db/db1.png)
-10. Spusťte nový příkazový řádek nebo novou relaci PowerShellu. Přejděte \<na jednotku složek>\programové soubory\Microsoft Azure AD Connect. Spuštěním příkazu .\AzureADConnect.exe /useexistingdatabase spusťte průvodce Azure AD Connect v režimu instalace Použít stávající databázi.
+10. Spusťte nový příkazový řádek nebo novou relaci PowerShellu. Přejděte do složky \<jednotka> \program files\microsoft Azure AD Connect. Spuštěním příkazu .\AzureADConnect.exe /useexistingdatabase spusťte průvodce Azure AD Connect v režimu instalace Použít stávající databázi.
     ![PowerShell](./media/how-to-connect-install-move-db/db2.png)
 11. Zobrazí se obrazovka Vítá vás Azure AD Connect. Jakmile odsouhlasíte licenční podmínky a oznámení o ochraně osobních údajů, klikněte na **Pokračovat**.
     ![Uvítání](./media/how-to-connect-install-move-db/db3.png)
-12. Na obrazovce **Instalace požadovaných komponent** je povolená možnost **Použít existující SQL Server**. Zadejte název SQL Serveru, který je hostitelem databáze ADSync. Pokud instance stroje SQL použitá k hostování databáze ADSync není na SQL Serveru výchozí instancí, musíte zadat název instance stroje SQL. Dále, pokud není povolené procházení SQL, musíte zadat také číslo portu instance stroje SQL. Například:         
+12. Na obrazovce **Instalace požadovaných komponent** je povolená možnost **Použít existující SQL Server**. Zadejte název SQL Serveru, který je hostitelem databáze ADSync. Pokud instance stroje SQL použitá k hostování databáze ADSync není na SQL Serveru výchozí instancí, musíte zadat název instance stroje SQL. Dále, pokud není povolené procházení SQL, musíte zadat také číslo portu instance stroje SQL. Příklad:         
     ![Uvítání](./media/how-to-connect-install-move-db/db4.png)           
 
 13. Na obrazovce **Připojení ke službě Azure AD** musíte zadat přihlašovací údaje globálního správce vašeho adresáře služby Azure AD. Je vhodné použít účet ve výchozí doméně onmicrosoft.com. Tento účet slouží jenom k vytvoření účtu služby v Azure AD, a po dokončení průvodce se už nepoužívá.
@@ -60,7 +60,7 @@ Pomocí následujících kroků přesuňte databázi Azure AD Connect na vzdále
     ![Uvítání](./media/how-to-connect-install-move-db/db7.png)
  
  
-16. Po zadání přihlašovacích údajů se ikona červeného křížku změní na ikonu zeleného zaškrtnutí. Klikněte na **Další**.
+16. Po zadání přihlašovacích údajů se ikona červeného křížku změní na ikonu zeleného zaškrtnutí. Klikněte na **Další**.
     ![Uvítání](./media/how-to-connect-install-move-db/db8.png)
  
  

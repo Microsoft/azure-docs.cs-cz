@@ -1,30 +1,30 @@
 ---
-title: Svazek sítě Azure Service Fabric- sfctl
-description: Další informace o sfctl, rozhraní příkazového řádku Azure Service Fabric. Obsahuje seznam příkazů pro získání a odstranění objemových prostředků.
+title: Azure Service Fabric CLI – svazek sítě sfctl
+description: Přečtěte si o sfctl rozhraní příkazového řádku Azure Service Fabric. Obsahuje seznam příkazů pro získání a odstranění prostředků svazku.
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 0e5ba1a311bd0480c56ee40edf01fc13ec01664a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76905908"
 ---
 # <a name="sfctl-mesh-volume"></a>sfctl mesh volume
-Získejte a odstraňte prostředky svazku.
+Získat a odstranit prostředky svazku.
 
 ## <a name="commands"></a>Příkazy
 
 |Příkaz|Popis|
 | --- | --- |
-| delete | Odstraní prostředek svazku. |
+| delete | Odstraní prostředek Volume. |
 | list | Zobrazí seznam všech prostředků svazku. |
 | show | Získá prostředek svazku s daným názvem. |
 
-## <a name="sfctl-mesh-volume-delete"></a>sfctl mesh volume delete sfctl mesh volume delete sfctl mesh volume delete sfc
-Odstraní prostředek svazku.
+## <a name="sfctl-mesh-volume-delete"></a>odstranění svazku sfctl
+Odstraní prostředek Volume.
 
 Odstraní prostředek svazku identifikovaný názvem.
 
@@ -32,55 +32,55 @@ Odstraní prostředek svazku identifikovaný názvem.
 
 |Argument|Popis|
 | --- | --- |
-| --name -n [Povinné] | Název svazku. |
+| --Name-n [povinné] | Název svazku. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --ladění | Zvyšte podrobnost protokolování, chcete-li zobrazit všechny protokoly ladění. |
-| --pomoc -h | Zobrazit tuto zprávu nápovědy a ukončete ji. |
-| --výstup -o | Výstupní formát.  Povolené\: hodnoty json, jsonc, tabulka, tsv.  Výchozí\: json. |
-| --dotaz | Řetězec dotazu JMESPath. Další\:informace a příklady naleznete na adrese http //jmespath.org/. |
-| --verbose | Zvyšte podrobnost protokolování. Použijte --debug pro úplné protokoly ladění. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
-## <a name="sfctl-mesh-volume-list"></a>seznam svazků sítě sfctl
+## <a name="sfctl-mesh-volume-list"></a>seznam svazků sfctl
 Zobrazí seznam všech prostředků svazku.
 
-Získá informace o všech prostředků svazku v dané skupině prostředků. Informace zahrnují popis a další vlastnosti svazku.
+Načte informace o všech svazcích prostředků v dané skupině prostředků. Tyto informace zahrnují popis a další vlastnosti svazku.
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --ladění | Zvyšte podrobnost protokolování, chcete-li zobrazit všechny protokoly ladění. |
-| --pomoc -h | Zobrazit tuto zprávu nápovědy a ukončete ji. |
-| --výstup -o | Výstupní formát.  Povolené\: hodnoty json, jsonc, tabulka, tsv.  Výchozí\: json. |
-| --dotaz | Řetězec dotazu JMESPath. Další\:informace a příklady naleznete na adrese http //jmespath.org/. |
-| --verbose | Zvyšte podrobnost protokolování. Použijte --debug pro úplné protokoly ladění. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
-## <a name="sfctl-mesh-volume-show"></a>sfctl mřížka objem show
+## <a name="sfctl-mesh-volume-show"></a>sfctl velikosti zobrazení svazků
 Získá prostředek svazku s daným názvem.
 
-Získá informace o prostředek svazku s daným názvem. Informace zahrnují popis a další vlastnosti svazku.
+Načte informace o prostředku svazku s daným názvem. Tyto informace zahrnují popis a další vlastnosti svazku.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --name -n [Povinné] | Název svazku. |
+| --Name-n [povinné] | Název svazku. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --ladění | Zvyšte podrobnost protokolování, chcete-li zobrazit všechny protokoly ladění. |
-| --pomoc -h | Zobrazit tuto zprávu nápovědy a ukončete ji. |
-| --výstup -o | Výstupní formát.  Povolené\: hodnoty json, jsonc, tabulka, tsv.  Výchozí\: json. |
-| --dotaz | Řetězec dotazu JMESPath. Další\:informace a příklady naleznete na adrese http //jmespath.org/. |
-| --verbose | Zvyšte podrobnost protokolování. Použijte --debug pro úplné protokoly ladění. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
 
 ## <a name="next-steps"></a>Další kroky
-- [Nastavte](service-fabric-cli.md) cli service fabric.
-- Naučte se používat funkce CLI service fabric pomocí [ukázkových skriptů](/azure/service-fabric/scripts/sfctl-upgrade-application).
+- [Nastavte](service-fabric-cli.md) Service Fabric CLI.
+- Naučte se používat rozhraní příkazového řádku Service Fabric s použitím [ukázkových skriptů](/azure/service-fabric/scripts/sfctl-upgrade-application).

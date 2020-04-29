@@ -1,6 +1,6 @@
 ---
-title: Seznam kontejnerů objektů blob s rozhraním .NET – Azure Storage
-description: Zjistěte, jak vypsat kontejnery objektů blob ve vašem účtu Azure Storage pomocí knihovny klienta .NET.
+title: Výpis kontejnerů objektů BLOB pomocí Azure Storage .NET
+description: Přečtěte si, jak zobrazit seznam kontejnerů objektů BLOB v účtu Azure Storage pomocí klientské knihovny .NET.
 services: storage
 author: tamram
 ms.service: storage
@@ -9,44 +9,44 @@ ms.date: 01/06/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: 155b8f5d50c7b106daff8dab4df17200b844c988
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79135900"
 ---
-# <a name="list-blob-containers-with-net"></a>Seznam kontejnerů objektů blob s rozhraním .NET
+# <a name="list-blob-containers-with-net"></a>Výpis kontejnerů objektů BLOB pomocí .NET
 
-Když zobrazíte seznam kontejnerů v účtu Azure Storage z vašeho kódu, můžete zadat řadu možností, jak spravovat, jak se vrátí výsledky z Azure Storage. Tento článek ukazuje, jak seznam kontejnerů pomocí [knihovny klienta Azure Storage pro .NET](/dotnet/api/overview/azure/storage?view=azure-dotnet).  
+Když vytvoříte seznam kontejnerů v účtu Azure Storage z kódu, můžete zadat několik možností pro správu, jak se výsledky vrátí z Azure Storage. Tento článek ukazuje, jak zobrazit seznam kontejnerů pomocí [klientské knihovny Azure Storage pro .NET](/dotnet/api/overview/azure/storage?view=azure-dotnet).  
 
 ## <a name="understand-container-listing-options"></a>Principy možností výpisu kontejneru
 
-Chcete-li v účtu úložiště uvést kontejnery, zavolejte jednu z následujících metod:
+Pokud chcete zobrazit seznam kontejnerů ve vašem účtu úložiště, zavolejte jednu z následujících metod:
 
 - [ListContainersSegmented](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.listcontainerssegmented)
 - [ListContainersSegmentedAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.listcontainerssegmentedasync)
 
-Přetížení pro tyto metody poskytují další možnosti pro správu, jak kontejnery jsou vráceny operace výpisu. Tyto možnosti jsou popsány v následujících částech.
+Přetížení pro tyto metody poskytují další možnosti pro správu způsobu, jakým operace výpisu vrací kontejnery. Tyto možnosti jsou popsány v následujících částech.
 
-### <a name="manage-how-many-results-are-returned"></a>Správa počtu vrácených výsledků
+### <a name="manage-how-many-results-are-returned"></a>Spravujte, kolik výsledků se vrátí.
 
-Ve výchozím nastavení vrátí operace výpisu až 5000 výsledků najednou. Chcete-li vrátit menší sadu výsledků, zadejte `maxresults` nenulovou hodnotu parametru při volání jedné z metod **ListContainerSegmented.**
+Ve výchozím nastavení vrací operace výpisu po dobu až 5000 výsledků. Chcete-li vrátit menší sadu výsledků, zadejte při volání jedné z metod `maxresults` **ListContainerSegmented** nenulovou hodnotu parametru.
 
-Pokud váš účet úložiště obsahuje více než 5000 kontejnerů `maxresults` nebo pokud jste zadali hodnotu pro takové, že výpis operace vrátí podmnožinu kontejnerů v účtu úložiště, pak Azure Storage vrátí *token pokračování* se seznamem kontejnerů. Token pokračování je neprůhledná hodnota, kterou můžete použít k načtení další sady výsledků z Azure Storage.
+Pokud váš účet úložiště obsahuje více než 5000 kontejnerů, nebo pokud jste zadali hodnotu pro `maxresults` takový, že operace výpisu vrátí podmnožinu kontejnerů v účtu úložiště, pak Azure Storage vrátí token pro *pokračování* se seznamem kontejnerů. Token pokračování je neprůhledná hodnota, kterou můžete použít k načtení další sady výsledků z Azure Storage.
 
-V kódu zkontrolujte hodnotu tokenu pokračování k určení, zda je null. Pokud je token pokračování null, je dokončena sada výsledků. Pokud token pokračování není null, pak volání **ListContainersSegmented** nebo **ListContainersSegmentedAsync** znovu, předání v tokenu pokračování načíst další sadu výsledků, dokud token pokračování je null.
+V kódu zkontrolujte hodnotu tokenu pokračování a určete, zda má hodnotu null. Pokud má token pokračování hodnotu null, sada výsledků je dokončena. Pokud token pro pokračování není null, zavolejte znovu **ListContainersSegmented** nebo **ListContainersSegmentedAsync** , předejte do tokenu pro pokračování, aby se načetla další sada výsledků, dokud token pro pokračování nemá hodnotu null.
 
-### <a name="filter-results-with-a-prefix"></a>Filtrování výsledků pomocí předpony
+### <a name="filter-results-with-a-prefix"></a>Filtrovat výsledky s předponou
 
-Chcete-li filtrovat seznam kontejnerů, `prefix` zadejte řetězec pro parametr. Řetězec předpony může obsahovat jeden nebo více znaků. Azure Storage pak vrátí pouze kontejnery, jejichž názvy začínají s tímto předponou.
+Chcete-li filtrovat seznam kontejnerů, zadejte řetězec pro `prefix` parametr. Řetězec předpony může obsahovat jeden nebo více znaků. Azure Storage pak vrátí pouze kontejnery, jejichž názvy začínají předponou.
 
-### <a name="return-metadata"></a>Vrátit metadata
+### <a name="return-metadata"></a>Návratová metadata
 
-Chcete-li vrátit metadata kontejneru s výsledky, zadejte hodnotu **Metadata** pro výčet [ContainerListingDetails.](/dotnet/api/microsoft.azure.storage.blob.containerlistingdetails) Azure Storage obsahuje metadata s každým vráceným kontejnerem, takže nemusíte volat také jednu z metod **FetchAttributes** k načtení metadat kontejneru.
+Chcete-li vrátit metadata kontejneru s výsledky, zadejte hodnotu **metadat** pro výčet [ContainerListingDetails](/dotnet/api/microsoft.azure.storage.blob.containerlistingdetails) . Azure Storage zahrnuje metadata s každým vráceným kontejnerem, takže nemusíte také volat jednu z metod **FetchAttributes** k načtení metadat kontejneru.
 
 ## <a name="example-list-containers"></a>Příklad: Seznam kontejnerů
 
-Následující příklad asynchronně uvádí kontejnery v účtu úložiště, které začínají zadanou předponou. Příklad uvádí kontejnery v přírůstcích 5 výsledků najednou a používá token pokračování získat další segment výsledků. Příklad také vrátí metadata kontejneru s výsledky.
+Následující příklad asynchronně vypíše kontejnery v účtu úložiště, který začíná zadanou předponou. Příklad vypíše kontejnery v přírůstcích po 5 výsledků a pomocí tokenu pro pokračování získá další segment výsledků. Příklad také vrátí metadata kontejneru s výsledky.
 
 ```csharp
 private static async Task ListContainersWithPrefixAsync(CloudBlobClient blobClient,
@@ -100,5 +100,5 @@ private static async Task ListContainersWithPrefixAsync(CloudBlobClient blobClie
 
 ## <a name="see-also"></a>Viz také
 
-[Seznam kontejnerů](/rest/api/storageservices/list-containers2)
-[výčtu prostředků objektu Blob](/rest/api/storageservices/enumerating-blob-resources)
+[Vypsat kontejnery](/rest/api/storageservices/list-containers2)
+[vytváření výčtu prostředků objektů BLOB](/rest/api/storageservices/enumerating-blob-resources)

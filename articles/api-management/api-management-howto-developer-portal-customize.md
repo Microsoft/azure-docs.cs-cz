@@ -1,6 +1,6 @@
 ---
-title: Přístup k spravovanému portálu pro vývojáře a jeho přizpůsobení – Správa rozhraní Azure API | Dokumenty společnosti Microsoft
-description: Přečtěte si, jak používat spravovanou verzi portálu pro vývojáře ve správě rozhraní API.
+title: Přístup a přizpůsobení spravovaného portálu pro vývojáře – Azure API Management | Microsoft Docs
+description: Naučte se používat spravovanou verzi portálu pro vývojáře v API Management.
 services: api-management
 documentationcenter: API Management
 author: mikebudzynski
@@ -13,125 +13,125 @@ ms.topic: article
 ms.date: 03/05/2020
 ms.author: apimpm
 ms.openlocfilehash: af7c995c11322a538dd9e27a905f1ddbc723e8ab
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79244092"
 ---
-# <a name="access-and-customize-developer-portal"></a>Přístup k portálu pro vývojáře a jejich přizpůsobení
+# <a name="access-and-customize-developer-portal"></a>Přístup a přizpůsobení portálu pro vývojáře
 
-Vývojářský portál je automaticky generovaný, plně přizpůsobitelný web s dokumentací vašich API. Je místo, kde mohou spotřebitelé rozhraní API zjistit vaše rozhraní API, naučit se je používat a požádat o přístup.
+Portál pro vývojáře je automaticky generovaný plně přizpůsobitelný web s dokumentací vašich rozhraní API. Je tam, kde můžou příjemci rozhraní API zjistit vaše rozhraní API, zjistit, jak je používat, a požádat o přístup.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Přístup ke spravované verzi portálu pro vývojáře
-> * Navigace v jeho rozhraní pro správu
+> * Přejít na jeho rozhraní pro správu
 > * Přizpůsobení obsahu
-> * Publikování změn
-> * Zobrazit publikovaný portál
+> * Publikovat změny
+> * Zobrazení publikovaného portálu
 
-Další podrobnosti najdete na portálu pro vývojáře v [přehledu portálu pro správu rozhraní Azure API .](api-management-howto-developer-portal.md)
+Další podrobnosti najdete na portálu pro vývojáře v článku [Přehled portálu pro vývojáře Azure API Management](api-management-howto-developer-portal.md).
 
-![Portál pro vývojáře pro správu rozhraní API – režim správy](media/api-management-howto-developer-portal-customize/cover.png)
+![Portál pro vývojáře API Management – režim správy](media/api-management-howto-developer-portal-customize/cover.png)
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Projděte si následující rychlý start: [Vytvoření instance služby Azure API Management](get-started-create-service-instance.md)
-- Importujte a publikujte instanci Azure API Management. Další informace naleznete v [tématu Import a publikování](import-and-publish.md)
+- Import a publikování instance služby Azure API Management. Další informace najdete v tématu [Import a publikování](import-and-publish.md) .
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 ## <a name="access-the-portal-as-an-administrator"></a>Přístup k portálu jako správce
 
-Chcete-li získat přístup ke spravované verzi portálu, postupujte podle následujících kroků.
+Použijte následující postup, chcete-li získat přístup ke spravované verzi portálu.
 
-1. Přejděte na instanci služby Správa rozhraní API na webu Azure Portal.
-1. Klikněte na tlačítko **Portál pro vývojáře** na horním navigačním panelu. Otevře se nová karta prohlížeče s verzí portálu pro správu.
+1. V Azure Portal přejít na instanci služby API Management.
+1. V horním navigačním panelu klikněte na tlačítko **portál pro vývojáře** . Otevře se nová karta prohlížeče s verzí pro správu portálu.
 
-## <a name="understand-the-portals-administrative-interface"></a>Principy rozhraní pro správu portálu
+## <a name="understand-the-portals-administrative-interface"></a>Pochopení rozhraní pro správu portálu
 
 ### <a name="default-content"></a>Výchozí obsah 
 
-Pokud přistupujete k portálu poprvé, bude se na pozadí automaticky zřídit výchozí obsah. Výchozí obsah byl navržen tak, aby prezentoval možnosti portálu a minimalizoval množství úprav potřebných k přizpůsobení portálu. Další informace o tom, co je součástí obsahu portálu, najdete v [přehledu portálu pro vývojáře azure api managementu](api-management-howto-developer-portal.md).
+Pokud k portálu přistupujete poprvé, výchozí obsah se automaticky zřídí na pozadí. Výchozí obsah byl navržený tak, aby předvedl možnosti portálu a minimalizoval množství přizpůsobení potřebných k přizpůsobení portálu. Další informace o tom, co je součástí obsahu portálu, najdete v článku [Přehled portálu pro vývojáře Azure API Management](api-management-howto-developer-portal.md).
 
-### <a name="visual-editor"></a>Vizuální editor
+### <a name="visual-editor"></a>Vizuální Editor
 
-Obsah portálu můžete přizpůsobit pomocí vizuálního editoru. Oddíly nabídek vlevo umožňují vytvářet nebo upravovat stránky, média, rozložení, nabídky, styly nebo nastavení webu. Položky nabídky v dolní části umožňují přepínat mezi výřezy (například mobilní nebo stolní počítače), zobrazit prvky portálu viditelné pro ověřené nebo anonymní uživatele nebo uložit nebo vrátit akce.
+Můžete přizpůsobit obsah portálu pomocí vizuálního editoru. Oddíly nabídky na levé straně umožňují vytvářet nebo upravovat stránky, multimédia, rozložení, nabídky, styly a nastavení webu. Položky nabídky v dolní části umožňují přepínání mezi zobrazeními (například mobilní nebo desktopové), zobrazení prvků portálu viditelných pro ověřené nebo anonymní uživatele nebo ukládání nebo vrácení akcí.
 
-Řádky můžete na stránku přidat kliknutím na modrou ikonu se znaménkem plus. Widgety (například text, obrázky nebo seznam rozhraní API) lze přidat stisknutím šedé ikony se znaménkem plus. Pomocí interakce přetažení myší můžete změnit uspořádání položek na stránce. 
+Kliknutím na modrou ikonu se znaménkem plus můžete přidat řádky na stránku. Widgety (například text, obrázky nebo seznam rozhraní API) lze přidat stisknutím šedé ikony se znaménkem plus. Můžete změnit uspořádání položek na stránce pomocí interakce přetažení myší. 
 
 ### <a name="layouts-and-pages"></a>Rozložení a stránky
 
 ![Stránky a rozložení](media/api-management-howto-developer-portal-customize/pages-layouts.png)
 
-Rozložení definují způsob zobrazení stránek. Například ve výchozím obsahu existují dvě rozložení – jedno se vztahuje na domovskou stránku a druhé na všechny zbývající stránky.
+Rozložení definují způsob zobrazení stránek. Například ve výchozím obsahu jsou k dispozici dvě rozložení – jedna se vztahuje na domovskou stránku a druhá na všechny zbývající stránky.
 
-Rozložení se použije na stránku tak, že se její šablona URL přirovná k adrese URL stránky. Například rozložení se šablonou `/wiki/*` adresy URL bude použito `/wiki/` na každou `/wiki/getting-started`stránku se segmentem v adrese URL: , `/wiki/styles`, atd.
+Rozložení se použije na stránku podle odpovídající šablony URL k adrese URL stránky. `/wiki/*` Například rozložení s šablonou URL bude použito na všechny stránky s `/wiki/` segmentem v adrese URL: `/wiki/getting-started`, `/wiki/styles`atd.
 
-Na obrázku výše je obsah, který patří k rozložení, označen modře, zatímco stránka je označena červeně. Části nabídky jsou označeny.
+Na obrázku výše je obsah patřící do rozložení označen modře, zatímco stránka je označena červeně. Oddíly nabídky jsou označeny v uvedeném pořadí.
 
-### <a name="styling-guide"></a>Průvodce stylingem
+### <a name="styling-guide"></a>Vodítko stylu
 
-![Průvodce stylingem](media/api-management-howto-developer-portal-customize/styling-guide.png)
+![Vodítko stylu](media/api-management-howto-developer-portal-customize/styling-guide.png)
 
-Styling průvodce je panel vytvořený s designéry v mysli. Umožňuje dohlížet a styling všechny vizuální prvky ve vašem portálu. Styl je hierarchický - mnoho prvků dědí vlastnosti z jiných prvků. Například prvky tlačítek používají barvy pro text a pozadí. Chcete-li změnit barvu tlačítka, musíte změnit původní variantu barvy.
+Vodítko pro stylování je panel vytvořený s ohledem na použití návrháře. Umožňuje zobrazení a stylování všech vizuálních prvků na portálu. Styl je hierarchický – mnoho prvků dědí vlastnosti z jiných prvků. Například prvky Button používají barvy pro text a pozadí. Chcete-li změnit barvu tlačítka, je nutné změnit původní variaci barvy.
 
-Chcete-li upravit variantu, klikněte na ni a vyberte ikonu tužky, která se zobrazí nad ní. Jakmile provedete změny v rozbalovacím okně, zavřete je.
+Pokud chcete upravit variantu, klikněte na ni a vyberte ikonu tužky, která se zobrazí v horní části. Jakmile provedete změny v místním okně, zavřete je.
 
 ### <a name="save-button"></a>Tlačítko Uložit
 
 ![Tlačítko Uložit](media/api-management-howto-developer-portal-customize/save-button.png)
 
-Kdykoli provedete změnu na portálu, musíte ji uložit ručně stisknutím tlačítka **Uložit** v nabídce v dolní části. Když změny uložíte, upravený obsah se automaticky nahraje do služby api management.
+Pokaždé, když provedete změnu na portálu, je nutné ji uložit ručně stisknutím tlačítka **Uložit** v nabídce v dolní části. Po uložení změn se změněný obsah automaticky nahraje do vaší služby API Management.
 
 ## <a name="customize-the-portals-content"></a>Přizpůsobení obsahu portálu
 
-Před zpřístupněním portálu návštěvníkům byste měli automaticky generovaný obsah přizpůsobit. Mezi doporučené změny patří rozložení, styly a obsah domovské stránky.
+Než zpřístupníte portál návštěvníkům, měli byste přizpůsobit automaticky generovaný obsah. Mezi doporučené změny patří rozložení, styly a obsah domovské stránky.
 
 > [!NOTE]
-> Z důvodu integrace nelze následující stránky odebrat nebo přesunout pod `/404` `/500`jinou adresou URL: `/signin`, `/signin-sso` `/signup`, `/captcha` `/change-password`, , `/config.json`, `/confirm/invitation` `/confirm-v2/identities/basic/signup`, `/confirm-v2/password`, `/internal-status-0123456789abcdef`, `/publish`, , , , . .
+> Z důvodu integrace nelze následující stránky odebrat ani přesunout pod jinou adresu URL: `/404`, `/500`, `/captcha`, `/change-password`, `/config.json`, `/confirm/invitation`, `/confirm-v2/identities/basic/signup`, `/confirm-v2/password`, `/internal-status-0123456789abcdef`, `/publish`, `/signin`, `/signin-sso`,. `/signup`
 
 ### <a name="home-page"></a>Domovská stránka
 
-Výchozí **domovská** stránka je vyplněna fiktivním obsahem. Můžete buď odstranit celé oddíly s obsahem, nebo zachovat strukturu a upravit prvky jeden po druhém. Nahraďte generovaný text a obrázky vlastním a ujistěte se, že odkazy odkazují na požadovaná umístění.
+Výchozí **Domovská** stránka je vyplněna fiktivním obsahem. Můžete buď odebrat všechny části s obsahem, nebo zachovat strukturu a upravit prvky jednu po jedné. Vygenerovaný text a obrázky nahraďte vlastními a ujistěte se, že odkazy odkazují na požadovaná umístění.
 
 ### <a name="layouts"></a>Rozložení
 
-Nahraďte automaticky generované logo na navigačním panelu vlastním obrázkem.
+V navigačním panelu nahraďte automaticky vygenerované logo vlastním obrázkem.
 
 ### <a name="styling"></a>Použití stylů
 
-I když nemusíte upravovat žádné styly, můžete zvážit úpravu určitých prvků. Změňte například primární barvu tak, aby odpovídala barvě značky.
+Přestože nemusíte upravovat žádné styly, můžete zvážit úpravu určitých prvků. Například změňte primární barvu tak, aby odpovídala barvě vaší značky.
 
 ### <a name="customization-example"></a>Příklad přizpůsobení
 
-Ve videu níže ukazujeme, jak upravit obsah portálu, přizpůsobit vzhled webu a publikovat změny.
+V níže uvedeném videu jsme ukázali, jak upravit obsah portálu, přizpůsobit vzhled webu a publikovat změny.
 
 > [!VIDEO https://www.youtube.com/embed/5mMtUSmfUlw]
 
 ## <a name="publish-the-portal"></a><a name="publish"> </a>Publikování portálu
 
-Chcete-li zpřístupnit portál a jeho nejnovější změny návštěvníkům, je třeba jej publikovat.
+Pokud chcete, aby byl váš portál a jeho nejnovější změny dostupné pro návštěvníky, je nutné ji publikovat.
 
-1. Kliknutím na ikonu **Uložit** se ujistěte, že jste změny uložili.
-1. Klikněte na **publikovat web** v sekci **Operace** v nabídce. Tato operace může trvat několik minut.  
+1. Ujistěte se, že jste změny uložili kliknutím na ikonu **Uložit** .
+1. V nabídce v části **operace** klikněte na **Publikovat web** . Tato operace může trvat několik minut.  
     ![Publikovat portál](media/api-management-howto-developer-portal-customize/publish-portal.png)
 
 > [!NOTE]
-> Portál musí být znovu publikován po změnách konfigurace služby API Management, jako je přiřazení vlastní domény, aktualizace poskytovatelů identit, nastavení delegování, určení podmínek přihlášení a produktu a další.
+> Portál se musí znovu publikovat po API Management změny konfigurace služby, jako je například přiřazení vlastní domény, aktualizace zprostředkovatelů identity, nastavení delegování, určení podmínek pro přihlášení a produkt a další.
 
-## <a name="visit-the-published-portal"></a>Navštivte publikovaný portál
+## <a name="visit-the-published-portal"></a>Navštívit publikovaný portál
 
-Po publikování portálu k němu můžete přistupovat na stejné adrese `https://contoso-api.developer.azure-api.net`URL jako například panel pro správu . Zobrazit v samostatné relaci prohlížeče (anonymní / soukromý režim prohlížení) jako externí návštěvník.
+Po publikování portálu je možné k němu přistupovat na stejné adrese URL jako panel pro správu, například `https://contoso-api.developer.azure-api.net`. Zobrazí se v samostatné relaci prohlížeče (režim procházení anonymním/privátní) jako externí návštěvník.
 
-## <a name="apply-the-cors-policy-on-apis"></a>Použití zásad CORS u api
+## <a name="apply-the-cors-policy-on-apis"></a>Použití zásad CORS na rozhraních API
 
-Je třeba povolit CORS (sdílení prostředků mezi zdroji) na vašich api, aby návštěvníci portálu otestovat api prostřednictvím integrované interaktivní konzoly. Další podrobnosti naleznete v [tomto článku s dokumentací.](api-management-howto-developer-portal.md#cors)
+V rozhraních API musíte povolit CORS (sdílení prostředků mezi zdroji), aby návštěvníci vašeho portálu mohli testovat rozhraní API prostřednictvím integrované interaktivní konzoly. Další podrobnosti najdete v [tomto článku dokumentace](api-management-howto-developer-portal.md#cors) .
 
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o portálu pro vývojáře:
 
-- [Přehled portálu pro vývojáře správy rozhraní Azure API](api-management-howto-developer-portal.md)
+- [Přehled portálu pro vývojáře Azure API Management](api-management-howto-developer-portal.md)

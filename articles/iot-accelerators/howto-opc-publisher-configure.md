@@ -1,6 +1,6 @@
 ---
-title: Konfigurace vydavatele OPC – Azure | Dokumenty společnosti Microsoft
-description: Tento článek popisuje, jak nakonfigurovat Vydavatel OPC k určení změn dat uzlu OPC UA, událostí OPC UA k publikování a také formátu telemetrie.
+title: Konfigurace vydavatele OPC – Azure | Microsoft Docs
+description: Tento článek popisuje, jak nakonfigurovat OPC Publisher tak, aby určoval změny dat uzlu OPC UA, události OPC UA pro publikování a také formát telemetrie.
 author: dominicbetts
 ms.author: dobett
 ms.date: 06/10/2019
@@ -9,31 +9,31 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 0ebbf0d41c05f71c571d9665903ba4ba44f71bd0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77198799"
 ---
 # <a name="configure-opc-publisher"></a>Konfigurace vydavatele OPC
 
-Můžete nakonfigurovat Vydavatel EPC, aby určil:
+Vydavatele OPC můžete nakonfigurovat tak, aby určovalo:
 
-- Změny dat uzlu OPC UA se mají publikovat.
-- Události OPC UA, které mají být publikovány.
+- Data uzlu OPC UA se mění pro publikování.
+- Události OPC UA k publikování.
 - Formát telemetrie.
 
-Aplikaci OPC Publisher můžete konfigurovat pomocí konfiguračních souborů nebo pomocí volání metod.
+Můžete nakonfigurovat vydavatele OPC pomocí konfiguračních souborů nebo pomocí volání metody.
 
 ## <a name="use-configuration-files"></a>Použití konfiguračních souborů
 
-Tato část popisuje možnosti konfigurace publikování uzlů OPC UA s konfiguračními soubory.
+Tato část popisuje možnosti konfigurace publikování uzlu OPC UA pomocí konfiguračních souborů.
 
 ### <a name="use-a-configuration-file-to-configure-publishing-data-changes"></a>Konfigurace změn dat publikování pomocí konfiguračního souboru
 
-Nejjednodušší způsob, jak nakonfigurovat uzly OPC UA pro publikování, je pomocí konfiguračního souboru. Formát konfiguračního souboru je dokumentován v [souboru publishednodes.json](https://github.com/Azure/iot-edge-opc-publisher/blob/master/opcpublisher/publishednodes.json) v úložišti.
+Nejjednodušší způsob, jak nakonfigurovat uzly OPC UA na publikování, je pomocí konfiguračního souboru. Formát konfiguračního souboru je popsán v souboru [publishednodes. JSON](https://github.com/Azure/iot-edge-opc-publisher/blob/master/opcpublisher/publishednodes.json) v úložišti.
 
-Syntaxe konfiguračního souboru se v průběhu času měnila. Vydavatel OPC stále čte staré formáty, ale převádí je do nejnovějšího formátu, když trvá konfiguraci.
+Syntaxe konfiguračního souboru se v průběhu času změnila. OPC Publisher pořád čte staré formáty, ale převede je do nejnovějšího formátu, když se konfigurace uchovává.
 
 Následující příklad ukazuje formát konfiguračního souboru:
 
@@ -56,9 +56,9 @@ Následující příklad ukazuje formát konfiguračního souboru:
 
 ### <a name="use-a-configuration-file-to-configure-publishing-events"></a>Konfigurace událostí publikování pomocí konfiguračního souboru
 
-Chcete-li publikovat události OPC UA, použijte stejný konfigurační soubor jako pro změny dat.
+Pokud chcete publikovat události OPC UA, použijte stejný konfigurační soubor jako u změn dat.
 
-Následující příklad ukazuje, jak nakonfigurovat publikování událostí generovaných [serverem SimpleEvents](https://github.com/OPCFoundation/UA-.NETStandard/tree/master/SampleApplications/Workshop/SimpleEvents/Server). Server SimpleEvents naleznete v [úložišti OPC Foundation](https://github.com/OPCFoundation/UA-.NETStandard) je:
+Následující příklad ukazuje, jak konfigurovat publikování pro události vygenerované [SimpleEvents serverem](https://github.com/OPCFoundation/UA-.NETStandard/tree/master/SampleApplications/Workshop/SimpleEvents/Server). Server SimpleEvents najdete v [úložišti OPC Foundation](https://github.com/OPCFoundation/UA-.NETStandard) :
 
 ```json
 [
@@ -114,39 +114,39 @@ Následující příklad ukazuje, jak nakonfigurovat publikování událostí ge
 
 Tato část popisuje volání metod, která můžete použít ke konfiguraci vydavatele OPC.
 
-### <a name="configure-using-opc-ua-method-calls"></a>Konfigurace pomocí volání metody OPC UA
+### <a name="configure-using-opc-ua-method-calls"></a>Konfigurace pomocí volání metod OPC UA
 
-Vydavatel OPC obsahuje server OPC UA, ke kterému lze přistupovat na portu 62222. Pokud je název hostitele **vydavatelem**, je `opc.tcp://publisher:62222/UA/Publisher`identifikátor URI koncového bodu: .
+Vydavatel OPC zahrnuje server OPC UA, který je k dispozici na portu 62222. Pokud je název hostitele **vydavatelem**, pak identifikátor URI koncového `opc.tcp://publisher:62222/UA/Publisher`bodu je:.
 
-Tento koncový bod zveřejňuje následující čtyři metody:
+Tento koncový bod zpřístupňuje následující čtyři metody:
 
 - PublishNode
-- Zrušit publikováníNode
+- UnpublishNode
 - GetPublishedNodes
 - IoT HubDirectMethod
 
-### <a name="configure-using-iot-hub-direct-method-calls"></a>Konfigurace pomocí volání přímé metody služby IoT Hub
+### <a name="configure-using-iot-hub-direct-method-calls"></a>Konfigurace pomocí IoT Hub přímé volání metod
 
-Vydavatel OPC implementuje následující volání přímé metody služby IoT Hub:
+Vydavatel OPC implementuje následující volání přímých metod IoT Hub:
 
 - PublishNodes
-- Zrušit publikováníNodes
-- Zrušit publikování všech uzlů
-- GetConfiguredKoncové body
+- UnpublishNodes
+- UnpublishAllNodes
+- GetConfiguredEndpoints
 - GetConfiguredNodesOnEndpoint
 - GetDiagnosticInfo
 - GetDiagnosticLog
 - GetDiagnosticStartupLog
-- Ukončit aplikaci
+- ExitApplication
 - GetInfo
 
-Formát datové části JSON požadavku metody a odpovědí je definován v [opcpublisher/HubMethodModel.cs](https://github.com/Azure/iot-edge-opc-publisher/blob/master/opcpublisher/HubMethodModel.cs).
+Formát datové části JSON žádosti o metodu a odpovědi jsou definované v [opcpublisher/HubMethodModel. cs](https://github.com/Azure/iot-edge-opc-publisher/blob/master/opcpublisher/HubMethodModel.cs).
 
-Pokud zavoláte neznámou metodu v modulu, odpoví řetězcem, který říká, že metoda není implementována. Můžete volat neznámou metodu jako způsob, jak ping modulu.
+Pokud voláte neznámou metodu v modulu, odpoví řetězcem, který říká, že metoda není implementována. Můžete zavolat neznámou metodu jako způsob, jak testovat modul pomocí příkazů.
 
 ### <a name="configure-username-and-password-for-authentication"></a>Konfigurace uživatelského jména a hesla pro ověřování
 
-Režim ověřování lze nastavit prostřednictvím volání přímé metody služby IoT Hub. Datová část musí obsahovat vlastnost **OpcAuthenticationMode** a uživatelské jméno a heslo:
+Režim ověřování lze nastavit prostřednictvím volání přímé metody IoT Hub. Datová část musí obsahovat vlastnost **OpcAuthenticationMode** a uživatelské jméno a heslo:
 
 ```csharp
 {
@@ -158,7 +158,7 @@ Režim ověřování lze nastavit prostřednictvím volání přímé metody slu
 }
 ```
 
-Heslo je šifrováno klientem zatížení služby IoT Hub a uloženo v konfiguraci vydavatele. Chcete-li změnit ověřování zpět na anonymní, použijte metodu s následující datovou částí:
+Heslo je šifrováno klientem IoT Hub úlohy a Uloženo v konfiguraci vydavatele. Chcete-li změnit ověřování zpět na anonymní, použijte metodu s následující datovou částí:
 
 ```csharp
 {
@@ -168,23 +168,23 @@ Heslo je šifrováno klientem zatížení služby IoT Hub a uloženo v konfigura
 }
 ```
 
-Pokud vlastnost **OpcAuthenticationMode** není nastavena v datové části, nastavení ověřování zůstane v konfiguraci beze změny.
+Pokud vlastnost **OpcAuthenticationMode** není v datové části nastavená, nastavení ověřování zůstane v konfiguraci beze změn.
 
-## <a name="configure-telemetry-publishing"></a>Konfigurace publikování telemetrie
+## <a name="configure-telemetry-publishing"></a>Konfigurovat publikování telemetrie
 
-Když Vydavatel OPC obdrží oznámení o změně hodnoty v publikovaném uzlu, vygeneruje zprávu ve formátu JSON, která je odeslána do služby IoT Hub.
+Když Vydavatel OPC obdrží oznámení o změně hodnoty v publikovaném uzlu, vygeneruje zprávu ve formátu JSON, která se pošle IoT Hub.
 
-Obsah této zprávy ve formátu JSON můžete nakonfigurovat pomocí konfiguračního souboru. Pokud s tou tou `--tc` volbou není zadán žádný konfigurační soubor, použije se výchozí konfigurace, která je kompatibilní s [akcelerátorem řešení Připojeno tovární výroby](https://github.com/Azure/azure-iot-connected-factory).
+Obsah této zprávy ve formátu JSON můžete nakonfigurovat pomocí konfiguračního souboru. Pokud není k dispozici konfigurační soubor s `--tc` možností, je použita výchozí konfigurace, která je kompatibilní s [akcelerátorem řešení propojená továrna](https://github.com/Azure/azure-iot-connected-factory).
 
-Pokud je Vydavatel OPC nakonfigurován pro dávkové zprávy, jsou odeslány jako platné pole JSON.
+Pokud je Vydavatel OPC nakonfigurovaný na dávkové zprávy, odešle se jako platné pole JSON.
 
-Telemetrie je odvozena z následujících zdrojů:
+Telemetrii je odvozena z následujících zdrojů:
 
-- Konfigurace uzlu OPC Publisher pro uzel
-- Objekt **MonitoredItem** zásobníku OPC UA, pro který OPC Vydavatel dostal oznámení.
-- Argument předán toto oznámení, které obsahuje podrobnosti o změně hodnoty dat.
+- Konfigurace uzlu vydavatele OPC pro uzel
+- Objekt **MonitoredItem** zásobníku OPC UA, pro který se Vydavatel OPC dostal oznámení.
+- Argument předaný do tohoto oznámení, který poskytuje podrobnosti o změně hodnoty dat.
 
-Telemetrie, která je vložena do zprávy ve formátu JSON je výběr důležitých vlastností těchto objektů. Pokud potřebujete více vlastností, je třeba změnit základ kódu Vydavatel EPC.
+Telemetrii, která je vložená do zprávy ve formátu JSON, je výběr důležitých vlastností těchto objektů. Pokud potřebujete další vlastnosti, je nutné změnit základ kódu vydavatele OPC.
 
 Syntaxe konfiguračního souboru je následující:
 
@@ -380,4 +380,4 @@ Syntaxe konfiguračního souboru je následující:
 
 ## <a name="next-steps"></a>Další kroky
 
-Nyní jste se naučili, jak nakonfigurovat OPC Publisher, navrhovaným dalším krokem je naučit se [spouštět Vydavatel OPC](howto-opc-publisher-run.md).
+Nyní jste se naučili, jak nakonfigurovat vydavatele OPC, navržený další krok se naučíte, jak [Spustit vydavatele OPC](howto-opc-publisher-run.md).

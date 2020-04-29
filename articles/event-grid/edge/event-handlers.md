@@ -1,6 +1,6 @@
 ---
-title: Obslužné rutiny a cíle událostí – Azure Event Grid IoT Edge | Dokumenty společnosti Microsoft
-description: Obslužné rutiny událostí a cíle v mřížce událostí na okraji
+title: Obslužné rutiny událostí a cíle – Azure Event Grid IoT Edge | Microsoft Docs
+description: Obslužné rutiny událostí a cíle v Event Grid na hraničních zařízeních
 author: banisadr
 ms.author: babanisa
 ms.reviewer: spelluru
@@ -9,23 +9,23 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 35bf5af90aa5f0456aa8d68f0e4e8aaacc6cf84f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76849744"
 ---
-# <a name="event-handlers-and-destinations-in-event-grid-on-edge"></a>Obslužné rutiny událostí a cíle v mřížce událostí na okraji
+# <a name="event-handlers-and-destinations-in-event-grid-on-edge"></a>Obslužné rutiny událostí a cíle v Event Grid na hraničních zařízeních
 
-Obslužná rutina události je místo, kde událost pro další akci nebo pro zpracování události. S modulem Event Grid on Edge může být obslužná rutina události na stejném hraničním zařízení, jiném zařízení nebo v cloudu. Můžete použít libovolný WebHook ke zpracování událostí nebo odeslat události do jedné z nativních obslužných rutin, jako je Azure Event Grid.
+Obslužná rutina události je místo, kde událost pro další akci nebo zpracování události. V modulu Event Grid na Edge může být obslužná rutina události na stejném hraničním zařízení, v jiném zařízení nebo v cloudu. Můžete použít jakýkoliv Webhook pro zpracování událostí nebo odesílat události do jedné z nativních obslužných rutin, jako je Azure Event Grid.
 
-Tento článek obsahuje informace o tom, jak nakonfigurovat každý.
+Tento článek poskytuje informace o tom, jak je nakonfigurovat.
 
-## <a name="webhook"></a>Webový hák
+## <a name="webhook"></a>Webhooku
 
-Chcete-li publikovat do koncového `endpointType` bodu `WebHook` WebHook, nastavte na a zadejte:
+Pokud chcete publikovat do koncového bodu Webhooku `endpointType` , `WebHook` nastavte na a zadání:
 
-* endpointUrl: Adresa URL koncového bodu WebHook
+* endpointUrl: adresa URL koncového bodu Webhooku
 
     ```json
         {
@@ -42,11 +42,11 @@ Chcete-li publikovat do koncového `endpointType` bodu `WebHook` WebHook, nastav
 
 ## <a name="azure-event-grid"></a>Azure Event Grid
 
-Pokud chcete publikovat do cloudového koncového `endpointType` `eventGrid` bodu Azure Event Grid, nastavte to to a zadejte:
+Pokud chcete publikovat do koncového bodu cloudu Azure Event Grid `endpointType` , `eventGrid` nastavte na a zadáním:
 
-* endpointUrl: Adresa URL tématu mřížky událostí v cloudu
-* sasKey: Klíč SAS tématu mřížky událostí
-* topicName: Název pro razítko všech odchozích událostí do mřížky událostí. Název tématu je užitečný při odesílání do tématu domény mřížky událostí.
+* endpointUrl: adresa URL tématu Event Grid v cloudu
+* sasKey: klíč SAS Event Gridho tématu
+* Název tématu: název pro označení všech odchozích událostí, které mají být Event Grid. Název tématu je užitečný při odeslání do tématu Event Grid domény.
 
    ```json
         {
@@ -65,9 +65,9 @@ Pokud chcete publikovat do cloudového koncového `endpointType` `eventGrid` bod
 
 ## <a name="iot-edge-hub"></a>Centrum IoT Edge
 
-Chcete-li publikovat v modulu `endpointType` `edgeHub` Edge Hub, nastavte na a zadejte:
+Chcete-li publikovat do modulu Edge hub, nastavte `endpointType` na `edgeHub` a zadáním:
 
-* outputName: Výstup, na kterém modul Event Grid bude směrovat události, které odpovídají tomuto předplatnému edgeHub. Například události, které odpovídají níže odběr bude zapsána do /messages/modules/eventgridmodule/outputs/sampleSub4.
+* outputName: výstup, na kterém bude modul Event Grid směrovat události, které odpovídají tomuto předplatnému edgeHub. Například události, které odpovídají níže uvedenému předplatnému, budou zapsány do/messages/modules/eventgridmodule/outputs/sampleSub4.
 
     ```json
         {
@@ -84,12 +84,12 @@ Chcete-li publikovat v modulu `endpointType` `edgeHub` Edge Hub, nastavte na a z
 
 ## <a name="event-hubs"></a>Event Hubs
 
-Chcete-li publikovat v centru `endpointType` `eventHub` událostí, nastavte to to a zadejte:
+Pokud chcete publikovat do centra událostí, nastavte `endpointType` na `eventHub` a poskytnutí:
 
-* ConnectionString: Připojovací řetězec pro konkrétní centrum událostí, na které cílíte, generovaný pomocí zásad sdíleného přístupu.
+* connectionString: připojovací řetězec pro konkrétní centrum událostí, které cílíte vygenerovat prostřednictvím zásad sdíleného přístupu.
 
     >[!NOTE]
-    > Připojovací řetězec musí být specifický pro entitu. Použití připojovacího řetězce oboru názvů nebude fungovat. Připojovací řetězec specifický pro entitu můžete vygenerovat tak, že přejdete do konkrétního centra událostí, do kterého chcete publikovat na webu Azure Portal, a kliknutím na **zásady sdíleného přístupu** vygenerujete nový řetězec connecection specifické pro entitu.
+    > Připojovací řetězec musí být specifický pro entitu. Použití připojovacího řetězce oboru názvů nebude fungovat. Připojovací řetězec specifický pro entitu můžete vygenerovat tak, že přejdete do konkrétního centra událostí, na které chcete publikovat na portálu Azure Portal, a kliknutím na **zásady sdíleného přístupu** vygenerujete nový connecection řetězec specifický pro danou entitu.
 
     ```json
         {
@@ -106,12 +106,12 @@ Chcete-li publikovat v centru `endpointType` `eventHub` událostí, nastavte to 
 
 ## <a name="service-bus-queues"></a>Fronty služby Service Bus
 
-Chcete-li publikovat do fronty `endpointType` služby Service Bus, nastavte to to `serviceBusQueue` a zadejte:
+Chcete-li publikovat do fronty Service Bus, nastavte `endpointType` na `serviceBusQueue` a zadejte:
 
-* ConnectionString: Připojovací řetězec pro konkrétní frontu služby Service Bus, na kterou cílíte, generovaný pomocí zásad sdíleného přístupu.
+* connectionString: připojovací řetězec pro konkrétní frontu Service Bus, na kterou cílíte, vygenerovali pomocí zásad sdíleného přístupu.
 
     >[!NOTE]
-    > Připojovací řetězec musí být specifický pro entitu. Použití připojovacího řetězce oboru názvů nebude fungovat. Vygenerujte připojovací řetězec specifický pro entitu tak, že přejdete na konkrétní frontu služby Service Bus, do které chcete publikovat na webu Azure Portal, a kliknutím na **zásady sdíleného přístupu** vygenerujete řetězec útěchy specifický pro novou entitu.
+    > Připojovací řetězec musí být specifický pro entitu. Použití připojovacího řetězce oboru názvů nebude fungovat. Vygenerujte připojovací řetězec specifický pro entitu tak, že přejdete na konkrétní Service Bus frontu, na kterou chcete publikovat na portálu Azure Portal, a kliknutím na **zásady sdíleného přístupu** vygenerujete nový connecection řetězec specifický pro danou entitu.
 
     ```json
         {
@@ -128,12 +128,12 @@ Chcete-li publikovat do fronty `endpointType` služby Service Bus, nastavte to t
 
 ## <a name="service-bus-topics"></a>Témata služby Service Bus
 
-Chcete-li publikovat v tématu `endpointType` `serviceBusTopic` sběrnice, nastavte to to a zadejte:
+Chcete-li publikovat do tématu Service Bus, nastavte `endpointType` na `serviceBusTopic` a poskytnutí:
 
-* ConnectionString: Připojovací řetězec pro konkrétní téma sběrnice, na které cílíte, generovaný pomocí zásad sdíleného přístupu.
+* connectionString: připojovací řetězec pro konkrétní Service Bus téma, které cílíte vygenerované pomocí zásad sdíleného přístupu.
 
     >[!NOTE]
-    > Připojovací řetězec musí být specifický pro entitu. Použití připojovacího řetězce oboru názvů nebude fungovat. Vygenerujte připojovací řetězec specifický pro entitu tak, že přejdete na konkrétní téma služby Service Bus, které chcete publikovat na webu Azure Portal, a kliknutím na **zásady sdíleného přístupu** vygenerujete nový řetězec connecection specifické pro entitu.
+    > Připojovací řetězec musí být specifický pro entitu. Použití připojovacího řetězce oboru názvů nebude fungovat. Vygenerujte připojovací řetězec specifický pro entitu tak, že přejdete na konkrétní Service Bus téma, na které byste chtěli publikovat na portálu Azure Portal, a kliknutím na **zásady sdíleného přístupu** vygenerujete nový connecection řetězec specifický pro danou entitu.
 
     ```json
         {
@@ -150,13 +150,13 @@ Chcete-li publikovat v tématu `endpointType` `serviceBusTopic` sběrnice, nasta
 
 ## <a name="storage-queues"></a>Fronty služby Storage
 
-Chcete-li publikovat do fronty `endpointType` `storageQueue` úložiště, nastavte to to a zadejte:
+K publikování do fronty úložiště nastavte `endpointType` `storageQueue` a zadejte:
 
-* název fronty úložiště, do které publikujete.
-* ConnectionString: Připojovací řetězec pro účet úložiště, ve které se nachází fronta úložiště.
+* Queue: název fronty úložiště, do které se chystáte publikovat.
+* connectionString: připojovací řetězec pro účet úložiště, ve kterém je fronta úložiště.
 
     >[!NOTE]
-    > Unline centra událostí, fronty služby Service Bus a témata sběrnice, připojovací řetězec používaný pro fronty úložiště není specifický pro entitu. Místo toho musí, ale připojovací řetězec pro účet úložiště.
+    > Odřádkování Event Hubs, front Service Bus a Service Busch témat, připojovací řetězec používaný pro fronty úložiště není specifický pro entitu. Místo toho je třeba použít připojovací řetězec pro účet úložiště.
 
     ```json
         {

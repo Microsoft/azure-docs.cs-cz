@@ -9,29 +9,29 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 565c9ad0fbd37b026a1ba555d83b9032d2efcba4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77024292"
 ---
-# <a name="allocate-public-ip-addresses-for-private-cloud-environment"></a>Přidělení veřejných IP adres pro prostředí privátního cloudu
+# <a name="allocate-public-ip-addresses-for-private-cloud-environment"></a>Přidělit veřejné IP adresy pro prostředí privátního cloudu
 
-Otevřete kartu Veřejné IP adresy na stránce Síť a přidělte veřejné IP adresy pro virtuální počítače v prostředí privátního cloudu.
+Otevřete kartu veřejné IP adresy na stránce síť a přidělte veřejné IP adresy pro virtuální počítače ve vašem prostředí privátního cloudu.
 
-1. [Přístup k portálu CloudSimple](access-cloudsimple-portal.md) a v boční nabídce vyberte **možnost Síť.**
+1. [Přejděte na portál CloudSimple](access-cloudsimple-portal.md) a v postranní nabídce vyberte **síť** .
 2. Vyberte **veřejné IP adresy**.
-3. Klepněte na **položku Nová veřejná adresa IP**.
+3. Klikněte na **nová veřejná IP adresa**.
 
-    ![Stránka Veřejné IP adresy](media/public-ips-page.png)
+    ![Stránka veřejné IP adresy](media/public-ips-page.png)
 
 4. Zadejte název pro identifikaci položky IP adresy.
-5. Zachovat výchozí umístění.
+5. Ponechte výchozí umístění.
 6. V případě potřeby změňte časový limit nečinnosti pomocí posuvníku.
-7. Zadejte místní ADRESU IP, ke které chcete přiřadit veřejnou IP adresu.
+7. Zadejte místní IP adresu, pro kterou chcete přiřadit veřejnou IP adresu.
 8. Zadejte přidružený název DNS.
-9. Klepněte na **tlačítko Odeslat**.
+9. Klikněte na **Odeslat**.
 
-![Přidělení veřejných IP služeb](media/network-public-ip-allocate.png)
+![Přidělit veřejné IP adresy](media/network-public-ip-allocate.png)
 
-Začíná úkol přidělení veřejné IP adresy. Stav úkolu můžete zkontrolovat na stránce **Aktivita > úkoly.** Po dokončení přidělení se nová položka zobrazí na stránce Veřejné IP adresy.
+Spustí se úkol přidělení veřejné IP adresy. Stav úlohy můžete zjistit na stránce **aktivity > úlohy** . Po dokončení přidělení se nová položka zobrazí na stránce veřejné IP adresy.

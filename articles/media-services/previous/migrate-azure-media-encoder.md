@@ -1,6 +1,6 @@
 ---
-title: Migrace z kodéru médií Azure do standardu media encoder | Dokumenty společnosti Microsoft
-description: Toto téma popisuje, jak migrovat z Azure Media Encoder do mediálního procesoru Media Encoder Standard.
+title: Migrace z Azure Media Encoder na Media Encoder Standard | Microsoft Docs
+description: Toto téma popisuje, jak migrovat z Azure Media Encoder do procesoru Media Encoder Standard Media.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -14,21 +14,21 @@ ms.topic: article
 ms.date: 08/21/2019
 ms.author: juliako
 ms.openlocfilehash: f8fe1b13db6473e80f0d7cdc638b775a0c8062c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76513497"
 ---
-# <a name="migrate-from-azure-media-encoder-to-media-encoder-standard"></a>Migrace z kodéru médií Azure do standardu kodéru médií
+# <a name="migrate-from-azure-media-encoder-to-media-encoder-standard"></a>Migrace z Azure Media Encoder na Media Encoder Standard
 
-Tento článek popisuje kroky pro migraci ze staršího mediálního procesoru Azure Media Encoder (AME) (který je vyřazen) do mediálního procesoru Media Encoder Standard. Data vyřazení naleznete v tomto tématu [starších součástí.](legacy-components.md)
+Tento článek popisuje kroky pro migraci z staršího (Azure Media Encoderho) procesoru médií (v tomto případě) do procesoru Media Encoder Standard Media. Informace o datech vyřazení najdete v tématu tyto [starší součásti](legacy-components.md) .
 
-Při kódování souborů pomocí objektu AME zákazníci obvykle `H264 Adaptive Bitrate MP4 Set 1080p`používali pojmenovaný přednastavený řetězec, například . Chcete-li migrovat, je třeba aktualizovat kód, aby bylo možné místo ame použít mediální procesor `H264 Multiple Bitrate 1080p` **Media Encoder Standard** a jeden z ekvivalentních [systémových přednastavení,](media-services-mes-presets-overview.md) jako je . 
+Při kódování souborů pomocí ázev zákazníci obvykle použili pojmenovaný přednastavený řetězec, například `H264 Adaptive Bitrate MP4 Set 1080p`. Aby bylo možné provést migraci, je nutné aktualizovat kód tak, aby používal procesor **Media Encoder Standard** Media místo ázev a jednu z ekvivalentních [předvoleb systému](media-services-mes-presets-overview.md) jako `H264 Multiple Bitrate 1080p`. 
 
-## <a name="migrating-to-media-encoder-standard"></a>Migrace na standard kodéru médií
+## <a name="migrating-to-media-encoder-standard"></a>Migrace na Media Encoder Standard
 
-Zde je typická ukázka kódu Jazyka C#, která používá starší mediální procesor. 
+Zde je typický ukázkový kód v jazyce C#, který používá starší verzi procesoru médií. 
 
 ```csharp
 // Declare a new job. 
@@ -45,7 +45,7 @@ ITask task = job.Tasks.AddNew("My encoding task",
     TaskOptions.None); 
 ```
 
-Zde je aktualizovaná verze, která používá standard kodéru médií.
+Zde je aktualizovaná verze, která používá Media Encoder Standard.
 
 ```csharp
 // Declare a new job. 
@@ -64,13 +64,13 @@ ITask task = job.Tasks.AddNew("My encoding task",
 
 ### <a name="advanced-scenarios"></a>Pokročilé scénáře 
 
-Pokud jste vytvořili vlastní přednastavení kódování pro AME pomocí jeho schématu, existuje [ekvivalentní schéma pro standard kodéru médií](media-services-mes-schema.md). Máte-li dotazy, jak mapovat starší nastavení na nový kodér, obraťte se na nás prostřednictvímmailto:amshelp@microsoft.com  
+Pokud jste vytvořili vlastní předvolby kódování pro ázev pro \ jméno pomocí svého schématu, existuje [stejné schéma pro Media Encoder Standard](media-services-mes-schema.md). Pokud máte dotazy k namapování staršího nastavení na nový kodér, obraťte se na nás přesmailto:amshelp@microsoft.com  
 ## <a name="known-differences"></a>Známé rozdíly 
 
-Standard Media Encoder Standard je robustnější, spolehlivější, má lepší výkon a vytváří kvalitnější výstup než starší kodér AME. Navíc platí: 
+Media Encoder Standard je robustnější, spolehlivější, má lepší výkon a produkuje kvalitní výstup než starší ázev kodéru. Navíc platí: 
 
-* Standard programu Media Encoder Standard vytváří výstupní soubory s jinou konvencí pojmenování než AME.
-* Standard Media Encoder Standard vytváří artefakty, jako jsou soubory obsahující [metadata vstupního souboru](media-services-input-metadata-schema.md) a [metadata výstupních souborů](media-services-output-metadata-schema.md).
+* Media Encoder Standard vytváří výstupní soubory s jinou konvencí pojmenování, než je ázev.
+* Media Encoder Standard vytváří artefakty, jako jsou soubory obsahující [metadata vstupních souborů](media-services-input-metadata-schema.md) a [metadata výstupních souborů](media-services-output-metadata-schema.md).
 
 ## <a name="next-steps"></a>Další kroky
 

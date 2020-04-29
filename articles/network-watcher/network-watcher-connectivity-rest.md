@@ -1,7 +1,7 @@
 ---
-title: Poradce při potížích s připojením – rozhraní AZURE REST API
+title: Řešení potíží s připojeními – Azure REST API
 titleSuffix: Azure Network Watcher
-description: Zjistěte, jak pomocí rozhraní Azure REST API používat funkci řešení potíží s připojením azure network watcheru.
+description: Naučte se používat funkce řešení potíží s připojením v Azure Network Watcher s využitím REST API Azure.
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.date: 08/02/2017
 ms.author: kumud
 ms.openlocfilehash: f1d4b02731f9e0f22fb1eaba03e55e49f84cd87a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76845093"
 ---
-# <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-rest-api"></a>Poradce při potížích s připojením pomocí Azure Network Watcher pomocí rozhraní Azure REST API
+# <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-rest-api"></a>Řešení potíží s připojením k Azure Network Watcher pomocí Azure REST API
 
 > [!div class="op_single_selector"]
 > - [Portál](network-watcher-connectivity-portal.md)
@@ -27,34 +27,34 @@ ms.locfileid: "76845093"
 > - [Azure CLI](network-watcher-connectivity-cli.md)
 > - [Azure REST API](network-watcher-connectivity-rest.md)
 
-Zjistěte, jak pomocí řešení potíží s připojením ověřit, zda lze navázat přímé připojení TCP z virtuálního počítače k danému koncovému bodu.
+Naučte se používat řešení potíží s připojením k ověření, jestli je možné navázat přímé připojení TCP z virtuálního počítače do daného koncového bodu.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
-Tento článek předpokládá, že máte následující zdroje:
+V tomto článku se předpokládá, že máte následující zdroje:
 
-* Instance sledovacího programu sítě v oblasti, ve které chcete vyřešit potíže s připojením.
-* Virtuální počítače pro řešení potíží s připojením.
+* Instance Network Watcher v oblasti, ve které chcete řešit potíže s připojením.
+* Virtuální počítače pro řešení potíží s připojeními.
 
 > [!IMPORTANT]
-> Řešení potíží s připojením vyžaduje, `AzureNetworkWatcherExtension` aby v ym, který řešíte z má rozšíření virtuálního zařízení nainstalován. Pokud chcete nainstalovat rozšíření na virtuální počítač s Windows, navštivte [rozšíření virtuálního počítače Azure Network Watcher Agent pro Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) a pro virtuální počítač SIP na stránce Rozšíření [virtuálního počítače Azure Network Watcher Agent pro Linux](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). Rozšíření není vyžadováno v cílovém koncovém bodě.
+> Řešení potíží s připojením vyžaduje, aby virtuální počítač, ze `AzureNetworkWatcherExtension` kterého řešení řešíte, byl nainstalován rozšíření virtuálního počítače. Pokud chcete nainstalovat rozšíření na virtuální počítač s Windows, přejděte na web [azure Network Watcher Agent Virtual Machine Extension for Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) a pro Linux VM, navštivte [rozšíření Azure Network Watcher Agent Virtual Machine pro Linux](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). V cílovém koncovém bodě není rozšíření vyžadováno.
 
-## <a name="log-in-with-armclient"></a>Přihlášení pomocí klienta ARMClient
+## <a name="log-in-with-armclient"></a>Přihlášení pomocí ARMClient
 
-Přihlaste se k armclient u svých přihlašovacích údajů Azure.
+Přihlaste se k armclient s přihlašovacími údaji Azure.
 
 ```powershell
 armclient login
 ```
 
-## <a name="retrieve-a-virtual-machine"></a>Načtení virtuálního počítače
+## <a name="retrieve-a-virtual-machine"></a>Načíst virtuální počítač
 
-Spusťte následující skript a vraťte virtuální počítač. Tyto informace jsou potřebné pro spuštění připojení.
+Spusťte následující skript, který vrátí virtuální počítač. Tyto informace jsou nutné pro spuštění připojení.
 
 Následující kód potřebuje hodnoty pro následující proměnné:
 
-- **subscriptionID** – ID předplatného, které chcete použít.
-- **resourceGroupName** - Název skupiny prostředků, která obsahuje virtuální počítače.
+- **SubscriptionId** – ID předplatného, které se má použít.
+- **resourceGroupName** – název skupiny prostředků, která obsahuje virtuální počítače.
 
 ```powershell
 $subscriptionId = '<subscription id>'
@@ -63,7 +63,7 @@ $resourceGroupName = '<resource group name>'
 armclient get https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Compute/virtualMachines?api-version=2015-05-01-preview
 ```
 
-Z následujícího výstupu id virtuálního počítače se používá v následujícím příkladu:
+Z následujícího výstupu se používá ID virtuálního počítače v následujícím příkladu:
 
 ```json
 ...
@@ -78,9 +78,9 @@ Z následujícího výstupu id virtuálního počítače se používá v násled
 }
 ```
 
-## <a name="check-connectivity-to-a-virtual-machine"></a>Kontrola připojení k virtuálnímu počítači
+## <a name="check-connectivity-to-a-virtual-machine"></a>Ověřte připojení k virtuálnímu počítači.
 
-Tento příklad kontroluje připojení k cílovému virtuálnímu počítači přes port 80.
+Tento příklad zkontroluje připojení k cílovému virtuálnímu počítači přes port 80.
 
 ### <a name="example"></a>Příklad
 
@@ -107,11 +107,11 @@ $requestBody = @"
 $response = armclient post "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/connectivityCheck?api-version=2017-03-01" $requestBody
 ```
 
-Vzhledem k tomu, že tato operace je již dlouho spuštěna, je identifikátor URI pro výsledek vrácen v hlavičce odpovědi, jak je znázorněno v následující odpovědi:
+Vzhledem k tomu, že je tato operace dlouho spuštěná, vrátí se identifikátor URI pro výsledek v hlavičce odpovědi, jak je znázorněno v následující reakci:
 
 **Důležité hodnoty**
 
-* **Umístění** – tato vlastnost obsahuje identifikátor URI, kde jsou výsledky po dokončení operace
+* **Umístění** – Tato vlastnost obsahuje identifikátor URI, ve kterém jsou výsledky po dokončení operace.
 
 ```
 HTTP/1.1 202 Accepted
@@ -132,7 +132,7 @@ null
 
 ### <a name="response"></a>Odpověď
 
-Následující odpověď je z předchozího příkladu.  V této odpovědi `ConnectionStatus` je **nedostupný**. Můžete vidět, že všechny odeslané sondy selhaly. Připojení ve virtuálním zařízení se nezdařilo `NetworkSecurityRule` z důvodu uživatelem nakonfigurovaného s názvem **UserRule_Port80**, který je nakonfigurován tak, aby blokoval příchozí provoz na portu 80. Tyto informace lze použít k výzkumu problémů s připojením.
+Následující odpověď je z předchozího příkladu.  V této odpovědi `ConnectionStatus` je **nedosažitelný**. Vidíte, že se nepovedlo úspěšně odeslat všechny sondy. Připojení na virtuálním zařízení se nepovedlo, protože se nakonfiguroval `NetworkSecurityRule` uživatel s názvem **UserRule_Port80**nakonfigurovaný tak, aby blokoval příchozí provoz na portu 80. Tyto informace se dají použít k tomu, aby se nastudovaly problémy s připojením.
 
 ```json
 {
@@ -194,9 +194,9 @@ Následující odpověď je z předchozího příkladu.  V této odpovědi `Conn
 }
 ```
 
-## <a name="validate-routing-issues"></a>Ověřit problémy se směrováním
+## <a name="validate-routing-issues"></a>Ověřit problémy s směrováním
 
-Příklad kontroluje připojení mezi virtuálním počítačem a vzdáleným koncovým bodem.
+V příkladu je zkontrolováno připojení mezi virtuálním počítačem a vzdáleným koncovým bodem.
 
 ### <a name="example"></a>Příklad
 
@@ -223,11 +223,11 @@ $requestBody = @"
 $response = armclient post "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/connectivityCheck?api-version=2017-03-01" $requestBody
 ```
 
-Vzhledem k tomu, že tato operace je již dlouho spuštěna, je identifikátor URI pro výsledek vrácen v hlavičce odpovědi, jak je znázorněno v následující odpovědi:
+Vzhledem k tomu, že je tato operace dlouho spuštěná, vrátí se identifikátor URI pro výsledek v hlavičce odpovědi, jak je znázorněno v následující reakci:
 
 **Důležité hodnoty**
 
-* **Umístění** – tato vlastnost obsahuje identifikátor URI, kde jsou výsledky po dokončení operace
+* **Umístění** – Tato vlastnost obsahuje identifikátor URI, ve kterém jsou výsledky po dokončení operace.
 
 ```
 HTTP/1.1 202 Accepted
@@ -248,7 +248,7 @@ null
 
 ### <a name="response"></a>Odpověď
 
-V následujícím příkladu `connectionStatus` je zobrazen jako **Nedostupný**. V `hops` podrobnostech můžete vidět `issues` pod tím, že `UserDefinedRoute`provoz byl zablokován z důvodu .
+V následujícím příkladu `connectionStatus` je zobrazen jako **nedosažitelný**. V `hops` podrobnostech vidíte, `issues` že provoz byl zablokován z důvodu. `UserDefinedRoute`
 
 ```json
 {
@@ -290,9 +290,9 @@ V následujícím příkladu `connectionStatus` je zobrazen jako **Nedostupný**
 }
 ```
 
-## <a name="check-website-latency"></a>Kontrola latence webu
+## <a name="check-website-latency"></a>Kontrolovat latenci webu
 
-Následující příklad kontroluje připojení k webu.
+Následující příklad zkontroluje připojení k webu.
 
 ### <a name="example"></a>Příklad
 
@@ -319,11 +319,11 @@ $requestBody = @"
 $response = armclient post "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/connectivityCheck?api-version=2017-03-01" $requestBody
 ```
 
-Vzhledem k tomu, že tato operace je již dlouho spuštěna, je identifikátor URI pro výsledek vrácen v hlavičce odpovědi, jak je znázorněno v následující odpovědi:
+Vzhledem k tomu, že je tato operace dlouho spuštěná, vrátí se identifikátor URI pro výsledek v hlavičce odpovědi, jak je znázorněno v následující reakci:
 
 **Důležité hodnoty**
 
-* **Umístění** – tato vlastnost obsahuje identifikátor URI, kde jsou výsledky po dokončení operace
+* **Umístění** – Tato vlastnost obsahuje identifikátor URI, ve kterém jsou výsledky po dokončení operace.
 
 ```
 HTTP/1.1 202 Accepted
@@ -344,7 +344,7 @@ null
 
 ### <a name="response"></a>Odpověď
 
-V následující odpovědi můžete vidět `connectionStatus` ukazuje jako **dosažitelné**. Při úspěšném připojení jsou k dispozici hodnoty latence.
+V následující reakci `connectionStatus` vidíte zobrazení jako **dostupné**. Po úspěšném připojení se dodávají hodnoty latence.
 
 ```json
 {
@@ -377,9 +377,9 @@ V následující odpovědi můžete vidět `connectionStatus` ukazuje jako **dos
 }
 ```
 
-## <a name="check-connectivity-to-a-storage-endpoint"></a>Kontrola připojení ke koncovému bodu úložiště
+## <a name="check-connectivity-to-a-storage-endpoint"></a>Zkontroluje připojení ke koncovému bodu úložiště.
 
-Následující příklad kontroluje připojení z virtuálního počítače k účtu úložiště blogu.
+Následující příklad zkontroluje připojení z virtuálního počítače k účtu úložiště blogu.
 
 ### <a name="example"></a>Příklad
 
@@ -406,11 +406,11 @@ $requestBody = @"
 $response = armclient post "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/connectivityCheck?api-version=2017-03-01" $requestBody
 ```
 
-Vzhledem k tomu, že tato operace je již dlouho spuštěna, je identifikátor URI pro výsledek vrácen v hlavičce odpovědi, jak je znázorněno v následující odpovědi:
+Vzhledem k tomu, že je tato operace dlouho spuštěná, vrátí se identifikátor URI pro výsledek v hlavičce odpovědi, jak je znázorněno v následující reakci:
 
 **Důležité hodnoty**
 
-* **Umístění** – tato vlastnost obsahuje identifikátor URI, kde jsou výsledky po dokončení operace
+* **Umístění** – Tato vlastnost obsahuje identifikátor URI, ve kterém jsou výsledky po dokončení operace.
 
 ```
 HTTP/1.1 202 Accepted
@@ -431,7 +431,7 @@ null
 
 ### <a name="response"></a>Odpověď
 
-Následující příklad je odpověď ze spuštění předchozívolání rozhraní API. Jakmile je kontrola úspěšná, vlastnost se `connectionStatus` zobrazí jako **dosažitelná**.  Jsou k dispozici podrobnosti týkající se počtu směrování potřebné k dosažení objektu blob úložiště a latence.
+Následující příklad je odpověď z spuštění předchozího volání rozhraní API. Když je ověření úspěšné, zobrazí se `connectionStatus` vlastnost jako **dostupná**.  Zadali jste podrobnosti o počtu směrování, které vyžaduje, aby se dosáhlo objektu BLOB úložiště a latence.
 
 ```json
 {
@@ -466,6 +466,6 @@ Následující příklad je odpověď ze spuštění předchozívolání rozhran
 
 ## <a name="next-steps"></a>Další kroky
 
-Zjistěte, jak automatizovat zachytávání paketů pomocí výstrah virtuálního počítače zobrazením [zobrazení vytvoření záznamu aktivovaného zachycení paketů](network-watcher-alert-triggered-packet-capture.md).
+Podívejte se, jak automatizovat zachycení paketů s výstrahami virtuálních počítačů zobrazením [Vytvoření výstrahy aktivované zachytávání paketů](network-watcher-alert-triggered-packet-capture.md).
 
-Zjistěte, jestli je určitý provoz povolený do nebo z vašeho virtuálního počítače, a to najdete na [stránce Zkontrolovat tok IP ověřit](diagnose-vm-network-traffic-filtering-problem.md).
+Zjistěte, jestli je na VIRTUÁLNÍm počítači povolený určitý provoz, a to tak, že navštíví [kontrolu toku IP](diagnose-vm-network-traffic-filtering-problem.md).

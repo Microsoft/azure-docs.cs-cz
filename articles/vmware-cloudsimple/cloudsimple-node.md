@@ -1,6 +1,6 @@
 ---
-title: Azure VMware Solution by CloudSimple – přehled uzlů
-description: Další informace o cloudových jednoduchých uzlech a konceptech.
+title: Řešení Azure VMware podle CloudSimple – přehled uzlů
+description: Přečtěte si o CloudSimplech uzlech a konceptech.
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/20/2019
@@ -9,41 +9,41 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 65afe26a98a53b00b72a1ea2b49799db2049b727
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77024921"
 ---
-# <a name="cloudsimple-nodes-overview"></a>Přehled uzlů CloudSimple
+# <a name="cloudsimple-nodes-overview"></a>CloudSimple uzly – přehled
 
-Uzly jsou stavební kameny privátního cloudu. Uzel je:
+Uzly jsou stavebními bloky privátního cloudu. Uzel je:
 
-* Vyhrazený holý kovový výpočetní hostitel, kde je nainstalován hypervisor VMware ESXi  
-* Výpočetní jednotka, kterou můžete zřídit nebo rezervovat pro vytvoření privátních cloudů
-* K dispozici pro poskytování nebo rezervaci v oblasti, kde je služba CloudSimple k dispozici
+* Vyhrazený výpočetní hostitel na holém počítači, kde je nainstalovaný VMware ESXi hypervisor  
+* Jednotka computingu, kterou můžete zřídit nebo rezervovat pro vytváření privátních cloudů
+* K dispozici pro zřízení nebo rezervaci v oblasti, kde je dostupná služba CloudSimple
 
-Privátní cloud vytvoříte z zřízených uzlů. Chcete-li vytvořit privátní cloud, potřebujete minimálně tři uzly stejné skladové položky. Chcete-li rozšířit privátní cloud, přidejte další uzly.  Uzly můžete přidat do existujícího clusteru nebo vytvořit nový cluster zřizováním uzlů na portálu Azure a jejich přidruženou službou CloudSimple.  Všechny zřízené uzly jsou viditelné v rámci služby CloudSimple.  
+Privátní Cloud můžete vytvořit ze zřízené uzlů. K vytvoření privátního cloudu potřebujete minimálně tři uzly stejné SKU. Pokud chcete rozšířit privátní cloud, přidejte další uzly.  Uzly můžete přidat do existujícího clusteru nebo vytvořit nový cluster pomocí zřízení uzlů v Azure Portal a jejich přidružení ke službě CloudSimple.  Všechny zřízené uzly jsou viditelné v rámci služby CloudSimple.  
 
 ## <a name="provisioned-nodes"></a>Zřízené uzly
 
-Zřízené uzly poskytují průběžnou kapacitu. Zřizování uzlů vám pomůže rychle škálovat cluster VMware na vyžádání. Můžete přidat uzly podle potřeby nebo odstranit zřízený uzel pro škálování clusteru VMware. Zřízené uzly se účtují měsíčně a účtují se do předplatného, kde jsou zřízeny.
+Zřízené uzly poskytují kapacitu s průběžnými platbami. Zřizování uzlů vám pomůže rychle škálovat cluster VMware na vyžádání. Podle potřeby můžete přidávat uzly nebo odstranit zřízený uzel pro horizontální navýšení kapacity clusteru VMware. Zřízené uzly se účtují měsíčně a účtují se z předplatného, kde se zřídí.
 
-* Pokud platíte za předplatné Azure platební kartou, bude se karta účtovat okamžitě.
-* Pokud vám fakturuje faktura, poplatky se zobrazí na další faktuře.
+* Pokud platíte za předplatné Azure pomocí platební karty, karta se účtuje okamžitě.
+* Pokud se fakturuje podle faktury, účtují se poplatky na vaší další faktuře.
 
-## <a name="vmware-solution-by-cloudsimple-nodes-sku"></a>Řešení VMware podle soupoložky uzlů CloudSimple
+## <a name="vmware-solution-by-cloudsimple-nodes-sku"></a>SKU řešení VMware podle CloudSimple uzlů
 
-Následující typy uzlů jsou k dispozici pro zřizování nebo rezervace.
+Pro zřizování nebo rezervaci jsou k dispozici následující typy uzlů.
 
-| Skladová jednotka (SKU)           | CS28 - Uzel                 | CS36 - Uzel                 | CS36m - Uzel                |
+| Skladová jednotka (SKU)           | CS28 – uzel                 | CS36 – uzel                 | CS36m – uzel                |
 |---------------|-----------------------------|-----------------------------|-----------------------------|
-| Region (Oblast)        | Východní USA, Západní USA            | Východní USA, Západní USA            | Západní Evropa                 |
-| Procesor           | 2x2,2 GHz, 28 jader (56 HT) | 2x2,3 GHz, 36 jader (72 HT) | 2x2,3 GHz, 36 jader (72 HT) |
+| Oblast        | Východní USA Západní USA            | Východní USA Západní USA            | Západní Evropa                 |
+| Procesor           | 2x 2,2 GHz, 28 jader (56 HT) | 2x 2,3 GHz, 36 jader (72 HT) | 2x 2,3 GHz, 36 jader (72 HT) |
 | Paměť RAM           | 256 GB                      | 512 GB                      | 576 GB                      |
-| Disk mezipaměti    | 1,6 TB NVMe                 | 3.2-TB NVMe                 | 3.2-TB NVMe                 |
-| Disk kapacity | 5.625 TB raw                | 11.25 TB raw                | 15,36 TB raw                |
-| Typ úložiště  | Všechny Flash                   | Všechny Flash                   | Všechny Flash                   |
+| Disk mezipaměti    | 1,6 – TB NVMe                 | 3,2 – TB NVMe                 | 3,2 – TB NVMe                 |
+| Disk kapacity | 5,625 TB Raw                | 11,25 TB Raw                | 15,36 TB Raw                |
+| Typ úložiště  | Všechny flash                   | Všechny flash                   | Všechny flash                   |
 
 ## <a name="limits"></a>Omezení
 
@@ -58,5 +58,5 @@ Následující omezení uzlů platí pro privátní cloudy.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Naučte se [zřazovat uzly](create-nodes.md)
-* Další informace o [privátních cloudech](cloudsimple-private-cloud.md)
+* Naučte se [zřizovat uzly](create-nodes.md) .
+* Informace o [privátních cloudech](cloudsimple-private-cloud.md)

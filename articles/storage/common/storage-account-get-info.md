@@ -1,7 +1,7 @@
 ---
-title: Získání typu účtu úložiště a názvu skladové položky s rozhraním .NET
+title: Získání typu účtu úložiště a názvu SKU pomocí .NET
 titleSuffix: Azure Storage
-description: Zjistěte, jak získat typ účtu úložiště Azure a název sku pomocí knihovny klienta .NET.
+description: Naučte se, jak získat Azure Storage typ účtu a název SKU pomocí klientské knihovny .NET.
 services: storage
 author: mhopkins-msft
 ms.author: mhopkins
@@ -10,27 +10,27 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.openlocfilehash: 1495ed55c24a0f94b911d60d1db0f32940ea134a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79137054"
 ---
-# <a name="get-storage-account-type-and-sku-name-with-net"></a>Získání typu účtu úložiště a názvu skladové položky s rozhraním .NET
+# <a name="get-storage-account-type-and-sku-name-with-net"></a>Získání typu účtu úložiště a názvu SKU pomocí .NET
 
-Tento článek ukazuje, jak získat typ účtu úložiště Azure a název sku pro objekt blob pomocí [knihovny klienta Azure Storage pro .NET](/dotnet/api/overview/azure/storage?view=azure-dotnet).
+Tento článek ukazuje, jak získat Azure Storage typ účtu a název SKU pro objekt BLOB pomocí [Azure Storage klientské knihovny pro .NET](/dotnet/api/overview/azure/storage?view=azure-dotnet).
 
-Informace o účtu jsou k dispozici ve verzích služeb počínaje verzí 2018-03-28.
+Informace o účtu jsou k dispozici pro verze služby od verze 2018-03-28.
 
-## <a name="about-account-type-and-sku-name"></a>Typ účtu a název skladové položky
+## <a name="about-account-type-and-sku-name"></a>Informace o typu účtu a názvu SKU
 
-**Typ účtu**: Platné `BlobStorage` `BlockBlobStorage`typy `FileStorage` `Storage`účtů `StorageV2`zahrnují , , , a . [Přehled účtu úložiště Azure](storage-account-overview.md) obsahuje další informace, včetně popisů různých účtů úložiště.
+**Typ účtu**: platné typy účtů zahrnují `BlobStorage`, `BlockBlobStorage`, `FileStorage` `Storage`, a `StorageV2`. [Přehled účtu Azure Storage](storage-account-overview.md) obsahuje další informace, včetně popisů různých účtů úložiště.
 
-**Název skladové položky**: `Premium_LRS` `Premium_ZRS`Platné `Standard_GRS` `Standard_GZRS`názvy skladových položk zahrnují , , `Standard_LRS`, , `Standard_RAGRS` `Standard_RAGZRS`, a `Standard_ZRS`. Názvy skladových míst rozlišují malá a velká písmena a jsou řetězcová pole ve [třídě SkuName](/dotnet/api/microsoft.azure.management.storage.models.skuname?view=azure-dotnet).
+**Název SKU**: platné názvy SKU zahrnují `Premium_LRS`, `Premium_ZRS`, `Standard_GRS`, `Standard_GZRS`, `Standard_LRS`, `Standard_RAGRS`, `Standard_RAGZRS`a `Standard_ZRS`. V názvech SKU jsou rozlišována velká a malá písmena a jsou řetězcová pole ve [třídě SkuName](/dotnet/api/microsoft.azure.management.storage.models.skuname?view=azure-dotnet).
 
 ## <a name="retrieve-account-information"></a>Načíst informace o účtu
 
-Chcete-li získat typ účtu úložiště a název skladové položky přidružené k objektu blob, zavolejte metodu [GetAccountProperties](/dotnet/api/microsoft.azure.storage.blob.cloudblob.getaccountproperties?view=azure-dotnet) nebo [GetAccountPropertiesAsync.](/dotnet/api/microsoft.azure.storage.blob.cloudblob.getaccountpropertiesasync?view=azure-dotnet)
+K získání typu účtu úložiště a názvu SKU přidruženého k objektu BLOB volejte metodu [GetAccountProperties](/dotnet/api/microsoft.azure.storage.blob.cloudblob.getaccountproperties?view=azure-dotnet) nebo [GetAccountPropertiesAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.getaccountpropertiesasync?view=azure-dotnet) .
 
 Následující příklad kódu načte a zobrazí vlastnosti účtu jen pro čtení.
 
@@ -62,6 +62,6 @@ private static async Task GetAccountInfoAsync(CloudBlob blob)
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si o dalších operacích, které můžete provádět na účtu úložiště prostřednictvím [portálu Azure a](https://portal.azure.com) rozhraní AZURE REST API.
+Přečtěte si o dalších operacích, které můžete provádět na účtu úložiště prostřednictvím [Azure Portal](https://portal.azure.com) a REST API Azure.
 
-- [Operace Získat informace o účtu (REST)](/rest/api/storageservices/get-account-information)
+- [Operace získání informací o účtu (REST)](/rest/api/storageservices/get-account-information)

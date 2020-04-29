@@ -1,6 +1,6 @@
 ---
-title: Konfigurace telemetrie Mediálních služeb Azure pomocí rest| Dokumenty společnosti Microsoft
-description: Tento článek ukazuje, jak používat telemetrická data Azure Media Services pomocí rozhraní REST API.
+title: Konfigurace telemetrie Azure Media Services s využitím REST | Microsoft Docs
+description: V tomto článku se dozvíte, jak používat Azure Media Services telemetrie pomocí REST API..
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,38 +15,38 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 4cf2bc919ecb8b39a23b23df95a6f37396f50603
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76774866"
 ---
-# <a name="configuring-azure-media-services-telemetry-with-rest"></a>Konfigurace telemetrie Mediálních služeb Azure pomocí rest
+# <a name="configuring-azure-media-services-telemetry-with-rest"></a>Konfigurace telemetrie Azure Media Services s využitím REST
 
-Toto téma popisuje obecné kroky, které můžete provést při konfiguraci telemetrie Azure Media Services (AMS) pomocí rozhraní REST API. 
+Toto téma popisuje obecné kroky, které můžete provést při konfiguraci telemetrie Azure Media Services (AMS) pomocí REST API. 
 
 >[!NOTE]
->Podrobné vysvětlení toho, co je telemetrie AMS a jak ji využívat, najdete v tématu [přehledu.](media-services-telemetry-overview.md)
+>Podrobné vysvětlení toho, co je telemetrie AMS a jak ji využívat, najdete v tématu [Přehled](media-services-telemetry-overview.md) .
 
-Kroky popsané v tomto tématu jsou:
+Postup popsaný v tomto tématu:
 
-- Získání účtu úložiště přidruženého k účtu Mediálních služeb
-- Získání koncových bodů oznámení
-- Vytvoření koncového bodu oznámení pro monitorování. 
+- Získání účtu úložiště přidruženého k účtu Media Services
+- Získávání koncových bodů oznámení
+- Vytváření koncového bodu oznámení pro monitorování. 
 
-    Chcete-li vytvořit koncový bod oznámení, nastavte EndPointType na AzureTable (2) a endPontAddress\/nastavenou na tabulku úložiště (například https: /telemetryvalidationstore.table.core.windows.net/).
+    Pokud chcete vytvořit koncový bod oznámení, nastavte EndPointType na Azure (2) a endPontAddress nastavte na tabulku úložiště (například https:\//telemetryvalidationstore.Table.Core.Windows.NET/).
   
-- Získání konfigurací monitorování
+- Získat konfigurace monitorování
 
-    Vytvořte nastavení konfigurace monitorování pro služby, které chcete sledovat. Není povoleno více než jedno nastavení konfigurace monitorování. 
+    Vytvořte nastavení konfigurace monitorování pro služby, které chcete monitorovat. Nepovoluje se více než jedno nastavení konfigurace monitorování. 
 
-- Přidání konfigurace monitorování
+- Přidat konfiguraci monitorování
 
 
  
-## <a name="get-the-storage-account-associated-with-a-media-services-account"></a>Získání účtu úložiště přidruženého k účtu Mediálních služeb
+## <a name="get-the-storage-account-associated-with-a-media-services-account"></a>Získání účtu úložiště přidruženého k Media Services účtu
 
-### <a name="request"></a>Žádost
+### <a name="request"></a>Request
 
     GET https://wamsbnp1clus001rest-hs.cloudapp.net/api/StorageAccounts HTTP/1.1
     x-ms-version: 2.19
@@ -74,7 +74,7 @@ Kroky popsané v tomto tématu jsou:
 
 ## <a name="get-the-notification-endpoints"></a>Získání koncových bodů oznámení
 
-### <a name="request"></a>Žádost
+### <a name="request"></a>Request
 
     GET https://wamsbnp1clus001rest-hs.cloudapp.net/api/NotificationEndPoints HTTP/1.1
     x-ms-version: 2.19
@@ -107,7 +107,7 @@ Kroky popsané v tomto tématu jsou:
  
 ## <a name="create-a-notification-endpoint-for-monitoring"></a>Vytvoření koncového bodu oznámení pro monitorování
 
-### <a name="request"></a>Žádost
+### <a name="request"></a>Request
 
     POST https://wamsbnp1clus001rest-hs.cloudapp.net/api/NotificationEndPoints HTTP/1.1
     x-ms-version: 2.19
@@ -126,7 +126,7 @@ Kroky popsané v tomto tématu jsou:
     }
 
 > [!NOTE]
-> Nezapomeňte změnit hodnotu "https:\//telemetryvalidationstore.table.core.windows.net" na váš účet úložiště.
+> Nezapomeňte změnit hodnotu https:\//telemetryvalidationstore.Table.Core.Windows.NET na váš účet úložiště.
 
 ### <a name="response"></a>Odpověď
 
@@ -147,9 +147,9 @@ Kroky popsané v tomto tématu jsou:
     
     {"d":{"__metadata":{"id":"https://wamsbnp1clus001rest-hs.cloudapp.net/api/NotificationEndPoints('nb%3Anepid%3AUUID%3A76bb4faf-ea29-4815-840a-9a8e20102fc4')","uri":"https://wamsbnp1clus001rest-hs.cloudapp.net/api/NotificationEndPoints('nb%3Anepid%3AUUID%3A76bb4faf-ea29-4815-840a-9a8e20102fc4')","type":"Microsoft.Cloud.Media.Vod.Rest.Data.Models.NotificationEndPoint"},"Id":"nb:nepid:UUID:76bb4faf-ea29-4815-840a-9a8e20102fc4","Name":"monitoring","Created":"\/Date(1449033042667)\/","EndPointAddress":"https://telemetryvalidationstore.table.core.windows.net/","EndPointType":2}}
  
-## <a name="get-the-monitoring-configurations"></a>Získání konfigurací monitorování
+## <a name="get-the-monitoring-configurations"></a>Získat konfigurace monitorování
 
-### <a name="request"></a>Žádost
+### <a name="request"></a>Request
 
     GET https://wamsbnp1clus001rest-hs.cloudapp.net/api/MonitoringConfigurations HTTP/1.1
     x-ms-version: 2.19
@@ -177,9 +177,9 @@ Kroky popsané v tomto tématu jsou:
     
     {"d":{"results":[]}}
 
-## <a name="add-a-monitoring-configuration"></a>Přidání konfigurace monitorování
+## <a name="add-a-monitoring-configuration"></a>Přidat konfiguraci monitorování
 
-### <a name="request"></a>Žádost
+### <a name="request"></a>Request
 
     POST https://wamsbnp1clus001rest-hs.cloudapp.net/api/MonitoringConfigurations HTTP/1.1
     x-ms-version: 2.19
@@ -220,9 +220,9 @@ Kroky popsané v tomto tématu jsou:
     
     {"d":{"__metadata":{"id":"https://wamsbnp1clus001rest-hs.cloudapp.net/api/MonitoringConfigurations('nb%3Amcid%3AUUID%3A1a8931ae-799f-45fd-8aeb-9641740295c2')","uri":"https://wamsbnp1clus001rest-hs.cloudapp.net/api/MonitoringConfigurations('nb%3Amcid%3AUUID%3A1a8931ae-799f-45fd-8aeb-9641740295c2')","type":"Microsoft.Cloud.Media.Vod.Rest.Data.Models.MonitoringConfiguration"},"Id":"nb:mcid:UUID:1a8931ae-799f-45fd-8aeb-9641740295c2","NotificationEndPointId":"nb:nepid:UUID:76bb4faf-ea29-4815-840a-9a8e20102fc4","Created":"2015-12-02T05:10:43.7680396Z","LastModified":"2015-12-02T05:10:43.7680396Z","Settings":{"__metadata":{"type":"Collection(Microsoft.Cloud.Media.Vod.Rest.Data.Models.ComponentMonitoringSettings)"},"results":[{"Component":"Channel","Level":"Normal"},{"Component":"StreamingEndpoint","Level":"Disabled"}]}}}
 
-## <a name="stop-telemetry"></a>Zastavit telemetrii
+## <a name="stop-telemetry"></a>Zastavení telemetrie
 
-### <a name="request"></a>Žádost
+### <a name="request"></a>Request
 
     DELETE https://wamsbnp1clus001rest-hs.cloudapp.net/api/MonitoringConfigurations('nb%3Amcid%3AUUID%3A1a8931ae-799f-45fd-8aeb-9641740295c2')
     x-ms-version: 2.19
@@ -233,9 +233,9 @@ Kroky popsané v tomto tématu jsou:
     Content-Type: application/json; charset=utf-8
     Host: wamsbnp1clus001rest-hs.cloudapp.net
 
-## <a name="consuming-telemetry-information"></a>Spotřebovávající telemetrické informace
+## <a name="consuming-telemetry-information"></a>Využívání informací o telemetrie
 
-Informace o využívání telemetrických informací naleznete v [tomto](media-services-telemetry-overview.md) tématu.
+Informace o využívání informací telemetrie najdete v [tomto](media-services-telemetry-overview.md) tématu.
 
 ## <a name="next-steps"></a>Další kroky
 

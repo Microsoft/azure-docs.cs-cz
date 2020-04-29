@@ -1,6 +1,6 @@
 ---
-title: Správa účtů – azure vmware řešení podle portálu CloudSimple
-description: Popisuje, jak spravovat účty na webu Azure VMware Solution by CloudSimple portal
+title: Správa účtů – Azure VMware Solution by CloudSimple Portal
+description: Popisuje, jak spravovat účty na řešení Azure VMware pomocí portálu CloudSimple.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/14/2019
@@ -9,32 +9,32 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 00348d36c38fdbfdf69a2e4e80a4c720268b40c8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77025363"
 ---
-# <a name="manage-accounts-on-the-azure-vmware-solution-by-cloudsimple-portal"></a>Správa účtů na portálu Azure VMware Solution by CloudSimple
+# <a name="manage-accounts-on-the-azure-vmware-solution-by-cloudsimple-portal"></a>Správa účtů na řešení Azure VMware pomocí portálu CloudSimple
 
-Při vytváření služby CloudSimple vytvoří účet na CloudSimple. Účet je přidružený k vašemu předplatnému Azure, kde se služba nachází. Všichni uživatelé s rolí vlastníka a přispěvatele v předplatném mají přístup k portálu CloudSimple. ID předplatného Azure a ID klienta přidružené ke službě CloudSimple se nacházejí na stránce Účty.
+Při vytváření služby CloudSimple se vytvoří účet na CloudSimple. Účet je přidružený k vašemu předplatnému Azure, kde se služba nachází. Všichni uživatelé s rolemi vlastník a přispěvatel v předplatném mají přístup k portálu CloudSimple. ID předplatného Azure a ID tenanta přidružené ke službě CloudSimple najdete na stránce účty.
 
-Chcete-li spravovat účty na portálu CloudSimple, [přeznejte portál](access-cloudsimple-portal.md) a v boční nabídce vyberte **Účet.**
+Pokud chcete spravovat účty na portálu CloudSimple, [přejděte na portál](access-cloudsimple-portal.md) a v postranní nabídce vyberte **účet** .
 
-Výběrem **možnosti Souhrn** zobrazíte informace o konfiguraci CloudSimple vaší společnosti. Zobrazuje se aktuální kapacita konfigurace cloudu, včetně počtu privátních cloudů, celkového úložiště, konfigurace clusteru vSphere, počtu uzlů a počtu výpočetních jader. Odkaz je součástí nákupu dalších uzlů, pokud aktuální konfigurace nesplňuje všechny vaše potřeby.
+Výběrem **souhrnu** zobrazíte informace o konfiguraci CloudSimple vaší společnosti. Zobrazí se aktuální kapacita vaší konfigurace cloudu, včetně počtu privátních cloudů, celkového úložiště, konfigurace clusteru vSphere, počtu uzlů a počtu výpočetních jader. Odkaz je zahrnutý k nákupu dalších uzlů, pokud aktuální konfigurace nevyhovuje všem vašim potřebám.
 
 ## <a name="email-alerts"></a>E-mailová upozornění
 
-Můžete přidat e-mailové adresy všech lidí, které chcete upozornit na změny konfigurace privátního cloudu.
+Můžete přidat e-mailové adresy všech osob, které chcete upozornit na změny konfigurace privátního cloudu.
 
 1. V oblasti **Další e-mailová upozornění** klikněte na **Přidat nový**.
 2. Zadejte e-mailovou adresu.
-3. Stiskněte klávesu Return.  
+3. Stiskněte tlačítko vrátit.  
 
-Chcete-li položku odebrat, klepněte na tlačítko **X**.
+Pokud chcete položku odebrat, klikněte na **X**.
 
-## <a name="cloudsimple-operator-access"></a>Přístup operátora CloudSimple
+## <a name="cloudsimple-operator-access"></a>Přístup k operátoru CloudSimple
 
-Nastavení přístupu operátora umožňuje CloudSimple, které vám pomůže s řešením potíží tím, že povolí pracovníka podpory přihlásit se k portálu CloudSimple.  Nastavení je ve výchozím nastavení povoleno. Všechny akce provedené pracovníkem technické podpory při přihlášení k vašemu zákaznickému účtu jsou zaznamenány a k dispozici pro vaši kontrolu na stránce**Audit** **aktivity.** > 
+Nastavení přístupu operátora umožňuje CloudSimple pomoci při řešení potíží tím, že se pracovník podpory může přihlásit ke svému portálu CloudSimple.  Toto nastavení je ve výchozím nastavení povolené. Všechny akce prováděné pracovníkem podpory, když se přihlásíte ke svému účtu zákazníka, se zaznamenávají a jsou k dispozici pro vaši kontrolu na stránce**audit** **aktivity** > .
 
-Chcete-li přístup zapnout nebo vypnout, klepněte na **přepínač Přístup operátora CloudSimple.**
+Kliknutím na přepínač **Povolit přístup k operátoru CloudSimple** zapněte nebo vypněte přístup.

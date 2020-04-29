@@ -1,6 +1,6 @@
 ---
-title: Začínáme s doručováním obsahu na vyžádání pomocí REST | Dokumenty společnosti Microsoft
-description: Tento kurz vás provede kroky implementace aplikace pro doručování obsahu na vyžádání pomocí Azure Media Services pomocí rozhraní REST API.
+title: Začněte s doručováním obsahu na vyžádání pomocí REST | Microsoft Docs
+description: Tento kurz vás provede jednotlivými kroky implementace aplikace pro doručování obsahu na vyžádání pomocí Azure Media Services pomocí REST API.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,20 +15,20 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 8989acc6d21a3c53be9d97c74ed7fbf03ba54819
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76773683"
 ---
-# <a name="get-started-with-delivering-content-on-demand-using-rest"></a>Začínáme s doručováním obsahu na vyžádání pomocí rest  
+# <a name="get-started-with-delivering-content-on-demand-using-rest"></a>Začínáme s doručováním obsahu na vyžádání pomocí REST  
 
 > [!NOTE]
-> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Viz také [pokyny k migraci z v2 na v3](../latest/migrate-from-v2-to-v3.md)
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](https://docs.microsoft.com/azure/media-services/latest/). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
 
-Tento rychlý start vás provede kroky implementace aplikace pro doručování obsahu video na vyžádání (VoD) pomocí azure media services (AMS) REST API.
+Tento rychlý Start vás provede jednotlivými kroky implementace aplikace pro doručování obsahu videa na vyžádání (VoD) s využitím rozhraní REST API pro Azure Media Services (AMS).
 
-Kurz představuje základní pracovní postup služby Media Services a nejběžnější programovací objekty a úkoly, které Media Services vyžaduje. Po dokončení kurzu můžete streamovat nebo postupně stahovat ukázkový mediální soubor, který jste nahráli, zakódovali a stáhli.
+Kurz představuje základní pracovní postup služby Media Services a nejběžnější programovací objekty a úkoly, které Media Services vyžaduje. Po dokončení tohoto kurzu budete moct streamovat nebo postupně stahovat ukázkový mediální soubor, který jste nahráli, zakódovi a stáhli.
 
 Následující obrázek ukazuje některé z nejčastěji používaných objektů při vývoji aplikace VoD na základě modelu Media Services OData.
 
@@ -37,40 +37,40 @@ Kliknutím na obrázek zobrazíte jeho plnou velikost.
 <a href="./media/media-services-rest-get-started/media-services-overview-object-model.png" target="_blank"><img src="./media/media-services-rest-get-started/media-services-overview-object-model-small.png"></a> 
 
 ## <a name="prerequisites"></a>Požadavky
-Následující předpoklady jsou nutné pro spuštění vývoje s media services s REST API.
+Pro zahájení vývoje pomocí Media Services s rozhraními REST API je potřeba splnit následující požadavky.
 
 * Účet Azure. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 * Účet Media Services. Pokud chcete vytvořit účet Media Services, přečtěte si článek [Jak vytvořit účet Media Services](media-services-portal-create-account.md).
-* Pochopení toho, jak vyvíjet pomocí rozhraní REST API mediálních služeb. Další informace naleznete v tématu [Přehled rozhraní REST API služby Media Services](media-services-rest-how-to-use.md).
-* Aplikace podle vašeho výběru, která může odesílat požadavky http a odpovědi. Tento kurz používá [Šumař](https://www.telerik.com/download/fiddler).
+* Seznámení s vývojem pomocí Media Services REST API. Další informace najdete v tématu [Media Services REST API Overview](media-services-rest-how-to-use.md).
+* Aplikace podle vašeho výběru, která může odesílat požadavky HTTP a odpovědi. V tomto kurzu se používá [Fiddler](https://www.telerik.com/download/fiddler).
 
-Následující úkoly jsou zobrazeny v tomto rychlém startu.
+V tomto rychlém startu se zobrazují následující úkoly.
 
 1. Spuštění koncového bodu streamování (pomocí webu Azure Portal).
-2. Připojte se k účtu Mediálních služeb pomocí rozhraní REST API.
-3. Vytvořte nový datový zdroj a nahrajte video soubor s rozhraním REST API.
-4. Zakódujte zdrojový soubor do sady adaptivních souborů MP4 s přenosovou rychlostí pomocí rozhraní REST API.
-5. Publikujte datové zdroje a získejte streamované a progresivní adresy URL stahování pomocí rozhraní REST API.
+2. Připojte se k účtu Media Services pomocí REST API.
+3. Vytvořte nový Asset a nahrajte videosoubor pomocí REST API.
+4. Zakódovat zdrojový soubor do sady souborů MP4 s adaptivní přenosovou rychlostí pomocí REST API.
+5. Publikování assetu a získání adres URL streamování a progresivního stahování pomocí REST API.
 6. Přehrání obsahu
 
 >[!NOTE]
->Je stanovený limit 1 000 000 různých zásad AMS (třeba zásady lokátoru nebo ContentKeyAuthorizationPolicy). Stejné ID zásad použijte, pokud vždy používáte stejné dny / přístupová oprávnění, například zásady pro lokátory, které mají zůstat na místě po dlouhou dobu (zásady bez nahrávání). Další informace naleznete v [tomto](media-services-dotnet-manage-entities.md#limit-access-policies) článku.
+>Je stanovený limit 1 000 000 různých zásad AMS (třeba zásady lokátoru nebo ContentKeyAuthorizationPolicy). Použijte stejné ID zásad, pokud vždycky používáte stejné dny nebo přístupová oprávnění, například zásady pro Lokátory, které mají zůstat v platnosti po dlouhou dobu (zásady bez nahrávání). Další informace najdete v [tomto](media-services-dotnet-manage-entities.md#limit-access-policies) článku.
 
-Podrobnosti o entitách AMS REST použitých v tomto článku najdete v článku [odkaz na rozhraní REST API služby Azure Media Services](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference). Viz také [koncepty Mediálních služeb Azure](media-services-concepts.md).
+Podrobnosti o entitách služby AMS REST používaných v tomto článku naleznete v tématu [Azure Media Services REST API Reference](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference). Přečtěte si také téma [Azure Media Services koncepty](media-services-concepts.md).
 
 >[!NOTE]
->Při přístupu k entitám ve službě Media Services je nutné nastavit konkrétní pole záhlaví a hodnoty v požadavcích HTTP. Další informace naleznete [v tématu Setup for Media Services REST API Development](media-services-rest-how-to-use.md).
+>Při přístupu k entitám v Media Services musíte nastavit konkrétní pole a hodnoty hlaviček v požadavcích HTTP. Další informace najdete v tématu [instalace Media Services REST APIm vývoji](media-services-rest-how-to-use.md).
 
 ## <a name="start-streaming-endpoints-using-the-azure-portal"></a>Spuštění koncového bodu streamování pomocí webu Azure Portal
 
-Při práci s Azure Media Services je jedním z nejběžnějších scénářů doručování videa prostřednictvím adaptivního streamování datového toku. Služba Media Services poskytuje dynamické balení, které umožňuje doručovat obsah s adaptivní přenosovou rychlostí s kódováním MP4 ve formátech streamování podporovaných službou Media Services (MPEG DASH, HLS, technologie Smooth Streaming). není přitom potřeba ukládat předem zabalené verze pro každý z těchto formátů streamování.
+Při práci s Azure Media Services je jedním z nejběžnějších scénářů doručování videa prostřednictvím streamování s adaptivní přenosovou rychlostí. Služba Media Services poskytuje dynamické balení, které umožňuje doručovat obsah s adaptivní přenosovou rychlostí s kódováním MP4 ve formátech streamování podporovaných službou Media Services (MPEG DASH, HLS, technologie Smooth Streaming). není přitom potřeba ukládat předem zabalené verze pro každý z těchto formátů streamování.
 
 >[!NOTE]
 >Po vytvoření účtu AMS se do vašeho účtu přidá **výchozí** koncový bod streamování ve stavu **Zastaveno**. Pokud chcete spustit streamování vašeho obsahu a využít výhod dynamického balení a dynamického šifrování, musí koncový bod streamování, ze kterého chcete streamovat obsah, být ve stavu **Spuštěno**.
 
 Pokud chcete spustit koncový bod streamování, postupujte takto:
 
-1. Přihlaste se na [webu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 2. V okně Nastavení klikněte na Koncové body streamování.
 3. Klikněte na výchozí koncový bod streamování.
 
@@ -79,26 +79,26 @@ Pokud chcete spustit koncový bod streamování, postupujte takto:
 4. Klikněte na ikonu Spustit.
 5. Kliknutím na tlačítko Uložit uložte provedené změny.
 
-## <a name="connect-to-the-media-services-account-with-rest-api"></a><a id="connect"></a>Připojení k účtu Mediálních služeb pomocí rozhraní REST API
+## <a name="connect-to-the-media-services-account-with-rest-api"></a><a id="connect"></a>Připojení k účtu Media Services pomocí REST API
 
-Informace o tom, jak se připojit k rozhraní AMS API, najdete [v tématu Přístup k rozhraní API Azure Media Services pomocí ověřování Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
+Informace o tom, jak se připojit k rozhraní API AMS, najdete v tématu [přístup k rozhraní Azure Media Services API pomocí ověřování Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
 
-## <a name="create-a-new-asset-and-upload-a-video-file-with-rest-api"></a><a id="upload"></a>Vytvoření nového datového zdroje a nahrání videosouboru pomocí rozhraní REST API
+## <a name="create-a-new-asset-and-upload-a-video-file-with-rest-api"></a><a id="upload"></a>Vytvoření nového assetu a nahrání videosouboru pomocí REST API
 
-Ve službě Media Services můžete digitální soubory nahrát do assetu. Entita **Asset** může obsahovat video, zvuk, obrázky, kolekce miniatur, textové stopy a soubory skrytých titulků (a metadata o těchto souborech).)  Jakmile jsou soubory nahrány do datového zdroje, váš obsah je bezpečně uložen v cloudu pro další zpracování a streamování.
+Ve službě Media Services můžete digitální soubory nahrát do assetu. Entita **assetu** může obsahovat video, zvuk, obrázky, kolekce miniatur, textové stopy a soubory titulků (a metadata o těchto souborech.)  Po nahrání souborů do assetu je váš obsah bezpečně uložen v cloudu pro další zpracování a streamování.
 
-Jednou z hodnot, které musíte poskytnout při vytváření majetku, jsou možnosti vytváření majetku. Vlastnost **Options** je hodnota výčtu, která popisuje možnosti šifrování, které lze vytvořit s Asset. Platná hodnota je jednou z hodnot z níže uvedeného seznamu, nikoli kombinací hodnot z tohoto seznamu:
+Jedna z hodnot, které musíte zadat při vytváření assetu, jsou možnosti vytváření prostředků. Vlastnost **Options** je hodnota výčtu, která popisuje možnosti šifrování, pomocí kterých lze vytvořit Asset. Platná hodnota je jedna z hodnot níže uvedeného seznamu, nikoli kombinace hodnot z tohoto seznamu:
 
-* **Žádný** = **0** - Není použito žádné šifrování. Při použití této možnosti není váš obsah chráněn při přenosu nebo v klidovém stavu.
+* **Žádné** = **0** – nepoužívá se žádné šifrování. Když použijete tuto možnost, váš obsah se nechrání během přenosu nebo v klidovém úložišti.
     Pokud chcete pomocí progresivního stahování dodávat obsah ve formátu MP4, použijte tuto možnost.
-* **StorageEncrypted** = **1** – Šifruje váš čistý obsah místně pomocí šifrování AES-256 bitů a pak ho nahraje do Služby Azure Storage, kde je uložen šifrovaný v klidovém stavu. Prostředky chráněné pomocí šifrování úložiště jsou před kódováním automaticky bez šifrování umístěny do systému souborů EFS a volitelně se znovu zašifrují před jejich odesláním zpět v podobě nového výstupního prostředku. Případem primárního použití šifrování úložiště je situace, kdy chcete zabezpečit soubory s vysoce kvalitními vstupními multimediálními soubory pomocí silného šifrování na disku.
-* **CommonEncryptionProtected** = **2** - Tuto možnost použijte, pokud nahráváte obsah, který již byl zašifrován a chráněn pomocí běžného šifrování nebo playready DRM (například plynulé streamování chráněné pomocí služby PlayReady DRM).
-* **EnvelopeEncryptionProtected** = **4** – Tuto možnost použijte, pokud nahráváte HLS zašifrované pomocí AES. Soubory musí být zakódovány a zašifrovány správcem transformace.
+* **StorageEncrypted** = **1** – šifruje obsah místně pomocí šifrování AES-256 a pak ho nahraje, aby Azure Storage tam, kde je uložený zašifrovaný v klidovém stavu. Prostředky chráněné pomocí šifrování úložiště jsou před kódováním automaticky bez šifrování umístěny do systému souborů EFS a volitelně se znovu zašifrují před jejich odesláním zpět v podobě nového výstupního prostředku. Případem primárního použití šifrování úložiště je situace, kdy chcete zabezpečit soubory s vysoce kvalitními vstupními multimediálními soubory pomocí silného šifrování na disku.
+* **CommonEncryptionProtected** = **2** – tuto možnost použijte, pokud nahráváte obsah, který už je zašifrovaný a chráněný pomocí Common Encryption nebo PlayReady DRM (například Smooth Streaming chráněná pomocí technologie PlayReady DRM).
+* **EnvelopeEncryptionProtected** = **4** – tuto možnost použijte, pokud odesíláte HLS šifrované pomocí AES. Soubory musí být zakódované a šifrované pomocí nástroje pro transformaci.
 
-### <a name="create-an-asset"></a>Vytvoření datového zdroje
-Datový zdroj je kontejner pro více typů nebo sad objektů ve službě Media Services, včetně videa, zvuku, obrázků, kolekcí miniatur, textových stop a souborů skrytých titulků. V rozhraní REST API vyžaduje vytvoření datového zdroje odeslání požadavku POST službě Media Services a umístění veškerých informací o vlastnostech o vašem datovém zdroji do těla požadavku.
+### <a name="create-an-asset"></a>Vytvoření assetu
+Asset je kontejner pro více typů nebo sad objektů v Media Services, včetně videa, zvuku, obrázků, kolekcí miniatur, textových stop a souborů titulků. V REST API vytvoření Assetu vyžaduje odeslání žádosti POST do Media Services a umístění jakýchkoli vlastností informací o prostředku do textu žádosti.
 
-Následující příklad ukazuje, jak vytvořit datový zdroj.
+Následující příklad ukazuje, jak vytvořit Asset.
 
 **Požadavek HTTP**
 
@@ -119,7 +119,7 @@ Následující příklad ukazuje, jak vytvořit datový zdroj.
 
 **Odpověď HTTP**
 
-V případě úspěchu je vrácena následující:
+V případě úspěchu se vrátí následující:
 
     HTTP/1.1 201 Created
     Cache-Control: no-cache
@@ -149,10 +149,10 @@ V případě úspěchu je vrácena následující:
        "StorageAccountName":"storagetestaccount001"
     }
 
-### <a name="create-an-assetfile"></a>Vytvoření souboru assetů
-Entita [AssetFile](https://docs.microsoft.com/rest/api/media/operations/assetfile) představuje video nebo zvukový soubor, který je uložen v kontejneru objektů blob. Soubor datového zdroje je vždy přidružen k datovému zdroji a datový zdroj může obsahovat jeden nebo více souborů AssetFiles. Úloha kodéru mediálních služeb se nezdaří, pokud objekt souboru datového zdroje není přidružen k digitálnímu souboru v kontejneru objektů blob.
+### <a name="create-an-assetfile"></a>Vytvoření AssetFile
+Entita [AssetFile](https://docs.microsoft.com/rest/api/media/operations/assetfile) představuje video nebo zvukový soubor, který je uložený v kontejneru objektů BLOB. Soubor assetu je vždy přidružen k assetu a Asset může obsahovat jeden nebo více AssetFiles. Úloha Media Services Encoder se nezdařila v případě, že objekt souboru prostředků není přidružen k digitálnímu souboru v kontejneru objektů BLOB.
 
-Po nahrání digitálního mediálního souboru do kontejneru objektů blob použijete požadavek **HTTP sloučení** k aktualizaci souboru AssetFile s informacemi o mediálním souboru (jak je znázorněno dále v tématu).
+Po nahrání digitálního mediálního souboru do kontejneru objektů BLOB se pomocí žádosti o **sloučení** http aktualizuje AssetFile s informacemi o vašem mediálním souboru (jak je uvedeno dále v tématu).
 
 **Požadavek HTTP**
 
@@ -211,10 +211,10 @@ Po nahrání digitálního mediálního souboru do kontejneru objektů blob pou�
     }
 
 
-### <a name="creating-the-accesspolicy-with-write-permission"></a>Vytvoření zásad accessu s oprávněním k zápisu
-Před nahráním souborů do úložiště objektů blob nastavte práva zásad přístupu pro zápis do datového zdroje. Chcete-li to provést, post požadavek HTTP na accesspolicies entity set. Definujte hodnotu DurationInMinutes při vytvoření nebo se v odpovědi zobrazí chybová zpráva 500 Internal Server. Další informace o zásadách přístupu naleznete v [tématu AccessPolicy](https://docs.microsoft.com/rest/api/media/operations/accesspolicy).
+### <a name="creating-the-accesspolicy-with-write-permission"></a>Vytvoření AccessPolicy s oprávněním k zápisu
+Před nahráním jakýchkoli souborů do úložiště objektů BLOB nastavte práva zásad přístupu pro zápis do assetu. Provedete to tak, že ODEŠLEte požadavek HTTP do sady entit AccessPolicies. Při vytváření Definujte hodnotu DurationInMinutes nebo v odpovědi obdržíte interní chybovou zprávu serveru 500. Další informace o AccessPolicies najdete v tématu [AccessPolicy](https://docs.microsoft.com/rest/api/media/operations/accesspolicy).
 
-Následující příklad ukazuje, jak vytvořit zásady accessu:
+Následující příklad ukazuje, jak vytvořit AccessPolicy:
 
 **Požadavek HTTP**
 
@@ -233,7 +233,7 @@ Následující příklad ukazuje, jak vytvořit zásady accessu:
 
 **Odpověď HTTP**
 
-Pokud je úspěšná, je vrácena následující odpověď:
+V případě úspěchu se vrátí následující odpověď:
 
     HTTP/1.1 201 Created
     Cache-Control: no-cache
@@ -259,9 +259,9 @@ Pokud je úspěšná, je vrácena následující odpověď:
        "Permissions":2
     }
 
-### <a name="get-the-upload-url"></a>Získat adresu URL pro nahrávání
+### <a name="get-the-upload-url"></a>Získat adresu URL pro odeslání
 
-Chcete-li získat skutečnou adresu URL pro nahrání, vytvořte lokátor SAS. Lokátory definují čas zahájení a typ koncového bodu připojení pro klienty, kteří chtějí získat přístup k souborům ve datovém zdroji. Můžete vytvořit více lokátoru entity pro daný PřístupZásad a Asset dvojice pro zpracování různých požadavků a potřeb klientů. Každý z těchto lokátorů používá hodnotu StartTime plus hodnotu DurationInMinutes zásad accesspolicy k určení doby, po kterou lze použít adresu URL. Další informace naleznete v [tématu Locator](https://docs.microsoft.com/rest/api/media/operations/locator).
+Pokud chcete přijmout skutečnou adresu URL pro odeslání, vytvořte Lokátor SAS. Lokátory definují čas spuštění a typ koncového bodu připojení pro klienty, kteří chtějí získat přístup k souborům v prostředku. Můžete vytvořit více entit lokátoru pro určitý AccessPolicy a dvojici prostředků pro zpracování různých požadavků klientů a potřeb. Každá z těchto lokátorů používá hodnotu StartTime a hodnotu DurationInMinutes AccessPolicy k určení doby, po kterou lze adresu URL použít. Další informace najdete v tématu [Lokátor](https://docs.microsoft.com/rest/api/media/operations/locator).
 
 Adresa URL SAS má následující formát:
 
@@ -269,11 +269,11 @@ Adresa URL SAS má následující formát:
 
 Musí být splněny určité předpoklady:
 
-* K danému prostředku nelze najednou přidružit více než pět jedinečných lokátorů. 
-* Pokud potřebujete okamžitě nahrát soubory, měli byste nastavit hodnotu StartTime na pět minut před aktuálním časem. Důvodem je, že může být hodiny zkosení mezi klientským počítačem a media services. Hodnota StartTime musí být také v následujícím formátu DateTime: YYYY-MM-DDTHH:mm:ssZ (například "2014-05-23T17:53:50Z").    
-* Může být 30-40 sekund zpoždění po vytvoření lokátoru, když je k dispozici pro použití. Tento problém se týká [adresy URL SAS](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) i lokátorů původu.
+* K danému prostředku nelze současně přidružit více než pět jedinečných lokátorů. 
+* Pokud potřebujete nahrávat soubory hned, měli byste nastavit hodnotu Čas_spuštění na pět minut před aktuálním časem. Důvodem je, že může dojít k naklonění času mezi klientským počítačem a Media Services. Hodnota StartTime musí být také v následujícím formátu data a času: RRRR-MM-DDTHH: mm: ssZ (například "2014-05-23T17:53:50Z").    
+* Po vytvoření lokátoru v případě, že je k dispozici pro použití, může docházet ke zpoždění 30-40 sekund. Tento problém se týká [adresy URL SAS](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) i lokátorů původu.
 
-Následující příklad ukazuje, jak vytvořit Lokátor URL SAS, jak je definovántypem vlastnosti v těle požadavku ("1" pro lokátor SAS a "2" pro lokátor původu na vyžádání). Vrácená vlastnost **Path** obsahuje adresu URL, kterou musíte použít k nahrání souboru.
+Následující příklad ukazuje, jak vytvořit Lokátor adresy URL SAS, jak je definováno vlastností typ v textu žádosti ("1" pro Lokátor SAS a "2" pro Lokátor původu na vyžádání). Vrácená vlastnost **path** obsahuje adresu URL, kterou je nutné použít k nahrání souboru.
 
 **Požadavek HTTP**
 
@@ -298,7 +298,7 @@ Následující příklad ukazuje, jak vytvořit Lokátor URL SAS, jak je definov
 
 **Odpověď HTTP**
 
-Pokud je úspěšná, je vrácena následující odpověď:
+V případě úspěchu se vrátí následující odpověď:
 
     HTTP/1.1 201 Created
     Cache-Control: no-cache
@@ -328,18 +328,18 @@ Pokud je úspěšná, je vrácena následující odpověď:
        "Name":null
     }
 
-### <a name="upload-a-file-into-a-blob-storage-container"></a>Nahrání souboru do kontejneru úložiště objektů blob
-Jakmile budete mít accesspolicy a locator nastavit, skutečný soubor se nahraje do kontejneru úložiště objektů blob Azure pomocí Azure Storage REST API. Soubory je nutné nahrát jako objekty BLOB bloku. Objekty BLOB stránky nejsou podporovány službou Azure Media Services.  
+### <a name="upload-a-file-into-a-blob-storage-container"></a>Nahrání souboru do kontejneru úložiště objektů BLOB
+Jakmile budete mít AccessPolicy a lokátor, vlastní soubor se nahraje do kontejneru úložiště objektů BLOB v Azure pomocí rozhraní REST API Azure Storage. Soubory je třeba nahrát jako objekty blob bloku. Azure Media Services nepodporuje objekty blob stránky.  
 
 > [!NOTE]
-> Je nutné přidat název souboru, který chcete nahrát, do **hodnoty** Cesty lokátoru přijaté v předchozí části. Například, `https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4?`.
+> Je nutné přidat název souboru, který chcete odeslat do hodnoty **cesty** lokátoru přijaté v předchozí části. Například, `https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4?`.
 >
 >
 
-Další informace o práci s objekty BLOB úložiště Azure najdete v [tématu rozhraní REST API služby blob](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API).
+Další informace o práci s objekty blob služby Azure Storage najdete v tématu [REST API služby BLOB](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API).
 
-### <a name="update-the-assetfile"></a>Aktualizace souboru assetfile
-Teď, když jste nahráli soubor, aktualizujte informace o velikosti souboru FileAsset (a další). Například:
+### <a name="update-the-assetfile"></a>Aktualizace AssetFile
+Teď, když jste nahráli soubor, aktualizujte informace o velikosti Assetového prostředku (a dalších). Příklad:
 
     MERGE https://wamsbayclus001rest-hs.cloudapp.net/api/Files('nb%3Acid%3AUUID%3Af13a0137-0a62-9d4c-b3b9-ca944b5142c5') HTTP/1.1
     Content-Type: application/json
@@ -362,12 +362,12 @@ Teď, když jste nahráli soubor, aktualizujte informace o velikosti souboru Fil
 
 **Odpověď HTTP**
 
-V případě úspěchu je vrácena následující:
+V případě úspěchu se vrátí následující:
 
     HTTP/1.1 204 No Content
     ...
 
-## <a name="delete-the-locator-and-accesspolicy"></a>Odstranění zásad locatoru a přístupu
+## <a name="delete-the-locator-and-accesspolicy"></a>Odstranit Lokátor a AccessPolicy
 **Požadavek HTTP**
 
     DELETE https://wamsbayclus001rest-hs.cloudapp.net/api/Locators('nb%3Alid%3AUUID%3Aaf57bdd8-6751-4e84-b403-f3c140444b54') HTTP/1.1
@@ -382,7 +382,7 @@ V případě úspěchu je vrácena následující:
 
 **Odpověď HTTP**
 
-V případě úspěchu je vrácena následující:
+V případě úspěchu se vrátí následující:
 
     HTTP/1.1 204 No Content
     ...
@@ -400,23 +400,23 @@ V případě úspěchu je vrácena následující:
 
 **Odpověď HTTP**
 
-V případě úspěchu je vrácena následující:
+V případě úspěchu se vrátí následující:
 
     HTTP/1.1 204 No Content
     ...
 
-## <a name="encode-the-source-file-into-a-set-of-adaptive-bitrate-mp4-files"></a><a id="encode"></a>Zakódování zdrojového souboru do sady souborů MP4 s adaptivní přenosovou rychlostí
+## <a name="encode-the-source-file-into-a-set-of-adaptive-bitrate-mp4-files"></a><a id="encode"></a>Zakódovat zdrojový soubor do sady souborů MP4 s adaptivní přenosovou rychlostí
 
-Po požití datového zdroje do služby Media Services lze médium před doručením klientům zakódovat, převést, označit vodoznakem a tak dále. Tyto aktivity se plánují a spouštějí s několika instancemi role na pozadí, abyste měli zajištěný vysoký výkon a dostupnost. Tyto aktivity se nazývají Úlohy a každá úloha se skládá z atomických úloh, které provádějí skutečnou práci na souboru majetku (další informace naleznete v [tématu Úloha](https://docs.microsoft.com/rest/api/media/operations/job), [Popisy úkolů).](https://docs.microsoft.com/rest/api/media/operations/task)
+Po ingestování prostředků do Media Services se média dají kódovat, transmuxovat, s vodotiskem a tak dále, než se doručí klientům. Tyto aktivity se plánují a spouštějí s několika instancemi role na pozadí, abyste měli zajištěný vysoký výkon a dostupnost. Tyto aktivity se nazývají úlohy a Každá úloha se skládá z atomických úloh, které vykonávají skutečnou práci na souboru Assetu (Další informace najdete v tématu [úlohy](https://docs.microsoft.com/rest/api/media/operations/job), popisy [úloh](https://docs.microsoft.com/rest/api/media/operations/task) ).
 
-Jak již bylo zmíněno dříve, při práci s Azure Media Services jedním z nejběžnějších scénářů je poskytování adaptivního datového toku streamování vašim klientům. Mediální služby mohou dynamicky zabalit sadu souborů MP4 s adaptivní množí datovou rychlostí do jednoho z následujících formátů: HTTP Live Streaming (HLS), Smooth Streaming, MPEG DASH.
+Jak bylo zmíněno dříve, při práci s Azure Media Services jedním z nejběžnějších scénářů je doručování streamování s adaptivní přenosovou rychlostí vašim klientům. Media Services může dynamicky zabalit sadu souborů MP4 s adaptivní přenosovou rychlostí do jednoho z následujících formátů: HTTP Live Streaming (HLS), Smooth Streaming, MPEG POMLČKa.
 
-Následující část ukazuje, jak vytvořit úlohu, která obsahuje jednu úlohu kódování. Úloha určuje překódování souboru mezanina do sady modulů MP4 s adaptivním datovým tokem pomocí **standardu Media Encoder Standard**. V části je také uvedeno, jak sledovat průběh zpracování úlohy. Po dokončení úlohy budete moci vytvořit lokátory, které jsou potřebné k získání přístupu k vašim datovým zdrojům.
+V následující části se dozvíte, jak vytvořit úlohu, která obsahuje jednu úlohu kódování. Tato úloha určuje, že se soubor Mezzanine překóduje do sady rychlostmi s adaptivní přenosovou rychlostí pomocí **Media Encoder Standard**. Část také ukazuje, jak monitorovat průběh zpracování úlohy. Po dokončení úlohy byste mohli vytvořit Lokátory, které jsou potřeba k získání přístupu k vašim prostředkům.
 
-### <a name="get-a-media-processor"></a>Získání mediálního procesoru
-Ve službě Media Services je mediální procesor součástí, která zpracovává určitou úlohu zpracování, jako je kódování, převod formátu, šifrování nebo dešifrování mediálního obsahu. Pro úlohu kódování uvedenou v tomto kurzu použijeme standard kodéru médií.
+### <a name="get-a-media-processor"></a>Získat procesor médií
+V Media Services je procesorem médií komponenta, která zpracovává konkrétní úlohu zpracování, jako je například kódování, převod formátu, šifrování nebo dešifrování mediálního obsahu. Pro úlohu kódování zobrazenou v tomto kurzu použijeme Media Encoder Standard.
 
-Následující kód požaduje id kodéru.
+Následující kód požaduje ID kodéru.
 
 **Požadavek HTTP**
 
@@ -460,9 +460,9 @@ Následující kód požaduje id kodéru.
     }
 
 ### <a name="create-a-job"></a>Vytvoření úlohy
-Každá úloha může mít jeden nebo více úkolů v závislosti na typu zpracování, které chcete provést. Prostřednictvím rozhraní REST API můžete vytvořit úlohy a jejich související úkoly jedním ze dvou způsobů: Úkoly lze definovat vsazení prostřednictvím vlastnosti Navigace úkolů na entitách Úlohy nebo prostřednictvím dávkového zpracování OData. Sada Media Services SDK používá dávkové zpracování. Pro čitelnost příkladů kódu v tomto článku jsou však úkoly definovány vtextu. Informace o dávkovém zpracování naleznete v tématu [Open Data Protocol (OData) Batch Processing](https://www.odata.org/documentation/odata-version-3-0/batch-processing/).
+Každá úloha může mít jeden nebo více úloh v závislosti na typu zpracování, které chcete provést. Prostřednictvím REST API můžete vytvořit úlohy a jejich související úkoly jedním ze dvou způsobů: úkoly lze definovat prostřednictvím vlastnosti navigace úkoly v entitách úlohy nebo prostřednictvím dávkového zpracování OData. Sada Media Services SDK používá dávkové zpracování. Nicméně pro čitelnost příkladů kódu v tomto článku jsou úkoly definovány jako vložené. Informace o dávkovém zpracování najdete v tématu [dávkové zpracování protokolu OData (Open Data Protocol)](https://www.odata.org/documentation/odata-version-3-0/batch-processing/).
 
-Následující příklad ukazuje, jak vytvořit a zaúčtovat úlohu s jednou sadou úloh pro kódování videa v určitém rozlišení a kvalitě. Následující část dokumentace obsahuje seznam všech [přednastavení úloh podporovaných](https://msdn.microsoft.com/library/mt269960) procesorem Media Encoder Standard.  
+Následující příklad ukazuje, jak vytvořit a publikovat úlohu s jednou nastavenou úlohou ke kódování videa v konkrétním rozlišení a kvalitě. V následující části dokumentace najdete seznam všech [přednastavení úloh](https://msdn.microsoft.com/library/mt269960) podporovaných procesorem Media Encoder Standard.  
 
 **Požadavek HTTP**
 
@@ -498,7 +498,7 @@ Následující příklad ukazuje, jak vytvořit a zaúčtovat úlohu s jednou sa
 
 **Odpověď HTTP**
 
-Pokud je úspěšná, je vrácena následující odpověď:
+V případě úspěchu se vrátí následující odpověď:
 
     HTTP/1.1 201 Created
     Cache-Control: no-cache
@@ -558,34 +558,34 @@ Pokud je úspěšná, je vrácena následující odpověď:
     }
 
 
-V každé žádosti o úlohu je třeba poznamenat několik důležitých věcí:
+K dispozici je několik důležitých věcí, které je potřeba si uvědomit v každé žádosti o úlohu:
 
-* Vlastnosti TaskBody MUSÍ používat literál XML k definování počtu vstupních nebo výstupních datových zdrojů, které task používá. Úkol článek obsahuje definici schématu XML pro XML.
-* V definici TaskBody musí `<inputAsset>` být `<outputAsset>` každá vnitřní hodnota pro a musí být nastavena jako JobInputAsset(hodnota) nebo JobOutputAsset(hodnota).
-* Úloha může mít více výstupních datových zdrojů. Jeden JobOutputAsset(x) lze použít pouze jednou jako výstup úkolu v úloze.
-* Jako vstupní majetek úkolu můžete zadat JobInputAsset nebo JobOutputAsset.
+* Vlastnosti TaskBody – musí použít literál XML pro definování počtu vstupních nebo výstupních prostředků, které úkol používá. Článek o úloze obsahuje definici schématu XML pro XML.
+* V definici TaskBody – je nutné, aby každá vnitřní `<inputAsset>` hodnota `<outputAsset>` pro a byla nastavena jako JobInputAsset (hodnota) nebo JobOutputAsset (hodnota).
+* Úloha může mít více výstupních prostředků. Jeden JobOutputAsset (x) lze použít pouze jednou jako výstup úkolu v úloze.
+* Jako vstupní Asset úkolu můžete zadat JobInputAsset nebo JobOutputAsset.
 * Úkoly nesmí tvořit cyklus.
-* Parametr hodnoty, který předáte JobInputAsset nebo JobOutputAsset představuje hodnotu indexu pro Asset. Skutečné datové zdroje jsou definovány v navigačních vlastnostech InputMediaAssets a OutputMediaAssets v definici entity Úloha.
+* Parametr hodnoty, který předáte do JobInputAsset nebo JobOutputAsset, představuje hodnotu indexu pro Asset. Skutečné prostředky jsou definovány v navigačním vlastnosti InputMediaAssets a OutputMediaAssets v definici entity úlohy.
 
 > [!NOTE]
-> Vzhledem k tomu, že media services je postaven a OData v3, jednotlivé prostředky v InputMediaAssets a OutputMediaAssets navigační vlastnosti kolekce jsou odkazovány prostřednictvím "__metadata : uri" název-hodnota dvojice.
+> Vzhledem k tomu, že Media Services je postavené na OData V3, jednotlivé prostředky v kolekcích vlastností navigace InputMediaAssets a OutputMediaAssets odkazují na dvojici název-hodnota __metadata: URI.
 >
 >
 
-* InputMediaAssets se mapuje na jeden nebo více datových zdrojů, které jste vytvořili ve službě Media Services. OutputMediaAssets jsou vytvořeny systémem. Neodkazují na existující majetek.
-* OutputMediaAssets lze pojmenovat pomocí atributu assetName. Pokud tento atribut není k dispozici, pak název OutputMediaAsset je `<outputAsset>` bez ohledu na vnitřní textovou hodnotu prvku je s příponou buď název úlohy hodnotu nebo Id úlohy (v případě, kdy Name vlastnost není definována). Pokud například nastavíte hodnotu assetName na "Sample", bude vlastnost OutputMediaAsset Name nastavena na hodnotu Ukázka. Pokud jste však nenastavili hodnotu pro assetName, ale nastavili název úlohy na "NewJob", pak název OutputMediaAsset bude "JobOutputAsset(hodnota)_NewJob".
+* InputMediaAssets se mapuje na jeden nebo více assetů, které jste vytvořili v Media Services. OutputMediaAssets jsou vytvořeny systémem. Neodkazují na stávající Asset.
+* OutputMediaAssets lze pojmenovat pomocí atributu název prostředku. Pokud tento atribut není k dispozici, pak název OutputMediaAsset je bez ohledu na to, zda je vnitřní text `<outputAsset>` hodnoty prvku přípona hodnoty názvu úlohy nebo hodnota ID úlohy (v případě, že vlastnost Name není definována). Pokud například nastavíte hodnotu pro název prostředku na "Sample", vlastnost OutputMediaAsset Name bude nastavena na "Sample". Pokud jste však nenastavili hodnotu pro název prostředku, ale nastavili jste název úlohy na "NewJob", pak bude název OutputMediaAsset "JobOutputAsset (hodnota) _NewJob".
 
-    Následující příklad ukazuje, jak nastavit atribut assetName:
+    Následující příklad ukazuje, jak nastavit atribut majetku:
 
         "<?xml version=\"1.0\" encoding=\"utf-8\"?><taskBody><inputAsset>JobInputAsset(0)</inputAsset><outputAsset assetName=\"CustomOutputAssetName\">JobOutputAsset(0)</outputAsset></taskBody>"
-* Povolení řetězení úloh:
+* Povolení Řetězení úloh:
 
-  * Úloha musí mít alespoň dva úkoly.
-  * Musí existovat alespoň jeden úkol, jehož vstup je výstupem jiného úkolu v úloze.
+  * Úloha musí mít alespoň dvě úlohy.
+  * Musí existovat alespoň jeden úkol, jehož vstupem je výstup jiné úlohy v úloze.
 
-Další informace naleznete [v tématu Vytvoření úlohy kódování pomocí rozhraní REST API mediálních služeb](media-services-rest-encode-asset.md).
+Další informace najdete v tématu [Vytvoření úlohy kódování pomocí Media Services REST API](media-services-rest-encode-asset.md).
 
-### <a name="monitor-processing-progress"></a>Průběh zpracování monitoru
+### <a name="monitor-processing-progress"></a>Sledování průběhu zpracování
 Stav úlohy můžete načíst pomocí vlastnosti State, jak je znázorněno v následujícím příkladu:
 
 **Požadavek HTTP**
@@ -603,7 +603,7 @@ Stav úlohy můžete načíst pomocí vlastnosti State, jak je znázorněno v n�
 
 **Odpověď HTTP**
 
-Pokud je úspěšná, je vrácena následující odpověď:
+V případě úspěchu se vrátí následující odpověď:
 
     HTTP/1.1 200 OK
     Cache-Control: no-cache
@@ -621,7 +621,7 @@ Pokud je úspěšná, je vrácena následující odpověď:
 
 
 ### <a name="cancel-a-job"></a>Zrušení úlohy
-Služba Media Services umožňuje zrušit spuštěné úlohy prostřednictvím funkce CancelJob. Toto volání vrátí kód chyby 400, pokud se pokusíte zrušit úlohu, když je její stav zrušen, zrušení, chyba nebo dokončení.
+Media Services umožňuje zrušit spuštěné úlohy pomocí funkce CancelJob. Toto volání vrátí kód chyby 400, pokud se pokusíte úlohu zrušit, když je její stav zrušen, zrušení, chyba nebo dokončení.
 
 Následující příklad ukazuje, jak volat CancelJob.
 
@@ -637,15 +637,15 @@ Následující příklad ukazuje, jak volat CancelJob.
     Host: wamsbayclus001rest-hs.net
 
 
-Pokud je úspěšná, je vrácen kód odpovědi 204 bez textu zprávy.
+V případě úspěchu se vrátí kód odpovědi 204 bez těla zprávy.
 
 > [!NOTE]
-> Musíte URL-kódovat id úlohy (obvykle nb:jid:UUID: somevalue) při předávání jako parametr CancelJob.
+> Aby bylo možné CancelJob předat jako parametr, je nutné zakódovat ID úlohy (obvykle NB: JID: UUID: someValue) na adrese URL.
 >
 >
 
-### <a name="get-the-output-asset"></a>Získání výstupního datového zdroje
-Následující kód ukazuje, jak požádat o Id výstupního prostředku.
+### <a name="get-the-output-asset"></a>Získání výstupního prostředku
+Následující kód ukazuje, jak požádat o ID výstupního prostředku.
 
 **Požadavek HTTP**
 
@@ -692,11 +692,11 @@ Následující kód ukazuje, jak požádat o Id výstupního prostředku.
        ]
     }
 
-## <a name="publish-the-asset-and-get-streaming-and-progressive-download-urls-with-rest-api"></a><a id="publish_get_urls"></a>Publikování datového zdroje a získání datových proudů a progresivnístahování adres URL pomocí rozhraní REST API
+## <a name="publish-the-asset-and-get-streaming-and-progressive-download-urls-with-rest-api"></a><a id="publish_get_urls"></a>Publikování assetu a získání adres URL streamování a progresivního stahování pomocí REST API
 
 Pokud chcete prostředek streamovat nebo stáhnout, musíte ho nejdřív „publikovat“ vytvořením lokátoru. Lokátory zajišťují přístup k souborům, které jsou obsaženy v assetu. Služba Media Services podporuje dva typy lokátorů: lokátor OnDemandOrigin, používaný ke streamování médií (například MPEG DASH, HLS nebo technologie Smooth Streaming), a lokátor s přístupovým podpisem (SAS), používaný ke stahování mediálních souborů. 
 
-Po vytvoření lokátorů můžete vytvořit adresy URL, které se používají k streamování nebo stahování souborů.
+Po vytvoření lokátorů můžete sestavit adresy URL, které se použijí ke streamování nebo stahování souborů.
 
 >[!NOTE]
 >Po vytvoření účtu AMS se do vašeho účtu přidá **výchozí** koncový bod streamování ve stavu **Zastaveno**. Pokud chcete spustit streamování vašeho obsahu a využít výhod dynamického balení a dynamického šifrování, musí koncový bod streamování, ze kterého chcete streamovat obsah, být ve stavu **Spuštěno**.
@@ -717,14 +717,14 @@ SAS adresa URL používaná ke stahování souborů má následující formát:
 
     {blob container name}/{asset name}/{file name}/{SAS signature}
 
-V této části je uvedeno, jak provádět následující úkoly nezbytné k "publikování" datových zdrojů.  
+V této části se dozvíte, jak provádět následující úkoly, které jsou nezbytné pro publikování vašich assetů.  
 
-* Vytvoření zásad accesspolicy s oprávněním ke čtení
+* Vytvoření AccessPolicy s oprávněním ke čtení
 * Vytvoření adresy URL SAS pro stahování obsahu
-* Vytvoření původní adresy URL pro streamování obsahu
+* Vytvoření zdrojové adresy URL pro streamování obsahu
 
-### <a name="creating-the-accesspolicy-with-read-permission"></a>Vytvoření zásad accesspolicy s oprávněním ke čtení
-Před stažením nebo streamováním jakéhokoli mediálního obsahu nejprve definujte zásadu AccessPolicy s oprávněními ke čtení a vytvořte příslušnou entitu Lokátoru, která určuje typ mechanismu doručování, který chcete povolit pro své klienty. Další informace o dostupných vlastnostech naleznete v tématu [Vlastnosti entity AccessPolicy](https://docs.microsoft.com/rest/api/media/operations/accesspolicy#accesspolicy_properties).
+### <a name="creating-the-accesspolicy-with-read-permission"></a>Vytvoření AccessPolicy s oprávněním ke čtení
+Před stažením nebo streamování libovolného mediálního obsahu nejdřív definujte AccessPolicy s oprávněním ke čtení a vytvořte příslušnou entitu lokátoru, která určuje typ mechanismu doručování, který chcete pro klienty povolit. Další informace o dostupných vlastnostech najdete v tématu [AccessPolicy – vlastnosti entit](https://docs.microsoft.com/rest/api/media/operations/accesspolicy#accesspolicy_properties).
 
 Následující příklad ukazuje, jak zadat AccessPolicy pro oprávnění ke čtení pro daný prostředek.
 
@@ -741,15 +741,15 @@ Následující příklad ukazuje, jak zadat AccessPolicy pro oprávnění ke čt
 
     {"Name": "DownloadPolicy", "DurationInMinutes" : "300", "Permissions" : 1}
 
-Pokud je úspěšná, je vrácen kód úspěchu 201 popisující entitu AccessPolicy, kterou jste vytvořili. Potom použijete ID AccessPolicy spolu s ID datového zdroje, který obsahuje soubor, který chcete dodat (například výstupní majetek) k vytvoření entity Lokátoru.
+V případě úspěchu se vrátí kód úspěšnosti 201, který popisuje entitu AccessPolicy, kterou jste vytvořili. Pak použijete ID AccessPolicy spolu s ID Assetu assetu, který obsahuje soubor, který chcete dodat (například výstupní prostředek) k vytvoření entity lokátoru.
 
 > [!NOTE]
-> Tento základní pracovní postup je stejný jako nahrávání souboru při ingestování datového zdroje (jak bylo popsáno dříve v tomto tématu). Také, stejně jako nahrávání souborů, pokud vy (nebo vaši klienti) potřebujete okamžitě přistupovat k souborům, nastavte hodnotu StartTime na pět minut před aktuálním časem. Tato akce je nezbytná, protože mezi klientem a mediálními službami může existovat zkosení hodin. Hodnota StartTime musí být v následujícím formátu DateTime: YYYY-MM-DDTHH:mm:ssZ (například "2014-05-23T17:53:50Z").
+> Tento základní pracovní postup je stejný jako při odesílání souboru při příjmu prostředku (jak bylo popsáno výše v tomto tématu). Stejně jako při nahrávání souborů (nebo vašich klientů) potřebujete okamžitě přistupovat k souborům, nastavte hodnotu Čas_spuštění na pět minut před aktuálním časem. Tato akce je nezbytná, protože mezi klientem a Media Services může docházet k časovému zkosení. Hodnota StartTime musí být v následujícím formátu data a času: RRRR-MM-DDTHH: mm: ssZ (například "2014-05-23T17:53:50Z").
 >
 >
 
 ### <a name="creating-a-sas-url-for-downloading-content"></a>Vytvoření adresy URL SAS pro stahování obsahu
-Následující kód ukazuje, jak získat adresu URL, kterou lze použít ke stažení mediálního souboru vytvořeného a nahraného dříve. AccessPolicy má oprávnění ke čtení nastavit a cesta lokátoru odkazuje na adresu URL pro stažení SAS.
+Následující kód ukazuje, jak získat adresu URL, která se dá použít ke stažení mediálního souboru vytvořeného a nahraného dříve. AccessPolicy má nastaveno oprávnění ke čtení a cesta lokátoru odkazuje na adresu URL pro stažení SAS.
 
     POST https://wamsbayclus001rest-hs.net/API/Locators HTTP/1.1
     Content-Type: application/json
@@ -764,7 +764,7 @@ Následující kód ukazuje, jak získat adresu URL, kterou lze použít ke sta�
 
     {"AccessPolicyId": "nb:pid:UUID:38c71dd0-44c5-4c5f-8418-08bb6fbf7bf8", "AssetId" : "nb:cid:UUID:71d2dd33-efdf-ec43-8ea1-136a110bd42c", "StartTime" : "2014-05-17T16:45:53", "Type":1}
 
-Pokud je úspěšná, je vrácena následující odpověď:
+V případě úspěchu se vrátí následující odpověď:
 
     HTTP/1.1 201 Created
     Cache-Control: no-cache
@@ -806,22 +806,22 @@ Pokud je úspěšná, je vrácena následující odpověď:
        }
     }
 
-Vrácená **vlastnost Path** obsahuje adresu URL SAS.
+Vlastnost vracená **cesta** obsahuje adresu URL SAS.
 
 > [!NOTE]
-> Pokud stáhnete šifrovaný obsah úložiště, musíte jej před vykreslením ručně dešifrovat nebo použít mediální procesor dešifrování úložiště v úloze zpracování k výstupu zpracovaných souborů v programu clear to a OutputAsset a následném stažení z tohoto datového zdroje. Další informace o zpracování naleznete v tématu Vytvoření úlohy kódování pomocí rozhraní REST API mediálních služeb. Locátory adres URL SAS také nelze aktualizovat po jejich vytvoření. Například nelze znovu použít stejný Lokátor s aktualizovanou hodnotou StartTime. Důvodem je způsob, jakým jsou vytvářeny adresy URL SAS. Pokud chcete získat přístup ke zdroji ke stažení po vypršení platnosti lokátoru, musíte vytvořit nový s novým časem StartTime.
+> Pokud stáhnete zašifrovaný obsah úložiště, musíte ho před jeho vykreslením ručně dešifrovat nebo pomocí MediaProcessor dešifrování úložiště v úloze zpracování navýstupovat zpracované soubory do OutputAsset a pak je stáhnout z tohoto prostředku. Další informace o zpracování naleznete v tématu Vytvoření úlohy kódování pomocí Media Services REST API. Po vytvoření se taky nedají aktualizovat Lokátory adresy URL SAS. Nemůžete například použít stejné Lokátor s aktualizovanou hodnotou StartTime. Důvodem je to, jak se vytvářejí adresy URL SAS. Pokud chcete získat přístup ke assetu ke stažení po vypršení platnosti lokátoru, musíte vytvořit nový s novým StartTime.
 >
 >
 
 ### <a name="download-files"></a>Stažení souborů
-Jakmile budete mít accesspolicy a locator nastavit, můžete stahovat soubory pomocí rozhraní API úložiště Azure STORAGE.  
+Jakmile budete mít AccessPolicy a lokátor, můžete soubory stahovat pomocí rozhraní REST API pro Azure Storage.  
 
 > [!NOTE]
-> Název souboru, který chcete stáhnout, je nutné přidat do **hodnoty** Cesty lokátoru přijaté v předchozí části. Například https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4?. . . .
+> Je nutné přidat název souboru, který chcete stáhnout, do hodnoty **cesty** lokátoru přijaté v předchozí části. Například https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4?. . . .
 
-Další informace o práci s objekty BLOB úložiště Azure najdete v [tématu rozhraní REST API služby blob](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API).
+Další informace o práci s objekty blob služby Azure Storage najdete v tématu [REST API služby BLOB](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API).
 
-V důsledku úlohy kódování, kterou jste provedli dříve (kódování do sady Adaptive MP4), máte více souborů MP4, které můžete postupně stahovat. Například:    
+V důsledku úlohy kódování, kterou jste provedli dříve (při kódování do adaptivní sady souborů MP4), máte více souborů MP4, které můžete postupně stahovat. Příklad:    
 
     https://storagetestaccount001.blob.core.windows.net/asset-38058602-a4b8-4b33-b9f0-6880dc1490ea/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4?sv=2012-02-12&sr=c&si=166d5154-b801-410b-a226-ee2f8eac1929&sig=P2iNZJAvAWpp%2Bj9yV6TQjoz5DIIaj7ve8ARynmEM6Xk%3D&se=2015-02-14T01:13:05Z
 
@@ -839,8 +839,8 @@ V důsledku úlohy kódování, kterou jste provedli dříve (kódování do sad
 
     https://storagetestaccount001.blob.core.windows.net/asset-38058602-a4b8-4b33-b9f0-6880dc1490ea/BigBuckBunny_AAC_und_ch2_56kbps.mp4?sv=2012-02-12&sr=c&si=166d5154-b801-410b-a226-ee2f8eac1929&sig=P2iNZJAvAWpp%2Bj9yV6TQjoz5DIIaj7ve8ARynmEM6Xk%3D&se=2015-02-14T01:13:05Z
 
-### <a name="creating-a-streaming-url-for-streaming-content"></a>Vytvoření stránky URL streamování pro streamování obsahu
-Následující kód ukazuje, jak vytvořit lokátor URL streamování:
+### <a name="creating-a-streaming-url-for-streaming-content"></a>Vytvoření adresy URL streamování pro obsah streamování
+Následující kód ukazuje, jak vytvořit Lokátor adresy URL streamování:
 
     POST https://wamsbayclus001rest-hs/API/Locators HTTP/1.1
     Content-Type: application/json
@@ -855,7 +855,7 @@ Následující kód ukazuje, jak vytvořit lokátor URL streamování:
 
     {"AccessPolicyId": "nb:pid:UUID:38c71dd0-44c5-4c5f-8418-08bb6fbf7bf8", "AssetId" : "nb:cid:UUID:eb5540a2-116e-4d36-b084-7e9958f7f3c3", "StartTime" : "2014-05-17T16:45:53",, "Type":2}
 
-Pokud je úspěšná, je vrácena následující odpověď:
+V případě úspěchu se vrátí následující odpověď:
 
     HTTP/1.1 201 Created
     Cache-Control: no-cache
@@ -897,15 +897,15 @@ Pokud je úspěšná, je vrácena následující odpověď:
        }
     }
 
-Chcete-li streamovat adresu URL původu hladkého streamování v přehrávači datových proudů médií, musíte připojit vlastnost Path s názvem souboru manifestu Plynulé streamování následovaném "/manifest".
+Chcete-li v přehrávači mediálních datových proudů streamovat Smooth Streaming zdrojové adresy URL, je nutné připojit vlastnost Path s názvem souboru manifestu Smooth Streaming následovaným řetězcem "/manifest".
 
     http://amstestaccount001.streaming.mediaservices.windows.net/ebf733c4-3e2e-4a68-b67b-cc5159d1d7f2/BigBuckBunny.ism/manifest
 
-Chcete-li streamovat HLS, připojujte (format=m3u8-aapl) za "/manifest".
+Pro streamování HLS, Append (Format = M3U8-AAPL) za "/manifest".
 
     http://amstestaccount001.streaming.mediaservices.windows.net/ebf733c4-3e2e-4a68-b67b-cc5159d1d7f2/BigBuckBunny.ism/manifest(format=m3u8-aapl)
 
-Chcete-li streamovat MPEG DASH, připojujte (format=mpd-time-csf) za "/manifest".
+Pokud chcete streamovat MPEG POMLČKy, přidejte (Format = MPD-Time-CSF) za "/manifest".
 
     http://amstestaccount001.streaming.mediaservices.windows.net/ebf733c4-3e2e-4a68-b67b-cc5159d1d7f2/BigBuckBunny.ism/manifest(format=mpd-time-csf)
 
@@ -913,7 +913,7 @@ Chcete-li streamovat MPEG DASH, připojujte (format=mpd-time-csf) za "/manifest"
 ## <a name="play-your-content"></a><a id="play"></a>Přehrání obsahu
 Pokud chcete video streamovat, použijte [přehrávač služby Azure Media Services](https://aka.ms/azuremediaplayer).
 
-Chcete-li otestovat postupné stahování, vložte adresu URL do prohlížeče (například IE, Chrome, Safari).
+Chcete-li otestovat progresivní stahování, vložte adresu URL do prohlížeče (například IE, Chrome, Safari).
 
 ## <a name="next-steps-media-services-learning-paths"></a>Další kroky: Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

@@ -1,7 +1,7 @@
 ---
-title: Časté otázky - nejčastější dotazy
+title: Časté otázky – Nejčastější dotazy
 titleSuffix: Microsoft Genomics
-description: Získejte odpovědi na běžné otázky týkající se používání služby Microsoft Genomics, včetně technických informací, sla a fakturace.
+description: Získejte odpovědi na běžné otázky týkající se používání služby Microsoft Genomics, včetně technických informací, smlouvy SLA a fakturace.
 services: genomics
 author: grhuynh
 manager: cgronlun
@@ -10,83 +10,83 @@ ms.service: genomics
 ms.topic: troubleshooting
 ms.date: 12/07/2017
 ms.openlocfilehash: e8806bc4f761214e6740a22093b7e18030fdf881
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76986032"
 ---
-# <a name="microsoft-genomics-common-questions"></a>Microsoft Genomics: Časté otázky
+# <a name="microsoft-genomics-common-questions"></a>Microsoft Genomics: běžné otázky
 
-Tento článek uvádí hlavní dotazy, které mohou souviset s Microsoft Genomics. Další informace o službě Microsoft Genomics naleznete v tématu [What is Microsoft Genomics?](overview-what-is-genomics.md). Další informace o řešení potíží naleznete v [příručce k řešení potíží](troubleshooting-guide-genomics.md). 
-
-
-## <a name="how-do-i-run-gatk4-workflows-on-microsoft-genomics"></a>Jak spustím pracovní postupy GATK4 v microsoft genomice?
-V souboru config.txt služby Microsoft Genomics `gatk4`zadejte process_name do souboru . Upozorňujeme, že se vám budou účtovat běžné fakturační sazby.
-
-## <a name="how-do-i-enable-output-compression"></a>Jak povolím výstupní kompresi?
-Můžete komprimovat výstupní vcf nebo gvcf pomocí volitelného argumentu pro výstupní kompresi. To je ekvivalentní `-bgzip` spuštění `-tabix` následuje na výstupu vcf nebo `.gz` gvcf, k `.tbi` výrobě (bgzip výstup) a (tabix výstup) soubory. `bgzip`komprimuje soubor vcf nebo `tabix` gvcf a vytvoří index pro komprimovaný soubor. Argument je logická hodnota, která `false` je ve výchozím nastavení `true` nastavena na hodnotu výstup vcf a ve výchozím nastavení pro výstup gcvf. Chcete-li použít na `-bz` příkazovém řádku, zadejte nebo `--bgzip-output` jako `true` (spustit bgzip a tabix) nebo `false`. Chcete-li tento argument použít v souboru `bgzip_output: true` `bgzip_output: false` config.txt, přidejte jej nebo do něj.
-
-## <a name="what-is-the-sla-for-microsoft-genomics"></a>Co je sla pro Microsoft Genomics?
-Garantujeme, že 99,9 % času, po které bude služba Microsoft Genomics k dispozici pro příjem požadavků rozhraní API pracovního postupu. Další informace naleznete v tématu [SLA](https://azure.microsoft.com/support/legal/sla/genomics/v1_0/).
-
-## <a name="how-does-the-usage-of-microsoft-genomics-show-up-on-my-bill"></a>Jak se na mém účtu zobrazuje používání microsoft genomiky?
-Účty Microsoft Genomics na základě počtu gigabáz zpracovaných na pracovní postup. Další informace naleznete v [tématu Ceny](https://azure.microsoft.com/pricing/details/genomics/).
+Tento článek obsahuje seznam nejčastějších dotazů, které jste pravděpodobně v souvislosti s Microsoft Genomics. Další informace o službě Microsoft Genomics najdete v tématu [co je Microsoft Genomics?](overview-what-is-genomics.md). Další informace o řešení potíží najdete v našem [Průvodci odstraňováním potíží](troubleshooting-guide-genomics.md). 
 
 
-## <a name="where-can-i-find-a-list-of-all-possible-commands-and-arguments-for-the-msgen-client"></a>Kde najdu seznam všech možných příkazů a argumentů pro klienta? `msgen`
-Úplný seznam dostupných příkazů a argumentů můžete `msgen help`získat spuštěním aplikace . Pokud nejsou k dispozici žádné další argumenty, zobrazí se seznam `submit`dostupných částí nápovědy, jeden pro každý z , `list`, `cancel`a `status`. Chcete-li získat nápovědu `msgen help command`pro konkrétní příkaz, zadejte ; zobrazí například `msgen help submit` všechny možnosti odeslání.
+## <a name="how-do-i-run-gatk4-workflows-on-microsoft-genomics"></a>Návody spouštět pracovní postupy GATK4 v Microsoft Genomics?
+V souboru config. txt služby Microsoft Genomics zadejte process_name `gatk4`. Všimněte si, že se vám budou účtovat pravidelné fakturační sazby.
 
-## <a name="what-are-the-most-commonly-used-commands-for-the-msgen-client"></a>Jaké jsou nejčastěji používané příkazy `msgen` pro klienta?
-Nejčastěji používané příkazy jsou argumenty `msgen` pro klienta patří: 
+## <a name="how-do-i-enable-output-compression"></a>Návody povolit kompresi výstupu?
+Výstupní VCF nebo gvcf můžete zkomprimovat pomocí volitelného argumentu pro výstupní kompresi. Jedná se o ekvivalent spuštění `-bgzip` následovaný `-tabix` na výstupu VCF nebo gvcf, aby se vytvořily `.gz` (bgzip Output) a `.tbi` (tabix Output) soubory. `bgzip`zkomprimuje soubor VCF nebo gvcf a `tabix` vytvoří index komprimovaného souboru. Argument je logická hodnota, která je standardně nastavená na `false` výstup VCF a `true` ve výchozím nastavení pro výstup gcvf. Chcete-li použít příkaz v příkazovém řádku `-bz` , `--bgzip-output` zadejte `true` nebo jako (spusťte bgzip a tabix `false`) nebo. Chcete-li použít tento argument v souboru config. txt, `bgzip_output: true` přidejte `bgzip_output: false` nebo do souboru.
+
+## <a name="what-is-the-sla-for-microsoft-genomics"></a>Jaká je smlouva SLA pro Microsoft Genomics?
+Garantujeme, že 99,9% času Microsoft Genomics služby bude k dispozici pro příjem požadavků rozhraní API pracovního postupu. Další informace najdete v tématu [SLA](https://azure.microsoft.com/support/legal/sla/genomics/v1_0/).
+
+## <a name="how-does-the-usage-of-microsoft-genomics-show-up-on-my-bill"></a>Jak se Microsoft Genomics zobrazuje na faktuře?
+Microsoft Genomics faktury na základě počtu zpracovaných gigabází na pracovní postup. Další informace najdete v tématu [ceny](https://azure.microsoft.com/pricing/details/genomics/).
+
+
+## <a name="where-can-i-find-a-list-of-all-possible-commands-and-arguments-for-the-msgen-client"></a>Kde najdu seznam všech možných příkazů a argumentů pro `msgen` klienta?
+Úplný seznam dostupných příkazů a argumentů můžete získat spuštěním `msgen help`příkazu. Pokud nejsou zadány žádné další argumenty, zobrazí seznam dostupných sekcí pro nápovědu, jeden pro každý `submit`z, `list`, `cancel`a. `status` Pokud chcete získat nápovědu ke konkrétnímu příkazu, `msgen help command`zadejte; `msgen help submit` obsahuje například seznam všech možností odeslání.
+
+## <a name="what-are-the-most-commonly-used-commands-for-the-msgen-client"></a>Jaké jsou nejběžněji používané příkazy pro `msgen` klienta?
+Nejčastěji používané příkazy jsou argumenty pro klienta, `msgen` které zahrnují: 
 
  |**Příkaz**          |  **Popis pole** |
  |:--------------------|:-------------         |
- |`list`               |Vrátí seznam úloh, které jste odeslali. Argumenty naleznete `msgen help list`v tématu .  |
- |`submit`             |Odešle žádost o pracovní postup do služby. Argumenty naleznete `msgen help submit`v tématu .|
- |`status`             |Vrátí stav pracovního postupu `--workflow-id`určeného aplikacem . Viz `msgen help status`také . |
- |`cancel`             |Odešle požadavek na zrušení zpracování `--workflow-id`pracovního postupu určeného společností . Viz `msgen help cancel`také . |
+ |`list`               |Vrátí seznam úloh, které jste odeslali. Argumenty najdete v tématu `msgen help list`.  |
+ |`submit`             |Odešle službě požadavek pracovního postupu. Argumenty najdete v tématu `msgen help submit`.|
+ |`status`             |Vrátí stav pracovního postupu určeného parametrem `--workflow-id`. Viz také `msgen help status`. |
+ |`cancel`             |Odešle požadavek na zrušení zpracování pracovního postupu, který určil `--workflow-id`. Viz také `msgen help cancel`. |
 
-## <a name="where-do-i-get-the-value-for---api-url-base"></a>Kde získám hodnotu `--api-url-base`pro ?
-Přejděte na portál Azure a otevřete stránku účtu Genomics. V záhlaví **Správa** zvolte **Přístupové klávesy**. Zde najdete adresu URL rozhraní API i přístupové klíče.
+## <a name="where-do-i-get-the-value-for---api-url-base"></a>Kde získám hodnotu `--api-url-base`?
+Přejít na Azure Portal a otevřít stránku vašeho účtu genomiky. Pod hlavičkou **správy** vyberte **přístupové klíče**. Tam najdete jak adresu URL rozhraní API, tak přístupové klávesy.
 
-## <a name="where-do-i-get-the-value-for---access-key"></a>Kde získám hodnotu `--access-key`pro ?
-Přejděte na portál Azure a otevřete stránku účtu Genomics. V záhlaví **Správa** zvolte **Přístupové klávesy**. Zde najdete adresu URL rozhraní API i přístupové klíče.
+## <a name="where-do-i-get-the-value-for---access-key"></a>Kde získám hodnotu `--access-key`?
+Přejít na Azure Portal a otevřít stránku vašeho účtu genomiky. Pod hlavičkou **správy** vyberte **přístupové klíče**. Tam najdete jak adresu URL rozhraní API, tak přístupové klávesy.
 
 ## <a name="why-do-i-need-two-access-keys"></a>Proč potřebuji dva přístupové klíče?
-Potřebujete dva přístupové klíče v případě, že je chcete aktualizovat (regenerovat) bez přerušení používání služby. Chcete-li například aktualizovat první klíč, měli byste mít všechny nové pracovní postupy použít druhý klíč. Potom počkejte na všechny pracovní postupy pomocí prvního klíče k dokončení před aktualizací prvního klíče.
+Pro případ, že chcete aktualizovat (znovu vygenerovat), potřebujete dva přístupové klíče, aniž byste museli přerušovat využívání služby. Pokud například chcete aktualizovat první klíč, měli byste všechny nové pracovní postupy používat druhý klíč. Potom před aktualizací prvního klíče počkejte na dokončení všech pracovních postupů pomocí prvního klíče.
 
-## <a name="do-you-save-my-storage-account-keys"></a>Ukládáte klíče mého účtu úložiště?
-Klíč účtu úložiště se používá k vytvoření krátkodobých přístupových tokenů pro službu Microsoft Genomics pro čtení vstupních souborů a zápis výstupních souborů. Výchozí doba trvání tokenu je 48 hodin. Dobu trvání tokenu lze `-sas/--sas-duration` změnit pomocí možnosti příkazu submit; hodnota je v hodinách.
+## <a name="do-you-save-my-storage-account-keys"></a>Ukládáte svoje klíče účtu úložiště?
+Váš klíč účtu úložiště se používá k vytvoření krátkodobého přístupového tokenu pro službu Microsoft Genomics ke čtení vstupních souborů a zápisu výstupních souborů. Výchozí doba trvání tokenu je 48 hodin. Dobu trvání tokenu lze změnit pomocí `-sas/--sas-duration` možnosti příkazu Odeslat. hodnota je v hodinách.
 
-## <a name="what-genome-references-can-i-use"></a>Jaké genomové odkazy mohu použít?
+## <a name="what-genome-references-can-i-use"></a>Jaké odkazy na genom můžu použít?
 
-Tyto odkazy jsou podporovány:
+Jsou podporovány tyto odkazy:
 
- |Odkaz              | Hodnota`-pa/--process-args` |
+ |Referenční informace              | Hodnota`-pa/--process-args` |
  |:-------------         |:-------------                 |
  |b37                    | `R=b37m1`                     |
  |hg38                   | `R=hg38m1`                    |      
- |hg38 (bez alt analýzy) | `R=hg38m1x`                   |  
+ |hg38 (žádná analýza ALT) | `R=hg38m1x`                   |  
  |hg19                   | `R=hg19m1`                    |    
 
-## <a name="how-do-i-format-my-command-line-arguments-as-a-config-file"></a>Jak naformátuji argumenty příkazového řádku jako konfigurační soubor? 
+## <a name="how-do-i-format-my-command-line-arguments-as-a-config-file"></a>Návody formátovat argumenty příkazového řádku jako konfigurační soubor? 
 
 msgen rozumí konfiguračním souborům v následujícím formátu:
-* Všechny možnosti jsou k dispozici jako dvojice klíč-hodnota s hodnotami oddělenými od klíčů dvojtečkou.
-  Prázdné znaky jsou ignorovány.
-* Řádky začínající `#` s jsou ignorovány.
-* Jakýkoli argument příkazového řádku v dlouhém formátu lze převést na klíč odstraněním jeho úvodních pomlček a nahrazením pomlček mezi slovy podtržítky. Zde jsou některé příklady konverzí:
+* Všechny možnosti jsou k dispozici jako páry klíč-hodnota s hodnotami oddělenými od klíčů dvojtečkou.
+  Prázdný znak se ignoruje.
+* Řádky začínající na `#` jsou ignorovány.
+* Jakýkoli argument příkazového řádku v dlouhém formátu lze převést na klíč odstraněním počátečních pomlček a nahrazením spojovníků mezi slovy pomocí podtržítek. Tady jsou některé příklady převodu:
 
   |Argument příkazového řádku            | Řádek konfiguračního souboru |
   |:-------------                   |:-------------                 |
   |`-u/--api-url-base https://url`  | *api_url_base:https://url*    |
-  |`-k/--access-key KEY`            | *access_key:KLÍČ*              |      
-  |`-pa/--process-args R=B37m1`     | *process_args:R-b37m1*        |  
+  |`-k/--access-key KEY`            | *access_key: klíč*              |      
+  |`-pa/--process-args R=B37m1`     | *process_args: R-b37m1*        |  
 
 ## <a name="next-steps"></a>Další kroky
 
-Pro zahájení používání microsoft genomiky použijte následující zdroje:
-- Můžete začít spuštěním prvního pracovního postupu prostřednictvím služby Microsoft Genomics. [Spuštění pracovního postupu prostřednictvím služby Microsoft Genomics](quickstart-run-genomics-workflow-portal.md)
-- Odešlete vlastní data ke zpracování službou Microsoft Genomics: [spárovaný FASTQ](quickstart-input-pair-FASTQ.md) | [BAM](quickstart-input-BAM.md) | [Multiple FASTQ nebo BAM](quickstart-input-multiple.md) 
+Pomocí následujících zdrojů můžete začít s Microsoft Genomics:
+- Začněte spuštěním prvního pracovního postupu prostřednictvím služby Microsoft Genomics. [Spuštění pracovního postupu prostřednictvím služby Microsoft Genomics](quickstart-run-genomics-workflow-portal.md)
+- Odeslání vlastních dat ke zpracování službou Microsoft Genomics: [Spárovaná souborů fastq](quickstart-input-pair-FASTQ.md) | [BAM](quickstart-input-BAM.md) | s[více souborů fastq nebo BAM](quickstart-input-multiple.md) 
 

@@ -1,7 +1,7 @@
 ---
-title: Trénování a nasazování modelu TensorFlow
+title: Výuka a nasazení modelu TensorFlow
 titleSuffix: Azure Machine Learning
-description: Zjistěte, jak spouštět školicí skripty TensorFlow ve velkém měřítku pomocí Azure Machine Learning.
+description: Naučte se, jak spouštět školicí skripty TensorFlow ve velkém měřítku pomocí Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,45 +11,45 @@ author: maxluk
 ms.date: 08/20/2019
 ms.custom: seodec18
 ms.openlocfilehash: 2bbd81f3858aa78b9e0e2d610c0fdb0a67816c8e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78228309"
 ---
-# <a name="build-a-tensorflow-deep-learning-model-at-scale-with-azure-machine-learning"></a>Sestavte si model hlubokého učení TensorFlow ve velkém měřítku pomocí Azure Machine Learning
+# <a name="build-a-tensorflow-deep-learning-model-at-scale-with-azure-machine-learning"></a>Vytvářejte TensorFlow model hloubkového učení ve velkém měřítku pomocí Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Tento článek ukazuje, jak spustit [tentenorflow](https://www.tensorflow.org/overview) školicí skripty ve velkém měřítku pomocí třídy [odhadu Tentenflow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py) Azure Machine Learning. Tento příklad trénuje a registruje model TensorFlow pro klasifikaci ručně psaných číslic pomocí hluboké neuronové sítě (DNN).
+V tomto článku se dozvíte, jak spustit školicí skripty [TensorFlow](https://www.tensorflow.org/overview) ve velkém měřítku pomocí třídy [estimator TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py) v Azure Machine Learning. V tomto příkladu se navlacích a registruje TensorFlow model pro klasifikaci psaných číslic pomocí neuronové sítě (DNN).
 
-Ať už vyvíjíte model TensorFlow od základu nebo přinášíte [existující model](how-to-deploy-existing-model.md) do cloudu, můžete pomocí Azure Machine Learning škálovat úlohy s otevřeným zdrojovým kódem k vytváření, nasazování, verzím a monitorování produkčních modelů.
+Bez ohledu na to, jestli vyvíjíte model TensorFlow z provozu nebo přenášíte [existující model](how-to-deploy-existing-model.md) do cloudu, můžete použít Azure Machine Learning k horizontálnímu navýšení kapacity Open-Source školicích úloh pro sestavování, nasazování, správu a monitorování modelů produkčního prostředí.
 
-Další informace o [hloubkovém učení vs. strojové učení](concept-deep-learning-vs-machine-learning.md).
+Přečtěte si další informace o službě [hloubkového učení vs Machine Learning](concept-deep-learning-vs-machine-learning.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Spusťte tento kód v některém z těchto prostředí:
+Spusťte tento kód v jednom z těchto prostředí:
 
- - Výpočetní instance Azure Machine Learning – není nutné žádné stahování ani instalace
+ - Azure Machine Learning výpočetní instance – nepotřebujete žádné soubory ke stažení nebo instalaci
 
-     - Dokončete [kurz: Instalační prostředí a pracovní prostor](tutorial-1st-experiment-sdk-setup.md) a vytvořte vyhrazený notebook ový server s předinstalovaným sadou SDK a ukázkovým úložištěm.
-    - Ve složce ukázky hluboké učení na serveru notebooku, najít dokončené a rozšířené poznámkový blok přechodem do tohoto adresáře: **how-to-use-azureml > ml-frameworks > tendentou> nasazení > vlak-hyperparameter-tune-deploy-with-tensorflow** složky. 
+     - Dokončete [kurz: instalační prostředí a pracovní prostor](tutorial-1st-experiment-sdk-setup.md) pro vytvoření vyhrazeného serveru poznámkového bloku předem načteného se sadou SDK a s ukázkovým úložištěm.
+    - V části ukázek hloubkového učení na serveru poznámkového bloku najděte dokončený a rozbalený Poznámkový blok tak, že přejdete do tohoto adresáře: How-to-tensorflow---- **> ml-framework > > deployment >** 
  
- - Váš vlastní Jupyter Notebook server
+ - Váš vlastní server Jupyter Notebook
 
-    - [Nainstalujte azure machine learning sdk](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
+    - [Nainstalujte sadu Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
     - [Vytvořte konfigurační soubor pracovního prostoru](how-to-configure-environment.md#workspace).
-    - [Stáhněte si ukázkové soubory skriptů](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/tensorflow/deployment/train-hyperparameter-tune-deploy-with-tensorflow) `mnist-tf.py` a`utils.py`
+    - [Stažení ukázkových souborů](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/tensorflow/deployment/train-hyperparameter-tune-deploy-with-tensorflow) `mnist-tf.py` skriptu a`utils.py`
      
-    Můžete také najít vyplněnou [verzi jupyterského poznámkového bloku](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/tensorflow/deployment/train-hyperparameter-tune-deploy-with-tensorflow/train-hyperparameter-tune-deploy-with-tensorflow.ipynb) této příručky na stránce ukázek GitHub. Poznámkový blok obsahuje rozšířené sekce, které zahrnují inteligentní ladění hyperparametrů, nasazení modelu a widgety poznámkových bloků.
+    Dokončenou [Jupyter notebook verzi](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/tensorflow/deployment/train-hyperparameter-tune-deploy-with-tensorflow/train-hyperparameter-tune-deploy-with-tensorflow.ipynb) tohoto průvodce najdete na stránce ukázek na GitHubu. Poznámkový blok obsahuje rozšířené oddíly, které pokrývají inteligentní ladění parametrů, nasazení modelů a widgety poznámkových bloků.
 
 ## <a name="set-up-the-experiment"></a>Nastavení experimentu
 
-Tato část nastavuje trénovací experiment načtením požadovaných balíčků Pythonu, inicializací pracovního prostoru, vytvořením experimentu a nahráním trénovacích dat a trénovacích skriptů.
+Tato část nastavuje experiment pro školení načtením požadovaných balíčků Pythonu, inicializací pracovního prostoru, vytvořením experimentu a nahráním školicích dat a školicích skriptů.
 
 ### <a name="import-packages"></a>Import balíčků
 
-Nejprve importujte potřebné knihovny Pythonu.
+Nejdřív importujte nezbytné knihovny Pythonu.
 
 ```Python
 import os
@@ -65,19 +65,19 @@ from azureml.core.compute_target import ComputeTargetException
 from azureml.train.dnn import TensorFlow
 ```
 
-### <a name="initialize-a-workspace"></a>Inicializaci pracovního prostoru
+### <a name="initialize-a-workspace"></a>Inicializovat pracovní prostor
 
-[Pracovní prostor Azure Machine Learning](concept-workspace.md) je prostředek nejvyšší úrovně pro službu. Poskytuje vám centralizované místo pro práci se všemi artefakty, které vytvoříte. V pythonu SDK můžete přistupovat k artefaktům [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) pracovního prostoru vytvořením objektu.
+[Azure Machine Learning pracovní prostor](concept-workspace.md) je prostředek nejvyšší úrovně pro službu. Poskytuje centralizované místo pro práci se všemi artefakty, které vytvoříte. V sadě Python SDK máte přístup k artefaktům pracovního prostoru vytvořením [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) objektu.
 
-Vytvořte objekt pracovního `config.json` prostoru ze souboru vytvořeného v [části požadavky](#prerequisites).
+Vytvořte objekt pracovního prostoru ze `config.json` souboru vytvořeného v [části požadavky](#prerequisites).
 
 ```Python
 ws = Workspace.from_config()
 ```
 
-### <a name="create-a-deep-learning-experiment"></a>Vytvoření experimentu s hlubokým učením
+### <a name="create-a-deep-learning-experiment"></a>Vytvoření experimentu s hloubkovým učením
 
-Vytvořte experiment a složku pro uložení školicích skriptů. V tomto příkladu vytvořte experiment s názvem "tf-mnist".
+Vytvořte experiment a složku, do které se budou ukládat skripty pro školení. V tomto příkladu vytvořte experiment s názvem TF-mnist ručně zapsaných.
 
 ```Python
 script_folder = './tf-mnist'
@@ -88,7 +88,7 @@ exp = Experiment(workspace=ws, name='tf-mnist')
 
 ### <a name="create-a-file-dataset"></a>Vytvoření datové sady souborů
 
-Objekt `FileDataset` odkazuje na jeden nebo více souborů v úložišti dat pracovního prostoru nebo na veřejné adresy URL. Soubory mohou mít libovolný formát a třída vám poskytuje možnost stáhnout nebo připojit soubory k výpočtu. Vytvořením `FileDataset`aplikace vytvoříte odkaz na umístění zdroje dat. Pokud jste na sadu dat použili nějaké transformace, budou uloženy také v sadě dat. Data zůstanou ve stávajícím umístění, takže nevznikají žádné další náklady na úložiště. Další [how-to](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets) informace naleznete v `Dataset` návodu k balíčku.
+`FileDataset` Objekt odkazuje na jeden nebo více souborů v úložišti dat pracovního prostoru nebo veřejných adresách URL. Soubory mohou být libovolného formátu a třída poskytuje možnost stahovat nebo připojovat soubory do výpočtů. Vytvořením `FileDataset`vytvoříte odkaz na umístění zdroje dat. Pokud jste v sadě dat použili jakékoli transformace, budou uloženy i v datové sadě. Data zůstanou ve svém stávajícím umístění, takže se neúčtují žádné dodatečné náklady na úložiště. Další informace najdete v průvodci [vytvořením](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets) `Dataset` balíčku.
 
 ```python
 from azureml.core.dataset import Dataset
@@ -102,7 +102,7 @@ web_paths = [
 dataset = Dataset.File.from_files(path=web_paths)
 ```
 
-Pomocí `register()` této metody můžete zaregistrovat sadu dat do pracovního prostoru, aby mohla být sdílena s ostatními, znovu použita v různých experimentech a v trénovacím skriptu označována podle názvu.
+Pomocí `register()` metody zaregistrujete datovou sadu do svého pracovního prostoru, aby bylo možné je sdílet s ostatními, znovu použít v různých experimentech a v rámci školicího skriptu, na které se odkazuje pomocí názvu.
 
 ```python
 dataset = dataset.register(workspace=ws,
@@ -114,9 +114,9 @@ dataset = dataset.register(workspace=ws,
 dataset.to_path()
 ```
 
-## <a name="create-a-compute-target"></a>Vytvoření výpočetního cíle
+## <a name="create-a-compute-target"></a>Vytvořit cíl výpočtů
 
-Vytvořte výpočetní cíl pro úlohu TensorFlow, na které se má spustit. V tomto příkladu vytvořte výpočetní cluster Azure Machine Learning s podporou GPU.
+Vytvořte výpočetní cíl pro úlohu TensorFlow, na které se má spustit. V tomto příkladu vytvoříte výpočetní cluster Azure Machine Learning s podporou GPU.
 
 ```Python
 cluster_name = "gpucluster"
@@ -134,15 +134,15 @@ except ComputeTargetException:
     compute_target.wait_for_completion(show_output=True, min_node_count=None, timeout_in_minutes=20)
 ```
 
-Další informace o výpočetních cílech najdete v článku, [co je cíl výpočetního cíle.](concept-compute-target.md)
+Další informace o výpočetních cílech najdete v článku [co je cílový výpočetní cíl](concept-compute-target.md) .
 
-## <a name="create-a-tensorflow-estimator"></a>Vytvoření odhadu Tentendotu
+## <a name="create-a-tensorflow-estimator"></a>Vytvoření TensorFlow Estimator
 
-[Odhad TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py) poskytuje jednoduchý způsob spuštění trénovací úlohy TensorFlow na výpočetní cíl.
+[TensorFlow Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py) poskytuje jednoduchý způsob, jak spustit školicí úlohu TensorFlow na cílovém výpočetním cíli.
 
-Odhad TentenzorFlow je implementován prostřednictvím obecné [`estimator`](https://docs.microsoft.com//python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) třídy, kterou lze použít pro podporu libovolného rámce. Další informace o trénovacích modelech pomocí obecného odhadu najdete v tématu [trénování modelů s Azure Machine Learning pomocí odhadu](how-to-train-ml-models.md)
+TensorFlow Estimator je implementován prostřednictvím obecné [`estimator`](https://docs.microsoft.com//python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) třídy, kterou lze použít k podpoře libovolného rozhraní. Další informace o školicích modelech pomocí obecného Estimator najdete v tématu [výuka modelů s Azure Machine Learning pomocí Estimator](how-to-train-ml-models.md) .
 
-Pokud váš školicí skript potřebuje další pip nebo conda balíčky ke spuštění, můžete mít `pip_packages` `conda_packages` balíčky nainstalované na výsledné image Dockeru předáním jejich názvy prostřednictvím a argumenty.
+Pokud váš školicí skript potřebuje ke spuštění další balíčky PIP nebo Conda, můžete mít balíčky nainstalované ve výsledné imagi Docker tím, že předáte jejich názvy pomocí argumentů `pip_packages` a `conda_packages` .
 
 ```python
 script_params = {
@@ -162,32 +162,32 @@ est = TensorFlow(source_directory=script_folder,
 ```
 
 > [!TIP]
-> Podpora pro **Tensorflow 2.0** byla přidána do třídy odhadu Tentenzorflow. Další informace najdete v tomto [blogovém příspěvku](https://azure.microsoft.com/blog/tensorflow-2-0-on-azure-fine-tuning-bert-for-question-tagging/).
+> Do třídy Estimator Tensorflow se přidala podpora pro **Tensorflow 2,0** . Další informace najdete v tomto [blogovém příspěvku](https://azure.microsoft.com/blog/tensorflow-2-0-on-azure-fine-tuning-bert-for-question-tagging/).
 
-Další informace o přizpůsobení prostředí Pythonu najdete v [tématu Vytváření a správa prostředí pro školení a nasazení](how-to-use-environments.md). 
+Další informace o přizpůsobení prostředí Pythonu najdete v tématu [vytváření a Správa prostředí pro školení a nasazení](how-to-use-environments.md). 
 
 ## <a name="submit-a-run"></a>Odeslat běh
 
-Run [Objekt](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py) poskytuje rozhraní pro historii spuštění, zatímco úloha je spuštěna a po dokončení.
+[Objekt Run](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py) poskytuje rozhraní k historii spuštění, když je úloha spuštěná a po jejím dokončení.
 
 ```Python
 run = exp.submit(est)
 run.wait_for_completion(show_output=True)
 ```
 
-Jako run je proveden, prochází následujícími fázemi:
+Po spuštění se spustí v následujících fázích:
 
-- **Příprava**: Obrázek Dockeru se vytvoří podle odhadu Tentenzorflow. Bitová kopie se nahraje do registru kontejnerů pracovního prostoru a uloží do mezipaměti pro pozdější spuštění. Protokoly jsou také přenášeny do historie spuštění a lze je zobrazit za účelem sledování průběhu.
+- **Příprava**: obrázek Docker se vytvoří podle TensorFlow Estimator. Obrázek se nahraje do registru kontejneru v pracovním prostoru a v mezipaměti pro pozdější spuštění. Protokoly se také streamují do historie spuštění a dají se zobrazit ke sledování průběhu.
 
-- **Škálování:** Cluster se pokusí vertikálně navýšit kapacitu, pokud cluster Batch AI vyžaduje ke spuštění spuštění více uzlů, než je aktuálně k dispozici.
+- **Škálování**: cluster se pokusí o horizontální navýšení kapacity, pokud Batch AI cluster vyžaduje více uzlů pro spuštění běhu, než je aktuálně k dispozici.
 
-- **Spuštění**: Všechny skripty ve složce skriptu jsou odeslány do výpočetního cíle, úložiště dat jsou připojena nebo zkopírována a entry_script se spustí. Výstupy ze složky stdout a ./logs jsou přenášeny do historie spuštění a lze je použít ke sledování běhu.
+- **Spuštěno**: všechny skripty ve složce skriptu se nahrají do cílového výpočetního prostředí, úložiště dat se připojí nebo zkopírují a entry_script se spustí. Výstupy z stdout a složky./logs se streamují do historie spuštění a dají se použít k monitorování běhu.
 
-- **Post-Processing**: Složka ./výstupy spuštění je zkopírována do historie spuštění.
+- **Následné zpracování**: složka./Outputs se v běhu kopíruje do historie spuštění.
 
 ## <a name="register-or-download-a-model"></a>Registrace nebo stažení modelu
 
-Jakmile model vycvičíte, můžete jej zaregistrovat do pracovního prostoru. Registrace modelu umožňuje ukládat a nakládat s modely v pracovním prostoru a zjednodušit [tak správu a nasazení modelu](concept-model-management-and-deployment.md). Zadáním parametrů `model_framework`, `model_framework_version`, `resource_configuration`a , bez kódu nasazení modelu bude k dispozici. To umožňuje přímo nasadit model jako webovou službu `ResourceConfiguration` z registrovaného modelu a objekt definuje výpočetní prostředek pro webovou službu.
+Po proškolení modelu ho můžete zaregistrovat do svého pracovního prostoru. Registrace modelu umožňuje ukládat a modelovat vaše modely do svého pracovního prostoru, aby bylo možné zjednodušit [správu modelů a nasazení](concept-model-management-and-deployment.md). Zadáním parametrů `model_framework`, `model_framework_version`a `resource_configuration`nebudete mít k dispozici nasazení modelu bez kódu. To vám umožní přímo nasadit model jako webovou službu z registrovaného modelu a `ResourceConfiguration` objekt definuje výpočetní prostředek pro webovou službu.
 
 ```Python
 from azureml.core import Model
@@ -200,7 +200,7 @@ model = run.register_model(model_name='tf-dnn-mnist',
                            resource_configuration=ResourceConfiguration(cpu=1, memory_in_gb=0.5))
 ```
 
-Můžete také stáhnout místní kopii modelu pomocí Spustit objekt. V trénovacím skriptu `mnist-tf.py`objekt spořiče Tentenredutu zachová model do místní složky (místní podle výpočetního cíle). Ke stažení kopie můžete použít objekt Spustit.
+Místní kopii modelu můžete také stáhnout pomocí objektu run. Ve školicím skriptu `mnist-tf.py`objekt TensorFlow spořiče uchovává model do místní složky (místní k cíli výpočtů). Kopii můžete stáhnout pomocí objektu spustit.
 
 ```Python
 # Create a model folder in the current directory
@@ -215,18 +215,18 @@ for f in run.get_file_names():
 
 ## <a name="distributed-training"></a>Distribuované trénování
 
-Odhad [`TensorFlow`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py) také podporuje distribuované školení napříč clustery CPU a GPU. Můžete snadno spouštět distribuované úlohy TensorFlow a Azure Machine Learning bude spravovat orchestraci za vás.
+[`TensorFlow`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py) Estimator také podporuje distribuované školení v rámci clusterů procesoru a GPU. Můžete snadno spouštět distribuované úlohy TensorFlow a Azure Machine Learning bude orchestrace spravovat za vás.
 
 Azure Machine Learning podporuje dvě metody distribuovaného školení v TensorFlow:
 
-- Distribuovaná školení [založená na MPI](https://www.open-mpi.org/) pomocí [horovodového](https://github.com/uber/horovod) rámce
-- Nativní [distribuovaný TensorFlow](https://www.tensorflow.org/deploy/distributed) pomocí metody parametrového serveru
+- Distribuované školení [založené na MPI](https://www.open-mpi.org/) s využitím architektury [Horovod](https://github.com/uber/horovod)
+- Nativní [distribuované TensorFlow](https://www.tensorflow.org/deploy/distributed) pomocí metody serveru parametrů
 
 ### <a name="horovod"></a>Horovod
 
-[Horovod](https://github.com/uber/horovod) je open-source framework pro distribuované školení vyvinuté společností Uber. Nabízí snadnou cestu k distribuovaným úlohám GPU TensorFlow.
+[Horovod](https://github.com/uber/horovod) je open-source platforma pro distribuované školení vyvinuté pomocí Uber. Nabízí snadnou cestu k distribuovaným úlohám TensorFlow GPU.
 
-Chcete-li použít Horovod, zadejte [`MpiConfiguration`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py) objekt pro `distributed_training` parametr v konstruktoru TensorFlow. Tento parametr zajišťuje, že horovodská knihovna je nainstalována pro použití v tréninkovém skriptu.
+Chcete-li použít Horovod, [`MpiConfiguration`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py) zadejte objekt pro `distributed_training` parametr v konstruktoru TensorFlow. Tento parametr zajišťuje, že se knihovna Horovod nainstaluje pro použití ve školicím skriptu.
 
 ```Python
 from azureml.core.runconfig import MpiConfiguration
@@ -245,11 +245,11 @@ estimator= TensorFlow(source_directory=project_folder,
                       pip_packages=['azureml-dataprep[pandas,fuse]'])
 ```
 
-### <a name="parameter-server"></a>Parametrický server
+### <a name="parameter-server"></a>Server parametrů
 
-Můžete také spustit [nativní distribuovaný TensorFlow](https://www.tensorflow.org/deploy/distributed), který používá model parametrového serveru. V této metodě trénování přes cluster parametr serverů a pracovníků. Pracovníci vypočítat přechody během školení, zatímco parametr servery agregovat přechody.
+Můžete také spustit [nativní distribuované TensorFlow](https://www.tensorflow.org/deploy/distributed), které používají model serveru parametrů. V této metodě budete vlakovat v clusteru parametrů serverů a pracovních procesů. Pracovní procesy vypočítávají přechody během školení, zatímco servery parametrů agreguje přechody.
 
-Chcete-li použít metodu [`TensorflowConfiguration`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration?view=azure-ml-py) parametrserveru, `distributed_training` zadejte objekt pro parametr v konstruktoru TensorFlow.
+Chcete-li použít metodu serveru parametrů, zadejte [`TensorflowConfiguration`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration?view=azure-ml-py) objekt pro `distributed_training` parametr v konstruktoru TensorFlow.
 
 ```Python
 from azureml.train.dnn import TensorFlow
@@ -272,11 +272,11 @@ tf_est= TensorFlow(source_directory=project_folder,
 run = exp.submit(tf_est)
 ```
 
-#### <a name="define-cluster-specifications-in-tf_config"></a>Definování specifikací clusteru v TF_CONFIG
+#### <a name="define-cluster-specifications-in-tf_config"></a>Definice specifikací clusteru v ' TF_CONFIG '
 
-Potřebujete také síťové adresy a porty clusteru [`tf.train.ClusterSpec`](https://www.tensorflow.org/api_docs/python/tf/train/ClusterSpec)pro , takže `TF_CONFIG` Azure Machine Learning nastaví proměnnou prostředí pro vás.
+Pro můžete také potřebovat síťové adresy a porty clusteru [`tf.train.ClusterSpec`](https://www.tensorflow.org/api_docs/python/tf/train/ClusterSpec), takže Azure Machine Learning pro vás nastaví proměnnou `TF_CONFIG` prostředí.
 
-Proměnná `TF_CONFIG` prostředí je řetězec JSON. Zde je příklad proměnné pro parametrový server:
+Proměnná `TF_CONFIG` prostředí je řetězec JSON. Tady je příklad proměnné pro server parametrů:
 
 ```JSON
 TF_CONFIG='{
@@ -289,9 +289,9 @@ TF_CONFIG='{
 }'
 ```
 
-Pro rozhraní API na [`tf.estimator`](https://www.tensorflow.org/api_docs/python/tf/estimator) vysoké úrovni TensorFlow TensorFlow analyzuje `TF_CONFIG` proměnnou a vytváří specifikace clusteru za vás.
+V případě rozhraní API na [`tf.estimator`](https://www.tensorflow.org/api_docs/python/tf/estimator) vysoké úrovni TensorFlow TensorFlow analyzuje `TF_CONFIG` proměnnou a vytvoří pro vás specifikaci clusteru.
 
-Pro základní api tensorflow nižší úrovně pro školení, `TF_CONFIG` analyzovat proměnnou a vytvořit v tréninkovém `tf.train.ClusterSpec` kódu.
+Pro základní rozhraní API nižší úrovně TensorFlow pro školení, analyzujte `TF_CONFIG` proměnnou a sestavte `tf.train.ClusterSpec` kód školení.
 
 ```Python
 import os, json
@@ -307,22 +307,22 @@ cluster_spec = tf.train.ClusterSpec(cluster)
 
 ## <a name="deploy-a-tensorflow-model"></a>Nasazení modelu TensorFlow
 
-Model, který jste právě zaregistrovali, můžete nasadit přesně stejným způsobem jako jakýkoli jiný registrovaný model v Azure Machine Learning, bez ohledu na to, který odhad jste použili pro školení. Postup nasazení obsahuje oddíl o registraci modelů, ale můžete přeskočit přímo k [vytvoření výpočetního cíle](how-to-deploy-and-where.md#choose-a-compute-target) pro nasazení, protože již máte registrovaný model.
+Model, který jste právě zaregistrovali, lze nasadit stejným způsobem jako jakýkoli jiný registrovaný model v Azure Machine Learning, bez ohledu na to, který Estimator jste použili pro školení. Postup nasazení obsahuje část týkající se registrace modelů, ale můžete přeskočit přímo na [Vytvoření výpočetního cíle](how-to-deploy-and-where.md#choose-a-compute-target) pro nasazení, protože již máte registrovaný model.
 
-## <a name="preview-no-code-model-deployment"></a>(Náhled) Nasazení modelu bez kódu
+## <a name="preview-no-code-model-deployment"></a>Tisk Nasazení modelu bez kódu
 
-Namísto tradiční trasy nasazení můžete také použít funkci nasazení bez kódu (náhled) pro Tentenzorflow. Registrací modelu, jak je `model_framework`znázorněno výše, pomocí , `model_framework_version`a `resource_configuration` parametry, můžete jednoduše použít statickou `deploy()` funkci k nasazení modelu.
+Místo tradičního postupu nasazení můžete také použít funkci nasazení bez kódu (Preview) pro Tensorflow. Registrací modelu `model_framework`, jak je uvedeno výše, pomocí `model_framework_version`parametrů, `resource_configuration` a můžete jednoduše použít `deploy()` statickou funkci pro nasazení modelu.
 
 ```python
 service = Model.deploy(ws, "tensorflow-web-service", [model])
 ```
 
-Úplné [návody na](how-to-deploy-and-where.md) nasazení v Azure Machine Learning do větší hloubky.
+Úplný [postup](how-to-deploy-and-where.md) pokrývá nasazení v Azure Machine Learning s větší hloubkou.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste vyškolili a zaregistrovali model TensorFlow a dozvěděli se o možnostech nasazení. Další informace o Azure Machine Learning najdete v těchto dalších článcích.
+V tomto článku jste si naučili a zaregistrovali model TensorFlow a seznámili jste se s možnostmi nasazení. Další informace o Azure Machine Learning najdete v těchto článcích.
 
-* [Sledovat metriky běhu během tréninku](how-to-track-experiments.md)
+* [Sledovat metriky spuštění během školení](how-to-track-experiments.md)
 * [Ladění hyperparametrů](how-to-tune-hyperparameters.md)
-* [Referenční architektura pro distribuované školení pro hloubkové učení v Azure](/azure/architecture/reference-architectures/ai/training-deep-learning)
+* [Referenční architektura distribuovaného školení pro hloubkové učení v Azure](/azure/architecture/reference-architectures/ai/training-deep-learning)

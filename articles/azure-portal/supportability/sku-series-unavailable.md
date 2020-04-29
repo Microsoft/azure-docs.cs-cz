@@ -1,6 +1,6 @@
 ---
-title: Oblast nebo skladové položky řady není k dispozici – Azure
-description: Některé řady skladových položk nejsou k dispozici pro vybrané předplatné pro tuto oblast, což může vyžadovat požadavek na podporu správy předplatného.
+title: Řady oblastí nebo SKU nejsou dostupné – Azure
+description: Některé řady SKU nejsou pro vybrané předplatné v této oblasti k dispozici, což může vyžadovat požadavek na podporu správy předplatných.
 services: Azure Supportability
 author: stevendotwang
 ms.service: azure-supportability
@@ -8,15 +8,15 @@ ms.topic: article
 ms.date: 01/27/2020
 ms.author: xingwan
 ms.openlocfilehash: b0f0762ded6804c0b0d90a19223c082f0fb8fd49
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76843620"
 ---
 # <a name="region-or-sku-unavailable"></a>Oblast nebo skladová položka není k dispozici
 
-Tento článek popisuje, jak vyřešit problém předplatného Azure, které nemají přístup k oblasti nebo skladové jednotce virtuálního počítače.
+Tento článek popisuje, jak vyřešit problém předplatného Azure, který nemá přístup k oblasti nebo SKU virtuálního počítače.
 
 ## <a name="symptoms"></a>Příznaky
 
@@ -39,7 +39,7 @@ Code: NotAvailableForSubscription
 Message: This size is currently unavailable in this location for this subscription
 ```
 
-Při nákupu rezervovaných instancí virtuálních strojů se zobrazí jedna z následujících chybových zpráv:
+Při nákupu rezervovaných instancí virtuálních počítačů se zobrazí jedna z následujících chybových zpráv:
 
 ```
 Message: Your subscription doesn’t support virtual machine reservation in <location>. Choose a 
@@ -50,37 +50,37 @@ different location. Supported locations are: <list of locations>
 Message: This size is currently unavailable in this location for this subscription
 ```
 
-Při vytváření žádosti o podporu pro zvýšení kvóty výpočetního jádra není pro výběr k dispozici oblast nebo rodina skladových míst.
+Při vytváření žádosti o podporu pro zvýšení kvóty výpočetního jádra není dostupná oblast nebo rodina SKU pro výběr.
 
 ## <a name="solution"></a>Řešení
 
-Nejprve doporučujeme zvážit alternativní oblast nebo skladovou položku, která splňuje vaše obchodní potřeby.
+Nejdřív doporučujeme vzít v úvahu alternativní oblast nebo SKU, které vyhovují vašim obchodním potřebám.
 
-Pokud nemůžete najít vhodnou oblast nebo skladovou položku, vytvořte [žádost o podporu pro](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) **správu předplatného** podle následujících kroků:
+Pokud nemůžete najít vhodnou oblast nebo SKU, vytvořte [žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) **správy předplatného** podle těchto kroků:
 
-1. V nabídce [Portál Azure](https://portal.azure.com) vyberte **Nápověda + podpora**. Pak vyberte **Nový požadavek na podporu**.
+1. V nabídce [Azure Portal](https://portal.azure.com) vyberte možnost **help + podpora**. Pak vyberte **Nová žádost o podporu**.
 
-1. V **části Základy**vyberte v části **Typ problému** **položku Správa předplatného**.
+1. V **základních**informacích pro **typ problému**vyberte **Správa předplatných**.
 
-1. Vyberte **předplatné** a zadejte stručný popis v **souhrnu**.
+1. Vyberte **předplatné** a v **souhrnu**zadejte stručný popis.
 
-   ![Karta Základy nové žádosti o podporu](./media/SKU-series-unavailable/support-request-basics.png)
+   ![Karta základy nové žádosti o podporu](./media/SKU-series-unavailable/support-request-basics.png)
 
-1. V **poučném typu**zvolte **Vybrat typ problému**.
+1. Jako **typ problému**zvolte **Vybrat typ problému**.
 
-1. V **případě typu Vybrat problém**zvolte možnost, **například Nelze získat přístup k předplatnému nebo prostředku** > **Můj problém není uveden výše**. Vyberte **Uložit**.
+1. Pro **možnost vybrat typ problému**zvolte možnost, například **nemůžete získat přístup k předplatnému nebo prostředek** > **můj problém není uveden výše**. Vyberte **Uložit**.
 
-   ![Určení problému pro požadavek](./media/SKU-series-unavailable/support-request-select-problem-type.png)
+   ![Zadejte problém pro požadavek.](./media/SKU-series-unavailable/support-request-select-problem-type.png)
 
-1. Vyberte **další: Řešení** pro zkoumání možných řešení. V případě potřeby vyberte **další: Podrobnosti** pokračovat.
+1. Vyberte **Další: řešení** a prozkoumejte možná řešení. V případě potřeby vyberte **Další: podrobnosti** a pokračujte.
 
-1. Zadejte jakékoli další informace, které můžete poskytnout, spolu s kontaktními údaji.
+1. Zadejte další informace, které můžete zadat, spolu s kontaktními informacemi.
 
-1. Vyberte **Zkontrolovat a vytvořit**. Po ověření informací vytvořte požadavek výběrem příkazu **Vytvořit.**
+1. Vyberte **Zkontrolovat a vytvořit**. Po ověření vašich informací vyberte **vytvořit** a vytvořte žádost.
 
-## <a name="send-us-your-suggestions"></a>Pošlete nám své návrhy
+## <a name="send-us-your-suggestions"></a>Pošlete nám svoje návrhy
 
-Jsme vždy otevřeni zpětné vazbě a návrhům! Pošlete nám své [návrhy](https://feedback.azure.com/forums/266794-support-feedback). Kromě toho se můžete zapojit s námi na [Twitter](https://twitter.com/azuresupport) nebo [MSDN fóra](https://social.msdn.microsoft.com/Forums/azure).
+Vždycky jsme si otevřeli názory a návrhy! Pošlete nám svoje [návrhy](https://feedback.azure.com/forums/266794-support-feedback). Kromě toho můžete s námi spolupracovat na [Twitteru](https://twitter.com/azuresupport) nebo na [fórech MSDN](https://social.msdn.microsoft.com/Forums/azure).
 
 ## <a name="learn-more"></a>Další informace
 

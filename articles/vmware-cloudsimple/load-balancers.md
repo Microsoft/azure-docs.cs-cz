@@ -1,6 +1,6 @@
 ---
-title: Řešení Azure VMware od CloudSimple – zvolte řešení vyrovnávání zatížení pro privátní cloudové cloudy
-description: Popisuje možnosti vyrovnávání zatížení nasazení aplikace v privátním cloudu.
+title: Řešení Azure VMware podle CloudSimple – volba řešení vyrovnávání zatížení pro privátní cloudy CloudSimple
+description: Popisuje možnosti vyrovnávání zatížení, které nasazují aplikaci v privátním cloudu.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/20/2019
@@ -9,38 +9,38 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 6c98b699b1d3aba15ce69c519d35d7ce3e90d123
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77014874"
 ---
-# <a name="choose-a-load-balancing-solution-for-cloudsimple-private-clouds"></a>Zvolte řešení vyrovnávání zatížení pro cloudová privátní cloudová cloudová cloudová cloudová řešení
+# <a name="choose-a-load-balancing-solution-for-cloudsimple-private-clouds"></a>Volba řešení vyrovnávání zatížení pro privátní cloudy CloudSimple
 
-Při nasazování aplikace v cloudu CloudSimple Privátní cloud, můžete zvolit některou z několika možností pro vyrovnávání zatížení.
+Když nasazujete aplikaci v privátním cloudu CloudSimple, můžete pro vyrovnávání zatížení zvolit některou z několika možností.
 
-Můžete si vybrat virtuální nebo softwarově založené nástroje pro vyrovnávání zatížení ve vašem cloudu CloudSimple nebo dokonce použít Nástroj pro vyrovnávání zatížení Azure L7 spuštěný ve vašem předplatném Azure k frontendu virtuálních virtuálních aplikací webové úrovně spuštěných v privátním cloudu CloudSimple. Zde uvádíme několik možností:
+Můžete zvolit virtuální nebo softwarový nástroj pro vyrovnávání zatížení ve vašem privátním cloudu CloudSimple nebo dokonce použít nástroj pro vyrovnávání zatížení Azure L7 spuštěný ve vašem předplatném Azure ke front-endu virtuálních počítačů webové vrstvy, které běží v privátním cloudu CloudSimple. Tady je seznam několika možností:
 
 ## <a name="virtual-load-balancers"></a>Virtuální nástroje pro vyrovnávání zatížení
 
-Můžete nasadit virtuální zařízení pro vyrovnávání zatížení ve vašem prostředí VMware prostřednictvím rozhraní vCenter a nakonfigurovat je tak, aby front-end provozu aplikace.
+Virtuální zařízení nástroje pro vyrovnávání zatížení můžete nasadit v prostředí VMware přes rozhraní vCenter a nakonfigurovat je tak, aby byly přenosy aplikace front-endu.
 
-Některé populární prodejci jsou: http://nginx.org/en/docs/http/load_balancing.html NginX: F5- https://www.f5.com/products/big-ip-services/virtual-editions BigIP - Traffic Manager: Citrix ADC:https://www.citrix.com/products/citrix-adc/
+Někteří oblíbená dodavatelé jsou: NginX: http://nginx.org/en/docs/http/load_balancing.html F5-big-ip-Traffic Manager: https://www.f5.com/products/big-ip-services/virtual-editions Citrix ADC:https://www.citrix.com/products/citrix-adc/
 
-## <a name="azure-l7-load-balancer"></a>Azure L7 pro vyrovnávání zatížení
+## <a name="azure-l7-load-balancer"></a>Nástroj pro vyrovnávání zatížení Azure L7
 
-Když používáte Azure Application Gateway jako L7 nástroje pro vyrovnávání zatížení pro vaši aplikaci spuštěnou v privátním cloudu, nemusíte spravovat software nástroje pro vyrovnávání zatížení. Software nástroje pro vyrovnávání zatížení spravuje Azure. Všechny virtuální servery webové vrstvy v privátním cloudu používají privátní IP adresy a k překladu názvů nevyžadují další pravidla PŘEKLADU ani veřejné adresy IP adres. Virtuální počítače webové vrstvy komunikují s aplikační bránou Azure přes privátní připojení s nízkou latencí a vysokou šířkou pásma.
+Pokud používáte Azure Application Gateway jako nástroj pro vyrovnávání zatížení L7 pro vaši aplikaci spuštěnou v privátním cloudu, nemusíte spravovat software nástroje pro vyrovnávání zatížení. Software pro vyrovnávání zatížení se spravuje v Azure. Všechny virtuální počítače webové vrstvy v privátním cloudu používají privátní IP adresy a k překladu názvů nevyžadují další pravidla překladu adres (NAT) ani veřejné IP adresy. Virtuální počítače webové vrstvy komunikují s Application Gateway Azure přes privátní připojení s nízkou latencí a velkou šířkou pásma.
 
-Další informace o tom, jak nakonfigurovat toto řešení, najdete v průvodci řešení na použití brány aplikace Azure jako L7 vyrovnávání zatížení.
+Další informace o tom, jak nakonfigurovat toto řešení, najdete v Průvodci řešením použití Azure Application Gateway jako nástroje pro vyrovnávání zatížení L7.
 
-## <a name="azure-internal-load-balancer"></a>Interní systém pro vyrovnávání zatížení Azure
+## <a name="azure-internal-load-balancer"></a>Interní nástroj pro vyrovnávání zatížení Azure
 
-Pokud se rozhodnete spustit aplikaci v hybridním nasazení, kde webová front-endová vrstva běží v rámci virtuální sítě Azure ve vašem předplatném Azure a úroveň DB aplikace běží ve virtuálních počítačích VMware v cloudu CloudSimple Private Cloud, můžete použít interní zatížení Azure vykladač (L4 balancer) před virtuálními počítači úrovně DB pro správu provozu.
+Pokud se rozhodnete aplikaci spustit v hybridním nasazení, kde webová front-end je spuštěná ve virtuální síti Azure v rámci vašeho předplatného Azure a vrstva DB aplikace je spuštěná ve virtuálních počítačích VMware v privátním cloudu CloudSimple, můžete před virtuálními počítači vrstvy databáze pro správu provozu použít interní nástroj pro vyrovnávání zatížení (L4 Load Balancer) Azure.
 
-Další informace najdete v tématu Dokumentace [k nástroje pro interní vyrovnávání zatížení](../load-balancer/concepts-limitations.md#internalloadbalancer) Azure.
+Další informace najdete v dokumentaci k [interním Load Balancer](../load-balancer/concepts-limitations.md#internalloadbalancer) Azure.
 
-## <a name="global-server-load-balancer"></a>Globální vyrovnávání zatížení serveru
+## <a name="global-server-load-balancer"></a>Globální nástroj pro vyrovnávání zatížení serveru
 
-Pokud hledáte nástroje pro vyrovnávání zatížení založeného na DNS, můžete buď použít řešení třetích stran dostupná na Azure Marketplace, nebo použít nativní řešení Azure.
+Pokud hledáte Nástroj pro vyrovnávání zatížení založený na DNS, můžete buď využít řešení třetích stran, která jsou k dispozici v Azure Marketplace, nebo přejít s nativním řešením Azure.
 
-Azure Traffic Manager je nástroj pro vyrovnávání zatížení založený na DNS, který umožňuje optimálně distribuovat provoz do služeb napříč globálními oblastmi Azure a místně a zároveň poskytuje vysokou dostupnost a odezvu. Další informace najdete v dokumentaci k Azure [Traffic Manageru.](../traffic-manager/traffic-manager-configure-geographic-routing-method.md)
+Azure Traffic Manager je nástroj pro vyrovnávání zatížení založený na DNS, který umožňuje distribuci provozu optimálně do služeb napříč globálními oblastmi Azure a v místním prostředí a zároveň zajišťuje vysokou dostupnost a rychlost odezvy. Další informace najdete v dokumentaci k Azure [Traffic Manager](../traffic-manager/traffic-manager-configure-geographic-routing-method.md) .

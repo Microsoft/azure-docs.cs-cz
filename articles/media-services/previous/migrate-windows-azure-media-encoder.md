@@ -1,6 +1,6 @@
 ---
-title: Migrace z kodéru médií Windows Azure do standardu media encoder | Dokumenty společnosti Microsoft
-description: Toto téma popisuje, jak migrovat z Azure Media Encoder do mediálního procesoru Media Encoder Standard.
+title: Migrace z Windows Azure Media Encoder do Media Encoder Standard | Microsoft Docs
+description: Toto téma popisuje, jak migrovat z Azure Media Encoder do procesoru Media Encoder Standard Media.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -14,21 +14,21 @@ ms.topic: article
 ms.date: 10/17/2019
 ms.author: juliako
 ms.openlocfilehash: e75e3f3eecf6c34050aeaa7fe387fffb0de58a74
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76513197"
 ---
-# <a name="migrate-from-windows-azure-media-encoder-to-media-encoder-standard"></a>Migrace z kodéru médií Windows Azure do standardu kodéru médií
+# <a name="migrate-from-windows-azure-media-encoder-to-media-encoder-standard"></a>Migrace z Windows Azure Media Encoder na Media Encoder Standard
 
-Tento článek popisuje kroky pro migraci ze staršího mediálního procesoru Windows Azure Media Encoder (WAME) (který je vyřazen) do mediálního procesoru Media Encoder Standard. Data vyřazení naleznete v tomto tématu [starších součástí.](legacy-components.md)
+Tento článek popisuje postup migrace z staršího procesoru Windows Azure Media Encoder (WAME) Media (který se právě vyřazuje) do procesoru Media Encoder Standard Media. Informace o datech vyřazení najdete v tématu tyto [starší součásti](legacy-components.md) .
 
-Při kódování souborů pomocí wame zákazníci obvykle používají pojmenovaný `H264 Adaptive Bitrate MP4 Set 1080p`přednastavený řetězec, například . Chcete-li migrovat, je třeba aktualizovat kód, aby bylo možné použít mediální procesor **Media Encoder Standard** namísto WAME, a jeden z ekvivalentních [systémových přednastavení,](media-services-mes-presets-overview.md) jako je `H264 Multiple Bitrate 1080p`. 
+Při kódování souborů pomocí WAME zákazníci obvykle použili pojmenovaný přednastavený řetězec, například `H264 Adaptive Bitrate MP4 Set 1080p`. Aby bylo možné provést migraci, váš kód musí být aktualizován, aby používal procesor **Media Encoder Standard** médií namísto WAME a jednu z ekvivalentních [předvoleb systému](media-services-mes-presets-overview.md) jako `H264 Multiple Bitrate 1080p`. 
 
-## <a name="migrating-to-media-encoder-standard"></a>Migrace na standard kodéru médií
+## <a name="migrating-to-media-encoder-standard"></a>Migrace na Media Encoder Standard
 
-Zde je typická ukázka kódu Jazyka C#, která používá starší součást. 
+Zde je typický příklad kódu v jazyce C#, který používá starší verzi součásti. 
 
 ```csharp
 // Declare a new job. 
@@ -45,7 +45,7 @@ ITask task = job.Tasks.AddNew("My encoding task",
     TaskOptions.None); 
 ```
 
-Zde je aktualizovaná verze, která používá standard kodéru médií.
+Zde je aktualizovaná verze, která používá Media Encoder Standard.
 
 ```csharp
 // Declare a new job. 
@@ -64,19 +64,19 @@ ITask task = job.Tasks.AddNew("My encoding task",
 
 ### <a name="advanced-scenarios"></a>Pokročilé scénáře 
 
-Pokud jste vytvořili vlastní přednastavení kódování pro WAME pomocí jeho schématu, existuje [ekvivalentní schéma pro standard kodéru médií](media-services-mes-schema.md).
+Pokud jste vytvořili vlastní předvolby kódování pro WAME pomocí svého schématu, existuje [stejné schéma pro Media Encoder Standard](media-services-mes-schema.md).
 
 ## <a name="known-differences"></a>Známé rozdíly 
 
-Standard Media Encoder Standard je robustnější, spolehlivější, má lepší výkon a produkuje kvalitnější výstup než starší kodér WAME. Navíc: 
+Media Encoder Standard je robustnější, spolehlivější, má lepší výkon a produkuje kvalitní výstup než starší kodér WAME. Navíc: 
 
-* Standard programu Media Encoder Standard vytváří výstupní soubory s jinou konvencí pojmenování než WAME.
-* Standard Media Encoder Standard vytváří artefakty, jako jsou soubory obsahující [metadata vstupního souboru](media-services-input-metadata-schema.md) a [metadata výstupních souborů](media-services-output-metadata-schema.md).
-* Jak je zdokumentováno na [stránce s cenami](https://azure.microsoft.com/pricing/details/media-services/#encoding) (zejména v části Nejčastější dotazy), při kódování videí pomocí standardu Media Encoder Standard se vám budou účtovat na základě doby trvání souborů vytvořených jako výstup. S WAME, budete účtovány na základě velikosti vstupní video soubor (y) a výstupní video soubor (y).
+* Media Encoder Standard vytváří výstupní soubory s odlišnou konvencí pojmenování než WAME.
+* Media Encoder Standard vytváří artefakty, jako jsou soubory obsahující [metadata vstupních souborů](media-services-input-metadata-schema.md) a [metadata výstupních souborů](media-services-output-metadata-schema.md).
+* Jak je popsáno na [stránce s cenami](https://azure.microsoft.com/pricing/details/media-services/#encoding) (zejména v části Nejčastější dotazy), při kódování videí pomocí Media Encoder Standard se vám bude účtovat na základě doby trvání souborů vytvořených jako výstup. Pomocí WAME se bude účtovat podle velikosti vstupních videosouborů a souborů výstupních videí.
 
 ## <a name="need-help"></a>Potřebujete pomoc?
 
-Lístek podpory můžete otevřít tak, že přejdete na [Novou žádost o podporu.](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
+Lístek podpory můžete otevřít tak, že přejdete na [novou žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) .
 
 ## <a name="next-steps"></a>Další kroky
 

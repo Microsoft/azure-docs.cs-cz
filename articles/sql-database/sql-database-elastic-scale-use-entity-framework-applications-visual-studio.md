@@ -1,6 +1,6 @@
 ---
-title: Použití klientské knihovny elastické databáze s rozhraním Entity Framework
-description: Použití klientské knihovny elastické databáze a entity frameworku pro kódování databází
+title: Použití klientské knihovny elastické databáze s Entity Framework
+description: Použití Elastic Database klientské knihovny a Entity Framework pro kódování databází
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -12,79 +12,79 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/04/2019
 ms.openlocfilehash: 1653a904875964d86864c59c718603a6dacdcbda
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77087186"
 ---
-# <a name="elastic-database-client-library-with-entity-framework"></a>Klientská knihovna elastická databáze s rozhraním Entity Framework
+# <a name="elastic-database-client-library-with-entity-framework"></a>Elastic Database klientské knihovny s Entity Framework
 
-Tento dokument zobrazuje změny v aplikaci Entity Framework, které jsou potřebné k integraci s [nástroji elastické databáze](sql-database-elastic-scale-introduction.md). Důraz je kladen na vytváření [správu mapy svižných](sql-database-elastic-scale-shard-map-management.md) [bitových rámců](sql-database-elastic-scale-data-dependent-routing.md) a směrování závislé na datech pomocí přístupu Entity Framework **Code First.** [Kurz Code First - New Database](https://msdn.microsoft.com/data/jj193542.aspx) pro EF slouží jako spuštěný příklad v celém tomto dokumentu. Ukázkový kód doprovázející tento dokument je součástí sady ukázky elastických databázových nástrojů v ukázkách kódu sady Visual Studio.
+Tento dokument zobrazuje změny v Entity Framework aplikaci, které jsou potřeba pro integraci s [nástroji elastic Database](sql-database-elastic-scale-introduction.md). Zaměřuje se na vytváření [horizontálních oddílůch map](sql-database-elastic-scale-shard-map-management.md) a [Směrování závislých na datech](sql-database-elastic-scale-data-dependent-routing.md) s přístupem **Code First** Entity Framework. Kurz [Code First-New Database](https://msdn.microsoft.com/data/jj193542.aspx) pro EF slouží jako příklad spuštění v celém tomto dokumentu. Vzorový kód doprovázející tento dokument je součástí sady ukázek nástrojů elastické databáze v ukázkách Visual Studio Code.
 
-## <a name="downloading-and-running-the-sample-code"></a>Stahování a spuštění ukázkového kódu
+## <a name="downloading-and-running-the-sample-code"></a>Stažení a spuštění ukázkového kódu
 
-Chcete-li stáhnout kód pro tento článek:
+Stažení kódu pro tento článek:
 
-* Visual Studio 2012 nebo novější je povinné. 
-* Stáhněte si [ukázku nástroje Elastic DB pro Azure SQL – integraci entity frameworku](https://github.com/Azure/elastic-db-tools/). Rozbalte vzorek na místo podle vašeho výběru.
+* Vyžaduje se Visual Studio 2012 nebo novější. 
+* Stáhněte si [ukázku integrace nástrojů elastické databáze pro Azure SQL Entity Framework](https://github.com/Azure/elastic-db-tools/). Rozbalte ukázku do zvoleného umístění.
 * Spusťte Visual Studio. 
-* V Sadě Visual Studio vyberte Soubor -> Otevřít projekt/řešení. 
-* V dialogovém okně **Otevřít projekt** přejděte na ukázku, kterou jste stáhli, a výběrem **entityFrameworkCodeFirst.sln** otevřete ukázku. 
+* V aplikaci Visual Studio vyberte soubor-> otevřít projekt nebo řešení. 
+* V dialogovém okně **Otevřít projekt** přejděte k ukázce, kterou jste stáhli, a výběrem **EntityFrameworkCodeFirst. sln** otevřete ukázku. 
 
-Chcete-li spustit ukázku, je potřeba vytvořit tři prázdné databáze v Azure SQL Database:
+Pokud chcete ukázku spustit, musíte v Azure SQL Database vytvořit tři prázdné databáze:
 
-* Databáze Správce map úlomků
-* Databáze úlomku 1
-* Databáze střepů 2
+* Databáze správce map horizontálních oddílů
+* Databáze horizontálních oddílů 1
+* Databáze horizontálních oddílů 2
 
-Po vytvoření těchto databází vyplňte zástupné symboly v **Program.cs** s názvem serveru Azure SQL DB, názvy databází a přihlašovacími údaji pro připojení k databázím. Vytvořte řešení v sadě Visual Studio. Visual Studio stáhne požadované balíčky NuGet pro klientskou knihovnu elastické databáze, entity framework a zpracování přechodných chyb jako součást procesu sestavení. Ujistěte se, že obnovení balíčků NuGet je povoleno pro vaše řešení. Toto nastavení můžete povolit kliknutím pravým tlačítkem myši na soubor řešení v Průzkumníku řešení sady Visual Studio. 
+Po vytvoření těchto databází vyplňte držitele umístění v **program.cs** názvem vašeho serveru Azure SQL DB, názvy databází a přihlašovací údaje pro připojení k databázím. Sestavte řešení v aplikaci Visual Studio. Visual Studio stáhne požadované balíčky NuGet pro klientskou knihovnu elastické databáze, Entity Framework a zpracování přechodných chyb v rámci procesu sestavení. Ujistěte se, že je pro vaše řešení povolené obnovování balíčků NuGet. Toto nastavení můžete povolit tak, že kliknete pravým tlačítkem na soubor řešení v Průzkumník řešení sady Visual Studio. 
 
-## <a name="entity-framework-workflows"></a>Pracovní postupy entity Framework
+## <a name="entity-framework-workflows"></a>Pracovní postupy Entity Framework
 
-Vývojáři entity Framework spoléhají na jeden z následujících čtyř pracovních postupů při vytváření aplikací a zajištění trvalosti pro aplikační objekty:
+Entity Framework vývojáři při sestavování aplikací a zajištění trvalého fungování pro objekty aplikací spoléhají na jeden z následujících čtyř pracovních postupů:
 
-* **Code First (Nová databáze)**: Vývojář EF vytvoří model v kódu aplikace a potom EF generuje databázi z něj. 
-* **Code First (Existující databáze)**: Vývojář umožňuje EF generovat kód aplikace pro model z existující databáze.
-* **Model First**: Vývojář vytvoří model v návrháři EF a potom EF vytvoří databázi z modelu.
-* **Databáze první**: Vývojář používá nástroje EF k odvodit model z existující databáze. 
+* **Code First (nová databáze)**: vývojář EF vytvoří model v kódu aplikace a pak z něj vygeneruje databázi EF. 
+* **Code First (existující databáze)**: vývojář umožňuje, aby EF vygeneroval kód aplikace pro model z existující databáze.
+* **Model First**: Vývojář vytvoří model v Návrháři EF a pak EF vytvoří databázi z modelu.
+* **Database First**: vývojář pomocí nástrojů EF odvodí model z existující databáze. 
 
-Všechny tyto přístupy spoléhají na DbContext třídy transparentní spravovat připojení k databázi a schéma databáze pro aplikaci. Různé konstruktory v základní třídě DbContext umožňují různé úrovně kontroly nad vytvářením připojení, zaváděním databáze a vytvářením schématu. Výzvy vyplývají především ze skutečnosti, že správa připojení k databázi poskytované EF protíná s možnostmi správy připojení dat závislých na směrování rozhraní poskytovaných knihovnou klienta elastické databáze. 
+Všechny tyto přístupy využívají třídu DbContext k transparentní správě databázových připojení a schématu databáze pro aplikaci. Různé konstruktory v základní třídě DbContext umožňují různé úrovně kontroly nad vytvořením připojení, navázáním databáze a vytvořením schématu. K problémům dochází hlavně ze skutečnosti, že Správa připojení k databázi poskytovaná pomocí EF překládá s možnostmi správy připojení pro rozhraní směrování závislá na datech, která poskytuje Klientská knihovna elastické databáze. 
 
-## <a name="elastic-database-tools-assumptions"></a>Předpoklady elastických databázových nástrojů
+## <a name="elastic-database-tools-assumptions"></a>Předpoklady pro nástroje elastické databáze
 
-Definice termínů naleznete v [tématu Glosář nástrojů elastické databáze](sql-database-elastic-scale-glossary.md).
+Definice termínů najdete v článku [Glosář nástrojů pro elastic Database](sql-database-elastic-scale-glossary.md).
 
-S klientskou knihovnou elastické databáze definujete oddíly dat aplikace nazývané shardlety. Shardlets jsou identifikovány pomocí klíče s ráždí a jsou mapovány na konkrétní databáze. Aplikace může mít tolik databází podle potřeby a distribuovat shardlety poskytnout dostatečnou kapacitu nebo výkon dané aktuální obchodní požadavky. Mapování hodnot klíče s ráždí do databází je uloženo pomocí mapy skládek poskytované rozhraní API klienta elastické databáze. Tato funkce se nazývá **Správa mapy sypu**nebo Zkráceně SMM. Mapa střepu slouží také jako zprostředkovatel připojení databáze pro požadavky, které nesou klíč s ráždí. Tato funkce se označuje jako **směrování závislé na datech**. 
+Pomocí klientské knihovny elastické databáze definujete oddíly dat vaší aplikace s názvem shardlety. Shardlety jsou označeny klíčem horizontálního dělení a jsou namapovány na konkrétní databáze. Aplikace může mít podle potřeby tolik databází a distribuovat shardlety, aby poskytoval dostatek kapacity nebo výkon pro aktuální obchodní požadavky. Mapování hodnot klíče horizontálního dělení na databáze je uloženo v mapě horizontálních oddílů, kterou poskytuje rozhraní API klienta elastické databáze. Tato funkce se nazývá **Správa map horizontálních oddílů**nebo SMM pro krátké. Mapa horizontálních oddílů slouží také jako zprostředkovatel připojení databáze pro požadavky, které přenášejí klíč horizontálního dělení. Tato funkce se označuje jako **Směrování závislé na datech**. 
 
-Správce mapy střepů chrání uživatele před nekonzistentními zobrazeními do dat shardletu, ke kterým může dojít, když probíhají souběžné operace správy shardletu (například přemístění dat z jednoho úlomku do druhého). Chcete-li tak učinit, mapy svižné klientské knihovny zprostředkovatele připojení databáze pro aplikaci. To umožňuje funkce mapy střepu automaticky uhasit připojení k databázi, když operace správy střepu může mít vliv na shardlet, pro který bylo vytvořeno připojení. Tento přístup je třeba integrovat s některé funkce EF, jako je například vytváření nových připojení z existující ho zkontrolovat existenci databáze. Obecně naše pozorování bylo, že standardní DbContext konstruktory pracovat pouze spolehlivě pro uzavřené databázové připojení, které lze bezpečně klonovat pro práci EF. Princip návrhu elastické databáze místo toho je pouze zprostředkovatel otevřené připojení. Jeden by si mohl myslet, že uzavření připojení zprostředkované klientské knihovny před předáním ef dbcontext může tento problém vyřešit. Však uzavřením připojení a spoléhání se na EF znovu otevřít, jeden zříká ověření a kontroly konzistence prováděné knihovnou. Funkce migrace v EF, však používá tato připojení ke správě základní schéma databáze způsobem, který je transparentní pro aplikaci. V ideálním případě budete zachovat a kombinovat všechny tyto funkce z klientské knihovny elastické databáze a EF ve stejné aplikaci. Následující část popisuje tyto vlastnosti a požadavky podrobněji. 
+Správce map horizontálních oddílů chrání uživatele před nekonzistentními zobrazeními do dat shardletu, ke kterým může dojít, když se děje souběžné operace správy shardletu (například přemístění dat z jednoho horizontálních oddílů na jiný). K tomu se mapy horizontálních oddílů spravují pomocí zprostředkovatele klientské knihovny pro připojení k databázi pro aplikaci. To umožňuje, aby funkce mapy horizontálních oddílů automaticky ukončila připojení k databázi, zatímco operace správy horizontálních oddílů by mohly ovlivnit shardletu, pro které bylo připojení vytvořeno. Tento přístup se musí integrovat s některými funkcemi EF, jako je například vytváření nových připojení z existujícího objektu pro kontrolu existence databáze. Obecně jsme naše sledování ukázali, že standardní konstruktory DbContext fungují pouze spolehlivě pro uzavřená databázová připojení, která je možné bezpečně klonovat pro práci EF. Princip návrhu elastické databáze je místo toho jenom k otevřeným připojením. Může to znamenat, že před tím, než se tento problém DbContext EF, může dojít k tomu, že se před tím, než se předá přes EF, dopřed převzetí připojení Ukončením připojení a spoléháme se na EF, aby ho bylo možné znovu otevřít, jedna foregoes ověřování a kontroly konzistence prováděné knihovnou. Funkce migrace v EF používá tato připojení ke správě základního schématu databáze způsobem, který je pro aplikaci transparentní. V ideálním případě budete tyto možnosti uchovávat a kombinovat jak z klientské knihovny elastické databáze, tak z EF ve stejné aplikaci. Následující část popisuje tyto vlastnosti a požadavky podrobněji. 
 
 ## <a name="requirements"></a>Požadavky
 
-Při práci s klientskou knihovnou elastické databáze a rozhraními API entity framework uchovávejte následující vlastnosti: 
+Při práci s klientskou knihovnou a Entity Framework API pro elastickou databázi chcete zachovat následující vlastnosti: 
 
-* **Horizontální navýšení kapacity**: Chcete-li přidat nebo odebrat databáze z datové vrstvy horizontálně větvičné aplikace podle potřeby pro požadavky na kapacitu aplikace. To znamená, že řízení nad vytváření a odstraňování databází a pomocí elastické databáze horizontálního oddílu rozhraní API správce map pro správu databází a mapování shardlets. 
-* **Konzistence**: Aplikace využívá funkce pro řídké části a využívá možnosti směrování závislé na datech klientské knihovny. Chcete-li se vyhnout poškození nebo nesprávných výsledků dotazu, jsou připojení zprostředkována prostřednictvím správce mapy sustrovatelnosti. To také zachovává ověření a konzistenci.
-* **Kód první**: Chcete-li zachovat pohodlí ef kód první paradigma. V Code First třídy v aplikaci jsou mapovány transparentně na základní struktury databáze. Kód aplikace spolupracuje s DbSets, které maskují většinu aspektů zapojených do zpracování podkladové databáze.
-* **Schéma**: Entity Framework zpracovává počáteční vytváření schématu databáze a následné vývoj schématu prostřednictvím migrace. Zachováním těchto funkcí je přizpůsobení aplikace s ním snadné. 
+* **Horizontální**navýšení kapacity: Chcete-li přidat nebo odebrat databáze z datové vrstvy aplikace horizontálně dělené podle potřeby požadavků na kapacitu aplikace. To znamená kontrolu nad vytvořením a odstraněním databází a používáním rozhraní API elastické databáze horizontálních oddílů map pro správu databází a mapování shardlety. 
+* **Konzistence**: aplikace využívá horizontálního dělení a využívá možnosti směrování závislé na datech klientské knihovny. Aby se zabránilo poškození nebo špatnému výsledku dotazu, připojení se provádí prostřednictvím Správce map horizontálních oddílů. Tím se také zachovává ověřování a konzistence.
+* **Code First**: pro zachování pohodlí prvního paradigma kódu EF. V Code First třídy v aplikaci jsou transparentně mapovány na podkladové struktury databáze. Kód aplikace komunikuje s DbSets, které maskují většinu aspektů při zpracování základní databáze.
+* **Schéma**: Entity Framework zpracovává počáteční vytváření schématu databáze a následné vývoj schématu prostřednictvím migrací. Díky zachování těchto schopností je přizpůsobení aplikace snadné při vývoji dat. 
 
-Následující pokyny návod, jak splnit tyto požadavky pro aplikace Code First pomocí elastických databázových nástrojů. 
+Následující pokyny popisují, jak tyto požadavky naplnit Code First aplikací pomocí nástrojů elastické databáze. 
 
 ## <a name="data-dependent-routing-using-ef-dbcontext"></a>Směrování závislé na datech pomocí EF DbContext
 
-Připojení k databázi s entity framework jsou obvykle spravovány prostřednictvím podtříd **DbContext**. Vytvořte tyto podtřídy odvozením z **DbContext**. Toto je místo, kde definujete **vaše DbSets,** které implementují kolekce objektů CLR zálohované databází pro vaši aplikaci. V kontextu směrování závislé na datech můžete identifikovat několik užitečných vlastností, které nemusí být nutně v držení pro jiné scénáře aplikace první ef kód: 
+Databázová připojení pomocí Entity Framework jsou obvykle spravovaná pomocí podtříd třídy **DbContext**. Vytvořte tyto podtřídy odvozené z **DbContext**. Zde definujete **DbSets** , které implementují kolekce objektů CLR zálohovaných databázemi pro vaši aplikaci. V kontextu směrování závislého na datech můžete identifikovat několik užitečných vlastností, které nejsou nutně uloženy pro jiné scénáře použití prvního kódu EF: 
 
-* Databáze již existuje a byla zaregistrována v mapě střepů elastické databáze. 
-* Schéma aplikace již bylo nasazeno do databáze (vysvětleno níže). 
-* Připojení směrování závislých na datech k databázi jsou zprostředkována mapou svižného oddílu. 
+* Databáze již existuje a byla registrována v mapě horizontálních oddílů elastické databáze. 
+* Schéma aplikace již bylo nasazeno do databáze (vysvětlení níže). 
+* Připojení směrování závislá na datech k databázi jsou založená na mapě horizontálních oddílů. 
 
-Integrace **DbContexts** s směrováním závislými na datech pro horizontální navýšení kapacity:
+Integrace **DbContexts** se směrováním závislým na datech pro škálování na více instancí:
 
-1. Vytvořit připojení fyzické databáze prostřednictvím klientských rozhraní elastické databáze správce map střepů, 
-2. Zalomení připojení s podtřídou **DbContext**
-3. Předají připojení dolů do **dbcontext** základní třídy zajistit všechny zpracování na straně EF se stane také. 
+1. Vytvořte připojení fyzické databáze prostřednictvím klientských rozhraní elastické databáze správce mapy horizontálních oddílů. 
+2. Zabalte připojení k podtřídě **DbContext**
+3. Předejte připojení dolů do základních tříd **DbContext** , aby bylo zajištěno, že veškeré zpracování na straně EF dojde také k. 
 
-Následující příklad kódu ilustruje tento přístup. (Tento kód je také v doprovodném projektu Sady Visual Studio)
+Následující příklad kódu ukazuje tento přístup. (Tento kód je také v doprovodném projektu sady Visual Studio.)
 
 ```csharp
 public class ElasticScaleContext<T> : DbContext
@@ -121,19 +121,19 @@ public DbSet<Blog> Blogs { get; set; }
 
 ## <a name="main-points"></a>Hlavní body
 
-* Nový konstruktor nahradí výchozí konstruktor v podtřídě DbContext 
-* Nový konstruktor přebírá argumenty, které jsou požadovány pro směrování závislé na datech prostřednictvím klientské knihovny elastické databáze:
+* Nový konstruktor nahradí výchozí konstruktor v podtřídě DbContext. 
+* Nový konstruktor přijímá argumenty, které jsou vyžadovány pro směrování závislé na datech prostřednictvím klientské knihovny elastické databáze:
   
-  * mapa úlomků pro přístup k směrovacím rozhraním závislým na datech,
-  * klíč k střepování k identifikaci shardletu,
-  * připojovací řetězec s pověřeními pro připojení směrování závislých na datech k úlovci. 
-* Volání konstruktoru základní třídy provede objížďku do statické metody, která provede všechny kroky nezbytné pro směrování závislé na datech. 
+  * Mapa horizontálních oddílů pro přístup k rozhraním směrování závislým na datech,
+  * klíč horizontálního dělení k identifikaci shardletu,
+  * připojovací řetězec s přihlašovacími údaji pro připojení směrování závislé na datech ke službě horizontálních oddílů. 
+* Volání konstruktoru základní třídy převezme ze seznamu statickou metodu, která provede všechny kroky nezbytné pro směrování závislé na datech. 
   
-  * Používá OpenConnectionForKey volání rozhraní klienta elastické databáze na mapě střepu k navázání otevřeného připojení.
-  * Mapa štřepů vytvoří otevřené připojení k oddílu, který drží shardlet pro daný klíč nástružníku.
-  * Toto otevřené připojení je předáno zpět do konstruktoru základní třídy DbContext, který označuje, že toto připojení má být použito EF namísto toho, aby EF automaticky vytvořil nové připojení. Tímto způsobem bylo připojení označeno rozhraním API klienta elastické databáze, aby mohlo zaručit konzistenci v rámci operací správy mapy skřítek.
+  * K navázání otevřeného připojení používá OpenConnectionForKey volání klientských rozhraní elastické databáze na mapě horizontálních oddílů.
+  * Mapa horizontálních oddílů vytvoří otevřené připojení k horizontálních oddílů, které obsahuje shardletu pro daný klíč horizontálního dělení.
+  * Toto otevřené připojení se předává zpět do konstruktoru základní třídy DbContext, který označuje, že toto připojení má být použito v EF místo toho, aby EF vytvořilo nové připojení automaticky. Tímto způsobem bylo připojení označeno rozhraním API klienta elastické databáze, aby mohlo zaručit konzistenci v rámci operací správy mapy horizontálních oddílů.
 
-Použijte nový konstruktor pro podtřídu DbContext namísto výchozího konstruktoru v kódu. Zde naleznete příklad: 
+Použijte nový konstruktor pro podtřídu DbContext namísto výchozího konstruktoru ve vašem kódu. Zde naleznete příklad: 
 
 ```csharp
 // Create and save a new blog.
@@ -158,13 +158,13 @@ using (var db = new ElasticScaleContext<int>(
 }
 ```
 
-Nový konstruktor otevře připojení k oddílu, který obsahuje data pro shardlet identifikované hodnotou **tenantid1**. Kód v **using** bloku zůstane beze změny pro přístup **k DbSet** pro blogy pomocí EF na střepu pro **tenantid1**. To změní sémantiku pro kód v using bloku tak, aby všechny databázové operace jsou nyní vymezeny na jeden oddíl, kde **tenantid1** je uložena. Například dotaz LINQ přes blogy **DbSet** by pouze vrátit blogy uložené na aktuální úlomku, ale ne ty uložené na jiných šerpů.  
+Nový konstruktor otevře připojení k horizontálních oddílů, které obsahuje data pro shardletu identifikovaný hodnotou **tenantid1**. Kód v bloku **using** zůstane beze změny pro přístup k **negenerickými** pro blogy pomocí EF na horizontálních oddílů pro **tenantid1**. Tato změna sémantiky kódu v bloku using tak, aby všechny operace databáze byly nyní vymezeny na jeden horizontálních oddílů, kde je **tenantid1** uložený. Například dotaz LINQ přes Blogy **negenerickými** by vrátil jenom Blogy uložené na aktuální horizontálních oddílů, ale ne ty, které jsou uložené na jiných horizontálních oddílů.  
 
-#### <a name="transient-faults-handling"></a>Přechodná manipulace s chybami
+#### <a name="transient-faults-handling"></a>Zpracování přechodných chyb
 
-Tým Microsoft Patterns & Practices publikoval [blok aplikace pro zpracování přechodných chyb](https://msdn.microsoft.com/library/dn440719.aspx). Knihovna se používá s elastickou škálou klientské knihovny v kombinaci s EF. Ujistěte se však, že všechny přechodné výjimky vrátí na místo, kde můžete zajistit, že nový konstruktor je používán po přechodné poruchy tak, aby každý nový pokus o připojení se provádí pomocí konstruktory, které jste vylepšili. V opačném případě není zaručeno připojení ke správnému oddílu a neexistují žádné záruky, že připojení je zachováno, protože dojde ke změnám mapy oddílu. 
+Tým Microsoft Patterns & Practices publikoval [blokované aplikace pro zpracování přechodného selhání](https://msdn.microsoft.com/library/dn440719.aspx). Knihovna se používá společně s klientskou knihovnou elastického škálování v kombinaci s EF. Zajistěte však, aby se jakákoliv přechodná výjimka vrátila na místo, kde můžete zajistit, že se nový konstruktor používá po přechodné chybě, aby byl proveden nový pokus o připojení pomocí vámi přidaných konstruktorů. V opačném případě není zaručené připojení ke správnému horizontálních oddílů a neexistují žádné záruky, že se připojení zachovává beze změn v mapě horizontálních oddílů. 
 
-Následující ukázka kódu ukazuje, jak lze použít zásadu opakování SQL kolem nových konstruktorů **podtřídy DbContext:** 
+Následující příklad kódu ukazuje, jak lze použít zásadu opakování SQL kolem nových konstruktorů podtříd **DbContext** : 
 
 ```csharp
 SqlDatabaseUtils.SqlRetryPolicy.ExecuteAction(() => 
@@ -182,37 +182,37 @@ SqlDatabaseUtils.SqlRetryPolicy.ExecuteAction(() =>
     }); 
 ```
 
-**SqlDatabaseUtils.SqlRetryPolicy** ve výše uvedeném kódu je definován jako **SqlDatabaseTransientErrorDetectionStrategy** s počtem opakování 10 a 5 sekund čekací doby mezi opakování. Tento přístup je podobný pokyny pro EF a transakce iniciované uživatelem (viz [Omezení s opakování mnoství strategie provádění (EF6 a dále)](https://msdn.microsoft.com/data/dn307226). Obě situace vyžadují, aby aplikační program řídí obor, do kterého se vrací přechodná výjimka: znovu otevřít transakci nebo (jak je znázorněno) znovu vytvořit kontext z správného konstruktoru, který používá klientskou knihovnu elastické databáze.
+**SqlDatabaseUtils. SqlRetryPolicy** ve výše uvedeném kódu je definováno jako **SqlDatabaseTransientErrorDetectionStrategy** s počtem opakování 10 a 5 sekund čekací doba mezi opakovanými pokusy. Tento přístup je podobný pokynům pro EF a uživatelem iniciované transakce (viz [omezení s opakováním strategií spouštění (EF6 a vyšší)](https://msdn.microsoft.com/data/dn307226). Obě situace vyžadují, aby program aplikace řídí rozsah, na který vrací přechodnou výjimku: Chcete-li buď transakci znovu otevřít, nebo (jak je vidět), vytvořte kontext znovu ze správného konstruktoru, který používá knihovnu klienta elastické databáze.
 
-Potřeba řídit, kde přechodné výjimky nás zpět v oboru také vylučuje použití vestavěné **SqlAzureExecutionStrategy,** který je dodáván s EF. **SqlAzureExecutionStrategy** by znovu otevřít připojení, ale nepoužívat **OpenConnectionForKey** a proto obejít všechny ověření, které se provádí jako součást **OpenConnectionForKey** volání. Místo toho ukázka kódu používá předdefinované **DefaultExecutionStrategy,** který také přichází s EF. Na rozdíl od **SqlAzureExecutionStrategy**, funguje správně v kombinaci s zásady opakování z přechodné zpracování chyb. Zásady spuštění jsou nastaveny ve třídě **ElasticScaleDbConfiguration.** Všimněte si, že jsme se rozhodli nepoužívat **DefaultSqlExecutionStrategy** protože navrhuje použití **SqlAzureExecutionStrategy** pokud přechodné výjimky dojít - což by vedlo k nesprávné chování, jak je popsáno. Další informace o různých zásadách opakování a EF naleznete [v tématu odolnost proti chybám připojení v EF](https://msdn.microsoft.com/data/dn456835.aspx).     
+Nutnost řídit, kde přechodné výjimky v oboru vznikne zpátky, kromě toho vylučuje použití vestavěných **SqlAzureExecutionStrategy** , které jsou součástí EF. **SqlAzureExecutionStrategy** by znovu otevřel připojení, ale nepoužíval **OpenConnectionForKey** , a proto obejít všechna ověření, která se provádí jako součást volání **OpenConnectionForKey** . Místo toho ukázka kódu používá integrovaný **DefaultExecutionStrategy** , který je také součástí EF. Na rozdíl od **SqlAzureExecutionStrategy**funguje správně v kombinaci se zásadami opakování při zpracování přechodného selhání. Zásady spouštění se nastavují ve třídě **ElasticScaleDbConfiguration** . Zjistili jsme, že nepoužíváme **DefaultSqlExecutionStrategy** , protože navrhuje použití **SqlAzureExecutionStrategy** , pokud dojde k přechodným výjimkám, což by vedlo k chybnému chování, jak je popsáno v tomto tématu. Další informace o různých zásadách opakování a EF najdete [v tématu odolnost připojení v EF](https://msdn.microsoft.com/data/dn456835.aspx).     
 
-#### <a name="constructor-rewrites"></a>Přepíše konstruktor
+#### <a name="constructor-rewrites"></a>Přepsání konstruktoru
 
-Příklady kódu výše ilustrují výchozí konstruktor re-zápisy požadované pro vaši aplikaci, aby bylo možné použít směrování závislé na datech s entity framework. Následující tabulka zobecnizuje tento přístup k ostatním konstruktorům. 
+Výše uvedené příklady kódu ilustrují výchozí konstruktor pro opětovné zápisy, které jsou požadovány pro vaši aplikaci, aby bylo možné použít směrování závislé na datech s Entity Framework. Následující tabulka generalizuje tento přístup k jiným konstruktorům. 
 
 | Aktuální konstruktor | Přepsaný konstruktor pro data | Základní konstruktor | Poznámky |
 | --- | --- | --- | --- |
-| MyContext() |ElasticScaleContext(ShardMap, TKey) |DbContext(DbConnection, bool) |Připojení musí být funkcí mapy střepů a směrovacího klíče závislého na datech. Je třeba obejít automatické vytvoření připojení pomocí EF a místo toho použít mapu střepu k zprostředkování připojení. |
-| MyContext(řetězec) |ElasticScaleContext(ShardMap, TKey) |DbContext(DbConnection, bool) |Připojení je funkcí mapy střepů a směrovacího klíče závislého na datech. Pevný název databáze nebo připojovací řetězec nefunguje, protože obcházejí ověření mapou svižných bitových oddílů. |
-| MyContext(dbcompiledModel) |ElasticScaleContext(ShardMap, TKey, DbCompiledModel) |DbContext(DbConnection, DbCompiledModel, bool) |Připojení získá vytvořen pro danou mapu šikmu a klíče šněrování s modelem k dispozici. Zkompilovaný model je předán do základní c'tor. |
-| MyContext(DbConnection, bool) |ElasticScaleContext(ShardMap, TKey, bool) |DbContext(DbConnection, bool) |Připojení je třeba odvodit z mapy oddílu a klíče. Nelze jej poskytnout jako vstup (pokud tento vstup již používal mapu síta a klíč). Logická hodnota je předána. |
-| MyContext(řetězec, DbCompiledModel) |ElasticScaleContext(ShardMap, TKey, DbCompiledModel) |DbContext(DbConnection, DbCompiledModel, bool) |Připojení je třeba odvodit z mapy oddílu a klíče. Nelze poskytnout jako vstup (pokud tento vstup byl pomocí mapy střežiště a klíč). Zkompilovaný model je předán. |
-| MyContext(ObjectContext, bool) |ElasticScaleContext(ShardMap, TKey, ObjectContext, bool) |DbContext(ObjectContext, bool) |Nový konstruktor musí zajistit, že jakékoli připojení v ObjectContext předané jako vstup je přesměrován na připojení spravované elastické škálování. Podrobná diskuse ObjectContexts je nad rámec tohoto dokumentu. |
-| MyContext(DbConnection, DbCompiledModel, bool) |ElasticScaleContext(ShardMap, TKey, DbCompiledModel, bool) |DbContext(DbConnection, DbCompiledModel, bool); |Připojení je třeba odvodit z mapy oddílu a klíče. Připojení nelze poskytnout jako vstup (pokud tento vstup již používal mapu sršibek a klíč). Model a logická hodnota jsou předány konstruktoru základní třídy. |
+| MyContext() |ElasticScaleContext (ShardMap, TKey) |DbContext (DbConnection, bool) |Připojení musí být funkce mapy horizontálních oddílů a klíč směrování závislý na datech. Musíte obejít automatické vytvoření připojení podle EF a místo toho použít mapu horizontálních oddílů ke zprostředkování připojení. |
+| MyContext (řetězec) |ElasticScaleContext (ShardMap, TKey) |DbContext (DbConnection, bool) |Připojení je funkce mapy horizontálních oddílů a klíč směrování závislý na datech. Pevný název databáze nebo připojovací řetězec nefungují tak, jak by prošlo ověřením pomocí mapy horizontálních oddílů. |
+| MyContext(DbCompiledModel) |ElasticScaleContext (ShardMap, TKey, DbCompiledModel) |DbContext (DbConnection, DbCompiledModel, bool) |Vytvoří se připojení pro danou mapu horizontálních oddílů a klíč horizontálního dělení s poskytnutým modelem. Kompilovaný model je předán základnímu c'tor. |
+| MyContext (DbConnection, bool) |ElasticScaleContext (ShardMap, TKey, bool) |DbContext (DbConnection, bool) |Připojení musí být odvoditelné z mapy horizontálních oddílů a klíče. Nedá se zadat jako vstup (Pokud tento vstup už nepoužívá mapu horizontálních oddílů a klíč). Logická hodnota je předána. |
+| MyContext (řetězec; DbCompiledModel) |ElasticScaleContext (ShardMap, TKey, DbCompiledModel) |DbContext (DbConnection, DbCompiledModel, bool) |Připojení musí být odvoditelné z mapy horizontálních oddílů a klíče. Nedá se zadat jako vstup (Pokud tento vstup nepoužil mapu horizontálních oddílů a klíč). Byl předán zkompilovaný model. |
+| MyContext (ObjectContext, bool) |ElasticScaleContext (ShardMap, TKey, ObjectContext, bool) |DbContext (ObjectContext, bool) |Nový konstruktor musí zajistit, aby jakékoli připojení v objektu ObjectContext předané jako vstup bylo přesměrováno na připojení spravované elastickým škálováním. Podrobná diskuze o rozhraních ObjectContext překračuje rozsah tohoto dokumentu. |
+| MyContext (DbConnection, DbCompiledModel, bool) |ElasticScaleContext (ShardMap, TKey, DbCompiledModel, bool) |DbContext (DbConnection, DbCompiledModel, bool); |Připojení musí být odvoditelné z mapy horizontálních oddílů a klíče. Připojení nelze zadat jako vstup (Pokud tento vstup již nepoužívá mapu horizontálních oddílů a klíč). Model a logická hodnota jsou předány konstruktoru základní třídy. |
 
-## <a name="shard-schema-deployment-through-ef-migrations"></a>Nasazení schématu oddílu prostřednictvím migrace EF
+## <a name="shard-schema-deployment-through-ef-migrations"></a>Nasazení schématu horizontálních oddílů prostřednictvím migrací EF
 
-Automatická správa schématu je pohodlí poskytované entity framework. V kontextu aplikací pomocí elastických databázových nástrojů chcete zachovat tuto možnost automaticky zřídit schéma nově vytvořené oddíly, když jsou databáze přidány do rozdělené aplikace. Primární případ použití je zvýšení kapacity na datové vrstvě pro vrstvy s oddíly pomocí EF. Spoléhání se na možnosti EF pro správu schématu snižuje úsilí správy databáze s oddílové aplikace postavené na EF. 
+Automatická správa schématu je pohodlí, kterou poskytuje Entity Framework. V souvislosti s aplikacemi pomocí nástrojů elastické databáze chcete tuto funkci zachovat, aby se schéma automaticky vytvořilo pro nově vytvořená horizontálních oddílů při přidání databází do aplikace horizontálně dělené. Primárním případem použití je zvýšit kapacitu v datové vrstvě pro aplikace horizontálně dělené pomocí EF. Spoléhání se na funkce EF pro správu schématu snižuje úsilí správy databáze s horizontálně dělené aplikací postavenou na EF. 
 
-Nasazení schématu prostřednictvím migrace EF funguje nejlépe na **neotevřených připojeních**. To je na rozdíl od scénáře pro směrování závislé na datech, který závisí na otevřené připojení poskytované rozhraní API klienta elastické databáze. Dalším rozdílem je požadavek na konzistenci: I když je žádoucí zajistit konzistenci pro všechna připojení směrování závislá na datech k ochraně proti souběžné manipulaci mapy sutých bitových kódů, není problém s počátečním nasazením schématu do nové databáze, která dosud nebyla zaregistrována v mapě střepů a ještě nebyla přidělena pro uložení shardlets. Proto můžete spoléhat na pravidelné připojení databáze pro tento scénář, na rozdíl od směrování závislé na datech.  
+Nasazení schématu prostřednictvím migrací EF funguje nejlépe pro **Neotevřená připojení**. To je na rozdíl od scénáře pro směrování závislé na datech, které spoléhá na otevřené připojení poskytované rozhraním API klienta elastické databáze. Dalším rozdílem je požadavek konzistence: Přestože je žádoucí zajistit konzistenci všech připojení směrování závislých na datech, aby se zajistila ochrana proti souběžné manipulaci s horizontálních oddílů, nejedná se o implementaci počátečního nasazení schématu do nové databáze, která ještě není zaregistrovaná v mapě horizontálních oddílů a ještě není přidělená pro blokování shardlety. Proto se můžete spoléhat na běžná připojení databáze pro tento scénář, a to na rozdíl od směrování závislého na datech.  
 
-To vede k přístupu, kde je nasazení schématu prostřednictvím migrace EF úzce spojena s registrací nové databáze jako úlomek v mapě střepů aplikace. To závisí na následujících předpokladech: 
+To vede k přístupu k tomu, že nasazení schématu prostřednictvím migrací EF je úzce spojeno s registrací nové databáze jako horizontálních oddílů v mapě horizontálních oddílů aplikace. To závisí na následujících předpokladech: 
 
 * Databáze již byla vytvořena. 
-* Databáze je prázdná - neobsahuje žádné uživatelské schéma a žádná uživatelská data.
-* K databázi zatím nelze získat přístup prostřednictvím klientských api klienta elastické databáze pro směrování závislé na datech. 
+* Databáze je prázdná – neobsahuje žádné uživatelské schéma ani uživatelská data.
+* K databázi ještě nelze přistupovat prostřednictvím rozhraní API klienta elastické databáze pro směrování závislé na datech. 
 
-S těmito požadavky na místě můžete vytvořit pravidelné un-opened **SqlConnection** zahájit migrace EF pro nasazení schématu. Následující ukázka kódu ilustruje tento přístup. 
+Pomocí těchto požadavků můžete vytvořit běžný neotevřený **SqlConnection** a aktivovat tak migrace EF pro nasazení schématu. Tento přístup je znázorněn v následujícím příkladu kódu. 
 
 ```csharp
 // Enter a new shard - i.e. an empty database - to the shard map, allocate a first tenant to it  
@@ -243,7 +243,7 @@ public void RegisterNewShard(string server, string database, string connStr, int
 } 
 ```
 
-Tato ukázka ukazuje metodu **RegisterNewShard,** která registruje oddíl šiřidla v mapě šiřidla, nasazuje schéma prostřednictvím migrace EF a ukládá mapování klíče pro říťna na oddíl. Spoléhá na konstruktor u podtřídy **DbContext** **(ElasticScaleContext** v ukázce), který přebírá připojovací řetězec SQL jako vstup. Kód tohoto konstruktoru je přímočarý, jak ukazuje následující příklad: 
+Tato ukázka ukazuje metodu **RegisterNewShard** , která registruje horizontálních oddílů na mapě horizontálních oddílů, nasadí schéma prostřednictvím migrací EF a ukládá mapování horizontálního dělení klíče do horizontálních oddílů. Spoléhá se na konstruktor podtřídy **DbContext** (**ElasticScaleContext** v ukázce), který jako vstup přebírá připojovací řetězec SQL. Kód tohoto konstruktoru je přímý posun, jak ukazuje následující příklad: 
 
 ```csharp
 // C'tor to deploy schema and migrations to a new shard 
@@ -263,19 +263,19 @@ new CreateDatabaseIfNotExists<ElasticScaleContext<T>>());
 } 
 ```
 
-Jeden mohl použít verzi konstruktoru zděděné ze základní třídy. Ale kód musí zajistit, že výchozí inicializátor pro EF se používá při připojování. Proto krátká objížďka do statické metody před voláním do konstruktoru základní třídy s připojovacím řetězcem. Všimněte si, že registrace šdrupy by měla běžet v jiné doméně nebo procesu aplikace, aby bylo zajištěno, že nastavení inicializátoru pro EF není v konfliktu. 
+Jedna z nich mohla použít verzi konstruktoru zděděnou ze základní třídy. Kód však musí zajistit, aby byl při připojování použit výchozí inicializátor pro EF. Proto krátká deprohlídka do statické metody před voláním do konstruktoru základní třídy s připojovacím řetězcem. Všimněte si, že registrace horizontálních oddílů by měla běžet v jiné doméně nebo procesu aplikace, aby se zajistilo, že nastavení inicializátoru pro EF nejsou v konfliktu. 
 
 ## <a name="limitations"></a>Omezení
 
-Přístupy uvedené v tomto dokumentu s sebou nesou několik omezení: 
+Přístup popsaný v tomto dokumentu má několik omezení: 
 
-* EF aplikace, které používají **LocalDb** nejprve je třeba migrovat do běžné databáze serveru SQL Server před použitím knihovny klienta elastické databáze. Horizontální navýšení kapacity aplikace pomocí elastického měřítka není možné s **LocalDb**. Všimněte si, že vývoj může stále používat **LocalDb**. 
-* Všechny změny v aplikaci, které implikují změny schématu databáze je třeba projít migrace EF na všechny oddíly. Ukázkový kód pro tento dokument neukazuje, jak to provést. Zvažte použití Update-Database s Parametr ConnectionString iterát přes všechny šiřidla; nebo extrahujte skript T-SQL pro čekající migraci pomocí aktualizace databáze s volbou -Script a aplikujte skript T-SQL na vaše úlomky.  
-* Daný požadavek, předpokládá se, že všechny jeho zpracování databáze je obsažena v rámci jednoho oddílu diagramu, jak je identifikován klíč sharding poskytované požadavek. Tento předpoklad však není vždy pravdivý. Například pokud není možné zpřístupnit klíč s ráždí. Chcete-li tento problém vyřešit, klientská knihovna poskytuje **Třídu MultiShardQuery,** která implementuje abstrakce připojení pro dotazování přes několik oddílů. Naučit se používat **MultiShardQuery** v kombinaci s EF je nad rámec tohoto dokumentu
+* Aplikace EF, které používají **LocalDB** , musí nejdřív před použitím klientské knihovny pro elastickou databázi migrovat do běžné databáze SQL Server. Škálování aplikací prostřednictvím horizontálního dělení s elastickým škálováním s **LocalDB**není možné. Všimněte si, že vývoj může stále používat **LocalDB**. 
+* Změny v aplikaci, které zahrnují změny schématu databáze, musí projít migracemi EF na všech horizontálních oddílů. Vzorový kód tohoto dokumentu neukazuje, jak to provést. Zvažte použití parametru Update-Database s parametrem ConnectionString k iterování všech horizontálních oddílů; nebo extrahujte skript T-SQL pro nevyřízenou migraci pomocí příkazu Update-Database s možností-Script a použijte skript T-SQL pro horizontálních oddílů.  
+* S ohledem na požadavek se předpokládá, že veškeré jeho zpracování databáze je obsaženo v rámci jednoho horizontálních oddílů, jak je identifikované pomocí klíče horizontálního dělení, který poskytuje požadavek. Tento předpoklad však vždy nedrží hodnotu true. Například, pokud není možné vytvořit horizontálního dělení klíč k dispozici. Pro tuto adresu Klientská knihovna poskytuje třídu **MultiShardQuery** , která implementuje abstrakci připojení pro dotazování přes několik horizontálních oddílů. Naučíte se používat **MultiShardQuery** v kombinaci s EF je nad rámec tohoto dokumentu.
 
 ## <a name="conclusion"></a>Závěr
 
-Prostřednictvím kroků popsaných v tomto dokumentu mohou aplikace EF použít možnost knihovny klienta elastické databáze pro směrování závislé na datech refaktoringem konstruktorů podtříd **DbContext** používaných v aplikaci EF. To omezuje změny požadované pro místa, kde **dbContext** třídy již existují. Kromě toho ef aplikace mohou i nadále využívat automatické nasazení schématu kombinací kroků, které vyvolávají nezbytné migrace EF s registrací nových oddílů a mapování v mapě schrovacího procesu. 
+Pomocí kroků popsaných v tomto dokumentu můžou aplikace EF používat funkci klientské knihovny elastické databáze pro směrování závislé na datech pomocí konstruktorů refaktoringu podtříd **DbContext** používaných v aplikaci EF. Tím se omezí změny požadované u těchto míst, kde třídy **DbContext** již existují. Kromě toho mohou aplikace v EF nadále využívat výhod nasazení automatického schématu kombinací kroků, které vyvolávají nezbytné migrace EF s registrací nových horizontálních oddílů a mapování v mapě horizontálních oddílů. 
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 

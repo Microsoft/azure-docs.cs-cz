@@ -1,6 +1,6 @@
 ---
-title: Správa spravované identity přiřazené uživateli na webu Azure Portal – Azure AD
-description: Podrobné pokyny k vytvoření, vypsat, odstranit a přiřadit roli spravované identitě přiřazené uživateli.
+title: Správa spravované identity přiřazené uživatelem v Azure Portal – Azure AD
+description: Podrobné pokyny, jak vytvořit, vypsat, odstranit a přiřadit roli k spravované identitě přiřazené uživatelem.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -16,76 +16,76 @@ ms.date: 04/16/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 10caa9e5e61dc1dd0c1062583f55a7357c643ce5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79244131"
 ---
-# <a name="create-list-delete-or-assign-a-role-to-a-user-assigned-managed-identity-using-the-azure-portal"></a>Vytvoření, vypsat, odstranit nebo přiřadit roli spravované identitě přiřazené uživateli pomocí webu Azure Portal
+# <a name="create-list-delete-or-assign-a-role-to-a-user-assigned-managed-identity-using-the-azure-portal"></a>Vytvoření, vypsání, odstranění nebo přiřazení role k spravované identitě přiřazené uživatelem pomocí Azure Portal
 
 [!INCLUDE [preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
 
-Spravované identity pro prostředky Azure poskytují služby Azure se spravovanou identitou ve službě Azure Active Directory. Tuto identitu můžete použít k ověření služeb, které podporují ověřování Azure AD, bez nutnosti pověření ve vašem kódu. 
+Spravované identity pro prostředky Azure poskytují služby Azure se spravovanou identitou v Azure Active Directory. Tuto identitu můžete použít k ověření pro služby, které podporují ověřování Azure AD, a to bez nutnosti přihlašovacích údajů ve vašem kódu. 
 
-V tomto článku se dozvíte, jak vytvořit, seznam, odstranit nebo přiřadit roli uživatelem přiřazené spravované identity pomocí portálu Azure Portal.
+V tomto článku se naučíte, jak pomocí webu Azure Portal vytvořit, vypsat, odstranit nebo přiřadit roli spravované identitě přiřazené uživateli.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Pokud nejste obeznámeni se spravovanými identitami pro prostředky Azure, podívejte se na [část s přehledem](overview.md). **Zkontrolujte rozdíl [mezi systémem přiřazenou a uživatelem přiřazenou spravovanou identitou](overview.md#how-does-the-managed-identities-for-azure-resources-work)**.
+- Pokud neznáte spravované identity prostředků Azure, přečtěte si [část přehled](overview.md). **Nezapomeňte si projít [rozdíl mezi spravovanou identitou přiřazenou systémem a uživatelem](overview.md#how-does-the-managed-identities-for-azure-resources-work)**.
 - Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
 
 ## <a name="create-a-user-assigned-managed-identity"></a>Vytvoření spravované identity přiřazené uživatelem
 
-Chcete-li vytvořit spravovanou identitu přiřazenou uživateli, potřebuje váš účet přiřazení role [Přispěvatel spravované identity.](/azure/role-based-access-control/built-in-roles#managed-identity-contributor)
+K vytvoření spravované identity přiřazené uživatelem potřebuje váš účet přiřazení role [Přispěvatel spravované identity](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) .
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com) pomocí účtu přidruženého k předplatnému Azure k vytvoření spravované identity přiřazené uživateli.
-2. Do vyhledávacího pole zadejte *spravované identity*a v části **Služby**klikněte na **položku Spravované identity**.
-3. Klikněte na **Přidat** a zadejte hodnoty do následujících polí v podokně **Vytvořit uživatele přiřazenou spravovanou** identitu:
-   - **Název prostředku**: Toto je název spravované identity přiřazené uživateli, například UAI1.
-   - **Předplatné**: Zvolte předplatné pro vytvoření uživatelem přiřazené spravované identity v části
-   - **Skupina prostředků**: Vytvořte novou skupinu prostředků, která bude obsahovat spravovanou identitu přiřazenou uživatelem, nebo zvolte **Použít existující** k vytvoření spravované identity přiřazené uživateli v existující skupině prostředků.
-   - **Umístění**: Zvolte umístění pro nasazení uživatelem přiřazené spravované identity, například **západní USA**.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí účtu přidruženého k předplatnému Azure a vytvořte spravovanou identitu přiřazenou uživatelem.
+2. Do vyhledávacího pole zadejte *spravované identity*a v části **služby**klikněte na **spravované identity**.
+3. Klikněte na tlačítko **Přidat** a zadejte hodnoty do následujících polí v části **vytvořit uživatelem spravovanou identitu přiřazenou uživateli** :
+   - **Název prostředku**: Jedná se o název vaší uživatelsky přiřazené spravované identity, například UAI1.
+   - **Předplatné**: vyberte předplatné, ve kterém chcete vytvořit spravovanou identitu přiřazenou uživatelem.
+   - **Skupina prostředků**: Vytvořte novou skupinu prostředků, která bude obsahovat vaši uživatelem přiřazenou spravovanou identitu, nebo vyberte **použít existující** a vytvořte spravovanou identitu přiřazenou uživatelem v existující skupině prostředků.
+   - **Umístění**: vyberte umístění pro nasazení spravované identity přiřazené uživatelem, například **západní USA**.
 4. Klikněte na **Vytvořit**.
 
 ![Vytvoření spravované identity přiřazené uživatelem](./media/how-to-manage-ua-identity-portal/create-user-assigned-managed-identity-portal.png)
 
-## <a name="list-user-assigned-managed-identities"></a>Seznam spravovaných identit přiřazených uživatelem
+## <a name="list-user-assigned-managed-identities"></a>Výpis spravovaných identit přiřazených uživatelem
 
-Chcete-li vypsat/přečíst spravovanou identitu přiřazenou uživatelem, potřebuje váš účet přiřazení role [Operátor spravované identity](/azure/role-based-access-control/built-in-roles#managed-identity-operator) nebo [Přiřazení přispěvatele spravované identity.](/azure/role-based-access-control/built-in-roles#managed-identity-contributor)
+K vypsání nebo načtení spravované identity přiřazené uživatelem vyžaduje váš účet [spravovaný operátor identity](/azure/role-based-access-control/built-in-roles#managed-identity-operator) nebo přiřazení role [Přispěvatel spravované identity](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) .
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com) pomocí účtu přidruženého k předplatnému Azure a seznamte spravované identity přiřazené uživateli.
-2. Do vyhledávacího pole zadejte *spravované identity*a v části Služby klikněte na **Spravované identity**.
-3. Je vrácen seznam uživatelem přiřazených spravovaných identit pro vaše předplatné.  Chcete-li zobrazit podrobnosti o spravované identitě přiřazené uživateli, klikněte na její název.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí účtu přidruženého k předplatnému Azure a seznamte se se spravovanými identitami přiřazenými uživatelem.
+2. Do vyhledávacího pole zadejte *spravované identity*a v části služby klikněte na **spravované identity**.
+3. Vrátí se seznam spravovaných identit přiřazených uživateli pro vaše předplatné.  Chcete-li zobrazit podrobnosti o spravované identitě přiřazené uživatelem, klikněte na její název.
 
-![Seznam spravované identity přiřazené uživateli](./media/how-to-manage-ua-identity-portal/list-user-assigned-managed-identity-portal.png)
+![Výpis spravované identity přiřazené uživatelem](./media/how-to-manage-ua-identity-portal/list-user-assigned-managed-identity-portal.png)
 
-## <a name="delete-a-user-assigned-managed-identity"></a>Odstranění spravované identity přiřazené uživateli
+## <a name="delete-a-user-assigned-managed-identity"></a>Odstranění spravované identity přiřazené uživatelem
 
-Chcete-li odstranit spravovanou identitu přiřazenou uživatelem, potřebuje váš účet přiřazení role [Přispěvatel spravované identity.](/azure/role-based-access-control/built-in-roles#managed-identity-contributor)
+Pokud chcete odstranit spravovanou identitu přiřazenou uživatelem, váš účet potřebuje přiřazení role [Přispěvatel spravované identity](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) .
 
-Odstraněním uživatele přiřazené identity ji neodeberete z virtuálního aplikace nebo prostředku, ke kterým byl přiřazen.  Pokud chcete odebrat uživatele přiřazenou identitu z virtuálního uživatele, [přečtěte si, že odeberete spravovanou identitu přiřazenou uživateli z virtuálního virtuálního uživatele](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#remove-a-user-assigned-managed-identity-from-a-vm).
+Odstranění identity přiřazené uživatelem ji neodebere z virtuálního počítače nebo prostředku, ke kterému byl přiřazen.  Pokud chcete odebrat identitu přiřazenou uživatelem z virtuálního počítače, přečtěte si článek [Odebrání spravované identity přiřazené uživatelem z virtuálního počítače](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#remove-a-user-assigned-managed-identity-from-a-vm).
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com) pomocí účtu přidruženého k předplatnému Azure k odstranění spravované identity přiřazené uživateli.
-2. Vyberte spravovanou identitu přiřazenou uživatelem a klepněte na tlačítko **Odstranit**.
-3. Pod potvrzovacím polem zvolte **Ano**.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí účtu přidruženého k předplatnému Azure a odstraňte spravovanou identitu přiřazenou uživatelem.
+2. Vyberte spravovanou identitu přiřazenou uživatelem a klikněte na **Odstranit**.
+3. V poli potvrzení vyberte **Ano**.
 
-![Odstranění spravované identity přiřazené uživateli](./media/how-to-manage-ua-identity-portal/delete-user-assigned-managed-identity-portal.png)
+![Odstranit spravovanou identitu přiřazenou uživatelem](./media/how-to-manage-ua-identity-portal/delete-user-assigned-managed-identity-portal.png)
 
-## <a name="assign-a-role-to-a-user-assigned-managed-identity"></a>Přiřazení role spravované identitě přiřazené uživateli 
+## <a name="assign-a-role-to-a-user-assigned-managed-identity"></a>Přiřazení role k spravované identitě přiřazené uživatelem 
 
-Chcete-li přiřadit roli spravované identitě přiřazené uživateli, potřebuje váš účet přiřazení role [Správce přístupu uživatelů.](/azure/role-based-access-control/built-in-roles#user-access-administrator)
+Pokud chcete přiřadit roli k spravované identitě přiřazené uživateli, váš účet potřebuje přiřazení role [Správce přístupu uživatele](/azure/role-based-access-control/built-in-roles#user-access-administrator) .
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com) pomocí účtu přidruženého k předplatnému Azure a seznamte spravované identity přiřazené uživateli.
-2. Do vyhledávacího pole zadejte *spravované identity*a v části Služby klikněte na **Spravované identity**.
-3. Je vrácen seznam uživatelem přiřazených spravovaných identit pro vaše předplatné.  Vyberte uživatelem přiřazenou spravovanou identitu, kterou chcete přiřadit roli.
-4. Vyberte **Řízení přístupu (IAM)** a pak vyberte **Přidat přiřazení role**.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí účtu přidruženého k předplatnému Azure a seznamte se se spravovanými identitami přiřazenými uživatelem.
+2. Do vyhledávacího pole zadejte *spravované identity*a v části služby klikněte na **spravované identity**.
+3. Vrátí se seznam spravovaných identit přiřazených uživateli pro vaše předplatné.  Vyberte spravovanou identitu přiřazenou uživatelem, kterému chcete přiřadit roli.
+4. Vyberte **řízení přístupu (IAM)** a pak vyberte **Přidat přiřazení role**.
 
-   ![Začátek spravované identity přiřazený uživateli](./media/how-to-manage-ua-identity-portal/assign-role-screenshot1.png)
+   ![Spuštění uživatelsky přiřazené spravované identity](./media/how-to-manage-ua-identity-portal/assign-role-screenshot1.png)
 
-5. V okně Přidat přiřazení role nakonfigurujte následující hodnoty a klepněte na tlačítko **Uložit**:
-   - **Role** - role, kterou chcete přiřadit
-   - **Přiřazení přístupu k** prostředku, který přiřadí uživatelem přiřazenou spravovanou identitu
-   - **Vybrat** - člen pro přiřazení přístupu
+5. V okně Přidat přiřazení role nakonfigurujte následující hodnoty a potom klikněte na **Uložit**:
+   - **Role** – role, která se má přiřadit
+   - **Přiřazení přístupu k** prostředku k přiřazení spravované identity přiřazené uživatelem
+   - **Vybrat** – člen pro přiřazení přístupu
    
-   ![IAM přiřazená uživatelem](./media/how-to-manage-ua-identity-portal/assign-role-screenshot2.png)  
+   ![Uživatelsky přiřazená spravovaná identita IAM](./media/how-to-manage-ua-identity-portal/assign-role-screenshot2.png)  

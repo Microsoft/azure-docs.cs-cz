@@ -1,21 +1,21 @@
 ---
 title: Klauzule WHERE v Azure Cosmos DB
-description: Informace o klauzuli SQL WHERE pro Azure Cosmos DB
+description: Seznamte se s klauzulí WHERE SQL pro Azure Cosmos DB
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: tisande
 ms.openlocfilehash: 483a0533eafc81ef8698d260a753062ae074f6d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78898786"
 ---
 # <a name="where-clause-in-azure-cosmos-db"></a>Klauzule WHERE v Azure Cosmos DB
 
-Volitelná klauzule`WHERE <filter_condition>`WHERE ( ) určuje podmínku ( podmínky), které musí zdrojové položky JSON splňovat, aby je dotaz zahrnul do výsledků. Položka JSON musí vyhodnotit `true` zadané podmínky, které mají být považovány za výsledek. Indexová vrstva používá klauzuli WHERE k určení nejmenší podmnožiny zdrojových položek, které mohou být součástí výsledku.
+Volitelná klauzule WHERE (`WHERE <filter_condition>`) určuje podmínky, které musí zdrojové položky JSON splňovat, aby se dotaz zahrnul do výsledků. Položka JSON musí vyhodnotit zadané podmínky, `true` které mají být pro výsledek zváženy. Vrstva indexu používá klauzuli WHERE k určení nejmenší podmnožiny zdrojových položek, které mohou být součástí výsledku.
   
 ## <a name="syntax"></a>Syntaxe
   
@@ -29,21 +29,21 @@ WHERE <filter_condition>
 
 - `<filter_condition>`  
   
-   Určuje podmínku, která má být splněna pro dokumenty, které mají být vráceny.  
+   Určuje podmínku, která má být splněna pro vrácení dokumentů.  
   
 - `<scalar_expression>`  
   
-   Výraz představující hodnotu, která má být vypočítána. Podrobnosti najdete [v tématu Skalární výrazy.](sql-query-scalar-expressions.md)  
+   Výraz představující hodnotu, která má být vypočítána. Podrobnosti najdete v tématu [skalární výrazy](sql-query-scalar-expressions.md) .  
   
 ## <a name="remarks"></a>Poznámky
   
-  Aby měl být dokument vrácen, musí být výraz zadaný jako podmínka filtru vyhodnocen jako true. Pouze logická `true` hodnota bude splňovat podmínku, žádná jiná hodnota: undefined, null, false, Number, Array nebo Object nesplňuje podmínku.
+  Aby bylo možné dokument vrátit, je nutné vyhodnotit výraz zadaný jako podmínka filtru na hodnotu true. Pouze logická hodnota `true` bude vyhovovat podmínkám, jakákoli jiná hodnota: undefined, null, false, Number, Array nebo Object nesplňuje podmínky.
 
-  Pokud do klauzule zahrnete klíč oddílu `WHERE` jako součást filtru rovnosti, dotaz se automaticky přefiltruje pouze na příslušné oddíly.
+  Pokud zahrnete klíč oddílu do `WHERE` klauzule v rámci filtru rovnosti, dotaz se automaticky vyfiltruje jenom na relevantní oddíly.
 
 ## <a name="examples"></a>Příklady
 
-Následující dotaz požaduje položky, `id` které obsahují `AndersenFamily`vlastnost, jejíž hodnota je . Vyloučí všechny položky, `id` které nemají vlastnost nebo `AndersenFamily`jejichž hodnota neodpovídá .
+Následující dotaz vyžádá položky, které obsahují `id` vlastnost, jejíž hodnota `AndersenFamily`je. Vyloučí žádnou položku, která nemá `id` vlastnost nebo jejíž hodnota neodpovídá. `AndersenFamily`
 
 ```sql
     SELECT f.address
@@ -65,17 +65,17 @@ Výsledky jsou následující:
 
 ### <a name="scalar-expressions-in-the-where-clause"></a>Skalární výrazy v klauzuli WHERE
 
-V předchozím příkladu byl zobrazen jednoduchý dotaz rovnosti. Rozhraní SQL API také podporuje různé [skalární výrazy](sql-query-scalar-expressions.md). Nejčastěji používané jsou binární a unární výrazy. Odkazy na vlastnosti ze zdrojového objektu JSON jsou také platné výrazy.
+Předchozí příklad ukázal jednoduchý dotaz rovnosti. Rozhraní SQL API podporuje také různé [skalární výrazy](sql-query-scalar-expressions.md). Nejběžněji používané jsou binární a unární výrazy. Odkazy na vlastnosti ze zdrojového objektu JSON jsou také platné výrazy.
 
 Můžete použít následující podporované binární operátory:  
 
-|**Typ operátora**  | **Hodnoty** |
+|**Typ operátoru**  | **Hodnoty** |
 |---------|---------|
-|Aritmetické | +,-,*,/,% |
-|Bitové    | \|, &, ^, <<, >>, >>>  (posun vpravo s nulovým vyplněním) |
-|Logické    | A, NEBO, NEBO NE      |
-|Srovnání | =, &lt;!=, &gt; &lt;, &gt;, =, =, <> |
-|Řetězec     |  \|\|(zřetězit) |
+|Průměr | +,-,*,/,% |
+|Číslo2    | \|, &, ^,  <<,  >>  >>>  (s nulovou výplní vpravo Shift) |
+|Logické    | A, NEBO, NOT      |
+|Srovnání | =,! =, &lt;, &gt;, &lt;=, &gt;=,  <> |
+|Řetězec     |  \|\|zřetězit |
 
 Následující dotazy používají binární operátory:
 
@@ -93,7 +93,7 @@ Následující dotazy používají binární operátory:
     WHERE c.grade >= 5    -- matching grades == 5
 ```
 
-Můžete také použít unární operátory +,-, ~, a NOT v dotazech, jak je znázorněno v následujících příkladech:
+Můžete také použít unární operátory +,-, ~ a ne v dotazech, jak je znázorněno v následujících příkladech:
 
 ```sql
     SELECT *
@@ -105,10 +105,10 @@ Můžete také použít unární operátory +,-, ~, a NOT v dotazech, jak je zn�
     WHERE (-c.grade = -5)  -- matching grades == 5
 ```
 
-Odkazy na vlastnosti můžete také použít v dotazech. Například `SELECT * FROM Families f WHERE f.isRegistered` vrátí položku JSON obsahující `isRegistered` vlastnost s `true`hodnotou rovnou . Jakákoli jiná hodnota, `false` `null`například , `<object>`, `<array>` `Undefined` `<number>`, `<string>`, , nebo , vylučuje položku z výsledku.
+Odkazy na vlastnosti můžete použít také v dotazech. Například `SELECT * FROM Families f WHERE f.isRegistered` vrátí položku JSON obsahující Vlastnost `isRegistered` s hodnotou rovnou. `true` Jakákoli jiná hodnota `false`, například `null` `Undefined`,,, `<number>`, `<string>`, `<object>`, nebo `<array>`, vyloučí položku z výsledku.
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Začínáme](sql-query-getting-started.md)
 - [Klíčové slovo IN](sql-query-keywords.md#in)
-- [FROM klauzule](sql-query-from.md)
+- [Klauzule FROM](sql-query-from.md)

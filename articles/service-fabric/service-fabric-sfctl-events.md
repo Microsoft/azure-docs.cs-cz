@@ -1,328 +1,328 @@
 ---
-title: Události CLI- sfcTL azure service fabric
-description: Popisuje příkazy událostí sfctl služby Fabric.
+title: Sfctl události CLI – Azure Service Fabric
+description: Popisuje příkazy Service Fabric CLI sfctl Events.
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 635bddef1a98d6ed2b112662d8c9c44fe65e9e32
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76906107"
 ---
-# <a name="sfctl-events"></a>Akce sfctl
-Načtěte události z úložiště událostí (pokud je služba EventStore již nainstalována).
+# <a name="sfctl-events"></a>události sfctl
+Načtěte události z úložiště událostí (Pokud je už nainstalovaná služba Eventstoru).
 
-Systémovou službu EventStore lze přidat prostřednictvím upgradu konfigurace do libovolného clusteru SFRP se systémem >=6.4. Zkontrolujte prosím\: následující\:url https //docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-eventstore.
+Systémovou službu Eventstoru lze přidat prostřednictvím upgradu konfigurace na libovolný cluster SFRP se systémem >= 6,4. Zkontrolujte prosím následující adresu URL\: https\://docs.Microsoft.com/Azure/Service-Fabric/Service-Fabric-Diagnostics-eventstore.
 
 ## <a name="commands"></a>Příkazy
 
 |Příkaz|Popis|
 | --- | --- |
-| seznam všech aplikací | Získá všechny události související s aplikacemi. |
-| seznam všech uzlů | Získá všechny události související s uzly. |
-| seznam všech oddílů | Získá všechny události související s oddíly. |
-| seznam všech služeb | Získá všechny události související se službami. |
+| všechny aplikace – seznam | Načte všechny události související s aplikacemi. |
+| všechny uzly – seznam | Načte všechny události související s uzly. |
+| všechny oddíly – seznam | Načte všechny události související s oddíly. |
+| všechny služby – seznam | Načte všechny události související se službami. |
 | seznam aplikací | Získá události související s aplikací. |
-| seznam clusterů | Získá všechny události související s clusterem. |
-| seznam uzlů | Získá události související s uzly. |
-| seznam všech replik | Získá všechny události související s replikami pro oddíl. |
-| seznam oddílů | Získá události související s oddílem. |
-| seznam replik oddílů | Získá události související s replikou oddílu. |
-| seznam služeb | Získá události související se službou. |
+| seznam clusterů | Načte všechny události související s clusterem. |
+| seznam uzlů | Načte události související s uzlem. |
+| oddíl – všechny repliky – seznam | Načte všechny události související s replikami pro oddíl. |
+| Seznam oddílů | Získá události související s oddíly. |
+| oddíl-Replica-list | Získá události související s replikou oddílu. |
+| seznam služeb | Načte události související se službou. |
 
-## <a name="sfctl-events-all-applications-list"></a>sfctl události all-aplikace-list
-Získá všechny události související s aplikacemi.
+## <a name="sfctl-events-all-applications-list"></a>sfctl události všechny aplikace – seznam
+Načte všechny události související s aplikacemi.
 
-Odpověď je seznam objektů ApplicationEvent.
-
-### <a name="arguments"></a>Argumenty
-
-|Argument|Popis|
-| --- | --- |
-| --end-time-utc [Povinné] | Čas ukončení vyhledávacího dotazu v ISO UTC yyyy-MM-ddTHH\:mm\:ssZ. |
-| --start-time-utc [Povinné] | Čas spuštění vyhledávacího dotazu v ISO UTC yyyy-MM-ddTHH\:mm\:ssZ. |
-| --events-types-filter | Toto je řetězec oddělený čárkou určující typy FabricEvents, které by měly být zahrnuty pouze v odpovědi. |
-| --exclude-analysis-events | Tento param zakáže načítání AnalysisEvents, pokud true je předán. |
-| --skip-correlation-lookup --skip-correlation-lookup --skip-correlation-lookup --skip | Tento param zakáže hledání KorerelatedEvents informace, pokud true je předán. jinak correlationEvents získat zpracovány a HasCorrelatedEvents pole v každém FabricEvent získá naplněna. |
-| --časový čas -t | Časový rozsah serveru pro provedení operace v sekundách. Tento časový limit určuje dobu trvání, po kterou je klient ochoten čekat na dokončení požadované operace. Výchozí hodnota tohoto parametru je 60 sekund.  Výchozí\: 60. |
-
-### <a name="global-arguments"></a>Globální argumenty
-
-|Argument|Popis|
-| --- | --- |
-| --ladění | Zvyšte podrobnost protokolování, chcete-li zobrazit všechny protokoly ladění. |
-| --pomoc -h | Zobrazit tuto zprávu nápovědy a ukončete ji. |
-| --výstup -o | Výstupní formát.  Povolené\: hodnoty json, jsonc, tabulka, tsv.  Výchozí\: json. |
-| --dotaz | Řetězec dotazu JMESPath. Další\:informace a příklady naleznete na adrese http //jmespath.org/. |
-| --verbose | Zvyšte podrobnost protokolování. Použijte --debug pro úplné protokoly ladění. |
-
-## <a name="sfctl-events-all-nodes-list"></a>sfctl události all-udes-list
-Získá všechny události související s uzly.
-
-Odpověď je seznam objektů NodeEvent.
+Odpovědí je seznam objektů ApplicationEvent.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --end-time-utc [Povinné] | Čas ukončení vyhledávacího dotazu v ISO UTC yyyy-MM-ddTHH\:mm\:ssZ. |
-| --start-time-utc [Povinné] | Čas spuštění vyhledávacího dotazu v ISO UTC yyyy-MM-ddTHH\:mm\:ssZ. |
-| --events-types-filter | Toto je řetězec oddělený čárkou určující typy FabricEvents, které by měly být zahrnuty pouze v odpovědi. |
-| --exclude-analysis-events | Tento param zakáže načítání AnalysisEvents, pokud true je předán. |
-| --skip-correlation-lookup --skip-correlation-lookup --skip-correlation-lookup --skip | Tento param zakáže hledání KorerelatedEvents informace, pokud true je předán. jinak correlationEvents získat zpracovány a HasCorrelatedEvents pole v každém FabricEvent získá naplněna. |
-| --časový čas -t | Časový rozsah serveru pro provedení operace v sekundách. Tento časový limit určuje dobu trvání, po kterou je klient ochoten čekat na dokončení požadované operace. Výchozí hodnota tohoto parametru je 60 sekund.  Výchozí\: 60. |
+| --koncový čas – UTC [povinné] | Koncový čas vyhledávacího dotazu ve formátu ISO UTC yyyy-MM-ddTHH\:mm\:SSZ. |
+| --Start-Time-UTC [povinné] | Čas zahájení vyhledávacího dotazu ve formátu ISO UTC RRRR-MM-ddTHH\:mm\:SSZ. |
+| --Events-Types – filtr | Toto je řetězec oddělený čárkami určující typy FabricEvents, které by měly být zahrnuty pouze v odpovědi. |
+| --Exclude-analýza-události | Tento parametr zakáže načtení AnalysisEvents, pokud je hodnota true. |
+| --Skip-Correlation – vyhledávání | Tento parametr zakáže hledání informací CorrelatedEvents v případě, že je předána hodnota true. v opačném případě se naplní pole CorrelationEvents Get a HasCorrelatedEvents v každém FabricEvent. |
+| --Timeout-t | Časový limit serveru pro provedení operace během několika sekund. Tento časový limit určuje dobu, po kterou bude klient ochotn počkat na dokončení požadované operace. Výchozí hodnota pro tento parametr je 60 sekund.  Výchozí\: hodnota je 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --ladění | Zvyšte podrobnost protokolování, chcete-li zobrazit všechny protokoly ladění. |
-| --pomoc -h | Zobrazit tuto zprávu nápovědy a ukončete ji. |
-| --výstup -o | Výstupní formát.  Povolené\: hodnoty json, jsonc, tabulka, tsv.  Výchozí\: json. |
-| --dotaz | Řetězec dotazu JMESPath. Další\:informace a příklady naleznete na adrese http //jmespath.org/. |
-| --verbose | Zvyšte podrobnost protokolování. Použijte --debug pro úplné protokoly ladění. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
-## <a name="sfctl-events-all-partitions-list"></a>sfctl události all-partitions-list
-Získá všechny události související s oddíly.
+## <a name="sfctl-events-all-nodes-list"></a>sfctl události – všechny uzly – seznam
+Načte všechny události související s uzly.
 
-Odpověď je seznam objektů PartitionEvent.
+Odpovědí je seznam objektů NodeEvent.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --end-time-utc [Povinné] | Čas ukončení vyhledávacího dotazu v ISO UTC yyyy-MM-ddTHH\:mm\:ssZ. |
-| --start-time-utc [Povinné] | Čas spuštění vyhledávacího dotazu v ISO UTC yyyy-MM-ddTHH\:mm\:ssZ. |
-| --events-types-filter | Toto je řetězec oddělený čárkou určující typy FabricEvents, které by měly být zahrnuty pouze v odpovědi. |
-| --exclude-analysis-events | Tento param zakáže načítání AnalysisEvents, pokud true je předán. |
-| --skip-correlation-lookup --skip-correlation-lookup --skip-correlation-lookup --skip | Tento param zakáže hledání KorerelatedEvents informace, pokud true je předán. jinak correlationEvents získat zpracovány a HasCorrelatedEvents pole v každém FabricEvent získá naplněna. |
-| --časový čas -t | Časový rozsah serveru pro provedení operace v sekundách. Tento časový limit určuje dobu trvání, po kterou je klient ochoten čekat na dokončení požadované operace. Výchozí hodnota tohoto parametru je 60 sekund.  Výchozí\: 60. |
+| --koncový čas – UTC [povinné] | Koncový čas vyhledávacího dotazu ve formátu ISO UTC yyyy-MM-ddTHH\:mm\:SSZ. |
+| --Start-Time-UTC [povinné] | Čas zahájení vyhledávacího dotazu ve formátu ISO UTC RRRR-MM-ddTHH\:mm\:SSZ. |
+| --Events-Types – filtr | Toto je řetězec oddělený čárkami určující typy FabricEvents, které by měly být zahrnuty pouze v odpovědi. |
+| --Exclude-analýza-události | Tento parametr zakáže načtení AnalysisEvents, pokud je hodnota true. |
+| --Skip-Correlation – vyhledávání | Tento parametr zakáže hledání informací CorrelatedEvents v případě, že je předána hodnota true. v opačném případě se naplní pole CorrelationEvents Get a HasCorrelatedEvents v každém FabricEvent. |
+| --Timeout-t | Časový limit serveru pro provedení operace během několika sekund. Tento časový limit určuje dobu, po kterou bude klient ochotn počkat na dokončení požadované operace. Výchozí hodnota pro tento parametr je 60 sekund.  Výchozí\: hodnota je 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --ladění | Zvyšte podrobnost protokolování, chcete-li zobrazit všechny protokoly ladění. |
-| --pomoc -h | Zobrazit tuto zprávu nápovědy a ukončete ji. |
-| --výstup -o | Výstupní formát.  Povolené\: hodnoty json, jsonc, tabulka, tsv.  Výchozí\: json. |
-| --dotaz | Řetězec dotazu JMESPath. Další\:informace a příklady naleznete na adrese http //jmespath.org/. |
-| --verbose | Zvyšte podrobnost protokolování. Použijte --debug pro úplné protokoly ladění. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
-## <a name="sfctl-events-all-services-list"></a>sfctl události all-services-list
-Získá všechny události související se službami.
+## <a name="sfctl-events-all-partitions-list"></a>sfctl události All-partitions-list
+Načte všechny události související s oddíly.
 
-Odpověď je seznam objektů ServiceEvent.
+Odpovědí je seznam objektů PartitionEvent.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --end-time-utc [Povinné] | Čas ukončení vyhledávacího dotazu v ISO UTC yyyy-MM-ddTHH\:mm\:ssZ. |
-| --start-time-utc [Povinné] | Čas spuštění vyhledávacího dotazu v ISO UTC yyyy-MM-ddTHH\:mm\:ssZ. |
-| --events-types-filter | Toto je řetězec oddělený čárkou určující typy FabricEvents, které by měly být zahrnuty pouze v odpovědi. |
-| --exclude-analysis-events | Tento param zakáže načítání AnalysisEvents, pokud true je předán. |
-| --skip-correlation-lookup --skip-correlation-lookup --skip-correlation-lookup --skip | Tento param zakáže hledání KorerelatedEvents informace, pokud true je předán. jinak correlationEvents získat zpracovány a HasCorrelatedEvents pole v každém FabricEvent získá naplněna. |
-| --časový čas -t | Časový rozsah serveru pro provedení operace v sekundách. Tento časový limit určuje dobu trvání, po kterou je klient ochoten čekat na dokončení požadované operace. Výchozí hodnota tohoto parametru je 60 sekund.  Výchozí\: 60. |
+| --koncový čas – UTC [povinné] | Koncový čas vyhledávacího dotazu ve formátu ISO UTC yyyy-MM-ddTHH\:mm\:SSZ. |
+| --Start-Time-UTC [povinné] | Čas zahájení vyhledávacího dotazu ve formátu ISO UTC RRRR-MM-ddTHH\:mm\:SSZ. |
+| --Events-Types – filtr | Toto je řetězec oddělený čárkami určující typy FabricEvents, které by měly být zahrnuty pouze v odpovědi. |
+| --Exclude-analýza-události | Tento parametr zakáže načtení AnalysisEvents, pokud je hodnota true. |
+| --Skip-Correlation – vyhledávání | Tento parametr zakáže hledání informací CorrelatedEvents v případě, že je předána hodnota true. v opačném případě se naplní pole CorrelationEvents Get a HasCorrelatedEvents v každém FabricEvent. |
+| --Timeout-t | Časový limit serveru pro provedení operace během několika sekund. Tento časový limit určuje dobu, po kterou bude klient ochotn počkat na dokončení požadované operace. Výchozí hodnota pro tento parametr je 60 sekund.  Výchozí\: hodnota je 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --ladění | Zvyšte podrobnost protokolování, chcete-li zobrazit všechny protokoly ladění. |
-| --pomoc -h | Zobrazit tuto zprávu nápovědy a ukončete ji. |
-| --výstup -o | Výstupní formát.  Povolené\: hodnoty json, jsonc, tabulka, tsv.  Výchozí\: json. |
-| --dotaz | Řetězec dotazu JMESPath. Další\:informace a příklady naleznete na adrese http //jmespath.org/. |
-| --verbose | Zvyšte podrobnost protokolování. Použijte --debug pro úplné protokoly ladění. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
-## <a name="sfctl-events-application-list"></a>sfctl události seznam aplikací
+## <a name="sfctl-events-all-services-list"></a>sfctl události všechny služby – seznam
+Načte všechny události související se službami.
+
+Odpovědí je seznam objektů ServiceEvent.
+
+### <a name="arguments"></a>Argumenty
+
+|Argument|Popis|
+| --- | --- |
+| --koncový čas – UTC [povinné] | Koncový čas vyhledávacího dotazu ve formátu ISO UTC yyyy-MM-ddTHH\:mm\:SSZ. |
+| --Start-Time-UTC [povinné] | Čas zahájení vyhledávacího dotazu ve formátu ISO UTC RRRR-MM-ddTHH\:mm\:SSZ. |
+| --Events-Types – filtr | Toto je řetězec oddělený čárkami určující typy FabricEvents, které by měly být zahrnuty pouze v odpovědi. |
+| --Exclude-analýza-události | Tento parametr zakáže načtení AnalysisEvents, pokud je hodnota true. |
+| --Skip-Correlation – vyhledávání | Tento parametr zakáže hledání informací CorrelatedEvents v případě, že je předána hodnota true. v opačném případě se naplní pole CorrelationEvents Get a HasCorrelatedEvents v každém FabricEvent. |
+| --Timeout-t | Časový limit serveru pro provedení operace během několika sekund. Tento časový limit určuje dobu, po kterou bude klient ochotn počkat na dokončení požadované operace. Výchozí hodnota pro tento parametr je 60 sekund.  Výchozí\: hodnota je 60. |
+
+### <a name="global-arguments"></a>Globální argumenty
+
+|Argument|Popis|
+| --- | --- |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
+
+## <a name="sfctl-events-application-list"></a>sfctl události – seznam aplikací
 Získá události související s aplikací.
 
-Odpověď je seznam objektů ApplicationEvent.
+Odpovědí je seznam objektů ApplicationEvent.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --id aplikace [Povinné] | Identita aplikace. Obvykle se jedná o úplný název aplikace\:bez schématu IDENTIFIKÁTORURI struktury . Počínaje verzí 6.0 jsou hierarchické názvy\~odděleny znakem " " . Například pokud název aplikace je\:"fabric /myapp/app1", identita aplikace\~by "myapp app1" v 6.0+ a "myapp/app1" v předchozích verzích. |
-| --end-time-utc [Povinné] | Čas ukončení vyhledávacího dotazu v ISO UTC yyyy-MM-ddTHH\:mm\:ssZ. |
-| --start-time-utc [Povinné] | Čas spuštění vyhledávacího dotazu v ISO UTC yyyy-MM-ddTHH\:mm\:ssZ. |
-| --events-types-filter | Toto je řetězec oddělený čárkou určující typy FabricEvents, které by měly být zahrnuty pouze v odpovědi. |
-| --exclude-analysis-events | Tento param zakáže načítání AnalysisEvents, pokud true je předán. |
-| --skip-correlation-lookup --skip-correlation-lookup --skip-correlation-lookup --skip | Tento param zakáže hledání KorerelatedEvents informace, pokud true je předán. jinak correlationEvents získat zpracovány a HasCorrelatedEvents pole v každém FabricEvent získá naplněna. |
-| --časový čas -t | Časový rozsah serveru pro provedení operace v sekundách. Tento časový limit určuje dobu trvání, po kterou je klient ochoten čekat na dokončení požadované operace. Výchozí hodnota tohoto parametru je 60 sekund.  Výchozí\: 60. |
+| --ID aplikace [povinné] | Identita aplikace Obvykle se jedná o úplný název aplikace bez schématu identifikátoru URI prostředků\:infrastruktury. Počínaje verzí 6,0 jsou hierarchické názvy odděleny znakem "\~". Například pokud je název aplikace "Fabric\:/MyApp/app1", identita aplikace by byla "MyApp\~app1" v 6.0 + a "MyApp/app1" v předchozích verzích. |
+| --koncový čas – UTC [povinné] | Koncový čas vyhledávacího dotazu ve formátu ISO UTC yyyy-MM-ddTHH\:mm\:SSZ. |
+| --Start-Time-UTC [povinné] | Čas zahájení vyhledávacího dotazu ve formátu ISO UTC RRRR-MM-ddTHH\:mm\:SSZ. |
+| --Events-Types – filtr | Toto je řetězec oddělený čárkami určující typy FabricEvents, které by měly být zahrnuty pouze v odpovědi. |
+| --Exclude-analýza-události | Tento parametr zakáže načtení AnalysisEvents, pokud je hodnota true. |
+| --Skip-Correlation – vyhledávání | Tento parametr zakáže hledání informací CorrelatedEvents v případě, že je předána hodnota true. v opačném případě se naplní pole CorrelationEvents Get a HasCorrelatedEvents v každém FabricEvent. |
+| --Timeout-t | Časový limit serveru pro provedení operace během několika sekund. Tento časový limit určuje dobu, po kterou bude klient ochotn počkat na dokončení požadované operace. Výchozí hodnota pro tento parametr je 60 sekund.  Výchozí\: hodnota je 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --ladění | Zvyšte podrobnost protokolování, chcete-li zobrazit všechny protokoly ladění. |
-| --pomoc -h | Zobrazit tuto zprávu nápovědy a ukončete ji. |
-| --výstup -o | Výstupní formát.  Povolené\: hodnoty json, jsonc, tabulka, tsv.  Výchozí\: json. |
-| --dotaz | Řetězec dotazu JMESPath. Další\:informace a příklady naleznete na adrese http //jmespath.org/. |
-| --verbose | Zvyšte podrobnost protokolování. Použijte --debug pro úplné protokoly ladění. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
-## <a name="sfctl-events-cluster-list"></a>sfctl události cluster-list
-Získá všechny události související s clusterem.
+## <a name="sfctl-events-cluster-list"></a>cluster událostí sfctl – seznam
+Načte všechny události související s clusterem.
 
-Odpověď je seznam objektů ClusterEvent.
+Odpovědí je seznam objektů ClusterEvent.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --end-time-utc [Povinné] | Čas ukončení vyhledávacího dotazu v ISO UTC yyyy-MM-ddTHH\:mm\:ssZ. |
-| --start-time-utc [Povinné] | Čas spuštění vyhledávacího dotazu v ISO UTC yyyy-MM-ddTHH\:mm\:ssZ. |
-| --events-types-filter | Toto je řetězec oddělený čárkou určující typy FabricEvents, které by měly být zahrnuty pouze v odpovědi. |
-| --exclude-analysis-events | Tento param zakáže načítání AnalysisEvents, pokud true je předán. |
-| --skip-correlation-lookup --skip-correlation-lookup --skip-correlation-lookup --skip | Tento param zakáže hledání KorerelatedEvents informace, pokud true je předán. jinak correlationEvents získat zpracovány a HasCorrelatedEvents pole v každém FabricEvent získá naplněna. |
-| --časový čas -t | Časový rozsah serveru pro provedení operace v sekundách. Tento časový limit určuje dobu trvání, po kterou je klient ochoten čekat na dokončení požadované operace. Výchozí hodnota tohoto parametru je 60 sekund.  Výchozí\: 60. |
+| --koncový čas – UTC [povinné] | Koncový čas vyhledávacího dotazu ve formátu ISO UTC yyyy-MM-ddTHH\:mm\:SSZ. |
+| --Start-Time-UTC [povinné] | Čas zahájení vyhledávacího dotazu ve formátu ISO UTC RRRR-MM-ddTHH\:mm\:SSZ. |
+| --Events-Types – filtr | Toto je řetězec oddělený čárkami určující typy FabricEvents, které by měly být zahrnuty pouze v odpovědi. |
+| --Exclude-analýza-události | Tento parametr zakáže načtení AnalysisEvents, pokud je hodnota true. |
+| --Skip-Correlation – vyhledávání | Tento parametr zakáže hledání informací CorrelatedEvents v případě, že je předána hodnota true. v opačném případě se naplní pole CorrelationEvents Get a HasCorrelatedEvents v každém FabricEvent. |
+| --Timeout-t | Časový limit serveru pro provedení operace během několika sekund. Tento časový limit určuje dobu, po kterou bude klient ochotn počkat na dokončení požadované operace. Výchozí hodnota pro tento parametr je 60 sekund.  Výchozí\: hodnota je 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --ladění | Zvyšte podrobnost protokolování, chcete-li zobrazit všechny protokoly ladění. |
-| --pomoc -h | Zobrazit tuto zprávu nápovědy a ukončete ji. |
-| --výstup -o | Výstupní formát.  Povolené\: hodnoty json, jsonc, tabulka, tsv.  Výchozí\: json. |
-| --dotaz | Řetězec dotazu JMESPath. Další\:informace a příklady naleznete na adrese http //jmespath.org/. |
-| --verbose | Zvyšte podrobnost protokolování. Použijte --debug pro úplné protokoly ladění. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
-## <a name="sfctl-events-node-list"></a>sfctl události seznam uzlů
-Získá události související s uzly.
+## <a name="sfctl-events-node-list"></a>uzel událostí sfctl – seznam
+Načte události související s uzlem.
 
-Odpověď je seznam objektů NodeEvent.
+Odpovědí je seznam objektů NodeEvent.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --end-time-utc [Povinné] | Čas ukončení vyhledávacího dotazu v ISO UTC yyyy-MM-ddTHH\:mm\:ssZ. |
-| --název uzlu [Povinné] | Název uzlu |
-| --start-time-utc [Povinné] | Čas spuštění vyhledávacího dotazu v ISO UTC yyyy-MM-ddTHH\:mm\:ssZ. |
-| --events-types-filter | Toto je řetězec oddělený čárkou určující typy FabricEvents, které by měly být zahrnuty pouze v odpovědi. |
-| --exclude-analysis-events | Tento param zakáže načítání AnalysisEvents, pokud true je předán. |
-| --skip-correlation-lookup --skip-correlation-lookup --skip-correlation-lookup --skip | Tento param zakáže hledání KorerelatedEvents informace, pokud true je předán. jinak correlationEvents získat zpracovány a HasCorrelatedEvents pole v každém FabricEvent získá naplněna. |
-| --časový čas -t | Časový rozsah serveru pro provedení operace v sekundách. Tento časový limit určuje dobu trvání, po kterou je klient ochoten čekat na dokončení požadované operace. Výchozí hodnota tohoto parametru je 60 sekund.  Výchozí\: 60. |
+| --koncový čas – UTC [povinné] | Koncový čas vyhledávacího dotazu ve formátu ISO UTC yyyy-MM-ddTHH\:mm\:SSZ. |
+| --Node-Name [povinné] | Název uzlu |
+| --Start-Time-UTC [povinné] | Čas zahájení vyhledávacího dotazu ve formátu ISO UTC RRRR-MM-ddTHH\:mm\:SSZ. |
+| --Events-Types – filtr | Toto je řetězec oddělený čárkami určující typy FabricEvents, které by měly být zahrnuty pouze v odpovědi. |
+| --Exclude-analýza-události | Tento parametr zakáže načtení AnalysisEvents, pokud je hodnota true. |
+| --Skip-Correlation – vyhledávání | Tento parametr zakáže hledání informací CorrelatedEvents v případě, že je předána hodnota true. v opačném případě se naplní pole CorrelationEvents Get a HasCorrelatedEvents v každém FabricEvent. |
+| --Timeout-t | Časový limit serveru pro provedení operace během několika sekund. Tento časový limit určuje dobu, po kterou bude klient ochotn počkat na dokončení požadované operace. Výchozí hodnota pro tento parametr je 60 sekund.  Výchozí\: hodnota je 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --ladění | Zvyšte podrobnost protokolování, chcete-li zobrazit všechny protokoly ladění. |
-| --pomoc -h | Zobrazit tuto zprávu nápovědy a ukončete ji. |
-| --výstup -o | Výstupní formát.  Povolené\: hodnoty json, jsonc, tabulka, tsv.  Výchozí\: json. |
-| --dotaz | Řetězec dotazu JMESPath. Další\:informace a příklady naleznete na adrese http //jmespath.org/. |
-| --verbose | Zvyšte podrobnost protokolování. Použijte --debug pro úplné protokoly ladění. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
-## <a name="sfctl-events-partition-all-replicas-list"></a>sfctl události partition-all-replicas-list
-Získá všechny události související s replikami pro oddíl.
+## <a name="sfctl-events-partition-all-replicas-list"></a>sfctl události oddíl – všechny repliky – seznam
+Načte všechny události související s replikami pro oddíl.
 
-Odpověď je seznam objektů ReplicaEvent.
+Odpovědí je seznam objektů ReplicaEvent.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --end-time-utc [Povinné] | Čas ukončení vyhledávacího dotazu v ISO UTC yyyy-MM-ddTHH\:mm\:ssZ. |
-| --partition-id [Povinné] | Identita oddílu. |
-| --start-time-utc [Povinné] | Čas spuštění vyhledávacího dotazu v ISO UTC yyyy-MM-ddTHH\:mm\:ssZ. |
-| --events-types-filter | Toto je řetězec oddělený čárkou určující typy FabricEvents, které by měly být zahrnuty pouze v odpovědi. |
-| --exclude-analysis-events | Tento param zakáže načítání AnalysisEvents, pokud true je předán. |
-| --skip-correlation-lookup --skip-correlation-lookup --skip-correlation-lookup --skip | Tento param zakáže hledání KorerelatedEvents informace, pokud true je předán. jinak correlationEvents získat zpracovány a HasCorrelatedEvents pole v každém FabricEvent získá naplněna. |
-| --časový čas -t | Časový rozsah serveru pro provedení operace v sekundách. Tento časový limit určuje dobu trvání, po kterou je klient ochoten čekat na dokončení požadované operace. Výchozí hodnota tohoto parametru je 60 sekund.  Výchozí\: 60. |
+| --koncový čas – UTC [povinné] | Koncový čas vyhledávacího dotazu ve formátu ISO UTC yyyy-MM-ddTHH\:mm\:SSZ. |
+| --Partition-ID [povinné] | Identita oddílu |
+| --Start-Time-UTC [povinné] | Čas zahájení vyhledávacího dotazu ve formátu ISO UTC RRRR-MM-ddTHH\:mm\:SSZ. |
+| --Events-Types – filtr | Toto je řetězec oddělený čárkami určující typy FabricEvents, které by měly být zahrnuty pouze v odpovědi. |
+| --Exclude-analýza-události | Tento parametr zakáže načtení AnalysisEvents, pokud je hodnota true. |
+| --Skip-Correlation – vyhledávání | Tento parametr zakáže hledání informací CorrelatedEvents v případě, že je předána hodnota true. v opačném případě se naplní pole CorrelationEvents Get a HasCorrelatedEvents v každém FabricEvent. |
+| --Timeout-t | Časový limit serveru pro provedení operace během několika sekund. Tento časový limit určuje dobu, po kterou bude klient ochotn počkat na dokončení požadované operace. Výchozí hodnota pro tento parametr je 60 sekund.  Výchozí\: hodnota je 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --ladění | Zvyšte podrobnost protokolování, chcete-li zobrazit všechny protokoly ladění. |
-| --pomoc -h | Zobrazit tuto zprávu nápovědy a ukončete ji. |
-| --výstup -o | Výstupní formát.  Povolené\: hodnoty json, jsonc, tabulka, tsv.  Výchozí\: json. |
-| --dotaz | Řetězec dotazu JMESPath. Další\:informace a příklady naleznete na adrese http //jmespath.org/. |
-| --verbose | Zvyšte podrobnost protokolování. Použijte --debug pro úplné protokoly ladění. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
-## <a name="sfctl-events-partition-list"></a>sfctl události seznam oddílů
-Získá události související s oddílem.
+## <a name="sfctl-events-partition-list"></a>sfctl události – seznam oddílů
+Získá události související s oddíly.
 
-Odpověď je seznam objektů PartitionEvent.
+Odpovědí je seznam objektů PartitionEvent.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --end-time-utc [Povinné] | Čas ukončení vyhledávacího dotazu v ISO UTC yyyy-MM-ddTHH\:mm\:ssZ. |
-| --partition-id [Povinné] | Identita oddílu. |
-| --start-time-utc [Povinné] | Čas spuštění vyhledávacího dotazu v ISO UTC yyyy-MM-ddTHH\:mm\:ssZ. |
-| --events-types-filter | Toto je řetězec oddělený čárkou určující typy FabricEvents, které by měly být zahrnuty pouze v odpovědi. |
-| --exclude-analysis-events | Tento param zakáže načítání AnalysisEvents, pokud true je předán. |
-| --skip-correlation-lookup --skip-correlation-lookup --skip-correlation-lookup --skip | Tento param zakáže hledání KorerelatedEvents informace, pokud true je předán. jinak correlationEvents získat zpracovány a HasCorrelatedEvents pole v každém FabricEvent získá naplněna. |
-| --časový čas -t | Časový rozsah serveru pro provedení operace v sekundách. Tento časový limit určuje dobu trvání, po kterou je klient ochoten čekat na dokončení požadované operace. Výchozí hodnota tohoto parametru je 60 sekund.  Výchozí\: 60. |
+| --koncový čas – UTC [povinné] | Koncový čas vyhledávacího dotazu ve formátu ISO UTC yyyy-MM-ddTHH\:mm\:SSZ. |
+| --Partition-ID [povinné] | Identita oddílu |
+| --Start-Time-UTC [povinné] | Čas zahájení vyhledávacího dotazu ve formátu ISO UTC RRRR-MM-ddTHH\:mm\:SSZ. |
+| --Events-Types – filtr | Toto je řetězec oddělený čárkami určující typy FabricEvents, které by měly být zahrnuty pouze v odpovědi. |
+| --Exclude-analýza-události | Tento parametr zakáže načtení AnalysisEvents, pokud je hodnota true. |
+| --Skip-Correlation – vyhledávání | Tento parametr zakáže hledání informací CorrelatedEvents v případě, že je předána hodnota true. v opačném případě se naplní pole CorrelationEvents Get a HasCorrelatedEvents v každém FabricEvent. |
+| --Timeout-t | Časový limit serveru pro provedení operace během několika sekund. Tento časový limit určuje dobu, po kterou bude klient ochotn počkat na dokončení požadované operace. Výchozí hodnota pro tento parametr je 60 sekund.  Výchozí\: hodnota je 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --ladění | Zvyšte podrobnost protokolování, chcete-li zobrazit všechny protokoly ladění. |
-| --pomoc -h | Zobrazit tuto zprávu nápovědy a ukončete ji. |
-| --výstup -o | Výstupní formát.  Povolené\: hodnoty json, jsonc, tabulka, tsv.  Výchozí\: json. |
-| --dotaz | Řetězec dotazu JMESPath. Další\:informace a příklady naleznete na adrese http //jmespath.org/. |
-| --verbose | Zvyšte podrobnost protokolování. Použijte --debug pro úplné protokoly ladění. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
-## <a name="sfctl-events-partition-replica-list"></a>sfctl události partition-replica-list
+## <a name="sfctl-events-partition-replica-list"></a>sfctl události oddíl – seznam replik
 Získá události související s replikou oddílu.
 
-Odpověď je seznam objektů ReplicaEvent.
+Odpovědí je seznam objektů ReplicaEvent.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --end-time-utc [Povinné] | Čas ukončení vyhledávacího dotazu v ISO UTC yyyy-MM-ddTHH\:mm\:ssZ. |
-| --partition-id [Povinné] | Identita oddílu. |
-| --replika-id [Povinné] | Identifikátor repliky. |
-| --start-time-utc [Povinné] | Čas spuštění vyhledávacího dotazu v ISO UTC yyyy-MM-ddTHH\:mm\:ssZ. |
-| --events-types-filter | Toto je řetězec oddělený čárkou určující typy FabricEvents, které by měly být zahrnuty pouze v odpovědi. |
-| --exclude-analysis-events | Tento param zakáže načítání AnalysisEvents, pokud true je předán. |
-| --skip-correlation-lookup --skip-correlation-lookup --skip-correlation-lookup --skip | Tento param zakáže hledání KorerelatedEvents informace, pokud true je předán. jinak correlationEvents získat zpracovány a HasCorrelatedEvents pole v každém FabricEvent získá naplněna. |
-| --časový čas -t | Časový rozsah serveru pro provedení operace v sekundách. Tento časový limit určuje dobu trvání, po kterou je klient ochoten čekat na dokončení požadované operace. Výchozí hodnota tohoto parametru je 60 sekund.  Výchozí\: 60. |
+| --koncový čas – UTC [povinné] | Koncový čas vyhledávacího dotazu ve formátu ISO UTC yyyy-MM-ddTHH\:mm\:SSZ. |
+| --Partition-ID [povinné] | Identita oddílu |
+| --Replica-ID [povinné] | Identifikátor repliky |
+| --Start-Time-UTC [povinné] | Čas zahájení vyhledávacího dotazu ve formátu ISO UTC RRRR-MM-ddTHH\:mm\:SSZ. |
+| --Events-Types – filtr | Toto je řetězec oddělený čárkami určující typy FabricEvents, které by měly být zahrnuty pouze v odpovědi. |
+| --Exclude-analýza-události | Tento parametr zakáže načtení AnalysisEvents, pokud je hodnota true. |
+| --Skip-Correlation – vyhledávání | Tento parametr zakáže hledání informací CorrelatedEvents v případě, že je předána hodnota true. v opačném případě se naplní pole CorrelationEvents Get a HasCorrelatedEvents v každém FabricEvent. |
+| --Timeout-t | Časový limit serveru pro provedení operace během několika sekund. Tento časový limit určuje dobu, po kterou bude klient ochotn počkat na dokončení požadované operace. Výchozí hodnota pro tento parametr je 60 sekund.  Výchozí\: hodnota je 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --ladění | Zvyšte podrobnost protokolování, chcete-li zobrazit všechny protokoly ladění. |
-| --pomoc -h | Zobrazit tuto zprávu nápovědy a ukončete ji. |
-| --výstup -o | Výstupní formát.  Povolené\: hodnoty json, jsonc, tabulka, tsv.  Výchozí\: json. |
-| --dotaz | Řetězec dotazu JMESPath. Další\:informace a příklady naleznete na adrese http //jmespath.org/. |
-| --verbose | Zvyšte podrobnost protokolování. Použijte --debug pro úplné protokoly ladění. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
-## <a name="sfctl-events-service-list"></a>sfctl události seznam služeb
-Získá události související se službou.
+## <a name="sfctl-events-service-list"></a>Služba sfctl Events – seznam
+Načte události související se službou.
 
-Odpověď je seznam objektů ServiceEvent.
+Odpovědí je seznam objektů ServiceEvent.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --end-time-utc [Povinné] | Čas ukončení vyhledávacího dotazu v ISO UTC yyyy-MM-ddTHH\:mm\:ssZ. |
-| --service-id [Povinné] | Identita služby. Toto ID je obvykle úplný název služby\:bez schématu URI struktury . Počínaje verzí 6.0 jsou hierarchické názvy\~odděleny znakem " " . Například pokud název služby\:je "fabric /myapp/app1/svc1", identita\~služby\~by "myapp app1 svc1" v 6.0+ a "myapp/app1/svc1" v předchozích verzích. |
-| --start-time-utc [Povinné] | Čas spuštění vyhledávacího dotazu v ISO UTC yyyy-MM-ddTHH\:mm\:ssZ. |
-| --events-types-filter | Toto je řetězec oddělený čárkou určující typy FabricEvents, které by měly být zahrnuty pouze v odpovědi. |
-| --exclude-analysis-events | Tento param zakáže načítání AnalysisEvents, pokud true je předán. |
-| --skip-correlation-lookup --skip-correlation-lookup --skip-correlation-lookup --skip | Tento param zakáže hledání KorerelatedEvents informace, pokud true je předán. jinak correlationEvents získat zpracovány a HasCorrelatedEvents pole v každém FabricEvent získá naplněna. |
-| --časový čas -t | Časový rozsah serveru pro provedení operace v sekundách. Tento časový limit určuje dobu trvání, po kterou je klient ochoten čekat na dokončení požadované operace. Výchozí hodnota tohoto parametru je 60 sekund.  Výchozí\: 60. |
+| --koncový čas – UTC [povinné] | Koncový čas vyhledávacího dotazu ve formátu ISO UTC yyyy-MM-ddTHH\:mm\:SSZ. |
+| --Service-ID [povinné] | Identita služby. Toto ID je obvykle úplný název služby bez schématu identifikátoru URI prostředků infrastruktury\:. Počínaje verzí 6,0 jsou hierarchické názvy odděleny znakem "\~". Pokud je například název služby "Fabric\:/MyApp/app1/svc1", identita služby by byla "MyApp\~app1\~svc1" ve verzi 6.0 + a "MyApp/app1/svc1" v předchozích verzích. |
+| --Start-Time-UTC [povinné] | Čas zahájení vyhledávacího dotazu ve formátu ISO UTC RRRR-MM-ddTHH\:mm\:SSZ. |
+| --Events-Types – filtr | Toto je řetězec oddělený čárkami určující typy FabricEvents, které by měly být zahrnuty pouze v odpovědi. |
+| --Exclude-analýza-události | Tento parametr zakáže načtení AnalysisEvents, pokud je hodnota true. |
+| --Skip-Correlation – vyhledávání | Tento parametr zakáže hledání informací CorrelatedEvents v případě, že je předána hodnota true. v opačném případě se naplní pole CorrelationEvents Get a HasCorrelatedEvents v každém FabricEvent. |
+| --Timeout-t | Časový limit serveru pro provedení operace během několika sekund. Tento časový limit určuje dobu, po kterou bude klient ochotn počkat na dokončení požadované operace. Výchozí hodnota pro tento parametr je 60 sekund.  Výchozí\: hodnota je 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --ladění | Zvyšte podrobnost protokolování, chcete-li zobrazit všechny protokoly ladění. |
-| --pomoc -h | Zobrazit tuto zprávu nápovědy a ukončete ji. |
-| --výstup -o | Výstupní formát.  Povolené\: hodnoty json, jsonc, tabulka, tsv.  Výchozí\: json. |
-| --dotaz | Řetězec dotazu JMESPath. Další\:informace a příklady naleznete na adrese http //jmespath.org/. |
-| --verbose | Zvyšte podrobnost protokolování. Použijte --debug pro úplné protokoly ladění. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 

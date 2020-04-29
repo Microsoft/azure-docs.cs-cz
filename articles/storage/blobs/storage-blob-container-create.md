@@ -1,6 +1,6 @@
 ---
-title: Vytvoření nebo odstranění kontejneru objektů blob s rozhraním .NET – Azure Storage
-description: Zjistěte, jak vytvořit nebo odstranit kontejner objektů blob v účtu Azure Storage pomocí knihovny klienta .NET.
+title: Vytvoření nebo odstranění kontejneru objektů BLOB pomocí Azure Storage .NET
+description: Naučte se, jak vytvořit nebo odstranit kontejner objektů BLOB v účtu Azure Storage pomocí klientské knihovny .NET.
 services: storage
 author: tamram
 ms.service: storage
@@ -9,23 +9,23 @@ ms.date: 12/17/2019
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: c95ed6dde3c00c0688ccfd58565fd112427c8899
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79135934"
 ---
-# <a name="create-or-delete-a-container-in-azure-storage-with-net"></a>Vytvoření nebo odstranění kontejneru ve službě Azure Storage pomocí rozhraní .NET
+# <a name="create-or-delete-a-container-in-azure-storage-with-net"></a>Vytvoření nebo odstranění kontejneru v Azure Storage pomocí .NET
 
-Objekty BLOB ve službě Azure Storage jsou uspořádané do kontejnerů. Před nahráním objektu blob je nutné nejprve vytvořit kontejner. Tento článek ukazuje, jak vytvořit a odstranit kontejnery s [klientskou knihovnou Azure Storage pro .NET](/dotnet/api/overview/azure/storage?view=azure-dotnet).
+Objekty BLOB v Azure Storage jsou uspořádány do kontejnerů. Než budete moct nahrát objekt blob, musíte nejdřív vytvořit kontejner. Tento článek ukazuje, jak vytvořit a odstranit kontejnery pomocí [klientské knihovny Azure Storage pro .NET](/dotnet/api/overview/azure/storage?view=azure-dotnet).
 
 ## <a name="name-a-container"></a>Pojmenování kontejneru
 
-Název kontejneru musí být platný název DNS, protože je součástí jedinečného identifikátoru URI, který slouží k adresování kontejneru nebo jeho objektů BLOB. Při pojmenování kontejneru postupujte podle těchto pravidel:
+Název kontejneru musí být platný název DNS, protože se jedná o součást jedinečného identifikátoru URI, který se používá k adresování kontejneru nebo objektů BLOB. Při pojmenování kontejneru postupujte podle těchto pravidel:
 
-- Názvy kontejnerů mohou mít velikost 3 až 63 znaků.
-- Názvy kontejnerů musí začínat písmenem nebo číslem a mohou obsahovat pouze malá písmena, čísla a znak pomlčky (-).
-- Dva nebo více po sobě jdoucích pomlčka znaky nejsou povoleny v názvech kontejnerů.
+- Názvy kontejnerů můžou mít délku 3 až 63 znaků.
+- Názvy kontejnerů musí začínat písmenem nebo číslicí a může obsahovat jenom malá písmena, číslice a spojovník (-).
+- V názvech kontejnerů nejsou povoleny dva nebo více po sobě jdoucích spojovníkových znaků.
 
 Identifikátor URI pro kontejner je v tomto formátu:
 
@@ -40,11 +40,11 @@ Chcete-li vytvořit kontejner, zavolejte jednu z následujících metod:
 - [CreateIfNotExists](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.createifnotexists)
 - [CreateIfNotExistsAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.createifnotexistsasync)
 
-**Create** a **CreateAsync** metody vyvolat výjimku, pokud kontejner se stejným názvem již existuje.
+Metody **Create** a **CreateAsync** vyvolávají výjimku, pokud kontejner se stejným názvem již existuje.
 
-**Metody CreateIfNotExists** a **CreateIfNotExistsAsync** vrátí logickou hodnotu označující, zda byl kontejner vytvořen. Pokud kontejner se stejným názvem již existuje, pak tyto metody vrátí **False** označují, že nebyl vytvořen nový kontejner.
+Metody **CreateIfNotExists** a **CreateIfNotExistsAsync** vrací logickou hodnotu, která označuje, zda byl kontejner vytvořen. Pokud už kontejner se stejným názvem existuje, vrátí tyto metody **hodnotu false** , aby označoval, že se nový kontejner nevytvořil.
 
-Kontejnery jsou vytvořeny okamžitě pod účet úložiště. Není možné vnořit jeden kontejner pod druhou.
+Kontejnery se vytvoří hned pod účtem úložiště. Není možné vnořit jeden kontejner pod jiným.
 
 Následující příklad vytvoří kontejner asynchronně:
 
@@ -81,9 +81,9 @@ private static async Task<CloudBlobContainer> CreateSampleContainerAsync(CloudBl
 
 ## <a name="create-the-root-container"></a>Vytvoření kořenového kontejneru
 
-Kořenový kontejner slouží jako výchozí kontejner pro váš účet úložiště. Každý účet úložiště může mít jeden kořenový kontejner, který musí být pojmenován *$root.*. Kořenový kontejner je nutné explicitně vytvořit nebo odstranit.
+Kořenový kontejner slouží jako výchozí kontejner pro váš účet úložiště. Každý účet úložiště může mít jeden kořenový kontejner, který musí být pojmenovaný *$root.*. Kořenový kontejner musíte explicitně vytvořit nebo odstranit.
 
-Můžete odkazovat na objekt blob uložený v kořenovém kontejneru bez zahrnutí názvu kořenového kontejneru. Kořenový kontejner umožňuje odkazovat na objekt blob na nejvyšší úrovni hierarchie účtů úložiště. Můžete například odkazovat na objekt blob, který se nachází v kořenovém kontejneru následujícím způsobem:
+Můžete odkazovat na objekt BLOB uložený v kořenovém kontejneru bez zahrnutí názvu kořenového kontejneru. Kořenový kontejner umožňuje odkazovat na objekt blob na nejvyšší úrovni hierarchie účtu úložiště. Například můžete odkazovat na objekt blob, který se nachází v kořenovém kontejneru následujícím způsobem:
 
 `https://myaccount.blob.core.windows.net/default.html`
 
@@ -120,17 +120,17 @@ private static void CreateRootContainer(CloudBlobClient blobClient)
 Chcete-li odstranit kontejner v rozhraní .NET, použijte jednu z následujících metod:
 
 - [Odstranit](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.delete)
-- [OdstranitAsynchronizace](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.deleteasync)
-- [OdstranitIfExists](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.deleteifexists)
-- [OdstranitIfExistsAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.deleteifexistsasync)
+- [DeleteAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.deleteasync)
+- [DeleteIfExists](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.deleteifexists)
+- [DeleteIfExistsAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.deleteifexistsasync)
 
-**Delete** a **DeleteAsync** metody vyvolat výjimku, pokud kontejner neexistuje.
+Metody **Delete** a **DeleteAsync** vyvolávají výjimku, pokud kontejner neexistuje.
 
-**DeleteIfExists** a **DeleteIfExistsAsync** metody vrátí logickou hodnotu označující, zda byl odstraněn kontejner. Pokud zadaný kontejner neexistuje, pak tyto metody vrátí **False** označují, že kontejner nebyl odstraněn.
+Metody **DeleteIfExists** a **DeleteIfExistsAsync** vrací logickou hodnotu, která označuje, zda byl kontejner odstraněn. Pokud zadaný kontejner neexistuje, vrátí tyto metody **hodnotu false** , aby označoval, že se kontejner neodstranil.
 
-Po odstranění kontejneru nelze vytvořit kontejner se stejným názvem po dobu nejméně 30 sekund a případně déle. Při odstraňování kontejneru se pokus o vytvoření kontejneru se stejným názvem nezdaří s kódem chyby HTTP 409 (Conflict). Všechny ostatní operace na kontejneru nebo objekty BLOB, které obsahuje se nezdaří s kódem chyby HTTP 404 (nebyl nalezen) při odstraňování kontejneru.
+Po odstranění kontejneru nemůžete vytvořit kontejner se stejným názvem aspoň na 30 sekund a pravděpodobně déle. Při odstraňování kontejneru se pokus o vytvoření kontejneru se stejným názvem nezdaří s kódem chyby HTTP 409 (konflikt). Všechny ostatní operace na kontejneru nebo v objektech blob, které obsahuje, se nezdaří s kódem chyby HTTP 404 (Nenalezeno) při odstraňování kontejneru.
 
-Následující příklad odstraní zadaný kontejner a zpracovává výjimku, pokud kontejner neexistuje:
+Následující příklad odstraní zadaný kontejner a zpracuje výjimku, pokud kontejner neexistuje:
 
 ```csharp
 private static async Task DeleteSampleContainerAsync(CloudBlobClient blobClient, string containerName)
@@ -153,7 +153,7 @@ private static async Task DeleteSampleContainerAsync(CloudBlobClient blobClient,
 }
 ```
 
-Následující příklad ukazuje, jak odstranit všechny kontejnery, které začínají zadanou předponou. Příklad přeruší zapůjčení, pokud existuje zapůjčení na kontejneru.
+Následující příklad ukazuje, jak odstranit všechny kontejnery, které začínají zadanou předponou. V příkladu dojde k přerušení zapůjčení, pokud existuje existující zapůjčení kontejneru.
 
 ```csharp
 private static async Task DeleteContainersWithPrefixAsync(CloudBlobClient blobClient, string prefix)

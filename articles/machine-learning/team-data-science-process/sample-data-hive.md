@@ -1,6 +1,6 @@
 ---
-title: Ukázková data v tabulkách Azure HDInsight Hive – proces vědecké analýzy týmových dat
-description: Ukázková data uložená v tabulkách Azure HDInsight Hive pomocí dotazů Hive, aby se data zmenšila na velikost lépe spravovatelnou pro analýzu.
+title: Ukázková data v tabulkách podregistru Azure HDInsight – proces týmu pro datové vědy
+description: Vypnutí ukázkových dat uložených v tabulkách Azure HDInsight s použitím dotazů na podregistry k omezení velikosti dat na více spravovatelných pro účely analýzy.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,29 +12,29 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: df85edc3de00e2b0342bc3102fe9e85564a9835b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76719989"
 ---
 # <a name="sample-data-in-azure-hdinsight-hive-tables"></a>Ukázková data v tabulkách Azure HDInsight Hive
-Tento článek popisuje, jak snížit vzorkování dat uložených v tabulkách Azure HDInsight Hive pomocí dotazů Hive, abyste je zmenšili na velikost lépe zvládnutelnou pro analýzu. Zahrnuje tři populárně používané metody odběru vzorků:
+Tento článek popisuje, jak pomocí dotazů na podregistru snížit data uložená v tabulkách podregistru Azure HDInsight a zmenšit tak jejich lepší správu pro účely analýzy. Pokrývá tři oblíbené metody vzorkování:
 
-* Jednotný náhodný odběr vzorků
-* Náhodný odběr vzorků podle skupin
-* Stratifikovaný odběr vzorků
+* Rovnoměrné náhodné vzorkování
+* Náhodné vzorkování podle skupin
+* Vzorkování Stratified
 
 **Proč vzorkovat data?**
-Pokud je datová sada, kterou chcete analyzovat, velká, je obvykle vhodné data snížit na menší, ale reprezentativní a lépe zvládnutelnou velikost. Vzorkování dolů usnadňuje pochopení dat, zkoumání a technické zpracování prvků. Jeho úlohou v procesu teamových dat je umožnit rychlé vytváření prototypů funkcí zpracování dat a modelů strojového učení.
+Pokud je datová sada, kterou plánujete analyzovat, rozsáhlá, je obvykle vhodné ji vyvzorkovat, aby se snížila na menší, ale jenom se zástupcem a více spravovatelnými velikostmi. Vypínání vzorků usnadňuje porozumění datům, průzkumům a inženýrům funkcí. Jejím úkolem v rámci vědeckého zpracování týmových dat je povolit rychlé vytváření prototypů funkcí pro zpracování dat a modelů strojového učení.
 
-Tato úloha vzorkování je krokem v [procesu vědecké vědy o týmových datech (TDSP).](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)
+Tento úkol vzorkování je krok v rámci [vědeckého zpracování týmových dat (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
 
-## <a name="how-to-submit-hive-queries"></a>Jak odeslat dotazy Hive
-Dotazy hive lze odeslat z konzoly příkazového řádku Hadoop na hlavním uzlu clusteru Hadoop.  Přihlaste se do hlavního uzlu clusteru Hadoop, otevřete konzolu příkazového řádku Hadoop a odešlete odtud dotazy Hive. Pokyny k odesílání dotazů Hive v konzole příkazového řádku Hadoop naleznete v tématu [Jak odeslat dotazy hive](move-hive-tables.md#submit).
+## <a name="how-to-submit-hive-queries"></a>Odeslání dotazů na podregistr
+Dotazy na podregistr je možné odeslat z konzoly příkazového řádku Hadoop do hlavního uzlu clusteru Hadoop.  Přihlaste se k hlavnímu uzlu clusteru Hadoop, otevřete konzolu příkazového řádku Hadoop a z ní odešlete dotazy na podregistr. Pokyny k odesílání dotazů na podregistr v konzole příkazového řádku Hadoop najdete v tématu [odeslání dotazů na podregistr](move-hive-tables.md#submit).
 
-## <a name="uniform-random-sampling"></a><a name="uniform"></a>Jednotný náhodný odběr vzorků
-Jednotný náhodný odběr vzorků znamená, že každý řádek v sadě dat má stejnou šanci na odběr vzorků. Může být implementována přidáním další pole rand() do sady dat ve vnitřním "select" dotazu a ve vnějším "select" dotazu, který podmínku na toto náhodné pole.
+## <a name="uniform-random-sampling"></a><a name="uniform"></a>Rovnoměrné náhodné vzorkování
+Jednotný náhodný odběr znamená, že každý řádek v datové sadě má stejnou pravděpodobnost vzorkování. Může být implementováno přidáním dalšího pole Rand () do datové sady v rámci vnitřního dotazu Select a v vnějším dotazu Select, který je podmínkou pro toto náhodné pole.
 
 Zde je příklad dotazu:
 
@@ -49,12 +49,12 @@ Zde je příklad dotazu:
         )a
     where samplekey<='${hiveconf:sampleRate}'
 
-Zde `<sample rate, 0-1>` určuje podíl záznamů, které uživatelé chtějí vzorkovat.
+Zde `<sample rate, 0-1>` Určuje poměr záznamů, které uživatelé chtějí vzorkovat.
 
-## <a name="random-sampling-by-groups"></a><a name="group"></a>Náhodný odběr vzorků podle skupin
-Při vzorkování kategorických dat můžete zahrnout nebo vyloučit všechny instance pro určitou hodnotu kategorické proměnné. Tento druh odběru vzorků se nazývá "vzorkování podle skupin". Máte-li například kategorickou proměnnou "*State*", která má hodnoty jako NY, MA, CA, NJ a PA, chcete, aby záznamy z každého stavu byly společně, ať už jsou vzorkovány nebo ne.
+## <a name="random-sampling-by-groups"></a><a name="group"></a>Náhodné vzorkování podle skupin
+Při vzorkování dat kategorií můžete chtít zahrnout nebo vyloučit všechny instance pro určitou hodnotu proměnné kategorií. Tento druh vzorkování se nazývá "vzorkování podle skupin". Například pokud máte kategorií proměnnou "State" (*stav*), která má hodnoty jako NY, MA, CA, NEWARKU a PA, budete chtít záznamy z každého stavu společně bez ohledu na to, zda jsou vzorky nebo nikoli.
 
-Zde je příklad dotazu, který vzorky podle skupin:
+Tady je příklad dotazu, který ukázky seskupují:
 
     SET sampleRate=<sample rate, 0-1>;
     select
@@ -80,8 +80,8 @@ Zde je příklad dotazu, který vzorky podle skupin:
         )c
     on b.catfield=c.catfield
 
-## <a name="stratified-sampling"></a><a name="stratified"></a>Stratifikovaný odběr vzorků
-Náhodný odběr vzorků je stratifikovaný s ohledem na kategorickou proměnnou, pokud získané vzorky mají kategorické hodnoty, které jsou přítomny ve stejném poměru jako v nadřazeném obyvatelstvu. Pomocí stejného příkladu jako výše, předpokládejme, že vaše data mají následující pozorování podle stavů: NJ má 100 pozorování, NY má 60 pozorování a WA má 300 pozorování. Pokud zadáte rychlost stratifikovaného odběru vzorků na 0,5, měl by získaný vzorek mít přibližně 50, 30 a 150 pozorování NJ, NY a WA.
+## <a name="stratified-sampling"></a><a name="stratified"></a>Vzorkování Stratified
+Náhodný odběr vzorkování je stratified s ohledem na proměnnou kategorií, když se získané vzorky nacházejí v kategorií hodnotách, které jsou přítomny ve stejném poměru, jako kdyby byly v nadřazeném souboru. Pomocí výše uvedeného příkladu Předpokládejme, že vaše data obsahují následující pozorování podle států: NEWARKU má 100 pozorování, NY má 60 pozorování a WA 300 obsahuje poznámky. Pokud zadáte rychlost vzorkování stratified, která bude 0,5, pak získaný vzorek by měl mít přibližně 50, 30 a 150 pozorování NEWARKU, NY a WA.
 
 Zde je příklad dotazu:
 
@@ -99,5 +99,5 @@ Zde je příklad dotazu:
     where state_rank <= state_cnt*'${hiveconf:sampleRate}'
 
 
-Informace o pokročilejších metodách vzorkování, které jsou k dispozici v Hive, naleznete v [tématu LanguageManual Sampling](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Sampling).
+Informace o pokročilejších metodách vzorkování, které jsou k dispozici v podregistru, najdete v tématu [vzorkování LanguageManual](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Sampling).
 

@@ -1,6 +1,6 @@
 ---
-title: Nejčastější dotazy k přenosu Azure | Dokumenty společnosti Microsoft
-description: Tento článek obsahuje odpovědi na některé často kladené otázky týkající se služby Azure Relay.
+title: Nejčastější dotazy k Azure Relay | Microsoft Docs
+description: Tento článek obsahuje odpovědi na některé z nejčastějších dotazů týkajících se služby Azure Relay.
 services: service-bus-relay
 documentationcenter: na
 author: spelluru
@@ -15,102 +15,102 @@ ms.workload: na
 ms.date: 01/21/2020
 ms.author: spelluru
 ms.openlocfilehash: d5032b427316a3c4e07013af4e8214e239a6efb3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76513996"
 ---
-# <a name="azure-relay-faqs"></a>Nejčastější dotazy k přenosu Azure
+# <a name="azure-relay-faqs"></a>Nejčastější dotazy k Azure Relay
 
-Tento článek odpovídá na některé nejčastější dotazy týkající se [Azure Relay](https://azure.microsoft.com/services/service-bus/). Obecné informace o cenách a podpoře Azure najdete v [častých dotazech k podpoře Azure](https://azure.microsoft.com/support/faq/).
+Tento článek obsahuje odpovědi na nejčastější dotazy týkající se [Azure Relay](https://azure.microsoft.com/services/service-bus/). Obecné informace o cenách a podpoře Azure najdete v nejčastějších dotazech k [podpoře Azure](https://azure.microsoft.com/support/faq/).
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="general-questions"></a>Obecné otázky
 ### <a name="what-is-azure-relay"></a>Co je Azure Relay?
-[Služba Azure Relay](relay-what-is-it.md) usnadňuje hybridní aplikace tím, že vám pomáhá bezpečněji zpřístupnit služby, které jsou umístěny v podnikové síti, do veřejného cloudu. Služby můžete vystavit bez otevření připojení brány firewall a bez nutnosti rušivých změn v infrastruktuře podnikové sítě.
+[Služba Azure Relay](relay-what-is-it.md) usnadňuje vašim hybridním aplikacím tím, že pomáhá bezpečněji vystavovat služby, které se nacházejí v podnikové síti, do veřejného cloudu. Služby můžete vystavit bez otevření připojení brány firewall a bez nutnosti rušivých změn v infrastruktuře podnikové sítě.
 
 ### <a name="what-is-a-relay-namespace"></a>Co je obor názvů Relay?
-[Obor názvů](relay-create-namespace-portal.md) je kontejner oborů, který můžete použít k adresování prostředků přenosu v rámci aplikace. Chcete-li použít přenos, je nutné vytvořit obor názvů. Toto je jeden z prvních kroků, jak začít.
+[Obor názvů](relay-create-namespace-portal.md) je kontejner oboru, který můžete použít k adresování prostředků přenosu v rámci aplikace. Musíte vytvořit obor názvů pro použití Relay. Toto je jeden z prvních kroků při zahájení práce.
 
-### <a name="what-happened-to-service-bus-relay-service"></a>Co se stalo se službou Service Bus Relay?
-Dříve pojmenovaná služba Relé sběrnice se nyní nazývá [WCF Relay](service-bus-relay-tutorial.md). Tuto službu můžete nadále používat obvyklým způsobem. Funkce Hybridní připojení je aktualizovaná verze služby, která byla transplantována ze služby Azure BizTalk. WCF relé a hybridní připojení jsou nadále podporovány.
+### <a name="what-happened-to-service-bus-relay-service"></a>Co se stalo s Service Bus Relay služby?
+Dříve pojmenovaná služba Service Bus Relay se nyní označuje jako [WCF Relay](service-bus-relay-tutorial.md). Tuto službu můžete dál používat jako obvykle. Funkce Hybrid Connections je aktualizovaná verze služby, která je předaná z Azure BizTalk Services. WCF Relay a Hybrid Connections obojí i nadále podporovat.
 
 ## <a name="pricing"></a>Ceny
-Tato část odpovídá na některé nejčastější dotazy týkající se cenové struktury relay. Můžete se také podívat na [nejčastější dotazy k podpoře Azure](https://azure.microsoft.com/support/faq/) pro obecné informace o cenách Azure. Úplné informace o cenách relé najdete v [tématu Podrobnosti o cenách service bus .][Pricing overview]
+Tato část obsahuje odpovědi na některé nejčastější dotazy týkající se cenové struktury přenosu. Také se můžete podívat na [Nejčastější dotazy k podpoře Azure](https://azure.microsoft.com/support/faq/) pro obecné informace o cenách Azure. Úplné informace o cenách přenosu najdete v tématu [Service Bus podrobnosti o cenách][Pricing overview].
 
-### <a name="how-do-you-charge-for-hybrid-connections-and-wcf-relay"></a>Jak se účtuje hybridní připojení a WCF relay?
-Úplné informace o cenách přenosu naleznete v tabulce [Hybridní připojení a Přenosy WCF][Pricing overview] na stránce s podrobnostmi o cenách service bus. Kromě cen uvedených na této stránce se vám účtují přidružené přenosy dat pro odchozí přenosy mimo datové centrum, ve kterém je vaše aplikace zřízena.
+### <a name="how-do-you-charge-for-hybrid-connections-and-wcf-relay"></a>Jak se účtují Hybrid Connections a WCF Relay?
+Podrobné informace o cenách přenosu najdete v tabulce [Hybrid Connections a WCF Relay][Pricing overview] na stránce Service Bus s podrobnostmi o cenách. Kromě cen uvedených na této stránce se vám budou účtovat přenosy dat pro výstup mimo datacentrum, ve kterém se vaše aplikace zřídí.
 
-### <a name="how-am-i-billed-for-hybrid-connections"></a>Jak se mi účtují hybridní připojení?
-Tady jsou tři příklady scénářů fakturace pro hybridní připojení:
+### <a name="how-am-i-billed-for-hybrid-connections"></a>Jak se fakturuje Hybrid Connections?
+Tady jsou tři příklady scénářů fakturace pro Hybrid Connections:
 
 *   Scénář 1:
-    *   Máte jeden naslouchací proces, například instanci Správce hybridních připojení nainstalován a nepřetržitě spuštěn po celý měsíc.
-    *   Odesílat 3 GB dat přes připojení během měsíce. 
-    *   Celkový poplatek je $5.
+    *   Máte jeden naslouchací proces, jako je například instance Hybrid Connections Manageru nainstalovaná a nepřetržitě spuštěný celý měsíc.
+    *   V průběhu tohoto měsíce prostřednictvím připojení odesíláte 3 GB dat. 
+    *   Vaše celková cena je $5.
 *   Scénář 2:
-    *   Máte jeden naslouchací proces, například instanci Správce hybridních připojení nainstalován a nepřetržitě spuštěn po celý měsíc.
-    *   Odesílat 10 GB dat přes připojení během měsíce.
-    *   Celkový poplatek je $7.50. To je $ 5 pro připojení a první 5 GB + $ 2.50 pro dalších 5 GB dat.
+    *   Máte jeden naslouchací proces, jako je například instance Hybrid Connections Manageru nainstalovaná a nepřetržitě spuštěný celý měsíc.
+    *   Během tohoto měsíce prostřednictvím připojení odesíláte 10 GB dat.
+    *   Vaše celková cena je $7,50. To je $5 pro připojení a prvních 5 GB + $2,50 pro další 5 GB dat.
 *   Scénář 3:
-    *   Máte dvě instance, A a B, správce hybridních připojení nainstalována a nepřetržitě spuštěna po celý měsíc.
-    *   Odesílat 3 GB dat přes připojení A během měsíce.
-    *   Odesíláte 6 GB dat přes připojení B během měsíce.
-    *   Celkový poplatek je $10.50. To je $ 5 pro připojení A + $ 5 pro připojení B + $ 0.50 (pro šestý gigabajt při připojení B).
+    *   Máte dvě instance, a a B, Hybrid Connections Manager nainstalované a průběžně běží celý měsíc.
+    *   Během tohoto měsíce odesíláte 3 GB dat napříč připojením.
+    *   V průběhu tohoto měsíce odesíláte 6 GB dat napříč připojením B.
+    *   Vaše celková cena je $10,50. To je $5 pro připojení A + $5 pro připojení B + $0,50 (za šest GB u připojení B).
 
-Všimněte si, že ceny použité v příkladech jsou použitelné pouze během období náhledu hybridní připojení. Ceny se mohou změnit v závislosti na obecné dostupnosti hybridních připojení.
+Všimněte si, že ceny použité v příkladech platí jenom během období Hybrid Connections Preview. Ceny se mohou po obecné dostupnosti Hybrid Connections změnit.
 
-### <a name="how-are-hours-calculated-for-relay"></a>Jak se hodiny počítají pro relé?
+### <a name="how-are-hours-calculated-for-relay"></a>Jak se počítají hodiny pro přenos?
 
-WCF Relay je k dispozici pouze v oborech názvů úrovně Standard. Ceny a [kvóty připojení](../service-bus-messaging/service-bus-quotas.md) pro přenosy jinak nezměnily. To znamená, že relé se nadále nabíjí na základě počtu zpráv (nikoli operací) a hodin přenosu. Další informace naleznete v tabulce [Hybridní připojení a Přenosy WCF](https://azure.microsoft.com/pricing/details/service-bus/) na stránce s podrobnostmi o cenách.
+WCF Relay je k dispozici pouze v oborech názvů úrovně Standard. Ceny a [kvóty připojení](../service-bus-messaging/service-bus-quotas.md) pro přenosy v opačném případě se nezměnily. To znamená, že se přenosy dál účtují na základě počtu zpráv (nikoli operací) a hodin přenosu. Další informace najdete v tabulce ["Hybrid Connections a WCF Relay"](https://azure.microsoft.com/pricing/details/service-bus/) na stránce s podrobnostmi o cenách.
 
-### <a name="what-if-i-have-more-than-one-listener-connected-to-a-specific-relay"></a>Co když mám více než jeden posluchač připojený k určitému relé?
-V některých případech může mít jedno relé více připojených naslouchacích procesů. Relé je považováno za otevřené, pokud je k němu připojen alespoň jeden naslouchací proces relé. Přidání posluchačů do otevřeného přenosu má za následek další hodiny přenosu. Počet odesílatelů přenosu (klientů, kteří vyvolávají nebo odesílají zprávy relé), které jsou připojeny k přenosu, nemá vliv na výpočet hodin přenosu.
+### <a name="what-if-i-have-more-than-one-listener-connected-to-a-specific-relay"></a>Co když mám k určitému přenosu připojeno více než jeden naslouchací proces?
+V některých případech může mít jeden Relay několik připojených posluchačů. Předávání se považuje za otevřené, pokud je k němu připojen alespoň jeden naslouchací proces přenosu. Přidání posluchačů do otevřeného přenosu vede k dalším hodinám přenosu. Počet odesílacích odesílatelů (klientů, kteří vyvolají nebo odesílají zprávy do přenosu), který je připojený ke službě Relay, nemá vliv na výpočet hodin přenosu.
 
-### <a name="how-is-the-messages-meter-calculated-for-wcf-relays"></a>Jak se počítá měřič zpráv pro wcf relé?
-(**To platí pouze pro wcf relé. Zprávy nejsou náklady na hybridní připojení.**)
+### <a name="how-is-the-messages-meter-calculated-for-wcf-relays"></a>Jak se počítá měřič zpráv pro WCF Relay?
+(**Týká se jenom přenosů WCF. Zprávy nejsou náklady na Hybrid Connections.**)
 
-Obecně platí, že fakturovatelné zprávy pro přenosy se počítají pomocí stejné metody, která se používá pro zprostředkované entity (fronty, témata a odběry), popsané dříve. Nicméně, tam jsou některé pozoruhodné rozdíly.
+Obecně platí, že Fakturovatelné zprávy pro Relay se počítají pomocí stejné metody, která se používá pro zprostředkované entity (fronty, témata a odběry) popsané dříve. Existují však některé významné rozdíly.
 
-Odeslání zprávy do přenosu sběrnice služby je považováno za "úplné prostřednictvím" odeslat naslouchací proces přenosu, který obdrží zprávu. Není považován za operaci odeslání relé sběrnice, následovanou doručením naslouchací proces relé. Vyvolání služby styl požadavek odpověď (až 64 KB) proti naslouchací proces přenosu výsledky ve dvou fakturovatelných zpráv: jedna fakturovatelná zpráva pro požadavek a jednu fakturovatelnou zprávu pro odpověď (za předpokladu, že odpověď je také 64 KB nebo menší). To je jiné než použití fronty k zprostředkování mezi klientem a službou. Pokud používáte frontu k zprostředkování mezi klientem a službou, stejný vzor požadavku a odpovědi vyžaduje požadavek odeslat do fronty, následovaný dequeue/doručení z fronty do služby. Následuje odpověď odeslat do jiné fronty a dequeue/delivery z této fronty klientovi. Pomocí předpokladů stejné velikosti v celém (až 64 KB) výsledkem zprostředkované fronty vzor fakturovatelné zprávy. Bude vám účtován dvojnásobek počtu zpráv k implementaci stejného vzoru, který provedete pomocí přenosu. Samozřejmě, existují výhody použití fronty k dosažení tohoto vzoru, jako je například odolnost a vyrovnávání zatížení. Tyto výhody by mohly ospravedlnit dodatečné náklady.
+Odeslání zprávy na Service Bus relay je považováno za "úplné prostřednictvím" odesílané naslouchací službě přenosu, která obdrží zprávu. Nepovažuje se za operaci odeslání do Service Bus předávání následovaný doručením naslouchací služby přenosu. Volání služby stylu požadavek-odpověď (od až 64 KB) proti naslouchacímu programu přenosu má za následek dvě Fakturovatelné zprávy: jednu fakturovatelnou zprávu pro požadavek a jednu fakturovatelnou zprávu pro odpověď (za předpokladu, že odpověď je také 64 KB nebo menší). To se liší od použití fronty k napravení mezi klientem a službou. Pokud používáte frontu k napravení mezi klientem a službou, stejný vzor požadavku a odpovědi vyžaduje, aby se žádost odeslala do fronty a za ní následovala vyřazení z fronty nebo doručování z fronty do služby. Následuje odpověď odeslání odpovědi do jiné fronty a její vyřazení z fronty a jejich doručování klientovi. S využitím stejných nastavení pro celou velikost (až 64 KB) se ve vzorech vydaných ve frontě zobrazí 4 Fakturovatelné zprávy. Bude se vám účtovat dvojnásobek počtu zpráv, které implementují stejný vzor, který můžete provést pomocí přenosu. K dosažení tohoto modelu se samozřejmě využívají výhody, jako je například odolnost a vyrovnávání zatížení. Tyto výhody můžou zvýšit náklady.
 
-Přenosy, které jsou otevřeny pomocí **netTCPRelay** WCF vazby považovat zprávy nikoli jako jednotlivé zprávy, ale jako datový proud dat tok přes systém. Při použití této vazby pouze odesílatel a naslouchací proces mají přehled o rámování jednotlivých zpráv odeslaných a přijatých. Pro přenosy, které používají vazbu **netTCPRelay,** jsou všechna data považována za datový proud pro výpočet fakturovatelných zpráv. V tomto případě service bus vypočítá celkové množství dat odeslaných nebo přijatých prostřednictvím každého jednotlivého relé na základě 5 minut. Potom vydělí, že celkové množství dat 64 KB k určení počtu fakturovatelných zpráv pro toto předávání během tohoto časového období.
+Přenosy, které jsou otevřeny pomocí vazby WCF **netTCPRelay** , považují zprávy za jednotlivé zprávy, ale jako proud dat přenášených systémem. Použijete-li tuto vazbu, pouze odesílatel a naslouchací proces budou mít přehled o rámcích jednotlivých odeslaných a přijímaných zpráv. U přenosů, které používají vazbu **netTCPRelay** , se všechna data považují za datový proud pro výpočet fakturovatelných zpráv. V takovém případě Service Bus vypočítá celkové množství dat odesílaných nebo přijatých prostřednictvím každého jednotlivého přenosu po dobu 5 minut. Pak rozdělí celkový objem dat o 64 KB, aby bylo možné určit počet fakturovaných zpráv pro tento přenos během daného časového období.
 
 ## <a name="quotas"></a>Kvóty
 | Název kvóty | Rozsah |  Poznámky | Hodnota |
 | --- | --- | --- | --- |
-| Souběžné posluchače ve štafetě |Entita |Následné požadavky na další připojení jsou odmítnuty a volající kód přijímá výjimku. |25 |
-| Souběžná přenosová připojení pro všechny koncové body přenosu v oboru názvů služby |Obor názvů |- |5 000 |
-| Předávání koncových bodů na obor názvů služby |Obor názvů |- |10 000 |
-| Velikost zprávy pro přenosová přenosy [NetOnewayRelayBinding](/dotnet/api/microsoft.servicebus.netonewayrelaybinding) a [NetEventRelayBinding](/dotnet/api/microsoft.servicebus.neteventrelaybinding) |Obor názvů |Příchozí zprávy, které překračují tyto kvóty, jsou odmítnuty a volající kód přijímá výjimku. |64 kB |
-| Velikost zprávy pro přenosy [HttpRelayTransportBindingElement](/dotnet/api/microsoft.servicebus.httprelaytransportbindingelement) a [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) |Obor názvů |Není omezena velikost zprávy. |Unlimited |
+| Souběžné naslouchací procesy na Relay |Entita |Následné žádosti o další připojení jsou odmítnuty a volající kód obdrží výjimku. |25 |
+| Souběžná připojení přenosu na všechny koncové body přenosu v oboru názvů služby |Obor názvů |- |5 000 |
+| Koncové body Relay na obor názvů služby |Obor názvů |- |10 000 |
+| Velikost zprávy pro předávání [NetOnewayRelayBinding](/dotnet/api/microsoft.servicebus.netonewayrelaybinding) a [NetEventRelayBinding](/dotnet/api/microsoft.servicebus.neteventrelaybinding) |Obor názvů |Příchozí zprávy, které překračují tyto kvóty, se odmítnou a volající kód obdrží výjimku. |64 kB |
+| Velikost zprávy pro předávání [HttpRelayTransportBindingElement](/dotnet/api/microsoft.servicebus.httprelaytransportbindingelement) a [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) |Obor názvů |Velikost zprávy není nijak omezena. |Unlimited |
 
-### <a name="does-relay-have-any-usage-quotas"></a>Má relé nějaké kvóty využití?
-Ve výchozím nastavení pro všechny cloudové služby nastaví Microsoft agregovně měsíční kvótu využití, která se počítá ve všech předplatných zákazníka. Chápeme, že občas vaše potřeby mohou překročit tyto limity. Zákaznický servis můžete kdykoli kontaktovat, abychom mohli porozumět vašim potřebám a odpovídajícím způsobem upravit tyto limity. Pro service bus jsou souhrnné kvóty využití následující:
+### <a name="does-relay-have-any-usage-quotas"></a>Má přenos nějaké kvóty využití?
+Ve výchozím nastavení pro jakoukoli cloudovou službu Microsoft nastavuje agregovanou kvótu měsíčního využití, která se počítá napříč předplatnými zákazníka. Chápeme, že v době, kdy vaše potřeby můžou tato omezení překročit. Služby zákazníkům můžete kdykoli kontaktovat, abychom vám porozuměli vašim potřebám a odpovídajícím způsobem upravili tato omezení. Pro Service Bus agregované kvóty využití jsou následující:
 
-* 5 miliard zpráv
-* 2 miliony reléhodin
+* zprávy 5 000 000 000
+* 2 000 000 hodin přenosu
 
-Přestože si vyhrazujeme právo deaktivovat účet, který překračuje jeho měsíční kvóty využití, poskytujeme e-mailové oznámení a před přijetím jakékoli akce se několikrát pokusíme kontaktovat zákazníka. Zákazníci, kteří tyto kvóty překročí, jsou stále zodpovědní za nadměrné poplatky.
+I když Vyhrazujeme si právo zakázat účet, který přesáhne jeho měsíční kvóty využití, poskytneme vám e-mailové oznámení a provedeme několik pokusů o kontaktování zákazníka před provedením jakékoli akce. Zákazníkům, kteří překračují tyto kvóty, se stále zodpovídá za nadměrné poplatky.
 
 ### <a name="naming-restrictions"></a>Omezení pojmenování
-Název oboru názvů Předávání musí mít délku 6 až 50 znaků.
+Název oboru názvů přenosu musí mít délku 6 až 50 znaků.
 
 ## <a name="subscription-and-namespace-management"></a>Správa předplatného a oboru názvů
-### <a name="how-do-i-migrate-a-namespace-to-another-azure-subscription"></a>Jak můžu migrovat obor názvů do jiného předplatného Azure?
+### <a name="how-do-i-migrate-a-namespace-to-another-azure-subscription"></a>Návody migrovat obor názvů do jiného předplatného Azure?
 
-Pokud chcete přesunout obor názvů z jednoho předplatného Azure do jiného předplatného, můžete buď použít [portál Azure,](https://portal.azure.com) nebo použít příkazy PowerShellu. Chcete-li přesunout obor názvů do jiného předplatného, musí být již aktivní. Uživatel spouštějící příkazy musí být správce uživatelem na zdrojové i cílové odběry.
+Pokud chcete přesunout obor názvů z jednoho předplatného Azure do jiného předplatného, můžete použít [Azure Portal](https://portal.azure.com) nebo použít příkazy PowerShellu. Chcete-li přesunout obor názvů do jiného předplatného, obor názvů již musí být aktivní. Uživatel, který spouští příkazy, musí být uživatel s oprávněním správce na zdrojovém i cílovém předplatném.
 
 #### <a name="azure-portal"></a>portál Azure
 
-Pokud chcete použít portál Azure k migraci oborů názvů Azure Relay z jednoho předplatného do jiného předplatného, přečtěte si témat [u čl.](../azure-resource-manager/management/move-resource-group-and-subscription.md#use-the-portal) 
+Pokud chcete použít Azure Portal k migraci Azure Relay oborů názvů z jednoho předplatného do jiného předplatného, přečtěte si téma [Přesunutí prostředků do nové skupiny prostředků nebo předplatného](../azure-resource-manager/management/move-resource-group-and-subscription.md#use-the-portal). 
 
 #### <a name="powershell"></a>PowerShell
 
-Pokud chcete pomocí PowerShellu přesunout obor názvů z jednoho předplatného Azure do jiného předplatného, použijte následující posloupnost příkazů. Chcete-li provést tuto operaci, musí být obor názvů již aktivní a uživatel s ovládacími příkazy prostředí PowerShell musí být uživatelem správce ve zdrojových i cílových předplatných.
+Pokud chcete pomocí PowerShellu přesunout obor názvů z jednoho předplatného Azure do jiného předplatného, použijte následující posloupnost příkazů. Aby bylo možné provést tuto operaci, musí být obor názvů již aktivní a uživatel, který spouští příkazy prostředí PowerShell, musí být uživatel s oprávněním správce na zdrojovém i cílovém předplatném.
 
 ```azurepowershell-interactive
 # Create a new resource group in the target subscription.
@@ -124,14 +124,14 @@ Move-AzResource -DestinationResourceGroupName 'targetRG' -DestinationSubscriptio
 ```
 
 ## <a name="troubleshooting"></a>Řešení potíží
-### <a name="what-are-some-of-the-exceptions-generated-by-azure-relay-apis-and-suggested-actions-you-can-take"></a>Jaké jsou některé výjimky generované Azure Relay API a navrhované akce, které můžete provést?
-Popis běžných výjimek a navrhovaných akcí, které můžete provést, naleznete v [tématu Předávání výjimek][Relay exceptions].
+### <a name="what-are-some-of-the-exceptions-generated-by-azure-relay-apis-and-suggested-actions-you-can-take"></a>Jaké jsou některé výjimky generované rozhraními API Azure Relay a doporučené akce, které můžete provést?
+Popis běžných výjimek a navrhovaných akcí, které můžete provést, najdete v tématu [výjimky přenosu][Relay exceptions].
 
-### <a name="what-is-a-shared-access-signature-and-which-languages-can-i-use-to-generate-a-signature"></a>Co je sdílený přístupový podpis a které jazyky lze použít ke generování podpisu?
-Sdílené přístupové podpisy (SAS) jsou mechanismus ověřování založený na zabezpečených hashech SHA-256 nebo identifikátorech URI. Informace o tom, jak generovat vlastní podpisy v Node.js, PHP, Pythonu, Javě, C a C#, najdete v [tématu Ověřování služby Service Bus se sdílenými přístupovými podpisy][Shared Access Signatures].
+### <a name="what-is-a-shared-access-signature-and-which-languages-can-i-use-to-generate-a-signature"></a>Co je sdílený přístupový podpis a které jazyky můžu použít k vygenerování podpisu?
+Sdílené přístupové podpisy (SAS) jsou mechanismy ověřování založené na zabezpečených hodnotách hash nebo identifikátorech URI SHA-256. Informace o tom, jak generovat vlastní signatury v Node. js, PHP, Pythonu, Java, C a C#, najdete v tématu [Service Bus ověřování pomocí sdílených přístupových podpisů][Shared Access Signatures].
 
-### <a name="is-it-possible-to-whitelist-relay-endpoints"></a>Je možné whitelist relé koncové body?
-Ano. Klient přenosu vytváří připojení ke službě Azure Relay pomocí plně kvalifikovaných názvů domén. Zákazníci mohou přidat `*.servicebus.windows.net` položku pro brány firewall, které podporují seznam povolených DNS.
+### <a name="is-it-possible-to-whitelist-relay-endpoints"></a>Je možné do seznamu povolených koncových bodů přenosu povolit?
+Ano. Předávací klient umožňuje připojení ke službě Azure Relay pomocí plně kvalifikovaných názvů domén. Zákazníci můžou přidat položku pro `*.servicebus.windows.net` na brány firewall, které podporují seznam povolených DNS.
 
 ## <a name="next-steps"></a>Další kroky
 * [Vytvoření oboru názvů](relay-create-namespace-portal.md)

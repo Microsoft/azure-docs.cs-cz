@@ -1,6 +1,6 @@
 ---
-title: Odstranění řešení Azure VMware pomocí privátního cloudu CloudSimple
-description: Popisuje, jak odstranit CloudSimple privátní cloud.
+title: Odstranění řešení Azure VMware pomocí CloudSimple privátního cloudu
+description: Popisuje postup odstranění privátního cloudu CloudSimple.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/06/2019
@@ -9,52 +9,52 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 6bc3e7030c500ea2d6072a1cce0f0b3d9fc62801
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77024751"
 ---
-# <a name="delete-a-cloudsimple-private-cloud"></a>Odstranění cloudového jednoduchého privátního cloudu
+# <a name="delete-a-cloudsimple-private-cloud"></a>Odstranění privátního cloudu CloudSimple
 
-CloudSimple poskytuje flexibilitu k odstranění privátního cloudu.  Privátní cloud se skládá z jednoho nebo více clusterů vSphere. Každý cluster může mít 3 až 16 uzlů. Když odstraníte privátní cloud, budou odstraněny všechny clustery.
+CloudSimple poskytuje flexibilitu pro odstranění privátního cloudu.  Privátní cloud se skládá z jednoho nebo více clusterů vSphere. Každý cluster může mít 3 až 16 uzlů. Při odstranění privátního cloudu se odstraní všechny clustery.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
-Odstranění majevku privátního cloudu odstraní celý privátní cloud.  Všechny součásti privátního cloudu budou odstraněny.  Pokud chcete zachovat některá data, ujistěte se, že jste zálohovali data do místního úložiště nebo úložiště Azure.
+Odstranění privátního cloudu odstraní celý privátní cloud.  Odstraní se všechny součásti privátního cloudu.  Pokud chcete zachovat všechna data, ujistěte se, že jste data zálohovali do místního úložiště nebo do úložiště Azure.
 
-Mezi součásti privátního cloudu patří:
+Mezi komponenty privátního cloudu patří:
 
-* CloudJednoduché uzly
-* Virtual Machines
+* Uzly CloudSimple
+* Virtuální počítače
 * Sítě VLAN a podsítě
 * Všechna uživatelská data uložená v privátním cloudu
-* Všechny přílohy pravidel brány firewall k síti VLAN/podsíti
+* Všechna příloha pravidla brány firewall k síti VLAN nebo podsíti
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k [https://portal.azure.com](https://portal.azure.com)portálu Azure na adrese .
+Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="delete-a-private-cloud"></a>Odstranění privátního cloudu
 
 1. [Přístup k portálu CloudSimple](access-cloudsimple-portal.md).
 
-2. Otevřete stránku **Zdroje.**
+2. Otevřete stránku **prostředky** .
 
-3. Klikněte na privátní cloud, který chcete odstranit
+3. Klikněte na privátní cloud, který chcete odstranit.
 
-4. Na stránce souhrnu klepněte na **tlačítko Odstranit**.
+4. Na stránce Souhrn klikněte na **Odstranit**.
 
-    ![Odstranění privátního cloudu](media/delete-private-cloud.png)
+    ![Odstranit privátní cloud](media/delete-private-cloud.png)
 
-5. Na stránce s potvrzením zadejte název privátního cloudu a klepněte na **tlačítko Odstranit**. 
+5. Na stránce potvrzení zadejte název privátního cloudu a klikněte na **Odstranit**. 
 
-    ![Odstranit privátní cloud - potvrdit](media/delete-private-cloud-confirm.png)
+    ![Odstranění privátního cloudu – potvrzení](media/delete-private-cloud-confirm.png)
 
-Privátní cloud je označen k odstranění.  Proces odstranění začíná po třech hodinách a odstraní privátní cloud.
+Privátní cloud je označený k odstranění.  Proces odstranění začíná tři hodiny a odstraní privátní cloud.
 
 > [!CAUTION]
-> Uzly musí být odstraněny po odstranění privátního cloudu.  Měření uzlů bude pokračovat, dokud se uzly neodstraní z vašeho předplatného.
+> Po odstranění privátního cloudu musí být uzly smazány.  Měření uzlů bude pokračovat v přenesení uzlů z vašeho předplatného.
 
 ## <a name="next-steps"></a>Další kroky
 

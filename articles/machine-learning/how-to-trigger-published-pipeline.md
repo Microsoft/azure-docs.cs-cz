@@ -1,7 +1,7 @@
 ---
-title: Aktivace spuštění kanálu ML z aplikace logiky
+title: Aktivovat spuštění kanálu ML z aplikace logiky
 titleSuffix: Azure Machine Learning
-description: Zjistěte, jak spustit kanál ML pomocí Azure Logic Apps.
+description: Naučte se aktivovat spuštění kanálu ML pomocí Azure Logic Apps.
 services: machine-learning
 author: sanpil
 ms.author: sanpil
@@ -11,21 +11,21 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.openlocfilehash: 6bb976b8b310fb3eb4d0247a8d745599f688d7b5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77122854"
 ---
-# <a name="trigger-a-run-of-a-machine-learning-pipeline-from-a-logic-app"></a>Aktivace spuštění kanálu Machine Learning z aplikace logiky
+# <a name="trigger-a-run-of-a-machine-learning-pipeline-from-a-logic-app"></a>Aktivovat spuštění kanálu Machine Learning z aplikace logiky
 
-Aktivujte spuštění kanálu Azure Machine Learning Pipeline, když se objeví nová data. Můžete například použít kanál pro trénování nového modelu, když se v účtu úložiště objektů blob zobrazí nová data. Nastavte aktivační událost pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md).
+Aktivovat spuštění kanálu Azure Machine Learning, když se zobrazí nová data Můžete například chtít, aby kanál aktivoval nový model při zobrazení nových dat v účtu BLOB Storage. Nastavte Trigger pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Pracovní prostor služby Azure Machine Learning. Další informace najdete [v tématu Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).
+* Pracovní prostor služby Azure Machine Learning. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).
 
-* Koncový bod REST pro publikovaný kanál machine learningu. [Vytvořte a publikujte kanál](how-to-create-your-first-pipeline.md). Pak vyhledejte koncový bod REST publikovaného kanálu pomocí ID kanálu:
+* Koncový bod REST pro publikovaný kanál Machine Learning. [Vytvořte a publikujte svůj kanál](how-to-create-your-first-pipeline.md). Pak vyhledejte koncový bod REST vašeho PublishedPipeline s použitím ID kanálu:
     
      ```
     # You can find the pipeline ID in Azure Machine Learning studio
@@ -33,46 +33,46 @@ Aktivujte spuštění kanálu Azure Machine Learning Pipeline, když se objeví 
     published_pipeline = PublishedPipeline.get(ws, id="<pipeline-id-here>")
     published_pipeline.endpoint 
     ```
-* [Úložiště objektů blob Azure](../storage/blobs/storage-blobs-overview.md) pro ukládání dat.
-* [Úložiště dat](how-to-access-data.md) ve vašem pracovním prostoru, které obsahuje podrobnosti o účtu úložiště objektů blob.
+* [Úložiště objektů BLOB v Azure](../storage/blobs/storage-blobs-overview.md) pro ukládání vašich dat.
+* [Úložiště dat](how-to-access-data.md) ve vašem pracovním prostoru, které obsahuje podrobné informace o vašem účtu úložiště objektů BLOB.
 
 ## <a name="create-a-logic-app"></a>Vytvoření aplikace logiky
 
-Teď vytvořte instanci [aplikace Azure Logic App.](../logic-apps/logic-apps-overview.md) Pokud chcete, [použijte prostředí služby integrace (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment.md) a [nastavte klíč spravovaný zákazníkem](../logic-apps/customer-managed-keys-integration-service-environment.md) pro použití v aplikaci logiky.
+Teď vytvořte instanci [Aplikace logiky Azure](../logic-apps/logic-apps-overview.md) . Pokud chcete, [použijte prostředí integračních služeb (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment.md) a [nastavte klíč spravovaný zákazníkem](../logic-apps/customer-managed-keys-integration-service-environment.md) pro použití vaší aplikace logiky.
 
-Po zřízení aplikace logiky nakonfigurujte aktivační událost pro váš kanál takto:
+Po zřízení aplikace logiky můžete pomocí těchto kroků nakonfigurovat aktivační událost pro svůj kanál:
 
-1. [Vytvořte systémem přiřazenou spravovanou identitu,](../logic-apps/create-managed-service-identity.md) která aplikaci poskytne přístup k vašemu pracovnímu prostoru Azure Machine Learning Workspace.
+1. [Vytvořte spravovanou identitu přiřazenou systémem](../logic-apps/create-managed-service-identity.md) , která aplikaci poskytne přístup k vašemu pracovní prostor Azure Machine Learning.
 
-1. Přejděte do zobrazení Návrháře aplikace logiky a vyberte šablonu Blank Logic App. 
+1. Přejděte do zobrazení návrháře aplikací logiky a vyberte šablonu prázdná aplikace logiky. 
     > [!div class="mx-imgBorder"]
     > ![Prázdná šablona](media/how-to-trigger-published-pipeline/blank-template.png)
 
-1. V Návrháři vyhledejte **objekt blob**. Vyberte při přidání **nebo změně objektu blob (pouze vlastnosti)** aktivační událost a přidejte tuto aktivační událost do aplikace logiky.
+1. V Návrháři vyhledejte **objekt BLOB**. Vyberte aktivační událost **při přidání nebo úpravě objektu BLOB (pouze vlastnosti)** a přidejte tuto aktivační událost do aplikace logiky.
     > [!div class="mx-imgBorder"]
     > ![Přidání triggeru](media/how-to-trigger-published-pipeline/add-trigger.png)
 
-1. Vyplňte informace o připojení pro účet úložiště objektů Blob, který chcete sledovat pro přidání nebo úpravy objektů blob. Vyberte kontejner, který chcete sledovat. 
+1. Zadejte informace o připojení pro účet úložiště objektů blob, který chcete monitorovat pro doplňky nebo úpravy objektu BLOB. Vyberte kontejner, který chcete monitorovat. 
  
-    Zvolte **interval** a **frekvence,** chcete-li dotazovat na aktualizace, které vám budou fungovat.  
+    Vyberte **interval** a **frekvenci** dotazování na aktualizace, které pro vás budou fungovat.  
 
     > [!NOTE]
-    > Tato aktivační událost bude sledovat vybraný kontejner, ale nebude monitorovat podsložky.
+    > Tato aktivační událost bude monitorovat vybraný kontejner, ale nebude sledovat podsložky.
 
-1. Přidejte akci HTTP, která se spustí při zjištění nového nebo upraveného objektu blob. Vyberte **+ Nový krok**, pak vyhledejte a vyberte akci HTTP.
+1. Přidejte akci HTTP, která se spustí při zjištění nového nebo upravovaného objektu BLOB. Vyberte **+ Nový krok**, vyhledejte a vyberte akci HTTP.
 
   > [!div class="mx-imgBorder"]
-  > ![Hledat akci HTTP](media/how-to-trigger-published-pipeline/search-http.png)
+  > ![Vyhledat akci HTTP](media/how-to-trigger-published-pipeline/search-http.png)
 
   Ke konfiguraci akce použijte následující nastavení:
 
   | Nastavení | Hodnota | 
   |---|---|
   | Akce HTTP | POST |
-  | Identifikátor URI |koncový bod publikovaného kanálu, který jste našli jako [předpoklad](#prerequisites) |
+  | Identifikátor URI |koncový bod publikovaného kanálu, který jste našli jako [požadavek](#prerequisites) |
   | Režim ověřování | Spravovaná identita |
 
-1. Nastavte plán pro nastavení hodnoty všech [parametrů pipelineské datové cesty,](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-showcasing-datapath-and-pipelineparameter.ipynb) které můžete mít:
+1. Nastavte svůj plán tak, aby se nastavila hodnota libovolné [PipelineParametersy DataPath](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-showcasing-datapath-and-pipelineparameter.ipynb) , kterou jste mohli mít:
 
     ```json
     "DataPathAssignments": { 
@@ -87,9 +87,9 @@ Po zřízení aplikace logiky nakonfigurujte aktivační událost pro váš kan�
     },
     ```
 
-    Použijte `DataStoreName` přidaný do pracovního prostoru jako [předpoklad](#prerequisites).
+    Použijte jako `DataStoreName` [součást](#prerequisites), kterou jste přidali do svého pracovního prostoru.
      
     > [!div class="mx-imgBorder"]
-    > ![Nastavení protokolu HTTP](media/how-to-trigger-published-pipeline/http-settings.png)
+    > ![Nastavení HTTP](media/how-to-trigger-published-pipeline/http-settings.png)
 
-1. Vyberte **Uložit** a váš plán je nyní připraven.
+1. Vyberte **Uložit** a váš plán je teď připravený.

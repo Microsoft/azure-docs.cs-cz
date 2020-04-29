@@ -1,7 +1,7 @@
 ---
-title: Sledování mlflow pro experimenty ML
+title: MLflow sledování experimentů ML
 titleSuffix: Azure Machine Learning
-description: Nastavte MLflow s Azure Machine Learning pro protokolování metrik a artefaktů z modelů ML vytvořených v clusterech Databricks, místním prostředí nebo prostředí virtuálních počítače.
+description: Nastavte MLflow s Azure Machine Learning pro protokolování metrik a artefaktů z modelů ML vytvořených v clusterech datacihly, v místním prostředí nebo prostředí virtuálních počítačů.
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -12,44 +12,44 @@ ms.topic: conceptual
 ms.date: 02/03/2020
 ms.custom: seodec18
 ms.openlocfilehash: dce7db9fc508c70d79be62a7e97b3bf52a316b22
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76983694"
 ---
-# <a name="track-models-metrics-with-mlflow-and-azure-machine-learning-preview"></a>Sledování metrik modelů pomocí MLflow a Azure Machine Learning (preview)
+# <a name="track-models-metrics-with-mlflow-and-azure-machine-learning-preview"></a>Sledování metrik modelů pomocí MLflow a Azure Machine Learning (Preview)
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Tento článek ukazuje, jak povolit mlflow sledování URI a protokolování rozhraní API, souhrnně označované jako [Sledování MLflow](https://mlflow.org/docs/latest/quickstart.html#using-the-tracking-api), pro připojení experimentů MLflow a Azure Machine Learning. To vám umožní sledovat a protokolovat metriky experimentů a artefakty v [pracovním prostoru Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/concept-azure-machine-learning-architecture#workspaces). Pokud již používáte sledování mlflow pro experimenty, pracovní prostor poskytuje centralizované, zabezpečené a škálovatelné umístění pro ukládání trénovacích metrik a modelů.
+V tomto článku se dozvíte, jak povolit sledování identifikátorů URI a protokolovacího rozhraní API pro MLflow, označované jako [sledování MLflow](https://mlflow.org/docs/latest/quickstart.html#using-the-tracking-api), pro propojení MLflow experimentů a Azure Machine Learning. To umožňuje sledovat a protokolovat metriky a artefakty v [pracovním prostoru Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/concept-azure-machine-learning-architecture#workspaces). Pokud již pro vaše experimenty používáte sledování MLflow, pracovní prostor poskytuje centralizované, zabezpečené a škálovatelné umístění pro ukládání výukových metrik a modelů.
 
 <!--
 + Deploy your MLflow experiments as an Azure Machine Learning web service. By deploying as a web service, you can apply the Azure Machine Learning monitoring and data drift detection functionalities to your production models. 
 -->
 
-[MLflow](https://www.mlflow.org) je open source knihovna pro správu životního cyklu experimentů strojového učení. MLFlow Tracking je součástí MLflow, která zaznamenává a sleduje metriky trénovacího běhu a artefakty modelu bez ohledu na prostředí experimentu – místně v počítači, na vzdáleném výpočetním cíli, ve virtuálním počítači nebo v clusteru Azure Databricks. 
+[MLflow](https://www.mlflow.org) je open source knihovna pro správu životního cyklu experimentů ve strojovém učení. Sledování MLFlow je součást MLflow, která protokoluje a sleduje metriky běhu a artefakty modelu bez ohledu na to, jestli je vaše experimenty v místním počítači, ve vzdáleném cílovém výpočetním prostředí, virtuálním počítači nebo Azure Databricksm clusteru. 
 
-Následující diagram znázorňuje, že pomocí sledování MLflow můžete sledovat metriky spuštění experimentu a ukládat artefakty modelu v pracovním prostoru Azure Machine Learning.
+Následující diagram znázorňuje, že se sledováním MLflow sledujete metriky spuštění experimentu a artefakty modelu úložiště v pracovním prostoru Azure Machine Learning.
 
-![mlflow s diagramem azure machine learning](./media/how-to-use-mlflow/mlflow-diagram-track.png)
+![mlflow s diagramem Azure Machine Learning](./media/how-to-use-mlflow/mlflow-diagram-track.png)
 
 > [!TIP]
-> Informace v tomto dokumentu jsou určeny především pro datové vědce a vývojáře, kteří chtějí sledovat proces školení modelu. Pokud máte zájem o monitorování využití prostředků a událostí z Azure Machine Learning, jako jsou kvóty, dokončené spuštění školení nebo dokončená nasazení modelu, přečtěte si část [Monitorování Azure Machine Learning](monitor-azure-machine-learning.md).
+> Informace v tomto dokumentu jsou primárně určené pro odborníky přes data a vývojáře, kteří chtějí monitorovat proces školení modelu. Pokud jste správcem a chcete monitorovat využití prostředků a události z Azure Machine Learning, jako jsou kvóty, dokončené školicí běhy nebo dokončená nasazení modelu, přečtěte si téma [monitorování Azure Machine Learning](monitor-azure-machine-learning.md).
 
 ## <a name="compare-mlflow-and-azure-machine-learning-clients"></a>Porovnání klientů MLflow a Azure Machine Learning
 
- Níže uvedená tabulka shrnuje různé klienty, kteří můžou používat Azure Machine Learning a jejich příslušné funkce.
+ Níže uvedená tabulka shrnuje různé klienty, kteří můžou použít Azure Machine Learning a jejich příslušné funkce.
 
- Sledování mlflow nabízí funkce protokolování metrik a úložiště artefaktů, které jsou jinak dostupné jenom prostřednictvím sady [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
+ MLflow Tracking nabízí funkce protokolování metrik a úložiště artefaktů, které jsou k dispozici pouze v případě, že jsou k dispozici pouze v [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
 
 
-| | Sledování mlflow&nbsp; <!--& Deployment--> | Azure Machine Learning Python SDK |  Azure Machine Learning CLI | Azure Machine Learning Studio|
+| | Sledování&nbsp;MLflow <!--& Deployment--> | Azure Machine Learning Python SDK |  Azure Machine Learning CLI | Azure Machine Learning Studio|
 |---|---|---|---|---|
-| Správa pracovního prostoru |   | ✓ | ✓ | ✓ |
+| Spravovat pracovní prostor |   | ✓ | ✓ | ✓ |
 | Použití úložišť dat  |   | ✓ | ✓ | |
 | Metriky protokolu      | ✓ | ✓ |   | |
-| Nahrávání artefaktů | ✓ | ✓ |   | |
+| Nahrání artefaktů | ✓ | ✓ |   | |
 | Zobrazit metriky     | ✓ | ✓ | ✓ | ✓ |
 | Správa výpočetních služeb   |   | ✓ | ✓ | ✓ |
 
@@ -59,26 +59,26 @@ Následující diagram znázorňuje, že pomocí sledování MLflow můžete sle
 -->
 ## <a name="prerequisites"></a>Požadavky
 
-* [Nainstalujte mlflow.](https://mlflow.org/docs/latest/quickstart.html)
-* [Nainstalujte azure machine learning sdk](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) na místní počítač Sada SDK poskytuje připojení pro MLflow pro přístup k vašemu pracovnímu prostoru.
+* [Nainstalujte MLflow.](https://mlflow.org/docs/latest/quickstart.html)
+* [Nainstalujte sadu Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) do místního počítače, kterou sada SDK poskytuje pro přístup k vašemu pracovnímu prostoru pro MLflow.
 * [Vytvořte pracovní prostor Azure Machine Learning](how-to-manage-workspace.md).
 
-## <a name="track-local-runs"></a>Sledovat místní spuštění
+## <a name="track-local-runs"></a>Sledovat místní běhy
 
-Sledování MLflow pomocí Azure Machine Learning umožňuje ukládat zaznamenané metriky a artefakty z místních spuštění do pracovního prostoru Azure Machine Learning.
+MLflow sledování pomocí Azure Machine Learning umožňuje ukládat protokolované metriky a artefakty z místních běhů do pracovního prostoru Azure Machine Learning.
 
-Nainstalujte `azureml-mlflow` balíček, abyste pomocí funkce Sledování MLflow s Azure Machine Learning používali experimenty místně spuštěné v poznámkovém bloku Jupyter nebo editoru kódu.
+Nainstalujte `azureml-mlflow` balíček, aby používal sledování MLflow s Azure Machine Learning v pokusůch místně spuštěné v editoru Jupyter notebook nebo kódu.
 
 ```shell
 pip install azureml-mlflow
 ```
 
 >[!NOTE]
->Obor názvů azureml.contrib se často mění, protože pracujeme na zlepšení služby. Jako takové by mělo být cokoli v tomto oboru názvů považováno za náhled a nebylo plně podporováno společností Microsoft.
+>Obor názvů AzureML. contrib se často mění, protože budeme spolupracovat na vylepšení služby. V takovém případě by se cokoli v tomto oboru názvů měly považovat za verzi Preview a společnost Microsoft je plně Nepodporovaná.
 
-Importujte `mlflow` [`Workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py) třídy a pro přístup k měřicímu uri technologie MLflow a nakonfigurujte pracovní prostor.
+Importujte třídy `mlflow` a [`Workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py) a získejte přístup k identifikátoru URI sledování MLflow a nakonfigurujte svůj pracovní prostor.
 
-V následujícím kódu `get_mlflow_tracking_uri()` metoda přiřadí pracovnímu prostoru `ws`jedinečnou adresu `set_tracking_uri()` URI sledování a na tuto adresu nařídí identifikátor URI sledování mlflow.
+V následujícím kódu `get_mlflow_tracking_uri()` metoda přiřadí k pracovnímu prostoru `ws`jedinečnou adresu identifikátoru URI sledování a `set_tracking_uri()` odkazuje na adresu URI sledování MLflow na tuto adresu.
 
 ```Python
 import mlflow
@@ -90,9 +90,9 @@ mlflow.set_tracking_uri(ws.get_mlflow_tracking_uri())
 ```
 
 >[!NOTE]
->Identifikátor URI pro sledování je platný až hodinu nebo méně. Pokud restartujete skript po určité době nečinnosti, použijte get_mlflow_tracking_uri rozhraní API získat nový identifikátor URI.
+>Identifikátor URI sledování je platný až do hodin nebo méně. Pokud po nějaké době nečinnosti svůj skript restartujete, použijte rozhraní get_mlflow_tracking_uri API k získání nového identifikátoru URI.
 
-Nastavte název experimentu MLflow s `set_experiment()` a `start_run()`spusťte tréninkový běh s . Pak `log_metric()` použijte k aktivaci rozhraní API protokolování MLflow a začněte protokolovat metriky spuštění školení.
+Nastavte název experimentu MLflow pomocí `set_experiment()` a spusťte školicí běh s `start_run()`. Pak použijte `log_metric()` k aktivaci rozhraní API pro protokolování MLflow a zahajte protokolování metriky pro školicí běh.
 
 ```Python
 experiment_name = 'experiment_with_mlflow'
@@ -102,13 +102,13 @@ with mlflow.start_run():
     mlflow.log_metric('alpha', 0.03)
 ```
 
-## <a name="track-remote-runs"></a>Sledování vzdálených spuštění
+## <a name="track-remote-runs"></a>Sledovat vzdálené běhy
 
-Sledování MLflow pomocí Azure Machine Learning umožňuje ukládat zaznamenané metriky a artefakty ze vzdálených spuštění do pracovního prostoru Azure Machine Learning.
+MLflow sledování pomocí Azure Machine Learning umožňuje ukládat protokolované metriky a artefakty ze vzdálených běhů do pracovního prostoru Azure Machine Learning.
 
-Vzdálené spuštění umožňují trénovat vaše modely na výkonnějšívýpočetní výkony, jako jsou virtuální počítače s podporou GPU nebo clustery Machine Learning Compute. Informace o různých možnostech výpočetních výkonů najdete v tématu [Nastavení výpočetních cílů pro trénování modelu.](how-to-set-up-training-targets.md)
+Vzdálené spuštění vám umožní naučit vaše modely s výkonnějšími výpočetními prostředky, jako jsou virtuální počítače s podporou GPU nebo Výpočetní prostředky služby Machine Learning clustery. Další informace o různých možnostech výpočtů najdete v tématu [nastavení cílových výpočetních prostředků pro školení modelů](how-to-set-up-training-targets.md) .
 
-Nakonfigurujte prostředí výpočetního a trénovacího běhu pomocí třídy. [`Environment`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py) Zahrnout `mlflow` `azureml-mlflow` a pip balíčky [`CondaDependencies`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py) v části prostředí. Pak [`ScriptRunConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.script_run_config.scriptrunconfig?view=azure-ml-py) se stavějte pomocí vzdáleného výpočetního výkonu jako výpočetního cíle.
+Proveďte konfiguraci prostředí COMPUTE a školicího běhu s [`Environment`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py) třídou. Balíčky `mlflow` zahrnutí `azureml-mlflow` a PIP v [`CondaDependencies`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py) oddílu prostředí. Pak se [`ScriptRunConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.script_run_config.scriptrunconfig?view=azure-ml-py) pomocí vzdálených výpočtů vystavíte jako cíl výpočtů.
 
 ```Python
 from azureml.core.environment import Environment
@@ -130,7 +130,7 @@ src.run_config.target = 'my-remote-compute-compute'
 src.run_config.environment = mlflow_env
 ```
 
-V trénovacím `mlflow` skriptu importujte, abyste použili api protokolování MLflow, a začněte protokolovat metriky spuštění.
+V školicím skriptu proveďte import `mlflow` tak, aby používal rozhraní API pro protokolování MLflow, a spusťte protokolování metriky spuštění.
 
 ```Python
 import mlflow
@@ -139,35 +139,35 @@ with mlflow.start_run():
     mlflow.log_metric('example', 1.23)
 ```
 
-S tímto výpočetním a `Experiment.submit('train.py')` trénovacím spuštěním použijte metodu k odeslání spuštění. Tato metoda automaticky nastaví identifikátor URI sledování mlflow a přesměruje protokolování z MLflow do pracovního prostoru.
+Pomocí této výpočetní a školicí konfigurace spuštění použijte `Experiment.submit('train.py')` metodu pro odeslání běhu. Tato metoda automaticky nastaví identifikátor URI sledování MLflow a přesměruje protokolování z MLflow do vašeho pracovního prostoru.
 
 ```Python
 run = exp.submit(src)
 ```
 
-## <a name="track-azure-databricks-runs"></a>Sledování azure datových cihel běží
+## <a name="track-azure-databricks-runs"></a>Sledování spuštění Azure Databricks
 
-Sledování MLflow pomocí Azure Machine Learning umožňuje ukládat zaznamenané metriky a artefakty z vašich Datových cihel Azure, které běží ve vašem pracovním prostoru Azure Machine Learning.
+MLflow sledování pomocí Azure Machine Learning umožňuje ukládat protokolované metriky a artefakty z Azure Databricks se spouští v pracovním prostoru Azure Machine Learning.
 
-Chcete-li spouštět experimenty MLFLOW s Azure Databricks, musíte nejprve vytvořit [pracovní prostor Azure Databricks a cluster](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal). Ve vašem clusteru nezapomeňte nainstalovat knihovnu *azureml-mlflow* z PyPi, abyste zajistili, že váš cluster má přístup k potřebným funkcím a třídám.
+Chcete-li spustit Mlflow experimenty s Azure Databricks, je třeba nejprve vytvořit [pracovní prostor Azure Databricks a cluster](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal). V clusteru nezapomeňte nainstalovat knihovnu *AzureML-mlflow* z PyPi, abyste zajistili, že má cluster přístup k potřebným funkcím a třídám.
 
-Tady importujte poznámkový blok experimentu, připojte ho ke clusteru Azure Databricks a spusťte experiment. 
+Odtud importujte Poznámkový blok experimentů, připojte ho ke clusteru Azure Databricks a spusťte experiment. 
 
-### <a name="install-libraries"></a>Instalace knihoven
+### <a name="install-libraries"></a>Instalovat knihovny
 
-Pokud chcete do clusteru nainstalovat knihovny, přejděte na kartu **Knihovny** a klikněte na **Instalovat nové.**
+Pokud chcete do clusteru nainstalovat knihovny, přejděte na kartu **knihovny** a klikněte na **instalovat nové** .
 
- ![mlflow s diagramem azure machine learning](./media/how-to-use-mlflow/azure-databricks-cluster-libraries.png)
+ ![mlflow s diagramem Azure Machine Learning](./media/how-to-use-mlflow/azure-databricks-cluster-libraries.png)
 
-Do pole **Balíček** zadejte azureml-mlflow a klikněte na tlačítko Instalovat. Tento krok podle potřeby opakujte a nainstalujte další další balíčky do clusteru pro experiment.
+Do pole **balíček** zadejte AzureML-mlflow a pak klikněte na nainstalovat. Opakujte tento krok, jak je potřeba k instalaci dalších dalších balíčků do clusteru pro váš experiment.
 
- ![mlflow s diagramem azure machine learning](./media/how-to-use-mlflow/install-libraries.png)
+ ![mlflow s diagramem Azure Machine Learning](./media/how-to-use-mlflow/install-libraries.png)
 
 ### <a name="set-up-your-notebook-and-workspace"></a>Nastavení poznámkového bloku a pracovního prostoru
 
-Po nastavení clusteru importujte poznámkový blok experimentu, otevřete ho a připojte k němu cluster.
+Po nastavení clusteru importujte Poznámkový blok experimentu, otevřete ho a připojte k němu svůj cluster.
 
-Následující kód by měl být v poznámkovém bloku experimentu. Tento kód získá podrobnosti o předplatném Azure k vytvoření instance vašeho pracovního prostoru. Tento kód předpokládá, že máte existující skupinu prostředků a pracovní prostor Azure Machine Learning, jinak je můžete [vytvořit](how-to-manage-workspace.md). 
+Následující kód by měl být v poznámkovém bloku experimentu. Tento kód získá podrobné informace o vašem předplatném Azure, aby se vytvořila instance pracovního prostoru. Tento kód předpokládá, že máte existující skupinu prostředků a Azure Machine Learning pracovní prostor, jinak je můžete [vytvořit](how-to-manage-workspace.md). 
 
 ```python
 import mlflow
@@ -192,37 +192,37 @@ ws = Workspace.get(name=workspace_name,
                    resource_group=resource_group)
 ```
 
-#### <a name="connect-your-azure-databricks-and-azure-machine-learning-workspaces"></a>Propojení pracovních prostorů Azure Databricks a Azure Machine Learning
+#### <a name="connect-your-azure-databricks-and-azure-machine-learning-workspaces"></a>Připojení pracovních prostorů Azure Databricks a Azure Machine Learning
 
-Na [portálu Azure](https://ms.portal.azure.com)můžete propojit pracovní prostor Azure Databricks (ADB) s novým nebo existujícím pracovním prostorem Azure Machine Learning. Chcete-li tak učinit, přejděte do pracovního prostoru ADB a vyberte tlačítko **propojit Azure Machine Learning pracovního prostoru** v pravém dolním rohu. Propojení pracovních prostorů umožňuje sledovat data experimentu v pracovním prostoru Azure Machine Learning. 
+V [Azure Portal](https://ms.portal.azure.com)můžete pracovní prostor Azure DATABRICKS (ADB) propojit s novým nebo existujícím Azure Machine Learning pracovním prostorem. Provedete to tak, že přejdete do svého pracovního prostoru ADB a v pravém dolním rohu vyberete tlačítko **propojit Azure Machine Learning pracovní prostor** . Propojení pracovních prostorů umožňuje sledovat data experimentů v pracovním prostoru Azure Machine Learning. 
 
-### <a name="link-mlflow-tracking-to-your-workspace"></a>Propojení sledování mlflow s pracovním prostorem
+### <a name="link-mlflow-tracking-to-your-workspace"></a>Propojení MLflow sledování s vaším pracovním prostorem
 
-Po vytvoření instance pracovního prostoru nastavte identifikátor URI sledování MLflow. Tímto způsobem propojíte sledování MLflow s pracovním prostorem Azure Machine Learning. Po propojení všechny vaše experimenty přistanou ve spravované službě sledování Azure Machine Learning.
+Po vytvoření instance pracovního prostoru nastavte identifikátor URI sledování MLflow. Provedete to tak, že propojíte sledování MLflow k pracovnímu prostoru Azure Machine Learning. Po propojování budou všechny experimenty na spravované službě sledování Azure Machine Learning.
 
-#### <a name="directly-set-mlflow-tracking-in-your-notebook"></a>Přímé nastavení sledování mlflow v poznámkovém bloku
+#### <a name="directly-set-mlflow-tracking-in-your-notebook"></a>Přímo nastavit sledování MLflow v poznámkovém bloku
 
 ```python
 uri = ws.get_mlflow_tracking_uri()
 mlflow.set_tracking_uri(uri)
 ```
 
-Ve školicím skriptu importujte mlflow, abyste použili api protokolování MLflow a začněte protokolovat metriky spuštění. V následujícím příkladu protokoly epocha ztráta metriky. 
+Ve školicím skriptu importujte mlflow a použijte rozhraní API pro protokolování MLflow a spusťte protokolování metriky spuštění. Následující příklad zaznamená metriku epocha ztrát. 
 
 ```python
 import mlflow 
 mlflow.log_metric('epoch_loss', loss.item()) 
 ```
 
-#### <a name="automate-setting-mlflow-tracking"></a>Automatizace nastavení sledování mlflow
+#### <a name="automate-setting-mlflow-tracking"></a>Automatizace nastavení sledování MLflow
 
-Místo ručního nastavení identifikátoru URI pro sledování v každé následující relaci poznámkového bloku experimentu v clusterech tak učiňte automaticky pomocí tohoto [skriptu Init clusteru sledování strojového učení Azure.](https://github.com/Azure/MachineLearningNotebooks/blob/3ce779063b000e0670bdd1acc6bc3a4ee707ec13/how-to-use-azureml/azure-databricks/linking/README.md)
+Místo ručního nastavení sledovacího identifikátoru URI v každé následné relaci poznámkového bloku v clusterech to udělejte automaticky pomocí tohoto [Azure Machine Learning sledování skriptu init clusteru](https://github.com/Azure/MachineLearningNotebooks/blob/3ce779063b000e0670bdd1acc6bc3a4ee707ec13/how-to-use-azureml/azure-databricks/linking/README.md).
 
-Při správné konfiguraci můžete zobrazit data sledování MLflow v rozhraní API REST Azure Machine Learning a ve všech klientech a v Azure Databricks prostřednictvím uživatelského rozhraní MLflow nebo pomocí klienta MLflow.
+Pokud je nakonfigurováno správně, můžete zobrazit data sledování MLflow v REST API Azure Machine Learning a všech klientech a v Azure Databricks prostřednictvím uživatelského rozhraní MLflow nebo pomocí klienta MLflow.
 
-## <a name="view-metrics-and-artifacts-in-your-workspace"></a>Zobrazení metrik a artefaktů v pracovním prostoru
+## <a name="view-metrics-and-artifacts-in-your-workspace"></a>Zobrazení metrik a artefaktů ve vašem pracovním prostoru
 
-Metriky a artefakty z protokolování MLflow jsou uloženy ve vašem pracovním prostoru. Chcete-li je kdykoli zobrazit, přejděte do pracovního prostoru a vyhledejte experiment podle názvu v pracovním prostoru ve [studiu Azure Machine Learning](https://ml.azure.com).  Nebo spusťte níže uvedený kód. 
+Metriky a artefakty z protokolování MLflow se uchovávají ve vašem pracovním prostoru. Pokud je chcete kdykoli zobrazit, přejděte do pracovního prostoru a v pracovním prostoru v [Azure Machine Learning Studiu](https://ml.azure.com)Najděte experiment podle názvu.  Nebo spusťte následující kód. 
 
 ```python
 run.get_metrics()
@@ -393,8 +393,8 @@ If you don't plan to use the logged metrics and artifacts in your workspace, the
 
  ## <a name="example-notebooks"></a>Ukázkové poznámkové bloky
 
-[MLflow s poznámkovými bloky Azure ML](https://aka.ms/azureml-mlflow-examples) demonstrovat a rozšířit na koncepty uvedené v tomto článku.
+[MLflow s poznámkovým blokům Azure ml](https://aka.ms/azureml-mlflow-examples) ukazují a rozšiřují koncepty prezentované v tomto článku.
 
 ## <a name="next-steps"></a>Další kroky
 * [Spravujte své modely](concept-model-management-and-deployment.md).
-* Sledujte produkční modely pro [posun dat](how-to-monitor-data-drift.md).
+* Monitorujte v produkčních modelech [přenos dat](how-to-monitor-data-drift.md).

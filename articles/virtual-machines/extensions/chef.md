@@ -1,6 +1,6 @@
 ---
-title: Rozšíření chef pro virtuální počítače Azure
-description: Nasazení klienta chef do virtuálního počítače pomocí rozšíření virtuálního počítače chef.
+title: Rozšíření pro Azure pro virtuální počítače Azure
+description: Nasaďte do virtuálního počítače klienta systému pro nasazení pomocí rozšíření virtuálního počítače.
 services: virtual-machines-linux
 documentationcenter: ''
 author: axayjo
@@ -14,29 +14,29 @@ ms.topic: article
 ms.date: 09/21/2018
 ms.author: akjosh
 ms.openlocfilehash: a21b8f2fea7433e9f65fd790321a28ea47a38c79
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76544714"
 ---
-# <a name="chef-vm-extension-for-linux-and-windows"></a>Rozšíření virtuálního počítače Chef pro Linux a Windows
+# <a name="chef-vm-extension-for-linux-and-windows"></a>Rozšíření VM VM pro Linux a Windows
 
-Software Chef poskytuje automatizační platformu DevOps pro Linux a Windows, která umožňuje současnou správu fyzických i virtuálních serverových konfigurací. Rozšíření virtuálního počítače Chef je rozšíření, které umožňuje chef na virtuálních počítačích.
+Software Chef poskytuje automatizační platformu DevOps pro Linux a Windows, která umožňuje současnou správu fyzických i virtuálních serverových konfigurací. Rozšíření VM VM je rozšíření, které umožňuje pro virtuální počítače službu pro vypínání.
 
 ## <a name="prerequisites"></a>Požadavky
 
 ### <a name="operating-system"></a>Operační systém
 
-Rozšíření virtuálního počítače Chef je podporované ve všech [rozšíření podporovaných operačních systémů](https://support.microsoft.com/help/4078134/azure-extension-supported-operating-systems) v Azure.
+Rozšíření virtuálního počítače pro systém saďte je podporované ve všech [podporovaných operačních systémech pro rozšíření](https://support.microsoft.com/help/4078134/azure-extension-supported-operating-systems) v Azure.
 
 ### <a name="internet-connectivity"></a>Připojení k internetu
 
-Rozšíření virtuálního počítače Chef vyžaduje, aby cílový virtuální počítač je připojen k internetu za účelem načtení chef klienta datové části ze sítě pro doručování obsahu (CDN).  
+Rozšíření virtuálních počítačů pro virtuální počítače vyžaduje, aby byl cílový virtuální počítač připojený k Internetu, aby bylo možné načíst datovou část klienta v rámci služby Content Delivery Network (CDN).  
 
 ## <a name="extension-schema"></a>Schéma rozšíření
 
-Následující JSON zobrazuje schéma pro rozšíření virtuálního počítači chef. Rozšíření vyžaduje minimálně adresu URL serveru chef, název ověřovacího klienta a ověřovací klíč pro server chef; Tyto hodnoty lze nalézt `knife.rb` v souboru v starter-kit.zip, který je stažen při instalaci [Chef Automate](https://azuremarketplace.microsoft.com/marketplace/apps/chef-software.chef-automate) nebo samostatný [Chef Server](https://downloads.chef.io/chef-server). Vzhledem k tomu, že ověřovací klíč by měl být považován za citlivá data, měl by být nakonfigurován pod elementem **protectedSettings,** což znamená, že bude dešifrovován pouze v cílovém virtuálním počítači.
+Následující JSON zobrazuje schéma rozšíření virtuálního počítače pro rozhraní. Přípona vyžaduje minimálně adresu URL serveru pro název klienta, název ověřovacího klienta a ověřovací klíč pro server s názvem. Tyto hodnoty najdete v `knife.rb` souboru na Starter-Kit. zip, který se stáhne při instalaci nástroje pro [automatizaci](https://azuremarketplace.microsoft.com/marketplace/apps/chef-software.chef-automate) nebo samostatného [serveru](https://downloads.chef.io/chef-server). Vzhledem k tomu, že ověřovací klíč by měl být považován za citlivá data, měl by být nakonfigurován v rámci elementu **protectedSettings** , což znamená, že bude pouze dešifrován v cílovém virtuálním počítači.
 
 ```json
 {
@@ -65,26 +65,26 @@ Následující JSON zobrazuje schéma pro rozšíření virtuálního počítač
 }  
 ```
 
-### <a name="core-property-values"></a>Základní hodnoty vlastností
+### <a name="core-property-values"></a>Hodnoty základních vlastností
 
-| Name (Název) | Hodnota / Příklad | Typ dat
+| Název | Hodnota/příklad | Typ dat
 | ---- | ---- | ----
 | apiVersion | `2017-12-01` | řetězec (datum) |
 | vydavatel | `Chef.Bootstrap.WindowsAzure` | řetězec |
 | type | `LinuxChefClient`(Linux), `ChefClient` (Windows) | řetězec |
-| typeHandlerVersion | `1210.13` | řetězec (dvojitý) |
+| typeHandlerVersion | `1210.13` | řetězec (Double) |
 
 ### <a name="settings"></a>Nastavení
 
-| Name (Název) | Hodnota / Příklad | Typ dat | Povinné?
+| Název | Hodnota/příklad | Typ dat | Povinné?
 | ---- | ---- | ---- | ----
-| nastavení/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | řetězec (url) | Ano |
+| nastavení/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | řetězec (URL) | Ano |
 | nastavení/bootstrap_options/validation_client_name | `myorg-validator` | řetězec | Ano |
 | nastavení/runlist | `recipe[mycookbook::default]` | řetězec | Ano |
 
 ### <a name="protected-settings"></a>Chráněná nastavení
 
-| Name (Název) | Příklad | Typ dat | Povinné?
+| Název | Příklad | Typ dat | Povinné?
 | ---- | ---- | ---- | ---- |
 | protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | řetězec | Ano |
 
@@ -102,15 +102,15 @@ Následující JSON zobrazuje schéma pro rozšíření virtuálního počítač
 
 ## <a name="template-deployment"></a>Nasazení šablon
 
-Rozšíření virtuálních počítačů Azure se můžou nasadit pomocí šablon Azure Resource Manageru. Šablony lze použít k nasazení jednoho nebo více virtuálních počítačů, instalaci klienta Chef, připojení k chef serveru a provedení počáteční konfigurace na serveru, jak je definováno [v seznamu Run-list](https://docs.chef.io/run_lists.html)
+Rozšíření virtuálních počítačů Azure je možné nasadit pomocí šablon Azure Resource Manager. Šablony lze použít k nasazení jednoho nebo více virtuálních počítačů, instalaci klienta systému saďte, připojení k serveru systému Deploy a provedení počáteční konfigurace na serveru, jak je definováno v [seznamu spuštění](https://docs.chef.io/run_lists.html) .
 
-Ukázka šablony Správce prostředků, která obsahuje rozšíření virtuálního počítače chef najdete v [galerii rychlého startu Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/chef-json-parameters-linux-vm).
+Ukázková šablona Správce prostředků, která obsahuje rozšíření VM VM, najdete v [galerii Azure pro rychlý Start](https://github.com/Azure/azure-quickstart-templates/tree/master/chef-json-parameters-linux-vm).
 
-Konfigurace JSON pro rozšíření virtuálního počítače může být vnořena uvnitř prostředku virtuálního počítače nebo umístěna na kořenové nebo nejvyšší úrovni šablony JSON správce prostředků. Umístění konfigurace JSON ovlivňuje hodnotu názvu a typu prostředku. Další informace naleznete v tématu [Nastavení názvu a typu podřízených prostředků](../../azure-resource-manager/resource-manager-template-child-resource.md).
+Konfiguraci JSON pro rozšíření virtuálního počítače můžete vnořit do prostředku virtuálního počítače nebo umístit na kořenovou nebo nejvyšší úroveň šablony Správce prostředků JSON. Umístění konfigurace JSON má vliv na hodnotu názvu a typu prostředku. Další informace najdete v tématu [Nastavení názvu a typu pro podřízené prostředky](../../azure-resource-manager/resource-manager-template-child-resource.md).
 
-## <a name="azure-cli-deployment"></a>Nasazení azure cli
+## <a name="azure-cli-deployment"></a>Nasazení Azure CLI
 
-Azure CLI slouží k nasazení rozšíření virtuálního počítače chef na existující virtuální počítač. Nahraďte **validation_key** obsahem ověřovacího klíče (tento soubor jako příponu). `.pem`  Nahraďte **validation_client_name**, **chef_server_url** a `knife.rb` **run_list** těmito hodnotami ze souboru ve startovací soupravě.
+Pomocí rozhraní příkazového řádku Azure můžete nasadit rozšíření virtuálních počítačů s virtuálním počítačem do existujícího virtuálního počítače. Nahraďte **validation_key** obsahem vašeho ověřovacího klíče (Tento soubor jako `.pem` rozšíření).  Hodnoty **validation_client_name**, **chef_server_url** a **run_list** nahraďte hodnotami ze `knife.rb` souboru v úvodní sadě.
 
 ```azurecli
 az vm extension set \
@@ -124,13 +124,13 @@ az vm extension set \
 
 ## <a name="troubleshooting-and-support"></a>Řešení potíží a podpora
 
-Data o stavu nasazení rozšíření lze načíst z portálu Azure a pomocí azure cli. Chcete-li zobrazit stav nasazení rozšíření pro daný virtuální počítač, spusťte následující příkaz pomocí příkazu Příkaz příkazu Azure.
+Data o stavu nasazení rozšíření lze načíst z Azure Portal a pomocí rozhraní příkazového řádku Azure CLI. Pokud chcete zobrazit stav nasazení rozšíření pro daný virtuální počítač, spusťte následující příkaz pomocí Azure CLI.
 
 ```azurecli
 az vm extension list --resource-group myResourceGroup --vm-name myExistingVM -o table
 ```
 
-Výstup spuštění rozšíření je zaznamenán do následujícího souboru:
+Výstup spuštění rozšíření se zaznamená do následujícího souboru:
 
 ### <a name="linux"></a>Linux
 
@@ -144,17 +144,17 @@ Výstup spuštění rozšíření je zaznamenán do následujícího souboru:
 C:\Packages\Plugins\Chef.Bootstrap.WindowsAzure.ChefClient\
 ```
 
-### <a name="error-codes-and-their-meanings"></a>Chybové kódy a jejich význam
+### <a name="error-codes-and-their-meanings"></a>Kódy chyb a jejich významy
 
 | Kód chyby | Význam | Možná akce |
 | :---: | --- | --- |
-| 51 | Toto rozšíření není podporováno v operačním systému virtuálního počítači. | |
+| 51 | Toto rozšíření není v operačním systému virtuálního počítače podporované. | |
 
-Další informace o řešení potíží naleznete v [readme rozšíření virtuálního viceprezidenta chef](https://github.com/chef-partners/azure-chef-extension).
+Další informace o řešení potíží najdete v [souboru Readme s rozšířením virtuálního počítače sady virtuálních počítačů](https://github.com/chef-partners/azure-chef-extension).
 
 > [!NOTE]
-> Chcete-li cokoli jiného, co přímo souvisí s chef, obraťte se na [podporu šéfkuchaře](https://www.chef.io/support/).
+> U cokoli jiného, co se přímo týká, kontaktujte [podporu](https://www.chef.io/support/)pro výrobce.
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud potřebujete další pomoc v libovolném bodě v tomto článku, můžete kontaktovat odborníky Azure na [Fóra MSDN Azure a přetečení zásobníku](https://azure.microsoft.com/support/forums/). Případně můžete soubor incidentu podpory Azure. Přejděte na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte Získat podporu. Informace o používání podpory Azure načtete v [nejčastějších dotazech k podpoře Microsoft Azure](https://azure.microsoft.com/support/faq/).
+Pokud potřebujete další podrobnější informace v jakémkoli bodě tohoto článku, můžete kontaktovat odborníky na Azure na [webu MSDN Azure a Stack Overflow fóra](https://azure.microsoft.com/support/forums/). Případně můžete zasouborovat incident podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte získat podporu. Informace o použití podpory Azure najdete v tématu [Nejčastější dotazy k podpoře pro Microsoft Azure](https://azure.microsoft.com/support/faq/).

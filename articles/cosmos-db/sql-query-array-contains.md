@@ -1,6 +1,6 @@
 ---
 title: ARRAY_CONTAINS v dotazovacím jazyce Azure Cosmos DB
-description: Informace o tom, jak pole obsahuje funkci systému SQL v Azure Cosmos DB vrátí logickou hodnotu označující, zda pole obsahuje zadanou hodnotu
+description: Přečtěte si, jak pole obsahuje funkci systému SQL v Azure Cosmos DB vrátí logickou hodnotu, která označuje, zda pole obsahuje zadanou hodnotu.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 47fe20888aa546e414b268b30c2e03580750a040
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78303473"
 ---
 # <a name="array_contains-azure-cosmos-db"></a>ARRAY_CONTAINS (Azure Cosmos DB)
-Vrátí logickou hodnotu označující, zda pole obsahuje zadanou hodnotu. Můžete zkontrolovat částečnou nebo úplnou shodu objektu pomocí logického výrazu v příkazu. 
+Vrátí logickou hodnotu, která označuje, zda pole obsahuje zadanou hodnotu. Můžete kontrolovat částečnou nebo úplnou shodu objektu pomocí logického výrazu v rámci příkazu. 
 
 ## <a name="syntax"></a>Syntaxe
   
@@ -26,21 +26,21 @@ ARRAY_CONTAINS (<arr_expr>, <expr> [, bool_expr])
 ## <a name="arguments"></a>Argumenty
   
 *arr_expr*  
-   Je pole výraz, který má být prohledán.  
+   Je výraz pole, který má být prohledán.  
   
-*Výraz*  
-   Je výraz, který má být nalezen.  
+*výrazu*  
+   Je výraz, který se má najít.  
 
 *bool_expr*  
-   Je logický výraz. Pokud je vyhodnocena jako 'true' a zadaná vyhledávací hodnota je objekt, příkaz zkontroluje částečnou shodu (vyhledávací objekt je podmnožinou jednoho z objektů). Pokud se vyhodnotí na 'false', příkaz zkontroluje úplnou shodu všech objektů v rámci pole. Výchozí hodnota, pokud není zadána, je false. 
+   Je logický výraz. Pokud se vyhodnotí jako true a zadaná Hledaná hodnota je objekt, příkaz zkontroluje částečnou shodu (objekt hledání je podmnožinou jednoho z objektů). Pokud se vyhodnotí jako false, příkaz zkontroluje úplnou shodu všech objektů v poli. Výchozí hodnota, pokud není zadána, je false. 
   
 ## <a name="return-types"></a>Návratové typy
   
-  Vrátí logickou hodnotu.  
+  Vrací logickou hodnotu.  
   
 ## <a name="examples"></a>Příklady
   
-  Následující příklad, jak zkontrolovat členství v `ARRAY_CONTAINS`poli pomocí .  
+  Následující příklad, jak kontrolovat členství v poli pomocí `ARRAY_CONTAINS`.  
   
 ```sql
 SELECT   
@@ -54,7 +54,7 @@ SELECT
 [{"b1": true, "b2": false}]  
 ```  
 
-Následující příklad, jak zkontrolovat částečnou shodu JSON v poli pomocí ARRAY_CONTAINS.  
+Následující příklad ukazuje, jak vyhledat částečnou shodu JSON v poli pomocí ARRAY_CONTAINS.  
   
 ```sql
 SELECT  
@@ -75,7 +75,7 @@ SELECT
 
 ## <a name="remarks"></a>Poznámky
 
-Tato systémová funkce bude mít prospěch z [indexu rozsahu](index-policy.md#includeexclude-strategy).
+Tato systémová funkce bude využívat výhod [indexu rozsahu](index-policy.md#includeexclude-strategy).
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,6 +1,6 @@
 ---
-title: Získávání dat a pochopení procesu týmové datové vědy
-description: Cíle, úkoly a výstupy pro fázi získávání dat a pochopení vašich projektů datových věd
+title: Získávání dat a porozumění vědeckému zpracování týmových dat
+description: Cíle, úkoly a dodávky pro získávání dat a porozumění fázích vašich projektů pro datové vědy
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,15 +12,15 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 3c299e9ec42d63812804b5ff7e50324a2de94200
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76720499"
 ---
-# <a name="data-acquisition-and-understanding-stage-of-the-team-data-science-process"></a>Fáze získávání a pochopení dat procesu teamových datových věd
+# <a name="data-acquisition-and-understanding-stage-of-the-team-data-science-process"></a>Získávání dat a porozumění fázi vědeckého zpracování týmových dat
 
-Tento článek popisuje cíle, úkoly a dodávky spojené s získávání dat a pochopení fáze procesu vědecké ho týmu dat (TDSP). Tento proces poskytuje doporučený životní cyklus, který můžete použít ke strukturování projektů datové vědy. Životní cyklus popisuje hlavní fáze, které projekty obvykle provádějí, často iterativně:
+Tento článek popisuje cíle, úlohy a dodávky, které jsou spojené s získáváním dat a porozumění fázím procesu vědeckého zpracování týmových dat (TDSP). Tento proces poskytuje doporučený životní cyklus, který můžete použít ke strukturování projektů pro vědu. Životní cyklus popisuje hlavní fáze, které se obvykle spouštějí projekty, často iterativní:
 
    1. **Principy podniku**
    2. **Získávání a pochopení dat**
@@ -28,51 +28,51 @@ Tento článek popisuje cíle, úkoly a dodávky spojené s získávání dat a 
    4. **Nasazení**
    5. **Přijetí zákazníky**
 
-Zde je vizuální znázornění životního cyklu TDSP: 
+Tady je vizuální znázornění životního cyklu TDSP: 
 
 ![Životní cyklus TDSP](./media/lifecycle/tdsp-lifecycle2.png) 
 
 
 ## <a name="goals"></a>Cíle
-* Vytvoří čistou, vysoce kvalitní datovou sadu, jejíž vztah k cílovým proměnným je chápán. Vyhledejte sadu dat v příslušném analytickém prostředí, abyste byli připraveni k modelování.
-* Vytvořte architekturu řešení datového kanálu, která data pravidelně aktualizuje a skóruje.
+* Vytvoří čistou a vysoce kvalitní datovou sadu, jejíž relace s cílovými proměnnými je srozumitelná. Vyhledejte datovou sadu v příslušném analytickém prostředí, abyste byli připraveni na model.
+* Vytvořte architekturu řešení datového kanálu, která aktualizuje data a pravidelně je zarovnává.
 
-## <a name="how-to-do-it"></a>Jak na to
-V této fázi jsou řešeny tři hlavní úkoly:
+## <a name="how-to-do-it"></a>Jak to provést
+V této fázi jsou řešeny tři hlavní úlohy:
 
-   * **Ingestujte data** do cílového analytického prostředí.
-   * **Prozkoumejte data** a zjistěte, zda je kvalita dat dostatečná pro odpověď na otázku. 
-   * **Nastavte datový kanál pro** skóre nových nebo pravidelně aktualizovaných dat.
+   * Ingestujte **data** do cílového analytického prostředí.
+   * **Prozkoumejte data** a zjistěte, jestli je kvalita dat dostačující pro odpověď na otázku. 
+   * **Nastavení datového kanálu** pro hodnocení nových nebo pravidelně aktualizovaných dat
 
 ### <a name="ingest-the-data"></a>Ingestování dat
-Nastavte proces přesunout data ze zdrojových umístění do cílových umístění, kde spustíte analytické operace, jako je školení a předpovědi. Technické podrobnosti a možnosti, jak přesunout data pomocí různých datových služeb Azure, najdete v [tématu Načítání dat do prostředí úložiště pro analýzy](ingest-data.md). 
+Nastavte proces přesunu dat ze zdrojových umístění do cílových umístění, kde spouštíte analytické operace, jako je například školení a předpovědi. Technické podrobnosti a možnosti, jak přesunout data s různými datovými službami Azure, najdete v tématu [načtení dat do prostředí úložiště pro analýzu](ingest-data.md). 
 
 ### <a name="explore-the-data"></a>Zkoumání dat
-Než budete trénovat své modely, musíte rozvíjet správné pochopení dat. Datové sady v reálném světě jsou často hlučné, chybí hodnoty nebo mají řadu dalších nesrovnalostí. Pomocí souhrnu dat a vizualizace můžete auditovat kvalitu dat a poskytnout informace potřebné ke zpracování dat, než budou připravena k modelování. Tento proces je často iterativní.
+Než začnete vytvářet své modely, je nutné vyvinout dobré znalosti dat. Reálné datové sady jsou často odolné proti chybám, neexistují žádné hodnoty nebo mají hostitele jiné nesrovnalosti. Souhrn a vizualizace dat můžete použít k auditování kvality vašich dat a poskytnutí informací, které potřebujete ke zpracování dat, než bude připravená k modelování. Tento proces je často iterativní.
 
-TDSP poskytuje automatizovaný nástroj s názvem [IDEAR](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/DataReport-Utils), který pomáhá vizualizovat data a připravit souhrnné sestavy dat. Doporučujeme začít s IDEAR nejprve prozkoumat data pomoci rozvíjet počáteční porozumění dat interaktivně bez kódování. Pak můžete napsat vlastní kód pro zkoumání dat a vizualizaci. Pokyny k čištění dat najdete v [tématu Úkoly připravit data pro rozšířené strojové učení](prepare-data.md).  
+TDSP poskytuje automatizovaný nástroj označovaný jako [myšlenku](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/DataReport-Utils), který vám umožní vizualizovat data a připravit sestavy souhrnu dat. Doporučujeme nejprve začít s nástrojem myšlenku a prozkoumat data, která vám pomůžou při interaktivním vývoji počátečních dat bez kódování. Pak můžete napsat vlastní kód pro zkoumání a vizualizaci dat. Pokyny k čištění dat najdete v tématu [úlohy pro přípravu dat pro rozšířené strojové učení](prepare-data.md).  
 
-Poté, co jste spokojeni s kvalitou vyčištěných dat, dalším krokem je lépe pochopit vzory, které jsou vlastní datům. Tato analýza dat vám pomůže vybrat a vyvinout vhodný prediktivní model pro váš cíl. Podívejte se na důkazy o tom, jak dobře jsou data připojena k cíli. Pak určete, zda je dostatek dat pro posun vpřed s další kroky modelování. Opět platí, že tento proces je často iterativní. Možná budete muset najít nové zdroje dat s přesnějšími nebo relevantnějšími údaji, abyste rozšířili sadu dat původně identifikovanou v předchozí fázi. 
+Až budete spokojení s kvalitou vyčištěných dat, je dalším krokem lepší porozumět vzorům, které jsou v těchto datech obsaženy. Tato analýza dat vám pomůže vybrat a vyvinout vhodný prediktivní model pro váš cíl. Vyhledejte důkaz, jak dobře připojená data jsou k cíli. Pak určete, zda je k dispozici dostatek dat pro přesun vpřed s dalšími kroky modelování. Tento proces je znovu často iterativní. Možná budete muset najít nové zdroje dat s přesnější nebo důležitějšími daty, abyste mohli rozšířit sadu dat původně identifikovanou v předchozí fázi. 
 
 ### <a name="set-up-a-data-pipeline"></a>Nastavení datového kanálu
-Kromě počátečního ingestování a čištění dat je obvykle nutné nastavit proces pro shromažďování nových dat nebo pravidelnou aktualizaci dat jako součást probíhajícího procesu učení. Vyhodnocování může být dokončeno datovým kanálem nebo pracovním postupem. Přesunout [data z místní instance SQL Serveru do Azure SQL Database s Azure Data Factory](move-sql-azure-adf.md) článek poskytuje příklad, jak nastavit kanál s Azure Data [Factory](https://azure.microsoft.com/services/data-factory/). 
+Kromě počátečního příjmu a čištění dat je obvykle potřeba nastavit proces, který bude vyhodnocovat nová data nebo pravidelně aktualizovat data v rámci probíhajícího výukového procesu. Bodování může být dokončeno s datovým kanálem nebo pracovním postupem. [Přesunutí dat z místní instance SQL Server do Azure SQL Database s Azure Data Factory](move-sql-azure-adf.md) článkem nabízí příklad nastavení kanálu s [Azure Data Factory](https://azure.microsoft.com/services/data-factory/). 
 
-V této fázi vyvíjíte architekturu řešení datového kanálu. Vývoj kanálu souběžně s další fází projektu datové vědy. V závislosti na vašich obchodních potřebách a omezeních stávajících systémů, do kterých je toto řešení integrováno, může být kanál jednou z následujících možností: 
+V této fázi vyvíjíte architekturu řešení datového kanálu. Kanál vyvíjíme paralelně s další fází projektu pro datové vědy. V závislosti na potřebách vaší firmy a omezeních stávajících systémů, do kterých je toto řešení integrováno, může kanál představovat jednu z následujících možností: 
 
-   * Na základě dávky
-   * Streamování nebo v reálném čase 
+   * Založený na dávce
+   * Streamování nebo reálný čas 
    * Hybridní 
 
 ## <a name="artifacts"></a>Artefakty
-V této fázi jsou uvedeny výstupy:
+V této fázi jsou následující dodávky:
 
-   * [Sestava kvality dat](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/DataSummaryReport.md): Tato sestava obsahuje souhrny dat, vztahy mezi jednotlivými atributy a cílem, pořadí proměnných a další. Nástroj [IDEAR](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/DataReport-Utils) poskytovaný jako součást protokolu TDSP může tuto sestavu rychle generovat v libovolné tabulkové datové sadě, například v souboru CSV nebo v relační tabulce. 
-   * **Architektura řešení**: Architektura řešení může být diagram nebo popis datového kanálu, který slouží ke spuštění vyhodnocování nebo předpovědi na nová data po vytvoření modelu. Obsahuje také kanál pro přeškolit model na základě nových dat. Při použití šablony struktury adresáře TDSP uložte dokument do adresáře [aplikace Project.](https://github.com/Azure/Azure-TDSP-ProjectTemplate/tree/master/Docs/Project)
-   * **Rozhodnutí kontrolního bodu**: Než začnete plně funkční inženýrství a vytváření modelů, můžete přehodnotit projekt k určení, zda očekávaná hodnota je dostatečná k pokračování jeho sledování. Můžete být například připraveni pokračovat, potřebujete shromáždit další data nebo projekt opustit, protože data neexistují, aby odpověděli na otázku.
+   * [Sestava kvality dat](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/DataSummaryReport.md): Tato sestava obsahuje souhrny dat, vztahy mezi jednotlivými atributy a cíli, hodnocení proměnných a další. Nástroj [designu](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/DataReport-Utils) , který je součástí TDSP, může rychle vygenerovat tuto sestavu na jakékoli tabulkové datové sadě, jako je třeba soubor CSV nebo relační tabulka. 
+   * **Architektura řešení**: Architektura řešení může být diagramem nebo popisem datového kanálu, který používáte ke spuštění bodování nebo předpovědi s novými daty po vytvoření modelu. Obsahuje také kanál, který umožňuje přeškolit model na základě nových dat. Uložte dokument do adresáře [projektu](https://github.com/Azure/Azure-TDSP-ProjectTemplate/tree/master/Docs/Project) , když použijete šablonu struktury adresáře TDSP.
+   * **Rozhodnutí kontrolního bodu**: než začnete pracovat s funkcemi a vytvářením modelů, můžete projekt znovu vyhodnotit, abyste zjistili, jestli je očekávaná hodnota dostačující pro pokračování v provádění. Můžete být například připravení pokračovat, potřebovat shromažďovat další data nebo opustit projekt, protože data neexistují pro zodpovězení otázky.
 
 ## <a name="next-steps"></a>Další kroky
 
-Zde jsou odkazy na každý krok v životním cyklu TDSP:
+Tady jsou odkazy na jednotlivé kroky v životním cyklu TDSP:
 
    1. [Principy podniku](lifecycle-business-understanding.md)
    2. [Získávání a pochopení dat](lifecycle-data.md)
@@ -80,6 +80,6 @@ Zde jsou odkazy na každý krok v životním cyklu TDSP:
    4. [Nasazení](lifecycle-deployment.md)
    5. [Přijetí zákazníky](lifecycle-acceptance.md)
 
-Poskytujeme úplné návody, které ukazují všechny kroky v procesu pro konkrétní scénáře. Ukázkový [článek obsahuje](walkthroughs.md) seznam scénářů s odkazy a popisy miniatur. Návody ilustrují, jak kombinovat cloud, místní nástroje a služby do pracovního postupu nebo kanálu k vytvoření inteligentní aplikace. 
+Poskytujeme kompletní návody, které ukazují všechny kroky v procesu pro konkrétní scénáře. Článek [příklad návodů](walkthroughs.md) obsahuje seznam scénářů s odkazy a popisy miniatur. Návody ukazují, jak zkombinovat cloudové, místní nástroje a služby do pracovního postupu nebo kanálu a vytvořit tak inteligentní aplikaci. 
 
-Příklady kroků v TDSP, které používají Azure Machine Learning Studio, najdete [v tématu Použití TDSP s Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/lifecycle-data).
+Příklady, jak provést kroky v TDSPs, které používají Azure Machine Learning Studio, naleznete v tématu [použití TDSP s Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/lifecycle-data).

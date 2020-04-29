@@ -1,6 +1,6 @@
 ---
 title: Vytvoření zdroje dat pro mapu | Mapy Microsoft Azure
-description: V tomto článku se dozvíte, jak vytvořit zdroj dat a přidat ho do mapy pomocí sady Microsoft Azure Maps Web SDK.
+description: V tomto článku se dozvíte, jak vytvořit zdroj dat a přidat ho k mapě pomocí webové sady SDK Microsoft Azure Maps.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 08/08/2019
@@ -10,36 +10,36 @@ services: azure-maps
 manager: cpendle
 ms.custom: codepen
 ms.openlocfilehash: 1675d63fd3a65beda46042f4a78535bb4e066e62
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77190234"
 ---
 # <a name="create-a-data-source"></a>Vytvoření zdroje dat
 
-Sada Azure Maps Web SDK ukládá data do zdrojů dat. Použití zdrojů dat optimalizuje operace dat pro dotazování a vykreslování. V současné době existují dva typy zdrojů dat:
+Sada Azure Maps Web SDK ukládá data do zdrojů dat. Použití zdrojů dat optimalizuje datové operace pro dotazování a vykreslování. V současné době existují dva typy zdrojů dat:
 
-**Zdroj dat GeoJSON**
+**Zdroj dat pro injson**
 
-Zdroj dat založený na GeoJSON načítají `DataSource` a ukládají data místně pomocí třídy. Data GeoJSON lze vytvořit ručně nebo vytvořit pomocí pomocné třídy v oboru názvů [atlas.data.](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data) Třída `DataSource` poskytuje funkce pro import místních nebo vzdálených souborů GeoJSON. Vzdálené soubory GeoJSON musí být hostovány v koncovém bodě s povolenými funkcemi CORs. Třída `DataSource` poskytuje funkce pro data bodů clustering. A data lze snadno přidat, odebrat `DataSource` a aktualizovat s třídou.
+Načtení zdroje dat založeného na bázi standardu JSON a uložení dat `DataSource` místně pomocí třídy. Data typu injson lze ručně vytvořit nebo vytvořit pomocí tříd pomocníka v oboru názvů [Atlas. data](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data) . `DataSource` Třída poskytuje funkce pro import místních nebo vzdálených souborů injson. Vzdálené soubory typu injson musí být hostované na koncovém bodu s povoleným CORs. `DataSource` Třída poskytuje funkce pro data bodu clusteringu. A data lze snadno přidat, odebrat a aktualizovat pomocí `DataSource` třídy.
 
 
 > [!TIP]
-> Řekněme, že chcete přepsat všechna `DataSource`data v . Pokud budete volat `clear` pak `add` funkce, mapa může re-render dvakrát, což může způsobit trochu zpoždění. Místo toho `setShapes` použijte funkci, která odstraní a nahradí všechna data ve zdroji dat a spustí pouze jedno opětovné vykreslení mapy.
+> Řekněme, že chcete přepsat všechna data v `DataSource`. Pokud provedete volání funkcí `clear` then `add` , mapa může znovu vykreslovat dvakrát, což může způsobit trochu zpoždění. Místo toho použijte `setShapes` funkci, která odebere a nahradí všechna data ve zdroji dat a aktivuje pouze jedno opakované vykreslování mapy.
 
 **Zdroj vektorové dlaždice**
 
-Zdroj vektorové dlaždice popisuje, jak získat přístup k vrstvě vektorové dlaždice. Pomocí třídy [VectorTileSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.vectortilesource) můžete vytvořit konkretizovat zdroj vektorové dlaždice. Vrstvy vektorových dlaždic jsou podobné vrstvám dlaždic, ale nejsou stejné. Vrstva dlaždic je rastrový obraz. Vrstvy vektorových dlaždic jsou komprimovaný soubor ve formátu PBF. Tento komprimovaný soubor obsahuje vektorová mapová data a jednu nebo více vrstev. Soubor může být vykreslen a stylizován na straně klienta na základě stylu každé vrstvy. Data ve vektorové dlaždici obsahují geografické prvky ve formě bodů, čar a polygonů. Použití vrstv y vektorových dlaždic namísto vrstev rastrových dlaždic má několik výhod:
+Zdroj vektorové dlaždice popisuje, jak přistupovat k vrstvě vektorové dlaždice. Použijte třídu [VectorTileSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.vectortilesource) k vytvoření instance zdroje vektorové dlaždice. Vrstvy vektorové dlaždice jsou podobné vrstvám dlaždic, ale nejsou stejné. Vrstva dlaždice je rastrový obrázek. Vrstvy vektorové dlaždice jsou komprimovaný soubor ve formátu PBF. Tento komprimovaný soubor obsahuje data vektorové mapy a jednu nebo více vrstev. Soubor lze vykreslit a stylovat na straně klienta na základě stylu jednotlivých vrstev. Data ve vektorové dlaždici obsahují geografické funkce ve formě bodů, čar a mnohoúhelníků. Je několik výhod používání vrstev vektorových dlaždic namísto vrstev rastrových dlaždic:
 
- - Velikost souboru vektorové dlaždice je obvykle mnohem menší než ekvivalentní rastrová dlaždice. Jako takové se používá menší šířka pásma. To znamená nižší latenci, rychlejší mapu a lepší uživatelské prostředí.
- - Vzhledem k tomu, že vektorové dlaždice jsou vykresleny na straně klienta, přizpůsobí se rozlišení zařízení, na které se zobrazují. Výsledkem je, že vykreslené mapy vypadají přesněji, s křišťálově čistými popisky.
- - Změna stylu dat ve vektorových mapách nevyžaduje opětovné stažení dat, protože nový styl lze použít na klienta. Naproti tomu změna stylu vrstvy rastrových dlaždic obvykle vyžaduje načtení dlaždic ze serveru a následné použití nového stylu.
- - Vzhledem k tomu, že data jsou doručována ve vektorové podobě, je k přípravě dat nutné méně zpracování na straně serveru. V důsledku toho mohou být novější data k dispozici rychleji.
+ - Velikost souboru vektorové dlaždice je obvykle mnohem menší než ekvivalentní rastrová dlaždice. V takovém případě se používá menší šířka pásma. Znamená nižší latenci, rychlejší mapu a lepší uživatelské prostředí.
+ - Vzhledem k tomu, že se na klientovi vykreslují vektorové dlaždice, přizpůsobuje se rozlišení zařízení, ve kterém se zobrazují. Výsledkem je, že vykreslené mapy jsou lépe definovány a s jasnými popisky.
+ - Změna stylu dat ve vektorových mapách nepotřebuje stahovat data znovu, protože nový styl lze použít na straně klienta. Naopak změna stylu vrstvy rastrového dlaždice obvykle vyžaduje načtení dlaždic ze serveru a následné použití nového stylu.
+ - Vzhledem k tomu, že data jsou doručena v vektorovém formátu, je pro přípravu dat vyžadováno méně zpracování na straně serveru. V důsledku toho je možné novější data zpřístupnit rychleji.
 
-Všechny hladiny, které používají `sourceLayer` vektorový zdroj, musí určit hodnotu.
+Všechny vrstvy, které používají vektorový zdroj, musí `sourceLayer` určovat hodnotu.
 
-Po vytvoření zdroje dat lze přidat do `map.sources` mapy prostřednictvím vlastnosti, která je [SourceManager](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.sourcemanager). Následující kód ukazuje, jak `DataSource` vytvořit a přidat do mapy.
+Po vytvoření se zdroje dat dají přidat do mapy prostřednictvím `map.sources` vlastnosti, která je [SourceManager](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.sourcemanager). Následující kód ukazuje, jak vytvořit `DataSource` a přidat ho do mapy.
 
 ```javascript
 //Create a data source and add it to the map.
@@ -47,19 +47,19 @@ var dataSource = new atlas.source.DataSource();
 map.sources.add(dataSource);
 ```
 
-Azure Maps dodržuje [specifikace Mapbox vektorové dlaždice](https://github.com/mapbox/vector-tile-spec), otevřený standard.
+Azure Maps dodržuje [specifikaci vektorové dlaždice Mapbox](https://github.com/mapbox/vector-tile-spec), což je otevřený standard.
 
-## <a name="connecting-a-data-source-to-a-layer"></a>Připojení zdroje dat k vrstvě
+## <a name="connecting-a-data-source-to-a-layer"></a>Připojení zdroje dat ke vrstvě
 
-Data jsou vykreslena na mapě pomocí vykreslovacích vrstev. Jeden zdroj dat může být odkazován jednou nebo více vrstvami vykreslování. Následující vrstvy vykreslování vyžadují zdroj dat:
+Data se vykreslují na mapě pomocí vrstev vykreslování. Na jeden zdroj dat může odkazovat jedna nebo více vrstev vykreslování. Následující vrstvy vykreslování vyžadují zdroj dat:
 
-- [Bublinová vrstva](map-add-bubble-layer.md) - vykresluje bodová data jako kruhy s měřítkem na mapě.
-- [Vrstva symbolů](map-add-pin.md) - vykresluje data bodů jako ikony nebo text.
-- [Vrstva tepelné mapy](map-add-heat-map-layer.md) - vykresluje bodová data jako teplotní mapu hustoty.
-- [Řádková vrstva](map-add-shape.md) - vykreslování čáry a nebo vykreslení obrysu polygonů. 
-- [Vrstva polygonu](map-add-shape.md) - vyplní oblast polyga plnou barvou nebo vzorem obrazu.
+- [Bublinová vrstva](map-add-bubble-layer.md) – vykreslí data bodu jako kružnice škálované na mapě.
+- [Symbolová vrstva](map-add-pin.md) – vykreslí data bodu jako ikony nebo text.
+- [Vrstva Heat mapy](map-add-heat-map-layer.md) – vykreslí data bodu jako Heat mapu hustoty.
+- [Spojnicová vrstva](map-add-shape.md) – vykreslí čáru a nebo vykreslí obrys mnohoúhelníků. 
+- [Mnohoúhelníková vrstva](map-add-shape.md) – vyplní oblast mnohoúhelníku plnou barvou nebo vzorkem obrázku.
 
-Následující kód ukazuje, jak vytvořit zdroj dat, přidat ho do mapy a připojit ho k bublinové vrstvě. A pak importujte data bodů GeoJSON ze vzdáleného umístění do zdroje dat. 
+Následující kód ukazuje, jak vytvořit zdroj dat, přidat ho do mapy a připojit ho k bublinové vrstvě. A pak importujte data bodu geografického JSON ze vzdáleného umístění do zdroje dat. 
 
 ```javascript
 //Create a data source and add it to the map.
@@ -73,20 +73,20 @@ map.layers.add(new atlas.layer.BubbleLayer(datasource));
 datasource.importDataFromUrl('https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.geojson');
 ```
 
-Existují další vrstvy vykreslování, které se nepřipojují k těmto zdrojům dat, ale přímo načítají data pro vykreslování. 
+Existují další vrstvy vykreslování, které se k těmto zdrojům dat nepřipojují, ale přímo načítají data pro vykreslování. 
 
-- [Vrstva obrazu](map-add-image-layer.md) - překryje jeden obraz v horní části mapy a sváže jeho rohy se sadou určených souřadnic.
-- [Vrstva dlaždic](map-add-tile-layer.md) - překrývá rastrovou vrstvu dlaždic v horní části mapy.
+- [Vrstva obrázku](map-add-image-layer.md) – překrývá jeden obrázek nad mapou a vytvoří vazby jeho rohů k sadě zadaných souřadnic.
+- [Vrstva dlaždice](map-add-tile-layer.md) – nadmnožinou vrstvu rastrového dlaždice nad mapou.
 
 ## <a name="one-data-source-with-multiple-layers"></a>Jeden zdroj dat s více vrstvami
 
-K jednomu zdroji dat lze připojit více vrstev. Existuje mnoho různých scénářů, ve kterých je tato možnost užitečná. Zvažte například scénář, ve kterém uživatel nakreslí mnohonožce. Měli bychom vykreslit a vyplnit oblast polygu, jak uživatel přidá body do mapy. Přidání stylizované čáry k obrysu mnohonožku usnadňuje zobrazení okrajů mnohonožku při natahování uživatele. Chcete-li pohodlně upravit jednotlivou pozici v polygu, můžeme nad každou pozici přidat rukojeť, jako je kolík nebo značka.
+K jednomu zdroji dat lze připojit více vrstev. Existuje mnoho různých scénářů, ve kterých je tato možnost užitečná. Zvažte například scénář, ve kterém uživatel nakreslí mnohoúhelník. Měli byste vykreslit a vyplnit mnohoúhelníkovou oblast, protože uživatel přidá body na mapu. Přidáním čáry se styly pro obrys mnohoúhelníku se usnadní zobrazení hran mnohoúhelníku, když uživatel kreslí. Abychom mohli pohodlně upravovat jednotlivé pozice v mnohoúhelníku, můžeme přidat popisovač, jako je kód PIN nebo značka, nad každou pozici.
 
-![Mapa zobrazující více vrstev vykreslování dat z jednoho zdroje dat](media/create-data-source-web-sdk/multiple-layers-one-datasource.png)
+![Mapování znázorňující více vrstev vykreslování dat z jednoho zdroje dat](media/create-data-source-web-sdk/multiple-layers-one-datasource.png)
 
-Ve většině mapovacích platforem byste potřebovali objekt polygonu, objekt čáry a špendlík pro každou pozici v polygu. Vzhledem k tomu, že polygon je upraven, budete muset ručně aktualizovat linku a kolíky, které se mohou rychle stát složitými.
+Ve většině platforem mapování byste potřebovali objekt mnohoúhelníku, objekt čáry a kód PIN pro každou pozici v mnohoúhelníku. Když se mnohoúhelník změní, budete muset ručně aktualizovat čáru a PIN kódy, které se můžou rychle stát složitou.
 
-S Azure Maps, vše, co potřebujete, je jeden polygon ve zdroji dat, jak je znázorněno v kódu níže.
+V Azure Maps je vše, co potřebujete, jediným mnohoúhelníkem ve zdroji dat, jak je znázorněno v následujícím kódu.
 
 ```javascript
 //Create a data source and add it to the map.
@@ -121,21 +121,21 @@ map.layers.add([polygonLayer, lineLayer, bubbleLayer]);
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o třídách a metodách použitých v tomto článku:
+Další informace o třídách a metodách, které se používají v tomto článku:
 
 > [!div class="nextstepaction"]
-> [Datasource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-maps-typescript-latest)
+> [Datového](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-maps-typescript-latest)
 
 > [!div class="nextstepaction"]
-> [Možnosti zdroje dat](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.datasourceoptions?view=azure-maps-typescript-latest)
+> [DataSourceOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.datasourceoptions?view=azure-maps-typescript-latest)
 
 > [!div class="nextstepaction"]
-> [Zdroj vektoru](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.vectortilesource?view=azure-maps-typescript-latest)
+> [VectorTileSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.vectortilesource?view=azure-maps-typescript-latest)
 
 > [!div class="nextstepaction"]
-> [Možnosti VectorTileSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.vectortilesourceoptions?view=azure-maps-typescript-latest)
+> [VectorTileSourceOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.vectortilesourceoptions?view=azure-maps-typescript-latest)
 
-Další ukázky kódu, které chcete přidat do map, naleznete v následujících článcích:
+Další ukázky kódu pro přidání do vašich map najdete v následujících článcích:
 
 > [!div class="nextstepaction"]
 > [Přidání místního okna](map-add-popup.md)
@@ -156,7 +156,7 @@ Další ukázky kódu, které chcete přidat do map, naleznete v následujícíc
 > [Přidání mnohoúhelníkové vrstvy](map-add-shape.md)
 
 > [!div class="nextstepaction"]
-> [Přidání tepelné mapy](map-add-heat-map-layer.md)
+> [Přidat Heat mapu](map-add-heat-map-layer.md)
 
 > [!div class="nextstepaction"]
 > [Ukázky kódu](https://docs.microsoft.com/samples/browse/?products=azure-maps)

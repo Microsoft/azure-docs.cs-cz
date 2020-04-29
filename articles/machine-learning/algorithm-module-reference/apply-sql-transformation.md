@@ -1,7 +1,7 @@
 ---
 title: Použití transformace SQL
 titleSuffix: Azure Machine Learning
-description: Zjistěte, jak použít modul Použít transformaci SQL v Azure Machine Learning ke spuštění dotazu SQLite na vstupních datových sadách k transformaci dat.
+description: Naučte se používat modul použití transformace SQL v Azure Machine Learning ke spuštění dotazu SQLite na vstupních datových sadách pro transformaci dat.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,57 +10,57 @@ author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
 ms.openlocfilehash: 2e44a4861e2522b766aab9c7151d76c471dd2d8c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76314534"
 ---
 # <a name="apply-sql-transformation"></a>Použití transformace SQL
 
-Tento článek popisuje modul Návrháře Azure Machine Learning (preview).
+Tento článek popisuje modul návrháře Azure Machine Learning (Preview).
 
-Pomocí modulu Použít transformaci SQL můžete:
+Pomocí modulu použít transformaci SQL můžete:
   
 -   Vytvořte tabulky pro výsledky a uložte datové sady do přenosné databáze.  
   
--   Proveďte vlastní transformace na datových typech nebo vytvořte agregace.  
+-   Proveďte vlastní transformace na datové typy nebo vytvořte agregace.  
   
--   Spusťte příkazy dotazu SQL k filtrování nebo změně dat a vrácení výsledků dotazu jako tabulky dat.  
+-   Spusťte příkazy dotazu SQL pro filtrování nebo změnu dat a vrácení výsledků dotazu jako tabulky dat.  
 
 > [!IMPORTANT]
-> Sql engine používaný v tomto modulu je **SQLite**. Další informace o syntaxi SQLite naleznete [v tématu SQL as Understood by SQLite](https://www.sqlite.org/index.html) pro další informace.  
+> Modul SQL použitý v tomto modulu je **SQLite**. Další informace o syntaxi SQLite naleznete v tématu [SQL, jak je popsáno ve službě SQLite](https://www.sqlite.org/index.html) , kde najdete další informace.  
 
-## <a name="how-to-configure-apply-sql-transformation"></a>Jak nakonfigurovat použít transformaci SQL  
+## <a name="how-to-configure-apply-sql-transformation"></a>Postup konfigurace použití transformace SQL  
 
-Modul může trvat až tři datové sady jako vstupy. Když odkazujete na datové sady připojené ke každému `t1`vstupnímu portu, musíte použít názvy , `t2`a `t3`. Číslo tabulky označuje index vstupního portu.  
+Modul může jako vstupy trvat až tři datové sady. Když odkazujete na datové sady připojené ke každému vstupnímu portu, musíte použít názvy `t1`, `t2`, a. `t3` Číslo tabulky označuje index vstupního portu.  
   
-Zbývající parametr je dotaz SQL, který používá syntaxi SQLite. Při zadávání více řádků do textového pole **SKRIPT SQL** použijte středník k ukončení každého příkazu. V opačném případě budou konce řádků převedeny na mezery.  
+Zbývající parametr je dotaz SQL, který používá syntaxi SQLite. Při zadávání více řádků v textovém poli **skript SQL** ukončete jednotlivé příkazy středníkem. V opačném případě jsou zalomení řádků převedeny na mezery.  
 
-Tento modul podporuje všechny standardní příkazy syntaxe SQLite. Seznam nepodporovaných výkazů naleznete v části [Technické poznámky.](#technical-notes)
+Tento modul podporuje všechny standardní příkazy syntaxe SQLite. Seznam nepodporovaných příkazů najdete v části [technické poznámky](#technical-notes) .
 
 ##  <a name="technical-notes"></a>Technické poznámky  
 
-Tato část obsahuje podrobnosti implementace, tipy a odpovědi na často kladené otázky.
+Tato část obsahuje podrobné informace o implementaci, tipy a odpovědi na nejčastější dotazy.
 
--   Vstup je vždy vyžadován na portu 1.  
+-   Na portu 1 je vždy vyžadován vstup.  
   
--   U identifikátorů sloupců, které obsahují mezeru nebo jiné speciální znaky, vždy uzavřete identifikátor sloupce `SELECT` do `WHERE` hranatých závorek nebo dvojitých uvozovek, když odkazujete na sloupec v klauzulích nebo.  
+-   U identifikátorů sloupců, které obsahují mezeru nebo jiné speciální znaky, vždy při odkazování na sloupec v klauzulích `SELECT` or `WHERE` uzavřete identifikátor sloupce do hranatých závorek nebo do dvojitých uvozovek.  
   
 ### <a name="unsupported-statements"></a>Nepodporované příkazy  
 
-Přestože SQLite podporuje velkou část standardu ANSI SQL, neobsahuje mnoho funkcí podporovaných komerčními relačními databázovými systémy. Další informace naleznete [v tématu SQL as Understood by SQLite](http://www.sqlite.org/lang.html). Při vytváření příkazů SQL také uvědomte následující omezení:  
+I když SQLite podporuje většinu standardu ANSI SQL, nezahrnuje mnoho funkcí podporovaných komerčními relačními databázovými systémy. Další informace najdete v tématu [SQL, jak rozumí SQLite](http://www.sqlite.org/lang.html). Při vytváření příkazů SQL si taky Pamatujte na následující omezení:  
   
-- SQLite používá dynamické psaní pro hodnoty, spíše než přiřazení typu ke sloupci jako ve většině relačních databázových systémů. Je slabě zadaný a umožňuje implicitní převod typu.  
+- SQLite používá dynamické zadání pro hodnoty namísto přiřazování typu do sloupce jako u většiny relačních databázových systémů. Je slabě typované a umožňuje implicitní převod typu.  
   
-- `LEFT OUTER JOIN`je implementována, ale není `RIGHT OUTER JOIN` nebo `FULL OUTER JOIN`.  
+- `LEFT OUTER JOIN`je implementován, ale ne `RIGHT OUTER JOIN` nebo `FULL OUTER JOIN`.  
 
-- Příkazy `RENAME TABLE` můžete `ADD COLUMN` použít `ALTER TABLE` a příkazy s příkazem, `DROP COLUMN`ale `ALTER COLUMN`jiné `ADD CONSTRAINT`klauzule nejsou podporovány, včetně , a .  
+- Příkazy `RENAME TABLE` a `ADD COLUMN` se dají použít spolu s `ALTER TABLE` příkazem, ale jiné klauzule nejsou podporované, `DROP COLUMN`včetně, `ALTER COLUMN`a. `ADD CONSTRAINT`  
   
-- Můžete vytvořit zobrazení v rámci SQLite, ale potom zobrazení jsou jen pro čtení. V zobrazení `DELETE`nelze `INSERT`spustit `UPDATE` příkaz , nebo příkaz. Můžete však vytvořit aktivační událost, která `DELETE` `INSERT`se `UPDATE` aktivuje při pokusu o , nebo v zobrazení a provést další operace v těle aktivační události.  
+- Můžete vytvořit zobrazení v rámci SQLite, ale zobrazení jsou až jen pro čtení. Nelze provést příkaz `DELETE`, `INSERT`nebo `UPDATE` v zobrazení. Můžete ale vytvořit Trigger, který se aktivuje při pokusu o `DELETE`spuštění `INSERT`, nebo `UPDATE` v zobrazení a provádění dalších operací v těle triggeru.  
   
 
-Kromě seznamu nepodporovaných funkcí poskytovaných na oficiálních stránkách SQLite, následující wiki poskytuje seznam dalších nepodporovaných funkcí: [SQLite - Nepodporované SQL](http://www2.sqlite.org/cvstrac/wiki?p=UnsupportedSql)  
+Kromě seznamu nepodporovaných funkcí poskytovaných na oficiálním webu SQLite je na následujícím wikiwebu uveden seznam dalších nepodporovaných funkcí: [SQLite – nepodporovaný SQL](http://www2.sqlite.org/cvstrac/wiki?p=UnsupportedSql)  
     
 ## <a name="next-steps"></a>Další kroky
 

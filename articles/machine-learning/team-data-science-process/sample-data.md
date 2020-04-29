@@ -1,6 +1,6 @@
 ---
-title: Ukázková data v různých umístěních úložiště Azure – proces vědecké ho vědeckého prostředí pro týmová data
-description: Ukázková data v kontejnerech objektů blob Azure, SQL Server a Hive tabulky snížit na menší, ale reprezentativní a lépe spravovatelné velikosti.
+title: Ukázková data v různých umístěních Azure Storage – vědecký proces týmového zpracování dat
+description: Ukázková data v kontejnerech objektů blob Azure, SQL Server a tabulkách podregistru, aby se snížila na menší, ale jenom se zástupcem a více spravovatelnými velikostmi.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,23 +12,23 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 22e91d50227fcb44c7b90478d76379c14161ae05
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76718599"
 ---
 # <a name="sample-data-in-azure-blob-containers-sql-server-and-hive-tables"></a><a name="heading"></a>Ukázková data v kontejnerech Azure Blob, na SQL Serveru a v tabulkách Hivu
 
-Následující články popisují, jak ukázkovat data uložená v jednom ze tří různých umístění Azure:
+Následující články popisují, jak vzorkovat data uložená v jednom ze tří různých umístění Azure:
 
-* [**Data kontejneru objektů blob Azure**](sample-data-blob.md) se vzorkují tak, že je stáhnete programově a pak je navzorkujete ukázkovým kódem Pythonu.
-* [**Data serveru SQL Server**](sample-data-sql-server.md) jsou vzorkována pomocí programovacího jazyka SQL i Pythonu. 
-* [**Data tabulky hive**](sample-data-hive.md) jsou vzorkována pomocí dotazů Hive.
+* [**Data kontejneru Azure Blob**](sample-data-blob.md) se navzorkují tak, že se budou stahovat programově a pak se z něho vyvzorkování pomocí ukázkového kódu Pythonu.
+* [**Data SQL Server**](sample-data-sql-server.md) jsou poukázkaovaná pomocí programovacího jazyka SQL i Pythonu. 
+* [**Data tabulky podregistru**](sample-data-hive.md) jsou poukázkaovaná pomocí dotazů na podregistry.
 
-Tato úloha vzorkování je krokem v [procesu vědecké vědy o týmových datech (TDSP).](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)
+Tento úkol vzorkování je krok v rámci [vědeckého zpracování týmových dat (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
 
 **Proč ukázková data?**
 
-Pokud je datová sada, kterou chcete analyzovat, velká, je obvykle vhodné data snížit na menší, ale reprezentativní a lépe zvládnutelnou velikost. Zmenšení velikosti může usnadnit pochopení dat, zkoumání a inženýring funkcí. Tato ukázková role v procesu Cortana Analytics je umožnit rychlé vytváření prototypů funkcí zpracování dat a modelů strojového učení.
+Pokud je datová sada, kterou plánujete analyzovat, rozsáhlá, je obvykle vhodné ji vyvzorkovat, aby se snížila na menší, ale jenom se zástupcem a více spravovatelnými velikostmi. Možnost může zjednodušit porozumění, průzkum a inženýry funkcí. Tato role vzorkování v procesu Cortana Analytics umožňuje rychlé vytváření prototypů funkcí pro zpracování dat a modelů strojového učení.
 

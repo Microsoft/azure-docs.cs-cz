@@ -1,6 +1,6 @@
 ---
-title: Řešení Azure VMware od CloudSimple – konfigurace sítě VPN mezi místním a privátním cloudem
-description: Popisuje, jak nakonfigurovat připojení VPN site-to-site nebo point-to-site mezi místní sítí a privátním cloudem CloudSimple.
+title: Řešení Azure VMware podle CloudSimple – konfigurace sítě VPN mezi místním a privátním cloudem
+description: V této části najdete popis postupu konfigurace připojení VPN typu Site-to-site nebo Point-to-site mezi vaší místní sítí a privátním cloudem CloudSimple.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/14/2019
@@ -9,112 +9,112 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: d000d8390375466232c7daac2a4a056ef424be79
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77087126"
 ---
 # <a name="configure-a-vpn-connection-to-your-cloudsimple-private-cloud"></a>Konfigurace připojení VPN k privátnímu cloudu CloudSimple
 
-Brány VPN umožňují připojení k síti CloudSimple z místní sítě a z klientského počítače vzdáleně.  V tomto článku najdete informace o nastavení bran VPN z portálu CloudSimple.  Připojení VPN mezi místní sítí a sítí CloudSimple poskytuje přístup k virtuálnímu centru a úlohám ve vašem privátním cloudu. CloudSimple podporuje brány VPN point-to-site i brány VPN site-to-site.
+Brány VPN vám umožňují připojit se k CloudSimple síti z místní sítě a z klientského počítače vzdáleně.  V tomto článku najdete informace o nastavení bran VPN Gateway z portálu CloudSimple.  Připojení VPN mezi vaší místní sítí a vaší sítí CloudSimple zajišťuje přístup k vCenter a úlohám ve vašem privátním cloudu. CloudSimple podporuje sítě VPN typu Point-to-site i brány VPN typu Site-to-site.
 
-## <a name="vpn-gateway-types"></a>Typy brány VPN
+## <a name="vpn-gateway-types"></a>Typy bran VPN
 
-* Připojení **VPN z bodu na místo** je nejjednodušší způsob, jak se připojit k privátnímu cloudu z počítače. Pro vzdálené připojení k privátnímu cloudu použijte připojení VPN z bodu na místo.
-* Připojení **VPN site-to-site** umožňuje nastavit úlohy privátního cloudu pro přístup k místním službám. Místní službu Active Directory můžete také použít jako zdroj identity pro ověřování v programu Private Cloud vCenter.  V současné době je podporován typ **VPN založený na zásadách.**
+* Připojení **VPN typu Point-to-site** je nejjednodušší způsob, jak se připojit k privátnímu cloudu z vašeho počítače. Použijte připojení VPN typu Point-to-site pro vzdálené připojení k privátnímu cloudu.
+* Připojení **VPN typu Site-to-site** umožňuje nastavit vaše úlohy privátního cloudu pro přístup k místním službám. K ověřování do vašeho privátního cloudu vCenter můžete použít také místní službu Active Directory jako zdroj identity.  V současné době je podporován typ **sítě VPN založený na zásadách** .
 
-V oblasti můžete vytvořit jednu bránu VPN site-to-site a jednu bránu VPN point-to-site.
+V oblasti můžete vytvořit jednu bránu VPN typu Site-to-site a jednu bránu VPN typu Point-to-site.
 
 ## <a name="point-to-site-vpn"></a>Point-to-site VPN
 
-Informace o vytvoření brány VPN bodu na web naleznete v [tématu Vytvoření brány VPN bodu na web](vpn-gateway.md#create-point-to-site-vpn-gateway).
+Pokud chcete vytvořit bránu VPN typu Point-to-site, přečtěte si téma [Vytvoření brány VPN typu Point-to-site](vpn-gateway.md#create-point-to-site-vpn-gateway).
 
-### <a name="connect-to-cloudsimple-using-point-to-site-vpn"></a>Připojení k CloudSimple pomocí technologie Point-to-Site VPN
+### <a name="connect-to-cloudsimple-using-point-to-site-vpn"></a>Připojení k CloudSimple pomocí sítě VPN typu Point-to-site
 
-Klient VPN je potřebný pro připojení k CloudSimple z vašeho počítače.  Stáhněte si [klienta OpenVPN](https://openvpn.net/community-downloads/) pro Windows nebo [Viskozitu](https://www.sparklabs.com/viscosity/download/) pro macOS a OS X.
+Klient VPN je potřebný pro připojení k CloudSimple z počítače.  Stáhněte si [klienta OpenVPN](https://openvpn.net/community-downloads/) pro Windows nebo [viskozitu](https://www.sparklabs.com/viscosity/download/) pro MacOS a OS X.
 
-1. Spusťte portál CloudSimple a vyberte **možnost Síť**.
-2. Vyberte **bránu VPN**.
-3. V seznamu bran VPN klikněte na bránu VPN point-to-site.
+1. Spusťte portál CloudSimple a vyberte **síť**.
+2. Vyberte **VPN Gateway**.
+3. V seznamu bran VPN klikněte na bránu VPN typu Point-to-site.
 4. Vyberte **Uživatelé**.
-5. Klikněte na **Stáhnout konfiguraci VPN**
+5. Klikněte na **Stáhnout konfiguraci sítě VPN** .
 
     ![Stažení konfigurace zařízení VPN](media/download-p2s-vpn-configuration.png)
 
-6. Import konfigurace v klientovi VPN
+6. Import konfigurace na klienta VPN
 
-    * Pokyny pro [import konfigurace v klientovi systému Windows](https://openvpn.net/vpn-server-resources/connecting-to-access-server-with-windows/#openvpn-open-source-openvpn-gui-program)
-    * Pokyny pro [import konfigurace v macOS nebo OS X](https://www.sparklabs.com/support/kb/article/getting-started-with-viscosity-mac/#creating-your-first-connection)
+    * Pokyny pro [Import konfigurace na klienta Windows](https://openvpn.net/vpn-server-resources/connecting-to-access-server-with-windows/#openvpn-open-source-openvpn-gui-program)
+    * Pokyny pro [Import konfigurace v MacOS nebo OS X](https://www.sparklabs.com/support/kb/article/getting-started-with-viscosity-mac/#creating-your-first-connection)
 
-7. Připojte se k bráně CloudSimple VPN.
+7. Připojte se k bráně VPN CloudSimple.
 
-Příklad níže ukazuje import připojení pomocí **Klienta viskozity**.
+Níže uvedený příklad ukazuje Import připojení pomocí **klienta viskozity**.
 
-#### <a name="import-connection-on-viscosity-client"></a>Import připojení na klienta Viskozity
+#### <a name="import-connection-on-viscosity-client"></a>Importovat připojení v klientovi viskozity
 
-1. Extrahujte obsah konfigurace VPN ze staženého souboru ZIP.
+1. Extrahuje obsah konfigurace sítě VPN ze staženého souboru. zip.
 
-2. Otevřete v počítači viskozitu.
+2. V počítači otevřete viskozitu.
 
-3. Klepněte **+** na ikonu a vyberte **importpřipojení** > **ze souboru**.
+3. Klikněte na **+** ikonu a vyberte **importovat připojení** > **ze souboru**.
 
-    ![Import konfigurace VPN ze souboru](media/import-p2s-vpn-config.png)
+    ![Importovat konfiguraci sítě VPN ze souboru](media/import-p2s-vpn-config.png)
 
-4. Vyberte konfigurační soubor OpenVPN (.ovpn) pro protokol, který chcete použít, a klepněte na tlačítko **Otevřít**.
+4. Vyberte konfigurační soubor OpenVPN (. ovpn) pro protokol, který chcete použít, a klikněte na **otevřít**.
 
     ![Síť VPN](media/import-p2s-vpn-config-choose-ovpn.png)
 
-Připojení se nyní zobrazí v nabídce Viskozita.
+Připojení se nyní zobrazí v nabídce viskozita.
 
 #### <a name="connect-to-the-vpn"></a>Připojte se k síti VPN.
 
-Chcete-li se připojit k VPN pomocí klienta Viscosity OpenVPN, vyberte připojení z nabídky. Ikona nabídky se aktualizuje, což znamená, že je navázáno připojení.
+Pokud se chcete připojit k síti VPN pomocí klienta viskozita OpenVPN, vyberte připojení z nabídky. Ikona nabídky se aktualizuje, aby označovala, že je připojení navázáno.
 
 ![Síť VPN](media/vis03.png)
 
 ### <a name="connecting-to-multiple-private-clouds"></a>Připojení k více privátním cloudům
 
-Připojení VPN bodu na místo řeší názvy DNS prvního privátního cloudu, který vytvoříte. Pokud chcete získat přístup k jiným privátním cloudům, je nutné aktualizovat server DNS v klientovi VPN.
+Připojení VPN typu Point-to-site řeší názvy DNS prvního privátního cloudu, který vytvoříte. Pokud chcete získat přístup k jiným privátním cloudům, musíte aktualizovat server DNS na svém klientovi VPN.
 
 1. Spusťte [portál CloudSimple](access-cloudsimple-portal.md).
 
-2. Přejděte do**privátního cloudu** **Resources** > a vyberte privátní cloud, ke kterému se chcete připojit.
+2. Přejděte na **prostředky** > **privátní cloudy** a vyberte privátní cloud, ke kterému se chcete připojit.
 
-3. Na stránce **Souhrn** privátního cloudu zkopírujte IP adresu IP serveru PRIVATE Cloud DNS v části **Základní informace**.
+3. Na stránce **Souhrn** v privátním cloudu zkopírujte IP adresu serveru DNS privátního cloudu v části **základní informace**.
 
-    ![Privátní cloudové servery DNS](media/private-cloud-dns-server.png)
+    ![Servery DNS privátního cloudu](media/private-cloud-dns-server.png)
 
-4. Klepněte pravým tlačítkem myši na ikonu Viskozity na hlavním panelu počítače a vyberte **položku Předvolby**.
+4. Klikněte pravým tlačítkem myši na ikonu viskozity v hlavním panelu systému a vyberte možnost **Předvolby**.
 
     ![Síť VPN](media/vis00.png)
 
-5. Vyberte připojení CloudSimple VPN.
+5. Vyberte připojení VPN CloudSimple.
 
     ![Připojení k síti VPN](media/viscosity-client.png)
 
-6. Kliknutím na **Upravit** změňte vlastnosti připojení.
+6. Klikněte na **Upravit** a změňte vlastnosti připojení.
 
     ![Upravit připojení VPN](media/viscosity-edit-connection.png)
 
-7. Klepněte na kartu **Síť** a zadejte IP adresy serveru PRIVATE Cloud DNS ```cloudsimple.io```oddělené čárkou nebo mezerou a doménu jako .  Vyberte **Ignorovat nastavení DNS odeslaná serverem VPN**.
+7. Klikněte na kartu **sítě** a zadejte IP adresy privátního cloudového serveru DNS oddělené čárkou nebo mezerou a doménou ```cloudsimple.io```jako.  Vyberte **Ignorovat nastavení DNS odesílaná serverem VPN**.
 
-    ![Síť VPN](media/viscosity-edit-connection-networking.png)
+    ![Sítě VPN](media/viscosity-edit-connection-networking.png)
 
 > [!IMPORTANT]
-> Chcete-li se připojit k prvnímu privátnímu cloudu, odeberte tato nastavení a připojte se k serveru VPN.
+> Pokud se chcete připojit k prvnímu privátnímu cloudu, odeberte tato nastavení a připojte se k serveru VPN.
 
 ## <a name="site-to-site-vpn"></a>Site-to-site VPN
 
-Informace o vytvoření brány VPN site-to-site najdete v tématu [Vytvoření brány VPN mezi lokalitami](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway).  Tyto výhody poskytuje připojení VPN site-to-site z místní sítě do privátního cloudu.  
+Chcete-li vytvořit bránu VPN typu Site-to-site, přečtěte si téma [Vytvoření brány VPN typu Site-to-site](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway).  Tyto výhody poskytují připojení VPN typu Site-to-Site z vaší místní sítě do vašeho privátního cloudu.  
 
-* Dostupnost vašeho private cloudu vCenter z libovolné pracovní stanice v místní síti
+* Přístupnost vašeho privátního cloudu vCenter z libovolné pracovní stanice v místní síti
 * Použití místní služby Active Directory jako zdroje identity vCenter
-* Pohodlný přenos šablon virtuálních zařízení, ISO a dalších souborů z místních prostředků do vašeho privátního cloudu vCenter
-* Dostupnost úloh spuštěných ve vašem privátním cloudu z místní sítě
+* Pohodlný přenos šablon virtuálních počítačů, soubory ISO a dalších souborů z místních prostředků do vašeho privátního cloudu vCenter
+* Přístupnost úloh, které běží na vašem privátním cloudu z vaší místní sítě
 
-Informace o nastavení místní brány VPN v režimu vysoké dostupnosti najdete v [tématu Konfigurace připojení VPN s vysokou dostupností](high-availability-vpn-connection.md).
+Pokud chcete nastavit místní bránu VPN v režimu vysoké dostupnosti, přečtěte si téma [Konfigurace připojení VPN s vysokou dostupností](high-availability-vpn-connection.md).
 
 > [!IMPORTANT]
->    1. Nastavte tcp MSS upnutí na 1200 na vašem zařízení VPN. Nebo pokud vaše zařízení VPN nepodporují upínání MSS, můžete alternativně nastavit MTU na rozhraní tunelu na 1240 bajtů.
-> 2. Po nastavení sítě VPN site-to-site přepošlete požadavky DNS pro *.cloudsimple.io na servery DNS privátního cloudu.  Postupujte podle pokynů v [místním nastavení DNS](on-premises-dns-setup.md).
+>    1. Na zařízení VPN nastavte připojení TCP MSS na 1200. Nebo pokud vaše zařízení VPN nepodporují svorky MSS, můžete místo toho nastavit jednotku MTU v rozhraní tunelu na 1240 bajtů.
+> 2. Po nastavení sítě VPN typu Site-to-site předejte žádosti DNS pro *. cloudsimple.io na servery DNS privátního cloudu.  Postupujte podle pokynů v [místní instalaci DNS](on-premises-dns-setup.md).

@@ -1,6 +1,6 @@
 ---
-title: Ukázková data v SQL Serveru v Azure – proces vědecké analýzy týmových dat
-description: Ukázková data uložená v SQL Serveru v Azure pomocí programovacího jazyka SQL nebo Pythonu a pak je přesuňte do Azure Machine Learning.
+title: Ukázková data v SQL Server v procesu Azure – tým pro datové vědy
+description: Ukázková data uložená v SQL Server v Azure pomocí programovacího jazyka SQL nebo Pythonu a pak je přesuňte do Azure Machine Learning.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,81 +12,81 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 71a2ec9dc4d644fb8739db3817e2cd1d09913da7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76717641"
 ---
 # <a name="sample-data-in-sql-server-on-azure"></a><a name="heading"></a>Ukázková data na SQL Serveru v Azure
 
-Tento článek ukazuje, jak ukázkovat data uložená v SQL Serveru v Azure pomocí programovacího jazyka SQL nebo Pythonu. Také ukazuje, jak přesunout ukázková data do Azure Machine Learning uložením do souboru, jejich nahráním do objektu blob Azure a čtením do Azure Machine Learning Studio.
+V tomto článku se dozvíte, jak vzorkovat data uložená v SQL Server v Azure pomocí programovacího jazyka SQL nebo Pythonu. Také ukazuje, jak přesunout ukázková data do Azure Machine Learning tím, že je uložíte do souboru, nahrajete je do objektu blob Azure a pak je přečtete do Azure Machine Learning Studio.
 
-Vzorkování Pythonu používá knihovnu [pyodbc](https://code.google.com/p/pyodbc/) ODBC pro připojení k SQL Serveru v Azure a knihovně [Pandas](https://pandas.pydata.org/) k provedení vzorkování.
+Vzorkování Pythonu používá knihovnu rozhraní ODBC [pyodbc](https://code.google.com/p/pyodbc/) k připojení k SQL Server v Azure a ke knihovně [PANDAS](https://pandas.pydata.org/) pro vzorkování.
 
 > [!NOTE]
-> Ukázkový kód SQL v tomto dokumentu předpokládá, že data jsou v SQL Serveru v Azure. Pokud tomu tak není, naleznete v článku [Přesunout data na SQL Server v Azure](move-sql-server-virtual-machine.md) článek pokyny, jak přesunout data na SQL Server v Azure.
+> Ukázkový kód SQL v tomto dokumentu předpokládá, že data jsou v SQL Server v Azure. Pokud tomu tak není, přečtěte si článek o [přesunu dat do SQL Server v Azure](move-sql-server-virtual-machine.md) , kde najdete pokyny, jak přesunout data do SQL Server v Azure.
 > 
 > 
 
 **Proč vzorkovat data?**
-Pokud je datová sada, kterou chcete analyzovat, velká, je obvykle vhodné data snížit na menší, ale reprezentativní a lépe zvládnutelnou velikost. Vzorkování usnadňuje pochopení dat, zkoumání a technické zpracování prvků. Jeho úlohou v [procesu teamových dat (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) je umožnit rychlé prototypování funkcí zpracování dat a modelů strojového učení.
+Pokud je datová sada, kterou plánujete analyzovat, rozsáhlá, je obvykle vhodné ji vyvzorkovat, aby se snížila na menší, ale jenom se zástupcem a více spravovatelnými velikostmi. Vzorkování usnadňuje porozumění datům, průzkumům a inženýrům funkcí. Jejím úkolem v rámci [vědeckého zpracování týmových dat (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) je povolit rychlé vytváření prototypů funkcí pro zpracování dat a modelů strojového učení.
 
-Tato úloha vzorkování je krokem v [procesu vědecké vědy o týmových datech (TDSP).](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)
+Tento úkol vzorkování je krok v rámci [vědeckého zpracování týmových dat (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
 
-## <a name="using-sql"></a><a name="SQL"></a>Použití SQL
-Tato část popisuje několik metod, které používají SQL k provedení jednoduchého náhodného vzorkování dat v databázi. Zvolte metodu na základě velikosti dat a jejich distribuce.
+## <a name="using-sql"></a><a name="SQL"></a>Používání SQL
+Tato část popisuje několik metod, pomocí kterých SQL provádí jednoduché náhodné vzorkování s daty v databázi. Vyberte metodu na základě velikosti dat a její distribuce.
 
-Následující dvě položky ukazují, jak použít `newid` v SQL Server k provedení vzorkování. Metoda, kterou zvolíte, závisí na tom, jak náhodné má být vzorek (pk_id v následujícím ukázkovém kódu se předpokládá, že je automaticky generovaný primární klíč).
+Následující dvě položky ukazují, jak použít `newid` v SQL Server k provedení vzorkování. Metoda, kterou zvolíte, závisí na tom, jak má být vzorek (pk_id v následujícím ukázkovém kódu považován za automaticky generovaný primární klíč).
 
-1. Méně přísný náhodný vzorek
+1. Méně striktní náhodný vzorek
    
         select  * from <table_name> where <primary_key> in 
         (select top 10 percent <primary_key> from <table_name> order by newid())
-2. Další náhodný vzorek 
+2. Náhodná ukázka 
    
         SELECT * FROM <table_name>
         WHERE 0.1 >= CAST(CHECKSUM(NEWID(), <primary_key>) & 0x7fffffff AS float)/ CAST (0x7fffffff AS int)
 
-Tablesample lze použít také pro odběr vzorků dat. Tato možnost může být lepší přístup, pokud velikost dat je velký (za předpokladu, že data na různých stránkách není korelována) a dotaz dokončit v přiměřené době.
+Možnost TABLESAMPLE lze použít také pro vzorkování dat. Tato možnost může být lepší, pokud je velikost dat velká (za předpokladu, že data na různých stránkách nejsou korelační) a že dotaz bude dokončen v přiměřené době.
 
     SELECT *
     FROM <table_name> 
     TABLESAMPLE (10 PERCENT)
 
 > [!NOTE]
-> Můžete prozkoumat a generovat funkce z těchto vzorkovaných dat jejich uložením do nové tabulky
+> Můžete zkoumat a generovat funkce z těchto ukázkových dat tím, že je uložíte do nové tabulky.
 > 
 > 
 
-### <a name="connecting-to-azure-machine-learning"></a><a name="sql-aml"></a>Připojení k Azure Machine Learning
-Můžete přímo použít ukázkové dotazy výše v modulu Azure Machine Learning [Import Data][import-data] k down-sample data za běhu a přenést je do experimentu Azure Machine Learning. Zde je zobrazen snímek obrazovky s použitím modulu čtečky ke čtení vzorkovaných dat:
+### <a name="connecting-to-azure-machine-learning"></a><a name="sql-aml"></a>Připojování k Azure Machine Learning
+Pomocí ukázkových dotazů uvedených výše v modulu Azure Machine Learning [Import dat][import-data] můžete data průběžně vzorkovat a přenést je do Azure Machine Learning experimentu. Snímek obrazovky s použitím modulu Reader ke čtení ukázkových dat najdete tady:
 
-![čtečka SQL][1]
+![čtecí modul SQL][1]
 
-## <a name="using-the-python-programming-language"></a><a name="python"></a>Používání programovacího jazyka Pythonu
-Tato část ukazuje použití [knihovny pyodbc](https://code.google.com/p/pyodbc/) k vytvoření připojení ODBC k databázi serveru SQL v Pythonu. Připojovací řetězec databáze je následující: (nahraďte název serveru, název db, uživatelské jméno a heslo konfigurací):
+## <a name="using-the-python-programming-language"></a><a name="python"></a>Používání programovacího jazyka Python
+V této části se dozvíte, jak pomocí [knihovny pyodbc](https://code.google.com/p/pyodbc/) vytvořit rozhraní ODBC, které se připojí k databázi SQL serveru v Pythonu. Připojovací řetězec databáze je následující: (nahraďte servername, dbname, username a Password pomocí vaší konfigurace):
 
     #Set up the SQL Azure connection
     import pyodbc    
     conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
 
-Knihovna [Pandas](https://pandas.pydata.org/) v Pythonu poskytuje bohatou sadu datových struktur a nástrojů pro analýzu dat pro manipulaci s daty pro programování v Pythonu. Následující kód přečte ukázku 0,1 % dat z tabulky v Azure SQL Database do dat Pandy:
+Knihovna [PANDAS](https://pandas.pydata.org/) v Pythonu poskytuje bohatou sadu datových struktur a nástrojů pro analýzu dat pro manipulaci s daty pro programování v Pythonu. Následující kód přečte 0,1% vzorku dat z tabulky v Azure SQL Database do dat PANDAS:
 
     import pandas as pd
 
     # Query database and load the returned results in pandas data frame
     data_frame = pd.read_sql('''select column1, column2... from <table_name> tablesample (0.1 percent)''', conn)
 
-Nyní můžete pracovat s ukázkovými daty v datovém rámci Pandas. 
+Nyní můžete pracovat se vzorovými daty v datovém rámečku PANDAS. 
 
-### <a name="connecting-to-azure-machine-learning"></a><a name="python-aml"></a>Připojení k Azure Machine Learning
-Následující ukázkový kód můžete použít k uložení dat dolů vzorku do souboru a nahrát je do objektu blob Azure. Data v objektu blob lze přímo číst do experimentu Azure Machine Learning pomocí modulu [Import dat.][import-data] Kroky jsou následující: 
+### <a name="connecting-to-azure-machine-learning"></a><a name="python-aml"></a>Připojování k Azure Machine Learning
+Pomocí následujícího ukázkového kódu můžete uložit data z rozevíracího vzorku do souboru a odeslat je do objektu blob Azure. Data v objektu BLOB je možné přímo přečíst do Azure Machine Learning experimentu pomocí modulu [Import dat][import-data] . Kroky jsou následující: 
 
-1. Zápis datového rámce pand do místního souboru
+1. Zápis datového rámce PANDAS do místního souboru
    
         dataframe.to_csv(os.path.join(os.getcwd(),LOCALFILENAME), sep='\t', encoding='utf-8', index=False)
-2. Nahrání místního souboru do objektu blob Azure
+2. Nahrání místního souboru do Azure Blob
    
         from azure.storage import BlobService
         import tables
@@ -107,12 +107,12 @@ Následující ukázkový kód můžete použít k uložení dat dolů vzorku do
    
         except:            
             print ("Something went wrong with uploading blob:"+BLOBNAME)
-3. Čtení dat z objektu blob Azure pomocí modulu Azure Machine Learning [Import Data,][import-data] jak je znázorněno na následujícím uchopení obrazovky:
+3. Načtěte data z Azure BLOB pomocí Azure Machine Learning [Importujte modul dat][import-data] , jak je znázorněno na následující obrazovce:
 
-![objekt blob čtečky][2]
+![objekt BLOB čtečky][2]
 
-## <a name="the-team-data-science-process-in-action-example"></a>Příklad procesu vědecké vědy o týmových datech v akci
-Chcete-li projít příklad procesu vědeckého zpracování týmových dat pomocí veřejné datové sady, přečtěte si informace [o procesu vědecké ho procesu týmových dat v akci: pomocí serveru SQL Server](sql-walkthrough.md).
+## <a name="the-team-data-science-process-in-action-example"></a>Příklad vědeckého zpracování týmových dat v akci
+Chcete-li projít příkladem vědeckého zpracování týmových dat a pomocí veřejné datové sady, přečtěte si článek o [vědeckém zpracování týmových dat v akci: použití SQL Server](sql-walkthrough.md).
 
 [1]: ./media/sample-sql-server-virtual-machine/reader_database.png
 [2]: ./media/sample-sql-server-virtual-machine/reader_blob.png

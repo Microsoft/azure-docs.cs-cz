@@ -1,6 +1,6 @@
 ---
-title: Správa vlastností a metadat pro objekt blob pomocí rozhraní .NET – Azure Storage
-description: Zjistěte, jak nastavit a načíst vlastnosti systému a ukládat vlastní metadata na objekty BLOB v účtu azure úložiště pomocí knihovny klienta .NET.
+title: Správa vlastností a metadat pro objekt BLOB pomocí .NET-Azure Storage
+description: Naučte se, jak nastavit a načíst systémové vlastnosti a ukládat do objektů BLOB ve vašem účtu Azure Storage vlastní metadata pomocí klientské knihovny .NET.
 services: storage
 author: mhopkins-msft
 ms.author: mhopkins
@@ -9,30 +9,30 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.openlocfilehash: b4abd7e29dec67ddc1be50a2a6703da2a25551d1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79137658"
 ---
-# <a name="manage-blob-properties-and-metadata-with-net"></a>Správa vlastností objektu blob a metadat pomocí rozhraní .NET
+# <a name="manage-blob-properties-and-metadata-with-net"></a>Správa vlastností a metadat objektů BLOB pomocí .NET
 
-Kromě dat, která obsahují, objekty BLOB podporují vlastnosti systému a uživatelem definovaná metadata. Tento článek ukazuje, jak spravovat vlastnosti systému a uživatelem definovaná metadata pomocí [klientské knihovny Azure Storage pro rozhraní .NET](/dotnet/api/overview/azure/storage?view=azure-dotnet).
+Kromě dat, která obsahují, podporují objekty blob vlastnosti systému a uživatelsky definovaná metadata. V tomto článku se dozvíte, jak spravovat vlastnosti systému a uživatelsky definovaná metadata pomocí [Azure Storage klientské knihovny pro .NET](/dotnet/api/overview/azure/storage?view=azure-dotnet).
 
-## <a name="about-properties-and-metadata"></a>Vlastnosti a metadata
+## <a name="about-properties-and-metadata"></a>O vlastnostech a metadatech
 
-- **Vlastnosti systému**: Systémové vlastnosti existují na každém prostředku úložiště objektů Blob. Některé z nich lze číst nebo nastavit, zatímco jiné jsou jen pro čtení. Pod kryty některé vlastnosti systému odpovídají určitým standardním hlavičkám HTTP. Klientská knihovna Azure Storage pro rozhraní .NET tyto vlastnosti za vás udržuje.
+- **Vlastnosti systému**: systémové vlastnosti existují v každém prostředku úložiště objektů BLOB. Některé z nich je možné číst nebo nastavovat, zatímco jiné jsou jen pro čtení. V rámci pokrývá některé vlastnosti systému odpovídají určitým standardním hlavičkám HTTP. Klientská knihovna Azure Storage pro .NET uchovává tyto vlastnosti za vás.
 
-- **Uživatelem definovaná metadata**: Uživatelem definovaná metadata se skládají z jednoho nebo více párů název-hodnota, které zadáte pro prostředek úložiště objektů Blob. Metadata můžete použít k uložení dalších hodnot s prostředkem. Hodnoty metadat jsou pouze pro vaše vlastní účely a nemají vliv na chování prostředku.
+- **Uživatelsky definovaná metadata**: uživatelsky definovaná metadata se skládají z jedné nebo více párů název-hodnota, které zadáte pro prostředek BLOB Storage. Metadata můžete použít k ukládání dalších hodnot s prostředkem. Hodnoty metadat jsou pouze pro vaše vlastní účely a neovlivňují způsob, jakým se prostředek chová.
 
-Načítání metadat a hodnot vlastností pro prostředek úložiště objektů blob je dvoustupňový proces. Před čtením těchto hodnot je nutné explicitně `FetchAttributes` `FetchAttributesAsync` načíst voláním metody nebo. Výjimkou z tohoto pravidla `Exists` je, že metody a `ExistsAsync` volají příslušnou `FetchAttributes` metodu pod kryty. Při volání jedné z těchto metod není nutné `FetchAttributes`volat také .
+Načítání metadat a hodnot vlastností prostředku BLOB Storage je proces se dvěma kroky. Než budete moci číst tyto hodnoty, je nutné je explicitně načíst voláním metody `FetchAttributes` nebo `FetchAttributesAsync` . Výjimkou z tohoto pravidla je, že `Exists` metody `ExistsAsync` a volají odpovídající `FetchAttributes` metodu v rámci pokrývání. Při volání jedné z těchto metod není nutné volat `FetchAttributes`současně.
 
 > [!IMPORTANT]
-> Pokud zjistíte, že hodnoty vlastnosti nebo metadat pro prostředek úložiště nebyly `FetchAttributes` naplněny, zkontrolujte, zda váš kód volá metodu nebo. `FetchAttributesAsync`
+> Pokud zjistíte, že vlastnost nebo hodnoty metadat pro prostředek úložiště nejsou naplněné, ověřte, že váš kód volá `FetchAttributes` metodu `FetchAttributesAsync` nebo.
 
 ## <a name="set-and-retrieve-properties"></a>Nastavení a načtení vlastností
 
-Následující příklad kódu `ContentType` nastaví vlastnosti a `ContentLanguage` systému na objekt blob.
+Následující příklad kódu nastavuje vlastnosti systému `ContentType` a `ContentLanguage` v objektu BLOB.
 
 ```csharp
 public static async Task SetBlobPropertiesAsync(CloudBlob blob)
@@ -60,7 +60,7 @@ public static async Task SetBlobPropertiesAsync(CloudBlob blob)
 }
 ```
 
-Chcete-li načíst vlastnosti `FetchAttributesAsync` objektu blob, `Properties` zavolejte metodu `FetchAttributes` nebo na objektblou k naplnění vlastnosti. Následující příklad kódu získá vlastnosti systému objektu blob a zobrazí některé hodnoty:
+Chcete-li načíst vlastnosti objektu BLOB `FetchAttributes` , `FetchAttributesAsync` zavolejte metodu or objektu BLOB a naplňte `Properties` vlastnost. Následující příklad kódu získá vlastnosti systému objektu BLOB a zobrazí některé z těchto hodnot:
 
 ```csharp
 private static async Task GetBlobPropertiesAsync(CloudBlob blob)
@@ -89,16 +89,16 @@ private static async Task GetBlobPropertiesAsync(CloudBlob blob)
 
 ## <a name="set-and-retrieve-metadata"></a>Nastavení a načtení metadat
 
-Metadata můžete zadat jako jeden nebo více párů název-hodnota na objektu blob nebo prostředek kontejneru. Chcete-li nastavit metadata, přidejte `Metadata` dvojice název-hodnota do kolekce na prostředek. Potom zavolejte jednu z následujících metod pro zápis hodnot:
+Metadata můžete zadat jako jednu nebo více párů název-hodnota u prostředku BLOB nebo kontejneru. Chcete-li nastavit metadata, přidejte páry název-hodnota `Metadata` do kolekce v prostředku. Pak zavolejte jednu z následujících metod pro zápis hodnot:
 
-- [Nastavit metadata](/dotnet/api/microsoft.azure.storage.blob.cloudblob.setmetadata)
+- [SetMetadata](/dotnet/api/microsoft.azure.storage.blob.cloudblob.setmetadata)
 - [SetMetadataAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.setmetadataasync)
 
-Dvojice názvů a hodnot metadat jsou platná hlavičky HTTP a měla by dodržovat všechna omezení, kterými se řídí hlavičky HTTP. Názvy metadat musí být platné názvy hlaviček PROTOKOLU HTTP a platné identifikátory jazyka C#, mohou obsahovat pouze znaky ASCII a měly by být považovány za nerozlišující malá a velká písmena. [Base64-encode](https://docs.microsoft.com/dotnet/api/system.convert.tobase64string) nebo [URL-encode](https://docs.microsoft.com/dotnet/api/system.web.httputility.urlencode) metadata hodnoty obsahující non-ASCII znaky.
+Páry název-hodnota metadat jsou platné hlavičky protokolu HTTP a měly by splňovat všechna omezení, kterými se řídí hlavičky protokolu HTTP. Názvy metadat musí být platné názvy hlaviček protokolu HTTP a platné identifikátory jazyka C#, mohou obsahovat pouze znaky ASCII a měly by se považovat za nerozlišování velkých a malých písmen. Hodnoty metadat kódování [Base64](https://docs.microsoft.com/dotnet/api/system.convert.tobase64string) nebo [URL](https://docs.microsoft.com/dotnet/api/system.web.httputility.urlencode) , které obsahují znaky jiné než ASCII.
 
-Název metadat musí odpovídat konvencím pojmenování identifikátorů jazyka C#. Názvy metadat zachovat případ používaný při jejich vytvoření, ale jsou malá a velká písmena při nastavení nebo čtení. Pokud dvě nebo více záhlaví metadat se stejným názvem jsou odeslány pro prostředek, Azure Blob storage vrátí kód chyby HTTP 400 (Chybný požadavek).
+Název vašich metadat musí odpovídat konvencím pojmenování identifikátorů C#. Názvy metadat udržují případ použitý při jejich vytvoření, ale při nastavení nebo čtení se nerozlišují malá a velká písmena. Pokud se pro prostředek odešlou dvě nebo víc hlaviček metadat s použitím stejného názvu, Azure Blob Storage vrátí kód chyby HTTP 400 (chybný požadavek).
 
-Následující příklad kódu nastaví metadata na objekt blob. Jedna hodnota je nastavena `Add` pomocí metody kolekce. Druhá hodnota je nastavena pomocí implicitní syntaxe klíč/hodnota.
+Následující příklad kódu nastavuje metadata v objektu BLOB. Jedna hodnota je nastavena pomocí `Add` metody kolekce. Druhá hodnota je nastavena pomocí implicitní syntaxe klíč/hodnota.
 
 ```csharp
 public static async Task AddBlobMetadataAsync(CloudBlob blob)
@@ -125,7 +125,7 @@ public static async Task AddBlobMetadataAsync(CloudBlob blob)
 }
 ```
 
-Chcete-li načíst `FetchAttributes` metadata, zavolejte metodu `FetchAttributesAsync` nebo `Metadata` na objektblob nebo kontejner k naplnění kolekce a pak si přečtěte hodnoty, jak je znázorněno v příkladu níže.
+Chcete-li načíst metadata, `FetchAttributes` zavolejte `FetchAttributesAsync` metodu or v objektu BLOB nebo kontejneru pro naplnění `Metadata` kolekce a pak hodnoty přečtěte, jak je znázorněno v následujícím příkladu.
 
 ```csharp
 public static async Task ReadBlobMetadataAsync(CloudBlob blob)
@@ -160,7 +160,7 @@ public static async Task ReadBlobMetadataAsync(CloudBlob blob)
 
 ## <a name="see-also"></a>Viz také
 
-- [Nastavit operaci vlastností objektu blob](/rest/api/storageservices/set-blob-properties)
-- [Získat operaci Vlastnosti objektu blob](/rest/api/storageservices/get-blob-properties)
-- [Nastavení operace metadat objektu blob](/rest/api/storageservices/set-blob-metadata)
-- [Získání operace metadat objektu Blob](/rest/api/storageservices/get-blob-metadata)
+- [Operace nastavení vlastností objektu BLOB](/rest/api/storageservices/set-blob-properties)
+- [Operace získání vlastností objektu BLOB](/rest/api/storageservices/get-blob-properties)
+- [Operace nastavení metadat objektu BLOB](/rest/api/storageservices/set-blob-metadata)
+- [Operace získání metadat objektu BLOB](/rest/api/storageservices/get-blob-metadata)

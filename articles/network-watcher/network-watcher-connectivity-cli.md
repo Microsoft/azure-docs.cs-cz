@@ -1,7 +1,7 @@
 ---
-title: Poradce při potížích s připojením – azure cli
+title: Řešení potíží s připojeními – Azure CLI
 titleSuffix: Azure Network Watcher
-description: Zjistěte, jak pomocí azure cli používat funkci řešení potíží s připojením služby Azure Network Watcher.
+description: Naučte se používat funkce řešení potíží s připojením v Azure Network Watcher pomocí Azure CLI.
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -14,34 +14,34 @@ ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: damendo
 ms.openlocfilehash: 842e58de8dbc06d3f045b0e9d0dc6b99e6b1e2fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76842882"
 ---
-# <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-cli"></a>Poradce při potížích s připojením pomocí Azure Network Watcher pomocí azure CLI
+# <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-cli"></a>Řešení potíží s připojením k Azure Network Watcher pomocí rozhraní příkazového řádku Azure
 
 > [!div class="op_single_selector"]
 > - [PowerShell](network-watcher-connectivity-powershell.md)
 > - [Azure CLI](network-watcher-connectivity-cli.md)
 > - [Azure REST API](network-watcher-connectivity-rest.md)
 
-Zjistěte, jak pomocí řešení potíží s připojením ověřit, zda lze navázat přímé připojení TCP z virtuálního počítače k danému koncovému bodu.
+Naučte se používat řešení potíží s připojením k ověření, jestli je možné navázat přímé připojení TCP z virtuálního počítače do daného koncového bodu.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
-Tento článek předpokládá, že máte následující zdroje:
+V tomto článku se předpokládá, že máte následující zdroje:
 
-* Instance sledovacího programu sítě v oblasti, ve které chcete vyřešit potíže s připojením.
-* Virtuální počítače pro řešení potíží s připojením.
+* Instance Network Watcher v oblasti, ve které chcete řešit potíže s připojením.
+* Virtuální počítače pro řešení potíží s připojeními.
 
 > [!IMPORTANT]
-> Řešení potíží s připojením vyžaduje, `AzureNetworkWatcherExtension` aby v ym, který řešíte z má rozšíření virtuálního zařízení nainstalován. Pokud chcete nainstalovat rozšíření na virtuální počítač s Windows, navštivte [rozšíření virtuálního počítače Azure Network Watcher Agent pro Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) a pro virtuální počítač SIP na stránce Rozšíření [virtuálního počítače Azure Network Watcher Agent pro Linux](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). Rozšíření není vyžadováno v cílovém koncovém bodě.
+> Řešení potíží s připojením vyžaduje, aby virtuální počítač, ze `AzureNetworkWatcherExtension` kterého řešení řešíte, byl nainstalován rozšíření virtuálního počítače. Pokud chcete nainstalovat rozšíření na virtuální počítač s Windows, přejděte na web [azure Network Watcher Agent Virtual Machine Extension for Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) a pro Linux VM, navštivte [rozšíření Azure Network Watcher Agent Virtual Machine pro Linux](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). V cílovém koncovém bodě není rozšíření vyžadováno.
 
-## <a name="check-connectivity-to-a-virtual-machine"></a>Kontrola připojení k virtuálnímu počítači
+## <a name="check-connectivity-to-a-virtual-machine"></a>Ověřte připojení k virtuálnímu počítači.
 
-Tento příklad kontroluje připojení k cílovému virtuálnímu počítači přes port 80.
+Tento příklad zkontroluje připojení k cílovému virtuálnímu počítači přes port 80.
 
 ### <a name="example"></a>Příklad
 
@@ -51,7 +51,7 @@ az network watcher test-connectivity --resource-group ContosoRG --source-resourc
 
 ### <a name="response"></a>Odpověď
 
-Následující odpověď je z předchozího příkladu.  V této odpovědi `ConnectionStatus` je **nedostupný**. Můžete vidět, že všechny odeslané sondy selhaly. Připojení ve virtuálním zařízení se nezdařilo `NetworkSecurityRule` z důvodu uživatelem nakonfigurovaného s názvem **UserRule_Port80**, který je nakonfigurován tak, aby blokoval příchozí provoz na portu 80. Tyto informace lze použít k výzkumu problémů s připojením.
+Následující odpověď je z předchozího příkladu.  V této odpovědi `ConnectionStatus` je **nedosažitelný**. Vidíte, že se nepovedlo úspěšně odeslat všechny sondy. Připojení na virtuálním zařízení se nepovedlo, protože se nakonfiguroval `NetworkSecurityRule` uživatel s názvem **UserRule_Port80**nakonfigurovaný tak, aby blokoval příchozí provoz na portu 80. Tyto informace se dají použít k tomu, aby se nastudovaly problémy s připojením.
 
 ```json
 {
@@ -120,7 +120,7 @@ Nic0/ipConfigurations/ipconfig1",
 }
 ```
 
-## <a name="validate-routing-issues"></a>Ověřit problémy se směrováním
+## <a name="validate-routing-issues"></a>Ověřit problémy s směrováním
 
 Tento příklad kontroluje připojení mezi virtuálním počítačem a vzdáleným koncovým bodem.
 
@@ -132,7 +132,7 @@ az network watcher test-connectivity --resource-group ContosoRG --source-resourc
 
 ### <a name="response"></a>Odpověď
 
-V následujícím příkladu `connectionStatus` je zobrazen jako **Nedostupný**. V `hops` podrobnostech můžete vidět `issues` pod tím, že `UserDefinedRoute`provoz byl zablokován z důvodu .
+V následujícím příkladu `connectionStatus` je zobrazen jako **nedosažitelný**. V `hops` podrobnostech vidíte, `issues` že provoz byl zablokován z důvodu. `UserDefinedRoute`
 
 ```json
 {
@@ -178,9 +178,9 @@ pNic0/ipConfigurations/ipconfig1",
 }
 ```
 
-## <a name="check-website-latency"></a>Kontrola latence webu
+## <a name="check-website-latency"></a>Kontrolovat latenci webu
 
-Následující příklad kontroluje připojení k webu.
+Následující příklad zkontroluje připojení k webu.
 
 ### <a name="example"></a>Příklad
 
@@ -190,7 +190,7 @@ az network watcher test-connectivity --resource-group ContosoRG --source-resourc
 
 ### <a name="response"></a>Odpověď
 
-V následující odpovědi můžete vidět `connectionStatus` ukazuje jako **dosažitelné**. Při úspěšném připojení jsou k dispozici hodnoty latence.
+V následující reakci `connectionStatus` vidíte zobrazení jako **dostupné**. Po úspěšném připojení se dodávají hodnoty latence.
 
 ```json
 {
@@ -224,9 +224,9 @@ pNic0/ipConfigurations/ipconfig1",
 }
 ```
 
-## <a name="check-connectivity-to-a-storage-endpoint"></a>Kontrola připojení ke koncovému bodu úložiště
+## <a name="check-connectivity-to-a-storage-endpoint"></a>Zkontroluje připojení ke koncovému bodu úložiště.
 
-Následující příklad kontroluje připojení z virtuálního počítače k účtu úložiště blogu.
+Následující příklad zkontroluje připojení z virtuálního počítače k účtu úložiště blogu.
 
 ### <a name="example"></a>Příklad
 
@@ -236,7 +236,7 @@ az network watcher test-connectivity --resource-group ContosoRG --source-resourc
 
 ### <a name="response"></a>Odpověď
 
-Následující json je příklad odpovědi ze spuštění předchozí rutiny. Jakmile je kontrola úspěšná, vlastnost se `connectionStatus` zobrazí jako **dosažitelná**.  Jsou k dispozici podrobnosti týkající se počtu směrování potřebné k dosažení objektu blob úložiště a latence.
+Následující JSON je příklad reakce na spuštění předchozí rutiny. Když je ověření úspěšné, zobrazí se `connectionStatus` vlastnost jako **dostupná**.  Zadali jste podrobnosti o počtu směrování, které vyžaduje, aby se dosáhlo objektu BLOB úložiště a latence.
 
 ```json
 {
@@ -271,6 +271,6 @@ Následující json je příklad odpovědi ze spuštění předchozí rutiny. Ja
 
 ## <a name="next-steps"></a>Další kroky
 
-Zjistěte, jak automatizovat zachytávání paketů pomocí upozornění virtuálního počítače zobrazením [zobrazení vytvoření záznamu aktivovaného zachycení paketu](network-watcher-alert-triggered-packet-capture.md)
+Podívejte se, jak automatizovat zachycení paketů s výstrahami virtuálních počítačů zobrazením [Vytvoření výstrahy aktivované zachytávání paketů](network-watcher-alert-triggered-packet-capture.md) .
 
-Zjistěte, jestli je určitý provoz povolený do nebo z vašeho virtuálního počítače, a to najdete na [stránce Kontrola toku IP](diagnose-vm-network-traffic-filtering-problem.md)
+Zjistěte, jestli je na VIRTUÁLNÍm počítači povolený určitý provoz, a to tak, že navštíví [kontrolu toku IP](diagnose-vm-network-traffic-filtering-problem.md) .

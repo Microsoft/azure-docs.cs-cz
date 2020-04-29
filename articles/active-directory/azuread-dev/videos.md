@@ -1,6 +1,6 @@
 ---
-title: Videa o migraci Azure ADAL až MSAL | Azure
-description: Videa, která vám pomůžou migrovat z vývojářské platformy Azure Active Directory na platformu microsoftových identit
+title: Videa o migraci z Azure ADAL na MSAL | Azure
+description: Videa, která vám pomůžou migrovat z platformy Azure Active Directory Developer Platform na Microsoft Identity Platform
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -14,23 +14,23 @@ ms.custom: aaddev
 ms.reviewer: celested
 titleSuffix: Microsoft identity platform
 ms.openlocfilehash: e71f555f7a9cefef3aeada79031db3a07e3db49a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77202057"
 ---
-# <a name="azure-active-directory-developer-platform-videos"></a>Videa vývojářské platformy Azure Active Directory
+# <a name="azure-active-directory-developer-platform-videos"></a>Videa o Azure Active Directory vývojářské platformě
 
-Přečtěte si o nové platformě identit Microsoftu a o tom, jak na ní migrovat z vývojářské platformy Azure Active Directory (Azure AD). Videa jsou obvykle 1-2 minuty dlouhé.
+Přečtěte si o nové platformě Microsoft identity a o tom, jak na ni migrovat z vývojové platformy Azure Active Directory (Azure AD). Videa jsou obvykle 1-2 minut dlouho.
 
-## <a name="migrate-from-v10-to-v20"></a>Migrace z v1.0 na v2.0
+## <a name="migrate-from-v10-to-v20"></a>Migrace z verze 1.0 do verze 2.0
 
-**Informace o migraci na nejnovější verzi platformy Microsoft identit**
+**Informace o migraci na nejnovější verzi platformy Microsoft Identity Platform**
 
 :::row:::
     :::column:::
-        Nový přehled platformy identit Microsoftu
+        Přehled nové platformy Microsoft identity
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/bNlcFuIo3r8]
@@ -44,13 +44,13 @@ Přečtěte si o nové platformě identit Microsoftu a o tom, jak na ní migrova
 :::row-end:::
 :::row:::
     :::column:::
-        Koncové body a výhody přechodu na v2.0
+        Koncové body a výhody přechodu na verzi v 2.0
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/qpdC45tZYDg]
     :::column-end:::
      :::column:::
-        Migrace základny kódů ADAL na msal
+        Migrace základu ADAL na MSAL
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/xgL_z9yCnrE]
@@ -58,13 +58,13 @@ Přečtěte si o nové platformě identit Microsoftu a o tom, jak na ní migrova
 :::row-end:::
 :::row:::
     :::column:::
-        Proč migrovat z ADAL do MSAL
+        Proč migrovat z ADAL na MSAL
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/qpdC45tZYDg]
     :::column-end:::
     :::column:::
-        Výhody MSAL nad ADAL
+        Výhody MSAL přes ADAL
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/q-TDszj2O-4]
@@ -73,4 +73,4 @@ Přečtěte si o nové platformě identit Microsoftu a o tom, jak na ní migrova
 
 ## <a name="next-steps"></a>Další kroky
 
-Informace o nové [platformě identit Microsoftu](https://docs.microsoft.com/azure/active-directory/develop)
+Další informace o nové [platformě Microsoft Identity](https://docs.microsoft.com/azure/active-directory/develop)

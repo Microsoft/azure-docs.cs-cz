@@ -17,10 +17,10 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 61490f75d12967f7f396d5f767f2d2e696474572
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76897203"
 ---
 # <a name="monitor-azure-ad-connect-sync-with-azure-ad-connect-health"></a>Sledování synchronizace Azure AD Connect pomocí služby Azure AD Connect Health
@@ -64,19 +64,19 @@ Tato funkce nabízí grafické zobrazení trendu v počtu změn, které se vyhod
 
 ![Latence synchronizace](./media/how-to-connect-health-sync/syncobjectchanges02.png)
 
-## <a name="object-level-synchronization-error-report"></a>Zpráva o chybě synchronizace na úrovni objektu
+## <a name="object-level-synchronization-error-report"></a>Sestava chyb synchronizace na úrovni objektu
 Tato funkce poskytuje sestavu chyb synchronizace, ke kterým může dojít při synchronizaci dat identity mezi službou Windows Server AD a Azure AD pomocí služby Azure AD Connect.
 
 * Sestava obsahuje chyby zaznamenané klientem synchronizace (Azure AD Connect verze 1.1.281.0 nebo vyšší).
 * Zahrnuje chyby, ke kterým došlo při poslední operaci synchronizace u synchronizačního modulu. (Export v konektoru Azure AD)
 * Agent služby Azure AD Connect Health pro synchronizaci musí mít odchozí připojení k požadovaným koncovým bodům, aby se v sestavě mohla promítnout nejnovější data.
-* Sestava se **aktualizuje po každých 30 minutpomocí** dat nahraných agentem Azure AD Connect Health pro synchronizaci. Poskytuje následující klíčové funkce
+* Sestava se **aktualizuje po každých 30 minutách** pomocí dat odesílaných agentem Azure AD Connect Health pro synchronizaci. Nabízí následující klíčové funkce:
 
   * Kategorizace chyb
   * Seznam chybných objektů podle kategorie
   * Všechna data o chybách na jednom místě
   * Souběžné porovnání objektů, u kterých došlo k chybě z důvodu konfliktu
-  * Stáhnout zprávu o chybách jako CVS
+  * Stažení zprávy o chybách jako CVS
 
 ### <a name="categorization-of-errors"></a>Kategorizace chyb
 Sestava zařazuje stávající chyby synchronizace do následujících kategorií:
@@ -114,12 +114,12 @@ Pomocí tlačítka Exportovat můžete stáhnout soubor CSV s podrobnými inform
 Určité scénáře chyb synchronizace kvůli duplicitním atributům, které zahrnují uživatelskou aktualizaci zdrojového ukotvení, je možné opravit přímo na portálu. Další informace o [diagnostice a opravě chyb synchronizace kvůli duplicitním atributům](how-to-connect-health-diagnose-sync-errors.md)
 
 ## <a name="related-links"></a>Související odkazy
-* [Poradce při potížích s chybami během synchronizace](tshoot-connect-sync-errors.md)
+* [Řešení chyb při synchronizaci](tshoot-connect-sync-errors.md)
 * [Odolnost duplicitních atributů](how-to-connect-syncservice-duplicate-attribute-resiliency.md)
 * [Azure AD Connect Health](whatis-hybrid-identity-health.md)
-* [Instalace agenta stavu Azure AD Connect](how-to-connect-health-agent-install.md)
-* [Operace stavu Azure AD Connect](how-to-connect-health-operations.md)
+* [Instalace agenta Azure AD Connect Health](how-to-connect-health-agent-install.md)
+* [Operace služby Azure AD Connect Health](how-to-connect-health-operations.md)
 * [Používání služby Azure AD Connect Health se službou AD FS](how-to-connect-health-adfs.md)
 * [Používání služby Azure AD Connect Health se službou AD DS](how-to-connect-health-adds.md)
 * [Azure AD Connect Health – nejčastější dotazy](reference-connect-health-faq.md)
-* [Historie verzí služby Azure AD Connect Health](reference-connect-health-version-history.md)
+* [Historie verze Azure AD Connect Health](reference-connect-health-version-history.md)

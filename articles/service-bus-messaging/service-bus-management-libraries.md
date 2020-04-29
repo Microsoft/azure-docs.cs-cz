@@ -1,6 +1,6 @@
 ---
-title: Knihovny pro správu Azure Service Bus| Dokumenty společnosti Microsoft
-description: Tento článek vysvětluje, jak používat knihovny správy Služby Azure Service Bus k dynamickému zřizování oborů názvů a entit Service Bus.
+title: Knihovny pro správu Azure Service Bus | Microsoft Docs
+description: Tento článek vysvětluje, jak pomocí Azure Service Bus knihovny pro správu dynamicky zřizovat Service Bus obory názvů a entity.
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
@@ -15,38 +15,38 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: aschhab
 ms.openlocfilehash: d0e90d9278ede97de04ad8efeaa59d94a4567f66
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76756262"
 ---
 # <a name="service-bus-management-libraries"></a>Knihovny pro správu služby Service Bus
 
-Knihovny správy Azure Service Bus mohou dynamicky zřit obory názvů service bus a entity. To umožňuje komplexní nasazení a zasílání zpráv scénáře a umožňuje programově určit, jaké entity zřídit. Tyto knihovny jsou aktuálně k dispozici pro rozhraní .NET.
+Knihovny pro správu Azure Service Bus můžou dynamicky zřizovat Service Bus obory názvů a entity. Tato možnost umožňuje složitá nasazení a scénáře zasílání zpráv a umožňuje programově určit, které entity se mají zřídit. Tyto knihovny jsou aktuálně k dispozici pro rozhraní .NET.
 
-## <a name="supported-functionality"></a>Podporovaná funkce
+## <a name="supported-functionality"></a>Podporované funkce
 
-* Vytvoření oboru názvů, aktualizace, odstranění
-* Vytvoření fronty, aktualizace, odstranění
-* Tvorba tématu, aktualizace, odstranění
-* Vytvoření předplatného, aktualizace, odstranění
+* Vytváření, aktualizace a odstraňování oboru názvů
+* Vytvoření, aktualizace a odstranění fronty
+* Vytváření, aktualizace a odstraňování tématu
+* Vytvoření, aktualizace, odstranění odběru
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li začít používat knihovny správy service bus, musíte se ověřit pomocí služby Azure Active Directory (Azure AD). Azure AD vyžaduje ověření jako instanční objekt, který poskytuje přístup k prostředkům Azure. Informace o vytvoření instančního objektu naleznete v jednom z těchto článků:  
+Pokud chcete začít používat Service Bus knihovny pro správu, musíte se ověřit pomocí služby Azure Active Directory (Azure AD). Azure AD vyžaduje, abyste se ověřili jako instanční objekt, který poskytuje přístup k prostředkům Azure. Informace o vytváření instančního objektu najdete v jednom z těchto článků:  
 
-* [Vytvoření instančního objektu aplikace a služby Active Directory, který má přístup k prostředkům, použijte portál Azure.](/azure/azure-resource-manager/resource-group-create-service-principal-portal)
+* [Použití Azure Portal k vytvoření aplikace služby Active Directory a instančního objektu, který má přístup k prostředkům](/azure/azure-resource-manager/resource-group-create-service-principal-portal)
 * [Vytvoření instančního objektu pro přístup k prostředkům pomocí Azure PowerShellu](/azure/azure-resource-manager/resource-group-authenticate-service-principal)
 * [Vytvoření instančního objektu pro přístup k prostředkům pomocí Azure CLI](/azure/azure-resource-manager/resource-group-authenticate-service-principal-cli)
 
-Tyto kurzy poskytují `AppId` (ID `TenantId`klienta), `ClientSecret` a (ověřovací klíč), které se používají pro ověřování knihovny správy. Musíte mít oprávnění **vlastníka** pro skupinu prostředků, ve které chcete spustit.
+Tyto kurzy vám poskytnou `AppId` (ID klienta), `TenantId`a `ClientSecret` (ověřovací klíč), které se používají k ověřování pomocí knihoven pro správu. Pro skupinu prostředků, na které chcete spustit, musíte mít oprávnění **vlastníka** .
 
-## <a name="programming-pattern"></a>Programovací vzor
+## <a name="programming-pattern"></a>Programovací model
 
-Vzor pro manipulaci s jakýmkoli prostředkem služby Service Bus se řídí běžným protokolem:
+Vzor pro manipulaci s jakýmkoli Service Busm prostředkem se řídí společným protokolem:
 
-1. Získejte token ze služby Azure AD pomocí **knihovny Microsoft.IdentityModel.Clients.ActiveDirectory:**
+1. Získání tokenu z Azure AD pomocí knihovny **Microsoft. IdentityModel. clients. Active Directory** :
    ```csharp
    var context = new AuthenticationContext($"https://login.microsoftonline.com/{tenantId}");
 
@@ -70,14 +70,14 @@ Vzor pro manipulaci s jakýmkoli prostředkem služby Service Bus se řídí bě
        EnablePartitioning = true
    };
    ```
-4. Provést volání:
+4. Spustit volání:
 
    ```csharp
    await sbClient.Queues.CreateOrUpdateAsync(resourceGroupName, namespaceName, QueueName, queueParams);
    ```
 
-## <a name="complete-code-to-create-a-queue"></a>Dokončení kódu pro vytvoření fronty
-Zde je kompletní kód pro vytvoření fronty service bus: 
+## <a name="complete-code-to-create-a-queue"></a>Úplný kód pro vytvoření fronty
+Tady je kompletní kód pro vytvoření Service Bus fronty: 
 
 ```csharp
 using System;
@@ -164,7 +164,7 @@ namespace SBusADApp
 ```
 
 > [!IMPORTANT]
-> Úplný příklad najdete v [ukázce správy rozhraní .NET na GitHubu](https://github.com/Azure-Samples/service-bus-dotnet-management/). 
+> Úplný příklad najdete v [ukázce .NET Management na GitHubu](https://github.com/Azure-Samples/service-bus-dotnet-management/). 
 
 ## <a name="next-steps"></a>Další kroky
-[Odkaz na rozhraní API Microsoft.Azure.Management.ServiceBus](/dotnet/api/Microsoft.Azure.Management.ServiceBus)
+[Referenční informace k rozhraní API Microsoft. Azure. Management. ServiceBus](/dotnet/api/Microsoft.Azure.Management.ServiceBus)

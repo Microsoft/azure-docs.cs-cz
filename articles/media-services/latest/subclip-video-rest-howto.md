@@ -1,6 +1,6 @@
 ---
-title: Při kódování pomocí Azure Media Services REST můžete video podříznout
-description: Toto téma popisuje, jak při kódování pomocí služby Azure Media Services pomocí služby REST podklipovat video.
+title: Rozříznout video při kódování pomocí Azure Media Services REST
+description: Toto téma popisuje, jak rozříznout video při kódování pomocí Azure Media Services pomocí REST.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,40 +14,40 @@ ms.topic: article
 ms.date: 06/10/2019
 ms.author: juliako
 ms.openlocfilehash: c39aded55fe36cb130459a4f6f119f872b1adbc4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76514319"
 ---
-# <a name="subclip-a-video-when-encoding-with-media-services---rest"></a>Subclip video při kódování s Media Services - REST
+# <a name="subclip-a-video-when-encoding-with-media-services---rest"></a>Rozstřihnout video při kódování pomocí Media Services-REST
 
-Video můžete oříznout nebo podklipu při kódování pomocí [úlohy](https://docs.microsoft.com/rest/api/media/jobs). Tato funkce funguje s libovolnou [transformací,](https://docs.microsoft.com/rest/api/media/transforms) která je vytvořena pomocí [přednastavení BuiltInStandardEncoder Preset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) nebo [Přednastavení StandardEncoder.](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) 
+Video můžete při kódování pomocí [úlohy](https://docs.microsoft.com/rest/api/media/jobs)oříznout nebo vystřihnout. Tato funkce funguje s libovolnou [transformací](https://docs.microsoft.com/rest/api/media/transforms) , která je sestavená buď pomocí přednastavení [BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) , nebo z [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) předvoleb. 
 
-Příklad REST v tomto tématu vytvoří úlohu, která ořízne video při odeslání úlohy kódování. 
+V příkladu v tomto tématu se vytvoří úloha, která ořízne video při odesílání úlohy kódování. 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li provést kroky popsané v tomto tématu, musíte:
+K dokončení kroků popsaných v tomto tématu je třeba provést následující kroky:
 
-- [Vytvořte účet Mediálních služeb Azure](create-account-cli-how-to.md).
-- [Konfigurace postman pro Azure Media Services REST API volání](media-rest-apis-with-postman.md).
+- [Vytvořte účet Azure Media Services](create-account-cli-how-to.md).
+- [Nakonfigurujte metodu post pro Azure Media Services REST API volání](media-rest-apis-with-postman.md).
     
-    Ujistěte se, že postupujte podle posledního kroku v tématu [Získat Azure AD Token](media-rest-apis-with-postman.md#get-azure-ad-token). 
-- Vytvořte transformace a výstupní prostředky. Můžete vidět, jak vytvořit transformace a výstupní prostředky v [kódovat vzdálený soubor na základě adresy URL a streamovat video - REST](stream-files-tutorial-with-rest.md) tutorial.
-- Projděte si téma [konceptu kódování.](encoding-concept.md)
+    Nezapomeňte postupovat podle posledního kroku v tématu [získání tokenu Azure AD](media-rest-apis-with-postman.md#get-azure-ad-token). 
+- Vytvořte transformaci a výstupní prostředky. Můžete si prohlédnout, jak vytvořit transformaci a výstupní prostředky v [kódování vzdáleného souboru na základě adresy URL a streamu v kurzu pro video – REST](stream-files-tutorial-with-rest.md) .
+- Přečtěte si téma o [pojmu kódování](encoding-concept.md) .
 
-## <a name="create-a-subclipping-job"></a>Vytvoření dílčí úlohy
+## <a name="create-a-subclipping-job"></a>Vytvoření úlohy dílčího výstřižku
 
-1. V kolekci Postman, kterou jste stáhli, vyberte **Transformovat a úlohy** -> **Vytvořit úlohu s dílčím oříznutím**.
+1. V stažené kolekci po výběru vyberte **Transformers a úlohy** -> **vytvořit úlohu s dílčím oříznutím**.
     
-    Požadavek **PUT** vypadá takto:
+    Požadavek **Put** vypadá takto:
     
     ```
     https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/transforms/:transformName/jobs/:jobName?api-version={{api-version}}
     ```
-1. Aktualizujte hodnotu proměnné prostředí "transformName" s názvem transformace. 
-1. Vyberte kartu **Body** a aktualizujte "myOutputAsset" s názvem výstupního datového zdroje.
+1. Aktualizujte hodnotu proměnné prostředí "transformovat" s názvem transformace. 
+1. Vyberte kartu **tělo** a aktualizujte "myOutputAsset" s názvem výstupního prostředku.
 
     ```
     {
@@ -82,8 +82,8 @@ Chcete-li provést kroky popsané v tomto tématu, musíte:
     ```
 1. Stiskněte **Odeslat**.
 
-    Zobrazí **se odpověď** s informacemi o úloze, která byla vytvořena a odeslána a stav úlohy. 
+    Zobrazí se **odpověď** s informacemi o úloze, která byla vytvořena a odeslána a stavu úlohy. 
 
 ## <a name="next-steps"></a>Další kroky
 
-[Kódování pomocí vlastní transformace](custom-preset-rest-howto.md) 
+[Kódování s vlastní transformací](custom-preset-rest-howto.md) 

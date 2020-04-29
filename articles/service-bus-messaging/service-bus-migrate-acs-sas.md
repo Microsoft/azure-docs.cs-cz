@@ -1,6 +1,6 @@
 ---
 title: Azure Service Bus – migrace na autorizaci sdíleného přístupového podpisu
-description: Přečtěte si o migraci ze služby Azure Active Directory Access Control na autorizaci sdíleného přístupového podpisu.
+description: Přečtěte si o migraci z Azure Active Directory Access Control Service na autorizaci sdíleného přístupového podpisu.
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -13,56 +13,56 @@ ms.topic: article
 ms.date: 01/27/2020
 ms.author: aschhab
 ms.openlocfilehash: 532bbaf0b983b2d4310780686777cbe895afebe4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76774623"
 ---
-# <a name="service-bus---migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>Service Bus – migrace ze služby Azure Active Directory Access Control Service na autorizaci podpisu sdíleného přístupu
+# <a name="service-bus---migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>Service Bus – migrace z Azure Active Directory Access Control Service na autorizaci sdíleného přístupového podpisu
 
-Aplikace service bus dříve měly možnost používat dva různé autorizační modely: model [tokenu s sdíleným přístupovým podpisem (SAS)](service-bus-sas.md) poskytovaný přímo službou Service Bus a federovaný model, kde je správa pravidel autorizace spravována uvnitř služby [ACS (Azure Active Directory](/azure/active-directory/) Access Control Service) a tokeny získané ze služby ACS jsou předány službě Service Bus pro autorizaci přístupu k požadovaným funkcím.
+Aplikace Service Bus dříve používaly dva různé autorizační modely: model tokenu [sdíleného přístupového podpisu (SAS)](service-bus-sas.md) poskytovaný přímo Service Bus a federovaný model, ve kterém je spravována Správa autorizačních pravidel v rámci [Azure Active Directory](/azure/active-directory/) Access Control Service (ACS), a tokeny získané ze služby ACS jsou předány Service Bus pro autorizaci přístupu k požadovaným funkcím.
 
-Autorizační model ACS byl dlouho nahrazen [autorizací SAS](service-bus-authentication-and-authorization.md) jako upřednostňovaný model a veškerá dokumentace, pokyny a ukázky používají výhradně SAS dnes. Kromě toho již není možné vytvořit nové obory názvů service bus, které jsou spárovány se službou ACS.
+Autorizační model služby ACS byl v současnosti nahrazen [autorizací SAS](service-bus-authentication-and-authorization.md) jako preferovaným modelem a všechny dokumentace, pokyny a ukázky používají výhradně SAS ještě dnes. Kromě toho již není možné vytvářet nové obory názvů Service Bus, které jsou spárovány se službou ACS.
 
-SAS má výhodu v tom, že není okamžitě závislá na jiné službě, ale může být použita přímo od klienta bez zprostředkovatelů tím, že klientovi poskytuje přístup k názvu pravidla SAS a klíči pravidla. SAS lze také snadno integrovat s přístupem, ve kterém klient musí nejprve předat kontrolu autorizace s jinou službou a pak je vydán token. Druhý přístup je podobný vzor využití služby ACS, ale umožňuje vydávání přístupových tokenů na základě podmínek specifických pro aplikaci, které je obtížné vyjádřit v acs.
+SAS má výhodu v tom, že není přímo závislý na jiné službě, ale dá se použít přímo z klienta bez jakýchkoli dodavatelů tím, že klientovi poskytne přístup k názvu a klíči pravidla SAS. SAS je taky možné snadno integrovat s přístupem, ve kterém klient musí nejdřív projít kontrolu autorizace pomocí jiné služby a potom vystavit token. Druhý přístup je podobný vzoru využití služby ACS, ale umožňuje vystavovat tokeny přístupu na základě podmínek specifických pro aplikaci, které je obtížné vyjádřit ve službě ACS.
 
-Pro všechny existující aplikace, které jsou závislé na službě ACS, vyzýváme zákazníky, aby migrovali své aplikace a místo toho spoléhali na SAS.
+Pro všechny existující aplikace, které jsou závislé na službě ACS, doporučujeme zákazníkům migrovat své aplikace tak, aby se místo toho spoléhali na SAS.
 
 ## <a name="migration-scenarios"></a> Scénáře migrace
 
-ACS a Service Bus jsou integrovány prostřednictvím sdílené znalosti *podpisového klíče*. Podpisový klíč používá obor názvů služby ACS k podepisování autorizačních tokenů a služba Service Bus jej používá k ověření, že token byl vydán spárovaným oborem názvů služby ACS. Obor názvů služby ACS obsahuje identity služeb a autorizační pravidla. Autorizační pravidla definují, která identita služby nebo který token vydaný externím zprostředkovatelem identity získá jaký typ přístupu k části grafu oboru názvů Service Bus ve formě shody s nejdelší předponou.
+Služby ACS a Service Bus jsou integrovány prostřednictvím sdíleného vědomí *podpisového klíče*. Podpisový klíč se používá v oboru názvů ACS k podepisování tokenů autorizace a používá ho Service Bus k ověření toho, že token byl vydaný spárovaným oborem názvů ACS. Obor názvů ACS obsahuje identity služby a autorizační pravidla. Autorizační pravidla definují, která identita služby nebo který token vydaný externím zprostředkovatelem identity získá typ přístupu k části grafu oboru názvů Service Bus ve formě shody s nejdelší předponou.
 
-Pravidlo služby ACS může například udělit deklaraci **Odeslat** na předponu `/` cesty k identitě služby, což znamená, že token vydaný službou ACS na základě tohoto pravidla uděluje klientům práva k odeslání všem entitám v oboru názvů. Pokud je `/abc`předpona cesty , identita je omezena `abc` na odesílání entitám s názvem nebo uspořádaným pod touto předponou. Předpokládá se, že čtenáři tohoto průvodce migrací jsou již obeznámeni s těmito koncepty.
+Pravidlo služby ACS může například **udělit deklaraci identity pro** předponu `/` cesty k identitě služby, což znamená, že token vydaný službou ACS na základě tohoto pravidla uděluje oprávnění klienta k odesílání všem entitám v oboru názvů. Pokud je `/abc`Předpona cesty, je identita omezena na odeslání do entit s názvem `abc` nebo uspořádané pod touto předponou. Předpokládá se, že čtenáři těchto pokynů k migraci už znají tyto koncepty.
 
-Scénáře migrace spadají do tří širokých kategorií:
+Scénáře migrace spadají do tří hlavních kategorií:
 
-1.  **Nezměněné výchozí hodnoty**. Někteří zákazníci používají objekt [SharedSecretTokenProvider,](/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider) který předává automaticky generovanou identitu služby **vlastníka** a jeho tajný klíč pro obor názvů služby ACS, spárovaný s oborem názvů Service Bus a nepřidávejte nová pravidla.
+1.  **Nezměněné výchozí hodnoty**. Někteří zákazníci používají objekt [SharedSecretTokenProvider](/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider) , který předá automaticky generovanou identitu služby **vlastníka** a její tajný klíč pro obor názvů ACS, spárováný s oborem názvů Service Bus a nepřidává nová pravidla.
 
-2.  **Vlastní identity služby s jednoduchými pravidly**. Někteří zákazníci přidávají nové identity služby a udělují každé nové identitě služby **Oprávnění Pro odesílání**, **naslouchání**a **správa** pro jednu konkrétní entitu.
+2.  **Vlastní identity služby s jednoduchými pravidly**. Někteří zákazníci přidávají nové identity služby a udělují každé nové identitě služby oprávnění **Odeslat**, **naslouchat**a **Spravovat** pro jednu konkrétní entitu.
 
-3.  **Vlastní identity služeb se složitými pravidly**. Velmi málo zákazníků má složité sady pravidel, ve kterých jsou externě vydané tokeny mapovány na práva v přenosu nebo kde je jedné identitě služby přiřazena diferencovaná práva na několika cestách oboru názvů prostřednictvím více pravidel.
+3.  **Vlastní identity služby se složitými pravidly**. Příliš málo zákazníků má komplexní sady pravidel, ve kterých jsou externě vydávané tokeny namapovány na práva na Relay nebo kde je jedna identita služby přiřazena odlišná práva k několika cestám oboru názvů prostřednictvím více pravidel.
 
-Potřebujete-li pomoc s migrací složitých sad pravidel, můžete kontaktovat [podporu Azure](https://azure.microsoft.com/support/options/). Další dva scénáře umožňují přímou migraci.
+Pro pomoc s migrací komplexních sad pravidel se můžete obrátit na [podporu Azure](https://azure.microsoft.com/support/options/). Další dva scénáře umožňují přímá migrace.
 
 ### <a name="unchanged-defaults"></a>Nezměněné výchozí hodnoty
 
-Pokud vaše aplikace nezměnila výchozí hodnoty služby ACS, můžete nahradit veškeré použití [SharedSecretTokenProvider](/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider) objektem [SharedAccessSignatureTokenProvider](/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider) a použít obor názvů předkonfigurovaný **RootManageSharedAccessKey** namísto účtu **vlastníka** služby ACS. Všimněte si, že i s účtem **vlastníka** služby ACS tato konfigurace nebyla (a stále je) obecně doporučena, protože tento účet nebo pravidlo poskytuje úplnou autoritu pro správu nad oborem názvů, včetně oprávnění k odstranění všech entit.
+Pokud vaše aplikace nezměnila výchozí nastavení služby ACS, můžete nahradit všechna [SharedSecretTokenProvider](/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider) využití objektem [SharedAccessSignatureTokenProvider](/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider) a místo účtu **vlastníka** služby ACS použít **RootManageSharedAccessKey** s předkonfigurovaným oborem názvů. Pamatujte na to, že i s účtem **vlastníka** služby ACS byla tato konfigurace (a stále ještě) obecně doporučená, protože tento účet nebo pravidlo poskytují plnou autoritu pro správu nad oborem názvů, včetně oprávnění k odstraňování jakýchkoli entit.
 
 ### <a name="simple-rules"></a>Jednoduchá pravidla
 
-Pokud aplikace používá vlastní identity služby s jednoduchými pravidly, migrace je jednoduchá v případě, kdy byla vytvořena identita služby ACS, která poskytuje řízení přístupu v určité frontě. Tento scénář je často případ v řešení stylu SaaS, kde každá fronta se používá jako most do lokality klienta nebo pobočky a identita služby je vytvořen pro tento konkrétní web. V takovém případě lze příslušnou identitu služby migrovat do pravidla sdíleného přístupového podpisu přímo ve frontě. Název identity služby se může stát názvem pravidla SAS a klíč identity služby se může stát klíčem pravidla SAS. Práva pravidla SAS jsou pak konfigurována jako rovnocenná příslušnému pravidlu acs pro entitu.
+Pokud aplikace používá vlastní identity služby s jednoduchými pravidly, migrace je jednoduchá v případě, že byla vytvořena identita služby ACS, která poskytuje řízení přístupu v konkrétní frontě. Tento scénář se často používá v řešeních ve stylu SaaS, kde se jednotlivé fronty používají jako most na webu klienta nebo pobočce a identita služby se pro danou lokalitu vytvoří. V takovém případě může být příslušná identita služby migrována do pravidla sdíleného přístupového podpisu přímo do fronty. Název identity služby se může stát názvem pravidla SAS a klíč identity služby se může stát klíčem pravidla SAS. Práva pravidla SAS se pak nakonfigurují jako odpovídající příslušné pravidlo služby ACS pro danou entitu.
 
-Tuto novou a dodatečnou konfiguraci SAS můžete umístit na libovolném existujícím oboru názvů, který je federován službou ACS, a migrace mimo službu ACS se následně provede pomocí [služby SharedAccessSignatureTokenProvider](/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider) namísto [sharedsecrettokenprovider](/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider). Obor názvů nemusí být odpojen ze služeb ACS.
+Tuto novou a dodatečnou konfiguraci SAS můžete provést na jakémkoli stávajícím oboru názvů, který je federované pomocí služby ACS, a pak se migrace mimo službu ACS provede pomocí [SharedAccessSignatureTokenProvider](/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider) namísto [SharedSecretTokenProvider](/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider). Obor názvů není nutné odpojit od služby ACS.
 
-### <a name="complex-rules"></a>Komplexní pravidla
+### <a name="complex-rules"></a>Složitá pravidla
 
-Pravidla SAS nejsou určeny k účtům, ale jsou pojmenovány podpisové klíče přidružené k právům. Jako takové scénáře, ve kterých aplikace vytvoří mnoho identit služby a uděluje jim přístupová práva pro několik entit nebo celý obor názvů stále vyžadují zprostředkovatele vystavující tokeny. Pokyny pro takového zprostředkovatele můžete získat [kontaktováním podpory](https://azure.microsoft.com/support/options/).
+Pravidla SAS nejsou určena pro účty, ale mají pojmenované podpisové klíče přidružené k právům. V takových scénářích, ve kterých aplikace vytváří mnoho identit služeb a uděluje jim přístupová práva pro několik entit, nebo celý obor názvů stále vyžaduje zprostředkovatele vydávající token. Obraťte se na [podporu](https://azure.microsoft.com/support/options/), kde můžete získat pokyny pro takového zprostředkovatele.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o ověřování služby Service Bus najdete v následujících tématech:
+Další informace o ověřování Service Bus najdete v následujících tématech:
 
 * [Ověřování a autorizace Service Bus](service-bus-authentication-and-authorization.md)
-* [Ověřování služby Service Bus pomocí sdílených přístupových podpisů](service-bus-sas.md)
+* [Service Bus ověřování pomocí sdílených přístupových podpisů](service-bus-sas.md)
 

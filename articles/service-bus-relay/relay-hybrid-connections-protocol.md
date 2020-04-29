@@ -1,6 +1,6 @@
 ---
-title: Průvodce protokolem hybridních připojení azure relay | Dokumenty společnosti Microsoft
-description: Tento článek popisuje interakce na straně klienta s přenosem hybridních připojení pro připojení klientů v rolích posluchače a odesílatele.
+title: Průvodce protokolem Hybrid Connections Azure Relay | Microsoft Docs
+description: Tento článek popisuje interakce na straně klienta s Hybrid Connections Relay pro připojení klientů v rolích naslouchacího procesu a odesilatele.
 services: service-bus-relay
 documentationcenter: na
 author: clemensv
@@ -15,168 +15,168 @@ ms.workload: na
 ms.date: 01/21/2020
 ms.author: clemensv
 ms.openlocfilehash: 68668452152064584d1c419a3053ccb642b103f8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76514948"
 ---
-# <a name="azure-relay-hybrid-connections-protocol"></a>Protokol hybridních připojení azure relay
+# <a name="azure-relay-hybrid-connections-protocol"></a>Protokol Azure Relay Hybrid Connections
 
-Azure Relay je jedním z klíčových pilířů schopností platformy Azure Service Bus. Nová funkce _hybridních připojení_ relé je bezpečný vývoj protokolu s otevřeným protokolem založený na protokolech HTTP a WebSockets. Nahrazuje bývalou, stejně pojmenovanou funkci _BizTalk Services,_ která byla postavena na základech proprietárního protokolu. Integrace hybridních připojení do azure app services bude i nadále fungovat tak, jak je.
+Azure Relay je jedním z klíčových pilířů Azure Service Bus platformy. Novou funkcí _Hybrid Connections_ relay je zabezpečený vývoj v otevřeném protokolu založený na http a WebSockets. Nahrazuje předchozí, stejně pojmenovanou _BizTalk Services_ funkci, která byla postavená na speciálním základu protokolu. Integrace Hybrid Connections do Azure App Services bude i nadále fungovat tak, jak je.
 
-Hybridní připojení umožňuje obousměrnou binární komunikaci datového proudu a jednoduchý tok datového gramu mezi dvěma síťovými aplikacemi. Buď nebo obě strany mohou být umístěny za natnebo firewally.
+Hybrid Connections umožňuje obousměrnou, binární datový proudovou komunikaci a tok jednoduchého datagramu mezi dvěma síťovými aplikacemi. V případě zařízení NAT nebo bran firewall můžou být obě strany nebo obě strany umístěné za ním.
 
-Tento článek popisuje interakce na straně klienta s přenosem hybridních připojení pro připojení klientů v rolích posluchače a odesílatele. Také popisuje, jak posluchači přijímat nová připojení a požadavky.
+Tento článek popisuje interakce na straně klienta s Hybrid Connections Relay pro připojení klientů v rolích naslouchacího procesu a odesilatele. Také popisuje, jak naslouchací procesy přijímají nová připojení a požadavky.
 
 ## <a name="interaction-model"></a>Model interakce
 
-Přenos hybridních připojení spojuje dvě strany tím, že poskytuje bod setkání v cloudu Azure, který mohou strany zjistit a připojit se z hlediska vlastní sítě. Bod setkání se nazývá "Hybridní připojení" v této a další dokumentaci, v api a také na portálu Azure. Koncový bod služby hybridní připojení se označuje jako "služba" pro zbytek tohoto článku.
+Hybrid Connections Relay spojuje dvě strany tím, že poskytuje v cloudu Azure bod Rendezvous, který můžou strany zjišťovat a připojovat z pohledu vlastní sítě. Bod Rendezvous se v této a další dokumentaci, v rozhraních API a také v Azure Portal nazývá "hybridní připojení". Koncový bod služby Hybrid Connections se označuje jako služba pro zbývající část tohoto článku.
 
-Služba umožňuje předávání připojení webového soketu a požadavků a odpovědí HTTP(S).
+Služba umožňuje přenášet připojení webového soketu a žádosti a odpovědi HTTP (S).
 
-Model interakce se opírá o názvosloví vytvořené mnoha dalšími síťovými api. Je naslouchací proces, který nejprve označuje připravenost ke zpracování příchozích připojení a následně je přijme při jejich doručení. Na druhé straně se klient připojí k naslouchacímu procesu a očekává, že toto připojení bude přijato pro vytvoření obousměrné komunikační cesty. "Připojit", "Listen" a "Accept" jsou stejné termíny, které najdete ve většině rozhraní API soketu.
+Model interakce se váže na názvosloví stanovené mnoha dalšími síťovými rozhraními API. Je k dispozici naslouchací proces, který nejprve indikuje připravenost pro zpracování příchozích připojení a následně je přijímá při jejich doručení. Na druhé straně se klient připojí ke službě Listener a očekává, že připojení bude přijato pro vytvoření obousměrné komunikační cesty. Podmínky "připojit", "naslouchání" a "přijmout" jsou stejné, jako ty, které najdete ve většině rozhraní API soketu.
 
-Jakýkoli model přenášené komunikace má obě strany, které odchozí připojení k koncovému bodu služby. To je "posluchač" také "klient" v hovorové použití a může také způsobit další terminologie přetížení. Přesná terminologie, která se proto používá pro hybridní připojení, je následující:
+Libovolný přenosový model přenosu má jednu ze strany, která provádí odchozí připojení ke koncovému bodu služby. Tím "naslouchací proces" také "klient" v Colloquial použít a může také způsobit další přetížení terminologie. Přesná terminologie, která se proto používá pro Hybrid Connections, je následující:
 
-Programy na obou stranách připojení se nazývají "klienti", protože jsou klienty služby. Klient, který čeká a přijímá připojení je "naslouchací proces", nebo se říká, že je v roli "naslouchací proces.". Klient, který iniciuje nové připojení k naslouchací proces prostřednictvím služby se nazývá "odesílatel", nebo je v roli odesílatele.
+Programy na obou stranách připojení se nazývají "klienti", protože se jedná o klienty služby. Klient, který čeká na a akceptuje připojení, je "naslouchací proces", nebo se označuje jako "role naslouchacího procesu". Klient, který iniciuje nové připojení ke službě Listener prostřednictvím služby, se nazývá "odesilatel", nebo se nachází v roli "odesilatel".
 
-### <a name="listener-interactions"></a>Interakce posluchače
+### <a name="listener-interactions"></a>Interakce naslouchacího procesu
 
-Naslouchací proces má pět interakcí se službou; všechny podrobnosti o vodičích jsou popsány dále v tomto článku v referenční části.
+Naslouchací proces má pro službu pět interakcí. všechny podrobnosti o drátech jsou popsány dále v tomto článku v referenční části.
 
-Zprávy naslouchání, přijímání a požadavku jsou přijímány ze služby. Operace Obnovit a Ping jsou odesílány naslouchací proces.
+Zprávy o naslouchání, přijetí a požadavku jsou přijímány od služby. Naslouchací proces odesílá operace obnovení a příkazového testu.
 
-#### <a name="listen-message"></a>Poslech zprávy
+#### <a name="listen-message"></a>Zpráva o naslouchání
 
-Chcete-li označit připravenost ke službě, že naslouchací proces je připraven přijmout připojení, vytvoří odchozí připojení WebSocket. Připojení handshake nese název hybridní připojení nakonfigurované v oboru názvů přenosu a token zabezpečení, který uděluje "Listen" právo na tento název.
+Pro indikaci připravenosti na službu, že naslouchací proces je připravený k přijímání připojení, vytvoří odchozí připojení protokolu WebSocket. Metoda handshake připojení přenáší název hybridního připojení nakonfigurovaného v oboru názvů Relay a token zabezpečení, který uděluje "naslouchání" na daném názvu.
 
-Když websocket je přijat službou, registrace je dokončena a zavedené WebSocket je udržována naživu jako "kontrolní kanál" pro povolení všech následných interakcí. Služba umožňuje až 25 souběžných naslouchacích procesů pro jedno hybridní připojení. Kvóta pro AppHooks je třeba určit.
+Když služba protokol WebSocket přijme, registrace se dokončí a zavedený WebSocket se udržuje jako řídicí kanál, aby se povolily všechny následné interakce. Služba umožňuje až 25 souběžných naslouchacího procesu pro jedno hybridní připojení. Je určena kvóta pro AppHooks.
 
-Pro hybridní připojení, pokud existují dva nebo více aktivních naslouchacích procesy, příchozí připojení jsou vyváženy mezi nimi v náhodném pořadí; spravedlivé rozdělení je pokus s maximálním úsilím.
+Pokud je pro Hybrid Connections k dispozici nejméně dva aktivní naslouchací procesy, jsou příchozí připojení rozložena v náhodném pořadí; došlo k pokusu o spravedlivou distribuci s nejlepším úsilím.
 
 #### <a name="accept-message"></a>Přijmout zprávu
 
-Když odesílatel otevře nové připojení ke službě, služba vybere a upozorní jeden z aktivních naslouchacích procesů na hybridní připojení. Toto oznámení je odesláno naslouchací proces prostředně prostředně prostředně otevřené ovládací kanál jako zpráva JSON. Zpráva obsahuje adresu URL koncového bodu WebSocket, ke kterému se musí naslouchací proces připojit pro přijetí připojení.
+Když odesílatel otevře nové připojení ke službě, služba zvolí a upozorní jeden z aktivních naslouchací proces v hybridním připojení. Toto oznámení se odešle do naslouchací služby prostřednictvím kanálu otevřeného ovládacího prvku jako zpráva JSON. Zpráva obsahuje adresu URL koncového bodu WebSocket, ke kterému se musí naslouchací proces připojit, aby bylo možné připojení přijmout.
 
-Adresa URL může a musí být použita přímo posluchačem bez jakékoli další práce.
-Kódované informace jsou platné pouze krátkou dobu, v podstatě tak dlouho, dokud odesílatel je ochoten čekat na připojení, které má být navázáno end-to-end. Maximální předpokládaná hodnota je 30 sekund. Adresu URL lze použít pouze pro jeden úspěšný pokus o připojení. Jakmile je vytvořeno připojení WebSocket s adresou URL rendezvous, všechny další aktivity na této websocket je přenášen z a odesílateli. K tomu dochází bez jakéhokoli zásahu nebo výkladu ze strany služby.
+Adresu URL může a musí použít přímo naslouchací proces bez jakékoli další práce.
+Zakódované informace jsou platné pouze po krátkou dobu, a to v podstatě po dobu, kdy je odesilatel ochotn, aby se připojení navázalo jako koncové. Maximum, které se má předpokládat, je 30 sekund. Adresu URL lze použít pouze pro jeden úspěšný pokus o připojení. Jakmile se naváže připojení pomocí protokolu WebSocket k adrese URL aplikace Rendezvous, veškerá další aktivita v tomto protokolu WebSocket se předává odesílateli a odesilateli. K tomu dochází bez zásahu nebo výkladu služby.
 
-### <a name="request-message"></a>Žádost o zprávu
+### <a name="request-message"></a>Zpráva požadavku
 
-Kromě připojení WebSocket může naslouchací proces přijímat také rámce požadavků HTTP od odesílatele, pokud je tato funkce explicitně povolena v hybridním připojení.
+Kromě připojení pomocí protokolu WebSocket může naslouchací proces také přijímat z odesilatele snímky požadavků HTTP, pokud je tato funkce v hybridním připojení explicitně povolená.
 
-Naslouchací procesy, které `request` se připojují k hybridní připojení s podporou HTTP musí zpracovat gesto. Naslouchací `request` proces, který nezpracovává a proto způsobuje opakované chyby časového oběhu při připojení může být na černé listině služby v budoucnu.
+Naslouchací procesy, které se připojují k Hybrid Connections s podporou `request` protokolu HTTP, musí zpracovat gesto. Naslouchací proces, který nezpracovává `request` , a proto způsobuje opakované chyby vypršení časového limitu při připojení, může služba v budoucnu zakázaná.
 
-Metadata hlavičky protokolu HTTP jsou přeložena do JSON pro jednodušší zpracování rámcem posluchače, také proto, že knihovny analýzy záhlaví HTTP jsou vzácnější než analyzátory JSON. Metadata PROTOKOLU HTTP, která jsou relevantní pouze pro vztah mezi odesílatelem a bránou HTTP přenosu, včetně informací o autorizaci, nejsou předána. Těla požadavků HTTP jsou transparentně přenesena jako binární rámce WebSocket.
+Metadata hlavičky rámce protokolu HTTP jsou přeložena do formátu JSON pro jednodušší zpracování v rámci architektury naslouchacího procesu, a to také proto, že knihovny pro analýzu hlaviček protokolu HTTP jsou rarer než analyzátory JSON. Metadata HTTP, která jsou relevantní pouze pro vztahy mezi odesílatelem a předávací HTTP Gateway, včetně autorizačních informací, nejsou předávána. Tělo požadavku HTTP se transparentně přenáší jako binární rámce WebSocket.
 
-Naslouchací proces může reagovat na požadavky HTTP pomocí ekvivalentní gesto odpovědi.
+Naslouchací proces může reagovat na požadavky HTTP pomocí gesta ekvivalentní odezvy.
 
-Tok požadavku a odpovědi používá řídicí kanál ve výchozím nastavení, ale může být "upgradován" na odlišné rendezvous WebSocket, kdykoli je to požadováno. Odlišné připojení WebSocket zlepšit propustnost pro každou konverzaci klienta, ale zatěžují naslouchací proces s více připojení, které je třeba zpracovat, které nemusí být touha pro zjednodušené klienty.
+Tok požadavků a odpovědí používá ve výchozím nastavení řídicí kanál, ale v případě potřeby může být "upgradován" na samostatný Rendezvous WebSocket. Rozdílová připojení protokolu WebSocket zvyšují propustnost každé konverzace klientů, ale zatěžují naslouchací proces s větším množstvím připojení, která je potřeba zpracovat, což nemusí být žádoucí pro zjednodušené klienty.
 
-Na kontrolním kanálu jsou těla požadavků a odpovědí omezena na maximálně 64 kB. Metadata záhlaví PROTOKOLU HTTP jsou omezena na celkem 32 kB. Pokud požadavek nebo odpověď překročí tuto prahovou hodnotu, musí naslouchací proces upgradovat na websocket schůzky pomocí gesta ekvivalentního zpracování [accept](#accept-message).
+V řídicím kanálu jsou texty požadavků a odpovědí omezeny na nejvíce 64 kB. Metadata hlaviček protokolu HTTP jsou omezená na celkem 32 kB. Pokud žádost nebo odpověď překročí tuto prahovou hodnotu, naslouchací proces musí upgradovat na Rendezvous WebSocket pomocí gesta ekvivalentního ke zpracování [přijetí](#accept-message).
 
-U požadavků služba rozhodne, zda směrovat požadavky přes řídicí kanál. To zahrnuje, ale nemusí být omezena na případy, kdy požadavek překročí 64 kB (záhlaví plus tělo) úplně, nebo pokud je požadavek odeslán s ["chunked" kódování přenosu](https://tools.ietf.org/html/rfc7230#section-4.1) a služba má důvod očekávat, že požadavek překročí 64 kB nebo čtení požadavku není okamžitá. Pokud se služba rozhodne doručit požadavek přes rendezvous, předá pouze adresu rendezvous naslouchací proces.
-Naslouchací proces pak musí vytvořit rendezvous WebSocket a služba okamžitě poskytuje úplný požadavek včetně těla přes rendezvous WebSocket. Odpověď musí také použít rendezvous WebSocket.
+V případě požadavků služba rozhodne, zda směrovat požadavky prostřednictvím řídicího kanálu. To zahrnuje, ale nemusí být omezené na případy, kdy požadavek překračuje 64 kB (záhlaví a tělo), nebo pokud se požadavek pošle s ["přenosovým kódováním](https://tools.ietf.org/html/rfc7230#section-4.1) " v bloku, a služba má důvod, proč by požadavek překročil 64 kB nebo přečtení žádosti není okamžitý. Pokud se služba rozhodne pro doručení žádosti přes Rendezvous, předá pouze do naslouchacího procesu pouze adresu Rendezvous.
+Naslouchací proces pak musí zřídit Rendezvous WebSocket a služba se vyzve k okamžitému doručení úplné žádosti včetně institucí přes WebSocket v Rendezvous. Odpověď musí také používat rozhraní Rendezvous WebSocket.
 
-Pro požadavky, které dorazí přes řídicí kanál, naslouchací proces rozhodne, zda reagovat přes řídicí kanál nebo prostřednictvím rendezvous. Služba musí obsahovat adresu setkání s každým požadavkem směrovaným přes řídicí kanál. Tato adresa je platná pouze pro upgrade z aktuálního požadavku.
+U požadavků, které přicházejí do řídicího kanálu, naslouchá naslouchací proces, zda reaguje na řídicí kanál nebo prostřednictvím Rendezvous. Služba musí zahrnovat adresu Rendezvous u každého požadavku směrovaného přes řídicí kanál. Tato adresa je platná pouze pro upgrade z aktuální žádosti.
 
-Pokud se naslouchací proces rozhodne upgradovat, připojí se a okamžitě doručí odpověď přes zavedený soket schůzky.
+Pokud se naslouchací proces rozhodne upgradovat, připojí se a okamžitě doručí odpověď na vytvořený Rendezvous Socket.
 
-Po rendezvous WebSocket byla vytvořena, naslouchací proces by měl udržovat pro další zpracování požadavků a odpovědi od stejného klienta. Služba bude udržovat WebSocket tak dlouho, dokud připojení soketu HTTPS s odesílatelem přetrvává a bude směrovat všechny následné požadavky od tohoto odesílatele přes udržovaný WebSocket. Pokud se posluchač rozhodne vynechat websocket z jeho strany, služba také vypustí připojení k odesílateli, bez ohledu na to, zda již probíhá další požadavek.
+Po navázání služby Rendezvous WebSocket by měl naslouchací proces udržovat další zpracování žádostí a odpovědí ze stejného klienta. Služba zachová protokol WebSocket, pokud připojení soketu HTTPS s odesílatelem přetrvá a bude směrovat všechny následné žádosti od tohoto odesílatele prostřednictvím spravovaného protokolu WebSocket. Pokud se naslouchací proces rozhodne odstranit z jeho strany Rendezvous WebSocket, služba taky připojení k odesílateli odstraní bez ohledu na to, jestli už může probíhat další požadavek.
 
-#### <a name="renew-operation"></a>Obnovit provoz
+#### <a name="renew-operation"></a>Operace obnovení
 
-Token zabezpečení, který musí být použit k registraci naslouchací proces a udržovat řídicí kanál může vypršet, když je aktivní naslouchací proces. Vypršení platnosti tokenu nemá vliv na probíhající připojení, ale způsobí, že řídicí kanál, který má být vynechán službou v okamžiku vypršení platnosti nebo brzy po něm. Operace "obnovit" je zpráva JSON, kterou může naslouchací proces odeslat, aby nahradil token přidružený k řídicímu kanálu, aby mohl být řídicí kanál udržován po delší dobu.
+Token zabezpečení, který se musí použít k registraci naslouchacího procesu a udržování řídicího kanálu, může vypršet, zatímco je naslouchací proces aktivní. Vypršení platnosti tokenu nemá vliv na probíhající připojení, ale způsobí, že se řídicí kanál na základě této služby vynechá nebo brzy po vypršení platnosti. Operace "prodloužit" je zpráva JSON, kterou může naslouchací proces odeslat, aby nahradil token přidružený k řídicímu kanálu, aby bylo možné udržovat řídicí kanál pro rozšířené tečky.
 
-#### <a name="ping-operation"></a>Operace příkazu Ping
+#### <a name="ping-operation"></a>Operace s příkazy pro odeslání
 
-Pokud řídicí kanál zůstane nečinný po dlouhou dobu, zprostředkovatelé na cestě, jako jsou například vykladače zatížení nebo NAT může vyřadit připojení TCP. Operace "ping" se vyhýbá, že odesláním malé množství dat na kanálu, který připomíná všem na síťové trase, že připojení má být naživu a slouží také jako "live" test pro naslouchací proces. Pokud příkaz ping selže, řídicí kanál by měl být považován za nepoužitelný a naslouchací proces by se měl znovu připojit.
+Pokud řídicí kanál zůstane po dlouhou dobu nečinný, prostředníky na cestě, jako jsou nástroje pro vyrovnávání zatížení nebo NAT, můžou připojení TCP vyřadit. Operace "příkazového testu" se zabrání tím, že pošle malý objem dat v kanálu, který připomíná všechny síťové trasy, které má připojení fungovat, a slouží také jako "živý" test pro naslouchací proces. Pokud se test z příkazového testu nezdařil, řídicí kanál by měl být považován za nepoužitelný a naslouchací proces by se měl znovu připojit.
 
-### <a name="sender-interaction"></a>Interakce odesílatele
+### <a name="sender-interaction"></a>Interakce odesilatele
 
-Odesílatel má dvě interakce se službou: připojí webový soket nebo odesílá požadavky prostřednictvím protokolu HTTPS. Požadavky nelze odeslat přes webový soket z role odesílatele.
+Odesílatel má dvě interakce se službou: připojuje webový soket nebo odesílá požadavky prostřednictvím protokolu HTTPS. Žádosti nelze odeslat přes webový soket z role odesílatele.
 
 #### <a name="connect-operation"></a>Operace připojení
 
-Operace "připojit" otevře WebSocket ve službě, zadá název hybridní připojení a (volitelně, ale ve výchozím nastavení) token zabezpečení udělující oprávnění "Odeslat" v řetězci dotazu. Služba pak interaguje s naslouchací proces způsobem popsaným dříve a naslouchací proces vytvoří rendezvous připojení, které je spojeno s tímto WebSocket. Po WebSocket byl přijat, všechny další interakce na tomto WebSocket jsou s připojeným naslouchací proces.
+Operace "připojit" otevírá na službě WebSocket, která poskytuje název hybridního připojení a (volitelně ale vyžaduje) token zabezpečení, který v řetězci dotazu uděluje oprávnění Odeslat. Služba pak spolupracuje s naslouchacím postupem v výše popsaném postupu a naslouchací proces vytvoří připojení Rendezvous, které je připojeno k tomuto objektu WebSocket. Po přijetí protokolu WebSocket se všechny další interakce tohoto protokolu WebSocket nacházejí v připojeném naslouchacího procesu.
 
 #### <a name="request-operation"></a>Operace požadavku
 
-U hybridních připojení, pro které byla funkce povolena, může odesílatel odesílat do značné míry neomezené požadavky HTTP posluchačům.
+Pro Hybrid Connections, pro které byla funkce povolená, může odesílatel odeslat převážně neomezený požadavek HTTP na naslouchací procesy.
 
-S výjimkou přístupového tokenu přenosu, který je vložen v řetězci dotazu nebo v hlavičce protokolu HTTP požadavku, je relé plně transparentní pro všechny operace PROTOKOLU HTTP na adrese Relay a všechny přípony cesty k adrese relé, takže posluchač má plně kontrolu nad autorizací od konce na konec a dokonce i pro funkce rozšíření HTTP, jako je [CORS](https://www.w3.org/TR/cors/).
+S výjimkou přístupového tokenu přenosu, který je buď vložený v řetězci dotazu, nebo v hlavičce HTTP žádosti, je přenos plně transparentní na všechny operace HTTP na adrese pro předávání a na všech příponách cesty k adrese přenosu, takže naslouchací proces je plně pod kontrolou kompletního ověřování a dokonce i funkcí rozšíření HTTP, jako je [CORS](https://www.w3.org/TR/cors/).
 
-Autorizace odesílatele s koncovým bodem relé je ve výchozím nastavení zapnutá, ale je volitelná. Vlastník hybridního připojení může povolit anonymní odesílatele. Služba zachytí, zkontroluje a zapne informace o autorizaci následujícím způsobem:
+Autorizace odesilatele s koncovým bodem přenosu je ve výchozím nastavení zapnutá, ale je VOLITELNá. Vlastník hybridního připojení se může rozhodnout, že povolí anonymní odesílatele. Služba bude zachytávat, kontrolovat a odstraňovat informace o autorizaci následujícím způsobem:
 
-1. Pokud řetězec dotazu `sb-hc-token` obsahuje výraz, bude vždy odstraněn z řetězce dotazu. Bude vyhodnocena, pokud je autorizace relé zapnuta.
-2. Pokud hlavičky požadavku `ServiceBusAuthorization` obsahují hlavičku, bude výraz záhlaví vždy odstraněn z kolekce záhlaví.
-   Bude vyhodnocena, pokud je autorizace relé zapnuta.
-3. Autorizace přenosu je zapnuta a pokud hlavičky `Authorization` požadavku obsahují hlavičku a žádný z předchozích výrazů není k dispozici, bude záhlaví vyhodnoceno a odstraněno. V opačném `Authorization`případě je vždy předán jako-je.
+1. Pokud řetězec dotazu obsahuje `sb-hc-token` výraz, výraz bude vždy odstraněn z řetězce dotazu. Vyhodnotí se, pokud je zapnutá autorizace přenosu.
+2. Pokud hlavičky požadavku obsahují `ServiceBusAuthorization` hlavičku, výraz záhlaví bude vždy odstraněn z kolekce hlaviček.
+   Vyhodnotí se, pokud je zapnutá autorizace přenosu.
+3. Jenom v případě, že je zapnutá autorizace přenosu, a pokud hlavičky žádosti `Authorization` obsahují hlavičku a není k dispozici žádný z předchozích výrazů, bude tato hlavička vyhodnocena a odstraněna. `Authorization`V opačném případě se vždy předává jako.
 
-Pokud neexistuje žádný aktivní naslouchací proces, služba vrátí kód chyby 502 "Bad Gateway". Pokud služba nezobrazí zpracovat požadavek, služba vrátí 504 "Časový čas brány" po 60 sekundách.
+Pokud není k dispozici žádný aktivní naslouchací proces, služba vrátí kód chyby 502 "Chybná brána". Pokud se službě neobjeví požadavek na zpracování této žádosti, služba vrátí 504 "časový limit brány" po 60 sekundách.
 
 ### <a name="interaction-summary"></a>Souhrn interakce
 
-Výsledkem tohoto modelu interakce je, že klient odesílatele pochází z handshake s "čisté" WebSocket, který je připojen k naslouchací proces a který nepotřebuje žádné další preambule nebo přípravu. Tento model umožňuje prakticky všechny existující implementace klienta WebSocket snadno využít služby hybridní připojení tím, že poskytuje správně sestavené URL do jejich websocket klientské vrstvy.
+Výsledkem tohoto modelu interakce je to, že klient odesilatele z handshake vychází pomocí "čistého" WebSocket, který je připojený k naslouchacímu procesu a který nevyžaduje žádné další preambule ani přípravu. Tento model umožňuje prakticky všem existujícím implementům klientů WebSocket využívat službu Hybrid Connections tím, že poskytuje správnou vytvořenou adresu URL do své klientské vrstvy WebSocket.
 
-Rendezvous připojení WebSocket, který naslouchací proces získá prostřednictvím přijmout interakce je také čisté a může být předán a existující websocket server implementace s minimální extra abstrakce, která rozlišuje mezi "přijmout" operace na naslouchací procesy místní sítě jejich rozhraní a vzdálené operace "přijmout" hybridní připojení.
+Služba Rendezvous Connection WebSocket, kterou naslouchací proces získá prostřednictvím interakce přijmout, je také čistá a může být předána libovolné implementaci serveru WebSocket s minimální abstrakcí, která rozlišuje mezi "přijetí" na místních síťových posluchačích rozhraní a Hybrid Connections vzdálených operací "přijmout".
 
-Model požadavků/odpovědí HTTP poskytuje odesílateli do značné míry neomezenou plochu protokolu HTTP s volitelnou autorizační vrstvou. Naslouchací proces získá předem analyzovaný oddíl hlavičky požadavku HTTP, který lze převést zpět na příjem http požadavku nebo zpracován tak, jak je, s binárními snímky nesoucími těla HTTP. Odpovědi používají stejný formát. Interakce s méně než 64 KB těla požadavku a odpovědi lze zpracovat přes jeden webový soket, který je sdílen pro všechny odesílatele. Větší požadavky a odpovědi lze zpracovat pomocí modelu rendezvous.
+Model požadavků a odpovědí HTTP dává odesilateli do značné míry neomezenou oblast protokolu HTTP s VOLITELNou autorizační vrstvou. Naslouchací proces získá předem analyzovaný oddíl hlavičky požadavku HTTP, který se dá vrátit do podřízeného požadavku HTTP nebo zpracovat jako je, s binárními rámečky, které přenesou tělo HTTP. Odpovědi používají stejný formát. Interakce s méně než 64 KB textu žádosti a odpovědi může být zpracována přes jeden webový soket, který je sdílen pro všechny odesílatele. Větší požadavky a odpovědi lze zpracovat pomocí modelu Rendezvous.
 
 ## <a name="protocol-reference"></a>Odkaz na protokol
 
-Tato část popisuje podrobnosti o dříve popsaných interakcích protokolu.
+V této části najdete podrobné informace o interakcích protokolu popsaných výše.
 
-Všechna připojení WebSocket jsou provedena na portu 443 jako upgrade z https 1.1, který je běžně abstrahován některé WebSocket framework nebo API. Popis zde je zachována implementace neutrální, aniž by naznačovaly konkrétní rámec.
+Všechna připojení protokolu WebSocket se nastavují na portu 443 jako upgrade z HTTPS 1,1, který je běžně abstraktní některými rozhraními WebSocket nebo rozhraním API. Popis je udržován v neutrální implementaci bez návrhu konkrétního rozhraní.
 
-### <a name="listener-protocol"></a>Protokol posluchače
+### <a name="listener-protocol"></a>Protokol naslouchacího procesu
 
-Protokol naslouchací proces se skládá ze dvou gest připojení a tří operací zpráv.
+Protokol naslouchacího procesu se skládá ze dvou gest připojení a tří operací zpráv.
 
-#### <a name="listener-control-channel-connection"></a>Připojení řídicího kanálu naslouchací proces
+#### <a name="listener-control-channel-connection"></a>Připojení řídicího kanálu pro naslouchací proces
 
-Řídicí kanál je otevřen s vytvořením připojení WebSocket k:
+Řídicí kanál se otevře s vytvořením připojení protokolu WebSocket k:
 
 `wss://{namespace-address}/$hc/{path}?sb-hc-action=...[&sb-hc-id=...]&sb-hc-token=...`
 
-Jedná `namespace-address` se o plně kvalifikovaný název domény oboru názvů Azure Relay, který `{myname}.servicebus.windows.net`je hostitelem hybridního připojení, obvykle formuláře .
+`namespace-address` Je plně kvalifikovaný název domény Azure Relay oboru názvů, který je hostitelem hybridního připojení, většinou formuláře `{myname}.servicebus.windows.net`.
 
-Možnosti parametru řetězce dotazu jsou následující.
+Parametry řetězce dotazu jsou následující.
 
 | Parametr        | Požaduje se | Popis
 | ---------------- | -------- | -------------------------------------------
-| `sb-hc-action`   | Ano      | Pro roli posluchače musí být parametr **sb-hc-action=listen**
-| `{path}`         | Ano      | Cesta oboru názvů kódovaná adresou URL předkonfigurovaného hybridního připojení k registraci tohoto naslouchací procesu. Tento výraz je připojen `$hc/` k pevné části cesty.
-| `sb-hc-token`    | Ano\*    | Naslouchací proces musí poskytnout platný, URL kódovaný token sdíleného přístupu sběrnice pro obor názvů nebo hybridní připojení, které uděluje **listen** právo.
-| `sb-hc-id`       | Ne       | Toto volitelné ID dodané klientem umožňuje komplexní diagnostické trasování.
+| `sb-hc-action`   | Ano      | Pro roli naslouchacího procesu musí být parametr **SB-HC-Action = Listen** .
+| `{path}`         | Ano      | Cesta oboru názvů zakódovaného URL předkonfigurovaného hybridního připojení k registraci tohoto naslouchacího procesu. Tento výraz je připojen k části s pevnou `$hc/` cestou.
+| `sb-hc-token`    | Ano\*    | Naslouchací proces musí poskytovat platný, Service Bus sdílený přístupový token s kódováním URL pro obor názvů nebo hybridní připojení, které uděluje právo na **naslouchání** .
+| `sb-hc-id`       | Ne       | Toto volitelné ID pro klienta poskytuje kompletní trasování diagnostiky.
 
-Pokud se připojení WebSocket nezdaří z důvodu není registrována cesta hybridní připojení nebo neplatný nebo chybějící token nebo nějaká jiná chyba, je zpětná vazba chyby poskytována pomocí běžného modelu zpětné vazby stavu HTTP 1.1. Popis stavu obsahuje id pro sledování chyb, které lze sdělit pracovníkům podpory Azure:
+Pokud se připojení protokolu WebSocket nepovede kvůli registraci cesty k hybridnímu připojení nebo neplatnému nebo chybějícímu tokenu nebo nějaké jiné chybě, je k dispozici zpětná vazba k chybě pomocí běžného modelu zpětné vazby stavu HTTP 1,1. Popis stavu obsahuje ID sledování chyb, které může být sděleno pracovníkům podpory Azure:
 
 | kód | Chyba          | Popis
 | ---- | -------------- | -------------------------------------------------------------------
-| 404  | Nebyl nalezen.      | Cesta hybridního připojení je neplatná nebo je poškozená základní adresa URL.
-| 401  | Neautorizováno   | Token zabezpečení chybí nebo je poškozený nebo neplatný.
+| 404  | Nenalezeno      | Cesta k hybridnímu připojení je neplatná nebo základní adresa URL je poškozená.
+| 401  | Neautorizováno   | Token zabezpečení chybí nebo je neplatný nebo neplatný.
 | 403  | Forbidden      | Token zabezpečení není pro tuto cestu pro tuto akci platný.
-| 500  | Vnitřní chyba | Něco se ve službě pokazilo.
+| 500  | Vnitřní chyba | Ve službě se něco pokazilo.
 
-Pokud je připojení WebSocket záměrně vypnuto službou poté, co bylo původně nastaveno, je důvod sdělován pomocí příslušného kódu chyby protokolu WebSocket spolu s popisnou chybovou zprávou, která obsahuje také ID sledování. Služba nevypne řídicí kanál bez výskytu chybového stavu. Jakékoli čisté vypnutí je řízeno klientem.
+Pokud se připojení protokolu WebSocket úmyslně vypíná službou po jeho počátečním nastavení, je důvod k tomu sdělen pomocí vhodného kódu chyby protokolu WebSocket spolu s popisnou chybovou zprávou, která také obsahuje ID sledování. Služba nevypne řídicí kanál bez výskytu chybové podmínky. Jakékoli čisté vypnutí je řízeno klientem.
 
-| WS stav | Popis
+| Stav WS | Popis
 | --------- | -------------------------------------------------------------------------------
-| 1001      | Cesta hybridního připojení byla odstraněna nebo zakázána.
-| 1008      | Platnost tokenu zabezpečení vypršela, proto jsou porušeny zásady autorizace.
-| 1011      | Něco se ve službě pokazilo.
+| 1001      | Cesta k hybridnímu připojení je Odstraněná nebo zakázaná.
+| 1008      | Platnost tokenu zabezpečení vypršela, a proto je porušena zásada autorizace.
+| 1011      | Ve službě se něco pokazilo.
 
 #### <a name="accept-handshake"></a>Přijmout handshake
 
-Oznámení "přijmout" je odesláno službou naslouchací proces přes dříve vytvořený řídicí kanál jako zprávu JSON v textovém rámečku WebSocket. Na tuto zprávu není žádná odpověď.
+Oznámení "přijmout" odesílá služba do naslouchací služby přes dříve vytvořený kanál řízení jako zprávu JSON v textovém rámečku WebSocket. Neexistuje žádná odpověď na tuto zprávu.
 
-Zpráva obsahuje objekt JSON s názvem "accept", který definuje následující vlastnosti v tomto okamžiku:
+Zpráva obsahuje objekt JSON s názvem Accept, který v tuto chvíli definuje následující vlastnosti:
 
-* **adresa** – řetězec URL, který má být použit pro vytvoření WebSocket ke službě přijmout příchozí připojení.
-* **id** – jedinečný identifikátor pro toto připojení. Pokud bylo ID dodáno klientem odesílatele, jedná se o zadanou hodnotu odesílatele, jinak se jedná o systémovou hodnotu.
-* **connectHeaders** – všechny hlavičky HTTP, které byly dodány do koncového bodu přenosu odesílatelem, který také zahrnuje hlavičky Sec-WebSocket-Protocol a Sec-WebSocket-Extensions.
+* **Address** – řetězec adresy URL, který se má použít k vytvoření objektu WebSocket ke službě pro příjem příchozího připojení.
+* **ID** – jedinečný identifikátor pro toto připojení. Pokud byl identifikátor dodán klientem odesílatele, jedná se o hodnotu zadanou odesílatelem, jinak se jedná o systémovou vygenerovanou hodnotu.
+* **connectHeaders** – všechny hlavičky HTTP, které byly zadány do koncového bodu služby Relay odesílatelem, který také obsahuje hlavičky sec-WebSocket-Protocol a SEK-WebSockets-Extensions.
 
 ```json
 {
@@ -192,77 +192,77 @@ Zpráva obsahuje objekt JSON s názvem "accept", který definuje následující 
 }
 ```
 
-Adresa URL adresy uvedená ve zprávě JSON je použita posluchačem k vytvoření websocketu pro přijetí nebo odmítnutí soketu odesílatele.
+Adresa URL adresy zadaná ve zprávě JSON se používá pro naslouchací proces k vytvoření WebSocket pro příjem nebo odmítnutí soketu odesílatele.
 
-##### <a name="accepting-the-socket"></a>Přijetí zásuvky
+##### <a name="accepting-the-socket"></a>Přijetí soketu
 
-Chcete-li přijmout, naslouchací proces vytvoří připojení WebSocket k zakasové adrese.
+Pro přijetí naslouchacího procesu vytvoří připojení protokolu WebSocket k zadané adrese.
 
-Pokud zpráva "přijmout" `Sec-WebSocket-Protocol` nese záhlaví, očekává se, že naslouchací proces přijímá pouze WebSocket, pokud podporuje tento protokol. Navíc nastaví záhlaví jako WebSocket je vytvořen.
+Pokud zpráva "přijmout" obsahuje `Sec-WebSocket-Protocol` hlavičku, očekává se, že naslouchací proces přijímá pouze WebSocket, pokud tento protokol podporuje. Kromě toho nastaví záhlaví jako protokol WebSocket.
 
-Totéž platí pro `Sec-WebSocket-Extensions` záhlaví. Pokud rozhraní podporuje rozšíření, by měl nastavit záhlaví na straně `Sec-WebSocket-Extensions` serveru odpověď požadované handshake pro rozšíření.
+Totéž platí pro `Sec-WebSocket-Extensions` záhlaví. Pokud rozhraní podporuje rozšíření, měla by pro toto rozšíření nastavit hlavičku na odpověď na straně serveru vyžadované `Sec-WebSocket-Extensions` metodou handshake.
 
-Adresa URL musí být použita jako-je pro vytvoření soketu přijmout, ale obsahuje následující parametry:
+Adresa URL musí být použita jako-je určena pro vytvoření přijatelného soketu, ale obsahuje následující parametry:
 
 | Parametr      | Požaduje se | Popis
 | -------------- | -------- | -------------------------------------------------------------------
 | `sb-hc-action` | Ano      | Pro přijetí soketu musí být parametr`sb-hc-action=accept`
 | `{path}`       | Ano      | (viz následující odstavec)
-| `sb-hc-id`     | Ne       | Viz předchozí popis **id**.
+| `sb-hc-id`     | Ne       | Viz předchozí popis **ID**.
 
-`{path}`je cesta oboru názvů kódovaná adresou URL předkonfigurovaného hybridního připojení, na které má být tento naslouchací proces registrován. Tento výraz je připojen `$hc/` k pevné části cesty.
+`{path}`je cesta oboru názvů zakódovaná URL předkonfigurovaného hybridního připojení, na které se má tento naslouchací proces zaregistrovat. Tento výraz je připojen k části s pevnou `$hc/` cestou.
 
-Výraz `path` může být rozšířen o příponu a výraz řetězce dotazu, který následuje za registrovaným názvem po oddělujícím lomítku.
-To umožňuje klientovi odesílatele předat argumenty odeslání přijímajícímu posluchači, pokud není možné zahrnout hlavičky HTTP. Očekává se, že rozhraní naslouchací proces analyzuje pevnou část cesty a registrovaný název z cesty `sb-`a zpřístupní zbývající část, případně bez argumentů řetězce dotazu předponou , k dispozici aplikaci pro rozhodnutí, zda připojení přijmout.
+`path` Výraz může být prodloužen s příponou a výrazem řetězce dotazu, který následuje za zaregistrovaným názvem po oddělení lomítka.
+To umožňuje klientovi odesílatele předat argumenty odeslání do přijímacího naslouchacího procesu, pokud není možné zahrnout hlavičky protokolu HTTP. Očekává se, že rozhraní naslouchacího procesu analyzuje část pevné cesty a registrovaný název z cesty a provede zbytek, případně bez argumentů řetězce dotazu, který `sb-`je s předponou, k dispozici pro aplikaci k rozhodnutí, zda má být připojení přijatelné.
 
-Další informace naleznete v následující části "Sender Protocol".
+Další informace najdete v části "odesilatel protokolu".
 
-Pokud dojde k chybě, služba může odpovědět následujícím způsobem:
+Pokud dojde k chybě, může služba odpovědět následujícím způsobem:
 
 | kód | Chyba          | Popis
 | ---- | -------------- | -----------------------------------
 | 403  | Forbidden      | Adresa URL není platná.
-| 500  | Vnitřní chyba | Něco se pokazilo ve službě
+| 500  | Vnitřní chyba | Ve službě se něco pokazilo.
 
- Po navázání připojení server vypne websocket při vypnutí odesílatele WebSocket nebo s následujícím stavem:
+ Po navázání připojení server vypne WebSocket při vypnutí WebSocket odesílatele nebo s následujícím stavem:
 
-| WS stav | Popis                                                                     |
+| Stav WS | Popis                                                                     |
 | --------- | ------------------------------------------------------------------------------- |
-| 1001      | Klient odesílatele vypne připojení.                                    |
-| 1001      | Cesta hybridního připojení byla odstraněna nebo zakázána.                        |
-| 1008      | Platnost tokenu zabezpečení vypršela, proto jsou porušeny zásady autorizace. |
-| 1011      | Něco se ve službě pokazilo.                                            |
+| 1001      | Klient odesilatele ukončí připojení.                                    |
+| 1001      | Cesta k hybridnímu připojení je Odstraněná nebo zakázaná.                        |
+| 1008      | Platnost tokenu zabezpečení vypršela, a proto je porušena zásada autorizace. |
+| 1011      | Ve službě se něco pokazilo.                                            |
 
-##### <a name="rejecting-the-socket"></a>Odmítnutí zásuvky
+##### <a name="rejecting-the-socket"></a>Zamítnutí soketu
 
- Odmítnutí soketu po `accept` kontrole zprávy vyžaduje podobné handshake tak, aby stavový kód a popis stavu sdělující důvod odmítnutí může tok zpět odesílateli.
+ Zamítnutí soketu po kontrole `accept` zprávy vyžaduje podobnou metodu handshake, takže stavový kód a popis stavu, který komunikuje s odůvodněním zamítnutí, může přesměrovat zpět odesílatele.
 
- Volba návrhu protokolu je zde použít WebSocket handshake (který je navržen tak, aby skončil ve stavu definované chyby) tak, aby implementace klienta naslouchací procesu může i nadále spoléhat na klienta WebSocket a není nutné zaměstnávat další, holé HTTP klienta.
+ V této volbě protokolu se dá použít Metoda handshake protokolu WebSocket (která je navržená tak, aby se ukončila v definovaném chybovém stavu), takže implementace klientů naslouchacího procesu se můžou dál spoléhat na klienta WebSocket a nepotřebují používat extra a holého klienta HTTP.
 
- Chcete-li soket odmítnout, klient `accept` převezme identifikátor URI adresy ze zprávy a připojí k němu dva parametry řetězce dotazu, a to následovně:
+ Aby byl soket zamítnut, klient převezme ze `accept` zprávy identifikátor URI adresy a připojí dva parametry řetězce dotazu k tomuto objektu, a to následujícím způsobem:
 
 | Param                   | Požaduje se | Popis                              |
 | ----------------------- | -------- | ---------------------------------------- |
-| sb-hc-statusKód        | Ano      | Číselný stavový kód HTTP.                |
-| sb-hc-statusPopis | Ano      | Lidský čitelný důvod odmítnutí. |
+| SB-HC-statusCode        | Ano      | Číselný kód stavu HTTP.                |
+| SB-HC-statusDescription | Ano      | Důvod pro odmítání z lidského čitelného. |
 
-Výsledný identifikátor URI se pak používá k navázání připojení WebSocket.
+Výsledný identifikátor URI se pak použije k navázání připojení protokolu WebSocket.
 
-Při dokončení správně tento handshake záměrně selže s kódem chyby HTTP 410, protože nebyla vytvořena žádná websocket. Pokud se něco pokazí, následující kódy popisují chybu:
+Při správném dokončení se tato metoda handshake úmyslně nezdařila s kódem chyby HTTP 410, protože nebyl vytvořen žádný WebSocket. Pokud dojde k nějaké chybě, popíše následující kódy chybu:
 
 | kód | Chyba          | Popis                          |
 | ---- | -------------- | ------------------------------------ |
 | 403  | Forbidden      | Adresa URL není platná.                |
-| 500  | Vnitřní chyba | Něco se ve službě pokazilo. |
+| 500  | Vnitřní chyba | Ve službě se něco pokazilo. |
 
-#### <a name="request-message"></a>Žádost o zprávu
+#### <a name="request-message"></a>Zpráva požadavku
 
-Zpráva `request` je odeslána službou naslouchací proces přes řídicí kanál. Stejná zpráva je také odeslána přes rendezvous WebSocket po navázání.
+`request` Zpráva je odeslána službou do naslouchací služby prostřednictvím řídicího kanálu. Po navázání se tato zpráva pošle i přes WebSocket ve službě Rendezvous.
 
-Skládá `request` se ze dvou částí: záhlaví a binární rám (y) těla.
-Pokud není žádné tělo, snímky těla jsou vynechány. Indikátor pro to, zda je tělo `body` přítomno, je logická vlastnost ve zprávě požadavku.
+Skládá `request` se ze dvou částí: záhlaví a binárních rámců (ů).
+Pokud není k dispozici žádné tělo, budou rámce textu vynechány. Indikátor, zda je text přítomen, je vlastnost Boolean `body` ve zprávě požadavku.
 
-Pro požadavek s tělo požadavku může struktura vypadat takto:
+V případě požadavku s textem žádosti může struktura vypadat takto:
 
 ``` text
 ----- Web Socket text frame ----
@@ -282,10 +282,10 @@ FEFEFEFEFEFEFEFEFEFEF...
 ----------------------------------
 ```
 
-Naslouchací proces musí zpracovat příjem tělo požadavku rozdělit přes více binárních rámců (viz [WebSocket fragmenty).](https://tools.ietf.org/html/rfc6455#section-5.4)
-Požadavek končí, když byl přijat binární snímek se sadou příznaku FIN.
+Naslouchací proces musí zpracovat rozdělení textu žádosti v několika binárních rámečcích (viz [fragmenty WebSocket](https://tools.ietf.org/html/rfc6455#section-5.4)).
+Požadavek skončí, když byl přijat binární rámec se sadou příznaků FIN.
 
-Pro požadavek bez textu je pouze jeden textový rámeček.
+Pro požadavek bez těla je k dispozici pouze jeden textový rámeček.
 
 ``` text
 ----- Web Socket text frame ----
@@ -299,24 +299,24 @@ Pro požadavek bez textu je pouze jeden textový rámeček.
 ----------------------------------
 ```
 
-Obsah JSON `request` pro je následující:
+Obsah JSON pro `request` je následující:
 
-* **adresa** - řetězec URI. Toto je adresa setkání, která má být pro tento požadavek používána. Pokud příchozí požadavek je větší než 64 kB, zbytek této zprávy je ponechána prázdná a klient `accept` musí zahájit rendezvous handshake ekvivalentní operace popsané níže. Služba pak vloží dokončení `request` na zavedené webové soketu. Pokud lze očekávat, že odpověď překročí 64 kB, naslouchací proces musí také zahájit handshake rendezvous a potom přenést odpověď přes zavedené webové soketu.
-* **id** – řetězec. Jedinečný identifikátor pro tento požadavek.
-* **requestHeaders** – tento objekt obsahuje všechny hlavičky HTTP, které byly dodány do koncového bodu odesílatelem, s výjimkou informací o autorizaci, jak je vysvětleno [výše](#request-operation), a záhlaví, které se vztahují výhradně k připojení k bráně. Konkrétně všechny hlavičky definované nebo vyhrazené v [RFC7230](https://tools.ietf.org/html/rfc7230), s výjimkou `Via`, jsou odstraněny a nejsou předány:
+* řetězec **adresy** URI. Toto je adresa Rendezvous, která se má použít pro tento požadavek. Pokud je příchozí požadavek větší než 64 kB, zbývající část této zprávy je ponecháno prázdné a klient musí iniciovat hodnotu Rendezvous handshake odpovídající `accept` operaci popsanou níže. Služba pak na zavedeném webovém `request` soketu vloží dokončeno. Pokud je možné očekávat odpověď maximálně 64 kB, naslouchací proces musí taky iniciovat hodnotu Rendezvous handshake a následně přenést odpověď na zavedený webový soket.
+* **ID** – řetězec. Jedinečný identifikátor pro tento požadavek.
+* **requestHeaders hostitele** – tento objekt obsahuje všechny hlavičky HTTP, které byly dodány do koncového bodu odesílatelem, s výjimkou informací o autorizaci, jak je vysvětleno [výše](#request-operation), a záhlavími, které se striktně vztahují k připojení s bránou. Konkrétně jsou všechny hlavičky definované nebo vyhrazené v [RFC7230](https://tools.ietf.org/html/rfc7230), s `Via`výjimkou, jsou odstraněny a nepředávány:
 
-  * `Connection`(RFC7230, oddíl 6.1)
-  * `Content-Length`(RFC7230, bod 3.3.2)
-  * `Host`(RFC7230, oddíl 5.4)
-  * `TE`(RFC7230, oddíl 4.3)
-  * `Trailer`(RFC7230, oddíl 4.4)
+  * `Connection`(RFC7230, oddíl 6,1)
+  * `Content-Length`(RFC7230, oddíl 3.3.2)
+  * `Host`(RFC7230, oddíl 5,4)
+  * `TE`(RFC7230, oddíl 4,3)
+  * `Trailer`(RFC7230, oddíl 4,4)
   * `Transfer-Encoding`(RFC7230, oddíl 3.3.1)
-  * `Upgrade`(RFC7230, oddíl 6.7)
-  * `Close`(RFC7230, oddíl 8.1)
+  * `Upgrade`(RFC7230, oddíl 6,7)
+  * `Close`(RFC7230, oddíl 8,1)
 
-* **requestTarget** – řetězec. Tato vlastnost obsahuje ["Požadavek cíl" (RFC7230, oddíl 5.3)](https://tools.ietf.org/html/rfc7230#section-5.3) požadavku. To zahrnuje část řetězce dotazu, která `sb-hc-` je zbavena všech předpona parametry.
-* **metoda** - řetězec. Toto je metoda požadavku podle [RFC7231, oddíl 4](https://tools.ietf.org/html/rfc7231#section-4). Metoda `CONNECT` NESMÍ být použita.
-* **tělo** – logické. Označuje, zda následuje jeden nebo více binárních snímků těla.
+* **requestTarget** – řetězec. Tato vlastnost obsahuje ["cíl žádosti" (RFC7230, část 5,3)](https://tools.ietf.org/html/rfc7230#section-5.3) žádosti. To zahrnuje část řetězce dotazu, která je odstraněna ze všech `sb-hc-` předpevněných parametrů.
+* řetězec **metody** . Toto je metoda požadavku, na [RFC7231, část 4](https://tools.ietf.org/html/rfc7231#section-4). `CONNECT` Metoda nesmí být použita.
+* **tělo** – logická hodnota. Určuje, zda jeden nebo více binárních bloků textu následuje.
 
 ``` JSON
 {
@@ -335,22 +335,22 @@ Obsah JSON `request` pro je následující:
 }
 ```
 
-##### <a name="responding-to-requests"></a>Odpovídání na požadavky
+##### <a name="responding-to-requests"></a>Reakce na žádosti
 
-Přijímač musí reagovat. Opakované selhání reagovat na požadavky při zachování připojení může mít za následek naslouchací proces získání na černé listině.
+Přijímač musí reagovat. Opakovaná neúspěšná reakce na žádosti a při zachování připojení může vést k tomu, že naslouchací proces bude mít zakázaný.
 
-Odpovědi mohou být odeslány v libovolném pořadí, ale každá žádost musí být zodpovězena do 60 sekund, jinak bude doručení nahlášeno jako neúspěšné. 60sekundová lhůta se počítá, `response` dokud služba neobdrží rámec. Trvalá odpověď s více binárními rámci se nemůže stát nečinnou po dobu delší než 60 sekund nebo je ukončena.
+Odpovědi mohou být zasílány v libovolném pořadí, ale každý požadavek musí odpovídat do 60 sekund nebo doručení bude Hlášeno jako neúspěšné. Konečný termín 60-Second se počítá až do `response` chvíle, kdy služba nepřijala rámec. Probíhající odpověď s více binárními snímky nemůže být nečinná po dobu delší než 60 sekund nebo se ukončí.
 
-Je-li požadavek přijat přes kontrolní kanál, musí být odpověď odeslána buď na řídicím kanálu, odkud byla žádost přijata, nebo musí být odeslána prostředkem rendezvous.
+Pokud je požadavek přijat prostřednictvím řídicího kanálu, musí být odpověď buď odeslána na řídicí kanál, ze kterého byla žádost přijata, nebo musí být odeslána prostřednictvím kanálu Rendezvous.
 
-Odpověď je objekt JSON s názvem "odpověď". Pravidla pro zpracování obsahu těla `request` jsou přesně jako `body` se zprávou a na základě vlastnosti.
+Odpověď je objekt JSON s názvem Response. Pravidla pro zpracování obsahu textu jsou přesně stejná jako u `request` zprávy a jsou založena na `body` vlastnosti.
 
-* **requestId** – řetězec. Požadované. Hodnota `id` vlastnosti `request` zprávy, na kterou se reaguje.
-* **statusCode** – číslo. Požadované. číselný stavový kód HTTP, který označuje výsledek oznámení. Všechny stavové kódy [RFC7231, oddíl 6](https://tools.ietf.org/html/rfc7231#section-6) jsou povoleny, s výjimkou [502 "Bad Gateway"](https://tools.ietf.org/html/rfc7231#section-6.6.3) a [504 "Gateway Timeout"](https://tools.ietf.org/html/rfc7231#section-6.6.5).
-* **statusDescription** - řetězec. Volitelné. Http stavový kód důvod fráze na [RFC7230, Oddíl 3.1.2](https://tools.ietf.org/html/rfc7230#section-3.1.2)
-* **responseHeaders** – hlavičky HTTP, které mají být nastaveny v externí odpovědi HTTP.
-  Stejně `request`jako u , RFC7230 definované hlavičky NESMÍ být použity.
-* **tělo** – logické. Označuje, zda následuje binární snímek těla.
+* **RequestId** – řetězec Požadovanou. Hodnota `id` vlastnosti `request` zprávy, na kterou reaguje.
+* **StatusCode** – číslo. Požadovanou. číselný kód stavu HTTP, který určuje výsledek oznámení. Všechny stavové kódy [RFC7231, oddíl 6](https://tools.ietf.org/html/rfc7231#section-6) jsou povoleny, s výjimkou [502 "Chybná brána"](https://tools.ietf.org/html/rfc7231#section-6.6.3) a [504 "časový limit brány"](https://tools.ietf.org/html/rfc7231#section-6.6.5).
+* **statusDescription** – řetězec. Volitelné. Stav HTTP – fráze odůvodnění kódu na [RFC7230, část 3.1.2](https://tools.ietf.org/html/rfc7230#section-3.1.2)
+* **ResponseHeaders hostitele** – hlavičky HTTP, které se mají nastavit v externí odpovědi HTTP
+  Stejně jako u `request`RFC7230 nesmí být použita definovaná záhlaví.
+* **tělo** – logická hodnota. Označuje, zda se mají sledovat binární body těla (y).
 
 ``` text
 ----- Web Socket text frame ----
@@ -370,39 +370,39 @@ Odpověď je objekt JSON s názvem "odpověď". Pravidla pro zpracování obsahu
 ----------------------------------
 ```
 
-##### <a name="responding-via-rendezvous"></a>Reagovat prostřednictvím rendezvous
+##### <a name="responding-via-rendezvous"></a>Reakce prostřednictvím Rendezvous
 
-Pro odpovědi, které přesahují 64 kB, musí být odpověď doručena přes soketu rendezvous. Také pokud požadavek překročí 64 kB `request` a obsahuje pouze pole adresy, musí být vytvořena soket setkání získat `request`. Po navázání soketu rendezvous musí být odpovědi na příslušného klienta a následné požadavky od příslušného klienta doručeny přes soket rendezvous, dokud trvá.
+Pro odpovědi, které překračují 64 kB, musí být odpověď doručena přes soket Rendezvous. Také Pokud požadavek překročí 64 kB a obsahuje `request` pouze pole adresa, je nutné vytvořit soket Rendezvous, který získá. `request` Po navázání typu Rendezvous Socket se musí odpovědi na příslušného klienta a následné požadavky z tohoto klienta doručovat přes soket Rendezvous, a to i v případě, že přetrvává.
 
-Adresa `address` URL `request` v je třeba použít as-je pro stanovení soketu rendezvous, ale obsahuje následující parametry:
+`address` Adresa URL v poli `request` musí být použita jako – je určena pro vytvoření soketu Rendezvous, ale obsahuje následující parametry:
 
 | Parametr      | Požaduje se | Popis
 | -------------- | -------- | -------------------------------------------------------------------
 | `sb-hc-action` | Ano      | Pro přijetí soketu musí být parametr`sb-hc-action=request`
 
-Pokud dojde k chybě, služba může odpovědět následujícím způsobem:
+Pokud dojde k chybě, může služba odpovědět následujícím způsobem:
 
 | kód | Chyba           | Popis
 | ---- | --------------- | -----------------------------------
-| 400  | Neplatný požadavek | Nerozpoznaná akce nebo adresa URL není platná.
+| 400  | Neplatný požadavek | Nerozpoznaná akce nebo adresa URL je neplatná.
 | 403  | Forbidden       | Platnost adresy URL vypršela.
-| 500  | Vnitřní chyba  | Něco se pokazilo ve službě
+| 500  | Vnitřní chyba  | Ve službě se něco pokazilo.
 
- Po navázání připojení server vypne websocket při vypnutí soketu HTTP klienta nebo s následujícím stavem:
+ Po navázání připojení server vypne WebSocket, když se soket HTTP klienta ukončí nebo s následujícím stavem:
 
-| WS stav | Popis                                                                     |
+| Stav WS | Popis                                                                     |
 | --------- | ------------------------------------------------------------------------------- |
-| 1001      | Klient odesílatele vypne připojení.                                    |
-| 1001      | Cesta hybridního připojení byla odstraněna nebo zakázána.                        |
-| 1008      | Platnost tokenu zabezpečení vypršela, proto jsou porušeny zásady autorizace. |
-| 1011      | Něco se ve službě pokazilo.                                            |
+| 1001      | Klient odesilatele ukončí připojení.                                    |
+| 1001      | Cesta k hybridnímu připojení je Odstraněná nebo zakázaná.                        |
+| 1008      | Platnost tokenu zabezpečení vypršela, a proto je porušena zásada autorizace. |
+| 1011      | Ve službě se něco pokazilo.                                            |
 
 
-#### <a name="listener-token-renewal"></a>Obnovení tokenu posluchače
+#### <a name="listener-token-renewal"></a>Obnovení tokenu naslouchacího procesu
 
-Když se blíží vypršení platnosti tokenu naslouchacího procesu, může jej nahradit odesláním zprávy textového rámečku službě prostřednictvím zavedeného řídicího kanálu. Zpráva obsahuje objekt JSON `renewToken`s názvem , který definuje následující vlastnost v tomto okamžiku:
+Až vyprší platnost tokenu naslouchacího procesu, může ho nahradit odesláním zprávy textového rámce do služby prostřednictvím vytvořeného řídicího kanálu. Zpráva obsahuje objekt JSON s názvem `renewToken`, který definuje následující vlastnost v tuto chvíli:
 
-* **token** – platný token sdíleného přístupu služby Service Bus s kódováním URL pro obor názvů nebo hybridní připojení, který uděluje právo **naslouchat.**
+* **token** – platný Service Bus sdílený přístupový token s kódováním URL pro obor názvů nebo hybridní připojení, který uděluje právo na **naslouchání** .
 
 ```json
 {
@@ -413,99 +413,99 @@ Když se blíží vypršení platnosti tokenu naslouchacího procesu, může jej
 }
 ```
 
-Pokud se ověření tokenu nezdaří, přístup je odepřen a cloudová služba zavře řídicí kanál WebSocket s chybou. V opačném případě neexistuje žádná odpověď.
+Pokud se ověření tokenu nepovede, přístup se odepře a cloudová služba uzavře WebSocket řídicího kanálu s chybou. V opačném případě neexistuje žádná odpověď.
 
-| WS stav | Popis                                                                     |
+| Stav WS | Popis                                                                     |
 | --------- | ------------------------------------------------------------------------------- |
-| 1008      | Platnost tokenu zabezpečení vypršela, proto jsou porušeny zásady autorizace. |
+| 1008      | Platnost tokenu zabezpečení vypršela, a proto je porušena zásada autorizace. |
 
-### <a name="web-socket-connect-protocol"></a>Protokol připojení webového soketu
+### <a name="web-socket-connect-protocol"></a>Protokol připojení k webovému soketu
 
-Protokol odesílatele je účinně totožný se způsobem, jakým je naslouchací proces vytvořen.
-Cílem je maximální transparentnost pro end-to-end WebSocket. Adresa pro připojení k je stejná jako pro naslouchací proces, ale "akce" se liší a token potřebuje jiné oprávnění:
+Protokol odesilatele je efektivně shodný se způsobem, jakým je vytvořen naslouchací proces.
+Cílem je maximální transparentnost koncového objektu WebSocket. Adresa, ke které se chcete připojit, je stejná jako u naslouchacího procesu, ale "Action" se liší a token potřebuje jiné oprávnění:
 
 ```
 wss://{namespace-address}/$hc/{path}?sb-hc-action=...&sb-hc-id=...&sbc-hc-token=...
 ```
 
-_Adresa oboru názvů_ je plně kvalifikovaný název domény oboru názvů Azure Relay, který je `{myname}.servicebus.windows.net`hostitelem hybridního připojení, obvykle formuláře .
+_Obor názvů – adresa_ je plně kvalifikovaný název domény Azure Relay oboru názvů, který je hostitelem hybridního připojení, většinou formuláře `{myname}.servicebus.windows.net`.
 
-Požadavek může obsahovat libovolné hlavičky HTTP navíc, včetně těch definovaných aplikací. Všechny zadané hlavičky toku na schytavku a lze nalézt na `connectHeader` objekt přijmout řídicí zprávy. **accept**
+Požadavek může obsahovat libovolné dodatečné hlavičky protokolu HTTP, včetně aplikací definovaných aplikací. Veškerý dodaný hlavičkový tok do naslouchacího procesu, který lze najít `connectHeader` v objektu zprávy o **přijetí** kontrolního programu.
 
 Možnosti parametru řetězce dotazu jsou následující:
 
 | Param          | Povinné? | Popis
 | -------------- | --------- | -------------------------- |
-| `sb-hc-action` | Ano       | Pro roli odesílatele musí být `sb-hc-action=connect`parametr .
+| `sb-hc-action` | Ano       | V případě role odesílatele musí být `sb-hc-action=connect`parametr.
 | `{path}`       | Ano       | (viz následující odstavec)
-| `sb-hc-token`  | Ano\*     | Naslouchací proces musí poskytnout platný, URL kódovaný token sdíleného přístupu služby Service Bus pro obor názvů nebo hybridní připojení, které uděluje **oprávnění Odeslat.**
-| `sb-hc-id`     | Ne        | Volitelné ID, které umožňuje komplexní diagnostické trasování a je k dispozici naslouchací proces během přijmout handshake.
+| `sb-hc-token`  | Ano\*     | Naslouchací proces musí poskytovat platný, Service Bus sdílený přístupový token s kódováním URL pro obor názvů nebo hybridní připojení, které uděluje právo **Odeslat** .
+| `sb-hc-id`     | Ne        | Volitelné ID, které umožňuje kompletní diagnostické trasování a zpřístupnění posluchači během metody Accept handshake.
 
- Je `{path}` url kódovaný obor názvů cestu předkonfigurované hybridní připojení, na kterém se má zaregistrovat tento naslouchací proces. Výraz `path` lze rozšířit o příponu a výraz řetězce dotazu pro další komunikaci. Pokud je hybridní připojení registrováno pod cestou `hyco` `path` , výraz může následovat `hyco/suffix?param=value&...` parametry řetězce dotazu definované zde. Úplný výraz pak může být následující:
+ `{path}` Je cesta oboru názvů zakódovaného URL předkonfigurovaného hybridního připojení, na které se má tento naslouchací proces zaregistrovat. `path` Výraz lze rozšířit s příponou a výrazem řetězce dotazu pro další komunikaci. Pokud je hybridní připojení registrováno pod cestou `hyco`, `path` `hyco/suffix?param=value&...` za výraz může následovat parametry řetězce dotazu, které jsou zde definovány. Úplný výraz může být následující:
 
 ```
 wss://{namespace-address}/$hc/hyco/suffix?param=value&sb-hc-action=...[&sb-hc-id=...&]sbc-hc-token=...
 ```
 
-Výraz `path` je předán naslouchací proces v adrese URI obsažené ve zprávě ovládacího prvku "přijmout".
+`path` Výraz je předán do naslouchacího procesu v identifikátoru URI adresy, který je obsažen v řídící zprávě "Accept".
 
-Pokud se připojení WebSocket nezdaří z důvodu není registrována cesta hybridní připojení, neplatný nebo chybějící token nebo nějaká jiná chyba, je zpětná vazba chyby poskytována pomocí běžného modelu zpětné vazby stavu HTTP 1.1. Popis stavu obsahuje ID sledování chyb, které lze sdělit pracovníkům podpory Azure:
+Pokud se připojení protokolu WebSocket nepovede z důvodu registrace cesty k hybridnímu připojení, neplatného nebo chybějícího tokenu nebo nějaké jiné chyby, je k dispozici zpětná vazba k chybě pomocí běžného modelu zpětné vazby stavu HTTP 1,1. Popis stavu obsahuje ID sledování chyb, které se dá sdělit pracovníkům podpory Azure:
 
 | kód | Chyba          | Popis
 | ---- | -------------- | -------------------------------------------------------------------
-| 404  | Nebyl nalezen.      | Cesta hybridního připojení je neplatná nebo je poškozená základní adresa URL.
-| 401  | Neautorizováno   | Token zabezpečení chybí nebo je poškozený nebo neplatný.
-| 403  | Forbidden      | Token zabezpečení není platný pro tuto cestu a pro tuto akci.
-| 500  | Vnitřní chyba | Něco se ve službě pokazilo.
+| 404  | Nenalezeno      | Cesta k hybridnímu připojení je neplatná nebo základní adresa URL je poškozená.
+| 401  | Neautorizováno   | Token zabezpečení chybí nebo je neplatný nebo neplatný.
+| 403  | Forbidden      | Token zabezpečení není pro tuto cestu a pro tuto akci platný.
+| 500  | Vnitřní chyba | Ve službě se něco pokazilo.
 
-Pokud je připojení WebSocket záměrně ukončeno službou poté, co bylo původně nastaveno, je důvod emitován pomocí příslušného kódu chyby protokolu WebSocket spolu s popisnou chybovou zprávou, která obsahuje také ID sledování .
+Pokud se připojení protokolu WebSocket úmyslně ukončí službou po počátečním nastavování, je důvod k tomu sdělen pomocí vhodného kódu chyby protokolu WebSocket spolu s popisnou chybovou zprávou, která také obsahuje ID sledování.
 
-| WS stav | Popis
+| Stav WS | Popis
 | --------- | ------------------------------------------------------------------------------- 
-| 1000      | Naslouchací proces vypne soket.
-| 1001      | Cesta hybridního připojení byla odstraněna nebo zakázána.
-| 1008      | Platnost tokenu zabezpečení vypršela, proto jsou porušeny zásady autorizace.
-| 1011      | Něco se ve službě pokazilo.
+| 1000      | Naslouchací proces vypnul soket.
+| 1001      | Cesta k hybridnímu připojení je Odstraněná nebo zakázaná.
+| 1008      | Platnost tokenu zabezpečení vypršela, a proto je porušena zásada autorizace.
+| 1011      | Ve službě se něco pokazilo.
 
 ### <a name="http-request-protocol"></a>Protokol požadavku HTTP
 
-Protokol požadavku HTTP umožňuje libovolné požadavky HTTP, s výjimkou upgradů protokolů.
-Požadavky HTTP jsou směrovány na pravidelnou adresu runtime entity bez $hc infix, který se používá pro hybridní připojení websocket klientů.
+Protokol požadavků HTTP umožňuje libovolné požadavky HTTP, kromě upgrady protokolu.
+Požadavky HTTP jsou odkazovány na běžné běhové adrese entity bez $hc vpony, který se používá pro klienty WebSocket s hybridními připojeními.
 
 ```
 https://{namespace-address}/{path}?sbc-hc-token=...
 ```
 
-_Adresa oboru názvů_ je plně kvalifikovaný název domény oboru názvů Azure Relay, který je `{myname}.servicebus.windows.net`hostitelem hybridního připojení, obvykle formuláře .
+_Obor názvů – adresa_ je plně kvalifikovaný název domény Azure Relay oboru názvů, který je hostitelem hybridního připojení, většinou formuláře `{myname}.servicebus.windows.net`.
 
-Požadavek může obsahovat libovolné hlavičky HTTP navíc, včetně těch definovaných aplikací. Všechny zadané hlavičky, s výjimkou těch, které jsou přímo definovány v RFC7230 (viz [zpráva požadavku)](#Request message)toku na naslouchací proces a lze nalézt na `requestHeader` objekt zprávy **požadavku.**
+Požadavek může obsahovat libovolné dodatečné hlavičky protokolu HTTP, včetně aplikací definovaných aplikací. Všechna dodaná záhlaví, kromě těch, která jsou přímo definována v RFC7230 (viz [zpráva požadavku](#Request message)) toku k naslouchacímu procesu a `requestHeader` lze ji najít v objektu zprávy **požadavku** .
 
 Možnosti parametru řetězce dotazu jsou následující:
 
 | Param          | Povinné? | Popis
 | -------------- | --------- | ---------------- |
-| `sb-hc-token`  | Ano\*     | Naslouchací proces musí poskytnout platný, URL kódovaný token sdíleného přístupu služby Service Bus pro obor názvů nebo hybridní připojení, které uděluje **oprávnění Odeslat.**
+| `sb-hc-token`  | Ano\*     | Naslouchací proces musí poskytovat platný, Service Bus sdílený přístupový token s kódováním URL pro obor názvů nebo hybridní připojení, které uděluje právo **Odeslat** .
 
-Token lze také provádět v `ServiceBusAuthorization` `Authorization` záhlaví nebo HTTP. Token lze vynechat, pokud je hybridní připojení nakonfigurováno tak, aby umožňovalo anonymní požadavky.
+Token se dá také přenést buď v hlavičce, `ServiceBusAuthorization` nebo `Authorization` v hlavičce HTTP. Token se dá vynechat, pokud je hybridní připojení nakonfigurované tak, aby povolovalo anonymní požadavky.
 
-Vzhledem k tomu, že služba účinně funguje jako proxy server, `Via` i když ne jako `Via` skutečný proxy server HTTP, přidá buď záhlaví nebo anotuje existující záhlaví kompatibilní s [RFC7230, Oddíl 5.7.1](https://tools.ietf.org/html/rfc7230#section-5.7.1).
-Služba přidá název hostitele oboru `Via`názvů Relay do služby .
+Vzhledem k tomu, že služba efektivně funguje jako proxy, a to i v případě, že ne jako skutečný proxy `Via` Server http, buď přidá hlavičku `Via` nebo doplní existující záhlaví kompatibilní s [RFC7230, oddíl 5.7.1](https://tools.ietf.org/html/rfc7230#section-5.7.1).
+Služba přidá název hostitele oboru názvů Relay do `Via`.
 
 | kód | Zpráva  | Popis                    |
 | ---- | -------- | ------------------------------ |
-| 200  | OK       | Požadavek byl zpracován alespoň jeden naslouchací proces.  |
-| 202  | Accepted | Požadavek byl přijat alespoň jeden naslouchací proces. |
+| 200  | OK       | Žádost byla zpracována alespoň jedním naslouchací proces.  |
+| 202  | Accepted | Požadavek přijal alespoň jeden naslouchací proces. |
 
-Pokud dojde k chybě, služba může odpovědět následujícím způsobem. Zda odpověď pochází ze služby nebo z naslouchací proces lze identifikovat prostřednictvím přítomnosti `Via` záhlaví. Pokud záhlaví je k dispozici, odpověď je z naslouchací proces.
+Pokud dojde k chybě, může služba odpovědět následujícím způsobem. Zda je odpověď pocházející ze služby nebo naslouchacího procesu, může být identifikována prostřednictvím přítomnosti `Via` hlavičky. Pokud je hlavička přítomna, odpověď je od naslouchacího procesu.
 
 | kód | Chyba           | Popis
 | ---- | --------------- |--------- |
-| 404  | Nebyl nalezen.       | Cesta hybridního připojení je neplatná nebo je poškozená základní adresa URL.
-| 401  | Neautorizováno    | Token zabezpečení chybí nebo je poškozený nebo neplatný.
-| 403  | Forbidden       | Token zabezpečení není platný pro tuto cestu a pro tuto akci.
-| 500  | Vnitřní chyba  | Něco se ve službě pokazilo.
-| 503  | Špatná brána     | Požadavek nelze směrovat na žádný naslouchací proces.
-| 504  | Časový čas brány | Požadavek byl směrován na naslouchací proces, ale naslouchací proces nepotvrdil příjem v požadovaném čase.
+| 404  | Nenalezeno       | Cesta k hybridnímu připojení je neplatná nebo základní adresa URL je poškozená.
+| 401  | Neautorizováno    | Token zabezpečení chybí nebo je neplatný nebo neplatný.
+| 403  | Forbidden       | Token zabezpečení není pro tuto cestu a pro tuto akci platný.
+| 500  | Vnitřní chyba  | Ve službě se něco pokazilo.
+| 503  | Chybná brána     | Požadavek nebylo možné směrovat do žádného naslouchacího procesu.
+| 504  | Časový limit brány | Požadavek byl směrován do naslouchacího procesu, ale naslouchací proces v požadované době nepřijal příjem.
 
 ## <a name="next-steps"></a>Další kroky
 

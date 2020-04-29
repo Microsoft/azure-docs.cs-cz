@@ -1,6 +1,6 @@
 ---
-title: Opravy chyby "Odtud se k tomu nemůžete dostat" – Azure AD
-description: Najděte potenciální opravy, proč se vám zobrazuje chybová zpráva "Odtud se k ní nemůžete dostat".
+title: Opravy pro "nemůžete získat z tohoto místa" – Azure AD
+description: Najděte si možné opravy, proč se vám zobrazí chybová zpráva "nemůžete získat odsud".
 services: active-directory
 author: curtand
 manager: daveba
@@ -14,60 +14,60 @@ ms.author: curtand
 ms.reviewer: jairoc
 ms.custom: user-help, seo-update-azuread-jan
 ms.openlocfilehash: 2484de4e554d16ba049d206981a44654ede28a3f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77190026"
 ---
-# <a name="possible-fixes-for-the-you-cant-get-there-from-here-error-message"></a>Možné opravy chybové zprávy "Odtud se tam nemůžete dostat"
+# <a name="possible-fixes-for-the-you-cant-get-there-from-here-error-message"></a>Možné opravy pro chybovou zprávu "nemůžete se dostat sem"
 
-Při přístupu k interním webovým aplikacím nebo službám vaší organizace se může zobrazit chybová zpráva, že **se k vám odtud nedostanete**. Tato zpráva znamená, že vaše organizace zavedla zásady, které zařízení brání v přístupu k prostředkům vaší organizace. I když budete muset kontaktovat helpdesk k vyřešení tohoto problému, zde je několik věcí, které můžete vyzkoušet jako první.
+Při přístupu k interním webovým aplikacím nebo službám vaší organizace se může zobrazit chybová zpráva s informacemi o tom, že se **tam nemůžete dostat**. Tato zpráva znamená, že vaše organizace má zavedené zásady, které brání vašemu zařízení v přístupu k prostředkům vaší organizace. I když se může stát, že se budete muset obrátit na helpdesk, abyste mohli tento problém vyřešit, můžete si nejdřív vyzkoušet několik věcí.
 
-## <a name="make-sure-youre-using-a-supported-browser"></a>Ujistěte se, že používáte podporovaný prohlížeč
-Pokud se vám zobrazí zpráva **Nedostanete se k nim a** zobrazí se zpráva, že se pokoušíte získat přístup k webům vaší organizace z nepodporovaného prohlížeče, zkontrolujte, který prohlížeč používáte.
+## <a name="make-sure-youre-using-a-supported-browser"></a>Ujistěte se, že používáte podporovaný prohlížeč.
+Pokud se vám zobrazí zpráva, že se **tam nedaří získat** přístup k webům vaší organizace z nepodporovaného prohlížeče, podívejte se, jestli je v něm spuštěný prohlížeč.
 
-![Chybová zpráva související s podporou prohlížeče](media/user-help-device-remediation/browser-version.png)
+![Chybová zpráva týkající se podpory prohlížeče](media/user-help-device-remediation/browser-version.png)
 
-Chcete-li tento problém vyřešit, je nutné nainstalovat a spustit podporovaný prohlížeč založený na operačním systému. Pokud používáte Windows 10, podporované prohlížeče zahrnují Microsoft Edge, Internet Explorer a Google Chrome. Pokud používáte jiný operační systém, můžete zkontrolovat úplný seznam [podporovaných prohlížečů](../conditional-access/concept-conditional-access-conditions.md#supported-browsers).
+Chcete-li tento problém vyřešit, je nutné nainstalovat a spustit podporovaný prohlížeč v závislosti na vašem operačním systému. Pokud používáte Windows 10, podporované prohlížeče zahrnují Microsoft Edge, Internet Explorer a Google Chrome. Pokud používáte jiný operační systém, můžete se podívat na úplný seznam [podporovaných prohlížečů](../conditional-access/concept-conditional-access-conditions.md#supported-browsers).
 
-## <a name="make-sure-youre-using-a-supported-operating-system"></a>Ujistěte se, že používáte podporovaný operační systém
+## <a name="make-sure-youre-using-a-supported-operating-system"></a>Ujistěte se, že používáte podporovaný operační systém.
 Ujistěte se, že používáte podporovanou verzi operačního systému, včetně:
 
 - **Klient systému Windows.** Windows 7 nebo novější.
 
-- **Windows Server.** Systém Windows Server 2008 R2 nebo novější.
+- **Systém Windows Server.** Windows Server 2008 R2 nebo novější.
 
-- **Macos.** macOS X nebo novější
+- **MacOS.** macOS X nebo novější
 
 - **Android a iOS.** Nejnovější verze mobilních operačních systémů Android a iOS
 
 Chcete-li tento problém vyřešit, je nutné nainstalovat a spustit podporovaný operační systém.
 
-## <a name="make-sure-your-device-is-joined-to-your-network"></a>Zkontrolujte, zda je zařízení připojeno k síti.
-Pokud se vám zobrazí zpráva **Nedostanete se** k němu, že vaše zařízení nesplňuje podmínky pro přístup vaší organizace, ujistěte se, že jste se připojili k síti vaší organizace.
+## <a name="make-sure-your-device-is-joined-to-your-network"></a>Ujistěte se, že je zařízení připojené k síti.
+Pokud se vám zobrazí zpráva z tohoto seznamu **nemůžete získat** zprávu, že vaše zařízení je nekompatibilní se zásadami přístupu vaší organizace, ujistěte se, že jste zařízení připojili k síti vaší organizace.
 
-![Chybová zpráva související s tím, zda se v síti nejste](media/user-help-device-remediation/network-version.png)
+![Chybová zpráva týkající se toho, jestli jste v síti](media/user-help-device-remediation/network-version.png)
 
-### <a name="to-check-whether-your-device-is-joined-to-your-network"></a>Kontrola, zda je zařízení připojeno k síti
-1. Přihlaste se k Windows pomocí pracovního nebo školního účtu. Například, alain@contoso.com.
+### <a name="to-check-whether-your-device-is-joined-to-your-network"></a>Ověření, jestli je zařízení připojené k síti
+1. Přihlaste se k Windows pomocí svého pracovního nebo školního účtu. Například, alain@contoso.com.
 
-2. Připojte se k síti vaší organizace prostřednictvím virtuální privátní sítě (VPN) nebo technologie DirectAccess.
+2. Připojte se k síti vaší organizace pomocí virtuální privátní sítě (VPN) nebo technologie DirectAccess.
 
-3. Po připojení zařízení uzamkněte stisknutím **klávesy s logem Windows+L.**
+3. Po připojení stiskněte klávesu s **logem Windows + L** pro uzamčení zařízení.
 
-4. Odemkněte zařízení pomocí pracovního nebo školního účtu a zkuste znovu získat přístup k problematické aplikaci nebo službě.
+4. Odemkněte zařízení pomocí svého pracovního nebo školního účtu a zkuste znovu získat přístup k problematické aplikaci nebo službě.
 
-    Pokud se zobrazí chybová zpráva **Nemůžete se k ní dostat** znovu, vyberte odkaz Další **podrobnosti** a poté se obraťte na helpdesk s podrobnostmi.
+    Pokud se vám zobrazí chybová zpráva **z tohoto pole nemůžete získat** znovu, vyberte odkaz **Další podrobnosti** a požádejte o pomoc helpdesk.
 
 ### <a name="to-join-your-device-to-your-network"></a>Připojení zařízení k síti
-Pokud vaše zařízení není připojeno k síti vaší organizace, můžete udělat jednu ze dvou věcí:
+Pokud zařízení není připojené k síti vaší organizace, můžete provést jednu z následujících akcí:
 
-- **Připojte se k pracovnímu zařízení.** Připojte se k zařízení s Windows 10 vlastněné prací do sítě vaší organizace, abyste měli přístup k potenciálně omezeným prostředkům. Další informace a podrobné pokyny najdete v tématu [Připojení pracovního zařízení k síti vaší organizace](user-help-join-device-on-network.md).
+- **Připojte se k pracovnímu zařízení.** Připojte zařízení s Windows 10 vlastněné do sítě vaší organizace, abyste měli přístup k potenciálně omezeným prostředkům. Další informace a podrobné pokyny najdete v tématu [připojení pracovního zařízení k síti vaší organizace](user-help-join-device-on-network.md).
 
-- **Zaregistrujte své osobní zařízení pro práci.** Zaregistrujte své osobní zařízení, obvykle telefon nebo tablet, v síti vaší organizace. Po registraci má zařízení přístup k omezeným prostředkům vaší organizace. Další informace a podrobné pokyny naleznete v tématu [Registrace osobního zařízení v síti organizace](user-help-register-device-on-network.md).
+- **Zaregistrujte svoje osobní zařízení pro práci.** Zaregistrujte své osobní zařízení, obvykle telefon nebo tablet, do sítě vaší organizace. Po zaregistrování zařízení bude mít přístup k prostředkům s omezeným přístupem vaší organizace. Další informace a podrobné pokyny najdete v tématu [registrace osobního zařízení v síti vaší organizace](user-help-register-device-on-network.md).
 
 ## <a name="next-steps"></a>Další kroky
-- [Co je portál MyApps?](active-directory-saas-access-panel-introduction.md)
+- [Co je to portál MyApp?](active-directory-saas-access-panel-introduction.md)
 
 - [Přihlášení pomocí telefonu, ne pomocí hesla](user-help-auth-app-sign-in.md)

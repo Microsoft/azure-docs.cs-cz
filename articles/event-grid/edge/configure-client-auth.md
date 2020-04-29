@@ -1,6 +1,6 @@
 ---
-title: Konfigurace ověřování příchozích hovorů klientem – Azure Event Grid IoT Edge | Dokumenty společnosti Microsoft
-description: Konfigurace protokolů rozhraní API vystavených službou Event Grid na IoT Edge.
+title: Konfigurovat ověřování klientů u příchozích volání – Azure Event Grid IoT Edge | Microsoft Docs
+description: Nakonfigurujte protokoly rozhraní API, které jsou vystavené Event Grid v IoT Edge.
 author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
@@ -10,22 +10,22 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 3363db4557dd19e8d72747ccd62bb535abb7b1e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76841787"
 ---
-# <a name="configure-client-authentication-of-incoming-calls"></a>Konfigurace ověřování příchozích volání klientem
+# <a name="configure-client-authentication-of-incoming-calls"></a>Konfigurovat ověřování klientů u příchozích volání
 
-Tato příručka uvádí příklady možných konfigurací ověřování klienta pro modul Event Grid. Modul Event Grid podporuje dva typy ověřování klienta:
+Tato příručka obsahuje příklady možných konfigurací ověřování klientů pro modul Event Grid. Modul Event Grid podporuje dva typy ověřování klientů:
 
-* Na základě klíče sdíleného přístupového podpisu (SAS)
+* Založený na klíči SAS (Shared Access Signature)
 * Na základě certifikátu
 
-Všechny možné konfigurace naleznete v příručce [zabezpečení a ověřování.](security-authentication.md)
+V tématu Průvodce [zabezpečením a ověřováním](security-authentication.md) najdete všechny možné konfigurace.
 
-## <a name="enable-certificate-based-client-authentication-no-self-signed-certificates"></a>Povolit ověřování klientů na základě certifikátu, žádné certifikáty podepsané svým držitelem
+## <a name="enable-certificate-based-client-authentication-no-self-signed-certificates"></a>Povolit ověřování klientů založených na certifikátech, žádné certifikáty podepsané svým držitelem
 
 ```json
  {
@@ -38,7 +38,7 @@ Všechny možné konfigurace naleznete v příručce [zabezpečení a ověřová
 }
  ```
 
-## <a name="enable-certificate-based-client-authentication-allow-self-signed-certificates"></a>Povolit ověřování klientů na základě certifikátu, povolit certifikáty podepsané svým držitelem
+## <a name="enable-certificate-based-client-authentication-allow-self-signed-certificates"></a>Povolit ověřování klientů na základě certifikátů, povolit certifikáty podepsané svým držitelem
 
 ```json
  {
@@ -52,9 +52,9 @@ Všechny možné konfigurace naleznete v příručce [zabezpečení a ověřová
 ```
 
 >[!NOTE]
->Nastavte vlastnost **inbound__clientAuth__clientCert__allowUnknownCA** na **hodnotu true** pouze v testovacích prostředích, protože obvykle můžete používat certifikáty podepsané svým držitelem. Pro produkční úlohy doporučujeme nastavit tuto vlastnost na **false** a certifikáty od certifikační autority (CA).
+>Nastavte vlastnost **inbound__clientAuth__clientCert__allowUnknownCA** na **hodnotu true** pouze v testovacích prostředích, protože obvykle používáte certifikáty podepsané svým držitelem. Pro produkční úlohy doporučujeme tuto vlastnost nastavit na **hodnotu false** a certifikáty od certifikační autority (CA).
 
-## <a name="enable-certificate-based-and-sas-key-based-client-authentication"></a>Povolení ověřování klienta založeného na certifikátech a klíčích sas
+## <a name="enable-certificate-based-and-sas-key-based-client-authentication"></a>Povolit ověřování klientů založených na certifikátech a SAS – klíč
 
 ```json
  {
@@ -70,4 +70,4 @@ Všechny možné konfigurace naleznete v příručce [zabezpečení a ověřová
  ```
 
 >[!NOTE]
->Ověřování klientů na základě klíče SAS umožňuje hraničnímu modulu bez IoT pro správu a operace runtime za předpokladu, že porty rozhraní API jsou samozřejmě přístupné mimo síť IoT Edge.
+>Ověřování klienta na základě klíčů SAS umožňuje, aby modul pro správu a provoz v prostředí neiot Edge probíhají operace správy a běhu za předpokladu, že porty rozhraní API jsou přístupné mimo IoT Edge síť.

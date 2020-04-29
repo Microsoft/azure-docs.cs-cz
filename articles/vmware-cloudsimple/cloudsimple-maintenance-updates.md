@@ -1,5 +1,5 @@
 ---
-title: CloudJednoduchá údržba a aktualizace
+title: Údržba a aktualizace CloudSimple
 titleSuffix: Azure VMware Solution by CloudSimple
 description: Popisuje proces služby CloudSimple pro plánovanou údržbu a aktualizace.
 author: sharaths-cs
@@ -10,30 +10,30 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 826fae1123b355a4143118b53ba649f0939acaf7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77025023"
 ---
-# <a name="cloudsimple-maintenance-and-updates"></a>CloudJednoduchá údržba a aktualizace
+# <a name="cloudsimple-maintenance-and-updates"></a>Údržba a aktualizace CloudSimple
 
-Prostředí privátního cloudu je navrženo tak, aby nemělo jediný bod selhání.
+Prostředí privátního cloudu je navrženo tak, aby nedošlo k žádnému jedinému bodu selhání.
 
-* Clustery ESXi jsou konfigurovány s vSphere Vysoká dostupnost (HA). Velikost clusterů má alespoň jeden náhradní uzel pro odolnost proti chybám.
-* Redundantní primární úložiště je poskytováno vSAN, který vyžaduje alespoň tři uzly pro ochranu proti jedné chybě. vSAN lze nakonfigurovat tak, aby poskytovalvyšší odolnost pro větší clustery.
-* Virtuální počítače vCenter, PSC a NSX Manager jsou nakonfigurovány s úložištěm RAID-10, aby byly chráněny před selháním úložiště. Virtuální počítače jsou chráněny proti selhání uzlu/sítě vSphere HA.
+* Clustery ESXi jsou nakonfigurovány s vysokou dostupností vSphere (HA). Clustery mají velikost alespoň jednoho náhradního uzlu pro odolnost.
+* Redundantní primární úložiště poskytuje síti vSAN, což vyžaduje aspoň tři uzly, aby se zajistila ochrana před jediným selháním. Síti vSAN je možné nakonfigurovat tak, aby poskytovala vyšší odolnost proti většímu objemu clusterů.
+* Virtuální počítače vCenter, PSC a NSX Manager jsou nakonfigurované s úložištěm RAID-10, které se chrání před selháním úložiště. Virtuální počítače jsou chráněné proti selhání uzlů/sítě pomocí vSphere HA.
 * Hostitelé ESXi mají redundantní ventilátory a síťové karty.
-* Přepínače TOR a páteře jsou konfigurovány v párech HA, aby poskytovaly odolnost.
+* Přepínače pro mandát a hřbet jsou nakonfigurovány ve dvojicích HA za účelem zajištění odolnosti.
 
-CloudSimple průběžně monitoruje následující virtuální aplikace pro dostupnost a dostupnost a poskytuje služby SLA dostupnosti:
+CloudSimple nepřetržitě sleduje následující virtuální počítače po dobu provozu a dostupnost a poskytuje SLA dostupnosti:
 
-* EsXi hostitelé
+* Hostitelé ESXi
 * vCenter
-* Psc
-* NSX manažer
+* HESEL
+* NSX Manager
 
-CloudSimple také monitoruje následující nepřetržitě pro poruchy:
+CloudSimple také sleduje chyby v nepřetržitém důsledku:
 
 * Pevné disky
 * Fyzické porty NIC
@@ -41,69 +41,69 @@ CloudSimple také monitoruje následující nepřetržitě pro poruchy:
 * Fans
 * Napájení
 * Přepínače
-* Přepnutí portů
+* Porty přepínače
 
-Pokud disk nebo uzel selže, nový uzel je automaticky přidán do postiženého clusteru VMware, aby se okamžitě vrátil do stavu.
+Pokud dojde k chybě disku nebo uzlu, do ovlivněného clusteru VMware se automaticky přidá nový uzel, aby byl okamžitě vrácen do stavu.
 
 CloudSimple zálohuje, udržuje a aktualizuje tyto prvky VMware v privátních cloudech:
 
-* Esxi
-* služby platformy vCenter
-* Řadič
-* vSAN
+* ESXi
+* Služby platformy vCenter
+* Kontrolér
+* Síti vSAN
 * NSX
 
 ## <a name="back-up-and-restore"></a>Zálohování a obnovení
 
-CloudSimple zálohování zahrnuje:
+CloudSimple Backup zahrnuje:
 
 * Noční přírůstkové zálohování pravidel vCenter, PSC a DVS.
-* nativní api aplikace vCenter pro zálohování součástí v aplikační vrstvě.
-* Automatické zálohování před aktualizací nebo upgradem softwaru pro správu voblasti VMware.
-* šifrování dat vCenter u zdroje před přenosem dat přes šifrovaný kanál TLS1.2 do Azure. Data se ukládají v objektu blob Azure, kde se replikují napříč oblastmi.
+* nativní rozhraní API vCenter pro zálohování komponent v aplikační vrstvě.
+* Automatické zálohování před aktualizací nebo upgradem softwaru pro správu VMware.
+* šifrování dat vCenter ve zdroji před přenosem dat přes zašifrovaný kanál TLS 1.2 do Azure. Data se ukládají do objektu blob Azure, kde se replikují napříč oblastmi.
 
-O obnovení můžete požádat otevřením [žádosti o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Obnovení si můžete vyžádat otevřením [support Request](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
 ## <a name="maintenance"></a>Údržba
 
-CloudSimple provádí několik typů plánované údržby.
+CloudSimple má několik typů plánované údržby.
 
-### <a name="backendinternal-maintenance"></a>Údržba backendu/vnitřního
+### <a name="backendinternal-maintenance"></a>Back-end/interní údržba
 
-Tato údržba obvykle zahrnuje změnu konfigurace fyzických prostředků nebo instalaci softwarových oprav. Nemá vliv na normální spotřebu obsluhovaných aktiv. Vzhledem k tomu, že redundantní síťové karty přejdou do každého fyzického racku, normální síťový provoz a operace privátního cloudu nejsou ovlivněny. Dopad na výkon můžete zaznamenat pouze v případě, že vaše organizace očekává, že během intervalu údržby bude používat plnou redundantní šířku pásma.
+Tato údržba obvykle zahrnuje změnu konfigurace fyzických prostředků nebo instalaci oprav softwaru. Neovlivňuje normální spotřebu prostředků, které se obsluhují. Díky redundantním síťovým kartám, které jsou na každém fyzickém stojanu, se neovlivní normální síťové přenosy a privátní cloud. Dopad na výkon si můžete všimnout pouze v případě, že vaše organizace očekává použití plné redundantní šířky pásma během intervalu údržby.
 
 ### <a name="cloudsimple-portal-maintenance"></a>Údržba portálu CloudSimple
 
-Některé omezené prostoje služby je vyžadováno při aktualizaci řídicí roviny clouduSimple nebo infrastruktury. V současné době mohou být intervaly údržby stejně časté jako jednou za měsíc. Očekává se, že frekvence bude v průběhu času klesat. CloudSimple poskytuje oznámení pro údržbu portálu a udržuje interval co nejkratší. Během intervalu údržby portálu fungují bez jakéhokoli vtípku následující služby:
+Při aktualizaci roviny ovládacího prvku CloudSimple nebo infrastruktury se vyžaduje některá omezená výpadky služeb. V současné době mohou být intervaly údržby stejně časté jako jedenkrát za měsíc. Frekvence se očekává, že se v průběhu času odmítne. CloudSimple poskytuje oznámení pro údržbu portálu a udržuje co nejkratší interval. Během intervalu údržby portálu budou následující služby fungovat bez dopadu:
 
-* Letadlo a aplikace pro správu společnosti VMware
-* vCenter přístup
+* Rovina správy VMware a aplikace
+* přístup vCenter
 * Všechny sítě a úložiště
 * Veškerý provoz Azure
 
-### <a name="vmware-infrastructure-maintenance"></a>Údržba infrastruktury společnosti VMware
+### <a name="vmware-infrastructure-maintenance"></a>Údržba infrastruktury VMware
 
-V některých proto je nutné provést změny konfigurace infrastruktury VMware.  V současné době se tyto intervaly mohou vyskytovat každé 1-2 měsíce, ale očekává se, že frekvence v průběhu času klesá. Tento typ údržby lze obvykle provést bez přerušení normální spotřeby cloudsimple služeb. Během intervalu údržby společnosti VMware fungují bez jakéhokoli vtípku bez dopadu následující služby:
+V některých případech je potřeba provést změny v konfiguraci infrastruktury VMware.  V současné době se tyto intervaly můžou vyskytnout každých 1-2 měsíců, ale frekvence se očekává, že se v průběhu času odmítne. Tento typ údržby se obvykle dá provést bez přerušení běžné spotřeby služeb CloudSimple Services. Během intervalu údržby VMware budou následující služby fungovat bez dopadu:
 
-* Letadlo a aplikace pro správu společnosti VMware
-* vCenter přístup
+* Rovina správy VMware a aplikace
+* přístup vCenter
 * Všechny sítě a úložiště
 * Veškerý provoz Azure
 
 ## <a name="updates-and-upgrades"></a>Aktualizace a upgrady
 
-CloudSimple je zodpovědný za správu životního cyklu softwaru VMware (ESXi, vCenter, PSC a NSX) v privátním cloudu.
+CloudSimple zodpovídá za správu životního cyklu softwaru VMware (ESXi, vCenter, PSC a NSX) v privátním cloudu.
 
-Aktualizace softwaru zahrnují:
+Mezi aktualizace softwaru patří:
 
-* **Záplaty**. Opravy zabezpečení nebo opravy chyb vydané společností VMware.
-* **Aktualizace**. Dílčí verze změny součásti zásobníku VMware.
-* **Inovace**. Hlavní změna verze součásti zásobníku VMware.
+* **Opravy**. Opravy zabezpečení nebo opravy chyb vydané VMware.
+* **Aktualizace**. Dílčí verze změny komponenty zásobníku VMware.
+* **Upgrady**. Hlavní změna verze komponenty zásobníku VMware.
 
-CloudSimple testuje kritickou opravu zabezpečení, jakmile bude k dispozici od společnosti VMware. Podle sla, CloudSimple zavádí opravy zabezpečení do prostředí Privátního cloudu během týdne.
+CloudSimple testuje kritickou opravu zabezpečení, jakmile bude k dispozici z VMware. V rámci smlouvy SLA CloudSimple zavede opravu zabezpečení do prostředí privátního cloudu za týden.
 
-CloudSimple poskytuje čtvrtletní aktualizace údržby softwarových komponent VMware. Když je k dispozici nová hlavní verze softwaru VMware, CloudSimple spolupracuje se zákazníky na koordinaci vhodného okna údržby pro upgrade.
+CloudSimple poskytuje čtvrtletní aktualizace pro softwarové komponenty VMware. Když je k dispozici nová hlavní verze softwaru VMware, CloudSimple spolupracuje se zákazníky na koordinaci vhodného časového období údržby pro upgrade.
 
 ## <a name="next-steps"></a>Další kroky
 
-[Zálohování virtuálních virtuálních měn s úlohami pomocí veeamu](backup-workloads-veeam.md)
+[Zálohování virtuálních počítačů s úlohou pomocí Veeam](backup-workloads-veeam.md)

@@ -1,6 +1,6 @@
 ---
-title: Kontrola paketů pomocí nástroje Azure Network Watcher | Dokumenty společnosti Microsoft
-description: Tento článek popisuje, jak pomocí sledování sítě provádět hloubkovou kontrolu paketů shromážděnou z virtuálního míse.
+title: Kontrola paketů pomocí Azure Network Watcher | Microsoft Docs
+description: Tento článek popisuje, jak pomocí Network Watcher provádět hloubkové kontroly paketů shromážděné z virtuálního počítače.
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -13,101 +13,101 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 7d32043ca73e9cf810b3eab5e65cb4b42b599d18
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77152920"
 ---
-# <a name="packet-inspection-with-azure-network-watcher"></a>Kontrola paketů pomocí nástroje Azure Network Watcher
+# <a name="packet-inspection-with-azure-network-watcher"></a>Kontrola paketů pomocí Network Watcher Azure
 
-Pomocí funkce zachytávání paketů sledovacího programu Network Watcher můžete zahájit a spravovat relace zachycení na virtuálních počítačích Azure z portálu, prostředí PowerShell, CLI a programově prostřednictvím rozhraní SDK a REST API. Sběr paketů umožňuje řešit scénáře, které vyžadují data na úrovni paketů tím, že poskytuje informace ve snadno použitelném formátu. S využitím volně dostupných nástrojů ke kontrole dat můžete prozkoumat komunikaci odeslanou do a z virtuálních počítačů a získat přehled o síťovém provozu. Mezi příklady použití dat pro sběr paketů patří: zkoumání problémů se sítí nebo aplikací, zjišťování zneužití sítě a pokusů o vniknutí nebo udržování dodržování předpisů. V tomto článku ukážeme, jak otevřít soubor pro sběr paketů poskytovaný sledovacím programem sítě pomocí oblíbeného nástroje s otevřeným zdrojovým kódem. Poskytneme také příklady, které ukazují, jak vypočítat latenci připojení, identifikovat abnormální provoz a prozkoumat statistiky sítě.
+Pomocí funkce zachytávání paketů Network Watcher můžete iniciovat a spravovat relace zachycení na virtuálních počítačích Azure z portálu, PowerShellu, rozhraní příkazového řádku a programově prostřednictvím sady SDK a REST API. Zachytávání paketů umožňuje řešit scénáře, které vyžadují data na úrovni paketů, poskytováním informací v snadno použitelném formátu. Využití volně dostupných nástrojů pro kontrolu dat vám umožní prozkoumat komunikaci odesílaná do a z vašich virtuálních počítačů a získat přehled o provozu v síti. Mezi příklady použití dat zachytávání paketů patří: zkoumání problémů se sítí nebo aplikacemi, zjišťování zneužití sítě a pokusů o vniknutí nebo zachování dodržování předpisů. V tomto článku se dozvíte, jak otevřít soubor zachycení paketů, který poskytuje Network Watcher s využitím oblíbeného nástroje open source. Nabídneme vám také příklady, jak vypočítat latenci připojení, identifikovat neobvyklý provoz a prozkoumávat statistiky sítě.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
-Tento článek prochází některé předem nakonfigurované scénáře na zachycení paketu, který byl spuštěn dříve. Tyto scénáře ilustrují možnosti, ke kterým lze získat přístup kontrolou sběru paketů. Tento scénář používá [WireShark](https://www.wireshark.org/) ke kontrole sběru paketů.
+Tento článek prochází některými předkonfigurovanými scénáři při zachytávání paketů, který byl spuštěn dříve. Tyto scénáře ilustrují možnosti, ke kterým lze získat pøístup pomocí kontroly zachytávání paketů. Tento scénář používá nástroj [Wireshark](https://www.wireshark.org/) ke kontrole zachytávání paketů.
 
-Tento scénář předpokládá, že jste již spustili sběr paketů ve virtuálním počítači. Chcete-li se dozvědět, jak vytvořit sběr paketů, navštivte [možnost Spravovat zachytávání paketů pomocí portálu](network-watcher-packet-capture-manage-portal.md) nebo rest na stránce [Správa zachytávání paketů pomocí rozhraní REST API](network-watcher-packet-capture-manage-rest.md).
+Tento scénář předpokládá, že jste už spustili zachytávání paketů na virtuálním počítači. Informace o tom, jak vytvořit zachytávání paketů, najdete v tématu Správa zachytávání paketů pomocí [portálu](network-watcher-packet-capture-manage-portal.md) nebo se zbytkem v tématu [Správa zachytávání paketů pomocí REST API](network-watcher-packet-capture-manage-rest.md).
 
 ## <a name="scenario"></a>Scénář
 
 V tomto scénáři:
 
-* Kontrola zachycení paketu
+* Kontrola zachytávání paketů
 
 ## <a name="calculate-network-latency"></a>Výpočet latence sítě
 
-V tomto scénáři ukážeme, jak zobrazit počáteční doba odezvy (RTT) konverzace protokolu TCP (Transmission Control Protocol), ke které dochází mezi dvěma koncovými body.
+V tomto scénáři ukážeme, jak zobrazit prvotní dobu odezvy (RTT) konverzace protokolu TCP (Transmission Control Protocol), která se vyskytuje mezi dvěma koncovými body.
 
-Při navázání připojení TCP první tři pakety odeslané v připojení postupujte podle vzoru běžně označované jako třícestný handshake. Zkoumáním prvních dvou paketů odeslaných v tomto handshake, počáteční požadavek od klienta a odpověď ze serveru, můžeme vypočítat latence při vytvoření tohoto připojení. Tato latence se označuje jako doba odezvy (RTT). Další informace o protokolu TCP a třícestné handshake naleznete v následujícím prostředku. [https://support.microsoft.com/en-us/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip](https://support.microsoft.com/en-us/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip)
+Po navázání připojení TCP se první tři pakety odeslané v rámci připojení řídí vzorem, který se běžně označuje jako Třícestný handshake. Kontrolou prvních dvou paketů odeslaných v této signalizaci, počáteční požadavek od klienta a odpověď ze serveru můžeme vypočítat latenci při navázání připojení. Tato latence je označována jako čas odezvy (RTT). Další informace o protokolu TCP a prostředcích metody handshake najdete v následujících zdrojích informací. [https://support.microsoft.com/en-us/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip](https://support.microsoft.com/en-us/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip)
 
 ### <a name="step-1"></a>Krok 1
 
-Spuštění WireShark
+Spustit nástroj WireShark
 
 ### <a name="step-2"></a>Krok 2
 
-Načtěte soubor **CAP** ze sběru paketů. Tento soubor lze nalézt v objektu blob byl uložen v našem místně na virtuálním počítači, v závislosti na tom, jak jste jej nakonfigurovali.
+Načtěte soubor **. Cap** z vašeho zachytávání paketů. Tento soubor najdete v objektu blob, který se uložil místně na virtuálním počítači v závislosti na tom, jak jste ho nakonfigurovali.
 
 ### <a name="step-3"></a>Krok 3
 
-Chcete-li zobrazit počáteční doba odezvy (RTT) v konverzacích TCP, budeme se dívat pouze na první dva pakety, které se účastní handshake Protokolu TCP. Budeme používat první dva pakety v třícestném handshake, které jsou pakety [SYN], [SYN, ACK]. Jsou pojmenovány pro příznaky nastavené v záhlaví Protokolu TCP. Poslední paket v paketu handshake, paket [ACK], nebude v tomto scénáři použit. Paket [SYN] je odeslán klientem. Jakmile je server přijat, odešle paket [ACK] jako potvrzení o přijetí SYN od klienta. S využitím skutečnosti, že odpověď serveru vyžaduje velmi malou režii, vypočítáme RTT odečtením doby, kdy byl paket [SYN, ACK] klientem přijat v době, kdy byl paket [SYN] odeslán klientem.
+Chcete-li zobrazit počáteční dobu odezvy v konverzaci TCP, prohlížíme jenom první dva pakety, které jsou součástí metody handshake protokolu TCP. První dva pakety budeme používat v třícestných handshakích, což jsou pakety [SYN], [SYN, ACK]. Jsou pojmenovány pro příznaky nastavené v hlavičce protokolu TCP. V tomto scénáři se nepoužije poslední paket v paketu handshake, paketu [ACK]. Klient nástroje odesílá paket [SYN]. Jakmile se dodrží, server odešle paket [ACK] jako potvrzení přijetí SYN od klienta. Využitím faktu, že odezva serveru vyžaduje velmi nízkou režii, vypočítáme čas RTT odečtením času, kdy klient přijal paket [SYN, ACK], časem, kdy klient odeslal paket s časem [SYN].
 
-Pomocí WireShark je tato hodnota vypočtena pro nás.
+Pomocí WireShark se tato hodnota počítá pro nás.
 
-Chcete-li snadněji zobrazit první dva pakety v TCP třícestné handshake, budeme využívat filtrování schopnosti poskytované WireShark.
+Pro snazší zobrazení prvních dvou paketů v rámci třícestných handshakí protokolu TCP využijeme funkce filtrování, které poskytuje nástroj WireShark.
 
-Chcete-li použít filtr v wiresharku, rozbalte segment "Transmission Control Protocol" paketu [SYN] v zachycení a zkontrolujte příznaky nastavené v hlavičce Protokolu TCP.
+Chcete-li použít filtr v nástroji WireShark, rozbalte segment přenosového protokolu (Transmission Control Protocol) paketu [SYN] v záznamu a prověřte příznaky nastavené v hlavičce protokolu TCP.
 
-Vzhledem k tomu, že se snažíme filtrovat na všech [SYN] a [SYN, ACK] pakety, pod příznaky potvrzují, že syn bit je nastavena na 1, pak klikněte pravým tlačítkem myši na Syn bit -> použít jako filtr -> vybrán.
+Vzhledem k tomu, že se chystáme filtrovat všechny pakety [SYN] a [SYN, ACK], v části Příznaky potvrďte, že je bit syn nastavený na hodnotu 1, a pak klikněte pravým tlačítkem na bit syn > použít jako filtr-> vybrány.
 
-![obrázek 7][7]
+![Obrázek 7][7]
 
 ### <a name="step-4"></a>Krok 4
 
-Nyní, když jste filtrovali okno, abyste viděli pouze pakety s bitovou sadou [SYN], můžete snadno vybrat konverzace, které vás zajímají, a zobrazit počáteční RTT. Jednoduchý způsob, jak zobrazit RTT v WireShark jednoduše klikněte na rozbalovací označené "SEQ / ACK" analýzy. Poté se zobrazí rtt. V tomto případě rtt byl 0,0022114 sekundy, nebo 2.211 ms.
+Teď, když jste okno vyfiltroval, aby se zobrazily jenom pakety s nastaveným bitem [SYN], můžete snadno vybrat konverzace, které vás zajímají, a zobrazit počáteční čas RTT. Jednoduchý způsob, jak zobrazit čas v nástroji WireShark, stačí kliknout na rozevírací seznam s označením analýza SEQ/ACK. Zobrazí se zobrazená doba odezvy. V tomto případě byla čas RTT 0,0022114 sekund nebo 2,211 MS.
 
 ![Obrázek 8][8]
 
-## <a name="unwanted-protocols"></a>Nežádoucí protokoly
+## <a name="unwanted-protocols"></a>Nechtěné protokoly
 
-Můžete mít mnoho aplikací spuštěných na instanci virtuálního počítače, kterou jste nasadili v Azure. Mnoho z těchto aplikací komunikovat v síti, možná bez vašeho výslovného svolení. Pomocí zachytávání paketů k ukládání síťové komunikace můžeme zjistit, jak aplikace mluví v síti, a hledat případné problémy.
+V instanci virtuálního počítače, kterou jste nasadili v Azure, můžete mít spuštěný spousta aplikací. Mnohé z těchto aplikací komunikují přes síť, třeba bez výslovného svolení. Pomocí zachycení paketů k ukládání síťové komunikace můžeme prozkoumat, jak aplikace mluví na síti a hledat případné problémy.
 
-V tomto příkladu zkontrolujeme předchozí spuštění sběru paketů pro nežádoucí protokoly, které mohou znamenat neoprávněnou komunikaci z aplikace spuštěné v počítači.
-
-### <a name="step-1"></a>Krok 1
-
-Použití stejného zachycení v předchozím scénáři klepněte na**položku Hierarchie protokolu** **statistiky** > 
-
-![nabídka hierarchie protokolů][2]
-
-Zobrazí se okno hierarchie protokolů. Toto zobrazení obsahuje seznam všech protokolů, které byly používány během relace sběru, a počtu paketů odeslaných a přijatých pomocí protokolů. Toto zobrazení může být užitečné pro hledání nežádoucích síťových přenosů ve virtuálních počítačích nebo v síti.
-
-![otevřena hierarchie protokolů][3]
-
-Jak můžete vidět v následujícím snímání obrazovky, tam byl provoz pomocí protokolu BitTorrent, který se používá pro peer to peer sdílení souborů. Jako správce neočekáváte, že uvidíte BitTorrent provoz na tomto konkrétním virtuálním stroji. Nyní, když jste si vědomi tohoto provozu, můžete odebrat software peer to peer, který byl nainstalován na tomto virtuálním počítači, nebo zablokovat provoz pomocí skupin zabezpečení sítě nebo brány firewall. Kromě toho se můžete rozhodnout spustit sběr paketů podle plánu, takže můžete pravidelně kontrolovat použití protokolu na virtuálních počítačích. Příklad, jak automatizovat síťové úlohy v Azure, najdete na stránce [Monitorování síťových prostředků pomocí azure automation](network-watcher-monitor-with-azure-automation.md)
-
-## <a name="finding-top-destinations-and-ports"></a>Hledání nejlepších destinací a přístavů
-
-Pochopení typů provozu, koncových bodů a portů komunikovaných je důležité při monitorování nebo řešení potíží s aplikacemi a prostředky v síti. S využitím souboru pro zachycení paketů shora se můžeme rychle naučit nejlepší cíle, se kterými náš virtuální virtuální modul komunikuje, a používané porty.
+V tomto příkladu si projdeme předchozí spuštěné zachytávání paketů pro nechtěné protokoly, které mohou ukazovat na neoprávněnou komunikaci z aplikace spuštěné na vašem počítači.
 
 ### <a name="step-1"></a>Krok 1
 
-Použití stejného zachycení v předchozím scénáři klikněte **na statistika** > **IPv4 Statistika** > **cíle a porty**
+Použití stejného zachycení v předchozím scénáři klikněte na**hierarchie protokolu** **statistiky** > .
 
-![okno pro digitalizaci paketů][4]
+![Nabídka hierarchie protokolu][2]
+
+Zobrazí se okno hierarchie protokolu. Toto zobrazení uvádí seznam všech protokolů, které se během relace zachycení používaly, a počet paketů odeslaných a přijatých pomocí protokolů. Toto zobrazení může být užitečné při hledání nežádoucího síťového provozu na virtuálních počítačích nebo v síti.
+
+![otevřená hierarchie protokolu][3]
+
+Jak vidíte na následujícím snímku obrazovky, probíhal provoz pomocí protokolu BitTorrent, který se používá pro sdílení souborů peer-to-peer. Jako správce neočekáváte, aby se na těchto konkrétních virtuálních počítačích zobrazil provoz BitTorrent. Nyní si o tomto provozu můžete odebrat partnerský software, který je nainstalovaný na tomto virtuálním počítači, nebo zablokovat provoz pomocí skupin zabezpečení sítě nebo brány firewall. Kromě toho se můžete rozhodnout spustit zachytávání paketů podle plánu, abyste mohli pravidelně kontrolovat používání protokolu na virtuálních počítačích. Příklad automatizace síťových úloh v Azure najdete v tématu [monitorování síťových prostředků pomocí Azure Automation](network-watcher-monitor-with-azure-automation.md) .
+
+## <a name="finding-top-destinations-and-ports"></a>Hledání hlavních cílů a portů
+
+Porozumění typům provozu, koncovým bodům a portům, které jsou předávány, je důležité při monitorování nebo řešení potíží s aplikacemi a prostředky ve vaší síti. Pomocí souboru zachycení paketů z výše uvedeného se můžeme rychle naučit nejdůležitější cíle, se kterými náš virtuální počítač komunikuje, a porty, které se využívají.
+
+### <a name="step-1"></a>Krok 1
+
+Pomocí stejného zachycení v předchozím scénáři klikněte na **Statistika** > **IPv4** > **cíle a porty** .
+
+![okno zachytávání paketů][4]
 
 ### <a name="step-2"></a>Krok 2
 
-Když se podíváme na výsledky, linka vyčnívá, na portu 111 bylo více spojení. Nejpoužívanější port byl 3389, což je vzdálená plocha, a zbývající jsou dynamické porty RPC.
+Jak se podíváme na výsledky, na které řádek stojí, bylo jich na portu 111 víc. Nejčastěji používaný port byl 3389, což je vzdálená plocha a zbývající jsou dynamické porty RPC.
 
-Zatímco tento provoz může znamenat nic, je port, který byl použit pro mnoho připojení a je neznámý správce.
+I když tento provoz nemusí znamenat nic, jedná se o port, který se použil pro mnoho připojení a který je pro správce neznámý.
 
 ![Obrázek 5][5]
 
 ### <a name="step-3"></a>Krok 3
 
-Nyní, když jsme určili mimo mísu, můžeme filtrovat naše zachycení na základě přístavu.
+Teď, když jsme zjistili, že jsme neumístili port, můžeme na základě portu vyfiltrovat naše zachycení.
 
 Filtr v tomto scénáři by byl:
 
@@ -115,15 +115,15 @@ Filtr v tomto scénáři by byl:
 tcp.port == 111
 ```
 
-Do textového pole filtru zadáme text filtru shora a stiskneme klávesu Enter.
+Do textového pole filtru zadejte text filtru a stiskněte ENTER.
 
 ![Obrázek 6][6]
 
-Z výsledků můžeme vidět veškerý provoz pochází z místního virtuálního počítače ve stejné podsíti. Pokud stále nerozumíme tomu, proč k tomuto provozu dochází, můžeme dále zkontrolovat pakety, abychom zjistili, proč tato volání provádí na portu 111. S těmito informacemi můžeme přijmout vhodná opatření.
+Z výsledků můžeme vidět, že veškerý provoz pochází z místního virtuálního počítače ve stejné podsíti. Pokud stále nerozumíme tomu, proč k tomuto provozu dochází, můžeme dále zkontrolovat pakety a zjistit, proč tato volání provádějí na portu 111. S těmito informacemi můžeme provést příslušnou akci.
 
 ## <a name="next-steps"></a>Další kroky
 
-Informace o dalších diagnostických funkcích nástroje Network Watcher najdete v přehledu [monitorování sítě Azure](network-watcher-monitoring-overview.md)
+Další informace o dalších diagnostických funkcích Network Watcher najdete v tématu [Přehled monitorování sítě Azure](network-watcher-monitoring-overview.md) .
 
 [1]: ./media/network-watcher-deep-packet-inspection/figure1.png
 [2]: ./media/network-watcher-deep-packet-inspection/figure2.png

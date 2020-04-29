@@ -1,6 +1,6 @@
 ---
-title: Vytvoření instance Azure Network Watcher | Dokumenty společnosti Microsoft
-description: Zjistěte, jak povolit sledování sítě v oblasti Azure.
+title: Vytvoření instance služby Azure Network Watcher | Microsoft Docs
+description: Naučte se, jak povolit Network Watcher v oblasti Azure.
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -13,27 +13,27 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 77812a3765a027152c957f6dbb7c9b3811a2278f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77191179"
 ---
 # <a name="create-an-azure-network-watcher-instance"></a>Vytvoření instance služby Azure Network Watcher
 
-Network Watcher je místní služba, která umožňuje sledovat a diagnostikovat podmínky na úrovni síťového scénáře v Azure, do a z Azure. Monitorování úrovně scénáře umožňuje diagnostikovat problémy v zobrazení na úrovni sítě ukončujícímu až konečnému konci. Nástroje pro diagnostiku a vizualizaci sítě, které jsou k dispozici pomocí nástroje Sledování sítě, vám pomohou pochopit, diagnostikovat a získat přehled o vaší síti v Azure. Sledování sítě je povoleno vytvořením prostředku sledování sítě. Tento prostředek umožňuje využít funkce sledování sítě.
+Network Watcher je místní služba, která umožňuje monitorovat a diagnostikovat podmínky na úrovni síťového scénáře v, do a z Azure. Monitorování úrovně scénáře umožňuje diagnostikovat problémy v zobrazení na úrovni koncových sítí. Nástroje pro diagnostiku a diagnostiku sítě, které jsou dostupné v Network Watcher, vám pomůžou pochopit, diagnostikovat a získávat přehledy vaší sítě v Azure. Network Watcher je povolená při vytváření prostředku Network Watcher. Tento prostředek vám umožní využívat Network Watcher možnosti.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="network-watcher-is-automatically-enabled"></a>Sledování sítě je automaticky povoleno.
+## <a name="network-watcher-is-automatically-enabled"></a>Network Watcher je automaticky povoleno.
 Když ve svém předplatném vytvoříte nebo aktualizujete virtuální síť, automaticky se pro oblast této virtuální sítě povolí Network Watcher. Automatické povolení služby Network Watcher nemá žádný vliv na vaše prostředky ani se s ním nepojí žádné poplatky.
 
-#### <a name="opt-out-of-network-watcher-automatic-enablement"></a>Odhlášení automatického povolení sledování sítě
-Pokud se chcete odhlásit z automatického povolení Sledování sítě, můžete tak učinit spuštěním následujících příkazů:
+#### <a name="opt-out-of-network-watcher-automatic-enablement"></a>Výslovný nesouhlas s Network Watcher automatické povolení
+Pokud se chcete odhlásit z Network Watcher automatické povolení, můžete to udělat tak, že spustíte následující příkazy:
 
 > [!WARNING]
-> Odhlášení automatického povolení Sledování sítě je trvalou změnou. Jakmile se odhlásíte, nemůžete se přihlásit, aniž byste [kontaktovali podporu](https://azure.microsoft.com/support/options/)
+> Vypnutí Network Watcher automatické povolení je trvalá změna. Jakmile se odhlásíte, nemůžete se vyjádřit, aniž byste [kontaktovali podporu](https://azure.microsoft.com/support/options/) .
 
 ```azurepowershell-interactive
 Register-AzProviderFeature -FeatureName DisableNetworkWatcherAutocreation -ProviderNamespace Microsoft.Network
@@ -47,39 +47,39 @@ az provider register -n Microsoft.Network
 
 
 
-## <a name="create-a-network-watcher-in-the-portal"></a>Vytvoření sledovacího programu sítě na portálu
+## <a name="create-a-network-watcher-in-the-portal"></a>Vytvoření Network Watcher na portálu
 
-Přejděte na **službu All Services** > **Network.** > **Network Watcher** Můžete vybrat všechna předplatná, pro která chcete povolit sledování sítě. Tato akce vytvoří sledovací proces sítě v každé oblasti, která je k dispozici.
+Přejděte na **všechny služby** > **sítě** > **Network Watcher**. Můžete vybrat všechna předplatná, která chcete povolit Network Watcher pro. Tato akce vytvoří Network Watcher v každé oblasti, která je k dispozici.
 
-![vytvoření sledovacího procesu sítě](./media/network-watcher-create/figure1.png)
+![Vytvoření sledovacího procesu sítě](./media/network-watcher-create/figure1.png)
 
-Když povolíte sledování sítě pomocí portálu, název instance Network Watcher je automaticky nastaven a *NetworkWatcher_region_name* kde *region_name* odpovídá oblasti Azure, kde je povolena instance. Například sledovací modul sítě povolený v oblasti USA – západ – střed se nazývá *NetworkWatcher_westcentralus*.
+Pokud povolíte Network Watcher pomocí portálu, název instance Network Watcher je automaticky nastaven na *NetworkWatcher_region_name* , kde *Region_name* odpovídá oblasti Azure, ve které je instance povolená. Například Network Watcher povolený v Středozápadní USA oblasti má název *NetworkWatcher_westcentralus*.
 
-Instance Network Watcher je automaticky vytvořena ve skupině prostředků s názvem *NetworkWatcherRG*. Skupina prostředků je vytvořena, pokud ještě neexistuje.
+Instance Network Watcher se automaticky vytvoří ve skupině prostředků s názvem *NetworkWatcherRG*. Skupina prostředků se vytvoří, pokud ještě neexistuje.
 
-Pokud chcete přizpůsobit název instance Network Watcher a skupiny prostředků, do které je umístěna, můžete použít Powershell, Azure CLI, ROZHRANÍ API REST nebo metody ARMClient popsané v následujících částech. V každé možnosti musí existovat skupina prostředků před vytvořením sledovacího programu sítě v něm.  
+Pokud chcete přizpůsobit název instance Network Watcher a skupinu prostředků, do které se umístí, můžete použít PowerShell, rozhraní příkazového řádku Azure CLI, REST API nebo ARMClient metody popsané v následujících částech. V každé z možností musí skupina prostředků existovat, aby bylo možné v ní vytvořit Network Watcher.  
 
-## <a name="create-a-network-watcher-with-powershell"></a>Vytvoření sledovacího procesu sítě pomocí prostředí PowerShell
+## <a name="create-a-network-watcher-with-powershell"></a>Vytvoření Network Watcher s využitím PowerShellu
 
-Chcete-li vytvořit instanci sledovacího programu sítě, spusťte následující příklad:
+Chcete-li vytvořit instanci Network Watcher, spusťte následující příklad:
 
 ```powershell
 New-AzNetworkWatcher -Name "NetworkWatcher_westcentralus" -ResourceGroupName "NetworkWatcherRG" -Location "West Central US"
 ```
 
-## <a name="create-a-network-watcher-with-the-azure-cli"></a>Vytvoření sledovacího procesu sítě pomocí příkazového příkazového příkazu k řešení Azure
+## <a name="create-a-network-watcher-with-the-azure-cli"></a>Vytvoření Network Watcher pomocí Azure CLI
 
-Chcete-li vytvořit instanci sledovacího programu sítě, spusťte následující příklad:
+Chcete-li vytvořit instanci Network Watcher, spusťte následující příklad:
 
 ```azurecli
 az network watcher configure --resource-group NetworkWatcherRG --locations westcentralus --enabled
 ```
 
-## <a name="create-a-network-watcher-with-the-rest-api"></a>Vytvoření sledovacího procesu sítě pomocí rozhraní REST API
+## <a name="create-a-network-watcher-with-the-rest-api"></a>Vytvoření Network Watcher s REST API
 
-ArMclient se používá k volání rozhraní REST API pomocí prostředí PowerShell. ARMClient se nachází na chocolatey na [ARMClient na Chocolatey](https://chocolatey.org/packages/ARMClient)
+ARMclient se používá k volání REST API s využitím PowerShellu. ARMClient se nachází v čokoládě na [ARMClient při čokoládě](https://chocolatey.org/packages/ARMClient) .
 
-### <a name="log-in-with-armclient"></a>Přihlášení pomocí klienta ARMClient
+### <a name="log-in-with-armclient"></a>Přihlášení pomocí ARMClient
 
 ```powerShell
 armclient login
@@ -101,19 +101,19 @@ $requestBody = @"
 armclient put "https://management.azure.com/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}?api-version=${api-version}" $requestBody
 ```
 
-## <a name="delete-a-network-watcher-in-the-portal"></a>Odstranění sledovacího programu sítě na portálu
+## <a name="delete-a-network-watcher-in-the-portal"></a>Odstranění Network Watcher na portálu
 
-Přejděte na **službu All Services** > **Network.** > **Network Watcher**
+Přejděte na **všechny služby** > **sítě** > **Network Watcher**.
 
-Pokud ještě nejste k dispozici, vyberte kartu Přehled. Pomocí rozevíracího souboru vyberte předplatné, ve kterém chcete zakázat sledovací modul sítě.
-Kliknutím na šipku rozbalte seznam oblastí pro zvolené předplatné. Pro daný, použijte 3 tečky na pravé straně pro přístup k kontextové nabídce.
-Klikněte na "Zakázat sledování sítě" pro spuštění zakázání. Budete vyzváni k potvrzení tohoto kroku. Pro pokračování klikněte na Ano.
-Na portálu to budete muset udělat individuálně pro každou oblast v každém předplatném.
+Vyberte kartu Přehled, pokud ještě nejste. Pomocí rozevírací nabídky vyberte předplatné, ve kterém chcete sledovací proces sítě vypnout.
+Kliknutím na šipku rozbalte seznam oblastí zvoleného předplatného. V případě potřeby použijte pro přístup k místní nabídce 3 tečky na pravé straně.
+Kliknutím na zakázat sledování sítě zahajte zakazování. Zobrazí se výzva k potvrzení tohoto kroku. Pro pokračování klikněte na Ano.
+Na portálu ho budete muset udělat jednotlivě pro každou oblast v každém předplatném.
 
 
-## <a name="delete-a-network-watcher-with-powershell"></a>Odstranění sledovacího procesu sítě pomocí prostředí PowerShell
+## <a name="delete-a-network-watcher-with-powershell"></a>Odstranění Network Watcher pomocí PowerShellu
 
-Chcete-li odstranit instanci sledovacího programu sítě, spusťte následující příklad:
+Chcete-li odstranit instanci Network Watcher, spusťte následující příklad:
 
 ```powershell
 New-AzResourceGroup -Name NetworkWatcherRG -Location westcentralus
@@ -123,12 +123,12 @@ Remove-AzNetworkWatcher -Name NetworkWatcher_westcentralus -ResourceGroup Networ
 
 ## <a name="next-steps"></a>Další kroky
 
-Nyní, když máte instanci sledování sítě, se dozvíte o dostupných funkcích:
+Teď, když máte instanci Network Watcher, přečtěte si informace o dostupných funkcích:
 
 * [Topologie](network-watcher-topology-overview.md)
 * [Zachytávání paketů](network-watcher-packet-capture-overview.md)
 * [Ověření toku protokolu IP](network-watcher-ip-flow-verify-overview.md)
 * [Další směrování](network-watcher-next-hop-overview.md)
 * [Zobrazení skupin zabezpečení](network-watcher-security-group-view-overview.md)
-* [Protokolování toku nsg](network-watcher-nsg-flow-logging-overview.md)
-* [Řešení potíží s bránou virtuální sítě](network-watcher-troubleshoot-overview.md)
+* [Protokolování toku NSG](network-watcher-nsg-flow-logging-overview.md)
+* [Řešení potíží s Virtual Networkovou bránou](network-watcher-troubleshoot-overview.md)

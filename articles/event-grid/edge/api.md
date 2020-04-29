@@ -1,6 +1,6 @@
 ---
-title: ROZHRANÍ REST API – Azure Event Grid IoT Edge | Dokumenty společnosti Microsoft
-description: ROZHRANÍ REST API na síti událostí na IoT Edge.
+title: REST API-Azure Event Grid IoT Edge | Microsoft Docs
+description: REST API Event Grid na IoT Edge.
 author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
@@ -10,38 +10,38 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 19f86b1d8233e05844201e1095c1f79324955cd7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76841825"
 ---
 # <a name="rest-api"></a>REST API
-Tento článek popisuje rest API azure event grid na IoT Edge
+Tento článek popisuje rozhraní REST API Azure Event Grid v IoT Edge
 
 ## <a name="common-api-behavior"></a>Běžné chování rozhraní API
 
 ### <a name="base-url"></a>Základní adresa URL
-Event Grid na IoT Edge má následující api vystavené přes HTTP (port 5888) a HTTPS (port 4438).
+Event Grid v IoT Edge má následující rozhraní API vystavené přes protokol HTTP (port 5888) a HTTPS (port 4438).
 
-* Základní adresa URL pro protokol HTTP:http://eventgridmodule:5888
+* Základní adresa URL pro HTTP:http://eventgridmodule:5888
 * Základní adresa URL pro protokol HTTPS:https://eventgridmodule:4438
 
-### <a name="request-query-string"></a>Řetězec dotazu požadavku
+### <a name="request-query-string"></a>Vyžádat řetězec dotazu
 Všechny požadavky rozhraní API vyžadují následující parametr řetězce dotazu:
 
 ```?api-version=2019-01-01-preview```
 
-### <a name="request-content-type"></a>Požádat o typ obsahu
-Všechny požadavky rozhraní API musí mít **typ obsahu**.
+### <a name="request-content-type"></a>Typ obsahu žádosti
+Všechny požadavky rozhraní API musí mít **typ Content-Type**.
 
-V případě **EventGridSchema** nebo **CustomSchema**může být hodnota Content-Type jedna z následujících hodnot:
+V případě **EventGridSchema** nebo **CustomSchema**může být hodnotou Content-type jedna z následujících hodnot:
 
 ```Content-Type: application/json```
 
 ```Content-Type: application/json; charset=utf-8```
 
-V případě **CloudEventSchemaV1_0** ve strukturovaném režimu může být hodnota typu Content jedna z následujících hodnot:
+V případě **CloudEventSchemaV1_0** ve strukturovaném režimu může být hodnotou Content-type jedna z následujících hodnot:
 
 ```Content-Type: application/cloudevents+json```
     
@@ -51,10 +51,10 @@ V případě **CloudEventSchemaV1_0** ve strukturovaném režimu může být hod
     
 ```Content-Type: application/cloudevents-batch+json; charset=utf-8```
 
-V případě **CloudEventSchemaV1_0** v binárním režimu, naleznete [v dokumentaci](https://github.com/cloudevents/spec/blob/master/http-protocol-binding.md) pro podrobnosti.
+V případě **CloudEventSchemaV1_0** v binárním režimu najdete podrobnosti v [dokumentaci](https://github.com/cloudevents/spec/blob/master/http-protocol-binding.md) .
 
-### <a name="error-response"></a>Odpověď na chybu
-Všechna rozhraní API vrátí chybu s následující datovou částí:
+### <a name="error-response"></a>Chybová odezva
+Všechna rozhraní API vrací chybu s následující datovou částí:
 
 ```json
 {
@@ -70,13 +70,13 @@ Všechna rozhraní API vrátí chybu s následující datovou částí:
 }
 ```
 
-## <a name="manage-topics"></a>Správa témat
+## <a name="manage-topics"></a>Spravovat témata
 
-### <a name="put-topic-create--update"></a>Put téma (vytvořit / aktualizovat)
+### <a name="put-topic-create--update"></a>Vložit téma (vytvořit/aktualizovat)
 
-**Žádost**:``` PUT /topics/<topic_name>?api-version=2019-01-01-preview ```
+**Požadavek**:``` PUT /topics/<topic_name>?api-version=2019-01-01-preview ```
 
-**Užitečné zatížení**:
+**Datová část**:
 
 ```json
     {
@@ -88,9 +88,9 @@ Všechna rozhraní API vrátí chybu s následující datovou částí:
     }
 ```
 
-**Odpověď**: HTTP 200
+**Odpověď**: http 200
 
-**Užitečné zatížení**:
+**Datová část**:
 
 ```json
 {
@@ -107,11 +107,11 @@ Všechna rozhraní API vrátí chybu s následující datovou částí:
 
 ### <a name="get-topic"></a>Získat téma
 
-**Žádost**:``` GET /topics/<topic_name>?api-version=2019-01-01-preview ```
+**Požadavek**:``` GET /topics/<topic_name>?api-version=2019-01-01-preview ```
 
-**Odpověď**: HTTP 200
+**Odpověď**: http 200
 
-**Užitečné zatížení**:
+**Datová část**:
 ```json
 {
     "id": "/iotHubs/<iot_hub_name>/devices/<iot_edge_device_id>/modules/<eventgrid_module_name>/topics/<topic_name>",
@@ -127,11 +127,11 @@ Všechna rozhraní API vrátí chybu s následující datovou částí:
 
 ### <a name="get-all-topics"></a>Získat všechna témata
 
-**Žádost**:``` GET /topics?api-version=2019-01-01-preview ```
+**Požadavek**:``` GET /topics?api-version=2019-01-01-preview ```
 
-**Odpověď**: HTTP 200
+**Odpověď**: http 200
 
-**Užitečné zatížení**:
+**Datová část**:
 ```json
 [
     {
@@ -159,18 +159,18 @@ Všechna rozhraní API vrátí chybu s následující datovou částí:
 
 ### <a name="delete-topic"></a>Odstranit téma
 
-**Žádost**:``` DELETE /topics/<topic_name>?api-version=2019-01-01-preview ```
+**Požadavek**:``` DELETE /topics/<topic_name>?api-version=2019-01-01-preview ```
 
-**Odpověď**: HTTP 200, prázdná datová část
+**Odpověď**: http 200, prázdná datová část
 
 ## <a name="manage-event-subscriptions"></a>Správa odběrů událostí
-Vzorky v `EndpointType=Webhook;`této části používají . Vzorky jsonpro `EndpointType=EdgeHub / EndpointType=EventGrid` jsou v další části. 
+Ukázky v tomto oddílu používají `EndpointType=Webhook;`. Ukázky JSON pro `EndpointType=EdgeHub / EndpointType=EventGrid` jsou v následující části. 
 
-### <a name="put-event-subscription-create--update"></a>Odběr událostí (vytvoření /aktualizace)
+### <a name="put-event-subscription-create--update"></a>Vložit odběr události (vytvořit nebo aktualizovat)
 
-**Žádost**:``` PUT /topics/<topic_name>/eventSubscriptions/<subscription_name>?api-version=2019-01-01-preview ```
+**Požadavek**:``` PUT /topics/<topic_name>/eventSubscriptions/<subscription_name>?api-version=2019-01-01-preview ```
 
-**Užitečné zatížení**:
+**Datová část**:
 ```json
 {
     "name": "<subscription_name>", // optional, inferred from URL. If specified must match URL subscription_name
@@ -268,9 +268,9 @@ Vzorky v `EndpointType=Webhook;`této části používají . Vzorky jsonpro `End
 }
 ```
 
-**Odpověď**: HTTP 200
+**Odpověď**: http 200
 
-**Užitečné zatížení**:
+**Datová část**:
 
 ```json
 {
@@ -371,13 +371,13 @@ Vzorky v `EndpointType=Webhook;`této části používají . Vzorky jsonpro `End
 ```
 
 
-### <a name="get-event-subscription"></a>Získání předplatného událostí
+### <a name="get-event-subscription"></a>Získat odběr události
 
-**Žádost**:``` GET /topics/<topic_name>/eventSubscriptions/<subscription_name>?api-version=2019-01-01-preview ```
+**Požadavek**:``` GET /topics/<topic_name>/eventSubscriptions/<subscription_name>?api-version=2019-01-01-preview ```
 
-**Odpověď**: HTTP 200
+**Odpověď**: http 200
 
-**Užitečné zatížení**:
+**Datová část**:
 ```json
 {
     "id": "/iotHubs/<iot_hub_name>/devices/<iot_edge_device_id>/modules/<eventgrid_module_name>/topics/<topic_name>/eventSubscriptions/<subscription_name>",
@@ -476,13 +476,13 @@ Vzorky v `EndpointType=Webhook;`této části používají . Vzorky jsonpro `End
 }
 ```
 
-### <a name="get-event-subscriptions"></a>Získání odběrů událostí
+### <a name="get-event-subscriptions"></a>Získat odběry událostí
 
-**Žádost**:``` GET /topics/<topic_name>/eventSubscriptions?api-version=2019-01-01-preview ```
+**Požadavek**:``` GET /topics/<topic_name>/eventSubscriptions?api-version=2019-01-01-preview ```
 
-**Odpověď**: HTTP 200
+**Odpověď**: http 200
 
-**Užitečné zatížení**:
+**Datová část**:
 ```json
 [
     {
@@ -494,18 +494,18 @@ Vzorky v `EndpointType=Webhook;`této části používají . Vzorky jsonpro `End
 ]
 ```
 
-### <a name="delete-event-subscription"></a>Odstranit odběr událostí
+### <a name="delete-event-subscription"></a>Odstranit odběr události
 
-**Žádost**:``` DELETE /topics/<topic_name>/eventSubscriptions/<subscription_name>?api-version=2019-01-01-preview ```
+**Požadavek**:``` DELETE /topics/<topic_name>/eventSubscriptions/<subscription_name>?api-version=2019-01-01-preview ```
 
-**Odpověď**: HTTP 200, bez datové části
+**Odpověď**: http 200, žádná datová část
 
 
-## <a name="publish-events-api"></a>Publikovat rozhraní API událostí
+## <a name="publish-events-api"></a>Rozhraní API pro publikování událostí
 
-### <a name="send-batch-of-events-in-event-grid-schema"></a>Odeslat dávku událostí (ve schématu Mřížky událostí)
+### <a name="send-batch-of-events-in-event-grid-schema"></a>Odeslat dávku událostí (ve schématu Event Grid)
 
-**Žádost**:``` POST /topics/<topic_name>/events?api-version=2019-01-01-preview ```
+**Požadavek**:``` POST /topics/<topic_name>/events?api-version=2019-01-01-preview ```
 
 ```json
 [
@@ -523,22 +523,22 @@ Vzorky v `EndpointType=Webhook;`této části používají . Vzorky jsonpro `End
 ]
 ```
 
-**Odpověď**: HTTP 200, prázdná datová část
+**Odpověď**: http 200, prázdná datová část
 
 
 **Popisy polí datové části**
-- ```Id```je povinné. Může se jedná o libovolnou hodnotu řetězce, která je naplněna volajícím. Event Grid neprovádí žádné vyhledávání duplicit nebo vynucovat sémantiku v tomto poli.
-- ```Topic```je nepovinný, ale pokud je zadán, musí odpovídat topic_name z adresy URL požadavku
-- ```Subject```je povinné, může být libovolná hodnota řetězce
-- ```EventType```je povinné, může být libovolná hodnota řetězce
-- ```EventTime```je povinné, není ověřena, ale měla by být správná DateTime.
+- ```Id```je povinné. Může to být jakákoli řetězcová hodnota, která je vyplněna volajícím. Event Grid neprovádí žádnou duplicitu ani neuplatňuje žádné sémantiky v tomto poli.
+- ```Topic```je volitelný, ale pokud je zadaný, musí odpovídat topic_name z adresy URL požadavku.
+- ```Subject```je povinná, může být libovolná hodnota řetězce.
+- ```EventType```je povinná, může být libovolná hodnota řetězce.
+- ```EventTime```je povinná, není ověřená, ale měla by být správného typu DateTime.
 - ```DataVersion```je povinné
-- ```MetadataVersion```je nepovinné, pokud je zadán, musí to být řetězec s hodnotou```"1"```
-- ```Data```je volitelný a může být libovolný token JSON (číslo, řetězec, logický, logický, maticový, objekt)
+- ```MetadataVersion```je nepovinný, pokud je zadaný, musí to být řetězec s hodnotou.```"1"```
+- ```Data```je volitelná a může to být libovolný token JSON (číslo, řetězec, logická hodnota, pole, objekt).
 
 ### <a name="send-batch-of-events-in-custom-schema"></a>Odeslat dávku událostí (ve vlastním schématu)
 
-**Žádost**:``` POST /topics/<topic_name>/events?api-version=2019-01-01-preview ```
+**Požadavek**:``` POST /topics/<topic_name>/events?api-version=2019-01-01-preview ```
 
 ```json
 [
@@ -548,18 +548,18 @@ Vzorky v `EndpointType=Webhook;`této části používají . Vzorky jsonpro `End
 ]
 ```
 
-**Odpověď**: HTTP 200, prázdná datová část
+**Odpověď**: http 200, prázdná datová část
 
 
-**Omezení datovéčásti**
-- MUSÍ být pole událostí.
-- Každá položka pole musí být objektjového objektu JSON.
-- Žádná jiná omezení (kromě velikosti datové části).
+**Omezení datové části**
+- MUSÍ se jednat o pole událostí.
+- Každá položka pole musí být objekt JSON.
+- Žádná jiná omezení (jiné než velikost datové části).
 
 ## <a name="examples"></a>Příklady
 
-### <a name="set-up-topic-with-eventgrid-schema"></a>Nastavení tématu pomocí schématu EventGrid
-Nastaví téma tak, aby vyžadovalo publikování událostí v **eventgridschema**.
+### <a name="set-up-topic-with-eventgrid-schema"></a>Nastavení tématu se schématem EventGrid
+Nastaví téma pro vyžadování událostí, které budou publikovány v **eventgridschema**.
 
 ```json
     {
@@ -571,8 +571,8 @@ Nastaví téma tak, aby vyžadovalo publikování událostí v **eventgridschema
     }
 ```
 
-### <a name="set-up-topic-with-custom-schema"></a>Nastavení tématu pomocí vlastního schématu
-Nastaví téma, které bude vyžadovat `customschema`publikování událostí v aplikaci .
+### <a name="set-up-topic-with-custom-schema"></a>Nastavení tématu s vlastním schématem
+Nastaví téma pro vyžadování událostí, které mají být publikovány v `customschema`nástroji.
 
 ```json
     {
@@ -584,8 +584,8 @@ Nastaví téma, které bude vyžadovat `customschema`publikování událostí v 
     }
 ```
 
-### <a name="set-up-topic-with-cloud-event-schema"></a>Nastavení tématu pomocí schématu cloudových událostí
-Nastaví téma, které bude vyžadovat `cloudeventschema`publikování událostí v aplikaci .
+### <a name="set-up-topic-with-cloud-event-schema"></a>Nastavení tématu se schématem cloudové události
+Nastaví téma pro vyžadování událostí, které mají být publikovány v `cloudeventschema`nástroji.
 
 ```json
     {
@@ -597,8 +597,8 @@ Nastaví téma, které bude vyžadovat `cloudeventschema`publikování událost�
     }
 ```
 
-### <a name="set-up-webhook-as-destination-events-to-be-delivered-in-eventgridschema"></a>Nastavit WebHook jako cíl, události, které mají být dodány v eventgridschema
-Tento cílový typ slouží k odesílání událostí do jiného modulu (který je hostitelem koncového bodu HTTP) nebo do libovolného koncového bodu HTTP adresovatelného v síti nebo internetu.
+### <a name="set-up-webhook-as-destination-events-to-be-delivered-in-eventgridschema"></a>Nastavení Webhooku jako cíle, události, které se mají doručit v eventgridschema
+Tento typ cíle použijte k odeslání událostí do jakéhokoli jiného modulu (který je hostitelem koncového bodu HTTP) nebo do libovolného koncového bodu s adresou HTTP na síti nebo Internetu.
 
 ```json
 {
@@ -617,19 +617,19 @@ Tento cílový typ slouží k odesílání událostí do jiného modulu (který 
 }
 ```
 
-Omezení atributu: `endpointUrl`
-- Musí být non-null.
-- Musí to být absolutní adresa URL.
-- Pokud je outbound__webhook__httpsOnly nastavena na hodnotu true v nastavení EventGridModule, musí být pouze https.
-- Pokud outbound__webhook__httpsOnly nastavena na hodnotu false, může to být HTTP nebo HTTPS.
+Omezení pro `endpointUrl` atribut:
+- Hodnota nesmí být null.
+- Musí se jednat o absolutní adresu URL.
+- Je-outbound__webhook__httpsOnly li v nastavení EventGridModule nastaveno na hodnotu true, musí být pouze HTTPS.
+- Pokud je outbound__webhook__httpsOnly nastaveno na hodnotu false, může to být HTTP nebo HTTPS.
 
-Omezení vlastnosti: `eventDeliverySchema`
-- Musí odpovídat vstupnímu schématu tématu přihlášení.
-- Může být null. Výchozí nastavení vstupní schéma tématu.
+Omezení `eventDeliverySchema` vlastnosti:
+- Musí odpovídat vstupnímu schématu tématu přihlášení k odběru.
+- Může mít hodnotu null. Ve výchozím nastavení se jedná o schéma vstupu tématu.
 
-### <a name="set-up-iot-edge-as-destination"></a>Nastavení IoT Edge jako cíle
+### <a name="set-up-iot-edge-as-destination"></a>Nastavit IoT Edge jako cíl
 
-Tento cíl slouží k odesílání událostí do služby IoT Edge Hub a být podroben y podsystému směrování/filtrování/předávání hraničního centra.
+Pomocí tohoto cíle můžete odesílat události do centra IoT Edge a podrobit se subsystému směrování/filtrování a předávání hraničního centra.
 
 ```json
 {
@@ -647,9 +647,9 @@ Tento cíl slouží k odesílání událostí do služby IoT Edge Hub a být pod
 }
 ```
 
-### <a name="set-up-event-grid-cloud-as-destination"></a>Nastavit cloud sítě událostí jako cíl
+### <a name="set-up-event-grid-cloud-as-destination"></a>Nastavit Event Grid Cloud jako cíl
 
-Tento cíl slouží k odesílání událostí do event gridu v cloudu (Azure). Před vytvořením předplatného událostí na hraničních zařízeních budete muset nejprve nastavit uživatelské téma v cloudu, do kterého by se měly události odesílat.
+Pomocí tohoto cíle můžete odesílat události do Event Grid v cloudu (Azure). Předtím, než vytvoříte odběr události na hraničních zařízeních, budete muset nejprve nastavit uživatelské téma v cloudu, do kterého se mají události odesílat.
 
 ```json
 {
@@ -669,33 +669,33 @@ Tento cíl slouží k odesílání událostí do event gridu v cloudu (Azure). P
 }
 ```
 
-Koncovka url:
-- Musí být non-null.
-- Musí to být absolutní adresa URL.
-- Cesta `/api/events` musí být definována v cestě url požadavku.
+EndpointUrl
+- Hodnota nesmí být null.
+- Musí se jednat o absolutní adresu URL.
+- Cesta `/api/events` musí být definována v cestě URL požadavku.
 - Musí mít `api-version=2018-01-01` v řetězci dotazu.
-- Pokud je outbound__eventgrid__httpsOnly nastavena na hodnotu true v nastavení EventGridModule (true ve výchozím nastavení), musí být pouze https.
-- Pokud je outbound__eventgrid__httpsOnly nastavena na false, může to být HTTP nebo HTTPS.
-- Pokud je outbound__eventgrid__allowInvalidHostnames nastavena na false (false ve výchozím nastavení), musí cílit na jeden z následujících koncových bodů:
+- Outbound__eventgrid__httpsOnly Pokud je v nastavení EventGridModule nastavena hodnota true (výchozí hodnota je true), musí být pouze HTTPS.
+- Pokud je outbound__eventgrid__httpsOnly nastavené na false, může to být HTTP nebo HTTPS.
+- Pokud je outbound__eventgrid__allowInvalidHostnames nastaveno na hodnotu false (výchozí hodnota je false), musí se cílit na jeden z následujících koncových bodů:
    - `eventgrid.azure.net`
    - `eventgrid.azure.us`
    - `eventgrid.azure.cn`
 
 SasKey:
-- Musí být non-null.
+- Musí mít hodnotu, která není null.
 
-Název_ tématu:
-- Pokud Subscription.EventDeliverySchema je nastavena na EventGridSchema, hodnota z tohoto pole je umístěn do každé události téma pole před předáním do Event Grid v cloudu.
-- Pokud Subscription.EventDeliverySchema je nastavena na CustomEventSchema, tato vlastnost je ignorována a vlastní datové části události je předánpřesně tak, jak byla přijata.
+Téma:
+- Pokud je předplatné. EventDeliverySchema nastavené na EventGridSchema, hodnota z tohoto pole se před přesměrováním do Event Grid v cloudu vloží do každého pole události.
+- Pokud je předplatné. EventDeliverySchema nastavené na CustomEventSchema, tato vlastnost se ignoruje a vlastní datová část události se přepošle přesně tak, jak byla přijata.
 
-## <a name="set-up-event-hubs-as-a-destination"></a>Nastavení centra událostí jako cíle
+## <a name="set-up-event-hubs-as-a-destination"></a>Nastavit Event Hubs jako cíl
 
-Chcete-li publikovat v centru `endpointType` `eventHub` událostí, nastavte to to a zadejte:
+Pokud chcete publikovat do centra událostí, nastavte `endpointType` na `eventHub` a poskytnutí:
 
-* ConnectionString: Připojovací řetězec pro konkrétní centrum událostí, na které cílíte, generovaný pomocí zásad sdíleného přístupu.
+* connectionString: připojovací řetězec pro konkrétní centrum událostí, které cílíte vygenerovat prostřednictvím zásad sdíleného přístupu.
 
     >[!NOTE]
-    > Připojovací řetězec musí být specifický pro entitu. Použití připojovacího řetězce oboru názvů nebude fungovat. Připojovací řetězec specifický pro entitu můžete vygenerovat tak, že přejdete do konkrétního centra událostí, do kterého chcete publikovat na webu Azure Portal, a kliknutím na **zásady sdíleného přístupu** vygenerujete nový řetězec connecection specifické pro entitu.
+    > Připojovací řetězec musí být specifický pro entitu. Použití připojovacího řetězce oboru názvů nebude fungovat. Připojovací řetězec specifický pro entitu můžete vygenerovat tak, že přejdete do konkrétního centra událostí, na které chcete publikovat na portálu Azure Portal, a kliknutím na **zásady sdíleného přístupu** vygenerujete nový connecection řetězec specifický pro danou entitu.
 
     ```json
         {
@@ -710,14 +710,14 @@ Chcete-li publikovat v centru `endpointType` `eventHub` událostí, nastavte to 
         }
     ```
 
-## <a name="set-up-service-bus-queues-as-a-destination"></a>Nastavení front sběrnice jako cíle
+## <a name="set-up-service-bus-queues-as-a-destination"></a>Nastavit Service Bus fronty jako cíl
 
-Chcete-li publikovat do fronty `endpointType` služby Service Bus, nastavte to to `serviceBusQueue` a zadejte:
+Chcete-li publikovat do fronty Service Bus, nastavte `endpointType` na `serviceBusQueue` a zadejte:
 
-* ConnectionString: Připojovací řetězec pro konkrétní frontu služby Service Bus, na kterou cílíte, generovaný pomocí zásad sdíleného přístupu.
+* connectionString: připojovací řetězec pro konkrétní frontu Service Bus, na kterou cílíte, vygenerovali pomocí zásad sdíleného přístupu.
 
     >[!NOTE]
-    > Připojovací řetězec musí být specifický pro entitu. Použití připojovacího řetězce oboru názvů nebude fungovat. Vygenerujte připojovací řetězec specifický pro entitu tak, že přejdete na konkrétní frontu služby Service Bus, do které chcete publikovat na webu Azure Portal, a kliknutím na **zásady sdíleného přístupu** vygenerujete řetězec útěchy specifický pro novou entitu.
+    > Připojovací řetězec musí být specifický pro entitu. Použití připojovacího řetězce oboru názvů nebude fungovat. Vygenerujte připojovací řetězec specifický pro entitu tak, že přejdete na konkrétní Service Bus frontu, na kterou chcete publikovat na portálu Azure Portal, a kliknutím na **zásady sdíleného přístupu** vygenerujete nový connecection řetězec specifický pro danou entitu.
 
     ```json
         {
@@ -732,14 +732,14 @@ Chcete-li publikovat do fronty `endpointType` služby Service Bus, nastavte to t
         }
     ```
 
-## <a name="set-up-service-bus-topics-as-a-destination"></a>Nastavení témat sběrnice jako cíle
+## <a name="set-up-service-bus-topics-as-a-destination"></a>Nastavit Service Bus témata jako cíl
 
-Chcete-li publikovat v tématu `endpointType` `serviceBusTopic` sběrnice, nastavte to to a zadejte:
+Chcete-li publikovat do tématu Service Bus, nastavte `endpointType` na `serviceBusTopic` a poskytnutí:
 
-* ConnectionString: Připojovací řetězec pro konkrétní téma sběrnice, na které cílíte, generovaný pomocí zásad sdíleného přístupu.
+* connectionString: připojovací řetězec pro konkrétní Service Bus téma, které cílíte vygenerované pomocí zásad sdíleného přístupu.
 
     >[!NOTE]
-    > Připojovací řetězec musí být specifický pro entitu. Použití připojovacího řetězce oboru názvů nebude fungovat. Vygenerujte připojovací řetězec specifický pro entitu tak, že přejdete na konkrétní téma služby Service Bus, které chcete publikovat na webu Azure Portal, a kliknutím na **zásady sdíleného přístupu** vygenerujete nový řetězec connecection specifické pro entitu.
+    > Připojovací řetězec musí být specifický pro entitu. Použití připojovacího řetězce oboru názvů nebude fungovat. Vygenerujte připojovací řetězec specifický pro entitu tak, že přejdete na konkrétní Service Bus téma, na které byste chtěli publikovat na portálu Azure Portal, a kliknutím na **zásady sdíleného přístupu** vygenerujete nový connecection řetězec specifický pro danou entitu.
 
     ```json
         {
@@ -754,15 +754,15 @@ Chcete-li publikovat v tématu `endpointType` `serviceBusTopic` sběrnice, nasta
         }
     ```
 
-## <a name="set-up-storage-queues-as-a-destination"></a>Nastavení front úložiště jako cíle
+## <a name="set-up-storage-queues-as-a-destination"></a>Nastavit fronty úložiště jako cíl
 
-Chcete-li publikovat do fronty `endpointType` `storageQueue` úložiště, nastavte to to a zadejte:
+K publikování do fronty úložiště nastavte `endpointType` `storageQueue` a zadejte:
 
-* název fronty úložiště, do které publikujete.
-* ConnectionString: Připojovací řetězec pro účet úložiště, ve které se nachází fronta úložiště.
+* Queue: název fronty úložiště, do které se chystáte publikovat.
+* connectionString: připojovací řetězec pro účet úložiště, ve kterém je fronta úložiště.
 
     >[!NOTE]
-    > Unline centra událostí, fronty služby Service Bus a témata sběrnice, připojovací řetězec používaný pro fronty úložiště není specifický pro entitu. Místo toho musí, ale připojovací řetězec pro účet úložiště.
+    > Odřádkování Event Hubs, front Service Bus a Service Busch témat, připojovací řetězec používaný pro fronty úložiště není specifický pro entitu. Místo toho je třeba použít připojovací řetězec pro účet úložiště.
 
     ```json
         {

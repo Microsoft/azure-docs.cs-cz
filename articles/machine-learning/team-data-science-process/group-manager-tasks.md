@@ -1,6 +1,6 @@
 ---
-title: Úkoly správce skupiny Team Data Science Process
-description: Postupujte podle tohoto podrobného návodu úkolů, které správce skupiny dokončí v projektu týmu datové vědy.
+title: Úlohy správce skupin procesů týmu pro data vědeckého zpracování
+description: Postupujte podle podrobného návodu k úlohám, které správce skupiny dokončí v týmovém projektu pro datové vědy.
 author: marktab
 manager: marktab
 editor: marktab
@@ -11,186 +11,186 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 4ec7f4242e5046e90fdf0eb8c6c0579f402e4f55
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76721349"
 ---
-# <a name="team-data-science-process-group-manager-tasks"></a>Úkoly správce skupiny Team Data Science Process
+# <a name="team-data-science-process-group-manager-tasks"></a>Úlohy správce skupin procesů týmu pro data vědeckého zpracování
 
-Tento článek popisuje úkoly, které *dokončí správce skupiny* pro organizaci datové vědy. Správce skupiny spravuje celou jednotku datové vědy v podniku. Jednotka datové vědy může mít několik týmů, z nichž každý pracuje na mnoha projektech datové vědy v různých obchodních vertikálách. Cílem manažera skupiny je vytvořit prostředí skupiny pro spolupráci, které standardizuje [proces vědecké vědy o týmových datech](overview.md) (TDSP). Přehled všech rolí personálu a přidružených úkolů zpracovávaných týmem pro datové vědy, který standardizuje standardizaci v oblasti TDSP, naleznete v [tématu Role a úkoly procesu vědeckého zpracování týmových dat](roles-tasks.md).
+Tento článek popisuje úlohy, které *správce skupiny* dokončí pro organizaci pro datové vědy. Správce skupin spravuje celou jednotku datových věd v podniku. Jednotka pro datové vědy může mít několik týmů, z nichž každý pracuje na mnoha projektech pro datové vědy v různých obchodních svislých. Cílem správce skupin je vytvořit skupinové prostředí pro spolupráci, které se bude standardizovat v rámci [vědeckého zpracování týmových dat](overview.md) (TDSP). Přehled všech rolí personálu a přidružených úloh, které jsou zpracovávány týmem pro datové vědy na TDSP, najdete v tématu [role procesů a úlohy vědeckého zpracování dat týmu](roles-tasks.md).
 
-Následující diagram znázorňuje šest hlavních úloh nastavení správce skupiny. Správci skupin mohou delegovat své úkoly na náhradníky, ale úkoly spojené s rolí se nemění.
+Následující diagram znázorňuje šest hlavních úloh instalace správce skupin. Správci skupin mohou delegovat své úkoly na náhrady, ale úkoly přidružené k této roli se nezmění.
 
-![Úkoly správce skupiny](./media/group-manager-tasks/tdsp-group-manager.png)
+![Úlohy správce skupin](./media/group-manager-tasks/tdsp-group-manager.png)
 
-1. Nastavte organizaci **Azure DevOps** pro skupinu.
+1. Pro skupinu nastavte **organizaci Azure DevOps** .
 2. Vytvořte výchozí **projekt GroupCommon** v organizaci Azure DevOps.
 3. Vytvořte úložiště **GroupProjectTemplate** v Azure Repos.
 4. Vytvořte úložiště **GroupUtilities** v Azure Repos.
-5. Importujte obsah repozitářů **ProjectTemplate** a **Utilities** týmu Microsoft TDSP do společných úložišť skupiny.
+5. Importujte obsah úložišť **ProjectTemplate** a **nástrojů** týmu Microsoft TDSP do společného úložiště skupin.
 6. Nastavte **členství** a **oprávnění** pro členy týmu pro přístup ke skupině.
 
-Následující kurz podrobně provede kroky. 
+Následující kurz vás provede podrobnými kroky. 
 
 > [!NOTE] 
-> Tento článek používá Azure DevOps k nastavení prostředí skupiny TDSP, protože to je, jak implementovat TDSP u Microsoftu. Pokud vaše skupina používá jiné platformy pro hostování kódu nebo vývoj, úkoly správce skupiny jsou stejné, ale způsob jejich dokončení se může lišit.
+> Tento článek používá Azure DevOps k nastavení prostředí skupiny TDSP, protože to implementuje TDSP v Microsoftu. Pokud vaše skupina používá jiné hostování kódu nebo vývojové platformy, jsou úkoly správce skupin stejné, ale způsob jejich dokončení může být jiný.
 
 ## <a name="create-an-organization-and-project-in-azure-devops"></a>Vytvoření organizace a projektu v Azure DevOps
 
-1. Přejděte na [visualstudio.microsoft.com](https://visualstudio.microsoft.com), **vyberte Přihlásit** se vpravo nahoře a přihlaste se ke svému účtu Microsoft. 
+1. Přejít na [VisualStudio.Microsoft.com](https://visualstudio.microsoft.com), vyberte možnost **Přihlásit** se v pravém horním rohu a přihlaste se k účet Microsoft. 
    
-   ![Přihlášení k účtu Microsoft](./media/group-manager-tasks/signinvs.png)
+   ![Přihlaste se ke svému účet Microsoft](./media/group-manager-tasks/signinvs.png)
    
-   Pokud účet Microsoft nemáte, vyberte **Zaregistrovat se ,** vytvořte si účet Microsoft a přihlaste se pomocí tohoto účtu. Pokud má vaše organizace předplatné Sady Visual Studio, přihlaste se pomocí přihlašovacích údajů pro toto předplatné.
+   Pokud nemáte účet Microsoft, vyberte **zaregistrovat**se a vytvořte účet Microsoft a přihlaste se pomocí tohoto účtu. Pokud má vaše organizace předplatné sady Visual Studio, přihlaste se pomocí přihlašovacích údajů k tomuto předplatnému.
    
-1. Po přihlášení v pravém horním bodě na stránce Azure DevOps vyberte **Vytvořit novou organizaci**.
+1. Po přihlášení klikněte v pravém horním rohu na stránce Azure DevOps vyberte **vytvořit novou organizaci**.
    
    ![Vytvořit novou organizaci](./media/group-manager-tasks/create-organization.png)
    
-1. Pokud budete vyzváni k souhlasu se smluvními podmínkami, prohlášením o ochraně osobních údajů a etickým kodexem, vyberte **pokračovat**.
+1. Pokud se zobrazí výzva k vyjádření souhlasu s podmínkami služby, prohlášením o zásadách ochrany osobních údajů a pravidly chování, vyberte **pokračovat**.
    
-1. V dialogovém okně registrace pojmenujte organizaci Azure DevOps a přijměte přiřazení oblasti hostitele nebo rozbalte a vyberte jinou oblast. Potom vyberte **Pokračovat**. 
+1. V dialogovém okně přihlášení pojmenujte organizaci Azure DevOps a přijměte přiřazení oblasti hostitele, nebo rozevírací seznam vyberte jinou oblast. Potom vyberte **Pokračovat**. 
 
-1. V části **Vytvořit projekt, abyste mohli začít**, zadejte *GroupCommon*a vyberte **Vytvořit projekt**. 
+1. V části **vytvořit projekt pro**začátek zadejte *GroupCommon*a pak vyberte **vytvořit projekt**. 
    
    ![Vytvoření projektu](./media/group-manager-tasks/create-project.png)
 
-Otevře se stránka **Souhrn** projektu **GroupCommon.** Adresa URL stránky je *\//\<https:\<název serveru>/ název organizace>/GroupCommon*.
+Otevře se stránka **Souhrn** projektu **GroupCommon** . Adresa URL stránky je *https:\//\<servername>/\<název organizace>/groupcommon*.
 
 ![Stránka souhrnu projektu](./media/group-manager-tasks/project-summary.png)
 
-## <a name="set-up-the-group-common-repositories"></a>Nastavení společných úložišť skupiny
+## <a name="set-up-the-group-common-repositories"></a>Nastavení společného úložiště skupin
 
-Azure Repos hostuje následující typy úložišť pro vaši skupinu:
+Azure Repos hostuje následující typy úložišť pro skupinu:
 
-- **Seskupení společných úložišť**: Univerzální úložiště, která může přijmout více týmů v rámci jednotky datové vědy pro mnoho projektů datové vědy. 
-- **Týmové repozitáře**: Repozitáře pro konkrétní týmy v rámci jednotky datové vědy. Tato úložiště jsou specifická pro potřeby týmu a mohou být použita pro více projektů v rámci tohoto týmu, ale nejsou dostatečně obecné pro použití ve více týmech v rámci jednotky datové vědy.
-- **Repozitáře projektů**: Repozitáře pro konkrétní projekty. Taková úložiště nemusí být dostatečně obecná pro více projektů v rámci týmu nebo pro jiné týmy v jednotce datové vědy.
+- **Seskupit společná úložiště**: úložiště pro obecné účely, které může pro mnoho projektů pro datové vědy přijmout více týmů v rámci datové vědy. 
+- **Týmová úložiště**: úložiště pro konkrétní týmy v rámci datové vědy jednotky. Tato úložiště jsou specifická pro potřeby týmu a můžou se používat pro více projektů v rámci tohoto týmu, ale nejsou dostatečně obecné, aby je bylo možné používat v rámci více týmů v rámci datové vědy jednotky.
+- Úložiště **projektů**: úložiště pro konkrétní projekty. Taková úložiště nemusí být dostatečně všeobecně pro více projektů v rámci týmu nebo pro jiné týmy v datové vědy jednotce.
 
-Chcete-li v projektu nastavit společné úložiště skupiny, můžete: 
-- Přejmenování výchozího úložiště **GroupCommon** na **GroupProjectTemplate**
-- Vytvoření nového úložiště **GroupUtilities**
+Chcete-li nastavit společné úložiště skupin ve vašem projektu, postupujte takto: 
+- Přejmenujte výchozí úložiště **GroupCommon** na **GroupProjectTemplate** .
+- Vytvořit nové úložiště **GroupUtilities**
 
-### <a name="rename-the-default-project-repository-to-groupprojecttemplate"></a>Přejmenování výchozího úložiště projektu na GroupProjectTemplate
+### <a name="rename-the-default-project-repository-to-groupprojecttemplate"></a>Přejmenujte výchozí úložiště projektu na GroupProjectTemplate.
 
-Přejmenování výchozího úložiště projektů **GroupCommon** na **GroupProjectTemplate**:
+Chcete-li přejmenovat výchozí úložiště projektu **GroupCommon** na **GroupProjectTemplate**:
 
-1. Na stránce **Souhrn** projektu **GroupCommon** vyberte **možnost Repos**. Tato akce vás přenese do výchozího úložiště **GroupCommon** projektu GroupCommon, které je aktuálně prázdné.
+1. Na stránce **Souhrn** projektu **GroupCommon** **Vyberte úložiště**. Tato akce přejde do výchozího úložiště **GroupCommon** projektu GroupCommon, který je aktuálně prázdný.
    
-1. V horní části stránky rozbalte šipku vedle **položky GroupCommon** a vyberte **Spravovat úložiště**.
+1. V horní části stránky rozbalte šipku vedle **GroupCommon** a vyberte **Spravovat úložiště**.
    
-   ![Správa úložišť](./media/group-manager-tasks/rename-groupcommon-repo-3.png)
+   ![Spravovat úložiště](./media/group-manager-tasks/rename-groupcommon-repo-3.png)
    
-1. Na stránce **Nastavení projektu** vyberte **...** vedle **Položky GroupCommon**a pak **vyberte Přejmenovat úložiště**. 
+1. Na stránce **nastavení projektu** vyberte **...** vedle **GroupCommon**a pak vyberte **Přejmenovat úložiště**. 
    
-   ![Vyberte... a pak vyberte Přejmenovat úložiště](./media/group-manager-tasks/rename-groupcommon-repo-4.png)
+   ![Vybrat... a pak vyberte Přejmenovat úložiště](./media/group-manager-tasks/rename-groupcommon-repo-4.png)
    
-1. V místní části **Přejmenovat groupcommon repozitář** zadejte *GroupProjectTemplate*a pak vyberte **Přejmenovat**. 
+1. V místní nabídce **přejmenování úložiště GroupCommon** zadejte *GroupProjectTemplate*a pak vyberte **Přejmenovat**. 
    
    ![Přejmenovat úložiště](./media/group-manager-tasks/rename-groupcommon-repo-6.png)
 
 ### <a name="create-the-grouputilities-repository"></a>Vytvoření úložiště GroupUtilities
 
-Vytvoření úložiště **GroupUtilities:**
+Vytvoření úložiště **GroupUtilities** :
 
-1. Na stránce **Souhrn** projektu **GroupCommon** vyberte **možnost Repos**. 
+1. Na stránce **Souhrn** projektu **GroupCommon** **Vyberte úložiště**. 
    
-1. V horní části stránky rozbalte šipku vedle **groupprojecttemplate** a vyberte **Nové úložiště**.
+1. V horní části stránky rozbalte šipku vedle **GroupProjectTemplate** a vyberte **nové úložiště**.
    
    ![Vybrat nové úložiště](./media/group-manager-tasks/create-grouputilities-repo-1.png)
    
-1. V **dialogovém** okně Vytvořit nové úložiště vyberte Jako **typ** **Git** , zadejte *GroupUtilities* jako **název úložiště**a pak vyberte **Vytvořit**.
+1. V dialogovém okně **vytvořit nové úložiště** jako **typ**vyberte **Git** , jako **název úložiště**zadejte *GroupUtilities* a pak vyberte **vytvořit**.
    
    ![Vytvořit úložiště GroupUtilities](./media/group-manager-tasks/create-grouputilities-repo-2.png)
    
-1. Na stránce **Nastavení projektu** vyberte úložiště v části **Úložiště** v levém navigačním panelu, abyste viděli dvě úložiště skupin: **GroupProjectTemplate** a **GroupUtilities**. **Repos**
+1. Na stránce **nastavení projektu** vyberte **úložiště** v části úložiště v **levém** navigačním panelu, abyste viděli dvě úložiště skupin: **GroupProjectTemplate** a **GroupUtilities**.
    
-   ![Dvě skupinová úložiště](./media/group-manager-tasks/two-repositories.png)
+   ![Dvě úložiště skupin](./media/group-manager-tasks/two-repositories.png)
 
-## <a name="import-the-microsoft-tdsp-team-repositories"></a>Import týmových úložišť Microsoft TDSP
+## <a name="import-the-microsoft-tdsp-team-repositories"></a>Import úložišť týmu Microsoft TDSP
 
-V této části kurzu importujete obsah úložišť **ProjectTemplate** a **Utilities** spravovaných týmem Microsoft TDSP do úložišť **GroupProjectTemplate** a **GroupUtilities.** 
+V této části kurzu naimportujete obsah úložišť **ProjectTemplate** a **nástrojů** , která spravuje tým Microsoft TDSP, do úložišť **GroupProjectTemplate** a **GroupUtilities** . 
 
-Import týmových úložišť TDSP:
+Import úložišť týmu TDSP:
 
-1. Na domovské stránce projektu **GroupCommon** vyberte v levé navigaci **možnost Repos.** Otevře se výchozí repo **šablony GroupProjectTemplate.** 
+1. Na domovské stránce projektu **GroupCommon** v levém navigačním **panelu vyberte úložiště** . Otevře se výchozí úložiště **GroupProjectTemplate** . 
    
-1. Na stránce **GroupProjectTemplate je prázdná** stránka vyberte **Importovat**. 
+1. Na stránce **GroupProjectTemplate je prázdná** vyberte **importovat**. 
    
-   ![Vybrat import](./media/group-manager-tasks/import-repo.png)
+   ![Vybrat Import](./media/group-manager-tasks/import-repo.png)
    
-1. V **dialogovém** okně Importovat úložiště Git vyberte **Git** jako **typ zdroje**a zadejte *https:\//github.com/Azure/Azure-TDSP-ProjectTemplate.git* pro **adresu URL klonování**. Pak vyberte **Importovat**. Obsah úložiště Microsoft TDSP týmu ProjectTemplate se importuje do úložiště GroupProjectTemplate. 
+1. V dialogovém okně **importovat úložiště Git** jako **typ zdroje**vyberte **Git** a jako **adresu URL klonu**zadejte *https\/:/GitHub.com/Azure/Azure-TDSP-ProjectTemplate.Git* . Pak vyberte **importovat**. Obsah úložiště Microsoft TDSP Team ProjectTemplate se importuje do úložiště GroupProjectTemplate. 
    
-   ![Import týmového úložiště Microsoft TDSP](./media/group-manager-tasks/import-repo-2.png)
+   ![Importovat týmový úložiště Microsoft TDSP](./media/group-manager-tasks/import-repo-2.png)
    
-1. V horní části stránky **Úložiště** rozbalte a vyberte úložiště **GroupUtilities.**
+1. V horní části stránky **úložišť** rozbalte rozevírací seznam a vyberte úložiště **GroupUtilities** .
    
-1. Postupem importu opakujte a importujte obsah úložiště Microsoft TDSP team **Utilities,** *\/https: /github.com/Azure/Azure-TDSP-Utilities.git*, do úložiště **GroupUtilities.** 
+1. Opakujte proces importu pro import obsahu úložiště nástrojů Microsoft TDSP Team **Utility** , *https:\//GitHub.com/Azure/Azure-TDSP-Utilities.Git*, do úložiště **GroupUtilities** . 
    
-Každé z vašich dvou úložišť skupin nyní obsahuje všechny soubory, s výjimkou souborů v adresáři *GIT,* z odpovídajícího úložiště týmu Microsoft TDSP. 
+Každé ze dvou úložišť skupin teď obsahuje všechny soubory kromě těch, které jsou v adresáři *. Git* , z odpovídajícího úložiště týmu Microsoft TDSP. 
 
-## <a name="customize-the-contents-of-the-group-repositories"></a>Přizpůsobení obsahu repozitářů skupiny
+## <a name="customize-the-contents-of-the-group-repositories"></a>Přizpůsobení obsahu úložišť skupin
 
-Pokud chcete přizpůsobit obsah repozitářů skupiny tak, aby vyhovoval specifickým potřebám vaší skupiny, můžete to udělat nyní. Můžete upravit soubory, změnit strukturu adresářů nebo přidat soubory, které vaše skupina vyvinula nebo které jsou pro vaši skupinu užitečné.
+Pokud chcete přizpůsobit obsah úložišť skupin tak, aby splňovala konkrétní potřeby vaší skupiny, můžete to udělat hned teď. Můžete upravovat soubory, měnit adresářovou strukturu nebo přidávat soubory, které vytvořila vaše skupina, nebo které jsou užitečné pro vaši skupinu.
 
-### <a name="make-changes-in-azure-repos"></a>Provádění změn v azure repos
+### <a name="make-changes-in-azure-repos"></a>Provést změny v Azure Repos
 
-Přizpůsobení obsahu úložiště:
+Postup přizpůsobení obsahu úložiště:
 
-1. Na stránce **Souhrn** projektu **GroupCommon** vyberte **možnost Repos**. 
+1. Na stránce **Souhrn** projektu **GroupCommon** **Vyberte úložiště**. 
    
-1. V horní části stránky vyberte úložiště, které chcete přizpůsobit.
+1. V horní části stránky vyberte úložiště, které chcete upravit.
 
-1. Ve struktuře adresářů úložiště přejděte do složky nebo souboru, který chcete změnit. 
+1. V adresářové struktuře úložiště přejděte do složky nebo souboru, který chcete změnit. 
    
-   - Chcete-li vytvořit nové složky nebo soubory, vyberte šipku vedle položky **Nový**. 
+   - Chcete-li vytvořit nové složky nebo soubory, vyberte šipku vedle tlačítka **Nový**. 
      
      ![Vytvořit nový soubor](./media/group-manager-tasks/new-file.png)
      
-   - Chcete-li nahrát soubory, vyberte **Nahrát soubory**. 
+   - Chcete-li odeslat soubory, vyberte možnost **nahrát**soubory. 
      
      ![Nahrání souborů](./media/group-manager-tasks/upload-files.png)
      
-   - Chcete-li upravit existující soubory, přejděte do souboru a vyberte **upravit**. 
+   - Pokud chcete upravit existující soubory, přejděte k souboru a pak vyberte **Upravit**. 
      
-     ![Úprava souboru](./media/group-manager-tasks/edit-file.png)
+     ![Upravit soubor](./media/group-manager-tasks/edit-file.png)
      
 1. Po přidání nebo úpravě souborů vyberte **Potvrdit**.
    
-   ![Potvrzení změn](./media/group-manager-tasks/commit.png)
+   ![Potvrdit změny](./media/group-manager-tasks/commit.png)
 
-### <a name="make-changes-using-your-local-machine-or-dsvm"></a>Provádění změn pomocí místního počítače nebo dsvm
+### <a name="make-changes-using-your-local-machine-or-dsvm"></a>Provádění změn pomocí místního počítače nebo DSVM
 
-Pokud chcete provádět změny pomocí místního počítače nebo DSVM a posunout změny do repozitářů skupin, ujistěte se, že máte předpoklady pro práci s Git a DSVM:
+Pokud chcete provádět změny pomocí místního počítače nebo DSVM a vložit změny do úložišť skupiny, ujistěte se, že máte předpoklady pro práci s Git a DSVMs:
 
 - Předplatné Azure, pokud chcete vytvořit DSVM.
-- Git nainstalovaný na vašem počítači. Pokud používáte DSVM, Git je předinstalovaný. V opačném případě se podívejte do [dodatku k platformám a nástrojům](platforms-and-tools.md#appendix).
-- Pokud chcete použít DSVM, Windows nebo Linux DSVM vytvořené a nakonfigurované v Azure. Další informace a pokyny naleznete v [dokumentaci k virtuálním strojům pro datové vědy](/azure/machine-learning/data-science-virtual-machine/).
-- Pro systém Windows DSVM je v počítači nainstalován [Správce přihlašovacích údajů (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) gitu. V *souboru README.md* přejděte dolů do části **Stáhnout a nainstalovat** a vyberte nejnovější instalační **program**. Stáhněte instalační *program .exe* ze stránky instalačního programu a spusťte jej. 
-- Pro Linux DSVM, SSH veřejný klíč nastavit na vašem DSVM a přidány do Azure DevOps. Další informace a pokyny naleznete v části **Vytvoření veřejného klíče SSH** v [dodatku platformy a nástroje](platforms-and-tools.md#appendix). 
+- V počítači je nainstalovaný Git. Pokud používáte DSVM, Git se předem nainstaluje. V opačném případě si přečtěte článek věnované [platformám a nástrojům](platforms-and-tools.md#appendix).
+- Pokud chcete použít DSVM, Windows nebo Linux DSVM vytvořeného a nakonfigurovaného v Azure. Další informace a pokyny najdete v dokumentaci k [Data Science Virtual Machine](/azure/machine-learning/data-science-virtual-machine/).
+- Pro Windows DSVM se na vašem počítači nainstaluje [Správce přihlašovacích údajů Git (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) . V souboru *Readme.MD* se posuňte dolů k části **Stažení a instalace** a vyberte **nejnovější instalační program**. Stáhněte instalační program *. exe* z instalační stránky a spusťte ho. 
+- Pro Linux DSVM se v DSVM nastavil veřejný klíč SSH a přidal se do Azure DevOps. Další informace a pokyny najdete v části **vytvoření veřejného klíče SSH** v [příloze platformy a nástroje](platforms-and-tools.md#appendix). 
 
-Nejprve zkopírujte nebo *naklonujte* úložiště do místního počítače. 
+Nejdřív zkopírujte nebo *naklonujte* úložiště do místního počítače. 
    
-1. Na stránce **Souhrn** projektu **GroupCommon** vyberte **Úložiště**a v horní části stránky vyberte úložiště, které chcete klonovat.
+1. Na stránce **Souhrn** projektu **GroupCommon** **Vyberte úložiště a v**horní části stránky vyberte úložiště, které chcete klonovat.
    
-1. Na stránce repo vyberte **Klonování** vpravo nahoře.
+1. Na stránce úložiště vyberte **klonovat** v pravém horním rohu.
    
-1. V **dialogovém** okně Úložiště klonování vyberte pro připojení HTTP **protokol HTTPS** nebo **SSH** pro připojení SSH a zkopírujte adresu URL klonu pod **příkazovým řádkem** do schránky.
+1. V dialogu **úložiště klonování** vyberte **https** pro připojení HTTP nebo **SSH** pro připojení SSH a zkopírujte adresu URL klonování do **příkazového řádku** do schránky.
    
-   ![Klonovat repo](./media/group-manager-tasks/clone.png)
+   ![Klonovat úložiště](./media/group-manager-tasks/clone.png)
    
-1. V místním počítači vytvořte následující adresáře:
+1. Na místním počítači vytvořte následující adresáře:
    
    - Pro Windows: **C:\GitRepos\GroupCommon**
-   - Pro Linux, **$/GitRepos/GroupCommon** na vašem domovském adresáři 
+   - Pro Linux, **$/GitRepos/GroupCommon** v domovském adresáři 
    
-1. Změňte adresář, který jste vytvořili.
+1. Přejděte do adresáře, který jste vytvořili.
    
-1. V Git Bash spusťte příkaz`git clone <clone URL>.`
+1. V Gitu bash spusťte příkaz.`git clone <clone URL>.`
    
-   Například některý z následujících příkazů klonuje úložiště **GroupUtilities** do adresáře *GroupCommon* v místním počítači. 
+   Například některý z následujících příkazů naklonuje úložiště **GroupUtilities** do adresáře *GroupCommon* na místním počítači. 
    
    **Připojení HTTPS:**
    
@@ -204,9 +204,9 @@ Nejprve zkopírujte nebo *naklonujte* úložiště do místního počítače.
    git clone git@ssh.dev.azure.com:v3/DataScienceUnit/GroupCommon/GroupUtilities
    ```
 
-Po provedení jakékoli změny, které chcete v místním klonu úložiště, můžete tlačit změny do společných úložišť sdílené skupiny. 
+Až provedete libovolné změny v místním klonu úložiště, můžete tyto změny vložit do společného úložiště sdílené skupiny. 
 
-Spusťte následující příkazy Git Bash z místního adresáře **GroupProjectTemplate** nebo **GroupUtilities.**
+Spusťte následující příkazy Git bash z místního adresáře **GroupProjectTemplate** nebo **GroupUtilities** .
 
 ```bash
 git add .
@@ -215,49 +215,49 @@ git push
 ```
 
 > [!NOTE]
-> Pokud je to poprvé, co se potvrdíte do úložiště Git, budete muset před `git commit` spuštěním příkazu nakonfigurovat globální parametry *user.name* a *user.email.* Spusťte následující dva příkazy:
+> Pokud se jedná o první potvrzení do úložiště Git, možná budete muset nakonfigurovat globální parametry *User.Name* a *User. email* před spuštěním `git commit` příkazu. Spusťte následující dva příkazy:
 > 
 > `git config --global user.name <your name>`
 > 
 > `git config --global user.email <your email address>`
 > 
-> Pokud se zavazujete k několika úložištím Git, použijte pro všechny stejné jméno a e-mailovou adresu. Použití stejného jména a e-mailové adresy je vhodné při vytváření řídicích panelů Power BI ke sledování aktivit Gitu ve více repozitářích.
+> Pokud potvrdíte několik úložišť Git, použijte stejný název a e-mailovou adresu pro všechny z nich. Použití stejného jména a e-mailové adresy je vhodné při vytváření Power BI řídicích panelů ke sledování aktivit Git ve více úložištích.
 
-## <a name="add-group-members-and-configure-permissions"></a>Přidání členů skupiny a konfigurace oprávnění
+## <a name="add-group-members-and-configure-permissions"></a>Přidat členy skupiny a nakonfigurovat oprávnění
 
 Přidání členů do skupiny:
 
-1. V Azure DevOps, na domovské stránce projektu **GroupCommon,** vyberte **nastavení projektu** z levé navigace. 
+1. V Azure DevOps na domovské stránce projektu **GroupCommon** v levém navigačním panelu vyberte **nastavení projektu** . 
    
-1. V levém **navigačním panelu Nastavení projektu** vyberte **Týmy**a potom na stránce **Týmy** vyberte **GroupCommon Team**. 
+1. V **nastavení projektu** vlevo navigace vyberte **týmy**a pak na stránce **týmy** vyberte **tým GroupCommon**. 
    
    ![Konfigurace týmů](./media/group-manager-tasks/teams.png)
    
-1. Na stránce **Profil týmu** vyberte **Přidat**.
+1. Na stránce **týmový profil** vyberte **Přidat**.
    
-   ![Přidat do společného týmu Skupiny](./media/group-manager-tasks/add-to-team.png)
+   ![Přidat do GroupCommon týmu](./media/group-manager-tasks/add-to-team.png)
    
 1. V dialogovém okně **Přidat uživatele a skupiny** vyhledejte a vyberte členy, které chcete přidat do skupiny, a pak vyberte **Uložit změny**. 
    
-   ![Přidání uživatelů a skupin](./media/group-manager-tasks/add-users.png)
+   ![Přidat uživatele a skupiny](./media/group-manager-tasks/add-users.png)
    
 
 Konfigurace oprávnění pro členy:
 
-1. V levém navigačním **panelu Nastavení projektu** vyberte **oprávnění**. 
+1. V **nastavení projektu** vlevo navigace vyberte **oprávnění**. 
    
-1. Na stránce **Oprávnění** vyberte skupinu, do které chcete členy přidat. 
+1. Na stránce **oprávnění** vyberte skupinu, do které chcete přidat členy. 
    
-1. Na stránce pro tuto skupinu vyberte **Členové**a pak vyberte **Přidat**. 
+1. Na stránce pro tuto skupinu vyberte **členy**a pak vyberte **Přidat**. 
    
-1. Ve vyskakovacím blokování **členů** vyhledání a výběru členů, které chcete přidat do skupiny, a pak vyberte **Uložit**. 
+1. V místní nabídce **pozvat členy** vyhledejte a vyberte členy, které chcete přidat do skupiny, a pak vyberte **Uložit**. 
    
-   ![Udělit oprávnění členům](./media/group-manager-tasks/grant-permissions.png)
+   ![Udělení oprávnění členům](./media/group-manager-tasks/grant-permissions.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-Zde jsou odkazy na podrobný popis dalších rolí a úkolů v procesu vědecké vědy o týmových datech:
+Tady jsou odkazy na podrobné popisy dalších rolí a úloh v rámci vědeckého zpracování týmových dat:
 
-- [Úkoly vedoucího týmu pro tým datové vědy](team-lead-tasks.md)
-- [Úkoly vedoucího projektu pro tým datové vědy](project-lead-tasks.md)
-- [Projekt ové úkoly jednotlivých přispěvatelů pro tým pro datové vědy](project-ic-tasks.md)
+- [Úkoly vedoucí týmu pro tým pro datové vědy](team-lead-tasks.md)
+- [Úkoly vedoucího projektu pro tým pro datové vědy](project-lead-tasks.md)
+- [Jednotlivé úkoly přispěvatele projektu pro tým pro datové vědy](project-ic-tasks.md)

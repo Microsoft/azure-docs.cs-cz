@@ -1,6 +1,6 @@
 ---
-title: Webové sady SDK podporované prohlížeče | Mapy Microsoft Azure
-description: V tomto článku se dozvíte o podporovaných prohlížečích pro sadu Microsoft Azure Maps Web SDK a o tom, jak zkontrolovat, jestli je prohlížeč podporovaný.
+title: Prohlížeče podporované v sadě web SDK | Mapy Microsoft Azure
+description: V tomto článku se dozvíte o podporovaných prohlížečích pro sadu Microsoft Azure Maps Web SDK a o tom, jak zjistit, jestli je prohlížeč podporovaným prohlížečem.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 03/25/2019
@@ -9,15 +9,15 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.openlocfilehash: e81b15b974469d319384a67b08512130b7876a30
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76988783"
 ---
 # <a name="web-sdk-supported-browsers"></a>Podporované prohlížeče pro sadu Web SDK
 
-Webová sada Azure Maps Web SDK poskytuje pomocnou funkci nazvanou [atlas.isSupported](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas?view=azure-iot-typescript-latest#issupported-boolean-). Tato funkce zjistí, zda má webový prohlížeč minimální sadu funkcí WebGL potřebných pro podporu načítání a vykreslování ovládacího prvku mapy. Zde je příklad použití funkce:
+Sada Azure Maps Web SDK poskytuje pomocnou funkci nazvanou [Atlas. podporuje](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas?view=azure-iot-typescript-latest#issupported-boolean-). Tato funkce zjistí, zda má webový prohlížeč minimální sadu funkcí WebGL potřebných pro podporu načítání a vykreslování mapového ovládacího prvku. Tady je příklad použití funkce:
 
 ```JavaScript
 if (!atlas.isSupported()) {
@@ -31,50 +31,50 @@ if (!atlas.isSupported()) {
 
 ## <a name="desktop"></a>Aplikace klasické pracovní plochy
 
-Webová sada Azure Maps Web SDK podporuje následující prohlížeče pro stolní počítače:
+Sada Azure Maps Web SDK podporuje následující desktopové prohlížeče:
 
 - Microsoft Edge (aktuální a předchozí verze)
 - Google Chrome (aktuální a předchozí verze)
 - Mozilla Firefox (aktuální a předchozí verze)
 - Apple Safari (Mac OS X) (aktuální a předchozí verze)
 
-Viz také [Cílstarší prohlížeče](#Target-Legacy-Browsers) dále v tomto článku.
+Viz také [cílení na starší verze prohlížečů](#Target-Legacy-Browsers) dále v tomto článku.
 
-## <a name="mobile"></a>Mobilní zařízení
+## <a name="mobile"></a>Mobilní
 
-Webová sada Azure Maps Web SDK podporuje následující mobilní prohlížeče:
+Sada Azure Maps Web SDK podporuje následující mobilní prohlížeče:
 
 - Android
-  - Aktuální verze Chromu v systému Android 6.0 a novějším
-  - Chrome WebView v systému Android 6.0 a novějších
+  - Aktuální verze Chrome v Androidu 6,0 a novějších verzích
+  - Webové zobrazení Chrome v Androidu 6,0 a novějším
 - iOS
-  - Mobilní Safari na aktuální a předchozí hlavní verzi iOS
-  - UIWebView a WKWebView na aktuální a předchozí hlavní verzi iOS
-  - Aktuální verze Chromu pro iOS
+  - Mobilní aplikace Safari v aktuální a předchozí hlavní verzi iOS
+  - UIWebView a WKWebView v aktuální a předchozí hlavní verzi iOS
+  - Aktuální verze Chrome pro iOS
 
 > [!TIP]
-> Pokud vkládáte mapu do mobilní aplikace pomocí ovládacího prvku WebView, můžete raději použít [balíček npm sady Azure Maps Web SDK](https://www.npmjs.com/package/azure-maps-control) namísto odkazování na verzi sady SDK, která je hostovaná v síti Doručování obsahu Azure. Tento přístup zkracuje dobu načítání, protože sada SDK je již na zařízení uživatele a není nutné je stahovat za běhu.
+> Pokud vkládáte mapu do mobilní aplikace pomocí ovládacího prvku WebView, možná místo odkazování na verzi sady SDK, která je hostovaná v Azure Content Delivery Network, doporučujeme použít [balíček npm Azure Maps Web SDK](https://www.npmjs.com/package/azure-maps-control) . Tento přístup zkracuje dobu načítání, protože sada SDK již je na zařízení uživatele a není nutné ji stáhnout za běhu.
 
 ## <a name="nodejs"></a>Node.js
 
-V souboru Node.js jsou podporovány také následující moduly sady Web SDK:
+V Node. js jsou podporovány také následující moduly web SDK:
 
-- Modul služeb ([dokumentační](how-to-use-services-module.md) | [modul npm](https://www.npmjs.com/package/azure-maps-rest))
+- Modul služby ([documentation](how-to-use-services-module.md) | [npm](https://www.npmjs.com/package/azure-maps-rest)dokumentace – modul)
 
-## <a name="target-legacy-browsers"></a><a name="Target-Legacy-Browsers"></a>Cílení na starší prohlížeče
+## <a name="target-legacy-browsers"></a><a name="Target-Legacy-Browsers"></a>Cílové starší verze prohlížečů
 
-Možná budete chtít cílit na starší prohlížeče, které nepodporují WebGL nebo které pro něj mají pouze omezenou podporu. V takových případech doporučujeme používat služby Azure Maps společně s ovládacím prvkem mapy s otevřeným zdrojovým kódem, jako je [Leták](https://leafletjs.com/). Tady je příklad:
+Můžete chtít cílit na starší prohlížeče, které nepodporují WebGL, nebo které mají jenom omezenou podporu. V takových případech doporučujeme, abyste používali Azure Maps služby společně s open source mapovým ovládacím prvkem, jako je například [leták](https://leafletjs.com/). Tady je příklad:
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Mapy Azure + leták" src="//codepen.io/azuremaps/embed/GeLgyx/?height=500&theme-id=0&default-tab=html,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Podívejte se na Pero Azure<a href='https://codepen.io/azuremaps'>@azuremaps</a>Maps + <a href='https://codepen.io/azuremaps/pen/GeLgyx/'>Leták</a> od Azure Maps ( ) na <a href='https://codepen.io'>CodePen</a>.
+<iframe height="500" style="width: 100%;" scrolling="no" title="Azure Maps + leták" src="//codepen.io/azuremaps/embed/GeLgyx/?height=500&theme-id=0&default-tab=html,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+Podívejte se na pero <a href='https://codepen.io/azuremaps/pen/GeLgyx/'>Azure Maps + leták</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o webové sdk Azure Maps:
+Další informace o Azure Maps Web SDK:
 
 > [!div class="nextstepaction"]
 > [Mapový ovládací prvek](how-to-use-map-control.md)

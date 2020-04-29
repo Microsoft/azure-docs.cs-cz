@@ -1,6 +1,6 @@
 ---
-title: Šablony produktů ve správě rozhraní Azure API | Dokumenty společnosti Microsoft
-description: Zjistěte, jak přizpůsobit obsah stránek produktů na portálu pro vývojáře Azure API Management.
+title: Šablony produktů v Azure API Management | Microsoft Docs
+description: Naučte se přizpůsobit obsah stránek produktu na portálu pro vývojáře Azure API Management.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,31 +14,31 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 393563427e936e07315cd44b78cb793d4292b352
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79243923"
 ---
-# <a name="product-templates-in-azure-api-management"></a>Šablony produktů ve správě rozhraní Azure API
+# <a name="product-templates-in-azure-api-management"></a>Šablony produktů v Azure API Management
 
-Azure API Management poskytuje možnost přizpůsobit obsah stránek portálu pro vývojáře pomocí sady šablon, které konfigurují jejich obsah. Pomocí [DotLiquid](http://dotliquidmarkup.org/) syntaxe a editor podle vašeho výběru, jako je [například DotLiquid pro návrháře](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)a za předpokladu, sadu lokalizovaných [prostředků řetězce](api-management-template-resources.md#strings), glyph [prostředky](api-management-template-resources.md#glyphs)a page [ovládací prvky](api-management-page-controls.md), máte velkou flexibilitu ke konfiguraci obsahu stránek, jak uznáte za vhodné pomocí těchto šablon.  
+Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu pro vývojáře pomocí sady šablon, které konfigurují svůj obsah. Pomocí syntaxe [DotLiquid](http://dotliquidmarkup.org/) a editoru podle vlastního výběru, jako je například [DotLiquid pro návrháře](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)a poskytnutá sada lokalizovaných [řetězcových prostředků](api-management-template-resources.md#strings), [prostředků glyfů](api-management-template-resources.md#glyphs)a [ovládacích prvků stránky](api-management-page-controls.md), máte skvělou flexibilitu pro konfiguraci obsahu stránek, jak vidíte, aby byly použity pomocí těchto šablon.  
   
- Šablony v této části umožňují přizpůsobit obsah stránek produktů na portálu pro vývojáře.  
+ Šablony v této části umožňují přizpůsobit obsah stránek produktu na portálu pro vývojáře.  
   
 -   [Seznam produktů](#ProductList)  
   
 -   [Produktu](#Product)  
   
 > [!NOTE]
->  Ukázkové výchozí šablony jsou zahrnuty v následující dokumentaci, ale mohou se měnit z důvodu neustálého zlepšování. Výchozí živé šablony můžete zobrazit na portálu pro vývojáře tak, že přejdete na požadované jednotlivé šablony. Další informace o práci se šablonami najdete [v tématu Jak přizpůsobit portál pro vývojáře pro správu rozhraní API pomocí šablon](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
+>  Ukázkové výchozí šablony jsou uvedené v následující dokumentaci, ale můžou se změnit z důvodu průběžných vylepšení. Živé výchozí šablony můžete zobrazit na portálu pro vývojáře tak, že přejdete na požadované jednotlivé šablony. Další informace o práci se šablonami najdete v tématu [Postup přizpůsobení API Management portálu pro vývojáře pomocí šablon](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
 
 [!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
 ##  <a name="product-list"></a><a name="ProductList"></a>Seznam produktů  
- Šablona **Seznam produktů** umožňuje přizpůsobit text stránky seznamu produktů na portálu pro vývojáře.  
+ Šablona **seznam produktů** vám umožní přizpůsobit tělo stránky seznam produktů na portálu pro vývojáře.  
   
  ![Seznam produktů](./media/api-management-product-templates/APIM_ProductsListTemplatePage.png "APIM_ProductsListTemplatePage")  
   
@@ -71,19 +71,19 @@ Azure API Management poskytuje možnost přizpůsobit obsah stránek portálu pr
 ```  
   
 ### <a name="controls"></a>Ovládací prvky  
- Šablona `Product list` může používat následující [ovládací prvky stránky](api-management-page-controls.md).  
+ `Product list` Šablona může používat následující [ovládací prvky stránky](api-management-page-controls.md).  
   
--   [stránkovací řízení](api-management-page-controls.md#paging-control)  
+-   [ovládací prvek stránkování](api-management-page-controls.md#paging-control)  
   
--   [řízení vyhledávání](api-management-page-controls.md#search-control)  
+-   [hledání – ovládací prvek](api-management-page-controls.md#search-control)  
   
 ### <a name="data-model"></a>Datový model  
   
 |Vlastnost|Typ|Popis|  
 |--------------|----------|-----------------|  
-|Stránkování|[Stránkovací entita.](api-management-template-data-model-reference.md#Paging)|Stránkovací informace pro kolekci produktů.|  
-|Filtrování|[Entita filtrování.](api-management-template-data-model-reference.md#Filtering)|Informace o filtrování pro stránku seznamu produktů.|  
-|Produkty|Kolekce entit [produktu.](api-management-template-data-model-reference.md#Product)|Produkty viditelné pro aktuálního uživatele.|  
+|Stránkování|Entita [stránkování](api-management-template-data-model-reference.md#Paging)|Informace o stránkování kolekce Products|  
+|Filtrování|Entita [filtrování](api-management-template-data-model-reference.md#Filtering)|Informace o filtrování pro stránku seznam produktů.|  
+|Produkty|Kolekce entit [produktu](api-management-template-data-model-reference.md#Product)|Produkty viditelné pro aktuálního uživatele.|  
   
 ### <a name="sample-template-data"></a>Ukázková data šablony  
   
@@ -124,9 +124,9 @@ Azure API Management poskytuje možnost přizpůsobit obsah stránek portálu pr
 ```  
   
 ##  <a name="product"></a><a name="Product"></a>Produktu  
- Šablona **Produkt** umožňuje přizpůsobit text stránky produktu na portálu pro vývojáře.  
+ Šablona **produktu** vám umožní přizpůsobit text stránky produktu na portálu pro vývojáře.  
   
- ![Stránka produktu portálu pro vývojáře](./media/api-management-product-templates/APIM_ProductPage.png "APIM_ProductPage")  
+ ![Stránka produktu portál pro vývojáře](./media/api-management-product-templates/APIM_ProductPage.png "APIM_ProductPage")  
   
 ### <a name="default-template"></a>Výchozí šablona  
   
@@ -198,9 +198,9 @@ Azure API Management poskytuje možnost přizpůsobit obsah stránek portálu pr
 ```  
   
 ### <a name="controls"></a>Ovládací prvky  
- Šablona `Product list` může používat následující [ovládací prvky stránky](api-management-page-controls.md).  
+ `Product list` Šablona může používat následující [ovládací prvky stránky](api-management-page-controls.md).  
   
--   [tlačítko pro přihlášení k odběru](api-management-page-controls.md#subscribe-button)  
+-   [přihlášení k odběru – tlačítko](api-management-page-controls.md#subscribe-button)  
   
 ### <a name="data-model"></a>Datový model  
   
@@ -208,15 +208,15 @@ Azure API Management poskytuje možnost přizpůsobit obsah stránek portálu pr
 |--------------|----------|-----------------|  
 |Produkt|[Produktu](api-management-template-data-model-reference.md#Product)|Zadaný produkt.|  
 |IsDeveloperSubscribed|Boolean|Určuje, zda je aktuální uživatel přihlášen k odběru tohoto produktu.|  
-|SubscriptionState|číslo|Stav předplatného. Možné stavy jsou:<br /><br /> -   `0 - suspended`– předplatné je blokováno a odběratel nemůže volat žádná api produktu.<br />-   `1 - active`– předplatné je aktivní.<br />-   `2 - expired`– předplatné dosáhlo data vypršení platnosti a bylo deaktivováno.<br />-   `3 - submitted`– žádost o předplatné byla podána vývojářem, ale dosud nebyla schválena nebo zamítnuta.<br />-   `4 - rejected`– požadavek na předplatné byl zamítnut správcem.<br />-   `5 - cancelled`– vývojář nebo správce zrušil předplatné.|  
-|Omezení|pole|Tato vlastnost je zastaralé a by neměly být používány.|  
-|DelegatedSubscriptionEnabled|Boolean|Určuje, zda je pro toto předplatné povoleno [delegování.](https://azure.microsoft.com/documentation/articles/api-management-howto-setup-delegation/)|  
-|Adresa DelegatedSubscriptionUrl|řetězec|Pokud je delegování povoleno, adresa URL delegovaného předplatného.|  
-|Jedohodnuto|Boolean|Pokud má produkt podmínky, zda aktuální uživatel souhlasil s podmínkami.|  
-|Předplatná|Kolekce [souhrnných](api-management-template-data-model-reference.md#SubscriptionSummary) entit předplatného.|Předplatná produktu.|  
-|Rozhraní api|Kolekce entit [rozhraní API.](api-management-template-data-model-reference.md#API)|API v tomto produktu.|  
-|Hodnota CannotAddBecauseSubscriptionNumberLimitReached|Boolean|Určuje, zda se aktuální uživatel může přihlásit k odběru tohoto produktu s ohledem na limit předplatného.|  
-|NelzepřidatVzhledk: MultipleSubscriptionsNotAllowed|Boolean|Určuje, zda se současný uživatel může přihlásit k odběru tohoto produktu s ohledem na povolení více předplatných či nikoli.|  
+|SubscriptionState|číslo|Stav předplatného. Možné stavy:<br /><br /> -   `0 - suspended`– předplatné je blokované a předplatitel nemůže volat žádná rozhraní API produktu.<br />-   `1 - active`– předplatné je aktivní.<br />-   `2 - expired`– předplatné dosáhlo data vypršení platnosti a bylo deaktivováno.<br />-   `3 - submitted`– žádost o odběr byla vytvořena vývojářem, ale ještě nebyla schválena nebo odmítnuta.<br />-   `4 - rejected`– žádost o předplatné byla zamítnuta správcem.<br />-   `5 - cancelled`– předplatné zrušila vývojář nebo správce.|  
+|Omezení|pole|Tato vlastnost je zastaralá a neměla by se používat.|  
+|DelegatedSubscriptionEnabled|Boolean|Zda je pro toto předplatné povoleno [delegování](https://azure.microsoft.com/documentation/articles/api-management-howto-setup-delegation/) .|  
+|DelegatedSubscriptionUrl|řetězec|Pokud je povoleno delegování, adresa URL delegovaného předplatného.|  
+|Souhlasí|Boolean|Pokud má produkt nějaké výrazy, bez ohledu na to, jestli aktuální uživatel souhlasil s podmínkami.|  
+|Předplatná|Kolekce [souhrnných entit předplatného](api-management-template-data-model-reference.md#SubscriptionSummary)|Odběry produktu.|  
+|Třídy|Kolekce entit [rozhraní API](api-management-template-data-model-reference.md#API) .|Rozhraní API v tomto produktu.|  
+|CannotAddBecauseSubscriptionNumberLimitReached|Boolean|Zda má aktuální uživatel nárok na přihlášení k odběru tohoto produktu s ohledem na limit předplatného.|  
+|CannotAddBecauseMultipleSubscriptionsNotAllowed|Boolean|Zda má aktuální uživatel nárok na přihlášení k odběru tohoto produktu s ohledem na více než více předplatných povolených.|  
   
 ### <a name="sample-template-data"></a>Ukázková data šablony  
   
@@ -263,4 +263,4 @@ Azure API Management poskytuje možnost přizpůsobit obsah stránek portálu pr
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o práci se šablonami najdete [v tématu Jak přizpůsobit portál pro vývojáře pro správu rozhraní API pomocí šablon](api-management-developer-portal-templates.md).
+Další informace o práci se šablonami najdete v tématu [Postup přizpůsobení API Management portálu pro vývojáře pomocí šablon](api-management-developer-portal-templates.md).

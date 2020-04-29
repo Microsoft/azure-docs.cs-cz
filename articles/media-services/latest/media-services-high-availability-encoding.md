@@ -1,6 +1,6 @@
 ---
-title: Kódování s vysokou dostupností služby Azure Media Services
-description: Zjistěte, jak převzetí služeb při selhání sekundární účet Služby Media Services, pokud dojde k výpadku nebo selhání místního datového centra.
+title: Azure Media Services kódování s vysokou dostupností
+description: Převzetí služeb při selhání pro sekundární Media Services účet, pokud dojde k výpadku nebo selhání regionálního datacentra.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -14,53 +14,53 @@ ms.custom: ''
 ms.date: 02/24/2020
 ms.author: juliako
 ms.openlocfilehash: afaa7545fbcbab016249e73a2247817310c5cdfc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78934190"
 ---
-# <a name="media-services-high-availability-encoding"></a>Kódování s vysokou dostupností služeb Media Services 
+# <a name="media-services-high-availability-encoding"></a>Media Services kódování s vysokou dostupností 
 
-Služba kódování Azure Media Services je regionální platforma pro dávkové zpracování, která není aktuálně navržená pro vysokou dostupnost v rámci jedné oblasti. Služba kódování aktuálně neposkytuje okamžité převzetí služeb při selhání služby, pokud dojde k výpadku regionálního datového centra nebo selhání podkladové součásti nebo závislých služeb (například úložiště, SQL). Tento článek vysvětluje, jak nasadit služby Media Services k udržení architektury s vysokou dostupností s převzetím služeb při selhání a zajištění optimální dostupnosti pro vaše aplikace.
+Služba Azure Media Services Encoding je místní platforma pro zpracování dávek a aktuálně není určená pro vysokou dostupnost v rámci jedné oblasti. Služba kódování aktuálně neposkytuje okamžité převzetí služeb při selhání, pokud dojde k výpadku místního datového centra nebo selhání základní komponenty nebo závislých služeb (například úložiště, SQL). Tento článek vysvětluje, jak nasadit Media Services pro udržení architektury s vysokou dostupností s převzetím služeb při selhání a zajištění optimální dostupnosti pro vaše aplikace.
 
-Dodržováním pokynů a osvědčených postupů popsaných v článku snížíte riziko selhání kódování, zpoždění a minimalizujete dobu obnovení, pokud dojde k výpadku v jedné oblasti.
+Podle pokynů a osvědčených postupů popsaných v článku snížíte riziko chyb při kódování, zpoždění a minimalizaci doby obnovení, pokud dojde k výpadku v jedné oblasti.
 
-## <a name="how-to-build-a-cross-regional-encoding-system"></a>Jak vytvořit meziregionální kódovací systém
+## <a name="how-to-build-a-cross-regional-encoding-system"></a>Jak sestavit systém kódování v různých oblastech
 
-* [Vytvořte](create-account-cli-how-to.md) dva (nebo více) účtů Azure Media Services.
+* [Vytvořte](create-account-cli-how-to.md) dva (nebo více) Azure Media Services účty.
 
-    Tyto dva účty musí být v různých oblastech. Další informace najdete [v tématu oblasti, ve kterých se nasazuje služba Azure Media Services](https://azure.microsoft.com/global-infrastructure/services/?products=media-services).
-* Nahrajte média do stejné oblasti, ze které plánujete úlohu odeslat. Další informace o tom, jak začít s kódováním, najdete [v tématu Vytvoření vstupu úlohy z adresy URL protokolu HTTPS](job-input-from-http-how-to.md) nebo Vytvoření vstupu [úlohy z místního souboru](job-input-from-local-file-how-to.md).
+    Tyto dva účty se musí nacházet v různých oblastech. Další informace najdete v tématu [oblasti, ve kterých je nainstalovaná služba Azure Media Services](https://azure.microsoft.com/global-infrastructure/services/?products=media-services).
+* Nahrajte médium do stejné oblasti, ze které plánujete úlohu odeslat. Další informace o tom, jak spustit kódování, najdete v tématu [Vytvoření vstupu úlohy z adresy URL https](job-input-from-http-how-to.md) nebo [Vytvoření vstupu úlohy z místního souboru](job-input-from-local-file-how-to.md).
 
-    Pokud pak potřebujete znovu odeslat [úlohu](transforms-jobs-concept.md) do jiné oblasti, můžete použít JobInputHttp nebo použít [Copy-Blob](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob) ke kopírování dat ze zdrojového kontejneru datových zdrojů do kontejneru datových zdrojů v alternativní oblasti.
-* Přihlásit se k odběru jobstatechange zprávy v každém účtu prostřednictvím Služby Azure Event Grid. Další informace naleznete v tématu:
+    Pokud budete později potřebovat [úlohu](transforms-jobs-concept.md) znovu odeslat do jiné oblasti, můžete pomocí JobInputHttp nebo pomocí funkce [copy-BLOB](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob) zkopírovat data z kontejneru zdrojových prostředků do kontejneru assetů v alternativní oblasti.
+* Přihlaste se k odběru zpráv JobStateChange v každém účtu prostřednictvím Azure Event Grid. Další informace naleznete v tématu:
 
-    * [Ukázka audio analýzy,](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/AudioAnalytics/AudioAnalyzer) která ukazuje, jak monitorovat úlohu pomocí Azure Event Grid, včetně přidání záložního řešení pro případ, že by se zprávy Azure Event Grid z nějakého důvodu zpozdily.
-    * [Události schémat azure event grid pro mediální služby](media-services-event-schemas.md)
-    * [Zaregistrujte se na události prostřednictvím portálu Azure nebo příkazového příkazu k obsluze](reacting-to-media-services-events.md) (můžete to udělat také pomocí sady EventGrid Management SDK)
-    * [Sada Microsoft.Azure.EventGrid SDK](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/) (která nativně podporuje události mediálních služeb).
+    * [Ukázka zvukové analýzy](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/AudioAnalytics/AudioAnalyzer) , která ukazuje, jak monitorovat úlohu pomocí Azure Event Grid, včetně přidání náhradního zařízení pro případ, že Azure Event Grid zprávy z nějakého důvodu jsou zpožděny.
+    * [Azure Event Grid schémat pro události Media Services](media-services-event-schemas.md)
+    * [Zaregistrujte se na události prostřednictvím Azure Portal nebo rozhraní](reacting-to-media-services-events.md) příkazového řádku (můžete to provést také pomocí sady EventGrid Management SDK).
+    * [Microsoft. Azure. EVENTGRID SDK](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/) (podporující události Media Services nativně).
 
-    Můžete také využívat události Event Grid prostřednictvím funkce Azure.
+    Můžete také spotřebovávat Event Grid události prostřednictvím Azure Functions.
 * Při vytváření [úlohy](transforms-jobs-concept.md):
 
-    * Náhodně vyberte účet ze seznamu aktuálně používaných účtů (tento seznam obvykle obsahuje oba účty, ale pokud jsou zjištěny problémy, může obsahovat pouze jeden účet). Pokud je seznam prázdný, vyzvěte výstrahu, aby ho operátor mohl prozkoumat.
-    * Obecné pokyny je, že potřebujete [jednu rezervovanou jednotku média](media-reserved-units-cli-how-to.md) na [JobOutput](https://docs.microsoft.com/rest/api/media/jobs/create#joboutputasset) (pokud nepoužíváte [VideoAnalyzerPreset,](analyzing-video-audio-files-concept.md) kde se doporučuje 3 jednotky vyhrazených médií na JobOutput).
-    * Získejte počet rezervovaných jednotek médií (MRU) pro vybraný účet. Pokud počet **aktuálních rezervovaných jednotek média** ještě není na maximální hodnotě, přidejte číslo jednotek MRU, které úloha potřebuje, a aktualizujte službu. Pokud je míra odesílání úlohy vysoká a často se dotazujete na mru, abyste zjistili, že jste na maximu, použijte distribuovanou mezipaměť pro hodnotu s přiměřeným časovým limitem.
-    * Udržujte počet pracovních míst za letu.
+    * Náhodně vyberte účet ze seznamu aktuálně používaných účtů (Tento seznam bude obvykle obsahovat oba účty, ale pokud se zjistí problémy, může obsahovat jenom jeden účet). Pokud je seznam prázdný, vyvolejte výstrahu, aby mohl operátor prozkoumat.
+    * Obecné pokyny potřebujete jednu [rezervovanou jednotku médií](media-reserved-units-cli-how-to.md) na [JobOutput](https://docs.microsoft.com/rest/api/media/jobs/create#joboutputasset) (Pokud nepoužíváte [VideoAnalyzerPreset](analyzing-video-audio-files-concept.md) , kde se doporučuje 3 rezervované jednotky médií na JobOutput).
+    * Získejte počet rezervovaných jednotek médií (MRUs) pro vybraný účet. Pokud aktuální počet **rezervovaných jednotek médií** již není na maximální hodnotě, přidejte počet MRUs potřebných pro úlohu a aktualizujte službu. Pokud je rychlost odeslání úlohy vysoká a často se dotazuje na MRUs, abyste zjistili, že jste na maximum, použijte distribuovanou mezipaměť pro hodnotu s přiměřeným časovým limitem.
+    * Udržujte si počet neletových úloh.
 
-* Když obslužná rutina JobStateChange dostane oznámení, že úloha dosáhla naplánovaného stavu, zaznamenejte čas, kdy vstoupí do stavu plánu a použité oblasti/účtu.
-* Když vaše obslužná rutina JobStateChange získá oznámení, že úloha dosáhla stavu zpracování, označte záznam úlohy jako zpracování.
-* Když obslužná rutina JobStateChange získá oznámení, že úloha dosáhla stavu Dokončeno/Chybová/Zrušeno, označte záznam úlohy jako konečný a snížípočet úloh za letu. Získejte počet rezervovaných jednotek médií pro vybraný účet a porovnejte aktuální číslo MRU s počtem pracovních míst v letadle. Pokud je počet zaletu menší než počet MRU, pak jej zmenšete a aktualizujte službu.
-* Mít samostatný proces, který pravidelně sleduje vaše záznamy o úlohách
+* Když vaše obslužná rutina JobStateChange získá oznámení, že úloha dosáhla naplánovaného stavu, zaznamenejte čas, který vstoupí do stavu plánu, a na použitou oblast nebo účet.
+* Když vaše obslužná rutina JobStateChange dostane oznámení, že úloha dosáhla stavu zpracování, označte záznam pro úlohu jako zpracování.
+* Když vaše obslužná rutina JobStateChange dostane oznámení, že úloha dosáhla stavu dokončeno/chyba, označit záznam pro úlohu jako konečný a snížit počet úloh inletu. Získejte počet rezervovaných jednotek médií pro vybraný účet a porovnejte aktuální číslo MRU s počtem úloh inletu. Pokud je počet vašich letů nižší než počet naposledy použitých položek, požádejte ho a aktualizujte službu.
+* Mít samostatný proces, který pravidelně prohledává vaše záznamy o úlohách.
     
-    * Pokud máte úlohy v naplánovaném stavu, které nebyly převedeny do stavu zpracování v přiměřeném množství času pro danou oblast, odeberte tuto oblast ze seznamu aktuálně používaných účtů.  V závislosti na vašich obchodních požadavcích se můžete rozhodnout tyto úlohy okamžitě zrušit a znovu je odeslat do jiné oblasti. Nebo bys jim mohl dát víc času, aby se přesunuli do dalšího státu.
-    * V závislosti na počtu rezervovaných jednotek médií nakonfigurovaných na účtu a rychlosti odeslání mohou být ve stavu ve frontě úlohy, které systém ještě nevyzvedl ke zpracování.  Pokud seznam úloh ve stavu ve frontě roste nad přijatelný limit v oblasti, tyto úlohy mohou být zrušeny a odeslány do jiné oblasti.  To však může být příznakem nemají dostatek rezervovaných jednotek médií nakonfigurován na účtu pro aktuální zatížení.  V případě potřeby můžete prostřednictvím podpory Azure požádat o vyšší kvótu rezervované jednotky médií.
-    * Pokud byla oblast odebrána ze seznamu účtů, před přidáním zpět do seznamu ji sledujte, zda se neobnovuje.  Regionální stav lze sledovat prostřednictvím existujících úloh v regionu (pokud nebyly zrušeny a znovu odeslány), přidáním účtu zpět do seznamu po určité době a operátory, kteří sledují komunikaci Azure o výpadcích, které mohou mít vliv na výpadky, které mohou mít vliv na výpadky, které mohou mít vliv na Mediální služby Azure.
+    * Pokud máte úlohy v plánovaném stavu, které nepokročily do stavu zpracování v přiměřené době pro danou oblast, odeberte tuto oblast ze seznamu aktuálně používaných účtů.  V závislosti na vašich obchodních požadavcích se můžete rozhodnout tyto úlohy okamžitě zrušit a znovu je odeslat do jiné oblasti. Nebo můžete jiným uživatelům poskytnout další čas na přechod k dalšímu stavu.
+    * V závislosti na počtu rezervovaných jednotek médií nakonfigurovaných na účtu a rychlosti odesílání můžou být ve stavu ve frontě také úlohy, které systém ještě nevybral ke zpracování.  Pokud se seznam úloh ve frontě přesáhne přijatelnému limitu v oblasti, můžete tyto úlohy zrušit a odeslat do jiné oblasti.  Může se ale jednat o příznak, který nemá na účtu pro aktuální zatížení nakonfigurovaný dostatek rezervovaných jednotek médií.  V případě potřeby můžete požádat o vyšší kvótu rezervované jednotky médií prostřednictvím podpory Azure.
+    * Pokud byla oblast odebrána ze seznamu účtů, před přidáním zpět do seznamu ji monitorujte pro obnovení.  Regionální stav se dá monitorovat prostřednictvím stávajících úloh v oblasti (Pokud se nezrušily a znovu neodeslaly), a to přidáním účtu zpátky do seznamu po určitou dobu a pomocí operátorů sledujících komunikaci Azure o výpadkech, které by mohly ovlivnit Azure Media Services.
     
-Pokud zjistíte, že počet MRU je mlácení nahoru a dolů hodně, přesuňte logiku snížení periodické úlohy. Mají logiku před úlohou porovnat počet zaletu na aktuální počet MRU a zjistěte, zda je třeba aktualizovat MRU.
+Pokud zjistíte, že počet MRU je thrashing nahoru a dolů, přesuňte logiku snížení na pravidelný úkol. Aby bylo možné zjistit, jestli je potřeba aktualizovat MRUs, je třeba, aby logika předběžných úloh porovnala počet letů do aktuálního počtu.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Vytváření streamování videa na vyžádání napříč oblastmi](media-services-high-availability-streaming.md)
-* Rezervovat [ukázky kódu](https://docs.microsoft.com/samples/browse/?products=azure-media-services)
+* [Vytváření streamování pro různé oblasti videa na vyžádání](media-services-high-availability-streaming.md)
+* Podívejte se na [ukázky kódu](https://docs.microsoft.com/samples/browse/?products=azure-media-services)

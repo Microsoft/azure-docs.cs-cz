@@ -1,6 +1,6 @@
 ---
-title: Šablony uživatelských profilů ve správě rozhraní Azure API | Dokumenty společnosti Microsoft
-description: Zjistěte, jak přizpůsobit obsah stránek profilu uživatele na portálu pro vývojáře ve správě rozhraní Azure API.
+title: Šablony profilů uživatelů v Azure API Management | Microsoft Docs
+description: Naučte se přizpůsobit obsah stránek profilu uživatele na portálu pro vývojáře v Azure API Management.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,14 +14,14 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 4e3e430874f9d5b64f717b6ebb1cacb0eae46b1f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79243949"
 ---
-# <a name="user-profile-templates-in-azure-api-management"></a>Šablony profilů uživatelů ve správě rozhraní Azure API
-Azure API Management poskytuje možnost přizpůsobit obsah stránek portálu pro vývojáře pomocí sady šablon, které konfigurují jejich obsah. Pomocí [DotLiquid](http://dotliquidmarkup.org/) syntaxe a editor podle vašeho výběru, jako je [například DotLiquid pro návrháře](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)a za předpokladu, sadu lokalizovaných [prostředků řetězce](api-management-template-resources.md#strings), glyph [prostředky](api-management-template-resources.md#glyphs)a page [ovládací prvky](api-management-page-controls.md), máte velkou flexibilitu ke konfiguraci obsahu stránek, jak uznáte za vhodné pomocí těchto šablon.  
+# <a name="user-profile-templates-in-azure-api-management"></a>Šablony profilů uživatelů v Azure API Management
+Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu pro vývojáře pomocí sady šablon, které konfigurují svůj obsah. Pomocí syntaxe [DotLiquid](http://dotliquidmarkup.org/) a editoru podle vlastního výběru, jako je například [DotLiquid pro návrháře](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)a poskytnutá sada lokalizovaných [řetězcových prostředků](api-management-template-resources.md#strings), [prostředků glyfů](api-management-template-resources.md#glyphs)a [ovládacích prvků stránky](api-management-page-controls.md), máte skvělou flexibilitu pro konfiguraci obsahu stránek, jak vidíte, aby byly použity pomocí těchto šablon.  
   
  Šablony v této části umožňují přizpůsobit obsah stránek profilu uživatele na portálu pro vývojáře.  
   
@@ -34,16 +34,16 @@ Azure API Management poskytuje možnost přizpůsobit obsah stránek portálu pr
 -   [Aktualizovat informace o účtu](#UpdateAccountInfo)  
   
 > [!NOTE]
->  Ukázkové výchozí šablony jsou zahrnuty v následující dokumentaci, ale mohou se měnit z důvodu neustálého zlepšování. Výchozí živé šablony můžete zobrazit na portálu pro vývojáře tak, že přejdete na požadované jednotlivé šablony. Další informace o práci se šablonami najdete [v tématu Jak přizpůsobit portál pro vývojáře pro správu rozhraní API pomocí šablon](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
+>  Ukázkové výchozí šablony jsou uvedené v následující dokumentaci, ale můžou se změnit z důvodu průběžných vylepšení. Živé výchozí šablony můžete zobrazit na portálu pro vývojáře tak, že přejdete na požadované jednotlivé šablony. Další informace o práci se šablonami najdete v tématu [Postup přizpůsobení API Management portálu pro vývojáře pomocí šablon](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
 
 [!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-##  <a name="profile"></a><a name="Profile"></a>Profil  
- Šablona **profilu** umožňuje přizpůsobit část profilu uživatele na stránce profilu uživatele na portálu pro vývojáře.  
+##  <a name="profile"></a><a name="Profile"></a>Profilu  
+ Šablona **profilu** vám umožní přizpůsobit část profil uživatele stránky profilu uživatele na portálu pro vývojáře.  
   
- ![Stránka profilu uživatele](./media/api-management-user-profile-templates/APIM-User-Profile-Page.png "Stránka uživatelského profilu APIM")  
+ ![Stránka profilu uživatele](./media/api-management-user-profile-templates/APIM-User-Profile-Page.png "Stránka profilu uživatele APIM")  
   
 ### <a name="default-template"></a>Výchozí šablona  
   
@@ -98,25 +98,25 @@ Azure API Management poskytuje možnost přizpůsobit obsah stránek portálu pr
 ```  
   
 ### <a name="controls"></a>Ovládací prvky  
- Tato šablona nesmí používat žádné [ovládací prvky stránky](api-management-page-controls.md).  
+ Tato šablona nemůže používat žádné [ovládací prvky stránky](api-management-page-controls.md).  
   
 ### <a name="data-model"></a>Datový model  
   
 > [!NOTE]
->  Šablony [Profile](#Profile), [Applications](#Applications)a [Subscriptions](#Subscriptions) sdílejí stejný datový model a přijímají stejná data šablony.  
+>  Šablony [profil](#Profile), [aplikace](#Applications)a [odběry](#Subscriptions) sdílejí stejný datový model a získají stejná data šablony.  
   
 |Vlastnost|Typ|Popis|  
 |--------------|----------|-----------------|  
-|`firstName`|řetězec|Křestní jméno aktuálního uživatele.|  
-|`lastName`|řetězec|Příjmení aktuálního uživatele.|  
+|`firstName`|řetězec|Křestní jméno aktuálního uživatele|  
+|`lastName`|řetězec|Poslední jméno aktuálního uživatele.|  
 |`companyName`|řetězec|Název společnosti aktuálního uživatele.|  
 |`addresserEmail`|řetězec|E-mailová adresa aktuálního uživatele|  
-|`developersUsageStatisticsLink`|řetězec|Relativní adresa URL pro zobrazení analýzy pro aktuálního uživatele.|  
-|`subscriptions`|Kolekce entit [předplatného.](api-management-template-data-model-reference.md#Subscription)|Předplatná pro aktuálního uživatele.|  
-|`applications`|Kolekce entit [aplikace.](api-management-template-data-model-reference.md#Application)|Aplikace aktuálního uživatele.|  
+|`developersUsageStatisticsLink`|řetězec|Relativní adresa URL pro zobrazení analýz pro aktuálního uživatele|  
+|`subscriptions`|Kolekce entit [předplatného](api-management-template-data-model-reference.md#Subscription) .|Odběry pro aktuálního uživatele.|  
+|`applications`|Kolekce entit [aplikace](api-management-template-data-model-reference.md#Application)|Aplikace aktuálního uživatele.|  
 |`changePasswordUrl`|řetězec|Relativní adresa URL pro změnu hesla aktuálního uživatele.|  
-|`changeNameOrEmailUrl`|řetězec|Relativní adresa URL pro změnu názvu a e-mailu pro aktuálního uživatele.|  
-|`canChangePassword`|Boolean|Zda může aktuální uživatel změnit své heslo.|  
+|`changeNameOrEmailUrl`|řetězec|Relativní adresa URL pro změnu jména a e-mailu pro aktuálního uživatele.|  
+|`canChangePassword`|Boolean|Určuje, zda může aktuální uživatel změnit heslo.|  
 |`isSystemUser`|Boolean|Určuje, zda je aktuální uživatel členem jedné z předdefinovaných [skupin](api-management-key-concepts.md#groups).|  
   
 ### <a name="sample-template-data"></a>Ukázková data šablony  
@@ -185,8 +185,8 @@ Azure API Management poskytuje možnost přizpůsobit obsah stránek portálu pr
 }  
 ```  
   
-##  <a name="subscriptions"></a><a name="Subscriptions"></a>Odběry  
- Šablona **Předplatná** umožňuje přizpůsobit část odběry na stránce profilu uživatele na portálu pro vývojáře.  
+##  <a name="subscriptions"></a><a name="Subscriptions"></a>Odběru  
+ Šablona **předplatných** vám umožňuje přizpůsobit část předplatná stránky profilu uživatele na portálu pro vývojáře.  
   
  ![Stránka předplatného uživatele](./media/api-management-user-profile-templates/APIM-User-Subscription-Page.png "Stránka předplatného uživatele APIM")  
   
@@ -319,25 +319,25 @@ Azure API Management poskytuje možnost přizpůsobit obsah stránek portálu pr
 ### <a name="controls"></a>Ovládací prvky  
  Tato šablona může používat následující [ovládací prvky stránky](api-management-page-controls.md).  
   
--   [zrušení předplatného](api-management-page-controls.md#subscription-cancel)  
+-   [předplatné – zrušit](api-management-page-controls.md#subscription-cancel)  
   
 ### <a name="data-model"></a>Datový model  
   
 > [!NOTE]
->  Šablony [Profile](#Profile), [Applications](#Applications)a [Subscriptions](#Subscriptions) sdílejí stejný datový model a přijímají stejná data šablony.  
+>  Šablony [profil](#Profile), [aplikace](#Applications)a [odběry](#Subscriptions) sdílejí stejný datový model a získají stejná data šablony.  
   
 |Vlastnost|Typ|Popis|  
 |--------------|----------|-----------------|  
-|`firstName`|řetězec|Křestní jméno aktuálního uživatele.|  
-|`lastName`|řetězec|Příjmení aktuálního uživatele.|  
+|`firstName`|řetězec|Křestní jméno aktuálního uživatele|  
+|`lastName`|řetězec|Poslední jméno aktuálního uživatele.|  
 |`companyName`|řetězec|Název společnosti aktuálního uživatele.|  
 |`addresserEmail`|řetězec|E-mailová adresa aktuálního uživatele|  
-|`developersUsageStatisticsLink`|řetězec|Relativní adresa URL pro zobrazení analýzy pro aktuálního uživatele.|  
-|`subscriptions`|Kolekce entit [předplatného.](api-management-template-data-model-reference.md#Subscription)|Předplatná pro aktuálního uživatele.|  
-|`applications`|Kolekce entit [aplikace.](api-management-template-data-model-reference.md#Application)|Aplikace aktuálního uživatele.|  
+|`developersUsageStatisticsLink`|řetězec|Relativní adresa URL pro zobrazení analýz pro aktuálního uživatele|  
+|`subscriptions`|Kolekce entit [předplatného](api-management-template-data-model-reference.md#Subscription) .|Odběry pro aktuálního uživatele.|  
+|`applications`|Kolekce entit [aplikace](api-management-template-data-model-reference.md#Application)|Aplikace aktuálního uživatele.|  
 |`changePasswordUrl`|řetězec|Relativní adresa URL pro změnu hesla aktuálního uživatele.|  
-|`changeNameOrEmailUrl`|řetězec|Relativní adresa URL pro změnu názvu a e-mailu pro aktuálního uživatele.|  
-|`canChangePassword`|Boolean|Zda může aktuální uživatel změnit své heslo.|  
+|`changeNameOrEmailUrl`|řetězec|Relativní adresa URL pro změnu jména a e-mailu pro aktuálního uživatele.|  
+|`canChangePassword`|Boolean|Určuje, zda může aktuální uživatel změnit heslo.|  
 |`isSystemUser`|Boolean|Určuje, zda je aktuální uživatel členem jedné z předdefinovaných [skupin](api-management-key-concepts.md#groups).|  
   
 ### <a name="sample-template-data"></a>Ukázková data šablony  
@@ -406,10 +406,10 @@ Azure API Management poskytuje možnost přizpůsobit obsah stránek portálu pr
 }  
 ```  
   
-##  <a name="applications"></a><a name="Applications"></a>Aplikace  
- Šablona **Aplikace** umožňuje přizpůsobit část odběry na stránce profilu uživatele na portálu pro vývojáře.  
+##  <a name="applications"></a><a name="Applications"></a>Vyrovnání  
+ Šablona **aplikace** vám umožní přizpůsobit část předplatná stránky profilu uživatele na portálu pro vývojáře.  
   
- ![Stránka Aplikace uživatelských účtů](./media/api-management-user-profile-templates/APIM-User-Account-Applications-Page.png "Stránka Aplikace uživatelského účtu APIM")  
+ ![Stránka aplikace uživatelského účtu](./media/api-management-user-profile-templates/APIM-User-Account-Applications-Page.png "Stránka aplikace uživatelských účtů APIM")  
   
 ### <a name="default-template"></a>Výchozí šablona  
   
@@ -482,25 +482,25 @@ Azure API Management poskytuje možnost přizpůsobit obsah stránek portálu pr
 ### <a name="controls"></a>Ovládací prvky  
  Tato šablona může používat následující [ovládací prvky stránky](api-management-page-controls.md).  
   
--   [akce aplikace](api-management-page-controls.md#app-actions)  
+-   [aplikace – akce](api-management-page-controls.md#app-actions)  
   
 ### <a name="data-model"></a>Datový model  
   
 > [!NOTE]
->  Šablony [Profile](#Profile), [Applications](#Applications)a [Subscriptions](#Subscriptions) sdílejí stejný datový model a přijímají stejná data šablony.  
+>  Šablony [profil](#Profile), [aplikace](#Applications)a [odběry](#Subscriptions) sdílejí stejný datový model a získají stejná data šablony.  
   
 |Vlastnost|Typ|Popis|  
 |--------------|----------|-----------------|  
-|`firstName`|řetězec|Křestní jméno aktuálního uživatele.|  
-|`lastName`|řetězec|Příjmení aktuálního uživatele.|  
+|`firstName`|řetězec|Křestní jméno aktuálního uživatele|  
+|`lastName`|řetězec|Poslední jméno aktuálního uživatele.|  
 |`companyName`|řetězec|Název společnosti aktuálního uživatele.|  
 |`addresserEmail`|řetězec|E-mailová adresa aktuálního uživatele|  
-|`developersUsageStatisticsLink`|řetězec|Relativní adresa URL pro zobrazení analýzy pro aktuálního uživatele.|  
-|`subscriptions`|Kolekce entit [předplatného.](api-management-template-data-model-reference.md#Subscription)|Předplatná pro aktuálního uživatele.|  
-|`applications`|Kolekce entit [aplikace.](api-management-template-data-model-reference.md#Application)|Aplikace aktuálního uživatele.|  
+|`developersUsageStatisticsLink`|řetězec|Relativní adresa URL pro zobrazení analýz pro aktuálního uživatele|  
+|`subscriptions`|Kolekce entit [předplatného](api-management-template-data-model-reference.md#Subscription) .|Odběry pro aktuálního uživatele.|  
+|`applications`|Kolekce entit [aplikace](api-management-template-data-model-reference.md#Application)|Aplikace aktuálního uživatele.|  
 |`changePasswordUrl`|řetězec|Relativní adresa URL pro změnu hesla aktuálního uživatele.|  
-|`changeNameOrEmailUrl`|řetězec|Relativní adresa URL pro změnu názvu a e-mailu pro aktuálního uživatele.|  
-|`canChangePassword`|Boolean|Zda může aktuální uživatel změnit své heslo.|  
+|`changeNameOrEmailUrl`|řetězec|Relativní adresa URL pro změnu jména a e-mailu pro aktuálního uživatele.|  
+|`canChangePassword`|Boolean|Určuje, zda může aktuální uživatel změnit heslo.|  
 |`isSystemUser`|Boolean|Určuje, zda je aktuální uživatel členem jedné z předdefinovaných [skupin](api-management-key-concepts.md#groups).|  
   
 ### <a name="sample-template-data"></a>Ukázková data šablony  
@@ -570,9 +570,9 @@ Azure API Management poskytuje možnost přizpůsobit obsah stránek portálu pr
 ```  
   
 ##  <a name="update-account-info"></a><a name="UpdateAccountInfo"></a>Aktualizovat informace o účtu  
- Šablona **Aktualizovat informace o účtu** umožňuje přizpůsobit stránku Aktualizovat informace o **účtu** na portálu pro vývojáře.  
+ Šablona **informace o účtu aktualizace** umožňuje přizpůsobení stránky **aktualizovat informace o účtu** na portálu pro vývojáře.  
   
- ![Šablony portálu pro vývojáře informací o uživatelském účtu](./media/api-management-user-profile-templates/APIM-User-Account-Info-Page-Developer-Portal-Templates.png "Šablony portálu pro vývojáře informací o uživatelském účtu APIM")  
+ ![Stránka informace o uživatelském účtu – šablony portálu pro vývojáře](./media/api-management-user-profile-templates/APIM-User-Account-Info-Page-Developer-Portal-Templates.png "Stránka informace o uživatelském účtu APIM – šablony portálu pro vývojáře")  
   
 ### <a name="default-template"></a>Výchozí šablona  
   
@@ -607,10 +607,10 @@ Azure API Management poskytuje možnost přizpůsobit obsah stránek portálu pr
 ```  
   
 ### <a name="controls"></a>Ovládací prvky  
- Tato šablona nesmí používat žádné [ovládací prvky stránky](api-management-page-controls.md).  
+ Tato šablona nemůže používat žádné [ovládací prvky stránky](api-management-page-controls.md).  
   
 ### <a name="data-model"></a>Datový model  
- [Entita s informacemi o uživatelském účtu.](api-management-template-data-model-reference.md#UserAccountInfo)  
+ Entita [informace o uživatelském účtu](api-management-template-data-model-reference.md#UserAccountInfo)  
   
 ### <a name="sample-template-data"></a>Ukázková data šablony  
   
@@ -627,4 +627,4 @@ Azure API Management poskytuje možnost přizpůsobit obsah stránek portálu pr
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o práci se šablonami najdete [v tématu Jak přizpůsobit portál pro vývojáře pro správu rozhraní API pomocí šablon](api-management-developer-portal-templates.md).
+Další informace o práci se šablonami najdete v tématu [Postup přizpůsobení API Management portálu pro vývojáře pomocí šablon](api-management-developer-portal-templates.md).

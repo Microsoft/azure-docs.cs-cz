@@ -1,6 +1,6 @@
 ---
-title: Vytváření clusterů Apache Hadoop pomocí rozhraní příkazového příkazu Azure – Azure HDInsight
-description: Zjistěte, jak vytvořit clustery Azure HDInsight pomocí rozhraní příkazového příkazu Azure pro různé platformy.
+title: Vytváření clusterů Apache Hadoop pomocí Azure CLI – Azure HDInsight
+description: Naučte se vytvářet clustery Azure HDInsight pomocí Azure CLI pro různé platformy.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,31 +9,31 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/03/2020
 ms.openlocfilehash: b9d935e72c67b78484337e39e0897d4962340636
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77199037"
 ---
-# <a name="create-hdinsight-clusters-using-the-azure-cli"></a>Vytváření clusterů HDInsight pomocí rozhraní příkazového příkazu Azure
+# <a name="create-hdinsight-clusters-using-the-azure-cli"></a>Vytváření clusterů HDInsight pomocí rozhraní příkazového řádku Azure
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-Kroky v tomto dokumentu návod k vytvoření clusteru HDInsight 3.6 pomocí rozhraní příkazového příkazového příkazu Konazure.
+Kroky v tomto dokumentu vás provedou vytvořením clusteru HDInsight 3,6 pomocí Azure CLI.
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Azure CLI. Pokud jste nenainstalovali azure cli, najdete [v tématu instalace azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli) pro kroky.
+Rozhraní příkazového řádku Azure Pokud jste nenainstalovali Azure CLI, přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) pro kroky.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-a-cluster"></a>Vytvoření clusteru
 
-1. Přihlaste se k předplatnému Azure. Pokud máte v plánu používat Azure Cloud Shell, pak vyberte **Try it** v pravém horním rohu bloku kódu. Jinak zadejte následující příkaz:
+1. Přihlaste se k předplatnému Azure. Pokud plánujete použít Azure Cloud Shell, vyberte **vyzkoušet** v pravém horním rohu bloku kódu. V opačném případě zadejte následující příkaz:
 
     ```azurecli-interactive
     az login
@@ -42,16 +42,16 @@ Azure CLI. Pokud jste nenainstalovali azure cli, najdete [v tématu instalace az
     # az account set --subscription "SUBSCRIPTIONID"
     ```
 
-2. Nastavte proměnné prostředí. Použití proměnných v tomto článku je založena na Bash. Pro jiná prostředí budou zapotřebí drobné odchylky. Úplný seznam možných parametrů pro vytvoření clusteru najdete v tématu [az-hdinsight-create.](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create)
+2. Nastavte proměnné prostředí. Použití proměnných v tomto článku je založené na bash. Pro ostatní prostředí se budou potřebovat mírné variace. Úplný seznam možných parametrů pro vytvoření clusteru najdete v tématu [AZ-HDInsight-Create](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) .
 
     |Parametr | Popis |
     |---|---|
-    |`--workernode-count`| Počet pracovních uzlů v clusteru. Tento článek používá `clusterSizeInNodes` proměnnou jako `--workernode-count`hodnotu předanou . |
-    |`--version`| Verze clusteru HDInsight. Tento článek používá `clusterVersion` proměnnou jako `--version`hodnotu předanou . Viz také: [Podporované verze HDInsight](./hdinsight-component-versioning.md#supported-hdinsight-versions).|
-    |`--type`| Typ clusteru HDInsight, jako jsou: hadoop, interactivehive, hbase, kafka, storm, spark, rserver, mlservices.  Tento článek používá `clusterType` proměnnou jako `--type`hodnotu předanou . Viz také: [Typy clusterů a konfigurace](./hdinsight-hadoop-provision-linux-clusters.md#cluster-type).|
-    |`--component-version`|Verze různých komponent Hadoop, v prostorově oddělených verzích ve formátu 'component=version'. Tento článek používá `componentVersion` proměnnou jako `--component-version`hodnotu předanou . Viz také: [Hadoop komponenty](./hdinsight-component-versioning.md#apache-hadoop-components-available-with-different-hdinsight-versions).|
+    |`--workernode-count`| Počet uzlů pracovního procesu v clusteru. V tomto článku se používá `clusterSizeInNodes` proměnná jako hodnota předaná `--workernode-count`. |
+    |`--version`| Verze clusteru HDInsight. V tomto článku se používá `clusterVersion` proměnná jako hodnota předaná `--version`. Viz také: [podporované verze HDInsight](./hdinsight-component-versioning.md#supported-hdinsight-versions).|
+    |`--type`| Zadejte cluster HDInsight, například: Hadoop, interactivehive, HBA, Kafka,, Spark, Rserver, mlservices.  V tomto článku se používá `clusterType` proměnná jako hodnota předaná `--type`. Viz také: [typy clusterů a konfigurace](./hdinsight-hadoop-provision-linux-clusters.md#cluster-type).|
+    |`--component-version`|Verze různých komponent systému Hadoop ve formátu "Component = Version" ve verzích oddělených mezerami. V tomto článku se používá `componentVersion` proměnná jako hodnota předaná `--component-version`. Viz také: [komponenty Hadoop](./hdinsight-component-versioning.md#apache-hadoop-components-available-with-different-hdinsight-versions).|
 
-    `RESOURCEGROUPNAME`Nahraďte `CLUSTERNAME` `STORAGEACCOUNTNAME`, `LOCATION` `PASSWORD` , , , a s požadovanými hodnotami. Podle potřeby změňte hodnoty pro ostatní proměnné. Pak zadejte příkazy příkazu příkazu k příkazu.
+    `RESOURCEGROUPNAME`Nahraďte `LOCATION`, `CLUSTERNAME`, `STORAGEACCOUNTNAME`, a `PASSWORD` požadovanými hodnotami. Změňte hodnoty pro ostatní proměnné podle potřeby. Pak zadejte příkazy rozhraní příkazového řádku.
 
     ```azurecli-interactive
     export resourceGroupName=RESOURCEGROUPNAME
@@ -76,9 +76,9 @@ Azure CLI. Pokud jste nenainstalovali azure cli, najdete [v tématu instalace az
         --name $resourceGroupName
     ```
 
-    Pro seznam platných umístění `az account list-locations` použijte příkaz a potom použijte jedno `name` z umístění z hodnoty.
+    Chcete-li zobrazit seznam platných umístění, použijte `az account list-locations` příkaz a pak použijte jedno z umístění z `name` hodnoty.
 
-4. [Vytvořte si účet Azure Storage](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create) zadáním následujícího příkazu:
+4. [Vytvořte účet Azure Storage](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create) zadáním následujícího příkazu:
 
     ```azurecli-interactive
     # Note: kind BlobStorage is not available as the default storage account.
@@ -100,7 +100,7 @@ Azure CLI. Pokud jste nenainstalovali azure cli, najdete [v tématu instalace az
         --query [0].value -o tsv)
     ```
 
-6. [Vytvořte kontejner úložiště Azure](https://docs.microsoft.com/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create) zadáním následujícího příkazu:
+6. [Vytvořte kontejner Azure Storage](https://docs.microsoft.com/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create) zadáním následujícího příkazu:
 
     ```azurecli-interactive
     az storage container create \
@@ -130,15 +130,15 @@ Azure CLI. Pokud jste nenainstalovali azure cli, najdete [v tématu instalace az
     ```
 
     > [!IMPORTANT]  
-    > Clustery HDInsight se domýšlet v různých typech, které odpovídají zatížení nebo technologii, pro kterou je cluster naladěn. Neexistuje žádná podporovaná metoda pro vytvoření clusteru, který kombinuje více typů, jako je storm a HBase v jednom clusteru.
+    > Clustery HDInsight přicházejí do různých typů, které odpovídají úlohám nebo technologiím, pro které je cluster laděn. Neexistuje žádná podporovaná metoda pro vytvoření clusteru, který kombinuje více typů, jako je například zaplavení a HBA v jednom clusteru.
 
-    Dokončení procesu vytváření clusteru může trvat několik minut. Obvykle kolem 15.
+    Dokončení procesu vytváření clusteru může trvat několik minut. Obvykle přibližně 15.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Jakmile budete s článkem hotovi, můžete cluster odstranit. S HDInsight, vaše data jsou uloženy ve službě Azure Storage, takže můžete bezpečně odstranit clusteru, když není v provozu. Účtuje se vám také cluster HDInsight, i když se nepoužívá. Vzhledem k tomu, že poplatky za cluster jsou mnohonásobně vyšší než poplatky za úložiště, má ekonomické smysl odstranit clustery, když nejsou používány.
+Jakmile budete s článkem hotovi, můžete cluster odstranit. Ve službě HDInsight jsou vaše data uložená v Azure Storage, takže můžete cluster bezpečně odstranit, pokud se nepoužívá. Účtují se vám také poplatky za cluster HDInsight, a to i v případě, že se už nepoužívá. Vzhledem k tomu, že se poplatky za cluster mnohokrát účtují rychleji než poplatky za úložiště, má ekonomický smysl odstraňovat clustery, když se nepoužívají.
 
-Chcete-li odebrat prostředky, zadejte všechny nebo některé z následujících příkazů:
+Pro odebrání prostředků zadejte všechny nebo některé z následujících příkazů:
 
 ```azurecli-interactive
 # Remove cluster
@@ -167,20 +167,20 @@ Pokud narazíte na problémy s vytvářením clusterů HDInsight, podívejte se 
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste úspěšně vytvořili cluster HDInsight pomocí rozhraní příkazového příkazu k řešení Azure, zjistěte, jak s clusterem pracovat, následující:
+Teď, když jste úspěšně vytvořili cluster HDInsight pomocí rozhraní příkazového řádku Azure, se naučíte pracovat s clusterem pomocí následujícího postupu:
 
 ### <a name="apache-hadoop-clusters"></a>Clustery Apache Hadoop
 
-* [Použití Apache Hive s HDInsight](hadoop/hdinsight-use-hive.md)
-* [Použití mapreduce s HDInsight](hadoop/hdinsight-use-mapreduce.md)
+* [Použití Apache Hive se službou HDInsight](hadoop/hdinsight-use-hive.md)
+* [Použití MapReduce se službou HDInsight](hadoop/hdinsight-use-mapreduce.md)
 
-### <a name="apache-hbase-clusters"></a>Clustery Apache HBase
+### <a name="apache-hbase-clusters"></a>Clustery Apache HBA
 
-* [Začínáme s Apache HBase na HDInsightu](hbase/apache-hbase-tutorial-get-started-linux.md)
-* [Vývoj java aplikací pro Apache HBase na HDInsightu](hbase/apache-hbase-build-java-maven-linux.md)
+* [Začínáme s Apache HBA v HDInsight](hbase/apache-hbase-tutorial-get-started-linux.md)
+* [Vývoj aplikací Java pro Apache HBA v HDInsight](hbase/apache-hbase-build-java-maven-linux.md)
 
 ### <a name="apache-storm-clusters"></a>Clustery Apache Storm
 
-* [Vývoj java topologie pro Apache Storm na HDInsight](storm/apache-storm-develop-java-topology.md)
-* [Použití komponent Pythonu v Apache Storm na HDInsight](storm/apache-storm-develop-python-topology.md)
-* [Nasazení a sledování topologie pomocí Apache Storm na HDInsightu](storm/apache-storm-deploy-monitor-topology-linux.md)
+* [Vývoj topologií v jazyce Java pro Apache Storm v HDInsight](storm/apache-storm-develop-java-topology.md)
+* [Použití součástí Pythonu v Apache Storm ve službě HDInsight](storm/apache-storm-develop-python-topology.md)
+* [Nasazení a monitorování topologií pomocí Apache Storm v HDInsight](storm/apache-storm-deploy-monitor-topology-linux.md)

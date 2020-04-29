@@ -1,6 +1,6 @@
 ---
-title: Funkce inženýrství v datové vědě - Team Data Science Process
-description: Vysvětluje účely funkce inženýrství a poskytuje příklady jeho role v procesu zlepšování dat strojového učení.
+title: Strojírenství funkcí v oblasti datových věd – vědecký proces týmového zpracování dat
+description: Vysvětluje účely strojírenství funkcí a poskytuje příklady jeho role v procesu rozšíření dat Machine Learning.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,82 +12,82 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 02f109f250fa9bcd4c77cecd0b1b3e4514ecd8bc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76721128"
 ---
-# <a name="feature-engineering-in-data-science"></a>Inženýrské funkce v datové vědě
-Tento článek vysvětluje účely funkce inženýrství a poskytuje příklady jeho role v procesu zlepšování dat strojového učení. Příklady použité k ilustraci tohoto procesu jsou vykresleny z Azure Machine Learning Studio. 
+# <a name="feature-engineering-in-data-science"></a>Strojírenství funkcí v oblasti datových věd
+Tento článek vysvětluje účely konstrukce funkcí a poskytuje příklady jeho role v procesu rozšíření dat Machine Learning. Příklady, které slouží k ilustraci tohoto procesu, jsou vykresleny z Azure Machine Learning Studio. 
 
-Tento úkol je krokem v [procesu vědecké vědy o týmových datech (TDSP).](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)
+Tento úkol je krok v rámci [vědeckého zpracování týmových dat (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
 
-Funkce inženýrství se snaží zvýšit prediktivní sílu učení algoritmy vytvořením funkce z nezpracovaných dat, které pomáhají usnadnit proces učení. Inženýring a výběr funkcí je jednou z částí tdsp popsané v [co je týmový datový proces životního cyklu?](overview.md) Technické znalosti a výběr funkcí jsou součástí kroku **Vyvinout prvky** tdsp. 
+Konstrukce funkcí se snaží zvýšit prediktivní výkon výukových algoritmů tím, že vytvoří funkce z nezpracovaných dat, které usnadňují proces učení. Strojírenství a výběr funkcí je jednou z TDSP, které jsou uvedené v části [co je životní cyklus vědeckých procesů týmu dat?](overview.md) Technologie a výběr funkcí jsou části kroku **vývoj funkcí** TDSP. 
 
-* **inženýring funkcí**: Tento proces se pokouší vytvořit další relevantní funkce ze stávajících nezpracovaných funkcí v datech a zvýšit prediktivní sílu algoritmu učení.
-* **Výběr funkce**: Tento proces vybere klíčovou podmnožinu původních datových funkcí ve snaze snížit dimenzionalitu trénovacího problému.
+* **inženýrské funkce**: Tento proces se pokusí vytvořit další relevantní funkce z existujících nezpracovaných funkcí v datech a zvýšit prediktivní sílu tohoto sledovacího algoritmu.
+* **Výběr funkcí**: Tento proces vybere podmnožinu klíčových prvků pro původní data v pokusu snížit dimenzionální problém při výuce.
 
-Za normálních okolností **funkce inženýrství** se použije nejprve generovat další funkce a pak se provede krok **výběru funkce** k odstranění irelevantní, redundantní nebo vysoce korelované funkce.
+Obvykle se pro generování dalších funkcí používá **inženýr funkcí** a pak se provede krok **výběru funkcí** , který eliminuje nepodstatné, redundantní nebo vysoce korelační funkce.
 
-Trénovací data používaná ve strojovém učení lze často vylepšit extrakcí funkcí ze shromážděných nezpracovaných dat. Příkladem navržené funkce v kontextu učení, jak klasifikovat obrazy ručně psaných znaků, je vytvoření mapy bitové hustoty vytvořené z dat distribuce nezpracovaných bitů. Tato mapa může pomoci najít okraje znaků efektivněji než jednoduše pomocí raw distribuce přímo.
+Školicí údaje, které se používají ve strojovém učení, je často možné rozšířit extrakcí funkcí z shromažďovaných nezpracovaných dat. Příkladem inženýrské funkce v kontextu učení, jak klasifikovat obrázky psaných znaků, je vytvoření mapy bitové hustoty vytvořené z nezpracovaných bitových distribučních dat. Tato mapa vám může pomoci najít okraje znaků efektivněji než jednoduše pomocí nezpracované distribuce přímo.
 
 Chcete-li vytvořit funkce pro data v konkrétních prostředích, přečtěte si následující články:
 
-* [Vytváření funkcí pro data na serveru SQL Server](create-features-sql-server.md)
-* [Vytváření funkcí pro data v clusteru Hadoop pomocí dotazů Hive](create-features-hive.md)
+* [Vytváření funkcí pro data v SQL Server](create-features-sql-server.md)
+* [Vytváření funkcí pro data v clusteru Hadoop pomocí dotazů na podregistry](create-features-hive.md)
 
-## <a name="create-features-from-your-data---feature-engineering"></a>Vytváření funkcí z dat – technické znalosti
-Trénovací data se skládají z matice složené z příkladů (záznamy nebo pozorování uložená v řádcích), z nichž každá má sadu funkcí (proměnné nebo pole uložená ve sloupcích). Očekává se, že prvky uvedené v experimentálním návrhu budou charakterizovat vzory v datech. Přestože mnoho nezpracovaných datových polí může být přímo zahrnuto do vybrané sady funkcí použité k trénování modelu, často se stává, že další (navržené) funkce musí být vytvořeny z funkcí v nezpracovaných datech, aby se vygenerovala vylepšená trénovací datová sada.
+## <a name="create-features-from-your-data---feature-engineering"></a>Vytváření funkcí z vašich techniků pro datové funkce
+Školicí data sestávají z matice tvořené příklady (záznamy nebo pozorování uložené v řádcích), z nichž každá má sadu funkcí (proměnné nebo pole uložené ve sloupcích). U funkcí určených pro experimentální návrh se očekává, že charakterizují vzory v datech. I když mnoho nezpracovaných datových polí může být přímo zahrnuté do vybrané sady funkcí používané pro výuku modelu, často je potřeba vytvořit další (inženýrské) funkce z funkcí v nezpracovaných datech a vygenerovat tak vylepšenou datovou sadu školení.
 
-Jaký druh funkcí by měl y být vytvořeny pro vylepšení datové sady při trénování modelu? Navržené funkce, které vylepšují školení, poskytují informace, které lépe odlišují vzory v datech. Očekává se, že nové funkce poskytnou další informace, které nejsou jasně zachyceny nebo snadno patrné v původní nebo existující sadě funkcí. Ale tento proces je něco jako umění. Správná a produktivní rozhodnutí často vyžadují určité odborné znalosti v oblasti.
+Jaký druh funkcí je potřeba vytvořit pro vylepšení datové sady při výuce modelu? Inženýrské funkce, které zvyšují školení, poskytují informace, které lépe odlišují vzory v datech. Očekává se, že nové funkce budou poskytovat další informace, které nejsou jasně zaznamenané nebo snadno zjevné v původní nebo existující sadě funkcí. Ale tento proces je něco z obrázku. Zvuková a produktivní rozhodnutí často vyžadují určité znalosti v doméně.
 
-Když začínáte s Azure Machine Learning, je nejjednodušší pochopit tento proces konkrétně pomocí ukázek poskytovaných ve studiu. Zde jsou uvedeny dva příklady:
+Když začnete s Azure Machine Learning, je nejjednodušší tento proces snadno uchopit pomocí ukázek poskytovaných v studiu. Zde jsou uvedeny dva příklady:
 
-* Příklad regrese [Predikce počtu zapůjčení jízdních kol](https://gallery.cortanaintelligence.com/Experiment/Regression-Demand-estimation-4) v kontrolovaném experimentu, kde jsou známy cílové hodnoty
-* Příklad klasifikace dolování textu pomocí [funkce hashing](https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/)
+* Regresní ukázkový [odhad počtu nájemních kol](https://gallery.cortanaintelligence.com/Experiment/Regression-Demand-estimation-4) v experimentu pod dohledem, kde jsou známé cílové hodnoty
+* Příklad klasifikace dolování textu pomocí [funkce hashing funkcí](https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/)
 
-## <a name="example-1-add-temporal-features-for-a-regression-model"></a>Příklad 1: Přidání temporálních prvků pro regresní model
-Využijme experiment "Prognóza poptávky jízdních kol" v Azure Machine Learning Studio (klasické) k předvedení, jak navrhnout funkce pro regresní úlohu. Cílem tohoto experimentu je předpovědět poptávku po kolech, tedy počet půjčoven kol během určitého měsíce/ dne/hodiny. Jako nezpracovaná vstupní data se používá datová sada "Bike Rental UCI dataset". Tato datová sada je založena na skutečných datech od společnosti Capital Bikeshare, která udržuje síť pro pronájem kol ve Washingtonu DC ve Spojených státech. Datová sada představuje počet půjčení jízdních kol během určité hodiny dne v letech 2011 a 2012 a obsahuje 17379 řádků a 17 sloupců. Sada prvků obsahuje povětrnostní podmínky (rychlost teploty/vlhkosti/větru) a typ dne (dovolená/den v týdnu). Pole předpovědět je 'cnt' počet, který představuje půjčovny kol v rámci určité hodiny a která se pohybuje od 1 do 977.
+## <a name="example-1-add-temporal-features-for-a-regression-model"></a>Příklad 1: Přidání dočasná funkce pro regresní model
+Pomocí experimentu "vypovídání poptávky z kol" v Azure Machine Learning Studio (Classic) předvedeme předvedení funkcí pro regresní úlohu. Cílem tohoto experimentu je předpovědět poptávku za jednotlivé kolace, tj. počet nájemné za kolo v rámci určitého měsíce/dne a hodiny. Datová sada se používá jako nezpracované vstupní údaje. Tato datová sada je založená na skutečných datech ze společnosti Bikeshare společnosti, která udržuje síť pronájmu kol v oblasti Washington DC ve USA. Datová sada představuje počet nájemné za kolo v konkrétní hodinu dne v letech 2011 a rok 2012 a obsahuje řádky 17379 a 17 sloupců. Neupravená sada funkcí obsahuje povětrnostní podmínky (rychlost/vlhkost/větru) a typ dne (svátek/den). Pole, které se má předpovědět, je počet CNT, který představuje nájemné za kolo v konkrétní hodinu a který rozsah od 1 do 977.
 
-S cílem vytvořit efektivní funkce v trénovacích datech jsou čtyři regresní modely sestaveny pomocí stejného algoritmu, ale se čtyřmi různými trénovacími datovými sadami. Čtyři datové sady představují stejné nezpracovaná vstupní data, ale s rostoucím počtem sad funkcí. Tyto funkce jsou rozděleny do čtyř kategorií:
+Díky cíli vytváření efektivních funkcí v školicích datech jsou čtyři regresní modely sestavené pomocí stejného algoritmu, ale se čtyřmi různými školicími datovými sadami. Čtyři datové sady reprezentují stejná neupravená vstupní data, ale zvyšují počet funkcí. Tyto funkce jsou seskupené do čtyř kategorií:
 
-1. A = počasí + dovolená + den v týdnu + víkendové funkce pro předpokládaný den
-2. B = počet motocyklů, která byla pronajata v každé z předchozích 12 hodin
-3. C = počet kol, která byla pronajata v každém z předchozích 12 dnů ve stejnou hodinu
-4. D = počet kol, která byla pronajata v každém z předchozích 12 týdnů ve stejnou hodinu a stejný den
+1. A = počasí + svátk + den a den v týdnu + víkend pro předpokládaný den
+2. B = počet kol, které byly pronajaty v každé z předchozích 12 hodin
+3. C = počet kol, které byly pronajaty v každém z předchozích 12 dnů ve stejnou hodinu
+4. D = počet kol, které byly pronajaty v každém z předchozích 12 týdnů ve stejnou hodinu a stejný den
 
-Kromě sady funkcí A, která již existuje v původních nezpracovaných datech, jsou další tři sady funkcí vytvořeny prostřednictvím procesu vytváření prvků. Sada funkcí B zachycuje poslední poptávku po kolech. Sada funkcí C zachycuje poptávku po kolech v určitou hodinu. Sada funkcí D zachycuje poptávku po kolech v určitou hodinu a konkrétní den v týdnu. Čtyři trénovací datové sady obsahují sadu funkcí A, A+B, A+B+C a A+B+C+D.
+Kromě sady funkcí A, která již existuje v původních nezpracovaných datech, jsou vytvořeny další tři sady funkcí prostřednictvím procesu technické funkce. Sada funkcí B zachycuje poslední požadavek na kolaci. Sada funkcí C zachytí poptávku pro kolaci v určitou hodinu. Sada funkcí D zachycuje poptávku za konkrétní hodinu a konkrétní den v týdnu. Mezi čtyři datové sady školení patří sada funkcí A, A + B, A + B + C a + B + C + D v uvedeném pořadí.
 
-V experimentu Azure Machine Learning tyto čtyři trénovací datové sady jsou tvořeny prostřednictvím čtyř větví z předem zpracované vstupní datové sady. S výjimkou větve nejvíce vlevo obsahuje každá z těchto větví modul [Skript spouštění R,](https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/) ve kterém jsou odvozené funkce (sada prvků B, C a D) konstruovány a připojeny k importované datové sadě. Následující obrázek znázorní skript R použitý k vytvoření sady funkcí B v druhé levé větvi.
+Ve Azure Machine Learning experimentu jsou tyto čtyři datové sady školení vytvořeny prostřednictvím čtyř větví z předem zpracované vstupní datové sady. S výjimkou větve úplně vlevo obsahuje každá z těchto větví modul [spuštění skriptu jazyka R](https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/) , ve kterém jsou odvozené funkce (funkce, B, C a D) sestaveny a připojeny k importované datové sadě. Následující obrázek ukazuje skript R, který se používá k vytvoření sady funkcí B ve druhé levé větvi.
 
 ![vytváření funkcí](./media/create-features/addFeature-Rscripts.png)
 
-Porovnání výsledků výkonu čtyř modelů je shrnuto v následující tabulce: 
+Porovnání výsledků těchto čtyř modelů je shrnuto v následující tabulce: 
 
-![porovnání výsledků](./media/create-features/result1.png)
+![porovnání výsledku](./media/create-features/result1.png)
 
-Nejlepší výsledky jsou zobrazeny funkcemi A +B+C. Míra chyb se snižuje, pokud jsou do trénovacích dat zahrnuta další sada funkcí. Ověřuje předpoklad, že sada funkcí B, C poskytuje další relevantní informace pro úlohu regrese. Zdá se však, že přidání funkce D neposkytuje žádné další snížení míry chyb.
+Nejlepší výsledky jsou zobrazeny funkcemi A + B + C. Rychlost chyb se snižuje, když jsou do školicích dat zahrnuty další sady funkcí. Ověřuje domněnku, že funkce nastavená B, C poskytuje další důležité informace pro regresní úlohu. Přidání funkce D ale pravděpodobně neposkytuje žádné další snížení míry chyb.
 
-## <a name="example-2-creating-features-in-text-mining"></a><a name="example2"></a>Příklad 2: Vytváření funkcí v dolování textu
-Funkce inženýrství je široce používán v úkolech souvisejících s dolování textu, jako je například klasifikace dokumentů a analýzy mínění. Pokud například chcete dokumenty zařadit do několika kategorií, je typickým předpokladem, že slovo/fráze obsažené v jedné kategorii dokumentu jsou méně pravděpodobné, že se objeví v jiné kategorii dokumentu. Jinými slovy, frekvence distribuce slov/frází je schopna charakterizovat různé kategorie dokumentů. V aplikacích dolování textu, protože jednotlivé části obsahu textu obvykle slouží jako vstupní data, je proces inženýrského prvku funkce potřebný k vytvoření funkcí zahrnujících frekvence slov a frází.
+## <a name="example-2-creating-features-in-text-mining"></a><a name="example2"></a>Příklad 2: vytváření funkcí v dolování textu
+Inženýrské funkce se běžně používá v úlohách souvisejících s dolováním textu, jako je například klasifikace dokumentů a mínění analýza. Pokud například chcete klasifikovat dokumenty do několika kategorií, typický předpoklad je, že slova nebo fráze zahrnuté do jedné kategorie dokumentu jsou v jiné kategorii dokumentů méně pravděpodobně k dispozici. Jinými slovy, frekvence distribuce slov/frází může charakterizovat různé kategorie dokumentů. Vzhledem k tomu, že jednotlivé části Obsahového obsahu obvykle slouží jako vstupní data, jsou v aplikacích pro dolování textu k dispozici procesy pro vytváření funkcí, které zahrnují frekvence slov a frází.
 
-K dosažení tohoto úkolu je použita technika nazývaná **zapisování funkcí** pro efektivní přeměnu libovolných textových prvků na indexy. Namísto přidružování jednotlivých textových funkcí (slov/frází) k určitému indexu tato metoda funguje tak, že na prvky použije funkci hash a použije jejich hodnoty hash jako indexy přímo.
+K dosažení této úlohy se použije technika označovaná jako **hodnota hash funkcí** pro efektivní zapnutí libovolných textových funkcí v indexech. Namísto přidružování každé textové funkce (slova/fráze) k určitému indexu Tato metoda funguje tak, že použije funkce hash na funkce a použije jejich hodnoty hash jako indexy přímo.
 
-V Azure Machine Learning je modul [Hashing funkce,](https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/) která vytváří funkce slovo a frázi pohodlně. Následující obrázek ukazuje příklad použití tohoto modulu. Vstupní datová sada obsahuje dva sloupce: hodnocení knihy v rozsahu od 1 do 5 a skutečný obsah recenze. Cílem tohoto modulu [Hashing funkce](https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/) je získat spoustu nových funkcí, které ukazují četnost výskytu odpovídajících slov / frází v rámci konkrétní recenze knihy. Chcete-li použít tento modul, proveďte následující kroky:
+V Azure Machine Learning existuje modul pro [Vyhashení funkcí](https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/) , který bude pohodlně vytvářet funkce slov/fráze. Následující obrázek ukazuje příklad použití tohoto modulu. Vstupní datová sada obsahuje dva sloupce: kniha ohodnocená od 1 do 5 a skutečný obsah kontroly. Cílem tohoto modulu [hashování funkcí](https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/) je načíst řadu nových funkcí, které znázorňují četnost výskytů odpovídajících slov (/Phrase) v rámci určité recenze knihy. Chcete-li použít tento modul, proveďte následující kroky:
 
-* Nejprve vyberte sloupec, který obsahuje vstupní text ("Col2" v tomto příkladu).
-* Za druhé nastavte "Hashing bitsize" na 8, což znamená, že budou vytvořeny 2 ^ 8 = 256 funkcí. Slovo/fáze ve všem textu bude zahasováno na 256 indexů. Parametr "Hashing bitsize" se pohybuje od 1 do 31. Slovo (y)/phrase(s) je méně pravděpodobné, že bude zahlceno do stejného indexu, pokud je jeho nastavení větší číslo.
-* Za třetí nastavte parametr "N-gramů" na 2. Tato hodnota získá četnost výskytu unigramů (funkce pro každé slovo) a bigrams (funkce pro každou dvojici sousedních slov) ze vstupního textu. Parametr "N-gramů" se pohybuje od 0 do 10, což označuje maximální počet sekvenčních slov, která mají být zahrnuta do funkce.  
+* Nejprve vyberte sloupec, který obsahuje vstupní text (v tomto příkladu "col2").
+* Potom nastavte "hashing bitsize" na 8, což znamená, že se vytvoří 2 ^ 8 = 256 funkcí. Ve slově nebo ve všech textech bude hodnota hash na 256 indexy. Parametr "hashing bitsize" je v rozsahu od 1 do 31. Pokud je nastavení nastavené na větší číslo, může být v těchto slovnících (/Phrase) hodnota hash na stejný index.
+* Na třetí nastavte parametr "N-gramy" na 2. Tato hodnota získá četnost výskytů unigrams (funkce pro každé jedno slovo) a bigrams (funkce pro všechny dvojice sousedících slov) od vstupního textu. Parametr "N-gramy" rozsahů od 0 do 10, který označuje maximální počet sekvenčních slov, která mají být součástí funkce.  
 
-![Modul "Funkce hash"](./media/create-features/feature-Hashing1.png)
+![Modul hashování funkcí](./media/create-features/feature-Hashing1.png)
 
-Následující obrázek ukazuje, jak tyto nové funkce vypadají.
+Následující obrázek ukazuje, jak tato nová funkce vypadá.
 
-![Příklad "Zahašování funkcí"](./media/create-features/feature-Hashing2.png)
+![Příklad "hashování funkcí"](./media/create-features/feature-Hashing2.png)
 
 ## <a name="conclusion"></a>Závěr
-Inženýrské a vybrané funkce zvyšují efektivitu procesu školení, který se pokouší extrahovat klíčové informace obsažené v datech. Zlepšují také výkon těchto modelů pro přesné klasifikaci vstupních dat a robustnější předvídání výsledků zájmu. Funkce inženýrství a výběr může také kombinovat, aby se učení více výpočetní zvladatelné. Činí tak tím, že zvyšuje a pak snižuje počet funkcí potřebných ke kalibraci nebo trénování modelu. Matematicky řečeno, funkce vybrané pro trénování modelu jsou minimální sadu nezávislých proměnných, které vysvětlují vzory v datech a pak úspěšně předpovědět výsledky.
+Inženýrské a vybrané funkce zvyšují efektivitu školicího procesu, který se pokusí extrahovat klíčové informace obsažené v datech. Také zlepšují sílu těchto modelů, aby přesně klasifikaci vstupních dat a předpovědi výsledků jejich zájmu byly robustnější. Vytváření a výběr funkcí se také můžou kombinovat, aby se učení lépe vyjímat. Tím provedete vylepšením a následným snížením počtu funkcí potřebných k kalibraci nebo výukovém modelu. Matematicky řečeno, funkce vybrané pro výuku modelu jsou minimální sada nezávislých proměnných, které vysvětlují vzory v datech a pak mají úspěšné předpověď výsledků.
 
-Není vždy nutné provádět technické nebo funkce. Zda je to potřeba nebo ne, závisí na datech, která mají být k dispozici nebo shromážděna, na vybraném algoritmu a na cíli experimentu.
+Nemusíte vždycky nutně provádět strojírenství funkcí nebo výběr funkcí. Bez ohledu na to, jestli je to potřeba, nebo nezáleží na tom, jak se data mají předat nebo shromažďovat, vybraný algoritmus a cíl experimentu.
 

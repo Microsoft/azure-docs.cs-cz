@@ -1,6 +1,6 @@
 ---
-title: Události předsunení okrajů do cloudu Event Grid – Azure Event Grid IoT Edge | Dokumenty společnosti Microsoft
-description: Události přeposílání okrajů do cloudu Event Grid
+title: Události předních okrajů pro Event Grid Azure Event Grid cloudu IoT Edge | Microsoft Docs
+description: Dopředné události Edge do cloudu Event Grid
 author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
@@ -10,41 +10,41 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 7184fb5c45ce41de2bd63b55fb67cbd9ba6361e3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76844713"
 ---
-# <a name="tutorial-forward-events-to-event-grid-cloud"></a>Kurz: Předávání událostí do cloudu Event Grid
+# <a name="tutorial-forward-events-to-event-grid-cloud"></a>Kurz: přeposílání událostí do cloudu Event Grid
 
-Tento článek vás provede všechny kroky potřebné k předávání událostí okraje do Event Grid v cloudu Azure. Můžete to chtít udělat z následujících důvodů:
+Tento článek vás provede všemi kroky potřebnými k předání hraničních událostí Event Grid v cloudu Azure. Můžete to chtít udělat z následujících důvodů:
 
-* Reagujte na okrajové události v cloudu.
-* Přesměrujte události do Event Grid v cloudu a použijte Azure Event Hubs nebo fronty Azure Storage k ukládání událostí do vyrovnávací paměti před jejich zpracováním v cloudu.
+* Reagují na hraniční události v cloudu.
+* Předejte události do Event Grid v cloudu a použijte Azure Event Hubs nebo Azure Storage fronty k ukládání událostí do vyrovnávací paměti před jejich zpracováním v cloudu.
 
- K dokončení tohoto kurzu, musíte mít pochopení konceptů Event Grid na [edge](concepts.md) a [Azure](../concepts.md). Další typy cílů naleznete v tématu [obslužné rutiny událostí](event-handlers.md). 
+ K dokončení tohoto kurzu potřebujete rozumět konceptům Event Grid na [Edge](concepts.md) a v [Azure](../concepts.md). Další cílové typy naleznete v tématu [obslužné rutiny událostí](event-handlers.md). 
 
 ## <a name="prerequisites"></a>Požadavky 
-Chcete-li dokončit tento výukový program, budete potřebovat:
+Aby bylo možné dokončit tento kurz, budete potřebovat:
 
-* **Předplatné Azure** – vytvořte [bezplatný účet,](https://azure.microsoft.com/free) pokud ho ještě nemáte. 
-* **Azure IoT Hub a zařízení IoT Edge** – postupujte podle pokynů v rychlém startu pro [Linux](../../iot-edge/quickstart-linux.md) nebo [windows zařízení,](../../iot-edge/quickstart.md) pokud ještě nemáte.
+* **Předplatné Azure** – Pokud ho ještě nemáte, vytvořte si [bezplatný účet](https://azure.microsoft.com/free) . 
+* **IoT Hub Azure a IoT Edge zařízení** – postupujte podle kroků v části rychlý Start pro [Linux](../../iot-edge/quickstart-linux.md) nebo [zařízení s Windows](../../iot-edge/quickstart.md) , pokud ho ještě nemáte.
 
 [!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-deploy-iot-edge.md)] 
-## <a name="create-event-grid-topic-and-subscription-in-cloud"></a>Vytvoření tématu a předplatného mřížky událostí v cloudu
+## <a name="create-event-grid-topic-and-subscription-in-cloud"></a>Vytvoření tématu a odběru Event gridu v cloudu
 
-Vytvořte téma mřížky událostí a předplatné v cloudu podle [tohoto kurzu](../custom-event-quickstart-portal.md). Poznamenejte si `topicURL`, `sasKey`a `topicName` nově vytvořené téma, které budete používat později v kurzu.
+Pomocí [tohoto kurzu](../custom-event-quickstart-portal.md)vytvořte v cloudu téma a odběr služby Event Grid. Poznamenejte si `topicName` z nově vytvořeného tématu, které použijete později v tomto kurzu. `topicURL` `sasKey`
 
-Pokud jste například vytvořili `testegcloudtopic` téma s názvem V USA – západ, budou hodnoty vypadat podobně:
+Například pokud jste vytvořili téma s názvem `testegcloudtopic` v západní USA, budou hodnoty vypadat přibližně takto:
 
 * **TopicUrl**:`https://testegcloudtopic.westus2-1.eventgrid.azure.net/api/events`
-* **Název_ tématu**:`testegcloudtopic`
-* **SasKey**: K dispozici v části **AccessKey** vašeho tématu. Použijte **klíč1**.
+* **Téma**:`testegcloudtopic`
+* **SasKey**: k dispozici v rámci **AccessKey** vašeho tématu. Použijte **klíč1**.
 
-## <a name="create-event-grid-topic-at-the-edge"></a>Vytvořit téma mřížky událostí na okraji
+## <a name="create-event-grid-topic-at-the-edge"></a>Vytvoření tématu Event gridu na hraničních zařízeních
 
-1. Vytvořte topic3.json s následujícím obsahem. Podrobnosti o datové části najdete v naší dokumentaci k [rozhraní API.](api.md)
+1. Vytvořte topic3. JSON s následujícím obsahem. Podrobnosti o datové části najdete v naší [dokumentaci k rozhraní API](api.md) .
 
     ```json
         {
@@ -54,12 +54,12 @@ Pokud jste například vytvořili `testegcloudtopic` téma s názvem V USA – z
           }
         }
     ```
-1. Chcete-li vytvořit téma, spusťte následující příkaz. Měl by být vrácen stavový kód HTTP 200 OK.
+1. Spuštěním následujícího příkazu vytvořte téma. Měl by se vrátit stavový kód HTTP 200 OK.
 
     ```sh
     curl -k -H "Content-Type: application/json" -X PUT -g -d @topic3.json https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic3?api-version=2019-01-01-preview
     ```
-1. Spusťte následující příkaz k ověření, že téma bylo úspěšně vytvořeno. Měl by být vrácen stavový kód HTTP 200 OK.
+1. Spusťte následující příkaz, který ověří úspěšné vytvoření tématu. Měl by se vrátit stavový kód HTTP 200 OK.
 
     ```sh
     curl -k -H "Content-Type: application/json" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic3?api-version=2019-01-01-preview
@@ -81,11 +81,11 @@ Pokud jste například vytvořili `testegcloudtopic` téma s názvem V USA – z
         ]
    ```
   
-## <a name="create-event-grid-subscription-at-the-edge"></a>Vytvoření předplatného event gridu na hraničních zařízeních
+## <a name="create-event-grid-subscription-at-the-edge"></a>Vytvoření předplatného Event Grid na hraničních zařízeních
 
 [!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
 
-1. Vytvořte subscription3.json s následujícím obsahem. Podrobnosti o datové části najdete v naší dokumentaci k [rozhraní API.](api.md)
+1. Vytvořte subscription3. JSON s následujícím obsahem. Podrobnosti o datové části najdete v naší [dokumentaci k rozhraní API](api.md) .
 
    ```json
         {
@@ -103,7 +103,7 @@ Pokud jste například vytvořili `testegcloudtopic` téma s názvem V USA – z
    ```
 
    >[!NOTE]
-   > **EndpointUrl** určuje, že adresa URL tématu Event Grid v cloudu. **SasKey** odkazuje na klíč cloudu gridu event gridu. Hodnota v **topicName** bude použita k razítkování všech odchozích událostí do mřížky událostí. To může být užitečné při odesílání do tématu domény Mřížka událostí. Další informace o tématu domény Event Grid naleznete v [tématu Domény událostí](../event-domains.md)
+   > **EndpointUrl** určuje, že adresa URL tématu Event Grid v cloudu. **SasKey** odkazuje na klíč tématu Event Grid cloudu. Hodnota v **části** prokládá se použije k označení všech odchozích událostí, které se mají Event Grid. To může být užitečné při odeslání do tématu Event Grid domény. Další informace o Event Grid doméně najdete v tématu věnovaném [doménám událostí](../event-domains.md) .
 
     Například:
   
@@ -122,13 +122,13 @@ Pokud jste například vytvořili `testegcloudtopic` téma s názvem V USA – z
         }
     ```
 
-2. Chcete-li vytvořit odběr, spusťte následující příkaz. Měl by být vrácen stavový kód HTTP 200 OK.
+2. Spuštěním následujícího příkazu vytvořte odběr. Měl by se vrátit stavový kód HTTP 200 OK.
 
      ```sh
      curl -k -H "Content-Type: application/json" -X PUT -g -d @subscription3.json https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic3/eventSubscriptions/sampleSubscription3?api-version=2019-01-01-preview
      ```
 
-3. Spusťte následující příkaz k ověření, že odběr byl úspěšně vytvořen. Měl by být vrácen stavový kód HTTP 200 OK.
+3. Spusťte následující příkaz pro ověření, že se předplatné úspěšně vytvořilo. Měl by se vrátit stavový kód HTTP 200 OK.
 
     ```sh
     curl -k -H "Content-Type: application/json" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic3/eventSubscriptions/sampleSubscription3?api-version=2019-01-01-preview
@@ -155,9 +155,9 @@ Pokud jste například vytvořili `testegcloudtopic` téma s názvem V USA – z
         }
     ```
 
-## <a name="publish-an-event-at-the-edge"></a>Publikování události na okraji
+## <a name="publish-an-event-at-the-edge"></a>Publikování události na hraničních zařízeních
 
-1. Vytvořte event3.json s následujícím obsahem. Podrobnosti o datové části najdete v [dokumentaci](api.md) k rozhraní API.
+1. Vytvořte event3. JSON s následujícím obsahem. Podrobnosti o datové části najdete v [dokumentaci k rozhraní API](api.md) .
 
     ```json
         [
@@ -181,25 +181,25 @@ Pokud jste například vytvořili `testegcloudtopic` téma s názvem V USA – z
     curl -k -H "Content-Type: application/json" -X POST -g -d @event3.json https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic3/events?api-version=2019-01-01-preview
     ```
 
-## <a name="verify-edge-event-in-cloud"></a>Ověření události hraniční ho v cloudu
+## <a name="verify-edge-event-in-cloud"></a>Ověřit událost Edge v cloudu
 
-Informace o zobrazení událostí dodaných v tématu cloudu naleznete v [kurzu](../custom-event-quickstart-portal.md).
+Informace o zobrazení událostí doručených v tématu o cloudu najdete v tomto [kurzu](../custom-event-quickstart-portal.md).
 
 ## <a name="cleanup-resources"></a>Vyčištění prostředků
 
-* Spuštěním následujícího příkazu odstraňte téma a všechna jeho předplatná
+* Spuštěním následujícího příkazu odstraňte téma a všechny jeho odběry.
 
     ```sh
     curl -k -H "Content-Type: application/json" -X DELETE https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic3?api-version=2019-01-01-preview
     ```
 
-* Odstraňte téma a předplatná vytvořená v cloudu (Azure Event Grid) také.
+* Odstraňte také téma a předplatná vytvořená v cloudu (Azure Event Grid).
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste publikovali událost na okraji a přeposlali do Event Grid v cloudu Azure. Teď, když znáte základní kroky k přeposílání do Event Grid v cloudu:
+V tomto kurzu jste publikovali událost na hranici a předáváte ji Event Grid v cloudu Azure. Teď, když znáte základní kroky pro přeposílání do Event Grid v cloudu:
 
-* Problémy s používáním Azure Event Grid na IoT Edge najdete v [tématu Poradce při potížích](troubleshoot.md)s průvodcem .
-* Přeposílání událostí ioTHubu podle tohoto [kurzu](forward-events-iothub.md)
-* Předávat události webhooku v cloudu podle tohoto [kurzu](pub-sub-events-webhook-cloud.md)
-* [Sledování témat a předplatných na okraji](monitor-topics-subscriptions.md)
+* Řešení potíží s používáním Azure Event Grid v IoT Edge najdete v tématu [Průvodce odstraňováním potíží](troubleshoot.md).
+* Předejte události do IoTHub pomocí tohoto [kurzu](forward-events-iothub.md) .
+* Předejte události do Webhooku v cloudu pomocí tohoto [kurzu](pub-sub-events-webhook-cloud.md) .
+* [Monitorování témat a odběrů na hraničních zařízeních](monitor-topics-subscriptions.md)

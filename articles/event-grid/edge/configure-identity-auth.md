@@ -1,5 +1,5 @@
 ---
-title: Konfigurace identity – Azure Event Grid IoT Edge | Dokumenty společnosti Microsoft
+title: Konfigurace identity-Azure Event Grid IoT Edge | Microsoft Docs
 description: Konfigurace identity modulu Event Grid
 author: VidyaKukke
 manager: rajarv
@@ -10,20 +10,20 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 0aedeea2a6ad08e1627c2d1a6ebde6c91a4d02d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76841761"
 ---
-# <a name="configure-identity-for-the-event-grid-module"></a>Konfigurace identity pro modul Mřížka událostí
+# <a name="configure-identity-for-the-event-grid-module"></a>Konfigurace identity pro modul Event Grid
 
-Tento článek ukazuje, jak nakonfigurovat identitu pro Grid on Edge. Ve výchozím nastavení modul Event Grid prezentuje svůj certifikát identity nakonfigurovaný daemonem zabezpečení IoT. Event Grid na okraji představuje svůj certifikát identity s odchozí volání při doručování událostí. Odběratel pak může ověřit, že je to modul Event Grid, který odeslal událost před přijetím.
+Tento článek obsahuje informace o tom, jak nakonfigurovat identitu pro mřížku na hraničních zařízeních. Ve výchozím nastavení modul Event Grid prezentuje svůj certifikát identity, jak je nakonfigurovaný démon zabezpečení IoT. Event Grid na Edge prezentuje svůj certifikát identity s odchozími voláními při doručování událostí. Předplatitel pak může ověřit, že se jedná o modul Event Grid, který odeslal událost před přijetím.
 
-Všechny možné konfigurace naleznete v příručce [zabezpečení a ověřování.](security-authentication.md)
+V tématu Průvodce [zabezpečením a ověřováním](security-authentication.md) najdete všechny možné konfigurace.
 
 ## <a name="always-present-identity-certificate"></a>Vždy prezentovat certifikát identity
-Tady je příklad konfigurace pro vždy prezentaci certifikátu identity při odchozích hovorech. 
+Tady je příklad konfigurace, která vždy prezentuje certifikát identity při odchozích voláních. 
 
 ```json
  {
@@ -35,7 +35,7 @@ Tady je příklad konfigurace pro vždy prezentaci certifikátu identity při od
  ```
 
 ## <a name="dont-present-identity-certificate"></a>Neprezentovat certifikát identity
-Tady je příklad konfigurace pro nepředložení certifikátu identity při odchozích hovorech. 
+Tady je příklad konfigurace, která neprezentuje certifikát identity při odchozích voláních. 
 
 ```json
  {

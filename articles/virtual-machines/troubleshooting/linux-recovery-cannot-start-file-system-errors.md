@@ -1,6 +1,6 @@
 ---
-title: Poradce při potížích se spuštěním virtuálního počítače s Linuxem kvůli chybám systému souborů | Dokumenty společnosti Microsoft
-description: Vysvětluje, proč se virtuální počítač s Linuxem nemůže spustit a jak problém vyřešit.
+title: Řešení potíží se spouštěním virtuálního počítače se systémem Linux kvůli chybám systému souborů | Microsoft Docs
+description: Vysvětluje, proč nelze spustit virtuální počítač se systémem Linux a jak tento problém vyřešit.
 services: virtual-machines-linux
 documentationcenter: ''
 author: v-miegge
@@ -15,19 +15,19 @@ ms.devlang: azurecli
 ms.date: 10/09/2019
 ms.author: v-six
 ms.openlocfilehash: 455cb1e0067217be6edcf665e8c07e8fcd684ab5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76842397"
 ---
-# <a name="troubleshoot-linux-vm-starting-issues-due-to-file-system-errors"></a>Poradce při potížích se spuštěním virtuálního počítače s Linuxem kvůli chybám systému souborů
+# <a name="troubleshoot-linux-vm-starting-issues-due-to-file-system-errors"></a>Řešení potíží se spouštěním virtuálních počítačů se systémem Linux kvůli chybám systému souborů
 
-K virtuálnímu počítači (VM) Azure Linuxu se nelze připojit pomocí zabezpečeného prostředí (SSH). Při spuštění funkce Boot Diagnostics na [webu Azure Portal](https://portal.azure.com/)se zobrazí položky protokolu, které se podobají následujícím příkladům.
+Nemůžete se připojit k virtuálnímu počítači Azure Linux pomocí Secure Shell (SSH). Když spustíte funkci diagnostiky spouštění na [Azure Portal](https://portal.azure.com/), zobrazí se položky protokolu, které budou vypadat jako v následujících příkladech.
 
 ## <a name="examples"></a>Příklady
 
-Následují příklady možných chyb.
+Níže jsou uvedeny příklady možných chyb.
 
 ### <a name="example-1"></a>Příklad 1 
 
@@ -57,7 +57,7 @@ An error occurred while mounting /.
 
 ### <a name="example-4"></a>Příklad 4 
 
-Tento příklad je způsoben čistý fsck. V tomto případě jsou k virtuálnímu počítače připojeny také další datové disky (/dev/sdc1 a /dev/sde1).
+Tento příklad je způsoben čistým fsck. V tomto případě jsou k virtuálnímu počítači připojené taky další datové disky (/dev/sdc1 a/dev/SDE1).
 
 ```
 Checking all file systems. 
@@ -69,88 +69,88 @@ Checking all file systems.
 /dev/sde1 : clean, 51/67043328 files, 4259482/268173037 blocks
 ```
 
-K tomuto problému může dojít, pokud systém souborů nebyl vypnut čistě nebo problémy související s úložištěm. Problémy zahrnují chyby hardwaru nebo softwaru, problémy s ovladači nebo programy, chyby zápisu atd. Vždy je důležité mít zálohu důležitých dat. Nástroje, které popisují v tomto článku může pomoci obnovit systémy souborů, ale je ztráta dat může stále dojít.
+K tomuto problému může dojít v případě, že systém souborů nebyl vypnutý čistě nebo dochází k problémům souvisejícím s úložištěm. Mezi tyto problémy patří hardwarové nebo softwarové chyby, problémy s ovladači nebo programy, chyby zápisu atd. Vždy je důležité mít zálohu důležitých dat. Nástroje, které popisují tento článek, můžou pomáhat obnovit systémy souborů, ale může dojít ke ztrátě dat.
 
-Linux má k dispozici několik kontrol. Nejběžnější pro distribuce v Azure jsou: [FSCK](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/storage_administration_guide/fsck-fs-specific), [E2FSCK](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/storage_administration_guide/fsck-fs-specific)a [Xfs_repair](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/storage_administration_guide/xfsrepair).
+Pro Linux je k dispozici několik kontrol systému souborů. Nejběžnější je distribuce v Azure: [FSCK](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/storage_administration_guide/fsck-fs-specific), [E2FSCK](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/storage_administration_guide/fsck-fs-specific)a [Xfs_repair](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/storage_administration_guide/xfsrepair).
 
 ## <a name="resolution"></a>Řešení
 
-Chcete-li tento problém vyřešit, spusťte virtuální ho do nouzového režimu pomocí [sériové konzoly](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux) a pomocí tohoto nástroje k opravě systému souborů. Pokud sériová konzola není na vašem virtuálním počítači povolená nebo nefunguje, přečtěte si článek [Oprava virtuálního počítače offline](#repair-the-vm-offline) v tomto článku.
+Chcete-li tento problém vyřešit, spusťte virtuální počítač do nouzového režimu pomocí [konzoly sériového portu](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux) a pomocí tohoto nástroje opravte systém souborů. Pokud není na vašem VIRTUÁLNÍm počítači povolená konzola sériového prostředí nebo nefunguje, přečtěte si část [opravy offline virtuálního počítače](#repair-the-vm-offline) v tomto článku.
 
 ## <a name="use-the-serial-console"></a>Použití sériové konzoly
 
-1. Připojte se k sériové konzoli.
+1. Připojte se ke konzole sériového portu.
 
    > [!Note]
-   > Další informace o používání sériové konzole pro Linux naleznete v tématu:
-   > * [Použití sériové konzoly pro přístup k režimu GRUB a režimu jednoho uživatele](https://docs.microsoft.com/azure/virtual-machines/linux/serial-console-grub-single-user-mode)
+   > Další informace o používání sériové konzoly pro Linux najdete v těchto tématech:
+   > * [Použití sériové konzoly pro přístup k GRUB a jednomu uživatelskému režimu](https://docs.microsoft.com/azure/virtual-machines/linux/serial-console-grub-single-user-mode)
    > * [Použití sériové konzoly pro volání SysRq a NMI](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-nmi-sysrq)
 
-2. Vyberte tlačítko ikony Napájení a pak vyberte Restartovat virtuální počítač. (Pokud konzola sériového zařízení není povolena nebo není úspěšně připojena, tlačítko se nezobrazí.)
+2. Vyberte tlačítko ikona napájení a pak vyberte restartovat virtuální počítač. (Pokud není sériová konzola povolená nebo není úspěšně připojená, tlačítko se nezobrazí.)
 
    ![OBRÁZEK](./media/linux-recovery-cannot-ssh-to-linux-vm-due-to-file-system-errors-fsck/restart-vm.png)
 
-3. Spusťte virtuální ho do nouzového režimu.
+3. Spusťte virtuální počítač v režimu nouze.
 
-4. Zadejte heslo svého kořenového účtu pro přihlášení do nouzového režimu.
+4. Zadejte heslo ke kořenovému účtu pro přihlášení do nouzového režimu.
 
-5. Pomocí xfs_repair s možností -n zjišťujte chyby v systému souborů. V následující ukázce předpokládáme, že systémový oddíl je /dev/sda1. Nahraďte ho příslušnou hodnotou pro váš virtuální počítač:
+5. K detekci chyb v systému souborů použijte xfs_repair s možností-n. V následující ukázce předpokládáme, že systémový oddíl je/dev/sda1. Nahraďte příslušnou hodnotou pro váš virtuální počítač:
 
    ```
    xfs_repair -n /dev/sda1
    ```
 
-6. Chcete-li opravit systém souborů, spusťte následující příkaz:
+6. Spusťte následující příkaz, který opraví systém souborů:
 
    ```
    xfs_repair /dev/sda1
    ```
 
-7. Pokud se zobrazí chybová zpráva "CHYBA: Souborový systém obsahuje cenné změny metadat v protokolu, který je třeba přehrát", vytvořte dočasný adresář a připojte souborový systém:
+7. Pokud se zobrazí chybová zpráva "Chyba: systém souborů má cenné změny metadat v protokolu, které je třeba přehrajte", vytvořte dočasný adresář a připojte systém souborů:
 
    ```
    mkdir /temp
    mount /dev/sda1 /temp
    ```
 
-8. Pokud se disk nepřipojí, spusťte příkaz xfs_repair s volbou -L (vynulování protokolu síly):
+8. Pokud se disk nepovede připojit, spusťte příkaz xfs_repair s možností-L (vynucení nulového protokolu):
 
    ```
    xfs_repair /dev/sda1 -L
    ```
 
-9. Dále se pokuste připojit systém souborů. Pokud je disk úspěšně připojen, obdržíte následující výstup:
+9. Potom se pokuste připojit systém souborů. Pokud je disk úspěšně připojen, zobrazí se následující výstup:
  
    ```
    XFS (sda1): Mounting V1 Filesystem
    XFS (sda1): Ending clean mount
    ```
 
-10. Restartujte virtuální počítač a zkontrolujte, jestli je problém vyřešen.
+10. Restartujte virtuální počítač a potom zkontrolujte, jestli je problém vyřešený.
 
     ```
     Reboot -f
     ```
 
-## <a name="repair-the-vm-offline"></a>Oprava virtuálního virtuálního montovadova offline
+## <a name="repair-the-vm-offline"></a>Oprava virtuálního počítače v režimu offline
 
-1. Připojte systémový disk virtuálního počítače jako datový disk k virtuálnímu počítači pro obnovení (jakýkoli funkční virtuální počítač s Linuxem). Chcete-li to provést, můžete použít [příkazy příkazu příkazu příkazu příkazy nebo](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-recovery-disks-linux) můžete automatizovat nastavení virtuálního virtuálního soudu pro obnovení pomocí [příkazů pro opravu virtuálních virtuálních stránek](repair-linux-vm-using-azure-virtual-machine-repair-commands.md).
+1. Připojte systémový disk virtuálního počítače jako datový disk k virtuálnímu počítači pro obnovení (libovolný pracovní virtuální počítač se systémem Linux). K tomu můžete použít [příkazy rozhraní příkazového řádku](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-recovery-disks-linux) nebo můžete automatizovat nastavení virtuálního počítače pro obnovení pomocí příkazů pro [opravu virtuálního počítače](repair-linux-vm-using-azure-virtual-machine-repair-commands.md).
 
-2. Vyhledejte popisek jednotky připojeného systémového disku. V tomto případě předpokládáme, že popisek připojeného systémového disku je /dev/sdc1. Nahraďte ji příslušnou hodnotou pro váš virtuální počítač.
+2. Vyhledejte označení jednotky systémového disku, který jste připojili. V takovém případě předpokládáme, že popisek systémového disku, který jste připojili, je/dev/sdc1.. Nahraďte ji odpovídající hodnotou pro váš virtuální počítač.
 
-3. Pomocí xfs_repair s možností -n zjišťujte chyby v systému souborů.
+3. K detekci chyb v systému souborů použijte xfs_repair s možností-n.
 
    ```
    xfs_repair -n /dev/sdc1
    ```
 
-4. Chcete-li opravit systém souborů, spusťte následující příkaz:
+4. Spusťte následující příkaz, který opraví systém souborů:
 
    ```
    xfs_repair /dev/sdc1
    ```
 
-5. Pokud se zobrazí chybová zpráva "CHYBA: Souborový systém obsahuje cenné změny metadat v protokolu, který je třeba přehrát", vytvořte dočasný adresář a připojte souborový systém:
+5. Pokud se zobrazí chybová zpráva "Chyba: systém souborů má cenné změny metadat v protokolu, které je třeba přehrajte", vytvořte dočasný adresář a připojte systém souborů:
 
    ```
    mkdir /temp
@@ -158,13 +158,13 @@ Chcete-li tento problém vyřešit, spusťte virtuální ho do nouzového režim
    mount /dev/sdc1 /temp
    ```
 
-   Pokud se disk nepřipojí, spusťte příkaz xfs_repair s volbou -L (vynulování protokolu síly):
+   Pokud se disk nepovede připojit, spusťte příkaz xfs_repair s možností-L (vynucení nulového protokolu):
 
    ```
    xfs_repair /dev/sdc1 -L
    ```
 
-6. Dále se pokuste připojit systém souborů. Pokud je disk úspěšně připojen, obdržíte následující výstup:
+6. Potom se pokuste připojit systém souborů. Pokud je disk úspěšně připojen, zobrazí se následující výstup:
 
    ```
    XFS (sdc1): Mounting V1 Filesystem
@@ -172,12 +172,12 @@ Chcete-li tento problém vyřešit, spusťte virtuální ho do nouzového režim
    XFS (sdc1): Ending clean mount
    ```
 
-7. Odpojte a odpojte původní virtuální pevný disk a potom vytvořte virtuální počítač z původního systémového disku. Chcete-li to provést, můžete použít [příkazy příkazu příkazu příkazu příkazu příkazu příkazu příkazu nebo](troubleshoot-recovery-disks-linux.md) [příkazy pro opravu virtuálního provozu,](repair-linux-vm-using-azure-virtual-machine-repair-commands.md) pokud jste je použili k vytvoření virtuálního virtuálního soudu pro obnovení.
+7. Odpojte a odpojte původní virtuální pevný disk a pak vytvořte virtuální počítač z původního systémového disku. K tomu můžete použít [příkazy rozhraní příkazového řádku](troubleshoot-recovery-disks-linux.md) nebo [příkazy pro opravu virtuálního počítače](repair-linux-vm-using-azure-virtual-machine-repair-commands.md) , pokud jste je použili k vytvoření virtuálního počítače pro obnovení.
 
-8. Zkontrolujte, zda je problém vyřešen.
+8. Ověřte, zda byl problém vyřešen.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Poradce při potížích s virtuálním počítačem s Linuxem připojením disku operačního systému k virtuálnímu počítači pro obnovení pomocí azure CLI 2.0](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-troubleshoot-recovery-disks)
-* [Připojení datového disku k virtuálnímu počítači s Linuxem pomocí portálu](https://docs.microsoft.com/azure/virtual-machines/linux/attach-disk-portal)
+* [Řešení potíží s virtuálním počítačem se systémem Linux připojením disku s operačním systémem k virtuálnímu počítači pro obnovení pomocí Azure CLI 2,0](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-troubleshoot-recovery-disks)
+* [Připojení datového disku k virtuálnímu počítači se systémem Linux pomocí portálu](https://docs.microsoft.com/azure/virtual-machines/linux/attach-disk-portal)
 

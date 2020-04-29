@@ -1,6 +1,6 @@
 ---
-title: Hierarchie země nebo oblasti používaná zeměpisným směrováním – Azure Traffic Manager
-description: Tento článek uvádí hierarchii zemí nebo oblastí používanou typem geografického směrování Azure Traffic Manager
+title: Hierarchie zemí/oblastí používaná geografickým směrováním – Azure Traffic Manager
+description: Tento článek uvádí hierarchii zemí nebo oblastí, kterou používá služba Azure Traffic Manager zeměpisný typ směrování.
 services: traffic-manager
 documentationcenter: ''
 author: rohinkoul
@@ -13,220 +13,220 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2017
 ms.author: rohink
 ms.openlocfilehash: 19445c06ccf08d2d7916545ad495c56883616c7a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76938647"
 ---
-# <a name="countryregion-hierarchy-used-by-azure-traffic-manager-for-geographic-traffic-routing-method"></a>Hierarchie země nebo oblasti používaná službou Azure Traffic Manager pro metodu směrování geografického provozu
+# <a name="countryregion-hierarchy-used-by-azure-traffic-manager-for-geographic-traffic-routing-method"></a>Hierarchie zemí/oblastí používaná službou Azure Traffic Manager pro metodu směrování geografických přenosů
 
-Tento článek uvádí země a oblasti používané metodou **směrování geografického** provozu ve Správci provozu Azure. Tyto informace můžete také získat programově voláním [rozhraní REST API správce provozu Azure](https://docs.microsoft.com/rest/api/trafficmanager/). 
+V tomto článku jsou uvedené země a oblasti používané metodou směrování **geografického** provozu v Azure Traffic Manager. Tyto informace můžete získat také programově voláním [REST API Azure Traffic Manager](https://docs.microsoft.com/rest/api/trafficmanager/). 
 
 - SVĚT (svět)
 
-    - GEO-EU (Evropa)
+    - GEOGRAFICKÉ EU (Evropa)
 
-        - AD(Andorra)
+        - AD (Andorry)
 
         - AL (Albánie)
 
-        - AT(Rakousko)
+        - AT (Rakousko)
 
-        - AX(Ålandské ostrovy)
+        - AX (Alan ostrovy)
 
         - BA (Bosna a Hercegovina)
 
-        - BE(Belgie)
+        - BÝT (Belgie)
 
-        - BG(Bulharsko)
+        - BG (Bulharsko)
 
-        - BY(Bělorusko)
+        - OD (Bělorusko)
 
-        - CH(Švýcarsko)
+        - CH (Švýcarsko)
 
-        - CY(Kypr)
+        - CY (Kypr)
 
-        - CZ(Česká republika)
+        - CZ (Česká republika)
 
-        - DE(Německo)
+        - DE (Německo)
 
-        - DK(Dánsko)
+        - DK (Dánsko)
 
         - EE (Estonsko)
 
-        - ES(Španělsko)
+        - ES (Španělsko)
 
-        - FI(Finsko)
+        - FI (Finsko)
 
         - FO (Faerské ostrovy)
 
-        - FR(Francie)
+        - FR (Francie)
 
-        - GB(Spojené království)
+        - GB (Spojené království)
 
         - GG (Guernsey)
 
         - GI (Gibraltar)
 
-        - GR(Řecko)
+        - GR (Řecko)
 
-        - HR(Chorvatsko)
+        - HR (Chorvatsko)
 
-        - HU(Maďarsko)
+        - HU (Maďarsko)
 
-        - IE(Irsko)
+        - IE (Irsko)
 
-        - IM (Ostrov Man)
+        - IM (ostrov Man)
 
-        - IS (Island)
+        - JE (Island)
 
         - IT (Itálie)
 
-        - JE (Jersey)
+        - V (Jersey)
 
-        - LI(Lichtenštejnsko)
+        - LI (Lichtenštejnsko)
 
         - LT (Litva)
 
-        - LU(Lucembursko)
+        - LU (Lucembursko)
 
-        - LV(Lotyšsko)
+        - Lotyšsko (Lotyšsko)
 
-        - MC(Monako)
+        - MC (Monako)
 
-        - MD(Moldavsko)
+        - MD (Moldavsko)
 
-        - ME(Černá Hora)
+        - Já (Černá Hora)
 
-        - MK(Severní Makedonie)
+        - MK (Severní Makedonie)
 
-        - MT(Malta)
+        - MT (Malta)
 
-        - NL(Nizozemsko)
+        - NL (Nizozemsko)
 
-        - NE(Norsko)
+        - Ne (Norsko)
 
-        - PL(Polsko)
+        - PL (Polsko)
 
-        - PT(Portugalsko)
+        - PT (Portugalsko)
 
-        - RO(Rumunsko)
+        - RO (Rumunsko)
 
         - RS (Srbsko)
 
-        - RU(Rusko)
+        - RU (Rusko)
 
-        - SE(Švédsko)
+        - SE (Švédsko)
 
-        - SI(Slovinsko)
+        - SI (Slovinsko)
 
-        - SJ(Špicberky)
+        - SJ (Svalbard)
 
-        - SK(Slovensko)
+        - SK (Slovensko)
 
-        - SM(San Marino)
+        - SM (San Marino)
 
         - UA (Ukrajina)
-            - Region Krym
+            - Oblast Krym
 
         - VA (Vatikán)
 
-        - XJ(Jan Mayen)
+        - XJ (Jan Mayen)
 
-        - XK (Kosovo)
+        - XK (Kosova)
 
-    - GEO-ME (Blízký východ)
+    - GEOGRAFICKÉ – já (Střední východ)
 
-        - AE(Spojené arabské emiráty)
+        - AE (Spojené arabské emiráty)
 
-        - BH(Bahrajn)
+        - BH (Bahrajn)
 
-        - IL(Izrael)
+        - IL (Izrael)
 
-        - IQ (Irák)
+        - SWEETIQ (Irák)
 
         - IR (Írán)
 
-        - JO(Jordánsko)
+        - JO (Jordánsko)
 
-        - KW(Kuvajt)
+        - KW (Kuvajt)
 
-        - LB(Libanon)
+        - KG (Libanon)
 
-        - OM(Omán)
+        - OM (Omán)
 
         - PS (palestinská samospráva)
 
-        - QA(Katar)
+        - QA (Katar)
 
         - SY (Sýrie)
 
-        - SA(Saúdská Arábie)
+        - SA (Saúdská Arábie)
 
-        - TR(Turecko)
+        - TR (Turecko)
 
-        - YE(Jemen)
+        - Je (Jemen)
 
-    - GEO-NA(Severní Amerika / Střední Amerika / Karibik)
+    - GEOGRAFICKÉ – NA (Severní Amerika/ústřední Amerika/Karibská oblast)
 
-        - AG(Antigua a Barbuda)
+        - AG (Antigua a Barbuda)
 
         - AI (Anguilla)
 
-        - AW(Aruba)
+        - AW (Aruba)
 
-        - BB(Barbados)
+        - BB (Barbados)
 
-        - BL (Svatý Bartoména)
+        - Vydaný (Svatý Bartoloměj)
 
-        - BM(Bermudy)
+        - BM (Bermudy)
 
-        - BQ (Bonaire)
+        - BQ – (Bonaire)
 
-        - BS(Bahamy)
+        - BS (Bahamy)
 
-        - BZ(Belize)
+        - BZ (Belize)
 
         - CA (Kanada)
 
-            - CA-AB(Alberta)
+            - CA – AB (Alberta)
 
-            - CA-BC (Britská Kolumbie)
+            - CA – BC (British Kolumbie)
 
-            - CA-MB(Manitoba)
+            - CA – MB (Manitoba)
 
-            - CA-NB (Nový Brunšvik)
+            - CA-NB (New Brunswick)
 
-            - CA-NL(Newfoundland a Labrador)
+            - CA – NL (Newfoundland a Labrador)
 
-            - CA-NS (Nové Skotsko)
+            - CA-NS (Nova Skotsko)
 
-            - CA-NT(Severozápadní teritoria)
+            - CA – NT (Severozápadní teritoria)
 
-            - CA-NU(Nunavut)
+            - CA-NU (Nunavut)
 
-            - CA-ON (Ontario)
+            - CA – ZAPNUTo (Ontario)
 
-            - CA-PE (ostrov Prince Edwarda)
+            - CA-PE (Prince Edward ostrov)
 
-            - CA-QC(Québec)
+            - CA – QC (Québec)
 
-            - CA-SK(Saskatchewan)
+            - CA-SK (Saskatchewan)
 
-            - CA-YT(Yukon území)
+            - CA – YT (teritorium Yukon)
 
         - CR (Kostarika)
 
-        - CU(Kuba)
+        - CU (Kuba)
 
-        - CW (CuraÃ § ao)
+        - SH (CuraÃ § Ao)
 
-        - DM(Dominika)
+        - DM (Dominika)
 
         - DO (Dominikánská republika)
 
-        - GD(Grenada)
+        - GD (Grenada)
 
         - GL (Grónsko)
 
@@ -234,23 +234,23 @@ Tento článek uvádí země a oblasti používané metodou **směrování geogr
 
         - GT (Guatemala)
 
-        - HN(Honduras)
+        - HN (Honduras)
 
-        - HT(Haiti)
+        - HT (Haiti)
 
-        - JM(Jamajka)
+        - JM (Jamajka)
 
-        - KN (Svatý Kryštand a Nevis)
+        - KN (Svatý Kryštof a Nevis)
 
         - KY (Kajmanské ostrovy)
 
         - LC (Svatá Lucie)
 
-        - MF(Svatý Martin)
+        - MF (Svatý Martin)
 
-        - MQ(Martinik)
+        - MQ (Martinik)
 
-        - MS(Montserrat)
+        - MS (Montserrat)
 
         - MX (Mexiko)
 
@@ -262,99 +262,99 @@ Tento článek uvádí země a oblasti používané metodou **směrování geogr
 
         - PR (Portoriko)
 
-        - SV(Salvador)
+        - SV (Salvador)
 
-        - SX(Sint Maarten)
+        - SX (Svatý Martin)
 
         - TC (Ostrovy Turks a Caicos)
 
         - TT (Trinidad a Tobago)
 
-        - UM(Americké odlehlé ostrovy)
+        - UM (odlehlé ostrovy USA)
 
-        - USA (Spojené státy)
+        - US (USA)
 
-            - US-AK(Aljaška)
+            - US-AK (Aljaška)
 
             - US-AL (Alabama)
 
-            - US-AR (Arkansas)
+            - Spojené státy – AR (Arkansas)
 
             - US-AZ (Arizona)
 
-            - US-CA(Kalifornie)
+            - USA – CA (Kalifornie)
 
-            - US-CO (Colorado)
+            - US-CO (Coloradu)
 
-            - US-CT(Connecticut)
+            - US-CT (Connecticut)
 
-            - US-DC (District of Columbia)
+            - US-DC (oblast Kolumbie)
 
-            - US-DE(Delaware)
+            - US-DE (Delaware)
 
             - US-FL (Florida)
 
-            - US-GA(Gruzie)
+            - US-GA (Gruzie)
 
-            - US-HI (Havaj)
+            - US-HI (Havajské ostrovy)
 
             - US-IA (Iowa)
 
-            - US-ID(Idaho)
+            - US-ID (Plzeň)
 
             - US-IL (Illinois)
 
-            - US-IN(Indiana)
+            - US-IN (Indiana)
 
             - US-KS (Kansas)
 
             - US-KY (Kentucky)
 
-            - US-LA (Louisiana)
+            - US-LA (Louisianě)
 
             - US-MA (Massachusetts)
 
-            - US-MD(Maryland)
+            - US-MD (Maryland)
 
-            - US-ME (Maine)
+            - US – já (Maine)
 
             - US-MI (Michigan)
 
             - US-MN (Minnesota)
 
-            - US-MO(Missouri)
+            - US-MO (Missouri)
 
             - US-MS (Mississippi)
 
             - US-MT (Montana)
 
-            - US-NC (Severní Karolína)
+            - US-NC (Severní Karolíně)
 
             - US-ND (Severní Dakota)
 
-            - US-NE(Nebraska)
+            - US-NE (Nebraska)
 
-            - US-NH (New Hampshire)
+            - US-NH (nový Hampshire)
 
-            - US-NJ (New Jersey)
+            - US-NEWARKU (nový Jersey)
 
-            - US-NM (Nové Mexiko)
+            - US-NM (nová Mexiko)
 
-            - US-NV(Nevada)
+            - US-NV (Nevada)
 
-            - US-NY(New York)
+            - US-NY (Praha)
 
             - US-OH (Ohio)
 
             - US-OK (Oklahoma)
 
-            - US-OR(Oregon)
+            - US-OR (Brno)
 
-            - US-PA (Pensylvánie)
+            - US-PA (Pennsylvania)
 
-            - US-RI(Rhode Island)
+            - US-RI (Rhode ostrov)
 
-            - US-SC (Jižní Karolína)
+            - US-SC (Jižní Karolíně)
 
             - US-SD (Jižní Dakota)
 
@@ -362,95 +362,95 @@ Tento článek uvádí země a oblasti používané metodou **směrování geogr
 
             - US-TX (Texas)
 
-            - US-UT(Utah)
+            - US-UT (Utah)
 
-            - US-VA (Virginie)
+            - US-VA () – Virginia)
 
-            - US-VT(Vermont)
+            - US-VT (Vermont)
 
             - US-WA (Washington)
 
-            - US-WI(Wisconsin)
+            - US-WI (Wisconsin)
 
-            - US-WV (Západní Virginie)
+            - US-WV (západ) – Virginia)
 
             - US-WY (Wyoming)
 
-        - VC (Svatý Vincenc a Grenadiny)
+        - VC (Svatý Vincent a Grenadiny)
 
-        - VG(Britské Panenské ostrovy)
+        - VG (Britské Panenské ostrovy)
 
         - VI (Americké Panenské ostrovy)
 
-        - XE(Sint Eustatius)
+        - XE (Svatý Eustach)
 
-        - XS(Saba)
+        - XS (Saba)
 
-    - GEO-AS (Asie)
+    - GEOGRAFICKÉ jako (Asie)
 
         - AF (Afghánistán)
 
-        - AM(Arménie)
+        - AM (Arménie)
 
         - AZ (Ázerbájdžán)
 
-        - BD(Bangladéš)
+        - BD (Bangladéš)
 
-        - BN (Brunej)
+        - BN (sultanát)
 
         - BT (Bhútán)
 
-        - CC(Kokosové (Keeling) ostrovy)
+        - CC (Keelingovy) ostrovy)
 
-        - CN(Čína)
+        - CN (Čína)
 
         - CX (Vánoční ostrov)
 
-        - GE(Gruzie)
+        - GE (Gruzie)
 
-        - HK (Hongkong – zvláštní správní oblast)
+        - HK (Hongkong – zvláštní administrativní oblast)
 
-        - ID(Indonésie)
+        - ID (Indonésie)
 
-        - IN(Indie)
+        - V (Indie)
 
-        - IO (Britské území v Indickém oceánu)
+        - V/v (Britské území v Indickém oceánu)
 
-        - JP(Japonsko)
+        - JP (Japonsko)
 
-        - KG(Kyrgyzstán)
+        - KG (Kyrgyzstán)
 
-        - KH(Kambodža)
+        - KH (Kambodža)
 
-        - KP(Severní Korea)
+        - KP (Severní Korea)
 
         - KR (Korea)
 
-        - KZ(Kazachstán)
+        - KZ (Kazachstán)
 
         - LA (Laos)
 
-        - LK(Srí Lanka)
+        - LK (Srí Lanka)
 
-        - MM(Myanmar)
+        - MM (Myanmar)
 
-        - MN(Mongolsko)
+        - MN (Mongolsko)
 
-        - MO (Macao SAR)
+        - MO (Macao – zvláštní administrativní oblast)
 
         - MV (Maledivy)
 
-        - MY (Malajsie)
+        - Moje (Malajsie)
 
         - NP (Nepál)
 
-        - PH(Filipíny)
+        - PH (Filipíny)
 
-        - PK(Pákistán)
+        - PK (Pákistán)
 
         - SG (Singapur)
 
-        - TH(Thajsko)
+        - TH (Thajsko)
 
         - TJ (Tádžikistán)
 
@@ -458,227 +458,227 @@ Tento článek uvádí země a oblasti používané metodou **směrování geogr
 
         - TM (Turkmenistán)
 
-        - TW(Tchaj-wan)
+        - TW (Tchaj-wan)
 
-        - UZ(Uzbekistán)
+        - UZ (Uzbekistán)
 
-        - VN(Vietnam)
+        - VN (Vietnam)
 
-    - GEO-AF(Afrika)
+    - GEO-AF (Afrika)
 
-        - AO(Angola)
+        - AO (Angola)
 
-        - BF(Burkina Faso)
+        - BF (Burkina Faso)
 
-        - BI(Burundi)
+        - BI (Burundi)
 
-        - BJ(Benin)
+        - BJ (Benin)
 
-        - BV(Bouvetův ostrov)
+        - BV (Bouvet ostrov)
 
-        - BW(Botswana)
+        - ČERNOBÍLá (Botswana)
 
-        - CD(Kongo (DRK))
+        - CD (Konžská demokratická republika)
 
-        - CF(Středoafrická republika)
+        - CF (Středoafrická republika)
 
-        - CI(Pobřeží slonoviny)
+        - CI (Pobřeží slonoviny)
 
         - CM (Kamerun)
 
-        - CV(Cabo Verde)
+        - CV (Cabo Verde)
 
         - DJ (Džibutsko)
 
-        - DZ(Alžírsko)
+        - DZ (Alžírsko)
 
         - EG (Egypt)
 
-        - ER(Eritrea)
+        - ER (Eritrea)
 
         - ET (Etiopie)
 
         - GA (Gabon)
 
-        - GH (Ghana)
+        - GV (Ghana)
 
         - GM (Gambie)
 
-        - GN(Guinea)
+        - GN (Guinea)
 
         - GQ (Rovníková Guinea)
 
-        - GW (Guinea_Bissau)
+        - GS (Guinea_Bissau)
 
         - KE (Keňa)
 
-        - KM (Komory)
+        - KM (komory)
 
-        - LR(Libérie)
+        - LR (Libérie)
 
-        - LS(Lesotho)
+        - LS (Lesotho)
 
         - LY (Libye)
 
-        - MA(Maroko)
+        - MA (Maroko)
 
         - MG (Madagaskar)
 
-        - ML(Mali)
+        - ML (Mali)
 
-        - MR(Mauritánie)
+        - MR (Mauritánie)
 
-        - MU (Mauricius)
+        - MÍ (Mauricius)
 
         - MW (Malawi)
 
-        - MZ(Mosambik)
+        - MZ (Mosambik)
 
-        - NA(Namibie)
+        - NA (Namibie)
 
-        - NE(Niger)
+        - NE (Niger)
 
         - NG (Nigérie)
 
-        - RE(Réunion)
+        - ZNOVU (Réunion)
 
-        - RW(Rwanda)
+        - RW (Rwanda)
 
-        - SC(Seychely)
+        - SC (Seychely)
 
-        - SD(Súdán)
+        - SD (Súdán)
 
-        - SH (St Helena, Nanebevstoupení, Tristan da Cunha)
+        - SH (Svatá Helena, ascension, Tristan da Cunha)
 
-        - SL(Sierra Leone)
+        - SL (Sierra Leone)
 
-        - SN(Senegal)
+        - SN (Senegal)
 
-        - SO(Somálsko)
+        - SO (Somálsko)
 
-        - SS(Jižní Súdán)
+        - SS (Jižní Súdán)
 
-        - ST(Svatý Tomáš a Princův ostrov)
+        - Svatý (Svatý Tomáš a Princův ostrov)
 
-        - SZ(Svazijsko)
+        - SZ (Svazijsko)
 
         - TD (Čad)
 
-        - TF(Francouzská jižní území)
+        - TF (Francouzská jižní teritoria)
 
-        - TG(Togo)
+        - TG (Togo)
 
-        - TN(Tunisko)
+        - TN (Tunisko)
 
-        - TZ(Tanzanie)
+        - TZ (Tanzánie)
 
-        - UG(Uganda)
+        - G (Uganda)
 
         - YT (Mayotte)
 
-        - ZA(Jihoafrická republika)
+        - ZA (Jižní Afrika)
 
-        - ZM(Zambie)
+        - ZM (Zambie)
 
-        - ZW(Zimbabwe)
+        - ZW (Zimbabwe)
 
-    - GEO-AN (Antarktida)
+    - GEOGRAFICKÉ rozhraní (Antarktida)
 
-        - AQ(Antarktida)
+        - AQ (Antarktida)
 
-    - GEO-SA (Jižní Amerika)
+    - GEOGRAFICKÉ přidružení SA (Jižní Amerika)
 
-        - AR(Argentina)
+        - AR (Argentina)
 
         - BO (Bolívie)
 
-        - BR(Brazílie)
+        - BR (Brazílie)
 
-        - CL(Chile)
+        - CL (Chile)
 
         - CO (Kolumbie)
 
-        - EC (Ekvádor)
+        - ES (Ekvádor)
 
-        - FK(Falklandské ostrovy)
+        - FK (Falklandské ostrovy)
 
-        - GF(Francouzská Guyana)
+        - GF (Francouzská Guyana)
 
         - GS (Jižní Georgie a Jižní Sandwichovy ostrovy)
 
         - GY (Guyana)
 
-        - PE(Peru)
+        - PE (Peru)
 
-        - PY(Paraguay)
+        - PY (Paraguay)
 
-        - SR(Surinam)
+        - SR (Surinam)
 
         - UY (Uruguay)
 
-        - VE(Venezuela)
+        - VE (Venezuela)
 
-    - GEO-AP(Austrálie / Pacifik)
+    - GEO-AP (Austrálie/Tichomoří)
 
         - AS (Americká Samoa)
 
         - AU (Austrálie)
 
-            - AU-ACT(Australské hlavní teritorium)
+            - AU – ACT (velká písmena australské země)
 
-            - AU-NSW (Nový Jižní Wales)
+            - AU – NSW (Nový Jižní Wales)
 
-            - AU-NT(Severní teritorium)
+            - AU – NT (Severní teritorium)
 
-            - AU-QLD (Queensland)
+            - AU – QLD (Queenslandu)
 
-            - Au-SA (Jižní Austrálie)
+            - AU – SA (Jižní Austrálie)
 
-            - AU-TAS(Tasmánie)
+            - AU – ú (Tasmánie ()
 
-            - AU-VIC (Viktorie)
+            - AU – VIC (Victoria)
 
-            - AU-WA(Západní Austrálie)
+            - AU – WA (západní Austrálie)
 
-        - CK(Cookovy ostrovy)
+        - CK (Cookovy ostrovy)
 
-        - FJ(Fidži)
+        - FJ (Fidži)
 
-        - FM (mikronésie)
+        - FM (Mikronésie)
 
-        - GU(Guam)
+        - GU (Guam)
 
-        - HM (Heardův ostrov a McDonaldovy ostrovy)
+        - HM (Heardův ostrov a MacDonaldovy ostrovy)
 
-        - KI(Kiribati)
+        - KI (Kiribati)
 
-        - MH(Marshallovy ostrovy)
+        - MH (Marshallovy ostrovy)
 
         - MP (Severní Mariany)
 
         - NC (Nová Kaledonie)
 
-        - NF(Norfolk Island)
+        - NF (ostrov Norfolk)
 
-        - NR(Nauru)
+        - NR (Nauru)
 
-        - NU(Niue)
+        - NU (Niue)
 
-        - NZ(Nový Zéland)
+        - NZ (Nový Zéland)
 
-        - PF(Francouzská Polynésie)
+        - PF (Francouzská Polynésie)
 
-        - PG(Papua-Nová Guinea)
+        - PG (Papua – Nová Guinea)
 
-        - PN(Pitcairnovy ostrovy)
+        - PN (Pitcairnovy ostrovy)
 
-        - PW (Palau)
+        - HESLO (Palau)
 
-        - SB(Šalamounovy ostrovy)
+        - SB (Šalamounovy ostrovy)
 
-        - TK(Tokelau)
+        - TK (Tokelau)
 
-        - TO (Tonga)
+        - DO (Tonga)
 
         - TV (Tuvalu)
 
@@ -686,8 +686,8 @@ Tento článek uvádí země a oblasti používané metodou **směrování geogr
 
         - WF (Wallis a Futuna)
 
-        - WS(Samoa)
+        - WS (Samoa)
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o [metodě směrování geografického provozu najdete ve Službě Azure Traffic Manager](traffic-manager-routing-methods.md#geographic).
+- Přečtěte si další informace o [způsobu směrování geografických přenosů v Azure Traffic Manager](traffic-manager-routing-methods.md#geographic).

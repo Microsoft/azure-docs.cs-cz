@@ -1,6 +1,6 @@
 ---
-title: Azure ExpressRoute CrossConnnections API vývoj a integrace
-description: Tento článek obsahuje podrobný přehled pro partnery ExpressRoute o typu prostředku expressRouteCrossConnections.
+title: Vývoj a integrace rozhraní API Azure ExpressRoute CrossConnnections
+description: Tento článek poskytuje podrobný přehled pro partnery ExpressRoute o typu prostředku expressRouteCrossConnections.
 services: expressroute
 author: mialdrid
 ms.service: expressroute
@@ -8,80 +8,80 @@ ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: mialdrid
 ms.openlocfilehash: b4a83013d2cbeb2871a3963ec0c95144c02f4d66
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77187013"
 ---
-# <a name="expressroute-crossconnnections-api-development-and-integration"></a>Vývoj a integrace rozhraní API ExpressRoute CrossConnnections
+# <a name="expressroute-crossconnnections-api-development-and-integration"></a>Vývoj a integrace rozhraní ExpressRoute CrossConnnections API
 
-Rozhraní API správce prostředků partnera ExpressRoute umožňuje partnerům ExpressRoute spravovat konfiguraci okruhů ExpressRoute zákazníka 2 a vrstvy 3. Rozhraní API správce prostředků partnera ExpressRoute zavádí nový typ prostředku **expressRouteCrossConnections**. Partneři používají tento prostředek ke správě okruhů ExpressRoute zákazníka.
+ExpressRoute partner Správce prostředků API umožňuje partnerům ExpressRoute spravovat konfiguraci ExpressRoute okruhů ve vrstvě 2 a 3. ExpressRoute partner Správce prostředků rozhraní API zavádí nový typ prostředku **expressRouteCrossConnections**. Partneři používají tento prostředek k řízení okruhů zákaznických ExpressRoute.
 
 ## <a name="workflow"></a>Pracovní postup
 
-Prostředek expressRouteCrossConnections je stínovým prostředkem okruhu ExpressRoute. Když zákazník Azure vytvoří okruh ExpressRoute a vybere konkrétního partnera ExpressRoute, Microsoft vytvoří prostředek expressRouteCrossConnections v předplatném správy Azure ExpressRoute partnera. Přitom Společnost Microsoft definuje skupinu prostředků k vytvoření prostředku expressRouteCrossConnections. Standard pojmenování pro skupinu prostředků je **CrossConnection-* PeeringLocation***; kde PeeringLocation = Umístění ExpressRoute. Například pokud zákazník vytvoří okruh ExpressRoute v Denveru, crossconnection bude vytvořen v předplnění partnera Azure v následující skupině prostředků: **CrossConnnection-Denver**.
+Prostředek expressRouteCrossConnections je stínový prostředek k okruhu ExpressRoute. Když zákazník Azure vytvoří okruh ExpressRoute a vybere konkrétního partnera ExpressRoute, Microsoft vytvoří prostředek expressRouteCrossConnections v předplatném Azure ExpressRoute Management partnera. V takovém případě Microsoft definuje skupinu prostředků, ve které se vytvoří prostředek expressRouteCrossConnections. Standardní pojmenování pro skupinu prostředků je **CrossConnection-* PeeringLocation * * *; kde PeeringLocation = umístění ExpressRoute. Pokud třeba zákazník vytvoří okruh ExpressRoute v Denver, vytvoří se CrossConnection v předplatném Azure partnera v následující skupině prostředků: **CrossConnnection-Denver**.
 
-Partneři ExpressRoute spravují konfiguraci vrstvy 2 a vrstvy 3 vydáním operací REST proti prostředku expressRouteCrossConnections.
+ExpressRoute partneři spravují konfiguraci vrstvy 2 a vrstvy 3 tím, že vydávají operace REST v prostředku expressRouteCrossConnections.
 
 ## <a name="benefits"></a>Výhody
 
 Výhody přechodu na prostředek expressRouteCrossConnections:
 
-* Všechna budoucí vylepšení pro partnery ExpressRoute budou k dispozici v prostředku ExpressRouteCrossConnection.
+* Všechna budoucí vylepšení pro partnery ExpressRoute budou zpřístupněna v prostředku ExpressRouteCrossConnection.
 
-* Partneři mohou použít [řízení přístupu na základě rolí](https://docs.microsoft.com/azure/role-based-access-control/overview) pro prostředek expressRouteCrossConnection. Tyto ovládací prvky mohou definovat oprávnění, pro která mohou účty uživatelů upravovat prostředek expressRouteCrossConnection a přidávat/aktualizovat/odstraňovat konfigurace partnerského vztahu.
+* Partneři můžou u prostředku expressRouteCrossConnection použít [Access Control na základě rolí](https://docs.microsoft.com/azure/role-based-access-control/overview) . Tyto ovládací prvky mohou definovat oprávnění, pro které mohou uživatelské účty upravovat prostředek expressRouteCrossConnection a konfigurace partnerských vztahů Přidat/aktualizovat/odstranit.
 
-* Prostředek expressRouteCrossConnection zveřejňuje api, která mohou být užitečná při odstraňování potíží s připojeními ExpressRoute. To zahrnuje tabulku ARP, souhrn tabulky postupu protokolu BGP a podrobnosti o tabulce směrování protokolu BGP. Tato funkce není podporována klasickými řešeními API nasazení.
+* Prostředek expressRouteCrossConnection zpřístupňuje rozhraní API, která můžou být užitečná při řešení potíží s připojením ExpressRoute. Patří sem tabulka ARP, Souhrn tabulky směrování BGP a podrobnosti tabulky směrování protokolu BGP. Tato schopnost není podporována rozhraními API pro nasazení Classic.
 
-* Partneři mohou také vyhledat inzerované komunity v partnerské společnosti Microsoft pomocí prostředku *RouteFilter.*
+* Partneři mohou také vyhledat inzerované komunity na partnerském vztahu Microsoftu pomocí prostředku *RouteFilter* .
 
-## <a name="api-development-and-integration-steps"></a>Kroky vývoje a integrace rozhraní API
+## <a name="api-development-and-integration-steps"></a>Postup pro vývoj a integraci rozhraní API
 
-K vývoji podle rozhraní API partnera využívají partneři ExpressRoute nastavení testovacího zákazníka a testovacího partnera. Nastavení testovacího zákazníka se použije k vytvoření okruhů ExpressRoute v testovacích partnerských umístěních, které jsou mapovány na fiktivní zařízení a porty. Nastavení testovacího partnera se používá ke správě okruhů ExpressRoute vytvořených v umístění partnerského vztahu testu.
+Pro vývoj na partnerském rozhraní API partneři ExpressRoute využívají testovacího zákazníka a testovací nastavení partnerů. Nastavení test zákazníka se použije k vytvoření okruhů ExpressRoute v umístěních s testovacím partnerským vztahem, které se mapují na fiktivní zařízení a porty. Testovací nastavení partnera se používá ke správě okruhů ExpressRoute vytvořených v umístění testovacího partnerského vztahu.
 
-### <a name="1-enlist-subscriptions"></a>1. Zařazení předplatného
+### <a name="1-enlist-subscriptions"></a>1. zařazení předplatných
 
-Chcete-li požádat o testovacího partnera a otestovat nastavení zákazníka, zadejte dvě předplatná Azure s průběžným platbou do vašeho technického kontaktu ExpressRoute:
-* **ExpressRoute_API_Dev_Provider_Sub:** Toto předplatné se použije ke správě okruhů ExpressRoute vytvořených v testovacích partnerských umístěních na fiktivních zařízeních a portech.
+Pokud chcete požádat o test partnera a otestovat zákaznickou instalaci, zaúčtujte dva předplatná Azure s průběžnými platbami na váš kontakt ExpressRoute Engineering:
+* **ExpressRoute_API_Dev_Provider_Sub:** Toto předplatné se bude používat ke správě okruhů ExpressRoute vytvořených v umístěních pro testování partnerských vztahů na fiktivních zařízeních a portech.
 
-* **ExpressRoute_API_Dev_Customer_Sub:** Toto předplatné se použije k vytvoření okruhů ExpressRoute v testovacích partnerských umístěních, které jsou mapovány na fiktivní zařízení a porty.
+* **ExpressRoute_API_Dev_Customer_Sub:** Toto předplatné se použije k vytvoření okruhů ExpressRoute v umístěních s testovacím partnerským vztahem, které se mapují na fiktivní zařízení a porty.
 
-Umístění partnerského vztahu testu: fiktivní zařízení a porty nejsou ve výchozím nastavení vystaveny produkčním zákazníkům. Chcete-li vytvořit okruhy ExpressRoute, které se mapují na testovací nastavení, je třeba povolit příznak funkce předplatného.
+Umístění pro testování partnerských vztahů: fiktivní zařízení a porty nejsou ve výchozím nastavení vystaveny zákazníkům v produkčním prostředí. Aby bylo možné vytvořit okruhy ExpressRoute, které jsou mapovány na nastavení testu, je nutné povolit příznak funkce předplatného.
 
-### <a name="2-register-the-dev_provider-subscription-to-access-the-expressroutecrossconnections-api"></a>2. Registrace předplatného Dev_Provider pro přístup k rozhraní API expressRouteCrossConnections
+### <a name="2-register-the-dev_provider-subscription-to-access-the-expressroutecrossconnections-api"></a>2. Zaregistrujte si předplatné Dev_Provider pro přístup k rozhraní expressRouteCrossConnections API
 
-Chcete-li získat přístup k rozhraní API expressRouteCrossConnections, musí být předplatné partnera zapsáno u **zprostředkovatele prostředků sítě Microsoft.Network**. Postupujte podle kroků v článku [poskytovatelé prostředků Azure a typy](/azure/azure-resource-manager/management/resource-providers-and-types#azure-portal) k dokončení procesu registrace.
+Aby bylo možné získat přístup k rozhraní expressRouteCrossConnections API, musí být partnerský odběr zaregistrovaný v **poskytovateli prostředků Microsoft. Network**. K dokončení procesu registrace použijte postup v článku [poskytovatelé a typy prostředků Azure](/azure/azure-resource-manager/management/resource-providers-and-types#azure-portal) .
 
-### <a name="3-set-up-authentication-for-azure-resource-manager-rest-api-calls"></a>3. Nastavení ověřování pro volání rozhraní REST správce prostředků Azure
+### <a name="3-set-up-authentication-for-azure-resource-manager-rest-api-calls"></a>3. nastavení ověřování pro Azure Resource Manager volání REST API
 
-Většina služeb Azure vyžaduje klientský kód k ověření pomocí Správce prostředků pomocí platných přihlašovacích údajů před voláním řešení API služby. Ověřování je koordinováno mezi různými aktéry podle Azure AD a poskytuje klientovi přístupový token jako důkaz ověřování.
+Většina služeb Azure vyžaduje klientský kód k ověření pomocí Správce prostředků pomocí platných přihlašovacích údajů před voláním rozhraní API služby. Ověřování je koordinováno mezi různými aktéry pomocí Azure AD a poskytuje klientovi přístupový token jako ověření ověřování.
 
 Proces ověřování zahrnuje dva hlavní kroky:
 
 1. [Zaregistrujte klienta](https://docs.microsoft.com/rest/api/azure/#register-your-client-application-with-azure-ad).
 2. [Vytvořte žádost o přístup](https://docs.microsoft.com/rest/api/azure/#create-the-request).
 
-### <a name="4-provide-network-contributor-permission-to-the-client-application"></a>4. Poskytněte klientské aplikaci oprávnění síťového přispěvatele
+### <a name="4-provide-network-contributor-permission-to-the-client-application"></a>4. Poskytněte klientské aplikaci oprávnění přispěvatele sítě.
 
-Po úspěšné konfiguraci ověřování je třeba udělit přispěvateli sítě přístup k klientské aplikaci v rámci Dev_Provider_Sub. Chcete-li udělit oprávnění, přihlaste se na [portál Azure](https://ms.portal.azure.com/#home) a proveďte následující kroky:
+Po úspěšném nakonfigurování ověření musíte v rámci Dev_Provider_Sub udělit přístup přispěvateli sítě ke své klientské aplikaci. Pokud chcete udělit oprávnění, přihlaste se k [Azure Portal](https://ms.portal.azure.com/#home) a proveďte následující kroky:
 
-1. Přejděte na Předplatná a vyberte Dev_Provider_Sub
-2. Přejít na řízení přístupu (IAM)
+1. Přejděte na předplatná a vyberte Dev_Provider_Sub
+2. Přejít na Access Control (IAM)
 3. Přidat přiřazení role
-4. Vyberte roli síťového přispěvatele
-5. Přiřazení přístupu uživateli, skupině nebo instančnímu objektu Azure AD
-6. Výběr klientské aplikace
+4. Vybrat roli Přispěvatel sítě
+5. Přiřazení přístupu k uživateli, skupině nebo instančnímu objektu služby Azure AD
+6. Vybrat klientskou aplikaci
 7. Uložit změny
 
-### <a name="5-develop"></a>5. Rozvíjet
+### <a name="5-develop"></a>5. vývoj
 
-Vyvíjet proti [expressRouteCrossConnections API](https://docs.microsoft.com/rest/api/expressroute/expressroutecrossconnections).
+Vývoj s využitím [rozhraní expressRouteCrossConnections API](https://docs.microsoft.com/rest/api/expressroute/expressroutecrossconnections)
 
 ## <a name="rest-api"></a>REST API
 
-Viz [ExpressRoute CrossConnections REST API](https://docs.microsoft.com/rest/api/expressroute/expressroutecrossconnections) pro dokumentaci rozhraní REST API.
+Dokumentaci k REST API najdete v tématu [ExpressRoute CrossConnections REST API](https://docs.microsoft.com/rest/api/expressroute/expressroutecrossconnections) .
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o všech apich ExpressRoute REST naleznete v tématu [ExpressRoute REST API](https://docs.microsoft.com/rest/api/expressroute/).
+Další informace o všech ExpressRoute REST API najdete v tématu [EXPRESSROUTE REST API](https://docs.microsoft.com/rest/api/expressroute/).

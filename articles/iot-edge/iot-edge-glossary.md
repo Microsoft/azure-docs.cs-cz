@@ -1,6 +1,6 @@
 ---
-title: Glosář termínů – Azure IoT Edge | Dokumenty společnosti Microsoft
-description: Seznam běžných termínů, které se vyhovují Azure IoT Edge, jeho součástem, službám, zařízením a technologiím.
+title: Glosář termínů – Azure IoT Edge | Microsoft Docs
+description: Seznam běžných výrazů vztahujících se na Azure IoT Edge, jeho komponenty, služby, zařízení a technologie.
 author: chrissie926
 manager: philmea
 ms.service: iot-edge
@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: menchi
 ms.openlocfilehash: 8fc12dde9f441a972efbc5d91ac53b5f9d738690
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76547094"
 ---
 # <a name="glossary-of-terms-for-azure-iot-edge"></a>Glosář termínů pro Azure IoT Edge
 
-Tento článek uvádí některé běžné termíny používané v článcích IoT Edge.
+V tomto článku jsou uvedené některé běžné výrazy používané v IoT Edgech článcích.
 
 [!INCLUDE [azure-iot-hub-edge-glossary-includes](../../includes/azure-iot-hub-edge-glossary-includes.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
-[Glosář IoT Hubu](../iot-hub/iot-hub-devguide-glossary.md)
+[Glosář IoT Hub](../iot-hub/iot-hub-devguide-glossary.md)

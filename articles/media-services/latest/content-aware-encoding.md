@@ -1,6 +1,6 @@
 ---
-title: Přednastavení kódování podle obsahu – Mediální služby Azure
-description: Tento článek popisuje kódování podle obsahu ve službě Microsoft Azure Media Services v3.
+title: Přednastavení pro kódování s podporou obsahu – Azure Media Services
+description: Tento článek popisuje kódování zohledňující obsah v Microsoft Azure Media Services V3.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,50 +13,50 @@ ms.date: 01/24/2020
 ms.author: juliako
 ms.custom: ''
 ms.openlocfilehash: 3ea6c4226a59ba020a477cc5811033ff3dc3c2e9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76772111"
 ---
-# <a name="use-the-content-aware-encoding-preset-to-find-the-optimal-bitrate-value-for-a-given-resolution"></a>Pomocí přednastavení kódování podle obsahu vyhledejte optimální hodnotu přenosového toku pro dané rozlišení.
+# <a name="use-the-content-aware-encoding-preset-to-find-the-optimal-bitrate-value-for-a-given-resolution"></a>K vyhledání optimální přenosové hodnoty pro dané řešení použijte předvolbu kódování zohledňující obsah.
 
-Aby bylo možné připravit obsah pro doručování [adaptivním datovým tokem](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming), musí být video kódováno při více přenosových rychlostech (od nejvyšší po nejnižší hodnotu). To zajišťuje ladné zhoršení kvality, protože je snížen atožný, takže je rozlišení videa. Takové vícenásobné kódování přenosové rychlosti využívá takzvaný kódovací žebřík – tabulku rozlišení a přenosových rychlostí, viz [předvolby kódování](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset)Media Services .
+Aby bylo možné připravit obsah pro doručování [datovým proudem s adaptivní přenosovou rychlostí](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming), je nutné zakódovat video s více přenosovými rychlostmi (vysoká až nízká). Tím se zajistí řádné snížení kvality, protože přenosová rychlost je snížena, takže se jedná o rozlišení videa. Například kódování s více přenosovými rychlostmi používá pro kódovací žebřík, který se označuje jako tabulka rozlišení a přenosové rychlosti, informace o Media Services [vestavěných přednastavení kódování](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset).
 
-Měli byste si být vědomi obsahu, který zpracováváte, a přizpůsobit/naladit kódovací žebřík na složitost jednotlivých videí. Při každém rozlišení je přenosový tok, za kterým není jakékoli zvýšení kvality vnímavé – kodér pracuje s touto optimální hodnotou přenosového toku. Další úrovní optimalizace je výběr rozlišení na základě obsahu – například video prezentace aplikace PowerPoint nemá prospěch z toho, že klesne pod 720p. Pokud jde o další, kodér může být pověřen optimalizací nastavení pro každý snímek v rámci videa. 
+Měli byste znát obsah, který zpracováváte, a přizpůsobit nebo ladit žebřík pro kódování na složitost jednotlivého videa. U každého řešení existuje přenosová rychlost, nad kterou se jakékoliv zvýšení kvality neperceptive – kodér pracuje s touto optimální přenosovou hodnotou. Další úrovní optimalizace je výběr rozlišení na základě obsahu – například video prezentace v PowerPointu nepřináší dál nižší verzi než 720p. Dále může být kodér vydaný pro optimalizaci nastavení pro každý snímek ve videu. 
 
-Přednastavení [adaptivního streamování](autogen-bitrate-ladder.md) společnosti Microsoft částečně řeší problém variability kvality a rozlišení zdrojových videí. Naši zákazníci mají různou kombinaci obsahu, někteří na 1080p, jiní na 720p a několik na SD a nižší rozlišení. Kromě toho, ne všechny zdrojové obsah je vysoce kvalitní mezaniny z filmových nebo televizních studií. Přednastavení Adaptivní streamování řeší tyto problémy tím, že zajišťuje, že datový tok žebřík nikdy nepřekročí rozlišení nebo průměrný datový tok vstupního mezaninu. Toto přednastavení však nezkoumá vlastnosti zdroje jiné než rozlišení a přenosovou rychlost.
+Přednastavení [adaptivního streamování](autogen-bitrate-ladder.md) od Microsoftu částečně řeší problém proměnlivosti kvality a rozlišení zdrojových videí. Naši zákazníci mají různou škálu obsahu, některé na webu 1080p, dalších ve 720p a pár v SD a nižších rozlišeních. Kromě toho ne všechen zdrojový obsah je vysoce kvalitní mezzanines z filmu nebo TV studia. Přednastavení adaptivního streamování řeší tyto problémy tím, že zajišťuje, že žebřík přenosů nikdy nepřekračuje rozlišení nebo průměrnou rychlost vstupního mezzanineu. Tato předvolba však neověřuje vlastnosti zdrojového kódu kromě rozlišení a přenosové rychlosti.
 
-## <a name="the-content-aware-encoding"></a>Kódování podle obsahu 
+## <a name="the-content-aware-encoding"></a>Kódování zohledňující obsah 
 
-Přednastavení kódování podle obsahu rozšiřuje mechanismus "adaptivní přenosové rychlosti" začleněním vlastní logiky, která umožňuje kodéru hledat optimální hodnotu datového toku pro dané rozlišení, ale bez nutnosti rozsáhlé výpočetní analýzy. Toto přednastavení vytváří sadu MP4 zarovnaných do gop. Vzhledem k tomu, jakýkoli vstupní obsah, služba provede počáteční zjednodušenou analýzu vstupního obsahu a používá výsledky k určení optimálního počtu vrstev, vhodného datového toku a nastavení rozlišení pro doručení adaptivním streamováním. Toto přednastavení je obzvláště účinné pro videa s nízkou a střední složitostí, kde výstupní soubory budou mít nižší přenosové rychlosti než přednastavení adaptivního streamování, ale v kvalitě, která divákům stále přináší dobrý zážitek. Výstup bude obsahovat soubory MP4 s video a audio prokládáním
+Přednastavení kódování zohledňující obsah rozšiřuje mechanismus "s adaptivní přenosovou rychlostí", který začleňuje vlastní logiku, která umožňuje kodéru vyhledat optimální přenosovou hodnotu pro dané řešení, ale bez nutnosti rozsáhlé výpočetní analýzy. Tato předvolba vytvoří sadu rychlostmi zarovnaných na skupinu GOP. Vzhledem k jakémukoli vstupnímu obsahu služba provádí počáteční odlehčenou analýzu vstupního obsahu a výsledky používá k určení optimálního počtu vrstev, vhodné rychlosti a nastavení rozlišení pro doručování pomocí adaptivního streamování. Tato předvolba je zvláště platná pro videa s nízkou a střední složitostí, kde výstupní soubory budou s nižšími přenosovými rychlostmi, než je přednastavení adaptivního streamování, ale kvalita, která uživatelům poskytuje dobrý zážitek. Výstup bude obsahovat soubory MP4 se zakládaným videem a zvukem.
 
-Následující ukázkové grafy ukazují porovnání pomocí metrik kvality, jako [jsou PSNR](https://en.wikipedia.org/wiki/Peak_signal-to-noise_ratio) a [VMAF](https://en.wikipedia.org/wiki/Video_Multimethod_Assessment_Fusion). Zdroj byl vytvořen zřetězením krátkých klipů s vysokou složitostí snímků z filmů a televizních pořadů, které měly zdůraznit kodér. Podle definice toto přednastavení vytváří výsledky, které se liší od obsahu k obsahu - to také znamená, že pro nějaký obsah nemusí dojít k významnému snížení toku nebo zlepšení kvality.
+Následující ukázkové grafy znázorňují porovnání pomocí metrik kvality, jako je [PSNR](https://en.wikipedia.org/wiki/Peak_signal-to-noise_ratio) a [VMAF](https://en.wikipedia.org/wiki/Video_Multimethod_Assessment_Fusion). Zdroj byl vytvořen zřetězením krátkých klipů vysoce složitých snímků z filmů a televizních pořadů, které mají za cíl zátěž kodéru. Podle definice Tato předvolba vytvoří výsledky, které se liší od obsahu k obsahu – to také znamená, že u určitého obsahu se nemusí významně snížit přenosová rychlost nebo zlepšení kvality.
 
-![Křivka zkreslení rychlosti (RD) pomocí PSNR](media/content-aware-encoding/msrv1.png)
+![Frekvence – deformace (RD) – křivka pomocí PSNR](media/content-aware-encoding/msrv1.png)
 
-**Obrázek 1: Křivka zkreslení rychlosti (RD) pomocí metriky PSNR pro zdroj s vysokou složitostí**
+**Obrázek 1: křivka deformace (RD) pomocí metriky PSNR pro zdroj s vysokou složitostí**
 
-![Křivka zkreslení rychlosti (RD) pomocí VMAF](media/content-aware-encoding/msrv2.png)
+![Frekvence – deformace (RD) – křivka pomocí VMAF](media/content-aware-encoding/msrv2.png)
 
-**Obrázek 2: Křivka zkreslení rychlosti (RD) pomocí metriky VMAF pro zdroj s vysokou složitostí**
+**Obrázek 2: křivka deformace (RD) pomocí metriky VMAF pro zdroj s vysokou složitostí**
 
-Níže jsou uvedeny výsledky pro jinou kategorii zdrojového obsahu, kde kodér byl schopen určit, že vstup byl nekvalitní (mnoho kompresní artefakty z důvodu nízkého toku). Všimněte si, že s přednastavením obsahu se kodér rozhodl vytvořit pouze jednu výstupní vrstvu - při dostatečně nízkém datovém toku, aby většina klientů mohla přehrávat datový proud bez zastavení.
+Níže jsou uvedeny výsledky jiné kategorie zdrojového obsahu, kde kodér dokázal určit, že vstup má špatnou kvalitu (mnohé kompresní artefakty z důvodu nízké přenosové rychlosti). Všimněte si, že u přednastaveného obsahu, kodér se rozhodl vytvořit jenom jednu výstupní vrstvu – s dostatečně nízkou přenosovou rychlostí, aby většina klientů mohla přehrát datový proud bez zastavení.
 
 ![Křivka VP pomocí PSNR](media/content-aware-encoding/msrv3.png)
 
-**Obrázek 3: Křivka VP pomocí PSNR pro vstup nízké kvality (při 1080p)**
+**Obrázek 3: křivka RD pomocí PSNR pro vstup s nízkou kvalitou (v 1080p)**
 
-![Křivka RD pomocí VMAF](media/content-aware-encoding/msrv4.png)
+![Křivka VP pomocí VMAF](media/content-aware-encoding/msrv4.png)
 
-**Obrázek 4: Křivka RD s použitím VMAF pro vstup nízké kvality (při 1080p)**
+**Obrázek 4: křivka RD pomocí VMAF pro vstup s nízkou kvalitou (v 1080p)**
 
-## <a name="how-to-use-the-content-aware-encoding-preset"></a>Použití přednastavení kódování podle obsahu 
+## <a name="how-to-use-the-content-aware-encoding-preset"></a>Jak používat přednastavení kódování zohledňující obsah 
 
-Můžete vytvořit transformace, které používají toto přednastavení následujícím způsobem. 
+Transformace, které používají tuto předvolbu, můžete vytvořit následujícím způsobem. 
 
 > [!TIP]
-> Kurzy, které používají tranformní výstupy, najdete v části [Další kroky.](#next-steps) Výstupní datový zdroj lze doručit z koncových bodů streamování media services v protokolech, jako je MPEG-DASH a HLS (jak je znázorněno v kurzech).
+> Kurzy, které používají výstupy transformace, najdete v části [Další kroky](#next-steps) . Výstupní Asset se dá doručovat z Media Services koncových bodů streamování v protokolech, jako jsou MPEG-SPOJOVNÍKy a HLS (jak je znázorněno v kurzech).
 
 
 ```csharp
@@ -76,12 +76,12 @@ TransformOutput[] output = new TransformOutput[]
 ```
 
 > [!NOTE]
-> Úlohy kódování `ContentAwareEncoding` pomocí přednastavení se účtují na základě výstupních minut. 
+> Úlohy kódování s použitím `ContentAwareEncoding` přednastavení se účtují na základě výstupních minut. 
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Kurz: Nahrávání, kódování a streamování videí pomocí Mediálních služeb v3](stream-files-tutorial-with-api.md)
-* [Kurz: Zakódujte vzdálený soubor na základě adresy URL a streamujte video - REST](stream-files-tutorial-with-rest.md)
-* [Kurz: Zakódujte vzdálený soubor na základě adresy URL a streamujte video - CLI](stream-files-cli-quickstart.md)
-* [Kurz: Zakódujte vzdálený soubor na základě adresy URL a streamujte video - .NET](stream-files-dotnet-quickstart.md)
-* [Kurz: Zakódujte vzdálený soubor na základě adresy URL a streamujte video - Node.js](stream-files-nodejs-quickstart.md)
+* [Kurz: nahrávání, kódování a streamování videí pomocí Media Services V3](stream-files-tutorial-with-api.md)
+* [Kurz: kódování vzdáleného souboru na základě adresy URL a streamu pro video](stream-files-tutorial-with-rest.md)
+* [Kurz: kódování vzdáleného souboru na základě adresy URL a streamu pro video – CLI](stream-files-cli-quickstart.md)
+* [Kurz: kódování vzdáleného souboru na základě adresy URL a streamu pro video – .NET](stream-files-dotnet-quickstart.md)
+* [Kurz: kódování vzdáleného souboru na základě adresy URL a streamu pro video – Node. js](stream-files-nodejs-quickstart.md)
